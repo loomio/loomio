@@ -33,11 +33,11 @@ pt_BR:
     2_day_before: 2 dias antes
     3_day_before: 3 dias antes
     7_day_before: 7 dias antes
-    task_placeholder: Insira uma tarefa e @mencione alguém para atribuí-la
     add_due_date: Adicionar data de vencimento
     task_updated_done: Tarefa marcada como concluída!
     task_updated_not_done: Tarefa marcada como não concluída
     no_tasks_assigned: Não há tarefas atribuídas a você
+    task_placeholder: Insira uma tarefa e {'@'}mencione alguém para atribuí-la
   templates:
     template_gallery: Galeria de modelos
     title_template: "%{title} Modelo"
@@ -479,10 +479,10 @@ pt_BR:
     normal_desc: Quando alguém me notifica
     quiet_desc: Nunca
     quiet_explained: Você não receberá e-mails, mesmo quando alguém tentar notificá-lo. Você pode perder anúncios ou decisões importantes. Isso pode ser adequado se um tópico não lhe diz respeito, mas não é recomendado para a configuração de grupo, a menos que você tenha outras maneiras de se manter atualizado.
-    normal_explained: Quando alguém insere seu nome no campo "Notificar" de um tópico ou enquete, ou @menciona o grupo.
-    normal_excludes_mentioning_html: Há uma configuração separada para quando alguém @menciona você (por exemplo, quando responde a você em um comentário). <a href="%{url}">Clique aqui para editar as configurações para @menções</a>
     loud_explained: Você receberá um e-mail sempre que houver um novo comentário, alguém votar ou iniciar uma enquete ou tópico.
     when_would_you_like_to_be_emailed_poll_type: Quando você gostaria de receber um e-mail sobre este %{poll_type}?
+    normal_explained: Quando alguém insere seu nome no campo "Notificar" de um tópico ou enquete, ou quando {'@'}menciona o grupo.
+    normal_excludes_mentioning_html: Há uma configuração separada para quando alguém {'@'}menciona você (por exemplo, ao responder a você em um comentário). <a href="%{url}">Clique aqui para editar as configurações para @menções.</a>
   close_explanation_modal:
     aria_label: Fechar conversa
     close_thread: Fechar conversa
@@ -1180,9 +1180,9 @@ pt_BR:
       quiet: Não enviar e-mail sobre esse grupo. Atividades serão exibidas no painel.
       quiet_aria_description: O seu volume de notificação para este grupo está definido como Quieto. Você não receberá e-mail sobre atividades deste grupo. Eles serão mostradas no seu Painel.
       quiet_message: Você não receberá e-mail sobre as atividades em "%{name}".
-      mute: Esconder este grupo do painel e não notificar a não ser quando @mencionado.
       mute_aria_description: O seu volume de notificação para este grupo está definido como Mudo. Você não receberá e-mail, a não ser que mencionem você, e atividades do grupo não serão mostradas no seu Painel.
       mute_message: '"%{name}" foi removido do seu painel.'
+      mute: Oculte este grupo do painel e não notifique, a menos que {'@'}seja mencionado.
     privacy:
       private: 'Privacidade: Este grupo é visível apenas para membros'
       parent_members: 'Privacidade: Este grupo é visível para os membros de %{parentGroupName} e os membros de %{groupName}'
@@ -1355,7 +1355,6 @@ pt_BR:
     share_group: Compartilhar seu grupo
     copy_link: Copia
     email_addresses: Endereço de e-mail
-    email_addresses_placeholder: e.g. helperbot@loomio.org, friendlybot@loomio.org
     secret_group_url_explanation: Esse é o endereço para o seu grupo. Apenas membros convidados poderão ver esse grupo.
     shareable_group_url_explanation: Você pode compartilhar esse link publicamente. As pessoas poderão solicitar a entrada e você poderá aprovar ou negar seus pedidos.
     shareable_invitation_explanation: Não compartilhe esse link publicamente. Qualquer um com ele poderá se juntar ao grupo seu sua aprovação. Compartilhe apenas por meios de comunicação privados para permitir que as pessoas de sua organização se juntem.
@@ -1381,6 +1380,7 @@ pt_BR:
     enter_emails_of_people_to_invite: Insira os endereços de e-mail das pessoas que você gostaria de convidar para o grupo. Se você tiver uma lista, basta copiar e colar tudo de uma vez.
     shareable_link_to_join_group: Link compartilhável para ingressar no grupo
     reset_the_link: Redefinir o link
+    email_addresses_placeholder: por exemplo helperbot{'@'}loomio.org, friendlybot{'@'}loomio.org
   memberships_page:
     members: Membros
     name_label: Nome
@@ -1525,7 +1525,6 @@ pt_BR:
     announcement_label: Anúncios
     announcement_description: Você receberá um email sobre todo o conteúdo que foi anunciado pelas pessoas no seus grupos
     mentioned_label: Menções & Respostas
-    mentioned_description: Quando alguém @mencionar você em um comentário ou responder a você, você receberá um e-mail de notificação
     update_settings: Salvar mudanças
     specific_groups: Configurações para grupos específicos
     default_settings:
@@ -1536,6 +1535,7 @@ pt_BR:
     messages:
       updated: Configurações de e-mail atualizadas
     learn_more: Aprenda mais sobre as configurações de email…
+    mentioned_description: Quando alguém {'@'}menciona você em um comentário, você receberá um e-mail de notificação
   thread_preview:
     replies_count: "%{count} respostas"
     unread_count: "%{count} Não lida"
@@ -1561,12 +1561,9 @@ pt_BR:
     thread_recalled: Conversa recordada
     explain_mute:
       title: Você ainda não silenciou nenhuma conversa.
-      explanation_html: |
-        Silenciar é uma forma de ocultar as conversas que não te interessam.
-        Silenciar significa que você não verá o tópico em <strong>Recentes</strong> ou <strong>Não-Lidas</strong>, e você não será notificado sobre as atividades desta conversa, como propostas.
-        Você somente será alertado se alguém  <strong>@mencionar</strong> o seu nome.
       instructions: Para silenciar uma conversa, passe o mouse sobre ela e clique no ícone silenciar.
       see_muted_html: Para ver suas conversas silenciadas, clique <strong>"Silenciado"</strong>. Você pode ativar o som passando o mouse sobre o ícone e clicando nele.
+      explanation_html: Silenciar é uma forma de ocultar ou silenciar tópicos nos quais você não tem interesse. Silenciar significa que você não verá o tópico em <strong>Recentes</strong> ou <strong>Não Lidos</strong> e não será notificado sobre atividades naquele tópico, como propostas. Você só será alertado se alguém <strong>{'@'}mencionar</strong> seu nome.
     filtering:
       filter_threads: Filtrar Conversas
       filter_threads_aria_label: Filtrar Conversas
@@ -2392,7 +2389,6 @@ pt_BR:
     account_locked: Sua conta foi bloqueada por excesso de tentativas de entrada mal sucedidas. Verifique seu email para um link para desbloquear a conta.
     email_not_found: Desculpe, não foi possível encontrar uma conta com esse endereço de email.
     email_taken: Endereço de email já está registrado
-    email_placeholder: voce@exemplo.com
     login_with_token: Tudo pronto! Clique no link abaixo para seguir.
     login_link_helptext: Clique no botão abaixo e nós enviaremos um link para você entrar.
     enter_your_password: Digite sua senha para continuar
@@ -2433,6 +2429,7 @@ pt_BR:
     reactivate: Reativar a conta
     want_to_set_password: Quer fazer login com uma senha na próxima vez?
     change_your_password: Gostaria de definir uma nova senha?
+    email_placeholder: você{'@'}exemplo.com
   chatbot:
     configure_chatbot: Configurar chatbot
     test_connection: Conexão de teste

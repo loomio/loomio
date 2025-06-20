@@ -33,11 +33,11 @@ pl:
     2_day_before: 2 dni przed
     3_day_before: 3 dni przed
     7_day_before: 7 dni przed
-    task_placeholder: Wpisz zadanie i @wspomnij o kimś, kto je przydzieli
     add_due_date: Dodaj termin
     task_updated_done: Zadanie oznaczone jako wykonane!
     task_updated_not_done: Zadanie oznaczone jako niewykonane
     no_tasks_assigned: Nie ma przypisanych Ci zadań
+    task_placeholder: Wprowadź zadanie i {'@'}wspomnij kogoś, komu chcesz je przypisać
   templates:
     template_gallery: Galeria szablonów
     title_template: Szablon %{title}
@@ -471,10 +471,10 @@ pl:
     normal_desc: Kiedy ktoś mnie powiadomi
     quiet_desc: Nigdy
     quiet_explained: Nie otrzymasz wiadomości e-mail, nawet gdy ktoś będzie próbował Cię powiadomić. Możesz przegapić ważne ogłoszenia lub decyzje. Może to być odpowiednie, jeśli wątek Cię nie dotyczy, ale nie jest zalecane w przypadku ustawienia grupy, chyba że masz inne sposoby, aby być na bieżąco.
-    normal_explained: Gdy ktoś wpisze Twoje imię w polu „Powiadom” w wątku lub ankiecie, albo @wspomni grupę.
-    normal_excludes_mentioning_html: Istnieje osobne ustawienie dla sytuacji, gdy ktoś @wspomina Ciebie (np. gdy odpowiada Ci w komentarzu). <a href="%{url}">Kliknij tutaj, aby edytować ustawienia dla @wzmianek</a>
     loud_explained: Otrzymasz e-mail za każdym razem, gdy pojawi się nowy komentarz, ktoś zagłosuje lub rozpocznie ankietę czy wątek.
     when_would_you_like_to_be_emailed_poll_type: Kiedy chcesz otrzymać wiadomość e-mail dotyczącą tego %{poll_type}?
+    normal_explained: Gdy ktoś wpisze Twoje imię w polu „Powiadom” w wątku lub ankiecie, albo {'@'}wspomni grupę.
+    normal_excludes_mentioning_html: Istnieje osobne ustawienie, gdy ktoś {'@'}wspomina o Tobie (np. gdy odpowiada Ci w komentarzu). <a href="%{url}">Kliknij tutaj, aby edytować ustawienia dla @wzmianek</a>
   close_explanation_modal:
     aria_label: Zamknij wątek
     close_thread: Zamknij wątek
@@ -1161,9 +1161,9 @@ pl:
       quiet: Nie wysyłaj wiadomości e-mail na temat tej grupy. Aktywności będą wyświetlane na pulpicie.
       quiet_aria_description: Poziom powiadomień dla tej grupy jest ustawiony na Cichy. Nie będziesz otrzymywać wiadomości e-mail o aktywnościach z tej grupy. Jej aktywność będzie wyświetlana na Pulpicie.
       quiet_message: Nie będziesz otrzymywać wiadomości e-mail o aktywności w %{name}.
-      mute: Ukryj tę grupę na pulpicie i nie przysyłaj powiadomień z wyjątkiem @wzmianek
       mute_aria_description: Poziom powiadomień dla tej grupy jest ustawiony na Wyciszony. Nie otrzymasz wiadomości e-mail dopóki ktoś nie wspomni o Tobie w komentarzu, a aktywność grupy nie będzie wyświetlana na Pulpicie.
       mute_message: Usunięto „%{name}” z pulpitu.
+      mute: Ukryj tę grupę na pulpicie i nie wysyłaj powiadomień, chyba że {'@'}o niej wspomniano.
     privacy:
       private: 'Prywatność: ta grupa jest widoczna tylko dla osób do niej należących'
       parent_members: 'Prywatność: ta grupa jest widoczna dla osób z %{parentGroupName} i osób z %{groupName}'
@@ -1334,7 +1334,6 @@ pl:
     share_group: Udostępnij swoją grupę
     copy_link: Kopiuj
     email_addresses: Adresy e-mail
-    email_addresses_placeholder: np. helperbot@loomio.org, friendlybot@loomio.org
     secret_group_url_explanation: To jest adres Twojej grupy. Tylko zaproszene osoby będą mogli zobaczyć grupę.
     shareable_group_url_explanation: Możesz udostępnić ten link publicznie. Ludzie mogą prosić o dołączenie, a Ty możesz zatwierdzać lub ignorować prośby.
     shareable_invitation_explanation: Nie udostępniaj tego linku publicznie. Każdy, kto go posiada może dołączyć do Twojej grupy bez Twojej zgody. Udostępnij go tylko w prywatnych rozmowach, aby umożliwić dołączenie osobom z Twojej organizacji.
@@ -1360,6 +1359,7 @@ pl:
     enter_emails_of_people_to_invite: Wprowadź adresy e-mail osób, które chcesz zaprosić do grupy. Jeśli masz listę, po prostu skopiuj i wklej je wszystkie na raz.
     shareable_link_to_join_group: Udostępniany link umożliwiający dołączenie do grupy
     reset_the_link: Zresetuj łącze
+    email_addresses_placeholder: np. helperbot{'@'}loomio.org, friendlybot{'@'}loomio.org
   memberships_page:
     members: Osoby
     name_label: Nazwa
@@ -1502,7 +1502,6 @@ pl:
     announcement_label: Ogłoszenia
     announcement_description: Otrzymasz wiadomość e-mail o wszystkich treściach ogłoszonych przez osoby w Twoich grupach
     mentioned_label: Wzmianki i odpowiedzi
-    mentioned_description: Gdy ktoś @wzmiankuje o Tobie w komentarzu lub odpowie Ci, otrzymasz wiadomość e-mail z powiadomieniem
     update_settings: Zapisz zmiany
     specific_groups: Ustawienia dla określonych grup
     default_settings:
@@ -1513,6 +1512,7 @@ pl:
     messages:
       updated: Ustawienia poczty zmienione
     learn_more: Dowiedz się więcej o ustawieniach e-mail...
+    mentioned_description: Gdy ktoś {'@'}wspomni o Tobie w komentarzu, otrzymasz powiadomienie e-mailem
   thread_preview:
     replies_count: "%{count} odpowiedzi"
     unread_count: "%{count} nieprzeczytanych"
@@ -1538,12 +1538,9 @@ pl:
     thread_recalled: Wątek przypomniany
     explain_mute:
       title: Nie wyciszyłeś jeszcze żadnych wątków.
-      explanation_html: |
-        Wyciszanie to sposób na ukrywanie lub wyciszanie wątków, które Cię nie interesują.
-        Wyciszenie oznacza, że ​​nie zobaczysz ich w <strong>Najnowszych</strong> ani <strong>Nieprzeczytanych</strong> i nie będziesz powiadamiany o aktywności w takich wątkach, np. Propozycjach.
-        Zostaniesz powiadomiony tylko, jeśli ktoś <strong>@wspomni</strong> o Tobie,
       instructions: Aby wyciszyć wątek, najedź na niego kursorem i kliknij ikonę wyciszenia.
       see_muted_html: Aby zobaczyć wyciszone wątki, kliknij <strong>„Wyciszone”</strong>. Możesz wyłączyć wyciszenie, najeżdżając myszką i klikając tę ​​samą ikonę.
+      explanation_html: Wyciszenie to sposób na ukrycie lub wyciszenie wątków, którymi nie jesteś zainteresowany. Wyciszenie oznacza, że nie zobaczysz ich w <strong>Ostatnich</strong> lub <strong>Nieprzeczytanych</strong> i nie będziesz powiadamiany o aktywności w tym wątku, np. propozycjach. Otrzymasz powiadomienie tylko wtedy, gdy ktoś <strong>{'@'}wspomni</strong> Twoje imię.
     filtering:
       filter_threads: Filtruj wątki
       filter_threads_aria_label: Filtruj wątki
@@ -2367,7 +2364,6 @@ pl:
     account_locked: Twoje konto zostało zablokowane po zbyt wielu nieudanych próbach logowania. Sprawdź swój adres e-mail, aby uzyskać link do odblokowania.
     email_not_found: Przepraszamy, nie mogliśmy znaleźć konta powiązanego z tym adresem e-mail.
     email_taken: Ten adres e-mailowy jest już zarejestrowany
-    email_placeholder: you@example.com
     login_with_token: Wszystko gotowe! Kliknij poniższy link, aby kontynuować.
     login_link_helptext: Kliknij poniższy przycisk, a my wyślemy Ci link do logowania.
     enter_your_password: Wprowadź hasło, aby kontynuować
@@ -2408,6 +2404,7 @@ pl:
     reactivate: Reaktywuj konto
     want_to_set_password: Czy następnym razem chcesz zalogować się za pomocą hasła?
     change_your_password: Czy chcesz ustawić nowe hasło?
+    email_placeholder: ty{'@'}example.com
   chatbot:
     configure_chatbot: Skonfiguruj chatbota
     test_connection: Połączenie testowe

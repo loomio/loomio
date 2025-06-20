@@ -33,11 +33,11 @@ es:
     2_day_before: 2 días antes
     3_day_before: 3 días antes
     7_day_before: 7 días antes
-    task_placeholder: Introduce una tarea y @menciona alguien para asignarla
     add_due_date: Añadir fecha de vencimiento
     task_updated_done: "¡Tarea señalada como hecha!"
     task_updated_not_done: "¡Tarea señalada como no hecha!"
     no_tasks_assigned: No hay tareas asignadas a ti
+    task_placeholder: Introduce una tarea y {'@'}menciona a alguien para asignarla
   templates:
     template_gallery: Galería de plantillas
     title_template: "%{title} Plantilla"
@@ -470,11 +470,11 @@ es:
     loud_desc: Cada vez que alguien participa
     normal_desc: Cuando alguien me avisa
     quiet_desc: Nunca
-    quiet_explained: No recibirás correos electrónicos, ni siquiera cuando alguien intente notificarte. Podrías perderte anuncios o decisiones importantes. Esto puede ser útil si un hilo no te concierne, pero no se recomienda para grupos a menos que tengas otras formas de mantenerte al día.
-    normal_explained: Cuando alguien ingresa su nombre en el campo "Notificar" de un hilo o una encuesta, o @menciona al grupo.
-    normal_excludes_mentioning_html: Hay una configuración independiente para cuando alguien te @menciona (por ejemplo, al responderte en un comentario). <a href="%{url}">Haz clic aquí para editar la configuración de @menciones.</a>
-    loud_explained: Recibirás un correo electrónico cada vez que haya un nuevo comentario, alguien vote o inicie una encuesta o hilo.
     when_would_you_like_to_be_emailed_poll_type: "¿Cuándo le gustaría recibir un correo electrónico sobre este %{poll_type}?"
+    quiet_explained: No recibirás correos electrónicos, ni siquiera cuando alguien intente notificarte. Podrías perderte anuncios o decisiones importantes. Esto puede ser útil si un hilo no te concierne, pero no se recomienda para grupos a menos que tengas otras formas de mantenerte al día.
+    normal_explained: Cuando alguien ingresa su nombre en el campo "Notificar" de un hilo o una encuesta, o menciona al grupo {'@'}.
+    normal_excludes_mentioning_html: Hay una configuración independiente para cuando alguien {'@'} te menciona (por ejemplo, al responderte en un comentario). <a href="%{url}">Haz clic aquí para editar la configuración de las @menciones.</a>
+    loud_explained: Recibirás un correo electrónico cada vez que haya un nuevo comentario, alguien vote o inicie una encuesta o hilo.
   close_explanation_modal:
     aria_label: Cerrar hilo
     close_thread: 'Cerrar hilo '
@@ -1168,9 +1168,9 @@ es:
       quiet: No enviar correo electrónico sobre el grupo. La actividad del grupo se mostrará en el Escritorio.
       quiet_aria_description: El volumen de notificaciones para este grupo está establecido como "Bajo". No se enviarán correos electrónicos con actividad de este grupo. La actividad del grupo se mostrará en su Escritorio.
       quiet_message: No te será enviado correo electrónico sobre actividad en "%{name}".
-      mute: Ocultar este grupo en el Escritorio y no notificarme a no ser que sea @mencionado.
       mute_aria_description: El volumen de notificaciones para este grupo está establecido como "Silencio". No se enviarán correos electrónicos con actividad de este grupo a menos que sea mencionado. La actividad del grupo no se mostrará en su Escritorio.
       mute_message: '"%{name}" ha sido eliminado de su escritorio.'
+      mute: Ocultar este grupo del panel y no notificar a menos que se mencione {'@'}.
     privacy:
       private: 'Privacidad: Este grupo es solo visible para integrantes'
       parent_members: 'Privacidad: Este grupo es visible para los integrantes de %{parentGroupName} y integrantes de %{groupName} '
@@ -1343,7 +1343,6 @@ es:
     share_group: Compartir tu grupo
     copy_link: Copiar
     email_addresses: Correo electrónico
-    email_addresses_placeholder: ej. helperbot@loomio.org, friendlybot@loomio.org
     secret_group_url_explanation: Esta es la dirección para vuestro grupo. Solamente los miembros invitados podrán ver al grupo.
     shareable_group_url_explanation: Puedes compartir este enlace de publicidad. La gente puede pedir unirse y vosotros podéis aceptar o ignorar las solicitudes.
     shareable_invitation_explanation: No compartas este enlace de publicidad. Cualquiera con eso puede unirse a vuestro grupo sin vuestro permiso. Compártelo solamente en comunicaciones privadas para permitir a la gente de tu organización que se conecte.
@@ -1369,6 +1368,7 @@ es:
     enter_emails_of_people_to_invite: Introduce las direcciones de correo electrónico de las personas que quieres invitar al grupo. Si tienes una lista, cópialas y pégalas todas a la vez.
     shareable_link_to_join_group: Enlace para compartir para unirse al grupo
     reset_the_link: Restablecer el enlace
+    email_addresses_placeholder: p. ej. helperbot{'@'}loomio.org, friendlybot{'@'}loomio.org
   memberships_page:
     members: Integrantes
     name_label: Nombre
@@ -1550,7 +1550,6 @@ es:
       explanation_html: |
         Silenciar es una forma de esconder hilos en los que no estas interesada.
         Silenciar significa que no veras el hilo en <strong>Recientes</strong> o <strong>No leído</strong>, y no serás notificado sobre ninguna actividad en ese hilo.
-        Solo serás alertada cuando alguien te <strong>@mencione</strong>.
       instructions: Para silenciar un hilo, pasa el cursor por encima y selecciona el icono para silenciar.
       see_muted_html: Para ver sus hilos silenciados, seleccione <strong>Silenciado</strong> en la barra lateral. Puedes reactivarlos pasando el cursor encima y seleccionando el mismo icono.
     filtering:
@@ -2376,7 +2375,6 @@ es:
     account_locked: Tu cuenta se ha bloqueado después de demasiados intentos fallidos para acceder. Consulta tu email para un enlace de desbloqueo.
     email_not_found: Lo lamentamos, no pudimos encontrar una cuenta con esa dirección de correo electrónico
     email_taken: El correo electrónico ya ha sido registrado
-    email_placeholder: correo@dominio.com
     login_with_token: Ya está todo listo! Haz click en el enlace de abajo para continuar
     login_link_helptext: Haz click en el botón de abajo y te enviaremos un enlace para iniciar sesión.
     enter_your_password: Introduce tu contraseña para continuar
@@ -2417,6 +2415,7 @@ es:
     reactivate: 'Reactiva la cuenta '
     want_to_set_password: "¿Quieres iniciar sesión con una contraseña la próxima vez?"
     change_your_password: "¿Quieres establecer una nueva contraseña?"
+    email_placeholder: tu{'@'}ejemplo.com
   chatbot:
     configure_chatbot: Configurar chatbot
     test_connection: Conexión de prueba

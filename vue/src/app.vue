@@ -38,9 +38,6 @@ export default {
     EventBus.$on('openAuthModal',     () => this.openAuthModal());
     EventBus.$on('pageError', error => { return this.pageError = error; });
     EventBus.$on('signedIn',          () => { return this.pageError = null; });
-    EventBus.$on('VueForceUpdate',    () => {
-      this.$nextTick(() => {this.$forceUpdate(); });
-    });
     if (AppConfig.flash.notice) { Flash.success(AppConfig.flash.notice); }
   },
 

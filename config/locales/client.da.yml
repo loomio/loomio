@@ -33,11 +33,11 @@ da:
     2_day_before: 2 dage før
     3_day_before: 3 dage før
     7_day_before: 7 dage før
-    task_placeholder: Indtast en opgave, og @omtal nogen, der skal tildele den
     add_due_date: Tilføj forfaldsdato
     task_updated_done: Opgave markeret som udført!
     task_updated_not_done: Opgave markeret som ikke udført
     no_tasks_assigned: Der er ingen opgaver tildelt dig
+    task_placeholder: Indtast en opgave og {'@'}nævn en person, der skal tildele den
   templates:
     template_gallery: Skabelongalleri
     title_template: "%{title} skabelon"
@@ -469,10 +469,10 @@ da:
     normal_desc: Når nogen giver mig besked
     quiet_desc: Aldrig
     quiet_explained: Du vil ikke blive e-mailet, heller ikke når nogen forsøger at give dig besked. Du kan gå glip af vigtige meddelelser eller beslutninger. Dette kan være velegnet, hvis en tråd ikke vedrører dig, men anbefales ikke til gruppeindstillingen, medmindre du har andre måder at holde dig opdateret på.
-    normal_explained: Når nogen indtaster dit navn i feltet "Underret" i en tråd eller en afstemning, eller de @omtaler gruppen.
-    normal_excludes_mentioning_html: Der er en separat indstilling for, hvornår nogen @omtaler dig (f.eks. når man svarer dig i en kommentar). <a href="%{url}">Klik her for at redigere indstillinger for @omtaler</a>
     loud_explained: Du vil blive mailet hver gang der er en ny kommentar, nogen stemmer eller starter en afstemning eller tråd.
     when_would_you_like_to_be_emailed_poll_type: Hvornår vil du gerne have en e-mail om denne %{poll_type}?
+    normal_explained: Når nogen indtaster dit navn i feltet "Giv besked" i en tråd eller en afstemning, eller de {'@'}nævner gruppen.
+    normal_excludes_mentioning_html: Der er en separat indstilling for, hvornår nogen {'@'}omtaler dig (f.eks. når de svarer dig i en kommentar). <a href="%{url}">Klik her for at redigere indstillinger for @omtaler</a>
   close_explanation_modal:
     aria_label: Luk tråden
     close_thread: Luk tråden
@@ -1153,9 +1153,9 @@ da:
       quiet: Send ikke emails fra denne gruppe. Aktivitet vil blive vist på dashboardet.
       quiet_aria_description: Din notifikations volume er sat til lav. Du vil ikke modtage email om aktivitet der sker i denne gruppe. Gruppens aktivitet vil blive vist på dit Dashboard.
       quiet_message: You won't be emailed about activity in "%{name}".
-      mute: Skjul denne gruppe fra dahsboardet og unlad at notificer med mindre at @mentioned.
-      mute_aria_description: Dint notifikations volume for denne gruppe er sat til lydløs. Du vil ikke modtage email med mindre at nogen @mentions dig, og gruppens aktivitet vil ikke blive vist på dit dashboard.
       mute_message: '"%{name}" er fjernet fra dit dashboard.'
+      mute: Skjul denne gruppe fra dashboardet, og giv ikke besked, medmindre det {'@'}nævnes.
+      mute_aria_description: Din notifikationslydstyrke for denne gruppe er indstillet til Slå lyd fra. Du modtager ikke e-mails, medmindre nogen nævner dig, og gruppeaktivitet vises ikke på dit dashboard.
     privacy:
       private: 'Privatinstillinger: Denne gruppe er kun synlig for medlemmer'
       parent_members: 'Privatinstillinger: Denne gruppe er synlig for medlemmer af %{parentGroupName} og medlemmer af %{groupName}'
@@ -1318,7 +1318,6 @@ da:
     share_group: Del din gruppe
     copy_link: Kopier
     email_addresses: Emailadresser
-    email_addresses_placeholder: f.eks. helperbot@loomio.org, friendlybot@loomio.org
     secret_group_url_explanation: Dette er adressen for din gruppe. Kun inviterede medlemmer vil kunne se gruppen.
     shareable_group_url_explanation: Du kan dele dette link offentligt. Folk kan anmode om at deltage, og du kan godkende eller ignorere anmodninger.
     shareable_invitation_explanation: Del ikke dette link offentligt. Alle med det kan deltage i din gruppe uden din godkendelse. Del dette kun inden for privat kommunikation for at give personer i din organisation mulighed for at deltage.
@@ -1344,6 +1343,7 @@ da:
     enter_emails_of_people_to_invite: Indtast e-mailadresserne på de personer, du vil invitere til gruppen. Hvis du har en liste, skal du blot kopiere og indsætte dem alle på én gang.
     shareable_link_to_join_group: Delbart link til at blive medlem af gruppen
     reset_the_link: Nulstil linket
+    email_addresses_placeholder: f.eks. helperbot{'@'}loomio.org, friendlybot{'@'}loomio.org
   memberships_page:
     members: Medlemmer
     name_label: Navn
@@ -1486,7 +1486,6 @@ da:
     announcement_label: Normal
     announcement_description: Du vil modtage en e-mail om alt indhold, der er blevet annonceret af personer i dine grupper
     mentioned_label: Omtaler og svar
-    mentioned_description: Når nogen @omtaler dig i en kommentar eller svarer dig, modtager du en notifikations-e-mail
     update_settings: Gem ændringer
     specific_groups: Indstillinger for specifikke grupper
     default_settings:
@@ -1497,6 +1496,7 @@ da:
     messages:
       updated: Emailindstillinger gemt
     learn_more: Få mere at vide om e-mail-indstillinger...
+    mentioned_description: Når nogen {'@'}nævner dig i en kommentar, får du en notifikationsmail
   thread_preview:
     replies_count: "%{count} svar"
     unread_count: "%{count} ulæst"
@@ -1522,12 +1522,9 @@ da:
     thread_recalled: Tråd tilbagekaldt
     explain_mute:
       title: Det har ikke slået notifikationer fra på nogen debatter endnu.
-      explanation_html: |
-        At slå notifikationer fra på en debat er en måde at skjule debatter på
-        At slå notifikationer fra på en debat betyder at du ikke vil se debatten under <strong>Seneste</strong> eller <strong>Ulæste</strong>, og du vil ikke modtage notifikationer om aktivitet i deb debat, f.eks. så som forslag.
-        Du vil kun modtage en notifikation hvis nogen <strong>@mentions</strong> dit navn.
       instructions: For at slå notifikationer fra for en debat, hold musen henover debatten og klik på "lydløs" ikonet.
       see_muted_html: For at se dine debatter hvor notifikationer er slået fra, klik <strong>"Uden notifikationer"</strong>. Du kan slå notifikationer til ved at holde musen henover debatten og klik på det samme ikon.
+      explanation_html: Ignorering er en måde at skjule eller ignorere tråde, du ikke er interesseret i. Ignorering betyder, at du ikke kan se tråden i <strong>Seneste</strong> eller <strong>Ulæste</strong> , og du får ikke besked om aktivitet i den pågældende tråd, f.eks. forslag. Du får kun besked, hvis nogen <strong>{'@'}nævner</strong> dit navn.
     filtering:
       filter_threads: Filtrer debatter
       filter_threads_aria_label: Filtrer debatter
@@ -2340,7 +2337,6 @@ da:
     account_locked: Din konto er blevet låst efter for mange mislykkede loginforsøg. Tjek din e-mail for et oplåsningslink
     email_not_found: Beklager, vi kunne ikke finde en konto med den e-mailadresse
     email_taken: E-mailadressen er allerede registreret
-    email_placeholder: you@example.com
     login_with_token: Du er klar! Klik på linket nedenfor for at fortsætte.
     login_link_helptext: Klik på knappen nedenfor, og vi sender dig et link til at logge ind.
     enter_your_password: Indtast din adgangskode for at fortsætte
@@ -2381,6 +2377,7 @@ da:
     reactivate: Genaktiver konto
     want_to_set_password: Vil du logge ind med en adgangskode næste gang?
     change_your_password: Vil du indstille en ny adgangskode?
+    email_placeholder: du{'@'}eksempel.com
   chatbot:
     configure_chatbot: Konfigurer chatbot
     test_connection: Test forbindelse

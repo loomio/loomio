@@ -33,11 +33,11 @@ sv:
     2_day_before: 2 dagar innan
     3_day_before: 3 dagar innan
     7_day_before: 7 dagar innan
-    task_placeholder: Ange en uppgift och @nämn någon att tilldela den
     add_due_date: Lägg till förfallodatum
     task_updated_done: Uppgift markerad som klar!
     task_updated_not_done: Uppgift markerad som ej klar
     no_tasks_assigned: Det finns inga uppgifter tilldelade dig
+    task_placeholder: Ange en uppgift och {'@'}nämn någon att tilldela den
   templates:
     template_gallery: Mallgalleri
     title_template: "%{title} mall"
@@ -469,10 +469,10 @@ sv:
     normal_desc: När någon meddelar mig
     quiet_desc: Aldrig
     quiet_explained: Du kommer inte att bli mailad, även när någon försöker meddela dig. Du kan missa viktiga meddelanden eller beslut. Detta kan vara lämpligt om en tråd inte berör dig, men rekommenderas inte för gruppinställningen om du inte har andra sätt att hålla dig uppdaterad.
-    normal_explained: När någon anger ditt namn i fältet "Meddela" i en tråd eller en omröstning, eller de @nämner gruppen.
-    normal_excludes_mentioning_html: Det finns en separat inställning för när någon @nämner dig (t.ex. när ett svar till dig i en kommentar). <a href="%{url}">Klicka här för att redigera inställningar för @omnämnanden</a>
     loud_explained: Du kommer att bli mailad varje gång det kommer en ny kommentar, någon röstar eller startar en omröstning eller tråd.
     when_would_you_like_to_be_emailed_poll_type: När vill du få e-post om denna %{poll_type}?
+    normal_explained: När någon skriver in ditt namn i fältet "Meddela" i en tråd eller en omröstning, eller när de {'@'}nämner gruppen.
+    normal_excludes_mentioning_html: Det finns en separat inställning för när någon {'@'}nämner dig (t.ex. när de svarar dig i en kommentar). <a href="%{url}">Klicka här för att redigera inställningarna för @omnämnanden.</a>
   close_explanation_modal:
     aria_label: Stäng tråd
     close_thread: Stäng tråd
@@ -1153,9 +1153,9 @@ sv:
       quiet: Skicka mig inte epost om den här gruppen. Aktivitet kommer att visas på instrumentbrädan.
       quiet_aria_description: Din notifikationsvolym för den här gruppen är satt till Tyst. Du kommer inta att få epost om aktivitet i den här gruppen. Grupp aktivitet kommer att visas på din instrumentbräda.
       quiet_message: Du kommer inte att få e-post om aktivitet i "%{name}".
-      mute: Göm denna grupp från instrumentbrädan och notifiera mig inte om jag inte är @omnämnd.
       mute_aria_description: Din notifikationsvolym för den här gruppen är satt till Stum. Du kommer inte att få epost om inte någon specifikt vidnämner dig och grupp aktivitet kommer inte att visas på din instrumentbräda.
       mute_message: '"%{name}" har tagits bort från din instrumentbräda.'
+      mute: Dölj den här gruppen från instrumentpanelen och meddela inte om inte {'@'}nämns.
     privacy:
       private: 'Sekretess: Denna grupp är endast synlig för medlemmar'
       parent_members: 'Sekretess: Den här gruppen är synlig för medlemmar i %{parentGroupName} och medlemmar av %{groupName}'
@@ -1318,7 +1318,6 @@ sv:
     share_group: Dela din grupp
     copy_link: Kopiera
     email_addresses: Mejladresser
-    email_addresses_placeholder: t.ex. helperbot@loomio.org, friendlybot@loomio.org
     secret_group_url_explanation: Det här är adressen till din grupp. Endast inbjudna medlemmar kommer att kunna se gruppen.
     shareable_group_url_explanation: Du kan dela denna länk offentligt. Människor kan begära att få gå med och du kan godkänna eller ignorera förfrågningar.
     shareable_invitation_explanation: Dela inte denna länk offentligt. Alla som har det kan gå med i din grupp utan ditt godkännande. Dela detta endast inom privat kommunikation för att tillåta personer i din organisation att gå med.
@@ -1344,6 +1343,7 @@ sv:
     enter_emails_of_people_to_invite: Ange e-postadresserna till de personer du vill bjuda in till gruppen. Om du har en lista kopierar och klistrar du bara in dem alla samtidigt.
     shareable_link_to_join_group: Delbar länk för att gå med i gruppen
     reset_the_link: Återställ länken
+    email_addresses_placeholder: t.ex. helperbot{'@'}loomio.org, friendlybot{'@'}loomio.org
   memberships_page:
     members: Medlemmar
     name_label: Namn
@@ -1486,7 +1486,6 @@ sv:
     announcement_label: Meddelanden
     announcement_description: Du kommer att få ett e-postmeddelande om allt innehåll som har annonserats av personer i dina grupper
     mentioned_label: Omnämnanden och svar
-    mentioned_description: När någon @nämner dig i en kommentar eller svarar dig får du ett e-postmeddelande
     update_settings: Spara ändringar
     specific_groups: Inställningar för specifika grupper
     default_settings:
@@ -1497,6 +1496,7 @@ sv:
     messages:
       updated: E-postinställningar uppdaterade
     learn_more: Läs mer om e-postinställningar...
+    mentioned_description: När någon {'@'}nämner dig i en kommentar får du ett e-postmeddelande
   thread_preview:
     replies_count: "%{count} svar"
     unread_count: "%{count} olästa"
@@ -1522,9 +1522,9 @@ sv:
     thread_recalled: Tråd återkallad
     explain_mute:
       title: Du har inte stängt av några trådar än.
-      explanation_html: Dämpning är ett sätt att dölja eller tysta trådar som du inte är intresserad av. Dämpning betyder att du inte kommer att se den i <strong>Senaste</strong> eller <strong>Olästa</strong> , och du kommer inte att meddelas om aktivitet i den tråden, som förslag. Du blir bara varnad om någon <strong>@nämner</strong> ditt namn.
-      instructions: Om du vill stänga av en tråd håller du muspekaren över den och klickar på tystnadsikonen.
-      see_muted_html: Om du vill se dina avstängda trådar klickar du på <strong>"Avstängd"</strong> . Du kan slå på ljudet genom att hålla muspekaren och klicka på samma ikon.
+      explanation_html: Att stänga av ljudet är ett sätt att dölja eller tysta trådar som du inte är intresserad av. Att stänga av ljudet innebär att du inte ser det i <strong>Senaste</strong> eller <strong>Olästa</strong> , och du kommer inte att få aviseringar om aktivitet i den tråden, som förslag. Du kommer bara att få en avisering om någon <strong>{'@'}nämner</strong> ditt namn.
+      instructions: För att stänga av ljudet i en tråd, muspeka över den och klicka på ljudavstängningsikonen.
+      see_muted_html: För att se dina tystade trådar klickar du på <strong>"Ljud av"</strong> . Du kan slå på ljudet genom att hålla muspekaren över och klicka på samma ikon.
     filtering:
       filter_threads: Filtrera trådar
       filter_threads_aria_label: Filtrera trådar
@@ -2337,7 +2337,6 @@ sv:
     account_locked: Ditt konto har låsts efter för många misslyckade inloggningsförsök. Kontrollera din e-post för en upplåsningslänk
     email_not_found: Tyvärr, vi kunde inte hitta ett konto med den e-postadressen
     email_taken: E-postadressen är redan registrerad
-    email_placeholder: du@exempel.com
     login_with_token: Du är redo! Klicka på länken nedan för att fortsätta.
     login_link_helptext: Klicka på knappen nedan så skickar vi en länk för att logga in till dig.
     enter_your_password: Ange ditt lösenord för att fortsätta
@@ -2378,6 +2377,7 @@ sv:
     reactivate: Återaktivera kontot
     want_to_set_password: Vill du logga in med ett lösenord nästa gång?
     change_your_password: Vill du ställa in ett nytt lösenord?
+    email_placeholder: du{'@'}example.com
   chatbot:
     configure_chatbot: Konfigurera chatbot
     test_connection: Testa anslutningen

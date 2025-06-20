@@ -32,11 +32,11 @@ ja:
     2_day_before: 2日前
     3_day_before: 3日前
     7_day_before: 7日前
-    task_placeholder: タスクを入力し、誰かに @メンションしてタスクを割り当ててください
     add_due_date: 期限を追加
     task_updated_done: タスクは完了としてマークされました!
     task_updated_not_done: 未完了としてマークされたタスク
     no_tasks_assigned: あなたに割り当てられたタスクはありません
+    task_placeholder: タスクを入力し、{'@'}メンションして割り当てる
   templates:
     template_gallery: テンプレートギャラリー
     title_template: "%{title} テンプレート"
@@ -468,10 +468,10 @@ ja:
     normal_desc: 誰かが私に通知すると
     quiet_desc: 一度もない
     quiet_explained: 誰かがあなたに通知しようとしても、メールは届きません。重要なお知らせや決定を見逃す可能性があります。これは、スレッドがあなたに関係ない場合は適しているかもしれませんが、最新情報を入手する他の方法がない限り、グループ設定では推奨されません。
-    normal_explained: 誰かがスレッドまたはアンケートの「通知」フィールドにあなたの名前を入力したとき、またはグループを @mention したとき。
-    normal_excludes_mentioning_html: 誰かがあなたに@メンションしたとき（コメントであなたに返信したときなど）には別の設定があります。 <a href="%{url}">@メンションの設定を編集するにはここをクリックしてください</a>
     loud_explained: 新しいコメントが追加されたり、誰かが投票したり、アンケートやスレッドが開始されたりするたびに、メールが届きます。
     when_would_you_like_to_be_emailed_poll_type: この %{poll_type} についていつメールを受け取りたいですか?
+    normal_explained: 誰かがスレッドやアンケートの「通知」欄にあなたの名前を入力したとき、またはグループをメンションしたとき。
+    normal_excludes_mentioning_html: 誰かがあなたに{'@'}メンションした場合（コメントで返信した場合など）には、別の設定があります。 <a href="%{url}">@メンションの設定を編集するには、こちらをクリックしてください。</a>
   close_explanation_modal:
     aria_label: スレッドを閉じる
     close_thread: スレッドを閉じる
@@ -1150,11 +1150,11 @@ ja:
       normal_aria_description: このグループの通知音量は「標準」に設定されています。誰かが新しいスレッドを開始したとき、提案を提起したとき、結果を設定したときなど、重要なアクティビティが電子メールで送信されます。
       normal_message: "「%{name}」の重要なイベントについてのみメールが送信されます。"
       quiet: このグループについてメールを送信しないでください。アクティビティがダッシュボードに表示されます。
-      quiet_aria_description: このグループの通知音量は「静か」に設定されています。このグループのアクティビティに関する電子メールは送信されません。グループアクティビティがダッシュボードに表示されます。
-      quiet_message: "「%{name}」でのアクティビティに関するメールは送信されません。"
-      mute: このグループをダッシュボードから非表示にし、@メンションがない限り通知しません。
       mute_aria_description: このグループの通知音量はミュートに設定されています。誰かがあなたに言及しない限り、電子メールは送信されません。また、グループのアクティビティはダッシュボードに表示されません。
       mute_message: "「%{name}」はダッシュボードから削除されました。"
+      quiet_aria_description: このグループの通知音量は「静か」に設定されています。このグループのアクティビティに関するメールは届きません。グループのアクティビティはダッシュボードに表示されます。
+      quiet_message: "「%{name}」のアクティビティに関するメールは送信されません。"
+      mute: このグループをダッシュボードから非表示にし、{'@'} で言及されない限り通知しません。
     privacy:
       private: 'プライバシー: このグループはメンバーのみに表示されます'
       parent_members: 'プライバシー: このグループは、%{parentGroupName} のメンバーと %{groupName} のメンバーに表示されます'
@@ -1317,7 +1317,6 @@ ja:
     share_group: グループを共有する
     copy_link: コピー
     email_addresses: メールアドレス
-    email_addresses_placeholder: '例: helperbot@loomio.org、friendbot@loomio.org'
     secret_group_url_explanation: これはあなたのグループのアドレスです。招待されたメンバーのみがグループを表示できます。
     shareable_group_url_explanation: このリンクを公開して共有できます。人々は参加をリクエストでき、あなたはリクエストを承認または無視できます。
     shareable_invitation_explanation: このリンクを公に共有しないでください。これを持っている人は誰でも、あなたの承認なしにあなたのグループに参加できます。これをプライベートな通信内でのみ共有し、組織内のユーザーが参加できるようにします。
@@ -1343,6 +1342,7 @@ ja:
     enter_emails_of_people_to_invite: グループに招待したい人のメールアドレスを入力してください。リストがある場合は、すべてコピーして貼り付けてください。
     shareable_link_to_join_group: グループに参加するための共有可能なリンク
     reset_the_link: リンクをリセットする
+    email_addresses_placeholder: '例: helperbot{''@''}loomio.org、friendlybot{''@''}loomio.org'
   memberships_page:
     members: メンバー
     name_label: 氏名
@@ -1485,7 +1485,6 @@ ja:
     announcement_label: お知らせ
     announcement_description: グループ内のメンバーによって発表されたすべてのコンテンツに関する電子メールが届きます
     mentioned_label: メンションと返信
-    mentioned_description: 誰かがコメント内であなたを @メンションするか、あなたに返信すると、通知メールが届きます
     update_settings: 変更内容を保存
     specific_groups: 特定のグループの設定
     default_settings:
@@ -1496,6 +1495,7 @@ ja:
     messages:
       updated: メール設定が更新されました
     learn_more: メール設定の詳細...
+    mentioned_description: 誰かがコメントであなたに言及すると、通知メールが届きます
   thread_preview:
     replies_count: "%{count} 件の返信"
     unread_count: "%{count} 件が未読です"
@@ -1521,9 +1521,9 @@ ja:
     thread_recalled: スレッドがリコールされました
     explain_mute:
       title: まだスレッドをミュートしていません。
-      explanation_html: ミュートは、興味のないスレッドを非表示または沈黙させる方法です。ミュートすると、そのスレッドが<strong>[最近]</strong>または<strong>[未読]</strong>に表示されなくなり、提案など、そのスレッド内のアクティビティについて通知されなくなります。誰かがあなたの名前を<strong>@メンションした</strong>場合にのみ警告が表示されます。
-      instructions: スレッドをミュートするには、スレッドの上にマウスを置き、ミュート アイコンをクリックします。
-      see_muted_html: ミュートされたスレッドを表示するには、 <strong>[ミュート]</strong>をクリックします。同じアイコンにカーソルを合わせてクリックすると、ミュートを解除できます。
+      explanation_html: ミュートとは、興味のないスレッドを非表示にしたり、ミュート状態にしたりする方法のことです。ミュートすると、 <strong>「最近」</strong>や<strong>「未読」</strong>に表示されなくなり、提案などのスレッド内でのアクティビティに関する通知も受け取れなくなります。誰かがあなたの名前<strong>をメンションした</strong>場合にのみ通知が届きます。
+      instructions: スレッドをミュートするには、スレッドの上にマウスを移動してミュート アイコンをクリックします。
+      see_muted_html: ミュートしたスレッドを表示するには、 <strong>「ミュート」</strong>をクリックしてください。同じアイコンにマウスを合わせてクリックすると、ミュートを解除できます。
     filtering:
       filter_threads: フィルタースレッド
       filter_threads_aria_label: フィルタースレッド
@@ -2336,7 +2336,6 @@ ja:
     account_locked: ログイン試行が何度も失敗したため、アカウントはロックされました。メールでロック解除リンクを確認してください
     email_not_found: 申し訳ありませんが、そのメール アドレスを持つアカウントが見つかりませんでした
     email_taken: メールアドレスはすでに登録されています
-    email_placeholder: you@example.com
     login_with_token: 準備は完了です!続行するには、下のリンクをクリックしてください。
     login_link_helptext: 下のボタンをクリックすると、サインインするためのリンクが送信されます。
     enter_your_password: 続行するにはパスワードを入力してください
@@ -2377,6 +2376,7 @@ ja:
     reactivate: アカウントを再開する
     want_to_set_password: 次回はパスワードを使ってサインインしますか?
     change_your_password: 新しいパスワードを設定しますか?
+    email_placeholder: あなた{'@'}example.com
   chatbot:
     configure_chatbot: チャットボットを構成する
     test_connection: テスト接続

@@ -3,9 +3,8 @@ import App from '@/app.vue';
 import { createApp } from 'vue';
 import markedDirective from '@/marked_directive';
 import './removeServiceWorker';
-import { pick, each } from 'lodash-es';
+import { pick } from 'lodash-es';
 import * as Sentry from '@sentry/browser';
-// import Vue2TouchEvents from 'vue2-touch-events';
 import PlausibleService from '@/shared/services/plausible_service';
 
 try {
@@ -21,7 +20,6 @@ import router from './routes'
 import boot from '@/shared/helpers/boot';
 import Session from '@/shared/services/session';
 import { plugin as Slicksort } from 'vue-slicksort';
-
 
 boot(function(data) {
   Session.apply(data);

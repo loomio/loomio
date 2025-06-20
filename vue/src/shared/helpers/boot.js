@@ -1,9 +1,7 @@
 import RestfulClient from '@/shared/record_store/restful_client';
 import AppConfig from '@/shared/services/app_config';
 import Records from '@/shared/services/records';
-import * as Sentry from '@sentry/vue';
 import { forEach, snakeCase } from 'lodash-es';
-import { reactive } from 'vue';
 import { merge } from 'lodash-es';
 
 export default function(callback) {

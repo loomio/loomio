@@ -33,11 +33,11 @@ zh_TW:
     2_day_before: 2天前
     3_day_before: 3天前
     7_day_before: 7天前
-    task_placeholder: 輸入任務並 @ 提及某人來指派它
     add_due_date: 新增到期日
     task_updated_done: 工作已標記為完成！
     task_updated_not_done: 工作被標記為未完成
     no_tasks_assigned: 沒有分配給您的工作
+    task_placeholder: 輸入任務並{'@'}提及某人來分配它
   templates:
     template_gallery: 範本庫
     title_template: "%{title} 模板"
@@ -476,11 +476,11 @@ zh_TW:
     loud_desc: 每次有人參加
     normal_desc: 當有人通知我時
     quiet_desc: 絕不
-    quiet_explained: 即使有人試圖通知您，您也不會收到電子郵件。您可能會錯過重要的公告或決定。如果某個主題與您無關，這可能比較合適，但不建議在小組設定中使用，除非您有其他方式來保持最新狀態。
-    normal_explained: 當有人在主題或投票的「通知」欄位中輸入您的姓名，或@提及該小組。
-    normal_excludes_mentioning_html: 當有人@提及您時（例如在評論中回复您時），有一個單獨的設置。<a href="%{url}">點擊此處編輯@mentions 的設置</a>
-    loud_explained: 每次有新評論、有人投票、或發起投票或討論時，您都會收到電子郵件。
     when_would_you_like_to_be_emailed_poll_type: 您希望何時收到有關此 %{poll_type} 的電子郵件？
+    quiet_explained: 即使有人嘗試通知您，您也不會收到電子郵件。您可能會錯過重要的公告或決定。如果某個貼文與您無關，這可能適用，但不建議在群組設定中使用，除非您有其他方式來了解最新動態。
+    normal_explained: 當有人在主題或投票的「通知」欄位中輸入您的姓名，或他們{'@'}提及該小組。
+    normal_excludes_mentioning_html: 當有人{'@'}提及你（例如，在評論中回覆你時），有一個單獨的設定。<a href="%{url}">點擊此處編輯@提及的設置</a>
+    loud_explained: 每次有新評論、有人投票或開始投票或討論時，您都會收到電子郵件。
   close_explanation_modal:
     aria_label: 關閉討論串
     close_thread: 關閉討論串
@@ -1167,9 +1167,9 @@ zh_TW:
       quiet: 不要寄發任何關於此群組的電子郵件。活動將會顯示在儀表板上。
       quiet_aria_description: 您在此群組的通知音量設定為安靜。您將不會收到任何有關此群組動態的電子郵件。群組動態將會顯示在您的儀表板上。
       quiet_message: 在「%{name}」中的活動不再以電子郵件的方式通知您了。
-      mute: 從儀表板上隱藏此群組，除非 @提及，否則將不會通知。
       mute_aria_description: 您在此群組的通知音量設定為靜音。您將不會收到任何電子郵件，除非有人提及您，且群組動態將不會顯示在您的儀表板上。
       mute_message: "「%{name}」已從您的儀表板中移除。"
+      mute: 從儀表板隱藏該群組並且除非提及 {'@'} 否則不通知。
     privacy:
       private: 隱私權：此群組現在只會被成員看到
       parent_members: 隱私權：討論串只會被 %{parentGroupName} 群組的成員以及 %{groupName} 群組的成員看到。
@@ -1223,7 +1223,6 @@ zh_TW:
     subgroup_name: 子群組名稱
     organization_name: 組織名稱
     handle: 處理
-    group_handle_placeholder: 您的群組 URL 和電子郵件：%{host}/%{handle}、%{handle}@%{host}
     start_organization_heading: 新組織
     edit_organization_heading: 編輯組織設定
     group_name_placeholder: 您的群組的名稱是？
@@ -1299,6 +1298,7 @@ zh_TW:
     request_to_join_prompt: 請求加入提示
     default_request_to_join_prompt: 感謝您對我們小組的興趣。請自我介紹並解釋為什麼您要求加入。
     upgrade_for_subgroups: '請<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">升級您的訂閱</a>以建立子群組'
+    group_handle_placeholder: 您的群組網址與電子郵件：%{host}/%{handle}、%{handle}{'@'}%{host}
   group_export_modal:
     title: 匯出群組資料
     body: |
@@ -1342,7 +1342,6 @@ zh_TW:
     share_group: 分享您的群組
     copy_link: 複製
     email_addresses: 電子郵件地址
-    email_addresses_placeholder: 範例：helperbot@loomio.org, friendlybot@loomio.org
     secret_group_url_explanation: 這是您群組的網址。僅有已受邀的成員才能看到這個群組。
     shareable_group_url_explanation: 您可以公開分享此連結。人們可以請求加入，而您可以批准或忽略請求。
     shareable_invitation_explanation: 不要公開分享此連結。任何取得此連結的人都可以不經您的批准而加入您的群組。請只在私人通訊中分享此連結以讓您組織中的成員加入。
@@ -1368,6 +1367,7 @@ zh_TW:
     enter_emails_of_people_to_invite: 輸入您想要邀請加入群組的人員的電子郵件地址。如果您有列表，只需一次複製並貼上所有地址即可。
     shareable_link_to_join_group: 可分享的加入群組鏈接
     reset_the_link: 重置連結
+    email_addresses_placeholder: 例如 helperbot{'@'}loomio.org、friendlybot{'@'}loomio.org
   memberships_page:
     members: 成員
     name_label: 名字
@@ -1512,7 +1512,6 @@ zh_TW:
     announcement_label: 公告
     announcement_description: 您將會收到一封關於所有在您的群組中已被夥伴宣佈的內容的電子郵件
     mentioned_label: 提及與回覆
-    mentioned_description: 當某人在評論中@提及您或回覆您時，您將會收到一封通知電子郵件
     update_settings: 儲存變更
     specific_groups: 特定群組的設定
     default_settings:
@@ -1523,6 +1522,7 @@ zh_TW:
     messages:
       updated: 電子郵件設定已更新
     learn_more: 取得更多關於電子郵件設定的詳細資訊……
+    mentioned_description: 當有人{'@'}在評論中提及您時，您會收到一封通知電子郵件
   thread_preview:
     replies_count: "%{count} 個回覆"
     unread_count: "%{count} 個未讀"
@@ -1548,12 +1548,9 @@ zh_TW:
     thread_recalled: 討論串已收回
     explain_mute:
       title: 您尚未靜音任何討論串。
-      explanation_html: |
-        靜音是一種讓您不感興趣的討論串隱藏或消失的方法。
-        靜音代表您將不會在<strong>最近的</strong>或是<strong>未讀</strong>中看到它，且您將不會被提醒關於該討論串的動態，像是提案等。
-        您將只會在有人 <strong>@提及</strong> 您的名稱時被通知。
       instructions: 要靜音討論串，滑鼠移到其上並點選靜音圖示。
       see_muted_html: 要檢視您已靜音的討論串，點選<strong>「已靜音」</strong>。您也可以將滑鼠移到其上並點選相同的圖示以解除靜音。
+      explanation_html: 靜音是一種隱藏或靜音您不感興趣的話題的方法。靜音意味著您將不會在<strong>「最近」</strong>或<strong>「未讀」</strong>中看到該主題，也不會收到該主題活動（例如提案）的通知。只有當有人<strong>{'@'}提及</strong>您的名字時，您才會收到通知。
     filtering:
       filter_threads: 過濾討論串
       filter_threads_aria_label: 過濾討論串
@@ -2377,7 +2374,6 @@ zh_TW:
     account_locked: 您的帳號因為太多次失敗的登入嘗試而被鎖定。請檢查您的電子郵件以取得解鎖連結
     email_not_found: 抱歉，我們找不到與此電子郵件地址相關的帳號
     email_taken: 電子郵件位置已被註冊
-    email_placeholder: you@example.com
     login_with_token: 您已經設定好了！點選下方的連結以繼續。
     login_link_helptext: 點選下方的按鈕，然後我們就會傳送連結給您以供登入。
     enter_your_password: 輸入您的密碼以繼續
@@ -2418,6 +2414,7 @@ zh_TW:
     reactivate: 重新啟用帳號
     want_to_set_password: 下次想使用密碼登入嗎？
     change_your_password: 您想設定新密碼嗎？
+    email_placeholder: 您{'@'}example.com
   chatbot:
     configure_chatbot: 設定聊天機器人
     test_connection: 測試連線

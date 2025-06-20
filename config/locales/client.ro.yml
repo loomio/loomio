@@ -33,11 +33,11 @@ ro:
     2_day_before: cu 2 zile inainte
     3_day_before: cu 3 zile inainte
     7_day_before: cu 7 zile inainte
-    task_placeholder: Introduceți o sarcină și @menționați pe cineva care să o atribuie
     add_due_date: Adăugați data scadentă
     task_updated_done: Sarcina marcată ca finalizată!
     task_updated_not_done: Sarcina marcată ca neterminată
     no_tasks_assigned: Nu vă sunt atribuite sarcini
+    task_placeholder: Introduceți o sarcină și {'@'}menționați pe cineva căruia să i-o atribuiți
   templates:
     template_gallery: Galerie de șabloane
     title_template: Șablon %{title}
@@ -469,10 +469,10 @@ ro:
     normal_desc: Când cineva mă anunță
     quiet_desc: Nu
     quiet_explained: Nu veți primi e-mail, chiar și atunci când cineva încearcă să vă anunțe. Este posibil să pierdeți anunțuri sau decizii importante. Acest lucru poate fi potrivit dacă o discuție nu vă privește, dar nu este recomandat pentru setarea de grup decât dacă aveți alte modalități de a rămâne la curent.
-    normal_explained: Când cineva vă introduce numele în câmpul „Notificați” al unui fir sau al unui sondaj, sau @menționează grupul.
-    normal_excludes_mentioning_html: Există o setare separată pentru când cineva @ te menționează (de exemplu, când îți răspunde într-un comentariu). <a href="%{url}">Faceți clic aici pentru a edita setările pentru @mențiuni</a>
     loud_explained: Veți primi un e-mail de fiecare dată când există un comentariu nou, cineva votează sau începe un sondaj sau un thread.
     when_would_you_like_to_be_emailed_poll_type: Când doriți să primiți un e-mail despre acest %{poll_type}?
+    normal_explained: Când cineva introduce numele tău în câmpul „Notificare” al unui fir de discuție sau al unui sondaj sau {'@'}menționează grupul.
+    normal_excludes_mentioning_html: Există o setare separată pentru situațiile în care cineva te menționează {'@'} (de exemplu, când îți răspunde într-un comentariu). <a href="%{url}">Apasă aici pentru a edita setările pentru @mențiuni.</a>
   close_explanation_modal:
     aria_label: Închideți firul
     close_thread: Închideți firul
@@ -1153,9 +1153,9 @@ ro:
       quiet: Nu trimite email pentru acest grup. Activitatea va fi afisata pe tabloul de bord.
       quiet_aria_description: Volumul notificărilor pentru acest grup este setat la Silențios. Nu veți primi e-mailuri despre activitatea din acest grup. Activitatea grupului va fi afișată pe tabloul de bord.
       quiet_message: Nu veți primi e-mailuri despre activitatea din „%{name}”.
-      mute: Ascunde acest grup din tabloul de comanda si notifica doar cand @va mentiona.
       mute_aria_description: Volumul notificarilor pentru aceast grup este pozitionat la Dezactivat. Vei primi email despre aceasta discutie doar cand cineva mentioneaza numele tau, iar activitatea grupului nu va fi afisata in tabloul tau de bord.
       mute_message: "„%{name}” a fost eliminat din tabloul de bord."
+      mute: Ascundeți acest grup din tabloul de bord și nu trimiteți notificări decât dacă este menționat {'@'}.
     privacy:
       private: 'Confidențialitate: acest grup este vizibil numai pentru membri'
       parent_members: 'Confidențialitate: acest grup este vizibil pentru membrii %{parentGroupName} și membrii %{groupName}'
@@ -1318,7 +1318,6 @@ ro:
     share_group: Distribuiți grupul dvs
     copy_link: Copiaza
     email_addresses: Adrese de email
-    email_addresses_placeholder: de exemplu, helperbot@loomio.org, friendlybot@loomio.org
     secret_group_url_explanation: Aceasta este adresa grupului dvs. Numai membrii invitați vor putea vedea grupul.
     shareable_group_url_explanation: Puteți distribui acest link în mod public. Oamenii pot solicita înscrierea, iar tu poți aproba sau ignora solicitările.
     shareable_invitation_explanation: Nu distribuiți acest link în mod public. Oricine are acesta se poate alătura grupului tău fără aprobarea ta. Distribuiți acest lucru numai în cadrul comunicărilor private pentru a permite persoanelor din organizația dvs. să se alăture.
@@ -1344,6 +1343,7 @@ ro:
     enter_emails_of_people_to_invite: Introdu adresele de e-mail ale persoanelor pe care dorești să le inviți în grup. Dacă ai o listă, pur și simplu copiază-le și lipește-le pe toate odată.
     shareable_link_to_join_group: Link partajabil pentru a te alătura grupului
     reset_the_link: Resetați linkul
+    email_addresses_placeholder: de exemplu helperbot{'@'}loomio.org, friendlybot{'@'}loomio.org
   memberships_page:
     members: Membri
     name_label: Nume
@@ -1486,7 +1486,6 @@ ro:
     announcement_label: Anunturi
     announcement_description: Veți primi un e-mail despre tot conținutul care a fost anunțat de persoanele din grupurile dvs
     mentioned_label: Mențiuni și răspunsuri
-    mentioned_description: Când cineva @ te menționează într-un comentariu sau îți răspunde, vei primi un e-mail de notificare
     update_settings: Salvează modificările
     specific_groups: Setări pentru anumite grupuri
     default_settings:
@@ -1497,6 +1496,7 @@ ro:
     messages:
       updated: Setările de e-mail au fost actualizate
     learn_more: Aflați mai multe despre setările de e-mail...
+    mentioned_description: Când cineva te menționează {'@'} într-un comentariu, vei primi un e-mail de notificare.
   thread_preview:
     replies_count: "%{count} răspunsuri"
     unread_count: "%{count} necitite"
@@ -1522,9 +1522,9 @@ ro:
     thread_recalled: Firul a fost rechemat
     explain_mute:
       title: Nu ați dezactivat încă niciun subiect.
-      explanation_html: Dezactivarea sunetului este o modalitate de a ascunde sau de a ascunde firele care nu vă interesează. Dezactivarea sunetului înseamnă că nu o veți vedea în <strong>Recente</strong> sau <strong>Necitite</strong> și nu veți fi notificat despre activitatea din acel fir, cum ar fi propunerile. Vei fi avertizat doar dacă cineva <strong>@menționează</strong> numele tău.
-      instructions: Pentru a dezactiva sunetul unui fir, plasați cursorul peste el și dați clic pe pictograma dezactivare sunet.
-      see_muted_html: Pentru a vedea firele dvs. dezactivate, faceți clic pe <strong>„Dezactivat”</strong> . Puteți activa sunetul trecând cu mouse-ul și făcând clic pe aceeași pictogramă.
+      explanation_html: Dezactivarea sunetului este o modalitate de a ascunde sau de a dezactiva sunetul firelor de discuție care nu te interesează. Dezactivarea sunetului înseamnă că nu le vei vedea în <strong>Recente</strong> sau <strong>Necitite</strong> și nu vei fi notificat despre activitatea din firul respectiv, cum ar fi propunerile. Vei fi alertat doar dacă cineva îți <strong>menționează</strong> numele.
+      instructions: Pentru a dezactiva sunetul unui fir de discuție, treceți cu mouse-ul peste el și faceți clic pe pictograma de dezactivare a sunetului.
+      see_muted_html: Pentru a vedea firele de discuție dezactivate, faceți clic pe <strong>„Dezactivate”</strong> . Puteți activa sunetul plasând cursorul și dând clic pe aceeași pictogramă.
     filtering:
       filter_threads: Filtreaza discutiile
       filter_threads_aria_label: Filtreaza discutiile
@@ -2337,7 +2337,6 @@ ro:
     account_locked: Contul dvs. a fost blocat după prea multe încercări eșuate de conectare. Verificați e-mailul pentru un link de deblocare
     email_not_found: Ne pare rău, nu am putut găsi un cont cu acea adresă de e-mail
     email_taken: Adresa de e-mail este deja înregistrată
-    email_placeholder: tu@example.com
     login_with_token: Ești gata! Faceți clic pe linkul de mai jos pentru a continua.
     login_link_helptext: Faceți clic pe butonul de mai jos și vă vom trimite un link pentru a vă conecta.
     enter_your_password: Introduceți parola pentru a continua
@@ -2378,6 +2377,7 @@ ro:
     reactivate: Reactivați contul
     want_to_set_password: Doriți să vă conectați cu o parolă data viitoare?
     change_your_password: Doriți să setați o nouă parolă?
+    email_placeholder: tu{'@'}exemplu.com
   chatbot:
     configure_chatbot: Configurați chatbot
     test_connection: Test de conexiune

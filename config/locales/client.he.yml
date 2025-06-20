@@ -33,11 +33,11 @@ he:
     2_day_before: יומיים לפני
     3_day_before: 3 ימים לפני
     7_day_before: 7 ימים לפני
-    task_placeholder: הזן משימה ו@אזכר מישהו להקצות אותה
     add_due_date: הוסף תאריך יעד
     task_updated_done: המשימה סומנה כבוצעה!
     task_updated_not_done: המשימה סומנה כלא בוצעה
     no_tasks_assigned: לא הוקצו לך משימות
+    task_placeholder: הזן משימה ו-{'@'}אזכור מישהו להקצות אותה
   templates:
     template_gallery: גלריית תבניות
     title_template: תבנית %{title}
@@ -469,10 +469,10 @@ he:
     normal_desc: כשמישהו מודיע לי
     quiet_desc: לְעוֹלָם לֹא
     quiet_explained: לא יישלח אליך אימייל, גם כאשר מישהו ינסה להודיע לך. אתה עלול להחמיץ הודעות או החלטות חשובות. זה עשוי להתאים אם שרשור אינו נוגע לך, אך אינו מומלץ להגדרת הקבוצה אלא אם יש לך דרכים אחרות להישאר מעודכן.
-    normal_explained: כאשר מישהו מזין את שמך בשדה "הודע" של שרשור או סקר, או שהוא @ מזכיר את הקבוצה.
-    normal_excludes_mentioning_html: יש הגדרה נפרדת כאשר מישהו @ מזכיר אותך (למשל כשמשיב לך בהערה). <a href="%{url}">לחץ כאן כדי לערוך הגדרות עבור @אזכורים</a>
     loud_explained: תישלח אליך אימייל בכל פעם שתהיה תגובה חדשה, מישהו יצביע או יתחיל סקר או שרשור.
     when_would_you_like_to_be_emailed_poll_type: מתי תרצה לקבל אימייל לגבי %{poll_type} זה?
+    normal_explained: כאשר מישהו מזין את שמך בשדה "הודעה" בשרשור או בסקר, או כשהוא {'@'}מזכיר את הקבוצה.
+    normal_excludes_mentioning_html: יש הגדרה נפרדת עבור מתי מישהו {'@'}מזכיר אותך (למשל, כאשר הוא משיב לך בתגובה). <a href="%{url}">לחץ כאן כדי לערוך הגדרות עבור @אזכורים.</a>
   close_explanation_modal:
     aria_label: סגור שיחה
     close_thread: סגור שיחה
@@ -1157,9 +1157,9 @@ he:
       quiet: אל תשלחו מיילים על הקבוצה הזו. פעילות תופיע בדשבורד בלבד.
       quiet_aria_description: 'עוצמת ההתראות שלך לקבוצה מוגדרת כשקטה. לא תקבל כל מייל על פעילויות בקבוצה. פעילות בה תופיע בדשבורד בלבד. '
       quiet_message: לא תקבל מיילים על פעילויות ב"%{name}".
-      mute: החבא את הקבוצה הזו מהדשבורד ואל תעדכן אותי עליה אלא אם כן פונים אליי ב@.
       mute_aria_description: עוצמת ההתראות שלך לקבוצה מוגדרת כהשתק. לא תקבל מיילים אלא אם כן מזכירים אותך ופעילות הקבוצה לא תופיע בדשבורד שלך.
       mute_message: '"%{name}" הוסר מהדשבורד שלך.'
+      mute: הסתר קבוצה זו מלוח המחוונים ואל תשלח הודעה אלא אם כן היא מוזכרת.
     privacy:
       private: 'פרטיות: קבוצה זו זמינה לצפייה לחבריה בלבד'
       parent_members: 'פרטיות: קבוצה זו זמינה לצפייה רק לחברי %{parentGroupName} ולחברי %{groupName}'
@@ -1330,7 +1330,6 @@ he:
     share_group: שתף את הקבוצה שלך
     copy_link: העתק
     email_addresses: כתובת דואר אלקטרוני
-    email_addresses_placeholder: 'לדוגמא: helperbot@loomio.org, friendlybot@loomio.org'
     secret_group_url_explanation: זו הכתובת של הקבוצה שלך. רק חברים שהוזמנו יוכלו לראות את הקבוצה.
     shareable_group_url_explanation: אתה יכול לשתף את הקישור הזה באופן ציבורי. אנשים יכולים לבקש להצטרף ואתה יכול לאשר או להתעלם מבקשות.
     shareable_invitation_explanation: אל תשתף את הקישור הזה בפומבי. כל מי שיש לו יכול להצטרף לקבוצה שלך ללא אישורך. שתף את זה רק בתקשורת פרטית כדי לאפשר לאנשים בארגון שלך להצטרף.
@@ -1356,6 +1355,7 @@ he:
     enter_emails_of_people_to_invite: הזן את כתובות הדוא"ל של האנשים שברצונך להזמין לקבוצה. אם יש לך רשימה, פשוט העתק והדבק את כולם בבת אחת.
     shareable_link_to_join_group: קישור לשיתוף להצטרפות לקבוצה
     reset_the_link: אפס את הקישור
+    email_addresses_placeholder: לדוגמה helperbot{'@'}loomio.org, friendlybot{'@'}loomio.org
   memberships_page:
     members: חברים
     name_label: שם
@@ -1498,7 +1498,6 @@ he:
     announcement_label: הודעות
     announcement_description: אתה תקבל מייל בנוגע לכל תוכן שמוכרז ע"י אנשים בקבוצות שלך
     mentioned_label: איזכורים ותגובות
-    mentioned_description: כשמישהו @ מזכיר אותך בהערה או משיב לך, תקבל הודעת אימייל
     update_settings: שמור שינויים
     specific_groups: הגדרות לקבוצות ספציפיות
     default_settings:
@@ -1509,6 +1508,7 @@ he:
     messages:
       updated: הגדרות מייל עודכנו
     learn_more: למד עוד על הגדרות מייל...
+    mentioned_description: כאשר מישהו {'@'}מזכיר אותך בתגובה, תקבל התראה בדוא"ל
   thread_preview:
     replies_count: "%{count} תשובות"
     unread_count: "%{count} לא נקראו"
@@ -1534,12 +1534,9 @@ he:
     thread_recalled: שיחה הושבה
     explain_mute:
       title: לא השתקת אף שיחה עוד.
-      explanation_html: |
-        השתקה היא דרך להסתיר או להשקיט שיחות שאתה לא מעוניין בהן.
-        השתקה משמעה שלא תראה אותה ב<strong>לאחרונה</strong> או <strong>לא נקרא</strong>, ואתה לא תקבל עדכון על פעילות בשיחה זו, כמו הצעות.
-        אתה תקבל התראה רק אם מישהו only be alerted if someone <strong>@מזכיר</strong> את שמך.
       instructions: להשתקת שיחה, רחף מעליה ולחץ על אייקון ההשתקה.
       see_muted_html: לצפיה בשיחות מושתקות, לחץ על  <strong>"מושתק"</strong>. אתה יכול לבטל השתקה ע"י ריחוף על השיחה ולחיצה על אותו האייקון.
+      explanation_html: השתקה היא דרך להסתיר או להשתיק שרשורים שאינך מעוניין בהם. השתקה פירושה שלא תראה אותו <strong>ב"אחרונים"</strong> או <strong>"לא נקראו"</strong> , ולא תקבל התראות על פעילות באותו שרשור, כמו הצעות. תקבל התראה רק אם מישהו <strong>{'@'}יזכיר</strong> את שמך.
     filtering:
       filter_threads: סינון השיחות
       filter_threads_aria_label: סינון השיחות
@@ -2359,7 +2356,6 @@ he:
     account_locked: חשבונך ננעל אחרי נסיונות כושלים רבים מידי. בדוק במייל שלך לינק לביטול הנעילה
     email_not_found: סליחה, לא מצאנו חשבון עם כתובת המייל הזו
     email_taken: כתובת האימייל כבר רשומה
-    email_placeholder: you@example.com
     login_with_token: 'אתה מוכן ומזומן! לחץ על הלינק למטה להמשיך. '
     login_link_helptext: לחץ על הכפתור למטה ואנחנו נשלח לך לינק להתחברות.
     enter_your_password: הזן את הסיסמה שלך כדי להמשיך
@@ -2400,6 +2396,7 @@ he:
     reactivate: אקטב מחדש את החשבון
     want_to_set_password: רוצה להיכנס עם סיסמה בפעם הבאה?
     change_your_password: האם תרצה להגדיר סיסמה חדשה?
+    email_placeholder: אתה{'@'}example.com
   chatbot:
     configure_chatbot: הגדר צ'אטבוט
     test_connection: בדיקת חיבור

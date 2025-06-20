@@ -27,7 +27,7 @@ export function setupI18n(options = {
   locale: 'en',
   fallbackLocale: 'en',
   messages: {en},
-  silentTranslationWarn: true,
+  silentTranslationWarn: false,
   warnHtmlInMessage: 'off',
   warnHtmlMessage: false
 }){

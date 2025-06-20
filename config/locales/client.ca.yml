@@ -33,11 +33,11 @@ ca:
     2_day_before: 2 dies abans
     3_day_before: 3 dies abans
     7_day_before: 7 dies abans
-    task_placeholder: Introduïu una tasca i @mencioneu algú per assignar-la
     add_due_date: Afegeix una data de venciment
     task_updated_done: Tasca marcada com a feta!
     task_updated_not_done: Tasca marcada com a no feta
     no_tasks_assigned: No hi ha cap tasca assignada
+    task_placeholder: Introdueix una tasca i {'@'}menciona algú per assignar-li-la
   templates:
     template_gallery: Galeria de plantilles
     title_template: Plantilla %{title}
@@ -471,10 +471,10 @@ ca:
     normal_desc: Quan algú m'avisa
     quiet_desc: Mai
     quiet_explained: No rebràs un correu electrònic, fins i tot quan algú intenta notificar-te. És possible que us perdeu anuncis o decisions importants. Això pot ser adequat si un fil no us interessa, però no es recomana per a la configuració del grup tret que tingueu altres maneres d'estar al dia.
-    normal_explained: Quan algú introdueix el teu nom al camp "Notificar" d'un fil o d'una enquesta, o quan @menciona el grup.
-    normal_excludes_mentioning_html: Hi ha una configuració separada per quan algú us @esmenta (per exemple, quan us respon en un comentari). <a href="%{url}">Feu clic aquí per editar la configuració de les @mencions</a>
     loud_explained: Se us enviarà un correu electrònic cada vegada que hi hagi un comentari nou, algú voti o iniciï una enquesta o fil.
     when_would_you_like_to_be_emailed_poll_type: Quan vols rebre un correu electrònic sobre aquest %{poll_type}?
+    normal_explained: Quan algú introdueix el teu nom al camp "Notificar" d'un fil o una enquesta, o bé {'@'}esmenta el grup.
+    normal_excludes_mentioning_html: Hi ha una configuració separada per quan algú et menciona {'@'} (per exemple, quan et respon en un comentari). <a href="%{url}">Fes clic aquí per editar la configuració de les @mencions.</a>
   close_explanation_modal:
     aria_label: Tanca el fil de discussió
     close_thread: Tanca el fil de discussió
@@ -1161,9 +1161,9 @@ ca:
       quiet: No rebreu correus amb relació a aquest grup. Es mostrarà l'activitat a la consola.
       quiet_aria_description: Heu configurat les notificacions d'aquest grup en volum baix. No rebreu correus electrònics amb relació a aquest grup. Es mostrarà l'activitat del grup  al vostre tauler
       quiet_message: No rebreu cap correu sobre l'activitat a "%{name}."
-      mute: Oculta aquest grup del tauler i notifica únicament les @mencions.
       mute_aria_description: Heu configurat les notificacions d'aquest grup en mode silenci. Només rebreu correus electrònics si sou mencionats i no es mostrarà l'activitat del grup al vostre tauler.
       mute_message: '"%{name}" ha estat eliminat del vostre tauler.'
+      mute: Amaga aquest grup del tauler de control i no notifica tret que s'esmenti {'@'}.
     privacy:
       private: 'Privacitat: Aquest grup només és visible pels membres'
       parent_members: 'Privacitat: Aquest grup és visible pels membres de %{parentGroupName} i els membres de %{groupName}'
@@ -1334,7 +1334,6 @@ ca:
     share_group: Comparteix el teu grup
     copy_link: Copia
     email_addresses: Adreces de correu electrònic
-    email_addresses_placeholder: p. ex. marc@loomio.org, martina@loomio.org
     secret_group_url_explanation: Aquesta és l'adreça del vostre grup. Només membres convidats podran veure el grup.
     shareable_group_url_explanation: Podeu compartir aquest enllaç de forma pública. Els usuaris poden demanar d'unir-se i podreu aprovar o ignorar les sol·licituds.
     shareable_invitation_explanation: No compartiu aquest enllaç de forma pública. Tothom que el tingui podrà unir-se al grup sense la vostra aprovació. Compartiu-lo només per comunicacions privades per permetre que s'uneixin usuaris de la vostra organització.
@@ -1360,6 +1359,7 @@ ca:
     enter_emails_of_people_to_invite: Introduïu les adreces de correu electrònic de les persones que voleu convidar al grup. Si teniu una llista, només cal que les copieu i les enganxeu totes alhora.
     shareable_link_to_join_group: Enllaç compartible per unir-se al grup
     reset_the_link: Restableix l'enllaç
+    email_addresses_placeholder: p. ex. helperbot{'@'}loomio.org, friendlybot{'@'}loomio.org
   memberships_page:
     members: Membres
     name_label: Nom
@@ -1502,7 +1502,6 @@ ca:
     announcement_label: Avisos
     announcement_description: Rebreu un correu sobre tot el contingut que s'ha anunciat per usuaris en els vostres grups
     mentioned_label: Mencions i respostes
-    mentioned_description: Quan algú us @mencioni en un comentari o us respongui, rebràs un correu electrònic de notificació
     update_settings: Desa els canvis
     specific_groups: Configuració per grups específics
     default_settings:
@@ -1513,6 +1512,7 @@ ca:
     messages:
       updated: Configuració del correu electrònic actualitzada
     learn_more: Més informació sobre la configuració del correu electrònic...
+    mentioned_description: Quan algú et mencioni {'@'} en un comentari, rebràs una notificació per correu electrònic.
   thread_preview:
     replies_count: "%{count} respostes"
     unread_count: "%{count} sense llegir"
@@ -1541,7 +1541,6 @@ ca:
       explanation_html: |
         Silenciar és una forma d'ocultar fils en els que no esteu interessat.
         Silenciar-los significa que no els veureu a <strong>Recent </strong> o a <strong>No llegits</strong>, i que no sereu notificats quan hi hagi activitat en aquell fil, com ara propostes.
-        Només rebreu notificacions en cas que algú <strong>@mencioni</strong> el vostre nom.
       instructions: Per a silenciar un fil, situeu-vos sobre ell i cliqueu la icona silenciar.
       see_muted_html: Per veure els vostres fils silenciats, cliqueu sobre <strong>"Silenciats"</strong>. Podeu deixar de silenciar mantenint el cursor i clicant sobre la mateixa icona.
     filtering:
@@ -2365,7 +2364,6 @@ ca:
     account_locked: El vostre compte s'ha bloquejat per massa intents fallits d'iniciar sessió.Comproveu el vostre correu electrònic per obtenir un enllaç de desbloqueig.
     email_not_found: No s'ha trobat un compte amb aquesta adreça de correu
     email_taken: Aquesta adreça de correu ja està registrada
-    email_placeholder: tu@exemple.com
     login_with_token: Ja està tot llest! Cliqueu l'enllaç de sota per continuar.
     login_link_helptext: Cliqueu el botó de sota i us enviarem un enllaç per iniciar la sessió.
     enter_your_password: Introduïu la contrasenya per continuar
@@ -2406,6 +2404,7 @@ ca:
     reactivate: Reactiva el compte
     want_to_set_password: Voleu iniciar la sessió amb una contrasenya la propera vegada?
     change_your_password: Voleu establir una contrasenya nova?
+    email_placeholder: tu{'@'}example.com
   chatbot:
     configure_chatbot: Configura el chatbot
     test_connection: Prova de connexió

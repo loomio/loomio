@@ -33,11 +33,11 @@ it:
     2_day_before: 2 giorni prima
     3_day_before: 3 giorni prima
     7_day_before: 7 giorni prima
-    task_placeholder: Inserisci un compito e @nomina qualcuno per assegnarlo
     add_due_date: Aggiungi scadenza
     task_updated_done: Compito segnato come eseguito!
     task_updated_not_done: Compito segnato come non eseguito!
     no_tasks_assigned: Non ci sono compiti assegnati a te
+    task_placeholder: Inserisci un'attività e {'@'}menziona qualcuno a cui assegnarla
   templates:
     template_gallery: Galleria di modelli
     title_template: "%{title} Modello"
@@ -478,11 +478,11 @@ it:
     loud_desc: Ogni volta che qualcuno partecipa
     normal_desc: Quando qualcuno mi avvisa
     quiet_desc: Mai
-    quiet_explained: Non riceverai email, nemmeno quando qualcuno prova a notificarti. Potresti perderti annunci o decisioni importanti. Questo potrebbe essere adatto se un thread non ti riguarda, ma non è consigliato per l'impostazione del gruppo, a meno che tu non abbia altri modi per rimanere aggiornato.
-    normal_explained: Quando qualcuno inserisce il tuo nome nel campo "Notifica" di un thread o di un sondaggio, oppure @menziona il gruppo.
-    normal_excludes_mentioning_html: C'è un'impostazione separata per quando qualcuno ti @menziona (ad esempio quando qualcuno ti risponde in un commento). <a href="%{url}">Fai clic qui per modificare le impostazioni per le @menzioni</a>
-    loud_explained: Riceverai un'e-mail ogni volta che c'è un nuovo commento, qualcuno vota o avvia un sondaggio o una discussione.
     when_would_you_like_to_be_emailed_poll_type: Quando desideri ricevere un'e-mail su questo %{poll_type}?
+    quiet_explained: Non riceverai email, nemmeno quando qualcuno cercherà di avvisarti. Potresti perderti annunci o decisioni importanti. Questo potrebbe essere utile se una discussione non ti riguarda, ma non è consigliato per l'impostazione di gruppo, a meno che tu non abbia altri modi per rimanere aggiornato.
+    normal_explained: Quando qualcuno inserisce il tuo nome nel campo "Notifica" di un thread o di un sondaggio, oppure {'@'}menziona il gruppo.
+    normal_excludes_mentioning_html: Esiste un'impostazione separata per quando qualcuno ti menziona con un "@" (ad esempio quando ti risponde in un commento). <a href="%{url}">Clicca qui per modificare le impostazioni per le @menzioni.</a>
+    loud_explained: Riceverai un'e-mail ogni volta che c'è un nuovo commento, qualcuno vota o avvia un sondaggio o una discussione.
   close_explanation_modal:
     aria_label: Chiudi discussione
     close_thread: Chiudi discussione
@@ -1172,16 +1172,16 @@ it:
     volume:
       loud: Invia una mail in caso di qualsiasi tipo di attività.
       loud_aria_description: Il volume delle notifiche per questo gruppo è settato su Alto. Riceverai una mail in caso di qualsiasi attività nel gruppo.
-      loud_message: Riceverai le email relative alle attività in "%{name}."
-      normal: 'Invia emails solo in caso di attività importanti: nuove discussioni e proposte, risultati di votazioni ecc.'
-      normal_aria_description: Il volume delle tue notifiche è settato su Normale. Verrai indormato/a via email sulle attività più importanti, ad esempio quando qualcuno lancia una nuova discussione, una proposta oppure stabilisce un esito.
-      normal_message: Riceverai un'email solamente per gli eventi importanti di "%{name}"
-      quiet: Non inviare email su questo gruppo. Le attività verranno mostrate nella bacheca.
-      quiet_aria_description: Il tuo livello delle notifiche per questo gruppo è settato su Quieto. Non riceverai email da questo gruppo e le sue attività verranno mostrate sulla tua bacheca.
-      quiet_message: Non riceverai email sulle attivita in "%{name}".
-      mute: Non fare comparire questo gruppo sulla tua bacheca e non mandare notifiche a meno che tu non sia @menzionato.
-      mute_aria_description: Il tuo livello delle notifiche per questo gruppo è settato su Muto. Non riceverai email da questo gruppo a meno che qualcuno non ti @menzioni e le sue attività non verranno mostrate sulla tua bacheca.
       mute_message: '"%{name}" è stata rimossa dalla tua dashboard.'
+      loud_message: Riceverai un'e-mail su tutte le attività in "%{name}."
+      normal: 'Invia semplicemente via email le attività importanti: nuovi thread e proposte, risultati, ecc.'
+      normal_aria_description: Il volume delle notifiche per questo gruppo è impostato su Normale. Riceverai solo le email relative alle attività importanti, ad esempio quando qualcuno apre una nuova discussione, solleva una proposta o imposta un risultato.
+      normal_message: Riceverai email solo sugli eventi importanti in "%{name}".
+      quiet: Non inviare email su questo gruppo. L'attività verrà visualizzata sulla dashboard.
+      quiet_aria_description: Il volume delle notifiche per questo gruppo è impostato su Silenzioso. Non riceverai email sulle attività in questo gruppo. Le attività del gruppo verranno visualizzate sulla tua Dashboard.
+      quiet_message: Non riceverai email sulle attività in "%{name}".
+      mute: Nascondi questo gruppo dalla dashboard e non inviare notifiche a meno che non venga menzionato {'@'}.
+      mute_aria_description: Il volume delle notifiche per questo gruppo è impostato su Disattivato. Non riceverai email a meno che qualcuno non ti menzioni e le attività del gruppo non verranno visualizzate sulla tua Dashboard.
     privacy:
       private: 'Privacy: questo gruppo è visibile solo ai suoi membri.'
       parent_members: 'Privacy: questo gruppo è visibile solo ai membri di %{parentGroupName}  e  %{groupName}'
@@ -1346,7 +1346,6 @@ it:
     share_group: Condividi il gruppo
     copy_link: Copia
     email_addresses: Indirizzi email
-    email_addresses_placeholder: 'Ad esempio: helperbot@loomio.org, friendlybot@loomio.org'
     secret_group_url_explanation: Questo è l'indirizzo del tuo gruppo. Solo i membri invitati potranno vedere il gruppo.
     shareable_group_url_explanation: Puoi diffondere questo link pubblicamente. Le persone possono chiedere di partecipare e tu puoi approvare o ignorare le richieste.
     shareable_invitation_explanation: Non condividere pubblicamente questo link. Chiunque lo abbia può entrare nel tuo gruppo senza la tua approvazione. Condividilo solo con comunicazioni private per permettere alle persone della tua organizzazione di entrare.
@@ -1372,6 +1371,7 @@ it:
     enter_emails_of_people_to_invite: Inserisci gli indirizzi email delle persone che desideri invitare al gruppo. Se hai una lista, copiali e incollali tutti in una volta.
     shareable_link_to_join_group: Link condivisibile per unirsi al gruppo
     reset_the_link: Reimposta il collegamento
+    email_addresses_placeholder: ad esempio helperbot{'@'}loomio.org, friendlybot{'@'}loomio.org
   memberships_page:
     members: Membri
     name_label: Nome
@@ -1514,7 +1514,6 @@ it:
     announcement_label: Annunci
     announcement_description: Riceverai un'e-mail su tutti i contenuti che sono stati annunciati dalle persone nei tuoi gruppi
     mentioned_label: Notifica menzioni e risposte
-    mentioned_description: Quando qualcuno ti @menziona in un commento o ti risponde, riceverai un'email di notifica
     update_settings: Salva modifiche
     specific_groups: Impostazioni per gruppi specifici
     default_settings:
@@ -1525,6 +1524,7 @@ it:
     messages:
       updated: Impostazioni della posta elettronica aggiornate.
     learn_more: Impara di più sulle impostazioni email...
+    mentioned_description: Quando qualcuno {'@'} ti menziona in un commento, riceverai un'email di notifica
   thread_preview:
     replies_count: "%{count} repliche"
     unread_count: "%{count} non letti"
@@ -1550,12 +1550,9 @@ it:
     thread_recalled: Discussione riattivata
     explain_mute:
       title: Non hai ancora silenziato nessuna discussione
-      explanation_html: |
-        Il silenziamento è un modo per non ricevere più aggiornamenti da discussioni a cui non sei interessato.
-        Ciò significa che non vedrai la discussione nelle <strong>Discussioni recenti</strong> o nelle<strong>Discussioni non lette</strong>, e non riceverai notifiche sull'attività in quella discussione, come le proposte.
-        Verrai avvertito solo se qualcuno <strong>@menziona</strong> il tuo nome.
       instructions: Per silenziare una discussione, passa con il mouse su di essa e fai clic sull'icona di silenziamento.
       see_muted_html: Per vedere le discussioni silenziate, clicca su <strong>"Discussioni silenziate"</strong>.  Potrai desilenziare le discussioni passando su ognuna di esse e cliccando la stessa icona.
+      explanation_html: Disattivare l'audio è un modo per nascondere o silenziare le discussioni che non ti interessano. Disattivare l'audio significa che non le vedrai in <strong>Recenti</strong> o <strong>Non lette</strong> e non riceverai notifiche sulle attività in quella discussione, come le proposte. Riceverai un avviso solo se qualcuno <strong>{'@'} menziona</strong> il tuo nome.
     filtering:
       filter_threads: Filtra discussioni
       filter_threads_aria_label: Filtra discussioni
@@ -2370,7 +2367,6 @@ it:
     account_locked: Il tuo account è stato bloccato dopo troppi tentativi di accesso. Guarda nella tua email per un collegamento di sblocco.
     email_not_found: Spiacenti, non riusciamo a trovare un account per questo indirizzo email
     email_taken: Indirizzo email già presente
-    email_placeholder: nome@esempio.com
     login_with_token: È tutto pronto! Fare clic sul collegamento sottostante per continuare.
     login_link_helptext: Fai clic sul pulsante in basso e ti invieremo un link per accedere.
     enter_your_password: Inserisci la tua password per continuare
@@ -2411,6 +2407,7 @@ it:
     reactivate: Riattiva account
     want_to_set_password: Vuoi effettuare l'accesso con una password la prossima volta?
     change_your_password: Vuoi impostare una nuova password?
+    email_placeholder: tu{'@'}esempio.com
   chatbot:
     configure_chatbot: Configura chatbot
     test_connection: Test connection

@@ -33,11 +33,11 @@ sl:
     2_day_before: 2 dni prej
     3_day_before: 3 dni prej
     7_day_before: 7 dni prej
-    task_placeholder: Vnesite opravilo in @omenite nekoga, ki ga želite dodeliti
     add_due_date: Dodajte rok
     task_updated_done: Naloga je označena kot opravljena!
     task_updated_not_done: Opravilo označeno kot nedokončano
     no_tasks_assigned: Dodeljena vam ni nobena naloga
+    task_placeholder: Vnesite opravilo in {'@'}omenite nekoga, ki mu ga želite dodeliti
   templates:
     template_gallery: Galerija predlog
     title_template: Predloga %{title}
@@ -468,11 +468,11 @@ sl:
     loud_desc: Vsakič, ko kdo sodeluje
     normal_desc: Ko me nekdo obvesti
     quiet_desc: Nikoli
-    quiet_explained: Ne boste prejeli e-pošte, tudi ko vas bo nekdo poskušal obvestiti. Morda boste zamudili pomembna obvestila ali odločitve. To je lahko primerno, če vas nit ne zadeva, vendar ni priporočljivo za nastavitev skupine, razen če imate druge načine, da ostanete na tekočem.
-    normal_explained: Ko nekdo vnese vaše ime v polje »Obvesti« v niti ali anketi ali @omeni skupino.
-    normal_excludes_mentioning_html: Obstaja ločena nastavitev, ko vas nekdo @omeni (npr. ko vam odgovori v komentarju). <a href="%{url}">Kliknite tukaj, če želite urediti nastavitve za @omembe</a>
-    loud_explained: Prejeli boste e-poštno sporočilo vsakič, ko je nov komentar, nekdo glasuje ali začne anketo ali nit.
     when_would_you_like_to_be_emailed_poll_type: Kdaj želite prejeti e-pošto o tem %{poll_type}?
+    quiet_explained: Ne boste prejemali e-poštnih sporočil, niti če vas bo kdo poskušal obvestiti. Morda boste spregledali pomembna obvestila ali odločitve. To je morda primerno, če vas nit ne zadeva, vendar ni priporočljivo za skupinsko nastavitev, razen če imate druge načine za spremljanje posodobitev.
+    normal_explained: Ko nekdo vnese vaše ime v polje »Obvesti« niti ali ankete ali ko {'@'}omeni skupino.
+    normal_excludes_mentioning_html: Obstaja ločena nastavitev za primere, ko vas nekdo {'@'}omeni (npr. ko vam odgovori v komentarju). <a href="%{url}">Kliknite tukaj, če želite urediti nastavitve za @omembe.</a>
+    loud_explained: Vsakič, ko bo objavljen nov komentar, nekdo bo glasoval ali bo začel anketo ali nit, boste prejeli e-poštno sporočilo.
   close_explanation_modal:
     aria_label: Zapri temo
     close_thread: Zapri temo
@@ -1153,9 +1153,9 @@ sl:
       quiet: Ne pošiljaj emailov za to skupino. Nove aktivnosti bodo objavljene na nadzorni plošči.
       quiet_aria_description: Vaša glasnost obvestil za to skupino je nastavljena na Tiho. O dejavnostih v tej skupini ne boste obveščeni po e-pošti. Aktivnost skupine bo prikazana na vaši nadzorni plošči.
       quiet_message: Ne boste prejeli e-pošte o dejavnosti v »%{name}«.
-      mute: Skrij to skupino iz nadzorne plošče in me ne obveščaj, razen če sem @omenjen/a.
       mute_aria_description: Vaša glasnost obvestil za to skupino je nastavljena na Nemo. Ne boste prejeli e-pošte, razen če vas kdo omeni, in dejavnost skupine ne bo prikazana na vaši nadzorni plošči.
       mute_message: "»%{name}« je bil odstranjen z vaše nadzorne plošče."
+      mute: Skrij to skupino na nadzorni plošči in ne obveščaj, razen če je {'@'}omenjeno.
     privacy:
       private: 'Zasebnost: Ta skupina je vidna samo članom'
       parent_members: 'Zasebnost: Ta skupina je vidna članom %{parentGroupName} in članom %{groupName}'
@@ -1318,7 +1318,6 @@ sl:
     share_group: Delite svojo skupino
     copy_link: Kopirati
     email_addresses: E-poštni naslovi
-    email_addresses_placeholder: npr. helperbot@loomio.org, friendlybot@loomio.org
     secret_group_url_explanation: To je naslov vaše skupine. Samo povabljeni člani bodo lahko videli skupino.
     shareable_group_url_explanation: To povezavo lahko javno delite. Ljudje lahko zahtevajo pridružitev, vi pa lahko odobrite ali prezrete zahteve.
     shareable_invitation_explanation: Te povezave ne delite javno. Kdor koli ga ima, se lahko pridruži vaši skupini brez vaše odobritve. Delite to le v zasebni komunikaciji, da omogočite ljudem v vaši organizaciji, da se pridružijo.
@@ -1344,6 +1343,7 @@ sl:
     enter_emails_of_people_to_invite: Vnesite e-poštne naslove oseb, ki jih želite povabiti v skupino. Če imate seznam, jih preprosto kopirajte in prilepite vse hkrati.
     shareable_link_to_join_group: Povezava za deljenje za pridružitev skupini
     reset_the_link: Ponastavi povezavo
+    email_addresses_placeholder: npr. helperbot{'@'}loomio.org, friendlybot{'@'}loomio.org
   memberships_page:
     members: Člani
     name_label: Ime
@@ -1486,7 +1486,6 @@ sl:
     announcement_label: Obvestila
     announcement_description: Prejeli boste e-poštno sporočilo o vsej vsebini, ki so jo objavili ljudje v vaših skupinah
     mentioned_label: Omembe in odgovori
-    mentioned_description: Ko vas nekdo @omeni v komentarju ali vam odgovori, boste prejeli e-poštno obvestilo
     update_settings: Shrani spremembe
     specific_groups: Nastavitve za določene skupine
     default_settings:
@@ -1497,6 +1496,7 @@ sl:
     messages:
       updated: Email nastavitve posodobljene
     learn_more: Več o nastavitvah e-pošte ...
+    mentioned_description: Ko vas nekdo {'@'}omeni v komentarju, boste prejeli obvestilo po e-pošti
   thread_preview:
     replies_count: "%{count} odgovorov"
     unread_count: "%{count} neprebranih"
@@ -1522,9 +1522,9 @@ sl:
     thread_recalled: Nit odpoklicana
     explain_mute:
       title: Utišali niste še nobene niti.
-      explanation_html: Prezrtje je način, da skrijete ali utišate niti, ki vas ne zanimajo. Izključitev pomeni, da je ne boste videli v <strong>Nedavnih</strong> ali <strong>Neprebranih</strong> in ne boste obveščeni o dejavnosti v tej niti, kot so predlogi. Opozorjeni boste samo, če nekdo <strong>@omeni</strong> vaše ime.
-      instructions: Če želite utišati nit, premaknite miškin kazalec nanjo in kliknite ikono za utišanje.
-      see_muted_html: Če si želite ogledati utišane niti, kliknite <strong>»Utišano«</strong> . Zvok lahko znova vklopite tako, da miškin kazalec premaknete in kliknete isto ikono.
+      explanation_html: Utišanje je način, da skrijete ali utišate niti, ki vas ne zanimajo. Utišanje pomeni, da niti ne boste videli v mapi <strong>Nedavno</strong> ali <strong>Neprebrano</strong> in ne boste obveščeni o dejavnosti v tej niti, na primer o predlogih. Opozorjeni boste le, če nekdo <strong>{'@'}omeni</strong> vaše ime.
+      instructions: Če želite utišati nit, premaknite miško nadnjo in kliknite ikono za utišanje.
+      see_muted_html: Če si želite ogledati izklopljene niti, kliknite <strong>»Izklopljeno«</strong> . Izklopljeno lahko vklopite tako, da se pomaknete z miško in kliknete isto ikono.
     filtering:
       filter_threads: Filtriranje niti
       filter_threads_aria_label: Filtriranje niti
@@ -2337,7 +2337,6 @@ sl:
     account_locked: Vaš račun je bil zaklenjen po preveč neuspelih poskusih prijave. Preverite svojo e-pošto za povezavo za odklepanje
     email_not_found: Žal nismo našli računa s tem e-poštnim naslovom
     email_taken: E-poštni naslov je že registriran
-    email_placeholder: vi@example.com
     login_with_token: Vse je pripravljeno! Za nadaljevanje kliknite spodnjo povezavo.
     login_link_helptext: Kliknite spodnji gumb in poslali vam bomo povezavo za prijavo.
     enter_your_password: Za nadaljevanje vnesite svoje geslo
@@ -2378,6 +2377,7 @@ sl:
     reactivate: Ponovno aktivirajte račun
     want_to_set_password: Se želite naslednjič prijaviti z geslom?
     change_your_password: Ali želite nastaviti novo geslo?
+    email_placeholder: vi{'@'}example.com
   chatbot:
     configure_chatbot: Konfigurirajte chatbota
     test_connection: Testna povezava

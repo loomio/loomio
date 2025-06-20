@@ -33,11 +33,11 @@ fr:
     2_day_before: 2 jours avant
     3_day_before: 3 jours avant
     7_day_before: 7 jours avant
-    task_placeholder: Entrez une tâche et @mention quelqu’un pour l’assigner
     add_due_date: Ajouter échéance
     task_updated_done: Tâche marquée comme terminée !
     task_updated_not_done: Tâche marquée comme pas terminée !
     no_tasks_assigned: Aucune tâche ne vous a été assignée
+    task_placeholder: Saisissez une tâche et {'@'}mentionnez quelqu'un à qui l'attribuer
   templates:
     template_gallery: Galerie de modèles
     title_template: "%{title} Modèle"
@@ -479,10 +479,10 @@ fr:
     normal_desc: Quand quelqu'un me prévient
     quiet_desc: Jamais
     quiet_explained: Vous ne recevrez aucun e-mail, même si quelqu'un tente de vous prévenir. Vous risquez de manquer des annonces ou des décisions importantes. Cette option peut être utile si un fil de discussion ne vous concerne pas, mais elle est déconseillée pour le groupe, sauf si vous disposez d'autres moyens de vous tenir informé.
-    normal_explained: Lorsque quelqu'un saisit votre nom dans le champ « Notifier » d'un fil de discussion ou d'un sondage, ou qu'il @mentionne le groupe.
-    normal_excludes_mentioning_html: Il existe un paramètre distinct pour les mentions @ (par exemple, lorsqu'on vous répond dans un commentaire). <a href="%{url}">Cliquez ici pour modifier les paramètres des mentions @.</a>
     loud_explained: Vous recevrez un e-mail chaque fois qu'il y aura un nouveau commentaire, que quelqu'un votera ou lancera un sondage ou un fil de discussion.
     when_would_you_like_to_be_emailed_poll_type: Quand souhaitez-vous recevoir un e-mail à propos de ce %{poll_type} ?
+    normal_explained: Lorsque quelqu'un saisit votre nom dans le champ « Notifier » d'un fil de discussion ou d'un sondage, ou qu'il {'@'}mentionne le groupe.
+    normal_excludes_mentioning_html: Il existe un paramètre distinct pour les mentions avec un @ (par exemple, lorsqu'on vous répond dans un commentaire). <a href="%{url}">Cliquez ici pour modifier les paramètres des @mentions.</a>
   close_explanation_modal:
     aria_label: Clore la discussion
     close_thread: Clore la discussion
@@ -1180,9 +1180,9 @@ fr:
       quiet: Ne pas envoyer de courriel concernant ce groupe. Les activités resteront consultables sur le tableau de bord.
       quiet_aria_description: Votre volume de notification pour ce groupe est réglé sur Léger. Vous ne recevrez aucun courriel pour vous informer des actualités de ce groupe. Vous pourrez les voir sur votre Tableau de Bord.
       quiet_message: Vous ne recevrez aucun courriel concernant les activités dans « %{name} ».
-      mute: Masque ce groupe dans le tableau de bord et n’envoyer aucune notification sauf si l’on est @mentionné.
-      mute_aria_description: Votre volume de notification pour ce groupe est réglé sur Ignoré. Vous ne recevrez aucun courriel sauf si quelqu’un vous @mentionne, et l’actualité du groupe ne sera pas non plus affichée sur votre Tableau de Bord.
       mute_message: "« %{name} » a été retiré de votre tableau de bord."
+      mute: Masquer ce groupe du tableau de bord et ne pas notifier sauf si {'@'}est mentionné.
+      mute_aria_description: Le volume des notifications pour ce groupe est réglé sur « Muet ». Vous ne recevrez aucun e-mail, sauf mention contraire, et l'activité du groupe ne sera pas affichée sur votre tableau de bord.
     privacy:
       private: 'Confidentialité: Ce groupe est seulement visible pour ses membres.'
       parent_members: 'Confidentialité: Ce groupe est visible pour les membres de %{parentGroupName} et les membres de %{groupName}'
@@ -1355,7 +1355,6 @@ fr:
     share_group: Partagez votre groupe
     copy_link: Copier
     email_addresses: Adresses e-mail
-    email_addresses_placeholder: ex. helperbot@loomio.org, friendlybot@loomio.org
     secret_group_url_explanation: Ceci est l'adresse de votre groupe. Seuls les membres invités pourront voir ce groupe.
     shareable_group_url_explanation: Vous pouvez partager ce lien publiquement. Tout le monde peut demander à rejoindre le groupe et vous pourrez approuver ou ignorer ces requêtes.
     shareable_invitation_explanation: Ne partagez pas ce lien publiquement. Quiconque ayant ce lien peut joindre le groupe sans votre approbation. Partagez-le uniquement dans des communications privées pour permettre aux membres de botre organisation de rejoindre le groupe.
@@ -1381,6 +1380,7 @@ fr:
     enter_emails_of_people_to_invite: Saisissez les adresses e-mail des personnes que vous souhaitez inviter au groupe. Si vous avez une liste, copiez-les et collez-les toutes simultanément.
     shareable_link_to_join_group: Lien partageable pour rejoindre le groupe
     reset_the_link: Réinitialiser le lien
+    email_addresses_placeholder: par exemple helperbot{'@'}loomio.org, friendlybot{'@'}loomio.org
   memberships_page:
     members: Les membres
     name_label: Nom
@@ -1525,7 +1525,6 @@ fr:
     announcement_label: Nouvelles discussions et décisions
     announcement_description: Vous recevrez un courriel à chaque nouvelle discussion ou proposition annoncée par un membre dans l'un de vos groupes.
     mentioned_label: Mentions et réponses
-    mentioned_description: Lorsque quelqu’un vous @mentions dans un commentaire ou vous répond, vous recevez un e-mail de notification
     update_settings: Sauvegarder les modifications
     specific_groups: Paramètres pour certains groupes
     default_settings:
@@ -1536,6 +1535,7 @@ fr:
     messages:
       updated: Réglages de courriel mis à jour
     learn_more: En savoir plus sur les paramètres d’e-mail…
+    mentioned_description: Lorsque quelqu'un {'@'}vous mentionne dans un commentaire, vous recevrez un e-mail de notification
   thread_preview:
     replies_count: "%{count} réponses"
     unread_count: "%{count}non lus"
@@ -1561,12 +1561,9 @@ fr:
     thread_recalled: Discussion suivie
     explain_mute:
       title: Vous n’avez pas encore ignoré de discussion.
-      explanation_html: |
-        Désactiver une discussion est un moyen de la cacher si elle ne vous intéresse pas.
-        La désactiver signifie que vous ne la verrez pas dans  <strong>Récent</strong> ou <strong>Non-lu</strong>, et vous ne serez pas tenu au courant de l’activité dans cette discussion, comme les décisions.
-        Vous serez seulement alertés si quelqu’un <strong>@mentionne</strong> votre nom.
       instructions: Pour ignorer la discussion, passez la souris dessus et cliquez sur l’icône Ignorer.
       see_muted_html: Pour voir vos discussions ignorées, cliquez sur <strong>« Ignoré »</strong>. Vous pouvez la suivre de nouveau en cliquant sur la même icône.
+      explanation_html: Le mode muet permet de masquer ou de désactiver les fils de discussion qui ne vous intéressent pas. Ce mode vous permet de ne pas les voir dans les <strong>sections Récentes</strong> ou <strong>Non lues</strong> , et de ne pas être averti de l'activité de ce fil, comme les propositions. Vous ne serez alerté que si quelqu'un <strong>mentionne votre nom ({'@'})</strong> .
     filtering:
       filter_threads: Filtrer les discussions
       filter_threads_aria_label: Filtrer les discussions
@@ -2392,7 +2389,6 @@ fr:
     account_locked: Votre compte a été bloqué suite à de nombreuses tentatives de connexion. Vérifiez vos courriels pour obtenir le lien de déblocage.
     email_not_found: Désolé, nous n’avons pas trouvé de compte correspondant à cette adresse e-mail.
     email_taken: 'L''adresse e-mail existe déjà '
-    email_placeholder: vous@exemple.com
     login_with_token: Vous êtes prêt·e ! Cliquez sur le lien ci-dessous pour continuer.
     login_link_helptext: Cliquez sur le bouton ci-dessous et nous vous enverrons un lien pour vous connecter.
     enter_your_password: Saisissez votre mot de passe pour continuer
@@ -2433,6 +2429,7 @@ fr:
     reactivate: Réactiver le compte
     want_to_set_password: Vous souhaitez vous connecter avec un mot de passe la prochaine fois ?
     change_your_password: Souhaitez-vous définir un nouveau mot de passe ?
+    email_placeholder: vous{'@'}exemple.com
   chatbot:
     configure_chatbot: Configurer le chatbot
     test_connection: Tester la connexion

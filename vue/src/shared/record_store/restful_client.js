@@ -14,6 +14,7 @@ export default class RestfulClient {
     this.currentUpload = null;
     this.apiPrefix = "/api/v1";
     this.onResponse = this.onResponse.bind(this);
+    this.defaultParams.locale = new URLSearchParams(location.search).get('locale');
     this.defaultParams.unsubscribe_token = new URLSearchParams(location.search).get('unsubscribe_token');
     this.defaultParams.membership_token = new URLSearchParams(location.search).get('membership_token');
     this.defaultParams.stance_token = new URLSearchParams(location.search).get('stance_token');
@@ -47,7 +48,7 @@ export default class RestfulClient {
       throw response;
     }
   }
-  
+
   onUploadSuccess(response) { return response; }
 
   buildUrl(path, params) {
@@ -91,7 +92,7 @@ export default class RestfulClient {
     const opts = {
       method,
       credentials: 'same-origin',
-      headers: { 
+      headers: {
         'Content-Type': 'application/json',
         'X-CSRF-TOKEN': getCSRF()
       },

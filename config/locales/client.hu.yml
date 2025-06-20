@@ -33,11 +33,11 @@ hu:
     2_day_before: 2 nappal a határidő előtt
     3_day_before: 3 nappal a határidő előtt
     7_day_before: 7 nappal a határidő előtt
-    task_placeholder: Írd le a feladatot és @rendeld hozzá valakihez
     add_due_date: Adj meg egy határidőt
     task_updated_done: A feladat elvégezve!
     task_updated_not_done: A feladat nincs elvégezve!
     no_tasks_assigned: Nincs számodra kiosztott feladat!
+    task_placeholder: Írj be egy feladatot, és {'@'}említs meg valakit, akit hozzárendelhetsz hozzá
   templates:
     template_gallery: Sablongaléria
     title_template: "%{title} Sablon"
@@ -470,11 +470,11 @@ hu:
     loud_desc: Minden alkalommal, amikor valaki részt vesz
     normal_desc: Amikor valaki értesít
     quiet_desc: Soha
-    quiet_explained: Nem kap e-mailt, még akkor sem, ha valaki megpróbál értesíteni. Lemaradhat fontos bejelentésekről vagy döntésekről. Ez megfelelő lehet, ha egy szál nem érinti Önt, de nem ajánlott a csoport beállításához, hacsak nincs más módja annak, hogy naprakész maradjon.
-    normal_explained: Amikor valaki beírja a nevét egy témaszál vagy egy szavazás "Értesítés" mezőjébe, vagy @említi a csoportot.
-    normal_excludes_mentioning_html: Külön beállítás van arra vonatkozóan, amikor valaki @megemlít téged (pl. amikor egy megjegyzésben válaszol neked). <a href="%{url}">Kattintson ide a @megemlítések beállításainak szerkesztéséhez</a>
     loud_explained: Minden alkalommal e-mailt fog kapni, amikor új megjegyzés érkezik, valaki szavaz, vagy szavazást vagy témát indít.
     when_would_you_like_to_be_emailed_poll_type: 'Mikor szeretne e-mailt kapni erről: %{poll_type}?'
+    quiet_explained: Nem fogsz e-mailt kapni, még akkor sem, ha valaki megpróbál értesíteni. Előfordulhat, hogy lemaradsz a fontos bejelentésekről vagy döntésekről. Ez akkor lehet megfelelő, ha egy téma nem érint téged, de csoportos környezetben nem ajánlott, hacsak nincs más módod a naprakészségre.
+    normal_explained: Amikor valaki beírja a neved egy beszélgetés vagy szavazás „Értesítés” mezőjébe, vagy {'@'}megemlíti a csoportot.
+    normal_excludes_mentioning_html: Külön beállítás vonatkozik arra az esetre, ha valaki {'@'}megemlít téged (pl. amikor valaki válaszol neked egy hozzászólásban). <a href="%{url}">Kattints ide az @megemlítések beállításainak szerkesztéséhez.</a>
   close_explanation_modal:
     aria_label: Téma lezárása
     close_thread: Téma lezárása
@@ -1157,9 +1157,9 @@ hu:
       quiet: Nem kérek e-mailt erről a csoportról. Az aktivitások megjelennek a műszerfalon.
       quiet_aria_description: A csoport értesítési hangereje Csendesre lett állítva. Nem kap e-mailt e csoport tevékenységeiről. A csoporttevékenység megjelenik a műszerfalon.
       quiet_message: Nem kap e-mailt a(z) "%{name}" tevékenységekkel kapcsolatban.
-      mute: Ez a csoport ne jelenjen meg a műszerfalon és ne értesítsen amíg nem @említenek meg.
       mute_aria_description: A csoport értesítési hangereje Némítottra van állítva. Csak akkor küld e-mailt, ha valaki megemlít téged, és a csoporttevékenység nem jelenik meg a műszerfalon.
       mute_message: A(z) "%{name}" eltávolításra került a műszerfalról.
+      mute: Rejtsd el ezt a csoportot az irányítópulton, és ne értesítsd, hacsak nem említik a {'@'}-t.
     privacy:
       private: 'Adatvédelem: Ez a csoport csak a tagok számára látható'
       parent_members: 'Adatvédelem: Ez a csoport a(z) %{parentGroupName} és a %{groupName} tagjai számára látható.'
@@ -1322,7 +1322,6 @@ hu:
     share_group: Ossza meg csoportját
     copy_link: Másolás
     email_addresses: E-mail címek
-    email_addresses_placeholder: például. helperbot@loomio.org, friendlybot@loomio.org
     secret_group_url_explanation: Ez a csoportod címe. Csak a meghívott tagok láthatják a csoportot.
     shareable_group_url_explanation: Ezt a linket megoszthatod nyilvánosan. Az emberek kérhetik a csatlakozást, Ön pedig jóváhagyhatja vagy figyelmen kívül hagyhatja a kéréseket.
     shareable_invitation_explanation: Ne ossza meg nyilvánosan ezt a linket. Bárki, aki rendelkezik ezzel, csatlakozhat a csoportjához az Ön jóváhagyása nélkül. Csak privát kommunikáción belül ossza meg ezt, hogy a szervezetéhez tartozó személyek csatlakozhassanak.
@@ -1348,6 +1347,7 @@ hu:
     enter_emails_of_people_to_invite: Add meg azoknak az embereknek az e-mail címét, akiket meg szeretnél hívni a csoportba. Ha van egy listád, egyszerűen másold ki és illeszd be őket egyszerre.
     shareable_link_to_join_group: Megosztható link a csoporthoz való csatlakozáshoz
     reset_the_link: A hivatkozás visszaállítása
+    email_addresses_placeholder: pl. helperbot{'@'}loomio.org, friendlybot{'@'}loomio.org
   memberships_page:
     members: Tagok
     name_label: Név
@@ -1490,7 +1490,6 @@ hu:
     announcement_label: Bejelentések
     announcement_description: E-mailt fog kapni az összes olyan tartalomról, amelyet a csoportok tagjai bejelentettek
     mentioned_label: Megemlíti és válaszokat
-    mentioned_description: Ha valaki @megemlít egy megjegyzésben vagy válaszol neked, értesítő e-mailt kapsz
     update_settings: Változtatások mentése
     specific_groups: Beállítások az egyes csoportokhoz
     default_settings:
@@ -1501,6 +1500,7 @@ hu:
     messages:
       updated: Az e-mail beállítások frissítve
     learn_more: További információ az e-mail beállításokról ...
+    mentioned_description: Amikor valaki {'@'}megemlít téged egy hozzászólásban, kapsz egy értesítő e-mailt.
   thread_preview:
     replies_count: "%{count} válasz"
     unread_count: "%{count} olvasatlan"
@@ -1526,12 +1526,9 @@ hu:
     thread_recalled: A téma visszahívásra került
     explain_mute:
       title: Még egyetlen témát sem némított el.
-      explanation_html: |
-        A némítás egy olyan módszer, amellyel elrejtheti vagy elnémíthatja azokat a szálakat, amelyeket nem érdekel.
-        A némítás azt jelenti, hogy nem fogja látni az <strong>Legutóbbi</strong> vagy a <strong>Olvasatlan</strong> verzióban, és nem kap értesítést az adott szálban zajló tevékenységekről, például a javaslatokról.
-        Csak akkor figyelmeztetünk, ha valaki <strong>@megemlíti</strong> a neved
       instructions: A témát elnémításához vigye az egérmutatót rá, és kattintson a némítás ikonra.
       see_muted_html: 'A némított témák megtekintéséhez kattints ide: <strong> "Némított" </strong> A némítást kikapcsolhatod ha rákattintasz ugyanarra az ikonra.'
+      explanation_html: A némítás egy módja annak, hogy elrejtsd vagy elnémítsd azokat a beszélgetéseket, amelyek nem érdekelnek. A némítás azt jelenti, hogy nem fogod látni a témát <strong>a Legutóbbiak</strong> vagy <strong>az Olvasatlanok</strong> között, és nem kapsz értesítést az adott beszélgetésben végzett tevékenységekről, például a javaslatokról. Csak akkor kapsz értesítést, ha valaki <strong>{'@'}megemlíti</strong> a neved.
     filtering:
       filter_threads: Témák szűrése
       filter_threads_aria_label: Témák szűrése
@@ -2347,7 +2344,6 @@ hu:
     account_locked: Túl sok sikertelen bejelentkezési kísérlet után zárolódott a fiókod. Ellenőrizze e-mail címét, hogy nincs-e kinyitási link
     email_not_found: Sajnos nem találtunk ilyen e-mail címmel rendelkező fiókot
     email_taken: Ez az email fiók már regisztrálva van
-    email_placeholder: you@example.com
     login_with_token: Minden készen állsz A folytatáshoz kattintson az alábbi linkre.
     login_link_helptext: Kattintson az alábbi gombra, és küldünk egy linket a bejelentkezéshez.
     enter_your_password: Add meg a jelszavad a folytatáshoz
@@ -2388,6 +2384,7 @@ hu:
     reactivate: A fiók újraaktiválása
     want_to_set_password: Legközelebb jelszóval szeretne bejelentkezni?
     change_your_password: Szeretne új jelszót beállítani?
+    email_placeholder: te{'@'}example.com
   chatbot:
     configure_chatbot: A chatbot konfigurálása
     test_connection: Kapcsolat tesztelése

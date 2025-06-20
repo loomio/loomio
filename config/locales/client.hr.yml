@@ -33,11 +33,11 @@ hr:
     2_day_before: 2 dana prije
     3_day_before: 3 dana prije
     7_day_before: 7 dana prije
-    task_placeholder: Unesite zadatak i @spomenite nekoga kome ćete ga dodijeliti
     add_due_date: Dodajte rok
     task_updated_done: Zadatak je označen kao obavljen!
     task_updated_not_done: Zadatak označen kao neizvršen
     no_tasks_assigned: Nema zadataka koji su vam dodijeljeni
+    task_placeholder: Unesite zadatak i {'@'}spomenite nekoga da ga dodijeli
   templates:
     template_gallery: Galerija predložaka
     title_template: Predložak %{title}
@@ -469,10 +469,10 @@ hr:
     normal_desc: Kad me netko obavijesti
     quiet_desc: Nikada
     quiet_explained: Nećete dobiti e-poštu, čak ni kada vas netko pokuša obavijestiti. Možda ćete propustiti važne najave ili odluke. Ovo može biti prikladno ako vas se tema ne tiče, ali se ne preporučuje za postavku grupe osim ako nemate druge načine da ostanete u tijeku.
-    normal_explained: Kada netko unese vaše ime u polje "Obavijesti" u niti ili anketi ili @spomene grupu.
-    normal_excludes_mentioning_html: Postoji posebna postavka kada vas netko @spominje (npr. kada vam odgovara u komentaru). <a href="%{url}">Kliknite ovdje za uređivanje postavki za @spominjanja</a>
     loud_explained: Primit ćete e-poruku svaki put kada postoji novi komentar, netko glasa ili započne anketu ili nit.
     when_would_you_like_to_be_emailed_poll_type: Kada biste željeli primiti e-poruku o ovom %{poll_type}?
+    normal_explained: Kada netko unese vaše ime u polje "Obavijesti" u temi ili anketi ili {'@'}spomene grupu.
+    normal_excludes_mentioning_html: Postoji zasebna postavka za kada vas netko {'@'}spomene (npr. kada vam odgovara u komentaru). <a href="%{url}">Kliknite ovdje za uređivanje postavki za @spominjanja</a>
   close_explanation_modal:
     aria_label: Zatvori nit
     close_thread: Zatvori nit
@@ -1153,9 +1153,9 @@ hr:
       quiet: Ne šaljite e-poštu o ovoj grupi. Aktivnost će biti prikazana na nadzornoj ploči.
       quiet_aria_description: Vaša glasnoća obavijesti za ovu grupu postavljena je na Tiho. Nećete primati e-poruke o aktivnostima u ovoj grupi. Aktivnost grupe bit će prikazana na vašoj nadzornoj ploči.
       quiet_message: Nećete primati e-poruke o aktivnostima u "%{name}".
-      mute: Sakrijte ovu grupu na nadzornoj ploči i ne šaljite obavijesti osim ako niste @spomenuti.
       mute_aria_description: Vaša glasnoća obavijesti za ovu grupu postavljena je na Mute. Nećete dobiti e-poštu osim ako vas netko ne spomene, a aktivnost grupe neće biti prikazana na vašoj Nadzornoj ploči.
       mute_message: '"%{name}" je uklonjen s vaše nadzorne ploče.'
+      mute: Sakrij ovu grupu s nadzorne ploče i ne obavještavaj osim ako nije {'@'}spomenuto.
     privacy:
       private: 'Privatnost: Ova grupa je vidljiva samo članovima'
       parent_members: 'Privatnost: Ova grupa je vidljiva članovima %{parentGroupName} i članovima %{groupName}'
@@ -1318,7 +1318,6 @@ hr:
     share_group: Podijelite svoju grupu
     copy_link: Kopirati
     email_addresses: Email adrese
-    email_addresses_placeholder: npr. helperbot@loomio.org, friendlybot@loomio.org
     secret_group_url_explanation: Ovo je adresa vaše grupe. Samo pozvani članovi moći će vidjeti grupu.
     shareable_group_url_explanation: Ovu vezu možete podijeliti javno. Ljudi mogu zatražiti pridruživanje, a vi možete odobriti ili ignorirati zahtjeve.
     shareable_invitation_explanation: Ne dijelite ovu vezu javno. Svatko tko ga ima može se pridružiti vašoj grupi bez vašeg odobrenja. Podijelite ovo samo unutar privatne komunikacije kako biste omogućili ljudima u vašoj organizaciji da se pridruže.
@@ -1344,6 +1343,7 @@ hr:
     enter_emails_of_people_to_invite: Unesite adrese e-pošte osoba koje želite pozvati u grupu. Ako imate popis, jednostavno ih sve odjednom kopirajte i zalijepite.
     shareable_link_to_join_group: Veza za dijeljenje za pridruživanje grupi
     reset_the_link: Resetiraj vezu
+    email_addresses_placeholder: npr. helperbot{'@'}loomio.org, friendlybot{'@'}loomio.org
   memberships_page:
     members: Članovi
     name_label: Ime
@@ -1486,7 +1486,6 @@ hr:
     announcement_label: Obavijesti
     announcement_description: Primit ćete e-poruku o svim sadržajima koje su najavili ljudi u vašim grupama
     mentioned_label: Spominjanja i odgovori
-    mentioned_description: Kada vas netko @spomene u komentaru ili vam odgovori, dobit ćete obavijest e-poštom
     update_settings: Spremi promjene
     specific_groups: Postavke za određene grupe
     default_settings:
@@ -1497,6 +1496,7 @@ hr:
     messages:
       updated: Postavke e-pošte ažurirane
     learn_more: Saznajte više o postavkama e-pošte...
+    mentioned_description: Kada vas netko {'@'}spomene u komentaru, dobit ćete obavijest e-poštom
   thread_preview:
     replies_count: "%{count} odgovora"
     unread_count: "%{count} nepročitano"
@@ -1522,9 +1522,9 @@ hr:
     thread_recalled: Tema opozvana
     explain_mute:
       title: Još niste utišali niti jednu nit.
-      explanation_html: Isključivanje je način da sakrijete ili utišate niti koje vas ne zanimaju. Isključivanje znači da ih nećete vidjeti u <strong>Nedavno</strong> ili <strong>Nepročitano</strong> i nećete biti obaviješteni o aktivnostima u toj niti, poput prijedloga. Bit ćete upozoreni samo ako netko <strong>@spomene</strong> vaše ime.
-      instructions: Da biste utišali nit, zadržite pokazivač iznad nje i kliknite ikonu za utišavanje.
-      see_muted_html: Da biste vidjeli svoje isključene niti, kliknite <strong>"Isključeno"</strong> . Možete uključiti zvuk tako da zadržite pokazivač i kliknete na istu ikonu.
+      explanation_html: Isključivanje zvuka je način skrivanja ili utišavanja tema koje vas ne zanimaju. Isključivanje zvuka znači da ih nećete vidjeti u <strong>Nedavnim</strong> ili <strong>Nepročitanim temama</strong> i nećete biti obaviješteni o aktivnostima u toj temi, poput prijedloga. Bit ćete obaviješteni samo ako netko <strong>{'@'}spomene</strong> vaše ime.
+      instructions: Za isključivanje zvuka teme, zadržite pokazivač iznad nje i kliknite ikonu za isključivanje zvuka.
+      see_muted_html: Da biste vidjeli svoje isključene teme, kliknite <strong>"Utišano"</strong> . Možete uključiti zvuk tako da zadržite pokazivač miša i kliknete istu ikonu.
     filtering:
       filter_threads: Filtriranje niti
       filter_threads_aria_label: Filtriranje niti
@@ -2337,7 +2337,6 @@ hr:
     account_locked: Vaš račun je zaključan nakon previše neuspjelih pokušaja prijave. Provjerite svoju e-poštu za vezu za otključavanje
     email_not_found: Nažalost, nismo mogli pronaći račun s tom adresom e-pošte
     email_taken: Email adresa je već registrirana
-    email_placeholder: vi@example.com
     login_with_token: Spreman si! Za nastavak kliknite vezu ispod.
     login_link_helptext: Pritisnite gumb ispod i poslat ćemo vam poveznicu za prijavu.
     enter_your_password: Unesite svoju lozinku za nastavak
@@ -2378,6 +2377,7 @@ hr:
     reactivate: Ponovno aktiviranje računa
     want_to_set_password: Želite li se sljedeći put prijaviti lozinkom?
     change_your_password: Želite li postaviti novu lozinku?
+    email_placeholder: vi{'@'}primjer.com
   chatbot:
     configure_chatbot: Konfigurirajte chatbot
     test_connection: Testirajte vezu

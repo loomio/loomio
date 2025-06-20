@@ -33,11 +33,11 @@ fi:
     2_day_before: 2 päivää ennen
     3_day_before: 3 päivää ennen
     7_day_before: 7 päivää ennen
-    task_placeholder: Kirjoita tehtävä ja @mainitse joku, joka antaa sen
     add_due_date: Lisää eräpäivä
     task_updated_done: Tehtävä merkitty suoritetuksi!
     task_updated_not_done: Tehtävä merkitty tekemättä
     no_tasks_assigned: Sinulle ei ole määrätty tehtäviä
+    task_placeholder: Syötä tehtävä ja {'@'}mainitse joku, jolle haluat sen antaa
   templates:
     template_gallery: Malli galleria
     title_template: "%{title} Malli"
@@ -468,11 +468,11 @@ fi:
     loud_desc: Joka kerta kun joku osallistuu
     normal_desc: Kun joku ilmoittaa minulle
     quiet_desc: Ei koskaan
-    quiet_explained: Sinulle ei lähetetä sähköpostia, vaikka joku yrittäisi ilmoittaa sinulle. Saatat unohtaa tärkeitä ilmoituksia tai päätöksiä. Tämä voi sopia, jos viestiketju ei koske sinua, mutta sitä ei suositella ryhmäasetukselle, ellei sinulla ole muita tapoja pysyä ajan tasalla.
-    normal_explained: Kun joku kirjoittaa nimesi viestiketjun tai kyselyn "Ilmoita"-kenttään tai @mainitsee ryhmän.
-    normal_excludes_mentioning_html: On erillinen asetus, kun joku @mainitsee sinut (esim. kun vastaat sinulle kommentissa). <a href="%{url}">Napsauta tätä muokataksesi @mainintojen asetuksia</a>
     loud_explained: Saat sähköpostin aina, kun tulee uusi kommentti, joku äänestää tai aloittaa kyselyn tai viestiketjun.
     when_would_you_like_to_be_emailed_poll_type: Milloin haluaisit saada sähköpostia tästä %{poll_type}?
+    quiet_explained: Et saa sähköpostia, vaikka joku yrittäisi ilmoittaa sinulle. Saatat missata tärkeitä ilmoituksia tai päätöksiä. Tämä voi olla sopivaa, jos keskusteluketju ei koske sinua, mutta sitä ei suositella ryhmäasetuksiin, ellet pysty pysymään ajan tasalla muilla tavoilla.
+    normal_explained: Kun joku kirjoittaa nimesi ketjun tai kyselyn "Ilmoita"-kenttään tai mainitsee ryhmän.
+    normal_excludes_mentioning_html: Maininnoille (esim. kommentissa vastaamiselle) on oma asetus. <a href="%{url}">Voit muokata @mainintojen asetuksia napsauttamalla tästä</a> .
   close_explanation_modal:
     aria_label: Sulje lanka
     close_thread: Sulje lanka
@@ -1153,9 +1153,9 @@ fi:
       quiet: Älä lähetä sähköpostia tästä ryhmästä. Toiminta näkyy kojelaudassa.
       quiet_aria_description: Tämän ryhmän ilmoitusten äänenvoimakkuus on Hiljainen. Sinulle ei lähetetä sähköpostia tämän ryhmän toiminnasta. Ryhmätoiminta näkyy hallintapaneelissasi.
       quiet_message: Sinulle ei lähetetä sähköpostia toiminnasta kohteessa %{name}.
-      mute: Piilota tämä ryhmä hallintapaneelista ja älä ilmoita, ellei @mainita.
       mute_aria_description: Tämän ryhmän ilmoitusten äänenvoimakkuus on mykistetty. Sinulle ei lähetetä sähköpostia, ellei joku mainitse sinua, eikä ryhmätoimintaa näytetä hallintapaneelissasi.
       mute_message: '"%{name}" on poistettu hallintapaneelistasi.'
+      mute: Piilota tämä ryhmä kojelaudasta äläkä ilmoita siitä, ellei {'@'}mainita.
     privacy:
       private: 'Yksityisyys: Tämä ryhmä näkyy vain jäsenille'
       parent_members: 'Yksityisyys: Tämä ryhmä näkyy ryhmän %{parentGroupName} ja ryhmän %{groupName} jäsenille'
@@ -1318,7 +1318,6 @@ fi:
     share_group: Jaa ryhmäsi
     copy_link: Kopio
     email_addresses: Sähköpostiosoitteet
-    email_addresses_placeholder: esim. helperbot@loomio.org, friendlybot@loomio.org
     secret_group_url_explanation: Tämä on ryhmäsi osoite. Vain kutsutut jäsenet näkevät ryhmän.
     shareable_group_url_explanation: Voit jakaa tämän linkin julkisesti. Ihmiset voivat pyytää liittymistä, ja sinä voit hyväksyä tai jättää huomiotta pyynnöt.
     shareable_invitation_explanation: Älä jaa tätä linkkiä julkisesti. Kuka tahansa, jolla on se, voi liittyä ryhmään ilman hyväksyntääsi. Jaa tämä vain yksityisviestinnässä, jotta organisaatiosi ihmiset voivat liittyä.
@@ -1344,6 +1343,7 @@ fi:
     enter_emails_of_people_to_invite: Anna niiden henkilöiden sähköpostiosoitteet, jotka haluat kutsua ryhmään. Jos sinulla on lista, kopioi ja liitä ne kaikki kerralla.
     shareable_link_to_join_group: Jaettava linkki ryhmään liittymiseen
     reset_the_link: Palauta linkki
+    email_addresses_placeholder: esim. helperbot{'@'}loomio.org, friendlybot{'@'}loomio.org
   memberships_page:
     members: Jäsenet
     name_label: Nimi
@@ -1486,7 +1486,6 @@ fi:
     announcement_label: Ilmoitukset
     announcement_description: Saat sähköpostin kaikesta sisällöstä, josta ryhmäsi ihmiset ovat ilmoittaneet
     mentioned_label: Maininnat & vastaukset
-    mentioned_description: Kun joku @mainitsee sinut kommentissa tai vastaa sinulle, saat ilmoituksen sähköpostitse
     update_settings: Tallenna muutokset
     specific_groups: Asetukset tietyille ryhmille
     default_settings:
@@ -1497,6 +1496,7 @@ fi:
     messages:
       updated: Sähköpostiasetukset päivitetty
     learn_more: Lisätietoja sähköpostiasetuksista...
+    mentioned_description: Kun joku {'@'}mainitsee sinut kommentissa, saat ilmoituksen sähköpostitse.
   thread_preview:
     replies_count: "%{count} vastausta"
     unread_count: "%{count} lukematonta"
@@ -1522,9 +1522,9 @@ fi:
     thread_recalled: Lanka muistettu
     explain_mute:
       title: Et ole vielä mykisttänyt yhtään viestiketjua.
-      explanation_html: Mykistäminen on tapa piilottaa tai hiljentää viestiketjut, joista et ole kiinnostunut. Mykistäminen tarkoittaa, että et näe sitä <strong>Viimeisimmät-</strong> tai <strong>Lukemattomat -kohdassa</strong> , etkä saa ilmoituksia kyseisessä viestiketjussa tapahtuvasta toiminnasta, kuten ehdotuksista. Saat ilmoituksen vain, jos joku <strong>@mainitsee</strong> nimesi.
       instructions: Mykistä viestiketju viemällä hiiri sen päälle ja napsauttamalla mykistyskuvaketta.
       see_muted_html: Näet mykistetut viestiketjut napsauttamalla <strong>Mykistetty</strong> . Voit poistaa mykistyksen viemällä hiiren osoittimeen ja napsauttamalla samaa kuvaketta.
+      explanation_html: Mykistäminen on tapa piilottaa tai mykistää keskusteluketjuja, joista et ole kiinnostunut. Mykistäminen tarkoittaa, että et näe niitä <strong>Viimeisimmät-</strong> tai <strong>Lukemattomat-kansioissa</strong> , etkä saa ilmoituksia kyseisen keskusteluketjun toiminnasta, kuten ehdotuksista. Saat ilmoituksen vain, jos joku <strong>{'@'}mainitsee</strong> nimesi.
     filtering:
       filter_threads: Suodata langat
       filter_threads_aria_label: Suodata langat
@@ -2337,7 +2337,6 @@ fi:
     account_locked: Tilisi on lukittu liian monen epäonnistuneen kirjautumisyrityksen jälkeen. Tarkista sähköpostistasi lukituksen avauslinkki
     email_not_found: Valitettavasti emme löytäneet tiliä tällä sähköpostiosoitteella
     email_taken: Sähköpostiosoite on jo rekisteröity
-    email_placeholder: sinä@esimerkki.fi
     login_with_token: Olet valmis! Napsauta alla olevaa linkkiä jatkaaksesi.
     login_link_helptext: Napsauta alla olevaa painiketta, niin lähetämme sinulle linkin kirjautumiseen.
     enter_your_password: Anna salasanasi jatkaaksesi
@@ -2378,6 +2377,7 @@ fi:
     reactivate: Aktivoi tili uudelleen
     want_to_set_password: Haluatko kirjautua sisään salasanalla seuraavan kerran?
     change_your_password: Haluatko asettaa uuden salasanan?
+    email_placeholder: sinä{'@'}esimerkki.com
   chatbot:
     configure_chatbot: Määritä chatbot
     test_connection: Testaa yhteys

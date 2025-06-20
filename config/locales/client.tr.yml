@@ -33,11 +33,11 @@ tr:
     2_day_before: 2 gün önce
     3_day_before: 3 gün önce
     7_day_before: 7 gün önce
-    task_placeholder: Bir görev girin ve bu görevi atayacak birinden @bahsedin
     add_due_date: Son tarih ekle
     task_updated_done: Görev tamamlandı olarak işaretlendi!
     task_updated_not_done: Görev yapılmadı olarak işaretlendi
     no_tasks_assigned: Size atanan herhangi bir görev yok
+    task_placeholder: Bir görev girin ve {'@'} atamak için birinden bahsedin
   templates:
     template_gallery: Şablon galerisi
     title_template: "%{title} Şablonu"
@@ -469,10 +469,10 @@ tr:
     normal_desc: Birisi bana bildirdiğinde
     quiet_desc: Asla
     quiet_explained: Birisi sizi bilgilendirmeye çalışsa bile size e-posta gönderilmeyecektir. Önemli duyuruları veya kararları kaçırabilirsiniz. Bu, bir konu sizi ilgilendirmiyorsa uygun olabilir ancak güncel kalmanın başka yolları yoksa grup ortamı için önerilmez.
-    normal_explained: Birisi bir konu başlığının veya anketin "Bildir" alanına adınızı girdiğinde veya gruptan @mention yaptığında.
-    normal_excludes_mentioning_html: Birisi sizden @mentions yaptığında (örneğin bir yorumda size yanıt verdiğinde) ayrı bir ayar vardır. <a href="%{url}">@mentions ayarlarını düzenlemek için buraya tıklayın</a>
     loud_explained: Her yeni yorum yapıldığında, birisi oy verdiğinde, anket veya konu başlatıldığında e-posta ile bilgilendirileceksiniz.
     when_would_you_like_to_be_emailed_poll_type: Bu %{poll_type} hakkında ne zaman e-posta almak istersiniz?
+    normal_explained: Birisi bir konu başlığının veya anketin "Bildir" alanına adınızı girdiğinde veya gruptan {'@'}bahsettiğinde.
+    normal_excludes_mentioning_html: Birisi {'@'} sizden bahsettiğinde (örneğin bir yorumda size yanıt verdiğinde) ayrı bir ayar vardır. <a href="%{url}">@mentions ayarlarını düzenlemek için buraya tıklayın</a>
   close_explanation_modal:
     aria_label: Konuyu kapat
     close_thread: Konuyu kapat
@@ -1153,9 +1153,9 @@ tr:
       quiet: Bu grup hakkında e-posta gönderme. Etkinlikler kontrol panelinde görüntülenecektir.
       quiet_aria_description: Bu grup için bildirim ses düzeyiniz Sakin'e ayarlandı. Bu gruba ait faaliyetler hakkında e-posta almayacaksınız. Grup faaliyetleri Kontrol Panelinde görüntülenecektir
       quiet_message: '"%{name}" hakkındaki faaliyetler size e-postayla gönderilmeyecektir.'
-      mute: Bu grubu kontrol panelinde gizle ve @bahsedilmediğim sürece bildirim gönderme.
       mute_aria_description: Bu grup için bildirim ses düzeyiniz Sessiz'e ayarlandı. Bu gruba ait faaliyetler hakkında birisi sizden bahsetmediği sürece e-posta almayacaksınız ve grup faaliyetleri Kontrol Panelinde görüntülenmeyecektir.
       mute_message: '"%{name}" sizin panonuzdan kaldırıldı.'
+      mute: Bu grubu panodan gizle ve {'@'} belirtilmediği sürece bildirimde bulunma.
     privacy:
       private: 'Gizlilik: Bu grubu sadece grup üyeleri görebilir'
       parent_members: 'Gizlilik: Bu grup sadece %{parentGroupName} ve %{groupName} gruplarının üyelerine görünür.'
@@ -1318,7 +1318,6 @@ tr:
     share_group: Grubunuzu paylaşın
     copy_link: Kopyala
     email_addresses: E-posta adresleri
-    email_addresses_placeholder: Örn. helperbot@loomio.org, friendlybot@loomio.org
     secret_group_url_explanation: Bu grubunuzun adresidir. Grubu yalnızca davet edilen üyeler görebilir.
     shareable_group_url_explanation: Bu bağlantıyı herkese açık olarak paylaşabilirsiniz. İnsanlar katılma isteğinde bulunabilir ve siz de istekleri onaylayabilir veya yok sayabilirsiniz.
     shareable_invitation_explanation: Bu bağlantıyı herkese açık olarak paylaşmayın. Bu özelliğe sahip olan herkes sizin onayınız olmadan grubunuza katılabilir. Kuruluşunuzdaki kişilerin katılmasına izin vermek için bunu yalnızca özel iletişimlerde paylaşın.
@@ -1344,6 +1343,7 @@ tr:
     enter_emails_of_people_to_invite: Gruba davet etmek istediğiniz kişilerin e-posta adreslerini girin. Bir listeniz varsa, hepsini aynı anda kopyalayıp yapıştırın.
     shareable_link_to_join_group: Gruba katılmak için paylaşılabilir bağlantı
     reset_the_link: Bağlantıyı sıfırla
+    email_addresses_placeholder: örneğin helperbot{'@'}loomio.org, friendlybot{'@'}loomio.org
   memberships_page:
     members: Üyeler
     name_label: İsim
@@ -1486,7 +1486,6 @@ tr:
     announcement_label: Duyurular
     announcement_description: Gruplarınızdaki kişiler tarafından duyurulan tüm içerikler hakkında bir e-posta alacaksınız
     mentioned_label: Bahsetmeler ve Yanıtlar
-    mentioned_description: Birisi bir yorumda sizden @bahsettiğinde veya size yanıt verdiğinde bir bildirim e-postası alırsınız
     update_settings: Değişiklikleri Kaydet
     specific_groups: Belirli gruplara yönelik ayarlar
     default_settings:
@@ -1497,6 +1496,7 @@ tr:
     messages:
       updated: E-posta ayarları güncellendi
     learn_more: E-posta ayarları hakkında daha fazla bilgi edinin...
+    mentioned_description: Birisi {'@'} bir yorumda sizden bahsettiğinde, bir bildirim e-postası alacaksınız
   thread_preview:
     replies_count: "%{count} yanıt"
     unread_count: "%{count} okunmamış"
@@ -1522,9 +1522,9 @@ tr:
     thread_recalled: Konu geri çağrıldı
     explain_mute:
       title: Henüz hiçbir ileti dizisini yoksaymadınız.
-      explanation_html: Sessize alma, ilgilenmediğiniz ileti dizilerini gizlemenin veya susturmanın bir yoludur. Sessize alma, bunu <strong>En Son</strong> veya <strong>Okunmamış'da</strong> göremeyeceğiniz ve o ileti dizisindeki teklifler gibi etkinlikler hakkında bilgilendirilmeyeceğiniz anlamına gelir. Yalnızca birisi adınızdan <strong>@</strong> bahsettiğinde uyarı alırsınız.
-      instructions: Bir ileti dizisini sessize almak için üzerine gelin ve sessize alma simgesine tıklayın.
-      see_muted_html: Yoksayılan konularınızı görmek için <strong>"Yoksayıldı"yı</strong> tıklayın. Aynı simgenin üzerine gelip tıklayarak sesi açabilirsiniz.
+      explanation_html: Sessize alma, ilginizi çekmeyen konuları gizlemenin veya sessize almanın bir yoludur. Sessize alma, konuyu <strong>Son</strong> veya <strong>Okunmamış'ta</strong> görmeyeceğiniz ve teklifler gibi o konudaki etkinlikler hakkında bildirim almayacağınız anlamına gelir. Yalnızca biri <strong>{'@'} adınızdan bahsettiğinde</strong> uyarı alırsınız.
+      instructions: Bir konuyu sessize almak için, konu üzerine gelin ve sessize alma simgesine tıklayın.
+      see_muted_html: Sessize alınmış konularınızı görmek için <strong>"Sessiz"</strong> e tıklayın. Aynı simgenin üzerine gelip tıklayarak sessize almayı açabilirsiniz.
     filtering:
       filter_threads: Müzakereleri Filtrele
       filter_threads_aria_label: Müzakereleri Filtrele
@@ -2337,7 +2337,6 @@ tr:
     account_locked: Çok sayıda başarısız giriş denemesinden sonra hesabınız kilitlendi. Kilit açma bağlantısı için e-postanızı kontrol edin
     email_not_found: Üzgünüz, bu e-posta adresine sahip bir hesap bulamadık
     email_taken: E-posta adresi zaten kayıtlı
-    email_placeholder: sen@example.com
     login_with_token: Hazırsınız! Devam etmek için aşağıdaki bağlantıya tıklayın.
     login_link_helptext: Aşağıdaki düğmeyi tıkladığınızda size oturum açmanız için bir bağlantı göndereceğiz.
     enter_your_password: Devam etmek için şifrenizi girin
@@ -2378,6 +2377,7 @@ tr:
     reactivate: Hesabı yeniden aktif et
     want_to_set_password: Bir dahaki sefere şifreyle mi giriş yapmak istiyorsunuz?
     change_your_password: Yeni bir şifre belirlemek ister misiniz?
+    email_placeholder: sen{'@'}example.com
   chatbot:
     configure_chatbot: Chatbot'u yapılandır
     test_connection: Test bağlantısı

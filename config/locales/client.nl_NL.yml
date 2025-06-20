@@ -33,11 +33,11 @@ nl_NL:
     2_day_before: 2 dagen ervoor
     3_day_before: 3 dagen ervoor
     7_day_before: 7 dagen ervoor
-    task_placeholder: Voer een taak in en @vermeld iemand om deze toe te wijzen
     add_due_date: Voeg vervaldatum toe
     task_updated_done: Taak gemarkeerd als voltooid!
     task_updated_not_done: Taak gemarkeerd als niet voltooid
     no_tasks_assigned: Er zijn geen taken aan u toegewezen
+    task_placeholder: Voer een taak in en {'@'}noem iemand die deze moet toewijzen
   templates:
     template_gallery: Sjabloongalerij
     title_template: "%{title} sjabloon"
@@ -472,9 +472,9 @@ nl_NL:
     quiet_desc: Nooit
     quiet_explained: U ontvangt geen e-mail, zelfs niet als iemand u probeert te informeren. U mist mogelijk belangrijke aankondigingen of beslissingen. Dit kan geschikt zijn als een thread u niet aangaat, maar wordt niet aanbevolen voor de groepsomgeving, tenzij u andere manieren hebt om op de hoogte te blijven.
     normal_explained: Wanneer iemand jouw naam invoert in het veld 'Melden' van een thread of poll, of wanneer ze de groep @vermelden.
-    normal_excludes_mentioning_html: Er is een aparte instelling voor wanneer iemand jou @vermeldt (bijvoorbeeld wanneer iemand op jou reageert in een opmerking). <a href="%{url}">Klik hier om de instellingen voor @vermeldingen te bewerken</a>
     loud_explained: U ontvangt een e-mail wanneer er een nieuwe reactie is, iemand stemt of een poll of thread start.
     when_would_you_like_to_be_emailed_poll_type: Wanneer wilt u een e-mail ontvangen over deze %{poll_type}?
+    normal_excludes_mentioning_html: Er is een aparte instelling voor wanneer iemand je vermeldt (bijvoorbeeld wanneer iemand op je reageert in een reactie). <a href="%{url}">Klik hier om de instellingen voor @vermeldingen te bewerken.</a>
   close_explanation_modal:
     aria_label: Sluit bord
     close_thread: Sluit bord
@@ -1161,9 +1161,9 @@ nl_NL:
       quiet: Niet e-mailen over deze groep. Activiteit wordt weergegeven op het dashboard.
       quiet_aria_description: Je notificatievolume voor deze groep staat op Stil. Je krijgt geen e-mail over activiteit in deze groep. Groepsactiviteit wordt getoond op je dashboard.
       quiet_message: Je zal geen e-mails ontvangen over activiteit in "%{name}".
-      mute: Verberg deze groep van het dashboard en stuur geen notificatie tenzij ik @genoemd word.
       mute_aria_description: Je meldingsgeluid voor deze groep staat ingesteld op Dempen. Je zal geen e-mails krijgen tenzij iemand jou vermeldt. Groepsactiviteit zal niet worden weergegeven op je Dahboard.
       mute_message: '"%{name}" is verwijderd van je dashboard.'
+      mute: Verberg deze groep op het dashboard en geef geen melding, tenzij {'@'}het wordt vermeld.
     privacy:
       private: 'Privacy: Deze groep is alleen zichtbaar voor leden.'
       parent_members: 'Privacy: Deze groep is zichtbaar voor leden van %{parentGroupName} en leden van %{groupName}'
@@ -1334,7 +1334,6 @@ nl_NL:
     share_group: Deel je groep
     copy_link: Kopiëren
     email_addresses: E-mailadressen
-    email_addresses_placeholder: bijv. helperbot@loomio.org, friendlybot@loomio.org
     secret_group_url_explanation: Dit is het adres voor jouw groep. Enkel uitgenodigde leden zullen de groep kunnen zien.
     shareable_group_url_explanation: Je kan de link publiek delen. Personen kunnen een aanvraag indienen om aan te sluiten en je kan aanvragen goedkeuren of negeren.
     shareable_invitation_explanation: 'Deel deze link niet openbaar. Iedereen met deze link kan aansluiten bij jouw groep zonder jouw toestemming. Deel deze link enkel in privé-communicatie om personen uit jouw organisatie toe te laten. '
@@ -1360,6 +1359,7 @@ nl_NL:
     enter_emails_of_people_to_invite: Voer de e-mailadressen in van de mensen die je voor de groep wilt uitnodigen. Als je een lijst hebt, kopieer en plak ze dan allemaal tegelijk.
     shareable_link_to_join_group: Deelbare link om lid te worden van de groep
     reset_the_link: Link resetten
+    email_addresses_placeholder: bijv. helperbot{'@'}loomio.org, friendlybot{'@'}loomio.org
   memberships_page:
     members: Leden
     name_label: Naam
@@ -1502,7 +1502,6 @@ nl_NL:
     announcement_label: Aankondigingen
     announcement_description: Je zult een e-mail ontvangen over alle inhoud die door personen werden aangekondigd in jouw groepen.
     mentioned_label: Vermeldingen & Antwoorden
-    mentioned_description: Wanneer iemand u @vermeldt in een opmerking of op u reageert, ontvangt u een e-mailmelding
     update_settings: Bewaar veranderingen
     specific_groups: Instellingen voor specifieke groepen
     default_settings:
@@ -1513,6 +1512,7 @@ nl_NL:
     messages:
       updated: E-mailinstellingen bijgewerkt
     learn_more: Leer meer over e-mailinstellingen...
+    mentioned_description: Wanneer iemand jou in een reactie vermeldt, ontvang je een e-mailmelding
   thread_preview:
     replies_count: "%{count} antwoorden"
     unread_count: "%{count} ongelezen"
@@ -1538,12 +1538,9 @@ nl_NL:
     thread_recalled: Bord teruggeroepen
     explain_mute:
       title: Je hebt nog geen borden gedempt.
-      explanation_html: |
-        Dempen is een manier om borden waar je geen interesse in hebt te verbergen of stil te maken.
-        Dempen betekent dat je het niet ziet in <strong>Recent</strong> of <strong>Ongelezen</strong> en dat je geen melding krijgt over activiteiten in dat bord zoals voorstellen.
-        Je wordt alleen geïnformeerd als iemand je naam <strong>@noemt</strong>.
       instructions: Om een bord te dempen zoek je deze op en klik je op het icoon dempen.
       see_muted_html: Om je gedempte borden te zien, klik je op <strong>"Gedempt"</strong>. Je kunt dempen opheffen door op het bijbehorende pictogram te klikken.
+      explanation_html: Negeren is een manier om threads waarin je niet geïnteresseerd bent te verbergen of te dempen. Negeren betekent dat je ze niet ziet in <strong>Recent</strong> of <strong>Ongelezen</strong> en dat je geen meldingen ontvangt over activiteit in die thread, zoals voorstellen. Je krijgt alleen een melding als iemand <strong>{'@'}je naam vermeldt</strong> .
     filtering:
       filter_threads: Borden filteren
       filter_threads_aria_label: Borden filteren
@@ -2367,7 +2364,6 @@ nl_NL:
     account_locked: Je account is gedeactiveerd door te veel mislukte aanmeld pogingen. Kijk in je e-mail voor een activatie-link
     email_not_found: Helaas konden we geen account vinden met dat e-mailadres
     email_taken: E-mailadres is al geregistreerd
-    email_placeholder: you@example.com
     login_with_token: Helemaal klaar! Klik op onderstaande link om verder te gaan.
     login_link_helptext: Klik op de knop hieronder en we sturen je een aanmeld-link.
     enter_your_password: Voer je wachtwoord in om door te gaan
@@ -2408,6 +2404,7 @@ nl_NL:
     reactivate: Heractiveer account
     want_to_set_password: Wilt u de volgende keer inloggen met een wachtwoord?
     change_your_password: Wilt u een nieuw wachtwoord instellen?
+    email_placeholder: jij{'@'}voorbeeld.com
   chatbot:
     configure_chatbot: Chatbot configureren
     test_connection: Test verbinding
