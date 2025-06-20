@@ -39,6 +39,7 @@ class GroupSerializer < ApplicationSerializer
              :link_previews,
              :new_threads_max_depth,
              :new_threads_newest_first,
+             :has_custom_cover_photo,
              :cover_url,
              :open_discussions_count,
              :closed_discussions_count,
@@ -84,6 +85,11 @@ class GroupSerializer < ApplicationSerializer
 
   def logo_url
     object.self_or_parent_logo_url
+  end
+
+
+  def has_custom_cover_photo
+    object.custom_cover_photo?
   end
 
   def cover_url

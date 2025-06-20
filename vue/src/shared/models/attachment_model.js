@@ -1,5 +1,6 @@
 import BaseModel from '@/shared/record_store/base_model';
 import AppConfig from '@/shared/services/app_config';
+import Records from '@/shared/services/records';
 
 export default class AttachmentModel extends BaseModel {
   static singular = 'attachment';
@@ -7,7 +8,7 @@ export default class AttachmentModel extends BaseModel {
   static indices = ['recordType', 'recordId'];
 
   model() {
-    return this.recordStore[BaseModel.eventTypeMap[this.recordType]].find(this.recordId);
+    return Records[BaseModel.eventTypeMap[this.recordType]].find(this.recordId);
   }
 
   group() {

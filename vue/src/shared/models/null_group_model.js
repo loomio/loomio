@@ -1,6 +1,5 @@
 import {each} from 'lodash-es';
-import Vue from 'vue';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 
 export default class NullGroupModel {
   static singular = 'group';
@@ -10,7 +9,7 @@ export default class NullGroupModel {
   constructor() {
     const defaults = {
       parentId: null,
-      name: I18n.t('discussion.direct_thread'),
+      name: I18n.global.t('discussion.invite_only'),
       description: '',
       descriptionFormat: 'html',
       groupPrivacy: 'closed',
@@ -37,7 +36,7 @@ export default class NullGroupModel {
     };
 
     each(defaults, (value, key) => {
-      Vue.set(this, key, value);
+      this[key] = value;
       return true;
     });
   }

@@ -73,7 +73,6 @@ class ApplicationController < ActionController::Base
   def show
     resource = ModelLocator.new(resource_name, params).locate!
     @recipient = current_user
-    save_beta_setting!
     if current_user.can? :show, resource
       assign_resource
       @pagination = pagination_params
@@ -151,7 +150,6 @@ class ApplicationController < ActionController::Base
   def boot_app(status: 200)
     expires_now
     prevent_caching
-    save_beta_setting!
     render 'application/boot_app', layout: false, status: status
   end
 end

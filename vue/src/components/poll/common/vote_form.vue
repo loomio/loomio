@@ -3,8 +3,10 @@ import EventBus from '@/shared/services/event_bus';
 import Flash   from '@/shared/services/flash';
 import Records   from '@/shared/services/records';
 import { compact } from 'lodash-es';
+import WatchRecords from '@/mixins/watch_records';
 
 export default {
+  mixins: [WatchRecords],
   props: {
     stance: Object
   },
@@ -13,6 +15,7 @@ export default {
     return {
       selectedOptionIds: compact((this.stance.pollOptionIds().length && this.stance.pollOptionIds()) || [parseInt(this.$route.query.poll_option_id)]),
       selectedOptionId: this.stance.pollOptionIds()[0] || parseInt(this.$route.query.poll_option_id),
+      loading: false,
       options: []
     };
   },
@@ -74,6 +77,7 @@ export default {
 
   methods: {
     submit() {
+      this.loading = true;
       if (!this.stance.noneOfTheAbove && this.singleChoice) {
         this.stance.stanceChoicesAttributes = [{poll_option_id: this.selectedOptionId}];
       } else {
@@ -85,7 +89,11 @@ export default {
       this.stance.save().then(() => {
         Flash.success(`poll_${this.stance.poll().pollType}_vote_form.stance_${actionName}`);
         EventBus.$emit('closeModal');
-      }).catch(() => true);
+      }).catch((err) => {
+        Flash.error('poll_common_form.please_review_the_form');
+        console.log(err);
+
+      }).finally(() => this.loading = false);
     },
 
     isSelected(option) {
@@ -107,7 +115,7 @@ export default {
       if (this.optionSelected && this.isSelected(option)) {
           return ['elevation-2', votingStatus];
       } else {
-        return [votingStatus];
+        return ['poll-common-vote-form__button--none-selected', votingStatus];
       }
     }
   }
@@ -118,23 +126,22 @@ export default {
 
 <template lang="pug">
 form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.stop.capture="submit()")
-  submit-overlay(:value="stance.processing")
-
-  v-alert(v-if="poll.config().has_options && !poll.singleChoice()", :color="optionCountAlertColor")
+  v-alert(v-if="poll.config().has_options && !poll.singleChoice()" :color="optionCountAlertColor")
     span(
       v-if="poll.minimumStanceChoices == poll.maximumStanceChoices"
       v-t="{path: 'poll_common.select_count_options', args: {count: poll.minimumStanceChoices}}")
     span(
       v-else
       v-t="{path: 'poll_common.select_minimum_to_maximum_options', args: {minimum: poll.minimumStanceChoices, maximum: poll.maximumStanceChoices}}")
-  v-sheet.poll-common-vote-form__button.mb-2.rounded(
-    outlined
-    :style="(isSelected(option) && {'border-color': option.color}) || {}"
+
+  v-card.poll-common-vote-form__button.mb-2.rounded(
+    variant="tonal"
+    :color="(isSelected(option) && option.color) || null"
     v-for='option in options'
     :key='option.id'
     :class="classes(option)"
   )
-    label
+    label.text-on-surface
       input(
         v-if="singleChoice"
         v-model="selectedOptionId"
@@ -151,8 +158,8 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
         type="checkbox"
         :disabled="stance.noneOfTheAbove"
       )
-      v-list-item
-        v-list-item-icon
+      v-list-item(lines="two")
+        template(v-slot:prepend)
           template(v-if="hasOptionIcon")
             v-avatar(size="48")
               img( aria-hidden="true", :src="'/img/' + option.icon + '.svg'")
@@ -161,29 +168,13 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
             common-icon(name="mdi-radiobox-marked" v-if="singleChoice && isSelected(option)" :color="isSelected(option) ? 'primary' : 'undefined'")
             common-icon(name="mdi-checkbox-blank-outline" v-if="!singleChoice && !isSelected(option)" :color="isSelected(option) ? 'primary' : 'undefined'")
             common-icon(name="mdi-checkbox-marked" v-if="!singleChoice && isSelected(option)" :color="isSelected(option) ? 'primary' : 'undefined'")
-        v-list-item-content
-          v-list-item-title.poll-common-vote-form__button-text {{option.optionName()}}
-          v-list-item-subtitle.poll-common-vote-form__allow-wrap {{option.meaning}}
-  v-checkbox.ml-4.none-of-the-above(
+        v-list-item-title.poll-common-vote-form__button-text {{option.optionName()}}
+        v-list-item-subtitle.poll-common-vote-form__allow-wrap {{option.meaning}}
+  v-checkbox.ml-2.none-of-the-above(
     v-if="poll.showNoneOfTheAbove"
     v-model="stance.noneOfTheAbove"
     :label="$t('poll_common_form.none_of_the_above')"
   )
-  //v-sheet.poll-common-vote-form__button.mb-2.rounded.voting-enabled(outlined v-if="poll.showNoneOfTheAbove")
-  //  label
-  //    input(
-  //      v-model="stance.noneOfTheAbove"
-  //      :value="true"
-  //      :aria-label="$t('poll_common_form.none_of_the_above')"
-  //      type="checkbox"
-  //    )
-  //    v-list-item
-  //      v-list-item-icon
-  //        common-icon(name="mdi-checkbox-blank-outline" v-if="!stance.noneOfTheAbove")
-  //        common-icon(name="mdi-checkbox-marked" v-if="stance.noneOfTheAbove" :color="'primary'")
-  //      v-list-item-content
-  //        v-list-item-title.poll-common-vote-form__button-text
-  //          span(v-t="'poll_common_form.none_of_the_above'")
 
   poll-common-stance-reason(
     :stance='stance'
@@ -194,8 +185,9 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
     v-btn.poll-common-vote-form__submit(
       @click='submit()'
       :disabled='!optionCountValid || !poll.isVotable()'
-      :loading="stance.processing"
+      :loading="loading"
       color="primary"
+      variant="elevated"
       block
     )
       span(v-t="submitText")
@@ -208,8 +200,17 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
 .poll-common-vote-form__allow-wrap
   white-space: normal
 
+.poll-common-vote-form__button--none-selected
+  opacity: 0.88 !important
+
+.poll-common-vote-form__button--none-selected:hover
+  opacity: 1 !important
+
 .poll-common-vote-form__button--not-selected
-  opacity: 0.33 !important
+  opacity: 0.44 !important
+
+.poll-common-vote-form__button--not-selected:hover
+  opacity: 0.66 !important
 
 .poll-common-vote-form__button.voting-enabled label
   cursor: pointer
@@ -221,9 +222,6 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
     width: 0
     height: 0
 
-.poll-common-vote-form__button.voting-enabled
-  &:hover
-    border: 1px solid var(--v-primary-base)
 
 .poll-common-vote-form__button.voting-disabled
   opacity: 0.33 !important

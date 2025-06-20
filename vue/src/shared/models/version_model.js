@@ -1,5 +1,6 @@
 import BaseModel from '@/shared/record_store/base_model';
 import {filter, keys, includes} from 'lodash-es';
+import Records from '@/shared/services/records';
 
 export default class VersionModel extends BaseModel {
   static singular = 'version';
@@ -26,7 +27,7 @@ export default class VersionModel extends BaseModel {
   }
 
   model() {
-    return this.recordStore[`${this.itemType.toLowerCase()}s`].find(this.itemId);
+    return Records[`${this.itemType.toLowerCase()}s`].find(this.itemId);
   }
 
   isCurrent() {

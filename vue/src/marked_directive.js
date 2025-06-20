@@ -1,4 +1,3 @@
-import Vue from 'vue';
 import {marked} from 'marked';
 import {customRenderer, options} from '@/shared/helpers/marked';
 marked.setOptions(Object.assign({renderer: customRenderer()}, options));
@@ -9,7 +8,7 @@ const render = function(el, binding, vnode) {
   return el.innerHTML = emojiReplaceText(marked(binding.value));
 };
 
-export default Vue.directive('marked', {
-  update: render,
-  bind: render
-});
+export default {
+  updated: render,
+  beforeMount: render
+};

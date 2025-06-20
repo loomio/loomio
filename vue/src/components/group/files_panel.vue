@@ -130,14 +130,21 @@ export default
 
 <template lang="pug">
 div
-  v-layout.py-2(align-center wrap)
-    v-text-field(clearable hide-details solo @input="onQueryInput" :placeholder="$t('navbar.search_files', {name: group.name})" :append-icon="mdiMagnify")
+  .pt-4.pb-2
+    v-text-field(
+      clearable
+      hide-details
+      variant="solo"
+      density="compact"
+      @update:model-value="onQueryInput"
+      :placeholder="$t('navbar.search_files_short')"
+      :prepend-inner-icon="mdiMagnify")
   v-card.group-files-panel(outlined)
     div(v-if="loader.status == 403")
       p.pa-4.text-center(v-t="'error_page.forbidden'")
     div(v-else)
       p.text-center.pa-4(v-if="!loading && !items.length" v-t="'common.no_results_found'")
-      v-simple-table(v-else :items="items" hide-default-footer)
+      v-table(v-else :items="items" hide-default-footer)
         thead
           tr
             th(v-t="'group_files_panel.filename'")
@@ -148,8 +155,8 @@ div
           tr(v-for="item in items" :key="item.id")
             td
               v-layout(align-center)
-                common-icon(:name="'mdi-'+ item.icon")
-                a(:href="item.downloadUrl || item.url") {{item.filename || item.title }}
+                common-icon.mr-2(:name="'mdi-'+ item.icon")
+                a.text-on-surface(:href="item.downloadUrl || item.url") {{item.filename || item.title }}
             td
               user-avatar(:user="item.author()")
             td
@@ -157,8 +164,15 @@ div
             td(v-if="canAdminister")
               action-menu(v-if="Object.keys(actionsFor(item)).length" :actions="actionsFor(item)" icon)
 
-      v-layout(justify-center)
+      .d.flex.justify-center
         .d-flex.flex-column.justify-center.align-center
           //- span(v-if="loader.total == null") {{items.length}} / {{attachmentLoader.total}}
-          v-btn.my-2(outlined color='primary' v-if="!attachmentLoader.exhausted" :loading="loading" @click="fetch()" v-t="'common.action.load_more'")
+          v-btn.my-2(
+            variant="tonal"
+            color='primary'
+            v-if="!attachmentLoader.exhausted"
+            :loading="loading"
+            @click="fetch()"
+          )
+            span(v-t="'common.action.load_more'")
 </template>

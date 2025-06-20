@@ -23,8 +23,8 @@ export default {
       case 'facebook': return '#3b5998';
       case 'google': return '#dd4b39';
       case 'slack': return '#e9a820';
-      case 'saml': return this.$vuetify.theme.themes.light.primary;
-      case 'oauth': return this.$vuetify.theme.themes.light.primary;
+      case 'saml': return 'primary';
+      case 'oauth': return 'primary';
       }
     },
     providerName(name) {
@@ -46,10 +46,16 @@ export default {
 </script>
 
 <template lang="pug">
-.auth-provider-form.mt-4(v-if='providers.length')
-  v-layout.auth-provider-form__providers(column)
-    v-btn.auth-provider-form__provider.my-2(v-for='provider in providers' :key="provider.id" outlined :color="providerColor(provider.name)" @click='select(provider)')
-      common-icon(:name="iconClass(provider.name)")
+.auth-provider-form(v-if='providers.length')
+  .d-flex.flex-column.auth-provider-form__providers
+    v-btn.auth-provider-form__provider.my-2(
+      v-for='provider in providers'
+      :key="provider.id"
+      variant="tonal"
+      :color="providerColor(provider.name)"
+      @click='select(provider)'
+    )
+      common-icon(:color="providerColor(provider.name)" :name="iconClass(provider.name)")
       space
       span(v-t="{ path: 'auth_form.continue_with_provider', args: { provider: providerName(provider.name) } }")
     p.my-2.text-center.auth-email-form__or-enter-email(v-if='emailLogin', v-t="'auth_form.or_enter_your_email'")

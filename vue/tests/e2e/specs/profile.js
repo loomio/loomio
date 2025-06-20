@@ -14,7 +14,8 @@ module.exports = {
     page.click('.profile-page__update-button')
 
     page.ensureSidebar()
-    page.expectText('.sidebar__user-dropdown .v-list-item__title', 'Ferris Bueller')
+    page.click('.sidebar-close-settings');
+    page.expectText('.sidebar__user-dropdown .v-list-item-title', 'Ferris Bueller')
   },
 
   'displays_a_user_and_their_non-secret_groups': (test) => {

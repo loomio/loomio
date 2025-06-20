@@ -34,22 +34,21 @@ export default
 
 <template lang="pug">
 v-menu
-  template(v-slot:activator="{ on, attrs }")
+  template(v-slot:activator="{ props }")
     div.rounded-lg.color-picker-btn
       v-btn.drop-down-button(
-        small icon
+        size="x-small" icon variant="text"
         :style="{'background-color': buttonBgColor, color: buttonFgColor}" 
-        v-on="on"
-        v-bind="attrs"
+        v-bind="props"
         :title="$t('formatting.colors')"
       )
-        common-icon(small name="mdi-palette")
+        common-icon(size="small" name="mdi-palette")
   v-card.color-picker.pa-2
     .swatch.swatch-color(v-for="(value, key) in colors"
                          :class="{'swatch--selected': key == activeColorKey }"
                          :style="{'background-color': value.lighten1}"
                          @click="editor.chain().setHighlight({color: key}).focus().run()") &nbsp;
-    v-btn.mt-2(block x-small outlined @click="editor.chain().unsetHighlight().focus().run()" v-t="'formatting.reset'")
+    v-btn.mt-2(block size="x-small" outlined @click="editor.chain().unsetHighlight().focus().run()" v-t="'formatting.reset'")
 </template>
 
 <style lang="sass">

@@ -11,7 +11,7 @@ export default {
     variableScore() { return this.poll.hasVariableScore(); },
     pollType() { return this.poll.pollType; },
     datesAsOptions() { return this.poll.datesAsOptions(); },
-    choices() { return this.stance.sortedChoices(); }
+    choices() { return this.stance.sortedChoices().filter(choice => choice.score > 0 || this.pollType == 'score'); }
   },
 
   methods: {
@@ -35,12 +35,11 @@ export default {
   template(v-else)
     .poll-common-stance-choice.text-truncate(
       v-for="choice in choices"
-      v-if="choice.score > 0 || pollType == 'score'"
       :key="choice.id"
       :class="'poll-common-stance-choice--' + pollType")
-      common-icon(small :color="choice.pollOption.color" v-if="!variableScore" name="mdi-check-circle")
+      common-icon(size="small" :color="choice.pollOption.color" v-if="!variableScore" name="mdi-check-circle")
       span(:style="{color: choice.pollOption.color}" v-if="variableScore") {{choice.rank || choice.score}}
-      span.ml-2.text--secondary
+      span.ml-2.text-medium-emphasis
         | {{ choice.pollOption.optionName() }}
 </template>
 <style lang="sass">

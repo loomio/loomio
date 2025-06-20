@@ -31,14 +31,10 @@ export default {
 <template lang="pug">
 v-alert.my-4.poll-common-set-outcome-panel(
   :icon="mdiFlagCheckered"
-  prominent
-  outlined
+  variant="tonal"
   v-if="showPanel()"
-  color="primary"
+  color="info"
   elevation="3")
-  v-row(align="center")
-    v-col.grow
-      span(v-t="{path: 'poll_common_set_outcome_panel.poll_type', args: {poll_type: poll.translatedPollType()}}")
-    v-col.shrink
-      v-btn.poll-common-set-outcome-panel__submit(color="primary" @click="openOutcomeForm()" v-t="'poll_common_set_outcome_panel.enter_outcome'")
+    p.pb-4(v-t="{path: 'poll_common_set_outcome_panel.poll_type', args: {poll_type: poll.translatedPollType()}}")
+    v-btn.poll-common-set-outcome-panel__submit(color="primary" @click="openOutcomeForm()" v-t="'poll_common_set_outcome_panel.enter_an_outcome'")
 </template>

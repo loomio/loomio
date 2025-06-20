@@ -1,6 +1,6 @@
 import TaskItem from '@tiptap/extension-task-item'
 import Session from '@/shared/services/session'
-import { VueNodeViewRenderer } from '@tiptap/vue-2'
+import { VueNodeViewRenderer } from '@tiptap/vue-3'
 import TaskItemComponent from './task_item_component.vue'
 
 export const CustomTaskItem = TaskItem.extend({

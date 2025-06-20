@@ -14,14 +14,15 @@ export default
 
 <template lang="pug">
 .files-list(v-if="files.length")
-  v-card.mt-3(outlined v-for="wrapper in files" :key="wrapper.key")
-    v-card-title.files-list__item.text--secondary
+  v-card.mt-3(v-for="wrapper in files" :key="wrapper.key")
+    v-card-title.files-list__item.text-medium-emphasis
       common-icon.mr-2.files-list__icon(name="mdi-image")
       a.files-list__file-name(v-if="wrapper.blob" :href="wrapper.blob.download_url" target="_blank") {{wrapper.file.name}}
       span.files-list__file-name(v-if="!wrapper.blob") {{wrapper.file.name}}
+      v-btn.files-list__remove(icon @click="$emit('removeFile', wrapper.file.name)" variant="tonal")
+        common-icon(name="mdi-delete-outline")
+    v-card-subtitle
       progress(v-if="!wrapper.blob" max="100" :value="wrapper.percentComplete")
-      v-btn.files-list__remove(icon @click="$emit('removeFile', wrapper.file.name)")
-        common-icon(name="mdi-close")
     p(v-if="wrapper.blob && wrapper.blob.preview_url")
       img(:src="wrapper.blob.preview_url")
 </template>

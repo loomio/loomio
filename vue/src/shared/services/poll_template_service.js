@@ -6,7 +6,7 @@ import AbilityService from '@/shared/services/ability_service';
 import StanceService  from '@/shared/services/stance_service';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
 import openModal      from '@/shared/helpers/open_modal';
-import i18n           from '@/i18n';
+import { I18n }           from '@/i18n';
 import { hardReload } from '@/shared/helpers/window';
 
 export default new class PollTemplateService {

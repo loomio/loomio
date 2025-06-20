@@ -2,19 +2,25 @@
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
 import ReactionService from '@/shared/services/reaction_service';
-import {merge, capitalize, difference, keys, startsWith, each, compact} from 'lodash-es';
+import { merge, capitalize, difference, keys, startsWith, each, compact } from 'lodash-es';
 import { colonToUnicode, stripColons, srcForEmoji, emojiSupported } from '@/shared/helpers/emojis';
+import WatchRecords from '@/mixins/watch_records';
 
 export default {
+  mixins: [WatchRecords],
+
   props: {
     model: Object,
-    small: Boolean,
-    canEdit: Boolean
+    canEdit: Boolean,
+    size: {
+      type: String,
+      default: 'default'
+    }
   },
 
   data() {
     return {
-      diameter: (this.small && 20) || 24,
+      diameter: (this.size == 'x-small' && 20) || 24,
       maxNamesCount: 10,
       reactionHash: {all: []},
       emojiSupported
@@ -108,9 +114,9 @@ export default {
   .reactions-display__emojis
     .reaction.lmo-pointer(@click="removeMine(reaction, canEdit)" v-for="reaction in reactionTypes" :key="reaction")
       v-tooltip(bottom)
-        template(v-slot:activator="{ on, attrs }")
-          .reactions-display__group(v-on="on" v-bind="attrs")
-            span(:class="(small &&'small') || undefined" v-if="emojiSupported") {{colonToUnicode(reaction)}}
+        template(v-slot:activator="{ attrs }")
+          .reactions-display__group(v-bind="attrs")
+            span(:class="(size == 'x-small' && 'small') || undefined" v-if="emojiSupported") {{colonToUnicode(reaction)}}
             img.emoji(v-else :src="srcForEmoji(colonToUnicode(reaction))")
             user-avatar.reactions-display__author(no-link v-for="user in reactionHash[reaction]" :key="user.id" :user="user" :size="diameter")
         .reactions-display__name(v-for="user in reactionHash[reaction]" :key="user.id")

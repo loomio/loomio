@@ -22,11 +22,11 @@ export default {
   },
   computed: {
     styles() {
-      const { bar, top } = this.$vuetify.application;
+      // const { bar, top } = this.$vuetify.application;
       return{
-        display: 'flex',
+        // display: 'flex',
         position: 'sticky',
-        top: `${bar + top}px`,
+        top: `64px`,
         zIndex: 1
       };
     }
@@ -35,10 +35,12 @@ export default {
 </script>
 
 <template lang='pug'>
-v-banner.discussion-fork-actions(single-line sticky :elevation="4" v-if='discussion.forkedEventIds.length' :icon="mdiCallSplit" color="primary" :style="styles")
-  span(v-t="'discussion_fork_actions.helptext'")
+v-banner.discussion-fork-actions(lines="one" sticky :elevation="4" v-if='discussion.forkedEventIds.length' :icon="mdiCallSplit" color="primary" :style="styles")
+  v-banner-text
+    span(v-t="'discussion_fork_actions.helptext'")
   template(v-slot:actions)
-    v-btn(color="primary" @click="openMoveCommentsModal()" v-t="'discussion_fork_actions.move'")
-    v-btn(icon @click='discussion.forkedEventIds = []')
-      common-icon(name="mdi-close")
+    .d-flex.align-center
+      v-btn(color="primary" @click="openMoveCommentsModal()" v-t="'discussion_fork_actions.move'")
+      v-btn(icon @click='discussion.forkedEventIds = []')
+        common-icon(name="mdi-close")
 </template>

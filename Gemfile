@@ -15,7 +15,6 @@ gem 'active_model_serializers', '~> 0.8.1'
 gem 'actionpack-action_caching'
 gem 'actionpack-page_caching'
 gem 'cancancan'
-gem 'concurrent-ruby', '1.3.4'
 gem 'gravtastic'
 gem 'activeadmin', '~> 3.3.0'
 gem 'ransack', '4.3.0'
@@ -68,6 +67,7 @@ gem 'pg_search'
 gem 'i18n-timezones'
 gem 'actionpack-cloudflare'
 gem 'victor', require: false
+gem 'concurrent-ruby', '1.3.4' # can remove in rails 7.1
 
 group :development, :test do
   gem 'byebug'
@@ -90,7 +90,6 @@ group :test do
   gem 'rspec-rails', '~> 7.1.1'
   gem 'rspec-its'
   gem 'rspec-collection_matchers'
-  gem 'rspec-activemodel-mocks'
   gem 'database_cleaner-active_record'
   gem 'database_cleaner-redis'
 end

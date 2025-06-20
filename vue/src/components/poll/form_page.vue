@@ -6,8 +6,10 @@ import Flash  from '@/shared/services/flash';
 import PollCommonForm from '@/components/poll/common/form';
 import PollCommonChooseTemplate from '@/components/poll/common/choose_template';
 import { compact } from 'lodash-es'; 
+import UrlFor from '@/mixins/url_for';
 
 export default {
+  mixins: [UrlFor],
   components: {PollCommonForm, PollCommonChooseTemplate},
 
   data() {
@@ -85,7 +87,7 @@ export default {
     breadcrumbs() {
       return compact([this.group.parentId && this.group.parent(), this.group]).map(g => {
         return {
-          text: g.name,
+          title: g.name,
           disabled: false,
           to: this.urlFor(g)
         };

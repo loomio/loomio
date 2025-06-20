@@ -123,7 +123,7 @@ export default {
     html-diff.text-h5(:before="titleChanges[0]" :after="titleChanges[1]")
 
   .mb-3(v-if="!stanceChoices && otherFields.length")
-    v-simple-table(dense)
+    v-table(density="compact")
       thead
         tr
           th(v-t="'revision_history_modal.field'")
@@ -136,13 +136,13 @@ export default {
           td {{field.now}}
 
   .mb-3(v-if="stanceChoices")
-    .text-secondary(v-t="'revision_history_modal.before'")
-    v-simple-table.mb-4(dense)
+    .text-medium-emphasis(v-t="'revision_history_modal.before'")
+    v-table.mb-4(density="compact")
       tr(v-for="choice in stanceChoices.was")
         td(:style="'border-left: 2px solid '+choice.color") {{choice.name}}
         td {{choice.score}}
-    .text-secondary(v-t="'revision_history_modal.after'")
-    v-simple-table.mb-4(dense)
+    .text-medium-emphasis(v-t="'revision_history_modal.after'")
+    v-table.mb-4(density="compact")
       tr(v-for="choice in stanceChoices.now")
         td(:style="'border-left: 2px solid '+choice.color") {{choice.name}}
         td {{choice.score}}

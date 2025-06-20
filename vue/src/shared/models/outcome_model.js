@@ -4,6 +4,7 @@ import HasDocuments     from '@/shared/mixins/has_documents';
 import HasTranslations  from '@/shared/mixins/has_translations';
 import NullGroupModel   from '@/shared/models/null_group_model';
 import {capitalize} from 'lodash-es';
+import Records from '@/shared/services/records';
 
 export default class OutcomeModel extends BaseModel {
   static singular = 'outcome';
@@ -34,7 +35,7 @@ export default class OutcomeModel extends BaseModel {
 
   afterConstruction() {
     HasDocuments.apply(this);
-    return HasTranslations.apply(this);
+    HasTranslations.apply(this);
   }
 
   collabKeyParams() {
@@ -49,7 +50,7 @@ export default class OutcomeModel extends BaseModel {
   }
 
   reactions() {
-    return this.recordStore.reactions.find({
+    return Records.reactions.find({
       reactableId: this.id,
       reactableType: capitalize(this.constructor.singular)
     });

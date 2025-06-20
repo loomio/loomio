@@ -28,10 +28,10 @@ class DiscussionTemplateService
 
   def self.initial_templates(category)
     names = {
-      board:         ['discuss_a_topic', 'onboarding_to_loomio', 'approve_a_document', 'prepare_for_a_meeting', 'funding_decision'],
-      membership:    ['discuss_a_topic', 'onboarding_to_loomio', 'share_links_and_info', 'decision_by_consensus', 'elect_a_governance_position'],
-      self_managing: ['discuss_a_topic', 'onboarding_to_loomio', 'advice_process', 'consent_process'],
-      other:         ['discuss_a_topic', 'onboarding_to_loomio', 'approve_a_document', 'advice_process', 'consent_process'],
+      board:         ['blank', 'discuss_a_topic', 'practice_thread', 'approve_a_document', 'prepare_for_a_meeting', 'funding_decision'],
+      membership:    ['blank', 'discuss_a_topic', 'practice_thread', 'share_links_and_info', 'decision_by_consensus', 'elect_a_governance_position'],
+      self_managing: ['blank', 'discuss_a_topic', 'practice_thread', 'advice_process', 'consent_process'],
+      other:         ['blank', 'discuss_a_topic', 'practice_thread', 'approve_a_document', 'advice_process', 'consent_process'],
     }.with_indifferent_access.fetch(category, ['blank'])
 
     default_templates.filter { |dt| names.include? dt.key }
@@ -63,7 +63,7 @@ class DiscussionTemplateService
                         filename: 'loomiologo.png')
     end
 
-    group.discussion_templates = default_templates.map do |dt| 
+    group.discussion_templates = default_templates.map do |dt|
       dt.public = true
       dt.author = User.helper_bot
       dt

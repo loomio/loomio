@@ -5,6 +5,7 @@ import AnnouncementService from '@/shared/services/announcement_service';
 import {map, debounce, without, compact, filter, uniq, uniqBy, find, difference, escapeRegExp} from 'lodash-es';
 import AbilityService from '@/shared/services/ability_service';
 import NotificationsCount from './notifications_count';
+import Session from '@/shared/services/session';
 
 export default {
   components: {
@@ -42,7 +43,8 @@ export default {
       suggestedUserIds: [],
       suggestions: [],
       recipients: [],
-      loading: false
+      loading: false,
+      currentUserId: Session.user().id
     };
   },
 
@@ -72,13 +74,13 @@ export default {
       this.updateSuggestions();
     },
 
-    query(q) {
-      this.$emit('new-query', q);
-      this.fetchAndUpdateSuggestions();
-    }
   },
 
   methods: {
+    updateQuery(q) {
+      this.query = q
+      this.fetchAndUpdateSuggestions();
+    },
     fetchChatbots() {
       if (!this.model.groupId) { return; }
       Records.fetch({
@@ -334,81 +336,80 @@ export default {
 
 <template lang="pug">
 div.recipients-autocomplete
-  //- chips attribute is messing with e2es; no behaviour change noticed
   v-autocomplete.announcement-form__input(
     :disabled="model.isA('discussion') && !canAnnounceDiscussion"
     multiple
     return-object
-    auto-select-first
     hide-selected
-    v-model='recipients'
-    @change="query = null"
-    :search-input.sync="query"
-    item-text='name'
     hide-no-data
+    auto-select-first
+    clear-on-select
+    v-model='recipients'
+    @update:search="updateQuery"
+    item-title='name'
+    item-value='id'
     :loading="loading"
     :label="label"
     :placeholder="placeholder"
     :items='suggestions'
-    )
+  )
     template(v-slot:no-data)
       v-list-item
-        v-list-item-icon
+        template(v-slot:prepend)
           common-icon(v-if="!query" name="mdi-account-search")
           common-icon(v-if="query" name="mdi-information-outline")
-        v-list-item-content
-          v-list-item-title
-            span(v-if="query" v-t="'common.no_results_found'")
-            span(v-else)
-              span(v-if="canAddGuests" v-t="'announcement.search_by_name_or_email'")
-              span(v-if="!canAddGuests" v-t="'announcement.search_by_name'")
-          v-list-item-subtitle
-            span(v-if="!canAddGuests && !canNotifyGroup"
-                 v-t="'announcement.only_admins_can_announce_or_invite'")
-            span(v-if="!canAddGuests && canNotifyGroup"
-                 v-t="'announcement.only_admins_can_invite'")
-            span(v-if="canAddGuests && !canNotifyGroup"
-                 v-t="'announcement.only_admins_can_announce'")
-    template(v-slot:selection='data')
+        v-list-item-title
+          span(v-if="query" v-t="'common.no_results_found'")
+          span(v-else)
+            span(v-if="canAddGuests" v-t="'announcement.search_by_name_or_email'")
+            span(v-if="!canAddGuests" v-t="'announcement.search_by_name'")
+        v-list-item-subtitle
+          span(v-if="!canAddGuests && !canNotifyGroup"
+               v-t="'announcement.only_admins_can_announce_or_invite'")
+          span(v-if="!canAddGuests && canNotifyGroup"
+               v-t="'announcement.only_admins_can_invite'")
+          span(v-if="canAddGuests && !canNotifyGroup"
+               v-t="'announcement.only_admins_can_announce'")
+    template(v-slot:chip='{ props, item }')
       v-chip.chip--select-multi(
-        v-if="data.item.type =='audience'"
-        :value='data.selected'
-        close
-        color='primary'
-        @click:close='remove(data.item)'
-        @click='expand(data.item)')
+        v-if="item.raw.type =='audience'"
+        v-bind="props"
+        :value='item.selected'
+        closable
+        @click:close='remove(item.raw)'
+        @click='expand(item.raw)')
         span
-          common-icon.mr-1(small name="data.item.icon")
-        span {{ data.item.name }}
+          common-icon.mr-1(color="info" :name="item.raw.icon")
+        span {{ item.title }}
       v-chip.chip--select-multi(
         v-else
-        :value='data.selected'
-        close
-        outlined
-        color='primary'
-        @click:close='remove(data.item)')
+        v-bind="props"
+        :value='item.selected'
+        closable
+        @click:close='remove(item.raw)')
         span
-          user-avatar.mr-1(
-            v-if="data.item.type == 'user'"
-            :user="data.item.user"
+          user-avatar.mr-2(
+            v-if="item.raw.type == 'user'"
+            :user="item.raw.user"
             :size="24" no-link)
-          common-icon.mr-1(v-else small name="data.item.icon")
-        span {{ data.item.name }}
-        span(v-if="data.item.type == 'user' && currentUserId == data.item.id")
+          common-icon.mr-2(v-else size="small" :name="item.raw.icon")
+        span {{ item.title }}
+        span(v-if="item.raw.type == 'user' && currentUserId == item.value")
           space
           span ({{ $t('common.you') }})
-    template(v-slot:item='data')
-      v-list-item-avatar
-        user-avatar(v-if="data.item.type == 'user'", :user="data.item.user", :size="24" no-link)
-        common-icon.mr-1(v-else small name="data.item.icon")
-      v-list-item-content.announcement-chip__content
-        v-list-item-title
-          span {{data.item.name}}
-          span(v-if="data.item.type == 'user' && currentUserId == data.item.id")
-            space
-            span ({{ $t('common.you') }})
-        v-list-item-subtitle(v-if="data.item.user && data.item.user.email")
-          span {{data.item.user.email}}
+    template(v-slot:item='{props, item}')
+      v-list-item.recipients-autocomplete-suggestion(v-bind="props" lines="two")
+        template(v-slot:prepend)
+          user-avatar.mr-2(v-if="item.raw.type == 'user'" :user="item.raw.user" no-link)
+          common-icon.mr-2(v-else size="small" :name="item.raw.icon")
+        //- v-list-item-title
+        //-   span {{props}}
+        //-   span {{item.raw.name}}
+        //-   span(v-if="item.raw.type == 'user' && currentUserId == item.raw.id")
+        //-     space
+        //-     span ({{ $t('common.you') }})
+        v-list-item-subtitle(v-if="item.raw.user && item.raw.user.email && (item.raw.user.email != item.raw.user.name)")
+          span {{item.raw.user.email}}
   notifications-count(
     v-show="!hideCount && recipients.length"
     :model='model'
