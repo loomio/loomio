@@ -62,7 +62,7 @@ export default {
   },
   computed: {
     pctComplete() {
-      if (this.tips.length == 0) { return 0 }
+      if (this.tips.length == 0) { return 100 }
       return Math.round((this.tips.filter(t => t.completed()).length / this.tips.length) * 100)
     }
   }
@@ -70,7 +70,7 @@ export default {
 </script>
 
 <template lang="pug">
-v-btn(icon v-if="tips.length")
+v-btn(icon v-if="pctComplete != 100")
   v-progress-circular(:model-value="pctComplete" color="info" :indeterminate="spin")
     common-icon(name="mdiStarFace" color="primary")
 
