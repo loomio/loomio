@@ -17,7 +17,7 @@ class API::V1::TrialsController < API::V1::RestfulController
     group = Group.new
     group.assign_attributes_and_files(params.require(:group).permit(permitted_params.group_attributes))
     group.group_privacy = "secret"
-    group.category = params[:group_category]
+    group.category = params[:group_category] || 'other'
     group.info['how_did_you_hear_about_loomio'] = params[:how_did_you_hear_about_loomio]
 
     group.handle = GroupService.suggest_handle(name: group.name, parent_handle: nil)
