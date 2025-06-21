@@ -1,6 +1,6 @@
 <script lang="js">
 import AppConfig from '@/shared/services/app_config';
-import { format, formatDistance, parse, startOfHour, isValid, addHours, isAfter } from 'date-fns';
+import { format, formatDistance, parse, startOfHour, startOfDay,  isValid, addHours, isAfter } from 'date-fns';
 import { hoursOfDay, exact, timeFormat} from '@/shared/helpers/format_time';
 import { mdiClockOutline, mdiCalendar } from '@mdi/js'
 
@@ -17,7 +17,7 @@ export default {
       closingDate: this.poll.closingAt || new Date(),
       times: hoursOfDay(),
       timeZone: AppConfig.timeZone,
-      dateToday: new Date(),
+      dateToday: startOfDay(new Date()),
       isShowingDatePicker: false,
     };
   },
@@ -62,7 +62,7 @@ div
       lmo-date-input.mr-2(
         v-model='closingDate'
         :prepend-inner-icon="mdiCalendar"
-        :label="$t('poll_common_closing_at_field.closing_date')" 
+        :label="$t('poll_common_closing_at_field.closing_date')"
         :hint="$t('common.closing_in', { time: label })"
         :min="dateToday"
       )
