@@ -2535,3 +2535,4 @@ sv:
         helptext: "<p>För att underlätta beslutsfattandet har förslagen en sista omröstningsdag. När sista omröstningen har nåtts avslutas omröstningen och du får ett meddelande om att du kan dela ett förslagsresultat.</p><p> Resultatet ger en möjlighet att avgöra om förslaget var framgångsrikt och vad som kommer att hända härnäst.</p><p> Om din förslagsfrist ännu inte har passerat, men du vill fortsätta ändå, kan du klicka på <b>Stäng tidigare</b> .</p><p> När tiden är mogen, <b>ange ett resultat</b> för ditt förslag.</p>"
         submit: Visa förslag
         cancel: Gör detta senare
+    get_started_here: Kom igång här

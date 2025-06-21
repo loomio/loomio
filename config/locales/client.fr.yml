@@ -2589,3 +2589,4 @@ fr:
         helptext: "<p>Pour faciliter la prise de décision, les propositions sont soumises à une date limite de vote. Une fois cette date atteinte, le vote sera clos et vous serez informé(e) des résultats de la proposition.</p><p> Le résultat est l’occasion de dire si la proposition a été retenue et ce qui va se passer ensuite.</p><p> Si la date limite de votre proposition n'est pas encore passée, mais que vous souhaitez quand même continuer, vous pouvez cliquer sur <b>Fermer plus tôt</b> .</p><p> Lorsque le moment est venu, <b>indiquez le résultat</b> de votre proposition.</p>"
         submit: Voir la proposition
         cancel: Fais-le plus tard
+    get_started_here: Commencez ici

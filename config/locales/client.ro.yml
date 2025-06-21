@@ -2535,3 +2535,4 @@ ro:
         helptext: "<p>Pentru a facilita luarea deciziilor, propunerile au un termen limită pentru votare. Când termenul limită este atins, votarea se va închide și veți fi notificat(ă) să împărtășiți rezultatul propunerii.</p><p> Rezultatul este o oportunitate de a spune dacă propunerea a avut succes și ce se va întâmpla în continuare.</p><p> Dacă termenul limită pentru propunerea dvs. nu a expirat încă, dar doriți să continuați oricum, puteți face clic <b>pe Închidere mai devreme</b> .</p><p> Când este momentul potrivit, <b>introduceți un rezultat</b> pentru propunerea dvs.</p>"
         submit: Vizualizați propunerea
         cancel: Fă asta mai târziu
+    get_started_here: Începeți aici

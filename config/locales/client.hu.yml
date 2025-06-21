@@ -2542,3 +2542,4 @@ hu:
         helptext: "<p>A döntéshozatal elősegítése érdekében a javaslatokra szavazási határidő vonatkozik. A határidő lejártakor a szavazás lezárul, és Ön értesítést kap, hogy ossza meg a javaslat eredményét.</p><p> Az eredmény lehetőséget ad arra, hogy megmondjuk, sikeres volt-e a javaslat, és mi fog történni a továbbiakban.</p><p> Ha a javaslat határideje még nem járt le, de ennek ellenére folytatni szeretné, kattintson <b>a Korai bezárás gombra</b> .</p><p> Amikor eljön a megfelelő idő, <b>add meg a javaslatod eredményét</b> .</p>"
         submit: Ajánlat megtekintése
         cancel: Később csináld meg
+    get_started_here: Kezdje el itt

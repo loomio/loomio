@@ -2589,3 +2589,4 @@ pt_BR:
         helptext: "<p>Para ajudar a avançar nas decisões, as propostas têm um prazo para votação. Quando o prazo for atingido, a votação será encerrada e você será notificado para compartilhar o resultado da proposta.</p><p> O resultado é uma oportunidade de dizer se a proposta foi bem-sucedida e o que acontecerá em seguida.</p><p> Se o prazo da sua proposta ainda não tiver passado, mas você quiser prosseguir mesmo assim, clique em <b>Fechar antecipadamente</b> .</p><p> Quando chegar o momento certo, <b>insira um resultado</b> para sua proposta.</p>"
         submit: Ver proposta
         cancel: Faça isso mais tarde
+    get_started_here: Comece aqui

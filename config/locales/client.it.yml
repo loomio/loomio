@@ -2565,3 +2565,4 @@ it:
         helptext: "<p>Per agevolare l'avanzamento delle decisioni, le proposte hanno una scadenza per la votazione. Una volta scaduto il termine, la votazione verrà chiusa e riceverai una notifica per condividere l'esito della proposta.</p><p> L'esito è l'occasione per dire se la proposta ha avuto successo e cosa accadrà in seguito.</p><p> Se la scadenza per la presentazione della tua proposta non è ancora scaduta, ma desideri procedere comunque, puoi cliccare <b>su Chiudi in anticipo</b> .</p><p> Quando sarà il momento giusto, <b>inserisci un risultato</b> per la tua proposta.</p>"
         submit: Visualizza la proposta
         cancel: Fallo più tardi
+    get_started_here: Inizia qui

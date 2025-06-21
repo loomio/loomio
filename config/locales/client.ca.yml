@@ -2564,3 +2564,4 @@ ca:
         helptext: "<p>Per ajudar a fer avançar les decisions, les propostes tenen una data límit per a la votació. Quan s'arribi a la data límit, la votació es tancarà i se us notificarà que compartiu el resultat d'una proposta.</p><p> El resultat és una oportunitat per dir si la proposta ha tingut èxit i què passarà a continuació.</p><p> Si la data límit per a la proposta encara no ha passat, però voleu continuar igualment, podeu fer clic <b>a Tanca abans d'hora</b> .</p><p> Quan sigui el moment adequat, <b>introdueix un resultat</b> per a la teva proposta.</p>"
         submit: Veure proposta
         cancel: Fes això més tard
+    get_started_here: Comença aquí

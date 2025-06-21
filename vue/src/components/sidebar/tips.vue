@@ -18,11 +18,13 @@ export default {
       group: null,
       tips: [],
       spin: true,
+      show: true,
+      menuOpen: false
     };
   },
 
   created() {
-    setTimeout(() => { this.spin = false }, 2000)
+    setTimeout(() => { this.spin = false; this.show = false }, 2000)
     if (this.group) {
       Records.remote.fetch({ path: 'polls', params: { group_id: this.group.id } });
     }
@@ -70,25 +72,28 @@ export default {
 </script>
 
 <template lang="pug">
-v-btn(icon v-if="pctComplete != 100")
-  v-progress-circular(:model-value="pctComplete" color="info" :indeterminate="spin")
-    common-icon(name="mdiStarFace" color="primary")
+v-tooltip(v-model="show" location="bottom" v-if="pctComplete != 100")
+  template(v-slot:activator="{ props }")
+    v-btn(v-bind="props" icon)
+      v-progress-circular(:model-value="pctComplete" color="info" :indeterminate="spin")
+        common-icon(name="mdiStarFace" color="primary")
 
-  v-menu(activator="parent")
-    v-card(v-if="pctComplete == 100" style="max-width: 320px")
-      v-card-text
-        p(v-t="'tips.youve_completed_all_the_steps'")
-      .text-center
-        v-btn.text-lowercase(size="small" variant="plain" @click="hide")
-          span.text-emphasis-medium(v-t="'tips.hide.title'")
+      v-menu(activator="parent" v-model="menuOpen")
+        v-card(v-if="pctComplete == 100" style="max-width: 320px")
+          v-card-text
+            p(v-t="'tips.youve_completed_all_the_steps'")
+          .text-center
+            v-btn.text-lowercase(size="small" variant="plain" @click="hide")
+              span.text-emphasis-medium(v-t="'tips.hide.title'")
 
-    v-list(v-else nav density="compact" :lines="false")
-      v-list-subheader
-        span(v-t="'tips.getting_started_checklist'")
-      v-list-item(v-for="tip in tips" :title="$t(tip.title)" @click="tip.perform" :key="tip.title" :disabled="tip.disabled()")
-        template(v-slot:append)
-          common-icon(v-if="tip.completed()" name='mdi-check')
-      .text-center
-        v-btn.text-lowercase(size="small" variant="plain" @click="hide")
-          span.text-emphasis-medium(v-t="'tips.hide.title'")
+        v-list(v-else nav density="compact" :lines="false")
+          v-list-subheader
+            span(v-t="'tips.getting_started_checklist'")
+          v-list-item(v-for="tip in tips" :title="$t(tip.title)" @click="tip.perform" :key="tip.title" :disabled="tip.disabled()")
+            template(v-slot:append)
+              common-icon(v-if="tip.completed()" name='mdi-check')
+          .text-center
+            v-btn.text-lowercase(size="small" variant="plain" @click="hide")
+              span.text-emphasis-medium(v-t="'tips.hide.title'")
+  span(v-if="!menuOpen" v-t="'tips.get_started_here'")
 </template>

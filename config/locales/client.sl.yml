@@ -2535,3 +2535,4 @@ sl:
         helptext: "<p>Za lažje sprejemanje odločitev je za predloge določen rok za glasovanje. Ko rok poteče, se glasovanje zaključi in obveščeni boste, da lahko delite izid predloga.</p><p> Izid je priložnost, da se ugotovi, ali je bil predlog uspešen in kaj se bo zgodilo naprej.</p><p> Če rok za oddajo predloga še ni potekel, vendar želite vseeno nadaljevati, lahko kliknete <b>Zapri predčasno</b> .</p><p> Ko bo pravi čas, <b>vnesite izid</b> svojega predloga.</p>"
         submit: Ogled predloga
         cancel: Naredi to pozneje
+    get_started_here: Začnite tukaj

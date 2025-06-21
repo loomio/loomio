@@ -2535,3 +2535,4 @@ tr:
         helptext: "<p>Kararların ilerlemesine yardımcı olmak için, tekliflerin oylama için bir son tarihi vardır. Son tarihe ulaşıldığında, oylama kapatılacak ve bir teklif sonucunu paylaşmanız için bilgilendirileceksiniz.</p><p> Sonuç, teklifin başarılı olup olmadığını ve bundan sonra ne olacağını söyleme fırsatıdır.</p><p> Teklifinizin son tarihi henüz geçmediyse ancak yine de devam etmek istiyorsanız, <b>Erken Kapat'a</b> tıklayabilirsiniz.</p><p> Doğru zaman geldiğinde teklifiniz için <b>bir sonuç girin</b> .</p>"
         submit: Teklifi görüntüle
         cancel: Bunu daha sonra yap
+    get_started_here: Buradan başlayın

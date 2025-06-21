@@ -2535,3 +2535,4 @@ hr:
         helptext: "<p>Kako bi se pomoglo u donošenju odluka, prijedlozi imaju rok za glasanje. Kada rok istekne, glasanje će biti zatvoreno i bit ćete obaviješteni da podijelite ishod prijedloga.</p><p> Ishod je prilika da se kaže je li prijedlog bio uspješan i što će se sljedeće dogoditi.</p><p> Ako rok za predaju prijedloga još nije istekao, ali ipak želite nastaviti, možete kliknuti <b>Zatvori ranije</b> .</p><p> Kada dođe pravo vrijeme, <b>unesite ishod</b> svog prijedloga.</p>"
         submit: Prikaži prijedlog
         cancel: Učini to kasnije
+    get_started_here: Započnite ovdje

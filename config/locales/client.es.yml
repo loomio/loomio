@@ -2575,3 +2575,4 @@ es:
         helptext: "<p>Para facilitar el avance de las decisiones, las propuestas tienen una fecha límite para votar. Al llegar a esta fecha, se cerrará la votación y se le notificará para que comparta el resultado de la propuesta.</p><p> El resultado es una oportunidad para decir si la propuesta tuvo éxito y qué sucederá a continuación.</p><p> Si la fecha límite para su propuesta aún no ha pasado, pero desea continuar de todos modos, puede hacer clic <b>en Cerrar antes</b> .</p><p> Cuando llegue el momento adecuado, <b>introduzca un resultado</b> para su propuesta.</p>"
         submit: Ver propuesta
         cancel: Hazlo más tarde
+    get_started_here: Empieza aquí

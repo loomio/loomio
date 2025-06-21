@@ -2564,3 +2564,4 @@ pl:
         helptext: "<p>Aby ułatwić podejmowanie decyzji, propozycje mają termin głosowania. Po upływie terminu głosowanie zostanie zamknięte, a Ty otrzymasz powiadomienie, aby udostępnić wynik propozycji.</p><p> Wynik jest okazją do stwierdzenia, czy propozycja okazała się sukcesem i co będzie dalej.</p><p> Jeśli termin składania propozycji jeszcze nie upłynął, a mimo to chcesz kontynuować, możesz kliknąć <b>opcję Zamknij wcześniej</b> .</p><p> Gdy nadejdzie właściwy czas, <b>wprowadź wynik</b> swojej propozycji.</p>"
         submit: Zobacz propozycję
         cancel: Zrób to później
+    get_started_here: Zacznij tutaj

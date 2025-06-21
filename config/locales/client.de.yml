@@ -2572,3 +2572,4 @@ de:
         helptext: "<p>Um Entscheidungen zu beschleunigen, gibt es für Vorschläge eine Frist zur Abstimmung. Nach Ablauf dieser Frist wird die Abstimmung geschlossen und Sie werden benachrichtigt, um das Ergebnis des Vorschlags mitzuteilen.</p><p> Das Ergebnis bietet die Möglichkeit zu sagen, ob der Vorschlag erfolgreich war und was als nächstes passieren wird.</p><p> Wenn die Frist für Ihren Vorschlag noch nicht abgelaufen ist, Sie aber trotzdem fortfahren möchten, können Sie auf <b>„Vorzeitig schließen“</b> klicken.</p><p> <b>Geben Sie zum richtigen Zeitpunkt ein Ergebnis</b> für Ihren Vorschlag ein.</p>"
         submit: Angebot ansehen
         cancel: Mach das später
+    get_started_here: Hier geht's los

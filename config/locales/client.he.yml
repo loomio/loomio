@@ -2554,3 +2554,4 @@ he:
         helptext: <p style=";text-align:right;direction:rtl">כדי לסייע בקידום החלטות, להצעות יש מועד אחרון להצבעה. כאשר המועד האחרון יגיע, ההצבעה תיסגר ותקבלו הודעה לשתף תוצאת הצעה.</p><p style=";text-align:right;direction:rtl"> התוצאה היא הזדמנות לומר האם ההצעה הצליחה ומה יקרה בהמשך.</p><p style=";text-align:right;direction:rtl"> אם המועד האחרון להגשת ההצעה שלך טרם חלף, אך בכל זאת ברצונך להמשיך, תוכל ללחוץ <b>על סגור מוקדם</b> .</p><p style=";text-align:right;direction:rtl"> כאשר יגיע הזמן הנכון, <b>הזן תוצאה</b> עבור ההצעה שלך.</p>
         submit: הצג הצעה
         cancel: תעשה זאת מאוחר יותר
+    get_started_here: התחל כאן

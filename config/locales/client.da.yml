@@ -2535,3 +2535,4 @@ da:
         helptext: "<p>For at fremme beslutninger har forslag en frist for afstemning. Når fristen er nået, lukkes afstemningen, og du får besked, så du kan dele et resultat af forslaget.</p><p> Resultatet giver en mulighed for at sige, om forslaget var vellykket, og hvad der vil ske derefter.</p><p> Hvis din forslagsfrist endnu ikke er udløbet, men du alligevel ønsker at fortsætte, kan du klikke på <b>Luk tidligt</b> .</p><p> Når tiden er inde, <b>skal du indtaste et resultat</b> for dit forslag.</p>"
         submit: Se forslag
         cancel: Gør dette senere
+    get_started_here: Kom i gang her

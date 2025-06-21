@@ -2535,3 +2535,4 @@ fi:
         helptext: "<p>Päätöksenteon edistämiseksi ehdotuksilla on äänestyksen määräaika. Kun määräaika umpeutuu, äänestys päättyy ja sinulle ilmoitetaan, että voit jakaa ehdotuksen tuloksen.</p><p> Tulos on tilaisuus sanoa, oliko ehdotus onnistunut ja mitä tapahtuu seuraavaksi.</p><p> Jos ehdotuksesi määräaika ei ole vielä umpeutunut, mutta haluat silti jatkaa, voit napsauttaa <b>Sulje aikaisin -painiketta</b> .</p><p> Kun aika on oikea, <b>anna ehdotuksellesi tulos</b> .</p>"
         submit: Näytä ehdotus
         cancel: Tee tämä myöhemmin
+    get_started_here: Aloita tästä

@@ -2564,3 +2564,4 @@ nl_NL:
         helptext: "<p>Om de besluitvorming te versnellen, hebben voorstellen een deadline om te stemmen. Zodra de deadline is bereikt, wordt de stemming gesloten en ontvangt u een melding om de uitkomst van het voorstel te delen.</p><p> De uitkomst biedt de mogelijkheid om te bepalen of het voorstel succesvol was en wat er vervolgens gaat gebeuren.</p><p> Als de deadline voor uw voorstel nog niet is verstreken, maar u toch wilt doorgaan, kunt u <b>op Eerder sluiten</b> klikken.</p><p> Wanneer de tijd rijp is, <b>voert u een uitkomst</b> voor uw voorstel in.</p>"
         submit: Bekijk voorstel
         cancel: Doe dit later
+    get_started_here: Begin hier

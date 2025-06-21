@@ -38,6 +38,7 @@ en:
     task_updated_not_done: Task marked as incomplete
     no_tasks_assigned: There are no tasks assigned to you
   tips:
+    get_started_here: Get started here
     youve_completed_all_the_steps: "\U0001F389 You've completed all the steps!"
     getting_started_checklist: Getting started checklist
     complete_these_steps_to_set_up_your_group: Complete these steps to set up your group
