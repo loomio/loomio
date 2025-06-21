@@ -4,7 +4,7 @@ en:
     practice_proposal:
       title: I'm starting to get the hang of this
       process_name: Practice proposal
-      process_subtitle: Learn how proposals work on Loomio by trying one out.
+      process_subtitle: Learn how proposals work by trying one out
       process_introduction: "<p>Use this template to help your group get comfortable using
         proposals on Loomio. It’s a safe and simple way for people to try out voting and
         see how everything fits together.</p>"
@@ -348,7 +348,7 @@ en:
   discussion_templates:
     practice_thread:
       process_name: "Practice thread"
-      process_subtitle: A thread to welcome people to the group and practice using Loomio
+      process_subtitle: Welcome people to the group and practice using Loomio
       process_introduction: "<p>Use this template to welcome new members and encourage
         early participation. It gives people a chance to introduce themselves and explore
         Loomio’s features.</p>"
