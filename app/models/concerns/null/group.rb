@@ -52,6 +52,7 @@ module Null::Group
       logo_or_parent_logo
       created_at
       creator_id
+      parent_id
       cover_url
       logo_url
       category
