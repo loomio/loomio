@@ -169,7 +169,12 @@ export default {
 
 .strand-item__gutter:hover
   .strand-item__stem
-    background-color: rgb(var(--v-theme-surface-bright))
+    background-color: #d0d0d0
+
+.v-theme--dark
+  .strand-item__gutter:hover
+    .strand-item__stem
+      background-color: rgb(var(--v-theme-surface-bright))
 
 .strand-item__stem--broken
   background-image: linear-gradient(0deg, #dadada 25%, #ffffff 25%, #ffffff 50%, #dadada 50%, #dadada 75%, #ffffff 75%, #ffffff 100%)
