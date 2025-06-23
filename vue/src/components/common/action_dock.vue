@@ -55,7 +55,7 @@ section.d-flex.flex-wrap.align-center.action-dock.pb-1(style="margin-left: -6px"
 
 .lmo-action-dock-wrapper
   .action-dock__action, .action-menu
-    opacity: 0.35
+    opacity: 0.5
   &:hover .action-dock__action, &:hover .action-menu
     opacity: 1
 
