@@ -365,14 +365,6 @@ export default {
       }
     }
   },
-
-  computed: {
-    styleColor() {
-      if (this.color && this.color.startsWith("#")) {
-        return {color: this.color};
-      }
-    }
-  }
 };
 </script>
 
