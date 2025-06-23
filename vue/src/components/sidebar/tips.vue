@@ -24,7 +24,7 @@ export default {
   },
 
   created() {
-    setTimeout(() => { this.spin = false; this.show = false }, 5000)
+    setTimeout(() => { this.spin = false; this.show = false }, 8000)
     if (this.group) {
       Records.remote.fetch({ path: 'polls', params: { group_id: this.group.id } });
     }
