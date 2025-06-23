@@ -61,7 +61,7 @@ export default
 </script>
 
 <template lang="pug">
-v-sheet.rounded
+v-card
   poll-common-card-header(:poll='poll')
   div(v-if="poll.discardedAt")
     v-card-text
