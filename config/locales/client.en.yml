@@ -2202,7 +2202,7 @@ en:
     title: Delete %{pollType}
     success: Successfully deleted
   poll_common_form:
-    quorum_percent: Quorum
+    participation_quorum: Participation quorum
     quorum_hint: What percentage of voters must participate for the result to be valid?
     quorum_placeholder: Leave blank or enter a number between 0 and 100
     deadline: Deadline

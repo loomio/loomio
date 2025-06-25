@@ -497,7 +497,7 @@ export default {
         v-number-input.mb-4(
           clearable
           v-model="poll.quorumPct"
-          :label="$t('poll_common_form.quorum_percent')"
+          :label="$t('poll_common_form.participation_quorum')"
           :hint="$t('poll_common_form.quorum_hint')"
           :placeholder="$t('poll_common_form.quorum_placeholder')"
           :min="0"
