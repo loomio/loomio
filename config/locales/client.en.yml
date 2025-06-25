@@ -2202,6 +2202,9 @@ en:
     title: Delete %{pollType}
     success: Successfully deleted
   poll_common_form:
+    quorum_percent: Quorum
+    quorum_hint: What percentage of voters must participate for the result to be valid?
+    quorum_placeholder: Leave blank or enter a number between 0 and 100
     deadline: Deadline
     how_much_time_to_vote: How much time will you allow for people to vote?
     notify_everyone_when_poll_starts: Notify everyone when %{poll_type} starts
@@ -2396,8 +2399,10 @@ en:
     'yes': 'Yes'
     'no': 'No'
   poll_common_percent_voted:
-    sentence: "%{numerator} of %{denominator} people have participated (%{percent}%)"
-    target_progress: "%{percent}% of target reached. (%{num} / %{target})"
+    pct_participation: "%{num} of %{total} votes cast (%{pct}% participation)"
+    vote_short_of_quorum: "1 more vote needed to reach quorum of %{pct}%"
+    votes_short_of_quorum: "%{num} more votes needed to reach quorum of %{pct}%"
+    quorum_reached: Quorum of %{pct}% has been reached
   poll_meeting_chart_panel:
     total: Total
   poll_remove_vote:

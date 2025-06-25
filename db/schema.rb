@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_06_20_032741) do
+ActiveRecord::Schema[7.0].define(version: 2025_06_23_230217) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -729,6 +729,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_06_20_032741) do
     t.integer "outcome_review_due_in_days"
     t.boolean "public", default: false, null: false
     t.boolean "show_none_of_the_above", default: false, null: false
+    t.integer "quorum_pct"
     t.index ["discarded_at"], name: "index_poll_templates_on_discarded_at"
   end
 
@@ -785,6 +786,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_06_20_032741) do
     t.string "poll_template_key"
     t.boolean "show_none_of_the_above", default: false, null: false
     t.integer "none_of_the_above_count", default: 0, null: false
+    t.integer "quorum_pct"
     t.index ["author_id"], name: "index_polls_on_author_id"
     t.index ["closed_at", "closing_at"], name: "index_polls_on_closed_at_and_closing_at"
     t.index ["closed_at", "discussion_id"], name: "index_polls_on_closed_at_and_discussion_id"

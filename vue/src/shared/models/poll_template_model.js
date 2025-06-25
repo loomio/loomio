@@ -54,6 +54,7 @@ export default class PollTemplateModel extends BaseModel {
       showNoneOfTheAbove: false,
       hideResults: 'off',
       position: 0,
+      quorumPct: null,
       outcomeStatement: null,
       outcomeStatementFormat: 'html',
       outcomeReviewDueInDays: null

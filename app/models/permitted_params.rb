@@ -71,6 +71,7 @@ class PermittedParams < Struct.new(:params)
       :minimum_stance_choices,
       :maximum_stance_choices,
       :chart_type,
+      :quorum_pct,
       :document_ids, {document_ids: []},
       :poll_template_id,
       :poll_template_key,
@@ -121,6 +122,7 @@ class PermittedParams < Struct.new(:params)
       :outcome_statement,
       :outcome_statement_format,
       :outcome_review_due_in_days,
+      :quorum_pct,
       :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}
     ]
   end

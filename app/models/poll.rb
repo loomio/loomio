@@ -184,6 +184,7 @@ class Poll < ApplicationRecord
   validates :details, length: {maximum: Rails.application.secrets.max_message_length }
 
   before_save :clamp_minimum_stance_choices
+  before_save :clamp_quorum_pct
   validate :closes_in_future
   validate :discussion_group_is_poll_group
   validate :cannot_deanonymize
@@ -343,6 +344,11 @@ class Poll < ApplicationRecord
     else
       nil
     end
+  end
+
+  def quorum_votes_required
+    return 0 if quorum_pct.nil?
+    (((quorum_pct.to_f - cast_stances_pct.to_f)/100) * voters_count).ceil
   end
 
   def group
@@ -522,5 +528,11 @@ class Poll < ApplicationRecord
     if minimum_stance_choices > poll_options.length
       self.minimum_stance_choices = poll_options.length
     end
+  end
+
+  def clamp_quorum_pct
+    return if quorum_pct.nil?
+    self.quorum_pct = 0 if quorum_pct < 0
+    self.quorum_pct = 100 if quorum_pct > 100
   end
 end

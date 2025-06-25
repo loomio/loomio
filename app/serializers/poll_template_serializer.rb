@@ -43,5 +43,6 @@ class PollTemplateSerializer < ActiveModel::Serializer
              :discarded_at,
              :outcome_statement,
              :outcome_statement_format,
-             :outcome_review_due_in_days
+             :outcome_review_due_in_days,
+             :quorum_pct
 end

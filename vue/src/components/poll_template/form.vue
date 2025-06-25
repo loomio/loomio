@@ -402,6 +402,18 @@ export default {
       :value="true"
       :label="$t('poll_common_settings.specified_voters_only_true')")
 
+  v-number-input.mb-4(
+    clearable
+    v-model="pollTemplate.quorumPct"
+    :label="$t('poll_common_form.quorum_percent')"
+    :hint="$t('poll_common_form.quorum_hint')"
+    :placeholder="$t('poll_common_form.quorum_placeholder')"
+    :min="0"
+    :max="100"
+  )
+    template(v-slot:append-inner)
+      span.mr-4 %
+
   template(v-if="allowAnonymous")
     //- .lmo-form-label.mb-1.mt-4(v-t="'poll_common_form.anonymous_voting'")
     //- p.text-medium-emphasis(v-t="'poll_common_form.anonymous_voting_description'")

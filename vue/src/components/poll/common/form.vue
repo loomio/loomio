@@ -494,6 +494,18 @@ export default {
   v-expansion-panels.pb-4
     v-expansion-panel.poll-common-form__advanced-btn(:title="$t('poll_common_form.advanced_settings')")
       v-expansion-panel-text
+        v-number-input.mb-4(
+          clearable
+          v-model="poll.quorumPct"
+          :label="$t('poll_common_form.quorum_percent')"
+          :hint="$t('poll_common_form.quorum_hint')"
+          :placeholder="$t('poll_common_form.quorum_placeholder')"
+          :min="0"
+          :max="100"
+        )
+          template(v-slot:append-inner)
+            span.mr-4 %
+
         v-select(
           :disabled="!poll.closingAt"
           :label="$t('poll_common_settings.notify_on_closing_soon.voting_title')"
