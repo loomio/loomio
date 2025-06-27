@@ -10,6 +10,8 @@ class PollOption < ApplicationRecord
 
   scope :dangling, -> { joins('left join polls on polls.id = poll_id').where('polls.id is null') }
 
+  before_save :clamp_threshold_pct
+
   def update_counts!
     update_columns(
       voter_scores: poll.anonymous ? {} : stance_choices.latest.where('stances.participant_id is not null').includes(:stance).map { |c| [c.stance.participant_id, c.score] }.to_h,
@@ -57,5 +59,11 @@ class PollOption < ApplicationRecord
   def average_score
     return 0 if voter_count == 0
     (total_score.to_f / voter_count.to_f)
+  end
+
+  def clamp_threshold_pct
+    return if threshold_pct.nil?
+    self.threshold_pct = 0 if threshold_pct < 0
+    self.threshold_pct = 100 if threshold_pct > 100
   end
 end

@@ -1,20 +1,14 @@
 <script lang="js">
 import AppConfig from '@/shared/services/app_config';
-import Session from '@/shared/services/session';
-import { compact, without, some, pick } from 'lodash-es';
+import { mapKeys, snakeCase, compact, without, some, pick } from 'lodash-es';
 import Flash from '@/shared/services/flash';
-import Records from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
-import AbilityService from '@/shared/services/ability_service';
-import { addDays, addMinutes, intervalToDuration, formatDuration } from 'date-fns';
-import { isSameYear, startOfHour, setHours }  from 'date-fns';
 import { I18n } from '@/i18n';
 import UrlFor from '@/mixins/url_for';
 import WatchRecords from '@/mixins/watch_records';
 import { HandleDirective } from 'vue-slicksort';
 
 export default {
-  // directives: { handle: HandleDirective },
   directives: { handle: HandleDirective },
   mixins: [WatchRecords, UrlFor],
 
@@ -99,6 +93,7 @@ export default {
         meaning: '',
         prompt: '',
         icon: null,
+        thresholdPct: null
       };
 
       EventBus.$emit('openModal', {
@@ -119,7 +114,7 @@ export default {
     },
 
     editOption(option) {
-      const clone = pick(option, 'name', 'icon', 'meaning', 'prompt');
+      const clone = pick(option, 'name', 'icon', 'meaning', 'prompt', 'thresholdPct');
 
       EventBus.$emit('openModal', {
         component: 'PollOptionForm',
@@ -136,11 +131,10 @@ export default {
     },
 
     submit() {
-      const actionName = this.pollTemplate.isNew() ? 'created' : 'updated';
       this.pollTemplate.setErrors({});
       this.setPollOptionPriority();
-      this.pollTemplate.pollOptions = this.pollOptions;
-      this.pollTemplate.save().then(data => {
+      this.pollTemplate.pollOptions = this.pollOptions.map((o) => mapKeys(o, (_, k) => snakeCase(k)))
+      this.pollTemplate.save().then(() => {
         Flash.success("poll_common.poll_template_saved");
         if (this.isModal) {
           EventBus.$emit('closeModal');
@@ -309,7 +303,9 @@ export default {
             span(v-if="optionFormat == 'plain'") {{option.name}}
             span(v-if="optionFormat == 'iso8601'")
               poll-meeting-time(:name="option.name")
-          v-list-item-subtitle.poll-common-vote-form__allow-wrap {{option.meaning}}
+          v-list-item-subtitle.poll-common-vote-form__allow-wrap
+            p.font-italic.mb-1(v-t="{path: 'poll_option_form.pct_of_votes_required_to_be_valid', args: {pct: option.thresholdPct} }" v-if="option.thresholdPct")
+            p {{option.meaning}}
 
           template(v-slot:append)
             v-btn(
@@ -410,6 +406,7 @@ export default {
     :placeholder="$t('poll_common_form.quorum_placeholder')"
     :min="0"
     :max="100"
+    autocomplete="off"
   )
     template(v-slot:append-inner)
       span.mr-4 %

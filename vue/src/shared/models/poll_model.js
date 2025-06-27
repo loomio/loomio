@@ -121,7 +121,8 @@ export default class PollModel extends BaseModel {
             name: o.name,
             meaning: o.meaning,
             prompt: o.prompt,
-            icon: o.icon
+            icon: o.icon,
+            thresholdPct: o.thresholdPct
           };
       });
     }
@@ -141,7 +142,8 @@ export default class PollModel extends BaseModel {
         name: o.name,
         meaning: o.meaning,
         prompt: o.prompt,
-        icon: o.icon
+        icon: o.icon,
+        thresholdPct: o.thresholdPct
       };
     });
   }
@@ -200,6 +202,10 @@ export default class PollModel extends BaseModel {
   pollOptions() {
     const options = (Records.pollOptions.collection.chain().find({pollId: this.id, id: {$in: this.pollOptionIds}}).data());
     return orderBy(options, 'priority');
+  }
+
+  showOptionThreshold() {
+    return this.pollOptions().some((o) => o.thresholdPct)
   }
 
   pollOptionsForVoting() {

@@ -68,7 +68,7 @@ form(v-on:submit.prevent='submit()')
         .lmo-validation-error(v-show="pollOption.name && !pollOption.icon")
           span.text-caption.lmo-validation-error__message(v-t="'poll_option_form.please_select_an_icon'")
 
-      v-text-field.poll-option-form__name(
+      v-text-field.poll-option-form__name.mb-4(
         autofocus
         :label="$t('poll_option_form.option_name')"
         v-model="pollOption.name"
@@ -76,6 +76,17 @@ form(v-on:submit.prevent='submit()')
         counter
         :rules="nameRules"
       )
+      v-number-input.mb-4(
+        v-model="pollOption.thresholdPct"
+        :label="$t('poll_option_form.vote_share_required')"
+        :hint="$t('poll_option_form.vote_share_required_hint')"
+        :placeholder="$t('poll_common_form.quorum_placeholder')"
+        :min="0"
+        :max="100"
+        autocomplete="off"
+      )
+        template(v-slot:append-inner)
+          span.mr-4 %
       v-textarea(
         v-if="hasOptionMeaning"
         :label="$t('poll_option_form.meaning')"

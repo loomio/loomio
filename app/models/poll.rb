@@ -257,7 +257,11 @@ class Poll < ApplicationRecord
   def result_columns
     case poll_type
     when 'proposal'
-      %w[chart name score_percent voter_count voters]
+      if poll.poll_options.any? {|o| o.threshold_pct }
+        %w[chart name score_percent threshold_pct voter_count voters]
+      else
+        %w[chart name score_percent voter_count voters]
+      end
     when 'check'
       %w[chart name voter_percent voter_count voters]
     when 'count'
