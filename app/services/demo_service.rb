@@ -43,6 +43,7 @@ class DemoService
   end
 
   def self.generate_demo_groups
+    return unless ActiveRecord::Base.connection.table_exists? 'demos'
     Demo.where('demo_handle IS NOT NULL').each do |template|
       Group.where(handle: template.demo_handle).update_all(handle: nil)
       RecordCloner.new(recorded_at: template.recorded_at)
