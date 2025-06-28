@@ -10,6 +10,8 @@
         %th= t('common.option')
       - when 'score_percent'
         %th= t('poll_ranked_choice_form.pct_of_points')
+      - when 'threshold_pct'
+        %th= t('poll_option_form.pct_required')
       - when 'voter_percent'
         %th= t('poll_ranked_choice_form.pct_of_voters')
       - when 'rank'
@@ -51,6 +53,8 @@
             %td #{option[:voter_percent].round}%
           - when 'score_percent'
             %td #{option[:score_percent].round(1)}%
+          - when 'threshold_pct'
+            %td= option[:threshold_pct]
           - when 'voters'
             %td
               - User.where(id: option[:voter_ids]).each do |user|
