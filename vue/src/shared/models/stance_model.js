@@ -144,7 +144,7 @@ export default class StanceModel extends BaseModel {
   }
 
   scoreFor(option) {
-    return this.optionScores[option.id] || 0;
+    return this.optionScores[option.id] || this.poll().minScore;
   }
 
   totalScore() {
