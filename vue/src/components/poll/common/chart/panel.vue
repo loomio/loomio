@@ -1,22 +1,13 @@
 <script lang="js">
 import Session  from '@/shared/services/session';
 import Records  from '@/shared/services/records';
-import EventBus from '@/shared/services/event_bus';
-import PollCommonDirective from '@/components/poll/common/directive';
-import PollService from '@/shared/services/poll_service';
 import PollCommonChartMeeting from '@/components/poll/common/chart/meeting';
 import PollCommonChartTable from '@/components/poll/common/chart/table';
-import PollCommonPercentVoted from '@/components/poll/common/percent_voted';
-import PollCommonTargetProgress from '@/components/poll/common/target_progress';
-import WatchRecords from '@/mixins/watch_records';
 
 export default {
-  mixins: [WatchRecords],
   components: {
     PollCommonChartTable,
     PollCommonChartMeeting,
-    PollCommonPercentVoted,
-    PollCommonTargetProgress
   },
 
   props: {
@@ -24,7 +15,7 @@ export default {
   },
 
   data() {
-    return {votersByOptionId: {}};
+    return { votersByOptionId: {} };
   },
 
   created() {
@@ -57,5 +48,12 @@ export default {
     template(v-if="poll.config().has_options")
       poll-common-chart-table(v-if="poll.chartType != 'grid'" :poll="poll")
       poll-common-chart-meeting(v-else :poll="poll")
-  poll-common-percent-voted.text-body-2.pl-2(v-if="poll.pollType != 'count'" :poll="poll")
+
+  p.text-medium-emphasis.my-2(v-if="poll.closingAt && poll.pollType != 'count'")
+    span( v-t="{ path: 'poll_common_percent_voted.pct_participation', args: { num: poll.decidedVotersCount, total: poll.votersCount, pct: poll.castStancesPct } }" )
+    template(v-if="poll.quorumPct")
+      br
+      span(v-if="poll.quorumVotesRequired <= 0" v-t="{ path: 'poll_common_percent_voted.quorum_reached', args: { pct: poll.quorumPct }  }" )
+      span(v-if="poll.quorumVotesRequired == 1" v-t="{ path: 'poll_common_percent_voted.vote_short_of_quorum', args: { pct: poll.quorumPct } }" )
+      span(v-if="poll.quorumVotesRequired > 1" v-t="{ path: 'poll_common_percent_voted.votes_short_of_quorum', args: { num: poll.quorumVotesRequired, pct: poll.quorumPct } }" )
 </template>
