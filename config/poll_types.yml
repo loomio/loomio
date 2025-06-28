@@ -292,7 +292,7 @@ score:
     process_introduction_format: html
     poll_option_name_format: plain
     chart_type: bar
-    min_score: 1
+    min_score: 0
     max_score: 5
     minimum_stance_choices: 1
     default_duration_in_days: 3
