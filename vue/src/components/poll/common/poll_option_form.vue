@@ -77,6 +77,7 @@ form(v-on:submit.prevent='submit()')
         :rules="nameRules"
       )
       v-number-input.mb-4(
+        v-if="poll.pollType == 'proposal'"
         v-model="pollOption.thresholdPct"
         :label="$t('poll_option_form.vote_share_required')"
         :hint="$t('poll_option_form.vote_share_required_hint')"
