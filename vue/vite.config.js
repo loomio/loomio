@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 import path from 'path';
 import vue from '@vitejs/plugin-vue'
-import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
+import vuetify from 'vite-plugin-vuetify'
 import envCompatible from 'vite-plugin-env-compatible';
 import yaml from '@originjs/vite-plugin-content';
 import Components from 'unplugin-vue-components/vite';

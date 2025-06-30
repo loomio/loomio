@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   detailed_output: false,
   skip_testcases_on_fail: false,
   src_folders: ['tests/e2e/specs'],
@@ -26,12 +26,11 @@ module.exports = {
           args: ['window-size=1280,6400']
         }
       },
-      
+
       webdriver: {
         start_process: true,
         server_path: ''
       },
     },
   },
-  
 };
