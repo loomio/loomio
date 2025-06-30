@@ -5,8 +5,10 @@ import AbilityService from '@/shared/services/ability_service';
 import Flash   from '@/shared/services/flash';
 import EventBus          from '@/shared/services/event_bus';
 import { sortBy, debounce, escapeRegExp } from 'lodash-es';
+import UrlFor from '@/mixins/url_for';
 
 export default {
+  mixins: [UrlFor],
   data() {
     return {
       selectedDiscussion: null,
