@@ -314,11 +314,6 @@ export default class DiscussionModel extends BaseModel {
     return Records.discussions.remote.patchMember(this.keyOrId(), 'recall').finally(() => { return this.processing = false; });
   }
 
-  move() {
-    this.processing = true;
-    return Records.discussions.remote.patchMember(this.keyOrId(), 'move', { group_id: this.groupId }).finally(() => { return this.processing = false; });
-  }
-
   savePin() {
     this.processing = true;
     return Records.discussions.remote.patchMember(this.keyOrId(), 'pin').finally(() => { return this.processing = false; });
