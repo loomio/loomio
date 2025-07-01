@@ -20,7 +20,6 @@ export default class DiscussionModel extends BaseModel {
     super(...args);
     this.privateDefaultValue = this.privateDefaultValue.bind(this);
     this.saveVolume = this.saveVolume.bind(this);
-    this.move = this.move.bind(this);
     this.savePin = this.savePin.bind(this);
     this.saveUnpin = this.saveUnpin.bind(this);
     this.close = this.close.bind(this);
