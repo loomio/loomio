@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   ActionDock: 'common/action_dock',
   ActionMenu: 'common/action_menu',
   ActionButton: 'common/action_button',
