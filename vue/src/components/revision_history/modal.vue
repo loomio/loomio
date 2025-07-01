@@ -66,11 +66,11 @@ v-card.revision-history-modal(:title="$t('revision_history_modal.' + model.const
     dismiss-modal-button(:close="close")
   v-card-item
     .d-flex.align-center.justify-space-between
-      v-btn.revision-history-nav--previous(icon :disabled='isOldest' @click='getPrevious()')
-        common-icon(name="mdi-arrow-left")
+      v-btn.revision-history-nav--previous(variant="tonal" icon :disabled='isOldest' @click='getPrevious()')
+        common-icon(name="mdi-arrow-left" :color="isOldest ? null : 'primary'")
       span(v-if="version" v-t="{path: 'revision_history_modal.edit_by', args: {name: version.authorName(), date: versionDate}}")
-      v-btn.revision-history-nav--next(icon :disabled='isNewest' @click='getNext()')
-        common-icon(name="mdi-arrow-right")
+      v-btn.revision-history-nav--next(variant="tonal" icon :disabled='isNewest' @click='getNext()')
+        common-icon(name="mdi-arrow-right" :color="isNewest ? null : 'primary'")
     v-divider.mb-3
     revision-history-content(v-if='version' :model='model' :version='version')
 </template>
