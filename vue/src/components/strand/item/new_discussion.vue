@@ -1,7 +1,6 @@
 <script lang="js">
 import ThreadService  from '@/shared/services/thread_service';
 import { omit, pickBy } from 'lodash-es';
-import EventBus from '@/shared/services/event_bus';
 import Session from '@/shared/services/session';
 import openModal      from '@/shared/helpers/open_modal';
 import StrandActionsPanel from '@/components/strand/actions_panel';
@@ -21,15 +20,20 @@ export default {
   watch: {
     'eventable.newestFirst'() {
       this.actions = omit(ThreadService.actions(this.eventable, this), ['dismiss_thread']);
-    }
+    },
+    'discussion.groupId': 'updateGroups'
   },
 
   data() {
-    return {actions: omit(ThreadService.actions(this.eventable, this), ['dismiss_thread'])};
+    return {
+      groups: [],
+      actions: omit(ThreadService.actions(this.eventable, this), ['dismiss_thread'])
+    };
   },
 
   mounted() {
     this.eventable.fetchUsersNotifiedCount();
+    this.updateGroups();
   },
 
   computed: {
@@ -58,19 +62,18 @@ export default {
     status() {
       if (this.discussion.pinned) { return 'pinned'; }
     },
+  },
 
-    groups() {
-      return this.discussion.group().parentsAndSelf().map(group => {
+  methods: {
+    updateGroups() {
+      this.groups = this.discussion.group().parentsAndSelf().map(group => {
         return {
           title: group.name,
           disabled: false,
           to: group.id ? this.urlFor(group) : '/threads/direct'
         };
       });
-    }
-  },
-
-  methods: {
+    },
     viewed(viewed) {
       if (viewed && Session.isSignedIn()) { this.discussion.markAsSeen(); }
     },
