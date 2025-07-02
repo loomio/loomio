@@ -1,7 +1,6 @@
 <script lang="js">
 import { eventHeadline, eventTitle, eventPollType } from '@/shared/helpers/helptext';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
-import Records from '@/shared/services/records';
 
 export default {
   props: {
@@ -44,7 +43,6 @@ export default {
 <template lang="pug">
 h3.strand-item__headline.thread-item__title.text-body-2.pb-1(tabindex="-1")
   div.d-flex.align-center
-    //- common-icon(v-if="event.pinned" name="mdi-pin")
     slot(name="headline")
       span.strand-item__headline.text-medium-emphasis(v-html='headline')
     space(v-if="isDelegate")
