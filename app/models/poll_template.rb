@@ -19,6 +19,7 @@ class PollTemplate < ApplicationRecord
   validates :process_name, presence: true
   validates :process_subtitle, presence: true
   validates :default_duration_in_days, presence: true
+  before_save :clamp_quorum_pct
 
   has_paper_trail only: [
     :poll_type,
@@ -86,5 +87,11 @@ class PollTemplate < ApplicationRecord
     end
 
     {process_name.underscore.gsub(" ", "_") => out}
+  end
+
+  def clamp_quorum_pct
+    return if quorum_pct.nil?
+    self.quorum_pct = 0 if quorum_pct < 0
+    self.quorum_pct = 100 if quorum_pct > 100
   end
 end

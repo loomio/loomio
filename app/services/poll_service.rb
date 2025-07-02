@@ -354,6 +354,7 @@ class PollService
         score_percent: poll.total_score > 0 ? ((option.total_score.to_f / poll.total_score.to_f) * 100) : 0,
         max_score_percent: poll.total_score > 0 ? ((option.total_score.to_f / poll.stance_counts.max.to_f) * 100) : 0,
         voter_percent: poll.voters_count > 0 ? ((option.voter_count.to_f / poll.voters_count.to_f) * 100) : 0,
+        threshold_pct: option.threshold_pct,
         average: option.average_score,
         voter_scores: option.voter_scores,
         voter_ids: option.voter_ids.take(500),

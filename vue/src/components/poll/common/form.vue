@@ -1,7 +1,7 @@
 <script lang="js">
 import AppConfig from '@/shared/services/app_config';
 import Session from '@/shared/services/session';
-import { compact, without, some, pick } from 'lodash-es';
+import { mapKeys, without, some, pick, snakeCase } from 'lodash-es';
 import Flash from '@/shared/services/flash';
 import Records from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
@@ -143,6 +143,7 @@ export default {
         name: '',
         meaning: '',
         prompt: '',
+        thresholdPct: null,
         icon: null
       };
 
@@ -164,7 +165,7 @@ export default {
     },
 
     editOption(option) {
-      const clone = pick(option, 'name', 'icon', 'meaning', 'prompt');
+      const clone = pick(option, 'name', 'icon', 'meaning', 'prompt', 'thresholdPct');
 
       EventBus.$emit('openModal', {
         component: 'PollOptionForm',
@@ -185,7 +186,7 @@ export default {
       const actionName = this.poll.isNew() ? 'created' : 'updated';
       this.poll.setErrors({});
       this.setPollOptionPriority();
-      this.poll.pollOptionsAttributes = this.pollOptions;
+      this.poll.pollOptionsAttributes = this.pollOptions.map((o) => mapKeys(o, (_, k) => snakeCase(k)))
       this.poll.save().then(data => {
         const poll = Records.polls.find(data.polls[0].id);
         if (this.redirectOnSave) { this.$router.replace(this.urlFor(poll)); }
@@ -342,7 +343,9 @@ export default {
             span(v-if="optionFormat == 'plain'") {{option.name}}
             span(v-if="optionFormat == 'iso8601'")
               poll-meeting-time(:name="option.name")
-          v-list-item-subtitle.poll-common-vote-form__allow-wrap {{option.meaning}}
+          v-list-item-subtitle.poll-common-vote-form__allow-wrap
+            p.font-italic.mb-1(v-t="{path: 'poll_option_form.pct_of_votes_required_to_be_valid', args: {pct: option.thresholdPct} }" v-if="option.thresholdPct")
+            p {{option.meaning}}
 
           template(v-slot:append)
             v-btn(
@@ -494,6 +497,19 @@ export default {
   v-expansion-panels.pb-4
     v-expansion-panel.poll-common-form__advanced-btn(:title="$t('poll_common_form.advanced_settings')")
       v-expansion-panel-text
+        v-number-input.mb-4(
+          clearable
+          v-model="poll.quorumPct"
+          :label="$t('poll_common_form.participation_quorum')"
+          :hint="$t('poll_common_form.quorum_hint')"
+          :placeholder="$t('poll_common_form.quorum_placeholder')"
+          :min="0"
+          :max="100"
+          autocomplete="off"
+        )
+          template(v-slot:append-inner)
+            span.mr-4 %
+
         v-select(
           :disabled="!poll.closingAt"
           :label="$t('poll_common_settings.notify_on_closing_soon.voting_title')"

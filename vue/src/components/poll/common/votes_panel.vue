@@ -1,8 +1,6 @@
 <script lang="js">
 import PageLoader         from '@/shared/services/page_loader';
 import Records from '@/shared/services/records';
-import EventBus     from '@/shared/services/event_bus';
-import { parseISO } from 'date-fns';
 import { debounce } from 'lodash-es';
 import { I18n } from '@/i18n';
 import FormatDate from '@/mixins/format_date';
@@ -27,7 +25,7 @@ export default {
       per: 25,
       loader: null,
       pollOptionItems,
-      page: parseInt(this.$route.query.page) || 1, 
+      page: parseInt(this.$route.query.page) || 1,
       pollOptionId: parseInt(this.$route.query.poll_option_id) || null,
       name: this.$route.query.name
     };
@@ -46,7 +44,7 @@ export default {
   watch: {
     page(val, lastVal) {
       if (val === lastVal) { return; }
-      this.$router.replace({query: Object.assign({}, this.$route.query, {page: val})}); 
+      this.$router.replace({query: Object.assign({}, this.$route.query, {page: val})});
       this.fetch();
     },
 
@@ -54,14 +52,14 @@ export default {
       if (val === lastVal) { return; }
       this.page = 1;
       this.name = null;
-      this.$router.replace({query: Object.assign({}, this.$route.query, {poll_option_id: val, name: null})}); 
+      this.$router.replace({query: Object.assign({}, this.$route.query, {poll_option_id: val, name: null})});
       this.fetch();
     }
   },
 
   methods: {
     nameChanged() {
-      this.$router.replace({query: Object.assign({}, this.$route.query, {name: this.name})}); 
+      this.$router.replace({query: Object.assign({}, this.$route.query, {name: this.name})});
       this.fetch();
     },
 
