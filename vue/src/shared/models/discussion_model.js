@@ -20,7 +20,6 @@ export default class DiscussionModel extends BaseModel {
     super(...args);
     this.privateDefaultValue = this.privateDefaultValue.bind(this);
     this.saveVolume = this.saveVolume.bind(this);
-    this.move = this.move.bind(this);
     this.savePin = this.savePin.bind(this);
     this.saveUnpin = this.saveUnpin.bind(this);
     this.close = this.close.bind(this);
@@ -312,11 +311,6 @@ export default class DiscussionModel extends BaseModel {
     this.update({dismissedAt: null});
     this.processing = true;
     return Records.discussions.remote.patchMember(this.keyOrId(), 'recall').finally(() => { return this.processing = false; });
-  }
-
-  move() {
-    this.processing = true;
-    return Records.discussions.remote.patchMember(this.keyOrId(), 'move', { group_id: this.groupId }).finally(() => { return this.processing = false; });
   }
 
   savePin() {
