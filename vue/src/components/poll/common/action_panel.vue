@@ -99,7 +99,7 @@ export default
     h3.text-h6.py-3(v-t="'poll_common.have_your_say'")
     poll-common-directive(:stance='stance' name='vote-form')
 
-  v-alert.poll-common-current-vote(color="info" variant="tonal" v-if="stance && stance.castAt")
+  v-alert.poll-common-current-vote(color="info" variant="tonal" v-if="stance && stance.castAt && poll.pollType != 'meeting'")
     .text-subtitle1.mb-2
       span(v-t="'poll_common.you_voted'")
     poll-common-stance-choice(
