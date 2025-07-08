@@ -43,7 +43,7 @@ export default
       if (pollId === this.poll.id) {
         return this.stance = null;
       }
-    }); 
+    });
 
     this.watchRecords({
       collections: ["stances"],
@@ -89,13 +89,13 @@ export default
     type="info"
   )
     span(v-t="'poll_common_action_panel.anonymous'")
-      
+
   v-overlay.rounded.elevation-1(absolute v-if="!poll.closingAt" :opacity="0.33" :z-index="2")
     v-alert.poll-common-action-panel__results-hidden-until-vote.my-2.elevation-5(
        density="compact" type="info"
     )
       span(v-t="{path: 'poll_common_action_panel.draft_mode', args: {poll_type: poll.translatedPollType()}}")
-      
+
   template(v-else)
     .poll-common-vote-form(v-if='stance && !stance.castAt')
       h3.text-h6.py-3(v-t="'poll_common.have_your_say'")
@@ -104,10 +104,9 @@ export default
 
   .poll-common-unable-to-vote(v-if='!stance')
     v-alert.my-4(
-      type="warning"
+      color="warning"
       variant="tonal"
-      density="compact"
-      v-t="{path: 'poll_common_action_panel.unable_to_vote', args: {poll_type: poll.translatedPollType()}}"
     )
-        
+      span(v-t="{path: 'poll_common_action_panel.unable_to_vote', args: {poll_type: poll.translatedPollType()}}")
+
 </template>
