@@ -220,7 +220,7 @@ class Stance < ApplicationRecord
 
   def poll_options_must_match_stance_poll
     invalid_choices = stance_choices.reject do |sc|
-      sc.poll_option.poll_id == poll_id
+      sc.poll_option.poll_id == poll_id || !sc.persisted? && sc.poll_option.poll_id.nil?
     end
 
     if invalid_choices.any?
