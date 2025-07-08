@@ -35,7 +35,7 @@ class StanceChoice < ApplicationRecord
       errors.add(:base, "StanceChoices contain poll_options from different polls")
       Sentry.capture_message(
         "Invalid Stance: mismatched poll_options",
-        level: :warning,
+        level: :error,
         extra: {
           stance_id: id,
           poll_id: poll_id,
