@@ -104,6 +104,7 @@ class Stance < ApplicationRecord
   validate :valid_reason_required
   validate :valid_require_all_choices
   validate :valid_none_of_the_above
+  validate :poll_options_must_match_stance_poll
 
   %w[group mailer group_id discussion_id discussion members voters title tags].each do |message|
     delegate(message, to: :poll)
@@ -216,6 +217,26 @@ class Stance < ApplicationRecord
   end
 
   private
+
+  def poll_options_must_match_stance_poll
+    invalid_choices = stance_choices.reject do |sc|
+      sc.poll_option.poll_id == poll_id
+    end
+
+    if invalid_choices.any?
+      errors.add(:base, "StanceChoices contain poll_options from different polls")
+      Sentry.capture_message(
+        "Invalid Stance: mismatched poll_options",
+        level: :error,
+        extra: {
+          stance_id: id,
+          poll_id: poll_id,
+          invalid_choice_ids: invalid_choices.map(&:id),
+          invalid_poll_ids: invalid_choices.map { |sc| sc.poll_option&.poll_id }
+        }
+      )
+    end
+  end
 
   def valid_none_of_the_above
     return if !cast_at

@@ -6,7 +6,6 @@ class StanceChoice < ApplicationRecord
 
   validates_presence_of :poll_option
   validate :total_score_is_valid
-  validate :poll_options_must_match_stance_poll
   validates :score, numericality: { equal_to: 1 }, if: Proc.new { |sc| sc.stance && !sc.stance.cast_at && sc.poll && !sc.has_variable_score }
 
   scope :dangling, -> { joins('left join stances on stances.id = stance_id').where('stances.id': nil) }
@@ -25,26 +24,6 @@ class StanceChoice < ApplicationRecord
   end
 
   private
-
-  def poll_options_must_match_stance_poll
-    invalid_choices = stance_choices.reject do |sc|
-      sc.poll_option.poll_id == poll_id
-    end
-
-    if invalid_choices.any?
-      errors.add(:base, "StanceChoices contain poll_options from different polls")
-      Sentry.capture_message(
-        "Invalid Stance: mismatched poll_options",
-        level: :error,
-        extra: {
-          stance_id: id,
-          poll_id: poll_id,
-          invalid_choice_ids: invalid_choices.map(&:id),
-          invalid_poll_ids: invalid_choices.map { |sc| sc.poll_option&.poll_id }
-        }
-      )
-    end
-  end
 
   def total_score_is_valid
     return unless poll # when we are cloning records and poll is not saved yet
