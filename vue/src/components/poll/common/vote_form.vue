@@ -23,7 +23,7 @@ export default {
   created() {
     this.watchRecords({
       collections: ['pollOptions'],
-      query: records => {
+      query: () => {
         if (this.poll.optionsDiffer(this.options)) {
           if (this.poll) { this.options = this.poll.pollOptionsForVoting(); }
         }
