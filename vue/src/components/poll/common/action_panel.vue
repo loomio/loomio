@@ -112,10 +112,9 @@ export default
 
   .poll-common-unable-to-vote(v-if='!stance')
     v-alert.my-4(
-      type="warning"
+      color="warning"
       variant="tonal"
-      density="compact"
-      v-t="{path: 'poll_common_action_panel.unable_to_vote', args: {poll_type: poll.translatedPollType()}}"
     )
+      span(v-t="{path: 'poll_common_action_panel.unable_to_vote', args: {poll_type: poll.translatedPollType()}}")
 
 </template>

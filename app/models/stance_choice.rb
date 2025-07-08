@@ -24,6 +24,7 @@ class StanceChoice < ApplicationRecord
   end
 
   private
+
   def total_score_is_valid
     return unless poll # when we are cloning records and poll is not saved yet
 

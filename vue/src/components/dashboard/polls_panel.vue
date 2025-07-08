@@ -70,6 +70,8 @@ export default
       template(v-if="votePolls.length")
         v-list-subheader(v-t="'dashboard_page.polls_to_vote_on'")
         poll-common-preview(
+          display-group-name
+          full-name
           :poll="poll",
           v-for="poll in votePolls",
           :key="poll.id"
@@ -80,7 +82,13 @@ export default
         )
       template(v-if="otherPolls.length")
         v-list-subheader(v-t="'dashboard_page.recent_polls'")
-        poll-common-preview(:poll='poll' v-for='poll in otherPolls' :key='poll.id')
+        poll-common-preview(
+          display-group-name
+          full-name
+          :poll='poll'
+          v-for='poll in otherPolls'
+          :key='poll.id'
+        )
       template(v-if='!votePolls.length && !otherPolls.length && loader.loading')
         v-list-subheader(v-t="'group_page.polls'")
         loading-content(:lineCount='2' v-for='(item, index) in [1]' :key='index' )
