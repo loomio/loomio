@@ -1,4 +1,5 @@
 require "active_support/core_ext/integer/time"
+Warning[:deprecated] = true
 
 Rails.application.configure do
   # Log error messages when you accidentally call methods on nil.
@@ -25,7 +26,7 @@ Rails.application.configure do
   # In the development environment your application's code is reloaded any time
   # it changes. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
-  
+
   config.log_level = ENV.fetch('RAILS_LOG_LEVEL', :debug)
   config.lograge.enabled = true
 

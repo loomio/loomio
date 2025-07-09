@@ -108,7 +108,8 @@ class AppConfig
       show_contact_consent: ENV.fetch('FEATURES_SHOW_CONTACT_CONSENT', false),
       sentry_sample_rate: ENV.fetch('SENTRY_SAMPLE_RATE', 0.1).to_f,
       hidden_poll_templates: %w[proposal question],
-      transcription: TranscriptionService.available?
+      transcription: TranscriptionService.available?,
+      max_message_length: ENV.fetch('LMO_MAX_MESSAGE_LENGTH', 100000)
     }
   end
 
