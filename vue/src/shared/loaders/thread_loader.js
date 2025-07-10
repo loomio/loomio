@@ -1,6 +1,6 @@
 import Records from '@/shared/services/records';
 import { some, last, cloneDeep, max, uniq, compact, orderBy } from 'lodash-es';
-import Vue from 'vue';
+import { reactive } from 'vue';
 import RangeSet         from '@/shared/services/range_set';
 import EventBus         from '@/shared/services/event_bus';
 import Session from '@/shared/services/session';
@@ -12,18 +12,17 @@ export default class ThreadLoader {
   }
 
   reset() {
-    this.collection = Vue.observable([]);
+    this.collection = [];
     this.rules = [];
     this.ruleStrings = [];
     this.fetchedRules = [];
     this.readRanges = cloneDeep(this.discussion.readRanges);
     this.focusAttrs = {};
     this.visibleKeys = {};
-    this.collapsed = Vue.observable({});
+    this.collapsed = reactive({});
     this.loading = false;
     this.firstLoad = false
-    this.padding = 50;
-    this.maxAutoLoadMore = 500;
+    this.padding = 100;
   }
 
   firstUnreadSequenceId() {
@@ -40,7 +39,7 @@ export default class ThreadLoader {
     Object.keys(this.visibleKeys).forEach(key => {
       if (key.startsWith(event.positionKey)) { return this.visibleKeys[key] = false; }
     });
-    return Vue.set(this.collapsed, event.id, true);
+    return this.collapsed[event.id] = true;
   }
 
   isUnread(event) {
@@ -60,80 +59,70 @@ export default class ThreadLoader {
   }
 
   expand(event) {
-    return Vue.set(this.collapsed, event.id, false);
+    return this.collapsed[event.id] = false;
   }
 
-  jumpToEarliest() {
-    this.addLoadOldestFirstRule();
-    return this.fetch();
-  }
+  // jumpToEarliest() {
+  //   this.addLoadOldestFirstRule();
+  //   return this.fetch();
+  // }
 
-  jumpToLatest() {
-    this.addLoadNewestFirstRule();
-    return this.fetch();
-  }
+  // jumpToLatest() {
+  //   this.addLoadNewestFirstRule();
+  //   return this.fetch();
+  // }
 
-  jumpToUnread() {
-    this.addLoadUnreadRule();
-    return this.fetch();
-  }
+  // jumpToUnread() {
+  //   this.addLoadUnreadRule();
+  //   return this.fetch();
+  // }
 
-  jumpToSequenceId(id) {
-    this.addLoadSequenceIdRule(id);
-    return this.fetch();
-  }
+  // jumpToSequenceId(id) {
+  //   this.addLoadSequenceIdRule(id);
+  //   return this.fetch();
+  // }
 
-  loadEverything() {
-    this.loading = true;
-    return this.addRuleAndFetch({
-      local: {
-        find: {
-          discussionId: this.discussion.id
-        }
-      },
-      remote: {
-        discussion_id: this.discussion.id,
-        per: 1000
-      }
-    });
-  }
-
-  autoLoadAfter(obj) {
-    if ((!this.discussion.newestFirst && (obj.event.depth === 1)) || (obj.missingAfterCount && (obj.missingAfterCount < this.maxAutoLoadMore))) {
-      return this.loadAfter(obj.event);
-    }
-  }
+  // loadEverything() {
+  //   this.loading = true;
+  //   return this.addRuleAndFetch({
+  //     local: {
+  //       find: {
+  //         discussionId: this.discussion.id
+  //       }
+  //     },
+  //     remote: {
+  //       discussion_id: this.discussion.id,
+  //       per: 1000
+  //     }
+  //   });
+  // }
 
   loadChildren(event) {
+    this.loading = 'children' + event.id;
     this.addLoadChildrenRule(event);
     return this.fetch();
   }
 
   loadAfter(event) {
+    this.loading = 'after' + event.id;
     this.addLoadAfterRule(event);
     return this.fetch();
   }
 
-  autoLoadBefore(obj) {
-    if ((this.discussion.newestFirst && (obj.event.depth === 1)) || (obj.missingEarlierCount && (obj.missingEarlierCount < this.maxAutoLoadMore))) {
-      return this.loadBefore(obj.event);
-    }
-  }
-
   loadBefore(event) {
-    this.loading = 'before'+event.id;
+    this.loading = 'before' + event.id;
     this.addLoadBeforeRule(event);
     return this.fetch();
   }
 
   addLoadAfterRule(event) {
-    return this.addRule({
-      name: `load after ${event.positionKey}`,
+    this.addRule({
+      name: `load more from next sibling ${event.positionKey}`,
       local: {
         find: {
           discussionId: this.discussion.id,
           positionKey: {
-            $jgt: event.positionKey
+            $jgte: event.nextSiblingPositionKey()
           }
         },
         sortByPositionKey: true,
@@ -141,7 +130,7 @@ export default class ThreadLoader {
       },
       remote: {
         discussion_id: this.discussion.id,
-        position_key_gt: event.positionKey,
+        position_key_gte: event.nextSiblingPositionKey(),
         order_by: 'position_key',
         per: this.padding
       }
@@ -172,21 +161,22 @@ export default class ThreadLoader {
   }
 
   addLoadChildrenRule(event) {
-    return this.addRule({
-      name: `load children ${event.positionKey}`,
+    this.addRule({
+      name: `load more from current ${event.positionKey}`,
       local: {
         find: {
           discussionId: this.discussion.id,
-          parentId: event.id
+          positionKey: {
+            $jgt: event.positionKey
+          }
         },
-        sortByPositionKeyDesc: true,
+        sortByPositionKey: true,
         limit: this.padding
       },
       remote: {
         discussion_id: this.discussion.id,
-        parent_id: event.id,
+        position_key_gt: event.positionKey,
         order_by: 'position_key',
-        order_desc: 1,
         per: this.padding
       }
     });
@@ -403,7 +393,7 @@ export default class ThreadLoader {
     return Promise.all(promises).finally(() => {
       this.fetchedRules = uniq(this.fetchedRules.concat(newRules));
       this.firstLoad = true
-      return this.loading = false;
+      this.loading = false;
     });
   }
 
@@ -455,7 +445,6 @@ export default class ThreadLoader {
         eventable: event.model()
       }));
     };
-      // orderBy r, 'positionKey'
 
     this.collection = nest(orphans);
 

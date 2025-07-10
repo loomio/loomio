@@ -34,11 +34,11 @@ export default {
   &:nth-child(3n+2)
     margin-right: 30px
 
-.theme--dark
+.loading-content__background
+  background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%)
+
+.v-theme--dark, .v-theme--darkBlue
   .loading-content__background
     background: linear-gradient(to right, #222 8%, #333 18%, #222 33%)
 
-.theme--light
-  .loading-content__background
-    background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%)
 </style>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_24_222910) do
+ActiveRecord::Schema[7.0].define(version: 2025_06_20_032741) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -465,6 +465,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_24_222910) do
     t.jsonb "link_previews", default: [], null: false
     t.integer "discussion_templates_count", default: 0, null: false
     t.integer "poll_templates_count", default: 0, null: false
+    t.string "request_to_join_prompt"
+    t.integer "delegates_count", default: 0, null: false
+    t.string "category"
     t.index ["archived_at"], name: "index_groups_on_archived_at", where: "(archived_at IS NULL)"
     t.index ["created_at"], name: "index_groups_on_created_at"
     t.index ["full_name"], name: "index_groups_on_full_name"
@@ -533,6 +536,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_24_222910) do
     t.string "title"
     t.datetime "saml_session_expires_at", precision: nil
     t.integer "revoker_id"
+    t.boolean "delegate", default: false, null: false
     t.index ["created_at"], name: "index_memberships_on_created_at"
     t.index ["group_id", "user_id"], name: "index_memberships_on_group_id_and_user_id", unique: true
     t.index ["inviter_id"], name: "index_memberships_on_inviter_id"
@@ -724,15 +728,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_24_222910) do
     t.string "outcome_statement_format", default: "html", null: false
     t.integer "outcome_review_due_in_days"
     t.boolean "public", default: false, null: false
+    t.boolean "show_none_of_the_above", default: false, null: false
     t.index ["discarded_at"], name: "index_poll_templates_on_discarded_at"
-  end
-
-  create_table "poll_unsubscriptions", id: :serial, force: :cascade do |t|
-    t.integer "poll_id", null: false
-    t.integer "user_id", null: false
-    t.datetime "created_at", precision: nil
-    t.datetime "updated_at", precision: nil
-    t.index ["poll_id", "user_id"], name: "index_poll_unsubscriptions_on_poll_id_and_user_id", unique: true
   end
 
   create_table "polls", id: :serial, force: :cascade do |t|
@@ -786,6 +783,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_24_222910) do
     t.string "tags", default: [], array: true
     t.integer "poll_template_id"
     t.string "poll_template_key"
+    t.boolean "show_none_of_the_above", default: false, null: false
+    t.integer "none_of_the_above_count", default: 0, null: false
     t.index ["author_id"], name: "index_polls_on_author_id"
     t.index ["closed_at", "closing_at"], name: "index_polls_on_closed_at_and_closing_at"
     t.index ["closed_at", "discussion_id"], name: "index_polls_on_closed_at_and_discussion_id"
@@ -851,6 +850,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_24_222910) do
     t.jsonb "option_scores", default: {}, null: false
     t.integer "revoker_id"
     t.boolean "guest", default: false, null: false
+    t.boolean "none_of_the_above", default: false, null: false
     t.index ["guest"], name: "stances_guests", where: "(guest = true)"
     t.index ["participant_id"], name: "index_stances_on_participant_id"
     t.index ["poll_id", "cast_at"], name: "index_stances_on_poll_id_and_cast_at", order: "NULLS FIRST"
@@ -1018,6 +1018,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_24_222910) do
     t.integer "deactivator_id"
     t.boolean "autodetect_time_zone", default: true, null: false
     t.string "email_sha256"
+    t.integer "complaints_count", default: 0, null: false
     t.index ["api_key"], name: "index_users_on_api_key"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["email_verified"], name: "index_users_on_email_verified"

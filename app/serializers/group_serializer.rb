@@ -28,6 +28,7 @@ class GroupSerializer < ApplicationSerializer
              :public_discussions_count,
              :group_privacy,
              :memberships_count,
+             :delegates_count,
              :pending_memberships_count,
              :accepted_memberships_count,
              :membership_granted_upon,
@@ -38,6 +39,7 @@ class GroupSerializer < ApplicationSerializer
              :link_previews,
              :new_threads_max_depth,
              :new_threads_newest_first,
+             :has_custom_cover_photo,
              :cover_url,
              :open_discussions_count,
              :closed_discussions_count,
@@ -51,7 +53,9 @@ class GroupSerializer < ApplicationSerializer
              :subscription,
              :subgroups_count,
              :new_host,
-             :categorize_poll_templates
+             :categorize_poll_templates,
+             :category,
+             :request_to_join_prompt
 
   has_one :parent, serializer: GroupSerializer, root: :parent_groups
   has_one :current_user_membership, serializer: MembershipSerializer, root: :memberships
@@ -82,6 +86,11 @@ class GroupSerializer < ApplicationSerializer
 
   def logo_url
     object.self_or_parent_logo_url
+  end
+
+
+  def has_custom_cover_photo
+    object.custom_cover_photo?
   end
 
   def cover_url

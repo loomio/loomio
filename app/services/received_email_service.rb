@@ -9,16 +9,24 @@ class ReceivedEmailService
   end
 
   def self.route_all
-    ReceivedEmail.unreleased.each do |email|
+    ReceivedEmail.unreleased.where(group_id: nil).each do |email|
       route(email)
     end
   end
 
   def self.route(email)
-    return nil unless email.route_address
     return nil if email.released
+    return nil unless email.route_address
+    return nil unless email.sender_email
     return nil if email.sender_hostname.downcase == ENV['REPLY_HOSTNAME'].downcase
-    return nil if email.sender_hostname.downcase == ENV['SMTP_DOMAIN'].downcase
+    return nil if email.sender_hostname.downcase == ENV['CANONICAL_HOST'].downcase
+
+    if email.is_complaint? && email.complainer_address.present?
+      User.where(email: email.complainer_address).update_all("complaints_count = complaints_count + 1")
+      email.update(released: true)
+      return
+    end
+
     case email.route_path
     when /d=.+&u=.+&k=.+/
       # personal email-to-thread, eg. d=100&k=asdfghjkl&u=999@mail.loomio.com
@@ -28,8 +36,10 @@ class ReceivedEmailService
 
     when /[^\s]+\+u=.+&k=.+/ 
       # personal email-to-group, eg. enspiral+u=99&k=adsfghjl@mail.loomio.com
-      if discussion = DiscussionService.create(discussion: Discussion.new(discussion_params(email)), actor: actor_from_email(email))
-        email.update_attribute(:released, true) if discussion.persisted?
+      if AppConfig.app_features[:thread_from_mail]
+        if discussion = DiscussionService.create(discussion: Discussion.new(discussion_params(email)), actor: actor_from_email(email))
+          email.update_attribute(:released, true) if discussion.persisted?
+        end
       end
     else
       if forward_email_rule = ForwardEmailRule.find_by(handle: email.route_path)

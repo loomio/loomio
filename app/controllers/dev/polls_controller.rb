@@ -56,7 +56,7 @@ class Dev::PollsController < Dev::NightwatchController
     sign_in group.admins.first
     discussion = saved fake_discussion(group: group, author: group.admins.first)
     DiscussionService.create(discussion: discussion, actor: discussion.author)
-    redirect_to discussion_path(discussion)
+    redirect_to discussion_url(discussion)
   end
 
   def test_poll_in_discussion

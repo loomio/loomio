@@ -1,6 +1,6 @@
 import Records from '@/shared/services/records';
 import {includes} from 'lodash-es';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 
 
 // a series of helpers related to getting a translation string to translate, such
@@ -27,9 +27,9 @@ export var eventTitle = function(event) {
     case 'Discussion':
       if (event.kind === 'discussion_moved') {
         if (event.sourceGroupId) {
-          return (Records.groups.find(event.sourceGroupId) || {fullName: I18n.t('thread_item.deleted_group')}).fullName;
+          return (Records.groups.find(event.sourceGroupId) || {fullName: I18n.global.t('thread_item.deleted_group')}).fullName;
         } else {
-          return I18n.t('thread_item.invite_only_thread');
+          return I18n.global.t('thread_item.invite_only_thread');
         }
       } else {
         return event.model().title;
@@ -51,12 +51,7 @@ export var groupPrivacy = function(group, privacy) {
     switch (privacy) {
       case 'open':   return 'group_form.group_privacy_is_open_description';
       case 'secret': return 'group_form.group_privacy_is_secret_description';
-      case 'closed':
-        if (group.allowPublicThreads) {
-          return 'group_form.group_privacy_is_closed_public_threads_description';
-        } else {
-          return 'group_form.group_privacy_is_closed_description';
-        }
+      case 'closed': return 'group_form.group_privacy_is_closed_description';
     }
   } else {
     switch (privacy) {
@@ -65,8 +60,6 @@ export var groupPrivacy = function(group, privacy) {
       case 'closed':
         if (group.isSubgroupOfSecretParent()) {
           return 'group_form.subgroup_privacy_is_closed_secret_parent_description';
-        } else if (group.allowPublicThreads) {
-          return 'group_form.subgroup_privacy_is_closed_public_threads_description';
         } else {
           return 'group_form.subgroup_privacy_is_closed_description';
         }

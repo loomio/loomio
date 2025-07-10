@@ -1,6 +1,7 @@
 import BaseModel from '@/shared/record_store/base_model';
-import i18n from '@/i18n';
-import {invokeMap, without} from 'lodash-es';
+import { I18n } from '@/i18n';
+import {invokeMap, last} from 'lodash-es';
+import Records from '@/shared/services/records';
 
 export default class EventModel extends BaseModel {
   static singular = 'event';
@@ -14,8 +15,8 @@ export default class EventModel extends BaseModel {
   }
 
   relationships() {
-    this.belongsTo('parent', {from: 'events'});
-    this.belongsTo('actor', {from: 'users'});
+    this.belongsTo('parent', { from: 'events' });
+    this.belongsTo('actor', { from: 'users' });
     this.belongsTo('discussion');
     this.hasMany('notifications');
   }
@@ -45,7 +46,7 @@ export default class EventModel extends BaseModel {
   surfaceOrSelf() { if (this.isNested()) { return this.parent(); } else { return this; } }
 
   children() {
-    return this.recordStore.events.find({parentId: this.id});
+    return Records.events.find({ parentId: this.id });
   }
 
   delete() {
@@ -56,7 +57,7 @@ export default class EventModel extends BaseModel {
     if (this.actor()) {
       return this.actor().nameWithTitle(this.discussion().group());
     } else {
-      return i18n.t('common.anonymous');
+      return I18n.global.t('common.anonymous');
     }
   }
 
@@ -65,7 +66,11 @@ export default class EventModel extends BaseModel {
   }
 
   model() {
-    return this.recordStore[BaseModel.eventTypeMap[this.eventableType]].find(this.eventableId);
+    return Records[BaseModel.eventTypeMap[this.eventableType]].find(this.eventableId);
+  }
+
+  isPollEvent() {
+    return ['Poll', 'Outcome', 'Stance'].includes(this.eventableType);
   }
 
   isUnread() {
@@ -81,11 +86,11 @@ export default class EventModel extends BaseModel {
   }
 
   removeFromThread() {
-    return this.remote.patchMember(this.id, 'remove_from_thread').then(() => this.remove());
+    return Records.events.remote.patchMember(this.id, 'remove_from_thread').then(() => this.remove());
   }
 
   pin(title) {
-    return this.remote.patchMember(this.id, 'pin', {pinned_title: title});
+    return Records.events.remote.patchMember(this.id, 'pin', { pinned_title: title });
   }
 
   fillPinnedTitle() {
@@ -110,7 +115,7 @@ export default class EventModel extends BaseModel {
     }
   }
 
-  unpin() { return this.remote.patchMember(this.id, 'unpin'); }
+  unpin() { return Records.events.remote.patchMember(this.id, 'unpin'); }
 
   isForking() {
     return this.discussion() && (this.discussion().forkedEventIds.includes(this.id) || this.parentIsForking());
@@ -124,19 +129,19 @@ export default class EventModel extends BaseModel {
     return this.parentIsForking() || (this.parent() && (this.parent().kind === 'poll_created'));
   }
 
-  toggleForking() {
-    if (this.isForking()) {
-      return this.discussion().update({forkedEventIds: without(this.discussion().forkedEventIds, this.id)});
-    } else {
-      return this.discussion().forkedEventIds.push(this.id);
-    }
-  }
-
   next() {
-    return this.recordStore.events.find({parentId: this.parentId, position: this.position + 1})[0];
+    return Records.events.find({ parentId: this.parentId, position: this.position + 1 })[0];
   }
 
   previous() {
-    return this.recordStore.events.find({parentId: this.parentId, position: this.position - 1})[0];
+    return Records.events.find({ parentId: this.parentId, position: this.position - 1 })[0];
+  }
+
+  nextSiblingPositionKey() {
+    // skipping any child positions
+    let strs = this.positionKey.split("-")
+    let num = this.position + 1
+    strs[strs.length - 1] = "0".repeat(5 - String(num).length).concat(num)
+    return strs.join("-")
   }
 };

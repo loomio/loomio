@@ -504,7 +504,6 @@ cmn:
       quiet: 不要寄发任何关于此群组的电子邮件。活动将会显示在仪表板上。
       quiet_aria_description: 您在此群组的通知音量设定为安静。您将不会收到任何有关此群组动态的电子邮件。群组动态将会显示在您的仪表板上。
       quiet_message: '在“%{name}”中的活动不再以电子邮件的方式通知您了。'
-      mute: 从仪表板上隐藏此群组，除非 @提及，否则将不会通知。
       mute_aria_description: 您在此群组的通知音量设定为静音。您将不会收到任何电子邮件，除非有人提及您，且群组动态将不会显示在您的仪表板上。
       mute_message: '“%{name}”已从您的仪表板中移除。'
   export_data_modal:
@@ -585,7 +584,6 @@ cmn:
     shareable_link: '可分享的链接'
     copy_link: '复制'
     email_addresses: '电子邮件地址'
-    email_addresses_placeholder: '范例：helperbot@loomio.org, friendlybot@loomio.org'
     shareable_link_reset: '可分享的链接已重设。先前的链接已不再可用。'
     email_explanation: '替代方案是，在下面输入电子邮件地址来以电子邮件发送邀请。'
     add_custom_message: '让您的邀请变为私人的，'
@@ -688,14 +686,6 @@ cmn:
     load_more: 载入更多话题
     mark_as_read: 设为已读
     thread_dismissed: 话题标记为已读
-    explain_mute:
-      title: 您尚未静音任何话题。
-      explanation_html: |
-          静音是一种让您不感兴趣的话题隐藏或消失的方法。
-          静音代表您将不会在<strong>最近的</strong>或是<strong>未读</strong>中看到它，且您将不会被提醒关于该话题的动态，像是提案等。
-          您将只会在有人 <strong>@提及</strong> 您的名称时被通知。
-      instructions: '要静音话题，滑鼠移到其上并点选静音图示。'
-      see_muted_html: '要检视您已静音的讨论串，点选<strong>“已静音”</strong>。您也可以将鼠标移到其上并点选相同的图示以解除静音。'
     filtering:
       filter_threads: 过滤话题
       filter_threads_aria_label: 过滤话题

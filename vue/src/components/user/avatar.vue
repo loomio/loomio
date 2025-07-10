@@ -2,8 +2,10 @@
 import Records from '@/shared/services/records';
 import AppConfig from '@/shared/services/app_config';
 import { pick } from 'lodash-es';
+import UrlFor from '@/mixins/url_for';
 
 export default {
+  mixins: [UrlFor],
   props: {
     user: {
       type: Object,
@@ -57,18 +59,14 @@ export default {
 </script>
 
 <template lang="pug">
-component.user-avatar(aria-hidden="true" :is="componentType" :to="!noLink && user.id && urlFor(user)" :style="{ 'width': size + 'px', margin: '0' }")
-  v-avatar(v-if="imageUrl" :title='user.name' :size='size')
-    img(:alt='user.avatarInitials' :src='imageUrl')
+component.user-avatar(aria-hidden="true" :is="componentType" :to="!noLink && user.id && urlFor(user)")
+  v-avatar(v-if="imageUrl" :title='user.name' :image="imageUrl" :size='size')
   v-avatar(v-else :title='user.name' :size='size' :color="color")
     span.user-avatar--initials(v-if="user.avatarKind == 'initials'" :style="{'font-size': fontSize, width: size+'px', height: size+'px'}") {{user.avatarInitials}}
     common-icon(v-else :name="user.avatarKind")
 </template>
 
 <style lang="sass">
-.v-avatar
-  img
-    object-fit: cover
 .user-avatar--initials
   color: rgba(0,0,0,.88)
   font-size: 15px

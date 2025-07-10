@@ -1,16 +1,6 @@
 <script lang="js">
-import Vue from 'vue';
-import AppConfig                from '@/shared/services/app_config';
-import EventBus                 from '@/shared/services/event_bus';
-import RecordLoader             from '@/shared/services/record_loader';
 import AbilityService           from '@/shared/services/ability_service';
-import Session from '@/shared/services/session';
-import Records from '@/shared/services/records';
-import Flash   from '@/shared/services/flash';
-import ThreadService  from '@/shared/services/thread_service';
 import StrandActionsPanel from './actions_panel';
-
-const excludeTypes = 'group discussion author';
 
 export default {
   components: {
@@ -37,7 +27,7 @@ export default {
 </script>
 
 <template lang="pug">
-v-sheet.strand-card.thread-card.mb-8
+v-sheet.strand-card.thread-card.mb-8.pb-4.rounded(elevation=1)
   //- p(v-for="rule in loader.rules") {{rule.name}}
   strand-list.pt-3.pr-1.pr-sm-3.px-sm-2(:loader="loader" :collection="loader.collection")
   strand-actions-panel(v-if="!discussion.newestFirst" :discussion="discussion")

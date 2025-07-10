@@ -312,7 +312,6 @@ ga_IE:
       loud_aria_description: Is é Ard an socrú i gcomhair fógraí atá agat don bhaicle seo. Seolfar ríomhphost chugat gach uair a bhfuil gníomhaíocht.
       normal: 'Seol an ghníomhaíocht is tábhachtaí chugam i ríomhphost: Snáitheanna agus tograí nua, torthaí agus araile.'
       quiet: Ná seol ríomhphost faoin mbaicle seo chugam. Taispeánfar gníomhaíocht ar an gclár rialaithe.
-      mute: Folaigh an bhaicle seo ón gclár rialaithe agus ná taispeáin fógraí uaithi ach amháin má @dhéantar tagairt dom.
   description_card:
     messages:
       description_updated: 'Nuashonraíodh an cur síos'
@@ -361,7 +360,6 @@ ga_IE:
     shareable_link: 'Nasc is féidir a roinnt'
     copy_link: 'Macasamhlaigh'
     email_addresses: 'Seoltaí ríomhphoist'
-    email_addresses_placeholder: 'm.sh. helperbot@loomio.org, friendlybot@loomio.org'
     custom_message: 'Teachtaireacht saincheaptha'
     add_members: 'Cuir comhaltaí leis'
     from_parent_group: 'ó %{name}.'
@@ -578,7 +576,6 @@ ga_IE:
     enter_your_name: Cuir isteach d'ainm
     more_providers: Tusa
     email_not_present: Tá seoladh ríomhphoist de dhíth
-    email_placeholder: tusa@suíomh.com
     name_placeholder: D'ainm
     name_required: Cuir isteach ainm
     welcome_back: Fáilte ar ais, a %{name}!

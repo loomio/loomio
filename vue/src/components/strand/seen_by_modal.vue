@@ -27,21 +27,19 @@ export default {
 };
 </script>
 <template lang="pug">
-v-card
-  v-card-title
-    h1.text-h5(tabindex="-1" v-t="'discussion_last_seen_by.title'")
-    v-spacer
+v-card(:title="$t('discussion_last_seen_by.title')")
+  template(v-slot:append)
     dismiss-modal-button
   .d-flex.justify-center.pa-8(v-if="historyLoading")
     v-progress-circular(color="primary"  indeterminate)
-  v-card-text(v-else)
+  v-card-text.text-body-2(v-else)
     template(v-if="historyError")
       p(v-if="errorMessage") {{errorMessage}}
       p(v-else v-t="'announcement.history_error'")
     template(v-else)
       p(v-if="historyData.length == 0" v-t="'discussion_last_seen_by.no_one'")
       div(v-for="reader in historyData" :key="reader.id")
-        strong {{reader.user_name}}
+        | {{reader.user_name}}
         mid-dot
-        time-ago(:date="reader.last_read_at")
+        time-ago.text-medium-emphasis(:date="reader.last_read_at")
 </template>

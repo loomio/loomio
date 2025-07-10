@@ -255,7 +255,6 @@ sr:
       quiet: Ne obaveštavaj o ovoj grupi. Aktivnost će biti prikazana na početnoj strani.
       quiet_aria_description: Vaš obim obaveštenja za ovu grupu je postavljen na Tiho. Nećeti biti obaveštavani ePorukom o aktivnostima u ovoj grupi. Aktivnosti grupe će biti prikazane na Vašoj Radnoj Površini.
       quiet_message: 'Nećete primati ePoruke o aktivnostima u "%{name}".'
-      mute: Sakrij ovu grupu i ne obaveštavaj dok ne budem @naznačen/a.
       mute_aria_description: Vaš obim obaveštenja za ovu grupu je postavljen na Utišano. Nećete biti obaveštavani ePorukom osim ako Vas neko ne pomene i aktivnosti grupe neće biti prikazane na Vašoj Radnoj Površini.
       mute_message: '"%{name}" je uklonjeno sa Vaše radne table.'
     privacy:
@@ -321,7 +320,6 @@ sr:
     group_placeholder: 'Odaberi grupu'
     shareable_link: 'Deljivi link'
     email_addresses: 'Adrese ePošte'
-    email_addresses_placeholder: 'kao helperbot@loomio.org, friendlybot@loomio.org'
     add_custom_message: 'Učini svoje poziv ličnim,'
     add_custom_message_link: 'dodaj svoju poruku.'
     custom_message: 'Tvoja poruka'

@@ -142,15 +142,14 @@ div(style="position: relative")
   v-sheet.pa-4.my-4.poll-common-outcome-panel(v-if="preview && model[field].trim().length == 0" color="primary lighten-5" elevation="2")
     p(v-t="'common.empty'")
 
-  v-layout.menubar(align-center :aria-label="$t('formatting.formatting_tools')")
-    v-btn(icon @click='$refs.filesField.click()' :title="$t('formatting.attach')")
+  .d-flex.align-center.menubar(align-center :aria-label="$t('formatting.formatting_tools')")
+    v-btn(icon size="x-small" variant="text" @click='$refs.filesField.click()' :title="$t('formatting.attach')")
       common-icon(name="mdi-paperclip")
-    v-btn(text x-small @click="convertToHtml(model, field)" v-t="'formatting.wysiwyg'")
+    v-btn(variant="text" size="small" @click="convertToHtml(model, field)" v-t="'formatting.wysiwyg'")
     v-spacer
-    v-btn.mr-4(text x-small @click="preview = !preview" v-t="previewAction")
-
+    v-btn.mr-4(variant="text" size="small" @click="preview = !preview" v-t="previewAction")
     slot(name="actions")
-  suggestion-list(:query="query" :loading="fetchingMentions" :mentionable="mentionable" :positionStyles="suggestionListStyles" :navigatedUserIndex="navigatedUserIndex" showUsername @select-user="selectUser")
+  suggestion-list(:query="query" :loading="fetchingMentions" :mentions="mentions" :positionStyles="suggestionListStyles" :navigatedUserIndex="navigatedUserIndex" showUsername @select-row="selectRow")
 
   files-list(:files="files" v-on:removeFile="removeFile")
 

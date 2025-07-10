@@ -25,7 +25,7 @@ class ReceivedEmail < ApplicationRecord
   end
 
   def sender_hostname
-    sender_email.split('@')[1]
+    String(sender_email).split('@')[1]
   end
 
   def sender_email
@@ -68,7 +68,7 @@ class ReceivedEmail < ApplicationRecord
 
   def reply_body
     text = if body_html.present?
-      Premailer.new(body_html, line_length: 10000, with_html_string: true).to_plain_text
+      ReverseMarkdown.convert(body_html, unknown_tags: :bypass).gsub("&nbsp;", " ")
     else
       body_text
     end
@@ -89,7 +89,7 @@ class ReceivedEmail < ApplicationRecord
   end
 
   def is_auto_response?
-    return true if header('X-Autorespond') 
+    return true if header('X-Autorespond')
     return true if header('X-Precedence') ==  'auto_reply'
 
     prefixes = [
@@ -110,5 +110,16 @@ class ReceivedEmail < ApplicationRecord
     ]
 
     prefixes.any? { |prefix| subject.downcase.starts_with?(prefix.downcase) }
+  end
+
+  def is_complaint?
+    sender_email == ENV.fetch('COMPLAINTS_ADDRESS', "complaints@email-abuse.amazonses.com")
+  end
+
+  def complainer_address
+    return nil unless attachments.first
+    @complainer_address ||= attachments.first.download.scan(AppConfig::EMAIL_REGEX).flatten.uniq.reject {|e| e.downcase == BaseMailer::NOTIFICATIONS_EMAIL_ADDRESS.downcase }.first
+  rescue ActiveStorage::FileNotFoundError
+    nil
   end
 end

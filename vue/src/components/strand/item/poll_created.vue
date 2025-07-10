@@ -4,8 +4,11 @@ import AbilityService from '@/shared/services/ability_service';
 import EventBus       from '@/shared/services/event_bus';
 import EventService from '@/shared/services/event_service';
 import { pickBy, assign } from 'lodash-es';
+import WatchRecords from '@/mixins/watch_records';
+import UrlFor from '@/mixins/url_for';
 
 export default {
+  mixins: [WatchRecords, UrlFor],
   props: {
     event: Object,
     collapsed: Boolean,
@@ -16,7 +19,7 @@ export default {
     EventBus.$on('stanceSaved', () => EventBus.$emit('refreshStance'));
     this.watchRecords({
       collections: ["stances", "polls"],
-      query: records => {
+      query: () => {
         this.pollActions = PollService.actions(this.poll, this, this.event);
         this.eventActions = EventService.actions(this.event, this);
         this.myStance = this.poll.myStance();
@@ -57,14 +60,15 @@ export default {
 
 <template lang="pug">
 section.strand-item.poll-created
-  v-layout(justify-space-between)
+  .d-flex.justify-space-between
     .poll-common-card__title.text-h6.pb-1(tabindex="-1")
-      router-link(:to="urlFor(poll)" v-if='!poll.translation.title') {{poll.title}}
-      translation(v-if="poll.translation.title", :model='poll', field='title')
+      router-link.underline-on-hover(:to="urlFor(poll)" )
+        span(v-if='!poll.translation.title') {{poll.title}}
+        translation(v-if="poll.translation.title", :model='poll', field='title')
   div(v-if="!collapsed")
     poll-common-set-outcome-panel(:poll='poll' v-if="!poll.outcome()")
     poll-common-outcome-panel(:outcome='poll.outcome()' v-if='poll.outcome()')
-    .poll-common-details-panel__started-by.text--secondary.text-body-2.mb-4
+    .poll-common-details-panel__started-by.text-medium-emphasis.text-body-2.mb-4
       span(v-t="{ path: 'poll_card.poll_type_by_name', args: { name: poll.authorName(), poll_type: poll.translatedPollTypeCaps() } }")
       mid-dot
       poll-common-closing-at.ml-1(:poll='poll')

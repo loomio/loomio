@@ -5,16 +5,19 @@ import AbilityService from '@/shared/services/ability_service';
 import FlashService   from '@/shared/services/flash';
 import EventBus from '@/shared/services/event_bus';
 import { snakeCase } from 'lodash-es';
+import UrlFor from '@/mixins/url_for';
 
 export default
 {
+  mixins: [UrlFor],
   props: {
     membership: Object
   },
 
   methods: {
     canPerformAction() {
-      return this.canSetTitle()        ||
+      return true ||
+            this.canSetTitle()        ||
             this.canSetName()          ||
             this.canRemoveMembership() ||
             this.canResendMembership() ||
@@ -96,6 +99,21 @@ export default
       (this.membership.userIs(Session.user()) && this.membership.group().parentOrSelf().adminsInclude(Session.user()));
     },
 
+    canMakeDelegate() {
+      return !this.membership.delegate && AbilityService.canAdminister(this.membership.group())
+    },
+
+    canRemoveDelegate() {
+      return this.membership.delegate && AbilityService.canAdminister(this.membership.group())
+    },
+
+    makeDelegate() {
+      Records.memberships.remote.postMember(this.membership.id, 'make_delegate')
+    },
+
+    removeDelegate() {
+      Records.memberships.remote.postMember(this.membership.id, 'remove_delegate')
+    },
 
     toggleAdmin(membership) {
       const method = this.membership.admin ? 'removeAdmin' : 'makeAdmin';
@@ -111,11 +129,13 @@ export default
 <template lang="pug">
 .membership-dropdown.lmo-no-print(v-if='canPerformAction()')
   v-menu.lmo-dropdown-menu(offset-y)
-    template(v-slot:activator="{on, attrs}")
-      v-btn.membership-dropdown__button(icon v-on="on" v-bind="attrs")
+    template(v-slot:activator="{props}")
+      v-btn.membership-dropdown__button(icon variant="text" v-bind="props")
         //- span(v-t="'membership_dropdown.membership_options'")
         common-icon(name="mdi-dots-vertical")
     v-list.group-actions-dropdown__menu-content
+      v-list-item.membership-dropdown__view-profile(:to="urlFor(membership.user())")
+        v-list-item-title(v-t="'membership_dropdown.view_profile'")
       v-list-item.membership-dropdown__set-title(v-if='canSetName()' @click='setName()')
         v-list-item-title(v-t="'membership_dropdown.set_name_and_username'")
       v-list-item.membership-dropdown__set-title(v-if='canSetTitle()' @click='setTitle()')
@@ -125,7 +145,11 @@ export default
         v-list-item-title(v-t="'membership_dropdown.invitation_resent'", v-if='membership.resent')
       v-list-item.membership-dropdown__toggle-admin(v-if='canToggleAdmin()' @click='toggleAdmin()')
         v-list-item-title(v-t="'membership_dropdown.make_coordinator'", v-if='!membership.admin')
-        v-list-item-title(v-t="'membership_dropdown.demote_coordinator'", v-if='membership.admin')
+        v-list-item-title(v-t="'membership_dropdown.revoke_admin'", v-if='membership.admin')
+      v-list-item.membership-dropdown__make-delegate(v-if='canMakeDelegate()' @click='makeDelegate()')
+        v-list-item-title(v-t="'membership_dropdown.make_delegate'")
+      v-list-item.membership-dropdown__make-delegate(v-if='canRemoveDelegate()' @click='removeDelegate()')
+        v-list-item-title(v-t="'membership_dropdown.revoke_delegate'")
       v-list-item.membership-dropdown__remove(v-if='canRemoveMembership()' @click='removeMembership()')
         v-list-item-title(v-if='membership.acceptedAt' v-t="'membership_dropdown.remove_from.group'")
         //- v-list-item-title(v-if='membership.acceptedAt')

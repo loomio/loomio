@@ -2,13 +2,12 @@
 import Session  from '@/shared/services/session';
 import Records  from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
-import Gravatar from 'vue-gravatar';
 import { capitalize } from 'lodash-es';
 import AppConfig from '@/shared/services/app_config';
 import Flash   from '@/shared/services/flash';
+import md5 from "md5";
 
 export default {
-  components: { Gravatar },
   data() {
     return {
       user: Session.user().clone(),
@@ -68,40 +67,49 @@ export default {
     Records.users.fetch({path: 'avatar_uploaded'}).then(res => {
       this.previous_uploaded_avatar = res.avatar_uploaded; 
     });
+  },
+
+  computed: {
+    gravatarUrl() {
+      const hash = md5(this.user.email.trim().toLowerCase());
+      return `https://www.gravatar.com/avatar/${hash}?s=256`;
+    }
   }
 };
 
 </script>
 <template lang="pug">
-v-card.change-picture-form
+v-card.change-picture-form(:title="$t('change_picture_form.title')")
+  template(v-slot:append)
+    dismiss-modal-button
   v-overlay(:value="uploading")
     v-progress-circular(size="64" :value="progress")
-  v-card-title
-    h1.text-h5(tabindex="-1" v-t="'change_picture_form.title'")
-    v-spacer
-    dismiss-modal-button
   v-card-text
-    p.text--secondary(v-html="$t('change_picture_form.helptext')")
+    p.text-medium-emphasis(v-html="$t('change_picture_form.helptext')")
     v-list.change-picture-form__options-list
       v-list-item.change-picture-form__option(@click='selectFile()')
-        v-list-item-avatar
-          common-icon(name="mdi-camera")
+        template(v-slot:prepend)
+          v-avatar
+            common-icon(name="mdi-camera")
         v-list-item-title(v-t="'change_picture_form.use_uploaded'")
           input.hidden.change-picture-form__file-input(type="file" ref="fileInput" @change='uploadFile' accept="image/png, image/jpeg, image/webp")
       v-list-item.change-picture-form__option(v-if="previous_uploaded_avatar" @click="submit('uploaded')")
-        v-list-item-avatar
-          img(:src="previous_uploaded_avatar")
+        template(v-slot:prepend)
+          v-avatar
+            v-img(cover :src="previous_uploaded_avatar")
         v-list-item-title(v-t="'change_picture_form.existing_upload'")
       v-list-item(v-for="provider in providers" :key="provider.id" @click="selectProvider(provider)")
-        v-list-item-avatar
-          common-icon(:name=" iconClass(provider.name) ")
+        template(v-slot:prepend)
+          v-avatar
+            common-icon(:name=" iconClass(provider.name) ")
         v-list-item-title(v-t="{ path: 'change_picture_form.use_provider', args: { provider: capitalize(provider.name) } }")
       v-list-item.change-picture-form__option(@click="submit('gravatar')")
-        v-list-item-avatar
-          gravatar(:email='user.email' :alt='user.name' :size='128')
+        template(v-slot:prepend)
+          v-avatar
+            v-img(:src="gravatarUrl")
         v-list-item-title(v-t="'change_picture_form.use_gravatar'")
       v-list-item.change-picture-form__option(@click="submit('initials')")
-        v-list-item-avatar.user-avatar
+        template(v-slot:prepend).user-avatar
           v-avatar.user-avatar__initials--small {{user.avatarInitials}}
         v-list-item-title(v-t="'change_picture_form.use_initials'")
 </template>

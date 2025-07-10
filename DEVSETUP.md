@@ -32,7 +32,8 @@ sudo apt-get update
 sudo apt-get install postgresql postgresql-contrib build-essential \
                      libssl-dev libreadline-dev zlib1g-dev \
                      libpq-dev libffi-dev libmagickwand-dev \
-                     imagemagick python3 redis
+                     imagemagick python3 redis libyaml-dev \
+                     git libvips ffmpeg poppler-utils \
 ```
 
 ## Install ruby
@@ -53,10 +54,10 @@ When a new version of ruby is released, you can update ruby-build with
 cd "$(rbenv root)"/plugins/ruby-build && git pull
 ```
 
-At the time of writing 3.2.4 is the version of ruby that Loomio uses. To check what the current version required is, see [.ruby-version](https://github.com/loomio/loomio/blob/master/.ruby-version)
+At the time of writing 3.4.4 is the version of ruby that Loomio uses. To check what the current version required is, see [.ruby-version](https://github.com/loomio/loomio/blob/master/.ruby-version)
 
 ```
-rbenv install 3.2.4
+rbenv install 3.4.4
 gem install bundler
 ```
 
@@ -65,14 +66,14 @@ gem install bundler
 You'll need Node.js and I recommend you use [nvm](https://github.com/creationix/nvm) to install it. Just run:
 
 ```
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.1/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 ```
 
 You'll need to restart your terminal, then run:
 
 ```
-nvm install 14
-nvm alias default 14
+nvm install 22
+nvm alias default 22
 ```
 
 ## Fork and clone the Loomio git repo
@@ -128,7 +129,7 @@ npm run serve
 
 You can view Loomio in your browser by visiting http://localhost:8080.
 
-To view Loomio's features and changes to your source code, visit any of the dev routes listed at http://localhost:8080/dev/ (be sure to include the trailing slash). A good place to is http://localhost:8080/dev/setup_group.  
+To view Loomio's features and changes to your source code, visit any of the dev routes listed at http://localhost:8080/dev/ (be sure to include the trailing slash). A good place to is http://localhost:8080/dev/setup_group.
 
 ## Other things to know
 Rails stuff

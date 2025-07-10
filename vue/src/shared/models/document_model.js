@@ -1,5 +1,6 @@
 import BaseModel from '@/shared/record_store/base_model';
 import AppConfig from '@/shared/services/app_config';
+import Records from '@/shared/services/records';
 
 export default class DocumentModel extends BaseModel {
   static singular = 'document';
@@ -12,7 +13,7 @@ export default class DocumentModel extends BaseModel {
   }
 
   model() {
-    return this.recordStore[`${this.modelType.toLowerCase()}s`].find(this.modelId);
+    return Records[`${this.modelType.toLowerCase()}s`].find(this.modelId);
   }
 
   modelTitle() {

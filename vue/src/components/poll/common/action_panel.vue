@@ -5,9 +5,11 @@ import Records        from '@/shared/services/records';
 import EventBus       from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
+import WatchRecords   from '@/mixins/watch_records';
 
 export default
 {
+  mixins: [WatchRecords],
   props: {
     poll: Object
   },
@@ -41,7 +43,7 @@ export default
       if (pollId === this.poll.id) {
         return this.stance = null;
       }
-    }); 
+    });
 
     this.watchRecords({
       collections: ["stances"],
@@ -80,15 +82,20 @@ export default
 
 <template lang="pug">
 .poll-common-action-panel(v-if="!poll.closedAt" style="position: relative")
-  v-alert.poll-common-action-panel__anonymous-message.mt-6(dense outlined type="info" v-if='poll.anonymous')
+  v-alert.poll-common-action-panel__anonymous-message.mt-6(
+    v-if='poll.anonymous'
+    density="compact"
+    variant="tonal"
+    type="info"
+  )
     span(v-t="'poll_common_action_panel.anonymous'")
-      
-  v-overlay.rounded.elevation-1(absolute v-if="!poll.closingAt", :opacity="0.33", :z-index="2")
+
+  v-overlay.rounded.elevation-1(absolute v-if="!poll.closingAt" :opacity="0.33" :z-index="2")
     v-alert.poll-common-action-panel__results-hidden-until-vote.my-2.elevation-5(
-       dense type="info"
+       density="compact" type="info"
     )
       span(v-t="{path: 'poll_common_action_panel.draft_mode', args: {poll_type: poll.translatedPollType()}}")
-      
+
   template(v-else)
     .poll-common-vote-form(v-if='stance && !stance.castAt')
       h3.text-h6.py-3(v-t="'poll_common.have_your_say'")
@@ -96,6 +103,10 @@ export default
   poll-common-directive(:class="{'pa-2': !poll.closingAt}" v-if="stance && !stance.castAt", :stance='stance' name='vote-form')
 
   .poll-common-unable-to-vote(v-if='!stance')
-    v-alert.my-4(type="warning" outlined dense v-t="{path: 'poll_common_action_panel.unable_to_vote', args: {poll_type: poll.translatedPollType()}}")
-        
+    v-alert.my-4(
+      color="warning"
+      variant="tonal"
+    )
+      span(v-t="{path: 'poll_common_action_panel.unable_to_vote', args: {poll_type: poll.translatedPollType()}}")
+
 </template>

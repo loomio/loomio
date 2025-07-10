@@ -384,7 +384,6 @@ cs:
       normal_aria_description: Hlasitost oznámení pro tuto skupinu je nastavena na hodnotu Normální. Budou vám zasílány pouze důležité aktivity, například když někdo založí nové vlákno, vznese návrh nebo nastaví výsledek.
       quiet: Neodesílat e-maily o této skupině. Aktivita se zobrazí na ovládacím panelu.
       quiet_aria_description: Hlasitost oznámení pro tuto skupinu je nastavena na hodnotu Tichý. O aktivitě v této skupině vám nebudou zasílány žádné e-maily. Aktivita ve skupině se zobrazí na vašem ovládacím panelu.
-      mute: Skrýt tuto skupinu z ovládacího panelu a neoznamovat ji, pokud není @zmíněna.
       mute_aria_description: Hlasitost oznámení pro tuto skupinu je nastavena na hodnotu Ztlumit. Pokud se o vás někdo nezmíní, nebudou vám zasílány žádné e-maily a aktivita skupiny se nebude zobrazovat na vašem ovládacím panelu.
     privacy:
       private: 'Soukromí: Tato skupina je viditelná pouze pro členy'
@@ -451,7 +450,6 @@ cs:
     shareable_link: 'Odkaz ke sdílení'
     copy_link: 'Kopírovat'
     email_addresses: 'E-mailová adresa'
-    email_addresses_placeholder: 'např. helperbot@loomio.org, friendlybot@loomio.org'
     custom_message: 'Vlastní zpráva'
     add_members: 'Přidat členy'
     send: 'Odeslat'
@@ -599,7 +597,6 @@ cs:
     name_placeholder: 'Zadejte své jméno...'
     subject_label: "Téma"
     email_label: 'Vaše emailová adresa'
-    email_placeholder: 'Zadejte svou emailovou adresu...'
     message_label: 'Vaše zpráva'
     send_message: 'Odeslat zprávu'
   explore_page:
@@ -712,7 +709,6 @@ cs:
     invalid_email: "Je nám líto, ale nevypadá to jako platná e-mailová adresa"
     invalid_password: "Omlouváme se, toto heslo neodpovídá heslu již zadanému"
     email_not_found: "Je nám líto, nenašli jsme účet s touto e-mailovou adresou"
-    email_placeholder: vy@priklad.cz
     name_placeholder: Vaše jméno
     name_required: Zadejte prosím jméno
     welcome_back: Vítejte zpět, %{name}!

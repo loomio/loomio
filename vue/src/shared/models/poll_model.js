@@ -3,11 +3,10 @@ import AppConfig        from '@/shared/services/app_config';
 import Session          from '@/shared/services/session';
 import HasDocuments     from '@/shared/mixins/has_documents';
 import HasTranslations  from '@/shared/mixins/has_translations';
-import EventBus         from '@/shared/services/event_bus';
-import I18n             from '@/i18n';
-import NullGroupModel   from '@/shared/models/null_group_model';
-import { addDays, startOfHour, differenceInHours, addHours } from 'date-fns';
+import { I18n }             from '@/i18n';
+import { addDays, startOfHour } from 'date-fns';
 import { snakeCase, compact, head, orderBy, sortBy, map, flatten, slice, uniq, isEqual, shuffle } from 'lodash-es';
+import Records from '@/shared/services/records';
 
 export default class PollModel extends BaseModel {
   static singular = 'poll';
@@ -25,16 +24,16 @@ export default class PollModel extends BaseModel {
   }
 
   collabKeyParams() {
-    return [this.groupId, this.pollTemplateId, this.pollTemplateKey];
+    return [this.groupId, this.sourceTemplateId, this.pollTemplateId, this.pollTemplateKey];
   }
 
   afterConstruction() {
     HasDocuments.apply(this, {showTitle: true});
-    return HasTranslations.apply(this);
+    HasTranslations.apply(this);
   }
 
   config() {
-    return AppConfig.pollTypes[this.pollType];
+    return AppConfig.pollTypes[this.pollType] || {};
   }
 
   i18n() {
@@ -79,6 +78,7 @@ export default class PollModel extends BaseModel {
       linkPreviews: [],
       notifyOnClosingSoon: 'undecided_voters',
       results: [],
+      meetingDuration: null,
       pollTemplateId: null,
       pollTempalteKey: null,
       pollOptionIds: [],
@@ -90,6 +90,7 @@ export default class PollModel extends BaseModel {
       recipientEmails: [],
       notifyRecipients: true,
       shuffleOptions: false,
+      showNoneOfTheAbove: false,
       tags: [],
       hideResults: 'off',
       stanceCounts: []
@@ -99,7 +100,7 @@ export default class PollModel extends BaseModel {
   pollTemplateKeyOrId() {
     return this.pollTemplateId || this.pollTemplateKey;
   }
-  
+
   clonePoll() {
     const clone = this.clone();
     clone.id = null;
@@ -197,7 +198,7 @@ export default class PollModel extends BaseModel {
   }
 
   pollOptions() {
-    const options = (this.recordStore.pollOptions.collection.chain().find({pollId: this.id, id: {$in: this.pollOptionIds}}).data());
+    const options = (Records.pollOptions.collection.chain().find({pollId: this.id, id: {$in: this.pollOptionIds}}).data());
     return orderBy(options, 'priority');
   }
 
@@ -234,8 +235,8 @@ export default class PollModel extends BaseModel {
     return ((this.authorId === user.id) && !this.groupId) ||
     ((this.authorId === user.id) && (this.groupId && this.group().membersInclude(user))) ||
     ((this.authorId === user.id) && (this.discussionId && this.discussion().membersInclude(user))) ||
-    (stance && stance.admin) || 
-    (this.discussionId && this.discussion().adminsInclude(user)) || 
+    (stance && stance.admin) ||
+    (this.discussionId && this.discussion().adminsInclude(user)) ||
     this.group().adminsInclude(user);
   }
 
@@ -248,19 +249,19 @@ export default class PollModel extends BaseModel {
   }
 
   membersInclude(user) {
-    return this.stanceFor(user) || (this.discussionId && this.discussion().membersInclude(user)) || this.group().membersInclude(user);
+    return !!(this.stanceFor(user) || (this.discussionId && this.discussion().membersInclude(user)) || this.group().membersInclude(user));
   }
 
   stanceFor(user) {
     if (user.id === AppConfig.currentUserId) {
-      return this.myStance(); 
+      return this.myStance();
     } else {
-      return head(orderBy(this.recordStore.stances.find({pollId: this.id, participantId: user.id, latest: true, revokedAt: null}), 'createdAt', 'desc'));
+      return head(orderBy(Records.stances.find({pollId: this.id, participantId: user.id, latest: true, revokedAt: null}), 'createdAt', 'desc'));
     }
   }
 
   myStance() {
-    return this.recordStore.stances.find({id: this.myStanceId, revokedAt: null})[0];
+    return Records.stances.find({id: this.myStanceId, revokedAt: null})[0];
   }
 
   iHaveVoted() {
@@ -296,7 +297,7 @@ export default class PollModel extends BaseModel {
   }
 
   reactions() {
-    return this.recordStore.reactions.find({reactableId: this.id, reactableType: "Poll"});
+    return Records.reactions.find({reactableId: this.id, reactableType: "Poll"});
   }
 
   decidedVoterIds() {
@@ -305,24 +306,24 @@ export default class PollModel extends BaseModel {
 
   // who's voted?
   decidedVoters() {
-    return this.recordStore.users.find(this.decidedVoterIds());
+    return Records.users.find(this.decidedVoterIds());
   }
 
   outcome() {
-    return this.recordStore.outcomes.find({pollId: this.id, latest: true})[0];
+    return Records.outcomes.find({pollId: this.id, latest: true})[0];
   }
 
   createdEvent() {
-    return this.recordStore.events.find({eventableId: this.id, kind: 'poll_created'})[0];
+    return Records.events.find({eventableId: this.id, kind: 'poll_created'})[0];
   }
 
   latestStances(order, limit) {
     if (order == null) { order = '-createdAt'; }
-    return slice(sortBy(this.recordStore.stances.find({pollId: this.id, latest: true, revokedAt: null}), order), 0, limit);
+    return slice(sortBy(Records.stances.find({pollId: this.id, latest: true, revokedAt: null}), order), 0, limit);
   }
 
   latestCastStances() {
-    return this.recordStore.stances.collection.chain().find({
+    return Records.stances.collection.chain().find({
       pollId: this.id,
       latest: true,
       revokedAt: null,
@@ -340,19 +341,19 @@ export default class PollModel extends BaseModel {
 
   close() {
     this.processing = true;
-    return this.remote.postMember(this.key, 'close')
+    return Records.polls.remote.postMember(this.key, 'close')
     .finally(() => { return this.processing = false; });
   }
 
   reopen() {
     this.processing = true;
-    return this.remote.postMember(this.key, 'reopen', {poll: {closing_at: this.closingAt}})
+    return Records.polls.remote.postMember(this.key, 'reopen', {poll: {closing_at: this.closingAt}})
     .finally(() => { return this.processing = false; });
   }
 
   addToThread(discussionId) {
     this.processing = true;
-    return this.remote.patchMember(this.keyOrId(), 'add_to_thread', { discussion_id: discussionId })
+    return Records.polls.remote.patchMember(this.keyOrId(), 'add_to_thread', { discussion_id: discussionId })
     .finally(() => { return this.processing = false; });
   }
 
@@ -365,11 +366,11 @@ export default class PollModel extends BaseModel {
   }
 
   translatedPollType() {
-    return I18n.t(`poll_types.${this.pollType}`);
+    return I18n.global.t(`poll_types.${this.pollType}`);
   }
 
   translatedPollTypeCaps() {
-    return I18n.t(`decision_tools_card.${this.pollType}_title`);
+    return I18n.global.t(`decision_tools_card.${this.pollType}_title`);
   }
 
   addOption(option) {
@@ -379,7 +380,7 @@ export default class PollModel extends BaseModel {
     return option;
   }
 
-  hasVariableScore() { 
+  hasVariableScore() {
     return this.defaulted('minScore') !== this.defaulted('maxScore');
   }
 
@@ -388,7 +389,7 @@ export default class PollModel extends BaseModel {
     return this.defaulted('minimumStanceChoices') === (middle = this.defaulted('maximumStanceChoices')) && middle === 1;
   }
 
-  hasOptionIcon() { 
+  hasOptionIcon() {
     return this.config().has_option_icon;
   }
 

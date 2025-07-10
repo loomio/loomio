@@ -1,25 +1,32 @@
 module Events::Notify::Mentions
   def trigger!
     super
-    self.notify_mentions!
+    return if silence_mentions?
+
+    notify_mentioned_groups!
+    notify_mentioned_users!
+  end
+
+  def silence_mentions?
+    false
   end
 
   # send event notifications
-  def notify_mentions!
-    return unless eventable.newly_mentioned_users.any?
-    if eventable.respond_to?(:discussion) && eventable.discussion.present?
-      eventable.newly_mentioned_users.each do |guest|
-        if !eventable.group.members.exists?(guest.id)
-          eventable.discussion.add_guest!(guest, user)
-        end
-      end
-    end
-    Events::UserMentioned.publish! eventable, user, eventable.newly_mentioned_users
+  def notify_mentioned_users!
+    return if eventable.newly_mentioned_users.empty?
+
+    Events::UserMentioned.publish! eventable, user, eventable.newly_mentioned_users.pluck(:id)
+  end
+
+  def notify_mentioned_groups!
+    return if eventable.newly_mentioned_groups.empty?
+
+    Events::GroupMentioned.publish! eventable, user, eventable.newly_mentioned_groups.pluck(:id), id
   end
 
   private
 
-  # remove newly_mentioned_users from those emailed by following
+  # remove newly_mentioned_users from notification receipients
   def email_recipients
     super.where.not(id: eventable.newly_mentioned_users)
   end

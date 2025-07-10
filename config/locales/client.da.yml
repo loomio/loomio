@@ -33,11 +33,11 @@ da:
     2_day_before: 2 dage før
     3_day_before: 3 dage før
     7_day_before: 7 dage før
-    task_placeholder: Indtast en opgave, og @omtal nogen, der skal tildele den
     add_due_date: Tilføj forfaldsdato
     task_updated_done: Opgave markeret som udført!
     task_updated_not_done: Opgave markeret som ikke udført
     no_tasks_assigned: Der er ingen opgaver tildelt dig
+    task_placeholder: Indtast en opgave og {'@'}nævn en person, der skal tildele den
   templates:
     template_gallery: Skabelongalleri
     title_template: "%{title} skabelon"
@@ -156,6 +156,7 @@ da:
     no_tags_present: Der blev ikke fundet nogen tråde med det tag! Prøv at vælge en anden
     no_tags_in_group: Denne gruppe har endnu ingen kategori-tags
     only_admins_can_edit_tags: Beklager, kun administratorer af %{group} kan oprette, omdøbe eller slette tags
+    pick_a_color: Vælg en farve
   poll_types:
     proposal: forslag
     count: Tilmeld
@@ -314,6 +315,7 @@ da:
     formatting_help:
       label: Formatering
       title: Lær, hvordan du bruger Markdown til at formatere din tekst
+    thread: Tråd
   merge_accounts:
     modal:
       title: Flet konti
@@ -458,6 +460,19 @@ da:
         loud: Du vil få emails ved enhver aktivitet i alle nye grupper du bliver medlem af.
         normal: Du vil få emails ved publiceringer i alle nye grupper du bliver medlem af.
         quiet: Du vil ikke få emails ved nogen aktivitet i nogen af de nye fupper du bliver medlem af.
+    change_your_email_settings: Skift dine e-mail-indstillinger
+    when_would_you_like_to_be_emailed_thread: Hvornår vil du gerne have en mail om denne tråd?
+    when_would_you_like_to_be_emailed_group: Hvornår vil du gerne have besked om denne gruppe?
+    changes_all_threads_in_group: Dette ændrer indstillingen for alle tråde i gruppen.
+    what_do_the_options_mean: Hvad betyder mulighederne?
+    loud_desc: Hver gang nogen deltager
+    normal_desc: Når nogen giver mig besked
+    quiet_desc: Aldrig
+    quiet_explained: Du vil ikke blive e-mailet, heller ikke når nogen forsøger at give dig besked. Du kan gå glip af vigtige meddelelser eller beslutninger. Dette kan være velegnet, hvis en tråd ikke vedrører dig, men anbefales ikke til gruppeindstillingen, medmindre du har andre måder at holde dig opdateret på.
+    loud_explained: Du vil blive mailet hver gang der er en ny kommentar, nogen stemmer eller starter en afstemning eller tråd.
+    when_would_you_like_to_be_emailed_poll_type: Hvornår vil du gerne have en e-mail om denne %{poll_type}?
+    normal_explained: Når nogen indtaster dit navn i feltet "Giv besked" i en tråd eller en afstemning, eller de {'@'}nævner gruppen.
+    normal_excludes_mentioning_html: Der er en separat indstilling for, hvornår nogen {'@'}omtaler dig (f.eks. når de svarer dig i en kommentar). <a href="%{url}">Klik her for at redigere indstillinger for @omtaler</a>
   close_explanation_modal:
     aria_label: Luk tråden
     close_thread: Luk tråden
@@ -534,6 +549,7 @@ da:
       threads_list: Debat handlinger
       groups_list: Grupper
       user_list: Bruger handlinger
+    user_settings: Brugerindstillinger
   strand_nav:
     newest: Nyeste
     oldest: Ældste
@@ -577,6 +593,9 @@ da:
     close_sidebar: Luk sidebjælken
     logo_title: Hjem
     group_and_subgroups: "%{group} og undergrupper"
+    search_members_short: Søg medlemmer
+    search_files_short: Søg filer
+    search_subgroups_short: Søg undergrupper
   user_dropdown:
     pin_sidebar: Fastgør sidebjælken
     unpin_sidebar: Frigør sidebjælken
@@ -593,6 +612,9 @@ da:
     sign_out: Log ud
     beta_collab: "\U0001F9EA Beta-funktioner aktiveret!"
     outcomes: Resultater
+    theme: Tema
+    light: Lys
+    dark: Mørk
   membership_card:
     group_members: Gruppemedlemmer
     discussion_members: Trådmedlemmer
@@ -615,6 +637,10 @@ da:
       group: Fjern fra gruppen
       poll: Fjern fra %{pollType}
     cancel_invitation: Fortryd invitation
+    view_profile: Se profil
+    revoke_admin: Tilbagekald admin
+    make_delegate: Gør delegeret
+    revoke_delegate: Tilbagekald delegeret
   notification_models:
     discussion: 'tråd:'
     comment: kommentere ind
@@ -661,6 +687,8 @@ da:
       user_added_to_group: "%{actor} føjede dig til gruppen: %{title}"
       user_mentioned: "%{actor} nævnte dig i: %{title}"
       user_reminded: "%{actor} minder dig om at stemme i: %{title}"
+      group_mentioned: "%{actor} nævnte gruppen i: %{title}"
+      new_delegate: "%{actor} gjorde dig til delegeret med stemmeret i %{title}"
     without_title:
       unknown_sender: Gennemgå venligst e-mail fra ukendt afsender
       discussion_announced: "%{actor} inviterede dig til en tråd"
@@ -697,6 +725,7 @@ da:
       stance_created_option: "%{actor} stemte %{option}"
       user_mentioned: "%{actor} nævnte dig"
       user_reminded: "%{actor} minder dig om at stemme"
+      group_mentioned: "%{actor} nævnte gruppen"
     hints:
       poll_closing_soon: Nu er det et godt tidspunkt at stemme, ændre mening eller opfordre andre til at deltage.
       poll_closing_soon_author: Du vil måske gerne minde folk om at stemme eller forlænge fristen.
@@ -815,6 +844,7 @@ da:
       decided_voters: Alle der har stemt
       undecided_voters: Ubeslutsomme vælgere
       non_voters: Medlemmer af %{name} endnu ikke inviteret
+      delegates_of_group: Delegerede for %{name}
     form:
       group_has_no_members_yet: Du er det eneste medlem af din gruppe. Du vil måske invitere nogle personer til din gruppe, før du starter en tråd eller beslutning.
       invite_people_to_evaluate_loomio: Inviter nogle personer til din Loomio-gruppe for at træffe en beslutning sammen
@@ -889,6 +919,7 @@ da:
       modal_title: Vælg gruppemedlemmer
     flash:
       success: "%{count} meddelelser sendt"
+    group_mentioned: "%{name} nævnte gruppen med %{length} personer:"
   action_dock:
     actions_menu: Handlingsmenu
     more_actions: flere handlinger
@@ -1122,15 +1153,17 @@ da:
       quiet: Send ikke emails fra denne gruppe. Aktivitet vil blive vist på dashboardet.
       quiet_aria_description: Din notifikations volume er sat til lav. Du vil ikke modtage email om aktivitet der sker i denne gruppe. Gruppens aktivitet vil blive vist på dit Dashboard.
       quiet_message: You won't be emailed about activity in "%{name}".
-      mute: Skjul denne gruppe fra dahsboardet og unlad at notificer med mindre at @mentioned.
-      mute_aria_description: Dint notifikations volume for denne gruppe er sat til lydløs. Du vil ikke modtage email med mindre at nogen @mentions dig, og gruppens aktivitet vil ikke blive vist på dit dashboard.
       mute_message: '"%{name}" er fjernet fra dit dashboard.'
+      mute: Skjul denne gruppe fra dashboardet, og giv ikke besked, medmindre det {'@'}nævnes.
+      mute_aria_description: Din notifikationslydstyrke for denne gruppe er indstillet til Slå lyd fra. Du modtager ikke e-mails, medmindre nogen nævner dig, og gruppeaktivitet vises ikke på dit dashboard.
     privacy:
       private: 'Privatinstillinger: Denne gruppe er kun synlig for medlemmer'
       parent_members: 'Privatinstillinger: Denne gruppe er synlig for medlemmer af %{parentGroupName} og medlemmer af %{groupName}'
       public: 'Privatinstillinger: Denne gruppe er synlig for alle på internettet'
       aria_label: 'Privatinstillinger: %{privacy}'
     participation_report: Deltagelsesrapport
+    my_subgroups: Mine undergrupper
+    more_subgroups: Flere undergrupper
   export_data_modal:
     title: Hvordan vil du bruge dine data?
     as_csv: Åbn det i et regneark
@@ -1247,6 +1280,9 @@ da:
       group_updated: Gruppe gemt
     upload_logo: Upload logo
     upload_cover_photo: Upload forsidebillede
+    request_to_join_prompt: Anmodning om at deltage
+    default_request_to_join_prompt: Tak for din interesse i vores gruppe. Præsentér dig selv og forklar, hvorfor du anmoder om at deltage.
+    upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Opgrader venligst dit abonnement</a> for at oprette en undergruppe'
   group_export_modal:
     title: Eksporter gruppedata
     body: <p>Du kan til enhver tid downloade en kopi af din gruppes data. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Find ud af mere.</a></p><p> Det tager et par minutter at gennemføre, afhængigt af størrelsen på din gruppe. Når den er klar, modtager du en e-mail med et link til at downloade filen.</p>
@@ -1282,7 +1318,6 @@ da:
     share_group: Del din gruppe
     copy_link: Kopier
     email_addresses: Emailadresser
-    email_addresses_placeholder: f.eks. helperbot@loomio.org, friendlybot@loomio.org
     secret_group_url_explanation: Dette er adressen for din gruppe. Kun inviterede medlemmer vil kunne se gruppen.
     shareable_group_url_explanation: Du kan dele dette link offentligt. Folk kan anmode om at deltage, og du kan godkende eller ignorere anmodninger.
     shareable_invitation_explanation: Del ikke dette link offentligt. Alle med det kan deltage i din gruppe uden din godkendelse. Del dette kun inden for privat kommunikation for at give personer i din organisation mulighed for at deltage.
@@ -1301,6 +1336,14 @@ da:
       invitations_sent: "%{count} invitationer sendt."
       no_invitations: Uha! Kontroller venligst at emailadressen er korrekt og prøv igen.
       max_invitations: Hvis du ønsker at sende mere end 100 invitationer, så benyt et delbart link.
+    copy_to_clipboard: Kopiér til udklipsholder
+    already_chatting_somewhere: Chatter du allerede et sted?
+    to_stop_people_reset_the_link: For at forhindre folk i at tilmelde sig via dette link, skal du klikke på "Nulstil dette link". Det eksisterende link vil ikke længere virke, og et nyt link vil blive oprettet.
+    try_the_shareable_link_instead: Prøv i stedet at bruge det delbare link.
+    enter_emails_of_people_to_invite: Indtast e-mailadresserne på de personer, du vil invitere til gruppen. Hvis du har en liste, skal du blot kopiere og indsætte dem alle på én gang.
+    shareable_link_to_join_group: Delbart link til at blive medlem af gruppen
+    reset_the_link: Nulstil linket
+    email_addresses_placeholder: f.eks. helperbot{'@'}loomio.org, friendlybot{'@'}loomio.org
   memberships_page:
     members: Medlemmer
     name_label: Navn
@@ -1443,7 +1486,6 @@ da:
     announcement_label: Normal
     announcement_description: Du vil modtage en e-mail om alt indhold, der er blevet annonceret af personer i dine grupper
     mentioned_label: Omtaler og svar
-    mentioned_description: Når nogen @omtaler dig i en kommentar eller svarer dig, modtager du en notifikations-e-mail
     update_settings: Gem ændringer
     specific_groups: Indstillinger for specifikke grupper
     default_settings:
@@ -1454,6 +1496,7 @@ da:
     messages:
       updated: Emailindstillinger gemt
     learn_more: Få mere at vide om e-mail-indstillinger...
+    mentioned_description: Når nogen {'@'}nævner dig i en kommentar, får du en notifikationsmail
   thread_preview:
     replies_count: "%{count} svar"
     unread_count: "%{count} ulæst"
@@ -1479,12 +1522,9 @@ da:
     thread_recalled: Tråd tilbagekaldt
     explain_mute:
       title: Det har ikke slået notifikationer fra på nogen debatter endnu.
-      explanation_html: |
-        At slå notifikationer fra på en debat er en måde at skjule debatter på
-        At slå notifikationer fra på en debat betyder at du ikke vil se debatten under <strong>Seneste</strong> eller <strong>Ulæste</strong>, og du vil ikke modtage notifikationer om aktivitet i deb debat, f.eks. så som forslag.
-        Du vil kun modtage en notifikation hvis nogen <strong>@mentions</strong> dit navn.
       instructions: For at slå notifikationer fra for en debat, hold musen henover debatten og klik på "lydløs" ikonet.
       see_muted_html: For at se dine debatter hvor notifikationer er slået fra, klik <strong>"Uden notifikationer"</strong>. Du kan slå notifikationer til ved at holde musen henover debatten og klik på det samme ikon.
+      explanation_html: Ignorering er en måde at skjule eller ignorere tråde, du ikke er interesseret i. Ignorering betyder, at du ikke kan se tråden i <strong>Seneste</strong> eller <strong>Ulæste</strong> , og du får ikke besked om aktivitet i den pågældende tråd, f.eks. forslag. Du får kun besked, hvis nogen <strong>{'@'}nævner</strong> dit navn.
     filtering:
       filter_threads: Filtrer debatter
       filter_threads_aria_label: Filtrer debatter
@@ -1694,6 +1734,10 @@ da:
     meaning_hint: En sætning eller to, der forklarer, hvad det betyder at vælge denne mulighed. Valgfri
     prompt: Årsagsprompt
     prompt_hint: Et spørgsmål, der skal få vælgerne til at dele deres ræsonnement eller genoverveje deres holdning. Valgfri
+    thumb_up: Tommelfinger op
+    thumb_down: Tommelfinger ned
+    thumb_sideways: Tommelfinger sidelæns
+    hand_up: Hånden op
   poll_common:
     superseded: Afløst
     outdated: Forældet
@@ -1782,6 +1826,7 @@ da:
     too_long: For langt
     edit_warning: Redigering anbefales kun til mindre ændringer eller rettelse af stavefejl. For væsentlige ændringer skal du lukke denne %{pollType} og starte en ny.
     no_voting: Kun til diskussion, afstemning deaktiveret
+    post_outcome: Resultat efter
   poll_common_attachment_form:
     label: Vedhæftede filer
   poll_common_add_option:
@@ -1800,6 +1845,7 @@ da:
     until_poll_type_closed: Indtil %{pollType} er lukket
     until_voting_is_closed: Indtil afstemningen er lukket
     deleted: Denne afstemning er blevet slettet
+    do_not_hide_results: Skjul ikke resultater
   discussions_panel:
     open: Offentlig
     all: Alle
@@ -1839,6 +1885,11 @@ da:
     last_seen: Sidst set %{date}
     invited_by_name: Inviteret af %{name}
     accepted: Medlemmer
+    email_rejected: E-mail afvist
+    email_rejected_meaning: E-mail sendt til denne adresse er afvist eller blevet markeret som spam. Der vil ikke blive sendt flere e-mails til denne adresse.
+    delegate: Delegeret
+    delegate_popover: En delegeret er et gruppemedlem med stemmeret
+    delegates: Delegerede
   polls_panel:
     new_poll: Ny meningsmåling
     any_type: Alle typer
@@ -1931,6 +1982,7 @@ da:
     hide_results_until_closed:
       title: Skjul resultater indtil lukket
       helptext_on: Vis ikke, hvordan folk har stemt, før afstemningen er lukket
+    show_none_of_the_above: Medtag muligheden "Ingen af ovenstående".
   poll_common_close_form:
     title: Vil du lukke %{poll_type} nu?
     helptext: Er du sikker på, at du vil lukke denne %{poll_type} tidligt og dele et resultat?
@@ -1986,6 +2038,7 @@ da:
   poll_common_set_outcome_panel:
     enter_outcome: Indtast resultat
     poll_type: Denne %{poll_type} er lukket. Tag dig tid til at overveje resultaterne, og del derefter et resultat, så folk ved, hvad der vil ske næste gang.
+    enter_an_outcome: Indtast et resultat
   poll_common_outcome_form:
     review_due_in_days: Gennemgå beslutningen efter hvor mange dage?
     review_due_in_days_hint: En periode (i dage) til at vente, før beslutningen tages op til revision. (valgfri)
@@ -2097,6 +2150,10 @@ da:
     hide_results_description: Hvis du vil have folk til at stemme uden at vide, hvordan andre har stemt, kan du skjule resultaterne af afstemningen.
     process_helptext: Navngiv og beskriv den proces, der bliver brugt til at køre denne afstemning.
     reminder_helptext: Send en 'Lukker snart'-meddelelse, før afstemningen lukker. Dette kan være en mulighed for folk til at se, hvordan andre har stemt og genoverveje deres egen stemme, eller blot en måde at øge deltagelsen i afstemningen på.
+    deadline: Deadline
+    how_much_time_to_vote: Hvor meget tid vil du give folk til at stemme?
+    advanced_settings: Avancerede indstillinger
+    none_of_the_above: Ingen af ovenstående
   poll_proposal_form:
     start_header: Opret forslag
     edit_header: Rediger forslag
@@ -2227,146 +2284,6 @@ da:
     helptext: Træk og slip muligheder i præferencerækkefølge (1 er din mest foretrukne mulighed). Dine top %{count} valg vil blive registreret.
     stance_created: Valg optaget
     stance_updated: Valg opdateret
-  poll_templates:
-    proposal:
-      process_subtitle: Rejs et forslag til at træffe en beslutning
-      process_introduction: <p>Det klassiske Loomio-forslag hjælper dig med at træffe en beslutning og konvertere en diskussion til et klart resultat.</p><p> Foreslå en handlingsmåde, og inviter folk til at svare ved at stemme enig, undlad at stemme eller uenig.</p><p> Når folk stemmer, kan de give en grund til, hvorfor de har stemt på denne måde. Du kan se, hvor alle andre står i sagen, og hvorfor.</p><p> På denne måde kan du bruge et forslag til at tilskynde folk til at svare, afdække ny information og opbygge en fælles forståelse - for at hjælpe din gruppe med at træffe en bedre, mere informeret beslutning.</p><p> Et forslag og tilhørende diskussion skaber sin egen registrering af, hvordan beslutningen kom.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Læs mere om at bruge det klassiske Loomio-forslag i Simple beslutningsprocessen</u></a> .</p>
-      title: Godkend det nye Brand-koncept
-      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Hvad er den beslutning, du skal tage?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Hvorfor er dette vigtigt?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Hvad beder du folk om at gøre?</strong></h3><p></p><p> For at dette forslag kan vedtages, kræver det, at flertallet af medlemmer stemmer Enig.</p><p> Hvis du er uenig, så sig hvorfor og hvad der skal ændres, for at du er enig.</p>
-      agree: Enig
-      agree_meaning: Jeg støtter forslaget
-      agree_prompt: Hvad kan du lide ved forslaget, og hvordan vil det gavne gruppen?
-      abstain: Afholde sig
-      abstain_meaning: Vælger ikke at eller kan ikke stemme i denne beslutning.
-      abstain_prompt: Hvorfor undlader du at stemme eller føler dig ikke i stand til at stemme i denne beslutning?
-      disagree: Være uenig
-      disagree_meaning: Noget i dette forslag skal ændres, før jeg kan støtte det.
-      disagree_prompt: Hvordan kan dette forslag forbedres, så du kan støtte det?
-    advice:
-      process_subtitle: Søg råd om en beslutning, du skal træffe
-      process_introduction: <p>Søg råd om en beslutning, du skal træffe, med råd fra personer, der er berørt, eller som har ekspertise, så du kan træffe en bedre beslutning for din organisation.</p><ul><li><p> Rådgivning hjælper dig med at træffe en bedre beslutning for din organisation.</p></li><li><p> Fremme relationer, læringsmuligheder og forskelligartet input.</p></li><li><p> Stimuler initiativ og kreativitet, og mere behageligt arbejde.</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>Læs mere om rådgivningsprocessen</u></a> .</p>
-      title: Hjælp Takashi med at købe en ny computer
-      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Hvad er den beslutning, du skal tage?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Hvorfor er dette vigtigt?</strong></h3><p></p><h3 id="what-advice-are-you-asking-from-people-to-help-you-make-a-go"> <strong>Hvilket råd beder du folk om for at hjælpe dig med at træffe en god beslutning?</strong></h3><p></p><p> Jeg søger jeres input til at hjælpe mig med at træffe en god beslutning for vores organisation.</p>
-      agree: Enig
-      agree_meaning: Jeg har givet mit råd om denne beslutning
-      agree_prompt: Opsummer dine råd eller kom med en nyttig kommentar
-      abstain: Afholde sig
-      abstain_meaning: Jeg har ingen råd at give
-      abstain_prompt: Har du nogle kommentarer, der kan være nyttige?
-    consent:
-      process_subtitle: Træf en beslutning, der er 'sikker at prøve' uden indvendinger
-      process_introduction: <p>Søg samtykke til en beslutning, du skal træffe, hvor der ikke er nogen meningsfulde indvendinger mod dit forslag, så du kan træffe en hurtig beslutning for din organisation, som er 'sikker at prøve'.</p><ul><li><p> Sigt efter en 'god nok' beslutning</p></li><li><p> Involver mange stemmer for at udvikle et brugbart forslag</p></li><li><p> Spørg om nogen har en gyldig indvending</p></li><li><p> Ændre forslaget for at løse indsigelser</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Læs mere om samtykkeprocessen</a> .</p>
-      title: Lej Chloe til designrollen
-      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Hvad er den beslutning, du skal tage?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Hvorfor er dette vigtigt?</strong></h3><p></p><h3 id="what-are-you-asking-of-people-in-this-proposal"> <strong>Hvad beder du om folk i dette forslag?</strong></h3><p></p><p> Hvis du har en indsigelse, bedes du sige hvorfor og foreslå en ændring af forslaget, der gør det sikkert.</p><p> Husk, at vi søger samtykke til en 'god nok' beslutning, der er 'sikker at prøve', så vi kan træffe en god beslutning for vores organisation.</p>
-      consent: Samtykke
-      consent_meaning: Forslaget er sikkert at prøve
-      consent_prompt: Hvad kan du lide ved forslaget, og hvordan vil det gavne organisationen?
-      objection: Indvending
-      objection_meaning: Jeg har en gyldig indvending og tror, at forslaget vil forårsage skade
-      objection_prompt: Hvilken ændring af dette forslag er nødvendig for at gøre det 'sikkert at prøve', så du kan støtte det?
-    consensus:
-      process_subtitle: Indgå overenskomst med alle involverede
-      process_introduction: <p>Skab konsensus for en beslutning, du skal træffe, for at nå frem til en aftale, der tilfredsstiller alle deltageres behov og bekymringer.</p><ul><li><p> Diskuter og udvikle et forslag sammen</p></li><li><p> Inkluder og respekter alle involverede</p></li><li><p> Søg enighed fra de fleste</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/consensus_process/index.html">Læs mere om konsensusprocessen</a> .</p>
-      title: Godkend det nye Brand-koncept
-      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Hvad er den beslutning, du skal tage?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Hvorfor er dette vigtigt?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Hvad beder du folk om at gøre?</strong></h3><p></p><p> For at dette forslag kan vedtages, kræver det, at flertallet af medlemmer stemmer Enig.</p><p> Hvis du er uenig, så sig hvorfor og hvad der skal ændres, for at du er enig.</p>
-      agree: Enig
-      agree_meaning: Jeg støtter forslaget
-      agree_prompt: Hvad kan du lide ved forslaget, og hvordan vil det gavne organisationen?
-      abstain: Afholde sig
-      abstain_meaning: Denne beslutning påvirker mig ikke, og jeg er glad for, hvad gruppen end beslutter
-      abstain_prompt: Hvorfor undlader du at stemme eller føler dig ikke i stand til at stemme i denne beslutning?
-      disagree: Være uenig
-      disagree_meaning: Noget i dette forslag skal ændres, før jeg kan støtte det
-      disagree_prompt: Hvordan kan dette forslag forbedres, så du kan støtte det?
-      block: Blok
-      block_meaning: Jeg blokerer for dette forslag og mener, at det ikke skal fortsætte
-      block_prompt: Forklar din indsigelse mod dette forslag, og hvorfor det ikke bør gå videre
-    question_round:
-      process_subtitle: Inviter opklarende spørgsmål for at hjælpe folk med at forstå et forslag
-      process_introduction: <p>En spørgerunde er en mulighed for, at folk kan stille opklarende spørgsmål til forslaget, så alle forstår forslaget, før de siger, hvad de synes om det.</p><p> Loomio-spørgsmålsrunden er et særligt forslag uden afstemningsmuligheder. Det giver deltagerne mulighed for at stille spørgsmål inden for en varighed, du har angivet for runden.</p><p> En spørgsmålsrunde bruges almindeligvis som et trin i samtykkeprocessen.</p><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Læs mere om samtykkeprocessen</a> .</p>
-      title: Hvilke spørgsmål har du om sundheds- og sikkerhedspolitikken?
-      details: <h3 id="what-are-you-proposing"><strong>Hvad foreslår du?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Hvorfor er dette vigtigt?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Hvad beder du folk om at gøre?</strong></h3><p></p><p> Dette er en spørgerunde, hvor du inviteres til at stille opklarende spørgsmål.</p><p> Hvad skal du vide, så du forstår forslaget?</p><p> Svar venligst inden spørgerunden lukker.</p>
-      reason_prompt: Hvad skal du vide, så du forstår forslaget?
-    sense_check:
-      process_subtitle: Bed om feedback, spørgsmål og bekymringer
-      process_introduction: <p>Sense-tjekforslaget er en god måde at få feedback, invitere til spørgsmål og afdække bekymringer. Det hjælper med at tydeliggøre og forbedre et forslag, før man går til en beslutning.</p><p> Sense-tjek lader folk vide, at et forslag dannes, og opmuntrer dem til at engagere sig. Det er en mulighed for at lytte til folk, fornemme, hvordan de har det og reagere hensigtsmæssigt - hvilket åbner potentialet for at inkorporere deres bidrag for at træffe en bedre beslutning.</p><p> Brug Sense-tjekforslaget i samtykkeprocessen til at invitere til reaktioner og kommentarer for at forbedre forslaget, og i en konsensusproces til at teste for konsensus.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Læs mere om brug af Sense check i Simple beslutningsprocessen</u></a> <span>.</span></p>
-      title: Hvordan har du det med de nye brandkoncepter?
-      details: <h3 id="what-are-you-proposing"><strong>Hvad foreslår du?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Hvorfor er dette vigtigt?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Hvad beder du folk om at gøre?</strong></h3><p></p><p> Hvordan har du det med forslaget? Efterlad en kommentar eller kom med et forslag til forbedring.</p><p> Dette Sense-tjek er en mulighed for dit input og bidrag til at hjælpe os med at træffe en bedre beslutning.</p>
-      not_sure: Ikke sikker
-      not_sure_meaning: Jeg har et spørgsmål eller har brug for mere tid
-      not_sure_prompt: Hvilke dele er uklare for dig? Hvordan kunne dette løses?
-      looks_good: Ser godt ud
-      looks_good_meaning: Jeg er glad for, hvor det er på vej hen
-      looks_good_prompt: Har du kommentarer eller forslag til at gøre forslaget bedre?
-      abstain: Afholde sig
-      abstain_meaning: Jeg har ikke noget at tilføje eller nogen indvendinger mod dette arbejde.
-      abstain_prompt: At undlade at stemme indebærer samtykke med retningen af dette forslag. Er der en grund til, at du stemmer for at undlade at stemme?
-      concerned: Berørte
-      concerned_meaning: Noget ved dette skal muligvis ændres, for at jeg kan samtykke eller acceptere
-      concerned_prompt: Hvad er din bekymring, og hvordan kan den løses?
-    gradients_of_agreement:
-      process_subtitle: Udtryk støtte til et forslag på en 8-trins skala
-      process_introduction: <p>Forslaget om gradienter af enighed gør det muligt for medlemmer af en gruppe at udtrykke deres støtte til et forslag i grader på en skala, der tilbyder flere måder at udtrykke støtte på end i form af "enig" og "uenig".</p><p> Brug Gradients of Agreement som en indledende runde til at teste støtte til et forslag, før du går over til en formel aftale.</p><p> Gradienter af enighed lader folk vide, at et forslag er ved at blive dannet og opmuntrer dem til at engagere sig. Det er en mulighed for at lytte til folk, fornemme, hvordan de har det og reagere hensigtsmæssigt - hvilket åbner potentialet for at inkorporere deres bidrag for at træffe en bedre beslutning.</p>
-      title: Hvad synes du om den nye værdiangivelse?
-      details: <h3 id="what-are-you-proposing"><strong>Hvad foreslår du?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Hvorfor er dette vigtigt?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Hvad beder du folk om at gøre?</strong></h3><p></p><p> Hvordan kan du lide forslaget? Udtryk din støtte på skalaen nedenfor og efterlad en kommentar eller forslag til forbedring.</p><p> Dette Gradients of Agreement-forslag er for at teste støtte til forslaget og en mulighed for dit input, før du går over til en formel aftale.</p>
-      whole_hearted_endorsement: Helhjertet tilslutning
-      whole_hearted_endorsement_meaning: Jeg kan virkelig godt lide det!
-      whole_hearted_endorsement_prompt: Hvad kan du lide ved det?
-      agreement_with_minor_contention: Aftale med mindre indsigelser
-      agreement_with_minor_contention_meaning: Ikke perfekt, men det er godt nok
-      agreement_with_minor_contention_prompt: Hvad er din bekymring?
-      support_with_reservations: Support med forbehold
-      support_with_reservations_meaning: Jeg kan leve med det
-      support_with_reservations_prompt: Hvad er dine forbehold?
-      abstain_meaning: Dette spørgsmål berører mig ikke
-      abstain_prompt: Har du noget, du gerne vil tilføje?
-      more_discussion_needed: Mere diskussion nødvendig
-      more_discussion_needed_meaning: Jeg forstår ikke problemerne godt nok endnu
-      more_discussion_needed_prompt: Hvad forstår du ikke?
-      don_t_like_but_will_support: Kan ikke lide, men vil støtte
-      don_t_like_but_will_support_meaning: Det er ikke godt, men jeg vil ikke holde gruppen op
-      don_t_like_but_will_support_prompt: Hvad vil du gerne se forbedret?
-      serious_disagreement: Alvorlig uenighed
-      serious_disagreement_meaning: Jeg er ikke med på dette - regn ikke med mig
-      serious_disagreement_prompt: Hvad er du uenig i?
-      veto: Veto
-      veto_meaning: Jeg blokerer dette forslag
-      veto_prompt: Hvorfor blokerer du forslaget? Hvad skal ændres for at du kan støtte det?
-    simple_poll:
-      process_subtitle: Find den mest populære mulighed
-      process_introduction: <p>Inden du træffer en beslutning, skal du finde ud af, hvilke muligheder folk interesserer sig mest for.</p><p> Simpel afstemning hjælper dig med at finde den eller de mest populære muligheder med enkelt- eller flervalg.</p><p> Skriv eventuelle detaljer om mulighederne i detaljefeltet, indtast derefter navnet på indstillingen, og klik på + for at tilføje.</p><p> Indstil <strong>Minimum valg</strong> og <strong>Maksimum valg</strong> en vælger kan vælge. Lad det maksimale valg være 1 for en enkeltvalgsafstemning.</p><p> Du kan bruge blyantikonet ved siden af hver mulighed for at tilføje en <strong>betydning</strong> af indstillingen, en yderligere uddybning af muligheden for at hjælpe folk, når de stemmer.</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">Læs mere om Simple poll</a> .</p>
-      title: Hvor skal fokus for vores strategiske retning være?
-      details: <h3 id="what-is-this-poll-about"><strong>Hvad handler denne afstemning om?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Hvorfor er dette vigtigt?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Hvad beder du folk om at gøre?</strong></h3><p></p><p> Vælg den eller de muligheder, du foretrækker.</p>
-    score_poll:
-      process_subtitle: Mål graden af støtte for hver mulighed
-      process_introduction: <p>Brug Score-afstemning, når du vil undersøge folk for deres ønsker, præferencer eller interesse for hver mulighed.</p><p> <span>Deltagerne bliver bedt om at evaluere hver mulighed og tildele en score ved at flytte en skyder langs en skala.</span></p><p> <span>Resultaterne vises grafisk sammen med en tabel for hver mulighed, der viser det samlede antal point, gennemsnitspoint og antallet af vælgere.</span></p><p> Avancerede indstillinger inkluderer 'Stemmer er anonyme' og 'Vis valgmuligheder i tilfældig rækkefølge' - almindeligvis brugt til Score-afstemning for at reducere enhver stemmebias.</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">Læs mere om Score-afstemning</a> .</p>
-      title: Vurderer, hvordan beslutninger træffes i vores organisation
-      details: <h3 id="what-is-this-poll-about"><strong>Hvad handler denne afstemning om?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Hvorfor er dette vigtigt?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Hvad beder du folk om at gøre?</strong></h3><p></p><p> Vælg den eller de muligheder, du foretrækker.</p>
-    dot_vote:
-      process_subtitle: Tildel et budget med point for at afsløre prioriteter
-      process_introduction: <p>Punktafstemning er nyttig for grupper, der forsøger at allokere en begrænset ressource til en række muligheder. Det går ud over en simpel afstemning ved at hjælpe deltagerne med at forstå, at der er en begrænsning, når de skal vælge muligheder.</p><p> Deltagerne får hver et bestemt antal prikker. Du bestemmer selv hvor mange.</p><p> De placerer prikker ved siden af de præsenterede muligheder, som de kan lide. Deltagerne kan placere alle deres prikker på en enkelt mulighed eller fordelt på flere muligheder.</p><p> Efterhånden som deltagere tildeler prikker, kan de overskride prikbudgetgrænsen og opfordres derfor til at overveje, hvordan de bruger deres prikker omhyggeligt.</p><p> Valgmuligheder med flest prikker "vinder". Resultattabellen giver yderligere data til at hjælpe dig med at analysere resultater.</p><ul><li><p> % af point</p></li><li><p> Points</p></li><li><p> Betyde</p></li><li><p> Vælgere</p></li></ul><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">Læs mere om Dot vote</a> .</p>
-      title: Valg af temaer til vores konference
-      details: <h3 id="what-is-this-poll-about"><strong>Hvad handler denne afstemning om?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Hvorfor er dette vigtigt?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Hvad beder du folk om at gøre?</strong></h3><p></p><p> I denne afstemning har du et budget på 8 prikker til at allokere til de muligheder, du foretrækker. Du kan placere alle prikker på én mulighed eller sprede dem ud.</p>
-    ranked_choice:
-      process_subtitle: Forstå den ordnede præference for muligheder
-      process_introduction: <p>Rangeringsvalg er nyttigt, når du har et stort antal valgmuligheder eller holder et valg.</p><p> Denne afstemningsskabelon tilbyder en række muligheder for folk til at stemme i deres foretrukne rækkefølge.</p><p> Du kan indstille antallet af valg, vælgeren får.</p><p> <span>Vælgerne trækker og slipper i deres foretrukne rækkefølge (nr. 1 er din mest foretrukne mulighed).</span></p><p> <span>Avancerede indstillinger inkluderer 'Stemmer er anonyme' og 'Vis muligheder i tilfældig rækkefølge' - almindeligvis brugt til R</span> anket valg for at reducere enhver stemmeskævhed.</p><p> Resultaterne vises i rækkefølge. Resultattabellen giver yderligere data til at hjælpe dig med at analysere resultater.</p><ul><li><p> Rang</p></li><li><p> % af point</p></li><li><p> Points</p></li><li><p> Betyde</p></li></ul><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">Læs mere om Rangeret valg</a> .</p>
-      title: Vælg direktører til bestyrelsen
-      details: <h3 id="what-is-this-poll-about"><strong>Hvad handler denne afstemning om?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Hvorfor er dette vigtigt?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Hvad beder du folk om at gøre?</strong></h3><p></p><p> Stem ved at rangordne mulighederne i den rækkefølge, du foretrækker. Den mulighed, der rangerer først i resultaterne, vinder.</p>
-    time_poll:
-      process_subtitle: Find, hvornår folk er tilgængelige for at mødes
-      process_introduction: <p><span>Spar tid på at arrangere en dato for dit møde eller arrangement.</span></p><p> Tidsmåling gør det nemt at se alles tilgængelighed og finde det bedste tidspunkt.</p><p> Giv din Time-afstemning en titel og detaljer. Indtast en liste over dato- og tidsindstillinger i din tidszone.</p><p> Når du indstiller tidsintervaller, skal du overveje personer i forskellige tidszoner. Deltagerne vil se tider lokaliseret i deres tidszone.</p><p> Indstil en mødevarighed.</p><p> Når Time-afstemningen lukker, skal du angive et resultat med det bedste tidspunkt og eventuelle instruktioner til mødet.</p><p> <span>Loomio vil inkludere en kalenderinvitation sammen med e-mailen om resultatet, så deltagerne kan føje til deres kalender.</span></p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">Læs mere om Time poll</a> .</p>
-      title: Lad os finde en dato for vores næste møde
-      details: "<p><strong>Hvad er mødet eller begivenheden?</strong></p><p></p><p> <strong>Hvorfor er dette vigtigt?</strong></p><p></p><p> <strong>Hvad beder du folk om at gøre?</strong></p><p></p><p> <span>Marker de tidsrum, du er til rådighed, med det grønne 'thumbs up'-ikon eller lad den røde 'thumbs down' være på plads, når den ikke er tilgængelig.</span></p><p> <span>Brug 'thumbs sidewards'-ikonet for at sige, at du er tilgængelig 'hvis det er nødvendigt'.</span></p>"
-      reason_prompt: Er der noget, du kan sige for at hjælpe arrangøren med at finde et passende tidspunkt?
-    opt_in:
-      process_subtitle: Find frivillige eller spørg efter deltagere
-      process_introduction: '<p>Brug Opt-in til at invitere folk til at deltage i et team, udvalg eller arbejdsgruppe eller til at deltage i en begivenhed.</p><p> ''Tilmeld'' har to valgmuligheder: Accepter eller Afvis.</p><p> Du kan definere et mål for antallet af personer, du leder efter, f.eks. 3 personer til at deltage i din arbejdsgruppe.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#opt-in">Læs mere om Opt-in</a> .</p>'
-      title: Arbejdsgruppe til at udarbejde vores nye bæredygtighedspolitik
-      details: "<p><strong>Hvad er det team, arbejdsgruppe eller event, du inviterer folk til?</strong></p><p></p><p> <strong>Hvorfor er dette vigtigt?</strong></p><p></p><p> <strong>Hvad beder du folk om at gøre?</strong></p><p></p><p> Vælg 'Acceptér' for at deltage!</p>"
-      accept_meaning: Jeg er villig til at deltage
-      accept_prompt: Hvorfor melder du dig frivilligt til dette?
-      decline_meaning: Jeg kan ikke deltage
-      decline_prompt: Er der noget, du gerne vil sige?
   thread_item:
     removed: Varen er fjernet
     deleted_group: Slettet gruppe
@@ -2420,7 +2337,6 @@ da:
     account_locked: Din konto er blevet låst efter for mange mislykkede loginforsøg. Tjek din e-mail for et oplåsningslink
     email_not_found: Beklager, vi kunne ikke finde en konto med den e-mailadresse
     email_taken: E-mailadressen er allerede registreret
-    email_placeholder: you@example.com
     login_with_token: Du er klar! Klik på linket nedenfor for at fortsætte.
     login_link_helptext: Klik på knappen nedenfor, og vi sender dig et link til at logge ind.
     enter_your_password: Indtast din adgangskode for at fortsætte
@@ -2460,6 +2376,8 @@ da:
     password: Adgangskode
     reactivate: Genaktiver konto
     want_to_set_password: Vil du logge ind med en adgangskode næste gang?
+    change_your_password: Vil du indstille en ny adgangskode?
+    email_placeholder: du{'@'}eksempel.com
   chatbot:
     configure_chatbot: Konfigurer chatbot
     test_connection: Test forbindelse
@@ -2485,6 +2403,7 @@ da:
     event_kind_helptext: Vælg begivenheder, som botten altid får besked om. Hvis du ikke er sikker, skal du bare lade dem alle være væk.
     notification_only_label: Send kun meddelelsesoverskrift
     check_for_test_message: Tjek dit chatrum for en besked fra botten!
+    webex: Webex
   webhook:
     integrations: Integrationer
     api_keys: API nøgler
@@ -2581,3 +2500,39 @@ da:
     month: Måned
     year: År
     country_disclaimer: Land er baseret på brugerens IP-adresse og er ikke særlig nøjagtigt. Betragt kun dette som en grov guide.
+  tips:
+    youve_completed_all_the_steps: "\U0001F389 Du har gennemført alle trinene!"
+    getting_started_checklist: Tjekliste til introduktion
+    complete_these_steps_to_set_up_your_group: Udfør disse trin for at oprette din gruppe
+    hide:
+      title: Skjul disse tips
+      hide_onboarding: Skjul onboardingtips
+      unhide_onboarding: Vis onboardingtips
+      helptext: <p>Dette vil fjerne "Tjekliste til introduktion" fra titellinjen.</p><p> Hvis du vil bruge det igen senere, kan du <b>vise onboarding-tips</b> fra sidebjælkens indstillinger.</p>
+    intro:
+      tip_title: Klik her for at starte
+      title: Velkommen til din nye Loomio-gruppe!
+      body: <p>Denne korte serie af små trin er designet til at sikre, at de personer, du inviterer til at deltage i gruppen, får et godt førstehåndsindtryk og forstår, hvordan de skal deltage i diskussioner og beslutninger.</p><p> I sidebjælken finder du knappen "Kontakt support". Du er velkommen til at kontakte os, hvis du har spørgsmål eller har brug for rådgivning når som helst.</p>
+      submit: Lad os komme i gang
+    group:
+      welcome_and_faq: Velkommen! Læs dette for at komme i gang
+      upload_image:
+        title: Færdiggør din gruppeprofil
+        helptext: "<p>Lad os gennemgå din gruppeprofil. Navn, beskrivelse, logo og forsidebillede vil blive inkluderet i de invitationsmails, du sender i et senere trin.</p><p> <b>Tilføj dit eget gruppeforsidebillede</b> . Det hjælper med at give et godt førstehåndsindtryk på de personer, du inviterer til at deltage.</p><p> Du kan bruge et nyligt teamfoto eller et billede, der repræsenterer din organisations arbejde eller fællesskab.</p>"
+        open_group_settings: Åbn gruppeindstillinger
+      invite_people:
+        title: Inviter folk til gruppen
+      start_a_thread:
+        title: Start en tråd
+        helptext: "<p>Opret en tråd, som folk vil se, når de har accepteret deres invitation.</p><p> Hensigten er at opfordre folk til at skrive deres første kommentar i Loomio.</p><p> For at gøre det nemt, har vi lavet en skabelon til <b>øvelsestråde,</b> som du kan bruge.</p>"
+        submit: Se trådskabeloner
+      start_a_proposal:
+        title: Start et forslag
+        helptext: "<p>I Loomio bruger vi forslag til at vise støtte til en beslutning eller finde måder at forbedre den på.</p><p> Lad os starte et forslag og bede dine gruppemedlemmer om at stemme om det.</p><p> Vi har lavet en skabelon til et <b>praktikforslag,</b> som du kan bruge.</p>"
+        submit: Se forslagsskabeloner
+      share_an_outcome:
+        title: Del et forslagsresultat
+        helptext: "<p>For at fremme beslutninger har forslag en frist for afstemning. Når fristen er nået, lukkes afstemningen, og du får besked, så du kan dele et resultat af forslaget.</p><p> Resultatet giver en mulighed for at sige, om forslaget var vellykket, og hvad der vil ske derefter.</p><p> Hvis din forslagsfrist endnu ikke er udløbet, men du alligevel ønsker at fortsætte, kan du klikke på <b>Luk tidligt</b> .</p><p> Når tiden er inde, <b>skal du indtaste et resultat</b> for dit forslag.</p>"
+        submit: Se forslag
+        cancel: Gør dette senere
+    get_started_here: Kom i gang her

@@ -1,13 +1,12 @@
 class PollOption < ApplicationRecord
   include Translatable
-  
+  is_translatable on: [:name, :meaning]
+
   belongs_to :poll
   validates :name, presence: true
 
   has_many :stance_choices, dependent: :destroy
   has_many :stances, -> { where("stances.revoked_at IS NULL") }, through: :stance_choices
-
-  is_translatable on: [:name, :meaning]
 
   scope :dangling, -> { joins('left join polls on polls.id = poll_id').where('polls.id is null') }
 

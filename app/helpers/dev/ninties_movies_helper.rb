@@ -6,9 +6,9 @@ module Dev::NintiesMoviesHelper
   # try to just return objects here. Don't knit them together. Leave that for
   # the development controller action to do if possible
   def patrick
-    @patrick ||= User.find_by(email: 'patrick_swayze@example.com') ||
+    @patrick ||= User.find_by(email: 'patrick@example.com') ||
                  User.create!(name: 'Patrick Swayze',
-                              email: 'patrick_swayze@example.com',
+                              email: 'patrick@example.com',
                               is_admin: false,
                               username: 'patrickswayze',
                               password: 'gh0stmovie',
@@ -17,7 +17,7 @@ module Dev::NintiesMoviesHelper
                               date_time_pref: 'day_abbr',
                               avatar_kind: 'uploaded',
                               email_verified: true)
-    @patrick.uploaded_avatar.attach io: File.new("#{Rails.root}/spec/fixtures/images/patrick.png"), filename: 'patrick.jpg'
+    @patrick.uploaded_avatar.attach io: File.new(Rails.root.join("spec/fixtures/images/patrick.png")), filename: 'patrick.png'
     @patrick.update(avatar_kind: :uploaded)
     @patrick
   end
@@ -32,9 +32,9 @@ module Dev::NintiesMoviesHelper
   end
 
   def jennifer
-    @jennifer ||= User.find_by(email: 'jennifer_grey@example.com') ||
+    @jennifer ||= User.find_by(email: 'jennifer@example.com') ||
                   User.create!(name: 'Jennifer Grey',
-                               email: 'jennifer_grey@example.com',
+                               email: 'jennifer@example.com',
                                date_time_pref: 'day_abbr',
                                username: 'jennifergrey',
                                experiences: {changePicture: true},
@@ -57,9 +57,9 @@ module Dev::NintiesMoviesHelper
   end
 
   def emilio
-    @emilio ||= User.find_by(email: 'emilio@loomio.org') ||
+    @emilio ||= User.find_by(email: 'emilio@example.com') ||
                 User.create!(name: 'Emilio Estevez',
-                            email: 'emilio@loomio.org',
+                            email: 'emilio@example.com',
                             password: 'gh0stmovie',
                             date_time_pref: 'day_abbr',
                             email_verified: true)

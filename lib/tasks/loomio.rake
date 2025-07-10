@@ -64,17 +64,12 @@ namespace :loomio do
 
   task delete_translations: :environment do
     # I edit this each time I want to use it.. rake task arguments are terrible
-    %w[server client].each do |source_name|
+    %w[client].each do |source_name|
       AppConfig.locales['supported'].each do |locale|
         foreign = YAML.load_file("config/locales/#{source_name}.#{locale}.yml")[locale]
-        if foreign.has_key? 'email_to_group'
-          %w[send_email_to_start_thread
-            subject_body_attachments
-            forward_email_to_move_conversation].each do |key|
-            foreign['email_to_group'].delete(key)
-          end
-        end
-        File.write("config/locales/#{source_name}.#{locale}.yml", {locale => foreign}.to_yaml(line_width: 2000)) 
+        key_to_delete = "poll_templates"
+        foreign.delete(key_to_delete) if foreign.has_key? key_to_delete
+        File.write("config/locales/#{source_name}.#{locale}.yml", {locale => foreign}.to_yaml(line_width: 2000))
       end
     end
   end
@@ -104,7 +99,7 @@ namespace :loomio do
         end
 
         if write_file
-          File.write("config/locales/#{source_name}.#{file_locale}.yml", {file_locale => foreign}.to_yaml(line_width: 2000)) 
+          File.write("config/locales/#{source_name}.#{file_locale}.yml", {file_locale => foreign}.to_yaml(line_width: 2000))
         end
       end
     end
@@ -127,10 +122,10 @@ namespace :loomio do
           im = Vips::Image.new_from_buffer(current.to_s, "", {scale: 8})
           im.write_to_file dest_path.to_s+"/#{basename}-#{color}.png"
         end
-      end 
+      end
     end
   end
-  
+
   task generate_static_error_pages: :environment do
     [400, 404, 403, 410, 417, 422, 429, 500].each do |code|
       ['html'].each do |format|
@@ -160,23 +155,22 @@ namespace :loomio do
     GenericWorker.perform_async('PollService', 'publish_closing_soon')
     GenericWorker.perform_async('TaskService', 'send_task_reminders')
     GenericWorker.perform_async('ReceivedEmailService', 'route_all')
+    LoginToken.where("created_at < ?", 1.hours.ago).delete_all
     GeoLocationWorker.perform_async
 
     SendDailyCatchUpEmailWorker.perform_async
 
     if (Time.now.hour == 0)
       ThrottleService.reset!('day')
-      
       Group.expired_demo.delete_all
       GenericWorker.perform_async('DemoService', 'generate_demo_groups')
       GenericWorker.perform_async('CleanupService', 'delete_orphan_records')
       GenericWorker.perform_async('OutcomeService', 'publish_review_due')
       GenericWorker.perform_async('ReceivedEmailService', 'delete_old_emails')
-      LoginToken.where("created_at < ?", 24.hours.ago).delete_all
     end
 
     GenericWorker.perform_async('DemoService', 'ensure_queue')
-    
+
     if (Time.now.hour == 0 && Time.now.mday == 1)
       UpdateBlockedDomainsWorker.perform_async
     end

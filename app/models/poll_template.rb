@@ -32,6 +32,7 @@ class PollTemplate < ApplicationRecord
     :group_id,
     :anonymous,
     :shuffle_options,
+    :show_none_of_the_above,
     :chart_type,
     :specified_voters_only,
     :stance_reason_required,
@@ -62,6 +63,7 @@ class PollTemplate < ApplicationRecord
     :process_introduction,
     :details,
     :reason_prompt,
+    :outcome_statement
     ].map(&:to_s).each do |key|
       unless self.send(key) == AppConfig.poll_types.dig(self.poll_type, 'defaults', key)
         out[key] = self[key]

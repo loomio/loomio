@@ -2,23 +2,25 @@ class PollService
   def self.create(poll:, actor:, params: {})
     actor.ability.authorize! :create, poll
 
-    poll.assign_attributes(author: actor)
-    poll.prioritise_poll_options!
+    Poll.transaction do
+      poll.assign_attributes(author: actor)
+      poll.prioritise_poll_options!
 
-    return false unless poll.valid?
-    poll.save!
-    poll.update_counts!
+      return false unless poll.valid?
+      poll.save!
+      poll.update_counts!
 
-    if !poll.specified_voters_only
-      stances = create_stances(poll: poll, actor: actor, include_actor: true, audience: 'group')
-    else
-      stances = Stance.none
+      if !poll.specified_voters_only
+        stances = create_anyone_can_vote_stances(poll)
+      else
+        stances = Stance.none
+      end
+
+      user_ids = params[:notify_recipients] ? stances.pluck(:participant_id) : []
+
+      EventBus.broadcast('poll_create', poll, actor)
+      Events::PollCreated.publish!(poll, actor, recipient_user_ids: user_ids - [actor.id])
     end
-
-    user_ids = params[:notify_recipients] ? stances.pluck(:participant_id) : []
-    
-    EventBus.broadcast('poll_create', poll, actor)
-    Events::PollCreated.publish!(poll, actor, recipient_user_ids: user_ids - [actor.id])
   end
 
   def self.update(poll:, params:, actor:)
@@ -31,7 +33,6 @@ class PollService
       model: poll,
       actor: actor
     )
-
     poll.assign_attributes_and_files(params.except(:poll_type, :discussion_id, :poll_template_id, :poll_template_key))
 
     # check again, because the group id could be updated to a untrusted group
@@ -41,30 +42,32 @@ class PollService
 
     return false unless poll.valid?
 
-    poll.save!
-    poll.update_counts!
-    GenericWorker.perform_async('SearchService', 'reindex_by_poll_id', poll.id)
+    Poll.transaction do
+      poll.save!
+      poll.update_counts!
+      GenericWorker.perform_async('SearchService', 'reindex_by_poll_id', poll.id)
 
-    GenericWorker.perform_async('PollService', 'group_members_added', poll.group_id) if poll.group_id
+      GenericWorker.perform_async('PollService', 'group_members_added', poll.group_id) if poll.group_id
 
-    users = UserInviter.where_or_create!(
-      actor: actor,
-      user_ids: params[:recipient_user_ids],
-      emails: params[:recipient_emails],
-      audience: params[:recipient_audience],
-      model: poll
-    )
+      users = UserInviter.where_or_create!(
+        actor: actor,
+        user_ids: params[:recipient_user_ids],
+        emails: params[:recipient_emails],
+        audience: params[:recipient_audience],
+        model: poll
+      )
 
-    EventBus.broadcast('poll_update', poll, actor)
+      EventBus.broadcast('poll_update', poll, actor)
 
-    Events::PollEdited.publish!(
-      poll: poll,
-      actor: actor,
-      recipient_user_ids: users.pluck(:id),
-      recipient_chatbot_ids: params[:recipient_chatbot_ids],
-      recipient_audience: params[:recipient_audience],
-      recipient_message: params[:recipient_message]
-    )
+      Events::PollEdited.publish!(
+        poll: poll,
+        actor: actor,
+        recipient_user_ids: users.pluck(:id),
+        recipient_chatbot_ids: params[:recipient_chatbot_ids],
+        recipient_audience: params[:recipient_audience],
+        recipient_message: params[:recipient_message]
+      )
+    end
   end
 
   def self.invite(poll:, actor:, params:)
@@ -76,34 +79,38 @@ class PollService
       actor: actor,
     )
 
-    if poll.discussion
-      DiscussionService.add_users(
-        discussion: poll.discussion,
-        actor: actor,
+    stances = nil
+
+    Poll.transaction do
+      if poll.discussion
+        DiscussionService.add_users(
+          discussion: poll.discussion,
+          actor: actor,
+          user_ids: params[:recipient_user_ids],
+          emails: params[:recipient_emails],
+          audience: params[:recipient_audience],
+        )
+      end
+
+      stances = create_stances(
+        poll: poll, actor: actor,
         user_ids: params[:recipient_user_ids],
         emails: params[:recipient_emails],
-        audience: params[:recipient_audience],
+        include_actor: params[:include_actor],
+        audience: params[:recipient_audience]
       )
-    end
 
-    stances = create_stances(
-      poll: poll, actor: actor,
-      user_ids: params[:recipient_user_ids],
-      emails: params[:recipient_emails],
-      include_actor: params[:include_actor],
-      audience: params[:recipient_audience]
-    )
-
-    if params[:notify_recipients]
-      Events::PollAnnounced.publish!(
-        poll: poll,
-        actor: actor,
-        stances: stances,
-        recipient_user_ids: params[:recipient_user_ids],
-        recipient_chatbot_ids: params[:recipient_chatbot_ids],
-        recipient_audience: params[:recipient_audience],
-        recipient_message:  params[:recipient_message],
-      )
+      if params[:notify_recipients]
+        Events::PollAnnounced.publish!(
+          poll: poll,
+          actor: actor,
+          stances: stances,
+          recipient_user_ids: params[:recipient_user_ids],
+          recipient_chatbot_ids: params[:recipient_chatbot_ids],
+          recipient_audience: params[:recipient_audience],
+          recipient_message:  params[:recipient_message],
+        )
+      end
     end
 
     stances
@@ -112,21 +119,23 @@ class PollService
   def self.remind(poll:, actor:, params:)
     actor.ability.authorize! :remind, poll
 
-    users = UserInviter.where_existing(
-      user_ids: params[:recipient_user_ids],
-      audience: params[:recipient_audience],
-      model: poll,
-      actor: actor
-    )
+    Poll.transaction do
+      users = UserInviter.where_existing(
+        user_ids: params[:recipient_user_ids],
+        audience: params[:recipient_audience],
+        model: poll,
+        actor: actor
+      )
 
-    Events::PollReminder.publish!(
-      poll: poll,
-      actor: actor,
-      recipient_user_ids: users.pluck(:id),
-      recipient_chatbot_ids: params[:recipient_chatbot_ids],
-      recipient_audience: params[:recipient_audience],
-      recipient_message: params[:recipient_message]
-    )
+      Events::PollReminder.publish!(
+        poll: poll,
+        actor: actor,
+        recipient_user_ids: users.pluck(:id),
+        recipient_chatbot_ids: params[:recipient_chatbot_ids],
+        recipient_audience: params[:recipient_audience],
+        recipient_message: params[:recipient_message]
+      )
+    end
   end
 
   def self.create_stances(poll:, actor:, user_ids: [], emails: [], audience: nil, include_actor: false)
@@ -192,18 +201,23 @@ class PollService
   def self.discard(poll:, actor:)
     actor.ability.authorize!(:destroy, poll)
 
-    poll.update(discarded_at: Time.now, discarded_by: actor.id)
-    Event.where(kind: ["stance_created", "stance_updated"], eventable_id: poll.stances.pluck(:id)).update_all(discussion_id: nil)
-    poll.created_event.update!(user_id: nil, child_count: 0, pinned: false)
-    discussion.update_sequence_info! if poll.discussion
+    Poll.transaction do
+      poll.update(discarded_at: Time.now, discarded_by: actor.id)
+      Event.where(kind: ["stance_created", "stance_updated"], eventable_id: poll.stances.pluck(:id)).update_all(discussion_id: nil)
+      poll.created_event.update!(user_id: nil, child_count: 0, pinned: false)
+      poll.discussion.update_sequence_info! if poll.discussion
+    end
+
     MessageChannelService.publish_models([poll.created_event], scope: {current_user: actor, current_user_id: actor.id}, group_id: poll.group_id)
     poll.created_event
   end
 
   def self.close(poll:, actor:)
     actor.ability.authorize! :close, poll
-    do_closing_work(poll: poll)
-    Events::PollClosedByUser.publish!(poll, actor)
+    Poll.transaction do
+      do_closing_work(poll: poll)
+      Events::PollClosedByUser.publish!(poll, actor)
+    end
   end
 
   def self.reopen(poll:, params:, actor:)
@@ -212,10 +226,12 @@ class PollService
     poll.assign_attributes(closing_at: params[:closing_at], closed_at: nil)
     return false unless poll.valid?
 
-    poll.save!
+    Poll.transaction do
+      poll.save!
 
-    EventBus.broadcast('poll_reopen', poll, actor)
-    Events::PollReopened.publish!(poll, actor)
+      EventBus.broadcast('poll_reopen', poll, actor)
+      Events::PollReopened.publish!(poll, actor)
+    end
   end
 
   def self.publish_closing_soon
@@ -229,16 +245,27 @@ class PollService
 
   def self.group_members_added(group_id)
     return if group_id.nil?
-    member_ids = Group.find(group_id).members.humans.pluck(:id)
+
     Poll.active.where(group_id: group_id, specified_voters_only: false).each do |poll|
-      revoked_user_ids = poll.stances.revoked.pluck(:participant_id).uniq
-      PollService.create_stances(
-        poll: poll,
-        actor: poll.author,
-        user_ids: (member_ids - poll.voter_ids) - revoked_user_ids
-      )
-      poll.update_counts!
+      create_anyone_can_vote_stances(poll)
     end
+  end
+
+  def self.create_anyone_can_vote_stances(poll)
+    raise "only use on specified_voters_only=false" if poll.specified_voters_only
+
+    member_ids = []
+    member_ids = Group.find(poll.group_id).accepted_members.humans.pluck(:id) if poll.group_id && poll.group
+
+    guest_ids = []
+    guest_ids = poll.discussion.guest_ids if poll.discussion
+
+    revoked_user_ids = poll.stances.revoked.pluck(:participant_id).uniq
+    create_stances(
+      poll: poll,
+      actor: poll.author,
+      user_ids: ((guest_ids + member_ids) - poll.voter_ids) - revoked_user_ids
+    )
   end
 
   def self.group_members_removed(group_id, removed_user_ids, actor_id, revoked_at)
@@ -260,7 +287,8 @@ class PollService
 
   def self.do_closing_work(poll:)
     return if poll.closed_at
-    poll.stances.update_all(participant_id: nil) if poll.anonymous
+
+    poll.stances.update_all(participant_id: nil) if poll.anonymous && AppConfig.app_features[:scrub_anonymous_stances]
     if poll.discussion_id && poll.hide_results == 'until_closed'
       stance_ids = poll.stances.latest.reject(&:body_is_blank?).map(&:id)
       Event.where(kind: 'stance_created', eventable_id: stance_ids, discussion_id: nil).update_all(discussion_id: poll.discussion_id)
@@ -333,9 +361,33 @@ class PollService
         color: option.color
       }.with_indifferent_access.freeze
     end
-    if poll.results_include_undecided
-      l.push({
+
+    if poll.show_none_of_the_above
+      l.push(
+        {
           id: 0,
+          poll_id: poll.id,
+          name: 'poll_common_form.none_of_the_above',
+          name_format: 'i18n',
+          rank: nil,
+          score: 0,
+          score_percent: 0,
+          max_score_percent: 0,
+          target_percent: poll.voters_count > 0 ? (poll.none_of_the_above_count.to_f / poll.voters_count.to_f * 100) : 0,
+          voter_percent: poll.voters_count > 0 ? (poll.none_of_the_above_count.to_f / poll.voters_count.to_f * 100) : 0,
+          average: 0,
+          voter_scores: {},
+          voter_ids: poll.none_of_the_above_voters.map(&:id).take(500),
+          voter_count: poll.none_of_the_above_count,
+          color: '#BBBBBB'
+        }.with_indifferent_access.freeze
+      )
+    end
+
+    if poll.results_include_undecided
+      l.push(
+        {
+          id: -1,
           poll_id: poll.id,
           name: 'poll_common_votes_panel.undecided',
           name_format: 'i18n',
@@ -350,7 +402,8 @@ class PollService
           voter_ids: poll.undecided_voters.map(&:id).take(500),
           voter_count: poll.undecided_voters_count,
           color: '#BBBBBB'
-      }.with_indifferent_access.freeze)
+        }.with_indifferent_access.freeze
+      )
     end
     l
   end

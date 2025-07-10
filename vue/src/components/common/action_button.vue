@@ -4,7 +4,10 @@ export default {
     action: Object,
     name: String,
     nameArgs: Object,
-    small: Boolean
+    size: {
+      type: String,
+      default: undefined
+    }
   },
   computed: {
     text() { return this.$t((this.action.name || ('action_dock.'+this.name)), (this.nameArgs || {})); },
@@ -15,12 +18,12 @@ export default {
 
 <template lang="pug">
 span
-  v-btn.action-button(v-if="action.to" :small="small" :to="action.to()" text :icon="action.dock == 1" :title="text" :class='cssClass' )
-    common-icon(v-if="action.dock == 1 || action.dock == 3" :small="small" :name="action.icon")
+  v-btn.action-button(v-if="action.to" :size="size" :to="action.to()" variant="text" :icon="action.dock == 1" :title="text" :class='cssClass' )
+    common-icon(v-if="action.dock == 1 || action.dock == 3" :size="size" :name="action.icon")
     span.ml-1(v-if="action.dock == 3")
     span(v-if="action.dock > 1") {{text}}
-  v-btn.action-button(v-else :small="small" @click.prevent="action.perform()" text :icon="action.dock == 1" :title="text" :class='cssClass' )
-    common-icon(v-if="action.dock == 1 || action.dock == 3" :small="small" :name="action.icon")
+  v-btn.action-button(v-else :size="size" @click.prevent="action.perform()" variant="text" :icon="action.dock == 1" :title="text" :class='cssClass' )
+    common-icon(v-if="action.dock == 1 || action.dock == 3" :size="size" :name="action.icon")
     span.ml-1(v-if="action.dock == 3")
     span(v-if="action.dock > 1") {{text}}
 </template>

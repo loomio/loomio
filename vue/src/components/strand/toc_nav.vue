@@ -1,9 +1,15 @@
 <script lang="js">
 import EventBus from '@/shared/services/event_bus';
 import Records from '@/shared/services/records';
-// import marked from '@/shared/helpers/marked';
+import WatchRecords from '@/mixins/watch_records';
+import UrlFor from '@/mixins/url_for';
+import { sortBy } from 'lodash-es';
+import ScrollService from '@/shared/services/scroll_service';
+import Session        from '@/shared/services/session';
+
 
 export default {
+  mixins: [WatchRecords, UrlFor],
   props: {
     discussion: Object,
     loader: Object
@@ -20,10 +26,14 @@ export default {
 
   computed: {
     selectedSequenceId() { return parseInt(this.$route.params.sequence_id); },
-    selectedCommentId() { return parseInt(this.$route.params.comment_id); }
+    selectedCommentId() { return parseInt(this.$route.params.comment_id); },
+    isSignedIn() { return Session.isSignedIn(); },
   },
 
   methods: {
+    scrollToSequenceId(id) {
+      ScrollService.scrollTo(`.sequenceId-${id}`);
+    },
     buildItems(bootData) {
       const itemsHash = {};
 
@@ -85,7 +95,7 @@ export default {
         };
       });
 
-      const itemsArray = Object.values(itemsHash);
+      const itemsArray = sortBy(Object.values(itemsHash), i => i.key);
 
       if (this.discussion.newestFirst) {
         const newItems = [];
@@ -111,7 +121,7 @@ export default {
       const createdEvent = this.discussion.createdEvent();
       this.items.unshift({
         key: createdEvent.positionKey,
-        title: this.$t('activity_card.context'),
+        title: this.discussion.title,
         headings: [],
         sequenceId: 0,
         visible: this.visibleKeys.includes(createdEvent.positionKey),
@@ -167,16 +177,17 @@ export default {
 </script>
 
 <template lang="pug">
-v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion" v-model="open" :permanent="$vuetify.breakpoint.mdAndUp" width="230px" app fixed right clipped color="background" floating)
+v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion" v-model="open" :permanent="$vuetify.display.mdAndUp"  app fixed location="right" clipped color="background" floating)
   div.mt-12
   div.strand-nav__toc
     //- | {{items}}
     router-link.strand-nav__entry.text-caption(
-      :class="{'strand-nav__entry--visible': item.visible, 'strand-nav__entry--selected': (item.sequenceId == selectedSequenceId || item.commentId == selectedCommentId), 'strand-nav__entry--unread': item.unread}"
+      :class="{'strand-nav__entry--visible': item.visible, 'strand-nav__entry--selected': (item.sequenceId == selectedSequenceId || item.commentId == selectedCommentId), 'strand-nav__entry--unread': isSignedIn && item.unread}"
       :style="{'border-width': (item.depth * 2)+'px'}"
       v-for="item in items"
       :key="item.key"
-      :to="baseUrl+'/'+item.sequenceId")
+      :to="baseUrl+'/'+item.sequenceId"
+      @click="scrollToSequenceId(item.sequenceId)")
         .strand-nav__stance-icon-container(v-if="item.poll && item.poll.showResults()")
           poll-common-icon-panel.poll-proposal-chart-panel__chart.mr-1(:poll="item.poll" show-my-stance :size="18" :stanceSize="12")
         //- span {{item.key}}
@@ -212,14 +223,14 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion"
 .strand-nav__entry:hover
   border-color: var(--v-primary-darken1)!important
 
-.theme--dark
+.strand-nav__entry:hover, .strand-nav__entry--visible
+  background-color: #f8f8f8
+
+.v-theme--dark, .v-theme--darkBlue
   .strand-nav__entry
     border-left: 2px solid #999
   .strand-nav__entry:hover, .strand-nav__entry--visible
     background-color: #222
 
-.theme--light
-  .strand-nav__entry:hover, .strand-nav__entry--visible
-    background-color: #f8f8f8
 
 </style>

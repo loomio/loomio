@@ -74,9 +74,8 @@ div.lmo-markdown-wrapper
 </template>
 
 <style lang="sass">
-@import '~vuetify/src/styles/settings/_colors'
 
-.theme--dark
+.v-theme--dark
   .lmo-markdown-wrapper
     hr
       border-bottom: 2px solid rgba(255, 255, 255, 0.5)
@@ -130,6 +129,9 @@ img.emoji
   p:empty
     height: 1rem
 
+  p:last-child:empty
+    display: none
+
   p:last-child
     margin-bottom: 0.25rem
 
@@ -148,23 +150,23 @@ img.emoji
     padding: 0.2em 0.3em
 
   mark[data-color="red"]
-    background-color: map-get($red, lighten-1)
+    background-color: #ef5350
   mark[data-color="pink"]
-    background-color: map-get($pink, lighten-3)
+    background-color: #f48fb1
   mark[data-color="purple"]
-    background-color: map-get($purple, lighten-3)
+    background-color: #ce93d8
   mark[data-color="blue"]
-    background-color: map-get($blue, lighten-3)
+    background-color: #90caf9
   mark[data-color="green"]
-    background-color: map-get($green, lighten-3)
+    background-color: #a5d6a7
   mark[data-color="yellow"]
-    background-color: map-get($yellow, lighten-3)
+    background-color: #fff59d
   mark[data-color="orange"]
-    background-color: map-get($orange, lighten-3)
+    background-color: #ffcc80
   mark[data-color="brown"]
-    background-color: map-get($brown, lighten-3)
+    background-color: #bcaaa4
   mark[data-color="grey"]
-    background-color: map-get($grey, lighten-2)
+    background-color: #e0e0e0
 
   .cursor
     font-size: 0.8rem
@@ -173,7 +175,7 @@ img.emoji
     letter-spacing: normal
 
   span[data-mention-id]
-    color: var(--v-anchor-base)
+    color: rgb(var(--v-theme-anchor))
 
   blockquote, pre
     margin: 0.5rem 0
@@ -230,24 +232,18 @@ img.emoji
     list-style: none
     padding: 0
 
-    // task item is
-    // li
-    //   label
-    //     input
-    //     span
-
     li
       display: flex
       align-items: center
+      justify-content: flex-start
+
+      .v-selection-control
+        flex-grow: 0
 
       input[type="checkbox"]
         margin-right: 8px
 
-      div
-        display: inline-block
       p
-        flex-shrink: 10000
-        display: inline-block
         margin: 0
 
     li[data-due-on]:not([data-due-on=""])::after
@@ -255,13 +251,13 @@ img.emoji
       color: #fff
       content: " 📅 " attr(data-due-on) ""
       border-radius: 8px
-      background-color: var(--v-primary-base)
+      background-color: rgb(var(--v-theme-primary))
       margin-left: 8px
       padding: 2px 8px
       height: 16px
       display: flex
       align-items: center
-      // border: 1px solid var(--v-primary-base)
+      // border: 1px solid rgb(var(--v-theme-primary))
 
     li::before
       content: ""
@@ -285,8 +281,8 @@ img.emoji
       color: white
       text-align: center
       vertical-align: middle
-      background-color: var(--v-primary-base)
-      border-color: var(--v-primary-base)
+      background-color: rgb(var(--v-theme-primary))
+      border-color: rgb(var(--v-theme-primary))
 
     li:hover:before
       cursor: pointer
@@ -301,7 +297,7 @@ img.emoji
     list-style: decimal
 
   li p
-    margin-bottom: 0
+    margin-bottom: 8px
 
   pre
     overflow-x: auto

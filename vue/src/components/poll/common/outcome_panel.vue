@@ -2,16 +2,16 @@
 import OutcomeService from '@/shared/services/outcome_service';
 import parseISO from 'date-fns/parseISO';
 import { pickBy } from 'lodash-es';
+import FormatDate from '@/mixins/format_date';
+
 export default {
+  mixins: [FormatDate],
   props: {
     outcome: Object
   },
+
   methods: {
     parseISO
-  },
-
-  data() {
-    return {actions: OutcomeService.actions(this.outcome, this)};
   },
 
   computed: {
@@ -29,10 +29,10 @@ export default {
 <template lang="pug">
 v-alert.my-4.poll-common-outcome-panel(
   v-if="outcome"
-  color="primary"
-  outlined)
+  color="info"
+  variant="tonal")
   h2.text-h6(v-t="'poll_common.outcome'")
-  div.my-2.text-body-2
+  div.my-2
     user-avatar(:user="outcome.author()", :size="24").mr-2
     space
     //- .poll-common-outcome-panel__authored-by.text-caption.my-2
@@ -48,9 +48,9 @@ v-alert.my-4.poll-common-outcome-panel(
     .text-h6 {{outcome.eventSummary}}
     span {{exactDate(parseISO(outcome.pollOption().name))}}
     p {{outcome.eventLocation}}
-  formatted-text(:model="outcome" column="statement")
+  formatted-text.text-on-surface(:model="outcome" column="statement")
   link-previews(:model="outcome")
   document-list(:model="outcome")
   attachment-list(:attachments="outcome.attachments")
-  action-dock(:model="outcome", :actions="dockActions", :menuActions="menuActions")
+  action-dock(:model="outcome" :actions="dockActions" :menuActions="menuActions")
 </template>

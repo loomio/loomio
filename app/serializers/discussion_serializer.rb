@@ -47,6 +47,7 @@ class DiscussionSerializer < ApplicationSerializer
                          :read_ranges,
                          :revoked_at,
                          :inviter_id,
+                         :guest,
                          :admin
 
   has_one :author, serializer: AuthorSerializer, root: :users

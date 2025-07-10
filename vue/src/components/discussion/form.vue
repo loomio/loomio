@@ -7,11 +7,15 @@ import AppConfig from '@/shared/services/app_config';
 import Records from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
 import Flash   from '@/shared/services/flash';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete';
 import ThreadTemplateHelpPanel from '@/components/thread_template/help_panel';
+import FormatDate from '@/mixins/format_date';
+import WatchRecords from '@/mixins/watch_records';
+import UrlFor from '@/mixins/url_for';
 
 export default {
+  mixins: [WatchRecords, FormatDate, UrlFor],
   components: {RecipientsAutocomplete, ThreadTemplateHelpPanel},
 
   props: {
@@ -32,6 +36,12 @@ export default {
       discussionTemplate: null,
       loaded: false,
       shouldReset: false,
+      titleRules: [
+        value => {
+          if (value) return true
+          return this.$t('common.required')
+        }
+      ]
     };
   },
 
@@ -40,12 +50,16 @@ export default {
       if (this.discussion.discussionTemplateId) {
         Records.discussionTemplates.findOrFetchById(this.discussion.discussionTemplateId).then(template => {
           this.discussionTemplate = template;
-          if (this.discussion.isNew() && (template.recipientAudience === 'group') && this.discussion.groupId) {
-            return this.initialRecipients = [{
+          if ( this.discussion.isNew() &&
+               (template.recipientAudience === 'group') &&
+               this.discussion.groupId &&
+               AbilityService.canAnnounceDiscussion(this.discussion) )
+          {
+            this.initialRecipients = [{
               type: 'audience',
               id: 'group',
               icon: 'mdi-account-group',
-              name: I18n.t('announcement.audiences.group', {name: this.discussion.group().name}),
+              name: I18n.global.t('announcement.audiences.group', {name: this.discussion.group().name}),
               size: this.discussion.group().acceptedMembershipsCount
             }];
           }
@@ -83,11 +97,11 @@ export default {
 
   methods: {
     discardDraft() {
-      if (confirm(I18n.t('formatting.confirm_discard'))) {
+      if (confirm(I18n.global.t('formatting.confirm_discard'))) {
         EventBus.$emit('resetDraft', 'discussion', this.discussion.id, 'description', this.discussion.description);
       }
     },
-    
+
     submit() {
       const actionName = this.discussion.id ? 'updated' : 'created';
       this.discussion.save().then(data => {
@@ -105,8 +119,8 @@ export default {
     },
 
     updateGroupItems() {
-      this.groupItems = [{text: this.$t('discussion_form.none_invite_only_thread'), value: null}].concat(Session.user().groups().map(g => ({
-        text: g.fullName,
+      this.groupItems = [{title: this.$t('discussion_form.none_invite_only_thread'), value: null}].concat(Session.user().groups().map(g => ({
+        title: g.fullName,
         value: g.id
       })));
     },
@@ -117,11 +131,22 @@ export default {
   },
 
   computed: {
+    cardTitle() {
+      if (this.isMovingItems) {
+        return I18n.global.t('discussion_form.moving_items_title')
+      } else {
+        if (this.discussion.id) {
+          return I18n.global.t('discussion_form.edit_discussion_title')
+        } else {
+          return I18n.global.t('discussion_form.new_discussion_title')
+        }
+      }
+    },
     titlePlaceholder() {
       if (this.discussionTemplate && this.discussionTemplate.titlePlaceholder) {
-        return I18n.t('common.prefix_eg', {val: this.discussionTemplate.titlePlaceholder});
+        return I18n.global.t('common.prefix_eg', {val: this.discussionTemplate.titlePlaceholder});
       } else {
-        return I18n.t('discussion_form.title_placeholder');
+        return I18n.global.t('discussion_form.title_placeholder');
       }
     },
 
@@ -157,16 +182,8 @@ export default {
 </script>
 
 <template lang="pug">
-.discussion-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
-  submit-overlay(:value='discussion.processing')
-  v-card-title
-    h1.text-h4(v-observe-visibility="{callback: titleVisible}")
-      span(v-if="isMovingItems" v-t="'discussion_form.moving_items_title'")
-      template(v-else)
-        //- span(v-if="discussionTemplate && !discussion.id" v-t="{path: 'discussion_form.new_thread_from_template', args: {process_name: discussionTemplate.processName}}")
-        span(v-if="!discussion.id" v-t="'discussion_form.new_discussion_title'")
-        span(v-if="discussion.id" v-t="'discussion_form.edit_discussion_title'")
-    v-spacer
+v-card.discussion-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()" :title="cardTitle")
+  template(v-slot:append)
     dismiss-modal-button(
       v-if="!isPage"
       aria-hidden='true'
@@ -174,25 +191,24 @@ export default {
     v-btn(
       v-if="isPage && discussion.id"
       icon
+      variant="text"
       aria-hidden='true'
       :to="urlFor(discussion)"
     )
       common-icon(name="mdi-close")
-    v-btn.back-button(v-if="isPage && $route.query.return_to" icon :aria-label="$t('common.action.cancel')" :to='$route.query.return_to')
+    v-btn.back-button(variant="text" v-if="isPage && $route.query.return_to" icon :aria-label="$t('common.action.cancel')" :to='$route.query.return_to')
       common-icon(name="mdi-close")
 
-
-  .pa-4
-    thread-template-help-panel(v-if="discussionTemplate" :discussion-template="discussionTemplate")
-
+  v-card-item
+    thread-template-help-panel.mb-8(v-if="discussionTemplate" :discussion-template="discussionTemplate")
     v-select.pb-4(
       :disabled="!!discussion.id"
       v-model="discussion.groupId"
       :items="groupItems"
       :label="$t('common.group')"
-      :hint="discussion.groupId ? $t('announcement.form.visible_to_group', {group: discussion.group().name}) : $t('announcement.form.visible_to_guests')"
       persistent-hint
     )
+    //- :hint="discussion.groupId ? $t('announcement.form.visible_to_group', {group: discussion.group().name}) : $t('announcement.form.visible_to_guests')"
 
     div(v-if="showUpgradeMessage")
       p(v-if="maxThreadsReached" v-html="$t('discussion.max_threads_reached', {upgradeUrl: upgradeUrl, maxThreads: maxThreads})")
@@ -202,12 +218,13 @@ export default {
       v-text-field#discussion-title.discussion-form__title-input(
         :label="$t('discussion_form.title_label')"
         :placeholder="titlePlaceholder"
+        :rules="titleRules"
         v-model='discussion.title' maxlength='255' required
       )
-      validation-errors(:subject='discussion', field='title')
+      validation-errors(:subject='discussion' field='title')
 
       tags-field(:model="discussion")
-        
+
       lmo-textarea(
         :model='discussion'
         field="description"
@@ -217,23 +234,20 @@ export default {
       )
 
       common-notify-fields(v-if="loaded" :model="discussion" :initial-recipients="initialRecipients")
-      //- p.discussion-form__visibility
-
-      v-card-actions
-        help-link(path='en/user_manual/threads/starting_threads')
-        v-btn.discussion-form__edit-layout(v-if="discussion.id" @click="openEditLayout")
-          span(v-t="'thread_arrangement_form.edit'")
-        v-spacer
-        v-btn(
-          @click="discardDraft"
-          v-t="'common.reset'"
-        )
-        v-btn.discussion-form__submit(
-          color="primary"
-          @click="submit()"
-          :disabled="submitIsDisabled"
-          :loading="discussion.processing"
-        )
-          span(v-if="!discussion.id" v-t="'discussion_form.start_thread'")
-          span(v-if="discussion.id" v-t="'common.action.save'")
+  v-card-actions
+    help-btn(path='en/user_manual/threads/starting_threads')
+    v-btn.discussion-form__edit-layout(v-if="discussion.id" @click="openEditLayout")
+      span(v-t="'thread_arrangement_form.edit'")
+    v-spacer
+    v-btn.mr-2(@click="discardDraft" variant="text")
+      span(v-t="'common.reset'")
+    v-btn.discussion-form__submit(
+      variant="elevated"
+      color="primary"
+      @click="submit()"
+      :disabled="submitIsDisabled"
+      :loading="discussion.processing"
+    )
+      span(v-if="!discussion.id" v-t="'discussion_form.start_thread'")
+      span(v-if="discussion.id" v-t="'common.action.save'")
 </template>

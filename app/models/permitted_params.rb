@@ -29,7 +29,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def poll_attributes
-    [ 
+    [
       :agree_target,
       :title,
       :details,
@@ -44,6 +44,7 @@ class PermittedParams < Struct.new(:params)
       :key,
       :limit_reason_length,
       :shuffle_options,
+      :show_none_of_the_above,
       :notify_on_closing_soon,
       :voter_can_add_options,
       :specified_voters_only,
@@ -99,6 +100,7 @@ class PermittedParams < Struct.new(:params)
       :notify_on_closing_soon,
       :content_locale,
       :shuffle_options,
+      :show_none_of_the_above,
       :hide_results,
       :chart_type,
       :min_score,
@@ -124,7 +126,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def stance_attributes
-    [:poll_id, :reason, :reason_format,
+    [:poll_id, :reason, :reason_format, :none_of_the_above,
      :stance_choices_attributes, {stance_choices_attributes: [:score, :poll_option_id]},
      :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}
    ]
@@ -165,7 +167,7 @@ class PermittedParams < Struct.new(:params)
      :description, :description_format, :is_visible_to_parent_members, :parent_members_can_see_discussions,
      :membership_granted_upon, :cover_photo, :logo, :category, :members_can_raise_motions,
      :members_can_start_discussions, :members_can_create_subgroups, :admins_can_edit_user_content,
-     :new_threads_max_depth, :new_threads_newest_first,
+     :new_threads_max_depth, :new_threads_newest_first, :request_to_join_prompt,
      :document_ids, {document_ids: []},
      :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}
    ]

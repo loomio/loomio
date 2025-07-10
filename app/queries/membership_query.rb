@@ -26,6 +26,8 @@ class MembershipQuery
     case params[:filter]
     when 'admin'
       chain = chain.admin
+    when 'delegate'
+      chain = chain.delegates
     when 'pending'
       chain = chain.pending
     when 'accepted'

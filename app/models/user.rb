@@ -24,7 +24,6 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :recoverable, :registerable, :rememberable, :lockable, :trackable
   devise :pwned_password if Rails.env.production?
-  attr_accessor :recaptcha
   attr_accessor :restricted
   attr_accessor :token
   attr_accessor :membership_token
@@ -36,7 +35,6 @@ class User < ApplicationRecord
 
   attr_writer   :has_password
   attr_accessor :require_valid_signup
-  attr_accessor :require_recaptcha
 
   before_save :set_legal_accepted_at, if: :legal_accepted
 
@@ -44,7 +42,6 @@ class User < ApplicationRecord
 
   validates :name,               presence: true, if: :require_valid_signup
   validates :legal_accepted,     presence: true, if: :require_legal_accepted
-  validate  :validate_recaptcha,                 if: :require_recaptcha
 
   has_one_attached :uploaded_avatar
 
@@ -114,19 +111,28 @@ class User < ApplicationRecord
   enum default_membership_volume: [:mute, :quiet, :normal, :loud]
 
   scope :active, -> { where(deactivated_at: nil) }
+  scope :no_spam_complaints, -> { where(complaints_count: 0) }
+  scope :has_spam_complaints, -> { where("complaints_count > 0") }
   scope :deactivated, -> { where("deactivated_at IS NOT NULL") }
   scope :sorted_by_name, -> { order("lower(name)") }
   scope :admins, -> { where(is_admin: true) }
   scope :coordinators, -> { joins(:memberships).where('memberships.admin = ?', true).group('users.id') }
   scope :verified, -> { where(email_verified: true) }
   scope :unverified, -> { where(email_verified: false) }
-  scope :search_for, -> (q) { where("users.name ilike :first OR users.name ilike :other OR users.username ilike :first OR users.email ilike :first", first: "#{q}%", other:  "% #{q}%") }
-  scope :visible_by, -> (user) { distinct.active.verified.joins(:memberships).where("memberships.group_id": user.group_ids).where.not(id: user.id) }
+  scope :search_for, lambda { |q|
+    where("users.name ilike :first OR
+           users.name ilike :other OR
+           users.username ilike :first OR
+           users.email ilike :first",
+          first: "#{q}%", other: "% #{q}%")
+  }
+  scope :visible_by, ->(user) { distinct.active.verified.joins(:memberships).where("memberships.group_id": user.group_ids).where.not(id: user.id) }
   scope :humans, -> { where(bot: false) }
   scope :bots, -> { where(bot: true) }
 
-  scope :mention_search, -> (user, model, query) do
-    return self.none unless model.present?
+  scope :mention_search, lambda { |model, query|
+    return none unless model.present?
+
     ids = []
 
     if model.group_id
@@ -146,7 +152,7 @@ class User < ApplicationRecord
     end
 
     active.search_for(query).where(id: ids)
-  end
+  }
 
   scope :email_when_proposal_closing_soon, -> { active.where(email_when_proposal_closing_soon: true) }
 
@@ -311,11 +317,11 @@ class User < ApplicationRecord
   end
 
   def locale
-    first_supported_locale([selected_locale, detected_locale].compact)
+    first_supported_locale([selected_locale, detected_locale].compact).to_s
   end
 
   def update_detected_locale(locale)
-    self.update_attribute(:detected_locale, locale) if self.detected_locale&.to_sym != locale.to_sym
+    self.update_attribute(:detected_locale, locale) if detected_locale&.to_s != locale.to_s
   end
 
   def generate_username
@@ -333,6 +339,7 @@ class User < ApplicationRecord
     "city",
     "content_locale",
     "country",
+    "complaints_count",
     "created_at",
     "current_sign_in_at",
     "current_sign_in_ip",
@@ -378,14 +385,5 @@ class User < ApplicationRecord
 
   def password_required?
     !password.nil? || !password_confirmation.nil?
-  end
-
-  private
-
-  def validate_recaptcha
-    return unless ENV['RECAPTCHA_APP_KEY']
-    return if Clients::Recaptcha.instance.validate(self.recaptcha)
-    # Sentry.capture_message("recaptcha failed", extra: {email: email})
-    self.errors.add(:recaptcha, I18n.t(:"user.error.recaptcha"))
   end
 end

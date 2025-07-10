@@ -19,19 +19,20 @@ export default {
         EventBus.$emit('closeModal')
       }).catch(error => true);
     }
+  },
+  computed: {
+    title() {
+      return this.stance.castAt ? 'poll_common.change_your_response' : 'poll_common.have_your_say'
+    }
   }
+
 };
 </script>
 <template lang="pug">
-v-card.poll-common-edit-vote-modal
-  submit-overlay(:value="stance.processing")
-  v-card-title
-    h1.text-h5
-      span(v-if="!stance.castAt", v-t="'poll_common.have_your_say'")
-      span(v-if="stance.castAt", v-t="'poll_common.change_your_response'")
-    v-spacer
+v-card.poll-common-edit-vote-modal(:title="$t(title)")
+  template(v-slot:append)
     dismiss-modal-button(:model="stance")
-
+      
   v-sheet.pa-4
     poll-common-directive(name="vote-form" :stance="stance")
 </template>

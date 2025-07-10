@@ -1,9 +1,9 @@
 source 'http://rubygems.org'
 
-ruby '3.2.4'
-gem 'rails', '7.0.8.1'
-gem 'rack', '2.2.9'
-gem 'uri', '0.13.1'
+ruby '3.4.4'
+gem 'rails', '7.0.8.7'
+gem 'rack', '2.2.17'
+gem 'uri', '1.0.3'
 gem 'rake'
 gem 'pg'
 gem 'active_record_extended'
@@ -16,20 +16,20 @@ gem 'actionpack-action_caching'
 gem 'actionpack-page_caching'
 gem 'cancancan'
 gem 'gravtastic'
-gem 'activeadmin', '~> 3.2.5'
-gem 'ransack', '4.2.1'
+gem 'activeadmin', '~> 3.3.0'
+gem 'ransack', '4.3.0'
 gem 'nokogiri'
 gem 'twitter-text', github: 'loomio/twitter-text'
-gem 'redcarpet', '~> 3.6.0'
-gem 'paper_trail', '~> 15.2.0'
+gem 'redcarpet', '~> 3.6.1'
+gem 'paper_trail', '~> 16.0.0'
 gem 'sidekiq', '~> 6.5.12'
 gem 'friendly_id', '~> 5.5.1'
-gem 'httparty', '~> 0.22.0'
-gem 'browser', '~> 6.0.0'
+gem 'httparty', '~> 0.23.1'
+gem 'browser', '~> 6.2.0'
 gem "aws-sdk-s3", require: false
 gem "ruby-openai"
-gem "google-cloud-storage", "~> 1.52", require: false
-gem 'image_processing', '~> 1.13'
+gem "google-cloud-storage", "~> 1.56", require: false
+gem 'image_processing', '~> 1.14'
 gem "ruby-vips"
 gem "stackprof"
 gem "sentry-ruby"
@@ -41,11 +41,10 @@ gem 'sprockets-rails', require: 'sprockets/railtie'
 gem 'sass-rails'
 gem 'uuidtools'
 gem 'maxminddb'
-gem 'oj'
 gem "cld"
 gem 'custom_counter_cache'
 gem 'premailer-rails'
-gem 'activerecord-import', '1.8.1'
+gem 'activerecord-import', '2.2.0'
 gem 'discriminator', '~> 0.1.1'
 gem 'icalendar'
 gem 'rack-attack'
@@ -58,7 +57,7 @@ gem 'ruby-saml'
 gem 'google-cloud-translate'
 gem 'puma'
 gem 'reverse_markdown'
-gem 'discard', '~> 1.3'
+gem 'discard', '~> 1.4'
 gem 'lograge'
 gem 'video_info'
 gem 'blazer'
@@ -68,6 +67,7 @@ gem 'pg_search'
 gem 'i18n-timezones'
 gem 'actionpack-cloudflare'
 gem 'victor', require: false
+gem 'concurrent-ruby', '1.3.4' # can remove in rails 7.1
 
 group :development, :test do
   gem 'byebug'
@@ -86,10 +86,10 @@ end
 group :test do
   gem 'webmock'
   gem 'rack_session_access'
-  gem 'rspec-rails', '~> 7.0.1'
+  gem 'drb'
+  gem 'rspec-rails', '~> 7.1.1'
   gem 'rspec-its'
   gem 'rspec-collection_matchers'
-  gem 'rspec-activemodel-mocks'
   gem 'database_cleaner-active_record'
   gem 'database_cleaner-redis'
 end

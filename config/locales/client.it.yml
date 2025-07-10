@@ -33,11 +33,11 @@ it:
     2_day_before: 2 giorni prima
     3_day_before: 3 giorni prima
     7_day_before: 7 giorni prima
-    task_placeholder: Inserisci un compito e @nomina qualcuno per assegnarlo
     add_due_date: Aggiungi scadenza
     task_updated_done: Compito segnato come eseguito!
     task_updated_not_done: Compito segnato come non eseguito!
     no_tasks_assigned: Non ci sono compiti assegnati a te
+    task_placeholder: Inserisci un'attività e {'@'}menziona qualcuno a cui assegnarla
   templates:
     template_gallery: Galleria di modelli
     title_template: "%{title} Modello"
@@ -164,6 +164,7 @@ it:
     no_tags_present: Nessuna discussione trovata con questa etichetta. Prova selezionandone un'altra
     no_tags_in_group: Questo gruppo non ha ancora etichette di categoria
     only_admins_can_edit_tags: Spiacenti, solo gli amministratori di %{group} possono creare, rinominare o cancellare le etichette
+    pick_a_color: Scegli un colore
   poll_types:
     proposal: proposta
     count: opt-in
@@ -322,6 +323,7 @@ it:
     formatting_help:
       label: Formattazione
       title: Impara come usare il Markdown per formattare il tuo testo
+    thread: Filo
   merge_accounts:
     modal:
       title: Unisci account
@@ -468,6 +470,19 @@ it:
         loud: Ricevi un'email per tutte le attività nei nuovi gruppi.
         normal: Riceverai email sugli annunci nei nuovi gruppi.
         quiet: Non riceverai email sui nuovi gruppi.
+    change_your_email_settings: Modifica le impostazioni della tua email
+    when_would_you_like_to_be_emailed_thread: Quando desideri ricevere un'e-mail su questa discussione?
+    when_would_you_like_to_be_emailed_group: Quando vorresti ricevere informazioni via email su questo gruppo?
+    changes_all_threads_in_group: Questa impostazione modifica tutte le discussioni nel gruppo.
+    what_do_the_options_mean: Cosa significano le opzioni?
+    loud_desc: Ogni volta che qualcuno partecipa
+    normal_desc: Quando qualcuno mi avvisa
+    quiet_desc: Mai
+    when_would_you_like_to_be_emailed_poll_type: Quando desideri ricevere un'e-mail su questo %{poll_type}?
+    quiet_explained: Non riceverai email, nemmeno quando qualcuno cercherà di avvisarti. Potresti perderti annunci o decisioni importanti. Questo potrebbe essere utile se una discussione non ti riguarda, ma non è consigliato per l'impostazione di gruppo, a meno che tu non abbia altri modi per rimanere aggiornato.
+    normal_explained: Quando qualcuno inserisce il tuo nome nel campo "Notifica" di un thread o di un sondaggio, oppure {'@'}menziona il gruppo.
+    normal_excludes_mentioning_html: Esiste un'impostazione separata per quando qualcuno ti menziona con un "@" (ad esempio quando ti risponde in un commento). <a href="%{url}">Clicca qui per modificare le impostazioni per le @menzioni.</a>
+    loud_explained: Riceverai un'e-mail ogni volta che c'è un nuovo commento, qualcuno vota o avvia un sondaggio o una discussione.
   close_explanation_modal:
     aria_label: Chiudi discussione
     close_thread: Chiudi discussione
@@ -546,6 +561,7 @@ it:
       threads_list: Azioni discussioni
       groups_list: Gruppi
       user_list: Azioni utente
+    user_settings: Impostazioni utente
   strand_nav:
     newest: Più recente
     oldest: Maggiore
@@ -589,6 +605,9 @@ it:
     close_sidebar: barra laterale chiusa
     logo_title: Home page
     group_and_subgroups: "%{group} & sottogruppi"
+    search_members_short: Cerca membri
+    search_files_short: Cerca file
+    search_subgroups_short: Cerca sottogruppi
   user_dropdown:
     pin_sidebar: Attiva la barra laterale
     unpin_sidebar: Rimuovi la barra laterale
@@ -605,6 +624,9 @@ it:
     sign_out: Esci
     beta_collab: "\U0001F9EA Beta features attivate!"
     outcomes: Risultati
+    theme: Tema
+    light: Leggero
+    dark: Buio
   membership_card:
     group_members: Membri del gruppo
     discussion_members: Membri della discussione
@@ -627,6 +649,10 @@ it:
       group: Rimuovi dal gruppo
       poll: 'Rimuovi dal sondaggio %{pollType} '
     cancel_invitation: Revoca invito
+    view_profile: Visualizza il profilo
+    revoke_admin: Revoca amministratore
+    make_delegate: Rendi delegato
+    revoke_delegate: Revoca delegato
   notification_models:
     discussion: discussione
     comment: 'commenta in '
@@ -673,6 +699,8 @@ it:
       user_added_to_group: "%{actor} ti ha aggionto al gruppo: %{title}"
       user_mentioned: "%{actor} ti ha menzionato in: %{title}"
       user_reminded: "%{actor} ti sta ricordando di votare su: %{title}"
+      group_mentioned: "%{actor} ha menzionato il gruppo in: %{title}"
+      new_delegate: "%{actor} ti ha nominato delegato con diritto di voto in %{title}"
     without_title:
       unknown_sender: Controlla l'e-mail proveniente da un mittente non riconosciuto
       discussion_announced: "%{actor} ti ha invitato a una discussione"
@@ -709,6 +737,7 @@ it:
       stance_created_option: "%{actor} ha votato %{option}"
       user_mentioned: "%{actor} ti ha menzionato"
       user_reminded: "%{actor}ti sta ricordando di votare"
+      group_mentioned: "%{actor} ha menzionato il gruppo"
     hints:
       poll_closing_soon: Ora è un buon momento per votare, cambiare idea o incoraggiare altri a partecipare.
       poll_closing_soon_author: Potresti voler ricordare alle persone di votare o prorogare la scadenza.
@@ -827,6 +856,7 @@ it:
       decided_voters: Tutti coloro che hanno votato
       undecided_voters: Elettore indecisi
       non_voters: Membri di %{name} non ancora invitati
+      delegates_of_group: Delegati di %{name}
     form:
       group_has_no_members_yet: Sei l'unico membro del tuo gruppo. Potresti voler invitare alcune persone al tuo gruppo prima di iniziare una discussione o una decisione.
       invite_people_to_evaluate_loomio: Invita alcune persone nel tuo gruppo Loomio per prendere una decisione insieme
@@ -905,6 +935,7 @@ it:
       modal_title: Seleziona i membri del gruppo
     flash:
       success: "%{count} avvisi inviati"
+    group_mentioned: "%{name} ha menzionato il gruppo con %{length} persone:"
   action_dock:
     actions_menu: Menu Azioni
     more_actions: Altre azioni
@@ -1141,22 +1172,24 @@ it:
     volume:
       loud: Invia una mail in caso di qualsiasi tipo di attività.
       loud_aria_description: Il volume delle notifiche per questo gruppo è settato su Alto. Riceverai una mail in caso di qualsiasi attività nel gruppo.
-      loud_message: Riceverai le email relative alle attività in "%{name}."
-      normal: 'Invia emails solo in caso di attività importanti: nuove discussioni e proposte, risultati di votazioni ecc.'
-      normal_aria_description: Il volume delle tue notifiche è settato su Normale. Verrai indormato/a via email sulle attività più importanti, ad esempio quando qualcuno lancia una nuova discussione, una proposta oppure stabilisce un esito.
-      normal_message: Riceverai un'email solamente per gli eventi importanti di "%{name}"
-      quiet: Non inviare email su questo gruppo. Le attività verranno mostrate nella bacheca.
-      quiet_aria_description: Il tuo livello delle notifiche per questo gruppo è settato su Quieto. Non riceverai email da questo gruppo e le sue attività verranno mostrate sulla tua bacheca.
-      quiet_message: Non riceverai email sulle attivita in "%{name}".
-      mute: Non fare comparire questo gruppo sulla tua bacheca e non mandare notifiche a meno che tu non sia @menzionato.
-      mute_aria_description: Il tuo livello delle notifiche per questo gruppo è settato su Muto. Non riceverai email da questo gruppo a meno che qualcuno non ti @menzioni e le sue attività non verranno mostrate sulla tua bacheca.
       mute_message: '"%{name}" è stata rimossa dalla tua dashboard.'
+      loud_message: Riceverai un'e-mail su tutte le attività in "%{name}."
+      normal: 'Invia semplicemente via email le attività importanti: nuovi thread e proposte, risultati, ecc.'
+      normal_aria_description: Il volume delle notifiche per questo gruppo è impostato su Normale. Riceverai solo le email relative alle attività importanti, ad esempio quando qualcuno apre una nuova discussione, solleva una proposta o imposta un risultato.
+      normal_message: Riceverai email solo sugli eventi importanti in "%{name}".
+      quiet: Non inviare email su questo gruppo. L'attività verrà visualizzata sulla dashboard.
+      quiet_aria_description: Il volume delle notifiche per questo gruppo è impostato su Silenzioso. Non riceverai email sulle attività in questo gruppo. Le attività del gruppo verranno visualizzate sulla tua Dashboard.
+      quiet_message: Non riceverai email sulle attività in "%{name}".
+      mute: Nascondi questo gruppo dalla dashboard e non inviare notifiche a meno che non venga menzionato {'@'}.
+      mute_aria_description: Il volume delle notifiche per questo gruppo è impostato su Disattivato. Non riceverai email a meno che qualcuno non ti menzioni e le attività del gruppo non verranno visualizzate sulla tua Dashboard.
     privacy:
       private: 'Privacy: questo gruppo è visibile solo ai suoi membri.'
       parent_members: 'Privacy: questo gruppo è visibile solo ai membri di %{parentGroupName}  e  %{groupName}'
       public: 'Privacy: Questo gruppo è visibile sul web'
       aria_label: 'Privacy del gruppo: %{privacy}'
     participation_report: Rapporto di partecipazione
+    my_subgroups: I miei sottogruppi
+    more_subgroups: Altri sottogruppi
   export_data_modal:
     title: Come vuoi usare i tuoi dati?
     as_csv: Aprirlo in un foglio di calcolo
@@ -1275,6 +1308,9 @@ it:
       group_updated: Gruppo aggiornato
     upload_logo: Carica nuovo logo
     upload_cover_photo: Carica nuova immagine di copertina
+    request_to_join_prompt: Richiesta di partecipazione immediata
+    default_request_to_join_prompt: Grazie per il tuo interesse nel nostro gruppo. Presentati e spiega perché stai chiedendo di unirti a noi.
+    upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Aggiorna il tuo abbonamento</a> per creare un sottogruppo'
   group_export_modal:
     title: Esporta i dati del gruppo
     body: <p>Puoi scaricare una copia dei dati del tuo gruppo in qualsiasi momento. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Scopri di più.</a></p><p> Il completamento richiede alcuni minuti, a seconda delle dimensioni del gruppo. Quando sarà pronto riceverai un'e-mail con un link per scaricare il file.</p>
@@ -1310,7 +1346,6 @@ it:
     share_group: Condividi il gruppo
     copy_link: Copia
     email_addresses: Indirizzi email
-    email_addresses_placeholder: 'Ad esempio: helperbot@loomio.org, friendlybot@loomio.org'
     secret_group_url_explanation: Questo è l'indirizzo del tuo gruppo. Solo i membri invitati potranno vedere il gruppo.
     shareable_group_url_explanation: Puoi diffondere questo link pubblicamente. Le persone possono chiedere di partecipare e tu puoi approvare o ignorare le richieste.
     shareable_invitation_explanation: Non condividere pubblicamente questo link. Chiunque lo abbia può entrare nel tuo gruppo senza la tua approvazione. Condividilo solo con comunicazioni private per permettere alle persone della tua organizzazione di entrare.
@@ -1329,6 +1364,14 @@ it:
       invitations_sent: "%{count} inviti mandati."
       no_invitations: Oh-oh! Per favore verifica che l'indirizzo email è corretto e riprova.
       max_invitations: Se vuoi inviare più di 100 inviti, usa un team link.
+    copy_to_clipboard: Copia negli appunti
+    already_chatting_somewhere: Stai già chattando da qualche parte?
+    to_stop_people_reset_the_link: Per impedire ad altri di unirsi tramite questo link, clicca su "Reimposta questo link". Il link esistente non funzionerà più e ne verrà creato uno nuovo.
+    try_the_shareable_link_instead: Prova invece a usare il link condivisibile.
+    enter_emails_of_people_to_invite: Inserisci gli indirizzi email delle persone che desideri invitare al gruppo. Se hai una lista, copiali e incollali tutti in una volta.
+    shareable_link_to_join_group: Link condivisibile per unirsi al gruppo
+    reset_the_link: Reimposta il collegamento
+    email_addresses_placeholder: ad esempio helperbot{'@'}loomio.org, friendlybot{'@'}loomio.org
   memberships_page:
     members: Membri
     name_label: Nome
@@ -1471,7 +1514,6 @@ it:
     announcement_label: Annunci
     announcement_description: Riceverai un'e-mail su tutti i contenuti che sono stati annunciati dalle persone nei tuoi gruppi
     mentioned_label: Notifica menzioni e risposte
-    mentioned_description: Quando qualcuno ti @menziona in un commento o ti risponde, riceverai un'email di notifica
     update_settings: Salva modifiche
     specific_groups: Impostazioni per gruppi specifici
     default_settings:
@@ -1482,6 +1524,7 @@ it:
     messages:
       updated: Impostazioni della posta elettronica aggiornate.
     learn_more: Impara di più sulle impostazioni email...
+    mentioned_description: Quando qualcuno {'@'} ti menziona in un commento, riceverai un'email di notifica
   thread_preview:
     replies_count: "%{count} repliche"
     unread_count: "%{count} non letti"
@@ -1507,12 +1550,9 @@ it:
     thread_recalled: Discussione riattivata
     explain_mute:
       title: Non hai ancora silenziato nessuna discussione
-      explanation_html: |
-        Il silenziamento è un modo per non ricevere più aggiornamenti da discussioni a cui non sei interessato.
-        Ciò significa che non vedrai la discussione nelle <strong>Discussioni recenti</strong> o nelle<strong>Discussioni non lette</strong>, e non riceverai notifiche sull'attività in quella discussione, come le proposte.
-        Verrai avvertito solo se qualcuno <strong>@menziona</strong> il tuo nome.
       instructions: Per silenziare una discussione, passa con il mouse su di essa e fai clic sull'icona di silenziamento.
       see_muted_html: Per vedere le discussioni silenziate, clicca su <strong>"Discussioni silenziate"</strong>.  Potrai desilenziare le discussioni passando su ognuna di esse e cliccando la stessa icona.
+      explanation_html: Disattivare l'audio è un modo per nascondere o silenziare le discussioni che non ti interessano. Disattivare l'audio significa che non le vedrai in <strong>Recenti</strong> o <strong>Non lette</strong> e non riceverai notifiche sulle attività in quella discussione, come le proposte. Riceverai un avviso solo se qualcuno <strong>{'@'} menziona</strong> il tuo nome.
     filtering:
       filter_threads: Filtra discussioni
       filter_threads_aria_label: Filtra discussioni
@@ -1724,6 +1764,10 @@ it:
     meaning_hint: Una frase che spiega cosa significa scegliere questa opzione
     prompt: Richiesta di motivazione
     prompt_hint: Una domanda per sollecitare gli elettori a fornire le loro ragioni o riconsiderare la loro posizione.
+    thumb_up: Pollice in su
+    thumb_down: Pollice in giù
+    thumb_sideways: Pollice di lato
+    hand_up: Alza la mano
   poll_common:
     superseded: Sostituito
     outdated: Obsoleto
@@ -1812,6 +1856,7 @@ it:
     too_long: Troppo a lungo
     edit_warning: La modifica è consigliata solo per modifiche minori o per correggere errori di ortografia. Per modifiche significative, chiudi questo %{pollType} e iniziane uno nuovo.
     no_voting: Solo per discussione, voto disabilitato
+    post_outcome: Post risultato
   poll_common_attachment_form:
     label: Allegati
   poll_common_add_option:
@@ -1830,6 +1875,7 @@ it:
     until_poll_type_closed: 'fino alla chiusura di %{pollType} '
     until_voting_is_closed: Fino alla chiusura delle votazioni
     deleted: Questo sondaggio è stato eliminato
+    do_not_hide_results: Non nascondere i risultati
   discussions_panel:
     open: Aperto
     all: Tutte
@@ -1869,6 +1915,11 @@ it:
     last_seen: Visto l'ultima volta %{date}
     invited_by_name: Invitato da %{name}
     accepted: Membri
+    email_rejected: Email rifiutata
+    email_rejected_meaning: L'email inviata a questo indirizzo è stata respinta o contrassegnata come spam. Non verranno inviate altre email a questo indirizzo.
+    delegate: Delegare
+    delegate_popover: Un delegato è un membro del gruppo con diritto di voto
+    delegates: Delegati
   polls_panel:
     new_poll: Nuova votazione
     any_type: Tutti i tipi
@@ -1961,6 +2012,7 @@ it:
     hide_results_until_closed:
       title: Nascondi i risultati fino alla chiusura
       helptext_on: Non mostrare come le persone hanno votato fino alla chiusura
+    show_none_of_the_above: Includere un'opzione "Nessuna delle precedenti"
   poll_common_close_form:
     title: Chiudi %{poll_type} ora?
     helptext: Sei sicuro che vuoi chiudere questa vorazione %{poll_type} in anticipo e condividere il risultato?
@@ -2016,6 +2068,7 @@ it:
   poll_common_set_outcome_panel:
     enter_outcome: Pubblica il risultato
     poll_type: Questo %{poll_type} è concluso. Prendi del tempo per considerare i risultati quindi condividi l'esito per far sapere alle persone cosa accadrà dopo.
+    enter_an_outcome: Inserisci un risultato
   poll_common_outcome_form:
     review_due_in_days: Rivedere la decisione dopo quanti giorni?
     review_due_in_days_hint: Un periodo di tempo (in giorni) da attendere prima di rivedere la decisione. (opzionale)
@@ -2127,6 +2180,10 @@ it:
     hide_results_description: Se vuoi che le persone votino senza sapere come hanno votato gli altri, puoi nascondere i risultati del sondaggio.
     process_helptext: Assegna un nome e descrivi il processo utilizzato per eseguire questo sondaggio.
     reminder_helptext: Invia una notifica "Chiusura a breve" prima della chiusura del sondaggio. Questa può essere un'opportunità per le persone di vedere come hanno votato gli altri e riconsiderare il proprio voto, o semplicemente un modo per aumentare la partecipazione al sondaggio.
+    deadline: Scadenza
+    how_much_time_to_vote: Quanto tempo concederai alle persone per votare?
+    advanced_settings: Impostazioni avanzate
+    none_of_the_above: Nessuna delle precedenti
   poll_proposal_form:
     start_header: Lancia proposta
     edit_header: Aggiorna proposta
@@ -2257,146 +2314,6 @@ it:
     helptext: Trascina e rilascia le opzioni in ordine di preferenza (1 è l'opzione che preferisci). Le tue prime %{count} scelte verranno registrate.
     stance_created: Scelta registrata
     stance_updated: Scelta aggiornata
-  poll_templates:
-    proposal:
-      process_subtitle: Sollevare una proposta per prendere una decisione
-      process_introduction: <p>La classica proposta Loomio ti aiuta a prendere una decisione, trasformando una discussione in un risultato chiaro.</p><p> Suggerisci una linea d'azione e invita le persone a rispondere votando d'accordo, astenendosi o dissentendo.</p><p> Mentre le persone votano, possono fornire una ragione per cui hanno votato in questo modo. Puoi vedere dove si trovano tutti gli altri sulla questione e perché.</p><p> In questo modo puoi utilizzare una proposta per sollecitare le persone a rispondere, scoprire nuove informazioni e costruire una comprensione condivisa, per aiutare il tuo gruppo a prendere una decisione migliore e più informata.</p><p> Una proposta e la discussione associata creano la propria registrazione di come è stata presa la decisione.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Maggiori informazioni sull'utilizzo della classica proposta Loomio nel processo decisionale semplice</u></a> .</p>
-      title: Approva il nuovo concetto di Brand
-      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Qual è la decisione che devi prendere?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Perché questo è importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Cosa stai chiedendo alle persone di fare?</strong></h3><p></p><p> Perché questa proposta passi, abbiamo bisogno che la maggioranza dei membri voti Agree.</p><p> Se non sei d'accordo, dì perché e cosa deve cambiare per essere d'accordo. \U0001F642</p>
-      agree: Essere d'accordo
-      agree_meaning: Sostengo la proposta
-      agree_prompt: Cosa ti piace della proposta e in che modo andrà a vantaggio del gruppo?
-      abstain: Astenersi
-      abstain_meaning: Scegliere di non farlo o non poter votare in questa decisione.
-      abstain_prompt: Perché ti astieni o non ti senti in grado di votare in questa decisione?
-      disagree: Disaccordo
-      disagree_meaning: Qualcosa in questa proposta deve essere cambiato prima che io possa sostenerla.
-      disagree_prompt: Come potrebbe essere migliorata questa proposta in modo che tu possa sostenerla?
-    advice:
-      process_subtitle: Chiedi consiglio su una decisione che devi prendere
-      process_introduction: <p>Chiedi consiglio su una decisione che devi prendere, con il consiglio delle persone interessate o che hanno esperienza, in modo da poter prendere una decisione migliore per la tua organizzazione.</p><ul><li><p> I consigli ti aiutano a prendere una decisione migliore per la tua organizzazione.</p></li><li><p> Promuovere relazioni, opportunità di apprendimento e input diversificati.</p></li><li><p> Stimolare l'iniziativa e la creatività e un lavoro più piacevole.</p></li></ul><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>Maggiori informazioni sul processo di consulenza</u></a> .</p>
-      title: Aiuta Takashi a comprare un nuovo computer
-      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Qual è la decisione che devi prendere?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Perché questo è importante?</strong></h3><p></p><h3 id="what-advice-are-you-asking-from-people-to-help-you-make-a-go"> <strong>Che consiglio stai chiedendo alle persone per aiutarti a prendere una buona decisione?</strong></h3><p></p><p> Sto cercando il tuo contributo per aiutarmi a prendere una buona decisione per la nostra organizzazione.</p>
-      agree: Essere d'accordo
-      agree_meaning: Ho offerto il mio consiglio su questa decisione
-      agree_prompt: Riassumi i tuoi consigli o fai un commento utile
-      abstain: Astenersi
-      abstain_meaning: Non ho nessun consiglio da offrire
-      abstain_prompt: Hai commenti che possono essere utili?
-    consent:
-      process_subtitle: Prendi una decisione che è 'sicuro da provare', senza obiezioni
-      process_introduction: <p>Chiedi il consenso su una decisione che devi prendere, dove non ci sono obiezioni significative alla tua proposta, in modo da poter prendere una decisione rapida per la tua organizzazione che sia "sicuro da provare".</p><ul><li><p> Obiettivo per una decisione 'abbastanza buona'</p></li><li><p> Coinvolgere molte voci per sviluppare una proposta praticabile</p></li><li><p> Chiedi se qualcuno ha un'obiezione valida</p></li><li><p> Modificare la proposta per risolvere le obiezioni</p></li></ul><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consent_process/index.html">Ulteriori informazioni sul processo di consenso</a> .</p>
-      title: Assumi Chloe per il ruolo di designer
-      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Qual è la decisione che devi prendere?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Perché questo è importante?</strong></h3><p></p><h3 id="what-are-you-asking-of-people-in-this-proposal"> <strong>Cosa stai chiedendo alle persone in questa proposta?</strong></h3><p></p><p> Se hai un'obiezione, spiega perché e proponi una modifica alla proposta che la renda sicura.</p><p> Ricorda che stiamo cercando il consenso per una decisione "abbastanza buona" che sia "sicuro da provare", in modo da poter prendere una buona decisione per la nostra organizzazione.</p>
-      consent: Consenso
-      consent_meaning: La proposta è sicura da provare
-      consent_prompt: Cosa ti piace della proposta e in che modo andrà a vantaggio dell'organizzazione?
-      objection: Obiezione
-      objection_meaning: Ho un'obiezione valida e penso che la proposta causerà danni
-      objection_prompt: Quale modifica è necessaria a questa proposta per renderla "sicuro da provare", in modo che tu possa sostenerla?
-    consensus:
-      process_subtitle: Raggiungi un accordo collettivo con tutti i soggetti coinvolti
-      process_introduction: <p>Costruisci il consenso per una decisione che devi prendere, per raggiungere un accordo che soddisfi i bisogni e le preoccupazioni di tutti i partecipanti.</p><ul><li><p> Discutete e sviluppate insieme una proposta</p></li><li><p> Includere e rispettare tutte le persone coinvolte</p></li><li><p> Cerca il consenso della maggior parte delle persone</p></li></ul><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consensus_process/index.html">Ulteriori informazioni sul processo di consenso</a> .</p>
-      title: Approva il nuovo concetto di Brand
-      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Qual è la decisione che devi prendere?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Perché questo è importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Cosa stai chiedendo alle persone di fare?</strong></h3><p></p><p> Perché questa proposta passi, abbiamo bisogno che la maggioranza dei membri voti Agree.</p><p> Se non sei d'accordo, dì perché e cosa deve cambiare per essere d'accordo.</p>
-      agree: Essere d'accordo
-      agree_meaning: Sostengo la proposta
-      agree_prompt: Cosa ti piace della proposta e in che modo andrà a vantaggio dell'organizzazione?
-      abstain: Astenersi
-      abstain_meaning: Questa decisione non mi riguarda e sono contento di qualunque cosa decida il gruppo
-      abstain_prompt: Perché ti astieni o non ti senti in grado di votare in questa decisione?
-      disagree: Disaccordo
-      disagree_meaning: Qualcosa in questa proposta deve essere cambiato prima che io possa sostenerla
-      disagree_prompt: Come potrebbe essere migliorata questa proposta in modo che tu possa sostenerla?
-      block: Bloccare
-      block_meaning: Blocco questa proposta e penso che non dovrebbe procedere
-      block_prompt: Spiega la tua obiezione a questa proposta e perché non dovrebbe andare avanti
-    question_round:
-      process_subtitle: Invita a chiarire domande per aiutare le persone a capire una proposta
-      process_introduction: <p>Un giro di domande è un'opportunità per le persone di porre domande di chiarimento sulla proposta, in modo che tutti capiscano la proposta prima di dire cosa ne pensano.</p><p> Il round Loomio Question è una proposta speciale senza opzioni di voto. Consente ai partecipanti di porre domande entro una durata impostata per il round.</p><p> Un giro di domande è comunemente usato come passaggio nel processo di consenso.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consent_process/index.html">Ulteriori informazioni sul processo di consenso</a> .</p>
-      title: Quali domande hai sulla politica di salute e sicurezza?
-      details: <h3 id="what-are-you-proposing"><strong>Cosa stai proponendo?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Perché questo è importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Cosa stai chiedendo alle persone di fare?</strong></h3><p></p><p> Questo è un giro di domande, in cui sei invitato a porre domande di chiarimento.</p><p> Cosa devi sapere per capire la proposta?</p><p> Si prega di rispondere prima della chiusura del round di domande.</p>
-      reason_prompt: Cosa devi sapere per capire la proposta?
-    sense_check:
-      process_subtitle: Chiedi feedback, domande e dubbi
-      process_introduction: <p>La proposta di controllo del senso è un buon modo per ottenere feedback, invitare domande e scoprire preoccupazioni. Aiuta a chiarire e migliorare una proposta prima di passare a una decisione.</p><p> Il controllo del senso consente alle persone di sapere che si sta formando una proposta e le incoraggia a impegnarsi. È un'opportunità per ascoltare le persone, percepire come si sentono e rispondere in modo appropriato, aprendo la possibilità di incorporare i loro contributi per prendere una decisione migliore.</p><p> Utilizzare la proposta di verifica del senso nel processo di consenso per invitare reazioni e commenti per migliorare la proposta e in un processo di consenso per testare il consenso.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Leggi ulteriori informazioni sull'utilizzo del controllo del senso nel processo decisionale semplice</u></a> <span>.</span></p>
-      title: Cosa ne pensi dei nuovi concept del marchio?
-      details: <h3 id="what-are-you-proposing"><strong>Cosa stai proponendo?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Perché questo è importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Cosa stai chiedendo alle persone di fare?</strong></h3><p></p><p> Come ti senti riguardo alla proposta? Lascia un commento o dai un suggerimento per migliorare.</p><p> Questo controllo del senso è un'opportunità per il tuo input e contributo, per aiutarci a prendere una decisione migliore.</p>
-      not_sure: Non è sicuro
-      not_sure_meaning: Ho una domanda o ho bisogno di più tempo
-      not_sure_prompt: Quali parti non ti sono chiare? Come potrebbe essere risolto?
-      looks_good: Sembra buono
-      looks_good_meaning: Sono contento di dove sta andando
-      looks_good_prompt: Hai commenti o suggerimenti per migliorare la proposta?
-      abstain: Astenersi
-      abstain_meaning: Non ho nulla da aggiungere, né alcuna obiezione a questo lavoro.
-      abstain_prompt: L'astensione implica il consenso all'indirizzo della presente proposta. C'è un motivo per cui stai votando per l'astensione?
-      concerned: Interessato
-      concerned_meaning: Potrebbe essere necessario cambiare qualcosa in questo per consentirmi o essere d'accordo
-      concerned_prompt: Qual è la tua preoccupazione e come potrebbe essere affrontata?
-    gradients_of_agreement:
-      process_subtitle: Esprimere sostegno per una proposta su una scala a 8 punti
-      process_introduction: <p>La proposta Gradienti di accordo consente ai membri di un gruppo di esprimere il proprio sostegno a una proposta in gradi su una scala, offrendo più modi di esprimere sostegno che in termini di "accordo" e "disaccordo".</p><p> Utilizzare Gradienti di accordo come round preliminare, per testare il supporto per una proposta prima di passare a un accordo formale.</p><p> I gradienti di accordo consentono alle persone di sapere che si sta formando una proposta e le incoraggiano a impegnarsi. È un'opportunità per ascoltare le persone, percepire come si sentono e rispondere in modo appropriato, aprendo la possibilità di incorporare i loro contributi per prendere una decisione migliore.</p>
-      title: Ti piace la nuova dichiarazione di valori?
-      details: <h3 id="what-are-you-proposing"><strong>Cosa stai proponendo?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Perché questo è importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Cosa stai chiedendo alle persone di fare?</strong></h3><p></p><p> Come ti sembra la proposta? Esprimi il tuo sostegno sulla scala sottostante e lascia un commento o un suggerimento per il miglioramento.</p><p> Questa proposta di gradienti di accordo serve a testare il supporto per la proposta e un'opportunità per il tuo contributo prima di passare a un accordo formale.</p>
-      whole_hearted_endorsement: Approvazione con tutto il cuore
-      whole_hearted_endorsement_meaning: Mi piace veramente!
-      whole_hearted_endorsement_prompt: Cosa ti piace di questo?
-      agreement_with_minor_contention: Accordo con contesa minore
-      agreement_with_minor_contention_meaning: Non perfetto, ma è abbastanza buono
-      agreement_with_minor_contention_prompt: Qual è la tua preoccupazione?
-      support_with_reservations: Supporto con prenotazione
-      support_with_reservations_meaning: Ci posso convivere
-      support_with_reservations_prompt: Quali sono le tue riserve?
-      abstain_meaning: Questo problema non mi riguarda
-      abstain_prompt: Hai qualcosa che vorresti aggiungere?
-      more_discussion_needed: Sono necessarie ulteriori discussioni
-      more_discussion_needed_meaning: Non capisco ancora abbastanza bene i problemi
-      more_discussion_needed_prompt: Cosa non capisci?
-      don_t_like_but_will_support: Non mi piace ma sosterrà
-      don_t_like_but_will_support_meaning: Non è fantastico, ma non voglio ostacolare il gruppo
-      don_t_like_but_will_support_prompt: Cosa vorresti vedere migliorato?
-      serious_disagreement: Grave disaccordo
-      serious_disagreement_meaning: Non sono d'accordo con questo - non contare su di me
-      serious_disagreement_prompt: Con cosa non sei d'accordo?
-      veto: Veto
-      veto_meaning: Blocco questa proposta
-      veto_prompt: Perché blocchi la proposta? Cosa deve cambiare per supportarlo?
-    simple_poll:
-      process_subtitle: Trova l'opzione più popolare
-      process_introduction: <p>Prima di prendere una decisione, trova a quali opzioni interessano di più le persone.</p><p> Il sondaggio semplice ti aiuta a trovare l'opzione o le opzioni più popolari con scelta singola o multipla.</p><p> Scrivi eventuali dettagli sulle opzioni nel campo dei dettagli, quindi inserisci il nome dell'opzione e fai clic su + per aggiungere.</p><p> Imposta le <strong>scelte minime</strong> e <strong>le scelte massime</strong> che un elettore può scegliere. Lascia la scelta massima come 1 per un sondaggio a scelta singola.</p><p> Puoi utilizzare l'icona della matita accanto a ciascuna opzione per aggiungere un <strong>significato</strong> all'opzione, un'ulteriore elaborazione dell'opzione per aiutare le persone durante il voto.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">Per saperne di più Sondaggio semplice</a> .</p>
-      title: Dove dovrebbe essere il focus della nostra direzione strategica?
-      details: <h3 id="what-is-this-poll-about"><strong>Di cosa tratta questo sondaggio?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Perché questo è importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Cosa stai chiedendo alle persone di fare?</strong></h3><p></p><p> Scegli l'opzione o le opzioni che preferisci.</p>
-    score_poll:
-      process_subtitle: Misura il grado di supporto per ogni opzione
-      process_introduction: <p>Usa il sondaggio del punteggio quando desideri sondare le persone per il loro desiderio, preferenza o interesse per ciascuna opzione.</p><p> <span>Ai partecipanti viene chiesto di valutare ciascuna opzione e assegnare un punteggio spostando un cursore lungo una scala.</span></p><p> <span>I risultati vengono visualizzati graficamente insieme a una tabella per ogni opzione che mostra i punti totali, i punti medi e il numero di votanti.</span></p><p> Le impostazioni avanzate includono "I voti sono anonimi" e "Mostra le opzioni in ordine casuale", comunemente utilizzate per il sondaggio del punteggio per ridurre qualsiasi pregiudizio di voto.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">Leggi di più su Score poll</a> .</p>
-      title: Valutare come vengono prese le decisioni nella nostra organizzazione
-      details: <h3 id="what-is-this-poll-about"><strong>Di cosa tratta questo sondaggio?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Perché questo è importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Cosa stai chiedendo alle persone di fare?</strong></h3><p></p><p> Scegli l'opzione o le opzioni che preferisci.</p>
-    dot_vote:
-      process_subtitle: Assegna un budget di punti per rivelare le priorità
-      process_introduction: <p>Dot vote è utile per i gruppi che cercano di allocare una risorsa limitata a un numero di opzioni. Va oltre un semplice sondaggio aiutando i partecipanti a capire che c'è un vincolo nella selezione delle opzioni.</p><p> A ciascuno dei partecipanti viene assegnato un determinato numero di punti. Decidi tu quanti.</p><p> Mettono punti accanto alle opzioni presentate che gli piacciono. I partecipanti possono posizionare tutti i loro punti su una singola opzione o distribuirli su più opzioni.</p><p> Man mano che i partecipanti allocano i punti, possono superare il limite del budget in punti e quindi sono incoraggiati a considerare attentamente come spendono i loro punti.</p><p> Le opzioni con il maggior numero di punti "vincono". La tabella dei risultati fornisce dati aggiuntivi per aiutarti ad analizzare i risultati.</p><ul><li><p> % di punti</p></li><li><p> Punti</p></li><li><p> Significare</p></li><li><p> Elettori</p></li></ul><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">Leggi di più su Dot vote</a> .</p>
-      title: Scelta dei temi per la nostra conferenza
-      details: <h3 id="what-is-this-poll-about"><strong>Di cosa tratta questo sondaggio?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Perché questo è importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Cosa stai chiedendo alle persone di fare?</strong></h3><p></p><p> In questo sondaggio hai un budget di 8 punti da destinare alle opzioni che preferisci. Puoi posizionare tutti i punti su un'opzione o distribuirli.</p>
-    ranked_choice:
-      process_subtitle: Comprendere la preferenza ordinata delle opzioni
-      process_introduction: <p>La scelta classificata è utile quando hai un gran numero di opzioni o stai tenendo un'elezione.</p><p> Questo modello di sondaggio offre una serie di opzioni per consentire alle persone di votare nell'ordine che preferiscono.</p><p> Puoi impostare il numero di scelte che ottiene l'elettore.</p><p> <span>Gli elettori trascinano e rilasciano le opzioni in ordine di preferenza (la numero 1 è l'opzione preferita).</span></p><p> <span>Le impostazioni avanzate includono "I voti sono anonimi" e "Mostra le opzioni in ordine casuale", comunemente utilizzate per la</span> scelta classificata per ridurre eventuali distorsioni di voto.</p><p> I risultati sono mostrati in ordine di classificazione. La tabella dei risultati fornisce dati aggiuntivi per aiutarti ad analizzare i risultati.</p><ul><li><p> Rango</p></li><li><p> % di punti</p></li><li><p> Punti</p></li><li><p> Significare</p></li></ul><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">Maggiori informazioni sulla scelta classificata</a> .</p>
-      title: Eleggere gli amministratori nel consiglio di amministrazione
-      details: <h3 id="what-is-this-poll-about"><strong>Di cosa tratta questo sondaggio?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Perché questo è importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Cosa stai chiedendo alle persone di fare?</strong></h3><p></p><p> Vota classificando le opzioni in ordine di preferenza. Vince l'opzione che si classifica per prima nei risultati.</p>
-    time_poll:
-      process_subtitle: Scopri quando le persone sono disponibili per incontrarsi
-      process_introduction: <p><span>Risparmia tempo organizzando una data per la tua riunione o evento.</span></p><p> Il sondaggio del tempo rende facile vedere la disponibilità di tutti e trovare l'orario migliore.</p><p> Dai al tuo sondaggio Time un titolo e dettagli. Inserisci un elenco di opzioni di data e ora nel tuo fuso orario.</p><p> Quando imposti le fasce orarie, considera le persone in fusi orari diversi. I partecipanti vedranno gli orari localizzati nel loro fuso orario.</p><p> Imposta una durata della riunione.</p><p> Quando il sondaggio sul tempo si chiude, imposta un risultato con il miglior tempo e le eventuali istruzioni per la riunione.</p><p> <span>Loomio includerà un invito al calendario con l'e-mail di notifica dell'esito, in modo che i partecipanti possano aggiungere al proprio calendario.</span></p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">Leggi di più su Time poll</a> .</p>
-      title: Troviamo una data per il nostro prossimo incontro
-      details: <p><strong>Qual è la riunione o l'evento?</strong></p><p></p><p> <strong>Perché questo è importante?</strong></p><p></p><p> <strong>Cosa stai chiedendo alle persone di fare?</strong></p><p></p><p> <span>Contrassegna le fasce orarie in cui sei disponibile con l'icona verde "Pollice in su" o lascia il "Pollice in giù" rosso quando non sei disponibile.</span></p><p> <span>Usa l'icona "pollice di lato" per dire che sei disponibile "se necessario".</span></p>
-      reason_prompt: C'è qualcosa che puoi dire per aiutare l'organizzatore a trovare un momento adatto?
-    opt_in:
-      process_subtitle: Trova volontari o chiedi dei partecipanti
-      process_introduction: '<p>Utilizza Opt-in per invitare le persone a unirsi a un team, comitato o gruppo di lavoro o per partecipare a un evento.</p><p> ''Opt-in'' ha due opzioni di voto: Accetta o Rifiuta.</p><p> Puoi definire un numero target di persone che stai cercando, ad esempio 3 persone che si uniscano al tuo gruppo di lavoro.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#opt-in">Ulteriori informazioni su Opt-in</a> .</p>'
-      title: Gruppo di lavoro per redigere la nostra nuova politica di sostenibilità
-      details: "<p><strong>Qual è il team, il gruppo di lavoro o l'evento a cui stai invitando le persone?</strong></p><p></p><p> <strong>Perché questo è importante?</strong></p><p></p><p> <strong>Cosa stai chiedendo alle persone di fare?</strong></p><p></p><p> Seleziona 'Accetta' per partecipare!</p>"
-      accept_meaning: Sono disposto a partecipare
-      accept_prompt: Perché ti offri volontario per questo?
-      decline_meaning: non riesco a partecipare
-      decline_prompt: C'è qualcosa che vorresti dire?
   thread_item:
     removed: Quesito rimosso
     deleted_group: Gruppo cancellato
@@ -2450,7 +2367,6 @@ it:
     account_locked: Il tuo account è stato bloccato dopo troppi tentativi di accesso. Guarda nella tua email per un collegamento di sblocco.
     email_not_found: Spiacenti, non riusciamo a trovare un account per questo indirizzo email
     email_taken: Indirizzo email già presente
-    email_placeholder: nome@esempio.com
     login_with_token: È tutto pronto! Fare clic sul collegamento sottostante per continuare.
     login_link_helptext: Fai clic sul pulsante in basso e ti invieremo un link per accedere.
     enter_your_password: Inserisci la tua password per continuare
@@ -2490,6 +2406,8 @@ it:
     password: Password
     reactivate: Riattiva account
     want_to_set_password: Vuoi effettuare l'accesso con una password la prossima volta?
+    change_your_password: Vuoi impostare una nuova password?
+    email_placeholder: tu{'@'}esempio.com
   chatbot:
     configure_chatbot: Configura chatbot
     test_connection: Test connection
@@ -2515,6 +2433,7 @@ it:
     event_kind_helptext: Seleziona gli eventi di cui il bot verrà sempre informato. Se non sei sicuro, lasciali tutti spenti.
     notification_only_label: Invia solo il titolo della notifica
     check_for_test_message: Controlla sul tuo canale il messaggio del bot!
+    webex: Webex
   webhook:
     integrations: Integrazioni
     api_keys: Chiavi API
@@ -2611,3 +2530,39 @@ it:
     month: Mese
     year: Anno
     country_disclaimer: Il paese si basa sull'indirizzo IP dell'utente e non è molto preciso. Considera questa solo una guida approssimativa.
+  tips:
+    youve_completed_all_the_steps: "\U0001F389 Hai completato tutti i passaggi!"
+    getting_started_checklist: Lista di controllo per iniziare
+    complete_these_steps_to_set_up_your_group: Completa questi passaggi per configurare il tuo gruppo
+    hide:
+      title: Nascondi questi suggerimenti
+      hide_onboarding: Nascondi i suggerimenti per l'onboarding
+      unhide_onboarding: Mostra suggerimenti per l'onboarding
+      helptext: <p>Questa operazione rimuoverà la "Checklist introduttiva" dalla barra del titolo.</p><p> Se desideri ripristinarlo in seguito, puoi <b>visualizzare i suggerimenti di onboarding</b> dalle impostazioni della barra laterale</p>
+    intro:
+      tip_title: Clicca qui per iniziare
+      title: Benvenuti nel nuovo gruppo Loomio!
+      body: <p>Questa breve serie di piccoli passaggi è pensata per garantire che le persone che inviti a unirsi al gruppo abbiano una buona prima impressione e capiscano come partecipare alle discussioni e alle decisioni.</p><p> Nella barra laterale troverai il pulsante "Contatta l'assistenza". Non esitare a contattarci in qualsiasi momento per qualsiasi domanda o consiglio.</p>
+      submit: Cominciamo
+    group:
+      welcome_and_faq: Benvenuti! Leggete questo per iniziare
+      upload_image:
+        title: Completa il tuo profilo di gruppo
+        helptext: "<p>Diamo un'occhiata al profilo del tuo gruppo. Nome, descrizione, logo e immagine di copertina saranno inclusi nelle email di invito che invierai in un passaggio successivo.</p><p> <b>Aggiungi l'immagine di copertina del tuo gruppo</b> : aiuta a fare una buona prima impressione sulle persone che inviti a partecipare.</p><p> Puoi utilizzare una foto recente del tuo team o un'immagine che rappresenti il lavoro della tua organizzazione o la tua comunità.</p>"
+        open_group_settings: Apri le impostazioni del gruppo
+      invite_people:
+        title: Invitare persone al gruppo
+      start_a_thread:
+        title: Inizia una discussione
+        helptext: "<p>Crea un thread che le persone vedranno dopo aver accettato l'invito.</p><p> L'intento è quello di incoraggiare le persone a scrivere il loro primo commento su Loomio.</p><p> Per semplificare le cose, abbiamo messo a disposizione un modello <b>di thread di pratica</b> che puoi utilizzare.</p>"
+        submit: Vedi i modelli di thread
+      start_a_proposal:
+        title: Avvia una proposta
+        helptext: "<p>In Loomio utilizziamo le proposte per dimostrare il sostegno a una decisione o per trovare modi per migliorarla.</p><p> Iniziamo una proposta e chiediamo ai membri del tuo gruppo di votarla.</p><p> Abbiamo creato un modello <b>di proposta di pratica</b> che puoi utilizzare.</p>"
+        submit: Vedi i modelli di proposta
+      share_an_outcome:
+        title: Condividi il risultato di una proposta
+        helptext: "<p>Per agevolare l'avanzamento delle decisioni, le proposte hanno una scadenza per la votazione. Una volta scaduto il termine, la votazione verrà chiusa e riceverai una notifica per condividere l'esito della proposta.</p><p> L'esito è l'occasione per dire se la proposta ha avuto successo e cosa accadrà in seguito.</p><p> Se la scadenza per la presentazione della tua proposta non è ancora scaduta, ma desideri procedere comunque, puoi cliccare <b>su Chiudi in anticipo</b> .</p><p> Quando sarà il momento giusto, <b>inserisci un risultato</b> per la tua proposta.</p>"
+        submit: Visualizza la proposta
+        cancel: Fallo più tardi
+    get_started_here: Inizia qui

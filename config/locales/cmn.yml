@@ -127,7 +127,6 @@ cmn:
   confirm_leave_hidden_group: "你确定你要离开%{which_group}吗？同时你也会被其他小组给移除的"
   confirm_leave_group: "你确定你想要离开 %{which_group}？"
   deactivate_group: 取消团队
-  confirm_deactivate_group: "等等！！！你确定你想要取消%{which_group}？那你就再也查不到这个组了，但是，如果你想要重新激活这个组，你可以通过发送邮件到contact@loomio.org"
   invited_users: 邀请成员
   members: 成员
   confirm_remove_user: "你确定你要从这个组中删除%{which_user}吗？"

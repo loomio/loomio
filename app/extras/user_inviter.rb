@@ -25,7 +25,7 @@ class UserInviter
     Group.where(id: group_ids).each do |g|
       actor.ability.authorize!(:add_members, g)
     end
-    
+
     return if subscription.max_members.nil?
 
     new_count = new_members_count(parent_group: parent_group, user_ids: user_ids, emails: emails)
