@@ -67,7 +67,7 @@ module HasRichText
     has_many_attached :image_files, dependent: :detach
     has_many :tasks, as: :record
     before_save :update_content_locale
-    # before_save :build_attachments
+    before_save :build_attachments
     before_save :sanitize_link_previews
   end
 
