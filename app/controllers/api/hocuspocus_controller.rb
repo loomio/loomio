@@ -1,4 +1,4 @@
-class API::HocuspocusController < ActionController::Base
+class Api::HocuspocusController < ActionController::Base
   skip_before_action :verify_authenticity_token
 
   RECORD_TYPES = %w[comment discussion poll stance outcome pollTemplate discussionTemplate group user]

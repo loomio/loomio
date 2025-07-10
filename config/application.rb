@@ -20,7 +20,7 @@ end
 
 module Loomio
   class Application < Rails::Application
-    config.load_defaults 6.0
+    config.load_defaults 7.0
     config.middleware.use Rack::Deflater
     config.middleware.use Rack::Attack
     config.active_job.queue_adapter = :sidekiq
@@ -30,11 +30,6 @@ module Loomio
       g.test_framework  :rspec, :fixture => false
     end
 
-    logger           = ActiveSupport::Logger.new(STDOUT)
-    logger.formatter = config.log_formatter
-    config.logger    = ActiveSupport::TaggedLogging.new(logger)
-    config.log_level = ENV.fetch('RAILS_LOG_LEVEL', :info)
-
     config.active_record.belongs_to_required_by_default = false
 
     config.force_ssl = ENV['FORCE_SSL'].present?
@@ -43,25 +38,10 @@ module Loomio
     config.i18n.enforce_available_locales = false
     config.i18n.fallbacks = [:en]
 
-    # config.assets.quiet = true
-    # config.quiet_assets = true
-
-    config.encoding = "utf-8"
-
     config.action_controller.action_on_unpermitted_parameters = :raise
-    # Configure sensitive parameters which will be filtered from the log file.
-    config.filter_parameters += [:password]
 
     # Enable the asset pipeline
     config.assets.enabled = true
-
-    # Version of your assets, change this if you want to expire all your assets
-    config.assets.version = '1.4'
-
-    # required for heroku
-    config.assets.initialize_on_precompile = false
-
-    config.action_mailer.preview_path = "#{Rails.root}/spec/mailers/previews"
 
     config.active_storage.variant_processor = :vips
 
@@ -122,5 +102,18 @@ module Loomio
     }
 
     config.active_storage.content_types_allowed_inline = %w(audio/webm video/webm image/png image/gif image/jpeg image/tiff image/vnd.adobe.photoshop image/vnd.microsoft.icon application/pdf)
+
+    # Please, add to the `ignore` list any other `lib` subdirectories that do
+    # not contain `.rb` files, or that should not be reloaded or eager loaded.
+    # Common ones are `templates`, `generators`, or `middleware`, for example.
+    config.autoload_lib(ignore: %w(assets tasks))
+
+    # Configuration for the application, engines, and railties goes here.
+    #
+    # These settings can be overridden in specific environments using the files
+    # in config/environments, which are processed later.
+    #
+    # config.time_zone = "Central Time (US & Canada)"
+    # config.eager_load_paths << Rails.root.join("extras")
   end
 end

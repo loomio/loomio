@@ -8,7 +8,7 @@ module PrettyUrlHelper
   def discussion_path(discussion, options = {})
     super(discussion, options.merge(slug: discussion.title.parameterize))
   end
-  
+
   def discussion_url(discussion, options = {})
     super(discussion, options.merge(slug: discussion.title.parameterize))
   end
@@ -52,7 +52,7 @@ module PrettyUrlHelper
 
   def polymorphic_path(model, opts = {})
     # angular router throws error if you give it a whole url
-    polymorphic_url(model, opts).sub(root_url, '')
+    polymorphic_url(model, opts).sub(root_url, '/')
   end
 
   def polymorphic_title(model)

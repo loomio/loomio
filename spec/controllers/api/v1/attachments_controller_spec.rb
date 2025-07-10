@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe API::V1::AttachmentsController do
+describe Api::V1::AttachmentsController do
   let(:user)  { create :user }
   let(:group) { create :group }
   let(:another_group) { create :group, parent: group }

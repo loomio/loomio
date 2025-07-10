@@ -1,4 +1,4 @@
-class API::V1::RestfulController < API::V1::SnorlaxBase
+class Api::V1::RestfulController < Api::V1::SnorlaxBase
   include ActiveStorage::SetCurrent
   include ::LocalesHelper
   include ::ProtectedFromForgery

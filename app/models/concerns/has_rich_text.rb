@@ -103,7 +103,7 @@ module HasRichText
   end
 
   def assign_attributes_and_files(params)
-    self.assign_attributes API::V1::SnorlaxBase.filter_params(self.class, params)
+    self.assign_attributes Api::V1::SnorlaxBase.filter_params(self.class, params)
   end
 
   def attachment_icon(name)

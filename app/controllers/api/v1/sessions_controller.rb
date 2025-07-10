@@ -1,4 +1,4 @@
-class API::V1::SessionsController < Devise::SessionsController
+class Api::V1::SessionsController < Devise::SessionsController
   include PrettyUrlHelper
   before_action :configure_permitted_parameters
 

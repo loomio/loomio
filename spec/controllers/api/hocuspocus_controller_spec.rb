@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe API::HocuspocusController do
+describe Api::HocuspocusController do
   let(:user)  { create :user, name: 'user' }
   let(:discussion)  { create :discussion, author: user }
   let(:other_discussion)  { create :discussion }

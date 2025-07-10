@@ -1,4 +1,4 @@
-class API::V1::AttachmentsController < API::V1::RestfulController
+class Api::V1::AttachmentsController < Api::V1::RestfulController
   def index
     # Group.find_by(params[:group_id).id_and_subgroup_ids
     group = current_user.groups.find_by!(id: params[:group_id])

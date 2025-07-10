@@ -1,4 +1,4 @@
-class API::V1::PollTemplatesController < API::V1::RestfulController
+class Api::V1::PollTemplatesController < Api::V1::RestfulController
   def index
     group = current_user.groups.find_by(id: params[:group_id]) || NullGroup.new
 
@@ -9,7 +9,7 @@ class API::V1::PollTemplatesController < API::V1::RestfulController
       self.collection = PollTemplateService.group_templates(group: group)
       respond_with_collection
     end
-  end 
+  end
 
   def show
     @poll_template = PollTemplate.find_by(group_id: current_user.group_ids, id: params[:id])

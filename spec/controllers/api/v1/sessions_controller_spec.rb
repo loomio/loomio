@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe API::V1::SessionsController do
+describe Api::V1::SessionsController do
   describe 'create' do
     let(:user) { create :user, email: "verified@example.com", email_verified: true, password: nil }
     let(:unverified_user) { create :user, email_verified: false, email: "unverified@example.com" }
