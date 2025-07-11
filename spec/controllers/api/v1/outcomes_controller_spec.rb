@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe API::V1::OutcomesController do
+describe Api::V1::OutcomesController do
   let(:user) { create :user }
   let(:another_user) { create :user }
   let(:outcome) { create :outcome, poll: poll, author: user }

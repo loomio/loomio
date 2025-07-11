@@ -1,4 +1,4 @@
-class API::V1::TrialsController < API::V1::RestfulController
+class Api::V1::TrialsController < Api::V1::RestfulController
   def create
     email = params[:user_email].strip
 

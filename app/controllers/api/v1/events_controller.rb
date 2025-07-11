@@ -1,4 +1,4 @@
-class API::V1::EventsController < API::V1::RestfulController
+class Api::V1::EventsController < Api::V1::RestfulController
   def position_keys
     load_and_authorize(:discussion)
     keys = Event.where(discussion_id: params[:discussion_id]).pluck(:position_key).sort

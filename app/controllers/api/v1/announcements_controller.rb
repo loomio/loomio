@@ -1,11 +1,11 @@
-class API::V1::AnnouncementsController < API::V1::RestfulController
+class Api::V1::AnnouncementsController < Api::V1::RestfulController
   def audience
     current_user.ability.authorize! :show, target_model
-    
-    if target_model.respond_to?(:anonymous) && 
+
+    if target_model.respond_to?(:anonymous) &&
        target_model.anonymous &&
        ['decided_voters', 'undecided_voters'].include?(params[:recipient_audience])
-      raise CanCan::AccessDenied 
+      raise CanCan::AccessDenied
     end
 
     self.collection = AnnouncementService.audience_users(

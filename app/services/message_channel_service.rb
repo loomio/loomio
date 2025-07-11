@@ -24,7 +24,7 @@ class MessageChannelService
 
   def self.publish_system_notice(notice, reload = false)
     CACHE_REDIS_POOL.with do |client|
-      client.publish("/system_notice", {version: Loomio::Version.current,
+      client.publish("/system_notice", {version: Version.current,
                                         notice: notice,
                                         reload: reload}.to_json)
     end

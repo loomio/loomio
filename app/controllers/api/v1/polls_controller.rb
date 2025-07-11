@@ -1,4 +1,4 @@
-class API::V1::PollsController < API::V1::RestfulController
+class Api::V1::PollsController < Api::V1::RestfulController
   def show
     self.resource = load_and_authorize(:poll)
     accept_pending_membership

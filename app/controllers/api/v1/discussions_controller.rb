@@ -1,4 +1,4 @@
-class API::V1::DiscussionsController < API::V1::RestfulController
+class Api::V1::DiscussionsController < Api::V1::RestfulController
   def create
     instantiate_resource
     if resource_params[:forked_event_ids] && resource_params[:forked_event_ids].any?

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe API::V1::TasksController, type: :controller do
+describe Api::V1::TasksController, type: :controller do
 
   let(:author) { create :user, name: 'author' }
   let(:doer) { create :user, name: 'doer', username: 'doer' }

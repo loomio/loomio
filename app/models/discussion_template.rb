@@ -10,8 +10,8 @@ class DiscussionTemplate < ApplicationRecord
 
   update_counter_cache :group, :discussion_templates_count
 
-  validates :description, length: { maximum: Rails.application.secrets.max_message_length }
-  
+  validates :description, length: { maximum: AppConfig.app_features[:max_message_length] }
+
   validates :process_name, presence: true
   # validates :process_subtitle, presence: true
 
@@ -61,7 +61,7 @@ class DiscussionTemplate < ApplicationRecord
   end
 
   def poll_template_ids
-    self.poll_template_keys_or_ids.filter do |key_or_id| 
+    self.poll_template_keys_or_ids.filter do |key_or_id|
       key_or_id.is_a? Integer
     end
   end

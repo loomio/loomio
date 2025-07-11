@@ -181,7 +181,7 @@ class Poll < ApplicationRecord
   end
 
   validates :poll_type, inclusion: { in: AppConfig.poll_types.keys }
-  validates :details, length: {maximum: Rails.application.secrets.max_message_length }
+  validates :details, length: {maximum: AppConfig.app_features[:max_message_length] }
 
   before_save :clamp_minimum_stance_choices
   validate :closes_in_future
