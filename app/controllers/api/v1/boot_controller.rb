@@ -6,9 +6,9 @@ class Api::V1::BootController < Api::V1::RestfulController
 
   def version
     render json: {
-      version: Loomio::Version.current,
+      version: Version.current,
       release: AppConfig.release,
-      reload: (params.fetch(:version, '0.0.0') < Loomio::Version.current) ||
+      reload: (params.fetch(:version, '0.0.0') < Version.current) ||
               (ENV['LOOMIO_SYSTEM_RELOAD'] && AppConfig.release != params[:release]),
       notice: ENV['LOOMIO_SYSTEM_NOTICE']
     }
