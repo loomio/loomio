@@ -2,14 +2,14 @@ module Dev::Scenarios::Discussion
   def setup_discussion
     create_discussion
     sign_in patrick
-    redirect_to discussion_url(create_discussion)
+    redirect_to discussion_path(create_discussion)
   end
 
   def setup_multiple_discussions
     sign_in patrick
     create_discussion
     create_public_discussion
-    redirect_to discussion_url(create_discussion)
+    redirect_to discussion_path(create_discussion)
   end
 
   def setup_discussion_as_guest
@@ -19,7 +19,7 @@ module Dev::Scenarios::Discussion
     discussion.add_guest!(jennifer, discussion.author)
     sign_in jennifer
 
-    redirect_to discussion_url(discussion)
+    redirect_to discussion_path(discussion)
   end
 
   def setup_discussion_with_guest
@@ -30,7 +30,7 @@ module Dev::Scenarios::Discussion
     discussion.add_guest!(jennifer, discussion.author)
     sign_in patrick
 
-    redirect_to discussion_url(discussion)
+    redirect_to discussion_path(discussion)
   end
 
   def setup_forkable_discussion
@@ -43,7 +43,7 @@ module Dev::Scenarios::Discussion
     CommentService.create(comment: FactoryBot.create(:comment, discussion: create_discussion, body: "This is also off-topic"), actor: emilio)
     CommentService.create(comment: FactoryBot.create(:comment, discussion: create_discussion, body: "This is totally back on topic!"), actor: patrick)
 
-    redirect_to discussion_url(create_discussion)
+    redirect_to discussion_path(create_discussion)
   end
 
   def setup_thread_catch_up
@@ -72,12 +72,12 @@ module Dev::Scenarios::Discussion
     CommentService.create(comment: read, actor: patrick)
     CommentService.create(comment: unread, actor: jennifer)
     CommentService.create(comment: another_unread, actor: jennifer)
-    redirect_to discussion_url(create_discussion)
+    redirect_to discussion_path(create_discussion)
   end
 
   def setup_discussion_for_jennifer
     sign_in jennifer
-    redirect_to discussion_url(create_discussion)
+    redirect_to discussion_path(create_discussion)
   end
 
   def setup_open_and_closed_discussions
@@ -85,7 +85,7 @@ module Dev::Scenarios::Discussion
     create_closed_discussion
     sign_in patrick
     patrick.update(experiences: { closingThread: true })
-    redirect_to group_url(create_group)
+    redirect_to group_path(create_group)
   end
 
   def setup_pages_of_closed_discussions
@@ -95,7 +95,7 @@ module Dev::Scenarios::Discussion
     60.times do
       saved(fake_discussion(group: @group, closed_at: 5.days.ago))
     end
-    redirect_to group_url(@group)
+    redirect_to group_path(@group)
   end
 
   def setup_comment_with_versions
@@ -104,7 +104,7 @@ module Dev::Scenarios::Discussion
     comment.update(body: "What moon sign are you?")
     comment.update_versions_count
     sign_in patrick
-    redirect_to discussion_url(create_discussion)
+    redirect_to discussion_path(create_discussion)
   end
 
   def setup_discussion_with_versions
@@ -112,7 +112,7 @@ module Dev::Scenarios::Discussion
     create_discussion.update(title: "What moon sign are you?")
     create_discussion.update_versions_count
     sign_in patrick
-    redirect_to discussion_url(create_discussion)
+    redirect_to discussion_path(create_discussion)
   end
 
   # discussion mailer emails
