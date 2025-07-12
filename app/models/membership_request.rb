@@ -15,11 +15,11 @@ class MembershipRequest < ApplicationRecord
   belongs_to :responder, class_name: 'User'
   has_many :admins, through: :group
 
-  validates :introduction, length: { maximum: Rails.application.secrets.max_message_length }
+  validates :introduction, length: { maximum: AppConfig.app_features[:max_message_length] }
 
   scope :dangling, -> { joins('left join groups on groups.id = group_id').where('groups.id is null') }
   scope :pending, -> { where(response: nil).order('created_at DESC') }
-  scope :responded_to, -> { where('response IS NOT ?', nil).order('responded_at DESC') }
+  scope :responded_to, -> { where('response IS NOT NULL').order('responded_at DESC') }
   scope :requested_by, ->(user) { where requestor_id: user.id }
 
   delegate :members,              to: :group, prefix: true
@@ -34,7 +34,7 @@ class MembershipRequest < ApplicationRecord
   def author_id
     requestor_id
   end
-  
+
   def title
     group.full_name
   end

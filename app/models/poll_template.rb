@@ -8,14 +8,14 @@ class PollTemplate < ApplicationRecord
   belongs_to :author, class_name: "User"
   belongs_to :group, class_name: "Group"
 
-  enum notify_on_closing_soon: {nobody: 0, author: 1, undecided_voters: 2, voters: 3}
-  enum hide_results: {off: 0, until_vote: 1, until_closed: 2}
-  enum stance_reason_required: {disabled: 0, optional: 1, required: 2}
+  enum :notify_on_closing_soon, {nobody: 0, author: 1, undecided_voters: 2, voters: 3}
+  enum :hide_results, {off: 0, until_vote: 1, until_closed: 2}
+  enum :stance_reason_required, {disabled: 0, optional: 1, required: 2}
 
   update_counter_cache :group, :poll_templates_count
 
   validates :poll_type, inclusion: { in: AppConfig.poll_types.keys }
-  validates :details, length: { maximum: Rails.application.secrets.max_message_length }
+  validates :details, length: { maximum: AppConfig.app_features[:max_message_length] }
   validates :process_name, presence: true
   validates :process_subtitle, presence: true
   validates :default_duration_in_days, presence: true

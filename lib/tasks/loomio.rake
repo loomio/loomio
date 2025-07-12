@@ -31,7 +31,7 @@ namespace :loomio do
   end
 
   task :version do
-    puts Loomio::Version.current
+    puts Version.current
   end
 
   task update_blocked_domains: :environment do

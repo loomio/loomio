@@ -1,5 +1,5 @@
 require 'rails_helper'
-describe API::V1::DiscussionsController do
+describe Api::V1::DiscussionsController do
 
   let(:subgroup) { create :group, parent: group }
   let(:another_group) { create :group }

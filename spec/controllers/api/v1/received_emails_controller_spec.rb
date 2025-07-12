@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe API::V1::ReceivedEmailsController do
+describe Api::V1::ReceivedEmailsController do
   let(:group) { create :group }
   let(:another_group) { create :group }
   let(:user) { create :user }

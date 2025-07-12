@@ -1,6 +1,6 @@
 require 'victor'
 
-class PieChartSVG
+class PieChartSvg
   SIZE = 512
 
   def self.from_primitives(scores, colors)

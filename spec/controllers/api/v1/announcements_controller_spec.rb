@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe API::V1::AnnouncementsController do
+describe Api::V1::AnnouncementsController do
   let(:user)  { create :user, name: 'user' }
   let(:bill)  { create :user, name: 'bill'}
   let(:member)  { create :user, name: 'member'}

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe API::V1::RegistrationsController do
+describe Api::V1::RegistrationsController do
   let(:registration_params) {{
     name: "Jon Snow",
     email: "jon@snow.com",

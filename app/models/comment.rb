@@ -37,8 +37,8 @@ class Comment < ApplicationRecord
         LEFT JOIN discussions ON discussions.id = comments.discussion_id
         LEFT JOIN users ON users.id = comments.user_id
         #{discussion_id ? "LEFT JOIN events ON events.eventable_type = 'Comment' AND events.eventable_id = comments.id" : ""}
-      WHERE comments.discarded_at IS NULL 
-        AND discussions.discarded_at IS NULL 
+      WHERE comments.discarded_at IS NULL
+        AND discussions.discarded_at IS NULL
         #{id ? " AND comments.id = #{id.to_i} LIMIT 1" : ""}
         #{author_id ? " AND comments.user_id = #{author_id.to_i}" : ""}
         #{discussion_id ? " AND events.discussion_id = #{discussion_id.to_i}" : ""}
@@ -62,8 +62,8 @@ class Comment < ApplicationRecord
   validate :parent_comment_belongs_to_same_discussion
   validate :has_body_or_attachment
 
-  alias_attribute :author, :user
-  alias_attribute :author_id, :user_id
+  alias_method :author, :user
+  alias_method :author=, :user=
 
   scope :dangling, -> { joins('left join discussions on discussion_id = discussions.id').where('discussion_id is not null and discussions.id is null') }
   scope :in_organisation, ->(group) { includes(:user, :discussion).joins(:discussion).where("discussions.group_id": group.id_and_subgroup_ids) }
@@ -84,6 +84,10 @@ class Comment < ApplicationRecord
   delegate :title, to: :discussion
 
   define_counter_cache(:versions_count) { |comment| comment.versions.count }
+
+  def author_id
+    user_id
+  end
 
   def real_participant
     author

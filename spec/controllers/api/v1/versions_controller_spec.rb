@@ -1,5 +1,5 @@
 require 'rails_helper'
-describe API::V1::VersionsController do
+describe Api::V1::VersionsController do
 
   let(:user) { create :user }
   let(:group) { create :group }

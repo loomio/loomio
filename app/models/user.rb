@@ -108,7 +108,7 @@ class User < ApplicationRecord
   initialized_with_token :email_api_key,            -> { SecureRandom.hex(16) }
   initialized_with_token :api_key,                  -> { SecureRandom.hex(16) }
 
-  enum default_membership_volume: [:mute, :quiet, :normal, :loud]
+  enum :default_membership_volume, [:mute, :quiet, :normal, :loud]
 
   scope :active, -> { where(deactivated_at: nil) }
   scope :no_spam_complaints, -> { where(complaints_count: 0) }

@@ -3,12 +3,12 @@ module Dev::Scenarios::Notification
     create_discussion
     sign_in patrick
     create_all_activity_items
-    redirect_to discussion_url(create_discussion)
+    redirect_to discussion_path(create_discussion)
   end
 
   def setup_all_notifications
     sign_in patrick
     create_all_notifications
-    redirect_to discussion_url(create_discussion)
+    redirect_to discussion_path(create_discussion)
   end
 end

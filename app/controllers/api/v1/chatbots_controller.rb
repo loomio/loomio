@@ -1,4 +1,4 @@
-class API::V1::ChatbotsController < API::V1::RestfulController
+class Api::V1::ChatbotsController < Api::V1::RestfulController
   def index
     load_and_authorize(:group, :show_chatbots)
     self.collection = Chatbot.where(group_id: @group.id)

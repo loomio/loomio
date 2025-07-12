@@ -1,4 +1,4 @@
-class API::V1::StancesController < API::V1::RestfulController
+class Api::V1::StancesController < Api::V1::RestfulController
   def create
     super
   rescue ActiveRecord::RecordNotUnique

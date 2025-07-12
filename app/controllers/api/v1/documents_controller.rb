@@ -1,4 +1,4 @@
-class API::V1::DocumentsController < API::V1::RestfulController
+class Api::V1::DocumentsController < Api::V1::RestfulController
 
   def for_group
     self.collection = page_collection(for_group_documents).search_for(params[:q])

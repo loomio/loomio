@@ -1,6 +1,6 @@
-class API::V1::DemosController < API::V1::RestfulController
+class Api::V1::DemosController < Api::V1::RestfulController
   before_action :require_current_user, only: [:clone]
-  
+
   def index
     instantiate_collection
     respond_with_collection

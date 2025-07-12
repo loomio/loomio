@@ -1,4 +1,4 @@
-class API::V1::MentionsController < ApplicationController
+class Api::V1::MentionsController < ApplicationController
   # return mentionables to the client
 
   def index

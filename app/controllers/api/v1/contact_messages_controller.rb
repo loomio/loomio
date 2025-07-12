@@ -1,2 +1,2 @@
-class API::V1::ContactMessagesController < API::V1::RestfulController
+class Api::V1::ContactMessagesController < Api::V1::RestfulController
 end

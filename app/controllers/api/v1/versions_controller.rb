@@ -1,4 +1,4 @@
-class API::V1::VersionsController < API::V1::RestfulController
+class Api::V1::VersionsController < Api::V1::RestfulController
   def show
     self.resource = model.versions[params[:index].to_i]
     respond_with_resource

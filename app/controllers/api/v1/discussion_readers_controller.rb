@@ -1,4 +1,4 @@
-class API::V1::DiscussionReadersController < API::V1::RestfulController
+class Api::V1::DiscussionReadersController < Api::V1::RestfulController
   def index
     @discussion = load_and_authorize(:discussion)
     query = params[:query]

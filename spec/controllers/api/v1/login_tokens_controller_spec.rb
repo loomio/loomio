@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe API::V1::LoginTokensController do
+describe Api::V1::LoginTokensController do
   describe 'create' do
     let(:user) { create :user }
 
