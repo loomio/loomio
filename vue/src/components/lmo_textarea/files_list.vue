@@ -1,14 +1,16 @@
 <script lang="js">
-export default
-{
+export default {
   props: {
-    files: Array
+    files: Array,
   },
   methods: {
     progressStyle(width) {
-      return {'background-color': this.$vuetify.theme.accent, 'width': width+'%'};
-    }
-  }
+      return {
+        "background-color": this.$vuetify.theme.accent,
+        width: width + "%",
+      };
+    },
+  },
 };
 </script>
 
@@ -29,23 +31,25 @@ export default
 
 <style lang="sass">
 .files-list
-	ul
-		padding-left: 0
-	li
-		list-style: none
-	p
-		img
-			width: 100%
+  ul
+    padding-left: 0
+  li
+    list-style: none
+  p
+    img
+      width: 100%
 .files-list__item
-	display: flex
-	align-items: center
+  display: flex
+  align-items: center
 .files-list__file-name
-	flex-grow: 1
+  flex-grow: 1
+  white-space: wrap
+  word-wrap: break-word
 .files-list__progress
-	flex-grow: 1
-	display: flex
-	height: 16px
+  flex-grow: 1
+  display: flex
+  height: 16px
 .files-list__progress-bar
-	width: 0
-	transition: width 120ms ease-out, opacity 60ms 60ms ease-in
+  width: 0
+  transition: width 120ms ease-out, opacity 60ms 60ms ease-in
 </style>
