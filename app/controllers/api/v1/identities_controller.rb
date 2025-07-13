@@ -1,4 +1,4 @@
-class API::V1::IdentitiesController < API::V1::RestfulController
+class Api::V1::IdentitiesController < Api::V1::RestfulController
   ACTION_NAMES = %w(channels admin_groups)
 
   def command

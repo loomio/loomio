@@ -1,4 +1,4 @@
-class API::V1::ProfileController < API::V1::RestfulController
+class Api::V1::ProfileController < Api::V1::RestfulController
   before_action :require_current_user, only: [:index, :contactable]
 
   def index

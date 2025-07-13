@@ -26,6 +26,7 @@ RUN apt-get update -qq && \
     sudo \
     nodejs \
     imagemagick \
+    libyaml-dev \
     libpq-dev && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists /usr/share/doc /usr/share/man

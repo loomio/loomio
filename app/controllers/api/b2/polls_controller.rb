@@ -1,4 +1,4 @@
-class API::B2::PollsController < API::B2::BaseController
+class Api::B2::PollsController < Api::B2::BaseController
   def show
     self.resource = load_and_authorize(:poll)
     respond_with_resource

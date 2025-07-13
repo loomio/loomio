@@ -1,4 +1,4 @@
-class API::V1::LoginTokensController < API::V1::RestfulController
+class Api::V1::LoginTokensController < Api::V1::RestfulController
   def create
     save_detected_locale(login_token_user)
     service.create(actor: login_token_user, uri: URI::parse(request.referrer.to_s))

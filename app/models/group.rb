@@ -164,7 +164,7 @@ class Group < ApplicationRecord
                          :admins_can_edit_user_content,
                          :listed_in_explore]
 
-  validates :description, length: { maximum: Rails.application.secrets.max_message_length }
+  validates :description, length: { maximum: AppConfig.app_features[:max_message_length] }
   before_validation :ensure_handle_is_not_empty
 
   def logo_url(size = 512)

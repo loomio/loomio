@@ -1,4 +1,4 @@
-class API::V1::ReactionsController < API::V1::RestfulController
+class Api::V1::ReactionsController < Api::V1::RestfulController
   alias :create :update
 
   def index

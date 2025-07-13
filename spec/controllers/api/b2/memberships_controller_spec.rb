@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe API::B2::MembershipsController do
+describe Api::B2::MembershipsController do
   let(:group) { create :group }
   let(:bad_group) { create :group }
   let(:admin) { group.admins.first }

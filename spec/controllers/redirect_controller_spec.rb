@@ -7,12 +7,12 @@ describe RedirectController do
 
   it 'get group' do
     get :group, params: { id: group.key }
-    expect(response).to redirect_to group_url(group)
+    expect(response).to redirect_to "/g/#{group.key}"
   end
 
   it 'get discussion' do
     get :discussion, params: { id: discussion.key }
-    expect(response).to redirect_to discussion_url(discussion)
+    expect(response).to redirect_to discussion_path(discussion)
   end
 
   # it 'get poll' do

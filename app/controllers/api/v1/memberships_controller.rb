@@ -1,4 +1,4 @@
-class API::V1::MembershipsController < API::V1::RestfulController
+class Api::V1::MembershipsController < Api::V1::RestfulController
   load_resource only: [:set_volume]
 
   def index
