@@ -107,7 +107,7 @@ module Dev::Scenarios::Auth
   end
 
   def view_closed_group_with_shareable_link
-    redirect_to join_path(create_group)
+    redirect_to "/join/group/#{create_group.token}"
   end
 
   def view_open_discussion_as_visitor
