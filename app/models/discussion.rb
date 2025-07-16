@@ -71,7 +71,7 @@ class Discussion < ApplicationRecord
   is_translatable on: %i[title description], load_via: :find_by_key!, id_field: :key
   is_rich_text    on: :description
   has_paper_trail only: %i[title description description_format private group_id author_id tags closed_at
-                           closer_id]
+                           closer_id attachments]
 
   belongs_to :group, class_name: 'Group'
   belongs_to :author, class_name: 'User'

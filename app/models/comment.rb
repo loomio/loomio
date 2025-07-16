@@ -45,7 +45,7 @@ class Comment < ApplicationRecord
     SQL
   end
 
-  has_paper_trail only: [:body, :body_format, :user_id, :discarded_at, :discarded_by]
+  has_paper_trail only: [:body, :body_format, :user_id, :discarded_at, :discarded_by, :attachments]
 
   is_translatable on: :body
   is_mentionable  on: :body

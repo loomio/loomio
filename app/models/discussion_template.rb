@@ -26,7 +26,8 @@ class DiscussionTemplate < ApplicationRecord
     :description_format,
     :group_id,
     :tags,
-    :discarded_at
+    :discarded_at,
+    :attachments
   ]
 
   def members

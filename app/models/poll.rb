@@ -210,7 +210,8 @@ class Poll < ApplicationRecord
     :tags,
     :notify_on_closing_soon,
     :poll_option_names,
-    :hide_results]
+    :hide_results,
+    :attachments]
 
   update_counter_cache :group, :polls_count
   update_counter_cache :group, :closed_polls_count

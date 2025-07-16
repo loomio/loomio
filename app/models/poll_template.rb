@@ -50,7 +50,8 @@ class PollTemplate < ApplicationRecord
     :meeting_duration,
     :can_respond_maybe,
     :tags,
-    :discarded_at
+    :discarded_at,
+    :attachments
   ]
 
   def dump_i18n
