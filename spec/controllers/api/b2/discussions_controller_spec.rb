@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe API::B2::DiscussionsController do
+describe Api::B2::DiscussionsController do
   let(:group) { create :group }
   let(:bad_group) { create :group }
   let(:user) { group.admins.first }

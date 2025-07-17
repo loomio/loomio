@@ -1,4 +1,4 @@
-class API::V1::LinkPreviewsController < API::V1::RestfulController
+class Api::V1::LinkPreviewsController < Api::V1::RestfulController
   def create
     # require logged in user
     # add rate limit of 100 per hour per user

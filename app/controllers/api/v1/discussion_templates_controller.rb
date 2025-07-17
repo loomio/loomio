@@ -1,4 +1,4 @@
-class API::V1::DiscussionTemplatesController < API::V1::RestfulController
+class Api::V1::DiscussionTemplatesController < Api::V1::RestfulController
   def browse_tags
     tag_counts = {}
     DiscussionTemplate.where(public: true).pluck(:tags).flatten.each do |tag|

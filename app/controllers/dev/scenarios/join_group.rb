@@ -4,7 +4,7 @@ module Dev::Scenarios::JoinGroup
     create_another_group.update(group_privacy: 'open')
     create_another_group.update(membership_granted_upon: 'request')
     create_public_discussion
-    redirect_to group_url(create_another_group)
+    redirect_to group_path(create_another_group)
   end
 
   def setup_closed_group_to_join
@@ -13,6 +13,6 @@ module Dev::Scenarios::JoinGroup
     create_public_discussion
     private_create_discussion
     create_subgroup
-    redirect_to group_url(create_another_group)
+    redirect_to group_path(create_another_group)
   end
 end

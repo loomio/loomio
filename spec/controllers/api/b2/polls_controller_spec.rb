@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe API::B2::PollsController do
+describe Api::B2::PollsController do
   let(:group) { create :group }
   let(:bad_group) { create :group }
   let(:bot) { create :user, bot: true}
@@ -63,7 +63,7 @@ describe API::B2::PollsController do
         recipient_user_ids: [member.id],
         api_key: bot.api_key,
       }
-      
+
       expect(response.status).to eq 200
       json = JSON.parse response.body
       poll = json['polls'][0]
@@ -108,7 +108,7 @@ describe API::B2::PollsController do
         recipient_audience: 'group',
         api_key: bot.api_key,
       }
-      
+
       expect(response.status).to eq 403
     end
 

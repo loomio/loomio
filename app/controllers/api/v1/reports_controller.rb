@@ -1,4 +1,4 @@
-class API::V1::ReportsController < API::V1::RestfulController
+class Api::V1::ReportsController < Api::V1::RestfulController
   def index
     start_at = Date.parse(params.fetch(:start_month, 12.months.ago.to_date.iso8601[0..-4]) + "-01")
     end_at = Date.parse(params.fetch(:end_month, Date.today.iso8601[0..-4]) + "-01") + 1.month

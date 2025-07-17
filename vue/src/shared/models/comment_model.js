@@ -23,8 +23,8 @@ export default class CommentModel extends BaseModel {
   defaultValues() {
     return {
       discussionId: null,
-      files: [],
-      imageFiles: [],
+      files: null,
+      imageFiles: null,
       attachments: [],
       linkPreviews: [],
       body: '',

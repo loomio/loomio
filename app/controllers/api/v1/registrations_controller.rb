@@ -1,4 +1,4 @@
-class API::V1::RegistrationsController < Devise::RegistrationsController
+class Api::V1::RegistrationsController < Devise::RegistrationsController
   include LocalesHelper
   before_action :configure_permitted_parameters
   before_action :permission_check, only: :create

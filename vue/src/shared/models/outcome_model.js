@@ -19,8 +19,8 @@ export default class OutcomeModel extends BaseModel {
       eventSummary: null,
       eventDescription: null,
       includeActor: false,
-      files: [],
-      imageFiles: [],
+      files: null,
+      imageFiles: null,
       attachments: [],
       linkPreviews: [],
       recipientUserIds: [],
@@ -41,7 +41,7 @@ export default class OutcomeModel extends BaseModel {
   collabKeyParams() {
     return [this.pollId];
   }
-  
+
   relationships() {
     this.belongsTo('author', {from: 'users'});
     this.belongsTo('poll');

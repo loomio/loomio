@@ -83,7 +83,7 @@ export default defineConfig({
   ],
   build: {
     sourcemap: true,
-    emptyOutDir: true,
+    emptyOutDir: false,
     outDir: '../public/client3'
   },
   experimental: {

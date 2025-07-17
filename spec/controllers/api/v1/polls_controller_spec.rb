@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe API::V1::PollsController do
+describe Api::V1::PollsController do
   let(:group) { create :group }
   let(:another_group) { create :group }
   let(:public_group) { create :group, is_visible_to_public: true }
