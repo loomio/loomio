@@ -26,8 +26,8 @@ export default class StanceModel extends BaseModel {
     return {
       reason: '',
       reasonFormat: 'html',
-      files: [],
-      imageFiles: [],
+      files: null,
+      imageFiles: null,
       attachments: [],
       linkPreviews: [],
       revokedAt: null,

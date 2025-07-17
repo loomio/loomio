@@ -103,6 +103,11 @@ module HasRichText
   end
 
   def assign_attributes_and_files(params)
+    # this prevents accidentally removing attachments
+    [:files, :image_files].each do |key|
+      params.delete(key) if params.has_key?(key) && params[key].nil?
+    end
+
     self.assign_attributes Api::V1::SnorlaxBase.filter_params(self.class, params)
   end
 

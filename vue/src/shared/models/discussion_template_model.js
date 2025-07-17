@@ -18,8 +18,8 @@ export default class DiscussionTemplateModel extends BaseModel {
       processIntroductionFormat: 'html',
       title: null,
       tags: [],
-      files: [],
-      imageFiles: [],
+      files: null,
+      imageFiles: null,
       attachments: [],
       linkPreviews: [],
       maxDepth: 3,
@@ -29,11 +29,11 @@ export default class DiscussionTemplateModel extends BaseModel {
       discardedAt: null
     };
   }
-  
+
   collabKeyParams(){
     return [this.groupId, this.key];
   }
-  
+
   relationships() {
     this.belongsTo('author', {from: 'users'});
     return this.belongsTo('group');
@@ -67,4 +67,3 @@ export default class DiscussionTemplateModel extends BaseModel {
     return this.pollTemplateKeysOrIds.filter(keyOrId => typeof(keyOrId) === 'string');
   }
 };
-
