@@ -1,11 +1,10 @@
 import { defineConfig } from 'vite';
 import path from 'path';
 import vue from '@vitejs/plugin-vue'
-import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
+import vuetify from 'vite-plugin-vuetify'
 import envCompatible from 'vite-plugin-env-compatible';
 import yaml from '@originjs/vite-plugin-content';
 import Components from 'unplugin-vue-components/vite';
-import { splitVendorChunkPlugin } from 'vite'
 import { viteCommonjs } from '@originjs/vite-plugin-commonjs';
 
 import LoomioComponents from './src/components.js';
@@ -66,11 +65,8 @@ export default defineConfig({
     ]
   },
   plugins: [
-    splitVendorChunkPlugin(),
     vue(),
-    vuetify({
-      autoImport: true
-    }),
+    vuetify({ autoImport: true }),
     Components({
       directoryAsNamespace: true,
       resolvers: [
