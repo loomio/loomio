@@ -19,7 +19,7 @@ export default class NotificationModel extends BaseModel {
       title: null,
       model: null,
       pollType: null,
-      name: null, 
+      name: null,
       reaction: null
     };
   }
@@ -42,6 +42,8 @@ export default class NotificationModel extends BaseModel {
       return "/" + this.url.split('/')[1] + "/members/requests";
     } else if (this.url.startsWith(AppConfig.baseUrl)) {
       return "/" + this.url.replace(AppConfig.baseUrl, '');
+    } else if (this.url.startsWith('/')) {
+      return this.url;
     } else {
       return "/" + this.url;
     }
