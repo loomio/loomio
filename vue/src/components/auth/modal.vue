@@ -45,7 +45,7 @@ export default {
 }
 </script>
 <template lang="pug">
-.auth-modal
+form.auth-modal
   auth-form(v-if="!user.authForm" :user='user' :prevent-close="preventClose")
   auth-signin-form(v-if='user.authForm == "signIn"' :user='user')
   auth-signup-form(v-if='user.authForm == "signUp"' :user='user')
