@@ -1294,6 +1294,7 @@ en:
     question: Are you sure you want to deactivate this group?
     submit: Yes, Deactivate this group
   group_form:
+    share_this_url_with_people_who_want_to_join: Share this URL with people who want to join
     request_to_join_prompt: Request to join prompt
     default_request_to_join_prompt: 'Thanks for your interest in our group. Please introduce yourself and explain why you are requesting to join.
 

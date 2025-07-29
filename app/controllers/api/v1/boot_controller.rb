@@ -17,6 +17,7 @@ class Api::V1::BootController < Api::V1::RestfulController
   private
   def user_payload
     Boot::User.new(current_user,
+                   root_url: URI(root_url).origin,
                    identity: serialized_pending_identity,
                    flash: flash,
                    channel_token: set_channel_token).payload
