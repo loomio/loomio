@@ -279,8 +279,8 @@ v-card.group-form(:title="$t(cardTitle)")
               span(v-t="'invitation_form.copy_to_clipboard'")
 
         template(v-if="group.groupPrivacy != 'secret' && group.membershipGrantedUpon == 'approval'")
-          p(v-t="'group_form.request_to_join_prompt'")
           v-textarea(
+            :label="$t('group_form.request_to_join_prompt')"
             counter
             v-model="group.requestToJoinPrompt"
             :placeholder="$t('group_form.default_request_to_join_prompt')")
