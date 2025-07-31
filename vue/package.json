@@ -9,7 +9,7 @@
     "test": "nightwatch --retries 2 --headless"
   },
   "dependencies": {
-    "@hocuspocus/provider": "^2.15.2",
+    "@hocuspocus/provider": "^3.2.2",
     "@mdi/js": "^6.9.96",
     "@sentry/browser": "^9.43.0",
     "@sentry/vue": "^9.43.0",
