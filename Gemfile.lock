@@ -497,7 +497,7 @@ GEM
       date
       stringio
     public_suffix (6.0.2)
-    puma (6.6.0)
+    puma (6.6.1)
       nio4r (~> 2.0)
     pwned (2.4.1)
     racc (1.8.1)
