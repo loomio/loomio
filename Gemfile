@@ -75,6 +75,8 @@ group :development, :test do
   gem 'faker'
   gem 'dotenv-rails'
   gem 'rails-controller-testing'
+  gem "brakeman", require: false
+  gem "rubocop-rails-omakase", require: false
 end
 
 group :development do
