@@ -31,7 +31,7 @@ export default {
     this.watchRecords({
       collections: ['groups', 'polls'],
       query: () => {
-        this.group = sortBy(this.user.parentGroups().filter( g => g.creatorId == this.user.id ), g => (- g.id))[0]
+        this.group = sortBy(this.user.parentGroups().filter( g => g.creatorId == this.user.id && g.subscription.plan != "demo" ), g => (- g.id))[0]
         this.tips = TipService.tips(this.user, this.group, this).filter(t => t.show())
       }
     });
