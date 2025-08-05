@@ -1,5 +1,7 @@
 import 'vuetify/styles'
 
+process.env
+
 // Composables
 import { createVuetify } from 'vuetify'
 import { aliases, mdi } from 'vuetify/iconsets/mdi-svg'
@@ -44,7 +46,6 @@ export default createVuetify({
         colors: {
           primary: colors.gold,
           info: colors.skyDark1,
-          // success: ENV.fetch('THEME_COLOR_SUCCESS', nil),
           anchor: colors.gold
         },
       },
@@ -67,7 +68,6 @@ export default createVuetify({
           anchor: colors.sky
         },
       },
-
     },
   },
 })
