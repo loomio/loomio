@@ -75,7 +75,7 @@ div.lmo-markdown-wrapper
 
 <style lang="sass">
 
-.v-theme--dark, v-theme--darkBlue
+.v-theme--dark, .v-theme--darkBlue
   .lmo-markdown-wrapper
     hr
       border-bottom: 2px solid rgba(255, 255, 255, 0.5)
