@@ -171,7 +171,7 @@ export default {
   .strand-item__stem
     background-color: #d0d0d0
 
-.v-theme--dark
+.v-theme--dark, .v-theme--darkBlue
   .strand-item__gutter:hover
     .strand-item__stem
       background-color: rgb(var(--v-theme-surface-bright))
