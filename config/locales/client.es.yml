@@ -619,6 +619,8 @@ es:
     theme: Tema
     light: Luz
     dark: Oscuro
+    light_blue: Azul claro
+    dark_blue: Azul oscuro
   membership_card:
     group_members: Integrantes del grupo
     discussion_members: Integrantes del hilo
@@ -1300,6 +1302,7 @@ es:
     request_to_join_prompt: Solicitud de adhesión inmediata
     default_request_to_join_prompt: Gracias por su interés en nuestro grupo. Preséntese y explique por qué desea unirse.
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Actualice su suscripción</a> para crear un subgrupo'
+    share_this_url_with_people_who_want_to_join: Comparte esta URL con personas que quieran unirse
   group_export_modal:
     title: Exportar la data grupal
     body: |

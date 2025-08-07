@@ -614,6 +614,8 @@ ja:
     theme: テーマ
     light: ライト
     dark: 暗い
+    light_blue: 水色
+    dark_blue: ダークブルー
   membership_card:
     group_members: グループの人（仲間）たち
     discussion_members: スレッドメンバー
@@ -1282,6 +1284,7 @@ ja:
     request_to_join_prompt: 参加リクエストプロンプト
     default_request_to_join_prompt: 私たちのグループに興味を持っていただきありがとうございます。自己紹介と参加を希望する理由を説明してください。
     upgrade_for_subgroups: 'サブグループを作成するには、<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">サブスクリプションをアップグレードして</a>ください'
+    share_this_url_with_people_who_want_to_join: 参加したい人にこのURLを共有してください
   group_export_modal:
     title: グループデータのエクスポート
     body: <p>グループのデータのコピーはいつでもダウンロードできます。<a href="https://help.loomio.org/en/user_manual/groups/data_export/">もっと詳しく調べてください。</a></p><p>グループの規模に応じて、完了までに数分かかります。準備が完了すると、ファイルをダウンロードするためのリンクが記載された電子メールが届きます。</p>

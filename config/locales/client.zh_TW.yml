@@ -625,6 +625,8 @@ zh_TW:
     theme: 主題
     light: 光
     dark: 黑暗的
+    light_blue: 淺藍色
+    dark_blue: 深藍色
   membership_card:
     group_members: 群組成員
     discussion_members: 討論串成員
@@ -1299,6 +1301,7 @@ zh_TW:
     default_request_to_join_prompt: 感謝您對我們小組的興趣。請自我介紹並解釋為什麼您要求加入。
     upgrade_for_subgroups: '請<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">升級您的訂閱</a>以建立子群組'
     group_handle_placeholder: 您的群組網址與電子郵件：%{host}/%{handle}、%{handle}{'@'}%{host}
+    share_this_url_with_people_who_want_to_join: 與想要加入的人分享此 URL
   group_export_modal:
     title: 匯出群組資料
     body: |

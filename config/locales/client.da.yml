@@ -615,6 +615,8 @@ da:
     theme: Tema
     light: Lys
     dark: Mørk
+    light_blue: Lyseblå
+    dark_blue: Mørkeblå
   membership_card:
     group_members: Gruppemedlemmer
     discussion_members: Trådmedlemmer
@@ -1283,6 +1285,7 @@ da:
     request_to_join_prompt: Anmodning om at deltage
     default_request_to_join_prompt: Tak for din interesse i vores gruppe. Præsentér dig selv og forklar, hvorfor du anmoder om at deltage.
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Opgrader venligst dit abonnement</a> for at oprette en undergruppe'
+    share_this_url_with_people_who_want_to_join: Del denne URL med personer, der ønsker at deltage
   group_export_modal:
     title: Eksporter gruppedata
     body: <p>Du kan til enhver tid downloade en kopi af din gruppes data. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Find ud af mere.</a></p><p> Det tager et par minutter at gennemføre, afhængigt af størrelsen på din gruppe. Når den er klar, modtager du en e-mail med et link til at downloade filen.</p>

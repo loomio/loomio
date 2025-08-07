@@ -615,6 +615,8 @@ ro:
     theme: Temă
     light: Aprinde
     dark: Întuneric
+    light_blue: Albastru deschis
+    dark_blue: Albastru închis
   membership_card:
     group_members: Membrii grupului
     discussion_members: Membrii firului
@@ -1283,6 +1285,7 @@ ro:
     request_to_join_prompt: Solicitare de înscriere
     default_request_to_join_prompt: Vă mulțumim pentru interesul acordat grupului nostru. Vă rugăm să vă prezentați și să explicați de ce solicitați să vă înscrieți.
     upgrade_for_subgroups: 'Vă rugăm <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">să actualizați abonamentul</a> pentru a crea un subgrup'
+    share_this_url_with_people_who_want_to_join: Distribuiți această adresă URL cu persoanele care doresc să se alăture
   group_export_modal:
     title: Exportați datele grupului
     body: <p>Puteți descărca oricând o copie a datelor grupului dvs. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Află mai multe.</a></p><p> Este nevoie de câteva minute pentru a finaliza, în funcție de dimensiunea grupului dvs. Când este gata, veți primi un e-mail cu un link pentru a descărca fișierul.</p>

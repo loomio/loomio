@@ -615,6 +615,8 @@ he:
     theme: נוֹשֵׂא
     light: אוֹר
     dark: כֵּהֶה
+    light_blue: תכלת
+    dark_blue: כחול כהה
   membership_card:
     group_members: חברי הקבוצה
     discussion_members: חברים בשיחה
@@ -1287,6 +1289,7 @@ he:
     request_to_join_prompt: בקשת הצטרפות
     default_request_to_join_prompt: תודה על ההתעניינות בקבוצה שלנו. אנא הצג את עצמך והסבר מדוע אתה מבקש להצטרף.
     upgrade_for_subgroups: 'אנא <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">שדרג את המנוי שלך</a> כדי ליצור תת-קבוצה'
+    share_this_url_with_people_who_want_to_join: שתף כתובת URL זו עם אנשים שרוצים להצטרף
   group_export_modal:
     title: יצוא נתונים מהקבוצה
     body: |

@@ -615,6 +615,8 @@ hr:
     theme: Tema
     light: Svjetlo
     dark: tamno
+    light_blue: Svijetloplava
+    dark_blue: Tamnoplava
   membership_card:
     group_members: Članovi grupe
     discussion_members: Članovi niti
@@ -1283,6 +1285,7 @@ hr:
     request_to_join_prompt: Zahtjev za pridruživanje
     default_request_to_join_prompt: Hvala na interesu za našu grupu. Predstavite se i objasnite zašto tražite da se pridružite.
     upgrade_for_subgroups: 'Molimo vas <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">da nadogradite svoju pretplatu</a> kako biste stvorili podgrupu'
+    share_this_url_with_people_who_want_to_join: Podijelite ovaj URL s ljudima koji se žele pridružiti
   group_export_modal:
     title: Izvoz grupnih podataka
     body: <p>U bilo kojem trenutku možete preuzeti kopiju podataka svoje grupe. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Saznaj više.</a></p><p> Za dovršetak je potrebno nekoliko minuta, ovisno o veličini vaše grupe. Kada bude spremna, primit ćete e-poruku s vezom za preuzimanje datoteke.</p>

@@ -619,6 +619,8 @@ nl_NL:
     theme: Thema
     light: Licht
     dark: Donker
+    light_blue: Lichtblauw
+    dark_blue: Donkerblauw
   membership_card:
     group_members: Groepsleden
     discussion_members: Bord leden
@@ -1291,6 +1293,7 @@ nl_NL:
     request_to_join_prompt: Verzoek om deel te nemen prompt
     default_request_to_join_prompt: Bedankt voor uw interesse in onze groep. Stel uzelf voor en leg uit waarom u lid wilt worden.
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Upgrade uw abonnement</a> om een subgroep te creëren'
+    share_this_url_with_people_who_want_to_join: Deel deze URL met mensen die mee willen doen
   group_export_modal:
     title: Groepsdata exporteren
     body: |

@@ -668,9 +668,9 @@ en:
     disable_beta_features: Disable beta features
     theme: Theme
     light: Light
+    light_blue: Light blue
     dark: Dark
-    enable_dark_mode: Enable dark mode
-    disable_dark_mode: Disable dark mode
+    dark_blue: Dark blue
     button_label: User menu
     edit_profile: Edit profile
     email_settings: Notification settings

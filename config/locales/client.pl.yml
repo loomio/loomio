@@ -619,6 +619,8 @@ pl:
     theme: Temat
     light: Światło
     dark: Ciemny
+    light_blue: Jasnoniebieski
+    dark_blue: Ciemnoniebieski
   membership_card:
     group_members: Osoby w tej grupy
     discussion_members: Osoby w tym wątku
@@ -1291,6 +1293,7 @@ pl:
     request_to_join_prompt: Prośba o dołączenie
     default_request_to_join_prompt: Dziękujemy za zainteresowanie naszą grupą. Przedstaw się i wyjaśnij, dlaczego chcesz dołączyć.
     upgrade_for_subgroups: 'Aby utworzyć podgrupę, <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">zaktualizuj swoją subskrypcję</a>'
+    share_this_url_with_people_who_want_to_join: Udostępnij ten adres URL osobom, które chcą dołączyć
   group_export_modal:
     title: Eksportuj dane grupy
     body: |

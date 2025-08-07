@@ -615,6 +615,8 @@ el:
     theme: Θέμα
     light: Φως
     dark: Σκοτάδι
+    light_blue: Ανοιχτό μπλε
+    dark_blue: Σκούρο μπλε
   membership_card:
     group_members: Μέλη ομάδας
     discussion_members: Μέλη νήματος
@@ -1283,6 +1285,7 @@ el:
     request_to_join_prompt: Αίτημα συμμετοχής
     default_request_to_join_prompt: Ευχαριστούμε για το ενδιαφέρον σας για την ομάδα μας. Συστηθείτε και εξηγήστε γιατί ζητάτε να συμμετάσχετε.
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Αναβαθμίστε τη συνδρομή σας</a> για να δημιουργήσετε μια υποομάδα'
+    share_this_url_with_people_who_want_to_join: Κοινοποιήστε αυτήν τη διεύθυνση URL με άτομα που θέλουν να συμμετάσχουν
   group_export_modal:
     title: Εξαγωγή δεδομένων ομάδας
     body: <p>Μπορείτε να κάνετε λήψη ενός αντιγράφου των δεδομένων της ομάδας σας ανά πάσα στιγμή. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Μάθετε περισσότερα.</a></p><p> Χρειάζονται λίγα λεπτά για να ολοκληρωθεί, ανάλογα με το μέγεθος της ομάδας σας. Όταν είναι έτοιμο, θα λάβετε ένα email με έναν σύνδεσμο για τη λήψη του αρχείου.</p>

@@ -627,6 +627,8 @@ fr:
     theme: Thème
     light: Lumière
     dark: Sombre
+    light_blue: Bleu clair
+    dark_blue: Bleu foncé
   membership_card:
     group_members: Membres du groupe
     discussion_members: Membres de la discussion
@@ -1312,6 +1314,7 @@ fr:
     request_to_join_prompt: Demande d'adhésion rapide
     default_request_to_join_prompt: Merci de votre intérêt pour notre groupe. Veuillez vous présenter et expliquer pourquoi vous souhaitez nous rejoindre.
     upgrade_for_subgroups: 'Veuillez <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">mettre à niveau votre abonnement</a> pour créer un sous-groupe'
+    share_this_url_with_people_who_want_to_join: Partagez cette URL avec les personnes qui souhaitent nous rejoindre
   group_export_modal:
     title: Exporter les données de votre groupe
     body: |

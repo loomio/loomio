@@ -627,6 +627,8 @@ it:
     theme: Tema
     light: Leggero
     dark: Buio
+    light_blue: Azzurro chiaro
+    dark_blue: Blu scuro
   membership_card:
     group_members: Membri del gruppo
     discussion_members: Membri della discussione
@@ -1311,6 +1313,7 @@ it:
     request_to_join_prompt: Richiesta di partecipazione immediata
     default_request_to_join_prompt: Grazie per il tuo interesse nel nostro gruppo. Presentati e spiega perché stai chiedendo di unirti a noi.
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Aggiorna il tuo abbonamento</a> per creare un sottogruppo'
+    share_this_url_with_people_who_want_to_join: Condividi questo URL con le persone che vogliono unirsi
   group_export_modal:
     title: Esporta i dati del gruppo
     body: <p>Puoi scaricare una copia dei dati del tuo gruppo in qualsiasi momento. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Scopri di più.</a></p><p> Il completamento richiede alcuni minuti, a seconda delle dimensioni del gruppo. Quando sarà pronto riceverai un'e-mail con un link per scaricare il file.</p>

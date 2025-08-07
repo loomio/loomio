@@ -620,6 +620,8 @@ uk:
     theme: Тема
     light: світло
     dark: Темний
+    light_blue: Світло-блакитний
+    dark_blue: Темно-синій
   membership_card:
     group_members: Учасники групи
     discussion_members: Учасники теми
@@ -1294,6 +1296,7 @@ uk:
     request_to_join_prompt: Запит на приєднання
     default_request_to_join_prompt: Дякуємо за інтерес до нашої групи. Будь ласка, представтеся та поясніть, чому ви хочете приєднатися.
     upgrade_for_subgroups: 'Будь ласка, <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">оновіть свою підписку</a> , щоб створити підгрупу'
+    share_this_url_with_people_who_want_to_join: Поділіться цією URL-адресою з людьми, які хочуть приєднатися
   group_export_modal:
     title: Експортувати дані групи
     body: |

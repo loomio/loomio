@@ -619,6 +619,8 @@ ca:
     theme: Tema
     light: Llum
     dark: Fosc
+    light_blue: Blau clar
+    dark_blue: Blau fosc
   membership_card:
     group_members: Membres del grup
     discussion_members: Membres del fil
@@ -1291,6 +1293,7 @@ ca:
     request_to_join_prompt: Sol·licitud per unir-se
     default_request_to_join_prompt: Gràcies pel vostre interès en el nostre grup. Si us plau, presenteu-vos i expliqueu per què demaneu unir-vos.
     upgrade_for_subgroups: 'Si us plau, <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">actualitza la teva subscripció</a> per crear un subgrup'
+    share_this_url_with_people_who_want_to_join: Comparteix aquesta URL amb les persones que vulguin unir-s'hi
   group_export_modal:
     title: Exporta dades del grup
     body: |

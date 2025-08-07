@@ -615,6 +615,8 @@ fi:
     theme: Teema
     light: Kevyt
     dark: Tumma
+    light_blue: Vaaleansininen
+    dark_blue: Tummansininen
   membership_card:
     group_members: Ryhmän jäsenet
     discussion_members: Viestiketjun jäsenet
@@ -1283,6 +1285,7 @@ fi:
     request_to_join_prompt: Pyydä liittymään
     default_request_to_join_prompt: Kiitos mielenkiinnostasi ryhmäämme kohtaan. Esittele itsesi ja selitä, miksi pyydät liittymistä.
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Päivitä tilauksesi</a> luodaksesi aliryhmän'
+    share_this_url_with_people_who_want_to_join: Jaa tämä URL-osoite niiden kanssa, jotka haluavat liittyä
   group_export_modal:
     title: Vie ryhmätiedot
     body: <p>Voit ladata kopion ryhmäsi tiedoista milloin tahansa. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Lue lisää.</a></p><p> Suorittaminen kestää muutaman minuutin ryhmäsi koosta riippuen. Kun se on valmis, saat sähköpostin, jossa on linkki tiedoston lataamiseen.</p>

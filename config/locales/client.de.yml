@@ -625,6 +625,8 @@ de:
     theme: Thema
     light: Licht
     dark: Dunkel
+    light_blue: Hellblau
+    dark_blue: Dunkelblau
   membership_card:
     group_members: Mitglieder der Gruppe
     discussion_members: Diskussionsteilnehmer
@@ -1299,6 +1301,7 @@ de:
     request_to_join_prompt: Aufforderung zur Teilnahme
     default_request_to_join_prompt: Vielen Dank für Ihr Interesse an unserer Gruppe. Bitte stellen Sie sich vor und erklären Sie, warum Sie Mitglied werden möchten.
     upgrade_for_subgroups: 'Bitte <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">aktualisieren Sie Ihr Abonnement</a> , um eine Untergruppe zu erstellen'
+    share_this_url_with_people_who_want_to_join: Teilen Sie diese URL mit Leuten, die beitreten möchten
   group_export_modal:
     title: Gruppendaten exportieren
     body: |
