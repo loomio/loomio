@@ -2,8 +2,8 @@ class ReportService
   def initialize(interval: 'month', group_ids: nil, start_at: 6.months.ago, end_at: 1.minute.ago)
     @interval = interval
     @group_ids = group_ids
-    @start_at = start_at.utc.at_beginning_of_day
-    @end_at = end_at.utc.at_end_of_day
+    @start_at = start_at
+    @end_at = end_at
     @direct_threads = @group_ids.include?(0)
   end
 
