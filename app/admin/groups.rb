@@ -66,7 +66,8 @@ ActiveAdmin.register Group, as: 'Group' do
   end
 
   show do |group|
-    render 'graph', { group: group }
+    report = ReportService.new(interval: 'week', group_ids: [group.id_and_subgroup_ids], start_at: group.created_at, end_at: 1.minute.ago)
+    render 'graph', { group: group, report: report }
     render 'stats', { group: group }
 
     if defined?(SubscriptionService) && group.subscription_id
