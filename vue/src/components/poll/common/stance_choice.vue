@@ -58,7 +58,7 @@ export default
 <template lang="pug">
 span.poll-common-stance-choice.text-truncate(style="cursor: pointer" :class="'poll-common-stance-choice--' + pollType")
   v-avatar(tile :size="size" v-if='poll.config().has_option_icon')
-    img(:src="'/img/' + pollOption.icon + '.svg'", :alt='optionName')
+    img(:style="{width: size + 'px', height: size + 'px'}" :src="'/img/' + pollOption.icon + '.svg'" :alt='optionName')
   v-chip(v-if='poll.pollOptionNameFormat == "iso8601"' :color="colorFor(stanceChoice.score)")
     poll-meeting-time(:name="optionName")
   span(v-if='!poll.config().has_option_icon && poll.pollOptionNameFormat != "iso8601"')
