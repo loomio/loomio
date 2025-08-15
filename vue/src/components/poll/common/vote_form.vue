@@ -199,6 +199,7 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
 
 .poll-common-vote-form__allow-wrap
   white-space: normal
+  -webkit-line-clamp: none !important;
 
 .poll-common-vote-form__button--none-selected
   opacity: 0.88 !important
