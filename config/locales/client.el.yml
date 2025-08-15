@@ -560,6 +560,10 @@ el:
     from_comment: Από μια διεύθυνση url σχολίου
     from_sequence_id: Από ένα url στοιχείου νήματος
     unread: Καινούργιο για εσάς
+    jump_to: Μετάβαση σε
+    timeline: Χρονολόγιο
+    top: Κορυφή
+    bottom: Κάτω μέρος
   search_modal:
     all_content: Όλο το περιεχόμενο
     best_match: Ταιριάζει καλύτερα

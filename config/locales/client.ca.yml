@@ -564,6 +564,10 @@ ca:
     from_comment: Des de l'url d'un comentari
     from_sequence_id: Des de l'url d'un element del fil
     unread: Nou
+    jump_to: Salta a
+    timeline: Cronologia
+    top: Superior
+    bottom: Part inferior
   search_modal:
     all_content: Tot el contingut
     best_match: Millor coincidència

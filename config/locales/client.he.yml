@@ -560,6 +560,10 @@ he:
     from_comment: מתוך כתובת אתר של תגובה
     from_sequence_id: מתוך כתובת אתר של פריט שרשור
     unread: חדש לך
+    jump_to: קפיצה אל
+    timeline: ציר זמן
+    top: רֹאשׁ
+    bottom: תַחתִית
   search_modal:
     all_content: כל התוכן
     best_match: ההתאמה הטובה ביותר

@@ -560,6 +560,10 @@ ro:
     from_comment: Dintr-o adresă URL de comentariu
     from_sequence_id: Dintr-o adresă URL a articolului de fir
     unread: Nou pentru tine
+    jump_to: Sari la
+    timeline: Cronologie
+    top: Top
+    bottom: Fund
   search_modal:
     all_content: Tot conținutul
     best_match: Cea mai buna potrivire

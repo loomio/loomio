@@ -41,9 +41,9 @@ export default {
     });
 
     if (Session.user().experiences.theme != null) {
-      theme.global.name.value = Session.user().experiences['theme']
+      theme.change(Session.user().experiences['theme']);
     } else {
-      theme.global.name.value = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? AppConfig.theme.default_dark_theme : AppConfig.theme.default_light_theme;
+      theme.change( (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? AppConfig.theme.default_dark_theme : AppConfig.theme.default_light_theme )
     }
   },
 

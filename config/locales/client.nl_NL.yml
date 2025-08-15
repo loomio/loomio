@@ -564,6 +564,10 @@ nl_NL:
     from_comment: Van een reactie url
     from_sequence_id: Van een bord item url
     unread: Nieuw voor jou
+    jump_to: Spring naar
+    timeline: Tijdlijn
+    top: Bovenkant
+    bottom: Onderkant
   search_modal:
     all_content: Alle inhoud
     best_match: Beste overeenkomst

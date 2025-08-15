@@ -560,6 +560,10 @@ sl:
     from_comment: Iz URL-ja komentarja
     from_sequence_id: Iz URL-ja predmeta niti
     unread: Novo za vas
+    jump_to: Skoči na
+    timeline: Časovnica
+    top: Zgoraj
+    bottom: Dno
   search_modal:
     all_content: Vse vsebine
     best_match: Najboljše ujemanje

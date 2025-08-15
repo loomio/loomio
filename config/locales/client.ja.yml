@@ -559,6 +559,10 @@ ja:
     from_comment: コメントURLより
     from_sequence_id: スレッドアイテムのURLから
     unread: 初めての方へ
+    jump_to: ジャンプ
+    timeline: タイムライン
+    top: トップ
+    bottom: 底
   search_modal:
     all_content: すべてのコンテンツ
     best_match: ベストマッチ

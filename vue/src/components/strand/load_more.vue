@@ -24,19 +24,6 @@ export default {
     }
   },
   methods: {
-    // intersectHandler(isVisible){
-    //   if (!isVisible) { return }
-    //   switch (this.direction) {
-    //     case 'before':
-    //       this.loader.focusAttrs = { positionKey: this.obj.event.positionKey };
-    //       this.loader.loadBefore(this.obj);
-    //       break;
-    //     case 'after':
-    //       return this.loader.loadAfter(this.obj)
-    //     case 'children':
-    //       return this.loader.loadChildren(this.obj.event);
-    //   }
-    // },
     loadAndScrollTo() {
       const selector = `.positionKey-${this.obj.event.positionKey}`
       const offset = document.querySelector(`.positionKey-${this.obj.event.positionKey}`).getBoundingClientRect().top

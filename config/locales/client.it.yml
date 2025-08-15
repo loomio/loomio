@@ -572,6 +572,10 @@ it:
     from_comment: Da un URL di commento
     from_sequence_id: Dall'URL di un elemento del thread
     unread: Nuovo per te
+    jump_to: Vai a
+    timeline: Cronologia
+    top: Superiore
+    bottom: Metter il fondo a
   search_modal:
     all_content: Tutti i contenuti
     best_match: Migliore abbinamento

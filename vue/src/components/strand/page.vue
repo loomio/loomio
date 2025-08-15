@@ -206,7 +206,7 @@ export default {
 <template lang="pug">
 .strand-page
   v-main
-    v-container.max-width-800.px-0.px-sm-3(v-if="discussion")
+    v-container.max-width-800.px-0.px-sm-3#strand-page(v-if="discussion")
       //- p(v-if="$route.query.debug" v-for="rule in loader.rules") {{rule}}
       //- p loader: {{loader.focusAttrs}}
       //- p ranges: {{discussion.ranges}}

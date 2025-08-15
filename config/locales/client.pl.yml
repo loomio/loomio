@@ -564,6 +564,10 @@ pl:
     from_comment: Z adresu URL komentarza
     from_sequence_id: Z adresu URL elementu wątku
     unread: Nowe dla Ciebie
+    jump_to: Przejdź do
+    timeline: Oś czasu
+    top: Szczyt
+    bottom: Spód
   search_modal:
     all_content: Cała zawartość
     best_match: Najlepszy mecz

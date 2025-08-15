@@ -560,6 +560,10 @@ ru:
     from_comment: Из URL-адреса комментария
     from_sequence_id: Из URL-адреса темы
     unread: Новое для вас
+    jump_to: Перейти к
+    timeline: Хронология
+    top: Вершина
+    bottom: Нижний
   search_modal:
     all_content: Весь контент
     best_match: Лучший матч

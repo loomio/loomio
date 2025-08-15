@@ -616,7 +616,12 @@ en:
       groups_list: Groups
       user_list: User actions
   strand_nav:
+    jump_to: Jump to
+    timeline: Timeline
+    top: Top
+    bottom: Bottom
     newest: Newest
+    unread: Unread
     oldest: Oldest
     newest_first: Newest first
     oldest_first: Oldest first
@@ -624,7 +629,6 @@ en:
     whole_thread: The whole thread
     from_comment: From a comment url
     from_sequence_id: From a thread item url
-    unread: New to you
   search_modal:
     all_content: All content
     best_match: Best match

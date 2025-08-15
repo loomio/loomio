@@ -560,6 +560,10 @@ sv:
     from_comment: Från en kommentars-url
     from_sequence_id: Från en webbadress för trådobjekt
     unread: Nytt för dig
+    jump_to: Hoppa till
+    timeline: Tidslinje
+    top: Bästa
+    bottom: Botten
   search_modal:
     all_content: Allt innehåll
     best_match: Bästa matchningen

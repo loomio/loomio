@@ -565,6 +565,10 @@ uk:
     from_comment: З URL-адреси коментаря
     from_sequence_id: З URL-адреси допису в темі
     unread: Новинка для вас
+    jump_to: Перейти до
+    timeline: Хронологія
+    top: Верх
+    bottom: Дно
   search_modal:
     all_content: Весь контент
     best_match: Найкращий матч

@@ -564,6 +564,10 @@ es:
     from_comment: Desde un comentario url
     from_sequence_id: Desde un elemento hilo url
     unread: Nuevo para ti
+    jump_to: Saltar a
+    timeline: Cronología
+    top: Arriba
+    bottom: Abajo
   search_modal:
     all_content: Todo el contenido
     best_match: Mejor partido

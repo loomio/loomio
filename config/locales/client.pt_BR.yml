@@ -572,6 +572,10 @@ pt_BR:
     from_comment: A partir de um URL de comentário
     from_sequence_id: A partir de um URL de item de discussão
     unread: Novo para você
+    jump_to: Pular para
+    timeline: Linha do tempo
+    top: Principal
+    bottom: Fundo
   search_modal:
     all_content: Todo o conteúdo
     best_match: Melhor partida

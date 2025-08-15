@@ -570,6 +570,10 @@ de:
     from_comment: Von einer Kommentar URL
     from_sequence_id: Von einer Diskussionsbeitrag URL
     unread: Neu für Dich
+    jump_to: Springen zu
+    timeline: Zeitleiste
+    top: Spitze
+    bottom: Unten
   search_modal:
     all_content: Alle Inhalte
     best_match: Bester Treffer

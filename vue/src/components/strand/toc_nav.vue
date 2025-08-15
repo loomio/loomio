@@ -3,10 +3,10 @@ import EventBus from '@/shared/services/event_bus';
 import Records from '@/shared/services/records';
 import WatchRecords from '@/mixins/watch_records';
 import UrlFor from '@/mixins/url_for';
-import { sortBy } from 'lodash-es';
+import { sortBy, last } from 'lodash-es';
 import ScrollService from '@/shared/services/scroll_service';
 import Session        from '@/shared/services/session';
-
+import { mdiLightningBolt, mdiMessageBadgeOutline, mdiArrowUpThin, mdiArrowDownThin } from '@mdi/js';
 
 export default {
   mixins: [WatchRecords, UrlFor],
@@ -17,6 +17,10 @@ export default {
 
   data() {
     return {
+      mdiLightningBolt,
+      mdiMessageBadgeOutline,
+      mdiArrowUpThin,
+      mdiArrowDownThin,
       open: null,
       items: [],
       visibleKeys: [],
@@ -31,9 +35,23 @@ export default {
   },
 
   methods: {
+    scrollToNewest() {
+      ScrollService.scrollTo(`.sequenceId-${this.discussion.lastSequenceId()}`);
+    },
+    scrollToUnread() {
+      ScrollService.scrollTo(`.sequenceId-${this.loader.firstUnreadSequenceId()}`);
+    },
+    scrollToTop() {
+      ScrollService.scrollTo('#strand-page');
+    },
+    scrollToBottom() {
+      ScrollService.scrollTo(`.positionKey-${last(this.items).key}`);
+    },
+
     scrollToSequenceId(id) {
       ScrollService.scrollTo(`.sequenceId-${id}`);
     },
+
     buildItems(bootData) {
       const itemsHash = {};
 
@@ -178,7 +196,13 @@ export default {
 
 <template lang="pug">
 v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion" v-model="open" :permanent="$vuetify.display.mdAndUp"  app fixed location="right" clipped color="background" floating)
-  div.mt-12
+  v-list(nav density="compact" :lines="false")
+    v-list-subheader(v-t="'strand_nav.jump_to'")
+    v-list-item(nav :prepend-icon="mdiArrowUpThin" :title="$t('strand_nav.top')" @click="scrollToTop")
+    v-list-item(:prepend-icon="mdiMessageBadgeOutline" :title="$t('strand_nav.unread')" @click="scrollToUnread" :to="baseUrl+'/'+loader.firstUnreadSequenceId()" v-if="loader.firstUnreadSequenceId()")
+    v-list-item(:prepend-icon="mdiLightningBolt" :title="$t('strand_nav.newest')" @click="scrollToNewest" :to="baseUrl+'/'+discussion.lastSequenceId()")
+    v-list-item(:prepend-icon="mdiArrowDownThin" :title="$t('strand_nav.bottom')" @click="scrollToBottom")
+    v-list-subheader(v-t="'strand_nav.timeline'")
   div.strand-nav__toc
     //- | {{items}}
     router-link.strand-nav__entry.text-caption(

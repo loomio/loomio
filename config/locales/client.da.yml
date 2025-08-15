@@ -560,6 +560,10 @@ da:
     from_comment: Fra en kommentar-url
     from_sequence_id: Fra en url for et trådelement
     unread: Nyt for dig
+    jump_to: Gå til
+    timeline: Tidslinje
+    top: Top
+    bottom: Bund
   search_modal:
     all_content: Alt indhold
     best_match: Bedste match

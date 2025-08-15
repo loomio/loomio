@@ -572,6 +572,10 @@ fr:
     from_comment: Depuis un lien hypertexte en commentaire
     from_sequence_id: Depuis un lien hypertexte d'un élément de discussion
     unread: Nouveau pour vous
+    jump_to: Aller à
+    timeline: Chronologie
+    top: Haut
+    bottom: Bas
   search_modal:
     all_content: Tout le contenu
     best_match: Meilleure correspondance

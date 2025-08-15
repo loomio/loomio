@@ -562,6 +562,10 @@ hu:
     from_comment: Egy megjegyzés URL-jéből
     from_sequence_id: Egy szál elem URL-jéről
     unread: Új neked
+    jump_to: 'Ugrás ide:'
+    timeline: Idővonal
+    top: Felső
+    bottom: Alsó
   search_modal:
     all_content: Minden tartalom
     best_match: Legjobb találat

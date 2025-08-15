@@ -560,6 +560,10 @@ fi:
     from_comment: Kommentin URL-osoitteesta
     from_sequence_id: Säikeen kohteen URL-osoitteesta
     unread: Uutta sinulle
+    jump_to: Siirry kohtaan
+    timeline: Aikajana
+    top: Yläosa
+    bottom: Pohja
   search_modal:
     all_content: Kaikki sisältö
     best_match: Paras ottelu

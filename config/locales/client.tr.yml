@@ -560,6 +560,10 @@ tr:
     from_comment: Bir yorum URL'sinden
     from_sequence_id: Bir iş parçacığı öğesi URL'sinden
     unread: Senin için yeni
+    jump_to: Atla
+    timeline: Zaman çizelgesi
+    top: Tepe
+    bottom: Alt
   search_modal:
     all_content: Tüm içerik
     best_match: En iyi eşleşme

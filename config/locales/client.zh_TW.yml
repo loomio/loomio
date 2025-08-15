@@ -570,6 +570,10 @@ zh_TW:
     from_comment: 從留言 URL
     from_sequence_id: 從討論串項目 URL
     unread: 對您來說是新的
+    jump_to: 跳至
+    timeline: 時間軸
+    top: 頂部
+    bottom: 底部
   search_modal:
     all_content: 所有內容
     best_match: 最佳匹配
