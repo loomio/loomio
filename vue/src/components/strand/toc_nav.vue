@@ -196,26 +196,27 @@ export default {
 
 <template lang="pug">
 v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion" v-model="open" :permanent="$vuetify.display.mdAndUp"  app fixed location="right" clipped color="background" floating)
-  v-list(nav density="compact" :lines="false")
-    v-list-subheader(v-t="'strand_nav.jump_to'")
-    v-list-item(nav :prepend-icon="mdiArrowUpThin" :title="$t('strand_nav.top')" @click="scrollToTop")
-    v-list-item(:prepend-icon="mdiMessageBadgeOutline" :title="$t('strand_nav.unread')" @click="scrollToUnread" :to="baseUrl+'/'+loader.firstUnreadSequenceId()" v-if="loader.firstUnreadSequenceId()")
-    v-list-item(:prepend-icon="mdiLightningBolt" :title="$t('strand_nav.newest')" @click="scrollToNewest" :to="baseUrl+'/'+discussion.lastSequenceId()")
-    v-list-item(:prepend-icon="mdiArrowDownThin" :title="$t('strand_nav.bottom')" @click="scrollToBottom")
-    v-list-subheader(v-t="'strand_nav.timeline'")
-  div.strand-nav__toc
-    //- | {{items}}
-    router-link.strand-nav__entry.text-caption(
-      :class="{'strand-nav__entry--visible': item.visible, 'strand-nav__entry--selected': (item.sequenceId == selectedSequenceId || item.commentId == selectedCommentId), 'strand-nav__entry--unread': isSignedIn && item.unread}"
-      :style="{'border-width': (item.depth * 2)+'px'}"
-      v-for="item in items"
-      :key="item.key"
-      :to="baseUrl+'/'+item.sequenceId"
-      @click="scrollToSequenceId(item.sequenceId)")
-        .strand-nav__stance-icon-container(v-if="item.poll && item.poll.showResults()")
-          poll-common-icon-panel.poll-proposal-chart-panel__chart.mr-1(:poll="item.poll" show-my-stance :size="18" :stanceSize="12")
-        //- span {{item.key}}
-        span {{item.title}}
+  template(v-if="items.length > 1")
+    v-list(nav density="compact" :lines="false")
+      v-list-subheader(v-t="'strand_nav.jump_to'")
+      v-list-item(nav :prepend-icon="mdiArrowUpThin" :title="$t('strand_nav.top')" @click="scrollToTop")
+      v-list-item(:prepend-icon="mdiMessageBadgeOutline" :title="$t('strand_nav.unread')" @click="scrollToUnread" :to="baseUrl+'/'+loader.firstUnreadSequenceId()" v-if="loader.firstUnreadSequenceId()")
+      v-list-item(:prepend-icon="mdiLightningBolt" :title="$t('strand_nav.newest')" @click="scrollToNewest" :to="baseUrl+'/'+discussion.lastSequenceId()")
+      v-list-item(:prepend-icon="mdiArrowDownThin" :title="$t('strand_nav.bottom')" @click="scrollToBottom")
+      v-list-subheader(v-t="'strand_nav.timeline'")
+    div.strand-nav__toc
+      //- | {{items}}
+      router-link.strand-nav__entry.text-caption(
+        :class="{'strand-nav__entry--visible': item.visible, 'strand-nav__entry--selected': (item.sequenceId == selectedSequenceId || item.commentId == selectedCommentId), 'strand-nav__entry--unread': isSignedIn && item.unread}"
+        :style="{'border-width': (item.depth * 2)+'px'}"
+        v-for="item in items"
+        :key="item.key"
+        :to="baseUrl+'/'+item.sequenceId"
+        @click="scrollToSequenceId(item.sequenceId)")
+          .strand-nav__stance-icon-container(v-if="item.poll && item.poll.showResults()")
+            poll-common-icon-panel.poll-proposal-chart-panel__chart.mr-1(:poll="item.poll" show-my-stance :size="18" :stanceSize="12")
+          //- span {{item.key}}
+          span {{item.title}}
 </template>
 
 <style lang="sass">
