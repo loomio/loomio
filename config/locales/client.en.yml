@@ -1931,6 +1931,7 @@ en:
     reason_placeholder: Briefly explain why you voted this way, then click 'Submit Vote'
     message: Message
     results: Results
+    view_all_votes: View all votes
     current_results: Current results
     responses: Responses
     close_poll_type: Close %{pollType}
