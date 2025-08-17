@@ -179,7 +179,8 @@ v-card.search-modal(:title="$t('common.action.search')")
   v-card-text
     .d-flex.align-center
       v-text-field(
-        :prepend-inner-icon="mdiMagnify"
+        :append-inner-icon="mdiMagnify"
+        @click:append-inner="fetch"
         color="info"
         variant="solo-filled"
         :loading="loading"
@@ -187,7 +188,7 @@ v-card.search-modal(:title="$t('common.action.search')")
         v-model="query"
         @keydown.enter.prevent="fetch"
         hide-details
-        )
+      )
 
     .d-flex.align-center.pt-4
       v-select.mr-2(variant="solo-filled" density="compact" v-model="orgId" :items="orgItems")
