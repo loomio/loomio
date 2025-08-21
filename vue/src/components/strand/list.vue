@@ -13,7 +13,8 @@ export default {
     collection: {
       type: Array,
       required: true
-    }
+    },
+    focusSelector: String
   },
 
   data() {
@@ -52,12 +53,9 @@ export default {
   },
 
   methods: {
-    classes(event) {
-      if (!event) { return []; }
-      return ["lmo-action-dock-wrapper",
-       `positionKey-${event.positionKey}`,
-       `sequenceId-${event.sequenceId || 0}`,
-       `position-${event.position}`];
+    isFocused(event) {
+      return  this.focusSelector == `.sequenceId-${event.sequenceId || 0}` ||
+        (event.eventableType === 'Comment' && this.focusSelector == `.comment-${event.eventableId || 0}`);
     }
   }
 };
@@ -103,12 +101,17 @@ export default {
                 :size="(obj.event.depth > 1) ? 28 : 32"
                 no-link
               )
-          stem-wrapper(:loader="loader" :obj="obj")
+          stem-wrapper(:loader="loader" :obj="obj" :focused="isFocused(obj.event)")
         .strand-item__main
-          intersection-wrapper(:loader="loader" :obj="obj")
+          intersection-wrapper(:loader="loader" :obj="obj" :focused="isFocused(obj.event)")
           .strand-list__children(v-if="obj.event.childCount && (!obj.eventable.isA('stance') || obj.eventable.poll().showResults())")
             strand-load-more(v-if="obj.children.length == 0" direction="children" :obj="obj" :loader="loader")
-            strand-list.flex-grow-1(:loader="loader" :collection="obj.children" :newest-first="obj.event.kind == 'new_discussion' && loader.discussion.newestFirst")
+            strand-list.flex-grow-1(
+              :loader="loader"
+              :collection="obj.children"
+              :newest-first="obj.event.kind == 'new_discussion' && loader.discussion.newestFirst"
+              :focusSelector="focusSelector"
+            )
           reply-form(:eventId="obj.event.id")
 
       .strand-item__row(v-if="newestFirst && obj.missingEarlierCount" )
@@ -182,10 +185,10 @@ export default {
   background-repeat: repeat-y
 
 .strand-item__stem--unread
-  background-color: rgb(var(--v-theme-primary)) !important
+  background-color: rgba(var(--v-theme-primary), 0.80) !important
 
 .strand-item__stem--focused
-  background-color: rgb(var(--v-theme-primary)) !important
+  background-color: rgb(var(--v-theme-secondary)) !important
 
 .strand-item__circle
   display: flex

@@ -9,7 +9,8 @@ import Session from '@/shared/services/session';
 export default {
   props: {
     event: Object,
-    eventable: Object
+    eventable: Object,
+    focused: Boolean,
   },
 
   data() {
@@ -44,7 +45,7 @@ export default {
 
 <template lang="pug">
 section.strand-item__new-comment.new-comment(:id="'comment-'+ eventable.id")
-  strand-item-headline(:event="event" :eventable="eventable")
+  strand-item-headline(:event="event" :eventable="eventable" :focused="focused")
   formatted-text.thread-item__body.new-comment__body(:model="eventable" column="body")
   link-previews(:model="eventable")
   document-list(:model='eventable')

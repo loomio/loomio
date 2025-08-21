@@ -69,10 +69,9 @@ class Api::V1::EventsController < Api::V1::RestfulController
       records = records.where("#{order} >= ?", from)
     end
 
-    if params[:unread] == 'true'
-      reader = DiscussionReader.for(user: current_user, discussion: @discussion)
-      # could also be where in unread_ranges, but there is a bug on http://localhost:8080/s/njwV5RpS
-      records = records.where.not(sequence_id: reader.read_ranges.map{ |range| range[0]..range[1] })
+    if params[:sequence_id_not_in]
+      ranges = params[:sequence_id_not_in].split('_').map { |range| range.split('-').map(&:to_i) }.map { |range| range[0]..range[1] }
+      records = records.where.not(sequence_id: ranges)
     end
 
     if params[:pinned] == 'true'
@@ -85,8 +84,6 @@ class Api::V1::EventsController < Api::V1::RestfulController
 
     %w(parent_id depth sequence_id position position_key).each do |name|
       records = records.where(name => params[name]) if params[name]
-      # records = records.where("#{name} >= ?", params["min_#{name}"]) if params["min_#{name}"]
-      # records = records.where("#{name} <= ?", params["max_#{name}"]) if params["max_#{name}"]
       records = records.where("#{name} = ?", params["#{name}"]) if params["#{name}"]
       records = records.where("#{name} < ?", params["#{name}_lt"]) if params["#{name}_lt"]
       records = records.where("#{name} > ?", params["#{name}_gt"]) if params["#{name}_gt"]
@@ -94,19 +91,11 @@ class Api::V1::EventsController < Api::V1::RestfulController
       records = records.where("#{name} >= ?", params["#{name}_gte"]) if params["#{name}_gte"]
       records = records.where("#{name} like ?", params["#{name}_sw"]+"%") if params["#{name}_sw"]
     end
-    # records = records.where("position_key like ?", params["position_key_sw"]+"%") if params["position_key_sw"]
     records
   end
 
   def page_collection(collection)
-    if params[:until_sequence_id_of_position]
-      position = [params[:until_sequence_id_of_position].to_i, @discussion.created_event.child_count].min
-      event = Event.find_by!(discussion: @discussion, depth: 1, position: position)
-      max_sequence_id = event.sequence_id + event.child_count
-      collection.where("sequence_id <= ?", max_sequence_id).order('depth, position').limit(per)
-    else
-      collection.order(order).limit(per)
-    end
+    collection.order(order).limit(per)
   end
 
   def default_page_size

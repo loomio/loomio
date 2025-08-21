@@ -1,11 +1,18 @@
 <script lang="js">
 import ScrollService from '@/shared/services/scroll_service';
+import { mdiArrowExpandVertical } from '@mdi/js';
 
 export default {
   props: {
     direction: String,
     obj: Object,
     loader: Object,
+  },
+
+  data() {
+    return {
+      mdiArrowExpandVertical
+    };
   },
 
   computed: {
@@ -49,11 +56,12 @@ export default {
 <template lang="pug">
 //.strand-item__load-more(v-intersect.once="{handler: intersectHandler}")
 .strand-item__load-more
-  v-btn.action-button(block variant="tonal" @click="loadAndScrollTo" :loading="loading")
+  v-btn.action-button(block variant="outlined" color="info" @click="loadAndScrollTo" :loading="loading" size="x-large")
+    v-icon.mr-2(:icon="mdiArrowExpandVertical")
     span(v-t="label")
     //space
-    //| {{direction}}
-    //| {{this.obj.event.positionKey}}
+    //span {{direction}}
+    //span {{this.obj.event.positionKey}}
 </template>
 
 <style lang="sass">

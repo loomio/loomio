@@ -582,8 +582,6 @@ en:
     private_privacy_notice: Your comment will only be visible to members of %{groupName}.
     public_privacy_notice: Your comment will be visible to anyone on the web.
     sign_in: Sign in to participate
-  thread_nav:
-    participants: Participants
   sidebar:
     user_settings: User settings
     new_thread_removed: New thread removed
@@ -619,15 +617,16 @@ en:
     timeline: Timeline
     top: Top
     bottom: Bottom
+    latest: Latest
     newest: Newest
     unread: Unread
     oldest: Oldest
     newest_first: Newest first
     oldest_first: Oldest first
-    all_pinned: All pinned items
-    whole_thread: The whole thread
-    from_comment: From a comment url
-    from_sequence_id: From a thread item url
+    showing_latest_activity: Showing the latest activity in the thread
+    showing_unread_activity: Showing the earliest activity you haven’t seen yet
+    add_comment: Add comment
+    start_decision: Start decision
   search_modal:
     all_content: All content
     best_match: Best match

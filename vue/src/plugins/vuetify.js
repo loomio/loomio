@@ -36,6 +36,7 @@ export default createVuetify({
         colors: {
           background: "#fcf6eb",
           primary:  colors.goldDark1,
+          secondary: colors.ink,
           info:  colors.skyDark1,
           anchor:  colors.goldDark1,
         },

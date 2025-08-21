@@ -1,14 +1,14 @@
 <script lang="js">
 import { eventHeadline, eventTitle, eventPollType } from '@/shared/helpers/helptext';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
-import Records from '@/shared/services/records';
 
 export default {
   props: {
     event: Object,
     eventable: Object,
     collapsed: Boolean,
-    dateTime: Date
+    dateTime: Date,
+    focused: Boolean,
   },
 
   computed: {

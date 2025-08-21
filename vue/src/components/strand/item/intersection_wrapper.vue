@@ -16,6 +16,7 @@ export default {
   props: {
     loader: Object,
     obj: Object,
+    focused: Boolean,
   },
 
   components: {
@@ -42,12 +43,12 @@ export default {
     },
     classes(event) {
       if (!event) { return []; }
-      return ["lmo-action-dock-wrapper",
-       `positionKey-${event.positionKey}`,
-       `sequenceId-${event.sequenceId || 0}`,
-       `position-${event.position}`];
+      return [
+        "lmo-action-dock-wrapper",
+        `positionKey-${event.positionKey}`,
+        `sequenceId-${event.sequenceId || 0}`
+      ];
     }
-
   }
 };
 
@@ -56,6 +57,6 @@ export default {
 <template lang="pug">
 div.strand_item__intersection-container(:class="classes(obj.event)" v-intersect="{handler: (isVisible) => loader.setVisible(isVisible, obj.event)}")
   strand-item-removed(v-if="obj.eventable && obj.eventable.discardedAt" :event="obj.event" :eventable="obj.eventable")
-  component(v-else :is="componentForKind(obj.event.kind)" :event='obj.event' :eventable="obj.eventable" )
+  component(v-else :is="componentForKind(obj.event.kind)" :event='obj.event' :eventable="obj.eventable" :focused="focused" )
 
 </template>
