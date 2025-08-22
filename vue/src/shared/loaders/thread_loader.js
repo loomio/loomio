@@ -82,23 +82,7 @@ export default class ThreadLoader {
   //   });
   // }
 
-  loadChildren(event) {
-    this.loading = 'children' + event.id;
-    this.addLoadChildrenRule(event);
-    return this.fetch();
-  }
 
-  loadAfter(event) {
-    this.loading = 'after' + event.id;
-    this.addLoadAfterRule(event);
-    return this.fetch();
-  }
-
-  loadBefore(event) {
-    this.loading = 'before' + event.id;
-    this.addLoadBeforeRule(event);
-    return this.fetch();
-  }
 
   addLoadAfterRule(event) {
     this.addRule({
@@ -129,7 +113,7 @@ export default class ThreadLoader {
         find: {
           discussionId: this.discussion.id,
           positionKey: {
-            $jlt: event.positionKey
+            $jlt: event.positionKey,
           }
         },
         sortByPositionKeyDesc: true,
@@ -145,14 +129,64 @@ export default class ThreadLoader {
     });
   }
 
-  addLoadChildrenRule(event) {
+  addLoadBeforePrefixedRule(event, positionKeyPrefix) {
+    return this.addRule({
+      name: `load before ${event.positionKey}`,
+      local: {
+        find: {
+          discussionId: this.discussion.id,
+          positionKey: {
+            $jlt: event.positionKey,
+            $regex: `^${positionKeyPrefix}`
+          }
+        },
+        sortByPositionKeyDesc: true,
+        limit: this.padding
+      },
+      remote: {
+        discussion_id: this.discussion.id,
+        position_key_lt: event.positionKey,
+        position_key_sw: positionKeyPrefix,
+        order_by: 'position_key',
+        order_desc: 1,
+        per: this.padding
+      }
+    });
+  }
+
+  addLoadAfterPrefixedRule(event, positionKeyPrefix) {
+    this.addRule({
+      name: `load more from next sibling ${event.positionKey}`,
+      local: {
+        find: {
+          discussionId: this.discussion.id,
+          positionKey: {
+            $jgte: event.nextSiblingPositionKey(),
+            $regex: `^${positionKeyPrefix}`
+          }
+        },
+        sortByPositionKey: true,
+        limit: this.padding
+      },
+      remote: {
+        discussion_id: this.discussion.id,
+        position_key_gte: event.nextSiblingPositionKey(),
+        position_key_sw: positionKeyPrefix,
+        order_by: 'position_key',
+        per: this.padding
+      }
+    });
+  }
+
+  addLoadChildrenRule(event, positionKeyPrefix) {
     this.addRule({
       name: `load more from current ${event.positionKey}`,
       local: {
         find: {
           discussionId: this.discussion.id,
           positionKey: {
-            $jgt: event.positionKey
+            $jgt: event.positionKey,
+            $regex: `^${positionKeyPrefix}`
           }
         },
         sortByPositionKey: true,
@@ -161,6 +195,7 @@ export default class ThreadLoader {
       remote: {
         discussion_id: this.discussion.id,
         position_key_gt: event.positionKey,
+        position_key_sw: positionKeyPrefix,
         order_by: 'position_key',
         per: this.padding
       }

@@ -7,13 +7,16 @@ import FormatDate from '@/mixins/format_date';
 import WatchRecords from '@/mixins/watch_records';
 import UrlFor from '@/mixins/url_for';
 import StrandActionsPanel from './actions_panel';
+import ScrollService from '@/shared/services/scroll_service';
 import { mdiMap } from '@mdi/js';
 
 export default {
-  mixins: [FormatDate, WatchRecords, UrlFor],
+  mixins: [WatchRecords, UrlFor],
+
   components: {
     StrandActionsPanel
   },
+
   data() {
     return {
       mdiMap,
@@ -24,12 +27,24 @@ export default {
       discussionFetchError: null,
       focusHelp: null,
       focusSelector: null,
+      focusOffset: null,
       lastFocusSelector: null,
       snackbar: false
     };
   },
 
-  mounted() { this.init(); },
+  mounted() {
+    EventBus.$on('setFocus', (selector, offset) => {
+      console.log('setFocus', selector, offset);
+      this.focusSelector = selector;
+      this.focusOffset = offset;
+    });
+    this.init();
+  },
+
+  destroyed() {
+    EventBus.$off('setFocus');
+  },
 
   watch: {
     '$route.params.key': 'init',
@@ -65,7 +80,12 @@ export default {
         this.watchRecords({
           key: 'strand'+this.discussion.id,
           collections: ['events'],
-          query: () => this.loader.updateCollection()
+          query: () => {
+            this.loader.updateCollection();
+            console.log('Collection updated');
+            this.$nextTick(() => this.scrollToFocusUnlessFocused());
+            setTimeout(() => this.refocusIfOffscreen(), 1000);
+          }
         });
       }).catch(function(error) {
         EventBus.$emit('pageError', error);
@@ -78,6 +98,7 @@ export default {
       if (this.discussion.key !== this.$route.params.key) { return; }
 
       this.focusSelector = null;
+      this.focusOffset = 64;
       this.focusHelp = null;
 
       this.loader.addContextRule();
@@ -148,30 +169,27 @@ export default {
         this.focusSelector = '.actions-panel-end';
       }
 
-      // this.scrollToFocusIfPresent();
+      this.scrollToFocusIfPresent();
 
-      this.loader.fetch().finally(() => {
-        setTimeout(() => this.scrollToFocusUnlessFocused());
-      }).catch(res => {
-        console.log('promises failed', res);
-      });
+      this.loader.fetch();
     },
 
     scrollToFocusIfPresent() {
       if (document.querySelector(this.focusSelector)) {
-        this.scrollTo(this.focusSelector);
-        this.lastFocusSelector = this.focusSelector;
+        ScrollService.scrollTo(this.focusSelector, this.focusOffset);
       }
     },
 
     scrollToFocusUnlessFocused() {
       if (this.lastFocusSelector !== this.focusSelector) {
-        this.scrollTo(this.focusSelector);
+        console.log('scrolling to ', this.focusSelector, this.focusOffset);
+        ScrollService.scrollTo(this.focusSelector, this.focusOffset);
         this.lastFocusSelector = this.focusSelector;
       }
     },
 
     elementInView(el) {
+      if (!el) { return false };
       const rect = el.getBoundingClientRect();
       return ((rect.top >= 0) && (rect.left >= 0) &&
        (rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)) &&
@@ -184,7 +202,7 @@ export default {
          (el = document.querySelector(this.lastFocusSelector) &&
          !this.elementInView(el))) {
         console.log(`refocusing ${this.lastFocusSelector}`);
-        this.scrollTo(this.lastFocusSelector);
+        ScrollService.jumpTo(this.lastFocusSelector, this.focusOffset);
       }
     },
   }

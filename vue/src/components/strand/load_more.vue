@@ -1,5 +1,5 @@
 <script lang="js">
-import ScrollService from '@/shared/services/scroll_service';
+import EventBus from '@/shared/services/event_bus';
 import { mdiArrowExpandVertical } from '@mdi/js';
 
 export default {
@@ -11,7 +11,8 @@ export default {
 
   data() {
     return {
-      mdiArrowExpandVertical
+      mdiArrowExpandVertical,
+      loading: false
     };
   },
 
@@ -26,28 +27,43 @@ export default {
           return {path: 'common.action.count_more', args: {count: this.obj.missingChildCount}};
       }
     },
-    loading() {
-      return this.loader.loading == this.direction + this.obj.event.id;
-    }
   },
   methods: {
     loadAndScrollTo() {
       const selector = `.positionKey-${this.obj.event.positionKey}`
       const offset = document.querySelector(`.positionKey-${this.obj.event.positionKey}`).getBoundingClientRect().top
-      this.load().finally(() => {
-        ScrollService.jumpTo(selector, offset);
-      });
+      EventBus.$emit('setFocus', selector, offset);
+      this.load();
     },
 
     load() {
+      const event = this.obj.event;
+      this.loading = true;
       switch (this.direction) {
         case 'before':
-          return this.loader.loadBefore(this.obj.event);
+          if (event.depth > 1) {
+            const prefix = event.positionKey.split('-').slice(0, event.depth - 1).join('-');
+            this.loader.addLoadBeforePrefixedRule(this.obj.event, prefix);
+          } else {
+            this.loader.addLoadBeforeRule(this.obj.event);
+          }
+          break;
         case 'after':
-          return this.loader.loadAfter(this.obj.event);
+          if (event.depth > 1) {
+            const prefix = event.positionKey.split('-').slice(0, event.depth - 1).join('-');
+            this.loader.addLoadAfterPrefixedRule(this.obj.event, prefix);
+          } else {
+            this.loader.addLoadAfterRule(this.obj.event);
+          }
+          break;
         case 'children':
-          return this.loader.loadChildren(this.obj.event);
+          const prefix = event.positionKey.split('-').slice(0, event.depth - 1).join('-');
+          this.loader.addLoadChildrenRule(event, prefix);
+          break;
       }
+      this.loader.fetch().finally(() => {
+        this.loading = false;
+      });
     }
   }
 };
@@ -59,9 +75,10 @@ export default {
   v-btn.action-button(block variant="outlined" color="info" @click="loadAndScrollTo" :loading="loading" size="x-large")
     v-icon.mr-2(:icon="mdiArrowExpandVertical")
     span(v-t="label")
-    //space
-    //span {{direction}}
-    //span {{this.obj.event.positionKey}}
+    space
+    span depth: {{this.obj.event.depth}}
+    span {{direction}}
+    span {{this.obj.event.positionKey}}
 </template>
 
 <style lang="sass">
