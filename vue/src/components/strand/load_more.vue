@@ -6,7 +6,7 @@ export default {
   props: {
     direction: String,
     obj: Object,
-    loader: Object,
+    loader: Object
   },
 
   data() {
@@ -30,9 +30,10 @@ export default {
   },
   methods: {
     loadAndScrollTo() {
-      const selector = `.positionKey-${this.obj.event.positionKey}`
-      const offset = document.querySelector(`.positionKey-${this.obj.event.positionKey}`).getBoundingClientRect().top
-      EventBus.$emit('setFocus', selector, offset);
+      const anchorObj = this.direction == "before" ?  this.obj.previousObj : this.obj
+      const selector = `.positionKey-${anchorObj.event.positionKey}`
+      const offset = document.querySelector(`.positionKey-${anchorObj.event.positionKey}`).getBoundingClientRect().top
+      EventBus.$emit('setAnchor', selector, offset);
       this.load();
     },
 
@@ -41,24 +42,27 @@ export default {
       this.loading = true;
       switch (this.direction) {
         case 'before':
-          if (event.depth > 1) {
-            const prefix = event.positionKey.split('-').slice(0, event.depth - 1).join('-');
-            this.loader.addLoadBeforePrefixedRule(this.obj.event, prefix);
-          } else {
-            this.loader.addLoadBeforeRule(this.obj.event);
-          }
+          this.loader.addLoadArgsRule({
+            position_key_lt: event.positionKey,
+            position_key_sw: event.positionKeyParent(),
+            position_key_gte: event.depth > 1 ? event.positionKeyMinus(this.obj.missingEarlierCount) : undefined,
+            order_by: 'position_key',
+            order_desc: 1,
+          });
           break;
         case 'after':
-          if (event.depth > 1) {
-            const prefix = event.positionKey.split('-').slice(0, event.depth - 1).join('-');
-            this.loader.addLoadAfterPrefixedRule(this.obj.event, prefix);
-          } else {
-            this.loader.addLoadAfterRule(this.obj.event);
-          }
+          this.loader.addLoadArgsRule({
+            position_key_sw: event.positionKeyParent(),
+            position_key_gte: event.nextSiblingPositionKey(),
+            order_by: 'position_key'
+          })
           break;
         case 'children':
-          const prefix = event.positionKey.split('-').slice(0, event.depth - 1).join('-');
-          this.loader.addLoadChildrenRule(event, prefix);
+          this.loader.addLoadArgsRule({
+            position_key_sw: event.positionKey,
+            position_key_gt: event.positionKey,
+            order_by: 'position_key'
+          })
           break;
       }
       this.loader.fetch().finally(() => {
@@ -75,10 +79,6 @@ export default {
   v-btn.action-button(block variant="outlined" color="info" @click="loadAndScrollTo" :loading="loading" size="x-large")
     v-icon.mr-2(:icon="mdiArrowExpandVertical")
     span(v-t="label")
-    space
-    span depth: {{this.obj.event.depth}}
-    span {{direction}}
-    span {{this.obj.event.positionKey}}
 </template>
 
 <style lang="sass">

@@ -1,5 +1,5 @@
 import Records from '@/shared/services/records';
-import { some, last, cloneDeep, max, uniq, compact, orderBy } from 'lodash-es';
+import { some, last, cloneDeep, max, uniq, compact, orderBy, pickBy } from 'lodash-es';
 import { reactive } from 'vue';
 import RangeSet         from '@/shared/services/range_set';
 import EventBus         from '@/shared/services/event_bus';
@@ -21,7 +21,7 @@ export default class ThreadLoader {
     this.collapsed = reactive({});
     this.loading = false;
     this.firstLoad = false
-    this.padding = 50;
+    this.padding = 20;
   }
 
   clearRules() {
@@ -67,138 +67,33 @@ export default class ThreadLoader {
     return this.collapsed[event.id] = false;
   }
 
-  // loadEverything() {
-  //   this.loading = true;
-  //   return this.addRuleAndFetch({
-  //     local: {
-  //       find: {
-  //         discussionId: this.discussion.id
-  //       }
-  //     },
-  //     remote: {
-  //       discussion_id: this.discussion.id,
-  //       per: 1000
-  //     }
-  //   });
-  // }
-
-
-
-  addLoadAfterRule(event) {
+  addLoadArgsRule(args) {
     this.addRule({
-      name: `load more from next sibling ${event.positionKey}`,
+      name: `addLoadArgsRule`,
       local: {
-        find: {
+        find: pickBy({
           discussionId: this.discussion.id,
-          positionKey: {
-            $jgte: event.nextSiblingPositionKey()
-          }
-        },
-        sortByPositionKey: true,
+          positionKey: pickBy({
+            $jlt: args.position_key_lt,
+            $jgt: args.position_key_gt,
+            $jgte: args.position_key_gte,
+            $regex: args.position_key_sw ? `^${args.position_key_sw}` : undefined,
+          })
+        }),
+        sortByPositionKey: args.order_by == 'position_key' && !args.order_desc,
+        sortByPositionKeyDesc: args.order_by == 'position_key' && !!args.order_desc,
         limit: this.padding
       },
-      remote: {
+      remote: pickBy({
         discussion_id: this.discussion.id,
-        position_key_gte: event.nextSiblingPositionKey(),
-        order_by: 'position_key',
+        position_key_gt: args.position_key_gt,
+        position_key_gte: args.position_key_gte,
+        position_key_lt: args.position_key_lt,
+        position_key_sw: args.position_key_sw,
+        order_by: args.order_by || 'position_key',
+        order_desc: args.order_desc && 1,
         per: this.padding
-      }
-    });
-  }
-
-  addLoadBeforeRule(event) {
-    return this.addRule({
-      name: `load before ${event.positionKey}`,
-      local: {
-        find: {
-          discussionId: this.discussion.id,
-          positionKey: {
-            $jlt: event.positionKey,
-          }
-        },
-        sortByPositionKeyDesc: true,
-        limit: this.padding
-      },
-      remote: {
-        discussion_id: this.discussion.id,
-        position_key_lt: event.positionKey,
-        order_by: 'position_key',
-        order_desc: 1,
-        per: this.padding
-      }
-    });
-  }
-
-  addLoadBeforePrefixedRule(event, positionKeyPrefix) {
-    return this.addRule({
-      name: `load before ${event.positionKey}`,
-      local: {
-        find: {
-          discussionId: this.discussion.id,
-          positionKey: {
-            $jlt: event.positionKey,
-            $regex: `^${positionKeyPrefix}`
-          }
-        },
-        sortByPositionKeyDesc: true,
-        limit: this.padding
-      },
-      remote: {
-        discussion_id: this.discussion.id,
-        position_key_lt: event.positionKey,
-        position_key_sw: positionKeyPrefix,
-        order_by: 'position_key',
-        order_desc: 1,
-        per: this.padding
-      }
-    });
-  }
-
-  addLoadAfterPrefixedRule(event, positionKeyPrefix) {
-    this.addRule({
-      name: `load more from next sibling ${event.positionKey}`,
-      local: {
-        find: {
-          discussionId: this.discussion.id,
-          positionKey: {
-            $jgte: event.nextSiblingPositionKey(),
-            $regex: `^${positionKeyPrefix}`
-          }
-        },
-        sortByPositionKey: true,
-        limit: this.padding
-      },
-      remote: {
-        discussion_id: this.discussion.id,
-        position_key_gte: event.nextSiblingPositionKey(),
-        position_key_sw: positionKeyPrefix,
-        order_by: 'position_key',
-        per: this.padding
-      }
-    });
-  }
-
-  addLoadChildrenRule(event, positionKeyPrefix) {
-    this.addRule({
-      name: `load more from current ${event.positionKey}`,
-      local: {
-        find: {
-          discussionId: this.discussion.id,
-          positionKey: {
-            $jgt: event.positionKey,
-            $regex: `^${positionKeyPrefix}`
-          }
-        },
-        sortByPositionKey: true,
-        limit: this.padding
-      },
-      remote: {
-        discussion_id: this.discussion.id,
-        position_key_gt: event.positionKey,
-        position_key_sw: positionKeyPrefix,
-        order_by: 'position_key',
-        per: this.padding
-      }
+      })
     });
   }
 
@@ -216,66 +111,6 @@ export default class ThreadLoader {
         order: 'sequence_id',
         discussion_id: this.discussion.id,
         comment_id: commentId
-      }
-    });
-  }
-
-  addLoadPositionRule(position) {
-    return this.addRule({
-      name: "position from url",
-      local: {
-        find: {
-          discussionId: this.discussion.id,
-          depth: 1,
-          position: {$gte: position}
-        },
-        sortByPositionKey: true,
-        limit: this.padding
-      },
-      remote: {
-        discussion_id: this.discussion.id,
-        from_sequence_id_of_position: position,
-        order: 'position_key'
-      }
-    });
-  }
-
-  addLoadPositionKeyRule(positionKey) {
-    this.loading = positionKey;
-    this.addRule({
-      name: "positionKey from url",
-      local: {
-        find: {
-          discussionId: this.discussion.id,
-          positionKey: {$jgte: positionKey}
-        },
-        sortByPositionKey: true,
-        limit: parseInt(this.padding/2)
-      },
-      remote: {
-        discussion_id: this.discussion.id,
-        position_key_gte: positionKey,
-        order_by: 'position_key',
-        per: parseInt(this.padding/2)
-      }
-    });
-
-    return this.addRule({
-      name: "positionKey rollback",
-      local: {
-        find: {
-          discussionId: this.discussion.id,
-          positionKey: {$jlt: positionKey}
-        },
-        sortByPositionKeyDesc: true,
-        limit: parseInt(this.padding/2)
-      },
-      remote: {
-        discussion_id: this.discussion.id,
-        position_key_lt: positionKey,
-        order_by: 'position_key',
-        order_desc: 1,
-        per: parseInt(this.padding/2)
       }
     });
   }
@@ -384,10 +219,6 @@ export default class ThreadLoader {
     }
   }
 
-  addRuleAndFetch(rule) {
-    if (this.addRule(rule)) { return this.fetch(); }
-  }
-
   fetch() {
     const newRules = [];
     const promises = this.rules.filter(rule => rule.remote)
@@ -431,7 +262,7 @@ export default class ThreadLoader {
         chain = chain.limit(rule.local.limit);
       }
 
-      return this.records = this.records.concat(chain.data());
+      this.records = this.records.concat(chain.data());
     });
 
     const parentsd1 = compact(this.records.map(o => o.parent()))
@@ -466,13 +297,14 @@ export default class ThreadLoader {
     return this.collection;
   }
 
-  addMetaData(collection) {
+  addMetaData(collection, parentObj) {
     const positions = collection.map(e => e.event.position);
     const ranges = RangeSet.arrayToRanges(positions);
     const parentExists = collection[0] && collection[0].event && collection[0].event.parent();
     const lastPosition = (parentExists && (collection[0].event.parent().childCount)) || 0;
 
 
+    let lastObj;
     collection.forEach(obj => {
       obj.isUnread = this.isUnread(obj.event);
       const isFirstInRange = some(ranges, range => range[0] === obj.event.position);
@@ -480,6 +312,7 @@ export default class ThreadLoader {
       const missingEarlier = parentExists && ((obj.event.position !== 1) && isFirstInRange);
       obj.missingEarlierCount = 0;
       if (missingEarlier) {
+        obj.previousObj = lastObj || parentObj;
         let lastPos = 1;
         let val = 0;
         ranges.forEach(function(range) {
@@ -496,7 +329,8 @@ export default class ThreadLoader {
       obj.missingAfterCount = (missingAfter && (lastPosition - last(ranges)[1])) || 0;
       obj.missingChildCount = obj.event.childCount - obj.children.length;
 
-      if (obj.children.length) { this.addMetaData(obj.children); }
+      if (obj.children.length) { this.addMetaData(obj.children, obj); }
+      lastObj = obj;
     });
   }
 }

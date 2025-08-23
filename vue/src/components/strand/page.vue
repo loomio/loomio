@@ -27,17 +27,17 @@ export default {
       discussionFetchError: null,
       focusHelp: null,
       focusSelector: null,
-      focusOffset: null,
-      lastFocusSelector: null,
+      anchorSelector: null,
+      anchorOffset: null,
+      lastAnchorSelector: null,
       snackbar: false
     };
   },
 
   mounted() {
-    EventBus.$on('setFocus', (selector, offset) => {
-      console.log('setFocus', selector, offset);
-      this.focusSelector = selector;
-      this.focusOffset = offset;
+    EventBus.$on('setAnchor', (selector, offset) => {
+      this.anchorSelector = selector;
+      this.anchorOffset = offset
     });
     this.init();
   },
@@ -83,8 +83,8 @@ export default {
           query: () => {
             this.loader.updateCollection();
             console.log('Collection updated');
-            this.$nextTick(() => this.scrollToFocusUnlessFocused());
-            setTimeout(() => this.refocusIfOffscreen(), 1000);
+            this.$nextTick(() => this.scrollToAnchorIfNew());
+            // setTimeout(() => this.jumpToAnchorIfOffScreen(), 1000);
           }
         });
       }).catch(function(error) {
@@ -97,9 +97,10 @@ export default {
       if (!this.discussion) { return; }
       if (this.discussion.key !== this.$route.params.key) { return; }
 
-      this.focusSelector = null;
-      this.focusOffset = 64;
       this.focusHelp = null;
+      this.focusSelector = null;
+      this.anchorSelector = null;
+      this.anchorOffset = null;
 
       this.loader.addContextRule();
 
@@ -108,9 +109,10 @@ export default {
         return;
       }
 
-      if (this.$route.params.sequence_id) {
-        this.loader.addLoadSequenceIdRule(parseInt(this.$route.params.sequence_id));
-        this.focusSelector = `.sequenceId-${parseInt(this.$route.params.sequence_id)}`;
+      if (Object.keys(this.$route.params).includes('sequence_id')) {
+        const sequenceId = parseInt(this.$route.params.sequence_id);
+        this.loader.addLoadSequenceIdRule(sequenceId);
+        this.focusSelector = sequenceId == 0 ? '#strand-page' : `.sequenceId-${sequenceId}`;
         return;
       }
 
@@ -166,25 +168,28 @@ export default {
       this.snackbar = !!this.focusHelp;
 
       if (this.$route.query.current_action) {
-        this.focusSelector = '.actions-panel-end';
+        this.anchorSelector = '.actions-panel-end';
+      } else {
+        this.anchorSelector = this.focusSelector;
+        this.anchorOffset = null;
       }
 
-      this.scrollToFocusIfPresent();
+      this.scrollToAnchorIfPresent();
 
       this.loader.fetch();
     },
 
-    scrollToFocusIfPresent() {
-      if (document.querySelector(this.focusSelector)) {
-        ScrollService.scrollTo(this.focusSelector, this.focusOffset);
+    scrollToAnchorIfPresent() {
+      if (document.querySelector(this.anchorSelector)) {
+        ScrollService.scrollTo(this.anchorSelector, this.anchorOffset);
       }
     },
 
-    scrollToFocusUnlessFocused() {
-      if (this.lastFocusSelector !== this.focusSelector) {
-        console.log('scrolling to ', this.focusSelector, this.focusOffset);
-        ScrollService.scrollTo(this.focusSelector, this.focusOffset);
-        this.lastFocusSelector = this.focusSelector;
+    scrollToAnchorIfNew() {
+      if (this.lastAnchorSelector !== this.anchorSelector) {
+        console.log('scrolling to ', this.anchorSelector, this.anchorOffset);
+        ScrollService.scrollTo(this.anchorSelector, this.anchorOffset);
+        this.lastAnchorSelector = this.anchorSelector;
       }
     },
 
@@ -196,13 +201,13 @@ export default {
        (rect.right <= (window.innerWidth || document.documentElement.clientWidth)));
     },
 
-    refocusIfOffscreen() {
+    jumpToAnchorIfOffScreen() {
       let el;
-      if (this.lastFocusSelector &&
-         (el = document.querySelector(this.lastFocusSelector) &&
+      if (this.lastAnchorSelector &&
+         (el = document.querySelector(this.lastAnchorSelector) &&
          !this.elementInView(el))) {
-        console.log(`refocusing ${this.lastFocusSelector}`);
-        ScrollService.jumpTo(this.lastFocusSelector, this.focusOffset);
+        console.log(`refocusing ${this.lastAnchorSelector}`);
+        ScrollService.jumpTo(this.lastAnchorSelector, this.anchorOffset);
       }
     },
   }
@@ -214,13 +219,14 @@ export default {
 .strand-page
   v-main
     v-container.max-width-800.px-0.px-sm-3#strand-page(v-if="discussion")
-      v-fab(v-if="!$vuetify.display.mdAndUp" app location="bottom right" :icon="mdiMap" @click="openThreadNav")
+      v-fab(v-if="!$vuetify.display.mdAndUp" extended app location="bottom right" @click="openThreadNav")
+        v-icon.mr-2(:icon="mdiMap")
+        span Jump to
       thread-current-poll-banner(:discussion="discussion")
       discussion-fork-actions(:discussion='discussion' :key="'fork-actions'+ discussion.id")
       v-sheet.strand-card.thread-card.mb-8.pb-4.rounded(elevation=1)
         v-snackbar(v-if="focusHelp" v-model="snackbar" location="top")
           span(v-t="focusHelp")
-
         strand-list.pt-3.pr-1.pr-sm-3.px-sm-2(:loader="loader" :collection="loader.collection" :focus-selector="focusSelector")
         strand-actions-panel(v-if="!loader.discussion.newestFirst" :discussion="discussion")
   strand-toc-nav(v-if="loader" :discussion="discussion" :loader="loader" :key="discussion.id" :focus-help="focusHelp" :focus-selector="focusSelector")

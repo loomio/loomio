@@ -9,7 +9,6 @@ export default {
   name: 'strand-list',
   props: {
     loader: Object,
-    newestFirst: Boolean,
     collection: {
       type: Array,
       required: true
@@ -31,27 +30,6 @@ export default {
     Collapsed
   },
 
-  computed: {
-    indexes() {
-      var a = []
-      if (this.newestFirst) {
-        var i = this.collection.length;
-        while(i-- > 0) { a.push(i); }
-      } else {
-        var i = 0;
-        while(i++ < this.collection.length) { a.push(i-1); }
-      }
-      return a;
-    },
-    directedCollection() {
-      if (this.newestFirst) {
-        return this.collection.reverse();
-      } else {
-        return this.collection;
-      }
-    }
-  },
-
   methods: {
     isFocused(event) {
       return  this.focusSelector == `.sequenceId-${event.sequenceId || 0}` ||
@@ -64,61 +42,48 @@ export default {
 
 <template lang="pug">
 .strand-list
-  template(v-for="i in indexes" :key="i")
-    .strand-item(v-if="obj = collection[i]" :class="{'strand-item--deep': obj.event.depth > 1}")
-      .strand-item__row(v-if="!newestFirst && obj.missingEarlierCount")
-        .strand-item__gutter
-          .strand-item__stem-wrapper
-            .strand-item__stem.strand-item__stem--broken
-        //- | top !newestFirst && obj.missingEarlierCount
-        strand-load-more(direction="before" :obj="obj" :loader="loader")
-      .strand-item__row(v-if="newestFirst && obj.missingAfterCount")
-        .strand-item__gutter
-          .strand-item__stem-wrapper
-            .strand-item__stem.strand-item__stem--broken
-        //- | top newestFirst && obj.missingAfterCount
-        strand-load-more(direction="after" :obj="obj" :loader="loader")
-
-      .strand-item__row(v-if="loader.collapsed[obj.event.id]")
-        collapsed(:obj="obj" :loader="loader")
-      .strand-item__row(v-if="!loader.collapsed[obj.event.id]")
-        .strand-item__gutter(v-if="obj.event.depth > 0")
-          .d-flex.justify-center
-            template(v-if="loader.discussion.forkedEventIds.length")
-              v-checkbox-btn.thread-item__is-forking(
-                v-if="obj.event.forkingDisabled()"
-                disabled
-                v-model="parentChecked"
-              )
-              v-checkbox-btn.thread-item__is-forking(
-                v-else
-                v-model="loader.discussion.forkedEventIds"
-                :value="obj.event.id"
-              )
-            template(v-else)
-              user-avatar(
-                :user="obj.event.actor()"
-                :size="(obj.event.depth > 1) ? 28 : 32"
-                no-link
-              )
-          stem-wrapper(:loader="loader" :obj="obj" :focused="isFocused(obj.event)")
-        .strand-item__main
-          intersection-wrapper(:loader="loader" :obj="obj" :focused="isFocused(obj.event)")
-          .strand-list__children(v-if="obj.event.childCount && (!obj.eventable.isA('stance') || obj.eventable.poll().showResults())")
-            strand-load-more(v-if="obj.children.length == 0" direction="children" :obj="obj" :loader="loader")
-            strand-list.flex-grow-1(
-              :loader="loader"
-              :collection="obj.children"
-              :newest-first="obj.event.kind == 'new_discussion' && loader.discussion.newestFirst"
-              :focusSelector="focusSelector"
+  .strand-item(v-for="obj, index in collection" :key="obj.event.id" :class="{'strand-item--deep': obj.event.depth > 1}")
+    .strand-item__row(v-if="obj.missingEarlierCount")
+      .strand-item__gutter
+        .strand-item__stem-wrapper
+          .strand-item__stem.strand-item__stem--broken
+      strand-load-more(direction="before" :obj="obj" :loader="loader")
+    .strand-item__row(v-if="loader.collapsed[obj.event.id]")
+      collapsed(:obj="obj" :loader="loader")
+    .strand-item__row(v-if="!loader.collapsed[obj.event.id]")
+      .strand-item__gutter(v-if="obj.event.depth > 0")
+        .d-flex.justify-center
+          template(v-if="loader.discussion.forkedEventIds.length")
+            v-checkbox-btn.thread-item__is-forking(
+              v-if="obj.event.forkingDisabled()"
+              disabled
+              v-model="parentChecked"
             )
-          reply-form(:eventId="obj.event.id")
+            v-checkbox-btn.thread-item__is-forking(
+              v-else
+              v-model="loader.discussion.forkedEventIds"
+              :value="obj.event.id"
+            )
+          template(v-else)
+            user-avatar(
+              :user="obj.event.actor()"
+              :size="(obj.event.depth > 1) ? 28 : 32"
+              no-link
+            )
+        stem-wrapper(:loader="loader" :obj="obj" :focused="isFocused(obj.event)")
+      .strand-item__main
+        intersection-wrapper(:loader="loader" :obj="obj" :focused="isFocused(obj.event)")
+        .strand-list__children(v-if="obj.event.childCount && (!obj.eventable.isA('stance') || obj.eventable.poll().showResults())")
+          strand-load-more(v-if="obj.children.length == 0" direction="children" :obj="obj" :loader="loader")
+          strand-list.flex-grow-1(
+            :loader="loader"
+            :collection="obj.children"
+            :focusSelector="focusSelector"
+          )
+        reply-form(:eventId="obj.event.id")
 
-      .strand-item__row(v-if="newestFirst && obj.missingEarlierCount" )
-        strand-load-more(direction="before" :obj="obj" :loader="loader")
-
-      .strand-item__row(v-if="!newestFirst && obj.missingAfterCount" )
-        strand-load-more(direction="after" :obj="obj" :loader="loader")
+    .strand-item__row(v-if="obj.missingAfterCount" )
+      strand-load-more(direction="after" :obj="obj" :loader="loader")
 </template>
 
 <style lang="sass">

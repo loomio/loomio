@@ -144,4 +144,15 @@ export default class EventModel extends BaseModel {
     strs[strs.length - 1] = "0".repeat(5 - String(num).length).concat(num)
     return strs.join("-")
   }
+
+  positionKeyMinus(count) {
+    let parts = this.positionKey.split('-');
+    const lastVal = parseInt(parts.pop()) - count;
+    if (lastVal > 0) { parts.push("0".repeat(5 - String(lastVal).length).concat(lastVal)) }
+    return parts.join('-');
+  }
+
+  positionKeyParent() {
+    return this.positionKey.split('-').slice(0, -1).join('-');
+  }
 };
