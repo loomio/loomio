@@ -38,6 +38,10 @@ class Api::V1::EventsController < Api::V1::RestfulController
     render json: MessageChannelService.serialize_models(@event, scope: default_scope)
   end
 
+  def count
+    render json: accessible_records.count
+  end
+
   private
 
   def order

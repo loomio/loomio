@@ -166,6 +166,7 @@ Rails.application.routes.draw do
       resources :login_tokens, only: [:create]
 
       resources :events, only: :index do
+        get :count, on: :collection
         patch :pin, on: :member
         patch :unpin, on: :member
         get :comment, on: :collection

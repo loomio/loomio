@@ -1,25 +1,22 @@
 <script setup>
 import EventBus from '@/shared/services/event_bus';
 import { mdiArrowExpandVertical } from '@mdi/js';
+import Records from '@/shared/services/records';
 import { ref, computed } from 'vue';
-
 const { direction, obj, loader } = defineProps({
   direction: String,
   obj: Object,
   loader: Object
 });
 
-const loading = ref(false);
-// const count = ref(null);
-
-const label = computed(() => {
+const positionCount = computed(() => {
   switch (direction) {
     case 'before':
-      return {path: 'common.action.count_more', args: {count: obj.missingEarlierCount}};
+      return obj.missingEarlierCount;
     case 'after':
-      return {path: 'common.action.count_more', args: {count: obj.missingAfterCount}};
+      return obj.missingAfterCount;
     case 'children':
-      return {path: 'common.action.count_more', args: {count: obj.missingChildCount}};
+      return obj.missingChildCount;
   }
 });
 
@@ -31,7 +28,7 @@ const loadAndScrollTo = () => {
   load();
 }
 
-const scopeArgs = () => {
+const params = () => {
   const event = obj.event;
   switch (direction) {
     case 'before':
@@ -57,30 +54,27 @@ const scopeArgs = () => {
   }
 };
 
+const loading = ref(false);
 const load = () => {
   const event = obj.event;
   loading.value = true;
-  loader.addLoadArgsRule(scopeArgs());
+  loader.addLoadArgsRule(params());
   loader.fetch().finally(() => loading.value = false);
 };
 
-// const fetchCount = () => {
-//   Records.fetch({
-//     path: 'events/count',
-//     params: this.scopeArgs()
-//   }).then((count) => {
-//     this.count = count;
-//   });
-// };
+const count = ref(null);
+Records.fetch({
+  path: 'events/count',
+  params: Object.assign({}, { discussion_id: loader.discussion.id }, params())
+}).then((val) => count.value = val );
 
 </script>
 
 <template lang="pug">
-//.strand-item__load-more(v-intersect.once="{handler: intersectHandler}")
 .strand-item__load-more
-  v-btn.action-button(block variant="outlined" color="info" @click="loadAndScrollTo" :loading="loading" size="x-large")
+  v-btn.action-button(block variant="tonal" color="info" @click="loadAndScrollTo" :loading="loading" size="x-large")
     v-icon.mr-2(:icon="mdiArrowExpandVertical")
-    span(v-t="label")
+    span(v-t="{path: 'common.action.count_more', args: {count: count}}")
 </template>
 
 <style lang="sass">
