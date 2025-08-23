@@ -1,76 +1,78 @@
-<script lang="js">
+<script setup>
 import EventBus from '@/shared/services/event_bus';
 import { mdiArrowExpandVertical } from '@mdi/js';
+import { ref, computed } from 'vue';
 
-export default {
-  props: {
-    direction: String,
-    obj: Object,
-    loader: Object
-  },
+const { direction, obj, loader } = defineProps({
+  direction: String,
+  obj: Object,
+  loader: Object
+});
 
-  data() {
-    return {
-      mdiArrowExpandVertical,
-      loading: false
-    };
-  },
+const loading = ref(false);
+// const count = ref(null);
 
-  computed: {
-    label() {
-      switch (this.direction) {
-        case 'before':
-          return {path: 'common.action.count_more', args: {count: this.obj.missingEarlierCount}};
-        case 'after':
-          return {path: 'common.action.count_more', args: {count: this.obj.missingAfterCount}};
-        case 'children':
-          return {path: 'common.action.count_more', args: {count: this.obj.missingChildCount}};
+const label = computed(() => {
+  switch (direction) {
+    case 'before':
+      return {path: 'common.action.count_more', args: {count: obj.missingEarlierCount}};
+    case 'after':
+      return {path: 'common.action.count_more', args: {count: obj.missingAfterCount}};
+    case 'children':
+      return {path: 'common.action.count_more', args: {count: obj.missingChildCount}};
+  }
+});
+
+const loadAndScrollTo = () => {
+  const anchorObj = direction == "before" ?  obj.previousObj : obj
+  const selector = `.positionKey-${anchorObj.event.positionKey}`
+  const offset = document.querySelector(`.positionKey-${anchorObj.event.positionKey}`).getBoundingClientRect().top
+  EventBus.$emit('setAnchor', selector, offset);
+  load();
+}
+
+const scopeArgs = () => {
+  const event = obj.event;
+  switch (direction) {
+    case 'before':
+      return {
+        position_key_lt: event.positionKey,
+        position_key_sw: event.positionKeyParent(),
+        position_key_gte: event.depth > 1 ? event.positionKeyMinus(obj.missingEarlierCount) : undefined,
+        order_by: 'position_key',
+        order_desc: 1,
+      };
+    case 'after':
+      return {
+        position_key_sw: event.positionKeyParent(),
+        position_key_gte: event.nextSiblingPositionKey(),
+        order_by: 'position_key'
       }
-    },
-  },
-  methods: {
-    loadAndScrollTo() {
-      const anchorObj = this.direction == "before" ?  this.obj.previousObj : this.obj
-      const selector = `.positionKey-${anchorObj.event.positionKey}`
-      const offset = document.querySelector(`.positionKey-${anchorObj.event.positionKey}`).getBoundingClientRect().top
-      EventBus.$emit('setAnchor', selector, offset);
-      this.load();
-    },
-
-    load() {
-      const event = this.obj.event;
-      this.loading = true;
-      switch (this.direction) {
-        case 'before':
-          this.loader.addLoadArgsRule({
-            position_key_lt: event.positionKey,
-            position_key_sw: event.positionKeyParent(),
-            position_key_gte: event.depth > 1 ? event.positionKeyMinus(this.obj.missingEarlierCount) : undefined,
-            order_by: 'position_key',
-            order_desc: 1,
-          });
-          break;
-        case 'after':
-          this.loader.addLoadArgsRule({
-            position_key_sw: event.positionKeyParent(),
-            position_key_gte: event.nextSiblingPositionKey(),
-            order_by: 'position_key'
-          })
-          break;
-        case 'children':
-          this.loader.addLoadArgsRule({
-            position_key_sw: event.positionKey,
-            position_key_gt: event.positionKey,
-            order_by: 'position_key'
-          })
-          break;
+    case 'children':
+      return {
+        position_key_sw: event.positionKey,
+        position_key_gt: event.positionKey,
+        order_by: 'position_key'
       }
-      this.loader.fetch().finally(() => {
-        this.loading = false;
-      });
-    }
   }
 };
+
+const load = () => {
+  const event = obj.event;
+  loading.value = true;
+  loader.addLoadArgsRule(scopeArgs());
+  loader.fetch().finally(() => loading.value = false);
+};
+
+// const fetchCount = () => {
+//   Records.fetch({
+//     path: 'events/count',
+//     params: this.scopeArgs()
+//   }).then((count) => {
+//     this.count = count;
+//   });
+// };
+
 </script>
 
 <template lang="pug">
