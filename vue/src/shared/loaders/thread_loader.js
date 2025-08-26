@@ -1,5 +1,5 @@
 import Records from '@/shared/services/records';
-import { some, last, cloneDeep, max, uniq, compact, orderBy, pickBy } from 'lodash-es';
+import { some, last, cloneDeep, max, uniq, compact, orderBy, pickBy, each } from 'lodash-es';
 import { reactive } from 'vue';
 import RangeSet         from '@/shared/services/range_set';
 import EventBus         from '@/shared/services/event_bus';
@@ -21,7 +21,7 @@ export default class ThreadLoader {
     this.collapsed = reactive({});
     this.loading = false;
     this.firstLoad = false
-    this.padding = 20;
+    this.padding = 50;
   }
 
   clearRules() {
@@ -75,6 +75,7 @@ export default class ThreadLoader {
           discussionId: this.discussion.id,
           positionKey: pickBy({
             $jlt: args.position_key_lt,
+            $jlte: args.position_key_lte,
             $jgt: args.position_key_gt,
             $jgte: args.position_key_gte,
             $regex: args.position_key_sw ? `^${args.position_key_sw}` : undefined,
@@ -89,6 +90,7 @@ export default class ThreadLoader {
         position_key_gt: args.position_key_gt,
         position_key_gte: args.position_key_gte,
         position_key_lt: args.position_key_lt,
+        position_key_lte: args.position_key_lte,
         position_key_sw: args.position_key_sw,
         order_by: args.order_by || 'position_key',
         order_desc: args.order_desc && 1,
@@ -145,13 +147,13 @@ export default class ThreadLoader {
         },
         simplesort: 'sequenceId',
         simplesortDesc: true,
-        limit: this.padding
+        limit: 10
       },
       remote: {
         discussion_id: this.discussion.id,
         order_by: 'sequence_id',
         order_desc: true,
-        per: this.padding
+        per: 10
       }
     });
   }
@@ -238,9 +240,18 @@ export default class ThreadLoader {
 
   updateCollection() {
     this.records = [];
+    console.log("Updating collection");
     this.rules.forEach(rule => {
       let chain = Records.events.collection.chain();
-      chain.find(rule.local.find);
+
+      chain = chain.find(rule.local.find);
+
+      // hack because lokijs seems to have a bug with this. may need to genralize more, but maybe not
+      if (rule.local.find.positionKey && rule.local.find.positionKey.$regex) {
+        chain = chain.where(function(obj) {
+          return obj.positionKey.match(rule.local.find.positionKey.$regex) != null;
+        })
+      }
 
       if (rule.local.simplesort) {
         chain = chain.simplesort(rule.local.simplesort, rule.local.simplesortDesc);
@@ -262,6 +273,7 @@ export default class ThreadLoader {
         chain = chain.limit(rule.local.limit);
       }
 
+      console.log(JSON.stringify(rule.local), chain.data().length, chain.data().map(event => event.positionKey).join(" "));
       this.records = this.records.concat(chain.data());
     });
 
@@ -270,18 +282,18 @@ export default class ThreadLoader {
     const parentsd3 = compact(parentsd2.map(o => o.parent()))
     this.records = uniq(this.records.concat(parentsd1).concat(parentsd2).concat(parentsd3));
     this.records = orderBy(this.records, 'positionKey');
+
     const eventIds = this.records.map(event => event.id);
 
     const orphans = this.records.filter(event => (event.parentId === null) || !eventIds.includes(event.parentId));
 
     const eventsByParentId = {};
     this.records.forEach(event => {
-      return eventsByParentId[event.parentId] = (eventsByParentId[event.parentId] || []).concat([event]);
+      eventsByParentId[event.parentId] = (eventsByParentId[event.parentId] || []).concat([event]);
     });
 
     var nest = function(records) {
-      let r;
-      return r = records.map(event => ({
+      return records.map(event => ({
         event,
         children: (eventsByParentId[event.id] && nest(eventsByParentId[event.id])) || [],
         eventable: event.model()
@@ -303,34 +315,15 @@ export default class ThreadLoader {
     const parentExists = collection[0] && collection[0].event && collection[0].event.parent();
     const lastPosition = (parentExists && (collection[0].event.parent().childCount)) || 0;
 
-
-    let lastObj;
     collection.forEach(obj => {
-      obj.isUnread = this.isUnread(obj.event);
       const isFirstInRange = some(ranges, range => range[0] === obj.event.position);
       const isLastInLastRange = last(ranges)[1] === obj.event.position;
-      const missingEarlier = parentExists && ((obj.event.position !== 1) && isFirstInRange);
-      obj.missingEarlierCount = 0;
-      if (missingEarlier) {
-        obj.previousObj = lastObj || parentObj;
-        let lastPos = 1;
-        let val = 0;
-        ranges.forEach(function(range) {
-          if (range[0] === obj.event.position) {
-            val = (obj.event.position - lastPos);
-          } else {
-            lastPos = range[1];
-          }
-        });
-        obj.missingEarlierCount = val;
-      }
-
-      const missingAfter = (lastPosition !== 0) && isLastInLastRange && (obj.event.position !== lastPosition);
-      obj.missingAfterCount = (missingAfter && (lastPosition - last(ranges)[1])) || 0;
+      obj.isUnread = this.isUnread(obj.event);
+      obj.missingEarlier = parentExists && ((obj.event.position !== 1) && isFirstInRange);
+      obj.missingAfter = (lastPosition !== 0) && isLastInLastRange && (obj.event.position !== lastPosition);
       obj.missingChildCount = obj.event.childCount - obj.children.length;
 
       if (obj.children.length) { this.addMetaData(obj.children, obj); }
-      lastObj = obj;
     });
   }
 }

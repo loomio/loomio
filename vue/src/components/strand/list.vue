@@ -4,11 +4,13 @@ import ReplyForm from '@/components/strand/reply_form.vue';
 import IntersectionWrapper from '@/components/strand/item/intersection_wrapper';
 import StemWrapper from '@/components/strand/item/stem_wrapper';
 import Collapsed from '@/components/strand/item/collapsed';
+import LmoUrlService from '@/shared/services/lmo_url_service';
 
 export default {
   name: 'strand-list',
   props: {
     loader: Object,
+    parentCollection: Array,
     collection: {
       type: Array,
       required: true
@@ -18,7 +20,8 @@ export default {
 
   data() {
     return {
-      parentChecked: true
+      parentChecked: true,
+      endUrl: LmoUrlService.route({model: this.loader.discussion})
     }
   },
 
@@ -34,7 +37,7 @@ export default {
     isFocused(event) {
       return  this.focusSelector == `.sequenceId-${event.sequenceId || 0}` ||
         (event.eventableType === 'Comment' && this.focusSelector == `.comment-${event.eventableId || 0}`);
-    }
+    },
   }
 };
 
@@ -43,11 +46,11 @@ export default {
 <template lang="pug">
 .strand-list
   .strand-item(v-for="obj, index in collection" :key="obj.event.id" :class="{'strand-item--deep': obj.event.depth > 1}")
-    .strand-item__row(v-if="obj.missingEarlierCount")
+    .strand-item__row(v-if="obj.missingEarlier")
       .strand-item__gutter
         .strand-item__stem-wrapper
           .strand-item__stem.strand-item__stem--broken
-      strand-load-more(direction="before" :obj="obj" :loader="loader")
+      strand-load-more(direction="before" :collection="collection" :parentCollection="parentCollection" :index="index" :loader="loader")
     .strand-item__row(v-if="loader.collapsed[obj.event.id]")
       collapsed(:obj="obj" :loader="loader")
     .strand-item__row(v-if="!loader.collapsed[obj.event.id]")
@@ -74,16 +77,21 @@ export default {
       .strand-item__main
         intersection-wrapper(:loader="loader" :obj="obj" :focused="isFocused(obj.event)")
         .strand-list__children(v-if="obj.event.childCount && (!obj.eventable.isA('stance') || obj.eventable.poll().showResults())")
-          strand-load-more(v-if="obj.children.length == 0" direction="children" :obj="obj" :loader="loader")
+          strand-load-more(v-if="obj.children.length == 0" direction="children" :collection="collection" :parentCollection="parentCollection" :index="index" :loader="loader")
           strand-list.flex-grow-1(
             :loader="loader"
+            :parentCollection="collection"
             :collection="obj.children"
             :focusSelector="focusSelector"
           )
         reply-form(:eventId="obj.event.id")
 
-    .strand-item__row(v-if="obj.missingAfterCount" )
-      strand-load-more(direction="after" :obj="obj" :loader="loader")
+    .strand-item__row(v-if="obj.missingAfter" )
+      strand-load-more(direction="after" :obj="obj" :collection="collection" :parentCollection="parentCollection" :index="index" :loader="loader")
+
+    .strand-item__row(v-if="obj.missingAfterCount && obj.event.depth == 1" )
+      v-btn(:to="endUrl + '?end'") Jump to end
+
 </template>
 
 <style lang="sass">

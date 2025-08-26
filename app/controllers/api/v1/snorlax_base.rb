@@ -175,8 +175,8 @@ class Api::V1::SnorlaxBase < ActionController::Base
   def instantiate_collection
     self.collection = accessible_records
     self.collection = yield collection if block_given?
-    self.collection = timeframe_collection collection
-    self.collection_count = collection.count
+    # self.collection = timeframe_collection collection
+    # self.collection_count = collection.count
     self.collection = page_collection collection
     self.collection = order_collection collection
   end
