@@ -1,9 +1,9 @@
 <script setup>
 import EventBus from '@/shared/services/event_bus';
-import { mdiArrowExpandVertical } from '@mdi/js';
+import { mdiArrowExpandUp, mdiArrowExpandDown } from '@mdi/js';
 import Records from '@/shared/services/records';
-import { ref, computed } from 'vue';
-import { last } from 'lodash-es';
+import { ref, watch } from 'vue';
+import { pickBy } from 'lodash-es';
 
 const { direction, collection, parentCollection, index, loader } = defineProps({
   direction: String,
@@ -13,12 +13,21 @@ const { direction, collection, parentCollection, index, loader } = defineProps({
   loader: Object
 });
 
-// const loadAndScrollTo = () => {
-//   const selector = `.positionKey-${collection[index].event.parent().positionKey}`
-//   const offset = document.querySelector(selector).getBoundingClientRect().top
-//   EventBus.$emit('setAnchor', selector, offset);
-//   load();
-// }
+const loadAndScrollTo = () => {
+  if (direction == 'before') {
+    const selector = `.positionKey-${collection[index].event.positionKey}`
+    const offset = document.querySelector(selector).getBoundingClientRect().top
+    EventBus.$emit('setAnchor', selector, offset);
+  }
+  load();
+}
+
+const positionKeyPlusOne = (positionKey) => {
+  let strs = positionKey.split("-")
+  let num = parseInt(strs[strs.length - 1]) + 1
+  strs[strs.length - 1] = "0".repeat(5 - String(num).length).concat(num)
+  return strs.join("-")
+}
 
 const nextSiblingPositionKey = () => {
   // skipping any child positions
@@ -33,37 +42,32 @@ const positionKeyParent = () => {
   return collection[index].event.positionKey.split('-').slice(0, -1).join('-');
 }
 
-const lastChild = (obj) => {
-  if (obj.children.length == 0) {
-    return obj;
-  } else {
-    return lastChild(last(obj.children));
-  }
-}
-
 const params = () => {
   const event = collection[index].event;
   switch (direction) {
     case 'before':
-      return {
-        position_key_gt: (collection[index - 1] && lastChild(collection[index - 1])|| { event: {} }) .event.positionKey,
-        position_key_sw: positionKeyParent(),
+      return pickBy({
+        position_key_gte: (collection[index - 1] && positionKeyPlusOne(collection[index - 1].event.positionKey)),
+        position_key_gt: positionKeyParent(),
         position_key_lt: event.positionKey,
+        depth_lte: event.depth,
         order_by: 'position_key',
         order_desc: 1,
-      };
+      });
     case 'after':
-      return {
+      return pickBy({
         position_key_sw: positionKeyParent(),
-        position_key_gte: nextSiblingPositionKey(),
+        position_key_gte: positionKeyPlusOne(collection[index].event.positionKey),
+        position_key_lt: collection[index + 1] ? collection[index + 1].event.positionKey : null,
+        depth_lte: collection[index].event.depth + 1,
         order_by: 'position_key'
-      }
+      });
     case 'children':
-      return {
+      return pickBy({
         position_key_sw: event.positionKey,
         position_key_gt: event.positionKey,
         order_by: 'position_key'
-      }
+      });
   }
 };
 
@@ -74,19 +78,22 @@ const load = () => {
   loader.fetch().finally(() => loading.value = false);
 };
 
-const count = ref(null);
-Records.fetch({
-  path: 'events/count',
-  params: Object.assign({}, { discussion_id: loader.discussion.id }, params())
-}).then((val) => count.value = val );
+const count = ref("~");
+watch(() => collection.length, () => {
+  Records.fetch({
+    path: 'events/count',
+    params: Object.assign({}, { discussion_id: loader.discussion.id }, params())
+  }).then((val) => count.value = val );
+}, { immediate: true })
 
 </script>
 
 <template lang="pug">
 .strand-item__load-more
-  v-btn.action-button(block variant="tonal" color="info" @click="load" :loading="loading" size="x-large")
-    v-icon.mr-2(:icon="mdiArrowExpandVertical")
-    span {{direction }}
+  v-btn.text-none(block variant="tonal" color="info" @click="loadAndScrollTo" :loading="loading" size="x-large")
+    v-icon.mr-2(v-if="direction === 'before'" :icon="mdiArrowExpandUp")
+    v-icon.mr-2(v-if="direction === 'after'" :icon="mdiArrowExpandDown")
+    v-icon.mr-2(v-if="direction === 'children'" :icon="mdiArrowExpandDown")
     span(v-t="{path: 'common.action.count_more', args: {count: count}}")
 </template>
 

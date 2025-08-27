@@ -2434,6 +2434,7 @@ en:
     stance_created: Choice recorded
     stance_updated: Choice updated
   thread_item:
+    new: new
     removed: Item removed
     deleted_group: Deleted group
     invite_only_thread: Invite only thread

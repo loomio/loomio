@@ -95,7 +95,7 @@ export default {
 
       Records.events.collection.chain()
              .find({discussionId: this.discussion.id})
-             .simplesort('positionKey', this.discussion.newestFirst)
+             .simplesort('positionKey')
              .data().forEach(event => {
         let poll;
         if (event.kind === "poll_created") {
@@ -121,28 +121,7 @@ export default {
         };
       });
 
-      const itemsArray = sortBy(Object.values(itemsHash), i => i.key);
-
-      if (this.discussion.newestFirst) {
-        const newItems = [];
-        const parentIndexes = [];
-
-        itemsArray.forEach((item, index) => {
-          if (item.depth === 1) { return parentIndexes.push(index); }
-        });
-
-        parentIndexes.reverse();
-
-        parentIndexes.forEach(index => {
-          const item = itemsArray[index];
-          const slice = itemsArray.slice(index, index + item.descendantCount + 1);
-          Array.prototype.push.apply(newItems, slice);
-        });
-
-        this.items = newItems;
-      } else {
-        this.items = itemsArray;
-      }
+      this.items = sortBy(Object.values(itemsHash), i => i.key);
 
       const createdEvent = this.discussion.createdEvent();
       this.items.unshift({
@@ -207,9 +186,9 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion"
   template(v-if="items.length > 1")
     v-list(nav density="compact" :lines="false")
       v-list-subheader(v-t="'strand_nav.jump_to'")
-      v-list-item(nav :prepend-icon="mdiArrowUpThin" :title="$t('strand_nav.start')" @click="scrollToTop" :to="baseUrl+'/0'")
-      v-list-item(:active="focusHelp == 'strand_nav.showing_unread_activity'" :prepend-icon="mdiMessageBadgeOutline" :title="$t('strand_nav.unread')" @click="scrollToUnread" :to="baseUrl+'?unread'" v-if="loader.firstUnreadSequenceId()" exact)
-      v-list-item(:active="focusHelp == 'strand_nav.showing_latest_activity'" :prepend-icon="mdiLightningBolt" :title="$t('strand_nav.latest')" @click="scrollToNewest" :to="baseUrl+'?newest'" exact)
+      v-list-item(color="info" :prepend-icon="mdiArrowUpThin" :title="$t('strand_nav.start')" @click="scrollToTop" :to="baseUrl+'/0'")
+      v-list-item(color="info" :active="focusHelp == 'strand_nav.showing_unread_activity'" :prepend-icon="mdiMessageBadgeOutline" :title="$t('strand_nav.unread')" @click="scrollToUnread" :to="baseUrl+'?unread'" v-if="loader.firstUnreadSequenceId()" exact)
+      v-list-item(color="info" :active="focusHelp == 'strand_nav.showing_latest_activity'" :prepend-icon="mdiLightningBolt" :title="$t('strand_nav.latest')" @click="scrollToNewest" :to="baseUrl+'?newest'" exact)
       //v-list-item(:prepend-icon="mdiPlus" :title="$t('strand_nav.add_comment')" @click="scrollToNewest" :to="baseUrl+'?newest'" exact)
       //v-list-item(:prepend-icon="mdiArrowDownThin" :title="$t('strand_nav.bottom')" @click="scrollToSequenceId(lastItemSequenceId())" :to="baseUrl+'/'+lastItemSequenceId()" exact)
       v-list-subheader(v-t="'strand_nav.timeline'")

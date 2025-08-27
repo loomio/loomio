@@ -1,5 +1,5 @@
 import Records from '@/shared/services/records';
-import { some, last, cloneDeep, max, uniq, compact, orderBy, pickBy, each } from 'lodash-es';
+import { some, last, cloneDeep, max, uniq, compact, orderBy, pickBy, map, each } from 'lodash-es';
 import { reactive } from 'vue';
 import RangeSet         from '@/shared/services/range_set';
 import EventBus         from '@/shared/services/event_bus';
@@ -21,7 +21,7 @@ export default class ThreadLoader {
     this.collapsed = reactive({});
     this.loading = false;
     this.firstLoad = false
-    this.padding = 50;
+    this.padding = 25;
   }
 
   clearRules() {
@@ -68,25 +68,44 @@ export default class ThreadLoader {
   }
 
   addLoadArgsRule(args) {
+    const andParts = [{discussionId: this.discussion.id}]
+
+    // need sequenceId depth parent_id etc
+    if (args.depth) {
+      andParts.push({depth: args.depth})
+    }
+
+    if (args.depth_lte) {
+      andParts.push({depth: {$lte: args.depth_lte}})
+    }
+
+    if (args.position_key_lt) {
+      andParts.push({positionKey: {$jlt: args.position_key_lt}})
+    }
+    if (args.position_key_lte) {
+      andParts.push({positionKey: {$jlte: args.position_key_lte}})
+    }
+    if (args.position_key_gt) {
+      andParts.push({positionKey: {$jgt: args.position_key_gt}})
+    }
+    if (args.position_key_gte) {
+      andParts.push({positionKey: {$jgte: args.position_key_gte}})
+    }
+    if (args.position_key_sw) {
+      andParts.push({positionKey: {$regex: `^${args.position_key_sw}`}})
+    }
     this.addRule({
       name: `addLoadArgsRule`,
       local: {
-        find: pickBy({
-          discussionId: this.discussion.id,
-          positionKey: pickBy({
-            $jlt: args.position_key_lt,
-            $jlte: args.position_key_lte,
-            $jgt: args.position_key_gt,
-            $jgte: args.position_key_gte,
-            $regex: args.position_key_sw ? `^${args.position_key_sw}` : undefined,
-          })
-        }),
+        find: {$and: andParts},
         sortByPositionKey: args.order_by == 'position_key' && !args.order_desc,
         sortByPositionKeyDesc: args.order_by == 'position_key' && !!args.order_desc,
         limit: this.padding
       },
       remote: pickBy({
         discussion_id: this.discussion.id,
+        depth: args.depth,
+        depth_lte: args.depth_lte,
         position_key_gt: args.position_key_gt,
         position_key_gte: args.position_key_gte,
         position_key_lt: args.position_key_lt,
@@ -147,13 +166,13 @@ export default class ThreadLoader {
         },
         simplesort: 'sequenceId',
         simplesortDesc: true,
-        limit: 10
+        limit: this.padding
       },
       remote: {
         discussion_id: this.discussion.id,
         order_by: 'sequence_id',
         order_desc: true,
-        per: 10
+        per: this.padding
       }
     });
   }
@@ -212,9 +231,6 @@ export default class ThreadLoader {
     if (!this.ruleStrings.includes(ruleString)) {
       this.rules.push(rule);
       this.ruleStrings.push(ruleString);
-      // if @rules.length > 5
-      //   @rules.shift()
-      //   @ruleStrings.shift()
       return true;
     } else {
       return false;
@@ -240,18 +256,9 @@ export default class ThreadLoader {
 
   updateCollection() {
     this.records = [];
-    console.log("Updating collection");
+    // console.log("Updating collection");
     this.rules.forEach(rule => {
-      let chain = Records.events.collection.chain();
-
-      chain = chain.find(rule.local.find);
-
-      // hack because lokijs seems to have a bug with this. may need to genralize more, but maybe not
-      if (rule.local.find.positionKey && rule.local.find.positionKey.$regex) {
-        chain = chain.where(function(obj) {
-          return obj.positionKey.match(rule.local.find.positionKey.$regex) != null;
-        })
-      }
+      let chain = Records.events.collection.chain().find(rule.local.find);
 
       if (rule.local.simplesort) {
         chain = chain.simplesort(rule.local.simplesort, rule.local.simplesortDesc);
@@ -273,7 +280,7 @@ export default class ThreadLoader {
         chain = chain.limit(rule.local.limit);
       }
 
-      console.log(JSON.stringify(rule.local), chain.data().length, chain.data().map(event => event.positionKey).join(" "));
+      // console.log(JSON.stringify(rule.local), chain.data().length, chain.data().map(event => [event.sequenceId, event.positionKey].join(',')).join("\n"));
       this.records = this.records.concat(chain.data());
     });
 
@@ -309,21 +316,25 @@ export default class ThreadLoader {
     return this.collection;
   }
 
-  addMetaData(collection, parentObj) {
-    const positions = collection.map(e => e.event.position);
-    const ranges = RangeSet.arrayToRanges(positions);
-    const parentExists = collection[0] && collection[0].event && collection[0].event.parent();
-    const lastPosition = (parentExists && (collection[0].event.parent().childCount)) || 0;
+  addMetaData(collection) {
+    if (collection.length == 0) return;
 
-    collection.forEach(obj => {
+    const ranges = RangeSet.arrayToRanges(collection.map(e => e.event.position));
+    const parentEvent = collection[0].event.parent();
+    const lastPosition = (parentEvent && parentEvent.childCount) || 0;
+
+    for (let i = 0; i < collection.length; i++) {
+      const obj = collection[i];
       const isFirstInRange = some(ranges, range => range[0] === obj.event.position);
+      const isLastInRange = some(ranges, range => range[1] === obj.event.position);
       const isLastInLastRange = last(ranges)[1] === obj.event.position;
+
       obj.isUnread = this.isUnread(obj.event);
-      obj.missingEarlier = parentExists && ((obj.event.position !== 1) && isFirstInRange);
-      obj.missingAfter = (lastPosition !== 0) && isLastInLastRange && (obj.event.position !== lastPosition);
+      obj.missingEarlier = isFirstInRange && obj.event.position > 1;
+      obj.missingAfter = isLastInLastRange && obj.event.position !== lastPosition;
       obj.missingChildCount = obj.event.childCount - obj.children.length;
 
-      if (obj.children.length) { this.addMetaData(obj.children, obj); }
-    });
+      if (obj.children.length) { this.addMetaData(obj.children); }
+    }
   }
 }

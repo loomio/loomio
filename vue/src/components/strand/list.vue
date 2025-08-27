@@ -10,7 +10,6 @@ export default {
   name: 'strand-list',
   props: {
     loader: Object,
-    parentCollection: Array,
     collection: {
       type: Array,
       required: true
@@ -38,6 +37,12 @@ export default {
       return  this.focusSelector == `.sequenceId-${event.sequenceId || 0}` ||
         (event.eventableType === 'Comment' && this.focusSelector == `.comment-${event.eventableId || 0}`);
     },
+
+    rowClasses(obj) {
+      if (this.isFocused(obj.event)) {
+        return ['strand-item__row--focused', 'v-theme--dark', 'rounded-lg'];
+      }
+    }
   }
 };
 
@@ -46,55 +51,55 @@ export default {
 <template lang="pug">
 .strand-list
   .strand-item(v-for="obj, index in collection" :key="obj.event.id" :class="{'strand-item--deep': obj.event.depth > 1}")
+    //.strand-item__row(v-if="obj.missingEarlier && obj.event.depth == 1" )
+    //  v-btn(:to="endUrl + '?end'") Jump to start
     .strand-item__row(v-if="obj.missingEarlier")
-      .strand-item__gutter
-        .strand-item__stem-wrapper
-          .strand-item__stem.strand-item__stem--broken
-      strand-load-more(direction="before" :collection="collection" :parentCollection="parentCollection" :index="index" :loader="loader")
+      strand-load-more(direction="before" :collection="collection" :index="index" :loader="loader")
     .strand-item__row(v-if="loader.collapsed[obj.event.id]")
-      collapsed(:obj="obj" :loader="loader")
     .strand-item__row(v-if="!loader.collapsed[obj.event.id]")
       .strand-item__gutter(v-if="obj.event.depth > 0")
         .d-flex.justify-center
           template(v-if="loader.discussion.forkedEventIds.length")
-            v-checkbox-btn.thread-item__is-forking(
-              v-if="obj.event.forkingDisabled()"
-              disabled
-              v-model="parentChecked"
-            )
-            v-checkbox-btn.thread-item__is-forking(
-              v-else
-              v-model="loader.discussion.forkedEventIds"
-              :value="obj.event.id"
-            )
+            v-checkbox-btn.thread-item__is-forking( v-if="obj.event.forkingDisabled()" disabled v-model="parentChecked" )
+            v-checkbox-btn.thread-item__is-forking( v-else v-model="loader.discussion.forkedEventIds" :value="obj.event.id" )
           template(v-else)
-            user-avatar(
-              :user="obj.event.actor()"
-              :size="(obj.event.depth > 1) ? 28 : 32"
-              no-link
-            )
+            user-avatar( :user="obj.event.actor()" :size="(obj.event.depth > 1) ? 28 : 32" no-link )
         stem-wrapper(:loader="loader" :obj="obj" :focused="isFocused(obj.event)")
       .strand-item__main
-        intersection-wrapper(:loader="loader" :obj="obj" :focused="isFocused(obj.event)")
+        .strand-item__main--content(:class='rowClasses(obj)')
+          .strand-item__row--focused-underlay(v-if="isFocused(obj.event)")
+          intersection-wrapper(:loader="loader" :obj="obj" :focused="isFocused(obj.event)" :unread="loader.isUnread(obj.event)")
         .strand-list__children(v-if="obj.event.childCount && (!obj.eventable.isA('stance') || obj.eventable.poll().showResults())")
-          strand-load-more(v-if="obj.children.length == 0" direction="children" :collection="collection" :parentCollection="parentCollection" :index="index" :loader="loader")
-          strand-list.flex-grow-1(
-            :loader="loader"
-            :parentCollection="collection"
-            :collection="obj.children"
-            :focusSelector="focusSelector"
-          )
+          strand-load-more(v-if="obj.children.length == 0" direction="children" :collection="collection" :index="index" :loader="loader")
+          strand-list.flex-grow-1( :loader="loader" :collection="obj.children" :focusSelector="focusSelector" )
         reply-form(:eventId="obj.event.id")
 
     .strand-item__row(v-if="obj.missingAfter" )
-      strand-load-more(direction="after" :obj="obj" :collection="collection" :parentCollection="parentCollection" :index="index" :loader="loader")
+      strand-load-more(direction="after" :obj="obj" :collection="collection" :index="index" :loader="loader")
 
-    .strand-item__row(v-if="obj.missingAfterCount && obj.event.depth == 1" )
-      v-btn(:to="endUrl + '?end'") Jump to end
+    //.strand-item__row(v-if="obj.missingAfterCount && obj.event.depth == 1" )
+    //  v-btn(:to="endUrl + '?end'") Jump to end
 
 </template>
 
 <style lang="sass">
+
+.strand-item__row--focused
+  padding: 12px;
+  position: relative
+  color: rgb(var(--v-theme-info)) !important;
+
+.strand-item__row--focused-underlay
+  position: absolute
+  background: currentColor
+  opacity: var(--v-activated-opacity)
+  border-radius: inherit
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  pointer-events: none
+
 .strand-item--deep
   .strand-item__gutter
     width: 28px
@@ -156,12 +161,6 @@ export default {
   background-image: linear-gradient(0deg, #dadada 25%, #ffffff 25%, #ffffff 50%, #dadada 50%, #dadada 75%, #ffffff 75%, #ffffff 100%)
   background-size: 16.00px 16.00px
   background-repeat: repeat-y
-
-.strand-item__stem--unread
-  background-color: rgba(var(--v-theme-primary), 0.80) !important
-
-.strand-item__stem--focused
-  background-color: rgb(var(--v-theme-secondary)) !important
 
 .strand-item__circle
   display: flex

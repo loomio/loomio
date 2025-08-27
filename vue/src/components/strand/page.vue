@@ -61,6 +61,7 @@ export default {
     openThreadNav() {
       EventBus.$emit('toggleThreadNav')
     },
+
     init() {
       Records.discussions.findOrFetchById(this.$route.params.key, {exclude_types: 'poll outcome'}).then(discussion => {
         if (discussion.group().newHost) { window.location.host = discussion.group().newHost; }
@@ -84,7 +85,6 @@ export default {
             this.loader.updateCollection();
             console.log('Collection updated');
             this.$nextTick(() => this.scrollToAnchorIfNew());
-            // setTimeout(() => this.jumpToAnchorIfOffScreen(), 1000);
           }
         });
       }).catch(function(error) {
@@ -112,7 +112,7 @@ export default {
       if (Object.keys(this.$route.params).includes('sequence_id')) {
         const sequenceId = parseInt(this.$route.params.sequence_id);
         this.loader.addLoadSequenceIdRule(sequenceId);
-        this.focusSelector = sequenceId == 0 ? '#strand-page' : `.sequenceId-${sequenceId}`;
+        this.focusSelector = `.sequenceId-${sequenceId}`;
         return;
       }
 
@@ -127,7 +127,7 @@ export default {
         this.loader.clearRules();
         this.loader.addLoadUnreadRule();
         this.focusHelp = 'strand_nav.showing_unread_activity';
-        this.focusSelector = `.sequenceId-${parseInt(this.loader.firstUnreadSequenceId())}`;
+        this.anchorSelector = `.sequenceId-${parseInt(this.loader.firstUnreadSequenceId())}`;
         return;
       }
 
@@ -146,19 +146,19 @@ export default {
         } else {
           this.loader.addLoadOldestRule();
         }
-        this.focusSelector = "#strand-page";
+        this.anchorSelector = "#strand-page";
         return;
       }
 
       if (this.loader.firstUnreadSequenceId()) {
         this.loader.addLoadUnreadRule();
         this.focusHelp = 'strand_nav.showing_unread_activity';
-        this.focusSelector = `.sequenceId-${parseInt(this.loader.firstUnreadSequenceId())}`;
+        this.anchorSelector = `.sequenceId-${parseInt(this.loader.firstUnreadSequenceId())}`;
         return;
       } else {
         this.loader.addLoadNewestRule();
         this.focusHelp = 'strand_nav.showing_latest_activity';
-        this.focusSelector = `.sequenceId-${parseInt(this.discussion.lastSequenceId())}`;
+        this.anchorSelector = `.sequenceId-${parseInt(this.discussion.lastSequenceId())}`;
         return;
       }
     },
@@ -170,8 +170,10 @@ export default {
       if (this.$route.query.current_action) {
         this.anchorSelector = '.actions-panel-end';
       } else {
-        this.anchorSelector = this.focusSelector;
-        this.anchorOffset = null;
+        if (!this.anchorSelector) {
+          this.anchorSelector = this.focusSelector;
+          this.anchorOffset = null;
+        }
       }
 
       this.scrollToAnchorIfPresent();
