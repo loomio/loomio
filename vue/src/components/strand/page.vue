@@ -125,6 +125,7 @@ export default {
 
       if (Object.keys(this.$route.query).includes('unread')) {
         this.loader.clearRules();
+        // this.loader.addLoadNewestRule();
         this.loader.addLoadUnreadRule();
         this.focusHelp = 'strand_nav.showing_unread_activity';
         this.anchorSelector = `.sequenceId-${parseInt(this.loader.firstUnreadSequenceId())}`;
@@ -151,6 +152,7 @@ export default {
       }
 
       if (this.loader.firstUnreadSequenceId()) {
+        // this.loader.addLoadNewestRule();
         this.loader.addLoadUnreadRule();
         this.focusHelp = 'strand_nav.showing_unread_activity';
         this.anchorSelector = `.sequenceId-${parseInt(this.loader.firstUnreadSequenceId())}`;

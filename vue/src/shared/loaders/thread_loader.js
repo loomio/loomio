@@ -17,6 +17,7 @@ export default class ThreadLoader {
     this.ruleStrings = [];
     this.fetchedRules = [];
     this.readRanges = cloneDeep(this.discussion.readRanges);
+    this.unreadRanges = RangeSet.subtractRanges(this.discussion.ranges, this.readRanges);
     this.visibleKeys = {};
     this.collapsed = reactive({});
     this.loading = false;
@@ -31,7 +32,7 @@ export default class ThreadLoader {
   }
 
   firstUnreadSequenceId() {
-    return (RangeSet.subtractRanges(this.discussion.ranges, this.readRanges)[0] || [])[0];
+    return (this.unreadRanges[0] || [])[0];
   }
 
   setVisible(isVisible, event) {
@@ -212,14 +213,14 @@ export default class ThreadLoader {
       local: {
         find: {
           discussionId: this.discussion.id,
-          sequenceId: {$nin: RangeSet.rangesToArray(this.readRanges)}
+          sequenceId: {$in: RangeSet.rangesToArray(this.unreadRanges)}
         },
         limit: 100,
         simplesort: 'sequenceId'
       },
       remote: {
         discussion_id: this.discussion.id,
-        sequence_id_not_in: RangeSet.serialize(this.readRanges).replace(/,/g, '_'),
+        sequence_id_in: RangeSet.serialize(this.unreadRanges).replace(/,/g, '_'),
         order_by: "sequence_id",
         per: 100
       }

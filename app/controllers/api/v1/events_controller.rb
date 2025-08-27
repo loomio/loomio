@@ -73,6 +73,11 @@ class Api::V1::EventsController < Api::V1::RestfulController
       records = records.where("#{order} >= ?", from)
     end
 
+    if params[:sequence_id_in]
+      ranges = params[:sequence_id_in].split('_').map { |range| range.split('-').map(&:to_i) }.map { |range| range[0]..range[1] }
+      records = records.where(sequence_id: ranges)
+    end
+
     if params[:sequence_id_not_in]
       ranges = params[:sequence_id_not_in].split('_').map { |range| range.split('-').map(&:to_i) }.map { |range| range[0]..range[1] }
       records = records.where.not(sequence_id: ranges)
