@@ -203,7 +203,7 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion"
           .strand-nav__stance-icon-container(v-if="item.poll && item.poll.showResults()")
             poll-common-icon-panel.poll-proposal-chart-panel__chart.mr-1(:poll="item.poll" show-my-stance :size="18" :stanceSize="12")
           //span {{item.key}}
-          span {{item.title}}
+          span(v-if="item.title") {{item.title}}
 </template>
 
 <style lang="sass">
@@ -215,9 +215,11 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion"
   flex-direction: column
   min-height: 70%
 
+.strand-nav__entry:empty
+  flex-grow: 1
+
 .strand-nav__entry
   display: block
-  flex-grow: 1
   border-left: 2px solid #ccc
   padding-left: 8px
   padding-right: 8px
