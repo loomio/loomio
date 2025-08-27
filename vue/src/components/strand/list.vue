@@ -56,6 +56,7 @@ export default {
     .strand-item__row(v-if="obj.missingEarlier")
       strand-load-more(direction="before" :collection="collection" :index="index" :loader="loader")
     .strand-item__row(v-if="loader.collapsed[obj.event.id]")
+      collapsed(:obj="obj" :loader="loader")
     .strand-item__row(v-if="!loader.collapsed[obj.event.id]")
       .strand-item__gutter(v-if="obj.event.depth > 0")
         .d-flex.justify-center
