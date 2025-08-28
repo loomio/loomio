@@ -121,8 +121,7 @@ export default {
     link-previews(:model="discussion")
     document-list(:model='discussion')
     attachment-list(:attachments="discussion.attachments")
-    action-dock.py-2(:model='discussion' :actions='dockActions' :menu-actions='menuActions')
-  strand-actions-panel(v-if="discussion.newestFirst" :discussion="discussion")
+    action-dock.py-2(:model='discussion' :actions='dockActions' :menu-actions='menuActions' color="primary" variant="tonal")
 </template>
 <style lang="sass">
 abbr[title]
