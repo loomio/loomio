@@ -110,8 +110,8 @@ GEM
       ruby2_keywords (>= 0.0.2)
     ast (2.4.3)
     aws-eventstream (1.4.0)
-    aws-partitions (1.1142.0)
-    aws-sdk-core (3.229.0)
+    aws-partitions (1.1151.0)
+    aws-sdk-core (3.231.0)
       aws-eventstream (~> 1, >= 1.3.0)
       aws-partitions (~> 1, >= 1.992.0)
       aws-sigv4 (~> 1.9)
@@ -119,11 +119,11 @@ GEM
       bigdecimal
       jmespath (~> 1, >= 1.6.1)
       logger
-    aws-sdk-kms (1.110.0)
-      aws-sdk-core (~> 3, >= 3.228.0)
+    aws-sdk-kms (1.111.0)
+      aws-sdk-core (~> 3, >= 3.231.0)
       aws-sigv4 (~> 1.5)
-    aws-sdk-s3 (1.196.1)
-      aws-sdk-core (~> 3, >= 3.228.0)
+    aws-sdk-s3 (1.198.0)
+      aws-sdk-core (~> 3, >= 3.231.0)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.5)
     aws-sigv4 (1.12.1)
@@ -208,6 +208,8 @@ GEM
       faraday-net_http (>= 2.0, < 3.5)
       json
       logger
+    faraday-follow_redirects (0.3.0)
+      faraday (>= 1, < 3)
     faraday-multipart (1.1.1)
       multipart-post (~> 2.0)
     faraday-net_http (3.4.1)
@@ -239,14 +241,14 @@ GEM
       grpc (~> 1.66)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    google-apis-core (0.18.0)
-      addressable (~> 2.5, >= 2.5.1)
-      googleauth (~> 1.9)
-      httpclient (>= 2.8.3, < 3.a)
-      mini_mime (~> 1.0)
-      mutex_m
+    google-apis-core (1.0.1)
+      addressable (~> 2.8, >= 2.8.7)
+      faraday (~> 2.13)
+      faraday-follow_redirects (~> 0.3)
+      googleauth (~> 1.14)
+      mini_mime (~> 1.1)
       representable (~> 3.0)
-      retriable (>= 2.0, < 4.a)
+      retriable (~> 3.1)
     google-apis-iamcredentials_v1 (0.24.0)
       google-apis-core (>= 0.15.0, < 2.a)
     google-apis-storage_v1 (0.55.0)
@@ -261,10 +263,10 @@ GEM
     google-cloud-location (1.1.0)
       gapic-common (~> 1.0)
       google-cloud-errors (~> 1.0)
-    google-cloud-storage (1.56.0)
+    google-cloud-storage (1.57.0)
       addressable (~> 2.8)
       digest-crc (~> 0.4)
-      google-apis-core (~> 0.13)
+      google-apis-core (>= 0.18, < 2)
       google-apis-iamcredentials_v1 (~> 0.18)
       google-apis-storage_v1 (>= 0.42)
       google-cloud-core (~> 1.6)
@@ -371,8 +373,6 @@ GEM
       csv
       mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
-    httpclient (2.9.0)
-      mutex_m
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     i18n-timezones (1.4.8)
@@ -445,7 +445,6 @@ GEM
     multi_xml (0.7.2)
       bigdecimal (~> 3.1)
     multipart-post (2.4.1)
-    mutex_m (0.3.0)
     net-http (0.6.0)
       uri
     net-imap (0.5.9)
@@ -674,7 +673,7 @@ GEM
     ruby-saml (1.18.1)
       nokogiri (>= 1.13.10)
       rexml
-    ruby-vips (2.2.4)
+    ruby-vips (2.2.5)
       ffi (~> 1.12)
       logger
     ruby2_keywords (0.0.5)
@@ -804,7 +803,7 @@ DEPENDENCIES
   factory_bot_rails
   faker
   friendly_id (~> 5.5.1)
-  google-cloud-storage (~> 1.56)
+  google-cloud-storage (~> 1.57)
   google-cloud-translate
   gravtastic
   haml-rails (~> 2.1.0)
