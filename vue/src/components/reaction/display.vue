@@ -104,7 +104,7 @@ export default {
 </script>
 <template lang="pug">
 .reactions-display.mr-1(v-if="reactionTypes.length")
-  v-btn(:color="color" variant="text")
+  v-btn(:color="color" variant="text" density="comfortable")
     .reaction.lmo-pointer(v-for="reaction in reactionTypes" :key="reaction")
       .reactions-display__emojis
       //.reaction.lmo-pointer(@click="removeMine(reaction, canEdit)" v-for="reaction in reactionTypes" :key="reaction")
@@ -114,20 +114,20 @@ export default {
           span.reactions-display__count {{reactionHash[reaction].length}}
         template(v-else)
           user-avatar.reactions-display__author(no-link v-for="user in reactionHash[reaction]" :key="user.id" :user="user" :size="diameter")
-  v-menu(activator="parent")
-    v-list
-      template(v-for="reaction in reactions" :key="reaction.id")
-        v-list-item(v-if="reaction.userId == userId && canEdit" density="compact" :title="reaction.user().name" )
-          template(v-slot:prepend)
-            span.reaction--char.mr-2 {{colonToUnicode(reaction.reaction)}}
-            user-avatar.mr-2(:user="reaction.user()")
-          template(v-slot:append)
-            v-btn(icon variant="text" size="small" @click="removeMine(reaction.reaction)")
-              common-icon(name="mdi-close")
-        v-list-item(v-else density="compact" :title="reaction.user().name" )
-          template(v-slot:prepend)
-            span.reaction--char.mr-2 {{colonToUnicode(reaction.reaction)}}
-            user-avatar.mr-2(:user="reaction.user()")
+    v-menu(activator="parent")
+      v-list
+        template(v-for="reaction in reactions" :key="reaction.id")
+          v-list-item(v-if="reaction.userId == userId && canEdit" density="compact" :title="reaction.user().name" )
+            template(v-slot:prepend)
+              span.reaction--char.mr-2 {{colonToUnicode(reaction.reaction)}}
+              user-avatar.mr-2(:user="reaction.user()")
+            template(v-slot:append)
+              v-btn(icon variant="text" size="small" density="comfortable" @click="removeMine(reaction.reaction)")
+                common-icon(name="mdi-close")
+          v-list-item(v-else density="compact" :title="reaction.user().name" )
+            template(v-slot:prepend)
+              span.reaction--char.mr-2 {{colonToUnicode(reaction.reaction)}}
+              user-avatar.mr-2(:user="reaction.user()")
 
 
 

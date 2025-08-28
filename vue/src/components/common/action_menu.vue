@@ -29,7 +29,7 @@ export default {
 .action-menu.lmo-no-print(v-if='canPerformAny')
   v-menu(offset-y)
     template(v-slot:activator="{ props }" )
-      v-btn.action-menu--btn(:title="name" :icon="icon" :size="size" :variant="variant" :color="color" v-bind="props" @click.prevent)
+      v-btn.action-menu--btn(:title="name" :icon="icon" density="comfortable" :size="size" :variant="variant" :color="color" v-bind="props" @click.prevent)
         common-icon(v-if="icon" :size="size" :name="menuIcon" :color="color")
         span(v-if="!icon") {{name}}
 

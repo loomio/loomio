@@ -28,6 +28,7 @@ span
     :class='cssClass'
     :color="color"
     :variant="variant"
+    :density="action.dock == 1 ? 'comfortable' : 'default'"
     :size="size"
   )
     common-icon(v-if="action.dock == 1 || action.dock == 3" :size="size" :name="action.icon" :color="color")
@@ -41,6 +42,7 @@ span
     :class='cssClass'
     :color="color"
     :size="size"
+    :density="action.dock == 1 ? 'comfortable' : 'default'"
     :variant="variant"
   )
     common-icon(v-if="action.dock == 1 || action.dock == 3" :size="size" :name="action.icon" :color="color")
