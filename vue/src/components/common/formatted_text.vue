@@ -79,10 +79,9 @@ div.lmo-markdown-wrapper
 
 .v-theme--dark, .v-theme--darkBlue
   .lmo-markdown-wrapper
+    color: rgba(255,255,255,0.88)
     hr
       border-bottom: 2px solid rgba(255, 255, 255, 0.5)
-    p
-      color: #FFFE
 
     blockquote
       background-color: rgba(0,0,0,0.3)
