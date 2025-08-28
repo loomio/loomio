@@ -86,11 +86,18 @@ watch(() => collection.length, () => {
   }).then((val) => count.value = val );
 }, { immediate: true })
 
+const size = () => {
+  switch (collection[index].event.depth) {
+    case 1: return 'x-large';
+    case 2: return 'large';
+    case 3: return 'default';
+  }
+}
 </script>
 
 <template lang="pug">
 .strand-item__load-more
-  v-btn.text-none(block variant="tonal" color="info" @click="loadAndScrollTo" :loading="loading" size="x-large")
+  v-btn.text-none(block variant="tonal" color="primary" @click="loadAndScrollTo" :loading="loading" :size="size()")
     v-icon.mr-2(v-if="direction === 'before'" :icon="mdiArrowExpandUp")
     v-icon.mr-2(v-if="direction === 'after'" :icon="mdiArrowExpandDown")
     v-icon.mr-2(v-if="direction === 'children'" :icon="mdiArrowExpandDown")
