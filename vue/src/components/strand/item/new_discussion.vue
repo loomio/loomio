@@ -101,7 +101,7 @@ export default {
     v-spacer
     tags-display(:tags="discussion.tags" :group="discussion.group()")
 
-  strand-title(:discussion="discussion")
+  strand-title.text-high-emphasis(:discussion="discussion")
 
   .mb-4.text-body-2
     user-avatar.mr-2(:user='author')
