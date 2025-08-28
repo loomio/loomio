@@ -13,7 +13,7 @@ export default {
   props: {
     discussion: Object,
     loader: Object,
-    focusHelp: String,
+    focusMode: String,
     focusSelector: String
   },
 
@@ -187,8 +187,8 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion"
     v-list(nav density="compact" :lines="false")
       v-list-subheader(v-t="'strand_nav.jump_to'")
       v-list-item(color="info" :prepend-icon="mdiArrowUpThin" :title="$t('strand_nav.start')" @click="scrollToTop" :to="baseUrl+'/0'")
-      v-list-item(color="info" :active="focusHelp == 'strand_nav.showing_unread_activity'" :prepend-icon="mdiMessageBadgeOutline" :title="$t('strand_nav.unread')" @click="scrollToUnread" :to="baseUrl+'?unread'" v-if="loader.firstUnreadSequenceId()" exact)
-      v-list-item(color="info" :active="focusHelp == 'strand_nav.showing_latest_activity'" :prepend-icon="mdiLightningBolt" :title="$t('strand_nav.latest')" @click="scrollToNewest" :to="baseUrl+'?newest'" exact)
+      v-list-item(color="info" :active="focusMode == 'unread'" :prepend-icon="mdiMessageBadgeOutline" :title="$t('strand_nav.unread')" @click="scrollToUnread" :to="baseUrl+'?unread'" v-if="loader.firstUnreadSequenceId()" exact)
+      v-list-item(color="info" :active="focusMode == 'newest'" :prepend-icon="mdiLightningBolt" :title="$t('strand_nav.latest')" @click="scrollToNewest" :to="baseUrl+'?newest'" exact)
       //v-list-item(:prepend-icon="mdiPlus" :title="$t('strand_nav.add_comment')" @click="scrollToNewest" :to="baseUrl+'?newest'" exact)
       //v-list-item(:prepend-icon="mdiArrowDownThin" :title="$t('strand_nav.bottom')" @click="scrollToSequenceId(lastItemSequenceId())" :to="baseUrl+'/'+lastItemSequenceId()" exact)
       v-list-subheader(v-t="'strand_nav.timeline'")

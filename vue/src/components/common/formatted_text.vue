@@ -76,7 +76,6 @@ div.lmo-markdown-wrapper
 <style lang="sass">
 
 
-
 .v-theme--dark, .v-theme--darkBlue
   .lmo-markdown-wrapper
     color: rgba(255,255,255,0.88)

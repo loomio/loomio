@@ -624,8 +624,8 @@ en:
     oldest: Oldest
     newest_first: Newest first
     oldest_first: Oldest first
-    showing_latest_activity: Showing the latest activity in the thread
-    showing_unread_activity: Showing the earliest activity you haven’t seen yet
+    showing_latest: Showing latest
+    showing_unread: Showing unread
     add_comment: Add comment
     start_decision: Start decision
   search_modal:

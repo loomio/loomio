@@ -201,8 +201,6 @@ export default new class ThreadService {
       edit_arrangement: {
         icon: (discussion.newestFirst && 'mdi-arrow-up') || 'mdi-arrow-down',
         name: (discussion.newestFirst && 'strand_nav.newest_first') || 'strand_nav.oldest_first',
-        dock: 3,
-        dockLeft: true,
         canPerform() { return AbilityService.canEditThread(discussion); },
         perform() {
           return openModal({

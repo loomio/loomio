@@ -8,7 +8,7 @@ import WatchRecords from '@/mixins/watch_records';
 import UrlFor from '@/mixins/url_for';
 import StrandActionsPanel from './actions_panel';
 import ScrollService from '@/shared/services/scroll_service';
-import { mdiMap } from '@mdi/js';
+import { mdiMenuOpen } from '@mdi/js';
 
 export default {
   mixins: [WatchRecords, UrlFor],
@@ -19,13 +19,13 @@ export default {
 
   data() {
     return {
-      mdiMap,
+      mdiMenuOpen,
       discussion: null,
       loader: null,
       position: 0,
       group: null,
       discussionFetchError: null,
-      focusHelp: null,
+      focusMode: null,
       focusSelector: null,
       anchorSelector: null,
       anchorOffset: null,
@@ -97,7 +97,7 @@ export default {
       if (!this.discussion) { return; }
       if (this.discussion.key !== this.$route.params.key) { return; }
 
-      this.focusHelp = null;
+      this.focusMode = null;
       this.focusSelector = null;
       this.anchorSelector = null;
       this.anchorOffset = null;
@@ -127,7 +127,7 @@ export default {
         this.loader.clearRules();
         // this.loader.addLoadNewestRule();
         this.loader.addLoadUnreadRule();
-        this.focusHelp = 'strand_nav.showing_unread_activity';
+        this.focusMode = 'unread';
         this.anchorSelector = `.sequenceId-${parseInt(this.loader.firstUnreadSequenceId())}`;
         return;
       }
@@ -135,7 +135,7 @@ export default {
       if (Object.keys(this.$route.query).includes('newest')) {
         this.loader.clearRules();
         this.loader.addLoadNewestRule();
-        this.focusHelp = 'strand_nav.showing_latest_activity';
+        this.focusMode = 'newest';
         this.focusSelector = `.sequenceId-${parseInt(this.discussion.lastSequenceId())}`;
         return;
       }
@@ -144,8 +144,10 @@ export default {
       if (!this.discussion.lastReadAt) {
         if (this.discussion.newestFirst) {
           this.loader.addLoadNewestRule();
+          this.focusMode = 'newest';
         } else {
           this.loader.addLoadOldestRule();
+          this.focusMode = 'oldest';
         }
         this.anchorSelector = "#strand-page";
         return;
@@ -154,12 +156,12 @@ export default {
       if (this.loader.firstUnreadSequenceId()) {
         // this.loader.addLoadNewestRule();
         this.loader.addLoadUnreadRule();
-        this.focusHelp = 'strand_nav.showing_unread_activity';
+        this.focusMode = 'unread';
         this.anchorSelector = `.sequenceId-${parseInt(this.loader.firstUnreadSequenceId())}`;
         return;
       } else {
         this.loader.addLoadNewestRule();
-        this.focusHelp = 'strand_nav.showing_latest_activity';
+        this.focusMode = 'newest';
         this.anchorSelector = `.sequenceId-${parseInt(this.discussion.lastSequenceId())}`;
         return;
       }
@@ -167,7 +169,7 @@ export default {
 
     respondToRoute() {
       this.loadContent();
-      this.snackbar = !!this.focusHelp;
+      this.snackbar = !!this.focusMode;
 
       if (this.$route.query.current_action) {
         this.anchorSelector = '.actions-panel-end';
@@ -191,27 +193,8 @@ export default {
 
     scrollToAnchorIfNew() {
       if (this.lastAnchorSelector !== this.anchorSelector) {
-        console.log('scrolling to ', this.anchorSelector, this.anchorOffset);
         ScrollService.scrollTo(this.anchorSelector, this.anchorOffset);
         this.lastAnchorSelector = this.anchorSelector;
-      }
-    },
-
-    elementInView(el) {
-      if (!el) { return false };
-      const rect = el.getBoundingClientRect();
-      return ((rect.top >= 0) && (rect.left >= 0) &&
-       (rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)) &&
-       (rect.right <= (window.innerWidth || document.documentElement.clientWidth)));
-    },
-
-    jumpToAnchorIfOffScreen() {
-      let el;
-      if (this.lastAnchorSelector &&
-         (el = document.querySelector(this.lastAnchorSelector) &&
-         !this.elementInView(el))) {
-        console.log(`refocusing ${this.lastAnchorSelector}`);
-        ScrollService.jumpTo(this.lastAnchorSelector, this.anchorOffset);
       }
     },
   }
@@ -223,15 +206,16 @@ export default {
 .strand-page
   v-main
     v-container.max-width-800.px-0.px-sm-3#strand-page(v-if="discussion")
-      v-fab(v-if="!$vuetify.display.mdAndUp" extended app location="bottom right" @click="openThreadNav")
-        v-icon.mr-2(:icon="mdiMap")
-        span Jump to
       thread-current-poll-banner(:discussion="discussion")
       discussion-fork-actions(:discussion='discussion' :key="'fork-actions'+ discussion.id")
       v-sheet.strand-card.thread-card.mb-8.pb-4.rounded(elevation=1)
-        v-snackbar(v-if="focusHelp" v-model="snackbar" location="top")
-          span(v-t="focusHelp")
-        strand-list.pt-3.pr-1.pr-sm-3.px-sm-2(:loader="loader" :collection="loader.collection" :focus-selector="focusSelector")
-        strand-actions-panel(v-if="!loader.discussion.newestFirst" :discussion="discussion")
-  strand-toc-nav(v-if="loader" :discussion="discussion" :loader="loader" :key="discussion.id" :focus-help="focusHelp" :focus-selector="focusSelector")
+        v-snackbar(v-if="focusMode" v-model="snackbar" location="bottom center" color="info")
+          div.text-center
+            span.text-center(v-if="focusMode == 'unread'" v-t="'strand_nav.showing_unread'")
+            span.text-center(v-if="focusMode == 'newest'" v-t="'strand_nav.showing_latest'")
+        strand-list.pt-3.pr-1.pr-sm-3.px-sm-2(:loader="loader" :collection="loader.collection" :focus-selector="focusSelector" :focus-mode="focusMode")
+        strand-actions-panel(:discussion="discussion")
+  strand-toc-nav(v-if="loader" :discussion="discussion" :loader="loader" :key="discussion.id" :focus-mode="focusMode" :focus-selector="focusSelector")
+  v-fab(v-if="!$vuetify.display.mdAndUp" icon app location="bottom right" @click="openThreadNav" color="primary" variant="tonal")
+    v-icon(:icon="mdiMenuOpen" )
 </template>
