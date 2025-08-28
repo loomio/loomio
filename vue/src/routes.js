@@ -38,7 +38,6 @@ const groupPageChildren = [
   {path: 'polls', component: GroupPollsPanel, meta: {noScroll: true}},
   {path: 'members', component: MembersPanel, meta: {noScroll: true}},
   {path: 'membership_requests', component: MembershipRequestsPanel, meta: {noScroll: true}},
-  {path: 'members/requests', redirect: 'membership_requests', meta: {noScroll: true}},
   {path: 'files', component: GroupFilesPanel, meta: {noScroll: true}},
   {path: ':stub?', component: GroupDiscussionsPanel, meta: {noScroll: true}}
 ];

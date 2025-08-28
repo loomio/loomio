@@ -237,7 +237,7 @@ class GroupExportService
           end
 
           if data['record'].has_key?('secret_token')
-            record.secret_token = nil 
+            record.secret_token = nil
           end
 
           if data['record'].has_key?('token')
@@ -309,17 +309,18 @@ class GroupExportService
         end
       end
     end
-
-    # SearchIndexWorker.new.perform(Discussion.where(group_id: group_ids).pluck(:id))
   end
 
   def self.download_attachment(record_data, new_id)
     model = record_data['record_type'].classify.constantize.find(new_id)
-    file = URI.open(record_data['url'])
-    model.send(record_data['name']).attach(io: file, filename: record_data['filename'])
-    if model.respond_to?(:attachments)
-      model.update_attribute(:attachments, model.build_attachments)
+    URI.open(record_data['url']) do |file|
+      blob = ActiveStorage::Blob.create_and_upload!(io: file,
+                                                    filename: record_data['filename'],
+                                                    content_type: record_data['content_type'])
+      model.send(record_data['name']).attach(blob)
+      if model.respond_to?(:attachments)
+        model.update_attribute(:attachments, model.build_attachments)
+      end
     end
-    file.close
   end
 end
