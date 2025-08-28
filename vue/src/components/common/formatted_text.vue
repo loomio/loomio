@@ -75,6 +75,8 @@ div.lmo-markdown-wrapper
 
 <style lang="sass">
 
+
+
 .v-theme--dark, .v-theme--darkBlue
   .lmo-markdown-wrapper
     hr
@@ -106,6 +108,8 @@ img.emoji
         content: none
 
 .lmo-markdown-wrapper
+  color: rgba(0, 0, 0, 0.88)
+
   audio,video
     display: block
     margin-bottom: 8px
