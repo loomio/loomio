@@ -110,4 +110,8 @@ class Api::V1::EventsController < Api::V1::RestfulController
   def default_page_size
     30
   end
+
+  def count_collection
+    false
+  end
 end

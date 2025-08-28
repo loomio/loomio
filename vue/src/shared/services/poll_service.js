@@ -46,7 +46,7 @@ export default new class PollService {
       view_all_votes: {
         icon: 'mdi-list-status',
         name: 'poll_common.view_all_votes',
-        menu: true,
+        dock: 2,
         canPerform() { return vm.$route.path.startsWith('/d/') && poll.showResults() },
         to() { return `/p/${poll.key}`; }
       },
