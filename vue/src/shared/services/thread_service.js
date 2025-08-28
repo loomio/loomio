@@ -30,7 +30,7 @@ export default new class ThreadService {
       subscribe: {
         name: 'common.action.subscribe',
         icon: 'mdi-bell',
-        dock: 2,
+        menu: true,
         canPerform() {
           return !discussion.closedAt &&
           (discussion.volume() === 'normal') &&
@@ -49,7 +49,7 @@ export default new class ThreadService {
       unsubscribe: {
         name: 'common.action.unsubscribe',
         icon: 'mdi-bell-off',
-        dock: 2,
+        menu: true,
         canPerform() {
           return (discussion.volume() === 'loud') && AbilityService.canChangeVolume(discussion);
         },
@@ -81,9 +81,9 @@ export default new class ThreadService {
       },
 
       announce_thread: {
-        name: 'common.action.invite',
-        icon: 'mdi-send',
-        dock: 2,
+        name: 'action_dock.notify',
+        icon: 'mdi-bullhorn',
+        dock: 1,
         canPerform() {
           return discussion.group().adminsInclude(Session.user()) ||
           ((discussion.group().membersCanAnnounce || discussion.group().membersCanAddGuests) && discussion.membersInclude(Session.user()));
@@ -105,7 +105,11 @@ export default new class ThreadService {
         icon: 'mdi-reply',
         dockDisplay: 'icon',
         dock: 1,
-        canPerform() { return AbilityService.canAddComment(discussion); },
+        canPerform() {
+          return AbilityService.canAddComment(discussion) &&
+                 !(discussion.group().adminsInclude(Session.user()) ||
+                  ((discussion.group().membersCanAnnounce || discussion.group().membersCanAddGuests) && discussion.membersInclude(Session.user())))
+        },
         perform() {
           document.querySelector('#add-comment').scrollIntoView();
           document.querySelector('#add-comment').focus();
