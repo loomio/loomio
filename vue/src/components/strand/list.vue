@@ -40,7 +40,8 @@ export default {
 
     rowClasses(obj) {
       if (this.isFocused(obj.event)) {
-        return ['strand-item__row--focused', 'v-theme--dark', 'rounded-lg'];
+        // read current theme and add a v-theme class
+        return ['strand-item__row--focused', 'rounded-lg'];
       }
     }
   }
