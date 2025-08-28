@@ -81,9 +81,9 @@ export default new class ThreadService {
       },
 
       announce_thread: {
-        name: 'action_dock.notify',
+        name: 'common.action.invite',
         icon: 'mdi-bullhorn',
-        dock: 1,
+        dock: 3,
         canPerform() {
           return discussion.group().adminsInclude(Session.user()) ||
           ((discussion.group().membersCanAnnounce || discussion.group().membersCanAddGuests) && discussion.membersInclude(Session.user()));

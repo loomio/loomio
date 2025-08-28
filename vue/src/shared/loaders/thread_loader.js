@@ -213,14 +213,16 @@ export default class ThreadLoader {
       local: {
         find: {
           discussionId: this.discussion.id,
-          sequenceId: {$in: RangeSet.rangesToArray(this.unreadRanges)}
+          // sequenceId: {$in: RangeSet.rangesToArray(this.unreadRanges)}
+          sequenceId: {$nin: RangeSet.rangesToArray(this.readRanges)}
         },
         limit: 100,
         simplesort: 'sequenceId'
       },
       remote: {
         discussion_id: this.discussion.id,
-        sequence_id_in: RangeSet.serialize(this.unreadRanges).replace(/,/g, '_'),
+        // sequence_id_in: RangeSet.serialize(this.unreadRanges).replace(/,/g, '_'),
+        sequence_id_not_in: RangeSet.serialize(this.readRanges).replace(/,/g, '_'),
         order_by: "sequence_id",
         per: 100
       }

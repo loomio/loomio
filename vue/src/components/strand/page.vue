@@ -105,7 +105,8 @@ export default {
       this.loader.addContextRule();
 
       if (this.discussion.itemsCount === 0) {
-        this.focusSelector = '#strand-page';
+        this.loader.addLoadNewestRule();
+        // this.anchorSelector = '#strand-page';
         return;
       }
 
@@ -125,8 +126,8 @@ export default {
 
       if (Object.keys(this.$route.query).includes('unread')) {
         this.loader.clearRules();
-        // this.loader.addLoadNewestRule();
         this.loader.addLoadUnreadRule();
+        this.loader.addLoadNewestRule();
         this.focusMode = 'unread';
         this.anchorSelector = `.sequenceId-${parseInt(this.loader.firstUnreadSequenceId())}`;
         return;
@@ -154,10 +155,10 @@ export default {
       }
 
       if (this.loader.firstUnreadSequenceId()) {
-        // this.loader.addLoadNewestRule();
         this.loader.addLoadUnreadRule();
+        this.loader.addLoadNewestRule();
         this.focusMode = 'unread';
-        this.anchorSelector = `.sequenceId-${parseInt(this.loader.firstUnreadSequenceId())}`;
+        this.focusSelector = `.sequenceId-${parseInt(this.loader.firstUnreadSequenceId())}`;
         return;
       } else {
         this.loader.addLoadNewestRule();
