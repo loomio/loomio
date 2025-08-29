@@ -4,7 +4,10 @@ export default {
   props: {
     actions: Object,
     color: String,
-    variant: String,
+    variant: {
+      type: String,
+      default: 'tonal'
+    },
     size: {
       type: String,
       default: 'default'

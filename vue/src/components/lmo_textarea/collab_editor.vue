@@ -421,11 +421,11 @@ div
 
           //- link
           template(v-if="editor.isActive('link')")
-            v-btn(v-bind="btnProps" variant="outlined" @click="editor.chain().toggleLink().focus().run()" :title="$t('formatting.link')")
+            v-btn(v-bind="btnProps" variant="tonal" @click="editor.chain().toggleLink().focus().run()" :title="$t('formatting.link')")
               common-icon(name="mdi-link-variant")
 
           template(v-else)
-            v-btn(size="x-small" icon variant="text" :title="$t('formatting.link')")
+            v-btn(v-bind="btnProps" :title="$t('formatting.link')")
               common-icon(name="mdi-link-variant")
               v-menu(activator="parent" :close-on-content-click="!selectedText()" v-model="linkDialogIsOpen")
                 template(v-if="selectedText()")
