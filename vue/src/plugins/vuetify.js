@@ -10,7 +10,6 @@ import { aliases, mdi } from 'vuetify/iconsets/mdi-svg'
 const colors = {
   gold: "#DCA034",
   goldDark1: "#C6902F",
-  goldDark2: "#B0802A",
   ink: "#293C4A",
   wellington: "#7F9EA0",
   sunset: "#E4C2B9",
@@ -55,7 +54,7 @@ export default createVuetify({
         colors: {
           background: "#f0f0f0",
           primary:  colors.skyDark1,
-          info:  colors.skyDark2,
+          info:   colors.skyDark1,
           anchor:  colors.skyDark2,
         },
       },

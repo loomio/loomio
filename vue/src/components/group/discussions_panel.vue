@@ -251,8 +251,8 @@ div.discussions-panel(v-if="group")
         .discussions-panel__list.thread-preview-collection__container(v-if="discussions.length")
           v-list.thread-previews(lines="two")
             thread-preview(
-              :show-group-name="groupIds.length > 1"
               v-for="thread in discussions"
+              :show-group-name="thread.groupId != group.id"
               :key="thread.id"
               :thread="thread"
               group-page

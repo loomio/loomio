@@ -1,7 +1,6 @@
 class Event < ApplicationRecord
   include ActionView::Helpers::SanitizeHelper
   include CustomCounterCache::Model
-  include HasTimeframe
   extend HasCustomFields
 
   has_many :notifications, dependent: :destroy

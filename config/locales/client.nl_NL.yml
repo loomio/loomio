@@ -568,6 +568,12 @@ nl_NL:
     timeline: Tijdlijn
     top: Bovenkant
     bottom: Onderkant
+    start: Begin
+    latest: Laatste
+    showing_latest: Laatste tonen
+    showing_unread: Ongelezen weergeven
+    add_comment: Reactie toevoegen
+    start_decision: Startbeslissing
   search_modal:
     all_content: Alle inhoud
     best_match: Beste overeenkomst
@@ -1859,6 +1865,7 @@ nl_NL:
     edit_warning: Wijzigen wordt alleen aanbevolen voor kleine veranderingen of spellingcorrecties. Voor grotere verandering, sluit deze %{pollType} en start een nieuwe.
     no_voting: Alleen bestemd voor discussies, stemmen gedeactiveerd
     post_outcome: Post-uitkomst
+    view_all_votes: Bekijk alle stemmen
   poll_common_attachment_form:
     label: Bijlagen
   poll_common_add_option:
@@ -2342,6 +2349,7 @@ nl_NL:
     stance_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> heeft gestemd op: <strong>%{title}</strong>"
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> heeft zijn stem geüpdatet op: <strong>%{title}</strong>"
     event_removed: Van bord verwijderd
+    new: nieuw
   add_poll_to_thread_modal:
     success: Gelukt, %{pollType} aan bord toegevoegd!
   auth_form:

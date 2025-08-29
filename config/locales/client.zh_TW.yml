@@ -574,6 +574,12 @@ zh_TW:
     timeline: 時間軸
     top: 頂部
     bottom: 底部
+    start: 開始
+    latest: 最新的
+    showing_latest: 顯示最新
+    showing_unread: 顯示未讀
+    add_comment: 新增評論
+    start_decision: 開始決定
   search_modal:
     all_content: 所有內容
     best_match: 最佳匹配
@@ -1869,6 +1875,7 @@ zh_TW:
     edit_warning: 小變動或修正拼字錯誤建議使用編輯。若是重大變更，請關閉此 %{pollType} 並開始一個新的。
     no_voting: 僅討論，停用投票
     post_outcome: 後期結果
+    view_all_votes: 查看所有投票
   poll_common_attachment_form:
     label: 附件
   poll_common_add_option:
@@ -2352,6 +2359,7 @@ zh_TW:
     stance_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> 已投票：<strong>%{title}</strong>"
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> 更新了他們的投票於：<strong>%{title}</strong>"
     event_removed: 從討論串中移除
+    new: 新的
   add_poll_to_thread_modal:
     success: 成功，%{pollType} 已新增至討論串！
   auth_form:

@@ -582,8 +582,6 @@ en:
     private_privacy_notice: Your comment will only be visible to members of %{groupName}.
     public_privacy_notice: Your comment will be visible to anyone on the web.
     sign_in: Sign in to participate
-  thread_nav:
-    participants: Participants
   sidebar:
     user_settings: User settings
     new_thread_removed: New thread removed
@@ -618,16 +616,18 @@ en:
     jump_to: Jump to
     timeline: Timeline
     top: Top
+    start: Start
     bottom: Bottom
+    latest: Latest
     newest: Newest
     unread: Unread
     oldest: Oldest
     newest_first: Newest first
     oldest_first: Oldest first
-    all_pinned: All pinned items
-    whole_thread: The whole thread
-    from_comment: From a comment url
-    from_sequence_id: From a thread item url
+    showing_latest: Showing latest
+    showing_unread: Showing unread
+    add_comment: Add comment
+    start_decision: Start decision
   search_modal:
     all_content: All content
     best_match: Best match
@@ -1931,6 +1931,7 @@ en:
     reason_placeholder: Briefly explain why you voted this way, then click 'Submit Vote'
     message: Message
     results: Results
+    view_all_votes: View all votes
     current_results: Current results
     responses: Responses
     close_poll_type: Close %{pollType}
@@ -2434,6 +2435,7 @@ en:
     stance_created: Choice recorded
     stance_updated: Choice updated
   thread_item:
+    new: new
     removed: Item removed
     deleted_group: Deleted group
     invite_only_thread: Invite only thread

@@ -43,6 +43,13 @@ export default new class PollService {
   actions(poll, vm, event) {
     if (!poll || !poll.config()) { return {}; }
     return {
+      view_all_votes: {
+        icon: 'mdi-list-status',
+        name: 'poll_common.view_all_votes',
+        dock: 2,
+        canPerform() { return vm.$route.path.startsWith('/d/') && poll.showResults() },
+        to() { return `/p/${poll.key}`; }
+      },
       translate_poll: {
         icon: 'mdi-translate',
         name: 'common.action.translate',
@@ -60,7 +67,7 @@ export default new class PollService {
       },
 
       uncast_stance: {
-        name: (poll.config().has_options && 'poll_common.remove_your_vote') || 'poll_common.remove_your_response', 
+        name: (poll.config().has_options && 'poll_common.remove_your_vote') || 'poll_common.remove_your_response',
         icon: 'mdi-cancel',
         menu: true,
         canPerform() { return StanceService.canUpdateStance(poll.myStance()); },
@@ -303,4 +310,3 @@ export default new class PollService {
     };
   }
 };
-

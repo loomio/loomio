@@ -101,7 +101,7 @@ export default {
     v-spacer
     tags-display(:tags="discussion.tags" :group="discussion.group()")
 
-  strand-title(:discussion="discussion")
+  strand-title.text-high-emphasis(:discussion="discussion")
 
   .mb-4.text-body-2
     user-avatar.mr-2(:user='author')
@@ -121,8 +121,7 @@ export default {
     link-previews(:model="discussion")
     document-list(:model='discussion')
     attachment-list(:attachments="discussion.attachments")
-    action-dock.py-2(:model='discussion' :actions='dockActions' :menu-actions='menuActions')
-  strand-actions-panel(v-if="discussion.newestFirst" :discussion="discussion")
+    action-dock.py-2(:model='discussion' :actions='dockActions' :menu-actions='menuActions' color="primary" variant="tonal")
 </template>
 <style lang="sass">
 abbr[title]

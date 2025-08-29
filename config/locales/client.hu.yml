@@ -566,6 +566,12 @@ hu:
     timeline: Idővonal
     top: Felső
     bottom: Alsó
+    start: Indul
+    latest: Legújabb
+    showing_latest: Legfrissebb megjelenítése
+    showing_unread: Olvasatlanok megjelenítése
+    add_comment: Hozzászólás hozzáadása
+    start_decision: Döntés megkezdése
   search_modal:
     all_content: Minden tartalom
     best_match: Legjobb találat
@@ -1841,6 +1847,7 @@ hu:
     edit_warning: A szerkesztés csak kisebb változtatásokhoz vagy helyesírási hibák javításához javasolt. Jelentős változtatások esetén zárja be ezt a %{pollType} elemet, és indítson újat.
     no_voting: Csak megbeszélésre, szavazás letiltva
     post_outcome: Eredmény utáni
+    view_all_votes: Az összes szavazat megtekintése
   poll_common_attachment_form:
     label: Mellékletek
   poll_common_add_option:
@@ -2322,6 +2329,7 @@ hu:
     stance_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> szavazott: <strong>%{title}</strong>"
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> frissítette szavazatát erre: <strong>%{title}</strong>"
     event_removed: Eltávolítva a témából
+    new: új
   add_poll_to_thread_modal:
     success: Sikeres, %{pollType} hozzáadva a szálhoz!
   auth_form:

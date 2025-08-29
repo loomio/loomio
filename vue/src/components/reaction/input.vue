@@ -6,6 +6,8 @@ import Records from '@/shared/services/records';
 export default {
   props: {
     model: Object,
+    variant: String,
+    color: String,
     size: {
       type: String,
       default: 'default'
@@ -38,8 +40,8 @@ export default {
 <template lang="pug">
 v-menu.reactions-input(:close-on-content-click="true")
   template(v-slot:activator="{ props }")
-    v-btn.emoji-picker__toggle.action-button(icon :size="size" variant="text" v-bind="props" )
-      common-icon(:size="size" name="mdi-emoticon-outline")
+    v-btn.mr-1.emoji-picker__toggle.action-button(icon :size="size" density="comfortable" v-bind="props" :color="color" :variant="variant")
+      common-icon(:size="size" name="mdi-emoticon-happy-outline" :color="color")
   emoji-picker(:insert="insert" :is-poll="model.isA('poll') || model.isA('stance') || model.isA('outcome')")
 </template>
 

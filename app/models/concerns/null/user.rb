@@ -63,7 +63,7 @@ module Null::User
   def complaints_count
     0
   end
-  
+
   def short_bio_format
     "html"
   end
@@ -74,5 +74,9 @@ module Null::User
 
   def is_admin?
     false
+  end
+
+  def sign_in_count
+    0
   end
 end

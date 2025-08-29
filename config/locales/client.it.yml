@@ -576,6 +576,12 @@ it:
     timeline: Cronologia
     top: Superiore
     bottom: Metter il fondo a
+    start: Inizio
+    latest: Ultimo
+    showing_latest: Visualizzazione delle ultime novità
+    showing_unread: Visualizzazione non letti
+    add_comment: Aggiungi commento
+    start_decision: Inizia la decisione
   search_modal:
     all_content: Tutti i contenuti
     best_match: Migliore abbinamento
@@ -1864,6 +1870,7 @@ it:
     edit_warning: La modifica è consigliata solo per modifiche minori o per correggere errori di ortografia. Per modifiche significative, chiudi questo %{pollType} e iniziane uno nuovo.
     no_voting: Solo per discussione, voto disabilitato
     post_outcome: Post risultato
+    view_all_votes: Visualizza tutti i voti
   poll_common_attachment_form:
     label: Allegati
   poll_common_add_option:
@@ -2345,6 +2352,7 @@ it:
     stance_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha votato su: <strong>%{title}</strong>"
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> hanno aggiornato il loro voto su: <strong>%{title}</strong>"
     event_removed: Rimosso dalla discussione
+    new: nuovo
   add_poll_to_thread_modal:
     success: Successo, %{pollType} aggiunto alla discussione!
   auth_form:

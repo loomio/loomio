@@ -564,6 +564,12 @@ hr:
     timeline: Vremenska crta
     top: Vrh
     bottom: Dno
+    start: Start
+    latest: Najnoviji
+    showing_latest: Prikazuju se najnovije
+    showing_unread: Prikazuje se nepročitano
+    add_comment: Dodaj komentar
+    start_decision: Započni odluku
   search_modal:
     all_content: Sav sadržaj
     best_match: Najbolji spoj
@@ -1834,6 +1840,7 @@ hr:
     edit_warning: Uređivanje se preporučuje samo za manje izmjene ili ispravljanje pravopisnih pogrešaka. Za značajne promjene zatvorite ovaj %{pollType} i započnite novi.
     no_voting: Samo za raspravu, glasovanje onemogućeno
     post_outcome: Ishod objave
+    view_all_votes: Prikaži sve glasove
   poll_common_attachment_form:
     label: Prilozi
   poll_common_add_option:
@@ -2315,6 +2322,7 @@ hr:
     stance_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> je glasao za: <strong>%{title}</strong>"
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> je ažurirao svoj glas za: <strong>%{title}</strong>"
     event_removed: Uklonjeno iz niti
+    new: novi
   add_poll_to_thread_modal:
     success: Uspjeh, %{pollType} dodan u nit!
   auth_form:

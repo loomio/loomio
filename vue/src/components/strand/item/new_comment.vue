@@ -4,12 +4,13 @@ import AbilityService from '@/shared/services/ability_service';
 import { pick, pickBy, assign } from 'lodash-es';
 import CommentService from '@/shared/services/comment_service';
 import EventService from '@/shared/services/event_service';
-import Session from '@/shared/services/session';
 
 export default {
   props: {
     event: Object,
-    eventable: Object
+    eventable: Object,
+    focused: Boolean,
+    unread: Boolean
   },
 
   data() {
@@ -44,7 +45,7 @@ export default {
 
 <template lang="pug">
 section.strand-item__new-comment.new-comment(:id="'comment-'+ eventable.id")
-  strand-item-headline(:event="event" :eventable="eventable")
+  strand-item-headline(:event="event" :eventable="eventable" :focused="focused" :unread="unread")
   formatted-text.thread-item__body.new-comment__body(:model="eventable" column="body")
   link-previews(:model="eventable")
   document-list(:model='eventable')
