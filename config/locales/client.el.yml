@@ -564,6 +564,12 @@ el:
     timeline: Χρονολόγιο
     top: Κορυφή
     bottom: Κάτω μέρος
+    start: Αρχή
+    latest: Αργότερο
+    showing_latest: Εμφάνιση των τελευταίων
+    showing_unread: Εμφάνιση μη αναγνωσμένων
+    add_comment: Προσθήκη σχολίου
+    start_decision: Απόφαση έναρξης
   search_modal:
     all_content: Όλο το περιεχόμενο
     best_match: Ταιριάζει καλύτερα
@@ -1834,6 +1840,7 @@ el:
     edit_warning: Η επεξεργασία συνιστάται μόνο για μικρές αλλαγές ή για διόρθωση ορθογραφικών λαθών. Για σημαντικές αλλαγές, κλείστε αυτό το %{pollType} και ξεκινήστε ένα νέο.
     no_voting: Μόνο για συζήτηση, η ψηφοφορία απενεργοποιήθηκε
     post_outcome: Δημοσίευση αποτελέσματος
+    view_all_votes: Δείτε όλες τις ψήφους
   poll_common_attachment_form:
     label: Συνημμένα
   poll_common_add_option:
@@ -2315,6 +2322,7 @@ el:
     stance_created: "<a class='actor-link' href='/u/%{username}'>Ο χρήστης %{author}</a> ψήφισε: <strong>%{title}</strong>"
     stance_updated: "<a class='actor-link' href='/u/%{username}'>Ο χρήστης %{author}</a> ενημέρωσε την ψήφο του για: <strong>%{title}</strong>"
     event_removed: Καταργήθηκε από το νήμα
+    new: νέος
   add_poll_to_thread_modal:
     success: Επιτυχία, το %{pollType} προστέθηκε στο νήμα!
   auth_form:

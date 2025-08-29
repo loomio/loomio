@@ -564,6 +564,12 @@ ru:
     timeline: Хронология
     top: Вершина
     bottom: Нижний
+    start: Начинать
+    latest: Последний
+    showing_latest: Показ последних
+    showing_unread: Показано непрочитанное
+    add_comment: Добавить комментарий
+    start_decision: Начать решение
   search_modal:
     all_content: Весь контент
     best_match: Лучший матч
@@ -1834,6 +1840,7 @@ ru:
     edit_warning: Редактирование рекомендуется только для внесения незначительных изменений или исправления орфографических ошибок. Если есть существенные изменения, закройте этот %{pollType} и начните новый.
     no_voting: Только для обсуждения, голосование отключено
     post_outcome: Пост-результат
+    view_all_votes: Посмотреть все голоса
   poll_common_attachment_form:
     label: Вложения
   poll_common_add_option:
@@ -2315,6 +2322,7 @@ ru:
     stance_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> проголосовал за: <strong>%{title}</strong>"
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> обновил свое голосование по вопросу: <strong>%{title}</strong>"
     event_removed: Удалено из темы
+    new: новый
   add_poll_to_thread_modal:
     success: Успех, %{pollType} добавлен в тему!
   auth_form:

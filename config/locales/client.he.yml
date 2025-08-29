@@ -564,6 +564,12 @@ he:
     timeline: ציר זמן
     top: רֹאשׁ
     bottom: תַחתִית
+    start: הַתחָלָה
+    latest: אחרון
+    showing_latest: מציג את העדכונים האחרונים
+    showing_unread: מציג דברים שלא נקראו
+    add_comment: הוסף תגובה
+    start_decision: החלטה להתחיל
   search_modal:
     all_content: כל התוכן
     best_match: ההתאמה הטובה ביותר
@@ -1853,6 +1859,7 @@ he:
     edit_warning: עריכה מומלצת רק עבור שינויים קלים או תיקון שגיאות כתיב. לשינויים משמעותיים, סגור את ה-%{pollType} הזה והתחל חדש.
     no_voting: לדיון בלבד, ההצבעה מושבתת
     post_outcome: תוצאה לאחר מכן
+    view_all_votes: הצג את כל ההצבעות
   poll_common_attachment_form:
     label: קבצים מצורפים
   poll_common_add_option:
@@ -2334,6 +2341,7 @@ he:
     stance_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> הצביע ב: <strong>%{title}</strong>"
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> עדכן את ההצבעה שלו ב: <strong>%{title}</strong>"
     event_removed: הוסר מהשיחה
+    new: חָדָשׁ
   add_poll_to_thread_modal:
     success: הצלחה, %{pollType} נוסף לשרשור!
   auth_form:

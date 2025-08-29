@@ -574,6 +574,12 @@ de:
     timeline: Zeitleiste
     top: Spitze
     bottom: Unten
+    start: Start
+    latest: Letzte
+    showing_latest: Aktuelles anzeigen
+    showing_unread: Ungelesene anzeigen
+    add_comment: Einen Kommentar hinzufügen
+    start_decision: Entscheidung starten
   search_modal:
     all_content: Alle Inhalte
     best_match: Bester Treffer
@@ -1867,6 +1873,7 @@ de:
     edit_warning: 'Wir empfehlen dir Änderungen nur durchzuführen wenn es kleine Schreib-oder Grammatikfehler sind. Für grössere Inhaltsänderungen, schliesse diese %{pollType} und beginne eine neue. '
     no_voting: Nur für Diskussionen, Wahlen abgeschaltet
     post_outcome: Ergebnis veröffentlichen
+    view_all_votes: Alle Abstimmungen ansehen
   poll_common_attachment_form:
     label: Arbeitsmaterialien
   poll_common_add_option:
@@ -2350,6 +2357,7 @@ de:
     stance_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> hat abgestimmt zu: <strong>%{title}</strong>"
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> hat seine Abstimmung aktualisiert am: <strong>%{title}</strong>"
     event_removed: Von der Diskussion entfernt
+    new: neu
   add_poll_to_thread_modal:
     success: Erfolg, %{pollType} wurde der Diskussion hinzugefügt!
   auth_form:
