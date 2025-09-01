@@ -24,7 +24,7 @@ module HasRichText
           self[field] = HasRichText::add_heading_ids(self[field])
           self[field] = TaskService.rewrite_uids(self[field])
           # preserve markdown quotes after html sanitizer
-          self[field] = self[field].gsub(/^&gt\; /, '> ') if self.send("#{field}_format") == 'md'
+          self[field] = self[field].gsub(/^\s*\\*&gt\; /, '> ') if self.send("#{field}_format") == 'md'
         end
 
         define_method "#{field}_visible_text" do
