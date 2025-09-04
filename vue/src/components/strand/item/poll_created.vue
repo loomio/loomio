@@ -62,7 +62,7 @@ export default {
 section.strand-item.poll-created
   .d-flex.justify-space-between
     .poll-common-card__title.text-h6.pb-1(tabindex="-1")
-      router-link.underline-on-hover(:to="urlFor(poll)" )
+      router-link.underline-on-hover.text-high-emphasis(:to="urlFor(poll)" )
         span(v-if='!poll.translation.title') {{poll.title}}
         translation(v-if="poll.translation.title", :model='poll', field='title')
   div(v-if="!collapsed")

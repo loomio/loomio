@@ -70,7 +70,7 @@ export default {
       .strand-item__main
         .strand-item__main--content(:class='rowClasses(obj)')
           .strand-item__row--focused-underlay(v-if="isFocused(obj.event)")
-          intersection-wrapper(:loader="loader" :obj="obj" :focused="isFocused(obj.event)" :unread="loader.isUnread(obj.event)")
+          intersection-wrapper(:loader="loader" :obj="obj" :focused="isFocused(obj.event)")
         .strand-list__children(v-if="obj.event.childCount && (!obj.eventable.isA('stance') || obj.eventable.poll().showResults())")
           strand-load-more(v-if="obj.children.length == 0" direction="children" :collection="collection" :index="index" :loader="loader")
           strand-list.flex-grow-1( :loader="loader" :collection="obj.children" :focusSelector="focusSelector" )

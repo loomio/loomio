@@ -78,7 +78,7 @@ div.lmo-markdown-wrapper
 
 .v-theme--dark, .v-theme--darkBlue
   .lmo-markdown-wrapper
-    color: rgba(255,255,255,0.88)
+    color: rgba(255,255,255,1)
     hr
       border-bottom: 2px solid rgba(255, 255, 255, 0.5)
 

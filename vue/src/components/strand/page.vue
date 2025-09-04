@@ -145,10 +145,8 @@ export default {
       if (!this.discussion.lastReadAt) {
         if (this.discussion.newestFirst) {
           this.loader.addLoadNewestRule();
-          this.focusMode = 'newest';
         } else {
           this.loader.addLoadOldestRule();
-          this.focusMode = 'oldest';
         }
         this.anchorSelector = "#strand-page";
         return;

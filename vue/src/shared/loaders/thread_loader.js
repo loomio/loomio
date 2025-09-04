@@ -16,6 +16,7 @@ export default class ThreadLoader {
     this.rules = [];
     this.ruleStrings = [];
     this.fetchedRules = [];
+    this.discussionLastSeenAt = this.discussion.lastSeenAt;
     this.readRanges = cloneDeep(this.discussion.readRanges);
     this.unreadRanges = RangeSet.subtractRanges(this.discussion.ranges, this.readRanges);
     this.visibleKeys = {};
@@ -332,7 +333,7 @@ export default class ThreadLoader {
       const isLastInRange = some(ranges, range => range[1] === obj.event.position);
       const isLastInLastRange = last(ranges)[1] === obj.event.position;
 
-      obj.isUnread = this.isUnread(obj.event);
+      obj.isUnread = this.discussion.lastSeenAt && this.isUnread(obj.event);
       obj.missingEarlier = isFirstInRange && obj.event.position > 1;
       obj.missingAfter = isLastInLastRange && obj.event.position !== lastPosition;
       obj.missingChildCount = obj.event.childCount - obj.children.length;
