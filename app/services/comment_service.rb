@@ -13,7 +13,7 @@ class CommentService
     actor.ability.authorize!(:discard, comment)
     ActiveRecord::Base.transaction do
       comment.update(discarded_at: Time.now, discarded_by: actor.id)
-      comment.created_event.update(user_id: nil, pinned: false)
+      comment.created_event.update(pinned: false)
     end
     comment.discussion.update_sequence_info!
     comment.created_event
