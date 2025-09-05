@@ -89,7 +89,7 @@ watch(() => collection.length, () => {
 const size = () => {
   switch (collection[index].event.depth) {
     case 1: return 'x-large';
-    case 2: return 'large';
+    case 2: return 'default';
     case 3: return 'default';
   }
 }

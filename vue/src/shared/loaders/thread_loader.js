@@ -4,6 +4,7 @@ import { reactive } from 'vue';
 import RangeSet         from '@/shared/services/range_set';
 import EventBus         from '@/shared/services/event_bus';
 import Session from '@/shared/services/session';
+import AppConfig from '@/shared/services/app_config';
 
 export default class ThreadLoader {
   constructor(discussion) {
@@ -17,6 +18,7 @@ export default class ThreadLoader {
     this.ruleStrings = [];
     this.fetchedRules = [];
     this.discussionLastReadAt = this.discussion.lastReadAt;
+    this.ranges = cloneDeep(this.discussion.ranges);
     this.readRanges = cloneDeep(this.discussion.readRanges);
     this.unreadRanges = RangeSet.subtractRanges(this.discussion.ranges, this.readRanges);
     this.visibleKeys = {};
@@ -34,6 +36,10 @@ export default class ThreadLoader {
 
   firstUnreadSequenceId() {
     return (this.unreadRanges[0] || [])[0];
+  }
+
+  lastSequenceId() {
+    return (last(this.ranges) || [])[1];
   }
 
   setVisible(isVisible, event) {
@@ -120,6 +126,18 @@ export default class ThreadLoader {
     });
   }
 
+  addLoadMyStuffRule() {
+    this.addRule({
+      local: {
+        find: {
+          actorId: AppConfig.currentUserId,
+          discussionId: this.discussion.id,
+          createdAt: { $gte: new Date() }
+        }
+      }
+    })
+  }
+
   addLoadCommentRule(commentId) {
     return this.addRule({
       name: "comment from url",
@@ -145,8 +163,10 @@ export default class ThreadLoader {
       name: "sequenceId from url",
       local: {
         find: {
-          discussionId: this.discussion.id,
-          sequenceId: {'$gte': id}
+          $and: [
+            { discussionId: this.discussion.id },
+            { sequenceId: {'$gte': id} },
+          ]
         },
         simplesort: 'sequenceId',
         limit: this.padding
@@ -164,7 +184,8 @@ export default class ThreadLoader {
     return this.addRule({
       local: {
         find: {
-          discussionId: this.discussion.id
+          discussionId: this.discussion.id,
+          sequenceId: { $lte: this.lastSequenceId() }
         },
         simplesort: 'sequenceId',
         simplesortDesc: true,
@@ -172,6 +193,7 @@ export default class ThreadLoader {
       },
       remote: {
         discussion_id: this.discussion.id,
+        sequence_id_lte: this.lastSequenceId(),
         order_by: 'sequence_id',
         order_desc: true,
         per: this.padding
@@ -195,7 +217,8 @@ export default class ThreadLoader {
       name: 'oldest',
       local: {
         find: {
-          discussionId: this.discussion.id
+          discussionId: this.discussion.id,
+          sequenceId: { $lte: this.lastSequenceId() }
         },
         simplesort: 'sequenceId',
         limit: this.padding
@@ -214,18 +237,17 @@ export default class ThreadLoader {
       local: {
         find: {
           discussionId: this.discussion.id,
-          // sequenceId: {$in: RangeSet.rangesToArray(this.unreadRanges)}
-          sequenceId: {$nin: RangeSet.rangesToArray(this.readRanges)}
+          sequenceId: {$in: RangeSet.rangesToArray(this.unreadRanges)}
         },
-        limit: 100,
+        limit: this.padding,
         simplesort: 'sequenceId'
       },
       remote: {
         discussion_id: this.discussion.id,
-        // sequence_id_in: RangeSet.serialize(this.unreadRanges).replace(/,/g, '_'),
-        sequence_id_not_in: RangeSet.serialize(this.readRanges).replace(/,/g, '_'),
+        sequence_id_in: RangeSet.serialize(this.unreadRanges).replace(/,/g, '_'),
+        // sequence_id_not_in: RangeSet.serialize(this.readRanges).replace(/,/g, '_'),
         order_by: "sequence_id",
-        per: 100
+        per: this.padding
       }
     });
   }

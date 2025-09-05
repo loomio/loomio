@@ -103,6 +103,7 @@ export default {
       this.anchorOffset = null;
 
       this.loader.addContextRule();
+      this.loader.addLoadMyStuffRule();
 
       if (this.discussion.itemsCount === 0) {
         this.loader.addLoadNewestRule();
@@ -156,7 +157,7 @@ export default {
         this.loader.addLoadUnreadRule();
         this.loader.addLoadNewestRule();
         this.focusMode = 'unread';
-        this.focusSelector = `.sequenceId-${parseInt(this.loader.firstUnreadSequenceId())}`;
+        this.anchorSelector = `.sequenceId-${parseInt(this.loader.firstUnreadSequenceId())}`;
         return;
       } else {
         this.loader.addLoadNewestRule();
