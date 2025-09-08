@@ -33,13 +33,14 @@ export default {
 .poll-common-stance-choices.pb-2.pt-2(v-if="!datesAsOptions && poll.pollType != 'question' && !poll.hasOptionIcon()")
   span.text-caption(v-if='stance.castAt && stance.totalScore() == 0' v-t="'poll_common_form.none_of_the_above'" )
   template(v-else)
-    .poll-common-stance-choice.text-truncate(
+    .poll-common-stance-choice.text-truncate.mb-1(
       v-for="choice in choices"
       :key="choice.id"
       :class="'poll-common-stance-choice--' + pollType")
       common-icon(size="small" :color="choice.pollOption.color" v-if="!variableScore" name="mdi-check-circle")
-      span(:style="{color: choice.pollOption.color}" v-if="variableScore") {{choice.rank || choice.score}}
-      span.ml-2.text-medium-emphasis
+      v-chip(variant="outlined" :color="choice.pollOption.color" v-if="variableScore")
+        span.text-high-emphasis {{choice.rank || choice.score}}
+      span.ml-2.text-high-emphasis
         | {{ choice.pollOption.optionName() }}
 </template>
 <style lang="sass">

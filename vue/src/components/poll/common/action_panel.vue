@@ -4,7 +4,6 @@ import Session        from '@/shared/services/session';
 import Records        from '@/shared/services/records';
 import EventBus       from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
-import LmoUrlService  from '@/shared/services/lmo_url_service';
 import WatchRecords   from '@/mixins/watch_records';
 
 export default
@@ -15,7 +14,9 @@ export default
   },
 
   data() {
-    return {stance: null};
+    return {
+      stance: null
+    };
   },
 
   created() {
@@ -25,8 +26,7 @@ export default
         props: {
           outcome: Records.outcomes.build({pollId: this.poll.id})
         }
-      }
-      );
+      });
     }
 
     if (parseInt(this.$route.query.change_vote) === this.poll.id) {
@@ -47,12 +47,17 @@ export default
 
     this.watchRecords({
       collections: ["stances"],
-      query: records => {
+      query: () => {
+        console.log("watched stances change");
         if (this.stance && !this.stance.castAt && this.poll.myStance() && this.poll.myStance().castAt) {
           this.stance = this.lastStanceOrNew().clone();
         }
 
         if (this.stance && this.stance.castAt && this.poll.myStance() && !this.poll.myStance().castAt) {
+          this.stance = this.lastStanceOrNew().clone();
+        }
+
+        if (this.stance && this.stance.castAt && this.poll.myStance() && this.poll.myStance().castAt && this.stance.updatedAt < this.poll.myStance().updatedAt) {
           this.stance = this.lastStanceOrNew().clone();
         }
 
@@ -90,17 +95,20 @@ export default
   )
     span(v-t="'poll_common_action_panel.anonymous'")
 
-  v-overlay.rounded.elevation-1(absolute v-if="!poll.closingAt" :opacity="0.33" :z-index="2")
-    v-alert.poll-common-action-panel__results-hidden-until-vote.my-2.elevation-5(
-       density="compact" type="info"
-    )
-      span(v-t="{path: 'poll_common_action_panel.draft_mode', args: {poll_type: poll.translatedPollType()}}")
+  .poll-common-vote-form(v-if="stance && !stance.castAt")
+    h3.text-h6.py-3.text-high-emphasis(v-t="'poll_common.have_your_say'")
+    poll-common-directive(:stance='stance' name='vote-form')
 
-  template(v-else)
-    .poll-common-vote-form(v-if='stance && !stance.castAt')
-      h3.text-h6.py-3.text-high-emphasis(v-t="'poll_common.have_your_say'")
-
-  poll-common-directive(:class="{'pa-2': !poll.closingAt}" v-if="stance && !stance.castAt", :stance='stance' name='vote-form')
+  v-alert.poll-common-current-vote(color="info" variant="tonal" v-if="stance && stance.castAt && poll.pollType != 'meeting'")
+    .text-subtitle1.mb-2
+      span(v-t="'poll_common.you_voted'")
+    poll-common-stance-choice(
+      v-if="poll.hasOptionIcon()"
+      :size="28"
+      :poll="poll"
+      :stance-choice="stance.stanceChoice()"
+      verbose)
+    poll-common-stance-choices(:stance='stance')
 
   .poll-common-unable-to-vote(v-if='!stance')
     v-alert.my-4(

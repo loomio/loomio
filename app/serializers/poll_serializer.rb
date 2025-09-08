@@ -50,7 +50,9 @@ class PollSerializer < ApplicationSerializer
              :maximum_stance_choices,
              :meeting_duration,
              :poll_template_id,
-             :poll_template_key
+             :poll_template_key,
+             :quorum_pct,
+             :quorum_votes_required
 
   has_one :discussion, serializer: DiscussionSerializer, root: :discussions
   has_one :created_event, serializer: EventSerializer, root: :events

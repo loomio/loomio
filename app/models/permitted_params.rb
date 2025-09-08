@@ -71,10 +71,11 @@ class PermittedParams < Struct.new(:params)
       :minimum_stance_choices,
       :maximum_stance_choices,
       :chart_type,
+      :quorum_pct,
       :document_ids, {document_ids: []},
       :poll_template_id,
       :poll_template_key,
-      :poll_options_attributes, {poll_options_attributes: [:id, :name, :icon, :meaning, :prompt, :priority, :_destroy]},
+      :poll_options_attributes, {poll_options_attributes: [:id, :name, :icon, :meaning, :prompt, :priority, :threshold_pct, :_destroy]},
       :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}
     ]
   end
@@ -110,7 +111,7 @@ class PermittedParams < Struct.new(:params)
       :dots_per_person,
       :reason_prompt,
       :tags, {tags: []},
-      :poll_options, {poll_options: [:name, :icon, :meaning, :prompt, :priority]},
+      :poll_options, {poll_options: [:name, :icon, :meaning, :prompt, :priority, :threshold_pct]},
       :stance_reason_required,
       :limit_reason_length,
       :default_duration_in_days,
@@ -121,6 +122,7 @@ class PermittedParams < Struct.new(:params)
       :outcome_statement,
       :outcome_statement_format,
       :outcome_review_due_in_days,
+      :quorum_pct,
       :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}
     ]
   end

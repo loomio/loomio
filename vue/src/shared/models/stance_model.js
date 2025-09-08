@@ -1,7 +1,5 @@
 import BaseModel       from '@/shared/record_store/base_model';
-import AppConfig       from '@/shared/services/app_config';
 import HasTranslations from '@/shared/mixins/has_translations';
-import AnonymousUserModel   from '@/shared/models/anonymous_user_model';
 import { I18n } from '@/i18n';
 import { sumBy, map, head, compact, flatten, includes, sortBy } from 'lodash-es';
 import Records from '@/shared/services/records';
@@ -134,6 +132,8 @@ export default class StanceModel extends BaseModel {
 
     if (poll.pollType === 'meeting') {
       return sortBy(choices, c => c.pollOption.priority);
+    } else if (poll.pollType == 'ranked_choice') {
+      return sortBy(choices, 'rank');
     } else {
       return sortBy(choices, '-score');
     }
