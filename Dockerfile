@@ -1,4 +1,4 @@
-FROM ruby:3.4.4-slim
+FROM ruby:3.4.5-slim
 
 ENV MALLOC_ARENA_MAX=2
 ENV RAILS_LOG_TO_STDOUT=1
@@ -26,6 +26,7 @@ RUN apt-get update -qq && \
     sudo \
     nodejs \
     imagemagick \
+    libyaml-dev \
     libpq-dev && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists /usr/share/doc /usr/share/man

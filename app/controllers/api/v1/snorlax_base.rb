@@ -1,4 +1,4 @@
-class API::V1::SnorlaxBase < ActionController::Base
+class Api::V1::SnorlaxBase < ActionController::Base
   rescue_from(CanCan::AccessDenied)                    { |e| respond_with_standard_error e, 403 }
   rescue_from(Subscription::MaxMembersExceeded)        { |e| respond_with_standard_error e, 403 }
   rescue_from(ActionController::UnpermittedParameters) { |e| respond_with_standard_error e, 400 }
@@ -176,9 +176,13 @@ class API::V1::SnorlaxBase < ActionController::Base
     self.collection = accessible_records
     self.collection = yield collection if block_given?
     self.collection = timeframe_collection collection
-    self.collection_count = collection.count
+    self.collection_count = collection.count if count_collection
     self.collection = page_collection collection
     self.collection = order_collection collection
+  end
+
+  def count_collection
+    true
   end
 
   def timeframe_collection(collection)

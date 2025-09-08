@@ -1,6 +1,6 @@
 <script lang="js">
 import AppConfig      from '@/shared/services/app_config';
-import AbilityService from '@/shared/services/ability_service';
+import LmoUrlService from '@/shared/services/lmo_url_service';
 import Records  from '@/shared/services/records';
 import Flash   from '@/shared/services/flash';
 import EventBus   from '@/shared/services/event_bus';
@@ -16,6 +16,7 @@ export default
 
   data() {
     return {
+      groupUrl: (AppConfig.root_url + LmoUrlService.group(this.group)),
       tab: 'profile',
       isDisabled: false,
       rules: {
@@ -75,6 +76,11 @@ export default
         Flash.warning('poll_common_form.please_review_the_form');
         console.error(error);
       })
+    },
+
+    copyText(text) {
+      navigator.clipboard.writeText(text).then(() => Flash.success('common.copied')
+      , () => Flash.error('invitation_form.error'));
     },
 
 
@@ -246,6 +252,7 @@ v-card.group-form(:title="$t(cardTitle)")
                   mid-dot
                   span {{ privacyStringFor(privacy) }}
           validation-errors(:subject="group" field="groupPrivacy")
+
         p.group-form__privacy-statement.text-medium-emphasis(v-if="group.groupPrivacy != 'secret'") {{privacyStatement}}
         .group-form__section.group-form__joining.lmo-form-group(v-if='group.groupPrivacy != "secret"')
           v-list-subheader(v-t="'group_form.how_do_people_join'")
@@ -258,9 +265,22 @@ v-card.group-form(:title="$t(cardTitle)")
             )
               template(v-slot:label)
                 span(v-t="'group_form.membership_granted_upon_' + granted")
+        v-text-field(
+          v-if="group.groupPrivacy != 'secret' && group.membershipGrantedUpon != 'invitation'"
+          read-only
+          :label="$t('group_form.share_this_url_with_people_who_want_to_join')"
+          v-model="groupUrl"
+        )
+          template(v-slot:append-inner)
+            v-tooltip(location="bottom")
+              template(v-slot:activator="{ props }")
+                v-btn.shareable-link-modal__copy(v-bind="props" icon variant="tonal" color="info" :title="$t('common.copy')" @click='copyText(groupUrl)' )
+                  common-icon(name="mdi-content-copy")
+              span(v-t="'invitation_form.copy_to_clipboard'")
+
         template(v-if="group.groupPrivacy != 'secret' && group.membershipGrantedUpon == 'approval'")
-          p(v-t="'group_form.request_to_join_prompt'")
           v-textarea(
+            :label="$t('group_form.request_to_join_prompt')"
             counter
             v-model="group.requestToJoinPrompt"
             :placeholder="$t('group_form.default_request_to_join_prompt')")

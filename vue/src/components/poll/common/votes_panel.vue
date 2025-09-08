@@ -22,7 +22,7 @@ export default {
 
     return {
       stances: [],
-      per: 25,
+      per: 50,
       loader: null,
       pollOptionItems,
       page: parseInt(this.$route.query.page) || 1,
@@ -128,7 +128,7 @@ export default {
           formatted-text.poll-common-stance-created__reason(:model="stance" column="reason")
           attachment-list(:attachments="stance.attachments")
     loading(v-if="loader.loading")
-    v-pagination(v-model="page", :length="totalPages", :disabled="totalPages == 1")
+    v-pagination(v-if="!totalPages != 1" v-model="page", :length="totalPages")
 </template>
 
 <style lang="sass">

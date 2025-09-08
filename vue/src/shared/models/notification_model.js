@@ -2,6 +2,7 @@ import BaseModel from '@/shared/record_store/base_model';
 import AppConfig from '@/shared/services/app_config';
 import { colonToUnicode } from '@/shared/helpers/emojis';
 import AnonymousUserModel   from '@/shared/models/anonymous_user_model';
+import { compact } from 'lodash-es';
 
 export default class NotificationModel extends BaseModel {
   static singular = 'notification';
@@ -19,7 +20,7 @@ export default class NotificationModel extends BaseModel {
       title: null,
       model: null,
       pollType: null,
-      name: null, 
+      name: null,
       reaction: null
     };
   }
@@ -39,9 +40,11 @@ export default class NotificationModel extends BaseModel {
   href() {
     if (!this.url) { return '/'; }
     if (this.kind === 'membership_requested') {
-      return "/" + this.url.split('/')[1] + "/members/requests";
+      return "/g/" + compact(this.url.split('/'))[1] + "/membership_requests";
     } else if (this.url.startsWith(AppConfig.baseUrl)) {
       return "/" + this.url.replace(AppConfig.baseUrl, '');
+    } else if (this.url.startsWith('/')) {
+      return this.url;
     } else {
       return "/" + this.url;
     }

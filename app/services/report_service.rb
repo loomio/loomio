@@ -34,6 +34,18 @@ class ReportService
     results.to_a.map {|row| [row[name_a], row[name_b]]}.to_h
   end
 
+  def memberships_per_interval
+    query = <<~SQL
+      SELECT date_trunc('#{@interval}', memberships.created_at)::date AS interval, count(memberships.id) count
+      FROM memberships
+      WHERE group_id IN (#{@group_ids.join(',')})
+      AND memberships.created_at >= '#{@start_at.to_date.iso8601}'
+      AND memberships.created_at <= '#{@end_at.to_date.iso8601}'
+      group by interval
+    SQL
+    rows_to_hash ActiveRecord::Base.connection.execute query
+  end
+
   def discussions_per_interval
     query = <<~SQL
       SELECT date_trunc('#{@interval}', discussions.created_at)::date AS interval, count(discussions.id) count

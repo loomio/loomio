@@ -560,6 +560,16 @@ sv:
     from_comment: Från en kommentars-url
     from_sequence_id: Från en webbadress för trådobjekt
     unread: Nytt för dig
+    jump_to: Hoppa till
+    timeline: Tidslinje
+    top: Bästa
+    bottom: Botten
+    start: Start
+    latest: Senast
+    showing_latest: Visar senaste
+    showing_unread: Visar olästa
+    add_comment: Lägg till kommentar
+    start_decision: Startbeslut
   search_modal:
     all_content: Allt innehåll
     best_match: Bästa matchningen
@@ -615,6 +625,8 @@ sv:
     theme: Tema
     light: Ljus
     dark: Mörk
+    light_blue: Ljusblå
+    dark_blue: Mörkblå
   membership_card:
     group_members: Gruppmedlemmar
     discussion_members: Trådmedlemmar
@@ -1283,6 +1295,7 @@ sv:
     request_to_join_prompt: Begäran om att gå med
     default_request_to_join_prompt: Tack för ditt intresse för vår grupp. Presentera dig själv och förklara varför du vill vara med.
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Uppgradera din prenumeration</a> för att skapa en undergrupp'
+    share_this_url_with_people_who_want_to_join: Dela den här webbadressen med personer som vill gå med
   group_export_modal:
     title: Exportera gruppdata
     body: <p>Du kan ladda ner en kopia av din grupps data när som helst. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Få reda på mer.</a></p><p> Det tar några minuter att slutföra, beroende på storleken på din grupp. När den är klar får du ett e-postmeddelande med en länk för att ladda ner filen.</p>
@@ -1827,6 +1840,7 @@ sv:
     edit_warning: Redigering rekommenderas endast för mindre ändringar eller korrigering av stavfel. För betydande ändringar, stäng denna %{pollType} och starta en ny.
     no_voting: Endast för diskussion, röstning inaktiverad
     post_outcome: Resultat efter
+    view_all_votes: Visa alla röster
   poll_common_attachment_form:
     label: Bilagor
   poll_common_add_option:
@@ -2308,6 +2322,7 @@ sv:
     stance_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> röstade på: <strong>%{title}</strong>"
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> uppdaterade sin röst på: <strong>%{title}</strong>"
     event_removed: Borttagen från tråden
+    new: ny
   add_poll_to_thread_modal:
     success: Framgång, %{pollType} har lagts till i tråden!
   auth_form:

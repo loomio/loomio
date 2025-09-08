@@ -564,6 +564,16 @@ pl:
     from_comment: Z adresu URL komentarza
     from_sequence_id: Z adresu URL elementu wątku
     unread: Nowe dla Ciebie
+    jump_to: Przejdź do
+    timeline: Oś czasu
+    top: Szczyt
+    bottom: Spód
+    start: Start
+    latest: Najnowszy
+    showing_latest: Pokazywanie najnowszych
+    showing_unread: Wyświetlanie nieprzeczytanych
+    add_comment: Dodaj komentarz
+    start_decision: Rozpocznij decyzję
   search_modal:
     all_content: Cała zawartość
     best_match: Najlepszy mecz
@@ -619,6 +629,8 @@ pl:
     theme: Temat
     light: Światło
     dark: Ciemny
+    light_blue: Jasnoniebieski
+    dark_blue: Ciemnoniebieski
   membership_card:
     group_members: Osoby w tej grupy
     discussion_members: Osoby w tym wątku
@@ -1291,6 +1303,7 @@ pl:
     request_to_join_prompt: Prośba o dołączenie
     default_request_to_join_prompt: Dziękujemy za zainteresowanie naszą grupą. Przedstaw się i wyjaśnij, dlaczego chcesz dołączyć.
     upgrade_for_subgroups: 'Aby utworzyć podgrupę, <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">zaktualizuj swoją subskrypcję</a>'
+    share_this_url_with_people_who_want_to_join: Udostępnij ten adres URL osobom, które chcą dołączyć
   group_export_modal:
     title: Eksportuj dane grupy
     body: |
@@ -1852,6 +1865,7 @@ pl:
     edit_warning: Edycja jest zalecana tylko w przypadku drobnych zmian lub napraw błędów pisowni. W przypadku istotnych zmian zakończ %{pollType} i utwórz nową.
     no_voting: Wyłącznie do dyskusji, głosowanie wyłączone
     post_outcome: Wynik postu
+    view_all_votes: Zobacz wszystkie głosy
   poll_common_attachment_form:
     label: Załączniki
   poll_common_add_option:
@@ -2335,6 +2349,7 @@ pl:
     stance_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> głosował na: <strong>%{title}</strong>"
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> zaktualizował(a) swój głos na: <strong>%{title}</strong>"
     event_removed: Usunięty z wątku
+    new: nowy
   add_poll_to_thread_modal:
     success: Sukces, do wątku dodano %{pollType} !
   auth_form:

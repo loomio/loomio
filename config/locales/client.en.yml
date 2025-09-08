@@ -250,7 +250,6 @@ en:
     option: Option
     add: Add
     you: You
-    false: false
     expand: Expand
     all_day: All day
     ok_got_it: Ok, got it
@@ -583,8 +582,6 @@ en:
     private_privacy_notice: Your comment will only be visible to members of %{groupName}.
     public_privacy_notice: Your comment will be visible to anyone on the web.
     sign_in: Sign in to participate
-  thread_nav:
-    participants: Participants
   sidebar:
     user_settings: User settings
     new_thread_removed: New thread removed
@@ -616,15 +613,21 @@ en:
       groups_list: Groups
       user_list: User actions
   strand_nav:
+    jump_to: Jump to
+    timeline: Timeline
+    top: Top
+    start: Start
+    bottom: Bottom
+    latest: Latest
     newest: Newest
+    unread: Unread
     oldest: Oldest
     newest_first: Newest first
     oldest_first: Oldest first
-    all_pinned: All pinned items
-    whole_thread: The whole thread
-    from_comment: From a comment url
-    from_sequence_id: From a thread item url
-    unread: New to you
+    showing_latest: Showing latest
+    showing_unread: Showing unread
+    add_comment: Add comment
+    start_decision: Start decision
   search_modal:
     all_content: All content
     best_match: Best match
@@ -668,9 +671,9 @@ en:
     disable_beta_features: Disable beta features
     theme: Theme
     light: Light
+    light_blue: Light blue
     dark: Dark
-    enable_dark_mode: Enable dark mode
-    disable_dark_mode: Disable dark mode
+    dark_blue: Dark blue
     button_label: User menu
     edit_profile: Edit profile
     email_settings: Notification settings
@@ -1294,6 +1297,7 @@ en:
     question: Are you sure you want to deactivate this group?
     submit: Yes, Deactivate this group
   group_form:
+    share_this_url_with_people_who_want_to_join: Share this URL with people who want to join
     request_to_join_prompt: Request to join prompt
     default_request_to_join_prompt: 'Thanks for your interest in our group. Please introduce yourself and explain why you are requesting to join.
 
@@ -1932,6 +1936,7 @@ en:
     reason_placeholder: Briefly explain why you voted this way, then click 'Submit Vote'
     message: Message
     results: Results
+    view_all_votes: View all votes
     current_results: Current results
     responses: Responses
     close_poll_type: Close %{pollType}
@@ -2440,6 +2445,7 @@ en:
     stance_created: Choice recorded
     stance_updated: Choice updated
   thread_item:
+    new: new
     removed: Item removed
     deleted_group: Deleted group
     invite_only_thread: Invite only thread

@@ -560,6 +560,16 @@ fi:
     from_comment: Kommentin URL-osoitteesta
     from_sequence_id: Säikeen kohteen URL-osoitteesta
     unread: Uutta sinulle
+    jump_to: Siirry kohtaan
+    timeline: Aikajana
+    top: Yläosa
+    bottom: Pohja
+    start: Aloita
+    latest: Uusin
+    showing_latest: Näytetään uusimmat
+    showing_unread: Näytetään lukemattomat
+    add_comment: Lisää kommentti
+    start_decision: Aloita päätös
   search_modal:
     all_content: Kaikki sisältö
     best_match: Paras ottelu
@@ -615,6 +625,8 @@ fi:
     theme: Teema
     light: Kevyt
     dark: Tumma
+    light_blue: Vaaleansininen
+    dark_blue: Tummansininen
   membership_card:
     group_members: Ryhmän jäsenet
     discussion_members: Viestiketjun jäsenet
@@ -1283,6 +1295,7 @@ fi:
     request_to_join_prompt: Pyydä liittymään
     default_request_to_join_prompt: Kiitos mielenkiinnostasi ryhmäämme kohtaan. Esittele itsesi ja selitä, miksi pyydät liittymistä.
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Päivitä tilauksesi</a> luodaksesi aliryhmän'
+    share_this_url_with_people_who_want_to_join: Jaa tämä URL-osoite niiden kanssa, jotka haluavat liittyä
   group_export_modal:
     title: Vie ryhmätiedot
     body: <p>Voit ladata kopion ryhmäsi tiedoista milloin tahansa. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Lue lisää.</a></p><p> Suorittaminen kestää muutaman minuutin ryhmäsi koosta riippuen. Kun se on valmis, saat sähköpostin, jossa on linkki tiedoston lataamiseen.</p>
@@ -1827,6 +1840,7 @@ fi:
     edit_warning: Muokkausta suositellaan vain pienten muutosten tai kirjoitusvirheiden korjaamisen yhteydessä. Jos haluat tehdä merkittäviä muutoksia, sulje tämä %{pollType} ja aloita uusi.
     no_voting: Vain keskustelua varten, äänestäminen estetty
     post_outcome: Tulosten julkaisu
+    view_all_votes: Näytä kaikki äänet
   poll_common_attachment_form:
     label: Liitteet
   poll_common_add_option:
@@ -2308,6 +2322,7 @@ fi:
     stance_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> äänesti: <strong>%{title}</strong>"
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> päivitti äänensä aiheesta: <strong>%{title}</strong>"
     event_removed: Poistettu langasta
+    new: uusi
   add_poll_to_thread_modal:
     success: Onnistui, %{pollType} lisättiin viestiketjuun!
   auth_form:

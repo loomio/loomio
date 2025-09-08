@@ -17,14 +17,14 @@ module HasRichText
           # return if self.send("#{field}_format") == 'md'
           tags = %w[strong em b i p s code pre big div small hr br span mark h1 h2 h3 ul ol li abbr a img video audio blockquote table thead th tr td iframe u]
           attributes = %w[href src alt title data-type data-iframe-container data-done data-mention-id poster controls data-author-id data-uid data-checked data-due-on data-color data-remind width height target colspan rowspan data-text-align]
-          
+
           self[field] = Rails::Html::WhiteListSanitizer.new.sanitize(self[field], tags: tags, attributes: attributes)
           self[field] = HasRichText::strip_empty_paragraphs(self[field])
           self[field] = add_required_link_attributes(self[field])
           self[field] = HasRichText::add_heading_ids(self[field])
           self[field] = TaskService.rewrite_uids(self[field])
           # preserve markdown quotes after html sanitizer
-          self[field] = self[field].gsub(/^&gt\; /, '> ') if self.send("#{field}_format") == 'md'
+          self[field] = self[field].gsub(/^\s*\\*&gt\; /, '> ') if self.send("#{field}_format") == 'md'
         end
 
         define_method "#{field}_visible_text" do
@@ -48,7 +48,7 @@ module HasRichText
         end
         after_save :"parse_and_update_tasks_#{field}!"
 
-        validates field, {length: {maximum: Rails.application.secrets.max_message_length}}
+        validates field, {length: {maximum: AppConfig.app_features[:max_message_length]}}
         validates_inclusion_of :"#{field}_format", in: ['html', 'md']
         if respond_to?(:after_discard)
           after_discard do
@@ -73,7 +73,7 @@ module HasRichText
 
   def update_content_locale
     return unless self.changed.intersection(self.class.rich_text_fields.map(&:to_s)).any?
-    
+
     combined_text = self.class.rich_text_fields.map {|field| self[field] }.join(' ')
     stripped_text = Rails::Html::WhiteListSanitizer.new.sanitize(combined_text, tags: [])
     result = CLD.detect_language stripped_text
@@ -103,7 +103,12 @@ module HasRichText
   end
 
   def assign_attributes_and_files(params)
-    self.assign_attributes API::V1::SnorlaxBase.filter_params(self.class, params)
+    # this prevents accidentally removing attachments
+    [:files, :image_files].each do |key|
+      params.delete(key) if params.has_key?(key) && params[key].nil?
+    end
+
+    self.assign_attributes Api::V1::SnorlaxBase.filter_params(self.class, params)
   end
 
   def attachment_icon(name)

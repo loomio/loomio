@@ -63,7 +63,7 @@ export default
 span.poll-common-stance-choice.text-truncate.text-high-emphasis.text-body-1(:class="'poll-common-stance-choice--' + pollType")
   span(v-if='poll.config().has_option_icon')
     v-avatar(tile :size="size")
-      img(:src="'/img/' + pollOption.icon + '.svg'" :alt='optionName')
+      img(:style="{width: size + 'px', height: size + 'px'}" :src="'/img/' + pollOption.icon + '.svg'" :alt='optionName')
     span.ml-2(v-if="verbose") {{ optionName }}
   v-chip(v-if='poll.pollOptionNameFormat == "iso8601"' :color="colorFor(stanceChoice.score)")
     poll-meeting-time(:name="optionName")

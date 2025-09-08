@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
-ruby '3.4.4'
-gem 'rails', '7.0.8.7'
+ruby '3.4.5'
+gem 'rails', '7.2.2.1'
 gem 'rack', '2.2.17'
 gem 'uri', '1.0.3'
 gem 'rake'
@@ -28,7 +28,7 @@ gem 'httparty', '~> 0.23.1'
 gem 'browser', '~> 6.2.0'
 gem "aws-sdk-s3", require: false
 gem "ruby-openai"
-gem "google-cloud-storage", "~> 1.56", require: false
+gem "google-cloud-storage", "~> 1.57", require: false
 gem 'image_processing', '~> 1.14'
 gem "ruby-vips"
 gem "stackprof"
@@ -75,12 +75,12 @@ group :development, :test do
   gem 'faker'
   gem 'dotenv-rails'
   gem 'rails-controller-testing'
+  gem "brakeman", require: false
+  gem "rubocop-rails-omakase", require: false
 end
 
 group :development do
   gem 'web-console'
-  gem 'spring'
-  gem "spring-commands-rspec"
 end
 
 group :test do

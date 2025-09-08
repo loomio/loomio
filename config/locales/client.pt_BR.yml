@@ -572,6 +572,16 @@ pt_BR:
     from_comment: A partir de um URL de comentário
     from_sequence_id: A partir de um URL de item de discussão
     unread: Novo para você
+    jump_to: Pular para
+    timeline: Linha do tempo
+    top: Principal
+    bottom: Fundo
+    start: Começar
+    latest: Mais recente
+    showing_latest: Mostrando as últimas
+    showing_unread: Mostrando não lidos
+    add_comment: Adicionar comentário
+    start_decision: Iniciar decisão
   search_modal:
     all_content: Todo o conteúdo
     best_match: Melhor partida
@@ -627,6 +637,8 @@ pt_BR:
     theme: Tema
     light: Luz
     dark: Escuro
+    light_blue: Azul claro
+    dark_blue: Azul escuro
   membership_card:
     group_members: Membros do Grupo
     discussion_members: Membros da conversa
@@ -1312,6 +1324,7 @@ pt_BR:
     request_to_join_prompt: Solicitação de adesão rápida
     default_request_to_join_prompt: Obrigado pelo seu interesse em nosso grupo. Por favor, apresente-se e explique por que você está solicitando para participar.
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Atualize sua assinatura</a> para criar um subgrupo'
+    share_this_url_with_people_who_want_to_join: Compartilhe esta URL com pessoas que desejam participar
   group_export_modal:
     title: Exportar data do grupo
     body: |
@@ -1875,6 +1888,7 @@ pt_BR:
     edit_warning: A edição é recomendada apenas para pequenas alterações ou correções de ortografia e escrita. Para mudanças muito grandes, feche essa %{pollType} e inicie uma nova.
     no_voting: Apenas para discussão, votação desabilitada
     post_outcome: Pós-resultado
+    view_all_votes: Ver todos os votos
   poll_common_attachment_form:
     label: Anexos
   poll_common_add_option:
@@ -2360,6 +2374,7 @@ pt_BR:
     stance_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a>  votado em: <strong>%{title}</strong>"
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> atualizou seu voto em: <strong>%{title}</strong>"
     event_removed: Apagado da conversa
+    new: novo
   add_poll_to_thread_modal:
     success: Sucesso, %{pollType} adicionado ao tópico!
   auth_form:

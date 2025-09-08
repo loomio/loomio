@@ -23,8 +23,8 @@ export default class CommentModel extends BaseModel {
   defaultValues() {
     return {
       discussionId: null,
-      files: [],
-      imageFiles: [],
+      files: null,
+      imageFiles: null,
       attachments: [],
       linkPreviews: [],
       body: '',
@@ -72,7 +72,7 @@ export default class CommentModel extends BaseModel {
   }
 
   parent() {
-    return Records[BaseModel.eventTypeMap[this.parentType]].find(this.parentId);
+    return this.parentId && Records[BaseModel.eventTypeMap[this.parentType]].find(this.parentId);
   }
 
   reactors() {

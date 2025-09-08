@@ -9,6 +9,7 @@ import WatchRecords from '@/mixins/watch_records';
 import UrlFor from '@/mixins/url_for';
 import FormatDate from '@/mixins/format_date';
 import { sortBy } from 'lodash-es';
+import { addDays } from 'date-fns';
 
 export default {
   mixins: [WatchRecords, UrlFor, FormatDate],
@@ -31,7 +32,7 @@ export default {
     this.watchRecords({
       collections: ['groups', 'polls'],
       query: () => {
-        this.group = sortBy(this.user.parentGroups().filter( g => g.creatorId == this.user.id ), g => (- g.id))[0]
+        this.group = sortBy(this.user.parentGroups().filter( g => addDays(g.createdAt, 28) > (new Date) && g.creatorId == this.user.id && g.subscription.plan != "demo" ), g => (- g.id))[0]
         this.tips = TipService.tips(this.user, this.group, this).filter(t => t.show())
       }
     });

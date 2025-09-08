@@ -1,5 +1,5 @@
 require 'rails_helper'
-describe API::V1::GroupsController do
+describe Api::V1::GroupsController do
 
   let(:user) { create :user }
   let(:group) { create :group, creator: user, is_visible_to_public: false }

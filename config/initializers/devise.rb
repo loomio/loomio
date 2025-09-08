@@ -210,7 +210,7 @@ Devise.setup do |config|
   #   manager.default_strategies(:scope => :user).unshift :some_external_strategy
   # end
   #
-  config.secret_key = Rails.application.secrets.devise
+  config.secret_key = ENV['DEVISE_SECRET']
 
   Warden::Manager.after_set_user do |user,auth,opts|
     auth.cookies[:signed_in] = 1

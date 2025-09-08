@@ -560,6 +560,16 @@ sl:
     from_comment: Iz URL-ja komentarja
     from_sequence_id: Iz URL-ja predmeta niti
     unread: Novo za vas
+    jump_to: Skoči na
+    timeline: Časovnica
+    top: Zgoraj
+    bottom: Dno
+    start: Začni
+    latest: Najnovejše
+    showing_latest: Prikaz najnovejših
+    showing_unread: Prikaz neprebranih
+    add_comment: Dodaj komentar
+    start_decision: Začni odločitev
   search_modal:
     all_content: Vse vsebine
     best_match: Najboljše ujemanje
@@ -615,6 +625,8 @@ sl:
     theme: Tema
     light: Svetloba
     dark: Temno
+    light_blue: Svetlo modra
+    dark_blue: Temno modra
   membership_card:
     group_members: Člani skupine
     discussion_members: Člani razprave
@@ -1283,6 +1295,7 @@ sl:
     request_to_join_prompt: Zahteva za pridružitev
     default_request_to_join_prompt: Hvala za vaše zanimanje za našo skupino. Predstavite se in razložite, zakaj se želite pridružiti.
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Nadgradite svojo naročnino</a> , da ustvarite podskupino.'
+    share_this_url_with_people_who_want_to_join: Delite ta URL z ljudmi, ki se želijo pridružiti
   group_export_modal:
     title: Izvoz podatkov skupine
     body: <p>Kopijo podatkov svoje skupine lahko prenesete kadar koli. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Izvedi več.</a></p><p> Izpolnitev traja nekaj minut, odvisno od velikosti vaše skupine. Ko bo pripravljena, boste prejeli e-poštno sporočilo s povezavo za prenos datoteke.</p>
@@ -1827,6 +1840,7 @@ sl:
     edit_warning: Urejanje je priporočljivo samo za manjše spremembe ali popravljanje črkovalnih napak. Za večje spremembe zaprite to %{pollType} in začnite novo.
     no_voting: Samo za razpravo, glasovanje onemogočeno
     post_outcome: Izid objave
+    view_all_votes: Ogled vseh glasov
   poll_common_attachment_form:
     label: Priloge
   poll_common_add_option:
@@ -2308,6 +2322,7 @@ sl:
     stance_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> je glasoval za: <strong>%{title}</strong>"
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> je posodobil svoj glas o: <strong>%{title}</strong>"
     event_removed: Odstranjeno iz niti
+    new: novo
   add_poll_to_thread_modal:
     success: Uspeh, %{pollType} dodan v nit!
   auth_form:

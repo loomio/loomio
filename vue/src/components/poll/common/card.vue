@@ -24,7 +24,7 @@ export default
     this.watchRecords({
       collections: ["stances", "outcomes"],
       query: records => {
-        this.actions = PollService.actions(this.poll);
+        this.actions = PollService.actions(this.poll, this);
         this.myStance = this.poll.myStance() || Records.stances.build();
         return this.outcome = this.poll.outcome();
       }

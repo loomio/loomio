@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe API::V1::TrialsController do
+describe Api::V1::TrialsController do
   describe "email does not exist" do
     it "creates new user and group and sends login email" do
       post :create, params: {

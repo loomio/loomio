@@ -559,6 +559,16 @@ ja:
     from_comment: コメントURLより
     from_sequence_id: スレッドアイテムのURLから
     unread: 初めての方へ
+    jump_to: ジャンプ
+    timeline: タイムライン
+    top: トップ
+    bottom: 底
+    start: 始める
+    latest: 最新
+    showing_latest: 最新を表示
+    showing_unread: 未読を表示
+    add_comment: コメントを追加
+    start_decision: 開始決定
   search_modal:
     all_content: すべてのコンテンツ
     best_match: ベストマッチ
@@ -614,6 +624,8 @@ ja:
     theme: テーマ
     light: ライト
     dark: 暗い
+    light_blue: 水色
+    dark_blue: ダークブルー
   membership_card:
     group_members: グループの人（仲間）たち
     discussion_members: スレッドメンバー
@@ -1282,6 +1294,7 @@ ja:
     request_to_join_prompt: 参加リクエストプロンプト
     default_request_to_join_prompt: 私たちのグループに興味を持っていただきありがとうございます。自己紹介と参加を希望する理由を説明してください。
     upgrade_for_subgroups: 'サブグループを作成するには、<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">サブスクリプションをアップグレードして</a>ください'
+    share_this_url_with_people_who_want_to_join: 参加したい人にこのURLを共有してください
   group_export_modal:
     title: グループデータのエクスポート
     body: <p>グループのデータのコピーはいつでもダウンロードできます。<a href="https://help.loomio.org/en/user_manual/groups/data_export/">もっと詳しく調べてください。</a></p><p>グループの規模に応じて、完了までに数分かかります。準備が完了すると、ファイルをダウンロードするためのリンクが記載された電子メールが届きます。</p>
@@ -1826,6 +1839,7 @@ ja:
     edit_warning: 編集は、軽微な変更またはスペルミスの修正の場合にのみ推奨されます。重要な変更がある場合は、この %{pollType} を閉じて、新しいものを開始してください。
     no_voting: ディスカッションのみのため、投票は無効です
     post_outcome: 結果後
+    view_all_votes: すべての投票を表示
   poll_common_attachment_form:
     label: 添付ファイル
   poll_common_add_option:
@@ -2307,6 +2321,7 @@ ja:
     stance_created: "<a class='actor-link' href='/u/%{username}'>%{author} が</a>投票しました: <strong>%{title}</strong>"
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author} が</a>次の投票を更新しました: <strong>%{title}</strong>"
     event_removed: スレッドから削除されました
+    new: 新しい
   add_poll_to_thread_modal:
     success: 成功しました。%{pollType} がスレッドに追加されました。
   auth_form:

@@ -572,6 +572,16 @@ fr:
     from_comment: Depuis un lien hypertexte en commentaire
     from_sequence_id: Depuis un lien hypertexte d'un élément de discussion
     unread: Nouveau pour vous
+    jump_to: Aller à
+    timeline: Chronologie
+    top: Haut
+    bottom: Bas
+    start: Commencer
+    latest: Dernier
+    showing_latest: Affichage des dernières nouveautés
+    showing_unread: Affichage des éléments non lus
+    add_comment: Ajouter un commentaire
+    start_decision: Décision de départ
   search_modal:
     all_content: Tout le contenu
     best_match: Meilleure correspondance
@@ -627,6 +637,8 @@ fr:
     theme: Thème
     light: Lumière
     dark: Sombre
+    light_blue: Bleu clair
+    dark_blue: Bleu foncé
   membership_card:
     group_members: Membres du groupe
     discussion_members: Membres de la discussion
@@ -1312,6 +1324,7 @@ fr:
     request_to_join_prompt: Demande d'adhésion rapide
     default_request_to_join_prompt: Merci de votre intérêt pour notre groupe. Veuillez vous présenter et expliquer pourquoi vous souhaitez nous rejoindre.
     upgrade_for_subgroups: 'Veuillez <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">mettre à niveau votre abonnement</a> pour créer un sous-groupe'
+    share_this_url_with_people_who_want_to_join: Partagez cette URL avec les personnes qui souhaitent nous rejoindre
   group_export_modal:
     title: Exporter les données de votre groupe
     body: |
@@ -1873,6 +1886,7 @@ fr:
     edit_warning: La révision n'est recommandée que pour des modifications mineures ou pour corriger des fautes d’orthographe. Pour des changements significatifs, fermer ce %{pollType} et démarrez-en un nouveau.
     no_voting: Pour discussion seulement, vote désactivé
     post_outcome: Résultat de l'après
+    view_all_votes: Voir tous les votes
   poll_common_attachment_form:
     label: Pièces jointes
   poll_common_add_option:
@@ -2360,6 +2374,7 @@ fr:
     stance_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a voté sur: <strong>%{title}</strong>"
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a actualisé son vote sur: <strong>%{title}</strong>"
     event_removed: retiré de la discussion
+    new: nouveau
   add_poll_to_thread_modal:
     success: "%{pollType} ajouté à la discussion avec succès !"
   auth_form:

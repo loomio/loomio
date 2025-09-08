@@ -96,7 +96,7 @@ export default
     span(v-t="'poll_common_action_panel.anonymous'")
 
   .poll-common-vote-form(v-if="stance && !stance.castAt")
-    h3.text-h6.py-3(v-t="'poll_common.have_your_say'")
+    h3.text-h6.py-3.text-high-emphasis(v-t="'poll_common.have_your_say'")
     poll-common-directive(:stance='stance' name='vote-form')
 
   v-alert.poll-common-current-vote(color="info" variant="tonal" v-if="stance && stance.castAt && poll.pollType != 'meeting'")

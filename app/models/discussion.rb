@@ -64,14 +64,14 @@ class Discussion < ApplicationRecord
 
   validates_presence_of :title, :group, :author
   validates :title, length: { maximum: 150 }
-  validates :description, length: { maximum: Rails.application.secrets.max_message_length }
+  validates :description, length: { maximum: AppConfig.app_features[:max_message_length] }
   validate :privacy_is_permitted_by_group
 
   is_mentionable  on: :description
   is_translatable on: %i[title description], load_via: :find_by_key!, id_field: :key
   is_rich_text    on: :description
   has_paper_trail only: %i[title description description_format private group_id author_id tags closed_at
-                           closer_id]
+                           closer_id attachments]
 
   belongs_to :group, class_name: 'Group'
   belongs_to :author, class_name: 'User'

@@ -564,6 +564,16 @@ ca:
     from_comment: Des de l'url d'un comentari
     from_sequence_id: Des de l'url d'un element del fil
     unread: Nou
+    jump_to: Salta a
+    timeline: Cronologia
+    top: Superior
+    bottom: Part inferior
+    start: Inici
+    latest: Últim
+    showing_latest: Mostrant les últimes novetats
+    showing_unread: Mostrant no llegits
+    add_comment: Afegeix un comentari
+    start_decision: Decisió inicial
   search_modal:
     all_content: Tot el contingut
     best_match: Millor coincidència
@@ -619,6 +629,8 @@ ca:
     theme: Tema
     light: Llum
     dark: Fosc
+    light_blue: Blau clar
+    dark_blue: Blau fosc
   membership_card:
     group_members: Membres del grup
     discussion_members: Membres del fil
@@ -1291,6 +1303,7 @@ ca:
     request_to_join_prompt: Sol·licitud per unir-se
     default_request_to_join_prompt: Gràcies pel vostre interès en el nostre grup. Si us plau, presenteu-vos i expliqueu per què demaneu unir-vos.
     upgrade_for_subgroups: 'Si us plau, <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">actualitza la teva subscripció</a> per crear un subgrup'
+    share_this_url_with_people_who_want_to_join: Comparteix aquesta URL amb les persones que vulguin unir-s'hi
   group_export_modal:
     title: Exporta dades del grup
     body: |
@@ -1852,6 +1865,7 @@ ca:
     edit_warning: Només es recomana editar en cas d'haver de fer petits canvis o corregir errors tipogràfics. Per canvis més significatius, tanqueu aquesta %{pollType} i obriu-ne una de nova.
     no_voting: Només per debatre, la votació està desactivada
     post_outcome: Resultat de la publicació
+    view_all_votes: Veure tots els vots
   poll_common_attachment_form:
     label: Adjunts
   poll_common_add_option:
@@ -2335,6 +2349,7 @@ ca:
     stance_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha votat a: <strong>%{title}</strong>"
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha actualitzat el seu vot a: <strong>%{title}</strong>"
     event_removed: S'ha eliminat del fil
+    new: nou
   add_poll_to_thread_modal:
     success: S'ha afegit %{pollType} al fil!
   auth_form:

@@ -64,7 +64,7 @@ export default class RecordStore {
     });
 
     each(this.views, view => {
-      if (intersection( map(view.collectionNames, camelCase) , map(keys(data), camelCase) )) {
+      if (intersection( map(view.collectionNames, camelCase) , map(keys(data), camelCase) ).length) {
         view.query(this);
       }
       return true;

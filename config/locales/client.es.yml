@@ -564,6 +564,16 @@ es:
     from_comment: Desde un comentario url
     from_sequence_id: Desde un elemento hilo url
     unread: Nuevo para ti
+    jump_to: Saltar a
+    timeline: Cronología
+    top: Arriba
+    bottom: Abajo
+    start: Comenzar
+    latest: El último
+    showing_latest: Mostrando lo último
+    showing_unread: Mostrando no leídos
+    add_comment: Añadir comentario
+    start_decision: Decisión de inicio
   search_modal:
     all_content: Todo el contenido
     best_match: Mejor partido
@@ -619,6 +629,8 @@ es:
     theme: Tema
     light: Luz
     dark: Oscuro
+    light_blue: Azul claro
+    dark_blue: Azul oscuro
   membership_card:
     group_members: Integrantes del grupo
     discussion_members: Integrantes del hilo
@@ -1300,6 +1312,7 @@ es:
     request_to_join_prompt: Solicitud de adhesión inmediata
     default_request_to_join_prompt: Gracias por su interés en nuestro grupo. Preséntese y explique por qué desea unirse.
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Actualice su suscripción</a> para crear un subgrupo'
+    share_this_url_with_people_who_want_to_join: Comparte esta URL con personas que quieran unirse
   group_export_modal:
     title: Exportar la data grupal
     body: |
@@ -1863,6 +1876,7 @@ es:
     edit_warning: Solamente se recomienda editar para cambios menores o arreglar errores ortográficos. Para cambios significantes, cierra este %{pollType} y empieza uno nuevo.
     no_voting: 'Para discusión solamente, el voto deshabilitado '
     post_outcome: Resultados posteriores
+    view_all_votes: Ver todos los votos
   poll_common_attachment_form:
     label: Adjuntos
   poll_common_add_option:
@@ -2346,6 +2360,7 @@ es:
     stance_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a>votó en: <strong>%{title}</strong>"
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a>editó su voto en: <strong>%{title}</strong>"
     event_removed: Eliminado del hilo
+    new: nuevo
   add_poll_to_thread_modal:
     success: Éxito, %{pollType} añadido al hilo
   auth_form:

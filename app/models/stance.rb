@@ -64,7 +64,7 @@ class Stance < ApplicationRecord
   has_many :stance_choices, dependent: :destroy
   has_many :poll_options, through: :stance_choices
 
-  has_paper_trail only: [:reason, :option_scores, :revoked_at, :revoker_id, :inviter_id]
+  has_paper_trail only: [:reason, :option_scores, :revoked_at, :revoker_id, :inviter_id, :attachments]
 
   accepts_nested_attributes_for :stance_choices
 
@@ -220,7 +220,7 @@ class Stance < ApplicationRecord
 
   def poll_options_must_match_stance_poll
     invalid_choices = stance_choices.reject do |sc|
-      sc.poll_option.poll_id == poll_id
+      sc.poll_option.poll_id == poll_id || !sc.persisted? && sc.poll_option.poll_id.nil?
     end
 
     if invalid_choices.any?

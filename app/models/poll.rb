@@ -142,9 +142,9 @@ class Poll < ApplicationRecord
   belongs_to :discussion
   belongs_to :group, class_name: "Group"
 
-  enum notify_on_closing_soon: {nobody: 0, author: 1, undecided_voters: 2, voters: 3}
-  enum hide_results: {off: 0, until_vote: 1, until_closed: 2}
-  enum stance_reason_required: {disabled: 0, optional: 1, required: 2}
+  enum :notify_on_closing_soon, {nobody: 0, author: 1, undecided_voters: 2, voters: 3}
+  enum :hide_results, {off: 0, until_vote: 1, until_closed: 2}
+  enum :stance_reason_required, {disabled: 0, optional: 1, required: 2}
 
   has_many :stances, dependent: :destroy
   has_many :stance_choices, through: :stances
@@ -181,7 +181,7 @@ class Poll < ApplicationRecord
   end
 
   validates :poll_type, inclusion: { in: AppConfig.poll_types.keys }
-  validates :details, length: {maximum: Rails.application.secrets.max_message_length }
+  validates :details, length: {maximum: AppConfig.app_features[:max_message_length] }
 
   before_save :clamp_minimum_stance_choices
   before_save :clamp_quorum_pct
@@ -211,7 +211,8 @@ class Poll < ApplicationRecord
     :tags,
     :notify_on_closing_soon,
     :poll_option_names,
-    :hide_results]
+    :hide_results,
+    :attachments]
 
   update_counter_cache :group, :polls_count
   update_counter_cache :group, :closed_polls_count
