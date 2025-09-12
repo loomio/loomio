@@ -38,10 +38,10 @@ export default {
       :key="choice.id"
       :class="'poll-common-stance-choice--' + pollType")
       common-icon(size="small" :color="choice.pollOption.color" v-if="!variableScore" name="mdi-check-circle")
-      v-chip(variant="outlined" :color="choice.pollOption.color" v-if="variableScore")
-        span.text-high-emphasis {{choice.rank || choice.score}}
-      span.ml-2.text-high-emphasis
+      span.mr-2.text-medium-emphasis
         | {{ choice.pollOption.optionName() }}
+      v-chip(:color="choice.pollOption.color" v-if="variableScore" variant="flat" size="small" )
+        span {{choice.rank || choice.score}}
 </template>
 <style lang="sass">
 .poll-common-stance-choices

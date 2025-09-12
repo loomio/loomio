@@ -1883,6 +1883,20 @@ en:
     meaning_hint: A sentence or two explaining what choosing this option means. Optional
     prompt: Reason prompt
     prompt_hint: A question to prompt voters to share their reasoning or reconsider their position. Optional
+    of: of
+    at_least: At least
+    no_more_than: No more than
+    for_the_proposal_to_pass: For the proposal to pass, this option must receive
+    votes_cast: Votes cast
+    eligible_voters: Eligible voters
+    gte_score_percent: Needs at least %{percent}% of votes cast
+    gte_voter_percent: Needs at least %{percent}% of eligible voters
+    lte_score_percent: Must not exceed %{percent}% of votes cast
+    lte_voter_percent: Must not exceed %{percent}% of eligible voters
+    name_gte_score_percent: "%{name} needs at least %{percent}% of votes cast"
+    name_gte_voter_percent: "%{name} needs at least %{percent}% of eligible voters"
+    name_lte_score_percent: "%{name} must not exceed %{percent}% of votes cast"
+    name_lte_voter_percent: "%{name} must not exceed %{percent}% of eligible voters"
   poll_common:
     superseded: Superseded
     outdated: Outdated
@@ -2061,9 +2075,7 @@ en:
     explainer: |
       Subgroups are private places where teams within your organization can have discussions and make decisions.
       Content in subgroups is private from the rest of the organization. Examples of subgroups: Board, Hiring decisions or Project team
-    upgrade: 'To start a subgroup, you''ll need to <a class="text-decoration-underline" href="%{url}" target="_blank">upgrade your Loomio subscription.</a>
-
-      '
+    upgrade: 'To start a subgroup, you''ll need to <a class="text-decoration-underline" href="%{url}" target="_blank">upgrade your Loomio subscription.</a> '
   poll_common_action_panel:
     from_the_thread: From the thread template
     from_the_group: From the group
@@ -2079,7 +2091,8 @@ en:
     results_hidden_until_vote: Results will be shown after you vote
     unable_to_vote: You have not been invited to vote in this %{poll_type}
     draft_mode: Voting disabled. This is not open for voting yet.
-    voting_disabled_poll_is_template: Voting disabled. This is a template.
+    for_this_proposal_to_pass: "For this proposal to pass:"
+    for_this_poll_type_to_be_valid: "For this %{poll_type} to be valid:"
   poll_common_collapsed:
     by_who: by %{name}
   poll_common_calendar_invite:
@@ -2370,7 +2383,7 @@ en:
     points: Points
     average: Average
     mean: Mean
-    pct_of_points: "% of points"
+    pct_of_points: "% of votes cast"
     pct_of_voters: "% of voters"
     percent: Percent
   poll_meeting_time_field:
@@ -2409,6 +2422,7 @@ en:
     'yes': 'Yes'
     'no': 'No'
   poll_common_percent_voted:
+    pct_of_eligible_voters_must_participate: "%{pct}% of eligible voters must participate"
     pct_participation: "%{num} of %{total} votes cast (%{pct}% participation)"
     vote_short_of_quorum: "1 more vote needed to reach quorum of %{pct}%"
     votes_short_of_quorum: "%{num} more votes needed to reach quorum of %{pct}%"

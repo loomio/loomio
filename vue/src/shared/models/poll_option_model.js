@@ -8,7 +8,7 @@ export default class PollOptionModel extends BaseModel {
   static plural = 'pollOptions';
   static indices = ['pollId'];
   static uniqueIndices = ['id'];
-  static serializableAttributes = ['id', 'name', 'icon', 'priority', 'meaning', 'prompt', 'thresholdPct'];
+  static serializableAttributes = ['id', 'name', 'icon', 'priority', 'meaning', 'prompt', 'testOperator', 'testPercent', 'testAgainst'];
 
   defaultValues() {
     return {
@@ -18,7 +18,9 @@ export default class PollOptionModel extends BaseModel {
       meaning: null,
       prompt: null,
       priority: null,
-      thresholdPct: null,
+      testOperator: null,
+      testPercent: null,
+      testAgainst: null,
       _destroy: null
     };
   }

@@ -1,11 +1,10 @@
 <script lang="js">
-import Session  from '@/shared/services/session';
 import Records  from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
 import PollCommonDirective from '@/components/poll/common/directive';
 import PollTemplateBanner from '@/components/poll/template_banner';
 import PollService from '@/shared/services/poll_service';
-import { pickBy } from 'lodash-es';
+import { pickBy, omit } from 'lodash-es';
 import WatchRecords from '@/mixins/watch_records';
 import FormatDate from '@/mixins/format_date';
 
@@ -24,7 +23,9 @@ export default
     this.watchRecords({
       collections: ["stances", "outcomes"],
       query: records => {
-        this.actions = PollService.actions(this.poll, this);
+        const actions = PollService.actions(this.poll, this)
+        this.editStanceAction = actions['edit_stance'];
+        this.actions = omit(actions, 'edit_stance');
         this.myStance = this.poll.myStance() || Records.stances.build();
         return this.outcome = this.poll.outcome();
       }
@@ -34,6 +35,7 @@ export default
   data() {
     return {
       actions: {},
+      editStanceAction: null,
       buttonPressed: false,
       myStance: null,
       outcome: this.poll.outcome()
@@ -75,8 +77,10 @@ v-card
     poll-common-outcome-panel(:outcome='outcome' v-if="outcome")
     poll-common-details-panel(:poll='poll')
     poll-common-chart-panel(:poll='poll')
-    poll-common-action-panel(:poll='poll')
+    poll-common-action-panel(:poll='poll' :editStanceAction="editStanceAction")
     action-dock.mt-4(
+      color="primary"
+      variant="tonal"
       :menu-actions="menuActions"
       :actions="dockActions")
     .poll-common-card__results-shown.mt-4

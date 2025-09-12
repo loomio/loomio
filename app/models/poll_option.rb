@@ -10,7 +10,9 @@ class PollOption < ApplicationRecord
 
   scope :dangling, -> { joins('left join polls on polls.id = poll_id').where('polls.id is null') }
 
-  before_save :clamp_threshold_pct
+  validates :test_operator, inclusion: { in: ['gte', 'lte'] }, allow_nil: true
+  normalizes :test_percent, with: -> value { [[value, 0].max, 100].min }
+  validates :test_against, inclusion: { in: ['score_percent', 'voter_percent'] }, allow_nil: true
 
   def update_counts!
     update_columns(
@@ -59,11 +61,5 @@ class PollOption < ApplicationRecord
   def average_score
     return 0 if voter_count == 0
     (total_score.to_f / voter_count.to_f)
-  end
-
-  def clamp_threshold_pct
-    return if threshold_pct.nil?
-    self.threshold_pct = 0 if threshold_pct < 0
-    self.threshold_pct = 100 if threshold_pct > 100
   end
 end

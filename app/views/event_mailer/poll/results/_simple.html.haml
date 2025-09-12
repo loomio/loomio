@@ -13,8 +13,6 @@
           %th.text-left.text-subtitle-2= t('common.option')
         - when 'score_percent'
           %th.text-right.text-subtitle-2= t('poll_ranked_choice_form.pct_of_points')
-        - when 'threshold_pct'
-          %th.text-right.text-subtitle-2= t('poll_option_form.pct_required')
         - when 'voter_percent'
           %th.text-right.text-subtitle-2= t('poll_ranked_choice_form.pct_of_voters')
         - when 'target_percent'
@@ -25,6 +23,8 @@
           %th.text-right.text-subtitle-2= t('poll_ranked_choice_form.points')
         - when 'average'
           %th.text-right.text-subtitle-2= t('poll_ranked_choice_form.mean')
+        - when 'votes'
+          %th.text-right.text-subtitle-2= t('poll_common.votes')
         - when 'voter_count'
           %th.text-right.text-subtitle-2= t('membership_card.voters')
         - when 'voters'
@@ -61,7 +61,7 @@
               %td.text-right= option[:rank]
             - when 'score'
               %td.text-right= option[:score]
-            - when 'voter_count'
+            - when 'voter_count', 'votes'
               %td.text-right= option[:voter_count]
             - when 'average'
               %td.text-right= option[:average].round
@@ -73,8 +73,6 @@
               %td.text-right #{option[:voter_percent].round}
             - when 'score_percent'
               %td.text-right #{option[:score_percent].round}
-            - when 'threshold_pct'
-              %td.text-right #{option[:threshold_pct]}
             - when 'voters'
               %td.text-left
                 - User.where(id: option[:voter_ids]).limit(20).each do |user|

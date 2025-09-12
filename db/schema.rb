@@ -680,7 +680,9 @@ ActiveRecord::Schema[7.2].define(version: 2025_07_29_033545) do
     t.string "prompt"
     t.datetime "created_at", precision: nil
     t.datetime "updated_at", precision: nil
-    t.integer "threshold_pct"
+    t.string "test_operator"
+    t.integer "test_percent"
+    t.string "test_against"
     t.index ["poll_id"], name: "index_poll_options_on_poll_id"
   end
 

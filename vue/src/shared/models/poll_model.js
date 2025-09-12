@@ -122,7 +122,9 @@ export default class PollModel extends BaseModel {
             meaning: o.meaning,
             prompt: o.prompt,
             icon: o.icon,
-            thresholdPct: o.thresholdPct
+            testOperator: o.testOperator,
+            testPercent: o.testPercent,
+            testAgainst: o.testAgainst
           };
       });
     }
@@ -143,7 +145,9 @@ export default class PollModel extends BaseModel {
         meaning: o.meaning,
         prompt: o.prompt,
         icon: o.icon,
-        thresholdPct: o.thresholdPct
+        testOperator: o.testOperator,
+        testPercent: o.testPercent,
+        testAgainst: o.testAgainst
       };
     });
   }

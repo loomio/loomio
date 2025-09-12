@@ -3,11 +3,3 @@
 - pct = dnom > 0 ? (nom.to_f / dnom.to_f * 100).to_i : 0
 %p.text-subtitle-2
   = t('poll_common_percent_voted.pct_participation', num: nom, total: dnom, pct: pct)
-  - if poll.quorum_pct
-    %br
-    - if poll.quorum_votes_required <= 0
-      = t('poll_common_percent_voted.quorum_reached', pct: poll.quorum_pct)
-    - if poll.quorum_votes_required == 1
-      = t('poll_common_percent_voted.vote_short_of_quorum', pct: poll.quorum_pct)
-    - if poll.quorum_votes_required > 1
-      = t('poll_common_percent_voted.votes_short_of_quorum', num: poll.quorum_votes_required, pct: poll.quorum_pct )

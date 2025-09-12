@@ -143,8 +143,10 @@ export default {
         name: '',
         meaning: '',
         prompt: '',
-        thresholdPct: null,
-        icon: null
+        icon: null,
+        testOperator: null,
+        testPercent: null,
+        testAgainst: null
       };
 
       EventBus.$emit('openModal', {
@@ -165,7 +167,7 @@ export default {
     },
 
     editOption(option) {
-      const clone = pick(option, 'name', 'icon', 'meaning', 'prompt', 'thresholdPct');
+      const clone = pick(option, 'name', 'icon', 'meaning', 'prompt', 'testOperator', 'testPercent', 'testAgainst');
 
       EventBus.$emit('openModal', {
         component: 'PollOptionForm',
@@ -344,7 +346,7 @@ export default {
             span(v-if="optionFormat == 'iso8601'")
               poll-meeting-time(:name="option.name")
           v-list-item-subtitle.poll-common-vote-form__allow-wrap
-            p.font-italic.mb-1(v-t="{path: 'poll_option_form.pct_of_votes_required_to_be_valid', args: {pct: option.thresholdPct} }" v-if="option.thresholdPct")
+            p.font-italic.mb-1(v-t="{path: `poll_option_form.${option.testOperator}_${option.testAgainst}`, args: {percent: option.testPercent} }" v-if="option.testOperator")
             p {{option.meaning}}
 
           template(v-slot:append)

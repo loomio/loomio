@@ -89,7 +89,9 @@ export default class PollTemplateModel extends BaseModel {
       meaning: o.meaning,
       prompt: o.prompt,
       icon: o.icon,
-      thresholdPct: o.threshold_pct
+      testOperator: o.test_operator,
+      testPercent: o.test_percent,
+      testAgainst: o.test_against
     }));
   }
 };

@@ -52,6 +52,7 @@ class PollSerializer < ApplicationSerializer
              :poll_template_id,
              :poll_template_key,
              :quorum_pct,
+             :quorum_count,
              :quorum_votes_required
 
   has_one :discussion, serializer: DiscussionSerializer, root: :discussions

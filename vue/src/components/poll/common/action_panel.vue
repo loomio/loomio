@@ -10,7 +10,8 @@ export default
 {
   mixins: [WatchRecords],
   props: {
-    poll: Object
+    poll: Object,
+    editStanceAction: Object
   },
 
   data() {
@@ -48,7 +49,6 @@ export default
     this.watchRecords({
       collections: ["stances"],
       query: () => {
-        console.log("watched stances change");
         if (this.stance && !this.stance.castAt && this.poll.myStance() && this.poll.myStance().castAt) {
           this.stance = this.lastStanceOrNew().clone();
         }
@@ -99,16 +99,23 @@ export default
     h3.text-h6.py-3.text-high-emphasis(v-t="'poll_common.have_your_say'")
     poll-common-directive(:stance='stance' name='vote-form')
 
-  v-alert.poll-common-current-vote(color="info" variant="tonal" v-if="stance && stance.castAt && poll.pollType != 'meeting'")
-    .text-subtitle1.mb-2
-      span(v-t="'poll_common.you_voted'")
-    poll-common-stance-choice(
-      v-if="poll.hasOptionIcon()"
-      :size="28"
-      :poll="poll"
-      :stance-choice="stance.stanceChoice()"
-      verbose)
-    poll-common-stance-choices(:stance='stance')
+  template(v-if="stance && stance.castAt && poll.pollType != 'meeting'")
+    template(v-if="poll.singleChoice()")
+      v-alert.poll-common-current-vote(variant="tonal" :color="stance.pollOption().color" border :title="$t('poll_common.you_voted')")
+        poll-common-stance-choice(
+          :size="28"
+          :poll="poll"
+          :stance-choice="stance.stanceChoice()"
+          verbose)
+        .d-flex
+          v-spacer
+          action-button.float-right(:action="editStanceAction" variant="tonal")
+    template(v-else)
+      v-alert.poll-common-current-vote(variant="tonal" color="primary" border :title="$t('poll_common.you_voted')")
+        poll-common-stance-choices(:stance='stance')
+        .d-flex
+          v-spacer
+          action-button.float-right(:action="editStanceAction" variant="tonal")
 
   .poll-common-unable-to-vote(v-if='!stance')
     v-alert.my-4(

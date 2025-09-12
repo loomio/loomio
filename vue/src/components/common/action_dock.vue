@@ -64,7 +64,7 @@ section.d-flex.flex-wrap.align-center.action-dock.pb-1(style="margin-left: -6px"
     :canEdit="actions.react.canPerform()"
     :size="size"
   )
-  .action-dock__action(v-for='(action, name) in rightActions' :key="name")
+  .action-dock__action.mb-1(v-for='(action, name) in rightActions' :key="name")
     reaction-input.action-dock__button--react(
       v-if="name == 'react'"
       :model="model"
@@ -81,7 +81,7 @@ section.d-flex.flex-wrap.align-center.action-dock.pb-1(style="margin-left: -6px"
       :variant="variant"
       :size="size"
     )
-  action-menu(
+  action-menu.mb-1(
     v-if="menuActions"
     :actions='menuActions'
     :menuIcon="menuIcon"

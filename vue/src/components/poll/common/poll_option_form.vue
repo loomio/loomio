@@ -13,6 +13,7 @@ export default {
 
   data() {
     return {
+      testEnabled: !!this.pollOption.testOperator,
       nameRules: [v => (v.length <= 60) || I18n.global.t("poll_option_form.option_name_validation")],
       icons: [
         {title: I18n.global.t('poll_proposal_options.agree'), value: 'agree'},
@@ -32,12 +33,24 @@ export default {
 
   methods: {
     submit() {
+      if (!this.testEnabled) {
+        this.pollOption.testOperator = null;
+        this.pollOption.testPercent = null;
+        this.pollOption.testAgainst = null;
+      }
       this.submitFn(this.pollOption);
       EventBus.$emit('closeModal');
     }
   },
 
   watch: {
+    'testEnabled'(val) {
+      if (val) {
+        this.pollOption.testOperator = this.pollOption.testOperator || 'gte';
+        this.pollOption.testPercent = this.pollOption.testPercent || 50;
+        this.pollOption.testAgainst = this.pollOption.testAgainst || 'score_percent';
+      }
+    },
     'pollOption.icon'(val) {
       if (!this.pollOption.name || this.icons.map(icon => icon.text).includes(this.pollOption.name) ) {
         this.pollOption.name = this.icons.find(icon => icon.value == val).text
@@ -76,18 +89,6 @@ form(v-on:submit.prevent='submit()')
         counter
         :rules="nameRules"
       )
-      v-number-input.mb-4(
-        v-if="poll.pollType == 'proposal'"
-        v-model="pollOption.thresholdPct"
-        :label="$t('poll_option_form.vote_share_required')"
-        :hint="$t('poll_option_form.vote_share_required_hint')"
-        :placeholder="$t('poll_common_form.quorum_placeholder')"
-        :min="0"
-        :max="100"
-        autocomplete="off"
-      )
-        template(v-slot:append-inner)
-          span.mr-4 %
       v-textarea(
         v-if="hasOptionMeaning"
         :label="$t('poll_option_form.meaning')"
@@ -100,6 +101,36 @@ form(v-on:submit.prevent='submit()')
         :hint="$t('poll_option_form.prompt_hint')"
         :placeholder="$t('poll_common.reason_placeholder')"
         v-model="pollOption.prompt")
+
+      v-checkbox(v-model="testEnabled" :label="$t('poll_option_form.for_the_proposal_to_pass')")
+
+      .d-flex.flex-column.flex-sm-row
+        v-select.mr-4(
+          :disabled="!testEnabled"
+          v-model="pollOption.testOperator"
+          :items="[{title: $t('poll_option_form.at_least'), value: 'gte'}, {title: $t('poll_option_form.no_more_than'), value: 'lte'}]"
+        )
+
+        v-number-input(
+          :disabled="!testEnabled"
+          v-model="pollOption.testPercent"
+          :min="0"
+          :max="100"
+          :precision="0"
+          control-variant="hidden"
+          autocomplete="off"
+        )
+          template(v-slot:append-inner)
+            span.mr-4 %
+          template(v-slot:append)
+            span.mr-4(v-t="'poll_option_form.of'")
+
+        v-select(
+          :disabled="!testEnabled"
+          v-model="pollOption.testAgainst"
+          :items="[{title: $t('poll_option_form.votes_cast'), value: 'score_percent'}, {title: $t('poll_option_form.eligible_voters'), value: 'voter_percent'}]"
+        )
+
     v-divider
     v-card-actions
       v-btn.poll-option-form__done-btn(

@@ -258,11 +258,7 @@ class Poll < ApplicationRecord
   def result_columns
     case poll_type
     when 'proposal'
-      if poll.poll_options.any? {|o| o.threshold_pct }
-        %w[chart name score_percent threshold_pct voter_count voters]
-      else
-        %w[chart name score_percent voter_count voters]
-      end
+      %w[chart name votes score_percent voter_percent voters]
     when 'check'
       %w[chart name voter_percent voter_count voters]
     when 'count'
@@ -349,6 +345,10 @@ class Poll < ApplicationRecord
     else
       nil
     end
+  end
+
+  def quorum_count
+    (quorum_pct.to_f/100 * voters_count).ceil
   end
 
   def quorum_votes_required
