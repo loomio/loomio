@@ -680,7 +680,7 @@ fr:
       discussion_announced: "%{actor} vous a invité au fil de discussion : %{title}"
       discussion_edited: "%{actor} modifié le contexte du thread: %{title}"
       discussion_closed: "%{actor} a fermé le thread: %{title}"
-      invitation_accepted: "%{actor}a accepté votre invitation à joindre %{title}"
+      invitation_accepted: "%{actor} a accepté votre invitation à joindre %{title}"
       membership_created: "%{actor} vous a invité à rejoindre %{title} sur %{site_name}"
       membership_resent: "%{actor} vous a invité à rejoindre %{title} sur %{site_name}"
       membership_requested: "%{actor} a demandé à s'adhérer %{title}"
@@ -721,11 +721,11 @@ fr:
       group_announced: "%{actor} vous a invité dans le group"
       comment_replied_to: "%{actor} vous a repondu"
       new_discussion: "%{actor} a commencé une discussion"
-      new_comment: "%{actor}commenté dans un thread"
+      new_comment: "%{actor} commenté dans un thread"
       membership_created: "%{actor} vous a invité à joindre le group"
       membership_resent: "%{actor} vous a invité à rejoindre un groupe"
       membership_requested: "%{actor} a demandé à s'adhérer dans le group"
-      membership_request_approved: "%{actor}a accepté votre demande à joindre %{title}"
+      membership_request_approved: "%{actor} a accepté votre demande à joindre %{title}"
       outcome_announced: "%{actor} a partagé un %{poll_type} résultat"
       outcome_created: "%{actor} a partagé un %{poll_type} résultat"
       outcome_updated: "%{actor} a mis(e) à jour le résultat"
@@ -744,9 +744,9 @@ fr:
       poll_reminder: "%{actor} vous rappelle de voter"
       poll_reminder_wip: "%{actor} vous rappelle de donner du feedback"
       reaction_created: "%{actor} a réagi %{reaction} à ton %{model}"
-      stance_created: "%{actor} a voté "
-      stance_updated: "%{actor} a voté "
-      stance_created_option: "%{actor}a voté %{option} "
+      stance_created: "%{actor} a voté"
+      stance_updated: "%{actor} a voté"
+      stance_created_option: "%{actor} a voté %{option}"
       user_mentioned: "%{actor} vous a mentionné"
       user_reminded: "%{actor} vous rappelle de voter"
       group_mentioned: "%{actor} a mentionné le groupe"
@@ -1964,9 +1964,7 @@ fr:
     filename: Nom de fichier
     uploaded_by: Ajouté par
     uploaded_at: 'Ajouté à '
-    delete_confirmation: 'Êtes-vous sûr de vouloir supprimer cette pièce jointe ? Elle sera supprimée de tous les commentaires et discussions liés. Cette action ne peut être annulée.
-
-      '
+    delete_confirmation: 'Êtes-vous sûr de vouloir supprimer cette pièce jointe ? Elle sera supprimée de tous les commentaires et discussions liés. Cette action ne peut être annulée.'
   subgroups_panel:
     search_subgroups_of_name: Rechercher des sous-groupes de %{name}
     group_without_subgroups: "%{name} sans sous-groupes"
