@@ -11,8 +11,8 @@
   "dependencies": {
     "@hocuspocus/provider": "^2.15.2",
     "@mdi/js": "^6.9.96",
-    "@sentry/browser": "^10.8.0",
-    "@sentry/vue": "^10.10.0",
+    "@sentry/browser": "^10.11.0",
+    "@sentry/vue": "^10.11.0",
     "@tiptap/core": "^2.23.1",
     "@tiptap/extension-blockquote": "^2.23.1",
     "@tiptap/extension-bold": "^2.23.1",
@@ -90,7 +90,7 @@
     "sass": "latest",
     "vite-plugin-env-compatible": "latest",
     "vite-plugin-vuetify": "latest",
-    "vite": "^7.1.4"
+    "vite": "^7.1.5"
   },
   "optionalDependencies": {
     "@esbuild/darwin-arm64": "latest",

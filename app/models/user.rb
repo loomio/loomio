@@ -134,6 +134,9 @@ class User < ApplicationRecord
     return none unless model.present?
 
     ids = []
+    if model.is_a?(User)
+      return active.search_for(query).where(id: User.visible_by(model).pluck(:id))
+    end
 
     if model.group_id
       ids += Membership.active.where(group_id: model.group_id).pluck(:user_id) if model.group_id
