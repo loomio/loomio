@@ -81,8 +81,15 @@ namespace :loomio do
       google = Google::Cloud::Translate.translation_v2_service
 
       AppConfig.locales['supported'].each do |file_locale|
-        foreign = YAML.load_file("config/locales/#{source_name}.#{file_locale}.yml")[file_locale]
-        foreign_paths = list_paths(foreign, [])
+        filename = "config/locales/#{source_name}.#{file_locale}.yml"
+
+        if File.exist? filename
+          foreign = YAML.load_file(filename)[file_locale]
+          foreign_paths = list_paths(foreign, [])
+        else
+          foreign = {}
+          foreign_paths = []
+        end
 
         write_file = false
         (source_paths - foreign_paths).each do |path|
