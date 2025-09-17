@@ -1776,6 +1776,20 @@ nl_NL:
     thumb_down: Duim omlaag
     thumb_sideways: Duim zijwaarts
     hand_up: Hand omhoog
+    of: van
+    at_least: Ten minste
+    no_more_than: Niet meer dan
+    for_the_proposal_to_pass: Om het voorstel te laten slagen, moet deze optie worden goedgekeurd.
+    votes_cast: Uitgebrachte stemmen
+    eligible_voters: Kiesgerechtigde kiezers
+    gte_score_percent: Er is minimaal %{percent}% van de uitgebrachte stemmen nodig
+    gte_voter_percent: Heeft minimaal %{percent}% van de stemgerechtigde kiezers nodig
+    lte_score_percent: Mag niet meer dan %{percent}% van de uitgebrachte stemmen bedragen
+    lte_voter_percent: Mag niet meer dan %{percent}% van de stemgerechtigde personen bedragen
+    name_gte_score_percent: "%{name} heeft minimaal %{percent}% van de uitgebrachte stemmen nodig"
+    name_gte_voter_percent: "%{name} heeft minimaal %{percent}% van de stemgerechtigde kiezers nodig"
+    name_lte_score_percent: "%{name} mag niet meer dan %{percent}% van de uitgebrachte stemmen bedragen"
+    name_lte_voter_percent: "%{name} mag niet meer dan %{percent}% van de stemgerechtigde kiezers uitmaken"
   poll_common:
     superseded: Vervangen
     outdated: Verouderd
@@ -1866,6 +1880,7 @@ nl_NL:
     no_voting: Alleen bestemd voor discussies, stemmen gedeactiveerd
     post_outcome: Post-uitkomst
     view_all_votes: Bekijk alle stemmen
+    you_voted: Je hebt gestemd
   poll_common_attachment_form:
     label: Bijlagen
   poll_common_add_option:
@@ -1968,6 +1983,8 @@ nl_NL:
     unable_to_vote: Je bent niet uitgenodigd om in te stemmen in deze %{poll_type}.
     draft_mode: Stemmen uitgeschakeld. Hier kan nog niet op gestemd worden.
     voting_disabled_poll_is_template: Stemmen uitgeschakeld. Dit is een sjabloon.
+    for_this_proposal_to_pass: 'Om dit voorstel te laten slagen:'
+    for_this_poll_type_to_be_valid: 'Om deze %{poll_type} geldig te laten zijn:'
   poll_common_collapsed:
     by_who: door %{name}
   poll_common_calendar_invite:
@@ -2195,6 +2212,9 @@ nl_NL:
     how_much_time_to_vote: Hoeveel tijd geeft u mensen om te stemmen?
     advanced_settings: Geavanceerde instellingen
     none_of_the_above: Geen van bovenstaande
+    participation_quorum: Deelnamequorum
+    quorum_hint: Welk percentage van de kiezers moet deelnemen om de uitslag geldig te laten zijn?
+    quorum_placeholder: Leeg laten of een getal tussen 0 en 100 invoeren
   poll_proposal_form:
     start_header: "'Voorstel' starten"
     edit_header: Voorstel bewerken
@@ -2294,6 +2314,11 @@ nl_NL:
   poll_common_percent_voted:
     sentence: "%{numerator} van %{denominator} personen hebben gestemd (%{percent}%)"
     target_progress: "%{percent}% van doel bereikt. (%{num} / %{target})"
+    pct_of_eligible_voters_must_participate: "%{pct}% van de stemgerechtigde kiezers moet deelnemen"
+    pct_participation: "%{num} van %{total} uitgebrachte stemmen (%{pct}% deelname)"
+    vote_short_of_quorum: Nog 1 stem nodig om het quorum van %{pct}% te bereiken
+    votes_short_of_quorum: "%{num} meer stemmen nodig om het quorum van %{pct}% te bereiken"
+    quorum_reached: Quorum van %{pct}% is bereikt
   poll_meeting_chart_panel:
     total: Totaal
   poll_remove_vote:

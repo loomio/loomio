@@ -1797,6 +1797,20 @@ fr:
     thumb_down: Pouce vers le bas
     thumb_sideways: Pouce sur le côté
     hand_up: Levez la main
+    of: de
+    at_least: Au moins
+    no_more_than: Pas plus de
+    for_the_proposal_to_pass: Pour que la proposition soit adoptée, cette option doit recevoir
+    votes_cast: Votes exprimés
+    eligible_voters: Électeurs éligibles
+    gte_score_percent: Nécessite au moins %{percent}% des votes exprimés
+    gte_voter_percent: Nécessite au moins %{percent}% des électeurs éligibles
+    lte_score_percent: Ne doit pas dépasser %{percent}% des votes exprimés
+    lte_voter_percent: Ne doit pas dépasser %{percent}% des électeurs éligibles
+    name_gte_score_percent: "%{name} a besoin d'au moins %{percent}% des votes exprimés"
+    name_gte_voter_percent: "%{name} a besoin d'au moins %{percent}% d'électeurs éligibles"
+    name_lte_score_percent: "%{name} ne doit pas dépasser %{percent}% des votes exprimés"
+    name_lte_voter_percent: "%{name} ne doit pas dépasser %{percent}% des électeurs éligibles"
   poll_common:
     superseded: Remplacé
     outdated: Dépassé
@@ -1887,6 +1901,7 @@ fr:
     no_voting: Pour discussion seulement, vote désactivé
     post_outcome: Résultat de l'après
     view_all_votes: Voir tous les votes
+    you_voted: Vous avez voté
   poll_common_attachment_form:
     label: Pièces jointes
   poll_common_add_option:
@@ -1989,6 +2004,8 @@ fr:
     unable_to_vote: Vous n'avez pas été invité à voter dans ce %{poll_type}
     draft_mode: Vote désactivé. Ce n’est pas encore ouvert au vote.
     voting_disabled_poll_is_template: Vote désactivé. Il s’agit d’un modèle.
+    for_this_proposal_to_pass: 'Pour que cette proposition soit adoptée :'
+    for_this_poll_type_to_be_valid: 'Pour que ce %{poll_type} soit valide :'
   poll_common_collapsed:
     by_who: par %{name}
   poll_common_calendar_invite:
@@ -2220,6 +2237,9 @@ fr:
     how_much_time_to_vote: Combien de temps allez-vous accorder aux gens pour voter ?
     advanced_settings: Paramètres avancés
     none_of_the_above: Aucune des réponses ci-dessus
+    participation_quorum: Quorum de participation
+    quorum_hint: Quel pourcentage d’électeurs doit participer pour que le résultat soit valide ?
+    quorum_placeholder: Laissez vide ou entrez un nombre compris entre 0 et 100
   poll_proposal_form:
     start_header: Faire une proposition
     edit_header: Modifier la proposition
@@ -2319,6 +2339,11 @@ fr:
   poll_common_percent_voted:
     sentence: "%{numerator} personnes sur %{denominator} ont voté (%{percent}%)"
     target_progress: "%{percent}% de la cible atteinte. (%{num} / %{target})"
+    pct_of_eligible_voters_must_participate: "%{pct}% des électeurs éligibles doivent participer"
+    pct_participation: "%{num} de %{total} votes exprimés (%{pct}% participation)"
+    vote_short_of_quorum: Il faut encore 1 vote pour atteindre le quorum de %{pct}%
+    votes_short_of_quorum: "%{num} votes supplémentaires nécessaires pour atteindre le quorum de %{pct}%"
+    quorum_reached: Le quorum de %{pct}% a été atteint
   poll_meeting_chart_panel:
     total: Total
   poll_remove_vote:

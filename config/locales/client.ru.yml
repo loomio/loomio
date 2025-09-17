@@ -1751,6 +1751,20 @@ ru:
     thumb_down: Большой палец вниз
     thumb_sideways: Большой палец в сторону
     hand_up: Подними руку
+    of: из
+    at_least: По меньшей мере
+    no_more_than: Не более
+    for_the_proposal_to_pass: Для того, чтобы предложение было принято, этот вариант должен получить
+    votes_cast: Поданное количество голосов
+    eligible_voters: Имеющие право голоса избиратели
+    gte_score_percent: Необходимо по крайней мере %{percent}% голосов
+    gte_voter_percent: Требуется не менее %{percent}% имеющих право голоса избирателей
+    lte_score_percent: Не должно превышать %{percent}% от поданных голосов
+    lte_voter_percent: Не должно превышать %{percent}% от числа имеющих право голоса избирателей
+    name_gte_score_percent: "%{name} необходимо набрать не менее %{percent}% голосов"
+    name_gte_voter_percent: "%{name} требуется не менее %{cent}% имеющих право голоса избирателей"
+    name_lte_score_percent: "%{name} не должен превышать %{percent}% от поданных голосов"
+    name_lte_voter_percent: "%{name} не должен превышать %{percent}% от числа имеющих право голоса избирателей"
   poll_common:
     superseded: Заменено
     outdated: Устаревший
@@ -1841,6 +1855,7 @@ ru:
     no_voting: Только для обсуждения, голосование отключено
     post_outcome: Пост-результат
     view_all_votes: Посмотреть все голоса
+    you_voted: Вы проголосовали
   poll_common_attachment_form:
     label: Вложения
   poll_common_add_option:
@@ -1941,6 +1956,8 @@ ru:
     unable_to_vote: Вас не пригласили голосовать в этом %{poll_type}
     draft_mode: Голосование отключено. Это еще не открыто для голосования.
     voting_disabled_poll_is_template: Голосование отключено. Это шаблон.
+    for_this_proposal_to_pass: 'Для принятия этого предложения:'
+    for_this_poll_type_to_be_valid: 'Чтобы %{poll_type} был действителен:'
   poll_common_collapsed:
     by_who: по %{name}
   poll_common_calendar_invite:
@@ -2168,6 +2185,9 @@ ru:
     how_much_time_to_vote: Сколько времени вы дадите людям для голосования?
     advanced_settings: Расширенные настройки
     none_of_the_above: Ни один из вышеперечисленных
+    participation_quorum: Кворум участия
+    quorum_hint: Какой процент избирателей должен принять участие, чтобы результат был признан действительным?
+    quorum_placeholder: Оставьте поле пустым или введите число от 0 до 100
   poll_proposal_form:
     start_header: Начать предложение
     edit_header: Изменить предложение
@@ -2267,6 +2287,11 @@ ru:
   poll_common_percent_voted:
     sentence: Приняли участие %{numerator} из %{denominator} человек (%{percent}%)
     target_progress: "%{percent} % цели достигнуто. (%{num} / %{target})"
+    pct_of_eligible_voters_must_participate: "%{pct}% от числа избирателей, имеющих право голоса, должны участвовать"
+    pct_participation: "%{num} из %{total} поданных голосов (%{pct}% участия)"
+    vote_short_of_quorum: Для достижения кворума %{pct}% необходим еще 1 голос
+    votes_short_of_quorum: Для достижения кворума %{pct}% необходимо еще %{num} голосов
+    quorum_reached: Кворум %{pct}% достигнут
   poll_meeting_chart_panel:
     total: Всего
   poll_remove_vote:

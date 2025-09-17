@@ -1758,6 +1758,20 @@ hu:
     thumb_down: Hüvelykujj lefelé
     thumb_sideways: Hüvelykujj oldalra
     hand_up: Fel a kezét
+    of: a
+    at_least: Legalább
+    no_more_than: Legfeljebb
+    for_the_proposal_to_pass: Ahhoz, hogy a javaslat elfogadásra kerüljön, ennek a lehetőségnek meg kell kapnia a
+    votes_cast: Leadott szavazatok
+    eligible_voters: Jogosult szavazók
+    gte_score_percent: Legalább a leadott szavazatok %{percent}%-ára van szükség
+    gte_voter_percent: A jogosult szavazók legalább %{percent}%-ára van szükség
+    lte_score_percent: Nem haladhatja meg a leadott szavazatok %{percent}%-át
+    lte_voter_percent: Nem haladhatja meg a jogosult szavazók %{percent}%-át
+    name_gte_score_percent: "%{name} szavazónak legalább %{percent}%-ra van szüksége a leadott szavazatok közül"
+    name_gte_voter_percent: "%{name} szavazóinak legalább %{percent}%-ára van szüksége a szavazásra jogosultak közül"
+    name_lte_score_percent: A %{name} szavazat nem haladhatja meg a leadott szavazatok %{percent}%-át
+    name_lte_voter_percent: "%{name} nem haladhatja meg a jogosult szavazók %{percent}%-át"
   poll_common:
     superseded: Felváltva
     outdated: Elavult
@@ -1848,6 +1862,7 @@ hu:
     no_voting: Csak megbeszélésre, szavazás letiltva
     post_outcome: Eredmény utáni
     view_all_votes: Az összes szavazat megtekintése
+    you_voted: Szavazott
   poll_common_attachment_form:
     label: Mellékletek
   poll_common_add_option:
@@ -1948,6 +1963,8 @@ hu:
     unable_to_vote: Nem hívtak meg szavazni ebben a %{poll_type}-ban.
     draft_mode: Szavazás letiltva. Ez még nem nyitott szavazásra.
     voting_disabled_poll_is_template: Szavazás letiltva. Ez egy sablon.
+    for_this_proposal_to_pass: 'Ahhoz, hogy ez a javaslat átmenjen:'
+    for_this_poll_type_to_be_valid: 'Ahhoz, hogy ez a %{poll_type} érvényes legyen:'
   poll_common_collapsed:
     by_who: tőle %{name}
   poll_common_calendar_invite:
@@ -2175,6 +2192,9 @@ hu:
     how_much_time_to_vote: Mennyi időt hagy az embereknek szavazni?
     advanced_settings: Speciális beállítások
     none_of_the_above: A fentiek közül egyik sem
+    participation_quorum: Részvételi határozatképesség
+    quorum_hint: A szavazók hány százalékának kell részt vennie ahhoz, hogy az eredmény érvényes legyen?
+    quorum_placeholder: Hagyja üresen, vagy adjon meg egy számot 0 és 100 között
   poll_proposal_form:
     start_header: Javaslat indítása
     edit_header: A javaslat szerkesztése
@@ -2274,6 +2294,11 @@ hu:
   poll_common_percent_voted:
     sentence: "%{numerator}/%{denominator} ember vett részt (%{percent}%)"
     target_progress: A cél %{percent}%-a elérve. (%{num} / %{target})
+    pct_of_eligible_voters_must_participate: A választásra jogosult szavazók %{pct}%-ának kell részt vennie
+    pct_participation: A leadott szavazatok %{num} százaléka a %{total} szavazatból (%{pct}% részvétel)
+    vote_short_of_quorum: Még 1 szavazat szükséges a %{pct}% kvórum eléréséhez
+    votes_short_of_quorum: "%{num} további szavazat szükséges a %{pct}%-os kvórum eléréséhez"
+    quorum_reached: A határozatképesség elérte a %{pct}%-ot
   poll_meeting_chart_panel:
     total: Összesen
   poll_remove_vote:

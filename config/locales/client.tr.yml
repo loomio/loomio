@@ -1751,6 +1751,20 @@ tr:
     thumb_down: Başparmak aşağı
     thumb_sideways: Başparmak yanlara doğru
     hand_up: El yukarı
+    of: ile ilgili
+    at_least: En azından
+    no_more_than: En fazla
+    for_the_proposal_to_pass: Önerinin kabul edilmesi için bu seçeneğin kabul edilmesi gerekir.
+    votes_cast: Verilen oylar
+    eligible_voters: Uygun seçmenler
+    gte_score_percent: En az %{percent}% oy gerekiyor
+    gte_voter_percent: En az %{percent}% uygun seçmen gerekiyor
+    lte_score_percent: Verilen oyların %{percent}%'ini aşmamalıdır
+    lte_voter_percent: Uygun seçmenlerin %{percent}%'ini geçmemelidir
+    name_gte_score_percent: "%{name}'in en az %{percent}% oy alması gerekiyor"
+    name_gte_voter_percent: "%{name}'in en az %{percent}% oranında uygun seçmene ihtiyacı var"
+    name_lte_score_percent: "%{name} verilen oyların %{percent}%'ini geçmemelidir"
+    name_lte_voter_percent: "%{name}, uygun seçmenlerin %{percent}%'ini geçmemelidir"
   poll_common:
     superseded: Değiştirildi
     outdated: Modası geçmiş
@@ -1841,6 +1855,7 @@ tr:
     no_voting: Yalnızca tartışma amaçlıdır, oylama devre dışı bırakıldı
     post_outcome: Sonuç sonrası
     view_all_votes: Tüm oyları görüntüle
+    you_voted: Oy verdiniz
   poll_common_attachment_form:
     label: Ekler
   poll_common_add_option:
@@ -1941,6 +1956,8 @@ tr:
     unable_to_vote: Bu %{poll_type} anketinde oy kullanmaya davet edilmediniz
     draft_mode: Oylama devre dışı bırakıldı. Bu henüz oylamaya açık değil.
     voting_disabled_poll_is_template: Oylama devre dışı bırakıldı. Bu bir şablon.
+    for_this_proposal_to_pass: 'Bu önerinin kabul edilmesi için:'
+    for_this_poll_type_to_be_valid: 'Bu %{poll_type}''ın geçerli olması için:'
   poll_common_collapsed:
     by_who: "%{name}"
   poll_common_calendar_invite:
@@ -2168,6 +2185,9 @@ tr:
     how_much_time_to_vote: İnsanlara oy vermeleri için ne kadar zaman tanıyacaksınız?
     advanced_settings: Gelişmiş ayarlar
     none_of_the_above: Yukarıdakilerin hiçbiri
+    participation_quorum: Katılım yeter sayısı
+    quorum_hint: Sonucun geçerli olabilmesi için seçmenlerin yüzde kaçının katılımı gerekir?
+    quorum_placeholder: Boş bırakın veya 0 ile 100 arasında bir sayı girin
   poll_proposal_form:
     start_header: Teklifi başlat
     edit_header: Teklifi düzenle
@@ -2267,6 +2287,11 @@ tr:
   poll_common_percent_voted:
     sentence: "%{numerator} / %{denominator} kişi katıldı (%{percent}%)"
     target_progress: Hedefin %%{percent} kadarına ulaşıldı. (%{num} / %{target})
+    pct_of_eligible_voters_must_participate: Uygun seçmenlerin %{pct}%'si katılmalıdır
+    pct_participation: "%{toplam} oydan %{num} tanesi kullanıldı (%{pct}% katılım)"
+    vote_short_of_quorum: "%{pct}% çoğunluğa ulaşmak için 1 oy daha gerekiyor"
+    votes_short_of_quorum: "%{pct}% çoğunluğa ulaşmak için %{num} oy daha gerekiyor"
+    quorum_reached: "%{pct}% çoğunluğa ulaşıldı"
   poll_meeting_chart_panel:
     total: Toplam
   poll_remove_vote:

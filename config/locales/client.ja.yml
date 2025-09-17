@@ -1750,6 +1750,20 @@ ja:
     thumb_down: 親指を下に向ける
     thumb_sideways: 親指を横向きにする
     hand_up: 手を挙げて
+    of: の
+    at_least: 少なくとも
+    no_more_than: 最大
+    for_the_proposal_to_pass: 提案が承認されるには、このオプションは
+    votes_cast: 投票数
+    eligible_voters: 有権者
+    gte_score_percent: 少なくとも%{percent}%の投票が必要です
+    gte_voter_percent: 有権者の少なくとも%{percent}%の賛成が必要
+    lte_score_percent: 投票総数の%{percent}%を超えてはいけません
+    lte_voter_percent: 有権者の%{percent}%を超えてはならない
+    name_gte_score_percent: "%{name} には少なくとも %{percent}% の投票が必要です"
+    name_gte_voter_percent: "%{name} には少なくとも %{percent}% の有権者が必要です"
+    name_lte_score_percent: "%{name} は投票数の %{percent}% を超えてはなりません"
+    name_lte_voter_percent: "%{name} は有権者の %{percent}% を超えてはなりません"
   poll_common:
     superseded: 置き換えられました
     outdated: 時代遅れ
@@ -1840,6 +1854,7 @@ ja:
     no_voting: ディスカッションのみのため、投票は無効です
     post_outcome: 結果後
     view_all_votes: すべての投票を表示
+    you_voted: 投票しました
   poll_common_attachment_form:
     label: 添付ファイル
   poll_common_add_option:
@@ -1940,6 +1955,8 @@ ja:
     unable_to_vote: この %{poll_type} への投票には招待されていません
     draft_mode: 投票が無効になりました。これはまだ投票を受け付けていません。
     voting_disabled_poll_is_template: 投票が無効になりました。これはテンプレートです。
+    for_this_proposal_to_pass: この提案が可決されるためには：
+    for_this_poll_type_to_be_valid: 'この %{poll_type} が有効になるためには:'
   poll_common_collapsed:
     by_who: 名前で}
   poll_common_calendar_invite:
@@ -2167,6 +2184,9 @@ ja:
     how_much_time_to_vote: 投票にどれくらいの時間を割く予定ですか?
     advanced_settings: 詳細設定
     none_of_the_above: 上記のどれでもない
+    participation_quorum: 参加定足数
+    quorum_hint: 結果が有効になるためには、何パーセントの有権者が投票に参加する必要がありますか?
+    quorum_placeholder: 空白のままにするか、0～100の数字を入力してください
   poll_proposal_form:
     start_header: 提案を開始する
     edit_header: 提案の編集
@@ -2266,6 +2286,11 @@ ja:
   poll_common_percent_voted:
     sentence: "%{denominator} 人中 %{numerator} 人が参加しました (%{percent}%)"
     target_progress: 目標の %{percent}% に達しました。 (%{num} / %{target})
+    pct_of_eligible_voters_must_participate: 有権者の%{pct}%が参加する必要がある
+    pct_participation: 投票総数 %{total} のうち %{num} 票 (投票率 %{pct}%)
+    vote_short_of_quorum: "%{pct}% の定足数に達するにはあと 1 票必要です"
+    votes_short_of_quorum: "%{pct}% の定足数に達するにはあと %{num} 票が必要です"
+    quorum_reached: "%{pct}% の定足数に達しました"
   poll_meeting_chart_panel:
     total: 合計
   poll_remove_vote:

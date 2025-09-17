@@ -1751,6 +1751,20 @@ fi:
     thumb_down: Peukalo alas
     thumb_sideways: Peukalo sivuttain
     hand_up: Käsi ylös
+    of: jostakin
+    at_least: Vähintään
+    no_more_than: Enintään
+    for_the_proposal_to_pass: Jotta ehdotus hyväksyttäisiin, tämän vaihtoehdon on saatava
+    votes_cast: Annetut äänet
+    eligible_voters: Äänestäjäoikeutetut
+    gte_score_percent: Tarvitsee vähintään %{percent}% annetuista äänistä
+    gte_voter_percent: Tarvitaan vähintään %{percent}% äänioikeutetuista
+    lte_score_percent: Ei saa ylittää %{percent}% annetuista äänistä
+    lte_voter_percent: Ei saa ylittää %{percent}% äänioikeutetuista
+    name_gte_score_percent: "%{name} tarvitsee vähintään %{percent}% annetuista äänistä"
+    name_gte_voter_percent: "%{name} tarvitsee vähintään %{percent}% äänioikeutetuista"
+    name_lte_score_percent: "%{name} ei saa ylittää %{percent}% annetuista äänistä"
+    name_lte_voter_percent: "%{name} ei saa ylittää %{percent}% äänioikeutetuista"
   poll_common:
     superseded: Korvattu
     outdated: Vanhentunut
@@ -1841,6 +1855,7 @@ fi:
     no_voting: Vain keskustelua varten, äänestäminen estetty
     post_outcome: Tulosten julkaisu
     view_all_votes: Näytä kaikki äänet
+    you_voted: Äänestit
   poll_common_attachment_form:
     label: Liitteet
   poll_common_add_option:
@@ -1941,6 +1956,8 @@ fi:
     unable_to_vote: Sinua ei ole kutsuttu äänestämään tässä %{poll_type}
     draft_mode: Äänestys estetty. Tämä ei ole vielä avoinna äänestettäväksi.
     voting_disabled_poll_is_template: Äänestys estetty. Tämä on malli.
+    for_this_proposal_to_pass: 'Jotta tämä ehdotus menisi läpi:'
+    for_this_poll_type_to_be_valid: 'Jotta tämä %{poll_type} olisi kelvollinen:'
   poll_common_collapsed:
     by_who: "%{name}"
   poll_common_calendar_invite:
@@ -2168,6 +2185,9 @@ fi:
     how_much_time_to_vote: Kuinka kauan annat ihmisille aikaa äänestää?
     advanced_settings: Lisäasetukset
     none_of_the_above: Ei mikään yllä olevista
+    participation_quorum: Osallistumispäätösvaltaisuus
+    quorum_hint: Kuinka monta prosenttia äänestäjistä pitää osallistua, jotta tulos olisi pätevä?
+    quorum_placeholder: Jätä tyhjäksi tai anna luku väliltä 0–100
   poll_proposal_form:
     start_header: Aloita ehdotus
     edit_header: Muokkaa ehdotusta
@@ -2267,6 +2287,11 @@ fi:
   poll_common_percent_voted:
     sentence: "%{numerator}/%{denominator} henkilöä on osallistunut (%{percent}%)"
     target_progress: "%{percent} % tavoitteesta saavutettu. (%{num} / %{target})"
+    pct_of_eligible_voters_must_participate: "%{pct}% äänioikeutetuista on osallistuttava"
+    pct_participation: "%{num} annetuista äänistä (%{pct}% osallistumisprosentti)"
+    vote_short_of_quorum: Yksi ääni lisää tarvitaan %{pct}% päätösvaltaisuuteen
+    votes_short_of_quorum: "%{num} ääntä lisää tarvitaan %{pct}% päätösvaltaisuuteen"
+    quorum_reached: Päätösvaltainen jäsenmäärä on %{pct}%
   poll_meeting_chart_panel:
     total: Kaikki yhteensä
   poll_remove_vote:

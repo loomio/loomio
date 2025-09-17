@@ -1770,6 +1770,20 @@ he:
     thumb_down: אגודל למטה
     thumb_sideways: אגודל הצידה
     hand_up: יד למעלה
+    of: שֶׁל
+    at_least: לְפָחוֹת
+    no_more_than: לא יותר מ
+    for_the_proposal_to_pass: כדי שההצעה תעבור, אופציה זו חייבת לקבל
+    votes_cast: קולות שהושלכו
+    eligible_voters: בעלי זכות הצבעה
+    gte_score_percent: נדרשים לפחות %{percent}% מהקולות המועמדים
+    gte_voter_percent: צריך לפחות %{percent}% מבעלי זכות הצבעה
+    lte_score_percent: אסור שיעלה על %{percent}% מהקולות שניתנו
+    lte_voter_percent: לא יעלה על %{percent}% מכלל בעלי זכות הבחירה
+    name_gte_score_percent: "%{name} זקוק לפחות ל-%{percent}% מהקולות שהוטלו"
+    name_gte_voter_percent: "%{name} זקוק לפחות ל-%{percent}% מבעלי זכות הצבעה"
+    name_lte_score_percent: "%{name} לא יעלה על %{percent}% מהקולות שהוטלו"
+    name_lte_voter_percent: מספר המצביעים %{name} לא יעלה על %{percent}%
   poll_common:
     superseded: הוחלף
     outdated: מְיוּשָׁן
@@ -1860,6 +1874,7 @@ he:
     no_voting: לדיון בלבד, ההצבעה מושבתת
     post_outcome: תוצאה לאחר מכן
     view_all_votes: הצג את כל ההצבעות
+    you_voted: הצבעת
   poll_common_attachment_form:
     label: קבצים מצורפים
   poll_common_add_option:
@@ -1960,6 +1975,8 @@ he:
     unable_to_vote: לא הוזמנת להצביע ב-%{poll_type} הזה
     draft_mode: ההצבעה מושבתת. זה עדיין לא פתוח להצבעה.
     voting_disabled_poll_is_template: ההצבעה מושבתת. זו תבנית.
+    for_this_proposal_to_pass: 'כדי שההצעה הזו תעבור:'
+    for_this_poll_type_to_be_valid: 'כדי ש-%{poll_type} הזה יהיה תקף:'
   poll_common_collapsed:
     by_who: על פי %{name}
   poll_common_calendar_invite:
@@ -2187,6 +2204,9 @@ he:
     how_much_time_to_vote: כמה זמן תאפשר לאנשים להצביע?
     advanced_settings: הגדרות מתקדמות
     none_of_the_above: אף אחד מהאמור לעיל
+    participation_quorum: מניין ההשתתפות
+    quorum_hint: איזה אחוז מהמצביעים חייב להשתתף כדי שהתוצאה תהיה תקינה?
+    quorum_placeholder: השאר ריק או הזן מספר בין 0 ל-100
   poll_proposal_form:
     start_header: התחל הצעה
     edit_header: ערוך הצעה
@@ -2286,6 +2306,11 @@ he:
   poll_common_percent_voted:
     sentence: "%{numerator} מתוך %{denominator} אנשים השתתפו (%{percent}%)"
     target_progress: "%{percent}% מהיעד הושג. (%{num} / %{target})"
+    pct_of_eligible_voters_must_participate: "%{pct}% מהמצביעים בעלי זכות ההצבעה חייבים להשתתף"
+    pct_participation: "%{num} מתוך %{total} הקולות שהוצבעו (%{pct}% השתתפות)"
+    vote_short_of_quorum: דרוש עוד קול אחד כדי להגיע למניין חוקי של %{pct}%
+    votes_short_of_quorum: נדרשים עוד %{num} קולות כדי להגיע למניין חוקי של %{pct}%
+    quorum_reached: מניין חוקי של %{pct}% הושג
   poll_meeting_chart_panel:
     total: סך הכל
   poll_remove_vote:

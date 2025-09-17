@@ -1751,6 +1751,20 @@ da:
     thumb_down: Tommelfinger ned
     thumb_sideways: Tommelfinger sidelæns
     hand_up: Hånden op
+    of: af
+    at_least: Mindst
+    no_more_than: Ikke mere end
+    for_the_proposal_to_pass: For at forslaget kan vedtages, skal denne mulighed modtages
+    votes_cast: Afgivne stemmer
+    eligible_voters: Berettigede vælgere
+    gte_score_percent: Kræver mindst %{percent}% af de afgivne stemmer
+    gte_voter_percent: Kræver mindst %{percent}% af de berettigede vælgere
+    lte_score_percent: Må ikke overstige %{percent}% af de afgivne stemmer
+    lte_voter_percent: Må ikke overstige %{percent}% af de stemmeberettigede
+    name_gte_score_percent: "%{name} skal have mindst %{percent}% af de afgivne stemmer"
+    name_gte_voter_percent: "%{name} har brug for mindst %{percent}% af de stemmeberettigede"
+    name_lte_score_percent: "%{name} må ikke overstige %{percent}% af de afgivne stemmer"
+    name_lte_voter_percent: "%{name} må ikke overstige %{percent}% af de stemmeberettigede"
   poll_common:
     superseded: Afløst
     outdated: Forældet
@@ -1841,6 +1855,7 @@ da:
     no_voting: Kun til diskussion, afstemning deaktiveret
     post_outcome: Resultat efter
     view_all_votes: Se alle stemmer
+    you_voted: Du stemte
   poll_common_attachment_form:
     label: Vedhæftede filer
   poll_common_add_option:
@@ -1941,6 +1956,8 @@ da:
     unable_to_vote: Du er ikke blevet inviteret til at stemme i denne %{poll_type}
     draft_mode: Afstemning deaktiveret. Dette er ikke åbent for afstemning endnu.
     voting_disabled_poll_is_template: Afstemning deaktiveret. Dette er en skabelon.
+    for_this_proposal_to_pass: 'For at dette forslag kan vedtages:'
+    for_this_poll_type_to_be_valid: 'For at denne %{poll_type} skal være gyldig:'
   poll_common_collapsed:
     by_who: af %{name}
   poll_common_calendar_invite:
@@ -2168,6 +2185,9 @@ da:
     how_much_time_to_vote: Hvor meget tid vil du give folk til at stemme?
     advanced_settings: Avancerede indstillinger
     none_of_the_above: Ingen af ovenstående
+    participation_quorum: Deltagelsesquorum
+    quorum_hint: Hvor stor en procentdel af vælgerne skal deltage for at resultatet er gyldigt?
+    quorum_placeholder: Lad feltet stå tomt, eller indtast et tal mellem 0 og 100
   poll_proposal_form:
     start_header: Opret forslag
     edit_header: Rediger forslag
@@ -2267,6 +2287,11 @@ da:
   poll_common_percent_voted:
     sentence: "%{numerator} af %{denominator} personer har deltaget (%{percent}%)"
     target_progress: "%{percent} % af målet nået. (%{num} / %{target})"
+    pct_of_eligible_voters_must_participate: "%{pct}% af de stemmeberettigede skal deltage"
+    pct_participation: "%{num} af %{total} afgivne stemmer (%{pct}% deltagelse)"
+    vote_short_of_quorum: 1 stemme mere er nødvendig for at opnå et quorum på %{pct}%
+    votes_short_of_quorum: "%{num} flere stemmer kræves for at opnå et quorum på %{pct}%"
+    quorum_reached: Quorum på %{pct}% er nået
   poll_meeting_chart_panel:
     total: Total
   poll_remove_vote:

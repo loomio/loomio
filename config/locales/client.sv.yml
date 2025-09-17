@@ -1751,6 +1751,20 @@ sv:
     thumb_down: Tummen ner
     thumb_sideways: Tummen i sidled
     hand_up: Handen upp
+    of: av
+    at_least: Åtminstone
+    no_more_than: Inte mer än
+    for_the_proposal_to_pass: För att förslaget ska gå igenom måste detta alternativ få
+    votes_cast: Avgivna röster
+    eligible_voters: röstberättigade
+    gte_score_percent: Kräver minst %{percent}% av de avgivna rösterna
+    gte_voter_percent: Behöver minst %{percent}% av de röstberättigade
+    lte_score_percent: Får inte överstiga %{percent}% av de avgivna rösterna
+    lte_voter_percent: Får inte överstiga %{percent}% av de röstberättigade
+    name_gte_score_percent: "%{name} behöver minst %{percent}% av de avgivna rösterna"
+    name_gte_voter_percent: "%{name} behöver minst %{percent}% av de röstberättigade"
+    name_lte_score_percent: "%{name} får inte överstiga %{percent}% av de avgivna rösterna"
+    name_lte_voter_percent: "%{name} får inte överstiga %{percent}% av de röstberättigade"
   poll_common:
     superseded: Ersatt
     outdated: Föråldrad
@@ -1841,6 +1855,7 @@ sv:
     no_voting: Endast för diskussion, röstning inaktiverad
     post_outcome: Resultat efter
     view_all_votes: Visa alla röster
+    you_voted: Du röstade
   poll_common_attachment_form:
     label: Bilagor
   poll_common_add_option:
@@ -1941,6 +1956,8 @@ sv:
     unable_to_vote: Du har inte blivit inbjuden att rösta i denna %{poll_type}
     draft_mode: Röstning inaktiverad. Detta är inte öppet för omröstning ännu.
     voting_disabled_poll_is_template: Röstning inaktiverad. Detta är en mall.
+    for_this_proposal_to_pass: 'För att detta förslag ska gå igenom:'
+    for_this_poll_type_to_be_valid: 'För att denna %{poll_type} ska vara giltig:'
   poll_common_collapsed:
     by_who: vid %{name}
   poll_common_calendar_invite:
@@ -2168,6 +2185,9 @@ sv:
     how_much_time_to_vote: Hur mycket tid kommer du att ge folk att rösta?
     advanced_settings: Avancerade inställningar
     none_of_the_above: Inget av ovanstående
+    participation_quorum: Deltagandekvorum
+    quorum_hint: Hur stor andel av väljarna måste delta för att resultatet ska vara giltigt?
+    quorum_placeholder: Lämna tomt eller ange ett nummer mellan 0 och 100
   poll_proposal_form:
     start_header: Starta förslag
     edit_header: Redigera förslag
@@ -2267,6 +2287,11 @@ sv:
   poll_common_percent_voted:
     sentence: "%{numerator} av %{denominator} personer har deltagit (%{percent}%)"
     target_progress: "%{percent} % av målet nått. (%{num} / %{target})"
+    pct_of_eligible_voters_must_participate: "%{pct}% av de röstberättigade måste delta"
+    pct_participation: "%{num} av %{total} avgivna röster (%{pct}% deltagande)"
+    vote_short_of_quorum: Ytterligare 1 röst behövs för att uppnå ett beslutsmässigt quorum på %{pct}%
+    votes_short_of_quorum: "%{num} fler röster behövs för att uppnå kvorum på %{pct}%"
+    quorum_reached: Kvorum på %{pct}% har uppnåtts
   poll_meeting_chart_panel:
     total: Totalt
   poll_remove_vote:

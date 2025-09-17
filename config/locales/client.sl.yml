@@ -1751,6 +1751,20 @@ sl:
     thumb_down: Palec navzdol
     thumb_sideways: Palec vstran
     hand_up: Roko gor
+    of: od
+    at_least: Vsaj
+    no_more_than: Ne več kot
+    for_the_proposal_to_pass: Da bi bil predlog sprejet, mora ta možnost prejeti
+    votes_cast: Oddani glasovi
+    eligible_voters: Upravičeni volivci
+    gte_score_percent: Potrebuje vsaj %{percent} % oddanih glasov
+    gte_voter_percent: Potrebuje vsaj %{percent} % upravičenih volivcev
+    lte_score_percent: Ne sme presegati %{percent} % oddanih glasov
+    lte_voter_percent: Ne sme presegati %{percent} % upravičenih volivcev
+    name_gte_score_percent: "%{name} potrebuje vsaj %{percent} % oddanih glasov"
+    name_gte_voter_percent: "%{name} potrebuje vsaj %{percent} % upravičenih volivcev"
+    name_lte_score_percent: "%{name} ne sme preseči %{percent} % oddanih glasov"
+    name_lte_voter_percent: "%{name} ne sme presegati %{percent} % upravičenih volivcev"
   poll_common:
     superseded: Nadomeščeno
     outdated: Zastarelo
@@ -1841,6 +1855,7 @@ sl:
     no_voting: Samo za razpravo, glasovanje onemogočeno
     post_outcome: Izid objave
     view_all_votes: Ogled vseh glasov
+    you_voted: Glasovali ste
   poll_common_attachment_form:
     label: Priloge
   poll_common_add_option:
@@ -1941,6 +1956,8 @@ sl:
     unable_to_vote: Niste bili povabljeni k glasovanju v tem %{poll_type}
     draft_mode: Glasovanje onemogočeno. To še ni odprto za glasovanje.
     voting_disabled_poll_is_template: Glasovanje onemogočeno. To je predloga.
+    for_this_proposal_to_pass: 'Da bi bil ta predlog sprejet:'
+    for_this_poll_type_to_be_valid: 'Da bi bil ta %{poll_type} veljaven:'
   poll_common_collapsed:
     by_who: avtor %{name}
   poll_common_calendar_invite:
@@ -2168,6 +2185,9 @@ sl:
     how_much_time_to_vote: Koliko časa boste dali ljudem na glasovanje?
     advanced_settings: Napredne nastavitve
     none_of_the_above: Nič od naštetega
+    participation_quorum: Kvorum za udeležbo
+    quorum_hint: Kolikšen odstotek volivcev se mora udeležiti volitev, da bo izid veljaven?
+    quorum_placeholder: Pustite prazno ali vnesite število med 0 in 100
   poll_proposal_form:
     start_header: Začni predlog
     edit_header: Uredi predlog
@@ -2267,6 +2287,11 @@ sl:
   poll_common_percent_voted:
     sentence: "%{numerator} od %{denominator} oseb je sodelovalo (%{percent}%)"
     target_progress: "%{percent} % cilja doseženo. (%{num} / %{target})"
+    pct_of_eligible_voters_must_participate: "%{pct}% upravičenih volivcev mora sodelovati"
+    pct_participation: Oddanih %{num} od %{total} glasov (udeležba %{pct} %).
+    vote_short_of_quorum: Za dosego kvoruma %{pct}% je potreben še 1 glas
+    votes_short_of_quorum: Za dosego kvoruma %{pct}% je potrebnih še %{num} glasov
+    quorum_reached: Dosežen je bil kvorum %{pct}%
   poll_meeting_chart_panel:
     total: Skupaj
   poll_remove_vote:

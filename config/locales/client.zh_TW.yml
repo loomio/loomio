@@ -1786,6 +1786,20 @@ zh_TW:
     thumb_down: 拇指向下
     thumb_sideways: 大拇指側向
     hand_up: 舉手
+    of: 的
+    at_least: 至少
+    no_more_than: 不超過
+    for_the_proposal_to_pass: 為了使提案獲得通過，該選項必須獲得
+    votes_cast: 投票數
+    eligible_voters: 合格選民
+    gte_score_percent: 需要至少 %{percent}% 的投票
+    gte_voter_percent: 需要至少 %{percent}% 的合格選民
+    lte_score_percent: 不得超過投票總數的 %{percent}%
+    lte_voter_percent: 不得超過合格選民的 %{percent}%
+    name_gte_score_percent: "%{name} 需要至少 %{percent}% 的投票"
+    name_gte_voter_percent: "%{name} 需要至少 %{percent}% 的合格選民"
+    name_lte_score_percent: "%{name} 不得超過所投票數的 %{percent}%"
+    name_lte_voter_percent: "%{name} 不得超過合格選民的 %{percent}%"
   poll_common:
     superseded: 取代
     outdated: 過時的
@@ -1876,6 +1890,7 @@ zh_TW:
     no_voting: 僅討論，停用投票
     post_outcome: 後期結果
     view_all_votes: 查看所有投票
+    you_voted: 您投票了
   poll_common_attachment_form:
     label: 附件
   poll_common_add_option:
@@ -1978,6 +1993,8 @@ zh_TW:
     unable_to_vote: 您尚未被邀請到此 %{poll_type} 進行投票。
     draft_mode: 投票已禁用。目前尚未開放投票。
     voting_disabled_poll_is_template: 投票已禁用。這是一個模板。
+    for_this_proposal_to_pass: 為了使該提案獲得通過：
+    for_this_poll_type_to_be_valid: 為了使此 %{poll_type} 有效：
   poll_common_collapsed:
     by_who: 由 %{name}
   poll_common_calendar_invite:
@@ -2205,6 +2222,9 @@ zh_TW:
     how_much_time_to_vote: 您將允許人們投票多少時間？
     advanced_settings: 進階設定
     none_of_the_above: 以上都不是
+    participation_quorum: 參與法定人數
+    quorum_hint: 必須有多少比例的選民參與投票結果才有效？
+    quorum_placeholder: 留空或輸入 0 到 100 之間的數字
   poll_proposal_form:
     start_header: 啟動提案
     edit_header: 編輯提案
@@ -2304,6 +2324,11 @@ zh_TW:
   poll_common_percent_voted:
     sentence: "%{denominator} 中的 %{numerator} 個夥伴已投票 (%{percent}%)"
     target_progress: 已達到目標的%{percent}%。 (%{num} / %{target})
+    pct_of_eligible_voters_must_participate: "%{pct}% 的合格選民必須參與"
+    pct_participation: 已投 %{num} 票，佔 %{total} 票（參與率為 %{pct}%）
+    vote_short_of_quorum: 還需 1 票才能達到 %{pct}% 的法定人數
+    votes_short_of_quorum: 還需要 %{num} 票才能達到 %{pct}% 的法定人數
+    quorum_reached: 已達 %{pct}% 的法定人數
   poll_meeting_chart_panel:
     total: 全部
   poll_remove_vote:

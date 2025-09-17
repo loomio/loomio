@@ -1776,6 +1776,20 @@ pl:
     thumb_down: Kciuk w dół
     thumb_sideways: Kciuk na bok
     hand_up: Ręka w górę
+    of: z
+    at_least: Co najmniej
+    no_more_than: Nie więcej niż
+    for_the_proposal_to_pass: Aby propozycja została przyjęta, opcja ta musi uzyskać akceptację
+    votes_cast: Oddane głosy
+    eligible_voters: Uprawnieni wyborcy
+    gte_score_percent: Potrzeba co najmniej %{percent}% oddanych głosów
+    gte_voter_percent: Wymagana jest obecność co najmniej %{percent}% uprawnionych do głosowania
+    lte_score_percent: Nie może przekroczyć %{percent}% oddanych głosów
+    lte_voter_percent: Nie może przekroczyć %{percent}% uprawnionych do głosowania
+    name_gte_score_percent: "%{name} potrzebuje co najmniej %{percent}% oddanych głosów"
+    name_gte_voter_percent: "%{name} potrzebuje co najmniej %{percent}% uprawnionych do głosowania"
+    name_lte_score_percent: "%{name} nie może przekroczyć %{percent}% oddanych głosów"
+    name_lte_voter_percent: "%{name} nie może przekroczyć %{percent}% uprawnionych do głosowania"
   poll_common:
     superseded: zastąpione
     outdated: Przestarzały
@@ -1866,6 +1880,7 @@ pl:
     no_voting: Wyłącznie do dyskusji, głosowanie wyłączone
     post_outcome: Wynik postu
     view_all_votes: Zobacz wszystkie głosy
+    you_voted: Głosowałeś
   poll_common_attachment_form:
     label: Załączniki
   poll_common_add_option:
@@ -1968,6 +1983,8 @@ pl:
     unable_to_vote: Nie zostałeś zaproszony do głosowania w %{poll_type}
     draft_mode: Głosowanie wyłączone. To nie jest jeszcze otwarte do głosowania.
     voting_disabled_poll_is_template: Głosowanie wyłączone. To jest szablon.
+    for_this_proposal_to_pass: 'Aby wniosek ten został przyjęty:'
+    for_this_poll_type_to_be_valid: 'Aby ten %{poll_type} był ważny:'
   poll_common_collapsed:
     by_who: przez %{name}
   poll_common_calendar_invite:
@@ -2195,6 +2212,9 @@ pl:
     how_much_time_to_vote: Ile czasu dasz ludziom na zagłosowanie?
     advanced_settings: Ustawienia zaawansowane
     none_of_the_above: Żadne z powyższych
+    participation_quorum: Kworum uczestnictwa
+    quorum_hint: Jaki procent wyborców musi wziąć udział w głosowaniu, aby wynik był ważny?
+    quorum_placeholder: Pozostaw puste lub wpisz liczbę od 0 do 100
   poll_proposal_form:
     start_header: Utwórz propozycję
     edit_header: Edytuj propozycję
@@ -2294,6 +2314,11 @@ pl:
   poll_common_percent_voted:
     sentence: "%{numerator} z %{denominator} ludzi zagłosowało (%{percent}%)"
     target_progress: Osiągnięto %{percent}% celu. (%{num} / %{target})
+    pct_of_eligible_voters_must_participate: "%{pct}% uprawnionych do głosowania musi wziąć udział"
+    pct_participation: "%{num} z %{total} oddanych głosów (%{pct}% frekwencja)"
+    vote_short_of_quorum: Potrzebny jest jeszcze 1 głos, aby osiągnąć kworum %{pct}%
+    votes_short_of_quorum: Potrzeba jeszcze %{num} głosów, aby osiągnąć kworum %{pct}%
+    quorum_reached: Osiągnięto kworum %{pct}%
   poll_meeting_chart_panel:
     total: W sumie
   poll_remove_vote:

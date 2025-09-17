@@ -1784,6 +1784,20 @@ de:
     thumb_down: Daumen runter
     thumb_sideways: Daumen seitlich
     hand_up: Hand hoch
+    of: von
+    at_least: Mindestens
+    no_more_than: Nicht mehr als
+    for_the_proposal_to_pass: Damit der Vorschlag angenommen wird, muss diese Option
+    votes_cast: Abgegebene Stimmen
+    eligible_voters: Wahlberechtigte
+    gte_score_percent: Benötigt mindestens %{percent}% der abgegebenen Stimmen
+    gte_voter_percent: Benötigt mindestens %{percent}% der Wahlberechtigten
+    lte_score_percent: Darf %{percent}% der abgegebenen Stimmen nicht überschreiten
+    lte_voter_percent: Darf %{percent}% der Wahlberechtigten nicht überschreiten
+    name_gte_score_percent: "%{name} benötigt mindestens %{percent}% der abgegebenen Stimmen"
+    name_gte_voter_percent: "%{name} benötigt mindestens %{percent}% der Wahlberechtigten"
+    name_lte_score_percent: "%{name} darf %{percent}% der abgegebenen Stimmen nicht überschreiten"
+    name_lte_voter_percent: "%{name} darf %{percent}% der Wahlberechtigten nicht überschreiten"
   poll_common:
     superseded: Abgelöst
     outdated: Veraltet
@@ -1874,6 +1888,7 @@ de:
     no_voting: Nur für Diskussionen, Wahlen abgeschaltet
     post_outcome: Ergebnis veröffentlichen
     view_all_votes: Alle Abstimmungen ansehen
+    you_voted: Sie haben abgestimmt
   poll_common_attachment_form:
     label: Arbeitsmaterialien
   poll_common_add_option:
@@ -1976,6 +1991,8 @@ de:
     unable_to_vote: Du wurdest nicht eingeladen in diesem %{poll_type} abzustimmen.
     draft_mode: Abstimmung deaktiviert. Hier kann noch nicht abgestimmt werden.
     voting_disabled_poll_is_template: Abstimmung deaktiviert. Dies ist eine Vorlage.
+    for_this_proposal_to_pass: 'Damit dieser Vorschlag angenommen wird:'
+    for_this_poll_type_to_be_valid: 'Damit dieser %{poll_type} gültig ist:'
   poll_common_collapsed:
     by_who: von %{name}
   poll_common_calendar_invite:
@@ -2203,6 +2220,9 @@ de:
     how_much_time_to_vote: Wie viel Zeit geben Sie den Leuten zum Abstimmen?
     advanced_settings: Erweiterte Einstellungen
     none_of_the_above: Nichts des oben Genannten
+    participation_quorum: Teilnahmequorum
+    quorum_hint: Wie viel Prozent der Wähler müssen teilnehmen, damit das Ergebnis gültig ist?
+    quorum_placeholder: Leer lassen oder eine Zahl zwischen 0 und 100 eingeben
   poll_proposal_form:
     start_header: Abstimmung starten
     edit_header: Angebot bearbeiten
@@ -2302,6 +2322,11 @@ de:
   poll_common_percent_voted:
     sentence: "%{numerator} von %{denominator} Personen haben abgestimmt (%{percent}%)"
     target_progress: "%{percent} % des Ziels erreicht. (%{num} / %{target})"
+    pct_of_eligible_voters_must_participate: "%{pct}% der Wahlberechtigten müssen teilnehmen"
+    pct_participation: "%{num} von %{total} abgegebenen Stimmen (%{pct}% Beteiligung)"
+    vote_short_of_quorum: 1 weitere Stimme erforderlich, um das Quorum von %{pct}% zu erreichen
+    votes_short_of_quorum: "%{num} weitere Stimmen erforderlich, um das Quorum von %{pct}% zu erreichen"
+    quorum_reached: Quorum von %{pct}% wurde erreicht
   poll_meeting_chart_panel:
     total: Gesamt
   poll_remove_vote:

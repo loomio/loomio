@@ -1751,6 +1751,20 @@ el:
     thumb_down: Ο αντίχειρας προς τα κάτω
     thumb_sideways: Ο αντίχειρας στο πλάι
     hand_up: Το χέρι ψηλά
+    of: του
+    at_least: Τουλάχιστον
+    no_more_than: Όχι περισσότερο από
+    for_the_proposal_to_pass: Για να εγκριθεί η πρόταση, η επιλογή αυτή πρέπει να λάβει
+    votes_cast: Ψήφοι που έδωσαν
+    eligible_voters: Επιλέξιμοι ψηφοφόροι
+    gte_score_percent: Χρειάζεται τουλάχιστον %{percent}% των ψήφων
+    gte_voter_percent: Χρειάζεται τουλάχιστον %{percent}% των επιλέξιμων ψηφοφόρων
+    lte_score_percent: Δεν πρέπει να υπερβαίνει το %{percent}% των ψήφων
+    lte_voter_percent: Δεν πρέπει να υπερβαίνει το %{percent}% των επιλέξιμων ψηφοφόρων
+    name_gte_score_percent: Ο/Η %{name} χρειάζεται τουλάχιστον %{percent}% των ψήφων
+    name_gte_voter_percent: Το %{name} χρειάζεται τουλάχιστον %{percent}% των επιλέξιμων ψηφοφόρων
+    name_lte_score_percent: Το %{name} δεν πρέπει να υπερβαίνει το %{percent}% των ψήφων που δόθηκαν
+    name_lte_voter_percent: Το ποσοστό %{name} δεν πρέπει να υπερβαίνει το %{percent}% των επιλέξιμων ψηφοφόρων
   poll_common:
     superseded: Αντικαταστάθηκε
     outdated: Απαρχαιωμένος
@@ -1841,6 +1855,7 @@ el:
     no_voting: Μόνο για συζήτηση, η ψηφοφορία απενεργοποιήθηκε
     post_outcome: Δημοσίευση αποτελέσματος
     view_all_votes: Δείτε όλες τις ψήφους
+    you_voted: Ψηφίσατε
   poll_common_attachment_form:
     label: Συνημμένα
   poll_common_add_option:
@@ -1941,6 +1956,8 @@ el:
     unable_to_vote: Δεν έχετε προσκληθεί να ψηφίσετε σε αυτό το %{poll_type}
     draft_mode: Η ψηφοφορία απενεργοποιήθηκε. Αυτό δεν είναι ακόμη ανοιχτό για ψηφοφορία.
     voting_disabled_poll_is_template: Η ψηφοφορία απενεργοποιήθηκε. Αυτό είναι ένα πρότυπο.
+    for_this_proposal_to_pass: 'Για να περάσει αυτή η πρόταση:'
+    for_this_poll_type_to_be_valid: 'Για να είναι έγκυρο αυτό το %{poll_type}:'
   poll_common_collapsed:
     by_who: από %{name}
   poll_common_calendar_invite:
@@ -2168,6 +2185,9 @@ el:
     how_much_time_to_vote: Πόσο χρόνο θα αφήσετε στον κόσμο να ψηφίσει;
     advanced_settings: Προηγμένες ρυθμίσεις
     none_of_the_above: Τίποτα από τα παραπάνω
+    participation_quorum: Απαρτία συμμετοχής
+    quorum_hint: Ποιο ποσοστό των ψηφοφόρων πρέπει να συμμετάσχει για να είναι έγκυρο το αποτέλεσμα;
+    quorum_placeholder: Αφήστε το κενό ή εισαγάγετε έναν αριθμό μεταξύ 0 και 100
   poll_proposal_form:
     start_header: Πρόταση έναρξης
     edit_header: Επεξεργασία πρότασης
@@ -2267,6 +2287,11 @@ el:
   poll_common_percent_voted:
     sentence: "%{numerator} από %{denominator} άτομα έχουν συμμετάσχει (%{percent}%)"
     target_progress: "%{percent}% του στόχου επιτεύχθηκε. (%{num} / %{target})"
+    pct_of_eligible_voters_must_participate: "%{pct}% των επιλέξιμων ψηφοφόρων πρέπει να συμμετάσχουν"
+    pct_participation: "%{num} από %{total} ψήφους που έδωσαν (%{pct}% συμμετοχή)"
+    vote_short_of_quorum: Απαιτείται 1 ακόμη ψήφος για την επίτευξη απαρτίας %{pct}%
+    votes_short_of_quorum: Απαιτούνται %{num} ακόμη ψήφοι για την επίτευξη απαρτίας %{pct}%
+    quorum_reached: Έχει επιτευχθεί απαρτία %{pct}%
   poll_meeting_chart_panel:
     total: Σύνολο
   poll_remove_vote:

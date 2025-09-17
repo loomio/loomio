@@ -1751,6 +1751,20 @@ ro:
     thumb_down: Degetul mare în jos
     thumb_sideways: Degetul mare în lateral
     hand_up: Mâna sus
+    of: de
+    at_least: Cel puţin
+    no_more_than: Nu mai mult decât
+    for_the_proposal_to_pass: Pentru ca propunerea să fie adoptată, această opțiune trebuie să primească
+    votes_cast: Voturi exprimate
+    eligible_voters: Alegătorii eligibili
+    gte_score_percent: Necesită cel puțin %{percent}% din voturile exprimate
+    gte_voter_percent: Necesită cel puțin %{percent}% din alegătorii eligibili
+    lte_score_percent: Nu trebuie să depășească %{percent}% din voturile exprimate
+    lte_voter_percent: Nu trebuie să depășească %{percent}% din alegătorii eligibili
+    name_gte_score_percent: "%{name} are nevoie de cel puțin %{percent}% din voturile exprimate"
+    name_gte_voter_percent: "%{name} are nevoie de cel puțin %{percent}% din votanții eligibili"
+    name_lte_score_percent: "%{name} nu trebuie să depășească %{percent}% din voturile exprimate"
+    name_lte_voter_percent: "%{name} nu trebuie să depășească %{percent}% din alegătorii eligibili"
   poll_common:
     superseded: Inlocuit
     outdated: Învechit
@@ -1841,6 +1855,7 @@ ro:
     no_voting: Doar pentru discuție, votul este dezactivat
     post_outcome: Rezultatul postării
     view_all_votes: Vezi toate voturile
+    you_voted: Ai votat
   poll_common_attachment_form:
     label: Atașamente
   poll_common_add_option:
@@ -1941,6 +1956,8 @@ ro:
     unable_to_vote: Nu ați fost invitat să votați în acest %{poll_type}
     draft_mode: Votul este dezactivat. Acesta nu este încă deschis pentru vot.
     voting_disabled_poll_is_template: Votul este dezactivat. Acesta este un șablon.
+    for_this_proposal_to_pass: 'Pentru ca această propunere să fie adoptată:'
+    for_this_poll_type_to_be_valid: 'Pentru ca acest %{poll_type} să fie valid:'
   poll_common_collapsed:
     by_who: dupa %{name}
   poll_common_calendar_invite:
@@ -2168,6 +2185,9 @@ ro:
     how_much_time_to_vote: Cât timp veți acorda oamenilor să voteze?
     advanced_settings: Setări avansate
     none_of_the_above: Nici una dintre cele de mai sus
+    participation_quorum: Cvorum de participare
+    quorum_hint: Ce procent din alegători trebuie să participe pentru ca rezultatul să fie valabil?
+    quorum_placeholder: Lăsați necompletat sau introduceți un număr între 0 și 100
   poll_proposal_form:
     start_header: Începeți propunerea
     edit_header: Editați propunerea
@@ -2267,6 +2287,11 @@ ro:
   poll_common_percent_voted:
     sentence: "%{numerator} din %{denominator} persoane au participat (%{percent}%)"
     target_progress: "%{percent}% din obiectiv atins. (%{num} / %{target})"
+    pct_of_eligible_voters_must_participate: "%{pct}% dintre alegătorii eligibili trebuie să participe"
+    pct_participation: "%{num} din %{total} voturi exprimate (%{pct}% participare)"
+    vote_short_of_quorum: Mai este nevoie de un vot pentru a atinge cvorumul de %{pct}%
+    votes_short_of_quorum: Sunt necesare încă %{num} voturi pentru a atinge cvorumul de %{pct}%
+    quorum_reached: Cvorumul de %{pct}% a fost atins
   poll_meeting_chart_panel:
     total: Total
   poll_remove_vote:
