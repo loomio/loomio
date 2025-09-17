@@ -11,7 +11,7 @@ class PollOption < ApplicationRecord
   scope :dangling, -> { joins('left join polls on polls.id = poll_id').where('polls.id is null') }
 
   validates :test_operator, inclusion: { in: ['gte', 'lte'] }, allow_nil: true
-  normalizes :test_percent, with: -> value { [[value, 0].max, 100].min }
+  normalizes :test_percent, with: ->(v) { v.nil? ? nil : [ [ v, 0 ].max, 100 ].min }
   validates :test_against, inclusion: { in: ['score_percent', 'voter_percent'] }, allow_nil: true
 
   def update_counts!
