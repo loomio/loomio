@@ -278,8 +278,8 @@ export default {
     :should-reset="shouldReset"
   )
 
-  v-divider.my-4
   template(v-if="hasOptions")
+    v-divider.my-4
     .text-subtitle-1.py-2( v-t="'poll_common_form.options'")
     v-alert(v-if="!pollOptions.length" variant="tonal" type="info")
       span(v-t="'poll_common_form.no_options_add_some'")
@@ -335,7 +335,7 @@ export default {
           span(v-t="'poll_common_add_option.modal.title'")
 
     template(v-if="optionFormat == 'iso8601'")
-      .text-subtitle-1.pt-2(v-t="'poll_poll_form.new_option'")
+      .text-subtitle-1.py-2(v-t="'poll_poll_form.new_option'")
       .d-flex.align-center
         date-time-picker(:min="minDate" v-model="newDateOption")
         v-btn.poll-meeting-form__option-button.ml-4(
@@ -496,21 +496,21 @@ export default {
     )
     //.text-body-2.font-italic.text-medium-emphasis(v-if="poll.stanceReasonRequired != 'disabled' && poll.config().per_option_reason_prompt" v-t="'poll_common_form.each_option_has_own_reason_prompt'")
 
-  v-text-field(
-    v-if="poll.stanceReasonRequired != 'disabled' && !poll.config().per_option_reason_prompt"
-    v-model="poll.reasonPrompt"
-    :label="$t('poll_common_form.reason_prompt')"
-    :hint="$t('poll_option_form.prompt_hint')"
-    :placeholder="$t('poll_common.reason_placeholder')")
+    v-text-field(
+      v-if="poll.stanceReasonRequired != 'disabled' && !poll.config().per_option_reason_prompt"
+      v-model="poll.reasonPrompt"
+      :label="$t('poll_common_form.reason_prompt')"
+      :hint="$t('poll_option_form.prompt_hint')"
+      :placeholder="$t('poll_common.reason_placeholder')")
 
-  v-checkbox(
-    v-if="poll.stanceReasonRequired != 'disabled'"
-    v-model="poll.limitReasonLength"
-    :label="$t('poll_common_form.limit_reason_length')"
-  )
+    v-checkbox(
+      v-if="poll.stanceReasonRequired != 'disabled'"
+      v-model="poll.limitReasonLength"
+      :label="$t('poll_common_form.limit_reason_length')"
+    )
 
-  v-divider.mb-4
   template(v-if="allowAnonymous")
+    v-divider.mb-4
     .text-subtitle-1.pb-2(v-t="'poll_common_card.hide_results'")
     .text-body-2.pb-4.text-medium-emphasis(v-t="'poll_common_form.hide_results_description'")
     v-select.poll-common-settings__hide-results(
@@ -520,7 +520,7 @@ export default {
       :disabled="!poll.isNew() && currentHideResults == 'until_closed'"
     )
 
-  v-divider.pb-4
+  v-divider.mb-4
   .text-subtitle-1.pb-2(v-t="'poll_common_form.quorum'")
   .text-body-2.pb-4.text-medium-emphasis(v-t="'poll_common_form.quorum_hint'")
   v-number-input.mb-4(
