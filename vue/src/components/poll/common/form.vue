@@ -171,9 +171,7 @@ export default {
         if ((actionName == 'created') && poll.specifiedVotersOnly) {
           EventBus.$emit('openModal', {
             component: 'PollMembers',
-            props: {
-              poll
-            }
+            props: { poll }
           });
         }
       }).catch(err=> {
@@ -370,6 +368,8 @@ export default {
       )
 
   template(v-if="poll.pollType == 'score'")
+    v-divider.my-4
+    p.mt-4.text-subtitle-1.mb-4(v-t="'poll_common_form.define_minimum_and_maxmimum_score'")
     .d-flex
       v-text-field.poll-score-form__min.mr-2(
         v-model="poll.minScore"
@@ -410,27 +410,24 @@ export default {
     validation-errors(:subject="poll", field="minimumStanceChoices")
 
   template(v-if="poll.pollType == 'dot_vote'")
+    v-divider.my-4
+    p.mt-4.text-subtitle-1.mb-4(v-t="'poll_common_form.how_many_points_does_each_voter_have_to_allocate'")
     v-text-field(:label="$t('poll_dot_vote_form.dots_per_person')" type="number", min="1", v-model="poll.dotsPerPerson")
     validation-errors(:subject="poll" field="dotsPerPerson")
 
   template(v-if="poll.config().allow_none_of_the_above")
-    v-checkbox.poll-common-checkbox-option.poll-settings-allow-none-of-the-above(
+    v-checkbox.poll-settings-allow-none-of-the-above(
       hide-details
       v-model="poll.showNoneOfTheAbove"
       :label="$t('poll_common_settings.show_none_of_the_above')"
     )
 
   v-divider.my-4
-
   .text-subtitle-1.pb-2(v-t="'poll_common_form.deadline'")
   .text-body-2.pb-4.text-medium-emphasis(v-t="'poll_common_form.how_much_time_to_vote'")
-
   poll-common-closing-at-field.pb-4(:poll="poll")
 
-
-
   v-divider.my-4
-
   .text-subtitle-1.pb-2(v-t="'poll_common_settings.who_can_vote'")
   v-radio-group(
     v-model="poll.specifiedVotersOnly"
@@ -459,7 +456,6 @@ export default {
       v-model="poll.notifyRecipients")
 
   v-divider.my-4
-
   .text-subtitle-1.pb-2(v-t="'poll_common_form.reminder_notification'")
   .text-body-2.pb-4.text-medium-emphasis(v-t="'poll_common_form.reminder_helptext'")
   p(v-if="poll.closingAt && closesSoon"
@@ -471,10 +467,10 @@ export default {
     :items="closingSoonItems")
 
   template(v-if="allowAnonymous")
-    v-divider.pb-4
+    v-divider.mb-4
     .text-subtitle-1.pb-2(v-t="'poll_common_form.anonymous_voting'")
     .text-body-2.pb-2.text-medium-emphasis(v-t="{path: 'poll_common_form.anonymous_voting_description', args: {poll_type: poll.translatedPollType()}}")
-    v-checkbox.poll-common-checkbox-option.poll-settings-anonymous(
+    v-checkbox.poll-settings-anonymous(
       hide-label
       :disabled="!poll.isNew()"
       v-model="poll.anonymous"
@@ -483,24 +479,22 @@ export default {
   template(v-if="poll.config().can_shuffle_options")
     v-divider.pb-4
     .text-subtitle-1.pb-2(v-t="'poll_common_settings.shuffle_options'")
-    .text-body-2.pb-4.text-medium-emphasis(v-t="'poll_common_settings.reduce_bias_by_showing_options_in_random_order'")
-    v-checkbox.poll-common-checkbox-option.poll-settings-shuffle-options(
+    .text-body-2.pb-2.text-medium-emphasis(v-t="'poll_common_settings.reduce_bias_by_showing_options_in_random_order'")
+    v-checkbox.poll-settings-shuffle-options(
+      hide-details
       v-model="poll.shuffleOptions"
       :label="$t('poll_common_settings.show_options_in_random_order')")
 
-  v-divider.pb-4
-
-  .text-subtitle-1.pb-2(v-t="'poll_common_form.vote_reason'")
-  .text-body-2.pb-4.text-medium-emphasis(v-t="'poll_common_form.vote_reason_description'")
-
   template(v-if="!poll.config().hide_reason_required")
+    v-divider.pb-4
+    .text-subtitle-1.pb-2(v-t="'poll_common_form.vote_reason'")
+    .text-body-2.pb-4.text-medium-emphasis(v-t="'poll_common_form.vote_reason_description'")
     v-select(
       :label="$t('poll_common_form.stance_reason_required_label')"
       :items="stanceReasonRequiredItems"
       v-model="poll.stanceReasonRequired"
     )
-
-  //.text-body-2.font-italic.text-medium-emphasis(v-if="poll.stanceReasonRequired != 'disabled' && poll.config().per_option_reason_prompt" v-t="'poll_common_form.each_option_has_own_reason_prompt'")
+    //.text-body-2.font-italic.text-medium-emphasis(v-if="poll.stanceReasonRequired != 'disabled' && poll.config().per_option_reason_prompt" v-t="'poll_common_form.each_option_has_own_reason_prompt'")
 
   v-text-field(
     v-if="poll.stanceReasonRequired != 'disabled' && !poll.config().per_option_reason_prompt"
@@ -509,14 +503,13 @@ export default {
     :hint="$t('poll_option_form.prompt_hint')"
     :placeholder="$t('poll_common.reason_placeholder')")
 
-  template(v-if="poll.stanceReasonRequired != 'disabled'")
-    v-checkbox.poll-common-checkbox-option(
-      v-model="poll.limitReasonLength"
-      :label="$t('poll_common_form.limit_reason_length')"
-    )
+  v-checkbox(
+    v-if="poll.stanceReasonRequired != 'disabled'"
+    v-model="poll.limitReasonLength"
+    :label="$t('poll_common_form.limit_reason_length')"
+  )
 
-  v-divider.pb-4
-
+  v-divider.mb-4
   template(v-if="allowAnonymous")
     .text-subtitle-1.pb-2(v-t="'poll_common_card.hide_results'")
     .text-body-2.pb-4.text-medium-emphasis(v-t="'poll_common_form.hide_results_description'")
@@ -525,7 +518,7 @@ export default {
       :items="hideResultsItems"
       v-model="poll.hideResults"
       :disabled="!poll.isNew() && currentHideResults == 'until_closed'"
-        )
+    )
 
   v-divider.pb-4
   .text-subtitle-1.pb-2(v-t="'poll_common_form.quorum'")
@@ -541,7 +534,7 @@ export default {
   )
     template(v-slot:append-inner)
       span.mr-4 %
-  .text-body-2.mt-n4.pb-4.font-italic.text-medium-emphasis(v-if="poll.quorumPct && poll.pollType == 'proposal'") Tip: You can also specify the level of agreement required for a proposal to pass. Edit an option to define vote share requirement
+  .text-body-2.mt-n4.pb-4.font-italic.text-medium-emphasis(v-if="poll.quorumPct && poll.pollType == 'proposal'" v-t="'poll_common_form.quorum_tip_vote_share_requirement'")
   common-notify-fields(v-if="poll.id" :model="poll" includeActor)
 
   v-card-actions.poll-common-form-actions

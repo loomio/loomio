@@ -3,6 +3,7 @@ import AppConfig        from '@/shared/services/app_config';
 import Session          from '@/shared/services/session';
 import { pick }            from 'lodash-es';
 import { startOfHour, addDays } from 'date-fns';
+import { I18n }             from '@/i18n';
 import Records from '@/shared/services/records';
 
 export default class PollTemplateModel extends BaseModel {
@@ -93,5 +94,9 @@ export default class PollTemplateModel extends BaseModel {
       testPercent: o.test_percent,
       testAgainst: o.test_against
     }));
+  }
+
+  translatedPollType() {
+    return I18n.global.t(`poll_types.${this.pollType}`);
   }
 };
