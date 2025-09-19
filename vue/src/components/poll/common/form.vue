@@ -52,38 +52,6 @@ export default {
       showAdvanced: false,
       pollTemplate: null,
 
-      votingMethodsI18n: {
-        proposal: {
-          title: 'poll_common_form.voting_methods.show_thumbs',
-          hint: 'poll_common_form.voting_methods.show_thumbs_hint'
-        },
-        poll: {
-          title: 'poll_common_form.voting_methods.simple_poll',
-          hint: 'poll_common_form.voting_methods.choose_hint'
-        },
-        // meeting:
-        //   title: 'poll_common_form.voting_methods.time_poll'
-        //   hint: 'poll_common_form.voting_methods.time_poll_hint'
-        dot_vote: {
-          title: 'decision_tools_card.dot_vote_title',
-          hint: 'poll_common_form.voting_methods.allocate_hint'
-        },
-        score: {
-          title: 'poll_common_form.voting_methods.score',
-          hint: 'poll_common_form.voting_methods.score_hint'
-        },
-        ranked_choice: {
-          title: 'poll_common_form.voting_methods.ranked_choice',
-          hint: 'poll_common_form.voting_methods.ranked_choice_hint'
-        }
-      },
-
-      // chartTypeItems: [
-      //   {text: 'bar', value: 'bar'},
-      //   {text: 'pie', value: 'pie'},
-      //   {text: 'grid', value: 'grid'}
-      // ],
-
       currentHideResults: this.poll.hideResults,
       hideResultsItems: [
         { title: this.$t('poll_common_card.do_not_hide_results'), value: 'off' },
@@ -223,12 +191,6 @@ export default {
       } else {
         return this.$t('poll_proposal_form.title_placeholder');
       }
-    },
-
-    votingMethodsItems() {
-      return Object.keys(this.votingMethodsI18n).map(key => {
-        return {title: this.$t(this.votingMethodsI18n[key].title), value: key};
-      });
     },
 
     knownOptions() {
