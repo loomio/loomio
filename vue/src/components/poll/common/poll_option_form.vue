@@ -143,9 +143,6 @@ form(v-on:submit.prevent='submit()')
 </template>
 
 <style lang="sass">
-.lmo-validation-error
-  color: var(--v-error-base)
-
 .poll-option-form__icon-selected
   border: 1px solid var(--v-primary-base) !important
 
