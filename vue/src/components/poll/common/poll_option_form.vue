@@ -42,15 +42,13 @@ export default {
       EventBus.$emit('closeModal');
     }
   },
+  mounted() {
+    this.pollOption.testOperator = this.pollOption.testOperator || 'gte';
+    this.pollOption.testPercent = this.pollOption.testPercent || 50;
+    this.pollOption.testAgainst = this.pollOption.testAgainst || 'score_percent';
+  },
 
   watch: {
-    'testEnabled'(val) {
-      if (val) {
-        this.pollOption.testOperator = this.pollOption.testOperator || 'gte';
-        this.pollOption.testPercent = this.pollOption.testPercent || 50;
-        this.pollOption.testAgainst = this.pollOption.testAgainst || 'score_percent';
-      }
-    },
     'pollOption.icon'(val) {
       if (!this.pollOption.name || this.icons.map(icon => icon.text).includes(this.pollOption.name) ) {
         this.pollOption.name = this.icons.find(icon => icon.value == val).text
@@ -67,7 +65,7 @@ form(v-on:submit.prevent='submit()')
       dismiss-modal-button
     v-card-text
       div(v-if="hasOptionIcon")
-        span.v-label(v-t="'poll_option_form.icon'")
+        .text-subtitle-1(v-t="'poll_option_form.icon'")
         .d-flex.mb-4.space-between
           label.poll-option-form__icon.mr-4.d-flex.flex-column.rounded.v-sheet.v-sheet--outlined.voting-enabled(
             v-for="icon in icons"
@@ -102,8 +100,11 @@ form(v-on:submit.prevent='submit()')
         :placeholder="$t('poll_common.reason_placeholder')"
         v-model="pollOption.prompt")
 
-      v-checkbox(v-model="testEnabled" :label="$t('poll_option_form.for_the_proposal_to_pass')")
+      v-divider.pb-4
 
+      .text-subtitle-1.pb-2(v-t="'poll_option_form.vote_share_requirement'")
+
+      v-checkbox(v-model="testEnabled" :label="$t('poll_option_form.for_the_proposal_to_pass')")
       .d-flex.flex-column.flex-sm-row
         v-select.mr-4(
           :disabled="!testEnabled"

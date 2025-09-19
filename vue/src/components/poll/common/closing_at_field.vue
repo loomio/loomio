@@ -56,24 +56,23 @@ export default {
 </script>
 
 <template lang="pug">
-div
-  .poll-common-closing-at-field.mt-4.mb-8
-    .poll-common-closing-at-field__inputs.d-flex
-      lmo-date-input.mr-2(
-        v-model='closingDate'
-        :prepend-inner-icon="mdiCalendar"
-        :label="$t('poll_common_closing_at_field.closing_date')"
-        :hint="$t('common.closing_in', { time: label })"
-        :min="dateToday"
-      )
-      v-select.poll-common-closing-at-field__timepicker(
-        :prepend-inner-icon="mdiClockOutline"
-        v-model='closingHour'
-        :label="$t('poll_meeting_time_field.closing_hour')"
-        :items="times"
-        :hint="twelvehour ? closingAtHint : null"
-        :persistent-hint="twelvehour"
-      )
-    validation-errors(:subject="poll", field="closingAt")
+.poll-common-closing-at-field
+  .poll-common-closing-at-field__inputs.d-flex
+    lmo-date-input.mr-2(
+      v-model='closingDate'
+      :prepend-inner-icon="mdiCalendar"
+      :label="$t('poll_common_closing_at_field.closing_date')"
+      :hint="$t('common.closing_in', { time: label })"
+      :min="dateToday"
+    )
+    v-select.poll-common-closing-at-field__timepicker(
+      :prepend-inner-icon="mdiClockOutline"
+      v-model='closingHour'
+      :label="$t('poll_meeting_time_field.closing_hour')"
+      :items="times"
+      :hint="twelvehour ? closingAtHint : null"
+      :persistent-hint="twelvehour"
+    )
+  validation-errors(:subject="poll", field="closingAt")
 
 </template>

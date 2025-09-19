@@ -170,6 +170,7 @@ ranked_choice:
   process_introduction_i18n: poll_templates.ranked_choice.process_introduction
   title_placeholder_i18n: poll_templates.ranked_choice.title
   details_i18n: poll_templates.ranked_choice.details
+  shuffle_options: true
 
 advice:
   poll_type: proposal

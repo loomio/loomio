@@ -404,7 +404,6 @@ export default {
     clearable
     v-model="pollTemplate.quorumPct"
     :label="$t('poll_common_form.participation_quorum')"
-    :hint="$t('poll_common_form.quorum_hint')"
     :placeholder="$t('poll_common_form.quorum_placeholder')"
     :min="0"
     :max="100"
