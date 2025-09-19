@@ -1772,6 +1772,7 @@ hu:
     name_gte_voter_percent: "%{name} szavazóinak legalább %{percent}%-ára van szüksége a szavazásra jogosultak közül"
     name_lte_score_percent: A %{name} szavazat nem haladhatja meg a leadott szavazatok %{percent}%-át
     name_lte_voter_percent: "%{name} nem haladhatja meg a jogosult szavazók %{percent}%-át"
+    vote_share_requirement: Szavazati arány követelmény
   poll_common:
     superseded: Felváltva
     outdated: Elavult
@@ -1979,48 +1980,6 @@ hu:
     event_description_placeholder: Mi a találkozó napirendje?
     location: Helyszín
     location_placeholder: Hol lesz ez a találkozó?
-  poll_common_settings:
-    who_can_vote: Ki szavazhat?
-    short_reason_can_be_helpful: A szavazás indoklásának rövidre szabása megkönnyíti azok megértését. A tömör indokok gyűjteménye nagyszerű forrás a döntés meghozatalához.
-    specified_voters_only_true: Csak meghívottak
-    specified_voters_only_false_group: Bárki a csoportból
-    specified_voters_only_false_discussion: Bárki a szálban
-    invite_people_next: A(z) %{poll_type} elindítása után kiválaszthatja, hogy kit hív meg szavazni
-    shuffle_options:
-      shuffle_options: Véletlenszerű lejátszási lehetőségek
-      title: A lehetőségek megjelenítése véletlenszerű sorrendben
-      helptext: A lista első helyezettje torzítást adhat neki. Ezzel a beállítással ellensúlyozhatja ezt a hatást.
-    multiple_choice:
-      title: Több választási lehetőség
-      helptext_on: Ha kiválasztod, a résztvevők több lehetőséget is kiválaszthatnak.
-    anyone_can_participate:
-      title: Bárki részt vehet, akinek megvan ez a link
-      helptext_on: Ha kiválasztod, bárki részt vehet a szavazási hivatkozással
-    notify_on_closing_soon:
-      voting_closes_too_soon: Mivel a szavazás 24 órán belül lezárul, a közeljövőben nem zárul le, emlékeztetőket küldünk.
-      closes_too_soon: Mivel ez a(z) %{pollType} 24 órán belül bezárul, nem küldenek emlékeztetőket a közeljövőben történő bezárásra.
-      title: '24 órával a %{pollType} bezárása előtt küldjön emlékeztetőt a következő címre:'
-      voting_title: 24 órával a szavazás lezárása előtt küldjön emlékeztetőt a címre
-      nobody: Senki
-      author: Szerző (én)
-      undecided_voters: Mindenki, aki nem szavazott
-      voters: Minden szavazó
-    notify_on_participate:
-      title: Értesíts engem, ha az emberek részt vesznek
-      helptext_on: Ha kiválasztod, akkor értesítést kapsz, ha valaki részt vesz.
-    anonymous:
-      title: Névtelen szavazók
-      helptext_on: Ha kiválasztja, a résztvevő információk nem kerülnek megjelenítésre minden válasznál.
-    voter_can_add_options:
-      title: A szavazók alternatív lehetőségeket adhatnak hozzá
-    can_respond_maybe:
-      title: A szavazók válaszolhatnak "ha szükséges"
-    allow_long_reason:
-      title: A szavazás „oka” 500 karakternél hosszabb legyen
-    hide_results_until_closed:
-      title: Az eredmények elrejtése bezárásig
-      helptext_on: Ne mutassa meg, hogyan szavaztak az emberek a szavazás bezárásáig
-    show_none_of_the_above: Adjon meg egy „A fentiek közül egyiket sem” lehetőséget
   poll_common_close_form:
     title: Bezárja most a %{poll_type}-t?
     helptext: Biztos, hogy korábban bezárja ezt a %{poll_type}-t, és megosztja az eredményt?
@@ -2098,103 +2057,6 @@ hu:
     question: Biztosan törli ezt?
     title: "%{pollType} törlése"
     success: Sikeresen törölve
-  poll_common_form:
-    notify_everyone_when_poll_starts: Értesítsen mindenkit, amikor a %{poll_type} elindul
-    option_has_votes_confirm_delete: Néhányan erre a lehetőségre szavaztak. Biztosan törli?
-    example_title: Példa cím
-    example_title_hint: Adjon példát egy jó ajánlatcímre
-    example_details_placeholder: Adjon kiindulási pontot egy javaslathoz vagy szavazáshoz. A kérdések hasznos felhívások lehetnek, hogy az embereket írásra késztesse. Adjon meg minden olyan szabályt vagy emlékeztetőt, amelyet a résztvevőknek tudniuk kell.
-    confirm_delete: Biztosan törli ezt a szavazási sablont? Ezt nem lehet visszacsinálni.
-    show_advanced_settings: Speciális beállítások megjelenítése
-    hide_advanced_settings: Speciális beállítások elrejtése
-    choose_at_least: Válassz legalább
-    choose_at_most: Válasszon legfeljebb
-    please_review_the_form: Kérjük, tekintse át az űrlapot
-    option_added_please_add_details: Opció hozzáadva! Kérjük, adjon meg néhány részletet, hogy az emberek tudják, mit jelent.
-    default_duration_in_days: Alapértelmezett időtartam napokban
-    default_duration_in_days_hint: Hány napot kell adni a szavazásra?
-    how_many_options_can_a_voter_choose: E lehetőségek közül hányat választhat a választó?
-    minimum_choices: Minimális választási lehetőségek
-    maximum_choices: Maximális választási lehetőség
-    content: Tartalom
-    reminder: Emlékeztető
-    your_in_zone: 'Jelenlegi időzóna: %{zone}'
-    show_other_zones: Más időzónák megjelenítése
-    hide_other_zones: Más időzónák elrejtése
-    this_is_a_template_for_new_polls: Ez egy sablon az új szavazásokhoz
-    voting_method: Szavazási mód
-    voting_methods:
-      question: Kérdés kör
-      question_hint: Kérjen kérdéseket és megjegyzéseket javaslatával kapcsolatban
-      show_thumbs: A hüvelykujj felmutatását
-      show_thumbs_hint: A szavazók választhatnak hüvelykujj felfelé, lefelé, oldalra vagy felfelé mutató hüvelykujj mellett
-      choose: Választ
-      simple_poll: Egyszerű szavazás
-      choose_hint: A szavazók kiválasztják a legjobb lehetőséget (vagy lehetőségeket)
-      score: Pontszám
-      score_hint: A szavazók minden opcióhoz pontszámot rendelnek
-      allocate: Kioszt
-      allocate_hint: A szavazók pontokból álló költségvetést osztanak fel a lehetőségek között
-      ranked_choice: Sorrend választás
-      ranked_choice_hint: A szavazók a választási lehetőségeket a leginkább preferálttól a legkevésbé preferáltig rendezik
-      time_poll: Időpont választás
-      time_poll_hint: A szavazók jelzik, hogy mikor állnak találkozni
-    process: Folyamat
-    process_name: Sablon címe
-    process_name_hint: Hogy hívod ezt a sablont? Pl. Szereptanács, Hőmérséklet ellenőrzés, Jegyzőkönyv jóváhagyása
-    process_subtitle: Sablon alcím
-    process_subtitle_hint: Egysoros leírás arról, hogy mikor és miért érdemes használni ezt a sablont
-    process_introduction: Sablon súgó
-    process_introduction_hint: Néhány bekezdés, amely elmagyarázza a sablon használatát. Adjon meg hivatkozásokat olyan forrásokhoz, amelyek hasznosak lehetnek.
-    you_can_set_a_prompt_per_option: Szerkessze az egyes opciókhoz tartozó promptokat a részletek lapon
-    chart_type: Diagram típusa
-    title: Cím
-    title_hint: Milyen döntést kell meghoznia?
-    no_options_add_some: Ebben a szavazásban nincs lehetőség, adjon meg néhányat alább.
-    details: Részletek
-    example_details: Példa részletek
-    details_placeholder: Itt a lehetőség, hogy elmagyarázza, mire szavaznak az emberek
-    options: Lehetőségek
-    options_placeholder: Sorolja fel a rendelkezésre álló lehetőségeket
-    no_options: Még nem adtál meg egyetlen lehetőséget sem.
-    closing: Záródik
-    closed: Zárva
-    start: Indítás
-    start_poll: Indítsd el a szavazást
-    stance_reason_required_label: A szavazás okának megadása...
-    stance_reason_required: Kívánt
-    stance_reason_optional: Választható
-    stance_reason_disabled: Tiltva
-    stance_reason_is_required: Kérjük, szavazatát indokolja
-    limit_reason_length: Az ok legfeljebb 500 karakterből állhat
-    save_poll: Szavazás mentése
-    start_poll_type: 'Indítsa el a következőt: %{poll_type}'
-    share_poll_type: "%{poll_type} megosztása"
-    who_may_vote: Ki szavazhat ebben a %{poll_type}-ben?
-    update: Frissít
-    add_voters: Szavazók hozzáadása
-    notify_invitees: Értesítések küldése
-    no_notifications_warning: A választókat nem értesítik. Ez akkor hasznos, ha sok szavazást futtat, és azt tervezi, hogy később mindenkit értesít.
-    count_voters_added: "%{count} szavazó hozzáadva"
-    poll_type_created: "%{poll_type} létrehozva"
-    poll_type_started: "%{poll_type} elindult"
-    poll_type_updated: "%{poll_type} frissítve"
-    reason_prompt: Indoklás
-    anonymous_voting: Névtelen szavazás
-    anonymous_voting_description: Ha engedélyezve van, a szavazók személyazonossága nem lesz társítva a szavazataikkal. Ezt nem lehet visszacsinálni.
-    votes_are_anonymous: A szavazatok névtelenek
-    vote_reason: Szavazás oka
-    vote_reason_description: Hasznos lehet megérteni, miért szavaztak az emberek úgy, ahogy szavaztak. Ezzel a beállítással arra kérheti az embereket, hogy osszák meg gondolataikat, amikor szavaznak.
-    hide_results_description: Ha azt szeretné, hogy az emberek anélkül szavazzanak, hogy tudnák, mások hogyan szavaztak, elrejtheti a szavazás eredményeit.
-    process_helptext: Nevezze meg és írja le a szavazás futtatásához használt folyamatot.
-    reminder_helptext: A szavazás bezárása előtt küldjön egy „Hamarosan zárás” értesítést. Ez lehetõség lehet az emberek számára, hogy megnézzék, hogyan szavaztak mások, és átgondolják saját szavazatukat, vagy csak egy módja annak, hogy növeljék a szavazásban való részvételt.
-    deadline: Határidő
-    how_much_time_to_vote: Mennyi időt hagy az embereknek szavazni?
-    advanced_settings: Speciális beállítások
-    none_of_the_above: A fentiek közül egyik sem
-    participation_quorum: Részvételi határozatképesség
-    quorum_hint: A szavazók hány százalékának kell részt vennie ahhoz, hogy az eredmény érvényes legyen?
-    quorum_placeholder: Hagyja üresen, vagy adjon meg egy számot 0 és 100 között
   poll_proposal_form:
     start_header: Javaslat indítása
     edit_header: A javaslat szerkesztése
@@ -2583,3 +2445,144 @@ hu:
         submit: Ajánlat megtekintése
         cancel: Később csináld meg
     get_started_here: Kezdje el itt
+  poll_common_settings:
+    who_can_vote: Ki szavazhat?
+    short_reason_can_be_helpful: A rövid szavazási indokok könnyebben érthetők. A tömör indokok gyűjteménye nagyszerű forrás a döntéshozatalhoz.
+    specified_voters_only_true: Csak meghívottak
+    specified_voters_only_false_group: Bárki a csoportban
+    specified_voters_only_false_discussion: Bárki a témában
+    invite_people_next: A %{poll_type} elindítása után kiválaszthatod, hogy kiket hívnak meg szavazni.
+    show_none_of_the_above: Tartalmazzon egy „A fentiek egyike sem” opciót
+    shuffle_options: Véletlenszerű lejátszási beállítások
+    show_options_in_random_order: Opciók megjelenítése véletlenszerű sorrendben
+    reduce_bias_by_showing_options_in_random_order: Csökkentsd az elfogultságot a lehetőségek véletlenszerű sorrendben történő megjelenítésével.
+    multiple_choice:
+      title: Feleletválasztós
+      helptext_on: A kiválasztás után a résztvevők több lehetőség közül választhatnak.
+    anyone_can_participate:
+      title: Bárki, aki rendelkezik linkkel, részt vehet
+      helptext_on: Ha kiválasztották, bárki részt vehet benne, aki rendelkezik a szavazás linkjével.
+    notify_on_closing_soon:
+      voting_closes_too_soon: Mivel a szavazás 24 órán belül lezárul, nem küldünk emlékeztetőt a hamarosan lezárásra vonatkozóan.
+      closes_too_soon: Mivel ez a %{pollType} 24 órán belül lezárul, nem küldünk emlékeztetőt a hamarosan lezárásra vonatkozóan.
+      title: '24 órával a %{pollType} lezárása előtt küldjön emlékeztetőt a következő címre:'
+      voting_title: '24 órával a szavazás lezárása előtt küldjön emlékeztetőt a következő címre:'
+      nobody: Senki
+      author: Szerző (én)
+      undecided_voters: bizonytalan szavazók
+      voters: Minden szavazó
+    notify_on_participate:
+      title: Értesítsen, ha valaki részt vesz
+      helptext_on: Amikor kiválasztották, értesítést kapsz, valahányszor valaki részt vesz.
+    anonymous:
+      title: Névtelen szavazók
+      helptext_on: Ha be van jelölve, a résztvevők adatai nem jelennek meg minden egyes válasznál.
+    voter_can_add_options:
+      title: A szavazók alternatív lehetőségeket is hozzáadhatnak
+    can_respond_maybe:
+      title: A választók „szükség esetén” válaszolhatnak.
+    allow_long_reason:
+      title: A szavazás „indoklása” mező 500 karakternél hosszabb lehet
+    hide_results_until_closed:
+      title: Eredmények elrejtése bezárásig
+      helptext_on: Ne mutasd meg, hogyan szavaztak az emberek, amíg a szavazás le nem zárul
+  poll_common_form:
+    quorum: Határozatképesség
+    participation_quorum: Részvételi határozatképesség
+    quorum_hint: A szavazók hány százalékának kell részt vennie az érvényes eredményhez? Opcionális, hagyja üresen, ha nincs határozatképes.
+    quorum_placeholder: Hagyja üresen, vagy adjon meg egy számot 0 és 100 között
+    deadline: Határidő
+    how_much_time_to_vote: Mennyi időt adnak az embereknek a szavazásra?
+    notify_everyone_when_poll_starts: Értesítsen mindenkit, amikor a %{poll_type} elindul
+    option_has_votes_confirm_delete: Néhányan már szavaztak erre a lehetőségre, biztosan törölni szeretnéd?
+    example_title: Példa cím
+    example_title_hint: Mondj egy példát egy jó pályázati címre
+    example_details_placeholder: Adj kiindulópontot egy javaslathoz vagy közvélemény-kutatáshoz. A kérdések hasznosak lehetnek az írásra ösztönzésben. Tüntesd fel azokat a szabályokat vagy emlékeztetőket, amelyeket a résztvevőknek ismerniük kell.
+    confirm_delete: Biztosan törölni szeretné ezt a szavazássablont? Ez a művelet nem vonható vissza.
+    advanced_settings: Speciális beállítások
+    show_advanced_settings: Speciális beállítások megjelenítése
+    hide_advanced_settings: Speciális beállítások elrejtése
+    choose_at_least: Válassz legalább
+    choose_at_most: Válasszon legfeljebb
+    please_review_the_form: Kérjük, tekintse át az űrlapot
+    option_added_please_add_details: Lehetőség hozzáadva! Kérlek, adj meg néhány részletet, hogy az emberek tudják, mit jelent.
+    default_duration_in_days: Alapértelmezett időtartam napokban
+    default_duration_in_days_hint: Hány napot kellene adni az embereknek a szavazásra?
+    how_many_options_can_a_voter_choose: Hány lehetőség közül választhat egy szavazó?
+    minimum_choices: Minimális választási lehetőségek
+    maximum_choices: Maximális választási lehetőségek
+    content: Tartalom
+    reminder: Emlékeztető
+    reminder_notification: Emlékeztető értesítés
+    your_in_zone: 'Aktuális időzóna: %{zone}'
+    show_other_zones: Mutasd a többi időzónát
+    hide_other_zones: Egyéb időzónák elrejtése
+    this_is_a_template_for_new_polls: Ez egy sablon új szavazásokhoz
+    voting_method: Szavazási módszer
+    none_of_the_above: A fentiek egyike sem
+    voting_methods:
+      question: Kérdéskör
+      question_hint: Kérjen kérdéseket és észrevételeket a javaslatával kapcsolatban
+      show_thumbs: Hüvelykujj felmutatása
+      show_thumbs_hint: A szavazók a hüvelykujjukat felfelé, lefelé, oldalra vagy a kéz felfelé állítását választhatják.
+      choose: Válasszon
+      simple_poll: Egyszerű szavazás
+      choose_hint: A szavazók a legjobb opciót (vagy opciókat) választják
+      score: Pontszám
+      score_hint: A szavazók pontszámot rendelnek minden opcióhoz
+      allocate: Kiosztás
+      allocate_hint: A szavazók pontokat osztanak szét a lehetőségek között.
+      ranked_choice: Rangsorolt választás
+      ranked_choice_hint: A választók a leginkább preferálttól a legkevésbé preferáltig rendezik a lehetőségeket
+      time_poll: Időközi szavazás
+      time_poll_hint: A választók jelzik, mikor tudnak találkozni
+    process: Folyamat
+    process_name: Sablon címe
+    process_name_hint: 'Hogy hívják ezt a sablont? Pl.: Szerepköri tanácsadás, Hőmérséklet-ellenőrzés, Jegyzőkönyv jóváhagyása'
+    process_subtitle: Sablon alcíme
+    process_subtitle_hint: Egysoros leírás arról, hogy mikor vagy miért érdemes használni ezt a sablont
+    process_introduction: Sablon súgó
+    process_introduction_hint: Néhány bekezdés, amely elmagyarázza a sablon használatát. Tartalmazzon linkeket olyan forrásokhoz, amelyek hasznosak lehetnek.
+    you_can_set_a_prompt_per_option: Szerkessze az egyes opciókhoz tartozó promptot a részletek lapon
+    chart_type: Diagram típusa
+    title: Cím
+    title_hint: Milyen döntést kell meghoznod?
+    no_options_add_some: Ennek a szavazásnak nincsenek választási lehetőségei, adjon hozzá néhányat alább.
+    details: Részletek
+    example_details: Példa részletei
+    details_placeholder: Ez a lehetőség, hogy elmagyarázd, mire szavaznak az emberek
+    options: Opciók
+    options_placeholder: Sorolja fel a rendelkezésre álló lehetőségeket
+    no_options: Még nem adtál hozzá semmilyen opciót.
+    closing: Záró
+    closed: Zárt
+    start: Indul
+    start_poll: Szavazás indítása
+    stance_reason_required_label: Indoklást kell adni szavazáskor...
+    stance_reason_required: Kívánt
+    stance_reason_optional: Választható
+    stance_reason_disabled: Mozgáskorlátozott
+    stance_reason_is_required: Kérjük, indokolja meg szavazatát
+    limit_reason_length: Maximum 500 karakterben adhatja meg az indoklást
+    save_poll: Szavazás mentése
+    start_poll_type: "%{poll_type} indítása"
+    share_poll_type: Megosztás %{poll_type}
+    who_may_vote: Kik szavazhatnak ebben a %{poll_type} szavazókörben?
+    update: Frissítés
+    add_voters: Szavazók hozzáadása
+    notify_invitees: Értesítések küldése
+    no_notifications_warning: A szavazók nem kapnak értesítést. Ez akkor hasznos, ha sok szavazást futtatsz, és később tervezed, hogy mindenkit értesítesz.
+    count_voters_added: "%{count} szavazó hozzáadva"
+    poll_type_created: "%{poll_type} létrehozva"
+    poll_type_started: "%{poll_type} elindult"
+    poll_type_updated: "%{poll_type} frissítve"
+    reason_prompt: Indoklás kérése
+    each_option_has_own_reason_prompt: Minden opcióhoz saját indoklási kérdés tartozik. Szerkessze a kívánt opciót a hozzá tartozó ok megadásához.
+    anonymous_voting: Névtelen szavazás
+    anonymous_voting_description: Szavazatok és indokok megjelenítése, de a leadók neve nem. Ez a %{poll_type} elindítása után nem módosítható.
+    votes_are_anonymous: A szavazatok névtelenek
+    vote_reason: Szavazás oka
+    vote_reason_description: Kérd meg az embereket, hogy szavazáskor osszák meg indoklásukat, vagy adjanak további információkat.
+    hide_results_description: Ha azt szeretnéd, hogy az emberek anélkül szavazzanak, hogy látnák, hogyan szavaztak mások, elrejtheted az eredményeket.
+    process_helptext: Nevezd meg és írd le a szavazás lebonyolításához használt folyamatot.
+    reminder_helptext: Küldj egy „Hamarosan lezárul” értesítést 24 órával a határidő előtt. Ez növelheti a részvételt, és lehetőséget adhat az embereknek, hogy átgondolják álláspontjukat.
