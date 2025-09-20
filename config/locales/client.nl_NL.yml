@@ -1776,6 +1776,21 @@ nl_NL:
     thumb_down: Duim omlaag
     thumb_sideways: Duim zijwaarts
     hand_up: Hand omhoog
+    of: van
+    at_least: Ten minste
+    no_more_than: Niet meer dan
+    votes_cast: Uitgebrachte stemmen
+    eligible_voters: Kiesgerechtigde kiezers
+    gte_score_percent: Er is minimaal %{percent}% van de uitgebrachte stemmen nodig
+    gte_voter_percent: Heeft minimaal %{percent}% van de stemgerechtigde kiezers nodig
+    lte_score_percent: Mag niet meer dan %{percent}% van de uitgebrachte stemmen bedragen
+    lte_voter_percent: Mag niet meer dan %{percent}% van de stemgerechtigde personen bedragen
+    name_gte_score_percent: "%{name} heeft minimaal %{percent}% van de uitgebrachte stemmen nodig"
+    name_gte_voter_percent: "%{name} heeft minimaal %{percent}% van de stemgerechtigde kiezers nodig"
+    name_lte_score_percent: "%{name} mag niet meer dan %{percent}% van de uitgebrachte stemmen bedragen"
+    name_lte_voter_percent: "%{name} mag niet meer dan %{percent}% van de stemgerechtigde kiezers uitmaken"
+    vote_share_requirement: Stemmenaandeelvereiste
+    for_the_proposal_to_pass: Om het voorstel te laten slagen, moet deze optie…
   poll_common:
     superseded: Vervangen
     outdated: Verouderd
@@ -1866,6 +1881,7 @@ nl_NL:
     no_voting: Alleen bestemd voor discussies, stemmen gedeactiveerd
     post_outcome: Post-uitkomst
     view_all_votes: Bekijk alle stemmen
+    you_voted: Je hebt gestemd
   poll_common_attachment_form:
     label: Bijlagen
   poll_common_add_option:
@@ -1968,6 +1984,8 @@ nl_NL:
     unable_to_vote: Je bent niet uitgenodigd om in te stemmen in deze %{poll_type}.
     draft_mode: Stemmen uitgeschakeld. Hier kan nog niet op gestemd worden.
     voting_disabled_poll_is_template: Stemmen uitgeschakeld. Dit is een sjabloon.
+    for_this_proposal_to_pass: 'Om dit voorstel te laten slagen:'
+    for_this_poll_type_to_be_valid: 'Om deze %{poll_type} geldig te laten zijn:'
   poll_common_collapsed:
     by_who: door %{name}
   poll_common_calendar_invite:
@@ -1982,48 +2000,6 @@ nl_NL:
     event_description_placeholder: Wat staat er op de agenda bij deze vergadering?
     location: Locatie
     location_placeholder: Waar zal deze vergadering plaats vinden?
-  poll_common_settings:
-    who_can_vote: Wie kan stemmen?
-    short_reason_can_be_helpful: Door de stemredenen kort te houden, zijn ze gemakkelijker te begrijpen. Een verzameling beknopte redenen is een geweldige bron voor het nemen van een beslissing.
-    specified_voters_only_true: Alleen uitgenodigden
-    specified_voters_only_false_group: Iedereen in de groep
-    specified_voters_only_false_discussion: Iedereen in het bord
-    invite_people_next: Je kunt kiezen wie wordt uitgenodigd om te stemmen nadat je deze %{poll_type} hebt gestart
-    shuffle_options:
-      shuffle_options: Shuffle-opties
-      title: Toon opties in willekeurige volgorde
-      helptext: Een optie die als eerste op de lijst staat, kan een vooroordeel geven. Gebruik deze instelling om dat effect tegen te gaan.
-    multiple_choice:
-      title: Meerkeuze
-      helptext_on: Indien geselecteerd, zullen participanten meerdere opties kunnen selecteren.
-    anyone_can_participate:
-      title: Iedereen met een link kan deelnemen
-      helptext_on: Indien geselecteerd, kan iedereen met de link participeren in de peiling.
-    notify_on_closing_soon:
-      voting_closes_too_soon: Omdat het stemmen binnen 24 uur sluit, worden er geen herinneringen voor sluiting binnenkort verzonden.
-      closes_too_soon: Omdat deze %{pollType} binnen 24 uur sluit worden er geen 'sluit binnenkort' meldingen verstuurd.
-      title: Stuur 24 uur voordat de %{pollType} sluit een melding aan
-      voting_title: Stuur 24 uur voor sluiting van de stemming een herinnering naar
-      nobody: Niemand
-      author: Auteur (ik)
-      undecided_voters: Twijfelende stemmers
-      voters: Alle stemmers
-    notify_on_participate:
-      title: Meld me wanneer er mensen deelnemen
-      helptext_on: Indien geselecteerd, zal je een melding ontvangen wanneer iemand participeert.
-    anonymous:
-      title: Anonieme stemmers
-      helptext_on: Als geselecteerd, wordt informatie van deelnemers niet bij elke reactie getoond.
-    voter_can_add_options:
-      title: Kiezers kunnen alternatieve opties toevoegen
-    can_respond_maybe:
-      title: Stemmers kunnen reageren met "indien nodig"
-    allow_long_reason:
-      title: Sta toe dat de 'reden' van de stem langer is dan 500 tekens
-    hide_results_until_closed:
-      title: Verberg resultaten tot sluiting van de peiling
-      helptext_on: Toon niet hoe mensen stemmen tot de peiling gesloten is
-    show_none_of_the_above: Voeg een optie "Geen van bovenstaande" toe
   poll_common_close_form:
     title: "%{poll_type} nu sluiten?"
     helptext: Weet u zeker dat u %{poll_type} eerder wilt afsluiten en een resultaat wilt delen?
@@ -2082,7 +2058,6 @@ nl_NL:
     enter_an_outcome: Voer een uitkomst in
   poll_common_outcome_form:
     review_due_in_days: Na hoeveel dagen de beslissing herzien?
-    review_due_in_days_hint: Een periode (in dagen) die moet worden gewacht voordat de beslissing wordt herzien. (optioneel)
     review_date: Beoordelingsdatum
     review_date_hint: Stel een datum in om de beslissing te herzien (optioneel)
     who_to_notify: Wie wilt u op de hoogte stellen van deze uitkomst? (optioneel)
@@ -2092,109 +2067,17 @@ nl_NL:
     outcome_created: Resultaat aangemaakt
     outcome_updated: Resultaat bijgewerkt
     statement_placeholder: Vat de reacties samen en leg uit wat er daarna gebeurt.
-    statement_template_placeholder: Geef een sjabloon op voor het schrijven van de uitkomst van de beslissing. (optioneel)
     you_will_be_notified: Je krijgt een melding op de beoordelingsdatum.
     submit: Deel resultaat
+    review_due_in_days_hint: Aantal dagen dat u moet wachten voordat u de beslissing herziet (optioneel).
+    statement_template_hint: Geef een sjabloon voor het schrijven van de uitkomst van de beslissing. (optioneel)
+    statement_template_placeholder: Bedankt voor uw deelname! Het quorum is bereikt en we hebben steun om door te gaan.
   poll_common_outcome_panel:
     authored_by: Door %{name}
   poll_common_delete_modal:
     question: Ben je zeker dat je dit wilt verwijderen?
     title: "%{pollType} verwijderen"
     success: Succesvol verwijderd
-  poll_common_form:
-    notify_everyone_when_poll_starts: Breng iedereen op de hoogte wanneer %{poll_type} start
-    option_has_votes_confirm_delete: Sommige mensen hebben op deze optie gestemd, weet je zeker dat je deze wilt verwijderen?
-    example_title: Voorbeeld titel
-    example_title_hint: Geef een voorbeeld van een goede voorsteltitel
-    example_details_placeholder: Geef een startpunt voor een voorstel of opiniepeiling. Vragen kunnen nuttige aanwijzingen zijn om mensen aan het schrijven te krijgen. Voeg alle regels of herinneringen toe die deelnemers moeten weten.
-    confirm_delete: Weet u zeker dat u dit enquêtesjabloon wilt verwijderen? Dit kan niet ongedaan gemaakt worden.
-    show_advanced_settings: Toon geavanceerde instellingen
-    hide_advanced_settings: Verberg geavanceerde instellingen
-    choose_at_least: Kies tenminste
-    choose_at_most: Kies maximaal
-    please_review_the_form: Bekijk het formulier
-    option_added_please_add_details: Optie toegevoegd! Voeg wat details toe zodat mensen weten wat het betekent.
-    default_duration_in_days: Standaardduur in dagen
-    default_duration_in_days_hint: Hoeveel dagen moeten mensen de tijd krijgen om te stemmen?
-    how_many_options_can_a_voter_choose: Hoeveel van deze opties kan een kiezer kiezen?
-    minimum_choices: Minimale keuzes
-    maximum_choices: Maximale keuzes
-    content: Inhoud
-    reminder: Herinnering
-    your_in_zone: 'Huidige tijdzone: %{zone}'
-    show_other_zones: Toon andere tijdzones
-    hide_other_zones: Verberg andere tijdzones
-    this_is_a_template_for_new_polls: Dit is een sjabloon voor nieuwe peilingen
-    voting_method: Stemmethode
-    voting_methods:
-      question: Vragen ronde
-      question_hint: Nodig vragen en opmerkingen over uw voorstel uit
-      show_thumbs: Toon van duimen
-      show_thumbs_hint: Kiezers kiezen duim omhoog, omlaag, zijwaarts of hand omhoog
-      choose: Kies
-      simple_poll: Simpele peiling
-      choose_hint: Kiezers kiezen de beste optie (of opties)
-      score: Score
-      score_hint: Kiezers kennen een score toe aan elke optie
-      allocate: Toekennen
-      allocate_hint: Kiezers verdelen een budget van punten tussen de opties
-      ranked_choice: Keuzes rangschikken
-      ranked_choice_hint: Kiezers rangschikken opties in volgorde van meest naar minst geprefereerd
-      time_poll: Moment bevragen
-      time_poll_hint: Kiezers geven aan wanneer ze beschikbaar zijn om elkaar te ontmoeten
-    process: Proces
-    process_name: Sjabloon titel
-    process_name_hint: Hoe noem je dit sjabloon? Bv Roladvies, Temperatuurcontrole, Notulen goedkeuren
-    process_subtitle: Sjabloon ondertitel
-    process_subtitle_hint: Een beschrijving in één regel van wanneer en waarom deze sjabloon moet worden gebruikt
-    process_introduction: Sjabloon hulp
-    process_introduction_hint: Een paar alinea's waarin wordt uitgelegd hoe u de sjabloon gebruikt. Voeg links toe naar bronnen die nuttig kunnen zijn.
-    you_can_set_a_prompt_per_option: Bewerk de prompt voor elke optie op het tabblad Details
-    chart_type: Grafiektype
-    title: Titel
-    title_hint: Wat is de beslissing die u moet nemen?
-    no_options_add_some: Deze poll heeft geen opties, voeg er hieronder enkele toe.
-    details: Details
-    example_details: Voorbeeld gegevens
-    details_placeholder: Dit is uw kans om uit te leggen waar mensen op stemmen
-    options: Opties
-    options_placeholder: Lijst de beschikbare opties op
-    no_options: Je hebt nog geen opties toegevoegd.
-    closing: Sluiten
-    closed: Gesloten
-    start: Starten
-    start_poll: "'Peiling' starten"
-    stance_reason_required_label: Een reden opgeven bij het stemmen is...
-    stance_reason_required: Verplicht
-    stance_reason_optional: Optioneel
-    stance_reason_disabled: Gehandicapt
-    stance_reason_is_required: Geef een reden op bij uw stem
-    limit_reason_length: Beperk de reden tot maximaal 500 tekens
-    save_poll: Enquête opslaan
-    start_poll_type: Start %{poll_type}
-    share_poll_type: Deel %{poll_type}
-    who_may_vote: Wie mag stemmen in deze %{poll_type}?
-    update: Updaten
-    add_voters: Voeg kiezers toe
-    notify_invitees: Meldingen verzenden
-    no_notifications_warning: De kiezers worden niet op de hoogte gebracht. Dit is handig als u veel peilingen houdt en van plan bent om iedereen later op de hoogte te stellen.
-    count_voters_added: "%{count} kiezers toegevoegd"
-    poll_type_created: "%{poll_type} gemaakt"
-    poll_type_started: "%{poll_type} is gestart"
-    poll_type_updated: "%{poll_type} bijgewerkt"
-    reason_prompt: Reden prompt
-    anonymous_voting: Anoniem stemmen
-    anonymous_voting_description: Indien ingeschakeld, wordt de identiteit van kiezers niet gekoppeld aan hun stemmen. Dit kan niet ongedaan gemaakt worden.
-    votes_are_anonymous: Stemmen zijn anoniem
-    vote_reason: Stem reden
-    vote_reason_description: Het kan nuttig zijn om te begrijpen waarom mensen hebben gestemd zoals ze hebben gestemd. Met deze instelling kunt u mensen vragen hun mening te delen wanneer ze stemmen.
-    hide_results_description: Als u wilt dat mensen stemmen zonder te weten hoe anderen hebben gestemd, kunt u de resultaten van de peiling verbergen.
-    process_helptext: Noem en beschrijf het proces dat wordt gebruikt om deze peiling uit te voeren.
-    reminder_helptext: Stuur een melding 'Sluit binnenkort' voordat de peiling sluit. Dit kan een kans zijn voor mensen om te zien hoe anderen hebben gestemd en hun eigen stem te heroverwegen, of gewoon een manier om deelname aan de peiling te vergroten.
-    deadline: Termijn
-    how_much_time_to_vote: Hoeveel tijd geeft u mensen om te stemmen?
-    advanced_settings: Geavanceerde instellingen
-    none_of_the_above: Geen van bovenstaande
   poll_proposal_form:
     start_header: "'Voorstel' starten"
     edit_header: Voorstel bewerken
@@ -2253,9 +2136,10 @@ nl_NL:
     points: Punten
     average: Gemiddeld
     mean: Gemeen
-    pct_of_points: "% van de punten"
-    pct_of_voters: "% van de kiezers"
     percent: procent
+    pct_of_points: "% van de punten"
+    pct_of_votes_cast: "% van de uitgebrachte stemmen"
+    pct_of_voters: "% van de stemgerechtigde kiezers"
   poll_meeting_time_field:
     add_time_slot: Tijdvenster toevoegen
     new_time_slot: Nieuw tijdvenster
@@ -2294,6 +2178,11 @@ nl_NL:
   poll_common_percent_voted:
     sentence: "%{numerator} van %{denominator} personen hebben gestemd (%{percent}%)"
     target_progress: "%{percent}% van doel bereikt. (%{num} / %{target})"
+    pct_of_eligible_voters_must_participate: "%{pct}% van de stemgerechtigde kiezers moet deelnemen"
+    pct_participation: "%{num} van %{total} uitgebrachte stemmen (%{pct}% deelname)"
+    vote_short_of_quorum: Nog 1 stem nodig om het quorum van %{pct}% te bereiken
+    votes_short_of_quorum: "%{num} meer stemmen nodig om het quorum van %{pct}% te bereiken"
+    quorum_reached: Quorum van %{pct}% is bereikt
   poll_meeting_chart_panel:
     total: Totaal
   poll_remove_vote:
@@ -2580,3 +2469,147 @@ nl_NL:
         submit: Bekijk voorstel
         cancel: Doe dit later
     get_started_here: Begin hier
+  poll_common_settings:
+    who_can_vote: Wie mag stemmen?
+    specified_voters_only_true: Alleen genodigden
+    specified_voters_only_false_group: Iedereen in de groep
+    specified_voters_only_false_discussion: Iedereen in de thread
+    invite_people_next: U kunt kiezen wie wordt uitgenodigd om te stemmen nadat u de %{poll_type} start
+    show_none_of_the_above: Voeg een optie 'Geen van bovenstaande' toe
+    show_options_in_random_order: Opties in willekeurige volgorde weergeven
+    reduce_bias_by_showing_options_in_random_order: Verminder vooringenomenheid door opties in willekeurige volgorde weer te geven.
+    multiple_choice:
+      title: Meerkeuzevragen
+      helptext_on: Als u deze optie selecteert, kunnen deelnemers meerdere opties selecteren.
+    anyone_can_participate:
+      title: Iedereen met een link kan deelnemen
+      helptext_on: Als iemand is geselecteerd, kan iedereen met de link naar de poll deelnemen.
+    notify_on_closing_soon:
+      voting_closes_too_soon: Omdat de stemming binnen 24 uur sluit, worden er geen herinneringen meer verzonden.
+      closes_too_soon: Omdat deze %{pollType} binnen 24 uur sluit, worden er geen herinneringen voor een spoedige sluiting verzonden.
+      title: Stuur 24 uur voordat %{pollType} sluit een herinnering naar
+      voting_title: Stuur 24 uur voordat de stemming sluit een herinnering naar
+      nobody: Niemand
+      author: Auteur (ik)
+      undecided_voters: Onbesliste kiezers
+      voters: Alle kiezers
+    notify_on_participate:
+      title: Laat me weten wanneer mensen meedoen
+      helptext_on: Als u geselecteerd bent, wordt u op de hoogte gesteld wanneer iemand deelneemt.
+    anonymous:
+      title: Anonieme kiezers
+      helptext_on: Als u deze optie selecteert, worden de deelnemersgegevens niet bij elk antwoord weergegeven.
+    voter_can_add_options:
+      title: Kiezers kunnen alternatieve opties toevoegen
+    can_respond_maybe:
+      title: Kiezers kunnen reageren "indien nodig"
+    allow_long_reason:
+      title: Sta toe dat de stem 'reden' langer is dan 500 tekens
+    hide_results_until_closed:
+      title: Resultaten verbergen totdat ze gesloten zijn
+      helptext_on: Laat niet zien hoe mensen hebben gestemd totdat de stembus is gesloten
+    short_reason_can_be_helpful: Korte stemredenen zijn gemakkelijker te begrijpen. Een verzameling beknopte redenen is een goede bron voor het nemen van een beslissing.
+    shuffle_options: Shuffle-opties
+  poll_common_form:
+    quorum: Quorum
+    participation_quorum: Deelnamequorum
+    quorum_hint: Welk percentage kiezers moet deelnemen om de uitslag geldig te laten zijn? Optioneel, laat dit veld leeg als er geen quorum is.
+    quorum_placeholder: Leeg laten of een getal tussen 0 en 100 invoeren
+    deadline: Termijn
+    notify_everyone_when_poll_starts: Iedereen op de hoogte stellen wanneer %{poll_type} begint
+    option_has_votes_confirm_delete: Sommige mensen hebben voor deze optie gestemd. Weet u zeker dat u deze wilt verwijderen?
+    example_title: Voorbeeldtitel
+    example_title_hint: Geef een voorbeeld van een goede voorsteltitel
+    example_details_placeholder: Geef een startpunt voor een voorstel of poll. Vragen kunnen nuttige aanzet zijn om mensen aan het schrijven te krijgen. Neem eventuele regels of herinneringen op die deelnemers moeten kennen.
+    confirm_delete: Weet u zeker dat u deze poll-sjabloon wilt verwijderen? Dit kan niet ongedaan worden gemaakt.
+    advanced_settings: Geavanceerde instellingen
+    show_advanced_settings: Geavanceerde instellingen weergeven
+    hide_advanced_settings: Geavanceerde instellingen verbergen
+    choose_at_least: Kies minimaal
+    choose_at_most: Kies maximaal
+    please_review_the_form: Controleer het formulier
+    option_added_please_add_details: Optie toegevoegd! Voeg wat details toe zodat mensen weten wat het betekent.
+    default_duration_in_days: Standaardduur in dagen
+    how_many_options_can_a_voter_choose: Hoeveel opties mag een kiezer kiezen?
+    minimum_choices: Minimale keuzes
+    maximum_choices: Maximale keuzes
+    content: Inhoud
+    reminder: Herinnering
+    reminder_notification: Herinneringsmelding
+    your_in_zone: 'Huidige tijdzone: %{zone}'
+    show_other_zones: Andere tijdzones weergeven
+    hide_other_zones: Andere tijdzones verbergen
+    this_is_a_template_for_new_polls: Dit is een sjabloon voor nieuwe peilingen
+    voting_method: Stemmethode
+    none_of_the_above: Geen van bovenstaande
+    voting_methods:
+      question: Vragenronde
+      question_hint: Nodig vragen en opmerkingen over uw voorstel uit
+      show_thumbs: Duimen opsteken
+      show_thumbs_hint: Kiezers kiezen voor duim omhoog, omlaag, zijwaarts of hand omhoog
+      choose: Kiezen
+      simple_poll: Eenvoudige peiling
+      choose_hint: Kiezers kiezen de beste optie (of opties)
+      score: Score
+      score_hint: Kiezers kennen aan elke optie een score toe
+      allocate: Toewijzen
+      allocate_hint: Kiezers verdelen een budget van punten tussen de opties
+      ranked_choice: Gerangschikte keuze
+      ranked_choice_hint: Kiezers rangschikken de opties in volgorde van meest naar minst geprefereerd
+      time_poll: Tijd peiling
+      time_poll_hint: Kiezers geven aan wanneer zij beschikbaar zijn om te vergaderen
+    process: Proces
+    process_name: Sjabloontitel
+    process_name_hint: 'Hoe noem je deze template? Bijvoorbeeld: Roladvies, Temperatuurcontrole, Goedkeuring van notulen.'
+    process_subtitle: Sjabloon ondertitel
+    process_subtitle_hint: Een beschrijving in één regel van wanneer en waarom u deze sjabloon moet gebruiken
+    process_introduction: Sjabloonhulp
+    process_introduction_hint: Een paar alinea's die uitleggen hoe je de sjabloon gebruikt. Voeg links toe naar bronnen die nuttig kunnen zijn.
+    you_can_set_a_prompt_per_option: Bewerk de prompt voor elke optie via het tabblad Details
+    chart_type: Grafiektype
+    title: Titel
+    title_hint: Welke beslissing moet u nemen?
+    no_options_add_some: Deze poll heeft geen opties, voeg hieronder een paar opties toe.
+    details: Details
+    example_details: Voorbeelddetails
+    details_placeholder: Dit is uw kans om uit te leggen waar mensen op stemmen
+    options: Opties
+    options_placeholder: Maak een lijst van de beschikbare opties
+    no_options: U heeft nog geen opties toegevoegd.
+    closing: Sluiting
+    closed: Gesloten
+    start: Begin
+    start_poll: Start peiling
+    stance_reason_required_label: Het opgeven van een reden bij het stemmen is ...
+    stance_reason_required: Vereist
+    stance_reason_optional: Optioneel
+    stance_reason_disabled: Gehandicapt
+    stance_reason_is_required: Geef een reden op voor uw stem
+    limit_reason_length: Beperk de reden tot maximaal 500 tekens
+    save_poll: Poll opslaan
+    start_poll_type: Begin %{poll_type}
+    share_poll_type: Deel %{poll_type}
+    who_may_vote: Wie mag stemmen in deze %{poll_type}?
+    update: Update
+    add_voters: Kiezers toevoegen
+    notify_invitees: Meldingen verzenden
+    no_notifications_warning: Kiezers worden niet op de hoogte gebracht. Dit is handig als u veel peilingen organiseert en iedereen later op de hoogte wilt stellen.
+    count_voters_added: "%{count} kiezers toegevoegd"
+    poll_type_created: "%{poll_type} aangemaakt"
+    poll_type_started: "%{poll_type} is gestart"
+    poll_type_updated: "%{poll_type} bijgewerkt"
+    reason_prompt: Reden prompt
+    each_option_has_own_reason_prompt: Elke optie heeft een eigen redenprompt. Bewerk een optie om de prompt te bekijken of te wijzigen.
+    anonymous_voting: Anoniem stemmen
+    votes_are_anonymous: Stemmen zijn anoniem
+    vote_reason: Stemreden
+    quorum_tip_vote_share_requirement: 'Tip: U kunt ook het vereiste niveau van overeenstemming voor een voorstel specificeren. Bewerk een optie om de vereiste voor het stemmenaandeel te definiëren.'
+    how_much_time_to_vote: Hoeveel tijd geeft u mensen om te stemmen?
+    default_duration_in_days_hint: Hoeveel dagen hebben mensen de tijd om te stemmen?
+    define_minimum_and_maxmimum_score: Definieer de minimale en maximale scores die een kiezer aan een optie kan geven
+    how_many_points_does_each_voter_have_to_allocate: Hoeveel punten moet elke kiezer toekennen?
+    anonymous_voting_description: Toon stemmen en redenen, maar niet wie ze heeft uitgebracht. Dit kan niet worden gewijzigd nadat de %{poll_type} is gestart.
+    vote_reason_description: Vraag mensen om hun beweegredenen voor hun stemgedrag te delen of om aanvullende informatie te verstrekken.
+    hide_results_description: Als u wilt dat mensen stemmen zonder te zien wat anderen hebben gestemd, kunt u de resultaten verbergen.
+    process_helptext: Benoem en beschrijf het proces dat wordt gebruikt om deze poll uit te voeren.
+    reminder_helptext: Stuur 24 uur voor de deadline een melding 'Sluit binnenkort'. Dit kan de deelname vergroten en mensen de kans geven om hun standpunt te heroverwegen.

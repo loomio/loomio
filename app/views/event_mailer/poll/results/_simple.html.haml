@@ -11,6 +11,8 @@
             = poll.closed_at ? t(:"poll_common.results") : t(:"poll_common.current_results")
         - when 'name'
           %th.text-left.text-subtitle-2= t('common.option')
+        - when 'votes_cast_percent'
+          %th.text-right.text-subtitle-2= t('poll_ranked_choice_form.pct_of_votes_cast')
         - when 'score_percent'
           %th.text-right.text-subtitle-2= t('poll_ranked_choice_form.pct_of_points')
         - when 'voter_percent'
@@ -23,6 +25,8 @@
           %th.text-right.text-subtitle-2= t('poll_ranked_choice_form.points')
         - when 'average'
           %th.text-right.text-subtitle-2= t('poll_ranked_choice_form.mean')
+        - when 'votes'
+          %th.text-right.text-subtitle-2= t('poll_common.votes')
         - when 'voter_count'
           %th.text-right.text-subtitle-2= t('membership_card.voters')
         - when 'voters'
@@ -34,7 +38,7 @@
             - case col
             - when 'chart'
               - if poll.chart_type == 'pie' && (index == 0)
-                %td.pr-2.py-2{rowspan: results.size} 
+                %td.pr-2.py-2{rowspan: results.size}
                   .poll-mailer-proposal__chart.poll-mailer__results-chart.d-flex.align-center.justify-center
                     %img.poll-mailer-proposal__chart-image{style: "height: 128px; width: 128px", src: google_pie_chart_url(poll), width: 128, height: 128}
 
@@ -59,18 +63,18 @@
               %td.text-right= option[:rank]
             - when 'score'
               %td.text-right= option[:score]
-            - when 'voter_count'
+            - when 'voter_count', 'votes'
               %td.text-right= option[:voter_count]
             - when 'average'
-              %td.text-right= option[:average].round(1)
+              %td.text-right= option[:average].round
             - when 'target_percent'
-              %td.text-right 
+              %td.text-right
                 -if option[:icon] == 'agree'
                   #{option[:target_percent].round}%
             - when 'voter_percent'
-              %td.text-right #{option[:voter_percent].round}%
-            - when 'score_percent'
-              %td.text-right #{option[:score_percent].round(1)}%
+              %td.text-right #{option[:voter_percent].round}
+            - when 'score_percent', 'votes_cast_percent'
+              %td.text-right #{option[:score_percent].round}
             - when 'voters'
               %td.text-left
                 - User.where(id: option[:voter_ids]).limit(20).each do |user|

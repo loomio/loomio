@@ -1751,6 +1751,21 @@ sl:
     thumb_down: Palec navzdol
     thumb_sideways: Palec vstran
     hand_up: Roko gor
+    of: od
+    at_least: Vsaj
+    no_more_than: Ne več kot
+    votes_cast: Oddani glasovi
+    eligible_voters: Upravičeni volivci
+    gte_score_percent: Potrebuje vsaj %{percent} % oddanih glasov
+    gte_voter_percent: Potrebuje vsaj %{percent} % upravičenih volivcev
+    lte_score_percent: Ne sme presegati %{percent} % oddanih glasov
+    lte_voter_percent: Ne sme presegati %{percent} % upravičenih volivcev
+    name_gte_score_percent: "%{name} potrebuje vsaj %{percent} % oddanih glasov"
+    name_gte_voter_percent: "%{name} potrebuje vsaj %{percent} % upravičenih volivcev"
+    name_lte_score_percent: "%{name} ne sme preseči %{percent} % oddanih glasov"
+    name_lte_voter_percent: "%{name} ne sme presegati %{percent} % upravičenih volivcev"
+    vote_share_requirement: Zahteva po deležu glasov
+    for_the_proposal_to_pass: Da bi bil predlog sprejet, mora ta možnost prejeti ...
   poll_common:
     superseded: Nadomeščeno
     outdated: Zastarelo
@@ -1841,6 +1856,7 @@ sl:
     no_voting: Samo za razpravo, glasovanje onemogočeno
     post_outcome: Izid objave
     view_all_votes: Ogled vseh glasov
+    you_voted: Glasovali ste
   poll_common_attachment_form:
     label: Priloge
   poll_common_add_option:
@@ -1941,6 +1957,8 @@ sl:
     unable_to_vote: Niste bili povabljeni k glasovanju v tem %{poll_type}
     draft_mode: Glasovanje onemogočeno. To še ni odprto za glasovanje.
     voting_disabled_poll_is_template: Glasovanje onemogočeno. To je predloga.
+    for_this_proposal_to_pass: 'Da bi bil ta predlog sprejet:'
+    for_this_poll_type_to_be_valid: 'Da bi bil ta %{poll_type} veljaven:'
   poll_common_collapsed:
     by_who: avtor %{name}
   poll_common_calendar_invite:
@@ -1955,48 +1973,6 @@ sl:
     event_description_placeholder: Kakšen je dnevni red tega sestanka?
     location: Lokacija
     location_placeholder: Kje bo to srečanje?
-  poll_common_settings:
-    who_can_vote: Kdo lahko voli?
-    short_reason_can_be_helpful: Če so razlogi glasovanja kratki, jih je lažje razumeti. Zbirka jedrnatih razlogov je odličen vir za odločitev.
-    specified_voters_only_true: Samo povabljeni
-    specified_voters_only_false_group: Kdorkoli v skupini
-    specified_voters_only_false_discussion: Kdor koli v temi
-    invite_people_next: Ko začnete %{poll_type}, lahko izberete, kdo je povabljen k glasovanju
-    shuffle_options:
-      shuffle_options: Možnosti naključnega predvajanja
-      title: Prikaži možnosti v naključnem vrstnem redu
-      helptext: Možnost, ki je prva na seznamu, lahko povzroči pristranskost. Uporabite to nastavitev, da preprečite ta učinek.
-    multiple_choice:
-      title: Več možnosti
-      helptext_on: Ko bodo izbrani, bodo udeleženci lahko izbrali več možnosti.
-    anyone_can_participate:
-      title: Sodeluje lahko vsak, ki ima povezavo
-      helptext_on: Ko je izbran, lahko sodeluje vsak s povezavo do ankete.
-    notify_on_closing_soon:
-      voting_closes_too_soon: Ker se glasovanje konča v 24 urah, opomniki o kratkem zaključku ne bodo poslani.
-      closes_too_soon: Ker se ta %{pollType} zapre v 24 urah, opomniki o skorajšnjem zaprtju ne bodo poslani.
-      title: 24 ur pred zaprtjem %{pollType} pošljite opomnik na
-      voting_title: 24 ur pred koncem glasovanja pošljite opomnik na
-      nobody: Nihče
-      author: avtor (jaz)
-      undecided_voters: Neopredeljeni volivci
-      voters: Vsi volivci
-    notify_on_participate:
-      title: Obvesti me, ko ljudje sodelujejo
-      helptext_on: Ko izberete, boste obveščeni, ko bo kdo sodeloval.
-    anonymous:
-      title: Anonimni volivci
-      helptext_on: Ko izberete, informacije o udeležencu ne bodo prikazane z vsakim odgovorom.
-    voter_can_add_options:
-      title: Volivci lahko dodajo alternativne možnosti
-    can_respond_maybe:
-      title: Volivci lahko odgovorijo "če je treba"
-    allow_long_reason:
-      title: Dovolite, da je »razlog« glasovanja daljši od 500 znakov
-    hide_results_until_closed:
-      title: Skrij rezultate do zaprtja
-      helptext_on: Ne pokaži, kako so ljudje glasovali, dokler glasovanje ni zaprto
-    show_none_of_the_above: Vključite možnost »Nič od zgoraj navedenega«.
   poll_common_close_form:
     title: Zapreti %{poll_type} zdaj?
     helptext: Ali ste prepričani, da želite predčasno zapreti to %{poll_type} in deliti rezultat?
@@ -2055,7 +2031,6 @@ sl:
     enter_an_outcome: Vnesite rezultat
   poll_common_outcome_form:
     review_due_in_days: Po koliko dneh preverite odločitev?
-    review_due_in_days_hint: Časovno obdobje (v dnevih), ki ga morate počakati, preden pregledate odločitev. (neobvezno)
     review_date: Datum pregleda
     review_date_hint: Določite datum za pregled odločitve (neobvezno)
     who_to_notify: Koga želite obvestiti o tem izidu? (neobvezno)
@@ -2065,109 +2040,17 @@ sl:
     outcome_created: Izid ustvarjen
     outcome_updated: Rezultat posodobljen
     statement_placeholder: Povzemite odgovore in pojasnite, kaj se bo zgodilo naslednje.
-    statement_template_placeholder: Navedite predlogo za pisanje izida odločitve. (neobvezno)
     you_will_be_notified: O datumu pregleda boste obveščeni.
     submit: Delite rezultat
+    review_due_in_days_hint: Število dni čakanja pred pregledom odločitve (neobvezno).
+    statement_template_hint: Navedite predlogo za pisanje izida odločitve. (neobvezno)
+    statement_template_placeholder: Hvala za sodelovanje! Kvorum je bil dosežen in imamo podporo za nadaljevanje.
   poll_common_outcome_panel:
     authored_by: avtor %{name}
   poll_common_delete_modal:
     question: Ali ste prepričani, da želite to izbrisati?
     title: Izbriši %{pollType}
     success: Uspešno izbrisano
-  poll_common_form:
-    notify_everyone_when_poll_starts: Obvesti vse, ko se %{poll_type} začne
-    option_has_votes_confirm_delete: Nekateri ljudje so glasovali za to možnost. Ste prepričani, da jo želite izbrisati?
-    example_title: Primer naslova
-    example_title_hint: Navedite primer dobrega naslova predloga
-    example_details_placeholder: Navedite izhodišče za predlog ali anketo. Vprašanja so lahko koristni pozivi, da ljudi spodbudite k pisanju. Vključite vsa pravila ali opomnike, ki jih morajo udeleženci poznati.
-    confirm_delete: Ali ste prepričani, da želite izbrisati to predlogo ankete? Tega ni mogoče razveljaviti.
-    show_advanced_settings: Pokaži napredne nastavitve
-    hide_advanced_settings: Skrij napredne nastavitve
-    choose_at_least: Izberite vsaj
-    choose_at_most: Izberite največ
-    please_review_the_form: Prosimo, preglejte obrazec
-    option_added_please_add_details: Dodana možnost! Dodajte nekaj podrobnosti, da bodo ljudje vedeli, kaj to pomeni.
-    default_duration_in_days: Privzeto trajanje v dnevih
-    default_duration_in_days_hint: Koliko dni bi morali imeti ljudje za glasovanje?
-    how_many_options_can_a_voter_choose: Koliko od teh možnosti lahko izbere volivec?
-    minimum_choices: Minimalne izbire
-    maximum_choices: Največja izbira
-    content: Vsebina
-    reminder: Opomnik
-    your_in_zone: 'Trenutni časovni pas: %{zone}'
-    show_other_zones: Pokaži druge časovne pasove
-    hide_other_zones: Skrij druge časovne pasove
-    this_is_a_template_for_new_polls: To je predloga za nove ankete
-    voting_method: Način glasovanja
-    voting_methods:
-      question: Krog vprašanj
-      question_hint: Povabite vprašanja in komentarje na vaš predlog
-      show_thumbs: Pokazati palec
-      show_thumbs_hint: Volivci izberejo palec gor, dol, postrani ali roko gor
-      choose: Izberite
-      simple_poll: Preprosta anketa
-      choose_hint: Volivci izberejo najboljšo možnost (ali možnosti)
-      score: rezultat
-      score_hint: Volivci vsaki možnosti dodelijo oceno
-      allocate: Dodeli
-      allocate_hint: Volivci razdelijo proračun točk med možnostma
-      ranked_choice: Uvrščena izbira
-      ranked_choice_hint: Volivci razporedijo možnosti po vrstnem redu od najbolj do najmanj zaželenih
-      time_poll: Časovna anketa
-      time_poll_hint: Volivci navedejo, kdaj so na voljo za srečanje
-    process: Proces
-    process_name: Naslov predloge
-    process_name_hint: Kako imenujete to predlogo? Npr. svetovanje o vlogi, preverjanje temperature, odobritev zapisnika
-    process_subtitle: Podnaslov predloge
-    process_subtitle_hint: Enovrstični opis, kdaj in zakaj uporabiti to predlogo
-    process_introduction: Pomoč za predloge
-    process_introduction_hint: Nekaj odstavkov, ki pojasnjujejo, kako uporabljati predlogo. Vključite povezave do virov, ki bi lahko bili koristni.
-    you_can_set_a_prompt_per_option: Uredite poziv za vsako možnost na zavihku s podrobnostmi
-    chart_type: Vrsta grafikona
-    title: Naslov
-    title_hint: Kakšno odločitev morate sprejeti?
-    no_options_add_some: Ta anketa nima možnosti, dodajte nekaj spodaj.
-    details: Podrobnosti
-    example_details: Primer podrobnosti
-    details_placeholder: To je vaša priložnost, da pojasnite, o čem ljudje glasujejo
-    options: Opcije
-    options_placeholder: Navedite razpoložljive možnosti
-    no_options: Dodali niste še nobene možnosti.
-    closing: Zapiranje
-    closed: Zaprto
-    start: Začetek
-    start_poll: Začni anketo
-    stance_reason_required_label: Navedba razloga pri glasovanju je ...
-    stance_reason_required: Obvezno
-    stance_reason_optional: Neobvezno
-    stance_reason_disabled: Onemogočeno
-    stance_reason_is_required: Prosimo, navedite razlog za svoj glas
-    limit_reason_length: Omejite razlog na največ 500 znakov
-    save_poll: Shrani anketo
-    start_poll_type: Začni %{poll_type}
-    share_poll_type: Skupna raba %{poll_type}
-    who_may_vote: Kdo lahko glasuje v tem %{poll_type}?
-    update: Nadgradnja
-    add_voters: Dodajte volivce
-    notify_invitees: Pošljite obvestila
-    no_notifications_warning: Volivci ne bodo obveščeni. To je uporabno, če izvajate veliko anket in nameravate vse obvestiti pozneje.
-    count_voters_added: "%{count} dodanih volivcev"
-    poll_type_created: "%{poll_type} ustvarjen"
-    poll_type_started: "%{poll_type} se je začelo"
-    poll_type_updated: "%{poll_type} posodobljen"
-    reason_prompt: Poziv za razlog
-    anonymous_voting: Anonimno glasovanje
-    anonymous_voting_description: Če je omogočeno, identiteta volivcev ne bo povezana z njihovimi glasovi. Tega ni mogoče razveljaviti.
-    votes_are_anonymous: Glasovi so anonimni
-    vote_reason: Razlog glasovanja
-    vote_reason_description: Lahko je koristno razumeti, zakaj so ljudje glasovali tako, kot so. S to nastavitvijo lahko pozovete ljudi, da delijo svoje misli, ko glasujejo.
-    hide_results_description: Če želite, da ljudje glasujejo, ne da bi vedeli, kako so glasovali drugi, lahko skrijete rezultate ankete.
-    process_helptext: Poimenujte in opišite postopek, ki se uporablja za izvajanje te ankete.
-    reminder_helptext: Pošljite obvestilo 'Kmalu se zapre', preden se glasovanje zapre. To je lahko priložnost za ljudi, da vidijo, kako so glasovali drugi, in ponovno pretehtajo svoj glas, ali pa le način za povečanje udeležbe v anketi.
-    deadline: Rok
-    how_much_time_to_vote: Koliko časa boste dali ljudem na glasovanje?
-    advanced_settings: Napredne nastavitve
-    none_of_the_above: Nič od naštetega
   poll_proposal_form:
     start_header: Začni predlog
     edit_header: Uredi predlog
@@ -2226,9 +2109,10 @@ sl:
     points: Točke
     average: Povprečje
     mean: Pomeni
-    pct_of_points: "% točk"
-    pct_of_voters: "% volivcev"
     percent: Odstotek
+    pct_of_points: "% točk"
+    pct_of_votes_cast: "% oddanih glasov"
+    pct_of_voters: "% upravičenih volivcev"
   poll_meeting_time_field:
     add_time_slot: Dodajte časovni okvir
     new_time_slot: Nov termin
@@ -2267,6 +2151,11 @@ sl:
   poll_common_percent_voted:
     sentence: "%{numerator} od %{denominator} oseb je sodelovalo (%{percent}%)"
     target_progress: "%{percent} % cilja doseženo. (%{num} / %{target})"
+    pct_of_eligible_voters_must_participate: "%{pct}% upravičenih volivcev mora sodelovati"
+    pct_participation: Oddanih %{num} od %{total} glasov (udeležba %{pct} %).
+    vote_short_of_quorum: Za dosego kvoruma %{pct}% je potreben še 1 glas
+    votes_short_of_quorum: Za dosego kvoruma %{pct}% je potrebnih še %{num} glasov
+    quorum_reached: Dosežen je bil kvorum %{pct}%
   poll_meeting_chart_panel:
     total: Skupaj
   poll_remove_vote:
@@ -2551,3 +2440,147 @@ sl:
         submit: Ogled predloga
         cancel: Naredi to pozneje
     get_started_here: Začnite tukaj
+  poll_common_settings:
+    who_can_vote: Kdo lahko voli?
+    specified_voters_only_true: Samo povabljene osebe
+    specified_voters_only_false_group: Kdorkoli v skupini
+    specified_voters_only_false_discussion: Kdorkoli v niti
+    invite_people_next: Po začetku %{poll_type} lahko izberete, kdo bo povabljen k glasovanju.
+    show_none_of_the_above: Vključite možnost »Nič od naštetega«
+    show_options_in_random_order: Prikaži možnosti v naključnem vrstnem redu
+    reduce_bias_by_showing_options_in_random_order: Zmanjšajte pristranskost tako, da možnosti prikažete v naključnem vrstnem redu.
+    multiple_choice:
+      title: Več izbir
+      helptext_on: Ko je izbrano, bodo udeleženci lahko izbrali več možnosti.
+    anyone_can_participate:
+      title: Sodeluje lahko vsak, ki ima povezavo
+      helptext_on: Ko je izbran, lahko sodeluje vsakdo s povezavo do ankete.
+    notify_on_closing_soon:
+      voting_closes_too_soon: Ker se glasovanje zaključi v 24 urah, ne bodo poslani nobeni opomniki o skorajšnjem zaključku.
+      closes_too_soon: Ker se ta %{pollType} zapre v 24 urah, ne bodo poslani nobeni opomniki o skorajšnjem zaprtju.
+      title: 24 ur pred zaprtjem %{pollType} pošljite opomnik na
+      voting_title: 24 ur pred zaključkom glasovanja pošljite opomnik na
+      nobody: Nihče
+      author: Avtor (jaz)
+      undecided_voters: Neodločeni volivci
+      voters: Vsi volivci
+    notify_on_participate:
+      title: Obvesti me, ko bodo ljudje sodelovali
+      helptext_on: Ko boste izbrani, boste obveščeni vsakič, ko bo kdo sodeloval.
+    anonymous:
+      title: Anonimni volivci
+      helptext_on: Ko je izbrano, podatki o udeležencu ne bodo prikazani ob vsakem odgovoru.
+    voter_can_add_options:
+      title: Volivci lahko dodajo alternativne možnosti
+    can_respond_maybe:
+      title: Volivci se lahko odzovejo, "če je potrebno"
+    allow_long_reason:
+      title: Dovoli, da je razlog za glasovanje daljši od 500 znakov
+    hide_results_until_closed:
+      title: Skrij rezultate do zaprtja
+      helptext_on: Ne prikazujte, kako so ljudje glasovali, dokler se anketa ne zaključi
+    short_reason_can_be_helpful: Kratke razloge za glasovanje je lažje razumeti. Zbirka jedrnatih razlogov je odličen vir za sprejemanje odločitev.
+    shuffle_options: Možnosti naključnega predvajanja
+  poll_common_form:
+    quorum: Kvorum
+    participation_quorum: Kvorum za udeležbo
+    quorum_hint: Kolikšen odstotek volivcev se mora udeležiti, da je rezultat veljaven? Neobvezno, pustite prazno, če ni kvoruma.
+    quorum_placeholder: Pustite prazno ali vnesite število med 0 in 100
+    deadline: Rok
+    notify_everyone_when_poll_starts: Obvesti vse, ko se začne %{poll_type}
+    option_has_votes_confirm_delete: Nekateri so glasovali za to možnost, ali ste prepričani, da jo želite izbrisati?
+    example_title: Primer naslova
+    example_title_hint: Navedite primer dobrega naslova predloga
+    example_details_placeholder: Zagotovite izhodišče za predlog ali anketo. Vprašanja so lahko koristni spodbudi za pisanje. Vključite vsa pravila ali opomnike, ki jih morajo udeleženci poznati.
+    confirm_delete: Ali ste prepričani, da želite izbrisati to predlogo ankete? Tega ni mogoče razveljaviti.
+    advanced_settings: Napredne nastavitve
+    show_advanced_settings: Prikaži napredne nastavitve
+    hide_advanced_settings: Skrij napredne nastavitve
+    choose_at_least: Izberi vsaj
+    choose_at_most: Izberi največ
+    please_review_the_form: Prosimo, preglejte obrazec
+    option_added_please_add_details: Možnost dodana! Prosim, dodajte nekaj podrobnosti, da bodo ljudje vedeli, kaj to pomeni.
+    default_duration_in_days: Privzeto trajanje v dnevih
+    how_many_options_can_a_voter_choose: Koliko možnosti lahko volivec izbere?
+    minimum_choices: Minimalne izbire
+    maximum_choices: Največja izbira
+    content: Vsebina
+    reminder: Opomnik
+    reminder_notification: Obvestilo o opomniku
+    your_in_zone: 'Trenutni časovni pas: %{zone}'
+    show_other_zones: Prikaži druge časovne pasove
+    hide_other_zones: Skrij druge časovne pasove
+    this_is_a_template_for_new_polls: To je predloga za nove ankete
+    voting_method: Način glasovanja
+    none_of_the_above: Nič od naštetega
+    voting_methods:
+      question: krog vprašanj
+      question_hint: Povabite k postavljanju vprašanj in komentarjev na vaš predlog
+      show_thumbs: Pokaži palec
+      show_thumbs_hint: Volivci izbirajo med palcem gor, dol, vstran ali roko gor
+      choose: Izberite
+      simple_poll: Preprosta anketa
+      choose_hint: Volivci izberejo najboljšo možnost (ali možnosti)
+      score: Rezultat
+      score_hint: Volivci vsaki možnosti dodelijo oceno
+      allocate: Dodeli
+      allocate_hint: Volivci razdelijo določeno število točk med možnostmi
+      ranked_choice: Uvrščena izbira
+      ranked_choice_hint: Volivci razvrstijo možnosti od najbolj priljubljene do najmanj priljubljene
+      time_poll: Časovna anketa
+      time_poll_hint: Volivci navedejo, kdaj so na voljo za sestanek
+    process: Postopek
+    process_name: Naslov predloge
+    process_name_hint: Kako se imenuje ta predloga? Npr. nasvet o vlogi, preverjanje temperature, odobritev zapisnika
+    process_subtitle: Podnaslov predloge
+    process_subtitle_hint: Enovrstični opis, kdaj ali zakaj uporabiti to predlogo
+    process_introduction: Pomoč za predloge
+    process_introduction_hint: Nekaj odstavkov, ki pojasnjujejo, kako uporabljati predlogo. Vključite povezave do virov, ki bi lahko bili koristni.
+    you_can_set_a_prompt_per_option: Uredite poziv za vsako možnost na zavihku s podrobnostmi
+    chart_type: Vrsta grafikona
+    title: Naslov
+    title_hint: Kakšno odločitev morate sprejeti?
+    no_options_add_some: Ta anketa nima možnosti, dodajte jih nekaj spodaj.
+    details: Podrobnosti
+    example_details: Podrobnosti primera
+    details_placeholder: To je vaša priložnost, da pojasnite, o čem ljudje glasujejo
+    options: Možnosti
+    options_placeholder: Naštejte razpoložljive možnosti
+    no_options: Še niste dodali nobenih možnosti.
+    closing: Zapiranje
+    closed: Zaprto
+    start: Začni
+    start_poll: Začni anketo
+    stance_reason_required_label: Navedba razloga, ko je glasovanje ...
+    stance_reason_required: Zahtevano
+    stance_reason_optional: Neobvezno
+    stance_reason_disabled: Onemogočeno
+    stance_reason_is_required: Prosimo, navedite razlog za svoj glas
+    limit_reason_length: Omejite razlog na največ 500 znakov
+    save_poll: Shrani anketo
+    start_poll_type: Začni %{poll_type}
+    share_poll_type: Deli %{poll_type}
+    who_may_vote: Kdo lahko glasuje v tej anketi %{poll_type}?
+    update: Posodobitev
+    add_voters: Dodaj volivce
+    notify_invitees: Pošlji obvestila
+    no_notifications_warning: Volivci ne bodo obveščeni. To je uporabno, če izvajate veliko anket in nameravate vse obvestiti pozneje.
+    count_voters_added: Dodanih je bilo %{count} volivcev
+    poll_type_created: Ustvarjeno je bilo %{poll_type}
+    poll_type_started: "%{poll_type} se je začela"
+    poll_type_updated: "%{poll_type} posodobljeno"
+    reason_prompt: Razlog za poziv
+    each_option_has_own_reason_prompt: Vsaka možnost ima svoj poziv za razlog. Uredite možnost, da si ogledate ali spremenite njen poziv.
+    anonymous_voting: Anonimno glasovanje
+    votes_are_anonymous: Glasovi so anonimni
+    vote_reason: Razlog za glasovanje
+    quorum_tip_vote_share_requirement: 'Nasvet: Določite lahko tudi stopnjo soglasja, ki je potrebna za sprejetje predloga. Uredite možnost za določitev zahteve glede deleža glasov.'
+    how_much_time_to_vote: Koliko časa boste dali ljudem za glasovanje?
+    default_duration_in_days_hint: Koliko dni bodo imeli ljudje na voljo za glasovanje?
+    define_minimum_and_maxmimum_score: Določite najnižjo in najvišjo možno oceno, ki jo lahko volivec da določeni možnosti
+    how_many_points_does_each_voter_have_to_allocate: Koliko točk mora dodeliti vsak volivec?
+    anonymous_voting_description: Prikaži glasove in razloge, ne pa tudi oddanih. Tega ni mogoče spremeniti po začetku ankete %{poll_type}.
+    vote_reason_description: Prosite ljudi, naj pri glasovanju delijo svojo utemeljitev ali posredujejo dodatne informacije.
+    hide_results_description: Če želite, da ljudje glasujejo, ne da bi videli, kako so glasovali drugi, lahko rezultate skrijete.
+    process_helptext: Poimenujte in opišite postopek, ki se uporablja za izvedbo te ankete.
+    reminder_helptext: 24 ur pred rokom pošljite obvestilo »Kmalu se zapira«. To lahko poveča udeležbo in ustvari priložnost, da ljudje ponovno premislijo o svojem stališču.

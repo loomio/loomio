@@ -1,5 +1,4 @@
 import BaseModel  from  '@/shared/record_store/base_model';
-import Records  from  '@/shared/services/records';
 import { exact } from '@/shared/helpers/format_time';
 import { parseISO } from 'date-fns';
 import { I18n } from '@/i18n';
@@ -9,7 +8,7 @@ export default class PollOptionModel extends BaseModel {
   static plural = 'pollOptions';
   static indices = ['pollId'];
   static uniqueIndices = ['id'];
-  static serializableAttributes = ['id', 'name', 'icon', 'priority', 'meaning', 'prompt'];
+  static serializableAttributes = ['id', 'name', 'icon', 'priority', 'meaning', 'prompt', 'testOperator', 'testPercent', 'testAgainst'];
 
   defaultValues() {
     return {
@@ -19,6 +18,9 @@ export default class PollOptionModel extends BaseModel {
       meaning: null,
       prompt: null,
       priority: null,
+      testOperator: null,
+      testPercent: null,
+      testAgainst: null,
       _destroy: null
     };
   }

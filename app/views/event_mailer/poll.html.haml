@@ -6,6 +6,7 @@
 = render "event_mailer/common/tags", eventable: poll
 = render "event_mailer/poll/summary", poll: poll
 = render "event_mailer/poll/vote", poll: poll
+= render "event_mailer/poll/rules", poll: poll
 = render "event_mailer/poll/results", poll: poll
 - if %w[poll_announced poll_created poll_reminder].include?(@event.kind) && @event.eventable.discussion
 	%hr

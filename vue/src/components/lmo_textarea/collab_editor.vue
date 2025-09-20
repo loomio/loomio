@@ -376,7 +376,7 @@ export default
 </script>
 
 <template lang="pug">
-div
+div.mb-2
   .v-input.v-input--density-default.editor(v-if="editor")
     .v-input-control
       .v-field.v-field--active.v-field--variant-filled

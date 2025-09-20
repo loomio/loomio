@@ -10,6 +10,10 @@ class PollOption < ApplicationRecord
 
   scope :dangling, -> { joins('left join polls on polls.id = poll_id').where('polls.id is null') }
 
+  validates :test_operator, inclusion: { in: ['gte', 'lte'] }, allow_nil: true
+  normalizes :test_percent, with: ->(v) { v.nil? ? nil : [ [ v, 0 ].max, 100 ].min }
+  validates :test_against, inclusion: { in: ['score_percent', 'voter_percent'] }, allow_nil: true
+
   def update_counts!
     update_columns(
       voter_scores: poll.anonymous ? {} : stance_choices.latest.where('stances.participant_id is not null').includes(:stance).map { |c| [c.stance.participant_id, c.score] }.to_h,

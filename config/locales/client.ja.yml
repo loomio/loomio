@@ -1750,6 +1750,21 @@ ja:
     thumb_down: 親指を下に向ける
     thumb_sideways: 親指を横向きにする
     hand_up: 手を挙げて
+    of: の
+    at_least: 少なくとも
+    no_more_than: 最大
+    votes_cast: 投票数
+    eligible_voters: 有権者
+    gte_score_percent: 少なくとも%{percent}%の投票が必要です
+    gte_voter_percent: 有権者の少なくとも%{percent}%の賛成が必要
+    lte_score_percent: 投票総数の%{percent}%を超えてはいけません
+    lte_voter_percent: 有権者の%{percent}%を超えてはならない
+    name_gte_score_percent: "%{name} には少なくとも %{percent}% の投票が必要です"
+    name_gte_voter_percent: "%{name} には少なくとも %{percent}% の有権者が必要です"
+    name_lte_score_percent: "%{name} は投票数の %{percent}% を超えてはなりません"
+    name_lte_voter_percent: "%{name} は有権者の %{percent}% を超えてはなりません"
+    vote_share_requirement: 投票シェア要件
+    for_the_proposal_to_pass: 提案が承認されるには、このオプションの承認を得る必要があります…
   poll_common:
     superseded: 置き換えられました
     outdated: 時代遅れ
@@ -1840,6 +1855,7 @@ ja:
     no_voting: ディスカッションのみのため、投票は無効です
     post_outcome: 結果後
     view_all_votes: すべての投票を表示
+    you_voted: 投票しました
   poll_common_attachment_form:
     label: 添付ファイル
   poll_common_add_option:
@@ -1940,6 +1956,8 @@ ja:
     unable_to_vote: この %{poll_type} への投票には招待されていません
     draft_mode: 投票が無効になりました。これはまだ投票を受け付けていません。
     voting_disabled_poll_is_template: 投票が無効になりました。これはテンプレートです。
+    for_this_proposal_to_pass: この提案が可決されるためには：
+    for_this_poll_type_to_be_valid: 'この %{poll_type} が有効になるためには:'
   poll_common_collapsed:
     by_who: 名前で}
   poll_common_calendar_invite:
@@ -1954,48 +1972,6 @@ ja:
     event_description_placeholder: この会議の議題は何ですか?
     location: 位置
     location_placeholder: この会議はどこで行われますか?
-  poll_common_settings:
-    who_can_vote: 誰が投票できますか?
-    short_reason_can_be_helpful: 投票理由を短くすると理解しやすくなります。簡潔な理由を集めたものは、意思決定を行うための優れたリソースとなります。
-    specified_voters_only_true: 招待された人のみ
-    specified_voters_only_false_group: グループ内の誰でも
-    specified_voters_only_false_discussion: スレッド内の誰でも
-    invite_people_next: "%{poll_type} を開始した後、投票に招待される人を選択できます"
-    shuffle_options:
-      shuffle_options: シャッフルオプション
-      title: オプションをランダムな順序で表示します
-      helptext: リストの最初にあるオプションはバイアスを与える可能性があります。この影響に対抗するには、この設定を使用します。
-    multiple_choice:
-      title: 複数の選択肢
-      helptext_on: 選択すると、参加者は複数のオプションを選択できるようになります。
-    anyone_can_participate:
-      title: リンクを知っている人なら誰でも参加できます
-      helptext_on: 選択すると、投票へのリンクを知っている人は誰でも参加できます。
-    notify_on_closing_soon:
-      voting_closes_too_soon: 投票は 24 時間以内に終了するため、投票終了のリマインダーは送信されません。
-      closes_too_soon: この %{pollType} は 24 時間以内に終了するため、もうすぐ終了するリマインダーは送信されません。
-      title: "%{pollType} が終了する 24 時間前に、リマインダーを送信してください"
-      voting_title: 投票終了の 24 時間前にリマインダーを送信してください
-      nobody: 誰でもない
-      author: 著者（私）
-      undecided_voters: 未決定の有権者
-      voters: すべての有権者
-    notify_on_participate:
-      title: 参加者が参加したら通知する
-      helptext_on: 選択すると、誰かが参加するたびに通知が届きます。
-    anonymous:
-      title: 匿名の有権者
-      helptext_on: 選択すると、参加者情報は各応答に表示されません。
-    voter_can_add_options:
-      title: 有権者は代替オプションを追加できる
-    can_respond_maybe:
-      title: 有権者は「必要に応じて」応答できる
-    allow_long_reason:
-      title: 投票の「理由」を 500 文字より長くできるようにする
-    hide_results_until_closed:
-      title: 閉じるまで結果を非表示にする
-      helptext_on: 投票が終了するまで、人々がどのように投票したかを表示しないでください
-    show_none_of_the_above: "「上記以外」のオプションを含める"
   poll_common_close_form:
     title: 今すぐ %{poll_type} を閉じますか?
     helptext: この %{poll_type} を早期に終了して結果を共有してもよろしいですか?
@@ -2054,7 +2030,6 @@ ja:
     enter_an_outcome: 結果を入力
   poll_common_outcome_form:
     review_due_in_days: 何日後に決定を見直しますか?
-    review_due_in_days_hint: 決定を検討するまでに待機する期間 (日単位)。 (オプション)
     review_date: レビュー日
     review_date_hint: 決定をレビューする日付を設定します (オプション)
     who_to_notify: この結果について誰に通知したいですか? (オプション)
@@ -2064,109 +2039,17 @@ ja:
     outcome_created: 生み出された成果
     outcome_updated: 結果が更新されました
     statement_placeholder: 回答を要約し、次に何が起こるかを説明します。
-    statement_template_placeholder: 決定の結果を記述するためのテンプレートを提供します。 (オプション)
     you_will_be_notified: 審査日は別途お知らせいたします。
     submit: 結果を共有する
+    review_due_in_days_hint: 決定を検討する前に待機する日数 (オプション)。
+    statement_template_hint: 決定の結果を記述するためのテンプレートを提供します。(オプション)
+    statement_template_placeholder: ご参加ありがとうございました！定足数に達したため、続行することができました。
   poll_common_outcome_panel:
     authored_by: 名前で}
   poll_common_delete_modal:
     question: これを削除してもよろしいですか?
     title: "%{pollType}を削除"
     success: 正常に削除されました
-  poll_common_form:
-    notify_everyone_when_poll_starts: "%{poll_type} の開始時に全員に通知する"
-    option_has_votes_confirm_delete: このオプションに投票した人もいますが、削除してもよろしいですか?
-    example_title: タイトルの例
-    example_title_hint: 良い提案書のタイトルの例を教えてください
-    example_details_placeholder: 提案や投票の開始点を提供します。質問は、人々に文章を書かせるための有益なプロンプトとなる場合があります。参加者が知っておく必要があるルールや注意事項を含めます。
-    confirm_delete: この投票テンプレートを削除してもよろしいですか?これは、元に戻すことはできません。
-    show_advanced_settings: 詳細設定を表示する
-    hide_advanced_settings: 詳細設定を非表示にする
-    choose_at_least: 少なくとも選択してください
-    choose_at_most: 最大でも選択してください
-    please_review_the_form: フォームを確認してください
-    option_added_please_add_details: オプション追加しました！意味がわかるように詳細を追加してください。
-    default_duration_in_days: デフォルトの期間（日）
-    default_duration_in_days_hint: 人々が投票するには何日与えられるべきですか?
-    how_many_options_can_a_voter_choose: 有権者はこれらの選択肢のうちいくつ選ぶことができますか?
-    minimum_choices: 最小限の選択肢
-    maximum_choices: 最大の選択肢
-    content: コンテンツ
-    reminder: リマインダー
-    your_in_zone: '現在のタイムゾーン: %{zone}'
-    show_other_zones: 他のタイムゾーンを表示する
-    hide_other_zones: 他のタイムゾーンを非表示にする
-    this_is_a_template_for_new_polls: これは新しい投票用のテンプレートです
-    voting_method: 投票方法
-    voting_methods:
-      question: 質問ラウンド
-      question_hint: 提案に対する質問やコメントを募集します
-      show_thumbs: 親指を立てる
-      show_thumbs_hint: 投票者は親指を上、下、横、または手を上げて選択します
-      choose: 選ぶ
-      simple_poll: 簡易投票
-      choose_hint: 有権者は最良の選択肢を選択します
-      score: スコア
-      score_hint: 有権者は各選択肢にスコアを割り当てます
-      allocate: 割り当てる
-      allocate_hint: 有権者は選択肢間でポイントの予算を割り当てます
-      ranked_choice: ランク付けされた選択肢
-      ranked_choice_hint: 有権者は選択肢を最も好ましいものから最も低いものまでの順に並べます
-      time_poll: タイムポーリング
-      time_poll_hint: 有権者はいつ面会できるかを示す
-    process: プロセス
-    process_name: テンプレートのタイトル
-    process_name_hint: 'このテンプレートを何と呼びますか?例: 役割に関するアドバイス、体温チェック、議事録の承認'
-    process_subtitle: テンプレートのサブタイトル
-    process_subtitle_hint: このテンプレートをいつ使用するか、または使用する理由についての 1 行の説明
-    process_introduction: テンプレートのヘルプ
-    process_introduction_hint: テンプレートの使用方法を説明するいくつかの段落。役立つ可能性のあるリソースへのリンクを含めます。
-    you_can_set_a_prompt_per_option: 詳細タブから各オプションのプロンプトを編集します
-    chart_type: グラフの種類
-    title: タイトル
-    title_hint: あなたがしなければならない決断は何ですか?
-    no_options_add_some: この投票にはオプションがありません。以下にオプションを追加してください。
-    details: 詳細
-    example_details: 例の詳細
-    details_placeholder: これは人々が何に投票しているのかを説明する機会です
-    options: オプション
-    options_placeholder: 利用可能なオプションをリストする
-    no_options: まだオプションを追加していません。
-    closing: 閉鎖
-    closed: 議論終了
-    start: 始める
-    start_poll: 投票を開始する
-    stance_reason_required_label: 投票する際に理由を提示するのは...
-    stance_reason_required: 必須
-    stance_reason_optional: オプション
-    stance_reason_disabled: 無効
-    stance_reason_is_required: 投票には理由を添えてください
-    limit_reason_length: 理由は最大 500 文字に制限してください
-    save_poll: 投票を保存する
-    start_poll_type: "%{poll_type}を開始"
-    share_poll_type: "%{poll_type}を共有する"
-    who_may_vote: この %{poll_type} に投票できるのは誰ですか?
-    update: アップデート
-    add_voters: 有権者の追加
-    notify_invitees: 通知を送信する
-    no_notifications_warning: 有権者には通知されません。これは、多数の投票を実行していて、後で全員に通知する予定がある場合に便利です。
-    count_voters_added: "%{count} 人の投票者が追加されました"
-    poll_type_created: "%{poll_type} が作成されました"
-    poll_type_started: "%{poll_type} が開始されました"
-    reason_prompt: 理由のプロンプト
-    anonymous_voting: 匿名投票
-    anonymous_voting_description: 有効にすると、投票者の ID は投票に関連付けられません。これは、元に戻すことはできません。
-    votes_are_anonymous: 投票は匿名です
-    vote_reason: 投票理由
-    vote_reason_description: なぜ人々がそのように投票したのかを理解するのに役立ちます。この設定を使用すると、投票時に人々に意見を共有するよう促すことができます。
-    hide_results_description: 他の人がどのように投票したかを知らずに投票してもらいたい場合は、投票結果を非表示にすることができます。
-    process_helptext: この投票の実行に使用されているプロセスに名前を付けて説明します。
-    poll_type_updated: "%{poll_type} が更新されました"
-    reminder_helptext: 投票が終了する前に「まもなく終了」通知を送信します。これは、他の人の投票結果を確認して自分の投票を再考する機会になるだけでなく、投票への参加を増やす方法にもなります。
-    deadline: 締め切り
-    how_much_time_to_vote: 投票にどれくらいの時間を割く予定ですか?
-    advanced_settings: 詳細設定
-    none_of_the_above: 上記のどれでもない
   poll_proposal_form:
     start_header: 提案を開始する
     edit_header: 提案の編集
@@ -2225,9 +2108,10 @@ ja:
     points: ポイント
     average: 平均
     mean: 平均
-    pct_of_points: ポイントの%
-    pct_of_voters: 有権者の割合
     percent: パーセント
+    pct_of_points: ポイントの割合
+    pct_of_votes_cast: 投票数の割合
+    pct_of_voters: 有権者の割合
   poll_meeting_time_field:
     add_time_slot: 時間帯を追加する
     new_time_slot: 新しい時間帯
@@ -2266,6 +2150,11 @@ ja:
   poll_common_percent_voted:
     sentence: "%{denominator} 人中 %{numerator} 人が参加しました (%{percent}%)"
     target_progress: 目標の %{percent}% に達しました。 (%{num} / %{target})
+    pct_of_eligible_voters_must_participate: 有権者の%{pct}%が参加する必要がある
+    pct_participation: 投票総数 %{total} のうち %{num} 票 (投票率 %{pct}%)
+    vote_short_of_quorum: "%{pct}% の定足数に達するにはあと 1 票必要です"
+    votes_short_of_quorum: "%{pct}% の定足数に達するにはあと %{num} 票が必要です"
+    quorum_reached: "%{pct}% の定足数に達しました"
   poll_meeting_chart_panel:
     total: 合計
   poll_remove_vote:
@@ -2550,3 +2439,147 @@ ja:
         submit: 提案を見る
         cancel: 後でやる
     get_started_here: ここから始めましょう
+  poll_common_settings:
+    who_can_vote: 誰が投票できますか？
+    specified_voters_only_true: 招待された人のみ
+    specified_voters_only_false_group: グループ内の誰でも
+    specified_voters_only_false_discussion: スレッド内の誰でも
+    invite_people_next: "%{poll_type} を開始した後、誰に投票を依頼するか選択できます。"
+    show_none_of_the_above: "「上記以外」の選択肢を含める"
+    show_options_in_random_order: オプションをランダムな順序で表示する
+    reduce_bias_by_showing_options_in_random_order: オプションをランダムな順序で表示することで偏りを減らします。
+    multiple_choice:
+      title: 複数選択
+      helptext_on: 選択すると、参加者は複数のオプションを選択できるようになります。
+    anyone_can_participate:
+      title: リンクを持っている人なら誰でも参加できます
+      helptext_on: 選択すると、投票へのリンクを知っている人なら誰でも参加できます。
+    notify_on_closing_soon:
+      voting_closes_too_soon: 投票は 24 時間以内に終了するため、終了間近のリマインダーは送信されません。
+      closes_too_soon: この %{pollType} は 24 時間以内に終了するため、まもなく終了するというリマインダーは送信されません。
+      title: "%{pollType}が終了する24時間前にリマインダーを送信します"
+      voting_title: 投票終了の24時間前にリマインダーを送信してください
+      nobody: 誰でもない
+      author: 著者（私）
+      undecided_voters: 未決定の有権者
+      voters: すべての有権者
+    notify_on_participate:
+      title: 参加者が参加したら通知する
+      helptext_on: 選択すると、誰かが参加するたびに通知が届きます。
+    anonymous:
+      title: 匿名の有権者
+      helptext_on: 選択すると、各回答に参加者情報が表示されなくなります。
+    voter_can_add_options:
+      title: 有権者は代替案を追加できる
+    can_respond_maybe:
+      title: 有権者は「必要であれば」回答できる
+    allow_long_reason:
+      title: 投票の「理由」を 500 文字以上入力できるようにする
+    hide_results_until_closed:
+      title: 閉じられるまで結果を非表示にする
+      helptext_on: 投票が終了するまで投票結果を表示しない
+    short_reason_can_be_helpful: 投票理由は簡潔な方が理解しやすいです。簡潔な理由をまとめたものは、意思決定の優れたリソースとなります。
+    shuffle_options: シャッフルオプション
+  poll_common_form:
+    quorum: 定足数
+    participation_quorum: 参加定足数
+    quorum_hint: 結果を有効にするには、投票者の何パーセントが投票に参加する必要がありますか? 任意。定足数がない場合は空白のままにしてください。
+    quorum_placeholder: 空白のままにするか、0～100の数字を入力してください
+    deadline: 締め切り
+    notify_everyone_when_poll_starts: "%{poll_type} が開始したら全員に通知する"
+    option_has_votes_confirm_delete: このオプションに投票した人がいます。削除してもよろしいですか?
+    example_title: タイトルの例
+    example_title_hint: 良い提案タイトルの例を挙げてください
+    example_details_placeholder: 提案やアンケートの出発点となる情報を提供します。質問は、参加者に書き始めるきっかけとして役立ちます。参加者が知っておくべきルールや注意事項があれば、それも含めましょう。
+    confirm_delete: このアンケートテンプレートを削除してもよろしいですか? 元に戻すことはできません。
+    advanced_settings: 詳細設定
+    show_advanced_settings: 詳細設定を表示
+    hide_advanced_settings: 詳細設定を非表示にする
+    choose_at_least: 少なくとも選択してください
+    choose_at_most: 最大で選択
+    please_review_the_form: フォームを確認してください
+    option_added_please_add_details: オプションが追加されました！意味がわかるように詳細を追加してください。
+    default_duration_in_days: デフォルトの期間（日数）
+    how_many_options_can_a_voter_choose: 有権者はいくつの選択肢を選ぶことができますか?
+    minimum_choices: 最小限の選択肢
+    maximum_choices: 最大限の選択肢
+    content: コンテンツ
+    reminder: リマインダー
+    reminder_notification: リマインダー通知
+    your_in_zone: '現在のタイムゾーン: %{zone}'
+    show_other_zones: 他のタイムゾーンを表示
+    hide_other_zones: 他のタイムゾーンを非表示にする
+    this_is_a_template_for_new_polls: これは新しい投票のテンプレートです
+    voting_method: 投票方法
+    none_of_the_above: 上記のどれでもない
+    voting_methods:
+      question: 質問ラウンド
+      question_hint: 提案に対する質問やコメントを募集する
+      show_thumbs: 親指を立てる
+      show_thumbs_hint: 投票者は親指を立てるか、下げるか、横向きにするか、手を上げるかを選択する
+      choose: 選ぶ
+      simple_poll: 簡単なアンケート
+      choose_hint: 有権者は最良の選択肢（または選択肢群）を選択する
+      score: スコア
+      score_hint: 有権者はそれぞれの選択肢にスコアを割り当てる
+      allocate: 割り当てる
+      allocate_hint: 有権者は選択肢間でポイントの予算を割り当てる
+      ranked_choice: 順位付け選択
+      ranked_choice_hint: 有権者は選択肢を最も好むものから最も好まないものの順に並べる
+      time_poll: 時間に関する世論調査
+      time_poll_hint: 有権者はいつ会えるかを示す
+    process: プロセス
+    process_name: テンプレートのタイトル
+    process_name_hint: このテンプレートの名前は何ですか？ 例：役割のアドバイス、体温チェック、議事録の承認
+    process_subtitle: テンプレートのサブタイトル
+    process_subtitle_hint: このテンプレートをいつ、なぜ使用するかについての1行の説明
+    process_introduction: テンプレートのヘルプ
+    process_introduction_hint: テンプレートの使い方を数段落で説明します。役立つと思われるリソースへのリンクも含めます。
+    you_can_set_a_prompt_per_option: 詳細タブから各オプションのプロンプトを編集します
+    chart_type: チャートの種類
+    title: タイトル
+    title_hint: あなたが下すべき決断とは何ですか?
+    no_options_add_some: このアンケートにはオプションがありません。下にオプションを追加してください。
+    details: 詳細
+    example_details: 例の詳細
+    details_placeholder: これは人々が何に投票しているのかを説明する機会です
+    options: オプション
+    options_placeholder: 利用可能なオプションをリストする
+    no_options: まだオプションを追加していません。
+    closing: 終わりに
+    closed: 閉鎖
+    start: 始める
+    start_poll: 投票を開始
+    stance_reason_required_label: 投票時に理由を述べることは...
+    stance_reason_required: 必須
+    stance_reason_optional: オプション
+    stance_reason_disabled: 無効
+    stance_reason_is_required: 投票理由をご記入ください
+    limit_reason_length: 理由は最大500文字までに制限してください
+    save_poll: アンケートを保存
+    start_poll_type: "%{poll_type} を開始"
+    share_poll_type: "%{poll_type} を共有"
+    who_may_vote: この %{poll_type} に投票できるのは誰ですか?
+    update: アップデート
+    add_voters: 投票者を追加
+    notify_invitees: 通知を送信する
+    no_notifications_warning: 投票者には通知されません。これは、多数の投票を実施し、後で全員に通知する予定がある場合に便利です。
+    count_voters_added: "%{count}人の投票者を追加しました"
+    poll_type_created: "%{poll_type} が作成されました"
+    poll_type_started: "%{poll_type} が開始されました"
+    poll_type_updated: "%{poll_type} が更新されました"
+    reason_prompt: 理由プロンプト
+    each_option_has_own_reason_prompt: 各オプションにはそれぞれ独自の理由プロンプトがあります。オプションを編集して、プロンプトを表示または変更してください。
+    anonymous_voting: 匿名投票
+    votes_are_anonymous: 投票は匿名です
+    vote_reason: 投票理由
+    quorum_tip_vote_share_requirement: 'ヒント: 提案が可決されるために必要な賛成率を指定することもできます。投票シェア要件を定義するオプションを編集してください。'
+    how_much_time_to_vote: 人々に投票のためにどれくらいの時間を与える予定ですか?
+    default_duration_in_days_hint: 投票には何日かかりますか？
+    define_minimum_and_maxmimum_score: 投票者が選択肢に与えることができる最小スコアと最大スコアを定義する
+    how_many_points_does_each_voter_have_to_allocate: 各有権者は何ポイント割り当てられるのでしょうか?
+    anonymous_voting_description: 投票数と理由を表示しますが、投票者名は表示しません。%{poll_type} の開始後は変更できません。
+    vote_reason_description: 人々に投票の理由を共有してもらったり、追加情報を提供してもらったりします。
+    hide_results_description: 他の人の投票結果を見ずに投票したい場合は、結果を非表示にすることができます。
+    process_helptext: このアンケートを実行するために使用されているプロセスに名前を付けて説明してください。
+    reminder_helptext: 締め切りの24時間前に「まもなく締め切りです」という通知を送信してください。これにより、参加者が増え、自分の立場を再考する機会が生まれます。

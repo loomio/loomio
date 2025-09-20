@@ -6,7 +6,6 @@
 <% else %>
 <%= render("chatbot/markdown/simple", poll: poll) %>
 <% end %>
-
 <% else %>
 <%= SlackMrkdwn.from "**"+t('poll_common_action_panel.results_hidden_until_closed')+"**" %>
 <% end %>

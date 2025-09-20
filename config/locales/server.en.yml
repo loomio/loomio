@@ -5,36 +5,14 @@ en:
       title: I'm starting to get the hang of this
       process_name: Practice proposal
       process_subtitle: Learn how proposals work by trying one out
-      process_introduction: "<p>Use this template to help your group get comfortable using
-        proposals on Loomio. It’s a safe and simple way for people to try out voting and
-        see how everything fits together.</p>"
-      details: "<p>This is a practice run so everyone can get comfortable with how proposals
-        work on Loomio.</p><p>Please vote, and leave a reason statement if you like.</p><p>No
-        pressure, no real-world consequences. It’s just a way to explore how proposals
-        work!</p>"
-      outcome_statement: "<p>Thanks for participating in this practice proposal! \U0001F389</p><p>This
-        was just a chance to see how voting and commenting works on Loomio. There’s no
-        real decision being made here — but hopefully this helped everyone get familiar
-        with the process.</p>"
+      process_introduction: "<p>Use this template to help your group get comfortable using proposals on Loomio. It’s a safe and simple way for people to try out voting and see how everything fits together.</p>"
+      details: "<p>This is a practice run so everyone can get comfortable with how proposals work on Loomio.</p><p>Please vote, and leave a reason statement if you like.</p><p>No pressure, no real-world consequences. It’s just a way to explore how proposals work!</p>"
+      outcome_statement: "<p>Thanks for participating in this practice proposal! \U0001F389</p><p>This was just a chance to see how voting and commenting works on Loomio. There’s no real decision being made here — but hopefully this helped everyone get familiar with the process.</p>"
     proposal:
       process_subtitle: Raise a proposal to make a decision
-      process_introduction: <p>The classic Loomio proposal helps you make a decision,
-        converting a discussion into a clear outcome.</p><p>Suggest a course of action
-        and invite people to respond by voting agree, abstain or disagree.</p><p>As people
-        vote, they can give a reason why they have voted this way. You can see where everyone
-        else stands on the matter, and why.</p><p>In this way you can use a proposal to
-        prompt people for a response, uncover new information, and build shared understanding
-        - to help your group make a better, more informed decision.</p><p>A proposal and
-        associated discussion creates its own record of how the decision came about.</p><p><a
-        target="_blank" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Read
-        more about using the classic Loomio proposal in the Simple decision process</u></a>.</p>
+      process_introduction: <p>The classic Loomio proposal helps you make a decision, converting a discussion into a clear outcome.</p><p>Suggest a course of action and invite people to respond by voting agree, abstain or disagree.</p><p>As people vote, they can give a reason why they have voted this way. You can see where everyone else stands on the matter, and why.</p><p>In this way you can use a proposal to prompt people for a response, uncover new information, and build shared understanding - to help your group make a better, more informed decision.</p><p>A proposal and associated discussion creates its own record of how the decision came about.</p><p><a target="_blank" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Read more about using the classic Loomio proposal in the Simple decision process</u></a>.</p>
       title: Approve the new Brand concept
-      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>What
-        is the decision you need to make?</strong></h3><p></p><h3 id="why-is-this-important"><strong>Why is this important?</strong></h3><p></p><h3
-        id="what-are-you-asking-people-to-do"><strong>What are you asking people to do?</strong></h3><p></p>
-        <p>For this proposal to pass, we need the majority of
-        members to vote Agree.</p><p>If you Disagree, say
-        why and what needs to change for you to Agree.</p>
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>What is the decision you need to make?</strong></h3><p></p><h3 id="why-is-this-important"><strong>Why is this important?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>What are you asking people to do?</strong></h3><p></p> <p>For this proposal to pass, we need the majority of members to vote Agree.</p><p>If you Disagree, say why and what needs to change for you to Agree.</p>
       agree: Agree
       agree_meaning: I support the proposal
       agree_prompt: What do you like about the proposal and how will it benefit the group?
@@ -44,71 +22,36 @@ en:
       disagree: Disagree
       disagree_meaning: Something in this proposal needs to be changed before I can support it.
       disagree_prompt: How could this proposal be improved so that you can support it?
-
     advice:
       process_subtitle: Seek advice on a decision you need to make
-      process_introduction: <p>Seek advice on a decision you need to make, with the advice
-        of people impacted or who have expertise, so you can make a better decision for
-        your organization.</p><ul><li><p>Advice helps you make a better decision for your
-        organization.</p></li><li><p>Foster relationships, learning opportunities and
-        diverse input.&nbsp;&nbsp;</p></li><li><p>Stimulate initiative and creativity,
-        and more enjoyable work.</p></li></ul><p><a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>Read
-        more about the Advice process</u></a>.</p>
+      process_introduction: <p>Seek advice on a decision you need to make, with the advice of people impacted or who have expertise, so you can make a better decision for your organization.</p><ul><li><p>Advice helps you make a better decision for your organization.</p></li><li><p>Foster relationships, learning opportunities and diverse input.&nbsp;&nbsp;</p></li><li><p>Stimulate initiative and creativity, and more enjoyable work.</p></li></ul><p><a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>Read more about the Advice process</u></a>.</p>
       title: Help Takashi buy a new computer
-      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>What is the decision
-        you need to make?</strong></h3><p></p><h3 id="why-is-this-important"><strong>Why
-        is this important?</strong></h3><p></p><h3 id="what-advice-are-you-asking-from-people-to-help-you-make-a-go"><strong>What
-        advice are you asking from people to help you make a good decision?</strong></h3><p></p><p>I
-        am seeking your input to help me make a good decision for our organization.</p>
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>What is the decision you need to make?</strong></h3><p></p><h3 id="why-is-this-important"><strong>Why is this important?</strong></h3><p></p><h3 id="what-advice-are-you-asking-from-people-to-help-you-make-a-go"><strong>What advice are you asking from people to help you make a good decision?</strong></h3><p></p><p>I am seeking your input to help me make a good decision for our organization.</p>
       agree: Agree
       agree_meaning: I have offered my advice about this decision
       agree_prompt: Summarize your advice or make a helpful comment
       abstain: Abstain
       abstain_meaning: I don't have any advice to offer
       abstain_prompt: Do you have any comments that may be helpful?
-      outcome_statement: <p>Thanks for participating in my advice round!</p>
+      outcome_statement: "<p>Thanks for participating in my advice round!</p>"
     consent:
       process_subtitle: Make a decision that is ‘safe to try’, without objections
-      process_introduction: <p>Seek consent on a decision you need to make, where there
-        are no meaningful objections to your proposal, so you can make a fast decision
-        for your organization that is 'safe to try'.</p><ul><li><p>Aim for a ‘good enough’
-        decision</p></li><li><p>Involve many voices to develop a workable proposal</p></li><li><p>Ask
-        if anyone has a valid objection</p></li><li><p>Amend the proposal to resolve objections</p></li></ul>
-        <p><a target="_blank"
-        href="https://help.loomio.com/en/guides/consent_process/index.html">Read more
-        about the Consent process</a>.</p>
+      process_introduction: <p>Seek consent on a decision you need to make, where there are no meaningful objections to your proposal, so you can make a fast decision for your organization that is 'safe to try'.</p><ul><li><p>Aim for a ‘good enough’ decision</p></li><li><p>Involve many voices to develop a workable proposal</p></li><li><p>Ask if anyone has a valid objection</p></li><li><p>Amend the proposal to resolve objections</p></li></ul> <p><a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Read more about the Consent process</a>.</p>
       title: Hire Chloe for design role
-      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>What
-        is the decision you need to make?</strong></h3><p></p><h3
-        id="why-is-this-important"><strong>Why is this important?</strong></h3><p></p><h3 id="what-are-you-asking-of-people-in-this-proposal"><strong>What
-        are you asking of people in this proposal?</strong></h3><p></p><p>If you have an Objection, please say why and propose a
-        change to the proposal that makes it safe.</p><p>Remember
-        we are seeking consent for a ‘good enough’ decision that is 'safe to try', so
-        we can make a good decision for our organization.</p>
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>What is the decision you need to make?</strong></h3><p></p><h3 id="why-is-this-important"><strong>Why is this important?</strong></h3><p></p><h3 id="what-are-you-asking-of-people-in-this-proposal"><strong>What are you asking of people in this proposal?</strong></h3><p></p><p>If you have an Objection, please say why and propose a change to the proposal that makes it safe.</p><p>Remember we are seeking consent for a ‘good enough’ decision that is 'safe to try', so we can make a good decision for our organization.</p>
       consent: Consent
       consent_meaning: The proposal is safe to try
       consent_prompt: What do you like about the proposal and how will it benefit the organization?
       objection: Objection
       objection_meaning: I have a valid objection and think the proposal will cause harm
       objection_prompt: What change to this proposal is needed to make it 'safe to try', so that you can support it?
-      outcome_statement: <p>Thanks for participating in the consent process.</p>
+      outcome_statement: "<p>Thanks for participating in the consent process.</p>"
     consensus:
       process_subtitle: Reach collective agreement with everyone involved
-      process_introduction: <p>Build consensus for a decision you need to make, to reach
-        an agreement that satisfies the needs and concerns of all participants.</p><ul><li><p>Discuss
-        and develop a proposal together</p></li><li><p>Include and respect everyone involved</p></li><li><p>Seek
-        agreement from most people&nbsp;</p></li></ul><p><a target="_blank"
-         href="https://help.loomio.com/en/guides/consensus_process/index.html">Read
-        more about the Consensus process</a>.</p>
+      process_introduction: <p>Build consensus for a decision you need to make, to reach an agreement that satisfies the needs and concerns of all participants.</p><ul><li><p>Discuss and develop a proposal together</p></li><li><p>Include and respect everyone involved</p></li><li><p>Seek agreement from most people&nbsp;</p></li></ul><p><a target="_blank" href="https://help.loomio.com/en/guides/consensus_process/index.html">Read more about the Consensus process</a>.</p>
       title: Approve the new Brand concept
-      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>What
-        is the decision you need to make?</strong></h3><p></p><h3
-        id="why-is-this-important"><strong>Why is this important?</strong></h3><p></p><h3
-        id="what-are-you-asking-people-to-do"><strong>What are
-        you asking people to do?</strong></h3><p></p><p>For
-        this proposal to pass, we need the majority of members to vote Agree. </p><p>If
-        you Disagree, say why and what needs to change for you to Agree.</p>
-      outcome_statement: <p>Thanks for participating in the consensus process.</p>
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>What is the decision you need to make?</strong></h3><p></p><h3 id="why-is-this-important"><strong>Why is this important?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>What are you asking people to do?</strong></h3><p></p><p>For this proposal to pass, we need the majority of members to vote Agree. </p><p>If you Disagree, say why and what needs to change for you to Agree.</p>
+      outcome_statement: "<p>Thanks for participating in the consensus process.</p>"
       agree: Agree
       agree_meaning: I support the proposal
       agree_prompt: What do you like about the proposal and how will it benefit the organization?
@@ -123,81 +66,34 @@ en:
       block_prompt: Explain your objection to this proposal and why it should not go ahead
     question_round:
       process_subtitle: Invite clarifying questions to help people understand a proposal
-      process_introduction: <p>A Question round is an opportunity for people to ask clarifying
-        questions about the proposal, so that everyone understands the proposal before
-        they say what they think about it.</p><p>The Loomio Question
-        round is a special proposal with no voting options. It enables participants to
-        ask questions within a duration you set for the round.</p><p>A
-        Question round is commonly used as a step in the Consent process.</p><p><a
-        target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Read
-        more about the Consent process</a>.</p>
+      process_introduction: <p>A Question round is an opportunity for people to ask clarifying questions about the proposal, so that everyone understands the proposal before they say what they think about it.</p><p>The Loomio Question round is a special proposal with no voting options. It enables participants to ask questions within a duration you set for the round.</p><p>A Question round is commonly used as a step in the Consent process.</p><p><a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Read more about the Consent process</a>.</p>
       title: What questions to you have about the Health and Safety policy?
-      details: <h3 id="what-are-you-proposing"><strong>What are
-        you proposing?</strong></h3><p></p><h3
-        id="why-is-this-important"><strong>Why is this important?</strong></h3><p></p><h3
-        id="what-are-you-asking-people-to-do"><strong>What are
-        you asking people to do?</strong></h3><p></p><p>This
-        is a question round, where you are invited to ask clarifying questions.</p>
-        <p>What do you need to know so you understand the proposal?</p>
-        <p>Please respond before the Question round closes.</p>
+      details: <h3 id="what-are-you-proposing"><strong>What are you proposing?</strong></h3><p></p><h3 id="why-is-this-important"><strong>Why is this important?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>What are you asking people to do?</strong></h3><p></p><p>This is a question round, where you are invited to ask clarifying questions.</p> <p>What do you need to know so you understand the proposal?</p> <p>Please respond before the Question round closes.</p>
       reason_prompt: What do you need to know so you understand the proposal?
       outcome_statement: "<p>Thanks for submitting your questions during this round</p>"
     sense_check:
       process_subtitle: Ask for feedback, questions and concerns
-      process_introduction: <p>The Sense check proposal is a good way to get feedback,
-        invite questions and uncover concerns. It helps to clarify and improve a proposal
-        before moving to a decision.</p><p>Sense check lets people
-        know a proposal is forming and encourages them to engage. It is an opportunity
-        to listen to people, sense how they feel and respond appropriately - opening the
-        potential to incorporate their contributions to make a better decision.</p>
-        <p>Use the Sense check proposal in the Consent process to
-        invite reactions and comments to improve the proposal, and in a Consensus process
-        to test for consensus.</p><p><a target="_blank" rel="noopener
-        noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Read
-        more about using Sense check in the Simple decision process</u></a><span>.</span></p>
+      process_introduction: <p>The Sense check proposal is a good way to get feedback, invite questions and uncover concerns. It helps to clarify and improve a proposal before moving to a decision.</p><p>Sense check lets people know a proposal is forming and encourages them to engage. It is an opportunity to listen to people, sense how they feel and respond appropriately - opening the potential to incorporate their contributions to make a better decision.</p> <p>Use the Sense check proposal in the Consent process to invite reactions and comments to improve the proposal, and in a Consensus process to test for consensus.</p><p><a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Read more about using Sense check in the Simple decision process</u></a><span>.</span></p>
       title: How do you feel about the new brand concepts?
-      details: <h3 id="what-are-you-proposing"><strong>What are you proposing?</strong></h3><p></p><h3
-        id="why-is-this-important"><strong>Why is this important?</strong></h3><p></p><h3
-        id="what-are-you-asking-people-to-do"><strong>What are you asking people to do?</strong></h3><p></p><p>How
-        do you feel about the proposal?  Leave a comment or make a suggestion for improvement.</p><p>This
-        Sense check is an opportunity for your input and contribution, to help us make
-        a better decision.</p>
+      details: <h3 id="what-are-you-proposing"><strong>What are you proposing?</strong></h3><p></p><h3 id="why-is-this-important"><strong>Why is this important?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>What are you asking people to do?</strong></h3><p></p><p>How do you feel about the proposal?  Leave a comment or make a suggestion for improvement.</p><p>This Sense check is an opportunity for your input and contribution, to help us make a better decision.</p>
       outcome_statement: "<p>Thanks for participting in the sense check.</p>"
       not_sure: Not sure
       not_sure_meaning: I have a question or need more time
       not_sure_prompt: What parts are unclear to you? How could this be solved?
       looks_good: Looks good
       looks_good_meaning: I'm happy with where this is going
-      looks_good_prompt: Do you have any comments or suggestions to make the proposal
-        better?
+      looks_good_prompt: Do you have any comments or suggestions to make the proposal better?
       abstain: Abstain
       abstain_meaning: I don’t have anything to add, nor any objection to this work.
-      abstain_prompt: Abstaining implies consent with the direction of this proposal.
-        Is there a reason you are voting to abstain?
+      abstain_prompt: Abstaining implies consent with the direction of this proposal. Is there a reason you are voting to abstain?
       concerned: Concerned
-      concerned_meaning: Something about this may need to change for me to consent or
-        agree
+      concerned_meaning: Something about this may need to change for me to consent or agree
       concerned_prompt: What is your concern and how might it be addressed?
     gradients_of_agreement:
       process_subtitle: Express support for a proposal on an 8-point scale
-      process_introduction: <p>The Gradients of agreement proposal enables members of
-        a group to express their support for a proposal in degrees on a scale, offering
-        more ways of expressing support than in terms of “agree” and “disagree”.</p>
-        <p>Use Gradients of agreement as a preliminary round, to
-        test support for a proposal before moving to a formal agreement.</p><p>Gradients
-        of agreement lets people know a proposal is forming and encourages them to engage.
-        It is an opportunity to listen to people, sense how they feel and respond appropriately
-        - opening the potential to incorporate their contributions to make a better decision.</p>
+      process_introduction: "<p>The Gradients of agreement proposal enables members of a group to express their support for a proposal in degrees on a scale, offering more ways of expressing support than in terms of “agree” and “disagree”.</p> <p>Use Gradients of agreement as a preliminary round, to test support for a proposal before moving to a formal agreement.</p><p>Gradients of agreement lets people know a proposal is forming and encourages them to engage. It is an opportunity to listen to people, sense how they feel and respond appropriately - opening the potential to incorporate their contributions to make a better decision.</p>"
       title: How do you like the new statement of values?
-      details: <h3 id="what-are-you-proposing"><strong>What are
-        you proposing?</strong></h3><p></p><h3
-        id="why-is-this-important"><strong>Why is this important?</strong></h3><p></p><h3
-        id="what-are-you-asking-people-to-do"><strong>What are
-        you asking people to do?</strong></h3><p></p><p>How
-        do you like the proposal?  Express your support on the scale below and leave a
-        comment or suggestion for improvement.</p><p>This Gradients
-        of agreement proposal is to test support for the proposal, and an opportunity
-        for your input before moving to a formal agreement.</p>
+      details: <h3 id="what-are-you-proposing"><strong>What are you proposing?</strong></h3><p></p><h3 id="why-is-this-important"><strong>Why is this important?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>What are you asking people to do?</strong></h3><p></p><p>How do you like the proposal?  Express your support on the scale below and leave a comment or suggestion for improvement.</p><p>This Gradients of agreement proposal is to test support for the proposal, and an opportunity for your input before moving to a formal agreement.</p>
       whole_hearted_endorsement: Whole-hearted Endorsement
       whole_hearted_endorsement_meaning: I really like it!
       whole_hearted_endorsement_prompt: What do you like about it?
@@ -213,397 +109,157 @@ en:
       more_discussion_needed_meaning: I don't understand the issues well enough yet
       more_discussion_needed_prompt: What do you not understand?
       don_t_like_but_will_support: Don't like but will support
-      don_t_like_but_will_support_meaning: It's not great but I don't want to hold up
-        the group
+      don_t_like_but_will_support_meaning: It's not great but I don't want to hold up the group
       don_t_like_but_will_support_prompt: What would you like to see improved?
       serious_disagreement: Serious disagreement
       serious_disagreement_meaning: I am not on board with this - don't count on me
       serious_disagreement_prompt: What do you disagree with?
       veto: Veto
       veto_meaning: I block this proposal
-      veto_prompt: Why do you block the proposal? What needs to change for you to support
-        it?
+      veto_prompt: Why do you block the proposal? What needs to change for you to support it?
     simple_poll:
       process_subtitle: Find the most popular option
-      process_introduction: <p>Before making a decision, find which option(s) people care
-        most about.</p><p>Simple poll helps you find the most popular option or options
-        with single or multiple choice.</p><p>Write any details
-        about the options in the details field, then enter the name of the option and
-        click + to add.</p><p>Set the <strong>Minimum choices</strong>
-        and <strong>Maximum choices</strong> a voter may choose. Leave the maximum choice
-        as 1 for a single choice poll.</p><p>You can use the pencil
-        icon alongside each option to add a <strong>meaning</strong> of the option, a
-        further elaborate on the option to help people when voting.</p><p><a
-        target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">Read
-        more about Simple poll</a>.</p>
+      process_introduction: <p>Find the most popular option or options with a single or multiple choice poll.</p><p><a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">Read more about Simple poll</a>.</p>
       title: Where should the focus of our strategic direction be?
-      details: <h3 id="what-is-this-poll-about"><strong>What is
-        this poll about?</strong></h3><p></p><h3
-        id="why-is-this-important"><strong>Why is this important?</strong></h3><p></p><h3
-        id="what-are-you-asking-people-to-do"><strong>What are
-        you asking people to do?</strong></h3><p></p><p>Choose
-        the option(s) you favor.</p>
+      details: <h3 id="what-is-this-poll-about"><strong>What is this poll about?</strong></h3><p></p><h3 id="why-is-this-important"><strong>Why is this important?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>What are you asking people to do?</strong></h3><p></p><p>Choose the option(s) you favor.</p>
     score_poll:
       process_subtitle: Measure the degree of support for each option
-      process_introduction: <p>Use Score poll when you want to survey people for their
-        desire, preference or interest in each option.</p><p><span>Participants are asked
-        to evaluate each option and assign a score by moving a slider along a scale.</span></p><p><span>Results
-        are displayed graphically along with a table for each option showing total points,
-        mean points and the number of voters.</span></p><p>Advanced
-        Settings include 'Votes are anonymous' and 'Show options in random order' - commonly
-        used for Score poll to reduce any voting bias.</p><p><a
-        target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">Read
-        more about Score poll</a>.</p>
+      process_introduction: <p>Use Score poll when you want to survey people for their desire, preference or interest in each option.</p><p><span>Participants are asked to evaluate each option and assign a score by moving a slider along a scale.</span></p><p><a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">Read more about Score poll</a>.</p>
       title: Assessing how decisions are made in our organization
-      details: <h3 id="what-is-this-poll-about"><strong>What is
-        this poll about?</strong></h3><p></p><h3
-        id="why-is-this-important"><strong>Why is this important?</strong></h3><p></p><h3
-        id="what-are-you-asking-people-to-do"><strong>What are
-        you asking people to do?</strong></h3><p></p><p>Choose
-        the option(s) you favor.</p>
+      details: <h3 id="what-is-this-poll-about"><strong>What is this poll about?</strong></h3><p></p><h3 id="why-is-this-important"><strong>Why is this important?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>What are you asking people to do?</strong></h3><p></p><p>Choose the option(s) you favor.</p>
     dot_vote:
       process_subtitle: Allocate a budget of points to reveal priorities
-      process_introduction: <p>Dot vote is useful for groups trying to allocate a limited
-        resource to a number of options. It goes beyond a simple poll by helping participants
-        appreciate there is a constraint when selecting options.</p><p>Participants are
-        each given a set number of dots. You decide how many.</p><p>They place dots next
-        to options presented that they like. Participants can place all their dots on
-        a single option or spread over multiple options.</p><p>As
-        participants allocate dots, they may exceed the dot budget limit and so are encouraged
-        to consider how they spend their dots carefully.</p><p>Options
-        with the most dots “win”. The results table provides additional data to help you
-        analyse results.</p><ul><li><p>% of points</p></li><li><p>Points</p></li><li><p>Mean</p></li><li><p>Voters</p></li></ul><p><a
-        target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">Read
-        more about Dot vote</a>.</p>
+      process_introduction: <p>Dot vote can be used to allocate a limited resource across a number of options. It goes beyond a simple poll by helping participants appreciate there is a constraint when selecting options.</p><p>Participants are each given a budget of points to allocate.</p><p>Participants can allocate all their points to a single option or spread them over multiple options.</p><p>Participants may not exceed their budget so they must consider how they allocate their points carefully.</p><p><a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">Read more about Dot vote</a>.</p>
       title: Choosing themes for our conference
-      details: <h3 id="what-is-this-poll-about"><strong>What is
-        this poll about?</strong></h3><p></p><h3
-        id="why-is-this-important"><strong>Why is this important?</strong></h3><p></p><h3
-        id="what-are-you-asking-people-to-do"><strong>What are
-        you asking people to do?</strong></h3><p></p><p>In
-        this poll you have a budget of 8 dots to allocate to the options you prefer. You
-        can place all dots on one option or spread them out.</p>
+      details: <h3 id="what-is-this-poll-about"><strong>What is this poll about?</strong></h3><p></p><h3 id="why-is-this-important"><strong>Why is this important?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>What are you asking people to do?</strong></h3><p></p><p>In this poll you have a budget of points to allocate to the options you prefer. You can allocate all points on one option or spread them out.</p>
     ranked_choice:
       process_subtitle: Understand the ordered preference of options
-      process_introduction: <p>Ranked choice is useful when you have a large number of
-        options, or are holding an election.</p><p>This poll template
-        offers a series of options for people to vote in their preferred order.</p>
-        <p>You can set the number of choices the voter gets.</p>
-        <p><span>Voters drag and drop options in order of preference
-        (#1 being your most preferred option).</span></p><p><span>Advanced
-        Settings include 'Votes are anonymous' and 'Show options in random order' - commonly
-        used for R</span>anked choice to reduce any voting bias.</p><p>Results
-        are showed in ranked order. The results table provides additional data to help
-        you analyse results.</p><ul><li><p>Rank</p></li><li><p>% of points</p></li><li><p>Points</p></li><li><p>Mean</p></li></ul><p><a
-        target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">Read
-        more about Ranked choice</a>.</p>
+      process_introduction: <p>Ranked choice is useful when you have a large number of options, or are holding an election.</p><p>Voters drag and drop options to arrange them in order of preference.</p><p>Results are showed in ranked order.</p><p><a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">Read more about Ranked choice</a>.</p>
       title: Elect directors to governance board
-      details: <h3 id="what-is-this-poll-about"><strong>What is
-        this poll about?</strong></h3><p></p><h3
-        id="why-is-this-important"><strong>Why is this important?</strong></h3><p></p><h3
-        id="what-are-you-asking-people-to-do"><strong>What are
-        you asking people to do?</strong></h3><p></p><p>Vote
-        by ranking the options in order of your preference.  The option that ranks first
-        in the results wins.</p>
+      details: <h3 id="what-is-this-poll-about"><strong>What is this poll about?</strong></h3><p></p><h3 id="why-is-this-important"><strong>Why is this important?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>What are you asking people to do?</strong></h3><p></p><p>Vote by ranking the options in order of your preference.  The option that ranks first in the results wins.</p>
     time_poll:
       process_subtitle: Find when people are available to meet
-      process_introduction: <p><span>Save time arranging a date for your meeting or event.</span></p><p>Time
-        poll makes it easy to see everyone's availability and find the best time.</p>
-        <p>Give your Time poll a title and details. Enter a list
-        of date and time options in your time zone.</p><p>When
-        setting timeslots, consider people in different time zones. Participants will
-        see times localized in their time zone.</p><p>Set a meeting
-        duration.</p><p>When the Time poll closes, set an outcome
-        with the best time and any instructions for the meeting.</p><p><span>Loomio
-        will include a calendar invitation with the outcome notification email, so participants
-        can add to their calendar.</span></p>
-        <p><a target="_blank"
-            href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">Read more about Time poll</a>.</p>
+      process_introduction: <p>Quickly find the best time for your meeting or event. Add a title, details, and date/time options in your time zone. Participants will see the times localized to theirs.</p><p>When your Time poll closes, set the outcome with the best time and any meeting instructions. Loomio will send the outcome email with a calendar invite so participants can add it to their calendars.</p><p><a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">Read more about Time poll</a>.</p>
       title: Let's find a date for our next meeting
-      details: "<p><strong>What is the meeting or event?</strong></p><p></p><p><strong>Why
-        is this important?</strong></p><p></p><p><strong>What are you asking people to
-        do?</strong></p><p></p><p><span>Mark the timeslots you are available with the
-        green 'thumbs up' icon or leave the red 'thumbs down' in place when unavailable.
-        </span></p><p><span>Use the 'thumbs sideways' icon to say you are available 'if
-        need be'.</span></p>"
+      details: "<p><strong>What is the meeting or event?</strong></p><p></p><p><strong>Why is this important?</strong></p><p></p><p><strong>What are you asking people to do?</strong></p><p></p><p><span>Mark the timeslots you are available with the green 'thumbs up' icon or leave the red 'thumbs down' in place when unavailable. </span></p><p><span>Use the 'thumbs sideways' icon to say you are available 'if need be'.</span></p>"
       reason_prompt: Is there anything you can say to help the organizer find a suitable time?
     opt_in:
       process_subtitle: Find volunteers or ask for participants
-      process_introduction: '<p>Use Opt-in to invite people to a join a team, committee
-        or working group, or to participate in an event.&nbsp;&nbsp;</p><p>‘Opt-in’ has
-        two voting options: Accept or Decline.&nbsp;</p><p>You
-        can define a target number of people you are looking for, say 3 people to join
-        your working group.</p>
-        <p><a target="_blank"
-            href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#opt-in">Read more about Opt-in</a>.</p> '
+      process_introduction: '<p>Use Opt-in to invite people to a join a team, committee or working group, or to participate in an event.&nbsp;&nbsp;</p><p>‘Opt-in’ has two voting options: Accept or Decline.&nbsp;</p><p>You can define a target number of people you are looking for, say 3 people to join your working group.</p> <p><a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#opt-in">Read more about Opt-in</a>.</p> '
       title: Working group to draft our new sustainability policy
-      details: "<p><strong>What is the team, working group or event you are inviting people
-        to?</strong></p><p></p><p><strong>Why is this important?</strong></p><p></p><p><strong>What
-        are you asking people to do?</strong></p><p></p><p>Select 'Accept' to participate!</p>"
+      details: "<p><strong>What is the team, working group or event you are inviting people to?</strong></p><p></p><p><strong>Why is this important?</strong></p><p></p><p><strong>What are you asking people to do?</strong></p><p></p><p>Select 'Accept' to participate!</p>"
       accept_meaning: I'm willing to participate
       accept_prompt: Why are you volunteering for this?
       decline_meaning: I'm unable to participate
       decline_prompt: Is there anything you'd like to say?
-
   discussion_templates:
     practice_thread:
-      process_name: "Practice thread"
+      process_name: Practice thread
       process_subtitle: Welcome people to the group and practice using Loomio
-      process_introduction: "<p>Use this template to welcome new members and encourage
-        early participation. It gives people a chance to introduce themselves and explore
-        Loomio’s features.</p>"
+      process_introduction: "<p>Use this template to welcome new members and encourage early participation. It gives people a chance to introduce themselves and explore Loomio’s features.</p>"
       title: "\U0001F44B Welcome! Say hi and try things out"
-      description: "<p>Welcome to our Loomio group — it’s great to have you here!</p><p>This
-        thread is a space to:</p><ul>\n<li><p>Introduce yourself to the group</p></li>\n<li><p>Try
-        out some of Loomio's features - for example: try using reactions \U0001F44D</p></li>\n<li><p>Ask
-        any questions you have at this stage</p></li>\n</ul><p>If you're not sure what
-        to say, a simple hello is fine \U0001F642</p>"
+      description: "<p>Welcome to our Loomio group — it’s great to have you here!</p><p>This thread is a space to:</p><ul>\n<li><p>Introduce yourself to the group</p></li>\n<li><p>Try out some of Loomio's features - for example: try using reactions \U0001F44D</p></li>\n<li><p>Ask any questions you have at this stage</p></li>\n</ul><p>If you're not sure what to say, a simple hello is fine \U0001F642</p>"
     blank:
       process_name: Blank template
       process_subtitle: Start a new thread for any purpose
-      process_introduction: "<p>Start a thread in your group about any topic you like.</p>
-        <p>By default everyone in the group will be notified when you start the thread. You can change this by editing the 'invite' field below.</p>"
+      process_introduction: "<p>Start a thread in your group about any topic you like.</p> <p>By default everyone in the group will be notified when you start the thread. You can change this by editing the 'invite' field below.</p>"
     discuss_a_topic:
       title_placeholder: What is the topic you want to discuss?
       process_name: Discuss a topic
       process_subtitle: Start a discussion with your group
-      process_introduction: "<p>Is there an issue, problem or opportunity you wish to
-        raise with your group?</p><p>Introduce the topic, link to any background information
-        and ask for comments, ideas and help.</p><p>Invite people to participate by contributing
-        their thoughts and relevant information. Use @mention to get the attention of
-        particular people.</p><p>Update the thread context as the discussion progresses
-        to facilitate it towards an outcome.</p><p>Don't wait until you have all the info
-        to start a thread. Rather use the thread to invite people to help you explore
-        the topic and figure out a resolution.</p>"
-      description: <h3 id="introduce-and-describe-the-topic">Introduce and describe the
-        topic</h3><p></p><h3 id="why-is-this-important">Why is this important?</h3><p></p><h3
-        id="how-would-you-like-people-to-respond">How would you like people to respond?</h3><p></p>
+      process_introduction: "<p>Is there an issue, problem or opportunity you wish to raise with your group?</p><p>Introduce the topic, link to any background information and ask for comments, ideas and help.</p><p>Invite people to participate by contributing their thoughts and relevant information. Use @mention to get the attention of particular people.</p><p>Update the thread context as the discussion progresses to facilitate it towards an outcome.</p><p>Don't wait until you have all the info to start a thread. Rather use the thread to invite people to help you explore the topic and figure out a resolution.</p>"
+      description: <h3 id="introduce-and-describe-the-topic">Introduce and describe the topic</h3><p></p><h3 id="why-is-this-important">Why is this important?</h3><p></p><h3 id="how-would-you-like-people-to-respond">How would you like people to respond?</h3><p></p>
     onboarding_to_loomio:
       title: Using Loomio for our group
       process_name: Let’s try out Loomio together
       process_subtitle: A thread to help people new to Loomio practice writing comments and voting.
-      process_introduction: "<p>Use this template to introduce people to Loomio.</p><p>A
-        great way to experience Loomio is with a simple introductions thread and practice proposal</p>"
-      description:
-        <h3 id="why-are-you-interested-in-using-loomio">Why are you interested
-        in using Loomio?</h3><p>We are interested in using Loomio to involve people in
-        decisions about our organization.</p><h3 id="what-are-you-asking-people-to-do">What
-        are you asking people to do?</h3><p>I would love to hear your thoughts! Leave
-        a comment below and vote in the proposal.</p><p>You can reply to someone's comment
-        by clicking on the reply icon located at the bottom right of the comment.</p><p>Use
-        @mention to notify people.</p>
+      process_introduction: "<p>Use this template to introduce people to Loomio.</p><p>A great way to experience Loomio is with a simple introductions thread and practice proposal</p>"
+      description: <h3 id="why-are-you-interested-in-using-loomio">Why are you interested in using Loomio?</h3><p>We are interested in using Loomio to involve people in decisions about our organization.</p><h3 id="what-are-you-asking-people-to-do">What are you asking people to do?</h3><p>I would love to hear your thoughts! Leave a comment below and vote in the proposal.</p><p>You can reply to someone's comment by clicking on the reply icon located at the bottom right of the comment.</p><p>Use @mention to notify people.</p>
       onboarding: Onboarding
     consent_process:
       title_placeholder: Developing our Health and Safety Policy
       process_name: Consent process
       process_subtitle: Make a decision that is ‘safe to try’, without objections.
-      process_introduction: '<p>Seek consent on a decision you need to make, where there
-        are no meaningful objections to your proposal, so you can make a fast decision
-        that is ''safe to try'' now.</p><p>Typical roles:</p><ul><li><p>Proposer: The
-        person who raises a topic that requires a decision.</p></li><li><p>Facilitator:
-        Someone who can help the proposer do their job efficiently.</p></li></ul><p>Common
-        process steps:</p><p>Step 1. Present a proposal with a Loomio thread.</p><p>Step
-        2. Facilitate a round of questions, reactions and any comments to improve the
-        proposal with a Sense check.</p><p>Step 3. Amend the proposal with suggestions
-        and comments.</p><p>Step 4. Ask if anyone has a meaningful objection to the amended
-        proposal with a Consent proposal.</p><p>Step 5. Integrate valid objections to
-        create an amended version of the proposal that everyone consents is ‘safe to try’,
-        and when completed state the decision outcome.</p><p><a target="_blank" rel="noopener
-        noreferrer nofollow" href="https://help.loomio.com/en/guides/consent_process/index.html">Read
-        more: Consent process.</a></p>'
-      description: <h3 id="what-is-the-decision-you-need-to-make">What is the decision
-        you need to make?</h3><h3 id=""></h3><h3 id="why-is-this-important-and-what-impact-does-it-have">Why
-        is this important and what impact does it have?</h3><p></p><h3 id="what-information-do-people-need-for-context">What
-        information do people need for context?</h3><p></p><h3 id="who-is-the-facilitator-for-this-process">Who
-        is the facilitator for this process?</h3><p></p>
+      process_introduction: '<p>Seek consent on a decision you need to make, where there are no meaningful objections to your proposal, so you can make a fast decision that is ''safe to try'' now.</p><p>Typical roles:</p><ul><li><p>Proposer: The person who raises a topic that requires a decision.</p></li><li><p>Facilitator: Someone who can help the proposer do their job efficiently.</p></li></ul><p>Common process steps:</p><p>Step 1. Present a proposal with a Loomio thread.</p><p>Step 2. Facilitate a round of questions, reactions and any comments to improve the proposal with a Sense check.</p><p>Step 3. Amend the proposal with suggestions and comments.</p><p>Step 4. Ask if anyone has a meaningful objection to the amended proposal with a Consent proposal.</p><p>Step 5. Integrate valid objections to create an amended version of the proposal that everyone consents is ‘safe to try’, and when completed state the decision outcome.</p><p><a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consent_process/index.html">Read more: Consent process.</a></p>'
+      description: <h3 id="what-is-the-decision-you-need-to-make">What is the decision you need to make?</h3><h3 id=""></h3><h3 id="why-is-this-important-and-what-impact-does-it-have">Why is this important and what impact does it have?</h3><p></p><h3 id="what-information-do-people-need-for-context">What information do people need for context?</h3><p></p><h3 id="who-is-the-facilitator-for-this-process">Who is the facilitator for this process?</h3><p></p>
       consent: Consent
     advice_process:
       title_placeholder: Seeking advice to purchase a new computer
       process_name: Advice process
       process_subtitle: Seek advice on a decision you need to make.
-      process_introduction: '<p>Make a decision with the advice of people impacted or
-        who have expertise, so you can make a better decision for your organization.</p><p>Typical
-        roles:</p><ul><li><p>Facilitator: The person making the decision, or ask someone
-        to facilitate.</p></li><li><p>Advisers: People who are impacted or have expertise
-        that you invite.</p></li></ul><p>Common process steps:</p><p>Step 1. Seek input
-        to sound out perspectives before proposing action.</p><p>Step 2. Make a proposal
-        and seek advice - run an Advice proposal.</p><p>Step 3. Taking advice received
-        into account, you make a decision and inform the people who have given advice
-        - state an outcome.</p><p><a target="_blank" rel="noopener noreferrer nofollow"
-        href="https://help.loomio.com/en/guides/advice_process/index.html">Read more:
-        Advice process.</a></p>'
-      description: <h3 id="what-is-the-decision-you-need-to-make">What is the decision
-        you need to make?</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have">Why
-        is this important and what impact does it have?</h3><p></p><h3 id="what-advice-are-you-asking-to-help-you-make-a-good-decision">What
-        advice are you asking to help you make a good decision?</h3><p></p><h3 id="who-is-the-facilitator-for-this-process">Who
-        is the facilitator for this process?</h3><p></p>
+      process_introduction: '<p>Make a decision with the advice of people impacted or who have expertise, so you can make a better decision for your organization.</p><p>Typical roles:</p><ul><li><p>Facilitator: The person making the decision, or ask someone to facilitate.</p></li><li><p>Advisers: People who are impacted or have expertise that you invite.</p></li></ul><p>Common process steps:</p><p>Step 1. Seek input to sound out perspectives before proposing action.</p><p>Step 2. Make a proposal and seek advice - run an Advice proposal.</p><p>Step 3. Taking advice received into account, you make a decision and inform the people who have given advice - state an outcome.</p><p><a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/advice_process/index.html">Read more: Advice process.</a></p>'
+      description: <h3 id="what-is-the-decision-you-need-to-make">What is the decision you need to make?</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have">Why is this important and what impact does it have?</h3><p></p><h3 id="what-advice-are-you-asking-to-help-you-make-a-good-decision">What advice are you asking to help you make a good decision?</h3><p></p><h3 id="who-is-the-facilitator-for-this-process">Who is the facilitator for this process?</h3><p></p>
       advice: Advice
     pass_a_resolution:
       title_placeholder: Resolution to approve strategy
       process_name: Pass a resolution
-      process_subtitle: Introduce resolution with context, background information, respond
-        to questions and raise a proposal to pass the resolution.
-      process_introduction: <p>Robert’s Rules is a framework that is comprised of a set
-        of codes and rules of ethics that helps groups hold orderly meetings that allow
-        the majority to rule while allowing minority voices to be heard. <a target="_blank"
-        rel="noopener noreferrer nofollow" href="https://www.boardeffect.com/blog/roberts-rules-of-order-cheat-sheet/">https://www.boardeffect.com/blog/roberts-rules-of-order-cheat-sheet/</a>
-        A member makes a motion to propose an action or make a decision by saying, “I
-        move to…”. Another member must second the motion by saying, “I second the motion.”
-        Once someone seconds the motion, the group votes on the motion. It passes by a
-        majority vote or a quorum depending on the rules in the bylaws.</p>
-      description: "<p><strong>State the resolution to be passed</strong></p><p></p><p><strong>Outline
-        context and background information</strong></p><p></p><p><strong>Invite members
-        to ask questions, make comments and contribute any information to build shared
-        understanding</strong></p><p></p>"
+      process_subtitle: Introduce resolution with context, background information, respond to questions and raise a proposal to pass the resolution.
+      process_introduction: <p>Robert’s Rules is a framework that is comprised of a set of codes and rules of ethics that helps groups hold orderly meetings that allow the majority to rule while allowing minority voices to be heard. <a target="_blank" rel="noopener noreferrer nofollow" href="https://www.boardeffect.com/blog/roberts-rules-of-order-cheat-sheet/">https://www.boardeffect.com/blog/roberts-rules-of-order-cheat-sheet/</a> A member makes a motion to propose an action or make a decision by saying, “I move to…”. Another member must second the motion by saying, “I second the motion.” Once someone seconds the motion, the group votes on the motion. It passes by a majority vote or a quorum depending on the rules in the bylaws.</p>
+      description: "<p><strong>State the resolution to be passed</strong></p><p></p><p><strong>Outline context and background information</strong></p><p></p><p><strong>Invite members to ask questions, make comments and contribute any information to build shared understanding</strong></p><p></p>"
       resolution: Resolution
     decision_by_consensus:
       title_placeholder: Revising our organization's constitution
       process_name: Decision by consensus
       process_subtitle: Reach collective agreement with everyone involved.
-      process_introduction: '<p>Build consensus for a decision you need to make together,
-        to reach an agreement that satisfies the needs and concerns of all participants.</p><p>Typical
-        roles:</p><ul><li><p>Appoint a facilitator.&nbsp; (In board meetings this is usually
-        the Chairperson.)</p></li><li><p>A quorum or supermajority of members to participate,
-        as specified in your organization''s statutes.</p></li></ul><p>Common process
-        steps:</p><p>Step 1. Create an open space for discussion about an issue or proposed
-        decision.</p><p>Step 2. Test for consensus and expose objections with a Sense
-        check proposal.&nbsp;</p><p>Step 3. Clarify any points, invite constructive modifications
-        and amend the proposal.</p><p>Step 4. Test for agreement and any remaining objections
-        with a Consensus proposal.</p><p>Step 5. Record the decision with an outcome and
-        in the official minutes of the organization.</p><p><a target="_blank" rel="noopener
-        noreferrer nofollow" href="https://help.loomio.com/en/guides/consensus_process/index.html">Read
-        more: Consensus process.</a></p>'
-      description: <h3 id="what-is-the-decision-you-need-to-make">What is the decision
-        you need to make?</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have">Why
-        is this important and what impact does it have?</h3><p></p><h3 id="what-information-do-people-need-for-context">What
-        information do people need for context?</h3><p></p><h3 id="who-is-the-facilitator">Who
-        is the facilitator?</h3><p></p><h3 id="what-conditions-need-to-be-met-for-a-decision">What
-        conditions need to be met for a decision?</h3><h3 id=""></h3>
+      process_introduction: '<p>Build consensus for a decision you need to make together, to reach an agreement that satisfies the needs and concerns of all participants.</p><p>Typical roles:</p><ul><li><p>Appoint a facilitator.&nbsp; (In board meetings this is usually the Chairperson.)</p></li><li><p>A quorum or supermajority of members to participate, as specified in your organization''s statutes.</p></li></ul><p>Common process steps:</p><p>Step 1. Create an open space for discussion about an issue or proposed decision.</p><p>Step 2. Test for consensus and expose objections with a Sense check proposal.&nbsp;</p><p>Step 3. Clarify any points, invite constructive modifications and amend the proposal.</p><p>Step 4. Test for agreement and any remaining objections with a Consensus proposal.</p><p>Step 5. Record the decision with an outcome and in the official minutes of the organization.</p><p><a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consensus_process/index.html">Read more: Consensus process.</a></p>'
+      description: <h3 id="what-is-the-decision-you-need-to-make">What is the decision you need to make?</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have">Why is this important and what impact does it have?</h3><p></p><h3 id="what-information-do-people-need-for-context">What information do people need for context?</h3><p></p><h3 id="who-is-the-facilitator">Who is the facilitator?</h3><p></p><h3 id="what-conditions-need-to-be-met-for-a-decision">What conditions need to be met for a decision?</h3><h3 id=""></h3>
       consensus: Consensus
     share_links_and_info:
       title_placeholder: Share links and info
       process_name: Share links and info
       process_subtitle: Post info, links and reports to share for comment and discussion.
-      process_introduction: "<p>Use a thread as a 'wall' or 'bulletin board'
-        for your group to post information, news items and ideas you'd like to share with
-        each other.</p><p>Invite people to use the <strong>Insert link</strong> and <strong>Embed
-        video</strong> formatting tools to help the group access info from within Loomio.
-        Use a <strong>Heading</strong> on comments to pin the comment to the thread timeline,
-        so it can be easily found.</p><p><strong>Pin</strong> the thread so that it sticks
-        around, and encourage <strong>Reactions</strong> to keep it energized, letting
-        people know you saw their item.</p><p>The default display of this thread is <strong>Newest</strong>
-        so the most recent comments are at the top of the thread.</p>"
-      description: <p>Use this thread to post info, notices and things you'd like to share
-        - a place where you can see what is going on and get involved.</p><p data-text-align="start">Share
-        events, reports, podcasts and other interesting online info.</p><p data-text-align="start">Use
-        the <strong>Insert link</strong> and <strong>Embed video</strong> formatting tools
-        to help people access info within Loomio.</p>
+      process_introduction: "<p>Use a thread as a 'wall' or 'bulletin board' for your group to post information, news items and ideas you'd like to share with each other.</p><p>Invite people to use the <strong>Insert link</strong> and <strong>Embed video</strong> formatting tools to help the group access info from within Loomio. Use a <strong>Heading</strong> on comments to pin the comment to the thread timeline, so it can be easily found.</p><p><strong>Pin</strong> the thread so that it sticks around, and encourage <strong>Reactions</strong> to keep it energized, letting people know you saw their item.</p><p>The default display of this thread is <strong>Newest</strong> so the most recent comments are at the top of the thread.</p>"
+      description: <p>Use this thread to post info, notices and things you'd like to share - a place where you can see what is going on and get involved.</p><p data-text-align="start">Share events, reports, podcasts and other interesting online info.</p><p data-text-align="start">Use the <strong>Insert link</strong> and <strong>Embed video</strong> formatting tools to help people access info within Loomio.</p>
       information: Information
     prepare_for_a_meeting:
       title_placeholder: Preparing for our next meeting
       process_name: Prepare for a meeting
-      process_subtitle: Build an agenda, post board papers and organize administrative
-        matters so everyone is up to date, in context and prepared.
+      process_subtitle: Build an agenda, post board papers and organize administrative matters so everyone is up to date, in context and prepared.
       description: <p><strong>Focus of the meeting</strong></p><p></p><p data-text-align="start"><strong>Outline agenda</strong></p><p data-text-align="start"></p><p data-text-align="start"><strong>Actions from last meeting</strong></p><p data-text-align="start"></p><p data-text-align="start"><strong>How should participants prepare for the meeting?</strong></p><p data-text-align="start"></p><p data-text-align="start"><strong>List of documents for the meeting</strong></p><p data-text-align="start"></p>
-      process_introduction: <p>Plan an effective meeting by involving people from the outset,
-        aligning towards the most important topics, and make better use of your precious time together.</p>
-        <p>Use a thread as the container for your meeting to establish a focus for the meeting, set the agenda,
-        find a suitable date, post key documents and reports, start discussion on agenda items, follow up with
-        actions and minutes.</p><p>This helps everyone prepare for the meeting, by reading the materials and
-        thinking about topics of discussion and the decisions to be made.
-        Members are then more likely to arrive in context and ready for the meeting.</p>
-        <p>Read more about <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/board_processes/meeting.html"><u>Preparing for a meeting</u></a> in the Good Governance Guide to Loomio.</p>
+      process_introduction: <p>Plan an effective meeting by involving people from the outset, aligning towards the most important topics, and make better use of your precious time together.</p> <p>Use a thread as the container for your meeting to establish a focus for the meeting, set the agenda, find a suitable date, post key documents and reports, start discussion on agenda items, follow up with actions and minutes.</p><p>This helps everyone prepare for the meeting, by reading the materials and thinking about topics of discussion and the decisions to be made. Members are then more likely to arrive in context and ready for the meeting.</p> <p>Read more about <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/board_processes/meeting.html"><u>Preparing for a meeting</u></a> in the Good Governance Guide to Loomio.</p>
       meeting: Meeting
     build_a_policy:
       title_placeholder: Revising our hiring policy
       process_name: Build a policy
       process_subtitle: Work with your team to build and agree a policy or procedure document.
-      process_introduction: "<p><span>The thread is the container for discussion about
-        the policy, where you can agree requirements and principles, and post document
-        drafts for comment.</span></p><p><span>Use the template to develop policy with
-        a small group of people, or make it transparent to the whole organization, inviting
-        comments on progressive versions of the document.</span></p><p><span>Use a Sense
-        check proposal to notify group members that a draft document is ready for review,
-        and invite people to read the document and respond with any comments or questions.</span></p><p><span>When
-        a 'final' draft is ready, raise a Consent or Consensus proposal to approve the
-        document.</span></p>"
-      description: "<p><strong><span>What is the policy or document you need to build?</span></strong></p><p></p><p><strong><span>Why
-        is this important?</span></strong></p><p></p><p><strong><span>What are you asking
-        people to do?</span></strong></p><p></p>"
+      process_introduction: "<p><span>The thread is the container for discussion about the policy, where you can agree requirements and principles, and post document drafts for comment.</span></p><p><span>Use the template to develop policy with a small group of people, or make it transparent to the whole organization, inviting comments on progressive versions of the document.</span></p><p><span>Use a Sense check proposal to notify group members that a draft document is ready for review, and invite people to read the document and respond with any comments or questions.</span></p><p><span>When a 'final' draft is ready, raise a Consent or Consensus proposal to approve the document.</span></p>"
+      description: "<p><strong><span>What is the policy or document you need to build?</span></strong></p><p></p><p><strong><span>Why is this important?</span></strong></p><p></p><p><strong><span>What are you asking people to do?</span></strong></p><p></p>"
       policy: Policy
     elect_a_governance_position:
       title_placeholder: Council nomination and election
       process_name: Elect a governance position
       process_subtitle: Nominate and elect someone to a governance role in council, committee or board.
-      process_introduction: "<p>Introduce the governance role and criteria for the position
-        to help members assess candidates.</p><p>Call for nominations with an Opt-in poll.
-        Invite nominees to post a photo of the candidate along with their bio and references.
-        Embed a video message from the candidate so members can see and hear directly
-        from the candidate.</p><p>If you are ready to elect a candidate use a Consent
-        proposal.</p><p>If you have several candidates for a position, use Ranked Choice
-        proposal where voters can rank candidates in order of preference.</p>"
-      description: '<h3 id="what-position-do-you-need-to-fill">What position do you need
-        to fill?</h3><p></p><h3 id="why-is-this-important">Why is this important?</h3><p></p><h3
-        id="what-qualifications-skills-and-experiences-make-a-good-cand">What qualifications,
-        skills and experiences make a good candidate?</h3><p></p><h3 id="what-is-the-election-process">What
-        is the election process?</h3><p>Stage 1: Nominations - we are inviting nominations
-        for suitable candidates.</p><p>Stage 2: Introduce candidates - include a photo,
-        short bio and reference for each candidate.</p><p>Stage 3: Election - vote to
-        appoint a candidate to the role.</p>'
+      process_introduction: "<p>Introduce the governance role and criteria for the position to help members assess candidates.</p><p>Call for nominations with an Opt-in poll. Invite nominees to post a photo of the candidate along with their bio and references. Embed a video message from the candidate so members can see and hear directly from the candidate.</p><p>If you are ready to elect a candidate use a Consent proposal.</p><p>If you have several candidates for a position, use Ranked Choice proposal where voters can rank candidates in order of preference.</p>"
+      description: '<h3 id="what-position-do-you-need-to-fill">What position do you need to fill?</h3><p></p><h3 id="why-is-this-important">Why is this important?</h3><p></p><h3 id="what-qualifications-skills-and-experiences-make-a-good-cand">What qualifications, skills and experiences make a good candidate?</h3><p></p><h3 id="what-is-the-election-process">What is the election process?</h3><p>Stage 1: Nominations - we are inviting nominations for suitable candidates.</p><p>Stage 2: Introduce candidates - include a photo, short bio and reference for each candidate.</p><p>Stage 3: Election - vote to appoint a candidate to the role.</p>'
       election: Election
     funding_decision:
       title_placeholder: Funding application for the Robotics Roadshow
       process_name: Funding decision
       process_subtitle: Process a grant, loan or investment application and make a funding decision.
-      process_introduction: "<p>Introduce an application for funding, attach documents
-        and other supporting materials.</p><p>Summarize the application in the thread
-        context.</p><p>Invite authorized people to review the application and ask questions.
-        Allow sufficient time for discussion.</p><p>Raise a Consensus proposal to approve
-        the funding.</p><p>If someone disagrees, ask for a reason - for example, more
-        information may be needed. Invite the person disagreeing to change their vote
-        when satisfied.</p><p>When you have a clear decision about the funding application,
-        state an outcome to record the decision.</p>"
-      description: <h3 id="introduce-and-summarize-the-funding-application">Introduce
-        and summarize the funding application</h3><p></p><h3 id="how-does-this-application-fit-with-funding-criteria">How
-        does this application fit with funding criteria?</h3><p></p><h3 id="who-is-authorized-to-approve-this-funding-decision">Who
-        is authorized to approve this funding decision?</h3><p></p><h3 id="invite-questions-from-decision-makers-to-process-the-applica">Invite
-        questions from decision-makers to process the application</h3><p></p>
+      process_introduction: "<p>Introduce an application for funding, attach documents and other supporting materials.</p><p>Summarize the application in the thread context.</p><p>Invite authorized people to review the application and ask questions. Allow sufficient time for discussion.</p><p>Raise a Consensus proposal to approve the funding.</p><p>If someone disagrees, ask for a reason - for example, more information may be needed. Invite the person disagreeing to change their vote when satisfied.</p><p>When you have a clear decision about the funding application, state an outcome to record the decision.</p>"
+      description: <h3 id="introduce-and-summarize-the-funding-application">Introduce and summarize the funding application</h3><p></p><h3 id="how-does-this-application-fit-with-funding-criteria">How does this application fit with funding criteria?</h3><p></p><h3 id="who-is-authorized-to-approve-this-funding-decision">Who is authorized to approve this funding decision?</h3><p></p><h3 id="invite-questions-from-decision-makers-to-process-the-applica">Invite questions from decision-makers to process the application</h3><p></p>
       funding: Funding
     approve_a_document:
       title_placeholder: Developing our brand strategy
       process_name: Approve a document
       process_subtitle: Introduce, discuss and develop an important document, policy or agreement.
-      process_introduction: "<p>Introduce the document along with any background information.
-        State the purpose of the document to help stay focused.</p><p>Invite people to
-        contribute information and their expertise, and use this to frame the document.
-        Acknowledge and consider feedback and contributions from people.</p><p>Integrate
-        contributions into a first draft of the document and successive drafts until it
-        is ready to be approved.</p><p>Use a Sense check poll to survey opinions and clarify
-        any issues with the draft.</p><p>Once feedback is considered and incorporated
-        into the document, proceed to approval or agreement with a Consent or Consensus
-        proposal.</p><p>The thread becomes a clear record of document creation progress
-        and decisions made.</p>"
-      description: <h3 id="what-is-the-purpose-of-the-document">What is the purpose of
-        the document?</h3><p></p><h3 id="why-is-this-important">Why is this important?</h3><p></p><h3
-        id="what-are-you-asking-people-to-do">What are you asking people to do?</h3><p></p>
+      process_introduction: "<p>Introduce the document along with any background information. State the purpose of the document to help stay focused.</p><p>Invite people to contribute information and their expertise, and use this to frame the document. Acknowledge and consider feedback and contributions from people.</p><p>Integrate contributions into a first draft of the document and successive drafts until it is ready to be approved.</p><p>Use a Sense check poll to survey opinions and clarify any issues with the draft.</p><p>Once feedback is considered and incorporated into the document, proceed to approval or agreement with a Consent or Consensus proposal.</p><p>The thread becomes a clear record of document creation progress and decisions made.</p>"
+      description: <h3 id="what-is-the-purpose-of-the-document">What is the purpose of the document?</h3><p></p><h3 id="why-is-this-important">Why is this important?</h3><p></p><h3 id="what-are-you-asking-people-to-do">What are you asking people to do?</h3><p></p>
       document: Document
-
   explore:
     header: Explore public groups
-
   activerecord:
     errors:
       messages:
         blank: can't be blank
         invalid: is not a valid value
-
   unauthorized:
     manage:
-      all: "Not authorized to %{action} %{subject}."
+      all: Not authorized to %{action} %{subject}.
     add_guests:
-      all: "You must upgrade your Loomio subscription to add guests to your %{subject}. Alternatively, you can invite them to be members of your group."
+      all: You must upgrade your Loomio subscription to add guests to your %{subject}. Alternatively, you can invite them to be members of your group.
   errors:
-    clear_cache: "Loading problem detected. Hold shift and press reload, or clear your browser cache."
+    clear_cache: Loading problem detected. Hold shift and press reload, or clear your browser cache.
     400:
       title: Bad request
       body: Sorry, we weren't able to understand that request
@@ -621,8 +277,9 @@ en:
       body: This page no longer exists
     417:
       title: Browser incompatible
-      body: |
-        Please <a href="https://browser-update.org/update.html?force_outdated=true">Upgrade your browser</a> to use Loomio
+      body: 'Please <a href="https://browser-update.org/update.html?force_outdated=true">Upgrade your browser</a> to use Loomio
+
+        '
     422:
       title: Unprocessable Entity
       body: The change you wanted was rejected. Maybe you tried to change something you didn't have access to.
@@ -632,21 +289,20 @@ en:
     500:
       title: Internal Server Error
       body: We're sorry, but something went wrong. We've been notified about this issue and we'll take a look at it shortly.
-
     noscript: Loomio requires javascript to work! Please enable javascript in your browser to continue
-    upgrade_browser: |
-      Uh oh! Your web browser is too old and Loomio may not work properly. Please <a href="https://browser-update.org/update.html">upgrade your browser.</a>
+    upgrade_browser: 'Uh oh! Your web browser is too old and Loomio may not work properly. Please <a href="https://browser-update.org/update.html">upgrade your browser.</a>
+
+      '
     return_home: Return home
     not_found: 404 file not found.
     messages:
       email: not a valid email address
       spoofed_media_type: The contents of that file don't match its filename
       pwned_password: This password has previously appeared in a data breach and should never be used
-
   group:
     error:
-      handle_must_begin_with_parent_handle: "Must begin with %{parent_handle}-"
-      no_public_trials: "Please upgrade from trial to change the group privacy setting"
+      handle_must_begin_with_parent_handle: Must begin with %{parent_handle}-
+      no_public_trials: Please upgrade from trial to change the group privacy setting
     stats:
       group_stats: Group stats
       org_stats: Organisation stats (including subgroups)
@@ -666,17 +322,15 @@ en:
         score: Score
         rank: Rank
         time: Time poll
-
   user:
-    deleted_user: "Deleted User"
-    placeholder_name: "Invited user (%{hostname})"
+    deleted_user: Deleted User
+    placeholder_name: Invited user (%{hostname})
     error:
       sign_in_required_html: |
         You must be signed in to proceed.
         Please <a href="/dashboard" target="_blank">sign in</a> then reload this page to continue.
-      bad_login: "Sorry, that password doesn't match the one we have on file"
-      username_must_be_alphanumeric: "Usernames must be lower case letters and numbers only"
-
+      bad_login: Sorry, that password doesn't match the one we have on file
+      username_must_be_alphanumeric: Usernames must be lower case letters and numbers only
   poll:
     error:
       cannot_add_options: Cannot add options to this poll
@@ -708,60 +362,51 @@ en:
       participant: Participant
       also_available: Also available in
       total: Total
-    waiting_for_votes_from: "Waiting for votes from"
-
+    waiting_for_votes_from: Waiting for votes from
   stance:
     error:
       too_short: Please make a selection
-
   invitation:
     invitation_cancelled: Sorry, this invitation has been revoked by the group cooordinator. Please request another invitation from your group.
     invitation_already_used: This invitation has already been used. Please sign in to loomio directly to continue to your group.
-
   subscriptions:
     active: Active
     inactive: Inactive
-
   base_mailer:
     via_loomio: "%{name} (via %{site_name})"
-
   event_mailer:
     notification_reason:
-      group_subscribed: "You received this because you are subscribed to all activity in the group."
-      thread_subscribed: "You received this because you are subscribed to the thread."
-      group_mentioned: "You received this because the group was @mentioned."
-      user_mentioned: "You received this because you were @mentioned."
-      notified: "You received this because the author notified you."
-
+      group_subscribed: You received this because you are subscribed to all activity in the group.
+      thread_subscribed: You received this because you are subscribed to the thread.
+      group_mentioned: You received this because the group was @mentioned.
+      user_mentioned: You received this because you were @mentioned.
+      notified: You received this because the author notified you.
     received_email:
       explaination_html: |
         <p>You are receiving this email because you are an admin for the Loomio group: %{group}.</p>
         <p>The group has received an email from an unrecognised email address.</p>
         <p>If the message is from a member of the group, please review the email and select the member.</p>
         <p>If the message is unwanted, you can block any further email from that address.</p>
-
   user_mailer:
     group_export_ready:
       subject: Group data export for %{group_name}
-      body_html: |
-        Download your group data <a href="%{url}">here</a>. Please note that this link will expire in one week's time.
+      body_html: 'Download your group data <a href="%{url}">here</a>. Please note that this link will expire in one week''s time.
 
+        '
     redacted:
-      subject: "Your %{site_name} user account has been deleted"
+      subject: Your %{site_name} user account has been deleted
       body_html: |
         <p>Your %{site_name} user account has been deleted.</p>
         <p>All personally identifying data has been removed.</p>
         <p>If you did not request this, please contact %{support_email}</p>
-
     accounts_merged:
-      subject: "Your %{site_name} user accounts have been merged."
+      subject: Your %{site_name} user accounts have been merged.
       body_html: |
         Hi %{name},
         Your two loomio accounts have been merged into one account.
         To access loomio from now on, please use <strong>%{email}</strong> when you sign in.
-
     merge_verification:
-      subject: "Verify your %{site_name} email address for merging"
+      subject: Verify your %{site_name} email address for merging
       body_html: |
         <p>Hi %{name},</p>
         <p>A request was made to merge your user account under the address <strong>%{source_email}</strong> with the account belonging to this address, <strong>%{target_email}</strong>.</p>
@@ -780,28 +425,23 @@ en:
         body_html: |
           <p>The merge of your user accounts was successful. You will receive a confirmation email at <strong>%{target_email}</strong> shortly.</p>
           <p>Please <a href="/contact" target="_blank">contact us</a> if you have any further questions.</p>
-
   email:
     common:
       or_enter_code: Or, enter the code below
       resend: This will expire in 24 hours and can only be used once
-
     login:
       subject: Sign in to %{site_name}
       intro: This is your link to sign in to %{site_name}
       intro_code: This is your code to sign in to %{site_name}
       login: Sign in as %{name}
-
     reactivate:
       subject: Reactivate your %{site_name} account
       intro: Hi %{name}, here is a link to reactivate your %{site_name} account
       login: Reactivate %{name}
-
     contact_request:
       subject: "%{name} would like to connect with you on %{site_name}!"
       intro: "%{name} (%{email}) has sent you a request to connect."
-      footer: "You may respond to %{name} directly by replying to this email."
-
+      footer: You may respond to %{name} directly by replying to this email.
     reset_password:
       greeting: |
         Hi %{name}
@@ -811,19 +451,17 @@ en:
         You received this because your email was entered into the "Forgot password" form on %{hostname}.
         However, your password will not be changed until you follow the link above and complete the form.
         If you continue to have problems logging in, reply to this email to contact a support person.
-
     by_who: by %{person}
     reply_to_this_discussion: Reply to this discussion
-    loomio_app_description: "An easy to use, secure place for organizations to make decisions together."
-
+    loomio_app_description: An easy to use, secure place for organizations to make decisions together.
     view_group: View group
     to_join_group:
       subject: "%{member} has invited you to join %{group_name} on %{site_name}"
       invitation_text: "%{member} has invited you to join their group %{group_name}."
-      invitation_text_html: "has invited you to join their group"
-      link_help: "Click the link below to accept the invitation:"
-      accept_invitation: "Accept invitation"
-      stop_emails: "Stop receiving emails from %{site_name}"
+      invitation_text_html: has invited you to join their group
+      link_help: 'Click the link below to accept the invitation:'
+      accept_invitation: Accept invitation
+      stop_emails: Stop receiving emails from %{site_name}
       accepting_is_important: It's important to accept your invitation, so that you do not miss notifications about decisions that involve you.
     resend_to_join_group:
       subject: "%{member} is waiting for you to join %{group_name} on %{site_name}"
@@ -831,8 +469,8 @@ en:
       subject: "%{who} has added you to %{which_group} on %{site_name}"
       content: "%{who} has added you to %{which_group}."
       content_html: "<strong>%{who}</strong> has added you to <strong>%{which_group}</strong>."
-      link_help: "Click the link below to go to the group:"
-    unsubscribe: "Unsubscribe or change your email preferences:"
+      link_help: 'Click the link below to go to the group:'
+    unsubscribe: 'Unsubscribe or change your email preferences:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> to unsubscribe or change your email preferences."
     catch_up:
       daily_subject: Yesterday on %{site_name}
@@ -843,37 +481,31 @@ en:
       thanks_for_reading: Thanks for reading, have a great day!
       marked_as_read_success: Everything from the email has been marked as read
       click_here: Click here
-
     group_membership_approved:
-      intro: "Your request for access to the group %{group_name} has been approved."
-      intro_html: "Your request for access to the group <strong>%{group_name}</strong> has been approved."
-      link_help: "Click the link below to join %{group_name} and get started:"
-      subject: "Your request to join %{group_name} has been approved"
-      join_group: "Join group"
-
+      intro: Your request for access to the group %{group_name} has been approved.
+      intro_html: Your request for access to the group <strong>%{group_name}</strong> has been approved.
+      link_help: 'Click the link below to join %{group_name} and get started:'
+      subject: Your request to join %{group_name} has been approved
+      join_group: Join group
     membership_request:
       intro_html: has requested access to one of your groups.
       subject: "%{who} has requested to join %{which_group}"
       view_group: You can approve or decline the request here
       button_text: View request
-
   announcement_count_emails: "%{count} emails"
-
   email_actions:
     unfollowed_discussion: You have turned off emails for the thread.
-
   discussion_mailer:
-    reply_or_view_online_html: "Reply to this email or <a href='%{url}'>view it on %{hostname}</a>."
+    reply_or_view_online_html: Reply to this email or <a href='%{url}'>view it on %{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>Turn off emails</a> for this discussion."
-    change_email_preferences_html: "Change your <a href='%{email_preferences_url}'>email preferences</a>."
+    change_email_preferences_html: Change your <a href='%{email_preferences_url}'>email preferences</a>.
     unsubscribe_from_discussion_announced_html: "<a href='%{url}'>Unsubscribe</a> from further announcements in this thread."
     unsubscribe_from_new_comment_html: "<a href='%{url}'>Unsubscribe</a> from comments in this thread."
-    unsubscribe_from_user_mentioned_html: "You received this email because you were @mentioned."
+    unsubscribe_from_user_mentioned_html: You received this email because you were @mentioned.
     discussion_edited:
       inline: "%{actor} edited the thread context"
     discussion_closed:
       inline: "%{actor} closed the thread"
-
   footer:
     about: About
     blog: Blog
@@ -884,7 +516,6 @@ en:
     public_groups: Public groups
     terms: Terms
     independent_install_html: '%{hostname} is running an independent copy of Loomio: <a href="http://github.com/loomio/loomio">find out more</a>.'
-
   password_reset:
     change_your_password: Change your password
     change_my_password: Change password
@@ -896,18 +527,16 @@ en:
     reset_email_timeframe: It may take up to 5 minutes for the email to arrive. If it doesn't show up, be sure to check your spam folder.
     length_restriction: Passwords must be at least 8 characters long.
     forbidden_passwords: Common passwords such as “password” are forbidden to keep your account safe.
-
   task_mailer:
     task_due_reminder:
-      subject: "Task reminder: %{name}"
-      greeting: "Hi %{name}, the following task is due %{due}:"
-      view_task: "View on %{site_name}"
-      update_or_comment: "If you have already completed this task, please tick it off. If it is not complete, please share a progress update."
-      due_today: "today"
-      due_in_count_days: "in %{count} days"
-
+      subject: 'Task reminder: %{name}'
+      greeting: 'Hi %{name}, the following task is due %{due}:'
+      view_task: View on %{site_name}
+      update_or_comment: If you have already completed this task, please tick it off. If it is not complete, please share a progress update.
+      due_today: today
+      due_in_count_days: in %{count} days
   group_mailer:
-    resend: "REMINDER: %{member} is waiting for you to join %{group_name}"
+    resend: 'REMINDER: %{member} is waiting for you to join %{group_name}'
     destroy_warning:
       subject: Your Loomio group is scheduled for deletion.
       body: |
@@ -915,17 +544,16 @@ en:
         If you do not want your group to be deleted, please reply to this email.
         If you're sure you want to delete the group, you do not need to do anything.
         Thank you.
-
   poll_mailer:
     common:
       why_send_this: You are receiving this email because %{reason}
       view_on_loomio: View it on %{site_name}
       create_outcome: Share outcome
-      your_response: "You voted:"
-      you_voted: "You voted!"
-      not_invited: "Not invited"
+      your_response: 'You voted:'
+      you_voted: You voted!
+      not_invited: Not invited
       please_respond: Please respond
-      time_zone: (Times displayed in %{zone})
+      time_zone: "(Times displayed in %{zone})"
       undecided_members: Undecided Members (%{count})
       undecided_visitors: Undecided Guests (%{count})
       more_undecided: "%{count} more..."

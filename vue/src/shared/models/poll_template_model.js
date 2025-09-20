@@ -2,8 +2,8 @@ import BaseModel        from '@/shared/record_store/base_model';
 import AppConfig        from '@/shared/services/app_config';
 import Session          from '@/shared/services/session';
 import { pick }            from 'lodash-es';
-import { I18n }             from '@/i18n';
 import { startOfHour, addDays } from 'date-fns';
+import { I18n }             from '@/i18n';
 import Records from '@/shared/services/records';
 
 export default class PollTemplateModel extends BaseModel {
@@ -54,6 +54,7 @@ export default class PollTemplateModel extends BaseModel {
       showNoneOfTheAbove: false,
       hideResults: 'off',
       position: 0,
+      quorumPct: null,
       outcomeStatement: null,
       outcomeStatementFormat: 'html',
       outcomeReviewDueInDays: null
@@ -88,7 +89,14 @@ export default class PollTemplateModel extends BaseModel {
       name: o.name,
       meaning: o.meaning,
       prompt: o.prompt,
-      icon: o.icon
+      icon: o.icon,
+      testOperator: o.test_operator,
+      testPercent: o.test_percent,
+      testAgainst: o.test_against
     }));
+  }
+
+  translatedPollType() {
+    return I18n.global.t(`poll_types.${this.pollType}`);
   }
 };
