@@ -9,8 +9,8 @@ import WatchRecords from '@/mixins/watch_records';
 import { HandleDirective } from 'vue-slicksort';
 
 export default {
-  directives: { handle: HandleDirective },
   mixins: [WatchRecords, UrlFor],
+  directives: { handle: HandleDirective },
 
   props: {
     pollTemplate: Object
@@ -270,8 +270,8 @@ export default {
     :label="$t('poll_common_form.details')"
   )
 
-  v-divider.my-4
   template(v-if="hasOptions")
+    v-divider.my-4
     .text-subtitle-1.py-2(v-t="'poll_common_form.options'")
     v-alert(v-if="!pollOptions.length" variant="tonal" type="info")
       span(v-t="'poll_common_form.no_options_add_some'")
@@ -415,6 +415,15 @@ export default {
       v-model="pollTemplate.anonymous"
       :label="$t('poll_common_form.votes_are_anonymous')")
 
+    v-divider.mb-4
+    .text-subtitle-1.pb-2(v-t="'poll_common_card.hide_results'")
+    .text-body-2.pb-4.text-medium-emphasis(v-t="'poll_common_form.hide_results_description'")
+    v-select.poll-common-settings__hide-results(
+      :label="$t('poll_common_card.hide_results')"
+      :items="hideResultsItems"
+      v-model="pollTemplate.hideResults"
+    )
+
   template(v-if="pollTemplate.config().can_shuffle_options")
     v-divider.pb-4
     .text-subtitle-1.pb-2(v-t="'poll_common_settings.shuffle_options'")
@@ -445,16 +454,6 @@ export default {
     v-model="pollTemplate.limitReasonLength"
     :label="$t('poll_common_form.limit_reason_length')"
   )
-
-  v-divider.mb-4
-  template(v-if="allowAnonymous")
-    .text-subtitle-1.pb-2(v-t="'poll_common_card.hide_results'")
-    .text-body-2.pb-4.text-medium-emphasis(v-t="'poll_common_form.hide_results_description'")
-    v-select.poll-common-settings__hide-results(
-      :label="$t('poll_common_card.hide_results')"
-      :items="hideResultsItems"
-      v-model="pollTemplate.hideResults"
-    )
 
   v-divider.mb-4
   .text-subtitle-1.pb-2(v-t="'poll_common_form.quorum'")

@@ -14,8 +14,8 @@ import WatchRecords from '@/mixins/watch_records';
 
 export default {
   mixins: [UrlFor, WatchRecords],
-  components: { PollTemplateInfoPanel },
   directives: { handle: HandleDirective },
+  components: { PollTemplateInfoPanel },
 
   props: {
     poll: Object,
@@ -476,6 +476,16 @@ export default {
       v-model="poll.anonymous"
       :label="$t('poll_common_form.votes_are_anonymous')")
 
+    v-divider.mb-4
+    .text-subtitle-1.pb-2(v-t="'poll_common_card.hide_results'")
+    .text-body-2.pb-4.text-medium-emphasis(v-t="'poll_common_form.hide_results_description'")
+    v-select.poll-common-settings__hide-results(
+      :label="$t('poll_common_card.hide_results')"
+      :items="hideResultsItems"
+      v-model="poll.hideResults"
+      :disabled="!poll.isNew() && currentHideResults == 'until_closed'"
+    )
+
   template(v-if="poll.config().can_shuffle_options")
     v-divider.pb-4
     .text-subtitle-1.pb-2(v-t="'poll_common_settings.shuffle_options'")
@@ -507,17 +517,6 @@ export default {
       v-if="poll.stanceReasonRequired != 'disabled'"
       v-model="poll.limitReasonLength"
       :label="$t('poll_common_form.limit_reason_length')"
-    )
-
-  template(v-if="allowAnonymous")
-    v-divider.mb-4
-    .text-subtitle-1.pb-2(v-t="'poll_common_card.hide_results'")
-    .text-body-2.pb-4.text-medium-emphasis(v-t="'poll_common_form.hide_results_description'")
-    v-select.poll-common-settings__hide-results(
-      :label="$t('poll_common_card.hide_results')"
-      :items="hideResultsItems"
-      v-model="poll.hideResults"
-      :disabled="!poll.isNew() && currentHideResults == 'until_closed'"
     )
 
   v-divider.mb-4
