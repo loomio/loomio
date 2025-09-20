@@ -2384,8 +2384,9 @@ en:
     points: Points
     average: Average
     mean: Mean
-    pct_of_points: "% of votes cast"
-    pct_of_voters: "% of voters"
+    pct_of_points: "% of points"
+    pct_of_votes_cast: "% of votes cast"
+    pct_of_voters: "% of eligible voters"
     percent: Percent
   poll_meeting_time_field:
     add_time_slot: Add time slot

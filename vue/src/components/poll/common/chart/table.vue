@@ -56,6 +56,7 @@ export default {
           th.text-left(v-if="col == 'name'" v-t='"common.option"')
           th.text-right(v-if="col == 'target_percent'" v-t='"poll_count_form.pct_of_target"')
           th.text-right(v-if="col == 'score_percent'" v-t='"poll_ranked_choice_form.pct_of_points"')
+          th.text-right(v-if="col == 'votes_cast_percent'" v-t='"poll_ranked_choice_form.pct_of_votes_cast"')
           th.text-right(v-if="col == 'voter_percent'" v-t='"poll_ranked_choice_form.pct_of_voters"')
           th.text-right(v-if="col == 'score'" v-t='"poll_ranked_choice_form.points"')
           th.text-right(v-if="col == 'rank'" v-t='"poll_ranked_choice_form.rank"')
@@ -96,7 +97,7 @@ export default {
           td.text-right(v-if="col == 'votes' || col == 'voter_count'") {{option.voter_count}}
           td.text-right(v-if="col == 'average'") {{Math.round((option.average + Number.EPSILON) * 100) / 100}}
           td.text-right(v-if="col == 'voter_percent'") {{option.voter_percent.toFixed(0)}}%
-          td.text-right(v-if="col == 'score_percent'") {{option.score_percent.toFixed(0)}}%
+          td.text-right(v-if="col == 'score_percent' || col == 'votes_cast_percent'") {{option.score_percent.toFixed(0)}}%
           td.text-right.d-none.d-sm-table-cell(v-if="col == 'voters'")
             div.poll-common-chart-table__voter-avatars
               user-avatar.float-left(v-for="id in option.voter_ids", :key="id", :user="users[id]", :size="24" no-link)

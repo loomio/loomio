@@ -11,6 +11,8 @@
             = poll.closed_at ? t(:"poll_common.results") : t(:"poll_common.current_results")
         - when 'name'
           %th.text-left.text-subtitle-2= t('common.option')
+        - when 'votes_cast_percent'
+          %th.text-right.text-subtitle-2= t('poll_ranked_choice_form.pct_of_votes_cast')
         - when 'score_percent'
           %th.text-right.text-subtitle-2= t('poll_ranked_choice_form.pct_of_points')
         - when 'voter_percent'
@@ -71,7 +73,7 @@
                   #{option[:target_percent].round}%
             - when 'voter_percent'
               %td.text-right #{option[:voter_percent].round}
-            - when 'score_percent'
+            - when 'score_percent', 'votes_cast_percent'
               %td.text-right #{option[:score_percent].round}
             - when 'voters'
               %td.text-left
