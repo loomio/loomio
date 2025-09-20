@@ -1802,7 +1802,6 @@ pt_BR:
     of: de
     at_least: Pelo menos
     no_more_than: Não mais que
-    for_the_proposal_to_pass: Para que a proposta seja aprovada, esta opção deve receber
     votes_cast: Votos lançados
     eligible_voters: Eleitores elegíveis
     gte_score_percent: Precisa de pelo menos %{percent}% dos votos emitidos
@@ -1814,6 +1813,7 @@ pt_BR:
     name_lte_score_percent: "%{name} não deve exceder %{percent}% dos votos emitidos"
     name_lte_voter_percent: "%{name} não deve exceder %{percent}% dos eleitores elegíveis"
     vote_share_requirement: Requisito de participação nos votos
+    for_the_proposal_to_pass: Para que a proposta seja aprovada, esta opção deve receber…
   poll_common:
     superseded: Suplantada
     outdated: Desatualizado
@@ -2081,7 +2081,6 @@ pt_BR:
     enter_an_outcome: Insira um resultado
   poll_common_outcome_form:
     review_due_in_days: Rever a decisão após quantos dias?
-    review_due_in_days_hint: Um período de tempo (em dias) para esperar antes de revisar a decisão. (opcional)
     review_date: Data de revisão
     review_date_hint: Defina a data do lembrete para revisar o resultado (opcional)
     who_to_notify: Quem você deseja notificar sobre esse resultado? (opcional)
@@ -2091,9 +2090,11 @@ pt_BR:
     outcome_created: Resultado criado
     outcome_updated: Resultado atualizado
     statement_placeholder: Resuma as respostas e explique o que acontecerá na sequencia.
-    statement_template_placeholder: Forneça um modelo para escrever o resultado da decisão. (opcional)
     you_will_be_notified: Você será notificado na data da revisão.
     submit: Compartilhar resultado
+    review_due_in_days_hint: Número de dias de espera antes de revisar a decisão (opcional).
+    statement_template_hint: Forneça um modelo para escrever um resultado da decisão. (opcional)
+    statement_template_placeholder: Obrigado pela participação! O quórum foi atingido e temos apoio para prosseguir.
   poll_common_outcome_panel:
     authored_by: Por %{name}
   poll_common_delete_modal:
@@ -2158,9 +2159,10 @@ pt_BR:
     points: Pontos
     average: Média
     mean: Significar
-    pct_of_points: "% de pontos"
-    pct_of_voters: "% de eleitores"
     percent: Por cento
+    pct_of_points: "% de pontos"
+    pct_of_votes_cast: "% dos votos expressos"
+    pct_of_voters: "% de eleitores elegíveis"
   poll_meeting_time_field:
     add_time_slot: Adicionar intervalo de tempo
     new_time_slot: Nova opção de horário
@@ -2492,13 +2494,11 @@ pt_BR:
     get_started_here: Comece aqui
   poll_common_settings:
     who_can_vote: Quem pode votar?
-    short_reason_can_be_helpful: Justificativas de voto breves são mais fáceis de entender. Uma coleção de justificativas concisas é um ótimo recurso para tomar uma decisão.
     specified_voters_only_true: Somente pessoas convidadas
     specified_voters_only_false_group: Alguém no grupo
     specified_voters_only_false_discussion: Alguém no tópico
     invite_people_next: Você pode escolher quem será convidado a votar depois de iniciar o %{poll_type}
     show_none_of_the_above: Incluir uma opção "Nenhuma das anteriores"
-    shuffle_options: Opções de embaralhamento
     show_options_in_random_order: Mostrar opções em ordem aleatória
     reduce_bias_by_showing_options_in_random_order: Reduza o viés mostrando as opções em ordem aleatória.
     multiple_choice:
@@ -2531,13 +2531,14 @@ pt_BR:
     hide_results_until_closed:
       title: Ocultar resultados até fechar
       helptext_on: Não mostre como as pessoas votaram até que a enquete seja encerrada
+    short_reason_can_be_helpful: Justificativas de voto breves são mais fáceis de entender. Uma coleção de justificativas concisas é um ótimo recurso para tomar uma decisão.
+    shuffle_options: Opções de embaralhamento
   poll_common_form:
     quorum: Quorum
     participation_quorum: Quórum de participação
     quorum_hint: Qual a porcentagem de eleitores que devem participar para que o resultado seja válido? Opcional; deixe em branco caso não haja quórum.
     quorum_placeholder: Deixe em branco ou insira um número entre 0 e 100
     deadline: Prazo final
-    how_much_time_to_vote: Quanto tempo você dará às pessoas para votar?
     notify_everyone_when_poll_starts: Notifique todos quando %{poll_type} começar
     option_has_votes_confirm_delete: Algumas pessoas votaram nesta opção. Tem certeza de que deseja excluí-la?
     example_title: Título de exemplo
@@ -2552,7 +2553,6 @@ pt_BR:
     please_review_the_form: Por favor, revise o formulário
     option_added_please_add_details: Opção adicionada! Por favor, adicione alguns detalhes para que as pessoas saibam o que significa.
     default_duration_in_days: Duração padrão em dias
-    default_duration_in_days_hint: Quantos dias devem ser dados para as pessoas votarem?
     how_many_options_can_a_voter_choose: Quantas opções um eleitor pode escolher?
     minimum_choices: Escolhas mínimas
     maximum_choices: Máxima escolha
@@ -2624,9 +2624,14 @@ pt_BR:
     reason_prompt: Motivo do prompt
     each_option_has_own_reason_prompt: Cada opção tem seu próprio prompt de motivo. Edite uma opção para visualizar ou alterar seu prompt.
     anonymous_voting: Votação anônima
-    anonymous_voting_description: Exibe votos e justificativas, mas não quem os emitiu. Isso não pode ser alterado após o início da %{poll_type}.
     votes_are_anonymous: Os votos são anônimos
     vote_reason: Motivo do voto
+    quorum_tip_vote_share_requirement: 'Dica: Você também pode especificar o nível de concordância necessário para a aprovação de uma proposta. Edite uma opção para definir o requisito de participação nos votos.'
+    how_much_time_to_vote: Quanto tempo você dará às pessoas para votar?
+    default_duration_in_days_hint: Quantos dias as pessoas terão para votar?
+    define_minimum_and_maxmimum_score: Defina as pontuações mínimas e máximas que um eleitor pode dar a uma opção
+    how_many_points_does_each_voter_have_to_allocate: Quantos pontos cada eleitor tem que alocar?
+    anonymous_voting_description: Exibe votos e justificativas, mas não quem os emitiu. Isso não pode ser alterado após o início da %{poll_type}.
     vote_reason_description: Peça às pessoas que compartilhem suas justificativas quando votarem ou que forneçam mais informações.
     hide_results_description: Se você quiser que as pessoas votem sem ver como os outros votaram, você pode ocultar os resultados.
     process_helptext: Nomeie e descreva o processo que está sendo usado para executar esta pesquisa.

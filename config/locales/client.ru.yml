@@ -1754,7 +1754,6 @@ ru:
     of: из
     at_least: По меньшей мере
     no_more_than: Не более
-    for_the_proposal_to_pass: Для того, чтобы предложение было принято, этот вариант должен получить
     votes_cast: Поданное количество голосов
     eligible_voters: Имеющие право голоса избиратели
     gte_score_percent: Необходимо по крайней мере %{percent}% голосов
@@ -1766,6 +1765,7 @@ ru:
     name_lte_score_percent: "%{name} не должен превышать %{percent}% от поданных голосов"
     name_lte_voter_percent: "%{name} не должен превышать %{percent}% от числа имеющих право голоса избирателей"
     vote_share_requirement: Требование к доле голосов
+    for_the_proposal_to_pass: Для того чтобы предложение было принято, этот вариант должен получить…
   poll_common:
     superseded: Заменено
     outdated: Устаревший
@@ -2031,7 +2031,6 @@ ru:
     enter_an_outcome: Введите результат
   poll_common_outcome_form:
     review_due_in_days: Пересмотреть решение через сколько дней?
-    review_due_in_days_hint: Период времени (в днях) ожидания перед рассмотрением решения. (необязательный)
     review_date: Дата рассмотрения
     review_date_hint: Установите дату пересмотра решения (необязательно)
     who_to_notify: Кого вы хотите уведомить о таком результате? (необязательный)
@@ -2041,9 +2040,11 @@ ru:
     outcome_created: Результат создан
     outcome_updated: Результат обновлен
     statement_placeholder: Обобщите ответы и объясните, что будет дальше.
-    statement_template_placeholder: Предоставьте шаблон для записи результатов решения. (необязательный)
     you_will_be_notified: Вы будете уведомлены о дате рассмотрения.
     submit: Поделиться результатами
+    review_due_in_days_hint: Количество дней ожидания до пересмотра решения (необязательно).
+    statement_template_hint: Предоставьте шаблон для записи результата решения. (необязательно)
+    statement_template_placeholder: Спасибо за участие! Кворум достигнут, и у нас есть поддержка для продолжения.
   poll_common_outcome_panel:
     authored_by: По %{name}
   poll_common_delete_modal:
@@ -2108,9 +2109,10 @@ ru:
     points: Точки
     average: Средний
     mean: Иметь в виду
-    pct_of_points: "% баллов"
-    pct_of_voters: "% избирателей"
     percent: Процент
+    pct_of_points: "% баллов"
+    pct_of_votes_cast: "% поданных голосов"
+    pct_of_voters: "% имеющих право голоса избирателей"
   poll_meeting_time_field:
     add_time_slot: Добавить временной интервал
     new_time_slot: Новый временной интервал
@@ -2440,13 +2442,11 @@ ru:
     get_started_here: Начните здесь
   poll_common_settings:
     who_can_vote: Кто может голосовать?
-    short_reason_can_be_helpful: Краткие аргументы в пользу голосования легче понять. Сборник кратких аргументов — отличный ресурс для принятия решения.
     specified_voters_only_true: Только приглашенные люди
     specified_voters_only_false_group: Любой в группе
     specified_voters_only_false_discussion: Кто-нибудь в теме
     invite_people_next: Вы можете выбрать, кто будет приглашен для голосования, после начала %{poll_type}
     show_none_of_the_above: Включить вариант «Ни один из вышеперечисленных»
-    shuffle_options: Параметры перемешивания
     show_options_in_random_order: Показывать варианты в случайном порядке
     reduce_bias_by_showing_options_in_random_order: Уменьшите предвзятость, показывая варианты в случайном порядке.
     multiple_choice:
@@ -2479,13 +2479,14 @@ ru:
     hide_results_until_closed:
       title: Скрыть результаты до закрытия
       helptext_on: Не показывать, как проголосовали люди, пока опрос не будет закрыт.
+    short_reason_can_be_helpful: Краткие аргументы в пользу голосования легче понять. Сборник кратких аргументов — отличный ресурс для принятия решения.
+    shuffle_options: Параметры перемешивания
   poll_common_form:
     quorum: Кворум
     participation_quorum: Кворум участия
     quorum_hint: Какой процент избирателей должен принять участие в голосовании, чтобы результат был признан действительным? Необязательно. Оставьте поле пустым, если кворума нет.
     quorum_placeholder: Оставьте поле пустым или введите число от 0 до 100
     deadline: Крайний срок
-    how_much_time_to_vote: Сколько времени вы дадите людям для голосования?
     notify_everyone_when_poll_starts: Уведомить всех о начале %{poll_type}
     option_has_votes_confirm_delete: Несколько человек проголосовали за этот вариант. Вы уверены, что хотите его удалить?
     example_title: Пример заголовка
@@ -2500,7 +2501,6 @@ ru:
     please_review_the_form: Пожалуйста, просмотрите форму.
     option_added_please_add_details: Добавлена опция! Пожалуйста, добавьте подробности, чтобы люди понимали, что это значит.
     default_duration_in_days: Длительность по умолчанию в днях
-    default_duration_in_days_hint: Сколько дней следует дать людям для голосования?
     how_many_options_can_a_voter_choose: Сколько вариантов может выбрать избиратель?
     minimum_choices: Минимальный выбор
     maximum_choices: Максимальный выбор
@@ -2572,9 +2572,14 @@ ru:
     reason_prompt: Причина подсказки
     each_option_has_own_reason_prompt: У каждого варианта есть своя причина. Измените вариант, чтобы просмотреть или изменить причину.
     anonymous_voting: Анонимное голосование
-    anonymous_voting_description: Показывать голоса и причины, но не тех, кто их отдал. Это нельзя изменить после начала опроса %{poll_type}.
     votes_are_anonymous: Голосование анонимно.
     vote_reason: Причина голосования
+    quorum_tip_vote_share_requirement: 'Совет: Вы также можете указать уровень согласия, необходимый для принятия предложения. Измените параметр, чтобы определить требуемое количество голосов.'
+    how_much_time_to_vote: Сколько времени вы дадите людям для голосования?
+    default_duration_in_days_hint: Сколько дней людям предстоит голосовать?
+    define_minimum_and_maxmimum_score: Определите минимальную и максимальную оценку, которую избиратель может дать варианту
+    how_many_points_does_each_voter_have_to_allocate: Сколько баллов должен набрать каждый избиратель?
+    anonymous_voting_description: Показывать голоса и причины, но не тех, кто их отдал. Это нельзя изменить после начала опроса %{poll_type}.
     vote_reason_description: Попросите людей высказать обоснование своего решения при голосовании или предоставить дополнительную информацию.
     hide_results_description: Если вы хотите, чтобы люди голосовали, не видя, как проголосовали другие, вы можете скрыть результаты.
     process_helptext: Назовите и опишите процесс, используемый для проведения этого опроса.

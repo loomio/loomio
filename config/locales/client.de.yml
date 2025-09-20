@@ -1787,7 +1787,6 @@ de:
     of: von
     at_least: Mindestens
     no_more_than: Nicht mehr als
-    for_the_proposal_to_pass: Damit der Vorschlag angenommen wird, muss diese Option
     votes_cast: Abgegebene Stimmen
     eligible_voters: Wahlberechtigte
     gte_score_percent: Benötigt mindestens %{percent}% der abgegebenen Stimmen
@@ -1799,6 +1798,7 @@ de:
     name_lte_score_percent: "%{name} darf %{percent}% der abgegebenen Stimmen nicht überschreiten"
     name_lte_voter_percent: "%{name} darf %{percent}% der Wahlberechtigten nicht überschreiten"
     vote_share_requirement: Stimmenanteilsanforderung
+    for_the_proposal_to_pass: Damit der Vorschlag angenommen wird, muss diese Option … erhalten.
   poll_common:
     superseded: Abgelöst
     outdated: Veraltet
@@ -2066,7 +2066,6 @@ de:
     enter_an_outcome: Geben Sie ein Ergebnis ein
   poll_common_outcome_form:
     review_due_in_days: Überprüfen Sie die Entscheidung nach wie vielen Tagen?
-    review_due_in_days_hint: Eine Zeitspanne (in Tagen), die gewartet werden muss, bevor die Entscheidung überprüft wird. (Optional)
     review_date: Prüfungsdatum
     review_date_hint: Legen Sie einen Termin für die Überprüfung der Entscheidung fest (optional)
     who_to_notify: Wen möchten Sie über dieses Ergebnis informieren? (Optional)
@@ -2076,9 +2075,11 @@ de:
     outcome_created: Ergebnis erschaffen
     outcome_updated: Ergebnis aktualisiert
     statement_placeholder: Fasse das Abstimmungsergebnis zusammen und gebe bekannt, was als nächstes passieren wird.
-    statement_template_placeholder: Stellen Sie eine Vorlage zum Verfassen eines Entscheidungsergebnisses bereit. (Optional)
     you_will_be_notified: Du wirst am Überprüfungsdatum benachrichtigt.
     submit: Ergebnis bekanntgeben
+    review_due_in_days_hint: Anzahl der Tage, die vor der Überprüfung der Entscheidung gewartet werden soll (optional).
+    statement_template_hint: Stellen Sie eine Vorlage zum Aufschreiben des Ergebnisses der Entscheidung bereit. (optional)
+    statement_template_placeholder: Vielen Dank für Ihre Teilnahme! Das Quorum wurde erreicht und wir haben Unterstützung, um fortzufahren.
   poll_common_outcome_panel:
     authored_by: Von %{name}
   poll_common_delete_modal:
@@ -2143,9 +2144,10 @@ de:
     points: Punkte
     average: Durchschnitt
     mean: Bedeuten
-    pct_of_points: "% der Punkte"
-    pct_of_voters: "% der Wähler"
     percent: Prozent
+    pct_of_points: "% der Punkte"
+    pct_of_votes_cast: "% der abgegebenen Stimmen"
+    pct_of_voters: "% der Wahlberechtigten"
   poll_meeting_time_field:
     add_time_slot: Ergänze einen Zeitslot
     new_time_slot: Neues Zeitfenster
@@ -2477,13 +2479,11 @@ de:
     get_started_here: Hier geht's los
   poll_common_settings:
     who_can_vote: Wer darf wählen?
-    short_reason_can_be_helpful: Kurze Abstimmungsgründe sind leichter verständlich. Eine Sammlung prägnanter Begründungen ist eine hervorragende Ressource für die Entscheidungsfindung.
     specified_voters_only_true: Nur eingeladene Personen
     specified_voters_only_false_group: Jeder in der Gruppe
     specified_voters_only_false_discussion: Jeder im Thread
     invite_people_next: Sie können auswählen, wer zur Abstimmung eingeladen wird, nachdem Sie den %{poll_type} gestartet haben
     show_none_of_the_above: Fügen Sie die Option „Keine der oben genannten Optionen“ hinzu
-    shuffle_options: Zufallsoptionen
     show_options_in_random_order: Optionen in zufälliger Reihenfolge anzeigen
     reduce_bias_by_showing_options_in_random_order: Reduzieren Sie die Verzerrung, indem Sie die Optionen in zufälliger Reihenfolge anzeigen.
     multiple_choice:
@@ -2516,13 +2516,14 @@ de:
     hide_results_until_closed:
       title: Ergebnisse bis zum Schließen ausblenden
       helptext_on: Zeigen Sie nicht, wie die Leute abgestimmt haben, bis die Umfrage geschlossen ist
+    short_reason_can_be_helpful: Kurze Abstimmungsgründe sind leichter verständlich. Eine Sammlung prägnanter Begründungen ist eine hervorragende Ressource für die Entscheidungsfindung.
+    shuffle_options: Zufallsoptionen
   poll_common_form:
     quorum: Quorum
     participation_quorum: Teilnahmequorum
     quorum_hint: Wie viel Prozent der Wähler müssen teilnehmen, damit das Ergebnis gültig ist? Optional, bei fehlender Beschlussfähigkeit leer lassen.
     quorum_placeholder: Leer lassen oder eine Zahl zwischen 0 und 100 eingeben
     deadline: Frist
-    how_much_time_to_vote: Wie viel Zeit geben Sie den Leuten zum Abstimmen?
     notify_everyone_when_poll_starts: Alle benachrichtigen, wenn %{poll_type} beginnt
     option_has_votes_confirm_delete: Einige Leute haben für diese Option gestimmt. Möchten Sie sie wirklich löschen?
     example_title: Beispieltitel
@@ -2537,7 +2538,6 @@ de:
     please_review_the_form: Bitte überprüfen Sie das Formular
     option_added_please_add_details: Option hinzugefügt! Bitte fügen Sie einige Details hinzu, damit die Leute wissen, was es bedeutet.
     default_duration_in_days: Standarddauer in Tagen
-    default_duration_in_days_hint: Wie viele Tage sollten den Menschen zum Abstimmen eingeräumt werden?
     how_many_options_can_a_voter_choose: Aus wie vielen Optionen kann ein Wähler wählen?
     minimum_choices: Mindestauswahl
     maximum_choices: Maximale Auswahl
@@ -2609,10 +2609,15 @@ de:
     reason_prompt: Grundeingabeaufforderung
     each_option_has_own_reason_prompt: Jede Option verfügt über eine eigene Begründung. Bearbeiten Sie eine Option, um die Begründung anzuzeigen oder zu ändern.
     anonymous_voting: Anonyme Abstimmung
-    anonymous_voting_description: Stimmen und Gründe anzeigen, aber nicht, wer sie abgegeben hat. Dies kann nach dem Start von %{poll_type} nicht mehr geändert werden.
     votes_are_anonymous: Die Abstimmungen sind anonym
     vote_reason: Abstimmungsgrund
+    quorum_tip_vote_share_requirement: 'Tipp: Sie können auch den Grad der Zustimmung angeben, der für die Annahme eines Vorschlags erforderlich ist. Bearbeiten Sie eine Option, um die Anforderung des Stimmenanteils zu definieren'
+    how_much_time_to_vote: Wie viel Zeit geben Sie den Leuten zum Abstimmen?
+    default_duration_in_days_hint: Wie viele Tage haben die Menschen Zeit, ihre Stimme abzugeben?
+    define_minimum_and_maxmimum_score: Definieren Sie die Mindest- und Höchstpunktzahl, die ein Wähler einer Option geben kann
+    how_many_points_does_each_voter_have_to_allocate: Wie viele Punkte muss jeder Wähler vergeben?
+    anonymous_voting_description: Stimmen und Gründe anzeigen, aber nicht, wer sie abgegeben hat. Dies kann nach dem Start von %{poll_type} nicht mehr geändert werden.
     vote_reason_description: Bitten Sie die Leute, bei der Abstimmung ihre Gründe mitzuteilen oder weitere Informationen bereitzustellen.
     hide_results_description: Wenn Sie möchten, dass die Leute abstimmen, ohne zu sehen, wie andere abgestimmt haben, können Sie die Ergebnisse ausblenden.
     process_helptext: Benennen und beschreiben Sie den Prozess, der zur Durchführung dieser Umfrage verwendet wird.
-    reminder_helptext: Senden Sie 24 Stunden vor Ablauf der Frist eine Benachrichtigung mit dem Titel „Schließt bald“. Dies kann die Teilnahme erhöhen und den Teilnehmern die Möglichkeit geben, ihre Position zu überdenken.
+    reminder_helptext: Senden Sie 24 Stunden vor Ablauf der Frist eine Benachrichtigung mit dem Hinweis „Schließt bald“. Dies kann die Teilnahme erhöhen und den Teilnehmern die Möglichkeit geben, ihre Position zu überdenken.

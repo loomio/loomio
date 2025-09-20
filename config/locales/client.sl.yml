@@ -1754,7 +1754,6 @@ sl:
     of: od
     at_least: Vsaj
     no_more_than: Ne več kot
-    for_the_proposal_to_pass: Da bi bil predlog sprejet, mora ta možnost prejeti
     votes_cast: Oddani glasovi
     eligible_voters: Upravičeni volivci
     gte_score_percent: Potrebuje vsaj %{percent} % oddanih glasov
@@ -1766,6 +1765,7 @@ sl:
     name_lte_score_percent: "%{name} ne sme preseči %{percent} % oddanih glasov"
     name_lte_voter_percent: "%{name} ne sme presegati %{percent} % upravičenih volivcev"
     vote_share_requirement: Zahteva po deležu glasov
+    for_the_proposal_to_pass: Da bi bil predlog sprejet, mora ta možnost prejeti ...
   poll_common:
     superseded: Nadomeščeno
     outdated: Zastarelo
@@ -2031,7 +2031,6 @@ sl:
     enter_an_outcome: Vnesite rezultat
   poll_common_outcome_form:
     review_due_in_days: Po koliko dneh preverite odločitev?
-    review_due_in_days_hint: Časovno obdobje (v dnevih), ki ga morate počakati, preden pregledate odločitev. (neobvezno)
     review_date: Datum pregleda
     review_date_hint: Določite datum za pregled odločitve (neobvezno)
     who_to_notify: Koga želite obvestiti o tem izidu? (neobvezno)
@@ -2041,9 +2040,11 @@ sl:
     outcome_created: Izid ustvarjen
     outcome_updated: Rezultat posodobljen
     statement_placeholder: Povzemite odgovore in pojasnite, kaj se bo zgodilo naslednje.
-    statement_template_placeholder: Navedite predlogo za pisanje izida odločitve. (neobvezno)
     you_will_be_notified: O datumu pregleda boste obveščeni.
     submit: Delite rezultat
+    review_due_in_days_hint: Število dni čakanja pred pregledom odločitve (neobvezno).
+    statement_template_hint: Navedite predlogo za pisanje izida odločitve. (neobvezno)
+    statement_template_placeholder: Hvala za sodelovanje! Kvorum je bil dosežen in imamo podporo za nadaljevanje.
   poll_common_outcome_panel:
     authored_by: avtor %{name}
   poll_common_delete_modal:
@@ -2108,9 +2109,10 @@ sl:
     points: Točke
     average: Povprečje
     mean: Pomeni
-    pct_of_points: "% točk"
-    pct_of_voters: "% volivcev"
     percent: Odstotek
+    pct_of_points: "% točk"
+    pct_of_votes_cast: "% oddanih glasov"
+    pct_of_voters: "% upravičenih volivcev"
   poll_meeting_time_field:
     add_time_slot: Dodajte časovni okvir
     new_time_slot: Nov termin
@@ -2440,13 +2442,11 @@ sl:
     get_started_here: Začnite tukaj
   poll_common_settings:
     who_can_vote: Kdo lahko voli?
-    short_reason_can_be_helpful: Kratke razloge za glasovanje je lažje razumeti. Zbirka jedrnatih razlogov je odličen vir za sprejemanje odločitev.
     specified_voters_only_true: Samo povabljene osebe
     specified_voters_only_false_group: Kdorkoli v skupini
     specified_voters_only_false_discussion: Kdorkoli v niti
     invite_people_next: Po začetku %{poll_type} lahko izberete, kdo bo povabljen k glasovanju.
     show_none_of_the_above: Vključite možnost »Nič od naštetega«
-    shuffle_options: Možnosti naključnega predvajanja
     show_options_in_random_order: Prikaži možnosti v naključnem vrstnem redu
     reduce_bias_by_showing_options_in_random_order: Zmanjšajte pristranskost tako, da možnosti prikažete v naključnem vrstnem redu.
     multiple_choice:
@@ -2479,13 +2479,14 @@ sl:
     hide_results_until_closed:
       title: Skrij rezultate do zaprtja
       helptext_on: Ne prikazujte, kako so ljudje glasovali, dokler se anketa ne zaključi
+    short_reason_can_be_helpful: Kratke razloge za glasovanje je lažje razumeti. Zbirka jedrnatih razlogov je odličen vir za sprejemanje odločitev.
+    shuffle_options: Možnosti naključnega predvajanja
   poll_common_form:
     quorum: Kvorum
     participation_quorum: Kvorum za udeležbo
     quorum_hint: Kolikšen odstotek volivcev se mora udeležiti, da je rezultat veljaven? Neobvezno, pustite prazno, če ni kvoruma.
     quorum_placeholder: Pustite prazno ali vnesite število med 0 in 100
     deadline: Rok
-    how_much_time_to_vote: Koliko časa boste dali ljudem za glasovanje?
     notify_everyone_when_poll_starts: Obvesti vse, ko se začne %{poll_type}
     option_has_votes_confirm_delete: Nekateri so glasovali za to možnost, ali ste prepričani, da jo želite izbrisati?
     example_title: Primer naslova
@@ -2500,7 +2501,6 @@ sl:
     please_review_the_form: Prosimo, preglejte obrazec
     option_added_please_add_details: Možnost dodana! Prosim, dodajte nekaj podrobnosti, da bodo ljudje vedeli, kaj to pomeni.
     default_duration_in_days: Privzeto trajanje v dnevih
-    default_duration_in_days_hint: Koliko dni bi morali imeti ljudje na voljo za glasovanje?
     how_many_options_can_a_voter_choose: Koliko možnosti lahko volivec izbere?
     minimum_choices: Minimalne izbire
     maximum_choices: Največja izbira
@@ -2572,9 +2572,14 @@ sl:
     reason_prompt: Razlog za poziv
     each_option_has_own_reason_prompt: Vsaka možnost ima svoj poziv za razlog. Uredite možnost, da si ogledate ali spremenite njen poziv.
     anonymous_voting: Anonimno glasovanje
-    anonymous_voting_description: Prikaži glasove in razloge, ne pa tudi oddanih. Tega ni mogoče spremeniti po začetku ankete %{poll_type}.
     votes_are_anonymous: Glasovi so anonimni
     vote_reason: Razlog za glasovanje
+    quorum_tip_vote_share_requirement: 'Nasvet: Določite lahko tudi stopnjo soglasja, ki je potrebna za sprejetje predloga. Uredite možnost za določitev zahteve glede deleža glasov.'
+    how_much_time_to_vote: Koliko časa boste dali ljudem za glasovanje?
+    default_duration_in_days_hint: Koliko dni bodo imeli ljudje na voljo za glasovanje?
+    define_minimum_and_maxmimum_score: Določite najnižjo in najvišjo možno oceno, ki jo lahko volivec da določeni možnosti
+    how_many_points_does_each_voter_have_to_allocate: Koliko točk mora dodeliti vsak volivec?
+    anonymous_voting_description: Prikaži glasove in razloge, ne pa tudi oddanih. Tega ni mogoče spremeniti po začetku ankete %{poll_type}.
     vote_reason_description: Prosite ljudi, naj pri glasovanju delijo svojo utemeljitev ali posredujejo dodatne informacije.
     hide_results_description: Če želite, da ljudje glasujejo, ne da bi videli, kako so glasovali drugi, lahko rezultate skrijete.
     process_helptext: Poimenujte in opišite postopek, ki se uporablja za izvedbo te ankete.

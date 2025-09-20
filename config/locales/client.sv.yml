@@ -1754,7 +1754,6 @@ sv:
     of: av
     at_least: Åtminstone
     no_more_than: Inte mer än
-    for_the_proposal_to_pass: För att förslaget ska gå igenom måste detta alternativ få
     votes_cast: Avgivna röster
     eligible_voters: röstberättigade
     gte_score_percent: Kräver minst %{percent}% av de avgivna rösterna
@@ -1766,6 +1765,7 @@ sv:
     name_lte_score_percent: "%{name} får inte överstiga %{percent}% av de avgivna rösterna"
     name_lte_voter_percent: "%{name} får inte överstiga %{percent}% av de röstberättigade"
     vote_share_requirement: Krav på röstandel
+    for_the_proposal_to_pass: För att förslaget ska gå igenom måste detta alternativ få…
   poll_common:
     superseded: Ersatt
     outdated: Föråldrad
@@ -2031,7 +2031,6 @@ sv:
     enter_an_outcome: Ange ett resultat
   poll_common_outcome_form:
     review_due_in_days: Se över beslutet efter hur många dagar?
-    review_due_in_days_hint: En tidsperiod (i dagar) att vänta innan beslutet granskas. (frivillig)
     review_date: Gransknings datum
     review_date_hint: Ställ in ett datum för att granska beslutet (valfritt)
     who_to_notify: Vem vill du meddela om detta resultat? (frivillig)
@@ -2041,9 +2040,11 @@ sv:
     outcome_created: Resultat skapat
     outcome_updated: Resultat uppdaterat
     statement_placeholder: Sammanfatta svaren och förklara vad som kommer att hända härnäst.
-    statement_template_placeholder: Ge en mall för att skriva ett resultat av beslutet. (frivillig)
     you_will_be_notified: Du kommer att meddelas vid granskningsdatumet.
     submit: Dela resultatet
+    review_due_in_days_hint: Antal dagar att vänta innan beslutet granskas (valfritt).
+    statement_template_hint: Tillhandahåll en mall för att skriva ett resultat av beslutet. (valfritt)
+    statement_template_placeholder: Tack för deltagandet! Vi har nått beslutsfattande och har stöd för att fortsätta.
   poll_common_outcome_panel:
     authored_by: Vid %{name}
   poll_common_delete_modal:
@@ -2108,9 +2109,10 @@ sv:
     points: Poäng
     average: Genomsnitt
     mean: Betyda
-    pct_of_points: "% av poängen"
-    pct_of_voters: "% av väljarna"
     percent: Procent
+    pct_of_points: "% av poängen"
+    pct_of_votes_cast: "% av avgivna röster"
+    pct_of_voters: "% av de röstberättigade"
   poll_meeting_time_field:
     add_time_slot: Lägg till tidslucka
     new_time_slot: Ny tidslucka
@@ -2440,13 +2442,11 @@ sv:
     get_started_here: Kom igång här
   poll_common_settings:
     who_can_vote: Vem kan rösta?
-    short_reason_can_be_helpful: Korta röstskäl är lättare att förstå. En samling koncisa skäl är en bra resurs för att fatta ett beslut.
     specified_voters_only_true: Endast inbjudna personer
     specified_voters_only_false_group: Vem som helst i gruppen
     specified_voters_only_false_discussion: Vem som helst i tråden
     invite_people_next: Du kan välja vilka som är inbjudna att rösta efter att du har startat %{poll_type}
     show_none_of_the_above: Inkludera alternativet "Inget av ovanstående"
-    shuffle_options: Blandningsalternativ
     show_options_in_random_order: Visa alternativ i slumpmässig ordning
     reduce_bias_by_showing_options_in_random_order: Minska bias genom att visa alternativ i slumpmässig ordning.
     multiple_choice:
@@ -2479,13 +2479,14 @@ sv:
     hide_results_until_closed:
       title: Dölj resultaten tills de stängs
       helptext_on: Visa inte hur folk har röstat förrän omröstningen är stängd
+    short_reason_can_be_helpful: Korta röstskäl är lättare att förstå. En samling koncisa skäl är en bra resurs för att fatta ett beslut.
+    shuffle_options: Blandningsalternativ
   poll_common_form:
     quorum: Kvorum
     participation_quorum: Deltagandekvorum
     quorum_hint: Hur stor andel av väljarna måste delta för att resultatet ska vara giltigt? Valfritt, lämna tomt om det inte finns något beslutsmässigt antal.
     quorum_placeholder: Lämna tomt eller ange ett nummer mellan 0 och 100
     deadline: Tidsfrist
-    how_much_time_to_vote: Hur mycket tid kommer ni att ge folk att rösta?
     notify_everyone_when_poll_starts: Meddela alla när %{poll_type} startar
     option_has_votes_confirm_delete: Några personer har röstat på det här alternativet, är du säker på att du vill ta bort det?
     example_title: Exempeltitel
@@ -2500,7 +2501,6 @@ sv:
     please_review_the_form: Vänligen granska formuläret
     option_added_please_add_details: Alternativ tillagt! Vänligen lägg till lite information så att folk förstår vad det betyder.
     default_duration_in_days: Standardvaraktighet i dagar
-    default_duration_in_days_hint: Hur många dagar ska folk ha på sig att rösta?
     how_many_options_can_a_voter_choose: Hur många alternativ kan en väljare välja?
     minimum_choices: Minimival
     maximum_choices: Maximalt antal valmöjligheter
@@ -2572,9 +2572,14 @@ sv:
     reason_prompt: Orsaksfråga
     each_option_has_own_reason_prompt: Varje alternativ har sin egen orsaksfråga. Redigera ett alternativ för att visa eller ändra dess fråga.
     anonymous_voting: Anonym röstning
-    anonymous_voting_description: Visa röster och skäl men inte vem som avgav dem. Detta kan inte ändras efter att %{poll_type} har startat.
     votes_are_anonymous: Rösterna är anonyma
     vote_reason: Röstanledning
+    quorum_tip_vote_share_requirement: 'Tips: Du kan också ange vilken nivå av samtycke som krävs för att ett förslag ska godkännas. Redigera ett alternativ för att definiera kravet på röstandel.'
+    how_much_time_to_vote: Hur mycket tid kommer ni att ge folk att rösta?
+    default_duration_in_days_hint: Hur många dagar kommer folk att ha på sig att rösta?
+    define_minimum_and_maxmimum_score: Definiera de lägsta och högsta poäng en väljare kan ge ett alternativ
+    how_many_points_does_each_voter_have_to_allocate: Hur många poäng har varje väljare att tilldela?
+    anonymous_voting_description: Visa röster och skäl men inte vem som avgav dem. Detta kan inte ändras efter att %{poll_type} har startat.
     vote_reason_description: Be folk att dela med sig av sina motiveringar när de röstar, eller att ge ytterligare information.
     hide_results_description: Om du vill att folk ska rösta utan att se hur andra har röstat kan du dölja resultaten.
     process_helptext: Namnge och beskriv processen som används för att köra den här omröstningen.

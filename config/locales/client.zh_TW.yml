@@ -1789,7 +1789,6 @@ zh_TW:
     of: 的
     at_least: 至少
     no_more_than: 不超過
-    for_the_proposal_to_pass: 為了使提案獲得通過，該選項必須獲得
     votes_cast: 投票數
     eligible_voters: 合格選民
     gte_score_percent: 需要至少 %{percent}% 的投票
@@ -1801,6 +1800,7 @@ zh_TW:
     name_lte_score_percent: "%{name} 不得超過所投票數的 %{percent}%"
     name_lte_voter_percent: "%{name} 不得超過合格選民的 %{percent}%"
     vote_share_requirement: 投票份額要求
+    for_the_proposal_to_pass: 為了使提案獲得通過，此選項必須獲得…
   poll_common:
     superseded: 取代
     outdated: 過時的
@@ -2068,7 +2068,6 @@ zh_TW:
     enter_an_outcome: 輸入結果
   poll_common_outcome_form:
     review_due_in_days: 幾天後檢討決定？
-    review_due_in_days_hint: 在審查決定之前需要等待的一段時間（以天為單位）。 （選修的）
     review_date: 審閱日期
     review_date_hint: 設定提醒審查結果的日期（選擇性）
     who_to_notify: 您想將此結果通知誰？（選擇性）
@@ -2078,9 +2077,11 @@ zh_TW:
     outcome_created: 結果已建立
     outcome_updated: 結果已更新
     statement_placeholder: 總結回應並解釋接下來會發生什麼事。
-    statement_template_placeholder: 提供用於編寫決策結果的範本。 （選修的）
     you_will_be_notified: 您將在審閱日期時收到通知。
     submit: 分享成果
+    review_due_in_days_hint: 審查決定之前等待的天數（可選）。
+    statement_template_hint: 提供撰寫決策結果的範本。 （可選）
+    statement_template_placeholder: 感謝大家的參與！已達到法定人數，我們已獲得支持，可以繼續進行。
   poll_common_outcome_panel:
     authored_by: 由 %{name}
   poll_common_delete_modal:
@@ -2145,9 +2146,10 @@ zh_TW:
     points: 點
     average: 平均
     mean: 平均
-    pct_of_points: "% 點數"
-    pct_of_voters: 投票者的百分比
     percent: 百分比
+    pct_of_points: "% 點數"
+    pct_of_votes_cast: 投票百分比
+    pct_of_voters: 合格選民的百分比
   poll_meeting_time_field:
     add_time_slot: 新增時間欄位
     new_time_slot: 新時間欄位
@@ -2479,13 +2481,11 @@ zh_TW:
     get_started_here: 從這裡開始
   poll_common_settings:
     who_can_vote: 誰可以投票？
-    short_reason_can_be_helpful: 簡短的投票理由更容易理解。簡潔的投票理由是決策的重要資源。
     specified_voters_only_true: 限受邀者
     specified_voters_only_false_group: 群組中的任何人
     specified_voters_only_false_discussion: 主題中的任何人
     invite_people_next: 您可以在啟動 %{poll_type} 後選擇邀請誰投票
     show_none_of_the_above: 包含“以上皆非”選項
-    shuffle_options: 隨機播放選項
     show_options_in_random_order: 以隨機順序顯示選項
     reduce_bias_by_showing_options_in_random_order: 透過隨機順序顯示選項來減少偏差。
     multiple_choice:
@@ -2518,13 +2518,14 @@ zh_TW:
     hide_results_until_closed:
       title: 隱藏結果直至關閉
       helptext_on: 在投票結束前不要顯示人們的投票情況
+    short_reason_can_be_helpful: 簡短的投票理由更容易理解。簡潔的投票理由是決策的重要資源。
+    shuffle_options: 隨機播放選項
   poll_common_form:
     quorum: 法定人數
     participation_quorum: 參與法定人數
     quorum_hint: 必須有多少比例的選民參與投票才能使結果有效？可選，留空表示沒有達到法定人數。
     quorum_placeholder: 留空或輸入 0 到 100 之間的數字
     deadline: 最後期限
-    how_much_time_to_vote: 您會給人們多少時間投票？
     notify_everyone_when_poll_starts: 當 %{poll_type} 開始時通知所有人
     option_has_votes_confirm_delete: 有些人已投票支持此選項，您確定要刪除它嗎？
     example_title: 範例標題
@@ -2539,7 +2540,6 @@ zh_TW:
     please_review_the_form: 請查看表格
     option_added_please_add_details: 選項已新增！請添加一些詳細信息，以便大家了解其含義。
     default_duration_in_days: 預設持續時間（天）
-    default_duration_in_days_hint: 應該給人們多少天的時間去投票？
     how_many_options_can_a_voter_choose: 選民可以選擇多少個選項？
     minimum_choices: 最少選擇
     maximum_choices: 最大選擇
@@ -2611,9 +2611,14 @@ zh_TW:
     reason_prompt: 原因提示
     each_option_has_own_reason_prompt: 每個選項都有其各自的原因提示。編輯選項以查看或變更其提示。
     anonymous_voting: 匿名投票
-    anonymous_voting_description: 顯示投票及其原因，但不顯示投票者。 %{poll_type} 開始後無法變更。
     votes_are_anonymous: 投票是匿名的
     vote_reason: 投票原因
+    quorum_tip_vote_share_requirement: 提示：您也可以指定提案通過所需的同意等級。編輯選項以定義投票份額要求
+    how_much_time_to_vote: 您會給人們多少時間投票？
+    default_duration_in_days_hint: 人們需要多少天的時間進行投票？
+    define_minimum_and_maxmimum_score: 定義投票者可以給出選項的最低和最高分數
+    how_many_points_does_each_voter_have_to_allocate: 每個選民需要分配多少分？
+    anonymous_voting_description: 顯示投票及其原因，但不顯示投票者。 %{poll_type} 開始後無法變更。
     vote_reason_description: 請人們分享他們投票的理由，或提供更多資訊。
     hide_results_description: 如果您希望人們投票時不看到其他人的投票情況，您可以隱藏結果。
     process_helptext: 命名並描述用於運行此投票的過程。

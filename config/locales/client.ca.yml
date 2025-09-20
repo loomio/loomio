@@ -1779,7 +1779,6 @@ ca:
     of: de
     at_least: Almenys
     no_more_than: No més de
-    for_the_proposal_to_pass: Perquè la proposta sigui aprovada, aquesta opció ha de rebre
     votes_cast: Vots emesos
     eligible_voters: Votants amb dret a vot
     gte_score_percent: Necessita com a mínim el %{percent}% dels vots emesos
@@ -1791,6 +1790,7 @@ ca:
     name_lte_score_percent: "%{name} no pot superar el %{percent}% dels vots emesos"
     name_lte_voter_percent: "%{name} no pot superar el %{percent}% dels votants amb dret a vot"
     vote_share_requirement: Requisit de quota de vot
+    for_the_proposal_to_pass: Perquè la proposta sigui aprovada, aquesta opció ha de rebre...
   poll_common:
     superseded: Substituït
     outdated: Antiquat
@@ -2058,7 +2058,6 @@ ca:
     enter_an_outcome: Introdueix un resultat
   poll_common_outcome_form:
     review_due_in_days: Revisar la decisió al cap de quants dies?
-    review_due_in_days_hint: Un període de temps (en dies) per esperar abans de revisar la decisió. (opcional)
     review_date: Data de revisió
     review_date_hint: Estableix una data per revisar la decisió (opcional)
     who_to_notify: A qui voleu notificar aquest resultat? (opcional)
@@ -2068,9 +2067,11 @@ ca:
     outcome_created: Resultat creat
     outcome_updated: Resultat actualitzat
     statement_placeholder: Resumiu les respostes i expliqueu què passarà després
-    statement_template_placeholder: Proporcioneu una plantilla per escriure un resultat de la decisió. (opcional)
     you_will_be_notified: Se't notificarà el dia de la revisió.
     submit: Comparteix el resultat
+    review_due_in_days_hint: Nombre de dies d'espera abans de revisar la decisió (opcional).
+    statement_template_hint: Proporcioneu una plantilla per escriure el resultat de la decisió (opcional).
+    statement_template_placeholder: Gràcies per participar! S'ha arribat al quòrum i tenim suport per continuar.
   poll_common_outcome_panel:
     authored_by: De %{name}
   poll_common_delete_modal:
@@ -2135,9 +2136,10 @@ ca:
     points: Puntuació
     average: Mitjana
     mean: Significar
-    pct_of_points: "% de punts"
-    pct_of_voters: "% de votants"
     percent: Per cent
+    pct_of_points: "% de punts"
+    pct_of_votes_cast: "% de vots emesos"
+    pct_of_voters: "% de votants amb dret a vot"
   poll_meeting_time_field:
     add_time_slot: Afegeix una franja horària
     new_time_slot: Nova franja horària
@@ -2469,13 +2471,11 @@ ca:
     get_started_here: Comença aquí
   poll_common_settings:
     who_can_vote: Qui pot votar?
-    short_reason_can_be_helpful: Les raons de vot breus són més fàcils d'entendre. Un conjunt de raons concises és un gran recurs per prendre una decisió.
     specified_voters_only_true: Només persones convidades
     specified_voters_only_false_group: Qualsevol persona del grup
     specified_voters_only_false_discussion: Qualsevol persona del fil
     invite_people_next: Podeu triar qui està convidat a votar després d'iniciar la %{poll_type}
     show_none_of_the_above: Inclou una opció "Cap de les anteriors"
-    shuffle_options: Opcions de reproducció aleatòria
     show_options_in_random_order: Mostra les opcions en ordre aleatori
     reduce_bias_by_showing_options_in_random_order: Redueix el biaix mostrant les opcions en ordre aleatori.
     multiple_choice:
@@ -2508,13 +2508,14 @@ ca:
     hide_results_until_closed:
       title: Amaga els resultats fins que es tanqui
       helptext_on: No mostreu com ha votat la gent fins que no es tanqui l'enquesta
+    short_reason_can_be_helpful: Les raons de vot breus són més fàcils d'entendre. Un conjunt de raons concises és un gran recurs per prendre una decisió.
+    shuffle_options: Opcions de reproducció aleatòria
   poll_common_form:
     quorum: Quòrum
     participation_quorum: Quòrum de participació
     quorum_hint: Quin percentatge de votants ha de participar perquè el resultat sigui vàlid? Opcional, deixeu-ho en blanc si no hi ha quòrum.
     quorum_placeholder: Deixeu-ho en blanc o introduïu un número entre 0 i 100
     deadline: Data límit
-    how_much_time_to_vote: Quant de temps donareu a la gent per votar?
     notify_everyone_when_poll_starts: Notifica a tothom quan comenci %{poll_type}
     option_has_votes_confirm_delete: Algunes persones han votat per aquesta opció, esteu segurs que voleu eliminar-la?
     example_title: Exemple de títol
@@ -2529,7 +2530,6 @@ ca:
     please_review_the_form: Si us plau, reviseu el formulari
     option_added_please_add_details: Opció afegida! Si us plau, afegiu alguns detalls perquè la gent sàpiga què significa.
     default_duration_in_days: Durada predeterminada en dies
-    default_duration_in_days_hint: Quants dies s'haurien de donar perquè la gent voti?
     how_many_options_can_a_voter_choose: Quantes opcions pot triar un votant?
     minimum_choices: Opcions mínimes
     maximum_choices: Màxim d'opcions
@@ -2601,9 +2601,14 @@ ca:
     reason_prompt: Sol·licitud de motiu
     each_option_has_own_reason_prompt: Cada opció té la seva pròpia indicació de motiu. Editeu una opció per veure o canviar la seva indicació.
     anonymous_voting: Votació anònima
-    anonymous_voting_description: Mostra els vots i els motius, però no qui els ha emès. Això no es pot canviar després que %{poll_type} hagi començat.
     votes_are_anonymous: Els vots són anònims
     vote_reason: Motiu del vot
+    quorum_tip_vote_share_requirement: 'Consell: També podeu especificar el nivell d''acord necessari perquè una proposta s''aprovi. Editeu una opció per definir el requisit de quota de vot.'
+    how_much_time_to_vote: Quant de temps donareu a la gent per votar?
+    default_duration_in_days_hint: Quants dies tindrà la gent per votar?
+    define_minimum_and_maxmimum_score: Defineix les puntuacions mínimes i màximes que un votant pot donar a una opció
+    how_many_points_does_each_voter_have_to_allocate: Quants punts ha d'assignar cada votant?
+    anonymous_voting_description: Mostra els vots i els motius, però no qui els ha emès. Això no es pot canviar després que %{poll_type} hagi començat.
     vote_reason_description: Demaneu a la gent que comparteixi les seves raons quan votin o que proporcionin més informació.
     hide_results_description: Si voleu que la gent voti sense veure com han votat els altres, podeu amagar els resultats.
     process_helptext: Anomena i descriu el procés que s'utilitza per dur a terme aquesta enquesta.

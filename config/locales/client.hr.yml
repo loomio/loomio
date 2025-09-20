@@ -1754,7 +1754,6 @@ hr:
     of: od
     at_least: Najmanje
     no_more_than: Ne više od
-    for_the_proposal_to_pass: Da bi prijedlog prošao, ova opcija mora dobiti
     votes_cast: Broj glasova
     eligible_voters: Pravo glasa
     gte_score_percent: Potrebno je barem %{percent}% glasova
@@ -1766,6 +1765,7 @@ hr:
     name_lte_score_percent: "%{name} ne smije prelaziti %{percent}% od ukupnog broja glasova"
     name_lte_voter_percent: "%{name} ne smije prelaziti %{percent}% birača s pravom glasa"
     vote_share_requirement: Zahtjev za udio glasova
+    for_the_proposal_to_pass: Da bi prijedlog prošao, ova opcija mora dobiti…
   poll_common:
     superseded: Zamijenjeno
     outdated: Zastario
@@ -2031,7 +2031,6 @@ hr:
     enter_an_outcome: Unesite rezultat
   poll_common_outcome_form:
     review_due_in_days: Nakon koliko dana preispitati odluku?
-    review_due_in_days_hint: Razdoblje (u danima) za čekanje prije pregleda odluke. (neobavezno)
     review_date: Datum pregleda
     review_date_hint: Postavite datum za reviziju odluke (nije obavezno)
     who_to_notify: Koga želite obavijestiti o ovom ishodu? (neobavezno)
@@ -2041,9 +2040,11 @@ hr:
     outcome_created: Ishod stvoren
     outcome_updated: Ishod ažuriran
     statement_placeholder: Sažmite odgovore i objasnite što će se sljedeće dogoditi.
-    statement_template_placeholder: Navedite predložak za pisanje ishoda odluke. (neobavezno)
     you_will_be_notified: O datumu pregleda bit ćete obaviješteni.
     submit: Podijelite ishod
+    review_due_in_days_hint: Broj dana čekanja prije preispitivanja odluke (neobavezno).
+    statement_template_hint: Navedite predložak za pisanje ishoda odluke. (nije obavezno)
+    statement_template_placeholder: Hvala na sudjelovanju! Kvorum je postignut i imamo podršku za nastavak.
   poll_common_outcome_panel:
     authored_by: "%{name}"
   poll_common_delete_modal:
@@ -2108,9 +2109,10 @@ hr:
     points: Bodovi
     average: Prosjek
     mean: Zlobno
-    pct_of_points: "% bodova"
-    pct_of_voters: "% birača"
     percent: postotak
+    pct_of_points: "% bodova"
+    pct_of_votes_cast: "% glasova"
+    pct_of_voters: "% birača s pravom glasa"
   poll_meeting_time_field:
     add_time_slot: Dodajte vremenski odsjek
     new_time_slot: Novi termin
@@ -2440,13 +2442,11 @@ hr:
     get_started_here: Započnite ovdje
   poll_common_settings:
     who_can_vote: Tko može glasati?
-    short_reason_can_be_helpful: Kratke razloge za glasovanje lakše je razumjeti. Zbirka sažetih razloga izvrstan je resurs za donošenje odluke.
     specified_voters_only_true: Samo pozvane osobe
     specified_voters_only_false_group: Bilo tko u grupi
     specified_voters_only_false_discussion: Svatko u temi
     invite_people_next: Možete odabrati tko je pozvan glasati nakon što pokrenete %{poll_type}
     show_none_of_the_above: Uključite opciju "Ništa od navedenog"
-    shuffle_options: Opcije nasumičnog reproduciranja
     show_options_in_random_order: Prikaži opcije nasumičnim redoslijedom
     reduce_bias_by_showing_options_in_random_order: Smanjite pristranost prikazivanjem opcija nasumičnim redoslijedom.
     multiple_choice:
@@ -2479,13 +2479,14 @@ hr:
     hide_results_until_closed:
       title: Sakrij rezultate do zatvaranja
       helptext_on: Ne prikazujte kako su ljudi glasali dok se glasanje ne zatvori
+    short_reason_can_be_helpful: Kratke razloge za glasovanje lakše je razumjeti. Zbirka sažetih razloga izvrstan je resurs za donošenje odluke.
+    shuffle_options: Opcije nasumičnog reproduciranja
   poll_common_form:
     quorum: Kvorum
     participation_quorum: Kvorum za sudjelovanje
     quorum_hint: Koliki postotak birača mora sudjelovati da bi rezultat bio valjan? Nije obavezno, ostavite prazno ako nema kvoruma.
     quorum_placeholder: Ostavite prazno ili unesite broj između 0 i 100
     deadline: Rok
-    how_much_time_to_vote: Koliko vremena ćete dati ljudima za glasanje?
     notify_everyone_when_poll_starts: Obavijesti sve kada %{poll_type} počne
     option_has_votes_confirm_delete: Neki su ljudi glasali za ovu opciju, jeste li sigurni da je želite izbrisati?
     example_title: Primjer naslova
@@ -2500,7 +2501,6 @@ hr:
     please_review_the_form: Molimo pregledajte obrazac
     option_added_please_add_details: Dodana je opcija! Molimo dodajte neke detalje kako bi ljudi znali što to znači.
     default_duration_in_days: Zadano trajanje u danima
-    default_duration_in_days_hint: Koliko dana treba dati ljudima za glasanje?
     how_many_options_can_a_voter_choose: Koliko opcija može birati birač?
     minimum_choices: Minimalni izbori
     maximum_choices: Maksimalni izbori
@@ -2572,9 +2572,14 @@ hr:
     reason_prompt: Upit za razlog
     each_option_has_own_reason_prompt: Svaka opcija ima svoj upit za razlog. Uredite opciju da biste je vidjeli ili promijenili.
     anonymous_voting: Anonimno glasanje
-    anonymous_voting_description: Prikaži glasove i razloge, ali ne i tko ih je dao. Ovo se ne može promijeniti nakon što je %{poll_type} započeo.
     votes_are_anonymous: Glasovi su anonimni
     vote_reason: Razlog glasanja
+    quorum_tip_vote_share_requirement: 'Savjet: Također možete odrediti razinu slaganja potrebnu za usvajanje prijedloga. Uredite opciju za definiranje zahtjeva za udio glasova'
+    how_much_time_to_vote: Koliko vremena ćete dati ljudima za glasanje?
+    default_duration_in_days_hint: Koliko dana će ljudi imati za glasanje?
+    define_minimum_and_maxmimum_score: Definirajte minimalni i maksimalni broj bodova koje birač može dati jednoj opciji
+    how_many_points_does_each_voter_have_to_allocate: Koliko bodova svaki birač mora dodijeliti?
+    anonymous_voting_description: Prikaži glasove i razloge, ali ne i tko ih je dao. Ovo se ne može promijeniti nakon što je %{poll_type} započeo.
     vote_reason_description: Zamolite ljude da podijele svoje obrazloženje kada glasaju ili da dostave dodatne informacije.
     hide_results_description: Ako želite da ljudi glasaju bez da vide kako su drugi glasali, možete sakriti rezultate.
     process_helptext: Navedite i opišite postupak koji se koristi za provođenje ove ankete.

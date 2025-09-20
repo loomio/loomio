@@ -1754,7 +1754,6 @@ tr:
     of: ile ilgili
     at_least: En azından
     no_more_than: En fazla
-    for_the_proposal_to_pass: Önerinin kabul edilmesi için bu seçeneğin kabul edilmesi gerekir.
     votes_cast: Verilen oylar
     eligible_voters: Uygun seçmenler
     gte_score_percent: En az %{percent}% oy gerekiyor
@@ -1766,6 +1765,7 @@ tr:
     name_lte_score_percent: "%{name} verilen oyların %{percent}%'ini geçmemelidir"
     name_lte_voter_percent: "%{name}, uygun seçmenlerin %{percent}%'ini geçmemelidir"
     vote_share_requirement: Oy payı gereksinimi
+    for_the_proposal_to_pass: Önerinin kabul edilebilmesi için bu seçeneğin…
   poll_common:
     superseded: Değiştirildi
     outdated: Modası geçmiş
@@ -2031,7 +2031,6 @@ tr:
     enter_an_outcome: Bir sonuç girin
   poll_common_outcome_form:
     review_due_in_days: Karar kaç gün sonra gözden geçirilir?
-    review_due_in_days_hint: Kararın gözden geçirilmesinden önce beklenecek süre (gün cinsinden). (isteğe bağlı)
     review_date: Gözden geçirme tarihi
     review_date_hint: Kararın gözden geçirileceği tarihi belirleyin (isteğe bağlı)
     who_to_notify: Bu sonuç hakkında kimi bilgilendirmek istiyorsunuz? (isteğe bağlı)
@@ -2041,9 +2040,11 @@ tr:
     outcome_created: Sonuç oluşturuldu
     outcome_updated: Sonuç güncellendi
     statement_placeholder: Yanıtları özetleyin ve bundan sonra ne olacağını açıklayın.
-    statement_template_placeholder: Kararın sonucunu yazmak için bir şablon sağlayın. (isteğe bağlı)
     you_will_be_notified: İnceleme tarihinde bilgilendirileceksiniz.
     submit: Sonucu paylaş
+    review_due_in_days_hint: Kararın gözden geçirilmesi için beklenmesi gereken gün sayısı (isteğe bağlı).
+    statement_template_hint: Kararın sonucunu yazmak için bir şablon sağlayın. (isteğe bağlı)
+    statement_template_placeholder: Katılımınız için teşekkürler! Çoğunluk sağlandı ve devam edebilmemiz için destek aldık.
   poll_common_outcome_panel:
     authored_by: "%{name}"
   poll_common_delete_modal:
@@ -2108,9 +2109,10 @@ tr:
     points: Puanlar
     average: Ortalama
     mean: Anlam
-    pct_of_points: puanların yüzdesi
-    pct_of_voters: Seçmenlerin yüzdesi
     percent: Yüzde
+    pct_of_points: puanların %'si
+    pct_of_votes_cast: Verilen oyların yüzdesi
+    pct_of_voters: Uygun seçmenlerin yüzdesi
   poll_meeting_time_field:
     add_time_slot: Zaman aralığı ekle
     new_time_slot: Yeni zaman dilimi
@@ -2440,13 +2442,11 @@ tr:
     get_started_here: Buradan başlayın
   poll_common_settings:
     who_can_vote: Kimler oy kullanabilir?
-    short_reason_can_be_helpful: Kısa oy gerekçelerini anlamak daha kolaydır. Özlü gerekçelerden oluşan bir koleksiyon, karar vermek için harika bir kaynaktır.
     specified_voters_only_true: Yalnızca davetli kişiler
     specified_voters_only_false_group: Gruptaki herkes
     specified_voters_only_false_discussion: Konudaki herkes
     invite_people_next: "%{poll_type} başlattıktan sonra kimin oy vermeye davet edileceğini seçebilirsiniz"
     show_none_of_the_above: '"Yukarıdakilerin hiçbiri" seçeneğini ekleyin'
-    shuffle_options: Karıştırma seçenekleri
     show_options_in_random_order: Seçenekleri rastgele sırada göster
     reduce_bias_by_showing_options_in_random_order: Seçenekleri rastgele sırada göstererek önyargıyı azaltın.
     multiple_choice:
@@ -2479,13 +2479,14 @@ tr:
     hide_results_until_closed:
       title: Sonuçları kapatılana kadar gizle
       helptext_on: Anket kapanana kadar insanların nasıl oy kullandığını göstermeyin
+    short_reason_can_be_helpful: Kısa oy gerekçelerini anlamak daha kolaydır. Özlü gerekçelerden oluşan bir koleksiyon, karar vermek için harika bir kaynaktır.
+    shuffle_options: Karıştırma seçenekleri
   poll_common_form:
     quorum: Çoğunluk
     participation_quorum: Katılım yeter sayısı
     quorum_hint: Sonucun geçerli olması için seçmenlerin yüzde kaçı katılmalıdır? İsteğe bağlı, yeter sayı yoksa boş bırakın.
     quorum_placeholder: Boş bırakın veya 0 ile 100 arasında bir sayı girin
     deadline: Son teslim tarihi
-    how_much_time_to_vote: İnsanlara oy vermeleri için ne kadar süre vereceksiniz?
     notify_everyone_when_poll_starts: "%{poll_type} başladığında herkese bildir"
     option_has_votes_confirm_delete: Bazı kişiler bu seçeneğe oy vermiş, silmek istediğinize emin misiniz?
     example_title: Örnek başlık
@@ -2500,7 +2501,6 @@ tr:
     please_review_the_form: Lütfen formu inceleyin
     option_added_please_add_details: Seçenek eklendi! Lütfen insanların ne anlama geldiğini bilmeleri için biraz ayrıntı ekleyin.
     default_duration_in_days: Varsayılan süre (gün)
-    default_duration_in_days_hint: İnsanlara oy kullanmaları için kaç gün süre verilmeli?
     how_many_options_can_a_voter_choose: Bir seçmen kaç seçenek arasından seçim yapabilir?
     minimum_choices: Minimum seçimler
     maximum_choices: Maksimum seçimler
@@ -2572,9 +2572,14 @@ tr:
     reason_prompt: Sebep istemi
     each_option_has_own_reason_prompt: Her seçeneğin kendine ait bir gerekçesi vardır. Bir seçeneği düzenleyerek gerekçesini görüntüleyebilir veya değiştirebilirsiniz.
     anonymous_voting: Anonim oylama
-    anonymous_voting_description: Oyları ve nedenlerini göster, ancak bunları kimin verdiğini gösterme. Bu, %{poll_type} başladıktan sonra değiştirilemez.
     votes_are_anonymous: Oylar anonimdir
     vote_reason: Oylama nedeni
+    quorum_tip_vote_share_requirement: 'İpucu: Bir teklifin kabul edilmesi için gereken mutabakat düzeyini de belirtebilirsiniz. Oy payı gereksinimini tanımlamak için bir seçeneği düzenleyin.'
+    how_much_time_to_vote: İnsanlara oy vermeleri için ne kadar süre vereceksiniz?
+    default_duration_in_days_hint: İnsanlar kaç gün oy kullanabilecek?
+    define_minimum_and_maxmimum_score: Bir seçmenin bir seçeneğe verebileceği minimum ve maksimum puanları tanımlayın
+    how_many_points_does_each_voter_have_to_allocate: Her seçmenin kaç puan ayırması gerekiyor?
+    anonymous_voting_description: Oyları ve nedenlerini göster, ancak bunları kimin verdiğini gösterme. Bu, %{poll_type} başladıktan sonra değiştirilemez.
     vote_reason_description: İnsanlardan oy kullanırken gerekçelerini paylaşmalarını veya daha fazla bilgi vermelerini isteyin.
     hide_results_description: Eğer insanların başkalarının nasıl oy kullandığını görmeden oy kullanmasını istiyorsanız sonuçları gizleyebilirsiniz.
     process_helptext: Bu anketi çalıştırmak için kullanılan işlemi adlandırın ve açıklayın.

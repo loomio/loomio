@@ -1761,7 +1761,6 @@ hu:
     of: a
     at_least: Legalább
     no_more_than: Legfeljebb
-    for_the_proposal_to_pass: Ahhoz, hogy a javaslat elfogadásra kerüljön, ennek a lehetőségnek meg kell kapnia a
     votes_cast: Leadott szavazatok
     eligible_voters: Jogosult szavazók
     gte_score_percent: Legalább a leadott szavazatok %{percent}%-ára van szükség
@@ -1773,6 +1772,7 @@ hu:
     name_lte_score_percent: A %{name} szavazat nem haladhatja meg a leadott szavazatok %{percent}%-át
     name_lte_voter_percent: "%{name} nem haladhatja meg a jogosult szavazók %{percent}%-át"
     vote_share_requirement: Szavazati arány követelmény
+    for_the_proposal_to_pass: Ahhoz, hogy a javaslat elfogadásra kerüljön, ennek a lehetőségnek meg kell kapnia…
   poll_common:
     superseded: Felváltva
     outdated: Elavult
@@ -2038,7 +2038,6 @@ hu:
     enter_an_outcome: Adjon meg egy eredményt
   poll_common_outcome_form:
     review_due_in_days: Hány nap múlva vizsgálja felül a döntést?
-    review_due_in_days_hint: A határozat felülvizsgálata előtti várakozási idő (napokban). (választható)
     review_date: Ellenőrzési dátum
     review_date_hint: Dátum meghatározása a határozat felülvizsgálatára (opcionális)
     who_to_notify: Kit szeretnél értesíteni erről az eredményről? (választható)
@@ -2048,9 +2047,11 @@ hu:
     outcome_created: Eredményt teremtett
     outcome_updated: Az eredmény frissítve
     statement_placeholder: Összegezze a válaszokat és magyarázza el, mi fog történni a következőkben.
-    statement_template_placeholder: Adjon sablont a döntés eredményének megírásához. (választható)
     you_will_be_notified: A felülvizsgálat időpontjáról értesítést kap.
     submit: Ossza meg az eredményt
+    review_due_in_days_hint: A döntés felülvizsgálata előtt várandó napok száma (opcionális).
+    statement_template_hint: Adjon meg egy sablont a döntés eredményének leírásához. (opcionális)
+    statement_template_placeholder: Köszönjük a részvételt! A határozatképes csoport létrejött, és támogatásunk van a folytatáshoz.
   poll_common_outcome_panel:
     authored_by: 'tőle: %{name}'
   poll_common_delete_modal:
@@ -2115,9 +2116,10 @@ hu:
     points: Pont
     average: Átlagos
     mean: Átlagos
-    pct_of_points: pontok %-a
-    pct_of_voters: a szavazók %-a
     percent: Százalék
+    pct_of_points: Pontok %-a
+    pct_of_votes_cast: a leadott szavazatok %-a
+    pct_of_voters: a jogosult szavazók százalékos aránya
   poll_meeting_time_field:
     add_time_slot: Idősáv hozzáadása
     new_time_slot: Új időrés
@@ -2447,13 +2449,11 @@ hu:
     get_started_here: Kezdje el itt
   poll_common_settings:
     who_can_vote: Ki szavazhat?
-    short_reason_can_be_helpful: A rövid szavazási indokok könnyebben érthetők. A tömör indokok gyűjteménye nagyszerű forrás a döntéshozatalhoz.
     specified_voters_only_true: Csak meghívottak
     specified_voters_only_false_group: Bárki a csoportban
     specified_voters_only_false_discussion: Bárki a témában
     invite_people_next: A %{poll_type} elindítása után kiválaszthatod, hogy kiket hívnak meg szavazni.
     show_none_of_the_above: Tartalmazzon egy „A fentiek egyike sem” opciót
-    shuffle_options: Véletlenszerű lejátszási beállítások
     show_options_in_random_order: Opciók megjelenítése véletlenszerű sorrendben
     reduce_bias_by_showing_options_in_random_order: Csökkentsd az elfogultságot a lehetőségek véletlenszerű sorrendben történő megjelenítésével.
     multiple_choice:
@@ -2486,13 +2486,14 @@ hu:
     hide_results_until_closed:
       title: Eredmények elrejtése bezárásig
       helptext_on: Ne mutasd meg, hogyan szavaztak az emberek, amíg a szavazás le nem zárul
+    short_reason_can_be_helpful: A rövid szavazási indokok könnyebben érthetők. A tömör indokok gyűjteménye nagyszerű forrás a döntéshozatalhoz.
+    shuffle_options: Véletlenszerű lejátszási beállítások
   poll_common_form:
     quorum: Határozatképesség
     participation_quorum: Részvételi határozatképesség
     quorum_hint: A szavazók hány százalékának kell részt vennie az érvényes eredményhez? Opcionális, hagyja üresen, ha nincs határozatképes.
     quorum_placeholder: Hagyja üresen, vagy adjon meg egy számot 0 és 100 között
     deadline: Határidő
-    how_much_time_to_vote: Mennyi időt adnak az embereknek a szavazásra?
     notify_everyone_when_poll_starts: Értesítsen mindenkit, amikor a %{poll_type} elindul
     option_has_votes_confirm_delete: Néhányan már szavaztak erre a lehetőségre, biztosan törölni szeretnéd?
     example_title: Példa cím
@@ -2507,7 +2508,6 @@ hu:
     please_review_the_form: Kérjük, tekintse át az űrlapot
     option_added_please_add_details: Lehetőség hozzáadva! Kérlek, adj meg néhány részletet, hogy az emberek tudják, mit jelent.
     default_duration_in_days: Alapértelmezett időtartam napokban
-    default_duration_in_days_hint: Hány napot kellene adni az embereknek a szavazásra?
     how_many_options_can_a_voter_choose: Hány lehetőség közül választhat egy szavazó?
     minimum_choices: Minimális választási lehetőségek
     maximum_choices: Maximális választási lehetőségek
@@ -2579,10 +2579,15 @@ hu:
     reason_prompt: Indoklás kérése
     each_option_has_own_reason_prompt: Minden opcióhoz saját indoklási kérdés tartozik. Szerkessze a kívánt opciót a hozzá tartozó ok megadásához.
     anonymous_voting: Névtelen szavazás
-    anonymous_voting_description: Szavazatok és indokok megjelenítése, de a leadók neve nem. Ez a %{poll_type} elindítása után nem módosítható.
     votes_are_anonymous: A szavazatok névtelenek
     vote_reason: Szavazás oka
+    quorum_tip_vote_share_requirement: 'Tipp: Megadhatja azt is, hogy milyen szintű egyetértésre van szükség a javaslat elfogadásához. Szerkesszen egy opciót a szavazati arányra vonatkozó követelmény meghatározásához.'
+    how_much_time_to_vote: Mennyi időt adnak az embereknek a szavazásra?
+    default_duration_in_days_hint: Hány napig lesznek szavazók az országban?
+    define_minimum_and_maxmimum_score: Határozza meg a szavazók által egy opcióra adható minimális és maximális pontszámot
+    how_many_points_does_each_voter_have_to_allocate: Hány pontot adhat le minden szavazó?
+    anonymous_voting_description: Szavazatok és indokok megjelenítése, de a leadók neve nem. Ez a %{poll_type} elindítása után nem módosítható.
     vote_reason_description: Kérd meg az embereket, hogy szavazáskor osszák meg indoklásukat, vagy adjanak további információkat.
-    hide_results_description: Ha azt szeretnéd, hogy az emberek anélkül szavazzanak, hogy látnák, hogyan szavaztak mások, elrejtheted az eredményeket.
+    hide_results_description: Ha azt szeretnéd, hogy az emberek ne lássák, hogyan szavaztak mások, elrejtheted az eredményeket.
     process_helptext: Nevezd meg és írd le a szavazás lebonyolításához használt folyamatot.
     reminder_helptext: Küldj egy „Hamarosan lezárul” értesítést 24 órával a határidő előtt. Ez növelheti a részvételt, és lehetőséget adhat az embereknek, hogy átgondolják álláspontjukat.

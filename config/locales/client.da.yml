@@ -1754,7 +1754,6 @@ da:
     of: af
     at_least: Mindst
     no_more_than: Ikke mere end
-    for_the_proposal_to_pass: For at forslaget kan vedtages, skal denne mulighed modtages
     votes_cast: Afgivne stemmer
     eligible_voters: Berettigede vælgere
     gte_score_percent: Kræver mindst %{percent}% af de afgivne stemmer
@@ -1766,6 +1765,7 @@ da:
     name_lte_score_percent: "%{name} må ikke overstige %{percent}% af de afgivne stemmer"
     name_lte_voter_percent: "%{name} må ikke overstige %{percent}% af de stemmeberettigede"
     vote_share_requirement: Krav om stemmeandel
+    for_the_proposal_to_pass: For at forslaget kan vedtages, skal dette alternativ modtage…
   poll_common:
     superseded: Afløst
     outdated: Forældet
@@ -2031,7 +2031,6 @@ da:
     enter_an_outcome: Indtast et resultat
   poll_common_outcome_form:
     review_due_in_days: Gennemgå beslutningen efter hvor mange dage?
-    review_due_in_days_hint: En periode (i dage) til at vente, før beslutningen tages op til revision. (valgfri)
     review_date: Anmeldelsesdato
     review_date_hint: Angiv en dato for at gennemgå beslutningen (valgfrit)
     who_to_notify: Hvem vil du give besked om dette resultat? (valgfri)
@@ -2041,9 +2040,11 @@ da:
     outcome_created: Resultat oprettet
     outcome_updated: Resultat gemt
     statement_placeholder: Give et kort resume af kommentarerne og fortæl hvad der er det næste skridt.
-    statement_template_placeholder: Giv en skabelon til at skrive et resultat af beslutningen. (valgfri)
     you_will_be_notified: Du får besked på anmeldelsesdatoen.
     submit: Del resultat
+    review_due_in_days_hint: Antal dage, der skal ventes, før afgørelsen gennemgås (valgfrit).
+    statement_template_hint: Angiv en skabelon til at skrive et resultat af beslutningen. (valgfrit)
+    statement_template_placeholder: Tak for din deltagelse! Der er opnået et quorum, og vi har støtte til at fortsætte.
   poll_common_outcome_panel:
     authored_by: Af %{name}
   poll_common_delete_modal:
@@ -2108,9 +2109,10 @@ da:
     points: Points
     average: Gennemsnit
     mean: Betyde
-    pct_of_points: "% af point"
-    pct_of_voters: "% af vælgerne"
     percent: Procent
+    pct_of_points: "% af point"
+    pct_of_votes_cast: "% af afgivne stemmer"
+    pct_of_voters: "% af de stemmeberettigede"
   poll_meeting_time_field:
     add_time_slot: Tilføj tidsrum
     new_time_slot: Nyt tidsrum
@@ -2440,13 +2442,11 @@ da:
     get_started_here: Kom i gang her
   poll_common_settings:
     who_can_vote: Hvem kan stemme?
-    short_reason_can_be_helpful: Korte begrundelser for stemmeafgivning er lettere at forstå. En samling af præcise begrundelser er en god ressource til at træffe en beslutning.
     specified_voters_only_true: Kun inviterede personer
     specified_voters_only_false_group: Enhver i gruppen
     specified_voters_only_false_discussion: Enhver i tråden
     invite_people_next: Du kan vælge, hvem der er inviteret til at stemme, efter du har startet %{poll_type}
     show_none_of_the_above: Medtag en "Ingen af ovenstående"-mulighed
-    shuffle_options: Blandingsmuligheder
     show_options_in_random_order: Vis muligheder i tilfældig rækkefølge
     reduce_bias_by_showing_options_in_random_order: Reducer bias ved at vise muligheder i tilfældig rækkefølge.
     multiple_choice:
@@ -2479,13 +2479,14 @@ da:
     hide_results_until_closed:
       title: Skjul resultater indtil lukketid
       helptext_on: Vis ikke, hvordan folk har stemt, før afstemningen er lukket
+    short_reason_can_be_helpful: Korte begrundelser for stemmeafgivning er lettere at forstå. En samling af præcise begrundelser er en god ressource til at træffe en beslutning.
+    shuffle_options: Blandingsmuligheder
   poll_common_form:
     quorum: Kvorum
     participation_quorum: Deltagelsesquorum
     quorum_hint: Hvor stor en procentdel af vælgerne skal deltage for at resultatet er gyldigt? Valgfrit, lad feltet stå tomt ved intet quorum.
     quorum_placeholder: Lad feltet stå tomt, eller indtast et tal mellem 0 og 100
     deadline: Frist
-    how_much_time_to_vote: Hvor meget tid vil I give folk til at stemme?
     notify_everyone_when_poll_starts: Giv alle besked, når %{poll_type} starter
     option_has_votes_confirm_delete: Nogle personer har stemt på denne mulighed. Er du sikker på, at du vil slette den?
     example_title: Eksempeltitel
@@ -2500,7 +2501,6 @@ da:
     please_review_the_form: Gennemgå venligst formularen
     option_added_please_add_details: Mulighed tilføjet! Tilføj venligst nogle detaljer, så folk ved, hvad det betyder.
     default_duration_in_days: Standardvarighed i dage
-    default_duration_in_days_hint: Hvor mange dage skal folk have til at stemme?
     how_many_options_can_a_voter_choose: Hvor mange muligheder kan en vælger vælge mellem?
     minimum_choices: Minimumsvalg
     maximum_choices: Maksimale valgmuligheder
@@ -2572,9 +2572,14 @@ da:
     reason_prompt: Årsagsprompt
     each_option_has_own_reason_prompt: Hver mulighed har sin egen årsagsprompt. Rediger en mulighed for at se eller ændre dens prompt.
     anonymous_voting: Anonym afstemning
-    anonymous_voting_description: Vis stemmer og begrundelser, men ikke hvem der afgav dem. Dette kan ikke ændres, efter %{poll_type} er startet.
     votes_are_anonymous: Stemmer er anonyme
     vote_reason: Stemmeårsag
+    quorum_tip_vote_share_requirement: 'Tip: Du kan også angive det niveau af enighed, der kræves for at et forslag kan vedtages. Rediger en indstilling for at definere kravet om stemmeandel.'
+    how_much_time_to_vote: Hvor meget tid vil I give folk til at stemme?
+    default_duration_in_days_hint: Hvor mange dage har folk til at stemme?
+    define_minimum_and_maxmimum_score: Definer minimums- og maksimumsscoren, som en vælger kan give en mulighed
+    how_many_points_does_each_voter_have_to_allocate: Hvor mange point skal hver vælger tildele?
+    anonymous_voting_description: Vis stemmer og begrundelser, men ikke hvem der afgav dem. Dette kan ikke ændres, efter %{poll_type} er startet.
     vote_reason_description: Bed folk om at dele deres begrundelse, når de stemmer, eller om at give yderligere oplysninger.
     hide_results_description: Hvis du vil have folk til at stemme uden at se, hvordan andre har stemt, kan du skjule resultaterne.
     process_helptext: Navngiv og beskriv den proces, der bruges til at køre denne afstemning.

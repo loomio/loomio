@@ -1779,7 +1779,6 @@ nl_NL:
     of: van
     at_least: Ten minste
     no_more_than: Niet meer dan
-    for_the_proposal_to_pass: Om het voorstel te laten slagen, moet deze optie worden goedgekeurd.
     votes_cast: Uitgebrachte stemmen
     eligible_voters: Kiesgerechtigde kiezers
     gte_score_percent: Er is minimaal %{percent}% van de uitgebrachte stemmen nodig
@@ -1791,6 +1790,7 @@ nl_NL:
     name_lte_score_percent: "%{name} mag niet meer dan %{percent}% van de uitgebrachte stemmen bedragen"
     name_lte_voter_percent: "%{name} mag niet meer dan %{percent}% van de stemgerechtigde kiezers uitmaken"
     vote_share_requirement: Stemmenaandeelvereiste
+    for_the_proposal_to_pass: Om het voorstel te laten slagen, moet deze optie…
   poll_common:
     superseded: Vervangen
     outdated: Verouderd
@@ -2058,7 +2058,6 @@ nl_NL:
     enter_an_outcome: Voer een uitkomst in
   poll_common_outcome_form:
     review_due_in_days: Na hoeveel dagen de beslissing herzien?
-    review_due_in_days_hint: Een periode (in dagen) die moet worden gewacht voordat de beslissing wordt herzien. (optioneel)
     review_date: Beoordelingsdatum
     review_date_hint: Stel een datum in om de beslissing te herzien (optioneel)
     who_to_notify: Wie wilt u op de hoogte stellen van deze uitkomst? (optioneel)
@@ -2068,9 +2067,11 @@ nl_NL:
     outcome_created: Resultaat aangemaakt
     outcome_updated: Resultaat bijgewerkt
     statement_placeholder: Vat de reacties samen en leg uit wat er daarna gebeurt.
-    statement_template_placeholder: Geef een sjabloon op voor het schrijven van de uitkomst van de beslissing. (optioneel)
     you_will_be_notified: Je krijgt een melding op de beoordelingsdatum.
     submit: Deel resultaat
+    review_due_in_days_hint: Aantal dagen dat u moet wachten voordat u de beslissing herziet (optioneel).
+    statement_template_hint: Geef een sjabloon voor het schrijven van de uitkomst van de beslissing. (optioneel)
+    statement_template_placeholder: Bedankt voor uw deelname! Het quorum is bereikt en we hebben steun om door te gaan.
   poll_common_outcome_panel:
     authored_by: Door %{name}
   poll_common_delete_modal:
@@ -2135,9 +2136,10 @@ nl_NL:
     points: Punten
     average: Gemiddeld
     mean: Gemeen
-    pct_of_points: "% van de punten"
-    pct_of_voters: "% van de kiezers"
     percent: procent
+    pct_of_points: "% van de punten"
+    pct_of_votes_cast: "% van de uitgebrachte stemmen"
+    pct_of_voters: "% van de stemgerechtigde kiezers"
   poll_meeting_time_field:
     add_time_slot: Tijdvenster toevoegen
     new_time_slot: Nieuw tijdvenster
@@ -2469,13 +2471,11 @@ nl_NL:
     get_started_here: Begin hier
   poll_common_settings:
     who_can_vote: Wie mag stemmen?
-    short_reason_can_be_helpful: Korte stemredenen zijn gemakkelijker te begrijpen. Een verzameling beknopte redenen is een geweldige bron voor het nemen van een beslissing.
     specified_voters_only_true: Alleen genodigden
     specified_voters_only_false_group: Iedereen in de groep
     specified_voters_only_false_discussion: Iedereen in de thread
     invite_people_next: U kunt kiezen wie wordt uitgenodigd om te stemmen nadat u de %{poll_type} start
     show_none_of_the_above: Voeg een optie 'Geen van bovenstaande' toe
-    shuffle_options: Shuffle-opties
     show_options_in_random_order: Opties in willekeurige volgorde weergeven
     reduce_bias_by_showing_options_in_random_order: Verminder vooringenomenheid door opties in willekeurige volgorde weer te geven.
     multiple_choice:
@@ -2508,13 +2508,14 @@ nl_NL:
     hide_results_until_closed:
       title: Resultaten verbergen totdat ze gesloten zijn
       helptext_on: Laat niet zien hoe mensen hebben gestemd totdat de stembus is gesloten
+    short_reason_can_be_helpful: Korte stemredenen zijn gemakkelijker te begrijpen. Een verzameling beknopte redenen is een goede bron voor het nemen van een beslissing.
+    shuffle_options: Shuffle-opties
   poll_common_form:
     quorum: Quorum
     participation_quorum: Deelnamequorum
     quorum_hint: Welk percentage kiezers moet deelnemen om de uitslag geldig te laten zijn? Optioneel, laat dit veld leeg als er geen quorum is.
     quorum_placeholder: Leeg laten of een getal tussen 0 en 100 invoeren
     deadline: Termijn
-    how_much_time_to_vote: Hoeveel tijd geeft u mensen om te stemmen?
     notify_everyone_when_poll_starts: Iedereen op de hoogte stellen wanneer %{poll_type} begint
     option_has_votes_confirm_delete: Sommige mensen hebben voor deze optie gestemd. Weet u zeker dat u deze wilt verwijderen?
     example_title: Voorbeeldtitel
@@ -2529,7 +2530,6 @@ nl_NL:
     please_review_the_form: Controleer het formulier
     option_added_please_add_details: Optie toegevoegd! Voeg wat details toe zodat mensen weten wat het betekent.
     default_duration_in_days: Standaardduur in dagen
-    default_duration_in_days_hint: Hoeveel dagen moeten mensen krijgen om te stemmen?
     how_many_options_can_a_voter_choose: Hoeveel opties mag een kiezer kiezen?
     minimum_choices: Minimale keuzes
     maximum_choices: Maximale keuzes
@@ -2601,9 +2601,14 @@ nl_NL:
     reason_prompt: Reden prompt
     each_option_has_own_reason_prompt: Elke optie heeft een eigen redenprompt. Bewerk een optie om de prompt te bekijken of te wijzigen.
     anonymous_voting: Anoniem stemmen
-    anonymous_voting_description: Toon stemmen en redenen, maar niet wie ze heeft uitgebracht. Dit kan niet worden gewijzigd nadat de %{poll_type} is gestart.
     votes_are_anonymous: Stemmen zijn anoniem
     vote_reason: Stemreden
+    quorum_tip_vote_share_requirement: 'Tip: U kunt ook het vereiste niveau van overeenstemming voor een voorstel specificeren. Bewerk een optie om de vereiste voor het stemmenaandeel te definiëren.'
+    how_much_time_to_vote: Hoeveel tijd geeft u mensen om te stemmen?
+    default_duration_in_days_hint: Hoeveel dagen hebben mensen de tijd om te stemmen?
+    define_minimum_and_maxmimum_score: Definieer de minimale en maximale scores die een kiezer aan een optie kan geven
+    how_many_points_does_each_voter_have_to_allocate: Hoeveel punten moet elke kiezer toekennen?
+    anonymous_voting_description: Toon stemmen en redenen, maar niet wie ze heeft uitgebracht. Dit kan niet worden gewijzigd nadat de %{poll_type} is gestart.
     vote_reason_description: Vraag mensen om hun beweegredenen voor hun stemgedrag te delen of om aanvullende informatie te verstrekken.
     hide_results_description: Als u wilt dat mensen stemmen zonder te zien wat anderen hebben gestemd, kunt u de resultaten verbergen.
     process_helptext: Benoem en beschrijf het proces dat wordt gebruikt om deze poll uit te voeren.

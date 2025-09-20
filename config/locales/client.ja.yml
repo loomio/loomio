@@ -1753,7 +1753,6 @@ ja:
     of: の
     at_least: 少なくとも
     no_more_than: 最大
-    for_the_proposal_to_pass: 提案が承認されるには、このオプションは
     votes_cast: 投票数
     eligible_voters: 有権者
     gte_score_percent: 少なくとも%{percent}%の投票が必要です
@@ -1765,6 +1764,7 @@ ja:
     name_lte_score_percent: "%{name} は投票数の %{percent}% を超えてはなりません"
     name_lte_voter_percent: "%{name} は有権者の %{percent}% を超えてはなりません"
     vote_share_requirement: 投票シェア要件
+    for_the_proposal_to_pass: 提案が承認されるには、このオプションの承認を得る必要があります…
   poll_common:
     superseded: 置き換えられました
     outdated: 時代遅れ
@@ -2030,7 +2030,6 @@ ja:
     enter_an_outcome: 結果を入力
   poll_common_outcome_form:
     review_due_in_days: 何日後に決定を見直しますか?
-    review_due_in_days_hint: 決定を検討するまでに待機する期間 (日単位)。 (オプション)
     review_date: レビュー日
     review_date_hint: 決定をレビューする日付を設定します (オプション)
     who_to_notify: この結果について誰に通知したいですか? (オプション)
@@ -2040,9 +2039,11 @@ ja:
     outcome_created: 生み出された成果
     outcome_updated: 結果が更新されました
     statement_placeholder: 回答を要約し、次に何が起こるかを説明します。
-    statement_template_placeholder: 決定の結果を記述するためのテンプレートを提供します。 (オプション)
     you_will_be_notified: 審査日は別途お知らせいたします。
     submit: 結果を共有する
+    review_due_in_days_hint: 決定を検討する前に待機する日数 (オプション)。
+    statement_template_hint: 決定の結果を記述するためのテンプレートを提供します。(オプション)
+    statement_template_placeholder: ご参加ありがとうございました！定足数に達したため、続行することができました。
   poll_common_outcome_panel:
     authored_by: 名前で}
   poll_common_delete_modal:
@@ -2107,9 +2108,10 @@ ja:
     points: ポイント
     average: 平均
     mean: 平均
-    pct_of_points: ポイントの%
-    pct_of_voters: 有権者の割合
     percent: パーセント
+    pct_of_points: ポイントの割合
+    pct_of_votes_cast: 投票数の割合
+    pct_of_voters: 有権者の割合
   poll_meeting_time_field:
     add_time_slot: 時間帯を追加する
     new_time_slot: 新しい時間帯
@@ -2439,13 +2441,11 @@ ja:
     get_started_here: ここから始めましょう
   poll_common_settings:
     who_can_vote: 誰が投票できますか？
-    short_reason_can_be_helpful: 投票理由は簡潔な方が理解しやすいです。簡潔な理由をまとめたものは、意思決定の優れたリソースとなります。
     specified_voters_only_true: 招待された人のみ
     specified_voters_only_false_group: グループ内の誰でも
     specified_voters_only_false_discussion: スレッド内の誰でも
     invite_people_next: "%{poll_type} を開始した後、誰に投票を依頼するか選択できます。"
     show_none_of_the_above: "「上記以外」の選択肢を含める"
-    shuffle_options: シャッフルオプション
     show_options_in_random_order: オプションをランダムな順序で表示する
     reduce_bias_by_showing_options_in_random_order: オプションをランダムな順序で表示することで偏りを減らします。
     multiple_choice:
@@ -2478,13 +2478,14 @@ ja:
     hide_results_until_closed:
       title: 閉じられるまで結果を非表示にする
       helptext_on: 投票が終了するまで投票結果を表示しない
+    short_reason_can_be_helpful: 投票理由は簡潔な方が理解しやすいです。簡潔な理由をまとめたものは、意思決定の優れたリソースとなります。
+    shuffle_options: シャッフルオプション
   poll_common_form:
     quorum: 定足数
     participation_quorum: 参加定足数
     quorum_hint: 結果を有効にするには、投票者の何パーセントが投票に参加する必要がありますか? 任意。定足数がない場合は空白のままにしてください。
     quorum_placeholder: 空白のままにするか、0～100の数字を入力してください
     deadline: 締め切り
-    how_much_time_to_vote: 人々に投票のためにどれくらいの時間を与える予定ですか?
     notify_everyone_when_poll_starts: "%{poll_type} が開始したら全員に通知する"
     option_has_votes_confirm_delete: このオプションに投票した人がいます。削除してもよろしいですか?
     example_title: タイトルの例
@@ -2499,7 +2500,6 @@ ja:
     please_review_the_form: フォームを確認してください
     option_added_please_add_details: オプションが追加されました！意味がわかるように詳細を追加してください。
     default_duration_in_days: デフォルトの期間（日数）
-    default_duration_in_days_hint: 人々に投票するために何日を与えるべきでしょうか?
     how_many_options_can_a_voter_choose: 有権者はいくつの選択肢を選ぶことができますか?
     minimum_choices: 最小限の選択肢
     maximum_choices: 最大限の選択肢
@@ -2571,9 +2571,14 @@ ja:
     reason_prompt: 理由プロンプト
     each_option_has_own_reason_prompt: 各オプションにはそれぞれ独自の理由プロンプトがあります。オプションを編集して、プロンプトを表示または変更してください。
     anonymous_voting: 匿名投票
-    anonymous_voting_description: 投票数と理由を表示しますが、投票者名は表示しません。%{poll_type} の開始後は変更できません。
     votes_are_anonymous: 投票は匿名です
     vote_reason: 投票理由
+    quorum_tip_vote_share_requirement: 'ヒント: 提案が可決されるために必要な賛成率を指定することもできます。投票シェア要件を定義するオプションを編集してください。'
+    how_much_time_to_vote: 人々に投票のためにどれくらいの時間を与える予定ですか?
+    default_duration_in_days_hint: 投票には何日かかりますか？
+    define_minimum_and_maxmimum_score: 投票者が選択肢に与えることができる最小スコアと最大スコアを定義する
+    how_many_points_does_each_voter_have_to_allocate: 各有権者は何ポイント割り当てられるのでしょうか?
+    anonymous_voting_description: 投票数と理由を表示しますが、投票者名は表示しません。%{poll_type} の開始後は変更できません。
     vote_reason_description: 人々に投票の理由を共有してもらったり、追加情報を提供してもらったりします。
     hide_results_description: 他の人の投票結果を見ずに投票したい場合は、結果を非表示にすることができます。
     process_helptext: このアンケートを実行するために使用されているプロセスに名前を付けて説明してください。

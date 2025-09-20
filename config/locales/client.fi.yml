@@ -1754,7 +1754,6 @@ fi:
     of: jostakin
     at_least: Vähintään
     no_more_than: Enintään
-    for_the_proposal_to_pass: Jotta ehdotus hyväksyttäisiin, tämän vaihtoehdon on saatava
     votes_cast: Annetut äänet
     eligible_voters: Äänestäjäoikeutetut
     gte_score_percent: Tarvitsee vähintään %{percent}% annetuista äänistä
@@ -1766,6 +1765,7 @@ fi:
     name_lte_score_percent: "%{name} ei saa ylittää %{percent}% annetuista äänistä"
     name_lte_voter_percent: "%{name} ei saa ylittää %{percent}% äänioikeutetuista"
     vote_share_requirement: Ääniosuusvaatimus
+    for_the_proposal_to_pass: Jotta ehdotus hyväksyttäisiin, tämän vaihtoehdon on saatava…
   poll_common:
     superseded: Korvattu
     outdated: Vanhentunut
@@ -2031,7 +2031,6 @@ fi:
     enter_an_outcome: Syötä tulos
   poll_common_outcome_form:
     review_due_in_days: Tarkista päätös kuinka monen päivän kuluttua?
-    review_due_in_days_hint: Aika (päivinä) odottaa ennen päätöksen tarkistamista. (valinnainen)
     review_date: Tarkistuksen päivämäärä
     review_date_hint: Aseta päivämäärä päätöksen tarkistamiselle (valinnainen)
     who_to_notify: Kenelle haluat ilmoittaa tästä tuloksesta? (valinnainen)
@@ -2041,9 +2040,11 @@ fi:
     outcome_created: Tulos luotu
     outcome_updated: Tulos päivitetty
     statement_placeholder: Tee yhteenveto vastauksista ja selitä, mitä tapahtuu seuraavaksi.
-    statement_template_placeholder: Anna malli päätöksen tuloksen kirjoittamista varten. (valinnainen)
     you_will_be_notified: Sinulle ilmoitetaan tarkastelupäivänä.
     submit: Jaa tulos
+    review_due_in_days_hint: Päätöksen tarkistamisen odottamispäivien lukumäärä (valinnainen).
+    statement_template_hint: Anna pohja päätöksen lopputuloksen kirjoittamista varten. (valinnainen)
+    statement_template_placeholder: Kiitos osallistumisesta! Päätösvaltainen joukko on saavutettu ja meillä on kannatusta jatkaa.
   poll_common_outcome_panel:
     authored_by: "%{name}"
   poll_common_delete_modal:
@@ -2108,9 +2109,10 @@ fi:
     points: Pisteet
     average: Keskiverto
     mean: Tarkoittaa
-    pct_of_points: "% pisteistä"
-    pct_of_voters: "% äänestäjistä"
     percent: Prosentti
+    pct_of_points: "% pisteistä"
+    pct_of_votes_cast: Annettujen äänien prosenttiosuus
+    pct_of_voters: Äänioikeutettujen prosenttiosuus
   poll_meeting_time_field:
     add_time_slot: Lisää aikaväli
     new_time_slot: Uusi aikaväli
@@ -2440,13 +2442,11 @@ fi:
     get_started_here: Aloita tästä
   poll_common_settings:
     who_can_vote: Kuka voi äänestää?
-    short_reason_can_be_helpful: Lyhyet äänestysperustelut ovat helpompia ymmärtää. Ytimekkäiden perustelujen kokoelma on loistava resurssi päätöksentekoon.
     specified_voters_only_true: Vain kutsutut ihmiset
     specified_voters_only_false_group: Kuka tahansa ryhmässä
     specified_voters_only_false_discussion: Kuka tahansa ketjussa
     invite_people_next: Voit valita äänestäjäksi kutsuttavat henkilöt, kun olet aloittanut %{poll_type} -kyselyn.
     show_none_of_the_above: Sisällytä vaihtoehto "Ei mikään yllä olevista"
-    shuffle_options: Satunnaistoiston asetukset
     show_options_in_random_order: Näytä vaihtoehdot satunnaisessa järjestyksessä
     reduce_bias_by_showing_options_in_random_order: Vähennä vinoumaa näyttämällä vaihtoehdot satunnaisessa järjestyksessä.
     multiple_choice:
@@ -2479,13 +2479,14 @@ fi:
     hide_results_until_closed:
       title: Piilota tulokset suljettuun asti
       helptext_on: Älä näytä, miten ihmiset ovat äänestäneet, ennen kuin äänestys on suljettu
+    short_reason_can_be_helpful: Lyhyet äänestysperustelut ovat helpompia ymmärtää. Ytimekkäiden perustelujen kokoelma on loistava resurssi päätöksentekoon.
+    shuffle_options: Satunnaistoiston asetukset
   poll_common_form:
     quorum: Päätösvaltaisuus
     participation_quorum: Osallistumispäätösvaltaisuus
     quorum_hint: Kuinka monta prosenttia äänestäjistä on osallistuttava, jotta tulos on pätevä? Valinnainen, jätä tyhjäksi, jos päätösvaltaisuutta ei ole.
     quorum_placeholder: Jätä tyhjäksi tai anna luku väliltä 0–100
     deadline: Määräaika
-    how_much_time_to_vote: Kuinka paljon aikaa annat ihmisille äänestää?
     notify_everyone_when_poll_starts: Ilmoita kaikille, kun %{poll_type} alkaa
     option_has_votes_confirm_delete: Jotkut ihmiset ovat äänestäneet tämän vaihtoehdon puolesta, haluatko varmasti poistaa sen?
     example_title: Esimerkki otsikosta
@@ -2500,7 +2501,6 @@ fi:
     please_review_the_form: Tarkista lomake
     option_added_please_add_details: Vaihtoehto lisätty! Lisääthän lisätietoja, jotta ihmiset ymmärtävät, mitä se tarkoittaa.
     default_duration_in_days: Oletuskesto päivinä
-    default_duration_in_days_hint: Kuinka monta päivää äänestysaikaa ihmisille pitäisi antaa?
     how_many_options_can_a_voter_choose: Kuinka monta vaihtoehtoa äänestäjä voi valita?
     minimum_choices: Vähimmäisvalinnat
     maximum_choices: Maksimi valinnanvaraa
@@ -2572,9 +2572,14 @@ fi:
     reason_prompt: Syy-kehote
     each_option_has_own_reason_prompt: Jokaisella vaihtoehdolla on oma syy-kehotteensa. Muokkaa vaihtoehtoa nähdäksesi tai muuttaaksesi sen kehotetta.
     anonymous_voting: Anonyymi äänestys
-    anonymous_voting_description: Näytä äänet ja syyt, mutta ei äänestäjiä. Tätä ei voi muuttaa %{poll_type}:n alettua.
     votes_are_anonymous: Äänet ovat nimettömiä
     vote_reason: Äänestyksen syy
+    quorum_tip_vote_share_requirement: 'Vinkki: Voit myös määrittää ehdotuksen hyväksymiseen vaadittavan hyväksyntätason. Muokkaa vaihtoehtoa määrittääksesi ääniosuusvaatimuksen'
+    how_much_time_to_vote: Kuinka paljon aikaa annat ihmisille äänestää?
+    default_duration_in_days_hint: Kuinka monta päivää ihmisillä on aikaa äänestää?
+    define_minimum_and_maxmimum_score: Määritä äänestäjän vaihtoehdolle antaman vähimmäis- ja enimmäispistemäärän
+    how_many_points_does_each_voter_have_to_allocate: Kuinka monta pistettä kukin äänestäjä saa antaa?
+    anonymous_voting_description: Näytä äänet ja syyt, mutta ei äänestäjiä. Tätä ei voi muuttaa %{poll_type}:n alettua.
     vote_reason_description: Pyydä ihmisiä kertomaan äänestyspäätöksensä perustelut tai antamaan lisätietoja.
     hide_results_description: Jos haluat ihmisten äänestävän näkemättä, miten muut ovat äänestäneet, voit piilottaa tulokset.
     process_helptext: Nimeä ja kuvaile prosessi, jota käytetään tämän kyselyn suorittamiseen.

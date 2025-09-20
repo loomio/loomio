@@ -1773,7 +1773,6 @@ he:
     of: שֶׁל
     at_least: לְפָחוֹת
     no_more_than: לא יותר מ
-    for_the_proposal_to_pass: כדי שההצעה תעבור, אופציה זו חייבת לקבל
     votes_cast: קולות שהושלכו
     eligible_voters: בעלי זכות הצבעה
     gte_score_percent: נדרשים לפחות %{percent}% מהקולות המועמדים
@@ -1785,6 +1784,7 @@ he:
     name_lte_score_percent: "%{name} לא יעלה על %{percent}% מהקולות שהוטלו"
     name_lte_voter_percent: מספר המצביעים %{name} לא יעלה על %{percent}%
     vote_share_requirement: דרישת שיעור ההצבעה
+    for_the_proposal_to_pass: כדי שההצעה תעבור, אופציה זו חייבת לקבל...
   poll_common:
     superseded: הוחלף
     outdated: מְיוּשָׁן
@@ -2050,7 +2050,6 @@ he:
     enter_an_outcome: הזן תוצאה
   poll_common_outcome_form:
     review_due_in_days: לבדוק את ההחלטה לאחר כמה ימים?
-    review_due_in_days_hint: פרק זמן (בימים) להמתנה לפני בחינת ההחלטה. (אופציונאלי)
     review_date: תאריך ביקורת
     review_date_hint: קבע תאריך לבדיקת ההחלטה (אופציונלי)
     who_to_notify: למי אתה רוצה להודיע על התוצאה הזו? (אופציונאלי)
@@ -2060,9 +2059,11 @@ he:
     outcome_created: תוצאה נוצרה
     outcome_updated: תוצאה עודכנה
     statement_placeholder: סכם את התגובות והסבר מה יקרה בהמשך.
-    statement_template_placeholder: ספק תבנית לכתיבת תוצאה של ההחלטה. (אופציונאלי)
     you_will_be_notified: תקבל הודעה בתאריך הבדיקה.
     submit: שתפ/י תוצאה
+    review_due_in_days_hint: מספר הימים שיש להמתין לפני בחינת ההחלטה (אופציונלי).
+    statement_template_hint: ספקו תבנית לכתיבת תוצאת ההחלטה. (אופציונלי)
+    statement_template_placeholder: תודה על ההשתתפות! הגענו למניין חוקי ויש לנו תמיכה להמשיך.
   poll_common_outcome_panel:
     authored_by: לפי %{name}
   poll_common_delete_modal:
@@ -2127,9 +2128,10 @@ he:
     points: נקודות
     average: מְמוּצָע
     mean: מתכוון
-    pct_of_points: "% מהנקודות"
-    pct_of_voters: "% מהמצביעים"
     percent: אָחוּז
+    pct_of_points: אחוז הנקודות
+    pct_of_votes_cast: אחוז מהקולות שניתנו
+    pct_of_voters: אחוז מבעלי זכות הבחירה
   poll_meeting_time_field:
     add_time_slot: הוסף משבצת זמן
     new_time_slot: " משבצת זמן חדשה"
@@ -2459,13 +2461,11 @@ he:
     get_started_here: התחל כאן
   poll_common_settings:
     who_can_vote: מי יכול להצביע?
-    short_reason_can_be_helpful: נימוקים קצרים להצבעה קלים יותר להבנה. אוסף של נימוקים תמציתיים הוא משאב מצוין לקבלת החלטה.
     specified_voters_only_true: רק אנשים מוזמנים
     specified_voters_only_false_group: כל מי שנמצא בקבוצה
     specified_voters_only_false_discussion: כל מי שנמצא בשרשור
     invite_people_next: ניתן לבחור מי מוזמן להצביע לאחר שתתחיל את %{poll_type}
     show_none_of_the_above: כלול אפשרות של "אף אחת מהאפשרויות הנ"ל"
-    shuffle_options: אפשרויות ערבוב
     show_options_in_random_order: הצג אפשרויות בסדר אקראי
     reduce_bias_by_showing_options_in_random_order: צמצם הטיה על ידי הצגת אפשרויות בסדר אקראי.
     multiple_choice:
@@ -2498,13 +2498,14 @@ he:
     hide_results_until_closed:
       title: הסתר תוצאות עד לסגירה
       helptext_on: אל תציגו כיצד אנשים הצביעו עד לסגירת הסקר
+    short_reason_can_be_helpful: נימוקים קצרים להצבעה קלים יותר להבנה. אוסף של נימוקים תמציתיים הוא משאב מצוין לקבלת החלטה.
+    shuffle_options: אפשרויות ערבוב
   poll_common_form:
     quorum: מִניָן
     participation_quorum: מניין ההשתתפות
     quorum_hint: איזה אחוז מהמצביעים חייב להשתתף כדי שהתוצאה תהיה תקפה? אופציונלי, יש להשאיר ריק אם אין מניין חוקי.
     quorum_placeholder: השאר ריק או הזן מספר בין 0 ל-100
     deadline: מוֹעֵד אַחֲרוֹן
-    how_much_time_to_vote: כמה זמן אתם נותנים לאנשים להצביע?
     notify_everyone_when_poll_starts: הודע לכולם כאשר %{poll_type} מתחיל
     option_has_votes_confirm_delete: חלק מהאנשים הצביעו בעד אפשרות זו, האם אתה בטוח שברצונך למחוק אותה?
     example_title: כותרת לדוגמה
@@ -2519,7 +2520,6 @@ he:
     please_review_the_form: אנא עיין בטופס
     option_added_please_add_details: אפשרות נוספת! אנא הוסיפו פרטים כדי שאנשים יבינו מה המשמעות.
     default_duration_in_days: משך ברירת מחדל בימים
-    default_duration_in_days_hint: כמה ימים צריך לתת לאנשים להצביע?
     how_many_options_can_a_voter_choose: כמה אפשרויות יכול בוחר לבחור?
     minimum_choices: אפשרויות מינימום
     maximum_choices: מקסימום אפשרויות
@@ -2591,9 +2591,14 @@ he:
     reason_prompt: סיבה
     each_option_has_own_reason_prompt: לכל אפשרות יש סיבה משלה. ערוך אפשרות כדי להציג או לשנות את ההנחיה שלה.
     anonymous_voting: הצבעה אנונימית
-    anonymous_voting_description: הצג את ההצבעות והסיבות אך לא את מי שהצביע. לא ניתן לשנות זאת לאחר שה-%{poll_type} התחיל.
     votes_are_anonymous: ההצבעות הן אנונימיות
     vote_reason: סיבת ההצבעה
+    quorum_tip_vote_share_requirement: 'טיפ: ניתן גם לציין את רמת ההסכמה הנדרשת לאישור הצעה. ערוך אפשרות להגדרת דרישת שיעור ההצבעה.'
+    how_much_time_to_vote: כמה זמן אתם נותנים לאנשים להצביע?
+    default_duration_in_days_hint: כמה ימים יהיו לאנשים להצביע?
+    define_minimum_and_maxmimum_score: הגדירו את הציונים המינימליים והמקסימליים שבוחר יכול לתת לאפשרות
+    how_many_points_does_each_voter_have_to_allocate: כמה נקודות כל בוחר צריך להקצות?
+    anonymous_voting_description: הצג את ההצבעות והסיבות אך לא את מי שהצביע. לא ניתן לשנות זאת לאחר שה-%{poll_type} התחיל.
     vote_reason_description: בקשו מאנשים לשתף את הנימוקים שלהם כשהם מצביעים, או לספק מידע נוסף.
     hide_results_description: אם אתם רוצים שאנשים יצביעו בלי לראות איך אחרים הצביעו, אתם יכולים להסתיר את התוצאות.
     process_helptext: ציין ותאר את התהליך בו נעשה שימוש להפעלת סקר זה.

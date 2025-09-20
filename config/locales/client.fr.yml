@@ -1800,7 +1800,6 @@ fr:
     of: de
     at_least: Au moins
     no_more_than: Pas plus de
-    for_the_proposal_to_pass: Pour que la proposition soit adoptée, cette option doit recevoir
     votes_cast: Votes exprimés
     eligible_voters: Électeurs éligibles
     gte_score_percent: Nécessite au moins %{percent}% des votes exprimés
@@ -1812,6 +1811,7 @@ fr:
     name_lte_score_percent: "%{name} ne doit pas dépasser %{percent}% des votes exprimés"
     name_lte_voter_percent: "%{name} ne doit pas dépasser %{percent}% des électeurs éligibles"
     vote_share_requirement: Exigence en matière de parts de vote
+    for_the_proposal_to_pass: Pour que la proposition soit adoptée, cette option doit recevoir…
   poll_common:
     superseded: Remplacé
     outdated: Dépassé
@@ -2077,7 +2077,6 @@ fr:
     enter_an_outcome: Entrez un résultat
   poll_common_outcome_form:
     review_due_in_days: Revoir la décision après combien de jours ?
-    review_due_in_days_hint: Un délai (en jours) à attendre avant de revoir la décision. (facultatif)
     review_date: Date de révision
     review_date_hint: Fixer la date du rappel pour examiner les résultats (facultatif)
     who_to_notify: Qui voulez-vous informer de ce résultat?
@@ -2087,9 +2086,11 @@ fr:
     outcome_created: Résultat créé
     outcome_updated: Résultat mis à jour
     statement_placeholder: Résumez les réponses et expliquez ce qui va suivre.
-    statement_template_placeholder: Fournissez un modèle pour rédiger le résultat de la décision. (facultatif)
     you_will_be_notified: Vous serez alerté à la date de revue
     submit: Partager le résultat
+    review_due_in_days_hint: Nombre de jours à attendre avant de réviser la décision (facultatif).
+    statement_template_hint: Fournir un modèle pour rédiger le résultat de la décision. (facultatif)
+    statement_template_placeholder: Merci de votre participation ! Le quorum a été atteint et nous avons le soutien nécessaire pour continuer.
   poll_common_outcome_panel:
     authored_by: Par %{name}
   poll_common_delete_modal:
@@ -2154,9 +2155,10 @@ fr:
     points: Points
     average: Moyenne
     mean: Signification
-    pct_of_points: "% de points"
-    pct_of_voters: "% de votants"
     percent: Pour cent
+    pct_of_points: "% de points"
+    pct_of_votes_cast: "% des votes exprimés"
+    pct_of_voters: "% d'électeurs éligibles"
   poll_meeting_time_field:
     add_time_slot: Ajouter un créneau
     new_time_slot: Nouveau créneau horaire
@@ -2488,13 +2490,11 @@ fr:
     get_started_here: Commencez ici
   poll_common_settings:
     who_can_vote: Qui peut voter ?
-    short_reason_can_be_helpful: Les motifs de vote concis sont plus faciles à comprendre. Un recueil concis de motifs constitue une excellente ressource pour prendre une décision.
     specified_voters_only_true: Personnes invitées uniquement
     specified_voters_only_false_group: Quelqu'un dans le groupe
     specified_voters_only_false_discussion: Quelqu'un dans le fil
     invite_people_next: Vous pouvez choisir qui est invité à voter après avoir démarré le %{poll_type}
     show_none_of_the_above: Inclure une option « Aucune des réponses ci-dessus »
-    shuffle_options: Options de lecture aléatoire
     show_options_in_random_order: Afficher les options dans un ordre aléatoire
     reduce_bias_by_showing_options_in_random_order: Réduisez les biais en affichant les options dans un ordre aléatoire.
     multiple_choice:
@@ -2527,13 +2527,14 @@ fr:
     hide_results_until_closed:
       title: Masquer les résultats jusqu'à la fermeture
       helptext_on: Ne montrez pas comment les gens ont voté jusqu'à la clôture du sondage
+    short_reason_can_be_helpful: Les motifs de vote concis sont plus faciles à comprendre. Un recueil concis de motifs constitue une excellente ressource pour prendre une décision.
+    shuffle_options: Options de lecture aléatoire
   poll_common_form:
     quorum: Quorum
     participation_quorum: Quorum de participation
     quorum_hint: Quel pourcentage d'électeurs doit participer pour que le résultat soit valide ? Facultatif ; laisser vide en cas d'absence de quorum.
     quorum_placeholder: Laissez vide ou entrez un nombre compris entre 0 et 100
     deadline: Date limite
-    how_much_time_to_vote: Combien de temps allez-vous donner aux gens pour voter ?
     notify_everyone_when_poll_starts: Avertir tout le monde lorsque %{poll_type} démarre
     option_has_votes_confirm_delete: Certaines personnes ont voté pour cette option, êtes-vous sûr de vouloir la supprimer ?
     example_title: Exemple de titre
@@ -2548,7 +2549,6 @@ fr:
     please_review_the_form: Veuillez consulter le formulaire
     option_added_please_add_details: Option ajoutée ! Veuillez préciser sa signification.
     default_duration_in_days: Durée par défaut en jours
-    default_duration_in_days_hint: Combien de jours faut-il accorder aux citoyens pour voter ?
     how_many_options_can_a_voter_choose: Combien d’options un électeur peut-il choisir ?
     minimum_choices: Choix minimum
     maximum_choices: Choix maximum
@@ -2620,9 +2620,14 @@ fr:
     reason_prompt: Raison de l'invite
     each_option_has_own_reason_prompt: Chaque option possède sa propre explication. Modifiez une option pour afficher ou modifier son explication.
     anonymous_voting: Vote anonyme
-    anonymous_voting_description: Afficher les votes et leurs motifs, mais pas les personnes qui les ont exprimés. Cette option ne peut pas être modifiée après le lancement du sondage.
     votes_are_anonymous: Les votes sont anonymes
     vote_reason: Raison du vote
+    quorum_tip_vote_share_requirement: 'Conseil : Vous pouvez également préciser le niveau d''accord requis pour l''adoption d''une proposition. Modifiez une option pour définir la répartition des voix requise.'
+    how_much_time_to_vote: Combien de temps allez-vous donner aux gens pour voter ?
+    default_duration_in_days_hint: Combien de jours les gens auront-ils pour voter ?
+    define_minimum_and_maxmimum_score: Définir les scores minimum et maximum qu'un électeur peut donner à une option
+    how_many_points_does_each_voter_have_to_allocate: Combien de points chaque électeur doit-il attribuer ?
+    anonymous_voting_description: Afficher les votes et leurs motifs, mais pas les personnes qui les ont exprimés. Cette option ne peut pas être modifiée après le lancement du sondage.
     vote_reason_description: Demandez aux gens de partager leurs raisons lorsqu’ils votent ou de fournir des informations supplémentaires.
     hide_results_description: Si vous souhaitez que les gens votent sans voir comment les autres ont voté, vous pouvez masquer les résultats.
     process_helptext: Nommez et décrivez le processus utilisé pour exécuter ce sondage.

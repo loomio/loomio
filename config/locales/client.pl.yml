@@ -1779,7 +1779,6 @@ pl:
     of: z
     at_least: Co najmniej
     no_more_than: Nie więcej niż
-    for_the_proposal_to_pass: Aby propozycja została przyjęta, opcja ta musi uzyskać akceptację
     votes_cast: Oddane głosy
     eligible_voters: Uprawnieni wyborcy
     gte_score_percent: Potrzeba co najmniej %{percent}% oddanych głosów
@@ -1791,6 +1790,7 @@ pl:
     name_lte_score_percent: "%{name} nie może przekroczyć %{percent}% oddanych głosów"
     name_lte_voter_percent: "%{name} nie może przekroczyć %{percent}% uprawnionych do głosowania"
     vote_share_requirement: Wymagania dotyczące udziału w głosowaniu
+    for_the_proposal_to_pass: Aby propozycja została przyjęta, opcja ta musi otrzymać…
   poll_common:
     superseded: zastąpione
     outdated: Przestarzały
@@ -2058,7 +2058,6 @@ pl:
     enter_an_outcome: Wprowadź wynik
   poll_common_outcome_form:
     review_due_in_days: Sprawdź decyzję po ilu dniach?
-    review_due_in_days_hint: Okres (w dniach) oczekiwania przed rozpatrzeniem decyzji. (opcjonalny)
     review_date: Data recenzji
     review_date_hint: Ustaw datę przeglądu decyzji (opcjonalnie)
     who_to_notify: Kogo chcesz powiadomić o tym wyniku? (opcjonalny)
@@ -2068,9 +2067,11 @@ pl:
     outcome_created: Wynik utworzony
     outcome_updated: Wynik zaktualizowany
     statement_placeholder: Podsumuj odpowiedzi i wyjaśnij co stanie się następnie
-    statement_template_placeholder: Podaj wzór do zapisania wyniku decyzji. (opcjonalny)
     you_will_be_notified: Zostaniesz powiadomiony w dniu analizy danych
     submit: Udostępnij wynik
+    review_due_in_days_hint: Liczba dni oczekiwania przed rozpatrzeniem decyzji (opcjonalnie).
+    statement_template_hint: Podaj szablon do zapisania wyniku decyzji. (opcjonalnie)
+    statement_template_placeholder: Dziękujemy za udział! Kworum zostało osiągnięte i mamy wsparcie, aby kontynuować.
   poll_common_outcome_panel:
     authored_by: Autorstwa %{name}
   poll_common_delete_modal:
@@ -2135,9 +2136,10 @@ pl:
     points: Punkty
     average: Przeciętny
     mean: Mieć na myśli
-    pct_of_points: "% punktów"
-    pct_of_voters: "% głosujących"
     percent: Procent
+    pct_of_points: "% punktów"
+    pct_of_votes_cast: "% oddanych głosów"
+    pct_of_voters: "% uprawnionych do głosowania"
   poll_meeting_time_field:
     add_time_slot: Dodaj przedział czasowy
     new_time_slot: Nowy przedział czasowy
@@ -2469,13 +2471,11 @@ pl:
     get_started_here: Zacznij tutaj
   poll_common_settings:
     who_can_vote: Kto może głosować?
-    short_reason_can_be_helpful: Krótkie uzasadnienia głosowania są łatwiejsze do zrozumienia. Zbiór zwięzłych uzasadnień to doskonałe źródło informacji pomocne w podejmowaniu decyzji.
     specified_voters_only_true: Tylko dla zaproszonych osób
     specified_voters_only_false_group: Każdy w grupie
     specified_voters_only_false_discussion: Każdy w wątku
     invite_people_next: Po rozpoczęciu ankiety %{poll_type} możesz wybrać, kto zostanie zaproszony do głosowania
     show_none_of_the_above: Dodaj opcję „Żadna z powyższych”
-    shuffle_options: Opcje tasowania
     show_options_in_random_order: Pokaż opcje w kolejności losowej
     reduce_bias_by_showing_options_in_random_order: Zmniejsz stronniczość poprzez wyświetlanie opcji w losowej kolejności.
     multiple_choice:
@@ -2508,13 +2508,14 @@ pl:
     hide_results_until_closed:
       title: Ukryj wyniki do momentu zamknięcia
       helptext_on: Nie pokazuj, jak ludzie głosowali, dopóki ankieta nie zostanie zamknięta
+    short_reason_can_be_helpful: Krótkie uzasadnienia głosowania są łatwiejsze do zrozumienia. Zbiór zwięzłych uzasadnień to doskonałe źródło informacji pomocne w podejmowaniu decyzji.
+    shuffle_options: Opcje losowania
   poll_common_form:
     quorum: Kworum
     participation_quorum: Kworum uczestnictwa
     quorum_hint: Jaki procent wyborców musi uczestniczyć w głosowaniu, aby wynik był ważny? Opcjonalnie, pozostaw puste pole w przypadku braku kworum.
     quorum_placeholder: Pozostaw puste lub wpisz liczbę od 0 do 100
     deadline: Termin ostateczny
-    how_much_time_to_vote: Ile czasu dasz ludziom na zagłosowanie?
     notify_everyone_when_poll_starts: Powiadom wszystkich, gdy rozpocznie się %{poll_type}
     option_has_votes_confirm_delete: Niektórzy użytkownicy zagłosowali na tę opcję. Czy na pewno chcesz ją usunąć?
     example_title: Przykładowy tytuł
@@ -2529,7 +2530,6 @@ pl:
     please_review_the_form: Proszę sprawdzić formularz
     option_added_please_add_details: Dodano opcję! Proszę o dodanie szczegółów, żeby ludzie wiedzieli, co to oznacza.
     default_duration_in_days: Domyślny czas trwania w dniach
-    default_duration_in_days_hint: Ile dni należy dać ludziom na zagłosowanie?
     how_many_options_can_a_voter_choose: Ile opcji może wybrać wyborca?
     minimum_choices: Minimalny wybór
     maximum_choices: Maksymalny wybór
@@ -2601,9 +2601,14 @@ pl:
     reason_prompt: Monit o podanie powodu
     each_option_has_own_reason_prompt: Każda opcja ma swój własny powód. Edytuj opcję, aby wyświetlić lub zmienić jej powód.
     anonymous_voting: Głosowanie anonimowe
-    anonymous_voting_description: Pokaż głosy i powody, ale nie osoby, które je oddały. Nie można tego zmienić po rozpoczęciu %{poll_type}.
     votes_are_anonymous: Głosy są anonimowe
     vote_reason: Powód głosowania
+    quorum_tip_vote_share_requirement: 'Wskazówka: Możesz również określić poziom zgody wymagany do przyjęcia propozycji. Edytuj opcję, aby zdefiniować wymóg udziału głosów.'
+    how_much_time_to_vote: Ile czasu dasz ludziom na zagłosowanie?
+    default_duration_in_days_hint: Ile dni ludzie będą mieli na zagłosowanie?
+    define_minimum_and_maxmimum_score: Określ minimalną i maksymalną liczbę punktów, jaką wyborca może przyznać danej opcji
+    how_many_points_does_each_voter_have_to_allocate: Ile punktów ma do rozdysponowania każdy wyborca?
+    anonymous_voting_description: Pokaż głosy i powody, ale nie osoby, które je oddały. Nie można tego zmienić po rozpoczęciu %{poll_type}.
     vote_reason_description: Poproś ludzi, aby podzielili się motywami swojego głosowania lub podali dodatkowe informacje.
     hide_results_description: Jeśli chcesz, aby ludzie głosowali, nie widząc, jak głosowali inni, możesz ukryć wyniki.
     process_helptext: Podaj nazwę i opisz proces, który jest używany do przeprowadzenia tej ankiety.
