@@ -1,205 +1,223 @@
 ---
 zh_CN:
   start_trial:
-    title: 开始免费试用 Loomio
-    intro: 感谢您对 Loomio 的关注。我们很高兴为您提供 %{day} 天的免费试用，以便您了解 Loomio 是否适合您的组织。
+    title: 开始 Loomio 免费试用
+    intro: 感谢您对 Loomio 的关注。我们很高兴为您提供 %{day} 天的免费试用，让您可以判断 Loomio 是否适合您的组织。
     lets_get_started: 让我们开始吧！
-    your_name: 您的名字
-    your_email: 您的电子邮件地址
+    your_name: 您的昵称
+    your_email: 您的电子邮件
     how_do_you_intend_to_use_loomio: 您打算如何使用 Loomio？
-    what_decisions_do_you_need_to_make: 您需要做出什么决定？
-    how_did_you_hear_about_loomio: 您是如何了解到 Loomio 的？
-    newsletter_intro: 您想订阅我们的新闻通讯吗？
-    newsletter_description: 了解 Loomio 的新功能以及世界各地组织如何使用 Loomio 的励志故事
-    subscribe_to_newsletter: 订阅 Loomio 新闻通讯
-    form_incomplete: 请填写表格上的所有字段以继续
+    what_decisions_do_you_need_to_make: 您需要做出哪些决策？
+    how_did_you_hear_about_loomio: 您是如何知道 Loomio 的？
+    newsletter_intro: 您想订阅我们的新闻简报吗？
+    newsletter_description: 随时了解新功能以及世界各地组织如何使用 Loomio 的励志故事
+    subscribe_to_newsletter: 订阅 Loomio 新闻简报
+    form_incomplete: 请填写表单中的所有字段以继续
     success: 成功！
-    taken_first_step: 您已经迈出了与 Loomio 进行协作决策的第一步。
-    account_created_for_you: 我们已经为 %{email} 创建了一个用户帐户，并在 Loomio 上创建了一个组。
+    taken_first_step: 您已经迈出了使用 Loomio 进行协作决策的第一步。
+    account_created_for_you: 我们已为 %{email} 创建了一个用户账号和一个 Loomio 小组。
     please_sign_in_to_continue: 请登录以继续。
     please_complete_this_field: 请填写此字段
-    please_enter_a_valid_email_address: 请输入有效的电子邮件地址
+    please_enter_a_valid_email_address: 请输入有效的邮箱地址
     please_accept_the_terms: 请接受条款
   tasks:
     tasks: 任务
-    your_tasks: 你的任务
-    permission_denied: 您无权更新此任务
-    due_date: 两个日期
-    send_reminder: 发送提醒（如果尚未完成）
-    no_reminder: 无提醒
-    on_due_date: 到期日
-    1_day_before: 1天前
-    2_day_before: 2天前
-    3_day_before: 3天前
-    7_day_before: 7天前
-    task_placeholder: 输入任务并{'@'}提及某人来分配它
+    your_tasks: 您的任务
+    permission_denied: 您没有权限更新此任务
+    due_date: 截止日期
+    send_reminder: 发送提醒（如果未完成）
+    no_reminder: 不提醒
+    on_due_date: 截止日当天
+    1_day_before: 提前 1 天
+    2_day_before: 提前 2 天
+    3_day_before: 提前 3 天
+    7_day_before: 提前 7 天
+    task_placeholder: 输入一个任务，并使用 {'@'}提及某人来分配
     add_due_date: 添加截止日期
-    task_updated_done: 任务标记为已完成！
-    task_updated_not_done: 任务标记为未完成
+    task_updated_done: 任务已标记为完成！
+    task_updated_not_done: 任务已标记为未完成
     no_tasks_assigned: 没有分配给您的任务
   tips:
     get_started_here: 从这里开始
     youve_completed_all_the_steps: "\U0001F389 您已完成所有步骤！"
     getting_started_checklist: 入门清单
-    complete_these_steps_to_set_up_your_group: 完成以下步骤来设置您的群组
+    complete_these_steps_to_set_up_your_group: 完成以下步骤以设置您的小组
     hide:
       title: 隐藏这些提示
-      hide_onboarding: 隐藏入职提示
-      unhide_onboarding: 显示入职提示
-      helptext: "<p>这将从标题栏中删除“入门清单”。</p><p>如果您想稍后再恢复，您可以从侧边栏设置中<b>显示入门提示</b></p>"
+      hide_onboarding: 隐藏新手提示
+      unhide_onboarding: 显示新手提示
+      helptext: |
+        <p>这将从标题栏中移除“入门清单”。</p>
+        <p>如果您想稍后恢复，可以在侧边栏设置中 <b>显示新手提示</b>。</p>
     intro:
-      tip_title: 单击此处开始
+      tip_title: 点击这里开始
       title: 欢迎加入您的新 Loomio 小组！
-      body: "<p>这一系列简短的小步骤旨在确保您邀请加入小组的人有良好的第一印象并了解如何参与讨论和决策。</p><p>侧边栏中有一个“联系客服”按钮。如果您有任何疑问或需要建议，请随时联系我们。</p>"
+      body: |
+        <p>这一系列简短步骤旨在确保您邀请加入小组的人有良好的第一印象，并了解如何参与讨论和决策。</p>
+
+        <p>在侧边栏中，您会找到“联系支持”按钮。如果您有任何问题或需要建议，请随时联系我们。</p>
       submit: 让我们开始吧
     group:
-      welcome_and_faq: 欢迎！阅读此文开始
+      welcome_and_faq: 欢迎！请先阅读此内容
       upload_image:
-        title: 完成您的团体资料
-        helptext: "<p>让我们查看一下您的群组资料。名称、描述、徽标和封面图片将包含在您接下来发送的邀请电子邮件中。</p><p><b>添加您自己的群组封面图片</b>，它有助于给您邀请加入的人留下良好的第一印象。</p><p>您可以使用最近的团队照片或代表您组织的工作或社区的照片。</p>"
-        open_group_settings: 打开群组设置
+        title: 完善您的小组资料
+        helptext: |
+          <p>让我们检查一下您的小组资料。名称、描述、Logo 和封面图片会包含在接下来步骤中发送的邀请邮件里。</p>
+          <p><b>添加您自己的小组封面图片</b>，这有助于给被邀请者留下良好的第一印象。</p>
+          <p>您可以使用团队合照，或者能代表您组织或社区工作的图片。</p>
+        open_group_settings: 打开小组设置
       invite_people:
-        title: 邀请其他人加入群组
+        title: 邀请成员加入小组
       start_a_thread:
-        title: 发起一个话题
-        helptext: "<p>创建一个人们接受邀请后就会看到的帖子。</p><p>目的是鼓励人们在 Loomio 中写下他们的第一条评论。</p><p>为了简化操作，我们提供了您可以使用的<b>练习线程</b>模板。</p>"
-        submit: 查看主题模板
+        title: 开始一个议题
+        helptext: |
+          <p>创建一个议题，让人们在接受邀请后能看到。</p>
+          <p>目的是鼓励大家在 Loomio 上发表第一条评论。</p>
+          <p>为了让这一过程更简单，我们提供了一个 <b>练习议题</b> 模板供您使用。</p>
+        submit: 查看议题模板
       start_a_proposal:
-        title: 发起提案
-        helptext: "<p>在 Loomio 中，我们使用提案来揭示对某项决策的支持或寻找改进该决策的方法。</p><p>让我们提出一项提案并要求小组成员对其进行投票。</p><p>我们创建了一个<b>实践提案</b>模板供您使用。</p>"
-        submit: 查看提案模板
+        title: 发起一个议案
+        helptext: |
+          <p>在 Loomio 中，我们使用议案来展现对某个决策的支持或提出改进方法。</p>
+          <p>让我们发起一个议案，并请小组成员对其进行投票。</p>
+          <p>我们为您准备了一个 <b>练习议案</b> 模板。</p>
+        submit: 查看议案模板
       share_an_outcome:
-        title: 分享提案结果
-        helptext: "<p>为了推动决策的推进，提案设有投票截止日期。截止日期过后，投票将关闭，届时您将收到通知，告知您提案结果。</p><p>结果是一个机会来表明该提议是否成功以及接下来会发生什么。</p><p>如果您的提案截止日期尚未过去，但您仍然想继续，您可以单击<b>提前关闭</b>。</p><p>时机成熟时，<b>请输入您的提案的结果</b>。</p>"
-        submit: 查看提案
+        title: 分享议案结果
+        helptext: |
+          <p>为了推动决策进展，议案会有投票截止日期。到期后，投票将关闭，系统会通知您分享议案结果。</p>
+          <p>结果是一个机会，用于说明议案是否成功，以及接下来的行动。</p>
+          <p>如果议案截止日期还没到，但您想提前结束，可以点击 <b>提前结束</b>。</p>
+          <p>在合适的时候，请<b>输入议案结果</b>。</p>
+        submit: 查看议案
         cancel: 稍后再做
   templates:
     template_gallery: 模板库
     title_template: "%{title} 模板"
-    title_templates: "%{title} 模板"
-    title_copy: "%{title} 复制"
+    title_templates: "%{title} 模板集"
+    title_copy: "%{title} 副本"
     copy_of_title: "%{title} 的副本"
     loomio_default_templates: Loomio 默认模板
     which_templates_would_you_like_to_use: 您想使用哪些模板？
-    login_to_start_demo: 这是 Loomio 的实际演示。欢迎大家观看。
-    sign_in_to_try_features: 如果您想尝试在演示决策中投票，或者为您的组织开始免费试用，请单击“登录”。
-    click_button_to_start_demo: 欢迎！要试用投票和其他功能，请点击“开始演示”。
-    welcome_to_your_demo: 这是您自己的演示组！
-    try_voting_to_see_it_work: 尝试对提案进行投票，以了解 Loomio 的工作原理。
-    delete_will_be_deleted_in_x_days: 此演示将在 %{x} 天后被删除。
-    to_use_loomio_with_your_org_start_trial: 当您准备好与您的组织一起试用 Loomio 时，请开始免费试用。
+    login_to_start_demo: '这是 Loomio 的演示版本。欢迎随意体验。'
+    sign_in_to_try_features: '如果您想在演示决策中投票，或为您的组织开始免费试用，请点击“登录”。'
+    click_button_to_start_demo: '欢迎！要尝试投票和其他功能，请点击“开始演示”。'
+    welcome_to_your_demo: 这是您自己的演示小组！
+    try_voting_to_see_it_work: 试着在议案中投票，了解 Loomio 如何运作。
+    delete_will_be_deleted_in_x_days: 此演示将在 %{x} 天后删除。
+    to_use_loomio_with_your_org_start_trial: 准备好与您的组织一起试用 Loomio 时，请开始免费试用。
     templates: 模板
-    make_a_copy: 复印
-    this_thread_is_a_template: 此主题为模板。如需使用，请复制一份。
-    this_is_a_poll_template: 这是投票模板。如果您想开始投票，请复制一份。
-    try_loomio: 尝试 Loomio
-    start_a_demo_group: 启动演示组
+    make_a_copy: 制作副本
+    this_thread_is_a_template: 这是一个讨论模板。如需使用，请制作副本。
+    this_is_a_poll_template: 这是一个投票模板。如需开始投票，请制作副本。
+    try_loomio: 试用 Loomio
+    start_a_demo_group: 开始演示小组
     start_a_demo: 开始演示
-    demo_group: 演示组
-    play_with_an_example_group: 与示例组一起玩
-    look_and_feel: 看看 Loomio 是如何为小型组织服务的。试用一下，了解这款应用。
-    watch_then_start: 请观看视频，然后单击“开始演示”来尝试 Loomio
+    demo_group: 演示小组
+    play_with_an_example_group: 体验一个示例小组
+    look_and_feel: 了解 Loomio 在小型组织中的样子。通过实际操作来学习。
+    watch_then_start: 请先观看视频，然后点击“开始演示”来试用 Loomio
     generating_demo: 好的，请稍等！生成演示大约需要 20 秒。
     start_a_x_day_free_trial: 开始 %{day} 天免费试用
-    ready_to_trial: 准备好与您的组织一起尝试 Loomio 了吗？
+    ready_to_trial: 准备好与您的组织一起试用 Loomio 吗？
     start_a_no_obligation_x_day_trial: 为您的组织创建一个 Loomio 小组，免费试用 %{day} 天。
-    you_can_test_it_out: 您可以邀请其他人加入，将其与您的其他工具集成，并尝试做出一些决定。
-    demo_created: 演示组已创建，只为您！
+    you_can_test_it_out: '您可以邀请他人加入，将其与您的其他工具集成，并尝试做一些决策。'
+    demo_created: 已为您创建一个专属的演示小组！
     start_demo: 开始演示
     view_demo: 查看演示
     start_trial: 开始试用
     start_free_trial: 开始免费试用
-    demo_needs_user: 要开始试用，您需要注册（或登录）成为 Loomio 用户。注册过程免费，只需一分钟。
-    trial_needs_user: 欢迎！请登录开始免费试用
-    this_is_a_template_for_new_threads: 这是新线程的模板
-    share_a_custom_configuration: 与群组中的其他人共享自定义配置
+    demo_needs_user: 要开始演示，您需要注册（或登录）Loomio 用户。这是免费的，仅需一分钟。
+    trial_needs_user: 欢迎！请登录以开始您的免费试用
+    this_is_a_template_for_new_threads: 这是一个新讨论的模板
+    share_a_custom_configuration: 与您小组的其他人分享自定义配置
   doctypes:
-    youtube_video: Youtube 视频
-    image: 图像
+    youtube_video: YouTube 视频
+    image: 图片
     pdf: PDF
-    excel: Excel 电子表格
+    excel: Excel 表格
     document: 文档
-    csv: CSV文件
+    csv: CSV 文件
     video: 视频
     text: 文本文件
-    google_doc: 谷歌文档
-    google_sheet: Google 电子表格
+    google_doc: Google 文档
+    google_sheet: Google 表格
     google_drive: Google 云端硬盘
-    pull_request: 拉取请求
+    pull_request: Pull Request
     trello_board: Trello 看板
     trello_card: Trello 卡片
   plan_names:
-    free: 自由的
-    starter: 起动机
-    trial: 审判
+    free: 免费版
+    starter: 入门版
+    trial: 试用版
     pro: 专业版
-    pro_nonprofit: 专业非营利组织
-    community: 社区
-    small: 小的
-    medium: 中等的
-    large: 大的
-    monthly: 每月
-    yearly: 每年
+    pro_nonprofit: 专业版（非营利）
+    community: 社区版
+    small: 小型
+    medium: 中型
+    large: 大型
+    monthly: 月付
+    yearly: 年付
   current_plan_button:
     upgrade: 升级
     buy_now: 立即购买
-    is_old_plan: Loomio 推出了新的简单定价计划
-    change_plan: 更改计划
-    view_plans: 查看计划
+    is_old_plan: Loomio 已推出新的简化定价方案
+    change_plan: 更改方案
+    view_plans: 查看方案
     free_trial: 免费试用。剩余 %{days} 天。
-    trial_expired: 您的试用期已过期。请升级以继续使用 Loomio。
-    tooltip: 我们的价格超值！立即升级，享受 Loomio 为您的团队提供的服务。
+    trial_expired: 您的试用已到期。请升级以继续使用 Loomio。
+    tooltip: 我们的价格非常优惠！今天就升级，享受 Loomio 为您的小组带来的功能。
     was_gift_remaining: 剩余 %{days} 天。
-    was_gift_expired: 您的免费计划现已过期。
-    subscription_ended: 您的 Loomio 订阅已结束。如需继续使用 Loomio，请升级
-    was_gift_expired_or_mistake: '您的免费套餐现已过期。如果您认为有误，<a style=''text-decoration: underline'' href=''/contact''>请联系我们</a>。'
+    was_gift_expired: 您的免费方案已到期。
+    subscription_ended: 您的 Loomio 订阅已结束。要继续使用 Loomio，请升级。
+    was_gift_expired_or_mistake: '您的免费方案已到期。如果您认为这是一个错误，请 <a style=''text-decoration: underline'' href=''/contact''>联系我们</a>。'
   subscription_status:
-    plan: 计划
-    state: 地位
+    plan: 方案
+    state: 状态
     members: 成员
     active_members: 活跃成员
-    max_threads: 最大线程数
+    max_threads: 最大议题数
     max_members: 最大成员数
-    expires_at: 过期
+    expires_at: 到期
     renews_at: 续订
     referral_code: 推荐码
-    chargify_link: 计费门户
-    referral_code_help: 给朋友折扣，自己也获得一些信用！
-    manage_payment_details: 管理付款详情
+    chargify_link: 账单管理
+    referral_code_help: 推荐朋友可获折扣，自己还能获得积分！
+    manage_payment_details: 管理付款信息
     manage_subscription: 管理订阅
-    amount: 数量
+    amount: 金额
   loomio_tags:
     all_tags: 所有标签
     tags: 标签
     apply_tags: 应用标签
-    new_tag: 新标签
-    name_label: 姓名
+    new_tag: 新建标签
+    name_label: 名称
     color_label: 颜色
     pick_a_color: 选择颜色
-    card_title: 类别标签
+    card_title: 分类标签
     modal_title: 创建新标签
     modal_edit_title: 编辑标签
-    modal_destroy_title: 删除标签
+    modal_destroy_title: 移除标签
     destroy_tag: 删除标签
-    destroy_helptext: 这将删除此标签并将其从群组中的所有主题中移除。您确定吗？
-    helptext: 标签可让您对对话进行分类，以便以后轻松找到它们
-    discussions_count_singular: "（%{count} 个线程）"
-    discussions_count_plural: "（%{count} 个线程）"
+    destroy_helptext: 这将删除该标签并从小组的所有讨论中移除。您确定吗？
+    helptext: 标签可以帮助您对讨论进行分类，并在以后轻松查找
+    discussions_count_singular: "(%{count} 个讨论)"
+    discussions_count_plural: "(%{count} 个讨论)"
     tag_created: 标签已保存
     tag_destroyed: 标签已删除
-    tags_marked: "%{groupName} 中标记为“%{name}”的话题"
-    no_tags_present: 找不到带该标签的帖子！请尝试选择其他帖子
-    no_tags_in_group: 此群组尚无分类标签
+    tags_marked: 在 %{groupName} 中标记为“%{name}”的讨论
+    no_tags_present: 没有找到带该标签的讨论！请尝试选择其他标签
+    no_tags_in_group: 该小组还没有分类标签
     only_admins_can_edit_tags: 抱歉，只有 %{group} 的管理员可以创建、重命名或删除标签
   poll_types:
-    proposal: 提议
-    count: 选择加入
-    check: 感觉检查
-    poll: 轮询
-    dot_vote: 投票
-    meeting: 时间调查
-    ranked_choice: 排序选择
-    score: 评分调查
+    proposal: 议案
+    count: 参与意愿投票
+    check: 意见征询
+    poll: 公议
+    dot_vote: 点票
+    meeting: 时间投票
+    ranked_choice: 排序投票
+    score: 评分投票
     question: 问答环节
   timezones:
     local: 当地时间 (%{value})
@@ -210,335 +228,339 @@ zh_CN:
     prefix_eg: 例如 %{val}
     are_you_sure: 你确定吗？
     loomio_help: Loomio帮助
-    visit_loomio_help: 访问 Loomio 帮助
+    visit_loomio_help: 访问 Loomio 帮助中心
     help_and_guides: 帮助和指南
     please_wait: 请稍等
     optional: "（选修的）"
     version: 版本
-    none: 没有任何
-    empty: 空的
+    none: 无
+    empty: 空
     no_results_found: 未找到结果
     view: 看法
-    or: 或者
-    history: 历史
+    or: 或
+    history: 历史记录
     option: 选项
     add: 添加
-    you: 你
-    expand: 扩张
+    you: 您
+    expand: 展开
     all_day: 全天
     ok_got_it: 好的，明白了
     learn_more: 了解更多
     not_found: 未找到
     time_zone: 时区
-    local_time: 当地时间
+    local_time: 本地时间
     attachments: 附件
     template: 模板
     links: 链接
-    active_time_ago: 最后活动时间 %{time_ago}
-    confirm_discard_changes: 放弃你的更改？
-    something_went_wrong: 哦哦！出问题了
-    check_for_errors_and_try_again: 请检查表单是否有错误并重试
+    active_time_ago: 最后活动于 %{time_ago}
+    confirm_discard_changes: 确定放弃您的更改？
+    something_went_wrong: 哎呀！出错了
+    check_for_errors_and_try_again: 请检查表单中的错误并重试
     please_try_again: 请重试
     time:
-      am: 是
+      am: 上午
       pm: 下午
-    closing_in: 结束 %{time}
-    closed_ago: 已关闭 %{time}
-    volume: 体积
+    closing_in: 将于 %{time} 后关闭
+    closed_ago: 已于 %{time} 前关闭
+    volume: 音量
     notification_volume: 通知音量
-    group: 团体
-    thread: 线
-    groups: 团体
+    group: 小组
+    thread: 议题
+    groups: 小组
     organization: 组织
     organizations: 组织
-    threads: 线程
-    decisions: 决策
+    threads: 议题
+    decisions: 决议
     settings: 设置
     help: 帮助
-    anonymous: 匿名的
-    required: 必需的
-    email_address: 电子邮件
+    anonymous: 匿名
+    required: 必填
+    email_address: 电子邮件地址
     minutes: 分钟
     privacy:
       privacy: 隐私
-      public: 民众
-      open: 打开
+      public: 公开
+      open: 开放
       closed: 关闭
-      private: 私人的
-      secret: 秘密
-    selected: 选定
+      private: 私密
+      secret: 保密
+    selected: 已选
     today: 今天
-    in_x_days: "%{x} 天后"
+    in_x_days: %{x} 天后
     date_range:
       today: 今天
       yesterday: 昨天
-      thisweek: 本星期
+      thisweek: 本周
       thismonth: 本月
-      older: 较旧
+      older: 更早
     more_help: 更多帮助
     copy: 复制
     reset: 重置
     copy_text: 复制文本
     copied: 已复制到剪贴板
-    points_abbrev: 每票价值 %{score} 分
-    total: 全部的
+    points_abbrev: 每票价值 %{score} 点
+    total: 总计
     action:
       print: 打印
       preview: 预览
-      pin: 别针
-      unpin: 取消固定
+      pin: 置顶
+      unpin: 取消置顶
       search: 搜索
       filter: 筛选
-      back: 后退
-      next: 下一个
+      back: 返回
+      next: 下一步
       close: 关闭
-      reopen: 重新开放
-      save: 节省
+      reopen: 重新打开
+      save: 保存
       move: 移动
       save_changes: 保存更改
       update_settings: 更新设置
       reply: 回复
       edit: 编辑
-      remove: 消除
-      undo_remove: 撤消删除
-      like: 喜欢
-      unlike: 不像
+      remove: 移除
+      undo_remove: 撤销移除
+      like: 赞
+      unlike: 取消赞
       update: 更新
       cancel: 取消
       confirm: 确认
       hide: 隐藏
       unhide: 取消隐藏
       show_more: 显示更多
-      show_fewer: 显示较少
-      view_count_more: 查看更多 %{count}
+      show_fewer: 显示更少
+      view_count_more: 查看另外 %{count} 项
       view_count_responses: 查看 %{count} 条回复
-      count_more: 更多 %{count}
+      count_more: "另外 %{count} 项"
       count_responses: "%{count} 条回复"
       view_all: 查看全部
-      new_thread: 新话题
-      add_subgroup: 新子群
+      new_thread: 新建议题
+      add_subgroup: 新建子小组
       loading: 加载中
       translate: 翻译
       upload: 上传
-      uploading: 上传
+      uploading: 上传中
       load_more: 加载更多
       share: 分享
-      ok: 好的
+      ok: 确定
       retry: 重试
       clear: 清除
-      done: 完毕
+      done: 完成
       start: 开始
       delete: 删除
-      discard: 丢弃
+      discard: 放弃
       restore: 恢复
-      unsubscribe: 取消订阅
+      unsubscribe: 退订
       subscribe: 订阅
       unignore: 取消忽略
       remind: 提醒
       resend: 重新发送
       send: 发送
-      joined: 已加入
-      last_seen: 上次出现
+      joined: 加入时间
+      last_seen: 最后上线
       invite: 邀请
       resent: 邀请已重新发送
-      export: 出口
-      fork: 叉
-      apply: 申请
-      add_people: 添加人员
-      zoom: 飞涨
+      export: 导出
+      fork: 复制议案
+      apply: 应用
+      add_people: 添加成员
+      zoom: 缩放
       align: 对齐
     formatting_help:
-      label: 格式化
-      title: 了解如何使用 Markdown 来格式化文本
+      label: 格式
+      title: 了解如何使用 Markdown 格式化文本
   merge_accounts:
     modal:
       title: 合并账户
-      helptext: 您可以将<strong>%{sourceEmail}</strong>下的账户合并到<strong>%{targetEmail}</strong>下。点击“验证”，系统会向 %{targetEmail} 发送一封验证邮件，以开始该流程。
-      submit: 核实
+      helptext: 您可以将 <strong>%{sourceEmail}</strong> 下的账户合并到 <strong>%{targetEmail}</strong> 的账户中。点击“验证”，验证邮件将发送至 %{targetEmail} 以开始此过程。
+      submit: 验证
       flash: 验证邮件已发送！
-    email_taken: 抱歉，该邮箱已与其他用户关联。该邮箱属于您吗？
+    email_taken: 抱歉，该电子邮件已与其他用户关联。此邮箱是否属于您？
     find_out_more: 了解更多。
-    placeholder_modal_text: <p>如果您想合并两个帐户，只需在个人资料页面的电子邮件字段中输入相应的电子邮件地址（属于另一个帐户），然后按照出现的说明进行操作。</p><p>需要帮助？<a href="/contact" target="_blank">请联系我们</a>。
+    placeholder_modal_text: |
+      <p>如果您想合并两个账户，只需在个人资料页面的电子邮件字段中输入另一个账户的电子邮件地址，然后按照出现的说明操作即可。</p>
+      <p>需要帮助？<a href="/contact" target="_blank">联系我们</a>。
   emoji_picker:
     search: 搜索
-    common: 经常使用
-    expressions: 面孔
-    hands: 手
-    people: 人们
+    common: 常用
+    expressions: 表情
+    hands: 手势
+    people: 人物
     nature: 自然
-    objects: 事物
+    objects: 物品
     places: 地点
   ordinal:
-    _1: 第一
-    _2: 第二
-    _3: 第三
-    _4: 第四
-    _5: 第五
-    _6: 第六
-    _7: 第七
-    _8: 第八
-    _9: 第九
-    _10: 第十
+    _1: 第1
+    _2: 第2
+    _3: 第3
+    _4: 第4
+    _5: 第5
+    _6: 第6
+    _7: 第7
+    _8: 第8
+    _9: 第9
+    _10: 第10
   devise:
     sessions:
-      signed_up: 报名成功！
+      signed_up: 注册成功！
     failure:
-      inactive: 此电子邮件地址关联的帐户已停用。如果您想重新激活帐户，请联系我们。
+      inactive: 此电子邮件地址关联的账户已被停用。如需重新激活，请联系我们。
   error_page:
-    forbidden: 您无权执行此操作。
-    forbidden_view: 您无权查看此内容。
-    page_not_found: 未找到页面。它可能已被删除或移动。
+    forbidden: 您没有执行此操作的权限。
+    forbidden_view: 您没有查看此内容的权限。
+    page_not_found: 页面未找到。它可能已被删除或移动。
     internal_server_error: 服务器错误！请重试。
   verify_email_notice:
-    please_verify: 感谢您的参与！请查看您的电子邮件，获取验证投票的链接。
+    please_verify: 感谢参与！请检查您的电子邮件以获取验证投票的链接。
   previous_polls_page:
     heading: "%{name} 中的活动"
-    polls_count: 显示 %{loaded} 个决定，共 %{total} 个决定
+    polls_count: 显示 %{loaded} / %{total} 个决策
     search_activities: 搜索决策
   email_to_group:
-    email_released: 已发布电子邮件并已创建别名
-    not_available_to_trial_or_demo: 试用或演示组无法使用此功能
-    review_email: 审核电子邮件
+    email_released: 邮件已释放并创建别名
+    not_available_to_trial_or_demo: 此功能不适用于试用版或演示版小组
+    review_email: 审核邮件
     add_alias: 添加别名
-    who_is_the_owner_of_email: "%{email} 的所有者是谁？"
-    is_name_the_owner_of_email: "%{name} 是 %{email} 的所有者吗？"
+    who_is_the_owner_of_email: "%{email} 的拥有者是谁？"
+    is_name_the_owner_of_email: "%{name} 是 %{email} 的拥有者吗？"
     all_email_will_belong_to_name: 来自 %{email} 的所有邮件都将归属于 %{name}
-    email_aliases: 别名和忽略的地址
+    email_aliases: 别名和已忽略的地址
     belongs_to_name: 属于 %{name}
-    block_email: 块地址
-    no_emails_to_release: 没有等待发布的电子邮件
-    release_rules: 发布规则
+    block_email: 阻止此地址
+    no_emails_to_release: 没有等待释放的邮件
+    release_rules: 释放规则
     confirm_block: 阻止此电子邮件地址？
-    confirm_block_body: 此电子邮件以及来自 %{sender} 的任何其他电子邮件都将被忽略。
-    confirm_delete: 删除此电子邮件？
-    confirm_delete_body: 此电子邮件将被删除。来自 %{sender} 的任何后续电子邮件均不受影响。
-    unreleased_emails: 未发布的电子邮件
-    start_a_thread_by_email: 通过电子邮件发起讨论
-    send_email_to_start_thread: 发送电子邮件至此地址以在您的群组中发起一个话题。
-    subject_body_attachments: 电子邮件主题将成为线程标题，电子邮件正文将成为描述，并且任何附加文件都将附加到线程。
+    confirm_block_body: 此邮件以及来自 %{sender} 的任何后续邮件都将被忽略。
+    confirm_delete: 删除此邮件？
+    confirm_delete_body: 此邮件将被删除。来自 %{sender} 的未来邮件不会受到影响。
+    unreleased_emails: 未释放的邮件
+    start_a_thread_by_email: 通过邮件发起议题
+    send_email_to_start_thread: 发送电子邮件至此地址，以在您的小组中发起一个议题。
+    subject_body_attachments: 邮件主题将成为议案标题，邮件正文将成为描述，任何附件都将附加到议案中。
     copy_address: 复制地址
-    email_me_this_address: 通过电子邮件将此地址发送给我
+    email_me_this_address: 将此地址通过邮件发给我
     email_address_copied_to_clipboard: 电子邮件地址已复制到剪贴板
-    forward_email_to_move_conversation: 提示：当您需要做出决定或保留记录时，请将电子邮件对话转发给 Loomio。
+    forward_email_to_move_conversation: '提示：当您需要做决策或保存记录时，可将电子邮件会话转发至 Loomio。'
   email_to_group_mailer:
-    your_email_address_to_start_threads_in_group: 您的电子邮件地址，用于在 %{group} 中发起讨论
+    your_email_address_to_start_threads_in_group: 您在 %{group} 中发起议题的电子邮件地址
   volume_levels:
-    loud: 大声
-    normal: 普通的
-    quiet: 安静的
-    mute: 沉默的
-    unmute: 静音
+    loud: 响亮
+    normal: 正常
+    quiet: 安静
+    mute: 静音
+    unmute: 取消静音
   pin_event_form:
     title: 固定到时间线
     title_label: 标题
-    hint: 下次提示：在单击“固定”之前，请尝试突出显示一些文本。
+    hint: '提示：下次尝试先高亮选中一些文本，然后再点击“固定”。'
   change_volume_form:
     change_your_email_settings: 更改您的电子邮件设置
-    when_would_you_like_to_be_emailed_thread: 您希望何时收到有关此主题的电子邮件？
-    when_would_you_like_to_be_emailed_poll_type: 您希望何时收到有关此 %{poll_type} 的电子邮件？
-    when_would_you_like_to_be_emailed_group: 您希望何时收到有关该小组的电子邮件？
-    changes_all_threads_in_group: 这会改变组中所有线程的设置。
+    when_would_you_like_to_be_emailed_thread: 您希望何时接收关于此议题的电子邮件？
+    when_would_you_like_to_be_emailed_poll_type: 您希望何时接收关于此%{poll_type}的电子邮件？
+    when_would_you_like_to_be_emailed_group: 您希望何时接收关于此小组的电子邮件？
+    changes_all_threads_in_group: 此更改将应用于小组中的所有议题。
     what_do_the_options_mean: 这些选项是什么意思？
-    loud_desc: 每次有人参与
+    loud_desc: 每次有人参与时
     normal_desc: 当有人通知我时
-    quiet_desc: 绝不
-    quiet_explained: 即使有人尝试通知您，您也不会收到电子邮件。您可能会错过重要的公告或决定。如果某个帖子与您无关，这可能适用，但不建议在群组设置中使用，除非您有其他方式来了解最新动态。
-    normal_explained: 当有人在主题或投票的“通知”字段中输入您的姓名，或者他们{'@'}提及该小组时。
-    normal_excludes_mentioning_html: 当有人{'@'}提及你时（例如，在评论中回复你时），有一个单独的设置。<a href="%{url}">点击此处编辑@提及的设置</a>
-    loud_explained: 每次有新评论、有人投票、或发起投票或讨论时，您都会收到电子邮件。
+    quiet_desc: 从不
+    quiet_explained: 您将不会收到电子邮件，即使有人试图通知您。您可能会错过重要的公告或决策。如果您不关注某个议案，这可能适用，但不建议用于小组设置，除非您有其他方式保持更新。
+    normal_explained: 当有人在议案或投票的“通知”字段中输入您的姓名，或者他们@提及小组时。
+    normal_excludes_mentioning_html: 当有人@提及您时（例如，在评论中回复您）有单独的设置。<a href="%{url}">点击此处编辑@提及设置</a>
+    loud_explained: 每当有新评论、有人投票、或发起投票或议案时，您都会收到电子邮件。
     explain_scope:
-      thread: 当您收到有关此主题的通知时，情况会发生变化
-      group: 当你收到群组中所有主题的通知时，情况就会发生变化
+      thread: 这将更改您接收此议题通知的时间
+      group: 这将更改您接收此小组中所有议案通知的时间
     simple:
       label: 通知
       loud: 已订阅
-      normal: 普通的
+      normal: 正常
       quiet: 忽略
-      question: 您希望何时收到通知？
+      question: 您希望何时接收通知？
       loud_explain: 每当有活动时
-      normal_explain: 当有人要求你注意时
-      quiet_explain: 没有通知
+      normal_explain: 当有人需要您关注时
+      quiet_explain: 无通知
     aria_label: 更改电子邮件设置表单
     loud_label: 所有活动
-    normal_label: 公告
-    quiet_label: 没有电子邮件
-    mute_label: 沉默的
+    normal_label: 仅公告
+    quiet_label: 无邮件
+    mute_label: 静音
     saved: 通知设置已更新
     discussion:
-      title: 话题通知
-      loud_description: 您将通过电子邮件收到此主题中的所有活动。
-      normal_description: 您将仅通过电子邮件收到此线程中的重要活动。
-      quiet_description: 您不会通过电子邮件收到有关此主题的任何活动。
-      apply_to_all: 将这些设置应用于该组中的所有线程。
-      only_this_thread: 仅适用于本主题
-      group: 更改群组通知
+      title: 议案通知
+      loud_description: 您将收到此议案中所有活动的电子邮件。
+      normal_description: 您只会收到此议案中重要活动的电子邮件。
+      quiet_description: 您不会收到此议案的任何活动电子邮件。
+      apply_to_all: 将这些设置应用到此小组中的所有议案。
+      only_this_thread: 仅适用于此议题
+      group: 更改小组通知设置
       user: 更改用户通知设置
       messages:
-        loud: 您将通过电子邮件收到此主题中的活动信息。
-        normal: 您将收到有关此主题中的提案的电子邮件。
-        quiet: 您不会收到有关此主题的电子邮件。
+        loud: 您将收到此议案的活动邮件。
+        normal: 您将收到此议案中议案的邮件。
+        quiet: 您不会收到关于此议案的邮件。
     membership:
       title: "%{title} 的通知"
-      loud_description: 只要该小组有活动，您就会收到电子邮件。
-      normal_description: 只要该小组有活动，您就会收到电子邮件。
-      quiet_description: 您不会收到有关该群组活动的电子邮件。
-      apply_to_all: 将这些设置应用到我的所有组。
-      apply_to_organization: 应用于 %{organization} 中的所有群组
+      loud_description: 只要此小组中有活动，您就会收到电子邮件。
+      normal_description: 只要此小组中有活动，您就会收到电子邮件。
+      quiet_description: 您不会收到关于此小组活动的电子邮件。
+      apply_to_all: 将这些设置应用到我所有的组。
+      apply_to_organization: 应用到 %{organization} 中的所有小组
       messages:
-        loud: 您将通过电子邮件收到该组的所有活动信息。
-        normal: 您将仅收到此群组的电子邮件公告。
-        quiet: 您不会收到有关该群组的电子邮件。
+        loud: 您将收到此小组所有活动的电子邮件。
+        normal: 您只会收到此小组公告的电子邮件。
+        quiet: 您不会收到关于此小组的电子邮件。
     all_groups:
-      title: 所有群组的通知偏好设置
-      loud_description: 您将通过电子邮件收到所有群组的所有活动信息。
-      normal_description: 您只会收到有关所有群组中重要活动的电子邮件。
-      quiet_description: 您不会收到任何群组活动的电子邮件。
+      title: 所有小组的通知偏好
+      loud_description: 您将收到所有小组中所有活动的电子邮件。
+      normal_description: 您只会收到所有小组中重要活动的电子邮件。
+      quiet_description: 您不会收到任何小组的任何活动电子邮件。
       messages:
-        loud: 您将通过电子邮件收到所有群组的所有活动信息。
-        normal: 您将仅收到所有群组中的电子邮件公告。
-        quiet: 您不会收到有关任何群组的电子邮件。
+        loud: 您将收到所有小组所有活动的电子邮件。
+        normal: 您只会收到所有小组公告的电子邮件。
+        quiet: 您不会收到任何小组的电子邮件。
     user:
-      title: 新群组的电子邮件设置
-      loud_description: 当您加入的任何新群组有活动时，您都会收到电子邮件通知。
-      normal_description: 您将会收到有关您加入的任何新群组的公告的电子邮件。
-      quiet_description: 您不会收到有关您加入的任何新群组的活动的电子邮件。
-      apply_to_all: 将这些设置应用到我的所有组。
+      title: 新小组的电子邮件设置
+      loud_description: 您加入的任何新小组有活动时，您都会收到电子邮件。
+      normal_description: 您加入的任何新小组有公告时，您都会收到电子邮件。
+      quiet_description: 您不会收到关于您加入的任何新小组活动的电子邮件。
+      apply_to_all: 将这些设置应用到我所有的组。
       messages:
-        loud: 您将通过电子邮件收到有关新群组的所有活动的信息。
-        normal: 您将收到有关新群组公告的电子邮件。
-        quiet: 您不会收到有关新群组的电子邮件。
+        loud: 您将收到新小组所有活动的电子邮件。
+        normal: 您将收到新小组公告的电子邮件。
+        quiet: 您不会收到关于新小组的电子邮件。
   close_explanation_modal:
-    aria_label: 关闭线程
-    close_thread: 关闭线程
-    body: "<p>关闭旧的或不相关的线程以将其从视图中删除并表明讨论已结束。</p><p>任何人仍可以在封闭的主题中发表评论或发起投票，但它不会出现在小组的主题列表或仪表板上。</p>"
-    image_alt: 关闭所有线程
+    aria_label: 关闭议题
+    close_议题: 关闭议题
+    body: |
+      <p>关闭陈旧或不相关的议题，将其从视图中移除，并表明讨论已结束。</p>
+      <p>任何人仍然可以在已关闭的议题中评论或发起投票，但它不会出现在小组的议题列表或仪表板上。</p>
+    image_alt: 关闭所有议案
   inbox:
     clear: 清除
-    latest: 最新的
+    latest: 最新
     unread: 未读
-    closing_in: 结束语
+    closing_in: '即将关闭 '
   sign_up_form:
-    password_label: 密码：
-    password_confirmation_label: 再次输入那个密码：
+    password_label: '密码：'
+    password_confirmation_label: '再次输入密码：'
   signed_out_modal:
-    aria_label: 会话结束
+    aria_label: 会话已结束
     title: 您的会话已结束
-    message: 您已从其他窗口退出。请重新登录以继续。
-    ok: 好的
+    message: 您已在其他窗口被登出。请重新登录以继续。
+    ok: 确定
   comment_reply_form:
     aria_label: 添加回复
   comment_form:
     aria_label: 添加评论
     attachments:
-      add_attachment: 附加文件
-      remove_attachment: 删除附件
+      add_attachment: 添加附件
+      remove_attachment: 移除附件
     messages:
-      created: 添加评论
-      replied: "%{name} 收到回复通知"
+      created: 评论已添加
+      replied: 已通知 %{name} 有回复
       updated: 评论已更新
       destroyed: 评论已删除
-      removed: 评论已删除
-    say_something: 说些什么...
+      removed: 评论已移除
+    say_something: 说点什么...
     edit_comment: 编辑评论
     delete_comment: 删除评论
     cancel_reply: 取消回复
@@ -546,487 +568,490 @@ zh_CN:
     confirm_delete: 删除评论
     in_reply_to: 回复 %{name}
     write_a_comment: 写评论...
-    post_comment: 发表评论
+    post_comment: 发布评论
     submit_button:
-      label: 邮政
+      label: 发布
     private_privacy_notice: 您的评论仅对 %{groupName} 的成员可见。
-    public_privacy_notice: 网络上的任何人都可以看到您的评论。
-    sign_in: 登录即可参与
+    public_privacy_notice: 您的评论将对网络上的任何人可见。
+    sign_in: 登录以参与
   sidebar:
     user_settings: 用户设置
-    new_thread_removed: 新主题已删除
-    new_thread_removed_body: 侧边栏上的“新建话题”按钮已被移除。要创建新话题，请先导航至您的群组，然后点击“新建话题”。抱歉，但此操作是必需的，因为创建话题时需要选择模板。
-    threads: 线程
-    my_groups: 我的群组
-    other_groups: 其他团体
-    all_groups: 所有群组
-    recent_threads: 最近的帖子
-    invite_only_threads: 仅限邀请的话题
-    direct_threads: 直接线程
-    unread_threads: 未读主题（%{count}）
-    muted_threads: 静音线程
-    start_group: 新组织
-    start_subgroup: 新子群
-    explore: 公共组
-    explore_groups: 探索群组
-    start_thread: 新话题
-    start_decision: 新的决定
-    more_groups: 更多群组
+    new_thread_removed: 新建议题按钮已移除
+    new_thread_removed_body: “新建议题”按钮正从侧边栏中移除。要发起新议案，请先导航到您的小组，然后点击“新建议案”。很抱歉进行此更改，但因发起议案时需要选择模板，此变更是必需的。
+    threads: 议题
+    my_groups: 我的小组
+    other_groups: 其他小组
+    all_groups: 所有小组
+    recent_threads: 最近议题
+    invite_only_threads: 仅限邀请的议题
+    direct_threads: 直接议题
+    unread_threads: 未读议题 (%{count})
+    muted_threads: 已静音的议题
+    start_group: 新建组织
+    start_subgroup: 新建子小组
+    explore: 公开小组
+    explore_groups: 探索小组
+    start_thread: 新建议题
+    start_decision: 新建决策
+    more_groups: 更多小组
     template_gallery: 模板库
     examples_and_templates: 示例和模板
     help_docs: 帮助文档
     a_detailed_guide_to_loomio: Loomio 详细指南
-    talk_to_the_loomio_team: 与 Loomio 团队交流
+    talk_to_the_loomio_team: 与 Loomio 团队交谈
     aria_labels:
       heading: 侧边栏
-      threads_list: 线程操作
-      groups_list: 团体
+      threads_list: 议题操作
+      groups_list: 小组
       user_list: 用户操作
   strand_nav:
-    jump_to: 跳至
+    jump_to: 跳转到
     timeline: 时间线
     top: 顶部
     start: 开始
     bottom: 底部
-    latest: 最新的
-    newest: 最新
+    latest: 最新
+    newest: 最新的
     unread: 未读
-    oldest: 最老的
-    newest_first: 最新
-    oldest_first: 最早
-    showing_latest: 显示最新
-    showing_unread: 显示未读
+    oldest: 最旧的
+    newest_first: 最新的优先
+    oldest_first: 最旧的优先
+    showing_latest: 显示最新内容
+    showing_unread: 显示未读内容
     add_comment: 添加评论
-    start_decision: 开始决定
+    start_decision: 发起决策
   search_modal:
     all_content: 所有内容
     best_match: 最佳匹配
-    any_tag: 任何标签
-    all_subgroups: 所有子组
-    parent_only: 仅限家长
+    any_tag: 任意标签
+    all_subgroups: 所有子小组
+    parent_only: 仅父小组
   navbar:
-    search_all_threads: 搜索所有主题
-    search_threads: 在 %{name} 中搜索主题
-    search_polls: 在 %{name} 中搜索投票
-    search_members: 在 %{name} 中搜索成员
-    search_subgroups: 在 %{name} 中搜索成员
-    search_members_short: 搜索会员
+    search_all_threads: 搜索所有议题
+    search_threads: 搜索 %{name} 中的议题
+    search_polls: 搜索 %{name} 中的投票
+    search_members: 搜索 %{name} 中的成员
+    search_subgroups: 搜索 %{name} 中的成员
+    search_members_short: 搜索成员
     search_files_short: 搜索文件
-    search_subgroups_short: 搜索子组
-    search_files: 在 %{name} 中搜索文件
+    search_subgroups_short: 搜索子小组
+    search_files: 搜索 %{name} 中的文件
     recent_title: 转到仪表板
     unread_title: 查看未读活动
-    start_thread: 新话题
+    start_thread: 新建议题
     notifications: 通知面板
     search:
-      label: 搜索字段；搜索群组和主题
+      label: 搜索字段；搜索小组和议案
       results_aria_label: 搜索结果
-      no_results: 未找到任何主题
+      no_results: 未找到议案
       close: 关闭搜索面板
       placeholder: 搜索
       loading: 正在加载结果...
-      discussions: 线程
-      proposals: 提案
+      discussions: 议案
+      proposals: 议案
       comments: 评论
     sign_in: 登录
     toggle_sidebar: 切换侧边栏
     open_sidebar: 打开侧边栏
     close_sidebar: 关闭侧边栏
     logo_title: 主页
-    group_and_subgroups: "%{group} 和子组"
+    group_and_subgroups: "%{group} 及子小组"
   user_dropdown:
     pin_sidebar: 固定侧边栏
     unpin_sidebar: 取消固定侧边栏
     enable_beta_features: 启用 Beta 功能
-    disable_beta_features: 禁用测试版功能
+    disable_beta_features: 禁用 Beta 功能
     theme: 主题
-    light: 光
+    light: 浅色
     light_blue: 浅蓝色
-    dark: 黑暗的
+    dark: 深色
     dark_blue: 深蓝色
     button_label: 用户菜单
-    edit_profile: 编辑个人资料
+    edit_profile: 编辑资料
     email_settings: 通知设置
     help: 帮助
     contact_site_name: 联系 %{site_name}
     contact_support: 联系支持
-    sign_out: 登出
-    beta_collab: "\U0001F9EA Beta 功能已启用！"
+    sign_out: 退出登录
+    beta_collab: "\U0001F9EA 已启用 Beta 功能！"
     outcomes: 结果
   membership_card:
     group_members: 小组成员
-    discussion_members: 线程成员
+    discussion_members: 议案成员
     poll_members: "%{pollType} 成员"
-    voters: 选民
-    invite_to_group: 邀请加入群组
-    invite_to_discussion: 邀请加入讨论帖
-    invite_to_poll: 邀请投票
-    invite_to_wip_poll: 邀请提供反馈
-    invitations: 邀请函
+    voters: 投票者
+    invite_to_group: 请加入小组
+    invite_to_discussion: 请加入议题
+    invite_to_poll: 请就案表决
+    invite_to_wip_poll: 请提供反馈
+    invitations: 邀请
   membership_dropdown:
-    view_profile: 查看个人资料
-    set_name_and_username: 设置名称和用户名
-    set_title: 设置标题
+    view_profile: 查看资料
+    set_name_and_username: 设置姓名和用户名
+    set_title: 设置头衔
     resend: 重新发送邀请
     invitation_resent: 邀请已重新发送
-    make_coordinator: 成为管理员
-    demote_coordinator: 降级管理员
+    make_coordinator: 设为管理员
+    demote_coordinator: 取消管理员
     revoke_admin: 撤销管理员
-    make_delegate: 任命代表
-    revoke_delegate: 撤销委托
+    make_delegate: 设为代表
+    revoke_delegate: 撤销代表
     remove_from:
-      discussion: 从主题中删除
-      group: 从群组中移除
-      poll: 从 %{pollType} 中删除
+      discussion: 从议案中移除
+      group: 从小组中移除
+      poll: 从 %{pollType} 中移除
     cancel_invitation: 取消邀请
   notification_models:
-    discussion: 线：
-    comment: 评论
-    poll: 轮询：
-    outcome: 结果：
-    stance: 投票：
+    discussion: '议案：'
+    comment: '评论于 '
+    poll: '投票：'
+    outcome: '结果：'
+    stance: '投票：'
   notifications:
     header: 通知
     no_notifications: 您没有任何通知
     with_title:
-      unknown_sender: 请查看来自无法识别的发件人的电子邮件
-      comment_replied_to: "%{actor} 在 %{title} 中回复了您"
-      discussion_announced: "%{actor} 邀请您加入主题：%{title}"
-      discussion_edited: "%{actor} 编辑了主题上下文：%{title}"
-      discussion_closed: "%{actor} 关闭了主题：%{title}"
-      invitation_accepted: "%{actor} 接受了您的邀请加入 %{title}"
-      membership_created: "%{actor} 邀请您加入 %{site_name} 上的 %{title}"
-      membership_resent: "%{actor} 邀请您加入 %{site_name} 上的 %{title}"
+      unknown_sender: 请审核来自未识别发件人的邮件
+      comment_replied_to: "%{actor} 在“%{title}”中回复了您"
+      discussion_announced: "%{actor} 请您加入议案：%{title}"
+      discussion_edited: "%{actor} 编辑了议案上下文：%{title}"
+      discussion_closed: "%{actor} 关闭了议案：%{title}"
+      invitation_accepted: "%{actor} 接受了您加入 %{title} 的请"
+      membership_created: "%{actor} 请您加入 %{site_name} 上的 %{title}"
+      membership_resent: "%{actor} 请您加入 %{site_name} 上的 %{title}"
       membership_requested: "%{actor} 请求加入 %{title}"
       membership_request_approved: "%{actor} 批准了您加入 %{title} 的请求"
-      new_comment: "%{actor} 在 %{title} 中评论"
-      new_coordinator: "%{actor} 已将您设为 %{title} 的管理员"
-      new_delegate: "%{actor} 让您成为 %{title} 中拥有投票权的代表"
-      new_discussion: "%{actor} 发起了一个话题：%{title}"
-      outcome_announced: "%{actor} 分享了 %{poll_type} 结果：%{title}"
-      outcome_created: "%{actor} 分享了 %{poll_type} 结果：%{title}"
-      outcome_updated: "%{actor} 更新了 %{poll_type} 结果：%{title}"
-      outcome_review_due: 现在是时候回顾一下：%{title} 的结果了
-      poll_announced: "%{actor} 邀请您投票：%{title}"
-      poll_closed_by_user: "%{actor} 关闭了 %{poll_type}: %{title}"
-      poll_closing_soon: "%{poll_type} 将于 24 小时后结束：%{title}"
-      poll_closing_soon_author: 您的 %{poll_type} 将于 24 小时后关闭：%{title}
-      poll_created: "%{actor} 发起了 %{poll_type}: %{title}"
-      poll_edited: "%{actor} 更新了 %{poll_type}：%{title}"
-      poll_expired: "%{poll_type} 已关闭：%{title}"
-      poll_expired_author: 分享您的 %{poll_type} 的结果：%{title}
-      poll_option_added: "%{actor} 为 %{title} 添加了选项"
-      poll_reopened: "%{actor} 重新开启了 %{poll_type}: %{title}"
-      poll_reminder: "%{actor} 提醒您对 %{title} 进行投票"
+      new_comment: "%{actor} 在“%{title}”中发表了评论"
+      new_coordinator: "%{actor} 任命您为 %{title} 的管理员"
+      new_delegate: "%{actor} 授予您在 %{title} 中的投票代表权"
+      new_discussion: "%{actor} 发起了一个议案：%{title}"
+      outcome_announced: "%{actor} 分享了一个%{poll_type}结果：%{title}"
+      outcome_created: "%{actor} 分享了一个%{poll_type}结果：%{title}"
+      outcome_updated: "%{actor} 更新了%{poll_type}结果：%{title}"
+      outcome_review_due: '是时候审核“%{title}”的结果了'
+      poll_announced: "%{actor} 请您投票：%{title}"
+      poll_closed_by_user: "%{actor} 关闭了%{poll_type}：%{title}"
+      poll_closing_soon: "%{poll_type}将于24小时内关闭：%{title}"
+      poll_closing_soon_author: '您的%{poll_type}将于24小时内关闭：%{title}'
+      poll_created: "%{actor} 发起了一个%{poll_type}：%{title}"
+      poll_edited: "%{actor} 更新了%{poll_type}：%{title}"
+      poll_expired: "%{poll_type}已关闭：%{title}"
+      poll_expired_author: '请分享您的%{poll_type}的结果：%{title}'
+      poll_option_added: "%{actor} 向“%{title}”添加了选项"
+      poll_reopened: "%{actor} 重新打开了%{poll_type}：%{title}"
+      poll_reminder: "%{actor} 提醒您对“%{title}”投票"
       poll_reminder_wip: "%{actor} 提醒您提供反馈：%{title}"
-      reaction_created: "%{actor} 对你在 %{title} 中的 %{model} 做出了 %{reaction} 反应"
-      stance_created: "%{actor} 投票支持：%{title}"
-      stance_updated: "%{actor} 投票支持：%{title}"
-      stance_created_option: "%{actor} 在 %{title} 中投票 %{option}"
-      user_added_to_group: "%{actor} 将你添加到群组：%{title}"
-      user_mentioned: "%{actor} 在 %{title} 中提到了您"
-      group_mentioned: "%{actor} 在 %{title} 中提到了该组合"
-      user_reminded: "%{actor} 提醒您投票给：%{title}"
+      reaction_created: "%{actor} 对您在“%{title}”中的%{model}作出了 %{reaction} 反应"
+      stance_created: "%{actor} 在“%{title}”中投票了"
+      stance_updated: "%{actor} 在“%{title}”中更新了投票"
+      stance_created_option: "%{actor} 在“%{title}”中投了 %{option} 票"
+      user_added_to_group: "%{actor} 将您添加到小组：%{title}"
+      user_mentioned: "%{actor} 在“%{title}”中@提到了您"
+      group_mentioned: "%{actor} 在“%{title}”中@提到了小组"
+      user_reminded: "%{actor} 提醒您在“%{title}”中投票"
     without_title:
-      unknown_sender: 请查看来自无法识别的发件人的电子邮件
-      discussion_announced: "%{actor} 邀请您加入讨论帖"
-      discussion_edited: "%{actor} 编辑了线程上下文"
-      discussion_closed: "%{actor} 关闭了该帖子"
-      group_announced: "%{actor} 邀请你加入群组"
-      comment_replied_to: "%{actor} 回复了你"
-      new_discussion: "%{actor} 发起了一个话题"
-      new_comment: "%{actor} 在帖子中发表评论"
-      membership_created: "%{actor} 邀请你加入群组"
-      membership_resent: "%{actor} 邀请你加入群组"
-      membership_requested: "%{actor} 请求加入你的群组"
+      unknown_sender: 请审核来自未识别发件人的邮件
+      discussion_announced: "%{actor} 请您加入一个议题"
+      discussion_edited: "%{actor} 编辑了议题上下文"
+      discussion_closed: "%{actor} 关闭了一个议题"
+      group_announced: "%{actor} 请您加入一个小组"
+      comment_replied_to: "%{actor} 回复了您"
+      new_discussion: "%{actor} 发起了一个议题"
+      new_comment: "%{actor} 在一个议题中发表了评论"
+      membership_created: "%{actor} 请您加入一个小组"
+      membership_resent: "%{actor} 请您加入一个小组"
+      membership_requested: "%{actor} 请求加入您的小组"
       membership_request_approved: "%{actor} 批准了您加入 %{title} 的请求"
-      outcome_announced: "%{actor} 分享了 %{poll_type} 结果"
-      outcome_created: "%{actor} 分享了 %{poll_type} 结果"
+      outcome_announced: "%{actor} 分享了一个%{poll_type}结果"
+      outcome_created: "%{actor} 分享了一个%{poll_type}结果"
       outcome_updated: "%{actor} 更新了结果"
-      outcome_review_due: 是时候回顾 %{poll_type} 的结果了
-      poll_announced: "%{actor} 邀请您对 %{poll_type} 进行投票"
-      poll_announced_wip: "%{actor} 希望您就 %{poll_type} 提供反馈"
-      poll_closed_by_user: "%{actor} 关闭了 %{poll_type}"
-      poll_closing_soon: "%{poll_type} 将于 24 小时后关闭"
-      poll_closing_soon_author: 您的 %{poll_type} 将于 24 小时后关闭
-      poll_created: "%{actor} 发起了 %{poll_type}"
-      poll_edited: "%{actor} 更新了 %{poll_type}"
-      poll_expired: "%{poll_type} 已关闭"
-      poll_expired_author: 分享您的 %{poll_type} 的结果
-      poll_option_added: "%{actor} 为 %{poll_type} 添加了选项"
-      poll_reopened: "%{actor} 重新开启了 %{poll_type}"
-      poll_reminder: "%{actor} 正在提醒您投票"
-      poll_reminder_wip: "%{actor} 正在提醒您提供反馈"
-      reaction_created: "%{actor} 对你的 %{model} 做出了 %{reaction} 反应"
-      stance_created: "%{actor} 投票"
-      stance_updated: "%{actor} 投票"
-      stance_created_option: "%{actor} 投票给 %{option}"
-      user_mentioned: "%{actor} 提到了你"
-      group_mentioned: "%{actor} 提到了该团体"
-      user_reminded: "%{actor} 正在提醒您投票"
+      outcome_review_due: 是时候审核%{poll_type}结果了
+      poll_announced: "%{actor} 请您对一个%{poll_type}进行投票"
+      poll_announced_wip: "%{actor} 希望您对一个%{poll_type}提供反馈"
+      poll_closed_by_user: "%{actor} 关闭了%{poll_type}"
+      poll_closing_soon: "%{poll_type}将于24小时内关闭"
+      poll_closing_soon_author: 您的%{poll_type}将于24小时内关闭
+      poll_created: "%{actor} 发起了一个%{poll_type}"
+      poll_edited: "%{actor} 更新了%{poll_type}"
+      poll_expired: "%{poll_type}已关闭"
+      poll_expired_author: 请分享您的%{poll_type}的结果
+      poll_option_added: "%{actor} 向%{poll_type}添加了选项"
+      poll_reopened: "%{actor} 重新打开了%{poll_type}"
+      poll_reminder: "%{actor} 提醒您投票"
+      poll_reminder_wip: "%{actor} 提醒您提供反馈"
+      reaction_created: "%{actor} 对您的%{model}作出了 %{reaction} 反应"
+      stance_created: "%{actor} 投票了"
+      stance_updated: "%{actor} 投票了"
+      stance_created_option: "%{actor} 投了 %{option} 票"
+      user_mentioned: "%{actor} @提到了您"
+      group_mentioned: "%{actor} @提到了小组"
+      user_reminded: "%{actor} 提醒您投票"
     hints:
-      poll_closing_soon: 现在是投票、改变主意或鼓励其他人参与的好时机。
-      poll_closing_soon_author: 您可能希望提醒人们投票或延长截止日期。
-      outcome_review_due: 考虑启动反馈调查或新主题，以征求对如何实施该决定的思考。
+      poll_closing_soon: 现在是投票、改变主意或鼓励他人参与的好时机。
+      poll_closing_soon_author: 您可能需要提醒人们投票或延长截止日期。
+      outcome_review_due: 考虑发起一个反馈投票或一个新的议题，请大家反思决策的实施情况。
   discussion_fork_actions:
-    helptext: 选择您想要移动到另一个主题的项目
+    helptext: 选择您想移动到另一个议题的项目
     move: 移动
-    search_placeholder: 按标题查找主题
-    moved: 移动评论，这可能需要一点时间
-    move_to_existing_thread: 移至现有线程
-    start_new_thread: 或者，开始新线程
+    search_placeholder: 按标题查找议题
+    moved: 正在移动评论，这可能需要一点时间
+    move_to_existing_thread: 移动到现有议题
+    start_new_thread: 或，发起新议题
   thread_template:
     browse_public_templates: 浏览模板库
-    thread_template_settings: 话题模板设置
-    start_a_new_thread: 发起新话题
-    thread_template_saved: 主题模板已保存
-    these_are_public_templates: 您可以复制或修改这些模板以适合您的团队
-    these_are_templates: 这些是您群组中的话题模板。点击模板即可发起话题。您还可以根据需要编辑、移除或重新排序这些模板。
+    thread_template_settings: 议题模板设置
+    start_a_new_thread: 发起一个新议题
+    thread_template_saved: 议题模板已保存
+    these_are_public_templates: '这些模板可供您复制或修改以适应您的小组'
+    these_are_templates: '这些是您小组中的议题模板。点击模板以发起议题。您也可以根据需要编辑、移除或重新排序这些模板。'
     default_title_label: 默认标题
-    default_title_hint: 预填标题字段，可编辑文本。此项为可选，如不确定，请留空。
+    default_title_hint: 用可编辑的文本预填充标题字段。此为可选 - 如果不确定请留空。
     title_placeholder_label: 示例标题
-    title_placeholder_hint: 在标题字段的背景中显示的示例
-    title_placeholder_placeholder: 例如，背景文字是这样的
-    example_description_label: 示例说明
-    example_description_placeholder: 提供一个模板，人们可以使用它来开始一个线程
-    hidden_templates: 隐藏模板
-    confirm_delete: 您确定要永久删除此主题模板吗？此操作不会删除任何主题。
-    add_proposal_or_poll_template: 添加提案或投票模板
-    recommended_proposal_or_poll_templates: 推荐的提案或投票模板
+    title_placeholder_hint: 显示在标题字段背景中的示例
+    title_placeholder_placeholder: 例如：这是背景文本的样子
+    example_description_label: 示例描述
+    example_description_placeholder: 提供一个模板，供人们用来发起议题
+    hidden_templates: 隐藏的模板
+    confirm_delete: 您确定要永久删除此议题模板吗？此操作不会删除任何议题。
+    add_proposal_or_poll_template: 添加议案或投票模板
+    recommended_proposal_or_poll_templates: 推荐的议案或投票模板
     decision_templates: 决策模板
-    decision_templates_help: 选择任何有助于完成此过程的提案或民意调查模板。
-    share_in_template_gallery: 在公共模板库中分享此模板
+    decision_templates_help: 选择任何有助于完成此过程的议案或投票模板。
+    share_in_template_gallery: 在公共模板库中共享此模板
   discussion_form:
-    thread_templates: 主题模板
-    new_thread_template: 新主题模板
-    edit_thread_template: 编辑话题模板
-    blank: 空白的
-    blank_subtitle: 开始讨论并看看它会带你走向何方
+    thread_templates: 议题模板
+    new_thread_template: 新建议题模板
+    edit_thread_template: 编辑议题模板
+    blank: 空白
+    blank_subtitle: 开始一个讨论，看看它会带您去哪里
     new_template: 新模板
-    new_template_subtitle: 创建一个其他人可以复制的例子
-    to: 到
-    direct_thread: 直接螺纹
-    invite_only_thread: 仅限邀请的讨论帖
-    none_direct_thread: 直接发帖（无群组）
-    none_invite_only_thread: 仅限邀请的主题（无群组）
-    change_log_placeholder: "（可选）描述您的更改。此消息将添加到主题中。"
-    change_log_label: 有什么变化？
+    new_template_subtitle: 创建一个供他人复制的示例
+    to: 至
+    direct_thread: 直接议题
+    invite_only_thread: 仅限邀请的议题
+    none_direct_thread: 直接议题（无小组）
+    none_invite_only_thread: 仅限邀请的议题（无小组）
+    change_log_placeholder: （可选）描述您的更改。此消息将添加到议题中。
+    change_log_label: 更改了什么？
     invite: 邀请
-    aria_label: 螺纹形式
-    start_thread: 启动线程
+    aria_label: 议题表单
+    start_thread: 发起议题
     messages:
-      created: 话题已开始
-      updated: 主题已更新
-      forked: 已创建线程分支
-    new_discussion_title: 开始新话题
-    new_thread_from_template: 新线程：%{process_name}
-    moving_items_title: 将项目移至新主题
-    edit_discussion_title: 编辑话题
-    group_label: 团体
-    group_placeholder: 选择一个组
+      created: 议题已发起
+      updated: 议题已更新
+      forked: 议题分支已创建
+    new_discussion_title: 发起新议题
+    new_thread_from_template: '新议题：%{process_name}'
+    moving_items_title: 将项目移动到新议题
+    edit_discussion_title: 编辑议题
+    group_label: 小组
+    group_placeholder: 选择一个小组
     title_label: 标题
-    title_placeholder: 您想讨论的话题是什么？
-    context_label: 语境
-    context_placeholder: 提供一些讨论背景，以便人们知道如何参与
+    title_placeholder: 您想讨论的主题是什么？
+    context_label: 背景信息
+    context_placeholder: 提供此讨论的一些背景信息，以便人们知道如何参与
     privacy_label: 隐私
-    privacy_public: 任何人只要有链接都可以查看此帖子
-    privacy_private: 只有群组成员才能查看此主题
-    privacy_organisation: "%{parent} 的成员和 %{group} 的成员可以看到该主题。"
-    fork_notice: 将创建一个包含 %{title} 中 %{count} 个条目的新主题
-    notify_group: 通知组
+    privacy_public: 任何拥有链接的人都可以查看此议题
+    privacy_private: 只有小组的成员可以查看此议题
+    privacy_organisation: 议题将对 %{parent} 的成员和 %{group} 的成员可见。
+    fork_notice: 将创建一个新议题，包含来自 %{title} 的 %{count} 个项目
+    notify_group: 通知小组
   announcement:
-    send_discussion: 发送主题
+    send_discussion: 发送议题
     send_group: 邀请人们加入 %{name}
-    send_poll: 发送 %{type}
+    send_group_explain: ''
+    send_poll: 发送%{type}
     send_outcome: 发送结果
-    cannot_reveal_when_anonymous: 抱歉，我们无法透露谁在匿名投票中投票或未投票。
-    discussion_notification_history: 主题通知历史记录
-    group_notification_history: 群组邀请历史记录
-    poll_notification_history: 投票通知历史记录
-    outcome_notification_history: 结果通知历史记录
-    comment_notification_history: 评论通知历史记录
-    notification_history_explanation: "✓ 表示通知已读或电子邮件已打开"
-    quick_add: 快速添加：
-    any_other_groups: 还有其他团体吗？
+    cannot_reveal_when_anonymous: 抱歉，我们无法透露谁在匿名投票中投了票或没投票。
+    discussion_notification_history: 议题通知历史
+    group_notification_history: 小组邀请历史
+    poll_notification_history: 投票通知历史
+    outcome_notification_history: 结果通知历史
+    comment_notification_history: 评论通知历史
+    notification_history_explanation: "✓ 表示通知已被阅读或电子邮件已被打开"
+    quick_add: '快速添加：'
+    any_other_groups: 还有其他小组吗？
     notified_people: "%{name} 通知了 %{length} 个人："
-    preview: 预览电子邮件
+    preview: 预览邮件
     no_notifications_sent: 尚未发送任何通知
     history_error: 出错了！无法加载历史记录。
-    inviting_guests_to_thread: 访客不属于您的群组，只能访问此主题
-    select_groups: 选择组
-    search_by_name_or_email: 按姓名搜索，或输入电子邮件进行邀请
+    inviting_guests_to_thread: 访客不属于您的小组，并且仅有权访问此议题
+    select_groups: 选择小组
+    search_by_name_or_email: 按姓名搜索，或输入电子邮件地址进行邀请
     search_by_name: 按姓名搜索人员
-    only_admins_can_announce: 只有管理员可以通知整个群组
+    only_admins_can_announce: 只有管理员可以通知整个小组
     only_admins_can_invite: 只有管理员可以邀请访客
-    only_admins_can_announce_or_invite: 只有管理员可以通知整个群组或邀请访客
-    user_mentioned: "%{name} 提及了 %{length} 个人："
-    group_mentioned: "%{name} 提到了有 %{length} 人的群组："
+    only_admins_can_announce_or_invite: 只有管理员可以通知整个小组或邀请访客
+    user_mentioned: "%{name} @提到了 %{length} 个人："
+    group_mentioned: "%{name} @提到了小组（共 %{length} 人）："
     comment_replied_to: "%{name} 回复了 %{length} 个人："
-    new_discussion: "%{name} 邀请了 %{length} 个人参与此话题："
-    discussion_announced: "%{name} 邀请了 %{length} 个人参与此话题："
-    poll_created: "%{name} 邀请了 %{length} 人投票："
-    poll_announced: "%{name} 邀请了 %{length} 人投票："
-    outcome_created: "%{name} 与 %{length} 个人分享了结果："
-    outcome_announced: "%{name} 与 %{length} 个人分享了结果："
-    announcement_created: "%{name} 邀请了 %{length} 个人参与此话题："
-    discussion_edited: "%{name} 编辑了该主题，并通知了 %{length} 个人："
-    poll_edited: "%{name} 编辑了一项投票，通知了 %{length} 人："
+    new_discussion: "%{name} 请了 %{length} 个人加入议题："
+    discussion_announced: "%{name} 请了 %{length} 个人加入议题："
+    poll_created: "%{name} 请了 %{length} 个人投票："
+    poll_announced: "%{name} 请了 %{length} 个人投票："
+    outcome_created: "%{name} 与 %{length} 个人分享了一个结果："
+    outcome_announced: "%{name} 与 %{length} 个人分享了一个结果："
+    announcement_created: "%{name} 请了 %{length} 个人加入议题："
+    discussion_edited: "%{name} 编辑了议题，通知了 %{length} 个人："
+    poll_edited: "%{name} 编辑了一个投票，通知了 %{length} 个人："
     outcome_edited: "%{name} 编辑了一个结果，通知了 %{length} 个人："
     outcome_updated: "%{name} 编辑了一个结果，通知了 %{length} 个人："
-    poll_closing_soon: "%{name} 的投票结束提醒已通知 %{length} 人："
-    poll_reminder: "%{name} 提醒 %{length} 人投票："
+    poll_closing_soon: "%{name} 的投票关闭提醒通知了 %{length} 个人："
+    poll_reminder: "%{name} 提醒了 %{length} 个人投票："
     audiences:
-      group: "％{姓名}"
+      group: "%{name}"
       delegates_of_group: "%{name} 的代表"
-      everyone_in_the_group: 小组中的每个人
-      discussion_group: 主题中的每个人
-      voters: 欢迎所有人投票
-      decided_voters: 所有投票的人
-      undecided_voters: 未决定的选民
-      non_voters: "%{name} 的成员尚未被邀请"
+      everyone_in_the_group: 小组中的所有人
+      discussion_group: 议题中的所有人
+      voters: 所有被邀请投票的人
+      decided_voters: 所有已投票的人
+      undecided_voters: 未决定的投票者
+      non_voters: 尚未受邀的%{name}成员
     form:
-      group_has_no_members_yet: 您是小组的唯一成员。在发起讨论或做出决定之前，您可能需要邀请其他人加入小组。
-      invite_people_to_evaluate_loomio: 邀请一些人加入你的 Loomio 小组，一起做出决定
-      too_many_invitations: 邀请人数超出限制。<a href="%{upgradeUrl}" target="_blank">升级</a>
-      no_invitations_remaining: <p>您已使用完该群组可用的所有 %{maxMembers} 个邀请。</p><p>下一步，<a href="%{upgradeUrl}" target="_blank">选择一个计划</a>以继续在 Loomio 上进行协作。</p>
-      invitations_remaining: 剩余 %{count} 个邀请。<a href="%{upgradeUrl}" target="_blank">升级</a>
+      group_has_no_members_yet: 您是小组中唯一的成员。在发起议题或决策之前，您可能需要邀请一些人加入您的小组。
+      invite_people_to_evaluate_loomio: '邀请一些人加入您的 Loomio 小组，一起做决策'
+      too_many_invitations: '邀请数量超限。<a href="%{upgradeUrl}" target="_blank">升级</a>'
+      no_invitations_remaining: |
+        <p>您已用完此小组可用的所有 %{maxMembers} 个邀请。</p>
+        <p>下一步，<a href="%{upgradeUrl}" target="_blank">选择一个计划</a>以继续在 Loomio 上协作。</p>
+      invitations_remaining: '剩余 %{count} 个邀请。<a href="%{upgradeUrl}" target="_blank">升级</a>'
       who_to_invite: 您想邀请谁？
-      invitation_message_placeholder: 邀请电子邮件中包含的消息。（可选）
-      invitation_message_label: 信息
-      invitation_message_default: 我创建了这个 Loomio 小组，旨在帮助我们共同做出决策。请接受我的邀请。只需一分钟即可加入。谢谢。
+      invitation_message_placeholder: 包含在邀请邮件中的消息。（可选）
+      invitation_message_label: 消息
+      invitation_message_default: '我建立了这个 Loomio 小组来帮助我们共同决策。请接受我的邀请。只需一分钟即可加入。谢谢。'
       group_announced:
-        title: 邀请加入群组
+        title: 邀请加入小组
         helptext: 您想邀请谁加入小组？
       discussion_announced:
-        title: 邀请加入讨论帖
-        helptext: 您想邀请谁加入该主题？
-        notify_helptext: 您想通知谁有关此主题的信息？
+        title: 邀请加入议题
+        helptext: 您想邀请谁加入议题？
+        notify_helptext: 您想通知谁关于此议题？
       discussion_edited:
         title: 通知编辑
-        helptext: 您想将此更新通知给谁？（可选）
+        helptext: 您想通知谁关于此更新？（可选）
       poll_announced:
         title: 邀请投票
-        helptext: 您想邀请谁来投票？
+        helptext: 您想邀请谁投票？
       wip_poll_announced:
         title: 邀请提供反馈
-        helptext: 您想邀请谁来提供反馈？
+        helptext: 您想邀请谁提供反馈？
       poll_reminder:
         title: 提醒投票
-        helptext: 您想提醒谁去投票？
-        message_label: 信息
-        message_placeholder: 可选信息，告诉人们为什么应该投票
+        helptext: 您想提醒谁投票？
+        message_label: 消息
+        message_placeholder: 可选的消息，告诉人们为什么应该投票
       wip_poll_reminder:
-        title: 提醒反馈
+        title: 提醒提供反馈
         helptext: 您想提醒谁提供反馈？
-        message_label: 信息
-        message_placeholder: 通知电子邮件中可选包含的消息
+        message_label: 消息
+        message_placeholder: 包含在通知邮件中的可选消息
       poll_edited:
         title: 通知编辑
-        helptext: 您想将此更新通知给谁？
+        helptext: 您想通知谁关于此更新？
       outcome_announced:
-        title: 分享成果
-        helptext: 总结该过程的结果，包括发现的任何理解或发现的问题。
-      anyone_can_participate: 任何有链接的人都可以参与
+        title: 分享结果
+        helptext: 总结过程的结果，包括任何达成的共识或发现的问题。
+      anyone_can_participate: 任何拥有链接的人都可以参与
       placeholder: 您可以输入姓名或电子邮件地址
-      type_or_paste_email_addresses_to_invite: 输入或粘贴电子邮件地址以邀请
-      notified_empty: 尚未有人选择
+      type_or_paste_email_addresses_to_invite: 输入或粘贴电子邮件地址进行邀请
+      notified_empty: 尚未选择任何人
       single_notification: 将发送 1 条通知。
-      multiple_notifications: 将发送 %{notified} 条通知。
-      notified: "%{notified} 人将收到通知。"
-      notified_singular: 1 人将收到通知。
-      notified_none: 没有人会收到通知。
-      added: 将添加 %{count} 人。
-      added_singular: 将添加 1 人。
+      multiple_notifications: "将发送 %{notified} 条通知。"
+      notified: "将通知 %{notified} 个人。"
+      notified_singular: 将通知 1 个人。
+      notified_none: 不会通知任何人。
+      added: "将添加 %{count} 个人。"
+      added_singular: 将添加 1 个人。
       added_none: 不会添加任何人。
       group_title: "%{name}（%{count} 人）"
-      visible_to_group: "%{group} 中的任何人都可以看到此主题。"
-      visible_to_guests: 只有受邀人员才能看到此帖子。
-      click_group_to_see_individuals: 点击群组查看个人
+      visible_to_group: "%{group} 中的任何人都可以看到此议题。"
+      visible_to_guests: 只有被邀请的人可以看到此议题。
+      click_group_to_see_individuals: 点击小组以查看个人
     members_list:
-      title: 分享给
+      title: 共享给
       last_notified: 已通知
       not_notified: 尚未通知
-      no_members: 这尚未与任何人分享！
-      group_admin: 群组管理员
-      thread_admin: 主题管理员
-      last_read_at: 上次查看 %{time}
-      has_not_read_thread: 尚未查看主题
+      no_members: 这尚未与任何人共享！
+      group_admin: 小组管理员
+      thread_admin: 议题管理员
+      last_read_at: 最后查看于 %{time}
+      has_not_read_thread: 尚未查看议题
       has_not_joined_yet: 尚未加入
-      has_not_joined_yet_hint: 该用户尚未接受加入 Loomio 的邀请，在接受之前不会收到进一步的通知。
+      has_not_joined_yet_hint: 此用户尚未接受加入 Loomio 的邀请，在接受之前不会收到进一步的通知
     group_form:
       search_placeholder: 搜索人员...
-      modal_title: 选择群组成员
+      modal_title: 选择小组成员
     flash:
-      success: 已发送 %{count} 条通知
+      success: "已发送 %{count} 条通知"
   action_dock:
     actions_menu: 操作菜单
     more_actions: 更多操作
-    react: 反应
+    react: 回应
     notify: 通知
     add_resource: 添加附件
-    edit_group: 编辑组上下文
+    edit_group: 编辑小组背景信息
     add_comment: 评论
     copy_url: 复制链接
-    edit_thread: 编辑上下文
-    announce_thread: 发送主题
-    invite_guests: 邀请客人
-    translate_thread: 翻译上下文
+    edit_thread: 编辑背景信息
+    announce_thread: 发送议题
+    invite_guests: 邀请访客
+    translate_thread: 翻译背景信息
     edit_poll: 编辑投票
-    edit_poll_type: 编辑 %{pollType}
-    new_poll_type: 新的 %{pollType}
+    edit_poll_type: 编辑%{pollType}
+    new_poll_type: 新建%{pollType}
     move_items: 移动项目
     announce_poll: 邀请人们投票
     announce_poll_active: "（尚未邀请任何人）"
-    translate_poll: 翻译民意调查
-    edit_stance: 改变位置
+    translate_poll: 翻译投票
+    edit_stance: 更改立场
     translate_stance: 翻译投票
     edit_comment: 编辑评论
     delete_comment: 删除评论
     reply_to_comment: 回复
-    fork_comment: 叉线程
+    fork_comment: 分支议题
     translate_comment: 翻译评论
     edit_outcome: 编辑结果
-    announce_outcome: 将此结果通知给其他人
-    announce_outcome_active: "（目前尚未有人收到此结果的通知）"
+    announce_outcome: 通知人们关于此结果
+    announce_outcome_active: "（尚未有人被通知此结果）"
     translate_outcome: 翻译结果
     show_history: 显示编辑历史
     edited: 已编辑
     show_edits: 显示编辑
     show_notifications: 显示通知
-    history: 历史
-    pin_thread: 针线
-    unpin_thread: 取消固定线程
+    history: 历史记录
+    pin_thread: 置顶议题
+    unpin_thread: 取消置顶议题
     pin_event: 固定到时间线
     unpin_event: 从时间线取消固定
-    comment_copied: 评论 URL 已复制到剪贴板
-    move_thread: 移至群组
-    poll_copied: 决策 URL 已复制到剪贴板
-    discussion_copied: 主题 URL 已复制到剪贴板
+    comment_copied: 评论网址已复制到剪贴板
+    move_thread: 移动到小组
+    poll_copied: 决策网址已复制到剪贴板
+    discussion_copied: 议题网址已复制到剪贴板
     url_copied: 链接已复制到剪贴板
     tag_thread: 管理标签
-    close_thread: 关闭线程
-    reopen_thread: 重新打开帖子
-    delete_thread: 删除话题
+    close_thread: 关闭议题
+    reopen_thread: 重新打开议题
+    delete_thread: 删除议题
     notification_history: 通知历史记录
     move_item: 移动项目
-    add_poll_to_thread: 添加到主题
-    count_members: "%{count} 名成员"
-    count_voters: "%{count} 位选民"
+    add_poll_to_thread: 添加到议题
+    count_members: "%{count} 位成员"
+    count_voters: "%{count} 位投票者"
   formatting:
-    confirm_discard: 您确定要放弃更改吗？
+    confirm_discard: 您确定要放弃您的更改吗？
     discard_draft: 放弃草稿
     formatting_tools: 文本格式化工具
     colors: 颜色
-    highlight: 强调
-    alignment: 结盟
+    highlight: 高亮
+    alignment: 对齐
     lists: 列表
     expand: 显示更多格式化工具
-    collapse: 显示较少的格式化工具
-    bold: 大胆的
+    collapse: 显示更少格式化工具
+    bold: 粗体
     italicize: 斜体
     blockquote: 引用
     strikethrough: 删除线
-    underline: 强调
+    underline: 下划线
     link: 插入链接
     code_block: 代码块
     insert_image: 插入图片
@@ -1043,378 +1068,399 @@ zh_CN:
     paragraph: 段落
     bullet_list: 列表
     number_list: 编号列表
-    check_list: 清单
+    check_list: 复选框列表
     task_list: 任务列表
     reset: 重置
-    text_color: 文本颜色
+    text_color: 文字颜色
     background_color: 背景颜色
     quote: 引用
     embed: 嵌入视频
     divider: 分隔线
     add_table: 添加表格
-    remove_table: 删除表
-    add_column_before: 在前面添加列
-    add_column_after: 在后面添加列
-    remove_column: 删除列
-    add_row_before: 在前面添加行
-    add_row_after: 在后面添加行
-    remove_row: 删除行
-    merge_selected: 合并选定的单元格
+    remove_table: 移除表格
+    add_column_before: 在前方添加列
+    add_column_after: 在后方添加列
+    remove_column: 移除列
+    add_row_before: 在前方添加行
+    add_row_after: 在后方添加行
+    remove_row: 移除行
+    merge_selected: 合并选中的单元格
     wysiwyg: 所见即所得
     edit_markdown: 编辑 Markdown
-    markdown_confirm: 将所见即所得内容转换为 markdown 时，某些格式可能会丢失。
+    markdown_confirm: 将所见即所得内容转换为 Markdown 可能会丢失一些格式。
     upload_failed: 上传失败
   cover_photo_form:
-    heading: 新的封面照片
-    upload_link: 上传新的封面照片
-    image_size_helptext: 理想图像尺寸为 1400×320px
+    heading: 新封面照片
+    upload_link: 上传新封面照片
+    image_size_helptext: 建议图片尺寸为 1400×320px
     upload_success: 封面照片更新成功
   logo_photo_form:
-    heading: 新的集团标志
-    upload_link: 上传新的团体标志
-    image_size_helptext: 理想的图像尺寸是 100×100px
-    upload_success: 徽标已成功更新
+    heading: 新小组标志
+    upload_link: 上传新小组标志
+    image_size_helptext: 建议图片尺寸为 100×100px
+    upload_success: 标志更新成功
   join_group_button:
-    not_a_member: 您目前不是该群组的成员。
-    join_group: 加入群组
-    membership_requested: 申请会员资格
+    not_a_member: 您目前不是此小组的成员。
+    join_group: 加入小组
+    membership_requested: 成员资格已请求
     messages:
       joined_group: 您现在是 %{group} 的成员
   membership_request_form:
-    aria_label: 会员申请表
-    heading: 请求加入群组
+    aria_label: 成员资格请求表单
+    heading: 申请加入小组
     name_label: 姓名
     email_label: 电子邮件
-    introduction_label: 你为什么想加入？
-    submit_button: 请求加入
-    introduction_over_limit: 回复太长
+    introduction_label: 您为什么想加入？
+    submit_button: 申请加入
+    introduction_over_limit: 回复过长
     messages:
       membership_requested: 您已请求加入 %{group}
   revision_history_modal:
-    aria_label: 修订历史
-    discussion_header: 讨论编辑
+    aria_label: 修订历史记录
+    discussion_header: 议题编辑
     comment_header: 评论编辑
     poll_header: 投票编辑
     outcome_header: 结果编辑
     stance_header: 投票编辑
-    started_by: 由<strong>%{name}</strong>发起
-    edited_by: 由<strong>%{name}</strong>编辑
-    edit_by: 由 %{name} · %{date} 编辑
-    posted: 发布
-    field: 场地
-    before: 前
-    after: 后
-    original_text: 原来的
-    current_revision: 最新的
+    started_by: 由 <strong>%{name}</strong> 发起
+    edited_by: 由 <strong>%{name}</strong> 编辑
+    edit_by: 由 %{name} 编辑 · %{date}
+    posted: 已发布
+    field: 字段
+    before: 之前
+    after: 之后
+    original_text: 原始内容
+    current_revision: 最新版本
     closing_at_changed: 关闭时间设置为 %{time}
     private_changed: 隐私设置为 %{private}
-    group_id_changed: 移至 %{name}
+    group_id_changed: 移动到 %{name}
   reactions_input:
-    add_your_reaction: 添加您的反应
+    add_your_reaction: 添加您的回应
   reactions_display:
-    more_reactions: 更多 %{count}
-    you: 你
-    you_and_name: 你和 %{name}
-    you_and_name_and_count_more: 您、%{name} 和其他 %{count} 人
-    name_and_count_more: "%{name} 和另外 %{count} 人"
+    more_reactions: "另外 %{count} 个"
+    you: 您
+    you_and_name: 您和 %{name}
+    you_and_name_and_count_more: 您、%{name} 和另外 %{count} 个人
+    name_and_count_more: "%{name} 和另外 %{count} 个人"
   context_panel:
     thread_status:
-      pinned: 此帖子已被置顶。它将保留在群组帖子列表顶部，供所有用户查看。
-      closed: 此主题已关闭。它将不再显示在仪表板上，并将在群组页面的“已关闭”下列出
+      pinned: 此议题已被置顶。它将始终显示在小组议题列表的顶部，对所有用户可见。
+      closed: 此议题已被关闭。它将不再显示在仪表板上，并将在小组页面中列在“已关闭”下。
   delete_group_modal:
-    title: 删除组
-    subgroup_title: 删除子组
-    parent_body: "<h2>这是您的父组 - 而不是子组！</h2><br>如果您删除此群组，所有子群组也将被永久删除。您的 Loomio 订阅也将被取消。强烈建议您在执行此操作之前导出群组数据并手动下载所有重要文件。您确定要继续吗？"
-    body: 您确定要删除此子群组吗？所有主题帖、投票、文件和其他群组内容都将被永久删除。建议您先导出群组数据并手动下载所有重要文件，然后再继续操作。
-    confirm: 输入“%{name}”以确认您要删除该组。
-    success: 该群组已被存档，预计在 2 周内永久删除。
+    title: 删除小组
+    subgroup_title: 删除子小组
+    parent_body: |
+      <h2>这是您的父小组 - 不是子小组！</h2>
+      <br>
+      如果您删除此小组，任何子小组也将被永久删除。
+
+      您的 Loomio 订阅也将被取消。
+
+      强烈建议在执行此操作前导出您的小组数据并手动下载任何重要文件。
+      您确定要继续吗？
+    body: |
+      您确定要删除此子小组吗？
+      所有议题、投票、文件和其他小组内容将被永久删除。
+      建议您在继续之前导出小组数据并手动下载任何重要文件。
+    confirm: 输入 '%{name}' 以确认您要删除此小组。
+    success: 此小组已归档，并计划在 2 周后永久删除。
   report:
     start_on: 开始于
     end_on: 结束于
     interval: 间隔
-    total_users: 用户总数
-    total_threads: 总线程数
-    total_polls: 民意调查总数
-    threads_with_polls: 带有投票的帖子
-    polls_with_outcomes: 民意调查结果
-    actions_per_interval: 每 %{interval} 的操作
-    actions_per_user: 每位用户的操作
-    users_per_country: 每个国家/地区的用户
-    actions_per_country: 每个国家的行动
-    country: 国家
+    total_users: 总用户数
+    total_threads: 总议题数
+    total_polls: 总投票数
+    threads_with_polls: 带投票的议题
+    polls_with_outcomes: 带结果的投票
+    actions_per_interval: 每%{interval}的操作数
+    actions_per_user: 每用户操作数
+    users_per_country: 每国家/地区用户数
+    actions_per_country: 每国家/地区操作数
+    country: 国家/地区
     users: 用户
     day: 天
-    week: 星期
+    week: 周
     month: 月
     year: 年
-    country_disclaimer: 国家/地区基于用户的 IP 地址，不太准确。此信息仅供参考。
+    country_disclaimer: 国家/地区基于用户的 IP 地址，不是很准确。请仅将其作为粗略参考。
   group_page:
     stats: 小组统计
     participation_report: 参与报告
-    threads: 线程
-    polls: 民意调查
+    threads: 议题
+    polls: 投票
     decisions: 决策
     members: 成员
     files: 文件
     settings: 设置
-    subgroups: 子群
-    my_subgroups: 我的子群组
-    more_subgroups: 更多子组
-    show_opened: "%{count} 打开"
-    show_closed: "%{count} 已关闭"
-    no_threads_here: 这里没有可看的线索！
-    search_threads: 搜索主题...
-    private_threads: 您需要成为会员才能查看此群组中的私人帖子
-    no_more_threads: 没有更多线程可加载
-    view_closed_threads: 查看已关闭的话题
+    subgroups: 子小组
+    my_subgroups: 我的子小组
+    more_subgroups: 更多子小组
+    show_opened: "%{count} 个开放中"
+    show_closed: "%{count} 个已关闭"
+    no_threads_here: 这里没有议题可看！
+    search_threads: 搜索议题...
+    private_threads: 您需要成为成员才能查看此小组中的私密议题
+    no_more_threads: 没有更多议题可加载
+    view_closed_threads: 查看已关闭的议题
     messages:
       privacy:
-        members: 该群组现在仅对成员可见
-        parent_members: 此群组现在仅对贵组织的成员可见
-        public: 该群组现已向公众开放
-      leave_group_success: 您已离开此群组
-      archive_group_success: 该群组已被停用
-    group_logo: 集团徽标
+        members: 此小组现在仅对成员可见
+        parent_members: 此小组现在仅对您组织的成员可见
+        public: 此小组现在对公众可见
+      leave_group_success: 您已离开此小组
+      archive_group_success: 此小组已被停用
+    group_logo: 小组标志
     new_photo: 新照片
-    new_cover_photo: 上传新的封面照片
-    new_group_logo: 上传新的团体标志
-    open_discussions: 打开线程
-    closed_discussions: 封闭的线程
-    discussions_placeholder: 主题是每个人都可以讨论某个话题并共同做出决定的地方。
-    members_placeholder: 你是这里唯一的人：邀请一些人加入你！
-    member_options: 会员选项
-    see_all_members: 查看所有 %{count} 位成员
-    pending_invitations: "+ %{count} 待处理"
-    subgroups_placeholder: 子组为团队提供了自己的空间，并将通知集中发送给合适的人员。
+    new_cover_photo: 上传新封面照片
+    new_group_logo: 上传新小组标志
+    open_discussions: 开放的议题
+    closed_discussions: 已关闭的议题
+    discussions_placeholder: 议题是每个人都可以讨论主题并共同做决策的地方。
+    members_placeholder: '您是这里唯一的人：邀请一些人加入您吧！'
+    member_options: 成员选项
+    see_all_members: 查看全部 %{count} 位成员
+    pending_invitations: "+ %{count} 个待处理"
+    subgroups_placeholder: 子小组为团队提供自己的空间，并将通知集中在合适的人身上。
     invite_people: 邀请
-    visibility_label: 能见度
+    visibility_label: 可见性
     options_label: 选项
     options:
       label: 选项
-      edit_group: 编辑群组设置
+      edit_group: 编辑小组设置
       become_coordinator: 成为管理员
-      export_data: 导出组数据
-      export_data_as_json: 将组数据导出为 JSON
-      export_data_as_csv: 将组数据导出为 CSV
-      export_data_as_html: 将组数据导出为 HTML
-      manage_members: 管理会员
-      add_subgroup: 添加子组
-      manage_subscription: 管理团体订阅
+      export_data: 导出小组数据
+      export_data_as_json: 以 JSON 格式导出小组数据
+      export_data_as_csv: 以 CSV 格式导出小组数据
+      export_data_as_html: 以 HTML 格式导出小组数据
+      manage_members: 管理成员
+      add_subgroup: 添加子小组
+      manage_subscription: 管理小组订阅
       email_settings: 电子邮件偏好设置
-      leave_group: 离开群组
-      deactivate_group: 停用组
+      leave_group: 离开小组
+      deactivate_group: 停用小组
       subscription_status: 订阅状态
     volume:
-      loud: 只要有活动就会发送电子邮件。
-      loud_aria_description: 此群组的通知音量已设置为“大”。只要有活动，您就会收到电子邮件。
-      loud_message: 您将收到有关“%{name}”中所有活动的电子邮件。
-      normal: 只需通过电子邮件发送重要活动：新线索和提案、结果等。
-      normal_aria_description: 此群组的通知音量已设为“正常”。您只会收到重要活动的电子邮件，例如有人发起新话题、提出提案或设定结果时。
-      normal_message: 您只会收到有关“%{name}”中重要事件的电子邮件。
-      quiet: 请勿发送有关此群组的电子邮件。活动将显示在仪表板上。
-      quiet_aria_description: 此群组的通知音量已设为静音。您将不会收到有关此群组活动的电子邮件。群组活动将显示在您的信息中心上。
-      quiet_message: 您不会收到有关“%{name}”活动的电子邮件。
-      mute: 从仪表板隐藏该组，除非提及 {'@'}，否则不通知。
-      mute_aria_description: 此群组的通知音量已设为静音。除非有人提及您，否则您不会收到电子邮件，并且群组活动也不会显示在您的信息中心上。
-      mute_message: "“%{name}”已从您的仪表板中删除。"
+      loud: 每当有活动时发送电子邮件。
+      loud_aria_description: 您在此小组的通知音量设置为“响亮”。每当有活动时，您都会收到电子邮件。
+      loud_message: 您将收到关于“%{name}”中所有活动的电子邮件。
+      normal: '仅发送重要活动的电子邮件：新议题和议案、结果等。'
+      normal_aria_description: 您在此小组的通知音量设置为“正常”。您只会收到重要活动的电子邮件，例如有人发起新议题、提出议案或设定结果时。
+      normal_message: 您只会收到关于“%{name}”中重要事件的电子邮件。
+      quiet: 不要发送关于此小组的电子邮件。活动将显示在仪表板上。
+      quiet_aria_description: 您在此小组的通知音量设置为“安静”。您不会收到关于此小组活动的电子邮件。小组活动将显示在您的仪表板上。
+      quiet_message: 您不会收到关于“%{name}”活动的电子邮件。
+      mute: 从仪表板隐藏此小组，除非被@提及，否则不通知。
+      mute_aria_description: 您在此小组的通知音量设置为“静音”。除非有人@提及您，否则您不会收到电子邮件，并且小组活动不会显示在您的仪表板上。
+      mute_message: '“%{name}”已从您的仪表板中移除。'
     privacy:
-      private: 隐私：该群组仅成员可见
-      parent_members: 隐私：%{parentGroupName} 的成员和 %{groupName} 的成员可以看到此群组
-      public: 隐私：此群组在网络上可见
-      aria_label: 群组隐私：%{privacy}
+      private: '隐私：此小组仅对成员可见'
+      parent_members: '隐私：此小组对 %{parentGroupName} 的成员和 %{groupName} 的成员可见'
+      public: '隐私：此小组在网络上可见'
+      aria_label: '小组隐私：%{privacy}'
   export_data_modal:
     title: 您想如何使用您的数据？
-    as_csv: 在电子表格中打开它
+    as_csv: 在电子表格中打开
     as_html: 在浏览器中打开
-    as_json: 在我自己的服务器上托管这个小组
+    as_json: 在我自己的服务器上托管此小组
   description_card:
-    title: 群组描述
-    placeholder: 群组管理员可以使用此区域来描述群组的目的，以便每个人都知道他们为什么在这里。
+    title: 小组描述
+    placeholder: 小组管理员可以使用此区域描述小组的目的，以便每个人都知道他们为什么在这里。
     messages:
       description_updated: 描述已更新
   leave_group_form:
-    aria_label: 离开群组
-    title: 离开群组
-    question: 您确定要离开该群组吗？
-    submit: 是的，离开此群组
+    aria_label: 离开小组
+    title: 离开小组
+    question: 您确定要离开此小组吗？
+    submit: 是的，离开此小组
   archive_group_form:
-    aria_label: 停用组
-    title: 停用组
-    question: 您确定要停用该群组吗？
-    submit: 是的，停用此群组
+    aria_label: 停用小组
+    title: 停用小组
+    question: 您确定要停用此小组吗？
+    submit: 是的，停用此小组
   group_form:
-    share_this_url_with_people_who_want_to_join: 与想要加入的人分享此 URL
-    request_to_join_prompt: 请求加入提示
-    default_request_to_join_prompt: 感谢您对我们小组的关注。请介绍一下自己，并解释您申请加入的原因。
-    thread_defaults_help: 新线程的默认设置
-    click_to_change_image: 单击即可更改封面图片（4x1）或徽标（1x1）
+    share_this_url_with_people_who_want_to_join: 与想要加入的人共享此 URL
+    request_to_join_prompt: 加入请求提示
+    default_request_to_join_prompt: '感谢您对我们小组的兴趣。请介绍您自己并说明请求加入的原因。'
+    thread_defaults_help: 新议题的默认设置
+    click_to_change_image: 点击更改封面图片 (4x1) 或标志 (1x1)
     change_cover_image: 更改封面图片
-    change_logo: 更改徽标
-    permissions_explaination: 群组成员资格分为两个级别：管理员和成员。管理员可以编辑群组设置、将其他人指定为管理员，以及执行以下所有操作。
-    aria_label: 团体形式
-    parent_group: 家长组
-    new_organisation: 新组织
-    new_group: 新组
-    new_subgroup: 新子群
-    new_group_explainer: 为您的组织创建一个新的 Loomio 组。
-    new_subgroup_explainer: 子群是组织内团队或委员会的私人空间。
-    start_group_heading: 创建一个群组
-    upgrade_for_subgroups: '请<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">升级您的订阅</a>以创建子组'
-    start_subgroup_heading: 启动子组
-    edit_group_heading: 编辑群组设置
-    edit_subgroup_heading: 编辑子组设置
-    group_settings: 群组设置
-    subgroup_settings: 子组设置
-    group_name: 组名
-    subgroup_name: 子组名称
+    change_logo: 更改标志
+    permissions_explaination: |
+      一个人可以拥有两个级别的小组成员资格：管理员和成员。
+      管理员可以编辑小组设置，任命其他人为管理员，并执行下面列出的所有操作。
+    aria_label: 小组表单
+    parent_group: 父小组
+    new_organisation: 新建组织
+    new_group: 新建小组
+    new_subgroup: 新建子小组
+    new_group_explainer: 为您的组织启动一个新的 Loomio 小组。
+    new_subgroup_explainer: 子小组是组织内团队或委员会的私人空间。
+    start_group_heading: 启动小组
+    upgrade_for_subgroups: '请<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">升级您的订阅</a>以创建子小组'
+    start_subgroup_heading: 启动子小组
+    edit_group_heading: 编辑小组设置
+    edit_subgroup_heading: 编辑子小组设置
+    group_settings: 小组设置
+    subgroup_settings: 子小组设置
+    group_name: 小组名称
+    subgroup_name: 子小组名称
     organization_name: 组织名称
-    handle: 处理
-    group_handle_placeholder: 您的群组网址和电子邮件：%{host}/%{handle}, %{handle}{'@'}%{host}
-    start_organization_heading: 新组织
+    handle: 标识符
+    group_handle_placeholder: '用于您的小组 URL 和电子邮件：%{host}/%{handle}, %{handle}{'@'}%{host}'
+    start_organization_heading: 新建组织
     edit_organization_heading: 编辑组织设置
-    group_name_placeholder: 你们的团体叫什么名字？
-    subgroup_name_placeholder: 例如板
+    group_name_placeholder: 您的小组名称是什么？
+    subgroup_name_placeholder: 例如：董事会
     organization_name_placeholder: 您的组织名称是什么？
     description: 描述
-    description_placeholder: 描述您的小组的目的，以便您的小组成员知道他们为什么在这里。
-    new_description_placeholder: 为什么要试用 Loomio？你们需要一起做出哪些决定？
-    new_description_html: <h3 id="how-do-you-intend-to-use-loomio">您打算如何使用 Loomio？</h3><p></p><h3 id="why-is-this-important-for-your-group">为什么这对您的团队很重要？</h3><p></p><h3 id="what-decisions-do-you-need-to-make">您需要做出什么决定？</h3><p></p>
-    secret_by_default: 只有受邀加入的人才可以访问您的群组。您可以稍后更改此设置。
+    description_placeholder: 描述您小组的目的，以便您的小组成员知道他们为什么在这里。
+    new_description_placeholder: 您为什么试用 Loomio？你们需要共同做出哪些决策？
+    new_description_html: '<h3 id="how-do-you-intend-to-use-loomio">您打算如何使用 Loomio？</h3><p></p><h3 id="why-is-this-important-for-your-group">为什么这对您的小组很重要？</h3><p></p><h3 id="what-decisions-do-you-need-to-make">你们需要做出哪些决策？</h3><p></p>'
+    secret_by_default: 您的小组将仅限受邀加入的人访问。您以后可以更改此设置。
     privacy_statement:
-      public_on_web: 群组内容的名称、描述和附件将对公众可见
-      private_to_group: 名称和描述仅对会员可见。
-      private_to_parent_members: 名称和描述将对 %{parent} 的成员可见
+      public_on_web: 小组背景信息的名称、描述和附件将对公众可见
+      private_to_group: 名称和描述仅对成员可见。
+      private_to_parent_members: 名称和描述将对 %{parent} 的成员可见。
     privacy: 隐私
-    group_privacy_is_open_description: 公开列出。所有主题均公开。
-    group_privacy_is_closed_description: 未公开。任何知道链接的人都可以申请加入。所有帖子均为私密帖子。
-    group_privacy_is_closed_public_threads_description: 不公开。任何知道链接的人都可以申请加入。主题可以是公开的，也可以是私密的。
-    group_privacy_is_secret_description: 只有受邀人员才能找到该群组。所有话题均为私密。
-    confirm_change_to_secret: 如果继续，该组及其子组中的所有主题都将变为私有。
-    confirm_change_to_secret_subgroup: 如果继续，所有线程都将变为私有。
-    confirm_change_to_public: 如果您继续，该组中的所有主题都将在网络上公开。
-    confirm_change_to_private_discussions_only: 如果您继续，该组中的所有公共主题都将变为私有主题。
-    profile: 轮廓
-    subgroup_privacy_is_open_description: 任何人都可以找到此子群并申请加入。所有帖子均公开。
-    subgroup_privacy_is_closed_description: 任何人都可以找到此子群并申请加入。所有帖子均为私密。
-    subgroup_privacy_is_closed_public_threads_description: 任何人都可以找到此子群并申请加入。讨论帖可以是公开的，也可以是私密的。
-    subgroup_privacy_is_closed_secret_parent_description: "%{parent} 的成员可以找到此子群并申请加入。所有帖子均为私密。"
-    subgroup_privacy_is_secret_description: 只有受邀成员才能看到该子组。
+    group_privacy_is_open_description: 公开列出。所有议题都是公开的。
+    group_privacy_is_closed_description: 未列出。任何拥有链接的人都可以请求加入。所有议题都是私密的。
+    group_privacy_is_closed_public_threads_description: 未列出。任何拥有链接的人都可以请求加入。议题可以是公开的或私密的。
+    group_privacy_is_secret_description: 只有受邀的人才能找到该小组。所有议题都是私密的。
+    confirm_change_to_secret: 如果您继续，此小组及其子小组中的所有议题都将变为私密。
+    confirm_change_to_secret_subgroup: 如果您继续，所有议题都将变为私密。
+    confirm_change_to_public: 如果您继续，此小组中的所有议题将在网络上公开。
+    confirm_change_to_private_discussions_only: 如果您继续，此小组中的任何公开议题都将变为私密。
+    profile: 资料
+    subgroup_privacy_is_open_description: 任何人都可以找到此子小组并请求加入。所有议题都是公开的。
+    subgroup_privacy_is_closed_description: 任何人都可以找到此子小组并请求加入。所有议题都是私密的。
+    subgroup_privacy_is_closed_public_threads_description: 任何人都可以找到此子小组并请求加入。议题可以是公开的或私密的。
+    subgroup_privacy_is_closed_secret_parent_description: %{parent} 的成员可以找到此子小组并请求加入。所有议题都是私密的。
+    subgroup_privacy_is_secret_description: 只有受邀的成员才能看到此子小组。
     advanced_settings: 高级设置
     how_do_people_join: 人们如何加入？
-    membership_granted_upon_request: 任何人都可以加入该小组。
-    membership_granted_upon_approval: 任何人都可以申请加入，但必须获得批准。
+    membership_granted_upon_request: 任何人都可以加入小组。
+    membership_granted_upon_approval: 任何人都可以请求加入，但必须经过批准。
     membership_granted_upon_invitation: 仅限邀请。
-    membership_granted_upon_approval_secret_parent: "<strong>根据请求，</strong> %{parent} 的任何人都可以申请加入该小组。"
+    membership_granted_upon_approval_secret_parent: "<strong>按请求</strong>，%{parent} 中的任何人都可以请求加入小组。"
     permissions: 权限
-    thread_privacy: 主题隐私
-    public_threads: 仅限公共主题
+    thread_privacy: 议题隐私
+    public_threads: 仅公开议题
     public_discussions_subgroup: "%{parentGroupName} 中的任何人都可以看到讨论"
-    public_or_private_threads: 允许公共和私有线程
-    private_threads: 只有会员才能看到讨论
-    allow_public_threads: 允许此组中的公共线程。
-    parent_members_can_see_discussions: "%{parent} 的成员可以查看私人帖子"
-    parent_members_can_see_discussions_help: 允许父组成员查看但不允许参与本组内的帖子和投票
-    members_can_announce: 成员可以通知群组中的所有人
-    members_can_announce_help: 允许成员通知群组中的每个人有关主题或投票的信息
-    members_can_add_members: 会员可以邀请会员
-    members_can_add_members_help: 允许成员邀请他人加入该群组
-    members_can_add_guests: 会员可以邀请客人
-    members_can_add_guests_help: 允许成员邀请访客加入此群组的话题或投票
-    members_can_create_subgroups: 成员可以创建子组
-    members_can_create_subgroups_help: 允许成员创建新子组并成为其管理员
-    members_can_edit_discussions: 成员可以管理主题和评论
-    members_can_edit_discussions_help: 允许成员编辑、移动、固定、标记或关闭主题
-    members_can_edit_comments: 会员可以编辑自己的评论
-    members_can_edit_comments_help: 允许会员随时编辑自己的评论
-    members_can_delete_comments: 会员可以删除自己的评论
-    members_can_delete_comments_help: 允许成员从主题中删除自己的评论
-    members_can_start_discussions: 成员可以发起新话题
-    members_can_start_discussions_help: 允许成员在群组内发起新话题
-    members_can_raise_motions: 会员可以发起投票
-    members_can_raise_motions_help: 允许成员在讨论或小组内发起投票和提案
-    admins_can_edit_user_content: 管理员可以编辑会员的评论
-    admins_can_edit_user_content_help: 允许管理员编辑成员撰写的内容
-    submit_start_group: 启动组
-    submit_start_subgroup: 开始子组
+    public_or_private_threads: 允许公开和私密议题
+    private_threads: 只有成员可以看到议题
+    allow_public_threads: 允许在此小组中创建公开议题。
+    parent_members_can_see_discussions: "%{parent} 的成员可以看到私密议题"
+    parent_members_can_see_discussions_help: 允许父小组的成员查看但不参与此小组内的议题和投票
+    members_can_announce: 成员可以通知小组中的每个人
+    members_can_announce_help: 允许成员通知小组中的每个人关于议题或投票的信息
+    members_can_add_members: 成员可以邀请成员
+    members_can_add_members_help: 允许成员邀请人们加入此小组
+    members_can_add_guests: 成员可以邀请访客
+    members_can_add_guests_help: 允许成员邀请访客进入此小组的议题或投票
+    members_can_create_subgroups: 成员可以创建子小组
+    members_can_create_subgroups_help: 允许成员创建新的子小组并成为其管理员
+    members_can_edit_discussions: 成员可以管理议题和评论
+    members_can_edit_discussions_help: 允许成员编辑、移动、置顶、标记或关闭议题
+    members_can_edit_comments: 成员可以编辑自己的评论
+    members_can_edit_comments_help: 允许成员随时编辑自己的评论
+    members_can_delete_comments: 成员可以删除自己的评论
+    members_can_delete_comments_help: 允许成员从议题中删除自己的评论
+    members_can_start_discussions: 成员可以发起新议题
+    members_can_start_discussions_help: 允许成员在小组内发起新议题
+    members_can_raise_motions: 成员可以发起投票
+    members_can_raise_motions_help: 允许成员在讨论或小组内发起投票和议案
+    admins_can_edit_user_content: 管理员可以编辑成员的评论
+    admins_can_edit_user_content_help: 允许管理员编辑成员编写的内容
+    submit_start_group: 启动小组
+    submit_start_subgroup: 启动子小组
     submit_update: 更新设置
     messages:
-      group_created: 小组开始
-      group_updated: 群组已更新
-    upload_logo: 上传徽标
+      group_created: 小组已启动
+      group_updated: 小组已更新
+    upload_logo: 上传标志
     upload_cover_photo: 上传封面照片
   group_export_modal:
-    title: 导出组数据
-    body: <p>您可以随时下载您所在群组的数据副本。<a href="https://help.loomio.org/en/user_manual/groups/data_export/">了解更多。</a></p><p>完成此操作需要几分钟，具体取决于您的小组规模。完成后，您将收到一封包含文件下载链接的电子邮件。</p>
+    title: 导出小组数据
+    body: |
+      <p>
+        您可以随时下载您小组数据的副本。
+        <a href="https://help.loomio.org/en/user_manual/groups/data_export/">了解更多。</a>
+      </p>
+      <p>
+        完成需要几分钟时间，具体取决于您小组的大小。
+        准备就绪后，您将收到一封包含下载文件链接的电子邮件。
+      </p>
     submit: 开始导出
-    flash: 群组数据导出已开始
+    flash: 小组数据导出已开始
   membership_requests_card:
-    heading: 会员申请
+    heading: 成员资格请求
     manage_requests: 管理请求
-    manage_requests_with_count: 管理请求（%{count}）
+    manage_requests_with_count: 管理请求 (%{count})
   membership_requests_page:
-    heading: 会员申请
+    heading: 成员资格请求
     approve: 批准
     ignore: 忽略
-    no_pending_requests: 目前该组没有待处理的会员申请。
-    no_previous_requests: 目前尚无该团体的会员申请。
-    previous_requests: 先前的请求
-    previous_request_response: "%{response} 来自 %{responder}"
+    no_pending_requests: 此小组目前没有待处理的成员资格请求。
+    no_previous_requests: 此小组目前没有以前的成员资格请求。
+    previous_requests: 以前的请求
+    previous_request_response: "%{response}，由 %{responder} 处理"
     messages:
-      request_approved_success: 会员申请已获批准
-      request_ignored_success: 会员申请被忽略
+      request_approved_success: 成员资格请求已批准
+      request_ignored_success: 成员资格请求已忽略
   invitation_form:
-    group_url: 群组网址
+    group_url: 小组 URL
     reusable_invitation_link: 可重复使用的邀请链接
     error: 尝试复制到剪贴板时出错
-    aria_label: 邀请函
-    invite_people: 邀请他人
-    invite_guests: 邀请客人
+    aria_label: 邀请表单
+    invite_people: 邀请人员
+    invite_guests: 邀请访客
     notify_people: 通知人员
-    invite_people_to_group: 邀请 %{name}
-    group: 团体
-    group_placeholder: 选择一个组
+    invite_people_to_group: 邀请加入 %{name}
+    group: 小组
+    group_placeholder: 选择一个小组
     shareable_link: 可共享链接
-    share_group: 分享您的群组
+    share_group: 共享您的小组
     copy_link: 复制
     copy_to_clipboard: 复制到剪贴板
     email_addresses: 电子邮件地址
-    already_chatting_somewhere: 已经在某处聊天了吗？
-    to_stop_people_reset_the_link: 要阻止他人通过此链接加入，请点击“重置此链接”。现有链接将不再有效，并会创建一个新链接。
-    try_the_shareable_link_instead: 请尝试使用可共享链接。
-    enter_emails_of_people_to_invite: 输入您想邀请加入群组的人员的电子邮件地址。如果您有列表，只需一次性复制并粘贴所有地址即可。
-    email_addresses_placeholder: 例如 helperbot{'@'}loomio.org、friendlybot{'@'}loomio.org
-    secret_group_url_explanation: 这是您的群组地址。只有受邀成员才能看到该群组。
+    already_chatting_somewhere: 已经在某个地方聊天了？
+    to_stop_people_reset_the_link: 要阻止人们使用此链接加入，请点击“重置此链接”。现有链接将不再有效，并将创建一个新链接。
+    try_the_shareable_link_instead: 尝试改用可共享链接。
+    enter_emails_of_people_to_invite: 输入您想邀请加入小组的人员的电子邮件地址。如果您有一个列表，只需一次全部复制并粘贴即可。
+    email_addresses_placeholder: 例如：helperbot{'@'}loomio.org, friendlybot{'@'}loomio.org
+    secret_group_url_explanation: 这是您小组的地址。只有受邀成员才能看到该小组。
     shareable_invitation_explanation: 任何拥有此链接的人都可以立即加入您的小组。
-    shareable_link_to_join_group: 可分享的加入群组链接
-    shareable_link_reset: 共享链接已重置。之前的链接将不再有效。
+    shareable_link_to_join_group: 用于加入小组的可共享链接
+    shareable_link_reset: 可共享链接已重置。以前的链接将不再有效。
     reset_the_link: 重置链接
     email_explanation: 或者，在下面输入电子邮件地址以通过电子邮件发送邀请。
-    add_custom_message: 让你的邀请个性化，
-    add_custom_message_link: 添加自定义消息。
+    add_custom_message: '让您的邀请更个性化，'
+    add_custom_message_link: '添加自定义消息。'
     custom_message: 自定义消息
-    custom_message_placeholder: 输入邀请中包含的个人消息。
+    custom_message_placeholder: 输入一条个人信息以包含在邀请中。
     add_members: 添加成员
-    from_parent_group: 来自 %{name}。
+    from_parent_group: '来自 %{name}。'
     send: 发送
-    done: 完毕
+    done: 完成
     messages:
       invitation_sent: 邀请已发送。
-      invitations_sent: 已发送 %{count} 份邀请。
-      no_invitations: 哎呀！请确认电子邮件地址正确，然后重试。
-      max_invitations: 如果您想发送超过 100 个邀请，请使用团队链接。
+      invitations_sent: "已发送 %{count} 条邀请。"
+      no_invitations: 哎呀！请验证电子邮件地址是否正确，然后重试。
+      max_invitations: 如果您想发送超过 100 条邀请，请使用团队链接。
   memberships_page:
     members: 成员
     name_label: 姓名
-    coordinator_label: 行政
-    remove_member_label: 消除
-    fragment_placeholder: 按姓名或用户名过滤用户...
-    only_one_admin: 本群组仅有一名管理员。建议您至少再指定一名成员作为管理员。
+    coordinator_label: 管理员
+    remove_member_label: 移除
+    fragment_placeholder: 按姓名或用户名筛选用户...
+    only_one_admin: 此小组中只有一位管理员。建议您再任命至少一名成员作为管理员。
     messages:
-      remove_member_success: 已删除 %{name}
+      remove_member_success: 已移除 %{name}
       make_admin_success: "%{name} 现在是管理员"
       remove_admin_success: "%{name} 不再是管理员"
     remove_admin_from_self:
-      question: 您确定不再担任管理员吗？
+      question: 您确定不再想担任管理员了吗？
   membership_remove_modal:
     invitation:
       title: 取消邀请
@@ -1423,409 +1469,406 @@ zh_CN:
       submit: 取消邀请
     membership:
       title: 移除成员
-      message: 您确定要删除 %{name} 吗？
-      impact_for_subgroup: 这将删除他们对子组（包括主题和投票）的访问权限，但他们仍将是父组的成员。
-      impact_for_group: 这将删除他们对该组（包括主题和投票）以及任何子组的访问权限。
-      flash: 已移除成员
+      message: 您确定要移除 %{name} 吗？
+      impact_for_subgroup: 这将移除他们对子小组的访问权限（包括议题和投票），但他们仍将是父小组的成员。
+      impact_for_group: 这将移除他们对小组（包括议题和投票）和任何子小组的访问权限。
+      flash: 成员已移除
       submit: 移除成员
   memberships_panel:
-    add_coordinator: 成为管理员
-    remove_coordinator: 降级管理员
+    add_coordinator: 设为管理员
+    remove_coordinator: 取消管理员
   membership_form:
     modal_title:
-      group: 设置标题
+      group: 设置头衔
     title_helptext:
-      group: 此称谓将显示在此群组中 %{name} 的姓名旁边。使用它来让成员了解他们的角色。
-    title_label: 标题
-    title_placeholder: 例如“协调员”或“引导员”
-    updated: 会员头衔已更新
+      group: 此头衔将出现在 %{name} 在此小组中的姓名旁边。用它来让人们知道他们的角色。
+    title_label: 头衔
+    title_placeholder: 例如：“协调员”或“ facilitator”
+    updated: 成员头衔已更新
   user_name_modal:
     user_name_updated: 用户名已更新
     set_user_name: 设置用户名
   user_page:
-    contact_user: 联系人 %{name}
-    location_field: 位置：%{value}
-    locale_field: 语言：%{value}
-    online_field: 在线：%{value}
-    invited: 已邀请 %{value}
-    message_user: 消息 %{name}
+    contact_user: 联系 %{name}
+    location_field: '位置：%{value}'
+    locale_field: '语言：%{value}'
+    online_field: '在线：%{value}'
+    invited: 受邀于 %{value}
+    message_user: 给 %{name} 发消息
   contact_request_form:
-    modal_title: 电子邮件 %{name}
-    message_placeholder: 介绍一下自己并说明您想要联系的原因。
+    modal_title: 发送电子邮件给 %{name}
+    message_placeholder: 介绍您自己并说明您想联系的原因。
     helptext: "%{name} 将通过电子邮件收到您的姓名、电子邮件地址和消息"
-    email_sent: 电子邮件已发送至 %{name}
+    email_sent: 电子邮件已发送给 %{name}
   profile_page:
     autodetect_time_zone: 自动检测时区
     account_is_bot: 这是一个机器人账户
-    bot_account_warning: 机器人账户不会被邀请参与投票或讨论
-    incomplete_profile: 个人资料不完整！
+    bot_account_warning: 机器人账户不会被邀请在投票中投票或参与讨论
+    incomplete_profile: 资料不完整！
     set_your_profile_picture: 设置您的个人资料图片
     messages:
-      updated: 个人资料已更新
-      picture_changed: 已更新个人资料图片
+      updated: 资料已更新
+      picture_changed: 个人资料图片已更新
       password_changed: 密码已更新
-      deactivated: 帐户已停用
-    deactivated_user: 已停用用户
-    deleted_account: 已删除帐户
+      deactivated: 账户已停用
+    deactivated_user: 已停用的用户
+    deleted_account: 已删除的账户
     date_time_pref_label: 日期和时间格式
     merge_accounts: 合并账户
     change_picture_link: 更改图片
     change_password_link: 重置密码
-    delete_account: 永久删除帐户
-    delete_user_link: 删除帐户
-    profile: 轮廓
-    edit_profile: 编辑个人资料
+    delete_account: 永久删除账户
+    delete_user_link: 删除账户
+    profile: 资料
+    edit_profile: 编辑资料
     picture_label: 图片
     name_label: 姓名
     username_label: 用户名
-    username_helptext: 所有小写字母和数字，最多 30 个字符
+    username_helptext: 全部小写字母和数字，最多 30 个字符
     email_label: 电子邮件
     short_bio_label: 介绍
     locale_label: 语言
-    short_bio_placeholder: 请介绍一下自己，包括专业领域、感兴趣的话题以及任何附属组织
+    short_bio_placeholder: 请介绍您自己，包括专业领域、感兴趣的主题以及任何附属组织
     locale_placeholder: 选择您的首选语言
-    location_label: 地点
-    location_placeholder: 你们在哪里？
-    update_profile: 更新个人资料
-    deactivate_account: 停用帐户
-    deactivate_account_subtitle: 停止发送电子邮件并取消会员资格。保留您的个人资料，以免影响过去的讨论和决定。
-    delete_account_subtitle: 彻底删除您的帐户并从过去的讨论和决定中删除您的名字。
-    updated_on_sign_in: 由您的浏览器提供并在您登录时更新
+    location_label: 位置
+    location_placeholder: 您在哪里？
+    update_profile: 更新资料
+    deactivate_account: 停用账户
+    deactivate_account_subtitle: 停止电子邮件并取消成员资格。保留您的个人资料，以免过去的讨论和决策受到影响。
+    delete_account_subtitle: 完全删除您的账户，并从过去的讨论和决策中移除您的姓名。
+    updated_on_sign_in: 由您的浏览器提供，并在您登录时更新
   text_editor:
     x_of_y_characters: "%{x} / %{y} 个字符"
-    select_text_to_link: 选择要链接的文本并重试
+    select_text_to_link: 选择要链接的文本，然后重试
     insert_link: 插入链接
     insert_embedded_url: 嵌入视频
   change_picture_form:
-    aria_label: 个人资料照片表格
+    aria_label: 个人资料照片表单
     title: 设置个人资料照片
-    helptext: 您可以上传自己的个人资料图片，或者如果您有<a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a>帐户，也可以使用它。
+    helptext: 您可以上传自己的个人资料图片，或者如果您有 <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> 账户，可以使用该图片。
     use_initials: 使用首字母
     use_gravatar: 使用 Gravatar
     use_uploaded: 上传新照片
     existing_upload: 现有上传
     use_provider: 使用 %{provider} 照片
   change_password_form:
-    set_password_title: 设置密码
-    set_password_helptext: 请输入密码 - 至少 8 个字符
+    set_password_title: 设置您的密码
+    set_password_helptext: 请输入密码 - 最少 8 个字符
     set_password: 设置密码
     password_changed: 您的密码已更新
   deactivation_modal:
-    introduction: 当您删除帐户时：
-    deactivate_introduction: 当您停用帐户时：
-    you_will_be_deactivated: 您的用户帐户将被标记为停用。您的电子邮件地址和个人身份数据将保留。您可以根据需要稍后重新激活您的帐户。
-    name_not_removed: 您发布的评论、投票、提议和讨论将保留，以便历史记录不会被更改。
-    you_will_be_deleted: 您的用户帐户（包括您的姓名、电子邮件地址、个人资料照片和其他个人身份数据）将从我们的系统中删除。
-    name_removed: 您发布的评论、投票、建议和讨论将保留，但您的姓名和个人资料将被删除。
-    no_longer_group_member: 您将不再被列为任何群组的成员。
+    introduction: '当您删除账户时：'
+    deactivate_introduction: '当您停用账户时：'
+    you_will_be_deactivated: 您的用户账户将被标记为已停用。您的电子邮件地址和个人身份数据将保留。如果您愿意，以后可以重新激活您的账户。
+    name_not_removed: 您发表的评论、投票、议案和讨论将保留，以便不更改历史记录。
+    you_will_be_deleted: 您的用户账户，包括您的姓名、电子邮件地址、个人资料照片和其他个人身份数据将从我们的系统中删除。
+    name_removed: 您发表的评论、投票、议案和讨论将保留，但您的姓名和个人资料将从其中移除。
+    no_longer_group_member: 您将不再被列为任何小组的成员。
     no_emails: 您将不再收到通知电子邮件。
-    submit_delete: 立即删除我的帐户
-    submit_deactivate: 立即停用我的帐户
+    submit_delete: 立即删除我的账户
+    submit_deactivate: 立即停用我的账户
   email_settings_page:
-    monday: 周一
-    tuesday: 周二
-    wednesday: 周三
-    thursday: 周四
+    monday: 星期一
+    tuesday: 星期二
+    wednesday: 星期三
+    thursday: 星期四
     friday: 星期五
-    saturday: 周六
+    saturday: 星期六
     sunday: 星期日
     every_day: 每天
-    every_second_day: 每隔一天
+    every_second_day: 每两天
+    never: false
     header: 通知设置
-    account_deactivated: 您的帐户已被停用。您将不会再收到任何电子邮件。
-    deactivate_header: 永久停止所有电子邮件
-    deactivate_description: 如果您不想再收到我们的电子邮件，您可以停用您的用户帐户。
-    email_newsletter: Loomio 新闻通讯
-    email_newsletter_description: 获取有关 Loomio 新功能、培训、您所在城市活动以及未来发展的最新消息。通常每年发送 2 到 3 封电子邮件。
-    email_catch_up_day: 补办摘要电子邮件
-    daily_summary_description: 选择何时接收更新摘要电子邮件。此电子邮件包含您尚未查看的任何新活动。如果您不是常规用户，这是一个保持最新状态的好方法。
-    on_participation_label: 订阅参与
-    on_participation_description: 当您参与某个主题时，所有进一步的活动都会通过电子邮件发送给您。
+    account_deactivated: 您的账户已被停用。您将永远不会收到任何电子邮件。
+    deactivate_header: 永远停止所有电子邮件
+    deactivate_description: 如果您再也不想收到我们的任何电子邮件，您可以停用您的用户账户。
+    email_newsletter: Loomio 时事通讯
+    email_newsletter_description: 获取有关新功能、培训、您所在城市的活动以及 Loomio 未来的更新。通常每年 2 或 3 封电子邮件。
+    email_catch_up_day: 汇总摘要电子邮件
+    daily_summary_description: '选择何时接收汇总摘要电子邮件。此电子邮件包含您尚未看到的任何新活动。如果您不是常用户，这是一个保持最新的好方法。'
+    on_participation_label: 参与时订阅
+    on_participation_description: 当您参与一个议题时，所有进一步的活动将在发生时通过电子邮件发送给您。
     announcement_label: 公告
-    announcement_description: 您将收到一封电子邮件，其中包含您群组中成员发布的所有内容
+    announcement_description: 您将收到关于您小组中人员宣布的所有内容的电子邮件
     mentioned_label: 提及和回复
-    mentioned_description: 当有人{'@'}在评论中提及您时，您会收到一封通知电子邮件
+    mentioned_description: 当有人在评论中@提及您时，您会收到一封通知电子邮件
     update_settings: 保存更改
-    specific_groups: 特定群组的设置
+    specific_groups: 特定小组的设置
     default_settings:
-      loud_description: 当您加入新群组时，<strong>只要有活动，</strong>您就会收到电子邮件。
-      normal_description: 当您加入新群组时，您将收到有关<strong>新主题和提案的</strong>电子邮件。
-      quiet_description: 当您加入新群组时，您<strong>将不会收到有关活动的电子邮件</strong>。
+      loud_description: 当您加入一个新小组时，您将在<strong>有活动时</strong>收到电子邮件。
+      normal_description: 当您加入一个新小组时，您将收到关于<strong>新议题和议案</strong>的电子邮件。
+      quiet_description: 当您加入一个新小组时，您将<strong>不会收到关于活动的电子邮件</strong>。
     edit: 编辑
     messages:
       updated: 电子邮件设置已更新
-    learn_more: 了解有关电子邮件设置的更多信息...
+    learn_more: 了解更多关于电子邮件设置的信息...
   thread_preview:
     replies_count: "%{count} 条回复"
-    unread_count: "%{count} 个未读"
+    unread_count: "%{count} 条未读"
   dashboard_page:
     aria_label: 仪表板
-    polls_to_vote_on: 投票表决
-    no_polls_to_vote_on: 您无需参与任何民意调查
-    recent_polls: 最近的民意调查
-    current_polls: 当前民意调查
-    recent_threads: 最近的帖子
+    polls_to_vote_on: 需要投票的投票
+    no_polls_to_vote_on: 没有需要您投票的投票
+    recent_polls: 最近的投票
+    current_polls: 当前的投票
+    recent_threads: 最近的议题
     no_groups:
-      show_all: 欢迎！您还不是任何群组的成员。<a href="/explore">浏览公共群组</a>或<a href="/g/new">创建群组</a>。
-      show_muted: 您没有任何静音的帖子，因为您不是任何群组的成员。
+      show_all: 欢迎！您还不是任何小组的成员。<a href="/explore">浏览公开小组</a> 或 <a href="/g/new">启动一个小组</a>。
+      show_muted: 您没有任何已静音的议题，因为您不是任何小组的成员。
     no_threads:
-      show_all: 您没有任何最近讨论的帖子。
-      show_proposals: 目前没有有效的提案。
-      show_muted: 您没有任何静音的帖子。
-    view_recent: 查看所有最近的帖子？
-    load_more: 加载更多主题
+      show_all: 您没有任何最近的议题。
+      show_proposals: 当前没有活跃的议案。
+      show_muted: 您没有任何已静音的议题。
+    view_recent: 查看所有最近的议题？
+    load_more: 加载更多议题
     mark_as_read: 标记为已读
-    dismiss: 解雇
-    thread_dismissed: 主题标记为已读
-    thread_recalled: 主题已撤回
+    dismiss: 忽略
+    thread_dismissed: 议题标记为已读
+    thread_recalled: 议题已召回
     explain_mute:
-      title: 您尚未静音任何帖子。
-      explanation_html: 静音是一种隐藏或静音您不感兴趣的话题的方法。静音意味着您将不会在<strong>“最近”</strong>或<strong>“未读”</strong>中看到该话题，也不会收到该话题中活动的通知，例如提案。只有当有人<strong>{'@'}提及</strong>您的名字时，您才会收到通知。
-      instructions: 要将某个线程静音，请将鼠标悬停在该线程上，然后单击静音图标。
-      see_muted_html: 要查看已静音的帖子，请点击<strong>“已静音”</strong> 。您可以将鼠标悬停在静音图标上并点击即可取消静音。
+      title: 您还没有静音任何议题。
+      explanation_html: |
+        静音是一种隐藏或静音您不感兴趣的议题的方法。
+        静音意味着您不会在<strong>最近</strong>或<strong>未读</strong>中看到它，并且您不会收到有关该议题活动的通知，例如议案。
+        只有当有人<strong>@提及</strong>您的姓名时，您才会收到提醒。
+      instructions: 要静音一个议题，请将鼠标悬停在它上面并点击静音图标。
+      see_muted_html: 要查看您已静音的议题，请点击<strong>“已静音”</strong>。您可以通过悬停并点击相同的图标来取消静音。
     filtering:
-      filter_threads: 过滤线程
-      filter_threads_aria_label: 过滤线程
-      dropdown_heading: 筛选器仪表板
-      all: 最新主题
-      all_aria_label: 当前显示最近的主题
-      all_description: 查看最近的主题
-      proposals: 提案
-      proposals_aria_label: 当前显示包含有效提案的帖子
-      proposals_description: 仅查看包含有效提案的帖子
-      muted: 静音主题
-      muted_aria_label: 当前显示静音主题
-      muted_description: 仅查看已静音的帖子
+      filter_threads: 筛选议题
+      filter_threads_aria_label: 筛选议题
+      dropdown_heading: 筛选仪表板
+      all: 最近的议题
+      all_aria_label: 当前显示最近的议题
+      all_description: 查看最近的议题
+      proposals: 议案
+      proposals_aria_label: 当前显示带有活跃议案的议题
+      proposals_description: 仅查看带有活跃议案的议题
+      muted: 已静音的议题
+      muted_aria_label: 当前显示已静音的议题
+      muted_description: 仅查看已静音的议题
     thread_preview:
-      you_voted: 您投票给 %{position}
-      undecided: 你还没决定
+      you_voted: 您投票 %{position}
+      undecided: 您尚未决定
     threads_from:
-      group: 来自
-      pinned: 固定主题
-      proposals: 具有有效决策的线程
-      starred: 已加星标的主题
+      group: 议题来自
+      pinned: 已置顶的议题
+      proposals: 带有活跃决策的议题
+      starred: 已加星标的议题
       today: 今天
       yesterday: 昨天
-      thisweek: 本星期
+      thisweek: 本周
       thismonth: 本月
-      older: 超过一个月
+      older: 早于一个月
   threads_page:
-    no_direct_threads: 您没有直接线索
-    no_invite_only_threads: 您没有仅限邀请的帖子
+    no_direct_threads: 您没有直接议题
+    no_invite_only_threads: 您没有仅限邀请的议题
   inbox_page:
-    no_threads: 哇喔！您已阅读完收件箱中的所有帖子。
-    unread_threads: 未读主题
+    no_threads: 哇！您已阅读收件箱中的所有议题。
+    unread_threads: 未读议题
     view_more: 查看更多
     no_groups:
-      explanation: 由于您不是任何群组的成员，因此没有未读主题。
-      start: 开始
-      or: 或者
-      join_group: <a href="/explore">加入</a>小组来查看帖子。
+      explanation: 您没有未读议题，因为您不是任何小组的成员。
+      start: 启动
+      or: 或
+      join_group: <a href="/explore">加入</a>一个小组以查看议题。
   discussion:
-    direct_thread: 直接螺纹
+    direct_thread: 直接议题
     invite_only: 仅限邀请
-    private_thread: 私人话题
-    max_threads_reached: <p>您已使用了该组可用的所有 %{maxThreads} 个线程。</p><p>下一步，<a href="%{upgradeUrl}" target="_blank">选择一个计划</a>以继续在 Loomio 上进行协作。</p>
-    subscription_canceled: <p>您的订阅未激活。</p><p>请<a href="%{upgradeUrl}" target="_blank">升级</a>以继续使用 Loomio。</p>
+    private_thread: 私密议题
+    max_threads_reached: |
+      <p>您已用完此小组可用的所有 %{maxThreads} 个议题。</p>
+      <p>下一步，<a href="%{upgradeUrl}" target="_blank">选择一个计划</a>以继续在 Loomio 上协作。</p>
+    subscription_canceled: |
+      <p>您的订阅未激活。</p>
+      <p>请<a href="%{upgradeUrl}" target="_blank">升级</a>以继续使用 Loomio。</p>
     activity: 活动
     activity_placeholder: 尚无活动！
-    load_previous: 加载较早的活动
-    started_by: 由<strong>%{name}</strong>发起
+    load_previous: 加载更早的活动
+    started_by: 由 <strong>%{name}</strong> 发起
     pin:
-      pinned: 主题已固定
-      unpinned: 主题已取消置顶
+      pinned: 议题已置顶
+      unpinned: 议题已取消置顶
     volume:
-      mute_message: 主题已静音
-      unmute_message: 主题已取消静音
+      mute_message: 议题已静音
+      unmute_message: 议题已取消静音
     closed:
-      reopened: 话题已重新开启
-      closed: 主题已关闭
+      reopened: 议题已重新打开
+      closed: 议题已关闭
   discussion_last_seen_by:
-    title: 浏览者
-    no_one: 还没有人看到过
-    disabled_anonymous_polls: 由于主题包含匿名投票，查看历史记录已被禁用
+    title: 看过的人
+    no_one: 还没有人看过这个
+    disabled_anonymous_polls: 本议题设有匿名投票，故阅览纪录不予启用。
   activity_card:
     count_responses: "%{count} 条回复"
     event_pinned: 固定到时间线
     event_unpinned: 从时间线取消固定
     beginning: 开始
-    end: 结尾
-    unread: 未读（%{count}）
-    latest: 最新的
-    context: 语境
+    end: 结束
+    unread: 未读 (%{count})
+    latest: 最新
+    context: 背景信息
     chronological: 按时间顺序
     nested: 嵌套
     attachment_display:
-      aria_label: 附件：
-      image_alt: 附图
+      aria_label: '文件已附加：'
+      image_alt: 附加的图片
     n_previous: 加载 %{count} 条先前的回复
-    n_more: 加载 %{count} 个回复
+    n_more: 加载 %{count} 条回复
     add_comment: 添加评论
     add_poll: 添加投票
     add_outcome: 添加结果
     comment: 评论
     facilitate: 促进
-    start_decision: 开始决定
-    start_vote: 开始投票
+    start_decision: 发起决策
+    start_vote: 发起投票
   thread_group:
-    aria_label: 组名
+    aria_label: 小组名称
   thread_context:
     current_poll_type_banner: 当前 %{pollType}
-    item_maybe_deleted: 无法在线程内找到请求的位置。它可能已被删除。
-    aria_label: 线程上下文
-    thread_options: 线程选项
+    item_maybe_deleted: 在议题中找不到请求的位置。它可能已被删除。
+    aria_label: 议题背景信息
+    thread_options: 议题选项
     email_settings: 通知设置
     edit: 编辑
     edit_thread: 编辑
     close_thread: 关闭
-    reopen_thread: 重新开放
-    pin_thread: 别针
-    unpin_thread: 取消固定
-    mute_thread: 沉默的
+    reopen_thread: 重新打开
+    pin_thread: 置顶
+    unpin_thread: 取消置顶
+    mute_thread: 静音
     move_thread: 移动
     print_thread: 打印
     delete_thread: 删除
     add_comment: 评论
-    seen_by_count: "%{count} 人看过"
-    count_notified: 已通知 %{count}
-    forked_from: 分叉自
+    seen_by_count: 被 %{count} 人看过
+    count_notified: 已通知 %{count} 人
+    forked_from: 分支来自
   pin_thread_modal:
-    title: 针线
-    helptext: 置顶的帖子始终显示在群组帖子列表的顶部。置顶的帖子可用于通知成员重要公告，或推广常见内容，例如行为准则或社区准则。
-    helptext_two: 您可以随时通过从主题下拉菜单中选择“取消置顶”来移除置顶
-    pin_thread: 针线
+    title: 置顶议题
+    helptext: 置顶的议题始终显示在其小组议题列表的顶部。它们可用于通知成员重要公告，或推广常见材料，如行为准则或社区指南。
+    helptext_two: 您随时可以通过从议题下拉菜单中选择“取消置顶”来移除置顶。
+    pin_thread: 置顶议题
   thread_arrangement_form:
     edit: 编辑布局
-    title: 线程布局
-    for_everyone: 这会改变每个人的布局，而不仅仅是你。
-    sorting: 最旧的还是最新的？
-    latest: 最新
-    latest_description: 抢先阅读最新内容
-    earliest: 最老的
-    earliest_description: 在查看新评论之前先查看旧评论
+    title: 议题布局
+    for_everyone: 这会更改每个人的布局，而不仅仅是您。
+    sorting: 最旧优先还是最新优先？
+    latest: 最新的
+    latest_description: 先阅读最新的项目
+    earliest: 最旧的
+    earliest_description: 在查看更新的项目之前先了解较旧的评论
     replies: 如何显示回复？
-    linear: 平面列表
-    linear_description: 事件按发生顺序逐一列出。
-    nested_once: Nest 回复 - 仅限第一个回复
+    linear: 扁平列表
+    linear_description: 项目按发生顺序列出，一个接一个。
+    nested_once: 嵌套回复 - 仅第一级回复
     nested_once_description: 在原始评论下缩进回复
     nested_twice: 两级嵌套回复
-    nested_twice_description: 最多缩进两次回复。
-    changing_nesting_is_slow: 嵌套的更改可能需要几分钟才能处理。
+    nested_twice_description: 最多缩进回复两次。
+    changing_nesting_is_slow: 嵌套更改可能需要几分钟时间来处理。
   delete_thread_form:
-    aria_label: 删除话题
-    title: 删除话题
-    body: 您确定要删除此主题吗？
-    confirm: 删除话题
+    aria_label: 删除议题
+    title: 删除议题
+    body: 您确定要删除此议题吗？
+    confirm: 删除议题
     messages:
-      success: 帖子已删除
+      success: 议题已删除
   move_thread_form:
-    aria_label: 移动话题
-    title: 移动话题
-    body: 目标组
-    confirm: 移动话题
-    confirm_change_to_private_thread: "%{groupName} 是一个开放群组。如果您继续，此主题将被公开。"
+    aria_label: 移动议题
+    title: 移动议题
+    body: 目标小组
+    confirm: 移动议题
+    confirm_change_to_private_thread: "%{groupName} 是一个开放小组。如果您继续，此议题将变为公开。"
     messages:
-      success: 主题已移至 %{name}
+      success: 议题已移动到 %{name}
   delete_comment_dialog:
     title: 删除评论
-    question: 此操作将永久删除此评论。如果继续操作，则无法恢复。
+    question: 这将永久删除此评论。如果您继续，将无法恢复。
   contact_message_form:
     alt_title: 联系 Loomio 支持
-    need_message: 请输入消息以便我们帮助您:-)
+    need_message: 请输入消息以便我们帮助您 :-)
     respond_asap: 向 Loomio 团队发送消息，我们会尽快回复。
-    happy_to_help_with: 我们很乐意帮助您解决销售咨询、支持请求、功能请求、报告错误或您遇到的问题。
-    title: 您好！有什么可以帮到您的吗？
-    contact_us_email: 您也可以给我们发送电子邮件： <a href="mailto:%{email}">%{email}</a>
+    happy_to_help_with: 我们很乐意帮助处理销售查询、支持请求、功能请求、报告错误或您遇到的问题。
+    title: 您好！我们能如何帮助您？
+    contact_us_email: '您也可以给我们发电子邮件：<a href="mailto:%{email}">%{email}</a>'
     contact_us: 联系我们
-    name_label: 您的名字
+    name_label: 您的姓名
     name_placeholder: 输入您的姓名...
     subject_label: 主题
-    subject_placeholder: 例如：登录困难或功能建议
+    subject_placeholder: '例如：登录困难，或功能建议'
     email_label: 您的电子邮件地址
     email_placeholder: 输入您的电子邮件地址...
-    message_label: 您的留言
+    message_label: 您的消息
     message_placeholder: 如果请求支持，请尽量提供尽可能多的信息。
     send_message: 发送消息
-    new_contact_message: 感谢您的联系；我们会尽快回复您！
-    consent_message: 通过联系我们，您同意我们的工作人员在必要时访问您的帐户。<br />我们的支持团队会说英语，如果需要，他们会使用谷歌翻译来翻译您的信息。<br />我们的目标是在 24 小时内回复所有消息。
-    success: 感谢您的留言，%{name}。我们很快就会回复您。
-    success_via_email: 感谢您的留言，%{name}。我们将在 24 小时内通过电子邮件回复。
+    new_contact_message: 感谢联系我们；我们会尽快回复您！
+    consent_message: |
+      联系我们即表示您同意我们的工作人员在必要时访问您的账户。<br />
+      我们的支持团队讲英语，如果需要，将使用 Google 翻译翻译您的消息。<br />
+      我们力求在 24 小时内回复所有消息。
+    success: 感谢您的消息，%{name}。您会很快收到我们的回复。
+    success_via_email: 感谢您的消息，%{name}。我们将在 24 小时内通过电子邮件回复。
   explore_page:
-    header: 探索群组
-    search_placeholder: 搜索公共群组
-    single_search_result: 1 个符合<strong>%{searchTerm} 的公开群组：</strong>
-    multiple_search_results: "%{resultCount} 个与<strong>%{searchTerm} 匹配的公共群组：</strong>"
-    no_results_found: "<strong>找不到您要找的群组？</strong>如果群组的隐私设置为“秘密”，它就不会显示在这里。"
-    newest_first: 最新
+    header: 探索小组
+    search_placeholder: 搜索公开小组
+    single_search_result: 1 个公开小组匹配 <strong>%{searchTerm}:</strong>
+    multiple_search_results: "%{resultCount} 个公开小组匹配 <strong>%{searchTerm}:</strong>"
+    no_results_found: "<strong>找不到您要找的小组？</strong> 如果小组的隐私设置为“保密”，它不会出现在这里。"
+    newest_first: 最新的优先
     biggest_first: 最大的优先
-    order_by: 组排序依据
+    order_by: 排序小组依据
   global:
     messages:
-      app_update: Loomio 新版本已发布。请保存您的工作并重新加载。
+      app_update: Loomio 的新版本已发布。请保存您的工作并重新加载。
       reload: 重新加载
   decision_tools_card:
     choose_type: 选择投票类型
     title: 促进
-    recommended: 受到推崇的
-    question_title: 问答环节
+    recommended: 推荐
+    question_title: 提问环节
     advice_title: 建议
     consent_title: 同意
     consensus_title: 共识
-    proposal_title: 提议
-    count_title: 选择加入
-    check_title: 感知检查
-    poll_title: 轮询
-    meeting: 会议
-    score_title: 评分调查
-    dot_vote_title: 投票
-    meeting_title: 时间调查
-    ranked_choice_title: 排序选择
-    gradients_of_agreement_title: 一致性梯度
+    proposal_title: 议案
+    count_title: 参与意愿投票
+    check_title: 意见征询
+    poll_title: 普通投票
+    meeting: 会议投票
+    score_title: 评分投票
+    dot_vote_title: 点子投票
+    meeting_title: 时间投票
+    ranked_choice_title: 排序投票
+    gradients_of_agreement_title: 同意梯度
   poll_option_form:
-    thumb_up: 竖起大拇指
+    thumb_up: 拇指向上
     thumb_down: 拇指向下
-    thumb_sideways: 拇指侧向
+    thumb_sideways: 拇指横向
     hand_up: 举手
     edit_option: 编辑选项
     option_name: 选项名称
-    option_name_hint: 此选项的简称
-    option_name_validation: 最好保持名称简短，并在“含义”字段中填写详细信息
+    option_name_hint: 此选项的简短名称
+    option_name_validation: 最好保持名称简短，并将详细信息放在“含义”字段中
     icon: 图标
-    meaning: 意义
+    meaning: 含义
     please_select_an_icon: 请选择一个图标
-    meaning_hint: 用一两句话解释一下选择此选项的含义。可选
+    meaning_hint: 一两句话解释选择此选项意味着什么。可选
     prompt: 原因提示
-    prompt_hint: 促使投票者分享其理由或重新考虑其立场的问题。可选
-    of: 的
-    at_least: 至少
-    no_more_than: 不超过
-    for_the_proposal_to_pass: 为了使提案获得通过，该选项必须获得
-    votes_cast: 投票数
-    eligible_voters: 合格选民
-    gte_score_percent: 需要至少 %{percent}% 的投票
-    gte_voter_percent: 需要至少 %{percent}% 的合格选民
-    lte_score_percent: 不得超过投票数的 %{percent}%
-    lte_voter_percent: 不得超过合格选民的 %{percent}%
-    name_gte_score_percent: "%{name} 需要至少 %{percent}% 的投票"
-    name_gte_voter_percent: "%{name} 需要至少 %{percent}% 的合格选民"
-    name_lte_score_percent: "%{name} 不得超过所投票数的 %{percent}%"
-    name_lte_voter_percent: "%{name} 不得超过合格选民的 %{percent}%"
+    prompt_hint: 提示投票者分享其推理或重新考虑其立场的问题。可选
   poll_common:
-    superseded: 取代
-    outdated: 过时的
+    superseded: 已取代
+    outdated: 已过时
     need_help_with_templates: 需要帮助创建您自己的决策模板吗？
     categorize_poll_templates: 对投票模板进行分类
     show_all_templates_in_one_list: 在一个列表中显示所有模板
-    advice_process: 咨询流程
+    advice_process: 建议流程
     consent_process: 同意流程
-    consensus_process: 共识过程
-    question_round: 问答环节
+    consensus_process: 共识流程
+    question_round: 提问环节
     edit_template: 编辑模板
-    proposal: 提议
+    proposal: 议案
     run_process: 运行流程
-    proposal_templates: 提案模板
-    custom: 风俗
-    custom_process: 定制流程
+    proposal_templates: 议案模板
+    custom: 自定义
+    custom_process: 自定义流程
     custom_poll: 自定义投票
     delete_poll: 删除投票
     select_count_options: 选择 %{count} 个选项
@@ -1836,507 +1879,190 @@ zh_CN:
     poll_template_saved: 投票模板已保存
     poll_templates: 投票模板
     poll_types: 投票类型
-    new_proposal_template: 新提案模板
-    edit_proposal_template: 编辑提案模板
-    new_poll_template: 新的投票模板
+    new_proposal_template: 新建议案模板
+    edit_proposal_template: 编辑议案模板
+    new_poll_template: 新建投票模板
     edit_poll_template: 编辑投票模板
-    new_poll_type: 新的投票类型
+    new_poll_type: 新建投票类型
     edit_poll_type: 编辑投票类型
-    new_custom_poll: 新的自定义民意调查
+    new_custom_poll: 新建自定义投票
     edit_custom_poll: 编辑自定义投票
-    create_a_custom_poll_type: 使用自定义术语和设置创建新的投票类型
-    create_a_custom_process: 使用您自己的术语和选项创建新流程
-    create_a_custom_poll: 使用自定义术语和设置创建投票
-    decision: 决定
+    create_a_custom_poll_type: 创建一个具有自定义术语和设置的新投票类型
+    create_a_custom_process: 使用您自己的术语和选项创建一个新流程
+    create_a_custom_poll: 创建一个具有自定义术语和设置的投票
+    decision: 决策
     decision_templates: 决策模板
-    remove_your_vote: 删除你的投票
-    remove_your_response: 删除您的回复
+    remove_your_vote: 移除您的投票
+    remove_your_response: 移除您的回复
     vote_now: 立即投票
-    review_due: 审核到期
+    review_due: 待审核
     have_your_say: 发表您的意见
-    you_voted: 您投票了
     your_response: 您的回复
     change_your_response: 编辑回复
     please_vote: 请投票
     reason: 原因
     response: 回复
-    reason_placeholder: 简要解释您为何如此投票，然后点击“提交投票”
-    message: 信息
+    reason_placeholder: 简要解释您这样投票的原因，然后点击“提交投票”
+    message: 消息
     results: 结果
     view_all_votes: 查看所有投票
-    current_results: 目前结果
-    responses: 回应
+    current_results: 当前结果
+    responses: 回复
     close_poll_type: 关闭 %{pollType}
-    close_early: 提早关门
+    close_early: 提前关闭
     totals: 总计
-    participate: 参加
+    participate: 参与
     vote: 投票
-    votes: 投票
+    votes: 投票数
     update_outcome: 更新结果
     outcome: 结果
     outcomes: 结果
     statement: 陈述
     change_your_stance: 编辑回复
     load_more: 加载更多
-    details: 细节
-    participant_name: 您的名字
-    participant_email: 电子邮件
-    submit_vote: 提交投票
-    submit_response: 提交回复
-    update_vote: 更新投票
-    update_response: 更新响应
-    share_poll: 分享投票
-    share_proposal: 分享提案
-    share_count: 分享支票
-    start_poll: 开始做决定
-    publish_poll: 分享投票
-    share_outcome: 分享成果
-    post_outcome: 后期结果
-    view_all: 查看全部
-    save_changes: 节省
-    change_vote: 更改您的投票
-    change_response: 更改您的回复
-    max_score: 最高分
-    min_score: 最低分数
-    too_long: 太长了
-    edit_warning: 建议仅进行细微修改或更正拼写错误。如需进行重大修改，请关闭此 %{pollType} 并重新发起一个。
-    no_voting: 仅供讨论，投票已禁用
-  poll_common_attachment_form:
-    label: 附件
-  poll_common_add_option:
-    button:
-      add_option: 添加另一个选项
-    modal:
-      title: 添加选项
-    form:
-      add_options: 添加选项
-      options_added: 增加了新选项
-  poll_common_card:
-    show_results: 显示结果
-    hide_results: 隐藏结果
-    do_not_hide_results: 不要隐藏结果
-    until_vote: 直至投票
-    until_you_vote: 直到你投票
-    until_poll_type_closed: 直到 %{pollType} 关闭
-    until_voting_is_closed: 投票结束前
-    deleted: 此投票已被删除
-  discussions_panel:
-    open: 打开
-    all: 全部
-    unread: 未读（%{count}）
-    closed: 关闭
-    include_subgroups_mine: "%{name} 和我的子组"
-    include_subgroups_all: "%{name} 及其所有子组"
-    no_results_found: 没有找到“%{search}”的结果
-    welcome_to_your_new_group: 欢迎加入您的新 Loomio 小组！
-    lets_start_a_thread: 让我们开始一个话题。点击“新话题”继续。
-  members_panel:
-    email_rejected: 电子邮件被拒绝
-    email_rejected_meaning: 发送至此地址的电子邮件已被退回或被标记为垃圾邮件。不会再向此地址发送任何电子邮件。
-    bot: 机器人
-    no_results: 未找到任何成员
-    everyone: 每个人
-    all: 全部
-    sort: 种类
-    order_label: 命令
-    order_by_name: 姓名
-    order_by_created: 最老的
-    show_users_in_subgroups: 同时显示子组中的用户
-    order_by_created_desc: 最新
-    order_by_admin_desc: 管理员
-    delegates: 代表
-    loaded_of_total: "%{loaded} / %{total}"
-    view_requests: 查看请求
-    header_name: 姓名
-    header_username: 用户名
-    header_role: 角色
-    header_invited_by: 受邀者
-    header_invited: 受邀
-    header_actions: 行动
-    directory: 目录
-    invitations: 邀请函
-    requests: 请求
-    admin: 行政
-    delegate: 代表
-    delegate_popover: 代表是具有投票权的团体成员
-    guest: 客人
-    sharable_link: 可共享链接
-    last_seen: 最后上线日期 %{date}
-    invited_by_name: 受 %{name} 邀请
-    accepted: 成员
-  polls_panel:
-    new_poll: 新的民意调查
-    any_type: 所有类型
-    any_status: 任何状态
-    all: 全部
-    open: 打开
-    closed: 关闭
-    need_vote: 需要投票
-    no_polls: 未找到民意调查
-  group_files_panel:
-    no_files: 未找到文件
-    filename: 文件名
-    uploaded_by: 上传者
-    uploaded_at: 上传于
-    delete_confirmation: 您确定要删除此附件吗？它将从所有相关评论或主题中删除。此操作无法撤消。
-  subgroups_panel:
-    search_subgroups_of_name: 搜索 %{name} 的子组
-    group_without_subgroups: "%{name}（不含子组）"
-    need_a_space_for_your_team: 您的团队需要休息空间吗？
-    explainer: 子群组是组织内团队可以进行讨论和决策的私密空间。子群组中的内容对组织其他成员保密。子群组示例：董事会、招聘决策或项目团队
-    upgrade: 要创建子组，您需要<a class="text-decoration-underline" href="%{url}" target="_blank">升级您的 Loomio 订阅。</a>
-  poll_common_action_panel:
-    from_the_thread: 来自线程模板
-    from_the_group: 来自小组
-    default_templates: 默认模板
-    default_template: 默认模板
-    custom_template: 自定义模板
-    default_poll_types: 默认投票类型
-    suggested_templates: 建议的模板
-    group_templates: 组模板
-    basic_templates: 基本模板
-    anonymous: 投票是匿名的
-    results_hidden_until_closed: 投票结束后将显示结果
-    results_hidden_until_vote: 投票后将显示结果
-    unable_to_vote: 您尚未被邀请参与此 %{poll_type} 投票
-    draft_mode: 投票已禁用。此项目尚未开放投票。
-    for_this_proposal_to_pass: 为了通过该提案：
-    for_this_poll_type_to_be_valid: 为了使此 %{poll_type} 有效：
-  poll_common_collapsed:
-    by_who: 由 %{name}
-  poll_common_calendar_invite:
-    calendar_invite: 包含此结果的日历邀请
-    poll_option_id: 会议时间
-    helptext_on: 用户将能够将此会议添加到他们的日历中
-    helptext_off: 不会发送会议邀请
-    event_duration: 期间
-    event_summary: 会议名称
-    event_summary_placeholder: 您想把这次会议称为什么？
-    event_description: 会议描述
-    event_description_placeholder: 这次会议的议程是什么？
-    location: 地点
-    location_placeholder: 这次会议将在哪里举行？
-  poll_common_settings:
-    who_can_vote: 谁可以投票？
-    short_reason_can_be_helpful: 投票理由尽量简短，更容易理解。简洁明了的理由是决策的重要资源。
-    specified_voters_only_true: 仅限受邀者
-    specified_voters_only_false_group: 群组中的任何人
-    specified_voters_only_false_discussion: 主题中的任何人
-    invite_people_next: 您可以在启动 %{poll_type} 后选择邀请谁投票
-    show_none_of_the_above: 包含“以上都不是”选项
-    shuffle_options:
-      shuffle_options: 随机播放选项
-      title: 按随机顺序显示选项
-      helptext: 选项位于列表首位可能会产生偏差。使用此设置可以抵消这种影响。
-    multiple_choice:
-      title: 多项选择
-      helptext_on: 选择后，参与者将能够选择多个选项。
-    anyone_can_participate:
-      title: 任何有链接的人都可以参与
-      helptext_on: 被选中后，任何拥有投票链接的人都可以参与。
-    notify_on_closing_soon:
-      voting_closes_too_soon: 由于投票将在 24 小时内结束，因此不会发送即将结束的提醒。
-      closes_too_soon: 由于此 %{pollType} 将在 24 小时内关闭，因此不会发送即将关闭的提醒。
-      title: 在 %{pollType} 关闭前 24 小时发送提醒至
-      voting_title: 投票结束前 24 小时，发送提醒至
-      nobody: 没人
-      author: 作者（我）
-      undecided_voters: 未决定的选民
-      voters: 所有选民
-    notify_on_participate:
-      title: 当有人参与时通知我
-      helptext_on: 一旦被选中，每当有人参与时您都会收到通知。
-    anonymous:
-      title: 匿名投票者
-      helptext_on: 选择后，参与者信息将不会随每个回复显示。
-    voter_can_add_options:
-      title: 选民可以添加其他选项
-    can_respond_maybe:
-      title: 选民可以“在必要时”做出回应
-    allow_long_reason:
-      title: 允许投票“原因”长度超过 500 个字符
-    hide_results_until_closed:
-      title: 隐藏结果直至关闭
-      helptext_on: 在投票结束前不要显示人们的投票情况
-  poll_common_close_form:
-    title: 现在关闭 %{poll_type} 吗？
-    helptext: 您确定要提前关闭此 %{poll_type} 并分享结果吗？
-    close_poll_type: 关闭 %{poll_type}
-    poll_type_closed: "%{poll_type} 已关闭"
-  poll_common_reopen_form:
-    title: 重新打开 %{poll_type}
-    helptext: 如果人们需要更多时间参与，请重新开放 %{poll_type}
-    success: "%{poll_type} 已重新开放"
-  poll_common_move_form:
-    title: 移动 %{poll_type}
-    success: "%{poll_type} 已移至 %{group}"
-  poll_common_wip_field:
-    voting_enabled: 已启用投票
-    enable_voting: 启用投票
-    title: 禁用投票
-    past_tense: 投票已禁用
-    draft_mode: 草稿模式
-    disable_voting_during_development: 此 %{poll_type} 尚未准备好进行投票
-    helptext: 此 %{poll_type} 工作正在进行中。您可以稍后启用投票。
-    voting_open: 投票开始
-    this_is_ready_for_voting: 此 %{poll_type} 已准备好进行投票
-  poll_common_closing_at_field:
-    closing: 结束语
-    no_closing_date: 没有截止日期
-    closing_date: 截止日期
-    closing_hour: 关门时间
-    invalid_date: 无效日期
-  poll_card:
-    poll_type_by_name: "%{poll_type} 由 %{name}"
-    started_by: 由 %{name} 发起
-  poll_common_votes_panel:
-    vote_removed: 投票已删除
-    undecided: 未定
-    newest_first: 最新
-    oldest_first: 最早
-    priority_first: 先同意
-    priority_last: 先阻止
-    undecided_first: 未定第一
-    no_votes_yet: 尚未有人投票。
-    change_results_order: 更改结果顺序
-    name_or_username: 姓名或用户名
-  poll_common_undecided_panel:
-    show_undecided: 显示 %{count} 未决定
-    show_invitations: 显示待处理的邀请
-    undecided_users: 未定（%{count}）
-    invitation_count_singular: 另有 1 人已通过电子邮件受邀参加
-    invitation_count_plural: 另有 %{count} 人已通过电子邮件收到参与邀请
-  poll_common_undecided_user:
-    reminded: 提醒已发送！
-    reminder_sent: 提醒通知已发送
-  poll_common_set_outcome_panel:
-    enter_an_outcome: 输入结果
-    poll_type: 此 %{poll_type} 已结束。请花些时间考虑结果，然后分享结果，以便大家了解接下来会发生什么。
-  poll_common_outcome_form:
-    review_due_in_days: 多少天后审查该决定？
-    review_due_in_days_hint: 审查决定之前需要等待的一段时间（以天为单位）。（可选）
-    review_date: 审核日期
-    review_date_hint: 设定审查决定的日期（可选）
-    who_to_notify: 您想将此结果通知给谁？（可选）
-    outcome_statement_template: 结果陈述模板
-    new_title: 状态结果
-    update_title: 更新结果
-    outcome_created: 成果创造
-    outcome_updated: 结果已更新
-    statement_placeholder: 总结答复并解释接下来会发生什么。
-    statement_template_placeholder: 提供撰写决策结果的模板。（可选）
-    you_will_be_notified: 您将在审核日期收到通知。
-    submit: 分享成果
-  poll_common_outcome_panel:
-    authored_by: 由 %{name}
-  poll_common_delete_modal:
-    question: 您确定要删除它吗？
-    title: 删除 %{pollType}
-    success: 已成功删除
-  poll_common_form:
-    participation_quorum: 参与法定人数
-    quorum_hint: 必须有多少比例的选民参与投票结果才有效？
-    quorum_placeholder: 留空或输入 0 到 100 之间的数字
-    deadline: 最后期限
-    how_much_time_to_vote: 您给人们投票的时间有多少？
-    notify_everyone_when_poll_starts: 当 %{poll_type} 开始时通知所有人
-    option_has_votes_confirm_delete: 有些人已投票支持此选项，您确定要删除它吗？
-    example_title: 示例标题
-    example_title_hint: 给出一个好的提案标题的例子
-    example_details_placeholder: 为提案或民意调查提供一个起点。问题可以作为有用的提示，促使人们动笔。并包含参与者需要了解的任何规则或提醒。
-    confirm_delete: 您确定要删除此投票模板吗？此操作无法撤消。
-    advanced_settings: 高级设置
-    show_advanced_settings: 显示高级设置
-    hide_advanced_settings: 隐藏高级设置
-    choose_at_least: 至少选择
-    choose_at_most: 最多选择
-    please_review_the_form: 请查看表格
-    option_added_please_add_details: 选项已添加！请添加一些详细信息，以便大家了解其含义。
-    default_duration_in_days: 默认持续时间（天）
-    default_duration_in_days_hint: 应该给人们多少天的时间去投票？
-    how_many_options_can_a_voter_choose: 选民可以选择多少个选项？
-    minimum_choices: 最少选择
-    maximum_choices: 最大选择
-    content: 内容
-    reminder: 提醒
-    your_in_zone: 当前时区：%{zone}
-    show_other_zones: 显示其他时区
-    hide_other_zones: 隐藏其他时区
-    this_is_a_template_for_new_polls: 这是新民意调查的模板
-    voting_method: 投票方式
-    none_of_the_above: 以上都不是
-    voting_methods:
-      question: 问答环节
-      question_hint: 欢迎大家就你的提案提出问题和评论
-      show_thumbs: 竖起大拇指
-      show_thumbs_hint: 选民选择竖起大拇指、向下、侧向或举起手
-      choose: 选择
-      simple_poll: 简单民意调查
-      choose_hint: 选民选择最佳选项（或多个选项）
-      score: 分数
-      score_hint: 选民为每个选项分配一个分数
-      allocate: 分配
-      allocate_hint: 选民在选项之间分配预算点数
-      ranked_choice: 排序选择
-      ranked_choice_hint: 选民按从最喜欢到最不喜欢的顺序排列选项
-      time_poll: 时间调查
-      time_poll_hint: 选民表明何时可以见面
-    process: 过程
-    process_name: 模板标题
-    process_name_hint: 这个模板叫什么？例如：角色建议、体温检查、会议记录审批
-    process_subtitle: 模板字幕
-    process_subtitle_hint: 关于何时或为何使用此模板的一行描述
-    process_introduction: 模板帮助
-    process_introduction_hint: 用几段文字解释如何使用该模板。并附上可能有用的资源链接。
-    you_can_set_a_prompt_per_option: 从详细信息选项卡编辑每个选项的提示
-    chart_type: 图表类型
-    title: 标题
-    title_hint: 您需要做出什么决定？
-    no_options_add_some: 本次投票没有选项，请在下面添加一些。
-    details: 细节
-    example_details: 示例详细信息
-    details_placeholder: 这是你解释人们投票依据的机会
-    options: 选项
+    details: 详细信息
+    no_options_add_some: 此投票没有选项，请在下面添加一些。
     options_placeholder: 列出可用的选项
     no_options: 您尚未添加任何选项。
-    closing: 结束语
-    closed: 关闭
+    closing: 即将关闭
+    closed: 已关闭
     start: 开始
     start_poll: 开始投票
-    stance_reason_required_label: 投票时提供理由是……
-    stance_reason_required: 必需的
-    stance_reason_optional: 选修的
-    stance_reason_disabled: 已禁用
-    stance_reason_is_required: 请提供投票理由
-    limit_reason_length: 将原因限制为最多 500 个字符
+    stance_reason_required_label: 投票时提供原因是...
+    stance_reason_required: 必需
+    stance_reason_optional: 可选
+    stance_reason_disabled: 禁用
+    stance_reason_is_required: 请提供您投票的原因
+    limit_reason_length: 将原因限制在最多 500 个字符
     save_poll: 保存投票
     start_poll_type: 开始 %{poll_type}
     share_poll_type: 分享 %{poll_type}
-    who_may_vote: 谁可以参与此 %{poll_type} 投票？
+    who_may_vote: 谁可以在此 %{poll_type} 中投票？
     update: 更新
-    add_voters: 添加选民
+    add_voters: 添加投票者
     notify_invitees: 发送通知
-    no_notifications_warning: 投票者不会收到通知。如果您正在进行大量投票，并计划稍后通知所有人，此功能非常有用。
-    count_voters_added: 已添加 %{count} 位投票者
+    no_notifications_warning: 投票者不会收到通知。如果您要运行大量投票并计划稍后通知所有人，这很有用。
+    count_voters_added: "已添加 %{count} 位投票者"
     poll_type_created: "%{poll_type} 已创建"
     poll_type_started: "%{poll_type} 已开始"
     poll_type_updated: "%{poll_type} 已更新"
     reason_prompt: 原因提示
     anonymous_voting: 匿名投票
-    anonymous_voting_description: 启用后，投票者的身份将不会与其投票关联。此设置不可撤销。
+    anonymous_voting_description: 如果启用，投票者的身份将不会与其投票关联。此操作无法撤销。
     votes_are_anonymous: 投票是匿名的
     vote_reason: 投票原因
-    vote_reason_description: 了解人们投票的原因可能很有帮助。通过此设置，您可以鼓励人们在投票时分享他们的想法。
-    hide_results_description: 如果您希望人们在投票时不知道其他人的投票情况，您可以隐藏投票结果。
-    process_helptext: 命名并描述用于运行此投票的过程。
-    reminder_helptext: 在投票结束前发送“即将结束”通知。这可以让人们有机会了解其他人的投票情况并重新考虑自己的投票，或者只是增加投票参与度的一种方式。
+    vote_reason_description: 了解人们为什么这样投票可能会有所帮助。通过此设置，您可以在人们投票时提示他们分享想法。
+    hide_results_description: 如果您希望人们在不知道其他人如何投票的情况下投票，您可以隐藏投票结果。
+    process_helptext: '命名并描述用于运行此投票的流程。'
+    reminder_helptext: |
+      在投票关闭前发送“即将关闭”通知。
+      这可以成为人们查看他人投票情况并重新考虑自己投票的机会，或者只是增加投票参与度的一种方式。
   poll_proposal_form:
-    start_header: 开始提案
-    edit_header: 编辑提案
-    title_placeholder: 例如，我们去月球吧！
-    details_placeholder: 您的提案的具体内容是什么？
-    proposal_created: 提案已开始
-    proposal_updated: 提案已更新
+    start_header: 发起议案
+    edit_header: 编辑议案
+    title_placeholder: 例如：让我们去月球吧！
+    details_placeholder: 您的议案详情是什么？
+    proposal_created: 议案已发起
+    proposal_updated: 议案已更新
   record_modal:
     record_video: 录制视频
     record_audio: 录制音频
-    record: 记录
+    record: 录制
     stop: 停止
     no_mic: 找不到麦克风
-    no_camera: 找不到相机
+    no_camera: 找不到摄像头
     listen_to_audio: 收听音频
     watch_video: 观看视频
-    audio_transcript: 音频记录：%{text}
-    why_type_when_you_can_talk: 能说话干嘛还要打字？发送录音
-    transcript_included: 录音文本将附加到您的消息中
+    audio_transcript: '音频转录：%{text}'
+    why_type_when_you_can_talk: 能说话时为什么要打字？发送语音录音
+    transcript_included: 录音的转录文本将附加到您的消息中
   poll_poll_form:
     multiple_choice_subtitle: 评估选项受欢迎程度的简单方法
-    start_header: 开始投票
+    start_header: 发起投票
     edit_header: 编辑投票
-    tip: 提供选项选择
-    title_placeholder: 例如你想去哪里度假？
+    tip: 在选项之间提供选择
+    title_placeholder: 例如：您想去哪里度假？
     details_placeholder: 提供人们回答问题可能需要的任何澄清细节。
     add_option_placeholder: 添加选项
     new_option: 新选项
-    add_option_hint: 输入选项的简称
-    remove_option: 删除选项
-    poll_created: 已创建投票
-    poll_updated: 民意调查已更新
-    option_added: 已添加选项
+    add_option_hint: 输入选项的简短名称
+    remove_option: 移除选项
+    poll_created: 投票已创建
+    poll_updated: 投票已更新
+    option_added: 选项已添加
     option_already_added: 选项已添加到投票中
   poll_dot_vote_form:
-    dots_per_person: 每人积分
-    dots_per_person_helptext: 要求每个人分配的总分数。
+    dots_per_person: 每人点数
+    dots_per_person_helptext: 要求每个人分配的总点数。
   poll_meeting_form:
     timeslots: 时间段
-    no_options: 输入您当前时区 (%{zone}) 的时间。参与者将看到转换为其当地时区的时间。
-    meeting_duration: 会议时长（分钟）
+    no_options: 在您当前时区 (%{zone}) 输入时间。参与者看到的时间将转换为其本地时区。
+    meeting_duration: 会议持续时间（分钟）
     add_option_placeholder: 添加新时间
-    time_slot_added: 已添加时间段
+    time_slot_added: 时间段已添加
     time_slot_already_added: 时间段已添加
-    participants_see_local_times: 参与者将看到根据其时区调整的时间
+    participants_see_local_times: 参与者将看到本地化的时间
     use_24_hour_format: 错误！请使用 24 小时格式，例如 %{time}
   poll_ranked_choice_form:
     no_options: 您尚未添加任何选项。
-    add_option_placeholder: 输入新的选择
-    minimum_stance_choices: 排名选项
-    minimum_stance_choices_helptext: 选民有多少种选择？
-    minimum_stance_choices_hint: 例如，列出你最喜欢的 3 种冰淇淋口味
-    ranked_choice_created: 排序选择已创建
-    ranked_choice_updated: 排名选择已更新
-    rank: 秩
-    points: 积分
-    average: 平均的
-    mean: 意思是
-    pct_of_points: 投票率
-    pct_of_voters: 选民比例
+    add_option_placeholder: 输入新选择
+    minimum_stance_choices: 要排序的选项
+    minimum_stance_choices_helptext: 投票者可以选择多少个选项？
+    minimum_stance_choices_hint: 例如：对您最喜欢的 3 种冰淇淋口味进行排序
+    ranked_choice_created: 排序投票已创建
+    ranked_choice_updated: 排序投票已更新
+    rank: 排名
+    points: 点数
+    average: 平均
+    mean: 平均值
+    pct_of_points: "点数百分比"
+    pct_of_voters: "投票者百分比"
     percent: 百分比
   poll_meeting_time_field:
     add_time_slot: 添加时间段
-    new_time_slot: 新的时间段
-    closing_hour: 关门时间
+    new_time_slot: 新时间段
+    closing_hour: 关闭时间
   poll_proposal_vote_form:
-    default_reason_placeholder: 请解释你的理由
-    abstain_reason_placeholder: 让人们知道你为什么选择不做这个决定
-    agree_reason_placeholder: 您对这个提议有什么看法？它将给团队带来什么好处？
-    disagree_reason_placeholder: 如何改进这个提议才能让您支持它？
-    block_reason_placeholder: 解释你反对这个提议的原因以及为什么不应该继续进行
+    default_reason_placeholder: 请解释您的推理
+    abstain_reason_placeholder: 让人们知道您为什么选择不参与此决策
+    agree_reason_placeholder: 您喜欢该议案的哪些方面？它将如何使小组受益？
+    disagree_reason_placeholder: 如何改进此议案以便您能支持它？
+    block_reason_placeholder: 解释您对此议案的反对意见以及为什么它不应继续进行
     stance_created: 投票已创建
     stance_updated: 投票已更新
     vote: 投票
   poll_proposal_options:
     select_an_option: 选择一个选项
+    true: '是'
+    false: '否'
     agree: 同意
     consent: 同意
     abstain: 弃权
     unsure: 不确定
     disagree: 不同意
-    objection: 异议
-    object: 目的
-    block: 堵塞
-    no_voting: 没有投票
+    objection: 反对
+    object: 反对
+    block: 阻止
+    no_voting: 不投票
   poll_count_form:
-    pct_of_target: 目标百分比
-    agree_target_helptext: 您希望招募多少名志愿者？
+    pct_of_target: "目标百分比"
+    agree_target_helptext: 您希望有多少名志愿者？
     agree_target_label: 目标数量
   poll_count_options:
     accept: 接受
-    decline: 衰退
-    'yes': 是的
-    'no': 不
+    decline: 拒绝
+    'yes': '是'
+    'no': '否'
   poll_common_percent_voted:
-    pct_of_eligible_voters_must_participate: "%{pct}% 的合格选民必须参与"
-    pct_participation: 已投 %{num} 票，占 %{total} 票（参与率为 %{pct}%）
-    vote_short_of_quorum: 还需 1 票才能达到 %{pct}% 的法定人数
-    votes_short_of_quorum: 还需要 %{num} 票才能达到 %{pct}% 的法定人数
-    quorum_reached: 已达到 %{pct}% 的法定人数
+    sentence: "%{numerator} / %{denominator} 人已参与 (%{percent}%)"
+    target_progress: "已达到目标的 %{percent}%。（%{num} / %{target}）"
   poll_meeting_chart_panel:
-    total: 全部的
+    total: 总计
   poll_remove_vote:
-    title: 取消你的投票？
-    helptext: 您确定要撤销投票吗？您将被列为未决定，如果您愿意，可以稍后再次投票。
-    confirm: 删除投票
-    success: 投票已删除
+    title: 移除您的投票？
+    helptext: 您确定要移除您的投票吗？您将被列为未决定，并且如果您愿意，以后可以再次投票。
+    confirm: 移除投票
+    success: 投票已移除
   poll_poll_vote_form:
     stance_created: 投票已创建
     stance_updated: 投票已更新
@@ -2344,122 +2070,122 @@ zh_CN:
     stance_created: 投票已创建
     stance_updated: 投票已更新
   poll_meeting_vote_form:
-    local_time_zone: 当地时间 - %{zone}
+    local_time_zone: 本地时间 - %{zone}
     can_attend: 可以参加
-    unable: 无法
-    if_need_be: 如果需要的话
-    your_response: 你什么时候可以参加？
-    stance_created: 已保存可用性
+    unable: 无法参加
+    if_need_be: 如有需要
+    your_response: 您什么时候可以参加？
+    stance_created: 可用性已保存
     stance_updated: 可用性已更新
-    reason_placeholder: 解释一下你什么时候有空（或忙），以防作者想要添加选项。
+    reason_placeholder: 解释您有空（或忙碌）的时间，以防作者想要添加选项。
   poll_dot_vote_vote_form:
-    dots_remaining: 剩余 %{count} 个点
+    dots_remaining: "剩余 %{count} 个点"
     too_many_dots: 您使用的点数过多
     stance_created: 投票已创建
     stance_updated: 投票已更新
   poll_ranked_choice_vote_form:
-    helptext: 按偏好顺序拖放选项（1 表示您最喜欢的选项）。您的前 %{count} 个选项将被记录。
-    stance_created: 选择记录
+    helptext: 按偏好顺序拖放选项（1 是您最喜欢的选项）。您的前 %{count} 个选择将被记录。
+    stance_created: 选择已记录
     stance_updated: 选择已更新
   thread_item:
-    new: 新的
-    removed: 商品已移除
-    deleted_group: 已删除群组
-    invite_only_thread: 仅限邀请主题
-    comment_replied_to: "<a class='actor-link' href='/u/%{username}'>%{author}</a>回复<strong>%{title}</strong>"
-    discussion_title_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a>编辑了主题标题"
-    discussion_context_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a>编辑了主题上下文"
-    discussion_privacy_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a>更改了主题隐私"
-    discussion_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a>编辑了主题上下文"
-    discussion_moved: "<a class='actor-link' href='/u/%{username}'>%{author}</a>将帖子从<strong>%{title}</strong>移出"
-    discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a>关闭了该帖子"
-    discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a>重新打开了该帖子"
-    discussion_forked: "<a class='actor-link' href='/u/%{username}'>%{author}</a>创建了此主题的一个分支： <strong><a href='d/%{key}'>%{title}</a></strong>"
-    new_comment: "<a class='actor-link' href='/u/%{username}'>％{作者}</a>"
-    outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a>分享了一个结果"
-    poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a>重新打开了 %{polltype}"
-    poll_closed_by_user: "<a class='actor-link' href='/u/%{username}'>%{author}</a>关闭了 %{polltype}"
-    poll_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a>发起了 %{polltype}"
-    poll_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a>编辑了 %{polltype}"
-    poll_option_added: "<a class='actor-link' href='/u/%{username}'>%{author}</a>为 %{polltype} 添加了选项"
+    new: 新
+    removed: 项目已移除
+    deleted_group: 已删除的小组
+    invite_only_thread: 仅限邀请的议题
+    comment_replied_to: "<a class='actor-link' href='/u/%{username}'>%{author}</a> 回复了 <strong>%{title}</strong>"
+    discussion_title_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a> 编辑了议题标题"
+    discussion_context_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a> 编辑了议题背景信息"
+    discussion_privacy_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a> 更改了议题隐私"
+    discussion_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a> 编辑了议题背景信息"
+    discussion_moved: "<a class='actor-link' href='/u/%{username}'>%{author}</a> 将议题从 <strong>%{title}</strong> 移动"
+    discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> 关闭了议题"
+    discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> 重新打开了议题"
+    discussion_forked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> 创建了此议题的分支：<strong><a href='d/%{key}'>%{title}</a></strong>"
+    new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
+    outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> 分享了一个结果"
+    poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> 重新打开了 %{polltype}"
+    poll_closed_by_user: "<a class='actor-link' href='/u/%{username}'>%{author}</a> 关闭了 %{polltype}"
+    poll_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> 发起了一个 %{polltype}"
+    poll_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a> 编辑了 %{polltype}"
+    poll_option_added: "<a class='actor-link' href='/u/%{username}'>%{author}</a> 向 %{polltype} 添加了选项"
     poll_expired: "%{polltype} 已关闭"
-    stance_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a>投票： <strong>%{title}</strong>"
-    stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a>更新了他们对以下主题的投票： <strong>%{title}</strong>"
-    event_removed: 从主题中删除
+    stance_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> 对以下内容投票：<strong>%{title}</strong>"
+    stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> 更新了他们对以下内容的投票：<strong>%{title}</strong>"
+    event_removed: 已从议题中移除
   add_poll_to_thread_modal:
-    success: 成功，%{pollType} 已添加到线程！
+    success: 成功，%{pollType} 已添加到议题！
   auth_form:
     code: '000000'
     youre_invited: 您已被邀请加入 %{group_name}。
     youre_invited_discussion: 您已被邀请加入讨论。
     youre_invited_poll: 您已被邀请投票。
-    existing_account_can_sign_in: 如果您已经是 %{site_name} 用户，请使用您现有的帐户登录
-    sign_up_or_log_in: 创建帐户或登录 %{site_name}
-    sign_in_to_loomio: 登录 %{site_name}
-    sign_in_help: 登录时遇到问题？
-    sign_in: 登入
+    existing_account_can_sign_in: 如果您已经是 %{site_name} 用户，请使用您现有的账户登录
+    sign_up_or_log_in: 创建账户或登录到 %{site_name}
+    sign_in_to_loomio: 登录到 %{site_name}
+    sign_in_help: 登录遇到问题？
+    sign_in: 登录
     continue: 继续
     create_account: 创建账户
-    sign_up_as: 创建帐户为 %{email}
-    sign_in_as: 以 %{name} 身份登录
-    continue_with_provider: 继续 %{provider}
-    continue_with_email: 通过电子邮件继续
+    sign_up_as: 创建账户为 %{email}
+    sign_in_as: 登录为 %{name}
+    continue_with_provider: 使用 %{provider} 继续
+    continue_with_email: 使用电子邮件继续
     or_enter_your_email: 或者，输入您的电子邮件地址
     enter_your_name: 输入您的姓名
-    invitation_required: 您需要邀请才能创建帐户。点击邀请邮件中的链接继续。
-    more_providers: 更多的
+    invitation_required: 您需要邀请才能创建账户。请按照邀请电子邮件中的链接继续。
+    more_providers: 更多
     email_not_present: 需要电子邮件地址
-    invalid_email: 抱歉，这看起来不像是一个有效的电子邮件地址
-    invalid_password: 抱歉，该密码与我们存档的密码不匹配
-    invalid_token: 抱歉，我们无法使用该令牌让您登录。请点击下方发送另一个令牌。
-    account_locked: 您的帐户因登录失败次数过多而被锁定。请查看您的电子邮件以获取解锁链接。
-    email_not_found: 抱歉，我们找不到该电子邮件地址的帐户
-    email_taken: 电子邮件地址已注册
-    email_placeholder: 您{'@'}example.com
-    login_with_token: 一切就绪！点击下方链接继续。
-    login_link_helptext: 单击下面的按钮，我们将向您发送登录链接。
-    enter_your_password: 输入密码以继续
-    want_to_set_password: 下次需要使用密码登录吗？
-    change_your_password: 您想设置新密码吗？
+    invalid_email: 抱歉，那看起来不像是一个有效的电子邮件地址
+    invalid_password: 抱歉，该密码与我们的记录不匹配
+    invalid_token: 抱歉，我们无法使用该令牌让您登录。请点击下方发送另一个。
+    account_locked: 您的账户在多次登录尝试失败后已被锁定。请检查您的电子邮件以获取解锁链接
+    email_not_found: 抱歉，我们找不到具有该电子邮件地址的账户
+    email_taken: 电子邮件地址已被注册
+    email_placeholder: you{'@'}example.com
+    login_with_token: 您已准备就绪！点击下面的链接继续。
+    login_link_helptext: 点击下面的按钮，我们将向您发送一个登录链接。
+    enter_your_password: 输入您的密码以继续
+    want_to_set_password: 下次想使用密码登录吗？
+    change_your_password: 您想设置一个新密码吗？
     check_spam_folder: 如果电子邮件没有很快到达，请检查您的垃圾邮件文件夹。
-    sign_up_helptext: 请填写此表格以创建用户帐户
+    sign_up_helptext: 请填写此表格以创建用户账户
     i_accept_all: 我接受 %{termsLink} 和 %{privacyLink}
-    newsletter_label: 我想收到%{link}
-    name_placeholder: 您的名字
+    newsletter_label: 我想接收 %{link}
+    name_placeholder: 您的姓名
     name_required: 请输入姓名
     terms_required: 您必须同意服务条款
-    account_inactive: 哎呀，看起来 %{email} 的帐户已被停用！
+    account_inactive: 哎呀，看起来 %{email} 的账户已被停用！
     privacy_notice: 我们绝不会出售您的数据。<br><a href='%{privacyUrl}' target='_blank'>隐私政策</a>
-    welcome: "%{siteName} 的新用户？"
+    welcome: 新用户 %{siteName}？
     welcome_back: 欢迎回来，%{name}！
     forgot_password: 忘记密码
     login_link: 发送登录电子邮件
     sign_in_via_email: 通过电子邮件登录
     set_password: 设置密码
-    set_password_helptext: 下次需要使用密码吗？
-    hello: 你好，%{name}！
-    new_to_loomio: 第一次访问 %{site_name}？
-    already_a_user: 已有账户？
-    email_address_of_existing_account: 输入您现有帐户的电子邮件地址
-    link_accounts: 关联账户
-    check_your_email: 查看你的电子邮件！
-    login_link_sent: 我们已发送电子邮件至 %{email}
-    instructions: 单击链接登录，或输入以下代码：
-    instructions_code: 输入该电子邮件中的代码：
+    set_password_helptext: 下次想使用密码吗？
+    hello: 您好，%{name}！
+    new_to_loomio: 第一次使用 %{site_name}？
+    already_a_user: 已经有账户了？
+    email_address_of_existing_account: 输入您现有账户的电子邮件地址
+    link_accounts: 链接账户
+    check_your_email: 检查您的电子邮件！
+    login_link_sent: 我们已向 %{email} 发送了一封电子邮件
+    instructions: '点击链接登录，或在下面输入代码：'
+    instructions_code: '输入该电子邮件中的代码：'
     too_many_attempts: 尝试次数过多；请尝试点击电子邮件中的链接登录。
-    invalid_code: 抱歉，代码不匹配。请检查电子邮件并重试。
+    invalid_code: 抱歉，该代码不匹配。请检查电子邮件并重试。
     password_link_sent: 我们已向 %{email} 发送了一封电子邮件，其中包含有关如何设置密码的说明。
-    reactivate_link_sent: 我们已向您发送了一封电子邮件，其中包含重新激活帐户的说明
+    reactivate_link_sent: 我们已向您发送了一封包含重新激活账户说明的电子邮件
     signed_in: 登录成功
     email_verified: 电子邮件验证成功
     name: 姓名
     email: 电子邮件
     password: 密码
-    reactivate: 重新激活帐户
+    reactivate: 重新激活账户
   chatbot:
     configure_chatbot: 配置聊天机器人
     test_connection: 测试连接
-    test_connection_ok: 看起来不错！你应该会在频道里看到一条消息
+    test_connection_ok: 看起来不错！您应该在频道中看到一条消息
     test_connection_bad: 设置有问题
     name: 聊天机器人名称
     connection_test_successful: Loomio 机器人连接测试成功！
@@ -2467,89 +2193,89 @@ zh_CN:
     chatbots: 聊天机器人
     saved: 聊天机器人已保存！
     webhook_url: Webhook URL
-    homeserver_url: 主服务器 URL
-    channel: 渠道
+    homeserver_url: Homeserver URL
+    channel: 频道
     username: 用户名
     password: 密码
     access_token: 访问令牌
     add_chatbot: 添加聊天机器人
     webex: Webex
-    matrix: 矩阵
-    slack: 松弛
-    discord: 不和谐
-    mattermost: 最重要的
-    microsoft_teams: 微软团队
-    event_kind_helptext: 选择机器人始终会收到通知的事件。如果您不确定，请将其全部关闭。
+    matrix: Matrix
+    slack: Slack
+    discord: Discord
+    mattermost: Mattermost
+    microsoft_teams: Microsoft Teams
+    event_kind_helptext: 选择机器人将始终收到通知的事件。如果您不确定，只需将它们全部关闭。
     notification_only_label: 仅发送通知标题
     check_for_test_message: 检查您的聊天室是否有来自机器人的消息！
   webhook:
     integrations: 集成
     api_keys: API 密钥
-    webhooks: Webhook
+    webhooks: Webhooks
     webhook: Webhook
     add_api_key: 添加 API 密钥
     edit_api_key: 编辑 API 密钥
     api: API
     format: 格式
     formats:
-      markdown: Markdown（适用于 Mattermost、Zapier 和其他）
-      microsoft: 微软团队
-      slack: 松弛
-      discord: 不和谐
-    subtitle: 使用我们的 API 将 Loomio 连接到您的其他工具
-    deprecated: 此 API 已弃用。请迁移至 APIv2（请参阅群组设置菜单中的 API 文档）
-    we_have_guides: 请参阅我们的<a href="%{url}" target="_blank">webhook 设置指南</a>以获取有关连接您的服务的帮助。
-    add_webhook: 添加 webhook
+      markdown: Markdown（用于 Mattermost、Zapier 等）
+      microsoft: Microsoft Teams
+      slack: Slack
+      discord: Discord
+    subtitle: 通过我们的 API 将 Loomio 连接到您的其他工具
+    deprecated: 此 API 已弃用。请移至 APIv2（请参阅小组设置菜单中的 API 文档）
+    we_have_guides: '查看我们的<a href="%{url}" target="_blank">webhook 设置指南</a>以获取连接服务的帮助。'
+    add_webhook: 添加 Webhook
     show_docs: 查看 API 使用情况
     save_to_show_docs: 保存后，返回此处查找您的 API 密钥
     edit_integration: 编辑集成
     add_integration: 添加集成
-    success: 已添加集成！
-    remove: 删除集成
-    confirm_remove: 您确定要删除集成：%{name} 吗？
-    removed: 已移除集成
+    success: 集成已添加！
+    remove: 移除集成
+    confirm_remove: '您确定要移除集成：%{name} 吗？'
+    removed: 集成已移除
     url_label: Webhook URL
     url_placeholder: https://hooks.example.com/...
-    name_label: 姓名
-    name_placeholder: 为该集成命名，以便您可以识别它
-    event_kind_helptext: 您希望 webhook 收到哪些事件的通知？
+    name_label: 名称
+    name_placeholder: 给此集成起一个名称，以便您识别它
+    event_kind_helptext: 您希望 webhook 通知哪些事件？
     event_kinds:
-      new_discussion: 线程已启动
-      discussion_edited: 已编辑话题
+      new_discussion: 议题已启动
+      discussion_edited: 议题已编辑
       poll_edited: 投票已编辑
-      new_comment: 已发表评论
+      new_comment: 评论已发表
       poll_created: 投票已开始
-      stance_created: 投票已完成
-      stance_updated: 投票结果已更改
-      poll_closing_soon: 投票即将结束
+      stance_created: 投票已投出
+      stance_updated: 投票已更改
+      poll_closing_soon: 投票即将关闭
       poll_expired: 投票已过期
-      poll_closed_by_user: 投票已手动关闭
-      poll_reopened: 重新开放投票
-      outcome_created: 共享成果
+      poll_closed_by_user: 投票被手动关闭
+      poll_reopened: 投票重新开放供投票
+      outcome_created: 结果已分享
       outcome_updated: 结果已更新
-      outcome_review_due: 需要进行结果审查
-    permissions_explaination: 选择此集成可以执行的操作
+      outcome_review_due: 结果审核到期
+    permissions_explaination: 选择此集成可以执行哪些操作
     permissions:
       show_discussion: 显示讨论
       create_discussion: 创建讨论
       create_poll: 创建投票
-      show_poll: 显示民意调查
-      read_memberships: 阅读会员资格
-      manage_memberships: 管理会员资格（添加或删除群组成员）
-    include_body_label: 包含带有通知的消息正文
+      show_poll: 显示投票
+      read_memberships: 读取成员资格
+      manage_memberships: 管理成员资格（添加或移除小组成员）
+    include_body_label: 在通知中包含消息正文
   powered_by:
-    this_is_loomio_md: Loomio 是一款用于集体决策的应用程序。[免费试用](https://www.loomio.com)
+    this_is_loomio_md: Loomio 是一款用于共同决策的应用程序。[免费试用](https://www.loomio.com)
     slogan: 共同做出更好的决策
     powered_by_loomio: 由 Loomio 提供支持
     privacy_policy: 隐私政策
     terms_of_service: 服务条款
-    front_page: 头版
+    front_page: 首页
   group_survey:
     describe_other: 哪个类别最能描述您的组织
     categories:
       party: 政党
       coop: 合作社
-      union: 联盟
+      union: 工会
       board: 治理与董事会
       nonprofit: 非营利组织
       membership: 会员组织
