@@ -1884,6 +1884,7 @@ en:
     no_more_than: No more than
     vote_share_requirement: Vote share requirement
     for_the_proposal_to_pass: For the proposal to pass, this option must receive…
+    for_the_poll_to_be_valid: For the %{poll_type} to be valid, this option must receive…
     votes_cast: Votes cast
     eligible_voters: Eligible voters
     gte_score_percent: Needs at least %{percent}% of votes cast

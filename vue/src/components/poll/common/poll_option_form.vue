@@ -100,37 +100,39 @@ form(v-on:submit.prevent='submit()')
         :placeholder="$t('poll_common.reason_placeholder')"
         v-model="pollOption.prompt")
 
-      v-divider.pb-4
-
-      .text-subtitle-1.pb-2(v-t="'poll_option_form.vote_share_requirement'")
-
-      v-checkbox(v-model="testEnabled" :label="$t('poll_option_form.for_the_proposal_to_pass')")
-      .d-flex.flex-column.flex-sm-row
-        v-select.mr-4(
-          :disabled="!testEnabled"
-          v-model="pollOption.testOperator"
-          :items="[{title: $t('poll_option_form.at_least'), value: 'gte'}, {title: $t('poll_option_form.no_more_than'), value: 'lte'}]"
+      template(v-if="poll.config().allow_vote_share_requirement")
+        v-divider.pb-4
+        .text-subtitle-1.pb-2(v-t="'poll_option_form.vote_share_requirement'")
+        v-checkbox(
+          v-model="testEnabled"
+          :label="poll.pollType == 'proposal' ? $t('poll_option_form.for_the_proposal_to_pass') : $t('poll_option_form.for_the_poll_to_be_valid', { poll_type: poll.translatedPollType() })"
         )
+        .d-flex.flex-column.flex-sm-row
+          v-select.mr-4(
+            :disabled="!testEnabled"
+            v-model="pollOption.testOperator"
+            :items="[{title: $t('poll_option_form.at_least'), value: 'gte'}, {title: $t('poll_option_form.no_more_than'), value: 'lte'}]"
+          )
 
-        v-number-input(
-          :disabled="!testEnabled"
-          v-model="pollOption.testPercent"
-          :min="0"
-          :max="100"
-          :precision="0"
-          control-variant="hidden"
-          autocomplete="off"
-        )
-          template(v-slot:append-inner)
-            span.mr-4 %
-          template(v-slot:append)
-            span.mr-4(v-t="'poll_option_form.of'")
+          v-number-input(
+            :disabled="!testEnabled"
+            v-model="pollOption.testPercent"
+            :min="0"
+            :max="100"
+            :precision="0"
+            control-variant="hidden"
+            autocomplete="off"
+          )
+            template(v-slot:append-inner)
+              span.mr-4 %
+            template(v-slot:append)
+              span.mr-4(v-t="'poll_option_form.of'")
 
-        v-select(
-          :disabled="!testEnabled"
-          v-model="pollOption.testAgainst"
-          :items="[{title: $t('poll_option_form.votes_cast'), value: 'score_percent'}, {title: $t('poll_option_form.eligible_voters'), value: 'voter_percent'}]"
-        )
+          v-select(
+            :disabled="!testEnabled"
+            v-model="pollOption.testAgainst"
+            :items="[{title: $t('poll_option_form.votes_cast'), value: 'score_percent'}, {title: $t('poll_option_form.eligible_voters'), value: 'voter_percent'}]"
+          )
 
     v-divider
     v-card-actions

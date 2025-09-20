@@ -519,21 +519,26 @@ export default {
       :label="$t('poll_common_form.limit_reason_length')"
     )
 
-  v-divider.mb-4
-  .text-subtitle-1.pb-2(v-t="'poll_common_form.quorum'")
-  .text-body-2.pb-4.text-medium-emphasis(v-t="'poll_common_form.quorum_hint'")
-  v-number-input.mb-4(
-    v-model="poll.quorumPct"
-    :label="$t('poll_common_form.participation_quorum')"
-    :placeholder="$t('poll_common_form.quorum_placeholder')"
-    :min="0"
-    :max="100"
-    autocomplete="off"
-    control-variant="hidden"
-  )
-    template(v-slot:append-inner)
-      span.mr-4 %
-  .text-body-2.mt-n4.pb-4.font-italic.text-medium-emphasis(v-if="poll.quorumPct && poll.pollType == 'proposal'" v-t="'poll_common_form.quorum_tip_vote_share_requirement'")
+  template(v-if="poll.config().allow_quorum")
+    v-divider.mb-4
+    .text-subtitle-1.pb-2(v-t="'poll_common_form.quorum'")
+    .text-body-2.pb-4.text-medium-emphasis(v-t="'poll_common_form.quorum_hint'")
+    v-number-input.mb-4(
+      v-model="poll.quorumPct"
+      :label="$t('poll_common_form.participation_quorum')"
+      :placeholder="$t('poll_common_form.quorum_placeholder')"
+      :min="0"
+      :max="100"
+      autocomplete="off"
+      control-variant="hidden"
+    )
+      template(v-slot:append-inner)
+        span.mr-4 %
+    .text-body-2.mt-n4.pb-4.font-italic.text-medium-emphasis(
+      v-if="poll.quorumPct && poll.config().allow_vote_share_requirement"
+      v-t="'poll_common_form.quorum_tip_vote_share_requirement'"
+    )
+
   common-notify-fields(v-if="poll.id" :model="poll" includeActor)
 
   v-card-actions.poll-common-form-actions
