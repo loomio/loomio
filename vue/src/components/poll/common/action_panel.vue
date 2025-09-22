@@ -5,6 +5,7 @@ import Records        from '@/shared/services/records';
 import EventBus       from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
 import WatchRecords   from '@/mixins/watch_records';
+import { marked }    from 'marked';
 
 export default
 {
@@ -68,6 +69,20 @@ export default
     });
   },
 
+  computed: {
+    strippedReason() {
+      if (!this.stance || this.stance.reason.length === 0) { return null };
+      let html = '';
+      if (this.stance.reasonFormat == 'md') {
+        html = marked(this.stance.reason);
+      } else {
+        html = this.stance.reason
+      }
+      let doc = new DOMParser().parseFromString(html, 'text/html');
+      return doc.body.textContent || "";
+    }
+  },
+
   methods: {
     lastStanceOrNew() {
       const stance = this.poll.myStance() || Records.stances.build({
@@ -101,13 +116,15 @@ export default
 
   template(v-if="stance && stance.castAt && poll.pollType != 'meeting'")
     template(v-if="poll.singleChoice()")
-      v-alert.poll-common-current-vote(variant="tonal" :color="stance.pollOption().color" border :title="$t('poll_common.you_voted')")
-        poll-common-stance-choice(
-          :size="28"
-          :poll="poll"
-          :stance-choice="stance.stanceChoice()"
-          verbose)
-        .d-flex
+      v-alert.poll-common-current-vote(variant="tonal" color="primary" border :title="$t('poll_common.you_voted')")
+        p.mt-2
+          poll-common-stance-choice(
+            :size="28"
+            :poll="poll"
+            :stance-choice="stance.stanceChoice()"
+            verbose)
+        .d-flex.align-center
+          span.text-truncate.text-medium-emphasis {{strippedReason}}
           v-spacer
           action-button.float-right(:action="editStanceAction" variant="tonal")
     template(v-else)

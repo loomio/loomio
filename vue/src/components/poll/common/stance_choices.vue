@@ -38,9 +38,9 @@ export default {
       :key="choice.id"
       :class="'poll-common-stance-choice--' + pollType")
       common-icon(size="small" :color="choice.pollOption.color" v-if="!variableScore" name="mdi-check-circle")
-      span.mr-2.text-medium-emphasis
-        | {{ choice.pollOption.optionName() }}
-      v-chip(:color="choice.pollOption.color" v-if="variableScore" variant="flat" size="small" )
+      span.text-medium-emphasis
+        span.text-high-emphasis| {{ choice.pollOption.optionName() }}
+        mid-dot
         span {{choice.rank || choice.score}}
 </template>
 <style lang="sass">
