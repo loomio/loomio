@@ -2584,7 +2584,7 @@ nl_NL:
     stance_reason_required_label: Het opgeven van een reden bij het stemmen is ...
     stance_reason_required: Vereist
     stance_reason_optional: Optioneel
-    stance_reason_disabled: Gehandicapt
+    stance_reason_disabled: Uitgeschakeld
     stance_reason_is_required: Geef een reden op voor uw stem
     limit_reason_length: Beperk de reden tot maximaal 500 tekens
     save_poll: Poll opslaan
