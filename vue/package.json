@@ -64,7 +64,7 @@
     "marked": "^4.3.0",
     "md5": "2.3.0",
     "plausible-tracker": "^0.3.9",
-    "pretty-bytes": "^7.0.1",
+    "pretty-bytes": "^7.1.0",
     "socket.io-client": "^4.7.5",
     "svg.js": "^2.7.1",
     "textarea-caret": "^3.1.0",
