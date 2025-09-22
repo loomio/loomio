@@ -37,7 +37,6 @@ class ReceivedEmailService
       if comment = CommentService.create(comment: Comment.new(comment_params(email)), actor: actor_from_email(email))
         email.update_attribute(:released, true) if comment.persisted?
       end
-
     when /[^\s]+\+u=.+&k=.+/
       # personal email-to-group, eg. enspiral+u=99&k=adsfghjl@mail.loomio.com
       if AppConfig.app_features[:thread_from_mail]
@@ -65,7 +64,7 @@ class ReceivedEmailService
               email.update(released: true) if discussion.persisted?
             end
           else
-            Events::UnknownSender.publish!(email)
+            Events::UnknownSender.publish!(email) unless Event.where(kind: 'unknown_sender', eventable: email).exists?
           end
         end
       else
