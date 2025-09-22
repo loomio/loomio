@@ -1796,6 +1796,7 @@ it:
     name_lte_voter_percent: "%{name} non deve superare il %{percent}% degli elettori aventi diritto"
     vote_share_requirement: Requisito di quota di voto
     for_the_proposal_to_pass: Affinché la proposta venga approvata, questa opzione deve ricevere…
+    for_the_poll_to_be_valid: Affinché %{poll_type} sia valido, questa opzione deve ricevere...
   poll_common:
     superseded: Sostituito
     outdated: Obsoleto

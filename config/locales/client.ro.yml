@@ -1766,6 +1766,7 @@ ro:
     name_lte_voter_percent: "%{name} nu trebuie să depășească %{percent}% din alegătorii eligibili"
     vote_share_requirement: Cerința privind cota de vot
     for_the_proposal_to_pass: Pentru ca propunerea să fie adoptată, această opțiune trebuie să primească…
+    for_the_poll_to_be_valid: Pentru ca %{poll_type} să fie valid, această opțiune trebuie să primească…
   poll_common:
     superseded: Inlocuit
     outdated: Învechit

@@ -1766,6 +1766,7 @@ el:
     name_lte_voter_percent: Το ποσοστό %{name} δεν πρέπει να υπερβαίνει το %{percent}% των επιλέξιμων ψηφοφόρων
     vote_share_requirement: Απαίτηση ποσοστού ψήφου
     for_the_proposal_to_pass: Για να εγκριθεί η πρόταση, η επιλογή αυτή πρέπει να λάβει...
+    for_the_poll_to_be_valid: Για να είναι έγκυρη η %{poll_type}, αυτή η επιλογή πρέπει να λάβει…
   poll_common:
     superseded: Αντικαταστάθηκε
     outdated: Απαρχαιωμένος

@@ -1766,6 +1766,7 @@ da:
     name_lte_voter_percent: "%{name} må ikke overstige %{percent}% af de stemmeberettigede"
     vote_share_requirement: Krav om stemmeandel
     for_the_proposal_to_pass: For at forslaget kan vedtages, skal dette alternativ modtage…
+    for_the_poll_to_be_valid: For at %{poll_type} kan være gyldig, skal denne indstilling modtage…
   poll_common:
     superseded: Afløst
     outdated: Forældet

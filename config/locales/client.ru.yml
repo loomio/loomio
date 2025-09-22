@@ -1766,6 +1766,7 @@ ru:
     name_lte_voter_percent: "%{name} не должен превышать %{percent}% от числа имеющих право голоса избирателей"
     vote_share_requirement: Требование к доле голосов
     for_the_proposal_to_pass: Для того чтобы предложение было принято, этот вариант должен получить…
+    for_the_poll_to_be_valid: Чтобы %{poll_type} был действительным, этот параметр должен получить…
   poll_common:
     superseded: Заменено
     outdated: Устаревший

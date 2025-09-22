@@ -1796,6 +1796,7 @@ uk:
     name_lte_voter_percent: "%{name} не повинен перевищувати %{percent}% виборців, які мають право голосу"
     vote_share_requirement: Вимога щодо частки голосів
     for_the_proposal_to_pass: Щоб пропозиція була прийнята, цей варіант має отримати…
+    for_the_poll_to_be_valid: Щоб %{poll_type} був дійсним, цей параметр має отримати…
   poll_common:
     superseded: Замінено
     outdated: Застаріла

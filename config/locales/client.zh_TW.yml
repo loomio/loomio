@@ -1801,6 +1801,7 @@ zh_TW:
     name_lte_voter_percent: "%{name} 不得超過合格選民的 %{percent}%"
     vote_share_requirement: 投票份額要求
     for_the_proposal_to_pass: 為了使提案獲得通過，此選項必須獲得…
+    for_the_poll_to_be_valid: 為了使 %{poll_type} 有效，此選項必須接收...
   poll_common:
     superseded: 取代
     outdated: 過時的

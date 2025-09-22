@@ -1773,6 +1773,7 @@ hu:
     name_lte_voter_percent: "%{name} nem haladhatja meg a jogosult szavazók %{percent}%-át"
     vote_share_requirement: Szavazati arány követelmény
     for_the_proposal_to_pass: Ahhoz, hogy a javaslat elfogadásra kerüljön, ennek a lehetőségnek meg kell kapnia…
+    for_the_poll_to_be_valid: Ahhoz, hogy a %{poll_type} érvényes legyen, ennek az opciónak a következőt kell kapnia…
   poll_common:
     superseded: Felváltva
     outdated: Elavult

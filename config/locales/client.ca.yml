@@ -1791,6 +1791,7 @@ ca:
     name_lte_voter_percent: "%{name} no pot superar el %{percent}% dels votants amb dret a vot"
     vote_share_requirement: Requisit de quota de vot
     for_the_proposal_to_pass: Perquè la proposta sigui aprovada, aquesta opció ha de rebre...
+    for_the_poll_to_be_valid: Perquè %{poll_type} sigui vàlid, aquesta opció ha de rebre…
   poll_common:
     superseded: Substituït
     outdated: Antiquat

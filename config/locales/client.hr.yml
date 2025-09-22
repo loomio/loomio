@@ -1766,6 +1766,7 @@ hr:
     name_lte_voter_percent: "%{name} ne smije prelaziti %{percent}% birača s pravom glasa"
     vote_share_requirement: Zahtjev za udio glasova
     for_the_proposal_to_pass: Da bi prijedlog prošao, ova opcija mora dobiti…
+    for_the_poll_to_be_valid: Da bi %{poll_type} bio valjan, ova opcija mora primiti…
   poll_common:
     superseded: Zamijenjeno
     outdated: Zastario

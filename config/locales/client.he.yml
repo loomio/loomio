@@ -1785,6 +1785,7 @@ he:
     name_lte_voter_percent: מספר המצביעים %{name} לא יעלה על %{percent}%
     vote_share_requirement: דרישת שיעור ההצבעה
     for_the_proposal_to_pass: כדי שההצעה תעבור, אופציה זו חייבת לקבל...
+    for_the_poll_to_be_valid: כדי ש-%{poll_type} יהיה תקף, אפשרות זו חייבת לקבל...
   poll_common:
     superseded: הוחלף
     outdated: מְיוּשָׁן

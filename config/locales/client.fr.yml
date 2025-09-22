@@ -1812,6 +1812,7 @@ fr:
     name_lte_voter_percent: "%{name} ne doit pas dépasser %{percent}% des électeurs éligibles"
     vote_share_requirement: Exigence en matière de parts de vote
     for_the_proposal_to_pass: Pour que la proposition soit adoptée, cette option doit recevoir…
+    for_the_poll_to_be_valid: Pour que le %{poll_type} soit valide, cette option doit recevoir…
   poll_common:
     superseded: Remplacé
     outdated: Dépassé

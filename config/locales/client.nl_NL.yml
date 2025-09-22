@@ -1791,6 +1791,7 @@ nl_NL:
     name_lte_voter_percent: "%{name} mag niet meer dan %{percent}% van de stemgerechtigde kiezers uitmaken"
     vote_share_requirement: Stemmenaandeelvereiste
     for_the_proposal_to_pass: Om het voorstel te laten slagen, moet deze optie…
+    for_the_poll_to_be_valid: Om %{poll_type} geldig te laten zijn, moet deze optie het volgende ontvangen...
   poll_common:
     superseded: Vervangen
     outdated: Verouderd

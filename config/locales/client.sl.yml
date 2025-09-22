@@ -1766,6 +1766,7 @@ sl:
     name_lte_voter_percent: "%{name} ne sme presegati %{percent} % upravičenih volivcev"
     vote_share_requirement: Zahteva po deležu glasov
     for_the_proposal_to_pass: Da bi bil predlog sprejet, mora ta možnost prejeti ...
+    for_the_poll_to_be_valid: Da bi bila %{poll_type} veljavna, mora ta možnost prejeti…
   poll_common:
     superseded: Nadomeščeno
     outdated: Zastarelo

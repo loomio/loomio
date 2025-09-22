@@ -1766,6 +1766,7 @@ sv:
     name_lte_voter_percent: "%{name} får inte överstiga %{percent}% av de röstberättigade"
     vote_share_requirement: Krav på röstandel
     for_the_proposal_to_pass: För att förslaget ska gå igenom måste detta alternativ få…
+    for_the_poll_to_be_valid: För att %{poll_type} ska vara giltig måste detta alternativ ta emot…
   poll_common:
     superseded: Ersatt
     outdated: Föråldrad

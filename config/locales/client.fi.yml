@@ -1766,6 +1766,7 @@ fi:
     name_lte_voter_percent: "%{name} ei saa ylittää %{percent}% äänioikeutetuista"
     vote_share_requirement: Ääniosuusvaatimus
     for_the_proposal_to_pass: Jotta ehdotus hyväksyttäisiin, tämän vaihtoehdon on saatava…
+    for_the_poll_to_be_valid: Jotta %{poll_type} olisi kelvollinen, tämän vaihtoehdon on vastaanotettava…
   poll_common:
     superseded: Korvattu
     outdated: Vanhentunut

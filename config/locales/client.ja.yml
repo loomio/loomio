@@ -1765,6 +1765,7 @@ ja:
     name_lte_voter_percent: "%{name} は有権者の %{percent}% を超えてはなりません"
     vote_share_requirement: 投票シェア要件
     for_the_proposal_to_pass: 提案が承認されるには、このオプションの承認を得る必要があります…
+    for_the_poll_to_be_valid: "%{poll_type} を有効にするには、このオプションが受信される必要があります…"
   poll_common:
     superseded: 置き換えられました
     outdated: 時代遅れ

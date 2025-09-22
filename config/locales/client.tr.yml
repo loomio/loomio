@@ -1766,6 +1766,7 @@ tr:
     name_lte_voter_percent: "%{name}, uygun seçmenlerin %{percent}%'ini geçmemelidir"
     vote_share_requirement: Oy payı gereksinimi
     for_the_proposal_to_pass: Önerinin kabul edilebilmesi için bu seçeneğin…
+    for_the_poll_to_be_valid: "%{poll_type} seçeneğinin geçerli olması için bu seçeneğin… alması gerekir."
   poll_common:
     superseded: Değiştirildi
     outdated: Modası geçmiş
