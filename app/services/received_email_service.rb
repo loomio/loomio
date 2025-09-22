@@ -1,4 +1,10 @@
 class ReceivedEmailService
+  class SentToSelfError < StandardError
+    def initialize(email)
+      super("Email sent to self: #{email.inspect}")
+    end
+  end
+
   def self.refresh_forward_email_rules
     forward_email_rules = File.readlines(Rails.root.join("db/default_forward_email_rules.txt")).map(&:chomp).map do |handle|
       {handle: handle, email: "#{handle}@#{ENV['REPLY_HOSTNAME']}"}
@@ -22,7 +28,7 @@ class ReceivedEmailService
 
     if email.sender_hostname.downcase == ENV['REPLY_HOSTNAME'].downcase ||
        email.sender_hostname.downcase == ENV['CANONICAL_HOST'].downcase
-      raise "stop emailing ourself!", email
+      raise SentToSelfError.new(email)
     end
 
     if email.is_complaint? && email.complainer_address.present?
