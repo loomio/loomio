@@ -1,6 +1,6 @@
 class ReceivedEmailService
   def self.refresh_forward_email_rules
-    forward_email_rules = File.readlines(Rails.root.join("db/default_forward_email_rules.txt")).map(&:chomp).map do |handle| 
+    forward_email_rules = File.readlines(Rails.root.join("db/default_forward_email_rules.txt")).map(&:chomp).map do |handle|
       {handle: handle, email: "#{handle}@#{ENV['REPLY_HOSTNAME']}"}
     end
 
@@ -15,11 +15,15 @@ class ReceivedEmailService
   end
 
   def self.route(email)
-    return nil if email.released
-    return nil unless email.route_address
-    return nil unless email.sender_email
-    return nil if email.sender_hostname.downcase == ENV['REPLY_HOSTNAME'].downcase
-    return nil if email.sender_hostname.downcase == ENV['CANONICAL_HOST'].downcase
+    return nil if email.released # email will be cleaned up by the cron job
+
+    return email.destroy unless email.route_address
+    return email.destroy unless email.sender_email
+
+    if email.sender_hostname.downcase == ENV['REPLY_HOSTNAME'].downcase ||
+       email.sender_hostname.downcase == ENV['CANONICAL_HOST'].downcase
+      raise "stop emailing ourself!", email
+    end
 
     if email.is_complaint? && email.complainer_address.present?
       User.where(email: email.complainer_address).update_all("complaints_count = complaints_count + 1")
@@ -34,7 +38,7 @@ class ReceivedEmailService
         email.update_attribute(:released, true) if comment.persisted?
       end
 
-    when /[^\s]+\+u=.+&k=.+/ 
+    when /[^\s]+\+u=.+&k=.+/
       # personal email-to-group, eg. enspiral+u=99&k=adsfghjl@mail.loomio.com
       if AppConfig.app_features[:thread_from_mail]
         if discussion = DiscussionService.create(discussion: Discussion.new(discussion_params(email)), actor: actor_from_email(email))
@@ -51,11 +55,8 @@ class ReceivedEmailService
           body_text: email.body_text,
           body_html: email.body_html
         ).deliver_later
-        email.update(released: true)
-        return
-      end
-
-      if group = Group.find_by(handle: email.route_path)
+        email.destroy
+      elsif group = Group.find_by(handle: email.route_path)
         if !address_is_blocked(email, group)
           email.update(group_id: group.id)
 
@@ -67,6 +68,9 @@ class ReceivedEmailService
             Events::UnknownSender.publish!(email)
           end
         end
+      else
+        # dont fill the database with junk when there is no relevant address
+        email.destroy
       end
     end
   rescue CanCan::AccessDenied, ActiveRecord::RecordNotFound
@@ -81,7 +85,7 @@ class ReceivedEmailService
     while regex = reply_split_points(author_name).find { |regex| regex.match? text } do
       text = text.split(regex).first.strip
     end
-    
+
     text.strip
   end
 
