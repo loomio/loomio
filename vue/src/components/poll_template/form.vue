@@ -1,28 +1,18 @@
 <script lang="js">
 import AppConfig from '@/shared/services/app_config';
-import Session from '@/shared/services/session';
-import { compact, without, some, pick } from 'lodash-es';
+import { mapKeys, snakeCase, compact, without, some, pick } from 'lodash-es';
 import Flash from '@/shared/services/flash';
-import Records from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
-import AbilityService from '@/shared/services/ability_service';
-import { addDays, addMinutes, intervalToDuration, formatDuration } from 'date-fns';
-import { isSameYear, startOfHour, setHours }  from 'date-fns';
 import { I18n } from '@/i18n';
 import UrlFor from '@/mixins/url_for';
 import WatchRecords from '@/mixins/watch_records';
 import { HandleDirective } from 'vue-slicksort';
 
 export default {
-  // directives: { handle: HandleDirective },
-  directives: { handle: HandleDirective },
   mixins: [WatchRecords, UrlFor],
+  directives: { handle: HandleDirective },
 
   props: {
-    isModal: {
-      default: false,
-      type: Boolean
-    },
     pollTemplate: Object
   },
 
@@ -99,6 +89,9 @@ export default {
         meaning: '',
         prompt: '',
         icon: null,
+        testOperator: null,
+        testPercent: null,
+        testAgainst: null
       };
 
       EventBus.$emit('openModal', {
@@ -119,7 +112,7 @@ export default {
     },
 
     editOption(option) {
-      const clone = pick(option, 'name', 'icon', 'meaning', 'prompt');
+      const clone = pick(option, 'name', 'icon', 'meaning', 'prompt', 'testOperator', 'testPercent', 'testAgainst');
 
       EventBus.$emit('openModal', {
         component: 'PollOptionForm',
@@ -136,17 +129,12 @@ export default {
     },
 
     submit() {
-      const actionName = this.pollTemplate.isNew() ? 'created' : 'updated';
       this.pollTemplate.setErrors({});
       this.setPollOptionPriority();
-      this.pollTemplate.pollOptions = this.pollOptions;
-      this.pollTemplate.save().then(data => {
+      this.pollTemplate.pollOptions = this.pollOptions.map((o) => mapKeys(o, (_, k) => snakeCase(k)))
+      this.pollTemplate.save().then(() => {
         Flash.success("poll_common.poll_template_saved");
-        if (this.isModal) {
-          EventBus.$emit('closeModal');
-        } else {
-          this.$router.push(this.$route.query.return_to);
-        }
+        this.$router.push(this.$route.query.return_to);
       }).catch(error => {
         Flash.warning('poll_common_form.please_review_the_form');
         console.error(error);
@@ -215,14 +203,13 @@ export default {
 
 </script>
 <template lang="pug">
-.poll-template-form(:class="isModal ? 'pa-4' : ''")
+.poll-template-form
   .d-flex
     v-breadcrumbs.px-0.py-0(:items="breadcrumbs")
       template(v-slot:divider)
         common-icon(name="mdi-chevron-right")
     v-spacer
-    dismiss-modal-button(v-if="isModal" :model='pollTemplate')
-    v-btn.back-button(v-if="!isModal && $route.query.return_to" icon :aria-label="$t('common.action.cancel')" :to='$route.query.return_to')
+    v-btn.back-button(v-if="$route.query.return_to" icon variant="text" :aria-label="$t('common.action.cancel')" :to='$route.query.return_to')
       common-icon(name="mdi-close")
   v-card-title.px-0
     h1.text-h4(tabindex="-1" v-t="titlePath")
@@ -284,7 +271,8 @@ export default {
   )
 
   template(v-if="hasOptions")
-    .v-label.v-label--active.px-0.text-caption.py-2(v-t="'poll_common_form.options'")
+    v-divider.my-4
+    .text-subtitle-1.py-2(v-t="'poll_common_form.options'")
     v-alert(v-if="!pollOptions.length" variant="tonal" type="info")
       span(v-t="'poll_common_form.no_options_add_some'")
     sortable-list(
@@ -309,7 +297,9 @@ export default {
             span(v-if="optionFormat == 'plain'") {{option.name}}
             span(v-if="optionFormat == 'iso8601'")
               poll-meeting-time(:name="option.name")
-          v-list-item-subtitle.poll-common-vote-form__allow-wrap {{option.meaning}}
+          v-list-item-subtitle.poll-common-vote-form__allow-wrap
+            p.font-italic.mb-1(v-t="{path: `poll_option_form.${option.testOperator}_${option.testAgainst}`, args: {percent: option.testPercent} }" v-if="option.testOperator")
+            p {{option.meaning}}
 
           template(v-slot:append)
             v-btn(
@@ -342,16 +332,16 @@ export default {
         :label="$t('poll_common.max_score')")
 
     template(v-if="pollTemplate.pollType == 'poll'")
-      p.text-medium-emphasis(v-t="'poll_common_form.how_many_options_can_a_voter_choose'")
+      v-divider.my-4
+      .text-subtitle-1.pb-4(v-t="'poll_common_form.how_many_options_can_a_voter_choose'")
       .d-flex
-        v-text-field.poll-common-form__minimum-stance-choices(
+        v-text-field.poll-common-form__minimum-stance-choices.mr-2(
           v-model="pollTemplate.minimumStanceChoices"
           type="number"
           :step="1"
           :hint="$t('poll_common_form.choose_at_least')"
           :label="$t('poll_common_form.minimum_choices')")
-        v-spacer
-        v-text-field.poll-common-form__maximum-stance-choices(
+        v-text-field.poll-common-form__maximum-stance-choices.ml-2(
           v-model="pollTemplate.maximumStanceChoices"
           type="number"
           :step="1"
@@ -359,6 +349,7 @@ export default {
           :label="$t('poll_common_form.maximum_choices')")
 
     .d-flex.align-center(v-if="pollTemplate.pollType == 'ranked_choice'")
+      v-divider.my-4
       v-text-field.lmo-number-input(
         v-model="pollTemplate.minimumStanceChoices"
         :label="$t('poll_ranked_choice_form.minimum_stance_choices_helptext')"
@@ -368,6 +359,8 @@ export default {
       validation-errors(:subject="pollTemplate", field="minimumStanceChoices")
 
     template(v-if="pollTemplate.pollType == 'dot_vote'")
+      v-divider.my-4
+      p.mt-4.text-subtitle-1.mb-4(v-t="'poll_common_form.how_many_points_does_each_voter_have_to_allocate'")
       v-text-field(
         :label="$t('poll_dot_vote_form.dots_per_person')"
         type="number"
@@ -376,24 +369,27 @@ export default {
       validation-errors(:subject="pollTemplate" field="dotsPerPerson")
 
   template(v-if="pollTemplate.config().allow_none_of_the_above")
-    v-checkbox.poll-common-checkbox-option.poll-settings-allow-none-of-the-above(
+    v-checkbox.poll-settings-allow-none-of-the-above(
+      hide-details
       v-model="pollTemplate.showNoneOfTheAbove"
       :label="$t('poll_common_settings.show_none_of_the_above')"
     )
 
   v-divider.my-4
 
+  .text-subtitle-1.pb-2(v-t="'poll_common_form.deadline'")
+  .text-body-2.pb-4.text-medium-emphasis(v-t="'poll_common_form.default_duration_in_days_hint'")
   v-text-field(
     :label="$t('poll_common_form.default_duration_in_days')"
-    :hint="$t('poll_common_form.default_duration_in_days_hint')"
     type="number"
     min="1"
     v-model="pollTemplate.defaultDurationInDays")
   validation-errors(:subject="pollTemplate" field="defaultDurationInDays")
 
+  v-divider.my-4
+  .text-subtitle-1.pb-2(v-t="'poll_common_settings.who_can_vote'")
   v-radio-group(
     v-model="pollTemplate.specifiedVotersOnly"
-    :label="$t('poll_common_settings.who_can_vote')"
   )
     v-radio(
       :value="false"
@@ -402,23 +398,44 @@ export default {
       :value="true"
       :label="$t('poll_common_settings.specified_voters_only_true')")
 
+  v-divider.mb-4
+  .text-subtitle-1.pb-2(v-t="'poll_common_form.reminder_notification'")
+  .text-body-2.pb-4.text-medium-emphasis(v-t="'poll_common_form.reminder_helptext'")
+  v-select(
+    :label="$t('poll_common_settings.notify_on_closing_soon.voting_title')"
+    v-model="pollTemplate.notifyOnClosingSoon"
+    :items="closingSoonItems")
+
   template(v-if="allowAnonymous")
-    //- .lmo-form-label.mb-1.mt-4(v-t="'poll_common_form.anonymous_voting'")
-    //- p.text-medium-emphasis(v-t="'poll_common_form.anonymous_voting_description'")
-    v-checkbox.poll-common-checkbox-option.poll-settings-anonymous(
+    v-divider.mb-4
+    .text-subtitle-1.pb-2(v-t="'poll_common_form.anonymous_voting'")
+    .text-body-2.text-medium-emphasis(v-t="{path: 'poll_common_form.anonymous_voting_description', args: {poll_type: pollTemplate.translatedPollType()}}")
+    v-checkbox.poll-settings-anonymous(
+      hide-details
       v-model="pollTemplate.anonymous"
       :label="$t('poll_common_form.votes_are_anonymous')")
 
+    v-divider.mb-4
+    .text-subtitle-1.pb-2(v-t="'poll_common_card.hide_results'")
+    .text-body-2.pb-4.text-medium-emphasis(v-t="'poll_common_form.hide_results_description'")
+    v-select.poll-common-settings__hide-results(
+      :label="$t('poll_common_card.hide_results')"
+      :items="hideResultsItems"
+      v-model="pollTemplate.hideResults"
+    )
 
   template(v-if="pollTemplate.config().can_shuffle_options")
-    //- .lmo-form-label.mb-1.mt-4(v-t="'poll_common_settings.shuffle_options.shuffle_options'")
-    //- p.text-medium-emphasis(v-t="'poll_common_settings.shuffle_options.helptext'")
-    v-checkbox.poll-common-checkbox-option.poll-settings-shuffle-options.mt-4.pt-2(
+    v-divider.pb-4
+    .text-subtitle-1.pb-2(v-t="'poll_common_settings.shuffle_options'")
+    .text-body-2.text-medium-emphasis(v-t="'poll_common_settings.reduce_bias_by_showing_options_in_random_order'")
+    v-checkbox.poll-settings-shuffle-options(
+      hide-details
       v-model="pollTemplate.shuffleOptions"
-      :label="$t('poll_common_settings.shuffle_options.title')")
+      :label="$t('poll_common_settings.show_options_in_random_order')")
 
-  //- .lmo-form-label.mb-1.mt-4(v-t="'poll_common_form.vote_reason'")
-  //- p.text-medium-emphasis(v-t="'poll_common_form.vote_reason_description'")
+  v-divider.pb-4
+  .text-subtitle-1.pb-2(v-t="'poll_common_form.vote_reason'")
+  .text-body-2.pb-4.text-medium-emphasis(v-t="'poll_common_form.vote_reason_description'")
   v-select(
     :label="$t('poll_common_form.stance_reason_required_label')"
     :items="stanceReasonRequiredItems"
@@ -432,38 +449,53 @@ export default {
     :hint="$t('poll_option_form.prompt_hint')"
     :placeholder="$t('poll_common.reason_placeholder')")
 
-  template(v-if="pollTemplate.stanceReasonRequired != 'disabled'")
-    //- p.text-medium-emphasis(v-t="'poll_common_settings.short_reason_can_be_helpful'")
-    v-checkbox.poll-common-checkbox-option(
-      v-model="pollTemplate.limitReasonLength"
-      :label="$t('poll_common_form.limit_reason_length')"
+  v-checkbox(
+    v-if="pollTemplate.stanceReasonRequired != 'disabled'"
+    v-model="pollTemplate.limitReasonLength"
+    :label="$t('poll_common_form.limit_reason_length')"
+  )
+
+  template(v-if="pollTemplate.config().allow_quorum")
+    v-divider.mb-4
+    .text-subtitle-1.pb-2(v-t="'poll_common_form.quorum'")
+    .text-body-2.pb-4.text-medium-emphasis(v-t="'poll_common_form.quorum_hint'")
+    v-number-input.mb-4(
+      v-model="pollTemplate.quorumPct"
+      :label="$t('poll_common_form.participation_quorum')"
+      :placeholder="$t('poll_common_form.quorum_placeholder')"
+      :min="0"
+      :max="100"
+      autocomplete="off"
+      control-variant="hidden"
+    )
+      template(v-slot:append-inner)
+        span.mr-4 %
+    .text-body-2.mt-n4.pb-4.font-italic.text-medium-emphasis(
+      v-if="pollTemplate.quorumPct && pollTemplate.config().allow_vote_share_requirement"
+      v-t="'poll_common_form.quorum_tip_vote_share_requirement'"
     )
 
-  template(v-if="allowAnonymous")
-    //- .lmo-form-label.mb-1.mt-4(v-t="'poll_common_card.hide_results'")
-    //- p.text-medium-emphasis(v-t="'poll_common_form.hide_results_description'")
-    v-select.poll-common-settings__hide-results.mt-6.pt-2(
-      :label="$t('poll_common_card.hide_results')"
-      :items="hideResultsItems"
-      v-model="pollTemplate.hideResults"
-    )
-
+  v-divider.mb-4
+  .text-subtitle-1.pb-2(v-t="'poll_common_outcome_form.outcome_statement_template'")
+  .text-body-2.pb-4.text-medium-emphasis(v-t="'poll_common_outcome_form.statement_template_hint'")
   lmo-textarea(
     :model='pollTemplate'
     field="outcomeStatement"
     :placeholder="$t('poll_common_outcome_form.statement_template_placeholder')"
-    :label="$t('poll_common_outcome_form.outcome_statement_template')"
   )
 
+  v-divider.mb-4
+  .text-subtitle-1.pb-2 Decision review
+  .text-body-2.pb-4.text-medium-emphasis(v-t="'poll_common_outcome_form.review_due_in_days_hint'")
   v-text-field(
     :label="$t('poll_common_outcome_form.review_due_in_days')"
-    :hint="$t('poll_common_outcome_form.review_due_in_days_hint')"
     type="number"
     min="1"
     v-model="pollTemplate.outcomeReviewDueInDays")
   validation-errors(:subject="pollTemplate" field="outcomeReviewDueInDays")
 
   .d-flex.justify-space-between.my-4.mt-4.poll-common-form-actions
+    help-btn(path='en/user_manual/polls/poll_templates')
     v-spacer
     v-btn.mr-2(
       @click="discardDraft"

@@ -1,7 +1,7 @@
 <script lang="js">
 import AppConfig from '@/shared/services/app_config';
 import Session from '@/shared/services/session';
-import { compact, without, some, pick } from 'lodash-es';
+import { mapKeys, without, some, pick, snakeCase } from 'lodash-es';
 import Flash from '@/shared/services/flash';
 import Records from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
@@ -14,8 +14,8 @@ import WatchRecords from '@/mixins/watch_records';
 
 export default {
   mixins: [UrlFor, WatchRecords],
-  components: { PollTemplateInfoPanel },
   directives: { handle: HandleDirective },
+  components: { PollTemplateInfoPanel },
 
   props: {
     poll: Object,
@@ -51,38 +51,6 @@ export default {
       groupItems: [],
       showAdvanced: false,
       pollTemplate: null,
-
-      votingMethodsI18n: {
-        proposal: {
-          title: 'poll_common_form.voting_methods.show_thumbs',
-          hint: 'poll_common_form.voting_methods.show_thumbs_hint'
-        },
-        poll: {
-          title: 'poll_common_form.voting_methods.simple_poll',
-          hint: 'poll_common_form.voting_methods.choose_hint'
-        },
-        // meeting:
-        //   title: 'poll_common_form.voting_methods.time_poll'
-        //   hint: 'poll_common_form.voting_methods.time_poll_hint'
-        dot_vote: {
-          title: 'decision_tools_card.dot_vote_title',
-          hint: 'poll_common_form.voting_methods.allocate_hint'
-        },
-        score: {
-          title: 'poll_common_form.voting_methods.score',
-          hint: 'poll_common_form.voting_methods.score_hint'
-        },
-        ranked_choice: {
-          title: 'poll_common_form.voting_methods.ranked_choice',
-          hint: 'poll_common_form.voting_methods.ranked_choice_hint'
-        }
-      },
-
-      // chartTypeItems: [
-      //   {text: 'bar', value: 'bar'},
-      //   {text: 'pie', value: 'pie'},
-      //   {text: 'grid', value: 'grid'}
-      // ],
 
       currentHideResults: this.poll.hideResults,
       hideResultsItems: [
@@ -143,7 +111,10 @@ export default {
         name: '',
         meaning: '',
         prompt: '',
-        icon: null
+        icon: null,
+        testOperator: null,
+        testPercent: null,
+        testAgainst: null
       };
 
       EventBus.$emit('openModal', {
@@ -164,7 +135,7 @@ export default {
     },
 
     editOption(option) {
-      const clone = pick(option, 'name', 'icon', 'meaning', 'prompt');
+      const clone = pick(option, 'name', 'icon', 'meaning', 'prompt', 'testOperator', 'testPercent', 'testAgainst');
 
       EventBus.$emit('openModal', {
         component: 'PollOptionForm',
@@ -185,7 +156,7 @@ export default {
       const actionName = this.poll.isNew() ? 'created' : 'updated';
       this.poll.setErrors({});
       this.setPollOptionPriority();
-      this.poll.pollOptionsAttributes = this.pollOptions;
+      this.poll.pollOptionsAttributes = this.pollOptions.map((o) => mapKeys(o, (_, k) => snakeCase(k)))
       this.poll.save().then(data => {
         const poll = Records.polls.find(data.polls[0].id);
         if (this.redirectOnSave) { this.$router.replace(this.urlFor(poll)); }
@@ -200,9 +171,7 @@ export default {
         if ((actionName == 'created') && poll.specifiedVotersOnly) {
           EventBus.$emit('openModal', {
             component: 'PollMembers',
-            props: {
-              poll
-            }
+            props: { poll }
           });
         }
       }).catch(err=> {
@@ -220,12 +189,6 @@ export default {
       } else {
         return this.$t('poll_proposal_form.title_placeholder');
       }
-    },
-
-    votingMethodsItems() {
-      return Object.keys(this.votingMethodsI18n).map(key => {
-        return {title: this.$t(this.votingMethodsI18n[key].title), value: key};
-      });
     },
 
     knownOptions() {
@@ -277,8 +240,8 @@ export default {
 </script>
 <template lang="pug">
 .poll-common-form
-  v-card-title.px-0.d-flex
-    h1.text-h4(tabindex="-1" v-t="{path: titlePath, args: titleArgs}")
+  v-card-title.px-0.pt-4.d-flex
+    span(tabindex="-1" v-t="{path: titlePath, args: titleArgs}")
     v-spacer
 
     v-btn(v-if="poll.id" icon variant="text" :to="urlFor(poll)" aria-hidden='true')
@@ -315,9 +278,9 @@ export default {
     :should-reset="shouldReset"
   )
 
-  v-divider.my-4
   template(v-if="hasOptions")
-    .text-subtitle-1.py-2.text-medium-emphasis( v-t="'poll_common_form.options'")
+    v-divider.my-4
+    .text-subtitle-1.py-2( v-t="'poll_common_form.options'")
     v-alert(v-if="!pollOptions.length" variant="tonal" type="info")
       span(v-t="'poll_common_form.no_options_add_some'")
     sortable-list(
@@ -342,7 +305,9 @@ export default {
             span(v-if="optionFormat == 'plain'") {{option.name}}
             span(v-if="optionFormat == 'iso8601'")
               poll-meeting-time(:name="option.name")
-          v-list-item-subtitle.poll-common-vote-form__allow-wrap {{option.meaning}}
+          v-list-item-subtitle.poll-common-vote-form__allow-wrap
+            p.font-italic.mb-1(v-t="{path: `poll_option_form.${option.testOperator}_${option.testAgainst}`, args: {percent: option.testPercent} }" v-if="option.testOperator")
+            p {{option.meaning}}
 
           template(v-slot:append)
             v-btn(
@@ -370,7 +335,7 @@ export default {
           span(v-t="'poll_common_add_option.modal.title'")
 
     template(v-if="optionFormat == 'iso8601'")
-      .text-subtitle-2.pt-2(v-t="'poll_poll_form.new_option'")
+      .text-subtitle-1.py-2(v-t="'poll_poll_form.new_option'")
       .d-flex.align-center
         date-time-picker(:min="minDate" v-model="newDateOption")
         v-btn.poll-meeting-form__option-button.ml-4(
@@ -393,7 +358,7 @@ export default {
         )
 
   template(v-if="poll.pollType == 'count'")
-    p.text-medium-emphasis(v-t="'poll_count_form.agree_target_helptext'")
+    p.text-subtitle-1.mb-2(v-t="'poll_count_form.agree_target_helptext'")
     .d-flex
       v-text-field.poll-common-form__agree-target(
         v-model="poll.agreeTarget"
@@ -403,6 +368,8 @@ export default {
       )
 
   template(v-if="poll.pollType == 'score'")
+    v-divider.my-4
+    p.mt-4.text-subtitle-1.mb-4(v-t="'poll_common_form.define_minimum_and_maxmimum_score'")
     .d-flex
       v-text-field.poll-score-form__min.mr-2(
         v-model="poll.minScore"
@@ -416,7 +383,8 @@ export default {
         :label="$t('poll_common.max_score')")
 
   template(v-if="poll.pollType == 'poll'")
-    p.text-medium-emphasis.mt-4.text-subtitle-1.mb-2(v-t="'poll_common_form.how_many_options_can_a_voter_choose'")
+    v-divider.my-4
+    p.mt-4.text-subtitle-1.mb-4(v-t="'poll_common_form.how_many_options_can_a_voter_choose'")
     .d-flex
       v-text-field.poll-common-form__minimum-stance-choices.mr-2(
         v-model="poll.minimumStanceChoices"
@@ -442,33 +410,28 @@ export default {
     validation-errors(:subject="poll", field="minimumStanceChoices")
 
   template(v-if="poll.pollType == 'dot_vote'")
+    v-divider.my-4
+    p.mt-4.text-subtitle-1.mb-4(v-t="'poll_common_form.how_many_points_does_each_voter_have_to_allocate'")
     v-text-field(:label="$t('poll_dot_vote_form.dots_per_person')" type="number", min="1", v-model="poll.dotsPerPerson")
     validation-errors(:subject="poll" field="dotsPerPerson")
 
   template(v-if="poll.config().allow_none_of_the_above")
-    v-checkbox.poll-common-checkbox-option.poll-settings-allow-none-of-the-above(
+    v-checkbox.poll-settings-allow-none-of-the-above(
+      hide-details
       v-model="poll.showNoneOfTheAbove"
       :label="$t('poll_common_settings.show_none_of_the_above')"
     )
 
-  v-divider.mb-4
+  v-divider.my-4
+  .text-subtitle-1.pb-2(v-t="'poll_common_form.deadline'")
+  .text-body-2.pb-4.text-medium-emphasis(v-t="'poll_common_form.how_much_time_to_vote'")
+  poll-common-closing-at-field.pb-4(:poll="poll")
 
-  div.text-medium-emphasis
-    .text-subtitle-1(v-t="'poll_common_form.deadline'")
-    .text-caption(v-t="'poll_common_form.how_much_time_to_vote'")
-
-  poll-common-closing-at-field(:poll="poll")
-  //- .lmo-form-label.mb-1.mt-4(v-t="'poll_common_form.reminder'")
-  //- p.text-medium-emphasis(v-t="'poll_common_form.reminder_helptext'")
-  p(v-if="poll.closingAt && closesSoon"
-    v-t="{path: 'poll_common_settings.notify_on_closing_soon.voting_closes_too_soon', args: {pollType: poll.translatedPollType()}}")
-
-  v-divider.my-8
-
+  v-divider.my-4
+  .text-subtitle-1.pb-2(v-t="'poll_common_settings.who_can_vote'")
   v-radio-group(
     v-model="poll.specifiedVotersOnly"
     :disabled="!poll.closingAt"
-    :label="$t('poll_common_settings.who_can_vote')"
   )
     v-radio(
       v-if="poll.discussionId && !poll.groupId"
@@ -482,72 +445,99 @@ export default {
       :value="true"
       :label="$t('poll_common_settings.specified_voters_only_true')")
 
-  .ml-4.mt-n4.mb-8.text-medium-emphasis.font-italic(
-    v-if="poll.specifiedVotersOnly"
-    v-t="{path: 'poll_common_settings.invite_people_next', args: {poll_type: poll.translatedPollType()}}")
+  div(style="height: 64px")
+    .text-body-2.font-italic.text-medium-emphasis.mt-n4.py-4(
+      v-if="poll.specifiedVotersOnly"
+      v-t="{path: 'poll_common_settings.invite_people_next', args: {poll_type: poll.translatedPollType()}}")
 
-  v-checkbox.mt-0(
-    v-if="!poll.id && !poll.specifiedVotersOnly"
-    :label="$t('poll_common_form.notify_everyone_when_poll_starts', {poll_type: poll.translatedPollType()})"
-    v-model="poll.notifyRecipients")
+    v-checkbox.mt-n4.pb-0(
+      v-if="!poll.id && !poll.specifiedVotersOnly"
+      :label="$t('poll_common_form.notify_everyone_when_poll_starts', {poll_type: poll.translatedPollType()})"
+      v-model="poll.notifyRecipients")
 
-  v-expansion-panels.pb-4
-    v-expansion-panel.poll-common-form__advanced-btn(:title="$t('poll_common_form.advanced_settings')")
-      v-expansion-panel-text
-        v-select(
-          :disabled="!poll.closingAt"
-          :label="$t('poll_common_settings.notify_on_closing_soon.voting_title')"
-          v-model="poll.notifyOnClosingSoon"
-          :items="closingSoonItems")
+  v-divider.my-4
+  .text-subtitle-1.pb-2(v-t="'poll_common_form.reminder_notification'")
+  .text-body-2.pb-4.text-medium-emphasis(v-t="'poll_common_form.reminder_helptext'")
+  p(v-if="poll.closingAt && closesSoon"
+    v-t="{path: 'poll_common_settings.notify_on_closing_soon.voting_closes_too_soon', args: {pollType: poll.translatedPollType()}}")
+  v-select(
+    :disabled="!poll.closingAt"
+    :label="$t('poll_common_settings.notify_on_closing_soon.voting_title')"
+    v-model="poll.notifyOnClosingSoon"
+    :items="closingSoonItems")
 
-        template(v-if="allowAnonymous")
-          //- .lmo-form-label.mb-1.mt-4(v-t="'poll_common_form.anonymous_voting'")
-          //- p.text-medium-emphasis(v-t="'poll_common_form.anonymous_voting_description'")
-          v-checkbox.poll-common-checkbox-option.poll-settings-anonymous(
-            :disabled="!poll.isNew()"
-            v-model="poll.anonymous"
-            :label="$t('poll_common_form.votes_are_anonymous')")
+  template(v-if="allowAnonymous")
+    v-divider.mb-4
+    .text-subtitle-1.pb-2(v-t="'poll_common_form.anonymous_voting'")
+    .text-body-2.pb-2.text-medium-emphasis(v-t="{path: 'poll_common_form.anonymous_voting_description', args: {poll_type: poll.translatedPollType()}}")
+    v-checkbox.poll-settings-anonymous(
+      hide-label
+      :disabled="!poll.isNew()"
+      v-model="poll.anonymous"
+      :label="$t('poll_common_form.votes_are_anonymous')")
 
-        template(v-if="poll.config().can_shuffle_options")
-          //- .lmo-form-label.mb-1.mt-4(v-t="'poll_common_settings.shuffle_options.shuffle_options'")
-          //- p.text-medium-emphasis(v-t="'poll_common_settings.shuffle_options.helptext'")
-          v-checkbox.poll-common-checkbox-option.poll-settings-shuffle-options(
-            v-model="poll.shuffleOptions"
-            :label="$t('poll_common_settings.shuffle_options.title')")
+    v-divider.mb-4
+    .text-subtitle-1.pb-2(v-t="'poll_common_card.hide_results'")
+    .text-body-2.pb-4.text-medium-emphasis(v-t="'poll_common_form.hide_results_description'")
+    v-select.poll-common-settings__hide-results(
+      :label="$t('poll_common_card.hide_results')"
+      :items="hideResultsItems"
+      v-model="poll.hideResults"
+      :disabled="!poll.isNew() && currentHideResults == 'until_closed'"
+    )
 
-        //- .lmo-form-label.mb-1.mt-4(v-t="'poll_common_form.vote_reason'")
-        //- p.text-medium-emphasis(v-t="'poll_common_form.vote_reason_description'")
-        template(v-if="!poll.config().hide_reason_required")
-          v-select(
-            :label="$t('poll_common_form.stance_reason_required_label')"
-            :items="stanceReasonRequiredItems"
-            v-model="poll.stanceReasonRequired"
-          )
+  template(v-if="poll.config().can_shuffle_options")
+    v-divider.pb-4
+    .text-subtitle-1.pb-2(v-t="'poll_common_settings.shuffle_options'")
+    .text-body-2.pb-2.text-medium-emphasis(v-t="'poll_common_settings.reduce_bias_by_showing_options_in_random_order'")
+    v-checkbox.poll-settings-shuffle-options(
+      hide-details
+      v-model="poll.shuffleOptions"
+      :label="$t('poll_common_settings.show_options_in_random_order')")
 
-        v-text-field(
-          v-if="poll.stanceReasonRequired != 'disabled' && (!poll.config().per_option_reason_prompt)"
-          v-model="poll.reasonPrompt"
-          :label="$t('poll_common_form.reason_prompt')"
-          :hint="$t('poll_option_form.prompt_hint')"
-          :placeholder="$t('poll_common.reason_placeholder')")
+  template(v-if="!poll.config().hide_reason_required")
+    v-divider.pb-4
+    .text-subtitle-1.pb-2(v-t="'poll_common_form.vote_reason'")
+    .text-body-2.pb-4.text-medium-emphasis(v-t="'poll_common_form.vote_reason_description'")
+    v-select(
+      :label="$t('poll_common_form.stance_reason_required_label')"
+      :items="stanceReasonRequiredItems"
+      v-model="poll.stanceReasonRequired"
+    )
+    //.text-body-2.font-italic.text-medium-emphasis(v-if="poll.stanceReasonRequired != 'disabled' && poll.config().per_option_reason_prompt" v-t="'poll_common_form.each_option_has_own_reason_prompt'")
 
-        template(v-if="poll.stanceReasonRequired != 'disabled'")
-          //- p.text-medium-emphasis(v-t="'poll_common_settings.short_reason_can_be_helpful'")
-          v-checkbox.poll-common-checkbox-option(
-            hide-details
-            v-model="poll.limitReasonLength"
-            :label="$t('poll_common_form.limit_reason_length')"
-          )
+    v-text-field(
+      v-if="poll.stanceReasonRequired != 'disabled' && !poll.config().per_option_reason_prompt"
+      v-model="poll.reasonPrompt"
+      :label="$t('poll_common_form.reason_prompt')"
+      :hint="$t('poll_option_form.prompt_hint')"
+      :placeholder="$t('poll_common.reason_placeholder')")
 
-        template(v-if="allowAnonymous")
-          //- .lmo-form-label.mb-1.mt-4(v-t="'poll_common_card.hide_results'")
-          //- p.text-medium-emphasis(v-t="'poll_common_form.hide_results_description'")
-          v-select.poll-common-settings__hide-results.mt-6.pt-2(
-            :label="$t('poll_common_card.hide_results')"
-            :items="hideResultsItems"
-            v-model="poll.hideResults"
-            :disabled="!poll.isNew() && currentHideResults == 'until_closed'"
-          )
+    v-checkbox(
+      v-if="poll.stanceReasonRequired != 'disabled'"
+      v-model="poll.limitReasonLength"
+      :label="$t('poll_common_form.limit_reason_length')"
+    )
+
+  template(v-if="poll.config().allow_quorum")
+    v-divider.mb-4
+    .text-subtitle-1.pb-2(v-t="'poll_common_form.quorum'")
+    .text-body-2.pb-4.text-medium-emphasis(v-t="'poll_common_form.quorum_hint'")
+    v-number-input.mb-4(
+      v-model="poll.quorumPct"
+      :label="$t('poll_common_form.participation_quorum')"
+      :placeholder="$t('poll_common_form.quorum_placeholder')"
+      :min="0"
+      :max="100"
+      autocomplete="off"
+      control-variant="hidden"
+    )
+      template(v-slot:append-inner)
+        span.mr-4 %
+    .text-body-2.mt-n4.pb-4.font-italic.text-medium-emphasis(
+      v-if="poll.quorumPct && poll.config().allow_vote_share_requirement"
+      v-t="'poll_common_form.quorum_tip_vote_share_requirement'"
+    )
 
   common-notify-fields(v-if="poll.id" :model="poll" includeActor)
 

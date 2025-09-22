@@ -9,6 +9,8 @@
 <% t('common.option') %>
 <% when 'score_percent' %>
 <% t('poll_ranked_choice_form.pct_of_points') %>
+<% when 'votes_cast_percent' %>
+<% t('poll_ranked_choice_form.pct_of_votes_cast') %>
 <% when 'voter_percent' %>
 <% t('poll_ranked_choice_form.pct_of_voters') %>
 <% when 'rank' %>
@@ -19,6 +21,8 @@
 <% t('poll_ranked_choice_form.mean') %>
 <% when 'voter_count' %>
 <% t('membership_card.voters') %>
+<% when 'votes' %>
+<% t('poll_common.votes') %>
 <% when 'voters' then nil %>
 <% end %>
 <% end.compact %>
@@ -40,10 +44,10 @@
     <% end %>
   <% when 'rank' then {value: option[:rank], alignment: :right} %>
   <% when 'score' then {value: option[:score], alignment: :right} %>
-  <% when 'voter_count' then {value: option[:voter_count], alignment: :right} %>
+  <% when 'voter_count', 'votes' then {value: option[:voter_count], alignment: :right} %>
   <% when 'average' then {value: option[:average].round(1), alignment: :right} %>
   <% when 'voter_percent' then {value: option[:voter_percent].round, alignement: :right} %>
-  <% when 'score_percent' then {value: option[:score_percent].round(1), alignment: :right} %>
+  <% when 'score_percent', 'votes_cast_percent' then {value: option[:score_percent].round, alignment: :right} %>
   <% end %>
 <% end.compact %>
 <% end %>

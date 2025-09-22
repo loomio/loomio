@@ -19,6 +19,7 @@ class PollTemplate < ApplicationRecord
   validates :process_name, presence: true
   validates :process_subtitle, presence: true
   validates :default_duration_in_days, presence: true
+  normalizes :quorum_pct, with: ->(v) { v.nil? ? nil : [ [ v, 0 ].max, 100 ].min }
 
   has_paper_trail only: [
     :poll_type,

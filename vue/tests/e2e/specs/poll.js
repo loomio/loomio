@@ -164,7 +164,7 @@ module.exports = {
     page.click('.poll-common-form__add-option-btn')
     page.fillIn('.poll-option-form__name input', 'Another option')
     page.click('.poll-option-form__done-btn')
-    
+
     page.click('.poll-common-form__submit')
 
     // page.expectElement('.poll-members-form__submit')
@@ -233,7 +233,6 @@ module.exports = {
     page.click('.decision-tools-card__poll-type--proposal')
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
     page.fillIn('.poll-common-form-fields__details .lmo-textarea div[contenteditable=true]', 'Some details')
-    page.click('.poll-common-form__advanced-btn')
     page.click('.poll-settings-anonymous input')
 
     page.click('.poll-common-form__submit')
@@ -257,7 +256,6 @@ module.exports = {
     page.fillIn('.poll-common-form-fields__details .lmo-textarea div[contenteditable=true]', 'Some details')
     // page.click('.poll-settings-hide-results-until-closed')
 
-    page.click('.poll-common-form__advanced-btn')
     page.click('.poll-common-settings__hide-results .v-field')
     page.click('.v-select__content .v-list .v-list-item:nth-child(4)')
 

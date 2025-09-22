@@ -4,18 +4,21 @@ import Session        from '@/shared/services/session';
 import Records        from '@/shared/services/records';
 import EventBus       from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
-import LmoUrlService  from '@/shared/services/lmo_url_service';
 import WatchRecords   from '@/mixins/watch_records';
+import { marked }    from 'marked';
 
 export default
 {
   mixins: [WatchRecords],
   props: {
-    poll: Object
+    poll: Object,
+    editStanceAction: Object
   },
 
   data() {
-    return {stance: null};
+    return {
+      stance: null
+    };
   },
 
   created() {
@@ -25,8 +28,7 @@ export default
         props: {
           outcome: Records.outcomes.build({pollId: this.poll.id})
         }
-      }
-      );
+      });
     }
 
     if (parseInt(this.$route.query.change_vote) === this.poll.id) {
@@ -47,7 +49,7 @@ export default
 
     this.watchRecords({
       collections: ["stances"],
-      query: records => {
+      query: () => {
         if (this.stance && !this.stance.castAt && this.poll.myStance() && this.poll.myStance().castAt) {
           this.stance = this.lastStanceOrNew().clone();
         }
@@ -56,11 +58,29 @@ export default
           this.stance = this.lastStanceOrNew().clone();
         }
 
+        if (this.stance && this.stance.castAt && this.poll.myStance() && this.poll.myStance().castAt && this.stance.updatedAt < this.poll.myStance().updatedAt) {
+          this.stance = this.lastStanceOrNew().clone();
+        }
+
         if (!this.stance && AbilityService.canParticipateInPoll(this.poll)) {
           this.stance = this.lastStanceOrNew().clone();
         }
       }
     });
+  },
+
+  computed: {
+    strippedReason() {
+      if (!this.stance || this.stance.reason.length === 0) { return null };
+      let html = '';
+      if (this.stance.reasonFormat == 'md') {
+        html = marked(this.stance.reason);
+      } else {
+        html = this.stance.reason
+      }
+      let doc = new DOMParser().parseFromString(html, 'text/html');
+      return doc.body.textContent || "";
+    }
   },
 
   methods: {
@@ -90,17 +110,29 @@ export default
   )
     span(v-t="'poll_common_action_panel.anonymous'")
 
-  v-overlay.rounded.elevation-1(absolute v-if="!poll.closingAt" :opacity="0.33" :z-index="2")
-    v-alert.poll-common-action-panel__results-hidden-until-vote.my-2.elevation-5(
-       density="compact" type="info"
-    )
-      span(v-t="{path: 'poll_common_action_panel.draft_mode', args: {poll_type: poll.translatedPollType()}}")
+  .poll-common-vote-form(v-if="stance && !stance.castAt")
+    h3.text-h6.py-3.text-high-emphasis(v-t="'poll_common.have_your_say'")
+    poll-common-directive(:stance='stance' name='vote-form')
 
-  template(v-else)
-    .poll-common-vote-form(v-if='stance && !stance.castAt')
-      h3.text-h6.py-3.text-high-emphasis(v-t="'poll_common.have_your_say'")
-
-  poll-common-directive(:class="{'pa-2': !poll.closingAt}" v-if="stance && !stance.castAt", :stance='stance' name='vote-form')
+  template(v-if="stance && stance.castAt && poll.pollType != 'meeting'")
+    template(v-if="poll.singleChoice()")
+      v-alert.poll-common-current-vote(variant="tonal" color="primary" border :title="$t('poll_common.you_voted')")
+        p.mt-2
+          poll-common-stance-choice(
+            :size="28"
+            :poll="poll"
+            :stance-choice="stance.stanceChoice()"
+            verbose)
+        .d-flex.align-center
+          span.text-truncate.text-medium-emphasis {{strippedReason}}
+          v-spacer
+          action-button.float-right(:action="editStanceAction" variant="tonal")
+    template(v-else)
+      v-alert.poll-common-current-vote(variant="tonal" color="primary" border :title="$t('poll_common.you_voted')")
+        poll-common-stance-choices(:stance='stance')
+        .d-flex
+          v-spacer
+          action-button.float-right(:action="editStanceAction" variant="tonal")
 
   .poll-common-unable-to-vote(v-if='!stance')
     v-alert.my-4(

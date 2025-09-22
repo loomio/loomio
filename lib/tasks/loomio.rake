@@ -26,6 +26,19 @@ namespace :loomio do
     paths
   end
 
+  def delete_keys(hash, keys)
+    paths = []
+    hash.keys.each do |key|
+      if hash[key].is_a? Hash
+        delete_keys(hash[key], keys)
+      else
+        keys.each do |k|
+          hash.delete(k) if hash.key?(k)
+        end
+      end
+    end
+  end
+
   task generate_test_error: :environment do
     raise "this is a generated test error"
   end
@@ -64,11 +77,29 @@ namespace :loomio do
 
   task delete_translations: :environment do
     # I edit this each time I want to use it.. rake task arguments are terrible
-    %w[client].each do |source_name|
+    unwanted = %w[
+      for_the_proposal_to_pass
+      short_reason_can_be_helpful
+      shuffle_options
+      review_due_in_days_hint
+      statement_template_hint
+      statement_template_placeholder
+      how_much_time_to_vote
+      default_duration_in_days_hint
+      anonymous_voting_description
+      vote_reason_description
+      hide_results_description
+      process_helptext
+      reminder_helptext
+      pct_of_points
+      pct_of_voters
+    ]
+
+    %w[client server].each do |source_name|
       AppConfig.locales['supported'].each do |locale|
+        next if locale == 'en'
         foreign = YAML.load_file("config/locales/#{source_name}.#{locale}.yml")[locale]
-        key_to_delete = "poll_templates"
-        foreign.delete(key_to_delete) if foreign.has_key? key_to_delete
+        delete_keys(foreign, unwanted)
         File.write("config/locales/#{source_name}.#{locale}.yml", {locale => foreign}.to_yaml(line_width: 2000))
       end
     end

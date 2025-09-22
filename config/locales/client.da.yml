@@ -1751,6 +1751,21 @@ da:
     thumb_down: Tommelfinger ned
     thumb_sideways: Tommelfinger sidelæns
     hand_up: Hånden op
+    of: af
+    at_least: Mindst
+    no_more_than: Ikke mere end
+    votes_cast: Afgivne stemmer
+    eligible_voters: Berettigede vælgere
+    gte_score_percent: Kræver mindst %{percent}% af de afgivne stemmer
+    gte_voter_percent: Kræver mindst %{percent}% af de berettigede vælgere
+    lte_score_percent: Må ikke overstige %{percent}% af de afgivne stemmer
+    lte_voter_percent: Må ikke overstige %{percent}% af de stemmeberettigede
+    name_gte_score_percent: "%{name} skal have mindst %{percent}% af de afgivne stemmer"
+    name_gte_voter_percent: "%{name} har brug for mindst %{percent}% af de stemmeberettigede"
+    name_lte_score_percent: "%{name} må ikke overstige %{percent}% af de afgivne stemmer"
+    name_lte_voter_percent: "%{name} må ikke overstige %{percent}% af de stemmeberettigede"
+    vote_share_requirement: Krav om stemmeandel
+    for_the_proposal_to_pass: For at forslaget kan vedtages, skal dette alternativ modtage…
   poll_common:
     superseded: Afløst
     outdated: Forældet
@@ -1841,6 +1856,7 @@ da:
     no_voting: Kun til diskussion, afstemning deaktiveret
     post_outcome: Resultat efter
     view_all_votes: Se alle stemmer
+    you_voted: Du stemte
   poll_common_attachment_form:
     label: Vedhæftede filer
   poll_common_add_option:
@@ -1941,6 +1957,8 @@ da:
     unable_to_vote: Du er ikke blevet inviteret til at stemme i denne %{poll_type}
     draft_mode: Afstemning deaktiveret. Dette er ikke åbent for afstemning endnu.
     voting_disabled_poll_is_template: Afstemning deaktiveret. Dette er en skabelon.
+    for_this_proposal_to_pass: 'For at dette forslag kan vedtages:'
+    for_this_poll_type_to_be_valid: 'For at denne %{poll_type} skal være gyldig:'
   poll_common_collapsed:
     by_who: af %{name}
   poll_common_calendar_invite:
@@ -1955,48 +1973,6 @@ da:
     event_description_placeholder: Hvad er dagsordenen for dette møde?
     location: Beliggenhed
     location_placeholder: Hvor finder dette møde sted?
-  poll_common_settings:
-    who_can_vote: Hvem kan stemme?
-    short_reason_can_be_helpful: At holde stemmeårsagerne korte gør dem lettere at forstå. En samling af kortfattede grunde er en stor ressource til at træffe en beslutning.
-    specified_voters_only_true: Kun inviterede
-    specified_voters_only_false_group: Enhver i gruppen
-    specified_voters_only_false_discussion: Enhver i tråden
-    invite_people_next: Du kan vælge, hvem der er inviteret til at stemme, efter du har startet %{poll_type}
-    shuffle_options:
-      shuffle_options: Bland muligheder
-      title: Vis muligheder i tilfældig rækkefølge
-      helptext: En mulighed, der er først på listen, kan give den en skævhed. Brug denne indstilling til at modvirke denne effekt.
-    multiple_choice:
-      title: Tillad flere valg
-      helptext_on: Når det er valgt, vil deltagerne kunne vælge flere muligheder.
-    anyone_can_participate:
-      title: Alle kan deltage
-      helptext_on: Når valgt, kan alle med linket til afstemningen deltage.
-    notify_on_closing_soon:
-      voting_closes_too_soon: Da afstemningen lukker inden for 24 timer, vil der ikke blive sendt nogen påmindelser om snart lukketid.
-      closes_too_soon: Fordi denne %{pollType} lukker inden for 24 timer, vil der ikke blive sendt nogen påmindelser om lukke snart.
-      title: 24 timer før %{pollType} lukker, send en påmindelse til
-      voting_title: 24 timer før afstemningen lukker, send en påmindelse til
-      nobody: Ingen
-      author: Forfatter (mig)
-      undecided_voters: Ubeslutsomme vælgere
-      voters: Alle vælgere
-    notify_on_participate:
-      title: Send en notifikation til mig når folk deltager
-      helptext_on: Når du er valgt, får du besked, hver gang nogen deltager.
-    anonymous:
-      title: Anonyme vælgere
-      helptext_on: Når det er valgt, vises deltageroplysninger ikke med hvert svar.
-    voter_can_add_options:
-      title: Vælgerne kan tilføje alternative muligheder
-    can_respond_maybe:
-      title: Vælgerne kan svare "hvis det er nødvendigt"
-    allow_long_reason:
-      title: Tillad, at stemme "grund" er længere end 500 tegn
-    hide_results_until_closed:
-      title: Skjul resultater indtil lukket
-      helptext_on: Vis ikke, hvordan folk har stemt, før afstemningen er lukket
-    show_none_of_the_above: Medtag muligheden "Ingen af ovenstående".
   poll_common_close_form:
     title: Vil du lukke %{poll_type} nu?
     helptext: Er du sikker på, at du vil lukke denne %{poll_type} tidligt og dele et resultat?
@@ -2055,7 +2031,6 @@ da:
     enter_an_outcome: Indtast et resultat
   poll_common_outcome_form:
     review_due_in_days: Gennemgå beslutningen efter hvor mange dage?
-    review_due_in_days_hint: En periode (i dage) til at vente, før beslutningen tages op til revision. (valgfri)
     review_date: Anmeldelsesdato
     review_date_hint: Angiv en dato for at gennemgå beslutningen (valgfrit)
     who_to_notify: Hvem vil du give besked om dette resultat? (valgfri)
@@ -2065,109 +2040,17 @@ da:
     outcome_created: Resultat oprettet
     outcome_updated: Resultat gemt
     statement_placeholder: Give et kort resume af kommentarerne og fortæl hvad der er det næste skridt.
-    statement_template_placeholder: Giv en skabelon til at skrive et resultat af beslutningen. (valgfri)
     you_will_be_notified: Du får besked på anmeldelsesdatoen.
     submit: Del resultat
+    review_due_in_days_hint: Antal dage, der skal ventes, før afgørelsen gennemgås (valgfrit).
+    statement_template_hint: Angiv en skabelon til at skrive et resultat af beslutningen. (valgfrit)
+    statement_template_placeholder: Tak for din deltagelse! Der er opnået et quorum, og vi har støtte til at fortsætte.
   poll_common_outcome_panel:
     authored_by: Af %{name}
   poll_common_delete_modal:
     question: Er du sikker på, at du vil slette dette?
     title: Slet %{pollType}
     success: Slettet
-  poll_common_form:
-    notify_everyone_when_poll_starts: Giv alle besked, når %{poll_type} starter
-    option_has_votes_confirm_delete: Nogle personer har stemt for denne mulighed, er du sikker på, at du vil slette den?
-    example_title: Eksempel titel
-    example_title_hint: Giv et eksempel på en god forslagstitel
-    example_details_placeholder: Giv et udgangspunkt for et forslag eller en afstemning. Spørgsmål kan være nyttige tilskyndelser til at få folk til at skrive. Medtag regler eller påmindelser, som deltagerne skal kende.
-    confirm_delete: Er du sikker på, at du vil slette denne afstemningsskabelon? Dette kan ikke fortrydes.
-    show_advanced_settings: Vis avancerede indstillinger
-    hide_advanced_settings: Skjul avancerede indstillinger
-    choose_at_least: Vælg i det mindste
-    choose_at_most: Vælg højst
-    please_review_the_form: Gennemgå venligst formularen
-    option_added_please_add_details: Mulighed tilføjet! Tilføj venligst nogle detaljer, så folk ved, hvad det betyder.
-    default_duration_in_days: Standardvarighed i dage
-    default_duration_in_days_hint: Hvor mange dage skal der gives folk til at stemme?
-    how_many_options_can_a_voter_choose: Hvor mange af disse muligheder kan en vælger vælge?
-    minimum_choices: Minimum valg
-    maximum_choices: Maksimal valg
-    content: Indhold
-    reminder: Påmindelse
-    your_in_zone: 'Aktuel tidszone: %{zone}'
-    show_other_zones: Vis andre tidszoner
-    hide_other_zones: Skjul andre tidszoner
-    this_is_a_template_for_new_polls: Dette er en skabelon til nye afstemninger
-    voting_method: Afstemningsmetode
-    voting_methods:
-      question: Spørgsmålsrunde
-      question_hint: Inviter spørgsmål og kommentarer til dit forslag
-      show_thumbs: Vis tommelfinger
-      show_thumbs_hint: Vælgerne vælger tommelfinger op, ned, sidelæns eller hånd op
-      choose: Vælge
-      simple_poll: Simpel afstemning
-      choose_hint: Vælgerne vælger den bedste mulighed (eller muligheder)
-      score: Score
-      score_hint: Vælgerne tildeler en score til hver mulighed
-      allocate: Tildele
-      allocate_hint: Vælgerne fordeler et budget på point mellem mulighederne
-      ranked_choice: Rangeret valg
-      ranked_choice_hint: Vælgerne arrangerer valgmuligheder i rækkefølge fra mest til mindst foretrukne
-      time_poll: Find et tidspunkt
-      time_poll_hint: Vælgerne angiver, hvornår de kan mødes
-    process: Behandle
-    process_name: Skabelontitel
-    process_name_hint: Hvad kalder du denne skabelon? Fx Rollerådgivning, Temperaturtjek, Referatgodkendelse
-    process_subtitle: Skabelon undertekst
-    process_subtitle_hint: En enkelt-linje beskrivelse af, hvornår eller hvorfor man skal bruge denne skabelon
-    process_introduction: Skabelon hjælp
-    process_introduction_hint: Et par afsnit, der forklarer, hvordan man bruger skabelonen. Inkluder links til ressourcer, der kan være nyttige.
-    you_can_set_a_prompt_per_option: Rediger prompten for hver indstilling fra fanen Detaljer
-    chart_type: Diagramtype
-    title: Titel
-    title_hint: Hvad er den beslutning, du skal tage?
-    no_options_add_some: Denne afstemning har ingen muligheder, tilføj nogle nedenfor.
-    details: Beskrivelse
-    example_details: Eksempeldetaljer
-    details_placeholder: Dette er din mulighed for at forklare, hvad folk stemmer om
-    options: Indstillinger
-    options_placeholder: Liste over de tilgængelige muligheder
-    no_options: Du har ikke tilføjet nogen muligheder endnu.
-    closing: Lukker
-    closed: Lukket
-    start: Start
-    start_poll: Opret meningsmåling
-    stance_reason_required_label: Angiv en begrundelse, når du stemmer...
-    stance_reason_required: Påkrævet
-    stance_reason_optional: Valgfri
-    stance_reason_disabled: handicappet
-    stance_reason_is_required: Angiv en begrundelse med din stemme
-    limit_reason_length: Begræns årsagen til maksimalt 500 tegn
-    save_poll: Gem afstemning
-    start_poll_type: Start %{poll_type}
-    share_poll_type: Del %{poll_type}
-    who_may_vote: Hvem kan stemme i denne %{poll_type}?
-    update: Opdater
-    add_voters: Tilføj vælgere
-    notify_invitees: Send meddelelser
-    no_notifications_warning: Vælgerne får ikke besked. Dette er nyttigt, hvis du kører mange afstemninger og planlægger at give alle besked senere.
-    count_voters_added: "%{count} vælgere tilføjet"
-    poll_type_created: "%{poll_type} oprettet"
-    poll_type_started: "%{poll_type} startede"
-    poll_type_updated: "%{poll_type} opdateret"
-    reason_prompt: Årsagsprompt
-    anonymous_voting: Anonym afstemning
-    anonymous_voting_description: Hvis det er aktiveret, vil vælgernes identitet ikke blive knyttet til deres stemmer. Dette kan ikke fortrydes.
-    votes_are_anonymous: Stemmerne er anonyme
-    vote_reason: Afstemningsårsag
-    vote_reason_description: Det kan være nyttigt at forstå, hvorfor folk stemte, som de gjorde. Med denne indstilling kan du bede folk om at dele deres tanker, når de stemmer.
-    hide_results_description: Hvis du vil have folk til at stemme uden at vide, hvordan andre har stemt, kan du skjule resultaterne af afstemningen.
-    process_helptext: Navngiv og beskriv den proces, der bliver brugt til at køre denne afstemning.
-    reminder_helptext: Send en 'Lukker snart'-meddelelse, før afstemningen lukker. Dette kan være en mulighed for folk til at se, hvordan andre har stemt og genoverveje deres egen stemme, eller blot en måde at øge deltagelsen i afstemningen på.
-    deadline: Deadline
-    how_much_time_to_vote: Hvor meget tid vil du give folk til at stemme?
-    advanced_settings: Avancerede indstillinger
-    none_of_the_above: Ingen af ovenstående
   poll_proposal_form:
     start_header: Opret forslag
     edit_header: Rediger forslag
@@ -2226,9 +2109,10 @@ da:
     points: Points
     average: Gennemsnit
     mean: Betyde
-    pct_of_points: "% af point"
-    pct_of_voters: "% af vælgerne"
     percent: Procent
+    pct_of_points: "% af point"
+    pct_of_votes_cast: "% af afgivne stemmer"
+    pct_of_voters: "% af de stemmeberettigede"
   poll_meeting_time_field:
     add_time_slot: Tilføj tidsrum
     new_time_slot: Nyt tidsrum
@@ -2267,6 +2151,11 @@ da:
   poll_common_percent_voted:
     sentence: "%{numerator} af %{denominator} personer har deltaget (%{percent}%)"
     target_progress: "%{percent} % af målet nået. (%{num} / %{target})"
+    pct_of_eligible_voters_must_participate: "%{pct}% af de stemmeberettigede skal deltage"
+    pct_participation: "%{num} af %{total} afgivne stemmer (%{pct}% deltagelse)"
+    vote_short_of_quorum: 1 stemme mere er nødvendig for at opnå et quorum på %{pct}%
+    votes_short_of_quorum: "%{num} flere stemmer kræves for at opnå et quorum på %{pct}%"
+    quorum_reached: Quorum på %{pct}% er nået
   poll_meeting_chart_panel:
     total: Total
   poll_remove_vote:
@@ -2551,3 +2440,147 @@ da:
         submit: Se forslag
         cancel: Gør dette senere
     get_started_here: Kom i gang her
+  poll_common_settings:
+    who_can_vote: Hvem kan stemme?
+    specified_voters_only_true: Kun inviterede personer
+    specified_voters_only_false_group: Enhver i gruppen
+    specified_voters_only_false_discussion: Enhver i tråden
+    invite_people_next: Du kan vælge, hvem der er inviteret til at stemme, efter du har startet %{poll_type}
+    show_none_of_the_above: Medtag en "Ingen af ovenstående"-mulighed
+    show_options_in_random_order: Vis muligheder i tilfældig rækkefølge
+    reduce_bias_by_showing_options_in_random_order: Reducer bias ved at vise muligheder i tilfældig rækkefølge.
+    multiple_choice:
+      title: Flere valgmuligheder
+      helptext_on: Når deltagerne er valgt, vil de kunne vælge flere muligheder.
+    anyone_can_participate:
+      title: Alle med link kan deltage
+      helptext_on: Når de er valgt, kan alle med linket til afstemningen deltage.
+    notify_on_closing_soon:
+      voting_closes_too_soon: Da afstemningen lukker inden for 24 timer, sendes der ikke påmindelser om, at afstemningen lukker snart.
+      closes_too_soon: Da denne %{pollType} lukker inden for 24 timer, sendes der ingen påmindelser om snarlig lukning.
+      title: 24 timer før %{pollType} lukker, send en påmindelse til
+      voting_title: 24 timer før afstemningen slutter, send en påmindelse til
+      nobody: Ingen
+      author: Forfatter (mig)
+      undecided_voters: Uafklarede vælgere
+      voters: Alle vælgere
+    notify_on_participate:
+      title: Giv mig besked, når folk deltager
+      helptext_on: Når du er valgt, får du besked, når nogen deltager.
+    anonymous:
+      title: Anonyme vælgere
+      helptext_on: Når dette er valgt, vises deltageroplysninger ikke sammen med hvert svar.
+    voter_can_add_options:
+      title: Vælgerne kan tilføje alternative muligheder
+    can_respond_maybe:
+      title: Vælgerne kan svare "hvis det er nødvendigt"
+    allow_long_reason:
+      title: Tillad, at 'begrundelse' for afstemning er længere end 500 tegn
+    hide_results_until_closed:
+      title: Skjul resultater indtil lukketid
+      helptext_on: Vis ikke, hvordan folk har stemt, før afstemningen er lukket
+    short_reason_can_be_helpful: Korte begrundelser for stemmeafgivning er lettere at forstå. En samling af præcise begrundelser er en god ressource til at træffe en beslutning.
+    shuffle_options: Blandingsmuligheder
+  poll_common_form:
+    quorum: Kvorum
+    participation_quorum: Deltagelsesquorum
+    quorum_hint: Hvor stor en procentdel af vælgerne skal deltage for at resultatet er gyldigt? Valgfrit, lad feltet stå tomt ved intet quorum.
+    quorum_placeholder: Lad feltet stå tomt, eller indtast et tal mellem 0 og 100
+    deadline: Frist
+    notify_everyone_when_poll_starts: Giv alle besked, når %{poll_type} starter
+    option_has_votes_confirm_delete: Nogle personer har stemt på denne mulighed. Er du sikker på, at du vil slette den?
+    example_title: Eksempeltitel
+    example_title_hint: Giv et eksempel på en god titel til et forslag
+    example_details_placeholder: Giv et udgangspunkt for et forslag eller en afstemning. Spørgsmål kan være nyttige til at få folk til at skrive. Medtag eventuelle regler eller påmindelser, som deltagerne skal kende.
+    confirm_delete: Er du sikker på, at du vil slette denne afstemningsskabelon? Dette kan ikke fortrydes.
+    advanced_settings: Avancerede indstillinger
+    show_advanced_settings: Vis avancerede indstillinger
+    hide_advanced_settings: Skjul avancerede indstillinger
+    choose_at_least: Vælg mindst
+    choose_at_most: Vælg højst
+    please_review_the_form: Gennemgå venligst formularen
+    option_added_please_add_details: Mulighed tilføjet! Tilføj venligst nogle detaljer, så folk ved, hvad det betyder.
+    default_duration_in_days: Standardvarighed i dage
+    how_many_options_can_a_voter_choose: Hvor mange muligheder kan en vælger vælge mellem?
+    minimum_choices: Minimumsvalg
+    maximum_choices: Maksimale valgmuligheder
+    content: Tilfreds
+    reminder: Reminder
+    reminder_notification: Påmindelsesnotifikation
+    your_in_zone: 'Nuværende tidszone: %{zone}'
+    show_other_zones: Vis andre tidszoner
+    hide_other_zones: Skjul andre tidszoner
+    this_is_a_template_for_new_polls: Dette er en skabelon til nye afstemninger
+    voting_method: Afstemningsmetode
+    none_of_the_above: Ingen af ovenstående
+    voting_methods:
+      question: Spørgsmålsrunde
+      question_hint: Indbyd til spørgsmål og kommentarer til dit forslag
+      show_thumbs: Tommelfingervisning
+      show_thumbs_hint: Vælgerne vælger tommelfingeren op, ned, til siden eller hånden op
+      choose: Vælge
+      simple_poll: Simpel afstemning
+      choose_hint: Vælgerne vælger den bedste mulighed (eller muligheder)
+      score: Score
+      score_hint: Vælgerne tildeler en score til hver mulighed
+      allocate: Alloker
+      allocate_hint: Vælgerne fordeler et budget på point mellem mulighederne
+      ranked_choice: Rangeret valg
+      ranked_choice_hint: Vælgerne arrangerer mulighederne i rækkefølge fra mest til mindst foretrukken
+      time_poll: Tidsmåling
+      time_poll_hint: Vælgerne angiver, hvornår de er til rådighed til at mødes
+    process: Behandle
+    process_name: Skabelontitel
+    process_name_hint: Hvad kalder du denne skabelon? F.eks. rollerådgivning, temperaturmåling, godkendelse af referat
+    process_subtitle: Skabelonens undertitel
+    process_subtitle_hint: En beskrivelse på én linje af, hvornår eller hvorfor denne skabelon skal bruges
+    process_introduction: Hjælp til skabeloner
+    process_introduction_hint: Et par afsnit, der forklarer, hvordan man bruger skabelonen. Inkluder links til ressourcer, der kan være nyttige.
+    you_can_set_a_prompt_per_option: Rediger prompten for hver mulighed fra fanen Detaljer
+    chart_type: Diagramtype
+    title: Titel
+    title_hint: Hvilken beslutning skal du træffe?
+    no_options_add_some: Denne afstemning har ingen muligheder, tilføj nogle nedenfor.
+    details: Detaljer
+    example_details: Eksempeldetaljer
+    details_placeholder: Dette er din mulighed for at forklare, hvad folk stemmer om
+    options: Valgmuligheder
+    options_placeholder: Angiv de tilgængelige muligheder
+    no_options: Du har ikke tilføjet nogen muligheder endnu.
+    closing: Lukker
+    closed: Lukket
+    start: Starte
+    start_poll: Start afstemning
+    stance_reason_required_label: Angiv en begrundelse, når du stemmer ...
+    stance_reason_required: Påkrævet
+    stance_reason_optional: Valgfri
+    stance_reason_disabled: Handicappet
+    stance_reason_is_required: Angiv venligst en begrundelse for din stemme
+    limit_reason_length: Begræns årsagen til maksimalt 500 tegn
+    save_poll: Gem afstemning
+    start_poll_type: Start %{poll_type}
+    share_poll_type: Del %{poll_type}
+    who_may_vote: Hvem må stemme i denne %{poll_type}?
+    update: Opdatering
+    add_voters: Tilføj vælgere
+    notify_invitees: Send notifikationer
+    no_notifications_warning: Vælgerne vil ikke blive underrettet. Dette er nyttigt, hvis du afholder mange afstemninger og planlægger at underrette alle senere.
+    count_voters_added: "%{count} vælgere tilføjet"
+    poll_type_created: "%{poll_type} oprettet"
+    poll_type_started: "%{poll_type} startet"
+    poll_type_updated: "%{poll_type} opdateret"
+    reason_prompt: Årsagsprompt
+    each_option_has_own_reason_prompt: Hver mulighed har sin egen årsagsprompt. Rediger en mulighed for at se eller ændre dens prompt.
+    anonymous_voting: Anonym afstemning
+    votes_are_anonymous: Stemmer er anonyme
+    vote_reason: Stemmeårsag
+    quorum_tip_vote_share_requirement: 'Tip: Du kan også angive det niveau af enighed, der kræves for at et forslag kan vedtages. Rediger en indstilling for at definere kravet om stemmeandel.'
+    how_much_time_to_vote: Hvor meget tid vil I give folk til at stemme?
+    default_duration_in_days_hint: Hvor mange dage har folk til at stemme?
+    define_minimum_and_maxmimum_score: Definer minimums- og maksimumsscoren, som en vælger kan give en mulighed
+    how_many_points_does_each_voter_have_to_allocate: Hvor mange point skal hver vælger tildele?
+    anonymous_voting_description: Vis stemmer og begrundelser, men ikke hvem der afgav dem. Dette kan ikke ændres, efter %{poll_type} er startet.
+    vote_reason_description: Bed folk om at dele deres begrundelse, når de stemmer, eller om at give yderligere oplysninger.
+    hide_results_description: Hvis du vil have folk til at stemme uden at se, hvordan andre har stemt, kan du skjule resultaterne.
+    process_helptext: Navngiv og beskriv den proces, der bruges til at køre denne afstemning.
+    reminder_helptext: Send en "Afslutter snart"-besked 24 timer før deadline. Dette kan øge deltagelsen og give folk mulighed for at genoverveje deres holdning.

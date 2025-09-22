@@ -1751,6 +1751,21 @@ fi:
     thumb_down: Peukalo alas
     thumb_sideways: Peukalo sivuttain
     hand_up: Käsi ylös
+    of: jostakin
+    at_least: Vähintään
+    no_more_than: Enintään
+    votes_cast: Annetut äänet
+    eligible_voters: Äänestäjäoikeutetut
+    gte_score_percent: Tarvitsee vähintään %{percent}% annetuista äänistä
+    gte_voter_percent: Tarvitaan vähintään %{percent}% äänioikeutetuista
+    lte_score_percent: Ei saa ylittää %{percent}% annetuista äänistä
+    lte_voter_percent: Ei saa ylittää %{percent}% äänioikeutetuista
+    name_gte_score_percent: "%{name} tarvitsee vähintään %{percent}% annetuista äänistä"
+    name_gte_voter_percent: "%{name} tarvitsee vähintään %{percent}% äänioikeutetuista"
+    name_lte_score_percent: "%{name} ei saa ylittää %{percent}% annetuista äänistä"
+    name_lte_voter_percent: "%{name} ei saa ylittää %{percent}% äänioikeutetuista"
+    vote_share_requirement: Ääniosuusvaatimus
+    for_the_proposal_to_pass: Jotta ehdotus hyväksyttäisiin, tämän vaihtoehdon on saatava…
   poll_common:
     superseded: Korvattu
     outdated: Vanhentunut
@@ -1841,6 +1856,7 @@ fi:
     no_voting: Vain keskustelua varten, äänestäminen estetty
     post_outcome: Tulosten julkaisu
     view_all_votes: Näytä kaikki äänet
+    you_voted: Äänestit
   poll_common_attachment_form:
     label: Liitteet
   poll_common_add_option:
@@ -1941,6 +1957,8 @@ fi:
     unable_to_vote: Sinua ei ole kutsuttu äänestämään tässä %{poll_type}
     draft_mode: Äänestys estetty. Tämä ei ole vielä avoinna äänestettäväksi.
     voting_disabled_poll_is_template: Äänestys estetty. Tämä on malli.
+    for_this_proposal_to_pass: 'Jotta tämä ehdotus menisi läpi:'
+    for_this_poll_type_to_be_valid: 'Jotta tämä %{poll_type} olisi kelvollinen:'
   poll_common_collapsed:
     by_who: "%{name}"
   poll_common_calendar_invite:
@@ -1955,48 +1973,6 @@ fi:
     event_description_placeholder: Mikä on tämän kokouksen asialista?
     location: Sijainti
     location_placeholder: Missä tämä kokous järjestetään?
-  poll_common_settings:
-    who_can_vote: Kuka voi äänestää?
-    short_reason_can_be_helpful: Äänestyssyiden pitäminen lyhyinä tekee niistä helpompia ymmärtää. Lyhyiden syiden kokoelma on loistava resurssi päätöksentekoon.
-    specified_voters_only_true: Vain kutsutut ihmiset
-    specified_voters_only_false_group: Kuka tahansa ryhmässä
-    specified_voters_only_false_discussion: Kuka tahansa ketjussa
-    invite_people_next: Voit valita, ketkä kutsutaan äänestämään, kun olet aloittanut %{poll_type}
-    shuffle_options:
-      shuffle_options: Satunnaistoistovaihtoehdot
-      title: Näytä vaihtoehdot satunnaisessa järjestyksessä
-      helptext: Vaihtoehto, joka on luettelon ensimmäinen, voi antaa sille harhaa. Käytä tätä asetusta vastustaaksesi tätä vaikutusta.
-    multiple_choice:
-      title: Monivalinta
-      helptext_on: Kun osallistujat valitaan, he voivat valita useita vaihtoehtoja.
-    anyone_can_participate:
-      title: Kaikki linkin saaneet voivat osallistua
-      helptext_on: Valittuna kuka tahansa, jolla on linkki kyselyyn, voi osallistua.
-    notify_on_closing_soon:
-      voting_closes_too_soon: Koska äänestys sulkeutuu 24 tunnin sisällä, ei pian sulkemismuistutuksia lähetetä.
-      closes_too_soon: Koska tämä %{pollType} sulkeutuu 24 tunnin sisällä, muistutuksia sulkemisesta ei lähetetä.
-      title: 24 tuntia ennen %{pollType} sulkemista, lähetä muistutus osoitteeseen
-      voting_title: 24 tuntia ennen äänestyksen päättymistä, lähetä muistutus osoitteeseen
-      nobody: Ei kukaan
-      author: Tekijä (minä)
-      undecided_voters: Epävarmat äänestäjät
-      voters: Kaikki äänestäjät
-    notify_on_participate:
-      title: Ilmoita minulle, kun ihmiset osallistuvat
-      helptext_on: Kun valitset, saat ilmoituksen aina, kun joku osallistuu.
-    anonymous:
-      title: Anonyymit äänestäjät
-      helptext_on: Kun tämä on valittuna, osallistujatietoja ei näytetä jokaisen vastauksen yhteydessä.
-    voter_can_add_options:
-      title: Äänestäjät voivat lisätä vaihtoehtoisia vaihtoehtoja
-    can_respond_maybe:
-      title: Äänestäjät voivat vastata "tarvittaessa"
-    allow_long_reason:
-      title: Salli äänestyssyyn olla yli 500 merkkiä pitkä
-    hide_results_until_closed:
-      title: Piilota tulokset sulkemiseen asti
-      helptext_on: Älä näytä, kuinka ihmiset ovat äänestäneet, ennen kuin äänestys on suljettu
-    show_none_of_the_above: Lisää vaihtoehto "Ei mikään yllä olevista".
   poll_common_close_form:
     title: Suljetaanko %{poll_type} nyt?
     helptext: Haluatko varmasti sulkea tämän %{poll_type} aikaisin ja jakaa tuloksen?
@@ -2055,7 +2031,6 @@ fi:
     enter_an_outcome: Syötä tulos
   poll_common_outcome_form:
     review_due_in_days: Tarkista päätös kuinka monen päivän kuluttua?
-    review_due_in_days_hint: Aika (päivinä) odottaa ennen päätöksen tarkistamista. (valinnainen)
     review_date: Tarkistuksen päivämäärä
     review_date_hint: Aseta päivämäärä päätöksen tarkistamiselle (valinnainen)
     who_to_notify: Kenelle haluat ilmoittaa tästä tuloksesta? (valinnainen)
@@ -2065,109 +2040,17 @@ fi:
     outcome_created: Tulos luotu
     outcome_updated: Tulos päivitetty
     statement_placeholder: Tee yhteenveto vastauksista ja selitä, mitä tapahtuu seuraavaksi.
-    statement_template_placeholder: Anna malli päätöksen tuloksen kirjoittamista varten. (valinnainen)
     you_will_be_notified: Sinulle ilmoitetaan tarkastelupäivänä.
     submit: Jaa tulos
+    review_due_in_days_hint: Päätöksen tarkistamisen odottamispäivien lukumäärä (valinnainen).
+    statement_template_hint: Anna pohja päätöksen lopputuloksen kirjoittamista varten. (valinnainen)
+    statement_template_placeholder: Kiitos osallistumisesta! Päätösvaltainen joukko on saavutettu ja meillä on kannatusta jatkaa.
   poll_common_outcome_panel:
     authored_by: "%{name}"
   poll_common_delete_modal:
     question: Haluatko varmasti poistaa tämän?
     title: Poista %{pollType}
     success: Poistettu onnistuneesti
-  poll_common_form:
-    notify_everyone_when_poll_starts: Ilmoita kaikille, kun %{poll_type} alkaa
-    option_has_votes_confirm_delete: Jotkut ihmiset ovat äänestäneet tämän vaihtoehdon puolesta. Haluatko varmasti poistaa sen?
-    example_title: Esimerkkiotsikko
-    example_title_hint: Anna esimerkki hyvästä ehdotuksen otsikosta
-    example_details_placeholder: Anna ehdotuksen tai kyselyn lähtökohta. Kysymykset voivat olla hyödyllisiä kehotteita saada ihmiset kirjoittamaan. Sisällytä kaikki säännöt tai muistutukset, jotka osallistujien tulee tietää.
-    confirm_delete: Haluatko varmasti poistaa tämän kyselymallin? Tätä ei voi peruuttaa.
-    show_advanced_settings: näytä lisäasetukset
-    hide_advanced_settings: Piilota lisäasetukset
-    choose_at_least: Valitse ainakin
-    choose_at_most: Valitse korkeintaan
-    please_review_the_form: Tarkista lomake
-    option_added_please_add_details: Vaihtoehto lisätty! Lisää tietoja, jotta ihmiset tietävät, mitä se tarkoittaa.
-    default_duration_in_days: Oletuskesto päivinä
-    default_duration_in_days_hint: Kuinka monta päivää ihmisille pitäisi antaa äänestää?
-    how_many_options_can_a_voter_choose: Kuinka monta näistä vaihtoehdoista äänestäjä voi valita?
-    minimum_choices: Vähimmäisvalinnat
-    maximum_choices: Maksimivalinnat
-    content: Sisältö
-    reminder: Muistutus
-    your_in_zone: 'Nykyinen aikavyöhyke: %{zone}'
-    show_other_zones: Näytä muut aikavyöhykkeet
-    hide_other_zones: Piilota muut aikavyöhykkeet
-    this_is_a_template_for_new_polls: Tämä on malli uusille kyselyille
-    voting_method: Äänestysmenetelmä
-    voting_methods:
-      question: Kysymyskierros
-      question_hint: Pyydä kysymyksiä ja kommentteja ehdotuksestasi
-      show_thumbs: Peukaloiden esitys
-      show_thumbs_hint: Äänestäjät valitsevat peukalon ylös, alas, sivuttain tai käden ylös
-      choose: Valita
-      simple_poll: Yksinkertainen kysely
-      choose_hint: Äänestäjät valitsevat parhaan vaihtoehdon (tai vaihtoehdot)
-      score: Pisteet
-      score_hint: Äänestäjät antavat kullekin vaihtoehdolle pistemäärän
-      allocate: jakaa
-      allocate_hint: Äänestäjät jakavat pistebudjetin vaihtoehtojen välillä
-      ranked_choice: Sijoitettu valinta
-      ranked_choice_hint: Äänestäjät järjestävät vaihtoehdot suosituimmasta vähiten
-      time_poll: Aikakysely
-      time_poll_hint: Äänestäjät ilmoittavat milloin he ovat valmiita tapaamaan
-    process: Käsitellä asiaa
-    process_name: Mallin otsikko
-    process_name_hint: Millä nimellä kutsut tätä mallia? Esim. roolineuvonta, lämpötilan tarkistus, pöytäkirjan hyväksyntä
-    process_subtitle: Mallin alaotsikko
-    process_subtitle_hint: Yksirivinen kuvaus siitä, milloin ja miksi tätä mallia tulee käyttää
-    process_introduction: Mallin ohje
-    process_introduction_hint: Muutama kappale, jossa selitetään mallin käyttöä. Liitä mukaan linkkejä resursseihin, joista voi olla apua.
-    you_can_set_a_prompt_per_option: Muokkaa kunkin vaihtoehdon kehotetta Tiedot-välilehdeltä
-    chart_type: Kaavion tyyppi
-    title: Otsikko
-    title_hint: Mikä on päätös, joka sinun on tehtävä?
-    no_options_add_some: Tässä kyselyssä ei ole vaihtoehtoja, lisää muutama alla.
-    details: Yksityiskohdat
-    example_details: Esimerkkitiedot
-    details_placeholder: Tämä on tilaisuutesi selittää, mitä ihmiset äänestävät
-    options: Vaihtoehdot
-    options_placeholder: Listaa käytettävissä olevat vaihtoehdot
-    no_options: Et ole vielä lisännyt yhtään vaihtoehtoa.
-    closing: Sulkeminen
-    closed: Suljettu
-    start: alkaa
-    start_poll: Aloita kysely
-    stance_reason_required_label: Syyn ilmoittaminen äänestäessä on...
-    stance_reason_required: Edellytetään
-    stance_reason_optional: Valinnainen
-    stance_reason_disabled: Liikuntarajoitteinen
-    stance_reason_is_required: Ole hyvä ja perustele äänesi
-    limit_reason_length: Rajoita syy enintään 500 merkkiin
-    save_poll: Tallenna kysely
-    start_poll_type: Aloita %{poll_type}
-    share_poll_type: Jaa %{poll_type}
-    who_may_vote: Kuka voi äänestää tässä %{poll_type}:ssa?
-    update: Päivittää
-    add_voters: Lisää äänestäjiä
-    notify_invitees: Lähetä ilmoituksia
-    no_notifications_warning: Äänestäjille ei tiedoteta. Tämä on hyödyllistä, jos järjestät paljon kyselyitä ja aiot ilmoittaa siitä kaikille myöhemmin.
-    count_voters_added: "%{count} äänestäjää lisätty"
-    poll_type_created: "%{poll_type} luotu"
-    poll_type_started: "%{poll_type} alkoi"
-    poll_type_updated: "%{poll_type} päivitetty"
-    reason_prompt: Syykehote
-    anonymous_voting: Anonyymi äänestys
-    anonymous_voting_description: Jos tämä on käytössä, äänestäjien henkilöllisyyttä ei yhdistetä heidän ääniinsä. Tätä ei voi peruuttaa.
-    votes_are_anonymous: Äänet ovat anonyymejä
-    vote_reason: Äänestyksen syy
-    vote_reason_description: Voi olla hyödyllistä ymmärtää, miksi ihmiset äänestivät niin kuin äänestivät. Tällä asetuksella voit kehottaa ihmisiä jakamaan ajatuksensa äänestäessään.
-    hide_results_description: Jos haluat ihmisten äänestävän tietämättä kuinka muut ovat äänestäneet, voit piilottaa kyselyn tulokset.
-    process_helptext: Nimeä ja kuvaile prosessi, jota käytetään tämän kyselyn suorittamiseen.
-    reminder_helptext: Lähetä "Suljetaan pian" -ilmoitus ennen äänestyksen sulkeutumista. Tämä voi olla ihmisille mahdollisuus nähdä, miten muut ovat äänestäneet, ja harkita omaa ääntään, tai vain tapa lisätä osallistumista kyselyyn.
-    deadline: Määräaika
-    how_much_time_to_vote: Kuinka kauan annat ihmisille aikaa äänestää?
-    advanced_settings: Lisäasetukset
-    none_of_the_above: Ei mikään yllä olevista
   poll_proposal_form:
     start_header: Aloita ehdotus
     edit_header: Muokkaa ehdotusta
@@ -2226,9 +2109,10 @@ fi:
     points: Pisteet
     average: Keskiverto
     mean: Tarkoittaa
-    pct_of_points: "% pisteistä"
-    pct_of_voters: "% äänestäjistä"
     percent: Prosentti
+    pct_of_points: "% pisteistä"
+    pct_of_votes_cast: Annettujen äänien prosenttiosuus
+    pct_of_voters: Äänioikeutettujen prosenttiosuus
   poll_meeting_time_field:
     add_time_slot: Lisää aikaväli
     new_time_slot: Uusi aikaväli
@@ -2267,6 +2151,11 @@ fi:
   poll_common_percent_voted:
     sentence: "%{numerator}/%{denominator} henkilöä on osallistunut (%{percent}%)"
     target_progress: "%{percent} % tavoitteesta saavutettu. (%{num} / %{target})"
+    pct_of_eligible_voters_must_participate: "%{pct}% äänioikeutetuista on osallistuttava"
+    pct_participation: "%{num} annetuista äänistä (%{pct}% osallistumisprosentti)"
+    vote_short_of_quorum: Yksi ääni lisää tarvitaan %{pct}% päätösvaltaisuuteen
+    votes_short_of_quorum: "%{num} ääntä lisää tarvitaan %{pct}% päätösvaltaisuuteen"
+    quorum_reached: Päätösvaltainen jäsenmäärä on %{pct}%
   poll_meeting_chart_panel:
     total: Kaikki yhteensä
   poll_remove_vote:
@@ -2551,3 +2440,147 @@ fi:
         submit: Näytä ehdotus
         cancel: Tee tämä myöhemmin
     get_started_here: Aloita tästä
+  poll_common_settings:
+    who_can_vote: Kuka voi äänestää?
+    specified_voters_only_true: Vain kutsutut ihmiset
+    specified_voters_only_false_group: Kuka tahansa ryhmässä
+    specified_voters_only_false_discussion: Kuka tahansa ketjussa
+    invite_people_next: Voit valita äänestäjäksi kutsuttavat henkilöt, kun olet aloittanut %{poll_type} -kyselyn.
+    show_none_of_the_above: Sisällytä vaihtoehto "Ei mikään yllä olevista"
+    show_options_in_random_order: Näytä vaihtoehdot satunnaisessa järjestyksessä
+    reduce_bias_by_showing_options_in_random_order: Vähennä vinoumaa näyttämällä vaihtoehdot satunnaisessa järjestyksessä.
+    multiple_choice:
+      title: Monivalinta
+      helptext_on: Valinnan jälkeen osallistujat voivat valita useita vaihtoehtoja.
+    anyone_can_participate:
+      title: Kuka tahansa linkin kautta voi osallistua
+      helptext_on: Kun kyselyyn valitaan, kuka tahansa, jolla on linkki kyselyyn, voi osallistua.
+    notify_on_closing_soon:
+      voting_closes_too_soon: Koska äänestys päättyy 24 tunnin kuluessa, muistutuksia äänestyksen päättymisestä ei lähetetä.
+      closes_too_soon: Koska tämä %{pollType} sulkeutuu 24 tunnin sisällä, pian sulkeutumisesta ilmoituksia ei lähetetä.
+      title: Lähetä muistutus osoitteeseen 24 tuntia ennen %{pollType} sulkeutumista
+      voting_title: Lähetä muistutus 24 tuntia ennen äänestyksen päättymistä osoitteeseen
+      nobody: Kukaan
+      author: Kirjoittaja (minä)
+      undecided_voters: Päättämättömät äänestäjät
+      voters: Kaikki äänestäjät
+    notify_on_participate:
+      title: Ilmoita minulle, kun ihmiset osallistuvat
+      helptext_on: Kun sinut on valittu, saat ilmoituksen aina, kun joku osallistuu.
+    anonymous:
+      title: Anonyymit äänestäjät
+      helptext_on: Kun tämä on valittu, osallistujan tietoja ei näytetä jokaisen vastauksen yhteydessä.
+    voter_can_add_options:
+      title: Äänestäjät voivat lisätä vaihtoehtoja
+    can_respond_maybe:
+      title: Äänestäjät voivat vastata "tarvittaessa"
+    allow_long_reason:
+      title: Salli äänestyksen 'syy'-kentän pituus yli 500 merkkiä
+    hide_results_until_closed:
+      title: Piilota tulokset suljettuun asti
+      helptext_on: Älä näytä, miten ihmiset ovat äänestäneet, ennen kuin äänestys on suljettu
+    short_reason_can_be_helpful: Lyhyet äänestysperustelut ovat helpompia ymmärtää. Ytimekkäiden perustelujen kokoelma on loistava resurssi päätöksentekoon.
+    shuffle_options: Satunnaistoiston asetukset
+  poll_common_form:
+    quorum: Päätösvaltaisuus
+    participation_quorum: Osallistumispäätösvaltaisuus
+    quorum_hint: Kuinka monta prosenttia äänestäjistä on osallistuttava, jotta tulos on pätevä? Valinnainen, jätä tyhjäksi, jos päätösvaltaisuutta ei ole.
+    quorum_placeholder: Jätä tyhjäksi tai anna luku väliltä 0–100
+    deadline: Määräaika
+    notify_everyone_when_poll_starts: Ilmoita kaikille, kun %{poll_type} alkaa
+    option_has_votes_confirm_delete: Jotkut ihmiset ovat äänestäneet tämän vaihtoehdon puolesta, haluatko varmasti poistaa sen?
+    example_title: Esimerkki otsikosta
+    example_title_hint: Kerro esimerkki hyvästä ehdotuksen otsikosta
+    example_details_placeholder: Anna lähtökohta ehdotukselle tai kyselylle. Kysymykset voivat olla hyödyllisiä kannustimia kirjoittamiseen. Sisällytä kaikki säännöt tai muistutukset, jotka osallistujien on tiedettävä.
+    confirm_delete: Haluatko varmasti poistaa tämän kyselymallin? Tätä ei voi perua.
+    advanced_settings: Lisäasetukset
+    show_advanced_settings: Näytä lisäasetukset
+    hide_advanced_settings: Piilota lisäasetukset
+    choose_at_least: Valitse ainakin
+    choose_at_most: Valitse korkeintaan
+    please_review_the_form: Tarkista lomake
+    option_added_please_add_details: Vaihtoehto lisätty! Lisääthän lisätietoja, jotta ihmiset ymmärtävät, mitä se tarkoittaa.
+    default_duration_in_days: Oletuskesto päivinä
+    how_many_options_can_a_voter_choose: Kuinka monta vaihtoehtoa äänestäjä voi valita?
+    minimum_choices: Vähimmäisvalinnat
+    maximum_choices: Maksimi valinnanvaraa
+    content: Sisältö
+    reminder: Muistutus
+    reminder_notification: Muistutusilmoitus
+    your_in_zone: 'Nykyinen aikavyöhyke: %{zone}'
+    show_other_zones: Näytä muut aikavyöhykkeet
+    hide_other_zones: Piilota muut aikavyöhykkeet
+    this_is_a_template_for_new_polls: Tämä on malli uusille kyselyille
+    voting_method: Äänestystapa
+    none_of_the_above: Mikään yllä mainituista
+    voting_methods:
+      question: Kysymyskierros
+      question_hint: Pyydä kysymyksiä ja kommentteja ehdotuksestasi
+      show_thumbs: Peukaloiden näyttäminen
+      show_thumbs_hint: Äänestäjät valitsevat peukalon ylös, alas, sivuttain tai käden ylös
+      choose: Valita
+      simple_poll: Yksinkertainen kysely
+      choose_hint: Äänestäjät valitsevat parhaan vaihtoehdon (tai vaihtoehdot)
+      score: Pisteet
+      score_hint: Äänestäjät antavat pistemäärän jokaiselle vaihtoehdolle
+      allocate: Kohdista
+      allocate_hint: Äänestäjät jakavat pisteistä koostuvan budjetin vaihtoehtojen kesken
+      ranked_choice: Sijoitettu valinta
+      ranked_choice_hint: Äänestäjät järjestävät vaihtoehdot mieluisimman ja vähiten toivotun mukaiseen järjestykseen
+      time_poll: Aikakysely
+      time_poll_hint: Äänestäjät ilmoittavat, milloin he ovat käytettävissä tapaamiseen
+    process: Käsitellä
+    process_name: Mallipohjan otsikko
+    process_name_hint: Mikä tämän mallin nimi on? Esim. Rooliohjeet, Lämpötilan tarkistus, Pöytäkirjan hyväksyntä
+    process_subtitle: Mallipohjan alaotsikko
+    process_subtitle_hint: Yhden rivin kuvaus siitä, milloin tai miksi tätä mallia käytetään
+    process_introduction: Mallipohjan ohjeet
+    process_introduction_hint: Muutama kappale, jossa selitetään mallin käyttö. Sisällytä linkkejä resursseihin, joista voi olla hyötyä.
+    you_can_set_a_prompt_per_option: Muokkaa kunkin vaihtoehdon kehotetta Tiedot-välilehdellä
+    chart_type: Kaaviotyyppi
+    title: Otsikko
+    title_hint: Mikä päätös sinun on tehtävä?
+    no_options_add_some: Tässä kyselyssä ei ole vaihtoehtoja, lisää niitä alle.
+    details: Tiedot
+    example_details: Esimerkkitiedot
+    details_placeholder: Tämä on tilaisuutesi selittää, mistä ihmiset äänestävät
+    options: Asetukset
+    options_placeholder: Listaa käytettävissä olevat vaihtoehdot
+    no_options: Et ole vielä lisännyt vaihtoehtoja.
+    closing: Sulkeminen
+    closed: Suljettu
+    start: Aloita
+    start_poll: Aloita kysely
+    stance_reason_required_label: Äänestämisen syyn kertominen on...
+    stance_reason_required: Pakollinen
+    stance_reason_optional: Valinnainen
+    stance_reason_disabled: Liikuntarajoitteinen
+    stance_reason_is_required: Kerro äänellesi perustelut
+    limit_reason_length: Rajoita syy enintään 500 merkkiin
+    save_poll: Tallenna kysely
+    start_poll_type: Aloita %{poll_type}
+    share_poll_type: Jaa %{poll_type}
+    who_may_vote: Ketkä voivat äänestää tässä %{poll_type} -kyselyssä?
+    update: Päivittää
+    add_voters: Lisää äänestäjiä
+    notify_invitees: Lähetä ilmoituksia
+    no_notifications_warning: Äänestäjille ei ilmoiteta. Tästä on hyötyä, jos järjestät paljon äänestyksiä ja aiot ilmoittaa kaikille myöhemmin.
+    count_voters_added: "%{count} äänestäjää lisätty"
+    poll_type_created: "%{poll_type} luotu"
+    poll_type_started: "%{poll_type} aloitettu"
+    poll_type_updated: "%{poll_type} päivitetty"
+    reason_prompt: Syy-kehote
+    each_option_has_own_reason_prompt: Jokaisella vaihtoehdolla on oma syy-kehotteensa. Muokkaa vaihtoehtoa nähdäksesi tai muuttaaksesi sen kehotetta.
+    anonymous_voting: Anonyymi äänestys
+    votes_are_anonymous: Äänet ovat nimettömiä
+    vote_reason: Äänestyksen syy
+    quorum_tip_vote_share_requirement: 'Vinkki: Voit myös määrittää ehdotuksen hyväksymiseen vaadittavan hyväksyntätason. Muokkaa vaihtoehtoa määrittääksesi ääniosuusvaatimuksen'
+    how_much_time_to_vote: Kuinka paljon aikaa annat ihmisille äänestää?
+    default_duration_in_days_hint: Kuinka monta päivää ihmisillä on aikaa äänestää?
+    define_minimum_and_maxmimum_score: Määritä äänestäjän vaihtoehdolle antaman vähimmäis- ja enimmäispistemäärän
+    how_many_points_does_each_voter_have_to_allocate: Kuinka monta pistettä kukin äänestäjä saa antaa?
+    anonymous_voting_description: Näytä äänet ja syyt, mutta ei äänestäjiä. Tätä ei voi muuttaa %{poll_type}:n alettua.
+    vote_reason_description: Pyydä ihmisiä kertomaan äänestyspäätöksensä perustelut tai antamaan lisätietoja.
+    hide_results_description: Jos haluat ihmisten äänestävän näkemättä, miten muut ovat äänestäneet, voit piilottaa tulokset.
+    process_helptext: Nimeä ja kuvaile prosessi, jota käytetään tämän kyselyn suorittamiseen.
+    reminder_helptext: Lähetä "Hakuaika päättyy pian" -ilmoitus 24 tuntia ennen määräaikaa. Tämä voi lisätä osallistumisprosenttia ja antaa ihmisille mahdollisuuden harkita kantaansa uudelleen.

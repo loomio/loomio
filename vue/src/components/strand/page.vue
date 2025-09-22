@@ -83,7 +83,6 @@ export default {
           collections: ['events'],
           query: () => {
             this.loader.updateCollection();
-            console.log('Collection updated');
             this.$nextTick(() => this.scrollToAnchorIfNew());
           }
         });

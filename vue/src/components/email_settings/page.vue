@@ -2,9 +2,7 @@
 import Session        from '@/shared/services/session';
 import Records        from '@/shared/services/records';
 import EventBus       from '@/shared/services/event_bus';
-import AbilityService from '@/shared/services/ability_service';
 import AppConfig      from '@/shared/services/app_config';
-import LmoUrlService  from '@/shared/services/lmo_url_service';
 import { sortBy, pick, filter } from 'lodash-es';
 import UserService from '@/shared/services/user_service';
 import Flash from '@/shared/services/flash';

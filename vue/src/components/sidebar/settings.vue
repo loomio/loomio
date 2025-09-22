@@ -13,7 +13,7 @@ const unhideOnboarding = function() {
 }
 
 const setTheme = function(name) {
-  theme.global.name.value = name;
+  theme.change(name);
   Records.users.saveExperience('theme', name);
 }
 

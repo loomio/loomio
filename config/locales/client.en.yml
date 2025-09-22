@@ -1879,6 +1879,22 @@ en:
     meaning_hint: A sentence or two explaining what choosing this option means. Optional
     prompt: Reason prompt
     prompt_hint: A question to prompt voters to share their reasoning or reconsider their position. Optional
+    of: of
+    at_least: At least
+    no_more_than: No more than
+    vote_share_requirement: Vote share requirement
+    for_the_proposal_to_pass: For the proposal to pass, this option must receive…
+    for_the_poll_to_be_valid: For the %{poll_type} to be valid, this option must receive…
+    votes_cast: Votes cast
+    eligible_voters: Eligible voters
+    gte_score_percent: Needs at least %{percent}% of votes cast
+    gte_voter_percent: Needs at least %{percent}% of eligible voters
+    lte_score_percent: Must not exceed %{percent}% of votes cast
+    lte_voter_percent: Must not exceed %{percent}% of eligible voters
+    name_gte_score_percent: "%{name} needs at least %{percent}% of votes cast"
+    name_gte_voter_percent: "%{name} needs at least %{percent}% of eligible voters"
+    name_lte_score_percent: "%{name} must not exceed %{percent}% of votes cast"
+    name_lte_voter_percent: "%{name} must not exceed %{percent}% of eligible voters"
   poll_common:
     superseded: Superseded
     outdated: Outdated
@@ -1923,6 +1939,7 @@ en:
     vote_now: Vote now
     review_due: Review due
     have_your_say: Have your say
+    you_voted: You voted
     your_response: Your response
     change_your_response: Edit response
     please_vote: Please vote
@@ -2056,9 +2073,7 @@ en:
     explainer: |
       Subgroups are private places where teams within your organization can have discussions and make decisions.
       Content in subgroups is private from the rest of the organization. Examples of subgroups: Board, Hiring decisions or Project team
-    upgrade: 'To start a subgroup, you''ll need to <a class="text-decoration-underline" href="%{url}" target="_blank">upgrade your Loomio subscription.</a>
-
-      '
+    upgrade: 'To start a subgroup, you''ll need to <a class="text-decoration-underline" href="%{url}" target="_blank">upgrade your Loomio subscription.</a> '
   poll_common_action_panel:
     from_the_thread: From the thread template
     from_the_group: From the group
@@ -2074,7 +2089,8 @@ en:
     results_hidden_until_vote: Results will be shown after you vote
     unable_to_vote: You have not been invited to vote in this %{poll_type}
     draft_mode: Voting disabled. This is not open for voting yet.
-    voting_disabled_poll_is_template: Voting disabled. This is a template.
+    for_this_proposal_to_pass: "For this proposal to pass:"
+    for_this_poll_type_to_be_valid: "For this %{poll_type} to be valid:"
   poll_common_collapsed:
     by_who: by %{name}
   poll_common_calendar_invite:
@@ -2091,16 +2107,15 @@ en:
     location_placeholder: Where will this meeting take place?
   poll_common_settings:
     who_can_vote: Who can vote?
-    short_reason_can_be_helpful: Keeping vote reasons short makes them easier to understand. A collection of concise reasons is a great resource for making a decision.
+    short_reason_can_be_helpful: Short vote reasons are easier to understand. A collection of concise reasons is a great resource for making a decision.
     specified_voters_only_true: Invited people only
     specified_voters_only_false_group: Anyone in the group
     specified_voters_only_false_discussion: Anyone in the thread
     invite_people_next: You can choose who is invited to vote after you start the %{poll_type}
     show_none_of_the_above: Include a "None of the above" option
-    shuffle_options:
-      shuffle_options: Shuffle options
-      title: Show options in random order
-      helptext: An option being first on the list can give it a bias. Use this setting to counter that effect.
+    shuffle_options: Shuffle options
+    show_options_in_random_order: Show options in random order
+    reduce_bias_by_showing_options_in_random_order: Reduce bias by showing options in random order.
     multiple_choice:
       title: Multiple choice
       helptext_on: When selected, participants will be able to select multiple options.
@@ -2187,7 +2202,7 @@ en:
     poll_type: This %{poll_type} has closed. Take time to consider the results then share an outcome so people know what will happen next.
   poll_common_outcome_form:
     review_due_in_days: Review the decision after how many days?
-    review_due_in_days_hint: A period of time (in days) to wait before reviewing the decision. (optional)
+    review_due_in_days_hint: Number of days to wait before reviewing the decision (optional).
     review_date: Review date
     review_date_hint: Set a date to review the decision (optional)
     who_to_notify: Who do you want to notify about this outcome? (optional)
@@ -2197,7 +2212,8 @@ en:
     outcome_created: Outcome created
     outcome_updated: Outcome updated
     statement_placeholder: Summarise the responses and explain what will happen next.
-    statement_template_placeholder: Provide a template for writing an outcome of the decision. (optional)
+    statement_template_hint: Provide a template for writing an outcome of the decision. (optional)
+    statement_template_placeholder: Thanks for participating! Quorum was reached and we have support to proceed.
     you_will_be_notified: You will be notified on the review date.
     submit: Share outcome
   poll_common_outcome_panel:
@@ -2207,8 +2223,13 @@ en:
     title: Delete %{pollType}
     success: Successfully deleted
   poll_common_form:
+    quorum: Quorum
+    participation_quorum: Participation quorum
+    quorum_hint: What percentage of voters must participate for the result to be valid? Optional, leave blank for no quorum.
+    quorum_placeholder: Leave blank or enter a number between 0 and 100
+    quorum_tip_vote_share_requirement: 'Tip: You can also specify the level of agreement required for a proposal to pass. Edit an option to define vote share requirement'
     deadline: Deadline
-    how_much_time_to_vote: How much time will you allow for people to vote?
+    how_much_time_to_vote: How much time will you give people to vote?
     notify_everyone_when_poll_starts: Notify everyone when %{poll_type} starts
     option_has_votes_confirm_delete: Some people have voted for this option, are you sure you want to delete it?
     example_title: Example title
@@ -2223,12 +2244,15 @@ en:
     please_review_the_form: Please review the form
     option_added_please_add_details: Option added! Please add some details so people know what it means.
     default_duration_in_days: Default duration in days
-    default_duration_in_days_hint: How many days should be given for people to vote?
+    default_duration_in_days_hint: How many days will people have to vote?
     how_many_options_can_a_voter_choose: How many options may a voter choose?
+    define_minimum_and_maxmimum_score: Define the minimum and maximum scores a voter can give an option
+    how_many_points_does_each_voter_have_to_allocate: How many points does each voter have to allocate?
     minimum_choices: Minimum choices
     maximum_choices: Maximum choices
     content: Content
     reminder: Reminder
+    reminder_notification: Reminder notification
     your_in_zone: 'Current time zone: %{zone}'
     show_other_zones: Show other time zones
     hide_other_zones: Hide other time zones
@@ -2292,18 +2316,17 @@ en:
     poll_type_started: "%{poll_type} started"
     poll_type_updated: "%{poll_type} updated"
     reason_prompt: Reason prompt
+    each_option_has_own_reason_prompt: Each option has its own reason prompt. Edit an option to view or change its prompt.
     anonymous_voting: Anonymous voting
-    anonymous_voting_description: If enabled, the identity of voters will not be associated to their votes. This cannot be undone.
+    anonymous_voting_description: Show votes and reasons but not who cast them. This cannot be changed after the %{poll_type} has started.
     votes_are_anonymous: Votes are anonymous
     vote_reason: Vote reason
-    vote_reason_description: It can be helpful to understand why people voted the way they did. With this setting, you can prompt people to share their thoughts when they vote.
-    hide_results_description: If you want people to vote without knowing how others have voted, you can hide the results of the poll.
-    process_helptext: 'Name and describe the process that is being used to run this poll.
-
-      '
+    vote_reason_description: Ask people to share their rationale when they vote, or to supply further information.
+    hide_results_description: If you want people to vote without seeing how others have voted, you can hide the results.
+    process_helptext: 'Name and describe the process that is being used to run this poll.'
     reminder_helptext: |
-      Send a 'Closing soon' notification before the poll closes.
-      This can be an opportunity for people to see how others have voted and reconsider their own vote, or just a way to increase participation in the poll.
+      Send a 'Closing soon' notification 24 hours before the deadline.
+      This can increase participation and create an opportunity for people to reconsider their position.
   poll_proposal_form:
     start_header: Start proposal
     edit_header: Edit proposal
@@ -2363,7 +2386,8 @@ en:
     average: Average
     mean: Mean
     pct_of_points: "% of points"
-    pct_of_voters: "% of voters"
+    pct_of_votes_cast: "% of votes cast"
+    pct_of_voters: "% of eligible voters"
     percent: Percent
   poll_meeting_time_field:
     add_time_slot: Add time slot
@@ -2401,8 +2425,11 @@ en:
     'yes': 'Yes'
     'no': 'No'
   poll_common_percent_voted:
-    sentence: "%{numerator} of %{denominator} people have participated (%{percent}%)"
-    target_progress: "%{percent}% of target reached. (%{num} / %{target})"
+    pct_of_eligible_voters_must_participate: "%{pct}% of eligible voters must participate"
+    pct_participation: "%{num} of %{total} votes cast (%{pct}% participation)"
+    vote_short_of_quorum: "1 more vote needed to reach quorum of %{pct}%"
+    votes_short_of_quorum: "%{num} more votes needed to reach quorum of %{pct}%"
+    quorum_reached: Quorum of %{pct}% has been reached
   poll_meeting_chart_panel:
     total: Total
   poll_remove_vote:
