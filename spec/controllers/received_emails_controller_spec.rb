@@ -44,10 +44,9 @@ describe ReceivedEmailsController do
       from: "homer@#{ENV['REPLY_HOSTNAME']}"
     )
 
-    expect {
-      post :create, params: h
-    }.to raise_error(ReceivedEmailService::SentToSelfError)
+    post :create, params: h
 
+    expect(ActionMailer::Base.deliveries).to be_empty
   end
 
   it "forwards specific emails to contact" do

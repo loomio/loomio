@@ -20,16 +20,15 @@ class ReceivedEmailService
     end
   end
 
+  def self.banned_sender_hosts
+    ENV.slice('REPLY_HOSTNAME', 'CANONICAL_HOST').values.compact.map(&:downcase)
+  end
+
   def self.route(email)
     return nil if email.released # email will be cleaned up by the cron job
 
     return email.destroy unless email.route_address
     return email.destroy unless email.sender_email
-
-    if email.sender_hostname.downcase == ENV['REPLY_HOSTNAME'].downcase ||
-       email.sender_hostname.downcase == ENV['CANONICAL_HOST'].downcase
-      raise SentToSelfError.new(email)
-    end
 
     if email.is_complaint? && email.complainer_address.present?
       User.where(email: email.complainer_address).update_all("complaints_count = complaints_count + 1")
@@ -40,17 +39,16 @@ class ReceivedEmailService
     case email.route_path
     when /d=.+&u=.+&k=.+/
       # personal email-to-thread, eg. d=100&k=asdfghjkl&u=999@mail.loomio.com
-      if comment = CommentService.create(comment: Comment.new(comment_params(email)), actor: actor_from_email(email))
-        email.update_attribute(:released, true) if comment.persisted?
-      end
+      CommentService.create(comment: Comment.new(comment_params(email)), actor: actor_from_email(email))
+      email.update_attribute(:released, true)
     when /[^\s]+\+u=.+&k=.+/
       # personal email-to-group, eg. enspiral+u=99&k=adsfghjl@mail.loomio.com
       if AppConfig.app_features[:thread_from_mail]
-        if discussion = DiscussionService.create(discussion: Discussion.new(discussion_params(email)), actor: actor_from_email(email))
-          email.update_attribute(:released, true) if discussion.persisted?
-        end
+        DiscussionService.create(discussion: Discussion.new(discussion_params(email)), actor: actor_from_email(email))
+        email.update_attribute(:released, true)
       end
     else
+      return email.destroy if banned_sender_hosts.include? email.sender_hostname.downcase
       if forward_email_rule = ForwardEmailRule.find_by(handle: email.route_path)
         ForwardMailer.forward_message(
           from: "\"#{email.sender_name}\" <#{BaseMailer::NOTIFICATIONS_EMAIL_ADDRESS}>",
@@ -66,9 +64,8 @@ class ReceivedEmailService
           email.update(group_id: group.id)
 
           if actor = actor_from_email_and_group(email, group)
-            if discussion = DiscussionService.create(discussion: Discussion.new(discussion_params(email)), actor: actor)
-              email.update(released: true) if discussion.persisted?
-            end
+            DiscussionService.create(discussion: Discussion.new(discussion_params(email)), actor: actor)
+            email.update_attribute(:released, true)
           else
             Events::UnknownSender.publish!(email) unless Event.where(kind: 'unknown_sender', eventable: email).exists?
           end
