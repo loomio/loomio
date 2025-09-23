@@ -689,9 +689,9 @@ GEM
       sprockets-rails
       tilt
     securerandom (0.4.1)
-    sentry-rails (5.27.0)
+    sentry-rails (5.27.1)
       railties (>= 5.0)
-      sentry-ruby (~> 5.27.0)
+      sentry-ruby (~> 5.27.1)
     sentry-ruby (5.27.1)
       bigdecimal
       concurrent-ruby (~> 1.0, >= 1.0.2)
