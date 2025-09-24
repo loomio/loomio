@@ -351,6 +351,10 @@ class Poll < ApplicationRecord
     (quorum_pct.to_f/100 * voters_count).ceil
   end
 
+  def quorum_reached?
+    quorum_pct && quorum_count <= voters_count
+  end
+
   def quorum_votes_required
     return 0 if quorum_pct.nil?
     (((quorum_pct.to_f - cast_stances_pct.to_f)/100) * voters_count).ceil

@@ -10,7 +10,8 @@ describe Api::V1::PollsController do
   let(:non_group_discussion) { create :discussion }
   let(:user) { create :user }
   let(:another_user) { create :user }
-  let!(:poll) { create :poll, title: "POLL!", discussion: discussion, author: user }
+  let(:poll) { create :poll, title: "POLL!", discussion: discussion, author: user }
+  let(:anonymous_poll) { create :poll, title: "anonymous poll", discussion: discussion, author: user, anonymous: true }
   let(:public_poll) { create :poll, title: "public poll", discussion: public_discussion }
   let(:another_poll) { create :poll, title: "ANOTHER", discussion: another_discussion }
   let(:closed_poll) { create :poll, title: "CLOSED", author: user, closed_at: 1.day.ago }
@@ -25,6 +26,90 @@ describe Api::V1::PollsController do
   }}
 
   before { group.add_member! user }
+
+  describe 'audit' do
+    it 'access denied to signed out' do
+      get :receipts, params: { id: anonymous_poll.id }
+      expect(response.status).to eq 403
+    end
+
+    it 'access denied to signed in non member' do
+      sign_in another_user
+      get :receipts, params: { id: anonymous_poll.id }
+      expect(response.status).to eq 403
+    end
+
+    it "shows redacted audit to group member" do
+      membership = group.membership_for(user)
+      stance = Stance.create(poll: anonymous_poll, participant: user, inviter: anonymous_poll.author, latest: true, cast_at: nil)
+      sign_in user
+      get :receipts, params: { id: anonymous_poll.id }
+      expect(response.status).to eq 200
+      expect(JSON.parse(response.body)['receipts']).to eq [
+        {
+          poll_id: anonymous_poll.id,
+          voter_id: user.id,
+          voter_name: user.name,
+          voter_email_domain: user.email.split('@').last,
+          member_since: membership.accepted_at.to_date.iso8601,
+          inviter_id: stance.inviter_id,
+          inviter_name: stance.inviter.name,
+          invited_on: stance.created_at.to_date.iso8601,
+          vote_cast: nil
+        }.as_json
+      ]
+    end
+
+    it "shows unredacted audit to group admin" do
+      membership = group.add_admin! user
+      stance = Stance.create(poll: anonymous_poll, participant: user, inviter: anonymous_poll.author, latest: true, cast_at: nil)
+      PollService.close(poll: anonymous_poll, actor: user)
+      sign_in user
+      get :receipts, params: { id: anonymous_poll.id }
+      expect(response.status).to eq 200
+      expect(JSON.parse(response.body)['receipts']).to eq [
+        {
+          poll_id: anonymous_poll.id,
+          voter_id: user.id,
+          voter_name: user.name,
+          voter_email: user.email,
+          voter_email_domain: user.email.split('@').last,
+          member_since: membership.accepted_at.to_date.iso8601,
+          inviter_id: stance.inviter_id,
+          inviter_name: stance.inviter.name,
+          invited_on: stance.created_at.to_date.iso8601,
+          vote_cast: nil
+        }.as_json
+      ]
+    end
+
+    it "shows vote cast if poll closed and quorum reached " do
+      membership = group.membership_for(user)
+      anonymous_poll.update(quorum_pct: 30)
+
+      stance = Stance.new(poll: anonymous_poll, participant: user, inviter: anonymous_poll.author, latest: true, cast_at: Time.now)
+      stance.choice = anonymous_poll.poll_options.first.name
+      stance.save!
+
+      PollService.close(poll: anonymous_poll, actor: user)
+      sign_in user
+      get :receipts, params: { id: anonymous_poll.id }
+      expect(response.status).to eq 200
+      expect(JSON.parse(response.body)['receipts']).to eq [
+        {
+          poll_id: anonymous_poll.id,
+          voter_id: user.id,
+          voter_name: user.name,
+          voter_email_domain: user.email.split('@').last,
+          member_since: membership.accepted_at.to_date.iso8601,
+          inviter_id: stance.inviter_id,
+          inviter_name: stance.inviter.name,
+          invited_on: stance.created_at.to_date.iso8601,
+          vote_cast: true
+        }.as_json
+      ]
+    end
+  end
 
   describe 'show' do
     it 'shows a poll' do

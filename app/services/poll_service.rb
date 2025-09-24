@@ -288,7 +288,15 @@ class PollService
   def self.do_closing_work(poll:)
     return if poll.closed_at
 
-    poll.stances.update_all(participant_id: nil) if poll.anonymous && AppConfig.app_features[:scrub_anonymous_stances]
+    if poll.anonymous
+      StanceReceipt.where(poll_id: poll.id).delete_all
+      StanceReceipt.insert_all(generate_receipts(poll: poll))
+
+      if AppConfig.app_features[:scrub_anonymous_stances]
+        poll.stances.update_all(participant_id: nil)
+      end
+    end
+
     if poll.discussion_id && poll.hide_results == 'until_closed'
       stance_ids = poll.stances.latest.reject(&:body_is_blank?).map(&:id)
       Event.where(kind: 'stance_created', eventable_id: stance_ids, discussion_id: nil).update_all(discussion_id: poll.discussion_id)
@@ -296,6 +304,20 @@ class PollService
     end
     poll.update_attribute(:closed_at, Time.now)
     GenericWorker.perform_async('SearchService', 'reindex_by_poll_id', poll.id)
+  end
+
+  def self.generate_receipts(poll:)
+    raise "Can't generate receipts for closed poll" if poll.closed_at
+
+    poll.stances.latest.map do |stance|
+      {
+        poll_id: poll.id,
+        voter_id: stance.participant_id,
+        inviter_id: stance.inviter_id,
+        invited_at: stance.created_at,
+        vote_cast: (!poll.anonymous? || poll.quorum_reached?) ? !!stance.cast_at : nil
+      }
+    end
   end
 
   # def self.destroy(poll:, actor:)

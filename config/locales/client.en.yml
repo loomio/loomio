@@ -1846,6 +1846,17 @@ en:
     messages:
       app_update: A new version of Loomio has been released. Please save your work and reload.
       reload: Reload
+  poll_receipts_page:
+    verify_participants: Verify participants
+    see_votes_if_quorum_reached: If voting has closed and the quorum is reached, you will see who cast a vote.
+    voter_name: Voter name
+    voter_email: Voter email
+    vote_cast: Vote cast
+    member_since: Member since
+    invited_by: Invited by
+    invited_on: Invited on
+
+
   decision_tools_card:
     choose_type: Choose poll type
     title: Facilitate

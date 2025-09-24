@@ -833,6 +833,19 @@ ActiveRecord::Schema[7.2].define(version: 2025_07_29_033545) do
     t.index ["stance_id"], name: "index_stance_choices_on_stance_id"
   end
 
+  create_table "stance_receipts", force: :cascade do |t|
+    t.bigint "poll_id"
+    t.bigint "voter_id"
+    t.bigint "inviter_id"
+    t.datetime "invited_at"
+    t.boolean "vote_cast"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["inviter_id"], name: "index_stance_receipts_on_inviter_id"
+    t.index ["poll_id"], name: "index_stance_receipts_on_poll_id"
+    t.index ["voter_id"], name: "index_stance_receipts_on_voter_id"
+  end
+
   create_table "stances", id: :serial, force: :cascade do |t|
     t.integer "poll_id", null: false
     t.integer "participant_id"
@@ -1067,4 +1080,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_07_29_033545) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "stance_receipts", "polls"
+  add_foreign_key "stance_receipts", "users", column: "inviter_id"
+  add_foreign_key "stance_receipts", "users", column: "voter_id"
 end
