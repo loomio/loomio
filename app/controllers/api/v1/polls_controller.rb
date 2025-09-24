@@ -3,30 +3,29 @@ class Api::V1::PollsController < Api::V1::RestfulController
     @poll = load_and_authorize(:poll)
     is_admin = @poll.group.present? && @poll.group.admins.include?(current_user)
 
-    if @poll.closed_at
-      receipts = StanceReceipt.where(poll_id: @poll.id)
-    else
-      receipts = PollService.generate_receipts(poll: @poll).map { |h| StanceReceipt.new(h) }
+    if StanceReceipt.where(poll_id: @poll.id).none? && !@poll.anonymous
+      PollService.generate_receipts(poll: @poll)
     end
 
+    receipts = StanceReceipt.includes(:voter, :inviter).where(poll_id: @poll.id)
+
+    memberships = Membership.where(user_id: receipts.map(&:voter_id)).index_by(&:user_id)
+
     data = receipts.map do |receipt|
-      membership = receipt.voter.memberships.find_by(group_id: @poll.group_id)
-      val = {
+      {
         poll_id: @poll.id,
         voter_id: receipt.voter_id,
         voter_name: receipt.voter.name,
-        voter_email: receipt.voter.email,
-        voter_email_domain: receipt.voter.email.split('@').last,
-        member_since: membership&.accepted_at&.to_date&.iso8601,
-        inviter_id: receipt.inviter_id,
+        voter_email: is_admin ? receipt.voter.email : (receipt.voter.email || "").split('@').last,
+        member_since: memberships[receipt.voter_id]&.accepted_at&.to_date&.iso8601,
         inviter_name: receipt.inviter.name,
         invited_on: receipt.invited_at.to_date.iso8601,
         vote_cast: receipt.vote_cast
       }
-      val.delete(:voter_email) unless is_admin
-      val
     end
+
     render json: {
+      voters_count: @poll.voters_count,
       poll_title: @poll.title,
       receipts: data.shuffle
     }, root: false
