@@ -2585,3 +2585,12 @@ fi:
     hide_results_description: Jos haluat ihmisten äänestävän näkemättä, miten muut ovat äänestäneet, voit piilottaa tulokset.
     process_helptext: Nimeä ja kuvaile prosessi, jota käytetään tämän kyselyn suorittamiseen.
     reminder_helptext: Lähetä "Hakuaika päättyy pian" -ilmoitus 24 tuntia ennen määräaikaa. Tämä voi lisätä osallistumisprosenttia ja antaa ihmisille mahdollisuuden harkita kantaansa uudelleen.
+  poll_receipts_page:
+    verify_participants: Vahvista osallistujat
+    see_votes_if_quorum_reached: Jos äänestys on päättynyt ja päätösvaltainen määrä on saavutettu, näet ketkä äänestivät.
+    voter_name: Äänestäjän nimi
+    voter_email: Äänestäjän sähköpostiosoite
+    vote_cast: Äänestys
+    member_since: Jäsen vuodesta
+    invited_by: Kutsuttu
+    invited_on: Kutsuttu

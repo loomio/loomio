@@ -2622,3 +2622,12 @@ de:
     hide_results_description: Wenn Sie möchten, dass die Leute abstimmen, ohne zu sehen, wie andere abgestimmt haben, können Sie die Ergebnisse ausblenden.
     process_helptext: Benennen und beschreiben Sie den Prozess, der zur Durchführung dieser Umfrage verwendet wird.
     reminder_helptext: Senden Sie 24 Stunden vor Ablauf der Frist eine Benachrichtigung mit dem Hinweis „Schließt bald“. Dies kann die Teilnahme erhöhen und den Teilnehmern die Möglichkeit geben, ihre Position zu überdenken.
+  poll_receipts_page:
+    verify_participants: Teilnehmer überprüfen
+    see_votes_if_quorum_reached: Wenn die Abstimmung beendet ist und das Quorum erreicht ist, sehen Sie, wer seine Stimme abgegeben hat.
+    voter_name: Name des Wählers
+    voter_email: Wähler-E-Mail
+    vote_cast: Abgegebene Stimmen
+    member_since: Mitglied seit
+    invited_by: Eingeladen von
+    invited_on: Eingeladen am

@@ -2615,3 +2615,12 @@ it:
     hide_results_description: Se vuoi che le persone votino senza vedere come hanno votato gli altri, puoi nascondere i risultati.
     process_helptext: Indica e descrivi il processo utilizzato per eseguire questo sondaggio.
     reminder_helptext: Invia una notifica "Chiusura imminente" 24 ore prima della scadenza. Questo può aumentare la partecipazione e offrire alle persone l'opportunità di riconsiderare la propria posizione.
+  poll_receipts_page:
+    verify_participants: Verifica i partecipanti
+    see_votes_if_quorum_reached: Se la votazione è chiusa e il quorum è stato raggiunto, vedrai chi ha espresso il voto.
+    voter_name: Nome dell'elettore
+    voter_email: E-mail dell'elettore
+    vote_cast: Voto espresso
+    member_since: Membro dal
+    invited_by: Invitato da
+    invited_on: Invitato il

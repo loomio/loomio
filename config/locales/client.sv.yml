@@ -2585,3 +2585,12 @@ sv:
     hide_results_description: Om du vill att folk ska rösta utan att se hur andra har röstat kan du dölja resultaten.
     process_helptext: Namnge och beskriv processen som används för att köra den här omröstningen.
     reminder_helptext: Skicka ett meddelande om att ansökan avslutas snart 24 timmar före deadline. Detta kan öka deltagandet och skapa en möjlighet för personer att ompröva sin ståndpunkt.
+  poll_receipts_page:
+    verify_participants: Verifiera deltagare
+    see_votes_if_quorum_reached: Om omröstningen har avslutats och beslutsmässighet uppnåtts ser du vem som avgav en röst.
+    voter_name: Väljarens namn
+    voter_email: Väljarens e-postadress
+    vote_cast: rösta
+    member_since: Medlem sedan
+    invited_by: Inbjuden av
+    invited_on: Inbjuden den

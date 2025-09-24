@@ -2592,3 +2592,12 @@ hu:
     hide_results_description: Ha azt szeretnéd, hogy az emberek ne lássák, hogyan szavaztak mások, elrejtheted az eredményeket.
     process_helptext: Nevezd meg és írd le a szavazás lebonyolításához használt folyamatot.
     reminder_helptext: Küldj egy „Hamarosan lezárul” értesítést 24 órával a határidő előtt. Ez növelheti a részvételt, és lehetőséget adhat az embereknek, hogy átgondolják álláspontjukat.
+  poll_receipts_page:
+    verify_participants: Résztvevők ellenőrzése
+    see_votes_if_quorum_reached: Ha a szavazás lezárult és létrejött a határozatképző létszám, akkor láthatja, hogy kik szavaztak.
+    voter_name: Szavazó neve
+    voter_email: Szavazói e-mail cím
+    vote_cast: Leadott szavazatok
+    member_since: Tag óta
+    invited_by: Meghívott
+    invited_on: 'Meghívva ekkor:'

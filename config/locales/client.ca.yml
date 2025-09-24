@@ -2614,3 +2614,12 @@ ca:
     hide_results_description: Si voleu que la gent voti sense veure com han votat els altres, podeu amagar els resultats.
     process_helptext: Anomena i descriu el procés que s'utilitza per dur a terme aquesta enquesta.
     reminder_helptext: Envia una notificació de "Properament tancament" 24 hores abans de la data límit. Això pot augmentar la participació i crear una oportunitat perquè la gent reconsideri la seva posició.
+  poll_receipts_page:
+    verify_participants: Verifica els participants
+    see_votes_if_quorum_reached: Si la votació s'ha tancat i s'ha arribat al quòrum, veureu qui ha votat.
+    voter_name: Nom del votant
+    voter_email: Correu electrònic del votant
+    vote_cast: Vot emès
+    member_since: Membre des de
+    invited_by: Convidat per
+    invited_on: Convidat el

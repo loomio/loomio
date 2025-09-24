@@ -2585,3 +2585,12 @@ sl:
     hide_results_description: Če želite, da ljudje glasujejo, ne da bi videli, kako so glasovali drugi, lahko rezultate skrijete.
     process_helptext: Poimenujte in opišite postopek, ki se uporablja za izvedbo te ankete.
     reminder_helptext: 24 ur pred rokom pošljite obvestilo »Kmalu se zapira«. To lahko poveča udeležbo in ustvari priložnost, da ljudje ponovno premislijo o svojem stališču.
+  poll_receipts_page:
+    verify_participants: Preverjanje udeležencev
+    see_votes_if_quorum_reached: Če je glasovanje končano in je dosežen kvorum, boste videli, kdo je glasoval.
+    voter_name: Ime volivca
+    voter_email: E-poštni naslov volivca
+    vote_cast: Oddani glasovi
+    member_since: Član od
+    invited_by: Povabljen/a s strani
+    invited_on: Povabljen/a

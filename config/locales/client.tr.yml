@@ -2585,3 +2585,12 @@ tr:
     hide_results_description: Eğer insanların başkalarının nasıl oy kullandığını görmeden oy kullanmasını istiyorsanız sonuçları gizleyebilirsiniz.
     process_helptext: Bu anketi çalıştırmak için kullanılan işlemi adlandırın ve açıklayın.
     reminder_helptext: Son tarihten 24 saat önce "Yakında Kapanıyor" bildirimi gönderin. Bu, katılımı artırabilir ve insanların pozisyonlarını yeniden değerlendirmeleri için bir fırsat yaratabilir.
+  poll_receipts_page:
+    verify_participants: Katılımcıları doğrulayın
+    see_votes_if_quorum_reached: Oylama sona ermiş ve yeter sayı sağlanmışsa, kimin oy kullandığını göreceksiniz.
+    voter_name: Seçmen adı
+    voter_email: Seçmen e-postası
+    vote_cast: Oy kullanma
+    member_since: 'Üyelik tarihi:'
+    invited_by: Davetli
+    invited_on: Davet edildi

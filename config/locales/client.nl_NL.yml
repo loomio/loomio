@@ -2614,3 +2614,12 @@ nl_NL:
     hide_results_description: Als u wilt dat mensen stemmen zonder te zien wat anderen hebben gestemd, kunt u de resultaten verbergen.
     process_helptext: Benoem en beschrijf het proces dat wordt gebruikt om deze poll uit te voeren.
     reminder_helptext: Stuur 24 uur voor de deadline een melding 'Sluit binnenkort'. Dit kan de deelname vergroten en mensen de kans geven om hun standpunt te heroverwegen.
+  poll_receipts_page:
+    verify_participants: Deelnemers verifiëren
+    see_votes_if_quorum_reached: Als de stemming is gesloten en het quorum is bereikt, ziet u wie er gestemd heeft.
+    voter_name: Naam van de kiezer
+    voter_email: kiezers-e-mail
+    vote_cast: Uitgebrachte stem
+    member_since: Lid sinds
+    invited_by: Uitgenodigd door
+    invited_on: Uitgenodigd op

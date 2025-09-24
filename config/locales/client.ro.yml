@@ -2585,3 +2585,12 @@ ro:
     hide_results_description: Dacă vrei ca oamenii să voteze fără să vadă cum au votat alții, poți ascunde rezultatele.
     process_helptext: Numiți și descrieți procesul utilizat pentru a derula acest sondaj.
     reminder_helptext: Trimiteți o notificare „Se încheie în curând” cu 24 de ore înainte de termenul limită. Acest lucru poate crește participarea și poate crea o oportunitate pentru ca oamenii să își reconsidere poziția.
+  poll_receipts_page:
+    verify_participants: Verificați participanții
+    see_votes_if_quorum_reached: Dacă votarea s-a închis și s-a atins cvorumul, veți vedea cine a votat.
+    voter_name: Numele alegătorului
+    voter_email: Adresa de e-mail a alegătorului
+    vote_cast: Votul exprimat
+    member_since: Membru din
+    invited_by: Invitat de
+    invited_on: Invitat pe

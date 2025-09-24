@@ -2614,3 +2614,12 @@ pl:
     hide_results_description: Jeśli chcesz, aby ludzie głosowali, nie widząc, jak głosowali inni, możesz ukryć wyniki.
     process_helptext: Podaj nazwę i opisz proces, który jest używany do przeprowadzenia tej ankiety.
     reminder_helptext: Wyślij powiadomienie „Zakończenie wkrótce” 24 godziny przed upływem terminu. Może to zwiększyć frekwencję i dać ludziom szansę na ponowne rozważenie swojego stanowiska.
+  poll_receipts_page:
+    verify_participants: Zweryfikuj uczestników
+    see_votes_if_quorum_reached: Jeśli głosowanie zostało zamknięte i osiągnięto kworum, zobaczysz, kto oddał głos.
+    voter_name: Imię i nazwisko wyborcy
+    voter_email: E-mail wyborcy
+    vote_cast: Głos oddany
+    member_since: Członek od
+    invited_by: Zaproszony przez
+    invited_on: Zaproszony na
