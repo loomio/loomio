@@ -28,7 +28,7 @@ class Api::V1::PollsController < Api::V1::RestfulController
           member_since: membership&.accepted_at&.to_date&.iso8601,
           inviter_id: receipt.inviter_id,
           inviter_name: inviter.name,
-          invited_on: receipt.invited_at.to_date.iso8601,
+          invited_on: receipt.invited_at&.to_date&.iso8601,
           vote_cast: receipt.vote_cast
         }
       end.shuffle
