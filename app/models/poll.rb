@@ -158,6 +158,7 @@ class Poll < ApplicationRecord
   accepts_nested_attributes_for :poll_options, allow_destroy: true
 
   has_many :documents, as: :model, dependent: :destroy
+  has_many :stance_receipts, dependent: :destroy
 
   scope :dangling, -> { joins('left join groups g on polls.group_id = g.id').where('group_id is not null and g.id is null') }
   scope :active, -> { kept.where('polls.closed_at': nil) }

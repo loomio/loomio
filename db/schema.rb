@@ -841,9 +841,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_22_103715) do
     t.boolean "vote_cast"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["inviter_id"], name: "index_stance_receipts_on_inviter_id"
-    t.index ["poll_id"], name: "index_stance_receipts_on_poll_id"
-    t.index ["voter_id"], name: "index_stance_receipts_on_voter_id"
   end
 
   create_table "stances", id: :serial, force: :cascade do |t|
@@ -1080,7 +1077,4 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_22_103715) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "stance_receipts", "polls"
-  add_foreign_key "stance_receipts", "users", column: "inviter_id"
-  add_foreign_key "stance_receipts", "users", column: "voter_id"
 end
