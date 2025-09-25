@@ -3,31 +3,35 @@ class Api::V1::PollsController < Api::V1::RestfulController
     @poll = load_and_authorize(:poll)
     is_admin = @poll.group.present? && @poll.group.admins.include?(current_user)
 
-    if StanceReceipt.where(poll_id: @poll.id).none? && !@poll.anonymous
-      PollService.generate_receipts(poll: @poll)
+    if @poll.closed_at && StanceReceipt.where(poll_id: @poll.id).exists?
+      receipts = StanceReceipt.where(poll_id: @poll.id)
+    else
+      receipts = PollService.build_receipts(@poll).map { |h| StanceReceipt.new(h) }
     end
-
-    receipts = StanceReceipt.includes(:voter, :inviter).where(poll_id: @poll.id)
 
     memberships = Membership.where(user_id: receipts.map(&:voter_id)).index_by(&:user_id)
-
-    data = receipts.map do |receipt|
-      {
-        poll_id: @poll.id,
-        voter_id: receipt.voter_id,
-        voter_name: receipt.voter.name,
-        voter_email: is_admin ? receipt.voter.email : (receipt.voter.email || "").split('@').last,
-        member_since: memberships[receipt.voter_id]&.accepted_at&.to_date&.iso8601,
-        inviter_name: receipt.inviter.name,
-        invited_on: receipt.invited_at.to_date.iso8601,
-        vote_cast: receipt.vote_cast
-      }
-    end
+    voters = User.where(id: receipts.map(&:voter_id)).index_by(&:id)
+    inviters = User.where(id: receipts.map(&:inviter_id)).index_by(&:id)
 
     render json: {
       voters_count: @poll.voters_count,
       poll_title: @poll.title,
-      receipts: data.shuffle
+      receipts: receipts.map do |receipt|
+        voter = voters[receipt.voter_id]
+        inviter = inviters[receipt.inviter_id]
+        membership = memberships[receipt.voter_id]
+        {
+          poll_id: @poll.id,
+          voter_id: receipt.voter_id,
+          voter_name: voter.name,
+          voter_email: is_admin ? voter.email : (voter.email || "").split('@').last,
+          member_since: membership&.accepted_at&.to_date&.iso8601,
+          inviter_id: receipt.inviter_id,
+          inviter_name: inviter.name,
+          invited_on: receipt.invited_at.to_date.iso8601,
+          vote_cast: receipt.vote_cast
+        }
+      end.shuffle
     }, root: false
   end
 

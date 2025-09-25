@@ -2623,3 +2623,4 @@ nl_NL:
     member_since: Lid sinds
     invited_by: Uitgenodigd door
     invited_on: Uitgenodigd op
+    no_receipts: Deze anonieme poll is gesloten voordat de verificatiefunctie bestond. Verificatie is daarom niet mogelijk.

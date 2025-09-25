@@ -2646,3 +2646,4 @@ pt_BR:
     member_since: Membro desde
     invited_by: Convidado por
     invited_on: Convidado em
+    no_receipts: Esta enquete anônima foi encerrada antes que o recurso de verificação existisse, portanto a verificação não é possível.

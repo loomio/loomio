@@ -2601,3 +2601,4 @@ hu:
     member_since: Tag óta
     invited_by: Meghívott
     invited_on: 'Meghívva ekkor:'
+    no_receipts: Ez a névtelen szavazás még az ellenőrzési funkció megjelenése előtt bezárt, így az ellenőrzés nem lehetséges.

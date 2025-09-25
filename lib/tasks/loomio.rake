@@ -78,21 +78,7 @@ namespace :loomio do
   task delete_translations: :environment do
     # I edit this each time I want to use it.. rake task arguments are terrible
     unwanted = %w[
-      for_the_proposal_to_pass
-      short_reason_can_be_helpful
-      shuffle_options
-      review_due_in_days_hint
-      statement_template_hint
-      statement_template_placeholder
-      how_much_time_to_vote
-      default_duration_in_days_hint
-      anonymous_voting_description
-      vote_reason_description
-      hide_results_description
-      process_helptext
-      reminder_helptext
-      pct_of_points
-      pct_of_voters
+      for_the_proposal_tosee_votes_if_quorum_reached
     ]
 
     %w[client server].each do |source_name|

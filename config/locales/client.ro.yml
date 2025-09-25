@@ -2594,3 +2594,4 @@ ro:
     member_since: Membru din
     invited_by: Invitat de
     invited_on: Invitat pe
+    no_receipts: Acest sondaj anonim s-a închis înainte ca funcția de verificare să existe, deci verificarea nu este posibilă.

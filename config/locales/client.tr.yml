@@ -2594,3 +2594,4 @@ tr:
     member_since: 'Üyelik tarihi:'
     invited_by: Davetli
     invited_on: Davet edildi
+    no_receipts: Bu anonim anket doğrulama özelliği mevcut olmadan önce kapandı, bu nedenle doğrulama mümkün değil.

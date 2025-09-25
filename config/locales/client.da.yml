@@ -2594,3 +2594,4 @@ da:
     member_since: Medlem siden
     invited_by: Inviteret af
     invited_on: Inviteret den
+    no_receipts: Denne anonyme afstemning blev lukket, før verifikationsfunktionen eksisterede, så verifikation er ikke mulig.

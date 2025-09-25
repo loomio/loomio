@@ -1848,9 +1848,8 @@ en:
       reload: Reload
 
   poll_receipts_page:
-    no_receipts: This poll was created before the verification feature was enabled, so verification is not possible.
+    no_receipts: This anonymous poll closed before the verification feature existed, so verification is not possible.
     verify_participants: Verify participants
-    see_votes_if_quorum_reached: If voting has closed and the quorum is reached, you will see who cast a vote.
     voter_name: Name
     voter_email: Email
     vote_cast: Vote cast

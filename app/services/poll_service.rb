@@ -288,11 +288,10 @@ class PollService
   def self.do_closing_work(poll:)
     return if poll.closed_at
 
-    generate_receipts(poll: poll)
+    StanceReceipt.where(poll_id: poll.id).delete_all
+    StanceReceipt.insert_all build_receipts(poll)
 
-    if poll.anonymous && AppConfig.app_features[:scrub_anonymous_stances]
-      poll.stances.update_all(participant_id: nil)
-    end
+    poll.stances.update_all(participant_id: nil) if poll.anonymous
 
     if poll.discussion_id && poll.hide_results == 'until_closed'
       stance_ids = poll.stances.latest.reject(&:body_is_blank?).map(&:id)
@@ -304,22 +303,17 @@ class PollService
     GenericWorker.perform_async('SearchService', 'reindex_by_poll_id', poll.id)
   end
 
-  def self.generate_receipts(poll:)
-    raise "Can't generate receipts for closed, anonymous poll" if poll.anonymous && poll.closed_at
-    return if poll.voters_count.zero?
+  def self.build_receipts(poll)
+    return [] if poll.anonymous && poll.closed_at
 
-    StanceReceipt.transaction do
-      StanceReceipt.where(poll_id: poll.id).delete_all
-      data = poll.stances.latest.map do |stance|
-        {
-          poll_id: poll.id,
-          voter_id: stance.participant_id,
-          inviter_id: stance.inviter_id,
-          invited_at: stance.created_at,
-          vote_cast: (!poll.anonymous? || poll.quorum_reached?) ? !!stance.cast_at : nil
-        }
-      end
-      StanceReceipt.insert_all data
+    poll.stances.latest.map do |stance|
+      {
+        poll_id: poll.id,
+        voter_id: stance.participant_id,
+        inviter_id: stance.inviter_id,
+        invited_at: stance.created_at,
+        vote_cast: (!poll.anonymous? || poll.quorum_reached?) ? !!stance.cast_at : nil
+      }
     end
   end
 

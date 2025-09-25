@@ -2594,3 +2594,4 @@ sv:
     member_since: Medlem sedan
     invited_by: Inbjuden av
     invited_on: Inbjuden den
+    no_receipts: Denna anonyma omröstning avslutades innan verifieringsfunktionen fanns, så verifiering är inte möjlig.

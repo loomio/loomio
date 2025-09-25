@@ -2623,3 +2623,4 @@ pl:
     member_since: Członek od
     invited_by: Zaproszony przez
     invited_on: Zaproszony na
+    no_receipts: Ta anonimowa ankieta została zamknięta, zanim pojawiła się funkcja weryfikacji, dlatego weryfikacja nie jest możliwa.

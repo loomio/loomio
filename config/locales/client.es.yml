@@ -2632,3 +2632,4 @@ es:
     member_since: Miembro desde
     invited_by: Invitado por
     invited_on: Invitado a
+    no_receipts: Esta encuesta anónima se cerró antes de que existiera la función de verificación, por lo que la verificación no es posible.

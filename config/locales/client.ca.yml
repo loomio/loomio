@@ -2623,3 +2623,4 @@ ca:
     member_since: Membre des de
     invited_by: Convidat per
     invited_on: Convidat el
+    no_receipts: Aquesta enquesta anònima es va tancar abans que existís la funció de verificació, per la qual cosa la verificació no és possible.

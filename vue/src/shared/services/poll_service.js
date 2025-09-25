@@ -289,7 +289,7 @@ export default new class PollService {
         name: 'poll_receipts_page.verify_participants',
         menu: true,
         to() { return `/p/${poll.key}/receipts`; },
-        canPerform() { return poll.anonymous }
+        canPerform() { return true }
       },
 
 

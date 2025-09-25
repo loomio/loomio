@@ -2594,3 +2594,4 @@ fi:
     member_since: Jäsen vuodesta
     invited_by: Kutsuttu
     invited_on: Kutsuttu
+    no_receipts: Tämä anonyymi kysely sulkeutui ennen vahvistusominaisuuden käyttöönottoa, joten vahvistus ei ole mahdollista.

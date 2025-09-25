@@ -2633,3 +2633,4 @@ zh_TW:
     member_since: 會員起始日期
     invited_by: 受邀者
     invited_on: 受邀於
+    no_receipts: 此匿名投票在驗證功能出現之前就已關閉，因此無法進行驗證。
