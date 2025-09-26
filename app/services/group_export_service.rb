@@ -4,6 +4,7 @@ class GroupExportService
     all_events
     all_notifications
     all_reactions
+    all_tags
     poll_templates
     discussion_templates
     memberships
@@ -14,6 +15,7 @@ class GroupExportService
     exportable_outcomes
     exportable_stances
     exportable_stance_choices
+    poll_stance_receipts
     discussion_readers
     comments
   ]
@@ -34,13 +36,15 @@ class GroupExportService
     },
     comments: {
       comments: %w[parent_id],
-      events: %w[eventable]
+      events: %w[eventable],
+      reactions: %w[reactable]
     },
     discussions: {
       comments: %w[discussion_id],
       discussion_readers: %w[discussion_id],
       polls: %w[discussion_id],
-      events: %w[discussion_id eventable]
+      events: %w[discussion_id eventable],
+      reactions: %w[reactable]
     },
     events: {
       events: %w[parent_id],
@@ -63,21 +67,27 @@ class GroupExportService
     },
     stances: {
       stance_choices: %w[stance_id],
-      events: %w[eventable]
+      events: %w[eventable],
+      reactions: %w[reactable]
     },
     tasks: {
       tasks_users: %w[task_id],
       events: %w[eventable]
     },
     polls: {
+      stance_receipts: %w[poll_id],
       stances: %w[poll_id],
       poll_options: %w[poll_id],
       outcomes: %w[poll_id],
-      events: %w[eventable]
+      events: %w[eventable],
+      reactions: %w[reactable]
     },
     users: {
+      stance_receipts: %w[voter_id inviter_id],
       events: %w[eventable user_id],
       discussions: %w[author_id discarded_by],
+      discussion_templates: %w[author_id],
+      poll_templates: %w[author_id],
       attachments: %w[user_id],
       comments: %w[user_id discarded_by] ,
       discussion_readers: %w[user_id inviter_id],
@@ -114,6 +124,7 @@ class GroupExportService
            exportable_outcomes
            exportable_stances
            exportable_stance_choices
+           poll_stance_receipts
            all_reactions
            comments
            readers
@@ -276,7 +287,7 @@ class GroupExportService
             next unless migrate_ids[ref_table].present?
             imported_ids = migrate_ids[ref_table].values
             columns.each do |column|
-              if column == "eventable"
+              if ['eventable', 'reactable'].include? column
                 ref_table.classify.constantize.
                 where(id: imported_ids).
                 where(column+"_type" => table.classify, column+"_id" => old_id).

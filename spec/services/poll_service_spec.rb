@@ -206,44 +206,43 @@ describe PollService do
       expect(new_poll.save).to eq false
     end
 
-    it 'removes user from stance and event after close' do
-      new_poll.anonymous = true
-      PollService.create(poll: new_poll, actor: user)
-      stance
+    describe 'anonymous polls' do
+      it 'removes user from stance and event after close' do
+        new_poll.anonymous = true
+        PollService.create(poll: new_poll, actor: user)
+        stance
 
-      StanceService.create(stance: stance, actor: stance.real_participant)
-      expect(stance.real_participant).to be_present
-      expect(stance.participant_id).to_not be nil
-      expect(stance.created_event.user_id).to be nil
-      expect(stance.participant).to be_a AnonymousUser
-      expect(stance.created_event.user).to be_a AnonymousUser
-      PollService.close(poll: new_poll, actor: user)
-      expect(stance.reload.participant).to be_a AnonymousUser
-      expect(stance.created_event.reload.user).to be_a AnonymousUser
-      expect(stance.participant_id).to be nil
-      expect(stance.created_event.user_id).to be nil
+        StanceService.create(stance: stance, actor: stance.real_participant)
+        expect(stance.real_participant).to be_present
+        expect(stance.participant_id).to_not be nil
+        expect(stance.created_event.user_id).to be nil
+        expect(stance.participant).to be_a AnonymousUser
+        expect(stance.created_event.user).to be_a AnonymousUser
+        PollService.close(poll: new_poll, actor: user)
+        expect(stance.reload.participant).to be_a AnonymousUser
+        expect(stance.created_event.reload.user).to be_a AnonymousUser
+        expect(stance.participant_id).to be nil
+        expect(stance.created_event.user_id).to be nil
+      end
+
+      it 'create stance receipt before scrubbing stances' do
+        new_poll.anonymous = true
+        PollService.create(poll: new_poll, actor: group.creator)
+        stance = new_poll.stances.find_by(participant_id: user.id)
+        stance.choice = new_poll.poll_options.first.name
+        StanceService.create(stance: stance, actor: user)
+        PollService.close(poll: new_poll, actor: group.creator)
+
+        expect(StanceReceipt.count).to eq group.members.count
+        receipt = StanceReceipt.where(poll_id: new_poll.id, voter_id: user.id).first
+        expect(receipt.poll_id).to eq new_poll.id
+        expect(receipt.voter_id).to eq user.id
+        expect(receipt.inviter_id).to eq group.creator.id
+        expect(receipt.invited_at).to eq stance.reload.created_at
+      end
     end
 
-    it 'preserves anonymous user when scrub_anonymous_stances is false' do
-      ENV['FEATURES_DISABLE_SCRUB_ANONYMOUS_STANCES'] = '1'
-      new_poll.anonymous = true
-      PollService.create(poll: new_poll, actor: user)
-      stance
-
-      StanceService.create(stance: stance, actor: stance.real_participant)
-      expect(stance.real_participant).to be_present
-      expect(stance.participant_id).to_not be nil
-      expect(stance.created_event.user_id).to be nil
-      expect(stance.participant).to be_a AnonymousUser
-      expect(stance.created_event.user).to be_a AnonymousUser
-      PollService.close(poll: new_poll, actor: user)
-      expect(stance.reload.participant).to be_a AnonymousUser
-      expect(stance.created_event.reload.user).to be_a AnonymousUser
-      expect(stance.participant_id).to_not be nil
-      expect(stance.created_event.user_id).to be nil
-    end
-
-    it 'does not removes user from stance when no anonymous' do
+    it 'does not removes user from stance when not anonymous' do
       PollService.create(poll: new_poll, actor: user)
       stance
       StanceService.create(stance: stance, actor: stance.participant)

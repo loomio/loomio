@@ -288,14 +288,33 @@ class PollService
   def self.do_closing_work(poll:)
     return if poll.closed_at
 
-    poll.stances.update_all(participant_id: nil) if poll.anonymous && AppConfig.app_features[:scrub_anonymous_stances]
+    StanceReceipt.where(poll_id: poll.id).delete_all
+    StanceReceipt.insert_all build_receipts(poll)
+
+    poll.stances.update_all(participant_id: nil) if poll.anonymous
+
     if poll.discussion_id && poll.hide_results == 'until_closed'
       stance_ids = poll.stances.latest.reject(&:body_is_blank?).map(&:id)
       Event.where(kind: 'stance_created', eventable_id: stance_ids, discussion_id: nil).update_all(discussion_id: poll.discussion_id)
       EventService.repair_thread(poll.discussion_id)
     end
+
     poll.update_attribute(:closed_at, Time.now)
     GenericWorker.perform_async('SearchService', 'reindex_by_poll_id', poll.id)
+  end
+
+  def self.build_receipts(poll)
+    return [] if poll.anonymous && poll.closed_at
+
+    poll.stances.latest.map do |stance|
+      {
+        poll_id: poll.id,
+        voter_id: stance.participant_id,
+        inviter_id: stance.inviter_id,
+        invited_at: stance.created_at,
+        vote_cast: (!poll.anonymous? || poll.quorum_reached?) ? !!stance.cast_at : nil
+      }
+    end
   end
 
   # def self.destroy(poll:, actor:)

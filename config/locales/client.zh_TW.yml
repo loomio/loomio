@@ -2624,3 +2624,13 @@ zh_TW:
     hide_results_description: 如果您希望人們投票時不看到其他人的投票情況，您可以隱藏結果。
     process_helptext: 命名並描述用於運行此投票的過程。
     reminder_helptext: 在截止日期前 24 小時發送「即將結束」通知。這可以提高參與度，並為人們創造重新考慮自己立場的機會。
+  poll_receipts_page:
+    verify_participants: 驗證參與者
+    see_votes_if_quorum_reached: 如果投票已結束且達到法定人數，您將看到誰投了票。
+    voter_name: 選民姓名
+    voter_email: 選民電子郵件
+    vote_cast: 投票結果
+    member_since: 會員起始日期
+    invited_by: 受邀者
+    invited_on: 受邀於
+    no_receipts: 此匿名投票在驗證功能出現之前就已關閉，因此無法進行驗證。

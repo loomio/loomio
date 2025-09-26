@@ -1846,6 +1846,18 @@ en:
     messages:
       app_update: A new version of Loomio has been released. Please save your work and reload.
       reload: Reload
+
+  poll_receipts_page:
+    no_receipts: This anonymous poll closed before the verification feature existed, so verification is not possible.
+    verify_participants: Verify participants
+    voter_name: Name
+    voter_email: Email
+    vote_cast: Vote cast
+    member_since: Member since
+    invited_by: Invited by
+    invited_on: Invited on
+
+
   decision_tools_card:
     choose_type: Choose poll type
     title: Facilitate

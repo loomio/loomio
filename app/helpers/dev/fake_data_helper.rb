@@ -14,7 +14,7 @@ module Dev::FakeDataHelper
              Faker::TvShows::BojackHorseman.character,
              Faker::Movies::BackToTheFuture.character].sample.truncate(100),
       email: Faker::Internet.email,
-      password: 'loginlogin',
+      password: 'password',
       detected_locale: 'en',
       email_verified: true,
       date_time_pref: 'day_abbr',
@@ -327,7 +327,7 @@ module Dev::FakeDataHelper
   def create_group_with_members
     group = saved(fake_group)
     group.add_admin!(saved(fake_user))
-    (7..9).to_a.sample.times do 
+    (7..9).to_a.sample.times do
       group.add_member!(saved(fake_user))
     end
     create_chatbots_for_group(group)
@@ -346,14 +346,14 @@ module Dev::FakeDataHelper
       poll_reopened
       outcome_created
     ]
-    
+
     if ENV['TEST_MATRIX_SERVER']
       Chatbot.create!(
         group: group,
         kind: "matrix",
         server: ENV['TEST_MATRIX_SERVER'],
-        channel: ENV['TEST_MATRIX_CHANNEL'], 
-        access_token: ENV['TEST_MATRIX_ACCESS_TOKEN'], 
+        channel: ENV['TEST_MATRIX_CHANNEL'],
+        access_token: ENV['TEST_MATRIX_ACCESS_TOKEN'],
         event_kinds: event_kinds,
         # notification_only: true,
         name: "Matrix"

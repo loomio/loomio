@@ -2585,3 +2585,13 @@ hr:
     hide_results_description: Ako želite da ljudi glasaju bez da vide kako su drugi glasali, možete sakriti rezultate.
     process_helptext: Navedite i opišite postupak koji se koristi za provođenje ove ankete.
     reminder_helptext: Pošaljite obavijest 'Uskoro zatvara' 24 sata prije roka. To može povećati sudjelovanje i stvoriti priliku ljudima da preispitaju svoj stav.
+  poll_receipts_page:
+    verify_participants: Potvrdite sudionike
+    see_votes_if_quorum_reached: Ako je glasanje zatvoreno i postignut je kvorum, vidjet ćete tko je glasao.
+    voter_name: Ime birača
+    voter_email: E-pošta birača
+    vote_cast: Broj glasova
+    member_since: Član od
+    invited_by: Pozvao/la
+    invited_on: Pozvani
+    no_receipts: Ova anonimna anketa zatvorena je prije nego što je postojala značajka provjere, tako da provjera nije moguća.

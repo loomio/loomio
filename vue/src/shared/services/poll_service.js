@@ -283,6 +283,15 @@ export default new class PollService {
       //             title: 'poll_common_delete_modal.title'
       //             confirm: 'poll_common_delete_modal.question'
       //             flash: 'poll_common_delete_modal.success'
+      //
+      verify_participants: {
+        icon: 'mdi-account-check',
+        name: 'poll_receipts_page.verify_participants',
+        menu: true,
+        to() { return `/p/${poll.key}/receipts`; },
+        canPerform() { return true }
+      },
+
 
       discard_poll: {
         name: 'poll_common.delete_poll',

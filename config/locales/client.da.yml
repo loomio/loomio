@@ -2585,3 +2585,13 @@ da:
     hide_results_description: Hvis du vil have folk til at stemme uden at se, hvordan andre har stemt, kan du skjule resultaterne.
     process_helptext: Navngiv og beskriv den proces, der bruges til at køre denne afstemning.
     reminder_helptext: Send en "Afslutter snart"-besked 24 timer før deadline. Dette kan øge deltagelsen og give folk mulighed for at genoverveje deres holdning.
+  poll_receipts_page:
+    verify_participants: Bekræft deltagere
+    see_votes_if_quorum_reached: Hvis afstemningen er afsluttet, og det quorum er nået, vil du se, hvem der afgav en stemme.
+    voter_name: Vælgernavn
+    voter_email: Vælger-e-mail
+    vote_cast: Stemmeafgivelse
+    member_since: Medlem siden
+    invited_by: Inviteret af
+    invited_on: Inviteret den
+    no_receipts: Denne anonyme afstemning blev lukket, før verifikationsfunktionen eksisterede, så verifikation er ikke mulig.

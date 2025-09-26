@@ -9,6 +9,7 @@ const mdiApple = "M18.71,19.5C17.88,20.74 17,21.95 15.66,21.97C14.32,22 13.89,21
 import {
   mdiAccount,
   mdiAccountGroup,
+  mdiAccountCheck,
   mdiAccountMultiple,
   mdiAccountMultiplePlus,
   mdiAccountSearch,
@@ -201,6 +202,7 @@ export default {
   data() {
     return {
       mdiAccount,
+      mdiAccountCheck,
       mdiAccountGroup,
       mdiAccountMultiple,
       mdiAccountMultiplePlus,

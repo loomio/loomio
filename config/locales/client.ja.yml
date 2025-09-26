@@ -2584,3 +2584,13 @@ ja:
     hide_results_description: 他の人の投票結果を見ずに投票したい場合は、結果を非表示にすることができます。
     process_helptext: このアンケートを実行するために使用されているプロセスに名前を付けて説明してください。
     reminder_helptext: 締め切りの24時間前に「まもなく締め切りです」という通知を送信してください。これにより、参加者が増え、自分の立場を再考する機会が生まれます。
+  poll_receipts_page:
+    verify_participants: 参加者を確認する
+    see_votes_if_quorum_reached: 投票が終了し、定足数に達した場合は、誰が投票したかが表示されます。
+    voter_name: 投票者名
+    voter_email: 有権者メール
+    vote_cast: 投票数
+    member_since: メンバー歴
+    invited_by: 招待者
+    invited_on: 招待された
+    no_receipts: この匿名投票は検証機能が存在する前に終了したため、検証は不可能です。

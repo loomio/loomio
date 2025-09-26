@@ -246,6 +246,7 @@ Rails.application.routes.draw do
 
       resources :polls, only: [:show, :index, :create, :update] do
         member do
+          get :receipts
           post :remind
           delete :discard
           post :close
@@ -253,7 +254,7 @@ Rails.application.routes.draw do
           patch :add_to_thread
           get :voters
         end
-        get  :closed, on: :collection
+        get :closed, on: :collection
       end
 
       resources :poll_templates, only: [:index, :create, :update, :show, :destroy] do

@@ -2633,3 +2633,13 @@ fr:
     hide_results_description: Si vous souhaitez que les gens votent sans voir comment les autres ont voté, vous pouvez masquer les résultats.
     process_helptext: Nommez et décrivez le processus utilisé pour exécuter ce sondage.
     reminder_helptext: Envoyez une notification « Clôture prochaine » 24 heures avant la date limite. Cela peut stimuler la participation et donner l'occasion aux participants de reconsidérer leur position.
+  poll_receipts_page:
+    verify_participants: Vérifier les participants
+    see_votes_if_quorum_reached: Si le vote est clos et que le quorum est atteint, vous verrez qui a voté.
+    voter_name: Nom de l'électeur
+    voter_email: Courriel des électeurs
+    vote_cast: Vote exprimé
+    member_since: Membre depuis
+    invited_by: Invité par
+    invited_on: Invité sur
+    no_receipts: Ce sondage anonyme a été fermé avant que la fonction de vérification n'existe, la vérification n'est donc pas possible.
