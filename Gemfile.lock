@@ -517,7 +517,7 @@ GEM
       nio4r (~> 2.0)
     pwned (2.4.1)
     racc (1.8.1)
-    rack (2.2.17)
+    rack (2.2.18)
     rack-attack (6.7.0)
       rack (>= 1.0, < 4)
     rack-session (1.0.2)
@@ -821,7 +821,7 @@ DEPENDENCIES
   pg_search
   premailer-rails
   puma
-  rack (= 2.2.17)
+  rack (= 2.2.18)
   rack-attack
   rack-timeout
   rack_session_access
