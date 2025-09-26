@@ -1,7 +1,6 @@
 class Api::V1::PollsController < Api::V1::RestfulController
   def receipts
     @poll = load_and_authorize(:poll)
-    is_admin = @poll.group.present? && @poll.group.admins.include?(current_user)
 
     if @poll.closed_at && StanceReceipt.where(poll_id: @poll.id).exists?
       receipts = StanceReceipt.where(poll_id: @poll.id)
@@ -9,7 +8,8 @@ class Api::V1::PollsController < Api::V1::RestfulController
       receipts = PollService.build_receipts(@poll).map { |h| StanceReceipt.new(h) }
     end
 
-    memberships = Membership.where(user_id: receipts.map(&:voter_id)).index_by(&:user_id)
+    is_admin = @poll.group.present? && @poll.group.admins.include?(current_user)
+    memberships = @poll.group.present? ? @poll.group.members.where(user_id: receipts.map(&:voter_id)).index_by(&:user_id) : {}
     voters = User.where(id: receipts.map(&:voter_id)).index_by(&:id)
     inviters = User.where(id: receipts.map(&:inviter_id)).index_by(&:id)
 

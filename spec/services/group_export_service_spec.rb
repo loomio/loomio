@@ -59,15 +59,15 @@ describe GroupExportService do
     poll_reaction = Reaction.create!(reactable: poll, user: member)
     comment_reaction = Reaction.create!(reactable: comment, user: member)
 
-    p('before', {
-      admin_id: admin.id,
-      member_id: member.id,
-      group_id: group.id,
-      subgroup_id: subgroup.id,
-      discussion_id: discussion.id,
-      comment_id: comment.id,
-      poll_id: poll.id,
-    })
+    # p('before', {
+    #   admin_id: admin.id,
+    #   member_id: member.id,
+    #   group_id: group.id,
+    #   subgroup_id: subgroup.id,
+    #   discussion_id: discussion.id,
+    #   comment_id: comment.id,
+    #   poll_id: poll.id,
+    # })
   end
 
   def truncate_tables
