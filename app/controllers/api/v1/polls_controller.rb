@@ -9,7 +9,7 @@ class Api::V1::PollsController < Api::V1::RestfulController
     end
 
     is_admin = @poll.group.present? && @poll.group.admins.include?(current_user)
-    memberships = @poll.group.present? ? @poll.group.members.where(user_id: receipts.map(&:voter_id)).index_by(&:user_id) : {}
+    memberships = @poll.group.present? ? @poll.group.memberships.where(user_id: receipts.map(&:voter_id)).index_by(&:user_id) : {}
     voters = User.where(id: receipts.map(&:voter_id)).index_by(&:id)
     inviters = User.where(id: receipts.map(&:inviter_id)).index_by(&:id)
 
