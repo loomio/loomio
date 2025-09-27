@@ -2153,7 +2153,7 @@ tr:
     sentence: "%{numerator} / %{denominator} kişi katıldı (%{percent}%)"
     target_progress: Hedefin %%{percent} kadarına ulaşıldı. (%{num} / %{target})
     pct_of_eligible_voters_must_participate: Uygun seçmenlerin %{pct}%'si katılmalıdır
-    pct_participation: "%{toplam} oydan %{num} tanesi kullanıldı (%{pct}% katılım)"
+    pct_participation: "%{total} oydan %{num} tanesi kullanıldı (%{pct}% katılım)"
     vote_short_of_quorum: "%{pct}% çoğunluğa ulaşmak için 1 oy daha gerekiyor"
     votes_short_of_quorum: "%{pct}% çoğunluğa ulaşmak için %{num} oy daha gerekiyor"
     quorum_reached: "%{pct}% çoğunluğa ulaşıldı"
