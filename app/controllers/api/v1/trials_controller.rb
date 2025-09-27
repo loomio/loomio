@@ -23,7 +23,7 @@ class Api::V1::TrialsController < Api::V1::RestfulController
     group.handle = GroupService.suggest_handle(name: group.name, parent_handle: nil)
     GroupService.create(group: group, actor: user, skip_authorize: true)
 
-    raise "start trial failed" unless group.valid?
+    raise "start trial failed: #{group.errors.full_messages.join(', ')}" unless group.valid?
 
     group_path = group.handle ? group_handle_path(group.handle) : group_path(group)
 
