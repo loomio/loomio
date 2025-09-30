@@ -68,8 +68,8 @@ export default {
             user-avatar( :user="obj.event.actor()" :size="(obj.event.depth > 1) ? 28 : 32" no-link )
         stem-wrapper(:loader="loader" :obj="obj" :focused="isFocused(obj.event)")
       .strand-item__main
-        .strand-item__main--content(:class='rowClasses(obj)')
-          .strand-item__row--focused-underlay(v-if="isFocused(obj.event)")
+        .strand-item__main--content
+          //.strand-item__row--focused-underlay(v-if="isFocused(obj.event)")
           intersection-wrapper(:loader="loader" :obj="obj" :focused="isFocused(obj.event)")
         .strand-list__children(v-if="obj.event.childCount && (!obj.eventable.isA('stance') || obj.eventable.poll().showResults())")
           strand-load-more(v-if="obj.children.length == 0" direction="children" :collection="collection" :index="index" :loader="loader")
