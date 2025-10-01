@@ -176,9 +176,9 @@ export default {
                 data: data.intervals.map(interval => (data.outcomes_per_interval[interval] || 0) )
               },
             ]
-          },
+          }
 
-          this.models_per_interval = data.intervals.reverse().map(interval => {
+          this.models_per_interval = data.intervals.map(interval => {
             return {
               date: interval,
               threads: data.discussions_per_interval[interval] || 0,
