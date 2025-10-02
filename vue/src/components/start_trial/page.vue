@@ -34,10 +34,10 @@ const termsUrl = AppConfig.theme.terms_url;
 const privacyUrl = AppConfig.theme.privacy_url;
 
 const validate = (field) => {
-  return [
-    () => errors.value[field] == undefined || errors.value[field][0]
-  ]
+  return [ () => errors.value[field] === undefined || errors.value[field][0] ]
 }
+
+
 const submit = () => {
   errors.value = {};
   form.value.resetValidation();
@@ -54,15 +54,13 @@ const submit = () => {
     group_category: groupCategory.value,
     group_how_did_you_hear_about_loomio: howDidYouHearAboutLoomio.value,
   }).then((data) => {
-    console.log("happy", data);
     trialStarted.value= true
     if (isSignedIn) {
       Flash.success('discussions_panel.welcome_to_your_new_group');
       router.push(data.group_path)
     }
-  }).catch(res => {
-    console.log("sad", res);
-    errors.value = res.errors
+  }).catch((data) => {
+    errors.value = data.errors
     form.value.validate();
     Flash.error('common.check_for_errors_and_try_again');
   }).finally(() => {
@@ -75,15 +73,14 @@ const submit = () => {
 v-main
   v-container.group-page.max-width-800
     v-form(ref="form" @submit.prevent="submit")
-      v-card.trial-started(v-if="trialStarted")
+      v-card.trial-started(v-if="trialStarted" :title="$t('start_trial.success')")
         v-card-text
-          p.text-h4(v-t="'start_trial.success'")
-          p(v-t="'start_trial.taken_first_step'")
-          p(v-t="{path: 'start_trial.account_created_for_you', args: {email: userEmail}}")
-          p(v-t="'start_trial.please_sign_in_to_continue'")
+          p.text-body-1(v-t="{path: 'start_trial.account_created_for_you', args: {email: userEmail}}")
+          p.text-body-1(v-t="'start_trial.please_sign_in_to_continue'")
         v-card-actions
           v-spacer
-          v-btn(color="primary" :href="'/dashboard?user_email='+userEmail" v-t="'auth_form.sign_in'")
+          v-btn(color="primary" :href="'/dashboard?user_email='+userEmail" variant="elevated")
+            span(v-t="'auth_form.sign_in'")
           v-spacer
       v-card.start-trial-form(v-else :title="$t('start_trial.title')")
         v-card-text
@@ -95,16 +92,16 @@ v-main
           lmo-textarea.group-form__group-description(:model='group' field="description" :placeholder="$t('group_form.description_placeholder')" :label="$t('group_form.description')")
           template(v-if="!isSignedIn")
             v-textarea(v-model='howDidYouHearAboutLoomio' :label="$t('start_trial.how_did_you_hear_about_loomio')")
-            v-divider.pb-4
-            .text-subtitle-1.text-medium-emphasis(v-t="'start_trial.newsletter_intro'")
-            v-checkbox(v-model='emailNewsletter' :label="$t('start_trial.subscribe_to_newsletter')")
-            v-checkbox.auth-signup-form__legal-accepted(v-model='legalAccepted' :rules="validate('user_legal_accepted')")
-              template(v-slot:label)
-                i18n-t(keypath="auth_form.i_accept_all" tag="span")
-                  template(v-slot:termsLink)
-                    a(:href='termsUrl' target='_blank' @click.stop v-t="'powered_by.terms_of_service'")
-                  template(v-slot:privacyLink)
-                    a(:href='privacyUrl' target='_blank' @click.stop v-t="'powered_by.privacy_policy'")
+            //v-divider.pb-4
+            //.text-subtitle-1.text-medium-emphasis(v-t="'start_trial.newsletter_intro'")
+            //v-checkbox(v-model='emailNewsletter' :label="$t('start_trial.subscribe_to_newsletter')")
+            //v-checkbox.auth-signup-form__legal-accepted(v-model='legalAccepted' :rules="validate('user_legal_accepted')")
+            //  template(v-slot:label)
+            //    i18n-t(keypath="auth_form.i_accept_all" tag="span")
+            //      template(v-slot:termsLink)
+            //        a(:href='termsUrl' target='_blank' @click.stop v-t="'powered_by.terms_of_service'")
+            //      template(v-slot:privacyLink)
+            //        a(:href='privacyUrl' target='_blank' @click.stop v-t="'powered_by.privacy_policy'")
         v-card-actions
           v-spacer
           v-btn(variant="elevated" :loading="loading" color="primary" type="submit")

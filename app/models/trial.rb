@@ -15,7 +15,7 @@ class Trial
 
   validates :user_name, presence: true, length: { minimum: 2, maximum: 100 }, unless: :current_user_present?
   validates :user_email, presence: true, email: true, unless: :current_user_present?
-  validates :user_legal_accepted, acceptance: true, unless: :current_user_present?
+  # validates :user_legal_accepted, acceptance: true, unless: :current_user_present?
 
   validates :group_name, presence: true, length: { minimum: 2, maximum: 100 }
   validates :group_category, presence: true
