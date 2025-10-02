@@ -9,7 +9,6 @@ sv:
     we_use_this_to_help: Följande information används för att skapa din Loomio-grupp och för att hjälpa oss att förstå lite om din organisation så att vi kan stödja dig bättre.
     how_do_you_intend_to_use_loomio: Hur tänker du använda Loomio?
     what_decisions_do_you_need_to_make: Vilka beslut behöver du ta?
-    newsletter_intro: Vill du prenumerera på vårt nyhetsbrev?
     newsletter_description: Håll dig uppdaterad om nya funktioner och inspirerande berättelser om hur Loomio används av organisationer runt om i världen
     subscribe_to_newsletter: Prenumerera på Loomios nyhetsbrev
     form_incomplete: Fyll i alla fält på formuläret för att fortsätta
@@ -21,6 +20,7 @@ sv:
     please_enter_a_valid_email_address: Ange en giltig e-postadress
     please_accept_the_terms: Vänligen acceptera villkoren
     how_did_you_hear_about_loomio: Hur hörde du talas om Loomio?
+    newsletter_intro: Vill du höra om nya funktioner, kundintervjuer, fallstudier och tillkännagivanden från Loomio-teamet?
   tasks:
     tasks: Uppgifter
     your_tasks: Dina uppgifter
@@ -1228,7 +1228,6 @@ sv:
     description: Beskrivning
     description_placeholder: Beskriv syftet med din grupp så att dina gruppmedlemmar vet varför de är här.
     new_description_placeholder: Varför prövar du Loomio? Vilka beslut måste ni fatta tillsammans?
-    new_description_html: <h3 id="how-do-you-intend-to-use-loomio">Hur tänker du använda Loomio?</h3><p></p><h3 id="why-is-this-important-for-your-group"> Varför är detta viktigt för din grupp?</h3><p></p><h3 id="what-decisions-do-you-need-to-make"> Vilka beslut behöver du ta?</h3><p></p>
     secret_by_default: Din grupp kommer endast att vara tillgänglig för de som är inbjudna att gå med. Du kan ändra detta senare.
     privacy_statement:
       public_on_web: Namn, beskrivning och bilagor till gruppsammanhanget kommer att vara synliga för allmänheten
@@ -1296,6 +1295,7 @@ sv:
     default_request_to_join_prompt: Tack för ditt intresse för vår grupp. Presentera dig själv och förklara varför du vill vara med.
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Uppgradera din prenumeration</a> för att skapa en undergrupp'
     share_this_url_with_people_who_want_to_join: Dela den här webbadressen med personer som vill gå med
+    new_description_html: "<h3>Vilka utmaningar står er organisation inför med beslutsfattandet?</h3><p></p><h3> Hur skulle du vilja använda Loomio i din organisation?</h3><p></p>"
   group_export_modal:
     title: Exportera gruppdata
     body: <p>Du kan ladda ner en kopia av din grupps data när som helst. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Få reda på mer.</a></p><p> Det tar några minuter att slutföra, beroende på storleken på din grupp. När den är klar får du ett e-postmeddelande med en länk för att ladda ner filen.</p>
@@ -1493,7 +1493,6 @@ sv:
     email_newsletter: Loomio nyhetsbrev
     email_newsletter_description: Få uppdateringar om nya funktioner, utbildning, evenemang i din stad och framtiden för Loomio. Vanligtvis 2 eller 3 e-postmeddelanden per år.
     email_catch_up_day: E-post med sammanfattning
-    daily_summary_description: Välj när du vill få e-postmeddelandet med en sammanfattning. Det här e-postmeddelandet innehåller ny aktivitet som du inte har sett. Ett bra sätt att hålla sig uppdaterad om du inte är en vanlig användare.
     on_participation_label: Prenumerera på deltagande
     on_participation_description: När du deltar i en tråd kommer all ytterligare aktivitet att mailas till dig omedelbart.
     announcement_label: Meddelanden
@@ -1510,6 +1509,7 @@ sv:
       updated: E-postinställningar uppdaterade
     learn_more: Läs mer om e-postinställningar...
     mentioned_description: När någon {'@'}nämner dig i en kommentar får du ett e-postmeddelande
+    daily_summary_description: Välj när du vill få sammanfattningsmejlet. Det här mejlet innehåller all ny aktivitet som du inte har sett. Ett bra sätt att hålla sig uppdaterad om du inte är en vanlig användare.
   thread_preview:
     replies_count: "%{count} svar"
     unread_count: "%{count} olästa"

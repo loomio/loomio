@@ -9,7 +9,6 @@ zh_TW:
     we_use_this_to_help: 以下資訊用於建立您的 Loomio 小組並幫助我們了解一些有關您的組織的信息，以便我們可以更好地為您提供支援。
     how_do_you_intend_to_use_loomio: 您打算如何使用 Loomio？
     what_decisions_do_you_need_to_make: 您需要做出哪些決定？
-    newsletter_intro: 您想訂閱我們的電子報嗎？
     newsletter_description: 隨時了解世界各地的組織如何使用 Loomio 的新功能和鼓舞人心的故事
     subscribe_to_newsletter: 訂閱 Loomio 時事通訊
     form_incomplete: 請填寫表格上的所有欄位以繼續
@@ -21,6 +20,7 @@ zh_TW:
     please_enter_a_valid_email_address: 請輸入有效的電子郵件地址
     please_accept_the_terms: 請接受條款
     how_did_you_hear_about_loomio: 您是如何得知 Loomio 的？
+    newsletter_intro: 您想了解 Loomio 團隊的新功能、客戶訪談、案例研究和公告嗎？
   tasks:
     tasks: 工作
     your_tasks: 您的工作
@@ -1243,7 +1243,6 @@ zh_TW:
     description: 描述
     description_placeholder: 描述群組的目的讓您的夥伴們知道他們為什麼在這裡。
     new_description_placeholder: 為什麼要試試 Loomio？你們需要共同做出哪些決定？
-    new_description_html: <h3 id="how-do-you-intend-to-use-loomio">您打算如何使用 Loomio？</h3><p></p><h3 id="why-is-this-important-for-your-group">為什麼這對您的團隊很重要？</h3><p></p><h3 id="what-decisions-do-you-need-to-make">您需要做出哪些決定？</h3><p></p>
     secret_by_default: 只有受邀加入的人才能存取您的群組。您可以在稍後變更此設定。
     privacy_statement:
       public_on_web: 群組內容的名稱、描述與附件將對公眾可見
@@ -1312,6 +1311,7 @@ zh_TW:
     upgrade_for_subgroups: '請<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">升級您的訂閱</a>以建立子群組'
     group_handle_placeholder: 您的群組網址與電子郵件：%{host}/%{handle}、%{handle}{'@'}%{host}
     share_this_url_with_people_who_want_to_join: 與想要加入的人分享此 URL
+    new_description_html: "<h3>您的組織在決策上面臨哪些挑戰？</h3><p></p><h3>您希望如何在您的組織中使用 Loomio？</h3><p></p>"
   group_export_modal:
     title: 匯出群組資料
     body: |
@@ -1517,9 +1517,6 @@ zh_TW:
     email_newsletter: Loomio 通訊
     email_newsletter_description: 取得關於新功能、訓練、在您居住的城市中的活動、Loomio 的未來等更新。通常是每年 2 至 3 封電子郵件。
     email_catch_up_day: 追蹤摘要電子郵件
-    daily_summary_description: '選擇何時要接收追蹤電子郵件。此電子郵件包含了您尚未看到的任何新活動。如果您不是經常使用的使用者，這是追蹤最新狀態的好方法。
-
-      '
     on_participation_label: 參與時訂閱
     on_participation_description: 當您參與討論串時，之後所有的動態都會即時寄給您。
     announcement_label: 公告
@@ -1536,6 +1533,7 @@ zh_TW:
       updated: 電子郵件設定已更新
     learn_more: 取得更多關於電子郵件設定的詳細資訊……
     mentioned_description: 當有人{'@'}在評論中提及您時，您會收到一封通知電子郵件
+    daily_summary_description: 選擇何時接收更新摘要電子郵件。此電子郵件包含您尚未查看的任何新活動。如果您不是常規用戶，這是一個保持最新狀態的好方法。
   thread_preview:
     replies_count: "%{count} 個回覆"
     unread_count: "%{count} 個未讀"

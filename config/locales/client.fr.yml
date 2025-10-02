@@ -9,7 +9,6 @@ fr:
     we_use_this_to_help: Les informations suivantes sont utilisées pour configurer votre groupe Loomio et pour nous aider à comprendre un peu votre organisation afin que nous puissions mieux vous soutenir.
     how_do_you_intend_to_use_loomio: Comment comptez-vous utiliser Loomio ?
     what_decisions_do_you_need_to_make: Quelles décisions devez-vous prendre ?
-    newsletter_intro: Souhaitez-vous vous inscrire à notre newsletter?
     newsletter_description: Restez informé des nouvelles fonctionnalités et des histoires inspirantes sur la façon dont Loomio est utilisé par les organisations du monde entier.
     subscribe_to_newsletter: Abonnez-vous à la newsletter Loomio
     form_incomplete: Veuillez remplir tous les champs du formulaire pour continuer
@@ -21,6 +20,7 @@ fr:
     please_enter_a_valid_email_address: S'il vous plaît, mettez une adresse email valide
     please_accept_the_terms: Veuillez accepter les conditions
     how_did_you_hear_about_loomio: Comment avez-vous entendu parler de Loomio ?
+    newsletter_intro: Souhaitez-vous être informé des nouvelles fonctionnalités, des entretiens avec les clients, des études de cas et des annonces de l'équipe Loomio ?
   tasks:
     tasks: Tâches
     your_tasks: Vos tâches
@@ -1257,7 +1257,6 @@ fr:
     description: Description
     description_placeholder: Utilisez cet espace pour décrire le but de votre groupe afin que vos membres sachent pourquoi ils sont là.
     new_description_placeholder: Pourquoi testez-vous Loomio ? Quelles décisions devez-vous prendre ensemble ?
-    new_description_html: <h3 id="how-do-you-intend-to-use-loomio">Comment comptez-vous utiliser Loomio ?</h3><p></p><h3 id="why-is-this-important-for-your-group"> Pourquoi est-ce important pour votre groupe ?</h3><p></p><h3 id="what-decisions-do-you-need-to-make"> Quelles décisions devez-vous prendre ?</h3><p></p>
     secret_by_default: Votre groupe ne sera accessible qu’aux personnes invitées à s’y joindre. Vous pouvez modifier cela ultérieurement.
     privacy_statement:
       public_on_web: Le nom, la description et les pièces-jointes seront visibles par tous sur le web
@@ -1325,6 +1324,7 @@ fr:
     default_request_to_join_prompt: Merci de votre intérêt pour notre groupe. Veuillez vous présenter et expliquer pourquoi vous souhaitez nous rejoindre.
     upgrade_for_subgroups: 'Veuillez <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">mettre à niveau votre abonnement</a> pour créer un sous-groupe'
     share_this_url_with_people_who_want_to_join: Partagez cette URL avec les personnes qui souhaitent nous rejoindre
+    new_description_html: "<h3>À quels défis votre organisation est-elle confrontée en matière de prise de décision ?</h3><p></p><h3> Comment aimeriez-vous utiliser Loomio dans votre organisation ?</h3><p></p>"
   group_export_modal:
     title: Exporter les données de votre groupe
     body: |
@@ -1530,9 +1530,6 @@ fr:
     email_newsletter: Bulletin d'information de Loomio
     email_newsletter_description: Etre averti des nouvelles fonctionnalités, formation, évènements dans votre ville et du futur de Loomio. 2 à 3 e-mails par an.
     email_catch_up_day: e-mail de synthèse de rattrapage
-    daily_summary_description: 'Choisissez quand recevoir l’e-mail récapitulatif de rattrapage. Cet e-mail contient toute nouvelle activité que vous n’avez pas vue. Un bon moyen de rester à jour si vous n’êtes pas un utilisateur régulier.
-
-      '
     on_participation_label: Notification sur les discussions auxquelles je participe
     on_participation_description: Lorsque vous participez à une discussion, toute activité ultérieure vous sera immédiatement envoyée par courriel.
     announcement_label: Nouvelles discussions et décisions
@@ -1549,6 +1546,7 @@ fr:
       updated: Réglages de courriel mis à jour
     learn_more: En savoir plus sur les paramètres d’e-mail…
     mentioned_description: Lorsque quelqu'un {'@'}vous mentionne dans un commentaire, vous recevrez un e-mail de notification
+    daily_summary_description: Choisissez quand recevoir l'e-mail récapitulatif de rattrapage. Cet e-mail contient toutes les nouvelles activités que vous n'avez pas encore vues. C'est un excellent moyen de rester informé si vous n'êtes pas un utilisateur régulier.
   thread_preview:
     replies_count: "%{count} réponses"
     unread_count: "%{count}non lus"

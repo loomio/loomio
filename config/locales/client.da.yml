@@ -9,7 +9,6 @@ da:
     we_use_this_to_help: Denne følgende information bruges til at oprette din Loomio-gruppe og til at hjælpe os med at forstå lidt om din organisation, så vi kan støtte dig bedre.
     how_do_you_intend_to_use_loomio: Hvordan har du tænkt dig at bruge Loomio?
     what_decisions_do_you_need_to_make: Hvilke beslutninger skal du tage?
-    newsletter_intro: Vil du tilmelde dig vores nyhedsbrev?
     newsletter_description: Hold dig opdateret om nye funktioner og inspirerende historier om, hvordan Loomio bliver brugt af organisationer over hele verden
     subscribe_to_newsletter: Abonner på Loomio nyhedsbrev
     form_incomplete: Udfyld venligst alle felter på formularen for at fortsætte
@@ -21,6 +20,7 @@ da:
     please_enter_a_valid_email_address: Indtast venligst en gyldig e-mailadresse
     please_accept_the_terms: Accepter venligst vilkårene
     how_did_you_hear_about_loomio: Hvordan hørte du om Loomio?
+    newsletter_intro: Vil du gerne høre om nye funktioner, kundeinterviews, casestudier og annonceringer fra Loomio-teamet?
   tasks:
     tasks: Opgaver
     your_tasks: Dine opgaver
@@ -1228,7 +1228,6 @@ da:
     description: Beskrivelse
     description_placeholder: Beskriv formålet med denne  gruppe så at gruppens medlemmer ved hvorfor de er her.
     new_description_placeholder: Hvorfor forsøger du Loomio? Hvilke beslutninger skal I træffe sammen?
-    new_description_html: <h3 id="how-do-you-intend-to-use-loomio">Hvordan har du tænkt dig at bruge Loomio?</h3><p></p><h3 id="why-is-this-important-for-your-group"> Hvorfor er dette vigtigt for din gruppe?</h3><p></p><h3 id="what-decisions-do-you-need-to-make"> Hvilke beslutninger skal du tage?</h3><p></p>
     secret_by_default: Din gruppe vil kun være tilgængelig for dem, der er inviteret til at deltage. Du kan ændre dette senere.
     privacy_statement:
       public_on_web: Navn, beskrivelse og vedhæftede filer til gruppekonteksten vil være synlige for offentligheden
@@ -1296,6 +1295,7 @@ da:
     default_request_to_join_prompt: Tak for din interesse i vores gruppe. Præsentér dig selv og forklar, hvorfor du anmoder om at deltage.
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Opgrader venligst dit abonnement</a> for at oprette en undergruppe'
     share_this_url_with_people_who_want_to_join: Del denne URL med personer, der ønsker at deltage
+    new_description_html: "<h3>Hvilke udfordringer står din organisation over for i forbindelse med beslutningstagning?</h3><p></p><h3> Hvordan vil du gerne bruge Loomio i din organisation?</h3><p></p>"
   group_export_modal:
     title: Eksporter gruppedata
     body: <p>Du kan til enhver tid downloade en kopi af din gruppes data. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Find ud af mere.</a></p><p> Det tager et par minutter at gennemføre, afhængigt af størrelsen på din gruppe. Når den er klar, modtager du en e-mail med et link til at downloade filen.</p>
@@ -1493,7 +1493,6 @@ da:
     email_newsletter: Loomio nyhedsbrev
     email_newsletter_description: Få opdateringer om nye funktioner, træning, begivenheder i din by og fremtiden for Loomio. Normalt 2 eller 3 e-mails om året.
     email_catch_up_day: Opsummerende e-mail
-    daily_summary_description: Vælg, hvornår du vil modtage opsummeringsmailen. Denne e-mail indeholder enhver ny aktivitet, som du ikke har set. En god måde at holde sig opdateret på, hvis du ikke er en almindelig bruger.
     on_participation_label: Abonnér ved deltagelse
     on_participation_description: Når du deltager i en debat, så vil all fremtidig aktivitet i denne debat bliver emailet til dig med det samme.
     announcement_label: Normal
@@ -1510,6 +1509,7 @@ da:
       updated: Emailindstillinger gemt
     learn_more: Få mere at vide om e-mail-indstillinger...
     mentioned_description: Når nogen {'@'}nævner dig i en kommentar, får du en notifikationsmail
+    daily_summary_description: Vælg, hvornår du vil modtage e-mailen med opsummeringen af det forsømte. Denne e-mail indeholder al ny aktivitet, som du ikke har set. En god måde at holde dig opdateret på, hvis du ikke er en almindelig bruger.
   thread_preview:
     replies_count: "%{count} svar"
     unread_count: "%{count} ulæst"

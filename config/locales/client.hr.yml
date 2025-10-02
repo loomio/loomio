@@ -9,7 +9,6 @@ hr:
     we_use_this_to_help: Ove sljedeće informacije koriste se za postavljanje vaše Loomio grupe i da nam pomognu da razumijemo nešto o vašoj organizaciji kako bismo vas mogli bolje podržati.
     how_do_you_intend_to_use_loomio: Kako namjeravate koristiti Loomio?
     what_decisions_do_you_need_to_make: Koje odluke trebate donijeti?
-    newsletter_intro: Želite li se pretplatiti na naš newsletter?
     newsletter_description: Budite u tijeku s novim značajkama i inspirativnim pričama o tome kako Loomio koriste organizacije diljem svijeta
     subscribe_to_newsletter: Pretplatite se na Loomio newsletter
     form_incomplete: Ispunite sva polja na obrascu za nastavak
@@ -21,6 +20,7 @@ hr:
     please_enter_a_valid_email_address: Unesite važeću adresu e-pošte
     please_accept_the_terms: Molimo prihvatite uvjete
     how_did_you_hear_about_loomio: Kako ste čuli za Loomio?
+    newsletter_intro: Želite li čuti o novim značajkama, intervjuima s kupcima, studijama slučaja i najavama Loomio tima?
   tasks:
     tasks: Zadaci
     your_tasks: Vaši zadaci
@@ -1228,7 +1228,6 @@ hr:
     description: Opis
     description_placeholder: Opišite svrhu svoje grupe kako bi članovi vaše grupe znali zašto su ovdje.
     new_description_placeholder: Zašto isprobavaš Loomio? Koje odluke morate donijeti zajedno?
-    new_description_html: <h3 id="how-do-you-intend-to-use-loomio">Kako namjeravate koristiti Loomio?</h3><p></p><h3 id="why-is-this-important-for-your-group"> Zašto je to važno za vašu grupu?</h3><p></p><h3 id="what-decisions-do-you-need-to-make"> Koje odluke trebate donijeti?</h3><p></p>
     secret_by_default: Vašoj grupi će moći pristupiti samo oni koji su pozvani da se pridruže. Ovo možete promijeniti kasnije.
     privacy_statement:
       public_on_web: Naziv, opis i prilozi kontekstu grupe bit će vidljivi javnosti
@@ -1296,6 +1295,7 @@ hr:
     default_request_to_join_prompt: Hvala na interesu za našu grupu. Predstavite se i objasnite zašto tražite da se pridružite.
     upgrade_for_subgroups: 'Molimo vas <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">da nadogradite svoju pretplatu</a> kako biste stvorili podgrupu'
     share_this_url_with_people_who_want_to_join: Podijelite ovaj URL s ljudima koji se žele pridružiti
+    new_description_html: "<h3>S kojim se izazovima vaša organizacija suočava u donošenju odluka?</h3><p></p><h3> Kako biste željeli koristiti Loomio u svojoj organizaciji?</h3><p></p>"
   group_export_modal:
     title: Izvoz grupnih podataka
     body: <p>U bilo kojem trenutku možete preuzeti kopiju podataka svoje grupe. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Saznaj više.</a></p><p> Za dovršetak je potrebno nekoliko minuta, ovisno o veličini vaše grupe. Kada bude spremna, primit ćete e-poruku s vezom za preuzimanje datoteke.</p>
@@ -1493,7 +1493,6 @@ hr:
     email_newsletter: Loomio bilten
     email_newsletter_description: Primajte ažuriranja o novim značajkama, obuci, događajima u vašem gradu i budućnosti Loomija. Obično 2 ili 3 e-maila godišnje.
     email_catch_up_day: Sažetak e-pošte za nadoknadu
-    daily_summary_description: Odaberite kada želite primiti e-poruku sa sažetkom nadoknade. Ova e-poruka sadrži sve nove aktivnosti koje niste vidjeli. Dobar način da ostanete u tijeku ako niste redoviti korisnik.
     on_participation_label: Pretplatite se na sudjelovanje
     on_participation_description: Kada sudjelujete u niti, sve daljnje aktivnosti bit će vam odmah poslane e-poštom.
     announcement_label: Obavijesti
@@ -1510,6 +1509,7 @@ hr:
       updated: Postavke e-pošte ažurirane
     learn_more: Saznajte više o postavkama e-pošte...
     mentioned_description: Kada vas netko {'@'}spomene u komentaru, dobit ćete obavijest e-poštom
+    daily_summary_description: Odaberite kada želite primati e-poruku s sažetkom propuštenog. Ova e-poruka sadrži sve nove aktivnosti koje niste vidjeli. Dobar način da ostanete u tijeku ako niste redoviti korisnik.
   thread_preview:
     replies_count: "%{count} odgovora"
     unread_count: "%{count} nepročitano"

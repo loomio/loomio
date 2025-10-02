@@ -9,7 +9,6 @@ ca:
     we_use_this_to_help: Aquesta informació següent s'utilitza per configurar el vostre grup Loomio i per ajudar-nos a entendre una mica la vostra organització perquè puguem donar-vos millor suport.
     how_do_you_intend_to_use_loomio: Com penseu utilitzar Loomio?
     what_decisions_do_you_need_to_make: Quines decisions has de prendre?
-    newsletter_intro: T'agradaria subscriure't al nostre butlletí?
     newsletter_description: Manteniu-vos al dia sobre noves funcions i històries inspiradores sobre com utilitzen Loomio les organitzacions d'arreu del món
     subscribe_to_newsletter: Subscriu-te al butlletí de Loomio
     form_incomplete: Si us plau, omple tots els camps del formulari per continuar
@@ -21,6 +20,7 @@ ca:
     please_enter_a_valid_email_address: siusplau, introdueixi una adreça de correu electrònic vàlida
     please_accept_the_terms: Accepteu els termes
     how_did_you_hear_about_loomio: Com vas saber parlar de Loomio?
+    newsletter_intro: T'agradaria saber sobre noves funcions, entrevistes amb clients, casos d'estudi i anuncis de l'equip de Loomio?
   tasks:
     tasks: Tasques
     your_tasks: Les teves tasques
@@ -1236,7 +1236,6 @@ ca:
     description: Descripció
     description_placeholder: Descriviu el propòsit del grup per tal de que els membres el puguin conèixer.
     new_description_placeholder: Per què estàs provant Loomio? Quines decisions heu de prendre junts?
-    new_description_html: <h3 id="how-do-you-intend-to-use-loomio">Com penseu utilitzar Loomio?</h3><p></p><h3 id="why-is-this-important-for-your-group"> Per què és important per al vostre grup?</h3><p></p><h3 id="what-decisions-do-you-need-to-make"> Quines decisions has de prendre?</h3><p></p>
     secret_by_default: Només podran accedir al vostre grup aquells que estiguin convidats a unir-se. Podeu canviar-ho més endavant.
     privacy_statement:
       public_on_web: Nom, descripció i adjunts al context del grup seran visibles al públic.
@@ -1304,6 +1303,7 @@ ca:
     default_request_to_join_prompt: Gràcies pel vostre interès en el nostre grup. Si us plau, presenteu-vos i expliqueu per què demaneu unir-vos.
     upgrade_for_subgroups: 'Si us plau, <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">actualitza la teva subscripció</a> per crear un subgrup'
     share_this_url_with_people_who_want_to_join: Comparteix aquesta URL amb les persones que vulguin unir-s'hi
+    new_description_html: "<h3>Quins reptes afronta la vostra organització a l'hora de prendre decisions?</h3><p></p><h3> Com t'agradaria utilitzar Loomio a la teva organització?</h3><p></p>"
   group_export_modal:
     title: Exporta dades del grup
     body: |
@@ -1509,7 +1509,6 @@ ca:
     email_newsletter: Butlletí de Loomio
     email_newsletter_description: Rebeu actualitzacions sobre noves característiques, formació, esdeveniments a la vostra ciutat i el futur de Loomio. Normalment 2 o 3 correus electrònics a l'any.
     email_catch_up_day: Correu electrònic de resum de posada al dia
-    daily_summary_description: Trieu quan voleu rebre el correu electrònic de resum de recuperació. Aquest correu electrònic conté qualsevol activitat nova que no hàgiu vist. Una bona manera d'estar al dia si no sou un usuari habitual.
     on_participation_label: Subscriure sota participació
     on_participation_description: Quan participeu en un fil, se us començaran a enviar correus electrònics sobre la seva activitat.
     announcement_label: Avisos
@@ -1526,6 +1525,7 @@ ca:
       updated: Configuració del correu electrònic actualitzada
     learn_more: Més informació sobre la configuració del correu electrònic...
     mentioned_description: Quan algú et mencioni {'@'} en un comentari, rebràs una notificació per correu electrònic.
+    daily_summary_description: Trieu quan voleu rebre el correu electrònic de resum de posada al dia. Aquest correu electrònic conté qualsevol activitat nova que no hàgiu vist. Una bona manera de mantenir-vos al dia si no sou un usuari habitual.
   thread_preview:
     replies_count: "%{count} respostes"
     unread_count: "%{count} sense llegir"

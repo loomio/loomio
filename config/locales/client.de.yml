@@ -9,7 +9,6 @@ de:
     we_use_this_to_help: Die folgenden Informationen werden verwendet, um Ihre Loomio-Gruppe einzurichten und uns dabei zu helfen, mehr über Ihre Organisation zu erfahren, damit wir Sie besser unterstützen können.
     how_do_you_intend_to_use_loomio: Wie möchten Sie Loomio nutzen?
     what_decisions_do_you_need_to_make: Welche Entscheidungen müssen Sie treffen?
-    newsletter_intro: Möchten Sie unseren Newsletter abonnieren?
     newsletter_description: Bleiben Sie über neue Funktionen und inspirierende Geschichten darüber, wie Loomio von Organisationen auf der ganzen Welt eingesetzt wird, auf dem Laufenden
     subscribe_to_newsletter: Abonnieren Sie den Loomio-Newsletter
     form_incomplete: Bitte füllen Sie alle Felder im Formular aus, um fortzufahren
@@ -21,6 +20,7 @@ de:
     please_enter_a_valid_email_address: Bitte geben Sie eine gültige E-Mail-Adresse ein
     please_accept_the_terms: Bitte akzeptieren Sie die Bedingungen
     how_did_you_hear_about_loomio: Wie haben Sie von Loomio erfahren?
+    newsletter_intro: Möchten Sie über neue Funktionen, Kundeninterviews, Fallstudien und Ankündigungen des Loomio-Teams informiert werden?
   tasks:
     tasks: Aufgaben
     your_tasks: Deine Aufgaben
@@ -1244,7 +1244,6 @@ de:
     description: Beschreibung
     description_placeholder: Beschreibe die Zielsetzung der Gruppe, damit die Mitglieder wissen, weshalb sie hier sind.
     new_description_placeholder: Warum testen Sie Loomio? Welche Entscheidungen müssen Sie gemeinsam treffen?
-    new_description_html: <h3 id="how-do-you-intend-to-use-loomio">Wie wollen Sie Loomio nutzen?</h3><p></p><h3 id="why-is-this-important-for-your-group"> Warum ist das für Ihre Gruppe wichtig?</h3><p></p><h3 id="what-decisions-do-you-need-to-make"> Welche Entscheidungen müssen Sie treffen?</h3><p></p>
     secret_by_default: Deine Gruppe ist nur für diejenigen zugänglich, die zum Beitritt eingeladen sind. Dies kann später geändert werden.
     privacy_statement:
       public_on_web: Name, Beschreibung und Dokumente der Gruppe werden öffentlich sichtbar sein
@@ -1312,6 +1311,7 @@ de:
     default_request_to_join_prompt: Vielen Dank für Ihr Interesse an unserer Gruppe. Bitte stellen Sie sich vor und erklären Sie, warum Sie Mitglied werden möchten.
     upgrade_for_subgroups: 'Bitte <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">aktualisieren Sie Ihr Abonnement</a> , um eine Untergruppe zu erstellen'
     share_this_url_with_people_who_want_to_join: Teilen Sie diese URL mit Leuten, die beitreten möchten
+    new_description_html: "<h3>Vor welchen Herausforderungen steht Ihre Organisation bei der Entscheidungsfindung?</h3><p></p><h3> Wie möchten Sie Loomio in Ihrer Organisation einsetzen?</h3><p></p>"
   group_export_modal:
     title: Gruppendaten exportieren
     body: |
@@ -1517,7 +1517,6 @@ de:
     email_newsletter: Loomio Newsletter
     email_newsletter_description: Neuigkeiten zu neuen Funktionen, Schulungsangeboten und Veranstaltungen in deiner Stadt und zur zukünftigen Entwicklung von Loomio erhalten (ca. 2-3 E-Mails pro Jahr).
     email_catch_up_day: Zusammenfassung der Nachhol-E-Mail
-    daily_summary_description: Wählen Sie aus, wann Sie die E-Mail mit der Nachholübersicht erhalten möchten. Diese E-Mail enthält alle neuen Aktivitäten, die Sie noch nicht gesehen haben. Eine gute Möglichkeit, auf dem Laufenden zu bleiben, wenn Sie kein regelmäßiger Benutzer sind.
     on_participation_label: Benachrichtigungen automatisch aktivieren bei Teilnahme
     on_participation_description: Wenn du an einem Thread teilnimmst, werden dir alle weiteren Aktivitäten sofort per E-Mail zugesendet.
     announcement_label: Nur Ankündigungen
@@ -1534,6 +1533,7 @@ de:
       updated: E-Mail-Einstellungen aktualisiert
     learn_more: Weitere Informationen zu den E-Mail-Einstellungen...
     mentioned_description: Wenn jemand Sie in einem Kommentar {'@'}erwähnt, erhalten Sie eine Benachrichtigungs-E-Mail
+    daily_summary_description: Wählen Sie, wann Sie die E-Mail mit der Zusammenfassung erhalten möchten. Diese E-Mail enthält alle neuen Aktivitäten, die Sie noch nicht gesehen haben. Eine gute Möglichkeit, auf dem Laufenden zu bleiben, wenn Sie kein regelmäßiger Benutzer sind.
   thread_preview:
     replies_count: "%{count} Antworten"
     unread_count: "%{count} ungelesen"

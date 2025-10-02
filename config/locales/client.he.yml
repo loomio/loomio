@@ -9,7 +9,6 @@ he:
     we_use_this_to_help: המידע הבא משמש להקמת קבוצת Loomio שלך וכדי לעזור לנו להבין מעט על הארגון שלך כדי שנוכל לתמוך בך טוב יותר.
     how_do_you_intend_to_use_loomio: איך אתה מתכוון להשתמש ב-Loomio?
     what_decisions_do_you_need_to_make: אילו החלטות אתה צריך לקבל?
-    newsletter_intro: האם תרצה להירשם לניוזלטר שלנו?
     newsletter_description: הישאר מעודכן לגבי תכונות חדשות וסיפורים מעוררי השראה על האופן שבו משתמשים ב-Loomio על ידי ארגונים ברחבי העולם
     subscribe_to_newsletter: הירשם לניוזלטר של Loomio
     form_incomplete: אנא מלא את כל השדות בטופס כדי להמשיך
@@ -21,6 +20,7 @@ he:
     please_enter_a_valid_email_address: אנא הזן כתובת דוא"ל תקנית
     please_accept_the_terms: אנא קבל את התנאים
     how_did_you_hear_about_loomio: איך שמעת על לומיו?
+    newsletter_intro: האם תרצו לשמוע על תכונות חדשות, ראיונות עם לקוחות, מקרי בוחן והכרזות מצוות Loomio?
   tasks:
     tasks: משימות
     your_tasks: המשימות שלך
@@ -1232,7 +1232,6 @@ he:
     description: תיאור
     description_placeholder: תאר את מטרת הקבוצה כך שחבריה ידעו למה הם פה.
     new_description_placeholder: למה אתה מבחן את לומיו? אילו החלטות אתם צריכים לקבל ביחד?
-    new_description_html: <h3 id="how-do-you-intend-to-use-loomio" style=";text-align:right;direction:rtl">איך אתה מתכוון להשתמש ב-Loomio?</h3><p style=";text-align:right;direction:rtl"></p><h3 id="why-is-this-important-for-your-group" style=";text-align:right;direction:rtl"> למה זה חשוב לקבוצה שלך?</h3><p style=";text-align:right;direction:rtl"></p><h3 id="what-decisions-do-you-need-to-make" style=";text-align:right;direction:rtl"> אילו החלטות אתה צריך לקבל?</h3><p style=";text-align:right;direction:rtl"></p>
     secret_by_default: הקבוצה שלך תהיה נגישה רק למי שמוזמן להצטרף. תוכל לשנות זאת מאוחר יותר.
     privacy_statement:
       public_on_web: שם, תיאור, וקבצים מצורפים בתוכן הקבוצה יהיו זמינים לצפייה לכולם
@@ -1300,6 +1299,7 @@ he:
     default_request_to_join_prompt: תודה על ההתעניינות בקבוצה שלנו. אנא הצג את עצמך והסבר מדוע אתה מבקש להצטרף.
     upgrade_for_subgroups: 'אנא <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">שדרג את המנוי שלך</a> כדי ליצור תת-קבוצה'
     share_this_url_with_people_who_want_to_join: שתף כתובת URL זו עם אנשים שרוצים להצטרף
+    new_description_html: <h3 style=";text-align:right;direction:rtl">אילו אתגרים עומדים בפני הארגון שלכם בקבלת החלטות?</h3><p style=";text-align:right;direction:rtl"></p><h3 style=";text-align:right;direction:rtl"> כיצד תרצה להשתמש ב-Loomio בארגון שלך?</h3><p style=";text-align:right;direction:rtl"></p>
   group_export_modal:
     title: יצוא נתונים מהקבוצה
     body: |
@@ -1505,7 +1505,6 @@ he:
     email_newsletter: הניוזלטר של לומיו
     email_newsletter_description: קבל עדכונים על פיצ'רים חדשים, הדרכות, אירועים בעיר שלך ועתיד לומיו. בד"כ 2-3 מיילים בשנה.
     email_catch_up_day: דוא"ל סיכום
-    daily_summary_description: בחר מתי לקבל את דוא"ל הסיכום. אימייל זה מכיל פעילות חדשה שלא ראית. דרך טובה להישאר מעודכן אם אינך משתמש רגיל.
     on_participation_label: הרשם בהשתתפות
     on_participation_description: כשאתה משתתף בשיחה, כל פעילות עתידית תשלח אליך למייל באופן מיידי.
     announcement_label: הודעות
@@ -1522,6 +1521,7 @@ he:
       updated: הגדרות מייל עודכנו
     learn_more: למד עוד על הגדרות מייל...
     mentioned_description: כאשר מישהו {'@'}מזכיר אותך בתגובה, תקבל התראה בדוא"ל
+    daily_summary_description: בחר מתי לקבל את דוא"ל סיכום העדכון. דוא"ל זה מכיל כל פעילות חדשה שלא ראית. דרך טובה להישאר מעודכנים אם אינך משתמש קבוע.
   thread_preview:
     replies_count: "%{count} תשובות"
     unread_count: "%{count} לא נקראו"

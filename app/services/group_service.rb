@@ -86,8 +86,6 @@ module GroupService
 
     return false unless group.valid?
 
-    group.is_referral = actor.groups.size > 0
-
     if group.is_parent?
       url = remote_cover_photo
       group.cover_photo.attach(io: URI.open(url), filename: File.basename(url))

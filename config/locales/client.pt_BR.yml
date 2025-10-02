@@ -9,7 +9,6 @@ pt_BR:
     we_use_this_to_help: As informações a seguir são usadas para configurar seu grupo Loomio e para nos ajudar a entender um pouco sobre sua organização para que possamos apoiá-lo melhor.
     how_do_you_intend_to_use_loomio: Como você pretende usar o Loomio?
     what_decisions_do_you_need_to_make: Que decisões você precisa tomar?
-    newsletter_intro: Gostaria de assinar a nossa newsletter?
     newsletter_description: Mantenha-se atualizado sobre novos recursos e histórias inspiradoras de como o Loomio está sendo usado por organizações em todo o mundo
     subscribe_to_newsletter: Assine a newsletter do Loomio
     form_incomplete: Preencha todos os campos do formulário para continuar
@@ -21,6 +20,7 @@ pt_BR:
     please_enter_a_valid_email_address: Por favor insira um endereço de e-mail válido
     please_accept_the_terms: Por favor, aceite os termos
     how_did_you_hear_about_loomio: Como você ouviu falar do Loomio?
+    newsletter_intro: Gostaria de saber sobre novos recursos, entrevistas com clientes, estudos de caso e anúncios da equipe da Loomio?
   tasks:
     tasks: Tarefas
     your_tasks: Suas tarefas
@@ -1257,7 +1257,6 @@ pt_BR:
     description: Descrição
     description_placeholder: Descreva o propósito do seu grupo para que seus membros saibam a razão de estarem aqui.
     new_description_placeholder: Por que você está testando o Loomio? Que decisões vocês precisam tomar juntos?
-    new_description_html: <h3 id="how-do-you-intend-to-use-loomio">Como você pretende usar o Loomio?</h3><p></p><h3 id="why-is-this-important-for-your-group"> Por que isso é importante para o seu grupo?</h3><p></p><h3 id="what-decisions-do-you-need-to-make"> Que decisões você precisa tomar?</h3><p></p>
     secret_by_default: Seu grupo será acessível apenas por aqueles que forem convidados a participar. Você pode mudar isso mais tarde.
     privacy_statement:
       public_on_web: Nome, descrição e anexos para contextualizar o grupo serão visíveis para o público
@@ -1325,6 +1324,7 @@ pt_BR:
     default_request_to_join_prompt: Obrigado pelo seu interesse em nosso grupo. Por favor, apresente-se e explique por que você está solicitando para participar.
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Atualize sua assinatura</a> para criar um subgrupo'
     share_this_url_with_people_who_want_to_join: Compartilhe esta URL com pessoas que desejam participar
+    new_description_html: "<h3>Quais desafios sua organização enfrenta na tomada de decisões?</h3><p></p><h3> Como você gostaria de usar o Loomio na sua organização?</h3><p></p>"
   group_export_modal:
     title: Exportar data do grupo
     body: |
@@ -1530,9 +1530,6 @@ pt_BR:
     email_newsletter: Boletim de Notícias Loomio
     email_newsletter_description: Receba atualizações sobre novas funcionalidades, treinamento, eventos em sua cidade e o futuro do Loomio. Geralmente 2 a 3 emails por ano.
     email_catch_up_day: E-mail de resumo de atualização
-    daily_summary_description: 'Escolha quando receber o e-mail de resumo de atualização. Este e-mail contém qualquer nova atividade que você não tenha visto. Uma boa maneira de se manter atualizado se você não for um usuário comum.
-
-      '
     on_participation_label: Assinar ao se participar
     on_participation_description: Quando você participar de uma conversa, todas as atividades serão enviadas por e-mail para você imediatamente.
     announcement_label: Anúncios
@@ -1549,6 +1546,7 @@ pt_BR:
       updated: Configurações de e-mail atualizadas
     learn_more: Aprenda mais sobre as configurações de email…
     mentioned_description: Quando alguém {'@'}menciona você em um comentário, você receberá um e-mail de notificação
+    daily_summary_description: Escolha quando receber o e-mail com o resumo das atualizações. Este e-mail contém todas as novas atividades que você ainda não viu. Uma ótima maneira de se manter atualizado se você não for um usuário regular.
   thread_preview:
     replies_count: "%{count} respostas"
     unread_count: "%{count} Não lida"

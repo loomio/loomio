@@ -9,7 +9,6 @@ ro:
     we_use_this_to_help: Următoarele informații sunt folosite pentru a vă configura grupul Loomio și pentru a ne ajuta să înțelegem puțin despre organizația dvs., astfel încât să vă putem sprijini mai bine.
     how_do_you_intend_to_use_loomio: Cum intenționați să utilizați Loomio?
     what_decisions_do_you_need_to_make: Ce decizii trebuie să iei?
-    newsletter_intro: Doriți să vă abonați la newsletter-ul nostru?
     newsletter_description: Rămâneți la curent cu noile funcții și poveștile inspiratoare despre modul în care Loomio este folosit de organizații din întreaga lume
     subscribe_to_newsletter: Abonați-vă la newsletter-ul Loomio
     form_incomplete: Vă rugăm să completați toate câmpurile din formular pentru a continua
@@ -21,6 +20,7 @@ ro:
     please_enter_a_valid_email_address: Vă rugăm să introduceți o adresă de email validă
     please_accept_the_terms: Vă rugăm să acceptați termenii
     how_did_you_hear_about_loomio: Cum ai auzit de Loomio?
+    newsletter_intro: Ai vrea să afli despre noile funcții, interviuri cu clienții, studii de caz și anunțuri de la echipa Loomio?
   tasks:
     tasks: Sarcini
     your_tasks: Sarcinile tale
@@ -1228,7 +1228,6 @@ ro:
     description: Descriere
     description_placeholder: Descrieți scopul grupului dvs., astfel încât membrii grupului să știe de ce sunt aici.
     new_description_placeholder: De ce încerci Loomio? Ce decizii trebuie să luați împreună?
-    new_description_html: <h3 id="how-do-you-intend-to-use-loomio">Cum intenționați să utilizați Loomio?</h3><p></p><h3 id="why-is-this-important-for-your-group"> De ce este acest lucru important pentru grupul tău?</h3><p></p><h3 id="what-decisions-do-you-need-to-make"> Ce decizii trebuie să iei?</h3><p></p>
     secret_by_default: Grupul tău va fi accesibil doar de către cei invitați să se alăture. Puteți schimba acest lucru mai târziu.
     privacy_statement:
       public_on_web: Numele, descrierea și atașamentele la contextul grupului vor fi vizibile pentru public
@@ -1296,6 +1295,7 @@ ro:
     default_request_to_join_prompt: Vă mulțumim pentru interesul acordat grupului nostru. Vă rugăm să vă prezentați și să explicați de ce solicitați să vă înscrieți.
     upgrade_for_subgroups: 'Vă rugăm <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">să actualizați abonamentul</a> pentru a crea un subgrup'
     share_this_url_with_people_who_want_to_join: Distribuiți această adresă URL cu persoanele care doresc să se alăture
+    new_description_html: "<h3>Cu ce provocări se confruntă organizația dumneavoastră în procesul decizional?</h3><p></p><h3> Cum ați dori să utilizați Loomio în organizația dumneavoastră?</h3><p></p>"
   group_export_modal:
     title: Exportați datele grupului
     body: <p>Puteți descărca oricând o copie a datelor grupului dvs. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Află mai multe.</a></p><p> Este nevoie de câteva minute pentru a finaliza, în funcție de dimensiunea grupului dvs. Când este gata, veți primi un e-mail cu un link pentru a descărca fișierul.</p>
@@ -1493,7 +1493,6 @@ ro:
     email_newsletter: Buletinul informativ Loomio
     email_newsletter_description: Obțineți actualizări despre funcții noi, antrenamente, evenimente din orașul dvs. și viitorul Loomio. De obicei, 2 sau 3 e-mailuri pe an.
     email_catch_up_day: E-mail cu rezumat de recuperare
-    daily_summary_description: Alegeți când să primiți e-mailul cu rezumatul de recuperare. Acest e-mail conține orice activitate nouă pe care nu ați văzut-o. O modalitate bună de a rămâne la curent dacă nu sunteți un utilizator obișnuit.
     on_participation_label: Abonați-vă la participare
     on_participation_description: Când participați la un thread, toate activitățile ulterioare vă vor fi trimise imediat prin e-mail.
     announcement_label: Anunturi
@@ -1510,6 +1509,7 @@ ro:
       updated: Setările de e-mail au fost actualizate
     learn_more: Aflați mai multe despre setările de e-mail...
     mentioned_description: Când cineva te menționează {'@'} într-un comentariu, vei primi un e-mail de notificare.
+    daily_summary_description: Alege când vrei să primești e-mailul cu rezumatul actualizării. Acest e-mail conține orice activitate nouă pe care nu ai văzut-o. O modalitate bună de a rămâne la curent dacă nu ești un utilizator obișnuit.
   thread_preview:
     replies_count: "%{count} răspunsuri"
     unread_count: "%{count} necitite"
