@@ -9,7 +9,6 @@ es:
     we_use_this_to_help: La siguiente información se utiliza para configurar su grupo Loomio y para ayudarnos a comprender un poco sobre su organización para que podamos brindarle un mejor soporte.
     how_do_you_intend_to_use_loomio: "¿Cómo piensas utilizar Loomio?"
     what_decisions_do_you_need_to_make: "¿Qué decisiones necesitas tomar?"
-    newsletter_intro: "¿Le gustaría suscribirse a nuestro boletín informativo?"
     newsletter_description: Manténgase actualizado sobre nuevas funciones e historias inspiradoras sobre cómo organizaciones de todo el mundo utilizan Loomio.
     subscribe_to_newsletter: Suscríbete al boletín de Loomio
     form_incomplete: Por favor complete todos los campos del formulario para continuar
@@ -21,6 +20,7 @@ es:
     please_enter_a_valid_email_address: Por favor, introduce una dirección de correo electrónico válida
     please_accept_the_terms: Por favor acepta los términos
     how_did_you_hear_about_loomio: "¿Cómo se enteró de Loomio?"
+    newsletter_intro: "¿Quieres saber sobre nuevas funciones, entrevistas con clientes, estudios de casos y anuncios del equipo de Loomio?"
   tasks:
     tasks: Tareas
     your_tasks: Tus tareas
@@ -1245,7 +1245,6 @@ es:
     description: 'Descripción '
     description_placeholder: Describa el propósito del grupo para que los integrantes sepan porque están aquí.
     new_description_placeholder: "¿Por qué estás probando Loomio? ¿Qué decisiones necesitan tomar juntos?"
-    new_description_html: <h3 id="how-do-you-intend-to-use-loomio">¿Cómo piensas utilizar Loomio?</h3><p></p><h3 id="why-is-this-important-for-your-group"> ¿Por qué es esto importante para su grupo?</h3><p></p><h3 id="what-decisions-do-you-need-to-make"> ¿Qué decisiones necesitas tomar?</h3><p></p>
     secret_by_default: Su grupo solo será accesible para aquellos que estén invitados a unirse.
     privacy_statement:
       public_on_web: 'Nombre, descripción y archivos adjuntos al contexto del grupo, serán visibles al públicos '
@@ -1313,6 +1312,7 @@ es:
     default_request_to_join_prompt: Gracias por su interés en nuestro grupo. Preséntese y explique por qué desea unirse.
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Actualice su suscripción</a> para crear un subgrupo'
     share_this_url_with_people_who_want_to_join: Comparte esta URL con personas que quieran unirse
+    new_description_html: "<h3>¿Qué desafíos enfrenta su organización en la toma de decisiones?</h3><p></p><h3> ¿Cómo te gustaría utilizar Loomio en tu organización?</h3><p></p>"
   group_export_modal:
     title: Exportar la data grupal
     body: |
@@ -1518,7 +1518,6 @@ es:
     email_newsletter: Boletín de noticias de Loomio
     email_newsletter_description: Consigue actualizaciones acerca de las nuevas características, formación, eventos en tu ciudad y del futuro de Loomio. Generalmente 2 o 3 emails al año.
     email_catch_up_day: Correo electrónico de resumen diario
-    daily_summary_description: Elija cuándo recibir el correo electrónico de resumen de puesta al día. Este correo electrónico contiene cualquier actividad nueva que no haya visto. Una buena manera de mantenerse al día si no eres un usuario regular.
     on_participation_label: 'Suscribirte a la participación '
     on_participation_description: 'Cuando participes en un hilo, inmediatamente se te enviará toda la actividad subsiguiente por correo electrónico. '
     announcement_label: Anuncios
@@ -1535,6 +1534,7 @@ es:
     messages:
       updated: Configuración del correo electrónico actualizada
     learn_more: Aprende más sobre la configuración de correo electrónico...
+    daily_summary_description: Elige cuándo recibir el correo electrónico de resumen de actualización. Este correo contiene cualquier actividad nueva que no hayas visto. Es una buena manera de mantenerte al día si no eres un usuario habitual.
   thread_preview:
     replies_count: "%{count} respuestas"
     unread_count: "%{count} no leídos"

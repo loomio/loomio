@@ -9,7 +9,6 @@ nl_NL:
     we_use_this_to_help: Deze volgende informatie wordt gebruikt om uw Loomio-groep op te zetten en om ons meer inzicht te geven in uw organisatie, zodat we u beter kunnen ondersteunen.
     how_do_you_intend_to_use_loomio: Hoe wil je Loomio gebruiken?
     what_decisions_do_you_need_to_make: Welke beslissingen moet u nemen?
-    newsletter_intro: Wilt u zich abonneren op onze nieuwsbrief?
     newsletter_description: Blijf op de hoogte van nieuwe functies en inspirerende verhalen over hoe Loomio door organisaties over de hele wereld wordt gebruikt
     subscribe_to_newsletter: Abonneer u op de Loomio-nieuwsbrief
     form_incomplete: Vul alle velden van het formulier in om door te gaan
@@ -21,6 +20,7 @@ nl_NL:
     please_enter_a_valid_email_address: Gelieve een geldig e-mailadres in te geven
     please_accept_the_terms: Accepteer alstublieft de voorwaarden
     how_did_you_hear_about_loomio: Hoe heb je over Loomio gehoord?
+    newsletter_intro: Wilt u op de hoogte blijven van nieuwe functies, klantinterviews, casestudies en aankondigingen van het Loomio-team?
   tasks:
     tasks: Taken
     your_tasks: Jouw taken
@@ -1236,7 +1236,6 @@ nl_NL:
     description: Beschrijving
     description_placeholder: Beschrijf het doel van je groep, zodat je groepsleden weten waarom ze hier zijn.
     new_description_placeholder: Waarom probeer je Loomio? Welke beslissingen moet je samen nemen?
-    new_description_html: <h3 id="how-do-you-intend-to-use-loomio">Hoe wil je Loomio gebruiken?</h3><p></p><h3 id="why-is-this-important-for-your-group"> Waarom is dit belangrijk voor uw groep?</h3><p></p><h3 id="what-decisions-do-you-need-to-make"> Welke beslissingen moet u nemen?</h3><p></p>
     secret_by_default: Uw groep is alleen toegankelijk voor degenen die zijn uitgenodigd om lid te worden. U kunt dit later wijzigen.
     privacy_statement:
       public_on_web: Naam, omschrijving en bijlagen in de groep zijn publiekelijk zichtbaar
@@ -1304,6 +1303,7 @@ nl_NL:
     default_request_to_join_prompt: Bedankt voor uw interesse in onze groep. Stel uzelf voor en leg uit waarom u lid wilt worden.
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Upgrade uw abonnement</a> om een subgroep te creëren'
     share_this_url_with_people_who_want_to_join: Deel deze URL met mensen die mee willen doen
+    new_description_html: "<h3>Voor welke uitdagingen staat uw organisatie bij het nemen van beslissingen?</h3><p></p><h3> Hoe wilt u Loomio in uw organisatie gebruiken?</h3><p></p>"
   group_export_modal:
     title: Groepsdata exporteren
     body: |
@@ -1509,7 +1509,6 @@ nl_NL:
     email_newsletter: Loomio Nieuwsbrief
     email_newsletter_description: Ontvang updates over nieuwe features, training, evenementen in jouw stad en de toekomst van Loomio. Meestal 2 of 3 e-mails per jaar.
     email_catch_up_day: Inhaaloverzicht e-mail
-    daily_summary_description: Kies wanneer u de e-mail met het inhaaloverzicht wilt ontvangen. Deze e-mail bevat alle nieuwe activiteiten die u nog niet heeft gezien. Een goede manier om op de hoogte te blijven als u geen regelmatige gebruiker bent.
     on_participation_label: Abonneer op deelname
     on_participation_description: Als je deelneemt aan een bord, wordt alle verdere activiteit direct naar je gemaild.
     announcement_label: Aankondigingen
@@ -1526,6 +1525,7 @@ nl_NL:
       updated: E-mailinstellingen bijgewerkt
     learn_more: Leer meer over e-mailinstellingen...
     mentioned_description: Wanneer iemand jou in een reactie vermeldt, ontvang je een e-mailmelding
+    daily_summary_description: Kies wanneer je de e-mail met het overzicht wilt ontvangen. Deze e-mail bevat alle nieuwe activiteiten die je nog niet hebt gezien. Een goede manier om op de hoogte te blijven als je geen vaste gebruiker bent.
   thread_preview:
     replies_count: "%{count} antwoorden"
     unread_count: "%{count} ongelezen"

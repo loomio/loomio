@@ -243,11 +243,11 @@ class Api::V1::SnorlaxBase < ActionController::Base
   end
 
   def success_response
-    render json: {success: 'success'}
+    render json: { success: 'success' }
   end
 
   def error_response(status = 500)
-    render json: {error: status}, root: false, status: status
+    render json: { error: status }, root: false, status: status
   end
 
   def resource_params
@@ -267,14 +267,14 @@ class Api::V1::SnorlaxBase < ActionController::Base
   end
 
   def respond_with_standard_error(error, status)
-    render json: {exception: error.class, error: error.to_s}, root: false, status: status
+    render json: { exception: error.class, error: error.to_s }, root: false, status: status
   end
 
   def respond_with_error(status, message = "error")
-    render json: {error: message}, root: false, status: status
+    render json: { error: message }, root: false, status: status
   end
 
   def respond_with_errors(record = resource)
-    render json: {errors: record.errors.as_json}, root: false, status: 422
+    render json: { errors: record.errors.as_json }, root: false, status: 422
   end
 end

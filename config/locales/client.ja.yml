@@ -9,7 +9,6 @@ ja:
     how_do_you_intend_to_use_loomio: Loomioをどのように活用する予定ですか?
     what_decisions_do_you_need_to_make: どのような決定を下す必要がありますか?
     how_did_you_hear_about_loomio: Loomioについてどうやって知りましたか?
-    newsletter_intro: ニュースレターを購読しますか?
     newsletter_description: 新機能や、世界中の組織でLoomioがどのように使用されているかについての感動的なストーリーを常に把握しましょう
     subscribe_to_newsletter: Loomioニュースレターを購読する
     form_incomplete: 続行するにはフォームのすべてのフィールドに入力してください
@@ -20,6 +19,7 @@ ja:
     please_complete_this_field: このフィールドに入力してください
     please_enter_a_valid_email_address: 有効なメールアドレスを入力してください
     please_accept_the_terms: 利用規約に同意してください
+    newsletter_intro: Loomio チームからの新機能、顧客インタビュー、ケーススタディ、お知らせなどを聞きたいですか?
   tasks:
     tasks: タスク
     your_tasks: あなたのタスク
@@ -1227,7 +1227,6 @@ ja:
     description: 説明
     description_placeholder: グループのメンバーがなぜここにいるのかを理解できるように、グループの目的を説明します。
     new_description_placeholder: Loomio を試用する理由は何ですか?一緒にどのような決定を下す必要がありますか?
-    new_description_html: <h3 id="how-do-you-intend-to-use-loomio">Loomioをどのように使用する予定ですか?</h3><p></p><h3 id="why-is-this-important-for-your-group">これがあなたのグループにとってなぜ重要ですか?</h3><p></p><h3 id="what-decisions-do-you-need-to-make">どのような決定を下す必要がありますか?</h3><p></p>
     secret_by_default: あなたのグループには、参加するよう招待された人のみがアクセスできます。これは後で変更できます。
     privacy_statement:
       public_on_web: グループ コンテキストの名前、説明、添付ファイルが一般公開されます。
@@ -1295,6 +1294,7 @@ ja:
     default_request_to_join_prompt: 私たちのグループに興味を持っていただきありがとうございます。自己紹介と参加を希望する理由を説明してください。
     upgrade_for_subgroups: 'サブグループを作成するには、<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">サブスクリプションをアップグレードして</a>ください'
     share_this_url_with_people_who_want_to_join: 参加したい人にこのURLを共有してください
+    new_description_html: "<h3>あなたの組織は意思決定においてどのような課題に直面していますか?</h3><p></p><h3>あなたの組織ではLoomioをどのように活用したいですか?</h3><p></p>"
   group_export_modal:
     title: グループデータのエクスポート
     body: <p>グループのデータのコピーはいつでもダウンロードできます。<a href="https://help.loomio.org/en/user_manual/groups/data_export/">もっと詳しく調べてください。</a></p><p>グループの規模に応じて、完了までに数分かかります。準備が完了すると、ファイルをダウンロードするためのリンクが記載された電子メールが届きます。</p>
@@ -1492,7 +1492,6 @@ ja:
     email_newsletter: Loomio ニュースレター
     email_newsletter_description: 新機能、トレーニング、あなたの街のイベント、Loomio の将来に関する最新情報を入手します。メールは年に2～3通程度です。
     email_catch_up_day: 近況概要メール
-    daily_summary_description: キャッチアップ概要メールをいつ受信するかを選択します。このメールには、これまでに見たことのない新しいアクティビティが含まれています。定期的なユーザーではない場合でも、最新の情報を入手するには良い方法です。
     on_participation_label: 参加時に購読する
     on_participation_description: スレッドに参加すると、その後のすべてのアクティビティがすぐに電子メールで送信されます。
     announcement_label: お知らせ
@@ -1509,6 +1508,7 @@ ja:
       updated: メール設定が更新されました
     learn_more: メール設定の詳細...
     mentioned_description: 誰かがコメントであなたに言及すると、通知メールが届きます
+    daily_summary_description: キャッチアップサマリーメールの受信時期を選択してください。このメールには、まだ確認できていない新しいアクティビティがすべて含まれています。普段ご利用でない方でも、最新情報を常に把握できる便利な方法です。
   thread_preview:
     replies_count: "%{count} 件の返信"
     unread_count: "%{count} 件が未読です"

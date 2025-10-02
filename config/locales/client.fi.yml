@@ -9,7 +9,6 @@ fi:
     we_use_this_to_help: Näitä seuraavia tietoja käytetään luomaan Loomio-ryhmäsi ja auttamaan meitä ymmärtämään organisaatiotasi, jotta voimme tukea sinua paremmin.
     how_do_you_intend_to_use_loomio: Miten aiot käyttää Loomiota?
     what_decisions_do_you_need_to_make: Mitä päätöksiä sinun on tehtävä?
-    newsletter_intro: Haluatko tilata uutiskirjeemme?
     newsletter_description: Pysy ajan tasalla uusista ominaisuuksista ja inspiroivista tarinoista siitä, kuinka organisaatiot ympäri maailmaa käyttävät Loomiota
     subscribe_to_newsletter: Tilaa Loomio-uutiskirje
     form_incomplete: Täytä kaikki lomakkeen kentät jatkaaksesi
@@ -21,6 +20,7 @@ fi:
     please_enter_a_valid_email_address: Ole hyvä ja syötä toimiva sähköpostiosoite
     please_accept_the_terms: Hyväksy ehdot
     how_did_you_hear_about_loomio: Mistä kuulit Loomiosta?
+    newsletter_intro: Haluatko kuulla Loomio-tiimin uusista ominaisuuksista, asiakashaastatteluista, tapaustutkimuksista ja tiedotteista?
   tasks:
     tasks: Tehtävät
     your_tasks: Sinun tehtäväsi
@@ -1228,7 +1228,6 @@ fi:
     description: Kuvaus
     description_placeholder: Kuvaile ryhmäsi tarkoitusta, jotta ryhmäsi jäsenet tietävät, miksi he ovat täällä.
     new_description_placeholder: Miksi kokeilet Loomiota? Mitä päätöksiä sinun on tehtävä yhdessä?
-    new_description_html: <h3 id="how-do-you-intend-to-use-loomio">Miten aiot käyttää Loomiota?</h3><p></p><h3 id="why-is-this-important-for-your-group"> Miksi tämä on tärkeää ryhmällesi?</h3><p></p><h3 id="what-decisions-do-you-need-to-make"> Mitä päätöksiä sinun on tehtävä?</h3><p></p>
     secret_by_default: Ryhmääsi voivat käyttää vain ne, jotka on kutsuttu liittymään. Voit muuttaa tätä myöhemmin.
     privacy_statement:
       public_on_web: Ryhmäkontekstin nimi, kuvaus ja liitteet näkyvät julkisesti
@@ -1296,6 +1295,7 @@ fi:
     default_request_to_join_prompt: Kiitos mielenkiinnostasi ryhmäämme kohtaan. Esittele itsesi ja selitä, miksi pyydät liittymistä.
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Päivitä tilauksesi</a> luodaksesi aliryhmän'
     share_this_url_with_people_who_want_to_join: Jaa tämä URL-osoite niiden kanssa, jotka haluavat liittyä
+    new_description_html: "<h3>Millaisia haasteita organisaatiollanne on päätöksenteossa?</h3><p></p><h3> Miten haluaisit käyttää Loomiota organisaatiossasi?</h3><p></p>"
   group_export_modal:
     title: Vie ryhmätiedot
     body: <p>Voit ladata kopion ryhmäsi tiedoista milloin tahansa. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Lue lisää.</a></p><p> Suorittaminen kestää muutaman minuutin ryhmäsi koosta riippuen. Kun se on valmis, saat sähköpostin, jossa on linkki tiedoston lataamiseen.</p>
@@ -1493,7 +1493,6 @@ fi:
     email_newsletter: Loomio-uutiskirje
     email_newsletter_description: Saat päivityksiä uusista ominaisuuksista, koulutuksesta, kaupungissasi tapahtuvista tapahtumista ja Loomion tulevaisuudesta. Yleensä 2-3 sähköpostia vuodessa.
     email_catch_up_day: Yhteenveto sähköpostilla
-    daily_summary_description: Valitse, milloin haluat saada seurantayhteenvedon sähköpostin. Tämä sähköposti sisältää kaikkea uutta toimintaa, jota et ole nähnyt. Hyvä tapa pysyä ajan tasalla, jos et ole tavallinen käyttäjä.
     on_participation_label: Ilmoittaudu osallistumiseen
     on_participation_description: Kun osallistut ketjuun, kaikki muut tapahtumat lähetetään sinulle välittömästi sähköpostitse.
     announcement_label: Ilmoitukset
@@ -1510,6 +1509,7 @@ fi:
       updated: Sähköpostiasetukset päivitetty
     learn_more: Lisätietoja sähköpostiasetuksista...
     mentioned_description: Kun joku {'@'}mainitsee sinut kommentissa, saat ilmoituksen sähköpostitse.
+    daily_summary_description: Valitse, milloin haluat vastaanottaa yhteenvedon sähköpostitse. Tämä sähköposti sisältää kaikki uudet tapahtumat, joita et ole vielä nähnyt. Hyvä tapa pysyä ajan tasalla, jos et ole säännöllinen käyttäjä.
   thread_preview:
     replies_count: "%{count} vastausta"
     unread_count: "%{count} lukematonta"

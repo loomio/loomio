@@ -9,8 +9,7 @@ en:
     how_do_you_intend_to_use_loomio: How do you intend to use Loomio?
     what_decisions_do_you_need_to_make: What decisions do you need to make?
     how_did_you_hear_about_loomio: How did you hear about Loomio?
-    newsletter_intro: Would you like to subscribe to our newsletter?
-    newsletter_description: Stay updated about new features and inspiring stories of how Loomio is being used by organizations around the world
+    newsletter_intro: Would you like to hear about new features, customer interviews, case studies and announcements from the Loomio team?
     subscribe_to_newsletter: Subscribe to Loomio newsletter
     form_incomplete: Please complete all fields on the form to continue
     success: Success!
@@ -1336,9 +1335,7 @@ en:
     description: Description
     description_placeholder: Describe the purpose of your group so your group members know why they are here.
     new_description_placeholder: Why are you trialing Loomio? What decisions do you need to make together?
-    new_description_html: '<h3 id="how-do-you-intend-to-use-loomio">How do you intend to use Loomio?</h3><p></p><h3 id="why-is-this-important-for-your-group">Why is this important for your group?</h3><p></p><h3 id="what-decisions-do-you-need-to-make">What decisions do you need to make?</h3><p></p>
-
-      '
+    new_description_html: '<h3>What challenges does your organization face with decision-making?</h3><p></p><h3>How would you like to use Loomio in your organization?</h3><p></p>'
     secret_by_default: Your group will only be accessible by those who are invited to join. You can change this later.
     privacy_statement:
       public_on_web: Name, description, and attachments to the group context will be visible to the public
@@ -1605,11 +1602,8 @@ en:
     deactivate_header: Stop all emails forever
     deactivate_description: If you never want to get another email from us ever again, you can deactivate your user account.
     email_newsletter: Loomio Newsletter
-    email_newsletter_description: Get updates about new features, training, events in your city and the future of Loomio. Usually 2 or 3 emails per year.
     email_catch_up_day: Catch-up summary email
-    daily_summary_description: 'Choose when to receive the catch-up summary email. This email contains any new activity that you have not seen. A good way to stay up-to-date if you''re not a regular user.
-
-      '
+    daily_summary_description: 'Choose when to receive the catch-up summary email. This email contains any new activity that you have not seen. A good way to stay up-to-date if you''re not a regular user.'
     on_participation_label: Subscribe on participation
     on_participation_description: When you participate in a thread, all further activity will be emailed to you as it happens.
     announcement_label: Announcements

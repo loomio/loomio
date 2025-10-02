@@ -38,14 +38,14 @@ class User < ApplicationRecord
 
   before_save :set_legal_accepted_at, if: :legal_accepted
 
-  validates :email, presence: true, email: true, length: {maximum: 200}, if: -> { !bot }
+  validates :email, presence: true, email: true, length: { maximum: 200 }
 
   validates :name,               presence: true, if: :require_valid_signup
   validates :legal_accepted,     presence: true, if: :require_legal_accepted
 
   has_one_attached :uploaded_avatar
 
-  validates_uniqueness_of :email, conditions: -> { where(email_verified: true) }, if: :email_verified?
+  validates_uniqueness_of :email
   validates_uniqueness_of :username, if: :email
   before_validation :generate_username, if: :email
   validates_length_of :name, maximum: 100

@@ -9,7 +9,6 @@ tr:
     we_use_this_to_help: Aşağıdaki bilgiler, Loomio grubunuzu oluşturmak ve sizi daha iyi destekleyebilmemiz için kuruluşunuzu biraz anlamamıza yardımcı olmak için kullanılır.
     how_do_you_intend_to_use_loomio: Loomio'yu nasıl kullanmayı düşünüyorsunuz?
     what_decisions_do_you_need_to_make: Hangi kararları vermeniz gerekiyor?
-    newsletter_intro: Bizim bültenimize kaydolmak ister miydiniz?
     newsletter_description: Loomio'nun dünya çapındaki kuruluşlar tarafından nasıl kullanıldığına dair yeni özellikler ve ilham verici hikayeler hakkında güncel kalın
     subscribe_to_newsletter: Loomio bültenine abone olun
     form_incomplete: Devam etmek için lütfen formdaki tüm alanları doldurun
@@ -21,6 +20,7 @@ tr:
     please_enter_a_valid_email_address: Geçerli bir e
     please_accept_the_terms: Lütfen şartları kabul edin
     how_did_you_hear_about_loomio: Loomio'yu nasıl duydunuz?
+    newsletter_intro: Loomio ekibinin yeni özellikleri, müşteri röportajları, vaka çalışmaları ve duyuruları hakkında bilgi edinmek ister misiniz?
   tasks:
     tasks: Görevler
     your_tasks: Görevleriniz
@@ -1228,7 +1228,6 @@ tr:
     description: Tanım
     description_placeholder: Grubunuzun amacını açıklayın ki grup üyeleriniz neden burada olduklarını bilsin.
     new_description_placeholder: Neden Loomio'yu deniyorsun? Hangi kararları birlikte almanız gerekiyor?
-    new_description_html: <h3 id="how-do-you-intend-to-use-loomio">Loomio'yu nasıl kullanmayı düşünüyorsunuz?</h3><p></p><h3 id="why-is-this-important-for-your-group"> Bu grubunuz için neden önemli?</h3><p></p><h3 id="what-decisions-do-you-need-to-make"> Hangi kararları vermeniz gerekiyor?</h3><p></p>
     secret_by_default: Grubunuza yalnızca katılmaya davet edilen kişiler erişebilir. Bunu daha sonra değiştirebilirsiniz.
     privacy_statement:
       public_on_web: Grup bağlamına ilişkin ad, açıklama ve ekler herkese açık olacak
@@ -1296,6 +1295,7 @@ tr:
     default_request_to_join_prompt: Grubumuza olan ilginiz için teşekkür ederiz. Lütfen kendinizi tanıtın ve katılma isteğinizin nedenini açıklayın.
     upgrade_for_subgroups: 'Bir alt grup oluşturmak için lütfen <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">aboneliğinizi yükseltin</a>'
     share_this_url_with_people_who_want_to_join: Katılmak isteyen kişilerle bu URL'yi paylaşın
+    new_description_html: "<h3>Kuruluşunuz karar alma sürecinde hangi zorluklarla karşılaşıyor?</h3><p></p><h3> Loomio'yu kuruluşunuzda nasıl kullanmak istersiniz?</h3><p></p>"
   group_export_modal:
     title: Grup verilerini dışa aktar
     body: <p>Grubunuzun verilerinin bir kopyasını istediğiniz zaman indirebilirsiniz. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Daha fazlasını bul.</a></p><p> Grubunuzun büyüklüğüne bağlı olarak tamamlanması birkaç dakika sürer. Hazır olduğunda dosyayı indirme bağlantısını içeren bir e-posta alacaksınız.</p>
@@ -1493,7 +1493,6 @@ tr:
     email_newsletter: Loomio Haber Bülteni
     email_newsletter_description: Şehrinizdeki yeni özellikler, eğitimler, etkinlikler ve Loomio'nun geleceği hakkında güncellemeler alın. Genellikle yılda 2 veya 3 e-posta.
     email_catch_up_day: Yakalama özeti e-postası
-    daily_summary_description: Yakalama özeti e-postasının ne zaman alınacağını seçin. Bu e-posta, görmediğiniz yeni etkinlikleri içerir. Düzenli bir kullanıcı değilseniz güncel kalmanın iyi bir yolu.
     on_participation_label: Katılıma abone olun
     on_participation_description: Bir müzakereye katıldığınızda, ileriye yönelik tüm etkinlikler derhal size e-postayla gönderilecektir.
     announcement_label: Duyurular
@@ -1510,6 +1509,7 @@ tr:
       updated: E-posta ayarları güncellendi
     learn_more: E-posta ayarları hakkında daha fazla bilgi edinin...
     mentioned_description: Birisi {'@'} bir yorumda sizden bahsettiğinde, bir bildirim e-postası alacaksınız
+    daily_summary_description: Güncel bilgiler içeren özet e-postayı ne zaman almak istediğinizi seçin. Bu e-posta, daha önce görmediğiniz yeni etkinlikleri içerir. Düzenli bir kullanıcı değilseniz, güncel kalmanın iyi bir yoludur.
   thread_preview:
     replies_count: "%{count} yanıt"
     unread_count: "%{count} okunmamış"

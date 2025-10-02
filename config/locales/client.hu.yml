@@ -9,7 +9,6 @@ hu:
     we_use_this_to_help: Az alábbi információk a Loomio csoport létrehozására szolgálnak, és segít nekünk megérteni a szervezetét, hogy jobban tudjunk támogatni.
     how_do_you_intend_to_use_loomio: Hogyan kívánja használni a Loomio-t?
     what_decisions_do_you_need_to_make: Milyen döntéseket kell meghoznia?
-    newsletter_intro: Szeretne feliratkozni hírlevelünkre?
     newsletter_description: Legyen naprakész az új funkciókkal és inspiráló történetekkel kapcsolatban arról, hogy a Loomiot hogyan használják a szervezetek szerte a világon
     subscribe_to_newsletter: Iratkozzon fel a Loomio hírlevélre
     form_incomplete: A folytatáshoz töltse ki az űrlap összes mezőjét
@@ -21,6 +20,7 @@ hu:
     please_enter_a_valid_email_address: Kérjük valós e-mail címet adjon meg
     please_accept_the_terms: Kérjük, fogadja el a feltételeket
     how_did_you_hear_about_loomio: Honnan hallott a Loomio-ról?
+    newsletter_intro: Szeretne hallani az új funkciókról, ügyfélinterjúkról, esettanulmányokról és a Loomio csapatának bejelentéseiről?
   tasks:
     tasks: Feladatok
     your_tasks: Feladataid
@@ -1232,7 +1232,6 @@ hu:
     description: Leírás
     description_placeholder: Mutassa be csoportjának célját, hogy a csoport tagjai tudják, miért vannak itt.
     new_description_placeholder: Miért próbálod ki a Loomio-t? Milyen döntéseket kell közösen meghoznotok?
-    new_description_html: <h3 id="how-do-you-intend-to-use-loomio">Hogyan kívánja használni a Loomio-t?</h3><p></p><h3 id="why-is-this-important-for-your-group"> Miért fontos ez a csoportod számára?</h3><p></p><h3 id="what-decisions-do-you-need-to-make"> Milyen döntéseket kell meghoznia?</h3><p></p>
     secret_by_default: A csoportod csak azok számára lesz elérhető, akiket meghívtak, hogy csatlakozzanak. Ezt később módosíthatja.
     privacy_statement:
       public_on_web: A csoport kontextusának neve, leírása és mellékletei a nyilvánosság számára láthatóak lesznek
@@ -1300,6 +1299,7 @@ hu:
     default_request_to_join_prompt: Köszönjük érdeklődését csoportunk iránt. Kérlek, mutatkozz be, és indokold meg, miért jelentkezel.
     upgrade_for_subgroups: 'Kérjük <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">, frissítse előfizetését</a> egy alcsoport létrehozásához'
     share_this_url_with_people_who_want_to_join: Oszd meg ezt az URL-t azokkal, akik csatlakozni szeretnének
+    new_description_html: "<h3>Milyen kihívásokkal néz szembe a szervezete a döntéshozatal során?</h3><p></p><h3> Hogyan szeretné használni a Loomio-t a szervezetében?</h3><p></p>"
   group_export_modal:
     title: Csoport adatok letöltése
     body: <p>A csoport adatainak másolatát bármikor letöltheti. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Tudj meg többet.</a></p><p> A kitöltése a csoport méretétől függően néhány percet vesz igénybe. Ha készen áll, e-mailben kap egy linket a fájl letöltéséhez.</p>
@@ -1497,7 +1497,6 @@ hu:
     email_newsletter: Loomio hírlevél
     email_newsletter_description: Frissítse az új funkciókat, képzéseket, eseményeket a városában és a Loomio jövőjét. Általában 2 vagy 3 e-mail évente.
     email_catch_up_day: Felzárkóztató összefoglaló e-mail
-    daily_summary_description: Válassza ki, hogy mikor kapja meg az összefoglaló e-mailt. Ez az e-mail minden olyan új tevékenységet tartalmaz, amelyet még nem látott. Jó módja annak, hogy naprakészek maradjanak, ha Ön nem rendszeres felhasználó.
     on_participation_label: Feliratkozás a részvételre
     on_participation_description: Amikor részt vesz egy témában, az összes további tevékenységet azonnal elküldjük Önnek e-mailben.
     announcement_label: Bejelentések
@@ -1514,6 +1513,7 @@ hu:
       updated: Az e-mail beállítások frissítve
     learn_more: További információ az e-mail beállításokról ...
     mentioned_description: Amikor valaki {'@'}megemlít téged egy hozzászólásban, kapsz egy értesítő e-mailt.
+    daily_summary_description: Válaszd ki, mikor szeretnéd megkapni az összefoglaló e-mailt. Ez az e-mail tartalmazza azokat az új tevékenységeket, amelyeket még nem láttál. Jó módja annak, hogy naprakész maradj, ha nem vagy rendszeres felhasználó.
   thread_preview:
     replies_count: "%{count} válasz"
     unread_count: "%{count} olvasatlan"

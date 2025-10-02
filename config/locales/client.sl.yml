@@ -9,7 +9,6 @@ sl:
     we_use_this_to_help: Te naslednje informacije se uporabljajo za vzpostavitev vaše skupine Loomio in nam pomagajo razumeti nekaj o vaši organizaciji, da vas lahko bolje podpiramo.
     how_do_you_intend_to_use_loomio: Kako nameravate uporabljati Loomio?
     what_decisions_do_you_need_to_make: Kakšne odločitve morate sprejeti?
-    newsletter_intro: Bi se želeli naročiti na naše novice?
     newsletter_description: Bodite na tekočem z novimi funkcijami in navdihujočimi zgodbami o tem, kako organizacije po vsem svetu uporabljajo Loomio
     subscribe_to_newsletter: Naročite se na glasilo Loomio
     form_incomplete: Za nadaljevanje izpolnite vsa polja na obrazcu
@@ -21,6 +20,7 @@ sl:
     please_enter_a_valid_email_address: Vnesite veljaven elektronski naslov
     please_accept_the_terms: Sprejmite pogoje
     how_did_you_hear_about_loomio: Kako ste izvedeli za Loomio?
+    newsletter_intro: Bi radi slišali o novih funkcijah, intervjujih s strankami, študijah primerov in napovedih ekipe Loomio?
   tasks:
     tasks: Naloge
     your_tasks: Vaše naloge
@@ -1228,7 +1228,6 @@ sl:
     description: Opis
     description_placeholder: Opišite namen vaše skupine, da bodo člani vaše skupine vedeli, zakaj so tukaj.
     new_description_placeholder: Zakaj preizkušaš Loomio? Katere odločitve morata sprejeti skupaj?
-    new_description_html: <h3 id="how-do-you-intend-to-use-loomio">Kako nameravate uporabljati Loomio?</h3><p></p><h3 id="why-is-this-important-for-your-group"> Zakaj je to pomembno za vašo skupino?</h3><p></p><h3 id="what-decisions-do-you-need-to-make"> Kakšne odločitve morate sprejeti?</h3><p></p>
     secret_by_default: Do vaše skupine bodo lahko dostopali samo tisti, ki so povabljeni, da se pridružijo. To lahko spremenite pozneje.
     privacy_statement:
       public_on_web: Ime, opis in priloge k kontekstu skupine bodo vidni javnosti
@@ -1296,6 +1295,7 @@ sl:
     default_request_to_join_prompt: Hvala za vaše zanimanje za našo skupino. Predstavite se in razložite, zakaj se želite pridružiti.
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Nadgradite svojo naročnino</a> , da ustvarite podskupino.'
     share_this_url_with_people_who_want_to_join: Delite ta URL z ljudmi, ki se želijo pridružiti
+    new_description_html: "<h3>S katerimi izzivi se vaša organizacija sooča pri odločanju?</h3><p></p><h3> Kako bi želeli uporabljati Loomio v svoji organizaciji?</h3><p></p>"
   group_export_modal:
     title: Izvoz podatkov skupine
     body: <p>Kopijo podatkov svoje skupine lahko prenesete kadar koli. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Izvedi več.</a></p><p> Izpolnitev traja nekaj minut, odvisno od velikosti vaše skupine. Ko bo pripravljena, boste prejeli e-poštno sporočilo s povezavo za prenos datoteke.</p>
@@ -1493,7 +1493,6 @@ sl:
     email_newsletter: Glasilo Loomio
     email_newsletter_description: Prejemajte posodobitve o novih funkcijah, usposabljanju, dogodkih v vašem mestu in prihodnosti Loomio. Običajno 2 ali 3 e-poštna sporočila na leto.
     email_catch_up_day: E-poštno sporočilo s povzetkom
-    daily_summary_description: Izberite, kdaj želite prejeti e-poštno sporočilo s povzetkom. To e-poštno sporočilo vsebuje vse nove dejavnosti, ki jih še niste videli. Dober način, da ostanete na tekočem, če niste redni uporabnik.
     on_participation_label: Prijavite se na sodelovanje
     on_participation_description: Ko sodelujete v niti, vam bodo vse nadaljnje dejavnosti takoj poslane po e-pošti.
     announcement_label: Obvestila
@@ -1510,6 +1509,7 @@ sl:
       updated: Email nastavitve posodobljene
     learn_more: Več o nastavitvah e-pošte ...
     mentioned_description: Ko vas nekdo {'@'}omeni v komentarju, boste prejeli obvestilo po e-pošti
+    daily_summary_description: Izberite, kdaj želite prejeti e-poštno sporočilo s povzetkom zamujenega. To e-poštno sporočilo vsebuje vse nove dejavnosti, ki jih še niste opazili. Dober način, da ostanete na tekočem, če niste redni uporabnik.
   thread_preview:
     replies_count: "%{count} odgovorov"
     unread_count: "%{count} neprebranih"
