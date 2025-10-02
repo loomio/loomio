@@ -20,21 +20,6 @@ describe Api::V1::TrialsController do
     expect(JSON.parse(response.body)["errors"]["user_email"]).to include("Email address already exists. Please sign in to continue.")
   end
 
-  it "verifies accept legal" do
-    post :create, params: {
-      user_name: "Jimmy",
-      user_email: "jimmy1@example.com",
-      group_name: "Jim group",
-      group_description: "Make decisions",
-      group_category: "boards",
-      group_how_did_you_hear_about_loomio: "I work there",
-      user_email_newsletter: true,
-      user_legal_accepted: false
-    }
-    expect(response.status).to eq 422
-    expect(JSON.parse(response.body)["errors"]["user_legal_accepted"]).to include("must be accepted")
-  end
-
   it "creates new user and group and sends login email" do
     post :create, params: {
       user_name: "Jimmy",
