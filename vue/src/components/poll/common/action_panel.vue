@@ -62,7 +62,7 @@ export default
           this.stance = this.lastStanceOrNew().clone();
         }
 
-        if (!this.stance && AbilityService.canParticipateInPoll(this.poll)) {
+        if (!this.stance && (AbilityService.canParticipateInPoll(this.poll) || this.poll.myStance())) {
           this.stance = this.lastStanceOrNew().clone();
         }
       }
@@ -101,18 +101,26 @@ export default
 </script>
 
 <template lang="pug">
-.poll-common-action-panel(v-if="!poll.closedAt" style="position: relative")
-  v-alert.poll-common-action-panel__anonymous-message.mt-6(
-    v-if='poll.anonymous'
-    density="compact"
-    variant="tonal"
-    type="info"
-  )
-    span(v-t="'poll_common_action_panel.anonymous'")
+.poll-common-action-panel(style="position: relative")
+  template(v-if="!poll.closedAt")
+    v-alert.poll-common-action-panel__anonymous-message.mt-6(
+      v-if='poll.anonymous'
+      density="compact"
+      variant="tonal"
+      type="info"
+    )
+      span(v-t="'poll_common_action_panel.anonymous'")
 
-  .poll-common-vote-form(v-if="stance && !stance.castAt")
-    h3.text-h6.py-3.text-high-emphasis(v-t="'poll_common.have_your_say'")
-    poll-common-directive(:stance='stance' name='vote-form')
+    .poll-common-vote-form(v-if="stance && !stance.castAt")
+      h3.text-h6.py-3.text-high-emphasis(v-t="'poll_common.have_your_say'")
+      poll-common-directive(:stance='stance' name='vote-form')
+
+    .poll-common-unable-to-vote(v-if='!stance')
+      v-alert.my-4(
+        color="warning"
+        variant="tonal"
+      )
+        span(v-t="{path: 'poll_common_action_panel.unable_to_vote', args: {poll_type: poll.translatedPollType()}}")
 
   template(v-if="stance && stance.castAt && poll.pollType != 'meeting'")
     template(v-if="poll.singleChoice()")
@@ -126,19 +134,12 @@ export default
         .d-flex.align-center
           span.text-truncate.text-medium-emphasis {{strippedReason}}
           v-spacer
-          action-button.float-right(:action="editStanceAction" variant="tonal")
+          action-button.float-right(v-if="!poll.closedAt" :action="editStanceAction" variant="tonal")
     template(v-else)
       v-alert.poll-common-current-vote(variant="tonal" color="primary" border :title="$t('poll_common.you_voted')")
         poll-common-stance-choices(:stance='stance')
         .d-flex
           v-spacer
-          action-button.float-right(:action="editStanceAction" variant="tonal")
-
-  .poll-common-unable-to-vote(v-if='!stance')
-    v-alert.my-4(
-      color="warning"
-      variant="tonal"
-    )
-      span(v-t="{path: 'poll_common_action_panel.unable_to_vote', args: {poll_type: poll.translatedPollType()}}")
+          action-button.float-right(v-if="!poll.closedAt" :action="editStanceAction" variant="tonal")
 
 </template>
