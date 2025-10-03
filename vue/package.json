@@ -51,7 +51,7 @@
     "@tiptap/extension-underline": "^2.23.1",
     "@tiptap/pm": "^2.23.1",
     "@tiptap/suggestion": "^2.23.1",
-    "@tiptap/vue-3": "^2.23.1",
+    "@tiptap/vue-3": "^3.6.3",
     "activestorage": "^5.2.8",
     "chart.js": "^3.9.1",
     "date-fns": "2.30.0",
