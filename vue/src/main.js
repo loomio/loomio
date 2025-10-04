@@ -24,16 +24,6 @@ import { plugin as Slicksort } from 'vue-slicksort';
 boot(function(data) {
   Session.apply(data);
 
-  // maybe after merge into master we'll take theme settings from server again
-  // each(AppConfig.theme.vuetify.dark, (value, key) => {
-  //   if (value) { vuetify.theme.themes.value.dark.colors[key] = value; }
-  //   return true;
-  // });
-  // each(AppConfig.theme.vuetify.light, (value, key) => {
-  //   if (value) { vuetify.theme.themes.value.light.colors[key] = value; }
-  //   return true;
-  // });
-
   const app = createApp(App);
   if (AppConfig.sentry_dsn) {
     Sentry.init({
