@@ -204,6 +204,10 @@ ActiveAdmin.register Group, as: 'Group' do
       f.input :handle, as: :string
       f.input :subscription_id, label: "Subscription Id"
       f.input :is_visible_to_public, label: "Visible to public? (will change privacy of group, subgroups, discussions)"
+      if f.object.parent_id
+        f.input :is_visible_to_parent_members, label: "Visible to parent members?"
+        f.input :parent_members_can_see_discussions, label: "Parent members can see private threads?"
+      end
       f.input :membership_granted_upon, as: :select, collection: %w[request approval invitation]
     end
     f.actions
