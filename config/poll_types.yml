@@ -247,6 +247,7 @@ poll:
   min_options: 1
   allow_none_of_the_above: true
   allow_quorum: true
+  allow_vote_share_requirement: true
   defaults:
     details_format: html
     process_introduction_format: html

@@ -535,7 +535,7 @@ export default {
       template(v-slot:append-inner)
         span.mr-4 %
     .text-body-2.mt-n4.pb-4.font-italic.text-medium-emphasis(
-      v-if="poll.quorumPct && poll.config().allow_vote_share_requirement"
+      v-if="poll.quorumPct && poll.pollType == 'proposal' && poll.config().allow_vote_share_requirement"
       v-t="'poll_common_form.quorum_tip_vote_share_requirement'"
     )
 
