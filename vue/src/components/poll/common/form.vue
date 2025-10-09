@@ -2,6 +2,7 @@
 import AppConfig from '@/shared/services/app_config';
 import Session from '@/shared/services/session';
 import { mapKeys, without, some, pick, snakeCase } from 'lodash-es';
+import { I18n } from '@/i18n';
 import Flash from '@/shared/services/flash';
 import Records from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
