@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_09_22_103715) do
+ActiveRecord::Schema[7.2].define(version: 2025_10_09_093938) do
+  create_schema "pghero"
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -631,7 +633,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_22_103715) do
     t.jsonb "custom_fields", default: {}, null: false
     t.string "statement_format", limit: 10, default: "md", null: false
     t.jsonb "attachments", default: [], null: false
-    t.string "secret_token", default: -> { "public.gen_random_uuid()" }
     t.integer "versions_count", default: 0, null: false
     t.date "review_on"
     t.string "content_locale"
