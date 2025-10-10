@@ -104,9 +104,11 @@ class User < ApplicationRecord
   has_many :tags, through: :groups
 
   before_save :set_avatar_initials
-  initialized_with_token :unsubscribe_token,        -> { Devise.friendly_token }
-  initialized_with_token :email_api_key,            -> { SecureRandom.hex(16) }
-  initialized_with_token :api_key,                  -> { SecureRandom.hex(16) }
+
+  initialized_with_token :unsubscribe_token
+  initialized_with_token :email_api_key
+  initialized_with_token :api_key
+  initialized_with_token :secret_token
 
   enum :default_membership_volume, [:mute, :quiet, :normal, :loud]
 

@@ -234,7 +234,7 @@ class GroupExportService
     tables = datas.map{ |data| data['table'] }.uniq
 
     ActiveRecord::Base.transaction do
-      #import the records, remember old with new ids
+      # import the records, remember old with new ids
       (tables - ['attachments']).each do |table|
         migrate_ids[table] = {}
         klass = table.classify.constantize
@@ -247,12 +247,8 @@ class GroupExportService
             record.set_key
           end
 
-          if data['record'].has_key?('secret_token')
-            record.secret_token = nil
-          end
-
-          if data['record'].has_key?('token')
-            record.token = klass.generate_unique_secure_token
+          ['secret_token', 'token'].each do |name|
+            record.send("#{name}=", klass.generate_unique_secure_token) if data['record'].has_key? name
           end
 
           if table == 'groups'

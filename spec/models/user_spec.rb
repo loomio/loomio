@@ -125,6 +125,18 @@ describe User do
     end
   end
 
+  describe "secret_token" do
+    it "ensures new users have secret_token" do
+      User.import [User.new(name: "User", email: "huh@example.com", password: "sssYZ123")]
+      assert User.find_by(email: "huh@example.com").secret_token.present?
+    end
+
+    it "generates a token for a new user " do
+      u = User.create(name: "Test User", email: "test1@example.com", password: "passwordXYZ123")
+      assert u.secret_token.present?
+    end
+  end
+
   describe "usernames" do
     before do
       @user1 = User.new(name: "Test User", email: "test1@example.com", password: "passwordXYZ123")

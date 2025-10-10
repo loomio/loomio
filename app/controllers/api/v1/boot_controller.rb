@@ -24,9 +24,8 @@ class Api::V1::BootController < Api::V1::RestfulController
   end
 
   def set_channel_token
-    token = current_user.secret_token || SecureRandom.hex
     CACHE_REDIS_POOL.with do |client|
-      client.set("/current_users/#{token}",
+      client.set("/current_users/#{current_user.secret_token}",
         {name: current_user.name,
          group_ids: current_user.group_ids,
          id: current_user.id}.to_json)

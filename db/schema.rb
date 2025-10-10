@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_10_09_093938) do
+ActiveRecord::Schema[7.2].define(version: 2025_10_10_133348) do
   create_schema "pghero"
 
   # These are extensions that must be enabled in order to support this database
@@ -1025,7 +1025,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_10_09_093938) do
     t.jsonb "attachments", default: [], null: false
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
-    t.string "secret_token", default: -> { "public.gen_random_uuid()" }
+    t.string "secret_token", default: -> { "public.gen_random_uuid()" }, null: false
     t.string "content_locale"
     t.boolean "bot", default: false, null: false
     t.jsonb "link_previews", default: [], null: false
