@@ -1,5 +1,6 @@
 class Api::V1::BootController < Api::V1::RestfulController
   def site
+    set_channel_token
     render json: Boot::Site.new.payload.merge(user_payload)
     EventBus.broadcast('boot_site', current_user)
   end
@@ -19,8 +20,7 @@ class Api::V1::BootController < Api::V1::RestfulController
     Boot::User.new(current_user,
                    root_url: URI(root_url).origin,
                    identity: serialized_pending_identity,
-                   flash: flash,
-                   channel_token: set_channel_token).payload
+                   flash: flash).payload
   end
 
   def set_channel_token
@@ -30,7 +30,6 @@ class Api::V1::BootController < Api::V1::RestfulController
          group_ids: current_user.group_ids,
          id: current_user.id}.to_json)
     end
-    token
   end
 
   def current_user

@@ -2,12 +2,11 @@ module Boot
   class User
     attr_reader :user
 
-    def initialize(user, root_url:, identity: {}, flash: {}, channel_token: nil)
+    def initialize(user, root_url:, identity: {}, flash: {})
       @user     = user
       @root_url = root_url
       @identity = identity
       @flash    = flash.to_h
-      @channel_token = channel_token
     end
 
     def payload
@@ -16,7 +15,7 @@ module Boot
         pending_identity: @identity,
         flash:            @flash,
         root_url:         @root_url,
-        channel_token:   @channel_token
+        channel_token:    user.secret_token
       )
     end
 
