@@ -9,7 +9,6 @@ he:
     we_use_this_to_help: המידע הבא משמש להקמת קבוצת Loomio שלך וכדי לעזור לנו להבין מעט על הארגון שלך כדי שנוכל לתמוך בך טוב יותר.
     how_do_you_intend_to_use_loomio: איך אתה מתכוון להשתמש ב-Loomio?
     what_decisions_do_you_need_to_make: אילו החלטות אתה צריך לקבל?
-    newsletter_intro: האם תרצה להירשם לניוזלטר שלנו?
     newsletter_description: הישאר מעודכן לגבי תכונות חדשות וסיפורים מעוררי השראה על האופן שבו משתמשים ב-Loomio על ידי ארגונים ברחבי העולם
     subscribe_to_newsletter: הירשם לניוזלטר של Loomio
     form_incomplete: אנא מלא את כל השדות בטופס כדי להמשיך
@@ -21,6 +20,7 @@ he:
     please_enter_a_valid_email_address: אנא הזן כתובת דוא"ל תקנית
     please_accept_the_terms: אנא קבל את התנאים
     how_did_you_hear_about_loomio: איך שמעת על לומיו?
+    newsletter_intro: האם תרצו לשמוע על תכונות חדשות, ראיונות עם לקוחות, מקרי בוחן והכרזות מצוות Loomio?
   tasks:
     tasks: משימות
     your_tasks: המשימות שלך
@@ -560,6 +560,16 @@ he:
     from_comment: מתוך כתובת אתר של תגובה
     from_sequence_id: מתוך כתובת אתר של פריט שרשור
     unread: חדש לך
+    jump_to: קפיצה אל
+    timeline: ציר זמן
+    top: רֹאשׁ
+    bottom: תַחתִית
+    start: הַתחָלָה
+    latest: אחרון
+    showing_latest: מציג את העדכונים האחרונים
+    showing_unread: מציג דברים שלא נקראו
+    add_comment: הוסף תגובה
+    start_decision: החלטה להתחיל
   search_modal:
     all_content: כל התוכן
     best_match: ההתאמה הטובה ביותר
@@ -615,6 +625,8 @@ he:
     theme: נוֹשֵׂא
     light: אוֹר
     dark: כֵּהֶה
+    light_blue: תכלת
+    dark_blue: כחול כהה
   membership_card:
     group_members: חברי הקבוצה
     discussion_members: חברים בשיחה
@@ -1220,7 +1232,6 @@ he:
     description: תיאור
     description_placeholder: תאר את מטרת הקבוצה כך שחבריה ידעו למה הם פה.
     new_description_placeholder: למה אתה מבחן את לומיו? אילו החלטות אתם צריכים לקבל ביחד?
-    new_description_html: <h3 id="how-do-you-intend-to-use-loomio" style=";text-align:right;direction:rtl">איך אתה מתכוון להשתמש ב-Loomio?</h3><p style=";text-align:right;direction:rtl"></p><h3 id="why-is-this-important-for-your-group" style=";text-align:right;direction:rtl"> למה זה חשוב לקבוצה שלך?</h3><p style=";text-align:right;direction:rtl"></p><h3 id="what-decisions-do-you-need-to-make" style=";text-align:right;direction:rtl"> אילו החלטות אתה צריך לקבל?</h3><p style=";text-align:right;direction:rtl"></p>
     secret_by_default: הקבוצה שלך תהיה נגישה רק למי שמוזמן להצטרף. תוכל לשנות זאת מאוחר יותר.
     privacy_statement:
       public_on_web: שם, תיאור, וקבצים מצורפים בתוכן הקבוצה יהיו זמינים לצפייה לכולם
@@ -1287,6 +1298,8 @@ he:
     request_to_join_prompt: בקשת הצטרפות
     default_request_to_join_prompt: תודה על ההתעניינות בקבוצה שלנו. אנא הצג את עצמך והסבר מדוע אתה מבקש להצטרף.
     upgrade_for_subgroups: 'אנא <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">שדרג את המנוי שלך</a> כדי ליצור תת-קבוצה'
+    share_this_url_with_people_who_want_to_join: שתף כתובת URL זו עם אנשים שרוצים להצטרף
+    new_description_html: <h3 style=";text-align:right;direction:rtl">אילו אתגרים עומדים בפני הארגון שלכם בקבלת החלטות?</h3><p style=";text-align:right;direction:rtl"></p><h3 style=";text-align:right;direction:rtl"> כיצד תרצה להשתמש ב-Loomio בארגון שלך?</h3><p style=";text-align:right;direction:rtl"></p>
   group_export_modal:
     title: יצוא נתונים מהקבוצה
     body: |
@@ -1492,7 +1505,6 @@ he:
     email_newsletter: הניוזלטר של לומיו
     email_newsletter_description: קבל עדכונים על פיצ'רים חדשים, הדרכות, אירועים בעיר שלך ועתיד לומיו. בד"כ 2-3 מיילים בשנה.
     email_catch_up_day: דוא"ל סיכום
-    daily_summary_description: בחר מתי לקבל את דוא"ל הסיכום. אימייל זה מכיל פעילות חדשה שלא ראית. דרך טובה להישאר מעודכן אם אינך משתמש רגיל.
     on_participation_label: הרשם בהשתתפות
     on_participation_description: כשאתה משתתף בשיחה, כל פעילות עתידית תשלח אליך למייל באופן מיידי.
     announcement_label: הודעות
@@ -1509,6 +1521,7 @@ he:
       updated: הגדרות מייל עודכנו
     learn_more: למד עוד על הגדרות מייל...
     mentioned_description: כאשר מישהו {'@'}מזכיר אותך בתגובה, תקבל התראה בדוא"ל
+    daily_summary_description: בחר מתי לקבל את דוא"ל סיכום העדכון. דוא"ל זה מכיל כל פעילות חדשה שלא ראית. דרך טובה להישאר מעודכנים אם אינך משתמש קבוע.
   thread_preview:
     replies_count: "%{count} תשובות"
     unread_count: "%{count} לא נקראו"
@@ -1757,6 +1770,22 @@ he:
     thumb_down: אגודל למטה
     thumb_sideways: אגודל הצידה
     hand_up: יד למעלה
+    of: שֶׁל
+    at_least: לְפָחוֹת
+    no_more_than: לא יותר מ
+    votes_cast: קולות שהושלכו
+    eligible_voters: בעלי זכות הצבעה
+    gte_score_percent: נדרשים לפחות %{percent}% מהקולות המועמדים
+    gte_voter_percent: צריך לפחות %{percent}% מבעלי זכות הצבעה
+    lte_score_percent: אסור שיעלה על %{percent}% מהקולות שניתנו
+    lte_voter_percent: לא יעלה על %{percent}% מכלל בעלי זכות הבחירה
+    name_gte_score_percent: "%{name} זקוק לפחות ל-%{percent}% מהקולות שהוטלו"
+    name_gte_voter_percent: "%{name} זקוק לפחות ל-%{percent}% מבעלי זכות הצבעה"
+    name_lte_score_percent: "%{name} לא יעלה על %{percent}% מהקולות שהוטלו"
+    name_lte_voter_percent: מספר המצביעים %{name} לא יעלה על %{percent}%
+    vote_share_requirement: דרישת שיעור ההצבעה
+    for_the_proposal_to_pass: כדי שההצעה תעבור, אופציה זו חייבת לקבל...
+    for_the_poll_to_be_valid: כדי ש-%{poll_type} יהיה תקף, אפשרות זו חייבת לקבל...
   poll_common:
     superseded: הוחלף
     outdated: מְיוּשָׁן
@@ -1846,6 +1875,8 @@ he:
     edit_warning: עריכה מומלצת רק עבור שינויים קלים או תיקון שגיאות כתיב. לשינויים משמעותיים, סגור את ה-%{pollType} הזה והתחל חדש.
     no_voting: לדיון בלבד, ההצבעה מושבתת
     post_outcome: תוצאה לאחר מכן
+    view_all_votes: הצג את כל ההצבעות
+    you_voted: הצבעת
   poll_common_attachment_form:
     label: קבצים מצורפים
   poll_common_add_option:
@@ -1946,6 +1977,8 @@ he:
     unable_to_vote: לא הוזמנת להצביע ב-%{poll_type} הזה
     draft_mode: ההצבעה מושבתת. זה עדיין לא פתוח להצבעה.
     voting_disabled_poll_is_template: ההצבעה מושבתת. זו תבנית.
+    for_this_proposal_to_pass: 'כדי שההצעה הזו תעבור:'
+    for_this_poll_type_to_be_valid: 'כדי ש-%{poll_type} הזה יהיה תקף:'
   poll_common_collapsed:
     by_who: על פי %{name}
   poll_common_calendar_invite:
@@ -1960,48 +1993,6 @@ he:
     event_description_placeholder: מה התוכנית/לו"ז לפגישה?
     location: מיקום
     location_placeholder: איפה תתקיים הפגישה?
-  poll_common_settings:
-    who_can_vote: מי יכול להצביע?
-    short_reason_can_be_helpful: שמירה על הסיבות להצבעה קצרות מקלה על הבנתן. אוסף של נימוקים תמציתיים הוא משאב נהדר לקבלת החלטה.
-    specified_voters_only_true: אנשים מוזמנים בלבד
-    specified_voters_only_false_group: כל אחד בקבוצה
-    specified_voters_only_false_discussion: כל אחד בשרשור
-    invite_people_next: אתה יכול לבחור מי מוזמן להצביע לאחר שתתחיל את ה-%{poll_type}
-    shuffle_options:
-      shuffle_options: ערבוב אפשרויות
-      title: הצג אפשרויות בסדר אקראי
-      helptext: אפשרות להיות ראשונה ברשימה יכולה לתת לה הטיה. השתמש בהגדרה זו כדי להתמודד עם האפקט הזה.
-    multiple_choice:
-      title: ריבוי אפשרויות
-      helptext_on: כשמסומן, משתתפים יוכלו לבחור כמה אפשרויות.
-    anyone_can_participate:
-      title: כל אחד עם לינק יכול להשתתף
-      helptext_on: כשנבחר, כל אחד עם הלינק לסקר יכול להשתתף.
-    notify_on_closing_soon:
-      voting_closes_too_soon: מכיוון שההצבעה נסגרת תוך 24 שעות, לא יישלחו תזכורות לסגירה בקרוב.
-      closes_too_soon: מכיוון שה-%{pollType} הזה נסגר תוך 24 שעות, לא יישלחו תזכורות לסגירה בקרוב.
-      title: 24 שעות לפני סגירת %{pollType}, שלח תזכורת אל
-      voting_title: 24 שעות לפני סגירת ההצבעה, שלח תזכורת ל
-      nobody: אף אחד
-      author: מחבר (אני)
-      undecided_voters: מצביעים מתלבטים
-      voters: כל המצביעים
-    notify_on_participate:
-      title: עדכן אותי כשאנשים משתתפים
-      helptext_on: כשנבחר, תקבל הודעת עדכון בכל פעם מישהו משתתף.
-    anonymous:
-      title: מצביעים אנונימיים
-      helptext_on: כשנבחר, מידע על המשתתפים לא יוצג עם כל תגובה.
-    voter_can_add_options:
-      title: הבוחרים יכולים להוסיף אפשרויות חלופיות
-    can_respond_maybe:
-      title: מצביעים יכולים להשיב "אם נדרש"
-    allow_long_reason:
-      title: אפשר להצביע 'סיבה' להיות יותר מ-500 תווים
-    hide_results_until_closed:
-      title: הסתר את התוצאות עד לסגירה
-      helptext_on: אל תראה כיצד אנשים הצביעו עד שהסקר ייסגר
-    show_none_of_the_above: כלול אפשרות "אף אחד מהבאים לעיל".
   poll_common_close_form:
     title: לסגור את %{poll_type} עכשיו?
     helptext: האם אתה בטוח שברצונך לסגור את ה-%{poll_type} הזה מוקדם ולשתף תוצאה?
@@ -2060,7 +2051,6 @@ he:
     enter_an_outcome: הזן תוצאה
   poll_common_outcome_form:
     review_due_in_days: לבדוק את ההחלטה לאחר כמה ימים?
-    review_due_in_days_hint: פרק זמן (בימים) להמתנה לפני בחינת ההחלטה. (אופציונאלי)
     review_date: תאריך ביקורת
     review_date_hint: קבע תאריך לבדיקת ההחלטה (אופציונלי)
     who_to_notify: למי אתה רוצה להודיע על התוצאה הזו? (אופציונאלי)
@@ -2070,109 +2060,17 @@ he:
     outcome_created: תוצאה נוצרה
     outcome_updated: תוצאה עודכנה
     statement_placeholder: סכם את התגובות והסבר מה יקרה בהמשך.
-    statement_template_placeholder: ספק תבנית לכתיבת תוצאה של ההחלטה. (אופציונאלי)
     you_will_be_notified: תקבל הודעה בתאריך הבדיקה.
     submit: שתפ/י תוצאה
+    review_due_in_days_hint: מספר הימים שיש להמתין לפני בחינת ההחלטה (אופציונלי).
+    statement_template_hint: ספקו תבנית לכתיבת תוצאת ההחלטה. (אופציונלי)
+    statement_template_placeholder: תודה על ההשתתפות! הגענו למניין חוקי ויש לנו תמיכה להמשיך.
   poll_common_outcome_panel:
     authored_by: לפי %{name}
   poll_common_delete_modal:
     question: אתה בטוח שברצונך למחוק את זה?
     title: מחק את %{pollType}
     success: נמחק בהצלחה
-  poll_common_form:
-    notify_everyone_when_poll_starts: הודע לכולם כאשר %{poll_type} מתחיל
-    option_has_votes_confirm_delete: חלק מהאנשים הצביעו עבור אפשרות זו, האם אתה בטוח שברצונך למחוק אותה?
-    example_title: כותרת לדוגמה
-    example_title_hint: תן דוגמה לכותרת הצעה טובה
-    example_details_placeholder: ספק נקודת התחלה להצעה או סקר. שאלות יכולות להיות הנחיות שימושיות כדי לגרום לאנשים לכתוב. כלול כללים או תזכורות שהמשתתפים יצטרכו לדעת.
-    confirm_delete: האם אתה בטוח שברצונך למחוק תבנית סקר זו? אי אפשר לבטל את זה.
-    show_advanced_settings: הצג הגדרות מתקדמות
-    hide_advanced_settings: הסתר הגדרות מתקדמות
-    choose_at_least: תבחר לפחות
-    choose_at_most: בחר לכל היותר
-    please_review_the_form: אנא עיין בטופס
-    option_added_please_add_details: נוספה אפשרות! אנא הוסף כמה פרטים כדי שאנשים ידעו מה זה אומר.
-    default_duration_in_days: משך ברירת המחדל בימים
-    default_duration_in_days_hint: כמה ימים צריך לתת לאנשים להצביע?
-    how_many_options_can_a_voter_choose: כמה מהאפשרויות הללו יכול לבחור לבחור?
-    minimum_choices: מינימום בחירות
-    maximum_choices: מקסימום אפשרויות בחירה
-    content: תוֹכֶן
-    reminder: תִזכּוֹרֶת
-    your_in_zone: 'אזור זמן נוכחי: %{zone}'
-    show_other_zones: הצג אזורי זמן אחרים
-    hide_other_zones: הסתר אזורי זמן אחרים
-    this_is_a_template_for_new_polls: זוהי תבנית לסקרים חדשים
-    voting_method: שיטת ההצבעה
-    voting_methods:
-      question: סבב שאלות
-      question_hint: הזמן שאלות והערות על ההצעה שלך
-      show_thumbs: הפגנת אצבעות
-      show_thumbs_hint: הבוחרים בוחרים באגודל למעלה, למטה, הצידה או יד למעלה
-      choose: בחר
-      simple_poll: סקר פשוט
-      choose_hint: הבוחרים בוחרים באפשרות (או האפשרויות) הטובות ביותר
-      score: ציון
-      score_hint: הבוחרים מעניקים ניקוד לכל אפשרות
-      allocate: לְהַקְצוֹת
-      allocate_hint: הבוחרים מחלקים תקציב של נקודות בין האפשרויות
-      ranked_choice: דירוג בחירה
-      ranked_choice_hint: הבוחרים מסדרים את האפשרויות לפי הסדר מהרוב למועדף לפחות
-      time_poll: הצבעת זמן
-      time_poll_hint: הבוחרים מציינים מתי הם פנויים להיפגש
-    process: תהליך
-    process_name: כותרת התבנית
-    process_name_hint: איך אתה קורא לתבנית הזו? למשל ייעוץ תפקידים, בדיקת טמפרטורה, אישור דקות
-    process_subtitle: כותרת משנה של תבנית
-    process_subtitle_hint: תיאור בשורה אחת של מתי או מדוע להשתמש בתבנית זו
-    process_introduction: עזרה בתבנית
-    process_introduction_hint: כמה פסקאות שמסבירות כיצד להשתמש בתבנית. כלול קישורים למשאבים שעשויים להיות מועילים.
-    you_can_set_a_prompt_per_option: ערוך את ההנחיה עבור כל אפשרות מכרטיסיית הפרטים
-    chart_type: סוג תרשים
-    title: כותרת
-    title_hint: מהי ההחלטה שאתה צריך לקבל?
-    no_options_add_some: לסקר הזה אין אפשרויות, הוסף כמה למטה.
-    details: פירוט
-    example_details: פרטים לדוגמה
-    details_placeholder: זו ההזדמנות שלך להסביר על מה אנשים מצביעים
-    options: אפשרויות
-    options_placeholder: רשום את האפשרויות הזמינות
-    no_options: לא הוספת עוד אף אפשרות.
-    closing: סוגרים
-    closed: סגור
-    start: התחלה
-    start_poll: התחל סקר
-    stance_reason_required_label: מתן סיבה בעת ההצבעה הוא...
-    stance_reason_required: נדרש
-    stance_reason_optional: אופציונאלי
-    stance_reason_disabled: נָכֶה
-    stance_reason_is_required: אנא ספק סיבה להצבעה שלך
-    limit_reason_length: הגבל את הסיבה ל-500 תווים לכל היותר
-    save_poll: שמור סקר
-    start_poll_type: התחל את %{poll_type}
-    share_poll_type: שתף את %{poll_type}
-    who_may_vote: מי רשאי להצביע ב-%{poll_type} הזה?
-    update: עדכון
-    add_voters: הוסף מצביעים
-    notify_invitees: שלח הודעות
-    no_notifications_warning: הבוחרים לא יקבלו הודעה. זה שימושי אם אתה מפעיל הרבה סקרים ומתכננים להודיע לכולם מאוחר יותר.
-    count_voters_added: נוספו %{count} מצביעים
-    poll_type_created: "%{poll_type} נוצר"
-    poll_type_started: "%{poll_type} התחיל"
-    poll_type_updated: "%{poll_type} עודכן"
-    reason_prompt: הנחיית סיבה
-    anonymous_voting: הצבעה אנונימית
-    anonymous_voting_description: אם מופעל, זהות הבוחרים לא תקושר להצבעות שלהם. אי אפשר לבטל את זה.
-    votes_are_anonymous: ההצבעות הן אנונימיות
-    vote_reason: סיבה להצביע
-    vote_reason_description: זה יכול לעזור להבין מדוע אנשים הצביעו כפי שהם הצביעו. עם הגדרה זו, אתה יכול לבקש מאנשים לשתף את מחשבותיהם כשהם מצביעים.
-    hide_results_description: אם אתה רוצה שאנשים יצביעו בלי לדעת איך אחרים הצביעו, אתה יכול להסתיר את תוצאות הסקר.
-    process_helptext: תן שם ותאר את התהליך המשמש להפעלת סקר זה.
-    reminder_helptext: שלח הודעת 'נסגר בקרוב' לפני סגירת הסקר. זו יכולה להיות הזדמנות לאנשים לראות כיצד אחרים הצביעו ולשקול מחדש את ההצבעה שלהם, או סתם דרך להגביר את ההשתתפות בסקר.
-    deadline: מוֹעֵד אַחֲרוֹן
-    how_much_time_to_vote: כמה זמן תאפשר לאנשים להצביע?
-    advanced_settings: הגדרות מתקדמות
-    none_of_the_above: אף אחד מהאמור לעיל
   poll_proposal_form:
     start_header: התחל הצעה
     edit_header: ערוך הצעה
@@ -2231,9 +2129,10 @@ he:
     points: נקודות
     average: מְמוּצָע
     mean: מתכוון
-    pct_of_points: "% מהנקודות"
-    pct_of_voters: "% מהמצביעים"
     percent: אָחוּז
+    pct_of_points: אחוז הנקודות
+    pct_of_votes_cast: אחוז מהקולות שניתנו
+    pct_of_voters: אחוז מבעלי זכות הבחירה
   poll_meeting_time_field:
     add_time_slot: הוסף משבצת זמן
     new_time_slot: " משבצת זמן חדשה"
@@ -2272,6 +2171,11 @@ he:
   poll_common_percent_voted:
     sentence: "%{numerator} מתוך %{denominator} אנשים השתתפו (%{percent}%)"
     target_progress: "%{percent}% מהיעד הושג. (%{num} / %{target})"
+    pct_of_eligible_voters_must_participate: "%{pct}% מהמצביעים בעלי זכות ההצבעה חייבים להשתתף"
+    pct_participation: "%{num} מתוך %{total} הקולות שהוצבעו (%{pct}% השתתפות)"
+    vote_short_of_quorum: דרוש עוד קול אחד כדי להגיע למניין חוקי של %{pct}%
+    votes_short_of_quorum: נדרשים עוד %{num} קולות כדי להגיע למניין חוקי של %{pct}%
+    quorum_reached: מניין חוקי של %{pct}% הושג
   poll_meeting_chart_panel:
     total: סך הכל
   poll_remove_vote:
@@ -2327,6 +2231,7 @@ he:
     stance_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> הצביע ב: <strong>%{title}</strong>"
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> עדכן את ההצבעה שלו ב: <strong>%{title}</strong>"
     event_removed: הוסר מהשיחה
+    new: חָדָשׁ
   add_poll_to_thread_modal:
     success: הצלחה, %{pollType} נוסף לשרשור!
   auth_form:
@@ -2555,3 +2460,157 @@ he:
         submit: הצג הצעה
         cancel: תעשה זאת מאוחר יותר
     get_started_here: התחל כאן
+  poll_common_settings:
+    who_can_vote: מי יכול להצביע?
+    specified_voters_only_true: רק אנשים מוזמנים
+    specified_voters_only_false_group: כל מי שנמצא בקבוצה
+    specified_voters_only_false_discussion: כל מי שנמצא בשרשור
+    invite_people_next: ניתן לבחור מי מוזמן להצביע לאחר שתתחיל את %{poll_type}
+    show_none_of_the_above: כלול אפשרות של "אף אחת מהאפשרויות הנ"ל"
+    show_options_in_random_order: הצג אפשרויות בסדר אקראי
+    reduce_bias_by_showing_options_in_random_order: צמצם הטיה על ידי הצגת אפשרויות בסדר אקראי.
+    multiple_choice:
+      title: בחירה מרובה
+      helptext_on: לאחר הבחירה, המשתתפים יוכלו לבחור מספר אפשרויות.
+    anyone_can_participate:
+      title: כל מי שיש לו קישור יכול להשתתף
+      helptext_on: לאחר הבחירה, כל מי שיש לו קישור לסקר יוכל להשתתף.
+    notify_on_closing_soon:
+      voting_closes_too_soon: מכיוון שההצבעה נסגרת תוך 24 שעות, לא יישלחו תזכורות לסגירה בקרוב.
+      closes_too_soon: מכיוון שה-%{pollType} הזה נסגר תוך 24 שעות, לא יישלחו תזכורות לסגירה בקרוב.
+      title: 24 שעות לפני סגירת %{pollType}, שלחו תזכורת אל
+      voting_title: 24 שעות לפני סגירת ההצבעה, שלחו תזכורת אל
+      nobody: אַף אֶחָד
+      author: מחבר (אני)
+      undecided_voters: מצביעים מתלבטים
+      voters: כל הבוחרים
+    notify_on_participate:
+      title: הודע לי כשאנשים משתתפים
+      helptext_on: לאחר בחירתך, תקבל הודעה בכל פעם שמישהו ישתתף.
+    anonymous:
+      title: מצביעים אנונימיים
+      helptext_on: כאשר אפשרות זו נבחרת, פרטי המשתתף לא יוצגו עם כל תגובה.
+    voter_can_add_options:
+      title: הבוחרים יכולים להוסיף אפשרויות חלופיות
+    can_respond_maybe:
+      title: הבוחרים יכולים להגיב "במידת הצורך"
+    allow_long_reason:
+      title: אפשר שסיבת ההצבעה תהיה ארוכה מ-500 תווים
+    hide_results_until_closed:
+      title: הסתר תוצאות עד לסגירה
+      helptext_on: אל תציגו כיצד אנשים הצביעו עד לסגירת הסקר
+    short_reason_can_be_helpful: נימוקים קצרים להצבעה קלים יותר להבנה. אוסף של נימוקים תמציתיים הוא משאב מצוין לקבלת החלטה.
+    shuffle_options: אפשרויות ערבוב
+  poll_common_form:
+    quorum: מִניָן
+    participation_quorum: מניין ההשתתפות
+    quorum_hint: איזה אחוז מהמצביעים חייב להשתתף כדי שהתוצאה תהיה תקפה? אופציונלי, יש להשאיר ריק אם אין מניין חוקי.
+    quorum_placeholder: השאר ריק או הזן מספר בין 0 ל-100
+    deadline: מוֹעֵד אַחֲרוֹן
+    notify_everyone_when_poll_starts: הודע לכולם כאשר %{poll_type} מתחיל
+    option_has_votes_confirm_delete: חלק מהאנשים הצביעו בעד אפשרות זו, האם אתה בטוח שברצונך למחוק אותה?
+    example_title: כותרת לדוגמה
+    example_title_hint: תן דוגמה לכותרת טובה להצעה
+    example_details_placeholder: ספקו נקודת התחלה להצעה או סקר. שאלות יכולות להיות הנחיות שימושיות כדי לגרום לאנשים לכתוב. כללו כללים או תזכורות שהמשתתפים יצטרכו לדעת.
+    confirm_delete: האם אתה בטוח שברצונך למחוק את תבנית הסקר הזו? לא ניתן לבטל פעולה זו.
+    advanced_settings: הגדרות מתקדמות
+    show_advanced_settings: הצג הגדרות מתקדמות
+    hide_advanced_settings: הסתר הגדרות מתקדמות
+    choose_at_least: בחר לפחות
+    choose_at_most: בחר לכל היותר
+    please_review_the_form: אנא עיין בטופס
+    option_added_please_add_details: אפשרות נוספת! אנא הוסיפו פרטים כדי שאנשים יבינו מה המשמעות.
+    default_duration_in_days: משך ברירת מחדל בימים
+    how_many_options_can_a_voter_choose: כמה אפשרויות יכול בוחר לבחור?
+    minimum_choices: אפשרויות מינימום
+    maximum_choices: מקסימום אפשרויות
+    content: תוֹכֶן
+    reminder: תִזכּוֹרֶת
+    reminder_notification: הודעת תזכורת
+    your_in_zone: 'אזור זמן נוכחי: %{zone}'
+    show_other_zones: הצג אזורי זמן אחרים
+    hide_other_zones: הסתר אזורי זמן אחרים
+    this_is_a_template_for_new_polls: זוהי תבנית לסקרים חדשים
+    voting_method: שיטת הצבעה
+    none_of_the_above: אף אחד מהנ"ל
+    voting_methods:
+      question: סבב שאלות
+      question_hint: הזמינו שאלות והערות על ההצעה שלכם
+      show_thumbs: הרמת אגודלים
+      show_thumbs_hint: הבוחרים בוחרים אגודל למעלה, למטה, הצידה או יד למעלה
+      choose: לִבחוֹר
+      simple_poll: סקר פשוט
+      choose_hint: הבוחרים בוחרים באפשרות (או האפשרויות) הטובה ביותר
+      score: צִיוּן
+      score_hint: הבוחרים מקצים ניקוד לכל אפשרות
+      allocate: לְהַקְצוֹת
+      allocate_hint: הבוחרים מקצים תקציב של נקודות בין האפשרויות
+      ranked_choice: בחירה מדורגת
+      ranked_choice_hint: הבוחרים מסדרים את האפשרויות לפי סדר מהמועדף ביותר לפחות
+      time_poll: סקר זמן
+      time_poll_hint: הבוחרים מציינים מתי הם זמינים להיפגש
+    process: תַהֲלִיך
+    process_name: כותרת התבנית
+    process_name_hint: 'איך קוראים לתבנית הזו? לדוגמה: ייעוץ לתפקיד, בדיקת חום, אישור פרוטוקול'
+    process_subtitle: כותרת משנה של התבנית
+    process_subtitle_hint: תיאור בשורה אחת של מתי או מדוע להשתמש בתבנית זו
+    process_introduction: עזרה בתבנית
+    process_introduction_hint: מספר פסקאות המסבירות כיצד להשתמש בתבנית. כלול קישורים למשאבים שעשויים להיות מועילים.
+    you_can_set_a_prompt_per_option: ערוך את ההנחיה עבור כל אפשרות מכרטיסיית הפרטים
+    chart_type: סוג תרשים
+    title: כּוֹתֶרֶת
+    title_hint: מהי ההחלטה שאתה צריך לקבל?
+    no_options_add_some: בסקר הזה אין אפשרויות, הוסף כמה למטה.
+    details: פרטים
+    example_details: פרטי דוגמה
+    details_placeholder: זוהי ההזדמנות שלך להסביר על מה אנשים מצביעים
+    options: אפשרויות
+    options_placeholder: רשום את האפשרויות הקיימות
+    no_options: עדיין לא הוספת אפשרויות.
+    closing: סְגִירָה
+    closed: סָגוּר
+    start: הַתחָלָה
+    start_poll: התחל סקר
+    stance_reason_required_label: מתן סיבה בעת הצבעה...
+    stance_reason_required: דָרוּשׁ
+    stance_reason_optional: אופציונלי
+    stance_reason_disabled: נָכֶה
+    stance_reason_is_required: אנא ציינו נימוק להצבעתכם
+    limit_reason_length: הגבל את הסיבה ל-500 תווים לכל היותר
+    save_poll: שמור את הסקר
+    start_poll_type: התחל %{poll_type}
+    share_poll_type: שתף %{poll_type}
+    who_may_vote: מי רשאי להצביע ב-%{poll_type} הזה?
+    update: לְעַדְכֵּן
+    add_voters: הוסף מצביעים
+    notify_invitees: שלח התראות
+    no_notifications_warning: המצביעים לא יקבלו הודעה. זה שימושי אם אתם עורכים הרבה סקרים ומתכננים להודיע לכולם בהמשך.
+    count_voters_added: "%{count} מצביעים נוספו"
+    poll_type_created: "%{poll_type} נוצר"
+    poll_type_started: "%{poll_type} התחיל"
+    poll_type_updated: "%{poll_type} עודכן"
+    reason_prompt: סיבה
+    each_option_has_own_reason_prompt: לכל אפשרות יש סיבה משלה. ערוך אפשרות כדי להציג או לשנות את ההנחיה שלה.
+    anonymous_voting: הצבעה אנונימית
+    votes_are_anonymous: ההצבעות הן אנונימיות
+    vote_reason: סיבת ההצבעה
+    quorum_tip_vote_share_requirement: 'טיפ: ניתן גם לציין את רמת ההסכמה הנדרשת לאישור הצעה. ערוך אפשרות להגדרת דרישת שיעור ההצבעה.'
+    how_much_time_to_vote: כמה זמן אתם נותנים לאנשים להצביע?
+    default_duration_in_days_hint: כמה ימים יהיו לאנשים להצביע?
+    define_minimum_and_maxmimum_score: הגדירו את הציונים המינימליים והמקסימליים שבוחר יכול לתת לאפשרות
+    how_many_points_does_each_voter_have_to_allocate: כמה נקודות כל בוחר צריך להקצות?
+    anonymous_voting_description: הצג את ההצבעות והסיבות אך לא את מי שהצביע. לא ניתן לשנות זאת לאחר שה-%{poll_type} התחיל.
+    vote_reason_description: בקשו מאנשים לשתף את הנימוקים שלהם כשהם מצביעים, או לספק מידע נוסף.
+    hide_results_description: אם אתם רוצים שאנשים יצביעו בלי לראות איך אחרים הצביעו, אתם יכולים להסתיר את התוצאות.
+    process_helptext: ציין ותאר את התהליך בו נעשה שימוש להפעלת סקר זה.
+    reminder_helptext: שלחו הודעת "נסגר בקרוב" 24 שעות לפני המועד האחרון. פעולה זו יכולה להגביר את ההשתתפות וליצור הזדמנות לאנשים לשקול מחדש את עמדתם.
+  poll_receipts_page:
+    verify_participants: אימות משתתפים
+    see_votes_if_quorum_reached: אם ההצבעה נסגרה והושג המניין החוקי, תראו מי הצביע.
+    voter_name: שם הבוחר
+    voter_email: דוא"ל הבוחר
+    vote_cast: ההצבעה
+    member_since: חבר מאז
+    invited_by: הוזמן על ידי
+    invited_on: הוזמן בתאריך
+    no_receipts: סקר אנונימי זה נסגר לפני שתכונת האימות הייתה קיימת, כך שאימות אינו אפשרי.

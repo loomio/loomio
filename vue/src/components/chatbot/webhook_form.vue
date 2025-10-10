@@ -76,11 +76,13 @@ v-card.chatbot-matrix-form(:title="'Webhook ' + $t('chatbot.chatbot')")
   v-card-text
     v-text-field(
       :label="$t('chatbot.name')"
+      autocomplete="off"
       v-model="chatbot.name"
       hint="The name of your chatroom")
     validation-errors(:subject="chatbot" field="name")
     v-text-field(
       :label="$t('chatbot.webhook_url')"
+      autocomplete="off"
       v-model="chatbot.server"
       hint="Looks like: https://hooks.example.com/services/abc/xyz/123")
     validation-errors(:subject="chatbot" field="server")
@@ -89,17 +91,17 @@ v-card.chatbot-matrix-form(:title="'Webhook ' + $t('chatbot.chatbot')")
     //- v-select(v-model="chatbot.webhookKind" :items="formats" :label="$t('webhook.format')")
 
     v-checkbox.webhook-form__include-body(
-      v-model="chatbot.notificationOnly", 
-      :label="$t('chatbot.notification_only_label')" 
+      v-model="chatbot.notificationOnly",
+      :label="$t('chatbot.notification_only_label')"
       hide-details)
     p.mt-4.text-medium-emphasis(v-t="'chatbot.event_kind_helptext'")
 
     v-checkbox.webhook-form__event-kind(
-      hide-details 
-      v-for='kind in kinds' 
-      v-model='chatbot.eventKinds' 
-      :key="kind" 
-      :label="$t('webhook.event_kinds.' + kind)" 
+      hide-details
+      v-for='kind in kinds'
+      v-model='chatbot.eventKinds'
+      :key="kind"
+      :label="$t('webhook.event_kinds.' + kind)"
       :value="kind")
 
   v-card-actions

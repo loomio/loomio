@@ -15,7 +15,7 @@ class Api::V1::MentionsController < ApplicationController
       end
     end
 
-    User.mention_search(model, params_query).limit(50).each do |user|
+    User.mention_search(model || current_user, params_query).limit(50).each do |user|
       mentionables << user_mention(user)
     end
 

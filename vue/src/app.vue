@@ -24,11 +24,26 @@ export default {
   created() {
     const theme = useTheme();
 
+    Object.entries(AppConfig.theme.light).forEach(([key, value]) => {
+      if (value) { theme.themes.value.light.colors[key] = value; }
+    });
+
+    Object.entries(AppConfig.theme.lightblue).forEach(([key, value]) => {
+      if (value) { theme.themes.value.lightBlue.colors[key] = value; }
+    });
+
+    Object.entries(AppConfig.theme.dark).forEach(([key, value]) => {
+      if (value) { theme.themes.value.dark.colors[key] = value; }
+    });
+
+    Object.entries(AppConfig.theme.darkblue).forEach(([key, value]) => {
+      if (value) { theme.themes.value.darkBlue.colors[key] = value; }
+    });
 
     if (Session.user().experiences.theme != null) {
-      theme.global.name.value = Session.user().experiences['theme']
+      theme.change(Session.user().experiences['theme']);
     } else {
-      theme.global.name.value = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+      theme.change( (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? AppConfig.theme.default_dark_theme : AppConfig.theme.default_light_theme )
     }
   },
 

@@ -128,20 +128,4 @@ export default class EventModel extends BaseModel {
   forkingDisabled() {
     return this.parentIsForking() || (this.parent() && (this.parent().kind === 'poll_created'));
   }
-
-  next() {
-    return Records.events.find({ parentId: this.parentId, position: this.position + 1 })[0];
-  }
-
-  previous() {
-    return Records.events.find({ parentId: this.parentId, position: this.position - 1 })[0];
-  }
-
-  nextSiblingPositionKey() {
-    // skipping any child positions
-    let strs = this.positionKey.split("-")
-    let num = this.position + 1
-    strs[strs.length - 1] = "0".repeat(5 - String(num).length).concat(num)
-    return strs.join("-")
-  }
 };

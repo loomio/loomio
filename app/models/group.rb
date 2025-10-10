@@ -1,5 +1,4 @@
 class Group < ApplicationRecord
-  include HasTimeframe
   include HasRichText
   include CustomCounterCache::Model
   include ReadableUnguessableUrls

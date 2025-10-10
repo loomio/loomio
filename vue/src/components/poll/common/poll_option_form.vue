@@ -13,6 +13,7 @@ export default {
 
   data() {
     return {
+      testEnabled: !!this.pollOption.testOperator,
       nameRules: [v => (v.length <= 60) || I18n.global.t("poll_option_form.option_name_validation")],
       icons: [
         {title: I18n.global.t('poll_proposal_options.agree'), value: 'agree'},
@@ -32,9 +33,19 @@ export default {
 
   methods: {
     submit() {
+      if (!this.testEnabled) {
+        this.pollOption.testOperator = null;
+        this.pollOption.testPercent = null;
+        this.pollOption.testAgainst = null;
+      }
       this.submitFn(this.pollOption);
       EventBus.$emit('closeModal');
     }
+  },
+  mounted() {
+    this.pollOption.testOperator = this.pollOption.testOperator || 'gte';
+    this.pollOption.testPercent = this.pollOption.testPercent || 50;
+    this.pollOption.testAgainst = this.pollOption.testAgainst || 'score_percent';
   },
 
   watch: {
@@ -54,7 +65,7 @@ form(v-on:submit.prevent='submit()')
       dismiss-modal-button
     v-card-text
       div(v-if="hasOptionIcon")
-        span.v-label(v-t="'poll_option_form.icon'")
+        .text-subtitle-1(v-t="'poll_option_form.icon'")
         .d-flex.mb-4.space-between
           label.poll-option-form__icon.mr-4.d-flex.flex-column.rounded.v-sheet.v-sheet--outlined.voting-enabled(
             v-for="icon in icons"
@@ -68,7 +79,7 @@ form(v-on:submit.prevent='submit()')
         .lmo-validation-error(v-show="pollOption.name && !pollOption.icon")
           span.text-caption.lmo-validation-error__message(v-t="'poll_option_form.please_select_an_icon'")
 
-      v-text-field.poll-option-form__name(
+      v-text-field.poll-option-form__name.mb-4(
         autofocus
         :label="$t('poll_option_form.option_name')"
         v-model="pollOption.name"
@@ -88,6 +99,41 @@ form(v-on:submit.prevent='submit()')
         :hint="$t('poll_option_form.prompt_hint')"
         :placeholder="$t('poll_common.reason_placeholder')"
         v-model="pollOption.prompt")
+
+      template(v-if="poll.config().allow_vote_share_requirement")
+        v-divider.pb-4
+        .text-subtitle-1.pb-2(v-t="'poll_option_form.vote_share_requirement'")
+        v-checkbox(
+          v-model="testEnabled"
+          :label="poll.pollType == 'proposal' ? $t('poll_option_form.for_the_proposal_to_pass') : $t('poll_option_form.for_the_poll_to_be_valid', { poll_type: poll.translatedPollType() })"
+        )
+        .d-flex.flex-column.flex-sm-row
+          v-select.mr-4(
+            :disabled="!testEnabled"
+            v-model="pollOption.testOperator"
+            :items="[{title: $t('poll_option_form.at_least'), value: 'gte'}, {title: $t('poll_option_form.no_more_than'), value: 'lte'}]"
+          )
+
+          v-number-input(
+            :disabled="!testEnabled"
+            v-model="pollOption.testPercent"
+            :min="0"
+            :max="100"
+            :precision="0"
+            control-variant="hidden"
+            autocomplete="off"
+          )
+            template(v-slot:append-inner)
+              span.mr-4 %
+            template(v-slot:append)
+              span.mr-4(v-t="'poll_option_form.of'")
+
+          v-select(
+            :disabled="!testEnabled"
+            v-model="pollOption.testAgainst"
+            :items="[{title: $t('poll_option_form.votes_cast'), value: 'score_percent'}, {title: $t('poll_option_form.eligible_voters'), value: 'voter_percent'}]"
+          )
+
     v-divider
     v-card-actions
       v-btn.poll-option-form__done-btn(
@@ -99,9 +145,6 @@ form(v-on:submit.prevent='submit()')
 </template>
 
 <style lang="sass">
-.lmo-validation-error
-  color: var(--v-error-base)
-
 .poll-option-form__icon-selected
   border: 1px solid var(--v-primary-base) !important
 

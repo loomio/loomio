@@ -13,7 +13,7 @@ const unhideOnboarding = function() {
 }
 
 const setTheme = function(name) {
-  theme.global.name.value = name;
+  theme.change(name);
   Records.users.saveExperience('theme', name);
 }
 
@@ -47,8 +47,7 @@ v-list(nav density="comfortable")
     template(v-slot:prepend)
       common-icon(name="mdi-white-balance-sunny" color="#DCA034")
 
-  v-list-item(@click="setTheme('lightBlue')")
-    v-list-item-title Light blue
+  v-list-item(@click="setTheme('lightBlue')" :title="$t('user_dropdown.light_blue')")
     template(v-slot:prepend)
       common-icon(name="mdi-white-balance-sunny" color="#658AE7")
 
@@ -56,8 +55,7 @@ v-list(nav density="comfortable")
     template(v-slot:prepend)
       common-icon(name="mdi-weather-night" color="#DCA034")
 
-  v-list-item(@click="setTheme('darkBlue')")
-    v-list-item-title Dark blue
+  v-list-item(@click="setTheme('darkBlue')" :title="$t('user_dropdown.dark_blue')")
     template(v-slot:prepend)
       common-icon(name="mdi-weather-night" color="#658AE7")
 

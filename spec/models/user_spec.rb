@@ -78,22 +78,6 @@ describe User do
     user.should have(0).errors_on(:email)
   end
 
-  it "email can be duplicated for non-email verified accounts" do
-    create(:user, email: 'example@example.com', email_verified: false)
-    user = build(:user, email: 'example@example.com', email_verified: false)
-    expect(user).to be_valid
-    user.email_verified = true
-    expect(user).to be_valid
-  end
-
-  it "email cannot be duplicated for email verified accounts" do
-    create(:user, email: 'example@example.com', email_verified: true)
-    user = build(:user, email: 'example@example.com', email_verified: false)
-    expect(user).to be_valid
-    user.email_verified = true
-    expect(user).to_not be_valid
-  end
-
   it "has many groups" do
     group.add_member!(user)
     user.groups.should include(group)
@@ -138,6 +122,18 @@ describe User do
       user.update(experiences: { happiness: true })
       user.experienced!(:happiness, false)
       expect(user.experiences['happiness']).to eq false
+    end
+  end
+
+  describe "secret_token" do
+    it "ensures new users have secret_token" do
+      User.import [User.new(name: "User", email: "huh@example.com", password: "sssYZ123")]
+      assert User.find_by(email: "huh@example.com").secret_token.present?
+    end
+
+    it "generates a token for a new user " do
+      u = User.create(name: "Test User", email: "test1@example.com", password: "passwordXYZ123")
+      assert u.secret_token.present?
     end
   end
 

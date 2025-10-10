@@ -6,6 +6,7 @@ const InboxPage = () => import('./components/inbox/page');
 const ExplorePage = () => import('./components/explore/page');
 const ProfilePage = () => import('./components/profile/page');
 const PollShowPage = () => import('./components/poll/show_page');
+const PollReceiptsPage = () => import('./components/poll/receipts_page');
 const PollFormPage = () => import('./components/poll/form_page');
 const PollTemplateFormPage = () => import('./components/poll_template/form_page');
 const TasksPage = () => import('./components/tasks/page');
@@ -38,7 +39,6 @@ const groupPageChildren = [
   {path: 'polls', component: GroupPollsPanel, meta: {noScroll: true}},
   {path: 'members', component: MembersPanel, meta: {noScroll: true}},
   {path: 'membership_requests', component: MembershipRequestsPanel, meta: {noScroll: true}},
-  {path: 'members/requests', redirect: 'membership_requests', meta: {noScroll: true}},
   {path: 'files', component: GroupFilesPanel, meta: {noScroll: true}},
   {path: ':stub?', component: GroupDiscussionsPanel, meta: {noScroll: true}}
 ];
@@ -72,6 +72,7 @@ const router = createRouter({
     {path: '/contact', component: ContactPage},
     {path: '/email_preferences', component: EmailSettingsPage },
     {path: '/p/:key/edit', component: PollFormPage },
+    {path: '/p/:id/receipts', component: PollReceiptsPage, props: true },
     {path: '/p/new', component: PollFormPage },
     {path: '/p/:key/:stub?', component: PollShowPage},
     {path: '/poll_templates/new', component: PollTemplateFormPage},

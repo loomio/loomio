@@ -4,6 +4,7 @@ class GroupExportService
     all_events
     all_notifications
     all_reactions
+    all_tags
     poll_templates
     discussion_templates
     memberships
@@ -14,6 +15,7 @@ class GroupExportService
     exportable_outcomes
     exportable_stances
     exportable_stance_choices
+    poll_stance_receipts
     discussion_readers
     comments
   ]
@@ -34,13 +36,15 @@ class GroupExportService
     },
     comments: {
       comments: %w[parent_id],
-      events: %w[eventable]
+      events: %w[eventable],
+      reactions: %w[reactable]
     },
     discussions: {
       comments: %w[discussion_id],
       discussion_readers: %w[discussion_id],
       polls: %w[discussion_id],
-      events: %w[discussion_id eventable]
+      events: %w[discussion_id eventable],
+      reactions: %w[reactable]
     },
     events: {
       events: %w[parent_id],
@@ -63,21 +67,27 @@ class GroupExportService
     },
     stances: {
       stance_choices: %w[stance_id],
-      events: %w[eventable]
+      events: %w[eventable],
+      reactions: %w[reactable]
     },
     tasks: {
       tasks_users: %w[task_id],
       events: %w[eventable]
     },
     polls: {
+      stance_receipts: %w[poll_id],
       stances: %w[poll_id],
       poll_options: %w[poll_id],
       outcomes: %w[poll_id],
-      events: %w[eventable]
+      events: %w[eventable],
+      reactions: %w[reactable]
     },
     users: {
+      stance_receipts: %w[voter_id inviter_id],
       events: %w[eventable user_id],
       discussions: %w[author_id discarded_by],
+      discussion_templates: %w[author_id],
+      poll_templates: %w[author_id],
       attachments: %w[user_id],
       comments: %w[user_id discarded_by] ,
       discussion_readers: %w[user_id inviter_id],
@@ -114,6 +124,7 @@ class GroupExportService
            exportable_outcomes
            exportable_stances
            exportable_stance_choices
+           poll_stance_receipts
            all_reactions
            comments
            readers
@@ -223,7 +234,7 @@ class GroupExportService
     tables = datas.map{ |data| data['table'] }.uniq
 
     ActiveRecord::Base.transaction do
-      #import the records, remember old with new ids
+      # import the records, remember old with new ids
       (tables - ['attachments']).each do |table|
         migrate_ids[table] = {}
         klass = table.classify.constantize
@@ -236,12 +247,8 @@ class GroupExportService
             record.set_key
           end
 
-          if data['record'].has_key?('secret_token')
-            record.secret_token = nil 
-          end
-
-          if data['record'].has_key?('token')
-            record.token = klass.generate_unique_secure_token
+          ['secret_token', 'token'].each do |name|
+            record.send("#{name}=", klass.generate_unique_secure_token) if data['record'].has_key? name
           end
 
           if table == 'groups'
@@ -276,7 +283,7 @@ class GroupExportService
             next unless migrate_ids[ref_table].present?
             imported_ids = migrate_ids[ref_table].values
             columns.each do |column|
-              if column == "eventable"
+              if ['eventable', 'reactable'].include? column
                 ref_table.classify.constantize.
                 where(id: imported_ids).
                 where(column+"_type" => table.classify, column+"_id" => old_id).
@@ -309,17 +316,18 @@ class GroupExportService
         end
       end
     end
-
-    # SearchIndexWorker.new.perform(Discussion.where(group_id: group_ids).pluck(:id))
   end
 
   def self.download_attachment(record_data, new_id)
     model = record_data['record_type'].classify.constantize.find(new_id)
-    file = URI.open(record_data['url'])
-    model.send(record_data['name']).attach(io: file, filename: record_data['filename'])
-    if model.respond_to?(:attachments)
-      model.update_attribute(:attachments, model.build_attachments)
+    URI.open(record_data['url']) do |file|
+      blob = ActiveStorage::Blob.create_and_upload!(io: file,
+                                                    filename: record_data['filename'],
+                                                    content_type: record_data['content_type'])
+      model.send(record_data['name']).attach(blob)
+      if model.respond_to?(:attachments)
+        model.update_attribute(:attachments, model.build_attachments)
+      end
     end
-    file.close
   end
 end

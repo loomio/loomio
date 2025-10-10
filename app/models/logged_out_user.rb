@@ -52,6 +52,10 @@ class LoggedOutUser
                 require_valid_signup: true)
   end
 
+  def secret_token
+    User.generate_unique_secure_token
+  end
+
   def memberships_count
     0
   end
@@ -61,7 +65,7 @@ class LoggedOutUser
   end
 
   def nil_methods
-    super + [:id, :created_at, :avatar_url, :thumb_url, :presence, :restricted, :persisted?, :secret_token, :content_locale, :browseable_group_ids]
+    super + [:id, :created_at, :avatar_url, :thumb_url, :presence, :restricted, :persisted?, :content_locale, :browseable_group_ids]
   end
 
   def false_methods

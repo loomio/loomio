@@ -158,6 +158,7 @@ class Poll < ApplicationRecord
   accepts_nested_attributes_for :poll_options, allow_destroy: true
 
   has_many :documents, as: :model, dependent: :destroy
+  has_many :stance_receipts, dependent: :destroy
 
   scope :dangling, -> { joins('left join groups g on polls.group_id = g.id').where('group_id is not null and g.id is null') }
   scope :active, -> { kept.where('polls.closed_at': nil) }
@@ -184,6 +185,7 @@ class Poll < ApplicationRecord
   validates :details, length: {maximum: AppConfig.app_features[:max_message_length] }
 
   before_save :clamp_minimum_stance_choices
+  normalizes :quorum_pct, with: ->(v) { v.nil? ? nil : [ [ v, 0 ].max, 100 ].min }
   validate :closes_in_future
   validate :discussion_group_is_poll_group
   validate :cannot_deanonymize
@@ -257,7 +259,7 @@ class Poll < ApplicationRecord
   def result_columns
     case poll_type
     when 'proposal'
-      %w[chart name score_percent voter_count voters]
+      %w[chart name votes votes_cast_percent voter_percent voters]
     when 'check'
       %w[chart name voter_percent voter_count voters]
     when 'count'
@@ -344,6 +346,19 @@ class Poll < ApplicationRecord
     else
       nil
     end
+  end
+
+  def quorum_count
+    (quorum_pct.to_f/100 * voters_count).ceil
+  end
+
+  def quorum_reached?
+    quorum_pct && quorum_count <= voters_count
+  end
+
+  def quorum_votes_required
+    return 0 if quorum_pct.nil?
+    (((quorum_pct.to_f - cast_stances_pct.to_f)/100) * voters_count).ceil
   end
 
   def group

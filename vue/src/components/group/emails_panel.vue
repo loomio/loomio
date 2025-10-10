@@ -2,9 +2,12 @@
 import Records  from '@/shared/services/records';
 import EventBus from "@/shared/services/event_bus";
 import Flash from "@/shared/services/flash";
+import WatchRecords from '@/mixins/watch_records';
+import UrlFor from '@/mixins/url_for';
 
 export default
 {
+  mixins: [WatchRecords, UrlFor],
   data() {
     return {
       requests: [],
@@ -107,9 +110,9 @@ export default
           span {{email.senderName}} &lt;{{email.senderEmail}}&gt;
         v-list-item-subtitle {{email.subject}}
         template(v-slot:append)
-          v-btn.group-emails-panel__approve(text icon @click='allow(email)' :title="$t('membership_requests_page.approve')")
+          v-btn.group-emails-panel__approve( variant="text" icon @click='allow(email)' :title="$t('membership_requests_page.approve')")
             common-icon(name="mdi-check")
-          v-btn.group-emails-panel__delete(text icon @click='block(email)' :title="$t('membership_requests_page.ignore')")
+          v-btn.group-emails-panel__delete(variant="text" icon @click='block(email)' :title="$t('membership_requests_page.ignore')")
             common-icon(name="mdi-cancel")
 
   template(v-if="group && aliases.length")
@@ -125,6 +128,6 @@ export default
             mid-dot
             time-ago(:date='alias.created_at')
           template(v-slot:append)
-            v-btn.group-emails-panel__delete(text icon @click='destroyAlias(alias)' title="destroy")
+            v-btn.group-emails-panel__delete(variant="text" icon @click='destroyAlias(alias)' title="destroy")
               common-icon(name="mdi-delete")
 </template>

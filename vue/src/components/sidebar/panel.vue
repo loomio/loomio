@@ -146,7 +146,6 @@ export default {
     activeGroup() { if (this.group) { return [this.group.id]; } else { return []; } },
     logoUrl() { return AppConfig.theme.app_logo_src; },
     showTemplateGallery() { return AppConfig.features.app.template_gallery; },
-    showExploreGroups() { return AppConfig.features.app.explore_public_groups; },
     showNewThreadButton() { return AppConfig.features.app.new_thread_button; },
   }
 };

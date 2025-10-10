@@ -9,7 +9,6 @@ de:
     we_use_this_to_help: Die folgenden Informationen werden verwendet, um Ihre Loomio-Gruppe einzurichten und uns dabei zu helfen, mehr über Ihre Organisation zu erfahren, damit wir Sie besser unterstützen können.
     how_do_you_intend_to_use_loomio: Wie möchten Sie Loomio nutzen?
     what_decisions_do_you_need_to_make: Welche Entscheidungen müssen Sie treffen?
-    newsletter_intro: Möchten Sie unseren Newsletter abonnieren?
     newsletter_description: Bleiben Sie über neue Funktionen und inspirierende Geschichten darüber, wie Loomio von Organisationen auf der ganzen Welt eingesetzt wird, auf dem Laufenden
     subscribe_to_newsletter: Abonnieren Sie den Loomio-Newsletter
     form_incomplete: Bitte füllen Sie alle Felder im Formular aus, um fortzufahren
@@ -21,6 +20,7 @@ de:
     please_enter_a_valid_email_address: Bitte geben Sie eine gültige E-Mail-Adresse ein
     please_accept_the_terms: Bitte akzeptieren Sie die Bedingungen
     how_did_you_hear_about_loomio: Wie haben Sie von Loomio erfahren?
+    newsletter_intro: Möchten Sie über neue Funktionen, Kundeninterviews, Fallstudien und Ankündigungen des Loomio-Teams informiert werden?
   tasks:
     tasks: Aufgaben
     your_tasks: Deine Aufgaben
@@ -570,6 +570,16 @@ de:
     from_comment: Von einer Kommentar URL
     from_sequence_id: Von einer Diskussionsbeitrag URL
     unread: Neu für Dich
+    jump_to: Springen zu
+    timeline: Zeitleiste
+    top: Spitze
+    bottom: Unten
+    start: Start
+    latest: Letzte
+    showing_latest: Aktuelles anzeigen
+    showing_unread: Ungelesene anzeigen
+    add_comment: Einen Kommentar hinzufügen
+    start_decision: Entscheidung starten
   search_modal:
     all_content: Alle Inhalte
     best_match: Bester Treffer
@@ -625,6 +635,8 @@ de:
     theme: Thema
     light: Licht
     dark: Dunkel
+    light_blue: Hellblau
+    dark_blue: Dunkelblau
   membership_card:
     group_members: Mitglieder der Gruppe
     discussion_members: Diskussionsteilnehmer
@@ -1232,7 +1244,6 @@ de:
     description: Beschreibung
     description_placeholder: Beschreibe die Zielsetzung der Gruppe, damit die Mitglieder wissen, weshalb sie hier sind.
     new_description_placeholder: Warum testen Sie Loomio? Welche Entscheidungen müssen Sie gemeinsam treffen?
-    new_description_html: <h3 id="how-do-you-intend-to-use-loomio">Wie wollen Sie Loomio nutzen?</h3><p></p><h3 id="why-is-this-important-for-your-group"> Warum ist das für Ihre Gruppe wichtig?</h3><p></p><h3 id="what-decisions-do-you-need-to-make"> Welche Entscheidungen müssen Sie treffen?</h3><p></p>
     secret_by_default: Deine Gruppe ist nur für diejenigen zugänglich, die zum Beitritt eingeladen sind. Dies kann später geändert werden.
     privacy_statement:
       public_on_web: Name, Beschreibung und Dokumente der Gruppe werden öffentlich sichtbar sein
@@ -1299,6 +1310,8 @@ de:
     request_to_join_prompt: Aufforderung zur Teilnahme
     default_request_to_join_prompt: Vielen Dank für Ihr Interesse an unserer Gruppe. Bitte stellen Sie sich vor und erklären Sie, warum Sie Mitglied werden möchten.
     upgrade_for_subgroups: 'Bitte <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">aktualisieren Sie Ihr Abonnement</a> , um eine Untergruppe zu erstellen'
+    share_this_url_with_people_who_want_to_join: Teilen Sie diese URL mit Leuten, die beitreten möchten
+    new_description_html: "<h3>Vor welchen Herausforderungen steht Ihre Organisation bei der Entscheidungsfindung?</h3><p></p><h3> Wie möchten Sie Loomio in Ihrer Organisation einsetzen?</h3><p></p>"
   group_export_modal:
     title: Gruppendaten exportieren
     body: |
@@ -1504,7 +1517,6 @@ de:
     email_newsletter: Loomio Newsletter
     email_newsletter_description: Neuigkeiten zu neuen Funktionen, Schulungsangeboten und Veranstaltungen in deiner Stadt und zur zukünftigen Entwicklung von Loomio erhalten (ca. 2-3 E-Mails pro Jahr).
     email_catch_up_day: Zusammenfassung der Nachhol-E-Mail
-    daily_summary_description: Wählen Sie aus, wann Sie die E-Mail mit der Nachholübersicht erhalten möchten. Diese E-Mail enthält alle neuen Aktivitäten, die Sie noch nicht gesehen haben. Eine gute Möglichkeit, auf dem Laufenden zu bleiben, wenn Sie kein regelmäßiger Benutzer sind.
     on_participation_label: Benachrichtigungen automatisch aktivieren bei Teilnahme
     on_participation_description: Wenn du an einem Thread teilnimmst, werden dir alle weiteren Aktivitäten sofort per E-Mail zugesendet.
     announcement_label: Nur Ankündigungen
@@ -1521,6 +1533,7 @@ de:
       updated: E-Mail-Einstellungen aktualisiert
     learn_more: Weitere Informationen zu den E-Mail-Einstellungen...
     mentioned_description: Wenn jemand Sie in einem Kommentar {'@'}erwähnt, erhalten Sie eine Benachrichtigungs-E-Mail
+    daily_summary_description: Wählen Sie, wann Sie die E-Mail mit der Zusammenfassung erhalten möchten. Diese E-Mail enthält alle neuen Aktivitäten, die Sie noch nicht gesehen haben. Eine gute Möglichkeit, auf dem Laufenden zu bleiben, wenn Sie kein regelmäßiger Benutzer sind.
   thread_preview:
     replies_count: "%{count} Antworten"
     unread_count: "%{count} ungelesen"
@@ -1771,6 +1784,22 @@ de:
     thumb_down: Daumen runter
     thumb_sideways: Daumen seitlich
     hand_up: Hand hoch
+    of: von
+    at_least: Mindestens
+    no_more_than: Nicht mehr als
+    votes_cast: Abgegebene Stimmen
+    eligible_voters: Wahlberechtigte
+    gte_score_percent: Benötigt mindestens %{percent}% der abgegebenen Stimmen
+    gte_voter_percent: Benötigt mindestens %{percent}% der Wahlberechtigten
+    lte_score_percent: Darf %{percent}% der abgegebenen Stimmen nicht überschreiten
+    lte_voter_percent: Darf %{percent}% der Wahlberechtigten nicht überschreiten
+    name_gte_score_percent: "%{name} benötigt mindestens %{percent}% der abgegebenen Stimmen"
+    name_gte_voter_percent: "%{name} benötigt mindestens %{percent}% der Wahlberechtigten"
+    name_lte_score_percent: "%{name} darf %{percent}% der abgegebenen Stimmen nicht überschreiten"
+    name_lte_voter_percent: "%{name} darf %{percent}% der Wahlberechtigten nicht überschreiten"
+    vote_share_requirement: Stimmenanteilsanforderung
+    for_the_proposal_to_pass: Damit der Vorschlag angenommen wird, muss diese Option … erhalten.
+    for_the_poll_to_be_valid: Damit %{poll_type} gültig ist, muss diese Option … erhalten.
   poll_common:
     superseded: Abgelöst
     outdated: Veraltet
@@ -1860,6 +1889,8 @@ de:
     edit_warning: 'Wir empfehlen dir Änderungen nur durchzuführen wenn es kleine Schreib-oder Grammatikfehler sind. Für grössere Inhaltsänderungen, schliesse diese %{pollType} und beginne eine neue. '
     no_voting: Nur für Diskussionen, Wahlen abgeschaltet
     post_outcome: Ergebnis veröffentlichen
+    view_all_votes: Alle Abstimmungen ansehen
+    you_voted: Sie haben abgestimmt
   poll_common_attachment_form:
     label: Arbeitsmaterialien
   poll_common_add_option:
@@ -1962,6 +1993,8 @@ de:
     unable_to_vote: Du wurdest nicht eingeladen in diesem %{poll_type} abzustimmen.
     draft_mode: Abstimmung deaktiviert. Hier kann noch nicht abgestimmt werden.
     voting_disabled_poll_is_template: Abstimmung deaktiviert. Dies ist eine Vorlage.
+    for_this_proposal_to_pass: 'Damit dieser Vorschlag angenommen wird:'
+    for_this_poll_type_to_be_valid: 'Damit dieser %{poll_type} gültig ist:'
   poll_common_collapsed:
     by_who: von %{name}
   poll_common_calendar_invite:
@@ -1976,48 +2009,6 @@ de:
     event_description_placeholder: Was ist die Tagesordnung für dieses Treffen?
     location: Ort
     location_placeholder: Wo wird das Meeting stattfinden?
-  poll_common_settings:
-    who_can_vote: Wer kann abstimmen?
-    short_reason_can_be_helpful: Eine kurze Abstimmungsbegründung erleichtert das Verständnis. Eine Sammlung prägnanter Begründungen ist eine gute Entscheidungshilfe.
-    specified_voters_only_true: Nur eingeladene Personen
-    specified_voters_only_false_group: Alle in der Gruppe
-    specified_voters_only_false_discussion: Alle in der Diskussion
-    invite_people_next: Du kannst wählen, wer zur Abstimmung eingeladen wird, nachdem Du den %{poll_type} gestartet hast
-    shuffle_options:
-      shuffle_options: Mischoptionen
-      title: Optionen in zufälliger Reihenfolge anzeigen
-      helptext: Wenn eine Option an erster Stelle auf der Liste steht, kann dies zu einer Voreingenommenheit führen. Verwenden Sie diese Einstellung, um diesem Effekt entgegenzuwirken.
-    multiple_choice:
-      title: Mehrfachauswahl
-      helptext_on: Wenn ausgewählt, können die Teilnehmer mehrere Optionen auswählen
-    anyone_can_participate:
-      title: Alle, die Zugriff auf den Link haben, können abstimmen
-      helptext_on: Wenn ausgewählt, kann jeder mit dem Link zur Umfrage teilnehmen.
-    notify_on_closing_soon:
-      voting_closes_too_soon: Da die Abstimmung innerhalb von 24 Stunden endet, werden keine baldigen Abschlusserinnerungen verschickt.
-      closes_too_soon: Da dieser %{pollType} innerhalb von 24 Stunden schließt, werden keine Erinnerungen an das baldige Schließen gesendet.
-      title: 24 Stunden bevor %{pollType} schließt, sende eine Erinnerung an
-      voting_title: Senden Sie 24 Stunden vor Ende der Abstimmung eine Erinnerung an
-      nobody: Keine*r
-      author: Autor*in (mich)
-      undecided_voters: Unentschiedene Wähler*innen
-      voters: Alle Wähler*innen
-    notify_on_participate:
-      title: Mich benachrichtigen, wenn jemand abstimmt
-      helptext_on: Wenn diese Option aktiviert ist, wirst du benachrichtigt, sobald jemand teilnimmt.
-    anonymous:
-      title: Anonyme Teilnahme
-      helptext_on: Wenn diese Option aktiviert ist, werden keine Informationen zu den Abstimmungsteilnehmern angezeigt.
-    voter_can_add_options:
-      title: Teilnehmervorschläge erlauben
-    can_respond_maybe:
-      title: Teilnehmer können antworten "wenn es sein muss"
-    allow_long_reason:
-      title: Der Grund für die Abstimmung darf länger als 500 Zeichen sein
-    hide_results_until_closed:
-      title: Ergebnisse ausblenden bis Abstimmung geschlossen
-      helptext_on: Zeigen nicht an, wie Personen abgestimmt haben, bis die Umfrage geschlossen ist
-    show_none_of_the_above: Fügen Sie die Option „Keine der oben genannten Optionen“ ein.
   poll_common_close_form:
     title: "%{poll_type} jetzt schließen?"
     helptext: Sind Sie sicher, dass Sie diese %{poll_type} vorzeitig schließen und ein Ergebnis mitteilen möchten?
@@ -2076,7 +2067,6 @@ de:
     enter_an_outcome: Geben Sie ein Ergebnis ein
   poll_common_outcome_form:
     review_due_in_days: Überprüfen Sie die Entscheidung nach wie vielen Tagen?
-    review_due_in_days_hint: Eine Zeitspanne (in Tagen), die gewartet werden muss, bevor die Entscheidung überprüft wird. (Optional)
     review_date: Prüfungsdatum
     review_date_hint: Legen Sie einen Termin für die Überprüfung der Entscheidung fest (optional)
     who_to_notify: Wen möchten Sie über dieses Ergebnis informieren? (Optional)
@@ -2086,109 +2076,17 @@ de:
     outcome_created: Ergebnis erschaffen
     outcome_updated: Ergebnis aktualisiert
     statement_placeholder: Fasse das Abstimmungsergebnis zusammen und gebe bekannt, was als nächstes passieren wird.
-    statement_template_placeholder: Stellen Sie eine Vorlage zum Verfassen eines Entscheidungsergebnisses bereit. (Optional)
     you_will_be_notified: Du wirst am Überprüfungsdatum benachrichtigt.
     submit: Ergebnis bekanntgeben
+    review_due_in_days_hint: Anzahl der Tage, die vor der Überprüfung der Entscheidung gewartet werden soll (optional).
+    statement_template_hint: Stellen Sie eine Vorlage zum Aufschreiben des Ergebnisses der Entscheidung bereit. (optional)
+    statement_template_placeholder: Vielen Dank für Ihre Teilnahme! Das Quorum wurde erreicht und wir haben Unterstützung, um fortzufahren.
   poll_common_outcome_panel:
     authored_by: Von %{name}
   poll_common_delete_modal:
     question: Wirklich löschen?
     title: "%{pollType} entfernen"
     success: Erfolgreich gelöscht
-  poll_common_form:
-    notify_everyone_when_poll_starts: Benachrichtigen Sie alle, wenn %{poll_type} startet
-    option_has_votes_confirm_delete: Einige Leute haben für diese Option gestimmt. Sind Sie sicher, dass Sie sie löschen möchten?
-    example_title: Beispieltitel
-    example_title_hint: Nennen Sie ein Beispiel für einen guten Vorschlagstitel
-    example_details_placeholder: Geben Sie einen Ausgangspunkt für einen Vorschlag oder eine Umfrage an. Fragen können nützliche Anregungen sein, um Leute zum Schreiben zu bewegen. Fügen Sie alle Regeln oder Erinnerungen hinzu, die die Teilnehmer kennen müssen.
-    confirm_delete: Sind Sie sicher, dass Sie diese Umfragevorlage löschen möchten? Das kann nicht rückgängig gemacht werden.
-    show_advanced_settings: Erweiterte Einstellungen anzeigen
-    hide_advanced_settings: Verberge erweiterte Einstellungen
-    choose_at_least: Wählen Sie mindestens
-    choose_at_most: Wählen Sie höchstens
-    please_review_the_form: Bitte überprüfen Sie das Formular
-    option_added_please_add_details: Option hinzugefügt! Bitte fügen Sie einige Details hinzu, damit die Leute wissen, was es bedeutet.
-    default_duration_in_days: Standarddauer in Tagen
-    default_duration_in_days_hint: Wie viele Tage sollten den Menschen zum Wählen gegeben werden?
-    how_many_options_can_a_voter_choose: Wie viele dieser Optionen kann ein Wähler wählen?
-    minimum_choices: Mindestauswahl
-    maximum_choices: Maximale Auswahl
-    content: Inhalt
-    reminder: Erinnerung
-    your_in_zone: 'Aktuelle Zeitzone: %{zone}'
-    show_other_zones: Andere Zeitzonen anzeigen
-    hide_other_zones: Andere Zeitzonen ausblenden
-    this_is_a_template_for_new_polls: Dies ist eine Vorlage für neue Umfragen
-    voting_method: Abstimmungsmethode
-    voting_methods:
-      question: Fragerunde
-      question_hint: Laden Sie Fragen und Kommentare zu Ihrem Vorschlag ein
-      show_thumbs: Daumen zeigen
-      show_thumbs_hint: Wähler können zwischen Daumen hoch, runter, seitwärts oder Hand hoch wählen
-      choose: Wählen
-      simple_poll: Einfache Umfrage
-      choose_hint: Wähler wählen die beste Option (oder Optionen)
-      score: Ergebnis
-      score_hint: Die Wähler weisen jeder Option eine Punktzahl zu
-      allocate: Zuweisen
-      allocate_hint: Die Wähler verteilen ein Punktebudget auf die Optionen
-      ranked_choice: Prioritätensetzung
-      ranked_choice_hint: Die Wähler ordnen die Optionen in der Reihenfolge von den meisten bis zu den am wenigsten bevorzugten Optionen
-      time_poll: Terminfindung
-      time_poll_hint: Die Wähler geben an, wann sie für ein Treffen zur Verfügung stehen
-    process: Verfahren
-    process_name: Vorlagentitel
-    process_name_hint: Wie nennt man diese Vorlage? ZB Rollenberatung, Temperaturkontrolle, Protokollgenehmigung
-    process_subtitle: Untertitel der Vorlage
-    process_subtitle_hint: Eine einzeilige Beschreibung, wann und warum diese Vorlage verwendet werden soll
-    process_introduction: Vorlagenhilfe
-    process_introduction_hint: Ein paar Absätze, die erklären, wie die Vorlage verwendet wird. Fügen Sie Links zu Ressourcen hinzu, die hilfreich sein könnten.
-    you_can_set_a_prompt_per_option: Bearbeiten Sie die Eingabeaufforderung für jede Option auf der Registerkarte „Details“.
-    chart_type: Diagramm Typ
-    title: Titel
-    title_hint: Welche Entscheidung müssen Sie treffen?
-    no_options_add_some: Diese Umfrage hat keine Optionen, fügen Sie unten einige hinzu.
-    details: Details
-    example_details: Beispieldetails
-    details_placeholder: Dies ist Ihre Gelegenheit zu erklären, worüber die Leute abstimmen
-    options: Optionen
-    options_placeholder: 'Mögliche Optionen auflisten '
-    no_options: Du hast noch keine Optionen hinzugefügt.
-    closing: Schluss
-    closed: Geschlossen
-    start: Erstellen
-    start_poll: Umfrage beginnen
-    stance_reason_required_label: Angabe eines Grundes für die Stimmabgabe ...
-    stance_reason_required: Notwendig
-    stance_reason_optional: Optional
-    stance_reason_disabled: Behinderte
-    stance_reason_is_required: Bitte begründen Sie Ihre Abstimmung
-    limit_reason_length: Begrenzen Sie den Grund auf maximal 500 Zeichen
-    save_poll: Umfrage speichern
-    start_poll_type: "%{poll_type} starten"
-    share_poll_type: "%{poll_type} teilen"
-    who_may_vote: Wer darf bei dieser %{poll_type} abstimmen?
-    update: Aktualisieren
-    add_voters: Wähler hinzufügen
-    notify_invitees: Senden Sie Benachrichtigungen
-    no_notifications_warning: Die Wähler werden nicht benachrichtigt. Dies ist nützlich, wenn Sie viele Umfragen durchführen und später alle benachrichtigen möchten.
-    count_voters_added: "%{count} Wähler hinzugefügt"
-    poll_type_created: "%{poll_type} erstellt"
-    poll_type_started: "%{poll_type} wurde gestartet"
-    poll_type_updated: "%{poll_type} aktualisiert"
-    reason_prompt: Grundaufforderung
-    anonymous_voting: Anonyme Abstimmung
-    anonymous_voting_description: Wenn diese Option aktiviert ist, wird die Identität der Wähler nicht mit ihren Stimmen verknüpft. Das kann nicht rückgängig gemacht werden.
-    votes_are_anonymous: Stimmabgaben sind anonym
-    vote_reason: Abstimmungsgrund
-    vote_reason_description: Es kann hilfreich sein zu verstehen, warum Menschen so abgestimmt haben, wie sie es getan haben. Mit dieser Einstellung können Sie Personen dazu auffordern, ihre Gedanken bei der Abstimmung mitzuteilen.
-    hide_results_description: Wenn Sie möchten, dass die Leute abstimmen, ohne zu wissen, wie andere abgestimmt haben, können Sie die Ergebnisse der Umfrage ausblenden.
-    process_helptext: Benennen und beschreiben Sie den Prozess, der zum Ausführen dieser Umfrage verwendet wird.
-    reminder_helptext: Senden Sie eine Benachrichtigung „Bald schließt“, bevor die Umfrage endet. Dies kann eine Gelegenheit für die Menschen sein, zu sehen, wie andere abgestimmt haben, und ihre eigene Stimme zu überdenken, oder einfach eine Möglichkeit, die Beteiligung an der Umfrage zu erhöhen.
-    deadline: Frist
-    how_much_time_to_vote: Wie viel Zeit geben Sie den Leuten zum Abstimmen?
-    advanced_settings: Erweiterte Einstellungen
-    none_of_the_above: Nichts des oben Genannten
   poll_proposal_form:
     start_header: Abstimmung starten
     edit_header: Angebot bearbeiten
@@ -2247,9 +2145,10 @@ de:
     points: Punkte
     average: Durchschnitt
     mean: Bedeuten
-    pct_of_points: "% der Punkte"
-    pct_of_voters: "% der Wähler"
     percent: Prozent
+    pct_of_points: "% der Punkte"
+    pct_of_votes_cast: "% der abgegebenen Stimmen"
+    pct_of_voters: "% der Wahlberechtigten"
   poll_meeting_time_field:
     add_time_slot: Ergänze einen Zeitslot
     new_time_slot: Neues Zeitfenster
@@ -2288,6 +2187,11 @@ de:
   poll_common_percent_voted:
     sentence: "%{numerator} von %{denominator} Personen haben abgestimmt (%{percent}%)"
     target_progress: "%{percent} % des Ziels erreicht. (%{num} / %{target})"
+    pct_of_eligible_voters_must_participate: "%{pct}% der Wahlberechtigten müssen teilnehmen"
+    pct_participation: "%{num} von %{total} abgegebenen Stimmen (%{pct}% Beteiligung)"
+    vote_short_of_quorum: 1 weitere Stimme erforderlich, um das Quorum von %{pct}% zu erreichen
+    votes_short_of_quorum: "%{num} weitere Stimmen erforderlich, um das Quorum von %{pct}% zu erreichen"
+    quorum_reached: Quorum von %{pct}% wurde erreicht
   poll_meeting_chart_panel:
     total: Gesamt
   poll_remove_vote:
@@ -2343,6 +2247,7 @@ de:
     stance_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> hat abgestimmt zu: <strong>%{title}</strong>"
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> hat seine Abstimmung aktualisiert am: <strong>%{title}</strong>"
     event_removed: Von der Diskussion entfernt
+    new: neu
   add_poll_to_thread_modal:
     success: Erfolg, %{pollType} wurde der Diskussion hinzugefügt!
   auth_form:
@@ -2573,3 +2478,157 @@ de:
         submit: Angebot ansehen
         cancel: Mach das später
     get_started_here: Hier geht's los
+  poll_common_settings:
+    who_can_vote: Wer darf wählen?
+    specified_voters_only_true: Nur eingeladene Personen
+    specified_voters_only_false_group: Jeder in der Gruppe
+    specified_voters_only_false_discussion: Jeder im Thread
+    invite_people_next: Sie können auswählen, wer zur Abstimmung eingeladen wird, nachdem Sie den %{poll_type} gestartet haben
+    show_none_of_the_above: Fügen Sie die Option „Keine der oben genannten Optionen“ hinzu
+    show_options_in_random_order: Optionen in zufälliger Reihenfolge anzeigen
+    reduce_bias_by_showing_options_in_random_order: Reduzieren Sie die Verzerrung, indem Sie die Optionen in zufälliger Reihenfolge anzeigen.
+    multiple_choice:
+      title: Multiple Choice
+      helptext_on: Bei Auswahl können die Teilnehmer mehrere Optionen auswählen.
+    anyone_can_participate:
+      title: Jeder mit Link kann teilnehmen
+      helptext_on: Wenn diese Option ausgewählt ist, kann jeder mit dem Link zur Umfrage teilnehmen.
+    notify_on_closing_soon:
+      voting_closes_too_soon: Da die Abstimmung innerhalb von 24 Stunden endet, werden keine Erinnerungen an die baldige Schließung gesendet.
+      closes_too_soon: Da dieser %{pollType} innerhalb von 24 Stunden geschlossen wird, werden keine Erinnerungen für eine baldige Schließung gesendet.
+      title: 24 Stunden vor Schließung von %{pollType} senden Sie eine Erinnerung an
+      voting_title: Senden Sie 24 Stunden vor Ende der Abstimmung eine Erinnerung an
+      nobody: Niemand
+      author: Autor (ich)
+      undecided_voters: Unentschlossene Wähler
+      voters: Alle Wähler
+    notify_on_participate:
+      title: Benachrichtigen Sie mich, wenn Personen teilnehmen
+      helptext_on: Wenn Sie diese Option auswählen, werden Sie benachrichtigt, wenn jemand teilnimmt.
+    anonymous:
+      title: Anonyme Wähler
+      helptext_on: Wenn diese Option ausgewählt ist, werden die Teilnehmerinformationen nicht bei jeder Antwort angezeigt.
+    voter_can_add_options:
+      title: Wähler können alternative Optionen hinzufügen
+    can_respond_maybe:
+      title: Wähler können „bei Bedarf“ reagieren
+    allow_long_reason:
+      title: Der Abstimmungsgrund darf länger als 500 Zeichen sein.
+    hide_results_until_closed:
+      title: Ergebnisse bis zum Schließen ausblenden
+      helptext_on: Zeigen Sie nicht, wie die Leute abgestimmt haben, bis die Umfrage geschlossen ist
+    short_reason_can_be_helpful: Kurze Abstimmungsgründe sind leichter verständlich. Eine Sammlung prägnanter Begründungen ist eine hervorragende Ressource für die Entscheidungsfindung.
+    shuffle_options: Zufallsoptionen
+  poll_common_form:
+    quorum: Quorum
+    participation_quorum: Teilnahmequorum
+    quorum_hint: Wie viel Prozent der Wähler müssen teilnehmen, damit das Ergebnis gültig ist? Optional, bei fehlender Beschlussfähigkeit leer lassen.
+    quorum_placeholder: Leer lassen oder eine Zahl zwischen 0 und 100 eingeben
+    deadline: Frist
+    notify_everyone_when_poll_starts: Alle benachrichtigen, wenn %{poll_type} beginnt
+    option_has_votes_confirm_delete: Einige Leute haben für diese Option gestimmt. Möchten Sie sie wirklich löschen?
+    example_title: Beispieltitel
+    example_title_hint: Geben Sie ein Beispiel für einen guten Vorschlagstitel
+    example_details_placeholder: Geben Sie einen Ausgangspunkt für einen Vorschlag oder eine Umfrage. Fragen können hilfreich sein, um die Teilnehmer zum Schreiben zu animieren. Fügen Sie Regeln oder Hinweise hinzu, die die Teilnehmer kennen sollten.
+    confirm_delete: Möchten Sie diese Umfragevorlage wirklich löschen? Dies kann nicht rückgängig gemacht werden.
+    advanced_settings: Erweiterte Einstellungen
+    show_advanced_settings: Erweiterte Einstellungen anzeigen
+    hide_advanced_settings: Erweiterte Einstellungen ausblenden
+    choose_at_least: Wählen Sie mindestens
+    choose_at_most: Wählen Sie höchstens
+    please_review_the_form: Bitte überprüfen Sie das Formular
+    option_added_please_add_details: Option hinzugefügt! Bitte fügen Sie einige Details hinzu, damit die Leute wissen, was es bedeutet.
+    default_duration_in_days: Standarddauer in Tagen
+    how_many_options_can_a_voter_choose: Aus wie vielen Optionen kann ein Wähler wählen?
+    minimum_choices: Mindestauswahl
+    maximum_choices: Maximale Auswahl
+    content: Inhalt
+    reminder: Erinnerung
+    reminder_notification: Erinnerungsbenachrichtigung
+    your_in_zone: 'Aktuelle Zeitzone: %{zone}'
+    show_other_zones: Andere Zeitzonen anzeigen
+    hide_other_zones: Andere Zeitzonen ausblenden
+    this_is_a_template_for_new_polls: Dies ist eine Vorlage für neue Umfragen
+    voting_method: Abstimmungsverfahren
+    none_of_the_above: Nichts des oben Genannten
+    voting_methods:
+      question: Fragerunde
+      question_hint: Bitten Sie um Fragen und Kommentare zu Ihrem Vorschlag
+      show_thumbs: Daumen zeigen
+      show_thumbs_hint: Die Wähler wählen Daumen hoch, runter, zur Seite oder Hand hoch
+      choose: Wählen
+      simple_poll: Einfache Umfrage
+      choose_hint: Die Wähler wählen die beste Option (oder Optionen)
+      score: Punktzahl
+      score_hint: Die Wähler vergeben für jede Option eine Punktzahl
+      allocate: Zuweisen
+      allocate_hint: Die Wähler verteilen ein Punktebudget auf die Optionen
+      ranked_choice: Ranglistenauswahl
+      ranked_choice_hint: Die Wähler ordnen die Optionen in der Reihenfolge von der am meisten bevorzugten bis zur am wenigsten bevorzugten Option an.
+      time_poll: Zeitumfrage
+      time_poll_hint: Wähler geben an, wann sie für ein Treffen verfügbar sind
+    process: Verfahren
+    process_name: Vorlagentitel
+    process_name_hint: Wie nennt man diese Vorlage? Z. B. Rollenberatung, Temperaturkontrolle, Protokollgenehmigung
+    process_subtitle: Vorlagenuntertitel
+    process_subtitle_hint: Eine einzeilige Beschreibung, wann oder warum diese Vorlage verwendet werden soll
+    process_introduction: Vorlagenhilfe
+    process_introduction_hint: Einige Absätze, die die Verwendung der Vorlage erklären. Fügen Sie Links zu möglicherweise hilfreichen Ressourcen ein.
+    you_can_set_a_prompt_per_option: Bearbeiten Sie die Eingabeaufforderung für jede Option auf der Registerkarte „Details“
+    chart_type: Diagrammtyp
+    title: Titel
+    title_hint: Welche Entscheidung müssen Sie treffen?
+    no_options_add_some: Diese Umfrage hat keine Optionen. Fügen Sie unten welche hinzu.
+    details: Details
+    example_details: Beispieldetails
+    details_placeholder: Dies ist Ihre Gelegenheit zu erklären, worüber die Leute abstimmen
+    options: Optionen
+    options_placeholder: Listen Sie die verfügbaren Optionen auf
+    no_options: Sie haben noch keine Optionen hinzugefügt.
+    closing: Schließen
+    closed: Geschlossen
+    start: Start
+    start_poll: Umfrage starten
+    stance_reason_required_label: Die Angabe eines Grundes bei der Stimmabgabe ist ...
+    stance_reason_required: Erforderlich
+    stance_reason_optional: Optional
+    stance_reason_disabled: Deaktiviert
+    stance_reason_is_required: Bitte begründen Sie Ihre Stimme
+    limit_reason_length: Beschränken Sie den Grund auf maximal 500 Zeichen
+    save_poll: Umfrage speichern
+    start_poll_type: Starten Sie %{poll_type}
+    share_poll_type: Teilen Sie %{poll_type}
+    who_may_vote: Wer darf bei diesem %{poll_type} abstimmen?
+    update: Aktualisieren
+    add_voters: Wähler hinzufügen
+    notify_invitees: Benachrichtigungen senden
+    no_notifications_warning: Die Wähler werden nicht benachrichtigt. Dies ist nützlich, wenn Sie viele Umfragen durchführen und planen, alle später zu benachrichtigen.
+    count_voters_added: "%{count} Wähler hinzugefügt"
+    poll_type_created: "%{poll_type} erstellt"
+    poll_type_started: "%{poll_type} gestartet"
+    poll_type_updated: "%{poll_type} aktualisiert"
+    reason_prompt: Grundeingabeaufforderung
+    each_option_has_own_reason_prompt: Jede Option verfügt über eine eigene Begründung. Bearbeiten Sie eine Option, um die Begründung anzuzeigen oder zu ändern.
+    anonymous_voting: Anonyme Abstimmung
+    votes_are_anonymous: Die Abstimmungen sind anonym
+    vote_reason: Abstimmungsgrund
+    quorum_tip_vote_share_requirement: 'Tipp: Sie können auch den Grad der Zustimmung angeben, der für die Annahme eines Vorschlags erforderlich ist. Bearbeiten Sie eine Option, um die Anforderung des Stimmenanteils zu definieren'
+    how_much_time_to_vote: Wie viel Zeit geben Sie den Leuten zum Abstimmen?
+    default_duration_in_days_hint: Wie viele Tage haben die Menschen Zeit, ihre Stimme abzugeben?
+    define_minimum_and_maxmimum_score: Definieren Sie die Mindest- und Höchstpunktzahl, die ein Wähler einer Option geben kann
+    how_many_points_does_each_voter_have_to_allocate: Wie viele Punkte muss jeder Wähler vergeben?
+    anonymous_voting_description: Stimmen und Gründe anzeigen, aber nicht, wer sie abgegeben hat. Dies kann nach dem Start von %{poll_type} nicht mehr geändert werden.
+    vote_reason_description: Bitten Sie die Leute, bei der Abstimmung ihre Gründe mitzuteilen oder weitere Informationen bereitzustellen.
+    hide_results_description: Wenn Sie möchten, dass die Leute abstimmen, ohne zu sehen, wie andere abgestimmt haben, können Sie die Ergebnisse ausblenden.
+    process_helptext: Benennen und beschreiben Sie den Prozess, der zur Durchführung dieser Umfrage verwendet wird.
+    reminder_helptext: Senden Sie 24 Stunden vor Ablauf der Frist eine Benachrichtigung mit dem Hinweis „Schließt bald“. Dies kann die Teilnahme erhöhen und den Teilnehmern die Möglichkeit geben, ihre Position zu überdenken.
+  poll_receipts_page:
+    verify_participants: Teilnehmer überprüfen
+    see_votes_if_quorum_reached: Wenn die Abstimmung beendet ist und das Quorum erreicht ist, sehen Sie, wer seine Stimme abgegeben hat.
+    voter_name: Name des Wählers
+    voter_email: Wähler-E-Mail
+    vote_cast: Abgegebene Stimmen
+    member_since: Mitglied seit
+    invited_by: Eingeladen von
+    invited_on: Eingeladen am
+    no_receipts: Diese anonyme Umfrage wurde geschlossen, bevor die Überprüfungsfunktion verfügbar war. Eine Überprüfung ist daher nicht möglich.

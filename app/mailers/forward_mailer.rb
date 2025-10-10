@@ -9,7 +9,8 @@ class ForwardMailer < ActionMailer::Base
       to: to,
       reply_to: reply_to,
       subject: subject,
-      layout: nil
+      layout: nil,
+      skip_premailer: true
     )
   end
 end

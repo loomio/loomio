@@ -36,9 +36,8 @@ export default {
 section.strand-item__stance-created.stance-created
   template(v-if="eventable.castAt && !eventable.revokedAt")
     template(v-if="eventable.hasOptionIcon()")
-      .d-flex.text-body-2
+      .d-flex.text-body-2.align-center.pb-1
         component.text-medium-emphasis(:is="componentType" :to="actor && urlFor(actor)") {{actorName}}
-        space
         space
         poll-common-stance-choice(v-if="poll.showResults()" :poll="poll" :stance-choice="eventable.stanceChoice()")
         space

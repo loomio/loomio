@@ -2,12 +2,12 @@ source 'http://rubygems.org'
 
 ruby '3.4.5'
 gem 'rails', '7.2.2.1'
-gem 'rack', '2.2.17'
-gem 'uri', '1.0.3'
+gem 'rack', '2.2.19'
+gem 'uri', '1.0.4'
 gem 'rake'
 gem 'pg'
 gem 'active_record_extended'
-gem 'haml-rails', '~> 2.1.0'
+gem 'haml-rails', '~> 3.0.0'
 gem 'devise', '~> 4.9.4'
 gem 'devise-i18n'
 gem 'devise-pwned_password'
@@ -17,18 +17,18 @@ gem 'actionpack-page_caching'
 gem 'cancancan'
 gem 'gravtastic'
 gem 'activeadmin', '~> 3.3.0'
-gem 'ransack', '4.3.0'
+gem 'ransack', '4.4.1'
 gem 'nokogiri'
 gem 'twitter-text', github: 'loomio/twitter-text'
 gem 'redcarpet', '~> 3.6.1'
 gem 'paper_trail', '~> 16.0.0'
 gem 'sidekiq', '~> 6.5.12'
 gem 'friendly_id', '~> 5.5.1'
-gem 'httparty', '~> 0.23.1'
+gem 'httparty', '~> 0.23.2'
 gem 'browser', '~> 6.2.0'
 gem "aws-sdk-s3", require: false
 gem "ruby-openai"
-gem "google-cloud-storage", "~> 1.56", require: false
+gem "google-cloud-storage", "~> 1.57", require: false
 gem 'image_processing', '~> 1.14'
 gem "ruby-vips"
 gem "stackprof"
@@ -75,12 +75,12 @@ group :development, :test do
   gem 'faker'
   gem 'dotenv-rails'
   gem 'rails-controller-testing'
+  gem "brakeman", require: false
+  gem "rubocop-rails-omakase", require: false
 end
 
 group :development do
   gem 'web-console'
-  gem 'spring'
-  gem "spring-commands-rspec"
 end
 
 group :test do

@@ -288,14 +288,33 @@ class PollService
   def self.do_closing_work(poll:)
     return if poll.closed_at
 
-    poll.stances.update_all(participant_id: nil) if poll.anonymous && AppConfig.app_features[:scrub_anonymous_stances]
+    StanceReceipt.where(poll_id: poll.id).delete_all
+    StanceReceipt.insert_all build_receipts(poll)
+
+    poll.stances.update_all(participant_id: nil) if poll.anonymous
+
     if poll.discussion_id && poll.hide_results == 'until_closed'
       stance_ids = poll.stances.latest.reject(&:body_is_blank?).map(&:id)
       Event.where(kind: 'stance_created', eventable_id: stance_ids, discussion_id: nil).update_all(discussion_id: poll.discussion_id)
       EventService.repair_thread(poll.discussion_id)
     end
+
     poll.update_attribute(:closed_at, Time.now)
     GenericWorker.perform_async('SearchService', 'reindex_by_poll_id', poll.id)
+  end
+
+  def self.build_receipts(poll)
+    return [] if poll.anonymous && poll.closed_at
+
+    poll.stances.latest.map do |stance|
+      {
+        poll_id: poll.id,
+        voter_id: stance.participant_id,
+        inviter_id: stance.inviter_id,
+        invited_at: stance.created_at,
+        vote_cast: (!poll.anonymous? || poll.quorum_reached?) ? !!stance.cast_at : nil
+      }
+    end
   end
 
   # def self.destroy(poll:, actor:)
@@ -342,6 +361,25 @@ class PollService
 
     l = sorted_poll_options.each_with_index.map do |option, index|
       option_name = poll.poll_option_name_format == 'i18n' ? "poll_#{poll.poll_type}_options."+option.name : option.name
+      score_percent = poll.total_score > 0 ? ((option.total_score.to_f / poll.total_score.to_f) * 100) : 0
+      voter_percent = poll.voters_count > 0 ? ((option.voter_count.to_f / poll.voters_count.to_f) * 100) : 0
+
+      test_result = if option.test_operator == 'gte'
+        if option.test_against == 'score_percent'
+          score_percent >= option.test_percent.to_f
+        else
+          voter_percent >= option.test_percent.to_f
+        end
+      elsif option.test_operator == 'lte'
+        if option.test_against == 'score_percent'
+          score_percent <= option.test_percent.to_f
+        else
+          voter_percent <= option.test_percent.to_f
+        end
+      else
+        nil
+      end
+
       {
         id: option.id,
         poll_id: option.poll_id,
@@ -351,14 +389,18 @@ class PollService
         rank: index+1,
         score: option.total_score,
         target_percent: ((option.icon == 'agree') && (poll.agree_target.to_i > 0)) ? ((option.total_score.to_f / poll.agree_target.to_f) * 100) : 0,
-        score_percent: poll.total_score > 0 ? ((option.total_score.to_f / poll.total_score.to_f) * 100) : 0,
+        score_percent: score_percent,
         max_score_percent: poll.total_score > 0 ? ((option.total_score.to_f / poll.stance_counts.max.to_f) * 100) : 0,
-        voter_percent: poll.voters_count > 0 ? ((option.voter_count.to_f / poll.voters_count.to_f) * 100) : 0,
+        voter_percent: voter_percent,
         average: option.average_score,
         voter_scores: option.voter_scores,
         voter_ids: option.voter_ids.take(500),
         voter_count: option.voter_count,
-        color: option.color
+        color: option.color,
+        test_operator: option.test_operator,
+        test_against: option.test_against,
+        test_percent: option.test_percent,
+        test_result: test_result
       }.with_indifferent_access.freeze
     end
 
@@ -379,7 +421,8 @@ class PollService
           voter_scores: {},
           voter_ids: poll.none_of_the_above_voters.map(&:id).take(500),
           voter_count: poll.none_of_the_above_count,
-          color: '#BBBBBB'
+          color: '#BBBBBB',
+          test_result: nil
         }.with_indifferent_access.freeze
       )
     end
@@ -401,7 +444,8 @@ class PollService
           voter_scores: {},
           voter_ids: poll.undecided_voters.map(&:id).take(500),
           voter_count: poll.undecided_voters_count,
-          color: '#BBBBBB'
+          color: '#BBBBBB',
+          test_result: nil
         }.with_indifferent_access.freeze
       )
     end

@@ -258,7 +258,7 @@ class Stance < ApplicationRecord
     return if !cast_at
     return if none_of_the_above
     return unless poll.validate_max_score
-    return if (stance_choices.map(&:score).max || 0) <= poll.max_score
+    return if (stance_choices.map(&:score).compact.max || 0) <= poll.max_score
     errors.add(:stance_choices, "max_score validation failure")
   end
 
@@ -266,7 +266,7 @@ class Stance < ApplicationRecord
     return if !cast_at
     return if none_of_the_above
     return unless poll.validate_dots_per_person
-    return if stance_choices.map(&:score).sum <= poll.dots_per_person.to_i
+    return if stance_choices.map(&:score).compact.sum <= poll.dots_per_person.to_i
 
     errors.add(:dots_per_person, "Too many dots")
   end

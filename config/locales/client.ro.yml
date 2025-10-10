@@ -9,7 +9,6 @@ ro:
     we_use_this_to_help: Următoarele informații sunt folosite pentru a vă configura grupul Loomio și pentru a ne ajuta să înțelegem puțin despre organizația dvs., astfel încât să vă putem sprijini mai bine.
     how_do_you_intend_to_use_loomio: Cum intenționați să utilizați Loomio?
     what_decisions_do_you_need_to_make: Ce decizii trebuie să iei?
-    newsletter_intro: Doriți să vă abonați la newsletter-ul nostru?
     newsletter_description: Rămâneți la curent cu noile funcții și poveștile inspiratoare despre modul în care Loomio este folosit de organizații din întreaga lume
     subscribe_to_newsletter: Abonați-vă la newsletter-ul Loomio
     form_incomplete: Vă rugăm să completați toate câmpurile din formular pentru a continua
@@ -21,6 +20,7 @@ ro:
     please_enter_a_valid_email_address: Vă rugăm să introduceți o adresă de email validă
     please_accept_the_terms: Vă rugăm să acceptați termenii
     how_did_you_hear_about_loomio: Cum ai auzit de Loomio?
+    newsletter_intro: Ai vrea să afli despre noile funcții, interviuri cu clienții, studii de caz și anunțuri de la echipa Loomio?
   tasks:
     tasks: Sarcini
     your_tasks: Sarcinile tale
@@ -560,6 +560,16 @@ ro:
     from_comment: Dintr-o adresă URL de comentariu
     from_sequence_id: Dintr-o adresă URL a articolului de fir
     unread: Nou pentru tine
+    jump_to: Sari la
+    timeline: Cronologie
+    top: Top
+    bottom: Fund
+    start: Început
+    latest: Cele mai recente
+    showing_latest: Se afișează cele mai recente
+    showing_unread: Se afișează necitite
+    add_comment: Adaugă comentariu
+    start_decision: Decizia de începere
   search_modal:
     all_content: Tot conținutul
     best_match: Cea mai buna potrivire
@@ -615,6 +625,8 @@ ro:
     theme: Temă
     light: Aprinde
     dark: Întuneric
+    light_blue: Albastru deschis
+    dark_blue: Albastru închis
   membership_card:
     group_members: Membrii grupului
     discussion_members: Membrii firului
@@ -1216,7 +1228,6 @@ ro:
     description: Descriere
     description_placeholder: Descrieți scopul grupului dvs., astfel încât membrii grupului să știe de ce sunt aici.
     new_description_placeholder: De ce încerci Loomio? Ce decizii trebuie să luați împreună?
-    new_description_html: <h3 id="how-do-you-intend-to-use-loomio">Cum intenționați să utilizați Loomio?</h3><p></p><h3 id="why-is-this-important-for-your-group"> De ce este acest lucru important pentru grupul tău?</h3><p></p><h3 id="what-decisions-do-you-need-to-make"> Ce decizii trebuie să iei?</h3><p></p>
     secret_by_default: Grupul tău va fi accesibil doar de către cei invitați să se alăture. Puteți schimba acest lucru mai târziu.
     privacy_statement:
       public_on_web: Numele, descrierea și atașamentele la contextul grupului vor fi vizibile pentru public
@@ -1283,6 +1294,8 @@ ro:
     request_to_join_prompt: Solicitare de înscriere
     default_request_to_join_prompt: Vă mulțumim pentru interesul acordat grupului nostru. Vă rugăm să vă prezentați și să explicați de ce solicitați să vă înscrieți.
     upgrade_for_subgroups: 'Vă rugăm <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">să actualizați abonamentul</a> pentru a crea un subgrup'
+    share_this_url_with_people_who_want_to_join: Distribuiți această adresă URL cu persoanele care doresc să se alăture
+    new_description_html: "<h3>Cu ce provocări se confruntă organizația dumneavoastră în procesul decizional?</h3><p></p><h3> Cum ați dori să utilizați Loomio în organizația dumneavoastră?</h3><p></p>"
   group_export_modal:
     title: Exportați datele grupului
     body: <p>Puteți descărca oricând o copie a datelor grupului dvs. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Află mai multe.</a></p><p> Este nevoie de câteva minute pentru a finaliza, în funcție de dimensiunea grupului dvs. Când este gata, veți primi un e-mail cu un link pentru a descărca fișierul.</p>
@@ -1480,7 +1493,6 @@ ro:
     email_newsletter: Buletinul informativ Loomio
     email_newsletter_description: Obțineți actualizări despre funcții noi, antrenamente, evenimente din orașul dvs. și viitorul Loomio. De obicei, 2 sau 3 e-mailuri pe an.
     email_catch_up_day: E-mail cu rezumat de recuperare
-    daily_summary_description: Alegeți când să primiți e-mailul cu rezumatul de recuperare. Acest e-mail conține orice activitate nouă pe care nu ați văzut-o. O modalitate bună de a rămâne la curent dacă nu sunteți un utilizator obișnuit.
     on_participation_label: Abonați-vă la participare
     on_participation_description: Când participați la un thread, toate activitățile ulterioare vă vor fi trimise imediat prin e-mail.
     announcement_label: Anunturi
@@ -1497,6 +1509,7 @@ ro:
       updated: Setările de e-mail au fost actualizate
     learn_more: Aflați mai multe despre setările de e-mail...
     mentioned_description: Când cineva te menționează {'@'} într-un comentariu, vei primi un e-mail de notificare.
+    daily_summary_description: Alege când vrei să primești e-mailul cu rezumatul actualizării. Acest e-mail conține orice activitate nouă pe care nu ai văzut-o. O modalitate bună de a rămâne la curent dacă nu ești un utilizator obișnuit.
   thread_preview:
     replies_count: "%{count} răspunsuri"
     unread_count: "%{count} necitite"
@@ -1738,6 +1751,22 @@ ro:
     thumb_down: Degetul mare în jos
     thumb_sideways: Degetul mare în lateral
     hand_up: Mâna sus
+    of: de
+    at_least: Cel puţin
+    no_more_than: Nu mai mult decât
+    votes_cast: Voturi exprimate
+    eligible_voters: Alegătorii eligibili
+    gte_score_percent: Necesită cel puțin %{percent}% din voturile exprimate
+    gte_voter_percent: Necesită cel puțin %{percent}% din alegătorii eligibili
+    lte_score_percent: Nu trebuie să depășească %{percent}% din voturile exprimate
+    lte_voter_percent: Nu trebuie să depășească %{percent}% din alegătorii eligibili
+    name_gte_score_percent: "%{name} are nevoie de cel puțin %{percent}% din voturile exprimate"
+    name_gte_voter_percent: "%{name} are nevoie de cel puțin %{percent}% din votanții eligibili"
+    name_lte_score_percent: "%{name} nu trebuie să depășească %{percent}% din voturile exprimate"
+    name_lte_voter_percent: "%{name} nu trebuie să depășească %{percent}% din alegătorii eligibili"
+    vote_share_requirement: Cerința privind cota de vot
+    for_the_proposal_to_pass: Pentru ca propunerea să fie adoptată, această opțiune trebuie să primească…
+    for_the_poll_to_be_valid: Pentru ca %{poll_type} să fie valid, această opțiune trebuie să primească…
   poll_common:
     superseded: Inlocuit
     outdated: Învechit
@@ -1827,6 +1856,8 @@ ro:
     edit_warning: Editarea este recomandată numai pentru modificări minore sau pentru remedierea erorilor de ortografie. Pentru modificări semnificative, închideți acest %{pollType} și începeți unul nou.
     no_voting: Doar pentru discuție, votul este dezactivat
     post_outcome: Rezultatul postării
+    view_all_votes: Vezi toate voturile
+    you_voted: Ai votat
   poll_common_attachment_form:
     label: Atașamente
   poll_common_add_option:
@@ -1927,6 +1958,8 @@ ro:
     unable_to_vote: Nu ați fost invitat să votați în acest %{poll_type}
     draft_mode: Votul este dezactivat. Acesta nu este încă deschis pentru vot.
     voting_disabled_poll_is_template: Votul este dezactivat. Acesta este un șablon.
+    for_this_proposal_to_pass: 'Pentru ca această propunere să fie adoptată:'
+    for_this_poll_type_to_be_valid: 'Pentru ca acest %{poll_type} să fie valid:'
   poll_common_collapsed:
     by_who: dupa %{name}
   poll_common_calendar_invite:
@@ -1941,48 +1974,6 @@ ro:
     event_description_placeholder: Care este agenda acestei întâlniri?
     location: Locație
     location_placeholder: Unde va avea loc această întâlnire?
-  poll_common_settings:
-    who_can_vote: Cine poate vota?
-    short_reason_can_be_helpful: Menținerea scurtă a motivelor de vot le face mai ușor de înțeles. O colecție de motive concise este o resursă excelentă pentru a lua o decizie.
-    specified_voters_only_true: Doar persoane invitate
-    specified_voters_only_false_group: Oricine din grup
-    specified_voters_only_false_discussion: Oricine din topic
-    invite_people_next: Puteți alege cine este invitat să voteze după ce începeți %{poll_type}
-    shuffle_options:
-      shuffle_options: Opțiuni de amestecare
-      title: Afișați opțiunile în ordine aleatorie
-      helptext: O opțiune care este prima pe listă îi poate da o părtinire. Utilizați această setare pentru a contracara acest efect.
-    multiple_choice:
-      title: Alegere multiplă
-      helptext_on: Când sunt selectați, participanții vor putea selecta mai multe opțiuni.
-    anyone_can_participate:
-      title: Oricine are link poate participa
-      helptext_on: Când este selectat, oricine are linkul către sondaj poate participa.
-    notify_on_closing_soon:
-      voting_closes_too_soon: Deoarece votul se închide în 24 de ore, nu vor fi trimise mementouri de închidere în curând.
-      closes_too_soon: Deoarece acest %{pollType} se închide în 24 de ore, nu vor fi trimise mementouri de închidere în curând.
-      title: Cu 24 de ore înainte de închiderea %{pollType}, trimiteți un memento la
-      voting_title: Cu 24 de ore înainte de încheierea votului, trimiteți un memento la
-      nobody: Nimeni
-      author: Autorul (eu)
-      undecided_voters: Alegători nehotărâți
-      voters: Toți alegătorii
-    notify_on_participate:
-      title: Anunțați-mă când participă oamenii
-      helptext_on: Când este selectat, vei fi notificat ori de câte ori participă cineva.
-    anonymous:
-      title: Alegători anonimi
-      helptext_on: Când este selectat, informațiile despre participant nu vor fi afișate la fiecare răspuns.
-    voter_can_add_options:
-      title: Alegătorii pot adăuga opțiuni alternative
-    can_respond_maybe:
-      title: Alegătorii pot răspunde „dacă este nevoie”
-    allow_long_reason:
-      title: Permiteți ca „motivul” votului să aibă mai mult de 500 de caractere
-    hide_results_until_closed:
-      title: Ascundeți rezultatele până când este închis
-      helptext_on: Nu arătați cum au votat oamenii până când votul nu este închis
-    show_none_of_the_above: Includeți opțiunea „Niciuna dintre cele de mai sus”.
   poll_common_close_form:
     title: Închideți %{poll_type} acum?
     helptext: Sigur doriți să închideți acest %{poll_type} mai devreme și să împărtășiți un rezultat?
@@ -2041,7 +2032,6 @@ ro:
     enter_an_outcome: Introduceți un rezultat
   poll_common_outcome_form:
     review_due_in_days: Revizuiți decizia după câte zile?
-    review_due_in_days_hint: O perioadă de timp (în zile) de așteptat înainte de a revizui decizia. (optional)
     review_date: Data revizuirii
     review_date_hint: Stabiliți o dată pentru a revizui decizia (opțional)
     who_to_notify: Pe cine vrei să anunți despre acest rezultat? (optional)
@@ -2051,109 +2041,17 @@ ro:
     outcome_created: Rezultatul creat
     outcome_updated: Rezultatul actualizat
     statement_placeholder: Rezumați răspunsurile și explicați ce se va întâmpla în continuare.
-    statement_template_placeholder: Furnizați un șablon pentru redactarea unui rezultat al deciziei. (optional)
     you_will_be_notified: Veți fi anunțat la data revizuirii.
     submit: Împărtășiți rezultatul
+    review_due_in_days_hint: Numărul de zile de așteptare înainte de revizuirea deciziei (opțional).
+    statement_template_hint: Furnizați un șablon pentru redactarea rezultatului deciziei. (opțional)
+    statement_template_placeholder: Mulțumim pentru participare! Cvorumul a fost atins și avem sprijin pentru a continua.
   poll_common_outcome_panel:
     authored_by: Dupa %{name}
   poll_common_delete_modal:
     question: Sigur doriți să ștergeți acest lucru?
     title: Ștergeți %{pollType}
     success: S-a șters cu succes
-  poll_common_form:
-    notify_everyone_when_poll_starts: Notificați pe toată lumea când începe %{poll_type}
-    option_has_votes_confirm_delete: Unii oameni au votat pentru această opțiune, sunteți sigur că doriți să o ștergeți?
-    example_title: Exemplu de titlu
-    example_title_hint: Dați un exemplu de titlu de propunere bun
-    example_details_placeholder: Furnizați un punct de plecare pentru o propunere sau sondaj. Întrebările pot fi indicații utile pentru a-i determina pe oameni să scrie. Includeți orice reguli sau mementouri pe care participanții vor trebui să le cunoască.
-    confirm_delete: Sigur doriți să ștergeți acest șablon de sondaj? Acest lucru nu poate fi anulat.
-    show_advanced_settings: arata setarile avansate
-    hide_advanced_settings: Ascundeți setările avansate
-    choose_at_least: Alege macar
-    choose_at_most: Alege cel mult
-    please_review_the_form: Vă rugăm să revizuiți formularul
-    option_added_please_add_details: Opțiune adăugată! Vă rugăm să adăugați câteva detalii pentru ca oamenii să știe ce înseamnă.
-    default_duration_in_days: Durata implicită în zile
-    default_duration_in_days_hint: Câte zile ar trebui acordate oamenilor să voteze?
-    how_many_options_can_a_voter_choose: Câte dintre aceste opțiuni poate alege un alegător?
-    minimum_choices: Alegeri minime
-    maximum_choices: Opțiuni maxime
-    content: Conţinut
-    reminder: Aducere aminte
-    your_in_zone: 'Fus orar actual: %{zone}'
-    show_other_zones: Afișați alte fusuri orare
-    hide_other_zones: Ascundeți alte fusuri orare
-    this_is_a_template_for_new_polls: Acesta este un șablon pentru noi sondaje
-    voting_method: Metoda de vot
-    voting_methods:
-      question: Runda de întrebări
-      question_hint: Invitați întrebări și comentarii cu privire la propunerea dvs
-      show_thumbs: Arată degetul mare
-      show_thumbs_hint: Alegătorii aleg degetul mare în sus, în jos, lateral sau mâna sus
-      choose: Alege
-      simple_poll: Sondaj simplu
-      choose_hint: Alegătorii aleg cea mai bună opțiune (sau opțiuni)
-      score: Scor
-      score_hint: Alegătorii atribuie un punctaj fiecărei opțiuni
-      allocate: Aloca
-      allocate_hint: Alegătorii alocă un buget de puncte între opțiuni
-      ranked_choice: Alegere clasată
-      ranked_choice_hint: Alegătorii aranjează opțiunile în ordine de la cel mai mult la cel mai puțin preferat
-      time_poll: Sondaj de timp
-      time_poll_hint: Alegătorii indică când sunt disponibili pentru a se întâlni
-    process: Proces
-    process_name: Titlul șablonului
-    process_name_hint: Cum numești acest șablon? De exemplu, sfaturi privind rolul, verificarea temperaturii, aprobarea procesului-verbal
-    process_subtitle: Subtitrare șablon
-    process_subtitle_hint: O descriere pe o linie a când sau de ce să utilizați acest șablon
-    process_introduction: Ajutor șablon
-    process_introduction_hint: Câteva paragrafe care explică cum să folosești șablonul. Includeți linkuri către resurse care ar putea fi utile.
-    you_can_set_a_prompt_per_option: Editați solicitarea pentru fiecare opțiune din fila detalii
-    chart_type: Tipul graficului
-    title: Titlu
-    title_hint: Care este decizia pe care trebuie să o iei?
-    no_options_add_some: Acest sondaj nu are opțiuni, adăugați câteva mai jos.
-    details: Detalii
-    example_details: Exemple de detalii
-    details_placeholder: Aceasta este oportunitatea ta de a explica pentru ce votează oamenii
-    options: Opțiuni
-    options_placeholder: Listați opțiunile disponibile
-    no_options: Nu ați adăugat încă nicio opțiune.
-    closing: Închidere
-    closed: Inchis
-    start: Incepe
-    start_poll: Începe sondajul
-    stance_reason_required_label: Oferirea unui motiv atunci când votați este...
-    stance_reason_required: Necesar
-    stance_reason_optional: Opțional
-    stance_reason_disabled: Dezactivat
-    stance_reason_is_required: Vă rugăm să furnizați un motiv cu votul dvs
-    limit_reason_length: Limitați motivul la maximum 500 de caractere
-    save_poll: Salvați sondajul
-    start_poll_type: Începeți %{poll_type}
-    share_poll_type: Distribuie %{poll_type}
-    who_may_vote: Cine poate vota în acest %{poll_type}?
-    update: Actualizați
-    add_voters: Adăugați alegători
-    notify_invitees: Trimite notificări
-    no_notifications_warning: Alegătorii nu vor fi anunțați. Acest lucru este util dacă desfășurați o mulțime de sondaje și intenționați să notificați pe toată lumea mai târziu.
-    count_voters_added: "%{count} alegători adăugați"
-    poll_type_created: "%{poll_type} creat"
-    poll_type_started: "%{poll_type} a început"
-    poll_type_updated: "%{poll_type} a fost actualizat"
-    reason_prompt: Motivul prompt
-    anonymous_voting: Vot anonim
-    anonymous_voting_description: Dacă este activată, identitatea alegătorilor nu va fi asociată cu voturile acestora. Acest lucru nu poate fi anulat.
-    votes_are_anonymous: Voturile sunt anonime
-    vote_reason: Motivul votului
-    vote_reason_description: Poate fi util să înțelegeți de ce oamenii au votat așa cum au votat. Cu această setare, puteți solicita oamenilor să-și împărtășească gândurile atunci când votează.
-    hide_results_description: Dacă doriți ca oamenii să voteze fără să știe cum au votat alții, puteți ascunde rezultatele sondajului.
-    process_helptext: Denumiți și descrieți procesul care este utilizat pentru a rula acest sondaj.
-    reminder_helptext: Trimiteți o notificare „Închidere în curând” înainte de închiderea sondajului. Aceasta poate fi o oportunitate pentru oameni de a vedea cum au votat alții și de a-și reconsidera propriul vot, sau doar o modalitate de a crește participarea la sondaj.
-    deadline: Termen limită
-    how_much_time_to_vote: Cât timp veți acorda oamenilor să voteze?
-    advanced_settings: Setări avansate
-    none_of_the_above: Nici una dintre cele de mai sus
   poll_proposal_form:
     start_header: Începeți propunerea
     edit_header: Editați propunerea
@@ -2212,9 +2110,10 @@ ro:
     points: Puncte
     average: In medie
     mean: Rău
-    pct_of_points: "% din puncte"
-    pct_of_voters: "% din alegători"
     percent: La sută
+    pct_of_points: "% din puncte"
+    pct_of_votes_cast: "% din voturile exprimate"
+    pct_of_voters: "% din alegătorii eligibili"
   poll_meeting_time_field:
     add_time_slot: Adăugați intervalul de timp
     new_time_slot: Nou interval orar
@@ -2253,6 +2152,11 @@ ro:
   poll_common_percent_voted:
     sentence: "%{numerator} din %{denominator} persoane au participat (%{percent}%)"
     target_progress: "%{percent}% din obiectiv atins. (%{num} / %{target})"
+    pct_of_eligible_voters_must_participate: "%{pct}% dintre alegătorii eligibili trebuie să participe"
+    pct_participation: "%{num} din %{total} voturi exprimate (%{pct}% participare)"
+    vote_short_of_quorum: Mai este nevoie de un vot pentru a atinge cvorumul de %{pct}%
+    votes_short_of_quorum: Sunt necesare încă %{num} voturi pentru a atinge cvorumul de %{pct}%
+    quorum_reached: Cvorumul de %{pct}% a fost atins
   poll_meeting_chart_panel:
     total: Total
   poll_remove_vote:
@@ -2308,6 +2212,7 @@ ro:
     stance_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a votat pentru: <strong>%{title}</strong>"
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> și-a actualizat votul pe: <strong>%{title}</strong>"
     event_removed: Scos din fir
+    new: nou
   add_poll_to_thread_modal:
     success: Succes, %{pollType} adăugat la fir!
   auth_form:
@@ -2536,3 +2441,157 @@ ro:
         submit: Vizualizați propunerea
         cancel: Fă asta mai târziu
     get_started_here: Începeți aici
+  poll_common_settings:
+    who_can_vote: Cine poate vota?
+    specified_voters_only_true: Doar pentru persoane invitate
+    specified_voters_only_false_group: Oricine din grup
+    specified_voters_only_false_discussion: Oricine din firul de discuție
+    invite_people_next: Poți alege cine este invitat să voteze după ce începi %{poll_type}
+    show_none_of_the_above: Includeți o opțiune „Niciuna dintre cele de mai sus”
+    show_options_in_random_order: Afișați opțiunile în ordine aleatorie
+    reduce_bias_by_showing_options_in_random_order: Reduceți prejudecățile afișând opțiunile în ordine aleatorie.
+    multiple_choice:
+      title: Alegere multiplă
+      helptext_on: După selectare, participanții vor putea alege mai multe opțiuni.
+    anyone_can_participate:
+      title: Oricine are linkul poate participa
+      helptext_on: Când este selectat, oricine are linkul către sondaj poate participa.
+    notify_on_closing_soon:
+      voting_closes_too_soon: Deoarece votul se încheie în 24 de ore, nu vor fi trimise mementouri privind închiderea în curând.
+      closes_too_soon: Deoarece acest %{pollType} se închide în termen de 24 de ore, nu vor fi trimise mementouri privind închiderea în curând.
+      title: Cu 24 de ore înainte de închiderea sesiunii %{pollType}, trimiteți o reamintire către
+      voting_title: Cu 24 de ore înainte de închiderea votării, trimiteți o reamintire către
+      nobody: Nimeni
+      author: Autor (eu)
+      undecided_voters: Alegătorii nehotărâți
+      voters: Toți alegătorii
+    notify_on_participate:
+      title: Anunță-mă când participă alții
+      helptext_on: Când ești selectat, vei fi notificat de fiecare dată când cineva participă.
+    anonymous:
+      title: Alegători anonimi
+      helptext_on: Când este selectată, informațiile participanților nu vor fi afișate odată cu fiecare răspuns.
+    voter_can_add_options:
+      title: Alegătorii pot adăuga opțiuni alternative
+    can_respond_maybe:
+      title: Alegătorii pot răspunde „dacă este nevoie”
+    allow_long_reason:
+      title: Permiteți ca „motivul” votului să aibă mai mult de 500 de caractere
+    hide_results_until_closed:
+      title: Ascunde rezultatele până la închidere
+      helptext_on: Nu afișați cum au votat oamenii până când nu se închide sondajul.
+    short_reason_can_be_helpful: Motivele scurte pentru vot sunt mai ușor de înțeles. O colecție de motive concise este o resursă excelentă pentru luarea unei decizii.
+    shuffle_options: Opțiuni aleatorii
+  poll_common_form:
+    quorum: Cvorum
+    participation_quorum: Cvorum de participare
+    quorum_hint: Ce procent din alegători trebuie să participe pentru ca rezultatul să fie valid? Opțional, lăsați necompletat dacă nu există cvorum.
+    quorum_placeholder: Lăsați necompletat sau introduceți un număr între 0 și 100
+    deadline: Termen limită
+    notify_everyone_when_poll_starts: Anunță pe toată lumea când începe %{poll_type}
+    option_has_votes_confirm_delete: Unii oameni au votat pentru această opțiune, sunteți sigur că doriți să o ștergeți?
+    example_title: Exemplu de titlu
+    example_title_hint: Dați un exemplu de titlu bun pentru o propunere
+    example_details_placeholder: Oferiți un punct de plecare pentru o propunere sau un sondaj. Întrebările pot fi sugestii utile pentru a-i determina pe oameni să scrie. Includeți orice reguli sau mementouri pe care participanții trebuie să le cunoască.
+    confirm_delete: Sigur vrei să ștergi acest șablon de sondaj? Această acțiune nu poate fi anulată.
+    advanced_settings: Setări avansate
+    show_advanced_settings: Afișați setările avansate
+    hide_advanced_settings: Ascundeți setările avansate
+    choose_at_least: Alege cel puțin
+    choose_at_most: Alege cel mult
+    please_review_the_form: Vă rugăm să revizuiți formularul
+    option_added_please_add_details: Opțiune adăugată! Vă rugăm să adăugați câteva detalii pentru ca oamenii să înțeleagă ce înseamnă.
+    default_duration_in_days: Durata implicită în zile
+    how_many_options_can_a_voter_choose: Câte opțiuni poate alege un alegător?
+    minimum_choices: Opțiuni minime
+    maximum_choices: Opțiuni maxime
+    content: Conţinut
+    reminder: Memento
+    reminder_notification: Notificare de reamintire
+    your_in_zone: 'Fus orar curent: %{zone}'
+    show_other_zones: Afișați alte fusuri orare
+    hide_other_zones: Ascundeți alte fusuri orare
+    this_is_a_template_for_new_polls: Acesta este un șablon pentru sondaje noi
+    voting_method: Metoda de vot
+    none_of_the_above: Nici una dintre cele de mai sus
+    voting_methods:
+      question: Runda de întrebări
+      question_hint: Invitați întrebări și comentarii la propunerea dumneavoastră
+      show_thumbs: Aruncarea degetelor mari
+      show_thumbs_hint: Alegătorii aleg degetul mare în sus, în jos, lateral sau mâna în sus
+      choose: Alege
+      simple_poll: Sondaj simplu
+      choose_hint: Alegătorii aleg cea mai bună opțiune (sau opțiuni)
+      score: Scor
+      score_hint: Alegătorii atribuie un scor fiecărei opțiuni
+      allocate: Aloca
+      allocate_hint: Alegătorii alocă un buget de puncte între opțiuni
+      ranked_choice: Alegere clasată
+      ranked_choice_hint: Alegătorii își ordonează opțiunile de la cea mai preferată la cea mai puțin preferată
+      time_poll: Sondaj de timp
+      time_poll_hint: Alegătorii indică când sunt disponibili să se întâlnească
+    process: Proces
+    process_name: Titlul șablonului
+    process_name_hint: Cum se numește acest șablon? De exemplu, sfaturi despre rol, verificarea temperaturii, aprobarea proceselor-verbale
+    process_subtitle: Subtitlu șablon
+    process_subtitle_hint: O descriere pe o singură linie a momentului sau motivului pentru care se utilizează acest șablon
+    process_introduction: Ajutor cu șabloane
+    process_introduction_hint: Câteva paragrafe care explică modul de utilizare a șablonului. Includeți linkuri către resurse care ar putea fi utile.
+    you_can_set_a_prompt_per_option: Editați solicitarea pentru fiecare opțiune din fila cu detalii
+    chart_type: Tipul de diagramă
+    title: Titlu
+    title_hint: Care este decizia pe care trebuie să o iei?
+    no_options_add_some: Acest sondaj nu are opțiuni, adăugați câteva mai jos.
+    details: Detalii
+    example_details: Detalii exemplu
+    details_placeholder: Aceasta este ocazia ta de a explica ce votează oamenii.
+    options: Opțiuni
+    options_placeholder: Enumerați opțiunile disponibile
+    no_options: Nu ați adăugat încă nicio opțiune.
+    closing: Închidere
+    closed: Închis
+    start: Început
+    start_poll: Începeți sondajul
+    stance_reason_required_label: Oferirea unui motiv atunci când se votează...
+    stance_reason_required: Necesar
+    stance_reason_optional: Opțional
+    stance_reason_disabled: Persoane cu dizabilități
+    stance_reason_is_required: Vă rugăm să oferiți un motiv pentru votul dumneavoastră
+    limit_reason_length: Limitați motivul la maximum 500 de caractere
+    save_poll: Salvați sondajul
+    start_poll_type: Începeți %{poll_type}
+    share_poll_type: Distribuie %{poll_type}
+    who_may_vote: Cine poate vota în acest %{poll_type}?
+    update: Actualizare
+    add_voters: Adăugați alegători
+    notify_invitees: Trimiteți notificări
+    no_notifications_warning: Alegătorii nu vor fi notificați. Acest lucru este util dacă desfășurați multe sondaje și intenționați să îi notificați pe toți ulterior.
+    count_voters_added: "%{count} alegători adăugați"
+    poll_type_created: "%{poll_type} creat"
+    poll_type_started: "%{poll_type} a început"
+    poll_type_updated: "%{poll_type} a fost actualizat"
+    reason_prompt: Motivul solicitării
+    each_option_has_own_reason_prompt: Fiecare opțiune are propriul motiv. Editați o opțiune pentru a-i vizualiza sau modifica motivul.
+    anonymous_voting: Votul anonim
+    votes_are_anonymous: Voturile sunt anonime
+    vote_reason: Motivul votului
+    quorum_tip_vote_share_requirement: 'Sfat: De asemenea, puteți specifica nivelul de acord necesar pentru ca o propunere să fie adoptată. Editați o opțiune pentru a defini cerința privind cota de vot.'
+    how_much_time_to_vote: Cât timp le veți acorda oamenilor să voteze?
+    default_duration_in_days_hint: Câte zile vor avea oamenii la dispoziție să voteze?
+    define_minimum_and_maxmimum_score: Definiți scorurile minime și maxime pe care un alegător le poate acorda unei opțiuni
+    how_many_points_does_each_voter_have_to_allocate: Câte puncte trebuie să aloce fiecare alegător?
+    anonymous_voting_description: Afișează voturile și motivele, dar nu și cine le-a exprimat. Această opțiune nu poate fi modificată după ce %{poll_type} a început.
+    vote_reason_description: Rugați oamenii să își împărtășească raționamentul atunci când votează sau să ofere informații suplimentare.
+    hide_results_description: Dacă vrei ca oamenii să voteze fără să vadă cum au votat alții, poți ascunde rezultatele.
+    process_helptext: Numiți și descrieți procesul utilizat pentru a derula acest sondaj.
+    reminder_helptext: Trimiteți o notificare „Se încheie în curând” cu 24 de ore înainte de termenul limită. Acest lucru poate crește participarea și poate crea o oportunitate pentru ca oamenii să își reconsidere poziția.
+  poll_receipts_page:
+    verify_participants: Verificați participanții
+    see_votes_if_quorum_reached: Dacă votarea s-a închis și s-a atins cvorumul, veți vedea cine a votat.
+    voter_name: Numele alegătorului
+    voter_email: Adresa de e-mail a alegătorului
+    vote_cast: Votul exprimat
+    member_since: Membru din
+    invited_by: Invitat de
+    invited_on: Invitat pe
+    no_receipts: Acest sondaj anonim s-a închis înainte ca funcția de verificare să existe, deci verificarea nu este posibilă.

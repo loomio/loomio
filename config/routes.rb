@@ -166,6 +166,7 @@ Rails.application.routes.draw do
       resources :login_tokens, only: [:create]
 
       resources :events, only: :index do
+        get :count, on: :collection
         patch :pin, on: :member
         patch :unpin, on: :member
         get :comment, on: :collection
@@ -245,6 +246,7 @@ Rails.application.routes.draw do
 
       resources :polls, only: [:show, :index, :create, :update] do
         member do
+          get :receipts
           post :remind
           delete :discard
           post :close
@@ -252,7 +254,7 @@ Rails.application.routes.draw do
           patch :add_to_thread
           get :voters
         end
-        get  :closed, on: :collection
+        get :closed, on: :collection
       end
 
       resources :poll_templates, only: [:index, :create, :update, :show, :destroy] do

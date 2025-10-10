@@ -9,7 +9,6 @@ hr:
     we_use_this_to_help: Ove sljedeće informacije koriste se za postavljanje vaše Loomio grupe i da nam pomognu da razumijemo nešto o vašoj organizaciji kako bismo vas mogli bolje podržati.
     how_do_you_intend_to_use_loomio: Kako namjeravate koristiti Loomio?
     what_decisions_do_you_need_to_make: Koje odluke trebate donijeti?
-    newsletter_intro: Želite li se pretplatiti na naš newsletter?
     newsletter_description: Budite u tijeku s novim značajkama i inspirativnim pričama o tome kako Loomio koriste organizacije diljem svijeta
     subscribe_to_newsletter: Pretplatite se na Loomio newsletter
     form_incomplete: Ispunite sva polja na obrascu za nastavak
@@ -21,6 +20,7 @@ hr:
     please_enter_a_valid_email_address: Unesite važeću adresu e-pošte
     please_accept_the_terms: Molimo prihvatite uvjete
     how_did_you_hear_about_loomio: Kako ste čuli za Loomio?
+    newsletter_intro: Želite li čuti o novim značajkama, intervjuima s kupcima, studijama slučaja i najavama Loomio tima?
   tasks:
     tasks: Zadaci
     your_tasks: Vaši zadaci
@@ -560,6 +560,16 @@ hr:
     from_comment: Iz url-a komentara
     from_sequence_id: Iz url-a stavke niti
     unread: Novo za vas
+    jump_to: Skoči na
+    timeline: Vremenska crta
+    top: Vrh
+    bottom: Dno
+    start: Start
+    latest: Najnoviji
+    showing_latest: Prikazuju se najnovije
+    showing_unread: Prikazuje se nepročitano
+    add_comment: Dodaj komentar
+    start_decision: Započni odluku
   search_modal:
     all_content: Sav sadržaj
     best_match: Najbolji spoj
@@ -615,6 +625,8 @@ hr:
     theme: Tema
     light: Svjetlo
     dark: tamno
+    light_blue: Svijetloplava
+    dark_blue: Tamnoplava
   membership_card:
     group_members: Članovi grupe
     discussion_members: Članovi niti
@@ -1216,7 +1228,6 @@ hr:
     description: Opis
     description_placeholder: Opišite svrhu svoje grupe kako bi članovi vaše grupe znali zašto su ovdje.
     new_description_placeholder: Zašto isprobavaš Loomio? Koje odluke morate donijeti zajedno?
-    new_description_html: <h3 id="how-do-you-intend-to-use-loomio">Kako namjeravate koristiti Loomio?</h3><p></p><h3 id="why-is-this-important-for-your-group"> Zašto je to važno za vašu grupu?</h3><p></p><h3 id="what-decisions-do-you-need-to-make"> Koje odluke trebate donijeti?</h3><p></p>
     secret_by_default: Vašoj grupi će moći pristupiti samo oni koji su pozvani da se pridruže. Ovo možete promijeniti kasnije.
     privacy_statement:
       public_on_web: Naziv, opis i prilozi kontekstu grupe bit će vidljivi javnosti
@@ -1283,6 +1294,8 @@ hr:
     request_to_join_prompt: Zahtjev za pridruživanje
     default_request_to_join_prompt: Hvala na interesu za našu grupu. Predstavite se i objasnite zašto tražite da se pridružite.
     upgrade_for_subgroups: 'Molimo vas <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">da nadogradite svoju pretplatu</a> kako biste stvorili podgrupu'
+    share_this_url_with_people_who_want_to_join: Podijelite ovaj URL s ljudima koji se žele pridružiti
+    new_description_html: "<h3>S kojim se izazovima vaša organizacija suočava u donošenju odluka?</h3><p></p><h3> Kako biste željeli koristiti Loomio u svojoj organizaciji?</h3><p></p>"
   group_export_modal:
     title: Izvoz grupnih podataka
     body: <p>U bilo kojem trenutku možete preuzeti kopiju podataka svoje grupe. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Saznaj više.</a></p><p> Za dovršetak je potrebno nekoliko minuta, ovisno o veličini vaše grupe. Kada bude spremna, primit ćete e-poruku s vezom za preuzimanje datoteke.</p>
@@ -1480,7 +1493,6 @@ hr:
     email_newsletter: Loomio bilten
     email_newsletter_description: Primajte ažuriranja o novim značajkama, obuci, događajima u vašem gradu i budućnosti Loomija. Obično 2 ili 3 e-maila godišnje.
     email_catch_up_day: Sažetak e-pošte za nadoknadu
-    daily_summary_description: Odaberite kada želite primiti e-poruku sa sažetkom nadoknade. Ova e-poruka sadrži sve nove aktivnosti koje niste vidjeli. Dobar način da ostanete u tijeku ako niste redoviti korisnik.
     on_participation_label: Pretplatite se na sudjelovanje
     on_participation_description: Kada sudjelujete u niti, sve daljnje aktivnosti bit će vam odmah poslane e-poštom.
     announcement_label: Obavijesti
@@ -1497,6 +1509,7 @@ hr:
       updated: Postavke e-pošte ažurirane
     learn_more: Saznajte više o postavkama e-pošte...
     mentioned_description: Kada vas netko {'@'}spomene u komentaru, dobit ćete obavijest e-poštom
+    daily_summary_description: Odaberite kada želite primati e-poruku s sažetkom propuštenog. Ova e-poruka sadrži sve nove aktivnosti koje niste vidjeli. Dobar način da ostanete u tijeku ako niste redoviti korisnik.
   thread_preview:
     replies_count: "%{count} odgovora"
     unread_count: "%{count} nepročitano"
@@ -1738,6 +1751,22 @@ hr:
     thumb_down: Palac dolje
     thumb_sideways: Palac u stranu
     hand_up: Ruka gore
+    of: od
+    at_least: Najmanje
+    no_more_than: Ne više od
+    votes_cast: Broj glasova
+    eligible_voters: Pravo glasa
+    gte_score_percent: Potrebno je barem %{percent}% glasova
+    gte_voter_percent: Potrebno je najmanje %{percent}% birača s pravom glasa
+    lte_score_percent: Ne smije prelaziti %{percent}% od ukupnog broja glasova
+    lte_voter_percent: Ne smije prelaziti %{percent}% birača s pravom glasa
+    name_gte_score_percent: "%{name} treba barem %{percent}% glasova"
+    name_gte_voter_percent: "%{name} treba barem %{percent}% birača s pravom glasa"
+    name_lte_score_percent: "%{name} ne smije prelaziti %{percent}% od ukupnog broja glasova"
+    name_lte_voter_percent: "%{name} ne smije prelaziti %{percent}% birača s pravom glasa"
+    vote_share_requirement: Zahtjev za udio glasova
+    for_the_proposal_to_pass: Da bi prijedlog prošao, ova opcija mora dobiti…
+    for_the_poll_to_be_valid: Da bi %{poll_type} bio valjan, ova opcija mora primiti…
   poll_common:
     superseded: Zamijenjeno
     outdated: Zastario
@@ -1827,6 +1856,8 @@ hr:
     edit_warning: Uređivanje se preporučuje samo za manje izmjene ili ispravljanje pravopisnih pogrešaka. Za značajne promjene zatvorite ovaj %{pollType} i započnite novi.
     no_voting: Samo za raspravu, glasovanje onemogućeno
     post_outcome: Ishod objave
+    view_all_votes: Prikaži sve glasove
+    you_voted: Glasali ste
   poll_common_attachment_form:
     label: Prilozi
   poll_common_add_option:
@@ -1927,6 +1958,8 @@ hr:
     unable_to_vote: Niste pozvani da glasate u ovom %{poll_type}
     draft_mode: Glasanje onemogućeno. Ovo još nije otvoreno za glasovanje.
     voting_disabled_poll_is_template: Glasanje onemogućeno. Ovo je predložak.
+    for_this_proposal_to_pass: 'Da bi ovaj prijedlog prošao:'
+    for_this_poll_type_to_be_valid: 'Da bi ovaj %{poll_type} bio valjan:'
   poll_common_collapsed:
     by_who: "%{name}"
   poll_common_calendar_invite:
@@ -1941,48 +1974,6 @@ hr:
     event_description_placeholder: Koji je dnevni red ovog sastanka?
     location: Mjesto
     location_placeholder: Gdje će se održati ovaj sastanak?
-  poll_common_settings:
-    who_can_vote: Tko može glasati?
-    short_reason_can_be_helpful: Ako su razlozi glasovanja kratki, lakše ih je razumjeti. Zbirka sažetih razloga odličan je izvor za donošenje odluke.
-    specified_voters_only_true: Samo pozvani ljudi
-    specified_voters_only_false_group: Bilo tko u grupi
-    specified_voters_only_false_discussion: Bilo tko u temi
-    invite_people_next: Možete odabrati tko je pozvan da glasa nakon što pokrenete %{poll_type}
-    shuffle_options:
-      shuffle_options: Mogućnosti nasumične reprodukcije
-      title: Prikaži opcije nasumičnim redoslijedom
-      helptext: Opcija koja je prva na popisu može dati pristranost. Koristite ovu postavku da biste spriječili taj učinak.
-    multiple_choice:
-      title: Više izbora
-      helptext_on: Kada budu odabrani, sudionici će moći odabrati više opcija.
-    anyone_can_participate:
-      title: Svatko s vezom može sudjelovati
-      helptext_on: Kad je odabrano, svatko s vezom na anketu može sudjelovati.
-    notify_on_closing_soon:
-      voting_closes_too_soon: Budući da glasanje završava unutar 24 sata, neće se slati podsjetnici o skorom zatvaranju.
-      closes_too_soon: Budući da se ovaj %{pollType} zatvara unutar 24 sata, neće se slati podsjetnici o skorom zatvaranju.
-      title: 24 sata prije zatvaranja %{pollType} pošaljite podsjetnik na
-      voting_title: 24 sata prije zatvaranja glasanja pošaljite podsjetnik na
-      nobody: Nitko
-      author: Autor (ja)
-      undecided_voters: Neodlučni glasači
-      voters: Svi birači
-    notify_on_participate:
-      title: Obavijesti me kada ljudi sudjeluju
-      helptext_on: Kada odaberete, bit ćete obaviješteni kad god netko sudjeluje.
-    anonymous:
-      title: Anonimni birači
-      helptext_on: Kada se odabere, informacije o sudioniku neće biti prikazane uz svaki odgovor.
-    voter_can_add_options:
-      title: Glasači mogu dodati alternativne opcije
-    can_respond_maybe:
-      title: Birači mogu odgovoriti "ako treba"
-    allow_long_reason:
-      title: Dopustite da 'razlog' glasovanja bude dulji od 500 znakova
-    hide_results_until_closed:
-      title: Sakrij rezultate do zatvaranja
-      helptext_on: Ne prikazuj kako su ljudi glasovali dok se glasanje ne zatvori
-    show_none_of_the_above: Uključite opciju "Ništa od navedenog".
   poll_common_close_form:
     title: Sada zatvoriti %{poll_type}?
     helptext: Jeste li sigurni da želite ranije zatvoriti ovaj %{poll_type} i podijeliti rezultat?
@@ -2041,7 +2032,6 @@ hr:
     enter_an_outcome: Unesite rezultat
   poll_common_outcome_form:
     review_due_in_days: Nakon koliko dana preispitati odluku?
-    review_due_in_days_hint: Razdoblje (u danima) za čekanje prije pregleda odluke. (neobavezno)
     review_date: Datum pregleda
     review_date_hint: Postavite datum za reviziju odluke (nije obavezno)
     who_to_notify: Koga želite obavijestiti o ovom ishodu? (neobavezno)
@@ -2051,109 +2041,17 @@ hr:
     outcome_created: Ishod stvoren
     outcome_updated: Ishod ažuriran
     statement_placeholder: Sažmite odgovore i objasnite što će se sljedeće dogoditi.
-    statement_template_placeholder: Navedite predložak za pisanje ishoda odluke. (neobavezno)
     you_will_be_notified: O datumu pregleda bit ćete obaviješteni.
     submit: Podijelite ishod
+    review_due_in_days_hint: Broj dana čekanja prije preispitivanja odluke (neobavezno).
+    statement_template_hint: Navedite predložak za pisanje ishoda odluke. (nije obavezno)
+    statement_template_placeholder: Hvala na sudjelovanju! Kvorum je postignut i imamo podršku za nastavak.
   poll_common_outcome_panel:
     authored_by: "%{name}"
   poll_common_delete_modal:
     question: Jeste li sigurni da želite ovo izbrisati?
     title: Izbriši %{pollType}
     success: Uspješno izbrisano
-  poll_common_form:
-    notify_everyone_when_poll_starts: Obavijesti sve kad %{poll_type} počne
-    option_has_votes_confirm_delete: Neki su ljudi glasali za ovu opciju, jeste li sigurni da je želite izbrisati?
-    example_title: Primjer naslova
-    example_title_hint: Navedite primjer dobrog naslova prijedloga
-    example_details_placeholder: Navedite polazište za prijedlog ili anketu. Pitanja mogu biti korisni poticaji za poticanje ljudi da pišu. Uključite sva pravila ili podsjetnike koje sudionici moraju znati.
-    confirm_delete: Jeste li sigurni da želite izbrisati ovaj predložak ankete? To se ne može poništiti.
-    show_advanced_settings: Prikaži napredne postavke
-    hide_advanced_settings: Sakrij napredne postavke
-    choose_at_least: Odaberite barem
-    choose_at_most: Odaberite najviše
-    please_review_the_form: Pregledajte obrazac
-    option_added_please_add_details: Dodana opcija! Dodajte neke detalje kako bi ljudi znali što to znači.
-    default_duration_in_days: Zadano trajanje u danima
-    default_duration_in_days_hint: Koliko dana treba dati ljudima da glasaju?
-    how_many_options_can_a_voter_choose: Koliko od ovih opcija birač može izabrati?
-    minimum_choices: Minimalni izbori
-    maximum_choices: Maksimalan izbor
-    content: Sadržaj
-    reminder: Podsjetnik
-    your_in_zone: 'Trenutna vremenska zona: %{zone}'
-    show_other_zones: Prikaži druge vremenske zone
-    hide_other_zones: Sakrij druge vremenske zone
-    this_is_a_template_for_new_polls: Ovo je predložak za nove ankete
-    voting_method: Način glasovanja
-    voting_methods:
-      question: Krug pitanja
-      question_hint: Pozovite pitanja i komentare na vaš prijedlog
-      show_thumbs: Pokazivanje palca
-      show_thumbs_hint: Glasači biraju palac gore, dolje, bočno ili ruku gore
-      choose: Odaberite
-      simple_poll: Jednostavna anketa
-      choose_hint: Glasači biraju najbolju opciju (ili opcije)
-      score: Postići
-      score_hint: Glasači dodjeljuju bodove svakoj opciji
-      allocate: Dodijeliti
-      allocate_hint: Glasači dodjeljuju proračun bodova između opcija
-      ranked_choice: Rangirani izbor
-      ranked_choice_hint: Birači poredaju opcije redom od najviše do najmanje preferiranih
-      time_poll: Vremenska anketa
-      time_poll_hint: Birači pokazuju kada su dostupni za susret
-    process: Postupak
-    process_name: Naslov predloška
-    process_name_hint: Kako se zove ovaj predložak? Npr. savjet o ulozi, provjera temperature, odobrenje zapisnika
-    process_subtitle: Podnaslov predloška
-    process_subtitle_hint: Opis u jednom retku kada ili zašto koristiti ovaj predložak
-    process_introduction: Pomoć za predloške
-    process_introduction_hint: Nekoliko odlomaka koji objašnjavaju kako koristiti predložak. Uključite poveznice na resurse koji bi mogli biti od pomoći.
-    you_can_set_a_prompt_per_option: Uredite upit za svaku opciju na kartici s detaljima
-    chart_type: Vrsta grafikona
-    title: Titula
-    title_hint: Koju odluku trebate donijeti?
-    no_options_add_some: Ova anketa nema opcija, dodajte neke ispod.
-    details: pojedinosti
-    example_details: Primjer detalja
-    details_placeholder: Ovo je vaša prilika da objasnite o čemu ljudi glasaju
-    options: Mogućnosti
-    options_placeholder: Navedite dostupne opcije
-    no_options: Još niste dodali nijednu opciju.
-    closing: Zatvaranje
-    closed: Zatvoreno
-    start: Početak
-    start_poll: Započni anketu
-    stance_reason_required_label: Navođenje razloga prilikom glasanja je...
-    stance_reason_required: Potreban
-    stance_reason_optional: Neobavezno
-    stance_reason_disabled: Onemogućeno
-    stance_reason_is_required: Navedite razlog svog glasa
-    limit_reason_length: Ograničite razlog na najviše 500 znakova
-    save_poll: Spremi anketu
-    start_poll_type: Pokreni %{poll_type}
-    share_poll_type: Dijeli %{poll_type}
-    who_may_vote: Tko može glasati u ovoj %{poll_type}?
-    update: Ažuriraj
-    add_voters: Dodajte birače
-    notify_invitees: Pošaljite obavijesti
-    no_notifications_warning: Birači neće biti obaviješteni. Ovo je korisno ako provodite puno anketa i planirate sve obavijestiti kasnije.
-    count_voters_added: "%{count} glasača dodano"
-    poll_type_created: "%{poll_type} stvoreno"
-    poll_type_started: "%{poll_type} je započeo"
-    poll_type_updated: "%{poll_type} ažuriran"
-    reason_prompt: Upit za razlog
-    anonymous_voting: Anonimno glasovanje
-    anonymous_voting_description: Ako je omogućeno, identitet birača neće biti povezan s njihovim glasovima. To se ne može poništiti.
-    votes_are_anonymous: Glasovi su anonimni
-    vote_reason: Razlog glasanja
-    vote_reason_description: Može biti korisno razumjeti zašto su ljudi glasali na način na koji su glasali. Ovom postavkom možete potaknuti ljude da podijele svoja razmišljanja kada glasaju.
-    hide_results_description: Ako želite da ljudi glasaju, a da ne znaju kako su drugi glasovali, možete sakriti rezultate ankete.
-    process_helptext: Imenujte i opišite proces koji se koristi za pokretanje ove ankete.
-    reminder_helptext: Pošaljite obavijest 'Uskoro se zatvara' prije zatvaranja ankete. Ovo može biti prilika da ljudi vide kako su drugi glasovali i preispitaju svoj glas ili samo način da povećaju sudjelovanje u anketi.
-    deadline: Rok
-    how_much_time_to_vote: Koliko ćete vremena dati ljudima da glasaju?
-    advanced_settings: Napredne postavke
-    none_of_the_above: Ništa od navedenog
   poll_proposal_form:
     start_header: Započni prijedlog
     edit_header: Uredi prijedlog
@@ -2212,9 +2110,10 @@ hr:
     points: Bodovi
     average: Prosjek
     mean: Zlobno
-    pct_of_points: "% bodova"
-    pct_of_voters: "% birača"
     percent: postotak
+    pct_of_points: "% bodova"
+    pct_of_votes_cast: "% glasova"
+    pct_of_voters: "% birača s pravom glasa"
   poll_meeting_time_field:
     add_time_slot: Dodajte vremenski odsjek
     new_time_slot: Novi termin
@@ -2253,6 +2152,11 @@ hr:
   poll_common_percent_voted:
     sentence: "%{numerator} od %{denominator} osoba je sudjelovalo (%{percent}%)"
     target_progress: Postignuto je %{percent}% cilja. (%{num} / %{target})
+    pct_of_eligible_voters_must_participate: "%{pct}% birača s pravom glasa mora sudjelovati"
+    pct_participation: "%{num} od %{total} glasova (%{pct}% sudjelovanja)"
+    vote_short_of_quorum: Potreban je još 1 glas za kvorum od %{pct}%
+    votes_short_of_quorum: Potrebno je još %{num} glasova za kvorum od %{pct}%
+    quorum_reached: Kvorum od %{pct}% je dostignut
   poll_meeting_chart_panel:
     total: Ukupno
   poll_remove_vote:
@@ -2308,6 +2212,7 @@ hr:
     stance_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> je glasao za: <strong>%{title}</strong>"
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> je ažurirao svoj glas za: <strong>%{title}</strong>"
     event_removed: Uklonjeno iz niti
+    new: novi
   add_poll_to_thread_modal:
     success: Uspjeh, %{pollType} dodan u nit!
   auth_form:
@@ -2536,3 +2441,157 @@ hr:
         submit: Prikaži prijedlog
         cancel: Učini to kasnije
     get_started_here: Započnite ovdje
+  poll_common_settings:
+    who_can_vote: Tko može glasati?
+    specified_voters_only_true: Samo pozvane osobe
+    specified_voters_only_false_group: Bilo tko u grupi
+    specified_voters_only_false_discussion: Svatko u temi
+    invite_people_next: Možete odabrati tko je pozvan glasati nakon što pokrenete %{poll_type}
+    show_none_of_the_above: Uključite opciju "Ništa od navedenog"
+    show_options_in_random_order: Prikaži opcije nasumičnim redoslijedom
+    reduce_bias_by_showing_options_in_random_order: Smanjite pristranost prikazivanjem opcija nasumičnim redoslijedom.
+    multiple_choice:
+      title: Višestruki izbor
+      helptext_on: Kada je odabrano, sudionici će moći odabrati više opcija.
+    anyone_can_participate:
+      title: Svatko s linkom može sudjelovati
+      helptext_on: Nakon odabira, svatko tko ima poveznicu na anketu može sudjelovati.
+    notify_on_closing_soon:
+      voting_closes_too_soon: Budući da glasanje završava unutar 24 sata, neće se slati podsjetnici o skorom zatvaranju.
+      closes_too_soon: Budući da se ovaj %{pollType} zatvara unutar 24 sata, neće se slati podsjetnici o skorom zatvaranju.
+      title: 24 sata prije zatvaranja %{pollType}, pošaljite podsjetnik na
+      voting_title: 24 sata prije zatvaranja glasanja, pošaljite podsjetnik na
+      nobody: Nitko
+      author: Autor (ja)
+      undecided_voters: Neodlučni birači
+      voters: Svi birači
+    notify_on_participate:
+      title: Obavijesti me kada ljudi sudjeluju
+      helptext_on: Kada budete odabrani, bit ćete obaviješteni svaki put kada netko sudjeluje.
+    anonymous:
+      title: Anonimni birači
+      helptext_on: Kada je odabrano, informacije o sudioniku neće se prikazivati uz svaki odgovor.
+    voter_can_add_options:
+      title: Birači mogu dodati alternativne opcije
+    can_respond_maybe:
+      title: Birači mogu odgovoriti "ako bude potrebno"
+    allow_long_reason:
+      title: Dopusti da 'razlog' glasanja bude duži od 500 znakova
+    hide_results_until_closed:
+      title: Sakrij rezultate do zatvaranja
+      helptext_on: Ne prikazujte kako su ljudi glasali dok se glasanje ne zatvori
+    short_reason_can_be_helpful: Kratke razloge za glasovanje lakše je razumjeti. Zbirka sažetih razloga izvrstan je resurs za donošenje odluke.
+    shuffle_options: Opcije nasumičnog reproduciranja
+  poll_common_form:
+    quorum: Kvorum
+    participation_quorum: Kvorum za sudjelovanje
+    quorum_hint: Koliki postotak birača mora sudjelovati da bi rezultat bio valjan? Nije obavezno, ostavite prazno ako nema kvoruma.
+    quorum_placeholder: Ostavite prazno ili unesite broj između 0 i 100
+    deadline: Rok
+    notify_everyone_when_poll_starts: Obavijesti sve kada %{poll_type} počne
+    option_has_votes_confirm_delete: Neki su ljudi glasali za ovu opciju, jeste li sigurni da je želite izbrisati?
+    example_title: Primjer naslova
+    example_title_hint: Navedite primjer dobrog naslova prijedloga
+    example_details_placeholder: Navedite početnu točku za prijedlog ili anketu. Pitanja mogu biti korisni poticaji za pisanje. Uključite sva pravila ili podsjetnike koje će sudionici trebati znati.
+    confirm_delete: Jeste li sigurni da želite izbrisati ovaj predložak ankete? To se ne može poništiti.
+    advanced_settings: Napredne postavke
+    show_advanced_settings: Prikaži napredne postavke
+    hide_advanced_settings: Sakrij napredne postavke
+    choose_at_least: Odaberite barem
+    choose_at_most: Odaberite najviše
+    please_review_the_form: Molimo pregledajte obrazac
+    option_added_please_add_details: Dodana je opcija! Molimo dodajte neke detalje kako bi ljudi znali što to znači.
+    default_duration_in_days: Zadano trajanje u danima
+    how_many_options_can_a_voter_choose: Koliko opcija može birati birač?
+    minimum_choices: Minimalni izbori
+    maximum_choices: Maksimalni izbori
+    content: Sadržaj
+    reminder: Podsjetnik
+    reminder_notification: Obavijest o podsjetniku
+    your_in_zone: 'Trenutna vremenska zona: %{zone}'
+    show_other_zones: Prikaži ostale vremenske zone
+    hide_other_zones: Sakrij ostale vremenske zone
+    this_is_a_template_for_new_polls: Ovo je predložak za nove ankete
+    voting_method: Način glasanja
+    none_of_the_above: Ništa od navedenog
+    voting_methods:
+      question: Runda pitanja
+      question_hint: Pozovite nas da postavljamo pitanja i komentare o vašem prijedlogu
+      show_thumbs: Pokazivanje palčeva
+      show_thumbs_hint: Birači biraju palac gore, dolje, bočno ili ruku gore
+      choose: Odaberite
+      simple_poll: Jednostavna anketa
+      choose_hint: Birači biraju najbolju opciju (ili opcije)
+      score: Postići
+      score_hint: Birači dodjeljuju bodove svakoj opciji
+      allocate: Dodijeli
+      allocate_hint: Birači raspoređuju određeni broj bodova između opcija
+      ranked_choice: Rangirani izbor
+      ranked_choice_hint: Birači slažu opcije redom od najpoželjnijih do najmanje poželjnih
+      time_poll: Vremenska anketa
+      time_poll_hint: Birači navode kada su dostupni za sastanak
+    process: Proces
+    process_name: Naslov predloška
+    process_name_hint: Kako se zove ovaj predložak? Npr. Savjet o ulozi, Provjera temperature, Odobrenje zapisnika
+    process_subtitle: Predložak podnaslova
+    process_subtitle_hint: Jednoredni opis kada ili zašto koristiti ovaj predložak
+    process_introduction: Pomoć za predloške
+    process_introduction_hint: Nekoliko odlomaka koji objašnjavaju kako koristiti predložak. Uključite poveznice na resurse koji bi mogli biti korisni.
+    you_can_set_a_prompt_per_option: Uredite upit za svaku opciju na kartici s detaljima
+    chart_type: Vrsta grafikona
+    title: Titula
+    title_hint: Koju odluku trebate donijeti?
+    no_options_add_some: Ova anketa nema opcija, dodajte ih u nastavku.
+    details: Detalji
+    example_details: Primjeri detalja
+    details_placeholder: Ovo je vaša prilika da objasnite o čemu ljudi glasaju
+    options: Opcije
+    options_placeholder: Navedite dostupne opcije
+    no_options: Još niste dodali nijednu opciju.
+    closing: Zatvaranje
+    closed: Zatvoreno
+    start: Start
+    start_poll: Započni anketu
+    stance_reason_required_label: Navođenje razloga prilikom glasanja...
+    stance_reason_required: Potreban
+    stance_reason_optional: Izborno
+    stance_reason_disabled: Onemogućeno
+    stance_reason_is_required: Molimo vas da navedete razlog svog glasa
+    limit_reason_length: Ograničite razlog na maksimalno 500 znakova
+    save_poll: Spremi anketu
+    start_poll_type: Početak %{poll_type}
+    share_poll_type: Podijeli %{poll_type}
+    who_may_vote: Tko može glasati u ovom %{poll_type}?
+    update: Ažurirati
+    add_voters: Dodaj birače
+    notify_invitees: Pošalji obavijesti
+    no_notifications_warning: Birači neće biti obaviješteni. Ovo je korisno ako provodite puno anketa i planirate kasnije obavijestiti sve.
+    count_voters_added: Dodano je %{count} birača
+    poll_type_created: "%{poll_type} kreiran"
+    poll_type_started: "%{poll_type} je započeo"
+    poll_type_updated: "%{poll_type} ažurirano"
+    reason_prompt: Upit za razlog
+    each_option_has_own_reason_prompt: Svaka opcija ima svoj upit za razlog. Uredite opciju da biste je vidjeli ili promijenili.
+    anonymous_voting: Anonimno glasanje
+    votes_are_anonymous: Glasovi su anonimni
+    vote_reason: Razlog glasanja
+    quorum_tip_vote_share_requirement: 'Savjet: Također možete odrediti razinu slaganja potrebnu za usvajanje prijedloga. Uredite opciju za definiranje zahtjeva za udio glasova'
+    how_much_time_to_vote: Koliko vremena ćete dati ljudima za glasanje?
+    default_duration_in_days_hint: Koliko dana će ljudi imati za glasanje?
+    define_minimum_and_maxmimum_score: Definirajte minimalni i maksimalni broj bodova koje birač može dati jednoj opciji
+    how_many_points_does_each_voter_have_to_allocate: Koliko bodova svaki birač mora dodijeliti?
+    anonymous_voting_description: Prikaži glasove i razloge, ali ne i tko ih je dao. Ovo se ne može promijeniti nakon što je %{poll_type} započeo.
+    vote_reason_description: Zamolite ljude da podijele svoje obrazloženje kada glasaju ili da dostave dodatne informacije.
+    hide_results_description: Ako želite da ljudi glasaju bez da vide kako su drugi glasali, možete sakriti rezultate.
+    process_helptext: Navedite i opišite postupak koji se koristi za provođenje ove ankete.
+    reminder_helptext: Pošaljite obavijest 'Uskoro zatvara' 24 sata prije roka. To može povećati sudjelovanje i stvoriti priliku ljudima da preispitaju svoj stav.
+  poll_receipts_page:
+    verify_participants: Potvrdite sudionike
+    see_votes_if_quorum_reached: Ako je glasanje zatvoreno i postignut je kvorum, vidjet ćete tko je glasao.
+    voter_name: Ime birača
+    voter_email: E-pošta birača
+    vote_cast: Broj glasova
+    member_since: Član od
+    invited_by: Pozvao/la
+    invited_on: Pozvani
+    no_receipts: Ova anonimna anketa zatvorena je prije nego što je postojala značajka provjere, tako da provjera nije moguća.

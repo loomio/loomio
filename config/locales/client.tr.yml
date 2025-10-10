@@ -9,7 +9,6 @@ tr:
     we_use_this_to_help: Aşağıdaki bilgiler, Loomio grubunuzu oluşturmak ve sizi daha iyi destekleyebilmemiz için kuruluşunuzu biraz anlamamıza yardımcı olmak için kullanılır.
     how_do_you_intend_to_use_loomio: Loomio'yu nasıl kullanmayı düşünüyorsunuz?
     what_decisions_do_you_need_to_make: Hangi kararları vermeniz gerekiyor?
-    newsletter_intro: Bizim bültenimize kaydolmak ister miydiniz?
     newsletter_description: Loomio'nun dünya çapındaki kuruluşlar tarafından nasıl kullanıldığına dair yeni özellikler ve ilham verici hikayeler hakkında güncel kalın
     subscribe_to_newsletter: Loomio bültenine abone olun
     form_incomplete: Devam etmek için lütfen formdaki tüm alanları doldurun
@@ -21,6 +20,7 @@ tr:
     please_enter_a_valid_email_address: Geçerli bir e
     please_accept_the_terms: Lütfen şartları kabul edin
     how_did_you_hear_about_loomio: Loomio'yu nasıl duydunuz?
+    newsletter_intro: Loomio ekibinin yeni özellikleri, müşteri röportajları, vaka çalışmaları ve duyuruları hakkında bilgi edinmek ister misiniz?
   tasks:
     tasks: Görevler
     your_tasks: Görevleriniz
@@ -560,6 +560,16 @@ tr:
     from_comment: Bir yorum URL'sinden
     from_sequence_id: Bir iş parçacığı öğesi URL'sinden
     unread: Senin için yeni
+    jump_to: Atla
+    timeline: Zaman çizelgesi
+    top: Tepe
+    bottom: Alt
+    start: Başlangıç
+    latest: En sonuncu
+    showing_latest: En son gösteriliyor
+    showing_unread: Okunmamış gösteriliyor
+    add_comment: Yorum ekle
+    start_decision: Başlangıç kararı
   search_modal:
     all_content: Tüm içerik
     best_match: En iyi eşleşme
@@ -615,6 +625,8 @@ tr:
     theme: Tema
     light: Işık
     dark: Karanlık
+    light_blue: Açık mavi
+    dark_blue: Koyu mavi
   membership_card:
     group_members: Grup üyeleri
     discussion_members: Konu üyeleri
@@ -1216,7 +1228,6 @@ tr:
     description: Tanım
     description_placeholder: Grubunuzun amacını açıklayın ki grup üyeleriniz neden burada olduklarını bilsin.
     new_description_placeholder: Neden Loomio'yu deniyorsun? Hangi kararları birlikte almanız gerekiyor?
-    new_description_html: <h3 id="how-do-you-intend-to-use-loomio">Loomio'yu nasıl kullanmayı düşünüyorsunuz?</h3><p></p><h3 id="why-is-this-important-for-your-group"> Bu grubunuz için neden önemli?</h3><p></p><h3 id="what-decisions-do-you-need-to-make"> Hangi kararları vermeniz gerekiyor?</h3><p></p>
     secret_by_default: Grubunuza yalnızca katılmaya davet edilen kişiler erişebilir. Bunu daha sonra değiştirebilirsiniz.
     privacy_statement:
       public_on_web: Grup bağlamına ilişkin ad, açıklama ve ekler herkese açık olacak
@@ -1283,6 +1294,8 @@ tr:
     request_to_join_prompt: Katılma isteği istemi
     default_request_to_join_prompt: Grubumuza olan ilginiz için teşekkür ederiz. Lütfen kendinizi tanıtın ve katılma isteğinizin nedenini açıklayın.
     upgrade_for_subgroups: 'Bir alt grup oluşturmak için lütfen <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">aboneliğinizi yükseltin</a>'
+    share_this_url_with_people_who_want_to_join: Katılmak isteyen kişilerle bu URL'yi paylaşın
+    new_description_html: "<h3>Kuruluşunuz karar alma sürecinde hangi zorluklarla karşılaşıyor?</h3><p></p><h3> Loomio'yu kuruluşunuzda nasıl kullanmak istersiniz?</h3><p></p>"
   group_export_modal:
     title: Grup verilerini dışa aktar
     body: <p>Grubunuzun verilerinin bir kopyasını istediğiniz zaman indirebilirsiniz. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Daha fazlasını bul.</a></p><p> Grubunuzun büyüklüğüne bağlı olarak tamamlanması birkaç dakika sürer. Hazır olduğunda dosyayı indirme bağlantısını içeren bir e-posta alacaksınız.</p>
@@ -1480,7 +1493,6 @@ tr:
     email_newsletter: Loomio Haber Bülteni
     email_newsletter_description: Şehrinizdeki yeni özellikler, eğitimler, etkinlikler ve Loomio'nun geleceği hakkında güncellemeler alın. Genellikle yılda 2 veya 3 e-posta.
     email_catch_up_day: Yakalama özeti e-postası
-    daily_summary_description: Yakalama özeti e-postasının ne zaman alınacağını seçin. Bu e-posta, görmediğiniz yeni etkinlikleri içerir. Düzenli bir kullanıcı değilseniz güncel kalmanın iyi bir yolu.
     on_participation_label: Katılıma abone olun
     on_participation_description: Bir müzakereye katıldığınızda, ileriye yönelik tüm etkinlikler derhal size e-postayla gönderilecektir.
     announcement_label: Duyurular
@@ -1497,6 +1509,7 @@ tr:
       updated: E-posta ayarları güncellendi
     learn_more: E-posta ayarları hakkında daha fazla bilgi edinin...
     mentioned_description: Birisi {'@'} bir yorumda sizden bahsettiğinde, bir bildirim e-postası alacaksınız
+    daily_summary_description: Güncel bilgiler içeren özet e-postayı ne zaman almak istediğinizi seçin. Bu e-posta, daha önce görmediğiniz yeni etkinlikleri içerir. Düzenli bir kullanıcı değilseniz, güncel kalmanın iyi bir yoludur.
   thread_preview:
     replies_count: "%{count} yanıt"
     unread_count: "%{count} okunmamış"
@@ -1738,6 +1751,22 @@ tr:
     thumb_down: Başparmak aşağı
     thumb_sideways: Başparmak yanlara doğru
     hand_up: El yukarı
+    of: ile ilgili
+    at_least: En azından
+    no_more_than: En fazla
+    votes_cast: Verilen oylar
+    eligible_voters: Uygun seçmenler
+    gte_score_percent: En az %{percent}% oy gerekiyor
+    gte_voter_percent: En az %{percent}% uygun seçmen gerekiyor
+    lte_score_percent: Verilen oyların %{percent}%'ini aşmamalıdır
+    lte_voter_percent: Uygun seçmenlerin %{percent}%'ini geçmemelidir
+    name_gte_score_percent: "%{name}'in en az %{percent}% oy alması gerekiyor"
+    name_gte_voter_percent: "%{name}'in en az %{percent}% oranında uygun seçmene ihtiyacı var"
+    name_lte_score_percent: "%{name} verilen oyların %{percent}%'ini geçmemelidir"
+    name_lte_voter_percent: "%{name}, uygun seçmenlerin %{percent}%'ini geçmemelidir"
+    vote_share_requirement: Oy payı gereksinimi
+    for_the_proposal_to_pass: Önerinin kabul edilebilmesi için bu seçeneğin…
+    for_the_poll_to_be_valid: "%{poll_type} seçeneğinin geçerli olması için bu seçeneğin… alması gerekir."
   poll_common:
     superseded: Değiştirildi
     outdated: Modası geçmiş
@@ -1827,6 +1856,8 @@ tr:
     edit_warning: Düzenleme yalnızca küçük değişiklikler veya yazım hatalarının düzeltilmesi için önerilir. Önemli değişiklikler için bu %{pollType} dosyasını kapatın ve yeni bir tane başlatın.
     no_voting: Yalnızca tartışma amaçlıdır, oylama devre dışı bırakıldı
     post_outcome: Sonuç sonrası
+    view_all_votes: Tüm oyları görüntüle
+    you_voted: Oy verdiniz
   poll_common_attachment_form:
     label: Ekler
   poll_common_add_option:
@@ -1927,6 +1958,8 @@ tr:
     unable_to_vote: Bu %{poll_type} anketinde oy kullanmaya davet edilmediniz
     draft_mode: Oylama devre dışı bırakıldı. Bu henüz oylamaya açık değil.
     voting_disabled_poll_is_template: Oylama devre dışı bırakıldı. Bu bir şablon.
+    for_this_proposal_to_pass: 'Bu önerinin kabul edilmesi için:'
+    for_this_poll_type_to_be_valid: 'Bu %{poll_type}''ın geçerli olması için:'
   poll_common_collapsed:
     by_who: "%{name}"
   poll_common_calendar_invite:
@@ -1941,48 +1974,6 @@ tr:
     event_description_placeholder: Bu toplantının gündemi nedir?
     location: Konum
     location_placeholder: Bu toplantı nerede yapılacak?
-  poll_common_settings:
-    who_can_vote: Kimler oy verebilir?
-    short_reason_can_be_helpful: Oy gerekçelerinin kısa tutulması anlaşılmasını kolaylaştırır. Kısa ve öz nedenlerden oluşan bir derleme, karar vermek için harika bir kaynaktır.
-    specified_voters_only_true: Yalnızca davet edilen kişiler
-    specified_voters_only_false_group: Gruptaki herkes
-    specified_voters_only_false_discussion: Konudaki herkes
-    invite_people_next: "%{poll_type} başlattıktan sonra kimlerin oy vermeye davet edileceğini seçebilirsiniz"
-    shuffle_options:
-      shuffle_options: Karıştırma seçenekleri
-      title: Seçenekleri rastgele sırayla göster
-      helptext: Listede ilk sırada yer alan bir seçenek ona önyargı verebilir. Bu etkiyi ortadan kaldırmak için bu ayarı kullanın.
-    multiple_choice:
-      title: Çoktan seçmeli
-      helptext_on: Seçildiğinde katılımcılar birden fazla seçeneği işaretleyebilecektir.
-    anyone_can_participate:
-      title: Bağlantıya sahip olan herkes katılabilir
-      helptext_on: Seçildiğinde anket bağlantısına sahip olan herkes katılabilir.
-    notify_on_closing_soon:
-      voting_closes_too_soon: Oylama 24 saat içinde sona ereceğinden yakın zamanda kapanış hatırlatması gönderilmeyecektir.
-      closes_too_soon: Bu %{pollType} 24 saat içinde kapanacağından yakın zamanda kapanma hatırlatması gönderilmeyecek.
-      title: "%{pollType} kapanmadan 24 saat önce şu adrese bir hatırlatma gönderin:"
-      voting_title: 'Oylama kapanmadan 24 saat önce şu adrese bir hatırlatma gönderin:'
-      nobody: Hiç kimse
-      author: Yazar (ben)
-      undecided_voters: Kararsız seçmen
-      voters: Tüm seçmenler
-    notify_on_participate:
-      title: İnsanlar katıldığında bana haber ver
-      helptext_on: Seçtiğinizde, birisi katıldığında bilgilendirileceksiniz.
-    anonymous:
-      title: İsimsiz seçmenler
-      helptext_on: Seçildiğinde katılımcı bilgileri her yanıtta gösterilmeyecektir.
-    voter_can_add_options:
-      title: Seçmenler alternatif seçenekler ekleyebilir
-    can_respond_maybe:
-      title: Seçmen "gerekirse" yanıtını verebilir
-    allow_long_reason:
-      title: Oy 'nedeninin' 500 karakterden uzun olmasına izin ver
-    hide_results_until_closed:
-      title: Sonuçları kapatılana kadar gizle
-      helptext_on: Anket kapatılana kadar insanların nasıl oy verdiklerini gösterme
-    show_none_of_the_above: '"Yukarıdakilerin hiçbiri" seçeneğini ekleyin'
   poll_common_close_form:
     title: "%{poll_type} şimdi kapatılsın mı?"
     helptext: Bu %{poll_type}'ı erken kapatmak ve sonucu paylaşmak istediğinizden emin misiniz?
@@ -2041,7 +2032,6 @@ tr:
     enter_an_outcome: Bir sonuç girin
   poll_common_outcome_form:
     review_due_in_days: Karar kaç gün sonra gözden geçirilir?
-    review_due_in_days_hint: Kararın gözden geçirilmesinden önce beklenecek süre (gün cinsinden). (isteğe bağlı)
     review_date: Gözden geçirme tarihi
     review_date_hint: Kararın gözden geçirileceği tarihi belirleyin (isteğe bağlı)
     who_to_notify: Bu sonuç hakkında kimi bilgilendirmek istiyorsunuz? (isteğe bağlı)
@@ -2051,109 +2041,17 @@ tr:
     outcome_created: Sonuç oluşturuldu
     outcome_updated: Sonuç güncellendi
     statement_placeholder: Yanıtları özetleyin ve bundan sonra ne olacağını açıklayın.
-    statement_template_placeholder: Kararın sonucunu yazmak için bir şablon sağlayın. (isteğe bağlı)
     you_will_be_notified: İnceleme tarihinde bilgilendirileceksiniz.
     submit: Sonucu paylaş
+    review_due_in_days_hint: Kararın gözden geçirilmesi için beklenmesi gereken gün sayısı (isteğe bağlı).
+    statement_template_hint: Kararın sonucunu yazmak için bir şablon sağlayın. (isteğe bağlı)
+    statement_template_placeholder: Katılımınız için teşekkürler! Çoğunluk sağlandı ve devam edebilmemiz için destek aldık.
   poll_common_outcome_panel:
     authored_by: "%{name}"
   poll_common_delete_modal:
     question: Bunu silmek istediğinizden emin misiniz?
     title: "%{pollType}'ı sil"
     success: Başarıyla silindi
-  poll_common_form:
-    notify_everyone_when_poll_starts: "%{poll_type} başladığında herkesi bilgilendir"
-    option_has_votes_confirm_delete: Bazı kişiler bu seçeneğe oy verdi, silmek istediğinizden emin misiniz?
-    example_title: Örnek başlık
-    example_title_hint: İyi bir teklif başlığına örnek verin
-    example_details_placeholder: Bir teklif veya anket için bir başlangıç noktası sağlayın. Sorular, insanların yazmaya başlamasını sağlamak için yararlı ipuçları olabilir. Katılımcıların bilmesi gereken kuralları veya hatırlatıcıları ekleyin.
-    confirm_delete: Bu anket şablonunu silmek istediğinizden emin misiniz? Bu geri alınamaz.
-    show_advanced_settings: Gelişmiş ayarları göster
-    hide_advanced_settings: Gelişmiş ayarları gizle
-    choose_at_least: En azından seç
-    choose_at_most: En fazla seç
-    please_review_the_form: Lütfen formu inceleyin
-    option_added_please_add_details: Seçenek eklendi! İnsanların bunun ne anlama geldiğini bilmesi için lütfen biraz ayrıntı ekleyin.
-    default_duration_in_days: Gün cinsinden varsayılan süre
-    default_duration_in_days_hint: İnsanlara oy kullanmaları için kaç gün süre verilmeli?
-    how_many_options_can_a_voter_choose: Bir seçmen bu seçeneklerden kaçını tercih edebilir?
-    minimum_choices: Asgari seçenekler
-    maximum_choices: Maksimum seçenek
-    content: İçerik
-    reminder: Hatırlatma
-    your_in_zone: 'Geçerli saat dilimi: %{zone}'
-    show_other_zones: Diğer saat dilimlerini göster
-    hide_other_zones: Diğer saat dilimlerini gizle
-    this_is_a_template_for_new_polls: Bu yeni anketler için bir şablondur
-    voting_method: Oylama yöntemi
-    voting_methods:
-      question: Soru turu
-      question_hint: Teklifinizle ilgili soru ve yorumlarınızı davet edin
-      show_thumbs: Başparmak gösterisi
-      show_thumbs_hint: Seçmenler başparmak yukarı, aşağı, yan veya el yukarı seçeneğini seçiyor
-      choose: Seçmek
-      simple_poll: Basit anket
-      choose_hint: Seçmenler en iyi seçeneği (veya seçenekleri) seçer
-      score: Gol
-      score_hint: Seçmenler her seçeneğe bir puan veriyor
-      allocate: Tahsis Et
-      allocate_hint: Seçmenler seçenekler arasında bir puan bütçesi ayırıyor
-      ranked_choice: Dereceli seçim
-      ranked_choice_hint: Seçmenler seçenekleri en çok tercih edilenden en az tercih edilene doğru sıralıyor
-      time_poll: Zaman anketi
-      time_poll_hint: Seçmenler ne zaman buluşmaya uygun olduklarını belirtiyor
-    process: İşlem
-    process_name: Şablon başlığı
-    process_name_hint: Bu şablona ne ad veriyorsunuz? Örn. Rol tavsiyesi, Sıcaklık kontrolü, Tutanak onayı
-    process_subtitle: Şablon alt başlığı
-    process_subtitle_hint: Bu şablonun ne zaman ve neden kullanılacağına dair tek satırlık bir açıklama
-    process_introduction: Şablon yardımı
-    process_introduction_hint: Şablonun nasıl kullanılacağını açıklayan birkaç paragraf. Yararlı olabilecek kaynaklara bağlantılar ekleyin.
-    you_can_set_a_prompt_per_option: Ayrıntılar sekmesinden her seçenek için istemi düzenleyin
-    chart_type: Grafik tipi
-    title: Başlık
-    title_hint: Vermeniz gereken karar nedir?
-    no_options_add_some: Bu anketin seçeneği yok, aşağıya birkaç tane ekleyin.
-    details: Detaylar
-    example_details: Örnek ayrıntılar
-    details_placeholder: Bu, insanların neye oy verdiğini açıklama fırsatınızdır
-    options: Seçenekler
-    options_placeholder: Mevcut seçenekleri listeleyin
-    no_options: Henüz herhangi bir seçenek eklemediniz.
-    closing: Kapanış
-    closed: Kapalı
-    start: Başla
-    start_poll: Anketi başlat
-    stance_reason_required_label: Oy verirken gerekçe göstermek...
-    stance_reason_required: Zorunlu
-    stance_reason_optional: İsteğe bağlı
-    stance_reason_disabled: Engelli
-    stance_reason_is_required: Lütfen oyunuzu verirken bir neden belirtin
-    limit_reason_length: Nedeni maksimum 500 karakterle sınırlayın
-    save_poll: Anketi kaydet
-    start_poll_type: "%{poll_type} başlat"
-    share_poll_type: "%{poll_type} paylaş"
-    who_may_vote: Bu %{poll_type}'da kimler oy kullanabilir?
-    update: Güncelleme
-    add_voters: Seçmen ekle
-    notify_invitees: Bildirim gönder
-    no_notifications_warning: Seçmenlere bildirim yapılmayacaktır. Çok sayıda anket yapıyorsanız ve daha sonra herkesi bilgilendirmeyi planlıyorsanız bu kullanışlıdır.
-    count_voters_added: "%{count} seçmen eklendi"
-    poll_type_created: "%{poll_type} oluşturuldu"
-    poll_type_started: "%{poll_type} başlatıldı"
-    poll_type_updated: "%{poll_type} güncellendi"
-    reason_prompt: Neden istemi
-    anonymous_voting: İsimsiz oylama
-    anonymous_voting_description: Etkinleştirilirse seçmenlerin kimlikleri oylarıyla ilişkilendirilmeyecektir. Bu geri alınamaz.
-    votes_are_anonymous: Oylar anonimdir
-    vote_reason: Oy nedeni
-    vote_reason_description: İnsanların neden bu şekilde oy verdiklerini anlamak faydalı olabilir. Bu ayarla, insanlardan oy verirken düşüncelerini paylaşmalarını isteyebilirsiniz.
-    hide_results_description: İnsanların, başkalarının nasıl oy verdiğini bilmeden oy vermesini istiyorsanız anket sonuçlarını gizleyebilirsiniz.
-    process_helptext: Bu anketi çalıştırmak için kullanılan işlemi adlandırın ve açıklayın.
-    reminder_helptext: Anket kapanmadan önce 'Yakında kapatılacak' bildirimi gönderin. Bu, insanların başkalarının nasıl oy verdiğini görmeleri ve kendi oylarını yeniden değerlendirmeleri için bir fırsat olabileceği gibi, yalnızca ankete katılımı artırmanın bir yolu da olabilir.
-    deadline: Son teslim tarihi
-    how_much_time_to_vote: İnsanlara oy vermeleri için ne kadar zaman tanıyacaksınız?
-    advanced_settings: Gelişmiş ayarlar
-    none_of_the_above: Yukarıdakilerin hiçbiri
   poll_proposal_form:
     start_header: Teklifi başlat
     edit_header: Teklifi düzenle
@@ -2212,9 +2110,10 @@ tr:
     points: Puanlar
     average: Ortalama
     mean: Anlam
-    pct_of_points: puanların yüzdesi
-    pct_of_voters: Seçmenlerin yüzdesi
     percent: Yüzde
+    pct_of_points: puanların %'si
+    pct_of_votes_cast: Verilen oyların yüzdesi
+    pct_of_voters: Uygun seçmenlerin yüzdesi
   poll_meeting_time_field:
     add_time_slot: Zaman aralığı ekle
     new_time_slot: Yeni zaman dilimi
@@ -2253,6 +2152,11 @@ tr:
   poll_common_percent_voted:
     sentence: "%{numerator} / %{denominator} kişi katıldı (%{percent}%)"
     target_progress: Hedefin %%{percent} kadarına ulaşıldı. (%{num} / %{target})
+    pct_of_eligible_voters_must_participate: Uygun seçmenlerin %{pct}%'si katılmalıdır
+    pct_participation: "%{total} oydan %{num} tanesi kullanıldı (%{pct}% katılım)"
+    vote_short_of_quorum: "%{pct}% çoğunluğa ulaşmak için 1 oy daha gerekiyor"
+    votes_short_of_quorum: "%{pct}% çoğunluğa ulaşmak için %{num} oy daha gerekiyor"
+    quorum_reached: "%{pct}% çoğunluğa ulaşıldı"
   poll_meeting_chart_panel:
     total: Toplam
   poll_remove_vote:
@@ -2308,6 +2212,7 @@ tr:
     stance_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> oy verdi: <strong>%{title}</strong>"
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> şu konudaki oylarını güncelledi: <strong>%{title}</strong>"
     event_removed: Konudan kaldırıldı
+    new: yeni
   add_poll_to_thread_modal:
     success: Başarılı, %{pollType} konuya eklendi!
   auth_form:
@@ -2536,3 +2441,157 @@ tr:
         submit: Teklifi görüntüle
         cancel: Bunu daha sonra yap
     get_started_here: Buradan başlayın
+  poll_common_settings:
+    who_can_vote: Kimler oy kullanabilir?
+    specified_voters_only_true: Yalnızca davetli kişiler
+    specified_voters_only_false_group: Gruptaki herkes
+    specified_voters_only_false_discussion: Konudaki herkes
+    invite_people_next: "%{poll_type} başlattıktan sonra kimin oy vermeye davet edileceğini seçebilirsiniz"
+    show_none_of_the_above: '"Yukarıdakilerin hiçbiri" seçeneğini ekleyin'
+    show_options_in_random_order: Seçenekleri rastgele sırada göster
+    reduce_bias_by_showing_options_in_random_order: Seçenekleri rastgele sırada göstererek önyargıyı azaltın.
+    multiple_choice:
+      title: Çoktan seçmeli
+      helptext_on: Seçilmeleri halinde katılımcılar birden fazla seçeneği işaretleyebilecekler.
+    anyone_can_participate:
+      title: Bağlantısı olan herkes katılabilir
+      helptext_on: Seçildiğinizde ankete bağlantıya sahip olan herkes katılabilir.
+    notify_on_closing_soon:
+      voting_closes_too_soon: Oylama 24 saat içinde sona ereceğinden, yakın zamanda kapanmaya dair hatırlatmalar gönderilmeyecektir.
+      closes_too_soon: Bu %{pollType} 24 saat içinde kapanacağı için, yakın zamanda kapanacağına dair hatırlatıcılar gönderilmeyecektir.
+      title: "%{pollType} kapanmadan 24 saat önce, şu adrese bir hatırlatma gönderin:"
+      voting_title: Oylama kapanmadan 24 saat önce, bir hatırlatma gönderin
+      nobody: Hiç kimse
+      author: Yazar (ben)
+      undecided_voters: Kararsız seçmenler
+      voters: Tüm seçmenler
+    notify_on_participate:
+      title: İnsanlar katıldığında bana haber ver
+      helptext_on: Seçildiğinizde, birisi katıldığında size bildirim gönderilecektir.
+    anonymous:
+      title: Anonim seçmenler
+      helptext_on: Seçildiğinde, her yanıtta katılımcı bilgisi gösterilmeyecektir.
+    voter_can_add_options:
+      title: Seçmenler alternatif seçenekler ekleyebilir
+    can_respond_maybe:
+      title: Seçmenler "gerekirse" yanıt verebilir
+    allow_long_reason:
+      title: Oylama 'nedeninin' 500 karakterden uzun olmasına izin ver
+    hide_results_until_closed:
+      title: Sonuçları kapatılana kadar gizle
+      helptext_on: Anket kapanana kadar insanların nasıl oy kullandığını göstermeyin
+    short_reason_can_be_helpful: Kısa oy gerekçelerini anlamak daha kolaydır. Özlü gerekçelerden oluşan bir koleksiyon, karar vermek için harika bir kaynaktır.
+    shuffle_options: Karıştırma seçenekleri
+  poll_common_form:
+    quorum: Çoğunluk
+    participation_quorum: Katılım yeter sayısı
+    quorum_hint: Sonucun geçerli olması için seçmenlerin yüzde kaçı katılmalıdır? İsteğe bağlı, yeter sayı yoksa boş bırakın.
+    quorum_placeholder: Boş bırakın veya 0 ile 100 arasında bir sayı girin
+    deadline: Son teslim tarihi
+    notify_everyone_when_poll_starts: "%{poll_type} başladığında herkese bildir"
+    option_has_votes_confirm_delete: Bazı kişiler bu seçeneğe oy vermiş, silmek istediğinize emin misiniz?
+    example_title: Örnek başlık
+    example_title_hint: İyi bir teklif başlığına örnek verin
+    example_details_placeholder: Bir teklif veya anket için bir başlangıç noktası sağlayın. Sorular, insanların yazmaya başlamasını sağlamak için faydalı olabilir. Katılımcıların bilmesi gereken kuralları veya hatırlatıcıları ekleyin.
+    confirm_delete: Bu anket şablonunu silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.
+    advanced_settings: Gelişmiş ayarlar
+    show_advanced_settings: Gelişmiş ayarları göster
+    hide_advanced_settings: Gelişmiş ayarları gizle
+    choose_at_least: En azından seçin
+    choose_at_most: En fazla seçin
+    please_review_the_form: Lütfen formu inceleyin
+    option_added_please_add_details: Seçenek eklendi! Lütfen insanların ne anlama geldiğini bilmeleri için biraz ayrıntı ekleyin.
+    default_duration_in_days: Varsayılan süre (gün)
+    how_many_options_can_a_voter_choose: Bir seçmen kaç seçenek arasından seçim yapabilir?
+    minimum_choices: Minimum seçimler
+    maximum_choices: Maksimum seçimler
+    content: İçerik
+    reminder: Hatırlatma
+    reminder_notification: Hatırlatma bildirimi
+    your_in_zone: 'Geçerli saat dilimi: %{zone}'
+    show_other_zones: Diğer saat dilimlerini göster
+    hide_other_zones: Diğer saat dilimlerini gizle
+    this_is_a_template_for_new_polls: Bu yeni anketler için bir şablondur
+    voting_method: Oylama yöntemi
+    none_of_the_above: Yukarıdakilerin hiçbiri
+    voting_methods:
+      question: Soru turu
+      question_hint: Teklifinizle ilgili soru ve yorumlarınızı davet edin
+      show_thumbs: Baş parmakların gösterilmesi
+      show_thumbs_hint: Seçmenler başparmak yukarı, aşağı, yan veya el yukarıyı seçiyor
+      choose: Seçmek
+      simple_poll: Basit anket
+      choose_hint: Seçmenler en iyi seçeneği (veya seçenekleri) seçer
+      score: Gol
+      score_hint: Seçmenler her seçeneğe bir puan atar
+      allocate: Tahsis etmek
+      allocate_hint: Seçmenler, seçenekler arasında puan bütçesi ayırırlar
+      ranked_choice: Sıralamalı seçim
+      ranked_choice_hint: Seçmenler seçenekleri en çok tercih edilenden en az tercih edilene doğru sıralarlar
+      time_poll: Zaman anketi
+      time_poll_hint: Seçmenler toplantıya ne zaman hazır olduklarını belirtirler
+    process: İşlem
+    process_name: Şablon başlığı
+    process_name_hint: Bu şablona ne ad veriyorsunuz? Örneğin; Rol tavsiyesi, Sıcaklık kontrolü, Tutanak onayı.
+    process_subtitle: Şablon alt başlığı
+    process_subtitle_hint: Bu şablonun ne zaman veya neden kullanılacağına dair tek satırlık bir açıklama
+    process_introduction: Şablon yardımı
+    process_introduction_hint: Şablonun nasıl kullanılacağını açıklayan birkaç paragraf. Faydalı olabilecek kaynaklara bağlantılar ekleyin.
+    you_can_set_a_prompt_per_option: Ayrıntılar sekmesinden her seçenek için istemi düzenleyin
+    chart_type: Grafik türü
+    title: Başlık
+    title_hint: Vermeniz gereken karar nedir?
+    no_options_add_some: Bu anketin seçeneği yok, aşağıya birkaç seçenek ekleyin.
+    details: Detaylar
+    example_details: Örnek ayrıntılar
+    details_placeholder: Bu, insanların neye oy verdiğini açıklamanız için bir fırsattır
+    options: Seçenekler
+    options_placeholder: Mevcut seçenekleri listeleyin
+    no_options: Henüz hiçbir seçenek eklemediniz.
+    closing: Kapanış
+    closed: Kapalı
+    start: Başlangıç
+    start_poll: Anketi başlat
+    stance_reason_required_label: Oy kullanırken bir gerekçe belirtmek ...
+    stance_reason_required: Gerekli
+    stance_reason_optional: İsteğe bağlı
+    stance_reason_disabled: Engelli
+    stance_reason_is_required: Lütfen oyunuzu kullanırken bir neden belirtin
+    limit_reason_length: Nedeni en fazla 500 karakterle sınırlayın
+    save_poll: Anketi kaydet
+    start_poll_type: "%{poll_type} başlat"
+    share_poll_type: "%{poll_type} paylaş"
+    who_may_vote: Bu %{poll_type} anketinde kimler oy kullanabilir?
+    update: Güncelleme
+    add_voters: Seçmen ekle
+    notify_invitees: Bildirimleri gönder
+    no_notifications_warning: Seçmenlere bildirim yapılmayacak. Çok sayıda anket düzenliyorsanız ve daha sonra herkesi bilgilendirmeyi planlıyorsanız bu özellik kullanışlıdır.
+    count_voters_added: "%{count} seçmen eklendi"
+    poll_type_created: "%{poll_type} oluşturuldu"
+    poll_type_started: "%{poll_type} başlatıldı"
+    poll_type_updated: "%{poll_type} güncellendi"
+    reason_prompt: Sebep istemi
+    each_option_has_own_reason_prompt: Her seçeneğin kendine ait bir gerekçesi vardır. Bir seçeneği düzenleyerek gerekçesini görüntüleyebilir veya değiştirebilirsiniz.
+    anonymous_voting: Anonim oylama
+    votes_are_anonymous: Oylar anonimdir
+    vote_reason: Oylama nedeni
+    quorum_tip_vote_share_requirement: 'İpucu: Bir teklifin kabul edilmesi için gereken mutabakat düzeyini de belirtebilirsiniz. Oy payı gereksinimini tanımlamak için bir seçeneği düzenleyin.'
+    how_much_time_to_vote: İnsanlara oy vermeleri için ne kadar süre vereceksiniz?
+    default_duration_in_days_hint: İnsanlar kaç gün oy kullanabilecek?
+    define_minimum_and_maxmimum_score: Bir seçmenin bir seçeneğe verebileceği minimum ve maksimum puanları tanımlayın
+    how_many_points_does_each_voter_have_to_allocate: Her seçmenin kaç puan ayırması gerekiyor?
+    anonymous_voting_description: Oyları ve nedenlerini göster, ancak bunları kimin verdiğini gösterme. Bu, %{poll_type} başladıktan sonra değiştirilemez.
+    vote_reason_description: İnsanlardan oy kullanırken gerekçelerini paylaşmalarını veya daha fazla bilgi vermelerini isteyin.
+    hide_results_description: Eğer insanların başkalarının nasıl oy kullandığını görmeden oy kullanmasını istiyorsanız sonuçları gizleyebilirsiniz.
+    process_helptext: Bu anketi çalıştırmak için kullanılan işlemi adlandırın ve açıklayın.
+    reminder_helptext: Son tarihten 24 saat önce "Yakında Kapanıyor" bildirimi gönderin. Bu, katılımı artırabilir ve insanların pozisyonlarını yeniden değerlendirmeleri için bir fırsat yaratabilir.
+  poll_receipts_page:
+    verify_participants: Katılımcıları doğrulayın
+    see_votes_if_quorum_reached: Oylama sona ermiş ve yeter sayı sağlanmışsa, kimin oy kullandığını göreceksiniz.
+    voter_name: Seçmen adı
+    voter_email: Seçmen e-postası
+    vote_cast: Oy kullanma
+    member_since: 'Üyelik tarihi:'
+    invited_by: Davetli
+    invited_on: Davet edildi
+    no_receipts: Bu anonim anket doğrulama özelliği mevcut olmadan önce kapandı, bu nedenle doğrulama mümkün değil.

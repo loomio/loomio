@@ -23,7 +23,7 @@ export default {
 
   computed: {
     placeholder() {
-      if (this.comment.parentId) {
+      if (this.comment.parent()) {
         return this.$t('comment_form.in_reply_to', {name: this.comment.parent().author().nameOrUsername()});
       } else {
         return this.$t('comment_form.aria_label');

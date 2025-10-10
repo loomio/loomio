@@ -251,8 +251,8 @@ div.discussions-panel(v-if="group")
         .discussions-panel__list.thread-preview-collection__container(v-if="discussions.length")
           v-list.thread-previews(lines="two")
             thread-preview(
-              :show-group-name="groupIds.length > 1"
               v-for="thread in discussions"
+              :show-group-name="thread.groupId != group.id"
               :key="thread.id"
               :thread="thread"
               group-page
@@ -260,7 +260,7 @@ div.discussions-panel(v-if="group")
 
         loading(v-if="loading && discussions.length == 0")
 
-        v-pagination(v-model="page", :length="totalPages", :total-visible="7", :disabled="totalPages == 1")
+        v-pagination(v-model="page" :length="totalPages" :disabled="totalPages == 1")
         .d-flex.justify-center
           router-link.discussions-panel__view-closed-threads.text-center.pa-1(:to="'?t=closed'" v-if="suggestClosedThreads" v-t="'group_page.view_closed_threads'")
 

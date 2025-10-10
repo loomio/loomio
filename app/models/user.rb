@@ -38,14 +38,14 @@ class User < ApplicationRecord
 
   before_save :set_legal_accepted_at, if: :legal_accepted
 
-  validates :email, presence: true, email: true, length: {maximum: 200}, if: -> { !bot }
+  validates :email, presence: true, email: true, length: { maximum: 200 }
 
   validates :name,               presence: true, if: :require_valid_signup
   validates :legal_accepted,     presence: true, if: :require_legal_accepted
 
   has_one_attached :uploaded_avatar
 
-  validates_uniqueness_of :email, conditions: -> { where(email_verified: true) }, if: :email_verified?
+  validates_uniqueness_of :email
   validates_uniqueness_of :username, if: :email
   before_validation :generate_username, if: :email
   validates_length_of :name, maximum: 100
@@ -104,9 +104,11 @@ class User < ApplicationRecord
   has_many :tags, through: :groups
 
   before_save :set_avatar_initials
-  initialized_with_token :unsubscribe_token,        -> { Devise.friendly_token }
-  initialized_with_token :email_api_key,            -> { SecureRandom.hex(16) }
-  initialized_with_token :api_key,                  -> { SecureRandom.hex(16) }
+
+  initialized_with_token :unsubscribe_token
+  initialized_with_token :email_api_key
+  initialized_with_token :api_key
+  initialized_with_token :secret_token
 
   enum :default_membership_volume, [:mute, :quiet, :normal, :loud]
 
@@ -134,6 +136,9 @@ class User < ApplicationRecord
     return none unless model.present?
 
     ids = []
+    if model.is_a?(User)
+      return active.search_for(query).where(id: User.visible_by(model).pluck(:id))
+    end
 
     if model.group_id
       ids += Membership.active.where(group_id: model.group_id).pluck(:user_id) if model.group_id

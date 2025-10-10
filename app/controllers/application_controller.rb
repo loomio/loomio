@@ -57,6 +57,8 @@ class ApplicationController < ActionController::Base
 
   def sitemap
     @entries = []
+    return unless AppConfig.app_features[:sitemap]
+
     Group.published.where(is_visible_to_public: true).each do |g|
       @entries << [url_for(g), g.updated_at.to_date.iso8601]
     end

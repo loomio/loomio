@@ -1,9 +1,10 @@
 import Records from '@/shared/services/records';
-import { some, last, cloneDeep, max, uniq, compact, orderBy } from 'lodash-es';
+import { some, last, cloneDeep, max, uniq, compact, orderBy, pickBy, map, each } from 'lodash-es';
 import { reactive } from 'vue';
 import RangeSet         from '@/shared/services/range_set';
 import EventBus         from '@/shared/services/event_bus';
 import Session from '@/shared/services/session';
+import AppConfig from '@/shared/services/app_config';
 
 export default class ThreadLoader {
   constructor(discussion) {
@@ -16,17 +17,29 @@ export default class ThreadLoader {
     this.rules = [];
     this.ruleStrings = [];
     this.fetchedRules = [];
+    this.discussionLastReadAt = this.discussion.lastReadAt;
+    this.ranges = cloneDeep(this.discussion.ranges);
     this.readRanges = cloneDeep(this.discussion.readRanges);
-    this.focusAttrs = {};
+    this.unreadRanges = RangeSet.subtractRanges(this.discussion.ranges, this.readRanges);
     this.visibleKeys = {};
     this.collapsed = reactive({});
     this.loading = false;
     this.firstLoad = false
-    this.padding = 100;
+    this.padding = 25;
+  }
+
+  clearRules() {
+    this.rules = [];
+    this.ruleStrings = [];
+    this.fetchedRules = [];
   }
 
   firstUnreadSequenceId() {
-    return (RangeSet.subtractRanges(this.discussion.ranges, this.readRanges)[0] || [])[0];
+    return (this.unreadRanges[0] || [])[0];
+  }
+
+  lastSequenceId() {
+    return (last(this.ranges) || [])[1];
   }
 
   setVisible(isVisible, event) {
@@ -62,124 +75,67 @@ export default class ThreadLoader {
     return this.collapsed[event.id] = false;
   }
 
-  // jumpToEarliest() {
-  //   this.addLoadOldestFirstRule();
-  //   return this.fetch();
-  // }
+  addLoadArgsRule(args) {
+    const andParts = [{discussionId: this.discussion.id}]
 
-  // jumpToLatest() {
-  //   this.addLoadNewestFirstRule();
-  //   return this.fetch();
-  // }
+    // need sequenceId depth parent_id etc
+    if (args.depth) {
+      andParts.push({depth: args.depth})
+    }
 
-  // jumpToUnread() {
-  //   this.addLoadUnreadRule();
-  //   return this.fetch();
-  // }
+    if (args.depth_lte) {
+      andParts.push({depth: {$lte: args.depth_lte}})
+    }
 
-  // jumpToSequenceId(id) {
-  //   this.addLoadSequenceIdRule(id);
-  //   return this.fetch();
-  // }
-
-  // loadEverything() {
-  //   this.loading = true;
-  //   return this.addRuleAndFetch({
-  //     local: {
-  //       find: {
-  //         discussionId: this.discussion.id
-  //       }
-  //     },
-  //     remote: {
-  //       discussion_id: this.discussion.id,
-  //       per: 1000
-  //     }
-  //   });
-  // }
-
-  loadChildren(event) {
-    this.loading = 'children' + event.id;
-    this.addLoadChildrenRule(event);
-    return this.fetch();
-  }
-
-  loadAfter(event) {
-    this.loading = 'after' + event.id;
-    this.addLoadAfterRule(event);
-    return this.fetch();
-  }
-
-  loadBefore(event) {
-    this.loading = 'before' + event.id;
-    this.addLoadBeforeRule(event);
-    return this.fetch();
-  }
-
-  addLoadAfterRule(event) {
+    if (args.position_key_lt) {
+      andParts.push({positionKey: {$jlt: args.position_key_lt}})
+    }
+    if (args.position_key_lte) {
+      andParts.push({positionKey: {$jlte: args.position_key_lte}})
+    }
+    if (args.position_key_gt) {
+      andParts.push({positionKey: {$jgt: args.position_key_gt}})
+    }
+    if (args.position_key_gte) {
+      andParts.push({positionKey: {$jgte: args.position_key_gte}})
+    }
+    if (args.position_key_sw) {
+      andParts.push({positionKey: {$regex: `^${args.position_key_sw}`}})
+    }
     this.addRule({
-      name: `load more from next sibling ${event.positionKey}`,
+      name: `addLoadArgsRule`,
       local: {
-        find: {
-          discussionId: this.discussion.id,
-          positionKey: {
-            $jgte: event.nextSiblingPositionKey()
-          }
-        },
-        sortByPositionKey: true,
+        find: {$and: andParts},
+        sortByPositionKey: args.order_by == 'position_key' && !args.order_desc,
+        sortByPositionKeyDesc: args.order_by == 'position_key' && !!args.order_desc,
         limit: this.padding
       },
-      remote: {
+      remote: pickBy({
         discussion_id: this.discussion.id,
-        position_key_gte: event.nextSiblingPositionKey(),
-        order_by: 'position_key',
+        depth: args.depth,
+        depth_lte: args.depth_lte,
+        position_key_gt: args.position_key_gt,
+        position_key_gte: args.position_key_gte,
+        position_key_lt: args.position_key_lt,
+        position_key_lte: args.position_key_lte,
+        position_key_sw: args.position_key_sw,
+        order_by: args.order_by || 'position_key',
+        order_desc: args.order_desc && 1,
         per: this.padding
-      }
+      })
     });
   }
 
-  addLoadBeforeRule(event) {
-    return this.addRule({
-      name: `load before ${event.positionKey}`,
-      local: {
-        find: {
-          discussionId: this.discussion.id,
-          positionKey: {
-            $jlt: event.positionKey
-          }
-        },
-        sortByPositionKeyDesc: true,
-        limit: this.padding
-      },
-      remote: {
-        discussion_id: this.discussion.id,
-        position_key_lt: event.positionKey,
-        order_by: 'position_key',
-        order_desc: 1,
-        per: this.padding
-      }
-    });
-  }
-
-  addLoadChildrenRule(event) {
+  addLoadMyStuffRule() {
     this.addRule({
-      name: `load more from current ${event.positionKey}`,
       local: {
         find: {
+          actorId: AppConfig.currentUserId,
           discussionId: this.discussion.id,
-          positionKey: {
-            $jgt: event.positionKey
-          }
-        },
-        sortByPositionKey: true,
-        limit: this.padding
-      },
-      remote: {
-        discussion_id: this.discussion.id,
-        position_key_gt: event.positionKey,
-        order_by: 'position_key',
-        per: this.padding
+          createdAt: { $gte: new Date() }
+        }
       }
-    });
+    })
   }
 
   addLoadCommentRule(commentId) {
@@ -200,66 +156,6 @@ export default class ThreadLoader {
     });
   }
 
-  addLoadPositionRule(position) {
-    return this.addRule({
-      name: "position from url",
-      local: {
-        find: {
-          discussionId: this.discussion.id,
-          depth: 1,
-          position: {$gte: position}
-        },
-        sortByPositionKey: true,
-        limit: this.padding
-      },
-      remote: {
-        discussion_id: this.discussion.id,
-        from_sequence_id_of_position: position,
-        order: 'position_key'
-      }
-    });
-  }
-
-  addLoadPositionKeyRule(positionKey) {
-    this.loading = positionKey;
-    this.addRule({
-      name: "positionKey from url",
-      local: {
-        find: {
-          discussionId: this.discussion.id,
-          positionKey: {$jgte: positionKey}
-        },
-        sortByPositionKey: true,
-        limit: parseInt(this.padding/2)
-      },
-      remote: {
-        discussion_id: this.discussion.id,
-        position_key_gte: positionKey,
-        order_by: 'position_key',
-        per: parseInt(this.padding/2)
-      }
-    });
-
-    return this.addRule({
-      name: "positionKey rollback",
-      local: {
-        find: {
-          discussionId: this.discussion.id,
-          positionKey: {$jlt: positionKey}
-        },
-        sortByPositionKeyDesc: true,
-        limit: parseInt(this.padding/2)
-      },
-      remote: {
-        discussion_id: this.discussion.id,
-        position_key_lt: positionKey,
-        order_by: 'position_key',
-        order_desc: 1,
-        per: parseInt(this.padding/2)
-      }
-    });
-  }
-
   addLoadSequenceIdRule(sequenceId) {
     const id = max([parseInt(sequenceId) - parseInt(this.padding/2), 0]);
     this.loading = id;
@@ -267,8 +163,10 @@ export default class ThreadLoader {
       name: "sequenceId from url",
       local: {
         find: {
-          discussionId: this.discussion.id,
-          sequenceId: {'$gte': id}
+          $and: [
+            { discussionId: this.discussion.id },
+            { sequenceId: {'$gte': id} },
+          ]
         },
         simplesort: 'sequenceId',
         limit: this.padding
@@ -286,7 +184,8 @@ export default class ThreadLoader {
     return this.addRule({
       local: {
         find: {
-          discussionId: this.discussion.id
+          discussionId: this.discussion.id,
+          sequenceId: { $lte: this.lastSequenceId() }
         },
         simplesort: 'sequenceId',
         simplesortDesc: true,
@@ -294,6 +193,7 @@ export default class ThreadLoader {
       },
       remote: {
         discussion_id: this.discussion.id,
+        sequence_id_lte: this.lastSequenceId(),
         order_by: 'sequence_id',
         order_desc: true,
         per: this.padding
@@ -317,7 +217,8 @@ export default class ThreadLoader {
       name: 'oldest',
       local: {
         find: {
-          discussionId: this.discussion.id
+          discussionId: this.discussion.id,
+          sequenceId: { $lte: this.lastSequenceId() }
         },
         simplesort: 'sequenceId',
         limit: this.padding
@@ -331,31 +232,20 @@ export default class ThreadLoader {
   }
 
   addLoadUnreadRule() {
-    if (this.discussion.updatedAt > this.discussion.lastReadAt) {
-      this.addRule({
-        name: "context updated",
-        local: {
-          find: {
-            id: this.discussion.createdEvent().id
-          }
-        }
-      });
-    }
-
-    const id = max([this.firstUnreadSequenceId() - parseInt(this.padding/2), this.discussion.firstSequenceId()]);
     return this.addRule({
       name: {path: "strand_nav.new_to_you"},
       local: {
         find: {
           discussionId: this.discussion.id,
-          sequenceId: {$gte: id}
+          sequenceId: {$in: RangeSet.rangesToArray(this.unreadRanges)}
         },
         limit: this.padding,
-        order: 'sequenceId'
+        simplesort: 'sequenceId'
       },
       remote: {
         discussion_id: this.discussion.id,
-        sequence_id_gte: id,
+        sequence_id_in: RangeSet.serialize(this.unreadRanges).replace(/,/g, '_'),
+        // sequence_id_not_in: RangeSet.serialize(this.readRanges).replace(/,/g, '_'),
         order_by: "sequence_id",
         per: this.padding
       }
@@ -367,17 +257,10 @@ export default class ThreadLoader {
     if (!this.ruleStrings.includes(ruleString)) {
       this.rules.push(rule);
       this.ruleStrings.push(ruleString);
-      // if @rules.length > 5
-      //   @rules.shift()
-      //   @ruleStrings.shift()
       return true;
     } else {
       return false;
     }
-  }
-
-  addRuleAndFetch(rule) {
-    if (this.addRule(rule)) { return this.fetch(); }
   }
 
   fetch() {
@@ -399,9 +282,9 @@ export default class ThreadLoader {
 
   updateCollection() {
     this.records = [];
+    // console.log("Updating collection");
     this.rules.forEach(rule => {
-      let chain = Records.events.collection.chain();
-      chain.find(rule.local.find);
+      let chain = Records.events.collection.chain().find(rule.local.find);
 
       if (rule.local.simplesort) {
         chain = chain.simplesort(rule.local.simplesort, rule.local.simplesortDesc);
@@ -423,23 +306,27 @@ export default class ThreadLoader {
         chain = chain.limit(rule.local.limit);
       }
 
-      return this.records = this.records.concat(chain.data());
+      // console.log(JSON.stringify(rule.local), chain.data().length, chain.data().map(event => [event.sequenceId, event.positionKey].join(',')).join("\n"));
+      this.records = this.records.concat(chain.data());
     });
 
-    this.records = uniq(this.records.concat(compact(this.records.map(o => o.parent()))));
+    const parentsd1 = compact(this.records.map(o => o.parent()))
+    const parentsd2 = compact(parentsd1.map(o => o.parent()))
+    const parentsd3 = compact(parentsd2.map(o => o.parent()))
+    this.records = uniq(this.records.concat(parentsd1).concat(parentsd2).concat(parentsd3));
     this.records = orderBy(this.records, 'positionKey');
+
     const eventIds = this.records.map(event => event.id);
 
     const orphans = this.records.filter(event => (event.parentId === null) || !eventIds.includes(event.parentId));
 
     const eventsByParentId = {};
     this.records.forEach(event => {
-      return eventsByParentId[event.parentId] = (eventsByParentId[event.parentId] || []).concat([event]);
+      eventsByParentId[event.parentId] = (eventsByParentId[event.parentId] || []).concat([event]);
     });
 
     var nest = function(records) {
-      let r;
-      return r = records.map(event => ({
+      return records.map(event => ({
         event,
         children: (eventsByParentId[event.id] && nest(eventsByParentId[event.id])) || [],
         eventable: event.model()
@@ -456,35 +343,24 @@ export default class ThreadLoader {
   }
 
   addMetaData(collection) {
-    const positions = collection.map(e => e.event.position);
-    const ranges = RangeSet.arrayToRanges(positions);
-    const parentExists = collection[0] && collection[0].event && collection[0].event.parent();
-    const lastPosition = (parentExists && (collection[0].event.parent().childCount)) || 0;
+    if (collection.length == 0) return;
 
+    const ranges = RangeSet.arrayToRanges(collection.map(e => e.event.position));
+    const parentEvent = collection[0].event.parent();
+    const lastPosition = (parentEvent && parentEvent.childCount) || 0;
 
-    collection.forEach(obj => {
-      obj.isUnread = this.isUnread(obj.event);
+    for (let i = 0; i < collection.length; i++) {
+      const obj = collection[i];
       const isFirstInRange = some(ranges, range => range[0] === obj.event.position);
+      const isLastInRange = some(ranges, range => range[1] === obj.event.position);
       const isLastInLastRange = last(ranges)[1] === obj.event.position;
-      const missingEarlier = parentExists && ((obj.event.position !== 1) && isFirstInRange);
-      obj.missingEarlierCount = 0;
-      if (missingEarlier) {
-        let lastPos = 1;
-        let val = 0;
-        ranges.forEach(function(range) {
-          if (range[0] === obj.event.position) {
-            return val = (obj.event.position - lastPos);
-          } else {
-            return lastPos = range[1];
-          }});
-        obj.missingEarlierCount = val;
-      }
 
-      const missingAfter = (lastPosition !== 0) && isLastInLastRange && (obj.event.position !== lastPosition);
-      obj.missingAfterCount = (missingAfter && (lastPosition - last(ranges)[1])) || 0;
+      obj.isUnread = this.discussionLastReadAt && this.isUnread(obj.event);
+      obj.missingEarlier = isFirstInRange && obj.event.position > 1;
+      obj.missingAfter = isLastInLastRange && obj.event.position !== lastPosition;
       obj.missingChildCount = obj.event.childCount - obj.children.length;
 
       if (obj.children.length) { this.addMetaData(obj.children); }
-    });
+    }
   }
 }

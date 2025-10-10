@@ -2,9 +2,9 @@ require 'rails_helper'
 
 def mailin_params(
   token: "handle+u=123&k=123",
-  to: "Loomio Group <#{token}@#{ENV['REPLY_HOSTNAME']}>", 
-  from: 'Suzy Senderson <sender@gmail.com>', 
-  subject: "re: an important discussion", 
+  to: "Loomio Group <#{token}@#{ENV['REPLY_HOSTNAME']}>",
+  from: 'Suzy Senderson <sender@gmail.com>',
+  subject: "re: an important discussion",
   body: "Hi everybody, this is my message!",
   dkim: 'pass',
   spf: 'pass')
@@ -39,19 +39,20 @@ describe ReceivedEmailsController do
   it "ignores emails from reply_hostname" do
     ForwardEmailRule.create(handle: 'homer', email: "homer@loomio.com")
     h = mailin_params(
-      to: "homer@#{ENV['REPLY_HOSTNAME']}", 
+      to: "homer@#{ENV['REPLY_HOSTNAME']}",
       body: "yo this is for contact",
       from: "homer@#{ENV['REPLY_HOSTNAME']}"
     )
+
     post :create, params: h
 
-    expect(ActionMailer::Base.deliveries.last).to be nil
+    expect(ActionMailer::Base.deliveries).to be_empty
   end
 
   it "forwards specific emails to contact" do
     ForwardEmailRule.create(handle: 'homer', email: "homer@simpson.com")
     h = mailin_params(
-      to: "homer@#{ENV['REPLY_HOSTNAME']}", 
+      to: "homer@#{ENV['REPLY_HOSTNAME']}",
       body: "yo this is for contact"
     )
     post :create, params: h
@@ -62,7 +63,7 @@ describe ReceivedEmailsController do
 
   it "creates a reply to comment via email" do
     h = mailin_params(
-      to: "c=#{comment.id}&d=#{discussion.id}&u=#{user.id}&k=#{user.email_api_key}@#{ENV['REPLY_HOSTNAME']}", 
+      to: "c=#{comment.id}&d=#{discussion.id}&u=#{user.id}&k=#{user.email_api_key}@#{ENV['REPLY_HOSTNAME']}",
       body: "yo"
     )
     expect { post :create, params: h}.to change { Comment.count }.by(1)
@@ -75,7 +76,7 @@ describe ReceivedEmailsController do
 
   it "creates a comment on a poll via email" do
     h = mailin_params(
-      to: "pt=p&pi=#{poll.id}&d=#{discussion.id}&u=#{user.id}&k=#{user.email_api_key}@#{ENV['REPLY_HOSTNAME']}", 
+      to: "pt=p&pi=#{poll.id}&d=#{discussion.id}&u=#{user.id}&k=#{user.email_api_key}@#{ENV['REPLY_HOSTNAME']}",
       body: "yo"
     )
     expect { post :create, params: h }.to change { Comment.count }.by(1)
@@ -88,7 +89,7 @@ describe ReceivedEmailsController do
 
   it "creates a comment via email without a parent" do
     h = mailin_params(
-      to: "d=#{discussion.id}&u=#{user.id}&k=#{user.email_api_key}@#{ENV['REPLY_HOSTNAME']}", 
+      to: "d=#{discussion.id}&u=#{user.id}&k=#{user.email_api_key}@#{ENV['REPLY_HOSTNAME']}",
       body: "yo"
     )
     expect { post :create, params: h}.to change { Comment.count }.by(1)
@@ -101,7 +102,7 @@ describe ReceivedEmailsController do
 
   it "starts a discussion in a group" do
     h = mailin_params(
-      to: "#{group.handle}+u=#{user.id}&k=#{user.email_api_key}@#{ENV['REPLY_HOSTNAME']}", 
+      to: "#{group.handle}+u=#{user.id}&k=#{user.email_api_key}@#{ENV['REPLY_HOSTNAME']}",
       body: "yo I am a discussion"
     )
     expect { post :create, params: h}.to change { Discussion.count }.by(1)
@@ -119,9 +120,7 @@ describe ReceivedEmailsController do
         body: "greetings earthlings"
       )
       expect { post :create, params: h}.to change { Discussion.count }.by(0)
-      e = ReceivedEmail.last
-      expect(e.released).to eq false
-      expect(e.group_id).to eq nil
+      expect(ReceivedEmail.count == 0)
     end
 
     it "member email, starts a discussion" do

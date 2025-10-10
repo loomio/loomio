@@ -43,6 +43,13 @@ export default new class PollService {
   actions(poll, vm, event) {
     if (!poll || !poll.config()) { return {}; }
     return {
+      view_all_votes: {
+        icon: 'mdi-list-status',
+        name: 'poll_common.view_all_votes',
+        dock: 2,
+        canPerform() { return vm.$route.path.startsWith('/d/') && poll.showResults() },
+        to() { return `/p/${poll.key}`; }
+      },
       translate_poll: {
         icon: 'mdi-translate',
         name: 'common.action.translate',
@@ -60,7 +67,7 @@ export default new class PollService {
       },
 
       uncast_stance: {
-        name: (poll.config().has_options && 'poll_common.remove_your_vote') || 'poll_common.remove_your_response', 
+        name: (poll.config().has_options && 'poll_common.remove_your_vote') || 'poll_common.remove_your_response',
         icon: 'mdi-cancel',
         menu: true,
         canPerform() { return StanceService.canUpdateStance(poll.myStance()); },
@@ -276,6 +283,15 @@ export default new class PollService {
       //             title: 'poll_common_delete_modal.title'
       //             confirm: 'poll_common_delete_modal.question'
       //             flash: 'poll_common_delete_modal.success'
+      //
+      verify_participants: {
+        icon: 'mdi-account-check',
+        name: 'poll_receipts_page.verify_participants',
+        menu: true,
+        to() { return `/p/${poll.key}/receipts`; },
+        canPerform() { return true }
+      },
+
 
       discard_poll: {
         name: 'poll_common.delete_poll',
@@ -303,4 +319,3 @@ export default new class PollService {
     };
   }
 };
-

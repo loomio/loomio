@@ -1,6 +1,12 @@
 class ReceivedEmailService
+  class SentToSelfError < StandardError
+    def initialize(email)
+      super("Email sent to self: #{email.inspect}")
+    end
+  end
+
   def self.refresh_forward_email_rules
-    forward_email_rules = File.readlines(Rails.root.join("db/default_forward_email_rules.txt")).map(&:chomp).map do |handle| 
+    forward_email_rules = File.readlines(Rails.root.join("db/default_forward_email_rules.txt")).map(&:chomp).map do |handle|
       {handle: handle, email: "#{handle}@#{ENV['REPLY_HOSTNAME']}"}
     end
 
@@ -14,12 +20,15 @@ class ReceivedEmailService
     end
   end
 
+  def self.banned_sender_hosts
+    ENV.slice('REPLY_HOSTNAME', 'CANONICAL_HOST').values.compact.map(&:downcase)
+  end
+
   def self.route(email)
-    return nil if email.released
-    return nil unless email.route_address
-    return nil unless email.sender_email
-    return nil if email.sender_hostname.downcase == ENV['REPLY_HOSTNAME'].downcase
-    return nil if email.sender_hostname.downcase == ENV['CANONICAL_HOST'].downcase
+    return nil if email.released # email will be cleaned up by the cron job
+
+    return email.destroy unless email.route_address
+    return email.destroy unless email.sender_email
 
     if email.is_complaint? && email.complainer_address.present?
       User.where(email: email.complainer_address).update_all("complaints_count = complaints_count + 1")
@@ -30,18 +39,16 @@ class ReceivedEmailService
     case email.route_path
     when /d=.+&u=.+&k=.+/
       # personal email-to-thread, eg. d=100&k=asdfghjkl&u=999@mail.loomio.com
-      if comment = CommentService.create(comment: Comment.new(comment_params(email)), actor: actor_from_email(email))
-        email.update_attribute(:released, true) if comment.persisted?
-      end
-
-    when /[^\s]+\+u=.+&k=.+/ 
+      CommentService.create(comment: Comment.new(comment_params(email)), actor: actor_from_email(email))
+      email.update_attribute(:released, true)
+    when /[^\s]+\+u=.+&k=.+/
       # personal email-to-group, eg. enspiral+u=99&k=adsfghjl@mail.loomio.com
       if AppConfig.app_features[:thread_from_mail]
-        if discussion = DiscussionService.create(discussion: Discussion.new(discussion_params(email)), actor: actor_from_email(email))
-          email.update_attribute(:released, true) if discussion.persisted?
-        end
+        DiscussionService.create(discussion: Discussion.new(discussion_params(email)), actor: actor_from_email(email))
+        email.update_attribute(:released, true)
       end
     else
+      return email.destroy if banned_sender_hosts.include? email.sender_hostname.downcase
       if forward_email_rule = ForwardEmailRule.find_by(handle: email.route_path)
         ForwardMailer.forward_message(
           from: "\"#{email.sender_name}\" <#{BaseMailer::NOTIFICATIONS_EMAIL_ADDRESS}>",
@@ -51,22 +58,21 @@ class ReceivedEmailService
           body_text: email.body_text,
           body_html: email.body_html
         ).deliver_later
-        email.update(released: true)
-        return
-      end
-
-      if group = Group.find_by(handle: email.route_path)
+        email.destroy
+      elsif group = Group.find_by(handle: email.route_path)
         if !address_is_blocked(email, group)
           email.update(group_id: group.id)
 
           if actor = actor_from_email_and_group(email, group)
-            if discussion = DiscussionService.create(discussion: Discussion.new(discussion_params(email)), actor: actor)
-              email.update(released: true) if discussion.persisted?
-            end
+            DiscussionService.create(discussion: Discussion.new(discussion_params(email)), actor: actor)
+            email.update_attribute(:released, true)
           else
-            Events::UnknownSender.publish!(email)
+            Events::UnknownSender.publish!(email) unless Event.where(kind: 'unknown_sender', eventable: email).exists?
           end
         end
+      else
+        # dont fill the database with junk when there is no relevant address
+        email.destroy
       end
     end
   rescue CanCan::AccessDenied, ActiveRecord::RecordNotFound
@@ -81,7 +87,7 @@ class ReceivedEmailService
     while regex = reply_split_points(author_name).find { |regex| regex.match? text } do
       text = text.split(regex).first.strip
     end
-    
+
     text.strip
   end
 

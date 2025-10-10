@@ -9,7 +9,6 @@ uk:
     we_use_this_to_help: Ця інформація використовується, щоб налаштувати вашу групу Loomio та допомогти нам трохи зрозуміти вашу організацію, щоб ми могли краще вас підтримувати.
     how_do_you_intend_to_use_loomio: Як ви збираєтеся використовувати Loomio?
     what_decisions_do_you_need_to_make: Які рішення вам потрібно прийняти?
-    newsletter_intro: Бажаєте підписатися на нашу розсилку?
     newsletter_description: Будьте в курсі нових функцій і надихаючих історій про те, як Loomio використовують організації по всьому світу
     subscribe_to_newsletter: Підпишіться на розсилку новин Loomio
     form_incomplete: Щоб продовжити, заповніть усі поля у формі
@@ -21,6 +20,7 @@ uk:
     please_enter_a_valid_email_address: Будь ласка, введіть дійсну адресу електронної пошти
     please_accept_the_terms: Будь ласка, прийміть умови
     how_did_you_hear_about_loomio: Як ви дізналися про Loomio?
+    newsletter_intro: Бажаєте дізнатися про нові функції, інтерв'ю з клієнтами, тематичні дослідження та оголошення від команди Loomio?
   tasks:
     tasks: Завдання
     your_tasks: Ваші завдання
@@ -565,6 +565,16 @@ uk:
     from_comment: З URL-адреси коментаря
     from_sequence_id: З URL-адреси допису в темі
     unread: Новинка для вас
+    jump_to: Перейти до
+    timeline: Хронологія
+    top: Верх
+    bottom: Дно
+    start: Початок
+    latest: Найновіші
+    showing_latest: Показано останні
+    showing_unread: Показано непрочитані
+    add_comment: Додати коментар
+    start_decision: Початок рішення
   search_modal:
     all_content: Весь контент
     best_match: Найкращий матч
@@ -620,6 +630,8 @@ uk:
     theme: Тема
     light: світло
     dark: Темний
+    light_blue: Світло-блакитний
+    dark_blue: Темно-синій
   membership_card:
     group_members: Учасники групи
     discussion_members: Учасники теми
@@ -1227,7 +1239,6 @@ uk:
     description: Опис
     description_placeholder: Опишіть призначення вашої групи, щоб учасники групи розуміли, чому вони тут.
     new_description_placeholder: Чому ви пробуєте Луміо? Які рішення вам потрібно приймати разом?
-    new_description_html: <h3 id="how-do-you-intend-to-use-loomio">Як ви збираєтеся використовувати Loomio?</h3><p></p><h3 id="why-is-this-important-for-your-group"> Чому це важливо для вашої групи?</h3><p></p><h3 id="what-decisions-do-you-need-to-make"> Які рішення вам потрібно прийняти?</h3><p></p>
     secret_by_default: Ваша група буде доступна лише тим, кого запросили приєднатися. Ви можете змінити це налаштування пізніше.
     privacy_statement:
       public_on_web: 'Назва, опис та вкладення до контексту групи будуть загальнодоступними '
@@ -1294,6 +1305,8 @@ uk:
     request_to_join_prompt: Запит на приєднання
     default_request_to_join_prompt: Дякуємо за інтерес до нашої групи. Будь ласка, представтеся та поясніть, чому ви хочете приєднатися.
     upgrade_for_subgroups: 'Будь ласка, <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">оновіть свою підписку</a> , щоб створити підгрупу'
+    share_this_url_with_people_who_want_to_join: Поділіться цією URL-адресою з людьми, які хочуть приєднатися
+    new_description_html: "<h3>З якими труднощами стикається ваша організація під час прийняття рішень?</h3><p></p><h3> Як би ви хотіли використовувати Loomio у своїй організації?</h3><p></p>"
   group_export_modal:
     title: Експортувати дані групи
     body: |
@@ -1499,9 +1512,6 @@ uk:
     email_newsletter: Розсилка Loomio
     email_newsletter_description: Отримуйте повідомлення про нові функції, навчання, події у вашому місті та щодо майбутнього Loomio. Зазвичай це 2 або 3 листи на рік.
     email_catch_up_day: Підсумковий електронний лист
-    daily_summary_description: 'Виберіть, коли отримувати підсумковий електронний лист. Такий лист містить будь-які нові дії, які ви не бачили. Це гарний спосіб залишатися в курсі, якщо ви не регулярний користувач.
-
-      '
     on_participation_label: Підписатися на участь
     on_participation_description: Коли ви берете участь в темі, вся подальші оновлення будуть одразу надсилатись вам електронною поштою.
     announcement_label: Оголошення
@@ -1518,6 +1528,7 @@ uk:
       updated: Налаштування електронної пошти оновлено
     learn_more: Дізнатись більше про налаштування електронної пошти...
     mentioned_description: Коли хтось {'@'}згадує вас у коментарі, ви отримуєте сповіщення електронною поштою
+    daily_summary_description: Виберіть, коли отримувати електронний лист із підсумками. Цей лист містить будь-яку нову активність, яку ви не бачили. Гарний спосіб бути в курсі подій, якщо ви не є постійним користувачем.
   thread_preview:
     replies_count: "%{count} відповідей"
     unread_count: "%{count} непрочитаних"
@@ -1768,6 +1779,22 @@ uk:
     thumb_down: Великий палець вниз
     thumb_sideways: Великий палець вбік
     hand_up: Рука вгору
+    of: з
+    at_least: Принаймні
+    no_more_than: Не більше ніж
+    votes_cast: Віддані голоси
+    eligible_voters: Виборці, що мають право голосу
+    gte_score_percent: Потрібно щонайменше %{percent}% відданих голосів
+    gte_voter_percent: Потрібно щонайменше %{percent}% виборців, які мають право голосу
+    lte_score_percent: Не повинно перевищувати %{percent}% відданих голосів
+    lte_voter_percent: Не повинно перевищувати %{percent}% виборців, які мають право голосу
+    name_gte_score_percent: "%{name} потребує щонайменше %{percent}% відданих голосів"
+    name_gte_voter_percent: "%{name} потребує щонайменше %{percent}% виборців, які мають право голосу"
+    name_lte_score_percent: "%{name} не повинен перевищувати %{percent}% відданих голосів"
+    name_lte_voter_percent: "%{name} не повинен перевищувати %{percent}% виборців, які мають право голосу"
+    vote_share_requirement: Вимога щодо частки голосів
+    for_the_proposal_to_pass: Щоб пропозиція була прийнята, цей варіант має отримати…
+    for_the_poll_to_be_valid: Щоб %{poll_type} був дійсним, цей параметр має отримати…
   poll_common:
     superseded: Замінено
     outdated: Застаріла
@@ -1857,6 +1884,8 @@ uk:
     edit_warning: Редагування рекомендується лише для незначних змін або виправлення орфографічних помилок. Для суттєвих змін закрийте це %{pollType} і почніть нове.
     no_voting: Лише для обговореннь, голосування вимкнено
     post_outcome: Результат публікації
+    view_all_votes: Переглянути всі голоси
+    you_voted: Ви проголосували
   poll_common_attachment_form:
     label: Вкладення
   poll_common_add_option:
@@ -1959,6 +1988,8 @@ uk:
     unable_to_vote: Вас не запросили голосувати в %{poll_type}.
     draft_mode: Голосування вимкнено. Це ще не відкрито для голосування.
     voting_disabled_poll_is_template: Голосування вимкнено. Це шаблон.
+    for_this_proposal_to_pass: 'Щоб ця пропозиція була прийнята:'
+    for_this_poll_type_to_be_valid: 'Щоб цей %{poll_type} був дійсним:'
   poll_common_collapsed:
     by_who: від %{name}
   poll_common_calendar_invite:
@@ -1973,48 +2004,6 @@ uk:
     event_description_placeholder: Який порядок денний цієї зустрічі?
     location: Місце
     location_placeholder: Де відбудеться ця зустріч?
-  poll_common_settings:
-    who_can_vote: Хто може голосувати?
-    short_reason_can_be_helpful: Короткі причини голосування полегшують їх розуміння. Збірка стислих причин є чудовим ресурсом для прийняття рішення.
-    specified_voters_only_true: Тільки запрошені
-    specified_voters_only_false_group: Будь-хто з групи
-    specified_voters_only_false_discussion: Будь-хто з теми
-    invite_people_next: Ви можете вибрати, кого запросити до голосування після початку %{poll_type}
-    shuffle_options:
-      shuffle_options: Параметри перемішування
-      title: Показувати параметри в довільному порядку
-      helptext: Перший варіант у списку може надати йому упередженості. Використовуйте це налаштування, щоб протистояти цьому ефекту.
-    multiple_choice:
-      title: Множинний вибір
-      helptext_on: У разі обраня цього варіанту, учасники зможуть вибрати кілька варіантів.
-    anyone_can_participate:
-      title: Будь-хто може долучитись за посиланням
-      helptext_on: У разі обраня цього варіанту, будь-хто може долучитись за посиланням.
-    notify_on_closing_soon:
-      voting_closes_too_soon: Оскільки голосування завершується протягом 24 годин, нагадування про незабаром не надсилатимуться.
-      closes_too_soon: Оскільки це %{pollType} закриється протягом 24 годин, нагадування щодо закриття незабаром не надсилатимуться.
-      title: 'За 24 години до завершення %{pollType} надіслати нагадування '
-      voting_title: За 24 години до закінчення голосування надішліть нагадування на адресу
-      nobody: Нікому
-      author: Автору (мені)
-      undecided_voters: Виборцям, які не визначилися
-      voters: Усім виборцям
-    notify_on_participate:
-      title: Повідомити мене коли люди долучаються
-      helptext_on: У разі обраня цього варіанту, ви будете отримувати сповіщення щоразу, коли хтось буде залучений.
-    anonymous:
-      title: Анонімні виборці
-      helptext_on: У разі обраня цього варіанту, інформація про учасника не відображатиметься на усіх відповідях.
-    voter_can_add_options:
-      title: Виборці можуть додати альтернативні варіанти
-    can_respond_maybe:
-      title: Виборці можуть відповісти "у разі потреби"
-    allow_long_reason:
-      title: Дозволити "причину" голосування довше ніж 500 символів
-    hide_results_until_closed:
-      title: Приховати результати до закриття
-      helptext_on: Не показувати, як люди голосували, доки голосування не буде закрито
-    show_none_of_the_above: Додайте опцію «Жодне з перерахованого вище».
   poll_common_close_form:
     title: Закрити %{poll_type} зараз?
     helptext: Ви впевнені, що хочете закрити це %{poll_type} раніше та поділитися результатом?
@@ -2073,7 +2062,6 @@ uk:
     enter_an_outcome: Введіть результат
   poll_common_outcome_form:
     review_due_in_days: Через скільки днів переглянути рішення?
-    review_due_in_days_hint: Період часу (у днях) перед переглядом рішення. (необов'язково)
     review_date: Дата перегляду
     review_date_hint: Встановити дату нагадування для перегляду результату (необов’язково)
     who_to_notify: Кого ви хочете повідомити про цей результат? (необов'язково)
@@ -2083,109 +2071,17 @@ uk:
     outcome_created: Результат створено
     outcome_updated: Результат оновлено
     statement_placeholder: Узагальнити відповіді і пояснити що буде відбуватися далі.
-    statement_template_placeholder: Надайте шаблон для написання результату рішення. (необов'язково)
     you_will_be_notified: Ви отримаєте повідомлені про дату підсумків.
     submit: Поширити результат
+    review_due_in_days_hint: Кількість днів очікування до перегляду рішення (необов'язково).
+    statement_template_hint: Надайте шаблон для написання результату рішення (необов'язково).
+    statement_template_placeholder: Дякуємо за участь! Кворум досягнуто, і ми маємо підтримку для продовження.
   poll_common_outcome_panel:
     authored_by: від %{name}
   poll_common_delete_modal:
     question: Ви впевнені що хочете видалити це?
     title: Видалити %{pollType}
     success: Видалено успішно
-  poll_common_form:
-    notify_everyone_when_poll_starts: Повідомити всіх, коли %{poll_type} почнеться
-    option_has_votes_confirm_delete: Деякі люди проголосували за цей варіант, ви впевнені, що хочете його видалити?
-    example_title: Приклад назви
-    example_title_hint: Наведіть приклад гарної назви пропозиції
-    example_details_placeholder: Надайте відправну точку для пропозиції чи опитування. Запитання можуть бути корисними підказками, щоб спонукати людей писати. Включіть будь-які правила або нагадування, які учасники повинні знати.
-    confirm_delete: Ви впевнені, що хочете видалити цей шаблон опитування? Це не може бути скасоване.
-    show_advanced_settings: Показати додаткові налаштування
-    hide_advanced_settings: Приховати розширені налаштування
-    choose_at_least: Вибирайте хоча б
-    choose_at_most: Виберіть максимум
-    please_review_the_form: Будь ласка, перегляньте форму
-    option_added_please_add_details: Опція додана! Додайте деталі, щоб люди знали, що це означає.
-    default_duration_in_days: Тривалість за замовчуванням у днях
-    default_duration_in_days_hint: Скільки днів потрібно дати людям для голосування?
-    how_many_options_can_a_voter_choose: Скільки з цих варіантів може вибрати виборець?
-    minimum_choices: Мінімальний вибір
-    maximum_choices: Максимальний вибір
-    content: Зміст
-    reminder: Нагадування
-    your_in_zone: 'Поточний часовий пояс: %{zone}'
-    show_other_zones: Показати інші часові пояси
-    hide_other_zones: Приховати інші часові пояси
-    this_is_a_template_for_new_polls: Це шаблон для нових опитувань
-    voting_method: Спосіб голосування
-    voting_methods:
-      question: Раунд питань
-      question_hint: Запросіть запитання та коментарі до вашої пропозиції
-      show_thumbs: Показ великих пальців
-      show_thumbs_hint: Виборці обирають великий палець вгору, вниз, убік або руку вгору
-      choose: Виберіть
-      simple_poll: Просте опитування
-      choose_hint: Виборці обирають найкращий варіант (або варіанти)
-      score: Оцінка
-      score_hint: Виборці оцінюють кожен варіант
-      allocate: Виділити
-      allocate_hint: Виборці розподіляють бюджет балів між варіантами
-      ranked_choice: Ранговий вибір
-      ranked_choice_hint: Виборці розташовують варіанти в порядку від найбільшого до найменш бажаного
-      time_poll: Опитування щодо часу
-      time_poll_hint: Виборці вказують, коли вони вільні для зустрічі
-    process: процес
-    process_name: Назва шаблону
-    process_name_hint: Як ви називаєте цей шаблон? Наприклад, поради щодо ролі, перевірка температури, затвердження протоколу
-    process_subtitle: Підзаголовок шаблону
-    process_subtitle_hint: Однорядковий опис того, коли або навіщо використовувати цей шаблон
-    process_introduction: Довідка по шаблону
-    process_introduction_hint: Кілька абзаців, які пояснюють, як використовувати шаблон. Додайте посилання на ресурси, які можуть бути корисними.
-    you_can_set_a_prompt_per_option: Відредагуйте підказку для кожного параметра на вкладці деталей
-    chart_type: Тип діаграми
-    title: Назва
-    title_hint: Яке рішення вам потрібно прийняти?
-    no_options_add_some: У цьому опитуванні немає варіантів, додайте кілька нижче.
-    details: Деталі
-    example_details: Приклад деталей
-    details_placeholder: Це ваша можливість пояснити, за що голосують люди
-    options: Варіанти
-    options_placeholder: Перелік наявних варіантів
-    no_options: Ви ще не додали жодних варіантів.
-    closing: Закривається
-    closed: Закрита
-    start: Почати
-    start_poll: Розпочати опитування
-    stance_reason_required_label: Вказати причину під час голосування...
-    stance_reason_required: Обов'язково
-    stance_reason_optional: Додатково
-    stance_reason_disabled: Вимкнено
-    stance_reason_is_required: Будь ласка, вкажіть причину свого голосування
-    limit_reason_length: Обмежте причину максимум 500 символами
-    save_poll: Зберегти опитування
-    start_poll_type: Розпочати %{poll_type}
-    share_poll_type: Поширити %{poll_type}
-    who_may_vote: Хто може голосувати в цьому %{poll_type}?
-    update: Оновити
-    add_voters: Додати виборця
-    notify_invitees: Надіслати сповіщення
-    no_notifications_warning: Виборці не повідомлятимуться. Це корисно, якщо ви проводите багато опитувань і плануєте сповістити всіх пізніше.
-    count_voters_added: "%{count} виборців додано"
-    poll_type_created: "%{poll_type} створено"
-    poll_type_started: "%{poll_type} розпочато"
-    poll_type_updated: "%{poll_type} оновлено"
-    reason_prompt: Підказка причини
-    anonymous_voting: Анонімне голосування
-    anonymous_voting_description: Якщо ввімкнено, ідентифікаційні дані виборців не будуть пов’язані з їхніми голосами. Це не може бути скасоване.
-    votes_are_anonymous: Анонімне голосування
-    vote_reason: Причина голосування
-    vote_reason_description: Це може бути корисно зрозуміти, чому люди проголосували саме так. За допомогою цього параметра ви можете запропонувати людям поділитися своїми думками під час голосування.
-    hide_results_description: Якщо ви хочете, щоб люди голосували, не знаючи, як проголосували інші, ви можете приховати результати опитування.
-    process_helptext: Назвіть і опишіть процес, який використовується для проведення цього опитування.
-    reminder_helptext: Надішліть сповіщення «Скоро закривається» перед закриттям опитування. Це може бути можливість для людей побачити, як проголосували інші, і переглянути свій власний голос, або просто спосіб збільшити участь в опитуванні.
-    deadline: Дедлайн
-    how_much_time_to_vote: Скільки часу ви дасте людям для голосування?
-    advanced_settings: Розширені налаштування
-    none_of_the_above: Нічого з перерахованого вище
   poll_proposal_form:
     start_header: Внести пропозицію
     edit_header: Редагувати пропозицію
@@ -2244,9 +2140,10 @@ uk:
     points: Бали
     average: Середній
     mean: Середній
-    pct_of_points: "% балів"
-    pct_of_voters: "% виборців"
     percent: Відсоток
+    pct_of_points: "% балів"
+    pct_of_votes_cast: "% відданих голосів"
+    pct_of_voters: "% виборців, що мають право голосу"
   poll_meeting_time_field:
     add_time_slot: Додайте часовий інтервал
     new_time_slot: Новий проміжок часу
@@ -2285,6 +2182,11 @@ uk:
   poll_common_percent_voted:
     sentence: Проголосували %{numerator} із %{denominator} людей (%{percent}%)
     target_progress: Досягнуто %{percent}% цілі. (%{num} / %{target})
+    pct_of_eligible_voters_must_participate: "%{pct}% виборців, які мають право голосу, повинні взяти участь"
+    pct_participation: "%{num} з %{total} голосів (%{pct}% участі)"
+    vote_short_of_quorum: Для досягнення кворуму %{pct}% потрібен ще 1 голос
+    votes_short_of_quorum: Для досягнення кворуму %{pct}% потрібно ще %{num} голосів
+    quorum_reached: Досягнуто кворуму %{pct}%
   poll_meeting_chart_panel:
     total: Разом
   poll_remove_vote:
@@ -2340,6 +2242,7 @@ uk:
     stance_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> проголосував(ла): <strong>%{title}</strong>"
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> оновив(ла) свій голос у: <strong>%{title}</strong>"
     event_removed: Видалені з теми
+    new: новий
   add_poll_to_thread_modal:
     success: Чудово, %{pollType} додано до теми!
   auth_form:
@@ -2570,3 +2473,157 @@ uk:
         submit: Переглянути пропозицію
         cancel: Зробіть це пізніше
     get_started_here: Почніть тут
+  poll_common_settings:
+    who_can_vote: Хто може голосувати?
+    specified_voters_only_true: Тільки запрошені особи
+    specified_voters_only_false_group: Будь-хто в групі
+    specified_voters_only_false_discussion: Будь-хто в темі
+    invite_people_next: Ви можете вибрати, кого запросити до голосування, після запуску %{poll_type}
+    show_none_of_the_above: Включіть варіант «Жоден з перерахованих вище»
+    show_options_in_random_order: Показати параметри у випадковому порядку
+    reduce_bias_by_showing_options_in_random_order: Зменште упередженість, показуючи варіанти у випадковому порядку.
+    multiple_choice:
+      title: Множинний вибір
+      helptext_on: Після вибору учасники зможуть обрати кілька варіантів.
+    anyone_can_participate:
+      title: Участь може взяти будь-хто, хто має посилання
+      helptext_on: Після вибору, будь-хто, хто має посилання на опитування, може взяти участь.
+    notify_on_closing_soon:
+      voting_closes_too_soon: Оскільки голосування завершується протягом 24 годин, нагадування про його незабаром надсилатимуться.
+      closes_too_soon: Оскільки цей %{pollType} закривається протягом 24 годин, нагадування про швидке закриття надсилатися не будуть.
+      title: За 24 години до закриття %{pollType} надішліть нагадування
+      voting_title: За 24 години до завершення голосування надішліть нагадування
+      nobody: Ніхто
+      author: Автор (я)
+      undecided_voters: Виборці, які не визначилися
+      voters: Усі виборці
+    notify_on_participate:
+      title: Повідомити мене, коли люди беруть участь
+      helptext_on: Після обрання ви отримуватимете сповіщення щоразу, коли хтось братиме участь.
+    anonymous:
+      title: Анонімні виборці
+      helptext_on: Якщо вибрано, інформація про учасника не відображатиметься з кожною відповіддю.
+    voter_can_add_options:
+      title: Виборці можуть додавати альтернативні варіанти
+    can_respond_maybe:
+      title: Виборці можуть відповісти «за потреби»
+    allow_long_reason:
+      title: Дозволити значення «причина» голосування довжиною понад 500 символів
+    hide_results_until_closed:
+      title: Приховати результати до закриття
+      helptext_on: Не показуйте, як люди голосували, доки опитування не закриється
+    short_reason_can_be_helpful: Короткі аргументи щодо голосування легше зрозуміти. Збірка стислих аргументів – чудовий ресурс для прийняття рішення.
+    shuffle_options: Параметри перемішування
+  poll_common_form:
+    quorum: Кворум
+    participation_quorum: Кворум участі
+    quorum_hint: Який відсоток виборців має взяти участь, щоб результат був дійсним? Необов'язково, залиште поле порожнім, якщо кворуму немає.
+    quorum_placeholder: Залиште поле порожнім або введіть число від 0 до 100
+    deadline: Кінцевий термін
+    notify_everyone_when_poll_starts: Повідомити всіх, коли розпочнеться %{poll_type}
+    option_has_votes_confirm_delete: Деякі люди проголосували за цей варіант, ви впевнені, що хочете його видалити?
+    example_title: Приклад назви
+    example_title_hint: Наведіть приклад гарної назви пропозиції
+    example_details_placeholder: Забезпечте відправну точку для пропозиції або опитування. Запитання можуть бути корисними підказками, щоб спонукати людей писати. Включіть будь-які правила або нагадування, які учасникам потрібно буде знати.
+    confirm_delete: Ви впевнені, що хочете видалити цей шаблон опитування? Цю дію неможливо скасувати.
+    advanced_settings: Розширені налаштування
+    show_advanced_settings: Показати розширені налаштування
+    hide_advanced_settings: Приховати розширені налаштування
+    choose_at_least: Виберіть хоча б
+    choose_at_most: Виберіть щонайбільше
+    please_review_the_form: Будь ласка, перегляньте форму
+    option_added_please_add_details: Додано опцію! Будь ласка, додайте деякі деталі, щоб люди знали, що це означає.
+    default_duration_in_days: Тривалість за замовчуванням у днях
+    how_many_options_can_a_voter_choose: Скільки варіантів може обрати виборець?
+    minimum_choices: Мінімальний вибір
+    maximum_choices: Максимальний вибір
+    content: Зміст
+    reminder: Нагадування
+    reminder_notification: Нагадування
+    your_in_zone: 'Поточний часовий пояс: %{zone}'
+    show_other_zones: Показати інші часові пояси
+    hide_other_zones: Приховати інші часові пояси
+    this_is_a_template_for_new_polls: Це шаблон для нових опитувань
+    voting_method: Метод голосування
+    none_of_the_above: Жоден з перерахованих вище
+    voting_methods:
+      question: Раунд питань
+      question_hint: Запрошуємо вас поставити запитання та коментувати вашу пропозицію
+      show_thumbs: Показ великих пальців
+      show_thumbs_hint: Виборці обирають великий палець вгору, вниз, вбік або руку вгору
+      choose: Виберіть
+      simple_poll: Просте опитування
+      choose_hint: Виборці обирають найкращий варіант (або варіанти)
+      score: Рахунок
+      score_hint: Виборці присвоюють бал кожному варіанту
+      allocate: Виділити
+      allocate_hint: Виборці розподіляють певний бюджет балів між варіантами
+      ranked_choice: Рейтинговий вибір
+      ranked_choice_hint: Виборці розташовують варіанти в порядку від найбільш бажаного до найменш бажаного
+      time_poll: Опитування часу
+      time_poll_hint: Виборці вказують, коли вони вільні для зустрічі
+    process: Процес
+    process_name: Назва шаблону
+    process_name_hint: Як називається цей шаблон? Наприклад, Порада щодо ролі, Перевірка температури, Затвердження протоколу
+    process_subtitle: Шаблон підзаголовка
+    process_subtitle_hint: Однорядковий опис того, коли або чому використовувати цей шаблон
+    process_introduction: Довідка щодо шаблонів
+    process_introduction_hint: Кілька абзаців, що пояснюють, як користуватися шаблоном. Додайте посилання на ресурси, які можуть бути корисними.
+    you_can_set_a_prompt_per_option: Відредагуйте запит для кожного параметра на вкладці з деталями
+    chart_type: Тип діаграми
+    title: Назва
+    title_hint: Яке рішення вам потрібно прийняти?
+    no_options_add_some: У цьому опитуванні немає варіантів, додайте їх нижче.
+    details: Деталі
+    example_details: Приклад деталей
+    details_placeholder: Це ваша можливість пояснити, за що голосують люди
+    options: Опції
+    options_placeholder: Перелічіть доступні варіанти
+    no_options: Ви ще не додали жодних опцій.
+    closing: Закриття
+    closed: ЗАЧИНЕНО
+    start: Початок
+    start_poll: Розпочати опитування
+    stance_reason_required_label: Надання причини під час голосування...
+    stance_reason_required: Обов'язково
+    stance_reason_optional: Необов'язково
+    stance_reason_disabled: Інвалід
+    stance_reason_is_required: Будь ласка, обґрунтуйте свій голос
+    limit_reason_length: Обмежте причину максимум 500 символами
+    save_poll: Зберегти опитування
+    start_poll_type: Початок %{poll_type}
+    share_poll_type: Поділитися %{poll_type}
+    who_may_vote: Хто може голосувати в цьому %{poll_type}?
+    update: Оновлення
+    add_voters: Додати виборців
+    notify_invitees: Надсилати сповіщення
+    no_notifications_warning: Виборці не отримають сповіщення. Це корисно, якщо ви проводите багато опитувань і плануєте повідомити всіх пізніше.
+    count_voters_added: Додано %{count} виборців
+    poll_type_created: "%{poll_type} створено"
+    poll_type_started: "%{poll_type} розпочато"
+    poll_type_updated: "%{poll_type} оновлено"
+    reason_prompt: Підказка щодо причини
+    each_option_has_own_reason_prompt: Кожен варіант має власне пояснення причини. Відредагуйте варіант, щоб переглянути або змінити його пояснення.
+    anonymous_voting: Анонімне голосування
+    votes_are_anonymous: Голоси анонімні
+    vote_reason: Причина голосування
+    quorum_tip_vote_share_requirement: 'Порада: Ви також можете вказати рівень згоди, необхідний для прийняття пропозиції. Редагуйте опцію, щоб визначити вимогу щодо частки голосів.'
+    how_much_time_to_vote: Скільки часу ви дасте людям для голосування?
+    default_duration_in_days_hint: Скільки днів у людей буде для голосування?
+    define_minimum_and_maxmimum_score: Визначте мінімальний та максимальний бал, який виборець може поставити за варіант
+    how_many_points_does_each_voter_have_to_allocate: Скільки балів має нарахувати кожен виборець?
+    anonymous_voting_description: Показувати голоси та причини, але не тих, хто їх віддав. Це не можна змінити після початку %{poll_type}.
+    vote_reason_description: Попросіть людей поділитися своїми аргументами під час голосування або надати додаткову інформацію.
+    hide_results_description: Якщо ви хочете, щоб люди голосували, не бачачи, як проголосували інші, ви можете приховати результати.
+    process_helptext: Назвіть та опишіть процес, який використовується для проведення цього опитування.
+    reminder_helptext: Надішліть сповіщення «Закриття незабаром» за 24 години до дедлайну. Це може збільшити кількість учасників та створити можливість для людей переглянути свою позицію.
+  poll_receipts_page:
+    verify_participants: Перевірити учасників
+    see_votes_if_quorum_reached: Якщо голосування завершено і досягнуто кворуму, ви побачите, хто проголосував.
+    voter_name: Ім'я виборця
+    voter_email: Електронна адреса виборця
+    vote_cast: Віддані голоси
+    member_since: Учасник з
+    invited_by: Запрошено
+    invited_on: Запрошено
+    no_receipts: Це анонімне опитування закрилося до того, як з'явилася функція верифікації, тому верифікація неможлива.

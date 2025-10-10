@@ -1,5 +1,5 @@
 <script lang="js">
-import { truncate } from 'lodash-es';
+import { truncate, unescape } from 'lodash-es';
 
 let doctypes = [];
 import("@/../../config/doctypes.yml").then(function(data) {
@@ -30,9 +30,9 @@ export default {
     imageUrl() {
       if (!this.preview.image) { return null };
       if (this.preview.image.startsWith('http')){
-        return this.preview.image;
+        return unescape(this.preview.image);
       } else {
-        return 'https://' +this.hostname + this.preview.image
+        return 'https://' + this.hostname + unescape(this.preview.image);
       }
     },
 
@@ -109,7 +109,6 @@ div
           )
           div
             v-card-title.text-medium-emphasis
-              common-icon.mr-1(name="mdi-open-in-new")
               span(v-html="preview.title")
             v-card-subtitle
               span(v-if="doctype.name != 'other'" v-t="'doctypes.'+doctype.name")
@@ -123,6 +122,9 @@ div
   overflow-wrap: break-word
   word-wrap: break-word
   word-break: break-word
+
+.link-preview .v-card-title
+  white-space: wrap
 
 .link-preview__image
   height: 160px

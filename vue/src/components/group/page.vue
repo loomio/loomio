@@ -1,11 +1,9 @@
 <script lang="js">
-import AppConfig         from '@/shared/services/app_config';
 import Session           from '@/shared/services/session';
 import Records           from '@/shared/services/records';
 import EventBus          from '@/shared/services/event_bus';
 import AbilityService    from '@/shared/services/ability_service';
 import GroupService    from '@/shared/services/group_service';
-import LmoUrlService     from '@/shared/services/lmo_url_service';
 import { pickBy } from 'lodash-es';
 import UrlFor from '@/mixins/url_for';
 import FormatDate from '@/mixins/format_date';
@@ -87,20 +85,20 @@ v-main
         cover
         eager)
 
-      v-img.ma-2.d-none.d-sm-block.rounded(
-        v-if="group.logoUrl"
-        :src="group.logoUrl"
-        style="border-radius: 8px; position: absolute; bottom: 0"
-        height="96"
-        width="96"
-        eager)
-      v-img.ma-2.d-sm-none.rounded(
-        v-if="group.logoUrl"
-        :src="group.logoUrl"
-        style="border-radius: 8px; position: absolute; bottom: 0"
-        height="48"
-        width="48"
-        eager)
+      //v-img.ma-2.d-none.d-sm-block.rounded(
+      //  v-if="group.logoUrl"
+      //  :src="group.logoUrl"
+      //  style="border-radius: 8px; position: absolute; bottom: 0"
+      //  height="96"
+      //  width="96"
+      //  eager)
+      //v-img.ma-2.d-sm-none.rounded(
+      //  v-if="group.logoUrl"
+      //  :src="group.logoUrl"
+      //  style="border-radius: 8px; position: absolute; bottom: 0"
+      //  height="48"
+      //  width="48"
+      //  eager)
     h1.text-h4.my-4(tabindex="-1" v-intersect="{handler: titleVisible}")
       span(v-if="group && group.parentId")
         router-link(:to="urlFor(group.parent())") {{group.parent().name}}

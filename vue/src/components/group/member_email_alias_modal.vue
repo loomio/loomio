@@ -56,10 +56,8 @@ export default {
 
 </script>
 <template lang="pug">
-v-card
-  v-card-title
-    h1.headline(v-t="'email_to_group.add_alias'")
-    v-spacer
+v-card(:title="$t('email_to_group.add_alias')")
+  template(v-slot:append)
     dismiss-modal-button
   template(v-if="group.isTrialOrDemo()")
     .pa-4
@@ -70,8 +68,7 @@ v-card
       v-text-field(
         v-model="q"
         autofocus
-        filled
-        rounded
+        variant="solo-filled"
         single-line
         hide-details
         :placeholder="$t('common.action.search')"
@@ -83,10 +80,9 @@ v-card
       p(v-t="{path: 'email_to_group.is_name_the_owner_of_email', args: {name: selectedUser.name, email: receivedEmail.senderEmail}}")
       p(v-t="{path: 'email_to_group.all_email_will_belong_to_name', args: {name: selectedUser.name, email: receivedEmail.senderEmail}}")
     v-card-actions(v-if="selectedUser")
-      v-btn(@click="selectedUser = null" v-t="'common.action.cancel'")
+      v-btn(@click="selectedUser = null")
+        span(v-t="'common.action.cancel'")
       v-spacer
-      v-btn(color="primary" @click="submit(selectedUser.id)" :loading="loading" v-t="'common.action.confirm'")
-
-
-
+      v-btn(color="primary" @click="submit(selectedUser.id)" :loading="loading")
+        span(v-t="'common.action.confirm'")
 </template>

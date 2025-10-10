@@ -243,7 +243,7 @@ export default
         span(v-t="'members_panel.sharable_link'")
       v-btn.group-page__requests-tab.text-medium-emphasis.ml-2(
         v-if='group.isVisibleToPublic && canAddMembers'
-        :to="urlFor(group, 'members/requests')"
+        :to="urlFor(group, 'membership_requests')"
         variant="text"
       )
         span(v-t="'members_panel.requests'")

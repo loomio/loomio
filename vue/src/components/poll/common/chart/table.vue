@@ -52,26 +52,28 @@ export default {
     thead
       tr
         template(v-for="col in poll.resultColumns")
-          th.text-left(v-if="col == 'chart'" v-t="poll.closedAt ? 'poll_common.results' : 'poll_common.current_results'")
+          th.text-left.d-none.d-sm-table-cell(v-if="col == 'chart'" v-t="poll.closedAt ? 'poll_common.results' : 'poll_common.current_results'")
           th.text-left(v-if="col == 'name'" v-t='"common.option"')
           th.text-right(v-if="col == 'target_percent'" v-t='"poll_count_form.pct_of_target"')
           th.text-right(v-if="col == 'score_percent'" v-t='"poll_ranked_choice_form.pct_of_points"')
+          th.text-right(v-if="col == 'votes_cast_percent'" v-t='"poll_ranked_choice_form.pct_of_votes_cast"')
           th.text-right(v-if="col == 'voter_percent'" v-t='"poll_ranked_choice_form.pct_of_voters"')
           th.text-right(v-if="col == 'score'" v-t='"poll_ranked_choice_form.points"')
           th.text-right(v-if="col == 'rank'" v-t='"poll_ranked_choice_form.rank"')
           th.text-right(v-if="col == 'average'" v-t='"poll_ranked_choice_form.mean"')
+          th.text-right(v-if="col == 'votes'" v-t='"poll_common.votes"')
           th.text-right(v-if="col == 'voter_count'" v-t='"membership_card.voters"')
-          th(v-if="col == 'voters'")
+          th.d-none.d-sm-table-cell(v-if="col == 'voters'")
     tbody
       tr(v-for="option, index in poll.results", :key="option.id")
         template(v-for="col in poll.resultColumns")
-          td.pa-0(
+          td.pa-0.d-none.d-sm-table-cell(
             v-if="col == 'chart' && poll.chartType == 'pie' && index == 0"
             style="vertical-align: top"
             :rowspan="poll.results.length"
           )
             pie-icon.ma-2(:slices="slices", :size='128')
-          td.pr-2.py-2(
+          td.pr-2.py-2.d-none.d-sm-table-cell(
             v-if="col == 'chart' && poll.chartType == 'bar'"
             style="width: 128px; min-width: 128px; padding: 0 8px 0 0"
           )
@@ -92,11 +94,11 @@ export default {
           td.text-right(v-if="col == 'target_percent' && option.icon != 'agree'")
           td.text-right(v-if="col == 'rank'") {{option.rank}}
           td.text-right(v-if="col == 'score'") {{option.score}}
-          td.text-right(v-if="col == 'voter_count'") {{option.voter_count}}
+          td.text-right(v-if="col == 'votes' || col == 'voter_count'") {{option.voter_count}}
           td.text-right(v-if="col == 'average'") {{Math.round((option.average + Number.EPSILON) * 100) / 100}}
           td.text-right(v-if="col == 'voter_percent'") {{option.voter_percent.toFixed(0)}}%
-          td.text-right(v-if="col == 'score_percent'") {{option.score_percent.toFixed(0)}}%
-          td.text-right(v-if="col == 'voters'")
+          td.text-right(v-if="col == 'score_percent' || col == 'votes_cast_percent'") {{option.score_percent.toFixed(0)}}%
+          td.text-right.d-none.d-sm-table-cell(v-if="col == 'voters'")
             div.poll-common-chart-table__voter-avatars
               user-avatar.float-left(v-for="id in option.voter_ids", :key="id", :user="users[id]", :size="24" no-link)
 </template>

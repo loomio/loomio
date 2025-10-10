@@ -96,6 +96,7 @@ question:
   chart_type: none
   hide_reason_required: true
   has_options: false
+  allow_quorum: false
   defaults:
     details_format: html
     process_introduction_format: html
@@ -123,6 +124,8 @@ proposal:
   options_have_meaning: true
   has_options: true
   min_options: 1
+  allow_quorum: true
+  allow_vote_share_requirement: true
   common_poll_options:
     - key: agree
       name_i18n: poll_proposal_options.agree
@@ -215,6 +218,7 @@ meeting:
   options_have_meaning: false
   has_options: true
   min_options: 1
+  allow_quorum: false
   defaults:
     details_format: html
     process_introduction_format: html
@@ -242,6 +246,8 @@ poll:
   has_options: true
   min_options: 1
   allow_none_of_the_above: true
+  allow_quorum: true
+  allow_vote_share_requirement: true
   defaults:
     details_format: html
     process_introduction_format: html
@@ -265,6 +271,7 @@ dot_vote:
   options_have_meaning: true
   has_options: true
   min_options: 1
+  allow_quorum: true
   defaults:
     details_format: html
     process_introduction_format: html
@@ -287,6 +294,7 @@ score:
   options_have_meaning: true
   has_options: true
   min_options: 1
+  allow_quorum: true
   defaults:
     details_format: html
     process_introduction_format: html
@@ -311,6 +319,7 @@ ranked_choice:
   has_options: true
   min_options: 2
   allow_none_of_the_above: true
+  allow_quorum: true
   defaults:
     details_format: html
     process_introduction_format: html

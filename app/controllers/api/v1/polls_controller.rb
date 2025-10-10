@@ -1,4 +1,40 @@
 class Api::V1::PollsController < Api::V1::RestfulController
+  def receipts
+    @poll = load_and_authorize(:poll)
+
+    if @poll.closed_at && StanceReceipt.where(poll_id: @poll.id).exists?
+      receipts = StanceReceipt.where(poll_id: @poll.id)
+    else
+      receipts = PollService.build_receipts(@poll).map { |h| StanceReceipt.new(h) }
+    end
+
+    is_admin = @poll.group.present? && @poll.group.admins.include?(current_user)
+    memberships = @poll.group.present? ? @poll.group.memberships.where(user_id: receipts.map(&:voter_id)).index_by(&:user_id) : {}
+    voters = User.where(id: receipts.map(&:voter_id)).index_by(&:id)
+    inviters = User.where(id: receipts.map(&:inviter_id)).index_by(&:id)
+
+    render json: {
+      voters_count: @poll.voters_count,
+      poll_title: @poll.title,
+      receipts: receipts.map do |receipt|
+        voter = voters[receipt.voter_id]
+        inviter = inviters[receipt.inviter_id]
+        membership = memberships[receipt.voter_id]
+        {
+          poll_id: @poll.id,
+          voter_id: receipt.voter_id,
+          voter_name: voter.name,
+          voter_email: is_admin ? voter.email : (voter.email || "").split('@').last,
+          member_since: membership&.accepted_at&.to_date&.iso8601,
+          inviter_id: receipt.inviter_id,
+          inviter_name: inviter.name,
+          invited_on: receipt.invited_at&.to_date&.iso8601,
+          vote_cast: receipt.vote_cast
+        }
+      end.shuffle
+    }, root: false
+  end
+
   def show
     self.resource = load_and_authorize(:poll)
     accept_pending_membership

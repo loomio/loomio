@@ -176,7 +176,7 @@ export default {
                 data: data.intervals.map(interval => (data.outcomes_per_interval[interval] || 0) )
               },
             ]
-          },
+          }
 
           this.models_per_interval = data.intervals.map(interval => {
             return {
@@ -310,8 +310,6 @@ v-main
         v-card-title(v-t="{path: 'report.actions_per_interval', args: {interval: interval}}")
         v-data-table(
           density="compact"
-          disable-pagination
-          hide-default-footer
           :headers="models_per_interval_headers"
           :items="models_per_interval"
         )
@@ -320,8 +318,6 @@ v-main
         v-card-title(v-t="'loomio_tags.tags'")
         v-data-table(
           density="compact"
-          disable-pagination
-          hide-default-footer
           :headers="tags_headers"
           :items="tags_rows"
         )
@@ -330,11 +326,8 @@ v-main
         v-card-title(v-t="'report.actions_per_user'")
         v-data-table(
           density="compact"
-          disable-pagination
-          hide-default-footer
           :headers="per_user_headers"
           :items="per_user_rows"
-          :items-per-page="50"
         )
 
       v-card.mt-8
@@ -342,8 +335,6 @@ v-main
         p.px-4.text-caption(v-t="'report.country_disclaimer'")
         v-data-table(
           density="compact"
-          disable-pagination
-          hide-default-footer
           :headers="users_per_country_headers"
           :items="users_per_country_rows"
         )
@@ -352,18 +343,8 @@ v-main
         v-card-title(v-t="'report.actions_per_country'")
         v-data-table(
           density="compact"
-          disable-pagination
-          hide-default-footer
           :headers="per_country_headers"
           :items="per_country_rows"
         )
 
 </template>
-
-
-<style lang="sass">
-.report-page .v-data-table
-  max-height: 100vh
-  overflow-y: auto
-
-</style>

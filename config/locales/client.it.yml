@@ -9,7 +9,6 @@ it:
     we_use_this_to_help: Le seguenti informazioni vengono utilizzate per configurare il tuo gruppo Loomio e per aiutarci a comprendere un po' la tua organizzazione in modo da poterti supportare meglio.
     how_do_you_intend_to_use_loomio: Come intendi utilizzare Loomio?
     what_decisions_do_you_need_to_make: Quali decisioni devi prendere?
-    newsletter_intro: Desideri iscriverti alla nostra newsletter?
     newsletter_description: Rimani aggiornato sulle nuove funzionalità e sulle storie stimolanti su come Loomio viene utilizzato dalle organizzazioni di tutto il mondo
     subscribe_to_newsletter: Iscriviti alla newsletter di Loomio
     form_incomplete: Compila tutti i campi del modulo per continuare
@@ -21,6 +20,7 @@ it:
     please_enter_a_valid_email_address: Si prega di inserire un indirizzo email valido
     please_accept_the_terms: Si prega di accettare i termini
     how_did_you_hear_about_loomio: Come sei venuto a conoscenza di Loomio?
+    newsletter_intro: Vorresti ricevere informazioni sulle nuove funzionalità, interviste ai clienti, casi di studio e annunci dal team Loomio?
   tasks:
     tasks: Compiti
     your_tasks: I tuoi compiti
@@ -572,6 +572,16 @@ it:
     from_comment: Da un URL di commento
     from_sequence_id: Dall'URL di un elemento del thread
     unread: Nuovo per te
+    jump_to: Vai a
+    timeline: Cronologia
+    top: Superiore
+    bottom: Metter il fondo a
+    start: Inizio
+    latest: Ultimo
+    showing_latest: Visualizzazione delle ultime novità
+    showing_unread: Visualizzazione non letti
+    add_comment: Aggiungi commento
+    start_decision: Inizia la decisione
   search_modal:
     all_content: Tutti i contenuti
     best_match: Migliore abbinamento
@@ -627,6 +637,8 @@ it:
     theme: Tema
     light: Leggero
     dark: Buio
+    light_blue: Azzurro chiaro
+    dark_blue: Blu scuro
   membership_card:
     group_members: Membri del gruppo
     discussion_members: Membri della discussione
@@ -1244,7 +1256,6 @@ it:
     description: Descrizione
     description_placeholder: Descrivi lo scopo del tuo gruppo in modo che gli altri partecipanti sappiano il motivo per cui sono qui.
     new_description_placeholder: Perché stai provando Loomio? Quali decisioni dovete prendere insieme?
-    new_description_html: <h3 id="how-do-you-intend-to-use-loomio">Come intendi utilizzare Loomio?</h3><p></p><h3 id="why-is-this-important-for-your-group"> Perché questo è importante per il tuo gruppo?</h3><p></p><h3 id="what-decisions-do-you-need-to-make"> Quali decisioni devi prendere?</h3><p></p>
     secret_by_default: Il tuo gruppo sarà accessibile solo da coloro che sono invitati a partecipare. Puoi cambiarlo in un secondo momento.
     privacy_statement:
       public_on_web: Nome, descrizione ed allegati al gruppo saranno visibili a tutti
@@ -1311,6 +1322,8 @@ it:
     request_to_join_prompt: Richiesta di partecipazione immediata
     default_request_to_join_prompt: Grazie per il tuo interesse nel nostro gruppo. Presentati e spiega perché stai chiedendo di unirti a noi.
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Aggiorna il tuo abbonamento</a> per creare un sottogruppo'
+    share_this_url_with_people_who_want_to_join: Condividi questo URL con le persone che vogliono unirsi
+    new_description_html: "<h3>Quali sfide deve affrontare la tua organizzazione nel processo decisionale?</h3><p></p><h3> Come vorresti utilizzare Loomio nella tua organizzazione?</h3><p></p>"
   group_export_modal:
     title: Esporta i dati del gruppo
     body: <p>Puoi scaricare una copia dei dati del tuo gruppo in qualsiasi momento. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Scopri di più.</a></p><p> Il completamento richiede alcuni minuti, a seconda delle dimensioni del gruppo. Quando sarà pronto riceverai un'e-mail con un link per scaricare il file.</p>
@@ -1508,7 +1521,6 @@ it:
     email_newsletter: Loomio Newsletter
     email_newsletter_description: Ricevi aggiornamenti di nuove funzioni, di trainings, eventi nella tua città e sul futuro di Loomio. Di solito due o tre email all'anno.
     email_catch_up_day: Email di riepilogo recupero
-    daily_summary_description: Scegli quando ricevere l'e-mail di riepilogo del recupero. Questa email contiene tutte le nuove attività che non hai visto. Un buon modo per rimanere aggiornati se non sei un utente abituale.
     on_participation_label: Notifica per participazione
     on_participation_description: Quando partecipi ad una discussione, tutte le successive attività ti verranno notificate via email immediatamente.
     announcement_label: Annunci
@@ -1525,6 +1537,7 @@ it:
       updated: Impostazioni della posta elettronica aggiornate.
     learn_more: Impara di più sulle impostazioni email...
     mentioned_description: Quando qualcuno {'@'} ti menziona in un commento, riceverai un'email di notifica
+    daily_summary_description: Scegli quando ricevere l'email di riepilogo. Questa email contiene tutte le nuove attività che non hai ancora visto. Un buon modo per rimanere aggiornato se non sei un utente abituale.
   thread_preview:
     replies_count: "%{count} repliche"
     unread_count: "%{count} non letti"
@@ -1768,6 +1781,22 @@ it:
     thumb_down: Pollice in giù
     thumb_sideways: Pollice di lato
     hand_up: Alza la mano
+    of: Di
+    at_least: Almeno
+    no_more_than: Non più di
+    votes_cast: Voti espressi
+    eligible_voters: Elettori aventi diritto
+    gte_score_percent: Richiede almeno il %{percent}% dei voti espressi
+    gte_voter_percent: Richiede almeno il %{percent}% degli elettori aventi diritto
+    lte_score_percent: Non deve superare il %{percent}% dei voti espressi
+    lte_voter_percent: Non deve superare il %{percent}% degli elettori aventi diritto
+    name_gte_score_percent: "%{name} necessita di almeno il %{percent}% dei voti espressi"
+    name_gte_voter_percent: "%{name} ha bisogno di almeno il %{percent}% degli elettori aventi diritto"
+    name_lte_score_percent: "%{name} non deve superare il %{percent}% dei voti espressi"
+    name_lte_voter_percent: "%{name} non deve superare il %{percent}% degli elettori aventi diritto"
+    vote_share_requirement: Requisito di quota di voto
+    for_the_proposal_to_pass: Affinché la proposta venga approvata, questa opzione deve ricevere…
+    for_the_poll_to_be_valid: Affinché %{poll_type} sia valido, questa opzione deve ricevere...
   poll_common:
     superseded: Sostituito
     outdated: Obsoleto
@@ -1857,6 +1886,8 @@ it:
     edit_warning: La modifica è consigliata solo per modifiche minori o per correggere errori di ortografia. Per modifiche significative, chiudi questo %{pollType} e iniziane uno nuovo.
     no_voting: Solo per discussione, voto disabilitato
     post_outcome: Post risultato
+    view_all_votes: Visualizza tutti i voti
+    you_voted: Hai votato
   poll_common_attachment_form:
     label: Allegati
   poll_common_add_option:
@@ -1957,6 +1988,8 @@ it:
     unable_to_vote: Non sei stato invitato a votare in questo %{poll_type}.
     draft_mode: Voto disattivato. Questo non è ancora aperto per il voto.
     voting_disabled_poll_is_template: Voto disattivato. Questo è un modello.
+    for_this_proposal_to_pass: 'Per far passare questa proposta:'
+    for_this_poll_type_to_be_valid: 'Affinché questo %{poll_type} sia valido:'
   poll_common_collapsed:
     by_who: di %{name}
   poll_common_calendar_invite:
@@ -1971,48 +2004,6 @@ it:
     event_description_placeholder: Qual'è l'ordine del giorno di questo incontro?
     location: Luogo
     location_placeholder: Dove si terrà questo incontro?
-  poll_common_settings:
-    who_can_vote: Chi può votare?
-    short_reason_can_be_helpful: Mantenere brevi i motivi del voto li rende più facili da capire. Una raccolta di ragioni concise è una grande risorsa per prendere una decisione.
-    specified_voters_only_true: Solo le persone invitate
-    specified_voters_only_false_group: Chiunque nel gruppo
-    specified_voters_only_false_discussion: Chiunque nella discussione
-    invite_people_next: Puoi scegliere chi è unvitato a votare dopo aver avviato il %{poll_type}
-    shuffle_options:
-      shuffle_options: Mischia le opzioni
-      title: Mostra le opzioni in ordine casuale
-      helptext: Un'opzione che è la prima nell'elenco può darle un pregiudizio. Usa questa impostazione per contrastare quell'effetto.
-    multiple_choice:
-      title: Scelta multipla
-      helptext_on: Quando selezionato, i partecipanti potranno selezionare opzioni multiple.
-    anyone_can_participate:
-      title: Chiunque con un link può partecipare
-      helptext_on: Quando selezionato, chiunque abbia il link al sondaggio potrà partecipare.
-    notify_on_closing_soon:
-      voting_closes_too_soon: Poiché la votazione si chiude entro 24 ore, non verranno inviati promemoria di chiusura anticipata.
-      closes_too_soon: Poiché questo %{pollType} chiude entro 24 ore, non verrà inviato alcun promemoria di chiusura imminente.
-      title: 24 ore prima che chiuda %{pollType} , manda un sollecito a
-      voting_title: 24 ore prima della chiusura delle votazioni, inviare un promemoria a
-      nobody: Nessuno
-      author: Autore (me)
-      undecided_voters: Elettore indecisi
-      voters: Tutti i votanti
-    notify_on_participate:
-      title: Inviami notifica quando le persone partecipano
-      helptext_on: Quando selezionato, verrai notificato quando qualcuno partecipa.
-    anonymous:
-      title: Votanti anonimi
-      helptext_on: Quando selezionato, le informazioni sui partecipanti non saranno mostrate con ogni risposta.
-    voter_can_add_options:
-      title: I votanti possono aggiungere opzioni alternative
-    can_respond_maybe:
-      title: I votanti possono rispondere 'solo se necessario'
-    allow_long_reason:
-      title: Permetti il 'commento' al voto più lungo di 500 caratteri
-    hide_results_until_closed:
-      title: Nascondi i risultati fino alla chiusura
-      helptext_on: Non mostrare come le persone hanno votato fino alla chiusura
-    show_none_of_the_above: Includere un'opzione "Nessuna delle precedenti"
   poll_common_close_form:
     title: Chiudi %{poll_type} ora?
     helptext: Sei sicuro che vuoi chiudere questa vorazione %{poll_type} in anticipo e condividere il risultato?
@@ -2071,7 +2062,6 @@ it:
     enter_an_outcome: Inserisci un risultato
   poll_common_outcome_form:
     review_due_in_days: Rivedere la decisione dopo quanti giorni?
-    review_due_in_days_hint: Un periodo di tempo (in giorni) da attendere prima di rivedere la decisione. (opzionale)
     review_date: Data della recensione
     review_date_hint: Fissa una data per rivedere la decisione (facoltativo)
     who_to_notify: Chi vuoi avvertire riguardo questo risultato? (opzionale)
@@ -2081,109 +2071,17 @@ it:
     outcome_created: Risultato creato
     outcome_updated: Risultato aggiornato
     statement_placeholder: Sommarizza le risposte ed informa cosa succederà dopo.
-    statement_template_placeholder: Fornire un modello per scrivere l'esito della decisione. (opzionale)
     you_will_be_notified: Riceverai una notifica alla data della revisione.
     submit: Condividi risultati
+    review_due_in_days_hint: Numero di giorni di attesa prima di rivedere la decisione (facoltativo).
+    statement_template_hint: Fornire un modello per scrivere l'esito della decisione. (facoltativo)
+    statement_template_placeholder: Grazie per aver partecipato! Abbiamo raggiunto il quorum e abbiamo il supporto per procedere.
   poll_common_outcome_panel:
     authored_by: Di %{name}
   poll_common_delete_modal:
     question: Sei sicuro che vuoi cancellarlo?
     title: Cancella %{pollType}
     success: Eliminato con successo
-  poll_common_form:
-    notify_everyone_when_poll_starts: Avvisa tutti quando inizia %{poll_type}
-    option_has_votes_confirm_delete: Alcune persone hanno votato per questa opzione, sei sicuro di volerla eliminare?
-    example_title: Titolo di esempio
-    example_title_hint: Fai un esempio di un buon titolo di proposta
-    example_details_placeholder: Fornisci un punto di partenza per una proposta o un sondaggio. Le domande possono essere suggerimenti utili per convincere le persone a scrivere. Includere eventuali regole o promemoria che i partecipanti dovranno conoscere.
-    confirm_delete: Sei sicuro di voler eliminare questo modello di sondaggio? Questo non può essere annullato.
-    show_advanced_settings: mostra impostazioni avanzate
-    hide_advanced_settings: Nascondi le impostazioni avanzate
-    choose_at_least: Scegli almeno
-    choose_at_most: Scegli al massimo
-    please_review_the_form: Si prega di rivedere il modulo
-    option_added_please_add_details: Opzione aggiunta! Si prega di aggiungere alcuni dettagli in modo che le persone sappiano cosa significa.
-    default_duration_in_days: Durata prestabilita in giorni
-    default_duration_in_days_hint: Quanti giorni devono essere concessi alle persone per votare?
-    how_many_options_can_a_voter_choose: Quante di queste opzioni può scegliere un votante?
-    minimum_choices: Minimo delle scelte
-    maximum_choices: Massimo delle scelte
-    content: Contenuto
-    reminder: Promemoria
-    your_in_zone: 'Fuso orario attuale: %{zone}'
-    show_other_zones: Mostra altri fusi orari
-    hide_other_zones: Nascondi altri fusi orari
-    this_is_a_template_for_new_polls: Questo è un modello per i nuovi sondaggi
-    voting_method: Metodo di voto
-    voting_methods:
-      question: Giro di domande
-      question_hint: Invita domande e commenti sulla tua proposta
-      show_thumbs: Mostra dei pollici
-      show_thumbs_hint: Gli elettori scelgono pollice su, giù, di lato o mano alzata
-      choose: Scegliere
-      simple_poll: Sondaggio semplice
-      choose_hint: I votanti scelgono l'opzione migliore (o le opzioni)
-      score: Punteggio
-      score_hint: I votanti assegnano un punteggio a ogni opzione
-      allocate: Assegnare
-      allocate_hint: I votanti assegnano un certo numero di punti fra le opzioni
-      ranked_choice: Scelta di preferenze
-      ranked_choice_hint: I votanti sistemano le opzioni in ordine dalla maggiormente preferita a quella meno preferita
-      time_poll: Sondaggio appuntamento
-      time_poll_hint: I votanti indicano quando sono disponibili a incontrarsi
-    process: Processo
-    process_name: Titolo del modello
-    process_name_hint: Come si chiama questo modello? Ad esempio consiglio di ruolo, controllo della temperatura, approvazione dei verbali
-    process_subtitle: Sottotitolo del modello
-    process_subtitle_hint: Una descrizione di una riga di quando o perché utilizzare questo modello
-    process_introduction: Aiuto modello
-    process_introduction_hint: Alcuni paragrafi che spiegano come utilizzare il modello. Includere collegamenti a risorse che potrebbero essere utili.
-    you_can_set_a_prompt_per_option: Modifica la richiesta per ciascuna opzione dalla scheda dei dettagli
-    chart_type: Tipo di grafico
-    title: Titolo
-    title_hint: Qual è la decisione che devi prendere?
-    no_options_add_some: Questo sondaggio non ha opzioni, aggiungine alcune qui sotto.
-    details: Dettagli
-    example_details: Dettagli di esempio
-    details_placeholder: Questa è la tua occasione per spiegare su cosa votano le persone
-    options: Opzioni
-    options_placeholder: Elenca le opzioni disponibili
-    no_options: Non hai ancora aggiunto nessuna opzione.
-    closing: Termina
-    closed: Chiuso
-    start: Avvio
-    start_poll: Lancia sondaggio
-    stance_reason_required_label: Fornire una motivazione quando si vota è...
-    stance_reason_required: Richiesto
-    stance_reason_optional: Opzionale
-    stance_reason_disabled: Disabilitato
-    stance_reason_is_required: Per favore fornisci una motivazione con il tuo voto
-    limit_reason_length: Limita la motivazione a un massimo di 500 caratteri
-    save_poll: Salva la votazione
-    start_poll_type: Inizia %{poll_type}
-    share_poll_type: Condividi %{poll_type}
-    who_may_vote: Chi può votare in questa %{poll_type}?
-    update: Aggiorna
-    add_voters: Aggiungi votanti
-    notify_invitees: Invia le notifiche
-    no_notifications_warning: Gli elettori non saranno avvisati. Questo è utile se stai eseguendo molti sondaggi e prevedi di avvisare tutti in seguito.
-    count_voters_added: "%{count} votanti aggiunti"
-    poll_type_created: "%{poll_type} creato"
-    poll_type_started: "%{poll_type} avviato"
-    poll_type_updated: "%{poll_type} aggiornato"
-    reason_prompt: Richiesta di motivazione
-    anonymous_voting: Votazione anonima
-    anonymous_voting_description: Se abilitato, l'identità dei votanti non sarà associata ai loro voti. Questo non può essere rimosso.
-    votes_are_anonymous: I voti sono anonimi
-    vote_reason: Motivazione del voto
-    vote_reason_description: Può essere utile capire perché le persone hanno votato in quel modo. Con questa impostazione, puoi invitare le persone a condividere i loro pensieri quando votano.
-    hide_results_description: Se vuoi che le persone votino senza sapere come hanno votato gli altri, puoi nascondere i risultati del sondaggio.
-    process_helptext: Assegna un nome e descrivi il processo utilizzato per eseguire questo sondaggio.
-    reminder_helptext: Invia una notifica "Chiusura a breve" prima della chiusura del sondaggio. Questa può essere un'opportunità per le persone di vedere come hanno votato gli altri e riconsiderare il proprio voto, o semplicemente un modo per aumentare la partecipazione al sondaggio.
-    deadline: Scadenza
-    how_much_time_to_vote: Quanto tempo concederai alle persone per votare?
-    advanced_settings: Impostazioni avanzate
-    none_of_the_above: Nessuna delle precedenti
   poll_proposal_form:
     start_header: Lancia proposta
     edit_header: Aggiorna proposta
@@ -2242,9 +2140,10 @@ it:
     points: Punti
     average: Media
     mean: Significare
-    pct_of_points: "% dei punti"
-    pct_of_voters: "% dei votanti"
     percent: Percentuale
+    pct_of_points: "% di punti"
+    pct_of_votes_cast: "% dei voti espressi"
+    pct_of_voters: "% degli aventi diritto al voto"
   poll_meeting_time_field:
     add_time_slot: Aggiungi un periodo di tempo
     new_time_slot: Nuovo periodo di tempo
@@ -2283,6 +2182,11 @@ it:
   poll_common_percent_voted:
     sentence: "%{numerator} su %{denominator} persone hanno votato (%{percent}%)"
     target_progress: "%{percent}% del target raggiunto. (%{num} / %{target})"
+    pct_of_eligible_voters_must_participate: "%{pct}% degli elettori aventi diritto deve partecipare"
+    pct_participation: "%{num} di %{total} voti espressi (%{pct}% di partecipazione)"
+    vote_short_of_quorum: Manca ancora 1 voto per raggiungere il quorum del %{pct}%
+    votes_short_of_quorum: Sono necessari altri %{num} voti per raggiungere il quorum del %{pct}%
+    quorum_reached: È stato raggiunto il quorum del %{pct}%
   poll_meeting_chart_panel:
     total: Totale
   poll_remove_vote:
@@ -2338,6 +2242,7 @@ it:
     stance_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha votato su: <strong>%{title}</strong>"
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> hanno aggiornato il loro voto su: <strong>%{title}</strong>"
     event_removed: Rimosso dalla discussione
+    new: nuovo
   add_poll_to_thread_modal:
     success: Successo, %{pollType} aggiunto alla discussione!
   auth_form:
@@ -2566,3 +2471,157 @@ it:
         submit: Visualizza la proposta
         cancel: Fallo più tardi
     get_started_here: Inizia qui
+  poll_common_settings:
+    who_can_vote: Chi può votare?
+    specified_voters_only_true: Solo persone invitate
+    specified_voters_only_false_group: Qualcuno nel gruppo
+    specified_voters_only_false_discussion: Qualcuno nel thread
+    invite_people_next: Puoi scegliere chi è invitato a votare dopo aver avviato il %{poll_type}
+    show_none_of_the_above: Includi un'opzione "Nessuna delle precedenti"
+    show_options_in_random_order: Mostra le opzioni in ordine casuale
+    reduce_bias_by_showing_options_in_random_order: Riduci i pregiudizi mostrando le opzioni in ordine casuale.
+    multiple_choice:
+      title: Scelta multipla
+      helptext_on: Una volta selezionata, i partecipanti potranno selezionare più opzioni.
+    anyone_can_participate:
+      title: Chiunque abbia il link può partecipare
+      helptext_on: Una volta selezionato, chiunque abbia il link al sondaggio può partecipare.
+    notify_on_closing_soon:
+      voting_closes_too_soon: Poiché le votazioni si chiudono entro 24 ore, non verranno inviati promemoria di chiusura imminente.
+      closes_too_soon: Poiché questo %{pollType} si chiude entro 24 ore, non verranno inviati promemoria di chiusura imminente.
+      title: 24 ore prima della chiusura di %{pollType}, invia un promemoria a
+      voting_title: 24 ore prima della chiusura delle votazioni, invia un promemoria a
+      nobody: Nessuno
+      author: Autore (io)
+      undecided_voters: elettori indecisi
+      voters: Tutti gli elettori
+    notify_on_participate:
+      title: Avvisami quando le persone partecipano
+      helptext_on: Una volta selezionato, verrai avvisato ogni volta che qualcuno partecipa.
+    anonymous:
+      title: Elettori anonimi
+      helptext_on: Se selezionata, le informazioni sui partecipanti non verranno visualizzate con ogni risposta.
+    voter_can_add_options:
+      title: Gli elettori possono aggiungere opzioni alternative
+    can_respond_maybe:
+      title: Gli elettori possono rispondere "se necessario"
+    allow_long_reason:
+      title: Consenti che il "motivo" del voto sia più lungo di 500 caratteri
+    hide_results_until_closed:
+      title: Nascondi i risultati fino alla chiusura
+      helptext_on: Non mostrare come hanno votato le persone finché il sondaggio non è chiuso
+    short_reason_can_be_helpful: Le motivazioni di voto brevi sono più facili da comprendere. Una raccolta di motivazioni concise è un'ottima risorsa per prendere una decisione.
+    shuffle_options: Opzioni di riproduzione casuale
+  poll_common_form:
+    quorum: Quorum
+    participation_quorum: Quorum di partecipazione
+    quorum_hint: Quale percentuale di elettori deve partecipare affinché il risultato sia valido? Facoltativo, lasciare vuoto se non si raggiunge il quorum.
+    quorum_placeholder: Lascia vuoto o inserisci un numero compreso tra 0 e 100
+    deadline: Scadenza
+    notify_everyone_when_poll_starts: Avvisa tutti quando inizia %{poll_type}
+    option_has_votes_confirm_delete: Alcune persone hanno votato per questa opzione. Sei sicuro di volerla eliminare?
+    example_title: Titolo di esempio
+    example_title_hint: Fornisci un esempio di un buon titolo di proposta
+    example_details_placeholder: Fornisci un punto di partenza per una proposta o un sondaggio. Le domande possono essere utili spunti per stimolare la scrittura. Includi eventuali regole o promemoria che i partecipanti dovranno conoscere.
+    confirm_delete: Vuoi davvero eliminare questo modello di sondaggio? L'operazione non può essere annullata.
+    advanced_settings: Impostazioni avanzate
+    show_advanced_settings: Mostra impostazioni avanzate
+    hide_advanced_settings: Nascondi impostazioni avanzate
+    choose_at_least: Scegli almeno
+    choose_at_most: Scegli al massimo
+    please_review_the_form: Si prega di rivedere il modulo
+    option_added_please_add_details: Opzione aggiunta! Aggiungete qualche dettaglio in modo che tutti sappiano cosa significa.
+    default_duration_in_days: Durata predefinita in giorni
+    how_many_options_can_a_voter_choose: Quante opzioni può scegliere un elettore?
+    minimum_choices: Scelte minime
+    maximum_choices: Massima scelta
+    content: Contenuto
+    reminder: Promemoria
+    reminder_notification: Notifica di promemoria
+    your_in_zone: 'Fuso orario attuale: %{zone}'
+    show_other_zones: Mostra altri fusi orari
+    hide_other_zones: Nascondi altri fusi orari
+    this_is_a_template_for_new_polls: Questo è un modello per i nuovi sondaggi
+    voting_method: Metodo di voto
+    none_of_the_above: Nessuna delle precedenti
+    voting_methods:
+      question: Round di domande
+      question_hint: Invita domande e commenti sulla tua proposta
+      show_thumbs: Alzata di pollici
+      show_thumbs_hint: Gli elettori scelgono il pollice in su, in giù, di lato o la mano alzata
+      choose: Scegliere
+      simple_poll: Sondaggio semplice
+      choose_hint: Gli elettori scelgono l'opzione (o le opzioni) migliore
+      score: Punto
+      score_hint: Gli elettori assegnano un punteggio a ciascuna opzione
+      allocate: Assegnare
+      allocate_hint: Gli elettori assegnano un budget di punti tra le opzioni
+      ranked_choice: Scelta classificata
+      ranked_choice_hint: Gli elettori dispongono le opzioni in ordine dalla più alla meno preferita
+      time_poll: Sondaggio temporale
+      time_poll_hint: Gli elettori indicano quando sono disponibili per l'incontro
+    process: Processo
+    process_name: Titolo del modello
+    process_name_hint: 'Come si chiama questo modello? Ad esempio: Consulenza sul ruolo, Controllo della temperatura, Approvazione dei verbali'
+    process_subtitle: Sottotitolo del modello
+    process_subtitle_hint: Una descrizione di una riga su quando o perché utilizzare questo modello
+    process_introduction: Aiuto modello
+    process_introduction_hint: Alcuni paragrafi che spiegano come utilizzare il modello. Includere link a risorse che potrebbero essere utili.
+    you_can_set_a_prompt_per_option: Modifica il prompt per ogni opzione dalla scheda dettagli
+    chart_type: Tipo di grafico
+    title: Titolo
+    title_hint: Quale decisione devi prendere?
+    no_options_add_some: Questo sondaggio non ha opzioni, aggiungine alcune qui sotto.
+    details: Dettagli
+    example_details: Dettagli dell'esempio
+    details_placeholder: Questa è la tua opportunità per spiegare su cosa votano le persone
+    options: Opzioni
+    options_placeholder: Elenca le opzioni disponibili
+    no_options: Non hai ancora aggiunto alcuna opzione.
+    closing: Chiusura
+    closed: Chiuso
+    start: Inizio
+    start_poll: Avvia sondaggio
+    stance_reason_required_label: Fornire una motivazione quando si vota è ...
+    stance_reason_required: Necessario
+    stance_reason_optional: Opzionale
+    stance_reason_disabled: Disabili
+    stance_reason_is_required: Si prega di fornire una motivazione per il voto
+    limit_reason_length: Limita il motivo a un massimo di 500 caratteri
+    save_poll: Salva il sondaggio
+    start_poll_type: Avvia %{poll_type}
+    share_poll_type: Condividi %{poll_type}
+    who_may_vote: Chi può votare in questo %{poll_type}?
+    update: Aggiornamento
+    add_voters: Aggiungi elettori
+    notify_invitees: Invia notifiche
+    no_notifications_warning: Gli elettori non riceveranno alcuna notifica. Questa opzione è utile se si stanno conducendo molti sondaggi e si prevede di avvisare tutti in seguito.
+    count_voters_added: "%{count} elettori aggiunti"
+    poll_type_created: "%{poll_type} creato"
+    poll_type_started: "%{poll_type} avviato"
+    poll_type_updated: "%{poll_type} aggiornato"
+    reason_prompt: Motivo del prompt
+    each_option_has_own_reason_prompt: Ogni opzione ha una propria motivazione. Modifica un'opzione per visualizzarne o cambiarne la motivazione.
+    anonymous_voting: Votazione anonima
+    votes_are_anonymous: I voti sono anonimi
+    vote_reason: Motivo del voto
+    quorum_tip_vote_share_requirement: 'Suggerimento: puoi anche specificare il livello di consenso richiesto affinché una proposta venga approvata. Modifica un''opzione per definire il requisito di condivisione dei voti.'
+    how_much_time_to_vote: Quanto tempo darai alle persone per votare?
+    default_duration_in_days_hint: Quanti giorni avranno le persone per votare?
+    define_minimum_and_maxmimum_score: Definisci i punteggi minimi e massimi che un elettore può dare a un'opzione
+    how_many_points_does_each_voter_have_to_allocate: Quanti punti deve assegnare ogni elettore?
+    anonymous_voting_description: Mostra i voti e le motivazioni, ma non chi li ha espressi. Questa impostazione non può essere modificata dopo l'avvio di %{poll_type}.
+    vote_reason_description: Chiedete alle persone di condividere le loro motivazioni quando votano o di fornire ulteriori informazioni.
+    hide_results_description: Se vuoi che le persone votino senza vedere come hanno votato gli altri, puoi nascondere i risultati.
+    process_helptext: Indica e descrivi il processo utilizzato per eseguire questo sondaggio.
+    reminder_helptext: Invia una notifica "Chiusura imminente" 24 ore prima della scadenza. Questo può aumentare la partecipazione e offrire alle persone l'opportunità di riconsiderare la propria posizione.
+  poll_receipts_page:
+    verify_participants: Verifica i partecipanti
+    see_votes_if_quorum_reached: Se la votazione è chiusa e il quorum è stato raggiunto, vedrai chi ha espresso il voto.
+    voter_name: Nome dell'elettore
+    voter_email: E-mail dell'elettore
+    vote_cast: Voto espresso
+    member_since: Membro dal
+    invited_by: Invitato da
+    invited_on: Invitato il
+    no_receipts: Questo sondaggio anonimo è stato chiuso prima che la funzione di verifica esistesse, quindi la verifica non è possibile.

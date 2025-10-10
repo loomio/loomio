@@ -1,44 +1,7 @@
-AllCops:
-  Exclude:
-    - "db/**/*"
-    - "config/**/*"
-    - "script/**/*"
-    - "bin/*"
+# Omakase Ruby styling for Rails
+inherit_gem: { rubocop-rails-omakase: rubocop.yml }
 
-Metrics/LineLength:
-  Max: 140
-
-Metrics/MethodLength:
-  Enabled: false
-
-Metrics/ClassLength:
-  Enabled: false
-
-Metrics/BlockLength:
-  Enabled: false
-
-Metrics/AbcSize:
-  Enabled: false
-
-Metrics/CyclomaticComplexity:
-  Enabled: false
-
-Lint/MissingSuper:
-  Exclude:
-    - "app/services/**/*"
-    - "app/views/**/*"
-
-Style/ClassAndModuleChildren:
-  Enabled: false
-
-Style/Documentation:
-  Enabled: false
-
-Style/EmptyMethod:
-  Enabled: false
-
-Style/FrozenStringLiteralComment:
-  Enabled: false
+# Overwrite or add rules to create your own house style
 
 Style/StringLiterals:
   Enabled: false

@@ -9,7 +9,6 @@ ca:
     we_use_this_to_help: Aquesta informació següent s'utilitza per configurar el vostre grup Loomio i per ajudar-nos a entendre una mica la vostra organització perquè puguem donar-vos millor suport.
     how_do_you_intend_to_use_loomio: Com penseu utilitzar Loomio?
     what_decisions_do_you_need_to_make: Quines decisions has de prendre?
-    newsletter_intro: T'agradaria subscriure't al nostre butlletí?
     newsletter_description: Manteniu-vos al dia sobre noves funcions i històries inspiradores sobre com utilitzen Loomio les organitzacions d'arreu del món
     subscribe_to_newsletter: Subscriu-te al butlletí de Loomio
     form_incomplete: Si us plau, omple tots els camps del formulari per continuar
@@ -21,6 +20,7 @@ ca:
     please_enter_a_valid_email_address: siusplau, introdueixi una adreça de correu electrònic vàlida
     please_accept_the_terms: Accepteu els termes
     how_did_you_hear_about_loomio: Com vas saber parlar de Loomio?
+    newsletter_intro: T'agradaria saber sobre noves funcions, entrevistes amb clients, casos d'estudi i anuncis de l'equip de Loomio?
   tasks:
     tasks: Tasques
     your_tasks: Les teves tasques
@@ -564,6 +564,16 @@ ca:
     from_comment: Des de l'url d'un comentari
     from_sequence_id: Des de l'url d'un element del fil
     unread: Nou
+    jump_to: Salta a
+    timeline: Cronologia
+    top: Superior
+    bottom: Part inferior
+    start: Inici
+    latest: Últim
+    showing_latest: Mostrant les últimes novetats
+    showing_unread: Mostrant no llegits
+    add_comment: Afegeix un comentari
+    start_decision: Decisió inicial
   search_modal:
     all_content: Tot el contingut
     best_match: Millor coincidència
@@ -619,6 +629,8 @@ ca:
     theme: Tema
     light: Llum
     dark: Fosc
+    light_blue: Blau clar
+    dark_blue: Blau fosc
   membership_card:
     group_members: Membres del grup
     discussion_members: Membres del fil
@@ -1224,7 +1236,6 @@ ca:
     description: Descripció
     description_placeholder: Descriviu el propòsit del grup per tal de que els membres el puguin conèixer.
     new_description_placeholder: Per què estàs provant Loomio? Quines decisions heu de prendre junts?
-    new_description_html: <h3 id="how-do-you-intend-to-use-loomio">Com penseu utilitzar Loomio?</h3><p></p><h3 id="why-is-this-important-for-your-group"> Per què és important per al vostre grup?</h3><p></p><h3 id="what-decisions-do-you-need-to-make"> Quines decisions has de prendre?</h3><p></p>
     secret_by_default: Només podran accedir al vostre grup aquells que estiguin convidats a unir-se. Podeu canviar-ho més endavant.
     privacy_statement:
       public_on_web: Nom, descripció i adjunts al context del grup seran visibles al públic.
@@ -1291,6 +1302,8 @@ ca:
     request_to_join_prompt: Sol·licitud per unir-se
     default_request_to_join_prompt: Gràcies pel vostre interès en el nostre grup. Si us plau, presenteu-vos i expliqueu per què demaneu unir-vos.
     upgrade_for_subgroups: 'Si us plau, <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">actualitza la teva subscripció</a> per crear un subgrup'
+    share_this_url_with_people_who_want_to_join: Comparteix aquesta URL amb les persones que vulguin unir-s'hi
+    new_description_html: "<h3>Quins reptes afronta la vostra organització a l'hora de prendre decisions?</h3><p></p><h3> Com t'agradaria utilitzar Loomio a la teva organització?</h3><p></p>"
   group_export_modal:
     title: Exporta dades del grup
     body: |
@@ -1496,7 +1509,6 @@ ca:
     email_newsletter: Butlletí de Loomio
     email_newsletter_description: Rebeu actualitzacions sobre noves característiques, formació, esdeveniments a la vostra ciutat i el futur de Loomio. Normalment 2 o 3 correus electrònics a l'any.
     email_catch_up_day: Correu electrònic de resum de posada al dia
-    daily_summary_description: Trieu quan voleu rebre el correu electrònic de resum de recuperació. Aquest correu electrònic conté qualsevol activitat nova que no hàgiu vist. Una bona manera d'estar al dia si no sou un usuari habitual.
     on_participation_label: Subscriure sota participació
     on_participation_description: Quan participeu en un fil, se us començaran a enviar correus electrònics sobre la seva activitat.
     announcement_label: Avisos
@@ -1513,6 +1525,7 @@ ca:
       updated: Configuració del correu electrònic actualitzada
     learn_more: Més informació sobre la configuració del correu electrònic...
     mentioned_description: Quan algú et mencioni {'@'} en un comentari, rebràs una notificació per correu electrònic.
+    daily_summary_description: Trieu quan voleu rebre el correu electrònic de resum de posada al dia. Aquest correu electrònic conté qualsevol activitat nova que no hàgiu vist. Una bona manera de mantenir-vos al dia si no sou un usuari habitual.
   thread_preview:
     replies_count: "%{count} respostes"
     unread_count: "%{count} sense llegir"
@@ -1763,6 +1776,22 @@ ca:
     thumb_down: Polze cap avall
     thumb_sideways: Polze de costat
     hand_up: Mà amunt
+    of: de
+    at_least: Almenys
+    no_more_than: No més de
+    votes_cast: Vots emesos
+    eligible_voters: Votants amb dret a vot
+    gte_score_percent: Necessita com a mínim el %{percent}% dels vots emesos
+    gte_voter_percent: Necessita com a mínim el %{percent}% dels votants amb dret a vot
+    lte_score_percent: No ha de superar el %{percent}% dels vots emesos
+    lte_voter_percent: No ha de superar el %{percent}% dels votants amb dret a vot
+    name_gte_score_percent: "%{name} necessita com a mínim un %{percent}% dels vots emesos"
+    name_gte_voter_percent: "%{name} necessita com a mínim un %{percent}% dels votants amb dret a vot"
+    name_lte_score_percent: "%{name} no pot superar el %{percent}% dels vots emesos"
+    name_lte_voter_percent: "%{name} no pot superar el %{percent}% dels votants amb dret a vot"
+    vote_share_requirement: Requisit de quota de vot
+    for_the_proposal_to_pass: Perquè la proposta sigui aprovada, aquesta opció ha de rebre...
+    for_the_poll_to_be_valid: Perquè %{poll_type} sigui vàlid, aquesta opció ha de rebre…
   poll_common:
     superseded: Substituït
     outdated: Antiquat
@@ -1852,6 +1881,8 @@ ca:
     edit_warning: Només es recomana editar en cas d'haver de fer petits canvis o corregir errors tipogràfics. Per canvis més significatius, tanqueu aquesta %{pollType} i obriu-ne una de nova.
     no_voting: Només per debatre, la votació està desactivada
     post_outcome: Resultat de la publicació
+    view_all_votes: Veure tots els vots
+    you_voted: Vas votar
   poll_common_attachment_form:
     label: Adjunts
   poll_common_add_option:
@@ -1954,6 +1985,8 @@ ca:
     unable_to_vote: No heu estat convidat a votar en aquesta %{poll_type}.
     draft_mode: Votació desactivada. Això encara no està obert a la votació.
     voting_disabled_poll_is_template: Votació desactivada. Aquesta és una plantilla.
+    for_this_proposal_to_pass: 'Perquè aquesta proposta s''aprovi:'
+    for_this_poll_type_to_be_valid: 'Perquè aquest %{poll_type} sigui vàlid:'
   poll_common_collapsed:
     by_who: per %{name}
   poll_common_calendar_invite:
@@ -1968,48 +2001,6 @@ ca:
     event_description_placeholder: Quina és l'ordre del dia per aquesta reunió?
     location: Ubicació
     location_placeholder: On tindrà lloc aquesta reunió?
-  poll_common_settings:
-    who_can_vote: Qui pot votar?
-    short_reason_can_be_helpful: Mantenir breus els motius del vot els fa més fàcils d'entendre. Una col·lecció de raons concises és un gran recurs per prendre una decisió.
-    specified_voters_only_true: Només usuaris convidats
-    specified_voters_only_false_group: Qualsevol usuari del grup
-    specified_voters_only_false_discussion: Qualsevol usuari en aquest fil
-    invite_people_next: Podeu escollir qui està convidat a votar un cop comenceu la %{poll_type}
-    shuffle_options:
-      shuffle_options: Barreja opcions
-      title: Mostra les opcions en ordre aleatori
-      helptext: Una opció que és la primera a la llista pot donar-li un biaix. Utilitzeu aquesta configuració per contrarestar aquest efecte.
-    multiple_choice:
-      title: Opció múltiple
-      helptext_on: En seleccionar aquesta opció, els participants podran escollir múltiples opcions
-    anyone_can_participate:
-      title: Tothom que tingui l'enllaç pot participar
-      helptext_on: En seleccionar aquesta opció, tothom que tingui un enllaç de l'enquesta podrà participar-hi.
-    notify_on_closing_soon:
-      voting_closes_too_soon: Com que la votació es tanca en 24 hores, no s'enviaran recordatoris de tancament aviat.
-      closes_too_soon: Com que aquesta %{pollType} es tanca en 24 hores, no s'enviaran recordatoris de "tanca aviat".
-      title: '24 hores abans de que %{pollType} es tanqui, envia un recordatori a '
-      voting_title: 24 hores abans del tancament de la votació, envieu un recordatori a
-      nobody: Ningú
-      author: L'autor (jo)
-      undecided_voters: Votants indecisos
-      voters: Tots els votants
-    notify_on_participate:
-      title: Notifica'm quan participin usuaris
-      helptext_on: En seleccionar aquesta opció, rebreu notificacions cada vegada que algú participi.
-    anonymous:
-      title: Votants anònims
-      helptext_on: En seleccionar aquesta opció, la informació del participant no es mostrarà quan respongui.
-    voter_can_add_options:
-      title: Els votants poden afegir opcions alternatives
-    can_respond_maybe:
-      title: Els votants poden respondre amb "si és necessari"
-    allow_long_reason:
-      title: Permet que el "motiu" del vot tingui més de 500 caràcters
-    hide_results_until_closed:
-      title: Amaga els resultats fins al tancament
-      helptext_on: No mostris què han votat els usuaris fins que l'enquesta estigui tancada
-    show_none_of_the_above: Incloeu l'opció "Cap de les anteriors".
   poll_common_close_form:
     title: Tancar %{poll_type} ara?
     helptext: Esteu segur que voleu tancar aquest %{poll_type} abans i compartir un resultat?
@@ -2068,7 +2059,6 @@ ca:
     enter_an_outcome: Introdueix un resultat
   poll_common_outcome_form:
     review_due_in_days: Revisar la decisió al cap de quants dies?
-    review_due_in_days_hint: Un període de temps (en dies) per esperar abans de revisar la decisió. (opcional)
     review_date: Data de revisió
     review_date_hint: Estableix una data per revisar la decisió (opcional)
     who_to_notify: A qui voleu notificar aquest resultat? (opcional)
@@ -2078,109 +2068,17 @@ ca:
     outcome_created: Resultat creat
     outcome_updated: Resultat actualitzat
     statement_placeholder: Resumiu les respostes i expliqueu què passarà després
-    statement_template_placeholder: Proporcioneu una plantilla per escriure un resultat de la decisió. (opcional)
     you_will_be_notified: Se't notificarà el dia de la revisió.
     submit: Comparteix el resultat
+    review_due_in_days_hint: Nombre de dies d'espera abans de revisar la decisió (opcional).
+    statement_template_hint: Proporcioneu una plantilla per escriure el resultat de la decisió (opcional).
+    statement_template_placeholder: Gràcies per participar! S'ha arribat al quòrum i tenim suport per continuar.
   poll_common_outcome_panel:
     authored_by: De %{name}
   poll_common_delete_modal:
     question: Esteu segur que ho voleu eliminar?
     title: Elimina %{pollType}
     success: Eliminat amb èxit
-  poll_common_form:
-    notify_everyone_when_poll_starts: Notifica a tothom quan comenci %{poll_type}
-    option_has_votes_confirm_delete: Algunes persones han votat per aquesta opció, esteu segur que voleu suprimir-la?
-    example_title: Exemple de títol
-    example_title_hint: Posa un exemple d'un bon títol de proposta
-    example_details_placeholder: Proporcioneu un punt de partida per a una proposta o enquesta. Les preguntes poden ser indicacions útils per fer que la gent escrigui. Incloeu qualsevol regla o recordatori que els participants hauran de conèixer.
-    confirm_delete: Esteu segur que voleu suprimir aquesta plantilla d'enquesta? Això no es pot desfer.
-    show_advanced_settings: Mostra la configuració avançada
-    hide_advanced_settings: Amaga la configuració avançada
-    choose_at_least: Trieu almenys
-    choose_at_most: Trieu com a màxim
-    please_review_the_form: Reviseu el formulari
-    option_added_please_add_details: Opció afegida! Si us plau, afegiu alguns detalls perquè la gent sàpiga què significa.
-    default_duration_in_days: Durada per defecte en dies
-    default_duration_in_days_hint: Quants dies s'han de donar perquè la gent pugui votar?
-    how_many_options_can_a_voter_choose: Quantes d'aquestes opcions pot triar un elector?
-    minimum_choices: Opcions mínimes
-    maximum_choices: Màximes opcions
-    content: Contingut
-    reminder: Recordatori
-    your_in_zone: 'Zona horària actual: %{zone}'
-    show_other_zones: Mostra altres zones horàries
-    hide_other_zones: Amaga altres zones horàries
-    this_is_a_template_for_new_polls: Aquesta és una plantilla per a noves enquestes
-    voting_method: Mètode de votació
-    voting_methods:
-      question: Ronda de preguntes
-      question_hint: Convida preguntes i comentaris sobre la teva proposta
-      show_thumbs: Mostra de polzes
-      show_thumbs_hint: Els votants trien el polze cap amunt, cap avall, de costat o amb la mà cap amunt
-      choose: Tria
-      simple_poll: Enquesta senzilla
-      choose_hint: Els votants trien la millor opció (o opcions)
-      score: Puntuació
-      score_hint: Els votants assignen una puntuació a cada opció
-      allocate: Assignar
-      allocate_hint: Els votants assignen un pressupost de punts entre les opcions
-      ranked_choice: vot preferencial
-      ranked_choice_hint: Els votants organitzen les opcions per ordre de més a menys preferit
-      time_poll: enquesta de temps
-      time_poll_hint: Els electors indiquen quan estan disponibles per reunir-se
-    process: Procés
-    process_name: Títol de la plantilla
-    process_name_hint: Com en dius aquesta plantilla? Per exemple, assessorament sobre rols, control de temperatura, aprovació d'actes
-    process_subtitle: Subtítol de plantilla
-    process_subtitle_hint: Una descripció d'una línia de quan o per què utilitzar aquesta plantilla
-    process_introduction: Ajuda de plantilla
-    process_introduction_hint: Uns quants paràgrafs que expliquen com utilitzar la plantilla. Incloeu enllaços a recursos que us poden ser útils.
-    you_can_set_a_prompt_per_option: Editeu la sol·licitud per a cada opció des de la pestanya de detalls
-    chart_type: Tipus de gràfic
-    title: Títol
-    title_hint: Quina és la decisió que has de prendre?
-    no_options_add_some: Aquesta enquesta no té opcions, afegiu-ne algunes a continuació.
-    details: Detalls
-    example_details: Detalls d'exemple
-    details_placeholder: Aquesta és la teva oportunitat per explicar què està votant la gent
-    options: Opcions
-    options_placeholder: Enumera les opcions disponibles
-    no_options: Encara no heu afegit cap opció.
-    closing: S'està tancant
-    closed: Tancat
-    start: Comença
-    start_poll: Crea una enquesta
-    stance_reason_required_label: Proporcionar un motiu a l'hora de votar és...
-    stance_reason_required: Obligatori
-    stance_reason_optional: Opcional
-    stance_reason_disabled: Inhabilitat
-    stance_reason_is_required: Si us plau, proporcioneu un motiu amb el vostre vot
-    limit_reason_length: Limiteu el motiu a un màxim de 500 caràcters
-    save_poll: Desa l'enquesta
-    start_poll_type: Inicia %{poll_type}
-    share_poll_type: Comparteix %{poll_type}
-    who_may_vote: Qui pot votar en aquest %{poll_type}?
-    update: Actualitza
-    add_voters: Afegeix votants
-    notify_invitees: Enviar notificacions
-    no_notifications_warning: Els votants no seran avisats. Això és útil si feu moltes enquestes i teniu previst notificar a tothom més endavant.
-    count_voters_added: "%{count} votants afegits"
-    poll_type_created: "%{poll_type} creat"
-    poll_type_started: "%{poll_type} ha començat"
-    poll_type_updated: "%{poll_type} actualitzat"
-    reason_prompt: Indicació de motiu
-    anonymous_voting: Votació anònima
-    anonymous_voting_description: Si està activat, la identitat dels votants no s'associarà als seus vots. Això no es pot desfer.
-    votes_are_anonymous: Els vots són anònims
-    vote_reason: Raó del vot
-    vote_reason_description: Pot ser útil entendre per què la gent va votar com ho va fer. Amb aquesta configuració, podeu demanar als usuaris que comparteixin els seus pensaments quan voten.
-    hide_results_description: Si voleu que la gent voti sense saber com han votat els altres, podeu amagar els resultats de l'enquesta.
-    process_helptext: Anomena i descriu el procés que s'utilitza per executar aquesta enquesta.
-    reminder_helptext: Envieu una notificació "Tanquem aviat" abans que es tanqui l'enquesta. Aquesta pot ser una oportunitat perquè la gent vegi com han votat els altres i reconsideri el seu propi vot, o només una manera d'augmentar la participació a l'enquesta.
-    deadline: Data límit
-    how_much_time_to_vote: Quant de temps donareu perquè la gent voti?
-    advanced_settings: Configuració avançada
-    none_of_the_above: Cap de les anteriors
   poll_proposal_form:
     start_header: Crea una proposta
     edit_header: Edita una proposta
@@ -2239,9 +2137,10 @@ ca:
     points: Puntuació
     average: Mitjana
     mean: Significar
-    pct_of_points: "% de punts"
-    pct_of_voters: "% de votants"
     percent: Per cent
+    pct_of_points: "% de punts"
+    pct_of_votes_cast: "% de vots emesos"
+    pct_of_voters: "% de votants amb dret a vot"
   poll_meeting_time_field:
     add_time_slot: Afegeix una franja horària
     new_time_slot: Nova franja horària
@@ -2280,6 +2179,11 @@ ca:
   poll_common_percent_voted:
     sentence: "%{numerator} usuaris de %{denominator} ja han votat (%{percent}%)"
     target_progress: "%{percent}% de l'objectiu assolit. (%{num}/%{target})"
+    pct_of_eligible_voters_must_participate: El %{pct}% dels votants amb dret a vot han de participar
+    pct_participation: "%{num} de %{total} vots emesos (%{pct}% de participació)"
+    vote_short_of_quorum: Cal 1 vot més per assolir el quòrum del %{pct}%
+    votes_short_of_quorum: Es necessiten %{num} vots més per assolir el quòrum del %{pct}%
+    quorum_reached: S'ha assolit el quòrum del %{pct}%
   poll_meeting_chart_panel:
     total: Total
   poll_remove_vote:
@@ -2335,6 +2239,7 @@ ca:
     stance_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha votat a: <strong>%{title}</strong>"
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha actualitzat el seu vot a: <strong>%{title}</strong>"
     event_removed: S'ha eliminat del fil
+    new: nou
   add_poll_to_thread_modal:
     success: S'ha afegit %{pollType} al fil!
   auth_form:
@@ -2565,3 +2470,157 @@ ca:
         submit: Veure proposta
         cancel: Fes això més tard
     get_started_here: Comença aquí
+  poll_common_settings:
+    who_can_vote: Qui pot votar?
+    specified_voters_only_true: Només persones convidades
+    specified_voters_only_false_group: Qualsevol persona del grup
+    specified_voters_only_false_discussion: Qualsevol persona del fil
+    invite_people_next: Podeu triar qui està convidat a votar després d'iniciar la %{poll_type}
+    show_none_of_the_above: Inclou una opció "Cap de les anteriors"
+    show_options_in_random_order: Mostra les opcions en ordre aleatori
+    reduce_bias_by_showing_options_in_random_order: Redueix el biaix mostrant les opcions en ordre aleatori.
+    multiple_choice:
+      title: Opció múltiple
+      helptext_on: Un cop seleccionats, els participants podran triar diverses opcions.
+    anyone_can_participate:
+      title: Qualsevol persona amb un enllaç pot participar
+      helptext_on: Quan es selecciona, qualsevol persona que tingui l'enllaç a l'enquesta pot participar.
+    notify_on_closing_soon:
+      voting_closes_too_soon: Com que la votació es tanca en 24 hores, no s'enviaran recordatoris de tancament immediat.
+      closes_too_soon: Com que aquest %{pollType} es tanca en 24 hores, no s'enviaran recordatoris de tancament proper.
+      title: 24 hores abans que %{pollType} tanqui, envia un recordatori a
+      voting_title: 24 hores abans que es tanqui la votació, envieu un recordatori a
+      nobody: Ningú
+      author: Autor (jo)
+      undecided_voters: Votants indecisos
+      voters: Tots els votants
+    notify_on_participate:
+      title: Notifica'm quan la gent participi
+      helptext_on: Quan siguis seleccionat, rebràs una notificació sempre que algú hi participi.
+    anonymous:
+      title: Votants anònims
+      helptext_on: Quan es selecciona aquesta opció, la informació del participant no es mostrarà amb cada resposta.
+    voter_can_add_options:
+      title: Els votants poden afegir opcions alternatives
+    can_respond_maybe:
+      title: Els votants poden respondre "si cal"
+    allow_long_reason:
+      title: Permet que el "motiu" del vot tingui més de 500 caràcters
+    hide_results_until_closed:
+      title: Amaga els resultats fins que es tanqui
+      helptext_on: No mostreu com ha votat la gent fins que no es tanqui l'enquesta
+    short_reason_can_be_helpful: Les raons de vot breus són més fàcils d'entendre. Un conjunt de raons concises és un gran recurs per prendre una decisió.
+    shuffle_options: Opcions de reproducció aleatòria
+  poll_common_form:
+    quorum: Quòrum
+    participation_quorum: Quòrum de participació
+    quorum_hint: Quin percentatge de votants ha de participar perquè el resultat sigui vàlid? Opcional, deixeu-ho en blanc si no hi ha quòrum.
+    quorum_placeholder: Deixeu-ho en blanc o introduïu un número entre 0 i 100
+    deadline: Data límit
+    notify_everyone_when_poll_starts: Notifica a tothom quan comenci %{poll_type}
+    option_has_votes_confirm_delete: Algunes persones han votat per aquesta opció, esteu segurs que voleu eliminar-la?
+    example_title: Exemple de títol
+    example_title_hint: Dóna un exemple d'un bon títol de proposta
+    example_details_placeholder: Proporcioneu un punt de partida per a una proposta o enquesta. Les preguntes poden ser motius útils per animar la gent a escriure. Incloeu-hi qualsevol norma o recordatori que els participants hagin de conèixer.
+    confirm_delete: Esteu segur que voleu suprimir aquesta plantilla d'enquesta? Això no es pot desfer.
+    advanced_settings: Configuració avançada
+    show_advanced_settings: Mostra la configuració avançada
+    hide_advanced_settings: Amaga la configuració avançada
+    choose_at_least: Trieu com a mínim
+    choose_at_most: Trieu com a màxim
+    please_review_the_form: Si us plau, reviseu el formulari
+    option_added_please_add_details: Opció afegida! Si us plau, afegiu alguns detalls perquè la gent sàpiga què significa.
+    default_duration_in_days: Durada predeterminada en dies
+    how_many_options_can_a_voter_choose: Quantes opcions pot triar un votant?
+    minimum_choices: Opcions mínimes
+    maximum_choices: Màxim d'opcions
+    content: Contingut
+    reminder: Recordatori
+    reminder_notification: Notificació de recordatori
+    your_in_zone: 'Fus horari actual: %{zone}'
+    show_other_zones: Mostra altres zones horàries
+    hide_other_zones: Amaga altres zones horàries
+    this_is_a_template_for_new_polls: Aquesta és una plantilla per a noves enquestes
+    voting_method: Mètode de votació
+    none_of_the_above: Cap de les anteriors
+    voting_methods:
+      question: Ronda de preguntes
+      question_hint: Convida a preguntes i comentaris sobre la teva proposta
+      show_thumbs: Mostrar els polzes
+      show_thumbs_hint: Els votants trien polze amunt, avall, de costat o mà amunt
+      choose: Tria
+      simple_poll: Enquesta senzilla
+      choose_hint: Els votants trien la millor opció (o opcions)
+      score: Puntuació
+      score_hint: Els votants assignen una puntuació a cada opció
+      allocate: Assignar
+      allocate_hint: Els votants assignen un pressupost de punts entre les opcions
+      ranked_choice: Elecció classificada
+      ranked_choice_hint: Els votants ordenen les opcions de més a menys preferides
+      time_poll: Enquesta de temps
+      time_poll_hint: Els votants indiquen quan estan disponibles per reunir-se
+    process: Procés
+    process_name: Títol de la plantilla
+    process_name_hint: Com s'anomena aquesta plantilla? Per exemple, consells sobre rols, control de temperatura, aprovació d'actes.
+    process_subtitle: Subtítol de plantilla
+    process_subtitle_hint: Una descripció d'una línia de quan o per què utilitzar aquesta plantilla
+    process_introduction: Ajuda amb la plantilla
+    process_introduction_hint: Uns quants paràgrafs que expliquen com utilitzar la plantilla. Incloeu enllaços a recursos que us puguin ser útils.
+    you_can_set_a_prompt_per_option: Editeu la sol·licitud per a cada opció des de la pestanya de detalls
+    chart_type: Tipus de gràfic
+    title: Títol
+    title_hint: Quina és la decisió que has de prendre?
+    no_options_add_some: Aquesta enquesta no té opcions, afegeix-ne algunes a continuació.
+    details: Detalls
+    example_details: Detalls de l'exemple
+    details_placeholder: Aquesta és la teva oportunitat d'explicar què vota la gent.
+    options: Opcions
+    options_placeholder: Enumera les opcions disponibles
+    no_options: Encara no has afegit cap opció.
+    closing: Tancament
+    closed: Tancat
+    start: Inici
+    start_poll: Inicia l'enquesta
+    stance_reason_required_label: Donar una raó a l'hora de votar és...
+    stance_reason_required: Obligatori
+    stance_reason_optional: Opcional
+    stance_reason_disabled: Discapacitat
+    stance_reason_is_required: Si us plau, indiqueu un motiu amb el vostre vot
+    limit_reason_length: Limita el motiu a un màxim de 500 caràcters
+    save_poll: Desa l'enquesta
+    start_poll_type: Inicia %{poll_type}
+    share_poll_type: Comparteix %{poll_type}
+    who_may_vote: Qui pot votar en aquest %{poll_type}?
+    update: Actualització
+    add_voters: Afegeix votants
+    notify_invitees: Enviar notificacions
+    no_notifications_warning: Els votants no rebran notificacions. Això és útil si esteu fent moltes enquestes i teniu previst notificar-ho a tothom més tard.
+    count_voters_added: S'han afegit %{count} votants
+    poll_type_created: "%{poll_type} creat"
+    poll_type_started: "%{poll_type} ha començat"
+    poll_type_updated: "%{poll_type} actualitzat"
+    reason_prompt: Sol·licitud de motiu
+    each_option_has_own_reason_prompt: Cada opció té la seva pròpia indicació de motiu. Editeu una opció per veure o canviar la seva indicació.
+    anonymous_voting: Votació anònima
+    votes_are_anonymous: Els vots són anònims
+    vote_reason: Motiu del vot
+    quorum_tip_vote_share_requirement: 'Consell: També podeu especificar el nivell d''acord necessari perquè una proposta s''aprovi. Editeu una opció per definir el requisit de quota de vot.'
+    how_much_time_to_vote: Quant de temps donareu a la gent per votar?
+    default_duration_in_days_hint: Quants dies tindrà la gent per votar?
+    define_minimum_and_maxmimum_score: Defineix les puntuacions mínimes i màximes que un votant pot donar a una opció
+    how_many_points_does_each_voter_have_to_allocate: Quants punts ha d'assignar cada votant?
+    anonymous_voting_description: Mostra els vots i els motius, però no qui els ha emès. Això no es pot canviar després que %{poll_type} hagi començat.
+    vote_reason_description: Demaneu a la gent que comparteixi les seves raons quan votin o que proporcionin més informació.
+    hide_results_description: Si voleu que la gent voti sense veure com han votat els altres, podeu amagar els resultats.
+    process_helptext: Anomena i descriu el procés que s'utilitza per dur a terme aquesta enquesta.
+    reminder_helptext: Envia una notificació de "Properament tancament" 24 hores abans de la data límit. Això pot augmentar la participació i crear una oportunitat perquè la gent reconsideri la seva posició.
+  poll_receipts_page:
+    verify_participants: Verifica els participants
+    see_votes_if_quorum_reached: Si la votació s'ha tancat i s'ha arribat al quòrum, veureu qui ha votat.
+    voter_name: Nom del votant
+    voter_email: Correu electrònic del votant
+    vote_cast: Vot emès
+    member_since: Membre des de
+    invited_by: Convidat per
+    invited_on: Convidat el
+    no_receipts: Aquesta enquesta anònima es va tancar abans que existís la funció de verificació, per la qual cosa la verificació no és possible.

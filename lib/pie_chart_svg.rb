@@ -34,11 +34,11 @@ class PieChartSvg
 
   def self.draw(slices)
     svg = Victor::SVG.new(width: SIZE, height: SIZE)
-    case slices.length
+    case slices.select{|s| s[:value] > 0}.length
     when 0
       svg.circle cx: SIZE/2, cy: SIZE/2, r: SIZE/2, fill: 'grey'
     when 1
-      svg.circle cx: SIZE/2, cy: SIZE/2, r: SIZE/2, fill: slices[0][:color]
+      svg.circle cx: SIZE/2, cy: SIZE/2, r: SIZE/2, fill: slices.select{|s| s[:value] > 0}[0][:color]
     else
       start = 90
       slices.each do |slice|

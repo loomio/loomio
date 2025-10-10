@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_06_20_032741) do
+ActiveRecord::Schema[7.2].define(version: 2025_10_10_133348) do
+  create_schema "pghero"
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -631,7 +633,6 @@ ActiveRecord::Schema[7.0].define(version: 2025_06_20_032741) do
     t.jsonb "custom_fields", default: {}, null: false
     t.string "statement_format", limit: 10, default: "md", null: false
     t.jsonb "attachments", default: [], null: false
-    t.string "secret_token", default: -> { "public.gen_random_uuid()" }
     t.integer "versions_count", default: 0, null: false
     t.date "review_on"
     t.string "content_locale"
@@ -680,6 +681,9 @@ ActiveRecord::Schema[7.0].define(version: 2025_06_20_032741) do
     t.string "prompt"
     t.datetime "created_at", precision: nil
     t.datetime "updated_at", precision: nil
+    t.string "test_operator"
+    t.integer "test_percent"
+    t.string "test_against"
     t.index ["poll_id"], name: "index_poll_options_on_poll_id"
   end
 
@@ -729,6 +733,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_06_20_032741) do
     t.integer "outcome_review_due_in_days"
     t.boolean "public", default: false, null: false
     t.boolean "show_none_of_the_above", default: false, null: false
+    t.integer "quorum_pct"
     t.index ["discarded_at"], name: "index_poll_templates_on_discarded_at"
   end
 
@@ -785,6 +790,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_06_20_032741) do
     t.string "poll_template_key"
     t.boolean "show_none_of_the_above", default: false, null: false
     t.integer "none_of_the_above_count", default: 0, null: false
+    t.integer "quorum_pct"
     t.index ["author_id"], name: "index_polls_on_author_id"
     t.index ["closed_at", "closing_at"], name: "index_polls_on_closed_at_and_closing_at"
     t.index ["closed_at", "discussion_id"], name: "index_polls_on_closed_at_and_discussion_id"
@@ -826,6 +832,16 @@ ActiveRecord::Schema[7.0].define(version: 2025_06_20_032741) do
     t.datetime "updated_at", precision: nil
     t.index ["poll_option_id"], name: "index_stance_choices_on_poll_option_id"
     t.index ["stance_id"], name: "index_stance_choices_on_stance_id"
+  end
+
+  create_table "stance_receipts", force: :cascade do |t|
+    t.bigint "poll_id"
+    t.bigint "voter_id"
+    t.bigint "inviter_id"
+    t.datetime "invited_at"
+    t.boolean "vote_cast"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "stances", id: :serial, force: :cascade do |t|
@@ -879,6 +895,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_06_20_032741) do
     t.datetime "renewed_at", precision: nil
     t.boolean "allow_subgroups", default: true, null: false
     t.boolean "allow_guests", default: true, null: false
+    t.string "lead_status"
     t.index ["owner_id"], name: "index_subscriptions_on_owner_id"
     t.index ["plan"], name: "index_subscriptions_on_plan"
   end
@@ -1008,7 +1025,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_06_20_032741) do
     t.jsonb "attachments", default: [], null: false
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
-    t.string "secret_token", default: -> { "public.gen_random_uuid()" }
+    t.string "secret_token", default: -> { "public.gen_random_uuid()" }, null: false
     t.string "content_locale"
     t.boolean "bot", default: false, null: false
     t.jsonb "link_previews", default: [], null: false

@@ -352,6 +352,7 @@ div.recipients-autocomplete
     :label="label"
     :placeholder="placeholder"
     :items='suggestions'
+    autocomplete='off'
   )
     template(v-slot:no-data)
       v-list-item

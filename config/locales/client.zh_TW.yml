@@ -9,7 +9,6 @@ zh_TW:
     we_use_this_to_help: 以下資訊用於建立您的 Loomio 小組並幫助我們了解一些有關您的組織的信息，以便我們可以更好地為您提供支援。
     how_do_you_intend_to_use_loomio: 您打算如何使用 Loomio？
     what_decisions_do_you_need_to_make: 您需要做出哪些決定？
-    newsletter_intro: 您想訂閱我們的電子報嗎？
     newsletter_description: 隨時了解世界各地的組織如何使用 Loomio 的新功能和鼓舞人心的故事
     subscribe_to_newsletter: 訂閱 Loomio 時事通訊
     form_incomplete: 請填寫表格上的所有欄位以繼續
@@ -21,6 +20,7 @@ zh_TW:
     please_enter_a_valid_email_address: 請輸入有效的電子郵件地址
     please_accept_the_terms: 請接受條款
     how_did_you_hear_about_loomio: 您是如何得知 Loomio 的？
+    newsletter_intro: 您想了解 Loomio 團隊的新功能、客戶訪談、案例研究和公告嗎？
   tasks:
     tasks: 工作
     your_tasks: 您的工作
@@ -570,6 +570,16 @@ zh_TW:
     from_comment: 從留言 URL
     from_sequence_id: 從討論串項目 URL
     unread: 對您來說是新的
+    jump_to: 跳至
+    timeline: 時間軸
+    top: 頂部
+    bottom: 底部
+    start: 開始
+    latest: 最新的
+    showing_latest: 顯示最新
+    showing_unread: 顯示未讀
+    add_comment: 新增評論
+    start_decision: 開始決定
   search_modal:
     all_content: 所有內容
     best_match: 最佳匹配
@@ -625,6 +635,8 @@ zh_TW:
     theme: 主題
     light: 光
     dark: 黑暗的
+    light_blue: 淺藍色
+    dark_blue: 深藍色
   membership_card:
     group_members: 群組成員
     discussion_members: 討論串成員
@@ -1231,7 +1243,6 @@ zh_TW:
     description: 描述
     description_placeholder: 描述群組的目的讓您的夥伴們知道他們為什麼在這裡。
     new_description_placeholder: 為什麼要試試 Loomio？你們需要共同做出哪些決定？
-    new_description_html: <h3 id="how-do-you-intend-to-use-loomio">您打算如何使用 Loomio？</h3><p></p><h3 id="why-is-this-important-for-your-group">為什麼這對您的團隊很重要？</h3><p></p><h3 id="what-decisions-do-you-need-to-make">您需要做出哪些決定？</h3><p></p>
     secret_by_default: 只有受邀加入的人才能存取您的群組。您可以在稍後變更此設定。
     privacy_statement:
       public_on_web: 群組內容的名稱、描述與附件將對公眾可見
@@ -1299,6 +1310,8 @@ zh_TW:
     default_request_to_join_prompt: 感謝您對我們小組的興趣。請自我介紹並解釋為什麼您要求加入。
     upgrade_for_subgroups: '請<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">升級您的訂閱</a>以建立子群組'
     group_handle_placeholder: 您的群組網址與電子郵件：%{host}/%{handle}、%{handle}{'@'}%{host}
+    share_this_url_with_people_who_want_to_join: 與想要加入的人分享此 URL
+    new_description_html: "<h3>您的組織在決策上面臨哪些挑戰？</h3><p></p><h3>您希望如何在您的組織中使用 Loomio？</h3><p></p>"
   group_export_modal:
     title: 匯出群組資料
     body: |
@@ -1504,9 +1517,6 @@ zh_TW:
     email_newsletter: Loomio 通訊
     email_newsletter_description: 取得關於新功能、訓練、在您居住的城市中的活動、Loomio 的未來等更新。通常是每年 2 至 3 封電子郵件。
     email_catch_up_day: 追蹤摘要電子郵件
-    daily_summary_description: '選擇何時要接收追蹤電子郵件。此電子郵件包含了您尚未看到的任何新活動。如果您不是經常使用的使用者，這是追蹤最新狀態的好方法。
-
-      '
     on_participation_label: 參與時訂閱
     on_participation_description: 當您參與討論串時，之後所有的動態都會即時寄給您。
     announcement_label: 公告
@@ -1523,6 +1533,7 @@ zh_TW:
       updated: 電子郵件設定已更新
     learn_more: 取得更多關於電子郵件設定的詳細資訊……
     mentioned_description: 當有人{'@'}在評論中提及您時，您會收到一封通知電子郵件
+    daily_summary_description: 選擇何時接收更新摘要電子郵件。此電子郵件包含您尚未查看的任何新活動。如果您不是常規用戶，這是一個保持最新狀態的好方法。
   thread_preview:
     replies_count: "%{count} 個回覆"
     unread_count: "%{count} 個未讀"
@@ -1773,6 +1784,22 @@ zh_TW:
     thumb_down: 拇指向下
     thumb_sideways: 大拇指側向
     hand_up: 舉手
+    of: 的
+    at_least: 至少
+    no_more_than: 不超過
+    votes_cast: 投票數
+    eligible_voters: 合格選民
+    gte_score_percent: 需要至少 %{percent}% 的投票
+    gte_voter_percent: 需要至少 %{percent}% 的合格選民
+    lte_score_percent: 不得超過投票總數的 %{percent}%
+    lte_voter_percent: 不得超過合格選民的 %{percent}%
+    name_gte_score_percent: "%{name} 需要至少 %{percent}% 的投票"
+    name_gte_voter_percent: "%{name} 需要至少 %{percent}% 的合格選民"
+    name_lte_score_percent: "%{name} 不得超過所投票數的 %{percent}%"
+    name_lte_voter_percent: "%{name} 不得超過合格選民的 %{percent}%"
+    vote_share_requirement: 投票份額要求
+    for_the_proposal_to_pass: 為了使提案獲得通過，此選項必須獲得…
+    for_the_poll_to_be_valid: 為了使 %{poll_type} 有效，此選項必須接收...
   poll_common:
     superseded: 取代
     outdated: 過時的
@@ -1862,6 +1889,8 @@ zh_TW:
     edit_warning: 小變動或修正拼字錯誤建議使用編輯。若是重大變更，請關閉此 %{pollType} 並開始一個新的。
     no_voting: 僅討論，停用投票
     post_outcome: 後期結果
+    view_all_votes: 查看所有投票
+    you_voted: 您投票了
   poll_common_attachment_form:
     label: 附件
   poll_common_add_option:
@@ -1964,6 +1993,8 @@ zh_TW:
     unable_to_vote: 您尚未被邀請到此 %{poll_type} 進行投票。
     draft_mode: 投票已禁用。目前尚未開放投票。
     voting_disabled_poll_is_template: 投票已禁用。這是一個模板。
+    for_this_proposal_to_pass: 為了使該提案獲得通過：
+    for_this_poll_type_to_be_valid: 為了使此 %{poll_type} 有效：
   poll_common_collapsed:
     by_who: 由 %{name}
   poll_common_calendar_invite:
@@ -1978,48 +2009,6 @@ zh_TW:
     event_description_placeholder: 這次會面的議程是什麼？
     location: 位置
     location_placeholder: 這個會面會在哪裡舉辦？
-  poll_common_settings:
-    who_can_vote: 誰可以投票？
-    short_reason_can_be_helpful: 保持投票理由簡短可以使它們更容易理解。一系列簡潔的理由是做出決定的重要資源。
-    specified_voters_only_true: 僅邀請的夥伴
-    specified_voters_only_false_group: 在群組中的任何人
-    specified_voters_only_false_discussion: 在討論串中的任何人
-    invite_people_next: 在您開始 %{poll_type} 後，您可以選擇要邀請誰來投票
-    shuffle_options:
-      shuffle_options: 隨機播放選項
-      title: 以隨機順序顯示選項
-      helptext: 清單中第一個選項可能會給它帶來偏差。使用此設定可以抵消這種影響。
-    multiple_choice:
-      title: 多選
-      helptext_on: 在選取時，參與者可以選取多個選項。
-    anyone_can_participate:
-      title: 任何有連結的人都可以參與
-      helptext_on: 當選取時，任何有投票連結的人都可以參與。
-    notify_on_closing_soon:
-      voting_closes_too_soon: 由於投票將在 24 小時內結束，因此不會發送即將結束提醒。
-      closes_too_soon: 因為此 %{pollType} 會在24小時內關閉，因此不會傳送即將關閉的提醒。
-      title: "%{pollType} 關閉前24小時，傳送提醒給"
-      voting_title: 投票結束前 24 小時，發送提醒至
-      nobody: 沒有人
-      author: 作者（我）
-      undecided_voters: 未決定的選民
-      voters: 所有選民
-    notify_on_participate:
-      title: 當夥伴參與時通知我
-      helptext_on: 當選取時，您將會在有其他人參與時被通知。
-    anonymous:
-      title: 匿名投票者
-      helptext_on: 當選取時，參與者資訊將不會在每個回應上顯示。
-    voter_can_add_options:
-      title: 投票者可以新增替代選項
-    can_respond_maybe:
-      title: 投票者可以回應「如果需要的話」
-    allow_long_reason:
-      title: 允許投票「理由」超過 500 個字元
-    hide_results_until_closed:
-      title: 隱藏結果直到關閉
-      helptext_on: 在投票關閉前，不要顯示有多少人已投票
-    show_none_of_the_above: 包含“以上皆非”選項
   poll_common_close_form:
     title: 立刻關閉 %{poll_type}？
     helptext: 您確定您想要提早關閉此 %{poll_type} 並分享結果？
@@ -2078,7 +2067,6 @@ zh_TW:
     enter_an_outcome: 輸入結果
   poll_common_outcome_form:
     review_due_in_days: 幾天後檢討決定？
-    review_due_in_days_hint: 在審查決定之前需要等待的一段時間（以天為單位）。 （選修的）
     review_date: 審閱日期
     review_date_hint: 設定提醒審查結果的日期（選擇性）
     who_to_notify: 您想將此結果通知誰？（選擇性）
@@ -2088,109 +2076,17 @@ zh_TW:
     outcome_created: 結果已建立
     outcome_updated: 結果已更新
     statement_placeholder: 總結回應並解釋接下來會發生什麼事。
-    statement_template_placeholder: 提供用於編寫決策結果的範本。 （選修的）
     you_will_be_notified: 您將在審閱日期時收到通知。
     submit: 分享成果
+    review_due_in_days_hint: 審查決定之前等待的天數（可選）。
+    statement_template_hint: 提供撰寫決策結果的範本。 （可選）
+    statement_template_placeholder: 感謝大家的參與！已達到法定人數，我們已獲得支持，可以繼續進行。
   poll_common_outcome_panel:
     authored_by: 由 %{name}
   poll_common_delete_modal:
     question: 您確定要刪除這個嗎？
     title: 刪除 %{pollType}
     success: 成功刪除
-  poll_common_form:
-    notify_everyone_when_poll_starts: 當 %{poll_type} 開始時通知所有人
-    option_has_votes_confirm_delete: 有些人已投票支持此選項，您確定要刪除它嗎？
-    example_title: 標題範例
-    example_title_hint: 舉一個好的提案標題的例子
-    example_details_placeholder: 提供提案或投票的起點。問題可以成為促使人們寫作的有用提示。包括參與者需要了解的任何規則或提醒。
-    confirm_delete: 您確定要刪除此投票範本嗎？這不能被撤消。
-    show_advanced_settings: 顯示進階設定
-    hide_advanced_settings: 隱藏進階設定
-    choose_at_least: 至少選擇
-    choose_at_most: 最多選擇
-    please_review_the_form: 請查看表格
-    option_added_please_add_details: 已新增選項！請添加一些詳細信息，以便人們知道它的含義。
-    default_duration_in_days: 預設持續時間（以天為單位）
-    default_duration_in_days_hint: 應該給人們多少天投票時間？
-    how_many_options_can_a_voter_choose: 選民可以選擇多少個選項？
-    minimum_choices: 最少的選擇
-    maximum_choices: 最多選擇
-    content: 內容
-    reminder: 提醒
-    your_in_zone: 目前時區：%{zone}
-    show_other_zones: 顯示其他時區
-    hide_other_zones: 隱藏其他時區
-    this_is_a_template_for_new_polls: 這是新民調的模板
-    voting_method: 投票方式
-    voting_methods:
-      question: 提問輪
-      question_hint: 邀請對您的提案提出問題和評論
-      show_thumbs: 豎起大拇指
-      show_thumbs_hint: 選民選擇拇指向上、向下、向側面或向上舉起
-      choose: 選擇
-      simple_poll: 簡單民意調查
-      choose_hint: 選民選擇最佳選項（或多個選項）
-      score: 分數
-      score_hint: 選民為每個選項評分
-      allocate: 分配
-      allocate_hint: 選民在選項之間分配預算點
-      ranked_choice: 排序選擇
-      ranked_choice_hint: 選民按照從最喜歡到最不喜歡的順序排列選項
-      time_poll: 時間投票
-      time_poll_hint: 選民表明他們何時可以見面
-    process: 過程
-    process_name: 模板標題
-    process_name_hint: 你怎麼稱呼這個模板？例如角色建議、體溫檢查、會議記錄核准
-    process_subtitle: 模板副標題
-    process_subtitle_hint: 關於何時或為何使用此範本的一行描述
-    process_introduction: 模板幫助
-    process_introduction_hint: 幾段解釋如何使用該模板。包含可能有用的資源連結。
-    you_can_set_a_prompt_per_option: 從詳細資料標籤編輯每個選項的提示
-    chart_type: 圖表類型
-    title: 標題
-    title_hint: 您需要做什麼決定？
-    no_options_add_some: 此民意調查沒有選項，請在下面添加一些選項。
-    details: 詳細內容
-    example_details: 示例詳細信息
-    details_placeholder: 這是您解釋人們投票內容的機會
-    options: 選項
-    options_placeholder: 列出可用的選項
-    no_options: 您尚未新增任何選項。
-    closing: 定案
-    closed: 封閉
-    start: 啟動
-    start_poll: 啟動投票
-    stance_reason_required_label: 投票時提供理由...
-    stance_reason_required: 必要
-    stance_reason_optional: 選修的
-    stance_reason_disabled: 殘障人士
-    stance_reason_is_required: 請在投票時提供理由
-    limit_reason_length: 將原因限制為最多 500 個字符
-    save_poll: 保存民意調查
-    start_poll_type: 開始 %{poll_type}
-    share_poll_type: 分享 %{poll_type}
-    who_may_vote: 誰可以在此 %{poll_type} 中投票？
-    update: 更新
-    add_voters: 新增投票者
-    notify_invitees: 傳送通知
-    no_notifications_warning: 投票者將不會被通知。如果您正在執行大量投票，且計畫在稍後通知每個人的話，這會非常有用。
-    count_voters_added: 已新增 %{count} 個投票者
-    poll_type_created: "%{poll_type} 已創建"
-    poll_type_started: "%{poll_type} 已開始"
-    poll_type_updated: "%{poll_type} 已更新"
-    reason_prompt: 原因提示
-    anonymous_voting: 匿名投票
-    anonymous_voting_description: 如果啟用，選民的身分將不會與其投票相關聯。這不能被撤消。
-    votes_are_anonymous: 匿名投票
-    vote_reason: 投票理由
-    vote_reason_description: 了解人們為何如此投票可能會有所幫助。透過此設置，您可以提示人們在投票時分享他們的想法。
-    hide_results_description: 如果您希望人們在不知道其他人如何投票的情況下投票，您可以隱藏投票結果。
-    process_helptext: 命名並描述用於執行此輪詢的進程。
-    reminder_helptext: 在投票結束前發送「即將結束」通知。這可以讓人們有機會了解其他人如何投票並重新考慮自己的投票，或者只是增加投票參與度的一種方式。
-    deadline: 最後期限
-    how_much_time_to_vote: 您將允許人們投票多少時間？
-    advanced_settings: 進階設定
-    none_of_the_above: 以上都不是
   poll_proposal_form:
     start_header: 啟動提案
     edit_header: 編輯提案
@@ -2249,9 +2145,10 @@ zh_TW:
     points: 點
     average: 平均
     mean: 平均
-    pct_of_points: "% 點數"
-    pct_of_voters: 投票者的百分比
     percent: 百分比
+    pct_of_points: "% 點數"
+    pct_of_votes_cast: 投票百分比
+    pct_of_voters: 合格選民的百分比
   poll_meeting_time_field:
     add_time_slot: 新增時間欄位
     new_time_slot: 新時間欄位
@@ -2290,6 +2187,11 @@ zh_TW:
   poll_common_percent_voted:
     sentence: "%{denominator} 中的 %{numerator} 個夥伴已投票 (%{percent}%)"
     target_progress: 已達到目標的%{percent}%。 (%{num} / %{target})
+    pct_of_eligible_voters_must_participate: "%{pct}% 的合格選民必須參與"
+    pct_participation: 已投 %{num} 票，佔 %{total} 票（參與率為 %{pct}%）
+    vote_short_of_quorum: 還需 1 票才能達到 %{pct}% 的法定人數
+    votes_short_of_quorum: 還需要 %{num} 票才能達到 %{pct}% 的法定人數
+    quorum_reached: 已達 %{pct}% 的法定人數
   poll_meeting_chart_panel:
     total: 全部
   poll_remove_vote:
@@ -2345,6 +2247,7 @@ zh_TW:
     stance_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> 已投票：<strong>%{title}</strong>"
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> 更新了他們的投票於：<strong>%{title}</strong>"
     event_removed: 從討論串中移除
+    new: 新的
   add_poll_to_thread_modal:
     success: 成功，%{pollType} 已新增至討論串！
   auth_form:
@@ -2575,3 +2478,157 @@ zh_TW:
         submit: 查看提案
         cancel: 稍後再做
     get_started_here: 從這裡開始
+  poll_common_settings:
+    who_can_vote: 誰可以投票？
+    specified_voters_only_true: 限受邀者
+    specified_voters_only_false_group: 群組中的任何人
+    specified_voters_only_false_discussion: 主題中的任何人
+    invite_people_next: 您可以在啟動 %{poll_type} 後選擇邀請誰投票
+    show_none_of_the_above: 包含“以上皆非”選項
+    show_options_in_random_order: 以隨機順序顯示選項
+    reduce_bias_by_showing_options_in_random_order: 透過隨機順序顯示選項來減少偏差。
+    multiple_choice:
+      title: 多項選擇
+      helptext_on: 選擇後，參與者將能夠選擇多個選項。
+    anyone_can_participate:
+      title: 任何有連結的人都可以參與
+      helptext_on: 被選中後，任何擁有投票連結的人都可以參與。
+    notify_on_closing_soon:
+      voting_closes_too_soon: 由於投票將在 24 小時內結束，因此不會發送即將結束的提醒。
+      closes_too_soon: 由於此 %{pollType} 將在 24 小時內關閉，因此不會發送即將關閉的提醒。
+      title: 在 %{pollType} 關閉前 24 小時發送提醒至
+      voting_title: 投票結束前 24 小時，發送提醒至
+      nobody: 沒人
+      author: 作者（我）
+      undecided_voters: 未決定的選民
+      voters: 所有選民
+    notify_on_participate:
+      title: 當有人參與時通知我
+      helptext_on: 一旦被選中，每當有人參與時您都會收到通知。
+    anonymous:
+      title: 匿名投票者
+      helptext_on: 選擇後，參與者資訊將不會隨每個回應顯示。
+    voter_can_add_options:
+      title: 選民可以添加其他選項
+    can_respond_maybe:
+      title: 選民可以「在必要時」做出回應
+    allow_long_reason:
+      title: 允許投票“原因”長度超過 500 個字符
+    hide_results_until_closed:
+      title: 隱藏結果直至關閉
+      helptext_on: 在投票結束前不要顯示人們的投票情況
+    short_reason_can_be_helpful: 簡短的投票理由更容易理解。簡潔的投票理由是決策的重要資源。
+    shuffle_options: 隨機播放選項
+  poll_common_form:
+    quorum: 法定人數
+    participation_quorum: 參與法定人數
+    quorum_hint: 必須有多少比例的選民參與投票才能使結果有效？可選，留空表示沒有達到法定人數。
+    quorum_placeholder: 留空或輸入 0 到 100 之間的數字
+    deadline: 最後期限
+    notify_everyone_when_poll_starts: 當 %{poll_type} 開始時通知所有人
+    option_has_votes_confirm_delete: 有些人已投票支持此選項，您確定要刪除它嗎？
+    example_title: 範例標題
+    example_title_hint: 給出一個好的提案標題的例子
+    example_details_placeholder: 為提案或民意調查提供一個起點。問題可以作為有用的提示，促使人們動筆。並包含參與者需要了解的任何規則或提醒。
+    confirm_delete: 您確定要刪除此投票範本嗎？此操作無法撤銷。
+    advanced_settings: 進階設定
+    show_advanced_settings: 顯示進階設定
+    hide_advanced_settings: 隱藏進階設定
+    choose_at_least: 至少選擇
+    choose_at_most: 最多選擇
+    please_review_the_form: 請查看表格
+    option_added_please_add_details: 選項已新增！請添加一些詳細信息，以便大家了解其含義。
+    default_duration_in_days: 預設持續時間（天）
+    how_many_options_can_a_voter_choose: 選民可以選擇多少個選項？
+    minimum_choices: 最少選擇
+    maximum_choices: 最大選擇
+    content: 內容
+    reminder: 提醒
+    reminder_notification: 提醒通知
+    your_in_zone: 目前時區：%{zone}
+    show_other_zones: 顯示其他時區
+    hide_other_zones: 隱藏其他時區
+    this_is_a_template_for_new_polls: 這是新民調的模板
+    voting_method: 投票方式
+    none_of_the_above: 以上都不是
+    voting_methods:
+      question: 問答環節
+      question_hint: 歡迎就你的提案提出問題和評論
+      show_thumbs: 豎起大拇指
+      show_thumbs_hint: 選民選擇豎起大拇指、向下、側向或舉起手
+      choose: 選擇
+      simple_poll: 簡單民意調查
+      choose_hint: 選民選擇最佳選項（或多個選項）
+      score: 分數
+      score_hint: 選民為每個選項分配一個分數
+      allocate: 分配
+      allocate_hint: 選民在選項之間分配預算點數
+      ranked_choice: 排序選擇
+      ranked_choice_hint: 選民按從最喜歡到最不喜歡的順序排列選項
+      time_poll: 時間調查
+      time_poll_hint: 選民表明何時可以見面
+    process: 流程
+    process_name: 模板標題
+    process_name_hint: 這個模板叫什麼？例如：角色建議、體溫檢查、會議記錄審批
+    process_subtitle: 模板字幕
+    process_subtitle_hint: 關於何時或為何使用此範本的一行描述
+    process_introduction: 模板幫助
+    process_introduction_hint: 用幾段文字解釋如何使用該模板。並附上可能有用的資源連結。
+    you_can_set_a_prompt_per_option: 從詳細資料標籤編輯每個選項的提示
+    chart_type: 圖表類型
+    title: 標題
+    title_hint: 您需要做什麼決定？
+    no_options_add_some: 本次投票沒有選項，請在下面添加一些。
+    details: 細節
+    example_details: 示例詳細信息
+    details_placeholder: 這是你解釋人們投票依據的機會
+    options: 選項
+    options_placeholder: 列出可用的選項
+    no_options: 您尚未新增任何選項。
+    closing: 結束語
+    closed: 關閉
+    start: 開始
+    start_poll: 開始投票
+    stance_reason_required_label: 投票時提供理由是…
+    stance_reason_required: 必需的
+    stance_reason_optional: 選修的
+    stance_reason_disabled: 已停用
+    stance_reason_is_required: 請提供投票理由
+    limit_reason_length: 將原因限制為最多 500 個字符
+    save_poll: 保存投票
+    start_poll_type: 開始 %{poll_type}
+    share_poll_type: 分享 %{poll_type}
+    who_may_vote: 誰可以參與此 %{poll_type} 投票？
+    update: 更新
+    add_voters: 添加選民
+    notify_invitees: 發送通知
+    no_notifications_warning: 投票者不會收到通知。如果您正在進行大量投票，並計劃稍後通知所有人，此功能非常有用。
+    count_voters_added: 已新增 %{count} 位元投票者
+    poll_type_created: "%{poll_type} 已創建"
+    poll_type_started: "%{poll_type} 已開始"
+    poll_type_updated: "%{poll_type} 已更新"
+    reason_prompt: 原因提示
+    each_option_has_own_reason_prompt: 每個選項都有其各自的原因提示。編輯選項以查看或變更其提示。
+    anonymous_voting: 匿名投票
+    votes_are_anonymous: 投票是匿名的
+    vote_reason: 投票原因
+    quorum_tip_vote_share_requirement: 提示：您也可以指定提案通過所需的同意等級。編輯選項以定義投票份額要求
+    how_much_time_to_vote: 您會給人們多少時間投票？
+    default_duration_in_days_hint: 人們需要多少天的時間進行投票？
+    define_minimum_and_maxmimum_score: 定義投票者可以給出選項的最低和最高分數
+    how_many_points_does_each_voter_have_to_allocate: 每個選民需要分配多少分？
+    anonymous_voting_description: 顯示投票及其原因，但不顯示投票者。 %{poll_type} 開始後無法變更。
+    vote_reason_description: 請人們分享他們投票的理由，或提供更多資訊。
+    hide_results_description: 如果您希望人們投票時不看到其他人的投票情況，您可以隱藏結果。
+    process_helptext: 命名並描述用於運行此投票的過程。
+    reminder_helptext: 在截止日期前 24 小時發送「即將結束」通知。這可以提高參與度，並為人們創造重新考慮自己立場的機會。
+  poll_receipts_page:
+    verify_participants: 驗證參與者
+    see_votes_if_quorum_reached: 如果投票已結束且達到法定人數，您將看到誰投了票。
+    voter_name: 選民姓名
+    voter_email: 選民電子郵件
+    vote_cast: 投票結果
+    member_since: 會員起始日期
+    invited_by: 受邀者
+    invited_on: 受邀於
+    no_receipts: 此匿名投票在驗證功能出現之前就已關閉，因此無法進行驗證。

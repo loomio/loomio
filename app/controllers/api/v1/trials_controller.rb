@@ -1,32 +1,32 @@
 class Api::V1::TrialsController < Api::V1::RestfulController
   def create
-    email = params[:user_email].strip
+    trial = Trial.new(trial_params)
 
-    user = User.verified.find_by(email: email)
-    if !user
-      user = User.where(email_verified: false, email: email).first_or_create
-      user.name = params[:user_name].strip
-      user.legal_accepted = true
-      user.email_newsletter = !!params[:newsletter]
-      # user.require_valid_signup = true
-      user.save!
+    trial.current_user = current_user
+
+    if trial.valid?
+      user = trial.current_or_create_user
+      group = trial.create_group
+      group_path = group.handle ? group_handle_path(group.handle) : group_path(group)
+      render json: { group_path: group_path }
+    else
+      render json: { errors: trial.errors.as_json }, status: :unprocessable_entity
     end
+  end
 
-    raise "you said I'd have a user by now" unless user && user.valid?
-
-    group = Group.new
-    group.assign_attributes_and_files(params.require(:group).permit(permitted_params.group_attributes))
-    group.group_privacy = "secret"
-    group.category = params[:group_category] || 'other'
-    group.info['how_did_you_hear_about_loomio'] = params[:how_did_you_hear_about_loomio]
-
-    group.handle = GroupService.suggest_handle(name: group.name, parent_handle: nil)
-    GroupService.create(group: group, actor: user, skip_authorize: true)
-
-    raise "start trial failed" unless group.valid?
-
-    group_path = group.handle ? group_handle_path(group.handle) : group_path(group)
-
-    render json: {success: :ok, group_path: group_path}
+  private
+  def trial_params
+    params.delete(:trial)
+    params.delete(:format) # I really dont know where these params come from
+    params.permit(
+      :user_name,
+      :user_email,
+      :user_email_newsletter,
+      :user_legal_accepted,
+      :group_name,
+      :group_description,
+      :group_category,
+      :group_how_did_you_hear_about_loomio,
+    )
   end
 end

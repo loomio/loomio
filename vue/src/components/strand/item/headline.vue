@@ -1,14 +1,15 @@
 <script lang="js">
 import { eventHeadline, eventTitle, eventPollType } from '@/shared/helpers/helptext';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
-import Records from '@/shared/services/records';
 
 export default {
   props: {
     event: Object,
     eventable: Object,
     collapsed: Boolean,
-    dateTime: Date
+    dateTime: Date,
+    focused: Boolean,
+    unread: Boolean
   },
 
   computed: {
@@ -44,7 +45,6 @@ export default {
 <template lang="pug">
 h3.strand-item__headline.thread-item__title.text-body-2.pb-1(tabindex="-1")
   div.d-flex.align-center
-    //- common-icon(v-if="event.pinned" name="mdi-pin")
     slot(name="headline")
       span.strand-item__headline.text-medium-emphasis(v-html='headline')
     space(v-if="isDelegate")
@@ -53,6 +53,7 @@ h3.strand-item__headline.thread-item__title.text-body-2.pb-1(tabindex="-1")
     mid-dot.text-medium-emphasis
     router-link.text-medium-emphasis.text-body-2(:to='link')
       time-ago(:date='datetime')
+    v-badge(v-if="unread" variant="tonal" color="info" inline location="right" :content="$t('thread_item.new')")
     mid-dot(v-if="event.pinned")
     common-icon.text--disabled(v-if="event.pinned" name="mdi-pin-outline")
 

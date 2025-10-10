@@ -3,7 +3,7 @@ import PollService    from '@/shared/services/poll_service';
 import AbilityService from '@/shared/services/ability_service';
 import EventBus       from '@/shared/services/event_bus';
 import EventService from '@/shared/services/event_service';
-import { pickBy, assign } from 'lodash-es';
+import { pickBy, assign, omit } from 'lodash-es';
 import WatchRecords from '@/mixins/watch_records';
 import UrlFor from '@/mixins/url_for';
 
@@ -20,7 +20,9 @@ export default {
     this.watchRecords({
       collections: ["stances", "polls"],
       query: () => {
-        this.pollActions = PollService.actions(this.poll, this, this.event);
+        const pollActions = PollService.actions(this.poll, this, this.event);
+        this.editStanceAction = pollActions["edit_stance"]
+        this.pollActions = omit(PollService.actions(this.poll, this, this.event), "edit_stance");
         this.eventActions = EventService.actions(this.event, this);
         this.myStance = this.poll.myStance();
       }
@@ -51,7 +53,7 @@ export default {
       );
     },
     dockActions() {
-      return pickBy(this.pollActions, v => v.dock);
+      return pickBy(omit(this.pollActions, 'edit_stance'), v => v.dock);
     }
   }
 };
@@ -62,7 +64,7 @@ export default {
 section.strand-item.poll-created
   .d-flex.justify-space-between
     .poll-common-card__title.text-h6.pb-1(tabindex="-1")
-      router-link.underline-on-hover(:to="urlFor(poll)" )
+      router-link.underline-on-hover.text-high-emphasis(:to="urlFor(poll)" )
         span(v-if='!poll.translation.title') {{poll.title}}
         translation(v-if="poll.translation.title", :model='poll', field='title')
   div(v-if="!collapsed")
@@ -78,6 +80,6 @@ section.strand-item.poll-created
     attachment-list(:attachments="poll.attachments")
     document-list(:model='poll')
     poll-common-chart-panel(:poll='poll')
-    poll-common-action-panel(:poll='poll')
-    action-dock.my-2(:actions="dockActions", :menu-actions="menuActions")
+    poll-common-action-panel(:poll='poll' :editStanceAction)
+    action-dock.my-2(:actions="dockActions" :menu-actions="menuActions" variant="tonal" color="primary")
 </template>

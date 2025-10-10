@@ -1,8 +1,6 @@
 <script lang="js">
 import PageLoader         from '@/shared/services/page_loader';
 import Records from '@/shared/services/records';
-import EventBus     from '@/shared/services/event_bus';
-import { parseISO } from 'date-fns';
 import { debounce } from 'lodash-es';
 import { I18n } from '@/i18n';
 import FormatDate from '@/mixins/format_date';
@@ -24,10 +22,10 @@ export default {
 
     return {
       stances: [],
-      per: 25,
+      per: 50,
       loader: null,
       pollOptionItems,
-      page: parseInt(this.$route.query.page) || 1, 
+      page: parseInt(this.$route.query.page) || 1,
       pollOptionId: parseInt(this.$route.query.poll_option_id) || null,
       name: this.$route.query.name
     };
@@ -46,7 +44,7 @@ export default {
   watch: {
     page(val, lastVal) {
       if (val === lastVal) { return; }
-      this.$router.replace({query: Object.assign({}, this.$route.query, {page: val})}); 
+      this.$router.replace({query: Object.assign({}, this.$route.query, {page: val})});
       this.fetch();
     },
 
@@ -54,14 +52,14 @@ export default {
       if (val === lastVal) { return; }
       this.page = 1;
       this.name = null;
-      this.$router.replace({query: Object.assign({}, this.$route.query, {poll_option_id: val, name: null})}); 
+      this.$router.replace({query: Object.assign({}, this.$route.query, {poll_option_id: val, name: null})});
       this.fetch();
     }
   },
 
   methods: {
     nameChanged() {
-      this.$router.replace({query: Object.assign({}, this.$route.query, {name: this.name})}); 
+      this.$router.replace({query: Object.assign({}, this.$route.query, {name: this.name})});
       this.fetch();
     },
 
@@ -130,7 +128,7 @@ export default {
           formatted-text.poll-common-stance-created__reason(:model="stance" column="reason")
           attachment-list(:attachments="stance.attachments")
     loading(v-if="loader.loading")
-    v-pagination(v-model="page", :length="totalPages", :disabled="totalPages == 1")
+    v-pagination(v-if="!totalPages != 1" v-model="page", :length="totalPages")
 </template>
 
 <style lang="sass">
