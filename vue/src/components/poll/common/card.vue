@@ -24,8 +24,12 @@ export default
       collections: ["stances", "outcomes"],
       query: records => {
         const actions = PollService.actions(this.poll, this)
+        if (this.poll.pollType == 'meeting') {
+          this.actions = actions
+        } else {
+          this.actions = omit(actions, "edit_stance");
+        }
         this.editStanceAction = actions['edit_stance'];
-        this.actions = omit(actions, 'edit_stance');
         this.myStance = this.poll.myStance() || Records.stances.build();
         return this.outcome = this.poll.outcome();
       }
@@ -77,7 +81,7 @@ v-card
     poll-common-outcome-panel(:outcome='outcome' v-if="outcome")
     poll-common-details-panel(:poll='poll')
     poll-common-chart-panel(:poll='poll')
-    poll-common-action-panel(:poll='poll' :editStanceAction="editStanceAction")
+    poll-common-action-panel(:poll='poll' :editStanceAction)
     action-dock.mt-4(
       color="primary"
       variant="tonal"

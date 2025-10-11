@@ -21,8 +21,12 @@ export default {
       collections: ["stances", "polls"],
       query: () => {
         const pollActions = PollService.actions(this.poll, this, this.event);
+        if (this.poll.pollType == 'meeting') {
+          this.pollActions = pollActions
+        } else {
+          this.pollActions = omit(pollActions, "edit_stance");
+        }
         this.editStanceAction = pollActions["edit_stance"]
-        this.pollActions = omit(PollService.actions(this.poll, this, this.event), "edit_stance");
         this.eventActions = EventService.actions(this.event, this);
         this.myStance = this.poll.myStance();
       }
@@ -53,7 +57,7 @@ export default {
       );
     },
     dockActions() {
-      return pickBy(omit(this.pollActions, 'edit_stance'), v => v.dock);
+      return pickBy(this.pollActions, v => v.dock);
     }
   }
 };
