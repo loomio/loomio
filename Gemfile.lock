@@ -518,7 +518,7 @@ GEM
     pwned (2.4.1)
     racc (1.8.1)
     rack (2.2.19)
-    rack-attack (6.7.0)
+    rack-attack (6.8.0)
       rack (>= 1.0, < 4)
     rack-session (1.0.2)
       rack (< 3)
