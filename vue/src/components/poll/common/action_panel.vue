@@ -57,9 +57,9 @@ export default
             // we have not made a clone yet. clone the vote for use in the form
             this.makeCloneStance();
           } else {
-            // we've already made a clone, which may need updating in these cases:
-            // clone is not cast, but real is cast. replace the clone
-            // clone is cast but the real is not. replace the clone
+            // we've already made a clone, which may need replacing in these cases:
+            // clone is not cast, but real is cast
+            // clone is cast but the real is not
             // both are cast, but real is newer
             if (
               (!this.stance.castAt && this.poll.myStance().castAt) ||
