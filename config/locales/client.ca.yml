@@ -2129,7 +2129,6 @@ ca:
     no_options: Encara no heu afegit cap opció.
     add_option_placeholder: Afegeix una nova opció
     minimum_stance_choices: Opcions per ordenar
-    minimum_stance_choices_helptext: Quantes opcions té el votant?
     minimum_stance_choices_hint: és a dir, classifica els teus 3 millors sabors de gelat
     ranked_choice_created: S'ha creat el vot preferencial
     ranked_choice_updated: S'ha actualitzat el vot preferencial
@@ -2141,6 +2140,9 @@ ca:
     pct_of_points: "% de punts"
     pct_of_votes_cast: "% de vots emesos"
     pct_of_voters: "% de votants amb dret a vot"
+    number_of_choices: Nombre d'opcions
+    how_many_ranking_positions_explained: 'Exemple: Si s''estableix a 3, cada votant pot valorar tres opcions. La primera opció obté 3 punts, la segona 2 i la tercera 1. Les opcions sense valorar obtenen 0 punts.'
+    minimum_stance_choices_helptext: Quantes opcions té cada votant?
   poll_meeting_time_field:
     add_time_slot: Afegeix una franja horària
     new_time_slot: Nova franja horària

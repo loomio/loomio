@@ -2129,7 +2129,6 @@ nl_NL:
     no_options: Je hebt nog geen opties toegevoegd.
     add_option_placeholder: Typ een nieuwe keuze
     minimum_stance_choices: Opties te rangschikken
-    minimum_stance_choices_helptext: Hoeveel keuzes krijgt de kiezer?
     minimum_stance_choices_hint: dat wil zeggen Rangschik uw top 3 smaken ijs
     ranked_choice_created: "'Keuzes rangschikken' aangemaakt"
     ranked_choice_updated: "'Keuzes rangschikken' geactualiseerd"
@@ -2141,6 +2140,9 @@ nl_NL:
     pct_of_points: "% van de punten"
     pct_of_votes_cast: "% van de uitgebrachte stemmen"
     pct_of_voters: "% van de stemgerechtigde kiezers"
+    number_of_choices: Aantal keuzes
+    how_many_ranking_positions_explained: 'Voorbeeld: Als dit op 3 staat, kan elke kiezer drie opties beoordelen. De eerste keuze krijgt 3 punten, de tweede 2 en de derde 1. Alle opties zonder beoordeling krijgen 0 punten.'
+    minimum_stance_choices_helptext: Hoeveel keuzes heeft elke kiezer?
   poll_meeting_time_field:
     add_time_slot: Tijdvenster toevoegen
     new_time_slot: Nieuw tijdvenster

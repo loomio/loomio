@@ -2383,9 +2383,9 @@ en:
     no_options: You haven't added any options yet.
     add_option_placeholder: Enter a new choice
     number_of_choices: Number of choices
-    how_many_ranking_positions_explained: How many ranked positions are available for the voter to fill? For example, if set to 3, voters can rank their top three choices.
+    how_many_ranking_positions_explained: "Example: If set to 3, each voter can rank three options. Their first choice gets 3 points, second gets 2, and third gets 1. Any unranked options get 0 points."
     minimum_stance_choices: Options to rank
-    minimum_stance_choices_helptext: How many choices does the voter get?
+    minimum_stance_choices_helptext: How many choices does each voter get?
     minimum_stance_choices_hint: i.e. Rank your top 3 flavours of ice cream
     ranked_choice_created: Ranked choice created
     ranked_choice_updated: Ranked choice updated

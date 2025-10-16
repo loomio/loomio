@@ -2102,7 +2102,6 @@ ru:
     no_options: Вы еще не добавили ни одного варианта.
     add_option_placeholder: Введите новый выбор
     minimum_stance_choices: Варианты ранжирования
-    minimum_stance_choices_helptext: Сколько вариантов выбора имеет избиратель?
     minimum_stance_choices_hint: т.е. Оцените 3 лучших вкуса мороженого
     ranked_choice_created: Рейтинговый выбор создан.
     ranked_choice_updated: Рейтинговый выбор обновлен.
@@ -2114,6 +2113,9 @@ ru:
     pct_of_points: "% баллов"
     pct_of_votes_cast: "% поданных голосов"
     pct_of_voters: "% имеющих право голоса избирателей"
+    number_of_choices: Количество вариантов выбора
+    how_many_ranking_positions_explained: 'Пример: если установлено значение 3, каждый избиратель может оценить три варианта. Первый вариант получает 3 балла, второй — 2, а третий — 1. Любые варианты без оценки получают 0 баллов.'
+    minimum_stance_choices_helptext: Сколько вариантов выбора есть у каждого избирателя?
   poll_meeting_time_field:
     add_time_slot: Добавить временной интервал
     new_time_slot: Новый временной интервал

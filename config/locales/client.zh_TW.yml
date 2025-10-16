@@ -2137,7 +2137,6 @@ zh_TW:
     no_options: 您尚未加入任何選項。
     add_option_placeholder: 輸入新選擇
     minimum_stance_choices: 要排序的選項
-    minimum_stance_choices_helptext: 選民有多少選擇？
     minimum_stance_choices_hint: 即為您最喜歡的 3 種冰淇淋口味進行排名
     ranked_choice_created: 已建立排序選擇
     ranked_choice_updated: 已更新排序選擇
@@ -2149,6 +2148,9 @@ zh_TW:
     pct_of_points: "% 點數"
     pct_of_votes_cast: 投票百分比
     pct_of_voters: 合格選民的百分比
+    number_of_choices: 選擇數量
+    how_many_ranking_positions_explained: 例如：如果設定為 3，則每位投票者可以對三個選項進行排名。第一個選項得 3 分，第二個得 2 分，第三個得 1 分。任何未排名的選項均得 0 分。
+    minimum_stance_choices_helptext: 每個選民有多少個選擇？
   poll_meeting_time_field:
     add_time_slot: 新增時間欄位
     new_time_slot: 新時間欄位

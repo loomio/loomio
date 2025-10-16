@@ -2150,7 +2150,6 @@ pt_BR:
     no_options: 'Você não configurou nenhuma opção ainda. '
     add_option_placeholder: Digite uma nova escolha
     minimum_stance_choices: Opções para classificar
-    minimum_stance_choices_helptext: Quantas escolhas o eleitor tem?
     minimum_stance_choices_hint: ou seja, classifique seus 3 principais sabores de sorvete
     ranked_choice_created: Enquete de classificação criada
     ranked_choice_updated: Enquete de classificação atualizada
@@ -2162,6 +2161,9 @@ pt_BR:
     pct_of_points: "% de pontos"
     pct_of_votes_cast: "% dos votos expressos"
     pct_of_voters: "% de eleitores elegíveis"
+    number_of_choices: Número de escolhas
+    how_many_ranking_positions_explained: 'Exemplo: Se definido como 3, cada eleitor pode classificar três opções. A primeira escolha recebe 3 pontos, a segunda, 2, e a terceira, 1. Quaisquer opções não classificadas recebem 0 pontos.'
+    minimum_stance_choices_helptext: Quantas opções cada eleitor tem?
   poll_meeting_time_field:
     add_time_slot: Adicionar intervalo de tempo
     new_time_slot: Nova opção de horário

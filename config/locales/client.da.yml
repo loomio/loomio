@@ -2102,7 +2102,6 @@ da:
     no_options: Du har ikke tilføjet nogen muligheder endnu.
     add_option_placeholder: Indtast et nyt valg
     minimum_stance_choices: Muligheder for at rangere
-    minimum_stance_choices_helptext: Hvor mange valgmuligheder får vælgeren?
     minimum_stance_choices_hint: dvs. Ranger dine top 3 varianter af is
     ranked_choice_created: Rangeringsvalg oprettet
     ranked_choice_updated: Rangeringsvalg opdateret
@@ -2114,6 +2113,9 @@ da:
     pct_of_points: "% af point"
     pct_of_votes_cast: "% af afgivne stemmer"
     pct_of_voters: "% af de stemmeberettigede"
+    number_of_choices: Antal valgmuligheder
+    how_many_ranking_positions_explained: 'Eksempel: Hvis den er indstillet til 3, kan hver vælger rangere tre muligheder. Deres førstevalg får 3 point, andetvalg får 2, og tredjevalg får 1. Alle ikke-rangerede muligheder får 0 point.'
+    minimum_stance_choices_helptext: Hvor mange valgmuligheder får hver vælger?
   poll_meeting_time_field:
     add_time_slot: Tilføj tidsrum
     new_time_slot: Nyt tidsrum

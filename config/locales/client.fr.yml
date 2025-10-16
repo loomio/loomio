@@ -2146,7 +2146,6 @@ fr:
     no_options: Vous n’avez pas encore ajouté d’options.
     add_option_placeholder: Saisissez un nouveau choix
     minimum_stance_choices: Options à classer
-    minimum_stance_choices_helptext: Combien de choix l’électeur obtient-il?
     minimum_stance_choices_hint: c’est-à-dire classez vos 3 meilleures saveurs de crème glacée
     ranked_choice_created: Classement par préférence créé
     ranked_choice_updated: Classement par préférence mis à jour
@@ -2158,6 +2157,9 @@ fr:
     pct_of_points: "% de points"
     pct_of_votes_cast: "% des votes exprimés"
     pct_of_voters: "% d'électeurs éligibles"
+    number_of_choices: Nombre de choix
+    how_many_ranking_positions_explained: 'Exemple : Si le nombre est fixé à 3, chaque votant peut classer trois options. Son premier choix obtient 3 points, le deuxième 2 et le troisième 1. Les options non classées ne reçoivent aucun point.'
+    minimum_stance_choices_helptext: Combien de choix chaque électeur a-t-il ?
   poll_meeting_time_field:
     add_time_slot: Ajouter un créneau
     new_time_slot: Nouveau créneau horaire

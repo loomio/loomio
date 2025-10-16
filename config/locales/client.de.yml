@@ -2137,7 +2137,6 @@ de:
     no_options: Du hast noch keine Option hinzugefügt.
     add_option_placeholder: Gebe eine neue Auswahl ein
     minimum_stance_choices: Zu priorisierende Optionen
-    minimum_stance_choices_helptext: Wie viele Wahlmöglichkeiten hat der Wähler?
     minimum_stance_choices_hint: Das heißt, bewerten Sie Ihre drei besten Eissorten
     ranked_choice_created: Prioritätensetzung erstellt
     ranked_choice_updated: Prioritätensetzung aktualisiert
@@ -2149,6 +2148,9 @@ de:
     pct_of_points: "% der Punkte"
     pct_of_votes_cast: "% der abgegebenen Stimmen"
     pct_of_voters: "% der Wahlberechtigten"
+    number_of_choices: Anzahl der Auswahlmöglichkeiten
+    how_many_ranking_positions_explained: 'Beispiel: Bei der Einstellung 3 kann jeder Wähler drei Optionen bewerten. Die erste Wahl erhält 3 Punkte, die zweite 2 und die dritte 1 Punkt. Alle nicht bewerteten Optionen erhalten 0 Punkte.'
+    minimum_stance_choices_helptext: Wie viele Auswahlmöglichkeiten hat jeder Wähler?
   poll_meeting_time_field:
     add_time_slot: Ergänze einen Zeitslot
     new_time_slot: Neues Zeitfenster

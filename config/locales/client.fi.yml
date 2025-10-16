@@ -2102,7 +2102,6 @@ fi:
     no_options: Et ole vielä lisännyt yhtään vaihtoehtoa.
     add_option_placeholder: Anna uusi valinta
     minimum_stance_choices: Sijoitusvaihtoehdot
-    minimum_stance_choices_helptext: Kuinka monta vaihtoehtoa äänestäjä saa?
     minimum_stance_choices_hint: eli Sijoita 3 parasta jäätelömakuasi
     ranked_choice_created: Sijoitettu valinta luotu
     ranked_choice_updated: Sijoitettu valinta päivitetty
@@ -2114,6 +2113,9 @@ fi:
     pct_of_points: "% pisteistä"
     pct_of_votes_cast: Annettujen äänien prosenttiosuus
     pct_of_voters: Äänioikeutettujen prosenttiosuus
+    number_of_choices: Vaihtoehtojen määrä
+    how_many_ranking_positions_explained: 'Esimerkki: Jos arvoksi asetetaan 3, jokainen äänestäjä voi arvioida kolme vaihtoehtoa. Ensimmäinen vaihtoehto saa 3 pistettä, toinen 2 ja kolmas 1. Arvioimattomat vaihtoehdot saavat 0 pistettä.'
+    minimum_stance_choices_helptext: Kuinka monta vaihtoehtoa kukin äänestäjä saa?
   poll_meeting_time_field:
     add_time_slot: Lisää aikaväli
     new_time_slot: Uusi aikaväli

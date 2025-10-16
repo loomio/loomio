@@ -2102,7 +2102,6 @@ el:
     no_options: Δεν έχετε προσθέσει ακόμα καμία επιλογή.
     add_option_placeholder: Εισαγάγετε μια νέα επιλογή
     minimum_stance_choices: Επιλογές κατάταξης
-    minimum_stance_choices_helptext: Πόσες επιλογές έχει ο ψηφοφόρος;
     minimum_stance_choices_hint: δηλ. Κατατάξτε τις 3 κορυφαίες γεύσεις παγωτού σας
     ranked_choice_created: Δημιουργήθηκε η κατάταξη επιλογή
     ranked_choice_updated: Η κατάταξη επιλογή ενημερώθηκε
@@ -2114,6 +2113,9 @@ el:
     pct_of_points: "% των πόντων"
     pct_of_votes_cast: "% των ψήφων που δόθηκαν"
     pct_of_voters: "% των επιλέξιμων ψηφοφόρων"
+    number_of_choices: Αριθμός επιλογών
+    how_many_ranking_positions_explained: 'Παράδειγμα: Εάν οριστεί σε 3, κάθε ψηφοφόρος μπορεί να κατατάξει τρεις επιλογές. Η πρώτη επιλογή του λαμβάνει 3 βαθμούς, η δεύτερη 2 και η τρίτη 1. Οποιεσδήποτε επιλογές που δεν έχουν καταταχθεί λαμβάνουν 0 βαθμούς.'
+    minimum_stance_choices_helptext: Πόσες επιλογές έχει κάθε ψηφοφόρος;
   poll_meeting_time_field:
     add_time_slot: Προσθήκη χρονοθυρίδας
     new_time_slot: Νέο χρονικό διάστημα

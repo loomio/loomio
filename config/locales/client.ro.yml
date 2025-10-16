@@ -2102,7 +2102,6 @@ ro:
     no_options: Nu ați adăugat încă nicio opțiune.
     add_option_placeholder: Introdu o nouă alegere
     minimum_stance_choices: Opțiuni de clasare
-    minimum_stance_choices_helptext: Câte opțiuni are alegătorul?
     minimum_stance_choices_hint: Adică Clasează-ți primele 3 arome de înghețată
     ranked_choice_created: S-a creat alegerea clasată
     ranked_choice_updated: Alegerea clasată a fost actualizată
@@ -2114,6 +2113,9 @@ ro:
     pct_of_points: "% din puncte"
     pct_of_votes_cast: "% din voturile exprimate"
     pct_of_voters: "% din alegătorii eligibili"
+    number_of_choices: Numărul de opțiuni
+    how_many_ranking_positions_explained: 'Exemplu: Dacă este setat la 3, fiecare alegător poate acorda trei opțiuni în clasament. Prima opțiune primește 3 puncte, a doua primește 2, iar a treia primește 1. Orice opțiuni neclasificate primesc 0 puncte.'
+    minimum_stance_choices_helptext: Câte opțiuni are fiecare alegător?
   poll_meeting_time_field:
     add_time_slot: Adăugați intervalul de timp
     new_time_slot: Nou interval orar
