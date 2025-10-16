@@ -312,7 +312,7 @@ ranked_choice:
   vote_method_hint_i18n: poll_common_form.voting_methods.ranked_choice_hint
   can_shuffle_options: true
   validate_minimum_stance_choices: true
-  require_all_choices: true
+  require_all_choices: false
   validate_min_score: true
   order_results_by: total_score_desc
   options_have_meaning: true

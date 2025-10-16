@@ -400,15 +400,18 @@ export default {
         :hint="$t('poll_common_form.choose_at_most')"
         :label="$t('poll_common_form.maximum_choices')")
 
-  .d-flex.align-center(v-if="poll.pollType == 'ranked_choice'")
-    v-text-field.lmo-number-input(
-      v-model="poll.minimumStanceChoices"
-      :label="$t('poll_ranked_choice_form.minimum_stance_choices_helptext')"
-      :hint="$t('poll_ranked_choice_form.minimum_stance_choices_hint')"
-      type="number"
-      :min="1"
-      :max="poll.pollOptionNames.length")
-    validation-errors(:subject="poll", field="minimumStanceChoices")
+  template(v-if="poll.pollType == 'ranked_choice'")
+    v-divider.my-4
+    p.mt-4.text-subtitle-1.mb-4(v-t="'poll_ranked_choice_form.minimum_stance_choices_helptext'")
+    .text-body-2.pb-4.text-medium-emphasis(v-t="'poll_ranked_choice_form.how_many_ranking_positions_explained'")
+    .d-flex.align-center(v-if="poll.pollType == 'ranked_choice'")
+      v-text-field.lmo-number-input(
+        v-model="poll.minimumStanceChoices"
+        :label="$t('poll_ranked_choice_form.number_of_choices')"
+        type="number"
+        :min="1"
+        :max="poll.pollOptionNames.length")
+      validation-errors(:subject="poll", field="minimumStanceChoices")
 
   template(v-if="poll.pollType == 'dot_vote'")
     v-divider.my-4
@@ -417,6 +420,7 @@ export default {
     validation-errors(:subject="poll" field="dotsPerPerson")
 
   template(v-if="poll.config().allow_none_of_the_above")
+    v-divider.my-4
     v-checkbox.poll-settings-allow-none-of-the-above(
       hide-details
       v-model="poll.showNoneOfTheAbove"
@@ -446,13 +450,12 @@ export default {
       :value="true"
       :label="$t('poll_common_settings.specified_voters_only_true')")
 
-  div(style="height: 64px")
+  div(style="height: 64px" v-if="poll.specifiedVotersOnly")
     .text-body-2.font-italic.text-medium-emphasis.mt-n4.py-4(
-      v-if="poll.specifiedVotersOnly"
       v-t="{path: 'poll_common_settings.invite_people_next', args: {poll_type: poll.translatedPollType()}}")
 
+  div(style="height: 64px" v-if="!poll.id && !poll.specifiedVotersOnly")
     v-checkbox.mt-n4.pb-0(
-      v-if="!poll.id && !poll.specifiedVotersOnly"
       :label="$t('poll_common_form.notify_everyone_when_poll_starts', {poll_type: poll.translatedPollType()})"
       v-model="poll.notifyRecipients")
 
