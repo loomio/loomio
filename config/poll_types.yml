@@ -325,7 +325,7 @@ ranked_choice:
     process_introduction_format: html
     poll_option_name_format: plain
     chart_type: bar
-    minimum_stance_choices: 2
+    minimum_stance_choices: 3
     min_score: 1
     default_duration_in_days: 3
     notify_on_closing_soon: 2
