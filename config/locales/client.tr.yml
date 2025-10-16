@@ -2102,7 +2102,6 @@ tr:
     no_options: Henüz herhangi bir seçenek eklemediniz.
     add_option_placeholder: Yeni bir seçim girin
     minimum_stance_choices: Sıralama seçenekleri
-    minimum_stance_choices_helptext: Seçmenin kaç seçeneği var?
     minimum_stance_choices_hint: yani en iyi 3 dondurma çeşidini sıralayın
     ranked_choice_created: Dereceli seçim oluşturuldu
     ranked_choice_updated: Dereceli seçimi güncellendi
@@ -2114,6 +2113,9 @@ tr:
     pct_of_points: puanların %'si
     pct_of_votes_cast: Verilen oyların yüzdesi
     pct_of_voters: Uygun seçmenlerin yüzdesi
+    number_of_choices: Seçim sayısı
+    how_many_ranking_positions_explained: 'Örnek: 3 olarak ayarlanırsa, her seçmen üç seçeneği sıralayabilir. İlk tercih 3 puan, ikinci tercih 2 puan ve üçüncü tercih 1 puan alır. Sıralanmamış seçenekler 0 puan alır.'
+    minimum_stance_choices_helptext: Her seçmene kaç seçenek veriliyor?
   poll_meeting_time_field:
     add_time_slot: Zaman aralığı ekle
     new_time_slot: Yeni zaman dilimi

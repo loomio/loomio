@@ -2132,7 +2132,6 @@ it:
     no_options: Non hai ancora aggiunto nessuna opzione.
     add_option_placeholder: Inserisci una nuova scelta
     minimum_stance_choices: Opzioni di classifica
-    minimum_stance_choices_helptext: Quante scelte ha l'elettore?
     minimum_stance_choices_hint: ie Classifica i tuoi primi 3 gusti di gelato
     ranked_choice_created: Scelta di preferenze creata
     ranked_choice_updated: Scelta di preferenze aggiornata
@@ -2144,6 +2143,9 @@ it:
     pct_of_points: "% di punti"
     pct_of_votes_cast: "% dei voti espressi"
     pct_of_voters: "% degli aventi diritto al voto"
+    number_of_choices: Numero di scelte
+    how_many_ranking_positions_explained: 'Esempio: se impostato su 3, ogni elettore può classificare tre opzioni. La prima scelta ottiene 3 punti, la seconda 2 e la terza 1. Tutte le opzioni non classificate ottengono 0 punti.'
+    minimum_stance_choices_helptext: Quante scelte ha a disposizione ogni elettore?
   poll_meeting_time_field:
     add_time_slot: Aggiungi un periodo di tempo
     new_time_slot: Nuovo periodo di tempo

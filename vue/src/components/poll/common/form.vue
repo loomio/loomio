@@ -402,7 +402,7 @@ export default {
 
   template(v-if="poll.pollType == 'ranked_choice'")
     v-divider.my-4
-    p.mt-4.text-subtitle-1.mb-4(v-t="'poll_ranked_choice_form.minimum_stance_choices_helptext'")
+    p.mt-4.text-subtitle-1.mb-2(v-t="'poll_ranked_choice_form.minimum_stance_choices_helptext'")
     .text-body-2.pb-4.text-medium-emphasis(v-t="'poll_ranked_choice_form.how_many_ranking_positions_explained'")
     .d-flex.align-center(v-if="poll.pollType == 'ranked_choice'")
       v-text-field.lmo-number-input(
