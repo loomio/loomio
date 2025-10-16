@@ -92,7 +92,7 @@ export default
     makeCloneStance() {
       this.stance = this.poll.myStance().clone();
       if (this.$route.params.poll_option_id) {
-        stance.choose(this.$route.params.poll_option_id);
+        this.stance.choose(this.$route.params.poll_option_id);
       }
     }
   }
