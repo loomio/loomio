@@ -130,7 +130,8 @@ export default
           :size="28"
           :poll="poll"
           :stance-choice="stance.stanceChoice()"
-          verbose)
+          verbose
+        )
         poll-common-stance-choices(v-else :stance='stance')
       .d-flex.align-center
         span.text-truncate.text-medium-emphasis {{strippedReason}}
