@@ -76,8 +76,8 @@ export default
           v-for="poll in votePolls",
           :key="poll.id"
         )
+      template(v-if='votePolls.length == 0 && !loader.loading')
         v-card-text(
-          v-if="votePolls.length == 0",
           v-t="'dashboard_page.no_polls_to_vote_on'"
         )
       template(v-if="otherPolls.length")
