@@ -180,7 +180,7 @@ pt_BR:
   common:
     value: "%{value}"
     admin_menu: Menu de administração
-    api_docs: Documentos da API
+    api_docs: Documentação da API
     prefix_eg: por exemplo %{val}
     are_you_sure: Tem certeza?
     loomio_help: Loomio ajuda
@@ -208,7 +208,7 @@ pt_BR:
     attachments: Anexos
     template: Modelo
     links: Links
-    active_time_ago: Ativo pela última vez há %{time_ago}
+    active_time_ago: Última atividade %{time_ago}
     confirm_discard_changes: Descartar suas alterações?
     something_went_wrong: Ué! algo deu errado
     check_for_errors_and_try_again: Verifique se há erros no formulário e tente novamente
@@ -257,7 +257,7 @@ pt_BR:
     total: Total
     action:
       print: Imprimir
-      preview: Visualização
+      preview: Pré-visualizar
       pin: Fixar
       unpin: Desafixar
       search: Pesquisar
@@ -265,7 +265,7 @@ pt_BR:
       back: Voltar
       next: Próximo
       close: Encerrar
-      reopen: Reaberto
+      reopen: Reabrir
       save: Salvar
       move: Mover
       save_changes: Salvar mudanças
@@ -553,7 +553,7 @@ pt_BR:
     more_groups: Mais grupos
     template_gallery: Galeria de modelos
     examples_and_templates: Exemplos e modelos
-    help_docs: Documentos de ajuda
+    help_docs: Documentação de ajuda
     a_detailed_guide_to_loomio: Um guia detalhado do Loomio
     talk_to_the_loomio_team: Fale com a equipe Loomio
     aria_labels:
@@ -584,7 +584,7 @@ pt_BR:
     start_decision: Iniciar decisão
   search_modal:
     all_content: Todo o conteúdo
-    best_match: Melhor partida
+    best_match: Melhor resultado
     any_tag: Qualquer etiqueta
     all_subgroups: Todos os subgrupos
     parent_only: Somente pai
@@ -635,7 +635,7 @@ pt_BR:
     beta_collab: " \U0001F9EA Recursos beta ativados!"
     outcomes: Resultados
     theme: Tema
-    light: Luz
+    light: Claro
     dark: Escuro
     light_blue: Azul claro
     dark_blue: Azul escuro
@@ -1048,7 +1048,7 @@ pt_BR:
     add_row_after: Adicionar linha abaixo
     remove_row: Eliminar linha
     merge_selected: Mesclar células selecionadas
-    wysiwyg: visualizar
+    wysiwyg: Editor de texto rico
     edit_markdown: Editar Markdown
     markdown_confirm: Uma parte da formatação pode se perder na conversão entre a visualização para markdown.
     upload_failed: Envio falhou
@@ -1514,6 +1514,7 @@ pt_BR:
     submit_delete: Deletar minha conta agora
     submit_deactivate: Desative minha conta agora
   email_settings_page:
+    never: Nunca
     monday: Segunda-feira
     tuesday: Terça-feira
     wednesday: Quarta-feira
@@ -2076,7 +2077,7 @@ pt_BR:
     reminder_sent: Notificação de lembrete enviado
   poll_common_set_outcome_panel:
     enter_outcome: Digite o resultado
-    poll_type: Esta%{poll_type} foi encerrada. Reserve um tempo para considerar os resultados e, em seguida, compartilhe um resultado para que as pessoas saibam o que acontecerá a seguir.
+    poll_type: Esta %{poll_type} foi encerrada. Reserve um tempo para considerar os resultados e, em seguida, compartilhe um resultado para que as pessoas saibam o que acontecerá a seguir.
     enter_an_outcome: Insira um resultado
   poll_common_outcome_form:
     review_due_in_days: Rever a decisão após quantos dias?
