@@ -21,6 +21,7 @@ module Ability
     prepend Ability::Task
     prepend Ability::PollTemplate
     prepend Ability::DiscussionTemplate
+    prepend Ability::ReceivedEmail
 
     def initialize(user)
       @user = user

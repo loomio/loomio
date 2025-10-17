@@ -140,6 +140,24 @@ describe ReceivedEmailsController do
       expect(e.group_id).to eq group.id
     end
 
+    it "email from alias creates notification" do
+      post :create, params: mailin_params(
+        from: 'alias@gmail.com',
+        to: "#{group.handle}@#{ENV['REPLY_HOSTNAME']}",
+        subject: "the topic at hand",
+        body: "greetings earthlings"
+      )
+
+      email = ReceivedEmail.last
+      expect(email.released).to eq false
+      expect(email.group_id).to eq group.id
+
+      expect(Event.where(kind: 'unknown_sender').count).to eq 1
+      expect(Notification.count).to eq 1
+      assert group.admins.first.group_ids.include? ReceivedEmail.first.group_id
+      assert group.admins.first.can? :show, ReceivedEmail.first
+    end
+
     # it "with existing subject adds comment to discussion" do
     # end
 
