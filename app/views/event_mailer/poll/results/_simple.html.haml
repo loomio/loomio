@@ -74,7 +74,7 @@
             - when 'voter_percent'
               %td.text-right #{option[:voter_percent].round}
             - when 'score_percent', 'votes_cast_percent'
-              %td.text-right #{option[:score_percent].round}
+              %td.text-right #{ option[:score_percent].nil? ? '' : option[:score_percent].round }
             - when 'voters'
               %td.text-left
                 - User.where(id: option[:voter_ids]).limit(20).each do |user|
