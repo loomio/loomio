@@ -97,7 +97,7 @@ export default {
           td.text-right(v-if="col == 'votes' || col == 'voter_count'") {{option.voter_count}}
           td.text-right(v-if="col == 'average'") {{Math.round((option.average + Number.EPSILON) * 100) / 100}}
           td.text-right(v-if="col == 'voter_percent'") {{option.voter_percent.toFixed(0)}}%
-          td.text-right(v-if="col == 'score_percent' || col == 'votes_cast_percent'") {{option.score_percent.toFixed(0)}}%
+          td.text-right(v-if="col == 'score_percent' || col == 'votes_cast_percent'") {{option.score_percent === null ? '' : option.score_percent.toFixed(0) + "%"}}
           td.text-right.d-none.d-sm-table-cell(v-if="col == 'voters'")
             div.poll-common-chart-table__voter-avatars
               user-avatar.float-left(v-for="id in option.voter_ids", :key="id", :user="users[id]", :size="24" no-link)
