@@ -9,6 +9,22 @@ class Api::V1::StancesController < Api::V1::RestfulController
     update_response
   end
 
+  def latest_stance_events
+    stances = Stance.where(
+      participant_id: current_user.id,
+      poll_id: @event.eventable.poll_id
+    ).order(id: :desc).limit(5)
+    Event.where(eventable: stances).order(id: :desc).limit(5)
+  end
+
+  def update_response
+    if resource.errors.empty?
+      render json: latest_stance_events, scope: default_scope, each_serializer: serializer_class, root: serializer_root, meta: meta.merge({root: serializer_root})
+    else
+      respond_with_errors
+    end
+  end
+
   def uncast
     @stance = current_user.stances.latest.find(params[:id])
     StanceService.uncast(stance: @stance, actor: current_user)
