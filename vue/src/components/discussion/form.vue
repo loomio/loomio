@@ -96,6 +96,10 @@ export default {
   },
 
   methods: {
+    validate(field) {
+      return [ () => this.discussion.errors[field] === undefined || this.discussion.errors[field][0] ]
+    },
+
     discardDraft() {
       if (confirm(I18n.global.t('formatting.confirm_discard'))) {
         EventBus.$emit('resetDraft', 'discussion', this.discussion.id, 'description', this.discussion.description);
@@ -104,6 +108,8 @@ export default {
 
     submit() {
       const actionName = this.discussion.id ? 'updated' : 'created';
+      this.discussion.setErrors();
+      this.$refs.form.resetValidation();
       this.discussion.save().then(data => {
         const discussionKey = data.discussions[0].key;
         EventBus.$emit('closeModal');
@@ -112,10 +118,10 @@ export default {
           Flash.success(`discussion_form.messages.${actionName}`);
           this.$router.push(this.urlFor(discussion));
         });
-      }).catch( error => {
-        Flash.warning('poll_common_form.please_review_the_form');
-        console.error(error);
-      });
+      }).catch(error => {
+        this.$refs.form.validate();
+        Flash.error('common.check_for_errors_and_try_again');
+      })
     },
 
     updateGroupItems() {
@@ -182,72 +188,72 @@ export default {
 </script>
 
 <template lang="pug">
-v-card.discussion-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()" :title="cardTitle")
-  template(v-slot:append)
-    dismiss-modal-button(
-      v-if="!isPage"
-      aria-hidden='true'
-      :model="discussion")
-    v-btn(
-      v-if="isPage && discussion.id"
-      icon
-      variant="text"
-      aria-hidden='true'
-      :to="urlFor(discussion)"
-    )
-      common-icon(name="mdi-close")
-    v-btn.back-button(variant="text" v-if="isPage && $route.query.return_to" icon :aria-label="$t('common.action.cancel')" :to='$route.query.return_to')
-      common-icon(name="mdi-close")
-
-  v-card-item
-    thread-template-help-panel.mb-8(v-if="discussionTemplate" :discussion-template="discussionTemplate")
-    v-select.pb-4(
-      :disabled="!!discussion.id"
-      v-model="discussion.groupId"
-      :items="groupItems"
-      :label="$t('common.group')"
-      persistent-hint
-    )
-    //- :hint="discussion.groupId ? $t('announcement.form.visible_to_group', {group: discussion.group().name}) : $t('announcement.form.visible_to_guests')"
-
-    div(v-if="showUpgradeMessage")
-      p(v-if="maxThreadsReached" v-html="$t('discussion.max_threads_reached', {upgradeUrl: upgradeUrl, maxThreads: maxThreads})")
-      p(v-if="!subscriptionActive" v-html="$t('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
-
-    .discussion-form__group-selected(v-if='!showUpgradeMessage')
-      v-text-field#discussion-title.discussion-form__title-input(
-        :label="$t('discussion_form.title_label')"
-        :placeholder="titlePlaceholder"
-        :rules="titleRules"
-        v-model='discussion.title' maxlength='255' required
+v-form(ref="form" @submit.prevent="submit")
+  v-card.discussion-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()" :title="cardTitle")
+    template(v-slot:append)
+      dismiss-modal-button(
+        v-if="!isPage"
+        aria-hidden='true'
+        :model="discussion")
+      v-btn(
+        v-if="isPage && discussion.id"
+        icon
+        variant="text"
+        aria-hidden='true'
+        :to="urlFor(discussion)"
       )
-      validation-errors(:subject='discussion' field='title')
+        common-icon(name="mdi-close")
+      v-btn.back-button(variant="text" v-if="isPage && $route.query.return_to" icon :aria-label="$t('common.action.cancel')" :to='$route.query.return_to')
+        common-icon(name="mdi-close")
 
-      tags-field(:model="discussion")
-
-      lmo-textarea(
-        :model='discussion'
-        field="description"
-        :label="$t('discussion_form.context_label')"
-        :placeholder="$t('discussion_form.context_placeholder')"
-        :shouldReset="shouldReset"
+    v-card-item
+      thread-template-help-panel.mb-8(v-if="discussionTemplate" :discussion-template="discussionTemplate")
+      v-select.pb-4(
+        :disabled="!!discussion.id"
+        v-model="discussion.groupId"
+        :items="groupItems"
+        :label="$t('common.group')"
+        persistent-hint
       )
+      //- :hint="discussion.groupId ? $t('announcement.form.visible_to_group', {group: discussion.group().name}) : $t('announcement.form.visible_to_guests')"
 
-      common-notify-fields(v-if="loaded" :model="discussion" :initial-recipients="initialRecipients")
-  v-card-actions
-    help-btn(path='en/user_manual/threads/starting_threads')
-    v-btn.discussion-form__edit-layout(v-if="discussion.id" @click="openEditLayout")
-      span(v-t="'thread_arrangement_form.edit'")
-    v-spacer
-    v-btn.mr-2(@click="discardDraft" variant="text")
-      span(v-t="'common.reset'")
-    v-btn.discussion-form__submit(
-      variant="elevated"
-      color="primary"
-      @click="submit()"
-      :disabled="submitIsDisabled"
-      :loading="discussion.processing"
-    )
-      span(v-if="!discussion.id" v-t="'discussion_form.start_thread'")
-      span(v-if="discussion.id" v-t="'common.action.save'")
+      div(v-if="showUpgradeMessage")
+        p(v-if="maxThreadsReached" v-html="$t('discussion.max_threads_reached', {upgradeUrl: upgradeUrl, maxThreads: maxThreads})")
+        p(v-if="!subscriptionActive" v-html="$t('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
+
+      .discussion-form__group-selected(v-if='!showUpgradeMessage')
+        v-text-field#discussion-title.discussion-form__title-input(
+          :label="$t('discussion_form.title_label')"
+          :placeholder="titlePlaceholder"
+          :rules="validate('title')"
+          v-model='discussion.title' maxlength='255'
+        )
+
+        tags-field(:model="discussion")
+
+        lmo-textarea(
+          :model='discussion'
+          field="description"
+          :label="$t('discussion_form.context_label')"
+          :placeholder="$t('discussion_form.context_placeholder')"
+          :shouldReset="shouldReset"
+        )
+
+        common-notify-fields(v-if="loaded" :model="discussion" :initial-recipients="initialRecipients")
+    v-card-actions
+      help-btn(path='en/user_manual/threads/starting_threads')
+      v-btn.discussion-form__edit-layout(v-if="discussion.id" @click="openEditLayout")
+        span(v-t="'thread_arrangement_form.edit'")
+      v-spacer
+      v-btn.mr-2(@click="discardDraft" variant="text")
+        span(v-t="'common.reset'")
+      v-btn.discussion-form__submit(
+        variant="elevated"
+        color="primary"
+        @click="submit()"
+        :disabled="submitIsDisabled"
+        :loading="discussion.processing"
+      )
+        span(v-if="!discussion.id" v-t="'discussion_form.start_thread'")
+        span(v-if="discussion.id" v-t="'common.action.save'")
 </template>
