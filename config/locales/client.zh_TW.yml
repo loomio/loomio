@@ -1749,8 +1749,8 @@ zh_TW:
     order_by: 群組排序由
   global:
     messages:
-      app_update: 新版的 Loomio 已發佈。請儲存您的工作並重新載入。
       reload: 重新整理
+      app_update: Loomio 新版本已發布。請重新加載。
   decision_tools_card:
     choose_type: 選擇投票類型
     title: 促進

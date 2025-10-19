@@ -1735,8 +1735,8 @@ he:
     order_by: סדר קבוצות לפי
   global:
     messages:
-      app_update: גרסה חדשה של Loomio שוחררה. נא לשמור את העבודה שלך ולטעון מחדש.
       reload: טען מחדש
+      app_update: גרסה חדשה של Loomio יצאה. אנא טען מחדש.
   decision_tools_card:
     choose_type: בחר סוג סקר
     title: לסייע

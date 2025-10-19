@@ -118,6 +118,32 @@ fi:
       email: ei ole kelvollinen sähköpostiosoite
       spoofed_media_type: Tiedoston sisältö ei vastaa sen tiedostonimeä
       pwned_password: Tämä salasana on aiemmin esiintynyt tietomurron yhteydessä, eikä sitä tule koskaan käyttää
+    '400':
+      title: Huono pyyntö
+      body: Emme valitettavasti ymmärtäneet pyyntöä.
+    '401':
+      title: Luvaton
+      body: Sinulla ei ole oikeutta käyttää tätä sivua. Sinun on ehkä kirjauduttava sisään.
+    '403':
+      title: Kielletty
+      body: Sinulla ei ole oikeutta käyttää tätä sivua. Sinun on ehkä kirjauduttava sisään.
+    '404':
+      body: Pyytämääsi kohdetta ei löytynyt. Näin voi käydä, jos ketju tai kysely on poistettu.
+    '410':
+      title: Mennyt
+      body: Tätä sivua ei enää ole olemassa
+    '417':
+      title: Selain ei ole yhteensopiva
+      body: Päivitä <a href="https://browser-update.org/update.html?force_outdated=true">selaimesi</a> käyttääksesi Loomiota
+    '422':
+      title: Käsittelemätön yksikkö
+      body: Haluamasi muutos hylättiin. Ehkä yritit muuttaa jotain, johon sinulla ei ollut käyttöoikeutta.
+    '429':
+      title: Liian monta pyyntöä
+      body: Olet valitettavasti ylittänyt tälle toiminnolle sallitun pyyntöjen enimmäismäärän minuutissa. Odota hetki ja yritä uudelleen.
+    '500':
+      title: Sisäinen palvelinvirhe
+      body: Olemme pahoillamme, mutta jokin meni pieleen. Olemme saaneet ilmoituksen tästä ongelmasta ja tutkimme sitä pian.
   group:
     error:
       handle_must_begin_with_parent_handle: Alkaa %{parent_handle}-

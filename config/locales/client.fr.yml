@@ -1760,8 +1760,8 @@ fr:
     order_by: Trier les groupes par
   global:
     messages:
-      app_update: Une nouvelle version de Loomio a été publiée. Veuillez enregistrer votre travail et recharger.
       reload: Recharger
+      app_update: Une nouvelle version de Loomio est disponible. Veuillez la recharger.
   decision_tools_card:
     choose_type: Choisissez le type de sondage
     title: 'Simplifier '

@@ -1716,8 +1716,8 @@ ru:
     order_by: Упорядочить группы по
   global:
     messages:
-      app_update: Вышла новая версия Loomio. Пожалуйста, сохраните вашу работу и перезагрузите.
       reload: Перезагрузить
+      app_update: Вышла новая версия Loomio. Пожалуйста, перезагрузите.
   decision_tools_card:
     choose_type: Выберите тип опроса
     title: Способствовать

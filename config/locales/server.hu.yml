@@ -118,6 +118,32 @@ hu:
       email: Nem érvényes e-mail cím
       spoofed_media_type: A fájl tartalma nem egyezik a fájlnévvel
       pwned_password: Ez a jelszó korábban adatvédelmi incidens során jelent meg, ezért soha nem szabad használni
+    '400':
+      title: Hibás kérés
+      body: Sajnáljuk, nem értettük a kérést.
+    '401':
+      title: Jogosulatlan
+      body: Nincs jogosultsága hozzáférni ehhez az oldalhoz. Lehet, hogy be kell jelentkeznie.
+    '403':
+      title: Tiltott
+      body: Nincs jogosultsága hozzáférni ehhez az oldalhoz. Lehet, hogy be kell jelentkeznie.
+    '404':
+      body: A kért elem nem található. Ez akkor fordulhat elő, ha egy hozzászólásláncot vagy szavazást töröltek.
+    '410':
+      title: Elmúlt
+      body: Ez az oldal már nem létezik
+    '417':
+      title: Böngésző nem kompatibilis
+      body: Kérjük <a href="https://browser-update.org/update.html?force_outdated=true">, frissítse böngészőjét</a> a Loomio használatához
+    '422':
+      title: Feldolgozhatatlan entitás
+      body: A kívánt módosítást elutasították. Lehet, hogy olyasmit próbált módosítani, amihez nem volt hozzáférése.
+    '429':
+      title: Túl sok kérés
+      body: Sajnáljuk, túllépte a művelethez percenként engedélyezett kérések maximális számát. Kérjük, várjon egy kicsit, majd próbálja újra.
+    '500':
+      title: Belső szerverhiba
+      body: Sajnáljuk, de valami hiba történt. Értesítettek minket a problémáról, és hamarosan kivizsgáljuk.
   group:
     error:
       handle_must_begin_with_parent_handle: 'A következővel kell kezdődnie: %{parent_handle}-'

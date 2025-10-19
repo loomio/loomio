@@ -1752,8 +1752,8 @@ es:
     order_by: Grupos ordenados por
   global:
     messages:
-      app_update: Se ha lanzado una nueva versión de Loomio. Por favor, guarde su trabajo y vuelva a cargar.
       reload: Actualizar
+      app_update: Se ha lanzado una nueva versión de Loomio. Por favor, recarga.
   decision_tools_card:
     choose_type: Elegir tipo de sondeo
     title: Facilitar

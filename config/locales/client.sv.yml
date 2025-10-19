@@ -1716,8 +1716,8 @@ sv:
     order_by: Beställ grupper efter
   global:
     messages:
-      app_update: En ny version av Loomio har släppts. Spara ditt arbete och ladda om.
       reload: Ladda om
+      app_update: En ny version av Loomio har släppts. Vänligen ladda om.
   decision_tools_card:
     choose_type: Välj omröstningstyp
     title: Främja

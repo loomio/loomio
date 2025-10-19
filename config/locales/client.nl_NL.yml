@@ -1741,8 +1741,8 @@ nl_NL:
     order_by: Sorteer groepen op
   global:
     messages:
-      app_update: Er is een nieuwe versie van Loomio uitgebracht. Sla uw werk op en laad het opnieuw.
       reload: Herladen
+      app_update: Er is een nieuwe versie van Loomio uitgebracht. Laad opnieuw.
   decision_tools_card:
     choose_type: Kies peiling type
     title: Faciliteren

@@ -1715,8 +1715,8 @@ ja:
     order_by: グループの順序付け
   global:
     messages:
-      app_update: Loomioの新バージョンがリリースされました。作業内容を保存してリロードしてください。
       reload: リロード
+      app_update: Loomioの新バージョンがリリースされました。リロードしてください。
   decision_tools_card:
     choose_type: 投票の種類を選択してください
     title: 促進する

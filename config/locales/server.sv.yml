@@ -118,6 +118,32 @@ sv:
       email: inte en giltig e-postadress
       spoofed_media_type: Innehållet i den filen matchar inte dess filnamn
       pwned_password: Detta lösenord har tidigare förekommit i ett dataintrång och bör aldrig användas
+    '400':
+      title: Felaktig begäran
+      body: Tyvärr kunde vi inte förstå den begäran.
+    '401':
+      title: Obehörig
+      body: Du har inte åtkomst till den här sidan. Du kan behöva logga in.
+    '403':
+      title: Förbjuden
+      body: Du har inte åtkomst till den här sidan. Du kan behöva logga in.
+    '404':
+      body: Det begärda objektet hittades inte. Detta kan hända om en tråd eller omröstning har tagits bort.
+    '410':
+      title: Borta
+      body: Den här sidan finns inte längre
+    '417':
+      title: Webbläsare inkompatibel
+      body: <a href="https://browser-update.org/update.html?force_outdated=true">Uppgradera din webbläsare</a> för att använda Loomio
+    '422':
+      title: Obearbetad enhet
+      body: Den ändring du ville ha avvisades. Du kanske försökte ändra något du inte hade tillgång till.
+    '429':
+      title: För många förfrågningar
+      body: Tyvärr har du överskridit det maximala antalet tillåtna förfrågningar per minut för den här åtgärden. Vänta en stund och försök igen.
+    '500':
+      title: Internt serverfel
+      body: Vi beklagar, men något gick fel. Vi har blivit informerade om det här problemet och vi kommer att titta på det inom kort.
   group:
     error:
       handle_must_begin_with_parent_handle: Måste börja med %{parent_handle}-

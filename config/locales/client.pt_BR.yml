@@ -1763,8 +1763,8 @@ pt_BR:
     order_by: Ordenar grupos por
   global:
     messages:
-      app_update: Uma nova versão do Loomio foi lançada. Salve seu trabalho e recarregue.
       reload: Recarregar
+      app_update: Uma nova versão do Loomio foi lançada. Recarregue.
   decision_tools_card:
     choose_type: Escolha o tipo de enquete
     title: Facilitar

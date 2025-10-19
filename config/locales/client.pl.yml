@@ -1741,8 +1741,8 @@ pl:
     order_by: Sortuj grupy według
   global:
     messages:
-      app_update: Wydano nową wersję Loomio. Zapisz swoją pracę i załaduj ponownie.
       reload: Załaduj ponownie
+      app_update: Nowa wersja Loomio została wydana. Proszę odświeżyć.
   decision_tools_card:
     choose_type: Wybierz typ ankiety
     title: Ułatwiaj

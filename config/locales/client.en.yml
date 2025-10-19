@@ -1838,7 +1838,7 @@ en:
     order_by: Order groups by
   global:
     messages:
-      app_update: A new version of Loomio has been released. Please save your work and reload.
+      app_update: A new version of Loomio has been released. Please reload.
       reload: Reload
 
   poll_receipts_page:

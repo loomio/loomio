@@ -1749,8 +1749,8 @@ de:
     order_by: Sortiere Gruppen nach
   global:
     messages:
-      app_update: Eine neue Version von Loomio wurde veröffentlicht. Bitte speichern Sie Ihre Arbeit und laden Sie sie erneut.
       reload: Reload
+      app_update: Eine neue Version von Loomio wurde veröffentlicht. Bitte neu laden.
   decision_tools_card:
     choose_type: Wähle den Abstimmungstyp
     title: Ermöglichen

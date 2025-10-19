@@ -1746,8 +1746,8 @@ it:
     order_by: Ornina i gruppi per
   global:
     messages:
-      app_update: È stata rilasciata una nuova versione di Loomio. Si prega di salvare il lavoro e ricaricare.
       reload: Ricaricare
+      app_update: È stata rilasciata una nuova versione di Loomio. Ricarica la pagina.
   decision_tools_card:
     choose_type: Scegli il tipo di sondaggio
     title: Agevolare

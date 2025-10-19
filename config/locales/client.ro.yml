@@ -1716,8 +1716,8 @@ ro:
     order_by: Ordonați grupurile după
   global:
     messages:
-      app_update: O nouă versiune de Loomio a fost lansată. Salvați-vă munca și reîncărcați.
       reload: Reîncărcați
+      app_update: O nouă versiune de Loomio a fost lansată. Vă rugăm să reîncărcați.
   decision_tools_card:
     choose_type: Alegeți tipul de sondaj
     title: Facilita

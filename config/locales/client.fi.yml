@@ -1716,8 +1716,8 @@ fi:
     order_by: Tilaa ryhmät mukaan
   global:
     messages:
-      app_update: Loomiosta on julkaistu uusi versio. Tallenna työsi ja lataa se uudelleen.
       reload: Lataa uudelleen
+      app_update: Loomiosta on julkaistu uusi versio. Lataa sivu uudelleen.
   decision_tools_card:
     choose_type: Valitse kyselyn tyyppi
     title: Helpottaa

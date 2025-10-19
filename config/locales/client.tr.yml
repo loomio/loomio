@@ -1716,8 +1716,8 @@ tr:
     order_by: 'Grupları şuna göre sırala:'
   global:
     messages:
-      app_update: Loomio'nun yeni bir sürümü yayınlandı. Lütfen çalışmanızı kaydedin ve yeniden yükleyin.
       reload: Tekrar yükle
+      app_update: Loomio'nun yeni sürümü yayınlandı. Lütfen yeniden yükleyin.
   decision_tools_card:
     choose_type: Anket türünü seçin
     title: Kolaylaştırmak

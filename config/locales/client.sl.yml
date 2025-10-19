@@ -1716,8 +1716,8 @@ sl:
     order_by: Razvrsti skupine po
   global:
     messages:
-      app_update: Izšla je nova različica Loomio. Prosimo, shranite svoje delo in znova naložite.
       reload: Ponovno naloži
+      app_update: Izšla je nova različica programa Loomio. Prosimo, ponovno naložite.
   decision_tools_card:
     choose_type: Izberite vrsto ankete
     title: Olajšati

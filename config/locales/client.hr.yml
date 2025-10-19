@@ -1716,8 +1716,8 @@ hr:
     order_by: Poredaj grupe prema
   global:
     messages:
-      app_update: Objavljena je nova verzija Loomija. Spremite svoj rad i ponovno učitajte.
       reload: Ponovno učitati
+      app_update: Objavljena je nova verzija Loomia. Molimo vas da ponovno učitate.
   decision_tools_card:
     choose_type: Odaberite vrstu ankete
     title: Olakšati

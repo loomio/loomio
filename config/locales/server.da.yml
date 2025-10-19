@@ -118,6 +118,32 @@ da:
       email: ikke en gyldig e-mailadresse
       spoofed_media_type: Indholdet af denne fil stemmer ikke overens med dens filnavn
       pwned_password: Denne adgangskode har tidligere vist sig i et databrud og bør aldrig bruges
+    '400':
+      title: Dårlig anmodning
+      body: Beklager, vi forstod ikke anmodningen.
+    '401':
+      title: Uberettiget
+      body: Du har ikke adgang til denne side. Du skal muligvis logge ind.
+    '403':
+      title: Forbudt
+      body: Du har ikke adgang til denne side. Du skal muligvis logge ind.
+    '404':
+      body: Den ønskede vare blev ikke fundet. Dette kan ske, hvis en tråd eller afstemning er blevet slettet.
+    '410':
+      title: Væk
+      body: Denne side findes ikke længere
+    '417':
+      title: Browser inkompatibel
+      body: <a href="https://browser-update.org/update.html?force_outdated=true">Opgrader venligst din browser</a> for at bruge Loomio
+    '422':
+      title: Ubehandlelig enhed
+      body: Den ønskede ændring blev afvist. Måske har du prøvet at ændre noget, du ikke havde adgang til.
+    '429':
+      title: For mange anmodninger
+      body: Beklager, du har overskredet det maksimalt tilladte antal anmodninger pr. minut for denne handling. Vent et øjeblik, og prøv igen.
+    '500':
+      title: Intern serverfejl
+      body: Vi beklager, men noget gik galt. Vi er blevet underrettet om dette problem, og vi vil se på det snarest.
   group:
     error:
       handle_must_begin_with_parent_handle: Skal begynde med %{parent_handle}-

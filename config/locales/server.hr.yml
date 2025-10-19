@@ -118,6 +118,32 @@ hr:
       email: nije važeća adresa e-pošte
       spoofed_media_type: Sadržaj te datoteke ne odgovara njenom nazivu
       pwned_password: Ova se zaporka već pojavila u povredi podataka i nikada se ne smije koristiti
+    '400':
+      title: Loš zahtjev
+      body: Žao nam je, nismo mogli razumjeti taj zahtjev
+    '401':
+      title: Neovlašteno
+      body: Nemate dopuštenje za pristup ovoj stranici. Možda ćete se morati prijaviti.
+    '403':
+      title: Zabranjeno
+      body: Nemate dopuštenje za pristup ovoj stranici. Možda ćete se morati prijaviti.
+    '404':
+      body: Tražena stavka nije pronađena. To se može dogoditi ako je tema ili anketa izbrisana.
+    '410':
+      title: Nestao
+      body: Ova stranica više ne postoji
+    '417':
+      title: Nekompatibilno s preglednikom
+      body: Molimo vas <a href="https://browser-update.org/update.html?force_outdated=true">da ažurirate svoj preglednik</a> kako biste mogli koristiti Loomio
+    '422':
+      title: Neobradivi entitet
+      body: Promjena koju ste željeli je odbijena. Možda ste pokušali promijeniti nešto čemu niste imali pristup.
+    '429':
+      title: Previše zahtjeva
+      body: Žao nam je, premašili ste maksimalni dopušteni broj zahtjeva u minuti za ovu radnju. Pričekajte malo i pokušajte ponovno.
+    '500':
+      title: Interna pogreška poslužitelja
+      body: Žao nam je, ali nešto je pošlo po zlu. Obaviješteni smo o ovom problemu i uskoro ćemo ga pogledati.
   group:
     error:
       handle_must_begin_with_parent_handle: Mora započeti s %{parent_handle}-

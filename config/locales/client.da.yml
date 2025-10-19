@@ -1716,8 +1716,8 @@ da:
     order_by: Bestil grupper efter
   global:
     messages:
-      app_update: En ny version af Loomio er blevet frigivet. Gem venligst dit arbejde og genindlæs.
       reload: Genopfrisk
+      app_update: En ny version af Loomio er blevet udgivet. Genindlæs venligst.
   decision_tools_card:
     choose_type: Vælg afstemningstype
     title: Facilitere

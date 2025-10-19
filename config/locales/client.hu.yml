@@ -1723,8 +1723,8 @@ hu:
     order_by: Csoportok rendezése szerint
   global:
     messages:
-      app_update: Megjelent a Loomio új verziója. Mentse el a munkáját, és töltse be újra.
       reload: Reload
+      app_update: Megjelent a Loomio új verziója. Kérjük, töltse be újra az oldalt.
   decision_tools_card:
     choose_type: Válassza ki a szavazás típusát
     title: Döntéstámogatás

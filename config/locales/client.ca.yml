@@ -1741,8 +1741,8 @@ ca:
     order_by: Endreça els grups per
   global:
     messages:
-      app_update: S'ha llançat una nova versió de Loomio. Deseu la vostra feina i torneu a carregar.
       reload: Recarrega
+      app_update: S'ha publicat una nova versió de Loomio. Si us plau, torneu a carregar.
   decision_tools_card:
     choose_type: Escull el tipus d'enquesta
     title: Organitzar
