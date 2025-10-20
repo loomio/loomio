@@ -17,23 +17,30 @@
     = raw vue_css_includes
     - if !params[:export] && !browser.bot?
       = raw vue_js_includes
+
+    :css
+      .text-anchor {
+        color: rgb(var(--v-theme-anchor)) !important;
+      }
   %body
-    #app.v-application.v-application--is-ltr.theme--auto
-      %div.v-application--wrap
-        %header.lmo-no-print.v-sheet.v-sheet--tile.theme--auto.v-toolbar.v-app-bar.v-app-bar--clipped.v-app-bar--elevate-on-scroll.v-app-bar--fixed.v-app-bar--hide-shadow.background{"data-booted" => "true", :style => "height: 56px; margin-top: 0px; transform: translateY(0px); left: 0px; right: 0px;"}
-          .v-toolbar__content{:style => "height: 56px;"}
-            .v-toolbar__title= AppConfig.theme[:site_name]
-            .spacer
-            .v-toolbar__items
-            %a.navbar__sign-in.v-btn.v-btn--flat.v-btn--text.theme--auto.v-size--default{:href => "?sign_in=1"}= t(:'navbar.sign_in')
-        = yield
-        %footer.v-footer.v-sheet.v-sheet--tile.theme--auto
-          .layout.justify-space-around
-            .powered-by.caption
-              %a{:href => "https://www.loomio.com?utm_source=#{ENV['CANONICAL_HOST']}&utm_campaign=appfooter}", :target => "_blank"}= t(:'powered_by.powered_by_loomio')
-              %span ·
-              %a{:href => AppConfig.theme[:privacy_url], :target => "_blank"}= t(:'powered_by.privacy_policy')
-              %span ·
-              %a{:href => AppConfig.theme[:terms_url], :target => "_blank"}= t(:'powered_by.terms_of_service')
-              %span ·
-              %a{:href => AppConfig.theme[:help_url], :target => "_blank"}= t(:'common.help')
+    #app(data-v-app)
+      %div.v-theme--auto.v-application.v-layout.v-layout--full-height.v-locale--is-ltr.app-is-booted
+        %div.v-application__wrap
+          -# %header.lmo-no-print.v-sheet.v-sheet--tile.theme--auto.v-toolbar.v-app-bar.v-app-bar--clipped.v-app-bar--elevate-on-scroll.v-app-bar--fixed.v-app-bar--hide-shadow.background{"data-booted" => "true", :style => "height: 56px; margin-top: 0px; transform: translateY(0px); left: 0px; right: 0px;"}
+          %header(class="px-4 v-toolbar v-toolbar--density-default bg-background v-theme--dark v-locale--is-ltr v-app-bar lmo-no-print")
+            .v-toolbar__content.d-flex.justify-space-between{:style => "height: 56px;"}
+              .v-toolbar__title= AppConfig.theme[:site_name]
+              .spacer
+              .v-toolbar__items
+              %a.navbar__sign-in.v-btn.v-btn--flat.v-btn--text.theme--auto.v-size--default{:href => "?sign_in=1"}= t(:'navbar.sign_in')
+          = yield
+          %footer.v-footer.theme--auto.text-body-2
+            .v-layout.justify-space-around
+              .powered-by.caption
+                %a{:href => "https://www.loomio.com?utm_source=#{ENV['CANONICAL_HOST']}&utm_campaign=appfooter}", :target => "_blank"}= t(:'powered_by.powered_by_loomio')
+                %span ·
+                %a{:href => AppConfig.theme[:privacy_url], :target => "_blank"}= t(:'powered_by.privacy_policy')
+                %span ·
+                %a{:href => AppConfig.theme[:terms_url], :target => "_blank"}= t(:'powered_by.terms_of_service')
+                %span ·
+                %a{:href => AppConfig.theme[:help_url], :target => "_blank"}= t(:'common.help')
