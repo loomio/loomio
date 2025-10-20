@@ -38,7 +38,7 @@ gem "sentry-sidekiq"
 gem 'http_accept_language'
 gem 'sprockets', '3.7.2'
 gem 'sprockets-rails', require: 'sprockets/railtie'
-gem 'sass-rails'
+gem 'dartsass-sprockets'
 gem 'uuidtools'
 gem 'maxminddb'
 gem "cld"
