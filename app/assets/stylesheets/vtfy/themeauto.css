@@ -60,6 +60,10 @@
     --v-theme-on-code: 0, 0, 0;
 }
 
+.text-anchor {
+  color: rgb(var(--v-theme-anchor)) !important;
+}
+
 
 @media (prefers-color-scheme: dark) {
   :root {
