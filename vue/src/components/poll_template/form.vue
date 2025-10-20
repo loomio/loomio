@@ -67,6 +67,9 @@ export default {
   },
 
   methods: {
+    validate(field) {
+      return [ () => this.pollTemplate.errors[field] === undefined || this.pollTemplate.errors[field][0] ]
+    },
     discardDraft() {
       if (confirm(I18n.global.t('formatting.confirm_discard'))) {
         EventBus.$emit('resetDraft', 'pollTemplate', this.pollTemplate.id, 'details', this.pollTemplate.details);
@@ -136,8 +139,8 @@ export default {
         Flash.success("poll_common.poll_template_saved");
         this.$router.push(this.$route.query.return_to);
       }).catch(error => {
-        Flash.warning('poll_common_form.please_review_the_form');
-        console.error(error);
+        this.$refs.form.validate();
+        Flash.error('common.check_for_errors_and_try_again');
       });
     }
   },
@@ -203,7 +206,7 @@ export default {
 
 </script>
 <template lang="pug">
-.poll-template-form
+v-form.poll-template-form(ref="form" @submit.prevent="submit")
   .d-flex
     v-breadcrumbs.px-0.py-0(:items="breadcrumbs")
       template(v-slot:divider)
@@ -230,14 +233,16 @@ export default {
   v-text-field(
      v-model="pollTemplate.processName"
     :label="$t('poll_common_form.process_name')"
-    :hint="$t('poll_common_form.process_name_hint')")
-  validation-errors(:subject='pollTemplate' field='processName')
+    :hint="$t('poll_common_form.process_name_hint')"
+    :rules="validate('processName')"
+  )
 
   v-text-field(
      v-model="pollTemplate.processSubtitle"
     :label="$t('poll_common_form.process_subtitle')"
-    :hint="$t('poll_common_form.process_subtitle_hint')")
-  validation-errors(:subject='pollTemplate' field='processSubtitle')
+    :hint="$t('poll_common_form.process_subtitle_hint')"
+    :rules="validate('processSubtitle')"
+  )
 
   lmo-textarea(
     :model='pollTemplate'
@@ -258,8 +263,9 @@ export default {
     :label="$t('thread_template.title_placeholder_label')"
     :placeholder="$t('thread_template.title_placeholder_placeholder')"
     v-model='pollTemplate.titlePlaceholder'
-    maxlength='250')
-  validation-errors(:subject='pollTemplate' field='titlePlaceholder')
+    maxlength='250'
+    :rules="validate('titlePlaceholder')"
+  )
 
   tags-field(:model="pollTemplate")
 
@@ -355,8 +361,9 @@ export default {
         :label="$t('poll_ranked_choice_form.minimum_stance_choices_helptext')"
         :hint="$t('poll_ranked_choice_form.minimum_stance_choices_hint')"
         type="number"
-        :min="1")
-      validation-errors(:subject="pollTemplate", field="minimumStanceChoices")
+        :min="1"
+        :rules="validate('minimumStanceChoices')"
+      )
 
     template(v-if="pollTemplate.pollType == 'dot_vote'")
       v-divider.my-4
@@ -365,8 +372,9 @@ export default {
         :label="$t('poll_dot_vote_form.dots_per_person')"
         type="number"
         min="1"
-        v-model="pollTemplate.dotsPerPerson")
-      validation-errors(:subject="pollTemplate" field="dotsPerPerson")
+        v-model="pollTemplate.dotsPerPerson"
+        :rules="validate('dotsPerPerson')"
+      )
 
   template(v-if="pollTemplate.config().allow_none_of_the_above")
     v-checkbox.poll-settings-allow-none-of-the-above(
@@ -383,8 +391,9 @@ export default {
     :label="$t('poll_common_form.default_duration_in_days')"
     type="number"
     min="1"
-    v-model="pollTemplate.defaultDurationInDays")
-  validation-errors(:subject="pollTemplate" field="defaultDurationInDays")
+    v-model="pollTemplate.defaultDurationInDays"
+    :rules="validate('defaultDurationInDays')"
+  )
 
   v-divider.my-4
   .text-subtitle-1.pb-2(v-t="'poll_common_settings.who_can_vote'")
@@ -491,8 +500,9 @@ export default {
     :label="$t('poll_common_outcome_form.review_due_in_days')"
     type="number"
     min="1"
-    v-model="pollTemplate.outcomeReviewDueInDays")
-  validation-errors(:subject="pollTemplate" field="outcomeReviewDueInDays")
+    v-model="pollTemplate.outcomeReviewDueInDays"
+    :rules="validate('outcomeReviewDueInDays')"
+  )
 
   .d-flex.justify-space-between.my-4.mt-4.poll-common-form-actions
     help-btn(path='en/user_manual/polls/poll_templates')

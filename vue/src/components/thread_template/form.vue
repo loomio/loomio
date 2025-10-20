@@ -55,6 +55,9 @@ export default {
   },
 
   methods: {
+    validate(field) {
+      return [ () => this.discussionTemplate.errors[field] === undefined || this.discussionTemplate.errors[field][0] ]
+    },
     discardDraft() {
       if (confirm(I18n.global.t('formatting.confirm_discard'))) {
         EventBus.$emit('resetDraft', 'discussionTemplate', this.discussionTemplate.id, 'description', this.discussionTemplate.description);
@@ -76,7 +79,10 @@ export default {
       this.discussionTemplate.pollTemplateKeysOrIds = this.pollTemplates.map(pt => pt.keyOrId());
       this.discussionTemplate.save().then(data => {
         Flash.success("thread_template.thread_template_saved");
-        this.$router.push(this.$route.query.return_to || ('/thread_templates/?group_id='+this.discussionTemplate.groupId));
+        this.$router.push(this.$route.query.return_to || ('/thread_templates/?group_id=' + this.discussionTemplate.groupId));
+      }).catch(error => {
+        this.$refs.form.validate();
+        Flash.error('common.check_for_errors_and_try_again');
       });
     },
 
@@ -97,7 +103,7 @@ export default {
 
 </script>
 <template lang="pug">
-div
+v-form(ref="form" @submit.prevent="submit")
   .d-flex
     v-breadcrumbs.px-0.py-4(color="anchor" :items="breadcrumbs")
       template(v-slot:divider)
@@ -112,14 +118,16 @@ div
       v-text-field(
          v-model="discussionTemplate.processName"
         :label="$t('poll_common_form.process_name')"
-        :hint="$t('poll_common_form.process_name_hint')")
-      validation-errors(:subject='discussionTemplate' field='processName')
+        :hint="$t('poll_common_form.process_name_hint')"
+        :rules="validate('processName')"
+      )
 
       v-text-field(
          v-model="discussionTemplate.processSubtitle"
         :label="$t('poll_common_form.process_subtitle')"
-        :hint="$t('poll_common_form.process_subtitle_hint')")
-      validation-errors(:subject='discussionTemplate' field='processSubtitle')
+        :hint="$t('poll_common_form.process_subtitle_hint')"
+        :rules="validate('processSubtitle')"
+      )
 
       lmo-textarea(
         :model='discussionTemplate'
@@ -127,24 +135,25 @@ div
         :placeholder="$t('poll_common_form.process_introduction_hint')"
         :label="$t('poll_common_form.process_introduction')"
       )
-      
+
       v-divider.my-4
 
       v-text-field.thread-template-form-fields__title(
         :label="$t('thread_template.default_title_label')"
         :hint="$t('thread_template.default_title_hint')"
         v-model='discussionTemplate.title'
-        maxlength='250')
-      validation-errors(:subject='discussionTemplate' field='title')
+        maxlength='250'
+        :rules="validate('title')"
+      )
 
       v-text-field.thread-template-form-fields__title-placeholder(
         :hint="$t('thread_template.title_placeholder_hint')"
         :label="$t('thread_template.title_placeholder_label')"
         :placeholder="$t('thread_template.title_placeholder_placeholder')"
         v-model='discussionTemplate.titlePlaceholder'
-        maxlength='250')
-      validation-errors(:subject='discussionTemplate' field='titlePlaceholder')
-
+        :rules="validate('titlePlaceholder')"
+        maxlength='250'
+      )
 
       tags-field(:model="discussionTemplate")
 
@@ -227,7 +236,7 @@ div
             span(v-t="'thread_arrangement_form.nested_twice_description'")
 
       v-checkbox(v-model="discussionTemplate.public" :label="$t('thread_template.share_in_template_gallery')")
-     
+
       //- .d-flex.justify-space-between.my-4.mt-4.thread-template-form-actions
     v-card-actions
       v-spacer
@@ -240,7 +249,6 @@ div
         color="primary"
         @click='submit()'
         :loading="discussionTemplate.processing"
-        :disabled="!discussionTemplate.processName || !discussionTemplate.processSubtitle"
       )
         span(v-t="'common.action.save'")
 

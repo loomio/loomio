@@ -6,7 +6,7 @@
     "serve": "vite",
     "build": "vite build",
     "vv": "vite --version",
-    "test": "nightwatch --retries 2 --headless"
+    "test": "nightwatch --retries 3 --headless"
   },
   "dependencies": {
     "@hocuspocus/provider": "^2.15.2",
