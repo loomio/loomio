@@ -378,7 +378,7 @@ GEM
     i18n-timezones (1.4.8)
       i18n (>= 0.9.3)
       rails (>= 5.1.6.2)
-    icalendar (2.12.0)
+    icalendar (2.12.1)
       base64
       ice_cube (~> 0.16)
       logger
