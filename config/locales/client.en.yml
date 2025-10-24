@@ -465,6 +465,7 @@ en:
     when_would_you_like_to_be_emailed_poll_type: When would you like to be emailed about this %{poll_type}?
     when_would_you_like_to_be_emailed_group: When would you like to be emailed about this group?
     changes_all_threads_in_group: This changes the setting for all threads in the group.
+    changes_all_threads_and_polls_in_group: This changes the setting for all threads and polls in the group.
     what_do_the_options_mean: What do the options mean?
     loud_desc: Every time someone participates
     normal_desc: When someone notifies me
@@ -736,7 +737,7 @@ en:
       outcome_created: "%{actor} shared a %{poll_type} outcome: %{title}"
       outcome_updated: "%{actor} updated the %{poll_type} outcome: %{title}"
       outcome_review_due: 'It''s time to review the outcome of: %{title}'
-      poll_announced: "%{actor} invited you to vote: %{title}"
+      poll_announced: "Please vote: %{title}"
       poll_closed_by_user: "%{actor} closed the %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} closing in 24 hours: %{title}"
       poll_closing_soon_author: 'Your %{poll_type} is closing in 24 hours: %{title}'
@@ -809,12 +810,8 @@ en:
     thread_template_settings: Thread template settings
     start_a_new_thread: Start a new thread
     thread_template_saved: Thread template saved
-    these_are_public_templates: 'These templates are available for you to copy or modify to suit your group
-
-      '
-    these_are_templates: 'These are the thread templates in your group. Click a template to start a thread. You can also edit, remove, or reorder these if you like.
-
-      '
+    these_are_public_templates: 'These templates are available for you to copy or modify to suit your group'
+    these_are_templates: 'These are the thread templates in your group. Click a template to start a thread. You can also edit, remove, or reorder these if you like. '
     default_title_label: Default title
     default_title_hint: Prefill the title field with editable text. This is optional - leave blank if unsure.
     title_placeholder_label: Example title

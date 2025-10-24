@@ -93,6 +93,8 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
 
     @poll = if (@outcome = load_and_authorize(:outcome, :show, optional: true))
               @outcome.poll
+            elsif (@stance = load_and_authorize(:stance, :show, optional: true))
+              @stance.poll
             else
               load_and_authorize(:poll, :show, optional: true)
             end

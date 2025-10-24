@@ -373,6 +373,7 @@ en:
     notification_reason:
       group_subscribed: You received this because you are subscribed to all activity in the group.
       thread_subscribed: You received this because you are subscribed to the thread.
+      poll_subscribed: You received this because you are subscribed to the poll.
       group_mentioned: You received this because the group was @mentioned.
       user_mentioned: You received this because you were @mentioned.
       notified: You received this because the author notified you.
