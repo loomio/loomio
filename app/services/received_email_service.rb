@@ -143,13 +143,11 @@ class ReceivedEmailService
   end
 
   def self.actor_from_email_and_group(email, group)
-    if actor = (email.dkim_valid || email.spf_valid) && User.find_by(email: email.sender_email)
+    if actor = User.find_by(email: email.sender_email)
       return actor if group.members.exists?(actor.id)
     end
 
     if email_alias = MemberEmailAlias.allowed.find_by(email: email.sender_email, group_id: group.id)
-      return nil if email_alias.require_dkim && !email.dkim_valid
-      return nil if email_alias.require_spf && !email.spf_valid
       return email_alias.user if group.members.exists?(email_alias.user.id)
     end
 

@@ -28,8 +28,6 @@ class Api::V1::ReceivedEmailsController < Api::V1::RestfulController
         email: @received_email.sender_email,
         user: user,
         group_id: @received_email.group_id,
-        require_dkim: @received_email.dkim_valid,
-        require_spf: @received_email.spf_valid,
         author_id: current_user.id
       )
       ReceivedEmailService.route(@received_email)

@@ -51,6 +51,8 @@ module Loomio
       config.active_storage.service = ENV.fetch('ACTIVE_STORAGE_SERVICE', :local)
     end
 
+    config.action_mailbox.ingress = :relay
+
     config.action_mailer.raise_delivery_errors = true
     config.action_mailer.perform_deliveries = true
 
