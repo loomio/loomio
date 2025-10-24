@@ -71,6 +71,7 @@ v-card(:title="$t('email_to_group.add_alias')")
         variant="solo-filled"
         single-line
         hide-details
+        autocomplete="off"
         :placeholder="$t('common.action.search')"
       )
       v-list(v-for="user in users")
