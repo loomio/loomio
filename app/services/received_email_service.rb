@@ -31,6 +31,7 @@ class ReceivedEmailService
     return email.destroy unless email.sender_email
 
     if email.is_complaint? && email.complainer_address.present?
+      Rails.logger.info("complaint email recieved from #{email.complainer_address}");
       User.where(email: email.complainer_address).update_all("complaints_count = complaints_count + 1")
       email.update(released: true)
       return
@@ -39,6 +40,7 @@ class ReceivedEmailService
     case email.route_path
     when /d=.+&u=.+&k=.+/
       # personal email-to-thread, eg. d=100&k=asdfghjkl&u=999@mail.loomio.com
+      Rails.logger.info("creating comment from email for #{email.sender_email}");
       CommentService.create(comment: Comment.new(comment_params(email)), actor: actor_from_email(email))
       email.update_attribute(:released, true)
     when /[^\s]+\+u=.+&k=.+/
@@ -48,8 +50,13 @@ class ReceivedEmailService
         email.update_attribute(:released, true)
       end
     else
-      return email.destroy if banned_sender_hosts.include? email.sender_hostname.downcase
+      if banned_sender_hosts.include? email.sender_hostname.downcase
+        Rails.logger.info("banned sender_hostname: #{email.sender_hostname}")
+        return email.destroy
+      end
+
       if forward_email_rule = ForwardEmailRule.find_by(handle: email.route_path)
+        Rails.logger.info("email forwarded");
         ForwardMailer.forward_message(
           from: "\"#{email.sender_name}\" <#{BaseMailer::NOTIFICATIONS_EMAIL_ADDRESS}>",
           to: forward_email_rule.email,
@@ -62,16 +69,20 @@ class ReceivedEmailService
       elsif group = Group.find_by(handle: email.route_path)
         if !address_is_blocked(email, group)
           email.update(group_id: group.id)
-
           if actor = actor_from_email_and_group(email, group)
+            Rails.logger.info("creating discussion from email: #{email.route_path}")
             DiscussionService.create(discussion: Discussion.new(discussion_params(email)), actor: actor)
             email.update_attribute(:released, true)
           else
+            Rails.logger.info("unrecognised sender for route: #{email.sender_email}, #{email.route_path}")
             Events::UnknownSender.publish!(email) unless Event.where(kind: 'unknown_sender', eventable: email).exists?
           end
+        else
+          Rails.logger.info("email address blocked: #{email.sender_email}, group_id: #{group.id}")
         end
       else
         # dont fill the database with junk when there is no relevant address
+        Rails.logger.info("no suitable route for address: #{email.route_path}")
         email.destroy
       end
     end
@@ -143,13 +154,11 @@ class ReceivedEmailService
   end
 
   def self.actor_from_email_and_group(email, group)
-    if actor = (email.dkim_valid || email.spf_valid) && User.find_by(email: email.sender_email)
+    if actor = User.find_by(email: email.sender_email)
       return actor if group.members.exists?(actor.id)
     end
 
     if email_alias = MemberEmailAlias.allowed.find_by(email: email.sender_email, group_id: group.id)
-      return nil if email_alias.require_dkim && !email.dkim_valid
-      return nil if email_alias.require_spf && !email.spf_valid
       return email_alias.user if group.members.exists?(email_alias.user.id)
     end
 

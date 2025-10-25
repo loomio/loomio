@@ -5,14 +5,10 @@ def mailin_params(
   to: "Loomio Group <#{token}@#{ENV['REPLY_HOSTNAME']}>",
   from: 'Suzy Senderson <sender@gmail.com>',
   subject: "re: an important discussion",
-  body: "Hi everybody, this is my message!",
-  dkim: 'pass',
-  spf: 'pass')
+  body: "Hi everybody, this is my message!")
   {
     mailinMsg: {
       html: "<html><body>#{body}</body></html>",
-      dkim: dkim,
-      spf: spf,
       text: body,
       headers: {
         from: from,
@@ -158,24 +154,6 @@ describe ReceivedEmailsController do
       assert group.admins.first.can? :show, ReceivedEmail.first
     end
 
-    # it "with existing subject adds comment to discussion" do
-    # end
-
-    it "invalid dkim & spf, member email does not start a discussion" do
-      h = mailin_params(
-        from: user.name_and_email,
-        to: "#{group.handle}@#{ENV['REPLY_HOSTNAME']}",
-        subject: "the topic at hand",
-        body: "greetings earthlings",
-        dkim: 'fail',
-        spf: 'fail'
-      )
-      expect { post :create, params: h}.to change { Discussion.count }.by(0)
-      e = ReceivedEmail.last
-      expect(e.released).to eq false
-      expect(e.group_id).to eq group.id
-    end
-
     it "validated member alias, starts a discussion" do
       a = MemberEmailAlias.create(
         user_id: user.id,
@@ -223,59 +201,6 @@ describe ReceivedEmailsController do
       expect(e.group_id).to eq nil
     end
 
-    it "invalid dkim&spf, must_validate: true, member alias does not start discussion" do
-      a = MemberEmailAlias.create(
-        user_id: user.id,
-        email: 'memberalias@example.com',
-        group_id: group.id,
-        author_id: group.admins.first.id,
-        require_dkim: true,
-        require_spf: true
-      )
-
-      h = mailin_params(
-        from: a.email,
-        to: "#{group.handle}@#{ENV['REPLY_HOSTNAME']}",
-        subject: "the topic at hand",
-        body: "greetings earthlings",
-        dkim: 'fail',
-        spf: 'fail'
-      )
-
-      expect { post :create, params: h}.to change { Discussion.count }.by(0)
-      e = ReceivedEmail.last
-      expect(e.released).to eq false
-      expect(e.group_id).to eq group.id
-    end
-
-    it "invalid dkim&spf, must_validate: false, member alias starts a discussion" do
-      a = MemberEmailAlias.create(
-        user_id: user.id,
-        email: 'memberalias@example.com',
-        group_id: group.id,
-        author_id: group.admins.first.id,
-        require_dkim: false,
-        require_spf: false
-      )
-
-      h = mailin_params(
-        from: a.email,
-        to: "#{group.handle}@#{ENV['REPLY_HOSTNAME']}",
-        subject: "the topic at hand",
-        body: "greetings earthlings",
-        dkim: 'fail',
-        spf: 'fail'
-      )
-
-      expect { post :create, params: h}.to change { Discussion.count }.by(1)
-      d = Discussion.last
-      expect(d.author).to eq user
-      expect(d.group.handle).to eq group.handle
-      expect(d.body).to eq "greetings earthlings"
-      e = ReceivedEmail.last
-      expect(e.released).to eq true
-      expect(e.group_id).to eq group.id
-    end
   end
 
   # it "does not create a comment when the user is not authorized" do

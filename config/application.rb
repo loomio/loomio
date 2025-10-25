@@ -33,7 +33,7 @@ module Loomio
     config.active_record.belongs_to_required_by_default = false
 
     config.force_ssl = ENV['FORCE_SSL'].present?
-    config.ssl_options = { redirect: { exclude: -> request { request.path =~ /(received_emails|email_processor|up|hocuspocus)/ } } }
+    config.ssl_options = { redirect: { exclude: -> request { request.path =~ /(received_emails|email_processor|up|hocuspocus|inbound_emails)/ } } }
 
     config.i18n.enforce_available_locales = false
     config.i18n.fallbacks = [:en]
@@ -50,6 +50,8 @@ module Loomio
     else
       config.active_storage.service = ENV.fetch('ACTIVE_STORAGE_SERVICE', :local)
     end
+
+    config.action_mailbox.ingress = :relay
 
     config.action_mailer.raise_delivery_errors = true
     config.action_mailer.perform_deliveries = true
