@@ -50,11 +50,10 @@ class ReceivedEmailService
         email.update_attribute(:released, true)
       end
     else
-      # # should be logging eh.
-      # if banned_sender_hosts.include? email.sender_hostname.downcase
-      #   Rails.logger.info("banned sender_hostname: #{email.sender_hostname}")
-      #   return email.destroy
-      # end
+      if banned_sender_hosts.include? email.sender_hostname.downcase
+        Rails.logger.info("banned sender_hostname: #{email.sender_hostname}")
+        return email.destroy
+      end
 
       if forward_email_rule = ForwardEmailRule.find_by(handle: email.route_path)
         Rails.logger.info("email forwarded");
