@@ -40,7 +40,7 @@ class ReceivedEmailService
     case email.route_path
     when /d=.+&u=.+&k=.+/
       # personal email-to-thread, eg. d=100&k=asdfghjkl&u=999@mail.loomio.com
-        Rails.logger.info("creating comment from email for #{email.sender_address}");
+      Rails.logger.info("creating comment from email for #{email.sender_email}");
       CommentService.create(comment: Comment.new(comment_params(email)), actor: actor_from_email(email))
       email.update_attribute(:released, true)
     when /[^\s]+\+u=.+&k=.+/
