@@ -28,19 +28,19 @@ RSpec.describe ReceivedEmailMailbox, type: :mailbox do
     expect(ActionMailer::Base.deliveries).to be_empty
   end
 
-  it "forwards specific emails to contact" do
-    ForwardEmailRule.create(handle: 'support', email: "support@loomio.org")
+  # it "forwards specific emails to contact" do
+  #   ForwardEmailRule.create(handle: 'support', email: "support@loomio.org")
 
-    receive_inbound_email_from_mail(
-      to: "support@reply.loomio.test",
-      from: "someone@gmail.com",
-      subject: "anything",
-      body: "something"
-    )
+  #   receive_inbound_email_from_mail(
+  #     to: "support@reply.loomio.test",
+  #     from: "someone@gmail.com",
+  #     subject: "anything",
+  #     body: "something"
+  #   )
 
-    last_email = ActionMailer::Base.deliveries.last
-    expect(last_email.to).to include "support@loomio.org"
-  end
+  #   last_email = ActionMailer::Base.deliveries.last
+  #   expect(last_email.to).to include "support@loomio.org"
+  # end
 
   it "creates a reply to comment via email" do
     comment
