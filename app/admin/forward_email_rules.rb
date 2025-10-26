@@ -1,4 +1,6 @@
 ActiveAdmin.register ForwardEmailRule do
+  actions :new, :create, :edit
+
   filter :handle
   filter :email
 
