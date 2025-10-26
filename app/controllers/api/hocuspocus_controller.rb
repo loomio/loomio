@@ -12,7 +12,7 @@ class Api::HocuspocusController < ActionController::Base
     end
 
     u = User.active.find_by!(id: user_id)
-    p({
+    logger.debug({
       hocuspocus: 'debugme',
       params_user_secret: params[:user_secret],
       params_user_id: user_id,
@@ -36,7 +36,7 @@ class Api::HocuspocusController < ActionController::Base
         head :unauthorized
       end
     else
-      p({
+      logger.debug({
         hocuspocus: 'debugme',
         record_type: record_type,
         record_id: record_id,
@@ -49,7 +49,7 @@ class Api::HocuspocusController < ActionController::Base
       end
     end
   rescue ActiveRecord::RecordNotFound => e
-    puts "hocuspocus controller rescued ActiveRecord::RecordNotFound", e.inspect
+    logger.debug("hocuspocus controller rescued ActiveRecord::RecordNotFound #{e.inspect}")
     head :unauthorized
   end
 end
