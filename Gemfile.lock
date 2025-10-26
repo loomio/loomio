@@ -150,7 +150,7 @@ GEM
     chartkick (5.2.0)
     cld (0.13.0)
       ffi
-    concurrent-ruby (1.3.4)
+    concurrent-ruby (1.3.5)
     connection_pool (2.5.4)
     crack (1.0.0)
       bigdecimal
@@ -802,7 +802,7 @@ DEPENDENCIES
   byebug
   cancancan
   cld
-  concurrent-ruby (= 1.3.4)
+  concurrent-ruby (= 1.3.5)
   connection_pool
   custom_counter_cache
   dartsass-sprockets

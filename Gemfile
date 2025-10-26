@@ -67,7 +67,7 @@ gem 'pg_search'
 gem 'i18n-timezones'
 gem 'actionpack-cloudflare'
 gem 'victor', require: false
-gem 'concurrent-ruby', '1.3.4' # can remove in rails 7.1
+gem 'concurrent-ruby', '1.3.5' # can remove in rails 7.1
 
 group :development, :test do
   gem 'byebug'
