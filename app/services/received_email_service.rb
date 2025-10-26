@@ -64,7 +64,7 @@ class ReceivedEmailService
           subject: email.subject,
           body_text: email.body_text,
           body_html: email.body_html
-        ).deliver_later
+        ).deliver_now
         email.destroy
       elsif group = Group.find_by(handle: email.route_path)
         if !address_is_blocked(email, group)
