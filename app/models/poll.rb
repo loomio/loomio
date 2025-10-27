@@ -115,7 +115,7 @@ class Poll < ApplicationRecord
 
   def minimum_stance_choices
     if require_all_choices
-      poll.poll_options.length
+      poll_options.length
     else
       self[:minimum_stance_choices] ||
       self[:custom_fields][:minimum_stance_choices] ||
@@ -128,7 +128,7 @@ class Poll < ApplicationRecord
     self[:maximum_stance_choices] ||
     self[:custom_fields][:maximum_stance_choices] ||
     AppConfig.poll_types.dig(self.poll_type, 'defaults', 'maximum_stance_choices') ||
-    poll.poll_options.length
+    poll_options.length
   end
 
   include Translatable
@@ -184,7 +184,7 @@ class Poll < ApplicationRecord
   validates :poll_type, inclusion: { in: AppConfig.poll_types.keys }
   validates :details, length: {maximum: AppConfig.app_features[:max_message_length] }
 
-  before_save :clamp_minimum_stance_choices
+  before_validation :clamp_minimum_stance_choices
   normalizes :quorum_pct, with: ->(v) { v.nil? ? nil : [ [ v, 0 ].max, 100 ].min }
   validate :closes_in_future
   validate :discussion_group_is_poll_group
@@ -534,8 +534,8 @@ class Poll < ApplicationRecord
   end
 
   def clamp_minimum_stance_choices
-    return if minimum_stance_choices.nil?
-    if minimum_stance_choices > poll_options.length
+    return if self[:minimum_stance_choices].nil?
+    if self[:minimum_stance_choices] > poll_options.length
       self.minimum_stance_choices = poll_options.length
     end
   end

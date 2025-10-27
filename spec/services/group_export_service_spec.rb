@@ -16,7 +16,7 @@ describe GroupExportService do
     subgroup.add_member!(member)
     another_group.add_admin!(another_user)
 
-    discussion_template = DiscussionTemplate.create!(title: 'discussion_template', group: group, process_name: 'process_name', author: admin)
+    discussion_template = DiscussionTemplate.create!(title: 'discussion_template', group: group, process_name: 'process_name', process_subtitle: 'process_subtitle', author: admin)
     poll_template = PollTemplate.create!(title: 'poll_template', group: group, process_name: 'process_name', process_subtitle: 'process_subtitle', poll_type: 'proposal', author: admin)
 
     tag = Tag.create!(name: 'tag', group: group, color: '#abcdef')

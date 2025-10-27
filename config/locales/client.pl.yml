@@ -1741,8 +1741,8 @@ pl:
     order_by: Sortuj grupy według
   global:
     messages:
-      app_update: Wydano nową wersję Loomio. Zapisz swoją pracę i załaduj ponownie.
       reload: Załaduj ponownie
+      app_update: Nowa wersja Loomio została wydana. Proszę odświeżyć.
   decision_tools_card:
     choose_type: Wybierz typ ankiety
     title: Ułatwiaj
@@ -2129,7 +2129,6 @@ pl:
     no_options: Nie dodałeś jeszcze żadnych opcji.
     add_option_placeholder: Wprowadź nowy wybór
     minimum_stance_choices: 'Opcje do sklasyfikowania '
-    minimum_stance_choices_helptext: Ile wyborów ma wyborca?
     minimum_stance_choices_hint: tj. uszereguj swoje 3 najlepsze smaki lodów
     ranked_choice_created: Utworzono wybór rankingowy
     ranked_choice_updated: 'Zaktualizowano wybór rankingowy '
@@ -2141,6 +2140,9 @@ pl:
     pct_of_points: "% punktów"
     pct_of_votes_cast: "% oddanych głosów"
     pct_of_voters: "% uprawnionych do głosowania"
+    number_of_choices: Liczba wyborów
+    how_many_ranking_positions_explained: 'Przykład: Jeśli ustawisz wartość na 3, każdy wyborca może ocenić trzy opcje. Pierwsza opcja otrzyma 3 punkty, druga 2, a trzecia 1. Wszystkie opcje niesklasyfikowane otrzymają 0 punktów.'
+    minimum_stance_choices_helptext: Ile możliwości ma każdy wyborca?
   poll_meeting_time_field:
     add_time_slot: Dodaj przedział czasowy
     new_time_slot: Nowy przedział czasowy

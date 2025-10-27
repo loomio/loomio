@@ -46,7 +46,7 @@ section.strand-item__stance-created.stance-created
           time-ago(:date='eventable.updatedAt || eventable.castAt')
         template(v-if="!eventable.latest")
           mid-dot.text-medium-emphasis
-          span.text-medium-emphasis(v-t="'poll_common.outdated'")
+          v-badge(inline location="right" :content="$t('poll_common.outdated')")
     .poll-common-stance(v-if="poll.showResults() && !collapsed")
       v-layout(v-if="!eventable.hasOptionIcon()" wrap align-center)
         strand-item-headline.text-medium-emphasis(:event="event" :eventable="eventable" :dateTime="eventable.updatedAt || eventable.castAt")

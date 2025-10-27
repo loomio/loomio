@@ -1716,8 +1716,8 @@ sv:
     order_by: Beställ grupper efter
   global:
     messages:
-      app_update: En ny version av Loomio har släppts. Spara ditt arbete och ladda om.
       reload: Ladda om
+      app_update: En ny version av Loomio har släppts. Vänligen ladda om.
   decision_tools_card:
     choose_type: Välj omröstningstyp
     title: Främja
@@ -2102,7 +2102,6 @@ sv:
     no_options: Du har inte lagt till några alternativ än.
     add_option_placeholder: Ange ett nytt val
     minimum_stance_choices: Alternativ för att rangordna
-    minimum_stance_choices_helptext: Hur många val får väljaren?
     minimum_stance_choices_hint: dvs. Rangordna dina topp 3 smaker av glass
     ranked_choice_created: Rangordnat val skapat
     ranked_choice_updated: Rangordnat val uppdaterat
@@ -2114,6 +2113,9 @@ sv:
     pct_of_points: "% av poängen"
     pct_of_votes_cast: "% av avgivna röster"
     pct_of_voters: "% av de röstberättigade"
+    number_of_choices: Antal valmöjligheter
+    how_many_ranking_positions_explained: 'Exempel: Om värdet är satt till 3 kan varje väljare rangordna tre alternativ. Deras första val får 3 poäng, det andra får 2 och det tredje får 1. Alla alternativ som inte rankas får 0 poäng.'
+    minimum_stance_choices_helptext: Hur många valmöjligheter får varje väljare?
   poll_meeting_time_field:
     add_time_slot: Lägg till tidslucka
     new_time_slot: Ny tidslucka

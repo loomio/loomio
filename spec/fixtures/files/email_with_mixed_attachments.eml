@@ -1,0 +1,56 @@
+From: Alice <alice@example.com>
+To: test@loomio.com
+Subject: Multiple attachments test
+Message-ID: <xyz@example.com>
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="outer"
+
+--outer
+Content-Type: multipart/related; boundary="related"
+
+--related
+Content-Type: multipart/alternative; boundary="inner"
+
+--inner
+Content-Type: text/plain; charset=UTF-8
+
+Hi Loomio team,
+
+Here are two inline images and one file attachment.
+
+--inner
+Content-Type: text/html; charset=UTF-8
+
+<html><body>
+<p>Hi Loomio team,</p>
+<p>Here are two inline images:</p>
+<p>
+  <img src="cid:logo1"><br>
+  <img src="cid:logo2">
+</p>
+<p>And one regular attachment called notes.txt.</p>
+</body></html>
+
+--inner--
+--related
+Content-Type: image/png; name="logo1.png"
+Content-Transfer-Encoding: base64
+Content-ID: <logo1>
+Content-Disposition: inline; filename="logo1.png"
+
+iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/P+2q7gAAAABJRU5ErkJggg==
+--related
+Content-Type: image/png; name="logo2.png"
+Content-Transfer-Encoding: base64
+Content-ID: <logo2>
+Content-Disposition: inline; filename="logo2.png"
+
+iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/P+2q7gAAAABJRU5ErkJggg==
+--related--
+--outer
+Content-Type: text/plain; charset=UTF-8
+Content-Disposition: attachment; filename="notes.txt"
+Content-Transfer-Encoding: base64
+
+U29tZSBub3RlcyBhcyBhbiBleGFtcGxlIGF0dGFjaG1lbnQu
+--outer--

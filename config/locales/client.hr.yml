@@ -1716,8 +1716,8 @@ hr:
     order_by: Poredaj grupe prema
   global:
     messages:
-      app_update: Objavljena je nova verzija Loomija. Spremite svoj rad i ponovno učitajte.
       reload: Ponovno učitati
+      app_update: Objavljena je nova verzija Loomia. Molimo vas da ponovno učitate.
   decision_tools_card:
     choose_type: Odaberite vrstu ankete
     title: Olakšati
@@ -2102,7 +2102,6 @@ hr:
     no_options: Još niste dodali nijednu opciju.
     add_option_placeholder: Unesite novi izbor
     minimum_stance_choices: Mogućnosti za rangiranje
-    minimum_stance_choices_helptext: Koliko izbora ima glasač?
     minimum_stance_choices_hint: tj. rangirajte svoja top 3 okusa sladoleda
     ranked_choice_created: Stvoren rangirani izbor
     ranked_choice_updated: Rangirani izbor ažuriran
@@ -2114,6 +2113,9 @@ hr:
     pct_of_points: "% bodova"
     pct_of_votes_cast: "% glasova"
     pct_of_voters: "% birača s pravom glasa"
+    number_of_choices: Broj izbora
+    how_many_ranking_positions_explained: 'Primjer: Ako je postavljeno na 3, svaki glasač može rangirati tri opcije. Njihov prvi izbor dobiva 3 boda, drugi dobiva 2, a treći dobiva 1. Sve nerangirane opcije dobivaju 0 bodova.'
+    minimum_stance_choices_helptext: Koliko izbora ima svaki birač?
   poll_meeting_time_field:
     add_time_slot: Dodajte vremenski odsjek
     new_time_slot: Novi termin

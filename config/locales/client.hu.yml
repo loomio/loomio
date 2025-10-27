@@ -1723,8 +1723,8 @@ hu:
     order_by: Csoportok rendezése szerint
   global:
     messages:
-      app_update: Megjelent a Loomio új verziója. Mentse el a munkáját, és töltse be újra.
       reload: Reload
+      app_update: Megjelent a Loomio új verziója. Kérjük, töltse be újra az oldalt.
   decision_tools_card:
     choose_type: Válassza ki a szavazás típusát
     title: Döntéstámogatás
@@ -2109,7 +2109,6 @@ hu:
     no_options: Még nem adtál meg egyetlen lehetőséget sem.
     add_option_placeholder: Írjon be egy új választást
     minimum_stance_choices: Lehetőségek, amiket rangsorolni kell
-    minimum_stance_choices_helptext: Hány választási lehetőséget kap a választó?
     minimum_stance_choices_hint: azaz rangsorolja a legjobb 3 ízű fagylaltot
     ranked_choice_created: Ranked választás létrejött
     ranked_choice_updated: A rangsorolt választás frissítve
@@ -2121,6 +2120,9 @@ hu:
     pct_of_points: Pontok %-a
     pct_of_votes_cast: a leadott szavazatok %-a
     pct_of_voters: a jogosult szavazók százalékos aránya
+    number_of_choices: Választási lehetőségek száma
+    how_many_ranking_positions_explained: 'Példa: Ha 3-ra van állítva, minden szavazó három lehetőséget rangsorolhat. Az első választás 3 pontot, a második 2-t, a harmadik pedig 1-et kap. A rangsorolatlan lehetőségek 0 pontot kapnak.'
+    minimum_stance_choices_helptext: Hány választási lehetőség közül választhat minden szavazó?
   poll_meeting_time_field:
     add_time_slot: Idősáv hozzáadása
     new_time_slot: Új időrés

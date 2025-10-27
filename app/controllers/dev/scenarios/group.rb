@@ -19,8 +19,6 @@ module Dev::Scenarios::Group
       name = Faker::Name.name
       email = ReceivedEmail.create(
         body_html: "<html><body>hello everyone.</body></html>",
-        dkim_valid: true,
-        spf_valid: true,
         headers: {
           from: "\"#{name}\" <#{Faker::Internet.email(name: name)}>",
           to: create_group.handle + "@#{ENV['REPLY_HOSTNAME']}",
@@ -46,8 +44,6 @@ module Dev::Scenarios::Group
       name = Faker::Name.name
       email = ReceivedEmail.create(
         body_html: "<html><body>hello everyone.</body></html>",
-        dkim_valid: true,
-        spf_valid: true,
         headers: {
           from: "\"#{name}\" <#{Faker::Internet.email(name: name)}>",
           to: create_group.handle + "@#{ENV['REPLY_HOSTNAME']}",

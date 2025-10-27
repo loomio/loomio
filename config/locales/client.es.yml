@@ -1752,8 +1752,8 @@ es:
     order_by: Grupos ordenados por
   global:
     messages:
-      app_update: Se ha lanzado una nueva versión de Loomio. Por favor, guarde su trabajo y vuelva a cargar.
       reload: Actualizar
+      app_update: Se ha lanzado una nueva versión de Loomio. Por favor, recarga.
   decision_tools_card:
     choose_type: Elegir tipo de sondeo
     title: Facilitar
@@ -2138,7 +2138,6 @@ es:
     no_options: No has añadido ninguna opción aún
     add_option_placeholder: Ingresa una nueva opción
     minimum_stance_choices: Opciones para priorizar
-    minimum_stance_choices_helptext: "¿Cuántas opciones tiene el votante?"
     minimum_stance_choices_hint: es decir, clasifica tus 3 mejores sabores de helado
     ranked_choice_created: 'Opción priorizada creada '
     ranked_choice_updated: 'Opción priorizada actualizada '
@@ -2150,6 +2149,9 @@ es:
     pct_of_points: "% de puntos"
     pct_of_votes_cast: "% de votos emitidos"
     pct_of_voters: "% de votantes elegibles"
+    number_of_choices: Número de opciones
+    how_many_ranking_positions_explained: 'Ejemplo: Si se establece en 3, cada votante puede clasificar tres opciones. La primera opción obtiene 3 puntos, la segunda, 2 y la tercera, 1. Las opciones sin clasificar obtienen 0 puntos.'
+    minimum_stance_choices_helptext: "¿Cuántas opciones tiene cada votante?"
   poll_meeting_time_field:
     add_time_slot: Añadir intervalo de tiempo
     new_time_slot: Nuevo horario

@@ -118,6 +118,32 @@ tr:
       email: geçerli olmayan e-posta adresi
       spoofed_media_type: Bu dosyanın içeriği dosya adıyla eşleşmiyor
       pwned_password: Bu şifre daha önce bir veri ihlalinde ortaya çıkmıştır ve asla kullanılmamalıdır
+    '400':
+      title: Geçersiz istek
+      body: Üzgünüz, bu isteği anlayamadık
+    '401':
+      title: Yetkisiz
+      body: Bu sayfaya erişiminiz engelleniyor. Oturum açmanız gerekebilir.
+    '403':
+      title: Yasaklı
+      body: Bu sayfaya erişiminiz engelleniyor. Oturum açmanız gerekebilir.
+    '404':
+      body: İstediğiniz öğe bulunamadı. Bu durum, bir konu başlığı veya anket silindiğinde ortaya çıkabilir.
+    '410':
+      title: Gitmiş
+      body: Bu sayfa artık mevcut değil
+    '417':
+      title: Tarayıcı uyumsuz
+      body: Loomio'yu kullanmak için lütfen <a href="https://browser-update.org/update.html?force_outdated=true">tarayıcınızı yükseltin</a>
+    '422':
+      title: İşlenemeyen Varlık
+      body: İstediğiniz değişiklik reddedildi. Belki de erişiminiz olmayan bir şeyi değiştirmeye çalıştınız.
+    '429':
+      title: Çok Fazla İstek
+      body: Üzgünüz, bu işlem için dakika başına izin verilen maksimum istek sayısını aştınız. Lütfen bir süre bekleyin ve tekrar deneyin.
+    '500':
+      title: İç Sunucu Hatası
+      body: Üzgünüz, bir sorun oluştu. Bu sorunla ilgili bildirim aldık ve kısa süre içinde inceleyeceğiz.
   group:
     error:
       handle_must_begin_with_parent_handle: "%{parent_handle}- ile başlamalıdır"

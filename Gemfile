@@ -1,8 +1,8 @@
 source 'http://rubygems.org'
 
-ruby '3.4.5'
+ruby '3.4.7'
 gem 'rails', '7.2.2.1'
-gem 'rack', '2.2.19'
+gem 'rack', '2.2.20'
 gem 'uri', '1.0.4'
 gem 'rake'
 gem 'pg'
@@ -21,7 +21,7 @@ gem 'ransack', '4.4.1'
 gem 'nokogiri'
 gem 'twitter-text', github: 'loomio/twitter-text'
 gem 'redcarpet', '~> 3.6.1'
-gem 'paper_trail', '~> 16.0.0'
+gem 'paper_trail', '~> 17.0.0'
 gem 'sidekiq', '~> 6.5.12'
 gem 'friendly_id', '~> 5.5.1'
 gem 'httparty', '~> 0.23.2'
@@ -38,7 +38,7 @@ gem "sentry-sidekiq"
 gem 'http_accept_language'
 gem 'sprockets', '3.7.2'
 gem 'sprockets-rails', require: 'sprockets/railtie'
-gem 'sass-rails'
+gem 'dartsass-sprockets'
 gem 'uuidtools'
 gem 'maxminddb'
 gem "cld"
@@ -67,7 +67,7 @@ gem 'pg_search'
 gem 'i18n-timezones'
 gem 'actionpack-cloudflare'
 gem 'victor', require: false
-gem 'concurrent-ruby', '1.3.4' # can remove in rails 7.1
+gem 'concurrent-ruby', '1.3.5' # can remove in rails 7.1
 
 group :development, :test do
   gem 'byebug'

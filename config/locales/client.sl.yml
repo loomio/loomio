@@ -1716,8 +1716,8 @@ sl:
     order_by: Razvrsti skupine po
   global:
     messages:
-      app_update: Izšla je nova različica Loomio. Prosimo, shranite svoje delo in znova naložite.
       reload: Ponovno naloži
+      app_update: Izšla je nova različica programa Loomio. Prosimo, ponovno naložite.
   decision_tools_card:
     choose_type: Izberite vrsto ankete
     title: Olajšati
@@ -2102,7 +2102,6 @@ sl:
     no_options: Dodali niste še nobene možnosti.
     add_option_placeholder: Vnesite novo izbiro
     minimum_stance_choices: Možnosti za uvrstitev
-    minimum_stance_choices_helptext: Koliko izbir ima volivec?
     minimum_stance_choices_hint: tj. uvrstite svoje najboljše 3 okuse sladoleda
     ranked_choice_created: Ustvarjena uvrščena izbira
     ranked_choice_updated: Uvrščena izbira posodobljena
@@ -2114,6 +2113,9 @@ sl:
     pct_of_points: "% točk"
     pct_of_votes_cast: "% oddanih glasov"
     pct_of_voters: "% upravičenih volivcev"
+    number_of_choices: Število izbir
+    how_many_ranking_positions_explained: 'Primer: Če je nastavljeno na 3, lahko vsak volivec razvrsti tri možnosti. Njegova prva izbira dobi 3 točke, druga 2 in tretja 1. Vse nerazvrščene možnosti dobijo 0 točk.'
+    minimum_stance_choices_helptext: Koliko izbir ima vsak volivec?
   poll_meeting_time_field:
     add_time_slot: Dodajte časovni okvir
     new_time_slot: Nov termin

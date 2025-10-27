@@ -50,11 +50,11 @@
           - when 'voter_count', 'votes'
             %td= option[:voter_count]
           - when 'average'
-            %td= option[:average].round(1)
+            %td= option[:average].round
           - when 'voter_percent'
-            %td #{option[:voter_percent].round}%
+            %td #{ option[:voter_percent].round }%
           - when 'score_percent', 'votes_cast_percent'
-            %td #{option[:score_percent].round(1)}%
+            %td= option[:score_percent].nil? ? '' : option[:score_percent].round.to_s + '%'
           - when 'voters'
             %td
               - User.where(id: option[:voter_ids]).each do |user|

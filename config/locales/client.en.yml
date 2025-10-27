@@ -1596,7 +1596,7 @@ en:
     sunday: Sunday
     every_day: Every day
     every_second_day: Every second day
-    never: false
+    never: Never
     header: Notification settings
     account_deactivated: Your account has been deactivated. You will not receive any emails, ever.
     deactivate_header: Stop all emails forever
@@ -1838,7 +1838,7 @@ en:
     order_by: Order groups by
   global:
     messages:
-      app_update: A new version of Loomio has been released. Please save your work and reload.
+      app_update: A new version of Loomio has been released. Please reload.
       reload: Reload
 
   poll_receipts_page:
@@ -2382,8 +2382,10 @@ en:
   poll_ranked_choice_form:
     no_options: You haven't added any options yet.
     add_option_placeholder: Enter a new choice
+    number_of_choices: Number of choices
+    how_many_ranking_positions_explained: "Example: If set to 3, each voter can rank three options. Their first choice gets 3 points, second gets 2, and third gets 1. Any unranked options get 0 points."
     minimum_stance_choices: Options to rank
-    minimum_stance_choices_helptext: How many choices does the voter get?
+    minimum_stance_choices_helptext: How many choices does each voter get?
     minimum_stance_choices_hint: i.e. Rank your top 3 flavours of ice cream
     ranked_choice_created: Ranked choice created
     ranked_choice_updated: Ranked choice updated

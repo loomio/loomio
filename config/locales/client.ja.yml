@@ -1715,8 +1715,8 @@ ja:
     order_by: グループの順序付け
   global:
     messages:
-      app_update: Loomioの新バージョンがリリースされました。作業内容を保存してリロードしてください。
       reload: リロード
+      app_update: Loomioの新バージョンがリリースされました。リロードしてください。
   decision_tools_card:
     choose_type: 投票の種類を選択してください
     title: 促進する
@@ -2101,7 +2101,6 @@ ja:
     no_options: まだオプションを追加していません。
     add_option_placeholder: 新しい選択肢を入力してください
     minimum_stance_choices: ランク付けのオプション
-    minimum_stance_choices_helptext: 有権者にはいくつの選択肢がありますか?
     minimum_stance_choices_hint: つまり、アイスクリームのフレーバーのトップ 3 をランク付けします
     ranked_choice_created: ランク付けされた選択肢が作成されました
     ranked_choice_updated: ランク付けされた選択肢が更新されました
@@ -2113,6 +2112,9 @@ ja:
     pct_of_points: ポイントの割合
     pct_of_votes_cast: 投票数の割合
     pct_of_voters: 有権者の割合
+    number_of_choices: 選択肢の数
+    how_many_ranking_positions_explained: 例：3に設定した場合、各投票者は3つの選択肢に順位を付けることができます。1番目の選択肢には3ポイント、2番目の選択肢には2ポイント、3番目の選択肢には1ポイントが付与されます。順位付けされていない選択肢には0ポイントが付与されます。
+    minimum_stance_choices_helptext: 各有権者はいくつの選択肢を持つのでしょうか?
   poll_meeting_time_field:
     add_time_slot: 時間帯を追加する
     new_time_slot: 新しい時間帯

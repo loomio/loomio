@@ -66,11 +66,15 @@ export default {
   },
 
   methods: {
+    validate(field) {
+      return [ () => this.poll.errors[field] === undefined || this.poll.errors[field][0] ]
+    },
     discardDraft() {
       if (confirm(I18n.global.t('formatting.confirm_discard'))) {
         EventBus.$emit('resetDraft', 'poll', this.poll.id, 'details', this.poll.details);
       }
     },
+
     optionHasVotes(option) {
       return (this.poll.results.find(o => o.id === option.id) || {voter_count: 0}).voter_count > 0;
     },
@@ -175,9 +179,9 @@ export default {
             props: { poll }
           });
         }
-      }).catch(err=> {
-        Flash.warning('poll_common_form.please_review_the_form');
-        console.error(err);
+      }).catch(error => {
+        this.$refs.form.validate();
+        Flash.error('common.check_for_errors_and_try_again');
       }).finally(() => this.loading = false);
     }
   },
@@ -240,7 +244,7 @@ export default {
 };
 </script>
 <template lang="pug">
-.poll-common-form
+v-form.poll-common-form(ref="form" @submit.prevent="submit")
   v-card-title.px-0.pt-4.d-flex
     span(tabindex="-1" v-t="{path: titlePath, args: titleArgs}")
     v-spacer
@@ -266,8 +270,8 @@ export default {
     :placeholder="titlePlaceholder"
     :label="$t('poll_common_form.title')"
     v-model='poll.title'
+    :rules="validate('title')"
     maxlength='250')
-  validation-errors(:subject='poll' field='title')
 
   tags-field(:model="poll")
 
@@ -400,23 +404,33 @@ export default {
         :hint="$t('poll_common_form.choose_at_most')"
         :label="$t('poll_common_form.maximum_choices')")
 
-  .d-flex.align-center(v-if="poll.pollType == 'ranked_choice'")
-    v-text-field.lmo-number-input(
-      v-model="poll.minimumStanceChoices"
-      :label="$t('poll_ranked_choice_form.minimum_stance_choices_helptext')"
-      :hint="$t('poll_ranked_choice_form.minimum_stance_choices_hint')"
-      type="number"
-      :min="1"
-      :max="poll.pollOptionNames.length")
-    validation-errors(:subject="poll", field="minimumStanceChoices")
+  template(v-if="poll.pollType == 'ranked_choice'")
+    v-divider.my-4
+    p.mt-4.text-subtitle-1.mb-2(v-t="'poll_ranked_choice_form.minimum_stance_choices_helptext'")
+    .text-body-2.pb-4.text-medium-emphasis(v-t="'poll_ranked_choice_form.how_many_ranking_positions_explained'")
+    .d-flex.align-center(v-if="poll.pollType == 'ranked_choice'")
+      v-text-field.lmo-number-input(
+        v-model="poll.minimumStanceChoices"
+        :label="$t('poll_ranked_choice_form.number_of_choices')"
+        type="number"
+        :min="1"
+        :max="poll.pollOptionNames.length"
+        :rules="validate('minimumStanceChoices')"
+      )
 
   template(v-if="poll.pollType == 'dot_vote'")
     v-divider.my-4
     p.mt-4.text-subtitle-1.mb-4(v-t="'poll_common_form.how_many_points_does_each_voter_have_to_allocate'")
-    v-text-field(:label="$t('poll_dot_vote_form.dots_per_person')" type="number", min="1", v-model="poll.dotsPerPerson")
-    validation-errors(:subject="poll" field="dotsPerPerson")
+    v-text-field(
+      :label="$t('poll_dot_vote_form.dots_per_person')"
+      type="number"
+      min="1"
+      v-model="poll.dotsPerPerson"
+      :rules="validate('dotsPerPerson')"
+    )
 
   template(v-if="poll.config().allow_none_of_the_above")
+    v-divider.my-4
     v-checkbox.poll-settings-allow-none-of-the-above(
       hide-details
       v-model="poll.showNoneOfTheAbove"
@@ -446,13 +460,12 @@ export default {
       :value="true"
       :label="$t('poll_common_settings.specified_voters_only_true')")
 
-  div(style="height: 64px")
+  div(style="height: 64px" v-if="poll.specifiedVotersOnly")
     .text-body-2.font-italic.text-medium-emphasis.mt-n4.py-4(
-      v-if="poll.specifiedVotersOnly"
       v-t="{path: 'poll_common_settings.invite_people_next', args: {poll_type: poll.translatedPollType()}}")
 
+  div(style="height: 64px" v-if="!poll.id && !poll.specifiedVotersOnly")
     v-checkbox.mt-n4.pb-0(
-      v-if="!poll.id && !poll.specifiedVotersOnly"
       :label="$t('poll_common_form.notify_everyone_when_poll_starts', {poll_type: poll.translatedPollType()})"
       v-model="poll.notifyRecipients")
 
@@ -555,7 +568,7 @@ export default {
       color="primary"
       @click='submit()'
       :loading="loading"
-      :disabled="!poll.title || (hasOptions && pollOptions.length < minOptions)"
+      :disabled="hasOptions && pollOptions.length < minOptions"
       variant="elevated"
     )
       span(v-if='poll.id' v-t="'common.action.save_changes'")

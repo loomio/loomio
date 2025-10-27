@@ -118,6 +118,32 @@ sl:
       email: ni veljaven email naslov
       spoofed_media_type: Vsebina te datoteke se ne ujema z imenom
       pwned_password: To geslo se je že pojavilo pri vdoru podatkov in se ga ne sme nikoli uporabiti
+    '400':
+      title: Slaba zahteva
+      body: Žal te zahteve nismo mogli razumeti.
+    '401':
+      title: Nepooblaščeno
+      body: Dostop do te strani vam ni dovoljen. Morda se boste morali prijaviti.
+    '403':
+      title: Prepovedano
+      body: Dostop do te strani vam ni dovoljen. Morda se boste morali prijaviti.
+    '404':
+      body: Zahtevanega elementa ni bilo mogoče najti. To se lahko zgodi, če je bila nit ali anketa izbrisana.
+    '410':
+      title: Izginil
+      body: Ta stran ne obstaja več
+    '417':
+      title: Nezdružljiv brskalnik
+      body: Za uporabo Loomia <a href="https://browser-update.org/update.html?force_outdated=true">nadgradite svoj brskalnik.</a>
+    '422':
+      title: Neobdelovalna entiteta
+      body: Sprememba, ki ste jo želeli, je bila zavrnjena. Morda ste poskušali spremeniti nekaj, do česar niste imeli dostopa.
+    '429':
+      title: Preveč zahtev
+      body: Žal ste presegli največje dovoljeno število zahtev na minuto za to dejanje. Počakajte nekaj časa in poskusite znova.
+    '500':
+      title: Notranja napaka strežnika
+      body: Žal nam je, ampak nekaj je šlo narobe. O tej težavi smo bili obveščeni in jo bomo kmalu pregledali.
   group:
     error:
       handle_must_begin_with_parent_handle: Začeti se mora z %{parent_handle}-

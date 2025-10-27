@@ -118,6 +118,32 @@ ro:
       email: nu este o adresă de e-mail validă
       spoofed_media_type: Continutul acelui fisier nu corespunde cu numele lui
       pwned_password: Această parolă a apărut anterior într-o încălcare a datelor și nu ar trebui niciodată utilizată
+    '400':
+      title: Cerere greşită
+      body: Ne pare rău, nu am putut înțelege solicitarea respectivă.
+    '401':
+      title: Neautorizat
+      body: Nu aveți permisiunea de a accesa această pagină. Este posibil să fie nevoie să vă conectați.
+    '403':
+      title: Interzis
+      body: Nu aveți permisiunea de a accesa această pagină. Este posibil să fie nevoie să vă conectați.
+    '404':
+      body: Elementul solicitat nu a fost găsit. Acest lucru se poate întâmpla dacă un fir de discuție sau un sondaj a fost șters.
+    '410':
+      title: Plecat
+      body: Această pagină nu mai există
+    '417':
+      title: Incompatibil cu browserul
+      body: Vă rugăm <a href="https://browser-update.org/update.html?force_outdated=true">să actualizați browserul</a> pentru a utiliza Loomio
+    '422':
+      title: Entitate neprocesabilă
+      body: Schimbarea dorită a fost respinsă. Poate ai încercat să modifici ceva la care nu aveai acces.
+    '429':
+      title: Prea multe solicitări
+      body: Ne pare rău, ați depășit numărul maxim de solicitări permise pe minut pentru această acțiune. Vă rugăm să așteptați puțin și să încercați din nou.
+    '500':
+      title: Internal Server Error
+      body: Ne pare rău, dar ceva nu a mers bine. Am fost notificați despre această problemă și o vom analiza în curând.
   group:
     error:
       handle_must_begin_with_parent_handle: Trebuie să înceapă cu %{parent_handle}-

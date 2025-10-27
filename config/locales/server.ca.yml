@@ -118,6 +118,32 @@ ca:
       email: no és una adreça de correu electrònic vàlida
       spoofed_media_type: El contingut d'aquest fitxer no coincideix amb el seu nom
       pwned_password: Aquesta contrasenya ha aparegut anteriorment en una violació de dades i no s'ha d'utilitzar mai
+    '400':
+      title: Sol·licitud incorrecta
+      body: Ho sentim, no hem pogut entendre aquesta sol·licitud.
+    '401':
+      title: No autoritzat
+      body: No teniu permís per accedir a aquesta pàgina. Pot ser que hàgiu d'iniciar la sessió.
+    '403':
+      title: Prohibit
+      body: No teniu permís per accedir a aquesta pàgina. Pot ser que hàgiu d'iniciar la sessió.
+    '404':
+      body: No s'ha trobat l'element que has sol·licitat. Això pot passar si s'ha suprimit un fil o una enquesta.
+    '410':
+      title: Desaparegut
+      body: Aquesta pàgina ja no existeix
+    '417':
+      title: Navegador incompatible
+      body: Si us plau, <a href="https://browser-update.org/update.html?force_outdated=true">actualitzeu el vostre navegador</a> per utilitzar Loomio
+    '422':
+      title: Entitat no processable
+      body: El canvi que volies ha estat rebutjat. Potser vas intentar canviar alguna cosa a la qual no tenies accés.
+    '429':
+      title: Massa sol·licituds
+      body: Ho sentim, heu superat el màxim de sol·licituds permeses per minut per a aquesta acció. Espereu una estona i torneu-ho a intentar.
+    '500':
+      title: Error intern del servidor
+      body: Ho sentim, però alguna cosa ha anat malament. Ens han notificat aquest problema i el revisarem en breu.
   group:
     error:
       handle_must_begin_with_parent_handle: Ha de començar per %{parent_handle}-

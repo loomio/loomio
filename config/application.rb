@@ -33,7 +33,7 @@ module Loomio
     config.active_record.belongs_to_required_by_default = false
 
     config.force_ssl = ENV['FORCE_SSL'].present?
-    config.ssl_options = { redirect: { exclude: -> request { request.path =~ /(received_emails|email_processor|up|hocuspocus)/ } } }
+    config.ssl_options = { redirect: { exclude: -> request { request.path =~ /(received_emails|email_processor|up|hocuspocus|inbound_emails)/ } } }
 
     config.i18n.enforce_available_locales = false
     config.i18n.fallbacks = [:en]
@@ -50,6 +50,8 @@ module Loomio
     else
       config.active_storage.service = ENV.fetch('ACTIVE_STORAGE_SERVICE', :local)
     end
+
+    config.action_mailbox.ingress = :relay
 
     config.action_mailer.raise_delivery_errors = true
     config.action_mailer.perform_deliveries = true
@@ -109,12 +111,8 @@ module Loomio
     config.add_autoload_paths_to_load_path = false
     config.autoload_lib(ignore: %w[assets tasks])
 
-    # Configuration for the application, engines, and railties goes here.
-    #
-    # These settings can be overridden in specific environments using the files
-    # in config/environments, which are processed later.
-    #
-    # config.time_zone = "Central Time (US & Canada)"
-    # config.eager_load_paths << Rails.root.join("extras")
+    config.sass.quiet_deps = true
+    config.sass.silence_deprecations = ['import']
+
   end
 end

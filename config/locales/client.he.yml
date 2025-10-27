@@ -1735,8 +1735,8 @@ he:
     order_by: סדר קבוצות לפי
   global:
     messages:
-      app_update: גרסה חדשה של Loomio שוחררה. נא לשמור את העבודה שלך ולטעון מחדש.
       reload: טען מחדש
+      app_update: גרסה חדשה של Loomio יצאה. אנא טען מחדש.
   decision_tools_card:
     choose_type: בחר סוג סקר
     title: לסייע
@@ -2121,7 +2121,6 @@ he:
     no_options: לא הוספת עוד אף אפשרות.
     add_option_placeholder: הזן בחירה חדשה
     minimum_stance_choices: אפשרויות לדירוג
-    minimum_stance_choices_helptext: כמה ברירות מקבל הבוחר?
     minimum_stance_choices_hint: כלומר דרג את 3 הטעמים המובילים שלך של גלידה
     ranked_choice_created: דירוג הבחירה נוצר
     ranked_choice_updated: דירוג הבחירה עודכן
@@ -2133,6 +2132,9 @@ he:
     pct_of_points: אחוז הנקודות
     pct_of_votes_cast: אחוז מהקולות שניתנו
     pct_of_voters: אחוז מבעלי זכות הבחירה
+    number_of_choices: מספר אפשרויות
+    how_many_ranking_positions_explained: 'דוגמה: אם מוגדר ל-3, כל מצביע יכול לדרג שלוש אפשרויות. הבחירה הראשונה שלו מקבלת 3 נקודות, השנייה מקבלת 2, והשלישית מקבלת 1. כל אפשרות שלא דורגה מקבלת 0 נקודות.'
+    minimum_stance_choices_helptext: כמה אפשרויות מקבל כל בוחר?
   poll_meeting_time_field:
     add_time_slot: הוסף משבצת זמן
     new_time_slot: " משבצת זמן חדשה"

@@ -5,7 +5,7 @@ import Records        from '@/shared/services/records';
 import EventBus       from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
 import WatchRecords   from '@/mixins/watch_records';
-import { marked }    from 'marked';
+import { marked }     from 'marked';
 
 export default
 {
@@ -50,20 +50,25 @@ export default
     this.watchRecords({
       collections: ["stances"],
       query: () => {
-        if (this.stance && !this.stance.castAt && this.poll.myStance() && this.poll.myStance().castAt) {
-          this.stance = this.lastStanceOrNew().clone();
-        }
-
-        if (this.stance && this.stance.castAt && this.poll.myStance() && !this.poll.myStance().castAt) {
-          this.stance = this.lastStanceOrNew().clone();
-        }
-
-        if (this.stance && this.stance.castAt && this.poll.myStance() && this.poll.myStance().castAt && this.stance.updatedAt < this.poll.myStance().updatedAt) {
-          this.stance = this.lastStanceOrNew().clone();
-        }
-
-        if (!this.stance && AbilityService.canParticipateInPoll(this.poll)) {
-          this.stance = this.lastStanceOrNew().clone();
+        // we need to maintain a clone of our stance, so live updates don't clobber our form.
+        if (this.poll.myStance()) {
+          // we have been issued a vote for this poll
+          if (!this.stance) {
+            // we have not made a clone yet. clone the vote for use in the form
+            this.makeCloneStance();
+          } else {
+            // we've already made a clone, which may need replacing in these cases:
+            // clone is not cast, but real is cast
+            // clone is cast but the real is not
+            // both are cast, but real is newer
+            if (
+              (!this.stance.castAt && this.poll.myStance().castAt) ||
+              (this.stance.castAt  && !this.poll.myStance().castAt) ||
+              (this.stance.castAt  && this.poll.myStance().castAt && this.stance.updatedAt < this.poll.myStance().updatedAt)
+            ) {
+              this.makeCloneStance();
+            }
+          }
         }
       }
     });
@@ -84,16 +89,11 @@ export default
   },
 
   methods: {
-    lastStanceOrNew() {
-      const stance = this.poll.myStance() || Records.stances.build({
-        reasonFormat: Session.defaultFormat(),
-        pollId:    this.poll.id,
-        userId:    AppConfig.currentUserId
-      });
+    makeCloneStance() {
+      this.stance = this.poll.myStance().clone();
       if (this.$route.params.poll_option_id) {
-        stance.choose(this.$route.params.poll_option_id);
+        this.stance.choose(this.$route.params.poll_option_id);
       }
-      return stance;
     }
   }
 };
@@ -101,44 +101,41 @@ export default
 </script>
 
 <template lang="pug">
-.poll-common-action-panel(v-if="!poll.closedAt" style="position: relative")
-  v-alert.poll-common-action-panel__anonymous-message.mt-6(
-    v-if='poll.anonymous'
-    density="compact"
-    variant="tonal"
-    type="info"
-  )
-    span(v-t="'poll_common_action_panel.anonymous'")
+.poll-common-action-panel(style="position: relative")
+  template(v-if="poll.isVotable()")
+    v-alert.poll-common-action-panel__anonymous-message.my-4(
+      v-if='poll.anonymous'
+      density="compact"
+      variant="tonal"
+      type="info"
+    )
+      span(v-t="'poll_common_action_panel.anonymous'")
 
-  .poll-common-vote-form(v-if="stance && !stance.castAt")
-    h3.text-h6.py-3.text-high-emphasis(v-t="'poll_common.have_your_say'")
-    poll-common-directive(:stance='stance' name='vote-form')
+    .poll-common-vote-form(v-if="stance && !stance.castAt")
+      h3.text-h6.py-3.text-high-emphasis(v-t="'poll_common.have_your_say'")
+      poll-common-directive(:stance='stance' name='vote-form')
+
+    .poll-common-unable-to-vote(v-if='!stance')
+      v-alert.my-4(
+        color="warning"
+        variant="tonal"
+      )
+        span(v-t="{path: 'poll_common_action_panel.unable_to_vote', args: {poll_type: poll.translatedPollType()}}")
 
   template(v-if="stance && stance.castAt && poll.pollType != 'meeting'")
-    template(v-if="poll.singleChoice()")
-      v-alert.poll-common-current-vote(variant="tonal" color="primary" border :title="$t('poll_common.you_voted')")
-        p.mt-2
-          poll-common-stance-choice(
-            :size="28"
-            :poll="poll"
-            :stance-choice="stance.stanceChoice()"
-            verbose)
-        .d-flex.align-center
-          span.text-truncate.text-medium-emphasis {{strippedReason}}
-          v-spacer
-          action-button.float-right(:action="editStanceAction" variant="tonal")
-    template(v-else)
-      v-alert.poll-common-current-vote(variant="tonal" color="primary" border :title="$t('poll_common.you_voted')")
-        poll-common-stance-choices(:stance='stance')
-        .d-flex
-          v-spacer
-          action-button.float-right(:action="editStanceAction" variant="tonal")
-
-  .poll-common-unable-to-vote(v-if='!stance')
-    v-alert.my-4(
-      color="warning"
-      variant="tonal"
-    )
-      span(v-t="{path: 'poll_common_action_panel.unable_to_vote', args: {poll_type: poll.translatedPollType()}}")
+    v-alert.poll-common-current-vote(variant="tonal" color="primary" border :title="$t('poll_common.you_voted')")
+      .mt-2
+        poll-common-stance-choice(
+          v-if="poll.singleChoice()"
+          :size="28"
+          :poll="poll"
+          :stance-choice="stance.stanceChoice()"
+          verbose
+        )
+        poll-common-stance-choices(v-else :stance='stance')
+      .d-flex.align-center
+        span.text-truncate.text-medium-emphasis {{strippedReason}}
+        v-spacer
+        action-button.float-right(v-if="poll.isVotable()" :action="editStanceAction" variant="tonal")
 
 </template>

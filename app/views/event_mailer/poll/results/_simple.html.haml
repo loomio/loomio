@@ -2,36 +2,35 @@
 
 .poll-mailer-common-results
   %table.v-table{style: 'min-width: 600px', cellspacing: 0}
-    %thead
-      %tr
-      - poll.result_columns.each do |col|
-        - case col
-        - when 'chart'
-          %th.text-left.text-subtitle-2
-            = poll.closed_at ? t(:"poll_common.results") : t(:"poll_common.current_results")
-        - when 'name'
-          %th.text-left.text-subtitle-2= t('common.option')
-        - when 'votes_cast_percent'
-          %th.text-right.text-subtitle-2= t('poll_ranked_choice_form.pct_of_votes_cast')
-        - when 'score_percent'
-          %th.text-right.text-subtitle-2= t('poll_ranked_choice_form.pct_of_points')
-        - when 'voter_percent'
-          %th.text-right.text-subtitle-2= t('poll_ranked_choice_form.pct_of_voters')
-        - when 'target_percent'
-          %th.text-right.text-subtitle-2= t('poll_count_form.pct_of_target')
-        - when 'rank'
-          %th.text-right.text-subtitle-2= t('poll_ranked_choice_form.rank')
-        - when 'score'
-          %th.text-right.text-subtitle-2= t('poll_ranked_choice_form.points')
-        - when 'average'
-          %th.text-right.text-subtitle-2= t('poll_ranked_choice_form.mean')
-        - when 'votes'
-          %th.text-right.text-subtitle-2= t('poll_common.votes')
-        - when 'voter_count'
-          %th.text-right.text-subtitle-2= t('membership_card.voters')
-        - when 'voters'
-          %th.text-left.text-subtitle-2
     %tbody
+      %tr
+        - poll.result_columns.each do |col|
+          - case col
+          - when 'chart'
+            %th.text-left.text-subtitle-2
+              = poll.closed_at ? t(:"poll_common.results") : t(:"poll_common.current_results")
+          - when 'name'
+            %th.text-left.text-subtitle-2= t('common.option')
+          - when 'votes_cast_percent'
+            %th.text-right.text-subtitle-2= t('poll_ranked_choice_form.pct_of_votes_cast')
+          - when 'score_percent'
+            %th.text-right.text-subtitle-2= t('poll_ranked_choice_form.pct_of_points')
+          - when 'voter_percent'
+            %th.text-right.text-subtitle-2= t('poll_ranked_choice_form.pct_of_voters')
+          - when 'target_percent'
+            %th.text-right.text-subtitle-2= t('poll_count_form.pct_of_target')
+          - when 'rank'
+            %th.text-right.text-subtitle-2= t('poll_ranked_choice_form.rank')
+          - when 'score'
+            %th.text-right.text-subtitle-2= t('poll_ranked_choice_form.points')
+          - when 'average'
+            %th.text-right.text-subtitle-2= t('poll_ranked_choice_form.mean')
+          - when 'votes'
+            %th.text-right.text-subtitle-2= t('poll_common.votes')
+          - when 'voter_count'
+            %th.text-right.text-subtitle-2= t('membership_card.voters')
+          - when 'voters'
+            %th.text-left.text-subtitle-2
       - results.each_with_index do |option, index|
         %tr
           - poll.result_columns.each do |col|
@@ -74,7 +73,7 @@
             - when 'voter_percent'
               %td.text-right #{option[:voter_percent].round}
             - when 'score_percent', 'votes_cast_percent'
-              %td.text-right #{option[:score_percent].round}
+              %td.text-right #{ option[:score_percent].nil? ? '' : option[:score_percent].round }
             - when 'voters'
               %td.text-left
                 - User.where(id: option[:voter_ids]).limit(20).each do |user|

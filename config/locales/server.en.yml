@@ -260,39 +260,34 @@ en:
       all: You must upgrade your Loomio subscription to add guests to your %{subject}. Alternatively, you can invite them to be members of your group.
   errors:
     clear_cache: Loading problem detected. Hold shift and press reload, or clear your browser cache.
-    400:
+    '400':
       title: Bad request
       body: Sorry, we weren't able to understand that request
-    401:
+    '401':
       title: Unauthorized
       body: You are not permitted to access this page. You may need to sign in.
-    403:
+    '403':
       title: Forbidden
       body: You are not permitted to access this page. You may need to sign in.
-    404:
+    '404':
       title: Not found
       body: The item you requested was not found. This can happen if a thread or poll has been deleted.
-    410:
+    '410':
       title: Gone
       body: This page no longer exists
-    417:
+    '417':
       title: Browser incompatible
-      body: 'Please <a href="https://browser-update.org/update.html?force_outdated=true">Upgrade your browser</a> to use Loomio
-
-        '
-    422:
+      body: 'Please <a href="https://browser-update.org/update.html?force_outdated=true">Upgrade your browser</a> to use Loomio'
+    '422':
       title: Unprocessable Entity
       body: The change you wanted was rejected. Maybe you tried to change something you didn't have access to.
-    429:
+    '429':
       title: Too Many Requests
       body: Sorry, you have exceeded the maximum allowed requests per minute for this action. Please wait a while and try again.
-    500:
+    '500':
       title: Internal Server Error
       body: We're sorry, but something went wrong. We've been notified about this issue and we'll take a look at it shortly.
     noscript: Loomio requires javascript to work! Please enable javascript in your browser to continue
-    upgrade_browser: 'Uh oh! Your web browser is too old and Loomio may not work properly. Please <a href="https://browser-update.org/update.html">upgrade your browser.</a>
-
-      '
     return_home: Return home
     not_found: 404 file not found.
     messages:

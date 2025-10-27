@@ -134,7 +134,7 @@ export default
     provider = new HocuspocusProvider({
       url: AppConfig.theme.hocuspocus_url,
       name: docname,
-      token: (Session.user().id || 0) + "," + (Session.user().secretToken || AppConfig.channel_token),
+      token: (Session.user().id || 0) + "," + AppConfig.channel_token,
       onSynced: function() { onSync(provider); }.bind(this),
     });
 

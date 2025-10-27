@@ -1744,8 +1744,8 @@ uk:
     order_by: Упорядкувати групи за
   global:
     messages:
-      app_update: Вийшла нова версія Loomio. Будь ласка, збережіть свою роботу та перезавантажте сторінку.
       reload: Перезавантажити
+      app_update: Випущено нову версію Loomio. Будь ласка, перезавантажте.
   decision_tools_card:
     choose_type: Виберіть тип опитування
     title: Сприяти
@@ -2132,7 +2132,6 @@ uk:
     no_options: Ви ще не додали жодних варіантів.
     add_option_placeholder: Введіть новий варіант
     minimum_stance_choices: Варіанти до ранжування
-    minimum_stance_choices_helptext: Скільки варіантів має виборець?
     minimum_stance_choices_hint: тобто ранжуйте свої 3 найкращі смаки морозива
     ranked_choice_created: Ранговий вибір створено
     ranked_choice_updated: Ранговий вибір оновлено
@@ -2144,6 +2143,9 @@ uk:
     pct_of_points: "% балів"
     pct_of_votes_cast: "% відданих голосів"
     pct_of_voters: "% виборців, що мають право голосу"
+    number_of_choices: Кількість варіантів
+    how_many_ranking_positions_explained: 'Приклад: Якщо встановлено значення 3, кожен виборець може оцінити три варіанти. Його перший вибір отримує 3 бали, другий — 2, а третій — 1. Будь-які варіанти, що не мають рейтингу, отримують 0 балів.'
+    minimum_stance_choices_helptext: Скільки варіантів вибору має кожен виборець?
   poll_meeting_time_field:
     add_time_slot: Додайте часовий інтервал
     new_time_slot: Новий проміжок часу
