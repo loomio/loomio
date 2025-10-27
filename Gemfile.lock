@@ -130,7 +130,7 @@ GEM
       aws-eventstream (~> 1, >= 1.0.2)
     base64 (0.3.0)
     bcrypt (3.1.20)
-    benchmark (0.4.1)
+    benchmark (0.5.0)
     bigdecimal (3.3.1)
     bindex (0.8.1)
     blazer (3.3.0)
@@ -486,8 +486,8 @@ GEM
     orm_adapter (0.5.0)
     os (1.1.4)
     ostruct (0.6.3)
-    paper_trail (16.0.0)
-      activerecord (>= 6.1)
+    paper_trail (17.0.0)
+      activerecord (>= 7.1)
       request_store (~> 1.4)
     parallel (1.27.0)
     parser (3.3.9.0)
@@ -831,7 +831,7 @@ DEPENDENCIES
   lograge
   maxminddb
   nokogiri
-  paper_trail (~> 16.0.0)
+  paper_trail (~> 17.0.0)
   pg
   pg_search
   premailer-rails
