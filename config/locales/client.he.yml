@@ -473,6 +473,7 @@ he:
     when_would_you_like_to_be_emailed_poll_type: מתי תרצה לקבל אימייל לגבי %{poll_type} זה?
     normal_explained: כאשר מישהו מזין את שמך בשדה "הודעה" בשרשור או בסקר, או כשהוא {'@'}מזכיר את הקבוצה.
     normal_excludes_mentioning_html: יש הגדרה נפרדת עבור מתי מישהו {'@'}מזכיר אותך (למשל, כאשר הוא משיב לך בתגובה). <a href="%{url}">לחץ כאן כדי לערוך הגדרות עבור @אזכורים.</a>
+    changes_all_threads_and_polls_in_group: זה משנה את ההגדרה עבור כל השרשורים והסקרים בקבוצה.
   close_explanation_modal:
     aria_label: סגור שיחה
     close_thread: סגור שיחה
@@ -680,7 +681,6 @@ he:
       outcome_created: "%{actor} שיתף תוצאה של %{poll_type}: %{title}"
       outcome_updated: "%{actor} עדכנה את התוצאה של %{poll_type}: %{title}"
       outcome_review_due: 'הגיע הזמן לבדוק את התוצאה של: %{title}'
-      poll_announced: "%{actor} הזמין אותך להצביע: %{title}"
       poll_closed_by_user: "%{actor} סגר את %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} נסגר בעוד 24 שעות: %{title}"
       poll_closing_soon_author: "%{poll_type} שלך נסגר בעוד 24 שעות: %{title}"
@@ -701,6 +701,7 @@ he:
       user_reminded: "%{actor} מזכיר לך להצביע ב:%{title}"
       group_mentioned: "%{actor} הזכיר את הקבוצה ב: %{title}"
       new_delegate: "%{actor} הפך אותך לנציג עם זכויות הצבעה ב-%{title}"
+      poll_announced: 'אנא הצביעו: %{title}'
     without_title:
       unknown_sender: אנא עיין באימייל משולח לא מזוהה
       discussion_announced: "%{actor} הזמין אותך לשרשור"
@@ -718,7 +719,6 @@ he:
       outcome_created: "%{actor} שיתף תוצאה של %{poll_type}"
       outcome_updated: "%{actor} עדכנה את התוצאה"
       outcome_review_due: הגיע הזמן לסקור את התוצאה של %{poll_type}
-      poll_announced: "%{actor} הזמין אותך להצביע על %{poll_type}"
       poll_announced_wip: "%{actor} רוצה את המשוב שלך על %{poll_type}"
       poll_closed_by_user: "%{actor} סגר את %{poll_type}"
       poll_closing_soon: "%{poll_type} נסגר בעוד 24 שעות"
@@ -738,10 +738,50 @@ he:
       user_mentioned: "%{actor} הזכיר אותך"
       user_reminded: "%{actor} מזכיר לך להצביע"
       group_mentioned: "%{actor} הזכיר את הקבוצה"
+      poll_announced: "%{actor} הזמין אותך להצביע ב-%{poll_type}"
     hints:
       poll_closing_soon: עכשיו זה זמן טוב להצביע, לשנות את דעתך או לעודד אחרים להשתתף.
       poll_closing_soon_author: אולי תרצה להזכיר לאנשים להצביע או להאריך את המועד.
       outcome_review_due: שקול להתחיל סקר משוב או שרשור חדש המזמין הרהורים על האופן שבו ההחלטה יושמה.
+    email_subject:
+      unknown_sender: סקירת אימייל משולח לא מזוהה
+      comment_replied_to: "%{actor} ענה לך ב: %{title}"
+      discussion_announced: "%{כּוֹתֶרֶת}"
+      discussion_edited: "%{actor} ערך את ההקשר: %{title}"
+      discussion_closed: "%{actor} סגר את השרשור: %{title}"
+      invitation_accepted: "%{actor} קיבל את הזמנתך להצטרף ל-%{title}"
+      membership_created: "%{actor} הזמין אותך להצטרף ל-%{title} ב-%{site_name}"
+      membership_resent: "%{actor} הזמין אותך להצטרף ל-%{title} ב-%{site_name}"
+      membership_requested: "%{actor} ביקש להצטרף ל-%{title}"
+      membership_request_approved: "%{actor} אישר את בקשתך להצטרף ל-%{title}"
+      new_comment: "%{actor} הגיב ב: %{title}"
+      new_coordinator: "%{actor} הפך אותך למנהל של %{title}"
+      new_delegate: "%{actor} מינה אותך לנציג עם זכות הצבעה ב-%{title}"
+      new_discussion: "%{כּוֹתֶרֶת}"
+      outcome_announced: 'תוצאה %{poll_type}: %{title}'
+      outcome_created: 'תוצאה %{poll_type}: %{title}'
+      outcome_updated: 'תוצאות %{poll_type} עודכנו: %{title}'
+      outcome_review_due: 'הגיע הזמן לבחון את התוצאה של: %{title}'
+      poll_announced: 'הצבעה: %{title}'
+      poll_closed_by_user: "%{actor} סגר את %{poll_type}: %{title}"
+      poll_closing_soon: "%{poll_type} נסגר בעוד 24 שעות: %{title}"
+      poll_closing_soon_author: "%{poll_type} שלך נסגר בעוד 24 שעות: %{title}"
+      poll_created: 'הצבעה: %{title}'
+      poll_edited: "%{actor} עדכן את %{poll_type}: %{title}"
+      poll_expired: "%{poll_type} נסגר: %{title}"
+      poll_expired_author: 'פרסם תוצאה: %{title}'
+      poll_option_added: "%{actor} הוסיף אפשרויות ל-%{title}"
+      poll_reopened: 'ההצבעה הוארכה: %{title}'
+      poll_reminder: "%{actor} מזכיר לך להצביע על %{title}"
+      poll_reminder_wip: "%{actor} מזכיר לך לתת משוב: %{title}"
+      reaction_created: "%{actor} הגיב %{reaction} ל-%{model} שלך ב-%{title}"
+      stance_created: "%{actor} הצביעו ב: %{title}"
+      stance_updated: "%{actor} הצביעו ב: %{title}"
+      stance_created_option: "%{actor} הצביעו %{option} ב-%{title}"
+      user_added_to_group: "%{actor} הוסיף אותך לקבוצה: %{title}"
+      user_mentioned: "%{actor} הזכיר אותך ב: %{title}"
+      group_mentioned: "%{actor} הזכיר את הקבוצה ב: %{title}"
+      user_reminded: "%{actor} מזכיר לך להצביע ב: %{title}"
   discussion_fork_actions:
     helptext: בחר פריטים שתרצה להעביר לשרשור אחר
     move: העבר
@@ -838,7 +878,6 @@ he:
     new_discussion: "%{name} הזמין %{length} אנשים לשרשור:"
     discussion_announced: "%{name} הזמין %{length} אנשים לשרשור:"
     poll_created: "%{name} הזמין %{length} אנשים להצביע:"
-    poll_announced: "%{name} הזמין %{length} אנשים להצביע:"
     outcome_created: "%{name} שיתף תוצאה עם %{length} אנשים:"
     outcome_announced: "%{name} שיתף תוצאה עם %{length} אנשים:"
     announcement_created: "%{name} הזמין %{length} אנשים לשרשור:"
@@ -881,9 +920,6 @@ he:
       discussion_edited:
         title: עידכוני עריכות
         helptext: למי תרצה להודיע על עדכון זה? (אופציונאלי)
-      poll_announced:
-        title: הזמן לבחור
-        helptext: מי היית רוצה להזמין להצביע?
       wip_poll_announced:
         title: הזמינו לתת משוב
         helptext: את מי תרצו להזמין לתת משוב?
@@ -919,6 +955,9 @@ he:
       visible_to_group: כל אחד ב-%{group} יוכל לראות את השרשור הזה.
       visible_to_guests: רק אנשים שהוזמנו יכולים לראות את השרשור הזה.
       click_group_to_see_individuals: לחץ על הקבוצה כדי לראות אנשים
+      poll_announced:
+        title: הזמנה להצביע
+        helptext: את מי היית רוצה להזמין להצביע?
     members_list:
       title: שותף עם
       last_notified: עודכן
@@ -936,6 +975,7 @@ he:
     flash:
       success: נשלחו %{count} התראות
     group_mentioned: "%{name} הזכיר את הקבוצה עם %{length} אנשים:"
+    poll_announced: "%{name} הזמין %{length} אנשים להצביע:"
   action_dock:
     actions_menu: תפריט פעולות
     more_actions: יותר פעולות
@@ -1522,6 +1562,7 @@ he:
     learn_more: למד עוד על הגדרות מייל...
     mentioned_description: כאשר מישהו {'@'}מזכיר אותך בתגובה, תקבל התראה בדוא"ל
     daily_summary_description: בחר מתי לקבל את דוא"ל סיכום העדכון. דוא"ל זה מכיל כל פעילות חדשה שלא ראית. דרך טובה להישאר מעודכנים אם אינך משתמש קבוע.
+    never: לְעוֹלָם לֹא
   thread_preview:
     replies_count: "%{count} תשובות"
     unread_count: "%{count} לא נקראו"

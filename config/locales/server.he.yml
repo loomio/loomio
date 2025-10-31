@@ -227,6 +227,7 @@ he:
       group_mentioned: קיבלת את זה מכיוון שהקבוצה הוזכרה @.
       user_mentioned: קיבלת את זה כי הוזכרת @.
       notified: קיבלת את זה כי המחבר הודיע לך.
+      poll_subscribed: קיבלת את זה כי אתה רשום לסקר.
   user_mailer:
     group_export_ready:
       subject: איחוד ייצוא המידע עבור %{group_name}

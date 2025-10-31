@@ -473,6 +473,7 @@ sv:
     when_would_you_like_to_be_emailed_poll_type: När vill du få e-post om denna %{poll_type}?
     normal_explained: När någon skriver in ditt namn i fältet "Meddela" i en tråd eller en omröstning, eller när de {'@'}nämner gruppen.
     normal_excludes_mentioning_html: Det finns en separat inställning för när någon {'@'}nämner dig (t.ex. när de svarar dig i en kommentar). <a href="%{url}">Klicka här för att redigera inställningarna för @omnämnanden.</a>
+    changes_all_threads_and_polls_in_group: Detta ändrar inställningarna för alla trådar och omröstningar i gruppen.
   close_explanation_modal:
     aria_label: Stäng tråd
     close_thread: Stäng tråd
@@ -680,7 +681,6 @@ sv:
       outcome_created: "%{actor} delade ett %{poll_type}-resultat: %{title}"
       outcome_updated: "%{actor} uppdaterade %{poll_type}-resultatet: %{title}"
       outcome_review_due: 'Det är dags att granska resultatet av: %{title}'
-      poll_announced: "%{actor} bjöd in dig att rösta: %{title}"
       poll_closed_by_user: "%{actor} stängde %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} stänger om 24 timmar: %{title}"
       poll_closing_soon_author: 'Din %{poll_type} stänger om 24 timmar: %{title}'
@@ -701,6 +701,7 @@ sv:
       user_reminded: "%{actor} påminner dig om att rösta i: %{title}"
       group_mentioned: "%{actor} nämnde gruppen i: %{title}"
       new_delegate: "%{actor} gjorde dig till en delegat med rösträtt i %{title}"
+      poll_announced: 'Vänligen rösta: %{title}'
     without_title:
       unknown_sender: Granska e-post från okänd avsändare
       discussion_announced: "%{actor} bjöd in dig till en tråd"
@@ -718,7 +719,6 @@ sv:
       outcome_created: "%{actor} delade ett %{poll_type}-resultat"
       outcome_updated: "%{actor} uppdaterade resultatet"
       outcome_review_due: Det är dags att granska %{poll_type}-resultatet
-      poll_announced: "%{actor} bjöd in dig att rösta på en %{poll_type}"
       poll_announced_wip: "%{actor} vill ha din feedback på en %{poll_type}"
       poll_closed_by_user: "%{actor} stängde %{poll_type}"
       poll_closing_soon: "%{poll_type} stänger om 24 timmar"
@@ -738,10 +738,50 @@ sv:
       user_mentioned: "%{actor} nämnde dig"
       user_reminded: "%{actor} påminner dig om att rösta"
       group_mentioned: "%{actor} nämnde gruppen"
+      poll_announced: "%{actor} bjöd in dig att rösta på en %{poll_type}"
     hints:
       poll_closing_soon: Nu är det ett bra tillfälle att rösta, ändra uppfattning eller uppmuntra andra att delta.
       poll_closing_soon_author: Du kanske vill påminna folk om att rösta eller förlänga tidsfristen.
       outcome_review_due: Överväg att starta en feedbackundersökning eller en ny tråd som inbjuder till reflektioner över hur beslutet har genomförts.
+    email_subject:
+      unknown_sender: Granska e-post från okänd avsändare
+      comment_replied_to: "%{actor} svarade dig i: %{title}"
+      discussion_announced: "%{titel}"
+      discussion_edited: "%{actor} redigerade sammanhanget: %{title}"
+      discussion_closed: "%{actor} stängde tråden: %{title}"
+      invitation_accepted: "%{actor} accepterade din inbjudan att gå med i %{title}"
+      membership_created: "%{actor} bjöd in dig att gå med i %{title} på %{site_name}"
+      membership_resent: "%{actor} bjöd in dig att gå med i %{title} på %{site_name}"
+      membership_requested: "%{actor} begärde att få gå med i %{title}"
+      membership_request_approved: "%{actor} godkände din begäran om att gå med i %{title}"
+      new_comment: "%{actor} kommenterade i: %{title}"
+      new_coordinator: "%{actor} gjorde dig till administratör för %{title}"
+      new_delegate: "%{actor} utsåg dig till ombud med rösträtt i %{title}"
+      new_discussion: "%{titel}"
+      outcome_announced: "%{poll_type} resultat: %{title}"
+      outcome_created: "%{poll_type} resultat: %{title}"
+      outcome_updated: "%{poll_type} resultat uppdaterat: %{title}"
+      outcome_review_due: 'Det är dags att granska resultatet av: %{title}'
+      poll_announced: 'Rösta: %{titel}'
+      poll_closed_by_user: "%{actor} stängde %{poll_type}: %{title}"
+      poll_closing_soon: "%{poll_type} stänger om 24 timmar: %{title}"
+      poll_closing_soon_author: 'Din %{poll_type} stänger om 24 timmar: %{title}'
+      poll_created: 'Rösta: %{titel}'
+      poll_edited: "%{actor} uppdaterade %{poll_type}: %{title}"
+      poll_expired: "%{poll_type} har avslutats: %{title}"
+      poll_expired_author: 'Publicera ett resultat: %{title}'
+      poll_option_added: "%{actor} lade till alternativ till %{title}"
+      poll_reopened: 'Röstningen förlängd: %{title}'
+      poll_reminder: "%{actor} påminner dig om att rösta på %{title}"
+      poll_reminder_wip: "%{actor} påminner dig om att ge feedback: %{title}"
+      reaction_created: "%{actor} reagerade %{reaction} på din %{model} i %{title}"
+      stance_created: "%{skådespelare} röstade på: %{title}"
+      stance_updated: "%{skådespelare} röstade på: %{title}"
+      stance_created_option: "%{actor} röstade %{option} i %{title}"
+      user_added_to_group: "%{actor} lade till dig i gruppen: %{title}"
+      user_mentioned: "%{actor} nämnde dig i: %{title}"
+      group_mentioned: "%{actor} nämnde gruppen i: %{title}"
+      user_reminded: "%{actor} påminner dig om att rösta i: %{title}"
   discussion_fork_actions:
     helptext: Välj objekt som du vill flytta till en annan tråd
     move: Flytta
@@ -838,7 +878,6 @@ sv:
     new_discussion: "%{name} bjöd in %{length} personer till tråden:"
     discussion_announced: "%{name} bjöd in %{length} personer till tråden:"
     poll_created: "%{name} bjöd in %{length} personer att rösta:"
-    poll_announced: "%{name} bjöd in %{length} personer att rösta:"
     outcome_created: "%{name} delade ett resultat med %{length} personer:"
     outcome_announced: "%{name} delade ett resultat med %{length} personer:"
     announcement_created: "%{name} bjöd in %{length} personer till tråden:"
@@ -877,9 +916,6 @@ sv:
       discussion_edited:
         title: Meddela ändringar
         helptext: Vem vill du meddela om den här uppdateringen? (frivillig)
-      poll_announced:
-        title: Bjud in att rösta
-        helptext: Vem skulle du vilja bjuda in att rösta?
       wip_poll_announced:
         title: Bjud in att ge feedback
         helptext: Vem skulle du vilja bjuda in att ge feedback?
@@ -915,6 +951,9 @@ sv:
       visible_to_group: Alla i %{group} kommer att kunna se den här tråden.
       visible_to_guests: Endast inbjudna personer kan se denna tråd.
       click_group_to_see_individuals: Klicka på grupp för att se individer
+      poll_announced:
+        title: Inbjudan att rösta
+        helptext: Vem skulle du vilja bjuda in att rösta?
     members_list:
       title: Delad med
       last_notified: Aviserat
@@ -932,6 +971,7 @@ sv:
     flash:
       success: "%{count} aviseringar har skickats"
     group_mentioned: "%{name} nämnde gruppen med %{length} personer:"
+    poll_announced: "%{name} bjöd in %{length} personer att rösta:"
   action_dock:
     actions_menu: Menyn Åtgärder
     more_actions: Fler åtgärder
@@ -1510,6 +1550,7 @@ sv:
     learn_more: Läs mer om e-postinställningar...
     mentioned_description: När någon {'@'}nämner dig i en kommentar får du ett e-postmeddelande
     daily_summary_description: Välj när du vill få sammanfattningsmejlet. Det här mejlet innehåller all ny aktivitet som du inte har sett. Ett bra sätt att hålla sig uppdaterad om du inte är en vanlig användare.
+    never: Aldrig
   thread_preview:
     replies_count: "%{count} svar"
     unread_count: "%{count} olästa"

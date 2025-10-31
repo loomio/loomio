@@ -228,6 +228,7 @@ es:
       group_mentioned: Recibiste esto porque el grupo fue @mencionado.
       user_mentioned: Recibiste esto porque fuiste @mencionado.
       notified: Recibiste esto porque el autor te lo notificó.
+      poll_subscribed: Has recibido esto porque estás suscrito a la encuesta.
   user_mailer:
     group_export_ready:
       subject: Exportar datos del grupo para %{group_name}

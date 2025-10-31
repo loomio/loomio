@@ -233,6 +233,7 @@ nl_NL:
       group_mentioned: Je hebt dit ontvangen omdat de groep @vermeld is.
       user_mentioned: U heeft dit ontvangen omdat u bent @vermeld.
       notified: U heeft dit ontvangen omdat de auteur u hiervan op de hoogte heeft gesteld.
+      poll_subscribed: U heeft dit ontvangen omdat u zich heeft geabonneerd op de poll.
   user_mailer:
     group_export_ready:
       subject: Groep data export voor %{group_name}

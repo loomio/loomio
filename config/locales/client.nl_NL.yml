@@ -475,6 +475,7 @@ nl_NL:
     loud_explained: U ontvangt een e-mail wanneer er een nieuwe reactie is, iemand stemt of een poll of thread start.
     when_would_you_like_to_be_emailed_poll_type: Wanneer wilt u een e-mail ontvangen over deze %{poll_type}?
     normal_excludes_mentioning_html: Er is een aparte instelling voor wanneer iemand je vermeldt (bijvoorbeeld wanneer iemand op je reageert in een reactie). <a href="%{url}">Klik hier om de instellingen voor @vermeldingen te bewerken.</a>
+    changes_all_threads_and_polls_in_group: Hiermee worden de instellingen voor alle threads en polls in de groep gewijzigd.
   close_explanation_modal:
     aria_label: Sluit bord
     close_thread: Sluit bord
@@ -684,7 +685,6 @@ nl_NL:
       outcome_created: "%{actor} deelde een %{poll_type} resultaat: %{title}"
       outcome_updated: "%{actor} wijzigde het %{poll_type} resultaat: %{title}"
       outcome_review_due: 'Het is tijd om de uitkomst te bekijken van: %{title}'
-      poll_announced: "%{actor} heeft je uitgenodigd om te stemmen: %{title}"
       poll_closed_by_user: "%{actor} heeft de %{poll_type} gesloten: %{title}"
       poll_closing_soon: "%{poll_type} sluit binnen 24 uur: %{title}"
       poll_closing_soon_author: 'Uw %{poll_type} sluit over 24 uur: %{title}'
@@ -705,6 +705,7 @@ nl_NL:
       user_reminded: "%{actor} herinnert je er aan om te stemmen in : %{title}"
       group_mentioned: "%{actor} noemde de groep in: %{title}"
       new_delegate: "%{actor} heeft je tot afgevaardigde met stemrecht gemaakt in %{title}"
+      poll_announced: 'Stem: %{title}'
     without_title:
       unknown_sender: Controleer de e-mail van een onbekende afzender
       discussion_announced: "%{actor} heeft je uitgenodigd voor een thread"
@@ -718,11 +719,10 @@ nl_NL:
       membership_resent: "%{actor} heeft je uitgenodigd om lid te worden van een groep"
       membership_requested: "%{actor} verzocht om lid te worden van uw groep"
       membership_request_approved: "%{actor} keurde uw verzoek om lid te worden van %{title} goed"
-      outcome_announced: "%{actor} heeft een %{poll_type} resultaat gedeeld"
-      outcome_created: "%{actor} heeft een %{poll_type} resultaat gedeeld"
+      outcome_announced: "%{actor} heeft een %{poll_type} uitkomst gedeeld"
+      outcome_created: "%{actor} heeft een %{poll_type} uitkomst gedeeld"
       outcome_updated: "%{actor} heeft de uitkomst bijgewerkt"
       outcome_review_due: Het is tijd om de uitkomst van %{poll_type} te bekijken
-      poll_announced: "%{actor} heeft je uitgenodigd om te stemmen op een %{poll_type}"
       poll_announced_wip: "%{actor} wil uw feedback over een %{poll_type}"
       poll_closed_by_user: "%{actor} heeft de %{poll_type} gesloten"
       poll_closing_soon: "%{poll_type} sluit over 24 uur"
@@ -742,10 +742,50 @@ nl_NL:
       user_mentioned: "%{actor} heeft je genoemd"
       user_reminded: "%{actor} herinnert je eraan om te stemmen"
       group_mentioned: "%{actor} noemde de groep"
+      poll_announced: "%{actor} heeft je uitgenodigd om te stemmen op een %{poll_type}"
     hints:
       poll_closing_soon: Dit is een goed moment om te stemmen, van gedachten te veranderen of anderen aan te moedigen om mee te doen.
       poll_closing_soon_author: Misschien wilt u mensen eraan herinneren om te stemmen of de deadline verlengen.
       outcome_review_due: Overweeg een feedback-enquête te starten of een nieuwe discussielijn te starten waarin u kunt nadenken over hoe de beslissing is geïmplementeerd.
+    email_subject:
+      unknown_sender: E-mail van onbekende afzender bekijken
+      comment_replied_to: "%{actor} heeft op je gereageerd in: %{title}"
+      discussion_announced: "%{title}"
+      discussion_edited: "%{actor} heeft de context bewerkt: %{title}"
+      discussion_closed: "%{actor} heeft de thread gesloten: %{title}"
+      invitation_accepted: "%{actor} heeft je uitnodiging om lid te worden van %{title} geaccepteerd"
+      membership_created: "%{actor} heeft je uitgenodigd om lid te worden van %{title} op %{site_name}"
+      membership_resent: "%{actor} heeft je uitgenodigd om lid te worden van %{title} op %{site_name}"
+      membership_requested: "%{actor} heeft verzocht om lid te worden van %{title}"
+      membership_request_approved: "%{actor} heeft uw verzoek om lid te worden van %{title} goedgekeurd"
+      new_comment: "%{actor} heeft gereageerd op: %{title}"
+      new_coordinator: "%{actor} heeft je tot beheerder van %{title} gemaakt"
+      new_delegate: "%{actor} heeft je tot afgevaardigde met stemrecht gemaakt in %{title}"
+      new_discussion: "%{title}"
+      outcome_announced: "%{poll_type} uitkomst: %{title}"
+      outcome_created: "%{poll_type} uitkomst: %{title}"
+      outcome_updated: "%{poll_type} uitkomst bijgewerkt: %{title}"
+      outcome_review_due: 'Het is tijd om de uitkomst van %{title} te bekijken'
+      poll_announced: 'Stem: %{title}'
+      poll_closed_by_user: "%{actor} heeft de %{poll_type} gesloten: %{title}"
+      poll_closing_soon: "%{poll_type} sluit over 24 uur: %{title}"
+      poll_closing_soon_author: 'Uw %{poll_type} sluit over 24 uur: %{title}'
+      poll_created: 'Stem: %{title}'
+      poll_edited: "%{actor} heeft de %{poll_type} bijgewerkt: %{title}"
+      poll_expired: "%{poll_type} is gesloten: %{title}"
+      poll_expired_author: 'Publiceer een uitkomst: %{title}'
+      poll_option_added: "%{actor} heeft opties toegevoegd aan %{title}"
+      poll_reopened: 'Stemming verlengd: %{title}'
+      poll_reminder: "%{actor} herinnert je eraan om te stemmen op %{title}"
+      poll_reminder_wip: "%{actor} herinnert je eraan om feedback te geven: %{title}"
+      reaction_created: "%{actor} heeft %{reaction} gereageerd op uw %{model} in %{title}"
+      stance_created: "%{actor} heeft gestemd op: %{title}"
+      stance_updated: "%{actor} heeft gestemd op: %{title}"
+      stance_created_option: "%{actor} stemde %{option} in %{title}"
+      user_added_to_group: "%{actor} heeft je toegevoegd aan de groep: %{title}"
+      user_mentioned: "%{actor} heeft je genoemd in: %{title}"
+      group_mentioned: "%{actor} noemde de groep in: %{title}"
+      user_reminded: "%{actor} herinnert je eraan om te stemmen op: %{title}"
   discussion_fork_actions:
     helptext: Selecteer items die je wilt verplaatsen naar een ander bord
     move: Verplaatsen
@@ -842,7 +882,6 @@ nl_NL:
     new_discussion: "%{name} heeft %{length} mensen uitgenodigd voor de thread:"
     discussion_announced: "%{name} heeft %{length} mensen uitgenodigd voor de thread:"
     poll_created: "%{name} nodigde %{length} mensen uit om te stemmen:"
-    poll_announced: "%{name} nodigde %{length} mensen uit om te stemmen:"
     outcome_created: "%{name} heeft een uitkomst gedeeld met %{length} mensen:"
     outcome_announced: "%{name} heeft een uitkomst gedeeld met %{length} mensen:"
     announcement_created: "%{name} heeft %{length} mensen uitgenodigd voor de thread:"
@@ -885,9 +924,6 @@ nl_NL:
       discussion_edited:
         title: Wijzigingen melden
         helptext: Wie wil je een melding sturen over deze wijziging? (optioneel)
-      poll_announced:
-        title: Nodig uit om te stemmen
-        helptext: Wie zou je willen uitnodigen om te stemmen?
       wip_poll_announced:
         title: Nodig uit om feedback te geven
         helptext: Wie zou je willen uitnodigen om feedback te geven?
@@ -923,6 +959,9 @@ nl_NL:
       visible_to_group: Iedereen in %{group} kunnen dit bord zien.
       visible_to_guests: Alleen uitgenodigde mensen kunnen dit bord zien.
       click_group_to_see_individuals: Klik groep om individuen te zien
+      poll_announced:
+        title: Uitnodiging om te stemmen
+        helptext: Wie wilt u uitnodigen om te stemmen?
     members_list:
       title: Gedeeld met
       last_notified: Gemeld
@@ -940,6 +979,7 @@ nl_NL:
     flash:
       success: "%{count} meldingen verzonden"
     group_mentioned: "%{name} noemde de groep met %{length} mensen:"
+    poll_announced: "%{name} heeft %{length} mensen uitgenodigd om te stemmen:"
   action_dock:
     actions_menu: Actie menu
     more_actions: Meer acties
@@ -1526,6 +1566,7 @@ nl_NL:
     learn_more: Leer meer over e-mailinstellingen...
     mentioned_description: Wanneer iemand jou in een reactie vermeldt, ontvang je een e-mailmelding
     daily_summary_description: Kies wanneer je de e-mail met het overzicht wilt ontvangen. Deze e-mail bevat alle nieuwe activiteiten die je nog niet hebt gezien. Een goede manier om op de hoogte te blijven als je geen vaste gebruiker bent.
+    never: Nooit
   thread_preview:
     replies_count: "%{count} antwoorden"
     unread_count: "%{count} ongelezen"

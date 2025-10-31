@@ -475,6 +475,7 @@ hu:
     quiet_explained: Nem fogsz e-mailt kapni, még akkor sem, ha valaki megpróbál értesíteni. Előfordulhat, hogy lemaradsz a fontos bejelentésekről vagy döntésekről. Ez akkor lehet megfelelő, ha egy téma nem érint téged, de csoportos környezetben nem ajánlott, hacsak nincs más módod a naprakészségre.
     normal_explained: Amikor valaki beírja a neved egy beszélgetés vagy szavazás „Értesítés” mezőjébe, vagy {'@'}megemlíti a csoportot.
     normal_excludes_mentioning_html: Külön beállítás vonatkozik arra az esetre, ha valaki {'@'}megemlít téged (pl. amikor valaki válaszol neked egy hozzászólásban). <a href="%{url}">Kattints ide az @megemlítések beállításainak szerkesztéséhez.</a>
+    changes_all_threads_and_polls_in_group: Ez megváltoztatja a csoport összes hozzászólásláncának és szavazásának beállítását.
   close_explanation_modal:
     aria_label: Téma lezárása
     close_thread: Téma lezárása
@@ -682,7 +683,6 @@ hu:
       outcome_created: "%{actor} megosztott egy %{poll_type} eredményt: %{title}"
       outcome_updated: "%{actor} frissítette a %{poll_type} eredményét: %{title}"
       outcome_review_due: 'Ideje áttekinteni a következő eredményét: %{title}'
-      poll_announced: "%{actor} meghívott szavazásra: %{title}"
       poll_closed_by_user: "%{actor} lezárta a %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} 24 óra múlva zár: %{title}"
       poll_closing_soon_author: "%{poll_type} 24 órán belül bezár: %{title}"
@@ -703,6 +703,7 @@ hu:
       user_reminded: "%{actor} emlékeztet, hogy szavazz: %{title}"
       group_mentioned: "%{actor} megemlítette a csoportot itt: %{title}"
       new_delegate: "%{actor} szavazati joggal rendelkező képviselővé tett téged %{title}"
+      poll_announced: 'Kérlek szavazz: %{title}'
     without_title:
       unknown_sender: Kérjük, tekintse át az ismeretlen feladótól kapott e-mailt
       discussion_announced: "%{actor} meghívott egy témaszálba"
@@ -716,11 +717,10 @@ hu:
       membership_resent: "%{actor} meghívott egy csoportba"
       membership_requested: "%{actor} csatlakozást kért a csoportodhoz"
       membership_request_approved: "%{actor} jóváhagyta a csatlakozási kérelmedet a %{title} csoporthoz"
-      outcome_announced: "%{actor} megosztott egy %{poll_type} eredményt"
-      outcome_created: "%{actor} megosztott egy %{poll_type} eredményt"
-      outcome_updated: "%{actor} frissítette az eredményt"
-      outcome_review_due: Ideje áttekinteni a %{poll_type} eredményét
-      poll_announced: "%{actor} meghívott, hogy szavazz egy %{poll_type}"
+      outcome_announced: "%{actor} megosztott egy %{poll_type} következtetést"
+      outcome_created: "%{actor} megosztott egy %{poll_type} következtetést"
+      outcome_updated: "%{actor} frissítette a következtetést"
+      outcome_review_due: Ideje áttekinteni a %{poll_type} következtetését
       poll_announced_wip: "%{actor} visszajelzést kér egy %{poll_type}-ról"
       poll_closed_by_user: "%{actor} lezárta a %{poll_type}"
       poll_closing_soon: "%{poll_type} 24 órán belül bezár"
@@ -728,7 +728,7 @@ hu:
       poll_created: "%{actor} elindított egy %{poll_type}"
       poll_edited: "%{actor} frissítette a %{poll_type}"
       poll_expired: "%{poll_type} lezárult"
-      poll_expired_author: Oszd meg a %{poll_type} eredményét
+      poll_expired_author: Oszd meg a %{poll_type} következtetését
       poll_option_added: "%{actor} opciókat adott a %{poll_type}-hoz"
       poll_reopened: "%{actor} újra megnyitotta a %{poll_type}"
       poll_reminder: "%{actor} emlékeztet arra, hogy szavazzon"
@@ -740,10 +740,50 @@ hu:
       user_mentioned: "%{actor} megemlített téged"
       user_reminded: "%{actor} emlékeztet arra, hogy szavazzon"
       group_mentioned: "%{actor} megemlítette a csoportot"
+      poll_announced: "%{actor} meghívott, hogy szavazz a(z) %{poll_type} pollon."
     hints:
       poll_closing_soon: Itt az ideje, hogy szavazzon, meggondolja magát, vagy bátorítson másokat a részvételre.
       poll_closing_soon_author: Emlékeztetheti az embereket, hogy szavazzanak, vagy hosszabbítsák meg a határidőt.
       outcome_review_due: Fontolja meg egy visszajelzési szavazás vagy egy új téma indítását, amely elgondolkodtató a döntés végrehajtásáról.
+    email_subject:
+      unknown_sender: Ismeretlen feladótól érkező e-mail áttekintése
+      comment_replied_to: "%{actor} válaszolt neked ebben a részben: %{title}"
+      discussion_announced: "%{title}"
+      discussion_edited: "%{actor} szerkesztette a következő kontextust: %{title}"
+      discussion_closed: "%{actor} lezárta a következő szálat: %{title}"
+      invitation_accepted: "%{actor} elfogadta a meghívásodat, hogy csatlakozzon a(z) %{title} csapathoz"
+      membership_created: "%{actor} meghívott, hogy csatlakozz a(z) %{title} oldalhoz a(z) %{site_name} oldalon."
+      membership_resent: "%{actor} meghívott, hogy csatlakozz a(z) %{title} oldalhoz a(z) %{site_name} oldalon."
+      membership_requested: "%{actor} csatlakozni kért a(z) %{title} csapathoz"
+      membership_request_approved: "%{actor} jóváhagyta a csatlakozási kérelmedet a(z) %{title} csoporthoz"
+      new_comment: "%{actor} hozzászólása a következőhöz: %{title}"
+      new_coordinator: "%{actor} adminisztrátorrá tett a(z) %{title} webhelyen"
+      new_delegate: "%{actor} szavazati joggal rendelkező delegálttá tett téged a(z) %{title} ülésen"
+      new_discussion: "%{title}"
+      outcome_announced: "%{poll_type} következtetés: %{title}"
+      outcome_created: "%{poll_type} következtetés: %{title}"
+      outcome_updated: "%{poll_type} következtetés frissítve: %{title}"
+      outcome_review_due: 'Ideje áttekinteni a következő következtetését: %{title}'
+      poll_announced: 'Szavazat: %{title}'
+      poll_closed_by_user: "%{actor} lezárta a %{poll_type}-t: %{title}"
+      poll_closing_soon: "%{poll_type} 24 órán belül zárul: %{title}"
+      poll_closing_soon_author: 'A %{poll_type} 24 óra múlva zárul: %{title}'
+      poll_created: 'Szavazat: %{title}'
+      poll_edited: "%{actor} frissítette a(z) %{poll_type} elemet: %{title}"
+      poll_expired: "%{poll_type} lezárult: %{title}"
+      poll_expired_author: 'Következtetés közzététele: %{title}'
+      poll_option_added: "%{actor} opciókat adott hozzá a(z) %{title} bejegyzéshez"
+      poll_reopened: 'A szavazás meghosszabbítva: %{title}'
+      poll_reminder: "%{actor} emlékeztet, hogy szavazz a(z) %{title} bejegyzésre"
+      poll_reminder_wip: "%{actor} emlékeztet, hogy adj visszajelzést: %{title}"
+      reaction_created: "%{actor} %{reaction} módon reagált a %{model} modelledre a %{title}-ben"
+      stance_created: "%{actor} szavazott: %{title}"
+      stance_updated: "%{actor} szavazott: %{title}"
+      stance_created_option: "%{actor} szavazott %{option}-ra a %{title}-ben"
+      user_added_to_group: "%{actor} felvett téged a következő csoportba: %{title}"
+      user_mentioned: "%{actor} megemlített téged a következőben: %{title}"
+      group_mentioned: "%{actor} megemlítette a csoportot a következőben: %{title}"
+      user_reminded: "%{actor} emlékeztet, hogy szavazz erre: %{title}"
   discussion_fork_actions:
     helptext: Válassza ki azokat az elemeket, amelyeket át szeretne helyezni egy másik szálba
     move: Mozgat
@@ -840,7 +880,6 @@ hu:
     new_discussion: "%{name} meghívott %{length} személyt a szálba:"
     discussion_announced: "%{name} meghívott %{length} személyt a szálba:"
     poll_created: "%{name} meghívott %{length} személyt szavazásra:"
-    poll_announced: "%{name} meghívott %{length} személyt szavazásra:"
     outcome_created: "%{name} megosztott egy eredményt %{length} személlyel:"
     outcome_announced: "%{name} megosztott egy eredményt %{length} személlyel:"
     announcement_created: "%{name} meghívott %{length} személyt a szálba:"
@@ -881,9 +920,6 @@ hu:
       discussion_edited:
         title: Értesítés a módosításokról
         helptext: Kit szeretnél értesíteni erről a frissítésről? (választható)
-      poll_announced:
-        title: Meghívás szavazásra
-        helptext: Kit szeretnél meghívni a szavazásra?
       wip_poll_announced:
         title: Meghívás visszajelzésre
         helptext: Kit szeretnél visszajelzésre hívni?
@@ -919,6 +955,9 @@ hu:
       visible_to_group: A(z) %{group} tagja láthatja ezt a szálat.
       visible_to_guests: Csak a meghívott személyek láthatják ezt a szálat.
       click_group_to_see_individuals: Kattintson a csoportra az egyének megtekintéséhez
+      poll_announced:
+        title: Szavazásra felhívás
+        helptext: Kit szeretnél meghívni szavazásra?
     members_list:
       title: Megosztva vele
       last_notified: Értesített
@@ -936,6 +975,7 @@ hu:
     flash:
       success: "%{count} értesítés elküldve"
     group_mentioned: "%{name} megemlítette a csoportot %{length} emberrel:"
+    poll_announced: "%{name} meghívott %{length} embert szavazásra:"
   action_dock:
     actions_menu: Műveletek menü
     more_actions: Több akció
@@ -1514,6 +1554,7 @@ hu:
     learn_more: További információ az e-mail beállításokról ...
     mentioned_description: Amikor valaki {'@'}megemlít téged egy hozzászólásban, kapsz egy értesítő e-mailt.
     daily_summary_description: Válaszd ki, mikor szeretnéd megkapni az összefoglaló e-mailt. Ez az e-mail tartalmazza azokat az új tevékenységeket, amelyeket még nem láttál. Jó módja annak, hogy naprakész maradj, ha nem vagy rendszeres felhasználó.
+    never: Soha
   thread_preview:
     replies_count: "%{count} válasz"
     unread_count: "%{count} olvasatlan"

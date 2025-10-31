@@ -227,6 +227,7 @@ hr:
       group_mentioned: Ovo ste primili jer je grupa @spomenuta.
       user_mentioned: Ovo ste primili jer ste @spomenuti.
       notified: Ovo ste primili jer vas je autor obavijestio.
+      poll_subscribed: Ovo ste primili jer ste pretplaćeni na anketu.
   user_mailer:
     group_export_ready:
       subject: Grupni izvoz podataka za %{group_name}

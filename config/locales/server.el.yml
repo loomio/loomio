@@ -227,6 +227,7 @@ el:
       group_mentioned: Το λάβατε επειδή η ομάδα αναφέρθηκε @.
       user_mentioned: Το λάβατε επειδή σας ανέφεραν @.
       notified: Το λάβατε επειδή σας ειδοποίησε ο συγγραφέας.
+      poll_subscribed: Λάβατε αυτό επειδή έχετε εγγραφεί στην δημοσκόπηση.
   user_mailer:
     group_export_ready:
       subject: Εξαγωγή ομαδικών δεδομένων για %{group_name}

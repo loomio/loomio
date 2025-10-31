@@ -483,6 +483,7 @@ fr:
     when_would_you_like_to_be_emailed_poll_type: Quand souhaitez-vous recevoir un e-mail à propos de ce %{poll_type} ?
     normal_explained: Lorsque quelqu'un saisit votre nom dans le champ « Notifier » d'un fil de discussion ou d'un sondage, ou qu'il {'@'}mentionne le groupe.
     normal_excludes_mentioning_html: Il existe un paramètre distinct pour les mentions avec un @ (par exemple, lorsqu'on vous répond dans un commentaire). <a href="%{url}">Cliquez ici pour modifier les paramètres des @mentions.</a>
+    changes_all_threads_and_polls_in_group: Cela modifie les paramètres de tous les fils de discussion et sondages du groupe.
   close_explanation_modal:
     aria_label: Clore la discussion
     close_thread: Clore la discussion
@@ -633,7 +634,7 @@ fr:
     contact_support: Contacter le support
     sign_out: Se déconnecter
     beta_collab: Fonctionnalités bêta activées!
-    outcomes: Résultats
+    outcomes: Conclusions
     theme: Thème
     light: Lumière
     dark: Sombre
@@ -669,7 +670,7 @@ fr:
     discussion: 'discussion :'
     comment: commentaire dans
     poll: 'sondage:'
-    outcome: 'résultat :'
+    outcome: 'conclusion :'
     stance: 'vote:'
   notifications:
     header: Notifications
@@ -688,11 +689,10 @@ fr:
       new_comment: "%{actor} a mentionné sur: %{title}"
       new_coordinator: "%{actor} vous a fait admin de %{title}"
       new_discussion: "%{actor} a démarré un thread: %{title}"
-      outcome_announced: "%{actor} a partagé un %{poll_type} résultat: %{title}"
-      outcome_created: "%{actor} a partagé un %{poll_type} résultat: %{title}"
-      outcome_updated: "%{actor} a mis à jour les résultats du %{poll_type}: %{title}"
-      outcome_review_due: 'C''est le moment de vérifier les résultats du: %{title}'
-      poll_announced: "%{actor} vous a invité à voter: %{title}"
+      outcome_announced: "%{actor} a partagé la conclusion du %{poll_type} : %{title}"
+      outcome_created: "%{actor} a partagé la conclusion du %{poll_type} : %{title}"
+      outcome_updated: "%{actor} a mis à jour la conclusion du %{poll_type} : %{title}"
+      outcome_review_due: 'C''est le moment de vérifier la conclusion : %{title}'
       poll_closed_by_user: "%{actor} a fermé le %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} va fermer dans 24 heures: %{title}"
       poll_closing_soon_author: 'Ton %{poll_type} vas fermer dans 24 heures: %{title}'
@@ -713,6 +713,7 @@ fr:
       user_reminded: "%{actor} attend votre vote sur: %{title}"
       group_mentioned: "%{actor} a mentionné le groupe dans : %{title}"
       new_delegate: "%{actor} vous a nommé délégué avec droit de vote dans %{title}"
+      poll_announced: 'Veuillez voter : %{title}'
     without_title:
       unknown_sender: Veuillez examiner les e-mails provenant d'un expéditeur non reconnu
       discussion_announced: "%{actor} vous a invité à la discussion"
@@ -726,11 +727,10 @@ fr:
       membership_resent: "%{actor} vous a invité à rejoindre un groupe"
       membership_requested: "%{actor} a demandé à s'adhérer dans le group"
       membership_request_approved: "%{actor} a accepté votre demande à joindre %{title}"
-      outcome_announced: "%{actor} a partagé un %{poll_type} résultat"
-      outcome_created: "%{actor} a partagé un %{poll_type} résultat"
-      outcome_updated: "%{actor} a mis(e) à jour le résultat"
-      outcome_review_due: C'est le moment de vérifier les résultats du %{poll_type}
-      poll_announced: "%{actor} vous a invité à voter dans %{poll_type}"
+      outcome_announced: "%{actor} a partagé la conclusion du %{poll_type}"
+      outcome_created: "%{actor} a partagé la conclusion du %{poll_type}"
+      outcome_updated: "%{actor} a mis à jour la conclusion du %{poll_type}"
+      outcome_review_due: C'est le moment de vérifier la conclusion du %{poll_type}
       poll_announced_wip: "%{actor} vous a invité a donner votre avis sur %{poll_type}"
       poll_closed_by_user: "%{actor} a fermé le %{poll_type}"
       poll_closing_soon: "%{poll_type} se terminera dans 24 heures"
@@ -750,10 +750,50 @@ fr:
       user_mentioned: "%{actor} vous a mentionné"
       user_reminded: "%{actor} vous rappelle de voter"
       group_mentioned: "%{actor} a mentionné le groupe"
+      poll_announced: "%{actor} vous a invité à voter sur un %{poll_type}"
     hints:
       poll_closing_soon: C’est le bon moment pour voter, changer d’avis ou encourager les autres à participer.
       poll_closing_soon_author: Vous voudrez peut-être rappeler aux gens de voter ou de prolonger la date limite.
       outcome_review_due: Envisagez de lancer un sondage de rétroaction ou un nouveau fil de discussion invitant à réfléchir sur la façon dont la décision a été mise en œuvre.
+    email_subject:
+      unknown_sender: Veuillez examiner le courriel provenant d'un expéditeur inconnu.
+      comment_replied_to: "%{actor} vous a répondu dans : %{title}"
+      discussion_announced: "%{title}"
+      discussion_edited: "%{actor} a modifié le contexte : %{title}"
+      discussion_closed: "%{actor} a fermé la discussion : %{title}"
+      invitation_accepted: "%{actor} a accepté votre invitation à rejoindre %{title}"
+      membership_created: "%{actor} vous a invité à rejoindre %{title} sur %{site_name}"
+      membership_resent: "%{actor} vous a invité à rejoindre %{title} sur %{site_name}"
+      membership_requested: "%{actor} a demandé à rejoindre %{title}"
+      membership_request_approved: "%{actor} a approuvé votre demande de rejoindre %{title}"
+      new_comment: "%{actor} a commenté dans : %{title}"
+      new_coordinator: "%{actor} vous a nommé administrateur de %{title}"
+      new_delegate: "%{actor} vous a nommé délégué avec droit de vote dans %{title}"
+      new_discussion: "%{title}"
+      outcome_announced: "Conclusion de %{poll_type} : %{title}"
+      outcome_created: "Conclusion de %{poll_type} : %{title}"
+      outcome_updated: "Conclusion de %{poll_type} mise à jour : %{title}"
+      outcome_review_due: "Il est temps d'examiner la conclusion de : %{title}"
+      poll_announced: "Vote : %{title}"
+      poll_closed_by_user: "%{actor} a clôturé le %{poll_type} : %{title}"
+      poll_closing_soon: "%{poll_type} se termine dans 24 heures : %{title}"
+      poll_closing_soon_author: "Votre sondage %{poll_type} se termine dans 24 heures : %{title}"
+      poll_created: "Vote : %{title}"
+      poll_edited: "%{actor} a mis à jour le %{poll_type} : %{title}"
+      poll_expired: "%{poll_type} est clos : %{title}"
+      poll_expired_author: "Publier une conclusion : %{title}"
+      poll_option_added: "%{actor} a ajouté des options à %{title}"
+      poll_reopened: "Vote prolongé : %{title}"
+      poll_reminder: "%{actor} vous rappelle de voter pour %{title}"
+      poll_reminder_wip: "%{actor} vous rappelle de donner votre avis : %{title}"
+      reaction_created: "%{actor} a réagi %{reaction} à votre %{model} dans %{title}"
+      stance_created: "%{actor} a voté pour : %{title}"
+      stance_updated: "%{actor} a voté pour : %{title}"
+      stance_created_option: "%{actor} a voté pour %{option} dans %{title}"
+      user_added_to_group: "%{actor} vous a ajouté au groupe : %{title}"
+      user_mentioned: "%{actor} vous a mentionné dans : %{title}"
+      group_mentioned: "%{actor} a mentionné le groupe dans : %{title}"
+      user_reminded: "%{actor} vous rappelle de voter pour : %{title}"
   discussion_fork_actions:
     helptext: 'Sélectionnez les éléments que vous souhaitez placer dans d''autres discussions '
     move: Déplacer
@@ -824,12 +864,12 @@ fr:
     send_discussion: Envoyer la discussion
     send_group: Inviter des personnes à %{name}
     send_poll: Envoyer %{type}
-    send_outcome: Envoyer le résultat
+    send_outcome: Envoyer la conclusion
     cannot_reveal_when_anonymous: Désolé, nous ne pouvons pas révéler qui a voté ou non sur un sondage anonyme.
     discussion_notification_history: L'historique de notifications de la discussion
     group_notification_history: Historique des invitations de membres du groupe
     poll_notification_history: Historique de notifications des votes
-    outcome_notification_history: Historique de notifications des résultats
+    outcome_notification_history: Historique de notifications des conclusions
     comment_notification_history: Historique de notifications des commentaires
     notification_history_explanation: "✓ indique que la notification a été lue ou que le courriel a été ouvert"
     quick_add: 'Ajout rapide: '
@@ -850,14 +890,13 @@ fr:
     new_discussion: "%{name} a invité %{length} personnes à la discussion:"
     discussion_announced: "%{name} a invité %{length} personnes à la discussion:"
     poll_created: "%{name} a invité %{length} personnes à voter:"
-    poll_announced: "%{name} a invité %{length} personnes à voter:"
-    outcome_created: "%{name} a partagé un résultat avec %{length} personnes:"
-    outcome_announced: "%{name} a partagé un résultat avec %{length} personnes:"
+    outcome_created: "%{name} a partagé une conclusion avec %{length} personnes:"
+    outcome_announced: "%{name} a partagé une conclusion avec %{length} personnes:"
     announcement_created: "%{name} a invité %{length} personnes à la discussion:"
     discussion_edited: "%{name} a modifié la discussion, en notifiant %{length} personnes:"
     poll_edited: "%{name} a modifié un sondage, en notifiant %{length} personnes:"
-    outcome_edited: "%{name} a modifié un résultat, en notifiant %{length} personnes:"
-    outcome_updated: "%{name} a modifié un résultat, en notifiant %{length} personnes:"
+    outcome_edited: "%{name} a modifié la conclusion, en notifiant %{length} personnes:"
+    outcome_updated: "%{name} a modifié une conclusion, en notifiant %{length} personnes:"
     poll_closing_soon: 'Le sondage %{name} va bientôt se terminer. Une alerte a notifié %{length} personnes:'
     poll_reminder: "%{name} a fait penser à %{length} personnes de voter:"
     audiences:
@@ -893,9 +932,6 @@ fr:
       discussion_edited:
         title: Notifier des modifications
         helptext: Qui voulez-vous notifier à propos de cette mise à jour ? (facultatif)
-      poll_announced:
-        title: Inviter au vote
-        helptext: Qui voulez-vous inviter à voter ?
       wip_poll_announced:
         title: Inviter à donner des commentaires
         helptext: Qui voulez-vous inviter à donner des commentaires ?
@@ -913,8 +949,8 @@ fr:
         title: Notifier des modifications
         helptext: 'Qui voulez-vous notifier à propos de cette mise à jour ? '
       outcome_announced:
-        title: Partager le résultat
-        helptext: Résumer les résultats du processus, y compris les compréhensions trouvées ou les problèmes mis en lumière.
+        title: Partager la conclusion
+        helptext: Résumer la conclusion du processus, y compris les compréhensions trouvées ou les problèmes mis en lumière.
       anyone_can_participate: N’importe qui ayant un lien peut participer.
       placeholder: Vous pouvez saisir les noms ou les adresses mail
       type_or_paste_email_addresses_to_invite: Saisissez ou collez les adresses e-mail à inviter
@@ -931,6 +967,9 @@ fr:
       visible_to_group: N'importe qui dans %{group} pourra voir cette discussion
       visible_to_guests: Seules les personnes invitées peuvent voir cette discussion
       click_group_to_see_individuals: Cliquez sur groupe pour voir les individus
+      poll_announced:
+        title: Invitation à voter
+        helptext: Qui aimeriez-vous inviter à voter ?
     members_list:
       title: Partagé avec
       last_notified: Notifié⋅e(s)
@@ -948,6 +987,7 @@ fr:
     flash:
       success: "%{count} notifications envoyées"
     group_mentioned: "%{name} a mentionné le groupe avec %{length} personnes :"
+    poll_announced: "%{name} a invité %{length} personnes à voter :"
   action_dock:
     actions_menu: Menu d'actions
     more_actions: Plus d'actions
@@ -975,10 +1015,10 @@ fr:
     reply_to_comment: Répondre
     fork_comment: Scinder la discussion
     translate_comment: Afficher une traduction automatique du commentaire
-    edit_outcome: Modifier le résultat
-    announce_outcome: Notifier des personnes de ce résultat
-    announce_outcome_active: "(Personne n'a encore été notifié de ce résultat)"
-    translate_outcome: Afficher une traduction automatique du résultat
+    edit_outcome: Modifier la conclusion
+    announce_outcome: Notifier des personnes de cette conclusion
+    announce_outcome_active: "(Personne n'a encore été notifié de cette conclusion)"
+    translate_outcome: Afficher une traduction automatique de la conclusion
     show_history: Montrer l’historique des modifications
     edited: Modifié
     show_edits: Montrer les modifications
@@ -1085,12 +1125,12 @@ fr:
     discussion_header: Éditions de la discussion
     comment_header: Discussion privée
     poll_header: Éditions du sondage
-    outcome_header: Modification des résultats
+    outcome_header: Modifications de la conclusion
     stance_header: Modifications de vote
     started_by: Démarrée par <strong>%{name}</strong>
     edited_by: Édité par <strong>%{name}</strong>
     edit_by: Modifier par %{name} · %{date}
-    posted: Posté
+    posted: Publié
     field: Champs
     before: Avant
     after: Après
@@ -1547,6 +1587,7 @@ fr:
     learn_more: En savoir plus sur les paramètres d’e-mail…
     mentioned_description: Lorsque quelqu'un {'@'}vous mentionne dans un commentaire, vous recevrez un e-mail de notification
     daily_summary_description: Choisissez quand recevoir l'e-mail récapitulatif de rattrapage. Cet e-mail contient toutes les nouvelles activités que vous n'avez pas encore vues. C'est un excellent moyen de rester informé si vous n'êtes pas un utilisateur régulier.
+    never: Jamais
   thread_preview:
     replies_count: "%{count} réponses"
     unread_count: "%{count}non lus"
@@ -1639,7 +1680,7 @@ fr:
     no_one: Personne n'a encore vu cela pour l'instant
     disabled_anonymous_polls: L'historique des spectateurs est désactivé, car le fil de discussion contient des sondages anonymes.
   activity_card:
-    count_responses: "%{count} réponses"
+    count_responses:
     event_pinned: Epinglé à la timeline
     event_unpinned: Dés-épinglé de la timeline
     beginning: Début
@@ -1650,13 +1691,13 @@ fr:
     chronological: Chronologique
     nested: Imbriqué
     attachment_display:
-      aria_label: 'Pièce jointe :'
+      aria_label:
       image_alt: Image jointe
     n_previous: Afficher %{count} réponses précédentes
     n_more: Afficher %{count} réponses
     add_comment: Ajouter un commentaire
     add_poll: Ajouter un sondage
-    add_outcome: Ajouter un résultat
+    add_outcome: Ajouter une conclusion
     comment: Ajouter un commentaire
     facilitate: 'Simplifier '
     start_decision: Décision de départ
@@ -1871,9 +1912,9 @@ fr:
     participate: Participer
     vote: Vote
     votes: Votes
-    update_outcome: Mettre à jour le résultat
-    outcome: Résultat
-    outcomes: Résultats
+    update_outcome: Mettre à jour la conclusion
+    outcome: Conclusion
+    outcomes: Conclusions
     statement: Déclaration
     change_your_stance: Modifier la réponse
     load_more: Plus
@@ -1889,7 +1930,7 @@ fr:
     share_count: Partager la vérification
     start_poll: Prendre une décision
     publish_poll: Partager le sondage
-    share_outcome: Partager les résultats
+    share_outcome: Partager la conclusion
     view_all: Tout voir
     save_changes: Enregistrer
     change_vote: Modifier votre vote
@@ -1899,7 +1940,7 @@ fr:
     too_long: Trop long
     edit_warning: La révision n'est recommandée que pour des modifications mineures ou pour corriger des fautes d’orthographe. Pour des changements significatifs, fermer ce %{pollType} et démarrez-en un nouveau.
     no_voting: Pour discussion seulement, vote désactivé
-    post_outcome: Résultat de l'après
+    post_outcome: Publier la conclusion
     view_all_votes: Voir tous les votes
     you_voted: Vous avez voté
   poll_common_attachment_form:
@@ -2071,24 +2112,24 @@ fr:
     reminded: Rappel envoyé !
     reminder_sent: Notification de rappel envoyée
   poll_common_set_outcome_panel:
-    enter_outcome: Entrer résultat
-    poll_type: Ce %{poll_type} est fermé. Prenez le temps d’examiner les résultats, puis partagez un résultat afin que les gens sachent ce qui se passera ensuite.
-    enter_an_outcome: Entrez un résultat
+    enter_outcome: Saisir une conclusion
+    poll_type: Ce %{poll_type} est fermé. Prenez le temps d’examiner les résultats, puis partagez la conclusion afin que les gens sachent ce qui se passera ensuite.
+    enter_an_outcome: Entrez une conclusion
   poll_common_outcome_form:
     review_due_in_days: Revoir la décision après combien de jours ?
     review_date: Date de révision
     review_date_hint: Fixer la date du rappel pour examiner les résultats (facultatif)
-    who_to_notify: Qui voulez-vous informer de ce résultat?
-    outcome_statement_template: Modèle de déclaration de résultat
-    new_title: Entrer un résultat
-    update_title: Mettre à jour le résultat
-    outcome_created: Résultat créé
-    outcome_updated: Résultat mis à jour
+    who_to_notify: Qui voulez-vous informer de cette conclusion ?
+    outcome_statement_template: Modèle de déclaration de conclusion
+    new_title: Saisir une conclusion
+    update_title: Mettre à jour la conclusion
+    outcome_created: Conclusion créée
+    outcome_updated: Conclusion mise à jour
     statement_placeholder: Résumez les réponses et expliquez ce qui va suivre.
     you_will_be_notified: Vous serez alerté à la date de revue
-    submit: Partager le résultat
+    submit: Partager la conclusion
     review_due_in_days_hint: Nombre de jours à attendre avant de réviser la décision (facultatif).
-    statement_template_hint: Fournir un modèle pour rédiger le résultat de la décision. (facultatif)
+    statement_template_hint: Fournir un modèle pour rédiger la conclusion de la décision. (facultatif)
     statement_template_placeholder: Merci de votre participation ! Le quorum a été atteint et nous avons le soutien nécessaire pour continuer.
   poll_common_outcome_panel:
     authored_by: Par %{name}
@@ -2152,7 +2193,7 @@ fr:
     rank: Classer
     points: Points
     average: Moyenne
-    mean: Signification
+    mean: Moyenne
     percent: Pour cent
     pct_of_points: "% de points"
     pct_of_votes_cast: "% des votes exprimés"
@@ -2248,7 +2289,7 @@ fr:
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a ré-ouvert la discussion"
     discussion_forked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a créé une ramification de cette discussion <strong><a href='d/%{key}'>%{title}</a></strong>"
     new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
-    outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a partagé des résultats"
+    outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a partagé des conclusions"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a ré-ouvert le %{polltype} "
     poll_closed_by_user: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a fermé le %{polltype}"
     poll_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a commencé un %{polltype}"
@@ -2400,9 +2441,9 @@ fr:
       poll_expired: Un sondage est sur le point d'expirer
       poll_closed_by_user: Un sondage a été cloturé manuellement
       poll_reopened: Un sondage a été rouvert aux votes
-      outcome_created: Un résultat a été partagé
-      outcome_updated: Un résultat est mis à jour
-      outcome_review_due: Un examen des résultats est nécessaire
+      outcome_created: Une conclusion a été partagée
+      outcome_updated: Une conclusion a été mise à jour
+      outcome_review_due: Un examen de la conclusion est nécessaire
     permissions_explaination: Sélectionner les actions qui peuvent être effectuées par cette intégration
     permissions:
       show_discussion: Montrer la discussion
@@ -2441,7 +2482,7 @@ fr:
     total_threads: Nombre total de discussions
     total_polls: Total des sondages
     threads_with_polls: Discussions avec des sondages
-    polls_with_outcomes: Sondages avec résultats
+    polls_with_outcomes: Sondages avec conclusions
     actions_per_interval: Actions par %{intervalle}
     actions_per_user: Actions par utilisateur
     users_per_country: Utilisateurs par pays
@@ -2484,8 +2525,8 @@ fr:
         helptext: "<p>Dans Loomio, nous utilisons des propositions pour révéler le soutien à une décision ou trouver des moyens de l'améliorer.</p><p> Commençons par une proposition et demandons aux membres de votre groupe de voter dessus.</p><p> Nous avons créé un modèle <b>de proposition de pratique</b> que vous pouvez utiliser.</p>"
         submit: Voir les modèles de propositions
       share_an_outcome:
-        title: Partager le résultat d'une proposition
-        helptext: "<p>Pour faciliter la prise de décision, les propositions sont soumises à une date limite de vote. Une fois cette date atteinte, le vote sera clos et vous serez informé(e) des résultats de la proposition.</p><p> Le résultat est l’occasion de dire si la proposition a été retenue et ce qui va se passer ensuite.</p><p> Si la date limite de votre proposition n'est pas encore passée, mais que vous souhaitez quand même continuer, vous pouvez cliquer sur <b>Fermer plus tôt</b> .</p><p> Lorsque le moment est venu, <b>indiquez le résultat</b> de votre proposition.</p>"
+        title: Partager la conclusion d'une proposition
+        helptext: "<p>Pour faciliter la prise de décision, les propositions sont soumises à une date limite de vote. Une fois cette date atteinte, le vote sera clos et vous serez informé(e) des résultats de la proposition.</p><p> La conclusion est l’occasion de dire si la proposition a été retenue et ce qui va se passer ensuite.</p><p> Si la date limite de votre proposition n'est pas encore passée, mais que vous souhaitez quand même continuer, vous pouvez cliquer sur <b>Fermer plus tôt</b> .</p><p> Lorsque le moment est venu, <b>indiquez la conclusion</b> de votre proposition.</p>"
         submit: Voir la proposition
         cancel: Fais-le plus tard
     get_started_here: Commencez ici

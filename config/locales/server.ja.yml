@@ -222,6 +222,7 @@ ja:
       group_mentioned: グループが@メンションされたため、このメッセージを受け取りました。
       user_mentioned: "@メンションされたのでこれを受け取りました。"
       notified: 著者からの通知により、これを受け取りました。
+      poll_subscribed: あなたはアンケートに登録しているので、このメールを受け取りました。
   user_mailer:
     group_export_ready:
       subject: "%{group_name} のグループ データのエクスポート"

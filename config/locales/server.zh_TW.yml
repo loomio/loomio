@@ -232,6 +232,7 @@ zh_TW:
       group_mentioned: 您收到此訊息是因為該小組被@提及。
       user_mentioned: 您收到此郵件是因為您被@提及。
       notified: 您收到此訊息是因為作者通知了您。
+      poll_subscribed: 您收到此郵件是因為您訂閱了該投票。
   user_mailer:
     group_export_ready:
       subject: 匯出「%{group_name}」的群組資料

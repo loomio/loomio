@@ -475,6 +475,7 @@ pl:
     when_would_you_like_to_be_emailed_poll_type: Kiedy chcesz otrzymać wiadomość e-mail dotyczącą tego %{poll_type}?
     normal_explained: Gdy ktoś wpisze Twoje imię w polu „Powiadom” w wątku lub ankiecie, albo {'@'}wspomni grupę.
     normal_excludes_mentioning_html: Istnieje osobne ustawienie, gdy ktoś {'@'}wspomina o Tobie (np. gdy odpowiada Ci w komentarzu). <a href="%{url}">Kliknij tutaj, aby edytować ustawienia dla @wzmianek</a>
+    changes_all_threads_and_polls_in_group: Zmienia to ustawienia dla wszystkich wątków i ankiet w grupie.
   close_explanation_modal:
     aria_label: Zamknij wątek
     close_thread: Zamknij wątek
@@ -684,7 +685,6 @@ pl:
       outcome_created: "%{actor} udostępnił/a %{poll_type} wynik: %{title}"
       outcome_updated: "%{actor} zaktualizował/a %{poll_type} wynik: %{title}"
       outcome_review_due: 'Czas przejrzeć wyniki: %{title}'
-      poll_announced: "%{actor} zaprosił Cię do głosowania: %{title}"
       poll_closed_by_user: "%{actor} zamknął %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} zostanie zamknięte w ciągu 24 godzin: %{title}"
       poll_closing_soon_author: 'Twoja ankieta %{poll_type} zostanie zamknięta za 24 godziny: %{title}'
@@ -705,6 +705,7 @@ pl:
       user_reminded: "%{actor}przypomina Ci o głosowaniu w:%{title}"
       group_mentioned: "%{actor} wspomniał o grupie w: %{title}"
       new_delegate: "%{actor} nadał Ci status delegata z prawem głosu w %{title}"
+      poll_announced: 'Proszę głosować: %{title}'
     without_title:
       unknown_sender: Sprawdź wiadomość e-mail od nierozpoznanego nadawcy
       discussion_announced: "%{actor} zaprosił Cię do wątku"
@@ -722,7 +723,6 @@ pl:
       outcome_created: "%{actor} udostępnił wynik %{poll_type}"
       outcome_updated: "%{actor} zaktualizował wynik"
       outcome_review_due: Czas przejrzeć wynik %{poll_type}
-      poll_announced: "%{actor} zaprosił Cię do głosowania w %{poll_type}"
       poll_announced_wip: "%{actor} chce Twojej opinii na temat %{poll_type}"
       poll_closed_by_user: "%{actor} zamknął %{poll_type}"
       poll_closing_soon: "%{poll_type} zamyka się za 24 godziny"
@@ -742,10 +742,50 @@ pl:
       user_mentioned: "%{actor} wspomniał o tobie"
       user_reminded: "%{actor} przypomina Ci o głosowaniu"
       group_mentioned: "%{actor} wspomniał o grupie"
+      poll_announced: "%{actor} zaprosił Cię do głosowania w %{poll_type}"
     hints:
       poll_closing_soon: Teraz jest dobry czas na głosowanie, zmianę zdania lub zachęcenie innych do udziału.
       poll_closing_soon_author: Możesz przypomnieć ludziom o głosowaniu lub przedłużyć termin.
       outcome_review_due: Rozważ rozpoczęcie ankiety zwrotnej lub nowego wątku zapraszającego do refleksji na temat tego, jak decyzja została wdrożona.
+    email_subject:
+      unknown_sender: Przejrzyj wiadomość e-mail od nieznanego nadawcy
+      comment_replied_to: "%{actor} odpowiedział Ci w: %{title}"
+      discussion_announced: "%{tytuł}"
+      discussion_edited: "%{actor} edytował kontekst: %{title}"
+      discussion_closed: "%{actor} zamknął wątek: %{title}"
+      invitation_accepted: "%{actor} zaakceptował Twoje zaproszenie do dołączenia do %{title}"
+      membership_created: "%{actor} zaprosił Cię do dołączenia do %{title} na %{site_name}"
+      membership_resent: "%{actor} zaprosił Cię do dołączenia do %{title} na %{site_name}"
+      membership_requested: "%{actor} poprosił o dołączenie do %{title}"
+      membership_request_approved: "%{actor} zatwierdził Twoją prośbę o dołączenie do %{title}"
+      new_comment: "%{actor} skomentował w: %{title}"
+      new_coordinator: "%{actor} mianował Cię administratorem %{title}"
+      new_delegate: "%{actor} nadał Ci status delegata z prawem głosu w %{title}"
+      new_discussion: "%{tytuł}"
+      outcome_announced: 'Wynik %{poll_type}: %{title}'
+      outcome_created: 'Wynik %{poll_type}: %{title}'
+      outcome_updated: 'Zaktualizowano wynik %{poll_type}: %{title}'
+      outcome_review_due: 'Czas przejrzeć wynik: %{title}'
+      poll_announced: 'Głosuj: %{title}'
+      poll_closed_by_user: "%{actor} zamknął %{poll_type}: %{title}"
+      poll_closing_soon: "%{poll_type} zamyka się za 24 godziny: %{title}"
+      poll_closing_soon_author: 'Twoja ankieta %{poll_type} zostanie zamknięta za 24 godziny: %{title}'
+      poll_created: 'Głosuj: %{title}'
+      poll_edited: "%{actor} zaktualizował %{poll_type}: %{title}"
+      poll_expired: "%{poll_type} zostało zamknięte: %{title}"
+      poll_expired_author: 'Opublikuj wynik: %{title}'
+      poll_option_added: "%{actor} dodał opcje do %{title}"
+      poll_reopened: 'Głosowanie przedłużone: %{title}'
+      poll_reminder: "%{actor} przypomina o głosowaniu na %{title}"
+      poll_reminder_wip: "%{actor} przypomina Ci o możliwości wystawienia opinii: %{title}"
+      reaction_created: "%{actor} zareagował %{reaction} na Twój %{model} w %{title}"
+      stance_created: "%{actor} głosował w: %{title}"
+      stance_updated: "%{actor} głosował w: %{title}"
+      stance_created_option: "%{actor} zagłosował na %{option} w %{title}"
+      user_added_to_group: "%{actor} dodał Cię do grupy: %{title}"
+      user_mentioned: "%{actor} wspomniał o Tobie w: %{title}"
+      group_mentioned: "%{actor} wspomniał o grupie w: %{title}"
+      user_reminded: "%{actor} przypomina o oddaniu głosu w: %{title}"
   discussion_fork_actions:
     helptext: Wybierz elementy, które chcesz przenieść do innego wątku
     move: Przenieś
@@ -842,7 +882,6 @@ pl:
     new_discussion: "%{name} zaprosił %{length} osób do wątku:"
     discussion_announced: "%{name} zaprosił %{length} osób do wątku:"
     poll_created: "%{name} zaprosił %{length} osób do głosowania:"
-    poll_announced: "%{name} zaprosił %{length} osób do głosowania:"
     outcome_created: "%{name} udostępnił wynik %{length} osobom:"
     outcome_announced: "%{name} udostępnił wynik %{length} osobom:"
     announcement_created: "%{name} zaprosił %{length} osób do wątku:"
@@ -885,9 +924,6 @@ pl:
       discussion_edited:
         title: Powiadamiaj o zmianach
         helptext: Kogo chcesz powiadomić o tej aktualizacji? (opcjonalne)
-      poll_announced:
-        title: Zaproś do głosowania
-        helptext: Kogo chciałbyś zaprosić do głosowania?
       wip_poll_announced:
         title: Zaproś do wyrażenia opinii
         helptext: Kogo chciałbyś zaprosić do wyrażenia opinii?
@@ -923,6 +959,9 @@ pl:
       visible_to_group: Każdy w grupie %{group} będzie mógł zobaczyć ten wątek.
       visible_to_guests: Tylko zaproszone osoby mogą zobaczyć ten wątek.
       click_group_to_see_individuals: Kliknij grupę, aby zobaczyć osoby
+      poll_announced:
+        title: Zaproszenie do głosowania
+        helptext: Kogo chciałbyś zaprosić do głosowania?
     members_list:
       title: Udostępniono
       last_notified: Powiadomiono
@@ -940,6 +979,7 @@ pl:
     flash:
       success: Wysłano %{count} powiadomień
     group_mentioned: "%{name} wspomniał o grupie z %{length} osobami:"
+    poll_announced: "%{name} zaprosiło %{length} osób do głosowania:"
   action_dock:
     actions_menu: Menu akcji
     more_actions: Więcej działań
@@ -1526,6 +1566,7 @@ pl:
     learn_more: Dowiedz się więcej o ustawieniach e-mail...
     mentioned_description: Gdy ktoś {'@'}wspomni o Tobie w komentarzu, otrzymasz powiadomienie e-mailem
     daily_summary_description: Wybierz, kiedy chcesz otrzymywać e-maile z podsumowaniem. Ten e-mail zawiera wszystkie nowe aktywności, których nie zauważyłeś. To dobry sposób, aby być na bieżąco, jeśli nie korzystasz regularnie z aplikacji.
+    never: Nigdy
   thread_preview:
     replies_count: "%{count} odpowiedzi"
     unread_count: "%{count} nieprzeczytanych"

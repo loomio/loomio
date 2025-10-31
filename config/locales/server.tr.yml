@@ -227,6 +227,7 @@ tr:
       group_mentioned: Bu mesajı, grubun @bahsedilmesi nedeniyle aldınız.
       user_mentioned: Bu mesajı, @bahsedildiğin için aldın.
       notified: Yazarın size bildirmesi nedeniyle bunu aldınız.
+      poll_subscribed: Ankete abone olduğunuz için bunu aldınız.
   user_mailer:
     group_export_ready:
       subject: "%{group_name} için grup verilerini dışa aktarma"

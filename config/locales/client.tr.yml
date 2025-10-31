@@ -473,6 +473,7 @@ tr:
     when_would_you_like_to_be_emailed_poll_type: Bu %{poll_type} hakkında ne zaman e-posta almak istersiniz?
     normal_explained: Birisi bir konu başlığının veya anketin "Bildir" alanına adınızı girdiğinde veya gruptan {'@'}bahsettiğinde.
     normal_excludes_mentioning_html: Birisi {'@'} sizden bahsettiğinde (örneğin bir yorumda size yanıt verdiğinde) ayrı bir ayar vardır. <a href="%{url}">@mentions ayarlarını düzenlemek için buraya tıklayın</a>
+    changes_all_threads_and_polls_in_group: Bu, gruptaki tüm konu başlıkları ve anketler için ayarları değiştirir.
   close_explanation_modal:
     aria_label: Konuyu kapat
     close_thread: Konuyu kapat
@@ -680,7 +681,6 @@ tr:
       outcome_created: "%{actor}, %{poll_type} sonucunu paylaştı: %{title}"
       outcome_updated: "%{actor}, %{poll_type} sonucunu güncelledi: %{title}"
       outcome_review_due: 'Şunun sonucunu gözden geçirmenin zamanı geldi: %{title}'
-      poll_announced: "%{actor} sizi oy vermeye davet etti: %{title}"
       poll_closed_by_user: "%{actor} %{poll_type}'ı kapattı: %{title}"
       poll_closing_soon: "%{poll_type} 24 saat içinde kapanıyor: %{title}"
       poll_closing_soon_author: "%{poll_type} anketiniz 24 saat içinde kapanıyor: %{title}"
@@ -701,6 +701,7 @@ tr:
       user_reminded: "%{actor} size oy vermenizi hatırlatıyor: %{title}"
       group_mentioned: "%{actor} şu gruptan bahsetti: %{title}"
       new_delegate: "%{actor} sizi %{title}'da oy kullanma haklarına sahip bir delege yaptı"
+      poll_announced: 'Lütfen oy verin: %{title}'
     without_title:
       unknown_sender: Lütfen tanınmayan gönderenden gelen e-postayı inceleyin
       discussion_announced: "%{actor} sizi bir konuya davet etti"
@@ -718,7 +719,6 @@ tr:
       outcome_created: "%{actor}, %{poll_type} sonucunu paylaştı"
       outcome_updated: "%{actor} sonucu güncelledi"
       outcome_review_due: "%{poll_type} sonucunu gözden geçirmenin zamanı geldi"
-      poll_announced: "%{actor} sizi %{poll_type} için oy kullanmaya davet etti"
       poll_announced_wip: "%{actor}, %{poll_type} hakkında geri bildiriminizi istiyor"
       poll_closed_by_user: "%{actor}, %{poll_type} anketini kapattı"
       poll_closing_soon: "%{poll_type} 24 saat içinde kapanıyor"
@@ -738,10 +738,50 @@ tr:
       user_mentioned: "%{actor} sizden bahsetti"
       user_reminded: "%{actor} size oy vermenizi hatırlatıyor"
       group_mentioned: "%{actor} grubu belirtti"
+      poll_announced: "%{actor} sizi %{poll_type} üzerinde oy kullanmaya davet etti"
     hints:
       poll_closing_soon: Şimdi oy vermek, fikrinizi değiştirmek veya başkalarını katılmaya teşvik etmek için iyi bir zaman.
       poll_closing_soon_author: İnsanlara oy vermelerini hatırlatmak veya son tarihi uzatmak isteyebilirsiniz.
       outcome_review_due: Kararın nasıl uygulandığına dair düşünceleri davet eden bir geri bildirim anketi veya yeni bir başlık başlatmayı düşünün.
+    email_subject:
+      unknown_sender: Tanınmayan göndericiden gelen e-postayı inceleyin
+      comment_replied_to: "%{actor} size şu başlıkta yanıt verdi: %{title}"
+      discussion_announced: "%{başlık}"
+      discussion_edited: "%{actor} bağlamı düzenledi: %{title}"
+      discussion_closed: "%{actor} şu konuyu kapattı: %{title}"
+      invitation_accepted: "%{actor}, %{title} grubuna katılma davetinizi kabul etti"
+      membership_created: "%{actor} sizi %{title}'a %{site_name}'de katılmaya davet etti"
+      membership_resent: "%{actor} sizi %{title}'a %{site_name}'de katılmaya davet etti"
+      membership_requested: "%{actor}, %{title} grubuna katılmak istedi"
+      membership_request_approved: "%{actor}, %{title} grubuna katılma isteğinizi onayladı"
+      new_comment: "%{actor} şu başlıkta yorum yaptı: %{title}"
+      new_coordinator: "%{actor} sizi %{title} yöneticisi yaptı"
+      new_delegate: "%{actor} sizi %{title}'da oy kullanma hakkına sahip bir delege yaptı"
+      new_discussion: "%{başlık}"
+      outcome_announced: "%{poll_type} sonucu: %{title}"
+      outcome_created: "%{poll_type} sonucu: %{title}"
+      outcome_updated: "%{poll_type} sonucu güncellendi: %{title}"
+      outcome_review_due: "%{title} sonucunu gözden geçirme zamanı:"
+      poll_announced: 'Oy Ver: %{title}'
+      poll_closed_by_user: "%{actor} %{poll_type} anketini kapattı: %{title}"
+      poll_closing_soon: "%{poll_type} 24 saat içinde kapanıyor: %{title}"
+      poll_closing_soon_author: "%{poll_type} anketiniz 24 saat içinde kapanıyor: %{title}"
+      poll_created: 'Oy Ver: %{title}'
+      poll_edited: "%{actor} %{poll_type}'ı güncelledi: %{title}"
+      poll_expired: "%{poll_type} kapandı: %{title}"
+      poll_expired_author: 'Bir sonuç yayınla: %{title}'
+      poll_option_added: "%{actor}, %{title} öğesine seçenekler ekledi"
+      poll_reopened: 'Oylama uzatıldı: %{title}'
+      poll_reminder: "%{actor}, %{title} için oy vermenizi hatırlatıyor"
+      poll_reminder_wip: "%{actor} size geri bildirim vermenizi hatırlatıyor: %{title}"
+      reaction_created: "%{actor}, %{title} içindeki %{model}'inize %{reaction} tepkisi verdi"
+      stance_created: "%{actor} şu başlıkta oy kullandı: %{title}"
+      stance_updated: "%{actor} şu başlıkta oy kullandı: %{title}"
+      stance_created_option: "%{actor}, %{title} oyununda %{option}'a oy verdi"
+      user_added_to_group: "%{actor} sizi şu gruba ekledi: %{title}"
+      user_mentioned: "%{actor} sizden şu başlıkta bahsetti: %{title}"
+      group_mentioned: "%{actor} şu gruptan bahsetti: %{title}"
+      user_reminded: "%{actor} size %{title} için oy vermenizi hatırlatıyor"
   discussion_fork_actions:
     helptext: Başka bir konuya taşımak istediğiniz öğeleri seçin
     move: Taşı
@@ -838,7 +878,6 @@ tr:
     new_discussion: "%{name}, konuya %{length} kişiyi davet etti:"
     discussion_announced: "%{name}, konuya %{length} kişiyi davet etti:"
     poll_created: "%{name}, %{length} kişiyi oy vermeye davet etti:"
-    poll_announced: "%{name}, %{length} kişiyi oy vermeye davet etti:"
     outcome_created: "%{name}, %{length} kişiyle bir sonuç paylaştı:"
     outcome_announced: "%{name}, %{length} kişiyle bir sonuç paylaştı:"
     announcement_created: "%{name}, konuya %{length} kişiyi davet etti:"
@@ -877,9 +916,6 @@ tr:
       discussion_edited:
         title: Düzenlemeleri bildir
         helptext: Bu güncelleme hakkında kimi bilgilendirmek istersiniz? (isteğe bağlı)
-      poll_announced:
-        title: Oy vermeye davet edin
-        helptext: Kimi oy vermeye davet etmek istersiniz?
       wip_poll_announced:
         title: Geri bildirimde bulunmaya davet edin
         helptext: Geri bildirim vermesi için kimi davet etmek istersiniz?
@@ -915,6 +951,9 @@ tr:
       visible_to_group: "%{group} grubundaki herkes bu ileti dizisini görebilecek."
       visible_to_guests: Bu konuyu yalnızca davet edilen kişiler görebilir.
       click_group_to_see_individuals: Bireyleri görmek için grubu tıklayın
+      poll_announced:
+        title: Oy vermeye davet edin
+        helptext: Oy vermeye kimi davet etmek istersiniz?
     members_list:
       title: İle paylaştı
       last_notified: Bildirildi
@@ -932,6 +971,7 @@ tr:
     flash:
       success: "%{count} bildirim gönderildi"
     group_mentioned: "%{name}, %{length} kişinin bulunduğu gruptan bahsetti:"
+    poll_announced: "%{name}, %{length} kişiyi oy vermeye davet etti:"
   action_dock:
     actions_menu: Eylemler menüsü
     more_actions: Daha fazla hareket
@@ -1510,6 +1550,7 @@ tr:
     learn_more: E-posta ayarları hakkında daha fazla bilgi edinin...
     mentioned_description: Birisi {'@'} bir yorumda sizden bahsettiğinde, bir bildirim e-postası alacaksınız
     daily_summary_description: Güncel bilgiler içeren özet e-postayı ne zaman almak istediğinizi seçin. Bu e-posta, daha önce görmediğiniz yeni etkinlikleri içerir. Düzenli bir kullanıcı değilseniz, güncel kalmanın iyi bir yoludur.
+    never: Asla
   thread_preview:
     replies_count: "%{count} yanıt"
     unread_count: "%{count} okunmamış"

@@ -473,6 +473,7 @@ ru:
     normal_explained: Когда кто-то вводит ваше имя в поле «Уведомить» в теме или опросе, или {'@'}упоминает группу.
     normal_excludes_mentioning_html: Есть отдельная настройка для случая, когда кто-то {'@'}упоминает вас (например, когда отвечает вам в комментарии). <a href="%{url}">Нажмите здесь, чтобы изменить настройки для @упоминаний</a>
     loud_explained: Вы будете получать уведомления по электронной почте каждый раз, когда появится новый комментарий, кто-то проголосует или начнет опрос или тему.
+    changes_all_threads_and_polls_in_group: Это изменяет настройки всех тем и опросов в группе.
   close_explanation_modal:
     aria_label: Закрыть тему
     close_thread: Закрыть тему
@@ -680,7 +681,6 @@ ru:
       outcome_created: "%{actor} поделился результатом %{poll_type}: %{title}"
       outcome_updated: "%{actor} обновил результат %{poll_type}: %{title}"
       outcome_review_due: 'Пришло время подвести итоги: %{title}'
-      poll_announced: "%{actor} пригласил вас проголосовать: %{title}"
       poll_closed_by_user: "%{actor} закрыл %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} закроется через 24 часа: %{title}"
       poll_closing_soon_author: 'Ваш %{poll_type} закроется через 24 часа: %{title}'
@@ -701,6 +701,7 @@ ru:
       user_reminded: "%{actor} напоминает, чтобы вы проголосовали за: %{title}"
       group_mentioned: "%{actor} упомянул группу в: %{title}"
       new_delegate: "%{actor} сделал вас делегатом с правом голоса в %{title}"
+      poll_announced: 'Пожалуйста, проголосуйте: %{title}'
     without_title:
       unknown_sender: Пожалуйста, просмотрите письмо от неизвестного отправителя
       discussion_announced: "%{actor} пригласил вас в тред"
@@ -718,7 +719,6 @@ ru:
       outcome_created: "%{actor} поделился результатом %{poll_type}"
       outcome_updated: "%{actor} обновил результат"
       outcome_review_due: Пришло время просмотреть результат %{poll_type}
-      poll_announced: "%{actor} пригласил вас проголосовать в %{poll_type}"
       poll_announced_wip: "%{actor} хочет получить ваш отзыв о %{poll_type}"
       poll_closed_by_user: "%{actor} закрыл %{poll_type}"
       poll_closing_soon: "%{poll_type} закроется через 24 часа"
@@ -738,10 +738,50 @@ ru:
       user_mentioned: "%{actor} упомянул вас"
       user_reminded: "%{actor} напоминает вам проголосовать"
       group_mentioned: "%{actor} упомянул группу"
+      poll_announced: "%{actor} пригласил вас проголосовать на %{poll_type}"
     hints:
       poll_closing_soon: Сейчас хорошее время, чтобы проголосовать, передумать или призвать других к участию.
       poll_closing_soon_author: Возможно, вы захотите напомнить людям о необходимости проголосовать или продлить срок.
       outcome_review_due: Подумайте о том, чтобы начать опрос обратной связи или создать новую тему, предлагающую поразмышлять о том, как было реализовано это решение.
+    email_subject:
+      unknown_sender: Просмотреть электронное письмо от неизвестного отправителя
+      comment_replied_to: "%{actor} ответил вам в: %{title}"
+      discussion_announced: "%{заголовок}"
+      discussion_edited: "%{actor} отредактировал контекст: %{title}"
+      discussion_closed: "%{actor} закрыл тему: %{title}"
+      invitation_accepted: "%{actor} принял ваше приглашение присоединиться к %{title}"
+      membership_created: "%{actor} пригласил вас присоединиться к %{title} на %{site_name}"
+      membership_resent: "%{actor} пригласил вас присоединиться к %{title} на %{site_name}"
+      membership_requested: "%{actor} запросил присоединение к %{title}"
+      membership_request_approved: "%{actor} одобрил ваш запрос на присоединение к %{title}"
+      new_comment: "%{actor} прокомментировал: %{title}"
+      new_coordinator: "%{actor} сделал вас администратором %{title}"
+      new_delegate: "%{actor} сделал вас делегатом с правом голоса в %{title}"
+      new_discussion: "%{заголовок}"
+      outcome_announced: "%{poll_type} результат: %{title}"
+      outcome_created: "%{poll_type} результат: %{title}"
+      outcome_updated: 'Результат %{poll_type} обновлен: %{title}'
+      outcome_review_due: 'Пришло время подвести итоги: %{title}'
+      poll_announced: 'Голосование: %{title}'
+      poll_closed_by_user: "%{actor} закрыл %{poll_type}: %{title}"
+      poll_closing_soon: "%{poll_type} закрывается через 24 часа: %{title}"
+      poll_closing_soon_author: 'Ваш %{poll_type} закрывается через 24 часа: %{title}'
+      poll_created: 'Голосование: %{title}'
+      poll_edited: "%{actor} обновил %{poll_type}: %{title}"
+      poll_expired: "%{poll_type} закрыт: %{title}"
+      poll_expired_author: 'Опубликовать результат: %{title}'
+      poll_option_added: "%{actor} добавил опции в %{title}"
+      poll_reopened: 'Голосование продлено: %{title}'
+      poll_reminder: "%{actor} напоминает вам проголосовать за %{title}"
+      poll_reminder_wip: "%{actor} напоминает вам оставить отзыв: %{title}"
+      reaction_created: "%{actor} отреагировал %{reaction} на вашу %{model} в %{title}"
+      stance_created: "%{actor} проголосовал за: %{title}"
+      stance_updated: "%{actor} проголосовал за: %{title}"
+      stance_created_option: "%{actor} проголосовал за %{option} в %{title}"
+      user_added_to_group: "%{actor} добавил вас в группу: %{title}"
+      user_mentioned: "%{actor} упомянул вас в: %{title}"
+      group_mentioned: "%{actor} упомянул группу в: %{title}"
+      user_reminded: "%{actor} напоминает вам проголосовать за: %{title}"
   discussion_fork_actions:
     helptext: Выберите элементы, которые вы хотите переместить в другую тему.
     move: Переместить
@@ -838,7 +878,6 @@ ru:
     new_discussion: "%{name} пригласил %{length} человек в ветку:"
     discussion_announced: "%{name} пригласил %{length} человек в ветку:"
     poll_created: "%{name} пригласил %{length} человек проголосовать:"
-    poll_announced: "%{name} пригласил %{length} человек проголосовать:"
     outcome_created: "%{name} поделился результатом с %{length} людьми:"
     outcome_announced: "%{name} поделился результатом с %{length} людьми:"
     announcement_created: "%{name} пригласил %{length} человек в ветку:"
@@ -877,9 +916,6 @@ ru:
       discussion_edited:
         title: Уведомлять об изменениях
         helptext: Кого вы хотите уведомить об этом обновлении? (необязательный)
-      poll_announced:
-        title: Пригласить голосовать
-        helptext: Кого бы вы хотели пригласить проголосовать?
       wip_poll_announced:
         title: Пригласить оставить отзыв
         helptext: Кого бы вы хотели пригласить оставить отзыв?
@@ -915,6 +951,9 @@ ru:
       visible_to_group: Любой участник %{group} сможет видеть эту тему.
       visible_to_guests: Только приглашенные люди могут видеть эту тему.
       click_group_to_see_individuals: Нажмите группу, чтобы увидеть отдельных лиц
+      poll_announced:
+        title: Пригласить голосовать
+        helptext: Кого бы вы хотели пригласить проголосовать?
     members_list:
       title: Доступно с
       last_notified: Уведомлено
@@ -932,6 +971,7 @@ ru:
     flash:
       success: "%{count} уведомлений отправлено"
     group_mentioned: "%{name} упомянул группу с %{length} людьми:"
+    poll_announced: "%{name} пригласил %{length} человек проголосовать:"
   action_dock:
     actions_menu: Меню действий
     more_actions: Больше действий
@@ -1510,6 +1550,7 @@ ru:
     learn_more: Подробнее о настройках электронной почты…
     mentioned_description: Когда кто-то {'@'}упомянет вас в комментарии, вы получите уведомление по электронной почте.
     daily_summary_description: Выберите, когда получать электронное письмо с обзором. В этом письме будут указаны все новые действия, которые вы ещё не видели. Хороший способ оставаться в курсе событий, если вы не являетесь постоянным пользователем.
+    never: Никогда
   thread_preview:
     replies_count: "%{count} ответов"
     unread_count: "%{count} непрочитано"

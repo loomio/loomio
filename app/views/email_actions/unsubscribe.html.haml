@@ -40,19 +40,19 @@
         = options_for_select(volume_options, selected: @membership.volume)
       %input{type: 'submit', value: t(:'common.action.save')}
     %p
-      %i=t(:'change_volume_form.changes_all_threads_in_group')
+      %i=t(:'change_volume_form.changes_all_threads_and_polls_in_group')
 
   %h3=t(:'change_volume_form.what_do_the_options_mean')
   %p
-    %b= t(:'change_volume_form.simple.quiet_explain')
+    %b= t(:'change_volume_form.quiet_desc')
     \-
     = t(:'change_volume_form.quiet_explained')
   %p
-    %b= t(:'change_volume_form.simple.normal_explain')
+    %b= t(:'change_volume_form.normal_desc')
     \-
     = t(:'change_volume_form.normal_explained')
   %p= t(:'change_volume_form.normal_excludes_mentioning_html', url: "/email_preferences?unsubscribe_token=#{params[:unsubscribe_token]}")
   %p
-    %b= t(:'change_volume_form.simple.loud_explain')
+    %b= t(:'change_volume_form.loud_desc')
     \-
     = t(:'change_volume_form.loud_explained')

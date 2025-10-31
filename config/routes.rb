@@ -364,7 +364,6 @@ Rails.application.routes.draw do
     put :set_group_volume
     put :set_discussion_volume
     put :set_poll_volume
-    get 'unfollow_discussion/:discussion_id/:unsubscribe_token', action: 'unfollow_discussion', as: :unfollow_discussion
     get 'mark_summary_email_as_read', action: 'mark_summary_email_as_read', as: :mark_summary_email_as_read
     get 'mark_discussion_as_read/:discussion_id/:event_id/:unsubscribe_token', action: 'mark_discussion_as_read', as: :mark_discussion_as_read
     get 'mark_notification_as_read/:id/:unsubscribe_token', action: 'mark_notification_as_read', as: :mark_notification_as_read

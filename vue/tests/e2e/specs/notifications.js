@@ -13,9 +13,9 @@ module.exports = {
     page.expectText('.notifications__dropdown', 'requested to join')
     page.expectText('.notifications__dropdown', 'mentioned you in')
     page.expectText('.notifications__dropdown', 'replied to you in' )
-    page.expectText('.notifications__dropdown', 'shared a poll outcome')
+    page.expectText('.notifications__dropdown', 'published a poll outcome')
     page.expectText('.notifications__dropdown', 'poll closing in 24 hours')
-    page.expectText('.notifications__dropdown', 'shared a poll')
+    page.expectText('.notifications__dropdown', 'published a poll')
     page.expectText('.notifications__dropdown', 'reacted 🙂 to your comment')
     page.expectText('.notifications__dropdown', 'made you an admin')
   }

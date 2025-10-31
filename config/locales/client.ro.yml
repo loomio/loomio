@@ -473,6 +473,7 @@ ro:
     when_would_you_like_to_be_emailed_poll_type: Când doriți să primiți un e-mail despre acest %{poll_type}?
     normal_explained: Când cineva introduce numele tău în câmpul „Notificare” al unui fir de discuție sau al unui sondaj sau {'@'}menționează grupul.
     normal_excludes_mentioning_html: Există o setare separată pentru situațiile în care cineva te menționează {'@'} (de exemplu, când îți răspunde într-un comentariu). <a href="%{url}">Apasă aici pentru a edita setările pentru @mențiuni.</a>
+    changes_all_threads_and_polls_in_group: Aceasta modifică setările pentru toate firele de discuție și sondajele din grup.
   close_explanation_modal:
     aria_label: Închideți firul
     close_thread: Închideți firul
@@ -680,7 +681,6 @@ ro:
       outcome_created: "%{actor} a distribuit un rezultat %{poll_type}: %{title}"
       outcome_updated: "%{actor} a actualizat rezultatul %{poll_type}: %{title}"
       outcome_review_due: 'Este timpul să revizuim rezultatul: %{title}'
-      poll_announced: "%{actor} te-a invitat să votezi: %{title}"
       poll_closed_by_user: "%{actor} a închis %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} se închide în 24 de ore: %{title}"
       poll_closing_soon_author: "%{poll_type} dvs. se închide în 24 de ore: %{title}"
@@ -701,6 +701,7 @@ ro:
       user_reminded: "%{actor} vă reamintește să votați în: %{title}"
       group_mentioned: "%{actor} a menționat grupul în: %{title}"
       new_delegate: "%{actor} te-a făcut delegat cu drept de vot în %{title}"
+      poll_announced: 'Vă rugăm să votați: %{title}'
     without_title:
       unknown_sender: Vă rugăm să examinați e-mailul de la expeditor nerecunoscut
       discussion_announced: "%{actor} te-a invitat la o discuție"
@@ -718,7 +719,6 @@ ro:
       outcome_created: "%{actor} a distribuit un rezultat %{poll_type}"
       outcome_updated: "%{actor} a actualizat rezultatul"
       outcome_review_due: Este timpul să revizuim rezultatul %{poll_type}
-      poll_announced: "%{actor} v-a invitat să votați la un %{poll_type}"
       poll_announced_wip: "%{actor} dorește feedbackul dvs. la un %{poll_type}"
       poll_closed_by_user: "%{actor} a închis %{poll_type}"
       poll_closing_soon: "%{poll_type} se închide în 24 de ore"
@@ -738,10 +738,50 @@ ro:
       user_mentioned: "%{actor} te-a menționat"
       user_reminded: "%{actor} vă reamintește să votați"
       group_mentioned: "%{actor} a menționat grupul"
+      poll_announced: "%{actor} te-a invitat să votezi pentru un %{poll_type}"
     hints:
       poll_closing_soon: Acum este un moment bun să votezi, să te răzgândești sau să încurajezi pe alții să participe.
       poll_closing_soon_author: Poate doriți să reamintiți oamenilor să voteze sau să prelungiți termenul.
       outcome_review_due: Luați în considerare începerea unui sondaj de feedback sau a unui nou thread care să invite la reflecții asupra modului în care a fost implementată decizia.
+    email_subject:
+      unknown_sender: Verificați e-mailul de la un expeditor necunoscut
+      comment_replied_to: "%{actor} ți-a răspuns în: %{title}"
+      discussion_announced: "%{titlu}"
+      discussion_edited: "%{actor} a editat contextul: %{title}"
+      discussion_closed: "%{actor} a închis firul de discuție: %{title}"
+      invitation_accepted: "%{actor} a acceptat invitația ta de a se alătura %{title}"
+      membership_created: "%{actor} te-a invitat să te alături lui %{title} pe %{site_name}"
+      membership_resent: "%{actor} te-a invitat să te alături lui %{title} pe %{site_name}"
+      membership_requested: "%{actor} a solicitat să se alăture lui %{title}"
+      membership_request_approved: "%{actor} a aprobat cererea ta de a te alătura lui %{title}"
+      new_comment: "%{actor} a comentat în: %{title}"
+      new_coordinator: "%{actor} te-a făcut administrator al site-ului %{title}"
+      new_delegate: "%{actor} te-a numit delegat cu drept de vot în %{title}"
+      new_discussion: "%{titlu}"
+      outcome_announced: 'Rezultatul %{poll_type}: %{title}'
+      outcome_created: 'Rezultatul %{poll_type}: %{title}'
+      outcome_updated: 'Rezultatul %{poll_type} a fost actualizat: %{title}'
+      outcome_review_due: 'E timpul să analizăm rezultatul: %{title}'
+      poll_announced: 'Vot: %{title}'
+      poll_closed_by_user: "%{actor} a închis %{poll_type}: %{title}"
+      poll_closing_soon: "%{poll_type} se închide în 24 de ore: %{title}"
+      poll_closing_soon_author: "%{poll_type} se închide în 24 de ore: %{title}"
+      poll_created: 'Vot: %{title}'
+      poll_edited: "%{actor} a actualizat %{poll_type}: %{title}"
+      poll_expired: "%{poll_type} s-a închis: %{title}"
+      poll_expired_author: 'Publică un rezultat: %{title}'
+      poll_option_added: "%{actor} a adăugat opțiuni la %{title}"
+      poll_reopened: 'Votarea a fost prelungită: %{title}'
+      poll_reminder: "%{actor} vă reamintește să votați pentru %{title}"
+      poll_reminder_wip: "%{actor} îți reamintește să oferi feedback: %{title}"
+      reaction_created: "%{actor} a reacționat %{reaction} la %{model}-ul tău în %{title}"
+      stance_created: "%{actor} a votat pentru: %{title}"
+      stance_updated: "%{actor} a votat pentru: %{title}"
+      stance_created_option: "%{actor} a votat %{option} în %{title}"
+      user_added_to_group: "%{actor} te-a adăugat la grup: %{title}"
+      user_mentioned: "%{actor} te-a menționat în: %{title}"
+      group_mentioned: "%{actor} a menționat grupul în: %{title}"
+      user_reminded: "%{actor} vă reamintește să votați pentru: %{title}"
   discussion_fork_actions:
     helptext: Selectați elementele pe care doriți să le mutați într-un alt subiect
     move: Mișcare
@@ -838,7 +878,6 @@ ro:
     new_discussion: "%{name} a invitat %{length} persoane la subiect:"
     discussion_announced: "%{name} a invitat %{length} persoane la subiect:"
     poll_created: "%{name} a invitat %{length} persoane să voteze:"
-    poll_announced: "%{name} a invitat %{length} persoane să voteze:"
     outcome_created: "%{name} a distribuit un rezultat cu %{length} persoane:"
     outcome_announced: "%{name} a distribuit un rezultat cu %{length} persoane:"
     announcement_created: "%{name} a invitat %{length} persoane la subiect:"
@@ -877,9 +916,6 @@ ro:
       discussion_edited:
         title: Notificarea modificărilor
         helptext: Pe cine ai dori să anunți despre această actualizare? (optional)
-      poll_announced:
-        title: Invită la vot
-        helptext: Pe cine ați dori să invitați la vot?
       wip_poll_announced:
         title: Invitați să oferiți feedback
         helptext: Pe cine ați dori să invitați să dea feedback?
@@ -915,6 +951,9 @@ ro:
       visible_to_group: Oricine din %{group} va putea vedea acest fir.
       visible_to_guests: Numai persoanele invitate pot vedea acest subiect.
       click_group_to_see_individuals: Faceți clic pe grup pentru a vedea persoane
+      poll_announced:
+        title: Invitați la vot
+        helptext: Pe cine ați dori să invitați la vot?
     members_list:
       title: Impartit cu
       last_notified: Notificată
@@ -932,6 +971,7 @@ ro:
     flash:
       success: "%{count} notificări trimise"
     group_mentioned: "%{name} a menționat grupul cu %{length} persoane:"
+    poll_announced: "%{name} a invitat %{length} persoane să voteze:"
   action_dock:
     actions_menu: Meniul Acțiuni
     more_actions: Mai multe actiuni
@@ -1510,6 +1550,7 @@ ro:
     learn_more: Aflați mai multe despre setările de e-mail...
     mentioned_description: Când cineva te menționează {'@'} într-un comentariu, vei primi un e-mail de notificare.
     daily_summary_description: Alege când vrei să primești e-mailul cu rezumatul actualizării. Acest e-mail conține orice activitate nouă pe care nu ai văzut-o. O modalitate bună de a rămâne la curent dacă nu ești un utilizator obișnuit.
+    never: Nu
   thread_preview:
     replies_count: "%{count} răspunsuri"
     unread_count: "%{count} necitite"

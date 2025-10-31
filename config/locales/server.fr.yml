@@ -203,9 +203,9 @@ fr:
       details: Détails
       group_name: Nom du groupe
       discussion_title: Titre de la discussion
-      outcome_author: Auteur de la synthèse du résultat
+      outcome_author: Auteur de la synthèse du conclusion
       outcome_created_at: Résultat créé à
-      outcome_statement: Synthèse du résultat
+      outcome_statement: Synthèse du conclusion
       poll_url: URL du sondage
       reason: Raison
       participant: Participant
@@ -232,6 +232,7 @@ fr:
       group_mentioned: Vous avez reçu ceci parce que le groupe a été @mentionné.
       user_mentioned: Vous avez reçu ceci parce que vous avez été @mentionné.
       notified: Vous avez reçu ceci parce que l'auteur vous a averti.
+      poll_subscribed: Vous avez reçu ce message car vous êtes abonné(e) au sondage.
   user_mailer:
     group_export_ready:
       subject: Export des données du groupe %{group_name}
@@ -391,7 +392,7 @@ fr:
     common:
       why_send_this: Vous recevez ce courriel parce que %{reason}
       view_on_loomio: Voir sur %{site_name}
-      create_outcome: Partager les résultats
+      create_outcome: Partager les conclusions
       your_response: 'Vous avez voté:'
       you_voted: Vous avez voté !
       not_invited: Non invité

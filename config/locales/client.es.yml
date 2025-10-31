@@ -475,6 +475,7 @@ es:
     normal_explained: Cuando alguien ingresa su nombre en el campo "Notificar" de un hilo o una encuesta, o menciona al grupo {'@'}.
     normal_excludes_mentioning_html: Hay una configuración independiente para cuando alguien {'@'} te menciona (por ejemplo, al responderte en un comentario). <a href="%{url}">Haz clic aquí para editar la configuración de las @menciones.</a>
     loud_explained: Recibirás un correo electrónico cada vez que haya un nuevo comentario, alguien vote o inicie una encuesta o hilo.
+    changes_all_threads_and_polls_in_group: Esto cambia la configuración para todos los hilos y encuestas del grupo.
   close_explanation_modal:
     aria_label: Cerrar hilo
     close_thread: 'Cerrar hilo '
@@ -625,7 +626,7 @@ es:
     contact_support: Soporte al usuario
     sign_out: Salir
     beta_collab: Funciones Beta activadas
-    outcomes: Resultados
+    outcomes: Conclusiones
     theme: Tema
     light: Luz
     dark: Oscuro
@@ -661,7 +662,7 @@ es:
     discussion: 'Hilo:'
     comment: comentar en
     poll: 'sondeo:'
-    outcome: 'resultado:'
+    outcome: 'conclusión:'
     stance: 'votar:'
   notifications:
     header: Notificaciones
@@ -675,16 +676,15 @@ es:
       invitation_accepted: "%{actor} aceptó tu invitación a unirte a %{title}"
       membership_created: "%{actor} te ha invitado a unirte a %{title} en %{site_name}"
       membership_resent: "%{actor} te invitó a unirte a %{title} en %{site_name}"
-      membership_requested: "%{actor} solicitó unirse a %{title} "
+      membership_requested: "%{actor} solicitó unirse a %{title}"
       membership_request_approved: "%{actor} aprobó tu solicitud a unirte a %{title}"
       new_comment: "%{actor} comentó en: %{title}"
       new_coordinator: "%{actor} te hizo administrador de %{title}"
-      new_discussion: "*%{actor} comenzó un hilo: %{title}"
-      outcome_announced: "%{actor} compartió un %{poll_type} resultado: %{title}"
-      outcome_created: "%{actor} compartió un %{poll_type} resultado: %{title}"
-      outcome_updated: "%{actor} actualizado el %{poll_type} resultado: %{title}"
-      outcome_review_due: 'Es la hora de revisar el resultado: %{title}'
-      poll_announced: "%{actor} te invitó a votar: %{title}"
+      new_discussion: "%{actor} comenzó un hilo: %{title}"
+      outcome_announced: "%{actor} compartió la conclusión del %{poll_type}: %{title}"
+      outcome_created: "%{actor} compartió la conclusión del %{poll_type}: %{title}"
+      outcome_updated: "%{actor} actualizó la conclusión del %{poll_type}: %{title}"
+      outcome_review_due: 'Es la hora de revisar la conclusión: %{title}'
       poll_closed_by_user: "%{actor} cerró el %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} cierra en 24 horas: %{title}"
       poll_closing_soon_author: 'Tu %{poll_type} cierra en 24 horas: %{title}'
@@ -705,6 +705,7 @@ es:
       user_reminded: "%{actor} te está recordando que votes en %{title}"
       group_mentioned: "%{actor} mencionó al grupo en: %{title}"
       new_delegate: "%{actor} te nombró delegado con derecho a voto en %{title}"
+      poll_announced: 'Vota: %{title}'
     without_title:
       unknown_sender: Revise el correo electrónico del remitente no reconocido
       discussion_announced: "%{actor} te invitó al hilo"
@@ -718,11 +719,10 @@ es:
       membership_resent: "%{actor} te invitó a unirte a un grupo"
       membership_requested: "%{actor} solicitó unirse a "
       membership_request_approved: "%{actor} aprobó tu solicitud a unirte a %{title}"
-      outcome_announced: "%{actor} compartió %{poll_type} un resultado"
-      outcome_created: "%{actor} compartió %{poll_type} un resultado"
-      outcome_updated: "%{actor} actualizó un resultado"
-      outcome_review_due: Es la hora de revisar el %{poll_type} resultado
-      poll_announced: "%{actor} te invitó a votar en un %{poll_type}"
+      outcome_announced: "%{actor} compartió la conclusión del %{poll_type}"
+      outcome_created: "%{actor} compartió la conclusión del %{poll_type}"
+      outcome_updated: "%{actor} actualizó la conclusión"
+      outcome_review_due: Es la hora de revisar la conclusión del %{poll_type}
       poll_announced_wip: "%{actor} quiere tu feedback en un %{poll_type}"
       poll_closed_by_user: "%{actor} cerró el %{poll_type}"
       poll_closing_soon: "%{poll_type} cerrará en 24 horas"
@@ -742,10 +742,50 @@ es:
       user_mentioned: "%{actor} te mencionó"
       user_reminded: "%{actor} te está recordando que votes"
       group_mentioned: "%{actor} mencionó el grupo"
+      poll_announced: "%{actor} te invitó a votar en una %{poll_type}"
     hints:
       poll_closing_soon: Ahora es un buen momento para votar, cambiar de opinión o animar a otros a participar.
       poll_closing_soon_author: Es posible que desee recordar a las personas que voten o extiendan la fecha límite.
       outcome_review_due: Considere comenzar una encuesta de comentarios o un nuevo hilo que invite a reflexionar sobre cómo se ha implementado la decisión.
+    email_subject:
+      unknown_sender: Revisar correo electrónico de remitente desconocido
+      comment_replied_to: "%{actor} te respondió en: %{title}"
+      discussion_announced: "%{title}"
+      discussion_edited: "%{actor} editó el contexto: %{title}"
+      discussion_closed: "%{actor} cerró el hilo: %{title}"
+      invitation_accepted: "%{actor} aceptó tu invitación para unirse a %{title}"
+      membership_created: "%{actor} te invitó a unirte a %{title} en %{site_name}"
+      membership_resent: "%{actor} te invitó a unirte a %{title} en %{site_name}"
+      membership_requested: "%{actor} solicitó unirse a %{title}"
+      membership_request_approved: "%{actor} aprobó tu solicitud para unirte a %{title}"
+      new_comment: "%{actor} comentó en: %{title}"
+      new_coordinator: "%{actor} te nombró administrador de %{title}"
+      new_delegate: "%{actor} te nombró delegado con derecho a voto en %{title}"
+      new_discussion: "%{title}"
+      outcome_announced: 'Conclusión de %{poll_type}: %{title}'
+      outcome_created: 'Conclusión de %{poll_type}: %{title}'
+      outcome_updated: 'Conclusión actualizada de %{poll_type}: %{title}'
+      outcome_review_due: 'Es hora de revisar la conclusión de: %{title}'
+      poll_announced: 'Voto: %{title}'
+      poll_closed_by_user: "%{actor} cerró la %{poll_type}: %{title}"
+      poll_closing_soon: "%{poll_type} cierra en 24 horas: %{title}"
+      poll_closing_soon_author: 'Tu encuesta %{poll_type} cierra en 24 horas: %{title}'
+      poll_created: 'Voto: %{title}'
+      poll_edited: "%{actor} actualizó el %{poll_type}: %{title}"
+      poll_expired: "%{poll_type} ha finalizado: %{title}"
+      poll_expired_author: 'Publicar una conclusión: %{title}'
+      poll_option_added: "%{actor} agregó opciones a %{title}"
+      poll_reopened: 'Votación extendida: %{title}'
+      poll_reminder: "%{actor} te recuerda que votes por %{title}"
+      poll_reminder_wip: "%{actor} te recuerda que dejes tu opinión: %{title}"
+      reaction_created: "%{actor} reaccionó %{reaction} a tu %{model} en %{title}"
+      stance_created: "%{actor} votó en: %{title}"
+      stance_updated: "%{actor} votó en: %{title}"
+      stance_created_option: "%{actor} votó %{option} en %{title}"
+      user_added_to_group: "%{actor} te agregó al grupo: %{title}"
+      user_mentioned: "%{actor} te mencionó en: %{title}"
+      group_mentioned: "%{actor} mencionó al grupo en: %{title}"
+      user_reminded: "%{actor} te recuerda que votes en: %{title}"
   discussion_fork_actions:
     helptext: Selecciona puntos que te gustaría mover a otro hilo.
     move: Mover
@@ -842,7 +882,6 @@ es:
     new_discussion: "%{name} invitó a %{length} gente a este hilo:"
     discussion_announced: "%{name} invitó %{length} gente a este hilo:"
     poll_created: "%{name} invited a %{length} gente a votar:"
-    poll_announced: "%{name} invited a %{length} gente a votar:"
     outcome_created: "%{name} compartió un resultado con %{length} gente:"
     outcome_announced: "%{name} compartió un resultado con %{length} gente:"
     announcement_created: "%{name} invitó %{length} gente a este hilo:"
@@ -883,9 +922,6 @@ es:
       discussion_edited:
         title: Notificar cambios
         helptext: "¿A quién te gustaría notificar sobre esta actualización? (opcional)"
-      poll_announced:
-        title: 'Invitar a votar '
-        helptext: "¿A quién le gustaría invitar a la votación?"
       wip_poll_announced:
         title: Invitar para hacer comentarios
         helptext: "¿A quién le gustaría invitar a dejar comentarios?"
@@ -921,6 +957,9 @@ es:
       visible_to_group: Cualquiera en %{group} será capaz de ver este hilo.
       visible_to_guests: Solamente la gente invitada puede ver este hilo.
       click_group_to_see_individuals: Clica grupo para ver individual
+      poll_announced:
+        title: Invitación a votar
+        helptext: "¿A quién te gustaría invitar a votar?"
     members_list:
       title: Compartido con
       last_notified: Notificado
@@ -938,6 +977,7 @@ es:
     flash:
       success: "%{count} notificaciones enviadas"
     group_mentioned: "%{name} mencionó el grupo con %{length} personas:"
+    poll_announced: "%{name} invitó a %{length} personas a votar:"
   action_dock:
     actions_menu: Menú de acciones
     more_actions: Más acciones
@@ -1535,6 +1575,7 @@ es:
       updated: Configuración del correo electrónico actualizada
     learn_more: Aprende más sobre la configuración de correo electrónico...
     daily_summary_description: Elige cuándo recibir el correo electrónico de resumen de actualización. Este correo contiene cualquier actividad nueva que no hayas visto. Es una buena manera de mantenerte al día si no eres un usuario habitual.
+    never: Nunca
   thread_preview:
     replies_count: "%{count} respuestas"
     unread_count: "%{count} no leídos"

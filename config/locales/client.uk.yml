@@ -476,6 +476,7 @@ uk:
     when_would_you_like_to_be_emailed_poll_type: Коли ви бажаєте отримати електронний лист про цей %{poll_type}?
     normal_explained: Коли хтось вводить ваше ім’я в поле «Сповістити» в темі чи опитуванні, або {'@'}згадує групу.
     normal_excludes_mentioning_html: Існує окреме налаштування для випадків, коли хтось {'@'}згадує вас (наприклад, коли відповідає вам у коментарі). <a href="%{url}">Натисніть тут, щоб редагувати налаштування для @згадок</a>
+    changes_all_threads_and_polls_in_group: Це змінює налаштування для всіх тем та опитувань у групі.
   close_explanation_modal:
     aria_label: Закрити тему
     close_thread: Закрити тему
@@ -685,7 +686,6 @@ uk:
       outcome_created: "%{actor} поділився результатом %{poll_type}: %{title}"
       outcome_updated: "%{actor} оновив результат %{poll_type}: %{title}"
       outcome_review_due: 'Настав час переглянути результати: %{title}'
-      poll_announced: "%{actor} запросив вас проголосувати: %{title}"
       poll_closed_by_user: "%{actor} закрив %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} закривається через 24 години: %{title}"
       poll_closing_soon_author: 'Ваш %{poll_type} закривається через 24 години: %{title}'
@@ -706,6 +706,7 @@ uk:
       user_reminded: "%{actor} нагадує вам щодо голосування: %{title}"
       group_mentioned: "%{actor} згадав групу в: %{title}"
       new_delegate: "%{actor} зробив вас делегатом із правом голосу в %{title}"
+      poll_announced: 'Будь ласка, проголосуйте: %{title}'
     without_title:
       unknown_sender: Будь ласка, перегляньте електронний лист від нерозпізнаного відправника
       discussion_announced: "%{actor} запросив вас до ланцюжка"
@@ -719,11 +720,10 @@ uk:
       membership_resent: "%{actor} запросив вас приєднатися до групи"
       membership_requested: "%{actor} надіслав запит на приєднання до вашої групи"
       membership_request_approved: "%{actor} схвалив ваш запит на приєднання до %{title}"
-      outcome_announced: "%{actor} поділився результатом %{poll_type}"
-      outcome_created: "%{actor} поділився результатом %{poll_type}"
-      outcome_updated: "%{actor} оновив результат"
-      outcome_review_due: Настав час переглянути результат %{poll_type}
-      poll_announced: "%{actor} запросив вас проголосувати в %{poll_type}"
+      outcome_announced: "%{actor} поділився висновком %{poll_type}"
+      outcome_created: "%{actor} поділився висновком %{poll_type}"
+      outcome_updated: "%{actor} оновив висновок"
+      outcome_review_due: Настав час переглянути висновок %{poll_type}
       poll_announced_wip: "%{actor} хоче отримати ваш відгук про %{poll_type}"
       poll_closed_by_user: "%{actor} закрив %{poll_type}"
       poll_closing_soon: "%{poll_type} закривається через 24 години"
@@ -731,7 +731,7 @@ uk:
       poll_created: "%{actor} розпочав %{poll_type}"
       poll_edited: "%{actor} оновив %{poll_type}"
       poll_expired: "%{poll_type} закрито"
-      poll_expired_author: Поділіться результатом вашого %{poll_type}
+      poll_expired_author: Поділіться висновком вашого %{poll_type}
       poll_option_added: "%{actor} додав параметри до %{poll_type}"
       poll_reopened: "%{actor} повторно відкрив %{poll_type}"
       poll_reminder: "%{actor} нагадує вам проголосувати"
@@ -743,10 +743,50 @@ uk:
       user_mentioned: "%{actor} згадав вас"
       user_reminded: "%{actor} нагадує вам проголосувати"
       group_mentioned: "%{actor} згадав групу"
+      poll_announced: "%{actor} запросив вас проголосувати за %{poll_type}"
     hints:
       poll_closing_soon: Зараз гарний час, щоб проголосувати, змінити свою думку або заохотити інших до участі.
       poll_closing_soon_author: Ви можете нагадати людям проголосувати або продовжити кінцевий термін.
       outcome_review_due: Подумайте про те, щоб розпочати опитування для відгуків або створити нову тему, запрошуючи до роздумів про те, як було реалізовано рішення.
+    email_subject:
+      unknown_sender: Переглянути електронний лист від невідомого відправника
+      comment_replied_to: "%{actor} відповів вам у: %{title}"
+      discussion_announced: "%{назва}"
+      discussion_edited: "%{actor} відредагував контекст: %{title}"
+      discussion_closed: "%{actor} закрив тему: %{title}"
+      invitation_accepted: "%{actor} прийняв ваше запрошення приєднатися до %{title}"
+      membership_created: "%{actor} запросив вас приєднатися до %{title} на %{site_name}"
+      membership_resent: "%{actor} запросив вас приєднатися до %{title} на %{site_name}"
+      membership_requested: "%{actor} запросив(ла) приєднання до %{title}"
+      membership_request_approved: "%{actor} схвалив ваш запит на приєднання до %{title}"
+      new_comment: "%{actor} прокоментував у: %{title}"
+      new_coordinator: "%{actor} зробив вас адміністратором %{title}"
+      new_delegate: "%{actor} зробив вас делегатом з правом голосу в %{title}"
+      new_discussion: "%{назва}"
+      outcome_announced: 'Результат %{poll_type}: %{title}'
+      outcome_created: 'Результат %{poll_type}: %{title}'
+      outcome_updated: 'Результат %{poll_type} оновлено: %{title}'
+      outcome_review_due: 'Час переглянути результат: %{title}'
+      poll_announced: 'Голосувати: %{title}'
+      poll_closed_by_user: "%{actor} закрив %{poll_type}: %{title}"
+      poll_closing_soon: "%{poll_type} закривається через 24 години: %{title}"
+      poll_closing_soon_author: 'Ваш %{poll_type} закривається через 24 години: %{title}'
+      poll_created: 'Голосувати: %{title}'
+      poll_edited: "%{actor} оновив %{poll_type}: %{title}"
+      poll_expired: "%{poll_type} закрито: %{title}"
+      poll_expired_author: 'Опублікувати результат: %{title}'
+      poll_option_added: "%{actor} додав опції до %{title}"
+      poll_reopened: 'Голосування продовжено: %{title}'
+      poll_reminder: "%{actor} нагадує вам проголосувати за %{title}"
+      poll_reminder_wip: "%{actor} нагадує вам залишити відгук: %{title}"
+      reaction_created: "%{actor} відреагував %{reaction} на вашу %{model} у %{title}"
+      stance_created: "%{actor} проголосував за: %{title}"
+      stance_updated: "%{actor} проголосував за: %{title}"
+      stance_created_option: "%{actor} проголосував за %{option} у %{title}"
+      user_added_to_group: "%{actor} додав вас до групи: %{title}"
+      user_mentioned: "%{actor} згадав вас у: %{title}"
+      group_mentioned: "%{actor} згадав групу в: %{title}"
+      user_reminded: "%{actor} нагадує вам проголосувати: %{title}"
   discussion_fork_actions:
     helptext: Оберіть елементи які ви хочете перенести в іншу гілку
     move: Перемістити
@@ -843,7 +883,6 @@ uk:
     new_discussion: "%{name} запросив(ла) %{length} людей до теми:"
     discussion_announced: "%{name} запросив(ла) %{length} людей до теми:"
     poll_created: "%{name} запросив(ла) %{length} людей до голосування:"
-    poll_announced: "%{name} запросив(ла) %{length} людей до голосування:"
     outcome_created: "%{name} поширив результат з %{length} людьми:"
     outcome_announced: "%{name} поширив результат з %{length} людьми:"
     announcement_created: "%{name} запросив(ла) %{length} людей до теми:"
@@ -886,9 +925,6 @@ uk:
       discussion_edited:
         title: Повідомляти про зміни
         helptext: Кого б ви хотіли повідомити про це оновлення? (необов'язково)
-      poll_announced:
-        title: Запросити до голосування
-        helptext: Кого ви хотіли б долучити до голосування?
       wip_poll_announced:
         title: Запросіть залишити відгук
         helptext: Кого б ви хотіли запросити залишити відгук?
@@ -924,6 +960,9 @@ uk:
       visible_to_group: Будь-хто в %{group} зможе побачити цю тему.
       visible_to_guests: Лише запрошені люди можуть бачити цю тему.
       click_group_to_see_individuals: Натисніть на групу, щоб побачити окремих осіб
+      poll_announced:
+        title: Запрошуємо до голосування
+        helptext: Кого б ви хотіли запросити до голосування?
     members_list:
       title: Поширити серед
       last_notified: Сповіщено
@@ -941,6 +980,7 @@ uk:
     flash:
       success: "%{count} сповіщень надіслано"
     group_mentioned: "%{name} згадав групу з %{length} осіб:"
+    poll_announced: "%{name} запросив %{length} людей проголосувати:"
   action_dock:
     actions_menu: Меню дій
     more_actions: Більше дій
@@ -1529,6 +1569,7 @@ uk:
     learn_more: Дізнатись більше про налаштування електронної пошти...
     mentioned_description: Коли хтось {'@'}згадує вас у коментарі, ви отримуєте сповіщення електронною поштою
     daily_summary_description: Виберіть, коли отримувати електронний лист із підсумками. Цей лист містить будь-яку нову активність, яку ви не бачили. Гарний спосіб бути в курсі подій, якщо ви не є постійним користувачем.
+    never: Ніколи
   thread_preview:
     replies_count: "%{count} відповідей"
     unread_count: "%{count} непрочитаних"

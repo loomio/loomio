@@ -29,20 +29,6 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
     redirect_to_unsubscribe
   end
 
-  def unfollow_discussion
-    discussion_reader = DiscussionReader.for(discussion: discussion, user: current_user)
-
-    if %w[normal quiet].include?(params[:new_volume])
-      discussion_reader.set_volume!(params[:new_volume].to_sym)
-    elsif discussion_reader.volume_is_loud?
-      discussion_reader.set_volume! :normal
-    else
-      discussion_reader.set_volume! :quiet
-    end
-
-    redirect_to root_path, notice: t(:"email_actions.unfollowed_discussion", thread_title: discussion.title)
-  end
-
   def mark_discussion_as_read
     GenericWorker.perform_async(
       'DiscussionService',
@@ -93,6 +79,8 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
 
     @poll = if (@outcome = load_and_authorize(:outcome, :show, optional: true))
               @outcome.poll
+            elsif (@stance = load_and_authorize(:stance, :show, optional: true))
+              @stance.poll
             else
               load_and_authorize(:poll, :show, optional: true)
             end

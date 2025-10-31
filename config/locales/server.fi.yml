@@ -227,6 +227,7 @@ fi:
       group_mentioned: Sait tämän, koska ryhmä @mainittiin.
       user_mentioned: Sait tämän, koska sinut @mainittiin.
       notified: Sait tämän, koska kirjoittaja ilmoitti sinulle.
+      poll_subscribed: Sait tämän, koska olet tilannut kyselyn.
   user_mailer:
     group_export_ready:
       subject: 'Ryhmätietojen vienti: %{group_name}'

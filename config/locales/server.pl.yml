@@ -233,6 +233,7 @@ pl:
       group_mentioned: Otrzymałeś to, ponieważ grupa została @wspomniana.
       user_mentioned: Otrzymałeś to, ponieważ @o Tobie wspomniano.
       notified: Otrzymałeś to, ponieważ autor Cię o tym powiadomił.
+      poll_subscribed: Otrzymałeś/aś tę wiadomość, ponieważ zapisałeś/aś się na ankietę.
   user_mailer:
     group_export_ready:
       subject: Eksport danych grupy dla %{group_name}

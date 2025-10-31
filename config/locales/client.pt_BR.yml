@@ -483,6 +483,7 @@ pt_BR:
     when_would_you_like_to_be_emailed_poll_type: Quando você gostaria de receber um e-mail sobre este %{poll_type}?
     normal_explained: Quando alguém insere seu nome no campo "Notificar" de um tópico ou enquete, ou quando {'@'}menciona o grupo.
     normal_excludes_mentioning_html: Há uma configuração separada para quando alguém {'@'}menciona você (por exemplo, ao responder a você em um comentário). <a href="%{url}">Clique aqui para editar as configurações para @menções.</a>
+    changes_all_threads_and_polls_in_group: Isso altera a configuração para todas as threads e enquetes do grupo.
   close_explanation_modal:
     aria_label: Fechar conversa
     close_thread: Fechar conversa
@@ -630,10 +631,10 @@ pt_BR:
     email_settings: Configurações de notificação
     help: Ajuda
     contact_site_name: Contato %{site_name}
-    contact_support: Contact support
+    contact_support: Contatar o suporte
     sign_out: Sair
     beta_collab: " \U0001F9EA Recursos beta ativados!"
-    outcomes: Resultados
+    outcomes: Conclusões
     theme: Tema
     light: Claro
     dark: Escuro
@@ -653,7 +654,7 @@ pt_BR:
     set_name_and_username: Definir nome e nome de usuário
     set_title: Configurar o título
     resend: Re-enviar convite
-    invitation_resent: Convide reenviado
+    invitation_resent: Convite reenviado
     make_coordinator: Tornar Admin
     demote_coordinator: Remover como admin
     remove_from:
@@ -669,7 +670,7 @@ pt_BR:
     discussion: 'conversa:'
     comment: comentar em
     poll: 'enquete:'
-    outcome: 'resultado:'
+    outcome: 'conclusão:'
     stance: 'voto:'
   notifications:
     header: Notificações
@@ -688,11 +689,10 @@ pt_BR:
       new_comment: "%{actor} comentou em: %{title}"
       new_coordinator: "%{actor} fez de você um administrador de %{title}"
       new_discussion: "%{actor} iniciou um tópico: %{title}"
-      outcome_announced: "%{actor} compartilhou o resultado da%{poll_type}: %{title}"
-      outcome_created: "%{actor} compartilhou o resultado da%{poll_type}: %{title}"
-      outcome_updated: "%{actor} atualizou o resultado do tipo de enquete %{poll_type} : %{title}"
-      outcome_review_due: 'É hora de rever o resultado de:  %{title}'
-      poll_announced: "%{actor} convidou você para votar: %{title}"
+      outcome_announced: "%{actor} compartilhou a conclusão da %{poll_type}: %{title}"
+      outcome_created: "%{actor} compartilhou a conclusão da %{poll_type}: %{title}"
+      outcome_updated: "%{actor} atualizou a conclusão da %{poll_type}: %{title}"
+      outcome_review_due: 'É hora de revisar a conclusão de: %{title}'
       poll_closed_by_user: "%{actor} fechou o%{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} fechando em 24 horas: %{title}"
       poll_closing_soon_author: 'Sua %{poll_type} será encerrado em 24 horas: %{title}'
@@ -713,6 +713,7 @@ pt_BR:
       user_reminded: "%{actor} lembrou você de votar em %{title}"
       group_mentioned: "%{actor} mencionou o grupo em: %{title}"
       new_delegate: "%{actor} fez de você um delegado com direito a voto em %{title}"
+      poll_announced: 'Por favor, vote: %{title}'
     without_title:
       unknown_sender: Revise o e-mail de um remetente não reconhecido
       discussion_announced: "%{actor}  convidou você para um tópico"
@@ -726,11 +727,10 @@ pt_BR:
       membership_resent: "%{actor} convidou você para participar de um grupo"
       membership_requested: "%{actor} pediu para entrar no seu grupo"
       membership_request_approved: "%{actor} aprovou seu pedido de adesão %{title}"
-      outcome_announced: "%{actor} compartilhou um resultado %{poll_type}"
-      outcome_created: "%{actor} compartilhou um resultado %{poll_type}"
-      outcome_updated: "%{actor} atualizou o resultado"
-      outcome_review_due: É hora de revisar o resultado do %{poll_type}
-      poll_announced: "%{actor} convidou você para votar em um %{poll_type}"
+      outcome_announced: "%{actor} compartilhou a conclusão do %{poll_type}"
+      outcome_created: "%{actor} compartilhou a conclusão do %{poll_type}"
+      outcome_updated: "%{actor} atualizou a conclusão"
+      outcome_review_due: É hora de revisar a conclusão do %{poll_type}
       poll_announced_wip: "%{actor} quer seu feedback sobre um %{poll_type}"
       poll_closed_by_user: "%{actor} fechou o %{poll_type}"
       poll_closing_soon: "%{poll_type} fechando em 24 horas"
@@ -750,10 +750,50 @@ pt_BR:
       user_mentioned: "%{actor} mencionou você"
       user_reminded: "%{actor} está lembrando você de votar"
       group_mentioned: "%{actor} mencionou o grupo"
+      poll_announced: "%{actor} convidou você para votar em %{poll_type}"
     hints:
       poll_closing_soon: Agora é um bom momento para votar, mudar de ideia ou encorajar outras pessoas a participar.
       poll_closing_soon_author: Você pode querer lembrar as pessoas de votar ou estender o prazo.
       outcome_review_due: Considere iniciar uma pesquisa de feedback ou um novo tópico convidando a reflexões sobre como a decisão foi implementada.
+    email_subject:
+      unknown_sender: Analisar e-mail de remetente desconhecido
+      comment_replied_to: "%{actor} respondeu a você em: %{title}"
+      discussion_announced: "%{title}"
+      discussion_edited: "%{actor} editou o contexto: %{title}"
+      discussion_closed: "%{actor} encerrou o tópico: %{title}"
+      invitation_accepted: "%{actor} aceitou seu convite para participar de %{title}"
+      membership_created: "%{actor} convidou você para participar do %{title} em %{site_name}"
+      membership_resent: "%{actor} convidou você para participar do %{title} em %{site_name}"
+      membership_requested: "%{actor} solicitou para participar de %{title}"
+      membership_request_approved: "%{actor} aprovou seu pedido para participar do %{title}"
+      new_comment: "%{actor} comentou em: %{title}"
+      new_coordinator: "%{actor} te nomeou administrador de %{title}"
+      new_delegate: "%{actor} nomeou você como delegado com direito a voto em %{title}"
+      new_discussion: "%{title}"
+      outcome_announced: 'Conclusão de %{poll_type}: %{title}'
+      outcome_created: 'Conclusão de %{poll_type}: %{title}'
+      outcome_updated: 'Conclusão de %{poll_type} atualizada: %{title}'
+      outcome_review_due: 'Chegou a hora de revisar a conclusão de: %{title}'
+      poll_announced: 'Voto: %{title}'
+      poll_closed_by_user: "%{actor} encerrou a %{poll_type}: %{title}"
+      poll_closing_soon: "%{poll_type} encerrando em 24 horas: %{title}"
+      poll_closing_soon_author: 'Sua enquete %{poll_type} será encerrada em 24 horas: %{title}'
+      poll_created: 'Voto: %{title}'
+      poll_edited: "%{actor} atualizou o %{poll_type}: %{title}"
+      poll_expired: "%{poll_type} foi encerrado: %{title}"
+      poll_expired_author: 'Publicar uma conclusão: %{title}'
+      poll_option_added: "%{actor} adicionou opções a %{title}"
+      poll_reopened: 'Votação prorrogada: %{title}'
+      poll_reminder: "%{actor} está te lembrando de votar em %{title}"
+      poll_reminder_wip: "%{actor} está te lembrando de dar feedback: %{title}"
+      reaction_created: "%{actor} reagiu %{reaction} ao seu %{model} em %{title}"
+      stance_created: "%{actor} votou em: %{title}"
+      stance_updated: "%{actor} votou em: %{title}"
+      stance_created_option: "%{actor} votou em %{option} em %{title}"
+      user_added_to_group: "%{actor} adicionou você ao grupo: %{title}"
+      user_mentioned: "%{actor} mencionou você em: %{title}"
+      group_mentioned: "%{actor} mencionou o grupo em: %{title}"
+      user_reminded: "%{actor} está te lembrando de votar em: %{title}"
   discussion_fork_actions:
     helptext: Selecione os ítems que você quer mudar para outra conversa
     move: Mover
@@ -850,7 +890,6 @@ pt_BR:
     new_discussion: "%{name} convidou %{length} pessoas para o tópico:"
     discussion_announced: "%{name} convidou %{length} pessoas para o tópico:"
     poll_created: "%{name} convidou %{length} pessoas para votar:"
-    poll_announced: "%{name} convidou %{length} pessoas para votar:"
     outcome_created: "%{name} compartilhou um resultado com %{length} pessoas:"
     outcome_announced: "%{name} compartilhou um resultado com %{length} pessoas:"
     announcement_created: "%{name} convidou %{length} pessoas para o tópico:"
@@ -893,9 +932,6 @@ pt_BR:
       discussion_edited:
         title: Notificar sobre as edições
         helptext: Quem você gostaria de notificar sobre esta atualização? (opcional)
-      poll_announced:
-        title: Convidar a votar
-        helptext: Quem você gostaria de convidar a votar?
       wip_poll_announced:
         title: Convidar para dar feedback
         helptext: Quem você gostaria de convidar para dar feedback?
@@ -931,6 +967,9 @@ pt_BR:
       visible_to_group: Qualquer pessoa em %{group} poderá ver este tópico.
       visible_to_guests: Apenas pessoas convidadas podem ver este tópico.
       click_group_to_see_individuals: Clique no grupo para ver os indivíduos
+      poll_announced:
+        title: Convite para votar
+        helptext: Quem você gostaria de convidar para votar?
     members_list:
       title: Compartilhado com
       last_notified: Notificado
@@ -948,6 +987,7 @@ pt_BR:
     flash:
       success: "%{count} notificações enviadas"
     group_mentioned: "%{name} mencionou o grupo com %{length} pessoas:"
+    poll_announced: "%{name} convidou %{length} pessoas para votar:"
   action_dock:
     actions_menu: Menu de ações
     more_actions: Mais ações
