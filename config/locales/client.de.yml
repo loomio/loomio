@@ -481,6 +481,7 @@ de:
     normal_explained: Wenn jemand Ihren Namen in das Feld „Benachrichtigen“ eines Threads oder einer Umfrage eingibt oder die Gruppe {'@'}erwähnt.
     normal_excludes_mentioning_html: Es gibt eine separate Einstellung für die Erwähnung per {'@'} (z. B. bei einer Antwort in einem Kommentar). <a href="%{url}">Klicken Sie hier, um die Einstellungen für @Erwähnungen zu bearbeiten.</a>
     loud_explained: Sie erhalten jedes Mal eine E-Mail, wenn ein neuer Kommentar eingeht, jemand abstimmt oder eine Umfrage bzw. ein Thread startet.
+    changes_all_threads_and_polls_in_group: Dies ändert die Einstellungen für alle Threads und Umfragen in der Gruppe.
   close_explanation_modal:
     aria_label: Diskussion schließen
     close_thread: Diskussion schließen
@@ -690,7 +691,6 @@ de:
       outcome_created: "%{actor} teilte eine %{poll_type} Ergebnis: %{title}"
       outcome_updated: "%{actor} aktualisiere die %{poll_type} Ergebnis:%{title}"
       outcome_review_due: Es ist Zeit, das Ergebnis von %{title} zu überprüfen.
-      poll_announced: "%{actor} hat Sie zur Abstimmung eingeladen: %{title}"
       poll_closed_by_user: "%{actor} hat die %{poll_type} geschlossen: %{title}"
       poll_closing_soon: "%{poll_type} endet in 24 Stunden: %{title}"
       poll_closing_soon_author: 'Ihr %{poll_type} wird in 24 Stunden geschlossen: %{title}'
@@ -711,6 +711,7 @@ de:
       user_reminded: "%{actor} erinnert dich deine Stimme in %{title} abzugeben"
       group_mentioned: "%{actor} hat die Gruppe erwähnt in: %{title}"
       new_delegate: "%{actor} hat Sie zum Delegierten mit Stimmrecht in %{title} gemacht"
+      poll_announced: 'Bitte abstimmen: %{title}'
     without_title:
       unknown_sender: Bitte überprüfen Sie die E-Mail von einem unbekannten Absender
       discussion_announced: "%{actor} hat Sie zu einem Thread eingeladen"
@@ -728,7 +729,6 @@ de:
       outcome_created: "%{actor} hat ein Ergebnis von %{poll_type} geteilt"
       outcome_updated: "%{actor} hat das Ergebnis aktualisiert"
       outcome_review_due: Es ist Zeit, das Ergebnis von %{poll_type} zu überprüfen
-      poll_announced: "%{actor} hat Sie eingeladen, über eine %{poll_type} abzustimmen"
       poll_announced_wip: "%{actor} möchte Ihr Feedback zu einer %{poll_type}"
       poll_closed_by_user: "%{actor} hat die %{poll_type} geschlossen"
       poll_closing_soon: "%{poll_type} schließt in 24 Stunden"
@@ -748,6 +748,7 @@ de:
       user_mentioned: "%{actor} hat Sie erwähnt"
       user_reminded: "%{actor} erinnert Sie daran, abzustimmen"
       group_mentioned: "%{actor} hat die Gruppe erwähnt"
+      poll_announced: "%{actor} hat Sie eingeladen, über einen %{poll_type} abzustimmen."
     hints:
       poll_closing_soon: Jetzt ist ein guter Zeitpunkt, um abzustimmen, Ihre Meinung zu ändern oder andere zur Teilnahme zu ermutigen.
       poll_closing_soon_author: Möglicherweise möchten Sie die Menschen an die Abstimmung erinnern oder die Frist verlängern.
@@ -848,7 +849,6 @@ de:
     new_discussion: "%{name} hat %{length} Personen zur Diskussion eingeladen:"
     discussion_announced: "%{name} hat %{length} Personen zur Diskussion eingeladen:"
     poll_created: "%{name} hat %{length} Personen zur Umfrage einladen:"
-    poll_announced: "%{name} hat %{length} Personen zur Umfrage einladen:"
     outcome_created: "%{name} hat ein Ergebnis mit %{length} Personen geteilt:"
     outcome_announced: "%{name} hat ein Ergebnis mit %{length} Personen geteilt:"
     announcement_created: "%{name} hat %{length} Personen zur Diskussion eingeladen:"
@@ -891,9 +891,6 @@ de:
       discussion_edited:
         title: Über Änderungen benachrichtigt werden
         helptext: Wen möchtest du über diese Aktualisierung benachrichtigen? (optional)
-      poll_announced:
-        title: zur Abstimmung einladen
-        helptext: Wen möchtest du zur Abstimmung einladen?
       wip_poll_announced:
         title: Einladen, Feedback zu geben
         helptext: Wen möchten Sie einladen, Feedback zu geben?
@@ -929,6 +926,9 @@ de:
       visible_to_group: Jeder in %{group} wird diese Diskussion sehen können.
       visible_to_guests: Nur eingeladene Personen können diese Diskussion sehen.
       click_group_to_see_individuals: Gruppe anklicken, um Einzelpersonen zu sehen
+      poll_announced:
+        title: Einladung zur Abstimmung
+        helptext: Wen möchten Sie zur Abstimmung einladen?
     members_list:
       title: geteilt mit
       last_notified: benachrichtigt
@@ -946,6 +946,7 @@ de:
     flash:
       success: "%{count} Benachrichtigungen gesendet"
     group_mentioned: "%{name} hat die Gruppe mit %{length} Personen erwähnt:"
+    poll_announced: "%{name} hat %{length} Personen zur Abstimmung eingeladen:"
   action_dock:
     actions_menu: Aktions-Menü
     more_actions: Weitere Aktionen
@@ -1534,6 +1535,7 @@ de:
     learn_more: Weitere Informationen zu den E-Mail-Einstellungen...
     mentioned_description: Wenn jemand Sie in einem Kommentar {'@'}erwähnt, erhalten Sie eine Benachrichtigungs-E-Mail
     daily_summary_description: Wählen Sie, wann Sie die E-Mail mit der Zusammenfassung erhalten möchten. Diese E-Mail enthält alle neuen Aktivitäten, die Sie noch nicht gesehen haben. Eine gute Möglichkeit, auf dem Laufenden zu bleiben, wenn Sie kein regelmäßiger Benutzer sind.
+    never: Niemals
   thread_preview:
     replies_count: "%{count} Antworten"
     unread_count: "%{count} ungelesen"

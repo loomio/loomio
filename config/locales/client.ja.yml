@@ -472,6 +472,7 @@ ja:
     when_would_you_like_to_be_emailed_poll_type: この %{poll_type} についていつメールを受け取りたいですか?
     normal_explained: 誰かがスレッドやアンケートの「通知」欄にあなたの名前を入力したとき、またはグループをメンションしたとき。
     normal_excludes_mentioning_html: 誰かがあなたに{'@'}メンションした場合（コメントで返信した場合など）には、別の設定があります。 <a href="%{url}">@メンションの設定を編集するには、こちらをクリックしてください。</a>
+    changes_all_threads_and_polls_in_group: これにより、グループ内のすべてのスレッドと投票の設定が変更されます。
   close_explanation_modal:
     aria_label: スレッドを閉じる
     close_thread: スレッドを閉じる
@@ -679,7 +680,6 @@ ja:
       outcome_created: "%{actor} が %{poll_type} の結果を共有しました: %{title}"
       outcome_updated: "%{actor} が %{poll_type} の結果を更新しました: %{title}"
       outcome_review_due: '次の結果を確認します: %{title}'
-      poll_announced: "%{actor} があなたを投票に招待しました: %{title}"
       poll_closed_by_user: "%{actor} が %{poll_type} を終了しました: %{title}"
       poll_closing_soon: "%{poll_type} は 24 時間以内に終了します: %{title}"
       poll_closing_soon_author: "%{poll_type} は 24 時間以内に終了します: %{title}"
@@ -700,6 +700,7 @@ ja:
       user_reminded: "%{actor} が投票するよう促しています: %{title}"
       group_mentioned: "%{actor} が %{title} でこのグループについて言及しました"
       new_delegate: "%{actor} があなたを %{title} の投票権を持つ代表者に任命しました"
+      poll_announced: '投票してください: %{title}'
     without_title:
       unknown_sender: 認識できない送信者からのメールを確認してください
       discussion_announced: "%{actor} があなたをスレッドに招待しました"
@@ -717,7 +718,6 @@ ja:
       outcome_created: "%{actor} が %{poll_type} の結果を共有しました"
       outcome_updated: "%{actor} が結果を更新しました"
       outcome_review_due: "%{poll_type} の結果を確認する時期が来ました"
-      poll_announced: "%{actor} が %{poll_type} への投票に招待しました"
       poll_announced_wip: "%{actor} は %{poll_type} に関するフィードバックを求めています"
       poll_closed_by_user: "%{actor} が %{poll_type} を終了しました"
       poll_closing_soon: "%{poll_type} は 24 時間後に終了します"
@@ -737,6 +737,7 @@ ja:
       user_mentioned: "%{actor} さんがあなたについて言及しました"
       user_reminded: "%{actor} が投票を促しています"
       group_mentioned: "%{actor} がグループについて言及しました"
+      poll_announced: "%{actor} があなたを %{poll_type} に投票するよう招待しました"
     hints:
       poll_closing_soon: 今こそ、投票したり、考えを変えたり、他の人に参加を奨励したりするのに良い時期です。
       poll_closing_soon_author: 投票するよう人々に思い出させたり、期限を延長したりすることもできます。
@@ -837,7 +838,6 @@ ja:
     new_discussion: "%{name} が %{length} 人をスレッドに招待しました:"
     discussion_announced: "%{name} が %{length} 人をスレッドに招待しました:"
     poll_created: "%{name} が %{length} 人を投票に招待しました:"
-    poll_announced: "%{name} が %{length} 人を投票に招待しました:"
     outcome_created: "%{name} は結果を %{length} 人と共有しました:"
     outcome_announced: "%{name} は結果を %{length} 人と共有しました:"
     announcement_created: "%{name} が %{length} 人をスレッドに招待しました:"
@@ -876,9 +876,6 @@ ja:
       discussion_edited:
         title: 編集の通知
         helptext: このアップデートについて誰に通知したいですか? (オプション)
-      poll_announced:
-        title: 投票に招待する
-        helptext: 誰を投票に招待したいですか?
       wip_poll_announced:
         title: フィードバックを提供するよう招待する
         helptext: フィードバックを提供してもらうために誰を招待したいですか?
@@ -914,6 +911,9 @@ ja:
       visible_to_group: "%{group} 内の誰でもこのスレッドを見ることができます。"
       visible_to_guests: 招待された人だけがこのスレッドを閲覧できます。
       click_group_to_see_individuals: グループをクリックすると個人が表示されます
+      poll_announced:
+        title: 投票に招待する
+        helptext: 誰に投票を依頼しますか?
     members_list:
       title: 共有者
       last_notified: 通知済み
@@ -931,6 +931,7 @@ ja:
     flash:
       success: "%{count} 件の通知が送信されました"
     group_mentioned: "%{name} は %{length} 人のグループについて言及しました:"
+    poll_announced: "%{name} さんが %{length} 人を投票に招待しました:"
   action_dock:
     actions_menu: "「アクション」メニュー"
     more_actions: さらなるアクション
@@ -1509,6 +1510,7 @@ ja:
     learn_more: メール設定の詳細...
     mentioned_description: 誰かがコメントであなたに言及すると、通知メールが届きます
     daily_summary_description: キャッチアップサマリーメールの受信時期を選択してください。このメールには、まだ確認できていない新しいアクティビティがすべて含まれています。普段ご利用でない方でも、最新情報を常に把握できる便利な方法です。
+    never: 一度もない
   thread_preview:
     replies_count: "%{count} 件の返信"
     unread_count: "%{count} 件が未読です"

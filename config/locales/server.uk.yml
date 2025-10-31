@@ -229,6 +229,7 @@ uk:
       group_mentioned: Ви отримали це, оскільки групу було @згадано.
       user_mentioned: Ви отримали це, тому що вас @згадали.
       notified: Ви отримали це, тому що автор повідомив вас.
+      poll_subscribed: Ви отримали це, тому що підписалися на опитування.
   user_mailer:
     group_export_ready:
       subject: Експорт даних групи %{group_name}

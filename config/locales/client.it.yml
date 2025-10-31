@@ -483,6 +483,7 @@ it:
     normal_explained: Quando qualcuno inserisce il tuo nome nel campo "Notifica" di un thread o di un sondaggio, oppure {'@'}menziona il gruppo.
     normal_excludes_mentioning_html: Esiste un'impostazione separata per quando qualcuno ti menziona con un "@" (ad esempio quando ti risponde in un commento). <a href="%{url}">Clicca qui per modificare le impostazioni per le @menzioni.</a>
     loud_explained: Riceverai un'e-mail ogni volta che c'è un nuovo commento, qualcuno vota o avvia un sondaggio o una discussione.
+    changes_all_threads_and_polls_in_group: In questo modo vengono modificate le impostazioni per tutti i thread e i sondaggi nel gruppo.
   close_explanation_modal:
     aria_label: Chiudi discussione
     close_thread: Chiudi discussione
@@ -692,7 +693,6 @@ it:
       outcome_created: "%{actor} ha condiviso il risultato del %{poll_type}: %{title}"
       outcome_updated: "%{actor} ha aggiornato il risultato del %{poll_type}: %{title}"
       outcome_review_due: 'E'' ora di rivedere il risultato di: %{title}'
-      poll_announced: "%{actor} ti ha invitato a votare: %{title}"
       poll_closed_by_user: "%{actor} ha chiouso il %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} terminerà in 24 ore: %{title}"
       poll_closing_soon_author: 'Il tuo %{poll_type} terminerà in 24 ore: %{title}'
@@ -713,6 +713,7 @@ it:
       user_reminded: "%{actor} ti sta ricordando di votare su: %{title}"
       group_mentioned: "%{actor} ha menzionato il gruppo in: %{title}"
       new_delegate: "%{actor} ti ha nominato delegato con diritto di voto in %{title}"
+      poll_announced: 'Per favore, vota: %{title}'
     without_title:
       unknown_sender: Controlla l'e-mail proveniente da un mittente non riconosciuto
       discussion_announced: "%{actor} ti ha invitato a una discussione"
@@ -730,7 +731,6 @@ it:
       outcome_created: "%{actor} ha condiviso il risultato del %{poll_type} "
       outcome_updated: "%{actor} ha aggiornato il risultato"
       outcome_review_due: 'E'' ora di rivedere i risultati del %{poll_type} '
-      poll_announced: "%{actor}ti ha invitato a votare il %{poll_type}"
       poll_announced_wip: "%{actor} vorrebbe un tuo commento sul %{poll_type}"
       poll_closed_by_user: "%{actor}ha chiuso il %{poll_type}"
       poll_closing_soon: "%{poll_type} terminerà in 24 ore"
@@ -750,6 +750,7 @@ it:
       user_mentioned: "%{actor} ti ha menzionato"
       user_reminded: "%{actor}ti sta ricordando di votare"
       group_mentioned: "%{actor} ha menzionato il gruppo"
+      poll_announced: "%{actor} ti ha invitato a votare su un %{poll_type}"
     hints:
       poll_closing_soon: Ora è un buon momento per votare, cambiare idea o incoraggiare altri a partecipare.
       poll_closing_soon_author: Potresti voler ricordare alle persone di votare o prorogare la scadenza.
@@ -850,7 +851,6 @@ it:
     new_discussion: "%{name} ha invitato %{length} persone al thread:"
     discussion_announced: "%{name} ha invitato %{length} persone al thread:"
     poll_created: "%{name} ha invitato %{length} persone a votare:"
-    poll_announced: "%{name} ha invitato %{length} persone a votare:"
     outcome_created: "%{name} ha condiviso un risultato con %{length} persone:"
     outcome_announced: "%{name} ha condiviso un risultato con %{length} persone:"
     announcement_created: "%{name} ha invitato %{length} persone al thread:"
@@ -893,9 +893,6 @@ it:
       discussion_edited:
         title: Notifica le modifiche
         helptext: Chi si desidera notificare di questo aggiornamento? (facoltativo)
-      poll_announced:
-        title: Invita a votare
-        helptext: Chi vorresti invitare a votare?
       wip_poll_announced:
         title: Invita a dare un commento
         helptext: Chi vorresti invitare a dare un feedback?
@@ -931,6 +928,9 @@ it:
       visible_to_group: Chiunque in %{group} sarà in grado di vedere questa discussione.
       visible_to_guests: Solo le persone invitate possono vedere questa discussione.
       click_group_to_see_individuals: Fai clic sul gruppo per visualizzare gli individui
+      poll_announced:
+        title: Invito a votare
+        helptext: Chi vorresti invitare a votare?
     members_list:
       title: Condiviso con
       last_notified: Notificato
@@ -948,6 +948,7 @@ it:
     flash:
       success: "%{count} avvisi inviati"
     group_mentioned: "%{name} ha menzionato il gruppo con %{length} persone:"
+    poll_announced: "%{name} ha invitato %{length} persone a votare:"
   action_dock:
     actions_menu: Menu Azioni
     more_actions: Altre azioni
@@ -1538,6 +1539,7 @@ it:
     learn_more: Impara di più sulle impostazioni email...
     mentioned_description: Quando qualcuno {'@'} ti menziona in un commento, riceverai un'email di notifica
     daily_summary_description: Scegli quando ricevere l'email di riepilogo. Questa email contiene tutte le nuove attività che non hai ancora visto. Un buon modo per rimanere aggiornato se non sei un utente abituale.
+    never: Mai
   thread_preview:
     replies_count: "%{count} repliche"
     unread_count: "%{count} non letti"

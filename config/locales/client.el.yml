@@ -473,6 +473,7 @@ el:
     normal_explained: Όταν κάποιος εισάγει το όνομά σας στο πεδίο "Ειδοποίηση" ενός νήματος ή μιας δημοσκόπησης, ή {'@'}αναφέρει την ομάδα.
     normal_excludes_mentioning_html: Υπάρχει ξεχωριστή ρύθμιση για το πότε κάποιος σας αναφέρει {'@'} (π.χ. όταν σας απαντά σε ένα σχόλιο). <a href="%{url}">Κάντε κλικ εδώ για να επεξεργαστείτε τις ρυθμίσεις για τις @αναφορές</a>
     loud_explained: Θα λαμβάνετε email κάθε φορά που υπάρχει ένα νέο σχόλιο, κάποιος ψηφίζει ή ξεκινά μια δημοσκόπηση ή ένα νήμα.
+    changes_all_threads_and_polls_in_group: Αυτό αλλάζει τη ρύθμιση για όλα τα νήματα και τις δημοσκοπήσεις στην ομάδα.
   close_explanation_modal:
     aria_label: Κλείστε το νήμα
     close_thread: Κλείστε το νήμα
@@ -680,7 +681,6 @@ el:
       outcome_created: 'Ο %{actor} μοιράστηκε ένα %{poll_type} αποτέλεσμα: %{title}'
       outcome_updated: 'Ο %{actor} ενημέρωσε το %{poll_type} αποτέλεσμα: %{title}'
       outcome_review_due: 'Ήρθε η ώρα να ελέγξετε το αποτέλεσμα: %{title}'
-      poll_announced: 'Ο %{actor} σας προσκάλεσε να ψηφίσετε: %{title}'
       poll_closed_by_user: 'Ο %{actor} έκλεισε το %{poll_type}: %{title}'
       poll_closing_soon: "%{poll_type} κλείνει σε 24 ώρες: %{title}"
       poll_closing_soon_author: 'Το %{poll_type} σας κλείνει σε 24 ώρες: %{title}'
@@ -701,6 +701,7 @@ el:
       user_reminded: 'Ο %{actor} σας υπενθυμίζει να ψηφίσετε: %{title}'
       group_mentioned: 'Ο %{actor} ανέφερε την ομάδα στο: %{title}'
       new_delegate: Ο %{actor} σάς έκανε εκπρόσωπο με δικαιώματα ψήφου στο %{title}
+      poll_announced: 'Παρακαλώ ψηφίστε: %{title}'
     without_title:
       unknown_sender: Ελέγξτε τα μηνύματα ηλεκτρονικού ταχυδρομείου από μη αναγνωρισμένο αποστολέα
       discussion_announced: Ο %{actor} σας προσκάλεσε σε ένα νήμα
@@ -718,7 +719,6 @@ el:
       outcome_created: Ο %{actor} μοιράστηκε ένα %{poll_type} αποτέλεσμα
       outcome_updated: Ο %{actor} ενημέρωσε το αποτέλεσμα
       outcome_review_due: Ήρθε η ώρα να ελέγξετε το αποτέλεσμα %{poll_type}
-      poll_announced: Ο %{actor} σας προσκάλεσε να ψηφίσετε σε ένα %{poll_type}
       poll_announced_wip: Ο %{actor} θέλει τα σχόλιά σας για ένα %{poll_type}
       poll_closed_by_user: Ο %{actor} έκλεισε το %{poll_type}
       poll_closing_soon: "%{poll_type} κλείνει σε 24 ώρες"
@@ -738,6 +738,7 @@ el:
       user_mentioned: Ο %{actor} σας ανέφερε
       user_reminded: Ο %{actor} σας υπενθυμίζει να ψηφίσετε
       group_mentioned: Ο %{actor} ανέφερε την ομάδα
+      poll_announced: Ο χρήστης %{actor} σας προσκάλεσε να ψηφίσετε σε ένα %{poll_type}
     hints:
       poll_closing_soon: Τώρα είναι η κατάλληλη στιγμή για να ψηφίσετε, να αλλάξετε γνώμη ή να ενθαρρύνετε άλλους να συμμετάσχουν.
       poll_closing_soon_author: Μπορεί να θέλετε να υπενθυμίσετε στους ανθρώπους να ψηφίσουν ή να παρατείνετε την προθεσμία.
@@ -838,7 +839,6 @@ el:
     new_discussion: 'Ο χρήστης %{name} προσκάλεσε %{length} άτομα στο νήμα:'
     discussion_announced: 'Ο χρήστης %{name} προσκάλεσε %{length} άτομα στο νήμα:'
     poll_created: 'Ο χρήστης %{name} προσκάλεσε %{length} άτομα να ψηφίσουν:'
-    poll_announced: 'Ο χρήστης %{name} προσκάλεσε %{length} άτομα να ψηφίσουν:'
     outcome_created: 'Ο χρήστης %{name} μοιράστηκε ένα αποτέλεσμα με %{length} άτομα:'
     outcome_announced: 'Ο χρήστης %{name} μοιράστηκε ένα αποτέλεσμα με %{length} άτομα:'
     announcement_created: 'Ο χρήστης %{name} προσκάλεσε %{length} άτομα στο νήμα:'
@@ -877,9 +877,6 @@ el:
       discussion_edited:
         title: Ειδοποίηση για τροποποιήσεις
         helptext: Ποιον θα θέλατε να ειδοποιήσετε για αυτήν την ενημέρωση; (προαιρετικός)
-      poll_announced:
-        title: Πρόσκληση για ψηφοφορία
-        helptext: Ποιον θα θέλατε να προσκαλέσετε να ψηφίσει;
       wip_poll_announced:
         title: Προσκαλέστε να δώσετε σχόλια
         helptext: Ποιον θα θέλατε να προσκαλέσετε να δώσει σχόλια;
@@ -915,6 +912,9 @@ el:
       visible_to_group: Οποιοσδήποτε στην %{group} θα μπορεί να δει αυτό το νήμα.
       visible_to_guests: Μόνο οι προσκεκλημένοι μπορούν να δουν αυτό το νήμα.
       click_group_to_see_individuals: Κάντε κλικ στην ομάδα για να δείτε άτομα
+      poll_announced:
+        title: Πρόσκληση για ψηφοφορία
+        helptext: Ποιον θα θέλατε να προσκαλέσετε να ψηφίσει;
     members_list:
       title: Μοιρασμένο με
       last_notified: Ειδοποιήθηκε
@@ -932,6 +932,7 @@ el:
     flash:
       success: "%{count} ειδοποιήσεις στάλθηκαν"
     group_mentioned: 'Ο %{name} ανέφερε την ομάδα με %{length} άτομα:'
+    poll_announced: 'Ο χρήστης %{name} προσκάλεσε %{length} άτομα να ψηφίσουν:'
   action_dock:
     actions_menu: Μενού ενεργειών
     more_actions: Περισσότερες δράσεις
@@ -1510,6 +1511,7 @@ el:
     learn_more: Μάθετε περισσότερα σχετικά με τις ρυθμίσεις email...
     mentioned_description: Όταν κάποιος {'@'}σας αναφέρει σε ένα σχόλιο, θα λάβετε ένα email ειδοποίησης
     daily_summary_description: Επιλέξτε πότε θα λαμβάνετε το συνοπτικό μήνυμα ηλεκτρονικού ταχυδρομείου. Αυτό το μήνυμα ηλεκτρονικού ταχυδρομείου περιέχει οποιαδήποτε νέα δραστηριότητα που δεν έχετε δει. Ένας καλός τρόπος για να παραμένετε ενημερωμένοι, αν δεν είστε τακτικός χρήστης.
+    never: Ποτέ
   thread_preview:
     replies_count: "%{count} απαντήσεις"
     unread_count: "%{count} μη αναγνωσμένα"

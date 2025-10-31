@@ -483,6 +483,7 @@ pt_BR:
     when_would_you_like_to_be_emailed_poll_type: Quando você gostaria de receber um e-mail sobre este %{poll_type}?
     normal_explained: Quando alguém insere seu nome no campo "Notificar" de um tópico ou enquete, ou quando {'@'}menciona o grupo.
     normal_excludes_mentioning_html: Há uma configuração separada para quando alguém {'@'}menciona você (por exemplo, ao responder a você em um comentário). <a href="%{url}">Clique aqui para editar as configurações para @menções.</a>
+    changes_all_threads_and_polls_in_group: Isso altera a configuração para todas as threads e enquetes do grupo.
   close_explanation_modal:
     aria_label: Fechar conversa
     close_thread: Fechar conversa
@@ -692,7 +693,6 @@ pt_BR:
       outcome_created: "%{actor} compartilhou o resultado da%{poll_type}: %{title}"
       outcome_updated: "%{actor} atualizou o resultado do tipo de enquete %{poll_type} : %{title}"
       outcome_review_due: 'É hora de rever o resultado de:  %{title}'
-      poll_announced: "%{actor} convidou você para votar: %{title}"
       poll_closed_by_user: "%{actor} fechou o%{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} fechando em 24 horas: %{title}"
       poll_closing_soon_author: 'Sua %{poll_type} será encerrado em 24 horas: %{title}'
@@ -713,6 +713,7 @@ pt_BR:
       user_reminded: "%{actor} lembrou você de votar em %{title}"
       group_mentioned: "%{actor} mencionou o grupo em: %{title}"
       new_delegate: "%{actor} fez de você um delegado com direito a voto em %{title}"
+      poll_announced: 'Por favor, vote: %{title}'
     without_title:
       unknown_sender: Revise o e-mail de um remetente não reconhecido
       discussion_announced: "%{actor}  convidou você para um tópico"
@@ -730,7 +731,6 @@ pt_BR:
       outcome_created: "%{actor} compartilhou um resultado %{poll_type}"
       outcome_updated: "%{actor} atualizou o resultado"
       outcome_review_due: É hora de revisar o resultado do %{poll_type}
-      poll_announced: "%{actor} convidou você para votar em um %{poll_type}"
       poll_announced_wip: "%{actor} quer seu feedback sobre um %{poll_type}"
       poll_closed_by_user: "%{actor} fechou o %{poll_type}"
       poll_closing_soon: "%{poll_type} fechando em 24 horas"
@@ -750,6 +750,7 @@ pt_BR:
       user_mentioned: "%{actor} mencionou você"
       user_reminded: "%{actor} está lembrando você de votar"
       group_mentioned: "%{actor} mencionou o grupo"
+      poll_announced: "%{actor} convidou você para votar em %{poll_type}"
     hints:
       poll_closing_soon: Agora é um bom momento para votar, mudar de ideia ou encorajar outras pessoas a participar.
       poll_closing_soon_author: Você pode querer lembrar as pessoas de votar ou estender o prazo.
@@ -850,7 +851,6 @@ pt_BR:
     new_discussion: "%{name} convidou %{length} pessoas para o tópico:"
     discussion_announced: "%{name} convidou %{length} pessoas para o tópico:"
     poll_created: "%{name} convidou %{length} pessoas para votar:"
-    poll_announced: "%{name} convidou %{length} pessoas para votar:"
     outcome_created: "%{name} compartilhou um resultado com %{length} pessoas:"
     outcome_announced: "%{name} compartilhou um resultado com %{length} pessoas:"
     announcement_created: "%{name} convidou %{length} pessoas para o tópico:"
@@ -893,9 +893,6 @@ pt_BR:
       discussion_edited:
         title: Notificar sobre as edições
         helptext: Quem você gostaria de notificar sobre esta atualização? (opcional)
-      poll_announced:
-        title: Convidar a votar
-        helptext: Quem você gostaria de convidar a votar?
       wip_poll_announced:
         title: Convidar para dar feedback
         helptext: Quem você gostaria de convidar para dar feedback?
@@ -931,6 +928,9 @@ pt_BR:
       visible_to_group: Qualquer pessoa em %{group} poderá ver este tópico.
       visible_to_guests: Apenas pessoas convidadas podem ver este tópico.
       click_group_to_see_individuals: Clique no grupo para ver os indivíduos
+      poll_announced:
+        title: Convite para votar
+        helptext: Quem você gostaria de convidar para votar?
     members_list:
       title: Compartilhado com
       last_notified: Notificado
@@ -948,6 +948,7 @@ pt_BR:
     flash:
       success: "%{count} notificações enviadas"
     group_mentioned: "%{name} mencionou o grupo com %{length} pessoas:"
+    poll_announced: "%{name} convidou %{length} pessoas para votar:"
   action_dock:
     actions_menu: Menu de ações
     more_actions: Mais ações

@@ -227,6 +227,7 @@ ca:
       group_mentioned: Heu rebut això perquè el grup era @esmentat.
       user_mentioned: Has rebut això perquè ets @esmentat.
       notified: L'heu rebut perquè l'autor us ho va notificar.
+      poll_subscribed: Has rebut això perquè estàs subscrit a l'enquesta.
   user_mailer:
     group_export_ready:
       subject: Exportació de dades de grup per a %{group_name}

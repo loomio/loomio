@@ -227,6 +227,7 @@ da:
       group_mentioned: Du har modtaget dette, fordi gruppen blev @omtalt.
       user_mentioned: Du har modtaget dette, fordi du blev @omtalt.
       notified: Du har modtaget dette, fordi forfatteren har givet dig besked.
+      poll_subscribed: Du har modtaget dette, fordi du er tilmeldt afstemningen.
   user_mailer:
     group_export_ready:
       subject: Eksport af gruppedata for %{group_name}

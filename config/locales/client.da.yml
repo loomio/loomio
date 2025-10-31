@@ -473,6 +473,7 @@ da:
     when_would_you_like_to_be_emailed_poll_type: Hvornår vil du gerne have en e-mail om denne %{poll_type}?
     normal_explained: Når nogen indtaster dit navn i feltet "Giv besked" i en tråd eller en afstemning, eller de {'@'}nævner gruppen.
     normal_excludes_mentioning_html: Der er en separat indstilling for, hvornår nogen {'@'}omtaler dig (f.eks. når de svarer dig i en kommentar). <a href="%{url}">Klik her for at redigere indstillinger for @omtaler</a>
+    changes_all_threads_and_polls_in_group: Dette ændrer indstillingerne for alle tråde og afstemninger i gruppen.
   close_explanation_modal:
     aria_label: Luk tråden
     close_thread: Luk tråden
@@ -680,7 +681,6 @@ da:
       outcome_created: "%{actor} delte et %{poll_type}-resultat: %{title}"
       outcome_updated: "%{actor} opdaterede %{poll_type}-resultatet: %{title}"
       outcome_review_due: 'Det er tid til at gennemgå resultatet af: %{title}'
-      poll_announced: "%{actor} inviterede dig til at stemme: %{title}"
       poll_closed_by_user: "%{actor} lukkede %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} lukker om 24 timer: %{title}"
       poll_closing_soon_author: 'Din %{poll_type} lukker om 24 timer: %{title}'
@@ -701,6 +701,7 @@ da:
       user_reminded: "%{actor} minder dig om at stemme i: %{title}"
       group_mentioned: "%{actor} nævnte gruppen i: %{title}"
       new_delegate: "%{actor} gjorde dig til delegeret med stemmeret i %{title}"
+      poll_announced: 'Stem venligst: %{title}'
     without_title:
       unknown_sender: Gennemgå venligst e-mail fra ukendt afsender
       discussion_announced: "%{actor} inviterede dig til en tråd"
@@ -718,7 +719,6 @@ da:
       outcome_created: "%{actor} delte et %{poll_type}-resultat"
       outcome_updated: "%{actor} opdaterede resultatet"
       outcome_review_due: Det er tid til at gennemgå %{poll_type}-resultatet
-      poll_announced: "%{actor} inviterede dig til at stemme på en %{poll_type}"
       poll_announced_wip: "%{actor} vil have din feedback på en %{poll_type}"
       poll_closed_by_user: "%{actor} lukkede %{poll_type}"
       poll_closing_soon: "%{poll_type} lukker om 24 timer"
@@ -738,6 +738,7 @@ da:
       user_mentioned: "%{actor} nævnte dig"
       user_reminded: "%{actor} minder dig om at stemme"
       group_mentioned: "%{actor} nævnte gruppen"
+      poll_announced: "%{actor} inviterede dig til at stemme på en %{poll_type}"
     hints:
       poll_closing_soon: Nu er det et godt tidspunkt at stemme, ændre mening eller opfordre andre til at deltage.
       poll_closing_soon_author: Du vil måske gerne minde folk om at stemme eller forlænge fristen.
@@ -838,7 +839,6 @@ da:
     new_discussion: "%{name} inviterede %{length} personer til tråden:"
     discussion_announced: "%{name} inviterede %{length} personer til tråden:"
     poll_created: "%{name} inviterede %{length} personer til at stemme:"
-    poll_announced: "%{name} inviterede %{length} personer til at stemme:"
     outcome_created: "%{name} delte et resultat med %{length} personer:"
     outcome_announced: "%{name} delte et resultat med %{length} personer:"
     announcement_created: "%{name} inviterede %{length} personer til tråden:"
@@ -877,9 +877,6 @@ da:
       discussion_edited:
         title: Giv besked om redigeringer
         helptext: Hvem vil du gerne give besked om denne opdatering? (valgfri)
-      poll_announced:
-        title: Inviter til at stemme
-        helptext: Hvem vil du invitere til at stemme?
       wip_poll_announced:
         title: Inviter til at give feedback
         helptext: Hvem vil du invitere til at give feedback?
@@ -915,6 +912,9 @@ da:
       visible_to_group: Alle i %{group} vil kunne se denne tråd.
       visible_to_guests: Kun inviterede personer kan se denne tråd.
       click_group_to_see_individuals: Klik på gruppe for at se personer
+      poll_announced:
+        title: Invitation til at stemme
+        helptext: Hvem vil du gerne invitere til at stemme?
     members_list:
       title: Delt med
       last_notified: Meddelt
@@ -932,6 +932,7 @@ da:
     flash:
       success: "%{count} meddelelser sendt"
     group_mentioned: "%{name} nævnte gruppen med %{length} personer:"
+    poll_announced: "%{name} inviterede %{length} personer til at stemme:"
   action_dock:
     actions_menu: Handlingsmenu
     more_actions: flere handlinger
@@ -1510,6 +1511,7 @@ da:
     learn_more: Få mere at vide om e-mail-indstillinger...
     mentioned_description: Når nogen {'@'}nævner dig i en kommentar, får du en notifikationsmail
     daily_summary_description: Vælg, hvornår du vil modtage e-mailen med opsummeringen af det forsømte. Denne e-mail indeholder al ny aktivitet, som du ikke har set. En god måde at holde dig opdateret på, hvis du ikke er en almindelig bruger.
+    never: Aldrig
   thread_preview:
     replies_count: "%{count} svar"
     unread_count: "%{count} ulæst"

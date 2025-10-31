@@ -475,6 +475,7 @@ ca:
     when_would_you_like_to_be_emailed_poll_type: Quan vols rebre un correu electrònic sobre aquest %{poll_type}?
     normal_explained: Quan algú introdueix el teu nom al camp "Notificar" d'un fil o una enquesta, o bé {'@'}esmenta el grup.
     normal_excludes_mentioning_html: Hi ha una configuració separada per quan algú et menciona {'@'} (per exemple, quan et respon en un comentari). <a href="%{url}">Fes clic aquí per editar la configuració de les @mencions.</a>
+    changes_all_threads_and_polls_in_group: Això canvia la configuració de tots els fils i enquestes del grup.
   close_explanation_modal:
     aria_label: Tanca el fil de discussió
     close_thread: Tanca el fil de discussió
@@ -684,7 +685,6 @@ ca:
       outcome_created: "%{actor} ha compartit un resultat de %{poll_type}: %{title}"
       outcome_updated: "%{actor} ha actualitzat el resultat %{poll_type}: %{title}"
       outcome_review_due: 'És hora de revisar el resultat de: %{title}'
-      poll_announced: "%{actor} t'ha convidat a votar: %{title}"
       poll_closed_by_user: "%{actor} ha tancat el %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} tancant en 24 hores: %{title}"
       poll_closing_soon_author: 'El teu %{poll_type} tancarà d''aquí a 24 hores: %{title}'
@@ -705,6 +705,7 @@ ca:
       user_reminded: "%{actor} us recorda que voteu a: %{title}"
       group_mentioned: "%{actor} ha mencionat el grup a: %{title}"
       new_delegate: "%{actor} et va convertir en delegat amb dret de vot a %{title}"
+      poll_announced: 'Si us plau, voteu: %{title}'
     without_title:
       unknown_sender: Reviseu el correu electrònic d'un remitent no reconegut
       discussion_announced: "%{actor} t'ha convidat a un fil"
@@ -722,7 +723,6 @@ ca:
       outcome_created: "%{actor} ha compartit un resultat de %{poll_type}"
       outcome_updated: "%{actor} ha actualitzat el resultat"
       outcome_review_due: És hora de revisar el resultat %{poll_type}
-      poll_announced: "%{actor} t'ha convidat a votar en un %{poll_type}"
       poll_announced_wip: "%{actor} vol els teus comentaris sobre un %{poll_type}"
       poll_closed_by_user: "%{actor} ha tancat el %{poll_type}"
       poll_closing_soon: "%{poll_type} tancant en 24 hores"
@@ -742,6 +742,7 @@ ca:
       user_mentioned: "%{actor} t'ha mencionat"
       user_reminded: "%{actor} us recorda que heu de votar"
       group_mentioned: "%{actor} ha mencionat el grup"
+      poll_announced: "%{actor} t'ha convidat a votar en una %{poll_type}"
     hints:
       poll_closing_soon: Ara és un bon moment per votar, canviar d'opinió o animar els altres a participar.
       poll_closing_soon_author: És possible que vulgueu recordar a la gent que voten o allargar el termini.
@@ -842,7 +843,6 @@ ca:
     new_discussion: "%{name} ha convidat %{length} persones al fil:"
     discussion_announced: "%{name} ha convidat %{length} persones al fil:"
     poll_created: "%{name} ha convidat %{length} persones a votar:"
-    poll_announced: "%{name} ha convidat %{length} persones a votar:"
     outcome_created: "%{name} ha compartit un resultat amb %{length} persones:"
     outcome_announced: "%{name} ha compartit un resultat amb %{length} persones:"
     announcement_created: "%{name} ha convidat %{length} persones al fil:"
@@ -885,9 +885,6 @@ ca:
       discussion_edited:
         title: Notifica les edicions
         helptext: A qui voleu notificar aquesta actualització? (opcional)
-      poll_announced:
-        title: Convida a la votació
-        helptext: A qui voleu convidar a la votació?
       wip_poll_announced:
         title: Convida a donar comentaris
         helptext: A qui us agradaria convidar a fer comentaris?
@@ -923,6 +920,9 @@ ca:
       visible_to_group: Tothom dins de %{group} podrà veure aquest fil.
       visible_to_guests: Només usuaris convidats podran veure aquest fil
       click_group_to_see_individuals: Feu clic al grup per veure les persones
+      poll_announced:
+        title: Convidar a votar
+        helptext: A qui voldries convidar a votar?
     members_list:
       title: Compartit amb
       last_notified: Notificat
@@ -940,6 +940,7 @@ ca:
     flash:
       success: "%{count} notificacions enviades"
     group_mentioned: "%{name} ha mencionat el grup amb %{length} persones:"
+    poll_announced: "%{name} ha convidat %{length} persones a votar:"
   action_dock:
     actions_menu: Menú d'accions
     more_actions: Més accions
@@ -1526,6 +1527,7 @@ ca:
     learn_more: Més informació sobre la configuració del correu electrònic...
     mentioned_description: Quan algú et mencioni {'@'} en un comentari, rebràs una notificació per correu electrònic.
     daily_summary_description: Trieu quan voleu rebre el correu electrònic de resum de posada al dia. Aquest correu electrònic conté qualsevol activitat nova que no hàgiu vist. Una bona manera de mantenir-vos al dia si no sou un usuari habitual.
+    never: Mai
   thread_preview:
     replies_count: "%{count} respostes"
     unread_count: "%{count} sense llegir"

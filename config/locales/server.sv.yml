@@ -227,6 +227,7 @@ sv:
       group_mentioned: Du fick detta eftersom gruppen @nämndes.
       user_mentioned: Du fick detta för att du @omnämndes.
       notified: Du fick detta eftersom författaren meddelade dig.
+      poll_subscribed: Du fick detta eftersom du prenumererar på omröstningen.
   user_mailer:
     group_export_ready:
       subject: Gruppdataexport för %{group_name}

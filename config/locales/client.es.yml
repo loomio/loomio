@@ -475,6 +475,7 @@ es:
     normal_explained: Cuando alguien ingresa su nombre en el campo "Notificar" de un hilo o una encuesta, o menciona al grupo {'@'}.
     normal_excludes_mentioning_html: Hay una configuración independiente para cuando alguien {'@'} te menciona (por ejemplo, al responderte en un comentario). <a href="%{url}">Haz clic aquí para editar la configuración de las @menciones.</a>
     loud_explained: Recibirás un correo electrónico cada vez que haya un nuevo comentario, alguien vote o inicie una encuesta o hilo.
+    changes_all_threads_and_polls_in_group: Esto cambia la configuración para todos los hilos y encuestas del grupo.
   close_explanation_modal:
     aria_label: Cerrar hilo
     close_thread: 'Cerrar hilo '
@@ -684,7 +685,6 @@ es:
       outcome_created: "%{actor} compartió un %{poll_type} resultado: %{title}"
       outcome_updated: "%{actor} actualizado el %{poll_type} resultado: %{title}"
       outcome_review_due: 'Es la hora de revisar el resultado: %{title}'
-      poll_announced: "%{actor} te invitó a votar: %{title}"
       poll_closed_by_user: "%{actor} cerró el %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} cierra en 24 horas: %{title}"
       poll_closing_soon_author: 'Tu %{poll_type} cierra en 24 horas: %{title}'
@@ -705,6 +705,7 @@ es:
       user_reminded: "%{actor} te está recordando que votes en %{title}"
       group_mentioned: "%{actor} mencionó al grupo en: %{title}"
       new_delegate: "%{actor} te nombró delegado con derecho a voto en %{title}"
+      poll_announced: 'Por favor, vote: %{title}'
     without_title:
       unknown_sender: Revise el correo electrónico del remitente no reconocido
       discussion_announced: "%{actor} te invitó al hilo"
@@ -722,7 +723,6 @@ es:
       outcome_created: "%{actor} compartió %{poll_type} un resultado"
       outcome_updated: "%{actor} actualizó un resultado"
       outcome_review_due: Es la hora de revisar el %{poll_type} resultado
-      poll_announced: "%{actor} te invitó a votar en un %{poll_type}"
       poll_announced_wip: "%{actor} quiere tu feedback en un %{poll_type}"
       poll_closed_by_user: "%{actor} cerró el %{poll_type}"
       poll_closing_soon: "%{poll_type} cerrará en 24 horas"
@@ -742,6 +742,7 @@ es:
       user_mentioned: "%{actor} te mencionó"
       user_reminded: "%{actor} te está recordando que votes"
       group_mentioned: "%{actor} mencionó el grupo"
+      poll_announced: "%{actor} te invitó a votar en una %{poll_type}"
     hints:
       poll_closing_soon: Ahora es un buen momento para votar, cambiar de opinión o animar a otros a participar.
       poll_closing_soon_author: Es posible que desee recordar a las personas que voten o extiendan la fecha límite.
@@ -842,7 +843,6 @@ es:
     new_discussion: "%{name} invitó a %{length} gente a este hilo:"
     discussion_announced: "%{name} invitó %{length} gente a este hilo:"
     poll_created: "%{name} invited a %{length} gente a votar:"
-    poll_announced: "%{name} invited a %{length} gente a votar:"
     outcome_created: "%{name} compartió un resultado con %{length} gente:"
     outcome_announced: "%{name} compartió un resultado con %{length} gente:"
     announcement_created: "%{name} invitó %{length} gente a este hilo:"
@@ -883,9 +883,6 @@ es:
       discussion_edited:
         title: Notificar cambios
         helptext: "¿A quién te gustaría notificar sobre esta actualización? (opcional)"
-      poll_announced:
-        title: 'Invitar a votar '
-        helptext: "¿A quién le gustaría invitar a la votación?"
       wip_poll_announced:
         title: Invitar para hacer comentarios
         helptext: "¿A quién le gustaría invitar a dejar comentarios?"
@@ -921,6 +918,9 @@ es:
       visible_to_group: Cualquiera en %{group} será capaz de ver este hilo.
       visible_to_guests: Solamente la gente invitada puede ver este hilo.
       click_group_to_see_individuals: Clica grupo para ver individual
+      poll_announced:
+        title: Invitación a votar
+        helptext: "¿A quién te gustaría invitar a votar?"
     members_list:
       title: Compartido con
       last_notified: Notificado
@@ -938,6 +938,7 @@ es:
     flash:
       success: "%{count} notificaciones enviadas"
     group_mentioned: "%{name} mencionó el grupo con %{length} personas:"
+    poll_announced: "%{name} invitó a %{length} personas a votar:"
   action_dock:
     actions_menu: Menú de acciones
     more_actions: Más acciones
@@ -1535,6 +1536,7 @@ es:
       updated: Configuración del correo electrónico actualizada
     learn_more: Aprende más sobre la configuración de correo electrónico...
     daily_summary_description: Elige cuándo recibir el correo electrónico de resumen de actualización. Este correo contiene cualquier actividad nueva que no hayas visto. Es una buena manera de mantenerte al día si no eres un usuario habitual.
+    never: Nunca
   thread_preview:
     replies_count: "%{count} respuestas"
     unread_count: "%{count} no leídos"

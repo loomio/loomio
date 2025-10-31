@@ -229,6 +229,7 @@ hu:
       group_mentioned: Ezt azért kaptad, mert a csoportot @említették.
       user_mentioned: Ezt azért kaptad, mert @említettek.
       notified: Ezt azért kaptad, mert a szerző értesítette.
+      poll_subscribed: Ezt azért kaptad, mert feliratkoztál a szavazásra.
   user_mailer:
     group_export_ready:
       subject: A(z)%{group_name}csoport adatainak letöltése

@@ -481,6 +481,7 @@ zh_TW:
     normal_explained: 當有人在主題或投票的「通知」欄位中輸入您的姓名，或他們{'@'}提及該小組。
     normal_excludes_mentioning_html: 當有人{'@'}提及你（例如，在評論中回覆你時），有一個單獨的設定。<a href="%{url}">點擊此處編輯@提及的設置</a>
     loud_explained: 每次有新評論、有人投票或開始投票或討論時，您都會收到電子郵件。
+    changes_all_threads_and_polls_in_group: 這將更改群組中所有貼文和投票的設定。
   close_explanation_modal:
     aria_label: 關閉討論串
     close_thread: 關閉討論串
@@ -690,7 +691,6 @@ zh_TW:
       outcome_created: "%{actor} 分享了 %{poll_type} 的結果：%{title}"
       outcome_updated: "%{actor} 更新了 %{poll_type} 結果：%{title} "
       outcome_review_due: 是時候審閱結果了：%{title}
-      poll_announced: "%{actor} 邀請您投票：%{title}"
       poll_closed_by_user: "%{actor} 關閉了 %{poll_type}：%{title}"
       poll_closing_soon: "%{poll_type} 將於24小時內關閉：%{title}"
       poll_closing_soon_author: 您的 %{poll_type} 將於24小時內關閉：%{title}
@@ -711,6 +711,7 @@ zh_TW:
       user_reminded: "%{actor} 正在提醒您要投票：%{title}"
       group_mentioned: "%{actor} 在 %{title} 中提及了該組合"
       new_delegate: "%{actor} 讓你成為 %{title} 中擁有投票權的代表"
+      poll_announced: 請投票：%{title}
     without_title:
       unknown_sender: 請檢查來自無法識別的寄件者的電子郵件
       discussion_announced: "%{actor} 邀請您加入討論串"
@@ -728,7 +729,6 @@ zh_TW:
       outcome_created: "%{actor} 分享了 %{poll_type} 結果"
       outcome_updated: "%{actor} 更新了結果"
       outcome_review_due: 是時候審閱 %{poll_type} 結果了
-      poll_announced: "%{actor} 邀請您在 %{poll_type} 投票"
       poll_announced_wip: "%{actor} 想要您在 %{poll_type} 提供回饋"
       poll_closed_by_user: "%{actor} 關閉了 %{poll_type}"
       poll_closing_soon: "%{poll_type} 將於24小時關閉"
@@ -748,6 +748,7 @@ zh_TW:
       user_mentioned: "%{actor} 提及您"
       user_reminded: "%{actor} 正在提醒您投票"
       group_mentioned: "%{actor} 提及了該團體"
+      poll_announced: "%{actor} 邀請您參與 %{poll_type} 投票"
     hints:
       poll_closing_soon: 現在是投票、變更您的心意或鼓勵他人參與的好時機。
       poll_closing_soon_author: 您可能希望提醒人們投票或延長截止日期。
@@ -848,7 +849,6 @@ zh_TW:
     new_discussion: "%{name} 邀請了 %{length} 個夥伴到討論串："
     discussion_announced: "%{name} 邀請了 %{length} 個夥伴到討論串："
     poll_created: "%{name} 邀請 %{length} 個夥伴投票："
-    poll_announced: "%{name} 邀請 %{length} 個夥伴投票："
     outcome_created: "%{name} 與 %{length} 個夥伴分享了成果："
     outcome_announced: "%{name} 與 %{length} 個夥伴分享了成果："
     announcement_created: "%{name} 邀請了 %{length} 個夥伴到討論串："
@@ -891,9 +891,6 @@ zh_TW:
       discussion_edited:
         title: 編輯的通知
         helptext: 您想通知此更新給誰？（選擇性）
-      poll_announced:
-        title: 邀請投票
-        helptext: 您想要邀請誰來投票？
       wip_poll_announced:
         title: 邀請給予回饋
         helptext: 您想邀請誰來提供回饋？
@@ -929,6 +926,9 @@ zh_TW:
       visible_to_group: 任何在 %{group} 中的人都可以看到此討論串。
       visible_to_guests: 僅被邀請的夥伴才能看到此討論串。
       click_group_to_see_individuals: 點擊群組以檢視個人
+      poll_announced:
+        title: 邀請投票
+        helptext: 你想邀請誰來投票？
     members_list:
       title: 分享與
       last_notified: 已通知
@@ -946,6 +946,7 @@ zh_TW:
     flash:
       success: 已傳送 %{count} 個通知
     group_mentioned: "%{name} 提及了有 %{length} 人的群組："
+    poll_announced: "%{name} 邀請了 %{length} 人參與投票："
   action_dock:
     actions_menu: 動作選單
     more_actions: 更多動作
@@ -1534,6 +1535,7 @@ zh_TW:
     learn_more: 取得更多關於電子郵件設定的詳細資訊……
     mentioned_description: 當有人{'@'}在評論中提及您時，您會收到一封通知電子郵件
     daily_summary_description: 選擇何時接收更新摘要電子郵件。此電子郵件包含您尚未查看的任何新活動。如果您不是常規用戶，這是一個保持最新狀態的好方法。
+    never: 絕不
   thread_preview:
     replies_count: "%{count} 個回覆"
     unread_count: "%{count} 個未讀"

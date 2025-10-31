@@ -232,6 +232,7 @@ fr:
       group_mentioned: Vous avez reçu ceci parce que le groupe a été @mentionné.
       user_mentioned: Vous avez reçu ceci parce que vous avez été @mentionné.
       notified: Vous avez reçu ceci parce que l'auteur vous a averti.
+      poll_subscribed: Vous avez reçu ce message car vous êtes abonné(e) au sondage.
   user_mailer:
     group_export_ready:
       subject: Export des données du groupe %{group_name}

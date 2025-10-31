@@ -233,6 +233,7 @@ it:
       group_mentioned: Hai ricevuto questo messaggio perché il gruppo è stato @menzionato.
       user_mentioned: Hai ricevuto questo messaggio perché sei stato @menzionato.
       notified: Hai ricevuto questo messaggio perché l'autore ti ha avvisato.
+      poll_subscribed: Hai ricevuto questo messaggio perché sei iscritto al sondaggio.
   user_mailer:
     group_export_ready:
       subject: Esportazione dati di gruppo per %{group_name}

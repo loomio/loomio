@@ -473,6 +473,7 @@ fi:
     quiet_explained: Et saa sähköpostia, vaikka joku yrittäisi ilmoittaa sinulle. Saatat missata tärkeitä ilmoituksia tai päätöksiä. Tämä voi olla sopivaa, jos keskusteluketju ei koske sinua, mutta sitä ei suositella ryhmäasetuksiin, ellet pysty pysymään ajan tasalla muilla tavoilla.
     normal_explained: Kun joku kirjoittaa nimesi ketjun tai kyselyn "Ilmoita"-kenttään tai mainitsee ryhmän.
     normal_excludes_mentioning_html: Maininnoille (esim. kommentissa vastaamiselle) on oma asetus. <a href="%{url}">Voit muokata @mainintojen asetuksia napsauttamalla tästä</a> .
+    changes_all_threads_and_polls_in_group: Tämä muuttaa asetuksia kaikille ryhmän keskusteluketjuille ja kyselyille.
   close_explanation_modal:
     aria_label: Sulje lanka
     close_thread: Sulje lanka
@@ -680,7 +681,6 @@ fi:
       outcome_created: "%{actor} jakoi %{poll_type} tuloksen: %{title}"
       outcome_updated: "%{actor} päivitti %{poll_type} tuloksen: %{title}"
       outcome_review_due: 'On aika tarkastella lopputulosta: %{title}'
-      poll_announced: "%{actor} kutsui sinut äänestämään: %{title}"
       poll_closed_by_user: "%{actor} sulki %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} sulkeutuu 24 tunnin kuluttua: %{title}"
       poll_closing_soon_author: "%{poll_type} sulkeutuu 24 tunnin kuluttua: %{title}"
@@ -701,6 +701,7 @@ fi:
       user_reminded: "%{actor} muistuttaa sinua äänestämään: %{title}"
       group_mentioned: "%{actor} mainitsi ryhmän: %{title}"
       new_delegate: "%{actor} teki sinusta edustajan, jolla on äänioikeus kohteessa %{title}"
+      poll_announced: 'Äänestä: %{title}'
     without_title:
       unknown_sender: Tarkista tuntemattoman lähettäjän sähköposti
       discussion_announced: "%{actor} kutsui sinut viestiketjuun"
@@ -718,7 +719,6 @@ fi:
       outcome_created: "%{actor} jakoi %{poll_type} tuloksen"
       outcome_updated: "%{actor} päivitti tuloksen"
       outcome_review_due: On aika tarkistaa %{poll_type} tulos
-      poll_announced: "%{actor} kutsui sinut äänestämään %{poll_type}"
       poll_announced_wip: "%{actor} haluaa palautteesi aiheesta %{poll_type}"
       poll_closed_by_user: "%{actor} sulki %{poll_type}"
       poll_closing_soon: "%{poll_type} sulkeutuu 24 tunnin kuluttua"
@@ -738,6 +738,7 @@ fi:
       user_mentioned: "%{actor} mainitsi sinut"
       user_reminded: "%{actor} muistuttaa sinua äänestämään"
       group_mentioned: "%{actor} mainitsi ryhmän"
+      poll_announced: "%{actor} kutsui sinut äänestämään %{poll_type} -kyselyssä"
     hints:
       poll_closing_soon: Nyt on hyvä aika äänestää, muuttaa mieltäsi tai kannustaa muita osallistumaan.
       poll_closing_soon_author: Haluat ehkä muistuttaa ihmisiä äänestämään tai pidentää määräaikaa.
@@ -838,7 +839,6 @@ fi:
     new_discussion: "%{name} kutsui %{length} henkilöä ketjuun:"
     discussion_announced: "%{name} kutsui %{length} henkilöä ketjuun:"
     poll_created: "%{name} kutsui %{length} henkilöä äänestämään:"
-    poll_announced: "%{name} kutsui %{length} henkilöä äänestämään:"
     outcome_created: "%{name} jakoi tuloksen %{length} henkilön kanssa:"
     outcome_announced: "%{name} jakoi tuloksen %{length} henkilön kanssa:"
     announcement_created: "%{name} kutsui %{length} henkilöä ketjuun:"
@@ -877,9 +877,6 @@ fi:
       discussion_edited:
         title: Ilmoita muokkauksista
         helptext: Kenelle haluat ilmoittaa tästä päivityksestä? (valinnainen)
-      poll_announced:
-        title: Kutsu äänestämään
-        helptext: Ketä haluaisit kutsua äänestämään?
       wip_poll_announced:
         title: Kutsu antamaan palautetta
         helptext: Kenet haluaisit kutsua antamaan palautetta?
@@ -915,6 +912,9 @@ fi:
       visible_to_group: Kuka tahansa ryhmästä %{group} näkee tämän viestiketjun.
       visible_to_guests: Vain kutsutut ihmiset voivat nähdä tämän ketjun.
       click_group_to_see_individuals: Napsauta ryhmää nähdäksesi yksilöt
+      poll_announced:
+        title: Kutsu äänestämään
+        helptext: Kenet haluaisit kutsua äänestämään?
     members_list:
       title: Jaettu
       last_notified: Ilmoitettu
@@ -932,6 +932,7 @@ fi:
     flash:
       success: "%{count} ilmoitusta lähetetty"
     group_mentioned: "%{name} mainitsi ryhmän %{length} henkilön kanssa:"
+    poll_announced: "%{name} kutsui %{length} henkilöä äänestämään:"
   action_dock:
     actions_menu: Toiminnot-valikko
     more_actions: Lisää toimintaa
@@ -1510,6 +1511,7 @@ fi:
     learn_more: Lisätietoja sähköpostiasetuksista...
     mentioned_description: Kun joku {'@'}mainitsee sinut kommentissa, saat ilmoituksen sähköpostitse.
     daily_summary_description: Valitse, milloin haluat vastaanottaa yhteenvedon sähköpostitse. Tämä sähköposti sisältää kaikki uudet tapahtumat, joita et ole vielä nähnyt. Hyvä tapa pysyä ajan tasalla, jos et ole säännöllinen käyttäjä.
+    never: Ei koskaan
   thread_preview:
     replies_count: "%{count} vastausta"
     unread_count: "%{count} lukematonta"

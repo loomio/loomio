@@ -473,6 +473,7 @@ sl:
     normal_explained: Ko nekdo vnese vaše ime v polje »Obvesti« niti ali ankete ali ko {'@'}omeni skupino.
     normal_excludes_mentioning_html: Obstaja ločena nastavitev za primere, ko vas nekdo {'@'}omeni (npr. ko vam odgovori v komentarju). <a href="%{url}">Kliknite tukaj, če želite urediti nastavitve za @omembe.</a>
     loud_explained: Vsakič, ko bo objavljen nov komentar, nekdo bo glasoval ali bo začel anketo ali nit, boste prejeli e-poštno sporočilo.
+    changes_all_threads_and_polls_in_group: To spremeni nastavitve za vse niti in ankete v skupini.
   close_explanation_modal:
     aria_label: Zapri temo
     close_thread: Zapri temo
@@ -680,7 +681,6 @@ sl:
       outcome_created: "%{actor} je delil rezultat %{poll_type}: %{title}"
       outcome_updated: "%{actor} je posodobil rezultat %{poll_type}: %{title}"
       outcome_review_due: 'Čas je, da pregledate rezultat: %{title}'
-      poll_announced: "%{actor} vas je povabil h glasovanju: %{title}"
       poll_closed_by_user: "%{actor} je zaprl %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} se zapre čez 24 ur: %{title}"
       poll_closing_soon_author: 'Vaša %{poll_type} se bo končala čez 24 ur: %{title}'
@@ -701,6 +701,7 @@ sl:
       user_reminded: "%{actor} vas opominja, da glasujete v: %{title}"
       group_mentioned: "%{actor} je omenil skupino v: %{title}"
       new_delegate: "%{actor} vas je postavil za delegata z glasovalno pravico v %{title}"
+      poll_announced: 'Prosim, glasujte: %{title}'
     without_title:
       unknown_sender: Preglejte e-pošto neprepoznanega pošiljatelja
       discussion_announced: "%{actor} vas je povabil v nit"
@@ -718,7 +719,6 @@ sl:
       outcome_created: "%{actor} je delil rezultat %{poll_type}"
       outcome_updated: "%{actor} je posodobil rezultat"
       outcome_review_due: Čas je, da pregledate izid %{poll_type}
-      poll_announced: "%{actor} vas vabi, da glasujete na %{poll_type}"
       poll_announced_wip: "%{actor} želi vaše povratne informacije o %{poll_type}"
       poll_closed_by_user: "%{actor} je zaprl %{poll_type}"
       poll_closing_soon: "%{poll_type} se zapre čez 24 ur"
@@ -738,6 +738,7 @@ sl:
       user_mentioned: "%{actor} vas je omenil"
       user_reminded: "%{actor} vas opominja, da glasujete"
       group_mentioned: "%{actor} je omenil skupino"
+      poll_announced: "%{actor} vas je vabil k glasovanju na %{poll_type}"
     hints:
       poll_closing_soon: Zdaj je pravi čas, da glasujete, si premislite ali spodbudite druge k sodelovanju.
       poll_closing_soon_author: Morda boste želeli opomniti ljudi, naj glasujejo ali podaljšati rok.
@@ -838,7 +839,6 @@ sl:
     new_discussion: "%{name} je povabil %{length} ljudi v nit:"
     discussion_announced: "%{name} je povabil %{length} ljudi v nit:"
     poll_created: "%{name} je povabil %{length} ljudi h glasovanju:"
-    poll_announced: "%{name} je k glasovanju povabil %{length} ljudi:"
     outcome_created: "%{name} je delil rezultat z %{length} osebami:"
     outcome_announced: "%{name} je delil rezultat z %{length} osebami:"
     announcement_created: "%{name} je povabil %{length} ljudi v nit:"
@@ -877,9 +877,6 @@ sl:
       discussion_edited:
         title: Obvesti o popravkih
         helptext: Koga želite obvestiti o tej posodobitvi? (neobvezno)
-      poll_announced:
-        title: Povabi h glasovanju
-        helptext: Koga bi radi povabili h glasovanju?
       wip_poll_announced:
         title: Povabite k posredovanju povratnih informacij
         helptext: Koga želite povabiti, da poda povratne informacije?
@@ -915,6 +912,9 @@ sl:
       visible_to_group: Vsi v %{group} bodo lahko videli to nit.
       visible_to_guests: Samo povabljeni lahko vidijo to nit.
       click_group_to_see_individuals: Kliknite skupino za ogled posameznikov
+      poll_announced:
+        title: Povabilo k glasovanju
+        helptext: Koga bi želeli povabiti k glasovanju?
     members_list:
       title: V skupni rabi z
       last_notified: Obveščeni
@@ -932,6 +932,7 @@ sl:
     flash:
       success: "%{count} poslanih obvestil"
     group_mentioned: "%{name} je omenil skupino z %{length} osebami:"
+    poll_announced: "%{name} je povabil %{length} oseb k glasovanju:"
   action_dock:
     actions_menu: Meni dejanj
     more_actions: Več dejanj
@@ -1510,6 +1511,7 @@ sl:
     learn_more: Več o nastavitvah e-pošte ...
     mentioned_description: Ko vas nekdo {'@'}omeni v komentarju, boste prejeli obvestilo po e-pošti
     daily_summary_description: Izberite, kdaj želite prejeti e-poštno sporočilo s povzetkom zamujenega. To e-poštno sporočilo vsebuje vse nove dejavnosti, ki jih še niste opazili. Dober način, da ostanete na tekočem, če niste redni uporabnik.
+    never: Nikoli
   thread_preview:
     replies_count: "%{count} odgovorov"
     unread_count: "%{count} neprebranih"

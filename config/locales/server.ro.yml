@@ -227,6 +227,7 @@ ro:
       group_mentioned: Ați primit acest lucru deoarece grupul a fost @menționat.
       user_mentioned: Ai primit asta pentru că ai fost @menționat.
       notified: Ați primit acest lucru deoarece autorul v-a notificat.
+      poll_subscribed: Ai primit acest mesaj deoarece ești abonat la sondaj.
   user_mailer:
     group_export_ready:
       subject: Export de date de grup pentru %{group_name}

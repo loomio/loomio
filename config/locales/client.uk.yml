@@ -476,6 +476,7 @@ uk:
     when_would_you_like_to_be_emailed_poll_type: Коли ви бажаєте отримати електронний лист про цей %{poll_type}?
     normal_explained: Коли хтось вводить ваше ім’я в поле «Сповістити» в темі чи опитуванні, або {'@'}згадує групу.
     normal_excludes_mentioning_html: Існує окреме налаштування для випадків, коли хтось {'@'}згадує вас (наприклад, коли відповідає вам у коментарі). <a href="%{url}">Натисніть тут, щоб редагувати налаштування для @згадок</a>
+    changes_all_threads_and_polls_in_group: Це змінює налаштування для всіх тем та опитувань у групі.
   close_explanation_modal:
     aria_label: Закрити тему
     close_thread: Закрити тему
@@ -685,7 +686,6 @@ uk:
       outcome_created: "%{actor} поділився результатом %{poll_type}: %{title}"
       outcome_updated: "%{actor} оновив результат %{poll_type}: %{title}"
       outcome_review_due: 'Настав час переглянути результати: %{title}'
-      poll_announced: "%{actor} запросив вас проголосувати: %{title}"
       poll_closed_by_user: "%{actor} закрив %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} закривається через 24 години: %{title}"
       poll_closing_soon_author: 'Ваш %{poll_type} закривається через 24 години: %{title}'
@@ -706,6 +706,7 @@ uk:
       user_reminded: "%{actor} нагадує вам щодо голосування: %{title}"
       group_mentioned: "%{actor} згадав групу в: %{title}"
       new_delegate: "%{actor} зробив вас делегатом із правом голосу в %{title}"
+      poll_announced: 'Будь ласка, проголосуйте: %{title}'
     without_title:
       unknown_sender: Будь ласка, перегляньте електронний лист від нерозпізнаного відправника
       discussion_announced: "%{actor} запросив вас до ланцюжка"
@@ -723,7 +724,6 @@ uk:
       outcome_created: "%{actor} поділився результатом %{poll_type}"
       outcome_updated: "%{actor} оновив результат"
       outcome_review_due: Настав час переглянути результат %{poll_type}
-      poll_announced: "%{actor} запросив вас проголосувати в %{poll_type}"
       poll_announced_wip: "%{actor} хоче отримати ваш відгук про %{poll_type}"
       poll_closed_by_user: "%{actor} закрив %{poll_type}"
       poll_closing_soon: "%{poll_type} закривається через 24 години"
@@ -743,6 +743,7 @@ uk:
       user_mentioned: "%{actor} згадав вас"
       user_reminded: "%{actor} нагадує вам проголосувати"
       group_mentioned: "%{actor} згадав групу"
+      poll_announced: "%{actor} запросив вас проголосувати за %{poll_type}"
     hints:
       poll_closing_soon: Зараз гарний час, щоб проголосувати, змінити свою думку або заохотити інших до участі.
       poll_closing_soon_author: Ви можете нагадати людям проголосувати або продовжити кінцевий термін.
@@ -843,7 +844,6 @@ uk:
     new_discussion: "%{name} запросив(ла) %{length} людей до теми:"
     discussion_announced: "%{name} запросив(ла) %{length} людей до теми:"
     poll_created: "%{name} запросив(ла) %{length} людей до голосування:"
-    poll_announced: "%{name} запросив(ла) %{length} людей до голосування:"
     outcome_created: "%{name} поширив результат з %{length} людьми:"
     outcome_announced: "%{name} поширив результат з %{length} людьми:"
     announcement_created: "%{name} запросив(ла) %{length} людей до теми:"
@@ -886,9 +886,6 @@ uk:
       discussion_edited:
         title: Повідомляти про зміни
         helptext: Кого б ви хотіли повідомити про це оновлення? (необов'язково)
-      poll_announced:
-        title: Запросити до голосування
-        helptext: Кого ви хотіли б долучити до голосування?
       wip_poll_announced:
         title: Запросіть залишити відгук
         helptext: Кого б ви хотіли запросити залишити відгук?
@@ -924,6 +921,9 @@ uk:
       visible_to_group: Будь-хто в %{group} зможе побачити цю тему.
       visible_to_guests: Лише запрошені люди можуть бачити цю тему.
       click_group_to_see_individuals: Натисніть на групу, щоб побачити окремих осіб
+      poll_announced:
+        title: Запрошуємо до голосування
+        helptext: Кого б ви хотіли запросити до голосування?
     members_list:
       title: Поширити серед
       last_notified: Сповіщено
@@ -941,6 +941,7 @@ uk:
     flash:
       success: "%{count} сповіщень надіслано"
     group_mentioned: "%{name} згадав групу з %{length} осіб:"
+    poll_announced: "%{name} запросив %{length} людей проголосувати:"
   action_dock:
     actions_menu: Меню дій
     more_actions: Більше дій
@@ -1529,6 +1530,7 @@ uk:
     learn_more: Дізнатись більше про налаштування електронної пошти...
     mentioned_description: Коли хтось {'@'}згадує вас у коментарі, ви отримуєте сповіщення електронною поштою
     daily_summary_description: Виберіть, коли отримувати електронний лист із підсумками. Цей лист містить будь-яку нову активність, яку ви не бачили. Гарний спосіб бути в курсі подій, якщо ви не є постійним користувачем.
+    never: Ніколи
   thread_preview:
     replies_count: "%{count} відповідей"
     unread_count: "%{count} непрочитаних"

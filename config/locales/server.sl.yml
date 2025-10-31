@@ -227,6 +227,7 @@ sl:
       group_mentioned: To ste prejeli, ker je bila skupina @omenjena.
       user_mentioned: To ste prejeli, ker ste bili @omenjeni.
       notified: To ste prejeli, ker vas je avtor obvestil.
+      poll_subscribed: To ste prejeli, ker ste naročeni na anketo.
   user_mailer:
     group_export_ready:
       subject: Izvoz podatkov skupine za %{group_name}
