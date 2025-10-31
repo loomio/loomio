@@ -2409,8 +2409,6 @@ en:
     vote: Vote
   poll_proposal_options:
     select_an_option: Select an option
-    true: 'Yes'
-    false: 'No'
     agree: Agree
     consent: Consent
     abstain: Abstain

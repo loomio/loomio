@@ -53,42 +53,21 @@ describe EmailActionsController do
       expect(@membership.volume).to eq 'normal'
       expect(@discussion_reader.volume).to eq 'normal'
     end
-  end
 
-  describe "unfollow_discussion" do
-    before do
-      @user = FactoryBot.create(:user)
-      @group = FactoryBot.create(:group)
-      @group.add_member!(@user)
+    it 'unsubscribes stance' do
+      @membership.set_volume! :loud
+      @poll = FactoryBot.create(:poll, group_id: @membership.group_id)
+      @stance = FactoryBot.create(:stance, poll: @poll, participant: @user)
+      @stance.set_volume! :loud
 
-      @discussion = FactoryBot.build(:discussion, group: @group)
-      DiscussionService.create(discussion: @discussion, actor: @user)
-      DiscussionReader.for(discussion: @discussion, user: @user).set_volume! :loud
-    end
+      put :set_poll_volume, params: { stance_id: @stance.id, unsubscribe_token: @user.unsubscribe_token, value: :normal }
+      expect(response.status).to eq 302
 
-    it 'stops email notifications for the discussion' do
-      expect(DiscussionReader.for(discussion: @discussion, user: @user).computed_volume).to eq 'loud'
-      get :unfollow_discussion, params: { discussion_id: @discussion.id, unsubscribe_token: @user.unsubscribe_token }
-      expect(DiscussionReader.for(discussion: @discussion, user: @user).computed_volume).to eq 'normal'
-      get :unfollow_discussion, params: { discussion_id: @discussion.id, unsubscribe_token: @user.unsubscribe_token }
-      expect(DiscussionReader.for(discussion: @discussion, user: @user).computed_volume).to eq 'quiet'
-    end
-  end
+      @membership.reload
+      @stance.reload
 
-  describe "follow_discussion" do
-    before do
-      @user = FactoryBot.create(:user)
-      @group = FactoryBot.create(:group)
-      @group.add_member!(@user)
-
-      @discussion = FactoryBot.build(:discussion, group: @group)
-      DiscussionService.create(discussion: @discussion, actor: @user)
-      DiscussionReader.for(discussion: @discussion, user: @user).set_volume! :normal
-    end
-
-    xit 'enables emails for the discussion' do
-      get :follow_discussion, params: { discussion_id: @discussion.id, unsubscribe_token: @user.unsubscribe_token }
-      expect(DiscussionReader.for(discussion: @discussion, user: @user).computed_volume).to eq 'loud'
+      expect(@membership.volume).to eq 'loud'
+      expect(@stance.volume).to eq 'normal'
     end
   end
 
