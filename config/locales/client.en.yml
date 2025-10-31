@@ -718,6 +718,45 @@ en:
   notifications:
     header: Notifications
     no_notifications: You don't have any notifications
+    email_subject:
+      unknown_sender: Review email from unrecognised sender
+      comment_replied_to: "%{actor} replied to you in: %{title}"
+      discussion_announced: "%{title}"
+      discussion_edited: "%{actor} edited the thread context: %{title}"
+      discussion_closed: "%{actor} closed the thread: %{title}"
+      invitation_accepted: "%{actor} accepted your invitation to join %{title}"
+      membership_created: "%{actor} invited you to join %{title} on %{site_name}"
+      membership_resent: "%{actor} invited you to join %{title} on %{site_name}"
+      membership_requested: "%{actor} requested to join %{title}"
+      membership_request_approved: "%{actor} approved your request to join %{title}"
+      new_comment: "%{actor} commented in: %{title}"
+      new_coordinator: "%{actor} made you an admin of %{title}"
+      new_delegate: "%{actor} made you a delegate with voting rights in %{title}"
+      new_discussion: "%{title}"
+      outcome_announced: "%{poll_type} outcome: %{title}"
+      outcome_created: "%{poll_type} outcome: %{title}"
+      outcome_updated: "%{poll_type} outcome updated: %{title}"
+      outcome_review_due: 'It''s time to review the outcome of: %{title}'
+      poll_announced: "Vote: %{title}"
+      poll_closed_by_user: "%{actor} closed the %{poll_type}: %{title}"
+      poll_closing_soon: "%{poll_type} closing in 24 hours: %{title}"
+      poll_closing_soon_author: 'Your %{poll_type} is closing in 24 hours: %{title}'
+      poll_created: "Vote: %{title}"
+      poll_edited: "%{actor} updated the %{poll_type}: %{title}"
+      poll_expired: "%{poll_type} has closed: %{title}"
+      poll_expired_author: 'Publish an outcome: %{title}'
+      poll_option_added: "%{actor} added options to %{title}"
+      poll_reopened: "Voting extended: %{title}"
+      poll_reminder: "%{actor} is reminding you to vote on %{title}"
+      poll_reminder_wip: "%{actor} is reminding you to give feedback: %{title}"
+      reaction_created: "%{actor} reacted %{reaction} to your %{model} in %{title}"
+      stance_created: "%{actor} voted in: %{title}"
+      stance_updated: "%{actor} voted in: %{title}"
+      stance_created_option: "%{actor} voted %{option} in %{title}"
+      user_added_to_group: "%{actor} added you to the group: %{title}"
+      user_mentioned: "%{actor} mentioned you in: %{title}"
+      group_mentioned: "%{actor} mentioned the group in: %{title}"
+      user_reminded: "%{actor} is reminding you to vote in: %{title}"
     with_title:
       unknown_sender: Please review email from unrecognised sender
       comment_replied_to: "%{actor} replied to you in: %{title}"
@@ -733,8 +772,8 @@ en:
       new_coordinator: "%{actor} made you an admin of %{title}"
       new_delegate: "%{actor} made you a delegate with voting rights in %{title}"
       new_discussion: "%{actor} started a thread: %{title}"
-      outcome_announced: "%{actor} shared a %{poll_type} outcome: %{title}"
-      outcome_created: "%{actor} shared a %{poll_type} outcome: %{title}"
+      outcome_announced: "%{actor} published a %{poll_type} outcome: %{title}"
+      outcome_created: "%{actor} published a %{poll_type} outcome: %{title}"
       outcome_updated: "%{actor} updated the %{poll_type} outcome: %{title}"
       outcome_review_due: 'It''s time to review the outcome of: %{title}'
       poll_announced: "Please vote: %{title}"

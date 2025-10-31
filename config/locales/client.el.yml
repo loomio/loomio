@@ -743,6 +743,45 @@ el:
       poll_closing_soon: Τώρα είναι η κατάλληλη στιγμή για να ψηφίσετε, να αλλάξετε γνώμη ή να ενθαρρύνετε άλλους να συμμετάσχουν.
       poll_closing_soon_author: Μπορεί να θέλετε να υπενθυμίσετε στους ανθρώπους να ψηφίσουν ή να παρατείνετε την προθεσμία.
       outcome_review_due: Εξετάστε το ενδεχόμενο να ξεκινήσετε μια δημοσκόπηση σχολίων ή ένα νέο νήμα που προσκαλεί προβληματισμούς σχετικά με τον τρόπο εφαρμογής της απόφασης.
+    email_subject:
+      unknown_sender: Έλεγχος email από μη αναγνωρισμένο αποστολέα
+      comment_replied_to: 'Ο χρήστης %{actor} σας απάντησε στο: %{title}'
+      discussion_announced: "%{τίτλος}"
+      discussion_edited: 'Ο %{actor} επεξεργάστηκε το περιεχόμενο: %{title}'
+      discussion_closed: 'Ο/Η %{actor} έκλεισε το νήμα: %{title}'
+      invitation_accepted: Ο/Η %{actor} αποδέχτηκε την πρόσκλησή σας για να συμμετάσχει στον/στην %{title}
+      membership_created: Ο/Η %{actor} σας προσκάλεσε να γίνετε μέλος του/της %{title} στο %{site_name}
+      membership_resent: Ο χρήστης %{actor} σας προσκάλεσε να συμμετάσχετε στον χρήστη %{title} στο %{site_name}
+      membership_requested: Ο/Η %{actor} ζήτησε να συμμετάσχει στον/στην %{title}
+      membership_request_approved: Ο χρήστης %{actor} ενέκρινε το αίτημά σας για συμμετοχή στον χρήστη %{title}
+      new_comment: 'Ο/Η %{actor} σχολίασε στο: %{title}'
+      new_coordinator: Ο χρήστης %{actor} σας έκανε διαχειριστή του %{title}
+      new_delegate: Ο/Η %{actor} σε έκανε αντιπρόσωπο με δικαίωμα ψήφου στο %{title}
+      new_discussion: "%{τίτλος}"
+      outcome_announced: 'Αποτέλεσμα %{poll_type}: %{title}'
+      outcome_created: 'Αποτέλεσμα %{poll_type}: %{title}'
+      outcome_updated: 'Ενημερώθηκε το αποτέλεσμα του %{poll_type}: %{title}'
+      outcome_review_due: 'Ήρθε η ώρα να εξετάσουμε το αποτέλεσμα του: %{title}'
+      poll_announced: 'Ψηφοφορία: %{title}'
+      poll_closed_by_user: 'Ο χρήστης %{actor} έκλεισε το %{poll_type}: %{title}'
+      poll_closing_soon: "%{poll_type} κλείνει σε 24 ώρες: %{title}"
+      poll_closing_soon_author: 'Η %{poll_type} σας κλείνει σε 24 ώρες: %{title}'
+      poll_created: 'Ψηφοφορία: %{title}'
+      poll_edited: 'Ο χρήστης %{actor} ενημέρωσε το %{poll_type}: %{title}'
+      poll_expired: 'Το %{poll_type} έκλεισε: %{title}'
+      poll_expired_author: 'Δημοσίευση αποτελέσματος: %{title}'
+      poll_option_added: Ο/Η %{actor} πρόσθεσε επιλογές στον/στην %{title}
+      poll_reopened: 'Η ψηφοφορία παρατάθηκε: %{title}'
+      poll_reminder: Ο/Η %{actor} σας υπενθυμίζει να ψηφίσετε για τον/την %{title}
+      poll_reminder_wip: 'Ο χρήστης %{actor} σας υπενθυμίζει να δώσετε σχόλια: %{title}'
+      reaction_created: Ο %{actor} αντέδρασε %{reaction} στο %{model} σας στο %{title}
+      stance_created: 'Ο/Η %{actor} ψήφισε υπέρ: %{title}'
+      stance_updated: 'Ο/Η %{actor} ψήφισε υπέρ: %{title}'
+      stance_created_option: "%{actor} ψήφισε %{option} στο %{title}"
+      user_added_to_group: 'Ο χρήστης %{actor} σας πρόσθεσε στην ομάδα: %{title}'
+      user_mentioned: 'Ο χρήστης %{actor} σας ανέφερε στο: %{title}'
+      group_mentioned: 'Ο/Η %{actor} ανέφερε την ομάδα στο: %{title}'
+      user_reminded: 'Ο χρήστης %{actor} σας υπενθυμίζει να ψηφίσετε: %{title}'
   discussion_fork_actions:
     helptext: Επιλέξτε στοιχεία που θέλετε να μετακινήσετε σε άλλο νήμα
     move: Κίνηση

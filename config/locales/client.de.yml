@@ -632,7 +632,7 @@ de:
     contact_support: Support kontaktieren
     sign_out: Abmelden
     beta_collab: "\U0001F9EA Beta-Funktionen aktiviert!"
-    outcomes: Ergebnisse
+    outcomes: Fazits
     theme: Thema
     light: Licht
     dark: Dunkel
@@ -668,7 +668,7 @@ de:
     discussion: 'Diskussion:'
     comment: kommentieren in
     poll: Umfrage
-    outcome: 'Ergebnis:'
+    outcome: 'Fazit:'
     stance: 'Abstimmen:'
   notifications:
     header: Benachrichtigungen
@@ -687,17 +687,17 @@ de:
       new_comment: "%{actor} hat kommentiert in: %{title}"
       new_coordinator: "%{actor} hat Sie zum Administrator von %{title} gemacht"
       new_discussion: "%{actor} hat einen Thread gestartet: %{title}"
-      outcome_announced: "%{actor} teilte eine %{poll_type} Ergebnis: %{title}"
-      outcome_created: "%{actor} teilte eine %{poll_type} Ergebnis: %{title}"
-      outcome_updated: "%{actor} aktualisiere die %{poll_type} Ergebnis:%{title}"
-      outcome_review_due: Es ist Zeit, das Ergebnis von %{title} zu überprüfen.
+      outcome_announced: "%{actor} hat das Fazit der %{poll_type} geteilt: %{title}"
+      outcome_created: "%{actor} hat das Fazit der %{poll_type} geteilt: %{title}"
+      outcome_updated: "%{actor} hat das Fazit der %{poll_type} aktualisiert: %{title}"
+      outcome_review_due: Es ist Zeit, das Fazit von %{title} zu überprüfen.
       poll_closed_by_user: "%{actor} hat die %{poll_type} geschlossen: %{title}"
       poll_closing_soon: "%{poll_type} endet in 24 Stunden: %{title}"
       poll_closing_soon_author: 'Ihr %{poll_type} wird in 24 Stunden geschlossen: %{title}'
       poll_created: "%{actor} startete eine %{poll_type}: %{title}"
       poll_edited: "%{actor} hat den %{poll_type} aktualisiert: %{title}"
       poll_expired: "%{poll_type} wurde geschlossen: %{title}"
-      poll_expired_author: 'Teilen Sie das Ergebnis Ihres %{poll_type} mit: %{title}'
+      poll_expired_author: 'Teilen Sie das Fazit Ihres %{poll_type} mit: %{title}'
       poll_option_added: "%{actor} hat Optionen zu %{title} hinzugefügt"
       poll_reopened: "%{actor} hat %{poll_type} erneut geöffnet: %{title}"
       poll_reminder: "%{actor} erinnert Sie daran, über %{title} abzustimmen"
@@ -753,6 +753,45 @@ de:
       poll_closing_soon: Jetzt ist ein guter Zeitpunkt, um abzustimmen, Ihre Meinung zu ändern oder andere zur Teilnahme zu ermutigen.
       poll_closing_soon_author: Möglicherweise möchten Sie die Menschen an die Abstimmung erinnern oder die Frist verlängern.
       outcome_review_due: Erwägen Sie, eine Feedback-Umfrage zu starten oder einen neuen Thread zu eröffnen, der zum Nachdenken darüber einlädt, wie die Entscheidung umgesetzt wurde.
+    email_subject:
+      unknown_sender: E-Mail von unbekanntem Absender prüfen
+      comment_replied_to: "%{actor} antwortete Ihnen in: %{title}"
+      discussion_announced: "%{title}"
+      discussion_edited: "%{actor} hat den Kontext bearbeitet: %{title}"
+      discussion_closed: "%{actor} hat den Thread geschlossen: %{title}"
+      invitation_accepted: "%{actor} hat Ihre Einladung angenommen, %{title} beizutreten."
+      membership_created: "%{actor} hat Sie eingeladen, %{title} auf %{site_name} beizutreten."
+      membership_resent: "%{actor} hat Sie eingeladen, %{title} auf %{site_name} beizutreten."
+      membership_requested: "%{actor} hat beantragt, %{title} beizutreten."
+      membership_request_approved: "%{actor} hat Ihre Anfrage zur Mitgliedschaft in %{title} genehmigt."
+      new_comment: "%{actor} kommentierte in: %{title}"
+      new_coordinator: "%{actor} hat Sie zum Administrator von %{title} ernannt."
+      new_delegate: "%{actor} hat Sie zum Delegierten mit Stimmrechten in %{title} ernannt."
+      new_discussion: "%{Titel}"
+      outcome_announced: "Fazit für %{poll_type}: %{title}"
+      outcome_created: "Fazit für %{poll_type}: %{title}"
+      outcome_updated: "Fazit für %{poll_type} aktualisiert: %{title}"
+      outcome_review_due: Es ist Zeit, das Fazit zu %{title} zu überprüfen.
+      poll_announced: 'Abstimmung: %{title}'
+      poll_closed_by_user: "%{actor} hat die %{poll_type} geschlossen: %{title}"
+      poll_closing_soon: "%{poll_type} schließt in 24 Stunden: %{title}"
+      poll_closing_soon_author: 'Ihre %{poll_type}-Abstimmung endet in 24 Stunden: %{title}'
+      poll_created: 'Abstimmung: %{title}'
+      poll_edited: "%{actor} hat den %{poll_type} aktualisiert: %{title}"
+      poll_expired: "%{poll_type} wurde geschlossen: %{title}"
+      poll_expired_author: 'Ergebnis veröffentlichen: %{title}'
+      poll_option_added: "%{actor} hat Optionen zu %{title} hinzugefügt."
+      poll_reopened: 'Abstimmung verlängert: %{title}'
+      poll_reminder: "%{actor} erinnert Sie daran, für %{title} abzustimmen."
+      poll_reminder_wip: "%{actor} erinnert Sie daran, Feedback zu geben: %{title}"
+      reaction_created: "%{actor} reagierte %{reaction} auf Ihr %{model} in %{title}"
+      stance_created: "%{actor} hat gewählt: %{title}"
+      stance_updated: "%{actor} hat gewählt: %{title}"
+      stance_created_option: "%{actor} stimmte für %{option} in %{title}"
+      user_added_to_group: "%{actor} hat dich der Gruppe hinzugefügt: %{title}"
+      user_mentioned: "%{actor} erwähnte dich in: %{title}"
+      group_mentioned: "%{actor} erwähnte die Gruppe in: %{title}"
+      user_reminded: "%{actor} erinnert Sie daran, für Folgendes abzustimmen: %{title}"
   discussion_fork_actions:
     helptext: Wähle Einträge aus, die du zu einer anderen Diskussioen verschieben willst
     move: Verschieben

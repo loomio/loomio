@@ -743,6 +743,45 @@ sl:
       poll_closing_soon: Zdaj je pravi čas, da glasujete, si premislite ali spodbudite druge k sodelovanju.
       poll_closing_soon_author: Morda boste želeli opomniti ljudi, naj glasujejo ali podaljšati rok.
       outcome_review_due: Razmislite o tem, da bi začeli anketo s povratnimi informacijami ali novo nit, ki bi vabila k razmišljanju o tem, kako je bila odločitev izvedena.
+    email_subject:
+      unknown_sender: Preglejte e-pošto od neznanega pošiljatelja
+      comment_replied_to: "%{actor} vam je odgovoril v: %{title}"
+      discussion_announced: "%{naslov}"
+      discussion_edited: "%{actor} je uredil kontekst: %{title}"
+      discussion_closed: "%{actor} je zaprl nit: %{title}"
+      invitation_accepted: "%{actor} je sprejel vaše povabilo, da se pridruži %{title}"
+      membership_created: "%{actor} vas je vabil, da se pridružite %{title} na %{site_name}"
+      membership_resent: "%{actor} vas je vabil, da se pridružite %{title} na %{site_name}"
+      membership_requested: "%{actor} je zaprosil za pridružitev %{title}"
+      membership_request_approved: "%{actor} je odobril vašo zahtevo za pridružitev %{title}"
+      new_comment: "%{actor} je komentiral v: %{title}"
+      new_coordinator: "%{actor} vas je postavil za administratorja %{title}"
+      new_delegate: "%{actor} vas je imenoval za delegata z glasovalno pravico v %{title}"
+      new_discussion: "%{naslov}"
+      outcome_announced: 'Rezultat %{poll_type}: %{title}'
+      outcome_created: 'Rezultat %{poll_type}: %{title}'
+      outcome_updated: 'Posodobljen rezultat ankete %{poll_type}: %{title}'
+      outcome_review_due: 'Čas je, da pregledamo izid: %{title}'
+      poll_announced: 'Glas: %{title}'
+      poll_closed_by_user: "%{actor} je zaprl %{poll_type}: %{title}"
+      poll_closing_soon: "%{poll_type} se zapre čez 24 ur: %{title}"
+      poll_closing_soon_author: 'Vaša anketa %{poll_type} se zapira čez 24 ur: %{title}'
+      poll_created: 'Glas: %{title}'
+      poll_edited: "%{actor} je posodobil %{poll_type}: %{title}"
+      poll_expired: "%{poll_type} se je zaključil: %{title}"
+      poll_expired_author: 'Objavite rezultat: %{title}'
+      poll_option_added: "%{actor} je dodal možnosti v %{title}"
+      poll_reopened: 'Glasovanje podaljšano: %{title}'
+      poll_reminder: "%{actor} vas opominja, da glasujete o %{title}"
+      poll_reminder_wip: "%{actor} vas opominja, da oddate povratne informacije: %{title}"
+      reaction_created: "%{actor} se je odzval %{reaction} na vaš %{model} v %{title}"
+      stance_created: "%{actor} je glasoval za: %{title}"
+      stance_updated: "%{actor} je glasoval za: %{title}"
+      stance_created_option: "%{actor} je glasoval za %{option} v %{title}"
+      user_added_to_group: "%{actor} vas je dodal v skupino: %{title}"
+      user_mentioned: "%{actor} vas je omenil v: %{title}"
+      group_mentioned: "%{actor} je omenil skupino v: %{title}"
+      user_reminded: "%{actor} vas opominja, da glasujete v: %{title}"
   discussion_fork_actions:
     helptext: Izberite elemente, ki jih želite premakniti v drugo nit
     move: Premakni se

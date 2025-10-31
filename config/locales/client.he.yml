@@ -743,6 +743,45 @@ he:
       poll_closing_soon: עכשיו זה זמן טוב להצביע, לשנות את דעתך או לעודד אחרים להשתתף.
       poll_closing_soon_author: אולי תרצה להזכיר לאנשים להצביע או להאריך את המועד.
       outcome_review_due: שקול להתחיל סקר משוב או שרשור חדש המזמין הרהורים על האופן שבו ההחלטה יושמה.
+    email_subject:
+      unknown_sender: סקירת אימייל משולח לא מזוהה
+      comment_replied_to: "%{actor} ענה לך ב: %{title}"
+      discussion_announced: "%{כּוֹתֶרֶת}"
+      discussion_edited: "%{actor} ערך את ההקשר: %{title}"
+      discussion_closed: "%{actor} סגר את השרשור: %{title}"
+      invitation_accepted: "%{actor} קיבל את הזמנתך להצטרף ל-%{title}"
+      membership_created: "%{actor} הזמין אותך להצטרף ל-%{title} ב-%{site_name}"
+      membership_resent: "%{actor} הזמין אותך להצטרף ל-%{title} ב-%{site_name}"
+      membership_requested: "%{actor} ביקש להצטרף ל-%{title}"
+      membership_request_approved: "%{actor} אישר את בקשתך להצטרף ל-%{title}"
+      new_comment: "%{actor} הגיב ב: %{title}"
+      new_coordinator: "%{actor} הפך אותך למנהל של %{title}"
+      new_delegate: "%{actor} מינה אותך לנציג עם זכות הצבעה ב-%{title}"
+      new_discussion: "%{כּוֹתֶרֶת}"
+      outcome_announced: 'תוצאה %{poll_type}: %{title}'
+      outcome_created: 'תוצאה %{poll_type}: %{title}'
+      outcome_updated: 'תוצאות %{poll_type} עודכנו: %{title}'
+      outcome_review_due: 'הגיע הזמן לבחון את התוצאה של: %{title}'
+      poll_announced: 'הצבעה: %{title}'
+      poll_closed_by_user: "%{actor} סגר את %{poll_type}: %{title}"
+      poll_closing_soon: "%{poll_type} נסגר בעוד 24 שעות: %{title}"
+      poll_closing_soon_author: "%{poll_type} שלך נסגר בעוד 24 שעות: %{title}"
+      poll_created: 'הצבעה: %{title}'
+      poll_edited: "%{actor} עדכן את %{poll_type}: %{title}"
+      poll_expired: "%{poll_type} נסגר: %{title}"
+      poll_expired_author: 'פרסם תוצאה: %{title}'
+      poll_option_added: "%{actor} הוסיף אפשרויות ל-%{title}"
+      poll_reopened: 'ההצבעה הוארכה: %{title}'
+      poll_reminder: "%{actor} מזכיר לך להצביע על %{title}"
+      poll_reminder_wip: "%{actor} מזכיר לך לתת משוב: %{title}"
+      reaction_created: "%{actor} הגיב %{reaction} ל-%{model} שלך ב-%{title}"
+      stance_created: "%{actor} הצביעו ב: %{title}"
+      stance_updated: "%{actor} הצביעו ב: %{title}"
+      stance_created_option: "%{actor} הצביעו %{option} ב-%{title}"
+      user_added_to_group: "%{actor} הוסיף אותך לקבוצה: %{title}"
+      user_mentioned: "%{actor} הזכיר אותך ב: %{title}"
+      group_mentioned: "%{actor} הזכיר את הקבוצה ב: %{title}"
+      user_reminded: "%{actor} מזכיר לך להצביע ב: %{title}"
   discussion_fork_actions:
     helptext: בחר פריטים שתרצה להעביר לשרשור אחר
     move: העבר

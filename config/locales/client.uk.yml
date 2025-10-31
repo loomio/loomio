@@ -748,6 +748,45 @@ uk:
       poll_closing_soon: Зараз гарний час, щоб проголосувати, змінити свою думку або заохотити інших до участі.
       poll_closing_soon_author: Ви можете нагадати людям проголосувати або продовжити кінцевий термін.
       outcome_review_due: Подумайте про те, щоб розпочати опитування для відгуків або створити нову тему, запрошуючи до роздумів про те, як було реалізовано рішення.
+    email_subject:
+      unknown_sender: Переглянути електронний лист від невідомого відправника
+      comment_replied_to: "%{actor} відповів вам у: %{title}"
+      discussion_announced: "%{назва}"
+      discussion_edited: "%{actor} відредагував контекст: %{title}"
+      discussion_closed: "%{actor} закрив тему: %{title}"
+      invitation_accepted: "%{actor} прийняв ваше запрошення приєднатися до %{title}"
+      membership_created: "%{actor} запросив вас приєднатися до %{title} на %{site_name}"
+      membership_resent: "%{actor} запросив вас приєднатися до %{title} на %{site_name}"
+      membership_requested: "%{actor} запросив(ла) приєднання до %{title}"
+      membership_request_approved: "%{actor} схвалив ваш запит на приєднання до %{title}"
+      new_comment: "%{actor} прокоментував у: %{title}"
+      new_coordinator: "%{actor} зробив вас адміністратором %{title}"
+      new_delegate: "%{actor} зробив вас делегатом з правом голосу в %{title}"
+      new_discussion: "%{назва}"
+      outcome_announced: 'Результат %{poll_type}: %{title}'
+      outcome_created: 'Результат %{poll_type}: %{title}'
+      outcome_updated: 'Результат %{poll_type} оновлено: %{title}'
+      outcome_review_due: 'Час переглянути результат: %{title}'
+      poll_announced: 'Голосувати: %{title}'
+      poll_closed_by_user: "%{actor} закрив %{poll_type}: %{title}"
+      poll_closing_soon: "%{poll_type} закривається через 24 години: %{title}"
+      poll_closing_soon_author: 'Ваш %{poll_type} закривається через 24 години: %{title}'
+      poll_created: 'Голосувати: %{title}'
+      poll_edited: "%{actor} оновив %{poll_type}: %{title}"
+      poll_expired: "%{poll_type} закрито: %{title}"
+      poll_expired_author: 'Опублікувати результат: %{title}'
+      poll_option_added: "%{actor} додав опції до %{title}"
+      poll_reopened: 'Голосування продовжено: %{title}'
+      poll_reminder: "%{actor} нагадує вам проголосувати за %{title}"
+      poll_reminder_wip: "%{actor} нагадує вам залишити відгук: %{title}"
+      reaction_created: "%{actor} відреагував %{reaction} на вашу %{model} у %{title}"
+      stance_created: "%{actor} проголосував за: %{title}"
+      stance_updated: "%{actor} проголосував за: %{title}"
+      stance_created_option: "%{actor} проголосував за %{option} у %{title}"
+      user_added_to_group: "%{actor} додав вас до групи: %{title}"
+      user_mentioned: "%{actor} згадав вас у: %{title}"
+      group_mentioned: "%{actor} згадав групу в: %{title}"
+      user_reminded: "%{actor} нагадує вам проголосувати: %{title}"
   discussion_fork_actions:
     helptext: Оберіть елементи які ви хочете перенести в іншу гілку
     move: Перемістити

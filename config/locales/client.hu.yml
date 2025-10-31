@@ -745,6 +745,45 @@ hu:
       poll_closing_soon: Itt az ideje, hogy szavazzon, meggondolja magát, vagy bátorítson másokat a részvételre.
       poll_closing_soon_author: Emlékeztetheti az embereket, hogy szavazzanak, vagy hosszabbítsák meg a határidőt.
       outcome_review_due: Fontolja meg egy visszajelzési szavazás vagy egy új téma indítását, amely elgondolkodtató a döntés végrehajtásáról.
+    email_subject:
+      unknown_sender: Ismeretlen feladótól érkező e-mail áttekintése
+      comment_replied_to: "%{actor} válaszolt neked ebben a részben: %{title}"
+      discussion_announced: "%{cím}"
+      discussion_edited: "%{actor} szerkesztette a következő kontextust: %{title}"
+      discussion_closed: "%{actor} lezárta a következő szálat: %{title}"
+      invitation_accepted: "%{actor} elfogadta a meghívásodat, hogy csatlakozzon a(z) %{title} csapathoz"
+      membership_created: "%{actor} meghívott, hogy csatlakozz a(z) %{title} oldalhoz a(z) %{site_name} oldalon."
+      membership_resent: "%{actor} meghívott, hogy csatlakozz a(z) %{title} oldalhoz a(z) %{site_name} oldalon."
+      membership_requested: "%{actor} csatlakozni kért a(z) %{title} csapathoz"
+      membership_request_approved: "%{actor} jóváhagyta a csatlakozási kérelmedet a(z) %{title} csoporthoz"
+      new_comment: "%{actor} hozzászólása a következőhöz: %{title}"
+      new_coordinator: "%{actor} adminisztrátorrá tett a(z) %{title} webhelyen"
+      new_delegate: "%{actor} szavazati joggal rendelkező delegálttá tett téged a(z) %{title} ülésen"
+      new_discussion: "%{cím}"
+      outcome_announced: "%{poll_type} eredmény: %{title}"
+      outcome_created: "%{poll_type} eredmény: %{title}"
+      outcome_updated: "%{poll_type} eredmény frissítve: %{title}"
+      outcome_review_due: 'Ideje áttekinteni a következő eredményét: %{title}'
+      poll_announced: 'Szavazat: %{title}'
+      poll_closed_by_user: "%{actor} lezárta a %{poll_type}-t: %{title}"
+      poll_closing_soon: "%{poll_type} 24 órán belül zárul: %{title}"
+      poll_closing_soon_author: 'A %{poll_type} 24 óra múlva zárul: %{title}'
+      poll_created: 'Szavazat: %{title}'
+      poll_edited: "%{actor} frissítette a(z) %{poll_type} elemet: %{title}"
+      poll_expired: "%{poll_type} lezárult: %{title}"
+      poll_expired_author: 'Eredmény közzététele: %{title}'
+      poll_option_added: "%{actor} opciókat adott hozzá a(z) %{title} bejegyzéshez"
+      poll_reopened: 'A szavazás meghosszabbítva: %{title}'
+      poll_reminder: "%{actor} emlékeztet, hogy szavazz a(z) %{title} bejegyzésre"
+      poll_reminder_wip: "%{actor} emlékeztet, hogy adj visszajelzést: %{title}"
+      reaction_created: "%{actor} %{reaction} módon reagált a %{model} modelledre a %{title}-ben"
+      stance_created: "%{actor} szavazott: %{title}"
+      stance_updated: "%{actor} szavazott: %{title}"
+      stance_created_option: "%{actor} szavazott %{option}-ra a %{title}-ben"
+      user_added_to_group: "%{actor} felvett téged a következő csoportba: %{title}"
+      user_mentioned: "%{actor} megemlített téged a következőben: %{title}"
+      group_mentioned: "%{actor} megemlítette a csoportot a következőben: %{title}"
+      user_reminded: "%{actor} emlékeztet, hogy szavazz erre: %{title}"
   discussion_fork_actions:
     helptext: Válassza ki azokat az elemeket, amelyeket át szeretne helyezni egy másik szálba
     move: Mozgat

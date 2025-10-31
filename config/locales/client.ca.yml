@@ -747,6 +747,45 @@ ca:
       poll_closing_soon: Ara és un bon moment per votar, canviar d'opinió o animar els altres a participar.
       poll_closing_soon_author: És possible que vulgueu recordar a la gent que voten o allargar el termini.
       outcome_review_due: Penseu en iniciar una enquesta de comentaris o un fil nou per convidar a reflexionar sobre com s'ha implementat la decisió.
+    email_subject:
+      unknown_sender: Revisa el correu electrònic d'un remitent desconegut
+      comment_replied_to: "%{actor} t'ha respost a: %{title}"
+      discussion_announced: "%{title}"
+      discussion_edited: "%{actor} ha editat el context: %{title}"
+      discussion_closed: "%{actor} ha tancat el fil: %{title}"
+      invitation_accepted: "%{actor} ha acceptat la teva invitació per unir-se a %{title}"
+      membership_created: "%{actor} t'ha convidat a unir-te a %{title} a %{site_name}"
+      membership_resent: "%{actor} t'ha convidat a unir-te a %{title} a %{site_name}"
+      membership_requested: "%{actor} ha sol·licitat unir-se a %{title}"
+      membership_request_approved: "%{actor} ha aprovat la teva sol·licitud per unir-te a %{title}"
+      new_comment: "%{actor} ha comentat a: %{title}"
+      new_coordinator: "%{actor} t'ha fet administrador de %{title}"
+      new_delegate: "%{actor} t'ha fet delegat amb dret a vot a %{title}"
+      new_discussion: "%{title}"
+      outcome_announced: 'Resultat de %{poll_type}: %{title}'
+      outcome_created: 'Resultat de %{poll_type}: %{title}'
+      outcome_updated: 'Resultat de %{poll_type} actualitzat: %{title}'
+      outcome_review_due: 'És hora de revisar el resultat de: %{title}'
+      poll_announced: 'Vot: %{title}'
+      poll_closed_by_user: "%{actor} ha tancat la %{poll_type}: %{title}"
+      poll_closing_soon: "%{poll_type} tanca en 24 hores: %{title}"
+      poll_closing_soon_author: 'El vostre %{poll_type} es tanca en 24 hores: %{title}'
+      poll_created: 'Vot: %{title}'
+      poll_edited: "%{actor} ha actualitzat el %{poll_type}: %{title}"
+      poll_expired: "%{poll_type} ha tancat: %{title}"
+      poll_expired_author: 'Publica un resultat: %{title}'
+      poll_option_added: "%{actor} ha afegit opcions a %{title}"
+      poll_reopened: 'Votació prorrogada: %{title}'
+      poll_reminder: "%{actor} et recorda que votes per %{title}"
+      poll_reminder_wip: "%{actor} et recorda que has de donar la teva opinió: %{title}"
+      reaction_created: "%{actor} ha reaccionat %{reaction} al teu %{model} a %{title}"
+      stance_created: "%{actor} ha votat a: %{title}"
+      stance_updated: "%{actor} ha votat a: %{title}"
+      stance_created_option: "%{actor} ha votat %{option} a %{title}"
+      user_added_to_group: "%{actor} t'ha afegit al grup: %{title}"
+      user_mentioned: "%{actor} t'ha mencionat a: %{title}"
+      group_mentioned: "%{actor} ha esmentat el grup a: %{title}"
+      user_reminded: "%{actor} et recorda que votes a: %{title}"
   discussion_fork_actions:
     helptext: Seleccioneu els elements que desitgeu moure a un altre fil
     move: Mou

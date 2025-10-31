@@ -743,6 +743,45 @@ sv:
       poll_closing_soon: Nu är det ett bra tillfälle att rösta, ändra uppfattning eller uppmuntra andra att delta.
       poll_closing_soon_author: Du kanske vill påminna folk om att rösta eller förlänga tidsfristen.
       outcome_review_due: Överväg att starta en feedbackundersökning eller en ny tråd som inbjuder till reflektioner över hur beslutet har genomförts.
+    email_subject:
+      unknown_sender: Granska e-post från okänd avsändare
+      comment_replied_to: "%{actor} svarade dig i: %{title}"
+      discussion_announced: "%{titel}"
+      discussion_edited: "%{actor} redigerade sammanhanget: %{title}"
+      discussion_closed: "%{actor} stängde tråden: %{title}"
+      invitation_accepted: "%{actor} accepterade din inbjudan att gå med i %{title}"
+      membership_created: "%{actor} bjöd in dig att gå med i %{title} på %{site_name}"
+      membership_resent: "%{actor} bjöd in dig att gå med i %{title} på %{site_name}"
+      membership_requested: "%{actor} begärde att få gå med i %{title}"
+      membership_request_approved: "%{actor} godkände din begäran om att gå med i %{title}"
+      new_comment: "%{actor} kommenterade i: %{title}"
+      new_coordinator: "%{actor} gjorde dig till administratör för %{title}"
+      new_delegate: "%{actor} utsåg dig till ombud med rösträtt i %{title}"
+      new_discussion: "%{titel}"
+      outcome_announced: "%{poll_type} resultat: %{title}"
+      outcome_created: "%{poll_type} resultat: %{title}"
+      outcome_updated: "%{poll_type} resultat uppdaterat: %{title}"
+      outcome_review_due: 'Det är dags att granska resultatet av: %{title}'
+      poll_announced: 'Rösta: %{titel}'
+      poll_closed_by_user: "%{actor} stängde %{poll_type}: %{title}"
+      poll_closing_soon: "%{poll_type} stänger om 24 timmar: %{title}"
+      poll_closing_soon_author: 'Din %{poll_type} stänger om 24 timmar: %{title}'
+      poll_created: 'Rösta: %{titel}'
+      poll_edited: "%{actor} uppdaterade %{poll_type}: %{title}"
+      poll_expired: "%{poll_type} har avslutats: %{title}"
+      poll_expired_author: 'Publicera ett resultat: %{title}'
+      poll_option_added: "%{actor} lade till alternativ till %{title}"
+      poll_reopened: 'Röstningen förlängd: %{title}'
+      poll_reminder: "%{actor} påminner dig om att rösta på %{title}"
+      poll_reminder_wip: "%{actor} påminner dig om att ge feedback: %{title}"
+      reaction_created: "%{actor} reagerade %{reaction} på din %{model} i %{title}"
+      stance_created: "%{skådespelare} röstade på: %{title}"
+      stance_updated: "%{skådespelare} röstade på: %{title}"
+      stance_created_option: "%{actor} röstade %{option} i %{title}"
+      user_added_to_group: "%{actor} lade till dig i gruppen: %{title}"
+      user_mentioned: "%{actor} nämnde dig i: %{title}"
+      group_mentioned: "%{actor} nämnde gruppen i: %{title}"
+      user_reminded: "%{actor} påminner dig om att rösta i: %{title}"
   discussion_fork_actions:
     helptext: Välj objekt som du vill flytta till en annan tråd
     move: Flytta

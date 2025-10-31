@@ -626,7 +626,7 @@ es:
     contact_support: Soporte al usuario
     sign_out: Salir
     beta_collab: Funciones Beta activadas
-    outcomes: Resultados
+    outcomes: Conclusiones
     theme: Tema
     light: Luz
     dark: Oscuro
@@ -662,7 +662,7 @@ es:
     discussion: 'Hilo:'
     comment: comentar en
     poll: 'sondeo:'
-    outcome: 'resultado:'
+    outcome: 'conclusión:'
     stance: 'votar:'
   notifications:
     header: Notificaciones
@@ -676,15 +676,15 @@ es:
       invitation_accepted: "%{actor} aceptó tu invitación a unirte a %{title}"
       membership_created: "%{actor} te ha invitado a unirte a %{title} en %{site_name}"
       membership_resent: "%{actor} te invitó a unirte a %{title} en %{site_name}"
-      membership_requested: "%{actor} solicitó unirse a %{title} "
+      membership_requested: "%{actor} solicitó unirse a %{title}"
       membership_request_approved: "%{actor} aprobó tu solicitud a unirte a %{title}"
       new_comment: "%{actor} comentó en: %{title}"
       new_coordinator: "%{actor} te hizo administrador de %{title}"
-      new_discussion: "*%{actor} comenzó un hilo: %{title}"
-      outcome_announced: "%{actor} compartió un %{poll_type} resultado: %{title}"
-      outcome_created: "%{actor} compartió un %{poll_type} resultado: %{title}"
-      outcome_updated: "%{actor} actualizado el %{poll_type} resultado: %{title}"
-      outcome_review_due: 'Es la hora de revisar el resultado: %{title}'
+      new_discussion: "%{actor} comenzó un hilo: %{title}"
+      outcome_announced: "%{actor} compartió la conclusión del %{poll_type}: %{title}"
+      outcome_created: "%{actor} compartió la conclusión del %{poll_type}: %{title}"
+      outcome_updated: "%{actor} actualizó la conclusión del %{poll_type}: %{title}"
+      outcome_review_due: 'Es la hora de revisar la conclusión: %{title}'
       poll_closed_by_user: "%{actor} cerró el %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} cierra en 24 horas: %{title}"
       poll_closing_soon_author: 'Tu %{poll_type} cierra en 24 horas: %{title}'
@@ -705,7 +705,7 @@ es:
       user_reminded: "%{actor} te está recordando que votes en %{title}"
       group_mentioned: "%{actor} mencionó al grupo en: %{title}"
       new_delegate: "%{actor} te nombró delegado con derecho a voto en %{title}"
-      poll_announced: 'Por favor, vote: %{title}'
+      poll_announced: 'Vota: %{title}'
     without_title:
       unknown_sender: Revise el correo electrónico del remitente no reconocido
       discussion_announced: "%{actor} te invitó al hilo"
@@ -719,10 +719,10 @@ es:
       membership_resent: "%{actor} te invitó a unirte a un grupo"
       membership_requested: "%{actor} solicitó unirse a "
       membership_request_approved: "%{actor} aprobó tu solicitud a unirte a %{title}"
-      outcome_announced: "%{actor} compartió %{poll_type} un resultado"
-      outcome_created: "%{actor} compartió %{poll_type} un resultado"
-      outcome_updated: "%{actor} actualizó un resultado"
-      outcome_review_due: Es la hora de revisar el %{poll_type} resultado
+      outcome_announced: "%{actor} compartió la conclusión del %{poll_type}"
+      outcome_created: "%{actor} compartió la conclusión del %{poll_type}"
+      outcome_updated: "%{actor} actualizó la conclusión"
+      outcome_review_due: Es la hora de revisar la conclusión del %{poll_type}
       poll_announced_wip: "%{actor} quiere tu feedback en un %{poll_type}"
       poll_closed_by_user: "%{actor} cerró el %{poll_type}"
       poll_closing_soon: "%{poll_type} cerrará en 24 horas"
@@ -747,6 +747,45 @@ es:
       poll_closing_soon: Ahora es un buen momento para votar, cambiar de opinión o animar a otros a participar.
       poll_closing_soon_author: Es posible que desee recordar a las personas que voten o extiendan la fecha límite.
       outcome_review_due: Considere comenzar una encuesta de comentarios o un nuevo hilo que invite a reflexionar sobre cómo se ha implementado la decisión.
+    email_subject:
+      unknown_sender: Revisar correo electrónico de remitente desconocido
+      comment_replied_to: "%{actor} te respondió en: %{title}"
+      discussion_announced: "%{title}"
+      discussion_edited: "%{actor} editó el contexto: %{title}"
+      discussion_closed: "%{actor} cerró el hilo: %{title}"
+      invitation_accepted: "%{actor} aceptó tu invitación para unirse a %{title}"
+      membership_created: "%{actor} te invitó a unirte a %{title} en %{site_name}"
+      membership_resent: "%{actor} te invitó a unirte a %{title} en %{site_name}"
+      membership_requested: "%{actor} solicitó unirse a %{title}"
+      membership_request_approved: "%{actor} aprobó tu solicitud para unirte a %{title}"
+      new_comment: "%{actor} comentó en: %{title}"
+      new_coordinator: "%{actor} te nombró administrador de %{title}"
+      new_delegate: "%{actor} te nombró delegado con derecho a voto en %{title}"
+      new_discussion: "%{title}"
+      outcome_announced: 'Conclusión de %{poll_type}: %{title}'
+      outcome_created: 'Conclusión de %{poll_type}: %{title}'
+      outcome_updated: 'Conclusión actualizada de %{poll_type}: %{title}'
+      outcome_review_due: 'Es hora de revisar la conclusión de: %{title}'
+      poll_announced: 'Voto: %{title}'
+      poll_closed_by_user: "%{actor} cerró la %{poll_type}: %{title}"
+      poll_closing_soon: "%{poll_type} cierra en 24 horas: %{title}"
+      poll_closing_soon_author: 'Tu encuesta %{poll_type} cierra en 24 horas: %{title}'
+      poll_created: 'Voto: %{title}'
+      poll_edited: "%{actor} actualizó el %{poll_type}: %{title}"
+      poll_expired: "%{poll_type} ha finalizado: %{title}"
+      poll_expired_author: 'Publicar una conclusión: %{title}'
+      poll_option_added: "%{actor} agregó opciones a %{title}"
+      poll_reopened: 'Votación extendida: %{title}'
+      poll_reminder: "%{actor} te recuerda que votes por %{title}"
+      poll_reminder_wip: "%{actor} te recuerda que dejes tu opinión: %{title}"
+      reaction_created: "%{actor} reaccionó %{reaction} a tu %{model} en %{title}"
+      stance_created: "%{actor} votó en: %{title}"
+      stance_updated: "%{actor} votó en: %{title}"
+      stance_created_option: "%{actor} votó %{option} en %{title}"
+      user_added_to_group: "%{actor} te agregó al grupo: %{title}"
+      user_mentioned: "%{actor} te mencionó en: %{title}"
+      group_mentioned: "%{actor} mencionó al grupo en: %{title}"
+      user_reminded: "%{actor} te recuerda que votes en: %{title}"
   discussion_fork_actions:
     helptext: Selecciona puntos que te gustaría mover a otro hilo.
     move: Mover

@@ -747,6 +747,45 @@ pl:
       poll_closing_soon: Teraz jest dobry czas na głosowanie, zmianę zdania lub zachęcenie innych do udziału.
       poll_closing_soon_author: Możesz przypomnieć ludziom o głosowaniu lub przedłużyć termin.
       outcome_review_due: Rozważ rozpoczęcie ankiety zwrotnej lub nowego wątku zapraszającego do refleksji na temat tego, jak decyzja została wdrożona.
+    email_subject:
+      unknown_sender: Przejrzyj wiadomość e-mail od nieznanego nadawcy
+      comment_replied_to: "%{actor} odpowiedział Ci w: %{title}"
+      discussion_announced: "%{tytuł}"
+      discussion_edited: "%{actor} edytował kontekst: %{title}"
+      discussion_closed: "%{actor} zamknął wątek: %{title}"
+      invitation_accepted: "%{actor} zaakceptował Twoje zaproszenie do dołączenia do %{title}"
+      membership_created: "%{actor} zaprosił Cię do dołączenia do %{title} na %{site_name}"
+      membership_resent: "%{actor} zaprosił Cię do dołączenia do %{title} na %{site_name}"
+      membership_requested: "%{actor} poprosił o dołączenie do %{title}"
+      membership_request_approved: "%{actor} zatwierdził Twoją prośbę o dołączenie do %{title}"
+      new_comment: "%{actor} skomentował w: %{title}"
+      new_coordinator: "%{actor} mianował Cię administratorem %{title}"
+      new_delegate: "%{actor} nadał Ci status delegata z prawem głosu w %{title}"
+      new_discussion: "%{tytuł}"
+      outcome_announced: 'Wynik %{poll_type}: %{title}'
+      outcome_created: 'Wynik %{poll_type}: %{title}'
+      outcome_updated: 'Zaktualizowano wynik %{poll_type}: %{title}'
+      outcome_review_due: 'Czas przejrzeć wynik: %{title}'
+      poll_announced: 'Głosuj: %{title}'
+      poll_closed_by_user: "%{actor} zamknął %{poll_type}: %{title}"
+      poll_closing_soon: "%{poll_type} zamyka się za 24 godziny: %{title}"
+      poll_closing_soon_author: 'Twoja ankieta %{poll_type} zostanie zamknięta za 24 godziny: %{title}'
+      poll_created: 'Głosuj: %{title}'
+      poll_edited: "%{actor} zaktualizował %{poll_type}: %{title}"
+      poll_expired: "%{poll_type} zostało zamknięte: %{title}"
+      poll_expired_author: 'Opublikuj wynik: %{title}'
+      poll_option_added: "%{actor} dodał opcje do %{title}"
+      poll_reopened: 'Głosowanie przedłużone: %{title}'
+      poll_reminder: "%{actor} przypomina o głosowaniu na %{title}"
+      poll_reminder_wip: "%{actor} przypomina Ci o możliwości wystawienia opinii: %{title}"
+      reaction_created: "%{actor} zareagował %{reaction} na Twój %{model} w %{title}"
+      stance_created: "%{actor} głosował w: %{title}"
+      stance_updated: "%{actor} głosował w: %{title}"
+      stance_created_option: "%{actor} zagłosował na %{option} w %{title}"
+      user_added_to_group: "%{actor} dodał Cię do grupy: %{title}"
+      user_mentioned: "%{actor} wspomniał o Tobie w: %{title}"
+      group_mentioned: "%{actor} wspomniał o grupie w: %{title}"
+      user_reminded: "%{actor} przypomina o oddaniu głosu w: %{title}"
   discussion_fork_actions:
     helptext: Wybierz elementy, które chcesz przenieść do innego wątku
     move: Przenieś

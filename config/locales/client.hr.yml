@@ -743,6 +743,45 @@ hr:
       poll_closing_soon: Sada je dobro vrijeme da glasate, promijenite mišljenje ili potaknete druge da sudjeluju.
       poll_closing_soon_author: Možete podsjetiti ljude da glasaju ili produžiti rok.
       outcome_review_due: Razmotrite pokretanje ankete s povratnim informacijama ili nove teme pozivajući na razmišljanje o tome kako je odluka provedena.
+    email_subject:
+      unknown_sender: Pregledajte e-poštu od nepoznatog pošiljatelja
+      comment_replied_to: "%{actor} vam je odgovorio/la u: %{title}"
+      discussion_announced: "%{titula}"
+      discussion_edited: "%{actor} je uredio/la kontekst: %{title}"
+      discussion_closed: "%{actor} je zatvorio temu: %{title}"
+      invitation_accepted: "%{actor} je prihvatio vaš poziv da se pridruži %{title}"
+      membership_created: "%{actor} vas je pozvao da se pridružite %{title} na %{site_name}"
+      membership_resent: "%{actor} vas je pozvao da se pridružite %{title} na %{site_name}"
+      membership_requested: "%{actor} je zatražio pridruživanje %{title}"
+      membership_request_approved: "%{actor} je odobrio vaš zahtjev za pridruživanje %{title}"
+      new_comment: "%{actor} je komentirao u: %{title}"
+      new_coordinator: "%{actor} vas je postavio za administratora %{title}"
+      new_delegate: "%{actor} vas je imenovao delegatom s pravom glasa u %{title}"
+      new_discussion: "%{titula}"
+      outcome_announced: 'Ishod %{poll_type}: %{title}'
+      outcome_created: 'Ishod %{poll_type}: %{title}'
+      outcome_updated: 'Rezultat %{poll_type} ažuriran: %{title}'
+      outcome_review_due: 'Vrijeme je da pregledamo ishod: %{title}'
+      poll_announced: 'Glas: %{title}'
+      poll_closed_by_user: "%{actor} je zatvorio %{poll_type}: %{title}"
+      poll_closing_soon: "%{poll_type} se zatvara za 24 sata: %{title}"
+      poll_closing_soon_author: 'Vaša anketa %{poll_type} zatvara se za 24 sata: %{title}'
+      poll_created: 'Glas: %{title}'
+      poll_edited: "%{actor} je ažurirao/la %{poll_type}: %{title}"
+      poll_expired: "%{poll_type} je zatvoren: %{title}"
+      poll_expired_author: 'Objavite rezultat: %{title}'
+      poll_option_added: "%{actor} je dodao opcije za %{title}"
+      poll_reopened: 'Glasanje produženo: %{title}'
+      poll_reminder: "%{actor} vas podsjeća da glasate za %{title}"
+      poll_reminder_wip: "%{actor} vas podsjeća da date povratne informacije: %{title}"
+      reaction_created: "%{actor} je reagirao %{reaction} na vaš %{model} u %{title}"
+      stance_created: "%{actor} je glasao za: %{title}"
+      stance_updated: "%{actor} je glasao za: %{title}"
+      stance_created_option: "%{actor} je glasao za %{option} u %{title}"
+      user_added_to_group: "%{actor} vas je dodao/la u grupu: %{title}"
+      user_mentioned: "%{actor} vas je spomenuo u: %{title}"
+      group_mentioned: "%{actor} je spomenuo grupu u: %{title}"
+      user_reminded: "%{actor} vas podsjeća da glasate u: %{title}"
   discussion_fork_actions:
     helptext: Odaberite stavke koje želite premjestiti u drugu nit
     move: Potez

@@ -743,6 +743,45 @@ ro:
       poll_closing_soon: Acum este un moment bun să votezi, să te răzgândești sau să încurajezi pe alții să participe.
       poll_closing_soon_author: Poate doriți să reamintiți oamenilor să voteze sau să prelungiți termenul.
       outcome_review_due: Luați în considerare începerea unui sondaj de feedback sau a unui nou thread care să invite la reflecții asupra modului în care a fost implementată decizia.
+    email_subject:
+      unknown_sender: Verificați e-mailul de la un expeditor necunoscut
+      comment_replied_to: "%{actor} ți-a răspuns în: %{title}"
+      discussion_announced: "%{titlu}"
+      discussion_edited: "%{actor} a editat contextul: %{title}"
+      discussion_closed: "%{actor} a închis firul de discuție: %{title}"
+      invitation_accepted: "%{actor} a acceptat invitația ta de a se alătura %{title}"
+      membership_created: "%{actor} te-a invitat să te alături lui %{title} pe %{site_name}"
+      membership_resent: "%{actor} te-a invitat să te alături lui %{title} pe %{site_name}"
+      membership_requested: "%{actor} a solicitat să se alăture lui %{title}"
+      membership_request_approved: "%{actor} a aprobat cererea ta de a te alătura lui %{title}"
+      new_comment: "%{actor} a comentat în: %{title}"
+      new_coordinator: "%{actor} te-a făcut administrator al site-ului %{title}"
+      new_delegate: "%{actor} te-a numit delegat cu drept de vot în %{title}"
+      new_discussion: "%{titlu}"
+      outcome_announced: 'Rezultatul %{poll_type}: %{title}'
+      outcome_created: 'Rezultatul %{poll_type}: %{title}'
+      outcome_updated: 'Rezultatul %{poll_type} a fost actualizat: %{title}'
+      outcome_review_due: 'E timpul să analizăm rezultatul: %{title}'
+      poll_announced: 'Vot: %{title}'
+      poll_closed_by_user: "%{actor} a închis %{poll_type}: %{title}"
+      poll_closing_soon: "%{poll_type} se închide în 24 de ore: %{title}"
+      poll_closing_soon_author: "%{poll_type} se închide în 24 de ore: %{title}"
+      poll_created: 'Vot: %{title}'
+      poll_edited: "%{actor} a actualizat %{poll_type}: %{title}"
+      poll_expired: "%{poll_type} s-a închis: %{title}"
+      poll_expired_author: 'Publică un rezultat: %{title}'
+      poll_option_added: "%{actor} a adăugat opțiuni la %{title}"
+      poll_reopened: 'Votarea a fost prelungită: %{title}'
+      poll_reminder: "%{actor} vă reamintește să votați pentru %{title}"
+      poll_reminder_wip: "%{actor} îți reamintește să oferi feedback: %{title}"
+      reaction_created: "%{actor} a reacționat %{reaction} la %{model}-ul tău în %{title}"
+      stance_created: "%{actor} a votat pentru: %{title}"
+      stance_updated: "%{actor} a votat pentru: %{title}"
+      stance_created_option: "%{actor} a votat %{option} în %{title}"
+      user_added_to_group: "%{actor} te-a adăugat la grup: %{title}"
+      user_mentioned: "%{actor} te-a menționat în: %{title}"
+      group_mentioned: "%{actor} a menționat grupul în: %{title}"
+      user_reminded: "%{actor} vă reamintește să votați pentru: %{title}"
   discussion_fork_actions:
     helptext: Selectați elementele pe care doriți să le mutați într-un alt subiect
     move: Mișcare

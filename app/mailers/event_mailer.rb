@@ -71,7 +71,7 @@ class EventMailer < BaseMailer
     subject_params = {
       title: @event.eventable.title,
       group_name: @event.eventable.title, # cope for old translations
-      poll_type: @poll && I18n.t("poll_types.#{@poll.poll_type}"),
+      poll_type: @poll && I18n.t("poll_types.#{@poll.poll_type}", locale: @recipient.locale),
       actor: @event.user.name,
       site_name: AppConfig.theme[:site_name]
     }
@@ -82,7 +82,7 @@ class EventMailer < BaseMailer
       locale: @recipient.locale,
       reply_to: reply_to_address_with_group_name(model: @event.eventable, user: @recipient),
       subject_prefix: group_name_prefix(@event),
-      subject_key: "notifications.with_title.#{@event_key}",
+      subject_key: "notifications.email_subject.#{@event_key}",
       subject_params: subject_params,
       subject_is_title: thread_kinds.include?(@event.kind),
       template_name: template_name

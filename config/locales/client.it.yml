@@ -755,6 +755,45 @@ it:
       poll_closing_soon: Ora è un buon momento per votare, cambiare idea o incoraggiare altri a partecipare.
       poll_closing_soon_author: Potresti voler ricordare alle persone di votare o prorogare la scadenza.
       outcome_review_due: Prendi in considerazione l'idea di avviare un sondaggio di feedback o un nuovo thread che inviti a riflettere su come è stata implementata la decisione.
+    email_subject:
+      unknown_sender: Controlla l'email da un mittente non riconosciuto
+      comment_replied_to: "%{actor} ti ha risposto in: %{title}"
+      discussion_announced: "%{title}"
+      discussion_edited: "%{actor} ha modificato il contesto: %{title}"
+      discussion_closed: "%{actor} ha chiuso la discussione: %{title}"
+      invitation_accepted: "%{actor} ha accettato il tuo invito a unirsi a %{title}"
+      membership_created: "%{actor} ti ha invitato a unirti a %{title} su %{site_name}"
+      membership_resent: "%{actor} ti ha invitato a unirti a %{title} su %{site_name}"
+      membership_requested: "%{actor} ha richiesto di unirsi a %{title}"
+      membership_request_approved: "%{actor} ha approvato la tua richiesta di adesione a %{title}"
+      new_comment: "%{actor} ha commentato in: %{title}"
+      new_coordinator: "%{actor} ti ha reso amministratore di %{title}"
+      new_delegate: "%{actor} ti ha nominato delegato con diritto di voto in %{title}"
+      new_discussion: "%{title}"
+      outcome_announced: 'Esito di %{poll_type}: %{title}'
+      outcome_created: 'Esito di %{poll_type}: %{title}'
+      outcome_updated: 'Esito di %{poll_type} aggiornato: %{title}'
+      outcome_review_due: 'È il momento di rivedere l''esito di: %{title}'
+      poll_announced: 'Vota: %{title}'
+      poll_closed_by_user: "%{actor} ha chiuso il %{poll_type}: %{title}"
+      poll_closing_soon: "%{poll_type} chiuderà tra 24 ore: %{title}"
+      poll_closing_soon_author: 'Il tuo %{poll_type} si chiuderà tra 24 ore: %{title}'
+      poll_created: 'Vota: %{title}'
+      poll_edited: "%{actor} ha aggiornato %{poll_type}: %{title}"
+      poll_expired: "%{poll_type} ha chiuso: %{title}"
+      poll_expired_author: 'Pubblica un risultato: %{title}'
+      poll_option_added: "%{actor} ha aggiunto opzioni a %{title}"
+      poll_reopened: 'Votazione estesa: %{title}'
+      poll_reminder: "%{actor} ti ricorda di votare su %{title}"
+      poll_reminder_wip: "%{actor} ti ricorda di fornire un feedback: %{title}"
+      reaction_created: "%{actor} ha reagito %{reaction} al tuo %{model} in %{title}"
+      stance_created: "%{actor} ha votato: %{title}"
+      stance_updated: "%{actor} ha votato: %{title}"
+      stance_created_option: "%{actor} ha votato %{option} in %{title}"
+      user_added_to_group: "%{actor} ti ha aggiunto al gruppo: %{title}"
+      user_mentioned: "%{actor} ti ha menzionato in: %{title}"
+      group_mentioned: "%{actor} ha menzionato il gruppo in: %{title}"
+      user_reminded: "%{actor} ti ricorda di votare: %{title}"
   discussion_fork_actions:
     helptext: Seleziona gli elementi da spostare in un altro thread
     move: Sposta

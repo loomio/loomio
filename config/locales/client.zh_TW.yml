@@ -753,6 +753,45 @@ zh_TW:
       poll_closing_soon: 現在是投票、變更您的心意或鼓勵他人參與的好時機。
       poll_closing_soon_author: 您可能希望提醒人們投票或延長截止日期。
       outcome_review_due: 請考慮開始回饋投票或新討論串，邀請人們對決策的進行方式反思。
+    email_subject:
+      unknown_sender: 請查看來自未知寄件者的電子郵件
+      comment_replied_to: "%{actor} 在 %{title} 中回覆了您。"
+      discussion_announced: "％{標題}"
+      discussion_edited: "%{actor} 編輯了上下文：%{title}"
+      discussion_closed: "%{actor} 關閉了主題：%{title}"
+      invitation_accepted: "%{actor} 接受了您的邀請，加入了 %{title}"
+      membership_created: "%{actor} 邀請您加入 %{title} on %{site_name}"
+      membership_resent: "%{actor} 邀請您加入 %{title} on %{site_name}"
+      membership_requested: "%{actor} 請求加入 %{title}"
+      membership_request_approved: "%{actor} 已批准您加入 %{title} 的請求"
+      new_comment: "%{actor} 評論於：%{title}"
+      new_coordinator: "%{actor} 將您設為 %{title} 的管理員"
+      new_delegate: "%{actor} 已將您指定為 %{title} 的代表，並賦予您投票權。"
+      new_discussion: "％{標題}"
+      outcome_announced: "%{poll_type} 結果：%{title}"
+      outcome_created: "%{poll_type} 結果：%{title}"
+      outcome_updated: "%{poll_type} 結果已更新：%{title}"
+      outcome_review_due: 是時候回顧一下結果了：%{title}
+      poll_announced: 投票：%{title}
+      poll_closed_by_user: "%{actor} 關閉了 %{poll_type}: %{title}"
+      poll_closing_soon: "%{poll_type} 將於 24 小時後結束：%{title}"
+      poll_closing_soon_author: 您的 %{poll_type} 投票將於 24 小時後結束：%{title}
+      poll_created: 投票：%{title}
+      poll_edited: "%{actor} 更新了 %{poll_type}: %{title}"
+      poll_expired: "%{poll_type} 已結束：%{title}"
+      poll_expired_author: 發布結果：%{title}
+      poll_option_added: "%{actor} 為 %{title} 新增了選項"
+      poll_reopened: 投票延長：%{title}
+      poll_reminder: "%{actor} 提醒您為 %{title} 投票"
+      poll_reminder_wip: "%{actor} 提醒您提供回饋：%{title}"
+      reaction_created: "%{actor} 對您的 %{model} 在 %{title} 中做出了 %{reaction} 的反應"
+      stance_created: "%{actor} 投票支持：%{title}"
+      stance_updated: "%{actor} 投票支持：%{title}"
+      stance_created_option: "%{actor} 在 %{title} 中投票支持 %{option}"
+      user_added_to_group: "%{actor} 將您加入了群組：%{title}"
+      user_mentioned: "%{actor} 在 %{title} 中提到了你"
+      group_mentioned: "%{actor} 在以下文章中提到了這個團體：%{title}"
+      user_reminded: "%{actor} 提醒您參與以下投票：%{title}"
   discussion_fork_actions:
     helptext: 選取您想要移動到其他討論串的項目
     move: 移動

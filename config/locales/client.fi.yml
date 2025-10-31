@@ -743,6 +743,45 @@ fi:
       poll_closing_soon: Nyt on hyvä aika äänestää, muuttaa mieltäsi tai kannustaa muita osallistumaan.
       poll_closing_soon_author: Haluat ehkä muistuttaa ihmisiä äänestämään tai pidentää määräaikaa.
       outcome_review_due: Harkitse palautekyselyn tai uuden ketjun aloittamista, joka kutsuu pohtimaan, miten päätös on toteutettu.
+    email_subject:
+      unknown_sender: Tarkista tuntemattoman lähettäjän sähköposti
+      comment_replied_to: "%{actor} vastasi sinulle viestissä: %{title}"
+      discussion_announced: "%{otsikko}"
+      discussion_edited: "%{actor} muokkasi kontekstia: %{title}"
+      discussion_closed: "%{actor} sulki ketjun: %{title}"
+      invitation_accepted: "%{actor} hyväksyi kutsusi liittyä mukaan joukkoon %{title}"
+      membership_created: "%{actor} kutsui sinut liittymään palveluun %{title} sivustolla %{site_name}"
+      membership_resent: "%{actor} kutsui sinut liittymään palveluun %{title} sivustolla %{site_name}"
+      membership_requested: "%{actor} pyysi liittymistä joukkoon %{title}"
+      membership_request_approved: "%{actor} hyväksyi pyyntösi liittyä %{title}-ryhmään"
+      new_comment: "%{actor} kommentoi kohdassa: %{title}"
+      new_coordinator: "%{actor} teki sinusta sivuston %{title} ylläpitäjän"
+      new_delegate: "%{actor} teki sinusta äänioikeutetun edustajan kokouksessa %{title}"
+      new_discussion: "%{otsikko}"
+      outcome_announced: "%{poll_type} -tulos: %{title}"
+      outcome_created: "%{poll_type} -tulos: %{title}"
+      outcome_updated: "%{poll_type} -tulos päivitetty: %{title}"
+      outcome_review_due: On aika tarkastella seuraavan kohteen %{title} tulosta.
+      poll_announced: 'Äänestys: %{title}'
+      poll_closed_by_user: "%{actor} sulki %{poll_type} -kyselyn: %{title}"
+      poll_closing_soon: "%{poll_type} sulkeutuu 24 tunnin kuluttua: %{title}"
+      poll_closing_soon_author: "%{poll_type} -kyselysi sulkeutuu 24 tunnin kuluttua: %{title}"
+      poll_created: 'Äänestys: %{title}'
+      poll_edited: "%{actor} päivitti %{poll_type}: %{title}"
+      poll_expired: "%{poll_type} on sulkeutunut: %{title}"
+      poll_expired_author: 'Julkaise tulos: %{title}'
+      poll_option_added: "%{actor} lisäsi vaihtoehtoja artikkeliin %{title}"
+      poll_reopened: 'Äänestystä jatkettu: %{title}'
+      poll_reminder: "%{actor} muistuttaa sinua äänestämään aiheesta %{title}"
+      poll_reminder_wip: "%{actor} muistuttaa sinua antamaan palautetta: %{title}"
+      reaction_created: "%{actor} reagoi %{reaction} malliisi %{model} videossa %{title}"
+      stance_created: "%{actor} äänesti: %{title}"
+      stance_updated: "%{actor} äänesti: %{title}"
+      stance_created_option: "%{actor} äänesti %{option} äänestyksessä %{title}"
+      user_added_to_group: "%{actor} lisäsi sinut ryhmään: %{title}"
+      user_mentioned: "%{actor} mainitsi sinut kohdassa: %{title}"
+      group_mentioned: "%{actor} mainitsi ryhmän kohdassa: %{title}"
+      user_reminded: "%{actor} muistuttaa sinua äänestämään vaalissa: %{title}"
   discussion_fork_actions:
     helptext: Valitse kohteet, jotka haluat siirtää toiseen viestiketjuun
     move: Liikkua

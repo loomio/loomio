@@ -743,6 +743,45 @@ da:
       poll_closing_soon: Nu er det et godt tidspunkt at stemme, ændre mening eller opfordre andre til at deltage.
       poll_closing_soon_author: Du vil måske gerne minde folk om at stemme eller forlænge fristen.
       outcome_review_due: Overvej at starte en feedback-afstemning eller en ny tråd, der inviterer til refleksioner over, hvordan beslutningen er blevet implementeret.
+    email_subject:
+      unknown_sender: Gennemgå e-mail fra ukendt afsender
+      comment_replied_to: "%{actor} svarede dig i: %{title}"
+      discussion_announced: "%{titel}"
+      discussion_edited: "%{actor} redigerede konteksten: %{title}"
+      discussion_closed: "%{actor} lukkede tråden: %{title}"
+      invitation_accepted: "%{actor} har accepteret din invitation til at blive medlem af %{title}"
+      membership_created: "%{actor} inviterede dig til at deltage i %{title} på %{site_name}"
+      membership_resent: "%{actor} inviterede dig til at deltage i %{title} på %{site_name}"
+      membership_requested: "%{actor} har anmodet om at blive medlem af %{title}"
+      membership_request_approved: "%{actor} godkendte din anmodning om at blive medlem af %{title}"
+      new_comment: "%{actor} kommenterede i: %{title}"
+      new_coordinator: "%{actor} har gjort dig til administrator for %{title}"
+      new_delegate: "%{actor} udnævnte dig til delegeret med stemmeret i %{title}"
+      new_discussion: "%{titel}"
+      outcome_announced: "%{poll_type} resultat: %{title}"
+      outcome_created: "%{poll_type} resultat: %{title}"
+      outcome_updated: "%{poll_type} resultat opdateret: %{title}"
+      outcome_review_due: 'Det er tid til at gennemgå resultatet af: %{title}'
+      poll_announced: 'Stemme: %{titel}'
+      poll_closed_by_user: "%{actor} lukkede %{poll_type}: %{title}"
+      poll_closing_soon: "%{poll_type} lukker om 24 timer: %{title}"
+      poll_closing_soon_author: 'Din %{poll_type} lukker om 24 timer: %{title}'
+      poll_created: 'Stemme: %{titel}'
+      poll_edited: "%{actor} opdaterede %{poll_type}: %{title}"
+      poll_expired: "%{poll_type} er lukket: %{title}"
+      poll_expired_author: 'Udgiv et resultat: %{title}'
+      poll_option_added: "%{actor} tilføjede muligheder til %{title}"
+      poll_reopened: 'Afstemning forlænget: %{title}'
+      poll_reminder: "%{actor} minder dig om at stemme på %{title}"
+      poll_reminder_wip: "%{actor} minder dig om at give feedback: %{title}"
+      reaction_created: "%{actor} reagerede %{reaction} på din %{model} i %{title}"
+      stance_created: "%{actor} stemte i: %{title}"
+      stance_updated: "%{actor} stemte i: %{title}"
+      stance_created_option: "%{actor} stemte %{option} i %{title}"
+      user_added_to_group: "%{actor} tilføjede dig til gruppen: %{title}"
+      user_mentioned: "%{actor} nævnte dig i: %{title}"
+      group_mentioned: "%{actor} nævnte gruppen i: %{title}"
+      user_reminded: "%{actor} minder dig om at stemme i: %{title}"
   discussion_fork_actions:
     helptext: Vælg emner, du vil flytte til en anden tråd
     move: Flyt

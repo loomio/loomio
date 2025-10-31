@@ -631,10 +631,10 @@ pt_BR:
     email_settings: Configurações de notificação
     help: Ajuda
     contact_site_name: Contato %{site_name}
-    contact_support: Contact support
+    contact_support: Contatar o suporte
     sign_out: Sair
     beta_collab: " \U0001F9EA Recursos beta ativados!"
-    outcomes: Resultados
+    outcomes: Conclusões
     theme: Tema
     light: Claro
     dark: Escuro
@@ -654,7 +654,7 @@ pt_BR:
     set_name_and_username: Definir nome e nome de usuário
     set_title: Configurar o título
     resend: Re-enviar convite
-    invitation_resent: Convide reenviado
+    invitation_resent: Convite reenviado
     make_coordinator: Tornar Admin
     demote_coordinator: Remover como admin
     remove_from:
@@ -670,7 +670,7 @@ pt_BR:
     discussion: 'conversa:'
     comment: comentar em
     poll: 'enquete:'
-    outcome: 'resultado:'
+    outcome: 'conclusão:'
     stance: 'voto:'
   notifications:
     header: Notificações
@@ -689,10 +689,10 @@ pt_BR:
       new_comment: "%{actor} comentou em: %{title}"
       new_coordinator: "%{actor} fez de você um administrador de %{title}"
       new_discussion: "%{actor} iniciou um tópico: %{title}"
-      outcome_announced: "%{actor} compartilhou o resultado da%{poll_type}: %{title}"
-      outcome_created: "%{actor} compartilhou o resultado da%{poll_type}: %{title}"
-      outcome_updated: "%{actor} atualizou o resultado do tipo de enquete %{poll_type} : %{title}"
-      outcome_review_due: 'É hora de rever o resultado de:  %{title}'
+      outcome_announced: "%{actor} compartilhou a conclusão da %{poll_type}: %{title}"
+      outcome_created: "%{actor} compartilhou a conclusão da %{poll_type}: %{title}"
+      outcome_updated: "%{actor} atualizou a conclusão da %{poll_type}: %{title}"
+      outcome_review_due: 'É hora de revisar a conclusão de: %{title}'
       poll_closed_by_user: "%{actor} fechou o%{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} fechando em 24 horas: %{title}"
       poll_closing_soon_author: 'Sua %{poll_type} será encerrado em 24 horas: %{title}'
@@ -727,10 +727,10 @@ pt_BR:
       membership_resent: "%{actor} convidou você para participar de um grupo"
       membership_requested: "%{actor} pediu para entrar no seu grupo"
       membership_request_approved: "%{actor} aprovou seu pedido de adesão %{title}"
-      outcome_announced: "%{actor} compartilhou um resultado %{poll_type}"
-      outcome_created: "%{actor} compartilhou um resultado %{poll_type}"
-      outcome_updated: "%{actor} atualizou o resultado"
-      outcome_review_due: É hora de revisar o resultado do %{poll_type}
+      outcome_announced: "%{actor} compartilhou a conclusão do %{poll_type}"
+      outcome_created: "%{actor} compartilhou a conclusão do %{poll_type}"
+      outcome_updated: "%{actor} atualizou a conclusão"
+      outcome_review_due: É hora de revisar a conclusão do %{poll_type}
       poll_announced_wip: "%{actor} quer seu feedback sobre um %{poll_type}"
       poll_closed_by_user: "%{actor} fechou o %{poll_type}"
       poll_closing_soon: "%{poll_type} fechando em 24 horas"
@@ -755,6 +755,45 @@ pt_BR:
       poll_closing_soon: Agora é um bom momento para votar, mudar de ideia ou encorajar outras pessoas a participar.
       poll_closing_soon_author: Você pode querer lembrar as pessoas de votar ou estender o prazo.
       outcome_review_due: Considere iniciar uma pesquisa de feedback ou um novo tópico convidando a reflexões sobre como a decisão foi implementada.
+    email_subject:
+      unknown_sender: Analisar e-mail de remetente desconhecido
+      comment_replied_to: "%{actor} respondeu a você em: %{title}"
+      discussion_announced: "%{title}"
+      discussion_edited: "%{actor} editou o contexto: %{title}"
+      discussion_closed: "%{actor} encerrou o tópico: %{title}"
+      invitation_accepted: "%{actor} aceitou seu convite para participar de %{title}"
+      membership_created: "%{actor} convidou você para participar do %{title} em %{site_name}"
+      membership_resent: "%{actor} convidou você para participar do %{title} em %{site_name}"
+      membership_requested: "%{actor} solicitou para participar de %{title}"
+      membership_request_approved: "%{actor} aprovou seu pedido para participar do %{title}"
+      new_comment: "%{actor} comentou em: %{title}"
+      new_coordinator: "%{actor} te nomeou administrador de %{title}"
+      new_delegate: "%{actor} nomeou você como delegado com direito a voto em %{title}"
+      new_discussion: "%{title}"
+      outcome_announced: 'Conclusão de %{poll_type}: %{title}'
+      outcome_created: 'Conclusão de %{poll_type}: %{title}'
+      outcome_updated: 'Conclusão de %{poll_type} atualizada: %{title}'
+      outcome_review_due: 'Chegou a hora de revisar a conclusão de: %{title}'
+      poll_announced: 'Voto: %{title}'
+      poll_closed_by_user: "%{actor} encerrou a %{poll_type}: %{title}"
+      poll_closing_soon: "%{poll_type} encerrando em 24 horas: %{title}"
+      poll_closing_soon_author: 'Sua enquete %{poll_type} será encerrada em 24 horas: %{title}'
+      poll_created: 'Voto: %{title}'
+      poll_edited: "%{actor} atualizou o %{poll_type}: %{title}"
+      poll_expired: "%{poll_type} foi encerrado: %{title}"
+      poll_expired_author: 'Publicar uma conclusão: %{title}'
+      poll_option_added: "%{actor} adicionou opções a %{title}"
+      poll_reopened: 'Votação prorrogada: %{title}'
+      poll_reminder: "%{actor} está te lembrando de votar em %{title}"
+      poll_reminder_wip: "%{actor} está te lembrando de dar feedback: %{title}"
+      reaction_created: "%{actor} reagiu %{reaction} ao seu %{model} em %{title}"
+      stance_created: "%{actor} votou em: %{title}"
+      stance_updated: "%{actor} votou em: %{title}"
+      stance_created_option: "%{actor} votou em %{option} em %{title}"
+      user_added_to_group: "%{actor} adicionou você ao grupo: %{title}"
+      user_mentioned: "%{actor} mencionou você em: %{title}"
+      group_mentioned: "%{actor} mencionou o grupo em: %{title}"
+      user_reminded: "%{actor} está te lembrando de votar em: %{title}"
   discussion_fork_actions:
     helptext: Selecione os ítems que você quer mudar para outra conversa
     move: Mover

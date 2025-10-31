@@ -747,6 +747,45 @@ nl_NL:
       poll_closing_soon: Dit is een goed moment om te stemmen, van gedachten te veranderen of anderen aan te moedigen om mee te doen.
       poll_closing_soon_author: Misschien wilt u mensen eraan herinneren om te stemmen of de deadline verlengen.
       outcome_review_due: Overweeg een feedback-enquête te starten of een nieuwe discussielijn te starten waarin u kunt nadenken over hoe de beslissing is geïmplementeerd.
+    email_subject:
+      unknown_sender: E-mail van onbekende afzender bekijken
+      comment_replied_to: "%{actor} heeft op je gereageerd in: %{title}"
+      discussion_announced: "%{titel}"
+      discussion_edited: "%{actor} heeft de context bewerkt: %{title}"
+      discussion_closed: "%{actor} heeft de thread gesloten: %{title}"
+      invitation_accepted: "%{actor} heeft je uitnodiging om lid te worden van %{title} geaccepteerd"
+      membership_created: "%{actor} heeft je uitgenodigd om lid te worden van %{title} op %{site_name}"
+      membership_resent: "%{actor} heeft je uitgenodigd om lid te worden van %{title} op %{site_name}"
+      membership_requested: "%{actor} heeft verzocht om lid te worden van %{title}"
+      membership_request_approved: "%{actor} heeft uw verzoek om lid te worden van %{title} goedgekeurd"
+      new_comment: "%{actor} heeft gereageerd op: %{title}"
+      new_coordinator: "%{actor} heeft je tot beheerder van %{title} gemaakt"
+      new_delegate: "%{actor} heeft je tot afgevaardigde met stemrecht gemaakt in %{title}"
+      new_discussion: "%{titel}"
+      outcome_announced: "%{poll_type} resultaat: %{title}"
+      outcome_created: "%{poll_type} resultaat: %{title}"
+      outcome_updated: "%{poll_type} uitkomst bijgewerkt: %{title}"
+      outcome_review_due: 'Het is tijd om de uitkomst van: %{title} te bekijken'
+      poll_announced: 'Stem: %{title}'
+      poll_closed_by_user: "%{actor} heeft de %{poll_type} gesloten: %{title}"
+      poll_closing_soon: "%{poll_type} sluit over 24 uur: %{title}"
+      poll_closing_soon_author: 'Uw %{poll_type} sluit over 24 uur: %{title}'
+      poll_created: 'Stem: %{title}'
+      poll_edited: "%{actor} heeft de %{poll_type} bijgewerkt: %{title}"
+      poll_expired: "%{poll_type} is gesloten: %{title}"
+      poll_expired_author: 'Publiceer een uitkomst: %{title}'
+      poll_option_added: "%{actor} heeft opties toegevoegd aan %{title}"
+      poll_reopened: 'Stemming verlengd: %{title}'
+      poll_reminder: "%{actor} herinnert je eraan om te stemmen op %{title}"
+      poll_reminder_wip: "%{actor} herinnert je eraan om feedback te geven: %{title}"
+      reaction_created: "%{actor} heeft %{reaction} gereageerd op uw %{model} in %{title}"
+      stance_created: "%{actor} heeft gestemd op: %{title}"
+      stance_updated: "%{actor} heeft gestemd op: %{title}"
+      stance_created_option: "%{actor} stemde %{option} in %{title}"
+      user_added_to_group: "%{actor} heeft je toegevoegd aan de groep: %{title}"
+      user_mentioned: "%{actor} heeft je genoemd in: %{title}"
+      group_mentioned: "%{actor} noemde de groep in: %{title}"
+      user_reminded: "%{actor} herinnert je eraan om te stemmen op: %{title}"
   discussion_fork_actions:
     helptext: Selecteer items die je wilt verplaatsen naar een ander bord
     move: Verplaatsen

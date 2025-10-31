@@ -743,6 +743,45 @@ ru:
       poll_closing_soon: Сейчас хорошее время, чтобы проголосовать, передумать или призвать других к участию.
       poll_closing_soon_author: Возможно, вы захотите напомнить людям о необходимости проголосовать или продлить срок.
       outcome_review_due: Подумайте о том, чтобы начать опрос обратной связи или создать новую тему, предлагающую поразмышлять о том, как было реализовано это решение.
+    email_subject:
+      unknown_sender: Просмотреть электронное письмо от неизвестного отправителя
+      comment_replied_to: "%{actor} ответил вам в: %{title}"
+      discussion_announced: "%{заголовок}"
+      discussion_edited: "%{actor} отредактировал контекст: %{title}"
+      discussion_closed: "%{actor} закрыл тему: %{title}"
+      invitation_accepted: "%{actor} принял ваше приглашение присоединиться к %{title}"
+      membership_created: "%{actor} пригласил вас присоединиться к %{title} на %{site_name}"
+      membership_resent: "%{actor} пригласил вас присоединиться к %{title} на %{site_name}"
+      membership_requested: "%{actor} запросил присоединение к %{title}"
+      membership_request_approved: "%{actor} одобрил ваш запрос на присоединение к %{title}"
+      new_comment: "%{actor} прокомментировал: %{title}"
+      new_coordinator: "%{actor} сделал вас администратором %{title}"
+      new_delegate: "%{actor} сделал вас делегатом с правом голоса в %{title}"
+      new_discussion: "%{заголовок}"
+      outcome_announced: "%{poll_type} результат: %{title}"
+      outcome_created: "%{poll_type} результат: %{title}"
+      outcome_updated: 'Результат %{poll_type} обновлен: %{title}'
+      outcome_review_due: 'Пришло время подвести итоги: %{title}'
+      poll_announced: 'Голосование: %{title}'
+      poll_closed_by_user: "%{actor} закрыл %{poll_type}: %{title}"
+      poll_closing_soon: "%{poll_type} закрывается через 24 часа: %{title}"
+      poll_closing_soon_author: 'Ваш %{poll_type} закрывается через 24 часа: %{title}'
+      poll_created: 'Голосование: %{title}'
+      poll_edited: "%{actor} обновил %{poll_type}: %{title}"
+      poll_expired: "%{poll_type} закрыт: %{title}"
+      poll_expired_author: 'Опубликовать результат: %{title}'
+      poll_option_added: "%{actor} добавил опции в %{title}"
+      poll_reopened: 'Голосование продлено: %{title}'
+      poll_reminder: "%{actor} напоминает вам проголосовать за %{title}"
+      poll_reminder_wip: "%{actor} напоминает вам оставить отзыв: %{title}"
+      reaction_created: "%{actor} отреагировал %{reaction} на вашу %{model} в %{title}"
+      stance_created: "%{actor} проголосовал за: %{title}"
+      stance_updated: "%{actor} проголосовал за: %{title}"
+      stance_created_option: "%{actor} проголосовал за %{option} в %{title}"
+      user_added_to_group: "%{actor} добавил вас в группу: %{title}"
+      user_mentioned: "%{actor} упомянул вас в: %{title}"
+      group_mentioned: "%{actor} упомянул группу в: %{title}"
+      user_reminded: "%{actor} напоминает вам проголосовать за: %{title}"
   discussion_fork_actions:
     helptext: Выберите элементы, которые вы хотите переместить в другую тему.
     move: Переместить
