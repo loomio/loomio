@@ -705,7 +705,7 @@ nl_NL:
       user_reminded: "%{actor} herinnert je er aan om te stemmen in : %{title}"
       group_mentioned: "%{actor} noemde de groep in: %{title}"
       new_delegate: "%{actor} heeft je tot afgevaardigde met stemrecht gemaakt in %{title}"
-      poll_announced: 'Stem alstublieft: %{title}'
+      poll_announced: 'Stem: %{title}'
     without_title:
       unknown_sender: Controleer de e-mail van een onbekende afzender
       discussion_announced: "%{actor} heeft je uitgenodigd voor een thread"
@@ -719,8 +719,8 @@ nl_NL:
       membership_resent: "%{actor} heeft je uitgenodigd om lid te worden van een groep"
       membership_requested: "%{actor} verzocht om lid te worden van uw groep"
       membership_request_approved: "%{actor} keurde uw verzoek om lid te worden van %{title} goed"
-      outcome_announced: "%{actor} heeft een %{poll_type} resultaat gedeeld"
-      outcome_created: "%{actor} heeft een %{poll_type} resultaat gedeeld"
+      outcome_announced: "%{actor} heeft een %{poll_type} uitkomst gedeeld"
+      outcome_created: "%{actor} heeft een %{poll_type} uitkomst gedeeld"
       outcome_updated: "%{actor} heeft de uitkomst bijgewerkt"
       outcome_review_due: Het is tijd om de uitkomst van %{poll_type} te bekijken
       poll_announced_wip: "%{actor} wil uw feedback over een %{poll_type}"
@@ -750,7 +750,7 @@ nl_NL:
     email_subject:
       unknown_sender: E-mail van onbekende afzender bekijken
       comment_replied_to: "%{actor} heeft op je gereageerd in: %{title}"
-      discussion_announced: "%{titel}"
+      discussion_announced: "%{title}"
       discussion_edited: "%{actor} heeft de context bewerkt: %{title}"
       discussion_closed: "%{actor} heeft de thread gesloten: %{title}"
       invitation_accepted: "%{actor} heeft je uitnodiging om lid te worden van %{title} geaccepteerd"
@@ -761,11 +761,11 @@ nl_NL:
       new_comment: "%{actor} heeft gereageerd op: %{title}"
       new_coordinator: "%{actor} heeft je tot beheerder van %{title} gemaakt"
       new_delegate: "%{actor} heeft je tot afgevaardigde met stemrecht gemaakt in %{title}"
-      new_discussion: "%{titel}"
-      outcome_announced: "%{poll_type} resultaat: %{title}"
-      outcome_created: "%{poll_type} resultaat: %{title}"
+      new_discussion: "%{title}"
+      outcome_announced: "%{poll_type} uitkomst: %{title}"
+      outcome_created: "%{poll_type} uitkomst: %{title}"
       outcome_updated: "%{poll_type} uitkomst bijgewerkt: %{title}"
-      outcome_review_due: 'Het is tijd om de uitkomst van: %{title} te bekijken'
+      outcome_review_due: 'Het is tijd om de uitkomst van %{title} te bekijken'
       poll_announced: 'Stem: %{title}'
       poll_closed_by_user: "%{actor} heeft de %{poll_type} gesloten: %{title}"
       poll_closing_soon: "%{poll_type} sluit over 24 uur: %{title}"

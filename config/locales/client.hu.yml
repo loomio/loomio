@@ -717,10 +717,10 @@ hu:
       membership_resent: "%{actor} meghívott egy csoportba"
       membership_requested: "%{actor} csatlakozást kért a csoportodhoz"
       membership_request_approved: "%{actor} jóváhagyta a csatlakozási kérelmedet a %{title} csoporthoz"
-      outcome_announced: "%{actor} megosztott egy %{poll_type} eredményt"
-      outcome_created: "%{actor} megosztott egy %{poll_type} eredményt"
-      outcome_updated: "%{actor} frissítette az eredményt"
-      outcome_review_due: Ideje áttekinteni a %{poll_type} eredményét
+      outcome_announced: "%{actor} megosztott egy %{poll_type} következtetést"
+      outcome_created: "%{actor} megosztott egy %{poll_type} következtetést"
+      outcome_updated: "%{actor} frissítette a következtetést"
+      outcome_review_due: Ideje áttekinteni a %{poll_type} következtetését
       poll_announced_wip: "%{actor} visszajelzést kér egy %{poll_type}-ról"
       poll_closed_by_user: "%{actor} lezárta a %{poll_type}"
       poll_closing_soon: "%{poll_type} 24 órán belül bezár"
@@ -728,7 +728,7 @@ hu:
       poll_created: "%{actor} elindított egy %{poll_type}"
       poll_edited: "%{actor} frissítette a %{poll_type}"
       poll_expired: "%{poll_type} lezárult"
-      poll_expired_author: Oszd meg a %{poll_type} eredményét
+      poll_expired_author: Oszd meg a %{poll_type} következtetését
       poll_option_added: "%{actor} opciókat adott a %{poll_type}-hoz"
       poll_reopened: "%{actor} újra megnyitotta a %{poll_type}"
       poll_reminder: "%{actor} emlékeztet arra, hogy szavazzon"
@@ -748,7 +748,7 @@ hu:
     email_subject:
       unknown_sender: Ismeretlen feladótól érkező e-mail áttekintése
       comment_replied_to: "%{actor} válaszolt neked ebben a részben: %{title}"
-      discussion_announced: "%{cím}"
+      discussion_announced: "%{title}"
       discussion_edited: "%{actor} szerkesztette a következő kontextust: %{title}"
       discussion_closed: "%{actor} lezárta a következő szálat: %{title}"
       invitation_accepted: "%{actor} elfogadta a meghívásodat, hogy csatlakozzon a(z) %{title} csapathoz"
@@ -759,11 +759,11 @@ hu:
       new_comment: "%{actor} hozzászólása a következőhöz: %{title}"
       new_coordinator: "%{actor} adminisztrátorrá tett a(z) %{title} webhelyen"
       new_delegate: "%{actor} szavazati joggal rendelkező delegálttá tett téged a(z) %{title} ülésen"
-      new_discussion: "%{cím}"
-      outcome_announced: "%{poll_type} eredmény: %{title}"
-      outcome_created: "%{poll_type} eredmény: %{title}"
-      outcome_updated: "%{poll_type} eredmény frissítve: %{title}"
-      outcome_review_due: 'Ideje áttekinteni a következő eredményét: %{title}'
+      new_discussion: "%{title}"
+      outcome_announced: "%{poll_type} következtetés: %{title}"
+      outcome_created: "%{poll_type} következtetés: %{title}"
+      outcome_updated: "%{poll_type} következtetés frissítve: %{title}"
+      outcome_review_due: 'Ideje áttekinteni a következő következtetését: %{title}'
       poll_announced: 'Szavazat: %{title}'
       poll_closed_by_user: "%{actor} lezárta a %{poll_type}-t: %{title}"
       poll_closing_soon: "%{poll_type} 24 órán belül zárul: %{title}"
@@ -771,7 +771,7 @@ hu:
       poll_created: 'Szavazat: %{title}'
       poll_edited: "%{actor} frissítette a(z) %{poll_type} elemet: %{title}"
       poll_expired: "%{poll_type} lezárult: %{title}"
-      poll_expired_author: 'Eredmény közzététele: %{title}'
+      poll_expired_author: 'Következtetés közzététele: %{title}'
       poll_option_added: "%{actor} opciókat adott hozzá a(z) %{title} bejegyzéshez"
       poll_reopened: 'A szavazás meghosszabbítva: %{title}'
       poll_reminder: "%{actor} emlékeztet, hogy szavazz a(z) %{title} bejegyzésre"

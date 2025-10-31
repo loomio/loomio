@@ -719,10 +719,10 @@ ca:
       membership_resent: "%{actor} t'ha convidat a unir-te a un grup"
       membership_requested: "%{actor} ha sol·licitat unir-se al teu grup"
       membership_request_approved: "%{actor} ha aprovat la teva sol·licitud per unir-te a %{title}"
-      outcome_announced: "%{actor} ha compartit un resultat de %{poll_type}"
-      outcome_created: "%{actor} ha compartit un resultat de %{poll_type}"
-      outcome_updated: "%{actor} ha actualitzat el resultat"
-      outcome_review_due: És hora de revisar el resultat %{poll_type}
+      outcome_announced: "%{actor} ha compartit la conclusió de %{poll_type}"
+      outcome_created: "%{actor} ha compartit la conclusió de %{poll_type}"
+      outcome_updated: "%{actor} ha actualitzat la conclusió"
+      outcome_review_due: És hora de revisar la conclusió de %{poll_type}
       poll_announced_wip: "%{actor} vol els teus comentaris sobre un %{poll_type}"
       poll_closed_by_user: "%{actor} ha tancat el %{poll_type}"
       poll_closing_soon: "%{poll_type} tancant en 24 hores"
@@ -730,7 +730,7 @@ ca:
       poll_created: "%{actor} va iniciar un %{poll_type}"
       poll_edited: "%{actor} ha actualitzat el %{poll_type}"
       poll_expired: "%{poll_type} s'ha tancat"
-      poll_expired_author: Comparteix el resultat del teu %{poll_type}
+      poll_expired_author: Comparteix la conclusió del teu %{poll_type}
       poll_option_added: "%{actor} ha afegit opcions a %{poll_type}"
       poll_reopened: "%{actor} ha reobert el %{poll_type}"
       poll_reminder: "%{actor} us recorda que heu de votar"
@@ -762,10 +762,10 @@ ca:
       new_coordinator: "%{actor} t'ha fet administrador de %{title}"
       new_delegate: "%{actor} t'ha fet delegat amb dret a vot a %{title}"
       new_discussion: "%{title}"
-      outcome_announced: 'Resultat de %{poll_type}: %{title}'
-      outcome_created: 'Resultat de %{poll_type}: %{title}'
-      outcome_updated: 'Resultat de %{poll_type} actualitzat: %{title}'
-      outcome_review_due: 'És hora de revisar el resultat de: %{title}'
+      outcome_announced: 'Conclusió de %{poll_type}: %{title}'
+      outcome_created: 'Conclusió de %{poll_type}: %{title}'
+      outcome_updated: 'Conclusió de %{poll_type} actualitzada: %{title}'
+      outcome_review_due: 'És hora de revisar la conclusió de: %{title}'
       poll_announced: 'Vot: %{title}'
       poll_closed_by_user: "%{actor} ha tancat la %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} tanca en 24 hores: %{title}"
@@ -773,7 +773,7 @@ ca:
       poll_created: 'Vot: %{title}'
       poll_edited: "%{actor} ha actualitzat el %{poll_type}: %{title}"
       poll_expired: "%{poll_type} ha tancat: %{title}"
-      poll_expired_author: 'Publica un resultat: %{title}'
+      poll_expired_author: 'Publica una conclusió: %{title}'
       poll_option_added: "%{actor} ha afegit opcions a %{title}"
       poll_reopened: 'Votació prorrogada: %{title}'
       poll_reminder: "%{actor} et recorda que votes per %{title}"

@@ -697,7 +697,7 @@ zh_TW:
       poll_created: "%{actor} 啟動了一個 %{poll_type}：%{title}"
       poll_edited: "%{actor} 更新了 %{poll_type}：%{title}"
       poll_expired: "%{poll_type} 已關閉：%{title}"
-      poll_expired_author: 分享了您的 %{poll_type} 結果：%{title}
+      poll_expired_author: 分享了您的 %{poll_type} 結論：%{title}
       poll_option_added: "%{actor} 新增了選項至 %{title}"
       poll_reopened: "%{actor} 重新開啟了 %{poll_type}：%{title}"
       poll_reminder: "%{actor} 正在提醒您要在 %{title} 投票"
@@ -725,10 +725,10 @@ zh_TW:
       membership_resent: "%{actor}邀請您加入群組"
       membership_requested: "%{actor} 請求加入您的群組"
       membership_request_approved: "%{actor} 接受您加入 %{title} 的請求"
-      outcome_announced: "%{actor} 分享了 %{poll_type} 結果"
-      outcome_created: "%{actor} 分享了 %{poll_type} 結果"
-      outcome_updated: "%{actor} 更新了結果"
-      outcome_review_due: 是時候審閱 %{poll_type} 結果了
+      outcome_announced: "%{actor} 分享了 %{poll_type} 結論"
+      outcome_created: "%{actor} 分享了 %{poll_type} 結論"
+      outcome_updated: "%{actor} 更新了結論"
+      outcome_review_due: 是時候審閱 %{poll_type} 結論了
       poll_announced_wip: "%{actor} 想要您在 %{poll_type} 提供回饋"
       poll_closed_by_user: "%{actor} 關閉了 %{poll_type}"
       poll_closing_soon: "%{poll_type} 將於24小時關閉"
@@ -736,7 +736,7 @@ zh_TW:
       poll_created: "%{actor} 開始了 %{poll_type}"
       poll_edited: "%{actor} 更新了 %{poll_type}"
       poll_expired: "%{poll_type} 已關閉"
-      poll_expired_author: 分享了您的 %{poll_type} 結果
+      poll_expired_author: 分享了您的 %{poll_type} 結論
       poll_option_added: "%{actor} 新增了選項至 %{poll_type}"
       poll_reopened: "%{actor} 重新開啟了 %{poll_type}"
       poll_reminder: "%{actor} 正在提醒您投票"
@@ -756,7 +756,7 @@ zh_TW:
     email_subject:
       unknown_sender: 請查看來自未知寄件者的電子郵件
       comment_replied_to: "%{actor} 在 %{title} 中回覆了您。"
-      discussion_announced: "％{標題}"
+      discussion_announced: "%{title}"
       discussion_edited: "%{actor} 編輯了上下文：%{title}"
       discussion_closed: "%{actor} 關閉了主題：%{title}"
       invitation_accepted: "%{actor} 接受了您的邀請，加入了 %{title}"
@@ -767,11 +767,11 @@ zh_TW:
       new_comment: "%{actor} 評論於：%{title}"
       new_coordinator: "%{actor} 將您設為 %{title} 的管理員"
       new_delegate: "%{actor} 已將您指定為 %{title} 的代表，並賦予您投票權。"
-      new_discussion: "％{標題}"
-      outcome_announced: "%{poll_type} 結果：%{title}"
-      outcome_created: "%{poll_type} 結果：%{title}"
-      outcome_updated: "%{poll_type} 結果已更新：%{title}"
-      outcome_review_due: 是時候回顧一下結果了：%{title}
+      new_discussion: "%{title}"
+      outcome_announced: "%{poll_type} 結論：%{title}"
+      outcome_created: "%{poll_type} 結論：%{title}"
+      outcome_updated: "%{poll_type} 結論已更新：%{title}"
+      outcome_review_due: 是時候回顧一下結論了：%{title}
       poll_announced: 投票：%{title}
       poll_closed_by_user: "%{actor} 關閉了 %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} 將於 24 小時後結束：%{title}"
@@ -779,7 +779,7 @@ zh_TW:
       poll_created: 投票：%{title}
       poll_edited: "%{actor} 更新了 %{poll_type}: %{title}"
       poll_expired: "%{poll_type} 已結束：%{title}"
-      poll_expired_author: 發布結果：%{title}
+      poll_expired_author: 發布結論：%{title}
       poll_option_added: "%{actor} 為 %{title} 新增了選項"
       poll_reopened: 投票延長：%{title}
       poll_reminder: "%{actor} 提醒您為 %{title} 投票"

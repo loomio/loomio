@@ -720,10 +720,10 @@ uk:
       membership_resent: "%{actor} запросив вас приєднатися до групи"
       membership_requested: "%{actor} надіслав запит на приєднання до вашої групи"
       membership_request_approved: "%{actor} схвалив ваш запит на приєднання до %{title}"
-      outcome_announced: "%{actor} поділився результатом %{poll_type}"
-      outcome_created: "%{actor} поділився результатом %{poll_type}"
-      outcome_updated: "%{actor} оновив результат"
-      outcome_review_due: Настав час переглянути результат %{poll_type}
+      outcome_announced: "%{actor} поділився висновком %{poll_type}"
+      outcome_created: "%{actor} поділився висновком %{poll_type}"
+      outcome_updated: "%{actor} оновив висновок"
+      outcome_review_due: Настав час переглянути висновок %{poll_type}
       poll_announced_wip: "%{actor} хоче отримати ваш відгук про %{poll_type}"
       poll_closed_by_user: "%{actor} закрив %{poll_type}"
       poll_closing_soon: "%{poll_type} закривається через 24 години"
@@ -731,7 +731,7 @@ uk:
       poll_created: "%{actor} розпочав %{poll_type}"
       poll_edited: "%{actor} оновив %{poll_type}"
       poll_expired: "%{poll_type} закрито"
-      poll_expired_author: Поділіться результатом вашого %{poll_type}
+      poll_expired_author: Поділіться висновком вашого %{poll_type}
       poll_option_added: "%{actor} додав параметри до %{poll_type}"
       poll_reopened: "%{actor} повторно відкрив %{poll_type}"
       poll_reminder: "%{actor} нагадує вам проголосувати"
