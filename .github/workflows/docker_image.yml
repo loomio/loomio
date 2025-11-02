@@ -41,7 +41,7 @@ jobs:
         uses: docker/metadata-action@v4
         if: env.HAVESECRET != null
         with:
-          images: loomio/loomio
+          images: etiennechabert/loomio
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
