@@ -6,6 +6,7 @@ This guide will help you publish your Loomio fork's Docker images to Docker Hub.
 
 - A Docker Hub account (create one at https://hub.docker.com if you don't have one)
 - Admin access to this GitHub repository
+- **GitHub Actions must be enabled** (see ENABLE_ACTIONS.md if not already done)
 
 ## Step 1: Create a Docker Hub Repository
 
@@ -18,7 +19,7 @@ This guide will help you publish your Loomio fork's Docker images to Docker Hub.
    - **Description**: Your fork of Loomio with ARM64 support
 5. Click "Create"
 
-Your repository will be at: `your-dockerhub-username/loomio`
+Your repository will be at: `wizmoisa/loomio`
 
 ## Step 2: Generate Docker Hub Access Token
 
@@ -41,7 +42,7 @@ Add your Docker Hub credentials to GitHub:
 3. Click "New repository secret"
 4. Add the first secret:
    - **Name**: `DOCKER_USERNAME`
-   - **Value**: Your Docker Hub username
+   - **Value**: `wizmoisa`
    - Click "Add secret"
 5. Click "New repository secret" again
 6. Add the second secret:
@@ -55,17 +56,19 @@ If you want to publish to your own Docker Hub account instead of `loomio/loomio`
 
 Open `.github/workflows/docker_image.yml` and change line 36:
 
-```yaml
-# Change this:
-images: loomio/loomio
+**Note**: This is already configured to use `wizmoisa/loomio`. If you want to change it, edit line 44 in `.github/workflows/docker_image.yml`.
 
-# To this:
-images: your-dockerhub-username/loomio
-```
+## Step 5: Enable GitHub Actions (If Not Already Enabled)
 
-Replace `your-dockerhub-username` with your actual Docker Hub username.
+⚠️ **Important**: GitHub Actions are disabled by default on forked repositories.
 
-## Step 5: Push to GitHub
+See **ENABLE_ACTIONS.md** for detailed instructions on how to enable them.
+
+Quick steps:
+1. Go to: https://github.com/etiennechabert/loomio/actions
+2. Click "I understand my workflows, go ahead and enable them"
+
+## Step 6: Push to GitHub
 
 Push your changes to trigger the workflow:
 
@@ -73,7 +76,7 @@ Push your changes to trigger the workflow:
 git push origin master
 ```
 
-## Step 6: Verify the Build
+## Step 7: Verify the Build
 
 1. Go to your GitHub repository
 2. Click the "Actions" tab
@@ -81,16 +84,16 @@ git push origin master
 4. Click on it to see the build progress
 5. Wait for it to complete (this may take 10-30 minutes for multi-platform builds)
 
-## Step 7: Use Your Images
+## Step 8: Use Your Images
 
 Once the build completes, your images will be available on Docker Hub:
 
 ```bash
 # Pull your image (Docker will automatically select the right architecture)
-docker pull your-dockerhub-username/loomio:master
+docker pull wizmoisa/loomio:master
 
 # Or use a specific tag
-docker pull your-dockerhub-username/loomio:latest
+docker pull wizmoisa/loomio:latest
 ```
 
 ## Image Tags

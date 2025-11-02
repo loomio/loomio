@@ -32,7 +32,7 @@ The existing Dockerfile is already compatible with ARM64:
 Once the GitHub Actions workflow runs, the multi-platform images will be automatically available on Docker Hub. Docker will automatically pull the correct architecture for your system:
 
 ```bash
-docker pull etiennechabert/loomio:latest
+docker pull wizmoisa/loomio:latest
 ```
 
 On ARM64 systems (Apple Silicon Macs, AWS Graviton, etc.), this will pull the ARM64 image.
@@ -45,7 +45,7 @@ On AMD64 systems, this will pull the AMD64 image.
 For local development on your current architecture:
 
 ```bash
-docker build -t etiennechabert/loomio:local .
+docker build -t wizmoisa/loomio:local .
 ```
 
 #### Multi-Platform Build
@@ -72,7 +72,7 @@ docker buildx create --name multiplatform-builder --use
 # Build for both platforms
 docker buildx build \
   --platform linux/amd64,linux/arm64 \
-  --tag etiennechabert/loomio:latest \
+  --tag wizmoisa/loomio:latest \
   --push \
   .
 ```
@@ -91,7 +91,7 @@ docker buildx build \
 To verify which architecture your image is running:
 
 ```bash
-docker run --rm etiennechabert/loomio:latest uname -m
+docker run --rm wizmoisa/loomio:latest uname -m
 ```
 
 This will output:
@@ -115,7 +115,7 @@ Docker Buildx cannot load multi-platform images directly into the local Docker d
 1. Push to a registry and pull from there
 2. Build for a single platform using `--load`:
    ```bash
-   docker buildx build --platform linux/amd64 --load -t etiennechabert/loomio:local .
+   docker buildx build --platform linux/amd64 --load -t wizmoisa/loomio:local .
    ```
 
 ## CI/CD Pipeline

@@ -26,7 +26,7 @@ docker buildx inspect --bootstrap
 
 # Get the image tag from command line argument or use 'latest'
 TAG=${1:-latest}
-IMAGE_NAME="etiennechabert/loomio:${TAG}"
+IMAGE_NAME="wizmoisa/loomio:${TAG}"
 
 echo -e "\n${GREEN}Building image: ${IMAGE_NAME}${NC}"
 echo -e "${GREEN}This may take a while...${NC}\n"
