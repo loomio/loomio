@@ -748,7 +748,7 @@ GEM
     unicode-display_width (3.1.4)
       unicode-emoji (~> 4.0, >= 4.0.4)
     unicode-emoji (4.0.4)
-    uri (1.0.4)
+    uri (1.1.0)
     useragent (0.16.11)
     uuidtools (3.0.0)
     victor (0.5.0)
@@ -865,7 +865,7 @@ DEPENDENCIES
   terminal-table
   twitter-text!
   tzinfo-data
-  uri (= 1.0.4)
+  uri (= 1.1.0)
   uuidtools
   victor
   video_info
