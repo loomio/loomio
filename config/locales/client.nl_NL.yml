@@ -705,7 +705,7 @@ nl_NL:
       user_reminded: "%{actor} herinnert je er aan om te stemmen in : %{title}"
       group_mentioned: "%{actor} noemde de groep in: %{title}"
       new_delegate: "%{actor} heeft je tot afgevaardigde met stemrecht gemaakt in %{title}"
-      poll_announced: 'Stem: %{title}'
+      poll_announced: "%{actor} heeft je uitgenodigd om te stemmen: %{title}"
     without_title:
       unknown_sender: Controleer de e-mail van een onbekende afzender
       discussion_announced: "%{actor} heeft je uitgenodigd voor een thread"
@@ -765,8 +765,7 @@ nl_NL:
       outcome_announced: "%{poll_type} uitkomst: %{title}"
       outcome_created: "%{poll_type} uitkomst: %{title}"
       outcome_updated: "%{poll_type} uitkomst bijgewerkt: %{title}"
-      outcome_review_due: 'Het is tijd om de uitkomst van %{title} te bekijken'
-      poll_announced: 'Stem: %{title}'
+      outcome_review_due: Het is tijd om de uitkomst van %{title} te bekijken
       poll_closed_by_user: "%{actor} heeft de %{poll_type} gesloten: %{title}"
       poll_closing_soon: "%{poll_type} sluit over 24 uur: %{title}"
       poll_closing_soon_author: 'Uw %{poll_type} sluit over 24 uur: %{title}'
@@ -786,6 +785,7 @@ nl_NL:
       user_mentioned: "%{actor} heeft je genoemd in: %{title}"
       group_mentioned: "%{actor} noemde de groep in: %{title}"
       user_reminded: "%{actor} herinnert je eraan om te stemmen op: %{title}"
+      poll_announced: 'Stem: %{title}'
   discussion_fork_actions:
     helptext: Selecteer items die je wilt verplaatsen naar een ander bord
     move: Verplaatsen

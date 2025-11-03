@@ -701,7 +701,7 @@ he:
       user_reminded: "%{actor} מזכיר לך להצביע ב:%{title}"
       group_mentioned: "%{actor} הזכיר את הקבוצה ב: %{title}"
       new_delegate: "%{actor} הפך אותך לנציג עם זכויות הצבעה ב-%{title}"
-      poll_announced: 'אנא הצביעו: %{title}'
+      poll_announced: "%{actor} הזמין אותך להצביע: %{title}"
     without_title:
       unknown_sender: אנא עיין באימייל משולח לא מזוהה
       discussion_announced: "%{actor} הזמין אותך לשרשור"
@@ -746,7 +746,7 @@ he:
     email_subject:
       unknown_sender: סקירת אימייל משולח לא מזוהה
       comment_replied_to: "%{actor} ענה לך ב: %{title}"
-      discussion_announced: "%{כּוֹתֶרֶת}"
+      discussion_announced: "%{title}"
       discussion_edited: "%{actor} ערך את ההקשר: %{title}"
       discussion_closed: "%{actor} סגר את השרשור: %{title}"
       invitation_accepted: "%{actor} קיבל את הזמנתך להצטרף ל-%{title}"
@@ -757,12 +757,11 @@ he:
       new_comment: "%{actor} הגיב ב: %{title}"
       new_coordinator: "%{actor} הפך אותך למנהל של %{title}"
       new_delegate: "%{actor} מינה אותך לנציג עם זכות הצבעה ב-%{title}"
-      new_discussion: "%{כּוֹתֶרֶת}"
+      new_discussion: "%{title}"
       outcome_announced: 'תוצאה %{poll_type}: %{title}'
       outcome_created: 'תוצאה %{poll_type}: %{title}'
       outcome_updated: 'תוצאות %{poll_type} עודכנו: %{title}'
       outcome_review_due: 'הגיע הזמן לבחון את התוצאה של: %{title}'
-      poll_announced: 'הצבעה: %{title}'
       poll_closed_by_user: "%{actor} סגר את %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} נסגר בעוד 24 שעות: %{title}"
       poll_closing_soon_author: "%{poll_type} שלך נסגר בעוד 24 שעות: %{title}"
@@ -782,6 +781,7 @@ he:
       user_mentioned: "%{actor} הזכיר אותך ב: %{title}"
       group_mentioned: "%{actor} הזכיר את הקבוצה ב: %{title}"
       user_reminded: "%{actor} מזכיר לך להצביע ב: %{title}"
+      poll_announced: 'הצבעה: %{title}'
   discussion_fork_actions:
     helptext: בחר פריטים שתרצה להעביר לשרשור אחר
     move: העבר

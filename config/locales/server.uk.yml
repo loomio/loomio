@@ -284,7 +284,6 @@ uk:
         Якщо проблеми з підключенням повторюються - напишіть у відповідь на цей лист щоб зв'язатися зі службою підтримки.
     by_who: користувачем %{person}
     reply_to_this_discussion: Відповісти в цьому обговоренні
-    loomio_app_description: "%{site_name} – це інструмент для прийняття рішень для спільних організацій"
     view_group: Переглянути групу
     to_join_group:
       subject: "%{member} запросив(ла) вас долучитись до %{group_name} на %{site_name}"
@@ -323,6 +322,7 @@ uk:
       subject: "%{who} зробив запит на приєднання до %{which_group}"
       view_group: Тут ви можете підтвердити або відхилити запит
       button_text: Переглянути запит
+    loomio_app_description: Місце, де організації можуть спільно приймати рішення.
   announcement_count_emails: "%{count} листів"
   email_actions:
     unfollowed_discussion: Ви вимкнули сповіщення електронною поштою для цієї теми.

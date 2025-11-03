@@ -706,7 +706,7 @@ uk:
       user_reminded: "%{actor} нагадує вам щодо голосування: %{title}"
       group_mentioned: "%{actor} згадав групу в: %{title}"
       new_delegate: "%{actor} зробив вас делегатом із правом голосу в %{title}"
-      poll_announced: 'Будь ласка, проголосуйте: %{title}'
+      poll_announced: "%{actor} запросив вас проголосувати: %{title}"
     without_title:
       unknown_sender: Будь ласка, перегляньте електронний лист від нерозпізнаного відправника
       discussion_announced: "%{actor} запросив вас до ланцюжка"
@@ -751,7 +751,7 @@ uk:
     email_subject:
       unknown_sender: Переглянути електронний лист від невідомого відправника
       comment_replied_to: "%{actor} відповів вам у: %{title}"
-      discussion_announced: "%{назва}"
+      discussion_announced: "%{title}"
       discussion_edited: "%{actor} відредагував контекст: %{title}"
       discussion_closed: "%{actor} закрив тему: %{title}"
       invitation_accepted: "%{actor} прийняв ваше запрошення приєднатися до %{title}"
@@ -762,12 +762,11 @@ uk:
       new_comment: "%{actor} прокоментував у: %{title}"
       new_coordinator: "%{actor} зробив вас адміністратором %{title}"
       new_delegate: "%{actor} зробив вас делегатом з правом голосу в %{title}"
-      new_discussion: "%{назва}"
+      new_discussion: "%{title}"
       outcome_announced: 'Результат %{poll_type}: %{title}'
       outcome_created: 'Результат %{poll_type}: %{title}'
       outcome_updated: 'Результат %{poll_type} оновлено: %{title}'
       outcome_review_due: 'Час переглянути результат: %{title}'
-      poll_announced: 'Голосувати: %{title}'
       poll_closed_by_user: "%{actor} закрив %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} закривається через 24 години: %{title}"
       poll_closing_soon_author: 'Ваш %{poll_type} закривається через 24 години: %{title}'
@@ -787,6 +786,7 @@ uk:
       user_mentioned: "%{actor} згадав вас у: %{title}"
       group_mentioned: "%{actor} згадав групу в: %{title}"
       user_reminded: "%{actor} нагадує вам проголосувати: %{title}"
+      poll_announced: 'Голосувати: %{title}'
   discussion_fork_actions:
     helptext: Оберіть елементи які ви хочете перенести в іншу гілку
     move: Перемістити

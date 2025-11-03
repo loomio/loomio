@@ -75,10 +75,34 @@ namespace :loomio do
     end
   end
 
+  task check_placeholder_consistency: :environment do
+    %w[server client].each do |source_name|
+      source = YAML.load_file("config/locales/#{source_name}.en.yml")['en']
+      source_paths = list_paths(source, [])
+
+      AppConfig.locales['supported'].each do |locale|
+        foreign = YAML.load_file("config/locales/#{source_name}.#{locale}.yml")[locale]
+
+        source_paths.each do |path|
+          source_string  = (source.dig(*path.split('.')) || "").to_s.strip
+          foreign_string = (foreign.dig(*path.split('.')) || "").to_s.strip
+          next if foreign_string.blank?
+
+          src_names = source_string.scan(/\%\{([a-zA-Z0-9_]+)\}/).flatten.sort.uniq
+          fr_names  = foreign_string.scan(/\%\{([a-zA-Z0-9_]+)\}/).flatten.sort.uniq
+
+          if src_names != fr_names
+            puts "config/locales/#{source_name}.#{locale}.yml #{path}"
+          end
+        end
+      end
+    end
+  end
+
   task delete_translations: :environment do
     # I edit this each time I want to use it.. rake task arguments are terrible
     unwanted = %w[
-      app_update
+      loomio_app_description
     ]
 
     %w[client server].each do |source_name|

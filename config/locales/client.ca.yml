@@ -705,7 +705,7 @@ ca:
       user_reminded: "%{actor} us recorda que voteu a: %{title}"
       group_mentioned: "%{actor} ha mencionat el grup a: %{title}"
       new_delegate: "%{actor} et va convertir en delegat amb dret de vot a %{title}"
-      poll_announced: 'Si us plau, voteu: %{title}'
+      poll_announced: "%{actor} t'ha convidat a votar: %{title}"
     without_title:
       unknown_sender: Reviseu el correu electrònic d'un remitent no reconegut
       discussion_announced: "%{actor} t'ha convidat a un fil"
@@ -766,7 +766,6 @@ ca:
       outcome_created: 'Conclusió de %{poll_type}: %{title}'
       outcome_updated: 'Conclusió de %{poll_type} actualitzada: %{title}'
       outcome_review_due: 'És hora de revisar la conclusió de: %{title}'
-      poll_announced: 'Vot: %{title}'
       poll_closed_by_user: "%{actor} ha tancat la %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} tanca en 24 hores: %{title}"
       poll_closing_soon_author: 'El vostre %{poll_type} es tanca en 24 hores: %{title}'
@@ -786,6 +785,7 @@ ca:
       user_mentioned: "%{actor} t'ha mencionat a: %{title}"
       group_mentioned: "%{actor} ha esmentat el grup a: %{title}"
       user_reminded: "%{actor} et recorda que votes a: %{title}"
+      poll_announced: 'Vot: %{title}'
   discussion_fork_actions:
     helptext: Seleccioneu els elements que desitgeu moure a un altre fil
     move: Mou
@@ -1955,7 +1955,6 @@ ca:
     lets_start_a_thread: Comencem un fil. Feu clic a "Nou fil" per continuar.
   members_panel:
     bot: Bot
-    no_results: No s'ha trobat membres per %{name} 
     everyone: Tothom
     all: Tots
     sort: Classifica
@@ -1987,6 +1986,7 @@ ca:
     delegate: Delegat
     delegate_popover: Un delegat és un membre del grup amb dret de vot
     delegates: Delegats
+    no_results: No s'han trobat membres
   polls_panel:
     new_poll: Nova enquesta
     any_type: Tots els tipus

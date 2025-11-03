@@ -274,7 +274,6 @@ ca:
       signoff: Heu rebut això perquè el vostre correu electrònic s'ha introduït al formulari "He oblidat la contrasenya" a %{hostname}. Tanmateix, la vostra contrasenya no es canviarà fins que seguiu l'enllaç anterior i ompliu el formulari. Si continueu tenint problemes per iniciar la sessió, responeu a aquest correu electrònic per contactar amb una persona d'assistència.
     by_who: per %{person}
     reply_to_this_discussion: Responeu a aquesta discussió
-    loomio_app_description: Un lloc segur i fàcil d'utilitzar perquè les organitzacions prenguin decisions juntes.
     view_group: Mostra el grup
     to_join_group:
       subject: "%{member} t'ha convidat a unir-te a %{group_name} a %{site_name}"
@@ -313,6 +312,7 @@ ca:
       subject: "%{who} ha demanat unir-se a %{which_group}"
       view_group: Pots aprovar o denegar la sol·licitud aquí
       button_text: Veure sol·licitud
+    loomio_app_description: Un espai on les organitzacions puguin prendre decisions conjuntament.
   announcement_count_emails: "%{count} correus electrònics"
   email_actions:
     unfollowed_discussion: Heu desactivat els correus electrònics per al fil.

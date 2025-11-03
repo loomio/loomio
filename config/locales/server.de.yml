@@ -298,7 +298,6 @@ de:
         Solltest du weiterhin Probleme beim Einloggen haben, dann antworte auf diese E-Mail um mit jemandem von unserem Support Kontakt aufzunehmen - auf Englisch bitte.
     by_who: von %{person}
     reply_to_this_discussion: Direkt auf diese Diskussion antworten
-    loomio_app_description: "%{site_name} ist ein Entscheidungstool für kollaborative Organisationen"
     view_group: Gruppe ansehen
     to_join_group:
       subject: "%{member} hat dich eingeladen %{group_name} auf %{site_name} beizutreten"
@@ -337,6 +336,7 @@ de:
       subject: "%{who} bittet darum %{which_group} beitreten zu dürfen."
       view_group: Du kannst die Anfrage hier annehmen oder ablehnen
       button_text: Anfrage ansehen
+    loomio_app_description: Ein Ort, an dem Organisationen gemeinsam Entscheidungen treffen können.
   announcement_count_emails: "%{count} E-mails"
   email_actions:
     unfollowed_discussion: Du hast E-Mail-Benachrichtigungen für diese Diskussion deaktiviert.

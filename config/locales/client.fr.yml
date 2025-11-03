@@ -713,7 +713,7 @@ fr:
       user_reminded: "%{actor} attend votre vote sur: %{title}"
       group_mentioned: "%{actor} a mentionné le groupe dans : %{title}"
       new_delegate: "%{actor} vous a nommé délégué avec droit de vote dans %{title}"
-      poll_announced: 'Veuillez voter : %{title}'
+      poll_announced: "%{actor} vous a invité à voter : %{title}"
     without_title:
       unknown_sender: Veuillez examiner les e-mails provenant d'un expéditeur non reconnu
       discussion_announced: "%{actor} vous a invité à la discussion"
@@ -770,20 +770,19 @@ fr:
       new_coordinator: "%{actor} vous a nommé administrateur de %{title}"
       new_delegate: "%{actor} vous a nommé délégué avec droit de vote dans %{title}"
       new_discussion: "%{title}"
-      outcome_announced: "Conclusion de %{poll_type} : %{title}"
-      outcome_created: "Conclusion de %{poll_type} : %{title}"
-      outcome_updated: "Conclusion de %{poll_type} mise à jour : %{title}"
-      outcome_review_due: "Il est temps d'examiner la conclusion de : %{title}"
-      poll_announced: "Vote : %{title}"
+      outcome_announced: 'Conclusion de %{poll_type} : %{title}'
+      outcome_created: 'Conclusion de %{poll_type} : %{title}'
+      outcome_updated: 'Conclusion de %{poll_type} mise à jour : %{title}'
+      outcome_review_due: 'Il est temps d''examiner la conclusion de : %{title}'
       poll_closed_by_user: "%{actor} a clôturé le %{poll_type} : %{title}"
       poll_closing_soon: "%{poll_type} se termine dans 24 heures : %{title}"
-      poll_closing_soon_author: "Votre sondage %{poll_type} se termine dans 24 heures : %{title}"
-      poll_created: "Vote : %{title}"
+      poll_closing_soon_author: 'Votre sondage %{poll_type} se termine dans 24 heures : %{title}'
+      poll_created: 'Vote : %{title}'
       poll_edited: "%{actor} a mis à jour le %{poll_type} : %{title}"
       poll_expired: "%{poll_type} est clos : %{title}"
-      poll_expired_author: "Publier une conclusion : %{title}"
+      poll_expired_author: 'Publier une conclusion : %{title}'
       poll_option_added: "%{actor} a ajouté des options à %{title}"
-      poll_reopened: "Vote prolongé : %{title}"
+      poll_reopened: 'Vote prolongé : %{title}'
       poll_reminder: "%{actor} vous rappelle de voter pour %{title}"
       poll_reminder_wip: "%{actor} vous rappelle de donner votre avis : %{title}"
       reaction_created: "%{actor} a réagi %{reaction} à votre %{model} dans %{title}"
@@ -794,6 +793,7 @@ fr:
       user_mentioned: "%{actor} vous a mentionné dans : %{title}"
       group_mentioned: "%{actor} a mentionné le groupe dans : %{title}"
       user_reminded: "%{actor} vous rappelle de voter pour : %{title}"
+      poll_announced: 'Vote : %{title}'
   discussion_fork_actions:
     helptext: 'Sélectionnez les éléments que vous souhaitez placer dans d''autres discussions '
     move: Déplacer
@@ -2483,7 +2483,7 @@ fr:
     total_polls: Total des sondages
     threads_with_polls: Discussions avec des sondages
     polls_with_outcomes: Sondages avec conclusions
-    actions_per_interval: Actions par %{intervalle}
+    actions_per_interval: Actions par %{interval}
     actions_per_user: Actions par utilisateur
     users_per_country: Utilisateurs par pays
     actions_per_country: Actions par pays
@@ -2669,11 +2669,11 @@ fr:
     default_duration_in_days_hint: Combien de jours les gens auront-ils pour voter ?
     define_minimum_and_maxmimum_score: Définir les scores minimum et maximum qu'un électeur peut donner à une option
     how_many_points_does_each_voter_have_to_allocate: Combien de points chaque électeur doit-il attribuer ?
-    anonymous_voting_description: Afficher les votes et leurs motifs, mais pas les personnes qui les ont exprimés. Cette option ne peut pas être modifiée après le lancement du sondage.
     vote_reason_description: Demandez aux gens de partager leurs raisons lorsqu’ils votent ou de fournir des informations supplémentaires.
     hide_results_description: Si vous souhaitez que les gens votent sans voir comment les autres ont voté, vous pouvez masquer les résultats.
     process_helptext: Nommez et décrivez le processus utilisé pour exécuter ce sondage.
     reminder_helptext: Envoyez une notification « Clôture prochaine » 24 heures avant la date limite. Cela peut stimuler la participation et donner l'occasion aux participants de reconsidérer leur position.
+    anonymous_voting_description: Afficher les votes et leurs motifs, mais pas l'identité des votants. Ceci ne peut plus être modifié une fois le sondage %{poll_type} lancé.
   poll_receipts_page:
     verify_participants: Vérifier les participants
     see_votes_if_quorum_reached: Si le vote est clos et que le quorum est atteint, vous verrez qui a voté.

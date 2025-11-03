@@ -319,9 +319,9 @@ es:
   merge_accounts:
     modal:
       title: Fusionar cuentas
-      helptext: Puedes fusionar la cuenta bajo <strong>%{sourceEmail}</strong>en eso de <strong>%{targetEmail}</strong>. Clica Verificar y se enviará un email de verificación a %{emailmeta} para comenzar el proceso.
       submit: Verificar
       flash: Email de verificación enviado!
+      helptext: Puedes fusionar la cuenta de <strong>%{sourceEmail}</strong> con la de <strong>%{targetEmail}</strong> . Haz clic en Verificar y se enviará un correo electrónico de verificación a %{targetEmail} para iniciar el proceso.
     email_taken: Lo sentimos, este email ya está asociado con otro usuario. ¿Este email es el tuyo?
     find_out_more: Descubre más
     placeholder_modal_text: |
@@ -705,7 +705,7 @@ es:
       user_reminded: "%{actor} te está recordando que votes en %{title}"
       group_mentioned: "%{actor} mencionó al grupo en: %{title}"
       new_delegate: "%{actor} te nombró delegado con derecho a voto en %{title}"
-      poll_announced: 'Vota: %{title}'
+      poll_announced: "%{actor} te invitó a votar: %{title}"
     without_title:
       unknown_sender: Revise el correo electrónico del remitente no reconocido
       discussion_announced: "%{actor} te invitó al hilo"
@@ -766,7 +766,6 @@ es:
       outcome_created: 'Conclusión de %{poll_type}: %{title}'
       outcome_updated: 'Conclusión actualizada de %{poll_type}: %{title}'
       outcome_review_due: 'Es hora de revisar la conclusión de: %{title}'
-      poll_announced: 'Voto: %{title}'
       poll_closed_by_user: "%{actor} cerró la %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} cierra en 24 horas: %{title}"
       poll_closing_soon_author: 'Tu encuesta %{poll_type} cierra en 24 horas: %{title}'
@@ -786,6 +785,7 @@ es:
       user_mentioned: "%{actor} te mencionó en: %{title}"
       group_mentioned: "%{actor} mencionó al grupo en: %{title}"
       user_reminded: "%{actor} te recuerda que votes en: %{title}"
+      poll_announced: 'Voto: %{title}'
   discussion_fork_actions:
     helptext: Selecciona puntos que te gustaría mover a otro hilo.
     move: Mover

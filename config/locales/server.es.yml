@@ -290,7 +290,6 @@ es:
         Si continúas teniendo problemas para acceder a tu cuenta, responde a este email para contactar nuestro equipo de soporte técnico.
     by_who: por %{person}
     reply_to_this_discussion: Contestar a esta discusión
-    loomio_app_description: "%{site_name} es una herramienta de toma de decisiones para organizaciones colaborativas"
     view_group: Ver grupo
     to_join_group:
       subject: "%{member} te ha invitado a unirte a %{group_name} en %{site_name}"
@@ -329,6 +328,7 @@ es:
       subject: "%{who} solicitó el acceso a %{which_group}"
       view_group: Puedes aceptar o denegar la solicitud aquí
       button_text: Ver solicitudes
+    loomio_app_description: Un espacio para que las organizaciones tomen decisiones en conjunto.
   announcement_count_emails: "%{count} email"
   email_actions:
     unfollowed_discussion: 'Has desactivado los emails para este hilo '

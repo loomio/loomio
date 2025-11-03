@@ -701,7 +701,7 @@ hr:
       user_reminded: "%{actor} vas podsjeća da glasate u: %{title}"
       group_mentioned: "%{actor} je spomenuo grupu u: %{title}"
       new_delegate: "%{actor} postavio vas je za delegata s pravom glasa u %{title}"
-      poll_announced: 'Molimo glasajte: %{title}'
+      poll_announced: "%{actor} vas je pozvao/la da glasate: %{title}"
     without_title:
       unknown_sender: Pregledajte e-poštu neprepoznatog pošiljatelja
       discussion_announced: "%{actor} vas je pozvao u nit"
@@ -746,7 +746,7 @@ hr:
     email_subject:
       unknown_sender: Pregledajte e-poštu od nepoznatog pošiljatelja
       comment_replied_to: "%{actor} vam je odgovorio/la u: %{title}"
-      discussion_announced: "%{titula}"
+      discussion_announced: "%{title}"
       discussion_edited: "%{actor} je uredio/la kontekst: %{title}"
       discussion_closed: "%{actor} je zatvorio temu: %{title}"
       invitation_accepted: "%{actor} je prihvatio vaš poziv da se pridruži %{title}"
@@ -757,12 +757,11 @@ hr:
       new_comment: "%{actor} je komentirao u: %{title}"
       new_coordinator: "%{actor} vas je postavio za administratora %{title}"
       new_delegate: "%{actor} vas je imenovao delegatom s pravom glasa u %{title}"
-      new_discussion: "%{titula}"
+      new_discussion: "%{title}"
       outcome_announced: 'Ishod %{poll_type}: %{title}'
       outcome_created: 'Ishod %{poll_type}: %{title}'
       outcome_updated: 'Rezultat %{poll_type} ažuriran: %{title}'
       outcome_review_due: 'Vrijeme je da pregledamo ishod: %{title}'
-      poll_announced: 'Glas: %{title}'
       poll_closed_by_user: "%{actor} je zatvorio %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} se zatvara za 24 sata: %{title}"
       poll_closing_soon_author: 'Vaša anketa %{poll_type} zatvara se za 24 sata: %{title}'
@@ -782,6 +781,7 @@ hr:
       user_mentioned: "%{actor} vas je spomenuo u: %{title}"
       group_mentioned: "%{actor} je spomenuo grupu u: %{title}"
       user_reminded: "%{actor} vas podsjeća da glasate u: %{title}"
+      poll_announced: 'Glas: %{title}'
   discussion_fork_actions:
     helptext: Odaberite stavke koje želite premjestiti u drugu nit
     move: Potez

@@ -283,7 +283,6 @@ it:
       signoff: Hai ricevuto questo perché la tua email è stata inserita nel modulo "Password dimenticata" su %{hostname}. Tuttavia, la tua password non verrà modificata fino a quando non segui il link sopra e completi il modulo. Se continui ad avere problemi di accesso, rispondi a questa email per contattare una persona dell'assistenza.
     by_who: da %{person}
     reply_to_this_discussion: Rispondi a questa discussione
-    loomio_app_description: "%{site_name} è uno strumento decisionale per organizzazioni collaborative"
     view_group: Vedi gruppo
     to_join_group:
       subject: "%{member} ti ha invitato ad unirti al gruppo %{group_name}sul sito %{site_name}"
@@ -322,6 +321,7 @@ it:
       subject: "%{who} ha richiesto di entrare in %{which_group}"
       view_group: Puoi approvare o rifiutare la richiesta qui
       button_text: Visualizza richiesta
+    loomio_app_description: Un luogo in cui le organizzazioni possono prendere decisioni insieme.
   announcement_count_emails: "%{count} email"
   email_actions:
     unfollowed_discussion: Hai disattivato le email per il thread.

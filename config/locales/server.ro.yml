@@ -272,7 +272,6 @@ ro:
       signoff: Ați primit acest lucru deoarece e-mailul dvs. a fost introdus în formularul „Am uitat parola” de pe %{hostname}. Cu toate acestea, parola dvs. nu va fi schimbată până când veți urma linkul de mai sus și completați formularul. Dacă întâmpinați în continuare probleme la conectare, răspundeți la acest e-mail pentru a contacta o persoană de asistență.
     by_who: de catre %{person}
     reply_to_this_discussion: Raspunde acestei discutii
-    loomio_app_description: Un loc sigur și ușor de utilizat pentru ca organizațiile să ia decizii împreună.
     view_group: Vizualizeaza grupul
     to_join_group:
       subject: "%{member} te-a invitat sa intri in %{group_name} pe %{site_name}"
@@ -311,6 +310,7 @@ ro:
       subject: "%{who} a cerut sa intre in %{which_group}"
       view_group: Aici poti aproba sau nu cererea
       button_text: Vizualizeaza cerere
+    loomio_app_description: Un loc în care organizațiile pot lua decizii împreună.
   announcement_count_emails: "%{count} e-mailuri"
   email_actions:
     unfollowed_discussion: Ați dezactivat e-mailurile pentru fir.

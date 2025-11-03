@@ -296,7 +296,6 @@ fr:
         Après quoi, si vous ne parvenez toujours pas à vous connecter, répondez à ce courriel pour contacter une personne de notre équipe support.
     by_who: par %{person}
     reply_to_this_discussion: Répondre à cette discussion
-    loomio_app_description: "%{site_name} est un outil d’aide à la décision pour les organisations collaboratives"
     view_group: Voir le groupe
     to_join_group:
       subject: "%{member} vous a invité·e à rejoindre le groupe %{group_name} sur %{site_name}"
@@ -335,6 +334,7 @@ fr:
       subject: "%{who} a demandé à rejoindre %{which_group}"
       view_group: Vous pouvez accepter ou rejeter cette demande
       button_text: Voir la demande
+    loomio_app_description: Un lieu où les organisations peuvent prendre des décisions ensemble.
   announcement_count_emails: "%{count} courriels"
   email_actions:
     unfollowed_discussion: Vous avez désactivé les notifications pour cette discussion.

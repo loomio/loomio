@@ -701,7 +701,7 @@ ru:
       user_reminded: "%{actor} напоминает, чтобы вы проголосовали за: %{title}"
       group_mentioned: "%{actor} упомянул группу в: %{title}"
       new_delegate: "%{actor} сделал вас делегатом с правом голоса в %{title}"
-      poll_announced: 'Пожалуйста, проголосуйте: %{title}'
+      poll_announced: "%{actor} пригласил вас проголосовать: %{title}"
     without_title:
       unknown_sender: Пожалуйста, просмотрите письмо от неизвестного отправителя
       discussion_announced: "%{actor} пригласил вас в тред"
@@ -746,7 +746,7 @@ ru:
     email_subject:
       unknown_sender: Просмотреть электронное письмо от неизвестного отправителя
       comment_replied_to: "%{actor} ответил вам в: %{title}"
-      discussion_announced: "%{заголовок}"
+      discussion_announced: "%{title}"
       discussion_edited: "%{actor} отредактировал контекст: %{title}"
       discussion_closed: "%{actor} закрыл тему: %{title}"
       invitation_accepted: "%{actor} принял ваше приглашение присоединиться к %{title}"
@@ -757,12 +757,11 @@ ru:
       new_comment: "%{actor} прокомментировал: %{title}"
       new_coordinator: "%{actor} сделал вас администратором %{title}"
       new_delegate: "%{actor} сделал вас делегатом с правом голоса в %{title}"
-      new_discussion: "%{заголовок}"
+      new_discussion: "%{title}"
       outcome_announced: "%{poll_type} результат: %{title}"
       outcome_created: "%{poll_type} результат: %{title}"
       outcome_updated: 'Результат %{poll_type} обновлен: %{title}'
       outcome_review_due: 'Пришло время подвести итоги: %{title}'
-      poll_announced: 'Голосование: %{title}'
       poll_closed_by_user: "%{actor} закрыл %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} закрывается через 24 часа: %{title}"
       poll_closing_soon_author: 'Ваш %{poll_type} закрывается через 24 часа: %{title}'
@@ -782,6 +781,7 @@ ru:
       user_mentioned: "%{actor} упомянул вас в: %{title}"
       group_mentioned: "%{actor} упомянул группу в: %{title}"
       user_reminded: "%{actor} напоминает вам проголосовать за: %{title}"
+      poll_announced: 'Голосование: %{title}'
   discussion_fork_actions:
     helptext: Выберите элементы, которые вы хотите переместить в другую тему.
     move: Переместить
@@ -1802,7 +1802,7 @@ ru:
     lte_score_percent: Не должно превышать %{percent}% от поданных голосов
     lte_voter_percent: Не должно превышать %{percent}% от числа имеющих право голоса избирателей
     name_gte_score_percent: "%{name} необходимо набрать не менее %{percent}% голосов"
-    name_gte_voter_percent: "%{name} требуется не менее %{cent}% имеющих право голоса избирателей"
+    name_gte_voter_percent: "%{name} требуется не менее %{percent}% имеющих право голоса избирателей"
     name_lte_score_percent: "%{name} не должен превышать %{percent}% от поданных голосов"
     name_lte_voter_percent: "%{name} не должен превышать %{percent}% от числа имеющих право голоса избирателей"
     vote_share_requirement: Требование к доле голосов
@@ -2437,7 +2437,7 @@ ru:
     total_polls: Всего опросов
     threads_with_polls: Темы с опросами
     polls_with_outcomes: Опросы с результатами
-    actions_per_interval: Действия за %{интервал}
+    actions_per_interval: Действия за %{interval}
     actions_per_user: Действия на пользователя
     users_per_country: Пользователи в стране
     actions_per_country: Действия по стране

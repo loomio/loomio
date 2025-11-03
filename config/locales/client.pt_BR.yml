@@ -713,7 +713,7 @@ pt_BR:
       user_reminded: "%{actor} lembrou você de votar em %{title}"
       group_mentioned: "%{actor} mencionou o grupo em: %{title}"
       new_delegate: "%{actor} fez de você um delegado com direito a voto em %{title}"
-      poll_announced: 'Por favor, vote: %{title}'
+      poll_announced: "%{actor} convidou você para votar: %{title}"
     without_title:
       unknown_sender: Revise o e-mail de um remetente não reconhecido
       discussion_announced: "%{actor}  convidou você para um tópico"
@@ -774,7 +774,6 @@ pt_BR:
       outcome_created: 'Conclusão de %{poll_type}: %{title}'
       outcome_updated: 'Conclusão de %{poll_type} atualizada: %{title}'
       outcome_review_due: 'Chegou a hora de revisar a conclusão de: %{title}'
-      poll_announced: 'Voto: %{title}'
       poll_closed_by_user: "%{actor} encerrou a %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} encerrando em 24 horas: %{title}"
       poll_closing_soon_author: 'Sua enquete %{poll_type} será encerrada em 24 horas: %{title}'
@@ -794,6 +793,7 @@ pt_BR:
       user_mentioned: "%{actor} mencionou você em: %{title}"
       group_mentioned: "%{actor} mencionou o grupo em: %{title}"
       user_reminded: "%{actor} está te lembrando de votar em: %{title}"
+      poll_announced: 'Voto: %{title}'
   discussion_fork_actions:
     helptext: Selecione os ítems que você quer mudar para outra conversa
     move: Mover

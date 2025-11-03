@@ -272,7 +272,6 @@ tr:
       signoff: Bunu, e-postanız %{hostname} üzerindeki "Şifremi unuttum" formuna girildiği için aldınız. Ancak yukarıdaki bağlantıyı takip edip formu doldurana kadar şifreniz değişmeyecektir. Giriş yapmakta sorun yaşamaya devam ederseniz, bir destek yetkilisiyle iletişime geçmek için bu e-postayı yanıtlayın.
     by_who: "%{person} tarafından"
     reply_to_this_discussion: Bu müzakereyi yanıtla
-    loomio_app_description: Kuruluşların birlikte karar verebileceği, kullanımı kolay, güvenli bir yer.
     view_group: Grubu gör
     to_join_group:
       subject: "%{member} sizi %{site_name} sitesinde %{group_name} grubuna katılmaya davet etti"
@@ -311,6 +310,7 @@ tr:
       subject: "%{who} %{which_group} grubuna katılmak için talep gönderdi"
       view_group: Burada isteği onaylayabilir ya da reddedebilirsin
       button_text: İsteği görüntüle
+    loomio_app_description: Kuruluşların birlikte karar alabileceği bir yer.
   announcement_count_emails: "%{count} e-posta"
   email_actions:
     unfollowed_discussion: Konu başlığı için e-postaları kapattınız.

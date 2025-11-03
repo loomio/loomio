@@ -701,7 +701,7 @@ ro:
       user_reminded: "%{actor} vă reamintește să votați în: %{title}"
       group_mentioned: "%{actor} a menționat grupul în: %{title}"
       new_delegate: "%{actor} te-a făcut delegat cu drept de vot în %{title}"
-      poll_announced: 'Vă rugăm să votați: %{title}'
+      poll_announced: "%{actor} te-a invitat să votezi: %{title}"
     without_title:
       unknown_sender: Vă rugăm să examinați e-mailul de la expeditor nerecunoscut
       discussion_announced: "%{actor} te-a invitat la o discuție"
@@ -746,7 +746,7 @@ ro:
     email_subject:
       unknown_sender: Verificați e-mailul de la un expeditor necunoscut
       comment_replied_to: "%{actor} ți-a răspuns în: %{title}"
-      discussion_announced: "%{titlu}"
+      discussion_announced: "%{title}"
       discussion_edited: "%{actor} a editat contextul: %{title}"
       discussion_closed: "%{actor} a închis firul de discuție: %{title}"
       invitation_accepted: "%{actor} a acceptat invitația ta de a se alătura %{title}"
@@ -757,12 +757,11 @@ ro:
       new_comment: "%{actor} a comentat în: %{title}"
       new_coordinator: "%{actor} te-a făcut administrator al site-ului %{title}"
       new_delegate: "%{actor} te-a numit delegat cu drept de vot în %{title}"
-      new_discussion: "%{titlu}"
+      new_discussion: "%{title}"
       outcome_announced: 'Rezultatul %{poll_type}: %{title}'
       outcome_created: 'Rezultatul %{poll_type}: %{title}'
       outcome_updated: 'Rezultatul %{poll_type} a fost actualizat: %{title}'
       outcome_review_due: 'E timpul să analizăm rezultatul: %{title}'
-      poll_announced: 'Vot: %{title}'
       poll_closed_by_user: "%{actor} a închis %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} se închide în 24 de ore: %{title}"
       poll_closing_soon_author: "%{poll_type} se închide în 24 de ore: %{title}"
@@ -782,6 +781,7 @@ ro:
       user_mentioned: "%{actor} te-a menționat în: %{title}"
       group_mentioned: "%{actor} a menționat grupul în: %{title}"
       user_reminded: "%{actor} vă reamintește să votați pentru: %{title}"
+      poll_announced: 'Vot: %{title}'
   discussion_fork_actions:
     helptext: Selectați elementele pe care doriți să le mutați într-un alt subiect
     move: Mișcare

@@ -701,7 +701,7 @@ tr:
       user_reminded: "%{actor} size oy vermenizi hatırlatıyor: %{title}"
       group_mentioned: "%{actor} şu gruptan bahsetti: %{title}"
       new_delegate: "%{actor} sizi %{title}'da oy kullanma haklarına sahip bir delege yaptı"
-      poll_announced: 'Lütfen oy verin: %{title}'
+      poll_announced: "%{actor} sizi oy vermeye davet etti: %{title}"
     without_title:
       unknown_sender: Lütfen tanınmayan gönderenden gelen e-postayı inceleyin
       discussion_announced: "%{actor} sizi bir konuya davet etti"
@@ -746,7 +746,7 @@ tr:
     email_subject:
       unknown_sender: Tanınmayan göndericiden gelen e-postayı inceleyin
       comment_replied_to: "%{actor} size şu başlıkta yanıt verdi: %{title}"
-      discussion_announced: "%{başlık}"
+      discussion_announced: "%{title}"
       discussion_edited: "%{actor} bağlamı düzenledi: %{title}"
       discussion_closed: "%{actor} şu konuyu kapattı: %{title}"
       invitation_accepted: "%{actor}, %{title} grubuna katılma davetinizi kabul etti"
@@ -757,12 +757,11 @@ tr:
       new_comment: "%{actor} şu başlıkta yorum yaptı: %{title}"
       new_coordinator: "%{actor} sizi %{title} yöneticisi yaptı"
       new_delegate: "%{actor} sizi %{title}'da oy kullanma hakkına sahip bir delege yaptı"
-      new_discussion: "%{başlık}"
+      new_discussion: "%{title}"
       outcome_announced: "%{poll_type} sonucu: %{title}"
       outcome_created: "%{poll_type} sonucu: %{title}"
       outcome_updated: "%{poll_type} sonucu güncellendi: %{title}"
       outcome_review_due: "%{title} sonucunu gözden geçirme zamanı:"
-      poll_announced: 'Oy Ver: %{title}'
       poll_closed_by_user: "%{actor} %{poll_type} anketini kapattı: %{title}"
       poll_closing_soon: "%{poll_type} 24 saat içinde kapanıyor: %{title}"
       poll_closing_soon_author: "%{poll_type} anketiniz 24 saat içinde kapanıyor: %{title}"
@@ -782,6 +781,7 @@ tr:
       user_mentioned: "%{actor} sizden şu başlıkta bahsetti: %{title}"
       group_mentioned: "%{actor} şu gruptan bahsetti: %{title}"
       user_reminded: "%{actor} size %{title} için oy vermenizi hatırlatıyor"
+      poll_announced: 'Oy Ver: %{title}'
   discussion_fork_actions:
     helptext: Başka bir konuya taşımak istediğiniz öğeleri seçin
     move: Taşı
