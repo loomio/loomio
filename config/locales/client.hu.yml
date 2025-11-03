@@ -703,7 +703,7 @@ hu:
       user_reminded: "%{actor} emlékeztet, hogy szavazz: %{title}"
       group_mentioned: "%{actor} megemlítette a csoportot itt: %{title}"
       new_delegate: "%{actor} szavazati joggal rendelkező képviselővé tett téged %{title}"
-      poll_announced: 'Kérlek szavazz: %{title}'
+      poll_announced: "%{actor} szavazásra hívott meg: %{title}"
     without_title:
       unknown_sender: Kérjük, tekintse át az ismeretlen feladótól kapott e-mailt
       discussion_announced: "%{actor} meghívott egy témaszálba"
@@ -764,7 +764,6 @@ hu:
       outcome_created: "%{poll_type} következtetés: %{title}"
       outcome_updated: "%{poll_type} következtetés frissítve: %{title}"
       outcome_review_due: 'Ideje áttekinteni a következő következtetését: %{title}'
-      poll_announced: 'Szavazat: %{title}'
       poll_closed_by_user: "%{actor} lezárta a %{poll_type}-t: %{title}"
       poll_closing_soon: "%{poll_type} 24 órán belül zárul: %{title}"
       poll_closing_soon_author: 'A %{poll_type} 24 óra múlva zárul: %{title}'
@@ -784,6 +783,7 @@ hu:
       user_mentioned: "%{actor} megemlített téged a következőben: %{title}"
       group_mentioned: "%{actor} megemlítette a csoportot a következőben: %{title}"
       user_reminded: "%{actor} emlékeztet, hogy szavazz erre: %{title}"
+      poll_announced: 'Szavazat: %{title}'
   discussion_fork_actions:
     helptext: Válassza ki azokat az elemeket, amelyeket át szeretne helyezni egy másik szálba
     move: Mozgat

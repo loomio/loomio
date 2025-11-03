@@ -282,7 +282,6 @@ he:
         אם בעיות ההתחברות ממשיכים, השב למייל זה ליצירת קשר עם איש תמיכה.
     by_who: לפי %{person}
     reply_to_this_discussion: השב לדיון זה
-    loomio_app_description: מקום קל לשימוש ומאובטח עבור ארגונים לקבל החלטות ביחד.
     view_group: צפיה בקבוצה
     to_join_group:
       subject: "%{member} הזמין אותך להצטטרף ל%{group_name} ב%{site_name}"
@@ -321,6 +320,7 @@ he:
       subject: "%{who} ביקש להצטרף %{which_group}"
       view_group: אתה יכול לאשר או לשלול בקשות כאן
       button_text: צפה בבקשה
+    loomio_app_description: מקום בו ארגונים יכולים לקבל החלטות יחד.
   announcement_count_emails: "%{count} מיילים"
   email_actions:
     unfollowed_discussion: השבתת הודעות אימייל עבור השיחה הזו.

@@ -282,7 +282,6 @@ hu:
         '
     by_who: általa%{person}
     reply_to_this_discussion: Válasz erre a beszélgetésre
-    loomio_app_description: A %{site_name} egy döntéshozó eszköz az együttműködő szervezetek számára
     view_group: Csoport megtekintése
     to_join_group:
       subject: "%{member} meghívott, hogy csatlakozzon a következőhöz:%{group_name}, a(z) %{site_name} oldalon"
@@ -321,6 +320,7 @@ hu:
       subject: "%{who} csatlakozást kért a(z)%{which_group} oldalhoz"
       view_group: Itt jóváhagyhatod vagy elutasíthatod a kérelmet
       button_text: Kérés megtekintése
+    loomio_app_description: Egy hely, ahol a szervezetek közösen hozhatnak döntéseket.
   announcement_count_emails: "%{count} e-mail"
   email_actions:
     unfollowed_discussion: Kikapcsoltad a téma e-maileit.

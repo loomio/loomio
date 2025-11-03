@@ -701,7 +701,7 @@ sl:
       user_reminded: "%{actor} vas opominja, da glasujete v: %{title}"
       group_mentioned: "%{actor} je omenil skupino v: %{title}"
       new_delegate: "%{actor} vas je postavil za delegata z glasovalno pravico v %{title}"
-      poll_announced: 'Prosim, glasujte: %{title}'
+      poll_announced: "%{actor} vas je povabil k glasovanju: %{title}"
     without_title:
       unknown_sender: Preglejte e-pošto neprepoznanega pošiljatelja
       discussion_announced: "%{actor} vas je povabil v nit"
@@ -746,7 +746,7 @@ sl:
     email_subject:
       unknown_sender: Preglejte e-pošto od neznanega pošiljatelja
       comment_replied_to: "%{actor} vam je odgovoril v: %{title}"
-      discussion_announced: "%{naslov}"
+      discussion_announced: "%{title}"
       discussion_edited: "%{actor} je uredil kontekst: %{title}"
       discussion_closed: "%{actor} je zaprl nit: %{title}"
       invitation_accepted: "%{actor} je sprejel vaše povabilo, da se pridruži %{title}"
@@ -757,12 +757,11 @@ sl:
       new_comment: "%{actor} je komentiral v: %{title}"
       new_coordinator: "%{actor} vas je postavil za administratorja %{title}"
       new_delegate: "%{actor} vas je imenoval za delegata z glasovalno pravico v %{title}"
-      new_discussion: "%{naslov}"
+      new_discussion: "%{title}"
       outcome_announced: 'Rezultat %{poll_type}: %{title}'
       outcome_created: 'Rezultat %{poll_type}: %{title}'
       outcome_updated: 'Posodobljen rezultat ankete %{poll_type}: %{title}'
       outcome_review_due: 'Čas je, da pregledamo izid: %{title}'
-      poll_announced: 'Glas: %{title}'
       poll_closed_by_user: "%{actor} je zaprl %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} se zapre čez 24 ur: %{title}"
       poll_closing_soon_author: 'Vaša anketa %{poll_type} se zapira čez 24 ur: %{title}'
@@ -782,6 +781,7 @@ sl:
       user_mentioned: "%{actor} vas je omenil v: %{title}"
       group_mentioned: "%{actor} je omenil skupino v: %{title}"
       user_reminded: "%{actor} vas opominja, da glasujete v: %{title}"
+      poll_announced: 'Glas: %{title}'
   discussion_fork_actions:
     helptext: Izberite elemente, ki jih želite premakniti v drugo nit
     move: Premakni se

@@ -449,7 +449,7 @@ en:
         If you continue to have problems logging in, reply to this email to contact a support person.
     by_who: by %{person}
     reply_to_this_discussion: Reply to this discussion
-    loomio_app_description: An easy to use, secure place for organizations to make decisions together.
+    loomio_app_description: A place for organizations to make decisions together.
     view_group: View group
     to_join_group:
       subject: "%{member} has invited you to join %{group_name} on %{site_name}"

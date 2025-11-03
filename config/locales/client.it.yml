@@ -713,7 +713,7 @@ it:
       user_reminded: "%{actor} ti sta ricordando di votare su: %{title}"
       group_mentioned: "%{actor} ha menzionato il gruppo in: %{title}"
       new_delegate: "%{actor} ti ha nominato delegato con diritto di voto in %{title}"
-      poll_announced: 'Per favore, vota: %{title}'
+      poll_announced: "%{actor} ti ha invitato a votare: %{title}"
     without_title:
       unknown_sender: Controlla l'e-mail proveniente da un mittente non riconosciuto
       discussion_announced: "%{actor} ti ha invitato a una discussione"
@@ -774,7 +774,6 @@ it:
       outcome_created: 'Esito di %{poll_type}: %{title}'
       outcome_updated: 'Esito di %{poll_type} aggiornato: %{title}'
       outcome_review_due: 'È il momento di rivedere l''esito di: %{title}'
-      poll_announced: 'Vota: %{title}'
       poll_closed_by_user: "%{actor} ha chiuso il %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} chiuderà tra 24 ore: %{title}"
       poll_closing_soon_author: 'Il tuo %{poll_type} si chiuderà tra 24 ore: %{title}'
@@ -794,6 +793,7 @@ it:
       user_mentioned: "%{actor} ti ha menzionato in: %{title}"
       group_mentioned: "%{actor} ha menzionato il gruppo in: %{title}"
       user_reminded: "%{actor} ti ricorda di votare: %{title}"
+      poll_announced: 'Vota: %{title}'
   discussion_fork_actions:
     helptext: Seleziona gli elementi da spostare in un altro thread
     move: Sposta
@@ -2467,7 +2467,7 @@ it:
     total_polls: Sondaggi totali
     threads_with_polls: Discussioni con sondaggi
     polls_with_outcomes: Sondaggi con risultati
-    actions_per_interval: Azioni per %{intervallo}
+    actions_per_interval: Azioni per %{interval}
     actions_per_user: Azioni per utente
     users_per_country: Utenti per paese
     actions_per_country: Azioni per paese

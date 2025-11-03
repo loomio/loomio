@@ -701,7 +701,7 @@ el:
       user_reminded: 'Ο %{actor} σας υπενθυμίζει να ψηφίσετε: %{title}'
       group_mentioned: 'Ο %{actor} ανέφερε την ομάδα στο: %{title}'
       new_delegate: Ο %{actor} σάς έκανε εκπρόσωπο με δικαιώματα ψήφου στο %{title}
-      poll_announced: 'Παρακαλώ ψηφίστε: %{title}'
+      poll_announced: 'Ο χρήστης %{actor} σας προσκάλεσε να ψηφίσετε: %{title}'
     without_title:
       unknown_sender: Ελέγξτε τα μηνύματα ηλεκτρονικού ταχυδρομείου από μη αναγνωρισμένο αποστολέα
       discussion_announced: Ο %{actor} σας προσκάλεσε σε ένα νήμα
@@ -746,7 +746,7 @@ el:
     email_subject:
       unknown_sender: Έλεγχος email από μη αναγνωρισμένο αποστολέα
       comment_replied_to: 'Ο χρήστης %{actor} σας απάντησε στο: %{title}'
-      discussion_announced: "%{τίτλος}"
+      discussion_announced: "%{title}"
       discussion_edited: 'Ο %{actor} επεξεργάστηκε το περιεχόμενο: %{title}'
       discussion_closed: 'Ο/Η %{actor} έκλεισε το νήμα: %{title}'
       invitation_accepted: Ο/Η %{actor} αποδέχτηκε την πρόσκλησή σας για να συμμετάσχει στον/στην %{title}
@@ -757,12 +757,11 @@ el:
       new_comment: 'Ο/Η %{actor} σχολίασε στο: %{title}'
       new_coordinator: Ο χρήστης %{actor} σας έκανε διαχειριστή του %{title}
       new_delegate: Ο/Η %{actor} σε έκανε αντιπρόσωπο με δικαίωμα ψήφου στο %{title}
-      new_discussion: "%{τίτλος}"
+      new_discussion: "%{title}"
       outcome_announced: 'Αποτέλεσμα %{poll_type}: %{title}'
       outcome_created: 'Αποτέλεσμα %{poll_type}: %{title}'
       outcome_updated: 'Ενημερώθηκε το αποτέλεσμα του %{poll_type}: %{title}'
       outcome_review_due: 'Ήρθε η ώρα να εξετάσουμε το αποτέλεσμα του: %{title}'
-      poll_announced: 'Ψηφοφορία: %{title}'
       poll_closed_by_user: 'Ο χρήστης %{actor} έκλεισε το %{poll_type}: %{title}'
       poll_closing_soon: "%{poll_type} κλείνει σε 24 ώρες: %{title}"
       poll_closing_soon_author: 'Η %{poll_type} σας κλείνει σε 24 ώρες: %{title}'
@@ -782,6 +781,7 @@ el:
       user_mentioned: 'Ο χρήστης %{actor} σας ανέφερε στο: %{title}'
       group_mentioned: 'Ο/Η %{actor} ανέφερε την ομάδα στο: %{title}'
       user_reminded: 'Ο χρήστης %{actor} σας υπενθυμίζει να ψηφίσετε: %{title}'
+      poll_announced: 'Ψηφοφορία: %{title}'
   discussion_fork_actions:
     helptext: Επιλέξτε στοιχεία που θέλετε να μετακινήσετε σε άλλο νήμα
     move: Κίνηση
@@ -844,10 +844,10 @@ el:
     context_placeholder: Δώστε κάποιο πλαίσιο για αυτήν τη συζήτηση, ώστε οι άνθρωποι να γνωρίζουν πώς να συμμετέχουν
     privacy_label: Απόρρητο
     privacy_public: Οποιοσδήποτε μπορεί να δει αυτό το θέμα. Μόνο μέλη μπορούν να συμμετάσχουν.
-    privacy_private: Το θέμα θα είναι ορατό μόνο στα μέλη της ομάδας %{group}.
     privacy_organisation: Το θέμα θα είναι ορατό μόνο στα μέλη της %{parent} και μέλη της ομάδα %{group}.
     fork_notice: Θα δημιουργηθεί ένα νέο νήμα με %{count} στοιχεία από %{title}
     notify_group: Ειδοποίηση ομάδας
+    privacy_private: Μόνο τα μέλη της ομάδας μπορούν να δουν αυτό το νήμα
   announcement:
     send_discussion: Αποστολή νήματος
     send_group: Προσκαλέστε άτομα στο %{name}

@@ -701,7 +701,7 @@ da:
       user_reminded: "%{actor} minder dig om at stemme i: %{title}"
       group_mentioned: "%{actor} nævnte gruppen i: %{title}"
       new_delegate: "%{actor} gjorde dig til delegeret med stemmeret i %{title}"
-      poll_announced: 'Stem venligst: %{title}'
+      poll_announced: "%{actor} inviterede dig til at stemme: %{title}"
     without_title:
       unknown_sender: Gennemgå venligst e-mail fra ukendt afsender
       discussion_announced: "%{actor} inviterede dig til en tråd"
@@ -746,7 +746,7 @@ da:
     email_subject:
       unknown_sender: Gennemgå e-mail fra ukendt afsender
       comment_replied_to: "%{actor} svarede dig i: %{title}"
-      discussion_announced: "%{titel}"
+      discussion_announced: "%{title}"
       discussion_edited: "%{actor} redigerede konteksten: %{title}"
       discussion_closed: "%{actor} lukkede tråden: %{title}"
       invitation_accepted: "%{actor} har accepteret din invitation til at blive medlem af %{title}"
@@ -757,16 +757,15 @@ da:
       new_comment: "%{actor} kommenterede i: %{title}"
       new_coordinator: "%{actor} har gjort dig til administrator for %{title}"
       new_delegate: "%{actor} udnævnte dig til delegeret med stemmeret i %{title}"
-      new_discussion: "%{titel}"
+      new_discussion: "%{title}"
       outcome_announced: "%{poll_type} resultat: %{title}"
       outcome_created: "%{poll_type} resultat: %{title}"
       outcome_updated: "%{poll_type} resultat opdateret: %{title}"
       outcome_review_due: 'Det er tid til at gennemgå resultatet af: %{title}'
-      poll_announced: 'Stemme: %{titel}'
       poll_closed_by_user: "%{actor} lukkede %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} lukker om 24 timer: %{title}"
       poll_closing_soon_author: 'Din %{poll_type} lukker om 24 timer: %{title}'
-      poll_created: 'Stemme: %{titel}'
+      poll_created: 'Stemme: %{title}'
       poll_edited: "%{actor} opdaterede %{poll_type}: %{title}"
       poll_expired: "%{poll_type} er lukket: %{title}"
       poll_expired_author: 'Udgiv et resultat: %{title}'
@@ -782,6 +781,7 @@ da:
       user_mentioned: "%{actor} nævnte dig i: %{title}"
       group_mentioned: "%{actor} nævnte gruppen i: %{title}"
       user_reminded: "%{actor} minder dig om at stemme i: %{title}"
+      poll_announced: 'Stemme: %{title}'
   discussion_fork_actions:
     helptext: Vælg emner, du vil flytte til en anden tråd
     move: Flyt
@@ -844,10 +844,10 @@ da:
     context_placeholder: Giv en vis kontekst til denne diskussion, så folk ved, hvordan de skal deltage
     privacy_label: Privatinstillinger
     privacy_public: Alle kan se debatten. Kun medlemmer kan deltage.
-    privacy_private: Debatten kan kun ses af medlemmer af gruppen %{group}.
     privacy_organisation: Debatten kan ses af medlemmer af gruppen %{parent} og af medlemmer af gruppen %{group}.
     fork_notice: Der oprettes en ny tråd med %{count} elementer fra %{title}
     notify_group: Underret gruppe
+    privacy_private: Kun medlemmer af gruppen kan se denne tråd
   announcement:
     send_discussion: Send tråd
     send_group: Inviter folk til %{name}

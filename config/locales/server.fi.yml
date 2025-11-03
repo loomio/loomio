@@ -272,7 +272,6 @@ fi:
       signoff: Sait tämän, koska sähköpostisi syötettiin "Unohdin salasana" -lomakkeeseen %{hostname}. Salasanaasi ei kuitenkaan vaihdeta ennen kuin seuraat yllä olevaa linkkiä ja täytät lomakkeen. Jos sinulla on edelleen ongelmia kirjautumisessa, vastaa tähän sähköpostiin ja ota yhteyttä tukihenkilöön.
     by_who: kirjoittaja %{person}
     reply_to_this_discussion: Vastaa tähän keskusteluun
-    loomio_app_description: Helppokäyttöinen ja turvallinen paikka organisaatioille tehdä päätöksiä yhdessä.
     view_group: Näytä ryhmä
     to_join_group:
       subject: "%{member} on kutsunut sinut ryhmään %{group_name} %{site_name}"
@@ -311,6 +310,7 @@ fi:
       subject: "%{who} on pyytänyt liittymistä ryhmään %{which_group}"
       view_group: Voit hyväksyä tai hylätä pyynnön täällä
       button_text: Näytä pyyntö
+    loomio_app_description: Paikka, jossa organisaatiot voivat tehdä yhdessä päätöksiä.
   announcement_count_emails: "%{count} sähköpostia"
   email_actions:
     unfollowed_discussion: Olet poistanut sähköpostit käytöstä ketjussa.

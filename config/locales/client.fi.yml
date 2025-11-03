@@ -701,7 +701,7 @@ fi:
       user_reminded: "%{actor} muistuttaa sinua äänestämään: %{title}"
       group_mentioned: "%{actor} mainitsi ryhmän: %{title}"
       new_delegate: "%{actor} teki sinusta edustajan, jolla on äänioikeus kohteessa %{title}"
-      poll_announced: 'Äänestä: %{title}'
+      poll_announced: "%{actor} kutsui sinut äänestämään: %{title}"
     without_title:
       unknown_sender: Tarkista tuntemattoman lähettäjän sähköposti
       discussion_announced: "%{actor} kutsui sinut viestiketjuun"
@@ -746,7 +746,7 @@ fi:
     email_subject:
       unknown_sender: Tarkista tuntemattoman lähettäjän sähköposti
       comment_replied_to: "%{actor} vastasi sinulle viestissä: %{title}"
-      discussion_announced: "%{otsikko}"
+      discussion_announced: "%{title}"
       discussion_edited: "%{actor} muokkasi kontekstia: %{title}"
       discussion_closed: "%{actor} sulki ketjun: %{title}"
       invitation_accepted: "%{actor} hyväksyi kutsusi liittyä mukaan joukkoon %{title}"
@@ -757,12 +757,11 @@ fi:
       new_comment: "%{actor} kommentoi kohdassa: %{title}"
       new_coordinator: "%{actor} teki sinusta sivuston %{title} ylläpitäjän"
       new_delegate: "%{actor} teki sinusta äänioikeutetun edustajan kokouksessa %{title}"
-      new_discussion: "%{otsikko}"
+      new_discussion: "%{title}"
       outcome_announced: "%{poll_type} -tulos: %{title}"
       outcome_created: "%{poll_type} -tulos: %{title}"
       outcome_updated: "%{poll_type} -tulos päivitetty: %{title}"
       outcome_review_due: On aika tarkastella seuraavan kohteen %{title} tulosta.
-      poll_announced: 'Äänestys: %{title}'
       poll_closed_by_user: "%{actor} sulki %{poll_type} -kyselyn: %{title}"
       poll_closing_soon: "%{poll_type} sulkeutuu 24 tunnin kuluttua: %{title}"
       poll_closing_soon_author: "%{poll_type} -kyselysi sulkeutuu 24 tunnin kuluttua: %{title}"
@@ -782,6 +781,7 @@ fi:
       user_mentioned: "%{actor} mainitsi sinut kohdassa: %{title}"
       group_mentioned: "%{actor} mainitsi ryhmän kohdassa: %{title}"
       user_reminded: "%{actor} muistuttaa sinua äänestämään vaalissa: %{title}"
+      poll_announced: 'Äänestys: %{title}'
   discussion_fork_actions:
     helptext: Valitse kohteet, jotka haluat siirtää toiseen viestiketjuun
     move: Liikkua
@@ -2196,10 +2196,10 @@ fi:
     sentence: "%{numerator}/%{denominator} henkilöä on osallistunut (%{percent}%)"
     target_progress: "%{percent} % tavoitteesta saavutettu. (%{num} / %{target})"
     pct_of_eligible_voters_must_participate: "%{pct}% äänioikeutetuista on osallistuttava"
-    pct_participation: "%{num} annetuista äänistä (%{pct}% osallistumisprosentti)"
     vote_short_of_quorum: Yksi ääni lisää tarvitaan %{pct}% päätösvaltaisuuteen
     votes_short_of_quorum: "%{num} ääntä lisää tarvitaan %{pct}% päätösvaltaisuuteen"
     quorum_reached: Päätösvaltainen jäsenmäärä on %{pct}%
+    pct_participation: "%{num} annetuista äänistä (%{pct}% osallistumisprosentti)"
   poll_meeting_chart_panel:
     total: Kaikki yhteensä
   poll_remove_vote:

@@ -281,7 +281,6 @@ ru:
         Если вам по-прежнему трудно войти, свяжитесь с поддержкой, ответив на это письмо.
     by_who: от %{person}
     reply_to_this_discussion: Ответить в этой дискуссии
-    loomio_app_description: Простое в использовании и безопасное место, где организации могут совместно принимать решения.
     view_group: Смотреть группу
     to_join_group:
       subject: "%{member} приглашает вас вступить в %{group_name} на %{site_name}"
@@ -320,6 +319,7 @@ ru:
       subject: "%{who} хочет вступить в %{which_group}"
       view_group: Здесь вы можете одобрить или отклонить просьбу
       button_text: Смотреть проьбу
+    loomio_app_description: Место, где организации могут совместно принимать решения.
   announcement_count_emails: "%{count} писем"
   email_actions:
     unfollowed_discussion: Вы отключили письма этой ветки.

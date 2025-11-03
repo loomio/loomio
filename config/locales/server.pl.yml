@@ -297,7 +297,6 @@ pl:
         Jeśli nadal będziesz mieć problemy z zalogowaniem się, odpowiedz na tą wiadomość e-mail, aby skontaktować się z obsługą klienta.
     by_who: przez %{person}
     reply_to_this_discussion: Odpowiedz na tę dyskusję
-    loomio_app_description: "%{site_name} to narzędzie do podejmowania decyzji dla organizacji współpracujących"
     view_group: Wyświetl grupę
     to_join_group:
       subject: "%{member} zaprasza Cię do przyłączenia się do grupy %{group_name} na %{site_name} "
@@ -336,6 +335,7 @@ pl:
       subject: " %{who} prosi o dołączenie do grupy %{which_group}"
       view_group: Możesz zatwierdzić lub odrzucić prośbę tutaj
       button_text: Wyświetl prośbę
+    loomio_app_description: Miejsce, w którym organizacje mogą wspólnie podejmować decyzje.
   announcement_count_emails: "%{count} wiadomości e-mail"
   email_actions:
     unfollowed_discussion: Wyłączono wiadomości e-mail dla wątku.

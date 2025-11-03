@@ -155,7 +155,6 @@ zh_TW:
       group_stats: 群組統計
       org_stats: 組織統計（包含子群組）
       visits: 造訪
-      members: 成員 (%{count})
       subgroups: 子群組
       threads: 討論串
       polls: 投票
@@ -170,6 +169,7 @@ zh_TW:
         score: 分數
         rank: 排名
         time: 時間投票
+      members: 成員
   user:
     deleted_user: 已刪除的使用者
     placeholder_name: 已邀請的使用者 (%{hostname})
@@ -296,7 +296,6 @@ zh_TW:
         若您還有登入上的問題，回覆這封電子郵件以連絡客服人員。
     by_who: "%{person}"
     reply_to_this_discussion: 回應此討論串
-    loomio_app_description: "%{site_name} 是協作組織的決策工具"
     view_group: 檢視群組
     to_join_group:
       subject: "%{member} 已邀請您加入在 %{site_name} 上的 %{group_name}"
@@ -335,6 +334,7 @@ zh_TW:
       subject: "%{who} 申請加入 %{which_group}"
       view_group: 您可點此批准或拒絕申請
       button_text: 檢視申請
+    loomio_app_description: 一個供組織共同決策的平台。
   announcement_count_emails: "%{count} 個電子郵件"
   email_actions:
     unfollowed_discussion: 您已經關閉了討論串的電子郵件。

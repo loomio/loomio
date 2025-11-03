@@ -776,7 +776,7 @@ en:
       outcome_created: "%{actor} published a %{poll_type} outcome: %{title}"
       outcome_updated: "%{actor} updated the %{poll_type} outcome: %{title}"
       outcome_review_due: 'It''s time to review the outcome of: %{title}'
-      poll_announced: "Please vote: %{title}"
+      poll_announced: "%{actor} invited you to vote: %{title}"
       poll_closed_by_user: "%{actor} closed the %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} closing in 24 hours: %{title}"
       poll_closing_soon_author: 'Your %{poll_type} is closing in 24 hours: %{title}'
