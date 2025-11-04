@@ -62,8 +62,7 @@ export default {
         EventBus.$emit("closeModal");
         Flash.success(`poll_${this.stance.poll().pollType}_vote_form.stance_${actionName}`);
       }).catch((err) => {
-        Flash.error('poll_common_form.please_review_the_form');
-        console.log(err);
+        Flash.custom(err.error || Object.values(err.errors).join(", "));
       }).finally(() => this.loading = false);
     },
 
@@ -112,7 +111,7 @@ form.poll-meeting-vote-form(@submit.prevent='submit()')
     v-layout.poll-common-vote-form__option(
       v-for='choice in stanceChoices'
       :key='choice.id'
-      wrap 
+      wrap
     )
       poll-common-stance-choice(
         :poll="stance.poll()"
