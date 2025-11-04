@@ -187,6 +187,7 @@ fr:
       must_have_options: Il faut au moins une option de sondage
       must_be_in_the_future: Doit être dans le futur
       templates_cannot_close: Les modèles ne peuvent pas se fermer
+      poll_options_dont_match: Un bug de Loomio a empêché l'enregistrement de votre vote. Nous travaillons à la résolution de ce problème. Veuillez recharger la page et réessayer.
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) des membres se sont exprimés"
       title: Titre

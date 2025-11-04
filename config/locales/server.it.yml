@@ -188,6 +188,7 @@ it:
       must_have_options: Il sondaggio deve avere almeno una opzione di voto
       must_be_in_the_future: Deve essere nel futuro
       templates_cannot_close: I modelli non possono chiudersi
+      poll_options_dont_match: Un bug con Loomio ha impedito il salvataggio del tuo voto. Stiamo lavorando per risolvere il problema. Ricarica e riprova.
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) membri hanno dichiarato la loro posizione"
       title: Titolo

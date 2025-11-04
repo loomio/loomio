@@ -182,6 +182,7 @@ tr:
       must_have_options: En az bir anket seçeneği olmalıdır
       must_be_in_the_future: Gelecekte olmalı
       templates_cannot_close: Şablonlar kapatılamıyor
+      poll_options_dont_match: Loomio'daki bir hata nedeniyle oylamanız kaydedilemedi. Bu sorunu düzeltmek için çalışıyoruz. Lütfen sayfayı yenileyip tekrar deneyin.
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) üye konumlarını belirtti"
       title: Başlık

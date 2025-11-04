@@ -184,6 +184,7 @@ hu:
       must_have_options: Legalább egy szavazási lehetőséget meg kell adni
       must_be_in_the_future: Biztosan a jövőben
       templates_cannot_close: A sablonokat nem lehet bezárni
+      poll_options_dont_match: A Loomio hibája miatt nem sikerült menteni a szavazatodat. Dolgozunk a hiba kijavításán. Kérjük, töltsd be újra az oldalt, és próbáld meg újra.
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) a tagok kifejtették álláspontjukat"
       title: Cím

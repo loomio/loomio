@@ -182,6 +182,7 @@ fi:
       must_have_options: On oltava vähintään yksi äänestysvaihtoehto
       must_be_in_the_future: Täytyy olla tulevaisuudessa
       templates_cannot_close: Malleja ei voi sulkea
+      poll_options_dont_match: Loomiossa oli bugi, joka esti äänesi tallentamisen. Työskentelemme parhaillaan ongelman korjaamiseksi. Lataa sivu uudelleen ja yritä uudelleen.
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) jäsentä on ilmoittanut kantansa"
       title: Otsikko

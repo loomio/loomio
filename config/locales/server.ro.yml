@@ -182,6 +182,7 @@ ro:
       must_have_options: Intr-un sondaj trebuie sa existe macar o optiune
       must_be_in_the_future: Trebuie să fie în viitor
       templates_cannot_close: Șabloanele nu se pot închide
+      poll_options_dont_match: O eroare cu Loomio a împiedicat salvarea votului tău. Lucrăm la remedierea acestei probleme. Te rugăm să reîncarci pagina și să încerci din nou.
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) membri și-au declarat poziția"
       title: Titlu

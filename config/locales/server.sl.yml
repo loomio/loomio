@@ -182,6 +182,7 @@ sl:
       must_have_options: Imeti mora vsaj eno možnost ankete
       must_be_in_the_future: Mora biti v prihodnosti
       templates_cannot_close: Predloge ni mogoče zapreti
+      poll_options_dont_match: Napaka v programu Loomio je preprečila shranjevanje vašega glasu. Delamo na odpravi te težave. Ponovno naložite in poskusite znova.
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) članov je izrazilo svoje stališče"
       title: Naslov

@@ -187,6 +187,7 @@ de:
       must_have_options: Es muss mindestens eine Option in dieser Umfrage geben
       must_be_in_the_future: Muss in der Zukunft liegen
       templates_cannot_close: Vorlagen können nicht geschlossen werden
+      poll_options_dont_match: Ein Fehler in Loomio hat verhindert, dass Ihre Stimme gespeichert wurde. Wir arbeiten an der Behebung. Bitte laden Sie die Seite neu und versuchen Sie es erneut.
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) Mitglieder haben ihre Position angegeben."
       title: Titel
