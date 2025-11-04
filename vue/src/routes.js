@@ -2,36 +2,37 @@ import DashboardPage from './components/dashboard/page';
 import GroupPage from './components/group/page.vue';
 import StrandPage from './components/strand/page';
 
-const InboxPage = () => import('./components/inbox/page');
-const ExplorePage = () => import('./components/explore/page');
-const ProfilePage = () => import('./components/profile/page');
-const PollShowPage = () => import('./components/poll/show_page');
-const PollReceiptsPage = () => import('./components/poll/receipts_page');
-const PollFormPage = () => import('./components/poll/form_page');
-const PollTemplateFormPage = () => import('./components/poll_template/form_page');
-const TasksPage = () => import('./components/tasks/page');
-const GroupDiscussionsPanel = () => import('./components/group/discussions_panel');
-const GroupPollsPanel = () => import('./components/group/polls_panel');
-const GroupEmailsPanel = () => import('./components/group/emails_panel');
-const MembersPanel = () => import('./components/group/members_panel');
-const GroupTagsPanel = () => import('./components/group/tags_panel');
-const GroupFilesPanel = () => import('./components/group/files_panel');
-const MembershipRequestsPanel = () => import('./components/group/requests_panel');
-const StartGroupPage = () => import('./components/start_group/page');
-const ContactPage = () => import('./components/contact/page');
-const EmailSettingsPage = () => import('./components/email_settings/page');
-const ThreadFormPage = () => import('./components/thread/form_page');
-const ThreadTemplateFormPage = () => import('./components/thread_template/form_page');
-const ThreadTemplateIndexPage = () => import('./components/thread_template/index_page');
-const ThreadTemplateBrowsePage = () => import('./components/thread_template/browse_page');
-const UserPage = () => import('./components/user/page');
-const ThreadsPage = () => import('./components/threads/page');
-const StartTrialPage = () => import('./components/start_trial/page.vue');
-const ReportPage = () => import('./components/report/page.vue');
+const InboxPage = wrapAsyncLoader(() => import('./components/inbox/page'));
+const ExplorePage = wrapAsyncLoader(() => import('./components/explore/page'));
+const ProfilePage = wrapAsyncLoader(() => import('./components/profile/page'));
+const PollShowPage = wrapAsyncLoader(() => import('./components/poll/show_page'));
+const PollReceiptsPage = wrapAsyncLoader(() => import('./components/poll/receipts_page'));
+const PollFormPage = wrapAsyncLoader(() => import('./components/poll/form_page'));
+const PollTemplateFormPage = wrapAsyncLoader(() => import('./components/poll_template/form_page'));
+const TasksPage = wrapAsyncLoader(() => import('./components/tasks/page'));
+const GroupDiscussionsPanel = wrapAsyncLoader(() => import('./components/group/discussions_panel'));
+const GroupPollsPanel = wrapAsyncLoader(() => import('./components/group/polls_panel'));
+const GroupEmailsPanel = wrapAsyncLoader(() => import('./components/group/emails_panel'));
+const MembersPanel = wrapAsyncLoader(() => import('./components/group/members_panel'));
+const GroupTagsPanel = wrapAsyncLoader(() => import('./components/group/tags_panel'));
+const GroupFilesPanel = wrapAsyncLoader(() => import('./components/group/files_panel'));
+const MembershipRequestsPanel = wrapAsyncLoader(() => import('./components/group/requests_panel'));
+const StartGroupPage = wrapAsyncLoader(() => import('./components/start_group/page'));
+const ContactPage = wrapAsyncLoader(() => import('./components/contact/page'));
+const EmailSettingsPage = wrapAsyncLoader(() => import('./components/email_settings/page'));
+const ThreadFormPage = wrapAsyncLoader(() => import('./components/thread/form_page'));
+const ThreadTemplateFormPage = wrapAsyncLoader(() => import('./components/thread_template/form_page'));
+const ThreadTemplateIndexPage = wrapAsyncLoader(() => import('./components/thread_template/index_page'));
+const ThreadTemplateBrowsePage = wrapAsyncLoader(() => import('./components/thread_template/browse_page'));
+const UserPage = wrapAsyncLoader(() => import('./components/user/page'));
+const ThreadsPage = wrapAsyncLoader(() => import('./components/threads/page'));
+const StartTrialPage = wrapAsyncLoader(() => import('./components/start_trial/page.vue'));
+const ReportPage = wrapAsyncLoader(() => import('./components/report/page.vue'));
 
 // import './config/catch_navigation_duplicated.js';
 
 import { createRouter, createWebHistory } from 'vue-router'
+import { wrapAsyncLoader, installRouterChunkErrorHandler } from '@/shared/services/chunk_error_handling'
 
 const groupPageChildren = [
   {path: 'tags/:tag?', component: GroupTagsPanel, meta: {noScroll: true} },
@@ -106,4 +107,5 @@ const router = createRouter({
     {path: '/', redirect: '/dashboard' }
   ]});
 
+installRouterChunkErrorHandler(router)
 export default router;
