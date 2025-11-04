@@ -183,6 +183,7 @@ es:
       must_have_options: 'Debes tener al menos una opción '
       must_be_in_the_future: Debe ser en el futuro
       templates_cannot_close: Las plantillas no se pueden cerrar
+      poll_options_dont_match: Un error en Loomio impidió que se guardara tu voto. Estamos trabajando para solucionarlo. Por favor, recarga la página e inténtalo de nuevo.
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) miembros han manifestado su posición"
       title: Título

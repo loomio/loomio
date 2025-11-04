@@ -182,6 +182,7 @@ sv:
       must_have_options: Måste ha minst ett omröstningsalternativ
       must_be_in_the_future: Måste vara i framtiden
       templates_cannot_close: Mallar kan inte stängas
+      poll_options_dont_match: Ett fel med Loomio förhindrade att din röst sparades. Vi arbetar med att åtgärda detta. Vänligen ladda om och försök igen.
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) medlemmar har angett sin position"
       title: Titel

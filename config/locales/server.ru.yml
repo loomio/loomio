@@ -184,6 +184,7 @@ ru:
       must_have_options: Нужен хотя бы один вариант
       must_be_in_the_future: Должно быть в будущем
       templates_cannot_close: Шаблоны не могут закрыться
+      poll_options_dont_match: Из-за ошибки в Loomio ваш голос не сохранился. Мы работаем над решением этой проблемы. Перезагрузите страницу и повторите попытку.
     export:
       percent_voted: "%{num}/%{denom}(%{percent}) участников выразили свое мнение"
       title: Название

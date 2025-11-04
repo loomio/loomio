@@ -182,6 +182,7 @@ da:
       must_have_options: Skal have mindst én afstemningsmulighed
       must_be_in_the_future: Skal være i fremtiden
       templates_cannot_close: Skabeloner kan ikke lukkes
+      poll_options_dont_match: En fejl med Loomio forhindrede din stemme i at blive gemt. Vi arbejder på at løse dette. Genindlæs venligst og prøv igen.
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) medlemmer har tilkendegivet deres holdning"
       title: Titel

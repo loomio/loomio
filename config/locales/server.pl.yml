@@ -188,6 +188,7 @@ pl:
       must_have_options: Musi mieć co najmniej jedną opcję ankiety
       must_be_in_the_future: Musi być w przyszłości
       templates_cannot_close: Szablony nie mogą zostać zamknięte
+      poll_options_dont_match: Błąd w Loomio uniemożliwił zapisanie Twojego głosu. Pracujemy nad jego rozwiązaniem. Odśwież stronę i spróbuj ponownie.
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) członkowie podali swoje stanowisko"
       title: Tytuł

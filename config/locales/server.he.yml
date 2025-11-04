@@ -182,6 +182,7 @@ he:
       must_have_options: חייבת להיות אפשרות סקר אחת לפחות
       must_be_in_the_future: חייב להיות בעתיד
       templates_cannot_close: לא ניתן לסגור תבניות
+      poll_options_dont_match: באג עם Loomio מנע את שמירת ההצבעה שלך. אנו עובדים על תיקון הבעיה. אנא טען מחדש ונסה שוב.
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) משתתפים הצהירו את עמדתם"
       title: כותרת

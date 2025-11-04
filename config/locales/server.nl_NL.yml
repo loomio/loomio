@@ -188,6 +188,7 @@ nl_NL:
       must_have_options: Er moet op zijn minst één optie voor een peiling zijn
       must_be_in_the_future: Moet in de toekomst zijn
       templates_cannot_close: Sjablonen kunnen niet worden gesloten
+      poll_options_dont_match: Een bug in Loomio zorgde ervoor dat je stem niet werd opgeslagen. We werken aan een oplossing. Laad de pagina opnieuw en probeer het opnieuw.
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) leden hebben hun positie gegeven."
       title: Titel

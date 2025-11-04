@@ -113,7 +113,7 @@ export default
 
     .poll-common-vote-form(v-if="stance && !stance.castAt")
       h3.text-h6.py-3.text-high-emphasis(v-t="'poll_common.have_your_say'")
-      poll-common-directive(:stance='stance' name='vote-form')
+      poll-common-directive(:stance='stance' name='vote-form' :key="poll.id")
 
     .poll-common-unable-to-vote(v-if='!stance')
       v-alert.my-4(

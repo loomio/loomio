@@ -177,6 +177,7 @@ ja:
       must_have_options: 少なくとも 1 つの投票オプションが必要です
       must_be_in_the_future: きっと未来にあるはず
       templates_cannot_close: テンプレートを閉じることができません
+      poll_options_dont_match: Loomioのバグにより、投票を保存できませんでした。現在修正に取り組んでいます。再読み込みしてもう一度お試しください。
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) 人のメンバーが自分の立場を表明しました"
       title: タイトル

@@ -187,6 +187,7 @@ pt_BR:
       must_have_options: É necessário ao menos uma opção na enquete
       must_be_in_the_future: Deve ser no futuro
       templates_cannot_close: Os modelos não podem fechar
+      poll_options_dont_match: Um erro no Loomio impediu que seu voto fosse salvo. Estamos trabalhando para corrigir isso. Por favor, atualize a página e tente novamente.
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) membros manifestaram sua posição"
       title: Título

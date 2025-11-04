@@ -84,6 +84,6 @@ section.strand-item.poll-created
     attachment-list(:attachments="poll.attachments")
     document-list(:model='poll')
     poll-common-chart-panel(:poll='poll')
-    poll-common-action-panel(:poll='poll' :editStanceAction)
+    poll-common-action-panel(:poll='poll' :editStanceAction :key="poll.id")
     action-dock.my-2(:actions="dockActions" :menu-actions="menuActions" variant="tonal" color="primary")
 </template>

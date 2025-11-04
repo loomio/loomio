@@ -182,6 +182,7 @@ ca:
       must_have_options: Ha de tenir almenys una opció d'enquesta
       must_be_in_the_future: Ha de ser en el futur
       templates_cannot_close: Les plantilles no es poden tancar
+      poll_options_dont_match: Un error amb Loomio ha impedit que es desés el teu vot. Estem treballant per solucionar-ho. Torna a carregar i intenta-ho de nou.
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) membres han manifestat la seva posició"
       title: Títol
