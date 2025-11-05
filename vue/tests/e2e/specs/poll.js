@@ -176,7 +176,7 @@ module.exports = {
     page.expectText('.poll-common-details-panel__details p', 'Some details')
     page.fillIn('.poll-common-vote-form__reason .lmo-textarea div[contenteditable=true]', 'A reason')
     page.click('.poll-common-vote-form__submit')
-    page.pause(500)
+    page.pause(900)
     page.expectText('.poll-common-stance-choice--ranked_choice:first-child', 'An option')
     page.expectText('.poll-common-stance-created__reason', 'A reason')
   },
