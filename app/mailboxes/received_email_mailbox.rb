@@ -2,7 +2,7 @@ class ReceivedEmailMailbox < ApplicationMailbox
   def process
     email = build_received_email
 
-    unless email.is_addressed_to_loomio? && !email.is_auto_response?
+    if !email.is_addressed_to_loomio? || email.is_auto_response?
       Rails.logger.info("Bounced email from #{mail.from}")
       return inbound_email.bounced!
     end

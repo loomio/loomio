@@ -551,3 +551,8 @@ es:
       accept_prompt: "¿Por qué te ofreces como voluntario para esto?"
       decline_meaning: No puedo participar
       decline_prompt: "¿Hay algo que te gustaría decir?"
+  forward_mailer:
+    bounce:
+      subject: Tu mensaje a Loomio no se entregó.
+      reason: Esto sucedió porque su cliente de correo electrónico dirigió el mensaje a la dirección “De”, en lugar de a la dirección “Responder a” proporcionada.
+      recommendation: Por favor, abre Loomio en tu navegador y publica tu mensaje directamente.

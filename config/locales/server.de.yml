@@ -559,3 +559,8 @@ de:
       accept_prompt: Warum engagieren Sie sich ehrenamtlich dafür?
       decline_meaning: Ich kann nicht teilnehmen
       decline_prompt: Möchten Sie etwas sagen?
+  forward_mailer:
+    bounce:
+      subject: Ihre Nachricht an Loomio wurde nicht zugestellt.
+      reason: Dies geschah, weil Ihr E-Mail-Client die Nachricht an die „Von“-Adresse und nicht an die angegebene „Antwort an“-Adresse adressiert hat.
+      recommendation: Bitte öffnen Sie Loomio in Ihrem Browser und posten Sie Ihre Nachricht direkt.

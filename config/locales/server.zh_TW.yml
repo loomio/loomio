@@ -557,3 +557,8 @@ zh_TW:
       accept_prompt: 您為什麼要自願做這件事？
       decline_meaning: 我無法參加
       decline_prompt: 還有什麼想說的嗎？
+  forward_mailer:
+    bounce:
+      subject: 您發送給 Loomio 的訊息未送達
+      reason: 這是因為您的電子郵件用戶端將郵件發送到了「寄件者」地址，而不是提供的「回覆」地址。
+      recommendation: 請在瀏覽器中開啟 Loomio 並直接發布您的訊息。

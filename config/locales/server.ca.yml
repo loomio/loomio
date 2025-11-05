@@ -529,3 +529,8 @@ ca:
       accept_prompt: Per què et presentes com a voluntari per a això?
       decline_meaning: No puc participar
       decline_prompt: Hi ha alguna cosa que vulguis dir?
+  forward_mailer:
+    bounce:
+      subject: El teu missatge a Loomio no s'ha lliurat.
+      reason: Això ha passat perquè el vostre client de correu electrònic ha adreçat el missatge a l'adreça "De", en comptes de l'adreça "Respon" que heu proporcionat.
+      recommendation: Si us plau, obriu Loomio al vostre navegador i publiqueu el vostre missatge directament.

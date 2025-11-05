@@ -527,3 +527,8 @@ ja:
       accept_prompt: なぜこれにボランティアとして参加するのですか?
       decline_meaning: 参加できません
       decline_prompt: 何か言いたいことはありますか？
+  forward_mailer:
+    bounce:
+      subject: Loomioへのメッセージは配信されませんでした
+      reason: これは、電子メール クライアントが、指定された「返信先」アドレスではなく、「送信元」アドレスにメッセージを送信したために発生しました。
+      recommendation: ブラウザでLoomioを開いて、メッセージを直接投稿してください。

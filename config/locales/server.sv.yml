@@ -527,3 +527,8 @@ sv:
       accept_prompt: Varför är du volontär för detta?
       decline_meaning: Jag kan inte delta
       decline_prompt: Finns det något du skulle vilja säga?
+  forward_mailer:
+    bounce:
+      subject: Ditt meddelande till Loomio levererades inte
+      reason: Detta hände eftersom din e-postklient adresserade meddelandet till "Från"-adressen snarare än den angivna "Svara till"-adressen.
+      recommendation: Öppna Loomio i din webbläsare och skicka ditt meddelande direkt.

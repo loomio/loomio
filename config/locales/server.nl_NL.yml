@@ -554,3 +554,8 @@ nl_NL:
       accept_prompt: Waarom doe je dit vrijwilligerswerk?
       decline_meaning: Ik kan niet deelnemen
       decline_prompt: Is er nog iets dat je wilt zeggen?
+  forward_mailer:
+    bounce:
+      subject: Uw bericht aan Loomio is niet afgeleverd
+      reason: Dit gebeurde omdat uw e-mailclient het bericht naar het 'Van'-adres had geadresseerd in plaats van het opgegeven 'Beantwoorden aan'-adres.
+      recommendation: Open Loomio in uw browser en plaats uw bericht direct.
