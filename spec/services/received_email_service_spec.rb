@@ -83,5 +83,304 @@ describe ReceivedEmailService do
       end
     end
   end
-end
 
+  describe 'notifications address routing' do
+    it 'sends a delivery failure notice and destroys the email when sent to notifications address and not throttled' do
+      email = double('ReceivedEmail',
+        released: false,
+        sender_email: 'user@example.com',
+        sent_to_notifications_address?: true,
+        sender_name_and_email: '"User" <user@example.com>'
+      )
+
+      expect(ThrottleService).to receive(:can?).with(key: 'bounce', id: 'user@example.com', max: 1, per: 'hour').and_return(true)
+      expect(ForwardMailer).to receive(:bounce).with(to: '"User" <user@example.com>').and_return(double(deliver_now: true))
+      expect(email).to receive(:destroy)
+
+      ReceivedEmailService.route(email)
+    end
+
+    it 'does not send a delivery failure notice when throttled and still destroys the email' do
+      email = double('ReceivedEmail',
+        released: false,
+        sender_email: 'user@example.com',
+        sent_to_notifications_address?: false
+      )
+      allow(email).to receive(:sent_to_notifications_address?).and_return(true)
+
+      expect(ThrottleService).to receive(:can?).with(key: 'bounce', id: 'user@example.com', max: 1, per: 'hour').and_return(false)
+      expect(ForwardMailer).not_to receive(:bounce)
+      expect(email).to receive(:destroy)
+
+      ReceivedEmailService.route(email)
+    end
+
+    it 'destroys emails without a valid route when not sent to notifications address' do
+      email = double('ReceivedEmail',
+        released: false,
+        sender_email: 'user@example.com',
+        sent_to_notifications_address?: false,
+        is_complaint?: false,
+        complainer_address: nil,
+        sender_hostname: 'example.com',
+        route_address: nil
+      )
+      expect(email).to receive(:destroy)
+      ReceivedEmailService.route(email)
+    end
+  end
+
+  describe 'routing cases' do
+    it 'increments complaints and releases email for complaint notifications' do
+      email = double('ReceivedEmail',
+        released: false,
+        sender_email: 'user@example.com',
+        sent_to_notifications_address?: false,
+        is_complaint?: true,
+        complainer_address: 'complainer@example.com'
+      )
+
+      expect(User).to receive(:where).with(email: 'complainer@example.com').and_return(double(update_all: 1))
+      expect(email).to receive(:update).with(released: true)
+
+      ReceivedEmailService.route(email)
+    end
+
+    it 'forwards using forward rule and destroys the email' do
+      email = double('ReceivedEmail',
+        released: false,
+        sender_email: 'user@example.com',
+        sent_to_notifications_address?: false,
+        is_complaint?: false,
+        complainer_address: nil,
+        sender_hostname: 'example.com',
+        route_address: 'foo@mail.host',
+        route_path: 'foo',
+        sender_name: 'Alice',
+        from: '"Alice" <user@example.com>',
+        subject: 'Hello',
+        body_text: 'text body',
+        body_html: '<p>html body</p>'
+      )
+
+      allow(ReceivedEmailService).to receive(:banned_sender_hosts).and_return([])
+      expect(ForwardEmailRule).to receive(:find_by).with(handle: 'foo').and_return(double(email: 'target@example.com'))
+      expect(ForwardMailer).to receive(:forward_message).with(
+        from: "\"Alice\" <#{BaseMailer::NOTIFICATIONS_EMAIL_ADDRESS}>",
+        to: 'target@example.com',
+        reply_to: '"Alice" <user@example.com>',
+        subject: 'Hello',
+        body_text: 'text body',
+        body_html: '<p>html body</p>'
+      ).and_return(double(deliver_now: true))
+      expect(email).to receive(:destroy)
+
+      ReceivedEmailService.route(email)
+    end
+
+    it 'creates a discussion for group handle when not blocked and actor is authorized' do
+      group = double('Group', id: 123)
+      actor = double('User')
+
+      email = double('ReceivedEmail',
+        released: false,
+        sender_email: 'user@example.com',
+        sent_to_notifications_address?: false,
+        is_complaint?: false,
+        complainer_address: nil,
+        sender_hostname: 'example.com',
+        route_address: 'group@mail.host',
+        route_path: 'group',
+        attachments: [],
+        subject: 'Hello',
+        full_body: 'Body',
+        body_format: 'md'
+      )
+
+      allow(ReceivedEmailService).to receive(:banned_sender_hosts).and_return([])
+      expect(Group).to receive(:find_by).with(handle: 'group').and_return(group)
+      expect(ReceivedEmailService).to receive(:address_is_blocked).with(email, group).and_return(false)
+      expect(email).to receive(:update).with(group_id: 123)
+      expect(ReceivedEmailService).to receive(:actor_from_email_and_group).with(email, group).and_return(actor)
+      allow(ReceivedEmailService).to receive(:discussion_params).with(email).and_return({})
+      expect(DiscussionService).to receive(:create).with(hash_including(actor: actor, discussion: instance_of(Discussion)))
+      expect(email).to receive(:update_attribute).with(:released, true)
+
+      ReceivedEmailService.route(email)
+    end
+
+    it 'does not create a discussion when address is blocked' do
+      group = double('Group', id: 123)
+
+      email = double('ReceivedEmail',
+        released: false,
+        sender_email: 'user@example.com',
+        sent_to_notifications_address?: false,
+        is_complaint?: false,
+        complainer_address: nil,
+        sender_hostname: 'example.com',
+        route_address: 'group@mail.host',
+        route_path: 'group'
+      )
+
+      allow(ReceivedEmailService).to receive(:banned_sender_hosts).and_return([])
+      expect(Group).to receive(:find_by).with(handle: 'group').and_return(group)
+      expect(ReceivedEmailService).to receive(:address_is_blocked).with(email, group).and_return(true)
+      expect(DiscussionService).not_to receive(:create)
+      expect(email).not_to receive(:update_attribute).with(:released, true)
+
+      ReceivedEmailService.route(email)
+    end
+
+    it 'destroys when sender hostname is banned' do
+      email = double('ReceivedEmail',
+        released: false,
+        sender_email: 'user@example.com',
+        sent_to_notifications_address?: false,
+        is_complaint?: false,
+        complainer_address: nil,
+        sender_hostname: 'banned.com',
+        route_address: 'anything@mail.host'
+      )
+
+      allow(ReceivedEmailService).to receive(:banned_sender_hosts).and_return(['banned.com'])
+      expect(email).to receive(:destroy)
+
+      ReceivedEmailService.route(email)
+    end
+  end
+
+  describe 'email routing integration' do
+    before do
+      reset_email
+    end
+
+    def build_headers(from:, to:, subject: 'Test Subject')
+      {
+        'From' => from,
+        'To' => to,
+        'Subject' => subject
+      }
+    end
+
+    it 'creates a comment for personal email-to-thread route and marks the email as released' do
+      # Ensure reply host used in route address is recognized
+      original_reply = ENV['REPLY_HOSTNAME']
+      ENV['REPLY_HOSTNAME'] = 'test.host'
+
+      user = create(:user)
+      group = create(:group)
+      group.add_member!(user)
+      discussion = create(:discussion, group: group)
+
+      route_local = "d=#{discussion.id}&u=#{user.id}&k=#{user.email_api_key}"
+      to = "#{route_local}@#{ENV['REPLY_HOSTNAME']}"
+      from = "\"#{user.name}\" <#{user.email}>"
+
+      email = ReceivedEmail.create!(
+        headers: build_headers(from: from, to: to),
+        body_text: "Hello from email"
+      )
+
+      expect {
+        ReceivedEmailService.route(email)
+      }.to change { Comment.count }.by(1)
+
+      expect(email.reload.released).to eq true
+      comment = Comment.last
+      expect(comment.discussion_id).to eq discussion.id
+      expect(comment.user_id).to eq user.id
+    ensure
+      ENV['REPLY_HOSTNAME'] = original_reply
+    end
+
+    it 'sends a delivery failure notice once per hour for replies to notifications address' do
+      reset_email
+      ThrottleService.reset!(:hour)
+
+      user = create(:user)
+      to = BaseMailer::NOTIFICATIONS_EMAIL_ADDRESS
+      from = "\"#{user.name}\" <#{user.email}>"
+
+      email1 = ReceivedEmail.create!(
+        headers: build_headers(from: from, to: to),
+        body_text: "Wrong address reply 1"
+      )
+
+      expect {
+        ReceivedEmailService.route(email1)
+      }.to change { ActionMailer::Base.deliveries.size }.by(1)
+
+      email2 = ReceivedEmail.create!(
+        headers: build_headers(from: from, to: to),
+        body_text: "Wrong address reply 2"
+      )
+
+      expect {
+        ReceivedEmailService.route(email2)
+      }.not_to change { ActionMailer::Base.deliveries.size }
+    end
+
+    it 'forwards using a forward rule and destroys the inbound email' do
+      reset_email
+      original_reply = ENV['REPLY_HOSTNAME']
+      ENV['REPLY_HOSTNAME'] = 'test.host'
+
+      create(:user) # ensure DB is initialized
+      rule = ForwardEmailRule.create!(handle: 'foobar', email: 'target@example.com')
+
+      user = create(:user)
+      from = "\"#{user.name}\" <#{user.email}>"
+      to = "foobar@#{ENV['REPLY_HOSTNAME']}"
+
+      email = ReceivedEmail.create!(
+        headers: build_headers(from: from, to: to, subject: 'Forward me'),
+        body_text: "Forward body text",
+        body_html: "<p>Forward body html</p>"
+      )
+
+      expect {
+        ReceivedEmailService.route(email)
+      }.to change { ActionMailer::Base.deliveries.size }.by(1)
+
+      delivered = ActionMailer::Base.deliveries.last
+      expect(delivered.to).to include(rule.email)
+      # expect(delivered.reply_to).to include(from)
+      expect(delivered.subject).to eq 'Forward me'
+
+      expect(ReceivedEmail.where(id: email.id)).to be_blank
+    ensure
+      ENV['REPLY_HOSTNAME'] = original_reply
+    end
+
+    it 'creates a discussion for group handle and marks email as released' do
+      original_reply = ENV['REPLY_HOSTNAME']
+      ENV['REPLY_HOSTNAME'] = 'test.host'
+
+      user = create(:user)
+      group = create(:group, handle: 'grp123')
+      group.add_member!(user)
+
+      subject_line = 'New thread via email'
+      from = "\"#{user.name}\" <#{user.email}>"
+      to = "grp123@#{ENV['REPLY_HOSTNAME']}"
+      body = "Thread body"
+
+      email = ReceivedEmail.create!(
+        headers: build_headers(from: from, to: to, subject: subject_line),
+        body_text: body
+      )
+
+      expect {
+        ReceivedEmailService.route(email)
+      }.to change { Discussion.count }.by(1)
+
+      discussion = Discussion.order(:id).last
+      expect(discussion.group_id).to eq group.id
+      expect(discussion.title).to eq subject_line
+      expect(email.reload.released).to eq true
+    ensure
+      ENV['REPLY_HOSTNAME'] = original_reply
+    end
+  end
+end

@@ -527,3 +527,8 @@ hr:
       accept_prompt: Zašto se dobrovoljno prijavljuješ za ovo?
       decline_meaning: Ne mogu sudjelovati
       decline_prompt: Imate li što reći?
+  forward_mailer:
+    bounce:
+      subject: Vaša poruka za Loomio nije dostavljena
+      reason: To se dogodilo jer je vaš klijent e-pošte adresu poslao na adresu "Od", a ne na navedenu adresu "Odgovori".
+      recommendation: Molimo vas da otvorite Loomio u svom pregledniku i izravno objavite svoju poruku.

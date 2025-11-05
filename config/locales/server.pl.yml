@@ -554,3 +554,8 @@ pl:
       accept_prompt: Dlaczego się do tego zgłaszasz?
       decline_meaning: Nie mogę wziąć udziału
       decline_prompt: Czy chciałbyś coś powiedzieć?
+  forward_mailer:
+    bounce:
+      subject: Twoja wiadomość do Loomio nie została dostarczona
+      reason: Stało się tak, ponieważ Twój klient poczty e-mail zaadresował wiadomość na adres „Od”, a nie na podany adres „Odpowiedz do”.
+      recommendation: Otwórz Loomio w przeglądarce i bezpośrednio opublikuj swoją wiadomość.

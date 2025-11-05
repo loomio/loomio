@@ -541,6 +541,11 @@ en:
         If you do not want your group to be deleted, please reply to this email.
         If you're sure you want to delete the group, you do not need to do anything.
         Thank you.
+  forward_mailer:
+    bounce:
+      subject: Your message to Loomio was not delivered
+      reason: This happened because your email client addressed the message to the “From” address, rather than the “Reply‑To” address provided.
+      recommendation: Please open Loomio in your browser and post your message directly.
   poll_mailer:
     common:
       why_send_this: You are receiving this email because %{reason}

@@ -539,3 +539,8 @@ hu:
       accept_prompt: Miért jelentkezel önkéntesnek erre?
       decline_meaning: Nem tudok részt venni
       decline_prompt: Van valami, amit szeretnél mondani?
+  forward_mailer:
+    bounce:
+      subject: Az üzeneted Loomiónak nem érkezett meg kézbesítésre.
+      reason: Ez azért történt, mert az e-mail kliens a megadott „Feladó” címre küldte az üzenetet, nem pedig a megadott „Válaszcímre”.
+      recommendation: Kérjük, nyissa meg a Loomiót a böngészőjében, és küldje el közvetlenül az üzenetét.

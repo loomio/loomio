@@ -533,3 +533,8 @@ da:
       accept_prompt: Hvorfor er du frivillig til dette?
       decline_meaning: Jeg kan ikke deltage
       decline_prompt: Er der noget, du gerne vil sige?
+  forward_mailer:
+    bounce:
+      subject: Din besked til Loomio blev ikke leveret
+      reason: Dette skete, fordi din e-mailklient adresserede beskeden til "Fra"-adressen i stedet for den angivne "Svar-til"-adresse.
+      recommendation: Åbn Loomio i din browser og send din besked direkte.

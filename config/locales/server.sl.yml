@@ -527,3 +527,8 @@ sl:
       accept_prompt: Zakaj se prostovoljno javljaš za to?
       decline_meaning: Ne morem sodelovati
       decline_prompt: Bi radi kaj povedali?
+  forward_mailer:
+    bounce:
+      subject: Vaše sporočilo Loomiu ni bilo dostavljeno
+      reason: Do tega je prišlo, ker je vaš e-poštni odjemalec sporočilo naslovil na naslov »Od« in ne na navedeni naslov »Odgovori«.
+      recommendation: Prosimo, odprite Loomio v brskalniku in objavite svoje sporočilo neposredno.

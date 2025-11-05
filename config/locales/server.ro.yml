@@ -527,3 +527,8 @@ ro:
       accept_prompt: De ce te oferi voluntar pentru asta?
       decline_meaning: Nu pot participa
       decline_prompt: Ai vrea să spui ceva?
+  forward_mailer:
+    bounce:
+      subject: Mesajul tău către Loomio nu a fost livrat.
+      reason: Acest lucru s-a întâmplat deoarece clientul dvs. de e-mail a adresat mesajul adresei „Expeditor”, în loc de adresa „Răspuns către” furnizată.
+      recommendation: Te rugăm să deschizi Loomio în browser și să postezi mesajul direct.

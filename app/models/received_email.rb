@@ -54,6 +54,10 @@ class ReceivedEmail < ApplicationRecord
     end
   end
 
+  def sent_to_notifications_address?
+    recipient_emails.map(&:downcase).include?(BaseMailer::NOTIFICATIONS_EMAIL_ADDRESS.downcase)
+  end
+
   def body_format
     if body_html.present?
       'html'
@@ -85,7 +89,7 @@ class ReceivedEmail < ApplicationRecord
   end
 
   def is_addressed_to_loomio?
-    route_address.present?
+    route_address.present? || sent_to_notifications_address?
   end
 
   def is_auto_response?

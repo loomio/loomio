@@ -527,3 +527,8 @@ tr:
       accept_prompt: Neden buna gönüllü oluyorsun?
       decline_meaning: Katılamıyorum
       decline_prompt: Söylemek istediğiniz bir şey var mı?
+  forward_mailer:
+    bounce:
+      subject: Loomio'ya mesajınız iletilmedi
+      reason: Bu durum, e-posta istemcinizin iletiyi sağlanan "Yanıtla" adresi yerine "Kimden" adresine yönlendirmesinden kaynaklandı.
+      recommendation: Lütfen tarayıcınızda Loomio'yu açın ve mesajınızı doğrudan gönderin.

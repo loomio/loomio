@@ -527,3 +527,8 @@ fi:
       accept_prompt: Miksi ilmoittaudut tähän vapaaehtoiseksi?
       decline_meaning: En pysty osallistumaan
       decline_prompt: Onko sinulla jotain sanottavaa?
+  forward_mailer:
+    bounce:
+      subject: Viestiäsi Loomiolle ei toimitettu
+      reason: Tämä tapahtui, koska sähköpostiohjelmasi osoitti viestin lähettäjäosoitteeseen eikä annettuun vastausosoitteeseen.
+      recommendation: Avaa Loomio selaimessasi ja lähetä viestisi suoraan.

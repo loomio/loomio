@@ -53,6 +53,7 @@ RSpec.configure do |config|
 
   config.include FactoryBot::Syntax::Methods
   config.include ActiveSupport::Testing::TimeHelpers
+  config.include MailerMacros
 
   config.before(:each) do
     stub_request(:get, /\.chargifypay.com/).
