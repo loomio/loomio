@@ -90,7 +90,13 @@ export default {
         Flash.success(`poll_${this.stance.poll().pollType}_vote_form.stance_${actionName}`);
         EventBus.$emit('closeModal');
       }).catch((err) => {
-        Flash.custom(err.error || Object.values(err.errors).join(", "));
+        if (err.error) {
+          Flash.custom(err.error);
+        } else if (err.errors) {
+          Flash.custom(Object.values(err.errors).join(", "));
+        } else {
+          Flash.error('poll_common_form.please_review_the_form');
+        }
       }).finally(() => this.loading = false);
     },
 
