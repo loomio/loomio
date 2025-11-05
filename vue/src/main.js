@@ -20,6 +20,22 @@ import router from './routes'
 import boot from '@/shared/helpers/boot';
 import Session from '@/shared/services/session';
 import { plugin as Slicksort } from 'vue-slicksort';
+import { isChunkOrDynamicImportError, promptAndMaybeReload } from '@/shared/services/chunk_error_handling';
+
+// Global error handler to catch "Load failed" errors from old assets after deploys
+window.addEventListener('error', (event) => {
+  if (event.error && isChunkOrDynamicImportError(event.error)) {
+    event.preventDefault();
+    promptAndMaybeReload();
+  }
+});
+
+window.addEventListener('unhandledrejection', (event) => {
+  if (event.reason && isChunkOrDynamicImportError(event.reason)) {
+    event.preventDefault();
+    promptAndMaybeReload();
+  }
+});
 
 boot(function(data) {
   Session.apply(data);
