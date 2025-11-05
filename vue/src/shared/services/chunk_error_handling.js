@@ -29,6 +29,7 @@ let isReloading = false
  * - Missing/renamed code-split chunk (404)
  * - Browser/Vite dynamic import failures
  * - Generic chunk load errors
+ * - Assets 404ing after deploys (Safari "Load failed")
  */
 export function isChunkOrDynamicImportError(err) {
   if (!err) return false
@@ -48,6 +49,9 @@ export function isChunkOrDynamicImportError(err) {
 
   // Some environments surface generic "Failed to fetch" or network errors
   if (/NetworkError/i.test(message) || /Failed to fetch/i.test(message)) return true
+
+  // Safari "Load failed" error when assets 404 after deploy
+  if (/Load failed/i.test(message)) return true
 
   // Module not found in certain runtimes
   if (/ERR_MODULE_NOT_FOUND/i.test(message)) return true
