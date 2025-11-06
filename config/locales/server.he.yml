@@ -182,6 +182,7 @@ he:
       must_have_options: חייבת להיות אפשרות סקר אחת לפחות
       must_be_in_the_future: חייב להיות בעתיד
       templates_cannot_close: לא ניתן לסגור תבניות
+      poll_options_dont_match: באג עם Loomio מנע את שמירת ההצבעה שלך. אנו עובדים על תיקון הבעיה. אנא טען מחדש ונסה שוב.
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) משתתפים הצהירו את עמדתם"
       title: כותרת
@@ -282,7 +283,6 @@ he:
         אם בעיות ההתחברות ממשיכים, השב למייל זה ליצירת קשר עם איש תמיכה.
     by_who: לפי %{person}
     reply_to_this_discussion: השב לדיון זה
-    loomio_app_description: מקום קל לשימוש ומאובטח עבור ארגונים לקבל החלטות ביחד.
     view_group: צפיה בקבוצה
     to_join_group:
       subject: "%{member} הזמין אותך להצטטרף ל%{group_name} ב%{site_name}"
@@ -321,6 +321,7 @@ he:
       subject: "%{who} ביקש להצטרף %{which_group}"
       view_group: אתה יכול לאשר או לשלול בקשות כאן
       button_text: צפה בבקשה
+    loomio_app_description: מקום בו ארגונים יכולים לקבל החלטות יחד.
   announcement_count_emails: "%{count} מיילים"
   email_actions:
     unfollowed_discussion: השבתת הודעות אימייל עבור השיחה הזו.
@@ -538,3 +539,8 @@ he:
       accept_prompt: למה אתה מתנדב לזה?
       decline_meaning: אני לא יכול להשתתף
       decline_prompt: האם יש משהו שתרצה לומר?
+  forward_mailer:
+    bounce:
+      subject: ההודעה שלך ללומיו לא נמסרה
+      reason: זה קרה מכיוון שלקוח הדוא"ל שלך פנה את ההודעה לכתובת "מאת", ולא לכתובת "השב אל" שסופקה.
+      recommendation: אנא פתחו את Loomio בדפדפן שלכם ופרסמו את הודעתכם ישירות.

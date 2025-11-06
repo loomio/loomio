@@ -182,6 +182,7 @@ hr:
       must_have_options: Mora imati barem jednu opciju ankete
       must_be_in_the_future: Mora biti u budućnosti
       templates_cannot_close: Predlošci se ne mogu zatvoriti
+      poll_options_dont_match: Greška u Loomiu spriječila je spremanje vašeg glasa. Radimo na rješavanju problema. Molimo vas da ponovno učitate stranicu i pokušate ponovno.
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) članova iznijelo je svoj stav"
       title: Titula
@@ -272,7 +273,6 @@ hr:
       signoff: Ovo ste primili jer je vaša adresa e-pošte upisana u obrazac "Zaboravljena lozinka" na %{hostname}. Međutim, vaša zaporka neće biti promijenjena sve dok ne slijedite gornju poveznicu i ispunite obrazac. Ako i dalje budete imali problema s prijavom, odgovorite na ovu e-poruku kako biste kontaktirali osobu za podršku.
     by_who: od %{person}
     reply_to_this_discussion: Odgovorite na ovu raspravu
-    loomio_app_description: Lako za korištenje, sigurno mjesto za organizacije da zajedno donose odluke.
     view_group: Pogledaj grupu
     to_join_group:
       subject: "%{member} vas je pozvao da se pridružite %{group_name} na %{site_name}"
@@ -311,6 +311,7 @@ hr:
       subject: "%{who} je zatražio da se pridruži %{which_group}"
       view_group: Ovdje možete odobriti ili odbiti zahtjev
       button_text: Pogledaj zahtjev
+    loomio_app_description: Mjesto gdje organizacije mogu zajedno donositi odluke.
   announcement_count_emails: "%{count} e-poruka"
   email_actions:
     unfollowed_discussion: Isključili ste e-poštu za nit.
@@ -526,3 +527,8 @@ hr:
       accept_prompt: Zašto se dobrovoljno prijavljuješ za ovo?
       decline_meaning: Ne mogu sudjelovati
       decline_prompt: Imate li što reći?
+  forward_mailer:
+    bounce:
+      subject: Vaša poruka za Loomio nije dostavljena
+      reason: To se dogodilo jer je vaš klijent e-pošte adresu poslao na adresu "Od", a ne na navedenu adresu "Odgovori".
+      recommendation: Molimo vas da otvorite Loomio u svom pregledniku i izravno objavite svoju poruku.

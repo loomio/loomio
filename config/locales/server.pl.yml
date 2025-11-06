@@ -188,6 +188,7 @@ pl:
       must_have_options: Musi mieć co najmniej jedną opcję ankiety
       must_be_in_the_future: Musi być w przyszłości
       templates_cannot_close: Szablony nie mogą zostać zamknięte
+      poll_options_dont_match: Błąd w Loomio uniemożliwił zapisanie Twojego głosu. Pracujemy nad jego rozwiązaniem. Odśwież stronę i spróbuj ponownie.
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) członkowie podali swoje stanowisko"
       title: Tytuł
@@ -297,7 +298,6 @@ pl:
         Jeśli nadal będziesz mieć problemy z zalogowaniem się, odpowiedz na tą wiadomość e-mail, aby skontaktować się z obsługą klienta.
     by_who: przez %{person}
     reply_to_this_discussion: Odpowiedz na tę dyskusję
-    loomio_app_description: "%{site_name} to narzędzie do podejmowania decyzji dla organizacji współpracujących"
     view_group: Wyświetl grupę
     to_join_group:
       subject: "%{member} zaprasza Cię do przyłączenia się do grupy %{group_name} na %{site_name} "
@@ -336,6 +336,7 @@ pl:
       subject: " %{who} prosi o dołączenie do grupy %{which_group}"
       view_group: Możesz zatwierdzić lub odrzucić prośbę tutaj
       button_text: Wyświetl prośbę
+    loomio_app_description: Miejsce, w którym organizacje mogą wspólnie podejmować decyzje.
   announcement_count_emails: "%{count} wiadomości e-mail"
   email_actions:
     unfollowed_discussion: Wyłączono wiadomości e-mail dla wątku.
@@ -553,3 +554,8 @@ pl:
       accept_prompt: Dlaczego się do tego zgłaszasz?
       decline_meaning: Nie mogę wziąć udziału
       decline_prompt: Czy chciałbyś coś powiedzieć?
+  forward_mailer:
+    bounce:
+      subject: Twoja wiadomość do Loomio nie została dostarczona
+      reason: Stało się tak, ponieważ Twój klient poczty e-mail zaadresował wiadomość na adres „Od”, a nie na podany adres „Odpowiedz do”.
+      recommendation: Otwórz Loomio w przeglądarce i bezpośrednio opublikuj swoją wiadomość.

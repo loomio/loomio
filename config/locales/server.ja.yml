@@ -177,6 +177,7 @@ ja:
       must_have_options: 少なくとも 1 つの投票オプションが必要です
       must_be_in_the_future: きっと未来にあるはず
       templates_cannot_close: テンプレートを閉じることができません
+      poll_options_dont_match: Loomioのバグにより、投票を保存できませんでした。現在修正に取り組んでいます。再読み込みしてもう一度お試しください。
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) 人のメンバーが自分の立場を表明しました"
       title: タイトル
@@ -265,9 +266,8 @@ ja:
       greeting: 'こんにちは %{name} こちらは、Loomio アカウントのパスワードをリセットするために使用できるリンクです:'
       link_text: あなたのパスワードをリセット
       signoff: "%{hostname} の「パスワードを忘れた場合」フォームに電子メールが入力されたため、このメッセージを受信しました。ただし、上記のリンクをクリックしてフォームに記入するまで、パスワードは変更されません。引き続きログインの問題が発生する場合は、このメールに返信してサポート担当者に連絡してください。"
-    by_who: "%{人} 著"
+    by_who: "%{person} 著"
     reply_to_this_discussion: このディスカッションに返信する
-    loomio_app_description: 組織が一緒に意思決定を行うための使いやすく安全な場所。
     view_group: グループを表示する
     to_join_group:
       subject: "%{member} が %{site_name} の %{group_name} に参加するよう招待しています"
@@ -306,6 +306,7 @@ ja:
       subject: " %{who}  が %{which_group} に参加するようにお願いしています"
       view_group: ここでリクエストを承認または拒否できます
       button_text: リクエストの表示
+    loomio_app_description: 組織が共同で意思決定を行う場所。
   announcement_count_emails: "%{count} 件のメール"
   email_actions:
     unfollowed_discussion: スレッドの電子メールをオフにしました。
@@ -526,3 +527,8 @@ ja:
       accept_prompt: なぜこれにボランティアとして参加するのですか?
       decline_meaning: 参加できません
       decline_prompt: 何か言いたいことはありますか？
+  forward_mailer:
+    bounce:
+      subject: Loomioへのメッセージは配信されませんでした
+      reason: これは、電子メール クライアントが、指定された「返信先」アドレスではなく、「送信元」アドレスにメッセージを送信したために発生しました。
+      recommendation: ブラウザでLoomioを開いて、メッセージを直接投稿してください。

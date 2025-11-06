@@ -128,7 +128,6 @@ zh_TW:
   subscription_status:
     plan: 方案
     state: 狀態
-    members: 成員 (%{count})
     active_members: 活躍成員
     max_threads: 最大討論串
     max_members: 最大成員
@@ -140,6 +139,7 @@ zh_TW:
     manage_payment_details: 管理付款詳細資訊
     manage_subscription: 管理訂閱
     amount: 數量
+    members: 成員
   loomio_tags:
     all_tags: 所有標籤
     tags: 標籤
@@ -711,7 +711,7 @@ zh_TW:
       user_reminded: "%{actor} 正在提醒您要投票：%{title}"
       group_mentioned: "%{actor} 在 %{title} 中提及了該組合"
       new_delegate: "%{actor} 讓你成為 %{title} 中擁有投票權的代表"
-      poll_announced: 請投票：%{title}
+      poll_announced: "%{actor} 邀請您投票：%{title}"
     without_title:
       unknown_sender: 請檢查來自無法識別的寄件者的電子郵件
       discussion_announced: "%{actor} 邀請您加入討論串"
@@ -772,7 +772,6 @@ zh_TW:
       outcome_created: "%{poll_type} 結論：%{title}"
       outcome_updated: "%{poll_type} 結論已更新：%{title}"
       outcome_review_due: 是時候回顧一下結論了：%{title}
-      poll_announced: 投票：%{title}
       poll_closed_by_user: "%{actor} 關閉了 %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} 將於 24 小時後結束：%{title}"
       poll_closing_soon_author: 您的 %{poll_type} 投票將於 24 小時後結束：%{title}
@@ -792,6 +791,7 @@ zh_TW:
       user_mentioned: "%{actor} 在 %{title} 中提到了你"
       group_mentioned: "%{actor} 在以下文章中提到了這個團體：%{title}"
       user_reminded: "%{actor} 提醒您參與以下投票：%{title}"
+      poll_announced: 投票：%{title}
   discussion_fork_actions:
     helptext: 選取您想要移動到其他討論串的項目
     move: 移動
@@ -1161,7 +1161,6 @@ zh_TW:
     threads: 討論串
     polls: 投票
     decisions: 決定
-    members: 成員 (%{count})
     files: 檔案
     settings: 設定
     subgroups: 子群組
@@ -1230,6 +1229,7 @@ zh_TW:
     participation_report: 參與報告
     my_subgroups: 我的子群組
     more_subgroups: 更多子組
+    members: 成員
   export_data_modal:
     title: 您想要如何使用您的資料？
     as_csv: 在試算表中開啟它
@@ -1989,12 +1989,12 @@ zh_TW:
     sharable_link: 可分享的連結
     last_seen: 最後檢視 %{date}
     invited_by_name: 被 %{name} 邀請
-    accepted: 成員 (%{count})
     email_rejected: 電子郵件被拒絕
     email_rejected_meaning: 發送到此位址的電子郵件已被退回或標記為垃圾郵件。不會再有電子郵件傳送到該位址。
     delegate: 代表
     delegate_popover: 代表是具有投票權的團體成員
     delegates: 代表
+    accepted: 成員
   polls_panel:
     new_poll: 新投票
     any_type: 所有類型

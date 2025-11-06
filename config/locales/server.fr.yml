@@ -187,6 +187,7 @@ fr:
       must_have_options: Il faut au moins une option de sondage
       must_be_in_the_future: Doit être dans le futur
       templates_cannot_close: Les modèles ne peuvent pas se fermer
+      poll_options_dont_match: Un bug de Loomio a empêché l'enregistrement de votre vote. Nous travaillons à la résolution de ce problème. Veuillez recharger la page et réessayer.
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) des membres se sont exprimés"
       title: Titre
@@ -296,7 +297,6 @@ fr:
         Après quoi, si vous ne parvenez toujours pas à vous connecter, répondez à ce courriel pour contacter une personne de notre équipe support.
     by_who: par %{person}
     reply_to_this_discussion: Répondre à cette discussion
-    loomio_app_description: "%{site_name} est un outil d’aide à la décision pour les organisations collaboratives"
     view_group: Voir le groupe
     to_join_group:
       subject: "%{member} vous a invité·e à rejoindre le groupe %{group_name} sur %{site_name}"
@@ -335,6 +335,7 @@ fr:
       subject: "%{who} a demandé à rejoindre %{which_group}"
       view_group: Vous pouvez accepter ou rejeter cette demande
       button_text: Voir la demande
+    loomio_app_description: Un lieu où les organisations peuvent prendre des décisions ensemble.
   announcement_count_emails: "%{count} courriels"
   email_actions:
     unfollowed_discussion: Vous avez désactivé les notifications pour cette discussion.
@@ -556,3 +557,8 @@ fr:
       accept_prompt: Pourquoi vous portez-vous volontaire pour cela ?
       decline_meaning: Je ne peux pas participer
       decline_prompt: Y a-t-il quelque chose que vous aimeriez dire ?
+  forward_mailer:
+    bounce:
+      subject: Votre message à Loomio n'a pas été transmis.
+      reason: Cela s'est produit car votre client de messagerie a adressé le message à l'adresse « De » au lieu de l'adresse « Répondre à » indiquée.
+      recommendation: Veuillez ouvrir Loomio dans votre navigateur et poster votre message directement.

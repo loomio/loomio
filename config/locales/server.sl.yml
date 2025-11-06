@@ -182,6 +182,7 @@ sl:
       must_have_options: Imeti mora vsaj eno možnost ankete
       must_be_in_the_future: Mora biti v prihodnosti
       templates_cannot_close: Predloge ni mogoče zapreti
+      poll_options_dont_match: Napaka v programu Loomio je preprečila shranjevanje vašega glasu. Delamo na odpravi te težave. Ponovno naložite in poskusite znova.
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) članov je izrazilo svoje stališče"
       title: Naslov
@@ -272,7 +273,6 @@ sl:
       signoff: To ste prejeli, ker je bil vaš e-poštni naslov vnesen v obrazec »Pozabljeno geslo« na %{hostname}. Vendar pa vaše geslo ne bo spremenjeno, dokler ne sledite zgornji povezavi in izpolnite obrazca. Če boste imeli še naprej težave pri prijavi, odgovorite na to e-poštno sporočilo in kontaktirajte osebo za podporo.
     by_who: "%{person}"
     reply_to_this_discussion: Odgovori na to razpravo
-    loomio_app_description: Preprosto za uporabo in varno mesto za organizacije, kjer lahko skupaj sprejemajo odločitve.
     view_group: Ogled skupine
     to_join_group:
       subject: "%{member} vas je povabil, da se pridružite %{group_name} na %{site_name}"
@@ -311,6 +311,7 @@ sl:
       subject: "%{who} je zaprosil za vstop v %{which_group}"
       view_group: Prošnjo lahko odobriš ali zavrneš tukaj
       button_text: Ogled zahteve
+    loomio_app_description: Kraj, kjer lahko organizacije skupaj sprejemajo odločitve.
   announcement_count_emails: "%{count} e-poštnih sporočil"
   email_actions:
     unfollowed_discussion: Izklopili ste e-pošto za nit.
@@ -526,3 +527,8 @@ sl:
       accept_prompt: Zakaj se prostovoljno javljaš za to?
       decline_meaning: Ne morem sodelovati
       decline_prompt: Bi radi kaj povedali?
+  forward_mailer:
+    bounce:
+      subject: Vaše sporočilo Loomiu ni bilo dostavljeno
+      reason: Do tega je prišlo, ker je vaš e-poštni odjemalec sporočilo naslovil na naslov »Od« in ne na navedeni naslov »Odgovori«.
+      recommendation: Prosimo, odprite Loomio v brskalniku in objavite svoje sporočilo neposredno.

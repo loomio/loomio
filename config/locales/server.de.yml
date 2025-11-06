@@ -187,6 +187,7 @@ de:
       must_have_options: Es muss mindestens eine Option in dieser Umfrage geben
       must_be_in_the_future: Muss in der Zukunft liegen
       templates_cannot_close: Vorlagen können nicht geschlossen werden
+      poll_options_dont_match: Ein Fehler in Loomio hat verhindert, dass Ihre Stimme gespeichert wurde. Wir arbeiten an der Behebung. Bitte laden Sie die Seite neu und versuchen Sie es erneut.
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) Mitglieder haben ihre Position angegeben."
       title: Titel
@@ -298,7 +299,6 @@ de:
         Solltest du weiterhin Probleme beim Einloggen haben, dann antworte auf diese E-Mail um mit jemandem von unserem Support Kontakt aufzunehmen - auf Englisch bitte.
     by_who: von %{person}
     reply_to_this_discussion: Direkt auf diese Diskussion antworten
-    loomio_app_description: "%{site_name} ist ein Entscheidungstool für kollaborative Organisationen"
     view_group: Gruppe ansehen
     to_join_group:
       subject: "%{member} hat dich eingeladen %{group_name} auf %{site_name} beizutreten"
@@ -337,6 +337,7 @@ de:
       subject: "%{who} bittet darum %{which_group} beitreten zu dürfen."
       view_group: Du kannst die Anfrage hier annehmen oder ablehnen
       button_text: Anfrage ansehen
+    loomio_app_description: Ein Ort, an dem Organisationen gemeinsam Entscheidungen treffen können.
   announcement_count_emails: "%{count} E-mails"
   email_actions:
     unfollowed_discussion: Du hast E-Mail-Benachrichtigungen für diese Diskussion deaktiviert.
@@ -558,3 +559,8 @@ de:
       accept_prompt: Warum engagieren Sie sich ehrenamtlich dafür?
       decline_meaning: Ich kann nicht teilnehmen
       decline_prompt: Möchten Sie etwas sagen?
+  forward_mailer:
+    bounce:
+      subject: Ihre Nachricht an Loomio wurde nicht zugestellt.
+      reason: Dies geschah, weil Ihr E-Mail-Client die Nachricht an die „Von“-Adresse und nicht an die angegebene „Antwort an“-Adresse adressiert hat.
+      recommendation: Bitte öffnen Sie Loomio in Ihrem Browser und posten Sie Ihre Nachricht direkt.

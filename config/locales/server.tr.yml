@@ -182,6 +182,7 @@ tr:
       must_have_options: En az bir anket seçeneği olmalıdır
       must_be_in_the_future: Gelecekte olmalı
       templates_cannot_close: Şablonlar kapatılamıyor
+      poll_options_dont_match: Loomio'daki bir hata nedeniyle oylamanız kaydedilemedi. Bu sorunu düzeltmek için çalışıyoruz. Lütfen sayfayı yenileyip tekrar deneyin.
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) üye konumlarını belirtti"
       title: Başlık
@@ -272,7 +273,6 @@ tr:
       signoff: Bunu, e-postanız %{hostname} üzerindeki "Şifremi unuttum" formuna girildiği için aldınız. Ancak yukarıdaki bağlantıyı takip edip formu doldurana kadar şifreniz değişmeyecektir. Giriş yapmakta sorun yaşamaya devam ederseniz, bir destek yetkilisiyle iletişime geçmek için bu e-postayı yanıtlayın.
     by_who: "%{person} tarafından"
     reply_to_this_discussion: Bu müzakereyi yanıtla
-    loomio_app_description: Kuruluşların birlikte karar verebileceği, kullanımı kolay, güvenli bir yer.
     view_group: Grubu gör
     to_join_group:
       subject: "%{member} sizi %{site_name} sitesinde %{group_name} grubuna katılmaya davet etti"
@@ -311,6 +311,7 @@ tr:
       subject: "%{who} %{which_group} grubuna katılmak için talep gönderdi"
       view_group: Burada isteği onaylayabilir ya da reddedebilirsin
       button_text: İsteği görüntüle
+    loomio_app_description: Kuruluşların birlikte karar alabileceği bir yer.
   announcement_count_emails: "%{count} e-posta"
   email_actions:
     unfollowed_discussion: Konu başlığı için e-postaları kapattınız.
@@ -526,3 +527,8 @@ tr:
       accept_prompt: Neden buna gönüllü oluyorsun?
       decline_meaning: Katılamıyorum
       decline_prompt: Söylemek istediğiniz bir şey var mı?
+  forward_mailer:
+    bounce:
+      subject: Loomio'ya mesajınız iletilmedi
+      reason: Bu durum, e-posta istemcinizin iletiyi sağlanan "Yanıtla" adresi yerine "Kimden" adresine yönlendirmesinden kaynaklandı.
+      recommendation: Lütfen tarayıcınızda Loomio'yu açın ve mesajınızı doğrudan gönderin.

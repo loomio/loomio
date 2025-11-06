@@ -182,6 +182,7 @@ sv:
       must_have_options: Måste ha minst ett omröstningsalternativ
       must_be_in_the_future: Måste vara i framtiden
       templates_cannot_close: Mallar kan inte stängas
+      poll_options_dont_match: Ett fel med Loomio förhindrade att din röst sparades. Vi arbetar med att åtgärda detta. Vänligen ladda om och försök igen.
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) medlemmar har angett sin position"
       title: Titel
@@ -272,7 +273,6 @@ sv:
       signoff: Du fick detta eftersom din e-postadress skrevs in i formuläret "Glömt lösenord" på %{hostname}. Ditt lösenord kommer dock inte att ändras förrän du följer länken ovan och fyller i formuläret. Om du fortsätter att ha problem med att logga in, svara på det här e-postmeddelandet för att kontakta en supportperson.
     by_who: av %{person}
     reply_to_this_discussion: Svara på denna diskussion
-    loomio_app_description: En lättanvänd, säker plats för organisationer att fatta beslut tillsammans.
     view_group: Visa grupp
     to_join_group:
       subject: "%{member} har bjudit in dig att gå med i %{group_name} på %{site_name}"
@@ -311,6 +311,7 @@ sv:
       subject: "%{who} har begärt att få gå med %{which_group}"
       view_group: Du kan godkänna eller avslå begäran här
       button_text: Visa begäran
+    loomio_app_description: En plats där organisationer kan fatta beslut tillsammans.
   announcement_count_emails: "%{count} e-postmeddelanden"
   email_actions:
     unfollowed_discussion: Du har stängt av e-post för tråden.
@@ -526,3 +527,8 @@ sv:
       accept_prompt: Varför är du volontär för detta?
       decline_meaning: Jag kan inte delta
       decline_prompt: Finns det något du skulle vilja säga?
+  forward_mailer:
+    bounce:
+      subject: Ditt meddelande till Loomio levererades inte
+      reason: Detta hände eftersom din e-postklient adresserade meddelandet till "Från"-adressen snarare än den angivna "Svara till"-adressen.
+      recommendation: Öppna Loomio i din webbläsare och skicka ditt meddelande direkt.

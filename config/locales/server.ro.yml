@@ -182,6 +182,7 @@ ro:
       must_have_options: Intr-un sondaj trebuie sa existe macar o optiune
       must_be_in_the_future: Trebuie să fie în viitor
       templates_cannot_close: Șabloanele nu se pot închide
+      poll_options_dont_match: O eroare cu Loomio a împiedicat salvarea votului tău. Lucrăm la remedierea acestei probleme. Te rugăm să reîncarci pagina și să încerci din nou.
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) membri și-au declarat poziția"
       title: Titlu
@@ -272,7 +273,6 @@ ro:
       signoff: Ați primit acest lucru deoarece e-mailul dvs. a fost introdus în formularul „Am uitat parola” de pe %{hostname}. Cu toate acestea, parola dvs. nu va fi schimbată până când veți urma linkul de mai sus și completați formularul. Dacă întâmpinați în continuare probleme la conectare, răspundeți la acest e-mail pentru a contacta o persoană de asistență.
     by_who: de catre %{person}
     reply_to_this_discussion: Raspunde acestei discutii
-    loomio_app_description: Un loc sigur și ușor de utilizat pentru ca organizațiile să ia decizii împreună.
     view_group: Vizualizeaza grupul
     to_join_group:
       subject: "%{member} te-a invitat sa intri in %{group_name} pe %{site_name}"
@@ -311,6 +311,7 @@ ro:
       subject: "%{who} a cerut sa intre in %{which_group}"
       view_group: Aici poti aproba sau nu cererea
       button_text: Vizualizeaza cerere
+    loomio_app_description: Un loc în care organizațiile pot lua decizii împreună.
   announcement_count_emails: "%{count} e-mailuri"
   email_actions:
     unfollowed_discussion: Ați dezactivat e-mailurile pentru fir.
@@ -526,3 +527,8 @@ ro:
       accept_prompt: De ce te oferi voluntar pentru asta?
       decline_meaning: Nu pot participa
       decline_prompt: Ai vrea să spui ceva?
+  forward_mailer:
+    bounce:
+      subject: Mesajul tău către Loomio nu a fost livrat.
+      reason: Acest lucru s-a întâmplat deoarece clientul dvs. de e-mail a adresat mesajul adresei „Expeditor”, în loc de adresa „Răspuns către” furnizată.
+      recommendation: Te rugăm să deschizi Loomio în browser și să postezi mesajul direct.

@@ -711,7 +711,7 @@ de:
       user_reminded: "%{actor} erinnert dich deine Stimme in %{title} abzugeben"
       group_mentioned: "%{actor} hat die Gruppe erwähnt in: %{title}"
       new_delegate: "%{actor} hat Sie zum Delegierten mit Stimmrecht in %{title} gemacht"
-      poll_announced: 'Bitte abstimmen: %{title}'
+      poll_announced: "%{actor} hat Sie zur Abstimmung eingeladen: %{title}"
     without_title:
       unknown_sender: Bitte überprüfen Sie die E-Mail von einem unbekannten Absender
       discussion_announced: "%{actor} hat Sie zu einem Thread eingeladen"
@@ -767,12 +767,11 @@ de:
       new_comment: "%{actor} kommentierte in: %{title}"
       new_coordinator: "%{actor} hat Sie zum Administrator von %{title} ernannt."
       new_delegate: "%{actor} hat Sie zum Delegierten mit Stimmrechten in %{title} ernannt."
-      new_discussion: "%{Titel}"
-      outcome_announced: "Fazit für %{poll_type}: %{title}"
-      outcome_created: "Fazit für %{poll_type}: %{title}"
-      outcome_updated: "Fazit für %{poll_type} aktualisiert: %{title}"
+      new_discussion: "%{title}"
+      outcome_announced: 'Fazit für %{poll_type}: %{title}'
+      outcome_created: 'Fazit für %{poll_type}: %{title}'
+      outcome_updated: 'Fazit für %{poll_type} aktualisiert: %{title}'
       outcome_review_due: Es ist Zeit, das Fazit zu %{title} zu überprüfen.
-      poll_announced: 'Abstimmung: %{title}'
       poll_closed_by_user: "%{actor} hat die %{poll_type} geschlossen: %{title}"
       poll_closing_soon: "%{poll_type} schließt in 24 Stunden: %{title}"
       poll_closing_soon_author: 'Ihre %{poll_type}-Abstimmung endet in 24 Stunden: %{title}'
@@ -792,6 +791,7 @@ de:
       user_mentioned: "%{actor} erwähnte dich in: %{title}"
       group_mentioned: "%{actor} erwähnte die Gruppe in: %{title}"
       user_reminded: "%{actor} erinnert Sie daran, für Folgendes abzustimmen: %{title}"
+      poll_announced: 'Abstimmung: %{title}'
   discussion_fork_actions:
     helptext: Wähle Einträge aus, die du zu einer anderen Diskussioen verschieben willst
     move: Verschieben

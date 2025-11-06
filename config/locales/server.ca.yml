@@ -182,6 +182,7 @@ ca:
       must_have_options: Ha de tenir almenys una opció d'enquesta
       must_be_in_the_future: Ha de ser en el futur
       templates_cannot_close: Les plantilles no es poden tancar
+      poll_options_dont_match: Un error amb Loomio ha impedit que es desés el teu vot. Estem treballant per solucionar-ho. Torna a carregar i intenta-ho de nou.
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) membres han manifestat la seva posició"
       title: Títol
@@ -274,7 +275,6 @@ ca:
       signoff: Heu rebut això perquè el vostre correu electrònic s'ha introduït al formulari "He oblidat la contrasenya" a %{hostname}. Tanmateix, la vostra contrasenya no es canviarà fins que seguiu l'enllaç anterior i ompliu el formulari. Si continueu tenint problemes per iniciar la sessió, responeu a aquest correu electrònic per contactar amb una persona d'assistència.
     by_who: per %{person}
     reply_to_this_discussion: Responeu a aquesta discussió
-    loomio_app_description: Un lloc segur i fàcil d'utilitzar perquè les organitzacions prenguin decisions juntes.
     view_group: Mostra el grup
     to_join_group:
       subject: "%{member} t'ha convidat a unir-te a %{group_name} a %{site_name}"
@@ -313,6 +313,7 @@ ca:
       subject: "%{who} ha demanat unir-se a %{which_group}"
       view_group: Pots aprovar o denegar la sol·licitud aquí
       button_text: Veure sol·licitud
+    loomio_app_description: Un espai on les organitzacions puguin prendre decisions conjuntament.
   announcement_count_emails: "%{count} correus electrònics"
   email_actions:
     unfollowed_discussion: Heu desactivat els correus electrònics per al fil.
@@ -528,3 +529,8 @@ ca:
       accept_prompt: Per què et presentes com a voluntari per a això?
       decline_meaning: No puc participar
       decline_prompt: Hi ha alguna cosa que vulguis dir?
+  forward_mailer:
+    bounce:
+      subject: El teu missatge a Loomio no s'ha lliurat.
+      reason: Això ha passat perquè el vostre client de correu electrònic ha adreçat el missatge a l'adreça "De", en comptes de l'adreça "Respon" que heu proporcionat.
+      recommendation: Si us plau, obriu Loomio al vostre navegador i publiqueu el vostre missatge directament.

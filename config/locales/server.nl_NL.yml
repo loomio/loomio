@@ -188,6 +188,7 @@ nl_NL:
       must_have_options: Er moet op zijn minst één optie voor een peiling zijn
       must_be_in_the_future: Moet in de toekomst zijn
       templates_cannot_close: Sjablonen kunnen niet worden gesloten
+      poll_options_dont_match: Een bug in Loomio zorgde ervoor dat je stem niet werd opgeslagen. We werken aan een oplossing. Laad de pagina opnieuw en probeer het opnieuw.
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) leden hebben hun positie gegeven."
       title: Titel
@@ -297,7 +298,6 @@ nl_NL:
         Als je problemen blijft hebben met inloggen, reageer dan op deze e-mail om contact op te nemen met iemand van de helpdesk.
     by_who: door %{person}
     reply_to_this_discussion: Antwoord op deze discussie
-    loomio_app_description: "%{site_name} is een besluitvormingstool voor samenwerkende organisaties"
     view_group: Bekijk groep
     to_join_group:
       subject: "%{member} heeft je uitgenodigd om lid te worden van %{group_name} op %{site_name}"
@@ -336,6 +336,7 @@ nl_NL:
       subject: "%{who} heeft gevraagd om lid te worden van %{which_group}"
       view_group: Je kan hier de aanvraag goed- of afkeuren
       button_text: Verzoek bekijken
+    loomio_app_description: Een plek waar organisaties samen beslissingen kunnen nemen.
   announcement_count_emails: "%{count} e-mails"
   email_actions:
     unfollowed_discussion: Je hebt de e-mails voor het bord afgezet.
@@ -553,3 +554,8 @@ nl_NL:
       accept_prompt: Waarom doe je dit vrijwilligerswerk?
       decline_meaning: Ik kan niet deelnemen
       decline_prompt: Is er nog iets dat je wilt zeggen?
+  forward_mailer:
+    bounce:
+      subject: Uw bericht aan Loomio is niet afgeleverd
+      reason: Dit gebeurde omdat uw e-mailclient het bericht naar het 'Van'-adres had geadresseerd in plaats van het opgegeven 'Beantwoorden aan'-adres.
+      recommendation: Open Loomio in uw browser en plaats uw bericht direct.

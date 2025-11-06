@@ -182,6 +182,7 @@ da:
       must_have_options: Skal have mindst én afstemningsmulighed
       must_be_in_the_future: Skal være i fremtiden
       templates_cannot_close: Skabeloner kan ikke lukkes
+      poll_options_dont_match: En fejl med Loomio forhindrede din stemme i at blive gemt. Vi arbejder på at løse dette. Genindlæs venligst og prøv igen.
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) medlemmer har tilkendegivet deres holdning"
       title: Titel
@@ -278,7 +279,6 @@ da:
         Hvis du stadig har problemer med at logge ind, besvar denne email for at kontakte support.
     by_who: af %{person}
     reply_to_this_discussion: Svar på denne diskussion
-    loomio_app_description: Et let at bruge, sikkert sted for organisationer at træffe beslutninger sammen.
     view_group: Vis gruppe
     to_join_group:
       subject: "%{member} har inviteret dig til at deltage i %{group_name} på %{site_name}"
@@ -317,6 +317,7 @@ da:
       subject: "%{who} har anmodet om medlemskab af %{which_group}"
       view_group: Du kan godkende eller afvise anmodningen her
       button_text: Vis anmodning
+    loomio_app_description: Et sted, hvor organisationer kan træffe beslutninger i fællesskab.
   announcement_count_emails: "%{count} e-mails"
   email_actions:
     unfollowed_discussion: Du har slået e-mails fra for tråden.
@@ -532,3 +533,8 @@ da:
       accept_prompt: Hvorfor er du frivillig til dette?
       decline_meaning: Jeg kan ikke deltage
       decline_prompt: Er der noget, du gerne vil sige?
+  forward_mailer:
+    bounce:
+      subject: Din besked til Loomio blev ikke leveret
+      reason: Dette skete, fordi din e-mailklient adresserede beskeden til "Fra"-adressen i stedet for den angivne "Svar-til"-adresse.
+      recommendation: Åbn Loomio i din browser og send din besked direkte.

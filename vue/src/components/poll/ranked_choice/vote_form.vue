@@ -42,7 +42,9 @@ export default {
       this.stance.save().then(() => {
         Flash.success(`poll_${this.stance.poll().pollType}_vote_form.stance_${actionName}`);
         EventBus.$emit("closeModal");
-      }).catch(() => true);
+      }).catch((err) => {
+        Flash.custom(err.error || Object.values(err.errors).join(", "));
+      });
     },
 
     sortPollOptions() {

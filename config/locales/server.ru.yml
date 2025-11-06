@@ -184,6 +184,7 @@ ru:
       must_have_options: Нужен хотя бы один вариант
       must_be_in_the_future: Должно быть в будущем
       templates_cannot_close: Шаблоны не могут закрыться
+      poll_options_dont_match: Из-за ошибки в Loomio ваш голос не сохранился. Мы работаем над решением этой проблемы. Перезагрузите страницу и повторите попытку.
     export:
       percent_voted: "%{num}/%{denom}(%{percent}) участников выразили свое мнение"
       title: Название
@@ -281,7 +282,6 @@ ru:
         Если вам по-прежнему трудно войти, свяжитесь с поддержкой, ответив на это письмо.
     by_who: от %{person}
     reply_to_this_discussion: Ответить в этой дискуссии
-    loomio_app_description: Простое в использовании и безопасное место, где организации могут совместно принимать решения.
     view_group: Смотреть группу
     to_join_group:
       subject: "%{member} приглашает вас вступить в %{group_name} на %{site_name}"
@@ -320,6 +320,7 @@ ru:
       subject: "%{who} хочет вступить в %{which_group}"
       view_group: Здесь вы можете одобрить или отклонить просьбу
       button_text: Смотреть проьбу
+    loomio_app_description: Место, где организации могут совместно принимать решения.
   announcement_count_emails: "%{count} писем"
   email_actions:
     unfollowed_discussion: Вы отключили письма этой ветки.
@@ -537,3 +538,8 @@ ru:
       accept_prompt: Почему вы решили этим заняться?
       decline_meaning: Я не могу участвовать
       decline_prompt: Хотите что-нибудь сказать?
+  forward_mailer:
+    bounce:
+      subject: Ваше сообщение в Loomio не было доставлено.
+      reason: Это произошло потому, что ваш почтовый клиент адресовал сообщение на адрес «От», а не на указанный в поле «Ответить».
+      recommendation: Откройте Loomio в своем браузере и отправьте свое сообщение напрямую.

@@ -52,9 +52,7 @@ export default {
         Flash.success(`poll_${this.stance.poll().pollType}_vote_form.stance_${actionName}`);
         EventBus.$emit("closeModal");
       }).catch((err) => {
-        Flash.error('poll_common_form.please_review_the_form');
-        console.log(err);
-
+        Flash.custom(err.error || Object.values(err.errors).join(", "));
       }).finally(() => this.loading = false);
     },
 
@@ -91,7 +89,7 @@ export default {
 
   computed: {
     poll() { return this.stance.poll(); },
-  
+
     dotsRemaining() {
       return this.dotsPerPerson - sum(map(this.stanceChoices, (c) => parseInt(c.score) || 0));
     },
@@ -101,7 +99,7 @@ export default {
     },
 
     alertColor() {
-      if (this.dotsRemaining === 0) { return 'success'; } 
+      if (this.dotsRemaining === 0) { return 'success'; }
       if (this.dotsRemaining > 0) { return 'primary'; }
       if (this.dotsRemaining < 0) { return 'error'; }
     }
