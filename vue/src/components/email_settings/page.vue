@@ -44,12 +44,13 @@ export default {
   methods: {
     submit() {
       Records.users.updateProfile(this.user).then(() => {
-        Flash.custom(I18n.global.t('email_settings_page.messages.updated'), 'success', 500);
+        Flash.custom(I18n.global.t('email_settings_page.messages.updated'), 'success', 4000);
       }).catch(error => true);
     },
 
     init() {
       if (!Session.isSignedIn() && (Session.user().restricted == null)) { return; }
+      Records.users.findOrFetchGroups();
       Session.user().attributeNames.push('unsubscribeToken');
       this.originalUser = Session.user();
       this.user = Session.user().clone();
@@ -113,14 +114,10 @@ v-main
   v-container.email-settings-page.max-width-1024.px-0.px-sm-3(v-if='user')
 
     v-card.mb-4(v-if="user.deactivatedAt")
-      //- v-card-title
-      //-   h1.text-h5(tabindex="-1" v-t="'email_settings_page.header'")
       v-card-text
         p(v-t="'email_settings_page.account_deactivated'")
 
     v-card.mb-4(v-if="!user.deactivatedAt")
-      //- v-card-title
-      //-   h1.text-h5(tabindex="-1" v-t="'email_settings_page.header'")
       v-card-text
         v-checkbox#mentioned-email.email-settings-page__mentioned(v-model='user.emailWhenMentioned')
           template(v-slot:label)
