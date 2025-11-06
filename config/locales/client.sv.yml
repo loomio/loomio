@@ -468,12 +468,14 @@ sv:
     loud_desc: Varje gång någon deltar
     normal_desc: När någon meddelar mig
     quiet_desc: Aldrig
-    quiet_explained: Du kommer inte att bli mailad, även när någon försöker meddela dig. Du kan missa viktiga meddelanden eller beslut. Detta kan vara lämpligt om en tråd inte berör dig, men rekommenderas inte för gruppinställningen om du inte har andra sätt att hålla dig uppdaterad.
     loud_explained: Du kommer att bli mailad varje gång det kommer en ny kommentar, någon röstar eller startar en omröstning eller tråd.
     when_would_you_like_to_be_emailed_poll_type: När vill du få e-post om denna %{poll_type}?
     normal_explained: När någon skriver in ditt namn i fältet "Meddela" i en tråd eller en omröstning, eller när de {'@'}nämner gruppen.
     normal_excludes_mentioning_html: Det finns en separat inställning för när någon {'@'}nämner dig (t.ex. när de svarar dig i en kommentar). <a href="%{url}">Klicka här för att redigera inställningarna för @omnämnanden.</a>
     changes_all_threads_and_polls_in_group: Detta ändrar inställningarna för alla trådar och omröstningar i gruppen.
+    when_do_you_want_to_be_emailed: När vill du bli mejlad?
+    what_the_options_mean: Vad alternativen betyder
+    quiet_explained: Du kommer inte att få ett e-postmeddelande, inte ens när någon försöker meddela dig. Du kan missa viktiga meddelanden eller beslut om du inte har för vana att kolla Loomio regelbundet.
   close_explanation_modal:
     aria_label: Stäng tråd
     close_thread: Stäng tråd

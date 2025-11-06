@@ -470,10 +470,12 @@ fi:
     quiet_desc: Ei koskaan
     loud_explained: Saat sähköpostin aina, kun tulee uusi kommentti, joku äänestää tai aloittaa kyselyn tai viestiketjun.
     when_would_you_like_to_be_emailed_poll_type: Milloin haluaisit saada sähköpostia tästä %{poll_type}?
-    quiet_explained: Et saa sähköpostia, vaikka joku yrittäisi ilmoittaa sinulle. Saatat missata tärkeitä ilmoituksia tai päätöksiä. Tämä voi olla sopivaa, jos keskusteluketju ei koske sinua, mutta sitä ei suositella ryhmäasetuksiin, ellet pysty pysymään ajan tasalla muilla tavoilla.
     normal_explained: Kun joku kirjoittaa nimesi ketjun tai kyselyn "Ilmoita"-kenttään tai mainitsee ryhmän.
     normal_excludes_mentioning_html: Maininnoille (esim. kommentissa vastaamiselle) on oma asetus. <a href="%{url}">Voit muokata @mainintojen asetuksia napsauttamalla tästä</a> .
     changes_all_threads_and_polls_in_group: Tämä muuttaa asetuksia kaikille ryhmän keskusteluketjuille ja kyselyille.
+    when_do_you_want_to_be_emailed: Milloin haluat sähköpostin?
+    what_the_options_mean: Mitä vaihtoehdot tarkoittavat
+    quiet_explained: Et saa sähköpostia, vaikka joku yrittäisi ilmoittaa sinulle. Saatat missata tärkeitä ilmoituksia tai päätöksiä, ellet käy Loomiossa säännöllisesti.
   close_explanation_modal:
     aria_label: Sulje lanka
     close_thread: Sulje lanka

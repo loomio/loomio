@@ -467,12 +467,14 @@ ja:
     loud_desc: 誰かが参加するたびに
     normal_desc: 誰かが私に通知すると
     quiet_desc: 一度もない
-    quiet_explained: 誰かがあなたに通知しようとしても、メールは届きません。重要なお知らせや決定を見逃す可能性があります。これは、スレッドがあなたに関係ない場合は適しているかもしれませんが、最新情報を入手する他の方法がない限り、グループ設定では推奨されません。
     loud_explained: 新しいコメントが追加されたり、誰かが投票したり、アンケートやスレッドが開始されたりするたびに、メールが届きます。
     when_would_you_like_to_be_emailed_poll_type: この %{poll_type} についていつメールを受け取りたいですか?
     normal_explained: 誰かがスレッドやアンケートの「通知」欄にあなたの名前を入力したとき、またはグループをメンションしたとき。
     normal_excludes_mentioning_html: 誰かがあなたに{'@'}メンションした場合（コメントで返信した場合など）には、別の設定があります。 <a href="%{url}">@メンションの設定を編集するには、こちらをクリックしてください。</a>
     changes_all_threads_and_polls_in_group: これにより、グループ内のすべてのスレッドと投票の設定が変更されます。
+    when_do_you_want_to_be_emailed: いつメールを受け取りたいですか?
+    what_the_options_mean: オプションの意味
+    quiet_explained: 誰かが通知しようとしても、メールは届きません。Loomioを定期的にチェックする習慣がない限り、重要なお知らせや決定事項を見逃してしまう可能性があります。
   close_explanation_modal:
     aria_label: スレッドを閉じる
     close_thread: スレッドを閉じる

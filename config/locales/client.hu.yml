@@ -472,10 +472,12 @@ hu:
     quiet_desc: Soha
     loud_explained: Minden alkalommal e-mailt fog kapni, amikor új megjegyzés érkezik, valaki szavaz, vagy szavazást vagy témát indít.
     when_would_you_like_to_be_emailed_poll_type: 'Mikor szeretne e-mailt kapni erről: %{poll_type}?'
-    quiet_explained: Nem fogsz e-mailt kapni, még akkor sem, ha valaki megpróbál értesíteni. Előfordulhat, hogy lemaradsz a fontos bejelentésekről vagy döntésekről. Ez akkor lehet megfelelő, ha egy téma nem érint téged, de csoportos környezetben nem ajánlott, hacsak nincs más módod a naprakészségre.
     normal_explained: Amikor valaki beírja a neved egy beszélgetés vagy szavazás „Értesítés” mezőjébe, vagy {'@'}megemlíti a csoportot.
     normal_excludes_mentioning_html: Külön beállítás vonatkozik arra az esetre, ha valaki {'@'}megemlít téged (pl. amikor valaki válaszol neked egy hozzászólásban). <a href="%{url}">Kattints ide az @megemlítések beállításainak szerkesztéséhez.</a>
     changes_all_threads_and_polls_in_group: Ez megváltoztatja a csoport összes hozzászólásláncának és szavazásának beállítását.
+    when_do_you_want_to_be_emailed: Mikor szeretnél e-mailt kapni?
+    what_the_options_mean: Mit jelentenek a lehetőségek
+    quiet_explained: Nem fogsz e-mailt kapni, még akkor sem, ha valaki megpróbál értesíteni. Előfordulhat, hogy lemaradsz a fontos bejelentésekről vagy döntésekről, hacsak nem szokásod rendszeresen ellenőrizni a Loomiót.
   close_explanation_modal:
     aria_label: Téma lezárása
     close_thread: Téma lezárása

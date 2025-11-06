@@ -468,12 +468,14 @@ tr:
     loud_desc: Her seferinde birisi katıldığında
     normal_desc: Birisi bana bildirdiğinde
     quiet_desc: Asla
-    quiet_explained: Birisi sizi bilgilendirmeye çalışsa bile size e-posta gönderilmeyecektir. Önemli duyuruları veya kararları kaçırabilirsiniz. Bu, bir konu sizi ilgilendirmiyorsa uygun olabilir ancak güncel kalmanın başka yolları yoksa grup ortamı için önerilmez.
     loud_explained: Her yeni yorum yapıldığında, birisi oy verdiğinde, anket veya konu başlatıldığında e-posta ile bilgilendirileceksiniz.
     when_would_you_like_to_be_emailed_poll_type: Bu %{poll_type} hakkında ne zaman e-posta almak istersiniz?
     normal_explained: Birisi bir konu başlığının veya anketin "Bildir" alanına adınızı girdiğinde veya gruptan {'@'}bahsettiğinde.
     normal_excludes_mentioning_html: Birisi {'@'} sizden bahsettiğinde (örneğin bir yorumda size yanıt verdiğinde) ayrı bir ayar vardır. <a href="%{url}">@mentions ayarlarını düzenlemek için buraya tıklayın</a>
     changes_all_threads_and_polls_in_group: Bu, gruptaki tüm konu başlıkları ve anketler için ayarları değiştirir.
+    when_do_you_want_to_be_emailed: E-postanın ne zaman gönderilmesini istersiniz?
+    what_the_options_mean: Seçeneklerin anlamı nedir?
+    quiet_explained: Birisi sizi bilgilendirmeye çalışsa bile, size e-posta gönderilmeyecektir. Loomio'yu düzenli olarak kontrol etme alışkanlığınız yoksa, önemli duyuruları veya kararları kaçırabilirsiniz.
   close_explanation_modal:
     aria_label: Konuyu kapat
     close_thread: Konuyu kapat

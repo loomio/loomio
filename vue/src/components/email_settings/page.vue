@@ -3,7 +3,8 @@ import Session        from '@/shared/services/session';
 import Records        from '@/shared/services/records';
 import EventBus       from '@/shared/services/event_bus';
 import AppConfig      from '@/shared/services/app_config';
-import { sortBy, pick, filter } from 'lodash-es';
+import { I18n } from '@/i18n';
+import { pick, filter } from 'lodash-es';
 import UserService from '@/shared/services/user_service';
 import Flash from '@/shared/services/flash';
 import WatchRecords from '@/mixins/watch_records';
@@ -15,7 +16,10 @@ export default {
     return {
       newsletterEnabled: AppConfig.newsletterEnabled,
       user: null,
-      groups: []
+      groups: [],
+      memberships: [],
+      loading: false,
+      allGroupsVolume: null
     };
   },
   created() {
@@ -24,9 +28,8 @@ export default {
     this.watchRecords({
       collections: ['groups', 'memberships'],
       query: store => {
-        const groups = Session.user().groups();
         const user = Session.user();
-        return this.groups = sortBy(groups, 'fullName');
+        this.memberships = user.groups().map((g) => user.membershipFor(g));
       }
     });
   },
@@ -41,7 +44,7 @@ export default {
   methods: {
     submit() {
       Records.users.updateProfile(this.user).then(() => {
-        Flash.success('email_settings_page.messages.updated');
+        Flash.custom(I18n.global.t('email_settings_page.messages.updated'), 'success', 500);
       }).catch(error => true);
     },
 
@@ -63,10 +66,21 @@ export default {
       });
     },
 
-    editSpecificGroupVolume(group) {
-      EventBus.$emit('openModal', {
-        component: 'ChangeVolumeForm',
-        props: { model: Session.user() }
+    membershipVolumeChanged(membership) {
+      this.loading = true
+      membership.saveVolume(membership.volume, false).finally(() => {
+        Flash.custom(I18n.global.t('email_settings_page.messages.updated'), 'success', 500);
+        this.loading = false
+      });
+    },
+    allGroupsVolumeChanged(){
+      if (this.allGroupsVolume == null) return;
+
+      this.loading = true
+      Session.user().saveVolume(this.allGroupsVolume, true).finally(() => {
+        Flash.custom(I18n.global.t('email_settings_page.messages.updated'), 'success', 500);
+        this.allGroupsVolume = null;
+        this.loading = false
       });
     }
   },
@@ -108,13 +122,13 @@ v-main
       //- v-card-title
       //-   h1.text-h5(tabindex="-1" v-t="'email_settings_page.header'")
       v-card-text
-        v-checkbox#mentioned-email.md-checkbox--with-summary.email-settings-page__mentioned(v-model='user.emailWhenMentioned')
+        v-checkbox#mentioned-email.email-settings-page__mentioned(v-model='user.emailWhenMentioned')
           template(v-slot:label)
             div
               span(v-t="'email_settings_page.mentioned_label'")
               br
               span.text-medium-emphasis.text-caption(v-t="'email_settings_page.mentioned_description'")
-        v-checkbox#on-participation-email.md-checkbox--with-summary.email-settings-page__on-participation(v-model='user.emailOnParticipation')
+        v-checkbox#on-participation-email.email-settings-page__on-participation(v-model='user.emailOnParticipation')
           template(v-slot:label)
             div
               span(v-t="'email_settings_page.on_participation_label'")
@@ -128,17 +142,74 @@ v-main
           :items="emailDays"
           :label="$t('email_settings_page.email_catch_up_day')"
           v-model="user.emailCatchUpDay")
-        //- v-checkbox#daily-summary-email.md-checkbox--with-summary.email-settings-page__daily-summary(v-model='user.emailCatchUp')
+        //- v-checkbox#daily-summary-email.email-settings-page__daily-summary(v-model='user.emailCatchUp')
         //-   div(slot="label")
         //-     strong(v-t="'email_settings_page.daily_summary_label'")
         //-     .email-settings-page__input-description(v-t="'email_settings_page.daily_summary_description'")
       v-card-actions
         help-btn(path="en/user_manual/users/email_settings/#user-email-settings")
         v-spacer
-        v-btn.email-settings-page__update-button(color="primary" @click="submit()")
+        v-btn.email-settings-page__update-button(color="primary" @click="submit" variant="tonal")
           span(v-t="'email_settings_page.update_settings'")
 
-    change-volume-form.mb-4(:model="user" :show-close="false")
+    v-card.mb-4(title="Group notifications" subtitle="Change when you get emailed about activity in your groups")
+      v-card-text
+        .text-subtitle-1.pb-2(v-t="'change_volume_form.what_the_options_mean'")
+
+        .text-subtitle-2.pb-1(v-t="'change_volume_form.quiet_desc'")
+        .text-body-2.pb-4.text-medium-emphasis(v-t="'change_volume_form.quiet_explained'")
+
+        .text-subtitle-2.pb-1(v-t="'change_volume_form.normal_desc'")
+        .text-body-2.pb-4.text-medium-emphasis(v-t="'change_volume_form.normal_explained'")
+
+        .text-subtitle-2.pb-1(v-t="'change_volume_form.loud_desc'")
+        .text-body-2.pb-4.text-medium-emphasis(v-t="'change_volume_form.loud_explained'")
+        //  p
+        //    b Everytime someone participates
+        //    space
+        //    span means you'll get an email about every comment, vote, thread and poll in the group.
+        //  p
+        //    b When someone notifies me
+        //    space
+        //    span while doing one of the following:
+        //  ul.mb-4.ml-4
+        //    li Starts a thread and invites you to join it
+        //    li Invites you to vote in a poll or proposal
+        //    li Publishes an outcome to a poll or proposal
+        //    li Wants to notify the group with an @group mention
+
+        //  p
+        //    b Never
+        //    span
+        //  ul.mb-4
+        //    li you will not get emailed when a decision is happening
+
+      v-overlay(persistent :model-value="loading" class="align-center justify-center")
+        v-progress-circular(color="primary" size="64" indeterminate)
+
+
+      v-table
+        thead
+          tr
+            th.text-left(v-t="'common.group'")
+            th.text-left(v-t="'email_settings_page.send_email'")
+        tbody
+          tr
+            td
+              span(v-t="'sidebar.all_groups'")
+            td.text-left
+              .my-select-wrapper
+                select.my-select(:disabled="loading" v-model="allGroupsVolume" @change="allGroupsVolumeChanged()")
+                  option(:value="null")
+                  option(v-for="volume in ['quiet', 'normal', 'loud']" :value="volume")
+                    span(v-t="'change_volume_form.'+volume+'_desc'")
+          tr(v-for="membership in memberships" :key="membership.id")
+            td {{membership.group().fullName}}
+            td.text-left
+              .my-select-wrapper
+                select.my-select(:disabled="loading" v-model="membership.volume" @change="membershipVolumeChanged(membership)")
+                  option(v-for="volume in ['quiet', 'normal', 'loud']" :value="volume" :selected="membership.volume == volume")
+                    span(v-t="'change_volume_form.'+volume+'_desc'")
 
     v-card(:title="$t('email_settings_page.deactivate_header')")
       v-card-text
@@ -149,3 +220,68 @@ v-main
               common-icon(:name="action.icon")
             v-list-item-title(v-t="action.name")
 </template>
+
+<style lang="css">
+.my-select-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.my-select {
+  width: 100%;
+  height: 32px;               /* precise compact height */
+  padding: 0 32px 0 8px;      /* tighter spacing */
+
+  font-size: 14px;            /* compact uses slightly smaller text */
+  line-height: 32px;
+  cursor: pointer;
+
+  border: 1px solid rgba(var(--v-theme-on-surface), 0.38);
+  border-radius: 6px;
+  background-color: rgb(var(--v-theme-surface));
+  color: rgb(var(--v-theme-on-surface));
+
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  transition: border-color .18s ease, box-shadow .18s ease;
+}
+
+/* Chevron (on wrapper, not select!) */
+.my-select-wrapper::after {
+  content: "";
+  position: absolute;
+  right: 8px;                 /* inner padding alignment */
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  transform: translateY(-50%);
+  pointer-events: none;
+
+  background-color: currentColor;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' stroke='black' fill='none' stroke-width='2.25' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' stroke='black' fill='none' stroke-width='2.25' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  mask-size: contain;
+  mask-repeat: no-repeat;
+}
+
+/* Hover / Focus to match compact v-text-field */
+.my-select:hover {
+  border-color: rgba(var(--v-theme-on-surface), 0.60);
+}
+
+.my-select:focus {
+  border-color: rgb(var(--v-theme-primary));
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(var(--v-theme-primary), 0.25); /* slightly smaller ring for compact */
+}
+
+/* Placeholder dimming */
+.my-select option[disabled][value=""] {
+  color: rgba(var(--v-theme-on-surface), 0.45);
+}
+
+
+</style>

@@ -59,10 +59,6 @@ export default {
       }
     },
 
-    labelFor(volume) {
-      return this.$t(`change_volume_form.simple.${volume}_explain`) + ' ('+this.$t(`change_volume_form.simple.${volume}`)+')';
-    },
-
     translateKey(key) {
       if (this.model.isA('user')) {
         return "change_volume_form.all_groups";
@@ -104,11 +100,10 @@ v-card.change-volume-form(:title="$t(translateKey() + '.title', { title: title }
       span(v-t="'change_volume_form.explain_scope.group'")
       br
       a(@click="openUserPreferences()" v-t="'change_volume_form.discussion.user'")
-    p.mt-2(v-t="'change_volume_form.simple.question'")
-    v-radio-group.text-lowercase.mb-4(hide-details v-model='volume')
-      v-radio.volume-loud(value='loud' :label="labelFor('loud')")
-      v-radio.volume-normal(value='normal' :label="labelFor('normal')")
-      v-radio.volume-quiet(value='quiet' :label="labelFor('quiet')")
+    v-radio-group.mb-4(hide-details v-model='volume' :label="$t('change_volume_form.when_do_you_want_to_be_emailed')")
+      v-radio.volume-loud(value='loud' :label="$t('change_volume_form.loud_desc')")
+      v-radio.volume-normal(value='normal' :label="$t('change_volume_form.normal_desc')")
+      v-radio.volume-quiet(value='quiet' :label="$t('change_volume_form.quiet_desc')")
 
     div(v-if="model.isA('membership') && model.group().parentOrSelf().hasSubgroups()")
       v-checkbox#apply-to-all.mb-4(v-if="model.isA('membership')" v-model='applyToAll', :label="$t('change_volume_form.membership.apply_to_organization', { organization: model.group().parentOrSelf().name })" hide-details)

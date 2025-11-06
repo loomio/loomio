@@ -468,12 +468,14 @@ da:
     loud_desc: Hver gang nogen deltager
     normal_desc: Når nogen giver mig besked
     quiet_desc: Aldrig
-    quiet_explained: Du vil ikke blive e-mailet, heller ikke når nogen forsøger at give dig besked. Du kan gå glip af vigtige meddelelser eller beslutninger. Dette kan være velegnet, hvis en tråd ikke vedrører dig, men anbefales ikke til gruppeindstillingen, medmindre du har andre måder at holde dig opdateret på.
     loud_explained: Du vil blive mailet hver gang der er en ny kommentar, nogen stemmer eller starter en afstemning eller tråd.
     when_would_you_like_to_be_emailed_poll_type: Hvornår vil du gerne have en e-mail om denne %{poll_type}?
     normal_explained: Når nogen indtaster dit navn i feltet "Giv besked" i en tråd eller en afstemning, eller de {'@'}nævner gruppen.
     normal_excludes_mentioning_html: Der er en separat indstilling for, hvornår nogen {'@'}omtaler dig (f.eks. når de svarer dig i en kommentar). <a href="%{url}">Klik her for at redigere indstillinger for @omtaler</a>
     changes_all_threads_and_polls_in_group: Dette ændrer indstillingerne for alle tråde og afstemninger i gruppen.
+    when_do_you_want_to_be_emailed: Hvornår vil du have tilsendt en e-mail?
+    what_the_options_mean: Hvad betyder valgmulighederne
+    quiet_explained: Du vil ikke modtage en e-mail, selv når nogen forsøger at give dig besked. Du kan gå glip af vigtige meddelelser eller beslutninger, medmindre du har for vane at tjekke Loomio regelmæssigt.
   close_explanation_modal:
     aria_label: Luk tråden
     close_thread: Luk tråden

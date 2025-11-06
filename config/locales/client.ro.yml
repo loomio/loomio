@@ -468,12 +468,14 @@ ro:
     loud_desc: De fiecare dată când cineva participă
     normal_desc: Când cineva mă anunță
     quiet_desc: Nu
-    quiet_explained: Nu veți primi e-mail, chiar și atunci când cineva încearcă să vă anunțe. Este posibil să pierdeți anunțuri sau decizii importante. Acest lucru poate fi potrivit dacă o discuție nu vă privește, dar nu este recomandat pentru setarea de grup decât dacă aveți alte modalități de a rămâne la curent.
     loud_explained: Veți primi un e-mail de fiecare dată când există un comentariu nou, cineva votează sau începe un sondaj sau un thread.
     when_would_you_like_to_be_emailed_poll_type: Când doriți să primiți un e-mail despre acest %{poll_type}?
     normal_explained: Când cineva introduce numele tău în câmpul „Notificare” al unui fir de discuție sau al unui sondaj sau {'@'}menționează grupul.
     normal_excludes_mentioning_html: Există o setare separată pentru situațiile în care cineva te menționează {'@'} (de exemplu, când îți răspunde într-un comentariu). <a href="%{url}">Apasă aici pentru a edita setările pentru @mențiuni.</a>
     changes_all_threads_and_polls_in_group: Aceasta modifică setările pentru toate firele de discuție și sondajele din grup.
+    when_do_you_want_to_be_emailed: Când doriți să primiți e-mailul?
+    what_the_options_mean: Ce înseamnă opțiunile
+    quiet_explained: Nu veți primi e-mailuri, nici măcar atunci când cineva încearcă să vă notifice. Este posibil să ratați anunțuri sau decizii importante, cu excepția cazului în care aveți obiceiul de a verifica Loomio în mod regulat.
   close_explanation_modal:
     aria_label: Închideți firul
     close_thread: Închideți firul
