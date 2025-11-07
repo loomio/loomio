@@ -249,7 +249,7 @@ class Stance < ApplicationRecord
     return if !cast_at
     return if none_of_the_above
     return unless poll.validate_min_score
-    return if (stance_choices.map(&:score).min || 0) >= poll.min_score
+    return if (stance_choices.map(&:score).compact.min || 0) >= poll.min_score
 
     errors.add(:stance_choices, "min_score validation failure")
   end
