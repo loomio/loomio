@@ -50,12 +50,24 @@ export default new class PollService {
         canPerform() { return vm.$route.path.startsWith('/d/') && poll.showResults() },
         to() { return `/p/${poll.key}`; }
       },
+
       translate_poll: {
         icon: 'mdi-translate',
         name: 'common.action.translate',
-        dock: 2,
+        dock: 3,
         canPerform() { return AbilityService.canTranslate(poll); },
-        perform() { return Session.user() && poll.translate(Session.user().locale); }
+        perform() {
+          poll.pollOptions().forEach((po) => Records.translations.addTo(po, Session.user().locale));
+          return Records.translations.addTo(poll, Session.user().locale);
+        }
+      },
+
+      untranslate_poll: {
+        icon: 'mdi-translate',
+        name: 'common.action.show_original',
+        dock: 3,
+        canPerform() { return AbilityService.canUntranslate(poll); },
+        perform() { poll.translationId = null;  poll.pollOptions().forEach((po) => po.translationId = null)}
       },
 
       edit_stance: {

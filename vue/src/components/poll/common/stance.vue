@@ -24,5 +24,5 @@ export default {
   span.text-caption(v-if='!stance.castAt' v-t="'poll_common_votes_panel.undecided'" )
   span(v-else)
     poll-common-stance-choices(:stance="stance")
-    formatted-text.poll-common-stance-created__reason(:model="stance" column="reason")
+    formatted-text.poll-common-stance-created__reason(:model="stance" field="reason")
 </template>

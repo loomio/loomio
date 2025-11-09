@@ -13,5 +13,5 @@ export default {
 <template lang="pug">
 v-alert.poll-template-info-panel.mb-6(v-if="discussionTemplate.processIntroduction" type="info" variant="tonal")
   p {{discussionTemplate.processName}}
-  formatted-text(:model="discussionTemplate" column="processIntroduction")
+  formatted-text(:model="discussionTemplate" field="processIntroduction")
 </template>

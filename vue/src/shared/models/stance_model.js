@@ -1,5 +1,4 @@
 import BaseModel       from '@/shared/record_store/base_model';
-import HasTranslations from '@/shared/mixins/has_translations';
 import { I18n } from '@/i18n';
 import { sumBy, map, head, compact, flatten, includes, sortBy } from 'lodash-es';
 import Records from '@/shared/services/records';
@@ -11,10 +10,6 @@ export default class StanceModel extends BaseModel {
   static plural = 'stances';
   static indices = ['pollId', 'latest', 'participantId'];
   static uniqueIndices = ['id'];
-
-  afterConstruction() {
-    HasTranslations.apply(this);
-  }
 
   collabKeyParams() {
     return [this.pollId];
@@ -39,7 +34,7 @@ export default class StanceModel extends BaseModel {
 
   relationships() {
     this.belongsTo('poll');
-    return this.belongsTo('participant', {from: 'users'});
+    this.belongsTo('participant', {from: 'users'});
   }
 
   edited() {

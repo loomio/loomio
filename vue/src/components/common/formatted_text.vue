@@ -1,5 +1,4 @@
 <script lang="js">
-import { emojiReplaceText } from '@/shared/helpers/emojis';
 import { merge } from 'lodash-es';
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
@@ -12,7 +11,7 @@ export default {
       type: Object,
       required: true
     },
-    column: {
+    field: {
       type: String,
       required: true
     }
@@ -50,17 +49,20 @@ export default {
   },
 
   computed: {
-    canEdit() { return AbilityService.canEdit(this.model); },
-    isMd() { return this.format === 'md'; },
-    isHtml() { return this.format === 'html'; },
-    format() { return this.model[this.column+"Format"]; },
-    text() { return emojiReplaceText(this.model[this.column]); },
-    hasTranslation() { if (this.model.translation) { return this.model.translation[this.column]; } },
-    cookedText() {
-      if (!this.model.mentionedUsernames) { return this.model[this.column]; }
-      let cooked = this.model[this.column];
-      this.model.mentionedUsernames.forEach(username => cooked = cooked.replace(new RegExp(`@${username}`, 'g'), `[@${username}](/u/${username})`));
-      return cooked.replace(/^&gt; /, '> ').replace(/\n&gt; /, '\n> '); // fix for when > is encoded as &gt; by server
+    canEdit() {
+      return AbilityService.canEdit(this.model);
+    },
+
+    content() {
+      if (this.model.translationId) {
+        return this.model.translation().fields[this.field]
+      } else {
+        return this.model[this.field]
+      }
+    },
+
+    format() {
+      return this.model[this.field + "Format"] || 'none';
     }
   }
 };
@@ -68,14 +70,12 @@ export default {
 
 <template lang="pug">
 div.lmo-markdown-wrapper
-  div(v-if="!hasTranslation && isMd" v-marked='cookedText')
-  div(v-if="!hasTranslation && isHtml" v-html='text')
-  translation(v-if="hasTranslation" :model='model' :field='column')
+  div(v-if="format == 'md'" v-marked='content')
+  div(v-if="format == 'html'" v-html='content')
+  span(v-if="format == 'none'") Format none. Use plain-text instead.
 </template>
 
 <style lang="sass">
-
-
 .v-theme--dark, .v-theme--darkBlue
   .lmo-markdown-wrapper
     color: rgba(255,255,255,1)

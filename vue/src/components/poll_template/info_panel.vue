@@ -13,6 +13,6 @@ export default {
 <template lang="pug">
 div(v-if="pollTemplate")
   v-alert.poll-template-info-panel(v-if="!pollTemplate.attributeIsBlank('processIntroduction')" type="info" text variant="tonal")
-    formatted-text(:model="pollTemplate" column="processIntroduction")
+    formatted-text(:model="pollTemplate" field="processIntroduction")
   v-alert.poll-template-info-panel(v-else type="info" text variant="tonal") {{pollTemplate.processSubtitle}}
 </template>

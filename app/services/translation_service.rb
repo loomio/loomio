@@ -16,7 +16,7 @@ class TranslationService
     translation = model.translations.find_by(language: locale) ||
                   Translation.new(translatable: model, language: locale, fields: {})
 
-    if translation.new_record? || ((translation.updated_at || translation.created_at) < (model.updated_at || model.created_at || 5.years.ago))
+    if translation.new_record? || (translation.updated_at || translation.created_at) < (model.updated_at || model.created_at)
       service = Google::Cloud::Translate.translation_v2_service
 
       model.class.translatable_fields.each do |field|

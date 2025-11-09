@@ -344,6 +344,7 @@ en:
       add_subgroup: New subgroup
       loading: Loading
       translate: Translate
+      show_original: Show original
       upload: Upload
       uploading: Uploading
       load_more: Load More
@@ -1555,6 +1556,7 @@ en:
     helptext: "%{name} will be emailed your name, email address, and message"
     email_sent: Email sent to %{name}
   profile_page:
+    translate_content_automatically: Translate content to my language automatically
     autodetect_time_zone: Autodetect time zone
     account_is_bot: This is a bot account
     bot_account_warning: Bot accounts will not be invited to vote in polls or participate in discussions

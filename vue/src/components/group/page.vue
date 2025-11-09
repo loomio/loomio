@@ -110,7 +110,7 @@ v-main
     formatted-text.group-page__description(
       v-if="group"
       :model="group"
-      column="description")
+      field="description")
     link-previews(:model="group")
     action-dock(
       :model='group'

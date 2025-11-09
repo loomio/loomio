@@ -18,22 +18,21 @@ export default {
   },
 
   watch: {
-    'eventable.newestFirst'() {
-      this.actions = omit(ThreadService.actions(this.eventable, this), ['dismiss_thread']);
-    },
+    'eventable.newestFirst'() { this.rebuildActions(); },
     'discussion.groupId': 'updateGroups'
   },
 
   data() {
     return {
       groups: [],
-      actions: omit(ThreadService.actions(this.eventable, this), ['dismiss_thread'])
+      actions: []
     };
   },
 
   mounted() {
     this.eventable.fetchUsersNotifiedCount();
     this.updateGroups();
+    this.rebuildActions();
   },
 
   computed: {
@@ -65,6 +64,9 @@ export default {
   },
 
   methods: {
+    rebuildActions() {
+      this.actions = omit(ThreadService.actions(this.eventable, this), ['dismiss_thread']);
+    },
     updateGroups() {
       this.groups = this.discussion.group().parentsAndSelf().map(group => {
         return {
@@ -74,8 +76,14 @@ export default {
         };
       });
     },
+
     viewed(viewed) {
-      if (viewed && Session.isSignedIn()) { this.discussion.markAsSeen(); }
+      if (viewed && Session.isSignedIn()) {
+        this.discussion.markAsSeen();
+        if (Session.user().autoTranslate && this.actions['translate_thread'].canPerform()) {
+          this.actions['translate_thread'].perform().then(() => { this.rebuildActions() });
+        }
+      }
     },
 
     openSeenByModal() {
@@ -117,7 +125,7 @@ export default {
       a.context-panel__users_notified_count.underline-on-hover(v-t="{ path: 'thread_context.count_notified', args: { count: discussion.usersNotifiedCount} }"  @click="actions.notification_history.perform")
 
   template(v-if="!collapsed")
-    formatted-text.context-panel__description(:model="discussion" column="description")
+    formatted-text.context-panel__description(:model="discussion" field="description")
     link-previews(:model="discussion")
     document-list(:model='discussion')
     attachment-list(:attachments="discussion.attachments")

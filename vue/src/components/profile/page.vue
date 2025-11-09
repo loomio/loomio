@@ -181,7 +181,8 @@ v-main
               :label="$t('profile_page.locale_label')"
               :items="availableLocales"
               v-model="user.selectedLocale")
-            validation-errors(:subject='user', field='selectedLocale')
+
+            v-checkbox(v-model="user.autoTranslate" :label="$t('profile_page.translate_content_automatically')")
 
             v-checkbox(v-model="user.autodetectTimeZone" :label="$t('profile_page.autodetect_time_zone')")
             v-select(v-model="user.timeZone" :items="timeZones" :label="$t('common.time_zone')"  item-title="title" item-value="value" :disabled="user.autodetectTimeZone")

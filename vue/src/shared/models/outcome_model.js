@@ -1,7 +1,6 @@
 import BaseModel        from '@/shared/record_store/base_model';
 import AppConfig        from '@/shared/services/app_config';
 import HasDocuments     from '@/shared/mixins/has_documents';
-import HasTranslations  from '@/shared/mixins/has_translations';
 import NullGroupModel   from '@/shared/models/null_group_model';
 import {capitalize} from 'lodash-es';
 import Records from '@/shared/services/records';
@@ -35,7 +34,6 @@ export default class OutcomeModel extends BaseModel {
 
   afterConstruction() {
     HasDocuments.apply(this);
-    HasTranslations.apply(this);
   }
 
   collabKeyParams() {
@@ -46,6 +44,7 @@ export default class OutcomeModel extends BaseModel {
     this.belongsTo('author', {from: 'users'});
     this.belongsTo('poll');
     this.belongsTo('group');
+    this.belongsTo('translation');
     return this.belongsTo('pollOption');
   }
 
