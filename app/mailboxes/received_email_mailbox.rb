@@ -19,7 +19,7 @@ class ReceivedEmailMailbox < ApplicationMailbox
 
   def build_received_email
     ReceivedEmail.new(
-      headers:   mail.header.fields.to_h { |f| [f.name, f.value] },
+      headers:   mail.header.fields.to_h { |f| [f.name, f.decoded] },
       body_text: mail.text_part&.decoded || mail.decoded,
       body_html: mail.html_part&.decoded
     )
