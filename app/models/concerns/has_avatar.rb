@@ -22,7 +22,7 @@ module HasAvatar
   def avatar_kind
     return 'mdi-duck' if deactivated_at?
     return 'mdi-email-outline' if !name
-    super
+    read_attribute(:avatar_kind)
   end
 
   def thumb_url
