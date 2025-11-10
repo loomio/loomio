@@ -32,15 +32,15 @@ jobs:
       - id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ env.IMAGE_NAME }}
+          images: wizmoisa/loomio
 
       - name: Build and push amd64
         uses: docker/build-push-action@v5
         if: ${{ env.HAVESECRET == 'true' }} # (build still runs, only push depends on secret)
         with:
           context: .
+          platforms: linux/amd64,linux/arm64
           push: true
-          platforms: linux/amd64
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
