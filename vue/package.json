@@ -71,7 +71,7 @@
     "tiny-emitter": "latest",
     "turndown": "^7.2.2",
     "turndown-plugin-gfm": "^1.0.2",
-    "vue": "^3.5.22",
+    "vue": "^3.5.24",
     "vue-chartjs": "^4.1.2",
     "vue-i18n": "9.11.0",
     "vue-router": "^4.2.5",
