@@ -470,12 +470,14 @@ pl:
     loud_desc: Za każdym razem, gdy ktoś bierze udział
     normal_desc: Kiedy ktoś mnie powiadomi
     quiet_desc: Nigdy
-    quiet_explained: Nie otrzymasz wiadomości e-mail, nawet gdy ktoś będzie próbował Cię powiadomić. Możesz przegapić ważne ogłoszenia lub decyzje. Może to być odpowiednie, jeśli wątek Cię nie dotyczy, ale nie jest zalecane w przypadku ustawienia grupy, chyba że masz inne sposoby, aby być na bieżąco.
     loud_explained: Otrzymasz e-mail za każdym razem, gdy pojawi się nowy komentarz, ktoś zagłosuje lub rozpocznie ankietę czy wątek.
     when_would_you_like_to_be_emailed_poll_type: Kiedy chcesz otrzymać wiadomość e-mail dotyczącą tego %{poll_type}?
     normal_explained: Gdy ktoś wpisze Twoje imię w polu „Powiadom” w wątku lub ankiecie, albo {'@'}wspomni grupę.
     normal_excludes_mentioning_html: Istnieje osobne ustawienie, gdy ktoś {'@'}wspomina o Tobie (np. gdy odpowiada Ci w komentarzu). <a href="%{url}">Kliknij tutaj, aby edytować ustawienia dla @wzmianek</a>
     changes_all_threads_and_polls_in_group: Zmienia to ustawienia dla wszystkich wątków i ankiet w grupie.
+    when_do_you_want_to_be_emailed: Kiedy chcesz otrzymywać e-maile?
+    what_the_options_mean: Co oznaczają opcje
+    quiet_explained: Nie otrzymasz wiadomości e-mail, nawet gdy ktoś będzie próbował Cię powiadomić. Możesz przegapić ważne ogłoszenia lub decyzje, jeśli nie będziesz regularnie sprawdzać Loomio.
   close_explanation_modal:
     aria_label: Zamknij wątek
     close_thread: Zamknij wątek

@@ -477,11 +477,13 @@ de:
     normal_desc: Wenn mich jemand benachrichtigt
     quiet_desc: Niemals
     when_would_you_like_to_be_emailed_poll_type: Wann möchten Sie eine E-Mail zu diesem %{poll_type} erhalten?
-    quiet_explained: Sie erhalten keine E-Mails, auch wenn jemand versucht, Sie zu benachrichtigen. Sie könnten wichtige Ankündigungen oder Entscheidungen verpassen. Dies kann sinnvoll sein, wenn Sie ein Thema nicht betrifft, wird aber für die Gruppeneinstellung nicht empfohlen, es sei denn, Sie haben andere Möglichkeiten, auf dem Laufenden zu bleiben.
     normal_explained: Wenn jemand Ihren Namen in das Feld „Benachrichtigen“ eines Threads oder einer Umfrage eingibt oder die Gruppe {'@'}erwähnt.
     normal_excludes_mentioning_html: Es gibt eine separate Einstellung für die Erwähnung per {'@'} (z. B. bei einer Antwort in einem Kommentar). <a href="%{url}">Klicken Sie hier, um die Einstellungen für @Erwähnungen zu bearbeiten.</a>
     loud_explained: Sie erhalten jedes Mal eine E-Mail, wenn ein neuer Kommentar eingeht, jemand abstimmt oder eine Umfrage bzw. ein Thread startet.
     changes_all_threads_and_polls_in_group: Dies ändert die Einstellungen für alle Threads und Umfragen in der Gruppe.
+    when_do_you_want_to_be_emailed: Wann möchten Sie per E-Mail benachrichtigt werden?
+    what_the_options_mean: Was die Optionen bedeuten
+    quiet_explained: Sie erhalten keine E-Mail-Benachrichtigung, auch nicht, wenn Sie benachrichtigt werden möchten. Wichtige Ankündigungen oder Entscheidungen könnten Ihnen entgehen, wenn Sie Loomio nicht regelmäßig besuchen.
   close_explanation_modal:
     aria_label: Diskussion schließen
     close_thread: Diskussion schließen

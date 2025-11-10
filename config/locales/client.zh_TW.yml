@@ -477,11 +477,13 @@ zh_TW:
     normal_desc: 當有人通知我時
     quiet_desc: 絕不
     when_would_you_like_to_be_emailed_poll_type: 您希望何時收到有關此 %{poll_type} 的電子郵件？
-    quiet_explained: 即使有人嘗試通知您，您也不會收到電子郵件。您可能會錯過重要的公告或決定。如果某個貼文與您無關，這可能適用，但不建議在群組設定中使用，除非您有其他方式來了解最新動態。
     normal_explained: 當有人在主題或投票的「通知」欄位中輸入您的姓名，或他們{'@'}提及該小組。
     normal_excludes_mentioning_html: 當有人{'@'}提及你（例如，在評論中回覆你時），有一個單獨的設定。<a href="%{url}">點擊此處編輯@提及的設置</a>
     loud_explained: 每次有新評論、有人投票或開始投票或討論時，您都會收到電子郵件。
     changes_all_threads_and_polls_in_group: 這將更改群組中所有貼文和投票的設定。
+    when_do_you_want_to_be_emailed: 您希望何時收到郵件？
+    what_the_options_mean: 這些選項的含義
+    quiet_explained: 即使有人嘗試通知您，您也不會收到電子郵件。如果您不養成定期查看 Loomio 的習慣，可能會錯過重要公告或決定。
   close_explanation_modal:
     aria_label: 關閉討論串
     close_thread: 關閉討論串

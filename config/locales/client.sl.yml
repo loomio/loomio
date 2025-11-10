@@ -469,11 +469,13 @@ sl:
     normal_desc: Ko me nekdo obvesti
     quiet_desc: Nikoli
     when_would_you_like_to_be_emailed_poll_type: Kdaj želite prejeti e-pošto o tem %{poll_type}?
-    quiet_explained: Ne boste prejemali e-poštnih sporočil, niti če vas bo kdo poskušal obvestiti. Morda boste spregledali pomembna obvestila ali odločitve. To je morda primerno, če vas nit ne zadeva, vendar ni priporočljivo za skupinsko nastavitev, razen če imate druge načine za spremljanje posodobitev.
     normal_explained: Ko nekdo vnese vaše ime v polje »Obvesti« niti ali ankete ali ko {'@'}omeni skupino.
     normal_excludes_mentioning_html: Obstaja ločena nastavitev za primere, ko vas nekdo {'@'}omeni (npr. ko vam odgovori v komentarju). <a href="%{url}">Kliknite tukaj, če želite urediti nastavitve za @omembe.</a>
     loud_explained: Vsakič, ko bo objavljen nov komentar, nekdo bo glasoval ali bo začel anketo ali nit, boste prejeli e-poštno sporočilo.
     changes_all_threads_and_polls_in_group: To spremeni nastavitve za vse niti in ankete v skupini.
+    when_do_you_want_to_be_emailed: Kdaj želite prejeti e-pošto?
+    what_the_options_mean: Kaj pomenijo možnosti
+    quiet_explained: Ne boste prejeli e-poštnega sporočila, niti če vas bo kdo poskušal obvestiti. Pomembna obvestila ali odločitve boste morda spregledali, razen če imate navado redno preverjati Loomio.
   close_explanation_modal:
     aria_label: Zapri temo
     close_thread: Zapri temo

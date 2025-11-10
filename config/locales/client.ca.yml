@@ -470,12 +470,14 @@ ca:
     loud_desc: Cada cop que hi participa algú
     normal_desc: Quan algú m'avisa
     quiet_desc: Mai
-    quiet_explained: No rebràs un correu electrònic, fins i tot quan algú intenta notificar-te. És possible que us perdeu anuncis o decisions importants. Això pot ser adequat si un fil no us interessa, però no es recomana per a la configuració del grup tret que tingueu altres maneres d'estar al dia.
     loud_explained: Se us enviarà un correu electrònic cada vegada que hi hagi un comentari nou, algú voti o iniciï una enquesta o fil.
     when_would_you_like_to_be_emailed_poll_type: Quan vols rebre un correu electrònic sobre aquest %{poll_type}?
     normal_explained: Quan algú introdueix el teu nom al camp "Notificar" d'un fil o una enquesta, o bé {'@'}esmenta el grup.
     normal_excludes_mentioning_html: Hi ha una configuració separada per quan algú et menciona {'@'} (per exemple, quan et respon en un comentari). <a href="%{url}">Fes clic aquí per editar la configuració de les @mencions.</a>
     changes_all_threads_and_polls_in_group: Això canvia la configuració de tots els fils i enquestes del grup.
+    when_do_you_want_to_be_emailed: Quan vols que t'enviem el correu electrònic?
+    what_the_options_mean: Què signifiquen les opcions
+    quiet_explained: No rebràs correus electrònics, ni tan sols quan algú intenti notificar-te. És possible que et perdis anuncis o decisions importants, tret que tinguis el costum de consultar Loomio regularment.
   close_explanation_modal:
     aria_label: Tanca el fil de discussió
     close_thread: Tanca el fil de discussió

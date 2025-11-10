@@ -470,12 +470,14 @@ nl_NL:
     loud_desc: Elke keer dat iemand meedoet
     normal_desc: Wanneer iemand mij op de hoogte stelt
     quiet_desc: Nooit
-    quiet_explained: U ontvangt geen e-mail, zelfs niet als iemand u probeert te informeren. U mist mogelijk belangrijke aankondigingen of beslissingen. Dit kan geschikt zijn als een thread u niet aangaat, maar wordt niet aanbevolen voor de groepsomgeving, tenzij u andere manieren hebt om op de hoogte te blijven.
     normal_explained: Wanneer iemand jouw naam invoert in het veld 'Melden' van een thread of poll, of wanneer ze de groep @vermelden.
     loud_explained: U ontvangt een e-mail wanneer er een nieuwe reactie is, iemand stemt of een poll of thread start.
     when_would_you_like_to_be_emailed_poll_type: Wanneer wilt u een e-mail ontvangen over deze %{poll_type}?
     normal_excludes_mentioning_html: Er is een aparte instelling voor wanneer iemand je vermeldt (bijvoorbeeld wanneer iemand op je reageert in een reactie). <a href="%{url}">Klik hier om de instellingen voor @vermeldingen te bewerken.</a>
     changes_all_threads_and_polls_in_group: Hiermee worden de instellingen voor alle threads en polls in de groep gewijzigd.
+    when_do_you_want_to_be_emailed: Wanneer wilt u een e-mail ontvangen?
+    what_the_options_mean: Wat de opties betekenen
+    quiet_explained: Je ontvangt geen e-mails, zelfs niet wanneer iemand je probeert te informeren. Je mist mogelijk belangrijke aankondigingen of beslissingen, tenzij je de gewoonte hebt om Loomio regelmatig te checken.
   close_explanation_modal:
     aria_label: Sluit bord
     close_thread: Sluit bord
