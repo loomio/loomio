@@ -12,9 +12,10 @@ export default {
   },
 
   data() {
+    const queryId = [parseInt(this.$route.query.poll_option_id)].filter(id => this.stance.poll().pollOptionIds.includes(id))[0]
     return {
-      selectedOptionIds: compact((this.stance.pollOptionIds().length && this.stance.pollOptionIds()) || [parseInt(this.$route.query.poll_option_id)]),
-      selectedOptionId: this.stance.pollOptionIds()[0] || parseInt(this.$route.query.poll_option_id),
+      selectedOptionIds: compact((this.stance.pollOptionIds().length && this.stance.pollOptionIds()) || [queryId]),
+      selectedOptionId: this.stance.pollOptionIds()[0] || queryId,
       loading: false,
       options: []
     };
@@ -25,7 +26,7 @@ export default {
       collections: ['pollOptions'],
       query: () => {
         if (this.poll.optionsDiffer(this.options)) {
-          if (this.poll) { this.options = this.poll.pollOptionsForVoting(); }
+          this.options = this.poll.pollOptionsForVoting();
         }
       }
     });
@@ -81,9 +82,9 @@ export default {
       if (!this.stance.noneOfTheAbove && this.singleChoice) {
         this.stance.stanceChoicesAttributes = [{poll_option_id: this.selectedOptionId}];
       } else {
-        this.stance.stanceChoicesAttributes = this.selectedOptionIds.map(id => {
-          return {poll_option_id: id};
-        });
+        this.stance.stanceChoicesAttributes = this.selectedOptionIds.
+                                                   filter(id => this.stance.poll().pollOptionIds.includes(id) ).
+                                                   map(id => { return {poll_option_id: id}; });
       }
       const actionName = !this.stance.castAt ? 'created' : 'updated';
       this.stance.save().then(() => {
