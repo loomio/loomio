@@ -319,7 +319,6 @@ Rails.application.routes.draw do
       end
 
       resources :contact_messages, only: :create
-      resources :ask_ai, only: :create
 
       resources :versions, only: [] do
         get :show, on: :collection
