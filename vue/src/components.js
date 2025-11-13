@@ -137,7 +137,7 @@ export default {
   ThreadPreview: 'thread/preview',
   PinEventForm: 'thread/pin_event_form',
   TimeAgo: 'common/time_ago',
-  Translation: 'common/translation',
+  PlainText: 'common/plain_text',
   PlanBanner: 'group/plan_banner',
   UserAvatar: 'user/avatar',
   UserAvatarBody: 'user/avatar_body',

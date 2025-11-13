@@ -69,7 +69,7 @@ v-main.user-page__profile
           .d-flex.flex-column.user-page__info.mb-5.align-center.justify-center
             user-avatar.mb-5(:user='user' :size='192' :no-link="true")
             .text-medium-emphasis @{{user.username}}
-            formatted-text(v-if="user" :model="user" column="shortBio")
+            formatted-text(v-if="user" :model="user" field="shortBio")
             div(v-t="{ path: 'user_page.locale_field', args: { value: user.localeName() } }", v-if='user.localeName()')
             span
               span(v-t="'common.time_zone'")

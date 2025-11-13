@@ -3,7 +3,6 @@ import AppConfig        from '@/shared/services/app_config';
 import Session          from '@/shared/services/session';
 import RangeSet         from '@/shared/services/range_set';
 import HasDocuments     from '@/shared/mixins/has_documents';
-import HasTranslations  from '@/shared/mixins/has_translations';
 import { isAfter } from 'date-fns';
 import dateIsEqual from 'date-fns/isEqual';
 import { map, compact, flatten, isEqual, isEmpty, filter, some, head, last, sortBy, isArray, throttle } from 'lodash-es';
@@ -34,7 +33,6 @@ export default class DiscussionModel extends BaseModel {
   afterConstruction() {
     if (this.isNew()) { this.private = this.privateDefaultValue(); }
     HasDocuments.apply(this, {showTitle: true});
-    HasTranslations.apply(this);
   }
 
   collabKeyParams(){
@@ -109,6 +107,7 @@ export default class DiscussionModel extends BaseModel {
     this.belongsTo('group');
     this.belongsTo('author', {from: 'users'});
     this.belongsTo('closer', {from: 'users'});
+    this.belongsTo('translation');
     return this.hasMany('discussionReaders');
   }
 
@@ -163,13 +162,6 @@ export default class DiscussionModel extends BaseModel {
 
   reactions() {
     return Records.reactions.find({reactableId: this.id, reactableType: "Discussion"});
-  }
-
-  translationOptions() {
-    return {
-      title: this.title,
-      groupName: this.groupName()
-    };
   }
 
   authorName() {

@@ -28,5 +28,5 @@ export default {
   span.text-medium-emphasis(v-html='headline')
   mid-dot.text-medium-emphasis
   time-ago.text-medium-emphasis(:date='event.createdAt')
-  formatted-text.thread-item__body(:model="eventable" column="statement")
+  //formatted-text.thread-item__body(:model="eventable" field="statement")
 </template>

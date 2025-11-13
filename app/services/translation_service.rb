@@ -11,23 +11,62 @@ class TranslationService
     locale.split("-")[0]
   end
 
+  def self.translated_fields_for(model, to:)
+    service = Google::Cloud::Translate.translation_v2_service
+    fields = {}
+
+    model.class.translatable_fields.each do |field|
+      value = model.send(field)
+
+      if value.blank?
+        fields[field.to_s] = nil
+        next
+      end
+
+      format_field = "#{field}_format"
+      content = value
+      translate_options = { to: to, format: :text }
+
+      if model.respond_to?(format_field)
+        translate_options[:format] = :html
+        if model.send(format_field) == 'md'
+          content = MarkdownService.render_html(content)
+        end
+      end
+
+      fields[field.to_s] = service.translate(content, **translate_options)
+    end
+
+    fields
+  end
+
+
+
   def self.create(model:, to:)
     locale = locale_for_google(to)
     translation = model.translations.find_by(language: locale) ||
                   Translation.new(translatable: model, language: locale, fields: {})
 
-    if translation.new_record? || ((translation.updated_at || translation.created_at) < (model.updated_at || model.created_at || 5.years.ago))
-      service = Google::Cloud::Translate.translation_v2_service
-
-      model.class.translatable_fields.each do |field|
-        next if model.send(field).blank?
-        translation.fields[field.to_s] = service.translate(model.send(field), to: locale)
-      end
+    if translation.new_record? || (translation.updated_at || translation.created_at) < (model.updated_at || model.created_at)
+      translation.fields = translated_fields_for(model, to: locale)
 
       translation.save!
     end
 
     translation
+  end
+
+  def self.update_and_broadcast(translatable_type, translatable_id)
+    model = Object.const_get(translatable_type).find(translatable_id)
+
+
+
+    Translation.where(translatable_type: translatable_type,
+                      translatable_id: translatable_id).each do |translation|
+      translation.fields = translated_fields_for(model, to: translation.language)
+      translation.save!
+      MessageChannelService.publish_models([translation], group_id: model.group_id)
+    end
   end
 
   def self.available?
@@ -73,7 +112,7 @@ class TranslationService
   end
 
   def self.translate_group_record(group, record, locale, cache_only = false, ignore: [])
-    translate_record = if source_record_id = group.info.dig('source_record_ids', "#{record.class.to_s}-#{record.id}")
+    translate_record = if source_record_id = group.info.dig('source_record_ids', "#{record.class}-#{record.id}")
       record.class.find(source_record_id)
     else
       record

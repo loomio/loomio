@@ -1,6 +1,5 @@
 import BaseModel    from '@/shared/record_store/base_model';
 import HasDocuments from '@/shared/mixins/has_documents';
-import HasTranslations  from '@/shared/mixins/has_translations';
 import Records from '@/shared/services/records';
 import {filter, some, map, each, compact, sortBy} from 'lodash-es';
 
@@ -59,7 +58,6 @@ export default class GroupModel extends BaseModel {
 
   afterConstruction() {
     HasDocuments.apply(this, {showTitle: true});
-    HasTranslations.apply(this);
   }
 
   relationships() {

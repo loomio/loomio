@@ -125,7 +125,7 @@ export default {
               time-ago.text-medium-emphasis(:date="stance.castAt")
         .poll-common-stance(v-if="poll.showResults() && stance.castAt")
           poll-common-stance-choices(:stance='stance')
-          formatted-text.poll-common-stance-created__reason(:model="stance" column="reason")
+          formatted-text.poll-common-stance-created__reason(:model="stance" field="reason")
           attachment-list(:attachments="stance.attachments")
     loading(v-if="loader.loading")
     v-pagination(v-if="!totalPages != 1" v-model="page", :length="totalPages")

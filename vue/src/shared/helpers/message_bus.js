@@ -22,15 +22,15 @@ export var initLiveUpdate = function() {
   });
 
   conn.on('reconnect', data => {
-    console.debug("socket.io reconnect");
+    // console.debug("socket.io reconnect");
   });
 
   conn.on('disconnect', data => {
-    console.debug("socket.io disconnect");
+    // console.debug("socket.io disconnect");
   });
 
   conn.on('connect', data => {
-    console.debug("socket.io connect");
+    // console.debug("socket.io connect");
   });
 };
 

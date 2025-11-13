@@ -51,7 +51,7 @@ section.strand-item__stance-created.stance-created
       v-layout(v-if="!eventable.hasOptionIcon()" wrap align-center)
         strand-item-headline.text-medium-emphasis(:event="event" :eventable="eventable" :dateTime="eventable.updatedAt || eventable.castAt")
       poll-common-stance-choices(:stance="eventable")
-      formatted-text.poll-common-stance-created__reason(:model="eventable" column="reason")
+      formatted-text.poll-common-stance-created__reason(:model="eventable" field="reason")
       link-previews(:model="eventable")
       attachment-list(:attachments="eventable.attachments")
     action-dock(:model='eventable' :actions='actions' size="small" left)

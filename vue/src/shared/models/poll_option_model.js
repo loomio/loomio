@@ -26,7 +26,8 @@ export default class PollOptionModel extends BaseModel {
   }
 
   relationships() {
-    return this.belongsTo('poll');
+    this.belongsTo('poll');
+    this.belongsTo('translation');
   }
 
   stances() {
@@ -40,7 +41,7 @@ export default class PollOptionModel extends BaseModel {
   optionName() {
     const poll = this.poll();
     switch (poll.pollOptionNameFormat) {
-      case 'plain': return this.name;
+      case 'plain': return this.translationId ? this.translation().fields.name : this.name;
       case 'i18n': return I18n.global.t('poll_' + poll.pollType + '_options.' + this.name);
       case 'iso8601': return exact(parseISO(this.name));
       default:

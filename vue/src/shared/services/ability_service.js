@@ -294,12 +294,17 @@ export default new class AbilityService {
   }
 
   canTranslate(model) {
-    if (model.discardedAt) { return false; }
-    return (AppConfig.inlineTranslation.isAvailable &&
-    (Object.keys(model.translation).length === 0) &&
-    !model.isBlank() &&
-    (model.contentLocale && (model.contentLocale !== Session.user().locale))) ||
-    (!model.contentLocale && (model.author().locale !== Session.user().locale));
+    return !model.discardedAt &&
+           AppConfig.inlineTranslation.isAvailable &&
+           !model.translationId &&
+           model.contentLocale &&
+           model.contentLocale !== Session.user().locale &&
+           !model.isBlank() &&
+           Session.isSignedIn()
+  }
+
+  canUntranslate(model) {
+    return !!model.translationId
   }
 
   canStartPoll(model) {

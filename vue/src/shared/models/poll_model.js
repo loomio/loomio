@@ -2,7 +2,6 @@ import BaseModel        from '@/shared/record_store/base_model';
 import AppConfig        from '@/shared/services/app_config';
 import Session          from '@/shared/services/session';
 import HasDocuments     from '@/shared/mixins/has_documents';
-import HasTranslations  from '@/shared/mixins/has_translations';
 import { I18n }             from '@/i18n';
 import { addDays, startOfHour } from 'date-fns';
 import { snakeCase, compact, head, orderBy, sortBy, map, flatten, slice, uniq, isEqual, shuffle } from 'lodash-es';
@@ -29,7 +28,6 @@ export default class PollModel extends BaseModel {
 
   afterConstruction() {
     HasDocuments.apply(this, {showTitle: true});
-    HasTranslations.apply(this);
   }
 
   config() {
@@ -168,6 +166,7 @@ export default class PollModel extends BaseModel {
     this.belongsTo('author', {from: 'users'});
     this.belongsTo('discussion');
     this.belongsTo('group');
+    this.belongsTo('translation');
     this.hasMany('stances');
     return this.hasMany('versions');
   }

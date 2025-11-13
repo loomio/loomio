@@ -1,17 +1,8 @@
 import utils from './utils';
-import { isEqual } from 'date-fns';
-import { camelCase, compact, union, each, isArray, keys, filter, snakeCase, defaults, orderBy, assign, includes, pick } from 'lodash-es';
+import { camelCase, compact, union, each, isArray, keys, snakeCase, defaults, orderBy, assign, includes } from 'lodash-es';
 
 import Records from '@/shared/services/records';
 import { reactive } from 'vue';
-
-function attributeIsDifferent(first, second, attributeName) {
-  if (utils.isTimeAttribute(attributeName)) {
-    return !((first === second) || isEqual(first, second));
-  } else {
-    return first !== second;
-  }
-}
 
 export default class BaseModel {
   static singular = 'undefinedSingular';
@@ -62,8 +53,6 @@ export default class BaseModel {
     this.processing = false; // not returning/throwing on already processing rn
     this._version = 0;
     this.attributeNames = [];
-    // this.unmodified = {};
-    // this.afterUpdateFns = [];
     this.saveDisabled = false;
     this.saveFailed = false;
     this.beforeSaves = [];
@@ -86,10 +75,6 @@ export default class BaseModel {
       [this.constructor.singular, this.id, field]
     ).flat()).join("-");
   }
-
-  // bumpVersion() {
-  //   return this._version = this._version + 1;
-  // }
 
   afterConstruction() {}
 
@@ -116,64 +101,20 @@ export default class BaseModel {
     return this.baseUpdate(attributes);
   }
 
-  // afterUpdate(fn) {
-  //   return this.afterUpdateFns.push(fn);
-  // }
-
   baseUpdate(attributes) {
-    // this.bumpVersion();
-
     this.attributeNames = union(this.attributeNames, keys(attributes));
     each(attributes, (value, key) => {
-      // if (attributeIsDifferent(this[key], value, key)) {
-        reactive(this)[key] = value;
-      // }
+      reactive(this)[key] = value;
       return true;
     });
-
     if (this.inCollection()) { Records[this.constructor.plural].collection.update(this); }
-
-    // return this.afterUpdateFns.forEach(fn => fn(this));
   }
-
 
   attributeIsBlank(attributeName) {
     const doc = new DOMParser().parseFromString(this[attributeName], 'text/html');
     const o = (doc.body.textContent || "").trim();
     return ['null', 'undefined', ''].includes(o);
   }
-
-  // attributeIsModified(attributeName) {
-  //   const strip = function(val) {
-  //     const doc = new DOMParser().parseFromString(val, 'text/html');
-  //     const o = (doc.body.textContent || "").trim();
-  //     if (['null', 'undefined'].includes(o)) {
-  //       return '';
-  //     } else {
-  //       return o;
-  //     }
-  //   };
-
-  //   const original = this.unmodified[attributeName];
-  //   const current = this[attributeName];
-  //   if (utils.isTimeAttribute(attributeName)) {
-  //     return !((original === current) || isEqual(original, current));
-  //   } else {
-  //     if (strip(original) === strip(current)) { return false; }
-  //     // console.log("#{attributeName}: #{strip(original)}, #{strip(current)}")
-  //     return original !== current;
-  //   }
-  // }
-
-  // modifiedAttributes() {
-  //   return filter(this.attributeNames, name => {
-  //     return this.attributeIsModified(name);
-  //   });
-  // }
-
-  // isModified() {
-  //   return this.modifiedAttributes().length > 0;
-  // }
 
   serialize() {
     return this.baseSerialize();
@@ -250,16 +191,12 @@ export default class BaseModel {
   }
 
   belongsToPolymorphic(name) {
-
     this[name] = () => {
       const typeColumn = `${name}Type`;
       const idColumn = `${name}Id`;
-
       return Records[BaseModel.eventTypeMap[this[typeColumn]]].find(this[idColumn]);
     };
   }
-
-  translationOptions() {}
 
   isA(...models) {
     return includes(models, this.constructor.singular);
@@ -328,7 +265,7 @@ export default class BaseModel {
     reactive(this).processing = true;
     this.beforeSave();
     this.beforeSaves.forEach(f => f());
-  
+
     if (this.isNew()) {
       return Records[this.constructor.plural].remote.create(this.serialize())
       .then(this.saveSuccess, this.saveError)
@@ -342,7 +279,6 @@ export default class BaseModel {
 
   saveSuccess(data) {
     reactive(this).saveFailed = false;
-    // this.unmodified = pick(this, this.attributeNames);
     return data;
   }
 
@@ -351,12 +287,6 @@ export default class BaseModel {
     this.setErrors(data.errors);
     throw data;
   }
-
-  // discardChanges() {
-  //   reactive(this).attributeNames.forEach(key => {
-  //     reactive(this)[key] = this.unmodified[key];
-  //   });
-  // }
 
   setErrors(errorList) {
     if (errorList == null) { errorList = []; }

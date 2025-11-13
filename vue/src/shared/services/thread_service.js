@@ -22,9 +22,17 @@ export default new class ThreadService {
       translate_thread: {
         icon: 'mdi-translate',
         name: 'common.action.translate',
-        dock: 2,
+        dock: 3,
         canPerform() { return AbilityService.canTranslate(discussion); },
-        perform() { return Session.user() && discussion.translate(Session.user().locale); }
+        perform() { return Records.translations.addTo(discussion, Session.user().locale) }
+      },
+
+      untranslate_thread: {
+        icon: 'mdi-translate',
+        name: 'common.action.original',
+        dock: 3,
+        canPerform() { return AbilityService.canUntranslate(discussion); },
+        perform() { discussion.translationId = null }
       },
 
       subscribe: {

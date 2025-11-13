@@ -9,15 +9,27 @@ export default new class CommentService {
   actions(comment, vm, event) {
     const isOwnComment = comment.authorId === Session.userId;
     return {
-      translate_comment: {
-        name: 'common.action.translate',
+      untranslate_comment: {
         icon: 'mdi-translate',
-        dock: 2,
+        name: 'common.action.original',
+        dock: 3,
         canPerform() {
-          return comment.body && AbilityService.canTranslate(comment);
+          return AbilityService.canUntranslate(comment);
         },
         perform() {
-          return Session.user() && comment.translate(Session.user().locale);
+          return comment.translationId = null;
+        }
+      },
+
+      translate_comment: {
+        icon: 'mdi-translate',
+        name: 'common.action.translate',
+        dock: 3,
+        canPerform() {
+          return AbilityService.canTranslate(comment);
+        },
+        perform() {
+          return Records.translations.addTo(comment, Session.user().locale);
         }
       },
 

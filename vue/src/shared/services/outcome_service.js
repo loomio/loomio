@@ -12,12 +12,24 @@ export default new class OutcomeService {
       translate_outcome: {
         name: 'common.action.translate',
         icon: 'mdi-translate',
-        dock: 2,
+        dock: 3,
         canPerform() {
           return AbilityService.canTranslate(outcome);
         },
         perform() {
-          return Session.user() && outcome.translate(user.locale);
+          return Records.translations.addTo(outcome, Session.user().locale)
+        }
+      },
+
+      untranslate_outcome: {
+        name: 'common.action.original',
+        icon: 'mdi-translate',
+        dock: 3,
+        canPerform() {
+          return AbilityService.canUntranslate(outcome);
+        },
+        perform() {
+          return outcome.translationId = null;
         }
       },
 

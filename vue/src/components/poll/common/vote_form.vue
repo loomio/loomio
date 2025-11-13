@@ -1,7 +1,6 @@
 <script lang="js">
 import EventBus from '@/shared/services/event_bus';
 import Flash   from '@/shared/services/flash';
-import Records   from '@/shared/services/records';
 import { compact } from 'lodash-es';
 import WatchRecords from '@/mixins/watch_records';
 
@@ -37,7 +36,6 @@ export default {
     hasOptionIcon() { return this.poll.config().has_option_icon; },
     poll() { return this.stance.poll(); },
     optionSelected() { return this.selectedOptionIds.length || this.selectedOptionId; },
-    optionPrompt() { return (this.selectedOptionId && Records.pollOptions.find(this.selectedOptionId).prompt) || ''; },
     submitText() {
       if (this.stance.castAt) {
         if (this.poll.config().has_options) {
@@ -130,7 +128,7 @@ export default {
 </script>
 
 <template lang="pug">
-form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.stop.capture="submit()")
+form.poll-common-vote-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
   v-alert(v-if="poll.config().has_options && !poll.singleChoice()" :color="optionCountAlertColor")
     span(
       v-if="poll.minimumStanceChoices == poll.maximumStanceChoices"
@@ -174,7 +172,8 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
             common-icon(name="mdi-checkbox-blank-outline" v-if="!singleChoice && !isSelected(option)" :color="isSelected(option) ? 'primary' : 'undefined'")
             common-icon(name="mdi-checkbox-marked" v-if="!singleChoice && isSelected(option)" :color="isSelected(option) ? 'primary' : 'undefined'")
         v-list-item-title.poll-common-vote-form__button-text {{option.optionName()}}
-        v-list-item-subtitle.poll-common-vote-form__allow-wrap {{option.meaning}}
+        v-list-item-subtitle
+          plain-text.poll-common-vote-form__allow-wrap(:model="option" field="meaning")
   v-checkbox.ml-2.none-of-the-above(
     v-if="poll.showNoneOfTheAbove"
     v-model="stance.noneOfTheAbove"
@@ -185,7 +184,8 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
     :stance='stance'
     :poll='poll'
     :selectedOptionId="selectedOptionId"
-    :prompt="optionPrompt")
+  )
+
   v-card-actions.poll-common-form-actions
     v-btn.poll-common-vote-form__submit(
       @click='submit()'

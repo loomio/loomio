@@ -22,8 +22,6 @@ export default {
 <template lang="pug">
 .thread-title
   h1.text-h4.context-panel__heading#sequence-0.pt-2.mb-4(tabindex="-1" v-intersect="{handler: titleVisible}")
-    span(v-if='!discussion.translation.title') {{discussion.title}}
-    span(v-if='discussion.translation.title')
-      translation(:model='discussion', field='title')
+    plain-text(:model='discussion' field='title')
     i.mdi.mdi-pin-outline.context-panel__heading-pin(v-if="status == 'pinned'")
 </template>

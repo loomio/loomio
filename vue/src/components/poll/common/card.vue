@@ -75,8 +75,7 @@ v-card
   div.px-2.pb-4.px-sm-4(v-else)
     poll-template-banner(:poll="poll")
     h1.poll-common-card__title.text-h4.py-2(tabindex="-1" v-intersect="{handler: titleVisible}")
-      span(v-if='!poll.translation.title') {{poll.title}}
-      translation(:model='poll' field='title' v-if="poll.translation.title")
+      plain-text(:model='poll' field='title')
     poll-common-set-outcome-panel(:poll='poll' v-if="!outcome")
     poll-common-outcome-panel(:outcome='outcome' v-if="outcome")
     poll-common-details-panel(:poll='poll')

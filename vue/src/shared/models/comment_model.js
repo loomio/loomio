@@ -1,7 +1,6 @@
 import BaseModel       from '@/shared/record_store/base_model';
 import AppConfig       from '@/shared/services/app_config';
 import HasDocuments    from '@/shared/mixins/has_documents';
-import HasTranslations from '@/shared/mixins/has_translations';
 import {capitalize, map, invokeMap} from 'lodash-es';
 import Records from '@/shared/services/records';
 
@@ -13,7 +12,6 @@ export default class CommentModel extends BaseModel {
 
   afterConstruction() {
     HasDocuments.apply(this);
-    HasTranslations.apply(this);
   }
 
   collabKeyParams() {
@@ -36,6 +34,7 @@ export default class CommentModel extends BaseModel {
   relationships() {
     this.belongsTo('author', {from: 'users'});
     this.belongsTo('discussion');
+    this.belongsTo('translation');
   }
 
   createdEvent() {
