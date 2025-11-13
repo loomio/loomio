@@ -1,4 +1,5 @@
-<script lang="js">
+<script setup lang="js">
+import { ref, computed } from 'vue';
 import StrandLoadMore from '@/components/strand/load_more.vue';
 import ReplyForm from '@/components/strand/reply_form.vue';
 import IntersectionWrapper from '@/components/strand/item/intersection_wrapper';
@@ -6,47 +7,31 @@ import StemWrapper from '@/components/strand/item/stem_wrapper';
 import Collapsed from '@/components/strand/item/collapsed';
 import LmoUrlService from '@/shared/services/lmo_url_service';
 
-export default {
-  name: 'strand-list',
-  props: {
-    loader: Object,
-    collection: {
-      type: Array,
-      required: true
-    },
-    focusSelector: String
+const props = defineProps({
+  loader: Object,
+  collection: {
+    type: Array,
+    required: true
   },
+  focusSelector: String
+});
 
-  data() {
-    return {
-      parentChecked: true,
-      endUrl: LmoUrlService.route({model: this.loader.discussion})
-    }
-  },
+const parentChecked = ref(true);
 
-  components: {
-    StrandLoadMore,
-    ReplyForm,
-    IntersectionWrapper,
-    StemWrapper,
-    Collapsed
-  },
+const endUrl = computed(() => 
+  LmoUrlService.route({ model: props.loader.discussion })
+);
 
-  methods: {
-    isFocused(event) {
-      return  this.focusSelector == `.sequenceId-${event.sequenceId || 0}` ||
-        (event.eventableType === 'Comment' && this.focusSelector == `.comment-${event.eventableId || 0}`);
-    },
-
-    rowClasses(obj) {
-      if (this.isFocused(obj.event)) {
-        // read current theme and add a v-theme class
-        return ['strand-item__row--focused', 'rounded-lg'];
-      }
-    }
-  }
+const isFocused = (event) => {
+  return props.focusSelector == `.sequenceId-${event.sequenceId || 0}` ||
+    (event.eventableType === 'Comment' && props.focusSelector == `.comment-${event.eventableId || 0}`);
 };
 
+const rowClasses = (obj) => {
+  if (isFocused(obj.event)) {
+    return ['strand-item__row--focused', 'rounded-lg'];
+  }
+};
 </script>
 
 <template lang="pug">
