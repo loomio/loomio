@@ -291,7 +291,7 @@ export default class PollModel extends BaseModel {
   }
 
   optionsDiffer(options) {
-    return !isEqual(sortBy(this.pollOptionNames), sortBy(map(options, 'name')));
+    return !isEqual( sortBy( this.pollOptionIds ), sortBy( options.map((o) => o.id) ) )
   }
 
   iCanVote() {
