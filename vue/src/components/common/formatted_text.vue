@@ -1,75 +1,73 @@
-<script lang="js">
+<script setup lang="js">
+import { computed } from 'vue';
 import { merge } from 'lodash-es';
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
 import Flash from '@/shared/services/flash';
 import AbilityService from '@/shared/services/ability_service';
+import { useI18n } from 'vue-i18n';
 
-export default {
-  props: {
-    model: {
-      type: Object,
-      required: true
-    },
-    field: {
-      type: String,
-      required: true
-    }
+const props = defineProps({
+  model: {
+    type: Object,
+    required: true
   },
+  field: {
+    type: String,
+    required: true
+  }
+});
 
-  mounted() {
-    this.$el.addEventListener('click', this.onClick);
-  },
+const { t } = useI18n();
 
-  destroyed() {
-    this.$el.removeEventListener('click', this.onClick);
-  },
+const canEdit = computed(() => AbilityService.canEdit(props.model));
 
-  methods: {
-    onClick(e) {
-      if ((e.target.getAttribute('data-type') === 'taskItem') && (e.offsetX < e.target.offsetLeft) && !e.target.classList.contains('task-item-busy')) {
-        if (this.canEdit || e.target.querySelectorAll('span[data-mention-id="'+Session.user().username+'"]').length) {
-          e.target.classList.add('task-item-busy');
-          const uid = e.target.getAttribute('data-uid');
-          const checked = e.target.getAttribute('data-checked') === 'true';
-          const params = merge(this.model.namedId(), {uid, done: ((!checked && 'true') || 'false') });
-          Records.remote.post('tasks/update_done', params).finally(() => {
-            if (!checked) {
-              Flash.success('tasks.task_updated_done');
-            } else {
-              Flash.success('tasks.task_updated_not_done');
-            }
-            e.target.classList.remove('task-item-busy');
-          });
+const content = computed(() => {
+  if (props.model.translationId) {
+    return props.model.translation().fields[props.field];
+  } else {
+    return props.model[props.field];
+  }
+});
+
+const format = computed(() => props.model[props.field + 'Format'] || 'none');
+
+function onClick(e) {
+  const target = e.target;
+  if (
+    target?.getAttribute?.('data-type') === 'taskItem' &&
+    e.offsetX < target.offsetLeft &&
+    !target.classList.contains('task-item-busy')
+  ) {
+    const mentioned = target.querySelectorAll(
+      'span[data-mention-id="' + Session.user().username + '"]'
+    ).length;
+
+    if (canEdit.value || mentioned) {
+      target.classList.add('task-item-busy');
+      const uid = target.getAttribute('data-uid');
+      const checked = target.getAttribute('data-checked') === 'true';
+      const params = merge(props.model.namedId(), {
+        uid,
+        done: (!checked && 'true') || 'false'
+      });
+      Records.remote.post('tasks/update_done', params).finally(() => {
+        if (!checked) {
+          Flash.success('tasks.task_updated_done');
         } else {
-          alert(this.$t('tasks.permission_denied'));
+          Flash.success('tasks.task_updated_not_done');
         }
-      }
-    }
-  },
-
-  computed: {
-    canEdit() {
-      return AbilityService.canEdit(this.model);
-    },
-
-    content() {
-      if (this.model.translationId) {
-        return this.model.translation().fields[this.field]
-      } else {
-        return this.model[this.field]
-      }
-    },
-
-    format() {
-      return this.model[this.field + "Format"] || 'none';
+        target.classList.remove('task-item-busy');
+      });
+    } else {
+      alert(t('tasks.permission_denied'));
     }
   }
-};
+}
 </script>
 
 <template lang="pug">
-div.lmo-markdown-wrapper
+div.lmo-markdown-wrapper(@click="onClick")
   div(v-if="format == 'md'" v-marked='content')
   div(v-if="format == 'html'" v-html='content')
   span(v-if="format == 'none'") Format none. Use plain-text instead.

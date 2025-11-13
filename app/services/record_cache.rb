@@ -27,8 +27,11 @@ class RecordCache
     obj.current_user_id = user_id
     return obj unless item = collection.to_a.first
 
-    # puts "when #{item.class.to_s}"
+
     case item.class.to_s
+    when 'Translation'
+      obj.add_translations(collection)
+      return obj
     when 'Discussion'
       collection_ids = collection.map(&:id)
       obj.add_discussions(collection)
@@ -271,7 +274,7 @@ class RecordCache
       @user_ids.push stance.participant_id
       scope[:stances_by_id][stance.id] = stance
       if stance.participant_id == current_user_id && stance.revoked_at.nil?
-        scope[:my_stances_by_poll_id][stance.poll_id] = stance 
+        scope[:my_stances_by_poll_id][stance.poll_id] = stance
       end
     end
   end
@@ -301,6 +304,12 @@ class RecordCache
       scope["#{eventable.class.to_s.underscore.pluralize}_by_id"] ||= {}
       scope["#{eventable.class.to_s.underscore.pluralize}_by_id"][eventable.id] = eventable
     end
+  end
+
+
+  def add_translations(collection)
+    return if exclude_types.include?('translation')
+    scope[:translations_by_id] = collection.index_by(&:id)
   end
 
   def add_discussions(collection)

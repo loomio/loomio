@@ -1,7 +1,6 @@
 <script lang="js">
 import EventBus from '@/shared/services/event_bus';
 import Flash   from '@/shared/services/flash';
-import Records   from '@/shared/services/records';
 import { compact } from 'lodash-es';
 import WatchRecords from '@/mixins/watch_records';
 
@@ -36,7 +35,6 @@ export default {
     hasOptionIcon() { return this.poll.config().has_option_icon; },
     poll() { return this.stance.poll(); },
     optionSelected() { return this.selectedOptionIds.length || this.selectedOptionId; },
-    optionPrompt() { return (this.selectedOptionId && Records.pollOptions.find(this.selectedOptionId).prompt) || ''; },
     submitText() {
       if (this.stance.castAt) {
         if (this.poll.config().has_options) {
@@ -185,7 +183,8 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop
     :stance='stance'
     :poll='poll'
     :selectedOptionId="selectedOptionId"
-    :prompt="optionPrompt")
+  )
+
   v-card-actions.poll-common-form-actions
     v-btn.poll-common-vote-form__submit(
       @click='submit()'

@@ -42,6 +42,36 @@ class TranslationService
     translation
   end
 
+  def self.update_and_broadcast(translatable_type, translatable_id)
+    model = Object.const_get(translatable_type).find(translatable_id)
+    service = Google::Cloud::Translate.translation_v2_service
+
+    Translation.where(translatable_type: translatable_type,
+                      translatable_id: translatable_id).each do |translation|
+      model.class.translatable_fields.each do |field|
+        if model.send(field).blank?
+          translation.fields[field.to_s] = nil
+          next
+        end
+
+        format_field = "#{field}_format"
+        content = model.send(field)
+        translate_options = { to: translation.language, format: :text }
+
+        if model.respond_to?(format_field)
+          translate_options[:format] = :html
+          if model.send(format_field) == 'md'
+            content = MarkdownService.render_html(content)
+          end
+        end
+
+        translation.fields[field.to_s] = service.translate(content, **translate_options)
+      end
+      translation.save!
+      MessageChannelService.publish_models([translation], group_id: model.group_id)
+    end
+  end
+
   def self.available?
     ENV['TRANSLATE_CREDENTIALS'].present?
   end
