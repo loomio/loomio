@@ -1,204 +1,191 @@
-<script lang="js">
-import Records           from '@/shared/services/records';
-import Session           from '@/shared/services/session';
-import EventBus          from '@/shared/services/event_bus';
-import ThreadLoader      from '@/shared/loaders/thread_loader';
-import FormatDate from '@/mixins/format_date';
-import WatchRecords from '@/mixins/watch_records';
-import UrlFor from '@/mixins/url_for';
+<script setup lang="js">
+import { ref, watch, onMounted, onUnmounted, nextTick } from 'vue';
+import { useRoute } from 'vue-router';
+import Records from '@/shared/services/records';
+import Session from '@/shared/services/session';
+import EventBus from '@/shared/services/event_bus';
+import ThreadLoader from '@/shared/loaders/thread_loader';
 import StrandActionsPanel from './actions_panel';
 import ScrollService from '@/shared/services/scroll_service';
 import { mdiMenuOpen } from '@mdi/js';
+import { useWatchRecords } from '@/shared/composables/use_watch_records';
 
-export default {
-  mixins: [WatchRecords, UrlFor],
+const route = useRoute();
+const { watchRecords } = useWatchRecords();
 
-  components: {
-    StrandActionsPanel
-  },
+const discussion = ref(null);
+const loader = ref(null);
+const position = ref(0);
+const group = ref(null);
+const discussionFetchError = ref(null);
+const focusMode = ref(null);
+const focusSelector = ref(null);
+const anchorSelector = ref(null);
+const anchorOffset = ref(null);
+const lastAnchorSelector = ref(null);
+const snackbar = ref(false);
 
-  data() {
-    return {
-      mdiMenuOpen,
-      discussion: null,
-      loader: null,
-      position: 0,
-      group: null,
-      discussionFetchError: null,
-      focusMode: null,
-      focusSelector: null,
-      anchorSelector: null,
-      anchorOffset: null,
-      lastAnchorSelector: null,
-      snackbar: false
-    };
-  },
+const openThreadNav = () => {
+  EventBus.$emit('toggleThreadNav');
+};
 
-  mounted() {
-    EventBus.$on('setAnchor', (selector, offset) => {
-      this.anchorSelector = selector;
-      this.anchorOffset = offset
-    });
-    this.init();
-  },
-
-  destroyed() {
-    EventBus.$off('setFocus');
-  },
-
-  watch: {
-    '$route.params.key': 'init',
-    '$route.params.sequence_id': 'respondToRoute',
-    '$route.params.comment_id': 'respondToRoute',
-    '$route.query.p': 'respondToRoute',
-    '$route.query.k': 'respondToRoute',
-    '$route.query.current_action': 'respondToRoute',
-    '$route.query.unread': 'respondToRoute',
-    '$route.query.newest': 'respondToRoute',
-  },
-
-  methods: {
-    openThreadNav() {
-      EventBus.$emit('toggleThreadNav')
-    },
-
-    init() {
-      Records.discussions.findOrFetchById(this.$route.params.key, {exclude_types: 'poll outcome'}).then(discussion => {
-        if (discussion.group().newHost) { window.location.host = discussion.group().newHost; }
-        this.discussion = discussion;
-        this.loader = new ThreadLoader(this.discussion);
-
-        this.respondToRoute();
-
-        EventBus.$emit('currentComponent', {
-          focusHeading: false,
-          page: 'discussionPage',
-          discussion: this.discussion,
-          group: this.discussion.group(),
-          title: this.discussion.title
-        });
-
-        this.watchRecords({
-          key: 'strand'+this.discussion.id,
-          collections: ['events'],
-          query: () => {
-            this.loader.updateCollection();
-            this.$nextTick(() => this.scrollToAnchorIfNew());
-          }
-        });
-      }).catch(function(error) {
-        EventBus.$emit('pageError', error);
-        if ((error.status === 403) && !Session.isSignedIn()) { EventBus.$emit('openAuthModal'); }
-      });
-    },
-
-    loadContent() {
-      if (!this.discussion) { return; }
-      if (this.discussion.key !== this.$route.params.key) { return; }
-
-      this.focusMode = null;
-      this.focusSelector = null;
-      this.anchorSelector = null;
-      this.anchorOffset = null;
-
-      this.loader.addContextRule();
-      this.loader.addLoadMyStuffRule();
-
-      if (this.discussion.itemsCount === 0) {
-        this.loader.addLoadNewestRule();
-        // this.anchorSelector = '#strand-page';
-        return;
-      }
-
-      if (Object.keys(this.$route.params).includes('sequence_id')) {
-        const sequenceId = parseInt(this.$route.params.sequence_id);
-        this.loader.addLoadSequenceIdRule(sequenceId);
-        this.focusSelector = `.sequenceId-${sequenceId}`;
-        return;
-      }
-
-      if (this.$route.params.comment_id) {
-        this.loader.addLoadCommentRule(parseInt(this.$route.params.comment_id));
-        this.loader.addLoadNewestRule();
-        this.focusSelector = `#comment-${parseInt(this.$route.params.comment_id)}`;
-        return;
-      }
-
-      if (Object.keys(this.$route.query).includes('unread')) {
-        this.loader.clearRules();
-        this.loader.addLoadUnreadRule();
-        this.loader.addLoadNewestRule();
-        this.focusMode = 'unread';
-        this.anchorSelector = `.sequenceId-${parseInt(this.loader.firstUnreadSequenceId())}`;
-        return;
-      }
-
-      if (Object.keys(this.$route.query).includes('newest')) {
-        this.loader.clearRules();
-        this.loader.addLoadNewestRule();
-        this.focusMode = 'newest';
-        this.focusSelector = `.sequenceId-${parseInt(this.discussion.lastSequenceId())}`;
-        return;
-      }
-
-      // never been read before
-      if (!this.discussion.lastReadAt) {
-        if (this.discussion.newestFirst) {
-          this.loader.addLoadNewestRule();
-        } else {
-          this.loader.addLoadOldestRule();
-        }
-        this.anchorSelector = "#strand-page";
-        return;
-      }
-
-      if (this.loader.firstUnreadSequenceId()) {
-        this.loader.addLoadUnreadRule();
-        this.loader.addLoadNewestRule();
-        this.focusMode = 'unread';
-        this.anchorSelector = `.sequenceId-${parseInt(this.loader.firstUnreadSequenceId())}`;
-        return;
-      } else {
-        this.loader.addLoadNewestRule();
-        this.focusMode = 'newest';
-        this.anchorSelector = `.sequenceId-${parseInt(this.discussion.lastSequenceId())}`;
-        return;
-      }
-    },
-
-    respondToRoute() {
-      this.loadContent();
-      this.snackbar = !!this.focusMode;
-
-      if (this.$route.query.current_action) {
-        this.anchorSelector = '.actions-panel-end';
-      } else {
-        if (!this.anchorSelector) {
-          this.anchorSelector = this.focusSelector;
-          this.anchorOffset = null;
-        }
-      }
-
-      this.scrollToAnchorIfPresent();
-
-      this.loader.fetch();
-    },
-
-    scrollToAnchorIfPresent() {
-      if (document.querySelector(this.anchorSelector)) {
-        ScrollService.scrollTo(this.anchorSelector, this.anchorOffset);
-      }
-    },
-
-    scrollToAnchorIfNew() {
-      if (this.lastAnchorSelector !== this.anchorSelector) {
-        ScrollService.scrollTo(this.anchorSelector, this.anchorOffset);
-        this.lastAnchorSelector = this.anchorSelector;
-      }
-    },
+const scrollToAnchorIfPresent = () => {
+  if (document.querySelector(anchorSelector.value)) {
+    ScrollService.scrollTo(anchorSelector.value, anchorOffset.value);
   }
 };
 
+const scrollToAnchorIfNew = () => {
+  if (lastAnchorSelector.value !== anchorSelector.value) {
+    ScrollService.scrollTo(anchorSelector.value, anchorOffset.value);
+    lastAnchorSelector.value = anchorSelector.value;
+  }
+};
+
+const loadContent = () => {
+  if (!discussion.value) { return; }
+  if (discussion.value.key !== route.params.key) { return; }
+
+  focusMode.value = null;
+  focusSelector.value = null;
+  anchorSelector.value = null;
+  anchorOffset.value = null;
+
+  loader.value.addContextRule();
+  loader.value.addLoadMyStuffRule();
+
+  if (discussion.value.itemsCount === 0) {
+    loader.value.addLoadNewestRule();
+    return;
+  }
+
+  if (Object.keys(route.params).includes('sequence_id')) {
+    const sequenceId = parseInt(route.params.sequence_id);
+    loader.value.addLoadSequenceIdRule(sequenceId);
+    focusSelector.value = `.sequenceId-${sequenceId}`;
+    return;
+  }
+
+  if (route.params.comment_id) {
+    loader.value.addLoadCommentRule(parseInt(route.params.comment_id));
+    loader.value.addLoadNewestRule();
+    focusSelector.value = `#comment-${parseInt(route.params.comment_id)}`;
+    return;
+  }
+
+  if (Object.keys(route.query).includes('unread')) {
+    loader.value.clearRules();
+    loader.value.addLoadUnreadRule();
+    loader.value.addLoadNewestRule();
+    focusMode.value = 'unread';
+    anchorSelector.value = `.sequenceId-${parseInt(loader.value.firstUnreadSequenceId())}`;
+    return;
+  }
+
+  if (Object.keys(route.query).includes('newest')) {
+    loader.value.clearRules();
+    loader.value.addLoadNewestRule();
+    focusMode.value = 'newest';
+    focusSelector.value = `.sequenceId-${parseInt(discussion.value.lastSequenceId())}`;
+    return;
+  }
+
+  // never been read before
+  if (!discussion.value.lastReadAt) {
+    if (discussion.value.newestFirst) {
+      loader.value.addLoadNewestRule();
+    } else {
+      loader.value.addLoadOldestRule();
+    }
+    anchorSelector.value = "#strand-page";
+    return;
+  }
+
+  if (loader.value.firstUnreadSequenceId()) {
+    loader.value.addLoadUnreadRule();
+    loader.value.addLoadNewestRule();
+    focusMode.value = 'unread';
+    anchorSelector.value = `.sequenceId-${parseInt(loader.value.firstUnreadSequenceId())}`;
+    return;
+  } else {
+    loader.value.addLoadNewestRule();
+    focusMode.value = 'newest';
+    anchorSelector.value = `.sequenceId-${parseInt(discussion.value.lastSequenceId())}`;
+    return;
+  }
+};
+
+const respondToRoute = () => {
+  loadContent();
+  snackbar.value = !!focusMode.value;
+
+  if (route.query.current_action) {
+    anchorSelector.value = '.actions-panel-end';
+  } else {
+    if (!anchorSelector.value) {
+      anchorSelector.value = focusSelector.value;
+      anchorOffset.value = null;
+    }
+  }
+
+  scrollToAnchorIfPresent();
+
+  loader.value.fetch();
+};
+
+const init = () => {
+  Records.discussions.findOrFetchById(route.params.key, {exclude_types: 'poll outcome'}).then(disc => {
+    if (disc.group().newHost) { window.location.host = disc.group().newHost; }
+    discussion.value = disc;
+    loader.value = new ThreadLoader(discussion.value);
+
+    respondToRoute();
+
+    EventBus.$emit('currentComponent', {
+      focusHeading: false,
+      page: 'discussionPage',
+      discussion: discussion.value,
+      group: discussion.value.group(),
+      title: discussion.value.title
+    });
+
+    watchRecords({
+      key: 'strand' + discussion.value.id,
+      collections: ['events'],
+      query: () => {
+        loader.value.updateCollection();
+        nextTick(() => scrollToAnchorIfNew());
+      }
+    });
+  }).catch(function(error) {
+    EventBus.$emit('pageError', error);
+    if ((error.status === 403) && !Session.isSignedIn()) { EventBus.$emit('openAuthModal'); }
+  });
+};
+
+const handleSetAnchor = (selector, offset) => {
+  anchorSelector.value = selector;
+  anchorOffset.value = offset;
+};
+
+onMounted(() => {
+  EventBus.$on('setAnchor', handleSetAnchor);
+  init();
+});
+
+onUnmounted(() => {
+  EventBus.$off('setFocus');
+  EventBus.$off('setAnchor', handleSetAnchor);
+});
+
+watch(() => route.params.key, init);
+watch(() => route.params.sequence_id, respondToRoute);
+watch(() => route.params.comment_id, respondToRoute);
+watch(() => route.query.p, respondToRoute);
+watch(() => route.query.k, respondToRoute);
+watch(() => route.query.current_action, respondToRoute);
+watch(() => route.query.unread, respondToRoute);
+watch(() => route.query.newest, respondToRoute);
 </script>
 
 <template lang="pug">

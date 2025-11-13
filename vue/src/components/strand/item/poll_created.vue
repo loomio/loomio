@@ -1,72 +1,70 @@
-<script lang="js">
-import PollService    from '@/shared/services/poll_service';
-import Session    from '@/shared/services/session';
+<script setup lang="js">
+import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
+import PollService from '@/shared/services/poll_service';
+import Session from '@/shared/services/session';
 import AbilityService from '@/shared/services/ability_service';
-import EventBus       from '@/shared/services/event_bus';
+import EventBus from '@/shared/services/event_bus';
 import EventService from '@/shared/services/event_service';
 import { pickBy, assign, omit } from 'lodash-es';
-import WatchRecords from '@/mixins/watch_records';
-import UrlFor from '@/mixins/url_for';
+import { useWatchRecords } from '@/shared/composables/use_watch_records';
+import { useUrlFor } from '@/shared/composables/use_url_for';
 
-export default {
-  mixins: [WatchRecords, UrlFor],
-  props: {
-    event: Object,
-    collapsed: Boolean,
-    eventable: Object
-  },
+const props = defineProps({
+  event: Object,
+  collapsed: Boolean,
+  eventable: Object
+});
 
-  data() {
-    return {
-      buttonPressed: false,
-      myStance: null,
-      dockActions: [],
-      menuActions: []
-    };
-  },
+const buttonPressed = ref(false);
+const myStance = ref(null);
+const dockActions = ref([]);
+const menuActions = ref([]);
+const editStanceAction = ref(null);
+const { watchRecords } = useWatchRecords();
+const { urlFor } = useUrlFor();
 
-  created() {
-    EventBus.$on('stanceSaved', () => EventBus.$emit('refreshStance'));
-    this.watchRecords({
-      collections: ["stances", "polls"],
-      query: () => {
-        this.rebuildActions();
-      }
-    });
-  },
+const poll = computed(() => props.eventable);
 
-  beforeDestroy() {
-    EventBus.$off('stanceSaved');
-  },
+const rebuildActions = () => {
+  let pollActions = PollService.actions(poll.value, this, props.event);
+  editStanceAction.value = pollActions["edit_stance"];
+  if (poll.value.pollType != 'meeting') {
+    pollActions = omit(pollActions, "edit_stance");
+  }
+  const eventActions = EventService.actions(props.event, this);
+  myStance.value = poll.value.myStance();
+  menuActions.value = assign(pickBy(pollActions, v => v.menu), pickBy(eventActions, v => v.menu));
+  dockActions.value = pickBy(pollActions, v => v.dock);
+};
 
-  methods: {
-    rebuildActions() {
-      let pollActions = PollService.actions(this.poll, this, this.event);
-      this.editStanceAction = pollActions["edit_stance"]
-      if (this.poll.pollType != 'meeting') {
-        pollActions = omit(pollActions, "edit_stance");
-      }
-      const eventActions = EventService.actions(this.event, this);
-      this.myStance = this.poll.myStance();
-      this.menuActinos = assign( pickBy(pollActions, v => v.menu) , pickBy(this.eventActions, v => v.menu) );
-      this.dockActions = pickBy(pollActions, v => v.dock);
-    },
-
-    viewed(seen) {
-      if (seen &&
-          Session.isSignedIn() &&
-          Session.user().autoTranslate &&
-          this.dockActions['translate_poll'].canPerform()) {
-        this.dockActions['translate_poll'].perform().then(() => this.rebuildActions());
-      }
-    },
-  },
-
-  computed: {
-    poll() { return this.eventable; },
+const viewed = (seen) => {
+  if (seen &&
+      Session.isSignedIn() &&
+      Session.user().autoTranslate &&
+      dockActions.value['translate_poll'] &&
+      dockActions.value['translate_poll'].canPerform()) {
+    dockActions.value['translate_poll'].perform().then(() => rebuildActions());
   }
 };
 
+const handleStanceSaved = () => {
+  EventBus.$emit('refreshStance');
+};
+
+onMounted(() => {
+  EventBus.$on('stanceSaved', handleStanceSaved);
+  
+  watchRecords({
+    collections: ["stances", "polls"],
+    query: () => {
+      rebuildActions();
+    }
+  });
+});
+
+onBeforeUnmount(() => {
+  EventBus.$off('stanceSaved', handleStanceSaved);
+});
 </script>
 
 <template lang="pug">

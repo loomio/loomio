@@ -1,43 +1,39 @@
-<script lang="js">
+<script setup lang="js">
+import { ref, onMounted } from 'vue';
 import EventBus from '@/shared/services/event_bus';
 import Records from '@/shared/services/records';
+import { useWatchRecords } from '@/shared/composables/use_watch_records';
 
-export default {
-  props: {
-    discussion: Object
-  },
+const props = defineProps({
+  discussion: Object
+});
 
-  data() {
-    return {readers: []};
-  },
+const readers = ref([]);
+const { watchRecords } = useWatchRecords();
 
-  mounted() {
-    Records.discussionReaders.fetch({
-      path: '',
-      params: {
-        discussion_id: this.discussion.id
-      }
-    });
-
-    this.watchRecords({
-      collections: ['discussionReaders'],
-      query: records => {
-        this.readers = Records.discussionReaders.collection.chain().
-          find({discussionId: this.discussion.id}).simplesort('lastReadAt', true).limit(20).data();
-      }
-    });
-  },
-
-  methods: {
-    openInviteModal() {
-      EventBus.$emit('openModal', {
-        component: 'StrandMembersList',
-        props: { discussion: this.discussion }
-      });
-    }
-  }
+const openInviteModal = () => {
+  EventBus.$emit('openModal', {
+    component: 'StrandMembersList',
+    props: { discussion: props.discussion }
+  });
 };
 
+onMounted(() => {
+  Records.discussionReaders.fetch({
+    path: '',
+    params: {
+      discussion_id: props.discussion.id
+    }
+  });
+
+  watchRecords({
+    collections: ['discussionReaders'],
+    query: records => {
+      readers.value = Records.discussionReaders.collection.chain().
+        find({discussionId: props.discussion.id}).simplesort('lastReadAt', true).limit(20).data();
+    }
+  });
+});
 </script>
 
 <template lang="pug">

@@ -1,14 +1,11 @@
-<script lang="js">
+<script setup lang="js">
 import StanceUpdated from '@/components/strand/item/stance_created.vue';
 
-export default {
-  components: {StanceUpdated},
-  props: {
-    event: Object,
-    eventable: Object,
-    collapsed: Boolean
-  }
-};
+const props = defineProps({
+  event: Object,
+  eventable: Object,
+  collapsed: Boolean
+});
 </script>
 
 <template lang="pug">

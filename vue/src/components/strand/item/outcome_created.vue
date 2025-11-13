@@ -1,25 +1,21 @@
-<script lang="js">
+<script setup lang="js">
+import { computed } from 'vue';
 import OutcomeService from '@/shared/services/outcome_service';
 import EventService from '@/shared/services/event_service';
-
 import { pick } from 'lodash-es';
 
-export default {
-  props: {
-    event: Object,
-    eventable: Object
-  },
+const props = defineProps({
+  event: Object,
+  eventable: Object
+});
 
-  computed: {
-    dockActions() {
-      return OutcomeService.actions(this.eventable, this);
-    },
-    menuActions() {
-      return pick(EventService.actions(this.event, this), ['pin_event', 'unpin_event', 'notification_history']);
-    }
-  }
-};
+const dockActions = computed(() => {
+  return OutcomeService.actions(props.eventable, this);
+});
 
+const menuActions = computed(() => {
+  return pick(EventService.actions(props.event, this), ['pin_event', 'unpin_event', 'notification_history']);
+});
 </script>
 
 <template lang="pug">

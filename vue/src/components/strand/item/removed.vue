@@ -1,22 +1,20 @@
-<script lang="js">
+<script setup lang="js">
+import { computed } from 'vue';
 import CommentService from '@/shared/services/comment_service';
 import { pick } from 'lodash-es';
-export default {
-  props: {
-    event: Object,
-    eventable: Object
-  },
 
-  computed: {
-    menuActions() {
-      if (this.event.kind === 'new_comment') {
-        return pick(CommentService.actions(this.eventable, this), 'undiscard_comment', 'delete_comment');
-      } else {
-        return {};
-      }
-    }
+const props = defineProps({
+  event: Object,
+  eventable: Object
+});
+
+const menuActions = computed(() => {
+  if (props.event.kind === 'new_comment') {
+    return pick(CommentService.actions(props.eventable, this), 'undiscard_comment', 'delete_comment');
+  } else {
+    return {};
   }
-};
+});
 </script>
 
 <template lang="pug">

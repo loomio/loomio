@@ -1,10 +1,8 @@
-<script lang="js">
-export default {
-  props: {
-    event: Object,
-    eventable: Object
-  }
-}
+<script setup lang="js">
+const props = defineProps({
+  event: Object,
+  eventable: Object
+});
 </script>
 
 <template lang="pug">

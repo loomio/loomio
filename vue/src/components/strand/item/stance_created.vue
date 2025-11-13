@@ -1,34 +1,36 @@
-<script lang="js">
-import StanceService  from '@/shared/services/stance_service';
-import LmoUrlService  from '@/shared/services/lmo_url_service';
-import UrlFor from '@/mixins/url_for';
+<script setup lang="js">
+import { computed } from 'vue';
+import StanceService from '@/shared/services/stance_service';
+import LmoUrlService from '@/shared/services/lmo_url_service';
+import { useUrlFor } from '@/shared/composables/use_url_for';
 
-export default {
-  mixins: [UrlFor],
+const props = defineProps({
+  event: Object,
+  eventable: Object,
+  collapsed: Boolean
+});
 
-  props: {
-    event: Object,
-    eventable: Object,
-    collapsed: Boolean
-  },
+const { urlFor } = useUrlFor();
 
-  computed: {
-    actor() { return this.event.actor(); },
-    actorName() { return this.event.actorName(); },
-    poll() { return this.eventable.poll(); },
-    actions() { return StanceService.actions(this.eventable, this, this.event); },
-    componentType() {
-      if (this.actor) {
-        return 'router-link';
-      } else {
-        return 'div';
-      }
-    },
-    link() {
-      return LmoUrlService.event(this.event);
-    }
+const actor = computed(() => props.event.actor());
+const actorName = computed(() => props.event.actorName());
+const poll = computed(() => props.eventable.poll());
+
+const actions = computed(() => {
+  return StanceService.actions(props.eventable, this, props.event);
+});
+
+const componentType = computed(() => {
+  if (actor.value) {
+    return 'router-link';
+  } else {
+    return 'div';
   }
-};
+});
+
+const link = computed(() => {
+  return LmoUrlService.event(props.event);
+});
 </script>
 
 <template lang="pug">

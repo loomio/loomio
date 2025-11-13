@@ -1,103 +1,97 @@
-<script lang="js">
-import ThreadService  from '@/shared/services/thread_service';
+<script setup lang="js">
+import { ref, computed, watch, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+import ThreadService from '@/shared/services/thread_service';
 import { omit, pickBy } from 'lodash-es';
 import Session from '@/shared/services/session';
-import openModal      from '@/shared/helpers/open_modal';
+import openModal from '@/shared/helpers/open_modal';
 import StrandActionsPanel from '@/components/strand/actions_panel';
-import UrlFor from '@/mixins/url_for';
+import { useUrlFor } from '@/shared/composables/use_url_for';
 
-export default {
-  mixins: [UrlFor],
-  components: {
-    StrandActionsPanel
-  },
-  props: {
-    event: Object,
-    eventable: Object,
-    collapsed: Boolean
-  },
+const props = defineProps({
+  event: Object,
+  eventable: Object,
+  collapsed: Boolean
+});
 
-  watch: {
-    'eventable.newestFirst'() { this.rebuildActions(); },
-    'discussion.groupId': 'updateGroups'
-  },
+const route = useRoute();
+const { urlFor } = useUrlFor();
 
-  data() {
+const groups = ref([]);
+const actions = ref([]);
+
+const discussion = computed(() => props.eventable);
+
+const author = computed(() => {
+  return discussion.value.author();
+});
+
+const authorName = computed(() => {
+  return discussion.value.authorName();
+});
+
+const group = computed(() => {
+  return discussion.value.group();
+});
+
+const dockActions = computed(() => {
+  return pickBy(actions.value, v => v.dock);
+});
+
+const menuActions = computed(() => {
+  return pickBy(actions.value, v => v.menu);
+});
+
+const status = computed(() => {
+  if (discussion.value.pinned) { return 'pinned'; }
+});
+
+const rebuildActions = () => {
+  actions.value = omit(ThreadService.actions(props.eventable, this), ['dismiss_thread']);
+};
+
+const updateGroups = () => {
+  groups.value = discussion.value.group().parentsAndSelf().map(group => {
     return {
-      groups: [],
-      actions: []
+      title: group.name,
+      disabled: false,
+      to: group.id ? urlFor(group) : '/threads/direct'
     };
-  },
+  });
+};
 
-  mounted() {
-    this.eventable.fetchUsersNotifiedCount();
-    this.updateGroups();
-    this.rebuildActions();
-  },
-
-  computed: {
-    author() {
-      return this.discussion.author();
-    },
-
-    authorName() {
-      return this.discussion.authorName();
-    },
-
-    discussion() { return this.eventable; },
-
-    group() {
-      return this.discussion.group();
-    },
-
-    dockActions() {
-      return pickBy(this.actions, v => v.dock);
-    },
-
-    menuActions() {
-      return pickBy(this.actions, v => v.menu);
-    },
-
-    status() {
-      if (this.discussion.pinned) { return 'pinned'; }
-    },
-  },
-
-  methods: {
-    rebuildActions() {
-      this.actions = omit(ThreadService.actions(this.eventable, this), ['dismiss_thread']);
-    },
-    updateGroups() {
-      this.groups = this.discussion.group().parentsAndSelf().map(group => {
-        return {
-          title: group.name,
-          disabled: false,
-          to: group.id ? this.urlFor(group) : '/threads/direct'
-        };
-      });
-    },
-
-    viewed(viewed) {
-      if (viewed && Session.isSignedIn()) {
-        this.discussion.markAsSeen();
-        if (Session.user().autoTranslate && this.actions['translate_thread'].canPerform()) {
-          this.actions['translate_thread'].perform().then(() => { this.rebuildActions() });
-        }
-      }
-    },
-
-    openSeenByModal() {
-      openModal({
-        component: 'SeenByModal',
-        persistent: false,
-        props: {
-          discussion: this.discussion,
-        }
-      });
+const viewed = (isViewed) => {
+  if (isViewed && Session.isSignedIn()) {
+    discussion.value.markAsSeen();
+    if (Session.user().autoTranslate && actions.value['translate_thread'] && actions.value['translate_thread'].canPerform()) {
+      actions.value['translate_thread'].perform().then(() => { rebuildActions(); });
     }
   }
 };
 
+const openSeenByModal = () => {
+  openModal({
+    component: 'SeenByModal',
+    persistent: false,
+    props: {
+      discussion: discussion.value,
+    }
+  });
+};
+
+onMounted(() => {
+  props.eventable.fetchUsersNotifiedCount();
+  updateGroups();
+  rebuildActions();
+});
+
+watch(() => props.eventable.newestFirst, () => {
+  rebuildActions();
+});
+
+watch(() => discussion.value.groupId, () => {
+  updateGroups();
+});
 </script>
 
 <template lang="pug">

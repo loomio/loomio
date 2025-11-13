@@ -1,17 +1,14 @@
-<script lang="js">
-import Session        from '@/shared/services/session';
-export default {
-  props: {
-    loader: Object,
-    obj: Object,
-    focused: Boolean,
-  },
-  computed: {
-    isSignedIn() { return Session.isSignedIn(); },
-  },
+<script setup lang="js">
+import { computed } from 'vue';
+import Session from '@/shared/services/session';
 
-};
+const props = defineProps({
+  loader: Object,
+  obj: Object,
+  focused: Boolean
+});
 
+const isSignedIn = computed(() => Session.isSignedIn());
 </script>
 
 <template lang="pug">
