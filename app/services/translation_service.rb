@@ -21,7 +21,19 @@ class TranslationService
 
       model.class.translatable_fields.each do |field|
         next if model.send(field).blank?
-        translation.fields[field.to_s] = service.translate(model.send(field), to: locale)
+
+        format_field = "#{field}_format"
+        content = model.send(field)
+        translate_options = { to: locale, format: :text }
+
+        if model.respond_to?(format_field)
+          translate_options[:format] = :html
+          if model.send(format_field) == 'md'
+            content = MarkdownService.render_html(content)
+          end
+        end
+
+        translation.fields[field.to_s] = service.translate(content, **translate_options)
       end
 
       translation.save!

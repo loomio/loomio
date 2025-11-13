@@ -22,7 +22,7 @@ export default new class OutcomeService {
       },
 
       untranslate_outcome: {
-        name: 'common.action.show_original',
+        name: 'common.action.original',
         icon: 'mdi-translate',
         dock: 3,
         canPerform() {

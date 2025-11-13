@@ -29,7 +29,7 @@ export default new class ThreadService {
 
       untranslate_thread: {
         icon: 'mdi-translate',
-        name: 'common.action.show_original',
+        name: 'common.action.original',
         dock: 3,
         canPerform() { return AbilityService.canUntranslate(discussion); },
         perform() { discussion.translationId = null }

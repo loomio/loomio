@@ -11,7 +11,7 @@ export default new class CommentService {
     return {
       untranslate_comment: {
         icon: 'mdi-translate',
-        name: 'common.action.show_original',
+        name: 'common.action.original',
         dock: 3,
         canPerform() {
           return AbilityService.canUntranslate(comment);

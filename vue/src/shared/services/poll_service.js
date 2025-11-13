@@ -64,7 +64,7 @@ export default new class PollService {
 
       untranslate_poll: {
         icon: 'mdi-translate',
-        name: 'common.action.show_original',
+        name: 'common.action.original',
         dock: 3,
         canPerform() { return AbilityService.canUntranslate(poll); },
         perform() { poll.translationId = null;  poll.pollOptions().forEach((po) => po.translationId = null)}
