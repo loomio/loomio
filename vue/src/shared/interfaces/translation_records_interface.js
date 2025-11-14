@@ -11,7 +11,7 @@ export default class TranslationRecordsInterface extends BaseRecordsInterface {
 
   addTo(model, locale) {
     return this.findOrFetchByModel(model, locale).then((translation) => {
-      model.translationId = translation.id
+      if (translation) model.translationId = translation.id
     })
   }
 
