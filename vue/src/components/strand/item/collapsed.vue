@@ -1,11 +1,8 @@
-<script lang="js">
-export default {
-  props: {
-    loader: Object,
-    obj: Object,
-  }
-};
-
+<script setup lang="js">
+const props = defineProps({
+  loader: Object,
+  obj: Object
+});
 </script>
 
 <template lang="pug">

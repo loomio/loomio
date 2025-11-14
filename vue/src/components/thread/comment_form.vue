@@ -5,6 +5,7 @@ import EventBus       from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
 import { I18n } from '@/i18n';
 import Flash  from '@/shared/services/flash';
+import AskAiService from '@/shared/services/ask_ai_service';
 
 export default {
   props: {
@@ -17,7 +18,8 @@ export default {
       actor: Session.user(),
       canSubmit: true,
       shouldReset: false,
-      processing: false
+      processing: false,
+      aiProcessing: false
     };
   },
 
@@ -40,6 +42,20 @@ export default {
 
     handleIsUploading(val) {
       return this.canSubmit = !val;
+    },
+
+    async askAi() {
+      this.aiProcessing = true;
+      try {
+        const prompt = 'Summarise the discussion, find points of agreement and disagreement and suggest a next step';
+        const res = await AskAiService.ask(this.comment.discussionId, prompt);
+        if (res && res.answer) {
+          this.comment.body = res.answer;
+        }
+      } catch (e) {
+      } finally {
+        this.aiProcessing = false;
+      }
     },
 
     submit() {
@@ -87,6 +103,13 @@ export default {
           @click="discardDraft"
         )
           span(v-t="'common.reset'")
+        v-btn.mr-2(
+          variant="text"
+          :loading="aiProcessing"
+          :disabled="!canSubmit"
+          @click="askAi"
+        )
+          span Ask AI
         v-btn.comment-form__submit-button(
           variant="elevated"
           :loading="processing"

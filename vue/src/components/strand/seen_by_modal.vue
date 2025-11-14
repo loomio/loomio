@@ -1,31 +1,30 @@
-<script lang="js">
-import Records        from '@/shared/services/records';
+<script setup lang="js">
+import { ref, onMounted } from 'vue';
+import Records from '@/shared/services/records';
 import { orderBy } from 'lodash-es';
-export default {
-  props: {
-    discussion: Object
-  },
-  data() {
-    return {
-      historyData: [],
-      historyLoading: false,
-      historyError: false,
-      errorMessage: null
-    };
-  },
-  created() {
-    this.historyLoading = true;
-    Records.fetch({path: `discussions/${this.discussion.id}/history`}).then(data => {
-      this.historyLoading = false;
-      this.historyData = orderBy(data, ['last_read_at'], ['desc']) || [];
-    } , err => {
-      this.errorMessage = err.message;
-      this.historyLoading = false;
-      this.historyError = true;
-    });
-  }
-};
+
+const props = defineProps({
+  discussion: Object
+});
+
+const historyData = ref([]);
+const historyLoading = ref(false);
+const historyError = ref(false);
+const errorMessage = ref(null);
+
+onMounted(() => {
+  historyLoading.value = true;
+  Records.fetch({ path: `discussions/${props.discussion.id}/history` }).then(data => {
+    historyLoading.value = false;
+    historyData.value = orderBy(data, ['last_read_at'], ['desc']) || [];
+  }, err => {
+    errorMessage.value = err.message;
+    historyLoading.value = false;
+    historyError.value = true;
+  });
+});
 </script>
+
 <template lang="pug">
 v-card(:title="$t('discussion_last_seen_by.title')")
   template(v-slot:append)

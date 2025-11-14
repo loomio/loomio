@@ -1,45 +1,51 @@
-<script lang="js">
+<script setup lang="js">
+import { computed } from 'vue';
 import { eventHeadline, eventTitle, eventPollType } from '@/shared/helpers/helptext';
-import LmoUrlService  from '@/shared/services/lmo_url_service';
+import LmoUrlService from '@/shared/services/lmo_url_service';
+import { useI18n } from 'vue-i18n';
 
-export default {
-  props: {
-    event: Object,
-    eventable: Object,
-    collapsed: Boolean,
-    dateTime: Date,
-    focused: Boolean,
-    unread: Boolean
-  },
+const props = defineProps({
+  event: Object,
+  eventable: Object,
+  collapsed: Boolean,
+  dateTime: Date,
+  focused: Boolean,
+  unread: Boolean
+});
 
-  computed: {
-    isDelegate() {
-      const actor = this.event.actor();
-      const group = this.eventable.group();
-      return actor && group && actor.delegates && actor.delegates[group.id]
-    },
-    datetime() { return this.dateTime || this.eventable.castAt || this.eventable.createdAt; },
-    headline() {
-      const actor = this.event.actor();
-      if ((this.event.kind === 'new_comment') && this.collapsed && (this.event.descendantCount > 0)) {
-        return this.$t('reactions_display.name_and_count_more', {name: actor.nameWithTitle(this.eventable.group()), count: this.event.descendantCount});
-      } else {
-        return this.$t(eventHeadline(this.event, true ), { // useNesting
-          author:   actor.nameWithTitle(this.eventable.group()),
-          username: actor.username,
-          key:      this.event.model().key,
-          title:    eventTitle(this.event),
-          polltype: this.event.isPollEvent() ? this.$t(eventPollType(this.event)).toLowerCase() : null
-        });
-      }
-    },
+const { t } = useI18n();
 
-    link() {
-      return LmoUrlService.event(this.event);
-    }
+const isDelegate = computed(() => {
+  const actor = props.event.actor();
+  const group = props.eventable.group();
+  return actor && group && actor.delegates && actor.delegates[group.id];
+});
+
+const datetime = computed(() => {
+  return props.dateTime || props.eventable.castAt || props.eventable.createdAt;
+});
+
+const headline = computed(() => {
+  const actor = props.event.actor();
+  if ((props.event.kind === 'new_comment') && props.collapsed && (props.event.descendantCount > 0)) {
+    return t('reactions_display.name_and_count_more', {
+      name: actor.nameWithTitle(props.eventable.group()),
+      count: props.event.descendantCount
+    });
+  } else {
+    return t(eventHeadline(props.event, true), { // useNesting
+      author: actor.nameWithTitle(props.eventable.group()),
+      username: actor.username,
+      key: props.event.model().key,
+      title: eventTitle(props.event),
+      polltype: props.event.isPollEvent() ? t(eventPollType(props.event)).toLowerCase() : null
+    });
   }
-};
+});
 
+const link = computed(() => {
+  return LmoUrlService.event(props.event);
+});
 </script>
 
 <template lang="pug">

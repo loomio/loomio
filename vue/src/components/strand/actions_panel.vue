@@ -1,76 +1,75 @@
-<script lang="js">
-import AbilityService           from '@/shared/services/ability_service';
+<script setup lang="js">
+import { ref, computed, watch, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+import AbilityService from '@/shared/services/ability_service';
 import PollCommonForm from '@/components/poll/common/form';
 import PollCommonChooseTemplateWrapper from '@/components/poll/common/choose_template_wrapper';
 import Session from '@/shared/services/session';
-import AuthModalMixin from '@/mixins/auth_modal';
 import Records from '@/shared/services/records';
-import WatchRecords from '@/mixins/watch_records';
+import { useWatchRecords } from '@/shared/composables/use_watch_records';
+import { useAuthModal } from '@/shared/composables/use_auth_modal';
 
-export default {
-  components: {PollCommonForm, PollCommonChooseTemplateWrapper},
-  mixins: [ AuthModalMixin, WatchRecords ],
+const props = defineProps({
+  discussion: Object
+});
 
-  props: {
-    discussion: Object
-  },
+const route = useRoute();
 
-  data() {
-    return {
-      canAddComment: false,
-      currentAction: this.$route.query.current_action == "add-poll" ? 'add-poll' : 'add-comment',
-      newComment: null,
-      poll: null
-    };
-  },
+const canAddComment = ref(false);
+const currentAction = ref(route.query.current_action == "add-poll" ? 'add-poll' : 'add-comment');
+const newComment = ref(null);
+const poll = ref(null);
+const { watchRecords } = useWatchRecords();
+const { openAuthModal } = useAuthModal();
 
-  created() {
-    this.watchRecords({
-      key: this.discussion.id,
-      collections: ['groups', 'memberships', 'polls'],
-      query: () => {
-        this.canAddComment = AbilityService.canAddComment(this.discussion);
-      }
-    });
-    this.resetComment();
-  },
+const canStartPoll = computed(() => {
+  return AbilityService.canStartPoll(props.discussion);
+});
 
-  methods: {
-    resetComment() {
-      this.newComment = Records.comments.build({
-        bodyFormat: Session.defaultFormat(),
-        discussionId: this.discussion.id,
-        authorId: Session.user().id
-      });
-    },
-
-    setPoll(poll) { return this.poll = poll; },
-    resetPoll() {
-      this.poll = null;
-      this.currentAction = 'add-comment';
-    },
-
-    signIn() { this.openAuthModal(); },
-    isLoggedIn() { return Session.isSignedIn(); }
-  },
-
-  watch: {
-    '$route.query.current_action'(val) {
-      this.currentAction = (val == "add-poll" ? 'add-poll' : 'add-comment')
-    },
-    'discussion.id'() {
-      this.resetComment();
-      this.resetPoll();
-    }
-  },
-
-  computed: {
-    canStartPoll() {
-      return AbilityService.canStartPoll(this.discussion);
-    }
-  }
+const resetComment = () => {
+  newComment.value = Records.comments.build({
+    bodyFormat: Session.defaultFormat(),
+    discussionId: props.discussion.id,
+    authorId: Session.user().id
+  });
 };
 
+const setPoll = (pollValue) => {
+  poll.value = pollValue;
+};
+
+const resetPoll = () => {
+  poll.value = null;
+  currentAction.value = 'add-comment';
+};
+
+const signIn = () => {
+  openAuthModal();
+};
+
+const isLoggedIn = () => {
+  return Session.isSignedIn();
+};
+
+onMounted(() => {
+  watchRecords({
+    key: props.discussion.id,
+    collections: ['groups', 'memberships', 'polls'],
+    query: () => {
+      canAddComment.value = AbilityService.canAddComment(props.discussion);
+    }
+  });
+  resetComment();
+});
+
+watch(() => route.query.current_action, (val) => {
+  currentAction.value = (val == "add-poll" ? 'add-poll' : 'add-comment');
+});
+
+watch(() => props.discussion.id, () => {
+  resetComment();
+  resetPoll();
+});
 </script>
 
 <template lang="pug">

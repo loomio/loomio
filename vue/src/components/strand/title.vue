@@ -1,22 +1,22 @@
-<script lang="js">
-import ThreadService  from '@/shared/services/thread_service';
+<script setup lang="js">
+import { computed } from 'vue';
+import ThreadService from '@/shared/services/thread_service';
 import EventBus from '@/shared/services/event_bus';
-import openModal      from '@/shared/helpers/open_modal';
-import FormatDate from '@/mixins/format_date';
+import openModal from '@/shared/helpers/open_modal';
 
-export default {
-  mixins: [FormatDate],
-  props: {
-    discussion: Object
-  },
+const props = defineProps({
+  discussion: Object
+});
 
-  computed: {
-    status() {
-      if (this.discussion.pinned) { return 'pinned'; }
-    }
-  }
+const status = computed(() => {
+  if (props.discussion.pinned) { return 'pinned'; }
+});
+
+// Note: titleVisible is referenced in template but not defined in original
+// This may need to be implemented based on how intersect directive works
+const titleVisible = () => {
+  // Implementation depends on what the intersect directive expects
 };
-
 </script>
 
 <template lang="pug">

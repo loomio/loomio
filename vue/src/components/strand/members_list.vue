@@ -1,155 +1,148 @@
-<script lang="js">
+<script setup lang="js">
+import { ref, computed, onMounted } from 'vue';
 import EventBus from '@/shared/services/event_bus';
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
 import Flash from '@/shared/services/flash';
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete';
 import DiscussionReaderService from '@/shared/services/discussion_reader_service';
-import {map, debounce} from 'lodash-es';
-import WatchRecords from '@/mixins/watch_records';
-import FormatDate from '@/mixins/format_date';
+import { map, debounce } from 'lodash-es';
+import { useWatchRecords } from '@/shared/composables/use_watch_records';
+import { useFormatDate } from '@/shared/composables/use_format_date';
 
-export default {
-  mixins: [WatchRecords, FormatDate],
-  components: {
-    RecipientsAutocomplete
-  },
+const props = defineProps({
+  discussion: Object
+});
 
-  props: {
-    discussion: Object
-  },
+const readers = ref([]);
+const query = ref('');
+const searchResults = ref([]);
+const recipients = ref([]);
+const membershipsByUserId = ref({});
+const readerUserIds = ref([]);
+const reset = ref(false);
+const saving = ref(false);
+const message = ref('');
+const actionNames = ref([]);
+const service = DiscussionReaderService;
+const { watchRecords } = useWatchRecords();
+const { approximateDate } = useFormatDate();
 
-  data() {
-    return {
-      readers: [],
-      query: '',
-      searchResults: [],
-      recipients: [],
-      membershipsByUserId: {},
-      readerUserIds: [],
-      reset: false,
-      saving: false,
-      message: '',
-      actionNames: [],
-      service: DiscussionReaderService
-    };
-  },
+const hasRecipients = computed(() => {
+  return props.discussion.recipientAudience ||
+    props.discussion.recipientUserIds.length ||
+    props.discussion.recipientChatbotIds.length ||
+    props.discussion.recipientEmails.length;
+});
 
-  mounted() {
-    this.actionNames = ['makeAdmin', 'removeAdmin', 'revoke']; // 'resend'
+const model = computed(() => props.discussion);
 
-    this.fetchReaders();
-    this.watchRecords({
-      collections: ['discussionReaders', 'memberships'],
-      query: records => this.updateReaders()
-    });
-  },
+const excludedUserIds = computed(() => {
+  return readerUserIds.value.concat(Session.user().id);
+});
 
-  computed: {
-    hasRecipients() {
-      return this.discussion.recipientAudience ||
-      this.discussion.recipientUserIds.length ||
-      this.discussion.recipientChatbotIds.length ||
-      this.discussion.recipientEmails.length;
-    },
-
-    model() { return this.discussion; },
-
-    excludedUserIds() {
-      return this.readerUserIds.concat(Session.user().id);
-    }
-  },
-
-  methods: {
-    performableActions(reader) {
-      return this.actionNames.filter((action) => this.service[action].canPerform(reader))
-    },
-
-    isGroupAdmin(reader) {
-      return this.discussion.groupId &&
-      this.membershipsByUserId[reader.userId] &&
-      this.membershipsByUserId[reader.userId].admin;
-    },
-
-    inviteRecipients() {
-      const count = this.recipients.length;
-      this.saving = true;
-      const params = Object.assign(
-        {discussion_id: this.discussion.id}
-      , {
-        recipient_audience: this.discussion.recipientAudience,
-        recipient_user_ids: this.discussion.recipientUserIds,
-        recipient_chatbot_ids: this.discussion.recipientChatbotIds,
-        recipient_emails: this.discussion.recipientEmails,
-        recipient_message: this.message
-      }
-      );
-      Records.remote.post('announcements', params).then(() => {
-        this.reset = !this.reset;
-        Flash.success('announcement.flash.success', { count });
-      }).catch(error => {
-        Flash.custom(error.error, 'error', 5000);
-      }).finally(() => {
-        this.saving = false;
-      });
-    },
-
-    newQuery(query) {
-      this.query = query;
-      this.updateReaders();
-      this.fetchReaders();
-    },
-
-    newRecipients(recipients) { this.recipients = recipients; },
-
-    fetchReaders: debounce(function() {
-      Records.discussionReaders.fetch({
-        params: {
-          exclude_types: 'discussion',
-          query: this.query,
-          discussion_id: this.discussion.id
-        }
-      }).then(records => {
-        const userIds = map(records['users'], 'id');
-        Records.memberships.fetch({
-          params: {
-            exclude_types: 'group inviter',
-            group_id: this.discussion.groupId,
-            user_xids: userIds.join('x')
-          }
-        });
-      }).finally(() => this.updateReaders());
-    } , 300),
-
-    updateReaders() {
-      let chain = Records.discussionReaders.collection.chain().
-              find({discussionId: this.discussion.id}).
-              find({revokedAt: null});
-
-      if (this.query) {
-        const users = Records.users.collection.find({
-          $or: [
-            {name: {'$regex': [`^${this.query}`, "i"]}},
-            {email: {'$regex': [`${this.query}`, "i"]}},
-            {username: {'$regex': [`^${this.query}`, "i"]}},
-            {name: {'$regex': [` ${this.query}`, "i"]}}
-          ]});
-        chain = chain.find({userId: {$in: map(users, 'id')}});
-      }
-
-      chain = chain.simplesort('id', true);
-      this.readers = chain.data();
-      this.readerUserIds = map(Records.discussionReaders.collection.find({discussionId: this.discussion.id}), 'userId');
-
-      this.membershipsByUserId = {};
-      Records.memberships.collection.find({userId: {$in: this.readerUserIds},
-                                           groupId: this.discussion.groupId}).forEach(m => {
-        this.membershipsByUserId[m.userId] = m;
-      });
-    }
-  }
+const performableActions = (reader) => {
+  return actionNames.value.filter((action) => service[action].canPerform(reader));
 };
 
+const isGroupAdmin = (reader) => {
+  return props.discussion.groupId &&
+    membershipsByUserId.value[reader.userId] &&
+    membershipsByUserId.value[reader.userId].admin;
+};
+
+const inviteRecipients = () => {
+  const count = recipients.value.length;
+  saving.value = true;
+  const params = Object.assign(
+    { discussion_id: props.discussion.id },
+    {
+      recipient_audience: props.discussion.recipientAudience,
+      recipient_user_ids: props.discussion.recipientUserIds,
+      recipient_chatbot_ids: props.discussion.recipientChatbotIds,
+      recipient_emails: props.discussion.recipientEmails,
+      recipient_message: message.value
+    }
+  );
+  Records.remote.post('announcements', params).then(() => {
+    reset.value = !reset.value;
+    Flash.success('announcement.flash.success', { count });
+  }).catch(error => {
+    Flash.custom(error.error, 'error', 5000);
+  }).finally(() => {
+    saving.value = false;
+  });
+};
+
+const newQuery = (q) => {
+  query.value = q;
+  updateReaders();
+  fetchReaders();
+};
+
+const newRecipients = (newRecips) => {
+  recipients.value = newRecips;
+};
+
+const fetchReaders = debounce(function() {
+  Records.discussionReaders.fetch({
+    params: {
+      exclude_types: 'discussion',
+      query: query.value,
+      discussion_id: props.discussion.id
+    }
+  }).then(records => {
+    const userIds = map(records['users'], 'id');
+    Records.memberships.fetch({
+      params: {
+        exclude_types: 'group inviter',
+        group_id: props.discussion.groupId,
+        user_xids: userIds.join('x')
+      }
+    });
+  }).finally(() => updateReaders());
+}, 300);
+
+const updateReaders = () => {
+  let chain = Records.discussionReaders.collection.chain().
+    find({ discussionId: props.discussion.id }).
+    find({ revokedAt: null });
+
+  if (query.value) {
+    const users = Records.users.collection.find({
+      $or: [
+        { name: { '$regex': [`^${query.value}`, "i"] } },
+        { email: { '$regex': [`${query.value}`, "i"] } },
+        { username: { '$regex': [`^${query.value}`, "i"] } },
+        { name: { '$regex': [` ${query.value}`, "i"] } }
+      ]
+    });
+    chain = chain.find({ userId: { $in: map(users, 'id') } });
+  }
+
+  chain = chain.simplesort('id', true);
+  readers.value = chain.data();
+  readerUserIds.value = map(Records.discussionReaders.collection.find({ discussionId: props.discussion.id }), 'userId');
+
+  membershipsByUserId.value = {};
+  Records.memberships.collection.find({
+    userId: { $in: readerUserIds.value },
+    groupId: props.discussion.groupId
+  }).forEach(m => {
+    membershipsByUserId.value[m.userId] = m;
+  });
+};
+
+onMounted(() => {
+  actionNames.value = ['makeAdmin', 'removeAdmin', 'revoke']; // 'resend'
+
+  fetchReaders();
+  
+  watchRecords({
+    collections: ['discussionReaders', 'memberships'],
+    query: records => updateReaders()
+  });
+});
 </script>
 
 <template lang="pug">

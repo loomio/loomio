@@ -1,26 +1,26 @@
-<script lang="js">
+<script setup lang="js">
+import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { eventHeadline, eventTitle, eventPollType } from '@/shared/helpers/helptext';
-import Records        from '@/shared/services/records';
+import Records from '@/shared/services/records';
 
-export default {
-  props: {
-    event: Object,
-    eventable: Object
-  },
+const props = defineProps({
+  event: Object,
+  eventable: Object
+});
 
-  computed: {
-    headline() {
-      const actor = this.event.actor();
-      return this.$t(eventHeadline(this.event, true ), { // useNesting
-        author:   actor.nameWithTitle(this.eventable.group()),
-        username: actor.username,
-        key:      this.event.model().key,
-        title:    eventTitle(this.event),
-        polltype: this.event.isPollEvent() ? this.$t(eventPollType(this.event)).toLowerCase() : null
-      });
-    }
-  }
-};
+const { t } = useI18n();
+
+const headline = computed(() => {
+  const actor = props.event.actor();
+  return t(eventHeadline(props.event, true), { // useNesting
+    author: actor.nameWithTitle(props.eventable.group()),
+    username: actor.username,
+    key: props.event.model().key,
+    title: eventTitle(props.event),
+    polltype: props.event.isPollEvent() ? t(eventPollType(props.event)).toLowerCase() : null
+  });
+});
 </script>
 
 <template lang="pug">

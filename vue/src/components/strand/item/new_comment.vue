@@ -1,65 +1,55 @@
-<script lang="js">
+<script setup lang="js">
+import { ref, computed, onMounted } from 'vue';
 import Session from '@/shared/services/session';
 import { pick, pickBy, assign } from 'lodash-es';
 import CommentService from '@/shared/services/comment_service';
 import EventService from '@/shared/services/event_service';
 
-export default {
-  props: {
-    event: Object,
-    eventable: Object,
-    focused: Boolean,
-    unread: Boolean
-  },
+const props = defineProps({
+  event: Object,
+  eventable: Object,
+  focused: Boolean,
+  unread: Boolean
+});
 
-  data() {
-    return {
-      confirmOpts: null,
-      commentActions: [],
-      eventActions: []
-    };
-  },
+const confirmOpts = ref(null);
+const commentActions = ref([]);
+const eventActions = ref([]);
 
-  mounted() {
-    this.rebuildActions();
-  },
+const rebuildActions = () => {
+  commentActions.value = CommentService.actions(props.eventable, this, props.event);
+  eventActions.value = EventService.actions(props.event, this);
+};
 
-  methods: {
-    rebuildActions() {
-      this.commentActions = CommentService.actions(this.eventable, this, this.event);
-      this.eventActions = EventService.actions(this.event, this);
-    },
-
-    viewed(seen) {
-      if (seen &&
-          Session.isSignedIn() &&
-          Session.user().autoTranslate &&
-          this.commentActions['translate_comment'].canPerform()) {
-        this.commentActions['translate_comment'].perform().then(() => { this.rebuildActions() });
-      }
-    },
-  },
-
-  computed: {
-    dockActions() {
-      return assign(
-        pickBy(this.commentActions, v => v.dock)
-      ,
-        pick(this.eventActions, [])
-      );
-    },
-
-    menuActions() {
-      const actions = assign(
-        pick(this.eventActions, ['pin_event', 'unpin_event', 'move_event', 'copy_url'])
-      ,
-        pickBy(this.commentActions, v => v.menu)
-      );
-      return pick(actions, ['pin_event', 'unpin_event', 'reply_to_comment',  'admin_edit_comment', 'copy_url', 'notification_history', 'move_event', 'discard_comment', 'undiscard_comment']);
-    }
+const viewed = (seen) => {
+  if (seen &&
+      Session.isSignedIn() &&
+      Session.user().autoTranslate &&
+      commentActions.value['translate_comment'].canPerform()) {
+    commentActions.value['translate_comment'].perform().then(() => { rebuildActions(); });
   }
 };
 
+const dockActions = computed(() => {
+  return assign(
+    pickBy(commentActions.value, v => v.dock)
+  ,
+    pick(eventActions.value, [])
+  );
+});
+
+const menuActions = computed(() => {
+  const actions = assign(
+    pick(eventActions.value, ['pin_event', 'unpin_event', 'move_event', 'copy_url'])
+  ,
+    pickBy(commentActions.value, v => v.menu)
+  );
+  return pick(actions, ['pin_event', 'unpin_event', 'reply_to_comment',  'admin_edit_comment', 'copy_url', 'notification_history', 'move_event', 'discard_comment', 'undiscard_comment']);
+});
+
+onMounted(() => {
+  rebuildActions();
+});
 </script>
 
 <template lang="pug">
