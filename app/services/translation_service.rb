@@ -44,15 +44,14 @@ class TranslationService
 
   def self.create(model:, to:)
     locale = locale_for_google(to)
-    translation = model.translations.find_by(language: locale) ||
-                  Translation.new(translatable: model, language: locale, fields: {})
 
-    if translation.new_record? || (translation.updated_at || translation.created_at) < (model.updated_at || model.created_at)
-      translation.fields = translated_fields_for(model, to: locale)
-
-      translation.save!
+    if translation = model.translations.find_by(language: locale)
+      return translation
     end
 
+    translation = Translation.new(translatable: model, language: locale, fields: {})
+    translation.fields = translated_fields_for(model, to: locale)
+    translation.save!
     translation
   end
 
