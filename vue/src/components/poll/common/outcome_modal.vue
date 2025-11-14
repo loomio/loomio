@@ -4,6 +4,9 @@ import Flash from '@/shared/services/flash';
 import EventBus from '@/shared/services/event_bus';
 import Session        from '@/shared/services/session';
 import AbilityService from '@/shared/services/ability_service';
+import AppConfig from '@/shared/services/app_config';
+import { mdiCreationOutline } from '@mdi/js';
+import AppConfig from '@/shared/services/app_config';
 
 import { map, sortBy, head } from 'lodash-es';
 import { format, formatDistance, parse, startOfHour, isValid, addHours, isAfter, parseISO } from 'date-fns';
@@ -26,6 +29,7 @@ export default {
   data() {
     return {
       mdiCalendar,
+      mdiCreationOutline,
       loading: false,
       options: [],
       bestOption: null,
@@ -59,6 +63,7 @@ export default {
   },
 
   computed: {
+    askAiEnabled() { return AppConfig.features.app.ask_ai; },
     poll() { return this.outcome.poll(); }
   },
 
@@ -90,6 +95,22 @@ export default {
       this.outcome.recipientAudience = (val.find(i => i.type === 'audience') || {}).id;
       this.outcome.recipientUserIds = map(filter(val, o => o.type === 'user'), 'id');
       this.outcome.recipientEmails = map(filter(val, o => o.type === 'email'), 'name');
+    },
+
+    askAiForOutcome() {
+      EventBus.$emit('openModal', {
+        component: 'AskAiPromptModal',
+        props: {
+          pollId: this.outcome.pollId || (this.outcome.poll() && this.outcome.poll().id),
+          suggestionKeys: this.outcome.aiSuggestionKeys(),
+          onAnswer: ({ answer, format }) => {
+            this.outcome.statement = answer;
+            if (format) this.outcome.statementFormat = format;
+            const docKey = this.outcome.collabKey('statement', (Session.user().id || AppConfig.channel_token));
+            EventBus.$emit('resetDraft', 'outcome', this.outcome.id, 'statement', answer, docKey);
+          }
+        }
+      });
     }
   }
 };
@@ -148,6 +169,14 @@ v-card.poll-common-outcome-modal(
 
     lmo-textarea.poll-common-outcome-form__statement.mt-4(:model='outcome' field='statement' :label="$t('poll_common.statement')" :placeholder="$t('poll_common_outcome_form.statement_placeholder')")
       template(v-slot:actions)
+        v-btn.mr-2(
+          v-if="askAiEnabled"
+          variant="text"
+          :prepend-icon="mdiCreationOutline"
+          :title="$t('ask_ai.tooltips.outcome')"
+          @click="askAiForOutcome"
+        )
+          span {{ $t('ask_ai.ask_ai') }}
         v-btn.poll-common-outcome-form__submit(color="primary" @click='submit()' :loading="loading")
           span(v-t="'poll_common.post_outcome'")
     validation-errors(:subject="outcome" field="statement")

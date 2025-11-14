@@ -347,4 +347,9 @@ export default class DiscussionModel extends BaseModel {
   forkTarget() {
     if (some(this.forkedEvents())) { return this.forkedEvents()[0].model(); }
   }
+
+  aiSuggestionKeys() {
+    // Default AI prompt suggestion keys for discussions
+    return ['summarize', 'extract_themes', 'consensus_and_divergence', 'suggest_next_steps', 'extract_key_concerns'];
+  }
 };

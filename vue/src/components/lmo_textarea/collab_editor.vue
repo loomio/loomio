@@ -117,17 +117,19 @@ export default
 
   mounted() {
     const docname = this.model.collabKey(this.field, (Session.user().id || AppConfig.channel_token));
+    this.docname = docname;
 
     const onSync = function(provider) {
       if (this.editor) {
-        if (!provider.document.getMap('config').get('initialContentLoaded')) {
-          provider.document.getMap('config').set('initialContentLoaded', true)
-          this.editor.commands.setContent(this.model[this.field]);
-        } else if (this.editor.storage.characterCount.characters() == 0 && !this.model.attributeIsBlank(this.field)) {
-          this.editor.commands.setContent(this.model[this.field]);
+        const cfg = provider.document.getMap('config');
+        if (!cfg.get('initialContentLoaded')) {
+          cfg.set('initialContentLoaded', true);
+          if (this.editor.storage.characterCount.characters() === 0) {
+            this.editor.commands.setContent(this.model[this.field]);
+          }
         }
       } else {
-        setTimeout( () => onSync(provider) , 250);
+        setTimeout(() => onSync(provider), 250);
       }
     }.bind(this);
 
@@ -233,8 +235,10 @@ export default
       if (this.focusId === focusId) { return this.editor.commands.focus(); }
     });
 
-    EventBus.$on('resetDraft', (type, id, field, content) => {
-      if (type == this.model.constructor.singular &&
+    EventBus.$on('resetDraft', (type, id, field, content, docKey) => {
+      const matchesDoc = !docKey || docKey === this.docname;
+      if (matchesDoc &&
+          type == this.model.constructor.singular &&
           id == this.model.id &&
           field == this.field) {
         this.resetDraft(content);
@@ -262,6 +266,9 @@ export default
     },
 
     resetDraft(content) {
+      if (typeof provider !== 'undefined' && provider.document) {
+        provider.document.getMap('config').set('initialContentLoaded', true);
+      }
       this.editor.commands.setContent(content);
     },
 

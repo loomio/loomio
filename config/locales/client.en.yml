@@ -228,6 +228,48 @@ en:
     question: question round
   timezones:
     local: Local time (%{value})
+  ask_ai:
+    ask_ai: "Ask AI"
+    faciliation_suggestions: "Facilitation suggestions"
+    prompt_label: "Prompt"
+    prompt_placeholder: "Describe what you want AI to do..."
+    suggestions_placeholder: "See facilitation suggestions.."
+    beta_notice: "We're trialing AI assistance and are in a learning stage. We encourage you to share any buggy experiences and positive results. If you discover prompts others might like to use, let the Loomio team know via the Contact Loomio form."
+    scaffold_help: "When scaffolding a poll, please explain what you would like the poll to measure and what kind of options you expect to see."
+    tooltips:
+      comment: "Use AI to generate a helpful comment"
+      discussion: "Use AI to summarize the discussion and propose next steps"
+      poll_scaffold: "Use AI to draft a poll to help move the discussion forward"
+      poll_suggest_options: "Use AI to suggest poll options based on the discussion"
+      outcome: "Use AI to draft an outcome summary"
+    suggest_options: "Suggest options"
+    suggestions:
+      summarize: "Summarize"
+      summarize_prompt: "Summarise the discussion, find points of agreement and disagreement and suggest a next step"
+      find_unanswered_questions: "Find unanswered questions"
+      find_unanswered_questions_prompt: "Identify unanswered questions and propose how the group might resolve them"
+      suggest_next_steps: "Suggest next steps"
+      suggest_next_steps_prompt: "Suggest a clear, actionable next step the group can take"
+      draft_facilitation_message: "Draft facilitation message"
+      draft_facilitation_message_prompt: "Draft a neutral facilitation message to help the group move towards agreement"
+      extract_key_concerns: "Extract key concerns"
+      extract_key_concerns_prompt: "Extract the key concerns raised and propose options that address them"
+      extract_themes: "Extract themes"
+      extract_themes_prompt: "Extract the main themes emerging from this discussion"
+      consensus_and_divergence: "Consensus and divergence detection"
+      consensus_and_divergence_prompt: "Identify where participants agree and where they diverge, and why"
+      draft_outcome: "Draft an outcome"
+      draft_outcome_prompt: "Draft a concise outcome statement summarising results and proposing next steps"
+    messages:
+      preparing: "Preparing AI request…"
+      inserted: "AI response added"
+      too_many_requests: "You’ve reached the limit. Try again later."
+      failed: "Couldn’t get a response right now. Please try again."
+    errors:
+      unauthorized: "You don’t have permission to ask AI for this thread"
+      not_found: "Discussion not found"
+      service_unavailable: "AI service unavailable"
+      bad_gateway: "AI request failed"
   common:
     value: "%{value}"
     admin_menu: Admin menu

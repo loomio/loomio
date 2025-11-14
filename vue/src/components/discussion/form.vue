@@ -13,6 +13,7 @@ import ThreadTemplateHelpPanel from '@/components/thread_template/help_panel';
 import FormatDate from '@/mixins/format_date';
 import WatchRecords from '@/mixins/watch_records';
 import UrlFor from '@/mixins/url_for';
+import { mdiCreationOutline } from '@mdi/js';
 
 export default {
   mixins: [WatchRecords, FormatDate, UrlFor],
@@ -27,6 +28,7 @@ export default {
   data() {
     return {
       tab: 0,
+      mdiCreationOutline,
       upgradeUrl: AppConfig.baseUrl + 'upgrade',
       submitIsDisabled: false,
       searchResults: [],
@@ -96,6 +98,22 @@ export default {
   },
 
   methods: {
+    askAiForDiscussion() {
+      EventBus.$emit('openModal', {
+        component: 'AskAiPromptModal',
+        props: {
+          groupId: this.discussion.groupId,
+          suggestionKeys: this.discussion.aiSuggestionKeys(),
+          onAnswer: ({ answer, format }) => {
+            this.discussion.description = answer;
+            if (format) this.discussion.descriptionFormat = format;
+            const docKey = this.discussion.collabKey('description', (Session.user().id || AppConfig.channel_token));
+            EventBus.$emit('resetDraft', 'discussion', this.discussion.id, 'description', answer, docKey);
+          }
+        }
+      });
+    },
+
     validate(field) {
       return [ () => this.discussion.errors[field] === undefined || this.discussion.errors[field][0] ]
     },
@@ -137,6 +155,8 @@ export default {
   },
 
   computed: {
+    askAiEnabled() { return AppConfig.features.app.ask_ai; },
+    askAiEnabled() { return AppConfig.features.app.ask_ai; },
     cardTitle() {
       if (this.isMovingItems) {
         return I18n.global.t('discussion_form.moving_items_title')
@@ -238,6 +258,15 @@ v-form(ref="form" @submit.prevent="submit")
           :placeholder="$t('discussion_form.context_placeholder')"
           :shouldReset="shouldReset"
         )
+          template(v-slot:actions)
+            v-btn.mr-2(
+              v-if="askAiEnabled"
+              variant="text"
+              :prepend-icon="mdiCreationOutline"
+              :title="$t('ask_ai.tooltips.discussion')"
+              @click="askAiForDiscussion"
+            )
+              span {{ $t('ask_ai.ask_ai') }}
 
         common-notify-fields(v-if="loaded" :model="discussion" :initial-recipients="initialRecipients")
     v-card-actions

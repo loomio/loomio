@@ -121,6 +121,7 @@ class AppConfig
   def self.app_features
     {
       env: Rails.env,
+      ask_ai: ENV.fetch('OPENAI_API_KEY', false),
       subscriptions: !!ENV.fetch('CHARGIFY_API_KEY', false),
       demos: ENV.fetch('FEATURES_DEMO_GROUPS', false),
       trials: ENV.fetch('FEATURES_TRIALS', false),

@@ -93,4 +93,8 @@ export default class CommentModel extends BaseModel {
   beforeDestroy() {
     return invokeMap(Records.events.find({kind: 'new_comment', eventableId: this.id}), 'remove');
   }
+
+  aiSuggestionKeys() {
+    return ['draft_facilitation_message', 'suggest_next_steps', 'summarize'];
+  }
 };
