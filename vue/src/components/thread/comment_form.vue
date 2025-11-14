@@ -2,9 +2,11 @@
 import Session        from '@/shared/services/session';
 import Records        from '@/shared/services/records';
 import EventBus       from '@/shared/services/event_bus';
-import AbilityService from '@/shared/services/ability_service';
+import openModal from '@/shared/helpers/open_modal';
 import { I18n } from '@/i18n';
 import Flash  from '@/shared/services/flash';
+import AppConfig from '@/shared/services/app_config';
+import { mdiCreationOutline } from '@mdi/js';
 
 export default {
   props: {
@@ -14,6 +16,7 @@ export default {
 
   data() {
     return {
+      mdiCreationOutline,
       actor: Session.user(),
       canSubmit: true,
       shouldReset: false,
@@ -22,6 +25,7 @@ export default {
   },
 
   computed: {
+    askAiEnabled() { return AppConfig.features.app.ask_ai; },
     placeholder() {
       if (this.comment.parent()) {
         return this.$t('comment_form.in_reply_to', {name: this.comment.parent().author().nameOrUsername()});
@@ -40,6 +44,24 @@ export default {
 
     handleIsUploading(val) {
       return this.canSubmit = !val;
+    },
+
+    askAi() {
+      openModal({
+        component: 'AskAiPromptModal',
+        props: {
+          discussionId: this.comment.discussionId,
+          suggestionKeys: this.comment.aiSuggestionKeys(),
+          onAnswer: ({ answer, format }) => {
+            this.comment.body = answer;
+            if (format) {
+              this.comment.bodyFormat = format;
+            }
+            const docKey = this.comment.collabKey('body', (Session.user().id || AppConfig.channel_token));
+            EventBus.$emit('resetDraft', 'comment', this.comment.id, 'body', answer, docKey);
+          }
+        }
+      });
     },
 
     submit() {
@@ -87,6 +109,14 @@ export default {
           @click="discardDraft"
         )
           span(v-t="'common.reset'")
+        v-btn.mr-2(
+          v-if="askAiEnabled"
+          variant="text"
+          :prepend-icon="mdiCreationOutline"
+          :title="$t('ask_ai.tooltips.comment')"
+          @click="askAi"
+        )
+          span(v-t="'ask_ai.ask_ai'")
         v-btn.comment-form__submit-button(
           variant="elevated"
           :loading="processing"

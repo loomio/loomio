@@ -48,6 +48,7 @@ export default
     SearchModal: asyncComponent(() => import('@/components/search/modal')),
     UserNameModal: asyncComponent(() => import('@/components/group/user_name_modal')),
     RecordVideoModal: asyncComponent(() => import('@/components/lmo_textarea/record_video_modal')),
+    AskAiPromptModal: asyncComponent(() => import('@/components/common/ask_ai_prompt_modal.vue')),
     RecordAudioModal: asyncComponent(() => import('@/components/lmo_textarea/record_audio_modal')),
   },
 

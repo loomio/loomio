@@ -6,12 +6,14 @@ import { I18n } from '@/i18n';
 import Flash from '@/shared/services/flash';
 import Records from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
+import AskAiService from '@/shared/services/ask_ai_service';
 import AbilityService from '@/shared/services/ability_service';
 import { addMinutes, intervalToDuration, formatDuration, addHours, isAfter, startOfHour, setHours } from 'date-fns';
 import PollTemplateInfoPanel  from '@/components/poll_template/info_panel';
 import { HandleDirective } from 'vue-slicksort';
 import UrlFor from '@/mixins/url_for';
 import WatchRecords from '@/mixins/watch_records';
+import { mdiCreationOutline } from '@mdi/js';
 
 export default {
   mixins: [UrlFor, WatchRecords],
@@ -45,6 +47,7 @@ export default {
 
   data() {
     return {
+      mdiCreationOutline,
       loading: false,
       newOption: null,
       lastPollType: this.poll.pollType,
@@ -72,6 +75,99 @@ export default {
     discardDraft() {
       if (confirm(I18n.global.t('formatting.confirm_discard'))) {
         EventBus.$emit('resetDraft', 'poll', this.poll.id, 'details', this.poll.details);
+      }
+    },
+
+    askAiForPollDetails() {
+      const target = this.poll.discussionId ? { discussionId: this.poll.discussionId } : (this.poll.groupId ? { groupId: this.poll.groupId } : null);
+      if (!target) { return; }
+      EventBus.$emit('openModal', {
+        component: 'AskAiPromptModal',
+        props: {
+          ...target,
+          suggestionKeys: this.poll.aiSuggestionKeys(),
+          onAnswer: ({ answer, format }) => {
+            this.poll.details = answer;
+            if (format) { this.poll.detailsFormat = format; }
+            const docKey = this.poll.collabKey('details', (Session.user().id || AppConfig.channel_token));
+            EventBus.$emit('resetDraft', 'poll', this.poll.id, 'details', answer, docKey);
+          }
+        }
+      });
+    },
+    askAiScaffoldPoll() {
+      if (!this.poll.discussionId) { return; }
+      EventBus.$emit('openModal', {
+        component: 'AskAiPromptModal',
+        props: {
+          discussionId: this.poll.discussionId,
+          suggestionKeys: this.poll.aiSuggestionKeys(),
+          scaffold: true,
+          onScaffold: ({ title, details, options }) => {
+            if (!this.poll.title && title) {
+              this.poll.title = title;
+            }
+            if (details) {
+              this.poll.details = details;
+              this.poll.detailsFormat = 'html';
+              const docKey = this.poll.collabKey('details', (Session.user().id || AppConfig.channel_token));
+              EventBus.$emit('resetDraft', 'poll', this.poll.id, 'details', this.poll.details, docKey);
+            }
+            const existing = new Set(this.pollOptions.map(o => (o.name || '').toLowerCase()));
+            const additions = [];
+            (options || []).forEach(opt => {
+              if (!opt) return;
+              const name = opt.name || '';
+              if (!name) return;
+              const key = name.toLowerCase();
+              if (existing.has(key)) return;
+              existing.add(key);
+              additions.push({
+                name: name,
+                meaning: (opt.meaning || null),
+                priority: null,
+                _destroy: null
+              });
+            });
+            if (additions.length) {
+              this.pollOptions = this.pollOptions.concat(additions);
+              Flash.success('ask_ai.messages.inserted');
+            }
+          }
+        }
+      });
+    },
+    async extractOptionsFromDiscussion() {
+      if (!this.poll.discussionId) { return; }
+      this.loading = true;
+      try {
+        const { options } = await AskAiService.askOptions(this.poll.discussionId, 30);
+        const existing = new Set(this.pollOptions.map(o => (o.name || '').toLowerCase()));
+        const additions = [];
+        options.forEach(opt => {
+          if (!opt) return;
+          const name = (typeof opt === 'string') ? opt : (opt.name || '');
+          if (!name) return;
+          const key = name.toLowerCase();
+          if (existing.has(key)) return;
+          existing.add(key);
+          additions.push({
+            name: name,
+            meaning: (opt.meaning || null),
+            priority: null,
+            _destroy: null
+          });
+        });
+        if (additions.length) {
+          this.pollOptions = this.pollOptions.concat(additions);
+          Flash.success('ask_ai.messages.inserted');
+        } else {
+          Flash.info('common.no_results_found');
+        }
+      } catch (e) {
+        // errors are flashed upstream
+      } finally {
+        this.loading = false;
       }
     },
 
@@ -187,6 +283,7 @@ export default {
   },
 
   computed: {
+    askAiEnabled() { return AppConfig.features.app.ask_ai; },
     currentTimeZone() { return Session.user().timeZone; },
     titlePlaceholder() {
       if (this.pollTemplate && this.pollTemplate.titlePlaceholder) {
@@ -248,6 +345,15 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
   v-card-title.px-0.pt-4.d-flex
     span(tabindex="-1" v-t="{path: titlePath, args: titleArgs}")
     v-spacer
+    v-btn.mr-2(
+      v-if="askAiEnabled && poll.discussionId"
+      variant="tonal"
+      size="small"
+      :prepend-icon="mdiCreationOutline"
+      :title="$t('ask_ai.tooltips.poll_scaffold')"
+      @click="askAiScaffoldPoll"
+    )
+      span {{ $t('ask_ai.ask_ai') }}
 
     v-btn(v-if="poll.id" icon variant="text" :to="urlFor(poll)" aria-hidden='true')
       common-icon(name="mdi-close")
@@ -282,10 +388,28 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
     :label="$t('poll_common_form.details')"
     :should-reset="shouldReset"
   )
+    template(v-slot:actions)
+      p hello
+      v-btn.mr-2(
+        v-if="askAiEnabled"
+        variant="text"
+        @click="askAiForPollDetails"
+      )
+        span {{ $t('ask_ai.ask_ai') }}
 
   template(v-if="hasOptions")
     v-divider.my-4
-    .text-subtitle-1.py-2( v-t="'poll_common_form.options'")
+    .d-flex.align-center.justify-space-between
+      .text-subtitle-1.py-2( v-t="'poll_common_form.options'")
+      v-btn.ml-2(
+        v-if="askAiEnabled && poll.discussionId"
+        variant="tonal"
+        size="small"
+        :prepend-icon="mdiCreationOutline"
+        :title="$t('ask_ai.tooltips.poll_suggest_options')"
+        @click="extractOptionsFromDiscussion"
+      )
+        span {{ $t('ask_ai.suggest_options') }}
     v-alert(v-if="!pollOptions.length" variant="tonal" type="info")
       span(v-t="'poll_common_form.no_options_add_some'")
     sortable-list(

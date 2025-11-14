@@ -44,6 +44,29 @@ export default class PollModel extends BaseModel {
 
   poll() { return this; }
 
+  aiSuggestionKeys() {
+    switch (this.pollType) {
+      case 'proposal':
+        return ['summarize', 'consensus_and_divergence', 'suggest_next_steps', 'draft_outcome'];
+      case 'check':
+        return ['summarize', 'extract_themes', 'consensus_and_divergence', 'suggest_next_steps'];
+      case 'count':
+        return ['summarize', 'suggest_next_steps'];
+      case 'ranked_choice':
+        return ['summarize', 'extract_themes', 'consensus_and_divergence'];
+      case 'dot_vote':
+        return ['summarize', 'extract_themes', 'suggest_next_steps'];
+      case 'score':
+        return ['summarize', 'extract_themes', 'consensus_and_divergence'];
+      case 'poll':
+        return ['summarize', 'consensus_and_divergence', 'suggest_next_steps'];
+      case 'meeting':
+        return ['summarize', 'extract_themes', 'suggest_next_steps'];
+      default:
+        return ['summarize', 'consensus_and_divergence', 'suggest_next_steps', 'draft_outcome'];
+    }
+  }
+
   defaultValues() {
     return {
       discussionId: null,

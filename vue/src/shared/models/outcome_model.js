@@ -98,4 +98,28 @@ export default class OutcomeModel extends BaseModel {
   bestNamedId() {
     return ((this.id && this) || (this.pollId && this.poll()) || (this.groupId && this.group()) || {namedId() {}}).namedId();
   }
+
+  aiSuggestionKeys() {
+    const type = (this.poll() && this.poll().pollType) || null;
+    switch (type) {
+      case 'proposal':
+        return ['draft_outcome', 'summarize', 'consensus_and_divergence'];
+      case 'check':
+        return ['summarize', 'consensus_and_divergence', 'suggest_next_steps'];
+      case 'count':
+        return ['summarize', 'suggest_next_steps'];
+      case 'ranked_choice':
+        return ['summarize', 'extract_themes', 'consensus_and_divergence'];
+      case 'dot_vote':
+        return ['summarize', 'extract_themes', 'suggest_next_steps'];
+      case 'score':
+        return ['summarize', 'extract_themes', 'consensus_and_divergence'];
+      case 'poll':
+        return ['summarize', 'consensus_and_divergence', 'suggest_next_steps'];
+      case 'meeting':
+        return ['summarize', 'extract_themes', 'suggest_next_steps'];
+      default:
+        return ['draft_outcome', 'summarize', 'consensus_and_divergence'];
+    }
+  }
 };
