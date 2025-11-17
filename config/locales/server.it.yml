@@ -78,7 +78,7 @@ it:
       title_placeholder: Richiesta di finanziamento per il Robotics Roadshow
       process_name: Decisione di finanziamento
       process_subtitle: Elabora una richiesta di sovvenzione, prestito o investimento e prendi una decisione di finanziamento.
-      process_introduction: "<p>Presentare una richiesta di finanziamento, allegare documenti e altro materiale di supporto.</p><p> Riepilogare l'applicazione nel contesto del thread.</p><p> Invitare le persone autorizzate a rivedere la domanda e porre domande. Concedere tempo sufficiente per la discussione.</p><p> Sollevare una proposta di consenso per approvare il finanziamento.</p><p> Se qualcuno non è d'accordo, chiedi una ragione: ad esempio, potrebbero essere necessarie ulteriori informazioni. Invita la persona in disaccordo a cambiare il proprio voto quando è soddisfatta.</p><p> Quando hai una decisione chiara sulla richiesta di finanziamento, indica un risultato per registrare la decisione.</p>"
+      process_introduction: "<p>Presentare una richiesta di finanziamento, allegare documenti e altro materiale di supporto.</p><p> Riepilogare l'applicazione nel contesto del thread.</p><p> Invitare le persone autorizzate a rivedere la domanda e porre domande. Concedere tempo sufficiente per la discussione.</p><p> Sollevare una proposta di consenso per approvare il finanziamento.</p><p> Se qualcuno non è d’accordo, chiedi una ragione: ad esempio, potrebbero essere necessarie ulteriori informazioni. Invita la persona in disaccordo a cambiare il proprio voto quando è soddisfatta.</p><p> Quando hai una decisione chiara sulla richiesta di finanziamento, indica un risultato per registrare la decisione.</p>"
       description: <h3 id="introduce-and-summarize-the-funding-application">Presentare e sintetizzare la domanda di finanziamento</h3><p></p><h3 id="how-does-this-application-fit-with-funding-criteria"> Come si adatta questa domanda ai criteri di finanziamento?</h3><p></p><h3 id="who-is-authorized-to-approve-this-funding-decision"> Chi è autorizzato ad approvare questa decisione di finanziamento?</h3><p></p><h3 id="invite-questions-from-decision-makers-to-process-the-applica"> Invitare le domande dei decisori per elaborare la domanda</h3><p></p>
       funding: Finanziamento
     approve_a_document:
@@ -398,16 +398,16 @@ it:
       outcome_statement: "<p>Grazie per aver partecipato a questa proposta pratica! \U0001F389</p><p> Questa era solo un'occasione per vedere come funzionano le votazioni e i commenti su Loomio. Non c'è una vera e propria decisione in atto, ma spero che questo abbia aiutato tutti a familiarizzare con il processo.</p>"
     proposal:
       process_subtitle: Presentare una proposta per prendere una decisione
-      process_introduction: <p>La classica proposta di Loomio ti aiuta a prendere una decisione, trasformando una discussione in un risultato chiaro.</p><p> Suggerisci una linea d'azione e invita le persone a rispondere votando per essere d'accordo, astenersi o non essere d'accordo.</p><p> Quando le persone votano, possono motivare il loro voto in quel modo. Si può vedere la posizione di tutti gli altri sulla questione e il perché.</p><p> In questo modo puoi utilizzare una proposta per stimolare una risposta da parte delle persone, scoprire nuove informazioni e creare una comprensione condivisa, per aiutare il tuo gruppo a prendere una decisione migliore e più informata.</p><p> Una proposta e la relativa discussione creano una documentazione di come si è giunti alla decisione.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Per saperne di più sull'utilizzo della classica proposta di Loomio nel processo decisionale semplice</u></a> .</p>
+      process_introduction: <p>La classica proposta di Loomio ti aiuta a prendere una decisione, trasformando una discussione in un risultato chiaro.</p><p> Suggerisci una linea d'azione e invita le persone a rispondere votando per essere d’accordo, astenersi o non essere d’accordo.</p><p> Quando le persone votano, possono motivare il loro voto in quel modo. Si può vedere la posizione di tutti gli altri sulla questione e il perché.</p><p> In questo modo puoi utilizzare una proposta per stimolare una risposta da parte delle persone, scoprire nuove informazioni e creare una comprensione condivisa, per aiutare il tuo gruppo a prendere una decisione migliore e più informata.</p><p> Una proposta e la relativa discussione creano una documentazione di come si è giunti alla decisione.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Per saperne di più sull'utilizzo della classica proposta di Loomio nel processo decisionale semplice</u></a> .</p>
       title: Approva il nuovo concetto di Brand
-      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Quale decisione devi prendere?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Perché è importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Cosa chiedi alle persone di fare?</strong></h3><p></p><p> Affinché questa proposta venga approvata, è necessario che la maggioranza dei membri voti a favore.</p><p> Se non sei d'accordo, spiega perché e cosa deve cambiare affinché tu possa essere d'accordo.</p>
-      agree: Essere d'accordo
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Quale decisione devi prendere?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Perché è importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Cosa chiedi alle persone di fare?</strong></h3><p></p><p> Affinché questa proposta venga approvata, è necessario che la maggioranza dei membri voti a favore.</p><p> Se non sei d’accordo, spiega perché e cosa deve cambiare affinché tu possa essere d’accordo.</p>
+      agree: Essere d’accordo
       agree_meaning: Io sostengo la proposta
       agree_prompt: Cosa ti piace della proposta e in che modo sarà utile al gruppo?
       abstain: Astenersi
       abstain_meaning: Scegliere di non votare o non essere in grado di farlo in questa decisione.
       abstain_prompt: Perché ti astieni o non ti senti in grado di votare per questa decisione?
-      disagree: Non sono d'accordo
+      disagree: Non sono d’accordo
       disagree_meaning: Qualcosa in questa proposta deve essere cambiato prima che io possa sostenerla.
       disagree_prompt: Come si potrebbe migliorare questa proposta affinché tu possa sostenerla?
     advice:
@@ -415,7 +415,7 @@ it:
       process_introduction: <p>Chiedi consiglio su una decisione che devi prendere, con il parere di persone direttamente interessate o esperte, in modo da poter prendere una decisione migliore per la tua organizzazione.</p><ul><li><p> I consigli ti aiutano a prendere una decisione migliore per la tua organizzazione.</p></li><li><p> Promuovere relazioni, opportunità di apprendimento e contributi diversificati.</p></li><li><p> Stimola l'iniziativa e la creatività, rendendo il lavoro più piacevole.</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>Per saperne di più sul processo di consulenza</u></a> .</p>
       title: Aiuta Takashi ad acquistare un nuovo computer
       details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Quale decisione devi prendere?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Perché è importante?</strong></h3><p></p><h3 id="what-advice-are-you-asking-from-people-to-help-you-make-a-go"> <strong>Quali consigli chiedi alle persone per aiutarti a prendere una buona decisione?</strong></h3><p></p><p> Vorrei il tuo contributo per aiutarmi a prendere una buona decisione per la nostra organizzazione.</p>
-      agree: Essere d'accordo
+      agree: Essere d’accordo
       agree_meaning: Ho offerto il mio consiglio su questa decisione
       agree_prompt: Riassumi il tuo consiglio o fai un commento utile
       abstain: Astenersi
@@ -438,15 +438,15 @@ it:
       process_subtitle: Raggiungere un accordo collettivo con tutti i soggetti coinvolti
       process_introduction: <p>Crea un consenso su una decisione che devi prendere, per raggiungere un accordo che soddisfi le esigenze e le preoccupazioni di tutti i partecipanti.</p><ul><li><p> Discutere e sviluppare insieme una proposta</p></li><li><p> Includere e rispettare tutti i soggetti coinvolti</p></li><li><p> Cercare il consenso della maggior parte delle persone</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/consensus_process/index.html">Per saperne di più sul processo di consenso</a> .</p>
       title: Approva il nuovo concetto di Brand
-      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Quale decisione devi prendere?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Perché è importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Cosa chiedi alle persone di fare?</strong></h3><p></p><p> Affinché questa proposta venga approvata, è necessario che la maggioranza dei membri voti a favore.</p><p> Se non sei d'accordo, spiega perché e cosa deve cambiare affinché tu possa essere d'accordo.</p>
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Quale decisione devi prendere?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Perché è importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Cosa chiedi alle persone di fare?</strong></h3><p></p><p> Affinché questa proposta venga approvata, è necessario che la maggioranza dei membri voti a favore.</p><p> Se non sei d’accordo, spiega perché e cosa deve cambiare affinché tu possa essere d’accordo.</p>
       outcome_statement: "<p>Grazie per aver partecipato al processo di consenso.</p>"
-      agree: Essere d'accordo
+      agree: Essere d’accordo
       agree_meaning: Io sostengo la proposta
       agree_prompt: Cosa ti piace della proposta e in che modo sarà utile all'organizzazione?
       abstain: Astenersi
       abstain_meaning: Questa decisione non mi riguarda e sono contento di qualunque cosa decida il gruppo
       abstain_prompt: Perché ti astieni o non ti senti in grado di votare per questa decisione?
-      disagree: Non sono d'accordo
+      disagree: Non sono d’accordo
       disagree_meaning: Qualcosa in questa proposta deve essere cambiato prima che io possa supportarla
       disagree_prompt: Come si potrebbe migliorare questa proposta affinché tu possa sostenerla?
       block: Bloccare
@@ -475,11 +475,11 @@ it:
       abstain_meaning: Non ho nulla da aggiungere, né alcuna obiezione a questo lavoro.
       abstain_prompt: L'astensione implica il consenso alla direzione di questa proposta. C'è un motivo per cui si vota per l'astensione?
       concerned: Interessato
-      concerned_meaning: Potrebbe essere necessario modificare qualcosa affinché io possa dare il consenso o essere d'accordo
+      concerned_meaning: Potrebbe essere necessario modificare qualcosa affinché io possa dare il consenso o essere d’accordo
       concerned_prompt: Qual è la tua preoccupazione e come potresti affrontarla?
     gradients_of_agreement:
       process_subtitle: Esprimere il proprio sostegno a una proposta su una scala di 8 punti
-      process_introduction: <p>La proposta sui gradienti di accordo consente ai membri di un gruppo di esprimere il proprio sostegno a una proposta in gradi su una scala, offrendo più modi per esprimere sostegno rispetto ai termini "d'accordo" e "in disaccordo".</p><p> Utilizzare i gradienti di accordo come fase preliminare per testare il supporto di una proposta prima di passare a un accordo formale.</p><p> I gradienti di accordo informano le persone che una proposta si sta formando e le incoraggiano a impegnarsi. È un'opportunità per ascoltare le persone, percepire i loro sentimenti e rispondere in modo appropriato, aprendo la possibilità di integrare i loro contributi per prendere una decisione migliore.</p>
+      process_introduction: <p>La proposta sui gradienti di accordo consente ai membri di un gruppo di esprimere il proprio sostegno a una proposta in gradi su una scala, offrendo più modi per esprimere sostegno rispetto ai termini "d’accordo" e "in disaccordo".</p><p> Utilizzare i gradienti di accordo come fase preliminare per testare il supporto di una proposta prima di passare a un accordo formale.</p><p> I gradienti di accordo informano le persone che una proposta si sta formando e le incoraggiano a impegnarsi. È un'opportunità per ascoltare le persone, percepire i loro sentimenti e rispondere in modo appropriato, aprendo la possibilità di integrare i loro contributi per prendere una decisione migliore.</p>
       title: Come ti sembra la nuova dichiarazione di valori?
       details: <h3 id="what-are-you-proposing"><strong>Cosa proponi?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Perché è importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Cosa chiedi alle persone di fare?</strong></h3><p></p><p> Come ti sembra la proposta? Esprimi il tuo sostegno sulla scala sottostante e lascia un commento o un suggerimento per migliorarla.</p><p> Questa proposta di accordo sui gradienti è intesa a testare il supporto alla proposta e a offrire l'opportunità di esprimere il proprio contributo prima di passare a un accordo formale.</p>
       whole_hearted_endorsement: Approvazione incondizionata
@@ -500,8 +500,8 @@ it:
       don_t_like_but_will_support_meaning: Non è un granché ma non voglio rallentare il gruppo
       don_t_like_but_will_support_prompt: Cosa vorresti vedere migliorato?
       serious_disagreement: Grave disaccordo
-      serious_disagreement_meaning: Non sono d'accordo, non contare su di me
-      serious_disagreement_prompt: Con cosa non sei d'accordo?
+      serious_disagreement_meaning: Non sono d’accordo, non contare su di me
+      serious_disagreement_prompt: Con cosa non sei d’accordo?
       veto: Veto
       veto_meaning: Blocco questa proposta
       veto_prompt: Perché blocchi la proposta? Cosa deve cambiare per poterla sostenere?

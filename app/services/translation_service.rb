@@ -82,7 +82,6 @@ class TranslationService
       end
 
       if (known = find_i18n_translation(content, from: from_locale, to: to))
-        puts "using local translation: #{from_locale} #{content} #{to} #{known}"
         fields[field.to_s] = known
         next
       end
@@ -97,7 +96,6 @@ class TranslationService
       end
 
       fields[field.to_s] = service.translate(content, **translate_options)
-      puts "using google translation: #{from_locale} #{content} #{to} #{fields[field.to_s]}"
     end
 
     fields

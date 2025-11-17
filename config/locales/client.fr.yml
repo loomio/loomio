@@ -1825,7 +1825,7 @@ fr:
     dot_vote_title: Vote à points
     meeting_title: Sondage horaire de réunion
     ranked_choice_title: Classement par préférence
-    gradients_of_agreement_title: Gradients d'accord
+    gradients_of_agreement_title: Gradients d’accord
   poll_option_form:
     edit_option: Option Modifier
     option_name: Nom de l’option
