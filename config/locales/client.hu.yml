@@ -314,6 +314,7 @@ hu:
       add_people: Adj hozzá embereket
       zoom: Zoomolás
       align: Igazítsa
+      original: Eredeti
     formatting_help:
       label: Formázás
       title: Így használhatod a Markdown-t a szöveg formázására
@@ -1492,6 +1493,7 @@ hu:
     deactivate_account_subtitle: Az e-mailek leállítása és a tagság megszüntetése. Tartsa meg profilját, hogy a korábbi megbeszéléseket és döntéseket ne befolyásolja.
     delete_account_subtitle: Teljesen törölje fiókját, és távolítsa el a nevét a korábbi megbeszélésekből és döntésekből.
     updated_on_sign_in: A böngésző biztosítja, és bejelentkezéskor frissül
+    translate_content_automatically: Tartalom automatikus fordítása a saját nyelvemre
   text_editor:
     x_of_y_characters: "%{x} / %{y} karakter"
     select_text_to_link: Válassza ki a linkelni kívánt szöveget, és próbálja újra
@@ -1557,6 +1559,7 @@ hu:
     mentioned_description: Amikor valaki {'@'}megemlít téged egy hozzászólásban, kapsz egy értesítő e-mailt.
     daily_summary_description: Válaszd ki, mikor szeretnéd megkapni az összefoglaló e-mailt. Ez az e-mail tartalmazza azokat az új tevékenységeket, amelyeket még nem láttál. Jó módja annak, hogy naprakész maradj, ha nem vagy rendszeres felhasználó.
     never: Soha
+    send_email: E-mail küldése
   thread_preview:
     replies_count: "%{count} válasz"
     unread_count: "%{count} olvasatlan"

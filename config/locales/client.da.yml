@@ -312,6 +312,7 @@ da:
       add_people: Tilføj Folk
       zoom: Zoom
       align: Juster
+      original: Original
     formatting_help:
       label: Formatering
       title: Lær, hvordan du bruger Markdown til at formatere din tekst
@@ -1488,6 +1489,7 @@ da:
     deactivate_account_subtitle: Stop e-mails og annuller medlemskaber. Bevar din profil, så tidligere diskussioner og beslutninger ikke påvirkes.
     delete_account_subtitle: Slet din konto fuldstændigt og fjern dit navn fra tidligere diskussioner og beslutninger.
     updated_on_sign_in: Leveres af din browser og opdateres, når du logger ind
+    translate_content_automatically: Oversæt indhold automatisk til mit sprog
   text_editor:
     x_of_y_characters: "%{x} / %{y} tegn"
     select_text_to_link: Vælg tekst, der skal linkes, og prøv igen
@@ -1553,6 +1555,7 @@ da:
     mentioned_description: Når nogen {'@'}nævner dig i en kommentar, får du en notifikationsmail
     daily_summary_description: Vælg, hvornår du vil modtage e-mailen med opsummeringen af det forsømte. Denne e-mail indeholder al ny aktivitet, som du ikke har set. En god måde at holde dig opdateret på, hvis du ikke er en almindelig bruger.
     never: Aldrig
+    send_email: Send e-mail
   thread_preview:
     replies_count: "%{count} svar"
     unread_count: "%{count} ulæst"

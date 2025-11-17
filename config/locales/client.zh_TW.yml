@@ -318,6 +318,7 @@ zh_TW:
       add_people: 新增夥伴
       zoom: Zoom
       align: 對齊
+      original: 原來的
     formatting_help:
       label: 格式化
       title: 學習如何使用 Markdown 來格式化您的文字
@@ -1512,6 +1513,7 @@ zh_TW:
     deactivate_account_subtitle: 停止發送電子郵件並取消會員資格。保留您的個人資料，以免過去的討論和決定受到影響。
     delete_account_subtitle: 徹底刪除您的帳戶，並從過去的討論和決定中刪除您的名字。
     updated_on_sign_in: 由您的瀏覽器提供並在您登入時更新
+    translate_content_automatically: 自動將內容翻譯成我的語言
   text_editor:
     x_of_y_characters: "%{x} / %{y} 個字元"
     select_text_to_link: 選取要連結的文字並再試一次
@@ -1577,6 +1579,7 @@ zh_TW:
     mentioned_description: 當有人{'@'}在評論中提及您時，您會收到一封通知電子郵件
     daily_summary_description: 選擇何時接收更新摘要電子郵件。此電子郵件包含您尚未查看的任何新活動。如果您不是常規用戶，這是一個保持最新狀態的好方法。
     never: 絕不
+    send_email: 傳送電子郵件
   thread_preview:
     replies_count: "%{count} 個回覆"
     unread_count: "%{count} 個未讀"

@@ -310,6 +310,7 @@ ja:
       add_people: 人の追加
       zoom: ズーム
       align: 整列
+      original: オリジナル
     formatting_help:
       label: 書式設定
       title: Markdown を使用してテキストの書式を設定する方法を学びます
@@ -1487,6 +1488,7 @@ ja:
     deactivate_account: アカウントを無効化し
     deactivate_account_subtitle: メールを停止し、メンバーシップをキャンセルします。過去の議論や決定に影響が及ばないように、プロフィールを保持します。
     delete_account_subtitle: アカウントを完全に削除し、過去の議論や決定からあなたの名前を削除します。
+    translate_content_automatically: コンテンツを自動的に自分の言語に翻訳する
   text_editor:
     x_of_y_characters: "%{x} / %{y} 文字"
     select_text_to_link: リンクするテキストを選択して再試行してください
@@ -1552,6 +1554,7 @@ ja:
     mentioned_description: 誰かがコメントであなたに言及すると、通知メールが届きます
     daily_summary_description: キャッチアップサマリーメールの受信時期を選択してください。このメールには、まだ確認できていない新しいアクティビティがすべて含まれています。普段ご利用でない方でも、最新情報を常に把握できる便利な方法です。
     never: 一度もない
+    send_email: メールを送信
   thread_preview:
     replies_count: "%{count} 件の返信"
     unread_count: "%{count} 件が未読です"

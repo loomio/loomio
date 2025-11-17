@@ -312,6 +312,7 @@ pl:
       add_people: Dodaj ludzi
       zoom: Powiększenie
       align: Wyrównywać
+      original: Oryginalny
     formatting_help:
       label: Formatowanie
       title: Naucz się używać Markdown, by sformatować swój tekst
@@ -1504,6 +1505,7 @@ pl:
     deactivate_account_subtitle: Zatrzymaj e-maile i anuluj członkostwo. Zachowaj swój profil, aby nie miało to wpływu na wcześniejsze dyskusje i decyzje.
     delete_account_subtitle: Całkowicie usuń swoje konto i usuń swoje imię i nazwisko z poprzednich dyskusji i decyzji.
     updated_on_sign_in: Dostarczane przez przeglądarkę i aktualizowane po zalogowaniu
+    translate_content_automatically: Automatycznie tłumacz treść na mój język
   text_editor:
     x_of_y_characters: "%{x} / %{y} znaków"
     select_text_to_link: Wybierz tekst do połączenia i spróbuj ponownie
@@ -1569,6 +1571,7 @@ pl:
     mentioned_description: Gdy ktoś {'@'}wspomni o Tobie w komentarzu, otrzymasz powiadomienie e-mailem
     daily_summary_description: Wybierz, kiedy chcesz otrzymywać e-maile z podsumowaniem. Ten e-mail zawiera wszystkie nowe aktywności, których nie zauważyłeś. To dobry sposób, aby być na bieżąco, jeśli nie korzystasz regularnie z aplikacji.
     never: Nigdy
+    send_email: Wyślij e-mail
   thread_preview:
     replies_count: "%{count} odpowiedzi"
     unread_count: "%{count} nieprzeczytanych"

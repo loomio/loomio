@@ -312,6 +312,7 @@ ro:
       add_people: Adaugă persoane
       zoom: Zoom
       align: Alinia
+      original: Original
     formatting_help:
       label: Formatare
       title: Invață să folosești Markdown pentru a formata textul
@@ -1488,6 +1489,7 @@ ro:
     deactivate_account_subtitle: Opriți e-mailurile și anulați abonamentele. Păstrează-ți profilul pentru ca discuțiile și deciziile anterioare să nu fie afectate.
     delete_account_subtitle: Ștergeți-vă complet contul și eliminați-vă numele din discuțiile și deciziile anterioare.
     updated_on_sign_in: Furnizat de browserul dvs. și actualizat atunci când vă conectați
+    translate_content_automatically: Traduceți automat conținutul în limba mea
   text_editor:
     x_of_y_characters: "%{x} / %{y} caractere"
     select_text_to_link: Selectați textul de conectat și încercați din nou
@@ -1553,6 +1555,7 @@ ro:
     mentioned_description: Când cineva te menționează {'@'} într-un comentariu, vei primi un e-mail de notificare.
     daily_summary_description: Alege când vrei să primești e-mailul cu rezumatul actualizării. Acest e-mail conține orice activitate nouă pe care nu ai văzut-o. O modalitate bună de a rămâne la curent dacă nu ești un utilizator obișnuit.
     never: Nu
+    send_email: Trimiteți e-mail
   thread_preview:
     replies_count: "%{count} răspunsuri"
     unread_count: "%{count} necitite"

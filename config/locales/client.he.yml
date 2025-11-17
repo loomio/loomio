@@ -312,6 +312,7 @@ he:
       add_people: הוסף אנשים
       zoom: תקריב
       align: יישר
+      original: מְקוֹרִי
     formatting_help:
       label: פורמט
       title: למד איך להשתמש בMarkdown כדי לסגנן את הטקסט שלך
@@ -1500,6 +1501,7 @@ he:
     deactivate_account_subtitle: עצור הודעות אימייל ובטל חברות. שמור על הפרופיל שלך כדי שדיונים והחלטות בעבר לא יושפעו.
     delete_account_subtitle: מחק לחלוטין את חשבונך והסר את שמך מדיונים והחלטות בעבר.
     updated_on_sign_in: מסופק על ידי הדפדפן שלך ומעודכן בעת הכניסה
+    translate_content_automatically: תרגם תוכן לשפה שלי באופן אוטומטי
   text_editor:
     x_of_y_characters: "%{x} / %{y} תווים"
     select_text_to_link: בחר טקסט לקישור ונסה שוב
@@ -1565,6 +1567,7 @@ he:
     mentioned_description: כאשר מישהו {'@'}מזכיר אותך בתגובה, תקבל התראה בדוא"ל
     daily_summary_description: בחר מתי לקבל את דוא"ל סיכום העדכון. דוא"ל זה מכיל כל פעילות חדשה שלא ראית. דרך טובה להישאר מעודכנים אם אינך משתמש קבוע.
     never: לְעוֹלָם לֹא
+    send_email: שלח אימייל
   thread_preview:
     replies_count: "%{count} תשובות"
     unread_count: "%{count} לא נקראו"

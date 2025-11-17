@@ -312,6 +312,7 @@ sl:
       add_people: Dodajte osebe
       zoom: Zoom
       align: Poravnaj
+      original: Izvirnik
     formatting_help:
       label: Oblikovanje
       title: Naučite se uporabljati Markdown za oblikovanje besedila
@@ -1488,6 +1489,7 @@ sl:
     deactivate_account_subtitle: Ustavite e-pošto in prekličite članstva. Ohranite svoj profil, da to ne vpliva na pretekle razprave in odločitve.
     delete_account_subtitle: Popolnoma izbrišite svoj račun in odstranite svoje ime iz preteklih razprav in odločitev.
     updated_on_sign_in: Zagotavlja vaš brskalnik in se posodobi, ko se prijavite
+    translate_content_automatically: Samodejno prevedi vsebino v moj jezik
   text_editor:
     x_of_y_characters: "%{x} / %{y} znakov"
     select_text_to_link: Izberite besedilo za povezavo in poskusite znova
@@ -1553,6 +1555,7 @@ sl:
     mentioned_description: Ko vas nekdo {'@'}omeni v komentarju, boste prejeli obvestilo po e-pošti
     daily_summary_description: Izberite, kdaj želite prejeti e-poštno sporočilo s povzetkom zamujenega. To e-poštno sporočilo vsebuje vse nove dejavnosti, ki jih še niste opazili. Dober način, da ostanete na tekočem, če niste redni uporabnik.
     never: Nikoli
+    send_email: Pošlji e-pošto
   thread_preview:
     replies_count: "%{count} odgovorov"
     unread_count: "%{count} neprebranih"

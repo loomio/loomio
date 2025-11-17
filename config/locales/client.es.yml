@@ -312,6 +312,7 @@ es:
       add_people: Añadir gente
       zoom: Zoom
       align: Alinear
+      original: Original
     formatting_help:
       label: 'Formato '
       title: Aprenda a usar Markdown para dar formato a su texto
@@ -1513,6 +1514,7 @@ es:
     deactivate_account_subtitle: Detenga los correos electrónicos y cancele membresías. Mantenga su perfil para que las discusiones y decisiones pasadas no se vean afectadas.
     delete_account_subtitle: Elimine completamente su cuenta y elimine su nombre de discusiones y decisiones pasadas.
     updated_on_sign_in: Proporcionado por su navegador y actualizado al iniciar sesión
+    translate_content_automatically: Traducir automáticamente el contenido a mi idioma
   text_editor:
     x_of_y_characters: "%{x} / %{y} caractéres"
     select_text_to_link: Selecciona el texto del enlace e inténtalo de nuevo
@@ -1578,6 +1580,7 @@ es:
     learn_more: Aprende más sobre la configuración de correo electrónico...
     daily_summary_description: Elige cuándo recibir el correo electrónico de resumen de actualización. Este correo contiene cualquier actividad nueva que no hayas visto. Es una buena manera de mantenerte al día si no eres un usuario habitual.
     never: Nunca
+    send_email: Enviar correo electrónico
   thread_preview:
     replies_count: "%{count} respuestas"
     unread_count: "%{count} no leídos"

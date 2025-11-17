@@ -312,6 +312,7 @@ fi:
       add_people: Lisää ihmisiä
       zoom: Zoomaus
       align: Kohdistaa
+      original: Alkuperäinen
     formatting_help:
       label: Muotoilu
       title: Opi käyttämään Markdownia tekstin muotoiluun
@@ -1488,6 +1489,7 @@ fi:
     deactivate_account_subtitle: Lopeta sähköpostit ja peruuta jäsenyydet. Säilytä profiilisi, jotta aiemmat keskustelut ja päätökset eivät vaikuta.
     delete_account_subtitle: Poista tilisi kokonaan ja poista nimesi aiemmista keskusteluista ja päätöksistä.
     updated_on_sign_in: Selaimesi tarjoaa ja päivitetään, kun kirjaudut sisään
+    translate_content_automatically: Käännä sisältö kielelleni automaattisesti
   text_editor:
     x_of_y_characters: "%{x} / %{y} merkkiä"
     select_text_to_link: Valitse linkitettävä teksti ja yritä uudelleen
@@ -1553,6 +1555,7 @@ fi:
     mentioned_description: Kun joku {'@'}mainitsee sinut kommentissa, saat ilmoituksen sähköpostitse.
     daily_summary_description: Valitse, milloin haluat vastaanottaa yhteenvedon sähköpostitse. Tämä sähköposti sisältää kaikki uudet tapahtumat, joita et ole vielä nähnyt. Hyvä tapa pysyä ajan tasalla, jos et ole säännöllinen käyttäjä.
     never: Ei koskaan
+    send_email: Lähetä sähköpostia
   thread_preview:
     replies_count: "%{count} vastausta"
     unread_count: "%{count} lukematonta"
