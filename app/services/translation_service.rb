@@ -40,8 +40,6 @@ class TranslationService
     fields
   end
 
-
-
   def self.create(model:, to:)
     locale = locale_for_google(to)
 

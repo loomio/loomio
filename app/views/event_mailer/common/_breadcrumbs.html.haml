@@ -1,6 +1,5 @@
 - if eventable.group.present?
-	= link_to eventable.group.full_name, tracked_url(eventable.group)
+	= link_to plain_text(eventable.group, full_name), tracked_url(eventable.group)
 - if eventable.discussion.present? && eventable.discussion != eventable
-	-
+	- raise "waht do you mean link to eventable.discussion"
 	= link_to eventable.discussion, tracked_url(eventable.discussion)
-

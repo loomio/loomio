@@ -1,9 +1,9 @@
 .light-discussion{id: discussion.key}
-  %h2= link_to(discussion.title, discussion_url(discussion))
+  %h2= link_to(plain_text(discussion, :title), discussion_url(discussion))
   - if discussion.created_at >= @time_start
     %p
       %em by #{discussion.author.name}
-    .description= render_rich_text(discussion.description, discussion.description_format)
+    .description= formatted_text(discussion, :description)
 
   - discussion.polls.active_or_closed_after(@time_start).each do |poll|
     = render "event_mailer/common/title", eventable: poll

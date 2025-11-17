@@ -4,16 +4,59 @@ module EmailHelper
     recipient.login_tokens.create!(redirect: redirect_path)
   end
 
-  def render_markdown(str, fmt = 'md')
-    MarkdownService.render_markdown(str, fmt)
+
+  # convert html to markdown if necessary
+  def render_markdown(str, format = 'md')
+    MarkdownService.render_markdown(str, format)
   end
 
-  def render_plain_text(str, fmt = 'md')
-    MarkdownService.render_plain_text(str, fmt)
+  # stripped of any user generated html
+  # newlines converted to brs
+  def force_plain_text(str, format = 'md')
+    MarkdownService.render_plain_text(str, format)
   end
 
-  def render_rich_text(str, fmt = 'md')
-    MarkdownService.render_rich_text(str, fmt)
+  # translate plain text if required
+  # refuse to take formatted content
+  def plain_text(model, field)
+    if model.respond_to? "#{field}_format"
+      raise "found a format field when rending plain text. use formatted_text?"
+    end
+
+    if show_translation(model)
+      translation = TranslationService.create(model: model, to: @recipient.locale)
+      translateion.fields[field]
+    else
+      model.send(field)
+    end
+  end
+
+  # render markdown if necessary
+  # translate if required
+  # prepare formatted text for email use
+  def formatted_text(model, field)
+    format_field = "#{field}_format"
+    if !model.respond_to? "#{field}_format"
+      raise "format_field (#{format_field}) not found. should be using plain_text?"
+    end
+
+    content_format = 'html'
+    if show_translation(model)
+      translation = TranslationService.create(model: model, to: @recipient.locale)
+      content = translation.fields[field]
+    else
+      content = model.send(field)
+      content_format = 'md' if model.send("#{field}_format") == "md"
+    end
+
+    MarkdownService.render_rich_text(content, content_format)
+  end
+
+  def show_translation(model)
+    TranslationService.available? &&
+    model.content_locale.present? &&
+    model.content_locale != @recipient.locale &&
+    @recipient.auto_translate
   end
 
   def recipient_stance(recipient, poll)

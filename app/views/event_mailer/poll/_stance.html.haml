@@ -5,4 +5,4 @@
       = render 'event_mailer/poll/poll_option', poll: poll, poll_option: choice.poll_option, stance: stance
   - if stance.real_participant == @recipient && stance.poll.active?
     = link_to t(:"poll_common.change_vote"), tracked_url(stance.poll, change_vote: poll.id)
-  %p= render_rich_text(stance.reason, stance.reason_format)
+  %p= formatted_text(stance, :reason)

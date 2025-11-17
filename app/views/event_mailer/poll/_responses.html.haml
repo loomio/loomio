@@ -17,6 +17,6 @@
                 %strong #{stance.participant.name}:
               %td{valign: "top"}
                 = render 'event_mailer/poll/stance_choices', poll: poll, stance: stance
-          = render_rich_text(stance.reason, stance.reason_format)
+          = formatted_text(stance, :reason)
 - else
   %p= t(:"poll_common_action_panel.results_hidden_until_closed")

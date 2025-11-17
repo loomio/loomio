@@ -7,7 +7,7 @@
       - when 'i18n' then t(poll_option.name)
       - when 'iso8601' then format_iso8601_for_humans(poll_option.name, @recipient.time_zone, @recipient.date_time_pref)
       - else
-        - poll_option.name
+        - plain_text(poll_option, :name)
       - score = stance && stance.option_scores[poll_option.id.to_s]
       - option_color = poll_option.color.sub('#', '')
       %tr
