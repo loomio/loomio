@@ -19,13 +19,8 @@ module EmailHelper
   # translate plain text if required
   # refuse to take formatted content
   def plain_text(model, field)
-    if model.respond_to? "#{field}_format"
-      raise "found a format field when rending plain text. use formatted_text?"
-    end
-
     if show_translation(model)
-      translation = TranslationService.create(model: model, to: @recipient.locale)
-      translateion.fields[field]
+      TranslationService.create(model: model, to: @recipient.locale).fields[field]
     else
       model.send(field)
     end
@@ -36,17 +31,14 @@ module EmailHelper
   # prepare formatted text for email use
   def formatted_text(model, field)
     format_field = "#{field}_format"
-    if !model.respond_to? "#{field}_format"
-      raise "format_field (#{format_field}) not found. should be using plain_text?"
-    end
-
     content_format = 'html'
-    if show_translation(model)
+
+    content = if show_translation(model)
       translation = TranslationService.create(model: model, to: @recipient.locale)
-      content = translation.fields[field]
+      translation.fields[field]
     else
-      content = model.send(field)
       content_format = 'md' if model.send("#{field}_format") == "md"
+      model.send(field)
     end
 
     MarkdownService.render_rich_text(content, content_format)

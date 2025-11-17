@@ -69,7 +69,7 @@ class EventMailer < BaseMailer
                  end
 
     subject_params = {
-      title: @event.eventable.title,
+      title: plain_text(@event.eventable, :title),
       group_name: @event.eventable.title, # cope for old translations
       poll_type: @poll && I18n.t("poll_types.#{@poll.poll_type}", locale: @recipient.locale),
       actor: @event.user.name,
