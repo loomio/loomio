@@ -314,6 +314,7 @@ ca:
       view_group: Pots aprovar o denegar la sol·licitud aquí
       button_text: Veure sol·licitud
     loomio_app_description: Un espai on les organitzacions puguin prendre decisions conjuntament.
+    content_was_translated: Aquest contingut ha estat traduït de %{source_locale}
   announcement_count_emails: "%{count} correus electrònics"
   email_actions:
     unfollowed_discussion: Heu desactivat els correus electrònics per al fil.
@@ -534,3 +535,58 @@ ca:
       subject: El teu missatge a Loomio no s'ha lliurat.
       reason: Això ha passat perquè el vostre client de correu electrònic ha adreçat el missatge a l'adreça "De", en comptes de l'adreça "Respon" que heu proporcionat.
       recommendation: Si us plau, obriu Loomio al vostre navegador i publiqueu el vostre missatge directament.
+  locale_names:
+    en: Anglès
+    be-BY: Bielorús
+    bg-BG: Búlgar
+    ca: Català
+    cs: Txec
+    zh-TW: Xinès (tradicional, taiwanès)
+    da: Danès
+    de: Alemany
+    es: espanyol
+    eo: esperanto
+    el: Grec
+    fr: Francès
+    he: Hebreu
+    id: Indonesi
+    it: Italià
+    hu: Hongarès
+    ja: Japonès
+    ko: coreà
+    ml: Malayalam
+    nl-NL: neerlandès
+    pl: Polonès
+    pt-BR: Portuguès (Brasil)
+    ro: Romanès
+    sr: serbi (llatí)
+    sr-RS: Serbi (ciríl·lic)
+    sk: Eslovac
+    sv: Suec
+    vi: Vietnamita
+    tr: Turc
+    uk: Ucraïnès
+    an: Aragonès
+    ar: Àrab
+    cmn: Xinès (mandarí)
+    hr: Croat
+    it-CH: Italià (Suïssa)
+    fi: Finlandès
+    gl: Gallec
+    ga-IE: Gaèlic (Irlanda)
+    hi: 'No'
+    km: Khmer
+    lv: Letó
+    mk: Macedonià
+    mi: Maori
+    fa-IR: Persa (Iran)
+    pt-PT: Portuguès
+    ru: Rus
+    sl: Eslovè
+    te: Telugu
+    ur: Urdú
+    ur-PK: Urdú (Pakistan)
+    be: Bielorús
+    pt: Portuguès
+    zh: Xinès (tradicional, taiwanès)
+    zh-HK: Xinès (tradicional, taiwanès)

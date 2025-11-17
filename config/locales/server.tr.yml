@@ -312,6 +312,7 @@ tr:
       view_group: Burada isteği onaylayabilir ya da reddedebilirsin
       button_text: İsteği görüntüle
     loomio_app_description: Kuruluşların birlikte karar alabileceği bir yer.
+    content_was_translated: Bu içerik %{source_locale} adresinden çevrildi
   announcement_count_emails: "%{count} e-posta"
   email_actions:
     unfollowed_discussion: Konu başlığı için e-postaları kapattınız.
@@ -532,3 +533,58 @@ tr:
       subject: Loomio'ya mesajınız iletilmedi
       reason: Bu durum, e-posta istemcinizin iletiyi sağlanan "Yanıtla" adresi yerine "Kimden" adresine yönlendirmesinden kaynaklandı.
       recommendation: Lütfen tarayıcınızda Loomio'yu açın ve mesajınızı doğrudan gönderin.
+  locale_names:
+    en: İngilizce
+    be-BY: Belarusça
+    bg-BG: Bulgarca
+    ca: Katalanca
+    cs: Çek
+    zh-TW: Çince (Geleneksel, Tayvan)
+    da: Danimarkalı
+    de: Almanca
+    es: İspanyol
+    eo: Esperanto
+    el: Yunan
+    fr: Fransızca
+    he: İbranice
+    id: Endonezyaca
+    it: İtalyan
+    hu: Macarca
+    ja: Japonca
+    ko: Korece
+    ml: Malayalam
+    nl-NL: Flemenkçe
+    pl: Lehçe
+    pt-BR: Portekizce (Brezilya)
+    ro: Rumen
+    sr: Sırpça (latince)
+    sr-RS: Sırpça (Kiril)
+    sk: Slovak
+    sv: İsveççe
+    vi: Vietnam
+    tr: Türkçe
+    uk: Ukraynalı
+    an: Aragonca
+    ar: Arapça
+    cmn: Çince (Mandarin)
+    hr: Hırvat
+    it-CH: İtalyanca (İsviçre)
+    fi: Fince
+    gl: Galiçyaca
+    ga-IE: Galce (İrlanda)
+    hi: HAYIR
+    km: Kmer
+    lv: Letonyalı
+    mk: Makedonca
+    mi: Maori
+    fa-IR: Farsça (İran)
+    pt-PT: Portekizce
+    ru: Rusça
+    sl: Slovence
+    te: Telugu
+    ur: Urdu
+    ur-PK: Urduca (Pakistan)
+    be: Belarusça
+    pt: Portekizce
+    zh: Çince (Geleneksel, Tayvan)
+    zh-HK: Çince (Geleneksel, Tayvan)

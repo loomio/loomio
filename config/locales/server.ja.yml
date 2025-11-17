@@ -307,6 +307,7 @@ ja:
       view_group: ここでリクエストを承認または拒否できます
       button_text: リクエストの表示
     loomio_app_description: 組織が共同で意思決定を行う場所。
+    content_was_translated: このコンテンツは%{source_locale}から翻訳されました
   announcement_count_emails: "%{count} 件のメール"
   email_actions:
     unfollowed_discussion: スレッドの電子メールをオフにしました。
@@ -532,3 +533,58 @@ ja:
       subject: Loomioへのメッセージは配信されませんでした
       reason: これは、電子メール クライアントが、指定された「返信先」アドレスではなく、「送信元」アドレスにメッセージを送信したために発生しました。
       recommendation: ブラウザでLoomioを開いて、メッセージを直接投稿してください。
+  locale_names:
+    en: 英語
+    be-BY: ベラルーシ語
+    bg-BG: ブルガリア語
+    ca: カタルーニャ語
+    cs: チェコ語
+    zh-TW: 中国語（繁体字、台湾語）
+    da: デンマーク語
+    de: ドイツ語
+    es: スペイン語
+    eo: エスペラント
+    el: ギリシャ語
+    fr: フランス語
+    he: ヘブライ語
+    id: インドネシア語
+    it: イタリア語
+    hu: ハンガリー語
+    ja: 日本語
+    ko: 韓国語
+    ml: マラヤーラム語
+    nl-NL: オランダ語
+    pl: 研磨
+    pt-BR: ポルトガル語（ブラジル）
+    ro: ルーマニア語
+    sr: セルビア語（ラテン語）
+    sr-RS: セルビア語（キリル文字）
+    sk: スロバキア語
+    sv: スウェーデン語
+    vi: ベトナム語
+    tr: トルコ語
+    uk: ウクライナ語
+    an: アラゴン人
+    ar: アラビア語
+    cmn: 中国語（北京語）
+    hr: クロアチア語
+    it-CH: イタリア語（スイス）
+    fi: フィンランド語
+    gl: ガリシア語
+    ga-IE: ゲール語（アイルランド）
+    hi: いいえ
+    km: クメール語
+    lv: ラトビア語
+    mk: マケドニア語
+    mi: マオリ語
+    fa-IR: ペルシャ語（イラン）
+    pt-PT: ポルトガル語
+    ru: ロシア
+    sl: スロベニア語
+    te: テルグ語
+    ur: ウルドゥー語
+    ur-PK: ウルドゥー語（パキスタン）
+    be: ベラルーシ語
+    pt: ポルトガル語
+    zh: 中国語（繁体字、台湾語）
+    zh-HK: 中国語（繁体字、台湾語）

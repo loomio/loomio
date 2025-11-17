@@ -20,7 +20,7 @@ module EmailHelper
   # refuse to take formatted content
   def plain_text(model, field)
     if show_translation(model)
-      TranslationService.create(model: model, to: @recipient.locale).fields[field]
+      TranslationService.create(model: model, to: @recipient.locale).fields[String(field)]
     else
       model.send(field)
     end
@@ -35,7 +35,7 @@ module EmailHelper
 
     content = if show_translation(model)
       translation = TranslationService.create(model: model, to: @recipient.locale)
-      translation.fields[field]
+      translation.fields[String(field)]
     else
       content_format = 'md' if model.send("#{field}_format") == "md"
       model.send(field)

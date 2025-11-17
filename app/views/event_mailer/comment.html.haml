@@ -1,3 +1,4 @@
+= render "event_mailer/common/translation_notice", event: @event
 = render "event_mailer/common/notification", with_title: true, event: @event
 = render "event_mailer/common/body", eventable: @event.eventable
 = render "event_mailer/common/footer", event: @event

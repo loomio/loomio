@@ -16,4 +16,4 @@
               = render 'discussions/time_ago', time: comment.created_at
         .default-slot
           .lmo-markdown-wrapper.text-body-1.text--primary.thread-item__body.new-comment__body
-            = render_rich_text(comment.body, comment.body_format)
+            = formatted_text(comment, :body)

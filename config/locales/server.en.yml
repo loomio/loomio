@@ -1,5 +1,61 @@
 ---
 en:
+  locale_names:
+    en: English
+    "be-BY": Belarusian
+    "bg-BG": Bulgarian
+    ca: Catalan
+    cs: Czech
+    "zh-TW": Chinese (Traditional, Taiwan)
+    da: Danish
+    de: German
+    es: Spanish
+    eo: Esperanto
+    el: Greek
+    fr: French
+    he: Hebrew
+    id: Indonesian
+    it: Italian
+    hu: Hungarian
+    ja: Japanese
+    ko: Korean
+    ml: Malayalam
+    "nl-NL": Dutch
+    pl: Polish
+    "pt-BR": Portuguese (Brazil)
+    ro: Romanian
+    sr: Serbian (latin)
+    "sr-RS": Serbian (cyrillic)
+    sk: Slovak
+    sv: Swedish
+    vi: Vietnamese
+    tr: Turkish
+    uk: Ukranian
+    an: Aragonese
+    ar: Arabic
+    cmn: Chinese (Mandarin)
+    hr: Croatian
+    it-CH: Italian (Switzerland)
+    fi: Finnish
+    gl: Galician
+    'ga-IE': Gaelic (Ireland)
+    hi: Hindi
+    km: Khmer
+    lv: Latvian
+    mk: Macedonian
+    mi: Maori
+    'fa-IR': Persian (Iran)
+    'pt-PT': Portuguese
+    ru: Russian
+    sl: Slovenian
+    te: Telugu
+    ur: Urdu
+    ur-PK: Urdu (Pakistan)
+    be: Belarusian
+    pt: Portuguese
+    zh: Chinese (Traditional, Taiwan)
+    zh-HK: Chinese (Traditional, Taiwan)
+
   poll_templates:
     practice_proposal:
       title: I'm starting to get the hang of this
@@ -423,6 +479,7 @@ en:
           <p>The merge of your user accounts was successful. You will receive a confirmation email at <strong>%{target_email}</strong> shortly.</p>
           <p>Please <a href="/contact" target="_blank">contact us</a> if you have any further questions.</p>
   email:
+    content_was_translated: This content was translated from %{source_locale}
     common:
       or_enter_code: Or, enter the code below
       resend: This will expire in 24 hours and can only be used once

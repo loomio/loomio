@@ -338,6 +338,7 @@ de:
       view_group: Du kannst die Anfrage hier annehmen oder ablehnen
       button_text: Anfrage ansehen
     loomio_app_description: Ein Ort, an dem Organisationen gemeinsam Entscheidungen treffen können.
+    content_was_translated: Dieser Inhalt wurde aus %{source_locale} übersetzt.
   announcement_count_emails: "%{count} E-mails"
   email_actions:
     unfollowed_discussion: Du hast E-Mail-Benachrichtigungen für diese Diskussion deaktiviert.
@@ -564,3 +565,58 @@ de:
       subject: Ihre Nachricht an Loomio wurde nicht zugestellt.
       reason: Dies geschah, weil Ihr E-Mail-Client die Nachricht an die „Von“-Adresse und nicht an die angegebene „Antwort an“-Adresse adressiert hat.
       recommendation: Bitte öffnen Sie Loomio in Ihrem Browser und posten Sie Ihre Nachricht direkt.
+  locale_names:
+    en: Englisch
+    be-BY: Belarussisch
+    bg-BG: bulgarisch
+    ca: katalanisch
+    cs: tschechisch
+    zh-TW: Chinesisch (Traditionell, Taiwan)
+    da: dänisch
+    de: Deutsch
+    es: Spanisch
+    eo: Esperanto
+    el: griechisch
+    fr: Französisch
+    he: hebräisch
+    id: Indonesisch
+    it: Italienisch
+    hu: ungarisch
+    ja: japanisch
+    ko: Koreanisch
+    ml: Malayalam
+    nl-NL: Niederländisch
+    pl: Polieren
+    pt-BR: Portugiesisch (Brasilien)
+    ro: rumänisch
+    sr: Serbisch (lateinisch)
+    sr-RS: Serbisch (kyrillisch)
+    sk: slowakisch
+    sv: Schwedisch
+    vi: Vietnamesisch
+    tr: Türkisch
+    uk: Ukrainisch
+    an: Aragonesisch
+    ar: Arabisch
+    cmn: Chinesisch (Mandarin)
+    hr: kroatisch
+    it-CH: Italienisch (Schweiz)
+    fi: finnisch
+    gl: galizisch
+    ga-IE: Gälisch (Irland)
+    hi: NEIN
+    km: Khmer
+    lv: lettisch
+    mk: mazedonisch
+    mi: Maori
+    fa-IR: Persisch (Iran)
+    pt-PT: Portugiesisch
+    ru: Russisch
+    sl: Slowenisch
+    te: Telugu
+    ur: Urdu
+    ur-PK: Urdu (Pakistan)
+    be: Belarussisch
+    pt: Portugiesisch
+    zh: Chinesisch (Traditionell, Taiwan)
+    zh-HK: Chinesisch (Traditionell, Taiwan)

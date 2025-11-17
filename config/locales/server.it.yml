@@ -323,6 +323,7 @@ it:
       view_group: Puoi approvare o rifiutare la richiesta qui
       button_text: Visualizza richiesta
     loomio_app_description: Un luogo in cui le organizzazioni possono prendere decisioni insieme.
+    content_was_translated: Questo contenuto è stato tradotto da %{source_locale}
   announcement_count_emails: "%{count} email"
   email_actions:
     unfollowed_discussion: Hai disattivato le email per il thread.
@@ -543,3 +544,58 @@ it:
       subject: Il tuo messaggio a Loomio non è stato recapitato
       reason: Ciò è accaduto perché il tuo client di posta elettronica ha indirizzato il messaggio all'indirizzo "Da" anziché all'indirizzo "Rispondi a" fornito.
       recommendation: Apri Loomio nel tuo browser e pubblica direttamente il tuo messaggio.
+  locale_names:
+    en: Inglese
+    be-BY: bielorusso
+    bg-BG: bulgaro
+    ca: catalano
+    cs: ceco
+    zh-TW: Cinese (tradizionale, Taiwan)
+    da: danese
+    de: tedesco
+    es: spagnolo
+    eo: esperanto
+    el: greco
+    fr: francese
+    he: ebraico
+    id: indonesiano
+    it: Italiano
+    hu: ungherese
+    ja: giapponese
+    ko: coreano
+    ml: Malayalam
+    nl-NL: Olandese
+    pl: Polacco
+    pt-BR: portoghese (Brasile)
+    ro: rumeno
+    sr: serbo (latino)
+    sr-RS: serbo (cirillico)
+    sk: slovacco
+    sv: svedese
+    vi: vietnamita
+    tr: turco
+    uk: ucraino
+    an: aragonese
+    ar: arabo
+    cmn: Cinese (mandarino)
+    hr: croato
+    it-CH: Italiano (Svizzera)
+    fi: finlandese
+    gl: galiziano
+    ga-IE: Gaelico (Irlanda)
+    hi: 'NO'
+    km: Khmer
+    lv: lettone
+    mk: macedone
+    mi: Maori
+    fa-IR: Persiano (Iran)
+    pt-PT: portoghese
+    ru: russo
+    sl: sloveno
+    te: Telugu
+    ur: Urdu
+    ur-PK: Urdu (Pakistan)
+    be: bielorusso
+    pt: portoghese
+    zh: Cinese (tradizionale, Taiwan)
+    zh-HK: Cinese (tradizionale, Taiwan)
