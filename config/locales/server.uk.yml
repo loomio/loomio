@@ -325,6 +325,7 @@ uk:
       button_text: Переглянути запит
     loomio_app_description: Місце, де організації можуть спільно приймати рішення.
     content_was_translated: Цей контент було перекладено з %{source_locale}
+    content_was_translated_html: Цей контент було перекладено з %{source_locale}. <a href="%{profile_url}">Переглянути налаштування<a></a>
   announcement_count_emails: "%{count} листів"
   email_actions:
     unfollowed_discussion: Ви вимкнули сповіщення електронною поштою для цієї теми.

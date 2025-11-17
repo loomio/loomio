@@ -315,6 +315,7 @@ ca:
       button_text: Veure sol·licitud
     loomio_app_description: Un espai on les organitzacions puguin prendre decisions conjuntament.
     content_was_translated: Aquest contingut ha estat traduït de %{source_locale}
+    content_was_translated_html: Aquest contingut s'ha traduït de %{source_locale}. <a href="%{profile_url}">Veure la configuració<a></a>
   announcement_count_emails: "%{count} correus electrònics"
   email_actions:
     unfollowed_discussion: Heu desactivat els correus electrònics per al fil.

@@ -322,6 +322,7 @@ ru:
       button_text: Смотреть проьбу
     loomio_app_description: Место, где организации могут совместно принимать решения.
     content_was_translated: Этот контент был переведен с %{source_locale}
+    content_was_translated_html: Этот контент был переведён с языка %{source_locale}. <a href="%{profile_url}">Просмотр настроек.<a></a>
   announcement_count_emails: "%{count} писем"
   email_actions:
     unfollowed_discussion: Вы отключили письма этой ветки.

@@ -331,6 +331,7 @@ es:
       button_text: Ver solicitudes
     loomio_app_description: Un espacio para que las organizaciones tomen decisiones en conjunto.
     content_was_translated: Este contenido fue traducido de %{source_locale}
+    content_was_translated_html: Este contenido se tradujo de %{source_locale}. <a href="%{profile_url}">Ver configuración<a></a>
   announcement_count_emails: "%{count} email"
   email_actions:
     unfollowed_discussion: 'Has desactivado los emails para este hilo '

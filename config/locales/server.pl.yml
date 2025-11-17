@@ -338,6 +338,7 @@ pl:
       button_text: Wyświetl prośbę
     loomio_app_description: Miejsce, w którym organizacje mogą wspólnie podejmować decyzje.
     content_was_translated: Ta treść została przetłumaczona z %{source_locale}
+    content_was_translated_html: Ta treść została przetłumaczona z %{source_locale}. <a href="%{profile_url}">Wyświetl ustawienia<a></a>
   announcement_count_emails: "%{count} wiadomości e-mail"
   email_actions:
     unfollowed_discussion: Wyłączono wiadomości e-mail dla wątku.

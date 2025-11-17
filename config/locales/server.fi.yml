@@ -313,6 +313,7 @@ fi:
       button_text: Näytä pyyntö
     loomio_app_description: Paikka, jossa organisaatiot voivat tehdä yhdessä päätöksiä.
     content_was_translated: Tämä sisältö on käännetty lähdekoodista %{source_locale}
+    content_was_translated_html: Tämä sisältö on käännetty lähdekoodista %{source_locale}. <a href="%{profile_url}">Näytä asetukset<a></a>
   announcement_count_emails: "%{count} sähköpostia"
   email_actions:
     unfollowed_discussion: Olet poistanut sähköpostit käytöstä ketjussa.

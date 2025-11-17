@@ -312,6 +312,7 @@ sv:
       add_people: Lägg till folk
       zoom: Zoom
       align: Justera
+      original: Original
     formatting_help:
       label: Utformning
       title: Lär dig hur du använder Märkspråk för att formatera din text
@@ -1488,6 +1489,7 @@ sv:
     deactivate_account_subtitle: Stoppa e-postmeddelanden och avsluta medlemskap. Behåll din profil så att tidigare diskussioner och beslut inte påverkas.
     delete_account_subtitle: Ta bort ditt konto helt och hållet och ta bort ditt namn från tidigare diskussioner och beslut.
     updated_on_sign_in: Tillhandahålls av din webbläsare och uppdateras när du loggar in
+    translate_content_automatically: Översätt innehåll till mitt språk automatiskt
   text_editor:
     x_of_y_characters: "%{x} / %{y} tecken"
     select_text_to_link: Välj text att länka och försök igen
@@ -1553,6 +1555,7 @@ sv:
     mentioned_description: När någon {'@'}nämner dig i en kommentar får du ett e-postmeddelande
     daily_summary_description: Välj när du vill få sammanfattningsmejlet. Det här mejlet innehåller all ny aktivitet som du inte har sett. Ett bra sätt att hålla sig uppdaterad om du inte är en vanlig användare.
     never: Aldrig
+    send_email: Skicka e-post
   thread_preview:
     replies_count: "%{count} svar"
     unread_count: "%{count} olästa"

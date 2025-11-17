@@ -337,6 +337,7 @@ zh_TW:
       button_text: 檢視申請
     loomio_app_description: 一個供組織共同決策的平台。
     content_was_translated: 此內容由 %{source_locale} 翻譯而來
+    content_was_translated_html: 此內容由 %{source_locale} 翻譯而來。<a href="%{profile_url}">查看設定<a></a>
   announcement_count_emails: "%{count} 個電子郵件"
   email_actions:
     unfollowed_discussion: 您已經關閉了討論串的電子郵件。

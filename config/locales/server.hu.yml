@@ -323,6 +323,7 @@ hu:
       button_text: Kérés megtekintése
     loomio_app_description: Egy hely, ahol a szervezetek közösen hozhatnak döntéseket.
     content_was_translated: 'Ez a tartalom innen lett lefordítva: %{source_locale}'
+    content_was_translated_html: 'Ez a tartalom innen lett lefordítva: %{source_locale}. <a href="%{profile_url}">Beállítások megtekintése<a></a>'
   announcement_count_emails: "%{count} e-mail"
   email_actions:
     unfollowed_discussion: Kikapcsoltad a téma e-maileit.

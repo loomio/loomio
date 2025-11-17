@@ -339,6 +339,7 @@ de:
       button_text: Anfrage ansehen
     loomio_app_description: Ein Ort, an dem Organisationen gemeinsam Entscheidungen treffen können.
     content_was_translated: Dieser Inhalt wurde aus %{source_locale} übersetzt.
+    content_was_translated_html: Dieser Inhalt wurde aus %{source_locale} übersetzt. <a href="%{profile_url}">Einstellungen anzeigen<a></a>
   announcement_count_emails: "%{count} E-mails"
   email_actions:
     unfollowed_discussion: Du hast E-Mail-Benachrichtigungen für diese Diskussion deaktiviert.

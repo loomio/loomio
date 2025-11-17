@@ -308,6 +308,7 @@ ja:
       button_text: リクエストの表示
     loomio_app_description: 組織が共同で意思決定を行う場所。
     content_was_translated: このコンテンツは%{source_locale}から翻訳されました
+    content_was_translated_html: このコンテンツは%{source_locale}から翻訳されました。<a href="%{profile_url}">表示設定<a></a>
   announcement_count_emails: "%{count} 件のメール"
   email_actions:
     unfollowed_discussion: スレッドの電子メールをオフにしました。

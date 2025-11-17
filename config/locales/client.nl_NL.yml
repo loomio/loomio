@@ -312,6 +312,7 @@ nl_NL:
       add_people: Mensen toevoegen
       zoom: Zoom
       align: Uitlijnen
+      original: Origineel
     formatting_help:
       label: Aan het formatteren
       title: Leer hoe je Markdown kan gebruiken om tekst op te maken
@@ -1504,6 +1505,7 @@ nl_NL:
     deactivate_account_subtitle: Stop e-mails en zeg lidmaatschappen op. Bewaar uw profiel zodat eerdere discussies en beslissingen niet worden beïnvloed.
     delete_account_subtitle: Verwijder uw account volledig en verwijder uw naam uit eerdere discussies en beslissingen.
     updated_on_sign_in: Verstrekt door uw browser en bijgewerkt wanneer u zich aanmeldt
+    translate_content_automatically: Vertaal inhoud automatisch naar mijn taal
   text_editor:
     x_of_y_characters: "%{x} / %{y} tekens"
     select_text_to_link: Selecteer tekst om te linken en probeer het opnieuw
@@ -1569,6 +1571,7 @@ nl_NL:
     mentioned_description: Wanneer iemand jou in een reactie vermeldt, ontvang je een e-mailmelding
     daily_summary_description: Kies wanneer je de e-mail met het overzicht wilt ontvangen. Deze e-mail bevat alle nieuwe activiteiten die je nog niet hebt gezien. Een goede manier om op de hoogte te blijven als je geen vaste gebruiker bent.
     never: Nooit
+    send_email: E-mail verzenden
   thread_preview:
     replies_count: "%{count} antwoorden"
     unread_count: "%{count} ongelezen"

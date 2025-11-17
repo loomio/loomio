@@ -312,6 +312,7 @@ ca:
       add_people: Afegeix persones
       zoom: Zoom
       align: Alinear
+      original: Original
     formatting_help:
       label: Formatació
       title: Aprèn a escriure el text en format Markdown
@@ -1504,6 +1505,7 @@ ca:
     deactivate_account_subtitle: Atura els correus electrònics i cancel·la les subscripcions. Mantingueu el vostre perfil perquè les discussions i decisions anteriors no es vegin afectades.
     delete_account_subtitle: Suprimeix completament el teu compte i elimina el teu nom de discussions i decisions anteriors.
     updated_on_sign_in: Proporcionat pel vostre navegador i actualitzat quan inicieu la sessió
+    translate_content_automatically: Tradueix el contingut al meu idioma automàticament
   text_editor:
     x_of_y_characters: "%{x} / %{y} caràcters"
     select_text_to_link: Seleccioneu el text per enllaçar i torneu-ho a provar
@@ -1569,6 +1571,7 @@ ca:
     mentioned_description: Quan algú et mencioni {'@'} en un comentari, rebràs una notificació per correu electrònic.
     daily_summary_description: Trieu quan voleu rebre el correu electrònic de resum de posada al dia. Aquest correu electrònic conté qualsevol activitat nova que no hàgiu vist. Una bona manera de mantenir-vos al dia si no sou un usuari habitual.
     never: Mai
+    send_email: Enviar correu electrònic
   thread_preview:
     replies_count: "%{count} respostes"
     unread_count: "%{count} sense llegir"

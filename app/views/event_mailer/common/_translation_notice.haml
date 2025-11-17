@@ -1,2 +1,2 @@
 - if show_translation(event.eventable)
-  %p.py-1= t(:'email.content_was_translated', source_locale: t(:"locale_names.#{event.eventable.content_locale}"))
+  %p.py-1=raw t(:'email.content_was_translated_html', profile_url: profile_url, source_locale: t(:"locale_names.#{event.eventable.content_locale}"))

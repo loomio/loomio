@@ -338,6 +338,7 @@ nl_NL:
       button_text: Verzoek bekijken
     loomio_app_description: Een plek waar organisaties samen beslissingen kunnen nemen.
     content_was_translated: Deze inhoud is vertaald vanuit %{source_locale}
+    content_was_translated_html: Deze content is vertaald vanuit %{source_locale}. <a href="%{profile_url}">Bekijk instellingen<a></a>
   announcement_count_emails: "%{count} e-mails"
   email_actions:
     unfollowed_discussion: Je hebt de e-mails voor het bord afgezet.

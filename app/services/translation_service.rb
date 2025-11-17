@@ -5,27 +5,89 @@ class TranslationService
 
   GOOGLE_LOCALES = %w[af sq am ar hy as ay az bm eu be bn bho bs bg ca ceb zh-CN zh zh-TW co hr cs da dv doi nl en eo et ee fil fi fr fy gl ka de el gn gu ht ha haw he iw hi hmn hu is ig ilo id ga it ja jv jw kn kk km rw gom ko kri ku ckb ky lo la lv ln lt lg lb mk mai mg ms ml mt mi mr mni-Mtei lus mn my ne no ny or om ps fa pl pt pa qu ro ru sm sa gd nso sr st sn sd si sk sl so es su sw sv tl tg ta tt te th ti ts tr tk ak uk ur ug uz vi cy xh yi yo zu]
 
+  KNOWN_I18N_LABEL_KEYS = %w[
+    poll_proposal_options.*
+    poll_count_options.*
+    poll_templates.*
+    discussion_templates.*
+  ]
+
+  def self.flatten_i18n_keys(obj, prefix)
+    case obj
+    when Hash
+      obj.flat_map { |k, v| flatten_i18n_keys(v, "#{prefix}.#{k}") }
+    else
+      [prefix]
+    end
+  end
+
+  def self.expand_known_i18n_keys(locale)
+    base_locale = locale.to_s.split(/[-_]/).first.presence || 'en'
+    KNOWN_I18N_LABEL_KEYS.flat_map do |pattern|
+      if pattern.include?('*')
+        scope = pattern.sub(/\.?\*+$/, '')
+        base = I18n.t(scope, locale: base_locale, default: {})
+        if base.is_a?(Hash)
+          flatten_i18n_keys(base, scope)
+        else
+          []
+        end
+      else
+        [pattern]
+      end
+    end.uniq
+  end
+
   def self.locale_for_google(locale)
     locale = locale.to_s.downcase.gsub("_", "-")
     return locale if GOOGLE_LOCALES.include?(locale)
     locale.split("-")[0]
   end
 
+  def self.find_i18n_translation(value, from:, to:)
+    return nil if value.blank?
+    val = value.to_s.strip
+    from_locale = from.to_s.split(/[-_]/).first.presence || 'en'
+    to_locale = to.to_s.split(/[-_]/).first.presence || 'en'
+
+    expand_known_i18n_keys(from_locale).each do |key|
+      from_text = I18n.t(key, locale: from_locale, default: nil)
+      next if from_text.blank? || from_text.is_a?(Hash)
+      if from_text.to_s.strip == val
+        to_text = I18n.t(key, locale: to_locale, default: nil)
+        return to_text if to_text.present? && !to_text.is_a?(Hash)
+      end
+    end
+
+    nil
+  end
+
   def self.translated_fields_for(model, to:)
     service = Google::Cloud::Translate.translation_v2_service
     fields = {}
+    from_locale = if model.respond_to?(:content_locale) && model.content_locale.present?
+      model.content_locale
+    else
+      I18n.locale.to_s
+    end
 
     model.class.translatable_fields.each do |field|
-      value = model.send(field)
+      content = model.send(field)
 
-      if value.blank?
+      translate_options = { to: to, format: :text }
+
+      if content.blank?
         fields[field.to_s] = nil
         next
       end
 
+      if (known = find_i18n_translation(content, from: from_locale, to: to))
+        puts "using local translation: #{from_locale} #{content} #{to} #{known}"
+        fields[field.to_s] = known
+        next
+      end
+
       format_field = "#{field}_format"
-      content = value
-      translate_options = { to: to, format: :text }
 
       if model.respond_to?(format_field)
         translate_options[:format] = :html
@@ -35,6 +97,7 @@ class TranslationService
       end
 
       fields[field.to_s] = service.translate(content, **translate_options)
+      puts "using google translation: #{from_locale} #{content} #{to} #{fields[field.to_s]}"
     end
 
     fields

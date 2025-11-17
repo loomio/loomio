@@ -319,6 +319,7 @@ da:
       button_text: Vis anmodning
     loomio_app_description: Et sted, hvor organisationer kan træffe beslutninger i fællesskab.
     content_was_translated: Dette indhold blev oversat fra %{source_locale}
+    content_was_translated_html: Dette indhold blev oversat fra %{source_locale}. <a href="%{profile_url}">Se indstillinger<a></a>
   announcement_count_emails: "%{count} e-mails"
   email_actions:
     unfollowed_discussion: Du har slået e-mails fra for tråden.

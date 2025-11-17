@@ -312,6 +312,7 @@ tr:
       add_people: Kişileri ekle
       zoom: Yakınlaştır
       align: Hizala
+      original: Orijinal
     formatting_help:
       label: Biçimlendirme
       title: Metninizi biçimlendirmek için Markdown'u nasıl kullanacağınızı öğrenin
@@ -1488,6 +1489,7 @@ tr:
     deactivate_account_subtitle: E-postaları durdurun ve üyelikleri iptal edin. Geçmişteki tartışmaların ve kararların etkilenmemesi için profilinizi koruyun.
     delete_account_subtitle: Hesabınızı tamamen silin ve adınızı geçmiş tartışmalardan ve kararlardan çıkarın.
     updated_on_sign_in: Tarayıcınız tarafından sağlanır ve oturum açtığınızda güncellenir
+    translate_content_automatically: İçeriği otomatik olarak dilime çevir
   text_editor:
     x_of_y_characters: "%{x} / %{y} karakter"
     select_text_to_link: Bağlanacak metni seçin ve tekrar deneyin
@@ -1553,6 +1555,7 @@ tr:
     mentioned_description: Birisi {'@'} bir yorumda sizden bahsettiğinde, bir bildirim e-postası alacaksınız
     daily_summary_description: Güncel bilgiler içeren özet e-postayı ne zaman almak istediğinizi seçin. Bu e-posta, daha önce görmediğiniz yeni etkinlikleri içerir. Düzenli bir kullanıcı değilseniz, güncel kalmanın iyi bir yoludur.
     never: Asla
+    send_email: E-posta gönder
   thread_preview:
     replies_count: "%{count} yanıt"
     unread_count: "%{count} okunmamış"

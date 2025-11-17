@@ -320,6 +320,7 @@ fr:
       add_people: Ajouter des personnes
       zoom: Zoom
       align: Alignement
+      original: Original
     formatting_help:
       label: Mise en forme
       title: Apprenez à utiliser Markdown pour mettre en forme votre texte
@@ -1525,6 +1526,7 @@ fr:
     deactivate_account_subtitle: Arrêtez les e-mails et annulez les adhésions. Conservez votre profil afin que les discussions et décisions passées ne soient pas affectées.
     delete_account_subtitle: Supprimez complètement votre compte et supprimez votre nom des discussions et décisions passées.
     updated_on_sign_in: Fourni par votre navigateur et mis à jour lorsque vous vous connectez
+    translate_content_automatically: Traduire automatiquement le contenu dans ma langue
   text_editor:
     x_of_y_characters: "%{x} / %{y} caractères"
     select_text_to_link: Sélectionnez le texte à lier et réessayez
@@ -1590,6 +1592,7 @@ fr:
     mentioned_description: Lorsque quelqu'un {'@'}vous mentionne dans un commentaire, vous recevrez un e-mail de notification
     daily_summary_description: Choisissez quand recevoir l'e-mail récapitulatif de rattrapage. Cet e-mail contient toutes les nouvelles activités que vous n'avez pas encore vues. C'est un excellent moyen de rester informé si vous n'êtes pas un utilisateur régulier.
     never: Jamais
+    send_email: Envoyer un courriel
   thread_preview:
     replies_count: "%{count} réponses"
     unread_count: "%{count}non lus"

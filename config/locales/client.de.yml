@@ -318,6 +318,7 @@ de:
       add_people: Leute hinzufügen
       zoom: Zoom
       align: Ausrichten
+      original: Original
     formatting_help:
       label: Markdown-Formatierung
       title: Mehr über die Textformatierung mit Markdown lernen
@@ -1512,6 +1513,7 @@ de:
     deactivate_account_subtitle: Stoppen Sie E-Mails und kündigen Sie Mitgliedschaften. Behalten Sie Ihr Profil bei, damit vergangene Diskussionen und Entscheidungen nicht beeinträchtigt werden.
     delete_account_subtitle: Löschen Sie Ihr Konto vollständig und entfernen Sie Ihren Namen aus früheren Diskussionen und Entscheidungen.
     updated_on_sign_in: Wird von Ihrem Browser bereitgestellt und aktualisiert, wenn Sie sich anmelden
+    translate_content_automatically: Inhalte automatisch in meine Sprache übersetzen
   text_editor:
     x_of_y_characters: "%{x} / %{y} Zeichen"
     select_text_to_link: Wählen Sie den zu verlinkenden Text aus und versuchen Sie es erneut
@@ -1577,6 +1579,7 @@ de:
     mentioned_description: Wenn jemand Sie in einem Kommentar {'@'}erwähnt, erhalten Sie eine Benachrichtigungs-E-Mail
     daily_summary_description: Wählen Sie, wann Sie die E-Mail mit der Zusammenfassung erhalten möchten. Diese E-Mail enthält alle neuen Aktivitäten, die Sie noch nicht gesehen haben. Eine gute Möglichkeit, auf dem Laufenden zu bleiben, wenn Sie kein regelmäßiger Benutzer sind.
     never: Niemals
+    send_email: E-Mail senden
   thread_preview:
     replies_count: "%{count} Antworten"
     unread_count: "%{count} ungelesen"

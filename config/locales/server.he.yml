@@ -323,6 +323,7 @@ he:
       button_text: צפה בבקשה
     loomio_app_description: מקום בו ארגונים יכולים לקבל החלטות יחד.
     content_was_translated: תוכן זה תורגם מ-%{source_locale}
+    content_was_translated_html: תוכן זה תורגם מ-%{source_locale}. <a href="%{profile_url}">הצג הגדרות<a></a>
   announcement_count_emails: "%{count} מיילים"
   email_actions:
     unfollowed_discussion: השבתת הודעות אימייל עבור השיחה הזו.

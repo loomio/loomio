@@ -320,6 +320,7 @@ it:
       add_people: Aggiungi Persone
       zoom: Zoom
       align: Allinea
+      original: Originale
     formatting_help:
       label: Formattazione
       title: Impara come usare il Markdown per formattare il tuo testo
@@ -1516,6 +1517,7 @@ it:
     deactivate_account_subtitle: Interrompi le e-mail e annulla gli abbonamenti. Mantieni il tuo profilo in modo che le discussioni e le decisioni passate non vengano influenzate.
     delete_account_subtitle: Elimina completamente il tuo account e rimuovi il tuo nome dalle discussioni e decisioni passate.
     updated_on_sign_in: Fornito dal tuo browser e aggiornato quando accedi
+    translate_content_automatically: Traduci automaticamente il contenuto nella mia lingua
   text_editor:
     x_of_y_characters: "%{x} / %{y} caratteri"
     select_text_to_link: Seleziona il testo da collegare e riprova
@@ -1581,6 +1583,7 @@ it:
     mentioned_description: Quando qualcuno {'@'} ti menziona in un commento, riceverai un'email di notifica
     daily_summary_description: Scegli quando ricevere l'email di riepilogo. Questa email contiene tutte le nuove attività che non hai ancora visto. Un buon modo per rimanere aggiornato se non sei un utente abituale.
     never: Mai
+    send_email: Invia email
   thread_preview:
     replies_count: "%{count} repliche"
     unread_count: "%{count} non letti"
