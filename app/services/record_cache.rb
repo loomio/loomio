@@ -131,9 +131,9 @@ class RecordCache
     add_polls_options_stances_outcomes Poll.where(id: ids[:poll])
     add_discussions Discussion.where(id: ids[:discussion])
 
-    add_events_eventables   Event.includes(:eventable).where(id: self.class.ids_and_parent_ids(Event, collection.map(&:id)))
+    add_events_eventables Event.includes(:eventable).where(id: self.class.ids_and_parent_ids(Event, collection.map(&:id)))
     add_groups_subscriptions_memberships Group.with_attached_logo.with_attached_cover_photo.includes(:subscription).where(id: ids[:group])
-    add_comments            Comment.where(id: ids[:comment])
+    add_comments Comment.where(id: ids[:comment])
     # obj.add_reactions           Reaction.where(id: ids[:reaction])
     # obj.add_group_subscriptions Group.includes(:subscription).where(id: ids[:group])
     # obj.add_events              Event.where(kind: 'discussion_forked', eventable_id: @ids[:discussion])
@@ -153,19 +153,15 @@ class RecordCache
   # remember to join subscriptions for this call
   def add_groups_subscriptions_memberships(collection)
     return [] if exclude_types.include?('group')
-    group_ids = add_groups(collection)
-    add_memberships(Membership.active.where(group_id: group_ids, user_id: current_user_id), group_ids)
-    add_subscriptions(collection)
+    add_groups collection
+    add_memberships Membership.active.where(group_id: group_ids, user_id: current_user_id)
+    add_subscriptions collection
   end
 
   def add_groups(collection)
     return [] if exclude_types.include?('group')
-    scope[:groups_by_id] ||= {}
-    collection.map do |group|
-      @user_ids.push group.creator_id
-      scope[:groups_by_id][group.id] = group
-      group.id
-    end
+    @user_ids.concat collection.map(&:creator_id)
+    scope[:groups_by_id] = collection.index_by(&:id)
   end
 
   # this is a colleciton of groups joined to subscription.. crazy I know
@@ -177,7 +173,7 @@ class RecordCache
     end
   end
 
-  def add_memberships(collection, group_ids)
+  def add_memberships(collection)
     return if exclude_types.include?('membership')
     scope[:memberships_by_group_id] ||= {}
     scope[:memberships_by_id] ||= {}
