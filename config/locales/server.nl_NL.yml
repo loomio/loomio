@@ -337,6 +337,8 @@ nl_NL:
       view_group: Je kan hier de aanvraag goed- of afkeuren
       button_text: Verzoek bekijken
     loomio_app_description: Een plek waar organisaties samen beslissingen kunnen nemen.
+    content_was_translated: Deze inhoud is vertaald vanuit %{source_locale}
+    content_was_translated_html: Deze content is vertaald vanuit %{source_locale}. <a href="%{profile_url}">Bekijk instellingen<a></a>
   announcement_count_emails: "%{count} e-mails"
   email_actions:
     unfollowed_discussion: Je hebt de e-mails voor het bord afgezet.
@@ -559,3 +561,58 @@ nl_NL:
       subject: Uw bericht aan Loomio is niet afgeleverd
       reason: Dit gebeurde omdat uw e-mailclient het bericht naar het 'Van'-adres had geadresseerd in plaats van het opgegeven 'Beantwoorden aan'-adres.
       recommendation: Open Loomio in uw browser en plaats uw bericht direct.
+  locale_names:
+    en: Engels
+    be-BY: Wit-Russisch
+    bg-BG: Bulgaars
+    ca: Catalaans
+    cs: Tsjechisch
+    zh-TW: Chinees (Traditioneel, Taiwan)
+    da: Deens
+    de: Duits
+    es: Spaans
+    eo: Esperanto
+    el: Grieks
+    fr: Frans
+    he: Hebreeuws
+    id: Indonesisch
+    it: Italiaans
+    hu: Hongaars
+    ja: Japanse
+    ko: Koreaans
+    ml: Malayalam
+    nl-NL: Nederlands
+    pl: Pools
+    pt-BR: Portugees (Brazilië)
+    ro: Roemeense
+    sr: Servisch (Latijn)
+    sr-RS: Servisch (cyrillisch)
+    sk: Slowaaks
+    sv: Zweeds
+    vi: Vietnamees
+    tr: Turks
+    uk: Oekraïens
+    an: Aragonees
+    ar: Arabisch
+    cmn: Chinees (Mandarijn)
+    hr: Kroatisch
+    it-CH: Italiaans (Zwitserland)
+    fi: Fins
+    gl: Galicisch
+    ga-IE: Gaelic (Ierland)
+    hi: Nee
+    km: Khmer
+    lv: Lets
+    mk: Macedonisch
+    mi: Maori
+    fa-IR: Perzisch (Iran)
+    pt-PT: Portugees
+    ru: Russisch
+    sl: Sloveens
+    te: Telugu
+    ur: Urdu
+    ur-PK: Urdu (Pakistan)
+    be: Wit-Russisch
+    pt: Portugees
+    zh: Chinees (Traditioneel, Taiwan)
+    zh-HK: Chinees (Traditioneel, Taiwan)

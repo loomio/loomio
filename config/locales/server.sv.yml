@@ -312,6 +312,8 @@ sv:
       view_group: Du kan godkänna eller avslå begäran här
       button_text: Visa begäran
     loomio_app_description: En plats där organisationer kan fatta beslut tillsammans.
+    content_was_translated: Detta innehåll översattes från %{source_locale}
+    content_was_translated_html: Detta innehåll översattes från %{source_locale}. <a href="%{profile_url}">Visa inställningar<a></a>
   announcement_count_emails: "%{count} e-postmeddelanden"
   email_actions:
     unfollowed_discussion: Du har stängt av e-post för tråden.
@@ -532,3 +534,58 @@ sv:
       subject: Ditt meddelande till Loomio levererades inte
       reason: Detta hände eftersom din e-postklient adresserade meddelandet till "Från"-adressen snarare än den angivna "Svara till"-adressen.
       recommendation: Öppna Loomio i din webbläsare och skicka ditt meddelande direkt.
+  locale_names:
+    en: Engelska
+    be-BY: vitryska
+    bg-BG: Bulgariska
+    ca: Katalanska
+    cs: tjeckiska
+    zh-TW: Kinesiska (traditionell, Taiwan)
+    da: Danska
+    de: Tyska
+    es: Spanska
+    eo: Esperanto
+    el: Grekiska
+    fr: franska
+    he: Hebreiska
+    id: Indonesiska
+    it: Italienska
+    hu: Ungerska
+    ja: japanska
+    ko: Koreanska
+    ml: malayalam
+    nl-NL: holländska
+    pl: Polska
+    pt-BR: Portugisiska (Brasilien)
+    ro: Rumänska
+    sr: Serbiska (latin)
+    sr-RS: Serbiska (kyrilliska)
+    sk: Slovakiska
+    sv: Svenska
+    vi: Vietnamesiska
+    tr: turkiska
+    uk: ukrainska
+    an: Aragonesiska
+    ar: Arabiska
+    cmn: Kinesiska (mandarin)
+    hr: Kroatisk
+    it-CH: Italienska (Schweiz)
+    fi: finska
+    gl: galiciska
+    ga-IE: Gaeliska (Irland)
+    hi: Inga
+    km: Khmer
+    lv: lettiska
+    mk: Makedonska
+    mi: Maori
+    fa-IR: Persiska (Iran)
+    pt-PT: Portugisiska
+    ru: Ryska
+    sl: Slovenska
+    te: Telugu
+    ur: Urdu
+    ur-PK: Urdu (Pakistan)
+    be: vitryska
+    pt: Portugisiska
+    zh: Kinesiska (traditionell, Taiwan)
+    zh-HK: Kinesiska (traditionell, Taiwan)

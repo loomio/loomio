@@ -312,6 +312,8 @@ sl:
       view_group: Prošnjo lahko odobriš ali zavrneš tukaj
       button_text: Ogled zahteve
     loomio_app_description: Kraj, kjer lahko organizacije skupaj sprejemajo odločitve.
+    content_was_translated: Ta vsebina je bila prevedena iz %{source_locale}
+    content_was_translated_html: Ta vsebina je bila prevedena iz %{source_locale}. <a href="%{profile_url}">Ogled nastavitev<a></a>
   announcement_count_emails: "%{count} e-poštnih sporočil"
   email_actions:
     unfollowed_discussion: Izklopili ste e-pošto za nit.
@@ -532,3 +534,58 @@ sl:
       subject: Vaše sporočilo Loomiu ni bilo dostavljeno
       reason: Do tega je prišlo, ker je vaš e-poštni odjemalec sporočilo naslovil na naslov »Od« in ne na navedeni naslov »Odgovori«.
       recommendation: Prosimo, odprite Loomio v brskalniku in objavite svoje sporočilo neposredno.
+  locale_names:
+    en: Angleščina
+    be-BY: Beloruščina
+    bg-BG: Bolgarščina
+    ca: Katalonski
+    cs: Češka
+    zh-TW: kitajščina (tradicionalna, tajvanska)
+    da: Danščina
+    de: Nemščina
+    es: Španščina
+    eo: Esperanto
+    el: Grščina
+    fr: Francoščina
+    he: Hebrejščina
+    id: Indonezijščina
+    it: Italijanščina
+    hu: madžarščina
+    ja: Japonščina
+    ko: Korejščina
+    ml: Malajalamščina
+    nl-NL: Nizozemščina
+    pl: poljščina
+    pt-BR: Portugalščina (Brazilija)
+    ro: Romunščina
+    sr: Srbščina (latinica)
+    sr-RS: Srbščina (cirilica)
+    sk: Slovaščina
+    sv: švedščina
+    vi: Vietnamščina
+    tr: turščina
+    uk: Ukrajinec
+    an: Aragonščina
+    ar: arabščina
+    cmn: kitajščina (mandarinščina)
+    hr: hrvaščina
+    it-CH: Italijanščina (Švica)
+    fi: Finski
+    gl: galicijščina
+    ga-IE: gelščina (Irska)
+    hi: Ne
+    km: Kmerščina
+    lv: Latvijščina
+    mk: Makedonščina
+    mi: Maori
+    fa-IR: perzijščina (Iran)
+    pt-PT: Portugalščina
+    ru: Ruščina
+    sl: slovenščina
+    te: Telugu
+    ur: Urdujščina
+    ur-PK: Urdujščina (Pakistan)
+    be: Beloruščina
+    pt: Portugalščina
+    zh: kitajščina (tradicionalna, tajvanska)
+    zh-HK: kitajščina (tradicionalna, tajvanska)

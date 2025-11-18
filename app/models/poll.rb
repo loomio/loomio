@@ -366,14 +366,14 @@ class Poll < ApplicationRecord
   end
 
   def show_results?(voted: false)
-    !! case hide_results
-    when 'until_closed'
-      closed_at
-    when 'until_vote'
-      closed_at || voted
-    else
-      true
-    end
+    !!case hide_results
+      when 'until_closed'
+        closed_at
+      when 'until_vote'
+        closed_at || voted
+      else
+        true
+      end
   end
 
   # this should not be run on anonymous polls

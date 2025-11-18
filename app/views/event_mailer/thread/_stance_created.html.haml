@@ -10,4 +10,4 @@
     %td= participant.name
     %td= render "event_mailer/poll/stance_choices", stance: stance, poll: stance.poll
 
-%p= render_rich_text(stance.reason, stance.reason_format)
+%p= formatted_text(stance, :reason)

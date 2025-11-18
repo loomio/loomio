@@ -28,7 +28,7 @@
                 %span
                   = render 'discussions/time_ago', time: poll.current_outcome.created_at
               .lmo-markdown-wrapper.text-body-1.pb-1
-                %p= render_rich_text(poll.current_outcome.statement, poll.current_outcome.statement_format)
+                %p= formatted_text(poll.current_outcome, :statement)
         .lmo-markdown-wrapper.text-body-1.poll-common-details-panel__details.pb-1
-          %p= render_rich_text(poll.details, poll.details_format)
+          %p= formatted_text(poll, :details)
         = render "event_mailer/poll/results", poll: poll

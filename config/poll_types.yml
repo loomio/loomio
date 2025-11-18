@@ -149,7 +149,7 @@ proposal:
       name_i18n: poll_templates.consensus.block
       icon: block
       meaning_i18n: poll_templates.consensus.block_meaning
-      prompt_i18n: poll_templates.consensus.block_placeholder
+      prompt_i18n: poll_templates.consensus.block_prompt
       color: "#999FDE"
     - key: veto
       name_i18n: poll_templates.gradients_of_agreement.veto

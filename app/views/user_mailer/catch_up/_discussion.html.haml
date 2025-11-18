@@ -1,9 +1,9 @@
 .light-discussion{id: discussion.key}
-  %h2= link_to(discussion.title, discussion_url(discussion))
+  %h2= link_to(plain_text(discussion, :title), discussion_url(discussion))
   - if discussion.created_at >= @time_start
     %p
       %em by #{discussion.author.name}
-    .description= render_rich_text(discussion.description, discussion.description_format)
+    .description= formatted_text(discussion, :description)
 
   - discussion.polls.active_or_closed_after(@time_start).each do |poll|
     = render "event_mailer/common/title", eventable: poll
@@ -13,7 +13,7 @@
     = render "event_mailer/poll/results", poll: poll
 
   .activity-feed
-    - reader = @cache.fetch(:discussion_readers_by_discussion_id, discussion.id) { DiscussionReader.for(user: @recipient, discussion: discussion) }
+    - reader = @cache.fetch(:discussion_readers_by_discussion_id, discussion.id) || DiscussionReader.for(user: @recipient, discussion: discussion)
     - since = [reader.last_read_at, @time_start].compact.max
     - discussion.items.where('created_at > ?', since).order('created_at').each do |item|
       - next unless ['new_comment', 'new_vote', 'stance_created', 'discussion_closed', 'discussion_edited', 'poll_edited'].include? item.kind

@@ -41,7 +41,7 @@ v-list.ma-0.pa-0.pb-2(v-if="mine.length || more.length || canStartSubgroup" nav 
 
     v-list-item(v-for="group in mine" nav slim :to="urlFor(group)")
       v-list-item-title
-        span {{group.name}}
+        plain-text(:model="group" field="name")
         template(v-if='openCounts[group.id]')
           | &nbsp;
           span ({{openCounts[group.id]}})
@@ -53,7 +53,7 @@ v-list.ma-0.pa-0.pb-2(v-if="mine.length || more.length || canStartSubgroup" nav 
 
     v-list-item(v-for="group in more" nav slim :to="urlFor(group)")
       v-list-item-title
-        span {{group.name}}
+        plain-text(:model="group" field="name")
         template(v-if='openCounts[group.id]')
           | &nbsp;
           span ({{openCounts[group.id]}})

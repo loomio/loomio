@@ -37,12 +37,24 @@ export default new class GroupService {
       translate_group: {
         name: 'common.action.translate',
         icon: 'mdi-translate',
-        dock: 2,
+        dock: 3,
         canPerform() {
-          return group.description && AbilityService.canTranslate(group);
+          return AbilityService.canTranslate(group);
         },
         perform() {
-          return Session.user() && group.translate(Session.user().locale);
+          return Records.translations.addTo(group, Session.user().locale)
+        }
+      },
+
+      untranslate_group: {
+        name: 'common.action.original',
+        icon: 'mdi-translate',
+        dock: 3,
+        canPerform() {
+          return AbilityService.canUntranslate(group);
+        },
+        perform() {
+          group.translationId = null;
         }
       },
 

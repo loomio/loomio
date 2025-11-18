@@ -14,6 +14,8 @@ class PollOption < ApplicationRecord
   normalizes :test_percent, with: ->(v) { v.nil? ? nil : [ [ v, 0 ].max, 100 ].min }
   validates :test_against, inclusion: { in: [ 'score_percent', 'voter_percent' ] }, allow_nil: true
 
+  delegate :content_locale, to: :poll
+
   def update_counts!
     update_columns(
       voter_scores: poll.anonymous ? {} : stance_choices.latest.where('stances.participant_id is not null').includes(:stance).map { |c| [ c.stance.participant_id, c.score ] }.to_h,

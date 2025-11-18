@@ -312,6 +312,8 @@ fi:
       view_group: Voit hyväksyä tai hylätä pyynnön täällä
       button_text: Näytä pyyntö
     loomio_app_description: Paikka, jossa organisaatiot voivat tehdä yhdessä päätöksiä.
+    content_was_translated: Tämä sisältö on käännetty lähdekoodista %{source_locale}
+    content_was_translated_html: Tämä sisältö on käännetty lähdekoodista %{source_locale}. <a href="%{profile_url}">Näytä asetukset<a></a>
   announcement_count_emails: "%{count} sähköpostia"
   email_actions:
     unfollowed_discussion: Olet poistanut sähköpostit käytöstä ketjussa.
@@ -532,3 +534,58 @@ fi:
       subject: Viestiäsi Loomiolle ei toimitettu
       reason: Tämä tapahtui, koska sähköpostiohjelmasi osoitti viestin lähettäjäosoitteeseen eikä annettuun vastausosoitteeseen.
       recommendation: Avaa Loomio selaimessasi ja lähetä viestisi suoraan.
+  locale_names:
+    en: englanti
+    be-BY: Valko-Venäjän
+    bg-BG: Bulgaria
+    ca: katalaani
+    cs: tšekki
+    zh-TW: Kiina (perinteinen, Taiwan)
+    da: tanskalainen
+    de: saksa
+    es: espanjaa
+    eo: Esperanto
+    el: kreikkalainen
+    fr: ranskalainen
+    he: heprealainen
+    id: Indonesia
+    it: italialainen
+    hu: Unkari
+    ja: Japani
+    ko: Korealainen
+    ml: malajalam
+    nl-NL: hollantilainen
+    pl: Kiillottaa
+    pt-BR: portugali (Brasilia)
+    ro: Romania
+    sr: Serbia (latina)
+    sr-RS: Serbia (kyrillinen)
+    sk: Slovakian
+    sv: ruotsalainen
+    vi: vietnam
+    tr: Turkki
+    uk: ukrainalainen
+    an: Aragonian
+    ar: arabia
+    cmn: kiina (mandariini)
+    hr: Kroatia
+    it-CH: Italia (Sveitsi)
+    fi: suomi
+    gl: Galicialainen
+    ga-IE: gaeli (Irlanti)
+    hi: Ei
+    km: Khmer
+    lv: Latvia
+    mk: makedonialainen
+    mi: Maori
+    fa-IR: Persialainen (Iran)
+    pt-PT: portugali
+    ru: venäjä
+    sl: Slovenia
+    te: telugu
+    ur: urdu
+    ur-PK: Urdu (Pakistan)
+    be: Valko-Venäjän
+    pt: portugali
+    zh: Kiina (perinteinen, Taiwan)
+    zh-HK: Kiina (perinteinen, Taiwan)

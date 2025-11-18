@@ -32,7 +32,7 @@
                   %span{"aria-hidden" => "true"} ·
                   %span.context-panel__seen_by_count= t(:'thread_context.seen_by_count', count: @discussion.seen_by_count)
             .lmo-markdown-wrapper.text-body-1.text--primary.context-panel__description
-              = render_rich_text(@discussion.body, @discussion.body_format)
+              = formatted_text(@discussion, :body)
         .activity-panel
           - items = @discussion.items.includes(:eventable, :user).order("position_key #{@discussion.newest_first ? 'desc' : 'asc'}").where(kind: ['new_comment', 'poll_created', 'stance_created', 'stance_updated'])
           - items.limit(@pagination[:limit]).offset(@pagination[:offset]).each do |item|

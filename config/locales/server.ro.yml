@@ -312,6 +312,8 @@ ro:
       view_group: Aici poti aproba sau nu cererea
       button_text: Vizualizeaza cerere
     loomio_app_description: Un loc în care organizațiile pot lua decizii împreună.
+    content_was_translated: Acest conținut a fost tradus din %{source_locale}
+    content_was_translated_html: Acest conținut a fost tradus din %{source_locale}. <a href="%{profile_url}">Vizualizați setările<a></a>
   announcement_count_emails: "%{count} e-mailuri"
   email_actions:
     unfollowed_discussion: Ați dezactivat e-mailurile pentru fir.
@@ -532,3 +534,58 @@ ro:
       subject: Mesajul tău către Loomio nu a fost livrat.
       reason: Acest lucru s-a întâmplat deoarece clientul dvs. de e-mail a adresat mesajul adresei „Expeditor”, în loc de adresa „Răspuns către” furnizată.
       recommendation: Te rugăm să deschizi Loomio în browser și să postezi mesajul direct.
+  locale_names:
+    en: Engleză
+    be-BY: Belarusă
+    bg-BG: bulgar
+    ca: catalan
+    cs: ceh
+    zh-TW: Chineză (tradițională, taiwaneză)
+    da: danez
+    de: german
+    es: Spaniolă
+    eo: esperanto
+    el: Greacă
+    fr: franceză
+    he: Ebraică
+    id: Indoneziană
+    it: italian
+    hu: Maghiară
+    ja: japonez
+    ko: coreean
+    ml: Malayalam
+    nl-NL: Olandeză
+    pl: Lustrui
+    pt-BR: Portugheză (Brazilia)
+    ro: Română
+    sr: Sârbă (latină)
+    sr-RS: Sârbă (chirilică)
+    sk: Slovacă
+    sv: suedez
+    vi: Vietnameză
+    tr: turc
+    uk: Ucraineană
+    an: Aragonez
+    ar: arabic
+    cmn: Chineză (mandarină)
+    hr: croat
+    it-CH: Italiană (Elveția)
+    fi: finlandeză
+    gl: Galiciană
+    ga-IE: Gaelică (Irlanda)
+    hi: Nu
+    km: Khmer
+    lv: Letonă
+    mk: macedonean
+    mi: Maori
+    fa-IR: Persană (Iran)
+    pt-PT: Portugheză
+    ru: Rusă
+    sl: Slovenă
+    te: Telugu
+    ur: Urdu
+    ur-PK: Urdu (Pakistan)
+    be: Belarusă
+    pt: Portugheză
+    zh: Chineză (tradițională, taiwaneză)
+    zh-HK: Chineză (tradițională, taiwaneză)

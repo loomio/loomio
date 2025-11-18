@@ -318,6 +318,8 @@ da:
       view_group: Du kan godkende eller afvise anmodningen her
       button_text: Vis anmodning
     loomio_app_description: Et sted, hvor organisationer kan træffe beslutninger i fællesskab.
+    content_was_translated: Dette indhold blev oversat fra %{source_locale}
+    content_was_translated_html: Dette indhold blev oversat fra %{source_locale}. <a href="%{profile_url}">Se indstillinger<a></a>
   announcement_count_emails: "%{count} e-mails"
   email_actions:
     unfollowed_discussion: Du har slået e-mails fra for tråden.
@@ -538,3 +540,58 @@ da:
       subject: Din besked til Loomio blev ikke leveret
       reason: Dette skete, fordi din e-mailklient adresserede beskeden til "Fra"-adressen i stedet for den angivne "Svar-til"-adresse.
       recommendation: Åbn Loomio i din browser og send din besked direkte.
+  locale_names:
+    en: Engelsk
+    be-BY: Hviderussisk
+    bg-BG: Bulgarsk
+    ca: Catalansk
+    cs: Tjekkisk
+    zh-TW: Kinesisk (traditionel, Taiwan)
+    da: Dansk
+    de: Tysk
+    es: Spansk
+    eo: Esperanto
+    el: Græsk
+    fr: Fransk
+    he: Hebraisk
+    id: Indonesisk
+    it: Italiensk
+    hu: Ungarsk
+    ja: Japansk
+    ko: Koreansk
+    ml: Malayalam
+    nl-NL: Hollandsk
+    pl: Polere
+    pt-BR: Portugisisk (Brasilien)
+    ro: Rumænsk
+    sr: Serbisk (latin)
+    sr-RS: Serbisk (kyrillisk)
+    sk: Slovakisk
+    sv: Svensk
+    vi: Vietnamesisk
+    tr: Tyrkisk
+    uk: Ukrainsk
+    an: Aragonesisk
+    ar: Arabisk
+    cmn: Kinesisk (mandarin)
+    hr: Kroatisk
+    it-CH: Italiensk (Schweiz)
+    fi: Finsk
+    gl: Galicisk
+    ga-IE: Gælisk (Irland)
+    hi: Ingen
+    km: Khmer
+    lv: Lettisk
+    mk: Makedonsk
+    mi: Maori
+    fa-IR: Persisk (Iran)
+    pt-PT: Portugisisk
+    ru: Russisk
+    sl: Slovensk
+    te: Telugu
+    ur: Urdu
+    ur-PK: Urdu (Pakistan)
+    be: Hviderussisk
+    pt: Portugisisk
+    zh: Kinesisk (traditionel, Taiwan)
+    zh-HK: Kinesisk (traditionel, Taiwan)

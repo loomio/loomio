@@ -1,10 +1,10 @@
 .poll-mailer-common-summary
   - if poll.current_outcome
     %h2.text-subtitle-2= t(:"poll_common.outcome")
-    %p= render_rich_text(poll.current_outcome.statement, poll.current_outcome.statement_format)
+    %p= formatted_text(poll.current_outcome, :statement)
     %h2.text-subtitle-2= t(:"decision_tools_card.#{poll.poll_type}_title")
 
-  %p= render_rich_text(poll.details, poll.details_format)
+  %p= formatted_text(poll, :details)
 
   - if poll.active?
     %p= t(:"poll_mailer.common.you_have_until", when: format_date_for_humans(poll.closing_at, @recipient.time_zone, @recipient.date_time_pref))

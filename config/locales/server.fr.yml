@@ -336,6 +336,8 @@ fr:
       view_group: Vous pouvez accepter ou rejeter cette demande
       button_text: Voir la demande
     loomio_app_description: Un lieu où les organisations peuvent prendre des décisions ensemble.
+    content_was_translated: Ce contenu a été traduit à partir de %{source_locale}
+    content_was_translated_html: Ce contenu a été traduit depuis %{source_locale}. <a href="%{profile_url}">Afficher les paramètres<a></a>
   announcement_count_emails: "%{count} courriels"
   email_actions:
     unfollowed_discussion: Vous avez désactivé les notifications pour cette discussion.
@@ -492,13 +494,13 @@ fr:
       abstain_meaning: Je n'ai rien à ajouter, ni aucune objection à ce travail.
       abstain_prompt: L'abstention implique votre consentement à l'orientation de cette proposition. Y a-t-il une raison pour laquelle vous votez en faveur de l'abstention ?
       concerned: Concerné
-      concerned_meaning: Il faudra peut-être que quelque chose change à ce sujet pour que je puisse consentir ou être d'accord.
+      concerned_meaning: Il faudra peut-être que quelque chose change à ce sujet pour que je puisse consentir ou être d’accord.
       concerned_prompt: Quelle est votre préoccupation et comment pourrait-elle être résolue ?
     gradients_of_agreement:
       process_subtitle: Exprimez votre soutien à une proposition sur une échelle de 8 points
-      process_introduction: "<p>La proposition Gradients d’accord permet aux membres d’un groupe d’exprimer leur soutien à une proposition en degrés sur une échelle, offrant plus de façons d’exprimer leur soutien qu’en termes de « d’accord » et de « pas d’accord ».</p><p> Utilisez les gradients d’accord comme un tour préliminaire, pour tester le soutien à une proposition avant de passer à un accord formel.</p><p> Les gradients d'accord indiquent aux participants qu'une proposition est en cours d'élaboration et les encouragent à s'engager. C'est l'occasion d'écouter les autres, de comprendre leurs sentiments et de réagir de manière appropriée, ouvrant ainsi la possibilité d'intégrer leurs contributions pour prendre une meilleure décision.</p>"
+      process_introduction: "<p>La proposition Gradients d’accord permet aux membres d’un groupe d’exprimer leur soutien à une proposition en degrés sur une échelle, offrant plus de façons d’exprimer leur soutien qu’en termes de « d’accord » et de « pas d’accord ».</p><p> Utilisez les gradients d’accord comme un tour préliminaire, pour tester le soutien à une proposition avant de passer à un accord formel.</p><p> Les gradients d’accord indiquent aux participants qu'une proposition est en cours d'élaboration et les encouragent à s'engager. C'est l'occasion d'écouter les autres, de comprendre leurs sentiments et de réagir de manière appropriée, ouvrant ainsi la possibilité d'intégrer leurs contributions pour prendre une meilleure décision.</p>"
       title: Que pensez-vous de la nouvelle déclaration de valeurs ?
-      details: <h3 id="what-are-you-proposing"><strong>Que proposez-vous ?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Pourquoi est-ce important ?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Que demandez-vous aux gens de faire ?</strong></h3><p></p><p> Que pensez-vous de la proposition ? Exprimez votre soutien sur l'échelle ci-dessous et laissez un commentaire ou une suggestion d'amélioration.</p><p> Cette proposition de gradients d'accord vise à tester le soutien à la proposition et à vous donner l'occasion de donner votre avis avant de passer à un accord formel.</p>
+      details: <h3 id="what-are-you-proposing"><strong>Que proposez-vous ?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Pourquoi est-ce important ?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Que demandez-vous aux gens de faire ?</strong></h3><p></p><p> Que pensez-vous de la proposition ? Exprimez votre soutien sur l'échelle ci-dessous et laissez un commentaire ou une suggestion d'amélioration.</p><p> Cette proposition de gradients d’accord vise à tester le soutien à la proposition et à vous donner l'occasion de donner votre avis avant de passer à un accord formel.</p>
       whole_hearted_endorsement: Approbation sans réserve
       whole_hearted_endorsement_meaning: J'aime vraiment ça !
       whole_hearted_endorsement_prompt: Qu'est-ce que tu aimes à ce sujet ?
@@ -517,8 +519,8 @@ fr:
       don_t_like_but_will_support_meaning: Ce n'est pas génial mais je ne veux pas retarder le groupe
       don_t_like_but_will_support_prompt: Qu’aimeriez-vous voir amélioré ?
       serious_disagreement: Désaccord sérieux
-      serious_disagreement_meaning: Je ne suis pas d'accord avec ça - ne comptez pas sur moi
-      serious_disagreement_prompt: Avec quoi n'êtes-vous pas d'accord ?
+      serious_disagreement_meaning: Je ne suis pas d’accord avec ça - ne comptez pas sur moi
+      serious_disagreement_prompt: Avec quoi n'êtes-vous pas d’accord ?
       veto: Veto
       veto_meaning: Je bloque cette proposition
       veto_prompt: Pourquoi bloquez-vous la proposition ? Que faut-il changer pour que vous la souteniez ?
@@ -562,3 +564,58 @@ fr:
       subject: Votre message à Loomio n'a pas été transmis.
       reason: Cela s'est produit car votre client de messagerie a adressé le message à l'adresse « De » au lieu de l'adresse « Répondre à » indiquée.
       recommendation: Veuillez ouvrir Loomio dans votre navigateur et poster votre message directement.
+  locale_names:
+    en: Anglais
+    be-BY: Biélorusse
+    bg-BG: bulgare
+    ca: catalan
+    cs: tchèque
+    zh-TW: Chinois (traditionnel, Taïwan)
+    da: danois
+    de: Allemand
+    es: Espagnol
+    eo: espéranto
+    el: grec
+    fr: Français
+    he: hébreu
+    id: indonésien
+    it: italien
+    hu: hongrois
+    ja: japonais
+    ko: coréen
+    ml: Malayalam
+    nl-NL: Néerlandais
+    pl: polonais
+    pt-BR: Portugais (Brésil)
+    ro: roumain
+    sr: Serbe (latin)
+    sr-RS: Serbe (cyrillique)
+    sk: slovaque
+    sv: suédois
+    vi: vietnamien
+    tr: turc
+    uk: ukrainien
+    an: Aragonais
+    ar: arabe
+    cmn: Chinois (mandarin)
+    hr: croate
+    it-CH: Italien (Suisse)
+    fi: finlandais
+    gl: Galicien
+    ga-IE: Gaélique (Irlande)
+    hi: Non
+    km: Khmer
+    lv: letton
+    mk: Macédonien
+    mi: Maori
+    fa-IR: Persan (Iran)
+    pt-PT: portugais
+    ru: russe
+    sl: slovène
+    te: Telugu
+    ur: ourdou
+    ur-PK: Ourdou (Pakistan)
+    be: Biélorusse
+    pt: portugais
+    zh: Chinois (traditionnel, Taïwan)
+    zh-HK: Chinois (traditionnel, Taïwan)

@@ -2,7 +2,7 @@ module Translatable
   extend ActiveSupport::Concern
 
   included do
-    has_many :translations, as: :translatable
+    has_many :translations, as: :translatable, dependent: :destroy
     before_update :update_translations, if: :translatable_fields_modified?
   end
 

@@ -12,4 +12,4 @@
       %td= "#{stance_choice.rank} - #{stance_choice.poll_option.name}"
 .poll-common-stance
   .lmo-markdown-wrapper.text-body-2.text--primary.poll-common-stance-created__reason
-    = render_rich_text(stance.reason, stance.reason_format)
+    = formatted_text(stance, :reason)

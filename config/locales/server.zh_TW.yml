@@ -336,6 +336,8 @@ zh_TW:
       view_group: 您可點此批准或拒絕申請
       button_text: 檢視申請
     loomio_app_description: 一個供組織共同決策的平台。
+    content_was_translated: 此內容由 %{source_locale} 翻譯而來
+    content_was_translated_html: 此內容由 %{source_locale} 翻譯而來。<a href="%{profile_url}">查看設定<a></a>
   announcement_count_emails: "%{count} 個電子郵件"
   email_actions:
     unfollowed_discussion: 您已經關閉了討論串的電子郵件。
@@ -562,3 +564,58 @@ zh_TW:
       subject: 您發送給 Loomio 的訊息未送達
       reason: 這是因為您的電子郵件用戶端將郵件發送到了「寄件者」地址，而不是提供的「回覆」地址。
       recommendation: 請在瀏覽器中開啟 Loomio 並直接發布您的訊息。
+  locale_names:
+    en: 英語
+    be-BY: 白俄羅斯
+    bg-BG: 保加利亞語
+    ca: 加泰隆尼亞語
+    cs: 捷克語
+    zh-TW: 中文（繁體，台灣）
+    da: 丹麥語
+    de: 德文
+    es: 西班牙語
+    eo: 世界語
+    el: 希臘文
+    fr: 法語
+    he: 希伯來文
+    id: 印尼
+    it: 義大利語
+    hu: 匈牙利
+    ja: 日本人
+    ko: 韓國人
+    ml: 馬拉雅拉姆語
+    nl-NL: 荷蘭語
+    pl: 拋光
+    pt-BR: 葡萄牙語（巴西）
+    ro: 羅馬尼亞語
+    sr: 塞爾維亞語（拉丁語）
+    sr-RS: 塞爾維亞語（西里爾字母）
+    sk: 斯洛伐克
+    sv: 瑞典
+    vi: 越南語
+    tr: 土耳其
+    uk: 烏克蘭語
+    an: 阿拉貢語
+    ar: 阿拉伯
+    cmn: 中文（國語）
+    hr: 克羅埃西亞語
+    it-CH: 義大利語（瑞士）
+    fi: 芬蘭
+    gl: 加利西亞語
+    ga-IE: 蓋爾語（愛爾蘭）
+    hi: 不
+    km: 高棉語
+    lv: 拉脫維亞語
+    mk: 馬其頓
+    mi: 毛利人
+    fa-IR: 波斯語（伊朗）
+    pt-PT: 葡萄牙語
+    ru: 俄文
+    sl: 斯洛維尼亞語
+    te: 泰盧固語
+    ur: 烏爾都語
+    ur-PK: 烏爾都語（巴基斯坦）
+    be: 白俄羅斯
+    pt: 葡萄牙語
+    zh: 中文（繁體，台灣）
+    zh-HK: 中文（繁體，台灣）

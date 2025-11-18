@@ -322,6 +322,8 @@ hu:
       view_group: Itt jóváhagyhatod vagy elutasíthatod a kérelmet
       button_text: Kérés megtekintése
     loomio_app_description: Egy hely, ahol a szervezetek közösen hozhatnak döntéseket.
+    content_was_translated: 'Ez a tartalom innen lett lefordítva: %{source_locale}'
+    content_was_translated_html: 'Ez a tartalom innen lett lefordítva: %{source_locale}. <a href="%{profile_url}">Beállítások megtekintése<a></a>'
   announcement_count_emails: "%{count} e-mail"
   email_actions:
     unfollowed_discussion: Kikapcsoltad a téma e-maileit.
@@ -544,3 +546,58 @@ hu:
       subject: Az üzeneted Loomiónak nem érkezett meg kézbesítésre.
       reason: Ez azért történt, mert az e-mail kliens a megadott „Feladó” címre küldte az üzenetet, nem pedig a megadott „Válaszcímre”.
       recommendation: Kérjük, nyissa meg a Loomiót a böngészőjében, és küldje el közvetlenül az üzenetét.
+  locale_names:
+    en: angol
+    be-BY: fehérorosz
+    bg-BG: bolgár
+    ca: katalán
+    cs: cseh
+    zh-TW: Kínai (hagyományos, tajvani)
+    da: dán
+    de: német
+    es: spanyol
+    eo: eszperantó
+    el: görög
+    fr: francia
+    he: héber
+    id: indonéz
+    it: olasz
+    hu: magyar
+    ja: japán
+    ko: koreai
+    ml: Malájalam
+    nl-NL: holland
+    pl: lengyel
+    pt-BR: portugál (brazíliai)
+    ro: román
+    sr: szerb (latin)
+    sr-RS: szerb (cirill)
+    sk: szlovák
+    sv: svéd
+    vi: vietnami
+    tr: török
+    uk: ukrán
+    an: Aragóniai
+    ar: arab
+    cmn: kínai (mandarin)
+    hr: horvát
+    it-CH: olasz (Svájc)
+    fi: finn
+    gl: galíciai
+    ga-IE: gael (Írország)
+    hi: Nem
+    km: khmer
+    lv: lett
+    mk: macedón
+    mi: Maori
+    fa-IR: perzsa (iráni)
+    pt-PT: portugál
+    ru: orosz
+    sl: szlovén
+    te: telugu
+    ur: urdu
+    ur-PK: urdu (Pakisztán)
+    be: fehérorosz
+    pt: portugál
+    zh: Kínai (hagyományos, tajvani)
+    zh-HK: Kínai (hagyományos, tajvani)

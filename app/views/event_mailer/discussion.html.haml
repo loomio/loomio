@@ -1,4 +1,5 @@
 -# = render "event_mailer/breadcrumbs", eventable: @event.eventable.discussion
+= render "event_mailer/common/translation_notice", event: @event
 = render "event_mailer/group/cover_and_logo", group: @event.eventable.discussion.group
 = render "event_mailer/common/notification", event: @event
 = render "event_mailer/common/title", eventable: @event.eventable.discussion

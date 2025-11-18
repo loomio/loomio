@@ -8,7 +8,7 @@ module Dev::ScenariosHelper
     DiscussionService.create(discussion: discussion, actor: group.members.first)
 
     actor = group.admins.first
-    user  = saved(fake_user(time_zone: "America/New_York"))
+    user  = saved(fake_user(time_zone: "America/New_York", auto_translate: true))
 
     group.add_member! user if !params[:guest]
     group.add_admin! user if params[:admin]
@@ -33,7 +33,7 @@ module Dev::ScenariosHelper
       observer: user,
       poll: event.eventable,
       title: event.eventable.title,
-      actor: actor,
+      actor: actor
     }
   end
 

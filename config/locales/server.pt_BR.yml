@@ -336,6 +336,8 @@ pt_BR:
       view_group: Você pode aprovar ou recusar o pedido aqui
       button_text: Ver solicitação
     loomio_app_description: Um espaço para que as organizações tomem decisões em conjunto.
+    content_was_translated: Este conteúdo foi traduzido de %{source_locale}
+    content_was_translated_html: Este conteúdo foi traduzido de %{source_locale}. <a href="%{profile_url}">Ver configurações<a></a>
   announcement_count_emails: "%{count} e-mails"
   email_actions:
     unfollowed_discussion: Você desativou emails para esse tópico.
@@ -562,3 +564,58 @@ pt_BR:
       subject: Sua mensagem para a Loomio não foi entregue.
       reason: Isso aconteceu porque seu cliente de e-mail endereçou a mensagem para o endereço "De", em vez do endereço "Responder para" fornecido.
       recommendation: Por favor, abra o Loomio no seu navegador e publique sua mensagem diretamente.
+  locale_names:
+    en: Inglês
+    be-BY: bielorrusso
+    bg-BG: búlgaro
+    ca: catalão
+    cs: Tcheco
+    zh-TW: Chinês (Tradicional, Taiwan)
+    da: dinamarquês
+    de: Alemão
+    es: Espanhol
+    eo: esperanto
+    el: grego
+    fr: Francês
+    he: hebraico
+    id: indonésio
+    it: italiano
+    hu: húngaro
+    ja: japonês
+    ko: coreano
+    ml: Malayalam
+    nl-NL: Holandês
+    pl: polonês
+    pt-BR: Português (Brasil)
+    ro: romeno
+    sr: Sérvio (latim)
+    sr-RS: Sérvio (cirílico)
+    sk: Eslovaco
+    sv: sueco
+    vi: vietnamita
+    tr: turco
+    uk: ucraniano
+    an: Aragonês
+    ar: árabe
+    cmn: Chinês (Mandarim)
+    hr: croata
+    it-CH: Italiano (Suíça)
+    fi: finlandês
+    gl: galego
+    ga-IE: Gaélico (Irlanda)
+    hi: Não
+    km: Khmer
+    lv: letão
+    mk: macedônio
+    mi: maori
+    fa-IR: Persa (Irã)
+    pt-PT: Português
+    ru: russo
+    sl: esloveno
+    te: Telugu
+    ur: urdu
+    ur-PK: Urdu (Paquistão)
+    be: bielorrusso
+    pt: Português
+    zh: Chinês (Tradicional, Taiwan)
+    zh-HK: Chinês (Tradicional, Taiwan)

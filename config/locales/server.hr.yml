@@ -312,6 +312,8 @@ hr:
       view_group: Ovdje možete odobriti ili odbiti zahtjev
       button_text: Pogledaj zahtjev
     loomio_app_description: Mjesto gdje organizacije mogu zajedno donositi odluke.
+    content_was_translated: Ovaj sadržaj je preveden s %{source_locale}
+    content_was_translated_html: Ovaj sadržaj je preveden s %{source_locale}. <a href="%{profile_url}">Prikaži postavke<a></a>
   announcement_count_emails: "%{count} e-poruka"
   email_actions:
     unfollowed_discussion: Isključili ste e-poštu za nit.
@@ -532,3 +534,58 @@ hr:
       subject: Vaša poruka za Loomio nije dostavljena
       reason: To se dogodilo jer je vaš klijent e-pošte adresu poslao na adresu "Od", a ne na navedenu adresu "Odgovori".
       recommendation: Molimo vas da otvorite Loomio u svom pregledniku i izravno objavite svoju poruku.
+  locale_names:
+    en: engleski
+    be-BY: Bjeloruski
+    bg-BG: bugarski
+    ca: katalonski
+    cs: češki
+    zh-TW: kineski (tradicionalni, tajvanski)
+    da: danski
+    de: njemački
+    es: španjolski
+    eo: esperanto
+    el: grčki
+    fr: francuski
+    he: Hebrejski
+    id: indonezijski
+    it: talijanski
+    hu: Mađarski
+    ja: japanski
+    ko: korejski
+    ml: Malajalamski
+    nl-NL: Nizozemski
+    pl: Polirati
+    pt-BR: Portugalski (Brazil)
+    ro: Rumunjski
+    sr: Srpski (latinica)
+    sr-RS: Srpski (ćirilica)
+    sk: slovački
+    sv: švedski
+    vi: vijetnamski
+    tr: turski
+    uk: Ukrajinski
+    an: Aragonski
+    ar: arapski
+    cmn: kineski (mandarinski)
+    hr: hrvatski
+    it-CH: talijanski (Švicarska)
+    fi: Finski
+    gl: galicijski
+    ga-IE: Galski (Irska)
+    hi: Ne
+    km: Kmerski
+    lv: Latvijski
+    mk: makedonski
+    mi: Maori
+    fa-IR: perzijski (Iran)
+    pt-PT: portugalski
+    ru: ruski
+    sl: slovenski
+    te: Telugu
+    ur: urdu
+    ur-PK: Urdu (Pakistan)
+    be: Bjeloruski
+    pt: portugalski
+    zh: kineski (tradicionalni, tajvanski)
+    zh-HK: kineski (tradicionalni, tajvanski)
