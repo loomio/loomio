@@ -52,9 +52,9 @@ class ApplicationSerializer < ActiveModel::Serializer
   def cache_fetch(key_or_keys, id)
     return nil if id.nil?
     if scope.has_key?(:cache)
-      scope[:cache].fetch(key_or_keys, id) { yield }
+      scope[:cache].fetch(key_or_keys, id) { block_given? ?  yield : nil }
     else
-      yield
+      block_given? ?  yield : nil
     end
   end
 
