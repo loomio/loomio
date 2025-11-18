@@ -11,12 +11,19 @@ class RecordCache
     @current_user_id = nil
   end
 
+  # if we've already queried for a record and it does not exist, then we stil add a key into the hash, with nil
+  # so you can safely provide a query to check, without it being run redundandly.
+  # this is most important for discussion_readers
+  # so it's used in two ways:
+  # fetch(keys, id) { query if record maybe not cached }
+  # or
+  # fetch(keys, id) || query/action if result is nil
   def fetch(key_or_keys, id)
     (scope.dig(*Array(key_or_keys)) || {}).fetch(id) do
       if block_given?
         yield
       else
-        raise "scope missing preloaded model: #{key_or_keys} #{id}"
+        nil
       end
     end
   end
@@ -177,19 +184,17 @@ class RecordCache
     return if exclude_types.include?('membership')
     scope[:memberships_by_group_id] ||= {}
     scope[:memberships_by_id] ||= {}
+
+    group_ids.each do |group_id|
+      scope[:memberships_by_group_id][group_id] = nil
+    end
+
     collection.each do |m|
       @user_ids.push m.user_id
       @user_ids.push m.inviter_id if m.inviter_id
       scope[:memberships_by_group_id][m.group_id] = m
       scope[:memberships_by_id][m.id] = m
     end
-
-    # is this buggy?
-    # our cache.fetch method benefits from knowing it is nil
-    # group_ids.each do |id|
-    #   next if scope[:memberships_by_group_id].has_key?(id)
-    #   scope[:memberships_by_group_id][id] = nil
-    # end
   end
 
   def add_polls_options_stances_outcomes(collection)
@@ -327,7 +332,12 @@ class RecordCache
 
   def add_discussion_readers(collection)
     return if exclude_types.include?('discussion_reader')
-    scope[:discussion_readers_by_discussion_id] = collection.index_by(&:discussion_id)
+    readers_by_discussion_id = collection.index_by(&:discussion_id)
+    scope[:discussion_readers_by_discussion_id] ||= {}
+    discussion_ids.each do |id|
+      # so if key exists, but value is null, we know not to try to look up the reader
+      scope[:discussion_readers_by_discussion_id][id] = readers_by_discussion_id[id]
+    end
   end
 
   def add_users(collection)

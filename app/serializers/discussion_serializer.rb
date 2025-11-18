@@ -73,14 +73,20 @@ class DiscussionSerializer < ApplicationSerializer
   end
 
   def reader
-    # we don't initialize readers if no current user id, because discussions can be group messages
-    cache_fetch(:discussion_readers_by_discussion_id, object.id) do
-      return nil unless scope[:current_user_id]
-      m = cache_fetch(:memberships_by_group_id, object.group_id) { nil }
+    return nil unless scope[:current_user_id]
+
+    result = cache_fetch(:discussion_readers_by_discussion_id, object.id) do
+      m = cache_fetch(:memberships_by_group_id, object.group_id)
       DiscussionReader.find_or_initialize_by(user_id: scope[:current_user_id], discussion_id: object.id) do |dr|
         dr.volume = (m && m.volume) || 'normal'
       end
     end
+
+    return result if result.present?
+
+    # record def does not exist, becasue key exists in cache and it's empty
+    m = cache_fetch(:memberships_by_group_id, object.group_id)
+    DiscussionReader.new(user_id: scope[:current_user_id], discussion_id: object.id, volume: (m && m.volume) || 'normal')
   end
 
   def created_event

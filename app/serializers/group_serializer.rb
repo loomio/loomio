@@ -63,7 +63,7 @@ class GroupSerializer < ApplicationSerializer
   has_many :tags, serializer: TagSerializer, root: :tags
 
   def current_user_membership
-    cache_fetch(:memberships_by_group_id, object.id) { nil }
+    cache_fetch(:memberships_by_group_id, object.id)
   end
 
   def parent
