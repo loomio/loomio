@@ -159,8 +159,7 @@ class ApplicationSerializer < ActiveModel::Serializer
   end
 
   def translation_id
-    t = translation
-    t&.id
+    translation&.id
   end
 
   def translation

@@ -309,6 +309,7 @@ class RecordCache
     return if locale.blank?
 
     {
+      'Group' =>  scope.fetch(:groups_by_id, {}).keys,
       'Discussion' =>  scope.fetch(:discussions_by_id, {}).keys,
       'Poll' => scope.fetch(:polls_by_id, {}).keys
     }.each_pair do |type, ids|

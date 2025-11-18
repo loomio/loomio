@@ -12,7 +12,7 @@ class Group < ApplicationRecord
   extend NoSpam
 
   is_rich_text    on: :description
-  is_translatable on: :description
+  is_translatable on: [:description, :name]
   initialized_with_token :token
   no_spam_for :name, :description
 

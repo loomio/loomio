@@ -69,6 +69,7 @@ export default class GroupModel extends BaseModel {
     this.hasMany('allDocuments', {from: 'documents', with: 'groupId', of: 'id'});
     this.hasMany('subgroups', {from: 'groups', with: 'parentId', of: 'id', orderBy: 'name'});
     this.belongsTo('parent', {from: 'groups'});
+    this.belongsTo('translation');
     return this.belongsTo('creator', {from: 'users'});
   }
 

@@ -101,11 +101,12 @@ v-main
       //  eager)
     h1.text-h4.my-4(tabindex="-1" v-intersect="{handler: titleVisible}")
       span(v-if="group && group.parentId")
-        router-link(:to="urlFor(group.parent())") {{group.parent().name}}
+        router-link(:to="urlFor(group.parent())")
+          plain-text(:model="group.parent()" field="name")
         space
         span.text-medium-emphasis.text--lighten-1 &gt;
         space
-      span.group-page__name.mr-4 {{group.name}}
+      plain-text.group-page__name.mr-4(:model="group" field="name")
     plan-banner(:group="group")
     formatted-text.group-page__description(
       v-if="group"
