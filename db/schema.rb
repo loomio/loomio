@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_11_13_023050) do
+ActiveRecord::Schema[7.2].define(version: 2025_11_18_014438) do
   create_schema "pghero"
 
   # These are extensions that must be enabled in order to support this database
@@ -972,6 +972,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_11_13_023050) do
     t.string "language", limit: 255
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.index ["language"], name: "index_translations_on_language"
     t.index ["translatable_type", "translatable_id"], name: "index_translations_on_translatable_type_and_translatable_id"
   end
 

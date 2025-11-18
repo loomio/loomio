@@ -20,20 +20,12 @@ export default {
       return this.group.key;
     },
 
-    byName() { 
-      const res = {};
-      this.group.tags().forEach(t => res[t.name] = t);
-      return res;
-    },
-
-    tagObjects() {
-      return this.tags.map((name, i) => {
-        return {
-          id: i,
-          name,
-          color: (this.byName[name] || {}).color,
-          taggingsCount: (this.byName[name] || {}).taggingsCount
-        };
+    normalizedTags() {
+      return this.tags.map((item, i) => {
+        if (item && typeof item === 'object' && item.id) return item;
+        const name = (typeof item === 'string') ? item : (item && item.name);
+        const model = this.group.tags().find(t => t.name === name);
+        return model || { name };
       });
     }
   }
@@ -43,15 +35,15 @@ export default {
 <template lang="pug">
 span.tags-display
   v-chip.mr-1(
-    v-for="tag in tagObjects"
-    :key="tag.id"
+    v-for="tag in normalizedTags"
+    :key="tag.id || tag.name"
     :outlined="tag.name != selected"
     :size="size"
     :color="tag.color"
     :to="'/g/'+groupKey+'/tags/'+encodeURIComponent(tag.name)"
     :class="{'mb-1': showCounts}"
   )
-    span.text-on-surface {{ tag.name }}
+    plain-text.text-on-surface(:model="tag" field="name")
     span(v-if="showCounts")
       space
       span {{tag.taggingsCount}}

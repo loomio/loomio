@@ -37,7 +37,8 @@ class DiscussionSerializer < ApplicationSerializer
              :mentioned_usernames,
              :newest_first,
              :max_depth,
-             :discarded_at
+             :discarded_at,
+             :translation_id
 
   attributes_from_reader :discussion_reader_id,
                          :discussion_reader_volume,
@@ -56,7 +57,7 @@ class DiscussionSerializer < ApplicationSerializer
   has_one :created_event, serializer: EventSerializer, root: :events
   has_one :forked_event, serializer: EventSerializer, root: :events
   has_one :closer, serializer: AuthorSerializer, root: :users
-
+  has_one :translation, serializer: TranslationSerializer, root: :translations
   hide_when_discarded [:description, :title]
 
   def include_closer?

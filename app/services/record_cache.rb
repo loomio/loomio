@@ -30,7 +30,7 @@ class RecordCache
 
     case item.class.to_s
     when 'Translation'
-      obj.add_translations(collection)
+      obj.scope[:translations_by_id] = collection.index_by(&:id)
       return obj
     when 'Discussion'
       collection_ids = collection.map(&:id)
@@ -57,6 +57,7 @@ class RecordCache
       obj.add_groups Group.with_attached_logo.with_attached_cover_photo.includes(:subscription).where(id: ids_and_parent_ids(Group, collection.map(&:group_id)))
       obj.add_discussions(Discussion.where(id: collection.map(&:discussion_id).uniq.compact))
       obj.add_polls_options_stances_outcomes collection
+      obj.add_inline_translations
 
     when 'Outcome'
       obj.add_polls Poll.where(id: collection.map(&:poll_id))
@@ -95,6 +96,7 @@ class RecordCache
     obj.add_events Event.where(kind: 'discussion_forked', eventable_id: obj.discussion_ids)
     obj.add_events Event.where(kind: 'poll_created', eventable_id: obj.poll_ids)
     obj.add_tags_complete
+    obj.add_inline_translations
     obj
   end
 
@@ -217,11 +219,8 @@ class RecordCache
 
   def add_comments(collection)
     return [] if exclude_types.include?('comment')
-    scope[:comments_by_id] ||= {}
-    collection.each do |comment|
-      @user_ids.push comment.user_id
-      scope[:comments_by_id][comment.id] = comment
-    end
+    @user_ids.concat collection.map(&:user_id)
+    scope[:comments_by_id] = collection.index_by(&:id)
   end
 
   def add_tags_complete
@@ -236,23 +235,16 @@ class RecordCache
 
   def add_outcomes(collection)
     return [] if exclude_types.include?('outcome')
-    scope[:outcomes_by_id] ||= {}
-    scope[:outcomes_by_poll_id] ||= {}
-    collection.each do |outcome|
-      @user_ids.push outcome.author_id
-      scope[:outcomes_by_id][outcome.id] = outcome
-      scope[:outcomes_by_poll_id][outcome.poll_id] = outcome if outcome.latest
-    end
+    @user_ids.concat collection.map(&:author_id)
+    scope[:outcomes_by_id] = collection.index_by(&:id)
+    scope[:outcomes_by_poll_id] = collection.select(&:latest).index_by(&:poll_id)
   end
 
   def add_reactions(collection)
     return [] if ids.empty?
     return [] if exclude_types.include?('reaction')
-    scope[:reactions_by_id] ||= {}
-    collection.each do |reaction|
-      @user_ids.push reaction.user_id
-      scope[:reactions_by_id][reaction.id] = reaction
-    end
+    @user_ids.concat collection.map(&:user_id)
+    scope[:reactions_by_id] = collection.index_by(&:id)
   end
 
   def add_poll_options(collection)
@@ -307,34 +299,43 @@ class RecordCache
   end
 
 
-  def add_translations(collection)
+  def add_inline_translations
+    return unless TranslationService.available?
     return if exclude_types.include?('translation')
-    scope[:translations_by_id] = collection.index_by(&:id)
+    user = scope.dig(:users_by_id, current_user_id) || User.find_by(id: current_user_id)
+    return unless user && user.auto_translate
+
+    locale = TranslationService.locale_for_google(user.locale)
+    return if locale.blank?
+
+    {
+      'Discussion' =>  scope.fetch(:discussions_by_id, {}).keys,
+      'Poll' => scope.fetch(:polls_by_id, {}).keys
+    }.each_pair do |type, ids|
+      Translation.where(language: locale,
+                        translatable_type: type,
+                        translatable_id: ids).each do |tr|
+        scope[:translations_by_type_and_id] ||= {}
+        scope[:translations_by_type_and_id][type] ||= {}
+        scope[:translations_by_type_and_id][type][tr.translatable_id] = tr
+      end
+    end
   end
 
   def add_discussions(collection)
     return if exclude_types.include?('discussion')
-    scope[:discussions_by_id] ||= {}
-    collection.each do |discussion|
-      @user_ids.push discussion.author_id
-      scope[:discussions_by_id][discussion.id] = discussion
-    end
+    @user_ids.concat collection.map(&:author_id)
+    scope[:discussions_by_id] = collection.index_by(&:id)
   end
 
   def add_discussion_readers(collection)
     return if exclude_types.include?('discussion_reader')
-    scope[:discussion_readers_by_discussion_id] ||= {}
-    collection.each do |dr|
-      scope[:discussion_readers_by_discussion_id][dr.discussion_id] = dr
-    end
+    scope[:discussion_readers_by_discussion_id] = collection.index_by(&:discussion_id)
   end
 
   def add_users(collection)
     return if exclude_types.include?('user')
-    scope[:users_by_id] ||= {}
-    collection.each do |user|
-      scope[:users_by_id][user.id] = user
-    end
+    collection.index_by(&:id)
   end
 
   def group_ids

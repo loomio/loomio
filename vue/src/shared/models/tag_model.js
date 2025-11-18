@@ -16,5 +16,6 @@ export default class TagModel extends BaseModel {
 
   relationships() {
     this.belongsTo('group');
+    this.belongsTo('translation');
   }
 };

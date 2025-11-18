@@ -19,7 +19,7 @@ v-list-item.poll-common-preview(:to='link')
   template(v-slot:prepend)
     poll-common-icon-panel.mr-2(:poll='poll' show-my-stance :size="36")
   v-list-item-title(:class="{'text-medium-emphasis': !needsVote, 'font-weight-medium': needsVote }")
-    span {{poll.title}}
+    plain-text(:model="poll" field="title")
     tags-display.ml-1(:tags="poll.tags" :group="poll.group()" size="x-small")
   v-list-item-subtitle
     span(v-if='displayGroupName && poll.groupId')
