@@ -68,8 +68,17 @@ class EventMailer < BaseMailer
                    @event.kind
                  end
 
+    title_model = case @event.eventable_type
+                  when "Comment"
+                    @event.eventable.discussion
+                  when "Stance", "Outcome"
+                    @event.eventable.poll
+                  else # "Discussion", "Poll", what else?
+                    @event.eventable
+                  end
+
     subject_params = {
-      title: plain_text(@event.eventable, :title),
+      title: plain_text(title_model, :title),
       group_name: @event.eventable.title, # cope for old translations
       poll_type: @poll && I18n.t("poll_types.#{@poll.poll_type}", locale: @recipient.locale),
       actor: @event.user.name,
