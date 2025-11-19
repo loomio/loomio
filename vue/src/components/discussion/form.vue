@@ -240,7 +240,7 @@ v-form(ref="form" @submit.prevent="submit")
         )
 
         common-notify-fields(v-if="loaded" :model="discussion" :initial-recipients="initialRecipients")
-    v-card-actions
+    v-card-actions(v-if="!showUpgradeMessage")
       help-btn(path='en/user_manual/threads/starting_threads')
       v-btn.discussion-form__edit-layout(v-if="discussion.id" @click="openEditLayout")
         span(v-t="'thread_arrangement_form.edit'")
