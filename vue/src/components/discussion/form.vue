@@ -115,7 +115,7 @@ export default {
         EventBus.$emit('closeModal');
         this.shouldReset = !this.shouldReset;
         Records.discussions.findOrFetchById(discussionKey, {}, true).then(discussion => {
-          Flash.success(`discussion_form.messages.${actionName}`);
+          Flash.success(`discussion_form.discussion_${actionName}`);
           this.$router.push(this.urlFor(discussion));
         });
       }).catch(error => {
@@ -254,6 +254,6 @@ v-form(ref="form" @submit.prevent="submit")
         :disabled="submitIsDisabled"
         :loading="discussion.processing"
       )
-        span(v-if="!discussion.id" v-t="'discussion_form.start_thread'")
+        span(v-if="!discussion.id" v-t="'discussion_form.start_discussion'")
         span(v-if="discussion.id" v-t="'common.action.save'")
 </template>

@@ -851,6 +851,7 @@ en:
     browse_public_templates: Browse template gallery
     thread_template_settings: Thread template settings
     start_a_new_thread: Start a new thread
+    start_a_new_discussion: Start a new discussion
     thread_template_saved: Thread template saved
     these_are_public_templates: 'These templates are available for you to copy or modify to suit your group'
     these_are_templates: 'These are the thread templates in your group. Click a template to start a thread. You can also edit, remove, or reorder these if you like. '
@@ -886,14 +887,17 @@ en:
     invite: Invite
     aria_label: Thread form
     start_thread: Start thread
+    start_discussion: Start discussion
+    discussion_updated: Discussion updated
+    discussion_created: Discussion created
     messages:
       created: Thread started
       updated: Thread updated
       forked: Thread fork created
-    new_discussion_title: Start new thread
-    new_thread_from_template: 'New thread: %{process_name}'
+    new_discussion_title: Start new discussion
+    new_thread_from_template: 'New discussion: %{process_name}'
     moving_items_title: Move items to new thread
-    edit_discussion_title: Edit thread
+    edit_discussion_title: Edit discussion
     group_label: Group
     group_placeholder: Select a group
     title_label: Title
@@ -1243,6 +1247,7 @@ en:
     stats: Group stats
     participation_report: Participation report
     threads: Threads
+    discussions: Discussions
     polls: Polls
     decisions: Decisions
     members: Members
@@ -1269,8 +1274,8 @@ en:
     new_photo: new photo
     new_cover_photo: Upload new cover photo
     new_group_logo: Upload new group logo
-    open_discussions: Open threads
-    closed_discussions: Closed threads
+    open_discussions: Open discussions
+    closed_discussions: Closed discussions
     discussions_placeholder: A thread is where everyone can discuss a topic and make decisions together.
     members_placeholder: 'You''re the only one here: invite some people to join you!'
     member_options: Member options
@@ -1334,11 +1339,11 @@ en:
     question: Are you sure you want to deactivate this group?
     submit: Yes, Deactivate this group
   group_form:
+    allow_polls_without_threads: Allow polls without threads
+    allow_polls_without_threads_help: Allow standalone polls (not recommended). Without a discussion, people can’t raise questions or build consensus effectively.
     share_this_url_with_people_who_want_to_join: Share this URL with people who want to join
     request_to_join_prompt: Request to join prompt
-    default_request_to_join_prompt: 'Thanks for your interest in our group. Please introduce yourself and explain why you are requesting to join.
-
-      '
+    default_request_to_join_prompt: 'Thanks for your interest in our group. Please introduce yourself and explain why you are requesting to join.'
     thread_defaults_help: Default settings for new threads
     click_to_change_image: Click to change the cover image (4x1) or logo (1x1)
     change_cover_image: change cover image
@@ -2061,6 +2066,7 @@ en:
     no_results_found: No results for "%{search}"
     welcome_to_your_new_group: Welcome to your new Loomio group!
     lets_start_a_thread: Let's start a thread. Click "New thread" to continue.
+    new_discussion: New discussion
   members_panel:
     email_rejected: Email rejected
     email_rejected_meaning: Email sent to this address has bounced or been marked as spam. No more email will be sent to this address.

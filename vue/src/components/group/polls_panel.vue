@@ -48,7 +48,7 @@ export default
     openSearchModal() {
       let initialOrgId = null;
       let initialGroupId = null;
-    
+
       if (this.group.isParent()) {
         initialOrgId = this.group.id;
       } else {
@@ -63,7 +63,7 @@ export default
         props: {
           initialType: 'Poll',
           initialOrgId,
-          initialGroupId,  
+          initialGroupId,
           initialQuery: this.dummyQuery
         }
       });
@@ -195,12 +195,13 @@ export default
         span(v-t="'common.action.search'")
       v-spacer
       v-btn.polls-panel__new-poll-button(
-        color='primary'
+        title="You cannot start a poll without a discussion"
+        :disabled="true"
         variant="elevated"
         :to="'/p/new?group_id='+group.id"
         v-if='canStartPoll'
       )
-        span(v-t="'sidebar.start_decision'")
+        span(v-t="'polls_panel.new_poll'")
     v-card(outlined)
       div(v-if="loader.status == 403")
         p.pa-4.text-center(v-t="'error_page.forbidden'")

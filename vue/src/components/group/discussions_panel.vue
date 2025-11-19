@@ -233,7 +233,7 @@ div.discussions-panel(v-if="group")
       :to="'/thread_templates/?group_id='+group.id"
       color='primary'
     )
-      span(v-t="'navbar.start_thread'")
+      span(v-t="'discussions_panel.new_discussion'")
 
   v-alert(color="info" variant="tonal" v-if="isMember && noThreads")
     v-card-title(v-t="'discussions_panel.welcome_to_your_new_group'")

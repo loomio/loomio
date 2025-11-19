@@ -98,7 +98,7 @@ export default {
         v-breadcrumbs(color="anchor" :items="breadcrumbs")
           template(v-slot:divider)
             common-icon(name="mdi-chevron-right")
-      v-card(:title="$t(showSettings ? 'thread_template.hidden_templates' : 'thread_template.start_a_new_thread')")
+      v-card(:title="$t(showSettings ? 'thread_template.hidden_templates' : 'thread_template.start_a_new_discussion')")
         template(v-slot:append)
           v-btn(v-if="showSettings" icon @click="showSettings = false")
             common-icon(name="mdi-close")
