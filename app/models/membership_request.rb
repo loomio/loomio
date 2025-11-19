@@ -95,4 +95,10 @@ class MembershipRequest < ApplicationRecord
     self.responded_at = Time.now
     save!
   end
+
+  def content_locale
+    stripped_text = Rails::Html::WhiteListSanitizer.new.sanitize(introduction, tags: [])
+    result = CLD.detect_language stripped_text
+    result[:reliable] ? result[:code] : requestor&.locale
+  end
 end
