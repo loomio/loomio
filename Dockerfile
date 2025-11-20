@@ -1,44 +1,66 @@
+FROM node:22-slim AS nodebuild
+
+WORKDIR /build/vue
+
+# Copy only package metadata first for deterministic caching
+COPY vue/package.json vue/package-lock.json ./
+
+# Deterministic install
+RUN npm ci --prefer-offline --no-audit --no-fund
+
+# Copy Vue source
+COPY vue ./
+
+# Copy Rails locale files that Vite depends on
+WORKDIR /build/
+COPY config ./config
+WORKDIR /build/vue
+
+# Build Vite assets
+RUN npm run build
+
 FROM ruby:3.4.7-slim
 
-ENV MALLOC_ARENA_MAX=2
-ENV RAILS_LOG_TO_STDOUT=1
-ENV RAILS_SERVE_STATIC_FILES=1
-ENV RAILS_ENV=production
-ENV BUNDLE_WITHOUT=development
-ENV NODE_MAJOR=22
+ENV MALLOC_ARENA_MAX=2 \
+    RAILS_LOG_TO_STDOUT=1 \
+    RAILS_SERVE_STATIC_FILES=1 \
+    RAILS_ENV=production \
+    BUNDLE_WITHOUT=development \
+    TZ=UTC
 
 WORKDIR /loomio
 
-RUN apt-get update
-RUN apt-get install -y ca-certificates curl gnupg unzip
-
-RUN mkdir -p /etc/apt/keyrings
-RUN curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
-RUN echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list
-
+# Base dependencies
 RUN apt-get update -qq && \
     apt-get install -y \
-    build-essential \
-    git \
-    libvips \
-    ffmpeg \
-    poppler-utils \
-    sudo \
-    nodejs \
-    imagemagick \
-    libyaml-dev \
-    libpq-dev && \
+      ca-certificates \
+      curl \
+      gnupg \
+      unzip \
+      build-essential \
+      git \
+      libvips \
+      ffmpeg \
+      poppler-utils \
+      sudo \
+      imagemagick \
+      libyaml-dev \
+      libpq-dev && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists /usr/share/doc /usr/share/man
+    rm -rf /var/lib/apt/lists/* /usr/share/doc /usr/share/man
 
+# Copy Ruby dependency metadata first (better cache)
+COPY Gemfile Gemfile.lock ./
+
+# Install Ruby gems
+RUN bundle install && \
+    bundle exec bootsnap precompile --gemfile app/ lib/
+
+# Copy entire app source
 COPY . .
 
-RUN bundle install && bundle exec bootsnap precompile --gemfile app/ lib/
-
-WORKDIR /loomio/vue
-RUN npm install
-RUN npm run build
-WORKDIR /loomio
+# Copy built Vite assets from nodebuild stage
+COPY --from=nodebuild /build/public/client3 /loomio/public/client3
 
 EXPOSE 3000
 
