@@ -84,9 +84,9 @@ section.actions-panel#add-comment(:key="discussion.id" :class="{'mt-2 px-2 px-sm
     v-divider(aria-hidden="true")
     v-tabs.activity-panel__actions.mb-3(grow color="primary" v-model="currentAction")
       v-tab(value='add-comment')
-        span(v-t="'thread_context.add_comment'")
+        span(v-t="'thread_context.add_a_comment'")
       v-tab.activity-panel__add-poll(value='add-poll' v-if="canStartPoll")
-        span(v-t="'poll_common.decision'")
+        span(v-t="'thread_context.start_a_vote'")
     v-window(v-model="currentAction")
       v-window-item(value="add-comment")
         .add-comment-panel

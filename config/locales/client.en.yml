@@ -538,13 +538,8 @@ en:
         loud: You will be emailed all activity in new groups.
         normal: You will be emailed about announcements in new groups.
         quiet: You won't be emailed about new groups.
-  close_explanation_modal:
-    aria_label: Close thread
-    close_thread: Close thread
-    body: |
-      <p>Close old or irrelevant threads to remove them from view and indicate the discussion has closed.</p>
-      <p>Anyone may still comment or start a poll in a closed thread, but it will not appear in the group's thread list or on the dashboard.</p>
-    image_alt: Closing threads all
+  close_discussion_modal:
+    body: Close discussions to remove them from the list of open discussions and prevent people from commenting.
   inbox:
     clear: Clear
     latest: Latest
@@ -595,8 +590,10 @@ en:
     all_groups: All groups
     recent_threads: Recent threads
     invite_only_threads: Invite-only threads
+    invite_only_discussions: Invite-only discussions
     direct_threads: Direct threads
     unread_threads: Unread threads (%{count})
+    unread_discussions_count: Unread discussions (%{count})
     muted_threads: Muted threads
     start_group: New organization
     start_subgroup: New subgroup
@@ -879,24 +876,23 @@ en:
     new_template_subtitle: Create an example that others can copy
     to: To
     direct_thread: Direct thread
-    invite_only_thread: Invite-only thread
+    invite_only_thread: Invite-only discussion
     none_direct_thread: Direct thread (no group)
     none_invite_only_thread: Invite-only thread (no group)
     change_log_placeholder: Optionally, describe your changes. This message will be added to the thread.
     change_log_label: What's changed?
     invite: Invite
-    aria_label: Thread form
     start_thread: Start thread
     start_discussion: Start discussion
     discussion_updated: Discussion updated
     discussion_created: Discussion created
     messages:
-      created: Thread started
-      updated: Thread updated
-      forked: Thread fork created
-    new_discussion_title: Start new discussion
+      created: Discussion started
+      updated: Discussion updated
+      forked: Discussion forked
+    new_discussion_title: Start a discussion
     new_thread_from_template: 'New discussion: %{process_name}'
-    moving_items_title: Move items to new thread
+    moving_items_title: Move items to another discussion
     edit_discussion_title: Edit discussion
     group_label: Group
     group_placeholder: Select a group
@@ -1079,7 +1075,9 @@ en:
     show_notifications: Show notifications
     history: History
     pin_thread: Pin thread
+    pin_discussion: Pin discussion
     unpin_thread: Un-pin thread
+    unpin_discussion: Un-pin discussion
     pin_event: Pin to timeline
     unpin_event: Unpin from timeline
     comment_copied: Comment URL copied to clipboard
@@ -1089,8 +1087,11 @@ en:
     url_copied: Link copied to clipboard
     tag_thread: Manage tags
     close_thread: Close thread
+    close_discussion: Close discussion
     reopen_thread: Re-open thread
+    reopen_discussion: Re-open discussion
     delete_thread: Delete thread
+    delete_discussion: Delete discussion
     notification_history: Notification history
     move_item: Move item
     add_poll_to_thread: Add to thread
@@ -1674,20 +1675,19 @@ en:
     no_polls_to_vote_on: There are no polls you need to vote on
     recent_polls: Recent polls
     current_polls: Current polls
-    recent_threads: Recent threads
+    recent_discussions: Recent discussions
     no_groups:
       show_all: Welcome! You are not a member of any groups yet. <a href="/explore">Browse public groups</a> or <a href="/g/new">Start a group</a>.
       show_muted: You don't have any muted threads because you are not a member of any groups.
     no_threads:
-      show_all: You don't have any recent threads.
+      show_all: You don't have any recent discussions.
       show_proposals: There are no proposals currently active.
       show_muted: You don't have any muted threads.
-    view_recent: View all recent threads?
-    load_more: Load more threads
+    view_recent: View all recent discussions?
     mark_as_read: Mark as read
     dismiss: Dismiss
-    thread_dismissed: Thread marked as read
-    thread_recalled: Thread recalled
+    discussion_marked_as_read: Discussion marked as read
+    discussion_marked_as_unread: Discussion marked as unread
     explain_mute:
       title: You haven't muted any threads yet.
       explanation_html: |
@@ -1700,7 +1700,7 @@ en:
       filter_threads: Filter Threads
       filter_threads_aria_label: Filter Threads
       dropdown_heading: Filter dashboard
-      all: Recent Threads
+      all: Recent Discussions
       all_aria_label: Currently showing recent threads
       all_description: View recent threads
       proposals: Proposals
@@ -1726,11 +1726,13 @@ en:
     no_direct_threads: You have no direct threads
     no_invite_only_threads: You have no invite-only threads
   inbox_page:
-    no_threads: Woohoo! You've read all the threads in your inbox.
-    unread_threads: Unread Threads
+    # no_threads: Woohoo! You've read all the threads in your inbox.
+    no_discussions: Woohoo! You've read all the discussions in your inbox.
+    # unread_threads: Unread Threads
+    unread_discussions: Unread discussions
     view_more: View More
     no_groups:
-      explanation: You have no unread threads because you are not a member of any groups.
+      explanation: You have no unread discussions because you are not a member of any groups.
       start: Start
       or: or
       join_group: <a href="/explore">join</a> a group to see threads.
@@ -1749,22 +1751,22 @@ en:
     load_previous: Load earlier activity
     started_by: Started by <strong>%{name}</strong>
     pin:
-      pinned: Thread pinned
-      unpinned: Thread unpinned
+      pinned: Discussion pinned
+      unpinned: Discussion unpinned
     volume:
-      mute_message: Thread muted
-      unmute_message: Thread unmuted
+      mute_message: Discussion muted
+      unmute_message: Discussion unmuted
     closed:
-      reopened: Thread reopened
-      closed: Thread closed
+      reopened: Discussion reopened
+      closed: Discussion closed
   discussion_last_seen_by:
     title: Seen by
     no_one: No one has seen this yet
     disabled_anonymous_polls: Viewer history is disabled because thread contains anonymous polls
   activity_card:
     count_responses: "%{count} responses"
-    event_pinned: Pinned to timeline
-    event_unpinned: Unpinned from timeline
+    event_pinned: Added to discussion timeline
+    event_unpinned: Removed from discussion timeline
     beginning: Beginning
     end: End
     unread: Unread (%{count})
@@ -1783,7 +1785,7 @@ en:
     comment: Comment
     facilitate: Facilitate
     start_decision: Start decision
-    start_vote: Start vote
+    start_a_vote: Start a vote
   thread_group:
     aria_label: Group name
   thread_context:
@@ -1802,7 +1804,8 @@ en:
     move_thread: Move
     print_thread: Print
     delete_thread: Delete
-    add_comment: Comment
+    add_a_comment: Add a comment
+    start_a_vote: Start a vote
     seen_by_count: Seen by %{count}
     count_notified: Notified %{count}
     forked_from: Forked from
@@ -1828,13 +1831,9 @@ en:
     nested_twice: Two levels of nested replies
     nested_twice_description: Indent replies at most two times.
     changing_nesting_is_slow: Changes to nesting can take a couple of minutes to process.
-  delete_thread_form:
-    aria_label: Delete thread
-    title: Delete thread
-    body: Are you sure you want to delete this thread?
-    confirm: Delete thread
-    messages:
-      success: Thread deleted
+  delete_discussion_form:
+    body: Are you sure you want to delete this discussion?
+    discussion_deleted: Discussion deleted
   move_thread_form:
     aria_label: Move thread
     title: Move thread

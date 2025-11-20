@@ -195,11 +195,9 @@ export default
         span(v-t="'common.action.search'")
       v-spacer
       v-btn.polls-panel__new-poll-button(
-        title="You cannot start a poll without a discussion"
-        :disabled="true"
+        v-if='canStartPoll'
         variant="elevated"
         :to="'/p/new?group_id='+group.id"
-        v-if='canStartPoll'
       )
         span(v-t="'polls_panel.new_poll'")
     v-card(outlined)

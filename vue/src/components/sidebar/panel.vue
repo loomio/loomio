@@ -169,10 +169,10 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
     v-divider
     v-list(nav density="compact" :lines="false")
       v-list-item.sidebar__list-item-button--recent(to="/dashboard" :title="$t('dashboard_page.aria_label')")
-      v-list-item(to="/inbox" :title="$t('sidebar.unread_threads', { count: unreadThreadCount() })")
+      v-list-item(to="/inbox" :title="$t('sidebar.unread_discussions_count', { count: unreadThreadCount() })")
       v-list-item.sidebar__list-item-button--private(to="/threads/direct")
         v-list-item-title
-          span(v-t="'sidebar.invite_only_threads'")
+          span(v-t="'sidebar.invite_only_discussions'")
           span(v-if="unreadDirectThreadsCount > 0")
             space
             span ({{unreadDirectThreadsCount}})

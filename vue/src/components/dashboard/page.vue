@@ -96,7 +96,7 @@ v-main
 
     v-card.mb-3(v-if='!dashboardLoaded')
       v-list(lines="two")
-        v-list-subheader(v-t="'dashboard_page.recent_threads'")
+        v-list-subheader(v-t="'dashboard_page.recent_discussions'")
         loading-content(
           :lineCount='2'
           v-for='(item, index) in [1,2,3]'
@@ -115,7 +115,7 @@ v-main
         .dashboard-page__collections(v-if='discussions.length')
           v-card.mb-3.thread-preview-collection__container.thread-previews-container
             v-list.thread-previews(lines="two")
-              v-list-subheader(v-t="'dashboard_page.recent_threads'")
+              v-list-subheader(v-t="'dashboard_page.recent_discussions'")
               thread-preview(
                 v-for="thread in discussions"
                 :key="thread.id"
