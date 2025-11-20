@@ -48,7 +48,7 @@ export default
         params: {
           exclude_types: 'poll',
           filter: this.filter,
-          per: 60
+          per: 30
         }
       });
 
