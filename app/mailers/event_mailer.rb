@@ -32,7 +32,7 @@ class EventMailer < BaseMailer
 
     @utm_hash = { utm_medium: 'email', utm_campaign: @event.kind }
 
-    thread_kinds = %w[
+    discussion_kinds = %w[
       new_comment
       new_discussion
       discussion_edited
@@ -83,7 +83,7 @@ class EventMailer < BaseMailer
       subject_prefix: group_name_prefix(@event),
       subject_key: "notifications.email_subject.#{@event_key}",
       subject_params: subject_params,
-      subject_is_title: thread_kinds.include?(@event.kind),
+      subject_is_title: discussion_kinds.include?(@event.kind),
       template_name: template_name
     )
   end
