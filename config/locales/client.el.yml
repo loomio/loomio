@@ -382,13 +382,10 @@ el:
     unreleased_emails: Ακυκλοφόρητα email
     start_a_thread_by_email: Ξεκινήστε ένα νήμα μέσω email
     send_email_to_start_thread: Στείλτε ένα email σε αυτή τη διεύθυνση για να ξεκινήσετε ένα νήμα στην ομάδα σας.
-    subject_body_attachments: Το θέμα του μηνύματος ηλεκτρονικού ταχυδρομείου γίνεται ο τίτλος του νήματος, το σώμα του μηνύματος ηλεκτρονικού ταχυδρομείου γίνεται η περιγραφή και τυχόν συνημμένα αρχεία θα επισυναφθούν στο νήμα.
     copy_address: Αντιγραφή διεύθυνσης
     email_me_this_address: Στείλτε μου αυτή τη διεύθυνση email
     email_address_copied_to_clipboard: Η διεύθυνση ηλεκτρονικού ταχυδρομείου αντιγράφηκε στο πρόχειρο
     forward_email_to_move_conversation: 'Συμβουλή: Προωθήστε μια συνομιλία μέσω email στο Loomio όταν πρέπει να πάρετε μια απόφαση ή να κρατήσετε αρχείο.'
-  email_to_group_mailer:
-    your_email_address_to_start_threads_in_group: Η διεύθυνση email σας για να ξεκινήσετε νήματα στο %{group}
   volume_levels:
     loud: Δυνατά
     normal: Κανονικά
@@ -412,14 +409,12 @@ el:
       loud_explain: όποτε υπάρχει δραστηριότητα
       normal_explain: όταν κάποιος ζητά την προσοχή σας
       quiet_explain: δεν υπάρχουν ειδοποιήσεις
-    aria_label: Αλλαγή ρυθμίσεων ηλεκτρονικής διεύθυνσης φόρμας
     loud_label: Όλες οι δραστηριότητες
     normal_label: Ανακοινώσεις
     quiet_label: Όχι emails
     mute_label: Σίγαση
     saved: Οι ρυθμίσεις ειδοποιήσεων ενημερώθηκαν
     discussion:
-      title: Ειδοποιήσεις νήματος
       loud_description: Θα λάβετε email για όλες τις δραστηριότητες σε αυτό το νήμα.
       normal_description: Θα λάβετε email μόνο σημαντική δραστηριότητα σε αυτό το νήμα.
       quiet_description: Δεν θα σας σταλεί με email καμία δραστηριότητα σε αυτό το νήμα.
@@ -470,7 +465,6 @@ el:
     normal_desc: Όταν κάποιος με ειδοποιεί
     quiet_desc: Ποτέ
     when_would_you_like_to_be_emailed_poll_type: Πότε θα θέλατε να λάβετε μήνυμα ηλεκτρονικού ταχυδρομείου σχετικά με αυτό το %{poll_type};
-    normal_explained: Όταν κάποιος εισάγει το όνομά σας στο πεδίο "Ειδοποίηση" ενός νήματος ή μιας δημοσκόπησης, ή {'@'}αναφέρει την ομάδα.
     normal_excludes_mentioning_html: Υπάρχει ξεχωριστή ρύθμιση για το πότε κάποιος σας αναφέρει {'@'} (π.χ. όταν σας απαντά σε ένα σχόλιο). <a href="%{url}">Κάντε κλικ εδώ για να επεξεργαστείτε τις ρυθμίσεις για τις @αναφορές</a>
     loud_explained: Θα λαμβάνετε email κάθε φορά που υπάρχει ένα νέο σχόλιο, κάποιος ψηφίζει ή ξεκινά μια δημοσκόπηση ή ένα νήμα.
     changes_all_threads_and_polls_in_group: Αυτό αλλάζει τη ρύθμιση για όλα τα νήματα και τις δημοσκοπήσεις στην ομάδα.
@@ -478,7 +472,6 @@ el:
     what_the_options_mean: Τι σημαίνουν οι επιλογές
     quiet_explained: Δεν θα λαμβάνετε email, ακόμα και όταν κάποιος προσπαθήσει να σας ειδοποιήσει. Ενδέχεται να χάσετε σημαντικές ανακοινώσεις ή αποφάσεις, εκτός αν έχετε τη συνήθεια να ελέγχετε τακτικά το Loomio.
   close_explanation_modal:
-    aria_label: Κλείστε το νήμα
     close_thread: Κλείστε το νήμα
     body: "<p>Κλείστε παλιά ή άσχετα νήματα για να τα αφαιρέσετε από την προβολή και να υποδείξετε ότι η συζήτηση έχει κλείσει.</p><p> Οποιοσδήποτε μπορεί ακόμα να σχολιάσει ή να ξεκινήσει μια δημοσκόπηση σε ένα κλειστό νήμα, αλλά δεν θα εμφανίζεται στη λίστα νημάτων της ομάδας ή στον πίνακα ελέγχου.</p>"
     image_alt: Κλείσιμο όλων των νημάτων
@@ -491,14 +484,10 @@ el:
     password_label: 'Κωδικός:'
     password_confirmation_label: 'Ξανά τον ίδιο κωδικό:'
   signed_out_modal:
-    aria_label: Η σύνοδος έληξε
     title: Η σύνοδος σας έληξε
     message: Έχετε αποσυνδεθεί από άλλο παράθυρο. Παρακαλώ συνδεθείτε ξανά για να συνεχίσετε.
     ok: Εντάξει
-  comment_reply_form:
-    aria_label: Προσθέστε μια απάντηση
   comment_form:
-    aria_label: Πρόσθεσε ένα σχόλιο
     attachments:
       add_attachment: Επισυνάψτε αρχείο
       remove_attachment: Αφαίρεσε συννημένο
@@ -525,9 +514,6 @@ el:
   thread_nav:
     participants: Συμμετέχοντες
   sidebar:
-    new_thread_removed: Νέο νήμα αφαιρέθηκε
-    new_thread_removed_body: Το νέο κουμπί νήματος αφαιρείται από την πλαϊνή γραμμή. Για να ξεκινήσετε ένα νέο νήμα, μεταβείτε πρώτα στην ομάδα σας και μετά κάντε κλικ στο "Νέο νήμα". Λυπούμαστε για την αλλαγή, αλλά απαιτείται επειδή πρέπει να επιλέξετε ένα πρότυπο όταν ξεκινάτε ένα νήμα.
-    threads: Θέματα
     my_groups: Οι ομάδες μου
     other_groups: Άλλες ομάδες
     all_groups: Όλες οι ομάδες
@@ -536,7 +522,6 @@ el:
     direct_threads: Άμεσες κλωστές
     unread_threads: Μη αναγνωσμένα νήματα (%{count})
     muted_threads: Θέματα σε σίγαση
-    start_group: Νέα οργάνωση
     start_subgroup: Νέα υποομάδα
     explore: Δημόσιες ομάδες
     explore_groups: Εξερευνήστε ομάδες
@@ -581,7 +566,6 @@ el:
     all_subgroups: Όλες οι υποομάδες
     parent_only: Μόνο γονέας
   navbar:
-    search_all_threads: Αναζήτηση όλων των νημάτων
     search_threads: Αναζήτηση νημάτων στο %{name}
     search_polls: Αναζήτηση δημοσκοπήσεων σε %{name}
     search_members: Αναζήτηση μελών στο %{name}
@@ -633,7 +617,6 @@ el:
     dark_blue: Σκούρο μπλε
   membership_card:
     group_members: Μέλη ομάδας
-    discussion_members: Μέλη νήματος
     poll_members: "%{pollType} μέλη"
     voters: Ψηφοφόροι
     invite_to_group: Πρόσκληση σε ομάδα
@@ -649,7 +632,6 @@ el:
     make_coordinator: Κάντε τον/την διαχειριστή
     demote_coordinator: Υποβιβασμός διαχειριστή
     remove_from:
-      discussion: Αφαίρεση από το νήμα
       group: Αφαίρεση από την ομάδα
       poll: Κατάργηση από %{pollType}
     cancel_invitation: Ακύρωση πρόσκλησης
@@ -658,7 +640,6 @@ el:
     make_delegate: Κάντε ανάθεση
     revoke_delegate: Ανάκληση εκπροσώπου
   notification_models:
-    discussion: 'Νήμα:'
     comment: σχόλιο μέσα
     poll: 'ψηφοφορία:'
     outcome: 'αποτέλεσμα:'
@@ -669,9 +650,6 @@ el:
     with_title:
       unknown_sender: Ελέγξτε τα μηνύματα ηλεκτρονικού ταχυδρομείου από μη αναγνωρισμένο αποστολέα
       comment_replied_to: 'Ο %{actor} σας απάντησε στο: %{title}'
-      discussion_announced: 'Ο %{actor} σας προσκάλεσε στο νήμα: %{title}'
-      discussion_edited: 'Ο %{actor} επεξεργάστηκε το πλαίσιο του νήματος: %{title}'
-      discussion_closed: "%{actor} έκλεισε το νήμα: %{title}"
       invitation_accepted: Ο %{actor} αποδέχτηκε την πρόσκλησή σας για συμμετοχή στο %{title}
       membership_created: Ο %{actor} σας προσκάλεσε να γίνετε μέλος του %{title} στο %{site_name}
       membership_resent: Ο %{actor} σας προσκάλεσε να γίνετε μέλος του %{title} στο %{site_name}
@@ -679,7 +657,6 @@ el:
       membership_request_approved: Ο %{actor} ενέκρινε το αίτημά σας για συμμετοχή στο %{title}
       new_comment: 'Ο %{actor} σχολίασε στο: %{title}'
       new_coordinator: Ο %{actor} σας έκανε διαχειριστή του %{title}
-      new_discussion: 'Ο %{actor} ξεκίνησε ένα νήμα: %{title}'
       outcome_announced: 'Ο %{actor} μοιράστηκε ένα %{poll_type} αποτέλεσμα: %{title}'
       outcome_created: 'Ο %{actor} μοιράστηκε ένα %{poll_type} αποτέλεσμα: %{title}'
       outcome_updated: 'Ο %{actor} ενημέρωσε το %{poll_type} αποτέλεσμα: %{title}'
@@ -707,13 +684,8 @@ el:
       poll_announced: 'Ο χρήστης %{actor} σας προσκάλεσε να ψηφίσετε: %{title}'
     without_title:
       unknown_sender: Ελέγξτε τα μηνύματα ηλεκτρονικού ταχυδρομείου από μη αναγνωρισμένο αποστολέα
-      discussion_announced: Ο %{actor} σας προσκάλεσε σε ένα νήμα
-      discussion_edited: Ο %{actor} επεξεργάστηκε το περιβάλλον του νήματος
-      discussion_closed: Ο %{actor} έκλεισε το νήμα
       group_announced: Ο %{actor} σας προσκάλεσε σε μια ομάδα
       comment_replied_to: Ο %{actor} σας απάντησε
-      new_discussion: Ο %{actor} ξεκίνησε ένα νήμα
-      new_comment: Ο %{actor} σχολίασε σε ένα νήμα
       membership_created: Ο %{actor} σας προσκάλεσε να συμμετάσχετε σε μια ομάδα
       membership_resent: Ο %{actor} σας προσκάλεσε να συμμετάσχετε σε μια ομάδα
       membership_requested: Ο %{actor} ζήτησε να συμμετάσχει στην ομάδα σας
@@ -745,13 +717,10 @@ el:
     hints:
       poll_closing_soon: Τώρα είναι η κατάλληλη στιγμή για να ψηφίσετε, να αλλάξετε γνώμη ή να ενθαρρύνετε άλλους να συμμετάσχουν.
       poll_closing_soon_author: Μπορεί να θέλετε να υπενθυμίσετε στους ανθρώπους να ψηφίσουν ή να παρατείνετε την προθεσμία.
-      outcome_review_due: Εξετάστε το ενδεχόμενο να ξεκινήσετε μια δημοσκόπηση σχολίων ή ένα νέο νήμα που προσκαλεί προβληματισμούς σχετικά με τον τρόπο εφαρμογής της απόφασης.
     email_subject:
       unknown_sender: Έλεγχος email από μη αναγνωρισμένο αποστολέα
       comment_replied_to: 'Ο χρήστης %{actor} σας απάντησε στο: %{title}'
       discussion_announced: "%{title}"
-      discussion_edited: 'Ο %{actor} επεξεργάστηκε το περιεχόμενο: %{title}'
-      discussion_closed: 'Ο/Η %{actor} έκλεισε το νήμα: %{title}'
       invitation_accepted: Ο/Η %{actor} αποδέχτηκε την πρόσκλησή σας για να συμμετάσχει στον/στην %{title}
       membership_created: Ο/Η %{actor} σας προσκάλεσε να γίνετε μέλος του/της %{title} στο %{site_name}
       membership_resent: Ο χρήστης %{actor} σας προσκάλεσε να συμμετάσχετε στον χρήστη %{title} στο %{site_name}
@@ -786,33 +755,8 @@ el:
       user_reminded: 'Ο χρήστης %{actor} σας υπενθυμίζει να ψηφίσετε: %{title}'
       poll_announced: 'Ψηφοφορία: %{title}'
   discussion_fork_actions:
-    helptext: Επιλέξτε στοιχεία που θέλετε να μετακινήσετε σε άλλο νήμα
     move: Κίνηση
-    search_placeholder: Βρείτε νήμα ανά τίτλο
     moved: Μετακινώντας τα σχόλια, αυτό μπορεί να διαρκέσει λίγο
-    move_to_existing_thread: Μετακίνηση στο υπάρχον νήμα
-    start_new_thread: Ή, ξεκινήστε νέο νήμα
-  thread_template:
-    browse_public_templates: Περιηγηθείτε στη συλλογή προτύπων
-    thread_template_settings: Ρυθμίσεις προτύπου νήματος
-    start_a_new_thread: Ξεκινήστε ένα νέο νήμα
-    thread_template_saved: Το πρότυπο νήματος αποθηκεύτηκε
-    these_are_public_templates: Αυτά τα πρότυπα είναι διαθέσιμα για να τα αντιγράψετε ή να τα τροποποιήσετε ώστε να ταιριάζουν στην ομάδα σας
-    these_are_templates: Αυτά είναι τα πρότυπα νημάτων στην ομάδα σας. Τα πρότυπα σας καθοδηγούν σε κοινές διαδικασίες λήψης αποφάσεων.
-    default_title_label: Προεπιλεγμένος τίτλος
-    default_title_hint: Συμπληρώστε εκ των προτέρων το πεδίο τίτλου με επεξεργάσιμο κείμενο. Αυτό είναι προαιρετικό - αφήστε το κενό εάν δεν είστε σίγουροι.
-    title_placeholder_label: Παράδειγμα τίτλου
-    title_placeholder_hint: Ένα παράδειγμα για εμφάνιση στο φόντο του πεδίου τίτλου
-    title_placeholder_placeholder: π.χ. Έτσι μοιάζει το κείμενο φόντου
-    example_description_label: Παράδειγμα περιγραφής
-    example_description_placeholder: Παρέχετε ένα πρότυπο με το οποίο οι χρήστες μπορούν να χρησιμοποιήσουν για να ξεκινήσουν ένα νήμα
-    hidden_templates: Κρυφά πρότυπα
-    confirm_delete: Είστε βέβαιοι ότι θέλετε να διαγράψετε οριστικά αυτό το πρότυπο νήματος; Κανένα νήμα δεν θα διαγραφεί ως αποτέλεσμα αυτού.
-    add_proposal_or_poll_template: Προσθήκη πρότασης ή προτύπου δημοσκόπησης
-    recommended_proposal_or_poll_templates: Προτεινόμενα πρότυπα πρότασης ή δημοσκόπησης
-    decision_templates: Πρότυπα αποφάσεων
-    decision_templates_help: Επιλέξτε οποιαδήποτε πρόταση ή πρότυπα δημοσκόπησης που βοηθούν στην ολοκλήρωση αυτής της διαδικασίας.
-    share_in_template_gallery: Μοιραστείτε αυτό το πρότυπο στη δημόσια συλλογή προτύπων
   discussion_form:
     thread_templates: Πρότυπα νημάτων
     new_thread_template: Νέο πρότυπο νήματος
@@ -829,7 +773,6 @@ el:
     change_log_placeholder: Προαιρετικά, περιγράψτε τις αλλαγές σας. Αυτό το μήνυμα θα προστεθεί στο νήμα.
     change_log_label: Τι άλλαξε;
     invite: Πρόσκληση
-    aria_label: Φόρμα θέματος
     start_thread: Ξεκινήστε ένα θέμα
     messages:
       created: Το θέμα ξεκίνησε
@@ -857,7 +800,6 @@ el:
     send_poll: Αποστολή %{type}
     send_outcome: Αποστολή αποτελέσματος
     cannot_reveal_when_anonymous: Λυπούμαστε, δεν μπορούμε να αποκαλύψουμε ποιος ψήφισε ή δεν ψήφισε σε μια ανώνυμη δημοσκόπηση.
-    discussion_notification_history: Ιστορικό ειδοποιήσεων νήματος
     group_notification_history: Ιστορικό ομαδικών προσκλήσεων
     poll_notification_history: Ιστορικό ειδοποιήσεων δημοσκόπησης
     outcome_notification_history: Ιστορικό ειδοποιήσεων αποτελεσμάτων
@@ -869,7 +811,6 @@ el:
     preview: Προεπισκόπηση email
     no_notifications_sent: Δεν έχουν σταλεί ειδοποιήσεις
     history_error: Κάτι πήγε στραβά! Δεν ήταν δυνατή η φόρτωση του ιστορικού.
-    inviting_guests_to_thread: Οι επισκέπτες δεν ανήκουν στην ομάδα σας και έχουν πρόσβαση μόνο σε αυτό το νήμα
     select_groups: Επιλέξτε ομάδες
     search_by_name_or_email: Κάντε αναζήτηση με βάση το όνομα ή πληκτρολογήστε email για πρόσκληση
     search_by_name: Αναζήτηση ατόμων με όνομα
@@ -951,8 +892,6 @@ el:
       added_singular: Θα προστεθεί 1 άτομο.
       added_none: Δεν θα προστεθεί κανείς.
       group_title: "%{name} (%{count} άτομα)"
-      visible_to_group: Οποιοσδήποτε στην %{group} θα μπορεί να δει αυτό το νήμα.
-      visible_to_guests: Μόνο οι προσκεκλημένοι μπορούν να δουν αυτό το νήμα.
       click_group_to_see_individuals: Κάντε κλικ στην ομάδα για να δείτε άτομα
       poll_announced:
         title: Πρόσκληση για ψηφοφορία
@@ -1098,7 +1037,6 @@ el:
     messages:
       joined_group: Τώρα είστε μέλος της ομάδας %{group}
   membership_request_form:
-    aria_label: Φόρμα αιτήματος μέλους
     heading: Δηλώστε συμμετοχή στην ομάδα
     name_label: Όνομα
     email_label: Ηλεκτρονική Διεύθυνση
@@ -1108,7 +1046,6 @@ el:
     messages:
       membership_requested: Έχετε ζητήσει να συμμετάσχετε στην %{group}
   revision_history_modal:
-    aria_label: Αναθεώρηση ιστορικού
     discussion_header: Επεξεργασίες συζήτησης
     comment_header: Επεξεργασίες σχολίων
     poll_header: Επεξεργασίες δημοσκόπησης
@@ -1134,10 +1071,6 @@ el:
     you_and_name: Εσείς και ο %{name}
     you_and_name_and_count_more: Εσείς, ο %{name} και %{count} ακόμη
     name_and_count_more: "%{name} και %{count} ακόμη"
-  context_panel:
-    thread_status:
-      pinned: Αυτό το νήμα έχει καρφιτσωθεί. Θα παραμείνει στην κορυφή της λίστας νημάτων της ομάδας για όλους τους χρήστες.
-      closed: Αυτό το νήμα έχει κλείσει. Δεν θα εμφανίζεται πλέον στον πίνακα εργαλείων και θα εμφανίζεται στη λίστα "κλειστό" στη σελίδα της ομάδας
   delete_group_modal:
     title: Διαγραφή ομάδας
     subgroup_title: Διαγραφή υποομάδας
@@ -1215,7 +1148,6 @@ el:
       private: 'Απόρρητο: Αυτή η ομάδα είναι ορατή μόνο στα μέλη'
       parent_members: 'Απόρρητο: Αυτή η ομάδα είναι ορατή στα μέλη του %{parentGroupName} και στα μέλη του %{groupName}'
       public: 'Απόρρητο: Αυτή η ομάδα είναι ορατή στον ιστό'
-      aria_label: 'Απόρρητο ομάδας: %{privacy}'
     participation_report: Έκθεση συμμετοχής
     my_subgroups: Οι υποομάδες μου
     more_subgroups: Περισσότερες υποομάδες
@@ -1230,12 +1162,10 @@ el:
     messages:
       description_updated: Η περιγραφή ανανεώθηκε
   leave_group_form:
-    aria_label: Φύγετε από την ομάδα
     title: 'Φύγετε από την ομάδα '
     question: Είστε σίγουροι ότι θέλετε να φύγετε από την ομάδα;
     submit: Ναι, φύγετε από την ομάδα
   archive_group_form:
-    aria_label: Απενεργοποίηση ομάδας
     title: Απενεργοποίηση ομάδας
     question: Είστε σίγουροι ότι θέλετε να απενεργοποίησετε την ομάδα;
     submit: Ναι, απενεργοποίηστε την ομάδα
@@ -1245,7 +1175,6 @@ el:
     change_cover_image: αλλαγή εικόνας εξωφύλλου
     change_logo: αλλαγή λογότυπου
     permissions_explaination: 'Υπάρχουν δύο επίπεδα ιδιότητας μέλους που μπορεί να έχει ένα άτομο σε μια ομάδα: διαχειριστής και μέλος. Οι διαχειριστές μπορούν να επεξεργάζονται τις ρυθμίσεις της ομάδας, να κάνουν άλλα άτομα διαχειριστές και να εκτελούν όλες τις ενέργειες που αναφέρονται παρακάτω.'
-    aria_label: Φόρμα ομάδας
     parent_group: Ομάδα γονέων
     new_organisation: Νέα οργάνωση
     new_group: Νέα ομάδα
@@ -1363,7 +1292,6 @@ el:
     group_url: Διεύθυνση URL ομάδας
     reusable_invitation_link: Επαναχρησιμοποιήσιμος σύνδεσμος πρόσκλησης
     error: Σφάλμα κατά την προσπάθεια αντιγραφής στο πρόχειρο
-    aria_label: Φόρμα πρόσκλησης
     invite_people: Προσκαλέστε άτομα
     invite_guests: Προσκαλέστε επισκέπτες
     notify_people: Ειδοποιήστε τους ανθρώπους
@@ -1496,7 +1424,6 @@ el:
     insert_link: Εισαγωγή συνδέσμου
     insert_embedded_url: Ενσωμάτωση βίντεο
   change_picture_form:
-    aria_label: Φόρμα φωτογραφίας προφίλ
     title: Ορισμός φωτογραφίας προφίλ
     helptext: Μπορείτε να ανεβάσετε τη δική σας εικόνα προφίλ ή εάν έχετε λογαριασμό <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> , μπορείτε να τη χρησιμοποιήσετε.
     use_initials: Χρησιμοποιήστε αρχικά
@@ -1560,7 +1487,6 @@ el:
     replies_count: "%{count} απαντήσεις"
     unread_count: "%{count} μη αναγνωσμένα"
   dashboard_page:
-    aria_label: Πίνακας Εργαλείων
     polls_to_vote_on: Δημοσκοπήσεις για ψηφοφορία
     no_polls_to_vote_on: Δεν υπάρχουν δημοσκοπήσεις για τις οποίες χρειάζεται να ψηφίσετε
     recent_polls: Πρόσφατες δημοσκοπήσεις
@@ -1573,7 +1499,6 @@ el:
       show_all: Δεν έχετε πρόσφατες συζητήσεις.
       show_proposals: Δεν υπάρχουν ενεργές προτάσεις αυτήν τη στιγμή.
       show_muted: Δεν έχετε σίγαση νημάτων.
-    view_recent: Προβολή όλων των πρόσφατων νημάτων;
     load_more: Φόρτωση περισσότερων νημάτων
     mark_as_read: Σημείωσε ως διαβασμένα
     dismiss: Απολύω
@@ -1583,7 +1508,6 @@ el:
       filter_threads: Νήματα φίλτρου
       filter_threads_aria_label: Νήματα φίλτρου
       dropdown_heading: Φιλτράρισμα πίνακα ελέγχου
-      all: Πρόσφατα θέματα
       all_aria_label: Εμφάνιση πρόσφατων νημάτων
       all_description: Προβολή πρόσφατων νημάτων
       proposals: Προτάσεις
@@ -1612,13 +1536,11 @@ el:
       see_muted_html: Για να δείτε τα νήματα που έχετε θέσει σε σίγαση, κάντε κλικ στην επιλογή <strong>"Σίγαση"</strong> . Μπορείτε να καταργήσετε τη σίγαση τοποθετώντας τον δείκτη του ποντικιού και κάνοντας κλικ στο ίδιο εικονίδιο.
   threads_page:
     no_direct_threads: Δεν έχετε απευθείας νήματα
-    no_invite_only_threads: Δεν έχετε νήματα μόνο για πρόσκληση
   inbox_page:
     no_threads: Ουάου! Έχετε διαβάσει όλα τα νήματα στα εισερχόμενά σας.
     unread_threads: Μη αναγνωσμένα νήματα
     view_more: Δείτε περισσότερα
     no_groups:
-      explanation: Δεν έχετε μη αναγνωσμένα νήματα επειδή δεν είστε μέλος καμίας ομάδας.
       start: Εκίνηση
       or: ή
       join_group: <a href="/explore">εγγραφείτε σε</a> μια ομάδα για να δείτε νήματα.
@@ -1635,9 +1557,6 @@ el:
     pin:
       pinned: Το νήμα καρφώθηκε
       unpinned: Το νήμα ξεκαρφιτσώθηκε
-    volume:
-      mute_message: Το νήμα τέθηκε σε σίγαση
-      unmute_message: Καταργήθηκε η σίγαση του νήματος
     closed:
       reopened: Το νήμα άνοιξε ξανά
       closed: Το νήμα έκλεισε
@@ -1647,8 +1566,6 @@ el:
     disabled_anonymous_polls: Το ιστορικό προβολής είναι απενεργοποιημένο επειδή το νήμα περιέχει ανώνυμες δημοσκοπήσεις
   activity_card:
     count_responses: "%{count} απαντήσεις"
-    event_pinned: Καρφιτσωμένο στη γραμμή χρόνου
-    event_unpinned: Ξεκαρφιτσώθηκε από τη γραμμή χρόνου
     beginning: Αρχή
     end: Τέλος
     unread: Μη αναγνωσμένο (%{count})
@@ -1657,7 +1574,6 @@ el:
     chronological: Χρονολογικός
     nested: Φωλιασμένο
     attachment_display:
-      aria_label: 'Συνημμένο αρχείο:'
       image_alt: Συνημμένη εικόνα
     n_previous: Φόρτωση %{count} προηγούμενων απαντήσεων
     n_more: Φόρτωση %{count} απαντήσεων
@@ -1668,12 +1584,9 @@ el:
     facilitate: Διευκολύνω
     start_decision: Απόφαση έναρξης
     start_vote: Έναρξη ψηφοφορίας
-  thread_group:
-    aria_label: Όνομα ομάδας
   thread_context:
     current_poll_type_banner: Τρέχουσα %{pollType}
     item_maybe_deleted: Δεν είναι δυνατή η εύρεση της ζητούμενης τοποθεσίας μέσα στο νήμα. Μπορεί να έχει διαγραφεί.
-    aria_label: Περιεχόμενο νήματος
     thread_options: Επιλογές νήματος
     email_settings: Ρυθμίσεις ειδοποιήσεων
     edit: Επεξεργασία
@@ -1690,11 +1603,6 @@ el:
     seen_by_count: Προβλήθηκε από %{count}
     count_notified: Ειδοποιήθηκε %{count}
     forked_from: Διχαλωτή από
-  pin_thread_modal:
-    title: Κλωστή καρφίτσας
-    helptext: Τα καρφιτσωμένα νήματα εμφανίζονται πάντα στην κορυφή της λίστας νημάτων της ομάδας τους. Μπορούν να χρησιμοποιηθούν για την ενημέρωση των μελών για σημαντικές ανακοινώσεις ή για την προώθηση κοινού υλικού, όπως κώδικα συμπεριφοράς ή κοινοτικές οδηγίες.
-    helptext_two: Μπορείτε να αφαιρέσετε καρφίτσες ανά πάσα στιγμή επιλέγοντας «Ξεκαρφίτσωμα» από το αναπτυσσόμενο νήμα
-    pin_thread: Κλωστή καρφίτσας
   thread_arrangement_form:
     edit: Επεξεργασία διάταξης
     title: Διάταξη νήματος
@@ -1713,20 +1621,11 @@ el:
     nested_twice_description: Η εσοχή απαντά το πολύ δύο φορές.
     changing_nesting_is_slow: Η επεξεργασία των αλλαγών στην ένθεση μπορεί να διαρκέσει μερικά λεπτά.
   delete_thread_form:
-    aria_label: Διαγραφή νήματος
     title: Διαγραφή νήματος
     body: Είστε βέβαιοι ότι θέλετε να διαγράψετε αυτό το νήμα;
     confirm: Διαγραφή νήματος
     messages:
       success: Το νήμα διαγράφηκε
-  move_thread_form:
-    aria_label: Μετακίνηση νήματος
-    title: Μετακίνηση νήματος
-    body: Ομάδα προορισμών
-    confirm: Μετακίνηση νήματος
-    confirm_change_to_private_thread: Το %{groupName} είναι μια ανοιχτή ομάδα. Εάν συνεχίσετε, αυτό το νήμα θα δημοσιοποιηθεί.
-    messages:
-      success: Το νήμα έχει μετακινηθεί στο %{name}
   delete_comment_dialog:
     title: Διαγραφή σχόλιου
     question: Αυτό θα διαγράψει οριστικά αυτό το σχόλιο. Εάν συνεχίσετε, δεν είναι δυνατή η επαναφορά του.
@@ -2389,8 +2288,6 @@ el:
     name_placeholder: Δώστε σε αυτήν την ενσωμάτωση ένα όνομα για να μπορείτε να την αναγνωρίσετε
     event_kind_helptext: Για ποια συμβάντα θέλετε να ειδοποιείται το webhook;
     event_kinds:
-      new_discussion: Ένα νήμα έχει ξεκινήσει
-      discussion_edited: Ένα νήμα επεξεργάζεται
       poll_edited: Μια δημοσκόπηση επεξεργάζεται
       new_comment: Γίνεται ένα σχόλιο
       poll_created: Έχει ξεκινήσει μια ψηφοφορία

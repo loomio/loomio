@@ -382,13 +382,10 @@ sl:
     unreleased_emails: Neobjavljena e-poštna sporočila
     start_a_thread_by_email: Začni nit po e-pošti
     send_email_to_start_thread: Pošljite e-pošto na ta naslov, da začnete nit v svoji skupini.
-    subject_body_attachments: Zadeva e-pošte postane naslov niti, telo e-pošte postane opis, vse priložene datoteke pa bodo priložene niti.
     copy_address: Kopiraj naslov
     email_me_this_address: Pošlji mi ta naslov po e-pošti
     email_address_copied_to_clipboard: E-poštni naslov kopiran v odložišče
     forward_email_to_move_conversation: 'Nasvet: Posredujte e-poštni pogovor v Loomio, ko se morate odločiti ali voditi evidenco.'
-  email_to_group_mailer:
-    your_email_address_to_start_threads_in_group: Vaš e-poštni naslov za začetek niti v %{group}
   volume_levels:
     loud: Glasno
     normal: Normalno
@@ -412,14 +409,12 @@ sl:
       loud_explain: kadarkoli je aktivnost
       normal_explain: ko nekdo prosi za tvojo pozornost
       quiet_explain: brez obvestil
-    aria_label: Obrazec za spreminjanje e-poštnih nastavitev
     loud_label: Vsa dejavnost
     normal_label: Obvestila
     quiet_label: Brez e-pošte
     mute_label: Mute
     saved: Nastavitve obvestil posodobljene
     discussion:
-      title: Obvestila o nitih
       loud_description: O vseh dejavnostih v tej niti boste prejeli e-poštno sporočilo.
       normal_description: Po e-pošti boste prejeli samo pomembne dejavnosti v tej temi.
       quiet_description: Ne boste prejeli e-poštnih sporočil o nobeni dejavnosti v tej niti.
@@ -470,7 +465,6 @@ sl:
     normal_desc: Ko me nekdo obvesti
     quiet_desc: Nikoli
     when_would_you_like_to_be_emailed_poll_type: Kdaj želite prejeti e-pošto o tem %{poll_type}?
-    normal_explained: Ko nekdo vnese vaše ime v polje »Obvesti« niti ali ankete ali ko {'@'}omeni skupino.
     normal_excludes_mentioning_html: Obstaja ločena nastavitev za primere, ko vas nekdo {'@'}omeni (npr. ko vam odgovori v komentarju). <a href="%{url}">Kliknite tukaj, če želite urediti nastavitve za @omembe.</a>
     loud_explained: Vsakič, ko bo objavljen nov komentar, nekdo bo glasoval ali bo začel anketo ali nit, boste prejeli e-poštno sporočilo.
     changes_all_threads_and_polls_in_group: To spremeni nastavitve za vse niti in ankete v skupini.
@@ -478,7 +472,6 @@ sl:
     what_the_options_mean: Kaj pomenijo možnosti
     quiet_explained: Ne boste prejeli e-poštnega sporočila, niti če vas bo kdo poskušal obvestiti. Pomembna obvestila ali odločitve boste morda spregledali, razen če imate navado redno preverjati Loomio.
   close_explanation_modal:
-    aria_label: Zapri temo
     close_thread: Zapri temo
     body: "<p>Zaprite stare ali nepomembne niti, da jih odstranite iz pogleda in označite, da je razprava zaključena.</p><p> Kdorkoli lahko še vedno komentira ali začne anketo v zaprti niti, vendar ne bo prikazana na seznamu niti skupine ali na nadzorni plošči.</p>"
     image_alt: Zapiranje vseh niti
@@ -491,14 +484,10 @@ sl:
     password_label: 'geslo:'
     password_confirmation_label: 'Še enkrat tisto geslo:'
   signed_out_modal:
-    aria_label: Seja se je končala
     title: Vaša seja se je končala
     message: Odjavili ste se v drugem oknu. Prosimo, prijavite se nazaj, preden nadaljujete.
     ok: V redu
-  comment_reply_form:
-    aria_label: Dodaj odgovor
   comment_form:
-    aria_label: Dodaj komentar
     attachments:
       add_attachment: Priloži datoteko
       remove_attachment: Odstrani prilogo
@@ -525,9 +514,6 @@ sl:
   thread_nav:
     participants: Udeleženci
   sidebar:
-    new_thread_removed: Nova nit odstranjena
-    new_thread_removed_body: Gumb za novo nit bo odstranjen iz stranske vrstice. Če želite začeti novo nit, se najprej pomaknite do svoje skupine in kliknite »Nova nit«. Oprostite za spremembo, vendar je potrebna, ker morate izbrati predlogo, ko začnete nit.
-    threads: Razprave
     my_groups: Moje skupine
     other_groups: Druge skupine
     all_groups: Vse skupine
@@ -536,7 +522,6 @@ sl:
     direct_threads: Neposredne niti
     unread_threads: Neprebrane niti (%{count})
     muted_threads: Utišane teme
-    start_group: Nova organizacija
     start_subgroup: Nova podskupina
     explore: Javne skupine
     explore_groups: Raziščite skupine
@@ -581,7 +566,6 @@ sl:
     all_subgroups: Vse podskupine
     parent_only: Samo starši
   navbar:
-    search_all_threads: Išči po vseh nitih
     search_threads: Iskanje tem v %{name}
     search_polls: Iskanje anket v %{name}
     search_members: Iskanje članov v %{name}
@@ -633,7 +617,6 @@ sl:
     dark_blue: Temno modra
   membership_card:
     group_members: Člani skupine
-    discussion_members: Člani razprave
     poll_members: "%{pollType} članov"
     voters: Volivci
     invite_to_group: Povabi v skupino
@@ -649,7 +632,6 @@ sl:
     make_coordinator: Naredi skrbnika
     demote_coordinator: Znižaj skrbnika
     remove_from:
-      discussion: Odstrani iz razprave
       group: Odstrani iz skupine
       poll: Odstrani iz %{pollType}
     cancel_invitation: Prekliči povabilo
@@ -658,7 +640,6 @@ sl:
     make_delegate: Naredi pooblaščenca
     revoke_delegate: Prekliči pooblaščenca
   notification_models:
-    discussion: 'nit:'
     comment: komentar v
     poll: 'anketa:'
     outcome: 'izid:'
@@ -669,9 +650,6 @@ sl:
     with_title:
       unknown_sender: Preglejte e-pošto neprepoznanega pošiljatelja
       comment_replied_to: "%{actor} vam je odgovoril v: %{title}"
-      discussion_announced: "%{actor} vas je povabil v nit: %{title}"
-      discussion_edited: "%{actor} je uredil kontekst niti: %{title}"
-      discussion_closed: "%{actor} je zaprl nit: %{title}"
       invitation_accepted: "%{actor} je sprejel vaše povabilo, da se pridruži %{title}"
       membership_created: "%{actor} vas vabi, da se pridružite %{title} na %{site_name}"
       membership_resent: "%{actor} vas vabi, da se pridružite %{title} na %{site_name}"
@@ -679,7 +657,6 @@ sl:
       membership_request_approved: "%{actor} je odobril vašo prošnjo za pridružitev %{title}"
       new_comment: "%{actor} je komentiral v: %{title}"
       new_coordinator: "%{actor} vas je postavil za skrbnika %{title}"
-      new_discussion: "%{actor} je začel nit: %{title}"
       outcome_announced: "%{actor} je delil rezultat %{poll_type}: %{title}"
       outcome_created: "%{actor} je delil rezultat %{poll_type}: %{title}"
       outcome_updated: "%{actor} je posodobil rezultat %{poll_type}: %{title}"
@@ -707,13 +684,8 @@ sl:
       poll_announced: "%{actor} vas je povabil k glasovanju: %{title}"
     without_title:
       unknown_sender: Preglejte e-pošto neprepoznanega pošiljatelja
-      discussion_announced: "%{actor} vas je povabil v nit"
-      discussion_edited: "%{actor} je uredil kontekst niti"
-      discussion_closed: "%{actor} je zaprl nit"
       group_announced: "%{actor} vas je povabil v skupino"
       comment_replied_to: "%{actor} vam je odgovoril"
-      new_discussion: "%{actor} je začel nit"
-      new_comment: "%{actor} je komentiral v niti"
       membership_created: "%{actor} vas je povabil, da se pridružite skupini"
       membership_resent: "%{actor} vas je povabil, da se pridružite skupini"
       membership_requested: "%{actor} je prosil za pridružitev vaši skupini"
@@ -745,13 +717,10 @@ sl:
     hints:
       poll_closing_soon: Zdaj je pravi čas, da glasujete, si premislite ali spodbudite druge k sodelovanju.
       poll_closing_soon_author: Morda boste želeli opomniti ljudi, naj glasujejo ali podaljšati rok.
-      outcome_review_due: Razmislite o tem, da bi začeli anketo s povratnimi informacijami ali novo nit, ki bi vabila k razmišljanju o tem, kako je bila odločitev izvedena.
     email_subject:
       unknown_sender: Preglejte e-pošto od neznanega pošiljatelja
       comment_replied_to: "%{actor} vam je odgovoril v: %{title}"
       discussion_announced: "%{title}"
-      discussion_edited: "%{actor} je uredil kontekst: %{title}"
-      discussion_closed: "%{actor} je zaprl nit: %{title}"
       invitation_accepted: "%{actor} je sprejel vaše povabilo, da se pridruži %{title}"
       membership_created: "%{actor} vas je vabil, da se pridružite %{title} na %{site_name}"
       membership_resent: "%{actor} vas je vabil, da se pridružite %{title} na %{site_name}"
@@ -786,33 +755,8 @@ sl:
       user_reminded: "%{actor} vas opominja, da glasujete v: %{title}"
       poll_announced: 'Glas: %{title}'
   discussion_fork_actions:
-    helptext: Izberite elemente, ki jih želite premakniti v drugo nit
     move: Premakni se
-    search_placeholder: Poiščite nit po naslovu
     moved: Ganljivi komentarji, to lahko traja nekaj časa
-    move_to_existing_thread: Premakni se na obstoječo nit
-    start_new_thread: Ali pa začnite novo nit
-  thread_template:
-    browse_public_templates: Prebrskajte galerijo predlog
-    thread_template_settings: Nastavitve predloge niti
-    start_a_new_thread: Začnite novo nit
-    thread_template_saved: Predloga niti je shranjena
-    these_are_public_templates: Te predloge so na voljo za kopiranje ali spreminjanje, da ustrezajo vaši skupini
-    these_are_templates: To so predloge niti v vaši skupini. Predloge vas vodijo skozi običajne postopke odločanja.
-    default_title_label: Privzeti naslov
-    default_title_hint: Vnaprej izpolnite naslovno polje z besedilom, ki ga je mogoče urejati. To ni obvezno - pustite prazno, če niste prepričani.
-    title_placeholder_label: Primer naslova
-    title_placeholder_hint: Primer za prikaz v ozadju naslovnega polja
-    title_placeholder_placeholder: Tako je npr. videti besedilo v ozadju
-    example_description_label: Primer opisa
-    example_description_placeholder: Ponudite predlogo, s katero lahko ljudje začnejo nit
-    hidden_templates: Skrite predloge
-    confirm_delete: Ali ste prepričani, da želite trajno izbrisati to predlogo niti? Zaradi tega ne bo izbrisana nobena nit.
-    add_proposal_or_poll_template: Dodajte predlogo ali predlogo ankete
-    recommended_proposal_or_poll_templates: Priporočen predlog ali predloge ankete
-    decision_templates: Predloge za odločitev
-    decision_templates_help: Izberite kateri koli predlog ali predlogo ankete, ki pomaga dokončati ta postopek.
-    share_in_template_gallery: Delite to predlogo v javni galeriji predlog
   discussion_form:
     thread_templates: Predloge niti
     new_thread_template: Nova predloga niti
@@ -829,7 +773,6 @@ sl:
     change_log_placeholder: Po želji opišite svoje spremembe. To sporočilo bo dodano v nit.
     change_log_label: Kaj se je spremenilo?
     invite: Povabi
-    aria_label: Oblika niti
     start_thread: Začni nit
     messages:
       created: Nit se je začela
@@ -857,7 +800,6 @@ sl:
     send_poll: Pošlji %{type}
     send_outcome: Pošlji izid
     cannot_reveal_when_anonymous: Žal ne moremo razkriti, kdo je ali ne glasoval v anonimni anketi.
-    discussion_notification_history: Zgodovina obvestil niti
     group_notification_history: Zgodovina povabil skupine
     poll_notification_history: Zgodovina obvestil o anketah
     outcome_notification_history: Zgodovina obvestil o rezultatih
@@ -869,7 +811,6 @@ sl:
     preview: Predogled e-pošte
     no_notifications_sent: Nobeno obvestilo ni bilo poslano
     history_error: Nekaj je šlo narobe! Zgodovine ni bilo mogoče naložiti.
-    inviting_guests_to_thread: Gostje ne pripadajo vaši skupini in imajo dostop samo do te teme
     select_groups: Izberite skupine
     search_by_name_or_email: Iščite po imenu ali vnesite e-poštne naslove, ki jih želite povabiti
     search_by_name: Išči ljudi po imenu
@@ -951,8 +892,6 @@ sl:
       added_singular: Dodana bo 1 oseba.
       added_none: Nihče ne bo dodan.
       group_title: "%{name} (%{count} oseb)"
-      visible_to_group: Vsi v %{group} bodo lahko videli to nit.
-      visible_to_guests: Samo povabljeni lahko vidijo to nit.
       click_group_to_see_individuals: Kliknite skupino za ogled posameznikov
       poll_announced:
         title: Povabilo k glasovanju
@@ -1098,7 +1037,6 @@ sl:
     messages:
       joined_group: Sedaj si član/ica %{group}
   membership_request_form:
-    aria_label: Obrazec zahteve za članstvo
     heading: Prosi za pridružitev skupini
     name_label: Ime
     email_label: Email
@@ -1108,7 +1046,6 @@ sl:
     messages:
       membership_requested: Zahtevali ste, da se pridružite %{group}
   revision_history_modal:
-    aria_label: Pregled zgodovine
     discussion_header: Urejanje razprav
     comment_header: Urejanje komentarjev
     poll_header: Urejanje ankete
@@ -1134,10 +1071,6 @@ sl:
     you_and_name: Ti in %{name}
     you_and_name_and_count_more: Ti, %{name} in še %{count} drugih
     name_and_count_more: "%{name} in še %{count}"
-  context_panel:
-    thread_status:
-      pinned: Ta nit je bila pripeta. Ostal bo na vrhu seznama niti skupine za vse uporabnike.
-      closed: Ta nit je bila zaprta. Ne bo več prikazan na nadzorni plošči in bo naveden pod 'zaprto' na strani skupine
   delete_group_modal:
     title: Izbriši skupino
     subgroup_title: Izbriši podskupino
@@ -1215,7 +1148,6 @@ sl:
       private: 'Zasebnost: Ta skupina je vidna samo članom'
       parent_members: 'Zasebnost: Ta skupina je vidna članom %{parentGroupName} in članom %{groupName}'
       public: 'Zasebnost: Ta skupina je vidna v spletu'
-      aria_label: 'Zasebnost skupine: %{privacy}'
     participation_report: Poročilo o udeležbi
     my_subgroups: Moje podskupine
     more_subgroups: Več podskupin
@@ -1230,12 +1162,10 @@ sl:
     messages:
       description_updated: Opis posodobljen
   leave_group_form:
-    aria_label: Zapusti skupino
     title: Zapusti skupino
     question: Ali res želite zapustiti to skupino?
     submit: Da, zapusti to skupino
   archive_group_form:
-    aria_label: Deaktiviraj skupino
     title: Deaktiviraj skupino
     question: Ali res želite deaktivirati to skupino?
     submit: Da, deaktiviraj to skupino
@@ -1245,7 +1175,6 @@ sl:
     change_cover_image: spremeni naslovno sliko
     change_logo: spremeni logotip
     permissions_explaination: 'Oseba lahko ima dve ravni članstva v skupini: skrbnik in član. Skrbniki lahko urejajo nastavitve skupine, postavijo druge osebe za skrbnike in izvajajo vsa spodaj navedena dejanja.'
-    aria_label: Skupinski obrazec
     parent_group: Starševska skupina
     new_organisation: Nova organizacija
     new_group: Nova skupina
@@ -1363,7 +1292,6 @@ sl:
     group_url: URL skupine
     reusable_invitation_link: Povezava za povabilo za večkratno uporabo
     error: Napaka pri poskusu kopiranja v odložišče
-    aria_label: Obrazec za vabilo
     invite_people: Povabi še koga
     invite_guests: Povabi goste
     notify_people: Obvesti ljudi
@@ -1496,7 +1424,6 @@ sl:
     insert_link: Vstavi povezavo
     insert_embedded_url: Vdelaj video
   change_picture_form:
-    aria_label: Obrazec za profilno fotografijo
     title: Nastavite fotografijo profila
     helptext: Lahko naložite svojo profilno sliko ali pa jo uporabite, če imate račun <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> .
     use_initials: Uporabite začetnice
@@ -1560,7 +1487,6 @@ sl:
     replies_count: "%{count} odgovorov"
     unread_count: "%{count} neprebranih"
   dashboard_page:
-    aria_label: Nadzorna plošča
     polls_to_vote_on: Ankete za glasovanje
     no_polls_to_vote_on: Ni anket, za katere bi morali glasovati
     recent_polls: Zadnje ankete
@@ -1573,7 +1499,6 @@ sl:
       show_all: Nimate nedavnih niti.
       show_proposals: Trenutno ni aktivnih predlogov.
       show_muted: Nimate nobene utišane niti.
-    view_recent: Želite videti vse nedavne niti?
     load_more: Naloži več niti
     mark_as_read: Označi kot prebrano
     dismiss: Odpusti
@@ -1588,7 +1513,6 @@ sl:
       filter_threads: Filtriranje niti
       filter_threads_aria_label: Filtriranje niti
       dropdown_heading: Nadzorna plošča filtra
-      all: Nedavne niti
       all_aria_label: Trenutno prikazuje nedavne niti
       all_description: Ogled nedavnih niti
       proposals: Predlogi
@@ -1612,13 +1536,11 @@ sl:
       older: Starejši od enega meseca
   threads_page:
     no_direct_threads: Nimate neposrednih niti
-    no_invite_only_threads: Nimate niti samo s povabilom
   inbox_page:
     no_threads: Juhu! Prebrali ste vse teme v mapi »Prejeto«.
     unread_threads: Neprebrane niti
     view_more: Poglej več
     no_groups:
-      explanation: Nimate neprebranih niti, ker niste član nobene skupine.
       start: Začetek
       or: ali
       join_group: <a href="/explore">pridružite se</a> skupini za ogled niti.
@@ -1635,9 +1557,6 @@ sl:
     pin:
       pinned: Nit pripeta
       unpinned: Nit je odpeta
-    volume:
-      mute_message: Nit je utišana
-      unmute_message: Nit je prezrta
     closed:
       reopened: Tema ponovno odprta
       closed: Tema zaprta
@@ -1647,8 +1566,6 @@ sl:
     disabled_anonymous_polls: Zgodovina gledalcev je onemogočena, ker nit vsebuje anonimne ankete
   activity_card:
     count_responses: "%{count} odgovorov"
-    event_pinned: Pripet na časovnico
-    event_unpinned: Odpeto s časovnice
     beginning: Začetek
     end: Konec
     unread: Neprebrano (%{count})
@@ -1657,7 +1574,6 @@ sl:
     chronological: Kronološko
     nested: Ugnezdeno
     attachment_display:
-      aria_label: 'Priložena datoteka:'
       image_alt: Priložena slika
     n_previous: Naloži %{count} prejšnjih odgovorov
     n_more: Naloži %{count} odgovorov
@@ -1668,12 +1584,9 @@ sl:
     facilitate: Olajšati
     start_decision: Začetek odločitve
     start_vote: Začnite glasovati
-  thread_group:
-    aria_label: Ime skupine
   thread_context:
     current_poll_type_banner: Trenutni %{pollType}
     item_maybe_deleted: V niti ni mogoče najti zahtevane lokacije. Morda je bil izbrisan.
-    aria_label: Kontekst niti
     thread_options: Možnosti niti
     email_settings: Nastavitve obvestil
     edit: Uredi
@@ -1690,11 +1603,6 @@ sl:
     seen_by_count: Ogledalo %{count}
     count_notified: Obveščeno %{count}
     forked_from: Razcepljeno iz
-  pin_thread_modal:
-    title: Pripni razpravo
-    helptext: Pripete niti so vedno prikazane na vrhu seznama niti svoje skupine. Uporabljajo se lahko za obveščanje članov o pomembnih obvestilih ali za promocijo skupnega gradiva, kot je kodeks ravnanja ali smernice skupnosti.
-    helptext_two: Žebljičke lahko kadar koli odstranite tako, da v spustnem meniju niti izberete »Odpni«.
-    pin_thread: Pripni razpravo
   thread_arrangement_form:
     edit: Uredi postavitev
     title: Postavitev niti
@@ -1713,20 +1621,11 @@ sl:
     nested_twice_description: Odgovore zamakni največ dvakrat.
     changing_nesting_is_slow: Obdelava sprememb gnezdenja lahko traja nekaj minut.
   delete_thread_form:
-    aria_label: Izbriši temo
     title: Izbriši temo
     body: Ali ste prepričani, da želite izbrisati to nit?
     confirm: Izbriši temo
     messages:
       success: Nit izbrisana
-  move_thread_form:
-    aria_label: Premakni nit
-    title: Premakni nit
-    body: Ciljna skupina
-    confirm: Premakni nit
-    confirm_change_to_private_thread: "%{groupName} je odprta skupina. Če nadaljujete, bo ta nit javno objavljena."
-    messages:
-      success: Tema je bila premaknjena na %{name}
   delete_comment_dialog:
     title: Izbriši komentar
     question: S tem boste trajno izbrisali ta komentar. Če nadaljujete, ga ni mogoče obnoviti.
@@ -2389,8 +2288,6 @@ sl:
     name_placeholder: Poimenujte to integracijo, da jo boste lahko prepoznali
     event_kind_helptext: O katerih dogodkih želite, da je webhook obveščen?
     event_kinds:
-      new_discussion: Nit se začne
-      discussion_edited: Nit je urejena
       poll_edited: Anketa je urejena
       new_comment: Podan je komentar
       poll_created: Anketa se začne

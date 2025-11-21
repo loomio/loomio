@@ -385,13 +385,10 @@ uk:
     unreleased_emails: Неопубліковані електронні листи
     start_a_thread_by_email: Почніть ланцюжок електронною поштою
     send_email_to_start_thread: Надішліть електронний лист на цю адресу, щоб створити ланцюжок у своїй групі.
-    subject_body_attachments: Тема електронного листа стає заголовком ланцюжка, текст електронного листа стає описом, а всі вкладені файли будуть вкладені в ланцюжок.
     copy_address: Скопіюйте адресу
     email_me_this_address: Надішліть мені цю адресу електронною поштою
     email_address_copied_to_clipboard: Електронну адресу скопійовано в буфер обміну
     forward_email_to_move_conversation: 'Порада: пересилайте розмову електронною поштою до Loomio, коли вам потрібно прийняти рішення або зберегти запис.'
-  email_to_group_mailer:
-    your_email_address_to_start_threads_in_group: Ваша адреса електронної пошти для створення тем у %{group}
   volume_levels:
     loud: Голосно
     normal: Середній
@@ -415,14 +412,12 @@ uk:
       loud_explain: кожного разу, коли є оновлення
       normal_explain: коли хтось просить вашої уваги
       quiet_explain: без сповіщень
-    aria_label: Форма зміни електронної адреси
     loud_label: Всі оновлення
     normal_label: Оголошення
     quiet_label: Без поштових сповіщень
     mute_label: Беззвучно
     saved: Налаштування сповіщень оновлено
     discussion:
-      title: Сповіщення щодо тем
       loud_description: Вам буде надіслано сповіщення поштою про всі оновлення в цій темі.
       normal_description: Вам буде надіслано сповіщення поштою лише про важливі оновлення в цій темі.
       quiet_description: Ви не будете отримувати поштові сповіщення про оновлення у цій темі.
@@ -474,14 +469,12 @@ uk:
     quiet_desc: Ніколи
     loud_explained: Вам надходитиме електронний лист щоразу, коли з’явиться новий коментар, хтось проголосує або почне опитування чи ланцюжок.
     when_would_you_like_to_be_emailed_poll_type: Коли ви бажаєте отримати електронний лист про цей %{poll_type}?
-    normal_explained: Коли хтось вводить ваше ім’я в поле «Сповістити» в темі чи опитуванні, або {'@'}згадує групу.
     normal_excludes_mentioning_html: Існує окреме налаштування для випадків, коли хтось {'@'}згадує вас (наприклад, коли відповідає вам у коментарі). <a href="%{url}">Натисніть тут, щоб редагувати налаштування для @згадок</a>
     changes_all_threads_and_polls_in_group: Це змінює налаштування для всіх тем та опитувань у групі.
     when_do_you_want_to_be_emailed: Коли ви хочете отримати електронний лист?
     what_the_options_mean: Що означають опції
     quiet_explained: Ви не отримуватимете електронних листів, навіть якщо хтось спробує вас повідомити. Ви можете пропустити важливі оголошення чи рішення, якщо у вас немає звички регулярно перевіряти Loomio.
   close_explanation_modal:
-    aria_label: Закрити тему
     close_thread: Закрити тему
     body: |
       <p>Закрийте старі або невідповідні теми, щоб видалити їх із поля зору, і вкажіть, що обговорення закрито.</p>
@@ -496,14 +489,10 @@ uk:
     password_label: 'Пароль:'
     password_confirmation_label: 'Введіть пароль ще раз:'
   signed_out_modal:
-    aria_label: Сесія закінчилась
     title: Ваша сесія закінчилась
     message: Ви вийшли з іншого вікна. Будь ласка, ввійдіть знову щоб продовжити.
     ok: Ok
-  comment_reply_form:
-    aria_label: Відповісти
   comment_form:
-    aria_label: Прокоментувати
     attachments:
       add_attachment: Додати файл
       remove_attachment: Видалити вкладення
@@ -530,9 +519,6 @@ uk:
   thread_nav:
     participants: Учасники
   sidebar:
-    new_thread_removed: Нову тему видалено
-    new_thread_removed_body: Кнопку нового ланцюжка буде видалено з бічної панелі. Щоб створити новий ланцюжок, спочатку перейдіть до своєї групи, а потім натисніть «Новий ланцюжок». Вибачте за зміну, але вона необхідна, оскільки вам потрібно вибрати шаблон під час запуску ланцюжка.
-    threads: Теми
     my_groups: Мої групи
     other_groups: Інші групи
     all_groups: Всі групи
@@ -541,7 +527,6 @@ uk:
     direct_threads: Прямі теми
     unread_threads: Непрочитані ланцюжки (%{count})
     muted_threads: Вимкнуті теми
-    start_group: Нова організація
     start_subgroup: Нова підгрупа
     explore: Загальнодоступні групи
     explore_groups: Переглянути групи
@@ -586,7 +571,6 @@ uk:
     all_subgroups: Всі підгрупи
     parent_only: Лише для батьків
   navbar:
-    search_all_threads: Шукати у всіх темах
     search_threads: Шукати теми у %{name}
     search_polls: Шукати опитування в %{name}
     search_members: Шукати учасників у %{name}
@@ -638,7 +622,6 @@ uk:
     dark_blue: Темно-синій
   membership_card:
     group_members: Учасники групи
-    discussion_members: Учасники теми
     poll_members: учасники %{pollType}
     voters: Виборці
     invite_to_group: Запросити до групи
@@ -654,7 +637,6 @@ uk:
     make_coordinator: Зробити координатором
     demote_coordinator: Усунути координатора
     remove_from:
-      discussion: Видалити з теми
       group: Видалити з групи
       poll: Видалити з %{pollType}
     cancel_invitation: Скасувати запрошення
@@ -663,7 +645,6 @@ uk:
     make_delegate: Делегувати
     revoke_delegate: Відкликати делегата
   notification_models:
-    discussion: 'тема:'
     comment: прокоментувати в
     poll: 'опитування:'
     outcome: 'результат:'
@@ -674,9 +655,6 @@ uk:
     with_title:
       unknown_sender: Будь ласка, перегляньте електронний лист від нерозпізнаного відправника
       comment_replied_to: "%{actor} відповів вам у: %{title}"
-      discussion_announced: "%{actor} запросив вас до ланцюжка: %{title}"
-      discussion_edited: "%{actor} відредагував контекст потоку: %{title}"
-      discussion_closed: "%{actor} закрив тему: %{title}"
       invitation_accepted: "%{actor} прийняв ваше запрошення приєднатися до %{title}"
       membership_created: "%{actor} запросив вас приєднатися до %{title} на %{site_name}"
       membership_resent: "%{actor} запросив вас приєднатися до %{title} на %{site_name}"
@@ -684,7 +662,6 @@ uk:
       membership_request_approved: "%{actor} схвалив ваш запит на приєднання до %{title}"
       new_comment: "%{actor} прокоментував у: %{title}"
       new_coordinator: "%{actor} зробив вас адміністратором %{title}"
-      new_discussion: "%{actor} розпочав ланцюжок: %{title}"
       outcome_announced: "%{actor} поділився результатом %{poll_type}: %{title}"
       outcome_created: "%{actor} поділився результатом %{poll_type}: %{title}"
       outcome_updated: "%{actor} оновив результат %{poll_type}: %{title}"
@@ -712,13 +689,8 @@ uk:
       poll_announced: "%{actor} запросив вас проголосувати: %{title}"
     without_title:
       unknown_sender: Будь ласка, перегляньте електронний лист від нерозпізнаного відправника
-      discussion_announced: "%{actor} запросив вас до ланцюжка"
-      discussion_edited: "%{actor} редагував контекст потоку"
-      discussion_closed: "%{actor} закрив потік"
       group_announced: "%{actor} запросив вас до групи"
       comment_replied_to: "%{actor} відповів вам"
-      new_discussion: "%{actor} розпочав ланцюжок"
-      new_comment: "%{actor} прокоментував у ланцюжку"
       membership_created: "%{actor} запросив вас приєднатися до групи"
       membership_resent: "%{actor} запросив вас приєднатися до групи"
       membership_requested: "%{actor} надіслав запит на приєднання до вашої групи"
@@ -750,13 +722,10 @@ uk:
     hints:
       poll_closing_soon: Зараз гарний час, щоб проголосувати, змінити свою думку або заохотити інших до участі.
       poll_closing_soon_author: Ви можете нагадати людям проголосувати або продовжити кінцевий термін.
-      outcome_review_due: Подумайте про те, щоб розпочати опитування для відгуків або створити нову тему, запрошуючи до роздумів про те, як було реалізовано рішення.
     email_subject:
       unknown_sender: Переглянути електронний лист від невідомого відправника
       comment_replied_to: "%{actor} відповів вам у: %{title}"
       discussion_announced: "%{title}"
-      discussion_edited: "%{actor} відредагував контекст: %{title}"
-      discussion_closed: "%{actor} закрив тему: %{title}"
       invitation_accepted: "%{actor} прийняв ваше запрошення приєднатися до %{title}"
       membership_created: "%{actor} запросив вас приєднатися до %{title} на %{site_name}"
       membership_resent: "%{actor} запросив вас приєднатися до %{title} на %{site_name}"
@@ -791,33 +760,8 @@ uk:
       user_reminded: "%{actor} нагадує вам проголосувати: %{title}"
       poll_announced: 'Голосувати: %{title}'
   discussion_fork_actions:
-    helptext: Оберіть елементи які ви хочете перенести в іншу гілку
     move: Перемістити
-    search_placeholder: Знайти тему за назвою
     moved: Переміщення коментарів може зайняти певний час
-    move_to_existing_thread: Перейти до наявної теми
-    start_new_thread: Або розпочніть нову тему
-  thread_template:
-    browse_public_templates: Перегляньте галерею шаблонів
-    thread_template_settings: Налаштування шаблону теми
-    start_a_new_thread: Почніть нову тему
-    thread_template_saved: Шаблон теми збережено
-    these_are_public_templates: Ці шаблони доступні для копіювання або зміни відповідно до вашої групи
-    these_are_templates: Це шаблони тем у вашій групі. Шаблони ведуть вас через типові процеси прийняття рішень.
-    default_title_label: Назва за замовчуванням
-    default_title_hint: Попередньо заповніть поле заголовка редагованим текстом. Це необов’язково – залиште порожнім, якщо не впевнені.
-    title_placeholder_label: Приклад назви
-    title_placeholder_hint: Приклад для відображення на тлі поля заголовка
-    title_placeholder_placeholder: наприклад, ось як виглядає фоновий текст
-    example_description_label: Приклад опису
-    example_description_placeholder: Надайте шаблон, за допомогою якого люди зможуть почати бесіду
-    hidden_templates: Приховані шаблони
-    confirm_delete: Ви впевнені, що бажаєте остаточно видалити цей шаблон ланцюжка? Жоден ланцюжок не буде видалено в результаті цього.
-    add_proposal_or_poll_template: Додати пропозицію або шаблон опитування
-    recommended_proposal_or_poll_templates: Рекомендовані шаблони пропозицій або опитувань
-    decision_templates: Шаблони рішень
-    decision_templates_help: Виберіть будь-яку пропозицію або шаблон опитування, які допоможуть завершити цей процес.
-    share_in_template_gallery: Поділіться цим шаблоном у загальнодоступній галереї шаблонів
   discussion_form:
     thread_templates: Шаблони ниток
     new_thread_template: Новий шаблон теми
@@ -834,7 +778,6 @@ uk:
     change_log_placeholder: За бажанням, опишіть зміни. Це повідомлення буде додано до теми.
     change_log_label: Що змінилося?
     invite: Запросити
-    aria_label: Форма для теми
     start_thread: Створити тему
     messages:
       created: Тему створено
@@ -862,7 +805,6 @@ uk:
     send_poll: Надіслати %{type}
     send_outcome: Надіслати результат
     cannot_reveal_when_anonymous: На жаль, ми не можемо розкрити, хто голосував чи ні в анонімному опитуванні.
-    discussion_notification_history: Історія сповіщень щодо тем
     group_notification_history: Історія запрошень до групи
     poll_notification_history: Історія сповіщень щодо опитувань
     outcome_notification_history: Історія сповіщень щодо результатів
@@ -874,7 +816,6 @@ uk:
     preview: Попередній перегляд листа
     no_notifications_sent: Сповіщень не надсилалося
     history_error: Щось пішло не так! Не вдалося завантажити історію.
-    inviting_guests_to_thread: Гості не належать до вашої групи і мають доступ лише до цієї теми
     select_groups: Виберіть групи
     search_by_name_or_email: Шукайте за іменем або введіть електронні адреси, щоб запросити
     search_by_name: Шукайте людей за іменами
@@ -960,8 +901,6 @@ uk:
       added_singular: Буде додано 1 особу.
       added_none: Ніхто не буде доданий.
       group_title: "%{name} (%{count} людей)"
-      visible_to_group: Будь-хто в %{group} зможе побачити цю тему.
-      visible_to_guests: Лише запрошені люди можуть бачити цю тему.
       click_group_to_see_individuals: Натисніть на групу, щоб побачити окремих осіб
       poll_announced:
         title: Запрошуємо до голосування
@@ -1107,7 +1046,6 @@ uk:
     messages:
       joined_group: Тепер ви учасник %{group}
   membership_request_form:
-    aria_label: Форма для запиту на участь
     heading: Зробіть запит на участь у групі
     name_label: Ім’я
     email_label: Електронна пошта
@@ -1117,7 +1055,6 @@ uk:
     messages:
       membership_requested: Ви подали запит на приєднання до %{group}
   revision_history_modal:
-    aria_label: Історія змін
     discussion_header: Редагування обговорення
     comment_header: Редагування коментаря
     poll_header: Редагування опитування
@@ -1143,10 +1080,6 @@ uk:
     you_and_name: Ви та %{name}
     you_and_name_and_count_more: Ви, %{name} і ще %{count}
     name_and_count_more: "%{name} і ще %{count}"
-  context_panel:
-    thread_status:
-      pinned: Ця тема була прикріплена. Вона залишатиметься у верхній частині списку тем групи для всіх користувачів.
-      closed: Цю тему закрито. Вона більш не відображатиметься на інформаційній панелі, і буде знаходитись в розділі "закрито" на сторінці групи
   delete_group_modal:
     title: Видалити групу
     subgroup_title: Видалити підгрупу
@@ -1224,7 +1157,6 @@ uk:
       private: 'Конфіденційність: Ця група відображається тільки для учасників'
       parent_members: 'Конфіденційність: Ця група відображається для учасників %{parentGroupName} та учасників %{groupName}'
       public: 'Конфіденційність: Ця група відображається для всіх у мережі'
-      aria_label: 'Конфіденційність групи: %{privacy}'
     participation_report: Звіт про участь
     my_subgroups: Мої підгрупи
     more_subgroups: Більше підгруп
@@ -1239,12 +1171,10 @@ uk:
     messages:
       description_updated: Опис оновлено
   leave_group_form:
-    aria_label: Залишити групу
     title: Залишити групу
     question: Ви дійсно хочете залишити цю групу?
     submit: Так, залишити групу
   archive_group_form:
-    aria_label: Відключити групу
     title: Відключити групу
     question: Ви дійсно бажаєте відключити цю групу?
     submit: Так, відключити групу
@@ -1256,7 +1186,6 @@ uk:
     permissions_explaination: |
       Людина може мати два рівні членства в групі: адміністратор і учасник.
       Адміністратори можуть редагувати налаштування групи, робити адміністраторами інших людей і виконувати всі дії, перелічені нижче.
-    aria_label: Форма для створення групи
     parent_group: Батьківська група
     new_organisation: Нова організація
     new_group: Нова група
@@ -1382,7 +1311,6 @@ uk:
     group_url: URL-адреса групи
     reusable_invitation_link: Посилання на багаторазове запрошення
     error: Помилка під час спроби скопіювати в буфер обміну
-    aria_label: Форма для запрошення
     invite_people: Запросити людей
     invite_guests: Запросити гостей
     notify_people: Повідомити людей
@@ -1515,7 +1443,6 @@ uk:
     insert_link: Додайте посилання
     insert_embedded_url: Додати відео
   change_picture_form:
-    aria_label: Фото профілю
     title: Виберіть фото профілю
     helptext: Ви можете завантажити ваш власний малюнок профілю, або якщо ви зареєстровані на <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a>, можете використати його.
     use_initials: Використовувати ініціали
@@ -1579,7 +1506,6 @@ uk:
     replies_count: "%{count} відповідей"
     unread_count: "%{count} непрочитаних"
   dashboard_page:
-    aria_label: Інформаційна панель
     polls_to_vote_on: Опитування для голосування
     no_polls_to_vote_on: Немає опитувань, за які вам потрібно проголосувати
     recent_polls: Останні опитування
@@ -1592,7 +1518,6 @@ uk:
       show_all: У вас нема жодних недавніх тем.
       show_proposals: Наразі немає активних пропозицій.
       show_muted: У вас немає вимкнутих тем.
-    view_recent: Переглянути всі недавні теми?
     load_more: Завантажити більше тем
     mark_as_read: Відмітити як прочитане
     dismiss: Відхилити
@@ -1607,7 +1532,6 @@ uk:
       filter_threads: Фільтрувати теми
       filter_threads_aria_label: Фільтрувати теми
       dropdown_heading: Фільтр інформаційної панелі
-      all: Недавні теми
       all_aria_label: Показані останні теми
       all_description: Переглянути недавні теми
       proposals: Пропозиції
@@ -1631,13 +1555,11 @@ uk:
       older: Більше ніж місяць тому
   threads_page:
     no_direct_threads: У вас нема особистих тем
-    no_invite_only_threads: У вас немає ланцюжків з запрошеннями
   inbox_page:
     no_threads: Вау! Ви прочитали всі теми у вашій скриньці.
     unread_threads: Непрочитані теми
     view_more: Переглянути більше
     no_groups:
-      explanation: У Вас нема непрочитаних тем, бо Ви не є учасником жодної групи.
       start: Почати
       or: або
       join_group: <a href="/explore">приєднатися</a> до групи аби бачити теми.
@@ -1658,9 +1580,6 @@ uk:
     pin:
       pinned: Тему закріплено
       unpinned: Тему відкріплено
-    volume:
-      mute_message: Тему вимкнуто
-      unmute_message: Тему увімкнено
     closed:
       reopened: Тему відновлено
       closed: Тему закрито
@@ -1670,8 +1589,6 @@ uk:
     disabled_anonymous_polls: Історія перегляду вимкнена, оскільки ланцюжок містить анонімні опитування
   activity_card:
     count_responses: "%{count} відповідей"
-    event_pinned: Закріплено на часовій шкалі
-    event_unpinned: Відкріплено з часової шкали
     beginning: Початок
     end: Кінець
     unread: Непрочитані (%{count})
@@ -1680,7 +1597,6 @@ uk:
     chronological: Хронологічно
     nested: Згорнуто
     attachment_display:
-      aria_label: 'Прикріпити файл:'
       image_alt: Прикріплене зображення
     n_previous: Завантажити %{count} попередніх відповідей
     n_more: Завантажити %{count} відповідей
@@ -1691,12 +1607,9 @@ uk:
     facilitate: Сприяти
     start_decision: Розпочати рішення
     start_vote: Почати голосування
-  thread_group:
-    aria_label: Назва групи
   thread_context:
     current_poll_type_banner: Поточне %{pollType}
     item_maybe_deleted: Не вдається знайти запитуване місце в темі. Можливо, його було видалено.
-    aria_label: Контекст теми
     thread_options: Налаштування теми
     email_settings: Налаштування сповіщень
     edit: Редагувати
@@ -1713,11 +1626,6 @@ uk:
     seen_by_count: Переглянуто %{count}
     count_notified: Повідомлено %{count}
     forked_from: Гілка від
-  pin_thread_modal:
-    title: Закріпити тему
-    helptext: Закріплені теми завжди з'являються у верхній частині списку тем групи. Вони можуть використовуватись для інформування учасників про важливі повідомлення або для просування загальних матеріалів, таких як етичний кодекс або основні принципи спільноти.
-    helptext_two: Ви можете прибрати закріплення в будь-який час, вибравши "Відкріпити" в спадному меню теми
-    pin_thread: Закріпити тему
   thread_arrangement_form:
     edit: Редагувати макет
     title: Показ теми
@@ -1736,20 +1644,11 @@ uk:
     nested_twice_description: Не більше двох відступів для відповідей.
     changing_nesting_is_slow: Внесення змін до вкладення може потребувати кілька хвилин.
   delete_thread_form:
-    aria_label: Видалити тему
     title: Видалити тему
     body: Ви впевнені що хочете видалити цю тему?
     confirm: Видалити тему
     messages:
       success: Тему видалено
-  move_thread_form:
-    aria_label: Перемістити тему
-    title: Перемістити тему
-    body: Група призначення
-    confirm: Перемістити тему
-    confirm_change_to_private_thread: Група %{groupName} є відкритою. Якщо ви продовжите, ця тема стане загальнодоступною.
-    messages:
-      success: Тема була переміщена до %{name}
   delete_comment_dialog:
     title: Видалити коментар
     question: Цей коментар буде видалено назавжди. Якщо ви продовжите, його не можна буде відновити.
@@ -2421,8 +2320,6 @@ uk:
     name_placeholder: Дайте цій інтеграції назву, щоб ви могли її ідентифікувати
     event_kind_helptext: Щодо яких подій ви хочете, щоб веб-хук отримував сповіщення?
     event_kinds:
-      new_discussion: Тему розпочато
-      discussion_edited: Тему відредаговано
       poll_edited: Опитування відредаговано
       new_comment: Зроблено коментар
       poll_created: Опитування розпочато

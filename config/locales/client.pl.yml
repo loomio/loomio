@@ -384,13 +384,10 @@ pl:
     unreleased_emails: Niepublikowane e-maile
     start_a_thread_by_email: Rozpocznij wątek przez e-mail
     send_email_to_start_thread: Wyślij e-mail na ten adres, aby rozpocząć wątek w swojej grupie.
-    subject_body_attachments: Temat wiadomości e-mail stanie się tytułem wątku, treść wiadomości e-mail stanie się opisem, a wszelkie załączone pliki zostaną dołączone do wątku.
     copy_address: Skopiuj adres
     email_me_this_address: Wyślij mi ten adres e-mailem
     email_address_copied_to_clipboard: Adres e-mail został skopiowany do schowka
     forward_email_to_move_conversation: 'Wskazówka: przekaż rozmowę e-mailową do Loomio, jeśli chcesz podjąć decyzję lub zachować zapis.'
-  email_to_group_mailer:
-    your_email_address_to_start_threads_in_group: Twój adres e-mail do rozpoczynania wątków w %{group}
   volume_levels:
     loud: Głośno
     normal: Normalnie
@@ -414,14 +411,12 @@ pl:
       loud_explain: Powiadom mnie o każdej aktywności
       normal_explain: Powiadom, gdy ktoś mnie oznaczy lub o mnie wspomni
       quiet_explain: Wyłącz powiadomienia
-    aria_label: Zmień formularz ustawień adresu e-mail
     loud_label: Cała aktywność
     normal_label: Ogłoszenia
     quiet_label: Brak wiadomości e-mail
     mute_label: Wycisz
     saved: Zaktualizowano ustawienia powiadomień
     discussion:
-      title: Powiadomienia o wątku
       loud_description: Będziesz otrzymywać wiadomości e-mail o całej aktywności w tym wątku.
       normal_description: Będziesz otrzymywać wiadomości e-mail tylko o ważnych działaniach w tym wątku.
       quiet_description: Nie będziesz otrzymywać żadnych wiadomości e-mail o aktywności w tym wątku.
@@ -473,14 +468,12 @@ pl:
     quiet_desc: Nigdy
     loud_explained: Otrzymasz e-mail za każdym razem, gdy pojawi się nowy komentarz, ktoś zagłosuje lub rozpocznie ankietę czy wątek.
     when_would_you_like_to_be_emailed_poll_type: Kiedy chcesz otrzymać wiadomość e-mail dotyczącą tego %{poll_type}?
-    normal_explained: Gdy ktoś wpisze Twoje imię w polu „Powiadom” w wątku lub ankiecie, albo {'@'}wspomni grupę.
     normal_excludes_mentioning_html: Istnieje osobne ustawienie, gdy ktoś {'@'}wspomina o Tobie (np. gdy odpowiada Ci w komentarzu). <a href="%{url}">Kliknij tutaj, aby edytować ustawienia dla @wzmianek</a>
     changes_all_threads_and_polls_in_group: Zmienia to ustawienia dla wszystkich wątków i ankiet w grupie.
     when_do_you_want_to_be_emailed: Kiedy chcesz otrzymywać e-maile?
     what_the_options_mean: Co oznaczają opcje
     quiet_explained: Nie otrzymasz wiadomości e-mail, nawet gdy ktoś będzie próbował Cię powiadomić. Możesz przegapić ważne ogłoszenia lub decyzje, jeśli nie będziesz regularnie sprawdzać Loomio.
   close_explanation_modal:
-    aria_label: Zamknij wątek
     close_thread: Zamknij wątek
     body: |
       <p>Zamknij stare lub nieistotne wątki, aby usunąć je z widoku i wskazać, że dyskusja została zamknięta.</p>
@@ -495,14 +488,10 @@ pl:
     password_label: 'Hasło:'
     password_confirmation_label: 'Podaj hasło ponownie:'
   signed_out_modal:
-    aria_label: Sesja zakończona
     title: Twoja sesja została zakończona
     message: Zostałeś wylogowany z innego okna. Zaloguj się ponownie, by kontynuować.
     ok: Ok
-  comment_reply_form:
-    aria_label: Dodaj odpowiedź
   comment_form:
-    aria_label: Dodaj komentarz
     attachments:
       add_attachment: Załącz plik
       remove_attachment: Usuń załącznik
@@ -529,9 +518,6 @@ pl:
   thread_nav:
     participants: Uczestnicy
   sidebar:
-    new_thread_removed: Nowy wątek usunięty
-    new_thread_removed_body: Przycisk nowego wątku zostanie usunięty z paska bocznego. Aby rozpocząć nowy wątek, najpierw przejdź do swojej grupy, a następnie kliknij „Nowy wątek”. Przepraszamy za zmianę, ale jest ona wymagana, ponieważ przy zakładaniu wątku trzeba wybrać szablon.
-    threads: Wątki
     my_groups: Moje grupy
     other_groups: Inne grupy
     all_groups: Wszystkie grupy
@@ -540,7 +526,6 @@ pl:
     direct_threads: Wątki bezpośrednie
     unread_threads: Nieprzeczytane wątki (%{count})
     muted_threads: Wyciszone wątki
-    start_group: Nowa grupa
     start_subgroup: Nowa podgrupa
     explore: Grupy publiczne
     explore_groups: Przeglądaj grupy
@@ -585,7 +570,6 @@ pl:
     all_subgroups: Wszystkie podgrupy
     parent_only: Tylko dla rodziców
   navbar:
-    search_all_threads: Szukaj we wszystkich wątkach
     search_threads: Szukaj wątków w %{name}
     search_polls: Szukaj ankiet w %{name}
     search_members: Szukaj osób w %{name}
@@ -637,7 +621,6 @@ pl:
     dark_blue: Ciemnoniebieski
   membership_card:
     group_members: Osoby w tej grupy
-    discussion_members: Osoby w tym wątku
     poll_members: "%{pollType} osoby"
     voters: Głosujący
     invite_to_group: Zaproś do grupy
@@ -653,7 +636,6 @@ pl:
     make_coordinator: Mianuj administratorem
     demote_coordinator: Odwołaj administratora
     remove_from:
-      discussion: Usuń z wątku
       group: Usuń z grupy
       poll: Usuń z %{pollType}
     cancel_invitation: Anuluj zaproszenie
@@ -662,7 +644,6 @@ pl:
     make_delegate: Utwórz delegata
     revoke_delegate: Odwołaj delegata
   notification_models:
-    discussion: 'wątek:'
     comment: skomentuj w
     poll: 'głosowanie:'
     outcome: 'rezultat:'
@@ -673,9 +654,6 @@ pl:
     with_title:
       unknown_sender: Sprawdź wiadomość e-mail od nierozpoznanego nadawcy
       comment_replied_to: "%{actor} odpowiedział Ci w: %{title}"
-      discussion_announced: "%{actor} zaprosił Cię do wątku: %{title}"
-      discussion_edited: "%{actor} edytował kontekst wątku: %{title}"
-      discussion_closed: "%{actor} zamknął wątek: %{title}"
       invitation_accepted: "%{actor} przyjął Twoje zaproszenie do %{title}"
       membership_created: "%{actor} zaprosił Cię do %{title} na %{site_name}"
       membership_resent: "%{actor} zaprosił Cię do %{title} w %{site_name}"
@@ -683,7 +661,6 @@ pl:
       membership_request_approved: "%{actor} zatwierdził Twoją prośbę o dołączenie do %{title}"
       new_comment: "%{actor} skomentował w: %{title}"
       new_coordinator: "%{actor} mianował Cię administratorem %{title}"
-      new_discussion: "%{actor} rozpoczął wątek: %{title}"
       outcome_announced: "%{actor} udostępnił/a %{poll_type} wynik: %{title}"
       outcome_created: "%{actor} udostępnił/a %{poll_type} wynik: %{title}"
       outcome_updated: "%{actor} zaktualizował/a %{poll_type} wynik: %{title}"
@@ -711,13 +688,8 @@ pl:
       poll_announced: "%{actor} zaprosił Cię do głosowania: %{title}"
     without_title:
       unknown_sender: Sprawdź wiadomość e-mail od nierozpoznanego nadawcy
-      discussion_announced: "%{actor} zaprosił Cię do wątku"
-      discussion_edited: "%{actor} edytował kontekst wątku"
-      discussion_closed: "%{actor} zamknął wątek"
       group_announced: "%{actor} zaprosił Cię do grupy"
       comment_replied_to: "%{actor} odpowiedział Ci"
-      new_discussion: "%{actor} założył wątek"
-      new_comment: "%{actor} skomentował w wątku"
       membership_created: "%{actor} zaprosił Cię do grupy"
       membership_resent: "%{actor} zaprosił Cię do przyłączenia się do grupy"
       membership_requested: "%{actor} poprosił o dołączenie do Twojej grupy"
@@ -749,13 +721,10 @@ pl:
     hints:
       poll_closing_soon: Teraz jest dobry czas na głosowanie, zmianę zdania lub zachęcenie innych do udziału.
       poll_closing_soon_author: Możesz przypomnieć ludziom o głosowaniu lub przedłużyć termin.
-      outcome_review_due: Rozważ rozpoczęcie ankiety zwrotnej lub nowego wątku zapraszającego do refleksji na temat tego, jak decyzja została wdrożona.
     email_subject:
       unknown_sender: Przejrzyj wiadomość e-mail od nieznanego nadawcy
       comment_replied_to: "%{actor} odpowiedział Ci w: %{title}"
       discussion_announced: "%{title}"
-      discussion_edited: "%{actor} edytował kontekst: %{title}"
-      discussion_closed: "%{actor} zamknął wątek: %{title}"
       invitation_accepted: "%{actor} zaakceptował Twoje zaproszenie do dołączenia do %{title}"
       membership_created: "%{actor} zaprosił Cię do dołączenia do %{title} na %{site_name}"
       membership_resent: "%{actor} zaprosił Cię do dołączenia do %{title} na %{site_name}"
@@ -790,33 +759,8 @@ pl:
       user_reminded: "%{actor} przypomina o oddaniu głosu w: %{title}"
       poll_announced: 'Głosuj: %{title}'
   discussion_fork_actions:
-    helptext: Wybierz elementy, które chcesz przenieść do innego wątku
     move: Przenieś
-    search_placeholder: Wyszukaj wątek według tytułu
     moved: Przenoszenie komentarzy, to może zająć chwilę
-    move_to_existing_thread: Przenieś do istniejącego wątku
-    start_new_thread: Lub, utwórz nowy wątek
-  thread_template:
-    browse_public_templates: Przeglądaj galerię szablonów
-    thread_template_settings: Ustawienia szablonu wątku
-    start_a_new_thread: Rozpocznij nowy wątek
-    thread_template_saved: Szablon wątku został zapisany
-    these_are_public_templates: Szablony te można skopiować lub zmodyfikować, aby dopasować je do potrzeb swojej grupy
-    these_are_templates: To są szablony wątków w Twojej grupie. Szablony prowadzą Cię przez typowe procesy podejmowania decyzji.
-    default_title_label: Domyślny tytuł
-    default_title_hint: Wypełnij pole tytułu tekstem edytowalnym. Jest to opcjonalne — pozostaw puste, jeśli nie jesteś pewien.
-    title_placeholder_label: Przykładowy tytuł
-    title_placeholder_hint: Przykład do wyświetlenia w tle pola tytułowego
-    title_placeholder_placeholder: np. Tak wygląda tekst w tle
-    example_description_label: Przykładowy opis
-    example_description_placeholder: Podaj szablon, za pomocą którego ludzie będą mogli rozpocząć wątek
-    hidden_templates: Ukryte szablony
-    confirm_delete: Czy na pewno chcesz trwale usunąć ten szablon wątku? W rezultacie żaden wątek nie zostanie usunięty.
-    add_proposal_or_poll_template: Dodaj szablon propozycji lub ankiety
-    recommended_proposal_or_poll_templates: Polecane szablony propozycji lub ankiet
-    decision_templates: Wzory decyzji
-    decision_templates_help: Wybierz dowolne szablony propozycji lub ankiet, które pomogą ukończyć ten proces.
-    share_in_template_gallery: Udostępnij ten szablon w publicznej galerii szablonów
   discussion_form:
     thread_templates: Szablony wątków
     new_thread_template: Nowy szablon wątku
@@ -833,7 +777,6 @@ pl:
     change_log_placeholder: Opcjonalnie opisz zmiany. Ta wiadomość zostanie dodana do wątku.
     change_log_label: Co się zmieniło?
     invite: Zaproś
-    aria_label: Formularz wątku
     start_thread: Utwórz wątek
     messages:
       created: Wątek utworzony
@@ -861,7 +804,6 @@ pl:
     send_poll: Wyślij %{type}
     send_outcome: Wyślij wynik
     cannot_reveal_when_anonymous: Niestety, nie możemy ujawnić, kto głosował lub nie głosował w anonimowej ankiecie.
-    discussion_notification_history: Historia powiadomień o wątku
     group_notification_history: Historia zaproszeń do grupy
     poll_notification_history: Historia powiadomień o ankiecie
     outcome_notification_history: Historia powiadomień o wynikach
@@ -873,7 +815,6 @@ pl:
     preview: Podgląd wiadomości e-mail
     no_notifications_sent: Żadne powiadomienia nie zostały wysłane
     history_error: Coś poszło nie tak! Nie można załadować historii.
-    inviting_guests_to_thread: Goście nie należą do Twojej grupy i mają dostęp tylko do tego wątku
     select_groups: Wybierz grupy
     search_by_name_or_email: Wyszukaj według nazwy lub wprowadź adresy e-mail do zaproszenia
     search_by_name: Szukaj osób według nazwy
@@ -959,8 +900,6 @@ pl:
       added_singular: Zostanie dodana 1 osoba.
       added_none: Nikt nie zostanie dodany.
       group_title: "%{name} (%{count} osób)"
-      visible_to_group: Każdy w grupie %{group} będzie mógł zobaczyć ten wątek.
-      visible_to_guests: Tylko zaproszone osoby mogą zobaczyć ten wątek.
       click_group_to_see_individuals: Kliknij grupę, aby zobaczyć osoby
       poll_announced:
         title: Zaproszenie do głosowania
@@ -1106,7 +1045,6 @@ pl:
     messages:
       joined_group: Należysz teraz do grupy %{group}
   membership_request_form:
-    aria_label: Formularz zgłoszeniowy
     heading: Poproś o dołączenie do grupy
     name_label: Nazwa
     email_label: E-mail
@@ -1116,7 +1054,6 @@ pl:
     messages:
       membership_requested: Prosiłeś o dołączenie do %{group}
   revision_history_modal:
-    aria_label: Historia poprawek
     discussion_header: Edycje dyskusji
     comment_header: Edycje komentarza
     poll_header: Edycje ankiety
@@ -1142,10 +1079,6 @@ pl:
     you_and_name: Ty i %{name}
     you_and_name_and_count_more: Ty, %{name} i jeszcze %{count}
     name_and_count_more: "%{name} i jeszcze %{count}"
-  context_panel:
-    thread_status:
-      pinned: Ten wątek został przypięty. Zostanie na samej górze listy wątków dla wszystkich osób z tej grupy.
-      closed: Ten wątek został zamknięty. Nie będzie się więcej pojawiał w głównym panelu i będzie wyświetlał się pod "Zamknięte" na stronie grupy.
   delete_group_modal:
     title: Usuń grupę
     subgroup_title: Usuń podgrupę
@@ -1223,7 +1156,6 @@ pl:
       private: 'Prywatność: ta grupa jest widoczna tylko dla osób do niej należących'
       parent_members: 'Prywatność: ta grupa jest widoczna dla osób z %{parentGroupName} i osób z %{groupName}'
       public: 'Prywatność: ta grupa jest widoczna w Internecie'
-      aria_label: 'Prywatność grupy: %{privacy}'
     participation_report: Sprawozdanie z udziału
     my_subgroups: Moje podgrupy
     more_subgroups: Więcej podgrup
@@ -1238,12 +1170,10 @@ pl:
     messages:
       description_updated: Opis zaktualizowany
   leave_group_form:
-    aria_label: Opuść grupę
     title: Opuść grupę
     question: Czy na pewno chcesz opuścić tę grupę?
     submit: Tak, opuść tę grupę
   archive_group_form:
-    aria_label: Dezaktywuj grupę
     title: Dezaktywuj grupę
     question: Czy na pewno chcesz dezaktywować tę grupę?
     submit: Tak, dezaktywuj grupę
@@ -1253,7 +1183,6 @@ pl:
     change_cover_image: zmień zdjęcie okładki
     change_logo: zmienić logo
     permissions_explaination: 'Istnieją dwa poziomy członkostwa, jakie osoba może mieć w grupie: administrator i członek. Administratorzy mogą edytować ustawienia grupy, mianować innych administratorami i wykonywać wszystkie czynności wymienione poniżej.'
-    aria_label: Formularz grupowy
     parent_group: Grupa rodziców
     new_organisation: Nowa grupa
     new_group: Nowa grupa
@@ -1379,7 +1308,6 @@ pl:
     group_url: Adres URL grupy
     reusable_invitation_link: Link zaproszenia wielokrotnego użytku
     error: Błąd podczas próby skopiowania do schowka
-    aria_label: Formularz zaproszenia
     invite_people: Zaproś ludzi
     invite_guests: Zaproś gości
     notify_people: Powiadom ludzi
@@ -1512,7 +1440,6 @@ pl:
     insert_link: Wstaw link
     insert_embedded_url: Wstaw wideo
   change_picture_form:
-    aria_label: Formularz zdjęcia profilowego
     title: Ustaw zdjęcie profilowe
     helptext: Możesz przesłać własne zdjęcie profilowe lub jeśli masz konto <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a>, możesz z niego skorzystać.
     use_initials: Użyj inicjałów
@@ -1576,7 +1503,6 @@ pl:
     replies_count: "%{count} odpowiedzi"
     unread_count: "%{count} nieprzeczytanych"
   dashboard_page:
-    aria_label: Pulpit
     polls_to_vote_on: Ankiety do głosowania
     no_polls_to_vote_on: Nie ma ankiet, w których musisz głosować
     recent_polls: Najnowsze ankiety
@@ -1589,7 +1515,6 @@ pl:
       show_all: Nie masz żadnych nowych wątków.
       show_proposals: 'Brak aktywnych propozycji '
       show_muted: Nie masz żadnych wyciszonych wątków.
-    view_recent: Wyświetlić wszystkie najnowsze wątki?
     load_more: Załaduj więcej wątków
     mark_as_read: Oznacz jako przeczytane
     dismiss: Odwołaj
@@ -1604,7 +1529,6 @@ pl:
       filter_threads: Filtruj wątki
       filter_threads_aria_label: Filtruj wątki
       dropdown_heading: Filtruj pulpit
-      all: Najnowsze wątki
       all_aria_label: Wyświetlane są najnowsze wątki
       all_description: Wyświetl najnowsze wątki
       proposals: Propozycje
@@ -1628,13 +1552,11 @@ pl:
       older: Starsze niż miesiąc
   threads_page:
     no_direct_threads: Nie masz żadnych bezpośrednich wątków
-    no_invite_only_threads: Nie masz żadnych wątków na zaproszenie
   inbox_page:
     no_threads: Hura! Przeczytałeś/aś wszystkie wątki z Twojej skrzynki.
     unread_threads: Nieprzeczytane Wątki
     view_more: Pokaż Więcej
     no_groups:
-      explanation: Nie masz nieprzeczytanych wątków, ponieważ nie jesteś członkiem żadnej grupy.
       start: Rozpocznij
       or: lub
       join_group: <a href="/explore">dołącz</a> do grupy, aby zobaczyć wątki.
@@ -1655,9 +1577,6 @@ pl:
     pin:
       pinned: Wątek przypięty
       unpinned: Wątek odpięty
-    volume:
-      mute_message: Wątek wyciszony
-      unmute_message: Wątek niewyciszony
     closed:
       reopened: Wątek ponownie otwarty
       closed: Wątek zamknięty
@@ -1667,8 +1586,6 @@ pl:
     disabled_anonymous_polls: Historia przeglądania jest wyłączona, ponieważ wątek zawiera anonimowe ankiety
   activity_card:
     count_responses: "%{count} odpowiedzi"
-    event_pinned: Przypięto do osi czasu
-    event_unpinned: Odepięto od osi czasu
     beginning: Początek
     end: Koniec
     unread: nieprzeczytane (%{count})
@@ -1677,7 +1594,6 @@ pl:
     chronological: Chronologicznie
     nested: Zagnieżdżony
     attachment_display:
-      aria_label: 'Dołączony plik:'
       image_alt: Dołączone zdjęcie
     n_previous: Wczytaj %{count} poprzednich odpowiedzi
     n_more: Załaduj %{count} odpowiedzi
@@ -1688,12 +1604,9 @@ pl:
     facilitate: Ułatwiać
     start_decision: Rozpocznij decyzję
     start_vote: Rozpocznij głosowanie
-  thread_group:
-    aria_label: Nazwa grupy
   thread_context:
     current_poll_type_banner: Obecne %{pollType}
     item_maybe_deleted: Nie można znaleźć żądanej lokalizacji w wątku. Mogła zostać usunięta.
-    aria_label: Kontekst wątku
     thread_options: Opcje wątku
     email_settings: Ustawienia powiadomień
     edit: Edytuj
@@ -1710,11 +1623,6 @@ pl:
     seen_by_count: Widziane przez %{count}
     count_notified: Powiadomiono %{count}
     forked_from: Oddzielony od
-  pin_thread_modal:
-    title: Przypnij wątek
-    helptext: Przypięte wątki zawsze pojawiają się na górze listy wątków grupy. Można ich używać do informowania osób o ważnych ogłoszeniach lub do promowania wspólnych materiałów, takich jak kodeks postępowania lub wytyczne społeczności.
-    helptext_two: Możesz usunąć przypięcia w dowolnym momencie, wybierając opcję „Odepnij” z menu rozwijanego wątku
-    pin_thread: Przypnij wątek
   thread_arrangement_form:
     edit: Edytuj układ
     title: Układ wątku
@@ -1733,20 +1641,11 @@ pl:
     nested_twice_description: Odpowiedzi wcinaj maksymalnie dwa razy.
     changing_nesting_is_slow: Przetwarzanie zmian w zagnieżdżaniu może potrwać kilka minut.
   delete_thread_form:
-    aria_label: Usuń wątek
     title: Usuń wątek
     body: Czy na pewno chcesz usunąć ten wątek?
     confirm: Usuń wątek
     messages:
       success: Wątek usunięty
-  move_thread_form:
-    aria_label: Przenieś wątek
-    title: Przenieś wątek
-    body: Grupa docelowa
-    confirm: Przenieś wątek
-    confirm_change_to_private_thread: "%{groupName} to grupa otwarta. Jeśli będziesz kontynuować, ten wątek zostanie upubliczniony."
-    messages:
-      success: Wątek został przeniesiony do %{name}
   delete_comment_dialog:
     title: Usuń komentarz
     question: Spowoduje to trwałe usunięcie tego komentarza. Jeśli będziesz kontynuować, nie będzie można go przywrócić.
@@ -2418,8 +2317,6 @@ pl:
     name_placeholder: Nadaj tej integracji nazwę, aby móc ją zidentyfikować
     event_kind_helptext: O jakich zdarzeniach ma być powiadamiany webhook?
     event_kinds:
-      new_discussion: Wątek się rozpoczął
-      discussion_edited: 'Wątek został edytowany '
       poll_edited: 'Głosowanie zostało edytowane '
       new_comment: dodano komentarz
       poll_created: 'Głosowanie się rozpoczęło  '

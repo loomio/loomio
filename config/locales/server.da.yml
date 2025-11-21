@@ -89,7 +89,6 @@ da:
       description: <h3 id="what-is-the-purpose-of-the-document">Hvad er formålet med dokumentet?</h3><p></p><h3 id="why-is-this-important"> Hvorfor er dette vigtigt?</h3><p></p><h3 id="what-are-you-asking-people-to-do"> Hvad beder du folk om at gøre?</h3><p></p>
       document: Dokument
     practice_thread:
-      process_name: Øvelsestråd
       process_subtitle: En tråd for at byde folk velkommen til gruppen og øve sig i at bruge Loomio
       process_introduction: "<p>Brug denne skabelon til at byde nye medlemmer velkommen og opfordre til tidlig deltagelse. Den giver folk mulighed for at præsentere sig selv og udforske Loomios funktioner.</p>"
       title: "\U0001F44B Velkommen! Sig hej og prøv tingene ud"
@@ -127,8 +126,6 @@ da:
     '403':
       title: Forbudt
       body: Du har ikke adgang til denne side. Du skal muligvis logge ind.
-    '404':
-      body: Den ønskede vare blev ikke fundet. Dette kan ske, hvis en tråd eller afstemning er blevet slettet.
     '410':
       title: Væk
       body: Denne side findes ikke længere
@@ -317,7 +314,6 @@ da:
       subject: "%{who} har anmodet om medlemskab af %{which_group}"
       view_group: Du kan godkende eller afvise anmodningen her
       button_text: Vis anmodning
-    loomio_app_description: Et sted, hvor organisationer kan træffe beslutninger i fællesskab.
     content_was_translated: Dette indhold blev oversat fra %{source_locale}
     content_was_translated_html: Dette indhold blev oversat fra %{source_locale}. <a href="%{profile_url}">Se indstillinger<a></a>
   announcement_count_emails: "%{count} e-mails"

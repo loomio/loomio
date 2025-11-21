@@ -384,13 +384,10 @@ nl_NL:
     unreleased_emails: Niet-vrijgegeven e-mails
     start_a_thread_by_email: Start een draad per e-mail
     send_email_to_start_thread: Stuur een e-mail naar dit adres om een gesprek in uw groep te starten.
-    subject_body_attachments: Het e-mailonderwerp wordt de titel van de thread, de hoofdtekst van de e-mail wordt de beschrijving en eventuele bijgevoegde bestanden worden aan de thread toegevoegd.
     copy_address: Adres kopiëren
     email_me_this_address: E-mail mij dit adres
     email_address_copied_to_clipboard: E-mailadres gekopieerd naar klembord
     forward_email_to_move_conversation: 'Tip: Stuur een e-mailgesprek door naar Loomio als u een beslissing moet nemen of iets moet bijhouden.'
-  email_to_group_mailer:
-    your_email_address_to_start_threads_in_group: Uw e-mailadres om threads te starten in %{group}
   volume_levels:
     loud: Luid
     normal: Normaal
@@ -414,14 +411,12 @@ nl_NL:
       loud_explain: wanneer er activiteit is
       normal_explain: wanneer iemand je aandacht vraagt
       quiet_explain: geen meldingen
-    aria_label: Verander e-mail-instellingen formulier
     loud_label: Alle activiteit
     normal_label: Aankondigingen
     quiet_label: Geen e-mails
     mute_label: Dempen
     saved: Melding instellingen aangepast
     discussion:
-      title: Bord meldingen
       loud_description: Je ontvangt een e-mail voor alle activiteiten van dit bord.
       normal_description: Je ontvangt een e-mail voor belangrijke activiteiten van dit bord.
       quiet_description: Je ontvangt geen e-mails over dit bord.
@@ -471,7 +466,6 @@ nl_NL:
     loud_desc: Elke keer dat iemand meedoet
     normal_desc: Wanneer iemand mij op de hoogte stelt
     quiet_desc: Nooit
-    normal_explained: Wanneer iemand jouw naam invoert in het veld 'Melden' van een thread of poll, of wanneer ze de groep @vermelden.
     loud_explained: U ontvangt een e-mail wanneer er een nieuwe reactie is, iemand stemt of een poll of thread start.
     when_would_you_like_to_be_emailed_poll_type: Wanneer wilt u een e-mail ontvangen over deze %{poll_type}?
     normal_excludes_mentioning_html: Er is een aparte instelling voor wanneer iemand je vermeldt (bijvoorbeeld wanneer iemand op je reageert in een reactie). <a href="%{url}">Klik hier om de instellingen voor @vermeldingen te bewerken.</a>
@@ -480,7 +474,6 @@ nl_NL:
     what_the_options_mean: Wat de opties betekenen
     quiet_explained: Je ontvangt geen e-mails, zelfs niet wanneer iemand je probeert te informeren. Je mist mogelijk belangrijke aankondigingen of beslissingen, tenzij je de gewoonte hebt om Loomio regelmatig te checken.
   close_explanation_modal:
-    aria_label: Sluit bord
     close_thread: Sluit bord
     body: |
       <p>Sluit oude of onbelangrijke borden zodat deze niet meer zichtbaar zijn, en om aan te geven dat de discussie gesloten is.</p>
@@ -495,14 +488,10 @@ nl_NL:
     password_label: 'Wachtwoord:'
     password_confirmation_label: 'Herhaal je wachtwoord:'
   signed_out_modal:
-    aria_label: Sessie geëindigd
     title: Je sessie is geëindigd
     message: Je bent uit een ander venster uitgelogd geraakt. Gelieve opnieuw in te loggen om verder te kunnen werken.
     ok: Ok
-  comment_reply_form:
-    aria_label: Een atwoord toevoegen
   comment_form:
-    aria_label: Reactie toevoegen
     attachments:
       add_attachment: Bijlage toevoegen
       remove_attachment: Bijlage verwijderen
@@ -529,9 +518,6 @@ nl_NL:
   thread_nav:
     participants: Deelnemers
   sidebar:
-    new_thread_removed: Nieuw draadje verwijderd
-    new_thread_removed_body: De nieuwe discussieknop wordt uit de zijbalk verwijderd. Om een nieuw gesprek te starten, navigeert u eerst naar uw groep en klikt u vervolgens op 'Nieuw gesprek'. Excuses voor de wijziging, maar deze is vereist omdat u een sjabloon moet selecteren wanneer u een thread start.
-    threads: Borden
     my_groups: Mijn groepen
     other_groups: Andere groepen
     all_groups: Alle groepen
@@ -540,7 +526,6 @@ nl_NL:
     direct_threads: Directe borden
     unread_threads: Ongelezen gesprekken (%{count})
     muted_threads: Gedempte borden
-    start_group: Nieuwe organisatie
     start_subgroup: Nieuwe subgroep
     explore: Openbare groepen
     explore_groups: Verken groepen
@@ -585,7 +570,6 @@ nl_NL:
     all_subgroups: Alle subgroepen
     parent_only: Alleen ouder
   navbar:
-    search_all_threads: Zoek in alle borden
     search_threads: Zoek borden in %{name}
     search_polls: Zoek peilingen in %{name}
     search_members: Zoek leden in %{name}
@@ -637,7 +621,6 @@ nl_NL:
     dark_blue: Donkerblauw
   membership_card:
     group_members: Groepsleden
-    discussion_members: Bord leden
     poll_members: "%{pollType} gebruikers"
     voters: Stemmers
     invite_to_group: Nodig voor uit voor de groep
@@ -653,7 +636,6 @@ nl_NL:
     make_coordinator: Admin maken
     demote_coordinator: Degradeer admin
     remove_from:
-      discussion: Van bord verwijderen
       group: Van groep verwijderen
       poll: Verwijder van %{pollType}
     cancel_invitation: Annuleer uitnodiging
@@ -662,7 +644,6 @@ nl_NL:
     make_delegate: Maak gedelegeerde
     revoke_delegate: Afgevaardigde intrekken
   notification_models:
-    discussion: 'bord:'
     comment: reactie in
     poll: 'peiling:'
     outcome: 'resultaat:'
@@ -673,9 +654,6 @@ nl_NL:
     with_title:
       unknown_sender: Controleer de e-mail van een onbekende afzender
       comment_replied_to: "%{actor} antwoordde je in: %{title}"
-      discussion_announced: "%{actor} nodigde je uit voor de thread: %{title}"
-      discussion_edited: "%{actor} heeft de threadcontext bewerkt: %{title}"
-      discussion_closed: "%{actor} heeft de thread gesloten: %{title}"
       invitation_accepted: "%{actor} accepteerde je uitnodiging om lid te worden van %{title}"
       membership_created: "%{actor} heeft je uitgenodigd om lid te worden van %{title} op %{site_name}"
       membership_resent: "%{actor} heeft je uitgenodigd om lid te worden van %{title} op %{site_name}"
@@ -683,7 +661,6 @@ nl_NL:
       membership_request_approved: "%{actor} keurde uw verzoek om lid te worden van %{title} goed"
       new_comment: "%{actor} reageerde in: %{title}"
       new_coordinator: "%{actor} heeft u beheerder gemaakt van %{title}"
-      new_discussion: "%{actor} is een thread begonnen: %{title}"
       outcome_announced: "%{actor} deelde een %{poll_type} resultaat: %{title}"
       outcome_created: "%{actor} deelde een %{poll_type} resultaat: %{title}"
       outcome_updated: "%{actor} wijzigde het %{poll_type} resultaat: %{title}"
@@ -711,13 +688,8 @@ nl_NL:
       poll_announced: "%{actor} heeft je uitgenodigd om te stemmen: %{title}"
     without_title:
       unknown_sender: Controleer de e-mail van een onbekende afzender
-      discussion_announced: "%{actor} heeft je uitgenodigd voor een thread"
-      discussion_edited: "%{actor} heeft de threadcontext bewerkt"
-      discussion_closed: "%{actor} sloot het bord"
       group_announced: "%{actor} heeft je uitgenodigd voor een groep"
       comment_replied_to: "%{actor} heeft je geantwoord"
-      new_discussion: "%{actor} heeft een thread gestart"
-      new_comment: "%{actor} heeft gereageerd in een thread"
       membership_created: "%{actor} heeft je uitgenodigd om lid te worden van een groep"
       membership_resent: "%{actor} heeft je uitgenodigd om lid te worden van een groep"
       membership_requested: "%{actor} verzocht om lid te worden van uw groep"
@@ -749,13 +721,10 @@ nl_NL:
     hints:
       poll_closing_soon: Dit is een goed moment om te stemmen, van gedachten te veranderen of anderen aan te moedigen om mee te doen.
       poll_closing_soon_author: Misschien wilt u mensen eraan herinneren om te stemmen of de deadline verlengen.
-      outcome_review_due: Overweeg een feedback-enquête te starten of een nieuwe discussielijn te starten waarin u kunt nadenken over hoe de beslissing is geïmplementeerd.
     email_subject:
       unknown_sender: E-mail van onbekende afzender bekijken
       comment_replied_to: "%{actor} heeft op je gereageerd in: %{title}"
       discussion_announced: "%{title}"
-      discussion_edited: "%{actor} heeft de context bewerkt: %{title}"
-      discussion_closed: "%{actor} heeft de thread gesloten: %{title}"
       invitation_accepted: "%{actor} heeft je uitnodiging om lid te worden van %{title} geaccepteerd"
       membership_created: "%{actor} heeft je uitgenodigd om lid te worden van %{title} op %{site_name}"
       membership_resent: "%{actor} heeft je uitgenodigd om lid te worden van %{title} op %{site_name}"
@@ -790,33 +759,8 @@ nl_NL:
       user_reminded: "%{actor} herinnert je eraan om te stemmen op: %{title}"
       poll_announced: 'Stem: %{title}'
   discussion_fork_actions:
-    helptext: Selecteer items die je wilt verplaatsen naar een ander bord
     move: Verplaatsen
-    search_placeholder: Vind een bord op titel
     moved: Reacties aan het verplaatsen, dit kan even duren
-    move_to_existing_thread: Verplaats naar een bestaand bord
-    start_new_thread: Of, start een nieuw bord
-  thread_template:
-    browse_public_templates: Blader door de sjabloongalerij
-    thread_template_settings: Instellingen draadsjabloon
-    start_a_new_thread: Start een nieuw draadje
-    thread_template_saved: Draadsjabloon opgeslagen
-    these_are_public_templates: Deze sjablonen kunt u kopiëren of aanpassen aan uw groep
-    these_are_templates: Dit zijn de draadsjablonen in uw groep. Sjablonen begeleiden u door veelvoorkomende besluitvormingsprocessen.
-    default_title_label: Standaard titel
-    default_title_hint: Vul het titelveld vooraf in met bewerkbare tekst. Dit is optioneel. Laat het veld leeg als u het niet zeker weet.
-    title_placeholder_label: Voorbeeld titel
-    title_placeholder_hint: Een voorbeeld om op de achtergrond van het titelveld weer te geven
-    title_placeholder_placeholder: Zo ziet achtergrondtekst er bijvoorbeeld uit
-    example_description_label: Voorbeeld beschrijving
-    example_description_placeholder: Zorg voor een sjabloon waarmee mensen een thread kunnen starten
-    hidden_templates: Verborgen sjablonen
-    confirm_delete: Weet je zeker dat je deze threadsjabloon definitief wilt verwijderen? Er worden hierdoor geen threads verwijderd.
-    add_proposal_or_poll_template: Voeg een voorstel- of opiniepeilingssjabloon toe
-    recommended_proposal_or_poll_templates: Aanbevolen voorstel- of opiniepeilingssjablonen
-    decision_templates: Beslissingssjablonen
-    decision_templates_help: Selecteer eventuele voorstel- of opiniepeilingssjablonen die u helpen dit proces te voltooien.
-    share_in_template_gallery: Deel deze sjabloon in de openbare sjabloongalerij
   discussion_form:
     thread_templates: Draad sjablonen
     new_thread_template: Nieuw thread-sjabloon
@@ -833,7 +777,6 @@ nl_NL:
     change_log_placeholder: 'Optioneel: omschrijf je veranderingen. De omschrijving wordt toegevoegd aan het bord.'
     change_log_label: Wat is er veranderd?
     invite: Uitnodigen
-    aria_label: Bordformulier
     start_thread: Start discussie
     messages:
       created: Bord gestart
@@ -861,7 +804,6 @@ nl_NL:
     send_poll: Verstuur %{type}
     send_outcome: Stuur de resultaat
     cannot_reveal_when_anonymous: Sorry, we kunnen niet onthullen wie wel of niet heeft gestemd op een anonieme peiling.
-    discussion_notification_history: Bord meldingen geschiedenis
     group_notification_history: Groep uitnodigingen
     poll_notification_history: Peiling meldingen geschiedenis
     outcome_notification_history: Resultaat meldingen geschiedenis
@@ -873,7 +815,6 @@ nl_NL:
     preview: Email voorbeeld
     no_notifications_sent: Geen meldingen zijn verzonden
     history_error: Er ging iets mis! Kon de geschiedenis niet laden.
-    inviting_guests_to_thread: Gasten zijn geen lid van jouw groep en hebben alleen toegang tot dit bord
     select_groups: selecteer groepen
     search_by_name_or_email: Zoek op naam, of type e-mailadressen voor de uitnodiging
     search_by_name: Zoek naar mensen op naam
@@ -959,8 +900,6 @@ nl_NL:
       added_singular: Er zal 1 persoon worden toegevoegd.
       added_none: Er zal niemand worden toegevoegd.
       group_title: "%{name} (%{count} mensen)"
-      visible_to_group: Iedereen in %{group} kunnen dit bord zien.
-      visible_to_guests: Alleen uitgenodigde mensen kunnen dit bord zien.
       click_group_to_see_individuals: Klik groep om individuen te zien
       poll_announced:
         title: Uitnodiging om te stemmen
@@ -1106,7 +1045,6 @@ nl_NL:
     messages:
       joined_group: Je bent nu lid van %{group}
   membership_request_form:
-    aria_label: Formulier lidmaatschapsverzoek
     heading: Vraag om lid te worden van de groep
     name_label: Naam
     email_label: E-mailadres
@@ -1116,7 +1054,6 @@ nl_NL:
     messages:
       membership_requested: Je hebt verzocht om lid te worden van %{group}
   revision_history_modal:
-    aria_label: Mutatiegeschiedenis
     discussion_header: Discussie wijzigingen
     comment_header: Reactie wijzigingen
     poll_header: Peiling wijzigingen
@@ -1142,10 +1079,6 @@ nl_NL:
     you_and_name: Jij en %{name}
     you_and_name_and_count_more: Jij, %{name} en %{count} anderen
     name_and_count_more: "%{name} en %{count} meer"
-  context_panel:
-    thread_status:
-      pinned: Dit bord is vastgeprikt. Het zal voor alle gebruikers bovenaan de lijst van borden van de groepslijst blijven staan.
-      closed: Dit bord is gesloten. Het verschijnt niet langer op het dashboard, en het staat onder 'gesloten' op de groep pagina
   delete_group_modal:
     title: Groep verwijderen
     subgroup_title: Subgroep verwijderen
@@ -1223,7 +1156,6 @@ nl_NL:
       private: 'Privacy: Deze groep is alleen zichtbaar voor leden.'
       parent_members: 'Privacy: Deze groep is zichtbaar voor leden van %{parentGroupName} en leden van %{groupName}'
       public: 'Privacy: Deze groep is zichtbaar op het web'
-      aria_label: 'Groepsprivacy: %{privacy}'
     participation_report: Deelname verslag
     my_subgroups: Mijn subgroepen
     more_subgroups: Meer subgroepen
@@ -1238,12 +1170,10 @@ nl_NL:
     messages:
       description_updated: Beschrijving vernieuwd
   leave_group_form:
-    aria_label: Verlaat groep
     title: Verlaat groep
     question: Weet je zeker dat je de groep wil verlaten?
     submit: Ja, verlaat deze groep
   archive_group_form:
-    aria_label: Deactiveer groep
     title: Deactiveer groep
     question: Weet je zeker dat je de groep wil deactiveren?
     submit: Ja, deactiveer deze groep
@@ -1253,7 +1183,6 @@ nl_NL:
     change_cover_image: omslagafbeelding wijzigen
     change_logo: logo veranderen
     permissions_explaination: 'Er zijn twee lidmaatschapsniveaus die een persoon kan hebben voor een groep: beheerder en lid. Beheerders kunnen groepsinstellingen bewerken, andere mensen beheerder maken en alle onderstaande acties uitvoeren.'
-    aria_label: Groepsformulier
     parent_group: Bovenliggende groep
     new_organisation: Nieuwe organisatie
     new_group: Nieuwe groep
@@ -1379,7 +1308,6 @@ nl_NL:
     group_url: Groep URL
     reusable_invitation_link: Herbruikbare uitnodigingslink
     error: Fout bij het kopiëren naar het klembord
-    aria_label: Uitnodiging van
     invite_people: Mensen uitnodigen
     invite_guests: Nodig gasten uit
     notify_people: Breng mensen op de hoogte
@@ -1512,7 +1440,6 @@ nl_NL:
     insert_link: Link invoegen
     insert_embedded_url: Video integreren
   change_picture_form:
-    aria_label: Profielfoto formulier
     title: 'Stel profielfoto in '
     helptext: Je kunt je eigen profiel foto uploaden, of als je een <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> account hebt, kun je dat gebruiken.
     use_initials: Gebruik initialen
@@ -1576,7 +1503,6 @@ nl_NL:
     replies_count: "%{count} antwoorden"
     unread_count: "%{count} ongelezen"
   dashboard_page:
-    aria_label: Dashboard
     polls_to_vote_on: Polls om op te stemmen
     no_polls_to_vote_on: Er zijn geen polls waar je op moet stemmen
     recent_polls: Recente peilingen
@@ -1589,7 +1515,6 @@ nl_NL:
       show_all: Je hebt geen recente borden.
       show_proposals: Er zijn geen voorstellen actief op dit moment.
       show_muted: Je hebt geen gedempte borden.
-    view_recent: Alle recente borden bekijken?
     load_more: Laad meer borden
     mark_as_read: Markeer als gelezen
     dismiss: Afwijzen
@@ -1604,7 +1529,6 @@ nl_NL:
       filter_threads: Borden filteren
       filter_threads_aria_label: Borden filteren
       dropdown_heading: Filter dashboard
-      all: Recente borden
       all_aria_label: Toont momenteel recente borden
       all_description: Bekijk recente borden
       proposals: Voorstellen
@@ -1628,13 +1552,11 @@ nl_NL:
       older: Ouder dan een maand
   threads_page:
     no_direct_threads: Je hebt geen directe borden
-    no_invite_only_threads: Je hebt geen alleen op uitnodiging borden
   inbox_page:
     no_threads: Woehoe! Je hebt alle borden in je postvak gelezen.
     unread_threads: Ongelezen borden
     view_more: Bekijk meer
     no_groups:
-      explanation: Je hebt geen ongelezen borden, omdat je geen lid bent van een groep.
       start: Start
       or: of
       join_group: <a href="/explore">word lid</a> van een groep om borden te zien.
@@ -1655,9 +1577,6 @@ nl_NL:
     pin:
       pinned: Bord vastgeprikt
       unpinned: Bord losgeprikt
-    volume:
-      mute_message: Bord gedempt.
-      unmute_message: Bord demping uit
     closed:
       reopened: Bord heropend
       closed: Bord gesloten
@@ -1667,8 +1586,6 @@ nl_NL:
     disabled_anonymous_polls: Kijkgeschiedenis is uitgeschakeld omdat thread anonieme opiniepeilingen bevat
   activity_card:
     count_responses: "%{count} reacties"
-    event_pinned: Vastgeprikt op de tijdslijn
-    event_unpinned: Loggeprikt van de tijdslijn
     beginning: Eerste
     end: Einde
     unread: Ongelezen (%{count})
@@ -1677,7 +1594,6 @@ nl_NL:
     chronological: Chronologisch
     nested: Genesteld
     attachment_display:
-      aria_label: 'Bestand toegevoegd:'
       image_alt: Toegevoegde afbeelding
     n_previous: Laad %{count} eerdere reacties
     n_more: Laad %{count} reacties
@@ -1688,12 +1604,9 @@ nl_NL:
     facilitate: Faciliteren
     start_decision: Begin beslissing
     start_vote: Begin met stemmen
-  thread_group:
-    aria_label: Groepsnaam
   thread_context:
     current_poll_type_banner: Huidig %{pollType}
     item_maybe_deleted: De gevraagde locatie konden we niet vinden op het bord. Het zou verwijderd kunnen zijn.
-    aria_label: Bordbeschrijving
     thread_options: Bord opties
     email_settings: Melding instellingen
     edit: Bewerk
@@ -1710,11 +1623,6 @@ nl_NL:
     seen_by_count: Gezien door %{count}
     count_notified: Melding %{count}
     forked_from: Geforked van
-  pin_thread_modal:
-    title: Bord vastprikken
-    helptext: Vastgeprikte borden verschijnen altijd bovenaan de groepslijst van borden. Ze kunnen gebruikt worden om leden te informeren over belangrijke aankondigingen, of om gemeenschappelijke info te verspreiden zoals de code van goede praktijk of gemeenschapsrichtlijnen.
-    helptext_two: Je mag op ieder moment prikkers verwijderen door 'Ontprikken' te selecteren bij het bord dropdown menu
-    pin_thread: Bord vastprikken
   thread_arrangement_form:
     edit: Lay-out bewerken
     title: Bord layout
@@ -1733,20 +1641,11 @@ nl_NL:
     nested_twice_description: Antwoorden maximaal twee keer laten inspringen.
     changing_nesting_is_slow: Wijzigingen in de 'nesting' kunnen enkele minuten duren om te verwerken.
   delete_thread_form:
-    aria_label: Bord verwijderen
     title: Bord verwijderen
     body: Weet je zeker dat je dit bord wil verwijderen?
     confirm: Bord verwijderen
     messages:
       success: Bord verwijderd
-  move_thread_form:
-    aria_label: Bord verplaatsen
-    title: Bord verplaatsen
-    body: Doel groep
-    confirm: Bord verplaatsen
-    confirm_change_to_private_thread: "%{groupName} is een open groep. Als je verder gaat zal dit bord openbaar gemaakt worden."
-    messages:
-      success: Bord is verplaatst naar %{name}
   delete_comment_dialog:
     title: Verwijder reactie
     question: Hiermee wordt deze opmerking definitief verwijderd. Als u doorgaat, kan het niet worden hersteld.
@@ -2418,8 +2317,6 @@ nl_NL:
     name_placeholder: Geef deze integratie een naam zodat u deze kunt identificeren
     event_kind_helptext: Van welke gebeurtenissen wilt u dat de webhook op de hoogte wordt gebracht?
     event_kinds:
-      new_discussion: Een bord is gestart
-      discussion_edited: Een bord is gewijzigd
       poll_edited: Een peiling is gewijzigd
       new_comment: Reactie geplaatst
       poll_created: Een peiling is gestart

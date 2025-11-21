@@ -89,7 +89,6 @@ sl:
       description: <h3 id="what-is-the-purpose-of-the-document">Kakšen je namen dokumenta?</h3><p></p><h3 id="why-is-this-important"> Zakaj je to pomembno?</h3><p></p><h3 id="what-are-you-asking-people-to-do"> Kaj zahtevaš od ljudi?</h3><p></p>
       document: Dokument
     practice_thread:
-      process_name: Vaja nit
       process_subtitle: Nit za dobrodošlico v skupino in vajo uporabe Loomia
       process_introduction: "<p>Uporabite to predlogo za dobrodošlico novim članom in spodbujanje zgodnje udeležbe. Ljudem daje priložnost, da se predstavijo in raziščejo funkcije Loomia.</p>"
       title: "\U0001F44B Dobrodošli! Pozdravite nas in preizkusite."
@@ -127,8 +126,6 @@ sl:
     '403':
       title: Prepovedano
       body: Dostop do te strani vam ni dovoljen. Morda se boste morali prijaviti.
-    '404':
-      body: Zahtevanega elementa ni bilo mogoče najti. To se lahko zgodi, če je bila nit ali anketa izbrisana.
     '410':
       title: Izginil
       body: Ta stran ne obstaja več
@@ -311,7 +308,6 @@ sl:
       subject: "%{who} je zaprosil za vstop v %{which_group}"
       view_group: Prošnjo lahko odobriš ali zavrneš tukaj
       button_text: Ogled zahteve
-    loomio_app_description: Kraj, kjer lahko organizacije skupaj sprejemajo odločitve.
     content_was_translated: Ta vsebina je bila prevedena iz %{source_locale}
     content_was_translated_html: Ta vsebina je bila prevedena iz %{source_locale}. <a href="%{profile_url}">Ogled nastavitev<a></a>
   announcement_count_emails: "%{count} e-poštnih sporočil"

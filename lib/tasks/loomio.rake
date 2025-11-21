@@ -27,13 +27,39 @@ namespace :loomio do
   end
 
   def delete_keys(hash, keys)
-    paths = []
-    hash.keys.each do |key|
-      if hash[key].is_a? Hash
-        delete_keys(hash[key], keys)
+    # Dotted keys are exact paths; undotted keys match any key (leaf or subtree) whose last segment equals the key.
+    exact_paths = keys.select { |k| k.include?('.') }
+    leaf_names  = keys - exact_paths
+
+    # Helper to delete at an exact dotted path and prune empty hashes along the way.
+    delete_exact = lambda do |h, parts|
+      return if parts.empty? || !h.is_a?(Hash)
+      key = parts.first
+      if parts.length == 1
+        h.delete(key)
       else
-        keys.each do |k|
-          hash.delete(k) if hash.key?(k)
+        child = h[key]
+        if child.is_a?(Hash)
+          delete_exact.call(child, parts[1..-1])
+          h.delete(key) if child.empty?
+        end
+      end
+    end
+
+    # Delete exact dotted paths first.
+    exact_paths.each do |path|
+      delete_exact.call(hash, path.split('.'))
+    end
+
+    # Recursively delete any key (leaf or subtree) whose last segment matches an undotted key, and prune empties.
+    if leaf_names.any?
+      hash.keys.each do |k|
+        v = hash[k]
+        if leaf_names.include?(k)
+          hash.delete(k)
+        elsif v.is_a?(Hash)
+          delete_keys(v, leaf_names)
+          hash.delete(k) if v.empty?
         end
       end
     end
@@ -103,6 +129,60 @@ namespace :loomio do
     # I edit this each time I want to use it.. rake task arguments are terrible
     unwanted = %w[
       loomio_app_description
+      invite_only_discussion
+      invite_only_discussions
+      no_invite_only_threads
+      inbox_page.no_groups.explanation
+      discussion.volume.mute_message
+      discussion.volume.unmute_message
+      event_pinned
+      event_unpinned
+      dashboard_page.filtering.all
+      dashboard_page.view_recent
+      dashboard_page.load_more_discussions
+      email_to_group.subject_body_attachments
+      email_to_group_mailer.your_email_address_to_start_threads_in_group
+      change_volume_form.normal_explained
+      change_volume_form.discussion.title
+      sidebar.new_thread_removed
+      sidebar.new_thread_removed_body
+      sidebar.threads
+      sidebar.start_group
+      discussion_templates.practice_thread.process_name
+      errors.404.body
+      move_thread_form.confirm_change_to_private_thread
+      move_thread_form
+      announcement.discussion_notification_history
+      announcement.inviting_guests_to_thread
+      announcement.form.visible_to_group
+      announcement.form.visible_to_guests
+      aria_label
+      pin_thread_modal
+      context_panel.thread_status.pinned
+      context_panel.thread_status.closed
+      navbar.search_all_threads
+      membership_card.discussion_members
+      membership_dropdown.remove_from.discussion
+      notification_models.discussion
+      notifications.email_subject.discussion_edited
+      notifications.email_subject.discussion_closed
+      notifications.with_title.discussion_announced
+      notifications.with_title.discussion_edited
+      notifications.with_title.discussion_closed
+      notifications.with_title.new_discussion
+      notifications.without_title.discussion_announced
+      notifications.without_title.discussion_edited
+      notifications.without_title.discussion_closed
+      notifications.without_title.new_discussion
+      notifications.without_title.new_comment
+      notifications.hints.outcome_review_due
+      discussion_fork_actions.helptext
+      discussion_fork_actions.search_placeholder
+      discussion_fork_actions.move_to_existing_thread
+      discussion_fork_actions.start_new_thread
+      thread_template
+      webhook.event_kinds.new_discussion
+      webhook.event_kinds.discussion_edited
     ]
 
     %w[client server].each do |source_name|
