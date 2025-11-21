@@ -195,7 +195,7 @@ v-card.strand-members-list(:title="$t('announcement.form.discussion_announced.ti
         user-avatar.mr-2(:user="reader.user()" :size="32")
       v-list-item-title
         span.mr-2 {{reader.user().nameWithTitle(discussion.group())}}
-        v-chip.mr-1(v-if="discussion.groupId && reader.guest" variant="tonal" size="x-small" :title="$t('announcement.inviting_guests_to_thread')")
+        v-chip.mr-1(v-if="discussion.groupId && reader.guest" variant="tonal" size="x-small" :title="$t('announcement.inviting_guests_to_discussion')")
           span(v-t="'members_panel.guest'")
         v-chip.mr-1(v-if="reader.admin" variant="tonal" size="x-small")
           span(v-t="'announcement.members_list.thread_admin'")

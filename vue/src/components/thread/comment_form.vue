@@ -26,7 +26,7 @@ export default {
       if (this.comment.parent()) {
         return this.$t('comment_form.in_reply_to', {name: this.comment.parent().author().nameOrUsername()});
       } else {
-        return this.$t('comment_form.aria_label');
+        return this.$t('comment_form.add_a_comment');
       }
     }
   },

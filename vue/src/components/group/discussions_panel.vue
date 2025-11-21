@@ -92,7 +92,7 @@ export default
         discussions: this.discussions,
         discussionsGroup: this.group,
         search: {
-          placeholder: this.$t('navbar.search_threads', {name: this.group.parentOrSelf().name})
+          placeholder: this.$t('navbar.search_discussions_in_group', {name: this.group.parentOrSelf().name})
         }
       });
     },
@@ -238,7 +238,7 @@ div.discussions-panel(v-if="group")
   v-alert(color="info" variant="tonal" v-if="isMember && noThreads")
     v-card-title(v-t="'discussions_panel.welcome_to_your_new_group'")
     v-card-text
-      p(v-t="'discussions_panel.lets_start_a_thread'")
+      p(v-t="'discussions_panel.lets_start_a_discussion'")
 
   v-card.discussions-panel(v-else)
     div(v-if="loader.status == 403")
@@ -246,8 +246,8 @@ div.discussions-panel(v-if="group")
     div(v-else)
       .discussions-panel__content
         .discussions-panel__list--empty.pa-4(v-if='noThreads')
-          p.text-center(v-if='canViewPrivateContent' v-t="'group_page.no_threads_here'")
-          p.text-center(v-if='!canViewPrivateContent' v-t="'group_page.private_threads'")
+          p.text-center(v-if='canViewPrivateContent' v-t="'group_page.no_discussions_here'")
+          p.text-center(v-if='!canViewPrivateContent' v-t="'group_page.private_discussions'")
         .discussions-panel__list.thread-preview-collection__container(v-if="discussions.length")
           v-list.thread-previews(lines="two")
             thread-preview(
@@ -262,7 +262,7 @@ div.discussions-panel(v-if="group")
 
         v-pagination(v-model="page" :length="totalPages" :disabled="totalPages == 1")
         .d-flex.justify-center
-          router-link.discussions-panel__view-closed-threads.text-center.pa-1(:to="'?t=closed'" v-if="suggestClosedThreads" v-t="'group_page.view_closed_threads'")
+          router-link.discussions-panel__view-closed-threads.text-center.pa-1(:to="'?t=closed'" v-if="suggestClosedThreads" v-t="'group_page.view_closed_discussions'")
 
 </template>
 

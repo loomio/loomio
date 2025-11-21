@@ -210,7 +210,7 @@ en:
       decline_prompt: Is there anything you'd like to say?
   discussion_templates:
     practice_thread:
-      process_name: Practice thread
+      process_name: Practice discussion
       process_subtitle: Welcome people to the group and practice using Loomio
       process_introduction: "<p>Use this template to welcome new members and encourage early participation. It gives people a chance to introduce themselves and explore Loomio’s features.</p>"
       title: "\U0001F44B Welcome! Say hi and try things out"
@@ -327,7 +327,7 @@ en:
       body: You are not permitted to access this page. You may need to sign in.
     '404':
       title: Not found
-      body: The item you requested was not found. This can happen if a thread or poll has been deleted.
+      body: The item you requested was not found. This can happen if a discussion or poll has been deleted.
     '410':
       title: Gone
       body: This page no longer exists

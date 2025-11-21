@@ -168,7 +168,7 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
 
     v-divider
     v-list(nav density="compact" :lines="false")
-      v-list-item.sidebar__list-item-button--recent(to="/dashboard" :title="$t('dashboard_page.aria_label')")
+      v-list-item.sidebar__list-item-button--recent(to="/dashboard" :title="$t('dashboard_page.dashboard')")
       v-list-item(to="/inbox" :title="$t('sidebar.unread_discussions_count', { count: unreadThreadCount() })")
       v-list-item.sidebar__list-item-button--private(to="/threads/direct")
         v-list-item-title
@@ -181,7 +181,7 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
     v-divider
     v-list.sidebar__groups(nav density="comfortable")
       v-list-subheader
-        span(v-t="'common.organizations'")
+        span(v-t="'common.groups'")
       template(v-for="group in organizations" :key="group.id")
         v-list-item(:to="urlFor(group)")
           template(v-slot:prepend)
@@ -200,7 +200,7 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
         v-if="canStartGroups"
         to="/g/new"
       )
-        span(v-t="'sidebar.start_group'")
+        span(v-t="'sidebar.new_group'")
 
     v-divider
 

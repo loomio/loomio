@@ -65,7 +65,7 @@ export default new class TipService {
         }
       },
       {
-        title: 'tips.group.start_a_thread.title',
+        title: 'tips.group.start_a_discussion.title',
         completed() { return group.discussionsCount > 0 },
         show() { return !!group },
         disabled() { return false },
@@ -80,9 +80,9 @@ export default new class TipService {
                 },
                 forceSubmit: true,
                 text: {
-                  title:    'tips.group.start_a_thread.title',
-                  helptext: 'tips.group.start_a_thread.helptext',
-                  submit:   'tips.group.start_a_thread.submit'
+                  title:    'tips.group.start_a_discussion.title',
+                  helptext: 'tips.group.start_a_discussion.helptext',
+                  submit:   'tips.group.start_a_discussion.submit'
                 },
               }
             }

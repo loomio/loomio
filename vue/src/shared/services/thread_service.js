@@ -435,9 +435,9 @@ export default new class ThreadService {
           confirm: {
             submit: thread.savePin,
             text: {
-              title: 'pin_thread_modal.title',
+              title: 'action_dock.pin_discussion',
               flash: 'discussion.pin.pinned',
-              helptext: 'pin_thread_modal.helptext'
+              helptext: 'pin_discussion_modal.helptext'
             }
           }
         }

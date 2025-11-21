@@ -70,7 +70,7 @@ v-main
     h1.text-h4.my-4(tabindex="-1" v-intersect="{handler: titleVisible}" v-t="'sidebar.invite_only_discussions'")
     v-layout.pb-3
       v-spacer
-      v-btn.threads-page__new-thread-button(color="primary" to="/d/new" v-t="'sidebar.start_thread'")
+      v-btn.threads-page__new-thread-button(color="primary" to="/d/new" v-t="'sidebar.new_discussion'")
       //- v-text-field(clearable solo hide-details :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_all_threads')" append-icon="mdi-magnify")
 
     v-card.mb-3.dashboard-page__loading(v-if='loader.loading && threads.length == 0' aria-hidden='true')
