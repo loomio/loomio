@@ -42,7 +42,7 @@ export default {
 <template lang="pug">
 span.tags-display
   v-chip.mr-1(
-    v-for="tag in normalizedTags"
+    v-for="tag in tagObjects"
     :key="tag.id || tag.name"
     :size="size"
     :color="tag.color"
