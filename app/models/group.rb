@@ -167,6 +167,10 @@ class Group < ApplicationRecord
   validates :description, length: { maximum: AppConfig.app_features[:max_message_length] }
   before_validation :ensure_handle_is_not_empty
 
+  def title_model
+    self
+  end
+
   def logo_url(size = 512)
     return nil unless logo.attached?
     size = size.to_i
@@ -232,7 +236,7 @@ class Group < ApplicationRecord
   end
 
   def title
-    name
+    full_name
   end
 
   def guests

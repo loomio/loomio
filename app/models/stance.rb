@@ -106,12 +106,16 @@ class Stance < ApplicationRecord
   validate :valid_none_of_the_above
   validate :poll_options_must_match_stance_poll
 
-  %w[group mailer group_id discussion_id discussion members voters title tags].each do |message|
+  %w[group mailer group_id discussion_id discussion members voters tags].each do |message|
     delegate(message, to: :poll)
   end
 
   before_save :assign_option_scores
   after_save :update_versions_count!
+
+  def title_model
+    poll
+  end
 
   def build_replacement
     Stance.new(

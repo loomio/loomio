@@ -60,7 +60,7 @@ class Outcome < ApplicationRecord
   has_many :documents, as: :model, dependent: :destroy
 
   %w(
-    title poll_type dates_as_options group group_id discussion discussion_id
+    poll_type dates_as_options group group_id discussion discussion_id
     locale mailer members admins discarded? tags
   ).each { |message| delegate message, to: :poll }
 
@@ -78,6 +78,10 @@ class Outcome < ApplicationRecord
               WHERE events.eventable_id   = outcomes.id AND
                     events.eventable_type = 'Outcome' AND
                     events.kind           = 'outcome_review_due')")
+  end
+
+  def title_model
+    poll
   end
 
   def author_name

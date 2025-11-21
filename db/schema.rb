@@ -479,7 +479,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_11_19_022406) do
     t.string "request_to_join_prompt"
     t.integer "delegates_count", default: 0, null: false
     t.string "category"
-    t.boolean "allow_polls_without_discussions", default: false, null: false
     t.boolean "can_start_polls_without_discussion", default: false, null: false
     t.index ["archived_at"], name: "index_groups_on_archived_at", where: "(archived_at IS NULL)"
     t.index ["created_at"], name: "index_groups_on_created_at"
