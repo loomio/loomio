@@ -326,7 +326,7 @@ module.exports = {
     page.click('.recipients-autocomplete-suggestion')
     page.fillIn('.discussion-form__title-input input', "private thread")
     page.click('.discussion-form__submit')
-    page.expectFlash('Thread started')
+    page.expectFlash('Discussion started')
     page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'Hello world!')
     page.click('.comment-form__submit-button')
     page.expectFlash('Comment added')

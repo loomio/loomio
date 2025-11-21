@@ -2617,8 +2617,8 @@ en:
     name_placeholder: Give this integration a name so you can identify it
     event_kind_helptext: Which events do you want the webhook to be notified of?
     event_kinds:
-      new_discussion: A thread is started
-      discussion_edited: A thread is edited
+      new_discussion: A discussion is started
+      discussion_edited: A discussion is edited
       poll_edited: A poll is edited
       new_comment: A comment is made
       poll_created: A poll is started
