@@ -107,8 +107,6 @@ en:
     to_use_loomio_with_your_org_start_trial: When you're ready to try Loomio with your organization, start a free trial.
     templates: Templates
     make_a_copy: Make a copy
-    this_thread_is_a_template: This thread is a template. Make a copy if you want to use it.
-    this_is_a_poll_template: This a poll template. Make a copy if you want to start voting.
     try_loomio: Try Loomio
     start_a_demo_group: Start a demo group
     start_a_demo: Start a demo
@@ -128,8 +126,6 @@ en:
     start_free_trial: Start free trial
     demo_needs_user: To start a demo, you need to sign up (or sign in) as a Loomio user. This is free and only takes a minute.
     trial_needs_user: Welcome! Please sign in to start your free trial
-    this_is_a_template_for_new_threads: This is a template for new threads
-    share_a_custom_configuration: Share a custom configuration with others in your group
   doctypes:
     youtube_video: YouTube Video
     image: Image
@@ -439,8 +435,6 @@ en:
     email_me_this_address: Email me this address
     email_address_copied_to_clipboard: Email address copied to clipboard
     forward_email_to_move_conversation: 'Tip: Forward an email conversation to Loomio when you need to make a decision or keep a record.'
-  email_to_group_mailer:
-    your_email_address_to_start_threads_in_group: Your email address to start threads in %{group}
   volume_levels:
     loud: Loud
     normal: Normal
@@ -454,11 +448,10 @@ en:
   change_volume_form:
     when_do_you_want_to_be_emailed: When do you want to be emailed?
     change_your_email_settings: Change your email settings
-    when_would_you_like_to_be_emailed_thread: When would you like to be emailed about this thread?
+    when_would_you_like_to_be_emailed_discussion: When would you like to be emailed about this discussion?
     when_would_you_like_to_be_emailed_poll_type: When would you like to be emailed about this %{poll_type}?
     when_would_you_like_to_be_emailed_group: When would you like to be emailed about this group?
-    changes_all_threads_in_group: This changes the setting for all threads in the group.
-    changes_all_threads_and_polls_in_group: This changes the setting for all threads and polls in the group.
+    changes_all_discussions_and_polls_in_group: This changes the setting for all discussions and polls in the group.
     what_do_the_options_mean: What do the options mean?
     what_the_options_mean: What the options mean
     loud_desc: Every time someone participates
@@ -491,8 +484,7 @@ en:
       loud_description: You will be emailed all activity in this thread.
       normal_description: You will only be emailed important activity in this thread.
       quiet_description: You won't be emailed any activity in this thread.
-      apply_to_all: Apply these settings to all threads in this group.
-      only_this_thread: Applies to this thread only
+      apply_to_all: Apply these settings to all discussions in this group.
       group: Change notifications for group
       user: Change user notification settings
       messages:
@@ -583,7 +575,6 @@ en:
     start_subgroup: New subgroup
     explore: Public groups
     explore_groups: Explore groups
-    start_thread: New thread
     start_decision: New decision
     more_groups: More groups
     template_gallery: Template gallery
@@ -629,7 +620,6 @@ en:
     search_files: Search files in %{name}
     recent_title: Go to dashboard
     unread_title: View unread activity
-    start_thread: New thread
     notifications: Notifications panel
     search:
       close: Close search panel
@@ -849,14 +839,10 @@ en:
     new_template: New template
     new_template_subtitle: Create an example that others can copy
     to: To
-    direct_thread: Direct thread
     invite_only_thread: Invite-only discussion
-    none_direct_thread: Direct thread (no group)
-    none_invite_only_thread: Invite-only thread (no group)
-    change_log_placeholder: Optionally, describe your changes. This message will be added to the thread.
+    change_log_placeholder: Optionally, describe your changes. This message will be added to the discussion.
     change_log_label: What's changed?
     invite: Invite
-    start_thread: Start thread
     start_discussion: Start discussion
     discussion_updated: Discussion updated
     discussion_created: Discussion created
@@ -1015,7 +1001,6 @@ en:
     edit_thread: Edit context
     announce_thread: Send thread
     invite_guests: Invite guests
-    translate_thread: Translate context
     edit_poll: Edit poll
     edit_poll_type: Edit %{pollType}
     new_poll_type: New %{pollType}
@@ -1749,23 +1734,11 @@ en:
     start_a_vote: Start a vote
   thread_group:
     aria_label: Group name
-  thread_context:
+  discussion_context:
     current_poll_type_banner: Current %{pollType}
-    email_settings: Notification settings
-    edit: Edit
-    edit_thread: Edit
-    close_thread: Close
-    reopen_thread: Reopen
-    pin_thread: Pin
-    unpin_thread: Unpin
-    mute_thread: Mute
-    move_thread: Move
-    print_thread: Print
-    delete_thread: Delete
-    start_a_vote: Start a vote
     seen_by_count: Seen by %{count}
     count_notified: Notified %{count}
-    forked_from: Forked from
+    start_a_vote: Start a vote
   pin_discussion_modal:
     helptext: Pinned discussions always appear at the the group's list of discussions.
   thread_arrangement_form:
@@ -2466,7 +2439,6 @@ en:
     new: new
     removed: Item removed
     deleted_group: Deleted group
-    invite_only_thread: Invite only thread
     comment_replied_to: "<a class='actor-link' href='/u/%{username}'>%{author}</a> in reply to <strong>%{title}</strong>"
     discussion_title_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a> edited the thread title"
     discussion_context_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a> edited the thread context"

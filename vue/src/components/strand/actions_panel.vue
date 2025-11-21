@@ -86,7 +86,7 @@ section.actions-panel#add-comment(:key="discussion.id" :class="{'mt-2 px-2 px-sm
       v-tab(value='add-comment')
         span(v-t="'comment_form.add_a_comment'")
       v-tab.activity-panel__add-poll(value='add-poll' v-if="canStartPoll")
-        span(v-t="'thread_context.start_a_vote'")
+        span(v-t="'discussion_context.start_a_vote'")
     v-window(v-model="currentAction")
       v-window-item(value="add-comment")
         .add-comment-panel

@@ -183,6 +183,12 @@ namespace :loomio do
       thread_template
       webhook.event_kinds.new_discussion
       webhook.event_kinds.discussion_edited
+      thread_context
+      this_thread_is_a_template
+      this_is_a_poll_template
+      event_mailer.notification_reason.thread_subscribed
+      when_would_you_like_to_be_emailed_thread
+      change_log_placeholder
     ]
 
     %w[client server].each do |source_name|
