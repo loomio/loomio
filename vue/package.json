@@ -90,7 +90,7 @@
     "sass": "latest",
     "vite-plugin-env-compatible": "latest",
     "vite-plugin-vuetify": "latest",
-    "vite": "^7.2.2"
+    "vite": "^7.2.4"
   },
   "optionalDependencies": {
     "@esbuild/darwin-arm64": "latest",
