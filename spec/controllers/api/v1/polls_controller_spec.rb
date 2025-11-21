@@ -386,6 +386,29 @@ describe Api::V1::PollsController do
       post :update, params: { id: poll.key, poll: poll_params }
       expect(response.status).to eq 403
     end
+
+    it 'can remove poll options using _destroy parameter' do
+      poll_option_to_keep = poll.poll_options.first
+      poll_option_to_remove = poll.poll_options.second
+
+      initial_count = poll.poll_options.count
+
+      update_params = {
+        title: poll.title,
+        poll_options_attributes: [
+          { id: poll_option_to_keep.id, name: poll_option_to_keep.name },
+          { id: poll_option_to_remove.id, name: poll_option_to_remove.name, _destroy: 1 }
+        ]
+      }
+
+      post :update, params: { id: poll.key, poll: update_params }
+      expect(response.status).to eq 200
+
+      poll.reload
+      expect(poll.poll_options.count).to eq(initial_count - 1)
+      expect(poll.poll_options.pluck(:id)).to include(poll_option_to_keep.id)
+      expect(poll.poll_options.pluck(:id)).not_to include(poll_option_to_remove.id)
+    end
   end
 
   describe 'close' do
