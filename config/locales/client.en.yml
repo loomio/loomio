@@ -98,15 +98,9 @@ en:
     copy_of_title: Copy of %{title}
     loomio_default_templates: Loomio default templates
     which_templates_would_you_like_to_use: Which templates would you like to use?
-    login_to_start_demo: 'This a demo of Loomio in action. You''re welcome to take a look around.
-
-      '
-    sign_in_to_try_features: 'If you''d like to try voting in a demo decision, or to start a free trial for your organization, click "sign in".
-
-      '
-    click_button_to_start_demo: 'Welcome! To try voting and other features, click start demo.
-
-      '
+    login_to_start_demo: 'This a demo of Loomio in action. You''re welcome to take a look around.'
+    sign_in_to_try_features: 'If you''d like to try voting in a demo decision, or to start a free trial for your organization, click "sign in".'
+    click_button_to_start_demo: 'Welcome! To try voting and other features, click start demo.'
     welcome_to_your_demo: This is your very own demo group!
     try_voting_to_see_it_work: Try voting in a proposal to get a sense of how Loomio works.
     delete_will_be_deleted_in_x_days: This demo will be deleted in %{x} days.
@@ -126,9 +120,7 @@ en:
     start_a_x_day_free_trial: Start a %{day} day free trial
     ready_to_trial: Ready to try Loomio with your organization?
     start_a_no_obligation_x_day_trial: Start a Loomio group for your orgnization with a free %{day} day trial.
-    you_can_test_it_out: 'You can invite other people to join, integrate it with your other tools, and try making some decisions.
-
-      '
+    you_can_test_it_out: 'You can invite other people to join, integrate it with your other tools, and try making some decisions.'
     demo_created: Demo group created, just for you!
     start_demo: Start demo
     view_demo: View demo
@@ -784,7 +776,7 @@ en:
       user_reminded: "%{actor} is reminding you to vote in: %{title}"
     without_title:
       unknown_sender: Please review email from unrecognised sender
-      discussion_announced: "%{actor} invited you to a thread"
+      discussion_announced: "%{actor} invited you to a discussion"
       discussion_edited: "%{actor} edited the discussion context"
       discussion_closed: "%{actor} closed the discussion"
       group_announced: "%{actor} invited you to a group"
@@ -830,14 +822,12 @@ en:
     moved: Moving comments, this might take a moment
     move_to_existing_thread: Move to existing discussion
     start_new_thread: Or, start new discussion
-  thread_template:
+  discussion_template:
     browse_public_templates: Browse template gallery
-    thread_template_settings: Thread template settings
-    start_a_new_thread: Start a new thread
     start_a_new_discussion: Start a new discussion
-    thread_template_saved: Thread template saved
+    discussion_template_saved: Discussion template saved
     these_are_public_templates: 'These templates are available for you to copy or modify to suit your group'
-    these_are_templates: 'These are the thread templates in your group. Click a template to start a thread. You can also edit, remove, or reorder these if you like. '
+    these_are_templates: 'These are the discussion templates in your group. Click a template to start a discussion. You can also edit, remove, or reorder these if you like. '
     default_title_label: Default title
     default_title_hint: Prefill the title field with editable text. This is optional - leave blank if unsure.
     title_placeholder_label: Example title
@@ -846,16 +836,14 @@ en:
     example_description_label: Example description
     example_description_placeholder: Provide a template that people can use to start a thread with
     hidden_templates: Hidden templates
-    confirm_delete: Are you sure you want to permanently delete this thread template? No threads will be deleted as a result of this.
-    add_proposal_or_poll_template: Add proposal or poll template
-    recommended_proposal_or_poll_templates: Recommended proposal or poll templates
-    decision_templates: Decision templates
-    decision_templates_help: Select any proposal or poll templates that help to complete this process.
+    confirm_delete: Are you sure you want to permanently delete this discussion template? No threads will be deleted as a result of this.
+    add_poll_template: Add poll template
+    add_poll_template_help: Select any poll templates that help to complete this process
+    recommended_poll_templates: Recommended poll templates
     share_in_template_gallery: Share this template in the public template gallery
   discussion_form:
-    thread_templates: Thread templates
-    new_thread_template: New thread template
-    edit_thread_template: Edit thread template
+    new_discussion_template: New discussion template
+    edit_discussion_template: Edit discussion template
     blank: Blank
     blank_subtitle: Start a discussion and see where it takes you
     new_template: New template
@@ -877,7 +865,6 @@ en:
       updated: Discussion updated
       forked: Discussion forked
     new_discussion_title: Start a discussion
-    new_thread_from_template: 'New discussion: %{process_name}'
     moving_items_title: Move items to another discussion
     edit_discussion_title: Edit discussion
     group_label: Group
@@ -999,8 +986,6 @@ en:
       added_singular: 1 person will be added.
       added_none: Nobody will be added.
       group_title: "%{name} (%{count} people)"
-      visible_to_group: Anyone in %{group} will be able to see this thread.
-      visible_to_guests: Only invited people can see this thread.
       click_group_to_see_individuals: Click group to see individuals
     members_list:
       title: Shared with
@@ -1008,9 +993,9 @@ en:
       not_notified: Not notified yet
       no_members: This hasn't been shared with anyone yet!
       group_admin: Group admin
-      thread_admin: Thread admin
+      discussion_admin: Discussion admin
       last_read_at: Last viewed %{time}
-      has_not_read_thread: Has not viewed thread
+      has_not_read_discussion: Has not viewed discussion
       has_not_joined_yet: Has not joined yet
       has_not_joined_yet_hint: This user has not accepted their invitation to join Loomio and will not receive further notifications until they do
     group_form:
@@ -2092,7 +2077,6 @@ en:
       Content in subgroups is private from the rest of the organization. Examples of subgroups: Board, Hiring decisions or Project team
     upgrade: 'To start a subgroup, you''ll need to <a class="text-decoration-underline" href="%{url}" target="_blank">upgrade your Loomio subscription.</a> '
   poll_common_action_panel:
-    from_the_thread: From the thread template
     from_the_group: From the group
     default_templates: Default templates
     default_template: Default template

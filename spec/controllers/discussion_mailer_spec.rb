@@ -15,19 +15,19 @@ describe Dev::NightwatchController do
 
   it 'discussion_created' do
     get :setup_discussion_mailer_discussion_created_email
-    expect_text_no_tags('.base-mailer__event-headline', "started a thread")
+    expect_text_no_tags('.base-mailer__event-headline', "started a discussion")
     expect_text_no_tags('.thread-mailer__body', "A description for this discussion. Should this be rich?")
   end
 
   it 'discussion_announced' do
     get :setup_discussion_mailer_discussion_announced_email
-    expect_text_no_tags('.base-mailer__event-headline', "invited you to a thread")
+    expect_text_no_tags('.base-mailer__event-headline', "invited you to a discussion")
     expect_text_no_tags('.thread-mailer__body', "A description for this discussion. Should this be rich?")
   end
 
   it 'invitation_created' do
     get :setup_discussion_mailer_invitation_created_email
-    expect_text_no_tags('.base-mailer__event-headline', "invited you to a thread")
+    expect_text_no_tags('.base-mailer__event-headline', "invited you to a discussion")
     expect_text_no_tags('.thread-mailer__body', "A description for this discussion. Should this be rich?")
   end
 

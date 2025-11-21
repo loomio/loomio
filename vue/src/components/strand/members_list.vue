@@ -198,14 +198,14 @@ v-card.strand-members-list(:title="$t('announcement.form.discussion_announced.ti
         v-chip.mr-1(v-if="discussion.groupId && reader.guest" variant="tonal" size="x-small" :title="$t('announcement.inviting_guests_to_discussion')")
           span(v-t="'members_panel.guest'")
         v-chip.mr-1(v-if="reader.admin" variant="tonal" size="x-small")
-          span(v-t="'announcement.members_list.thread_admin'")
+          span(v-t="'announcement.members_list.discussion_admin'")
         v-chip.mr-1(v-if="isGroupAdmin(reader)" variant="tonal" size="x-small")
           span(v-t="'announcement.members_list.group_admin'")
         v-chip.mr-1(v-if="!reader.user().emailVerified" variant="tonal" size="x-small" :title="$t('announcement.members_list.has_not_joined_yet_hint')")
           span(v-t="'announcement.members_list.has_not_joined_yet'")
       v-list-item-subtitle
         span(v-if="reader.lastReadAt" v-t="{ path: 'announcement.members_list.last_read_at', args: { time: approximateDate(reader.lastReadAt) } }")
-        span(v-else v-t="'announcement.members_list.has_not_read_thread'")
+        span(v-else v-t="'announcement.members_list.has_not_read_discussion'")
       template(v-slot:append)
         v-menu(
           v-if="performableActions(reader).length > 0"
