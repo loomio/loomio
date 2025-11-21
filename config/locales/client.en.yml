@@ -836,7 +836,7 @@ en:
     example_description_label: Example description
     example_description_placeholder: Provide a template that people can use to start a thread with
     hidden_templates: Hidden templates
-    confirm_delete: Are you sure you want to permanently delete this discussion template? No threads will be deleted as a result of this.
+    confirm_delete: Are you sure you want to delete this discussion template?
     add_poll_template: Add poll template
     add_poll_template_help: Select any poll templates that help to complete this process
     recommended_poll_templates: Recommended poll templates
