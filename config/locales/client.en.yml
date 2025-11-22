@@ -832,6 +832,7 @@ en:
     recommended_poll_templates: Recommended poll templates
     share_in_template_gallery: Share this template in the public template gallery
   discussion_form:
+    none_invite_only_discussion: None (invite-only discussion)
     new_discussion_template: New discussion template
     edit_discussion_template: Edit discussion template
     blank: Blank
@@ -846,6 +847,7 @@ en:
     start_discussion: Start discussion
     discussion_updated: Discussion updated
     discussion_created: Discussion created
+    discussion_started: Discussion started
     messages:
       created: Discussion started
       updated: Discussion updated

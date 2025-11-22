@@ -107,7 +107,7 @@ export default {
     },
 
     submit() {
-      const actionName = this.discussion.id ? 'updated' : 'created';
+      const actionName = this.discussion.id ? 'updated' : 'started';
       this.discussion.setErrors();
       this.$refs.form.resetValidation();
       this.discussion.save().then(data => {
@@ -125,7 +125,7 @@ export default {
     },
 
     updateGroupItems() {
-      this.groupItems = [{title: this.$t('discussion_form.none_invite_only_thread'), value: null}].concat(Session.user().groups().map(g => ({
+      this.groupItems = [{title: this.$t('discussion_form.none_invite_only_discussion'), value: null}].concat(Session.user().groups().map(g => ({
         title: g.fullName,
         value: g.id
       })));
