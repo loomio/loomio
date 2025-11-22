@@ -65,7 +65,7 @@ export default {
       }
     },
     updatePollTemplateItems() {
-      this.pollTemplateItems = [{title: I18n.global.t('discussion_template.add_proposal_or_poll_template'), value: null}].concat(
+      this.pollTemplateItems = [{title: I18n.global.t('discussion_template.add_poll_template'), value: null}].concat(
         Records.pollTemplates.find({groupId: this.discussionTemplate.group().id}).filter( pt => {
           return !this.pollTemplates.includes(pt);
         }).map(pt => ({

@@ -77,17 +77,16 @@ en:
       start_a_proposal:
         title: Start a proposal
         helptext: |
-          <p>In Loomio we use proposals to reveal support for a decision or find ways to improve it.</p>
-          <p>Let's start a proposal and ask your group members to vote on it.</p>
-          <p>We've created a <b>Practice proposal</b> template for you to use.</p>
+          <p>Use a proposal to describe a course of action and ask for feedback through voting.</p>
+          <p>As votes come in, you’ll see support, concerns, and opportunities to refine it.</p>
+          <p>Try creating a proposal now using the Practice Proposal template.</p>
         submit: See proposal templates
       share_an_outcome:
         title: Share a proposal outcome
         helptext: |
-          <p>To help move decisions forward, proposals have a deadline for voting. When the deadline is reached, voting will be closed and you'll be notified to share a proposal outcome.</p>
-          <p>The outcome is an opportunity to say if the proposal was successful and what will happen next.</p>
-          <p>If your proposal deadline has not yet passed, but you want to proceed anyway, you can click <b>Close early</b>.</p>
-          <p>When the time is right, <b>enter an outcome</b> for your proposal.</p>
+          <p>When the proposal’s deadline arrives, voting closes and you’ll be prompted to share an outcome.</p>
+          <p>The outcome is where you explain what you’ve decided to do after reviewing the votes and comments.</p>
+          <p>If the deadline hasn’t passed but you’re ready to move forward, you can <b>Close early</b>.</p>
         submit: View proposal
         cancel: Do this later
   templates:
