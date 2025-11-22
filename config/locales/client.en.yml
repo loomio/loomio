@@ -85,7 +85,7 @@ en:
         title: Share a proposal outcome
         helptext: |
           <p>When the proposal’s deadline arrives, voting closes and you’ll be prompted to share an outcome.</p>
-          <p>The outcome is where you explain what you’ve decided to do after reviewing the votes and comments.</p>
+          <p>The outcome is where you explain what you’ve decided (or what will happen next) after reviewing the votes and comments.</p>
           <p>If the deadline hasn’t passed but you’re ready to move forward, you can <b>Close early</b>.</p>
         submit: View proposal
         cancel: Do this later
