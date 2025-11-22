@@ -37,10 +37,11 @@ en:
     task_updated_not_done: Task marked as incomplete
     no_tasks_assigned: There are no tasks assigned to you
   tips:
-    get_started_here: Get started here
+    get_started_here: Experience Loomio in 4 easy steps
     youve_completed_all_the_steps: "\U0001F389 You've completed all the steps!"
     getting_started_checklist: Getting started checklist
-    complete_these_steps_to_set_up_your_group: Complete these steps to set up your group
+    try_loomio_with_your_group: Try Loomio with your group
+    complete_these_steps_to_set_up_your_group: Complete these steps to experience Loomio with your group
     hide:
       title: Hide these tips
       hide_onboarding: Hide onboarding tips
@@ -48,23 +49,23 @@ en:
       helptext: |
         <p>This will remove the "Getting started checklist" from the titlebar.</p>
         <p>If you want to bring it back later, you can <b>show onboarding tips</b> from the sidebar settings</p>
-    intro:
-      tip_title: Click here to start
-      title: Welcome to your new Loomio group!
-      body: |
-        <p>This short series of small steps is designed to ensure that the people you invite to join the group will have a good first impression and understand how to particpate in discussions and decisions.</p>
+    # intro:
+    #   tip_title: Click here to start
+    #   title: Welcome to your new Loomio group!
+    #   body: |
+    #     <p>This short series of small steps is designed to ensure that the people you invite to join the group will have a good first impression and understand how to particpate in discussions and decisions.</p>
 
-        <p>In the sidebar you'll find a Contact Support button. Please feel free to reach out if you have questions or need advice at any time.</p>
-      submit: Let's get started
+    #     <p>In the sidebar you'll find a Contact Support button. Please feel free to reach out if you have questions or need advice at any time.</p>
+    #   submit: Let's get started
     group:
-      welcome_and_faq: Welcome! Read this to begin
-      upload_image:
-        title: Complete your group profile
-        helptext: |
-          <p>Let's review your group profile. The name, description, logo and cover image will be included in the invitation emails you send in an upcoming step.</p>
-          <p><b>Add your own group cover image</b>, it helps to make a good first impression with the people you invite to join.</p>
-          <p>You could use a recent team photo or a picture that represents your organization's work or community.</p>
-        open_group_settings: Open group settings
+      # welcome_and_faq: Welcome! Read this to begin
+      # upload_image:
+      #   title: Complete your group profile
+      #   helptext: |
+      #     <p>Let's review your group profile. The name, description, logo and cover image will be included in the invitation emails you send in an upcoming step.</p>
+      #     <p><b>Add your own group cover image</b>, it helps to make a good first impression with the people you invite to join.</p>
+      #     <p>You could use a recent team photo or a picture that represents your organization's work or community.</p>
+      #   open_group_settings: Open group settings
       invite_people:
         title: Invite people to the group
       start_a_discussion:
