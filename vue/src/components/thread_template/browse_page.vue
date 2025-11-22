@@ -63,7 +63,7 @@ export default {
             common-icon(name="mdi-close")
 
         v-alert.ma-4(type="info" variant="tonal")
-          span(v-t="'thread_template.these_are_public_templates'")
+          span(v-t="'discussion_template.these_are_public_templates'")
 
         .d-flex.px-4.align-center
           v-combobox(
@@ -85,7 +85,7 @@ export default {
 
         v-list.append-sort-here(lines="three")
           v-list-item(
-            v-for="result in results" 
+            v-for="result in results"
             :key="result.id"
             :to="'/d/new?' + (result.id ? 'template_id='+result.id : 'template_key='+result.key)+ '&group_id='+ $route.query.group_id"
           )
@@ -114,7 +114,7 @@ export default {
               ) {{tag}}
 
             v-list-item-subtitle.text--primary {{result.processSubtitle}}
-            v-list-item-subtitle 
+            v-list-item-subtitle
               span
                 span {{result.authorName}}
                 mid-dot

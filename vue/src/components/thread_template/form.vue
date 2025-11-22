@@ -65,7 +65,7 @@ export default {
       }
     },
     updatePollTemplateItems() {
-      this.pollTemplateItems = [{title: I18n.global.t('thread_template.add_proposal_or_poll_template'), value: null}].concat(
+      this.pollTemplateItems = [{title: I18n.global.t('discussion_template.add_poll_template'), value: null}].concat(
         Records.pollTemplates.find({groupId: this.discussionTemplate.group().id}).filter( pt => {
           return !this.pollTemplates.includes(pt);
         }).map(pt => ({
@@ -78,7 +78,7 @@ export default {
     submit() {
       this.discussionTemplate.pollTemplateKeysOrIds = this.pollTemplates.map(pt => pt.keyOrId());
       this.discussionTemplate.save().then(data => {
-        Flash.success("thread_template.thread_template_saved");
+        Flash.success("discussion_template.discussion_template_saved");
         this.$router.push(this.$route.query.return_to || ('/thread_templates/?group_id=' + this.discussionTemplate.groupId));
       }).catch(error => {
         this.$refs.form.validate();
@@ -109,7 +109,7 @@ v-form(ref="form" @submit.prevent="submit")
       template(v-slot:divider)
         common-icon(name="mdi-chevron-right")
     v-spacer
-  v-card.thread-template-form(:title="discussionTemplate.id ? $t('discussion_form.edit_thread_template') : $t('discussion_form.new_thread_template')")
+  v-card.thread-template-form(:title="discussionTemplate.id ? $t('discussion_form.edit_discussion_template') : $t('discussion_form.new_discussion_template')")
     template(v-slot:append)
       v-btn.back-button(v-if="$route.query.return_to" variant="flat" icon :aria-label="$t('common.action.cancel')" :to='$route.query.return_to')
         common-icon(name="mdi-close")
@@ -139,17 +139,17 @@ v-form(ref="form" @submit.prevent="submit")
       v-divider.my-4
 
       v-text-field.thread-template-form-fields__title(
-        :label="$t('thread_template.default_title_label')"
-        :hint="$t('thread_template.default_title_hint')"
+        :label="$t('discussion_template.default_title_label')"
+        :hint="$t('discussion_template.default_title_hint')"
         v-model='discussionTemplate.title'
         maxlength='250'
         :rules="validate('title')"
       )
 
       v-text-field.thread-template-form-fields__title-placeholder(
-        :hint="$t('thread_template.title_placeholder_hint')"
-        :label="$t('thread_template.title_placeholder_label')"
-        :placeholder="$t('thread_template.title_placeholder_placeholder')"
+        :hint="$t('discussion_template.title_placeholder_hint')"
+        :label="$t('discussion_template.title_placeholder_label')"
+        :placeholder="$t('discussion_template.title_placeholder_placeholder')"
         v-model='discussionTemplate.titlePlaceholder'
         :rules="validate('titlePlaceholder')"
         maxlength='250'
@@ -160,16 +160,16 @@ v-form(ref="form" @submit.prevent="submit")
       lmo-textarea(
         :model='discussionTemplate'
         field="description"
-        :placeholder="$t('thread_template.example_description_placeholder')"
-        :label="$t('thread_template.example_description_label')"
+        :placeholder="$t('discussion_template.example_description_placeholder')"
+        :label="$t('discussion_template.example_description_label')"
       )
 
       v-select.mt-4(v-model="discussionTemplate.recipientAudience" :label="$t('discussion_form.invite')" :items="recipientAudienceItems")
 
       v-divider.my-4
 
-      .text-subtitle-1.py-2.text-medium-emphasis(v-t="'thread_template.decision_templates'")
-      p.text-caption(v-t="'thread_template.decision_templates_help'")
+      .text-subtitle-1.py-2.text-medium-emphasis(v-t="'discussion_template.poll_templates'")
+      p.text-caption(v-t="'discussion_template.poll_templates_help'")
       .decision-tools-card__poll-types
         sortable-list(v-model:list="pollTemplates" :useDragHandle="true" append-to=".decision-tools-card__poll-types"  lock-axis="y" axis="y")
           sortable-item(v-for="(template, index) in pollTemplates" :index="index" :key="template.id || template.key")
@@ -235,7 +235,7 @@ v-form(ref="form" @submit.prevent="submit")
             space
             span(v-t="'thread_arrangement_form.nested_twice_description'")
 
-      v-checkbox(v-model="discussionTemplate.public" :label="$t('thread_template.share_in_template_gallery')")
+      v-checkbox(v-model="discussionTemplate.public" :label="$t('discussion_template.share_in_template_gallery')")
 
       //- .d-flex.justify-space-between.my-4.mt-4.thread-template-form-actions
     v-card-actions

@@ -12,6 +12,37 @@ class TranslationService
     discussion_templates.*
   ]
 
+  def self.show_translation(model, recipient)
+    TranslationService.available? &&
+    model.content_locale.present? &&
+    model.content_locale != recipient.locale &&
+    recipient.auto_translate
+  end
+
+  def self.plain_text(model, field, recipient)
+    if show_translation(model, recipient)
+      TranslationService.create(model: model, to: @recipient.locale).fields[String(field)]
+    else
+      model.send(field)
+    end
+  end
+
+  def self.formatted_text(model, field, recipient)
+    format_field = "#{field}_format"
+    content_format = 'html'
+
+    content = if show_translation(model, recipient)
+      translation = TranslationService.create(model: model, to: recipient.locale)
+      translation.fields[String(field)]
+    else
+      content_format = 'md' if model.send("#{field}_format") == "md"
+      model.send(field)
+    end
+
+    MarkdownService.render_rich_text(content, content_format)
+  end
+
+
   def self.flatten_i18n_keys(obj, prefix)
     case obj
     when Hash

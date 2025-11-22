@@ -117,7 +117,7 @@ export default {
 
           template(v-if="!poll")
             v-card-title
-              h1.text-h5(v-t="'poll_common.decision_templates'")
+              h1.text-h5(v-t="'poll_common.poll_templates'")
 
             poll-common-choose-template(
               v-if="!poll"

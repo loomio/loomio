@@ -56,6 +56,10 @@ class Membership < ApplicationRecord
 
   before_create :set_volume
 
+  def title_model
+    group
+  end
+
   def author_id
     inviter_id
   end

@@ -27,7 +27,7 @@ module.exports = {
     page.click('.recipients-autocomplete-suggestion')
     page.fillIn('.discussion-form__title-input input', 'Immannounce dis')
     page.click('.discussion-form__submit')
-    page.expectFlash('Thread started')
+    page.expectFlash('Discussion started')
     // page.expectElement('.announcement-form')
     // page.click('.announcement-form__audience')
     // page.click('.announcement-form__submit', 1000)

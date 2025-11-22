@@ -50,8 +50,8 @@ export default
       let query = '';
 
       return [
-        {id: 0, name: 'threads',   route: this.urlFor(this.group, null)+query},
-        {id: 1, name: 'decisions', route: this.urlFor(this.group, 'polls')+query},
+        {id: 0, name: 'discussions',   route: this.urlFor(this.group, null)+query},
+        {id: 1, name: 'polls',     route: this.urlFor(this.group, 'polls')+query},
         {id: 2, name: 'members',   route: this.urlFor(this.group, 'members')+query},
         {id: 4, name: 'files',     route: this.urlFor(this.group, 'files')+query},
       ].filter(obj => !((obj.name === "subgroups") && this.group.parentId));

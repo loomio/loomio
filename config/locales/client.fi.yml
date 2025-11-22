@@ -382,13 +382,10 @@ fi:
     unreleased_emails: Julkaisemattomat sähköpostit
     start_a_thread_by_email: Aloita viestiketju sähköpostitse
     send_email_to_start_thread: Lähetä viesti tähän osoitteeseen aloittaaksesi ketjun ryhmässäsi.
-    subject_body_attachments: Sähköpostin aiheesta tulee ketjun otsikko, sähköpostin tekstiosasta tulee kuvaus, ja kaikki liitetiedostot liitetään ketjuun.
     copy_address: Kopioi osoite
     email_me_this_address: Lähetä minulle tämä osoite
     email_address_copied_to_clipboard: Sähköpostiosoite kopioitu leikepöydälle
     forward_email_to_move_conversation: 'Vinkki: Lähetä sähköpostikeskustelu Loomiolle, kun sinun on tehtävä päätös tai pidettävä kirjaa.'
-  email_to_group_mailer:
-    your_email_address_to_start_threads_in_group: Sähköpostiosoitteesi ketjujen aloittamiseksi %{group}
   volume_levels:
     loud: Äänekäs
     normal: Normaali
@@ -412,14 +409,12 @@ fi:
       loud_explain: aina kun on toimintaa
       normal_explain: kun joku pyytää huomiotasi
       quiet_explain: ei ilmoituksia
-    aria_label: Muuta sähköpostin asetuslomaketta
     loud_label: Kaikki toiminta
     normal_label: Ilmoitukset
     quiet_label: Ei sähköposteja
     mute_label: Mykistä
     saved: Ilmoitusasetukset päivitetty
     discussion:
-      title: Viestiketjun ilmoitukset
       loud_description: Saat sähköpostiisi kaikista tämän säikeen toiminnoista.
       normal_description: Saat sähköpostiisi vain tärkeitä tapahtumia tässä viestiketjussa.
       quiet_description: Sinulle ei lähetetä sähköpostia mistään tämän säikeen toiminnasta.
@@ -471,14 +466,12 @@ fi:
     quiet_desc: Ei koskaan
     loud_explained: Saat sähköpostin aina, kun tulee uusi kommentti, joku äänestää tai aloittaa kyselyn tai viestiketjun.
     when_would_you_like_to_be_emailed_poll_type: Milloin haluaisit saada sähköpostia tästä %{poll_type}?
-    normal_explained: Kun joku kirjoittaa nimesi ketjun tai kyselyn "Ilmoita"-kenttään tai mainitsee ryhmän.
     normal_excludes_mentioning_html: Maininnoille (esim. kommentissa vastaamiselle) on oma asetus. <a href="%{url}">Voit muokata @mainintojen asetuksia napsauttamalla tästä</a> .
     changes_all_threads_and_polls_in_group: Tämä muuttaa asetuksia kaikille ryhmän keskusteluketjuille ja kyselyille.
     when_do_you_want_to_be_emailed: Milloin haluat sähköpostin?
     what_the_options_mean: Mitä vaihtoehdot tarkoittavat
     quiet_explained: Et saa sähköpostia, vaikka joku yrittäisi ilmoittaa sinulle. Saatat missata tärkeitä ilmoituksia tai päätöksiä, ellet käy Loomiossa säännöllisesti.
   close_explanation_modal:
-    aria_label: Sulje lanka
     close_thread: Sulje lanka
     body: "<p>Sulje vanhat tai asiaankuulumattomat viestiketjut poistaaksesi ne näkyvistä ja ilmoittaaksesi, että keskustelu on päättynyt.</p><p> Kuka tahansa voi silti kommentoida tai aloittaa kyselyn suljetussa ketjussa, mutta se ei näy ryhmän viestiketjuluettelossa tai hallintapaneelissa.</p>"
     image_alt: Suljetaan kaikki ketjut
@@ -491,14 +484,10 @@ fi:
     password_label: 'Salasana:'
     password_confirmation_label: 'Taas se salasana:'
   signed_out_modal:
-    aria_label: Istunto päättyi
     title: Istuntosi on päättynyt
     message: Sinut on kirjattu ulos toisesta ikkunasta. Kirjaudu takaisin sisään jatkaaksesi.
     ok: Ok
-  comment_reply_form:
-    aria_label: Lisää vastaus
   comment_form:
-    aria_label: Lisää kommentti
     attachments:
       add_attachment: Liitä tiedosto
       remove_attachment: Poista liite
@@ -525,9 +514,6 @@ fi:
   thread_nav:
     participants: Osallistujat
   sidebar:
-    new_thread_removed: Uusi lanka poistettu
-    new_thread_removed_body: Uusi lankapainike poistetaan sivupalkista. Aloita uusi viestiketju siirtymällä ensin ryhmään ja napsauttamalla sitten "Uusi säiettä". Anteeksi muutos, mutta se on pakollinen, koska sinun on valittava malli aloittaessasi säiettä.
-    threads: Kierteet
     my_groups: Minun ryhmäni
     other_groups: Muut ryhmät
     all_groups: Kaikki ryhmät
@@ -536,7 +522,6 @@ fi:
     direct_threads: Suorat säikeet
     unread_threads: Lukemattomat viestiketjut (%{count})
     muted_threads: Mykistetty säikeet
-    start_group: Uusi organisaatio
     start_subgroup: Uusi alaryhmä
     explore: Julkiset ryhmät
     explore_groups: Tutustu ryhmiin
@@ -581,7 +566,6 @@ fi:
     all_subgroups: Kaikki alaryhmät
     parent_only: Vain vanhemmille
   navbar:
-    search_all_threads: Hae kaikista ketjuista
     search_threads: Hae ketjuista %{name}
     search_polls: Hae kyselyitä kohteessa %{name}
     search_members: Hae jäseniä palvelusta %{name}
@@ -633,7 +617,6 @@ fi:
     dark_blue: Tummansininen
   membership_card:
     group_members: Ryhmän jäsenet
-    discussion_members: Viestiketjun jäsenet
     poll_members: "%{pollType} jäsentä"
     voters: äänestäjät
     invite_to_group: Kutsu ryhmään
@@ -649,7 +632,6 @@ fi:
     make_coordinator: Nimeä ylläpitäjäksi
     demote_coordinator: Alenna järjestelmänvalvojaa
     remove_from:
-      discussion: Poista langasta
       group: Poista ryhmästä
       poll: Poista kohteesta %{pollType}
     cancel_invitation: Peruuta kutsu
@@ -658,7 +640,6 @@ fi:
     make_delegate: Tee valtuutettu
     revoke_delegate: Peruuta edustaja
   notification_models:
-    discussion: 'lanka:'
     comment: kommentoida sisään
     poll: 'kysely:'
     outcome: 'tulokset:'
@@ -669,9 +650,6 @@ fi:
     with_title:
       unknown_sender: Tarkista tuntemattoman lähettäjän sähköposti
       comment_replied_to: "%{actor} vastasi sinulle kielessä: %{title}"
-      discussion_announced: "%{actor} kutsui sinut viestiketjuun: %{title}"
-      discussion_edited: "%{actor} muokkasi viestiketjun kontekstia: %{title}"
-      discussion_closed: "%{actor} sulki ketjun: %{title}"
       invitation_accepted: "%{actor} hyväksyi kutsusi liittyä %{title}"
       membership_created: "%{actor} kutsui sinut liittymään %{title} -sivustoon %{site_name}"
       membership_resent: "%{actor} kutsui sinut liittymään %{title} -sivustoon %{site_name}"
@@ -679,7 +657,6 @@ fi:
       membership_request_approved: "%{actor} hyväksyi liittymispyyntösi %{title}"
       new_comment: "%{actor} kommentoi: %{title}"
       new_coordinator: "%{actor} teki sinusta %{title} -järjestelmänvalvojan"
-      new_discussion: "%{actor} aloitti ketjun: %{title}"
       outcome_announced: "%{actor} jakoi %{poll_type} tuloksen: %{title}"
       outcome_created: "%{actor} jakoi %{poll_type} tuloksen: %{title}"
       outcome_updated: "%{actor} päivitti %{poll_type} tuloksen: %{title}"
@@ -707,13 +684,8 @@ fi:
       poll_announced: "%{actor} kutsui sinut äänestämään: %{title}"
     without_title:
       unknown_sender: Tarkista tuntemattoman lähettäjän sähköposti
-      discussion_announced: "%{actor} kutsui sinut viestiketjuun"
-      discussion_edited: "%{actor} muokkasi viestiketjun kontekstia"
-      discussion_closed: "%{actor} sulki ketjun"
       group_announced: "%{actor} kutsui sinut ryhmään"
       comment_replied_to: "%{actor} vastasi sinulle"
-      new_discussion: "%{actor} aloitti ketjun"
-      new_comment: "%{actor} kommentoi viestiketjua"
       membership_created: "%{actor} kutsui sinut ryhmään"
       membership_resent: "%{actor} kutsui sinut ryhmään"
       membership_requested: "%{actor} pyysi liittyä ryhmääsi"
@@ -745,13 +717,10 @@ fi:
     hints:
       poll_closing_soon: Nyt on hyvä aika äänestää, muuttaa mieltäsi tai kannustaa muita osallistumaan.
       poll_closing_soon_author: Haluat ehkä muistuttaa ihmisiä äänestämään tai pidentää määräaikaa.
-      outcome_review_due: Harkitse palautekyselyn tai uuden ketjun aloittamista, joka kutsuu pohtimaan, miten päätös on toteutettu.
     email_subject:
       unknown_sender: Tarkista tuntemattoman lähettäjän sähköposti
       comment_replied_to: "%{actor} vastasi sinulle viestissä: %{title}"
       discussion_announced: "%{title}"
-      discussion_edited: "%{actor} muokkasi kontekstia: %{title}"
-      discussion_closed: "%{actor} sulki ketjun: %{title}"
       invitation_accepted: "%{actor} hyväksyi kutsusi liittyä mukaan joukkoon %{title}"
       membership_created: "%{actor} kutsui sinut liittymään palveluun %{title} sivustolla %{site_name}"
       membership_resent: "%{actor} kutsui sinut liittymään palveluun %{title} sivustolla %{site_name}"
@@ -786,33 +755,8 @@ fi:
       user_reminded: "%{actor} muistuttaa sinua äänestämään vaalissa: %{title}"
       poll_announced: 'Äänestys: %{title}'
   discussion_fork_actions:
-    helptext: Valitse kohteet, jotka haluat siirtää toiseen viestiketjuun
     move: Liikkua
-    search_placeholder: Etsi ketju otsikon mukaan
     moved: Siirretään kommentteja, tämä voi kestää hetken
-    move_to_existing_thread: Siirrä olemassa olevaan viestiketjuun
-    start_new_thread: Tai aloita uusi ketju
-  thread_template:
-    browse_public_templates: Selaa malligalleriaa
-    thread_template_settings: Viestimallin asetukset
-    start_a_new_thread: Aloita uusi ketju
-    thread_template_saved: Viestimalli tallennettu
-    these_are_public_templates: Voit kopioida tai muokata näitä malleja ryhmällesi sopiviksi
-    these_are_templates: Nämä ovat ryhmäsi lankamallit. Mallit ohjaavat sinua yleisten päätöksentekoprosessien läpi.
-    default_title_label: Oletusotsikko
-    default_title_hint: Esitäytä otsikkokenttä muokattavalla tekstillä. Tämä on valinnainen – jätä tyhjäksi, jos olet epävarma.
-    title_placeholder_label: Esimerkkiotsikko
-    title_placeholder_hint: Esimerkki näytettäväksi otsikkokentän taustalla
-    title_placeholder_placeholder: esim. Tältä taustateksti näyttää
-    example_description_label: Esimerkkikuvaus
-    example_description_placeholder: Tarjoa malli, jonka avulla ihmiset voivat aloittaa viestiketjun
-    hidden_templates: Piilotetut mallit
-    confirm_delete: Haluatko varmasti poistaa tämän viestiketjumallin pysyvästi? Yhtään viestiketjua ei poisteta tämän seurauksena.
-    add_proposal_or_poll_template: Lisää ehdotus tai kyselymalli
-    recommended_proposal_or_poll_templates: Suositellut ehdotus- tai kyselypohjat
-    decision_templates: Päätösmallit
-    decision_templates_help: Valitse mikä tahansa ehdotus tai kyselymalli, joka auttaa tämän prosessin suorittamisessa.
-    share_in_template_gallery: Jaa tämä malli julkisessa malligalleriassa
   discussion_form:
     thread_templates: Lankamallit
     new_thread_template: Uusi ketjumalli
@@ -829,7 +773,6 @@ fi:
     change_log_placeholder: Vaihtoehtoisesti kuvaile muutokset. Tämä viesti lisätään ketjuun.
     change_log_label: Mikä on muuttunut?
     invite: Kutsu
-    aria_label: Lanka muoto
     start_thread: Aloita lanka
     messages:
       created: Lanka alkoi
@@ -857,7 +800,6 @@ fi:
     send_poll: Lähetä %{type}
     send_outcome: Lähetä tulos
     cannot_reveal_when_anonymous: Valitettavasti emme voi paljastaa, kuka on äänestänyt tai ei ole äänestänyt nimettömässä kyselyssä.
-    discussion_notification_history: Viestiketjun ilmoitushistoria
     group_notification_history: Ryhmäkutsuhistoria
     poll_notification_history: Äänestyksen ilmoitushistoria
     outcome_notification_history: Tulosilmoitushistoria
@@ -869,7 +811,6 @@ fi:
     preview: Esikatsele sähköposti
     no_notifications_sent: Ilmoituksia ei ole lähetetty
     history_error: Jotain meni pieleen! Historiaa ei voitu ladata.
-    inviting_guests_to_thread: Vieraat eivät kuulu ryhmääsi, ja heillä on pääsy vain tähän viestiketjuun
     select_groups: Valitse ryhmät
     search_by_name_or_email: Hae nimellä tai kutsu kutsuun kirjoittamalla sähköpostit
     search_by_name: Etsi ihmisiä nimellä
@@ -951,8 +892,6 @@ fi:
       added_singular: 1 henkilö lisätään.
       added_none: Ketään ei lisätä.
       group_title: "%{name} (%{count} henkilöä)"
-      visible_to_group: Kuka tahansa ryhmästä %{group} näkee tämän viestiketjun.
-      visible_to_guests: Vain kutsutut ihmiset voivat nähdä tämän ketjun.
       click_group_to_see_individuals: Napsauta ryhmää nähdäksesi yksilöt
       poll_announced:
         title: Kutsu äänestämään
@@ -1098,7 +1037,6 @@ fi:
     messages:
       joined_group: Olet nyt ryhmän %{group} jäsen
   membership_request_form:
-    aria_label: Jäsenhakemuslomake
     heading: Pyydä liittymistä ryhmään
     name_label: Nimi
     email_label: Sähköposti
@@ -1108,7 +1046,6 @@ fi:
     messages:
       membership_requested: Olet pyytänyt liittymistä %{group}
   revision_history_modal:
-    aria_label: Versiohistoria
     discussion_header: Keskustelun muokkaukset
     comment_header: Kommenttien muokkaukset
     poll_header: Äänestyksen muokkaukset
@@ -1134,10 +1071,6 @@ fi:
     you_and_name: Sinä ja %{name}
     you_and_name_and_count_more: Sinä, %{name} ja %{count} muuta
     name_and_count_more: "%{name} ja %{count} muuta"
-  context_panel:
-    thread_status:
-      pinned: Tämä lanka on kiinnitetty. Se pysyy ryhmän kaikkien käyttäjien viestiketjuluettelon yläosassa.
-      closed: Tämä ketju on suljettu. Se ei enää näy kojelaudassa, ja se on lueteltu ryhmäsivun "suljettu" -kohdassa
   delete_group_modal:
     title: Poista ryhmä
     subgroup_title: Poista alaryhmä
@@ -1215,7 +1148,6 @@ fi:
       private: 'Yksityisyys: Tämä ryhmä näkyy vain jäsenille'
       parent_members: 'Yksityisyys: Tämä ryhmä näkyy ryhmän %{parentGroupName} ja ryhmän %{groupName} jäsenille'
       public: 'Yksityisyys: Tämä ryhmä näkyy verkossa'
-      aria_label: 'Ryhmän tietosuoja: %{privacy}'
     participation_report: Osallistumisraportti
     my_subgroups: Alaryhmäni
     more_subgroups: Lisää alaryhmiä
@@ -1230,12 +1162,10 @@ fi:
     messages:
       description_updated: Kuvaus päivitetty
   leave_group_form:
-    aria_label: Jätä ryhmä
     title: Jätä ryhmä
     question: Haluatko varmasti poistua tästä ryhmästä?
     submit: Kyllä, poistu tästä ryhmästä
   archive_group_form:
-    aria_label: Poista ryhmä käytöstä
     title: Poista ryhmä käytöstä
     question: Haluatko varmasti poistaa tämän ryhmän käytöstä?
     submit: Kyllä, poista tämä ryhmä käytöstä
@@ -1245,7 +1175,6 @@ fi:
     change_cover_image: vaihda kansikuva
     change_logo: vaihtaa logoa
     permissions_explaination: 'Henkilöllä voi olla kaksi jäsenyystasoa ryhmään: admin ja jäsen. Järjestelmänvalvojat voivat muokata ryhmän asetuksia, tehdä muista ihmisistä järjestelmänvalvojia ja suorittaa kaikki alla luetellut toiminnot.'
-    aria_label: Ryhmämuoto
     parent_group: Vanhempi ryhmä
     new_organisation: Uusi organisaatio
     new_group: Uusi ryhmä
@@ -1363,7 +1292,6 @@ fi:
     group_url: Ryhmän URL-osoite
     reusable_invitation_link: Uudelleen käytettävä kutsulinkki
     error: Virhe yritettäessä kopioida leikepöydälle
-    aria_label: Kutsulomake
     invite_people: Kutsu ihmisiä
     invite_guests: Kutsu vieraita
     notify_people: Ilmoita ihmisille
@@ -1496,7 +1424,6 @@ fi:
     insert_link: Lisää linkki
     insert_embedded_url: Upotettu video
   change_picture_form:
-    aria_label: Profiilikuvalomake
     title: Aseta profiilikuva
     helptext: Voit ladata oman profiilikuvasi, tai jos sinulla on <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar-</a> tili, voit käyttää sitä.
     use_initials: Käytä nimikirjaimia
@@ -1560,7 +1487,6 @@ fi:
     replies_count: "%{count} vastausta"
     unread_count: "%{count} lukematonta"
   dashboard_page:
-    aria_label: Kojelauta
     polls_to_vote_on: Äänestykset, joista äänestää
     no_polls_to_vote_on: Ei ole kyselyjä, joista sinun pitäisi äänestää
     recent_polls: Viimeaikaiset gallupit
@@ -1573,7 +1499,6 @@ fi:
       show_all: Sinulla ei ole viimeaikaisia ketjuja.
       show_proposals: Tällä hetkellä ei ole aktiivisia ehdotuksia.
       show_muted: Sinulla ei ole yhtään mykistettyä viestiketjua.
-    view_recent: Katsotaanko kaikki viimeisimmät viestiketjut?
     load_more: Lataa lisää lankoja
     mark_as_read: Merkitse luetuksi
     dismiss: Hylkää
@@ -1588,7 +1513,6 @@ fi:
       filter_threads: Suodata langat
       filter_threads_aria_label: Suodata langat
       dropdown_heading: Suodattimen kojelauta
-      all: Viimeisimmät viestiketjut
       all_aria_label: Tällä hetkellä näytetään viimeisimmät viestiketjut
       all_description: Katso viimeisimmät viestiketjut
       proposals: ehdotuksia
@@ -1612,13 +1536,11 @@ fi:
       older: Yli kuukauden vanhempi
   threads_page:
     no_direct_threads: Sinulla ei ole suoria lankoja
-    no_invite_only_threads: Sinulla ei ole vain kutsuun tarkoitettuja säikeitä
   inbox_page:
     no_threads: Woohoo! Olet lukenut kaikki postilaatikossasi olevat viestiketjut.
     unread_threads: Lukemattomat ketjut
     view_more: Katso lisää
     no_groups:
-      explanation: Sinulla ei ole lukemattomia ketjuja, koska et ole minkään ryhmän jäsen.
       start: alkaa
       or: tai
       join_group: <a href="/explore">Liity</a> ryhmään nähdäksesi viestiketjut.
@@ -1635,9 +1557,6 @@ fi:
     pin:
       pinned: Lanka kiinnitetty
       unpinned: Lanka irrotettu
-    volume:
-      mute_message: Säie mykistetty
-      unmute_message: Säie poistettu
     closed:
       reopened: Viesti avattu uudelleen
       closed: Ketju suljettu
@@ -1647,8 +1566,6 @@ fi:
     disabled_anonymous_polls: Katsojahistoria on poistettu käytöstä, koska viestiketju sisältää anonyymejä kyselyjä
   activity_card:
     count_responses: "%{count} vastausta"
-    event_pinned: Kiinnitetty aikajanalle
-    event_unpinned: Irrotettu aikajanalta
     beginning: Alku
     end: Loppu
     unread: Lukemattomat (%{count})
@@ -1657,7 +1574,6 @@ fi:
     chronological: Kronologinen
     nested: Sisäkkäinen
     attachment_display:
-      aria_label: 'Liitteenä oleva tiedosto:'
       image_alt: Liitteenä kuva
     n_previous: Lataa %{count} aiempaa vastausta
     n_more: Lataa %{count} vastausta
@@ -1668,12 +1584,9 @@ fi:
     facilitate: Helpottaa
     start_decision: Aloita päätös
     start_vote: Aloita äänestys
-  thread_group:
-    aria_label: Ryhmän nimi
   thread_context:
     current_poll_type_banner: Nykyinen %{pollType}
     item_maybe_deleted: Pyydettyä sijaintia ei löydy säikeestä. Se on ehkä poistettu.
-    aria_label: Viestiketjun konteksti
     thread_options: Viestivaihtoehdot
     email_settings: Ilmoitusasetukset
     edit: Muokata
@@ -1690,11 +1603,6 @@ fi:
     seen_by_count: "%{count} nähnyt"
     count_notified: Ilmoitettu %{count}
     forked_from: Haarukka alkaen
-  pin_thread_modal:
-    title: Kiinnitä lanka
-    helptext: Kiinnitetyt viestiketjut näkyvät aina ryhmän viestiketjuluettelon yläosassa. Niitä voidaan käyttää tiedottamaan jäsenille tärkeistä ilmoituksista tai edistämään yleistä materiaalia, kuten käytännesääntöjä tai yhteisön ohjeita.
-    helptext_two: Voit poistaa nastat milloin tahansa valitsemalla 'Poista kiinnitys' avattavasta ketjuvalikosta
-    pin_thread: Kiinnitä lanka
   thread_arrangement_form:
     edit: Muokkaa asettelua
     title: Langan asettelu
@@ -1713,20 +1621,11 @@ fi:
     nested_twice_description: Sisennä vastaus enintään kaksi kertaa.
     changing_nesting_is_slow: Sisään tehtyjen muutosten käsittely voi kestää muutaman minuutin.
   delete_thread_form:
-    aria_label: Poista lanka
     title: Poista lanka
     body: Haluatko varmasti poistaa tämän ketjun?
     confirm: Poista lanka
     messages:
       success: Viesti poistettu
-  move_thread_form:
-    aria_label: Siirrä lankaa
-    title: Siirrä lankaa
-    body: Kohderyhmä
-    confirm: Siirrä lankaa
-    confirm_change_to_private_thread: "%{groupName} on avoin ryhmä. Jos jatkat, tämä viestiketju julkaistaan."
-    messages:
-      success: Viesti on siirretty osoitteeseen %{name}
   delete_comment_dialog:
     title: Poista kommentti
     question: Tämä poistaa tämän kommentin pysyvästi. Jos jatkat, sitä ei voi palauttaa.
@@ -2389,8 +2288,6 @@ fi:
     name_placeholder: Anna tälle integraatiolle nimi, jotta voit tunnistaa sen
     event_kind_helptext: Mistä tapahtumista haluat, että webhook saa ilmoituksen?
     event_kinds:
-      new_discussion: Lanka on aloitettu
-      discussion_edited: Viestiä on muokattu
       poll_edited: Kyselyä on muokattu
       new_comment: Kommentti on tehty
       poll_created: Äänestys on alkanut

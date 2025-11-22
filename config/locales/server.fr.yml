@@ -89,7 +89,6 @@ fr:
       description: <h3 id="what-is-the-purpose-of-the-document">Quel est le but du document ?</h3><p></p><h3 id="why-is-this-important"> Pourquoi est-ce important?</h3><p></p><h3 id="what-are-you-asking-people-to-do"> Que demandez-vous aux gens de faire ?</h3><p></p>
       document: Document
     practice_thread:
-      process_name: Fil de pratique
       process_subtitle: Un fil de discussion pour accueillir les gens dans le groupe et s'entraîner à utiliser Loomio
       process_introduction: "<p>Utilisez ce modèle pour accueillir les nouveaux membres et encourager leur participation précoce. Il permet aux participants de se présenter et d'explorer les fonctionnalités de Loomio.</p>"
       title: "\U0001F44B Bienvenue ! Dites bonjour et essayez !"
@@ -335,7 +334,6 @@ fr:
       subject: "%{who} a demandé à rejoindre %{which_group}"
       view_group: Vous pouvez accepter ou rejeter cette demande
       button_text: Voir la demande
-    loomio_app_description: Un lieu où les organisations peuvent prendre des décisions ensemble.
     content_was_translated: Ce contenu a été traduit à partir de %{source_locale}
     content_was_translated_html: Ce contenu a été traduit depuis %{source_locale}. <a href="%{profile_url}">Afficher les paramètres<a></a>
   announcement_count_emails: "%{count} courriels"

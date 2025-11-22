@@ -89,7 +89,6 @@ zh_TW:
       description: <h3 id="what-is-the-purpose-of-the-document">該文件的目的是什麼？</h3><p></p><h3 id="why-is-this-important">為什麼這很重要？</h3><p></p><h3 id="what-are-you-asking-people-to-do">你要求人們做什麼？</h3><p></p>
       document: 文件
     practice_thread:
-      process_name: 練習線程
       process_subtitle: 歡迎大家加入小組並練習使用 Loomio 的帖子
       process_introduction: "<p>使用此範本歡迎新成員並鼓勵早期參與。它為大家提供了自我介紹和探索 Loomio 功能的機會。</p>"
       title: "\U0001F44B 歡迎！打個招呼，體驗一下"
@@ -335,7 +334,6 @@ zh_TW:
       subject: "%{who} 申請加入 %{which_group}"
       view_group: 您可點此批准或拒絕申請
       button_text: 檢視申請
-    loomio_app_description: 一個供組織共同決策的平台。
     content_was_translated: 此內容由 %{source_locale} 翻譯而來
     content_was_translated_html: 此內容由 %{source_locale} 翻譯而來。<a href="%{profile_url}">查看設定<a></a>
   announcement_count_emails: "%{count} 個電子郵件"

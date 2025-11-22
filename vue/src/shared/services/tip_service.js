@@ -5,67 +5,76 @@ import Records from '@/shared/services/records';
 export default new class TipService {
   tips(user, group, vm) {
     return [
+      // {
+      //   title: 'tips.intro.tip_title',
+      //   show() { return !!group },
+      //   completed() { return user.hasExperienced('tips.intro') },
+      //   disabled() { return false },
+      //   perform() {
+      //     EventBus.$emit('openModal', {
+      //       component: 'ConfirmModal',
+      //       props: {
+      //         confirm: {
+      //           submit: () => {
+      //             return Records.users.saveExperience('tips.intro', true);
+      //           },
+      //           forceSubmit: true,
+      //           text: {
+      //             title:    'tips.intro.title',
+      //             helptext: 'tips.intro.body',
+      //             submit:   'tips.intro.submit'
+      //           },
+      //         }
+      //       }
+      //     });
+      //   }
+      // },
+      // {
+      //   title: 'profile_page.set_your_profile_picture',
+      //   completed() { return user && user.avatarKind != 'initials' },
+      //   show() { return true },
+      //   disabled() { return false },
+      //   perform() {
+      //     EventBus.$emit('openModal', { component: 'ChangePictureForm' });
+      //   }
+      // },
+      // {
+      //   title: 'tips.group.upload_image.title',
+      //   completed() { return group.hasCustomCoverPhoto },
+      //   show() { return !!group },
+      //   disabled() { return false },
+      //   perform() {
+      //     EventBus.$emit('openModal', {
+      //       component: 'ConfirmModal',
+      //       props: {
+      //         confirm: {
+      //           forceSubmit: true,
+      //           submit() { return new Promise((resolve) => resolve()) },
+      //           successCallback() {
+      //             GroupService.actions(group).edit_group.perform();
+      //             vm.$router.push(vm.urlFor(group));
+      //           },
+      //           text: {
+      //             title:    'tips.group.upload_image.title',
+      //             helptext: 'tips.group.upload_image.helptext',
+      //             submit:   'tips.group.upload_image.open_group_settings'
+      //           },
+      //         }
+      //       }
+      //     });
+      //   }
+      // },
       {
-        title: 'tips.intro.tip_title',
+        title: 'tips.group.invite_people.title',
+        completed() { return group.membershipsCount > 1 },
         show() { return !!group },
-        completed() { return user.hasExperienced('tips.intro') },
         disabled() { return false },
         perform() {
-          EventBus.$emit('openModal', {
-            component: 'ConfirmModal',
-            props: {
-              confirm: {
-                submit: () => {
-                  return Records.users.saveExperience('tips.intro', true);
-                },
-                forceSubmit: true,
-                text: {
-                  title:    'tips.intro.title',
-                  helptext: 'tips.intro.body',
-                  submit:   'tips.intro.submit'
-                },
-              }
-            }
-          });
+          EventBus.$emit('openModal', { component: 'GroupInvitationForm', props: { group } });
         }
       },
       {
-        title: 'profile_page.set_your_profile_picture',
-        completed() { return user && user.avatarKind != 'initials' },
-        show() { return true },
-        disabled() { return false },
-        perform() {
-          EventBus.$emit('openModal', { component: 'ChangePictureForm' });
-        }
-      },
-      {
-        title: 'tips.group.upload_image.title',
-        completed() { return group.hasCustomCoverPhoto },
-        show() { return !!group },
-        disabled() { return false },
-        perform() {
-          EventBus.$emit('openModal', {
-            component: 'ConfirmModal',
-            props: {
-              confirm: {
-                forceSubmit: true,
-                submit() { return new Promise((resolve) => resolve()) },
-                successCallback() {
-                  GroupService.actions(group).edit_group.perform();
-                  vm.$router.push(vm.urlFor(group));
-                },
-                text: {
-                  title:    'tips.group.upload_image.title',
-                  helptext: 'tips.group.upload_image.helptext',
-                  submit:   'tips.group.upload_image.open_group_settings'
-                },
-              }
-            }
-          });
-        }
-      },
-      {
-        title: 'tips.group.start_a_thread.title',
+        title: 'tips.group.start_a_discussion.title',
         completed() { return group.discussionsCount > 0 },
         show() { return !!group },
         disabled() { return false },
@@ -80,22 +89,13 @@ export default new class TipService {
                 },
                 forceSubmit: true,
                 text: {
-                  title:    'tips.group.start_a_thread.title',
-                  helptext: 'tips.group.start_a_thread.helptext',
-                  submit:   'tips.group.start_a_thread.submit'
+                  title:    'tips.group.start_a_discussion.title',
+                  helptext: 'tips.group.start_a_discussion.helptext',
+                  submit:   'tips.group.start_a_discussion.submit'
                 },
               }
             }
           });
-        }
-      },
-      {
-        title: 'tips.group.invite_people.title',
-        completed() { return group.membershipsCount > 1 },
-        show() { return !!group },
-        disabled() { return false },
-        perform() {
-          EventBus.$emit('openModal', { component: 'GroupInvitationForm', props: { group } });
         }
       },
       {

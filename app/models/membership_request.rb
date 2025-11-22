@@ -35,8 +35,8 @@ class MembershipRequest < ApplicationRecord
     requestor_id
   end
 
-  def title
-    group.full_name
+  def title_model
+    group
   end
 
   def user_id
@@ -54,13 +54,13 @@ class MembershipRequest < ApplicationRecord
   def convert_to_membership!
     group.add_member!(requestor)
   end
-  
+
   def content_locale
     stripped_text = Rails::Html::WhiteListSanitizer.new.sanitize(introduction, tags: [])
     result = CLD.detect_language stripped_text
     result[:reliable] ? result[:code] : requestor&.locale
   end
-  
+
   private
 
   def validate_not_in_group_already

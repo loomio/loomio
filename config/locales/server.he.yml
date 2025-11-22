@@ -89,7 +89,6 @@ he:
       description: <h3 id="what-is-the-purpose-of-the-document" style=";text-align:right;direction:rtl">מה מטרת המסמך?</h3><p style=";text-align:right;direction:rtl"></p><h3 id="why-is-this-important" style=";text-align:right;direction:rtl"> למה זה חשוב?</h3><p style=";text-align:right;direction:rtl"></p><h3 id="what-are-you-asking-people-to-do" style=";text-align:right;direction:rtl"> מה אתה מבקש מאנשים לעשות?</h3><p style=";text-align:right;direction:rtl"></p>
       document: מסמך
     practice_thread:
-      process_name: שרשור תרגול
       process_subtitle: שרשור לברך אנשים לקבוצה ולתרגול שימוש ב-Loomio
       process_introduction: <p style=";text-align:right;direction:rtl">השתמשו בתבנית זו כדי לקבל בברכה חברים חדשים ולעודד השתתפות מוקדמת. היא נותנת לאנשים הזדמנות להציג את עצמם ולחקור את התכונות של Loomio.</p>
       title: "\U0001F44B ברוכים הבאים! תגידו שלום ונסו דברים חדשים"
@@ -127,8 +126,6 @@ he:
     '403':
       title: אָסוּר
       body: אינך מורשה לגשת לדף זה. ייתכן שתצטרך להתחבר.
-    '404':
-      body: הפריט שביקשת לא נמצא. זה יכול לקרות אם שרשור או סקר נמחקו.
     '410':
       title: נעלם
       body: דף זה אינו קיים עוד
@@ -321,7 +318,6 @@ he:
       subject: "%{who} ביקש להצטרף %{which_group}"
       view_group: אתה יכול לאשר או לשלול בקשות כאן
       button_text: צפה בבקשה
-    loomio_app_description: מקום בו ארגונים יכולים לקבל החלטות יחד.
     content_was_translated: תוכן זה תורגם מ-%{source_locale}
     content_was_translated_html: תוכן זה תורגם מ-%{source_locale}. <a href="%{profile_url}">הצג הגדרות<a></a>
   announcement_count_emails: "%{count} מיילים"

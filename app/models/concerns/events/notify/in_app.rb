@@ -45,17 +45,13 @@ module Events::Notify::InApp
   def notification_translation_values
     {
       name: notification_translation_name,
-      title: notification_translation_title,
+      title: TranslationService.plain_text(eventable.title_model, :title, user),
       poll_type: (I18n.t(:"poll_types.#{notification_poll_type}") if notification_poll_type)
     }.compact
   end
 
   def notification_translation_name
     notification_actor&.name
-  end
-
-  def notification_translation_title
-    polymorphic_title(eventable)
   end
 
   def notification_poll_type

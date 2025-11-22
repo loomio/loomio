@@ -35,7 +35,7 @@ export default {
       collections: ['groups', 'memberships'],
       query: () => {
         return this.groupItems = [
-          {title: this.$t('discussion_form.none_invite_only_thread'), value: null}
+          {title: this.$t('discussion_form.none_invite_only_discussion'), value: null}
         ].concat(Session.user().groups().filter( g => AbilityService.canStartPoll(g)).map(g => ({
           title: g.fullName,
           value: g.id

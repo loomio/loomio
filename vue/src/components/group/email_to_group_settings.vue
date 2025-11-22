@@ -6,7 +6,7 @@ import Flash from '@/shared/services/flash';
 import Records from '@/shared/services/records';
 import { mdiContentCopy } from '@mdi/js';
 
-export default 
+export default
 {
   props: {
     group: Object
@@ -50,11 +50,11 @@ export default
 
 </script>
 <template lang="pug">
-v-card.email-to-group-settings(:title="$t('email_to_group.start_a_thread_by_email')")
+v-card.email-to-group-settings(:title="$t('email_to_group.start_a_discussion_by_email')")
   template(v-slot:append)
       dismiss-modal-button
   v-card-text
-    p.text-medium-emphasis.pb-2(v-t="'email_to_group.send_email_to_start_thread'")
+    p.text-medium-emphasis.pb-2(v-t="'email_to_group.send_email_to_start_discussion'")
     v-text-field(
       readonly
       variant="solo-filled"

@@ -5,7 +5,7 @@
 
   - if @discussion_reader
     %h3= "#{t(:'common.thread')}: #{@discussion_reader.discussion.title}"
-    %p= t(:'change_volume_form.when_would_you_like_to_be_emailed_thread')
+    %p= t(:'change_volume_form.when_would_you_like_to_be_emailed_discussion')
     = form_tag(email_actions_set_discussion_volume_path, method: :PUT) do
       %input{type: :hidden, name: 'unsubscribe_token', value: params[:unsubscribe_token]}
       %input{type: :hidden, name: 'discussion_id', value: @discussion_reader.discussion_id}
@@ -40,7 +40,7 @@
         = options_for_select(volume_options, selected: @membership.volume)
       %input{type: 'submit', value: t(:'common.action.save')}
     %p
-      %i=t(:'change_volume_form.changes_all_threads_and_polls_in_group')
+      %i=t(:'change_volume_form.changes_all_discussions_and_polls_in_group')
 
   %h3=t(:'change_volume_form.what_do_the_options_mean')
   %p

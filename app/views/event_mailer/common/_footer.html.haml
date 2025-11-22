@@ -28,7 +28,7 @@
         %a.unsubscribe-link{href: unsubscribe_url(@event.eventable)}= t(:"common.action.unsubscribe")
 
       - elsif @discussion && DiscussionReader.for(user: @recipient, discussion: @discussion).volume == 'loud'
-        %span.notification-reason= t("event_mailer.notification_reason.thread_subscribed")
+        %span.notification-reason= t("event_mailer.notification_reason.discussion_subscribed")
         %a.unsubscribe-link{href: unsubscribe_url(@event.eventable)}= t(:"common.action.unsubscribe")
 
       - elsif @poll && @poll.stances.latest.find_by(participant_id: @recipient.id)&.volume == 'loud'

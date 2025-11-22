@@ -5,7 +5,6 @@ import Records  from '@/shared/services/records';
 import Flash   from '@/shared/services/flash';
 import EventBus   from '@/shared/services/event_bus';
 import { groupPrivacy, groupPrivacyStatement } from '@/shared/helpers/helptext';
-import { groupPrivacyConfirm } from '@/shared/helpers/helptext';
 import { isEmpty, debounce } from 'lodash-es';
 
 export default
@@ -354,6 +353,12 @@ v-card.group-form(:title="$t(cardTitle)")
               span(v-t="'group_form.members_can_raise_motions'")
               br
               span.text-caption(v-t="'group_form.members_can_raise_motions_help'")
+        v-checkbox.group-form__allow-polls-without-discussions(hide-details v-model='group.canStartPollsWithoutDiscussion')
+          template(v-slot:label)
+            div
+              span(v-t="'group_form.allow_polls_without_threads'")
+              br
+              span.text-caption(v-t="'group_form.allow_polls_without_threads_help'")
         v-checkbox.group-form__admins-can-edit-user-content(hide-details v-model='group.adminsCanEditUserContent')
           template(v-slot:label)
             div

@@ -204,7 +204,7 @@ v-card.poll-members-form
         user-avatar.mr-2(:user="user" :size="32")
       v-list-item-title
         span.mr-2 {{user.nameWithTitle(poll.group())}}
-        v-chip.mr-1(v-if="isGuest[user.id]" variant="outlined" size="x-small" label :title="$t('announcement.inviting_guests_to_thread')")
+        v-chip.mr-1(v-if="isGuest[user.id]" variant="outlined" size="x-small" label :title="$t('announcement.inviting_guests_to_discussion')")
           span(v-t="'members_panel.guest'")
         v-chip.mr-1(v-if="isMemberAdmin[user.id] || isStanceAdmin[user.id]" variant="outlined" size="x-small" label)
           span(v-t="'members_panel.admin'")

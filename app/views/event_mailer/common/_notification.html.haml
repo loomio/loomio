@@ -1,6 +1,6 @@
 - url = local_assigns.fetch(:url, tracked_url(event.eventable))
 - message = local_assigns.fetch(:message, event.recipient_message)
-- title = link_to(event.eventable.title, url) unless local_assigns[:title]
+- title = link_to(plain_text(event.eventable.title_model, :title), url) unless local_assigns[:title]
 - poll_type = @poll ? t("poll_types.#{@poll.poll_type}") : nil
 - with_title = local_assigns.fetch(:with_title, false) ? "with_title" : "without_title"
 - with_author = (event.eventable.respond_to?(:author_id) && @recipient.id == event.eventable.author_id && I18n.exists?("notifications.#{with_title}.#{@event_key}_author")) ? "_author" : ''

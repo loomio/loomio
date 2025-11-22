@@ -384,10 +384,7 @@ ja:
     email_me_this_address: このアドレスにメールしてください
     email_address_copied_to_clipboard: メールアドレスをクリップボードにコピーしました
     send_email_to_start_thread: グループ内でスレッドを開始するには、このアドレスにメールを送信してください。
-    subject_body_attachments: メールの件名がスレッドのタイトルになり、メールの本文が説明になり、添付ファイルはスレッドに添付されます。
     forward_email_to_move_conversation: 'ヒント: 決定を下したり記録を保存したりする必要がある場合は、電子メールの会話を Loomio に転送します。'
-  email_to_group_mailer:
-    your_email_address_to_start_threads_in_group: "%{group} でスレッドを開始するためのメール アドレス"
   volume_levels:
     loud: うるさい
     normal: 普通
@@ -411,14 +408,12 @@ ja:
       loud_explain: 活動があるときはいつでも
       normal_explain: 誰かがあなたの注意を求めたとき
       quiet_explain: 通知はありません
-    aria_label: メール設定変更フォーム
     loud_label: すべてのアクティビティ
     normal_label: お知らせ
     quiet_label: メールはありません
     mute_label: ミュート
     saved: 通知設定が更新されました
     discussion:
-      title: スレッド通知
       loud_description: このスレッド内のすべてのアクティビティが電子メールで送信されます。
       normal_description: このスレッドの重要なアクティビティのみが電子メールで送信されます。
       quiet_description: このスレッドでのアクティビティについては電子メールで送信されることはありません。
@@ -470,14 +465,12 @@ ja:
     quiet_desc: 一度もない
     loud_explained: 新しいコメントが追加されたり、誰かが投票したり、アンケートやスレッドが開始されたりするたびに、メールが届きます。
     when_would_you_like_to_be_emailed_poll_type: この %{poll_type} についていつメールを受け取りたいですか?
-    normal_explained: 誰かがスレッドやアンケートの「通知」欄にあなたの名前を入力したとき、またはグループをメンションしたとき。
     normal_excludes_mentioning_html: 誰かがあなたに{'@'}メンションした場合（コメントで返信した場合など）には、別の設定があります。 <a href="%{url}">@メンションの設定を編集するには、こちらをクリックしてください。</a>
     changes_all_threads_and_polls_in_group: これにより、グループ内のすべてのスレッドと投票の設定が変更されます。
     when_do_you_want_to_be_emailed: いつメールを受け取りたいですか?
     what_the_options_mean: オプションの意味
     quiet_explained: 誰かが通知しようとしても、メールは届きません。Loomioを定期的にチェックする習慣がない限り、重要なお知らせや決定事項を見逃してしまう可能性があります。
   close_explanation_modal:
-    aria_label: スレッドを閉じる
     close_thread: スレッドを閉じる
     body: "<p>古いスレッドや無関係なスレッドを閉じて表示から削除し、ディスカッションが終了したことを示します。</p><p>閉じられたスレッドでも誰でもコメントしたり投票を開始したりできますが、グループのスレッド リストやダッシュボードには表示されません。</p>"
     image_alt: スレッドをすべて閉じます
@@ -490,14 +483,10 @@ ja:
     password_label: パスワード：
     password_confirmation_label: 'そのパスワードをもう一度:'
   signed_out_modal:
-    aria_label: セッションが終了しました
     title: セッションが終了しました
     message: 別のウィンドウからログアウトされました。続行するには再度サインインしてください。
     ok: わかりました
-  comment_reply_form:
-    aria_label: 返信を追加
   comment_form:
-    aria_label: コメントを追加する
     attachments:
       add_attachment: ファイルを添付する
       remove_attachment: 添付ファイルを削除する
@@ -524,7 +513,6 @@ ja:
   thread_nav:
     participants: 参加者
   sidebar:
-    threads: ディスカッション
     my_groups: 私のグループ
     other_groups: その他のグループ
     all_groups: すべてのグループ
@@ -533,7 +521,6 @@ ja:
     direct_threads: ダイレクトスレッド
     unread_threads: 未読スレッド (%{count})
     muted_threads: ミュートされたスレッド
-    start_group: 新組織
     start_subgroup: 新しいサブグループ
     explore: 公開グループ
     explore_groups: グループを探索する
@@ -550,8 +537,6 @@ ja:
       threads_list: スレッドアクション
       groups_list: グループ
       user_list: ユーザーのアクション
-    new_thread_removed: 新しいスレッドは削除されました
-    new_thread_removed_body: 新しいスレッド ボタンはサイドバーから削除されます。新しいスレッドを開始するには、まずグループに移動して、[新しいスレッド] をクリックします。変更は申し訳ありませんが、スレッドを開始するときにテンプレートを選択する必要があるため、これは必須です。
     user_settings: ユーザー設定
   strand_nav:
     newest: 最新
@@ -580,7 +565,6 @@ ja:
     all_subgroups: すべてのサブグループ
     parent_only: 保護者のみ
   navbar:
-    search_all_threads: すべてのスレッドを検索
     search_threads: "%{name} のスレッドを検索"
     search_polls: "%{name} でアンケートを検索"
     search_members: "%{name} のメンバーを検索"
@@ -632,7 +616,6 @@ ja:
     dark_blue: ダークブルー
   membership_card:
     group_members: グループの人（仲間）たち
-    discussion_members: スレッドメンバー
     poll_members: "%{pollType} メンバー"
     voters: 有権者
     invite_to_group: グループに招待する
@@ -648,7 +631,6 @@ ja:
     make_coordinator: 管理者を作ります
     demote_coordinator: 管理者の降格
     remove_from:
-      discussion: スレッドから削除する
       group: グループから削除
       poll: "%{pollType} から削除"
     cancel_invitation: 招待をキャンセルする
@@ -657,7 +639,6 @@ ja:
     make_delegate: 委任する
     revoke_delegate: 委任を取り消す
   notification_models:
-    discussion: 糸：
     comment: コメントイン
     poll: '投票:'
     outcome: 結果：
@@ -668,9 +649,6 @@ ja:
     with_title:
       unknown_sender: 認識できない送信者からのメールを確認してください
       comment_replied_to: "%{actor} から %{title} で返信されました"
-      discussion_announced: "%{actor} があなたをスレッドに招待しました: %{title}"
-      discussion_edited: "%{actor} がスレッド コンテキストを編集しました: %{title}"
-      discussion_closed: "%{actor} がスレッドを閉じました: %{title}"
       invitation_accepted: "%{actor} は %{title} への招待を承諾しました"
       membership_created: "%{actor} が %{site_name} の %{title} に参加するよう招待しました"
       membership_resent: "%{actor} が %{site_name} の %{title} に参加するよう招待しました"
@@ -678,7 +656,6 @@ ja:
       membership_request_approved: "%{actor} が %{title} への参加リクエストを承認しました"
       new_comment: "%{actor} のコメント: %{title}"
       new_coordinator: "%{actor} により、あなたは %{title} の管理者になりました"
-      new_discussion: "%{actor} がスレッドを開始しました: %{title}"
       outcome_announced: "%{actor} が %{poll_type} の結果を共有しました: %{title}"
       outcome_created: "%{actor} が %{poll_type} の結果を共有しました: %{title}"
       outcome_updated: "%{actor} が %{poll_type} の結果を更新しました: %{title}"
@@ -706,13 +683,8 @@ ja:
       poll_announced: "%{actor} さんが投票に招待しました: %{title}"
     without_title:
       unknown_sender: 認識できない送信者からのメールを確認してください
-      discussion_announced: "%{actor} があなたをスレッドに招待しました"
-      discussion_edited: "%{actor} がスレッド コンテキストを編集しました"
-      discussion_closed: "%{actor} がスレッドを閉じました"
       group_announced: "%{actor} があなたをグループに招待しました"
       comment_replied_to: "%{actor} があなたに返信しました"
-      new_discussion: "%{actor} がスレッドを開始しました"
-      new_comment: "%{actor} がスレッドにコメントしました"
       membership_created: "%{actor} があなたをグループに招待しました"
       membership_resent: "%{actor} があなたをグループに招待しました"
       membership_requested: "%{actor} があなたのグループへの参加をリクエストしました"
@@ -744,13 +716,10 @@ ja:
     hints:
       poll_closing_soon: 今こそ、投票したり、考えを変えたり、他の人に参加を奨励したりするのに良い時期です。
       poll_closing_soon_author: 投票するよう人々に思い出させたり、期限を延長したりすることもできます。
-      outcome_review_due: フィードバック投票を開始するか、決定がどのように実施されたかについての意見を求める新しいスレッドを開始することを検討してください。
     email_subject:
       unknown_sender: 認識できない送信者からのメールを確認する
       comment_replied_to: "%{actor} さんが %{title} であなたに返信しました"
       discussion_announced: "％{title}"
-      discussion_edited: "%{actor} がコンテキストを編集しました: %{title}"
-      discussion_closed: "%{actor} がスレッドを閉じました: %{title}"
       invitation_accepted: "%{actor} が %{title} への参加招待を承認しました"
       membership_created: "%{actor} があなたを %{site_name} の %{title} に参加するよう招待しました"
       membership_resent: "%{actor} があなたを %{site_name} の %{title} に参加するよう招待しました"
@@ -785,33 +754,8 @@ ja:
       user_reminded: "%{actor} が %{title} への投票を促しています"
       poll_announced: '投票: %{title}'
   discussion_fork_actions:
-    helptext: 別のスレッドに移動したいアイテムを選択してください
     move: 動く
-    search_placeholder: タイトルでスレッドを探す
     moved: コメントを移動しています。少し時間がかかる場合があります
-    move_to_existing_thread: 既存のスレッドに移動
-    start_new_thread: または、新しいスレッドを開始してください
-  thread_template:
-    browse_public_templates: テンプレートギャラリーを参照する
-    thread_template_settings: スレッドテンプレートの設定
-    start_a_new_thread: 新しいスレッドを開始します
-    thread_template_saved: スレッドテンプレートが保存されました
-    these_are_public_templates: これらのテンプレートは、グループに合わせてコピーまたは変更できます。
-    these_are_templates: これらはグループ内のスレッド テンプレートです。テンプレートは、一般的な意思決定プロセスをガイドします。
-    default_title_label: デフォルトのタイトル
-    default_title_hint: タイトルフィールドに編集可能なテキストを事前入力します。これはオプションです。不明な場合は空白のままにしてください。
-    title_placeholder_label: タイトルの例
-    title_placeholder_hint: タイトル欄の背景に表示する例
-    title_placeholder_placeholder: 例：背景テキストは次のようになります
-    example_description_label: 説明例
-    example_description_placeholder: スレッドを開始するために使用できるテンプレートを提供する
-    hidden_templates: 隠しテンプレート
-    confirm_delete: このスレッド テンプレートを完全に削除してもよろしいですか?この結果、スレッドが削除されることはありません。
-    add_proposal_or_poll_template: 提案または投票テンプレートを追加する
-    recommended_proposal_or_poll_templates: 推奨される提案または投票のテンプレート
-    decision_templates: 意思決定テンプレート
-    decision_templates_help: このプロセスを完了するのに役立つ提案または投票のテンプレートを選択します。
-    share_in_template_gallery: このテンプレートをパブリック テンプレート ギャラリーで共有します
   discussion_form:
     thread_templates: スレッドテンプレート
     new_thread_template: 新しいスレッドのテンプレート
@@ -828,7 +772,6 @@ ja:
     change_log_placeholder: 必要に応じて、変更内容を説明します。このメッセージはスレッドに追加されます。
     change_log_label: 何が変わったのでしょうか？
     invite: 招待する
-    aria_label: ねじの形状
     start_thread: スレッドを開始します
     messages:
       created: スレッドが開始されました
@@ -856,7 +799,6 @@ ja:
     send_poll: "%{type} を送信します"
     send_outcome: 結果の送信
     cannot_reveal_when_anonymous: 申し訳ありませんが、匿名投票で誰が投票したか、誰が投票しなかったかを明らかにすることはできません。
-    discussion_notification_history: スレッド通知履歴
     group_notification_history: グループ招待履歴
     poll_notification_history: 投票通知履歴
     outcome_notification_history: 結果通知履歴
@@ -868,7 +810,6 @@ ja:
     preview: プレビューメール
     no_notifications_sent: 通知は送信されていません
     history_error: 何か問題が発生しました!履歴を読み込めませんでした。
-    inviting_guests_to_thread: ゲストはあなたのグループに属しておらず、このスレッドのみにアクセスできます
     select_groups: グループの選択
     search_by_name_or_email: 名前で検索するか、招待するメールアドレスを入力してください
     search_by_name: 名前で人を検索する
@@ -950,8 +891,6 @@ ja:
       added_singular: 1名追加となります。
       added_none: 誰も追加されません。
       group_title: "%{name} (%{count} 人)"
-      visible_to_group: "%{group} 内の誰でもこのスレッドを見ることができます。"
-      visible_to_guests: 招待された人だけがこのスレッドを閲覧できます。
       click_group_to_see_individuals: グループをクリックすると個人が表示されます
       poll_announced:
         title: 投票に招待する
@@ -1097,7 +1036,6 @@ ja:
     messages:
       joined_group: あなたは現在、%{group}のメンバーです
   membership_request_form:
-    aria_label: 会員リクエストフォーム
     heading: グループへの参加依頼
     name_label: 氏名
     email_label: Eメール
@@ -1107,7 +1045,6 @@ ja:
     messages:
       membership_requested: "%{group}への参加をリクエストしました"
   revision_history_modal:
-    aria_label: 改訂履歴
     discussion_header: ディスカッションの編集
     comment_header: コメント編集
     poll_header: 投票の編集
@@ -1133,10 +1070,6 @@ ja:
     you_and_name: あなたと%{name}
     you_and_name_and_count_more: あなた、%{name}、他 %{count} 人
     name_and_count_more: "%{name} と %{count} 件以上"
-  context_panel:
-    thread_status:
-      pinned: このスレッドは固定されました。これは、すべてのユーザーのグループのスレッド リストの先頭に残ります。
-      closed: このスレッドは閉鎖されました。ダッシュボードには表示されなくなり、グループ ページの「非公開」の下に表示されます。
   delete_group_modal:
     title: グループの削除
     subgroup_title: サブグループの削除
@@ -1214,7 +1147,6 @@ ja:
       private: 'プライバシー: このグループはメンバーのみに表示されます'
       parent_members: 'プライバシー: このグループは、%{parentGroupName} のメンバーと %{groupName} のメンバーに表示されます'
       public: 'プライバシー: このグループはウェブ上に表示されます'
-      aria_label: 'グループのプライバシー: %{privacy}'
     participation_report: 参加レポート
     my_subgroups: 私のサブグループ
     more_subgroups: より多くのサブグループ
@@ -1229,12 +1161,10 @@ ja:
     messages:
       description_updated: 説明が更新されました
   leave_group_form:
-    aria_label: グループを離れる
     title: グループを離れる
     question: このグループを退会してもよろしいですか?
     submit: はい、このグループを離れます
   archive_group_form:
-    aria_label: グループを非アクティブ化する
     title: グループを非アクティブ化する
     question: このグループを非アクティブ化してもよろしいですか?
     submit: はい、このグループを非アクティブ化します
@@ -1244,7 +1174,6 @@ ja:
     change_cover_image: カバー画像を変更する
     change_logo: ロゴを変更する
     permissions_explaination: ユーザーがグループに対して持つことができるメンバーシップには、管理者とメンバーの 2 つのレベルがあります。管理者は、グループ設定を編集したり、他の人を管理者にしたり、以下にリストされているすべてのアクションを実行したりできます。
-    aria_label: グループフォーム
     parent_group: 親グループ
     new_organisation: 新組織
     new_group: 新しいグループ
@@ -1362,7 +1291,6 @@ ja:
     group_url: グループURL
     reusable_invitation_link: 再利用可能な招待リンク
     error: クリップボードにコピーしようとしたときにエラーが発生しました
-    aria_label: 招待状フォーム
     invite_people: メンバーを招待する
     invite_guests: ゲストを招待する
     notify_people: 人々に通知する
@@ -1495,7 +1423,6 @@ ja:
     insert_link: リンクを挿入
     insert_embedded_url: 埋め込まれたビデオ
   change_picture_form:
-    aria_label: プロフィール写真フォーム
     title: プロフィール写真を設定する
     helptext: 自分のプロフィール写真をアップロードすることも、 <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a>アカウントをお持ちの場合はそれを使用することもできます。
     use_initials: イニシャルを使用する
@@ -1559,7 +1486,6 @@ ja:
     replies_count: "%{count} 件の返信"
     unread_count: "%{count} 件が未読です"
   dashboard_page:
-    aria_label: ダッシュボード
     polls_to_vote_on: 投票する世論調査
     no_polls_to_vote_on: 投票する必要のあるアンケートはありません
     recent_polls: 最近の世論調査
@@ -1572,7 +1498,6 @@ ja:
       show_all: 最近のスレッドはありません。
       show_proposals: 現在有効な提案はありません。
       show_muted: ミュートされたスレッドはありません。
-    view_recent: 最近のスレッドをすべて表示しますか?
     load_more: さらにスレッドをロードする
     mark_as_read: 既読にする
     dismiss: 却下する
@@ -1587,7 +1512,6 @@ ja:
       filter_threads: フィルタースレッド
       filter_threads_aria_label: フィルタースレッド
       dropdown_heading: フィルターダッシュボード
-      all: 最近のスレッド
       all_aria_label: 現在、最近のスレッドを表示しています
       all_description: 最近のスレッドを表示する
       proposals: 提案
@@ -1611,13 +1535,11 @@ ja:
       older: 1か月以上古い
   threads_page:
     no_direct_threads: 直接のスレッドはありません
-    no_invite_only_threads: 招待専用スレッドはありません
   inbox_page:
     no_threads: うおおお！受信箱のスレッドをすべて読みました。
     unread_threads: 未読のスレッド
     view_more: もっと見る
     no_groups:
-      explanation: どのグループにも所属していないため、未読のスレッドはありません。
       start: 始める
       or: または
       join_group: グループ<a href="/explore">に参加して</a>スレッドを表示します。
@@ -1634,9 +1556,6 @@ ja:
     pin:
       pinned: ネジが固定されています
       unpinned: スレッドの固定が解除されました
-    volume:
-      mute_message: スレッドがミュートされました
-      unmute_message: スレッドのミュートが解除されました
     closed:
       reopened: スレッドが再開されました
       closed: スレッドが閉じられました
@@ -1646,8 +1565,6 @@ ja:
     disabled_anonymous_polls: スレッドに匿名の投票が含まれているため、閲覧履歴は無効になっています
   activity_card:
     count_responses: "%{count} 件の回答"
-    event_pinned: タイムラインに固定
-    event_unpinned: タイムラインから固定を解除
     beginning: 始まり
     end: 終わり
     unread: 未読 (%{count})
@@ -1656,7 +1573,6 @@ ja:
     chronological: 年代順
     nested: 入れ子になった
     attachment_display:
-      aria_label: ファイルが添付された：
       image_alt: 添付画像
     n_previous: "%{count} 個前の応答を読み込みます"
     n_more: "%{count} 個の応答をロードします"
@@ -1667,12 +1583,9 @@ ja:
     facilitate: 促進する
     start_decision: スタート決定
     start_vote: 投票を開始する
-  thread_group:
-    aria_label: グループ名
   thread_context:
     current_poll_type_banner: 現在の %{pollType}
     item_maybe_deleted: スレッド内で要求された場所が見つかりません。削除された可能性があります。
-    aria_label: スレッドコンテキスト
     thread_options: ねじのオプション
     email_settings: 通知設定
     edit: 編集
@@ -1689,11 +1602,6 @@ ja:
     seen_by_count: "%{count} 人が閲覧"
     count_notified: 通知済み %{count}
     forked_from: からフォークされました
-  pin_thread_modal:
-    title: ピンネジ
-    helptext: ピン留めされたスレッドは、常にそのグループのスレッド リストの先頭に表示されます。これらは、メンバーに重要な発表を知らせたり、行動規範やコミュニティ ガイドラインなどの共通の内容を宣伝したりするために使用できます。
-    helptext_two: スレッドのドロップダウンから「ピンを外す」を選択すると、いつでもピンを削除できます。
-    pin_thread: ピンネジ
   thread_arrangement_form:
     edit: レイアウトの編集
     title: スレッドレイアウト
@@ -1712,20 +1620,11 @@ ja:
     nested_twice_description: 返信のインデントは最大 2 回です。
     changing_nesting_is_slow: ネストへの変更の処理には数分かかる場合があります。
   delete_thread_form:
-    aria_label: スレッドの削除
     title: スレッドの削除
     body: このスレッドを削除してもよろしいですか?
     confirm: スレッドの削除
     messages:
       success: スレッドが削除されました
-  move_thread_form:
-    aria_label: スレッドを移動する
-    title: スレッドを移動する
-    body: 宛先グループ
-    confirm: スレッドを移動する
-    confirm_change_to_private_thread: "%{groupName} はオープン グループです。続行すると、このスレッドは公開されます。"
-    messages:
-      success: スレッドは %{name} に移動されました
   delete_comment_dialog:
     title: コメントを削除します
     question: これにより、このコメントは完全に削除されます。続行すると復元できなくなります。
@@ -2388,8 +2287,6 @@ ja:
     name_placeholder: この統合に識別できるように名前を付けます
     event_kind_helptext: どのイベントを Webhook に通知したいですか?
     event_kinds:
-      new_discussion: スレッドが開始されました
-      discussion_edited: スレッドが編集されました
       poll_edited: アンケートが編集されました
       new_comment: コメントが作成されます
       poll_created: 投票が開始されます

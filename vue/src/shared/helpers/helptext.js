@@ -25,7 +25,7 @@ export var eventTitle = function(event) {
         if (event.sourceGroupId) {
           return (Records.groups.find(event.sourceGroupId) || {fullName: I18n.global.t('thread_item.deleted_group')}).fullName;
         } else {
-          return I18n.global.t('thread_item.invite_only_thread');
+          return I18n.global.t('discussion.invite_only');
         }
       } else {
         return event.model().title;

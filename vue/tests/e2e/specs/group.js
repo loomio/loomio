@@ -267,7 +267,7 @@ module.exports = {
     page.fillIn('#discussion-title', 'Nobody puts baby in a corner')
     page.fillIn('.discussion-form .lmo-textarea div[contenteditable=true]', "I've had the time of my life")
     page.click('.discussion-form__submit')
-    page.expectFlash("Thread started")
+    page.expectFlash("Discussion started")
     page.expectText('.context-panel__heading', 'Nobody puts baby in a corner' )
     page.expectText('.context-panel__description', "I've had the time of my life" )
   },

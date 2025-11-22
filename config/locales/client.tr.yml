@@ -382,13 +382,10 @@ tr:
     unreleased_emails: Yayınlanmamış e-postalar
     start_a_thread_by_email: E-postayla konu başlat
     send_email_to_start_thread: Grubunuzda bir konu başlatmak için bu adrese bir e-posta gönderin.
-    subject_body_attachments: E-posta konusu konu başlığı olur, e-postanın gövdesi açıklama olur ve ekli dosyalar konuya eklenir.
     copy_address: Adresi kopyala
     email_me_this_address: Bu adresi bana e-postayla gönder
     email_address_copied_to_clipboard: E-posta adresi panoya kopyalandı
     forward_email_to_move_conversation: 'İpucu: Bir karar vermeniz veya kayıt tutmanız gerektiğinde, bir e-posta görüşmesini Loomio''ya iletin.'
-  email_to_group_mailer:
-    your_email_address_to_start_threads_in_group: "%{group} grubunda konu başlatmak için e-posta adresiniz"
   volume_levels:
     loud: Yüksek sesli
     normal: Normal
@@ -412,14 +409,12 @@ tr:
       loud_explain: ne zaman aktivite olsa
       normal_explain: birisi ilginizi istediğinde
       quiet_explain: bildirim yok
-    aria_label: E-posta ayarları formunu değiştir
     loud_label: Tüm aktiviteler
     normal_label: Duyurular
     quiet_label: E-posta yok
     mute_label: Sesi kıs
     saved: Bildirim ayarları güncellendi
     discussion:
-      title: Konu bildirimleri
       loud_description: Bu başlıktaki tüm etkinlikler size e-postayla gönderilecektir.
       normal_description: Bu başlıktaki yalnızca önemli etkinlikler size e-postayla gönderilecektir.
       quiet_description: Bu başlıktaki hiçbir etkinlik size e-postayla gönderilmeyecek.
@@ -471,14 +466,12 @@ tr:
     quiet_desc: Asla
     loud_explained: Her yeni yorum yapıldığında, birisi oy verdiğinde, anket veya konu başlatıldığında e-posta ile bilgilendirileceksiniz.
     when_would_you_like_to_be_emailed_poll_type: Bu %{poll_type} hakkında ne zaman e-posta almak istersiniz?
-    normal_explained: Birisi bir konu başlığının veya anketin "Bildir" alanına adınızı girdiğinde veya gruptan {'@'}bahsettiğinde.
     normal_excludes_mentioning_html: Birisi {'@'} sizden bahsettiğinde (örneğin bir yorumda size yanıt verdiğinde) ayrı bir ayar vardır. <a href="%{url}">@mentions ayarlarını düzenlemek için buraya tıklayın</a>
     changes_all_threads_and_polls_in_group: Bu, gruptaki tüm konu başlıkları ve anketler için ayarları değiştirir.
     when_do_you_want_to_be_emailed: E-postanın ne zaman gönderilmesini istersiniz?
     what_the_options_mean: Seçeneklerin anlamı nedir?
     quiet_explained: Birisi sizi bilgilendirmeye çalışsa bile, size e-posta gönderilmeyecektir. Loomio'yu düzenli olarak kontrol etme alışkanlığınız yoksa, önemli duyuruları veya kararları kaçırabilirsiniz.
   close_explanation_modal:
-    aria_label: Konuyu kapat
     close_thread: Konuyu kapat
     body: "<p>Eski veya ilgisiz konuları görünümden kaldırmak ve tartışmanın kapandığını belirtmek için kapatın.</p><p> Herkes kapalı bir başlıkta yorum yapabilir veya anket başlatabilir ancak bu, grubun başlık listesinde veya kontrol panelinde görünmez.</p>"
     image_alt: Konuların tümü kapatılıyor
@@ -491,14 +484,10 @@ tr:
     password_label: 'Şifre:'
     password_confirmation_label: 'Yine o şifre:'
   signed_out_modal:
-    aria_label: Oturum sona erdi
     title: Oturumunuz sona erdi
     message: Başka bir pencereden çıkış yaptınız. Devam etmek için lütfen tekrar oturum açın.
     ok: Tamam
-  comment_reply_form:
-    aria_label: Yanıt ekle
   comment_form:
-    aria_label: Bir yorum ekle
     attachments:
       add_attachment: Dosya ekle
       remove_attachment: Eki kaldır
@@ -525,9 +514,6 @@ tr:
   thread_nav:
     participants: Katılımcılar
   sidebar:
-    new_thread_removed: Yeni konu kaldırıldı
-    new_thread_removed_body: Yeni konu düğmesi kenar çubuğundan kaldırılıyor. Yeni bir konu başlatmak için önce grubunuza gidin, ardından "Yeni konu"ya tıklayın. Değişiklik için özür dileriz, ancak konu başlatırken bir şablon seçmeniz gerektiğinden bu gereklidir.
-    threads: Müzakereler
     my_groups: Gruplarım
     other_groups: Diğer gruplar
     all_groups: Tüm gruplar
@@ -536,7 +522,6 @@ tr:
     direct_threads: Doğrudan konular
     unread_threads: Okunmamış ileti dizileri (%{count})
     muted_threads: Yoksayılan ileti dizileri
-    start_group: Yeni organizasyon
     start_subgroup: Yeni alt grup
     explore: Genel gruplar
     explore_groups: Grupları keşfedin
@@ -581,7 +566,6 @@ tr:
     all_subgroups: Tüm alt gruplar
     parent_only: Yalnızca ebeveyn
   navbar:
-    search_all_threads: Tüm konuları ara
     search_threads: "%{name}'de konu ara"
     search_polls: "%{name} anketlerini ara"
     search_members: "%{name}'da üye ara"
@@ -633,7 +617,6 @@ tr:
     dark_blue: Koyu mavi
   membership_card:
     group_members: Grup üyeleri
-    discussion_members: Konu üyeleri
     poll_members: "%{pollType} üye"
     voters: Seçmenler
     invite_to_group: Gruba davet et
@@ -649,7 +632,6 @@ tr:
     make_coordinator: Admin yap
     demote_coordinator: Yöneticinin rütbesini düşür
     remove_from:
-      discussion: Konu dizisinden kaldır
       group: Gruptan kaldır
       poll: "%{pollType}'dan kaldır"
     cancel_invitation: Davetiyeyi iptal et
@@ -658,7 +640,6 @@ tr:
     make_delegate: Delege et
     revoke_delegate: Temsilciyi iptal et
   notification_models:
-    discussion: 'iplik:'
     comment: yorum yapın
     poll: 'anket:'
     outcome: 'sonuç:'
@@ -669,9 +650,6 @@ tr:
     with_title:
       unknown_sender: Lütfen tanınmayan gönderenden gelen e-postayı inceleyin
       comment_replied_to: "%{actor} size şurada yanıt verdi: %{title}"
-      discussion_announced: "%{actor} sizi şu başlığa davet etti: %{title}"
-      discussion_edited: "%{actor} konu içeriğini düzenledi: %{title}"
-      discussion_closed: "%{actor} konuyu kapattı: %{title}"
       invitation_accepted: "%{actor}, %{title}'a katılma davetinizi kabul etti"
       membership_created: "%{actor} sizi %{site_name} sitesinde %{title}'a katılmaya davet etti"
       membership_resent: "%{actor} sizi %{site_name} sitesinde %{title}'a katılmaya davet etti"
@@ -679,7 +657,6 @@ tr:
       membership_request_approved: "%{actor}, %{title}'a katılma isteğinizi onayladı"
       new_comment: "%{actor} yorum yaptı: %{title}"
       new_coordinator: "%{actor} seni %{title} yöneticisi yaptı"
-      new_discussion: "%{actor} bir konu başlattı: %{title}"
       outcome_announced: "%{actor}, %{poll_type} sonucunu paylaştı: %{title}"
       outcome_created: "%{actor}, %{poll_type} sonucunu paylaştı: %{title}"
       outcome_updated: "%{actor}, %{poll_type} sonucunu güncelledi: %{title}"
@@ -707,13 +684,8 @@ tr:
       poll_announced: "%{actor} sizi oy vermeye davet etti: %{title}"
     without_title:
       unknown_sender: Lütfen tanınmayan gönderenden gelen e-postayı inceleyin
-      discussion_announced: "%{actor} sizi bir konuya davet etti"
-      discussion_edited: "%{actor} konu içeriğini düzenledi"
-      discussion_closed: "%{actor} konuyu kapattı"
       group_announced: "%{actor} sizi bir gruba davet etti"
       comment_replied_to: "%{actor} size yanıt verdi"
-      new_discussion: "%{actor} bir konu başlattı"
-      new_comment: "%{actor} bir konuya yorum yaptı"
       membership_created: "%{actor} sizi bir gruba katılmaya davet etti"
       membership_resent: "%{actor} sizi bir gruba katılmaya davet etti"
       membership_requested: "%{actor} grubunuza katılma talebinde bulundu"
@@ -745,13 +717,10 @@ tr:
     hints:
       poll_closing_soon: Şimdi oy vermek, fikrinizi değiştirmek veya başkalarını katılmaya teşvik etmek için iyi bir zaman.
       poll_closing_soon_author: İnsanlara oy vermelerini hatırlatmak veya son tarihi uzatmak isteyebilirsiniz.
-      outcome_review_due: Kararın nasıl uygulandığına dair düşünceleri davet eden bir geri bildirim anketi veya yeni bir başlık başlatmayı düşünün.
     email_subject:
       unknown_sender: Tanınmayan göndericiden gelen e-postayı inceleyin
       comment_replied_to: "%{actor} size şu başlıkta yanıt verdi: %{title}"
       discussion_announced: "%{title}"
-      discussion_edited: "%{actor} bağlamı düzenledi: %{title}"
-      discussion_closed: "%{actor} şu konuyu kapattı: %{title}"
       invitation_accepted: "%{actor}, %{title} grubuna katılma davetinizi kabul etti"
       membership_created: "%{actor} sizi %{title}'a %{site_name}'de katılmaya davet etti"
       membership_resent: "%{actor} sizi %{title}'a %{site_name}'de katılmaya davet etti"
@@ -786,33 +755,8 @@ tr:
       user_reminded: "%{actor} size %{title} için oy vermenizi hatırlatıyor"
       poll_announced: 'Oy Ver: %{title}'
   discussion_fork_actions:
-    helptext: Başka bir konuya taşımak istediğiniz öğeleri seçin
     move: Taşı
-    search_placeholder: Konuyu başlığa göre bul
     moved: Yorumlar taşınıyor, bu işlem biraz zaman alabilir
-    move_to_existing_thread: Mevcut konuya git
-    start_new_thread: Veya yeni konu başlatın
-  thread_template:
-    browse_public_templates: Şablon galerisine göz atın
-    thread_template_settings: Konu şablonu ayarları
-    start_a_new_thread: Yeni bir konu başlat
-    thread_template_saved: Konu şablonu kaydedildi
-    these_are_public_templates: Bu şablonlar grubunuza uyacak şekilde kopyalamanız veya değiştirmeniz için mevcuttur
-    these_are_templates: Bunlar grubunuzdaki konu şablonlarıdır. Şablonlar ortak karar alma süreçlerinde size yol gösterir.
-    default_title_label: Varsayılan başlık
-    default_title_hint: Başlık alanını düzenlenebilir metinle önceden doldurun. Bu isteğe bağlıdır; emin değilseniz boş bırakın.
-    title_placeholder_label: Örnek başlık
-    title_placeholder_hint: Başlık alanının arka planında görüntülenecek bir örnek
-    title_placeholder_placeholder: örneğin arka plan metni böyle görünüyor
-    example_description_label: Örnek açıklama
-    example_description_placeholder: İnsanların konu başlatmak için kullanabileceği bir şablon sağlayın
-    hidden_templates: Gizli şablonlar
-    confirm_delete: Bu konu şablonunu kalıcı olarak silmek istediğinizden emin misiniz? Bunun sonucunda hiçbir konu silinmeyecektir.
-    add_proposal_or_poll_template: Teklif veya anket şablonu ekleyin
-    recommended_proposal_or_poll_templates: Önerilen teklif veya anket şablonları
-    decision_templates: Karar şablonları
-    decision_templates_help: Bu süreci tamamlamaya yardımcı olacak herhangi bir teklif veya anket şablonunu seçin.
-    share_in_template_gallery: Bu şablonu genel şablon galerisinde paylaşın
   discussion_form:
     thread_templates: Konu şablonları
     new_thread_template: Yeni konu şablonu
@@ -829,7 +773,6 @@ tr:
     change_log_placeholder: İsteğe bağlı olarak değişikliklerinizi açıklayın. Bu mesaj konuya eklenecektir.
     change_log_label: Ne değişti?
     invite: Davet et
-    aria_label: Konu formu
     start_thread: Konu başlat
     messages:
       created: Müzakere başlatıldı
@@ -857,7 +800,6 @@ tr:
     send_poll: "%{type} gönder"
     send_outcome: Sonucu gönder
     cannot_reveal_when_anonymous: Üzgünüz, isimsiz bir ankete kimin oy verip vermediğini açıklayamayız.
-    discussion_notification_history: Konu bildirim geçmişi
     group_notification_history: Grup daveti geçmişi
     poll_notification_history: Anket bildirim geçmişi
     outcome_notification_history: Sonuç bildirim geçmişi
@@ -869,7 +811,6 @@ tr:
     preview: E-postayı Önizle
     no_notifications_sent: Hiçbir bildirim gönderilmedi
     history_error: Bir şeyler yanlış gitti! Geçmiş yüklenemedi.
-    inviting_guests_to_thread: Misafirler grubunuza ait değil ve yalnızca bu konuya erişebilirler
     select_groups: Grupları seçin
     search_by_name_or_email: Ada göre arayın veya davet edilecek e-postaları girin
     search_by_name: Kişileri ada göre arayın
@@ -951,8 +892,6 @@ tr:
       added_singular: 1 kişi eklenecektir.
       added_none: Kimse eklenmeyecek.
       group_title: "%{name} (%{count} kişi)"
-      visible_to_group: "%{group} grubundaki herkes bu ileti dizisini görebilecek."
-      visible_to_guests: Bu konuyu yalnızca davet edilen kişiler görebilir.
       click_group_to_see_individuals: Bireyleri görmek için grubu tıklayın
       poll_announced:
         title: Oy vermeye davet edin
@@ -1098,7 +1037,6 @@ tr:
     messages:
       joined_group: Şu an %{group} grubunun bir üyesisin.
   membership_request_form:
-    aria_label: Üyelik talep formu
     heading: Gruba katılmak için talep gönder
     name_label: İsim
     email_label: E-posta
@@ -1108,7 +1046,6 @@ tr:
     messages:
       membership_requested: "%{group}'a katılma talebinde bulundunuz"
   revision_history_modal:
-    aria_label: Revizyon geçmişi
     discussion_header: Tartışma düzenlemeleri
     comment_header: Yorum düzenlemeleri
     poll_header: Anket düzenlemeleri
@@ -1134,10 +1071,6 @@ tr:
     you_and_name: Sen ve %{name}
     you_and_name_and_count_more: Siz, %{name} ve %{count} kişi daha
     name_and_count_more: "%{name} ve %{count} tane daha"
-  context_panel:
-    thread_status:
-      pinned: Bu konu sabitlendi. Tüm kullanıcılar için grubun ileti dizisi listesinin en üstünde kalacaktır.
-      closed: Bu konu kapatıldı. Artık kontrol panelinde görünmeyecek ve grup sayfasında 'kapalı' altında listelenecek
   delete_group_modal:
     title: Grubu sil
     subgroup_title: Alt grubu sil
@@ -1215,7 +1148,6 @@ tr:
       private: 'Gizlilik: Bu grubu sadece grup üyeleri görebilir'
       parent_members: 'Gizlilik: Bu grup sadece %{parentGroupName} ve %{groupName} gruplarının üyelerine görünür.'
       public: 'Gizlilik: Bu grup web üzerinde görülebilir'
-      aria_label: 'Grup gizliliği: %{privacy}'
     participation_report: Katılım raporu
     my_subgroups: Alt gruplarım
     more_subgroups: Daha fazla alt grup
@@ -1230,12 +1162,10 @@ tr:
     messages:
       description_updated: Açıklama güncellendi
   leave_group_form:
-    aria_label: Gruptan ayrıl
     title: Gruptan ayrıl
     question: Bu gruptan ayrılmak istediğinizden emin misiniz?
     submit: Evet, bu gruptan ayrıl
   archive_group_form:
-    aria_label: Grubu devre dışı bırak
     title: Grubu devre dışı bırak
     question: Bu grubu devre dışı bırakmak istediğinizden emin misiniz?
     submit: Evet, Bu grubu devre dışı bırak
@@ -1245,7 +1175,6 @@ tr:
     change_cover_image: kapak resmini değiştir
     change_logo: logoyu değiştir
     permissions_explaination: 'Bir kişinin bir gruba sahip olabileceği iki üyelik düzeyi vardır: yönetici ve üye. Yöneticiler grup ayarlarını düzenleyebilir, diğer kişileri yönetici yapabilir ve aşağıda listelenen tüm eylemleri gerçekleştirebilir.'
-    aria_label: Grup formu
     parent_group: Ebeveyn grubu
     new_organisation: Yeni organizasyon
     new_group: Yeni grup
@@ -1363,7 +1292,6 @@ tr:
     group_url: Grup URL'si
     reusable_invitation_link: Yeniden kullanılabilir davetiye bağlantısı
     error: Panoya kopyalamaya çalışırken hata oluştu
-    aria_label: Davet formu
     invite_people: Kişileri davet et
     invite_guests: Misafirleri davet et
     notify_people: İnsanları bilgilendir
@@ -1496,7 +1424,6 @@ tr:
     insert_link: Bağlantı ekle
     insert_embedded_url: Videoyu yerleştir
   change_picture_form:
-    aria_label: Profil fotoğrafı formu
     title: Profil fotoğrafını ayarla
     helptext: Kendi profil resminizi yükleyebilir veya <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> hesabınız varsa onu kullanabilirsiniz.
     use_initials: Baş harfleri kullan
@@ -1560,7 +1487,6 @@ tr:
     replies_count: "%{count} yanıt"
     unread_count: "%{count} okunmamış"
   dashboard_page:
-    aria_label: Kontrol paneli
     polls_to_vote_on: Oy verilecek anketler
     no_polls_to_vote_on: Oy vermeniz gereken anket yok
     recent_polls: Son anketler
@@ -1573,7 +1499,6 @@ tr:
       show_all: Herhangi bir yeni müzakereniz yok.
       show_proposals: Şu anda etkin herhangi bir öneri yok.
       show_muted: Sesi kısılmış herhangi bir müzakereniz yok.
-    view_recent: Tüm son müzakereleri görüntüle?
     load_more: Daha fazla müzakere yükle
     mark_as_read: Okundu olarak işaretle
     dismiss: Azletmek
@@ -1588,7 +1513,6 @@ tr:
       filter_threads: Müzakereleri Filtrele
       filter_threads_aria_label: Müzakereleri Filtrele
       dropdown_heading: Kontrol panelini filtrele
-      all: Son Müzakereler
       all_aria_label: Şu anda son müzakereler görüntüleniyor
       all_description: Son müzakereleri görüntüle
       proposals: Öneriler
@@ -1612,13 +1536,11 @@ tr:
       older: Bir aydan daha eski
   threads_page:
     no_direct_threads: Doğrudan konunuz yok
-    no_invite_only_threads: Yalnızca davetle girilebilen konu diziniz yok
   inbox_page:
     no_threads: Yaşasın! Gelen kutunuzdaki bütün müzakereleri okudunuz.
     unread_threads: Okunmamış müzakereler
     view_more: Daha Fazla Göster
     no_groups:
-      explanation: Herhangi bir gruba üye olmadığınız için okunmamış konunuz yok.
       start: Başla
       or: veya
       join_group: Konuları görmek için bir gruba <a href="/explore">katılın</a> .
@@ -1635,9 +1557,6 @@ tr:
     pin:
       pinned: Konu sabitlendi
       unpinned: Konunun sabitlemesi kaldırıldı
-    volume:
-      mute_message: Müzakerenin sesi kısıldı
-      unmute_message: Konunun sesi açıldı
     closed:
       reopened: Konu yeniden açıldı
       closed: Konu kapatıldı
@@ -1647,8 +1566,6 @@ tr:
     disabled_anonymous_polls: Konu başlığı anonim anketler içerdiğinden görüntüleme geçmişi devre dışı bırakıldı
   activity_card:
     count_responses: "%{count} yanıt"
-    event_pinned: Zaman çizelgesine sabitlendi
-    event_unpinned: Zaman çizelgesindeki sabitleme kaldırıldı
     beginning: Başlangıç
     end: Son
     unread: Okunmamış (%{count})
@@ -1657,7 +1574,6 @@ tr:
     chronological: Kronolojik
     nested: Yuvalanmış
     attachment_display:
-      aria_label: 'Dosya eklendi:'
       image_alt: Resim eklendi
     n_previous: "%{count} önceki yanıtı yükle"
     n_more: "%{count} yanıtı yükle"
@@ -1668,12 +1584,9 @@ tr:
     facilitate: Kolaylaştırmak
     start_decision: Kararı başlat
     start_vote: Oylamayı başlat
-  thread_group:
-    aria_label: Grup adı
   thread_context:
     current_poll_type_banner: Mevcut %{pollType}
     item_maybe_deleted: Konu dizisinde istenen konum bulunamıyor. Silinmiş olabilir.
-    aria_label: Müzakere içeriği
     thread_options: Müzakere seçenekleri
     email_settings: Bildirim ayarları
     edit: Düzenle
@@ -1690,11 +1603,6 @@ tr:
     seen_by_count: "%{count} tarafından görüldü"
     count_notified: "%{count} bilgilendirildi"
     forked_from: Çatallı
-  pin_thread_modal:
-    title: Konuyu sabitle
-    helptext: Sabitlenen konular her zaman kendi gruplarının konu listesinin en üstünde görünür. Üyeleri önemli duyurular hakkında bilgilendirmek veya davranış kuralları veya topluluk kuralları gibi ortak materyalleri tanıtmak için kullanılabilirler.
-    helptext_two: Konu açılır menüsünden 'Sabitlemeyi kaldır'ı seçerek raptiyeleri istediğiniz zaman kaldırabilirsiniz
-    pin_thread: Konuyu sabitle
   thread_arrangement_form:
     edit: Düzeni düzenle
     title: Konu düzeni
@@ -1713,20 +1621,11 @@ tr:
     nested_twice_description: Girinti en fazla iki kez yanıt verir.
     changing_nesting_is_slow: İç içe yerleştirmede yapılan değişikliklerin işlenmesi birkaç dakika sürebilir.
   delete_thread_form:
-    aria_label: Müzakereyi sil
     title: Müzakereyi sil
     body: Bu müzakereyi silmek istediğinden emin misin?
     confirm: Müzakereyi sil
     messages:
       success: Müzakere silindi
-  move_thread_form:
-    aria_label: Müzakereyi taşı
-    title: Müzakereyi taşı
-    body: Hedef grubu
-    confirm: Müzakereyi taşı
-    confirm_change_to_private_thread: "%{groupName} açık bir gruptur. Eğer devam ederseniz, müzakere herkese açılacaktır."
-    messages:
-      success: 'Müzakere %{name} grubuna taşındı '
   delete_comment_dialog:
     title: Yorumu sil
     question: Bu işlem, bu yorumu kalıcı olarak silecektir. Devam ederseniz geri yüklenemez.
@@ -2389,8 +2288,6 @@ tr:
     name_placeholder: Bu entegrasyona bir ad verin, böylece onu tanımlayabilirsiniz
     event_kind_helptext: Webhook'un hangi olaylardan haberdar olmasını istiyorsunuz?
     event_kinds:
-      new_discussion: Bir iş parçacığı başlatıldı
-      discussion_edited: Bir konu düzenlendi
       poll_edited: Bir anket düzenlendi
       new_comment: Bir yorum yapıldı
       poll_created: Bir anket başlatıldı

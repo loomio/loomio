@@ -390,13 +390,10 @@ de:
     unreleased_emails: Unveröffentlichte E-Mails
     start_a_thread_by_email: Starten Sie einen Thread per E-Mail
     send_email_to_start_thread: Senden Sie eine E-Mail an diese Adresse, um einen Thread in Ihrer Gruppe zu starten.
-    subject_body_attachments: Der E-Mail-Betreff wird zum Thread-Titel, der E-Mail-Text zur Beschreibung und alle angehängten Dateien werden an den Thread angehängt.
     copy_address: Adresse kopieren
     email_me_this_address: Schicken Sie mir diese Adresse per E-Mail
     email_address_copied_to_clipboard: E-Mail-Adresse in die Zwischenablage kopiert
     forward_email_to_move_conversation: 'Tipp: Leiten Sie eine E-Mail-Konversation an Loomio weiter, wenn Sie eine Entscheidung treffen oder Aufzeichnungen führen müssen.'
-  email_to_group_mailer:
-    your_email_address_to_start_threads_in_group: Ihre E-Mail-Adresse zum Starten von Threads in %{group}
   volume_levels:
     loud: 'Laut '
     normal: Normal
@@ -420,14 +417,12 @@ de:
       loud_explain: wenn Aktivitäten stattfinden
       normal_explain: wenn jemand nach deiner Aufmerksamkeit fragt
       quiet_explain: 'keine Benachrichtigungen '
-    aria_label: E-Mail-Einstellungen ändern
     loud_label: Alle Aktivitäten
     normal_label: Ankündigungen
     quiet_label: Keine E-Mails
     mute_label: Stummschalten
     saved: Benachrichtigungseinstellung aktualisiert
     discussion:
-      title: 'Diskussionsbenachrichtigungen '
       loud_description: Alle Aktivitäten dieser Diskussion werden dir per E-mail mitgeteilt
       normal_description: 'Du bekommst nur E-mails zu wichtigen Aktivitäten in dieser Diskussionen '
       quiet_description: 'Du bekommst keine E-mails bezüglich Aktivitäten in dieser Diskussionen '
@@ -478,7 +473,6 @@ de:
     normal_desc: Wenn mich jemand benachrichtigt
     quiet_desc: Niemals
     when_would_you_like_to_be_emailed_poll_type: Wann möchten Sie eine E-Mail zu diesem %{poll_type} erhalten?
-    normal_explained: Wenn jemand Ihren Namen in das Feld „Benachrichtigen“ eines Threads oder einer Umfrage eingibt oder die Gruppe {'@'}erwähnt.
     normal_excludes_mentioning_html: Es gibt eine separate Einstellung für die Erwähnung per {'@'} (z. B. bei einer Antwort in einem Kommentar). <a href="%{url}">Klicken Sie hier, um die Einstellungen für @Erwähnungen zu bearbeiten.</a>
     loud_explained: Sie erhalten jedes Mal eine E-Mail, wenn ein neuer Kommentar eingeht, jemand abstimmt oder eine Umfrage bzw. ein Thread startet.
     changes_all_threads_and_polls_in_group: Dies ändert die Einstellungen für alle Threads und Umfragen in der Gruppe.
@@ -486,7 +480,6 @@ de:
     what_the_options_mean: Was die Optionen bedeuten
     quiet_explained: Sie erhalten keine E-Mail-Benachrichtigung, auch nicht, wenn Sie benachrichtigt werden möchten. Wichtige Ankündigungen oder Entscheidungen könnten Ihnen entgehen, wenn Sie Loomio nicht regelmäßig besuchen.
   close_explanation_modal:
-    aria_label: Diskussion schließen
     close_thread: Diskussion schließen
     body: |
       <p>Schliesse alte oder irrelevante Diskussionen um sie aus der Ansicht zu entfernen und um anzuzeigen das die Diskussion beendet wurde.</p>
@@ -501,14 +494,10 @@ de:
     password_label: 'Passwort:'
     password_confirmation_label: 'Nochmal dieses Passwort:'
   signed_out_modal:
-    aria_label: Sitzung beendet
     title: Deine Sitzung wurde beendet
     message: Deine Sitzung wurde in einem anderen Fenster beendet. Bitte melde dich erneut an um fortzufahren.
     ok: Ok
-  comment_reply_form:
-    aria_label: Antwort hinzufügen
   comment_form:
-    aria_label: Kommentar hinzufügen
     attachments:
       add_attachment: Datei anhängen
       remove_attachment: Anhang entfernen
@@ -535,9 +524,6 @@ de:
   thread_nav:
     participants: Teilnehmer
   sidebar:
-    new_thread_removed: Neuer Thread entfernt
-    new_thread_removed_body: Die neue Thread-Schaltfläche wird aus der Seitenleiste entfernt. Um einen neuen Thread zu starten, navigieren Sie zunächst zu Ihrer Gruppe und klicken Sie dann auf „Neuer Thread“. Entschuldigung für die Änderung, aber sie ist erforderlich, da Sie beim Starten eines Threads eine Vorlage auswählen müssen.
-    threads: Diskussionen
     my_groups: Meine Gruppen
     other_groups: Andere Gruppen
     all_groups: Alle Gruppen
@@ -546,7 +532,6 @@ de:
     direct_threads: Direkte Diskussionen
     unread_threads: 'Ungelesene Threads: (%{count})'
     muted_threads: Stummgeschaltete Diskussionen
-    start_group: Neue Organisation
     start_subgroup: Neue Untergruppe
     explore: Öffentliche Gruppen
     explore_groups: Gruppen entdecken
@@ -591,7 +576,6 @@ de:
     all_subgroups: Alle Untergruppen
     parent_only: Nur für Eltern
   navbar:
-    search_all_threads: Alle Diskussion durchsuchen
     search_threads: Nach Diskussionen in %{name} suchen
     search_polls: Umfragen suchen in %{name}
     search_members: Mitglieder in %{name} suchen
@@ -643,7 +627,6 @@ de:
     dark_blue: Dunkelblau
   membership_card:
     group_members: Mitglieder der Gruppe
-    discussion_members: Diskussionsteilnehmer
     poll_members: "%{pollType} Mitglieder"
     voters: Wähler*innen
     invite_to_group: zur Gruppe einladen
@@ -659,7 +642,6 @@ de:
     make_coordinator: Zum Admin machen
     demote_coordinator: Adminrechte entziehen
     remove_from:
-      discussion: von Diskussion entfernen
       group: Aus der Gruppe entfernen
       poll: von %{pollType} entfernen
     cancel_invitation: Einladung abbrechen
@@ -668,7 +650,6 @@ de:
     make_delegate: Delegieren
     revoke_delegate: Delegierten widerrufen
   notification_models:
-    discussion: 'Diskussion:'
     comment: kommentieren in
     poll: Umfrage
     outcome: 'Fazit:'
@@ -679,9 +660,6 @@ de:
     with_title:
       unknown_sender: Bitte überprüfen Sie die E-Mail von einem unbekannten Absender
       comment_replied_to: "%{actor} hat dir geantwortet in: %{title}"
-      discussion_announced: "%{actor} hat Sie zum Thread eingeladen: %{title}"
-      discussion_edited: "%{actor} hat den Threadkontext %{title} bearbeitet"
-      discussion_closed: "%{actor} hat den Thread %{title} geschlossen"
       invitation_accepted: "%{actor} nahm deine Einladung zum Beitritt %{title} an"
       membership_created: "%{actor} hat Sie eingeladen, %{title} auf %{site_name} beizutreten"
       membership_resent: "%{actor} hat Sie eingeladen, %{title} auf %{site_name} beizutreten"
@@ -689,7 +667,6 @@ de:
       membership_request_approved: "%{actor} hat Ihre Beitrittsanfrage zu %{title} genehmigt"
       new_comment: "%{actor} hat kommentiert in: %{title}"
       new_coordinator: "%{actor} hat Sie zum Administrator von %{title} gemacht"
-      new_discussion: "%{actor} hat einen Thread gestartet: %{title}"
       outcome_announced: "%{actor} hat das Fazit der %{poll_type} geteilt: %{title}"
       outcome_created: "%{actor} hat das Fazit der %{poll_type} geteilt: %{title}"
       outcome_updated: "%{actor} hat das Fazit der %{poll_type} aktualisiert: %{title}"
@@ -717,13 +694,8 @@ de:
       poll_announced: "%{actor} hat Sie zur Abstimmung eingeladen: %{title}"
     without_title:
       unknown_sender: Bitte überprüfen Sie die E-Mail von einem unbekannten Absender
-      discussion_announced: "%{actor} hat Sie zu einem Thread eingeladen"
-      discussion_edited: "%{actor} hat den Thread-Kontext bearbeitet"
-      discussion_closed: "%{actor} den Thread geschlossen"
       group_announced: "%{actor} hat Sie zu einer Gruppe eingeladen"
       comment_replied_to: "%{actor} hat Ihnen geantwortet"
-      new_discussion: "%{actor} hat einen Thread gestartet"
-      new_comment: "%{actor} hat in einem Thread einen Kommentar abgegeben"
       membership_created: "%{actor} hat Sie eingeladen, einer Gruppe beizutreten"
       membership_resent: "%{actor} hat Sie eingeladen, einer Gruppe beizutreten"
       membership_requested: "%{actor} hat darum gebeten, Ihrer Gruppe beizutreten"
@@ -755,13 +727,10 @@ de:
     hints:
       poll_closing_soon: Jetzt ist ein guter Zeitpunkt, um abzustimmen, Ihre Meinung zu ändern oder andere zur Teilnahme zu ermutigen.
       poll_closing_soon_author: Möglicherweise möchten Sie die Menschen an die Abstimmung erinnern oder die Frist verlängern.
-      outcome_review_due: Erwägen Sie, eine Feedback-Umfrage zu starten oder einen neuen Thread zu eröffnen, der zum Nachdenken darüber einlädt, wie die Entscheidung umgesetzt wurde.
     email_subject:
       unknown_sender: E-Mail von unbekanntem Absender prüfen
       comment_replied_to: "%{actor} antwortete Ihnen in: %{title}"
       discussion_announced: "%{title}"
-      discussion_edited: "%{actor} hat den Kontext bearbeitet: %{title}"
-      discussion_closed: "%{actor} hat den Thread geschlossen: %{title}"
       invitation_accepted: "%{actor} hat Ihre Einladung angenommen, %{title} beizutreten."
       membership_created: "%{actor} hat Sie eingeladen, %{title} auf %{site_name} beizutreten."
       membership_resent: "%{actor} hat Sie eingeladen, %{title} auf %{site_name} beizutreten."
@@ -796,33 +765,8 @@ de:
       user_reminded: "%{actor} erinnert Sie daran, für Folgendes abzustimmen: %{title}"
       poll_announced: 'Abstimmung: %{title}'
   discussion_fork_actions:
-    helptext: Wähle Einträge aus, die du zu einer anderen Diskussioen verschieben willst
     move: Verschieben
-    search_placeholder: Finde eine Diskussion an Hand des Titels
     moved: Kommentare bewegen, dies kann einen Moment dauern
-    move_to_existing_thread: Zu existierender Diskussion verschieben
-    start_new_thread: Oder eine neue Diskussion starten
-  thread_template:
-    browse_public_templates: Durchsuchen Sie die Vorlagengalerie
-    thread_template_settings: Thread-Vorlageneinstellungen
-    start_a_new_thread: Starten Sie einen neuen Thread
-    thread_template_saved: Threadvorlage gespeichert
-    these_are_public_templates: Diese Vorlagen stehen Ihnen zum Kopieren oder Ändern zur Verfügung, um sie an Ihre Gruppe anzupassen
-    these_are_templates: Dies sind die Thread-Vorlagen in Ihrer Gruppe. Vorlagen führen Sie durch gängige Entscheidungsprozesse.
-    default_title_label: Standardtitel
-    default_title_hint: Füllen Sie das Titelfeld vorab mit bearbeitbarem Text aus. Dies ist optional – lassen Sie das Feld leer, wenn Sie unsicher sind.
-    title_placeholder_label: Beispieltitel
-    title_placeholder_hint: Ein Beispiel zur Anzeige im Hintergrund des Titelfelds
-    title_placeholder_placeholder: 'Beispiel: So sieht Hintergrundtext aus'
-    example_description_label: Beispielbeschreibung
-    example_description_placeholder: Stellen Sie eine Vorlage bereit, mit der Benutzer einen Thread starten können
-    hidden_templates: Versteckte Vorlagen
-    confirm_delete: Sind Sie sicher, dass Sie diese Thread-Vorlage dauerhaft löschen möchten? Dadurch werden keine Threads gelöscht.
-    add_proposal_or_poll_template: Fügen Sie eine Vorschlags- oder Umfragevorlage hinzu
-    recommended_proposal_or_poll_templates: Empfohlene Vorlagen für Vorschläge oder Umfragen
-    decision_templates: Entscheidungsvorlagen
-    decision_templates_help: Wählen Sie Vorschläge oder Umfragevorlagen aus, die zum Abschließen dieses Prozesses beitragen.
-    share_in_template_gallery: Teilen Sie diese Vorlage in der öffentlichen Vorlagengalerie
   discussion_form:
     thread_templates: Thread-Vorlagen
     new_thread_template: Neue Thread-Vorlage
@@ -839,7 +783,6 @@ de:
     change_log_placeholder: Optional; beschreibe deine Änderungen. Diese Nachricht wird an die Diskussion angefügt.
     change_log_label: Was hat sich geändert?
     invite: Einladen
-    aria_label: Diskussions-Formular
     start_thread: Diskussion eröffnen
     messages:
       created: Diskussion wurde eröffnet
@@ -867,7 +810,6 @@ de:
     send_poll: "%{type} schicken "
     send_outcome: 'Ergebnis senden '
     cannot_reveal_when_anonymous: Leider können wir nicht offenlegen, wer an einer anonymen Umfrage teilgenommen hat und wer nicht.
-    discussion_notification_history: Bisherige Benachrichtigungen
     group_notification_history: Gruppeneinladungen-Verlauf
     poll_notification_history: Umfragebenachrichtigungen-Verlauf
     outcome_notification_history: Ergebnisbenachrichtigungen-Verlauf
@@ -879,7 +821,6 @@ de:
     preview: Vorschau Email
     no_notifications_sent: Es wurden keine Benachrichtigungen geschickt
     history_error: 'Etwas ist schief gelaufen! Der Verlauf konnte nicht geladen werden. '
-    inviting_guests_to_thread: Gäste gehören nicht zu deiner Gruppe und haben nur Zugang zu dieser Diskussion
     select_groups: Gruppen auswählen
     search_by_name_or_email: 'Um einzuladen, suche nach dem Namen oder gebe die E-Mail-Adresse ein '
     search_by_name: Suche nach Personen nach Name
@@ -965,8 +906,6 @@ de:
       added_singular: 1 Person wird hinzugefügt.
       added_none: Es wird niemand hinzugefügt.
       group_title: "%{name} (%{count} Personen)"
-      visible_to_group: Jeder in %{group} wird diese Diskussion sehen können.
-      visible_to_guests: Nur eingeladene Personen können diese Diskussion sehen.
       click_group_to_see_individuals: Gruppe anklicken, um Einzelpersonen zu sehen
       poll_announced:
         title: Einladung zur Abstimmung
@@ -1112,7 +1051,6 @@ de:
     messages:
       joined_group: Du bist nun ein Mitglied von %{group}
   membership_request_form:
-    aria_label: Anfrageformular zum Gruppenbeitritt
     heading: Gruppenbeitritt anfragen
     name_label: Name
     email_label: E-Mail
@@ -1122,7 +1060,6 @@ de:
     messages:
       membership_requested: Du hast beantragt, %{group} beizutreten
   revision_history_modal:
-    aria_label: Revisionsverlauf
     discussion_header: Diskussions Bearbeitungen
     comment_header: Kommentar Bearbeitungen
     poll_header: Abstimmungsbearbeitungen
@@ -1148,10 +1085,6 @@ de:
     you_and_name: Du und %{name}
     you_and_name_and_count_more: Du, %{name} und %{count} mehr
     name_and_count_more: "%{name} und %{count} weitere"
-  context_panel:
-    thread_status:
-      pinned: Diese Diskussion wurde angeheftet. Sie wird für alle Nutzer an oberster Stelle in der Diskussionsliste angezeigt.
-      closed: Diese Diskussion wurde geschlossen. Sie wird nicht mehr auf dem Dashboard angezeigt und auf der Gruppenseite unter "Geschlossen" angezeigt
   delete_group_modal:
     title: Gruppe löschen
     subgroup_title: Untergruppe löschen
@@ -1229,7 +1162,6 @@ de:
       private: 'Sichtbarkeit: Diese Gruppe ist nur für Mitglieder sichtbar'
       parent_members: 'Sichtbarkeit: Diese Gruppe ist nur für Mitglieder von %{parentGroupName} und %{groupName} sichtbar.'
       public: 'Sichtbarkeit: Diese Gruppe ist im Web sichtbar'
-      aria_label: 'Sichtbarkeit der Gruppe: %{privacy}'
     participation_report: Teilnahmebericht
     my_subgroups: Meine Untergruppen
     more_subgroups: Weitere Untergruppen
@@ -1244,12 +1176,10 @@ de:
     messages:
       description_updated: 'Beschreibung aktualisiert '
   leave_group_form:
-    aria_label: Gruppe verlassen
     title: Gruppe verlassen
     question: Bist du sicher, dass du diese Gruppe verlassen möchtest?
     submit: Ja, Gruppe verlassen
   archive_group_form:
-    aria_label: Gruppe deaktivieren
     title: Gruppe deaktivieren
     question: Bist du dir sicher, dass du diese Gruppe deaktivieren möchtest?
     submit: Ja, diese Gruppe deaktivieren
@@ -1261,7 +1191,6 @@ de:
     permissions_explaination: |
       Es existieren zwei Ebenen der Mitgliedschaft, die eine Person in einer Gruppe haben kann: Admin und Mitglied.
       Admins können Gruppeneinstellungen bearbeiten, andere Personen zu Admins machen und alle unten aufgeführten Aktionen durchführen.
-    aria_label: Gruppenform
     parent_group: Übergeordnete Gruppe
     new_organisation: Neue Organisation
     new_group: Neue Gruppe
@@ -1387,7 +1316,6 @@ de:
     group_url: Gruppen-URL
     reusable_invitation_link: Wiederverwendabrer Einladungslink
     error: Fehler beim Kopieren in die Zwischenablage
-    aria_label: Einladungsformular
     invite_people: Leute einladen
     invite_guests: Gäste einladen
     notify_people: Andere benachrichtigen
@@ -1520,7 +1448,6 @@ de:
     insert_link: Link einfügen
     insert_embedded_url: Video einfügen
   change_picture_form:
-    aria_label: Profilbild form
     title: Profilbild ändern
     helptext: Du kannst ein eigenes Profilbild hochladen oder ein <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a>-Konto verwenden (sofern vorhanden).
     use_initials: Initialien verwenden
@@ -1584,7 +1511,6 @@ de:
     replies_count: "%{count} Antworten"
     unread_count: "%{count} ungelesen"
   dashboard_page:
-    aria_label: Dashboard
     polls_to_vote_on: Umfragen zum Abstimmen
     no_polls_to_vote_on: Es gibt keine Umfragen, über die Sie abstimmen müssen
     recent_polls: Aktuelle Umfragen
@@ -1597,7 +1523,6 @@ de:
       show_all: Du hast keine aktuellen Threads.
       show_proposals: Derzeit sind keine Vorschläge aktiv.
       show_muted: Du hast keine stummgeschalteten Threads.
-    view_recent: Alle neuen Diskussionen anzeigen?
     load_more: Mehr Diskussionen anzeigen
     mark_as_read: Als gelesen markieren
     dismiss: Ausblenden
@@ -1612,7 +1537,6 @@ de:
       filter_threads: Diskussionen filtern
       filter_threads_aria_label: Diskussionen filtern
       dropdown_heading: Aktuelles filtern
-      all: Aktuelle Diskussionen
       all_aria_label: Momentan werden alle aktuellen Diskussionen angezeigt
       all_description: Aktuelle Diskussionen anzeigen
       proposals: Vorschläge
@@ -1636,13 +1560,11 @@ de:
       older: Älter als ein Monat
   threads_page:
     no_direct_threads: Du hast keine direkten Diskussionen
-    no_invite_only_threads: Du hast keine "Invite-Only"-Diskussionen
   inbox_page:
     no_threads: Juhu! Du hast alle Diskussionsbeiträge in deinem Posteingang gelesen.
     unread_threads: Ungelesene Diskussionen
     view_more: Mehr anzeigen
     no_groups:
-      explanation: Du hast keine ungelesenen Diskussionen, da du keiner Gruppe angehörst
       start: Eröffne eine Diskussion
       or: oder
       join_group: <a href="/explore">tritt einer Gruppe bei</a> um Diskussionen zu sehen.
@@ -1663,9 +1585,6 @@ de:
     pin:
       pinned: Diskussion angeheftet
       unpinned: Diskussion wird nicht mehr angeheftet
-    volume:
-      mute_message: Diskussion stummgeschaltet
-      unmute_message: Stummschalten deaktiviert
     closed:
       reopened: Diskussion wieder geöffnet
       closed: Diskussion geschlossen
@@ -1675,8 +1594,6 @@ de:
     disabled_anonymous_polls: Der Viewer-Verlauf ist deaktiviert, da der Thread anonyme Umfragen enthält
   activity_card:
     count_responses: "%{count} Antworten"
-    event_pinned: In der Timeline angeheftet
-    event_unpinned: Nicht mehr in der Timeline angeheftet
     beginning: Anfang
     end: Ende
     unread: Ungelesen (%{count})
@@ -1685,7 +1602,6 @@ de:
     chronological: Chronologisch
     nested: Verschachtelt
     attachment_display:
-      aria_label: 'Datei angehängt:'
       image_alt: Angehängtes Bild
     n_previous: Lade %{count} vorherige Antworten
     n_more: Lade %{count} Antworten
@@ -1696,12 +1612,9 @@ de:
     facilitate: Ermöglichen
     start_decision: Entscheidung starten
     start_vote: Abstimmung starten
-  thread_group:
-    aria_label: Gruppen-Name
   thread_context:
     current_poll_type_banner: Aktuell %{pollType}
     item_maybe_deleted: Konnte nicht die gewünschte Stelle in der Diskussion finden. Vielleicht wurde sie gelöscht.
-    aria_label: Diskussionsbeschreibung
     thread_options: Diskussionsoptionen
     email_settings: Benachrichtigungseinstellungen
     edit: Bearbeiten
@@ -1718,11 +1631,6 @@ de:
     seen_by_count: Gesehen von %{count}
     count_notified: Benachrichtigt %{count}
     forked_from: Gegabelt von
-  pin_thread_modal:
-    title: Diskussion anheften
-    helptext: Angeheftete Diskussionen werden immer oben in der Diskussions-Liste der jeweiligen Gruppe angezeigt. Sie können verwendet werden, um Mitglieder über wichtige Ankündigungen zu informieren oder um allgemeingültige Inhalte wie z. B. einen Verhaltenskodex oder Gemeinschaftsrichtlinien hervorzuheben.
-    helptext_two: Du kannst angeheftete Inhalte jederzeit entfernen, indem du im Drop-down-Menü die Option "Anheften deaktiveren" auswählst
-    pin_thread: Diskussion anheften
   thread_arrangement_form:
     edit: Layout bearbeiten
     title: Diskussionsanordnung
@@ -1741,20 +1649,11 @@ de:
     nested_twice_description: Antworten höchstens zweimal einrücken.
     changing_nesting_is_slow: Änderungen an der Verschachtelung können bei der Verarbeitung einige Minuten dauern.
   delete_thread_form:
-    aria_label: Diskussion löschen
     title: Diskussion löschen
     body: Möchtest du diesen Thread wirklich löschen?
     confirm: Diskussion löschen
     messages:
       success: Diskussion gelöscht
-  move_thread_form:
-    aria_label: Diskussion verschieben
-    title: Diskussion verschieben
-    body: Zielgruppe
-    confirm: Diskussion verschieben
-    confirm_change_to_private_thread: "%{groupName} ist eine offene Gruppe. Wenn du fortfährst, wird dieser Thread öffentlich gemacht."
-    messages:
-      success: Diskussion wurde nach %{name} verschoben
   delete_comment_dialog:
     title: Kommentar löschen
     question: Dadurch wird dieser Kommentar dauerhaft gelöscht. Wenn du fortfährst, kann es nicht wiederhergestellt werden.
@@ -2426,8 +2325,6 @@ de:
     name_placeholder: Gib dieser Integration einen Namen, damit Du sie später wiedererkennen kannst
     event_kind_helptext: Über welche Ereignisse soll der Webhook benachrichtigt werden?
     event_kinds:
-      new_discussion: Eine Diskussion wurde gestartet
-      discussion_edited: Eine Diskussion wurde bearbeitet
       poll_edited: Eine Abstimmung wurde bearbeitet
       new_comment: Ein Kommentar wurde erstellt
       poll_created: Eine Abstimmung wurde gestartet

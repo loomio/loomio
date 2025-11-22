@@ -50,7 +50,7 @@ module.exports = {
     page.click('.thread-preview')
     page.click('.action-menu')
     page.click('.action-dock__button--close_thread')
-    page.expectFlash('Thread closed')
+    page.expectFlash('Discussion closed')
     // page.click('.flash-root__action')
     // page.expectFlash('Thread reopened')
   },
@@ -109,7 +109,7 @@ module.exports = {
     page.click('.action-dock__button--discard_thread')
     page.click('.confirm-modal__submit')
 
-    page.expectFlash('Thread deleted')
+    page.expectFlash('Discussion deleted')
     page.expectText('.group-page__name', 'Dirty Dancing Shoes')
     page.expectNoText('.discussions-panel', 'What star sign are you?')
   },
@@ -288,7 +288,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPathNoApp('setup_discussion_mailer_discussion_announced_email')
-    page.expectText('.base-mailer__event-headline', "invited you to a thread")
+    page.expectText('.base-mailer__event-headline', "invited you to a discussion")
     page.expectText('.thread-mailer__body', "A description for this discussion. Should this be rich?")
     page.click('.event-mailer__title a', 2000)
     page.expectText('.context-panel__heading', 'go to the moon')
@@ -304,7 +304,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPathNoApp('setup_discussion_mailer_invitation_created_email')
-    page.expectText('.base-mailer__event-headline', "invited you to a thread")
+    page.expectText('.base-mailer__event-headline', "invited you to a discussion")
     page.expectText('.thread-mailer__body', "A description for this discussion. Should this be rich?")
     page.click('.event-mailer__title a', 2000)
     page.expectValue('.auth-email-form__email input', 'jen@example.com')
@@ -326,7 +326,7 @@ module.exports = {
     page.click('.recipients-autocomplete-suggestion')
     page.fillIn('.discussion-form__title-input input', "private thread")
     page.click('.discussion-form__submit')
-    page.expectFlash('Thread started')
+    page.expectFlash('Discussion started')
     page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'Hello world!')
     page.click('.comment-form__submit-button')
     page.expectFlash('Comment added')

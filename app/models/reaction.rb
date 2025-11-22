@@ -9,8 +9,10 @@ class Reaction < ApplicationRecord
   delegate :group, to: :reactable, allow_nil: true
   delegate :group_id, to: :reactable, allow_nil: true
   delegate :members, to: :reactable, allow_nil: true
+  delegate :title_model, to: :reactable
 
   alias :author :user
+
   def author_id
     user_id
   end

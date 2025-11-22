@@ -89,7 +89,6 @@ sv:
       description: <h3 id="what-is-the-purpose-of-the-document">Vad är syftet med dokumentet?</h3><p></p><h3 id="why-is-this-important"> Varför är detta viktigt?</h3><p></p><h3 id="what-are-you-asking-people-to-do"> Vad ber du folk att göra?</h3><p></p>
       document: Dokumentera
     practice_thread:
-      process_name: Övningstråd
       process_subtitle: En tråd för att välkomna folk till gruppen och öva på att använda Loomio
       process_introduction: "<p>Använd den här mallen för att välkomna nya medlemmar och uppmuntra till tidigt deltagande. Den ger folk en chans att presentera sig själva och utforska Loomios funktioner.</p>"
       title: "\U0001F44B Välkommen! Säg hej och prova på nya saker"
@@ -127,8 +126,6 @@ sv:
     '403':
       title: Förbjuden
       body: Du har inte åtkomst till den här sidan. Du kan behöva logga in.
-    '404':
-      body: Det begärda objektet hittades inte. Detta kan hända om en tråd eller omröstning har tagits bort.
     '410':
       title: Borta
       body: Den här sidan finns inte längre
@@ -311,7 +308,6 @@ sv:
       subject: "%{who} har begärt att få gå med %{which_group}"
       view_group: Du kan godkänna eller avslå begäran här
       button_text: Visa begäran
-    loomio_app_description: En plats där organisationer kan fatta beslut tillsammans.
     content_was_translated: Detta innehåll översattes från %{source_locale}
     content_was_translated_html: Detta innehåll översattes från %{source_locale}. <a href="%{profile_url}">Visa inställningar<a></a>
   announcement_count_emails: "%{count} e-postmeddelanden"

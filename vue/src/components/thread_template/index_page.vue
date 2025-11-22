@@ -98,14 +98,14 @@ export default {
         v-breadcrumbs(color="anchor" :items="breadcrumbs")
           template(v-slot:divider)
             common-icon(name="mdi-chevron-right")
-      v-card(:title="$t(showSettings ? 'thread_template.hidden_templates' : 'thread_template.start_a_new_thread')")
+      v-card(:title="$t(showSettings ? 'discussion_template.hidden_templates' : 'discussion_template.start_a_new_discussion')")
         template(v-slot:append)
           v-btn(v-if="showSettings" icon @click="showSettings = false")
             common-icon(name="mdi-close")
 
 
         v-alert.mx-4(v-if="!showSettings && group && group.discussionsCount < 2" type="info" variant="tonal")
-          span(v-t="'thread_template.these_are_templates'")
+          span(v-t="'discussion_template.these_are_templates'")
           space
           help-link(path="en/user_manual/threads/starting_threads")
 
@@ -121,7 +121,7 @@ export default {
                   v-list-item(:to="'/thread_templates/new?group_id='+$route.query.group_id+'&return_to='+returnTo")
                     v-list-item-title(v-t="'discussion_form.new_template'")
                   v-list-item(@click="showSettings = true")
-                    v-list-item-title(v-t="'thread_template.hidden_templates'")
+                    v-list-item-title(v-t="'discussion_template.hidden_templates'")
 
           template(v-if="isSorting")
             sortable-list(v-model:list="templates"  @sort-end="sortEnded" append-to=".append-sort-here"  lock-axis="y" axis="y")
@@ -146,5 +146,5 @@ export default {
 
       .d-flex.justify-center.my-2(v-if="!showSettings && userIsAdmin")
         v-btn(:to="'/thread_templates/browse?group_id=' + $route.query.group_id + '&return_to='+returnTo")
-          span(v-t="'thread_template.browse_public_templates'")
+          span(v-t="'discussion_template.browse_public_templates'")
 </template>

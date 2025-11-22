@@ -120,6 +120,11 @@ class Discussion < ApplicationRecord
   update_counter_cache :group, :closed_discussions_count
   update_counter_cache :group, :closed_polls_count
 
+
+  def title_model
+    self
+  end
+
   def poll
     nil
   end

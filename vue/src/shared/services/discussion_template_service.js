@@ -65,7 +65,7 @@ export default new class PollTemplateService {
         name: 'common.action.delete',
         menu: true,
         canPerform() { return discussionTemplate.id && group.adminsInclude(Session.user()); },
-        perform() { 
+        perform() {
           return openModal({
             component: 'ConfirmModal',
             props: {
@@ -78,7 +78,7 @@ export default new class PollTemplateService {
                 },
                 text: {
                   title: 'common.are_you_sure',
-                  helptext: 'thread_template.confirm_delete',
+                  helptext: 'discussion_template.confirm_delete',
                   submit: 'common.action.delete'
                 }
               }
@@ -91,7 +91,7 @@ export default new class PollTemplateService {
         icon: 'mdi-eye-off',
         name: 'common.action.hide',
         menu: true,
-        canPerform() { 
+        canPerform() {
           return !discussionTemplate.id && discussionTemplate.key && !discussionTemplate.discardedAt && group.adminsInclude(Session.user());
         },
         perform() {
@@ -103,7 +103,7 @@ export default new class PollTemplateService {
         icon: 'mdi-eye',
         name: 'common.action.unhide',
         menu: true,
-        canPerform() { 
+        canPerform() {
           return !discussionTemplate.id && discussionTemplate.key && discussionTemplate.discardedAt && group.adminsInclude(Session.user());
         },
         perform() {

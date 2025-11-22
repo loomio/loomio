@@ -30,7 +30,7 @@
                     %span= t(:'common.privacy.public')
                 %span
                   %span{"aria-hidden" => "true"} ·
-                  %span.context-panel__seen_by_count= t(:'thread_context.seen_by_count', count: @discussion.seen_by_count)
+                  %span.context-panel__seen_by_count= t(:'discussion_context.seen_by_count', count: @discussion.seen_by_count)
             .lmo-markdown-wrapper.text-body-1.text--primary.context-panel__description
               = formatted_text(@discussion, :body)
         .activity-panel

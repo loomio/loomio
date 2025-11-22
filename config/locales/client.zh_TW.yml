@@ -390,13 +390,10 @@ zh_TW:
     unreleased_emails: 未公開的電子郵件
     start_a_thread_by_email: 透過電子郵件發起話題
     send_email_to_start_thread: 發送電子郵件至此地址以在您的群組中發起話題。
-    subject_body_attachments: 電子郵件主題將成為主題標題，電子郵件正文將成為描述，所有附加文件將附加到主題中。
     copy_address: 複製地址
     email_me_this_address: 透過電子郵件給我這個地址
     email_address_copied_to_clipboard: 電子郵件地址已複製到剪貼簿
     forward_email_to_move_conversation: 提示：當您需要做出決定或保留記錄時，將電子郵件對話轉發給 Loomio。
-  email_to_group_mailer:
-    your_email_address_to_start_threads_in_group: 用於在 %{group} 中啟動主題的電子郵件地址
   volume_levels:
     loud: 大聲
     normal: 普通
@@ -420,14 +417,12 @@ zh_TW:
       loud_explain: 只要有活動
       normal_explain: 當某人請求您的注意時
       quiet_explain: 沒有通知
-    aria_label: 變更電子郵件設定表單
     loud_label: 所有動態
     normal_label: 公告
     quiet_label: 不寄電子郵件
     mute_label: 靜音
     saved: 通知設定已更新
     discussion:
-      title: 討論串通知
       loud_description: 您將會收到此討論串中所有活動的電子郵件。
       normal_description: 您只會收到此討論串中重要活動的電子郵件。
       quiet_description: 您不會收到此討論串中任何的電子郵件。
@@ -478,7 +473,6 @@ zh_TW:
     normal_desc: 當有人通知我時
     quiet_desc: 絕不
     when_would_you_like_to_be_emailed_poll_type: 您希望何時收到有關此 %{poll_type} 的電子郵件？
-    normal_explained: 當有人在主題或投票的「通知」欄位中輸入您的姓名，或他們{'@'}提及該小組。
     normal_excludes_mentioning_html: 當有人{'@'}提及你（例如，在評論中回覆你時），有一個單獨的設定。<a href="%{url}">點擊此處編輯@提及的設置</a>
     loud_explained: 每次有新評論、有人投票或開始投票或討論時，您都會收到電子郵件。
     changes_all_threads_and_polls_in_group: 這將更改群組中所有貼文和投票的設定。
@@ -486,7 +480,6 @@ zh_TW:
     what_the_options_mean: 這些選項的含義
     quiet_explained: 即使有人嘗試通知您，您也不會收到電子郵件。如果您不養成定期查看 Loomio 的習慣，可能會錯過重要公告或決定。
   close_explanation_modal:
-    aria_label: 關閉討論串
     close_thread: 關閉討論串
     body: |
       <p>關閉舊或無關的討論串以將其從檢視畫面中移除，並指出討論已結束。</p>
@@ -501,14 +494,10 @@ zh_TW:
     password_label: 密碼：
     password_confirmation_label: 再輸入一次密碼：
   signed_out_modal:
-    aria_label: 工作階段已結束
     title: 您的工作階段已結束
     message: 您已經從其他視窗登出。請重新登入以繼續。
     ok: 確定
-  comment_reply_form:
-    aria_label: 新增回覆
   comment_form:
-    aria_label: 加入意見
     attachments:
       add_attachment: 附加檔案
       remove_attachment: 移除附件
@@ -535,9 +524,6 @@ zh_TW:
   thread_nav:
     participants: 參與者
   sidebar:
-    new_thread_removed: 新線程已刪除
-    new_thread_removed_body: 新的線程按鈕將從側邊欄中刪除。要開始新主題，請先導覽到您的群組，然後按一下「新主題」。抱歉進行更改，但這是必需的，因為您需要在啟動線程時選擇模板。
-    threads: 討論串
     my_groups: 我的群組
     other_groups: 其他群組
     all_groups: 所有群組
@@ -546,7 +532,6 @@ zh_TW:
     direct_threads: 直接討論串
     unread_threads: 未讀的討論串 (%{count})
     muted_threads: 已靜音的討論串
-    start_group: 新組織
     start_subgroup: 新的子群組
     explore: 公開群組
     explore_groups: 探索群組
@@ -591,7 +576,6 @@ zh_TW:
     all_subgroups: 所有子組
     parent_only: 限家長
   navbar:
-    search_all_threads: 搜尋所有討論串
     search_threads: 在 %{name} 中搜尋討論串
     search_polls: 在 %{name} 中搜尋投票
     search_members: 在 %{name} 中搜尋成員
@@ -643,7 +627,6 @@ zh_TW:
     dark_blue: 深藍色
   membership_card:
     group_members: 群組成員
-    discussion_members: 討論串成員
     poll_members: "%{pollType} 成員"
     voters: 選民
     invite_to_group: 邀請至群組
@@ -659,7 +642,6 @@ zh_TW:
     make_coordinator: 升為管理員
     demote_coordinator: 拔除管理員
     remove_from:
-      discussion: 自討論串移除
       group: 自群組移除
       poll: 自 %{pollType} 移除
     cancel_invitation: 取消邀請函
@@ -668,7 +650,6 @@ zh_TW:
     make_delegate: 任命代表
     revoke_delegate: 撤銷委託
   notification_models:
-    discussion: 討論串：
     comment: 評論於
     poll: 投票：
     outcome: 結果：
@@ -679,9 +660,6 @@ zh_TW:
     with_title:
       unknown_sender: 請檢查來自無法識別的寄件者的電子郵件
       comment_replied_to: "%{actor} 回覆您於：%{title}"
-      discussion_announced: "%{actor} 邀請您加入主題：%{title}"
-      discussion_edited: "%{actor} 編輯了討論串內容：%{title}"
-      discussion_closed: "%{actor} 關閉了討論串：%{title}"
       invitation_accepted: "%{actor} 接受了您加入 %{title} 的邀請"
       membership_created: "%{actor} 邀請您加入 %{title} 於 %{site_name}"
       membership_resent: "%{actor} 邀請您加入 %{site_name} 上的 %{title}"
@@ -689,7 +667,6 @@ zh_TW:
       membership_request_approved: "%{actor} 接受您加入 %{title} 的請求"
       new_comment: "%{actor} 留言於：%{title}"
       new_coordinator: "%{actor} 讓您成為了 %{title} 的管理員"
-      new_discussion: "%{actor} 啟動了討論串：%{title}"
       outcome_announced: "%{actor} 分享了 %{poll_type} 的結果：%{title}"
       outcome_created: "%{actor} 分享了 %{poll_type} 的結果：%{title}"
       outcome_updated: "%{actor} 更新了 %{poll_type} 結果：%{title} "
@@ -717,13 +694,8 @@ zh_TW:
       poll_announced: "%{actor} 邀請您投票：%{title}"
     without_title:
       unknown_sender: 請檢查來自無法識別的寄件者的電子郵件
-      discussion_announced: "%{actor} 邀請您加入討論串"
-      discussion_edited: "%{actor} 編輯了討論串內容"
-      discussion_closed: "%{actor} 關閉了討論串"
       group_announced: "%{actor} 邀請您加入群組"
       comment_replied_to: "%{actor} 回覆您"
-      new_discussion: "%{actor} 啟動了討論串"
-      new_comment: "%{actor} 已在討論串中留言"
       membership_created: "%{actor} 邀請您加入群組"
       membership_resent: "%{actor}邀請您加入群組"
       membership_requested: "%{actor} 請求加入您的群組"
@@ -755,13 +727,10 @@ zh_TW:
     hints:
       poll_closing_soon: 現在是投票、變更您的心意或鼓勵他人參與的好時機。
       poll_closing_soon_author: 您可能希望提醒人們投票或延長截止日期。
-      outcome_review_due: 請考慮開始回饋投票或新討論串，邀請人們對決策的進行方式反思。
     email_subject:
       unknown_sender: 請查看來自未知寄件者的電子郵件
       comment_replied_to: "%{actor} 在 %{title} 中回覆了您。"
       discussion_announced: "%{title}"
-      discussion_edited: "%{actor} 編輯了上下文：%{title}"
-      discussion_closed: "%{actor} 關閉了主題：%{title}"
       invitation_accepted: "%{actor} 接受了您的邀請，加入了 %{title}"
       membership_created: "%{actor} 邀請您加入 %{title} on %{site_name}"
       membership_resent: "%{actor} 邀請您加入 %{title} on %{site_name}"
@@ -796,33 +765,8 @@ zh_TW:
       user_reminded: "%{actor} 提醒您參與以下投票：%{title}"
       poll_announced: 投票：%{title}
   discussion_fork_actions:
-    helptext: 選取您想要移動到其他討論串的項目
     move: 移動
-    search_placeholder: 利用標題搜尋討論串
     moved: 正在移動留言，這可能需要一點時間
-    move_to_existing_thread: 移至現有討論串
-    start_new_thread: 或開始新討論串
-  thread_template:
-    browse_public_templates: 瀏覽範本庫
-    thread_template_settings: 話題模板設定
-    start_a_new_thread: 開始一個新線程
-    thread_template_saved: 話題模板已儲存
-    these_are_public_templates: 您可以複製或修改這些範本以適合您的團隊
-    these_are_templates: 這些是您組中的主題模板。範本可引導您完成常見的決策流程。
-    default_title_label: 預設標題
-    default_title_hint: 使用可編輯文字預先填入標題欄位。這是可選的 - 如果不確定，請留空。
-    title_placeholder_label: 標題範例
-    title_placeholder_hint: 在標題欄位背景中顯示的範例
-    title_placeholder_placeholder: 例如，這就是背景文字的樣子
-    example_description_label: 範例說明
-    example_description_placeholder: 提供一個人們可以用來啟動執行緒的模板
-    hidden_templates: 隱藏模板
-    confirm_delete: 您確定要永久刪除該主題模板嗎？不會因此而刪除任何執行緒。
-    add_proposal_or_poll_template: 新增提案或投票模板
-    recommended_proposal_or_poll_templates: 推薦的提案或投票模板
-    decision_templates: 決策模板
-    decision_templates_help: 選擇有助於完成此流程的任何提案或投票範本。
-    share_in_template_gallery: 在公共模板庫中分享此模板
   discussion_form:
     thread_templates: 話題模板
     new_thread_template: 新線程模板
@@ -839,7 +783,6 @@ zh_TW:
     change_log_placeholder: 選擇性，描述您的變更。此訊息江心增到討論串中。
     change_log_label: 有什麼變動？
     invite: 邀請
-    aria_label: 討論串表單
     start_thread: 啟動討論串
     messages:
       created: 討論串已啟動
@@ -867,7 +810,6 @@ zh_TW:
     send_poll: 傳送 %{type}
     send_outcome: 傳送結果
     cannot_reveal_when_anonymous: 抱歉，我們無法透露誰在匿名投票中投票或未投票。
-    discussion_notification_history: 討論串通知歷史
     group_notification_history: 群組邀請歷史
     poll_notification_history: 投票通知歷史
     outcome_notification_history: 結果通知歷史
@@ -879,7 +821,6 @@ zh_TW:
     preview: 預覽電子郵件
     no_notifications_sent: 未傳送通知
     history_error: 發生了一點問題！無法載入歷史。
-    inviting_guests_to_thread: 訪客不屬於您的群組，且僅能存取此討論串
     select_groups: 選取群組
     search_by_name_or_email: 透過名稱搜尋，或是輸入電子郵件來邀請
     search_by_name: 透過名稱搜尋夥伴
@@ -965,8 +906,6 @@ zh_TW:
       added_singular: 將會新增 1 個人。
       added_none: 不會新增任何人。
       group_title: "%{name}（%{count} 個夥伴）"
-      visible_to_group: 任何在 %{group} 中的人都可以看到此討論串。
-      visible_to_guests: 僅被邀請的夥伴才能看到此討論串。
       click_group_to_see_individuals: 點擊群組以檢視個人
       poll_announced:
         title: 邀請投票
@@ -1112,7 +1051,6 @@ zh_TW:
     messages:
       joined_group: 您現在是 %{group} 的成員了
   membership_request_form:
-    aria_label: 成員資格申請表單
     heading: 要求加入群組
     name_label: 名字
     email_label: 電子郵件
@@ -1122,7 +1060,6 @@ zh_TW:
     messages:
       membership_requested: 您已請求加入 %{group}
   revision_history_modal:
-    aria_label: 修訂歷史
     discussion_header: 討論編輯
     comment_header: 留言編輯
     poll_header: 投票編輯
@@ -1148,10 +1085,6 @@ zh_TW:
     you_and_name: 您與 %{name}
     you_and_name_and_count_more: 您、%{name} 與 %{count} 更多
     name_and_count_more: "%{name} 與 %{count} 更多"
-  context_panel:
-    thread_status:
-      pinned: 這個討論串已被釘選。它將會保留在群組討論串清單的頂部供所有使用者閱讀。
-      closed: 這個討論串已經關閉。它將不會再出現在儀表板上，並將會在群組頁面中列在「已關閉」下。
   delete_group_modal:
     title: 刪除群組
     subgroup_title: 刪除子群組
@@ -1228,7 +1161,6 @@ zh_TW:
       private: 隱私權：此群組現在只會被成員看到
       parent_members: 隱私權：討論串只會被 %{parentGroupName} 群組的成員以及 %{groupName} 群組的成員看到。
       public: 隱私權：此群組現在能在網路上被看到
-      aria_label: 群組隱私：%{privacy}
     participation_report: 參與報告
     my_subgroups: 我的子群組
     more_subgroups: 更多子組
@@ -1244,12 +1176,10 @@ zh_TW:
     messages:
       description_updated: 描述已更新
   leave_group_form:
-    aria_label: 離開群組
     title: 離開群組
     question: 您確定您想要離開此群組嗎？
     submit: 是的，離開此群組
   archive_group_form:
-    aria_label: 停用群組
     title: 停用群組
     question: 您確定您想要停用此群組嗎？
     submit: 是的，停用此群組
@@ -1261,7 +1191,6 @@ zh_TW:
     permissions_explaination: |
       群組中一個人可能會有兩種成員等級：管理員與成員
       管理員可以編輯群組設定，讓其他夥伴成為管理員，並執行以下列出的所有動作。
-    aria_label: 群組表單
     parent_group: 上層群組
     new_organisation: 新組織
     new_group: 新增群組
@@ -1387,7 +1316,6 @@ zh_TW:
     group_url: 群組 URL
     reusable_invitation_link: 可重複使用的邀請連結
     error: 嘗試複製到剪貼簿時發生錯誤
-    aria_label: 邀請表單
     invite_people: 邀請夥伴
     invite_guests: 邀請來賓
     notify_people: 通知夥伴
@@ -1520,7 +1448,6 @@ zh_TW:
     insert_link: 插入連結
     insert_embedded_url: 嵌入影片
   change_picture_form:
-    aria_label: 設定檔照片表單
     title: 設定簡介照片
     helptext: 您可以上傳您自己的簡歷照片，或是若您有一個 <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> 帳號，您可以使用它。
     use_initials: 使用縮寫
@@ -1584,7 +1511,6 @@ zh_TW:
     replies_count: "%{count} 個回覆"
     unread_count: "%{count} 個未讀"
   dashboard_page:
-    aria_label: 儀表板
     polls_to_vote_on: 投票表決
     no_polls_to_vote_on: 沒有您需要進行的投票
     recent_polls: 近期投票
@@ -1597,7 +1523,6 @@ zh_TW:
       show_all: 您沒有任何最近的討論串
       show_proposals: 目前沒有活躍的提案。
       show_muted: 您沒有任何已靜音的討論串。
-    view_recent: 檢視所有最近的討論串？
     load_more: 載入更多討論串
     mark_as_read: 設為已讀
     dismiss: 暫時忽略
@@ -1612,7 +1537,6 @@ zh_TW:
       filter_threads: 過濾討論串
       filter_threads_aria_label: 過濾討論串
       dropdown_heading: 過濾儀表板
-      all: 最近的討論串
       all_aria_label: 目前正在顯示最近的討論串
       all_description: 檢視最近的討論串
       proposals: 提議
@@ -1636,13 +1560,11 @@ zh_TW:
       older: 早於一個月
   threads_page:
     no_direct_threads: 您沒有直接討論串
-    no_invite_only_threads: 您沒有僅邀請的討論串
   inbox_page:
     no_threads: 太棒了！您已經讀完了您收件匣中所有的討論串。
     unread_threads: 未讀的討論串
     view_more: 顯示更多
     no_groups:
-      explanation: 您沒有未讀的討論串，因為您不是任何群組的成員。
       start: 啟動
       or: 或者
       join_group: <a href="/explore">加入</a>群組以觀看討論串。
@@ -1663,9 +1585,6 @@ zh_TW:
     pin:
       pinned: 討論串已釘選
       unpinned: 討論串已取消釘選
-    volume:
-      mute_message: 已靜音的討論串
-      unmute_message: 討論串靜音
     closed:
       reopened: 討論串已重新開啟
       closed: 討論串已關閉
@@ -1675,8 +1594,6 @@ zh_TW:
     disabled_anonymous_polls: 由於線程包含匿名民意調查，查看者歷史記錄被禁用
   activity_card:
     count_responses: "%{count} 個回應"
-    event_pinned: 已釘選至時間軸
-    event_unpinned: 已從時間軸取消釘選
     beginning: 開始
     end: 結束
     unread: 未讀 (%{count})
@@ -1685,7 +1602,6 @@ zh_TW:
     chronological: 年代
     nested: 巢狀
     attachment_display:
-      aria_label: 已附加檔案
       image_alt: 已附加的圖片
     n_previous: 載入 %{count} 個先前的回應
     n_more: 載入 %{count} 個回應
@@ -1696,12 +1612,9 @@ zh_TW:
     facilitate: 促進
     start_decision: 開始決定
     start_vote: 開始投票
-  thread_group:
-    aria_label: 群組名稱
   thread_context:
     current_poll_type_banner: 目前的 %{pollType}
     item_maybe_deleted: 在討論串找不到請求的位置。他可能已被刪除。
-    aria_label: 討論串內容
     thread_options: 討論串選項
     email_settings: 通知設定
     edit: 編輯
@@ -1718,11 +1631,6 @@ zh_TW:
     seen_by_count: 被 %{count} 個人看過
     count_notified: 已通知 %{count} 個
     forked_from: 分支自
-  pin_thread_modal:
-    title: 釘選討論串
-    helptext: 已釘選的討論串總是會顯示在它們群組討論串清單的頂部。它們可以被用於提醒成員重要的公告，或是推廣一些一般的文章，如行為規範或社群指南等等。
-    helptext_two: 您可以在任何時候透過從討論串下拉式選單選取「取消釘選」來移除釘選
-    pin_thread: 釘選討論串
   thread_arrangement_form:
     edit: 編輯佈局
     title: 討論串佈局
@@ -1741,20 +1649,11 @@ zh_TW:
     nested_twice_description: 最多縮排兩次。
     changing_nesting_is_slow: 更改巢狀排列方式可能需要幾分鐘的時間來處理。
   delete_thread_form:
-    aria_label: 刪除討論串
     title: 刪除討論串
     body: 您確定要刪除這個討論串嗎？
     confirm: 刪除討論串
     messages:
       success: 討論串已刪除
-  move_thread_form:
-    aria_label: 移動討論串
-    title: 移動討論串
-    body: 目標群組
-    confirm: 移動討論串
-    confirm_change_to_private_thread: "%{groupName} 是一個公開的群組，若您繼序，這個討論串將會變為公開。"
-    messages:
-      success: 討論串已被移動到 %{name}
   delete_comment_dialog:
     title: 刪除意見
     question: 這將會永久刪除此留言。若您繼續，其將無法還原。
@@ -2426,8 +2325,6 @@ zh_TW:
     name_placeholder: 給這個整合一個名稱，這樣您就可以識別它
     event_kind_helptext: 您想要 webhook 為哪些活動發出通知？
     event_kinds:
-      new_discussion: 討論串已啟動
-      discussion_edited: 討論串已編輯
       poll_edited: 投票已編輯
       new_comment: 已留言
       poll_created: 投票已啟動

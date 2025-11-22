@@ -107,7 +107,7 @@ export default {
     },
 
     submit() {
-      const actionName = this.discussion.id ? 'updated' : 'created';
+      const actionName = this.discussion.id ? 'updated' : 'started';
       this.discussion.setErrors();
       this.$refs.form.resetValidation();
       this.discussion.save().then(data => {
@@ -115,7 +115,7 @@ export default {
         EventBus.$emit('closeModal');
         this.shouldReset = !this.shouldReset;
         Records.discussions.findOrFetchById(discussionKey, {}, true).then(discussion => {
-          Flash.success(`discussion_form.messages.${actionName}`);
+          Flash.success(`discussion_form.discussion_${actionName}`);
           this.$router.push(this.urlFor(discussion));
         });
       }).catch(error => {
@@ -125,7 +125,7 @@ export default {
     },
 
     updateGroupItems() {
-      this.groupItems = [{title: this.$t('discussion_form.none_invite_only_thread'), value: null}].concat(Session.user().groups().map(g => ({
+      this.groupItems = [{title: this.$t('discussion_form.none_invite_only_discussion'), value: null}].concat(Session.user().groups().map(g => ({
         title: g.fullName,
         value: g.id
       })));
@@ -254,6 +254,6 @@ v-form(ref="form" @submit.prevent="submit")
         :disabled="submitIsDisabled"
         :loading="discussion.processing"
       )
-        span(v-if="!discussion.id" v-t="'discussion_form.start_thread'")
+        span(v-if="!discussion.id" v-t="'discussion_form.start_discussion'")
         span(v-if="discussion.id" v-t="'common.action.save'")
 </template>
