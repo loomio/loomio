@@ -50,7 +50,7 @@ module.exports = {
     page.click('.thread-preview')
     page.click('.action-menu')
     page.click('.action-dock__button--close_thread')
-    page.expectFlash('Thread closed')
+    page.expectFlash('Discussion closed')
     // page.click('.flash-root__action')
     // page.expectFlash('Thread reopened')
   },
@@ -109,7 +109,7 @@ module.exports = {
     page.click('.action-dock__button--discard_thread')
     page.click('.confirm-modal__submit')
 
-    page.expectFlash('Thread deleted')
+    page.expectFlash('Discussion deleted')
     page.expectText('.group-page__name', 'Dirty Dancing Shoes')
     page.expectNoText('.discussions-panel', 'What star sign are you?')
   },
