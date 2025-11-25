@@ -1982,6 +1982,13 @@ pt_BR:
     closed: Encerrado
     need_vote: Precisa de votação
     no_polls: Nenhuma consulta encontrada
+    standalone_disabled_title: Enquetes independentes estão desativadas.
+    standalone_disabled_helptext: "<p>Este grupo exige que as enquetes sejam iniciadas dentro de uma discussão.</p><p> As discussões ajudam as pessoas a entender o contexto, fazer perguntas e compartilhar perspectivas antes da votação. Isso leva a decisões melhores.</p><p> Primeiro inicie uma discussão e, em seguida, adicione uma enquete quando estiver pronto para coletar votos.</p>"
+    start_discussion: Inicie uma discussão
+    standalone_warning_title: Considere iniciar uma discussão primeiro.
+    standalone_warning_helptext: "<p>As pesquisas funcionam melhor quando as pessoas podem discutir o assunto primeiro.</p><p> Sem debate, os eleitores não podem fazer perguntas, expressar preocupações ou sugerir melhorias. Isso geralmente leva a uma menor participação e a resultados menos claros.</p><p> Recomendamos iniciar uma discussão, desenvolver ideias em conjunto e, em seguida, adicionar uma enquete quando estiverem prontos.</p>"
+    start_poll_anyway: Comece a enquete de qualquer maneira
+    start_discussion_instead: Inicie uma discussão.
   group_files_panel:
     no_files: Nenhum arquivo encontrado
     filename: Nome do arquivo

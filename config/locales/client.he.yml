@@ -1955,6 +1955,13 @@ he:
     closed: סגור
     need_vote: צריך הצבעה
     no_polls: לא נמצאו סקרים
+    standalone_disabled_title: סקרים עצמאיים מושבתים
+    standalone_disabled_helptext: <p style=";text-align:right;direction:rtl">קבוצה זו דורשת פתיחת סקרים בתוך דיון.</p><p style=";text-align:right;direction:rtl"> דיונים עוזרים לאנשים להבין את ההקשר, לשאול שאלות ולשתף נקודות מבט לפני ההצבעה. זה מוביל להחלטות טובות יותר.</p><p style=";text-align:right;direction:rtl"> התחל דיון קודם, ולאחר מכן הוסף סקר כשתהיה מוכן לאסוף קולות.</p>
+    start_discussion: התחל דיון
+    standalone_warning_title: שקול להתחיל דיון קודם כל
+    standalone_warning_helptext: <p style=";text-align:right;direction:rtl">סקרים עובדים בצורה הטובה ביותר כאשר אנשים יכולים לדון בנושא קודם.</p><p style=";text-align:right;direction:rtl"> ללא דיון, מצביעים לא יכולים לשאול שאלות, להעלות חששות או להציע שיפורים. זה מוביל לעתים קרובות להשתתפות נמוכה יותר ולתוצאות פחות ברורות.</p><p style=";text-align:right;direction:rtl"> אנו ממליצים להתחיל דיון, לפתח רעיונות יחד, ולאחר מכן להוסיף סקר כשתהיו מוכנים.</p>
+    start_poll_anyway: התחל את הסקר בכל זאת
+    start_discussion_instead: תתחיל דיון במקום
   group_files_panel:
     no_files: לא נמצאו קבצים
     filename: שם קובץ

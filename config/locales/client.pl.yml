@@ -1961,6 +1961,13 @@ pl:
     closed: Zamknięte
     need_vote: Potrzebujesz głosu
     no_polls: Nie znaleziono ankiet
+    standalone_disabled_title: Ankiety samodzielne są wyłączone
+    standalone_disabled_helptext: "<p>W przypadku tej grupy ankiety należy rozpoczynać w ramach dyskusji.</p><p> Dyskusje pomagają ludziom zrozumieć kontekst, zadawać pytania i dzielić się swoimi perspektywami przed głosowaniem. To prowadzi do podejmowania lepszych decyzji.</p><p> Najpierw rozpocznij dyskusję, a gdy będziesz gotowy zbierać głosy, dodaj ankietę.</p>"
+    start_discussion: Rozpocznij dyskusję
+    standalone_warning_title: Rozważ rozpoczęcie dyskusji na początek
+    standalone_warning_helptext: "<p>Ankiety działają najlepiej, gdy ludzie mogą najpierw przedyskutować dany temat.</p><p> Bez dyskusji wyborcy nie mogą zadawać pytań, zgłaszać obaw ani proponować ulepszeń. To często prowadzi do niższej frekwencji i mniej jednoznacznych wyników.</p><p> Zalecamy rozpoczęcie dyskusji, wspólne opracowanie pomysłów, a następnie, gdy będziecie gotowi, dodanie ankiety.</p>"
+    start_poll_anyway: Rozpocznij ankietę mimo wszystko
+    start_discussion_instead: Zamiast tego rozpocznij dyskusję
   group_files_panel:
     no_files: Nie znaleziono plików
     filename: 'Nazwa pliku '

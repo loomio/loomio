@@ -1972,6 +1972,13 @@ es:
     closed: 'Cerrado '
     need_vote: Se necesita votar
     no_polls: No se encontraron encuestas
+    standalone_disabled_title: Las encuestas independientes están deshabilitadas
+    standalone_disabled_helptext: "<p>Este grupo requiere que las encuestas se inicien dentro de una discusión.</p><p> Los debates ayudan a las personas a comprender el contexto, hacer preguntas y compartir perspectivas antes de votar. Esto conduce a mejores decisiones.</p><p> Primero, comience una discusión y luego agregue una encuesta cuando esté listo para reunir votos.</p>"
+    start_discussion: Iniciar una discusión
+    standalone_warning_title: Considere iniciar una discusión primero
+    standalone_warning_helptext: "<p>Las encuestas funcionan mejor cuando las personas pueden discutir el tema primero.</p><p> Sin un debate, los votantes no pueden hacer preguntas, plantear inquietudes ni sugerir mejoras. Esto suele resultar en una menor participación y resultados menos claros.</p><p> Recomendamos iniciar una discusión, desarrollar ideas juntos y luego agregar una encuesta cuando esté listo.</p>"
+    start_poll_anyway: Iniciar la encuesta de todos modos
+    start_discussion_instead: Iniciar una discusión en su lugar
   group_files_panel:
     no_files: No se encontraron archivos
     filename: Nombre de archivo

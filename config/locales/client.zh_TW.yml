@@ -1969,6 +1969,13 @@ zh_TW:
     closed: 封閉
     need_vote: 需要投票
     no_polls: 找不到投票
+    standalone_disabled_title: 獨立投票功能已停用
+    standalone_disabled_helptext: "<p>本群組要求投票必須在討論中發起。</p><p>討論有助於人們在投票前了解背景、提出問題並分享觀點，從而做出更明智的決策。</p><p>先發起討論，準備收集投票後再加入投票。</p>"
+    start_discussion: 發起討論
+    standalone_warning_title: 不妨先發起討論。
+    standalone_warning_helptext: "<p>民意調查在人們能夠先討論相關話題的情況下效果最佳。</p><p>如果沒有討論，選民就無法提出問題、表達擔憂或建議改進措施。這往往會導致參與度降低和結果不明朗。</p><p>我們建議先發起討論，共同探討想法，準備好後再加入投票。</p>"
+    start_poll_anyway: 無論如何，開始投票
+    start_discussion_instead: 不如發起一場討論。
   group_files_panel:
     no_files: 找不到檔案
     filename: 檔案名稱
