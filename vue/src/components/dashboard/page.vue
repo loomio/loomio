@@ -5,7 +5,7 @@ import Session            from '@/shared/services/session';
 import EventBus           from '@/shared/services/event_bus';
 import AbilityService     from '@/shared/services/ability_service';
 import RecordLoader       from '@/shared/services/record_loader';
-import ThreadService       from '@/shared/services/thread_service';
+import DiscussionService       from '@/shared/services/discussion_service';
 import WatchRecords from '@/mixins/watch_records';
 import FormatDate from '@/mixins/format_date';
 
@@ -73,7 +73,7 @@ export default
     },
 
     query() {
-      this.discussions = ThreadService.dashboardQuery();
+      this.discussions = DiscussionService.dashboardQuery();
     }
   },
 

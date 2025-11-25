@@ -1,7 +1,7 @@
 <script lang="js">
 import Session        from '@/shared/services/session';
 import AbilityService from '@/shared/services/ability_service';
-import ThreadService from '@/shared/services/thread_service';
+import DiscussionService from '@/shared/services/discussion_service';
 import { compact } from 'lodash-es';
 import AppConfig from '@/shared/services/app_config';
 import Records from '@/shared/services/records';
@@ -132,7 +132,7 @@ export default {
     },
 
     openEditLayout() {
-      return ThreadService.actions(this.discussion, this)['edit_arrangement'].perform();
+      return DiscussionService.actions(this.discussion, this)['edit_arrangement'].perform();
     }
   },
 

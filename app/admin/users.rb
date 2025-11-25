@@ -137,7 +137,7 @@ ActiveAdmin.register User do
 
     panel("Delete spam account") do
       [
-      p("Delete the user and any groups, threads, comments, votes they created. It will not groups or threads they are simply a member of."),
+      p("Delete the user and any groups, discussions, comments, votes they created. It will not groups or discussions they are simply a member of."),
       button_to('Destroy User', delete_spam_admin_user_path(user.id), method: :delete, data: {confirm: 'Are you sure you want to destroy this user and content they authored?'})
       ].join.html_safe
     end

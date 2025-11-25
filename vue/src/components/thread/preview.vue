@@ -1,5 +1,5 @@
 <script lang="js">
-import ThreadService from '@/shared/services/thread_service';
+import DiscussionService from '@/shared/services/discussion_service';
 import AbilityService from '@/shared/services/ability_service';
 import { pick, some } from 'lodash-es';
 import UrlFor from '@/mixins/url_for'
@@ -25,7 +25,7 @@ export default {
       return this.thread.isUnread();
     },
     dockActions() {
-      return pick(ThreadService.actions(this.thread, this), ['dismiss_thread']);
+      return pick(DiscussionService.actions(this.thread, this), ['dismiss_thread']);
     },
 
     menuActions() {
@@ -39,7 +39,7 @@ export default {
           ['dismiss_thread', 'close_thread', 'reopen_thread']
         :
           ['close_thread', 'reopen_thread'];
-      return pick(ThreadService.actions(this.thread, this), actions);
+      return pick(DiscussionService.actions(this.thread, this), actions);
     },
 
     canPerformAny() {

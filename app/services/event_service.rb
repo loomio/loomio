@@ -21,7 +21,7 @@ class EventService
     MoveCommentsWorker.perform_async(ids, source.id, discussion.id)
   end
 
-  def self.repair_thread(discussion_id)
+  def self.repair_discussion(discussion_id)
     discussion = Discussion.find_by(id: discussion_id)
     return unless discussion
 

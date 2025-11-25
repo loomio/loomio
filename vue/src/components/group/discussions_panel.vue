@@ -4,7 +4,7 @@ import AbilityService     from '@/shared/services/ability_service';
 import EventBus           from '@/shared/services/event_bus';
 import RecordLoader       from '@/shared/services/record_loader';
 import PageLoader         from '@/shared/services/page_loader';
-import ThreadService      from '@/shared/services/thread_service';
+import DiscussionService      from '@/shared/services/discussion_service';
 import { debounce, orderBy, intersection, concat, uniq } from 'lodash-es';
 import Session from '@/shared/services/session';
 import { mdiMagnify } from '@mdi/js';
@@ -84,7 +84,7 @@ export default
         default: return [this.group.id];
       } })();
 
-      this.discussions = ThreadService.groupDiscussionsQuery(this.group, this.groupIds, this.$route.query.t, this.$route.query.tag, this.page, this.loader);
+      this.discussions = DiscussionService.groupDiscussionsQuery(this.group, this.groupIds, this.$route.query.t, this.$route.query.tag, this.page, this.loader);
       EventBus.$emit('currentComponent', {
         page: 'groupPage',
         title: this.group.name,

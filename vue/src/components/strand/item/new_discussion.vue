@@ -1,5 +1,5 @@
 <script lang="js">
-import ThreadService  from '@/shared/services/thread_service';
+import DiscussionService  from '@/shared/services/discussion_service';
 import { omit, pickBy } from 'lodash-es';
 import Session from '@/shared/services/session';
 import openModal      from '@/shared/helpers/open_modal';
@@ -65,7 +65,7 @@ export default {
 
   methods: {
     rebuildActions() {
-      this.actions = omit(ThreadService.actions(this.eventable, this), ['dismiss_thread']);
+      this.actions = omit(DiscussionService.actions(this.eventable, this), ['dismiss_thread']);
     },
     updateGroups() {
       this.groups = this.discussion.group().parentsAndSelf().map(group => {

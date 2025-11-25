@@ -133,7 +133,7 @@ describe "Events::Position" do
     expect(e3.position).to eq 3
     expect(e3.sequence_id).to eq 3
     e2.update(discussion_id: nil, parent_id: nil)
-    EventService.repair_thread(discussion.id)
+    EventService.repair_discussion(discussion.id)
     expect(e3.reload.position).to eq 2
     expect(e3.reload.position_key).to eq "00002"
     expect(e3.reload.sequence_id).to eq 3
@@ -145,7 +145,7 @@ describe "Events::Position" do
     expect(e1.position).to eq 1
     expect(e2.position).to eq 2
     e1.destroy
-    EventService.repair_thread(discussion.id)
+    EventService.repair_discussion(discussion.id)
     e2.reload
     expect(e2.position).to eq 1
     expect(e2.sequence_id).to eq 2
