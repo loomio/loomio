@@ -2164,7 +2164,7 @@ fi:
     vote_short_of_quorum: Yksi ääni lisää tarvitaan %{pct}% päätösvaltaisuuteen
     votes_short_of_quorum: "%{num} ääntä lisää tarvitaan %{pct}% päätösvaltaisuuteen"
     quorum_reached: Päätösvaltainen jäsenmäärä on %{pct}%
-    pct_participation: "%{num} annetuista äänistä (%{pct}% osallistumisprosentti)"
+    pct_participation: "%{num} / %{total} annetuista äänistä (%{pct}% osallistumisprosentti)"
   poll_meeting_chart_panel:
     total: Kaikki yhteensä
   poll_remove_vote:

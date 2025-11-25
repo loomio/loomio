@@ -167,7 +167,7 @@ ja:
   timezones:
     local: 現地時間 (%{value})
   common:
-    value: "％{value}"
+    value: "%{value}"
     admin_menu: 管理者メニュー
     api_docs: APIドキュメント
     prefix_eg: '例: %{val}'
@@ -744,7 +744,7 @@ ja:
     email_subject:
       unknown_sender: 認識できない送信者からのメールを確認する
       comment_replied_to: "%{actor} さんが %{title} であなたに返信しました"
-      discussion_announced: "％{title}"
+      discussion_announced: "%{title}"
       invitation_accepted: "%{actor} が %{title} への参加招待を承認しました"
       membership_created: "%{actor} があなたを %{site_name} の %{title} に参加するよう招待しました"
       membership_resent: "%{actor} があなたを %{site_name} の %{title} に参加するよう招待しました"
@@ -753,7 +753,7 @@ ja:
       new_comment: "%{actor} さんが %{title} にコメントしました"
       new_coordinator: "%{actor} があなたを %{title} の管理者にしました"
       new_delegate: "%{actor} があなたを %{title} の投票権を持つ代表者にしました"
-      new_discussion: "％{title}"
+      new_discussion: "%{title}"
       outcome_announced: "%{poll_type} の結果: %{title}"
       outcome_created: "%{poll_type} の結果: %{title}"
       outcome_updated: "%{poll_type} の結果が更新されました: %{title}"
@@ -1370,7 +1370,7 @@ ja:
     custom_message: カスタムメッセージ
     custom_message_placeholder: 招待状に含める個人的なメッセージを入力します。
     add_members: メンバーを追加する
-    from_parent_group: 名前から}。
+    from_parent_group: "%{name} から。"
     send: 送信
     done: 終わり
     messages:
@@ -1887,7 +1887,7 @@ ja:
     closed: 議論終了
     include_subgroups_mine: "%{name} と私のサブグループ"
     include_subgroups_all: "%{name} とすべてのサブグループ"
-    no_results_found: "「%{provider}」の結果はありません"
+    no_results_found: "「%{search}」の結果はありません"
     welcome_to_your_new_group: 新しい Loomio グループへようこそ!
     lets_start_a_thread: スレッドを始めましょう。 「新しいスレッド」をクリックして続行します。
     lets_start_a_discussion: ディスカッションを始めましょう。「新しいディスカッション」をクリックして続行してください。
@@ -1918,7 +1918,7 @@ ja:
     admin: 管理者
     guest: ゲスト
     sharable_link: 共有可能なリンク
-    last_seen: 最後に見たのは %{日付}
+    last_seen: 最後に見たのは %{date}
     invited_by_name: "%{name} からの招待"
     accepted: メンバー
     email_rejected: メールが拒否されました
@@ -1966,7 +1966,7 @@ ja:
     for_this_proposal_to_pass: この提案が可決されるためには：
     for_this_poll_type_to_be_valid: 'この %{poll_type} が有効になるためには:'
   poll_common_collapsed:
-    by_who: 名前で}
+    by_who: "%{name} による"
   poll_common_calendar_invite:
     calendar_invite: この結果をカレンダーへの招待状に含めます
     poll_option_id: 会議の時間
@@ -2052,7 +2052,7 @@ ja:
     statement_template_hint: 決定の結果を記述するためのテンプレートを提供します。(オプション)
     statement_template_placeholder: ご参加ありがとうございました！定足数に達したため、続行することができました。
   poll_common_outcome_panel:
-    authored_by: 名前で}
+    authored_by: "%{name} による"
   poll_common_delete_modal:
     question: これを削除してもよろしいですか?
     title: "%{pollType}を削除"
