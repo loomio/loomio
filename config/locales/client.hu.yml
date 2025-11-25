@@ -1946,7 +1946,7 @@ hu:
     standalone_disabled_title: Az önálló szavazások le vannak tiltva
     standalone_disabled_helptext: "<p>Ebben a csoportban a szavazásokat egy beszélgetésen belül kell elindítani.</p><p> A beszélgetések segítenek az embereknek megérteni a kontextust, kérdéseket feltenni és megosztani a nézőpontjaikat a szavazás előtt. Ez jobb döntésekhez vezet.</p><p> Először indíts egy beszélgetést, majd adj hozzá egy szavazást, amikor készen állsz a szavazatok gyűjtésére.</p>"
     start_discussion: Beszélgetés indítása
-    standalone_warning_title: Először is érdemes megfontolni egy beszélgetés megkezdését
+    standalone_warning_title: Először is fontold meg a beszélgetés megkezdését
     standalone_warning_helptext: "<p>A közvélemény-kutatások akkor működnek a legjobban, ha az emberek először megvitathatják a témát.</p><p> Vita nélkül a választók nem tehetnek fel kérdéseket, nem fogalmazhatnak meg aggályokat, és nem javasolhatnak fejlesztéseket. Ez gyakran alacsonyabb részvételhez és kevésbé egyértelmű eredményekhez vezet.</p><p> Azt javasoljuk, hogy kezdjetek egy beszélgetést, közösen dolgozzatok ki ötleteket, majd tegyétek fel a szavazást, amikor készen álltok.</p>"
     start_poll_anyway: Szavazás indítása mindenképpen
     start_discussion_instead: Inkább indíts beszélgetést

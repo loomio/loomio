@@ -2190,7 +2190,7 @@ en:
     review_date_hint: Set a date to review the decision (optional)
     who_to_notify: Who do you want to notify about this outcome? (optional)
     outcome_statement_template: Outcome statement template
-    new_title: State outcome
+    new_title: Share the outcome
     update_title: Update outcome
     outcome_created: Outcome created
     outcome_updated: Outcome updated
