@@ -93,6 +93,7 @@ hr:
       process_introduction: "<p>Pomoću ovog predloška poželite dobrodošlicu novim članovima i potaknete rano sudjelovanje. Pruža ljudima priliku da se predstave i istraže Loomioove značajke.</p>"
       title: "\U0001F44B Dobrodošli! Pozdravite nas i isprobajte"
       description: "<p>Dobrodošli u našu Loomio grupu — drago nam je što ste ovdje!</p><p> Ova tema je prostor za:</p><ul><li><p> Predstavite se grupi</p></li><li><p> Isprobajte neke od Loomiovih značajki - na primjer: pokušajte koristiti reakcije \U0001F44D</p></li><li><p> Postavite sva pitanja koja imate u ovoj fazi</p></li></ul><p> Ako nisi siguran/sigurna što reći, dovoljan je običan pozdrav \U0001F642</p>"
+      process_name: Vježbajte raspravu
   explore:
     header: Istražite javne grupe
   activerecord:
@@ -141,6 +142,8 @@ hr:
     '500':
       title: Interna pogreška poslužitelja
       body: Žao nam je, ali nešto je pošlo po zlu. Obaviješteni smo o ovom problemu i uskoro ćemo ga pogledati.
+    '404':
+      body: Stavka koju ste tražili nije pronađena. To se može dogoditi ako je rasprava ili anketa izbrisana.
   group:
     error:
       handle_must_begin_with_parent_handle: Mora započeti s %{parent_handle}-
@@ -221,11 +224,11 @@ hr:
       explaination_html: "<p>Primili ste ovu e-poruku jer ste administrator za Loomio grupu: %{group}.</p><p> Grupa je primila e-poruku s neprepoznate adrese e-pošte.</p><p> Ako je poruka od člana grupe, pregledajte e-poštu i odaberite člana.</p><p> Ako je poruka neželjena, možete blokirati daljnju e-poštu s te adrese.</p>"
     notification_reason:
       group_subscribed: Ovo ste primili jer ste pretplaćeni na sve aktivnosti u grupi.
-      thread_subscribed: Primili ste ovo jer ste pretplaćeni na temu.
       group_mentioned: Ovo ste primili jer je grupa @spomenuta.
       user_mentioned: Ovo ste primili jer ste @spomenuti.
       notified: Ovo ste primili jer vas je autor obavijestio.
       poll_subscribed: Ovo ste primili jer ste pretplaćeni na anketu.
+      discussion_subscribed: Ovo ste primili jer ste pretplaćeni na raspravu.
   user_mailer:
     group_export_ready:
       subject: Grupni izvoz podataka za %{group_name}
@@ -310,6 +313,7 @@ hr:
       button_text: Pogledaj zahtjev
     content_was_translated: Ovaj sadržaj je preveden s %{source_locale}
     content_was_translated_html: Ovaj sadržaj je preveden s %{source_locale}. <a href="%{profile_url}">Prikaži postavke<a></a>
+    loomio_app_description: Mjesto gdje organizacije koje surađuju mogu zajedno donositi odluke.
   announcement_count_emails: "%{count} e-poruka"
   email_actions:
     unfollowed_discussion: Isključili ste e-poštu za nit.

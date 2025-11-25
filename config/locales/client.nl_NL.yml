@@ -55,8 +55,6 @@ nl_NL:
     to_use_loomio_with_your_org_start_trial: Wanneer u klaar bent om Loomio met uw organisatie te proberen, start dan een gratis proefperiode.
     templates: Sjablonen
     make_a_copy: Een kopie maken
-    this_thread_is_a_template: Deze thread is een sjabloon. Maak een kopie als je het wilt gebruiken.
-    this_is_a_poll_template: Dit is een poll-sjabloon. Maak een kopie als u wilt gaan stemmen.
     try_loomio: Probeer Loomio
     start_a_demo_group: Start een demogroep
     start_a_demo: Start een demo
@@ -388,6 +386,9 @@ nl_NL:
     email_me_this_address: E-mail mij dit adres
     email_address_copied_to_clipboard: E-mailadres gekopieerd naar klembord
     forward_email_to_move_conversation: 'Tip: Stuur een e-mailgesprek door naar Loomio als u een beslissing moet nemen of iets moet bijhouden.'
+    start_a_discussion_by_email: Start een discussie via e-mail
+    send_email_to_start_discussion: Stuur een e-mail naar dit adres om een discussie in uw groep te starten.
+    subject_body_attachments: Het onderwerp van de e-mail wordt de discussietitel, de hoofdtekst van de e-mail wordt de beschrijving. Ook bijlagen worden gekopieerd.
   volume_levels:
     loud: Luid
     normal: Normaal
@@ -428,6 +429,7 @@ nl_NL:
         loud: Activiteit op dit bord zal je per mail gemeld worden.
         normal: Je zal ge-e-maild worden over voorstellen op dit bord.
         quiet: 'Je ontvangt geen e-mails over dit bord. '
+      title: Discussiemeldingen
     membership:
       title: Meldingen voor %{title}
       loud_description: Je onvangt een e-mail zodra er activiteit is in deze groep
@@ -459,7 +461,6 @@ nl_NL:
         normal: Je zal e-mails krijgen over aankondigingen in nieuwe groepen.
         quiet: Je zal geen e-mails krijgen over nieuwe groepen.
     change_your_email_settings: Wijzig uw e-mailinstellingen
-    when_would_you_like_to_be_emailed_thread: Wanneer wilt u een e-mail ontvangen over deze thread?
     when_would_you_like_to_be_emailed_group: Wanneer wilt u een e-mail ontvangen over deze groep?
     changes_all_threads_in_group: Hiermee wijzigt u de instellingen voor alle threads in de groep.
     what_do_the_options_mean: Wat betekenen de opties?
@@ -473,6 +474,10 @@ nl_NL:
     when_do_you_want_to_be_emailed: Wanneer wilt u een e-mail ontvangen?
     what_the_options_mean: Wat de opties betekenen
     quiet_explained: Je ontvangt geen e-mails, zelfs niet wanneer iemand je probeert te informeren. Je mist mogelijk belangrijke aankondigingen of beslissingen, tenzij je de gewoonte hebt om Loomio regelmatig te checken.
+    when_would_you_like_to_be_emailed_discussion: Wanneer wilt u een e-mail ontvangen over deze discussie?
+    changes_all_discussions_and_polls_in_group: Hiermee wijzigt u de instellingen voor alle discussies en peilingen in de groep.
+    normal_explained: Wanneer iemand jouw naam invoert in het veld 'Melden' van een discussie of poll, of de groep vermeldt.
+    aria_label: Formulier voor het wijzigen van e-mailinstellingen
   close_explanation_modal:
     close_thread: Sluit bord
     body: |
@@ -491,6 +496,7 @@ nl_NL:
     title: Je sessie is geëindigd
     message: Je bent uit een ander venster uitgelogd geraakt. Gelieve opnieuw in te loggen om verder te kunnen werken.
     ok: Ok
+    aria_label: Sessie beëindigd
   comment_form:
     attachments:
       add_attachment: Bijlage toevoegen
@@ -515,6 +521,7 @@ nl_NL:
     private_privacy_notice: Je reactie is alleen zichtbaar voor leden van %{groupName}.
     public_privacy_notice: Je reactie is zichtbaar voor iedereen op het web.
     sign_in: Log in om mee te praten
+    add_a_comment: Voeg een opmerking toe
   thread_nav:
     participants: Deelnemers
   sidebar:
@@ -543,6 +550,10 @@ nl_NL:
       groups_list: Groepen
       user_list: Gebruikersacties
     user_settings: Gebruikersinstellingen
+    invite_only_discussions: Discussies alleen op uitnodiging
+    unread_discussions_count: Ongelezen discussies (%{count})
+    new_group: Nieuwe groep
+    new_subgroup: Nieuwe subgroep
   strand_nav:
     newest: Nieuwste
     oldest: Oudste
@@ -598,6 +609,7 @@ nl_NL:
     search_members_short: Zoek leden
     search_files_short: Zoek bestanden
     search_subgroups_short: Zoek subgroepen
+    search_discussions_in_group: Zoek discussies in %{name}
   user_dropdown:
     pin_sidebar: Zijbalk vastzetten
     unpin_sidebar: Zijbalk losmaken
@@ -613,7 +625,7 @@ nl_NL:
     contact_support: Contact opnemen met ondersteuning
     sign_out: Uitloggen
     beta_collab: "\U0001F9EA Bètafuncties ingeschakeld!"
-    outcomes: Resultaten
+    outcomes: Conclusies
     theme: Thema
     light: Licht
     dark: Donker
@@ -628,6 +640,7 @@ nl_NL:
     invite_to_poll: Nodig uit om te stemmen
     invite_to_wip_poll: Nodig uit om feedback te geven
     invitations: Uitnodigingen
+    discussion_members: Discussieleden
   membership_dropdown:
     set_name_and_username: Stel naam en gebruikersnaam in
     set_title: Titel aanmaken
@@ -638,6 +651,7 @@ nl_NL:
     remove_from:
       group: Van groep verwijderen
       poll: Verwijder van %{pollType}
+      discussion: Verwijderen uit discussie
     cancel_invitation: Annuleer uitnodiging
     view_profile: Bekijk profiel
     revoke_admin: Herroep admin
@@ -646,8 +660,9 @@ nl_NL:
   notification_models:
     comment: reactie in
     poll: 'peiling:'
-    outcome: 'resultaat:'
+    outcome: 'conclusie:'
     stance: 'stemmen:'
+    discussion: 'discussie:'
   notifications:
     header: Meldingen
     no_notifications: Je hebt geen meldingen
@@ -661,9 +676,9 @@ nl_NL:
       membership_request_approved: "%{actor} keurde uw verzoek om lid te worden van %{title} goed"
       new_comment: "%{actor} reageerde in: %{title}"
       new_coordinator: "%{actor} heeft u beheerder gemaakt van %{title}"
-      outcome_announced: "%{actor} deelde een %{poll_type} resultaat: %{title}"
-      outcome_created: "%{actor} deelde een %{poll_type} resultaat: %{title}"
-      outcome_updated: "%{actor} wijzigde het %{poll_type} resultaat: %{title}"
+      outcome_announced: "%{actor} deelde een %{poll_type} conclusie: %{title}"
+      outcome_created: "%{actor} deelde een %{poll_type} conclusie: %{title}"
+      outcome_updated: "%{actor} wijzigde het %{poll_type} conclusie: %{title}"
       outcome_review_due: 'Het is tijd om de uitkomst te bekijken van: %{title}'
       poll_closed_by_user: "%{actor} heeft de %{poll_type} gesloten: %{title}"
       poll_closing_soon: "%{poll_type} sluit binnen 24 uur: %{title}"
@@ -686,6 +701,10 @@ nl_NL:
       group_mentioned: "%{actor} noemde de groep in: %{title}"
       new_delegate: "%{actor} heeft je tot afgevaardigde met stemrecht gemaakt in %{title}"
       poll_announced: "%{actor} heeft je uitgenodigd om te stemmen: %{title}"
+      discussion_announced: "%{actor} heeft je uitgenodigd voor de discussie: %{title}"
+      discussion_edited: "%{actor} heeft de discussiecontext bewerkt: %{title}"
+      discussion_closed: "%{actor} heeft de discussie gesloten: %{title}"
+      new_discussion: "%{actor} startte een discussie: %{title}"
     without_title:
       unknown_sender: Controleer de e-mail van een onbekende afzender
       group_announced: "%{actor} heeft je uitgenodigd voor een groep"
@@ -696,7 +715,6 @@ nl_NL:
       membership_request_approved: "%{actor} keurde uw verzoek om lid te worden van %{title} goed"
       outcome_announced: "%{actor} heeft een %{poll_type} uitkomst gedeeld"
       outcome_created: "%{actor} heeft een %{poll_type} uitkomst gedeeld"
-      outcome_updated: "%{actor} heeft de uitkomst bijgewerkt"
       outcome_review_due: Het is tijd om de uitkomst van %{poll_type} te bekijken
       poll_announced_wip: "%{actor} wil uw feedback over een %{poll_type}"
       poll_closed_by_user: "%{actor} heeft de %{poll_type} gesloten"
@@ -718,9 +736,16 @@ nl_NL:
       user_reminded: "%{actor} herinnert je eraan om te stemmen"
       group_mentioned: "%{actor} noemde de groep"
       poll_announced: "%{actor} heeft je uitgenodigd om te stemmen op een %{poll_type}"
+      discussion_announced: "%{actor} heeft je uitgenodigd voor een discussie"
+      discussion_edited: "%{actor} heeft de discussiecontext bewerkt"
+      discussion_closed: "%{actor} heeft de discussie gesloten"
+      new_discussion: "%{actor} is een discussie gestart"
+      new_comment: "%{actor} heeft gereageerd in een discussie"
+      outcome_updated: "%{actor} heeft de uitkomst bijgewerkt"
     hints:
       poll_closing_soon: Dit is een goed moment om te stemmen, van gedachten te veranderen of anderen aan te moedigen om mee te doen.
       poll_closing_soon_author: Misschien wilt u mensen eraan herinneren om te stemmen of de deadline verlengen.
+      outcome_review_due: Overweeg om een feedbackpoll te starten of een nieuwe discussie te starten waarin u uitnodigt tot reflecties over de manier waarop de beslissing is uitgevoerd.
     email_subject:
       unknown_sender: E-mail van onbekende afzender bekijken
       comment_replied_to: "%{actor} heeft op je gereageerd in: %{title}"
@@ -758,9 +783,15 @@ nl_NL:
       group_mentioned: "%{actor} noemde de groep in: %{title}"
       user_reminded: "%{actor} herinnert je eraan om te stemmen op: %{title}"
       poll_announced: 'Stem: %{title}'
+      discussion_edited: "%{actor} heeft de discussiecontext bewerkt: %{title}"
+      discussion_closed: "%{actor} heeft de discussie gesloten: %{title}"
   discussion_fork_actions:
     move: Verplaatsen
     moved: Reacties aan het verplaatsen, dit kan even duren
+    helptext: Selecteer de items die u naar een andere discussie wilt verplaatsen
+    search_placeholder: Zoek discussie op titel
+    move_to_existing_thread: Verplaatsen naar bestaande discussie
+    start_new_thread: Of begin een nieuwe discussie
   discussion_form:
     thread_templates: Draad sjablonen
     new_thread_template: Nieuw thread-sjabloon
@@ -774,7 +805,6 @@ nl_NL:
     invite_only_thread: Alleen op uitnodiging bord
     none_direct_thread: Direct bord (geen groep)
     none_invite_only_thread: Alleen op uitnodiging bord (geen groep)
-    change_log_placeholder: 'Optioneel: omschrijf je veranderingen. De omschrijving wordt toegevoegd aan het bord.'
     change_log_label: Wat is er veranderd?
     invite: Uitnodigen
     start_thread: Start discussie
@@ -798,6 +828,14 @@ nl_NL:
     privacy_organisation: Het bord zal zichtbaar zijn voor leden van %{parent} en leden van %{group}
     fork_notice: Er wordt een nieuwe thread gemaakt met %{count} items uit %{title}
     notify_group: stuur melding naar groep
+    none_invite_only_discussion: Geen (discussie alleen op uitnodiging)
+    new_discussion_template: Nieuwe discussiesjabloon
+    edit_discussion_template: Discussiesjabloon bewerken
+    change_log_placeholder: Beschrijf eventueel uw wijzigingen. Dit bericht wordt aan de discussie toegevoegd.
+    start_discussion: Start discussie
+    discussion_updated: Discussie bijgewerkt
+    discussion_created: Discussie gecreëerd
+    discussion_started: Discussie gestart
   announcement:
     send_discussion: Bord verzenden
     send_group: Nodig mensen uit voor %{name}
@@ -915,6 +953,8 @@ nl_NL:
       has_not_read_thread: Hebben bord niet gezien
       has_not_joined_yet: Is nog niet lid
       has_not_joined_yet_hint: Deze gebruiker heeft de uitnodiging om lid te worden van Loomio niet geaccepteerd en ontvangt geen verdere meldingen totdat hij dit wel doet
+      discussion_admin: Discussiebeheerder
+      has_not_read_discussion: Heeft de discussie niet bekeken
     group_form:
       search_placeholder: Zoek naar mensen...
       modal_title: Selecteer groepsleden
@@ -922,6 +962,8 @@ nl_NL:
       success: "%{count} meldingen verzonden"
     group_mentioned: "%{name} noemde de groep met %{length} mensen:"
     poll_announced: "%{name} heeft %{length} mensen uitgenodigd om te stemmen:"
+    discussion_notification_history: Discussiemeldingsgeschiedenis
+    inviting_guests_to_discussion: Gasten behoren niet tot uw groep en hebben alleen toegang tot deze discussie
   action_dock:
     actions_menu: Actie menu
     more_actions: Meer acties
@@ -976,6 +1018,11 @@ nl_NL:
     add_poll_to_thread: Voeg toe aan bord
     count_members: "%{count} leden"
     count_voters: "%{count} kiezers"
+    pin_discussion: Pin discussie
+    unpin_discussion: Discussie losmaken
+    close_discussion: Discussie sluiten
+    reopen_discussion: Discussie heropenen
+    delete_discussion: Discussie verwijderen
   formatting:
     formatting_tools: Tekst-formatteer tools
     colors: Kleuren
@@ -1053,6 +1100,7 @@ nl_NL:
     introduction_over_limit: Antwoord te lang
     messages:
       membership_requested: Je hebt verzocht om lid te worden van %{group}
+    aria_label: Aanvraagformulier lidmaatschap
   revision_history_modal:
     discussion_header: Discussie wijzigingen
     comment_header: Reactie wijzigingen
@@ -1071,6 +1119,7 @@ nl_NL:
     closing_at_changed: sluitingstijd ingesteld op %{time}
     private_changed: privacy ingesteld op %{private}
     group_id_changed: verplaatst naar %{name}
+    aria_label: Revisiegeschiedenis
   reactions_input:
     add_your_reaction: Voeg je reactie toe
   reactions_display:
@@ -1156,9 +1205,14 @@ nl_NL:
       private: 'Privacy: Deze groep is alleen zichtbaar voor leden.'
       parent_members: 'Privacy: Deze groep is zichtbaar voor leden van %{parentGroupName} en leden van %{groupName}'
       public: 'Privacy: Deze groep is zichtbaar op het web'
+      aria_label: 'Groepsprivacy: %{privacy}'
     participation_report: Deelname verslag
     my_subgroups: Mijn subgroepen
     more_subgroups: Meer subgroepen
+    discussions: Discussies
+    no_discussions_here: Er zijn hier geen discussies te zien!
+    private_discussions: Je moet lid zijn om de privéthreads in deze groep te kunnen bekijken
+    view_closed_discussions: Bekijk gesloten discussies
   export_data_modal:
     title: Hoe wil je je data gebruiken?
     as_csv: Openen in een spreadsheet
@@ -1173,10 +1227,12 @@ nl_NL:
     title: Verlaat groep
     question: Weet je zeker dat je de groep wil verlaten?
     submit: Ja, verlaat deze groep
+    aria_label: Groep verlaten
   archive_group_form:
     title: Deactiveer groep
     question: Weet je zeker dat je de groep wil deactiveren?
     submit: Ja, deactiveer deze groep
+    aria_label: Groep deactiveren
   group_form:
     thread_defaults_help: Standaard instellingen voor nieuwe borden
     click_to_change_image: Klik om de omslagafbeelding (4x1) of het logo (1x1) te wijzigen
@@ -1276,6 +1332,9 @@ nl_NL:
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Upgrade uw abonnement</a> om een subgroep te creëren'
     share_this_url_with_people_who_want_to_join: Deel deze URL met mensen die mee willen doen
     new_description_html: "<h3>Voor welke uitdagingen staat uw organisatie bij het nemen van beslissingen?</h3><p></p><h3> Hoe wilt u Loomio in uw organisatie gebruiken?</h3><p></p>"
+    allow_polls_without_threads: Polls zonder threads toestaan
+    allow_polls_without_threads_help: Sta afzonderlijke peilingen toe (niet aanbevolen). Zonder discussie kunnen mensen geen vragen stellen of effectief consensus bereiken.
+    aria_label: Groepsvorm
   group_export_modal:
     title: Groepsdata exporteren
     body: |
@@ -1344,6 +1403,7 @@ nl_NL:
     shareable_link_to_join_group: Deelbare link om lid te worden van de groep
     reset_the_link: Link resetten
     email_addresses_placeholder: bijv. helperbot{'@'}loomio.org, friendlybot{'@'}loomio.org
+    aria_label: Uitnodigingsformulier
   memberships_page:
     members: Leden
     name_label: Naam
@@ -1447,6 +1507,7 @@ nl_NL:
     use_uploaded: Upload nieuwe foto
     existing_upload: Bestaande upload
     use_provider: Gebruik %{provider} foto
+    aria_label: Profielfotoformulier
   change_password_form:
     set_password_title: Stel wachtwoord in
     set_password_helptext: Gelieve een wachtwoord in te geven - minimum 8 karakters
@@ -1537,6 +1598,7 @@ nl_NL:
       muted: Gedempte borden
       muted_aria_label: Toont de momenteel gedempte borden
       muted_description: Bekijk alleen borden die gedempt zijn
+      all: Recente discussies
     thread_preview:
       you_voted: Je hebt %{position} gestemd
       undecided: Je bent onbeslist
@@ -1550,8 +1612,14 @@ nl_NL:
       thisweek: Deze week
       thismonth: Deze maand
       older: Ouder dan een maand
+    dashboard: Dashboard
+    recent_discussions: Recente discussies
+    view_recent: Alle recente discussies bekijken?
+    discussion_marked_as_read: Discussie gemarkeerd als gelezen
+    discussion_marked_as_unread: Discussie gemarkeerd als ongelezen
   threads_page:
     no_direct_threads: Je hebt geen directe borden
+    no_invite_only_threads: Je hebt geen alleen-op-uitnodiging-threads
   inbox_page:
     no_threads: Woehoe! Je hebt alle borden in je postvak gelezen.
     unread_threads: Ongelezen borden
@@ -1560,6 +1628,9 @@ nl_NL:
       start: Start
       or: of
       join_group: <a href="/explore">word lid</a> van een groep om borden te zien.
+      explanation: U heeft geen ongelezen discussies omdat u geen lid bent van een groep.
+    no_discussions: Joepie! Je hebt alle discussies in je inbox gelezen.
+    unread_discussions: Ongelezen discussies
   discussion:
     direct_thread: Directe draad
     invite_only: Alleen op uitnodiging
@@ -1580,6 +1651,9 @@ nl_NL:
     closed:
       reopened: Bord heropend
       closed: Bord gesloten
+    volume:
+      mute_message: Discussie gedempt
+      unmute_message: Discussie gedempt
   discussion_last_seen_by:
     title: Gezien door
     no_one: Nog niemand heeft dit gezien
@@ -1595,34 +1669,19 @@ nl_NL:
     nested: Genesteld
     attachment_display:
       image_alt: Toegevoegde afbeelding
+      aria_label: 'Bijgevoegd bestand:'
     n_previous: Laad %{count} eerdere reacties
     n_more: Laad %{count} reacties
     add_comment: Reactie toevoegen
     add_poll: Voeg peiling toe
-    add_outcome: Voeg resultaat toe
+    add_outcome: Voeg conclusie toe
     comment: Geef reactie
     facilitate: Faciliteren
     start_decision: Begin beslissing
     start_vote: Begin met stemmen
-  thread_context:
-    current_poll_type_banner: Huidig %{pollType}
-    item_maybe_deleted: De gevraagde locatie konden we niet vinden op het bord. Het zou verwijderd kunnen zijn.
-    thread_options: Bord opties
-    email_settings: Melding instellingen
-    edit: Bewerk
-    edit_thread: Bewerken
-    close_thread: Sluiten
-    reopen_thread: Heropen
-    pin_thread: Vastprikken
-    unpin_thread: Ontprikken
-    mute_thread: Dempen
-    move_thread: Verplaatsen
-    print_thread: Afdrukken
-    delete_thread: Verwijderen
-    add_comment: Geef reactie
-    seen_by_count: Gezien door %{count}
-    count_notified: Melding %{count}
-    forked_from: Geforked van
+    event_pinned: Toegevoegd aan discussietijdlijn
+    event_unpinned: Verwijderd uit discussietijdlijn
+    start_a_vote: Start een stemming
   thread_arrangement_form:
     edit: Lay-out bewerken
     title: Bord layout
@@ -1797,9 +1856,9 @@ nl_NL:
     participate: Bijdragen
     vote: Stem
     votes: Stemmen
-    update_outcome: Resultaat vernieuwen
-    outcome: Resultaat
-    outcomes: Resultaten
+    update_outcome: Conclusie vernieuwen
+    outcome: Conclusie
+    outcomes: Conclusies
     statement: Verklaring
     change_your_stance: Bewerk antwoord
     load_more: Laad meer
@@ -1815,7 +1874,7 @@ nl_NL:
     share_count: "'Check' delen"
     start_poll: Start een beslissing
     publish_poll: "'Peiling' delen"
-    share_outcome: Deel resultaat
+    share_outcome: Deel conclusie
     view_all: Bekijk alles
     save_changes: Bewaren
     change_vote: Verander je stem
@@ -1825,7 +1884,7 @@ nl_NL:
     too_long: Te lang
     edit_warning: Wijzigen wordt alleen aanbevolen voor kleine veranderingen of spellingcorrecties. Voor grotere verandering, sluit deze %{pollType} en start een nieuwe.
     no_voting: Alleen bestemd voor discussies, stemmen gedeactiveerd
-    post_outcome: Post-uitkomst
+    post_outcome: Uitkomst publiceren
     view_all_votes: Bekijk alle stemmen
     you_voted: Je hebt gestemd
   poll_common_attachment_form:
@@ -1857,6 +1916,8 @@ nl_NL:
     no_results_found: Geen resultaten voor "%{search}"
     welcome_to_your_new_group: Welkom bij je nieuwe Loomio-groep!
     lets_start_a_thread: Laten we een draadje starten. Klik op "Nieuw onderwerp" om door te gaan.
+    lets_start_a_discussion: Laten we een discussie starten. Klik op 'Nieuwe discussie' om verder te gaan.
+    new_discussion: Nieuwe discussie
   members_panel:
     bot: Bot
     no_results: Geen leden gevonden
@@ -1999,7 +2060,7 @@ nl_NL:
     reminded: Herinnering gestuurd!
     reminder_sent: Herinneringsmelding verstuurd
   poll_common_set_outcome_panel:
-    enter_outcome: Voer resultaat in
+    enter_outcome: Voer conclusie in
     poll_type: Deze %{poll_type} is gesloten. Neem de tijd om de resultaten te overwegen en deel vervolgens een uitkomst zodat mensen weten wat er vervolgens gaat gebeuren.
     enter_an_outcome: Voer een uitkomst in
   poll_common_outcome_form:
@@ -2011,7 +2072,7 @@ nl_NL:
     new_title: Voer een resultaat in
     update_title: Resultaat vernieuwen
     outcome_created: Resultaat aangemaakt
-    outcome_updated: Resultaat bijgewerkt
+    outcome_updated: Conclusie bijgewerkt
     statement_placeholder: Vat de reacties samen en leg uit wat er daarna gebeurt.
     you_will_be_notified: Je krijgt een melding op de beoordelingsdatum.
     submit: Deel resultaat
@@ -2127,10 +2188,10 @@ nl_NL:
     sentence: "%{numerator} van %{denominator} personen hebben gestemd (%{percent}%)"
     target_progress: "%{percent}% van doel bereikt. (%{num} / %{target})"
     pct_of_eligible_voters_must_participate: "%{pct}% van de stemgerechtigde kiezers moet deelnemen"
-    pct_participation: "%{num} van %{total} uitgebrachte stemmen (%{pct}% deelname)"
     vote_short_of_quorum: Nog 1 stem nodig om het quorum van %{pct}% te bereiken
     votes_short_of_quorum: "%{num} meer stemmen nodig om het quorum van %{pct}% te bereiken"
     quorum_reached: Quorum van %{pct}% is bereikt
+    pct_participation: "%{num} van %{total} uitgebrachte stemmen (%{pct}% deelname)"
   poll_meeting_chart_panel:
     total: Totaal
   poll_remove_vote:
@@ -2329,6 +2390,8 @@ nl_NL:
       outcome_created: Een resultaat is gedeeld
       outcome_updated: Een resultaat wordt bijgewerkt
       outcome_review_due: Er komt een resultaatbeoordeling
+      new_discussion: Er wordt een discussie gestart
+      discussion_edited: Er is een discussie bewerkt
     permissions_explaination: Selecteer welke acties door deze integratie kunnen worden uitgevoerd
     permissions:
       show_discussion: toon discussie
@@ -2379,6 +2442,8 @@ nl_NL:
     month: Maand
     year: Jaar
     country_disclaimer: Land is gebaseerd op het IP-adres van de gebruiker en is niet erg nauwkeurig. Beschouw dit slechts als een ruwe handleiding.
+    total_discussions: Totale discussies
+    discussions_with_polls: Discussies met peilingen
   tips:
     youve_completed_all_the_steps: "\U0001F389 Je hebt alle stappen voltooid!"
     getting_started_checklist: Checklist voor aan de slag
@@ -2414,7 +2479,12 @@ nl_NL:
         helptext: "<p>Om de besluitvorming te versnellen, hebben voorstellen een deadline om te stemmen. Zodra de deadline is bereikt, wordt de stemming gesloten en ontvangt u een melding om de uitkomst van het voorstel te delen.</p><p> De uitkomst biedt de mogelijkheid om te bepalen of het voorstel succesvol was en wat er vervolgens gaat gebeuren.</p><p> Als de deadline voor uw voorstel nog niet is verstreken, maar u toch wilt doorgaan, kunt u <b>op Eerder sluiten</b> klikken.</p><p> Wanneer de tijd rijp is, <b>voert u een uitkomst</b> voor uw voorstel in.</p>"
         submit: Bekijk voorstel
         cancel: Doe dit later
+      start_a_discussion:
+        title: Start een discussie
+        helptext: "<p>Creëer een discussie die mensen zien nadat ze hun uitnodiging hebben geaccepteerd.</p><p> Het is de bedoeling om mensen aan te moedigen hun eerste reactie in Loomio te schrijven.</p><p> Om het u gemakkelijk te maken, hebben we een <b>oefendiscussiesjabloon</b> voor u gemaakt dat u kunt gebruiken.</p>"
+        submit: Zie discussiesjablonen
     get_started_here: Begin hier
+    try_loomio_with_your_group: Probeer Loomio met uw groep
   poll_common_settings:
     who_can_vote: Wie mag stemmen?
     specified_voters_only_true: Alleen genodigden
@@ -2569,3 +2639,49 @@ nl_NL:
     invited_by: Uitgenodigd door
     invited_on: Uitgenodigd op
     no_receipts: Deze anonieme poll is gesloten voordat de verificatiefunctie bestond. Verificatie is daarom niet mogelijk.
+  close_discussion_modal:
+    body: Sluit discussies om ze uit de lijst met open discussies te verwijderen en te voorkomen dat mensen commentaar kunnen leveren.
+  comment_reply_form:
+    aria_label: Voeg een antwoord toe
+  discussion_template:
+    browse_public_templates: Blader door de sjabloongalerij
+    start_a_new_discussion: Start een nieuwe discussie
+    discussion_template_saved: Discussiesjabloon opgeslagen
+    these_are_public_templates: Deze sjablonen kunt u kopiëren of aanpassen aan uw groep
+    these_are_templates: Dit zijn de discussiesjablonen in je groep. Klik op een sjabloon om een discussie te starten. Je kunt deze desgewenst ook bewerken, verwijderen of opnieuw ordenen.
+    default_title_label: Standaardtitel
+    default_title_hint: Vul het titelveld vooraf in met bewerkbare tekst. Dit is optioneel; laat het leeg als u het niet zeker weet.
+    title_placeholder_label: Voorbeeldtitel
+    title_placeholder_hint: Een voorbeeld om weer te geven op de achtergrond van het titelveld
+    title_placeholder_placeholder: bv. Dit is hoe achtergrondtekst eruit ziet
+    example_description_label: Voorbeeldbeschrijving
+    example_description_placeholder: Zorg voor een sjabloon waarmee mensen een discussie kunnen starten
+    hidden_templates: Verborgen sjablonen
+    confirm_delete: Weet u zeker dat u deze discussiesjabloon wilt verwijderen?
+    add_poll_template: Pollsjabloon toevoegen
+    add_poll_template_help: Selecteer alle poll-sjablonen die u helpen dit proces te voltooien
+    recommended_poll_templates: Aanbevolen poll-sjablonen
+    share_in_template_gallery: Deel deze sjabloon in de openbare sjabloongalerij
+  context_panel:
+    thread_status:
+      pinned: Deze discussie is vastgezet en blijft bovenaan de discussielijst van de groep staan voor alle gebruikers.
+      closed: Deze discussie is gesloten. Deze verschijnt niet meer op het dashboard en wordt weergegeven onder 'gesloten' op de groepspagina.
+  thread_group:
+    aria_label: Groepsnaam
+  discussion_context:
+    current_poll_type_banner: Huidige %{pollType}
+    seen_by_count: Gezien door %{count}
+    count_notified: "%{count} gemeld"
+    start_a_vote: Start een stemming
+  pin_discussion_modal:
+    helptext: Vastgezette discussies verschijnen altijd in de discussielijst van de groep.
+  delete_discussion_form:
+    body: Weet u zeker dat u deze discussie wilt verwijderen?
+    discussion_deleted: Discussie verwijderd
+  move_discussion_form:
+    title: Discussie verplaatsen naar een andere groep
+    body: Bestemmingsgroep
+    confirm: Discussie verplaatsen
+    confirm_change_to_private: "%{groupName} is een open groep. Als u doorgaat, wordt deze discussie openbaar."
+    messages:
+      success: Discussie verplaatst naar %{name}

@@ -55,8 +55,6 @@ ca:
     to_use_loomio_with_your_org_start_trial: Quan estigueu preparat per provar Loomio amb la vostra organització, inicieu una prova gratuïta.
     templates: Plantilles
     make_a_copy: Fes una còpia
-    this_thread_is_a_template: Aquest fil és una plantilla. Feu-ne una còpia si la voleu utilitzar.
-    this_is_a_poll_template: Aquesta és una plantilla d'enquesta. Fes una còpia si vols començar a votar.
     try_loomio: Prova Loomio
     start_a_demo_group: Inicieu un grup de demostració
     start_a_demo: Inicieu una demostració
@@ -388,6 +386,9 @@ ca:
     email_me_this_address: Envieu-me aquesta adreça per correu electrònic
     email_address_copied_to_clipboard: S'ha copiat l'adreça de correu electrònic al porta-retalls
     forward_email_to_move_conversation: 'Consell: reenvieu una conversa per correu electrònic a Loomio quan necessiteu prendre una decisió o mantenir un registre.'
+    start_a_discussion_by_email: Inicia una discussió per correu electrònic
+    send_email_to_start_discussion: Envia un correu electrònic a aquesta adreça per iniciar una discussió al teu grup.
+    subject_body_attachments: L'assumpte del correu electrònic esdevé el títol de la discussió, el cos del correu electrònic esdevé la descripció. Els fitxers adjunts també es copien.
   volume_levels:
     loud: Fort
     normal: Normal
@@ -428,6 +429,7 @@ ca:
         loud: Rebreu correus electrònics per l'activitat d'aquest fil.
         normal: Rebreu correus electrònics notificant les propostes d'aquest fil
         quiet: No rebreu cap correu electrònic amb relació a aquest fil
+      title: Notificacions de debats
     membership:
       title: Notificacions per %{title}
       loud_description: Rebreu correus electrònics sempre que hi hagi activitat en aquest grup.
@@ -459,7 +461,6 @@ ca:
         normal: Rebreu correus electrònics sobre l'activitat de grups nous.
         quiet: No rebreu cap correu electrònic sobre els grups nous.
     change_your_email_settings: Canvieu la configuració del vostre correu electrònic
-    when_would_you_like_to_be_emailed_thread: Quan vols rebre un correu electrònic sobre aquest fil?
     when_would_you_like_to_be_emailed_group: Quan vols rebre un correu electrònic sobre aquest grup?
     changes_all_threads_in_group: Això canvia la configuració de tots els fils del grup.
     what_do_the_options_mean: Què signifiquen les opcions?
@@ -473,6 +474,10 @@ ca:
     when_do_you_want_to_be_emailed: Quan vols que t'enviem el correu electrònic?
     what_the_options_mean: Què signifiquen les opcions
     quiet_explained: No rebràs correus electrònics, ni tan sols quan algú intenti notificar-te. És possible que et perdis anuncis o decisions importants, tret que tinguis el costum de consultar Loomio regularment.
+    when_would_you_like_to_be_emailed_discussion: Quan vols rebre correus electrònics sobre aquesta discussió?
+    changes_all_discussions_and_polls_in_group: Això canvia la configuració de totes les discussions i enquestes del grup.
+    normal_explained: Quan algú introdueix el vostre nom al camp "Notificar" d'una discussió o una enquesta, o bé {'@'}esmenta el grup.
+    aria_label: Formulari de canvi de configuració del correu electrònic
   close_explanation_modal:
     close_thread: Tanca el fil de discussió
     body: |
@@ -491,6 +496,7 @@ ca:
     title: La vostra sessió ha finalitzat
     message: Heu finalitzat la sessió des d'una altra finestra. Torneu a iniciar sessió per continuar.
     ok: D'acord
+    aria_label: La sessió ha finalitzat
   comment_form:
     attachments:
       add_attachment: Adjunta un fitxer
@@ -515,6 +521,7 @@ ca:
     private_privacy_notice: El comentari només serà visible pels membres de %{groupName}.
     public_privacy_notice: El comentari serà visible per a tothom.
     sign_in: Inicieu la sessió per unir-vos a la conversa
+    add_a_comment: Afegeix un comentari
   thread_nav:
     participants: Participants
   sidebar:
@@ -543,6 +550,10 @@ ca:
       groups_list: Grups
       user_list: Accions dels usuaris
     user_settings: Configuració de l'usuari
+    invite_only_discussions: Debats només amb invitació
+    unread_discussions_count: Debats no llegits (%{count})
+    new_group: Grup nou
+    new_subgroup: Nou subgrup
   strand_nav:
     newest: Més recent
     oldest: Més antic
@@ -598,6 +609,7 @@ ca:
     search_members_short: Cerca membres
     search_files_short: Cerca fitxers
     search_subgroups_short: Cerca subgrups
+    search_discussions_in_group: Cerca debats a %{name}
   user_dropdown:
     pin_sidebar: Fixa la barra lateral
     unpin_sidebar: Deixa de fixar la barra lateral
@@ -628,6 +640,7 @@ ca:
     invite_to_poll: Convida a la votació
     invite_to_wip_poll: Convida a donar comentaris
     invitations: Invitacions
+    discussion_members: Membres de la discussió
   membership_dropdown:
     set_name_and_username: Estableix nom i nom d'usuari
     set_title: Estableix un títol
@@ -638,6 +651,7 @@ ca:
     remove_from:
       group: Eliminar del grup
       poll: Eliminar del %{pollType}
+      discussion: Elimina de la discussió
     cancel_invitation: Cancel·la la invitació
     view_profile: Veure el perfil
     revoke_admin: Revoca l'administrador
@@ -648,6 +662,7 @@ ca:
     poll: 'enquesta:'
     outcome: 'resultat:'
     stance: 'votar:'
+    discussion: 'discussió:'
   notifications:
     header: Notificacions
     no_notifications: No teniu cap notificació
@@ -686,6 +701,10 @@ ca:
       group_mentioned: "%{actor} ha mencionat el grup a: %{title}"
       new_delegate: "%{actor} et va convertir en delegat amb dret de vot a %{title}"
       poll_announced: "%{actor} t'ha convidat a votar: %{title}"
+      discussion_announced: "%{actor} t'ha convidat a la discussió: %{title}"
+      discussion_edited: "%{actor} ha editat el context de la discussió: %{title}"
+      discussion_closed: "%{actor} ha tancat la discussió: %{title}"
+      new_discussion: "%{actor} ha iniciat una discussió: %{title}"
     without_title:
       unknown_sender: Reviseu el correu electrònic d'un remitent no reconegut
       group_announced: "%{actor} t'ha convidat a un grup"
@@ -696,7 +715,6 @@ ca:
       membership_request_approved: "%{actor} ha aprovat la teva sol·licitud per unir-te a %{title}"
       outcome_announced: "%{actor} ha compartit la conclusió de %{poll_type}"
       outcome_created: "%{actor} ha compartit la conclusió de %{poll_type}"
-      outcome_updated: "%{actor} ha actualitzat la conclusió"
       outcome_review_due: És hora de revisar la conclusió de %{poll_type}
       poll_announced_wip: "%{actor} vol els teus comentaris sobre un %{poll_type}"
       poll_closed_by_user: "%{actor} ha tancat el %{poll_type}"
@@ -718,9 +736,16 @@ ca:
       user_reminded: "%{actor} us recorda que heu de votar"
       group_mentioned: "%{actor} ha mencionat el grup"
       poll_announced: "%{actor} t'ha convidat a votar en una %{poll_type}"
+      discussion_announced: "%{actor} t'ha convidat a una discussió"
+      discussion_edited: "%{actor} ha editat el context de la discussió"
+      discussion_closed: "%{actor} ha tancat la discussió"
+      new_discussion: "%{actor} ha iniciat una discussió"
+      new_comment: "%{actor} ha comentat en una discussió"
+      outcome_updated: "%{actor} ha actualitzat el resultat"
     hints:
       poll_closing_soon: Ara és un bon moment per votar, canviar d'opinió o animar els altres a participar.
       poll_closing_soon_author: És possible que vulgueu recordar a la gent que voten o allargar el termini.
+      outcome_review_due: Penseu en iniciar una enquesta de comentaris o una nova discussió que convidi a reflexionar sobre com s'ha implementat la decisió.
     email_subject:
       unknown_sender: Revisa el correu electrònic d'un remitent desconegut
       comment_replied_to: "%{actor} t'ha respost a: %{title}"
@@ -758,9 +783,15 @@ ca:
       group_mentioned: "%{actor} ha esmentat el grup a: %{title}"
       user_reminded: "%{actor} et recorda que votes a: %{title}"
       poll_announced: 'Vot: %{title}'
+      discussion_edited: "%{actor} ha editat el context de la discussió: %{title}"
+      discussion_closed: "%{actor} ha tancat la discussió: %{title}"
   discussion_fork_actions:
     move: Mou
     moved: S'estan movent els comentaris, aquesta acció podria tardar uns minuts
+    helptext: Selecciona els elements que vols moure a una altra discussió
+    search_placeholder: Cerca debats per títol
+    move_to_existing_thread: Moure a la discussió existent
+    start_new_thread: O bé, inicia una nova discussió
   discussion_form:
     thread_templates: Plantilles de fil
     new_thread_template: Nova plantilla de fil
@@ -774,7 +805,6 @@ ca:
     invite_only_thread: Fil amb accés per invitació
     none_direct_thread: Fil directe (sense grup)
     none_invite_only_thread: Fil amb accés per invitació (sense grup)
-    change_log_placeholder: Opcionalment, descriu els vostres canvis. Aquest missatge s'afegirà al fil.
     change_log_label: Què ha canviat?
     invite: Convida
     start_thread: Crea el fil
@@ -798,6 +828,14 @@ ca:
     privacy_organisation: El fil serà visible pels membres de %{parent} i pels membres de %{group}.
     fork_notice: Es crearà un fil nou amb %{count} elements de %{title}
     notify_group: Notifica al grup
+    none_invite_only_discussion: Cap (discussió només amb invitació)
+    new_discussion_template: Nova plantilla de discussió
+    edit_discussion_template: Edita la plantilla de discussió
+    change_log_placeholder: Opcionalment, descriviu els canvis. Aquest missatge s'afegirà a la discussió.
+    start_discussion: Inicia la discussió
+    discussion_updated: Discussió actualitzada
+    discussion_created: Discussió creada
+    discussion_started: Discussió iniciada
   announcement:
     send_discussion: Envia fil
     send_group: Convida gent a %{name}
@@ -915,6 +953,8 @@ ca:
       has_not_read_thread: No ha visualitzat el fil
       has_not_joined_yet: Encara no s'ha unit
       has_not_joined_yet_hint: Aquest usuari no ha acceptat la seva invitació per unir-se a Loomio i no rebrà més notificacions fins que ho faci
+      discussion_admin: Administrador de la discussió
+      has_not_read_discussion: No ha vist la discussió
     group_form:
       search_placeholder: Busca gent...
       modal_title: Selecciona membres del grup
@@ -922,6 +962,8 @@ ca:
       success: "%{count} notificacions enviades"
     group_mentioned: "%{name} ha mencionat el grup amb %{length} persones:"
     poll_announced: "%{name} ha convidat %{length} persones a votar:"
+    discussion_notification_history: Historial de notificacions de debats
+    inviting_guests_to_discussion: Els convidats no pertanyen al vostre grup i només tenen accés a aquesta discussió.
   action_dock:
     actions_menu: Menú d'accions
     more_actions: Més accions
@@ -976,6 +1018,11 @@ ca:
     add_poll_to_thread: Afegeix al fil
     count_members: "%{count} membres"
     count_voters: "%{count} votants"
+    pin_discussion: Fixar la discussió
+    unpin_discussion: Desfixar la discussió
+    close_discussion: Discussió tancada
+    reopen_discussion: Reobrir la discussió
+    delete_discussion: Suprimeix la discussió
   formatting:
     formatting_tools: Eines de formatació de text
     colors: Colors
@@ -1053,6 +1100,7 @@ ca:
     introduction_over_limit: La resposta és massa llarga
     messages:
       membership_requested: Has sol·licitat unir-te a %{group}
+    aria_label: Formulari de sol·licitud d'adhesió
   revision_history_modal:
     discussion_header: Edicions de la discussió
     comment_header: Edicions dels comentaris
@@ -1071,6 +1119,7 @@ ca:
     closing_at_changed: Es tancarà a %{time}
     private_changed: Privacitat establerta en %{private}
     group_id_changed: S'ha mogut a %{name}
+    aria_label: Historial de revisions
   reactions_input:
     add_your_reaction: Afegiu la vostra reacció
   reactions_display:
@@ -1156,9 +1205,14 @@ ca:
       private: 'Privacitat: Aquest grup només és visible pels membres'
       parent_members: 'Privacitat: Aquest grup és visible pels membres de %{parentGroupName} i els membres de %{groupName}'
       public: 'Privacitat: Aquest grup és visible a internet'
+      aria_label: 'Privacitat del grup: %{privacy}'
     participation_report: Informe de participació
     my_subgroups: Els meus subgrups
     more_subgroups: Més subgrups
+    discussions: Debats
+    no_discussions_here: No hi ha debats per veure aquí!
+    private_discussions: Cal que siguis membre per veure els fils privats d'aquest grup.
+    view_closed_discussions: Veure debats tancats
   export_data_modal:
     title: Com voleu utilitzar les vostres dades?
     as_csv: Obre en un full de càlcul
@@ -1173,10 +1227,12 @@ ca:
     title: Abandona el grup
     question: Esteu segur que voleu abandonar aquest grup?
     submit: Sí, abandona aquest grup
+    aria_label: Sortir del grup
   archive_group_form:
     title: Desactiva el grup
     question: Esteu segur que voleu desactivar aquest grup?
     submit: Sí, desactiva aquest grup
+    aria_label: Desactiva el grup
   group_form:
     thread_defaults_help: Configuració predeterminada per fils nous
     click_to_change_image: Feu clic per canviar la imatge de portada (4x1) o el logotip (1x1)
@@ -1276,6 +1332,9 @@ ca:
     upgrade_for_subgroups: 'Si us plau, <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">actualitza la teva subscripció</a> per crear un subgrup'
     share_this_url_with_people_who_want_to_join: Comparteix aquesta URL amb les persones que vulguin unir-s'hi
     new_description_html: "<h3>Quins reptes afronta la vostra organització a l'hora de prendre decisions?</h3><p></p><h3> Com t'agradaria utilitzar Loomio a la teva organització?</h3><p></p>"
+    allow_polls_without_threads: Permetre enquestes sense fils de discussió
+    allow_polls_without_threads_help: Permeteu enquestes independents (no recomanat). Sense un debat, la gent no pot plantejar preguntes ni generar consens de manera eficaç.
+    aria_label: Formulari de grup
   group_export_modal:
     title: Exporta dades del grup
     body: |
@@ -1344,6 +1403,7 @@ ca:
     shareable_link_to_join_group: Enllaç compartible per unir-se al grup
     reset_the_link: Restableix l'enllaç
     email_addresses_placeholder: p. ex. helperbot{'@'}loomio.org, friendlybot{'@'}loomio.org
+    aria_label: Formulari d'invitació
   memberships_page:
     members: Membres
     name_label: Nom
@@ -1447,6 +1507,7 @@ ca:
     use_uploaded: Penja una foto nova
     existing_upload: Pujada existent
     use_provider: Utilitza una foto de %{provider}
+    aria_label: Formulari de foto de perfil
   change_password_form:
     set_password_title: Estableix la contrasenya
     set_password_helptext: Introduïu una contrasenya amb un mínim de 8 caràcters.
@@ -1539,6 +1600,7 @@ ca:
       muted: Fils silenciats
       muted_aria_label: S'està mostrant els fils silenciats
       muted_description: Mostra només els fils que han estat silenciats
+      all: Debats recents
     thread_preview:
       you_voted: Has votat %{position}
       undecided: Esteu indecís
@@ -1552,8 +1614,14 @@ ca:
       thisweek: Aquesta setmana
       thismonth: Aquest mes
       older: Fa més d'un mes
+    dashboard: Tauler de control
+    recent_discussions: Debats recents
+    view_recent: Voleu veure totes les discussions recents?
+    discussion_marked_as_read: Discussió marcada com a llegida
+    discussion_marked_as_unread: Discussió marcada com a no llegida
   threads_page:
     no_direct_threads: No teniu fils directes
+    no_invite_only_threads: No tens fils només per invitació
   inbox_page:
     no_threads: Heu llegit tots els fils de la vostra safata.
     unread_threads: FIls no llegits
@@ -1562,6 +1630,9 @@ ca:
       start: Crea
       or: o
       join_group: <a href="/explore">uniu-vos</a> a un grup per veure els fils
+      explanation: No tens cap debat sense llegir perquè no ets membre de cap grup.
+    no_discussions: Ostres! Has llegit totes les discussions a la teva safata d'entrada.
+    unread_discussions: Debats no llegits
   discussion:
     direct_thread: Fil directe
     invite_only: Accés amb invitació
@@ -1582,6 +1653,9 @@ ca:
     closed:
       reopened: Fil reobert
       closed: Fil tancat
+    volume:
+      mute_message: Discussió silenciada
+      unmute_message: Discussió activada
   discussion_last_seen_by:
     title: Vist per
     no_one: Encara no ho ha vist ningú
@@ -1597,6 +1671,7 @@ ca:
     nested: Imbricat
     attachment_display:
       image_alt: Imatge adjunta
+      aria_label: 'Fitxer adjunt:'
     n_previous: Carrega %{count} respostes anteriors
     n_more: Carrega %{count} respostes
     add_comment: Afegeix comentari
@@ -1606,25 +1681,9 @@ ca:
     facilitate: Organitza
     start_decision: Començar la decisió
     start_vote: Comença la votació
-  thread_context:
-    current_poll_type_banner: "%{pollType} actual"
-    item_maybe_deleted: No s'ha trobat la localització que cercàveu dins del fil. Potser ha estat eliminada.
-    thread_options: Opcions del fil
-    email_settings: Preferències de notificacions
-    edit: Edita
-    edit_thread: Edita
-    close_thread: Tanca
-    reopen_thread: Reobre
-    pin_thread: Fixa
-    unpin_thread: Desfixa
-    mute_thread: Silencia
-    move_thread: Mou
-    print_thread: Imprimeix
-    delete_thread: Elimina
-    add_comment: Comentari
-    seen_by_count: Vist per %{count}
-    count_notified: "%{count} notificat"
-    forked_from: Bifurcat des de
+    event_pinned: Afegit a la cronologia del debat
+    event_unpinned: Eliminat de la cronologia de la discussió
+    start_a_vote: Inicia una votació
   thread_arrangement_form:
     edit: Edita el disseny
     title: Format del fil
@@ -1825,7 +1884,7 @@ ca:
     too_long: És massa llarg
     edit_warning: Només es recomana editar en cas d'haver de fer petits canvis o corregir errors tipogràfics. Per canvis més significatius, tanqueu aquesta %{pollType} i obriu-ne una de nova.
     no_voting: Només per debatre, la votació està desactivada
-    post_outcome: Resultat de la publicació
+    post_outcome: Publicar conclusió
     view_all_votes: Veure tots els vots
     you_voted: Vas votar
   poll_common_attachment_form:
@@ -1857,6 +1916,8 @@ ca:
     no_results_found: No s'ha trobat resultats per "%{search}"
     welcome_to_your_new_group: Benvingut al teu nou grup de Loomio!
     lets_start_a_thread: Comencem un fil. Feu clic a "Nou fil" per continuar.
+    lets_start_a_discussion: Iniciem una discussió. Feu clic a "Nova discussió" per continuar.
+    new_discussion: Nova discussió
   members_panel:
     bot: Bot
     everyone: Tothom
@@ -2127,10 +2188,10 @@ ca:
     sentence: "%{numerator} usuaris de %{denominator} ja han votat (%{percent}%)"
     target_progress: "%{percent}% de l'objectiu assolit. (%{num}/%{target})"
     pct_of_eligible_voters_must_participate: El %{pct}% dels votants amb dret a vot han de participar
-    pct_participation: "%{num} de %{total} vots emesos (%{pct}% de participació)"
     vote_short_of_quorum: Cal 1 vot més per assolir el quòrum del %{pct}%
     votes_short_of_quorum: Es necessiten %{num} vots més per assolir el quòrum del %{pct}%
     quorum_reached: S'ha assolit el quòrum del %{pct}%
+    pct_participation: "%{num} de %{total} vots emesos (%{pct}% de participació)"
   poll_meeting_chart_panel:
     total: Total
   poll_remove_vote:
@@ -2329,6 +2390,8 @@ ca:
       outcome_created: S'ha compartit un resultat
       outcome_updated: S'actualitza un resultat
       outcome_review_due: S'ha de fer una revisió dels resultats
+      new_discussion: S'inicia una discussió
+      discussion_edited: S'ha editat una discussió
     permissions_explaination: Seleccioneu quines accions es poden dur a terme mitjançant aquesta integració
     permissions:
       show_discussion: mostrar la discussió
@@ -2379,6 +2442,8 @@ ca:
     month: Mes
     year: Curs
     country_disclaimer: El país es basa en l'adreça IP de l'usuari i no és molt precís. Considereu-ho només com una guia aproximada.
+    total_discussions: Total de debats
+    discussions_with_polls: Debats amb enquestes
   tips:
     youve_completed_all_the_steps: "\U0001F389 Has completat tots els passos!"
     getting_started_checklist: Llista de comprovació per començar
@@ -2414,7 +2479,12 @@ ca:
         helptext: "<p>Per ajudar a fer avançar les decisions, les propostes tenen una data límit per a la votació. Quan s'arribi a la data límit, la votació es tancarà i se us notificarà que compartiu el resultat d'una proposta.</p><p> El resultat és una oportunitat per dir si la proposta ha tingut èxit i què passarà a continuació.</p><p> Si la data límit per a la proposta encara no ha passat, però voleu continuar igualment, podeu fer clic <b>a Tanca abans d'hora</b> .</p><p> Quan sigui el moment adequat, <b>introdueix un resultat</b> per a la teva proposta.</p>"
         submit: Veure proposta
         cancel: Fes això més tard
+      start_a_discussion:
+        title: Inicia una discussió
+        helptext: "<p>Crea una discussió que la gent pugui veure després d'acceptar la invitació.</p><p> La intenció és animar la gent a escriure el seu primer comentari a Loomio.</p><p> Per facilitar-ho, hem proporcionat una plantilla <b>de discussió pràctica</b> que podeu utilitzar.</p>"
+        submit: Veure plantilles de discussió
     get_started_here: Comença aquí
+    try_loomio_with_your_group: Prova Loomio amb el teu grup
   poll_common_settings:
     who_can_vote: Qui pot votar?
     specified_voters_only_true: Només persones convidades
@@ -2569,3 +2639,49 @@ ca:
     invited_by: Convidat per
     invited_on: Convidat el
     no_receipts: Aquesta enquesta anònima es va tancar abans que existís la funció de verificació, per la qual cosa la verificació no és possible.
+  close_discussion_modal:
+    body: Tanca les discussions per eliminar-les de la llista de discussions obertes i evitar que la gent comenti.
+  comment_reply_form:
+    aria_label: Afegeix una resposta
+  discussion_template:
+    browse_public_templates: Navega per la galeria de plantilles
+    start_a_new_discussion: Inicia una nova discussió
+    discussion_template_saved: S'ha desat la plantilla de discussió
+    these_are_public_templates: Aquestes plantilles estan disponibles perquè les copieu o les modifiqueu per adaptar-les al vostre grup.
+    these_are_templates: Aquestes són les plantilles de discussió del vostre grup. Feu clic a una plantilla per iniciar una discussió. També podeu editar-les, eliminar-les o reordenar-les si voleu.
+    default_title_label: Títol per defecte
+    default_title_hint: Ompliu prèviament el camp del títol amb text editable. Això és opcional; deixeu-ho en blanc si no esteu segurs.
+    title_placeholder_label: Exemple de títol
+    title_placeholder_hint: Un exemple per mostrar al fons del camp de títol
+    title_placeholder_placeholder: p. ex. Així és com es veu el text de fons
+    example_description_label: Descripció d'exemple
+    example_description_placeholder: Proporcioneu una plantilla que la gent pugui utilitzar per iniciar un fil
+    hidden_templates: Plantilles ocultes
+    confirm_delete: Esteu segur que voleu suprimir aquesta plantilla de discussió?
+    add_poll_template: Afegeix una plantilla d'enquesta
+    add_poll_template_help: Seleccioneu qualsevol plantilla d'enquesta que us ajudi a completar aquest procés
+    recommended_poll_templates: Plantilles d'enquesta recomanades
+    share_in_template_gallery: Comparteix aquesta plantilla a la galeria pública de plantilles
+  context_panel:
+    thread_status:
+      pinned: Aquesta discussió s'ha fixat. Romandrà al capdamunt de la llista de discussions del grup per a tots els usuaris.
+      closed: Aquesta discussió s'ha tancat. Ja no apareixerà al tauler de control i apareixerà a la llista de "tancada" a la pàgina del grup.
+  thread_group:
+    aria_label: Nom del grup
+  discussion_context:
+    current_poll_type_banner: "%{pollType} actual"
+    seen_by_count: Vist per %{count}
+    count_notified: Notificat %{count}
+    start_a_vote: Inicia una votació
+  pin_discussion_modal:
+    helptext: Les discussions fixades sempre apareixen a la llista de discussions del grup.
+  delete_discussion_form:
+    body: Esteu segur que voleu suprimir aquesta discussió?
+    discussion_deleted: Discussió suprimida
+  move_discussion_form:
+    title: Mou la discussió a un altre grup
+    body: Grup de destinació
+    confirm: Mou la discussió
+    confirm_change_to_private: "%{groupName} és un grup obert. Si continueu, aquesta discussió serà pública."
+    messages:
+      success: La discussió s'ha mogut a %{name}

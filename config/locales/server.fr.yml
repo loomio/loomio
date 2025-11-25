@@ -93,6 +93,7 @@ fr:
       process_introduction: "<p>Utilisez ce modèle pour accueillir les nouveaux membres et encourager leur participation précoce. Il permet aux participants de se présenter et d'explorer les fonctionnalités de Loomio.</p>"
       title: "\U0001F44B Bienvenue ! Dites bonjour et essayez !"
       description: "<p>Bienvenue dans notre groupe Loomio — c'est un plaisir de vous avoir ici !</p><p> Ce fil est un espace pour :</p><ul><li><p> Présentez-vous au groupe</p></li><li><p> Essayez certaines des fonctionnalités de Loomio - par exemple : essayez d'utiliser des réactions \U0001F44D</p></li><li><p> Posez toutes les questions que vous avez à ce stade</p></li></ul><p> Si vous ne savez pas quoi dire, un simple bonjour suffit \U0001F642</p>"
+      process_name: Discussion pratique
   explore:
     header: Explorer les groupes publics
   activerecord:
@@ -228,11 +229,11 @@ fr:
       explaination_html: "<p>Vous recevez cet e-mail car vous êtes administrateur du groupe Loomio : %{group}.</p><p> Le groupe a reçu un e-mail provenant d'une adresse e-mail non reconnue.</p><p> Si le message provient d'un membre du groupe, veuillez consulter l'e-mail et sélectionner le membre.</p><p> Si le message n'est pas désiré, vous pouvez bloquer tout autre e-mail provenant de cette adresse.</p>"
     notification_reason:
       group_subscribed: Vous avez reçu ceci parce que vous êtes abonné à toutes les activités du groupe.
-      thread_subscribed: Vous avez reçu ceci parce que vous êtes abonné au fil de discussion.
       group_mentioned: Vous avez reçu ceci parce que le groupe a été @mentionné.
       user_mentioned: Vous avez reçu ceci parce que vous avez été @mentionné.
       notified: Vous avez reçu ceci parce que l'auteur vous a averti.
       poll_subscribed: Vous avez reçu ce message car vous êtes abonné(e) au sondage.
+      discussion_subscribed: Vous avez reçu ce message car vous êtes abonné à la discussion.
   user_mailer:
     group_export_ready:
       subject: Export des données du groupe %{group_name}
@@ -336,6 +337,7 @@ fr:
       button_text: Voir la demande
     content_was_translated: Ce contenu a été traduit à partir de %{source_locale}
     content_was_translated_html: Ce contenu a été traduit depuis %{source_locale}. <a href="%{profile_url}">Afficher les paramètres<a></a>
+    loomio_app_description: Un lieu où les organisations collaboratives peuvent prendre des décisions ensemble.
   announcement_count_emails: "%{count} courriels"
   email_actions:
     unfollowed_discussion: Vous avez désactivé les notifications pour cette discussion.

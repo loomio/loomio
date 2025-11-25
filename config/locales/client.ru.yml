@@ -55,8 +55,6 @@ ru:
     to_use_loomio_with_your_org_start_trial: Когда вы будете готовы опробовать Loomio в своей организации, запустите бесплатную пробную версию.
     templates: Шаблоны
     make_a_copy: Сделать копию
-    this_thread_is_a_template: Эта тема является шаблоном. Сделайте копию, если хотите ее использовать.
-    this_is_a_poll_template: Это шаблон опроса. Сделайте копию, если хотите начать голосование.
     try_loomio: Попробуйте Loomio
     start_a_demo_group: Создать демо-группу
     start_a_demo: Запустить демо-версию
@@ -386,6 +384,9 @@ ru:
     email_me_this_address: Напишите мне этот адрес
     email_address_copied_to_clipboard: Адрес электронной почты скопирован в буфер обмена
     forward_email_to_move_conversation: 'Совет: пересылайте разговор по электронной почте в Loomio, когда вам нужно принять решение или вести запись.'
+    start_a_discussion_by_email: Начать обсуждение по электронной почте
+    send_email_to_start_discussion: Отправьте электронное письмо на этот адрес, чтобы начать обсуждение в вашей группе.
+    subject_body_attachments: Тема письма становится заголовком обсуждения, текст письма — описанием. Прикреплённые файлы также копируются.
   volume_levels:
     loud: Заметный
     normal: Нормальный
@@ -426,6 +427,7 @@ ru:
         loud: Вы будете оповещенны по эмаилу о всей активности в этой теме.
         normal: Вам будут приходить электронные письма касательно предложений в этой ветке.
         quiet: Вы не будете получать письма об этой ветке.
+      title: Уведомления об обсуждении
     membership:
       title: Уведомления для %{title}
       loud_description: Вы будете оповещенны по эмаилу о всей активности в этой группе.
@@ -457,7 +459,6 @@ ru:
         normal: Об объявлениях в новых группах вы будете получать электронное письмо.
         quiet: Вы не будете получать электронные письма о новых группах.
     change_your_email_settings: Измените настройки электронной почты
-    when_would_you_like_to_be_emailed_thread: Когда бы вы хотели получить электронное письмо по поводу этой темы?
     when_would_you_like_to_be_emailed_group: Когда бы вы хотели получать электронные письма об этой группе?
     changes_all_threads_in_group: Это изменяет настройки для всех потоков в группе.
     what_do_the_options_mean: Что означают эти варианты?
@@ -471,6 +472,10 @@ ru:
     when_do_you_want_to_be_emailed: Когда вы хотите получать электронные письма?
     what_the_options_mean: Что означают эти опции
     quiet_explained: Вы не будете получать электронные письма, даже если кто-то попытается вас уведомить. Вы можете пропустить важные объявления или решения, если не привыкли регулярно проверять Loomio.
+    when_would_you_like_to_be_emailed_discussion: Когда бы вы хотели получить уведомление по электронной почте об этом обсуждении?
+    changes_all_discussions_and_polls_in_group: Это изменяет настройки всех обсуждений и опросов в группе.
+    normal_explained: Когда кто-то вводит ваше имя в поле «Уведомить» обсуждения или опроса или {'@'}упоминает группу.
+    aria_label: Форма изменения настроек электронной почты
   close_explanation_modal:
     close_thread: Закрыть тему
     body: "<p>Закройте старые или нерелевантные темы, чтобы удалить их из поля зрения и указать, что обсуждение закрыто.</p><p> Любой желающий по-прежнему может комментировать или начинать опрос в закрытой теме, но он не будет отображаться в списке тем группы или на информационной панели.</p>"
@@ -487,6 +492,7 @@ ru:
     title: Ваша сессия закончилась
     message: Вы вышли из другого окна. Пожалуйста, войдите снова, чтобы продолжить.
     ok: Хорошо
+    aria_label: Сессия закончена
   comment_form:
     attachments:
       add_attachment: Приложить файл
@@ -511,6 +517,7 @@ ru:
     private_privacy_notice: Ваш комментарий будет виден только участникам %{groupName}.
     public_privacy_notice: Ваш комментарий будет виден всем пользователям сети
     sign_in: Войдите чтобы присоеденится к разговору
+    add_a_comment: Добавить комментарий
   thread_nav:
     participants: Участники
   sidebar:
@@ -539,6 +546,10 @@ ru:
       groups_list: Группы
       user_list: Активность пользователя
     user_settings: Настройки пользователя
+    invite_only_discussions: Обсуждения только по приглашениям
+    unread_discussions_count: Непрочитанные обсуждения (%{count})
+    new_group: Новая группа
+    new_subgroup: Новая подгруппа
   strand_nav:
     newest: Новейший
     oldest: Самый старый
@@ -594,6 +605,7 @@ ru:
     search_members_short: Поиск участников
     search_files_short: Поиск файлов
     search_subgroups_short: Поиск подгрупп
+    search_discussions_in_group: Поиск обсуждений в %{name}
   user_dropdown:
     pin_sidebar: Закрепить боковую панель
     unpin_sidebar: Открепить боковую панель
@@ -624,6 +636,7 @@ ru:
     invite_to_poll: Пригласить голосовать
     invite_to_wip_poll: Пригласить оставить отзыв
     invitations: Приглашения
+    discussion_members: Участники обсуждения
   membership_dropdown:
     set_name_and_username: Установить имя и имя пользователя
     set_title: Установить заголовок
@@ -634,6 +647,7 @@ ru:
     remove_from:
       group: Удалить из группы
       poll: Удалить из %{pollType}
+      discussion: Удалить из обсуждения
     cancel_invitation: Отменить приглашение
     view_profile: Посмотреть профиль
     revoke_admin: Отозвать администратора
@@ -644,6 +658,7 @@ ru:
     poll: 'голосование:'
     outcome: 'исход:'
     stance: 'голосование:'
+    discussion: 'обсуждение:'
   notifications:
     header: Уведомления
     no_notifications: У Вас нет уведомлений
@@ -682,6 +697,10 @@ ru:
       group_mentioned: "%{actor} упомянул группу в: %{title}"
       new_delegate: "%{actor} сделал вас делегатом с правом голоса в %{title}"
       poll_announced: "%{actor} пригласил вас проголосовать: %{title}"
+      discussion_announced: "%{actor} пригласил вас на обсуждение: %{title}"
+      discussion_edited: "%{actor} отредактировал контекст обсуждения: %{title}"
+      discussion_closed: "%{actor} закрыл обсуждение: %{title}"
+      new_discussion: "%{actor} начал обсуждение: %{title}"
     without_title:
       unknown_sender: Пожалуйста, просмотрите письмо от неизвестного отправителя
       group_announced: "%{actor} пригласил вас в группу"
@@ -692,7 +711,6 @@ ru:
       membership_request_approved: "%{actor} одобрил ваш запрос на присоединение к %{title}"
       outcome_announced: "%{actor} поделился результатом %{poll_type}"
       outcome_created: "%{actor} поделился результатом %{poll_type}"
-      outcome_updated: "%{actor} обновил результат"
       outcome_review_due: Пришло время просмотреть результат %{poll_type}
       poll_announced_wip: "%{actor} хочет получить ваш отзыв о %{poll_type}"
       poll_closed_by_user: "%{actor} закрыл %{poll_type}"
@@ -714,9 +732,16 @@ ru:
       user_reminded: "%{actor} напоминает вам проголосовать"
       group_mentioned: "%{actor} упомянул группу"
       poll_announced: "%{actor} пригласил вас проголосовать на %{poll_type}"
+      discussion_announced: "%{actor} пригласил вас на обсуждение"
+      discussion_edited: "%{actor} отредактировал контекст обсуждения"
+      discussion_closed: "%{actor} закрыл обсуждение"
+      new_discussion: "%{actor} начал обсуждение"
+      new_comment: "%{actor} прокомментировал в обсуждении"
+      outcome_updated: "%{actor} обновил результат"
     hints:
       poll_closing_soon: Сейчас хорошее время, чтобы проголосовать, передумать или призвать других к участию.
       poll_closing_soon_author: Возможно, вы захотите напомнить людям о необходимости проголосовать или продлить срок.
+      outcome_review_due: Рассмотрите возможность проведения опроса для получения обратной связи или организации нового обсуждения, в котором будут представлены размышления о том, как было реализовано решение.
     email_subject:
       unknown_sender: Просмотреть электронное письмо от неизвестного отправителя
       comment_replied_to: "%{actor} ответил вам в: %{title}"
@@ -754,9 +779,15 @@ ru:
       group_mentioned: "%{actor} упомянул группу в: %{title}"
       user_reminded: "%{actor} напоминает вам проголосовать за: %{title}"
       poll_announced: 'Голосование: %{title}'
+      discussion_edited: "%{actor} отредактировал контекст обсуждения: %{title}"
+      discussion_closed: "%{actor} закрыл обсуждение: %{title}"
   discussion_fork_actions:
     move: Переместить
     moved: Перемещение комментариев. Это может занять некоторое время.
+    helptext: Выберите пункты, которые вы хотите перенести в другое обсуждение.
+    search_placeholder: Найти обсуждение по названию
+    move_to_existing_thread: Перейти к существующему обсуждению
+    start_new_thread: Или начните новое обсуждение
   discussion_form:
     thread_templates: Шаблоны тем
     new_thread_template: Новый шаблон темы
@@ -770,7 +801,6 @@ ru:
     invite_only_thread: Ветка только по приглашению
     none_direct_thread: Прямая нить (без группы)
     none_invite_only_thread: Тема только по приглашению (без группы)
-    change_log_placeholder: При желании опишите ваши изменения. Это сообщение будет добавлено в тему.
     change_log_label: Что изменилось?
     invite: Приглашать
     start_thread: Начать тему
@@ -794,6 +824,14 @@ ru:
     privacy_organisation: Цепочка будет видна участникам %{parent} и участникам %{group}.
     fork_notice: Будет создана новая тема с элементами %{count} из %{title}.
     notify_group: Уведомить группу
+    none_invite_only_discussion: Нет (обсуждение только по приглашению)
+    new_discussion_template: Новый шаблон обсуждения
+    edit_discussion_template: Изменить шаблон обсуждения
+    change_log_placeholder: При желании опишите ваши изменения. Это сообщение будет добавлено в обсуждение.
+    start_discussion: Начать обсуждение
+    discussion_updated: Обсуждение обновлено
+    discussion_created: Обсуждение создано
+    discussion_started: Обсуждение началось
   announcement:
     send_discussion: Отправить тему
     send_group: Пригласить людей в %{name}
@@ -907,6 +945,8 @@ ru:
       has_not_read_thread: Не просматривал тему
       has_not_joined_yet: Еще не присоединился
       has_not_joined_yet_hint: Этот пользователь не принял приглашение присоединиться к Loomio и не будет получать дальнейших уведомлений, пока не примет это.
+      discussion_admin: Администратор обсуждения
+      has_not_read_discussion: Не просматривал обсуждение
     group_form:
       search_placeholder: Ищите людей...
       modal_title: Выберите участников группы
@@ -914,6 +954,8 @@ ru:
       success: "%{count} уведомлений отправлено"
     group_mentioned: "%{name} упомянул группу с %{length} людьми:"
     poll_announced: "%{name} пригласил %{length} человек проголосовать:"
+    discussion_notification_history: История уведомлений об обсуждении
+    inviting_guests_to_discussion: Гости не принадлежат к вашей группе и имеют доступ только к этому обсуждению.
   action_dock:
     actions_menu: Меню действий
     more_actions: Больше действий
@@ -968,6 +1010,11 @@ ru:
     add_poll_to_thread: Добавить в тему
     count_members: "%{count} участников"
     count_voters: "%{count} избирателей"
+    pin_discussion: Закрепить обсуждение
+    unpin_discussion: Открепить обсуждение
+    close_discussion: Закрыть обсуждение
+    reopen_discussion: Возобновить обсуждение
+    delete_discussion: Удалить обсуждение
   formatting:
     formatting_tools: Инструменты форматирования текста
     colors: Цвета
@@ -1045,6 +1092,7 @@ ru:
     introduction_over_limit: Слишком длинный ответ
     messages:
       membership_requested: Вы подали запрос на вступление в %{group}
+    aria_label: Форма заявки на членство
   revision_history_modal:
     discussion_header: Редактирование обсуждения
     comment_header: Редактирование комментариев
@@ -1063,6 +1111,7 @@ ru:
     closing_at_changed: время закрытия установлено на %{time}
     private_changed: для конфиденциальности установлено значение %{private}
     group_id_changed: переехал в %{name}
+    aria_label: История изменений
   reactions_input:
     add_your_reaction: Добавьте свою реакцию
   reactions_display:
@@ -1148,9 +1197,14 @@ ru:
       private: 'Конфиденциальность: эта группа видна только ее участникам.'
       parent_members: 'Конфиденциальность: эта группа видна участникам %{parentGroupName} и участникам %{groupName}.'
       public: 'Конфиденциальность: эта группа видна в Интернете.'
+      aria_label: 'Конфиденциальность группы: %{privacy}'
     participation_report: Отчет об участии
     my_subgroups: Мои подгруппы
     more_subgroups: Больше подгрупп
+    discussions: Обсуждения
+    no_discussions_here: Здесь нет обсуждений!
+    private_discussions: Вам необходимо быть участником, чтобы просматривать личные сообщения в этой группе.
+    view_closed_discussions: Просмотреть закрытые обсуждения
   export_data_modal:
     title: Как вы хотите использовать свои данные?
     as_csv: Откройте его в электронной таблице
@@ -1165,10 +1219,12 @@ ru:
     title: Покинуть группу
     question: Вы уверены, что хотите покинуть эту группу?
     submit: Да, покинуть эту группу
+    aria_label: Покинуть группу
   archive_group_form:
     title: Деактивировать группу
     question: Вы уверены, что хотите деактивировать эту группу?
     submit: Да, деактивировать эту группу
+    aria_label: Деактивировать группу
   group_form:
     thread_defaults_help: Настройки по умолчанию для новых тем
     click_to_change_image: Нажмите, чтобы изменить изображение обложки (4x1) или логотип (1x1)
@@ -1268,6 +1324,9 @@ ru:
     upgrade_for_subgroups: 'Пожалуйста, <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">обновите свою подписку</a> , чтобы создать подгруппу'
     share_this_url_with_people_who_want_to_join: Поделитесь этим URL-адресом с людьми, которые хотят присоединиться
     new_description_html: "<h3>С какими проблемами сталкивается ваша организация при принятии решений?</h3><p></p><h3> Как бы вы хотели использовать Loomio в своей организации?</h3><p></p>"
+    allow_polls_without_threads: Разрешить опросы без тем
+    allow_polls_without_threads_help: Разрешить отдельные опросы (не рекомендуется). Без обсуждения люди не смогут задавать вопросы или эффективно достигать консенсуса.
+    aria_label: Групповая форма
   group_export_modal:
     title: Экспортировать данные группы
     body: <p>Вы можете загрузить копию данных вашей группы в любое время. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Узнать больше.</a></p><p> Это займет несколько минут, в зависимости от размера вашей группы. Когда он будет готов, вы получите электронное письмо со ссылкой для загрузки файла.</p>
@@ -1328,6 +1387,7 @@ ru:
     shareable_link_to_join_group: Ссылка для присоединения к группе
     reset_the_link: Сбросить ссылку
     email_addresses_placeholder: например helperbot{'@'}loomio.org, friendlybot{'@'}loomio.org
+    aria_label: Форма приглашения
   memberships_page:
     members: Участники
     name_label: Имя
@@ -1431,6 +1491,7 @@ ru:
     use_uploaded: Загрузить новую фотографию
     existing_upload: Существующая загрузка
     use_provider: Использовать фотографию %{provider}
+    aria_label: Форма фото профиля
   change_password_form:
     set_password_title: Введите свой пароль
     set_password_helptext: Пожалуйста, введите пароль - минимум 8 символов
@@ -1521,6 +1582,7 @@ ru:
       muted: Приглушенные темы
       muted_aria_label: Текущие показы отключенных тем
       muted_description: Просматривать только темы, которые были отключены
+      all: Недавние обсуждения
     thread_preview:
       you_voted: Ваш голос %{position}.
       undecided: Вы не определились
@@ -1534,8 +1596,14 @@ ru:
       thisweek: На этой неделе
       thismonth: Этот месяц
       older: Старше месяца
+    dashboard: Панель инструментов
+    recent_discussions: Недавние обсуждения
+    view_recent: Просмотреть все недавние обсуждения?
+    discussion_marked_as_read: Обсуждение отмечено как прочитанное
+    discussion_marked_as_unread: Обсуждение отмечено как непрочитанное
   threads_page:
     no_direct_threads: У вас нет прямых тем
+    no_invite_only_threads: У вас нет тем, доступных только по приглашению
   inbox_page:
     no_threads: Уууу! Вы прочитали все темы в своем почтовом ящике.
     unread_threads: Непрочтенные темы
@@ -1544,6 +1612,9 @@ ru:
       start: Начать
       or: или
       join_group: <a href="/explore">присоединитесь</a> к группе, чтобы увидеть темы.
+      explanation: У вас нет непрочитанных обсуждений, поскольку вы не являетесь участником ни одной группы.
+    no_discussions: Ура! Вы прочитали все обсуждения в своём почтовом ящике.
+    unread_discussions: Непрочитанные обсуждения
   discussion:
     direct_thread: Прямая резьба
     invite_only: Только по приглашению
@@ -1560,6 +1631,9 @@ ru:
     closed:
       reopened: Тема возобновлена
       closed: Тема закрыта
+    volume:
+      mute_message: Обсуждение отключено
+      unmute_message: Обсуждение отключено
   discussion_last_seen_by:
     title: Виденный
     no_one: Этого еще никто не видел
@@ -1575,6 +1649,7 @@ ru:
     nested: Вложенный
     attachment_display:
       image_alt: Прикрепленное изображение
+      aria_label: 'Прикрепленный файл:'
     n_previous: Загрузить предыдущие ответы (%{count})
     n_more: Загрузить %{count} ответов
     add_comment: Добавить комментарий
@@ -1584,25 +1659,9 @@ ru:
     facilitate: Способствовать
     start_decision: Начать решение
     start_vote: Начать голосование
-  thread_context:
-    current_poll_type_banner: Текущий %{pollType}
-    item_maybe_deleted: Невозможно найти запрошенное место в теме. Возможно, оно было удалено.
-    thread_options: Настройки обсуждения
-    email_settings: Настройки уведомлений
-    edit: Редактировать
-    edit_thread: Редактировать
-    close_thread: Закрыть
-    reopen_thread: Открыть вновь
-    pin_thread: Закрепить
-    unpin_thread: Открепить
-    mute_thread: Заглушить
-    move_thread: Переместить
-    print_thread: Печать
-    delete_thread: Удалить
-    add_comment: Комментарий
-    seen_by_count: Просмотрено %{count}
-    count_notified: Уведомлен %{count}
-    forked_from: Разветвлено от
+    event_pinned: Добавлено в ленту обсуждений
+    event_unpinned: Удалено из ленты обсуждений
+    start_a_vote: Начать голосование
   thread_arrangement_form:
     edit: Изменить макет
     title: Расположение резьбы
@@ -1800,7 +1859,7 @@ ru:
     too_long: Слишком долго
     edit_warning: Редактирование рекомендуется только для внесения незначительных изменений или исправления орфографических ошибок. Если есть существенные изменения, закройте этот %{pollType} и начните новый.
     no_voting: Только для обсуждения, голосование отключено
-    post_outcome: Пост-результат
+    post_outcome: Опубликовать результат
     view_all_votes: Посмотреть все голоса
     you_voted: Вы проголосовали
   poll_common_attachment_form:
@@ -1832,6 +1891,8 @@ ru:
     no_results_found: Нет результатов по запросу "%{search}"
     welcome_to_your_new_group: Добро пожаловать в вашу новую группу Loomio!
     lets_start_a_thread: Давайте начнем тему. Нажмите «Новая тема», чтобы продолжить.
+    lets_start_a_discussion: Давайте начнём обсуждение. Нажмите «Новое обсуждение», чтобы продолжить.
+    new_discussion: Новое обсуждение
   members_panel:
     bot: Бот
     no_results: Участники не найдены
@@ -2100,10 +2161,10 @@ ru:
     sentence: Приняли участие %{numerator} из %{denominator} человек (%{percent}%)
     target_progress: "%{percent} % цели достигнуто. (%{num} / %{target})"
     pct_of_eligible_voters_must_participate: "%{pct}% от числа избирателей, имеющих право голоса, должны участвовать"
-    pct_participation: "%{num} из %{total} поданных голосов (%{pct}% участия)"
     vote_short_of_quorum: Для достижения кворума %{pct}% необходим еще 1 голос
     votes_short_of_quorum: Для достижения кворума %{pct}% необходимо еще %{num} голосов
     quorum_reached: Кворум %{pct}% достигнут
+    pct_participation: "%{num} из %{total} поданных голосов (%{pct}% участия)"
   poll_meeting_chart_panel:
     total: Всего
   poll_remove_vote:
@@ -2300,6 +2361,8 @@ ru:
       outcome_created: Результат общий
       outcome_updated: Результат обновлен
       outcome_review_due: Ожидается рассмотрение результатов
+      new_discussion: Обсуждение началось
+      discussion_edited: Обсуждение редактируется
     permissions_explaination: Выберите, какие действия может выполнять эта интеграция
     permissions:
       show_discussion: показать обсуждение
@@ -2350,6 +2413,8 @@ ru:
     month: Месяц
     year: Год
     country_disclaimer: Страна основана на IP-адресе пользователя и не очень точна. Считайте это лишь приблизительным руководством.
+    total_discussions: Всего обсуждений
+    discussions_with_polls: Обсуждения с опросами
   tips:
     youve_completed_all_the_steps: "\U0001F389 Вы выполнили все шаги!"
     getting_started_checklist: Контрольный список для начала работы
@@ -2385,7 +2450,12 @@ ru:
         helptext: "<p>Чтобы помочь продвинуть решения, предложения имеют крайний срок для голосования. Когда крайний срок будет достигнут, голосование будет закрыто, и вы получите уведомление о том, что вам нужно поделиться результатом предложения.</p><p> Результат — это возможность сказать, было ли предложение успешным и что будет дальше.</p><p> Если срок подачи вашего предложения еще не истек, но вы все равно хотите продолжить, вы можете нажать <b>«Закрыть досрочно»</b> .</p><p> Когда придет время, <b>введите результат</b> вашего предложения.</p>"
         submit: Посмотреть предложение
         cancel: Сделай это позже
+      start_a_discussion:
+        title: Начать обсуждение
+        helptext: "<p>Создайте обсуждение, которое увидят люди после того, как примут приглашение.</p><p> Цель — побудить людей написать свой первый комментарий в Loomio.</p><p> Чтобы упростить задачу, мы предоставили шаблон <b>практического обсуждения,</b> который вы можете использовать.</p>"
+        submit: Посмотреть шаблоны обсуждений
     get_started_here: Начните здесь
+    try_loomio_with_your_group: Попробуйте Loomio с вашей группой
   poll_common_settings:
     who_can_vote: Кто может голосовать?
     specified_voters_only_true: Только приглашенные люди
@@ -2540,3 +2610,49 @@ ru:
     invited_by: Приглашен
     invited_on: Приглашен на
     no_receipts: Этот анонимный опрос был закрыт до появления функции проверки, поэтому проверка невозможна.
+  close_discussion_modal:
+    body: Закройте обсуждения, чтобы удалить их из списка открытых обсуждений и запретить людям оставлять комментарии.
+  comment_reply_form:
+    aria_label: Добавить ответ
+  discussion_template:
+    browse_public_templates: Просмотреть галерею шаблонов
+    start_a_new_discussion: Начать новое обсуждение
+    discussion_template_saved: Шаблон обсуждения сохранен
+    these_are_public_templates: Эти шаблоны доступны для копирования или изменения в соответствии с требованиями вашей группы.
+    these_are_templates: Это шаблоны обсуждений в вашей группе. Нажмите на шаблон, чтобы начать обсуждение. Вы также можете редактировать, удалять или менять их порядок по своему усмотрению.
+    default_title_label: Заголовок по умолчанию
+    default_title_hint: Заполните поле заголовка редактируемым текстом. Это необязательно — оставьте пустым, если не уверены.
+    title_placeholder_label: Пример заголовка
+    title_placeholder_hint: Пример для отображения на заднем плане поля заголовка
+    title_placeholder_placeholder: например, вот как выглядит фоновый текст
+    example_description_label: Пример описания
+    example_description_placeholder: Предоставьте шаблон, который люди могут использовать для создания темы.
+    hidden_templates: Скрытые шаблоны
+    confirm_delete: Вы уверены, что хотите удалить этот шаблон обсуждения?
+    add_poll_template: Добавить шаблон опроса
+    add_poll_template_help: Выберите любые шаблоны опросов, которые помогут завершить этот процесс.
+    recommended_poll_templates: Рекомендуемые шаблоны опросов
+    share_in_template_gallery: Поделитесь этим шаблоном в публичной галерее шаблонов
+  context_panel:
+    thread_status:
+      pinned: Это обсуждение закреплено. Оно останется вверху списка обсуждений группы для всех пользователей.
+      closed: Это обсуждение закрыто. Оно больше не будет отображаться на панели управления и будет отображаться в разделе «Закрыто» на странице группы.
+  thread_group:
+    aria_label: Название группы
+  discussion_context:
+    current_poll_type_banner: Текущий %{pollType}
+    seen_by_count: Просмотрено %{count}
+    count_notified: Уведомлено %{count}
+    start_a_vote: Начать голосование
+  pin_discussion_modal:
+    helptext: Закрепленные обсуждения всегда отображаются в списке обсуждений группы.
+  delete_discussion_form:
+    body: Вы уверены, что хотите удалить это обсуждение?
+    discussion_deleted: Обсуждение удалено
+  move_discussion_form:
+    title: Перенести обсуждение в другую группу
+    body: Группа назначения
+    confirm: Переместить обсуждение
+    confirm_change_to_private: "%{groupName} — открытая группа. Если вы продолжите, это обсуждение станет публичным."
+    messages:
+      success: Обсуждение перенесено в %{name}

@@ -93,6 +93,7 @@ tr:
       process_introduction: "<p>Yeni üyeleri karşılamak ve erken katılımı teşvik etmek için bu şablonu kullanın. İnsanlara kendilerini tanıtma ve Loomio'nun özelliklerini keşfetme şansı verir.</p>"
       title: "\U0001F44B Hoş geldiniz! Merhaba deyin ve yeni şeyler deneyin"
       description: "<p>Loomio grubumuza hoş geldiniz — sizi burada görmek harika!</p><p> Bu konu başlığı şu amaçlar için bir alandır:</p><ul><li><p> Kendinizi gruba tanıtın</p></li><li><p> Loomio'nun bazı özelliklerini deneyin - örneğin: tepkileri kullanmayı deneyin \U0001F44D</p></li><li><p> Bu aşamada aklınıza takılan soruları sorun</p></li></ul><p> Ne söyleyeceğinizden emin değilseniz, basit bir merhaba yeterli olacaktır \U0001F642</p>"
+      process_name: Uygulama tartışması
   explore:
     header: Herkese açık grupları keşfedin
   activerecord:
@@ -141,6 +142,8 @@ tr:
     '500':
       title: İç Sunucu Hatası
       body: Üzgünüz, bir sorun oluştu. Bu sorunla ilgili bildirim aldık ve kısa süre içinde inceleyeceğiz.
+    '404':
+      body: İstediğiniz öğe bulunamadı. Bu durum, bir tartışma veya anket silindiğinde ortaya çıkabilir.
   group:
     error:
       handle_must_begin_with_parent_handle: "%{parent_handle}- ile başlamalıdır"
@@ -221,11 +224,11 @@ tr:
       explaination_html: "<p>Bu e-postayı Loomio grubunun yöneticisi olduğunuz için alıyorsunuz: %{group}.</p><p> Grup tanınmayan bir e-posta adresinden bir e-posta aldı.</p><p> Mesaj grubun bir üyesinden geliyorsa lütfen e-postayı inceleyin ve üyeyi seçin.</p><p> Mesaj istenmeyense, bu adresten gelecek diğer e-postaları engelleyebilirsiniz.</p>"
     notification_reason:
       group_subscribed: Bu mesajı aldınız çünkü gruptaki tüm aktivitelere abonesiniz.
-      thread_subscribed: Bu mesajı aldınız çünkü konuya abonesiniz.
       group_mentioned: Bu mesajı, grubun @bahsedilmesi nedeniyle aldınız.
       user_mentioned: Bu mesajı, @bahsedildiğin için aldın.
       notified: Yazarın size bildirmesi nedeniyle bunu aldınız.
       poll_subscribed: Ankete abone olduğunuz için bunu aldınız.
+      discussion_subscribed: Bu mesajı aldınız çünkü tartışmaya abone oldunuz.
   user_mailer:
     group_export_ready:
       subject: "%{group_name} için grup verilerini dışa aktarma"
@@ -310,6 +313,7 @@ tr:
       button_text: İsteği görüntüle
     content_was_translated: Bu içerik %{source_locale} adresinden çevrildi
     content_was_translated_html: Bu içerik %{source_locale} adresinden çevrilmiştir. <a href="%{profile_url}">Ayarları görüntüle<a></a>
+    loomio_app_description: İşbirliği yapan kuruluşların birlikte karar alabileceği bir yer.
   announcement_count_emails: "%{count} e-posta"
   email_actions:
     unfollowed_discussion: Konu başlığı için e-postaları kapattınız.

@@ -93,6 +93,7 @@ he:
       process_introduction: <p style=";text-align:right;direction:rtl">השתמשו בתבנית זו כדי לקבל בברכה חברים חדשים ולעודד השתתפות מוקדמת. היא נותנת לאנשים הזדמנות להציג את עצמם ולחקור את התכונות של Loomio.</p>
       title: "\U0001F44B ברוכים הבאים! תגידו שלום ונסו דברים חדשים"
       description: "<p style=\";text-align:right;direction:rtl\">ברוכים הבאים לקבוצת Loomio שלנו - כיף גדול לארח אתכם כאן!</p><p style=\";text-align:right;direction:rtl\"> שרשור זה הוא מקום ל:</p><ul style=\";text-align:right;direction:rtl\"><li style=\";text-align:right;direction:rtl\"><p style=\";text-align:right;direction:rtl\"> הצג את עצמך לקבוצה</p></li><li style=\";text-align:right;direction:rtl\"><p style=\";text-align:right;direction:rtl\"> נסו כמה מהתכונות של Loomio - לדוגמה: נסו להשתמש בתגובות \U0001F44D</p></li><li style=\";text-align:right;direction:rtl\"><p style=\";text-align:right;direction:rtl\"> שאלו כל שאלה שיש לכם בשלב זה</p></li></ul><p style=\";text-align:right;direction:rtl\"> אם אתם לא בטוחים מה לומר, שלום פשוט זה בסדר \U0001F642</p>"
+      process_name: דיון תרגול
   explore:
     header: חקור את הקבוצות הציבוריות
   activerecord:
@@ -141,6 +142,8 @@ he:
     '500':
       title: שגיאת שרת פנימית
       body: מצטערים, משהו השתבש. קיבלנו הודעה על בעיה זו ונבחן אותה בקרוב.
+    '404':
+      body: הפריט שביקשת לא נמצא. זה יכול לקרות אם דיון או סקר נמחקו.
   group:
     error:
       handle_must_begin_with_parent_handle: חייב להתחיל ב-%{parent_handle}-
@@ -221,11 +224,11 @@ he:
       explaination_html: '<p style=";text-align:right;direction:rtl">אתה מקבל דוא"ל זה מכיוון שאתה מנהל של קבוצת Loomio: %{group}.</p><p style=";text-align:right;direction:rtl"> הקבוצה קיבלה אימייל מכתובת אימייל לא מזוהה.</p><p style=";text-align:right;direction:rtl"> אם ההודעה היא מחבר בקבוצה, אנא עיין באימייל ובחר את החבר.</p><p style=";text-align:right;direction:rtl"> אם ההודעה אינה רצויה, תוכל לחסום כל אימייל נוסף מכתובת זו.</p>'
     notification_reason:
       group_subscribed: קיבלת את זה כי אתה מנוי לכל הפעילות בקבוצה.
-      thread_subscribed: קיבלת את זה כי אתה מנוי בשרשור.
       group_mentioned: קיבלת את זה מכיוון שהקבוצה הוזכרה @.
       user_mentioned: קיבלת את זה כי הוזכרת @.
       notified: קיבלת את זה כי המחבר הודיע לך.
       poll_subscribed: קיבלת את זה כי אתה רשום לסקר.
+      discussion_subscribed: קיבלת את זה מכיוון שאתה רשום לדיון.
   user_mailer:
     group_export_ready:
       subject: איחוד ייצוא המידע עבור %{group_name}
@@ -320,6 +323,7 @@ he:
       button_text: צפה בבקשה
     content_was_translated: תוכן זה תורגם מ-%{source_locale}
     content_was_translated_html: תוכן זה תורגם מ-%{source_locale}. <a href="%{profile_url}">הצג הגדרות<a></a>
+    loomio_app_description: מקום בו ארגונים משתפי פעולה יכולים לקבל החלטות יחד.
   announcement_count_emails: "%{count} מיילים"
   email_actions:
     unfollowed_discussion: השבתת הודעות אימייל עבור השיחה הזו.

@@ -128,67 +128,7 @@ namespace :loomio do
   task delete_translations: :environment do
     # I edit this each time I want to use it.. rake task arguments are terrible
     unwanted = %w[
-      loomio_app_description
-      invite_only_discussion
-      invite_only_discussions
-      no_invite_only_threads
-      inbox_page.no_groups.explanation
-      discussion.volume.mute_message
-      discussion.volume.unmute_message
-      event_pinned
-      event_unpinned
-      dashboard_page.filtering.all
-      dashboard_page.view_recent
-      dashboard_page.load_more_discussions
-      email_to_group.subject_body_attachments
-      email_to_group_mailer.your_email_address_to_start_threads_in_group
-      change_volume_form.normal_explained
-      change_volume_form.discussion.title
-      sidebar.new_thread_removed
-      sidebar.new_thread_removed_body
-      sidebar.threads
-      sidebar.start_group
-      discussion_templates.practice_thread.process_name
-      errors.404.body
-      move_thread_form.confirm_change_to_private_thread
-      move_thread_form
-      announcement.discussion_notification_history
-      announcement.inviting_guests_to_thread
-      announcement.form.visible_to_group
-      announcement.form.visible_to_guests
-      aria_label
-      pin_thread_modal
-      context_panel.thread_status.pinned
-      context_panel.thread_status.closed
-      navbar.search_all_threads
-      membership_card.discussion_members
-      membership_dropdown.remove_from.discussion
-      notification_models.discussion
-      notifications.email_subject.discussion_edited
-      notifications.email_subject.discussion_closed
-      notifications.with_title.discussion_announced
-      notifications.with_title.discussion_edited
-      notifications.with_title.discussion_closed
-      notifications.with_title.new_discussion
-      notifications.without_title.discussion_announced
-      notifications.without_title.discussion_edited
-      notifications.without_title.discussion_closed
-      notifications.without_title.new_discussion
-      notifications.without_title.new_comment
-      notifications.hints.outcome_review_due
-      discussion_fork_actions.helptext
-      discussion_fork_actions.search_placeholder
-      discussion_fork_actions.move_to_existing_thread
-      discussion_fork_actions.start_new_thread
-      thread_template
-      webhook.event_kinds.new_discussion
-      webhook.event_kinds.discussion_edited
-      thread_context
-      this_thread_is_a_template
-      this_is_a_poll_template
-      event_mailer.notification_reason.thread_subscribed
-      when_would_you_like_to_be_emailed_thread
-      change_log_placeholder
+      notifications.without_title.outcome_updated
     ]
 
     %w[client server].each do |source_name|
@@ -208,8 +148,12 @@ namespace :loomio do
       google = Google::Cloud::Translate.translation_v2_service
 
       AppConfig.locales['supported'].each do |file_locale|
-        foreign = YAML.load_file("config/locales/#{source_name}.#{file_locale}.yml")[file_locale]
-        foreign_paths = list_paths(foreign, [])
+        foreign = {}
+        foreign_paths = []
+        if File.exist?("config/locales/#{source_name}.#{file_locale}.yml")
+          foreign = YAML.load_file("config/locales/#{source_name}.#{file_locale}.yml")[file_locale]
+          foreign_paths = list_paths(foreign, [])
+        end
 
         write_file = false
         (source_paths - foreign_paths).each do |path|

@@ -93,6 +93,7 @@ fi:
       process_introduction: "<p>Käytä tätä mallia uusien jäsenten toivottamiseen tervetulleiksi ja kannustaaksesi heitä osallistumaan varhaisessa vaiheessa. Se antaa ihmisille mahdollisuuden esitellä itsensä ja tutustua Loomion ominaisuuksiin.</p>"
       title: "\U0001F44B Tervetuloa! Sano hei ja kokeile jotain!"
       description: "<p>Tervetuloa Loomio-ryhmäämme – on hienoa, että olet täällä!</p><p> Tämä ketju on tila, johon voi:</p><ul><li><p> Esittele itsesi ryhmälle</p></li><li><p> Kokeile joitakin Loomion ominaisuuksia – esimerkiksi: kokeile reaktioiden käyttöä \U0001F44D</p></li><li><p> Kysy tässä vaiheessa mitä tahansa kysymyksiä</p></li></ul><p> Jos et ole varma mitä sanoa, pelkkä hei riittää \U0001F642</p>"
+      process_name: Harjoituskeskustelu
   explore:
     header: Tutustu julkisiin ryhmiin
   activerecord:
@@ -141,6 +142,8 @@ fi:
     '500':
       title: Sisäinen palvelinvirhe
       body: Olemme pahoillamme, mutta jokin meni pieleen. Olemme saaneet ilmoituksen tästä ongelmasta ja tutkimme sitä pian.
+    '404':
+      body: Pyytämääsi kohdetta ei löytynyt. Näin voi käydä, jos keskustelu tai kysely on poistettu.
   group:
     error:
       handle_must_begin_with_parent_handle: Alkaa %{parent_handle}-
@@ -221,11 +224,11 @@ fi:
       explaination_html: "<p>Sait tämän sähköpostin, koska olet järjestelmänvalvoja Loomio-ryhmässä: %{group}.</p><p> Ryhmä on saanut sähköpostin tuntemattomasta sähköpostiosoitteesta.</p><p> Jos viesti on ryhmän jäseneltä, tarkista sähköposti ja valitse jäsen.</p><p> Jos viesti on ei-toivottu, voit estää kaikki muut sähköpostit kyseisestä osoitteesta.</p>"
     notification_reason:
       group_subscribed: Sait tämän, koska olet tilannut kaikki ryhmän tapahtumat.
-      thread_subscribed: Sait tämän, koska olet tilannut ketjun.
       group_mentioned: Sait tämän, koska ryhmä @mainittiin.
       user_mentioned: Sait tämän, koska sinut @mainittiin.
       notified: Sait tämän, koska kirjoittaja ilmoitti sinulle.
       poll_subscribed: Sait tämän, koska olet tilannut kyselyn.
+      discussion_subscribed: Sait tämän, koska olet tilannut keskustelun.
   user_mailer:
     group_export_ready:
       subject: 'Ryhmätietojen vienti: %{group_name}'
@@ -310,6 +313,7 @@ fi:
       button_text: Näytä pyyntö
     content_was_translated: Tämä sisältö on käännetty lähdekoodista %{source_locale}
     content_was_translated_html: Tämä sisältö on käännetty lähdekoodista %{source_locale}. <a href="%{profile_url}">Näytä asetukset<a></a>
+    loomio_app_description: Paikka, jossa yhteistyöorganisaatiot voivat tehdä päätöksiä yhdessä.
   announcement_count_emails: "%{count} sähköpostia"
   email_actions:
     unfollowed_discussion: Olet poistanut sähköpostit käytöstä ketjussa.

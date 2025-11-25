@@ -93,6 +93,7 @@ da:
       process_introduction: "<p>Brug denne skabelon til at byde nye medlemmer velkommen og opfordre til tidlig deltagelse. Den giver folk mulighed for at præsentere sig selv og udforske Loomios funktioner.</p>"
       title: "\U0001F44B Velkommen! Sig hej og prøv tingene ud"
       description: "<p>Velkommen til vores Loomio-gruppe — det er dejligt at have dig her!</p><p> Denne tråd er et sted til at:</p><ul><li><p> Præsenter dig selv for gruppen</p></li><li><p> Prøv nogle af Loomios funktioner - for eksempel: prøv at bruge reaktioner \U0001F44D</p></li><li><p> Stil eventuelle spørgsmål, du måtte have på dette tidspunkt</p></li></ul><p> Hvis du ikke er sikker på, hvad du skal sige, er et simpelt hej fint \U0001F642</p>"
+      process_name: Øvelsesdiskussion
   explore:
     header: Udforsk offentlige grupper
   activerecord:
@@ -141,6 +142,8 @@ da:
     '500':
       title: Intern serverfejl
       body: Vi beklager, men noget gik galt. Vi er blevet underrettet om dette problem, og vi vil se på det snarest.
+    '404':
+      body: Det element, du anmodede om, blev ikke fundet. Dette kan ske, hvis en diskussion eller afstemning er blevet slettet.
   group:
     error:
       handle_must_begin_with_parent_handle: Skal begynde med %{parent_handle}-
@@ -221,11 +224,11 @@ da:
       explaination_html: "<p>Du modtager denne e-mail, fordi du er administrator for Loomio-gruppen: %{group}.</p><p> Gruppen har modtaget en e-mail fra en ikke-genkendt e-mailadresse.</p><p> Hvis beskeden er fra et medlem af gruppen, skal du gennemgå e-mailen og vælge medlemmet.</p><p> Hvis beskeden er uønsket, kan du blokere yderligere e-mails fra den adresse.</p>"
     notification_reason:
       group_subscribed: Du har modtaget dette, fordi du er tilmeldt al aktivitet i gruppen.
-      thread_subscribed: Du har modtaget dette, fordi du abonnerer på tråden.
       group_mentioned: Du har modtaget dette, fordi gruppen blev @omtalt.
       user_mentioned: Du har modtaget dette, fordi du blev @omtalt.
       notified: Du har modtaget dette, fordi forfatteren har givet dig besked.
       poll_subscribed: Du har modtaget dette, fordi du er tilmeldt afstemningen.
+      discussion_subscribed: Du har modtaget dette, fordi du er tilmeldt diskussionen.
   user_mailer:
     group_export_ready:
       subject: Eksport af gruppedata for %{group_name}
@@ -316,6 +319,7 @@ da:
       button_text: Vis anmodning
     content_was_translated: Dette indhold blev oversat fra %{source_locale}
     content_was_translated_html: Dette indhold blev oversat fra %{source_locale}. <a href="%{profile_url}">Se indstillinger<a></a>
+    loomio_app_description: Et sted, hvor samarbejdende organisationer kan træffe beslutninger i fællesskab.
   announcement_count_emails: "%{count} e-mails"
   email_actions:
     unfollowed_discussion: Du har slået e-mails fra for tråden.

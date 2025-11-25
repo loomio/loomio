@@ -55,8 +55,6 @@ pl:
     to_use_loomio_with_your_org_start_trial: Kiedy będziesz gotowy do wypróbowania Loomio w swojej organizacji, rozpocznij bezpłatny okres próbny.
     templates: Szablony
     make_a_copy: Zrób kopię
-    this_thread_is_a_template: Ten wątek jest szablonem. Zrób kopię, jeśli chcesz z niej skorzystać.
-    this_is_a_poll_template: To jest szablon ankiety. Zrób kopię, jeśli chcesz rozpocząć głosowanie.
     try_loomio: Wypróbuj Loomio
     start_a_demo_group: Załóż grupę demo
     start_a_demo: Rozpocznij demo
@@ -388,6 +386,9 @@ pl:
     email_me_this_address: Wyślij mi ten adres e-mailem
     email_address_copied_to_clipboard: Adres e-mail został skopiowany do schowka
     forward_email_to_move_conversation: 'Wskazówka: przekaż rozmowę e-mailową do Loomio, jeśli chcesz podjąć decyzję lub zachować zapis.'
+    start_a_discussion_by_email: Rozpocznij dyskusję przez e-mail
+    send_email_to_start_discussion: Wyślij wiadomość e-mail na ten adres, aby rozpocząć dyskusję w swojej grupie.
+    subject_body_attachments: Temat wiadomości e-mail staje się tytułem dyskusji, a treść wiadomości – opisem. Załączniki również są kopiowane.
   volume_levels:
     loud: Głośno
     normal: Normalnie
@@ -428,6 +429,7 @@ pl:
         loud: Będziesz otrzymywać wiadomości e-mail o aktywności w tym wątku.
         normal: Otrzymasz wiadomość e-mail na temat propozycji w tym wątku.
         quiet: Nie będziesz otrzymywać żadnych wiadomości e-mail na temat tego wątku.
+      title: Powiadomienia o dyskusjach
     membership:
       title: Powiadomienia dla %{title}
       loud_description: Będziesz otrzymywać wiadomości e-mail za każdym razem, gdy w grupie pojawi się jakaś aktywność.
@@ -459,7 +461,6 @@ pl:
         normal: Będziesz otrzymywać wiadomości e-mail wyłącznie z ogłoszeniami z nowych grup.
         quiet: Nie będziesz otrzymywać wiadomości e-mail na temat nowych grup.
     change_your_email_settings: Zmień ustawienia poczty e-mail
-    when_would_you_like_to_be_emailed_thread: Kiedy chcesz otrzymać wiadomość e-mail dotyczącą tego wątku?
     when_would_you_like_to_be_emailed_group: Kiedy chcesz otrzymywać wiadomości e-mail dotyczące tej grupy?
     changes_all_threads_in_group: Spowoduje to zmianę ustawień dla wszystkich wątków w grupie.
     what_do_the_options_mean: Co oznaczają poszczególne opcje?
@@ -473,6 +474,10 @@ pl:
     when_do_you_want_to_be_emailed: Kiedy chcesz otrzymywać e-maile?
     what_the_options_mean: Co oznaczają opcje
     quiet_explained: Nie otrzymasz wiadomości e-mail, nawet gdy ktoś będzie próbował Cię powiadomić. Możesz przegapić ważne ogłoszenia lub decyzje, jeśli nie będziesz regularnie sprawdzać Loomio.
+    when_would_you_like_to_be_emailed_discussion: Kiedy chcesz otrzymać wiadomość e-mail na temat tej dyskusji?
+    changes_all_discussions_and_polls_in_group: Zmienia to ustawienia wszystkich dyskusji i ankiet w grupie.
+    normal_explained: Gdy ktoś wpisze Twoje imię i nazwisko w polu „Powiadom” w dyskusji lub ankiecie, albo {'@'}wspomni o grupie.
+    aria_label: Formularz zmiany ustawień e-mail
   close_explanation_modal:
     close_thread: Zamknij wątek
     body: |
@@ -491,6 +496,7 @@ pl:
     title: Twoja sesja została zakończona
     message: Zostałeś wylogowany z innego okna. Zaloguj się ponownie, by kontynuować.
     ok: Ok
+    aria_label: Sesja zakończona
   comment_form:
     attachments:
       add_attachment: Załącz plik
@@ -515,6 +521,7 @@ pl:
     private_privacy_notice: Twój komentarz będzie widoczny tylko dla osób z %{groupName}.
     public_privacy_notice: Twój komentarz będzie widoczny dla wszystkich.
     sign_in: Zaloguj się, aby dołączyć do rozmowy
+    add_a_comment: Dodaj komentarz
   thread_nav:
     participants: Uczestnicy
   sidebar:
@@ -543,6 +550,10 @@ pl:
       groups_list: Grupy
       user_list: Działania użytkownika
     user_settings: Ustawienia użytkownika
+    invite_only_discussions: Dyskusje tylko na zaproszenie
+    unread_discussions_count: Nieprzeczytane dyskusje (%{count})
+    new_group: Nowa grupa
+    new_subgroup: Nowa podgrupa
   strand_nav:
     newest: Najnowsze
     oldest: 'Od najstarszych '
@@ -598,6 +609,7 @@ pl:
     search_members_short: Szukaj członków
     search_files_short: Szukaj plików
     search_subgroups_short: Wyszukaj podgrupy
+    search_discussions_in_group: Wyszukaj dyskusje w %{name}
   user_dropdown:
     pin_sidebar: Przypnij pasek boczny
     unpin_sidebar: Odepnij pasek boczny
@@ -628,6 +640,7 @@ pl:
     invite_to_poll: Zaproś do głosowania
     invite_to_wip_poll: Zaproś do wyrażenia opinii
     invitations: Zaproszenia
+    discussion_members: Członkowie dyskusji
   membership_dropdown:
     set_name_and_username: Ustaw nazwę i nazwę użytkownika
     set_title: Nadaj tytuł
@@ -638,6 +651,7 @@ pl:
     remove_from:
       group: Usuń z grupy
       poll: Usuń z %{pollType}
+      discussion: Usuń z dyskusji
     cancel_invitation: Anuluj zaproszenie
     view_profile: Wyświetl profil
     revoke_admin: Odwołaj uprawnienia administratora
@@ -648,6 +662,7 @@ pl:
     poll: 'głosowanie:'
     outcome: 'rezultat:'
     stance: 'głosować:'
+    discussion: 'dyskusja:'
   notifications:
     header: Powiadomienia
     no_notifications: Nie masz żadnych powiadomień
@@ -686,6 +701,10 @@ pl:
       group_mentioned: "%{actor} wspomniał o grupie w: %{title}"
       new_delegate: "%{actor} nadał Ci status delegata z prawem głosu w %{title}"
       poll_announced: "%{actor} zaprosił Cię do głosowania: %{title}"
+      discussion_announced: "%{actor} zaprosił Cię do dyskusji: %{title}"
+      discussion_edited: "%{actor} edytował kontekst dyskusji: %{title}"
+      discussion_closed: "%{actor} zamknął dyskusję: %{title}"
+      new_discussion: "%{actor} rozpoczął dyskusję: %{title}"
     without_title:
       unknown_sender: Sprawdź wiadomość e-mail od nierozpoznanego nadawcy
       group_announced: "%{actor} zaprosił Cię do grupy"
@@ -696,7 +715,6 @@ pl:
       membership_request_approved: "%{actor} zatwierdził Twoją prośbę o dołączenie do %{title}"
       outcome_announced: "%{actor} udostępnił wynik %{poll_type}"
       outcome_created: "%{actor} udostępnił wynik %{poll_type}"
-      outcome_updated: "%{actor} zaktualizował wynik"
       outcome_review_due: Czas przejrzeć wynik %{poll_type}
       poll_announced_wip: "%{actor} chce Twojej opinii na temat %{poll_type}"
       poll_closed_by_user: "%{actor} zamknął %{poll_type}"
@@ -718,9 +736,16 @@ pl:
       user_reminded: "%{actor} przypomina Ci o głosowaniu"
       group_mentioned: "%{actor} wspomniał o grupie"
       poll_announced: "%{actor} zaprosił Cię do głosowania w %{poll_type}"
+      discussion_announced: "%{actor} zaprosił Cię do dyskusji"
+      discussion_edited: "%{actor} edytował kontekst dyskusji"
+      discussion_closed: "%{actor} zamknął dyskusję"
+      new_discussion: "%{actor} rozpoczął dyskusję"
+      new_comment: "%{actor} skomentował dyskusję"
+      outcome_updated: "%{actor} zaktualizował wynik"
     hints:
       poll_closing_soon: Teraz jest dobry czas na głosowanie, zmianę zdania lub zachęcenie innych do udziału.
       poll_closing_soon_author: Możesz przypomnieć ludziom o głosowaniu lub przedłużyć termin.
+      outcome_review_due: Rozważ przeprowadzenie ankiety z opiniami lub rozpoczęcie nowej dyskusji, która zachęci do podzielenia się przemyśleniami na temat tego, w jaki sposób wdrożono decyzję.
     email_subject:
       unknown_sender: Przejrzyj wiadomość e-mail od nieznanego nadawcy
       comment_replied_to: "%{actor} odpowiedział Ci w: %{title}"
@@ -758,9 +783,15 @@ pl:
       group_mentioned: "%{actor} wspomniał o grupie w: %{title}"
       user_reminded: "%{actor} przypomina o oddaniu głosu w: %{title}"
       poll_announced: 'Głosuj: %{title}'
+      discussion_edited: "%{actor} edytował kontekst dyskusji: %{title}"
+      discussion_closed: "%{actor} zamknął dyskusję: %{title}"
   discussion_fork_actions:
     move: Przenieś
     moved: Przenoszenie komentarzy, to może zająć chwilę
+    helptext: Wybierz elementy, które chcesz przenieść do innej dyskusji
+    search_placeholder: Znajdź dyskusję według tytułu
+    move_to_existing_thread: Przejdź do istniejącej dyskusji
+    start_new_thread: Lub rozpocznij nową dyskusję
   discussion_form:
     thread_templates: Szablony wątków
     new_thread_template: Nowy szablon wątku
@@ -774,7 +805,6 @@ pl:
     invite_only_thread: Wątek na zaproszenie
     none_direct_thread: Wątek bezpośredni (bez grupy)
     none_invite_only_thread: Wątek na zaproszenie (bez grupy)
-    change_log_placeholder: Opcjonalnie opisz zmiany. Ta wiadomość zostanie dodana do wątku.
     change_log_label: Co się zmieniło?
     invite: Zaproś
     start_thread: Utwórz wątek
@@ -798,6 +828,14 @@ pl:
     privacy_organisation: Wątek będzie widoczny dla osób z %{parent} i osób z grupy %{group}.
     fork_notice: Zostanie utworzony nowy wątek zawierający %{count} elementów z %{title}
     notify_group: Powiadom grupę
+    none_invite_only_discussion: Brak (dyskusja tylko na zaproszenie)
+    new_discussion_template: Nowy szablon dyskusji
+    edit_discussion_template: Edytuj szablon dyskusji
+    change_log_placeholder: Opcjonalnie opisz swoje zmiany. Ta wiadomość zostanie dodana do dyskusji.
+    start_discussion: Rozpocznij dyskusję
+    discussion_updated: Dyskusja zaktualizowana
+    discussion_created: Utworzono dyskusję
+    discussion_started: Rozpoczęto dyskusję
   announcement:
     send_discussion: Wyślij wątek
     send_group: Zaproś ludzi do %{name}
@@ -915,6 +953,8 @@ pl:
       has_not_read_thread: Jeszcze nie zobaczył/a wątku
       has_not_joined_yet: Jeszcze nie dołączył
       has_not_joined_yet_hint: Ten użytkownik nie zaakceptował zaproszenia do dołączenia do Loomio i nie będzie otrzymywać dalszych powiadomień, dopóki tego nie zrobi
+      discussion_admin: Administrator dyskusji
+      has_not_read_discussion: Nie przeglądał dyskusji
     group_form:
       search_placeholder: Szukaj ludzi...
       modal_title: Wybierz osoby do tej grupy
@@ -922,6 +962,8 @@ pl:
       success: Wysłano %{count} powiadomień
     group_mentioned: "%{name} wspomniał o grupie z %{length} osobami:"
     poll_announced: "%{name} zaprosiło %{length} osób do głosowania:"
+    discussion_notification_history: Historia powiadomień o dyskusjach
+    inviting_guests_to_discussion: Goście nie należą do Twojej grupy i mają dostęp tylko do tej dyskusji
   action_dock:
     actions_menu: Menu akcji
     more_actions: Więcej działań
@@ -976,6 +1018,11 @@ pl:
     add_poll_to_thread: Dodaj do wątku
     count_members: "%{count} członków"
     count_voters: "%{count} głosujących"
+    pin_discussion: Przypnij dyskusję
+    unpin_discussion: Odepnij dyskusję
+    close_discussion: Zamknij dyskusję
+    reopen_discussion: Otwórz ponownie dyskusję
+    delete_discussion: Usuń dyskusję
   formatting:
     formatting_tools: Narzędzia do formatowania tekstu
     colors: Zabarwienie
@@ -1053,6 +1100,7 @@ pl:
     introduction_over_limit: Odpowiedź zbyt długa
     messages:
       membership_requested: Prosiłeś o dołączenie do %{group}
+    aria_label: Formularz wniosku o członkostwo
   revision_history_modal:
     discussion_header: Edycje dyskusji
     comment_header: Edycje komentarza
@@ -1071,6 +1119,7 @@ pl:
     closing_at_changed: czas zamknięcia ustawiony na %{time}
     private_changed: prywatność ustawiona na %{private}
     group_id_changed: przeniesiono do %{name}
+    aria_label: Historia rewizji
   reactions_input:
     add_your_reaction: Dodaj swoją reakcję
   reactions_display:
@@ -1156,9 +1205,14 @@ pl:
       private: 'Prywatność: ta grupa jest widoczna tylko dla osób do niej należących'
       parent_members: 'Prywatność: ta grupa jest widoczna dla osób z %{parentGroupName} i osób z %{groupName}'
       public: 'Prywatność: ta grupa jest widoczna w Internecie'
+      aria_label: 'Prywatność grupy: %{privacy}'
     participation_report: Sprawozdanie z udziału
     my_subgroups: Moje podgrupy
     more_subgroups: Więcej podgrup
+    discussions: Dyskusje
+    no_discussions_here: Nie ma tu żadnych dyskusji!
+    private_discussions: Aby przeglądać prywatne wątki w tej grupie, musisz być jej członkiem
+    view_closed_discussions: Wyświetl zamknięte dyskusje
   export_data_modal:
     title: Jak chcesz wykorzystać swoje dane?
     as_csv: Otwórz w arkuszu kalkulacyjnym
@@ -1173,10 +1227,12 @@ pl:
     title: Opuść grupę
     question: Czy na pewno chcesz opuścić tę grupę?
     submit: Tak, opuść tę grupę
+    aria_label: Opuść grupę
   archive_group_form:
     title: Dezaktywuj grupę
     question: Czy na pewno chcesz dezaktywować tę grupę?
     submit: Tak, dezaktywuj grupę
+    aria_label: Dezaktywuj grupę
   group_form:
     thread_defaults_help: Domyślne ustawienia dla nowych wątków
     click_to_change_image: Kliknij, aby zmienić zdjęcie okładki (4x1) lub logo (1x1)
@@ -1276,6 +1332,9 @@ pl:
     upgrade_for_subgroups: 'Aby utworzyć podgrupę, <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">zaktualizuj swoją subskrypcję</a>'
     share_this_url_with_people_who_want_to_join: Udostępnij ten adres URL osobom, które chcą dołączyć
     new_description_html: "<h3>Z jakimi wyzwaniami w zakresie podejmowania decyzji mierzy się Twoja organizacja?</h3><p></p><h3> W jaki sposób chcesz wykorzystać Loomio w swojej organizacji?</h3><p></p>"
+    allow_polls_without_threads: Zezwalaj na ankiety bez wątków
+    allow_polls_without_threads_help: Zezwalaj na samodzielne ankiety (niezalecane). Bez dyskusji ludzie nie mogą zadawać pytań ani skutecznie budować konsensusu.
+    aria_label: Formularz grupowy
   group_export_modal:
     title: Eksportuj dane grupy
     body: |
@@ -1344,6 +1403,7 @@ pl:
     shareable_link_to_join_group: Udostępniany link umożliwiający dołączenie do grupy
     reset_the_link: Zresetuj łącze
     email_addresses_placeholder: np. helperbot{'@'}loomio.org, friendlybot{'@'}loomio.org
+    aria_label: Formularz zaproszenia
   memberships_page:
     members: Osoby
     name_label: Nazwa
@@ -1447,6 +1507,7 @@ pl:
     use_uploaded: Prześlij nowe zdjęcie
     existing_upload: Istniejące przesyłanie
     use_provider: Użyj zdjęcia %{provider}
+    aria_label: Formularz zdjęcia profilowego
   change_password_form:
     set_password_title: Ustaw swoje hasło
     set_password_helptext: Wprowadź hasło - minimum 8 znaków
@@ -1537,6 +1598,7 @@ pl:
       muted: Wyciszone wątki
       muted_aria_label: Wyświetlane są wyciszone wątki
       muted_description: Wyświetl tylko wyciszone wątki
+      all: Ostatnie dyskusje
     thread_preview:
       you_voted: Głosowałeś %{position}
       undecided: Jesteś niezdecydowany
@@ -1550,8 +1612,14 @@ pl:
       thisweek: Ten tydzień
       thismonth: W tym miesiącu
       older: Starsze niż miesiąc
+    dashboard: Panel
+    recent_discussions: Ostatnie dyskusje
+    view_recent: Zobaczyć wszystkie ostatnie dyskusje?
+    discussion_marked_as_read: Dyskusja oznaczona jako przeczytana
+    discussion_marked_as_unread: Dyskusja oznaczona jako nieprzeczytana
   threads_page:
     no_direct_threads: Nie masz żadnych bezpośrednich wątków
+    no_invite_only_threads: Nie masz żadnych wątków dostępnych tylko na zaproszenie
   inbox_page:
     no_threads: Hura! Przeczytałeś/aś wszystkie wątki z Twojej skrzynki.
     unread_threads: Nieprzeczytane Wątki
@@ -1560,6 +1628,9 @@ pl:
       start: Rozpocznij
       or: lub
       join_group: <a href="/explore">dołącz</a> do grupy, aby zobaczyć wątki.
+      explanation: Nie masz nieprzeczytanych dyskusji, ponieważ nie jesteś członkiem żadnej grupy.
+    no_discussions: Hura! Przeczytałeś wszystkie dyskusje w swojej skrzynce odbiorczej.
+    unread_discussions: Nieprzeczytane dyskusje
   discussion:
     direct_thread: Bezpośredni wątek
     invite_only: Na zaproszenie
@@ -1580,6 +1651,9 @@ pl:
     closed:
       reopened: Wątek ponownie otwarty
       closed: Wątek zamknięty
+    volume:
+      mute_message: Dyskusja wyciszona
+      unmute_message: Dyskusja włączona
   discussion_last_seen_by:
     title: Wyświetlone przez
     no_one: Nikt jeszcze tego nie widział
@@ -1595,6 +1669,7 @@ pl:
     nested: Zagnieżdżony
     attachment_display:
       image_alt: Dołączone zdjęcie
+      aria_label: 'Załączony plik:'
     n_previous: Wczytaj %{count} poprzednich odpowiedzi
     n_more: Załaduj %{count} odpowiedzi
     add_comment: Dodaj komentarz
@@ -1604,25 +1679,9 @@ pl:
     facilitate: Ułatwiać
     start_decision: Rozpocznij decyzję
     start_vote: Rozpocznij głosowanie
-  thread_context:
-    current_poll_type_banner: Obecne %{pollType}
-    item_maybe_deleted: Nie można znaleźć żądanej lokalizacji w wątku. Mogła zostać usunięta.
-    thread_options: Opcje wątku
-    email_settings: Ustawienia powiadomień
-    edit: Edytuj
-    edit_thread: Edytuj
-    close_thread: Zamknij
-    reopen_thread: Otwórz ponownie
-    pin_thread: Przypnij
-    unpin_thread: Odepnij
-    mute_thread: Wycisz
-    move_thread: Przenieś
-    print_thread: Drukuj
-    delete_thread: Usuń
-    add_comment: Skomentuj
-    seen_by_count: Widziane przez %{count}
-    count_notified: Powiadomiono %{count}
-    forked_from: Oddzielony od
+    event_pinned: Dodano do osi czasu dyskusji
+    event_unpinned: Usunięto z osi czasu dyskusji
+    start_a_vote: Rozpocznij głosowanie
   thread_arrangement_form:
     edit: Edytuj układ
     title: Układ wątku
@@ -1825,7 +1884,7 @@ pl:
     too_long: Za długo
     edit_warning: Edycja jest zalecana tylko w przypadku drobnych zmian lub napraw błędów pisowni. W przypadku istotnych zmian zakończ %{pollType} i utwórz nową.
     no_voting: Wyłącznie do dyskusji, głosowanie wyłączone
-    post_outcome: Wynik postu
+    post_outcome: Opublikuj wynik
     view_all_votes: Zobacz wszystkie głosy
     you_voted: Głosowałeś
   poll_common_attachment_form:
@@ -1857,6 +1916,8 @@ pl:
     no_results_found: Brak wyników dla "%{search}"
     welcome_to_your_new_group: Witamy w Twojej nowej grupie Loomio!
     lets_start_a_thread: Załóżmy wątek. Kliknij „Nowy wątek”, aby kontynuować.
+    lets_start_a_discussion: Rozpocznijmy dyskusję. Kliknij „Nowa dyskusja”, aby kontynuować.
+    new_discussion: Nowa dyskusja
   members_panel:
     bot: Nerw
     no_results: Nie znaleziono osób
@@ -2127,10 +2188,10 @@ pl:
     sentence: "%{numerator} z %{denominator} ludzi zagłosowało (%{percent}%)"
     target_progress: Osiągnięto %{percent}% celu. (%{num} / %{target})
     pct_of_eligible_voters_must_participate: "%{pct}% uprawnionych do głosowania musi wziąć udział"
-    pct_participation: "%{num} z %{total} oddanych głosów (%{pct}% frekwencja)"
     vote_short_of_quorum: Potrzebny jest jeszcze 1 głos, aby osiągnąć kworum %{pct}%
     votes_short_of_quorum: Potrzeba jeszcze %{num} głosów, aby osiągnąć kworum %{pct}%
     quorum_reached: Osiągnięto kworum %{pct}%
+    pct_participation: "%{num} z %{total} oddanych głosów (%{pct}% frekwencja)"
   poll_meeting_chart_panel:
     total: W sumie
   poll_remove_vote:
@@ -2329,6 +2390,8 @@ pl:
       outcome_created: 'Wynik jest udostępniony '
       outcome_updated: Wynik jest aktualizowany
       outcome_review_due: Należny jest przegląd wyników
+      new_discussion: Rozpoczęto dyskusję
+      discussion_edited: Dyskusja jest edytowana
     permissions_explaination: Wybierz, jakie działania mogą być wykonywane przez tę integrację
     permissions:
       show_discussion: pokaż dyskusję
@@ -2379,6 +2442,8 @@ pl:
     month: Miesiąc
     year: Rok
     country_disclaimer: Kraj jest ustalany na podstawie adresu IP użytkownika i nie jest zbyt dokładny. Potraktuj to jedynie jako przybliżony przewodnik.
+    total_discussions: Łączna liczba dyskusji
+    discussions_with_polls: Dyskusje z ankietami
   tips:
     youve_completed_all_the_steps: "\U0001F389 Ukończyłeś wszystkie kroki!"
     getting_started_checklist: Lista kontrolna na początek
@@ -2414,7 +2479,12 @@ pl:
         helptext: "<p>Aby ułatwić podejmowanie decyzji, propozycje mają termin głosowania. Po upływie terminu głosowanie zostanie zamknięte, a Ty otrzymasz powiadomienie, aby udostępnić wynik propozycji.</p><p> Wynik jest okazją do stwierdzenia, czy propozycja okazała się sukcesem i co będzie dalej.</p><p> Jeśli termin składania propozycji jeszcze nie upłynął, a mimo to chcesz kontynuować, możesz kliknąć <b>opcję Zamknij wcześniej</b> .</p><p> Gdy nadejdzie właściwy czas, <b>wprowadź wynik</b> swojej propozycji.</p>"
         submit: Zobacz propozycję
         cancel: Zrób to później
+      start_a_discussion:
+        title: Rozpocznij dyskusję
+        helptext: "<p>Utwórz dyskusję, którą ludzie zobaczą po zaakceptowaniu zaproszenia.</p><p> Celem jest zachęcenie ludzi do napisania swojego pierwszego komentarza w Loomio.</p><p> Aby ułatwić Ci zadanie, udostępniliśmy szablon <b>dyskusji praktycznej,</b> z którego możesz skorzystać.</p>"
+        submit: Zobacz szablony dyskusji
     get_started_here: Zacznij tutaj
+    try_loomio_with_your_group: Wypróbuj Loomio ze swoją grupą
   poll_common_settings:
     who_can_vote: Kto może głosować?
     specified_voters_only_true: Tylko dla zaproszonych osób
@@ -2569,3 +2639,49 @@ pl:
     invited_by: Zaproszony przez
     invited_on: Zaproszony na
     no_receipts: Ta anonimowa ankieta została zamknięta, zanim pojawiła się funkcja weryfikacji, dlatego weryfikacja nie jest możliwa.
+  close_discussion_modal:
+    body: Zamknij dyskusje, aby usunąć je z listy otwartych dyskusji i uniemożliwić użytkownikom komentowanie.
+  comment_reply_form:
+    aria_label: Dodaj odpowiedź
+  discussion_template:
+    browse_public_templates: Przeglądaj galerię szablonów
+    start_a_new_discussion: Rozpocznij nową dyskusję
+    discussion_template_saved: Szablon dyskusji został zapisany
+    these_are_public_templates: Możesz skopiować lub zmodyfikować te szablony, aby dostosować je do swojej grupy
+    these_are_templates: Oto szablony dyskusji w Twojej grupie. Kliknij szablon, aby rozpocząć dyskusję. Możesz je również edytować, usuwać lub zmieniać ich kolejność, jeśli chcesz.
+    default_title_label: Domyślny tytuł
+    default_title_hint: Wstępnie wypełnij pole tytułu edytowalnym tekstem. To pole jest opcjonalne – pozostaw puste, jeśli nie masz pewności.
+    title_placeholder_label: Przykładowy tytuł
+    title_placeholder_hint: Przykład wyświetlania w tle pola tytułu
+    title_placeholder_placeholder: np. Tak wygląda tekst tła
+    example_description_label: Przykładowy opis
+    example_description_placeholder: Udostępnij szablon, który ludzie mogą wykorzystać do rozpoczęcia wątku
+    hidden_templates: Ukryte szablony
+    confirm_delete: Czy na pewno chcesz usunąć ten szablon dyskusji?
+    add_poll_template: Dodaj szablon ankiety
+    add_poll_template_help: Wybierz szablony ankiet, które pomogą Ci ukończyć ten proces
+    recommended_poll_templates: Zalecane szablony ankiet
+    share_in_template_gallery: Udostępnij ten szablon w publicznej galerii szablonów
+  context_panel:
+    thread_status:
+      pinned: Ta dyskusja została przypięta. Będzie nadal wyświetlana na górze listy dyskusji grupy dla wszystkich użytkowników.
+      closed: Ta dyskusja została zamknięta. Nie będzie już wyświetlana na pulpicie nawigacyjnym i będzie oznaczona jako „zamknięta” na stronie grupy.
+  thread_group:
+    aria_label: Nazwa grupy
+  discussion_context:
+    current_poll_type_banner: Aktualny %{pollType}
+    seen_by_count: Widziane przez %{count}
+    count_notified: Powiadomiono %{count}
+    start_a_vote: Rozpocznij głosowanie
+  pin_discussion_modal:
+    helptext: Przypięte dyskusje zawsze pojawiają się na liście dyskusji grupy.
+  delete_discussion_form:
+    body: Czy na pewno chcesz usunąć tę dyskusję?
+    discussion_deleted: Dyskusja usunięta
+  move_discussion_form:
+    title: Przenieś dyskusję do innej grupy
+    body: Grupa docelowa
+    confirm: Przenieś dyskusję
+    confirm_change_to_private: "%{groupName} to grupa otwarta. Jeśli przejdziesz dalej, ta dyskusja stanie się publiczna."
+    messages:
+      success: Dyskusja przeniesiona do %{name}

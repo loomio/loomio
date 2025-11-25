@@ -93,6 +93,7 @@ zh_TW:
       process_introduction: "<p>使用此範本歡迎新成員並鼓勵早期參與。它為大家提供了自我介紹和探索 Loomio 功能的機會。</p>"
       title: "\U0001F44B 歡迎！打個招呼，體驗一下"
       description: "<p>歡迎加入我們的 Loomio 小組 — — 很高興您能來！</p><p>此主題可用於：</p><ul><li><p>向小組介紹自己</p></li><li><p>試試 Loomio 的一些功能 - 例如：嘗試使用反應\U0001F44D</p></li><li><p>在此階段提出您有的任何問題</p></li></ul><p>如果你不知道要說什麼，簡單的打個招呼就可以了 \U0001F642</p>"
+      process_name: 練習討論
   explore:
     header: 探索公開群組
   activerecord:
@@ -228,11 +229,11 @@ zh_TW:
       explaination_html: "<p>您收到這封電子郵件是因為您是 Loomio 群組的管理員：%{group}。</p><p>該小組收到了一封來自無法識別的電子郵件地址的電子郵件。</p><p>如果郵件來自群組成員，請查看電子郵件並選擇該成員。</p><p>如果您不需要該郵件，您可以封鎖來自該位址的任何其他電子郵件。</p>"
     notification_reason:
       group_subscribed: 您收到此資訊是因為您訂閱了該小組的所有活動。
-      thread_subscribed: 您收到此資訊是因為您訂閱了該主題。
       group_mentioned: 您收到此訊息是因為該小組被@提及。
       user_mentioned: 您收到此郵件是因為您被@提及。
       notified: 您收到此訊息是因為作者通知了您。
       poll_subscribed: 您收到此郵件是因為您訂閱了該投票。
+      discussion_subscribed: 您收到此郵件是因為您訂閱了該討論。
   user_mailer:
     group_export_ready:
       subject: 匯出「%{group_name}」的群組資料
@@ -336,6 +337,7 @@ zh_TW:
       button_text: 檢視申請
     content_was_translated: 此內容由 %{source_locale} 翻譯而來
     content_was_translated_html: 此內容由 %{source_locale} 翻譯而來。<a href="%{profile_url}">查看設定<a></a>
+    loomio_app_description: 一個供協作組織共同決策的場所。
   announcement_count_emails: "%{count} 個電子郵件"
   email_actions:
     unfollowed_discussion: 您已經關閉了討論串的電子郵件。

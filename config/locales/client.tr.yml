@@ -55,8 +55,6 @@ tr:
     to_use_loomio_with_your_org_start_trial: Kuruluşunuzda Loomio'yu denemeye hazır olduğunuzda ücretsiz deneme sürümünü başlatın.
     templates: Şablonlar
     make_a_copy: Bir kopyasını çıkarmak
-    this_thread_is_a_template: Bu konu bir şablondur. Kullanmak istiyorsanız bir kopyasını alın.
-    this_is_a_poll_template: Bu bir anket şablonu. Oy vermeye başlamak istiyorsanız bir kopyasını alın.
     try_loomio: Loomio'yu deneyin
     start_a_demo_group: Bir demo grubu başlatın
     start_a_demo: Demoyu başlat
@@ -386,6 +384,9 @@ tr:
     email_me_this_address: Bu adresi bana e-postayla gönder
     email_address_copied_to_clipboard: E-posta adresi panoya kopyalandı
     forward_email_to_move_conversation: 'İpucu: Bir karar vermeniz veya kayıt tutmanız gerektiğinde, bir e-posta görüşmesini Loomio''ya iletin.'
+    start_a_discussion_by_email: E-postayla bir tartışma başlatın
+    send_email_to_start_discussion: Grubunuzda tartışma başlatmak için bu adrese bir e-posta gönderin.
+    subject_body_attachments: E-postanın konusu tartışma başlığı, e-postanın gövdesi ise açıklama olur. Dosya ekleri de kopyalanır.
   volume_levels:
     loud: Yüksek sesli
     normal: Normal
@@ -426,6 +427,7 @@ tr:
         loud: Bu başlıktaki etkinlik size e-postayla gönderilecektir.
         normal: Bu başlıktaki teklifler hakkında size e-posta gönderilecektir.
         quiet: Bu konu hakkında size e-posta gönderilmeyecek.
+      title: Tartışma bildirimleri
     membership:
       title: "%{title} için bildirimler"
       loud_description: Bu grupta ne zaman bir faaliyet olursa size eposta ile gönderilecek.
@@ -457,7 +459,6 @@ tr:
         normal: Yeni gruplardaki duyurular hakkında e-postayla bilgilendirileceksiniz.
         quiet: Yeni gruplar hakkında e-posta almayacaksınız.
     change_your_email_settings: E-posta ayarlarınızı değiştirin
-    when_would_you_like_to_be_emailed_thread: Bu konu hakkında ne zaman e-posta almak istersiniz?
     when_would_you_like_to_be_emailed_group: Bu grupla ilgili e-postayı ne zaman almak istersiniz?
     changes_all_threads_in_group: Bu, gruptaki tüm iş parçacıkları için ayarı değiştirir.
     what_do_the_options_mean: Seçenekler ne anlama geliyor?
@@ -471,6 +472,10 @@ tr:
     when_do_you_want_to_be_emailed: E-postanın ne zaman gönderilmesini istersiniz?
     what_the_options_mean: Seçeneklerin anlamı nedir?
     quiet_explained: Birisi sizi bilgilendirmeye çalışsa bile, size e-posta gönderilmeyecektir. Loomio'yu düzenli olarak kontrol etme alışkanlığınız yoksa, önemli duyuruları veya kararları kaçırabilirsiniz.
+    when_would_you_like_to_be_emailed_discussion: Bu tartışma hakkında ne zaman e-posta almak istersiniz?
+    changes_all_discussions_and_polls_in_group: Bu, gruptaki tüm tartışmaların ve anketlerin ayarını değiştirir.
+    normal_explained: Birisi bir tartışma veya anketin "Bildir" alanına adınızı girdiğinde veya gruptan {'@'}bahsettiğinde.
+    aria_label: E-posta ayarlarını değiştirme formu
   close_explanation_modal:
     close_thread: Konuyu kapat
     body: "<p>Eski veya ilgisiz konuları görünümden kaldırmak ve tartışmanın kapandığını belirtmek için kapatın.</p><p> Herkes kapalı bir başlıkta yorum yapabilir veya anket başlatabilir ancak bu, grubun başlık listesinde veya kontrol panelinde görünmez.</p>"
@@ -487,6 +492,7 @@ tr:
     title: Oturumunuz sona erdi
     message: Başka bir pencereden çıkış yaptınız. Devam etmek için lütfen tekrar oturum açın.
     ok: Tamam
+    aria_label: Oturum sona erdi
   comment_form:
     attachments:
       add_attachment: Dosya ekle
@@ -511,6 +517,7 @@ tr:
     private_privacy_notice: Yorumunuz sadece %{groupName} grubunun üyelerine görünür olacak.
     public_privacy_notice: Yorumunuz web üzerindeki herkese görünür olacak.
     sign_in: Konuşmaya katılmak için giriş yapın
+    add_a_comment: Yorum ekle
   thread_nav:
     participants: Katılımcılar
   sidebar:
@@ -539,6 +546,10 @@ tr:
       groups_list: Gruplar
       user_list: Kullanıcı eylemleri
     user_settings: Kullanıcı ayarları
+    invite_only_discussions: Yalnızca davetlilerin katılabileceği tartışmalar
+    unread_discussions_count: Okunmamış tartışmalar (%{count})
+    new_group: Yeni grup
+    new_subgroup: Yeni alt grup
   strand_nav:
     newest: En yeni
     oldest: En eski
@@ -594,6 +605,7 @@ tr:
     search_members_short: Üyeleri ara
     search_files_short: Dosyaları ara
     search_subgroups_short: Alt grupları ara
+    search_discussions_in_group: "%{name} içindeki tartışmaları ara"
   user_dropdown:
     pin_sidebar: Kenar çubuğunu sabitle
     unpin_sidebar: Kenar çubuğunun sabitlemesini kaldır
@@ -609,7 +621,7 @@ tr:
     contact_support: İletişim desteği
     sign_out: oturumu Kapat
     beta_collab: "\U0001F9EA Beta özellikleri etkinleştirildi!"
-    outcomes: Sonuçlar
+    outcomes: Kararlar
     theme: Tema
     light: Işık
     dark: Karanlık
@@ -624,6 +636,7 @@ tr:
     invite_to_poll: Oy vermeye davet et
     invite_to_wip_poll: Geri bildirimde bulunmaya davet edin
     invitations: Davetiyeler
+    discussion_members: Tartışma üyeleri
   membership_dropdown:
     set_name_and_username: Adı ve kullanıcı adını ayarlayın
     set_title: Başlığı ayarla
@@ -634,6 +647,7 @@ tr:
     remove_from:
       group: Gruptan kaldır
       poll: "%{pollType}'dan kaldır"
+      discussion: Tartışmadan kaldır
     cancel_invitation: Davetiyeyi iptal et
     view_profile: Profili görüntüle
     revoke_admin: Yöneticiyi iptal et
@@ -642,8 +656,9 @@ tr:
   notification_models:
     comment: yorum yapın
     poll: 'anket:'
-    outcome: 'sonuç:'
+    outcome: 'karar:'
     stance: 'oy:'
+    discussion: 'tartışma:'
   notifications:
     header: Bildirimler
     no_notifications: Hiçbir bildiriminiz yok
@@ -682,6 +697,10 @@ tr:
       group_mentioned: "%{actor} şu gruptan bahsetti: %{title}"
       new_delegate: "%{actor} sizi %{title}'da oy kullanma haklarına sahip bir delege yaptı"
       poll_announced: "%{actor} sizi oy vermeye davet etti: %{title}"
+      discussion_announced: "%{actor} sizi tartışmaya davet etti: %{title}"
+      discussion_edited: "%{actor} tartışma bağlamını düzenledi: %{title}"
+      discussion_closed: "%{actor} tartışmayı kapattı: %{title}"
+      new_discussion: "%{actor} bir tartışma başlattı: %{title}"
     without_title:
       unknown_sender: Lütfen tanınmayan gönderenden gelen e-postayı inceleyin
       group_announced: "%{actor} sizi bir gruba davet etti"
@@ -692,7 +711,6 @@ tr:
       membership_request_approved: "%{actor}, %{title}'a katılma isteğinizi onayladı"
       outcome_announced: "%{actor}, %{poll_type} sonucunu paylaştı"
       outcome_created: "%{actor}, %{poll_type} sonucunu paylaştı"
-      outcome_updated: "%{actor} sonucu güncelledi"
       outcome_review_due: "%{poll_type} sonucunu gözden geçirmenin zamanı geldi"
       poll_announced_wip: "%{actor}, %{poll_type} hakkında geri bildiriminizi istiyor"
       poll_closed_by_user: "%{actor}, %{poll_type} anketini kapattı"
@@ -714,9 +732,16 @@ tr:
       user_reminded: "%{actor} size oy vermenizi hatırlatıyor"
       group_mentioned: "%{actor} grubu belirtti"
       poll_announced: "%{actor} sizi %{poll_type} üzerinde oy kullanmaya davet etti"
+      discussion_announced: "%{actor} sizi bir tartışmaya davet etti"
+      discussion_edited: "%{actor} tartışma bağlamını düzenledi"
+      discussion_closed: "%{actor} tartışmayı kapattı"
+      new_discussion: "%{actor} bir tartışma başlattı"
+      new_comment: "%{actor} bir tartışmada yorum yaptı"
+      outcome_updated: "%{actor} sonucu güncelledi"
     hints:
       poll_closing_soon: Şimdi oy vermek, fikrinizi değiştirmek veya başkalarını katılmaya teşvik etmek için iyi bir zaman.
       poll_closing_soon_author: İnsanlara oy vermelerini hatırlatmak veya son tarihi uzatmak isteyebilirsiniz.
+      outcome_review_due: Kararın nasıl uygulandığına dair düşüncelerin yer aldığı bir geri bildirim anketi veya yeni bir tartışma başlatmayı düşünün.
     email_subject:
       unknown_sender: Tanınmayan göndericiden gelen e-postayı inceleyin
       comment_replied_to: "%{actor} size şu başlıkta yanıt verdi: %{title}"
@@ -754,9 +779,15 @@ tr:
       group_mentioned: "%{actor} şu gruptan bahsetti: %{title}"
       user_reminded: "%{actor} size %{title} için oy vermenizi hatırlatıyor"
       poll_announced: 'Oy Ver: %{title}'
+      discussion_edited: "%{actor} tartışma bağlamını düzenledi: %{title}"
+      discussion_closed: "%{actor} tartışmayı kapattı: %{title}"
   discussion_fork_actions:
     move: Taşı
     moved: Yorumlar taşınıyor, bu işlem biraz zaman alabilir
+    helptext: Başka bir tartışmaya taşımak istediğiniz öğeleri seçin
+    search_placeholder: Başlığa göre tartışmayı bulun
+    move_to_existing_thread: Mevcut tartışmaya geç
+    start_new_thread: Veya yeni bir tartışma başlatın
   discussion_form:
     thread_templates: Konu şablonları
     new_thread_template: Yeni konu şablonu
@@ -770,7 +801,6 @@ tr:
     invite_only_thread: Yalnızca davetle girilebilen konu
     none_direct_thread: Doğrudan iş parçacığı (grup yok)
     none_invite_only_thread: Yalnızca davetli ileti dizisi (grup yok)
-    change_log_placeholder: İsteğe bağlı olarak değişikliklerinizi açıklayın. Bu mesaj konuya eklenecektir.
     change_log_label: Ne değişti?
     invite: Davet et
     start_thread: Konu başlat
@@ -794,6 +824,14 @@ tr:
     privacy_organisation: Müzakere %{parent} ve %{group} gruplarının üyelerine görünür olacaktır.
     fork_notice: "%{title} adlı kaynaktan %{count} öğeyle yeni bir ileti dizisi oluşturulacak"
     notify_group: Grubu bilgilendir
+    none_invite_only_discussion: Hiçbiri (yalnızca davetlilerin katılabileceği tartışma)
+    new_discussion_template: Yeni tartışma şablonu
+    edit_discussion_template: Tartışma şablonunu düzenle
+    change_log_placeholder: İsteğe bağlı olarak değişikliklerinizi açıklayın. Bu mesaj tartışmaya eklenecektir.
+    start_discussion: Tartışmayı başlat
+    discussion_updated: Tartışma güncellendi
+    discussion_created: Tartışma yaratıldı
+    discussion_started: Tartışma başladı
   announcement:
     send_discussion: Konuyu gönder
     send_group: İnsanları %{name}'ye davet edin
@@ -907,6 +945,8 @@ tr:
       has_not_read_thread: Konuyu görüntülemedi
       has_not_joined_yet: Henüz katılmadı
       has_not_joined_yet_hint: Bu kullanıcı, Loomio'ya katılma davetini kabul etmemiştir ve kabul edene kadar başka bildirim almayacaktır.
+      discussion_admin: Tartışma yöneticisi
+      has_not_read_discussion: Tartışmayı görüntülemedi
     group_form:
       search_placeholder: İnsanları arayın...
       modal_title: Grup üyelerini seçin
@@ -914,6 +954,8 @@ tr:
       success: "%{count} bildirim gönderildi"
     group_mentioned: "%{name}, %{length} kişinin bulunduğu gruptan bahsetti:"
     poll_announced: "%{name}, %{length} kişiyi oy vermeye davet etti:"
+    discussion_notification_history: Tartışma bildirim geçmişi
+    inviting_guests_to_discussion: Misafirler grubunuza ait değil ve yalnızca bu tartışmaya erişebilirler
   action_dock:
     actions_menu: Eylemler menüsü
     more_actions: Daha fazla hareket
@@ -941,10 +983,10 @@ tr:
     reply_to_comment: Cevap vermek
     fork_comment: Çatal ipliği
     translate_comment: Yorumu çevir
-    edit_outcome: Sonucu düzenle
+    edit_outcome: Kararı düzenle
     announce_outcome: İnsanları bu sonuç hakkında bilgilendirin
     announce_outcome_active: "(Bu sonuçtan henüz hiç kimse haberdar edilmedi)"
-    translate_outcome: Sonucu çevir
+    translate_outcome: Kararı çevir
     show_history: Düzenleme geçmişini göster
     edited: Düzenlendi
     show_edits: Düzenlemeleri göster
@@ -968,6 +1010,11 @@ tr:
     add_poll_to_thread: Konuya ekle
     count_members: "%{count} üye"
     count_voters: "%{count} seçmen"
+    pin_discussion: Pin tartışması
+    unpin_discussion: Tartışmayı sabitle
+    close_discussion: Tartışmayı kapatın
+    reopen_discussion: Tartışmayı yeniden açın
+    delete_discussion: Tartışmayı sil
   formatting:
     formatting_tools: Metin biçimlendirme araçları
     colors: Renkler
@@ -1045,6 +1092,7 @@ tr:
     introduction_over_limit: Yanıt çok uzun
     messages:
       membership_requested: "%{group}'a katılma talebinde bulundunuz"
+    aria_label: Üyelik talep formu
   revision_history_modal:
     discussion_header: Tartışma düzenlemeleri
     comment_header: Yorum düzenlemeleri
@@ -1063,6 +1111,7 @@ tr:
     closing_at_changed: kapanış saati %{time} olarak ayarlandı
     private_changed: gizlilik %{private} olarak ayarlandı
     group_id_changed: "%{name}'a taşındı"
+    aria_label: Revizyon geçmişi
   reactions_input:
     add_your_reaction: Tepkinizi ekleyin
   reactions_display:
@@ -1148,9 +1197,14 @@ tr:
       private: 'Gizlilik: Bu grubu sadece grup üyeleri görebilir'
       parent_members: 'Gizlilik: Bu grup sadece %{parentGroupName} ve %{groupName} gruplarının üyelerine görünür.'
       public: 'Gizlilik: Bu grup web üzerinde görülebilir'
+      aria_label: 'Grup gizliliği: %{privacy}'
     participation_report: Katılım raporu
     my_subgroups: Alt gruplarım
     more_subgroups: Daha fazla alt grup
+    discussions: Tartışmalar
+    no_discussions_here: Burada görülecek tartışma yok!
+    private_discussions: Bu gruptaki özel konuları görüntülemek için üye olmanız gerekir
+    view_closed_discussions: Kapalı tartışmaları görüntüle
   export_data_modal:
     title: Verilerinizi nasıl kullanmak istiyorsunuz?
     as_csv: Bir e-tabloda açın
@@ -1165,10 +1219,12 @@ tr:
     title: Gruptan ayrıl
     question: Bu gruptan ayrılmak istediğinizden emin misiniz?
     submit: Evet, bu gruptan ayrıl
+    aria_label: Gruptan ayrıl
   archive_group_form:
     title: Grubu devre dışı bırak
     question: Bu grubu devre dışı bırakmak istediğinizden emin misiniz?
     submit: Evet, Bu grubu devre dışı bırak
+    aria_label: Grubu devre dışı bırak
   group_form:
     thread_defaults_help: Yeni ileti dizileri için varsayılan ayarlar
     click_to_change_image: Kapak resmini (4x1) veya logoyu (1x1) değiştirmek için tıklayın
@@ -1268,6 +1324,9 @@ tr:
     upgrade_for_subgroups: 'Bir alt grup oluşturmak için lütfen <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">aboneliğinizi yükseltin</a>'
     share_this_url_with_people_who_want_to_join: Katılmak isteyen kişilerle bu URL'yi paylaşın
     new_description_html: "<h3>Kuruluşunuz karar alma sürecinde hangi zorluklarla karşılaşıyor?</h3><p></p><h3> Loomio'yu kuruluşunuzda nasıl kullanmak istersiniz?</h3><p></p>"
+    allow_polls_without_threads: Konu başlıkları olmadan anketlere izin ver
+    allow_polls_without_threads_help: Bağımsız anketlere izin verin (önerilmez). Tartışma olmadan, insanlar soru soramaz veya etkili bir şekilde fikir birliği oluşturamaz.
+    aria_label: Grup formu
   group_export_modal:
     title: Grup verilerini dışa aktar
     body: <p>Grubunuzun verilerinin bir kopyasını istediğiniz zaman indirebilirsiniz. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Daha fazlasını bul.</a></p><p> Grubunuzun büyüklüğüne bağlı olarak tamamlanması birkaç dakika sürer. Hazır olduğunda dosyayı indirme bağlantısını içeren bir e-posta alacaksınız.</p>
@@ -1328,6 +1387,7 @@ tr:
     shareable_link_to_join_group: Gruba katılmak için paylaşılabilir bağlantı
     reset_the_link: Bağlantıyı sıfırla
     email_addresses_placeholder: örneğin helperbot{'@'}loomio.org, friendlybot{'@'}loomio.org
+    aria_label: Davetiye formu
   memberships_page:
     members: Üyeler
     name_label: İsim
@@ -1431,6 +1491,7 @@ tr:
     use_uploaded: Yeni fotoğraf yükle
     existing_upload: Mevcut yükleme
     use_provider: "%{provider} fotoğrafını kullan"
+    aria_label: Profil fotoğrafı formu
   change_password_form:
     set_password_title: Parolanızı ayarlayın
     set_password_helptext: Lütfen bir şifre girin - minimum 8 karakter
@@ -1521,6 +1582,7 @@ tr:
       muted: Sesi Kısılmış Müzakereler
       muted_aria_label: Şu anda sesi kısılmış müzakereler görüntüleniyor
       muted_description: Sadece sesi kısılmış müzakereleri görüntüleyin
+      all: Son Tartışmalar
     thread_preview:
       you_voted: "%{position} için oy verdiniz"
       undecided: kararsızsın
@@ -1534,8 +1596,14 @@ tr:
       thisweek: Bu hafta
       thismonth: Bu ay
       older: Bir aydan daha eski
+    dashboard: Gösterge Paneli
+    recent_discussions: Son tartışmalar
+    view_recent: Tüm son tartışmaları görüntüle?
+    discussion_marked_as_read: Tartışma okundu olarak işaretlendi
+    discussion_marked_as_unread: Tartışma okunmamış olarak işaretlendi
   threads_page:
     no_direct_threads: Doğrudan konunuz yok
+    no_invite_only_threads: Yalnızca davetlilerin katılabileceği bir konunuz yok
   inbox_page:
     no_threads: Yaşasın! Gelen kutunuzdaki bütün müzakereleri okudunuz.
     unread_threads: Okunmamış müzakereler
@@ -1544,6 +1612,9 @@ tr:
       start: Başla
       or: veya
       join_group: Konuları görmek için bir gruba <a href="/explore">katılın</a> .
+      explanation: Hiçbir gruba üye olmadığınız için okunmamış tartışmanız bulunmamaktadır.
+    no_discussions: Yaşasın! Gelen kutunuzdaki tüm tartışmaları okudunuz.
+    unread_discussions: Okunmamış tartışmalar
   discussion:
     direct_thread: Doğrudan iplik
     invite_only: Yalnızca davetle
@@ -1560,6 +1631,9 @@ tr:
     closed:
       reopened: Konu yeniden açıldı
       closed: Konu kapatıldı
+    volume:
+      mute_message: Tartışma sessize alındı
+      unmute_message: Tartışma sessize alınmadı
   discussion_last_seen_by:
     title: Tarafından görüldü
     no_one: Bunu henüz kimse görmedi
@@ -1575,34 +1649,19 @@ tr:
     nested: Yuvalanmış
     attachment_display:
       image_alt: Resim eklendi
+      aria_label: 'Ekli dosya:'
     n_previous: "%{count} önceki yanıtı yükle"
     n_more: "%{count} yanıtı yükle"
     add_comment: Yorum ekle
     add_poll: Anket ekle
-    add_outcome: Sonuç ekle
+    add_outcome: Karar ekle
     comment: Yorum
     facilitate: Kolaylaştırmak
     start_decision: Kararı başlat
     start_vote: Oylamayı başlat
-  thread_context:
-    current_poll_type_banner: Mevcut %{pollType}
-    item_maybe_deleted: Konu dizisinde istenen konum bulunamıyor. Silinmiş olabilir.
-    thread_options: Müzakere seçenekleri
-    email_settings: Bildirim ayarları
-    edit: Düzenle
-    edit_thread: Düzenle
-    close_thread: Kapat
-    reopen_thread: Yeniden aç
-    pin_thread: Pin
-    unpin_thread: Sabitlemeyi kaldır
-    mute_thread: Sesi kıs
-    move_thread: Taşı
-    print_thread: Yazdır
-    delete_thread: Sil
-    add_comment: Yorum
-    seen_by_count: "%{count} tarafından görüldü"
-    count_notified: "%{count} bilgilendirildi"
-    forked_from: Çatallı
+    event_pinned: Tartışma zaman çizelgesine eklendi
+    event_unpinned: Tartışma zaman çizelgesinden kaldırıldı
+    start_a_vote: Oylama başlat
   thread_arrangement_form:
     edit: Düzeni düzenle
     title: Konu düzeni
@@ -1772,9 +1831,9 @@ tr:
     participate: Katılmak
     vote: Oy
     votes: Oylar
-    update_outcome: Sonucu güncelle
-    outcome: Sonuç
-    outcomes: Sonuçlar
+    update_outcome: Kararı güncelle
+    outcome: Karar
+    outcomes: Kararlar
     statement: İfade
     change_your_stance: Yanıtı düzenle
     load_more: Daha fazla yükle
@@ -1790,7 +1849,7 @@ tr:
     share_count: Çeki paylaş
     start_poll: Bir karar başlatın
     publish_poll: Anketi paylaş
-    share_outcome: Sonucu paylaş
+    share_outcome: Kararı paylaş
     view_all: Hepsini gör
     save_changes: Kaydet
     change_vote: Oyunuzu değiştirin
@@ -1800,7 +1859,7 @@ tr:
     too_long: Çok uzun
     edit_warning: Düzenleme yalnızca küçük değişiklikler veya yazım hatalarının düzeltilmesi için önerilir. Önemli değişiklikler için bu %{pollType} dosyasını kapatın ve yeni bir tane başlatın.
     no_voting: Yalnızca tartışma amaçlıdır, oylama devre dışı bırakıldı
-    post_outcome: Sonuç sonrası
+    post_outcome: Kararı yayınla
     view_all_votes: Tüm oyları görüntüle
     you_voted: Oy verdiniz
   poll_common_attachment_form:
@@ -1832,6 +1891,8 @@ tr:
     no_results_found: '"%{search}" için sonuç yok'
     welcome_to_your_new_group: Yeni Loomio grubunuza hoş geldiniz!
     lets_start_a_thread: Bir konu başlatalım. Devam etmek için "Yeni konu"yu tıklayın.
+    lets_start_a_discussion: Bir tartışma başlatalım. Devam etmek için "Yeni tartışma"ya tıklayın.
+    new_discussion: Yeni tartışma
   members_panel:
     bot: Bot
     no_results: Üye bulunamadı
@@ -1972,9 +2033,9 @@ tr:
     reminded: hatırlatıcı gönderildi!
     reminder_sent: Hatırlatma bildirimi gönderildi
   poll_common_set_outcome_panel:
-    enter_outcome: Sonucu girin
+    enter_outcome: Kararı girin
     poll_type: Bu %{poll_type} kapandı. Sonuçları düşünmeye zaman ayırın ve ardından sonucu paylaşın, böylece insanlar bundan sonra ne olacağını bilsin.
-    enter_an_outcome: Bir sonuç girin
+    enter_an_outcome: Bir karar girin
   poll_common_outcome_form:
     review_due_in_days: Karar kaç gün sonra gözden geçirilir?
     review_date: Gözden geçirme tarihi
@@ -1983,8 +2044,8 @@ tr:
     outcome_statement_template: Sonuç beyanı şablonu
     new_title: Devlet sonucu
     update_title: Sonucu güncelle
-    outcome_created: Sonuç oluşturuldu
-    outcome_updated: Sonuç güncellendi
+    outcome_created: Karar oluşturuldu
+    outcome_updated: Karar güncellendi
     statement_placeholder: Yanıtları özetleyin ve bundan sonra ne olacağını açıklayın.
     you_will_be_notified: İnceleme tarihinde bilgilendirileceksiniz.
     submit: Sonucu paylaş
@@ -2100,10 +2161,10 @@ tr:
     sentence: "%{numerator} / %{denominator} kişi katıldı (%{percent}%)"
     target_progress: Hedefin %%{percent} kadarına ulaşıldı. (%{num} / %{target})
     pct_of_eligible_voters_must_participate: Uygun seçmenlerin %{pct}%'si katılmalıdır
-    pct_participation: "%{total} oydan %{num} tanesi kullanıldı (%{pct}% katılım)"
     vote_short_of_quorum: "%{pct}% çoğunluğa ulaşmak için 1 oy daha gerekiyor"
     votes_short_of_quorum: "%{pct}% çoğunluğa ulaşmak için %{num} oy daha gerekiyor"
     quorum_reached: "%{pct}% çoğunluğa ulaşıldı"
+    pct_participation: "%{toplam} oydan %{num} tanesi kullanıldı (%{pct}% katılım)"
   poll_meeting_chart_panel:
     total: Toplam
   poll_remove_vote:
@@ -2300,6 +2361,8 @@ tr:
       outcome_created: Sonuç paylaşıldı
       outcome_updated: Bir sonuç güncellendi
       outcome_review_due: Sonuç incelemesi zamanı geldi
+      new_discussion: Bir tartışma başladı
+      discussion_edited: Bir tartışma düzenlendi
     permissions_explaination: Bu entegrasyon tarafından hangi eylemlerin gerçekleştirilebileceğini seçin
     permissions:
       show_discussion: tartışmayı göster
@@ -2350,6 +2413,8 @@ tr:
     month: Ay
     year: Yıl
     country_disclaimer: Ülke kullanıcının IP adresine dayanmaktadır ve çok doğru değildir. Bunu yalnızca kaba bir kılavuz olarak düşünün.
+    total_discussions: Toplam tartışmalar
+    discussions_with_polls: Anketlerle tartışmalar
   tips:
     youve_completed_all_the_steps: "\U0001F389 Tüm adımları tamamladınız!"
     getting_started_checklist: Başlarken kontrol listesi
@@ -2385,7 +2450,12 @@ tr:
         helptext: "<p>Kararların ilerlemesine yardımcı olmak için, tekliflerin oylama için bir son tarihi vardır. Son tarihe ulaşıldığında, oylama kapatılacak ve bir teklif sonucunu paylaşmanız için bilgilendirileceksiniz.</p><p> Sonuç, teklifin başarılı olup olmadığını ve bundan sonra ne olacağını söyleme fırsatıdır.</p><p> Teklifinizin son tarihi henüz geçmediyse ancak yine de devam etmek istiyorsanız, <b>Erken Kapat'a</b> tıklayabilirsiniz.</p><p> Doğru zaman geldiğinde teklifiniz için <b>bir sonuç girin</b> .</p>"
         submit: Teklifi görüntüle
         cancel: Bunu daha sonra yap
+      start_a_discussion:
+        title: Bir tartışma başlatın
+        helptext: "<p>İnsanların davetinizi kabul ettikten sonra görecekleri bir tartışma yaratın.</p><p> Amaç, insanları Loomio'da ilk yorumlarını yazmaya teşvik etmek.</p><p> Bunu kolaylaştırmak için kullanabileceğiniz bir <b>Uygulama tartışma</b> şablonu hazırladık.</p>"
+        submit: Tartışma şablonlarına bakın
     get_started_here: Buradan başlayın
+    try_loomio_with_your_group: Loomio'yu grubunuzla deneyin
   poll_common_settings:
     who_can_vote: Kimler oy kullanabilir?
     specified_voters_only_true: Yalnızca davetli kişiler
@@ -2540,3 +2610,49 @@ tr:
     invited_by: Davetli
     invited_on: Davet edildi
     no_receipts: Bu anonim anket doğrulama özelliği mevcut olmadan önce kapandı, bu nedenle doğrulama mümkün değil.
+  close_discussion_modal:
+    body: Açık tartışmalar listesinden çıkarmak ve insanların yorum yapmasını engellemek için tartışmaları kapatın.
+  comment_reply_form:
+    aria_label: Bir cevap ekle
+  discussion_template:
+    browse_public_templates: Şablon galerisine göz atın
+    start_a_new_discussion: Yeni bir tartışma başlat
+    discussion_template_saved: Tartışma şablonu kaydedildi
+    these_are_public_templates: Bu şablonlar grubunuza uyacak şekilde kopyalayıp değiştirebilmeniz için mevcuttur
+    these_are_templates: Bunlar grubunuzdaki tartışma şablonlarıdır. Tartışma başlatmak için bir şablona tıklayın. İsterseniz bunları düzenleyebilir, kaldırabilir veya yeniden sıralayabilirsiniz.
+    default_title_label: Varsayılan başlık
+    default_title_hint: Başlık alanını düzenlenebilir metinle önceden doldurun. Bu isteğe bağlıdır - emin değilseniz boş bırakın.
+    title_placeholder_label: Örnek başlık
+    title_placeholder_hint: Başlık alanının arka planında görüntülenecek bir örnek
+    title_placeholder_placeholder: Örneğin, arka plan metni şöyle görünür
+    example_description_label: Örnek açıklama
+    example_description_placeholder: İnsanların bir konu başlatmak için kullanabilecekleri bir şablon sağlayın
+    hidden_templates: Gizli şablonlar
+    confirm_delete: Bu tartışma şablonunu silmek istediğinizden emin misiniz?
+    add_poll_template: Anket şablonu ekle
+    add_poll_template_help: Bu süreci tamamlamaya yardımcı olan herhangi bir anket şablonunu seçin
+    recommended_poll_templates: Önerilen anket şablonları
+    share_in_template_gallery: Bu şablonu herkese açık şablon galerisinde paylaşın
+  context_panel:
+    thread_status:
+      pinned: Bu tartışma sabitlendi. Tüm kullanıcılar için grubun tartışma listesinin en üstünde kalacak.
+      closed: Bu tartışma kapatıldı. Artık panoda görünmeyecek ve grup sayfasında 'kapalı' altında listelenecek.
+  thread_group:
+    aria_label: Grup adı
+  discussion_context:
+    current_poll_type_banner: Mevcut %{pollType}
+    seen_by_count: "%{count} kişi tarafından görüldü"
+    count_notified: "%{count} kişi bilgilendirildi"
+    start_a_vote: Oylama başlat
+  pin_discussion_modal:
+    helptext: Sabitlenen tartışmalar her zaman grubun tartışmalar listesinde görünür.
+  delete_discussion_form:
+    body: Bu tartışmayı silmek istediğinizden emin misiniz?
+    discussion_deleted: Tartışma silindi
+  move_discussion_form:
+    title: Tartışmayı başka bir gruba taşıyın
+    body: Hedef grup
+    confirm: Tartışmayı taşı
+    confirm_change_to_private: "%{groupName} açık bir gruptur. Devam ederseniz, bu tartışma herkese açık olacaktır."
+    messages:
+      success: Tartışma %{name}'e taşındı

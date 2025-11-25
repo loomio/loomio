@@ -93,6 +93,7 @@ sl:
       process_introduction: "<p>Uporabite to predlogo za dobrodošlico novim članom in spodbujanje zgodnje udeležbe. Ljudem daje priložnost, da se predstavijo in raziščejo funkcije Loomia.</p>"
       title: "\U0001F44B Dobrodošli! Pozdravite nas in preizkusite."
       description: "<p>Dobrodošli v naši skupini Loomio – lepo vas je imeti tukaj!</p><p> Ta nit je prostor za:</p><ul><li><p> Predstavite se skupini</p></li><li><p> Preizkusite nekaj Loomiovih funkcij – na primer: poskusite uporabiti reakcije \U0001F44D</p></li><li><p> V tej fazi postavite vsa vprašanja, ki jih imate</p></li></ul><p> Če nisi prepričan/a, kaj bi rekel/a, je preprost pozdrav v redu \U0001F642</p>"
+      process_name: Vaja razprave
   explore:
     header: Razišči javne skupine
   activerecord:
@@ -141,6 +142,8 @@ sl:
     '500':
       title: Notranja napaka strežnika
       body: Žal nam je, ampak nekaj je šlo narobe. O tej težavi smo bili obveščeni in jo bomo kmalu pregledali.
+    '404':
+      body: Zahtevanega elementa ni bilo mogoče najti. To se lahko zgodi, če je bila razprava ali anketa izbrisana.
   group:
     error:
       handle_must_begin_with_parent_handle: Začeti se mora z %{parent_handle}-
@@ -221,11 +224,11 @@ sl:
       explaination_html: "<p>To e-pošto ste prejeli, ker ste skrbnik skupine Loomio: %{group}.</p><p> Skupina je prejela e-poštno sporočilo z neprepoznanega e-poštnega naslova.</p><p> Če je sporočilo poslal član skupine, preglejte e-pošto in izberite člana.</p><p> Če je sporočilo neželeno, lahko blokirate vsa nadaljnja e-poštna sporočila s tega naslova.</p>"
     notification_reason:
       group_subscribed: To ste prejeli, ker ste naročeni na vse aktivnosti v skupini.
-      thread_subscribed: To ste prejeli, ker ste naročeni na nit.
       group_mentioned: To ste prejeli, ker je bila skupina @omenjena.
       user_mentioned: To ste prejeli, ker ste bili @omenjeni.
       notified: To ste prejeli, ker vas je avtor obvestil.
       poll_subscribed: To ste prejeli, ker ste naročeni na anketo.
+      discussion_subscribed: To ste prejeli, ker ste naročeni na razpravo.
   user_mailer:
     group_export_ready:
       subject: Izvoz podatkov skupine za %{group_name}
@@ -310,6 +313,7 @@ sl:
       button_text: Ogled zahteve
     content_was_translated: Ta vsebina je bila prevedena iz %{source_locale}
     content_was_translated_html: Ta vsebina je bila prevedena iz %{source_locale}. <a href="%{profile_url}">Ogled nastavitev<a></a>
+    loomio_app_description: Kraj, kjer lahko organizacije sodelujejo in skupaj sprejemajo odločitve.
   announcement_count_emails: "%{count} e-poštnih sporočil"
   email_actions:
     unfollowed_discussion: Izklopili ste e-pošto za nit.
