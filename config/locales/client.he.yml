@@ -1328,8 +1328,8 @@ he:
     upgrade_for_subgroups: 'אנא <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">שדרג את המנוי שלך</a> כדי ליצור תת-קבוצה'
     share_this_url_with_people_who_want_to_join: שתף כתובת URL זו עם אנשים שרוצים להצטרף
     new_description_html: <h3 style=";text-align:right;direction:rtl">אילו אתגרים עומדים בפני הארגון שלכם בקבלת החלטות?</h3><p style=";text-align:right;direction:rtl"></p><h3 style=";text-align:right;direction:rtl"> כיצד תרצה להשתמש ב-Loomio בארגון שלך?</h3><p style=";text-align:right;direction:rtl"></p>
-    allow_polls_without_threads: אפשר סקרים ללא שרשורים
-    allow_polls_without_threads_help: אפשר סקרים עצמאיים (לא מומלץ). ללא דיון, אנשים לא יוכלו להעלות שאלות או לבנות קונצנזוס בצורה יעילה.
+    allow_polls_without_discussions: אפשר סקרים ללא דיון
+    allow_polls_without_discussions_help: מנע מאנשים להתחיל סקרים מבלי להתחיל דיון קודם.
     aria_label: טופס קבוצה
   group_export_modal:
     title: יצוא נתונים מהקבוצה

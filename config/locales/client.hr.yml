@@ -1324,8 +1324,8 @@ hr:
     upgrade_for_subgroups: 'Molimo vas <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">da nadogradite svoju pretplatu</a> kako biste stvorili podgrupu'
     share_this_url_with_people_who_want_to_join: Podijelite ovaj URL s ljudima koji se žele pridružiti
     new_description_html: "<h3>S kojim se izazovima vaša organizacija suočava u donošenju odluka?</h3><p></p><h3> Kako biste željeli koristiti Loomio u svojoj organizaciji?</h3><p></p>"
-    allow_polls_without_threads: Dopusti ankete bez tema
-    allow_polls_without_threads_help: Dopustite samostalne ankete (ne preporučuje se). Bez rasprave, ljudi ne mogu postavljati pitanja ili učinkovito graditi konsenzus.
+    allow_polls_without_discussions: Dopusti ankete bez rasprave
+    allow_polls_without_discussions_help: Spriječite ljude da pokreću ankete bez prethodnog pokretanja rasprave.
     aria_label: Grupni obrazac
   group_export_modal:
     title: Izvoz grupnih podataka

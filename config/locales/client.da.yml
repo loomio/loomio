@@ -1324,8 +1324,8 @@ da:
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Opgrader venligst dit abonnement</a> for at oprette en undergruppe'
     share_this_url_with_people_who_want_to_join: Del denne URL med personer, der ønsker at deltage
     new_description_html: "<h3>Hvilke udfordringer står din organisation over for i forbindelse med beslutningstagning?</h3><p></p><h3> Hvordan vil du gerne bruge Loomio i din organisation?</h3><p></p>"
-    allow_polls_without_threads: Tillad afstemninger uden tråde
-    allow_polls_without_threads_help: Tillad separate afstemninger (anbefales ikke). Uden en diskussion kan folk ikke stille spørgsmål eller effektivt opbygge konsensus.
+    allow_polls_without_discussions: Tillad afstemninger uden diskussion
+    allow_polls_without_discussions_help: Forhindre folk i at starte afstemninger uden først at starte en diskussion.
     aria_label: Gruppeformular
   group_export_modal:
     title: Eksporter gruppedata

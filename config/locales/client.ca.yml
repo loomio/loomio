@@ -1332,8 +1332,8 @@ ca:
     upgrade_for_subgroups: 'Si us plau, <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">actualitza la teva subscripció</a> per crear un subgrup'
     share_this_url_with_people_who_want_to_join: Comparteix aquesta URL amb les persones que vulguin unir-s'hi
     new_description_html: "<h3>Quins reptes afronta la vostra organització a l'hora de prendre decisions?</h3><p></p><h3> Com t'agradaria utilitzar Loomio a la teva organització?</h3><p></p>"
-    allow_polls_without_threads: Permetre enquestes sense fils de discussió
-    allow_polls_without_threads_help: Permeteu enquestes independents (no recomanat). Sense un debat, la gent no pot plantejar preguntes ni generar consens de manera eficaç.
+    allow_polls_without_discussions: Permetre enquestes sense discussió
+    allow_polls_without_discussions_help: Impedeix que la gent iniciï enquestes sense iniciar primer una discussió.
     aria_label: Formulari de grup
   group_export_modal:
     title: Exporta dades del grup

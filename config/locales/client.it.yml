@@ -1352,8 +1352,8 @@ it:
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Aggiorna il tuo abbonamento</a> per creare un sottogruppo'
     share_this_url_with_people_who_want_to_join: Condividi questo URL con le persone che vogliono unirsi
     new_description_html: "<h3>Quali sfide deve affrontare la tua organizzazione nel processo decisionale?</h3><p></p><h3> Come vorresti utilizzare Loomio nella tua organizzazione?</h3><p></p>"
-    allow_polls_without_threads: Consenti sondaggi senza discussioni
-    allow_polls_without_threads_help: Consentire sondaggi indipendenti (sconsigliato). Senza una discussione, le persone non possono sollevare domande o costruire un consenso efficace.
+    allow_polls_without_discussions: Consenti sondaggi senza discussione
+    allow_polls_without_discussions_help: Impedire alle persone di avviare sondaggi senza prima avviare una discussione.
     aria_label: Modulo di gruppo
   group_export_modal:
     title: Esporta i dati del gruppo

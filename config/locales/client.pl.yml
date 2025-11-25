@@ -1332,8 +1332,8 @@ pl:
     upgrade_for_subgroups: 'Aby utworzyć podgrupę, <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">zaktualizuj swoją subskrypcję</a>'
     share_this_url_with_people_who_want_to_join: Udostępnij ten adres URL osobom, które chcą dołączyć
     new_description_html: "<h3>Z jakimi wyzwaniami w zakresie podejmowania decyzji mierzy się Twoja organizacja?</h3><p></p><h3> W jaki sposób chcesz wykorzystać Loomio w swojej organizacji?</h3><p></p>"
-    allow_polls_without_threads: Zezwalaj na ankiety bez wątków
-    allow_polls_without_threads_help: Zezwalaj na samodzielne ankiety (niezalecane). Bez dyskusji ludzie nie mogą zadawać pytań ani skutecznie budować konsensusu.
+    allow_polls_without_discussions: Zezwalaj na ankiety bez dyskusji
+    allow_polls_without_discussions_help: Zapobiegaj rozpoczynaniu ankiet bez wcześniejszego rozpoczęcia dyskusji.
     aria_label: Formularz grupowy
   group_export_modal:
     title: Eksportuj dane grupy

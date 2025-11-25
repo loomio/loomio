@@ -1324,8 +1324,8 @@ tr:
     upgrade_for_subgroups: 'Bir alt grup oluşturmak için lütfen <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">aboneliğinizi yükseltin</a>'
     share_this_url_with_people_who_want_to_join: Katılmak isteyen kişilerle bu URL'yi paylaşın
     new_description_html: "<h3>Kuruluşunuz karar alma sürecinde hangi zorluklarla karşılaşıyor?</h3><p></p><h3> Loomio'yu kuruluşunuzda nasıl kullanmak istersiniz?</h3><p></p>"
-    allow_polls_without_threads: Konu başlıkları olmadan anketlere izin ver
-    allow_polls_without_threads_help: Bağımsız anketlere izin verin (önerilmez). Tartışma olmadan, insanlar soru soramaz veya etkili bir şekilde fikir birliği oluşturamaz.
+    allow_polls_without_discussions: Tartışma olmadan anketlere izin ver
+    allow_polls_without_discussions_help: İnsanların önce bir tartışma başlatmadan anket başlatmasını engelleyin.
     aria_label: Grup formu
   group_export_modal:
     title: Grup verilerini dışa aktar

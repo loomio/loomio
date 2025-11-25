@@ -1340,8 +1340,8 @@ de:
     upgrade_for_subgroups: 'Bitte <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">aktualisieren Sie Ihr Abonnement</a> , um eine Untergruppe zu erstellen'
     share_this_url_with_people_who_want_to_join: Teilen Sie diese URL mit Leuten, die beitreten möchten
     new_description_html: "<h3>Vor welchen Herausforderungen steht Ihre Organisation bei der Entscheidungsfindung?</h3><p></p><h3> Wie möchten Sie Loomio in Ihrer Organisation einsetzen?</h3><p></p>"
-    allow_polls_without_threads: Umfragen ohne Diskussionen zulassen
-    allow_polls_without_threads_help: Einzelumfragen zulassen (nicht empfohlen). Ohne Diskussion können die Teilnehmenden keine Fragen stellen oder effektiv einen Konsens erzielen.
+    allow_polls_without_discussions: Umfragen ohne Diskussion zulassen
+    allow_polls_without_discussions_help: Verhindert, dass Personen Umfragen starten, ohne vorher eine Diskussion zu beginnen.
     aria_label: Gruppenbildung
   group_export_modal:
     title: Gruppendaten exportieren

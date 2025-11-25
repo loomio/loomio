@@ -1353,8 +1353,8 @@ pt_BR:
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Atualize sua assinatura</a> para criar um subgrupo'
     share_this_url_with_people_who_want_to_join: Compartilhe esta URL com pessoas que desejam participar
     new_description_html: "<h3>Quais desafios sua organização enfrenta na tomada de decisões?</h3><p></p><h3> Como você gostaria de usar o Loomio na sua organização?</h3><p></p>"
-    allow_polls_without_threads: Permitir enquetes sem tópicos
-    allow_polls_without_threads_help: Permitir enquetes isoladas (não recomendado). Sem discussão, as pessoas não conseguem levantar questões ou construir consenso de forma eficaz.
+    allow_polls_without_discussions: Permitir enquetes sem discussão
+    allow_polls_without_discussions_help: Impedir que as pessoas iniciem enquetes sem primeiro iniciar uma discussão.
     aria_label: Formulário de grupo
   group_export_modal:
     title: Exportar data do grupo

@@ -1328,8 +1328,8 @@ hu:
     upgrade_for_subgroups: 'Kérjük <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">, frissítse előfizetését</a> egy alcsoport létrehozásához'
     share_this_url_with_people_who_want_to_join: Oszd meg ezt az URL-t azokkal, akik csatlakozni szeretnének
     new_description_html: "<h3>Milyen kihívásokkal néz szembe a szervezete a döntéshozatal során?</h3><p></p><h3> Hogyan szeretné használni a Loomio-t a szervezetében?</h3><p></p>"
-    allow_polls_without_threads: Szavazások engedélyezése szálak nélkül
-    allow_polls_without_threads_help: Engedélyezze az önálló szavazásokat (nem ajánlott). Vita nélkül az emberek nem tudnak kérdéseket feltenni vagy hatékonyan konszenzust kialakítani.
+    allow_polls_without_discussions: Szavazások engedélyezése megbeszélés nélkül
+    allow_polls_without_discussions_help: Engedélyezze az önálló szavazásokat (nem ajánlott). Vita nélkül az emberek nem tudnak kérdéseket feltenni vagy hatékonyan konszenzust kialakítani.
     aria_label: Csoportos űrlap
   group_export_modal:
     title: Csoport adatok letöltése

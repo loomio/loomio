@@ -1324,8 +1324,8 @@ sv:
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Uppgradera din prenumeration</a> för att skapa en undergrupp'
     share_this_url_with_people_who_want_to_join: Dela den här webbadressen med personer som vill gå med
     new_description_html: "<h3>Vilka utmaningar står er organisation inför med beslutsfattandet?</h3><p></p><h3> Hur skulle du vilja använda Loomio i din organisation?</h3><p></p>"
-    allow_polls_without_threads: Tillåt omröstningar utan trådar
-    allow_polls_without_threads_help: Tillåt fristående omröstningar (rekommenderas inte). Utan en diskussion kan man inte ställa frågor eller skapa enighet effektivt.
+    allow_polls_without_discussions: Tillåt omröstningar utan diskussion
+    allow_polls_without_discussions_help: Tillåt fristående omröstningar (rekommenderas inte). Utan en diskussion kan man inte ställa frågor eller skapa enighet effektivt.
     aria_label: Gruppformulär
   group_export_modal:
     title: Exportera gruppdata

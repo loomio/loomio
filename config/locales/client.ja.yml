@@ -1323,8 +1323,8 @@ ja:
     upgrade_for_subgroups: 'サブグループを作成するには、<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">サブスクリプションをアップグレードして</a>ください'
     share_this_url_with_people_who_want_to_join: 参加したい人にこのURLを共有してください
     new_description_html: "<h3>あなたの組織は意思決定においてどのような課題に直面していますか?</h3><p></p><h3>あなたの組織ではLoomioをどのように活用したいですか?</h3><p></p>"
-    allow_polls_without_threads: スレッドなしの投票を許可する
-    allow_polls_without_threads_help: 単独の投票を許可します（非推奨）。議論がなければ、人々は質問をしたり、効果的に合意を形成したりすることができません。
+    allow_polls_without_discussions: ディスカッションなしの投票を許可
+    allow_polls_without_discussions_help: 最初にディスカッションを開始せずに投票を開始することを禁止します。
     aria_label: グループフォーム
   group_export_modal:
     title: グループデータのエクスポート

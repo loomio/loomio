@@ -1324,8 +1324,8 @@ fi:
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Päivitä tilauksesi</a> luodaksesi aliryhmän'
     share_this_url_with_people_who_want_to_join: Jaa tämä URL-osoite niiden kanssa, jotka haluavat liittyä
     new_description_html: "<h3>Millaisia haasteita organisaatiollanne on päätöksenteossa?</h3><p></p><h3> Miten haluaisit käyttää Loomiota organisaatiossasi?</h3><p></p>"
-    allow_polls_without_threads: Salli kyselyt ilman ketjuja
-    allow_polls_without_threads_help: Salli erilliset kyselyt (ei suositella). Ilman keskustelua ihmiset eivät voi esittää kysymyksiä tai rakentaa tehokasta yksimielisyyttä.
+    allow_polls_without_discussions: Salli kyselyt ilman keskustelua
+    allow_polls_without_discussions_help: Estä ihmisiä aloittamasta kyselyitä ilman keskustelun aloittamista ensin.
     aria_label: Ryhmälomake
   group_export_modal:
     title: Vie ryhmätiedot

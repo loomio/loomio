@@ -1290,8 +1290,8 @@ en:
     question: Are you sure you want to deactivate this group?
     submit: Yes, Deactivate this group
   group_form:
-    allow_polls_without_threads: Allow polls without threads
-    allow_polls_without_threads_help: Allow standalone polls (not recommended). Without a discussion, people can’t raise questions or build consensus effectively.
+    allow_polls_without_discussions: Allow polls without discussion
+    allow_polls_without_discussions_help: Do not prevent people from starting polls without starting a discussion first.
     share_this_url_with_people_who_want_to_join: Share this URL with people who want to join
     request_to_join_prompt: Request to join prompt
     default_request_to_join_prompt: 'Thanks for your interest in our group. Please introduce yourself and explain why you are requesting to join.'
@@ -2035,6 +2035,13 @@ en:
     closed: Closed
     need_vote: Need Vote
     no_polls: No polls found
+    standalone_disabled_title: Standalone polls are disabled
+    standalone_disabled_helptext: "<p>This group requires polls to be started within a discussion.</p><p>Discussions help people understand the context, ask questions, and share perspectives before voting. This leads to better decisions.</p><p>Start a discussion first, then add a poll when you're ready to gather votes.</p>"
+    start_discussion: Start a discussion
+    standalone_warning_title: Consider starting a discussion first
+    standalone_warning_helptext: "<p>Polls work best when people can discuss the topic first.</p><p>Without a discussion, voters can't ask questions, raise concerns, or suggest improvements. This often leads to lower participation and less clear outcomes.</p><p>We recommend starting a discussion, developing ideas together, then adding a poll when you're ready.</p>"
+    start_poll_anyway: Start poll anyway
+    start_discussion_instead: Start a discussion instead
   group_files_panel:
     no_files: No files found
     filename: Filename

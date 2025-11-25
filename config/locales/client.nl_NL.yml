@@ -1332,8 +1332,8 @@ nl_NL:
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Upgrade uw abonnement</a> om een subgroep te creëren'
     share_this_url_with_people_who_want_to_join: Deel deze URL met mensen die mee willen doen
     new_description_html: "<h3>Voor welke uitdagingen staat uw organisatie bij het nemen van beslissingen?</h3><p></p><h3> Hoe wilt u Loomio in uw organisatie gebruiken?</h3><p></p>"
-    allow_polls_without_threads: Polls zonder threads toestaan
-    allow_polls_without_threads_help: Sta afzonderlijke peilingen toe (niet aanbevolen). Zonder discussie kunnen mensen geen vragen stellen of effectief consensus bereiken.
+    allow_polls_without_discussions: Peilingen zonder discussie toestaan
+    allow_polls_without_discussions_help: Voorkom dat mensen peilingen starten zonder eerst een discussie te beginnen.
     aria_label: Groepsvorm
   group_export_modal:
     title: Groepsdata exporteren

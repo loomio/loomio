@@ -1335,8 +1335,8 @@ uk:
     upgrade_for_subgroups: 'Будь ласка, <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">оновіть свою підписку</a> , щоб створити підгрупу'
     share_this_url_with_people_who_want_to_join: Поділіться цією URL-адресою з людьми, які хочуть приєднатися
     new_description_html: "<h3>З якими труднощами стикається ваша організація під час прийняття рішень?</h3><p></p><h3> Як би ви хотіли використовувати Loomio у своїй організації?</h3><p></p>"
-    allow_polls_without_threads: Дозволити опитування без тем
-    allow_polls_without_threads_help: Дозволити окремі опитування (не рекомендується). Без обговорення люди не можуть ефективно ставити запитання або досягати консенсусу.
+    allow_polls_without_discussions: Дозволити опитування без обговорення
+    allow_polls_without_discussions_help: Дозволити окремі опитування (не рекомендується). Без обговорення люди не можуть ефективно ставити запитання або досягати консенсусу.
     aria_label: Групова форма
   group_export_modal:
     title: Експортувати дані групи

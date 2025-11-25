@@ -1324,8 +1324,8 @@ ro:
     upgrade_for_subgroups: 'Vă rugăm <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">să actualizați abonamentul</a> pentru a crea un subgrup'
     share_this_url_with_people_who_want_to_join: Distribuiți această adresă URL cu persoanele care doresc să se alăture
     new_description_html: "<h3>Cu ce provocări se confruntă organizația dumneavoastră în procesul decizional?</h3><p></p><h3> Cum ați dori să utilizați Loomio în organizația dumneavoastră?</h3><p></p>"
-    allow_polls_without_threads: Permite sondaje fără fire de discuție
-    allow_polls_without_threads_help: Permiteți sondaje independente (nu este recomandat). Fără o discuție, oamenii nu pot pune întrebări sau construi un consens eficient.
+    allow_polls_without_discussions: Permite sondaje fără discuție
+    allow_polls_without_discussions_help: Împiedicați oamenii să înceapă sondaje fără a începe mai întâi o discuție.
     aria_label: Formular de grup
   group_export_modal:
     title: Exportați datele grupului

@@ -1340,8 +1340,8 @@ zh_TW:
     group_handle_placeholder: 您的群組網址與電子郵件：%{host}/%{handle}、%{handle}{'@'}%{host}
     share_this_url_with_people_who_want_to_join: 與想要加入的人分享此 URL
     new_description_html: "<h3>您的組織在決策上面臨哪些挑戰？</h3><p></p><h3>您希望如何在您的組織中使用 Loomio？</h3><p></p>"
-    allow_polls_without_threads: 允許無主題投票
-    allow_polls_without_threads_help: 允許獨立投票（不建議）。如果沒有討論，人們就無法有效地提出問題或達成共識。
+    allow_polls_without_discussions: 允許無討論投票
+    allow_polls_without_discussions_help: 防止人們在未先開始討論的情況下發起投票。
     aria_label: 小組形式
   group_export_modal:
     title: 匯出群組資料

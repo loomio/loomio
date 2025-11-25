@@ -1324,8 +1324,8 @@ ru:
     upgrade_for_subgroups: 'Пожалуйста, <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">обновите свою подписку</a> , чтобы создать подгруппу'
     share_this_url_with_people_who_want_to_join: Поделитесь этим URL-адресом с людьми, которые хотят присоединиться
     new_description_html: "<h3>С какими проблемами сталкивается ваша организация при принятии решений?</h3><p></p><h3> Как бы вы хотели использовать Loomio в своей организации?</h3><p></p>"
-    allow_polls_without_threads: Разрешить опросы без тем
-    allow_polls_without_threads_help: Разрешить отдельные опросы (не рекомендуется). Без обсуждения люди не смогут задавать вопросы или эффективно достигать консенсуса.
+    allow_polls_without_discussions: Разрешить опросы без обсуждения
+    allow_polls_without_discussions_help: Запретить людям создавать опросы, не начав сначала обсуждение.
     aria_label: Групповая форма
   group_export_modal:
     title: Экспортировать данные группы
