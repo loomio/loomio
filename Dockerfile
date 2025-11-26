@@ -62,6 +62,6 @@ COPY . .
 # Copy built Vite assets from nodebuild stage
 COPY --from=nodebuild /build/public/client3 /loomio/public/client3
 
-EXPOSE 3000
+EXPOSE 80
 
 CMD ["/loomio/docker_start.sh"]

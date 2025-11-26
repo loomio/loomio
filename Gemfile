@@ -96,6 +96,7 @@ end
 
 group :production do
   gem 'rack-timeout'
+  gem 'thruster'
 end
 
 if Dir.exist?('engines/loomio_subs')

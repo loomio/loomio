@@ -11,8 +11,8 @@
   "dependencies": {
     "@hocuspocus/provider": "^2.15.2",
     "@mdi/js": "^6.9.96",
-    "@sentry/browser": "^10.22.0",
-    "@sentry/vue": "^10.26.0",
+    "@sentry/browser": "^10.27.0",
+    "@sentry/vue": "^10.27.0",
     "@tiptap/core": "^2.23.1",
     "@tiptap/extension-blockquote": "^2.23.1",
     "@tiptap/extension-bold": "^2.23.1",
@@ -71,7 +71,7 @@
     "tiny-emitter": "latest",
     "turndown": "^7.2.2",
     "turndown-plugin-gfm": "^1.0.2",
-    "vue": "^3.5.24",
+    "vue": "^3.5.25",
     "vue-chartjs": "^4.1.2",
     "vue-i18n": "9.11.0",
     "vue-router": "^4.2.5",
@@ -90,7 +90,7 @@
     "sass": "latest",
     "vite-plugin-env-compatible": "latest",
     "vite-plugin-vuetify": "latest",
-    "vite": "^7.2.2"
+    "vite": "^7.2.4"
   },
   "optionalDependencies": {
     "@esbuild/darwin-arm64": "latest",
