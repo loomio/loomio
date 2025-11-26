@@ -735,6 +735,11 @@ GEM
     terminal-table (4.0.0)
       unicode-display_width (>= 1.1.1, < 4)
     thor (1.4.0)
+    thruster (0.1.16)
+    thruster (0.1.16-aarch64-linux)
+    thruster (0.1.16-arm64-darwin)
+    thruster (0.1.16-x86_64-darwin)
+    thruster (0.1.16-x86_64-linux)
     tilt (2.6.1)
     timeout (0.4.4)
     trailblazer-option (0.1.2)
@@ -865,6 +870,7 @@ DEPENDENCIES
   sprockets-rails
   stackprof
   terminal-table
+  thruster
   twitter-text!
   tzinfo-data
   uri (= 1.1.1)
