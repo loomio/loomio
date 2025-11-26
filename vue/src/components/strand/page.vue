@@ -8,7 +8,7 @@ import WatchRecords from '@/mixins/watch_records';
 import UrlFor from '@/mixins/url_for';
 import StrandActionsPanel from './actions_panel';
 import ScrollService from '@/shared/services/scroll_service';
-import { mdiMenuOpen } from '@mdi/js';
+import { mdiMenuOpen, mdiArrowULeftTop } from '@mdi/js';
 
 export default {
   mixins: [WatchRecords, UrlFor],
@@ -20,6 +20,7 @@ export default {
   data() {
     return {
       mdiMenuOpen,
+      mdiArrowULeftTop,
       discussion: null,
       loader: null,
       position: 0,
@@ -30,7 +31,8 @@ export default {
       anchorSelector: null,
       anchorOffset: null,
       lastAnchorSelector: null,
-      snackbar: false
+      snackbar: false,
+      focusedItemVisible: false
     };
   },
 
@@ -39,6 +41,26 @@ export default {
       this.anchorSelector = selector;
       this.anchorOffset = offset
     });
+
+    EventBus.$on('visibleKeys', (keys) => {
+      if (!this.focusSelector || !this.loader) { return true; }
+
+      // Extract sequence ID from selector like `.sequenceId-123`
+      const match = this.focusSelector.match(/\.sequenceId-(\d+)/);
+      if (!match) { return true; }
+
+      const sequenceId = parseInt(match[1]);
+      console.log(sequenceId);
+
+      if (sequenceId == 0) {
+        this.focusedItemVisible =  keys.includes("00000")
+      } else {
+        const event =  Records.events.find({ discussionId: this.discussion.id, sequenceId: sequenceId })[0];
+        if (!event) { return false; }
+        this.focusedItemVisible =  keys.includes(event.positionKey)
+      }
+    })
+
     this.init();
   },
 
@@ -60,6 +82,12 @@ export default {
   methods: {
     openThreadNav() {
       EventBus.$emit('toggleThreadNav')
+    },
+
+    scrollToFocused() {
+      if (this.focusSelector) {
+        ScrollService.scrollTo(this.focusSelector, this.anchorOffset);
+      }
     },
 
     init() {
@@ -215,6 +243,8 @@ export default {
         strand-list.pt-3.pr-1.pr-sm-3.px-sm-2(:loader="loader" :collection="loader.collection" :focus-selector="focusSelector" :focus-mode="focusMode")
         strand-actions-panel(:discussion="discussion")
   strand-toc-nav(v-if="loader" :discussion="discussion" :loader="loader" :key="discussion.id" :focus-mode="focusMode" :focus-selector="focusSelector")
+  v-fab(v-if="focusSelector && !focusedItemVisible" icon app extended :text="$t('strand_nav.recenter')" location="bottom center" @click="scrollToFocused" color="accent" variant="elevated")
+    v-icon(:icon="mdiArrowULeftTop")
   v-fab(v-if="!$vuetify.display.mdAndUp" icon app location="bottom right" @click="openThreadNav" color="primary" variant="tonal")
     v-icon(:icon="mdiMenuOpen" )
 </template>

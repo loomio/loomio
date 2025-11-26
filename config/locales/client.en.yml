@@ -625,6 +625,7 @@ en:
     newest: Newest
     unread: Unread
     oldest: Oldest
+    recenter: Recenter
     newest_first: Newest first
     oldest_first: Oldest first
     showing_latest: Showing latest
