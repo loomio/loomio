@@ -50,7 +50,6 @@ export default {
       if (!match) { return true; }
 
       const sequenceId = parseInt(match[1]);
-      console.log(sequenceId);
 
       if (sequenceId == 0) {
         this.focusedItemVisible =  keys.includes("00000")
