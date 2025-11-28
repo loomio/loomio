@@ -5,7 +5,7 @@ import Session            from '@/shared/services/session';
 import EventBus           from '@/shared/services/event_bus';
 import AbilityService     from '@/shared/services/ability_service';
 import RecordLoader       from '@/shared/services/record_loader';
-import ThreadService       from '@/shared/services/thread_service';
+import DiscussionService       from '@/shared/services/discussion_service';
 import WatchRecords from '@/mixins/watch_records';
 import FormatDate from '@/mixins/format_date';
 
@@ -33,7 +33,7 @@ export default
   mounted() {
     EventBus.$emit('content-title-visible', false);
     EventBus.$emit('currentComponent', {
-      titleKey: 'dashboard_page.aria_label',
+      titleKey: 'dashboard_page.dashboard',
       page: 'dashboardPage',
       group: null,
     }
@@ -73,7 +73,7 @@ export default
     },
 
     query() {
-      this.discussions = ThreadService.dashboardQuery();
+      this.discussions = DiscussionService.dashboardQuery();
     }
   },
 
@@ -90,13 +90,13 @@ export default
 <template lang="pug">
 v-main
   v-container.dashboard-page.max-width-1024.px-0.px-sm-3
-    h1.text-h4.my-4(tabindex="-1" v-intersect="{handler: titleVisible}" v-t="'dashboard_page.aria_label'")
+    h1.text-h4.my-4(tabindex="-1" v-intersect="{handler: titleVisible}" v-t="'dashboard_page.dashboard'")
 
     dashboard-polls-panel
 
     v-card.mb-3(v-if='!dashboardLoaded')
       v-list(lines="two")
-        v-list-subheader(v-t="'dashboard_page.recent_threads'")
+        v-list-subheader(v-t="'dashboard_page.recent_discussions'")
         loading-content(
           :lineCount='2'
           v-for='(item, index) in [1,2,3]'
@@ -115,7 +115,7 @@ v-main
         .dashboard-page__collections(v-if='discussions.length')
           v-card.mb-3.thread-preview-collection__container.thread-previews-container
             v-list.thread-previews(lines="two")
-              v-list-subheader(v-t="'dashboard_page.recent_threads'")
+              v-list-subheader(v-t="'dashboard_page.recent_discussions'")
               thread-preview(
                 v-for="thread in discussions"
                 :key="thread.id"

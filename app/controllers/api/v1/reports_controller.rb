@@ -10,7 +10,7 @@ class Api::V1::ReportsController < Api::V1::RestfulController
     first_year = Group.where(id: all_group_ids).order("created_at").first.created_at.year
 
     if current_user.is_admin?
-      all_groups.unshift({id: 0, name: 'Direct threads'})
+      all_groups.unshift({id: 0, name: I18n.t('sidebar.invite_only_discussions')})
     else
       group_ids = group_ids & current_user.group_ids
       all_group_ids = all_group_ids & current_user.group_ids

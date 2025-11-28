@@ -89,11 +89,11 @@ ja:
       description: <h3 id="what-is-the-purpose-of-the-document">文書の目的は何ですか?</h3><p></p><h3 id="why-is-this-important">何でこれが大切ですか？</h3><p></p><h3 id="what-are-you-asking-people-to-do">あなたは人々に何をするように求めていますか？</h3><p></p>
       document: 書類
     practice_thread:
-      process_name: 練習スレッド
       process_subtitle: グループに人を歓迎し、Loomioの使い方を練習するためのスレッド
       process_introduction: "<p>このテンプレートを使って、新メンバーを歓迎し、早期参加を促しましょう。メンバーが自己紹介をしたり、Loomioの機能を試したりする機会を提供します。</p>"
       title: "\U0001F44B ようこそ！挨拶して、ぜひお試しください"
       description: "<p>Loomio グループへようこそ。ご参加いただきありがとうございます!</p><p>このスレッドは次のことを行うためのスペースです:</p><ul><li><p>グループに自己紹介する</p></li><li><p>Loomio の機能をいくつか試してみてください。たとえば、リアクションを使ってみてください \U0001F44D</p></li><li><p>この段階で質問があれば何でも聞いてください</p></li></ul><p>何を言えばいいのか分からない場合は、簡単な「こんにちは」で大丈夫です \U0001F642</p>"
+      process_name: 練習のディスカッション
   explore:
     header: 公開グループを探索する
   activerecord:
@@ -122,8 +122,6 @@ ja:
     '403':
       title: 禁断
       body: このページへのアクセスは許可されていません。サインインする必要がある可能性があります。
-    '404':
-      body: 要求されたアイテムは見つかりませんでした。スレッドまたはアンケートが削除されている場合に発生する可能性があります。
     '410':
       title: 消えた
       body: このページは存在しません
@@ -139,6 +137,8 @@ ja:
     '500':
       title: 内部サーバーエラー
       body: 申し訳ございませんが、問題が発生しました。この問題については既に報告を受けており、すぐに調査いたします。
+    '404':
+      body: 要求されたアイテムは見つかりませんでした。ディスカッションまたはアンケートが削除されている場合に発生する可能性があります。
   group:
     error:
       handle_must_begin_with_parent_handle: "%{parent_handle} で始める必要があります -"
@@ -219,11 +219,11 @@ ja:
       explaination_html: "<p>あなたは Loomio グループ %{group} の管理者であるため、このメールを受信しています。</p><p>グループは、認識できない電子メール アドレスから電子メールを受信しました。</p><p>メッセージがグループのメンバーからのものである場合は、メールを確認してメンバーを選択してください。</p><p>メッセージが不要な場合は、そのアドレスからの今後のメールをブロックできます。</p>"
     notification_reason:
       group_subscribed: グループ内のすべてのアクティビティを購読しているため、このメールを受け取りました。
-      thread_subscribed: あなたはこのスレッドを購読しているので、これを受信しました。
       group_mentioned: グループが@メンションされたため、このメッセージを受け取りました。
       user_mentioned: "@メンションされたのでこれを受け取りました。"
       notified: 著者からの通知により、これを受け取りました。
       poll_subscribed: あなたはアンケートに登録しているので、このメールを受け取りました。
+      discussion_subscribed: あなたはこのディスカッションを購読しているので、このメッセージを受け取りました。
   user_mailer:
     group_export_ready:
       subject: "%{group_name} のグループ データのエクスポート"
@@ -306,9 +306,9 @@ ja:
       subject: " %{who}  が %{which_group} に参加するようにお願いしています"
       view_group: ここでリクエストを承認または拒否できます
       button_text: リクエストの表示
-    loomio_app_description: 組織が共同で意思決定を行う場所。
     content_was_translated: このコンテンツは%{source_locale}から翻訳されました
     content_was_translated_html: このコンテンツは%{source_locale}から翻訳されました。<a href="%{profile_url}">表示設定<a></a>
+    loomio_app_description: 協力的な組織が一緒に意思決定を行う場所。
   announcement_count_emails: "%{count} 件のメール"
   email_actions:
     unfollowed_discussion: スレッドの電子メールをオフにしました。

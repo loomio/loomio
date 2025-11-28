@@ -25,8 +25,8 @@ class MoveCommentsWorker
 
     all_events.update(discussion_id: target_discussion_id, sequence_id: nil)
 
-    EventService.repair_thread(target_discussion.id)
-    EventService.repair_thread(source_discussion.id)
+    EventService.repair_discussion(target_discussion.id)
+    EventService.repair_discussion(source_discussion.id)
 
     SearchService.reindex_by_discussion_id(target_discussion.id)
     SearchService.reindex_by_discussion_id(source_discussion.id)

@@ -1,5 +1,5 @@
 <script lang="js">
-import ThreadService  from '@/shared/services/thread_service';
+import DiscussionService  from '@/shared/services/discussion_service';
 import { omit, pickBy } from 'lodash-es';
 import Session from '@/shared/services/session';
 import openModal      from '@/shared/helpers/open_modal';
@@ -65,7 +65,7 @@ export default {
 
   methods: {
     rebuildActions() {
-      this.actions = omit(ThreadService.actions(this.eventable, this), ['dismiss_thread']);
+      this.actions = omit(DiscussionService.actions(this.eventable, this), ['dismiss_thread']);
     },
     updateGroups() {
       this.groups = this.discussion.group().parentsAndSelf().map(group => {
@@ -119,10 +119,10 @@ export default {
       time-ago(:date='discussion.createdAt')
     span.text-medium-emphasis(v-show='discussion.seenByCount > 0')
       mid-dot
-      a.context-panel__seen_by_count.underline-on-hover(v-t="{ path: 'thread_context.seen_by_count', args: { count: discussion.seenByCount } }"  @click="openSeenByModal()")
+      a.context-panel__seen_by_count.underline-on-hover(v-t="{ path: 'discussion_context.seen_by_count', args: { count: discussion.seenByCount } }"  @click="openSeenByModal()")
     span.text-medium-emphasis(v-show='discussion.usersNotifiedCount != null')
       mid-dot
-      a.context-panel__users_notified_count.underline-on-hover(v-t="{ path: 'thread_context.count_notified', args: { count: discussion.usersNotifiedCount} }"  @click="actions.notification_history.perform")
+      a.context-panel__users_notified_count.underline-on-hover(v-t="{ path: 'discussion_context.count_notified', args: { count: discussion.usersNotifiedCount} }"  @click="actions.notification_history.perform")
 
   template(v-if="!collapsed")
     formatted-text.context-panel__description(:model="discussion" field="description")

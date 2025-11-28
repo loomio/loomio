@@ -296,7 +296,7 @@ class PollService
     if poll.discussion_id && poll.hide_results == 'until_closed'
       stance_ids = poll.stances.latest.reject(&:body_is_blank?).map(&:id)
       Event.where(kind: 'stance_created', eventable_id: stance_ids, discussion_id: nil).update_all(discussion_id: poll.discussion_id)
-      EventService.repair_thread(poll.discussion_id)
+      EventService.repair_discussion(poll.discussion_id)
     end
 
     poll.update_attribute(:closed_at, Time.now)
@@ -342,7 +342,7 @@ class PollService
     if (poll.closed? || poll.hide_results != 'until_closed')
       stance_ids = poll.stances.latest.reject(&:body_is_blank?).map(&:id)
       Event.where(kind: 'stance_created', eventable_id: stance_ids).update_all(discussion_id: poll.discussion_id)
-      EventService.repair_thread(poll.discussion_id)
+      EventService.repair_discussion(poll.discussion_id)
     end
 
     GenericWorker.perform_async('SearchService', 'reindex_by_discussion_id', discussion.id)

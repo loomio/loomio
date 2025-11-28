@@ -14,7 +14,7 @@ describe EventService do
     group.add_admin! discussion.author
   end
 
-  describe 'repair_thread' do
+  describe 'repair_discussion' do
     let(:discussion) { build :discussion, max_depth: 2, group: group }
     let(:comment1) { create(:comment, body: 'comment1', discussion: discussion, user: user) }
     let(:comment2) { create(:comment, body: 'comment2', parent: comment1, discussion: discussion, user: user) }
@@ -39,7 +39,7 @@ describe EventService do
 
     it 'flattens' do
       discussion.update(max_depth: 1)
-      EventService.repair_thread(discussion.id)
+      EventService.repair_discussion(discussion.id)
       [comment1_event, comment2_event, comment3_event, poll_created_event, stance_created_event].each(&:reload)
       expect(comment1_event.depth).to eq 1
       expect(comment2_event.depth).to eq 1
@@ -53,7 +53,7 @@ describe EventService do
 
     it 'branches max_depth 2' do
       discussion.update(max_depth: 2)
-      EventService.repair_thread(discussion.id)
+      EventService.repair_discussion(discussion.id)
       [comment1_event, comment2_event, comment3_event, poll_created_event, stance_created_event].each(&:reload)
       expect(comment1_event.depth).to eq 1
       expect(comment2_event.depth).to eq 2
@@ -67,7 +67,7 @@ describe EventService do
 
     it 'branches max_depth 3' do
       discussion.update(max_depth: 3)
-      EventService.repair_thread(discussion.id)
+      EventService.repair_discussion(discussion.id)
       [comment1_event, comment2_event, comment3_event, poll_created_event, stance_created_event].each(&:reload)
       expect(comment1_event.depth).to eq 1
       expect(comment2_event.depth).to eq 2

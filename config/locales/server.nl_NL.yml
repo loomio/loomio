@@ -89,11 +89,11 @@ nl_NL:
       description: <h3 id="what-is-the-purpose-of-the-document">Wat is het doel van het document?</h3><p></p><h3 id="why-is-this-important"> Waarom is dit belangrijk?</h3><p></p><h3 id="what-are-you-asking-people-to-do"> Wat vraag je mensen om te doen?</h3><p></p>
       document: Document
     practice_thread:
-      process_name: Oefendraad
       process_subtitle: Een draadje om mensen welkom te heten in de groep en te oefenen met Loomio
       process_introduction: "<p>Gebruik deze sjabloon om nieuwe leden te verwelkomen en vroege deelname te stimuleren. Het geeft mensen de kans om zichzelf voor te stellen en de functies van Loomio te verkennen.</p>"
       title: "\U0001F44B Welkom! Zeg hallo en probeer dingen uit"
       description: "<p>Welkom bij onze Loomio-groep. Leuk dat je er bent!</p><p> Deze thread is bedoeld om:</p><ul><li><p> Stel jezelf voor aan de groep</p></li><li><p> Probeer enkele functies van Loomio uit - probeer bijvoorbeeld reacties te gebruiken \U0001F44D</p></li><li><p> Stel in dit stadium alle vragen die u heeft</p></li></ul><p> Als je niet zeker weet wat je moet zeggen, is een simpele hallo voldoende \U0001F642</p>"
+      process_name: Praktijkbespreking
   explore:
     header: Verken openbare groepen
   activerecord:
@@ -230,11 +230,11 @@ nl_NL:
       explaination_html: "<p>Je ontvangt deze e-mail omdat je beheerder bent van de Loomio-groep: %{group}.</p><p> De groep heeft een e-mail ontvangen van een onbekend e-mailadres.</p><p> Als het bericht afkomstig is van een lid van de groep, bekijk dan de e-mail en selecteer het lid.</p><p> Als het bericht ongewenst is, kunt u verdere e-mail van dat adres blokkeren.</p>"
     notification_reason:
       group_subscribed: U ontvangt dit omdat u bent geabonneerd op alle activiteiten in de groep.
-      thread_subscribed: U hebt dit ontvangen omdat u zich hebt geabonneerd op de thread.
       group_mentioned: Je hebt dit ontvangen omdat de groep @vermeld is.
       user_mentioned: U heeft dit ontvangen omdat u bent @vermeld.
       notified: U heeft dit ontvangen omdat de auteur u hiervan op de hoogte heeft gesteld.
       poll_subscribed: U heeft dit ontvangen omdat u zich heeft geabonneerd op de poll.
+      discussion_subscribed: U ontvangt dit omdat u bent geabonneerd op de discussie.
   user_mailer:
     group_export_ready:
       subject: Groep data export voor %{group_name}
@@ -336,9 +336,9 @@ nl_NL:
       subject: "%{who} heeft gevraagd om lid te worden van %{which_group}"
       view_group: Je kan hier de aanvraag goed- of afkeuren
       button_text: Verzoek bekijken
-    loomio_app_description: Een plek waar organisaties samen beslissingen kunnen nemen.
     content_was_translated: Deze inhoud is vertaald vanuit %{source_locale}
     content_was_translated_html: Deze content is vertaald vanuit %{source_locale}. <a href="%{profile_url}">Bekijk instellingen<a></a>
+    loomio_app_description: Een plek waar samenwerkende organisaties samen beslissingen nemen.
   announcement_count_emails: "%{count} e-mails"
   email_actions:
     unfollowed_discussion: Je hebt de e-mails voor het bord afgezet.

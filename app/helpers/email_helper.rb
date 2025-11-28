@@ -19,36 +19,18 @@ module EmailHelper
   # translate plain text if required
   # refuse to take formatted content
   def plain_text(model, field)
-    if show_translation(model)
-      TranslationService.create(model: model, to: @recipient.locale).fields[String(field)]
-    else
-      model.send(field)
-    end
+    TranslationService.plain_text(model, field, @recipient)
+  end
+
+  def show_translation(model)
+    TranslationService.show_translation(model, @recipient)
   end
 
   # render markdown if necessary
   # translate if required
   # prepare formatted text for email use
   def formatted_text(model, field)
-    format_field = "#{field}_format"
-    content_format = 'html'
-
-    content = if show_translation(model)
-      translation = TranslationService.create(model: model, to: @recipient.locale)
-      translation.fields[String(field)]
-    else
-      content_format = 'md' if model.send("#{field}_format") == "md"
-      model.send(field)
-    end
-
-    MarkdownService.render_rich_text(content, content_format)
-  end
-
-  def show_translation(model)
-    TranslationService.available? &&
-    model.content_locale.present? &&
-    model.content_locale != @recipient.locale &&
-    @recipient.auto_translate
+    TranslationService.formatted_text(model, field, @recipient)
   end
 
   def recipient_stance(recipient, poll)

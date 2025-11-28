@@ -292,9 +292,9 @@ v-main
       v-table.mt-8
         thead
           th.pt-4(v-t="'report.total_users'")
-          th.pt-4(v-t="'report.total_threads'")
+          th.pt-4(v-t="'report.total_discussions'")
           th.pt-4(v-t="'report.total_polls'")
-          th.pt-4(v-t="'report.threads_with_polls'")
+          th.pt-4(v-t="'report.discussions_with_polls'")
           th.pt-4(v-t="'report.polls_with_outcomes'")
         tbody
           tr

@@ -89,11 +89,11 @@ de:
       description: <h3 id="what-is-the-purpose-of-the-document">Was ist der Zweck des Dokuments?</h3><p></p><h3 id="why-is-this-important"> Warum ist das wichtig?</h3><p></p><h3 id="what-are-you-asking-people-to-do"> Was verlangen Sie von den Leuten?</h3><p></p>
       document: Dokumentieren
     practice_thread:
-      process_name: Übungsthread
       process_subtitle: Ein Thread, um Leute in der Gruppe willkommen zu heißen und die Verwendung von Loomio zu üben
       process_introduction: "<p>Nutzen Sie diese Vorlage, um neue Mitglieder willkommen zu heißen und sie frühzeitig zur Teilnahme zu ermutigen. Sie gibt den Teilnehmern die Möglichkeit, sich vorzustellen und die Funktionen von Loomio kennenzulernen.</p>"
       title: "\U0001F44B Willkommen! Sag Hallo und probier’s aus"
       description: "<p>Willkommen in unserer Loomio-Gruppe – schön, Sie hier zu haben!</p><p> Dieser Thread bietet Platz für:</p><ul><li><p> Stell dich der Gruppe vor</p></li><li><p> Probieren Sie einige der Funktionen von Loomio aus – zum Beispiel: Versuchen Sie es mit Reaktionen \U0001F44D</p></li><li><p> Stellen Sie in dieser Phase alle Fragen, die Sie haben</p></li></ul><p> Wenn Sie nicht sicher sind, was Sie sagen sollen, reicht ein einfaches Hallo \U0001F642</p>"
+      process_name: Übungsdiskussion
   explore:
     header: Öffentliche Gruppen erkunden
   activerecord:
@@ -229,11 +229,11 @@ de:
       explaination_html: "<p>Sie erhalten diese E-Mail, weil Sie Administrator der Loomio-Gruppe sind: %{group}.</p><p> Die Gruppe hat eine E-Mail von einer unbekannten E-Mail-Adresse erhalten.</p><p> Wenn die Nachricht von einem Mitglied der Gruppe stammt, überprüfen Sie bitte die E-Mail und wählen Sie das Mitglied aus.</p><p> Wenn die Nachricht unerwünscht ist, können Sie alle weiteren E-Mails von dieser Adresse blockieren.</p>"
     notification_reason:
       group_subscribed: Sie haben dies erhalten, weil Sie alle Aktivitäten in der Gruppe abonniert haben.
-      thread_subscribed: Sie haben dies erhalten, weil Sie den Thread abonniert haben.
       group_mentioned: Sie haben dies erhalten, weil die Gruppe @erwähnt wurde.
       user_mentioned: Sie haben dies erhalten, weil Sie @erwähnt wurden.
       notified: Sie haben dies erhalten, weil der Autor Sie benachrichtigt hat.
       poll_subscribed: Sie erhalten diese Nachricht, weil Sie die Umfrage abonniert haben.
+      discussion_subscribed: Sie erhalten diese Nachricht, weil Sie die Diskussion abonniert haben.
   user_mailer:
     group_export_ready:
       subject: Daten für Gruppe %{group_name} exportieren
@@ -337,9 +337,9 @@ de:
       subject: "%{who} bittet darum %{which_group} beitreten zu dürfen."
       view_group: Du kannst die Anfrage hier annehmen oder ablehnen
       button_text: Anfrage ansehen
-    loomio_app_description: Ein Ort, an dem Organisationen gemeinsam Entscheidungen treffen können.
     content_was_translated: Dieser Inhalt wurde aus %{source_locale} übersetzt.
     content_was_translated_html: Dieser Inhalt wurde aus %{source_locale} übersetzt. <a href="%{profile_url}">Einstellungen anzeigen<a></a>
+    loomio_app_description: Ein Ort für kooperative Organisationen, um gemeinsam Entscheidungen zu treffen.
   announcement_count_emails: "%{count} E-mails"
   email_actions:
     unfollowed_discussion: Du hast E-Mail-Benachrichtigungen für diese Diskussion deaktiviert.

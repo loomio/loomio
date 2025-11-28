@@ -8,7 +8,7 @@ import openModal      from '@/shared/helpers/open_modal';
 import { hardReload } from '@/shared/helpers/window';
 import { subMonths } from 'date-fns';
 
-export default new class ThreadService {
+export default new class DiscussionService {
   actions(discussion, vm) {
     return {
       make_a_copy: {
@@ -184,7 +184,7 @@ export default new class ThreadService {
 
       pin_thread: {
         icon: 'mdi-pin-outline',
-        name: 'action_dock.pin_thread',
+        name: 'action_dock.pin_discussion',
         menu: true,
         canPerform() { return AbilityService.canPinThread(discussion); },
         perform: () => this.pin(discussion)
@@ -192,7 +192,7 @@ export default new class ThreadService {
 
       unpin_thread: {
         icon: 'mdi-pin-off',
-        name: 'action_dock.unpin_thread',
+        name: 'action_dock.unpin_discussion',
         menu: true,
         canPerform() { return AbilityService.canUnpinThread(discussion); },
         perform: () => this.unpin(discussion)
@@ -221,6 +221,7 @@ export default new class ThreadService {
       },
 
       close_thread: {
+        name: 'action_dock.close_discussion',
         menu: true,
         icon: 'mdi-archive-outline',
         canPerform() { return AbilityService.canCloseThread(discussion); },
@@ -228,6 +229,7 @@ export default new class ThreadService {
       },
 
       reopen_thread: {
+        name: 'action_dock.reopen_discussion',
         menu: true,
         icon: 'mdi-refresh',
         dock: 2,
@@ -263,7 +265,7 @@ export default new class ThreadService {
       //           redirect: LmoUrlService.group discussion.group()
 
       discard_thread: {
-        name: 'action_dock.delete_thread',
+        name: 'action_dock.delete_discussion',
         icon: 'mdi-delete-outline',
         menu: true,
         canPerform() { return AbilityService.canDeleteThread(discussion); },
@@ -274,10 +276,10 @@ export default new class ThreadService {
               confirm: {
                 submit: discussion.discard,
                 text: {
-                  title: 'delete_thread_form.title',
-                  helptext: 'delete_thread_form.body',
-                  submit: 'delete_thread_form.confirm',
-                  flash: 'delete_thread_form.messages.success'
+                  title: 'action_dock.delete_discussion',
+                  helptext: 'delete_discussion_form.body',
+                  submit: 'action_dock.delete_discussion',
+                  flash: 'delete_discussion_form.discussion_deleted'
                 },
                 redirect: LmoUrlService.group(discussion.group())
               }
@@ -393,8 +395,8 @@ export default new class ThreadService {
           confirm: {
             submit: thread.close,
             text: {
-              title: 'close_explanation_modal.close_thread',
-              helptext: 'close_explanation_modal.body',
+              title: 'action_dock.close_discussion',
+              helptext: 'close_discussion_modal.body',
               flash: 'discussion.closed.closed'
             }
           }
@@ -415,13 +417,13 @@ export default new class ThreadService {
 
   dismiss(thread) {
     return thread.dismiss().then(() => {
-      return Flash.success("dashboard_page.thread_dismissed", {}, 'undo', () => this.recall(thread));
+      return Flash.success("dashboard_page.discussion_marked_as_read", {}, 'undo', () => this.recall(thread));
     });
   }
 
   recall(thread) {
     return thread.recall().then(() => {
-      return Flash.success("dashboard_page.thread_recalled", {}, 'undo', () => this.dismiss(thread));
+      return Flash.success("dashboard_page.discussion_marked_as_unread", {}, 'undo', () => this.dismiss(thread));
     });
   }
 
@@ -433,9 +435,9 @@ export default new class ThreadService {
           confirm: {
             submit: thread.savePin,
             text: {
-              title: 'pin_thread_modal.title',
+              title: 'action_dock.pin_discussion',
               flash: 'discussion.pin.pinned',
-              helptext: 'pin_thread_modal.helptext'
+              helptext: 'pin_discussion_modal.helptext'
             }
           }
         }

@@ -161,26 +161,6 @@ v-main
 
         .text-subtitle-2.pb-1(v-t="'change_volume_form.loud_desc'")
         .text-body-2.pb-4.text-medium-emphasis(v-t="'change_volume_form.loud_explained'")
-        //  p
-        //    b Everytime someone participates
-        //    space
-        //    span means you'll get an email about every comment, vote, thread and poll in the group.
-        //  p
-        //    b When someone notifies me
-        //    space
-        //    span while doing one of the following:
-        //  ul.mb-4.ml-4
-        //    li Starts a thread and invites you to join it
-        //    li Invites you to vote in a poll or proposal
-        //    li Publishes an outcome to a poll or proposal
-        //    li Wants to notify the group with an @group mention
-
-        //  p
-        //    b Never
-        //    span
-        //  ul.mb-4
-        //    li you will not get emailed when a decision is happening
-
       v-overlay(persistent :model-value="loading" class="align-center justify-center")
         v-progress-circular(color="primary" size="64" indeterminate)
 

@@ -45,10 +45,56 @@ export default
   },
 
   methods: {
+    startNewPoll() {
+      if (!this.group.canStartPollsWithoutDiscussion) {
+        EventBus.$emit('openModal', {
+          component: 'ConfirmModal',
+          props: {
+            confirm: {
+              text: {
+                title: 'polls_panel.standalone_disabled_title',
+                helptext: 'polls_panel.standalone_disabled_helptext',
+                submit: 'polls_panel.start_discussion',
+                cancel: 'common.action.cancel'
+              },
+              submit: () => {
+                this.$router.push('/d/new?group_id=' + this.group.id);
+                return Promise.resolve();
+              }
+            }
+          }
+        });
+      } else if (!Session.user().hasExperienced('standalonePollWarning')) {
+        Records.users.saveExperience('standalonePollWarning');
+        EventBus.$emit('openModal', {
+          component: 'ConfirmModal',
+          props: {
+            confirm: {
+              text: {
+                title: 'polls_panel.standalone_warning_title',
+                helptext: 'polls_panel.standalone_warning_helptext',
+                submit: 'polls_panel.start_poll_anyway',
+                cancel: 'polls_panel.start_discussion_instead'
+              },
+              submit: () => {
+                this.$router.push('/p/new?group_id=' + this.group.id);
+                return Promise.resolve();
+              },
+              cancel: () => {
+                this.$router.push('/d/new?group_id=' + this.group.id);
+              }
+            }
+          }
+        });
+      } else {
+        this.$router.push('/p/new?group_id=' + this.group.id);
+      }
+    },
+
     openSearchModal() {
       let initialOrgId = null;
       let initialGroupId = null;
-    
+
       if (this.group.isParent()) {
         initialOrgId = this.group.id;
       } else {
@@ -63,7 +109,7 @@ export default
         props: {
           initialType: 'Poll',
           initialOrgId,
-          initialGroupId,  
+          initialGroupId,
           initialQuery: this.dummyQuery
         }
       });
@@ -195,12 +241,11 @@ export default
         span(v-t="'common.action.search'")
       v-spacer
       v-btn.polls-panel__new-poll-button(
-        color='primary'
-        variant="elevated"
-        :to="'/p/new?group_id='+group.id"
         v-if='canStartPoll'
+        variant="elevated"
+        @click="startNewPoll"
       )
-        span(v-t="'sidebar.start_decision'")
+        span(v-t="'polls_panel.new_poll'")
     v-card(outlined)
       div(v-if="loader.status == 403")
         p.pa-4.text-center(v-t="'error_page.forbidden'")

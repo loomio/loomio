@@ -89,11 +89,11 @@ es:
       description: <h3 id="what-is-the-purpose-of-the-document">¿Cuál es el propósito del documento?</h3><p></p><h3 id="why-is-this-important"> ¿Porque es esto importante?</h3><p></p><h3 id="what-are-you-asking-people-to-do"> ¿Qué le pides a la gente que haga?</h3><p></p>
       document: Documento
     practice_thread:
-      process_name: Hilo de práctica
       process_subtitle: Un hilo para dar la bienvenida a las personas al grupo y practicar el uso de Loomio.
       process_introduction: "<p>Usa esta plantilla para dar la bienvenida a los nuevos miembros y fomentar su participación temprana. Les da la oportunidad de presentarse y explorar las funciones de Loomio.</p>"
       title: "¡Bienvenidos! Saluden y prueben cosas nuevas."
       description: "<p>Bienvenido a nuestro grupo Loomio. ¡Es fantástico tenerte aquí!</p><p> Este hilo es un espacio para:</p><ul><li><p> Preséntate al grupo</p></li><li><p> Prueba algunas de las funciones de Loomio; por ejemplo: intenta usar reacciones \U0001F44D</p></li><li><p> Haz cualquier pregunta que tengas en esta etapa.</p></li></ul><p> Si no estás seguro de qué decir, un simple hola está bien \U0001F642</p>"
+      process_name: Discusión práctica
   explore:
     header: Explorar grupos públicos
   activerecord:
@@ -225,11 +225,11 @@ es:
       explaination_html: "<p>Estás recibiendo este correo electrónico porque eres administrador del grupo Loomio: %{group}.</p><p> El grupo ha recibido un correo electrónico de una dirección de correo electrónico no reconocida.</p><p> Si el mensaje es de un miembro del grupo, revise el correo electrónico y seleccione el miembro.</p><p> Si el mensaje no es deseado, puede bloquear cualquier correo electrónico adicional de esa dirección.</p>"
     notification_reason:
       group_subscribed: Recibiste esto porque estás suscrito a todas las actividades del grupo.
-      thread_subscribed: Recibiste esto porque estás suscrito al hilo.
       group_mentioned: Recibiste esto porque el grupo fue @mencionado.
       user_mentioned: Recibiste esto porque fuiste @mencionado.
       notified: Recibiste esto porque el autor te lo notificó.
       poll_subscribed: Has recibido esto porque estás suscrito a la encuesta.
+      discussion_subscribed: Recibiste esto porque estás suscrito a la discusión.
   user_mailer:
     group_export_ready:
       subject: Exportar datos del grupo para %{group_name}
@@ -329,9 +329,9 @@ es:
       subject: "%{who} solicitó el acceso a %{which_group}"
       view_group: Puedes aceptar o denegar la solicitud aquí
       button_text: Ver solicitudes
-    loomio_app_description: Un espacio para que las organizaciones tomen decisiones en conjunto.
     content_was_translated: Este contenido fue traducido de %{source_locale}
     content_was_translated_html: Este contenido se tradujo de %{source_locale}. <a href="%{profile_url}">Ver configuración<a></a>
+    loomio_app_description: Un lugar para que las organizaciones colaborativas tomen decisiones juntas.
   announcement_count_emails: "%{count} email"
   email_actions:
     unfollowed_discussion: 'Has desactivado los emails para este hilo '

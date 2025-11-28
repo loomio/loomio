@@ -75,6 +75,20 @@ class Dev::PollsController < Dev::NightwatchController
     redirect_to new_poll_url
   end
 
+  def test_group_polls_panel_standalone_disabled
+    group = create_group_with_members
+    group.update!(can_start_polls_without_discussion: false)
+    sign_in group.admins.first
+    redirect_to "/g/#{group.key}/polls"
+  end
+
+  def test_group_polls_panel_standalone_allowed
+    group = create_group_with_members
+    group.update!(can_start_polls_without_discussion: true)
+    sign_in group.admins.first
+    redirect_to "/g/#{group.key}/polls"
+  end
+
   def test_activity_items
     user = fake_user
     group = saved fake_group

@@ -61,8 +61,6 @@ fr:
     to_use_loomio_with_your_org_start_trial: Lorsque vous êtes prêt à essayer Loomio avec votre organisation, commencez un essai gratuit.
     templates: Modèles
     make_a_copy: Faire une copie
-    this_thread_is_a_template: Ce fil de discussion est un modèle. Faites une copie si vous souhaitez l’utiliser.
-    this_is_a_poll_template: Il s’agit d’un modèle de sondage. Faites une copie si vous voulez commencer à voter.
     try_loomio: Essayez Loomio
     start_a_demo_group: Créez un groupe demo
     start_a_demo: Démarrer la démo
@@ -392,13 +390,13 @@ fr:
     unreleased_emails: E-mails inédits
     start_a_thread_by_email: Démarrer un fil de discussion par e-mail
     send_email_to_start_thread: Envoyez un e-mail à cette adresse pour démarrer un fil de discussion dans votre groupe.
-    subject_body_attachments: Le sujet de l'e-mail devient le titre du fil de discussion, le corps de l'e-mail devient la description et tous les fichiers joints seront joints au fil de discussion.
     copy_address: Copier l’adresse
     email_me_this_address: Envoyez-moi cette adresse par e-mail
     email_address_copied_to_clipboard: Adresse e-mail copiée dans le presse-papiers
     forward_email_to_move_conversation: 'Astuce : transférez une conversation par e-mail à Loomio lorsque vous devez prendre une décision ou conserver une trace.'
-  email_to_group_mailer:
-    your_email_address_to_start_threads_in_group: Votre adresse e-mail pour démarrer les threads dans %{group}
+    start_a_discussion_by_email: Lancez une discussion par courriel
+    send_email_to_start_discussion: Envoyez un courriel à cette adresse pour lancer une discussion au sein de votre groupe.
+    subject_body_attachments: L'objet du courriel devient le titre de la discussion, et son corps, la description. Les pièces jointes sont également copiées.
   volume_levels:
     loud: Élevé
     normal: Normal
@@ -422,14 +420,12 @@ fr:
       loud_explain: Dès qu'il y a de l'activité
       normal_explain: Lorsque quelqu'un réclame votre attention
       quiet_explain: Pas de notification
-    aria_label: Formulaire des paramètres de notification
     loud_label: Toute l’activité
     normal_label: Nouvelles discussions et décisions
     quiet_label: Aucun courriel
     mute_label: Ignorer
     saved: Les paramètres de notification ont été mis à jour
     discussion:
-      title: Notifications de la discussion
       loud_description: Vous recevrez un courriel à chaque fois qu’il y aura une activité dans cette discussion.
       normal_description: Vous recevrez un courriel uniquement lorsqu'il y aura une activité importante dans cette discussion.
       quiet_description: Vous ne recevrez de courriel pour aucune activité dans cette discussion.
@@ -441,6 +437,7 @@ fr:
         loud: Vous recevrez un courriel lorsqu’il y aura une activité dans cette discussion.
         normal: Vous recevrez un courriel lorsqu’il y aura une proposition dans cette discussion.
         quiet: Vous ne recevrez aucun courriel à propos de cette discussion.
+      title: Notifications de discussion
     membership:
       title: Notifications pour %{title}
       loud_description: Vous recevrez un courriel à chaque fois qu’il y a une activité dans ce groupe.
@@ -472,7 +469,6 @@ fr:
         normal: Vous recevrez un courriel pour toute nouvelle discussion ou décision dans un nouveau groupe.
         quiet: Vous ne recevrez aucun courriel concernant les nouveaux groupes.
     change_your_email_settings: Modifiez vos paramètres de messagerie
-    when_would_you_like_to_be_emailed_thread: Quand souhaitez-vous recevoir un e-mail à propos de ce fil de discussion ?
     when_would_you_like_to_be_emailed_group: Quand souhaitez-vous recevoir un e-mail concernant ce groupe ?
     changes_all_threads_in_group: Cela modifie le paramètre pour tous les threads du groupe.
     what_do_the_options_mean: Que signifient les options ?
@@ -481,14 +477,16 @@ fr:
     quiet_desc: Jamais
     loud_explained: Vous recevrez un e-mail chaque fois qu'il y aura un nouveau commentaire, que quelqu'un votera ou lancera un sondage ou un fil de discussion.
     when_would_you_like_to_be_emailed_poll_type: Quand souhaitez-vous recevoir un e-mail à propos de ce %{poll_type} ?
-    normal_explained: Lorsque quelqu'un saisit votre nom dans le champ « Notifier » d'un fil de discussion ou d'un sondage, ou qu'il {'@'}mentionne le groupe.
     normal_excludes_mentioning_html: Il existe un paramètre distinct pour les mentions avec un @ (par exemple, lorsqu'on vous répond dans un commentaire). <a href="%{url}">Cliquez ici pour modifier les paramètres des @mentions.</a>
     changes_all_threads_and_polls_in_group: Cela modifie les paramètres de tous les fils de discussion et sondages du groupe.
     when_do_you_want_to_be_emailed: Quand souhaitez-vous recevoir des e-mails ?
     what_the_options_mean: Que signifient les options ?
     quiet_explained: Vous ne recevrez pas d'e-mail, même si quelqu'un tente de vous contacter. Vous risquez de manquer des annonces ou des décisions importantes si vous ne consultez pas Loomio régulièrement.
+    when_would_you_like_to_be_emailed_discussion: Quand souhaitez-vous recevoir un courriel concernant cette discussion ?
+    changes_all_discussions_and_polls_in_group: Cela modifie les paramètres de toutes les discussions et de tous les sondages du groupe.
+    normal_explained: Lorsqu'une personne saisit votre nom dans le champ « Notifier » d'une discussion ou d'un sondage, ou lorsqu'elle mentionne le groupe avec {'@'}.
+    aria_label: Formulaire de modification des paramètres de messagerie
   close_explanation_modal:
-    aria_label: Clore la discussion
     close_thread: Clore la discussion
     body: |
       <p>Fermer les discussions anciennes ou non pertinentes pour les supprimer de la vue et indiquer que la discussion a été clôturée.</p>
@@ -503,14 +501,11 @@ fr:
     password_label: 'Mot de passe :'
     password_confirmation_label: 'Re-saississez ce mot de passe :'
   signed_out_modal:
-    aria_label: Session terminée
     title: Votre session est terminée
     message: Vous avez été déconnecté dans une autre fenêtre. Merci de vous reconnecter pour continuer.
     ok: Ok
-  comment_reply_form:
-    aria_label: Ajouter une réponse
+    aria_label: La session s'est terminée.
   comment_form:
-    aria_label: Ajouter un commentaire
     attachments:
       add_attachment: Joindre un fichier
       remove_attachment: Enlever la pièce jointe
@@ -534,12 +529,10 @@ fr:
     private_privacy_notice: Votre commentaire sera visible seulement des membres de %{groupName}.
     public_privacy_notice: Votre commentaire sera visible par tout le monde sur internet.
     sign_in: Connectez-vous pour rejoindre la discussion
+    add_a_comment: Ajouter un commentaire
   thread_nav:
     participants: Participants
   sidebar:
-    new_thread_removed: Nouveau fil supprimé
-    new_thread_removed_body: Le nouveau bouton de fil de discussion est supprimé de la barre latérale. Pour créer un nouveau fil de discussion, accédez d'abord à votre groupe, puis cliquez sur « Nouveau fil de discussion ». Désolé pour le changement, mais il est obligatoire car vous devez sélectionner un modèle lors du démarrage d'un fil de discussion.
-    threads: Discussions
     my_groups: Mes groupes
     other_groups: autres groupes
     all_groups: Tous les groupes
@@ -548,7 +541,6 @@ fr:
     direct_threads: Discussions directes
     unread_threads: Discussions non lues (%{count})
     muted_threads: Discussions ignorées
-    start_group: Nouveau groupe
     start_subgroup: Ajouter un sous-groupe
     explore: Groupes publics
     explore_groups: Explorer les groupes
@@ -566,6 +558,10 @@ fr:
       groups_list: Groupes
       user_list: Actions utilisateur
     user_settings: Paramètres utilisateur
+    invite_only_discussions: Discussions sur invitation seulement
+    unread_discussions_count: Discussions non lues (%{count})
+    new_group: Nouveau groupe
+    new_subgroup: Nouveau sous-groupe
   strand_nav:
     newest: Les plus récents
     oldest: Les plus anciens
@@ -593,7 +589,6 @@ fr:
     all_subgroups: Tous les sous-groupes
     parent_only: Parents seulement
   navbar:
-    search_all_threads: Rechercher toutes les discussions
     search_threads: Rechercher des discussions au sein de %{name}
     search_polls: Rechercher des sondages dans %{name}
     search_members: Rechercher des membres dans %{name}
@@ -622,6 +617,7 @@ fr:
     search_members_short: Rechercher des membres
     search_files_short: Rechercher des fichiers
     search_subgroups_short: Rechercher des sous-groupes
+    search_discussions_in_group: Rechercher des discussions dans %{name}
   user_dropdown:
     pin_sidebar: Épingler la barre latérale
     unpin_sidebar: Dés-épingler la barre latérale
@@ -645,7 +641,6 @@ fr:
     dark_blue: Bleu foncé
   membership_card:
     group_members: Membres du groupe
-    discussion_members: Membres de la discussion
     poll_members: Membres du %{pollType}
     voters: Votants
     invite_to_group: Inviter au groupe
@@ -653,6 +648,7 @@ fr:
     invite_to_poll: Inviter au vote
     invite_to_wip_poll: Inviter à donner des commentaires
     invitations: Invitations
+    discussion_members: membres de la discussion
   membership_dropdown:
     set_name_and_username: Définir le nom et le nom d'utilisateur
     set_title: Définir un rôle
@@ -661,29 +657,26 @@ fr:
     make_coordinator: Nommer admin
     demote_coordinator: Déclasser l'administrateur
     remove_from:
-      discussion: Retirer de la discussion
       group: Retirer du groupe
       poll: Retirer de %{pollType}
+      discussion: Retirer de la discussion
     cancel_invitation: Annuler l’invitation
     view_profile: Voir le profil
     revoke_admin: Révoquer l'administrateur
     make_delegate: Faire déléguer
     revoke_delegate: Révoquer le délégué
   notification_models:
-    discussion: 'discussion :'
     comment: commentaire dans
     poll: 'sondage:'
     outcome: 'conclusion :'
     stance: 'vote:'
+    discussion: 'discussion:'
   notifications:
     header: Notifications
     no_notifications: Aucune nouvelle notification
     with_title:
       unknown_sender: Veuillez examiner les e-mails provenant d'un expéditeur non reconnu
       comment_replied_to: "%{actor} vous a repondu in: %{title}"
-      discussion_announced: "%{actor} vous a invité au fil de discussion : %{title}"
-      discussion_edited: "%{actor} modifié le contexte du thread: %{title}"
-      discussion_closed: "%{actor} a fermé le thread: %{title}"
       invitation_accepted: "%{actor} a accepté votre invitation à joindre %{title}"
       membership_created: "%{actor} vous a invité à rejoindre %{title} sur %{site_name}"
       membership_resent: "%{actor} vous a invité à rejoindre %{title} sur %{site_name}"
@@ -691,7 +684,6 @@ fr:
       membership_request_approved: "%{actor} a accepté votre demande à joindre %{title}"
       new_comment: "%{actor} a mentionné sur: %{title}"
       new_coordinator: "%{actor} vous a fait admin de %{title}"
-      new_discussion: "%{actor} a démarré un thread: %{title}"
       outcome_announced: "%{actor} a partagé la conclusion du %{poll_type} : %{title}"
       outcome_created: "%{actor} a partagé la conclusion du %{poll_type} : %{title}"
       outcome_updated: "%{actor} a mis à jour la conclusion du %{poll_type} : %{title}"
@@ -717,22 +709,20 @@ fr:
       group_mentioned: "%{actor} a mentionné le groupe dans : %{title}"
       new_delegate: "%{actor} vous a nommé délégué avec droit de vote dans %{title}"
       poll_announced: "%{actor} vous a invité à voter : %{title}"
+      discussion_announced: "%{actor} vous a invité à la discussion : %{title}"
+      discussion_edited: "%{actor} a modifié le contexte de la discussion : %{title}"
+      discussion_closed: "%{actor} a clos la discussion : %{title}"
+      new_discussion: "%{actor} a lancé une discussion : %{title}"
     without_title:
       unknown_sender: Veuillez examiner les e-mails provenant d'un expéditeur non reconnu
-      discussion_announced: "%{actor} vous a invité à la discussion"
-      discussion_edited: "%{actor} a modifié le contexte de la discussion"
-      discussion_closed: "%{actor} a fermé la discussion"
       group_announced: "%{actor} vous a invité dans le group"
       comment_replied_to: "%{actor} vous a repondu"
-      new_discussion: "%{actor} a commencé une discussion"
-      new_comment: "%{actor} commenté dans un thread"
       membership_created: "%{actor} vous a invité à joindre le group"
       membership_resent: "%{actor} vous a invité à rejoindre un groupe"
       membership_requested: "%{actor} a demandé à s'adhérer dans le group"
       membership_request_approved: "%{actor} a accepté votre demande à joindre %{title}"
       outcome_announced: "%{actor} a partagé la conclusion du %{poll_type}"
       outcome_created: "%{actor} a partagé la conclusion du %{poll_type}"
-      outcome_updated: "%{actor} a mis à jour la conclusion du %{poll_type}"
       outcome_review_due: C'est le moment de vérifier la conclusion du %{poll_type}
       poll_announced_wip: "%{actor} vous a invité a donner votre avis sur %{poll_type}"
       poll_closed_by_user: "%{actor} a fermé le %{poll_type}"
@@ -754,16 +744,20 @@ fr:
       user_reminded: "%{actor} vous rappelle de voter"
       group_mentioned: "%{actor} a mentionné le groupe"
       poll_announced: "%{actor} vous a invité à voter sur un %{poll_type}"
+      discussion_announced: "%{actor} vous a invité à une discussion"
+      discussion_edited: "%{actor} a modifié le contexte de la discussion"
+      discussion_closed: "%{actor} a fermé la discussion"
+      new_discussion: "%{actor} a lancé une discussion"
+      new_comment: "%{actor} a commenté dans une discussion"
+      outcome_updated: "%{actor} a mis à jour le conclusion"
     hints:
       poll_closing_soon: C’est le bon moment pour voter, changer d’avis ou encourager les autres à participer.
       poll_closing_soon_author: Vous voudrez peut-être rappeler aux gens de voter ou de prolonger la date limite.
-      outcome_review_due: Envisagez de lancer un sondage de rétroaction ou un nouveau fil de discussion invitant à réfléchir sur la façon dont la décision a été mise en œuvre.
+      outcome_review_due: Envisagez de lancer un sondage d'opinion ou une nouvelle discussion invitant à réfléchir sur la manière dont la décision a été mise en œuvre.
     email_subject:
       unknown_sender: Veuillez examiner le courriel provenant d'un expéditeur inconnu.
       comment_replied_to: "%{actor} vous a répondu dans : %{title}"
       discussion_announced: "%{title}"
-      discussion_edited: "%{actor} a modifié le contexte : %{title}"
-      discussion_closed: "%{actor} a fermé la discussion : %{title}"
       invitation_accepted: "%{actor} a accepté votre invitation à rejoindre %{title}"
       membership_created: "%{actor} vous a invité à rejoindre %{title} sur %{site_name}"
       membership_resent: "%{actor} vous a invité à rejoindre %{title} sur %{site_name}"
@@ -797,34 +791,15 @@ fr:
       group_mentioned: "%{actor} a mentionné le groupe dans : %{title}"
       user_reminded: "%{actor} vous rappelle de voter pour : %{title}"
       poll_announced: 'Vote : %{title}'
+      discussion_edited: "%{actor} a modifié le contexte de la discussion : %{title}"
+      discussion_closed: "%{actor} a clos la discussion : %{title}"
   discussion_fork_actions:
-    helptext: 'Sélectionnez les éléments que vous souhaitez placer dans d''autres discussions '
     move: Déplacer
-    search_placeholder: Retrouvez une discussion par son titre
     moved: Déplacer des commentaires, cette action peut prendre un moment
+    helptext: Sélectionnez les éléments que vous souhaitez déplacer vers une autre discussion.
+    search_placeholder: Trouver une discussion par titre
     move_to_existing_thread: Déplacer vers une discussion existante
-    start_new_thread: Ou démarrer une nouvelle discussion
-  thread_template:
-    browse_public_templates: Parcourir la galerie de modèles
-    thread_template_settings: Paramètres du modèle de fil de discussion
-    start_a_new_thread: Démarrer un nouveau fil de discussion
-    thread_template_saved: Modèle de discussion enregistré
-    these_are_public_templates: Ces modèles sont disponibles pour que vous puissiez les copier ou les modifier en fonction de votre groupe.
-    these_are_templates: Ce sont les modèles de fil de discussion de votre groupe. Les modèles vous guident à travers les processus décisionnels courants.
-    default_title_label: Titre par défaut
-    default_title_hint: Pré-remplissez le champ de titre avec du texte modifiable. Ceci est facultatif – laissez vide en cas de doute.
-    title_placeholder_label: Exemple de titre
-    title_placeholder_hint: Un exemple à afficher en arrière-plan du champ titre
-    title_placeholder_placeholder: par exemple, voici à quoi ressemble le texte d'arrière-plan
-    example_description_label: Exemple de description
-    example_description_placeholder: Fournir un modèle que les gens peuvent utiliser pour démarrer un fil de discussion avec
-    hidden_templates: Modèles cachés
-    confirm_delete: Êtes-vous sûr de vouloir supprimer définitivement ce modèle de fil de discussion ? Aucun fil de discussion ne sera supprimé pour cette raison.
-    add_proposal_or_poll_template: Ajouter une proposition ou un modèle de sondage
-    recommended_proposal_or_poll_templates: Modèles de proposition ou de sondage recommandés
-    decision_templates: Modèles de décision
-    decision_templates_help: Sélectionnez n’importe quelle proposition ou modèle de sondage qui aide à mener à bien ce processus.
-    share_in_template_gallery: Partagez ce modèle dans la galerie de modèles publique
+    start_new_thread: Ou bien, lancez une nouvelle discussion.
   discussion_form:
     thread_templates: Modèles de thread
     new_thread_template: Nouveau modèle de thread
@@ -838,10 +813,8 @@ fr:
     invite_only_thread: Discussion accessible uniquement sur invitation
     none_direct_thread: Discussion directe (sans groupe)
     none_invite_only_thread: Discussion accessible uniquement sur invitation (pas de groupe)
-    change_log_placeholder: 'Facultatif: décrivez les changement apportés. Ce message sera ajouté à la discussion.'
     change_log_label: 'Qu''est ce qui a changé ? '
     invite: Inviter
-    aria_label: Forme de la discussion
     start_thread: Démarrer une discussion
     messages:
       created: Discussion démarrée
@@ -863,13 +836,20 @@ fr:
     privacy_organisation: La discussion sera visible uniquement pour les membres de %{parent} et les membres de %{group}.
     fork_notice: Une nouvelle discussion sera créée avec %{count} items de %{title}
     notify_group: Notifier le groupe
+    none_invite_only_discussion: Aucun (discussion sur invitation uniquement)
+    new_discussion_template: Nouveau modèle de discussion
+    edit_discussion_template: Modèle de discussion à modifier
+    change_log_placeholder: Vous pouvez, si vous le souhaitez, décrire vos modifications. Ce message sera ajouté à la discussion.
+    start_discussion: Lancer une discussion
+    discussion_updated: Discussion mise à jour
+    discussion_created: Discussion créée
+    discussion_started: La discussion a commencé
   announcement:
     send_discussion: Envoyer la discussion
     send_group: Inviter des personnes à %{name}
     send_poll: Envoyer %{type}
     send_outcome: Envoyer la conclusion
     cannot_reveal_when_anonymous: Désolé, nous ne pouvons pas révéler qui a voté ou non sur un sondage anonyme.
-    discussion_notification_history: L'historique de notifications de la discussion
     group_notification_history: Historique des invitations de membres du groupe
     poll_notification_history: Historique de notifications des votes
     outcome_notification_history: Historique de notifications des conclusions
@@ -881,7 +861,6 @@ fr:
     preview: Aperçu du courriel
     no_notifications_sent: Aucune notification n'a été envoyé
     history_error: Oups, petit souci technique ! L'historique n'a pu être téléchargé
-    inviting_guests_to_thread: 'Invités qui ne font pas partie de votre groupe mais qui ont uniquement accès à cette discussion '
     select_groups: Sélectionnez des groupes
     search_by_name_or_email: Recherche par nom, ou saisir une adresse mail à inviter
     search_by_name: Recherche de personnes par leur nom
@@ -967,8 +946,6 @@ fr:
       added_singular: 1 personne sera ajouté
       added_none: Personne sera ajouté
       group_title: "%{name} (%{count} personnes)"
-      visible_to_group: N'importe qui dans %{group} pourra voir cette discussion
-      visible_to_guests: Seules les personnes invitées peuvent voir cette discussion
       click_group_to_see_individuals: Cliquez sur groupe pour voir les individus
       poll_announced:
         title: Invitation à voter
@@ -984,6 +961,8 @@ fr:
       has_not_read_thread: N’a pas thread vu
       has_not_joined_yet: N'a pas encore rejoint
       has_not_joined_yet_hint: Cet utilisateur n'a pas accepté son invitation à rejoindre Loomio et ne recevra pas d'autres notifications tant qu'il ne l'aura pas fait.
+      discussion_admin: administrateur de la discussion
+      has_not_read_discussion: N'a pas consulté la discussion
     group_form:
       search_placeholder: Chercher des personnes...
       modal_title: Sélectionner des membres du groupe
@@ -991,6 +970,8 @@ fr:
       success: "%{count} notifications envoyées"
     group_mentioned: "%{name} a mentionné le groupe avec %{length} personnes :"
     poll_announced: "%{name} a invité %{length} personnes à voter :"
+    discussion_notification_history: Historique des notifications de discussion
+    inviting_guests_to_discussion: Les invités ne font pas partie de votre groupe et n'ont accès qu'à cette discussion.
   action_dock:
     actions_menu: Menu d'actions
     more_actions: Plus d'actions
@@ -1045,6 +1026,11 @@ fr:
     add_poll_to_thread: Ajouter à la discussion
     count_members: "%{count} membres"
     count_voters: "%{count} votants"
+    pin_discussion: Discussion sur les épingles
+    unpin_discussion: Un-pin discussion
+    close_discussion: Discussion étroite
+    reopen_discussion: Rouvrir la discussion
+    delete_discussion: Supprimer la discussion
   formatting:
     formatting_tools: Outils de formatage du texte
     colors: Couleurs
@@ -1114,7 +1100,6 @@ fr:
     messages:
       joined_group: Vous êtes désormais membre de %{group}
   membership_request_form:
-    aria_label: Formulaire de demande d’ajout
     heading: Demander à rejoindre le groupe
     name_label: Nom
     email_label: Adresse e-mail
@@ -1123,8 +1108,8 @@ fr:
     introduction_over_limit: Réponse trop longue
     messages:
       membership_requested: Vous avez demandé à rejoindre %{group}
+    aria_label: Formulaire de demande d'adhésion
   revision_history_modal:
-    aria_label: Historique de révision
     discussion_header: Éditions de la discussion
     comment_header: Discussion privée
     poll_header: Éditions du sondage
@@ -1142,6 +1127,7 @@ fr:
     closing_at_changed: Fermeture prévue à %{time}
     private_changed: Visibilité passée à %{private}
     group_id_changed: Déplacé vers %{name}
+    aria_label: Historique des révisions
   reactions_input:
     add_your_reaction: Ajouter votre réaction
   reactions_display:
@@ -1150,10 +1136,6 @@ fr:
     you_and_name: Vous et %{name}
     you_and_name_and_count_more: Vous, %{name} et %{count} de plus
     name_and_count_more: "%{name} et %{count} de plus"
-  context_panel:
-    thread_status:
-      pinned: Cette discussion a été épinglée. Elle restera en haut de la liste des discussions du groupe pour l’ensemble des utilisateurs.
-      closed: Cette discussion a été close. Elle ne sera plus affichée sur le tableau de bord, et sera affichée dans les discussions closes sur la page du groupe
   delete_group_modal:
     title: Supprimer le groupe
     subgroup_title: Supprimer le sous-groupe
@@ -1242,10 +1224,14 @@ fr:
       private: 'Confidentialité: Ce groupe est seulement visible pour ses membres.'
       parent_members: 'Confidentialité: Ce groupe est visible pour les membres de %{parentGroupName} et les membres de %{groupName}'
       public: 'Confidentialité: Ce groupe est visible par tous sur internet'
-      aria_label: 'Groupe privé : %{privacy}'
+      aria_label: 'Confidentialité du groupe : %{privacy}'
     participation_report: Rapport de participation
     my_subgroups: Mes sous-groupes
     more_subgroups: Plus de sous-groupes
+    discussions: Discussions
+    no_discussions_here: Aucune discussion à signaler ici !
+    private_discussions: Vous devez être membre pour consulter les discussions privées de ce groupe.
+    view_closed_discussions: Consulter les discussions fermées
   export_data_modal:
     title: Comment souhaitez-vous utiliser vos données ?
     as_csv: Ouvrir dans une feuille de calcul
@@ -1257,15 +1243,15 @@ fr:
     messages:
       description_updated: Description mise à jour
   leave_group_form:
-    aria_label: Quitter le groupe
     title: Quitter le groupe
     question: Êtes-vous sûr de vouloir quitter ce groupe ?
     submit: Oui, quitter ce groupe
+    aria_label: Quitter le groupe
   archive_group_form:
-    aria_label: Désactiver le groupe
     title: Désactiver le groupe
     question: Êtes-vous sûr de vouloir désactiver ce groupe ?
     submit: Oui, désactiver ce groupe
+    aria_label: Désactiver le groupe
   group_form:
     thread_defaults_help: Paramètres par défaut pour les nouvelles discussions
     click_to_change_image: Cliquez pour modifier l’image de couverture (4x1) ou le logo (1x1)
@@ -1274,7 +1260,6 @@ fr:
     permissions_explaination: |
       Une personne peut avoir deux niveaux d'adhésion dans un groupe: administrateur ou membre.
       Les administrateurs peuvent modifier les paramètres du groupe, nommer d'autres administrateurs et faire les actions suivantes:
-    aria_label: Forme du groupe
     parent_group: Groupe parent
     new_organisation: Nouveau groupe
     new_group: Nouveau groupe
@@ -1368,6 +1353,9 @@ fr:
     upgrade_for_subgroups: 'Veuillez <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">mettre à niveau votre abonnement</a> pour créer un sous-groupe'
     share_this_url_with_people_who_want_to_join: Partagez cette URL avec les personnes qui souhaitent nous rejoindre
     new_description_html: "<h3>À quels défis votre organisation est-elle confrontée en matière de prise de décision ?</h3><p></p><h3> Comment aimeriez-vous utiliser Loomio dans votre organisation ?</h3><p></p>"
+    allow_polls_without_discussions: Autoriser les sondages sans discussion
+    allow_polls_without_discussions_help: Empêcher les gens de lancer des sondages sans d'abord démarrer une discussion.
+    aria_label: Forme de groupe
   group_export_modal:
     title: Exporter les données de votre groupe
     body: |
@@ -1400,7 +1388,6 @@ fr:
     group_url: URL du groupe
     reusable_invitation_link: Lien d'invitation réutilisable
     error: Erreur lors de la copie vers le presse-papier.
-    aria_label: Formulaire d’invitation
     invite_people: Inviter des personnes
     invite_guests: Inviter des personnes
     notify_people: Notifier les personnes
@@ -1437,6 +1424,7 @@ fr:
     shareable_link_to_join_group: Lien partageable pour rejoindre le groupe
     reset_the_link: Réinitialiser le lien
     email_addresses_placeholder: par exemple helperbot{'@'}loomio.org, friendlybot{'@'}loomio.org
+    aria_label: Formulaire d'invitation
   memberships_page:
     members: Les membres
     name_label: Nom
@@ -1533,7 +1521,6 @@ fr:
     insert_link: Insérer un lien
     insert_embedded_url: Intégrer la vidéo
   change_picture_form:
-    aria_label: Formulaire de photo de profil
     title: Régler la photo de profil
     helptext: Vous pouvez charger votre propre photo de profil, ou si vous avez un compte <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a>, vous pouvez l’utiliser.
     use_initials: Utiliser mes initiales
@@ -1541,6 +1528,7 @@ fr:
     use_uploaded: Télécharger une nouvelle photo
     existing_upload: Téléchargement existant
     use_provider: 'Utiliser la photo de %{provider} '
+    aria_label: Formulaire de photo de profil
   change_password_form:
     set_password_title: Définir le mot de passe
     set_password_helptext: Veuillez entrer un mot de passe - il doit contenir 8 caractères au minimum
@@ -1597,7 +1585,6 @@ fr:
     replies_count: "%{count} réponses"
     unread_count: "%{count}non lus"
   dashboard_page:
-    aria_label: Tableau de bord
     polls_to_vote_on: Sondages sur les votes
     no_polls_to_vote_on: Il n’y a pas de sondages sur lesquels vous devez voter
     recent_polls: Sondages récents
@@ -1610,7 +1597,6 @@ fr:
       show_all: Vous n’avez aucune discussion récente.
       show_proposals: Il n’y a aucune proposition active actuellement.
       show_muted: Vous n’avez pas de discussion ignorée.
-    view_recent: Voir toutes les discussions récentes ?
     load_more: Charger plus de discussions
     mark_as_read: Marquer comme lu
     dismiss: Marquer comme lue
@@ -1625,7 +1611,6 @@ fr:
       filter_threads: Filtrer les discussions
       filter_threads_aria_label: Filtrer les discussions
       dropdown_heading: Filtrer le Tableau de Bord
-      all: Discussions récentes
       all_aria_label: Voici les discussions récentes
       all_description: Voir les discussions récentes
       proposals: Décisions
@@ -1634,6 +1619,7 @@ fr:
       muted: Discussions ignorées
       muted_aria_label: Voici les discussions que vous avez ignorées
       muted_description: Voir uniquement les discussions qui ont été ignorées
+      all: Discussions récentes
     thread_preview:
       you_voted: Vous avez voté %{position}
       undecided: Vous n’avez pas pris de décision
@@ -1647,18 +1633,25 @@ fr:
       thisweek: Cette semaine
       thismonth: Ce mois
       older: Plus d’un mois
+    dashboard: Tableau de bord
+    recent_discussions: Discussions récentes
+    view_recent: Voir toutes les discussions récentes ?
+    discussion_marked_as_read: Discussion marquée comme lue
+    discussion_marked_as_unread: Discussion marquée comme non lue
   threads_page:
     no_direct_threads: Vous n'avez pas de discussion directe
-    no_invite_only_threads: Vous n'avez aucune discussions accessible uniquement sur invitation
+    no_invite_only_threads: Vous n'avez pas de sujets accessibles uniquement sur invitation.
   inbox_page:
     no_threads: Woohoo ! Vous avez lu toutes les discussions de votre boîte de réception.
     unread_threads: Discussions non lues
     view_more: Voir plus
     no_groups:
-      explanation: Aucune discussion non lue car vous n’êtes membre d’aucun groupe.
       start: Démarrer
       or: ou
       join_group: <a href="/explore">rejoindre</a> un groupe pour voir des discussions.
+      explanation: Vous n'avez aucune discussion non lue car vous n'êtes membre d'aucun groupe.
+    no_discussions: Hourra ! Vous avez lu toutes les discussions dans votre boîte de réception.
+    unread_discussions: Discussions non lues
   discussion:
     direct_thread: Fil direct
     invite_only: Sur invitation uniquement
@@ -1674,20 +1667,18 @@ fr:
     pin:
       pinned: Discussion épinglée
       unpinned: Discussion plus épinglée
-    volume:
-      mute_message: Discussion ignorée
-      unmute_message: Discussion suivie
     closed:
       reopened: Discussion relancée
       closed: Discussion close
+    volume:
+      mute_message: Discussion désactivée
+      unmute_message: Discussion activée
   discussion_last_seen_by:
     title: Vu par
     no_one: Personne n'a encore vu cela pour l'instant
     disabled_anonymous_polls: L'historique des spectateurs est désactivé, car le fil de discussion contient des sondages anonymes.
   activity_card:
     count_responses:
-    event_pinned: Epinglé à la timeline
-    event_unpinned: Dés-épinglé de la timeline
     beginning: Début
     end: Fin
     unread: Non lus (%{count})
@@ -1696,8 +1687,8 @@ fr:
     chronological: Chronologique
     nested: Imbriqué
     attachment_display:
-      aria_label:
       image_alt: Image jointe
+      aria_label: 'Fichier joint :'
     n_previous: Afficher %{count} réponses précédentes
     n_more: Afficher %{count} réponses
     add_comment: Ajouter un commentaire
@@ -1707,33 +1698,9 @@ fr:
     facilitate: 'Simplifier '
     start_decision: Décision de départ
     start_vote: Commencer le vote
-  thread_group:
-    aria_label: Nom du groupe
-  thread_context:
-    current_poll_type_banner: "%{pollType} actuel."
-    item_maybe_deleted: Impossible de trouver l'emplacement demandé dans le fil de discussion. Il a peut-être été supprimé.
-    aria_label: Contexte de la discussion
-    thread_options: Options de la discussion
-    email_settings: Paramètres de notification
-    edit: Modifier
-    edit_thread: Modifier
-    close_thread: Fermer
-    reopen_thread: Relancer
-    pin_thread: Épingler
-    unpin_thread: Ne plus épingler
-    mute_thread: Ignorer
-    move_thread: Déplacer
-    print_thread: Imprimer
-    delete_thread: Supprimer
-    add_comment: Commentaire
-    seen_by_count: Vu par %{count} personnes
-    count_notified: Notifiés %{count}
-    forked_from: Scindé depuis
-  pin_thread_modal:
-    title: Épingler la discussion
-    helptext: Les discussions mises en avant apparaîtront toujours en tête des discussions de leur groupe. Elles permettent d’informer les membres des annonces importantes ou de partager un code de conduite ou des règles de communauté.
-    helptext_two: Vous pouvez retirer la discussion mise en avant à tout moment en choisissant « Ne plus mettre en avant » dans la liste déroulante de la discussion
-    pin_thread: Épingler la discussion
+    event_pinned: Ajouté à la chronologie des discussions
+    event_unpinned: Retiré de la chronologie des discussions
+    start_a_vote: Lancer un vote
   thread_arrangement_form:
     edit: Modifier la disposition
     title: Mise en page de la discussion
@@ -1752,20 +1719,11 @@ fr:
     nested_twice_description: Indent répond au plus deux fois.
     changing_nesting_is_slow: Les changements à l'imbrication peuvent prendre quelques minutes à traiter.
   delete_thread_form:
-    aria_label: Supprimer la discussion
     title: Supprimer la discussion
     body: Êtes-vous sûr de vouloir supprimer cette discussion ?
     confirm: Supprimer la discussion
     messages:
       success: Discussion supprimée
-  move_thread_form:
-    aria_label: Déplacer le sujet
-    title: Déplacer la discussion
-    body: Groupe de destination
-    confirm: Déplacer la discussion
-    confirm_change_to_private_thread: "%{groupName}  est un groupe ouvert. Si vous confirmez, cette discussion sera rendue publique."
-    messages:
-      success: La discussion a été déplacée vers %{name}
   delete_comment_dialog:
     title: Effacer le commentaire
     question: Cela supprimera définitivement ce commentaire. Si vous continuez, il ne peut pas être restauré.
@@ -1977,6 +1935,8 @@ fr:
     no_results_found: Pas de résultats pour "%{search}"
     welcome_to_your_new_group: Bienvenue dans votre nouveau groupe Loomio !
     lets_start_a_thread: Commençons un fil de discussion. Cliquez sur "Nouveau fil de discussion" pour continuer.
+    lets_start_a_discussion: Ouvrons la discussion. Cliquez sur « Nouvelle discussion » pour continuer.
+    new_discussion: Nouvelle discussion
   members_panel:
     bot: Bot
     no_results: 'Aucun membres trouvés '
@@ -2020,6 +1980,13 @@ fr:
     closed: Clôturée
     need_vote: Besoin d’un vote
     no_polls: Pas de sondage trouvé
+    standalone_disabled_title: Les sondages autonomes sont désactivés.
+    standalone_disabled_helptext: "<p>Ce groupe exige que les sondages soient lancés au sein d'une discussion.</p><p> Les discussions permettent aux citoyens de comprendre le contexte, de poser des questions et de partager leurs points de vue avant de voter. Cela conduit à de meilleures décisions.</p><p> Commencez par lancer une discussion, puis ajoutez un sondage lorsque vous serez prêt à recueillir des votes.</p>"
+    start_discussion: Lancer une discussion
+    standalone_warning_title: Envisagez d'abord d'entamer une discussion.
+    standalone_warning_helptext: "<p>Les sondages fonctionnent mieux lorsque les gens peuvent d'abord discuter du sujet.</p><p> Sans débat, les électeurs ne peuvent ni poser de questions, ni exprimer leurs préoccupations, ni suggérer d'améliorations. Cela entraîne souvent une baisse de la participation et des résultats moins clairs.</p><p> Nous vous recommandons de lancer une discussion, de développer des idées ensemble, puis d'ajouter un sondage lorsque vous serez prêts.</p>"
+    start_poll_anyway: Lancez quand même le sondage
+    start_discussion_instead: Lancez plutôt une discussion
   group_files_panel:
     no_files: Pas de fichiers trouvés
     filename: Nom de fichier
@@ -2245,10 +2212,10 @@ fr:
     sentence: "%{numerator} personnes sur %{denominator} ont voté (%{percent}%)"
     target_progress: "%{percent}% de la cible atteinte. (%{num} / %{target})"
     pct_of_eligible_voters_must_participate: "%{pct}% des électeurs éligibles doivent participer"
-    pct_participation: "%{num} de %{total} votes exprimés (%{pct}% participation)"
     vote_short_of_quorum: Il faut encore 1 vote pour atteindre le quorum de %{pct}%
     votes_short_of_quorum: "%{num} votes supplémentaires nécessaires pour atteindre le quorum de %{pct}%"
     quorum_reached: Le quorum de %{pct}% a été atteint
+    pct_participation: "%{num} des %{total} votes exprimés (%{pct}% de participation)"
   poll_meeting_chart_panel:
     total: Total
   poll_remove_vote:
@@ -2435,8 +2402,6 @@ fr:
     name_placeholder: Donnez un nom à cette intégration de manière à pouvoir l'identifier
     event_kind_helptext: De quels événements souhaitez-vous que le webhook soit notifié ?
     event_kinds:
-      new_discussion: 'Une discussion a été commencée '
-      discussion_edited: Une discussion a été modifiée
       poll_edited: Un sondage a été modifié
       new_comment: Un commentaire a été ajouté
       poll_created: Un sondage a démarré
@@ -2449,6 +2414,8 @@ fr:
       outcome_created: Une conclusion a été partagée
       outcome_updated: Une conclusion a été mise à jour
       outcome_review_due: Un examen de la conclusion est nécessaire
+      new_discussion: Une discussion est entamée.
+      discussion_edited: Une discussion est modifiée
     permissions_explaination: Sélectionner les actions qui peuvent être effectuées par cette intégration
     permissions:
       show_discussion: Montrer la discussion
@@ -2499,6 +2466,8 @@ fr:
     month: Mois
     year: Année
     country_disclaimer: Le pays est basé sur l'adresse IP de l'utilisateur et n'est pas très précis. Considérez ceci comme un guide approximatif uniquement.
+    total_discussions: Discussions complètes
+    discussions_with_polls: Discussions avec sondages
   tips:
     youve_completed_all_the_steps: "\U0001F389 Vous avez terminé toutes les étapes !"
     getting_started_checklist: Liste de contrôle de démarrage
@@ -2534,7 +2503,12 @@ fr:
         helptext: "<p>Pour faciliter la prise de décision, les propositions sont soumises à une date limite de vote. Une fois cette date atteinte, le vote sera clos et vous serez informé(e) des résultats de la proposition.</p><p> La conclusion est l’occasion de dire si la proposition a été retenue et ce qui va se passer ensuite.</p><p> Si la date limite de votre proposition n'est pas encore passée, mais que vous souhaitez quand même continuer, vous pouvez cliquer sur <b>Fermer plus tôt</b> .</p><p> Lorsque le moment est venu, <b>indiquez la conclusion</b> de votre proposition.</p>"
         submit: Voir la proposition
         cancel: Fais-le plus tard
+      start_a_discussion:
+        title: Lancer une discussion
+        helptext: "<p>Créez une discussion que les gens verront après avoir accepté leur invitation.</p><p> L'objectif est d'encourager les utilisateurs à écrire leur premier commentaire sur Loomio.</p><p> Pour vous faciliter la tâche, nous avons mis à votre disposition un modèle <b>de discussion pratique</b> que vous pouvez utiliser.</p>"
+        submit: Consultez les modèles de discussion
     get_started_here: Commencez ici
+    try_loomio_with_your_group: Essayez Loomio avec votre groupe
   poll_common_settings:
     who_can_vote: Qui peut voter ?
     specified_voters_only_true: Personnes invitées uniquement
@@ -2689,3 +2663,49 @@ fr:
     invited_by: Invité par
     invited_on: Invité sur
     no_receipts: Ce sondage anonyme a été fermé avant que la fonction de vérification n'existe, la vérification n'est donc pas possible.
+  close_discussion_modal:
+    body: Fermer les discussions pour les retirer de la liste des discussions ouvertes et empêcher les commentaires.
+  comment_reply_form:
+    aria_label: Ajouter une réponse
+  discussion_template:
+    browse_public_templates: Parcourez la galerie de modèles
+    start_a_new_discussion: Lancer une nouvelle discussion
+    discussion_template_saved: Modèle de discussion enregistré
+    these_are_public_templates: Ces modèles sont à votre disposition pour que vous puissiez les copier ou les modifier selon les besoins de votre groupe.
+    these_are_templates: Voici les modèles de discussion de votre groupe. Cliquez sur un modèle pour démarrer une discussion. Vous pouvez également les modifier, les supprimer ou les réorganiser à votre guise.
+    default_title_label: titre par défaut
+    default_title_hint: Préremplissez le champ « Titre » avec du texte modifiable. Ce champ est facultatif ; laissez-le vide en cas de doute.
+    title_placeholder_label: Exemple de titre
+    title_placeholder_hint: Un exemple à afficher en arrière-plan du champ de titre
+    title_placeholder_placeholder: Par exemple, voici à quoi ressemble un texte d'arrière-plan.
+    example_description_label: Exemple de description
+    example_description_placeholder: Fournissez un modèle que les gens peuvent utiliser pour démarrer une discussion.
+    hidden_templates: Modèles cachés
+    confirm_delete: Êtes-vous sûr de vouloir supprimer ce modèle de discussion ?
+    add_poll_template: Ajouter un modèle de sondage
+    add_poll_template_help: Sélectionnez les modèles de sondage qui vous aideront à mener à bien ce processus.
+    recommended_poll_templates: Modèles de sondages recommandés
+    share_in_template_gallery: Partagez ce modèle dans la galerie de modèles publique
+  context_panel:
+    thread_status:
+      pinned: Cette discussion a été épinglée. Elle restera en haut de la liste des discussions du groupe pour tous les utilisateurs.
+      closed: Cette discussion est close. Elle n'apparaîtra plus sur le tableau de bord et sera répertoriée sous « Clôturée » sur la page du groupe.
+  thread_group:
+    aria_label: Nom du groupe
+  discussion_context:
+    current_poll_type_banner: Actuel %{pollType}
+    seen_by_count: Vu par %{count}
+    count_notified: "%{count} a été notifié"
+    start_a_vote: Lancer un vote
+  pin_discussion_modal:
+    helptext: Les discussions épinglées apparaissent toujours dans la liste des discussions du groupe.
+  delete_discussion_form:
+    body: Êtes-vous sûr de vouloir supprimer cette discussion ?
+    discussion_deleted: Discussion supprimée
+  move_discussion_form:
+    title: Déplacer la discussion vers un autre groupe
+    body: Groupe de destination
+    confirm: Discussion sur le déménagement
+    confirm_change_to_private: "%{groupName} est un groupe ouvert. Si vous continuez, cette discussion sera publique."
+    messages:
+      success: Discussion déplacée vers %{name}

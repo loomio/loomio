@@ -1,5 +1,5 @@
 <script lang="js">
-import ThreadService  from '@/shared/services/thread_service';
+import DiscussionService  from '@/shared/services/discussion_service';
 import EventBus from '@/shared/services/event_bus';
 import openModal      from '@/shared/helpers/open_modal';
 import FormatDate from '@/mixins/format_date';

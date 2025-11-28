@@ -25,7 +25,7 @@ describe 'RecordCloner' do
       poll_created_event.save!
       stance_created_event.save!
       outcome_created_event.save!
-      EventService.repair_thread(discussion.id)
+      EventService.repair_discussion(discussion.id)
     end
 
     it 'creates a new group' do

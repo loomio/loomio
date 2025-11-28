@@ -89,11 +89,11 @@ ca:
       description: <h3 id="what-is-the-purpose-of-the-document">Quin és l'objectiu del document?</h3><p></p><h3 id="why-is-this-important"> Per què és important això?</h3><p></p><h3 id="what-are-you-asking-people-to-do"> Què estàs demanant a la gent que faci?</h3><p></p>
       document: Document
     practice_thread:
-      process_name: Fil de pràctica
       process_subtitle: Un fil per donar la benvinguda a la gent al grup i practicar l'ús de Loomio
       process_introduction: "<p>Feu servir aquesta plantilla per donar la benvinguda als nous membres i fomentar la participació anticipada. Dóna a la gent l'oportunitat de presentar-se i explorar les funcions de Loomio.</p>"
       title: "\U0001F44B Benvingut/da! Saluda i prova coses"
       description: "<p>Benvingut/da al nostre grup de Loomio. És un plaer tenir-te aquí!</p><p> Aquest fil és un espai per a:</p><ul><li><p> Presenta't al grup</p></li><li><p> Prova algunes de les funcions de Loomio; per exemple, prova d'utilitzar reaccions \U0001F44D</p></li><li><p> Feu qualsevol pregunta que tingueu en aquesta etapa</p></li></ul><p> Si no esteu segurs de què dir, un simple hola està bé \U0001F642</p>"
+      process_name: Discussió pràctica
   explore:
     header: Explora grups públics
   activerecord:
@@ -127,8 +127,6 @@ ca:
     '403':
       title: Prohibit
       body: No teniu permís per accedir a aquesta pàgina. Pot ser que hàgiu d'iniciar la sessió.
-    '404':
-      body: No s'ha trobat l'element que has sol·licitat. Això pot passar si s'ha suprimit un fil o una enquesta.
     '410':
       title: Desaparegut
       body: Aquesta pàgina ja no existeix
@@ -144,6 +142,8 @@ ca:
     '500':
       title: Error intern del servidor
       body: Ho sentim, però alguna cosa ha anat malament. Ens han notificat aquest problema i el revisarem en breu.
+    '404':
+      body: No s'ha trobat l'element que has sol·licitat. Això pot passar si s'ha suprimit una discussió o una enquesta.
   group:
     error:
       handle_must_begin_with_parent_handle: Ha de començar per %{parent_handle}-
@@ -224,11 +224,11 @@ ca:
       explaination_html: "<p>Heu rebut aquest correu electrònic perquè sou administrador del grup Loomio: %{group}.</p><p> El grup ha rebut un correu electrònic d'una adreça electrònica no reconeguda.</p><p> Si el missatge és d'un membre del grup, reviseu el correu electrònic i seleccioneu el membre.</p><p> Si el missatge no és desitjat, podeu bloquejar qualsevol altre correu electrònic des d'aquesta adreça.</p>"
     notification_reason:
       group_subscribed: Ho has rebut perquè estàs subscrit a totes les activitats del grup.
-      thread_subscribed: Ho has rebut perquè estàs subscrit al fil.
       group_mentioned: Heu rebut això perquè el grup era @esmentat.
       user_mentioned: Has rebut això perquè ets @esmentat.
       notified: L'heu rebut perquè l'autor us ho va notificar.
       poll_subscribed: Has rebut això perquè estàs subscrit a l'enquesta.
+      discussion_subscribed: Has rebut això perquè estàs subscrit a la discussió.
   user_mailer:
     group_export_ready:
       subject: Exportació de dades de grup per a %{group_name}
@@ -313,9 +313,9 @@ ca:
       subject: "%{who} ha demanat unir-se a %{which_group}"
       view_group: Pots aprovar o denegar la sol·licitud aquí
       button_text: Veure sol·licitud
-    loomio_app_description: Un espai on les organitzacions puguin prendre decisions conjuntament.
     content_was_translated: Aquest contingut ha estat traduït de %{source_locale}
     content_was_translated_html: Aquest contingut s'ha traduït de %{source_locale}. <a href="%{profile_url}">Veure la configuració<a></a>
+    loomio_app_description: Un espai on les organitzacions col·laboradores puguin prendre decisions conjuntament.
   announcement_count_emails: "%{count} correus electrònics"
   email_actions:
     unfollowed_discussion: Heu desactivat els correus electrònics per al fil.

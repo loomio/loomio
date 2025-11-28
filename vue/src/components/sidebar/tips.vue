@@ -89,7 +89,7 @@ v-tooltip(v-model="show" location="bottom" v-if="pctComplete != 100")
 
         v-list(v-else nav density="compact" :lines="false")
           v-list-subheader
-            span(v-t="'tips.getting_started_checklist'")
+            span(v-t="'tips.try_loomio_with_your_group'")
           v-list-item(v-for="tip in tips" :title="$t(tip.title)" @click="tip.perform" :key="tip.title" :disabled="tip.disabled()")
             template(v-slot:append)
               common-icon(v-if="tip.completed()" name='mdi-check')

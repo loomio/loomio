@@ -55,8 +55,6 @@ sv:
     to_use_loomio_with_your_org_start_trial: När du är redo att prova Loomio med din organisation, starta en kostnadsfri provperiod.
     templates: Mallar
     make_a_copy: Göra en kopia
-    this_thread_is_a_template: Den här tråden är en mall. Gör en kopia om du vill använda den.
-    this_is_a_poll_template: Detta är en omröstningsmall. Gör en kopia om du vill börja rösta.
     try_loomio: Prova Loomio
     start_a_demo_group: Starta en demogrupp
     start_a_demo: Starta en demo
@@ -382,13 +380,13 @@ sv:
     unreleased_emails: E-postmeddelanden som inte har släppts
     start_a_thread_by_email: Starta en tråd via e-post
     send_email_to_start_thread: Skicka ett e-postmeddelande till den här adressen för att starta en tråd i din grupp.
-    subject_body_attachments: E-postämnet blir trådens titel, e-postmeddelandets brödtext blir beskrivningen och alla bifogade filer kommer att bifogas till tråden.
     copy_address: Kopiera adress
     email_me_this_address: Maila mig den här adressen
     email_address_copied_to_clipboard: E-postadressen har kopierats till urklipp
     forward_email_to_move_conversation: 'Tips: Vidarebefordra en e-postkonversation till Loomio när du behöver fatta ett beslut eller föra protokoll.'
-  email_to_group_mailer:
-    your_email_address_to_start_threads_in_group: Din e-postadress för att starta trådar i %{group}
+    start_a_discussion_by_email: Starta en diskussion via e-post
+    send_email_to_start_discussion: Skicka ett e-postmeddelande till den här adressen för att starta en diskussion i din grupp.
+    subject_body_attachments: Ämnet i e-postmeddelandet blir diskussionens titel, brödtexten blir beskrivningen. Bifogade filer kopieras också.
   volume_levels:
     loud: Ljud
     normal: Normal
@@ -412,14 +410,12 @@ sv:
       loud_explain: närhelst det är aktivitet
       normal_explain: när någon ber om din uppmärksamhet
       quiet_explain: inga notifikationer
-    aria_label: Byt epostinställningars formulär
     loud_label: All aktivitet
     normal_label: Meddelanden
     quiet_label: Inga e-post
     mute_label: Tysta ned
     saved: Aviseringsinställningar uppdaterade
     discussion:
-      title: Trådaviseringar
       loud_description: Du kommer att få e-post med all aktivitet i denna tråd.
       normal_description: Du kommer bara att få e-post med viktig aktivitet i denna tråd.
       quiet_description: Du kommer inte att få e-post till någon aktivitet i den här tråden.
@@ -431,6 +427,7 @@ sv:
         loud: Du kommer att få e-post om aktivitet i denna tråd.
         normal: Du kommer att få e-post om förslag i denna tråd.
         quiet: Du kommer inte få e-post om denna tråd.
+      title: Diskussionsmeddelanden
     membership:
       title: Aviseringar för %{title}
       loud_description: Du kommer att få e-post vid aktivitet i denna grupp.
@@ -462,7 +459,6 @@ sv:
         normal: Du kommer bli mailad om meddelande i nya grupper.
         quiet: Du kommer inte bli mailad om nya grupper.
     change_your_email_settings: Ändra dina e-postinställningar
-    when_would_you_like_to_be_emailed_thread: När vill du bli mailad om denna tråd?
     when_would_you_like_to_be_emailed_group: När vill du bli mailad om den här gruppen?
     changes_all_threads_in_group: Detta ändrar inställningen för alla trådar i gruppen.
     what_do_the_options_mean: Vad betyder alternativen?
@@ -471,14 +467,16 @@ sv:
     quiet_desc: Aldrig
     loud_explained: Du kommer att bli mailad varje gång det kommer en ny kommentar, någon röstar eller startar en omröstning eller tråd.
     when_would_you_like_to_be_emailed_poll_type: När vill du få e-post om denna %{poll_type}?
-    normal_explained: När någon skriver in ditt namn i fältet "Meddela" i en tråd eller en omröstning, eller när de {'@'}nämner gruppen.
     normal_excludes_mentioning_html: Det finns en separat inställning för när någon {'@'}nämner dig (t.ex. när de svarar dig i en kommentar). <a href="%{url}">Klicka här för att redigera inställningarna för @omnämnanden.</a>
     changes_all_threads_and_polls_in_group: Detta ändrar inställningarna för alla trådar och omröstningar i gruppen.
     when_do_you_want_to_be_emailed: När vill du bli mejlad?
     what_the_options_mean: Vad alternativen betyder
     quiet_explained: Du kommer inte att få ett e-postmeddelande, inte ens när någon försöker meddela dig. Du kan missa viktiga meddelanden eller beslut om du inte har för vana att kolla Loomio regelbundet.
+    when_would_you_like_to_be_emailed_discussion: När vill du få e-postmeddelande om den här diskussionen?
+    changes_all_discussions_and_polls_in_group: Detta ändrar inställningarna för alla diskussioner och omröstningar i gruppen.
+    normal_explained: När någon skriver in ditt namn i fältet "Meddela" i en diskussion eller en omröstning, eller när de {'@'}nämner gruppen.
+    aria_label: Ändra e-postinställningar formulär
   close_explanation_modal:
-    aria_label: Stäng tråd
     close_thread: Stäng tråd
     body: "<p>Stäng gamla eller irrelevanta trådar för att ta bort dem och indikera att diskussionen har stängts.</p><p> Vem som helst kan fortfarande kommentera eller starta en omröstning i en stängd tråd, men den kommer inte att visas i gruppens trådlista eller på instrumentpanelen.</p>"
     image_alt: Stänger alla trådar
@@ -491,14 +489,11 @@ sv:
     password_label: 'Lösenord:'
     password_confirmation_label: 'Återupprepa lösenord:'
   signed_out_modal:
-    aria_label: Sessionen avslutad
     title: Din session är avslutad
     message: Du har loggats ut från ett annat fönster. Var god logga in igen för att fortsätta.
     ok: Ok
-  comment_reply_form:
-    aria_label: Lägg till svar
+    aria_label: Sessionen avslutad
   comment_form:
-    aria_label: Lägg till kommentar
     attachments:
       add_attachment: Bifoga fil
       remove_attachment: Ta bort bifogning
@@ -522,12 +517,10 @@ sv:
     private_privacy_notice: Din kommentar kommer bara vara synlig för medlemmar av %{groupName}.
     public_privacy_notice: Din kommentar kommer att vara synlig för alla på nätet.
     sign_in: Logga in för att delta i konversationen
+    add_a_comment: Lägg till en kommentar
   thread_nav:
     participants: Deltagare
   sidebar:
-    new_thread_removed: Ny tråd borttagen
-    new_thread_removed_body: Den nya trådknappen tas bort från sidofältet. För att starta en ny tråd, navigera först till din grupp och klicka sedan på "Ny tråd". Ursäkta ändringen, men den är obligatorisk eftersom du måste välja en mall när du startar en tråd.
-    threads: Trådar
     my_groups: Mina grupper
     other_groups: Andra grupper
     all_groups: Alla grupper
@@ -536,7 +529,6 @@ sv:
     direct_threads: Direkta trådar
     unread_threads: Olästa trådar (%{count})
     muted_threads: Stumma trådar
-    start_group: Ny organisation
     start_subgroup: Ny undergrupp
     explore: Publika grupper
     explore_groups: Utforska grupper
@@ -554,6 +546,10 @@ sv:
       groups_list: Grupper
       user_list: Användaråtgärder
     user_settings: Användarinställningar
+    invite_only_discussions: Diskussioner endast med inbjudan
+    unread_discussions_count: Olästa diskussioner (%{count})
+    new_group: Ny grupp
+    new_subgroup: Ny undergrupp
   strand_nav:
     newest: Nyaste
     oldest: Äldst
@@ -581,7 +577,6 @@ sv:
     all_subgroups: Alla undergrupper
     parent_only: Endast förälder
   navbar:
-    search_all_threads: Sök i alla trådar
     search_threads: Sök i trådar i %{name}
     search_polls: Sök omröstningar i %{name}
     search_members: Sök medlemmar i %{name}
@@ -610,6 +605,7 @@ sv:
     search_members_short: Sök medlemmar
     search_files_short: Sök efter filer
     search_subgroups_short: Sök undergrupper
+    search_discussions_in_group: Sök diskussioner i %{name}
   user_dropdown:
     pin_sidebar: Fäst sidofältet
     unpin_sidebar: Lossa sidofältet
@@ -625,7 +621,7 @@ sv:
     contact_support: Kontakta supporten
     sign_out: Logga ut
     beta_collab: "\U0001F9EA Betafunktioner aktiverade!"
-    outcomes: Resultat
+    outcomes: Slutsatser
     theme: Tema
     light: Ljus
     dark: Mörk
@@ -633,7 +629,6 @@ sv:
     dark_blue: Mörkblå
   membership_card:
     group_members: Gruppmedlemmar
-    discussion_members: Trådmedlemmar
     poll_members: "%{pollType} medlemmar"
     voters: Väljare
     invite_to_group: Bjud in till grupp
@@ -641,6 +636,7 @@ sv:
     invite_to_poll: Bjud in att rösta
     invite_to_wip_poll: Bjud in att ge feedback
     invitations: Inbjudningar
+    discussion_members: Diskussionsmedlemmar
   membership_dropdown:
     set_name_and_username: Ställ in namn och användarnamn
     set_title: Ställ in titel
@@ -649,29 +645,26 @@ sv:
     make_coordinator: Gör admin
     demote_coordinator: Degradera admin
     remove_from:
-      discussion: Ta bort från tråden
       group: Ta bort från grupp
       poll: Ta bort från %{pollType}
+      discussion: Ta bort från diskussionen
     cancel_invitation: Avbryt inbjudan
     view_profile: Visa profil
     revoke_admin: Återkalla admin
     make_delegate: Gör ombud
     revoke_delegate: Återkalla delegat
   notification_models:
-    discussion: 'tråd:'
     comment: kommentera in
     poll: 'opinionsundersökning:'
-    outcome: 'resultat:'
+    outcome: 'slutsats:'
     stance: 'rösta:'
+    discussion: 'diskussion:'
   notifications:
     header: Notifieringar
     no_notifications: Du har inga aviseringar
     with_title:
       unknown_sender: Granska e-post från okänd avsändare
       comment_replied_to: "%{actor} svarade dig i: %{title}"
-      discussion_announced: "%{actor} bjöd in dig till tråden: %{title}"
-      discussion_edited: "%{actor} redigerade trådkontexten: %{title}"
-      discussion_closed: "%{actor} stängde tråden: %{title}"
       invitation_accepted: "%{actor} accepterade din inbjudan att gå med i %{title}"
       membership_created: "%{actor} bjöd in dig att gå med i %{title} på %{site_name}"
       membership_resent: "%{actor} bjöd in dig att gå med i %{title} på %{site_name}"
@@ -679,9 +672,8 @@ sv:
       membership_request_approved: "%{actor} godkände din begäran om att gå med i %{title}"
       new_comment: "%{actor} kommenterade i: %{title}"
       new_coordinator: "%{actor} gjorde dig till administratör för %{title}"
-      new_discussion: "%{actor} startade en tråd: %{title}"
-      outcome_announced: "%{actor} delade ett %{poll_type}-resultat: %{title}"
-      outcome_created: "%{actor} delade ett %{poll_type}-resultat: %{title}"
+      outcome_announced: "%{actor} delade ett %{poll_type}-slutsats: %{title}"
+      outcome_created: "%{actor} delade ett %{poll_type}-slutsats: %{title}"
       outcome_updated: "%{actor} uppdaterade %{poll_type}-resultatet: %{title}"
       outcome_review_due: 'Det är dags att granska resultatet av: %{title}'
       poll_closed_by_user: "%{actor} stängde %{poll_type}: %{title}"
@@ -705,22 +697,20 @@ sv:
       group_mentioned: "%{actor} nämnde gruppen i: %{title}"
       new_delegate: "%{actor} gjorde dig till en delegat med rösträtt i %{title}"
       poll_announced: "%{actor} bjöd in dig att rösta: %{title}"
+      discussion_announced: "%{actor} bjöd in dig till diskussionen: %{title}"
+      discussion_edited: "%{actor} redigerade diskussionssammanhanget: %{title}"
+      discussion_closed: "%{actor} avslutade diskussionen: %{title}"
+      new_discussion: "%{actor} startade en diskussion: %{title}"
     without_title:
       unknown_sender: Granska e-post från okänd avsändare
-      discussion_announced: "%{actor} bjöd in dig till en tråd"
-      discussion_edited: "%{actor} redigerade trådkontexten"
-      discussion_closed: "%{actor} stängde tråden"
       group_announced: "%{actor} bjöd in dig till en grupp"
       comment_replied_to: "%{actor} svarade dig"
-      new_discussion: "%{actor} startade en tråd"
-      new_comment: "%{actor} kommenterade i en tråd"
       membership_created: "%{actor} bjöd in dig att gå med i en grupp"
       membership_resent: "%{actor} bjöd in dig att gå med i en grupp"
       membership_requested: "%{actor} begärde att få gå med i din grupp"
       membership_request_approved: "%{actor} godkände din begäran om att gå med i %{title}"
       outcome_announced: "%{actor} delade ett %{poll_type}-resultat"
       outcome_created: "%{actor} delade ett %{poll_type}-resultat"
-      outcome_updated: "%{actor} uppdaterade resultatet"
       outcome_review_due: Det är dags att granska %{poll_type}-resultatet
       poll_announced_wip: "%{actor} vill ha din feedback på en %{poll_type}"
       poll_closed_by_user: "%{actor} stängde %{poll_type}"
@@ -742,16 +732,20 @@ sv:
       user_reminded: "%{actor} påminner dig om att rösta"
       group_mentioned: "%{actor} nämnde gruppen"
       poll_announced: "%{actor} bjöd in dig att rösta på en %{poll_type}"
+      discussion_announced: "%{actor} bjöd in dig till en diskussion"
+      discussion_edited: "%{actor} redigerade diskussionskontexten"
+      discussion_closed: "%{actor} stängde diskussionen"
+      new_discussion: "%{actor} startade en diskussion"
+      new_comment: "%{actor} kommenterade i en diskussion"
+      outcome_updated: "%{actor} uppdaterade resultatet"
     hints:
       poll_closing_soon: Nu är det ett bra tillfälle att rösta, ändra uppfattning eller uppmuntra andra att delta.
       poll_closing_soon_author: Du kanske vill påminna folk om att rösta eller förlänga tidsfristen.
-      outcome_review_due: Överväg att starta en feedbackundersökning eller en ny tråd som inbjuder till reflektioner över hur beslutet har genomförts.
+      outcome_review_due: Överväg att starta en feedbackundersökning eller en ny diskussion där man bjuder in till reflektioner kring hur beslutet har genomförts.
     email_subject:
       unknown_sender: Granska e-post från okänd avsändare
       comment_replied_to: "%{actor} svarade dig i: %{title}"
       discussion_announced: "%{title}"
-      discussion_edited: "%{actor} redigerade sammanhanget: %{title}"
-      discussion_closed: "%{actor} stängde tråden: %{title}"
       invitation_accepted: "%{actor} accepterade din inbjudan att gå med i %{title}"
       membership_created: "%{actor} bjöd in dig att gå med i %{title} på %{site_name}"
       membership_resent: "%{actor} bjöd in dig att gå med i %{title} på %{site_name}"
@@ -761,8 +755,8 @@ sv:
       new_coordinator: "%{actor} gjorde dig till administratör för %{title}"
       new_delegate: "%{actor} utsåg dig till ombud med rösträtt i %{title}"
       new_discussion: "%{title}"
-      outcome_announced: "%{poll_type} resultat: %{title}"
-      outcome_created: "%{poll_type} resultat: %{title}"
+      outcome_announced: "%{poll_type} slutsats: %{title}"
+      outcome_created: "%{poll_type} slutsats: %{title}"
       outcome_updated: "%{poll_type} resultat uppdaterat: %{title}"
       outcome_review_due: 'Det är dags att granska resultatet av: %{title}'
       poll_closed_by_user: "%{actor} stängde %{poll_type}: %{title}"
@@ -785,34 +779,15 @@ sv:
       group_mentioned: "%{actor} nämnde gruppen i: %{title}"
       user_reminded: "%{actor} påminner dig om att rösta i: %{title}"
       poll_announced: 'Rösta: %{title}'
+      discussion_edited: "%{actor} redigerade diskussionssammanhanget: %{title}"
+      discussion_closed: "%{actor} avslutade diskussionen: %{title}"
   discussion_fork_actions:
-    helptext: Välj objekt som du vill flytta till en annan tråd
     move: Flytta
-    search_placeholder: Hitta tråd efter titel
     moved: Rörande kommentarer, det här kan ta en stund
-    move_to_existing_thread: Flytta till befintlig tråd
-    start_new_thread: Eller starta en ny tråd
-  thread_template:
-    browse_public_templates: Bläddra i mallgalleriet
-    thread_template_settings: Inställningar för trådmall
-    start_a_new_thread: Starta en ny tråd
-    thread_template_saved: Trådmall sparad
-    these_are_public_templates: Dessa mallar är tillgängliga för dig att kopiera eller ändra för att passa din grupp
-    these_are_templates: Det här är trådmallarna i din grupp. Mallar guidar dig genom vanliga beslutsprocesser.
-    default_title_label: Standardtitel
-    default_title_hint: Förfyll titelfältet med redigerbar text. Detta är valfritt - lämna tomt om du är osäker.
-    title_placeholder_label: Exempeltitel
-    title_placeholder_hint: Ett exempel att visa i bakgrunden av titelfältet
-    title_placeholder_placeholder: t.ex. Så här ser bakgrundstext ut
-    example_description_label: Exempelbeskrivning
-    example_description_placeholder: Ge en mall som folk kan använda för att starta en tråd med
-    hidden_templates: Dolda mallar
-    confirm_delete: Är du säker på att du vill ta bort denna trådmall permanent? Inga trådar kommer att raderas som ett resultat av detta.
-    add_proposal_or_poll_template: Lägg till förslag eller omröstningsmall
-    recommended_proposal_or_poll_templates: Rekommenderade förslag eller omröstningsmallar
-    decision_templates: Beslutsmallar
-    decision_templates_help: Välj alla förslag eller omröstningsmallar som hjälper dig att slutföra denna process.
-    share_in_template_gallery: Dela den här mallen i det offentliga mallgalleriet
+    helptext: Markera de objekt du vill flytta till en annan diskussion
+    search_placeholder: Hitta diskussion efter titel
+    move_to_existing_thread: Flytta till befintlig diskussion
+    start_new_thread: Eller starta en ny diskussion
   discussion_form:
     thread_templates: Trådmallar
     new_thread_template: Ny trådmall
@@ -826,10 +801,8 @@ sv:
     invite_only_thread: Enbart inbjudningstråd
     none_direct_thread: Direkt tråd (ingen grupp)
     none_invite_only_thread: Enbart inbjudningstråd (ingen grupp)
-    change_log_placeholder: Beskriv eventuellt dina ändringar. Detta meddelande kommer att läggas till i tråden.
     change_log_label: Vad har förändrats?
     invite: Bjud in
-    aria_label: Trådform
     start_thread: Starta tråden
     messages:
       created: Tråden startade
@@ -851,13 +824,20 @@ sv:
     privacy_organisation: Tråden kommer att vara synlig för medlemmar av %{parent} och medlemmar av %{group}.
     fork_notice: En ny tråd kommer att skapas med %{count} objekt från %{title}
     notify_group: Meddela gruppen
+    none_invite_only_discussion: Ingen (diskussion endast med inbjudan)
+    new_discussion_template: Ny diskussionsmall
+    edit_discussion_template: Redigera diskussionsmall
+    change_log_placeholder: Beskriv eventuellt dina ändringar. Detta meddelande kommer att läggas till i diskussionen.
+    start_discussion: Starta diskussion
+    discussion_updated: Diskussionen uppdaterades
+    discussion_created: Diskussion skapad
+    discussion_started: Diskussionen har startat
   announcement:
     send_discussion: Skicka tråd
     send_group: Bjud in personer till %{name}
     send_poll: Skicka %{type}
-    send_outcome: Skicka resultat
+    send_outcome: Skicka slutsats
     cannot_reveal_when_anonymous: Tyvärr kan vi inte avslöja vem som har eller inte har röstat i en anonym omröstning.
-    discussion_notification_history: Trådaviseringshistorik
     group_notification_history: Gruppinbjudningshistorik
     poll_notification_history: Omröstningsaviseringshistorik
     outcome_notification_history: Resultataviseringshistorik
@@ -869,7 +849,6 @@ sv:
     preview: Förhandsgranska e-post
     no_notifications_sent: Inga aviseringar har skickats
     history_error: Något gick fel! Det gick inte att ladda historiken.
-    inviting_guests_to_thread: Gäster tillhör inte din grupp och har endast tillgång till denna tråd
     select_groups: Välj grupper
     search_by_name_or_email: Sök på namn eller ange e-postmeddelanden för att bjuda in
     search_by_name: Sök efter personer med namn
@@ -881,13 +860,13 @@ sv:
     new_discussion: "%{name} bjöd in %{length} personer till tråden:"
     discussion_announced: "%{name} bjöd in %{length} personer till tråden:"
     poll_created: "%{name} bjöd in %{length} personer att rösta:"
-    outcome_created: "%{name} delade ett resultat med %{length} personer:"
-    outcome_announced: "%{name} delade ett resultat med %{length} personer:"
+    outcome_created: "%{name} delade en slutsats med %{length} personer:"
+    outcome_announced: "%{name} delade en slutsats med %{length} personer:"
     announcement_created: "%{name} bjöd in %{length} personer till tråden:"
     discussion_edited: "%{name} redigerade tråden och meddelade %{length} personer:"
     poll_edited: "%{name} redigerade en omröstning och meddelade %{length} personer:"
-    outcome_edited: "%{name} redigerade ett resultat och meddelade %{length} personer:"
-    outcome_updated: "%{name} redigerade ett resultat och meddelade %{length} personer:"
+    outcome_edited: "%{name} redigerade en slutsats och meddelade %{length} personer:"
+    outcome_updated: "%{name} redigerade en slutsats och meddelade %{length} personer:"
     poll_closing_soon: "%{name}s påminnelse om stängning av enkäten meddelade %{length} personer:"
     poll_reminder: "%{name} påminde %{length} personer att rösta:"
     audiences:
@@ -951,8 +930,6 @@ sv:
       added_singular: 1 person kommer att läggas till.
       added_none: Ingen kommer att läggas till.
       group_title: "%{name} (%{count} personer)"
-      visible_to_group: Alla i %{group} kommer att kunna se den här tråden.
-      visible_to_guests: Endast inbjudna personer kan se denna tråd.
       click_group_to_see_individuals: Klicka på grupp för att se individer
       poll_announced:
         title: Inbjudan att rösta
@@ -968,6 +945,8 @@ sv:
       has_not_read_thread: Har inte sett tråden
       has_not_joined_yet: Har inte gått med ännu
       has_not_joined_yet_hint: Den här användaren har inte accepterat sin inbjudan att gå med i Loomio och kommer inte att få ytterligare meddelanden förrän de gör det
+      discussion_admin: Diskussionsadministratör
+      has_not_read_discussion: Har inte sett diskussionen
     group_form:
       search_placeholder: Sök efter personer...
       modal_title: Välj gruppmedlemmar
@@ -975,6 +954,8 @@ sv:
       success: "%{count} aviseringar har skickats"
     group_mentioned: "%{name} nämnde gruppen med %{length} personer:"
     poll_announced: "%{name} bjöd in %{length} personer att rösta:"
+    discussion_notification_history: Historik för diskussionsmeddelanden
+    inviting_guests_to_discussion: Gäster tillhör inte din grupp och har endast tillgång till den här diskussionen.
   action_dock:
     actions_menu: Menyn Åtgärder
     more_actions: Fler åtgärder
@@ -1002,10 +983,10 @@ sv:
     reply_to_comment: Svar
     fork_comment: Gaffeltråd
     translate_comment: Översätt kommentar
-    edit_outcome: Redigera resultatet
-    announce_outcome: Meddela folk om detta resultat
-    announce_outcome_active: "(Ingen har meddelats om detta resultat ännu)"
-    translate_outcome: Översätt resultat
+    edit_outcome: Redigera slutsatset
+    announce_outcome: Meddela folk om denna slutsats
+    announce_outcome_active: "(Ingen har meddelats om denna slutsats ännu)"
+    translate_outcome: Översätt slutsats
     show_history: Visa redigeringshistorik
     edited: Redigerad
     show_edits: Visa redigeringar
@@ -1029,6 +1010,11 @@ sv:
     add_poll_to_thread: Lägg till i tråden
     count_members: "%{count} medlemmar"
     count_voters: "%{count} väljare"
+    pin_discussion: Fäst diskussion
+    unpin_discussion: Ta bort diskussionen
+    close_discussion: Stäng diskussion
+    reopen_discussion: Återuppta diskussionen
+    delete_discussion: Ta bort diskussion
   formatting:
     formatting_tools: Textformateringsverktyg
     colors: Färger
@@ -1098,7 +1084,6 @@ sv:
     messages:
       joined_group: Du är nu medlem i %{group}
   membership_request_form:
-    aria_label: Blankett för begäran om medlemskap
     heading: Be att få gå med
     name_label: Namn
     email_label: Email
@@ -1107,8 +1092,8 @@ sv:
     introduction_over_limit: Svaret är för långt
     messages:
       membership_requested: Du har begärt att få gå med i %{group}
+    aria_label: Medlemskapsansökan
   revision_history_modal:
-    aria_label: Revisionshistorik
     discussion_header: Diskussionsredigeringar
     comment_header: Kommentarsredigeringar
     poll_header: Omröstningsredigeringar
@@ -1126,6 +1111,7 @@ sv:
     closing_at_changed: stängningstid inställd på %{time}
     private_changed: sekretess inställd på %{private}
     group_id_changed: flyttade till %{name}
+    aria_label: Revisionshistorik
   reactions_input:
     add_your_reaction: Lägg till din reaktion
   reactions_display:
@@ -1134,10 +1120,6 @@ sv:
     you_and_name: Du och %{name}
     you_and_name_and_count_more: Du, %{name} och %{count} till
     name_and_count_more: "%{name} och %{count} till"
-  context_panel:
-    thread_status:
-      pinned: Den här tråden har fästs. Den förblir överst på gruppens lista över trådar för alla användare.
-      closed: Denna tråd är stängd. Den kommer inte längre att visas på instrumentbrädan, tråden kommer också vara listad som 'stängd' på gruppsidan.
   delete_group_modal:
     title: Ta bort grupp
     subgroup_title: Ta bort undergrupp
@@ -1219,6 +1201,10 @@ sv:
     participation_report: Deltagande rapport
     my_subgroups: Mina undergrupper
     more_subgroups: Fler undergrupper
+    discussions: Diskussioner
+    no_discussions_here: Inga diskussioner att se här!
+    private_discussions: Du måste vara medlem för att se privata trådar i den här gruppen.
+    view_closed_discussions: Visa stängda diskussioner
   export_data_modal:
     title: Hur vill du använda din data?
     as_csv: Öppna den i ett kalkylblad
@@ -1230,22 +1216,21 @@ sv:
     messages:
       description_updated: Beskrivning uppdaterad
   leave_group_form:
-    aria_label: Lämna gruppen
     title: Lämna gruppen
     question: Är du säker på att du vill lämna den här gruppen?
     submit: Ja, lämna den här gruppen
+    aria_label: Lämna gruppen
   archive_group_form:
-    aria_label: Inaktivera grupp
     title: Inaktivera grupp
     question: Är du säker på att du vill inaktivera den här gruppen?
     submit: Ja, inaktivera den här gruppen
+    aria_label: Inaktivera grupp
   group_form:
     thread_defaults_help: Standardinställningar för nya trådar
     click_to_change_image: Klicka för att ändra omslagsbild (4x1) eller logotyp (1x1)
     change_cover_image: byt omslagsbild
     change_logo: ändra logotyp
     permissions_explaination: 'Det finns två nivåer av medlemskap en person kan ha i en grupp: admin och medlem. Administratörer kan redigera gruppinställningar, göra andra till administratörer och utföra alla åtgärder som anges nedan.'
-    aria_label: Gruppform
     parent_group: Föräldragrupp
     new_organisation: Ny organisation
     new_group: Ny grupp
@@ -1339,6 +1324,9 @@ sv:
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Uppgradera din prenumeration</a> för att skapa en undergrupp'
     share_this_url_with_people_who_want_to_join: Dela den här webbadressen med personer som vill gå med
     new_description_html: "<h3>Vilka utmaningar står er organisation inför med beslutsfattandet?</h3><p></p><h3> Hur skulle du vilja använda Loomio i din organisation?</h3><p></p>"
+    allow_polls_without_discussions: Tillåt omröstningar utan diskussion
+    allow_polls_without_discussions_help: Tillåt fristående omröstningar (rekommenderas inte). Utan en diskussion kan man inte ställa frågor eller skapa enighet effektivt.
+    aria_label: Gruppformulär
   group_export_modal:
     title: Exportera gruppdata
     body: <p>Du kan ladda ner en kopia av din grupps data när som helst. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Få reda på mer.</a></p><p> Det tar några minuter att slutföra, beroende på storleken på din grupp. När den är klar får du ett e-postmeddelande med en länk för att ladda ner filen.</p>
@@ -1363,7 +1351,6 @@ sv:
     group_url: Grupp-URL
     reusable_invitation_link: Återanvändbar inbjudningslänk
     error: Fel vid försök att kopiera till urklipp
-    aria_label: Inbjudningsformulär
     invite_people: Bjud in deltagare
     invite_guests: Bjud in gäster
     notify_people: Meddela folk
@@ -1400,6 +1387,7 @@ sv:
     shareable_link_to_join_group: Delbar länk för att gå med i gruppen
     reset_the_link: Återställ länken
     email_addresses_placeholder: t.ex. helperbot{'@'}loomio.org, friendlybot{'@'}loomio.org
+    aria_label: Inbjudningsformulär
   memberships_page:
     members: Medlemmar
     name_label: Namn
@@ -1496,7 +1484,6 @@ sv:
     insert_link: Infoga länk
     insert_embedded_url: Inbäddad video
   change_picture_form:
-    aria_label: Profilfotoformulär
     title: Ställ in profilbild
     helptext: Du kan ladda upp din egen profilbild, eller om du har ett <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar-</a> konto kan du använda det.
     use_initials: Använd initialer
@@ -1504,6 +1491,7 @@ sv:
     use_uploaded: Ladda upp nytt foto
     existing_upload: Befintlig uppladdning
     use_provider: Använd %{provider} foto
+    aria_label: Formulär för profilfoto
   change_password_form:
     set_password_title: Ställ in ditt lösenord
     set_password_helptext: Vänligen ange ett lösenord - minst 8 tecken
@@ -1560,7 +1548,6 @@ sv:
     replies_count: "%{count} svar"
     unread_count: "%{count} olästa"
   dashboard_page:
-    aria_label: Instrumentbräda
     polls_to_vote_on: Omröstningar att rösta på
     no_polls_to_vote_on: Det finns inga omröstningar du behöver rösta på
     recent_polls: Senaste omröstningar
@@ -1573,7 +1560,6 @@ sv:
       show_all: Du har inga nya trådar.
       show_proposals: Det finns inga aktiva förslag för närvarande.
       show_muted: Du har inga dämpade trådar.
-    view_recent: Visa alla senaste trådar?
     load_more: Ladda fler trådar
     mark_as_read: Markera som läst
     dismiss: Avfärda
@@ -1588,7 +1574,6 @@ sv:
       filter_threads: Filtrera trådar
       filter_threads_aria_label: Filtrera trådar
       dropdown_heading: Filtrera instrumentbrädan.
-      all: Senaste trådar
       all_aria_label: Visar för närvarande senaste trådar
       all_description: Visa de senaste trådarna
       proposals: Förslag
@@ -1597,6 +1582,7 @@ sv:
       muted: Dämpade trådar
       muted_aria_label: Nuvarande visar avstängda trådar
       muted_description: Visa bara trådar som har stängts av
+      all: Senaste diskussionerna
     thread_preview:
       you_voted: Du röstade %{position}
       undecided: Du är obestämd
@@ -1610,18 +1596,25 @@ sv:
       thisweek: Denna vecka
       thismonth: Den här månaden
       older: Äldre än en månad
+    dashboard: Instrumentpanel
+    recent_discussions: Senaste diskussionerna
+    view_recent: Visa alla senaste diskussioner?
+    discussion_marked_as_read: Diskussion markerad som läst
+    discussion_marked_as_unread: Diskussion markerad som oläst
   threads_page:
     no_direct_threads: Du har inga direkta trådar
-    no_invite_only_threads: Du har inga inbjudningstrådar
+    no_invite_only_threads: Du har inga trådar endast för inbjudna
   inbox_page:
     no_threads: Woohoo! Du har läst alla trådar i din inkorg.
     unread_threads: Olästa trådar
     view_more: Visa mer
     no_groups:
-      explanation: Du har inga olästa trådar eftersom du inte är medlem i någon grupp.
       start: Starta
       or: eller
       join_group: <a href="/explore">gå med i</a> en grupp för att se trådar.
+      explanation: Du har inga olästa diskussioner eftersom du inte är medlem i några grupper.
+    no_discussions: Woohoo! Du har läst alla diskussioner i din inkorg.
+    unread_discussions: Olästa diskussioner
   discussion:
     direct_thread: Direkt tråd
     invite_only: Endast inbjudna
@@ -1635,20 +1628,18 @@ sv:
     pin:
       pinned: Tråd fastnålad
       unpinned: Tråd lossad
-    volume:
-      mute_message: Tråd avstängd
-      unmute_message: Tråden avstängd
     closed:
       reopened: Tråden öppnad igen
       closed: Tråd stängd
+    volume:
+      mute_message: Diskussionen är tystad
+      unmute_message: Diskussionen har avaktiverats
   discussion_last_seen_by:
     title: Ses av
     no_one: Ingen har sett detta än
     disabled_anonymous_polls: Tittarhistoriken är inaktiverad eftersom tråden innehåller anonyma omröstningar
   activity_card:
     count_responses: "%{count} svar"
-    event_pinned: Fäst till tidslinjen
-    event_unpinned: Lossade från tidslinjen
     beginning: Början
     end: Slutet
     unread: Oläst (%{count})
@@ -1657,44 +1648,20 @@ sv:
     chronological: Kronologiskt
     nested: Kapslad
     attachment_display:
-      aria_label: 'Fil bifogad:'
       image_alt: Bifogad bild
+      aria_label: 'Bifogad fil:'
     n_previous: Ladda %{count} tidigare svar
     n_more: Ladda %{count} svar
     add_comment: Lägg till kommentar
     add_poll: Lägg till enkät
-    add_outcome: Lägg till resultat
+    add_outcome: Lägg till slutsats
     comment: Kommentar
     facilitate: Främja
     start_decision: Börja beslut
     start_vote: Börja rösta
-  thread_group:
-    aria_label: Gruppnamn
-  thread_context:
-    current_poll_type_banner: Aktuell %{pollType}
-    item_maybe_deleted: Kan inte hitta den begärda platsen i tråden. Det kan ha tagits bort.
-    aria_label: Trådsammanhang
-    thread_options: Trådalternativ
-    email_settings: Aviseringsinställningar
-    edit: Redigera
-    edit_thread: Redigera
-    close_thread: Stäng
-    reopen_thread: Öppna igen
-    pin_thread: Stift
-    unpin_thread: Lossa
-    mute_thread: Tysta ned
-    move_thread: Flytta
-    print_thread: Skriva ut
-    delete_thread: Radera
-    add_comment: Kommentar
-    seen_by_count: Sett av %{count}
-    count_notified: Aviserat %{count}
-    forked_from: Forked från
-  pin_thread_modal:
-    title: Pintråd
-    helptext: Fästa trådar visas alltid högst upp i gruppens lista med trådar. De kan användas för att informera medlemmar om viktiga meddelanden eller för att marknadsföra vanligt material som en uppförandekod eller riktlinjer för gemenskapen.
-    helptext_two: Du kan ta bort nålar när som helst genom att välja 'Unpin' från trådrullgardinsmenyn
-    pin_thread: Pintråd
+    event_pinned: Tillagd till diskussionens tidslinje
+    event_unpinned: Borttagen från diskussionens tidslinje
+    start_a_vote: Starta en omröstning
   thread_arrangement_form:
     edit: Redigera layout
     title: Trådlayout
@@ -1713,20 +1680,11 @@ sv:
     nested_twice_description: Indrag svarar högst två gånger.
     changing_nesting_is_slow: Ändringar av kapsling kan ta ett par minuter att bearbeta.
   delete_thread_form:
-    aria_label: Ta bort tråd
     title: Ta bort tråd
     body: Är du säker på att du vill ta bort den här tråden?
     confirm: Ta bort tråd
     messages:
       success: Tråden raderad
-  move_thread_form:
-    aria_label: Flytta tråden
-    title: Flytta tråden
-    body: Destinationsgrupp
-    confirm: Flytta tråden
-    confirm_change_to_private_thread: "%{groupName} är en öppen grupp. Om du fortsätter kommer denna tråd att offentliggöras."
-    messages:
-      success: Tråden har flyttats till %{name}
   delete_comment_dialog:
     title: Ta bort kommentaren
     question: Detta kommer att ta bort den här kommentaren permanent. Om du fortsätter kan den inte återställas.
@@ -1873,9 +1831,9 @@ sv:
     participate: Delta
     vote: Rösta
     votes: Röster
-    update_outcome: Uppdatera resultatet
-    outcome: Resultat
-    outcomes: Resultat
+    update_outcome: Uppdatera slutsatsen
+    outcome: Slutsats
+    outcomes: Slutsatser
     statement: Påstående
     change_your_stance: Redigera svar
     load_more: Ladda mer
@@ -1891,7 +1849,7 @@ sv:
     share_count: Dela check
     start_poll: Börja ett beslut
     publish_poll: Dela omröstning
-    share_outcome: Dela resultatet
+    share_outcome: Dela slutsatset
     view_all: Visa alla
     save_changes: Spara
     change_vote: Ändra din röst
@@ -1901,7 +1859,7 @@ sv:
     too_long: För länge
     edit_warning: Redigering rekommenderas endast för mindre ändringar eller korrigering av stavfel. För betydande ändringar, stäng denna %{pollType} och starta en ny.
     no_voting: Endast för diskussion, röstning inaktiverad
-    post_outcome: Resultat efter
+    post_outcome: Publicera resultat
     view_all_votes: Visa alla röster
     you_voted: Du röstade
   poll_common_attachment_form:
@@ -1933,6 +1891,8 @@ sv:
     no_results_found: Inga resultat för "%{search}"
     welcome_to_your_new_group: Välkommen till din nya Loomio-grupp!
     lets_start_a_thread: Låt oss starta en tråd. Klicka på "Ny tråd" för att fortsätta.
+    lets_start_a_discussion: Nu startar vi en diskussion. Klicka på "Ny diskussion" för att fortsätta.
+    new_discussion: Ny diskussion
   members_panel:
     bot: Bot
     no_results: Inga medlemmar hittades
@@ -1976,6 +1936,13 @@ sv:
     closed: Stängd
     need_vote: Behöver rösta
     no_polls: Inga omröstningar hittades
+    standalone_disabled_title: Fristående omröstningar är inaktiverade
+    standalone_disabled_helptext: "<p>Den här gruppen kräver att omröstningar startas inom en diskussion.</p><p> Diskussioner hjälper människor att förstå sammanhanget, ställa frågor och dela perspektiv innan de röstar. Detta leder till bättre beslut.</p><p> Starta en diskussion först, lägg sedan till en omröstning när du är redo att samla röster.</p>"
+    start_discussion: Starta en diskussion
+    standalone_warning_title: Överväg att starta en diskussion först
+    standalone_warning_helptext: "<p>Omröstningar fungerar bäst när folk kan diskutera ämnet först.</p><p> Utan en diskussion kan väljarna inte ställa frågor, ta upp problem eller föreslå förbättringar. Detta leder ofta till lägre deltagande och mindre tydliga resultat.</p><p> Vi rekommenderar att ni startar en diskussion, utvecklar idéer tillsammans och sedan lägger till en omröstning när ni är redo.</p>"
+    start_poll_anyway: Starta omröstningen ändå
+    start_discussion_instead: Börja en diskussion istället
   group_files_panel:
     no_files: Inga filer funna
     filename: Filnamn
@@ -2022,7 +1989,7 @@ sv:
     location_placeholder: Var kommer detta möte att äga rum?
   poll_common_close_form:
     title: Stäng %{poll_type} nu?
-    helptext: Är du säker på att du vill stänga denna %{poll_type} tidigt och dela ett resultat?
+    helptext: Är du säker på att du vill stänga denna %{poll_type} tidigt och dela en slutsats?
     close_poll_type: Stäng %{poll_type}
     poll_type_closed: "%{poll_type} stängd"
   poll_common_reopen_form:
@@ -2073,9 +2040,9 @@ sv:
     reminded: Påminnelse skickad!
     reminder_sent: Påminnelse har skickats
   poll_common_set_outcome_panel:
-    enter_outcome: Ange resultat
+    enter_outcome: Ange slutsats
     poll_type: Denna %{poll_type} har stängts. Ta dig tid att överväga resultaten och dela sedan ett resultat så att folk vet vad som kommer att hända härnäst.
-    enter_an_outcome: Ange ett resultat
+    enter_an_outcome: Ange en slutsats
   poll_common_outcome_form:
     review_due_in_days: Se över beslutet efter hur många dagar?
     review_date: Gransknings datum
@@ -2084,8 +2051,8 @@ sv:
     outcome_statement_template: Mall för resultatförklaring
     new_title: Statens resultat
     update_title: Uppdatera resultatet
-    outcome_created: Resultat skapat
-    outcome_updated: Resultat uppdaterat
+    outcome_created: Slutsats skapad
+    outcome_updated: Slutsats uppdaterad
     statement_placeholder: Sammanfatta svaren och förklara vad som kommer att hända härnäst.
     you_will_be_notified: Du kommer att meddelas vid granskningsdatumet.
     submit: Dela resultatet
@@ -2201,10 +2168,10 @@ sv:
     sentence: "%{numerator} av %{denominator} personer har deltagit (%{percent}%)"
     target_progress: "%{percent} % av målet nått. (%{num} / %{target})"
     pct_of_eligible_voters_must_participate: "%{pct}% av de röstberättigade måste delta"
-    pct_participation: "%{num} av %{total} avgivna röster (%{pct}% deltagande)"
     vote_short_of_quorum: Ytterligare 1 röst behövs för att uppnå ett beslutsmässigt quorum på %{pct}%
     votes_short_of_quorum: "%{num} fler röster behövs för att uppnå kvorum på %{pct}%"
     quorum_reached: Kvorum på %{pct}% har uppnåtts
+    pct_participation: "%{num} av %{total} avgivna röster (%{pct}% deltagande)"
   poll_meeting_chart_panel:
     total: Totalt
   poll_remove_vote:
@@ -2389,8 +2356,6 @@ sv:
     name_placeholder: Ge denna integration ett namn så att du kan identifiera den
     event_kind_helptext: Vilka händelser vill du att webhook ska meddelas om?
     event_kinds:
-      new_discussion: En tråd startas
-      discussion_edited: En tråd redigeras
       poll_edited: En omröstning redigeras
       new_comment: En kommentar görs
       poll_created: En omröstning startas
@@ -2403,6 +2368,8 @@ sv:
       outcome_created: Ett resultat delas
       outcome_updated: Ett utfall uppdateras
       outcome_review_due: En resultatgranskning är på väg
+      new_discussion: En diskussion är igång
+      discussion_edited: En diskussion är redigerad
     permissions_explaination: Välj vilka åtgärder som kan utföras av denna integration
     permissions:
       show_discussion: visa diskussion
@@ -2453,6 +2420,8 @@ sv:
     month: Månad
     year: År
     country_disclaimer: Land baseras på användarens IP-adress och är inte särskilt exakt. Se endast detta som en grov guide.
+    total_discussions: Totalt antal diskussioner
+    discussions_with_polls: Diskussioner med opinionsundersökningar
   tips:
     youve_completed_all_the_steps: "\U0001F389 Du har slutfört alla steg!"
     getting_started_checklist: Checklista för att komma igång
@@ -2488,7 +2457,12 @@ sv:
         helptext: "<p>För att underlätta beslutsfattandet har förslagen en sista omröstningsdag. När sista omröstningen har nåtts avslutas omröstningen och du får ett meddelande om att du kan dela ett förslagsresultat.</p><p> Resultatet ger en möjlighet att avgöra om förslaget var framgångsrikt och vad som kommer att hända härnäst.</p><p> Om din förslagsfrist ännu inte har passerat, men du vill fortsätta ändå, kan du klicka på <b>Stäng tidigare</b> .</p><p> När tiden är mogen, <b>ange ett resultat</b> för ditt förslag.</p>"
         submit: Visa förslag
         cancel: Gör detta senare
+      start_a_discussion:
+        title: Starta en diskussion
+        helptext: "<p>Skapa en diskussion som folk ser efter att de accepterat sin inbjudan.</p><p> Avsikten är att uppmuntra folk att skriva sin första kommentar i Loomio.</p><p> För att göra detta enkelt har vi tillhandahållit en mall <b>för övningsdiskussion</b> som du kan använda.</p>"
+        submit: Se diskussionsmallar
     get_started_here: Kom igång här
+    try_loomio_with_your_group: Prova Loomio med din grupp
   poll_common_settings:
     who_can_vote: Vem kan rösta?
     specified_voters_only_true: Endast inbjudna personer
@@ -2643,3 +2617,49 @@ sv:
     invited_by: Inbjuden av
     invited_on: Inbjuden den
     no_receipts: Denna anonyma omröstning avslutades innan verifieringsfunktionen fanns, så verifiering är inte möjlig.
+  close_discussion_modal:
+    body: Stäng diskussioner för att ta bort dem från listan över öppna diskussioner och förhindra att andra kommenterar.
+  comment_reply_form:
+    aria_label: Lägg till ett svar
+  discussion_template:
+    browse_public_templates: Bläddra bland mallgalleriet
+    start_a_new_discussion: Starta en ny diskussion
+    discussion_template_saved: Diskussionsmallen sparad
+    these_are_public_templates: Dessa mallar kan du kopiera eller modifiera för att passa din grupp
+    these_are_templates: Det här är diskussionsmallarna i din grupp. Klicka på en mall för att starta en diskussion. Du kan också redigera, ta bort eller ändra ordningen på dessa om du vill.
+    default_title_label: Standardtitel
+    default_title_hint: Fyll i titelfältet med redigerbar text. Detta är valfritt – lämna tomt om du är osäker.
+    title_placeholder_label: Exempeltitel
+    title_placeholder_hint: Ett exempel att visa i bakgrunden av titelfältet
+    title_placeholder_placeholder: t.ex. Så här ser bakgrundstext ut
+    example_description_label: Exempelbeskrivning
+    example_description_placeholder: Tillhandahåll en mall som folk kan använda för att starta en tråd
+    hidden_templates: Dolda mallar
+    confirm_delete: Är du säker på att du vill ta bort den här diskussionsmallen?
+    add_poll_template: Lägg till omröstningsmall
+    add_poll_template_help: Välj alla omröstningsmallar som hjälper till att slutföra den här processen
+    recommended_poll_templates: Rekommenderade omröstningsmallar
+    share_in_template_gallery: Dela den här mallen i det offentliga mallgalleriet
+  context_panel:
+    thread_status:
+      pinned: Den här diskussionen har fästs. Den kommer att finnas kvar högst upp i gruppens diskussionslista för alla användare.
+      closed: Den här diskussionen har avslutats. Den kommer inte längre att visas på instrumentpanelen och kommer att listas under "stängd" på gruppsidan.
+  thread_group:
+    aria_label: Gruppnamn
+  discussion_context:
+    current_poll_type_banner: Nuvarande %{pollType}
+    seen_by_count: Sett av %{count}
+    count_notified: Meddelad %{count}
+    start_a_vote: Starta en omröstning
+  pin_discussion_modal:
+    helptext: Fästade diskussioner visas alltid i gruppens diskussionslista.
+  delete_discussion_form:
+    body: Är du säker på att du vill ta bort den här diskussionen?
+    discussion_deleted: Diskussionen raderad
+  move_discussion_form:
+    title: Flytta diskussionen till en annan grupp
+    body: Destinationsgrupp
+    confirm: Flytta diskussion
+    confirm_change_to_private: "%{groupName} är en öppen grupp. Om du fortsätter kommer diskussionen att vara offentlig."
+    messages:
+      success: Diskussionen flyttad till %{name}

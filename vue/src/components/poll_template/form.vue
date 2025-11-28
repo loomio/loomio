@@ -252,16 +252,16 @@ v-form.poll-template-form(ref="form" @submit.prevent="submit")
   )
 
   v-text-field.thread-template-form-fields__title(
-    :label="$t('thread_template.default_title_label')"
-    :hint="$t('thread_template.default_title_hint')"
+    :label="$t('discussion_template.default_title_label')"
+    :hint="$t('discussion_template.default_title_hint')"
     v-model='pollTemplate.title'
     maxlength='250')
   validation-errors(:subject='pollTemplate' field='title')
 
   v-text-field.poll-common-form-fields__title-placeholder(
-    :hint="$t('thread_template.title_placeholder_hint')"
-    :label="$t('thread_template.title_placeholder_label')"
-    :placeholder="$t('thread_template.title_placeholder_placeholder')"
+    :hint="$t('discussion_template.title_placeholder_hint')"
+    :label="$t('discussion_template.title_placeholder_label')"
+    :placeholder="$t('discussion_template.title_placeholder_placeholder')"
     v-model='pollTemplate.titlePlaceholder'
     maxlength='250'
     :rules="validate('titlePlaceholder')"

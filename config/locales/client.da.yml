@@ -55,8 +55,6 @@ da:
     to_use_loomio_with_your_org_start_trial: Når du er klar til at prøve Loomio med din organisation, skal du starte en gratis prøveperiode.
     templates: Skabeloner
     make_a_copy: Lav en kopi
-    this_thread_is_a_template: Denne tråd er en skabelon. Lav en kopi, hvis du vil bruge den.
-    this_is_a_poll_template: Dette er en afstemningsskabelon. Lav en kopi, hvis du vil begynde at stemme.
     try_loomio: Prøv Loomio
     start_a_demo_group: Start en demogruppe
     start_a_demo: Start en demo
@@ -382,13 +380,13 @@ da:
     unreleased_emails: Ikke-udgivne e-mails
     start_a_thread_by_email: Start en tråd via e-mail
     send_email_to_start_thread: Send en e-mail til denne adresse for at starte en tråd i din gruppe.
-    subject_body_attachments: E-mail-emnet bliver trådens titel, e-mailens brødtekst bliver beskrivelsen, og eventuelle vedhæftede filer vil blive vedhæftet tråden.
     copy_address: Kopiér adresse
     email_me_this_address: Email mig denne adresse
     email_address_copied_to_clipboard: E-mailadresse kopieret til udklipsholder
     forward_email_to_move_conversation: 'Tip: Videresend en e-mail-samtale til Loomio, når du skal træffe en beslutning eller føre en registrering.'
-  email_to_group_mailer:
-    your_email_address_to_start_threads_in_group: Din e-mailadresse til at starte tråde i %{group}
+    start_a_discussion_by_email: Start en diskussion via e-mail
+    send_email_to_start_discussion: Send en e-mail til denne adresse for at starte en diskussion i din gruppe.
+    subject_body_attachments: Emnet i e-mailen bliver diskussionens titel, brødteksten i e-mailen bliver beskrivelsen. Vedhæftede filer kopieres også over.
   volume_levels:
     loud: Høj
     normal: Normal
@@ -412,14 +410,12 @@ da:
       loud_explain: når der er aktivitet
       normal_explain: når nogen beder om din opmærksomhed
       quiet_explain: ingen meddelelser
-    aria_label: Rediger emailindstillinger
     loud_label: Al aktivitet
     normal_label: Normal
     quiet_label: Ingen emails
     mute_label: Slå fra
     saved: Notifikationsindstillinger opdateret
     discussion:
-      title: Trådmeddelelser
       loud_description: Du vil blive mailet til al aktivitet i denne tråd.
       normal_description: Du vil kun blive mailet til vigtig aktivitet i denne tråd.
       quiet_description: Du vil ikke blive mailet til nogen aktivitet i denne tråd.
@@ -431,6 +427,7 @@ da:
         loud: Du vil få emails ved enhver aktivitet i denne debat.
         normal: Du vil få email ved forslag i denne debat.
         quiet: Du vil ikke få emails ved aktivitet i denne debat.
+      title: Diskussionsnotifikationer
     membership:
       title: Notifikationer for %{title}
       loud_description: Du vil modtage en email hver gang der er aktivitet i denne gruppe.
@@ -462,7 +459,6 @@ da:
         normal: Du vil få emails ved publiceringer i alle nye grupper du bliver medlem af.
         quiet: Du vil ikke få emails ved nogen aktivitet i nogen af de nye fupper du bliver medlem af.
     change_your_email_settings: Skift dine e-mail-indstillinger
-    when_would_you_like_to_be_emailed_thread: Hvornår vil du gerne have en mail om denne tråd?
     when_would_you_like_to_be_emailed_group: Hvornår vil du gerne have besked om denne gruppe?
     changes_all_threads_in_group: Dette ændrer indstillingen for alle tråde i gruppen.
     what_do_the_options_mean: Hvad betyder mulighederne?
@@ -471,14 +467,16 @@ da:
     quiet_desc: Aldrig
     loud_explained: Du vil blive mailet hver gang der er en ny kommentar, nogen stemmer eller starter en afstemning eller tråd.
     when_would_you_like_to_be_emailed_poll_type: Hvornår vil du gerne have en e-mail om denne %{poll_type}?
-    normal_explained: Når nogen indtaster dit navn i feltet "Giv besked" i en tråd eller en afstemning, eller de {'@'}nævner gruppen.
     normal_excludes_mentioning_html: Der er en separat indstilling for, hvornår nogen {'@'}omtaler dig (f.eks. når de svarer dig i en kommentar). <a href="%{url}">Klik her for at redigere indstillinger for @omtaler</a>
     changes_all_threads_and_polls_in_group: Dette ændrer indstillingerne for alle tråde og afstemninger i gruppen.
     when_do_you_want_to_be_emailed: Hvornår vil du have tilsendt en e-mail?
     what_the_options_mean: Hvad betyder valgmulighederne
     quiet_explained: Du vil ikke modtage en e-mail, selv når nogen forsøger at give dig besked. Du kan gå glip af vigtige meddelelser eller beslutninger, medmindre du har for vane at tjekke Loomio regelmæssigt.
+    when_would_you_like_to_be_emailed_discussion: Hvornår vil du gerne have en e-mail om denne diskussion?
+    changes_all_discussions_and_polls_in_group: Dette ændrer indstillingerne for alle diskussioner og afstemninger i gruppen.
+    normal_explained: Når nogen indtaster dit navn i feltet "Giv besked" i en diskussion eller afstemning, eller de {'@'}nævner gruppen.
+    aria_label: Formular til ændring af e-mailindstillinger
   close_explanation_modal:
-    aria_label: Luk tråden
     close_thread: Luk tråden
     body: "<p>Luk gamle eller irrelevante tråde for at fjerne dem fra visning og indikere, at diskussionen er lukket.</p><p> Enhver kan stadig kommentere eller starte en afstemning i en lukket tråd, men den vises ikke i gruppens trådliste eller på dashboardet.</p>"
     image_alt: Alle lukker tråde
@@ -491,14 +489,11 @@ da:
     password_label: 'Adgangskode:'
     password_confirmation_label: 'Gentag adgangskode:'
   signed_out_modal:
-    aria_label: Logget ud
     title: Du er nu logget ud
     message: Du er blevet logget ud fra et andet vindue. Log venligst ind igen for at fortsætte.
     ok: Ok
-  comment_reply_form:
-    aria_label: Tilføj et svar
+    aria_label: Sessionen sluttede
   comment_form:
-    aria_label: Tilføj en kommentar
     attachments:
       add_attachment: Vedhæft fil
       remove_attachment: Slet vedhæftning
@@ -522,12 +517,10 @@ da:
     private_privacy_notice: Din kommentar til kun være synlig for medlemmer af %{groupName}.
     public_privacy_notice: Din kommentar til kun være synlig for all på internettet.
     sign_in: Log ind for at deltage i debatten
+    add_a_comment: Tilføj en kommentar
   thread_nav:
     participants: Deltagere
   sidebar:
-    new_thread_removed: Ny tråd fjernet
-    new_thread_removed_body: Den nye trådknap fjernes fra sidebjælken. For at starte en ny tråd skal du først navigere til din gruppe og derefter klikke på "Ny tråd". Beklager ændringen, men den er påkrævet, fordi du skal vælge en skabelon, når du starter en tråd.
-    threads: Debatter
     my_groups: Mine grupper
     other_groups: Andre grupper
     all_groups: Alle grupper
@@ -536,7 +529,6 @@ da:
     direct_threads: Direkte tråde
     unread_threads: Ulæste tråde (%{count})
     muted_threads: Uden notifikationer
-    start_group: Ny organisation
     start_subgroup: Ny undergruppe
     explore: Offentlige grupper
     explore_groups: Udforsk grupper
@@ -554,6 +546,10 @@ da:
       groups_list: Grupper
       user_list: Bruger handlinger
     user_settings: Brugerindstillinger
+    invite_only_discussions: Diskussioner kun med invitation
+    unread_discussions_count: Ulæste diskussioner (%{count})
+    new_group: Ny gruppe
+    new_subgroup: Ny undergruppe
   strand_nav:
     newest: Nyeste
     oldest: Ældste
@@ -581,7 +577,6 @@ da:
     all_subgroups: Alle undergrupper
     parent_only: Kun forældre
   navbar:
-    search_all_threads: Søg i alle tråde
     search_threads: Søg i tråde i %{name}
     search_polls: Søg afstemninger i %{name}
     search_members: Søg efter medlemmer i %{name}
@@ -610,6 +605,7 @@ da:
     search_members_short: Søg medlemmer
     search_files_short: Søg filer
     search_subgroups_short: Søg undergrupper
+    search_discussions_in_group: Søg i diskussioner i %{name}
   user_dropdown:
     pin_sidebar: Fastgør sidebjælken
     unpin_sidebar: Frigør sidebjælken
@@ -625,7 +621,7 @@ da:
     contact_support: Kontakt support
     sign_out: Log ud
     beta_collab: "\U0001F9EA Beta-funktioner aktiveret!"
-    outcomes: Resultater
+    outcomes: Konklusioner
     theme: Tema
     light: Lys
     dark: Mørk
@@ -633,7 +629,6 @@ da:
     dark_blue: Mørkeblå
   membership_card:
     group_members: Gruppemedlemmer
-    discussion_members: Trådmedlemmer
     poll_members: "%{pollType} medlemmer"
     voters: Vælgere
     invite_to_group: Inviter til gruppe
@@ -641,6 +636,7 @@ da:
     invite_to_poll: Inviter til at stemme
     invite_to_wip_poll: Inviter til at give feedback
     invitations: Invitationer
+    discussion_members: Diskussionsmedlemmer
   membership_dropdown:
     set_name_and_username: Indstil navn og brugernavn
     set_title: Indstil titel
@@ -649,29 +645,26 @@ da:
     make_coordinator: Gør admin
     demote_coordinator: Nedryk admin
     remove_from:
-      discussion: Fjern fra tråden
       group: Fjern fra gruppen
       poll: Fjern fra %{pollType}
+      discussion: Fjern fra diskussion
     cancel_invitation: Fortryd invitation
     view_profile: Se profil
     revoke_admin: Tilbagekald admin
     make_delegate: Gør delegeret
     revoke_delegate: Tilbagekald delegeret
   notification_models:
-    discussion: 'tråd:'
     comment: kommentere ind
     poll: 'afstemning:'
-    outcome: 'resultat:'
+    outcome: 'konklusion:'
     stance: 'stemme:'
+    discussion: 'diskussion:'
   notifications:
     header: Notifikationer
     no_notifications: Du har ikke nogen notifikationer
     with_title:
       unknown_sender: Gennemgå venligst e-mail fra ukendt afsender
       comment_replied_to: "%{actor} svarede dig i: %{title}"
-      discussion_announced: "%{actor} inviterede dig til tråden: %{title}"
-      discussion_edited: "%{actor} redigerede trådkonteksten: %{title}"
-      discussion_closed: "%{actor} lukkede tråden: %{title}"
       invitation_accepted: "%{actor} accepterede din invitation til at deltage i %{title}"
       membership_created: "%{actor} inviterede dig til at deltage i %{title} på %{site_name}"
       membership_resent: "%{actor} inviterede dig til at deltage i %{title} på %{site_name}"
@@ -679,11 +672,10 @@ da:
       membership_request_approved: "%{actor} godkendte din anmodning om at blive medlem af %{title}"
       new_comment: "%{actor} kommenterede i: %{title}"
       new_coordinator: "%{actor} har gjort dig til administrator af %{title}"
-      new_discussion: "%{actor} startede en tråd: %{title}"
-      outcome_announced: "%{actor} delte et %{poll_type}-resultat: %{title}"
-      outcome_created: "%{actor} delte et %{poll_type}-resultat: %{title}"
-      outcome_updated: "%{actor} opdaterede %{poll_type}-resultatet: %{title}"
-      outcome_review_due: 'Det er tid til at gennemgå resultatet af: %{title}'
+      outcome_announced: "%{actor} delte en %{poll_type}-konklusion: %{title}"
+      outcome_created: "%{actor} delte en %{poll_type}-konklusion: %{title}"
+      outcome_updated: "%{actor} opdaterede %{poll_type}-konklusionen: %{title}"
+      outcome_review_due: 'Det er tid til at gennemgå konklusionen af: %{title}'
       poll_closed_by_user: "%{actor} lukkede %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} lukker om 24 timer: %{title}"
       poll_closing_soon_author: 'Din %{poll_type} lukker om 24 timer: %{title}'
@@ -705,22 +697,20 @@ da:
       group_mentioned: "%{actor} nævnte gruppen i: %{title}"
       new_delegate: "%{actor} gjorde dig til delegeret med stemmeret i %{title}"
       poll_announced: "%{actor} inviterede dig til at stemme: %{title}"
+      discussion_announced: "%{actor} inviterede dig til diskussionen: %{title}"
+      discussion_edited: "%{actor} redigerede diskussionskonteksten: %{title}"
+      discussion_closed: "%{actor} lukkede diskussionen: %{title}"
+      new_discussion: "%{actor} startede en diskussion: %{title}"
     without_title:
       unknown_sender: Gennemgå venligst e-mail fra ukendt afsender
-      discussion_announced: "%{actor} inviterede dig til en tråd"
-      discussion_edited: "%{actor} redigerede trådkonteksten"
-      discussion_closed: "%{actor} lukkede tråden"
       group_announced: "%{actor} inviterede dig til en gruppe"
       comment_replied_to: "%{actor} svarede dig"
-      new_discussion: "%{actor} startede en tråd"
-      new_comment: "%{actor} kommenterede i en tråd"
       membership_created: "%{actor} inviterede dig til at deltage i en gruppe"
       membership_resent: "%{actor} inviterede dig til at deltage i en gruppe"
       membership_requested: "%{actor} har anmodet om at deltage i din gruppe"
       membership_request_approved: "%{actor} godkendte din anmodning om at blive medlem af %{title}"
       outcome_announced: "%{actor} delte et %{poll_type}-resultat"
       outcome_created: "%{actor} delte et %{poll_type}-resultat"
-      outcome_updated: "%{actor} opdaterede resultatet"
       outcome_review_due: Det er tid til at gennemgå %{poll_type}-resultatet
       poll_announced_wip: "%{actor} vil have din feedback på en %{poll_type}"
       poll_closed_by_user: "%{actor} lukkede %{poll_type}"
@@ -742,16 +732,20 @@ da:
       user_reminded: "%{actor} minder dig om at stemme"
       group_mentioned: "%{actor} nævnte gruppen"
       poll_announced: "%{actor} inviterede dig til at stemme på en %{poll_type}"
+      discussion_announced: "%{actor} inviterede dig til en diskussion"
+      discussion_edited: "%{actor} redigerede diskussionskonteksten"
+      discussion_closed: "%{actor} lukkede diskussionen"
+      new_discussion: "%{actor} startede en diskussion"
+      new_comment: "%{actor} kommenterede i en diskussion"
+      outcome_updated: "%{actor} opdaterede resultatet"
     hints:
       poll_closing_soon: Nu er det et godt tidspunkt at stemme, ændre mening eller opfordre andre til at deltage.
       poll_closing_soon_author: Du vil måske gerne minde folk om at stemme eller forlænge fristen.
-      outcome_review_due: Overvej at starte en feedback-afstemning eller en ny tråd, der inviterer til refleksioner over, hvordan beslutningen er blevet implementeret.
+      outcome_review_due: Overvej at starte en feedback-afstemning eller en ny diskussion, der inviterer til refleksioner over, hvordan beslutningen er blevet implementeret.
     email_subject:
       unknown_sender: Gennemgå e-mail fra ukendt afsender
       comment_replied_to: "%{actor} svarede dig i: %{title}"
       discussion_announced: "%{title}"
-      discussion_edited: "%{actor} redigerede konteksten: %{title}"
-      discussion_closed: "%{actor} lukkede tråden: %{title}"
       invitation_accepted: "%{actor} har accepteret din invitation til at blive medlem af %{title}"
       membership_created: "%{actor} inviterede dig til at deltage i %{title} på %{site_name}"
       membership_resent: "%{actor} inviterede dig til at deltage i %{title} på %{site_name}"
@@ -761,8 +755,8 @@ da:
       new_coordinator: "%{actor} har gjort dig til administrator for %{title}"
       new_delegate: "%{actor} udnævnte dig til delegeret med stemmeret i %{title}"
       new_discussion: "%{title}"
-      outcome_announced: "%{poll_type} resultat: %{title}"
-      outcome_created: "%{poll_type} resultat: %{title}"
+      outcome_announced: "%{poll_type} konklusion: %{title}"
+      outcome_created: "%{poll_type} konklusion: %{title}"
       outcome_updated: "%{poll_type} resultat opdateret: %{title}"
       outcome_review_due: 'Det er tid til at gennemgå resultatet af: %{title}'
       poll_closed_by_user: "%{actor} lukkede %{poll_type}: %{title}"
@@ -771,7 +765,7 @@ da:
       poll_created: 'Stemme: %{title}'
       poll_edited: "%{actor} opdaterede %{poll_type}: %{title}"
       poll_expired: "%{poll_type} er lukket: %{title}"
-      poll_expired_author: 'Udgiv et resultat: %{title}'
+      poll_expired_author: 'Udgiv en konklusion: %{title}'
       poll_option_added: "%{actor} tilføjede muligheder til %{title}"
       poll_reopened: 'Afstemning forlænget: %{title}'
       poll_reminder: "%{actor} minder dig om at stemme på %{title}"
@@ -785,34 +779,15 @@ da:
       group_mentioned: "%{actor} nævnte gruppen i: %{title}"
       user_reminded: "%{actor} minder dig om at stemme i: %{title}"
       poll_announced: 'Stemme: %{title}'
+      discussion_edited: "%{actor} redigerede diskussionskonteksten: %{title}"
+      discussion_closed: "%{actor} lukkede diskussionen: %{title}"
   discussion_fork_actions:
-    helptext: Vælg emner, du vil flytte til en anden tråd
     move: Flyt
-    search_placeholder: Find tråd efter titel
     moved: Bevægende kommentarer, det kan tage et øjeblik
-    move_to_existing_thread: Flyt til eksisterende tråd
-    start_new_thread: Eller start en ny tråd
-  thread_template:
-    browse_public_templates: Gennemse skabelongalleriet
-    thread_template_settings: Indstillinger for trådskabelon
-    start_a_new_thread: Start en ny tråd
-    thread_template_saved: Trådskabelon er gemt
-    these_are_public_templates: Disse skabeloner er tilgængelige for dig at kopiere eller ændre, så de passer til din gruppe
-    these_are_templates: Dette er trådskabelonerne i din gruppe. Skabeloner guider dig gennem fælles beslutningsprocesser.
-    default_title_label: Standard titel
-    default_title_hint: Forudfyld titelfeltet med redigerbar tekst. Dette er valgfrit - lad det være tomt, hvis du er usikker.
-    title_placeholder_label: Eksempel titel
-    title_placeholder_hint: Et eksempel til visning i baggrunden af titelfeltet
-    title_placeholder_placeholder: fx sådan ser baggrundstekst ud
-    example_description_label: Eksempelbeskrivelse
-    example_description_placeholder: Angiv en skabelon, som folk kan bruge til at starte en tråd med
-    hidden_templates: Skjulte skabeloner
-    confirm_delete: Er du sikker på, at du vil slette denne trådskabelon permanent? Ingen tråde vil blive slettet som følge af dette.
-    add_proposal_or_poll_template: Tilføj forslag eller afstemningsskabelon
-    recommended_proposal_or_poll_templates: Anbefalede forslag eller afstemningsskabeloner
-    decision_templates: Beslutningsskabeloner
-    decision_templates_help: Vælg forslag eller afstemningsskabeloner, der hjælper med at fuldføre denne proces.
-    share_in_template_gallery: Del denne skabelon i det offentlige skabelongalleri
+    helptext: Vælg de elementer, du vil flytte til en anden diskussion
+    search_placeholder: Find diskussion efter titel
+    move_to_existing_thread: Flyt til eksisterende diskussion
+    start_new_thread: Eller start en ny diskussion
   discussion_form:
     thread_templates: Tråd skabeloner
     new_thread_template: Ny trådskabelon
@@ -826,10 +801,8 @@ da:
     invite_only_thread: Tråd kun for invitationer
     none_direct_thread: Direkte tråd (ingen gruppe)
     none_invite_only_thread: Tråd kun for invitationer (ingen gruppe)
-    change_log_placeholder: Beskriv eventuelt dine ændringer. Denne besked vil blive tilføjet til tråden.
     change_log_label: Hvad er ændret?
     invite: Inviter
-    aria_label: Debat
     start_thread: Start tråden
     messages:
       created: Debat oprettet
@@ -851,13 +824,20 @@ da:
     fork_notice: Der oprettes en ny tråd med %{count} elementer fra %{title}
     notify_group: Underret gruppe
     privacy_private: Kun medlemmer af gruppen kan se denne tråd
+    none_invite_only_discussion: Ingen (diskussion kun med inviterede)
+    new_discussion_template: Ny diskussionsskabelon
+    edit_discussion_template: Rediger diskussionsskabelon
+    change_log_placeholder: Beskriv eventuelt dine ændringer. Denne besked vil blive tilføjet til diskussionen.
+    start_discussion: Start diskussion
+    discussion_updated: Diskussionen er opdateret
+    discussion_created: Diskussion oprettet
+    discussion_started: Diskussionen er startet
   announcement:
     send_discussion: Send tråd
     send_group: Inviter folk til %{name}
     send_poll: Send %{type}
-    send_outcome: Send resultat
+    send_outcome: Send konklusion
     cannot_reveal_when_anonymous: Beklager, vi kan ikke afsløre, hvem der har eller ikke har stemt i en anonym afstemning.
-    discussion_notification_history: Trådmeddelelseshistorik
     group_notification_history: Gruppeinvitationshistorik
     poll_notification_history: Afstemningsmeddelelseshistorik
     outcome_notification_history: Resultatmeddelelseshistorik
@@ -869,7 +849,6 @@ da:
     preview: Forhåndsvisning af e-mail
     no_notifications_sent: Der er ikke sendt nogen meddelelser
     history_error: Noget gik galt! Historien kunne ikke indlæses.
-    inviting_guests_to_thread: Gæster tilhører ikke din gruppe og har kun adgang til denne tråd
     select_groups: Vælg grupper
     search_by_name_or_email: Søg efter navn, eller indtast e-mails for at invitere
     search_by_name: Søg efter personer ved navn
@@ -881,13 +860,13 @@ da:
     new_discussion: "%{name} inviterede %{length} personer til tråden:"
     discussion_announced: "%{name} inviterede %{length} personer til tråden:"
     poll_created: "%{name} inviterede %{length} personer til at stemme:"
-    outcome_created: "%{name} delte et resultat med %{length} personer:"
-    outcome_announced: "%{name} delte et resultat med %{length} personer:"
+    outcome_created: "%{name} delte en konklusion med %{length} personer:"
+    outcome_announced: "%{name} delte en konklusion med %{length} personer:"
     announcement_created: "%{name} inviterede %{length} personer til tråden:"
     discussion_edited: "%{name} redigerede tråden og underrettede %{length} personer:"
     poll_edited: "%{name} redigerede en afstemning og gav %{length} personer besked:"
-    outcome_edited: "%{name} redigerede et resultat og underrettede %{length} personer:"
-    outcome_updated: "%{name} redigerede et resultat og underrettede %{length} personer:"
+    outcome_edited: "%{name} redigerede en konklusion og underrettede %{length} personer:"
+    outcome_updated: "%{name} redigerede en konklusion og underrettede %{length} personer:"
     poll_closing_soon: "%{name}s påmindelse om lukning af afstemningen underrettede %{length} personer:"
     poll_reminder: "%{name} mindede %{length} personer om at stemme:"
     audiences:
@@ -936,7 +915,7 @@ da:
         title: Giv besked om redigeringer
         helptext: Hvem vil du gerne give besked om denne opdatering?
       outcome_announced:
-        title: Del resultat
+        title: Del konklusion
         helptext: Opsummer resultaterne af processen, herunder eventuelle fundne forståelser eller problemer, der er bragt frem i lyset.
       anyone_can_participate: Alle kan deltage
       placeholder: Du kan indtaste navne eller e-mailadresser
@@ -951,8 +930,6 @@ da:
       added_singular: 1 person vil blive tilføjet.
       added_none: Ingen vil blive tilføjet.
       group_title: "%{name} (%{count} personer)"
-      visible_to_group: Alle i %{group} vil kunne se denne tråd.
-      visible_to_guests: Kun inviterede personer kan se denne tråd.
       click_group_to_see_individuals: Klik på gruppe for at se personer
       poll_announced:
         title: Invitation til at stemme
@@ -968,6 +945,8 @@ da:
       has_not_read_thread: Har ikke set tråden
       has_not_joined_yet: Har ikke været med endnu
       has_not_joined_yet_hint: Denne bruger har ikke accepteret deres invitation til at blive medlem af Loomio og vil ikke modtage yderligere meddelelser, før de gør det
+      discussion_admin: Diskussionsadministrator
+      has_not_read_discussion: Har ikke set diskussionen
     group_form:
       search_placeholder: Søg efter personer...
       modal_title: Vælg gruppemedlemmer
@@ -975,6 +954,8 @@ da:
       success: "%{count} meddelelser sendt"
     group_mentioned: "%{name} nævnte gruppen med %{length} personer:"
     poll_announced: "%{name} inviterede %{length} personer til at stemme:"
+    discussion_notification_history: Historik over diskussionsnotifikationer
+    inviting_guests_to_discussion: Gæster tilhører ikke din gruppe og har kun adgang til denne diskussion
   action_dock:
     actions_menu: Handlingsmenu
     more_actions: flere handlinger
@@ -1002,10 +983,10 @@ da:
     reply_to_comment: Svar
     fork_comment: Gaffel tråd
     translate_comment: Oversæt kommentar
-    edit_outcome: Rediger resultatet
-    announce_outcome: Giv folk besked om dette resultat
-    announce_outcome_active: "(Ingen er blevet underrettet om dette resultat endnu)"
-    translate_outcome: Oversæt resultat
+    edit_outcome: Rediger konklusionet
+    announce_outcome: Giv folk besked om denne konklusion
+    announce_outcome_active: "(Ingen er blevet underrettet om denne konklusion endnu)"
+    translate_outcome: Oversæt konklusion
     show_history: Vis redigeringshistorik
     edited: Redigeret
     show_edits: Vis redigeringer
@@ -1029,6 +1010,11 @@ da:
     add_poll_to_thread: Tilføj til tråd
     count_members: "%{count} medlemmer"
     count_voters: "%{count} vælgere"
+    pin_discussion: Fastgør diskussion
+    unpin_discussion: Fjern fastgørelse af diskussion
+    close_discussion: Luk diskussion
+    reopen_discussion: Genåbn diskussionen
+    delete_discussion: Slet diskussion
   formatting:
     formatting_tools: Tekstformateringsværktøjer
     colors: Farver
@@ -1098,7 +1084,6 @@ da:
     messages:
       joined_group: Du er nu medlem af %{group}
   membership_request_form:
-    aria_label: Anmod om at blive medlem
     heading: Anmod om at blive medlem
     name_label: Nan
     email_label: Email
@@ -1107,8 +1092,8 @@ da:
     introduction_over_limit: Din introduktion er for lang
     messages:
       membership_requested: Du har anmodet om at blive medlem af %{group}
+    aria_label: Medlemskabsanmodningsformular
   revision_history_modal:
-    aria_label: Versionshistorik
     discussion_header: Diskussionsredigeringer
     comment_header: Kommentarredigeringer
     poll_header: Afstemningsredigeringer
@@ -1126,6 +1111,7 @@ da:
     closing_at_changed: lukketid indstillet til %{time}
     private_changed: privatliv indstillet til %{private}
     group_id_changed: flyttet til %{name}
+    aria_label: Revisionshistorik
   reactions_input:
     add_your_reaction: Tilføj din reaktion
   reactions_display:
@@ -1134,10 +1120,6 @@ da:
     you_and_name: Dig og %{name}
     you_and_name_and_count_more: Dig, %{name} og %{count} mere
     name_and_count_more: "%{name} og %{count} mere"
-  context_panel:
-    thread_status:
-      pinned: Denne tråd er blevet fastgjort. Det forbliver øverst på gruppens liste over tråde for alle brugere.
-      closed: Denne tråd er blevet lukket. Det vil ikke længere vises på dashboardet og vil blive vist under 'lukket' på gruppesiden
   delete_group_modal:
     title: Slet gruppe
     subgroup_title: Slet undergruppe
@@ -1203,7 +1185,7 @@ da:
       loud_aria_description: Din notifikations volume er sat til høj. Du vil modtage email ved enhver aktivitet i denne gruppe.
       loud_message: Du vil modtage email ved enhver aktivitet i "%{name}."
       normal: 'Email kun ved vigtige hændelser: ved nye debatter, forslag og resultater osv.'
-      normal_aria_description: Din email notifikations volume for denne gruppe er sat til normal. Du vil kun modtage email ved vigtige hændelser, så som ved oprettelse af en ny debat , opretter et forslag eller sætter et resultat
+      normal_aria_description: Din email notifikations volume for denne gruppe er sat til normal. Du vil kun modtage email ved vigtige hændelser, så som ved oprettelse af en ny debat , opretter et forslag eller sætter en konklusion
       normal_message: Du vil kun modtage email ved vigtige hændelser i "%{name}".
       quiet: Send ikke emails fra denne gruppe. Aktivitet vil blive vist på dashboardet.
       quiet_aria_description: Din notifikations volume er sat til lav. Du vil ikke modtage email om aktivitet der sker i denne gruppe. Gruppens aktivitet vil blive vist på dit Dashboard.
@@ -1215,10 +1197,14 @@ da:
       private: 'Privatinstillinger: Denne gruppe er kun synlig for medlemmer'
       parent_members: 'Privatinstillinger: Denne gruppe er synlig for medlemmer af %{parentGroupName} og medlemmer af %{groupName}'
       public: 'Privatinstillinger: Denne gruppe er synlig for alle på internettet'
-      aria_label: 'Privatinstillinger: %{privacy}'
+      aria_label: 'Gruppebeskyttelse: %{privacy}'
     participation_report: Deltagelsesrapport
     my_subgroups: Mine undergrupper
     more_subgroups: Flere undergrupper
+    discussions: Diskussioner
+    no_discussions_here: Ingen diskussioner at se her!
+    private_discussions: Du skal være medlem for at se private tråde i denne gruppe
+    view_closed_discussions: Se lukkede diskussioner
   export_data_modal:
     title: Hvordan vil du bruge dine data?
     as_csv: Åbn det i et regneark
@@ -1230,22 +1216,21 @@ da:
     messages:
       description_updated: Beskrivelse gemt
   leave_group_form:
-    aria_label: Forlad gruppe
     title: Forlad gruppe
     question: Er du sikker på at du vil forlade denne gruppe?
     submit: Ja, forlad denne gruppe
+    aria_label: Forlad gruppen
   archive_group_form:
-    aria_label: Deaktiver gruppe
     title: Deaktiver gruppe
     question: Er du sikker på at du vil deaktivere denne gruppe?
     submit: Ja, deaktiver denne gruppe
+    aria_label: Deaktiver gruppe
   group_form:
     thread_defaults_help: Standardindstillinger for nye tråde
     click_to_change_image: Klik for at ændre forsidebillede (4x1) eller logo (1x1)
     change_cover_image: skift forsidebillede
     change_logo: skifte logo
     permissions_explaination: 'Der er to niveauer af medlemskab, en person kan have til en gruppe: admin og medlem. Administratorer kan redigere gruppeindstillinger, gøre andre til administratorer og udføre alle de handlinger, der er angivet nedenfor.'
-    aria_label: Gruppe formular
     parent_group: Forældregruppe
     new_organisation: Ny organisation
     new_group: Ny gruppe
@@ -1339,6 +1324,9 @@ da:
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Opgrader venligst dit abonnement</a> for at oprette en undergruppe'
     share_this_url_with_people_who_want_to_join: Del denne URL med personer, der ønsker at deltage
     new_description_html: "<h3>Hvilke udfordringer står din organisation over for i forbindelse med beslutningstagning?</h3><p></p><h3> Hvordan vil du gerne bruge Loomio i din organisation?</h3><p></p>"
+    allow_polls_without_discussions: Tillad afstemninger uden diskussion
+    allow_polls_without_discussions_help: Forhindre folk i at starte afstemninger uden først at starte en diskussion.
+    aria_label: Gruppeformular
   group_export_modal:
     title: Eksporter gruppedata
     body: <p>Du kan til enhver tid downloade en kopi af din gruppes data. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Find ud af mere.</a></p><p> Det tager et par minutter at gennemføre, afhængigt af størrelsen på din gruppe. Når den er klar, modtager du en e-mail med et link til at downloade filen.</p>
@@ -1363,7 +1351,6 @@ da:
     group_url: Gruppe-URL
     reusable_invitation_link: Genanvendeligt invitationslink
     error: Fejl under forsøg på at kopiere til udklipsholder
-    aria_label: Invitation form
     invite_people: Inviter folk
     invite_guests: Inviter gæster
     notify_people: Giv folk besked
@@ -1400,6 +1387,7 @@ da:
     shareable_link_to_join_group: Delbart link til at blive medlem af gruppen
     reset_the_link: Nulstil linket
     email_addresses_placeholder: f.eks. helperbot{'@'}loomio.org, friendlybot{'@'}loomio.org
+    aria_label: Invitationsformular
   memberships_page:
     members: Medlemmer
     name_label: Navn
@@ -1496,7 +1484,6 @@ da:
     insert_link: Indsæt link
     insert_embedded_url: Indlejr video
   change_picture_form:
-    aria_label: Formular til profilbillede
     title: Indstil profilbillede
     helptext: Du kan oploade dit eget profil billede, eller hvis du har en <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> konto, så kan den bruges.
     use_initials: Benyt initialer
@@ -1504,6 +1491,7 @@ da:
     use_uploaded: Upload nyt billede
     existing_upload: Eksisterende upload
     use_provider: Brug %{provider} billede
+    aria_label: Profilfotoformular
   change_password_form:
     set_password_title: Indstil din adgangskode
     set_password_helptext: Indtast venligst en adgangskode - minimum 8 tegn
@@ -1560,7 +1548,6 @@ da:
     replies_count: "%{count} svar"
     unread_count: "%{count} ulæst"
   dashboard_page:
-    aria_label: Dashboard
     polls_to_vote_on: Afstemninger at stemme på
     no_polls_to_vote_on: Der er ingen meningsmålinger, du behøver at stemme på
     recent_polls: Seneste meningsmålinger
@@ -1573,7 +1560,6 @@ da:
       show_all: Du har ikke nogen seneste debatter.
       show_proposals: Der er pt. ikke nogen aktive forslag.
       show_muted: Du har ikke nogen debatter uden notifikationer.
-    view_recent: Vis alle seneste debatter?
     load_more: Hent flere debatter
     mark_as_read: Marker som læst
     dismiss: Dismiss
@@ -1588,7 +1574,6 @@ da:
       filter_threads: Filtrer debatter
       filter_threads_aria_label: Filtrer debatter
       dropdown_heading: Filtrer dashboard
-      all: Seneste debatter
       all_aria_label: Viser pt. seneste debatter
       all_description: Vis seneste debatter
       proposals: Forslag
@@ -1597,6 +1582,7 @@ da:
       muted: Dæmpede tråde
       muted_aria_label: Viser pt. debatter uden notifikationer
       muted_description: Vis kun debatter uden notifikationer
+      all: Seneste diskussioner
     thread_preview:
       you_voted: Du stemte %{position}
       undecided: De har ikke stemt
@@ -1610,18 +1596,25 @@ da:
       thisweek: Denne uge
       thismonth: Denne måned
       older: Ældre end en måned
+    dashboard: Dashboard
+    recent_discussions: Seneste diskussioner
+    view_recent: Se alle de seneste diskussioner?
+    discussion_marked_as_read: Diskussion markeret som læst
+    discussion_marked_as_unread: Diskussion markeret som ulæst
   threads_page:
     no_direct_threads: Du har ingen direkte tråde
-    no_invite_only_threads: Du har ingen invitationstråde
+    no_invite_only_threads: Du har ingen tråde kun for inviterede
   inbox_page:
     no_threads: Woohoo! Du har læst alle dine debatindlæg i din indbox.
     unread_threads: Ulæste debatter
     view_more: Vis mere
     no_groups:
-      explanation: YDu har ikke nogen ulæste debatter da du ikke er medlem af nogle grupper.
       start: Opret
       or: eller
       join_group: <a href="/explore">bliv medlem</a> af en gruppe for at se debatter.
+      explanation: Du har ingen ulæste diskussioner, fordi du ikke er medlem af nogen grupper.
+    no_discussions: Woohoo! Du har læst alle diskussionerne i din indbakke.
+    unread_discussions: Ulæste diskussioner
   discussion:
     direct_thread: Direkte tråd
     invite_only: Kun invitation
@@ -1635,20 +1628,18 @@ da:
     pin:
       pinned: Tråd fastgjort
       unpinned: Tråden er frigjort
-    volume:
-      mute_message: Tråden er slået fra
-      unmute_message: Notifikationer slået til.
     closed:
       reopened: Tråd åbnet igen
       closed: Tråd lukket
+    volume:
+      mute_message: Diskussionen er slået fra
+      unmute_message: Diskussionen er slået til
   discussion_last_seen_by:
     title: Set af
     no_one: Ingen har set dette endnu
     disabled_anonymous_polls: Seerhistorik er deaktiveret, fordi tråden indeholder anonyme afstemninger
   activity_card:
     count_responses: "%{count} svar"
-    event_pinned: Fastgjort til tidslinjen
-    event_unpinned: Frigjort fra tidslinjen
     beginning: Starten
     end: Ende
     unread: Ulæst (%{count})
@@ -1657,44 +1648,20 @@ da:
     chronological: Kronologisk
     nested: Indlejret
     attachment_display:
-      aria_label: 'Fil vedhæftet:'
       image_alt: Vedhæftet billede
+      aria_label: 'Vedhæftet fil:'
     n_previous: Indlæs %{count} tidligere svar
     n_more: Indlæs %{count} svar
     add_comment: Tilføj kommentar
     add_poll: Tilføj afstemning
-    add_outcome: Tilføj resultat
+    add_outcome: Tilføj konklusion
     comment: Kommenter
     facilitate: Facilitere
     start_decision: Start beslutning
     start_vote: Start afstemning
-  thread_group:
-    aria_label: Gruppenavn
-  thread_context:
-    current_poll_type_banner: Nuværende %{pollType}
-    item_maybe_deleted: Kan ikke finde den ønskede placering i tråden. Det kan være blevet slettet.
-    aria_label: Debat beskrivelse
-    thread_options: Debatindstillinger
-    email_settings: Notifikationsindstillinger
-    edit: Rediger
-    edit_thread: Rediger
-    close_thread: Luk
-    reopen_thread: Åbn igen
-    pin_thread: Pin
-    unpin_thread: Frigør
-    mute_thread: Slå notifikationer fra
-    move_thread: Flyt
-    print_thread: Print
-    delete_thread: Slet
-    add_comment: Kommenter
-    seen_by_count: Set af %{count}
-    count_notified: Meddelt %{count}
-    forked_from: Forked fra
-  pin_thread_modal:
-    title: Pintråd
-    helptext: Fastgjorte tråde vises altid øverst på deres gruppes liste over tråde. De kan bruges til at informere medlemmer om vigtige meddelelser eller til at promovere almindeligt materiale som en adfærdskodeks eller retningslinjer for fællesskabet.
-    helptext_two: Du kan til enhver tid fjerne stifter ved at vælge 'Unpin' fra rullemenuen med tråde
-    pin_thread: Pintråd
+    event_pinned: Tilføjet til diskussionens tidslinje
+    event_unpinned: Fjernet fra diskussionens tidslinje
+    start_a_vote: Start en afstemning
   thread_arrangement_form:
     edit: Rediger layout
     title: Tråd layout
@@ -1713,20 +1680,11 @@ da:
     nested_twice_description: Indrykningssvar højst to gange.
     changing_nesting_is_slow: Ændringer til indlejring kan tage et par minutter at behandle.
   delete_thread_form:
-    aria_label: Slet debat
     title: Slet debat
     body: Er du sikker på at du vil slette denne debat?
     confirm: Slet debat
     messages:
       success: Debat slettet
-  move_thread_form:
-    aria_label: Flyt debat
-    title: Flyt debat
-    body: Destinationsgruppe
-    confirm: Flyt debat
-    confirm_change_to_private_thread: "%{groupName} er ern offentlig gruppe. Hvis du fortsætter, så vil denne debat bliver gjort offentlig."
-    messages:
-      success: Debatten er flyttet til %{name}
   delete_comment_dialog:
     title: Slet kommentar
     question: Dette sletter denne kommentar permanent. Hvis du fortsætter, kan den ikke gendannes.
@@ -1873,9 +1831,9 @@ da:
     participate: Deltage
     vote: Stemme
     votes: Stemmer
-    update_outcome: Rediger resultat
-    outcome: Resultat
-    outcomes: Resultater
+    update_outcome: Rediger konklusion
+    outcome: Konklusion
+    outcomes: Konklusioner
     statement: Statement
     change_your_stance: Rediger svar
     load_more: Hent mere
@@ -1891,7 +1849,7 @@ da:
     share_count: Del checkmåling
     start_poll: Opret en beslutning
     publish_poll: Den meningsmåling
-    share_outcome: Del resultat
+    share_outcome: Del konklusion
     view_all: Se alt
     save_changes: Gem
     change_vote: Skift din stemme
@@ -1901,7 +1859,7 @@ da:
     too_long: For langt
     edit_warning: Redigering anbefales kun til mindre ændringer eller rettelse af stavefejl. For væsentlige ændringer skal du lukke denne %{pollType} og starte en ny.
     no_voting: Kun til diskussion, afstemning deaktiveret
-    post_outcome: Resultat efter
+    post_outcome: Offentliggør resultat
     view_all_votes: Se alle stemmer
     you_voted: Du stemte
   poll_common_attachment_form:
@@ -1933,6 +1891,8 @@ da:
     no_results_found: Ingen resultater for "%{search}"
     welcome_to_your_new_group: Velkommen til din nye Loomio gruppe!
     lets_start_a_thread: Lad os starte en tråd. Klik på "Ny tråd" for at fortsætte.
+    lets_start_a_discussion: Lad os starte en diskussion. Klik på "Ny diskussion" for at fortsætte.
+    new_discussion: Ny diskussion
   members_panel:
     bot: Bot
     no_results: Ingen medlemmer fundet
@@ -1976,6 +1936,13 @@ da:
     closed: Lukket
     need_vote: Skal stemme
     no_polls: Ingen meningsmålinger fundet
+    standalone_disabled_title: Selvstændige afstemninger er deaktiveret
+    standalone_disabled_helptext: "<p>Denne gruppe kræver, at afstemninger startes i en diskussion.</p><p> Diskussioner hjælper folk med at forstå konteksten, stille spørgsmål og dele perspektiver, inden de stemmer. Dette fører til bedre beslutninger.</p><p> Start først en diskussion, og tilføj derefter en afstemning, når du er klar til at indsamle stemmer.</p>"
+    start_discussion: Start en diskussion
+    standalone_warning_title: Overvej at starte en diskussion først
+    standalone_warning_helptext: "<p>Afstemninger fungerer bedst, når folk kan diskutere emnet først.</p><p> Uden en diskussion kan vælgerne ikke stille spørgsmål, rejse bekymringer eller foreslå forbedringer. Dette fører ofte til lavere deltagelse og mindre klare resultater.</p><p> Vi anbefaler at starte en diskussion, udvikle idéer sammen og derefter tilføje en afstemning, når I er klar.</p>"
+    start_poll_anyway: Start afstemning alligevel
+    start_discussion_instead: Start en diskussion i stedet
   group_files_panel:
     no_files: Ingen filer fundet
     filename: Filnavn
@@ -2009,7 +1976,7 @@ da:
   poll_common_collapsed:
     by_who: af %{name}
   poll_common_calendar_invite:
-    calendar_invite: Medtag en kalenderinvitation med dette resultat
+    calendar_invite: Medtag en kalenderinvitation med denne konklusion
     poll_option_id: Mødetid
     helptext_on: Brugere vil kunne føje dette møde til deres kalender
     helptext_off: Der udsendes ingen mødeinvitation
@@ -2022,7 +1989,7 @@ da:
     location_placeholder: Hvor finder dette møde sted?
   poll_common_close_form:
     title: Vil du lukke %{poll_type} nu?
-    helptext: Er du sikker på, at du vil lukke denne %{poll_type} tidligt og dele et resultat?
+    helptext: Er du sikker på, at du vil lukke denne %{poll_type} tidligt og dele en konklusion?
     close_poll_type: Luk %{poll_type}
     poll_type_closed: "%{poll_type} lukket"
   poll_common_reopen_form:
@@ -2073,18 +2040,18 @@ da:
     reminded: Påmindelse sendt!
     reminder_sent: Påmindelse sendt
   poll_common_set_outcome_panel:
-    enter_outcome: Indtast resultat
-    poll_type: Denne %{poll_type} er lukket. Tag dig tid til at overveje resultaterne, og del derefter et resultat, så folk ved, hvad der vil ske næste gang.
-    enter_an_outcome: Indtast et resultat
+    enter_outcome: Indtast konklusion
+    poll_type: Denne %{poll_type} er lukket. Tag dig tid til at overveje resultaterne, og del derefter en konklusion, så folk ved, hvad der vil ske næste gang.
+    enter_an_outcome: Indtast en konklusion
   poll_common_outcome_form:
     review_due_in_days: Gennemgå beslutningen efter hvor mange dage?
     review_date: Anmeldelsesdato
     review_date_hint: Angiv en dato for at gennemgå beslutningen (valgfrit)
     who_to_notify: Hvem vil du give besked om dette resultat? (valgfri)
     outcome_statement_template: Skabelon for resultaterklæring
-    new_title: Statens resultat
+    new_title: Statens konklusion
     update_title: Rediger resultat
-    outcome_created: Resultat oprettet
+    outcome_created: Konklusion oprettet
     outcome_updated: Resultat gemt
     statement_placeholder: Give et kort resume af kommentarerne og fortæl hvad der er det næste skridt.
     you_will_be_notified: Du får besked på anmeldelsesdatoen.
@@ -2201,10 +2168,10 @@ da:
     sentence: "%{numerator} af %{denominator} personer har deltaget (%{percent}%)"
     target_progress: "%{percent} % af målet nået. (%{num} / %{target})"
     pct_of_eligible_voters_must_participate: "%{pct}% af de stemmeberettigede skal deltage"
-    pct_participation: "%{num} af %{total} afgivne stemmer (%{pct}% deltagelse)"
     vote_short_of_quorum: 1 stemme mere er nødvendig for at opnå et quorum på %{pct}%
     votes_short_of_quorum: "%{num} flere stemmer kræves for at opnå et quorum på %{pct}%"
     quorum_reached: Quorum på %{pct}% er nået
+    pct_participation: "%{num} af %{total} afgivne stemmer (%{pct}% deltagelse)"
   poll_meeting_chart_panel:
     total: Total
   poll_remove_vote:
@@ -2389,8 +2356,6 @@ da:
     name_placeholder: Giv denne integration et navn, så du kan identificere den
     event_kind_helptext: Hvilke begivenheder ønsker du, at webhook skal have besked om?
     event_kinds:
-      new_discussion: En tråd er startet
-      discussion_edited: En tråd er redigeret
       poll_edited: En afstemning er redigeret
       new_comment: Der kommer en kommentar
       poll_created: En afstemning startes
@@ -2403,6 +2368,8 @@ da:
       outcome_created: Et resultat deles
       outcome_updated: Et resultat opdateres
       outcome_review_due: Der skal foretages en gennemgang af resultatet
+      new_discussion: En diskussion er startet
+      discussion_edited: En diskussion er redigeret
     permissions_explaination: Vælg hvilke handlinger der kan udføres af denne integration
     permissions:
       show_discussion: vise diskussion
@@ -2453,6 +2420,8 @@ da:
     month: Måned
     year: År
     country_disclaimer: Land er baseret på brugerens IP-adresse og er ikke særlig nøjagtigt. Betragt kun dette som en grov guide.
+    total_discussions: Samlede diskussioner
+    discussions_with_polls: Diskussioner med afstemninger
   tips:
     youve_completed_all_the_steps: "\U0001F389 Du har gennemført alle trinene!"
     getting_started_checklist: Tjekliste til introduktion
@@ -2485,10 +2454,15 @@ da:
         submit: Se forslagsskabeloner
       share_an_outcome:
         title: Del et forslagsresultat
-        helptext: "<p>For at fremme beslutninger har forslag en frist for afstemning. Når fristen er nået, lukkes afstemningen, og du får besked, så du kan dele et resultat af forslaget.</p><p> Resultatet giver en mulighed for at sige, om forslaget var vellykket, og hvad der vil ske derefter.</p><p> Hvis din forslagsfrist endnu ikke er udløbet, men du alligevel ønsker at fortsætte, kan du klikke på <b>Luk tidligt</b> .</p><p> Når tiden er inde, <b>skal du indtaste et resultat</b> for dit forslag.</p>"
+        helptext: "<p>For at fremme beslutninger har forslag en frist for afstemning. Når fristen er nået, lukkes afstemningen, og du får besked, så du kan dele en konklusion af forslaget.</p><p> Resultatet giver en mulighed for at sige, om forslaget var vellykket, og hvad der vil ske derefter.</p><p> Hvis din forslagsfrist endnu ikke er udløbet, men du alligevel ønsker at fortsætte, kan du klikke på <b>Luk tidligt</b> .</p><p> Når tiden er inde, <b>skal du indtaste et resultat</b> for dit forslag.</p>"
         submit: Se forslag
         cancel: Gør dette senere
+      start_a_discussion:
+        title: Start en diskussion
+        helptext: "<p>Opret en diskussion, som folk vil se, når de har accepteret deres invitation.</p><p> Hensigten er at opfordre folk til at skrive deres første kommentar i Loomio.</p><p> For at gøre det nemt har vi lavet en skabelon til <b>en øvelsesdiskussion,</b> som du kan bruge.</p>"
+        submit: Se diskussionsskabeloner
     get_started_here: Kom i gang her
+    try_loomio_with_your_group: Prøv Loomio med din gruppe
   poll_common_settings:
     who_can_vote: Hvem kan stemme?
     specified_voters_only_true: Kun inviterede personer
@@ -2643,3 +2617,49 @@ da:
     invited_by: Inviteret af
     invited_on: Inviteret den
     no_receipts: Denne anonyme afstemning blev lukket, før verifikationsfunktionen eksisterede, så verifikation er ikke mulig.
+  close_discussion_modal:
+    body: Luk diskussioner for at fjerne dem fra listen over åbne diskussioner og forhindre folk i at kommentere.
+  comment_reply_form:
+    aria_label: Tilføj et svar
+  discussion_template:
+    browse_public_templates: Gennemse skabelongalleriet
+    start_a_new_discussion: Start en ny diskussion
+    discussion_template_saved: Diskussionsskabelon gemt
+    these_are_public_templates: Disse skabeloner kan du kopiere eller ændre, så de passer til din gruppe
+    these_are_templates: Dette er diskussionsskabelonerne i din gruppe. Klik på en skabelon for at starte en diskussion. Du kan også redigere, fjerne eller ændre rækkefølgen af disse, hvis du vil.
+    default_title_label: Standardtitel
+    default_title_hint: Udfyld titelfeltet med redigerbar tekst. Dette er valgfrit - lad det stå tomt, hvis du er usikker.
+    title_placeholder_label: Eksempeltitel
+    title_placeholder_hint: Et eksempel, der skal vises i baggrunden af titelfeltet
+    title_placeholder_placeholder: f.eks. Sådan ser baggrundstekst ud
+    example_description_label: Eksempelbeskrivelse
+    example_description_placeholder: Angiv en skabelon, som folk kan bruge til at starte en tråd med
+    hidden_templates: Skjulte skabeloner
+    confirm_delete: Er du sikker på, at du vil slette denne diskussionsskabelon?
+    add_poll_template: Tilføj skabelon til afstemning
+    add_poll_template_help: Vælg alle afstemningsskabeloner, der hjælper med at fuldføre denne proces
+    recommended_poll_templates: Anbefalede skabeloner til afstemninger
+    share_in_template_gallery: Del denne skabelon i det offentlige skabelongalleri
+  context_panel:
+    thread_status:
+      pinned: Denne diskussion er blevet fastgjort. Den vil forblive øverst på gruppens liste over diskussioner for alle brugere.
+      closed: Denne diskussion er blevet lukket. Den vil ikke længere blive vist på dashboardet og vil være angivet under 'lukket' på gruppesiden.
+  thread_group:
+    aria_label: Gruppenavn
+  discussion_context:
+    current_poll_type_banner: Nuværende %{pollType}
+    seen_by_count: Set af %{count}
+    count_notified: Meddelt %{count}
+    start_a_vote: Start en afstemning
+  pin_discussion_modal:
+    helptext: Fastgjorte diskussioner vises altid på gruppens liste over diskussioner.
+  delete_discussion_form:
+    body: Er du sikker på, at du vil slette denne diskussion?
+    discussion_deleted: Diskussion slettet
+  move_discussion_form:
+    title: Flyt diskussionen til en anden gruppe
+    body: Destinationsgruppe
+    confirm: Flyt diskussion
+    confirm_change_to_private: "%{groupName} er en åben gruppe. Hvis du fortsætter, vil denne diskussion være offentlig."
+    messages:
+      success: Diskussion flyttet til %{name}

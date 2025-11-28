@@ -89,11 +89,11 @@ pt_BR:
       description: <h3 id="what-is-the-purpose-of-the-document">Qual é o objetivo do documento?</h3><p></p><h3 id="why-is-this-important"> Por que isso é importante?</h3><p></p><h3 id="what-are-you-asking-people-to-do"> O que você está pedindo às pessoas que façam?</h3><p></p>
       document: Documento
     practice_thread:
-      process_name: Tópico de prática
       process_subtitle: Um tópico para dar boas-vindas às pessoas no grupo e praticar o uso do Loomio
       process_introduction: "<p>Use este modelo para dar as boas-vindas a novos membros e incentivar a participação antecipada. Ele dá às pessoas a oportunidade de se apresentarem e explorarem os recursos do Loomio.</p>"
       title: "\U0001F44B Bem-vindo! Diga oi e experimente!"
       description: "<p>Bem-vindo ao nosso grupo Loomio — é ótimo ter você aqui!</p><p> Este tópico é um espaço para:</p><ul><li><p> Apresente-se ao grupo</p></li><li><p> Experimente alguns dos recursos do Loomio - por exemplo: tente usar reações \U0001F44D</p></li><li><p> Faça qualquer pergunta que você tenha nesta fase</p></li></ul><p> Se você não tem certeza do que dizer, um simples olá está bom \U0001F642</p>"
+      process_name: Discussão prática
   explore:
     header: Explore grupos publicos
   activerecord:
@@ -204,9 +204,9 @@ pt_BR:
       details: Detalhes
       group_name: Nome do Grupo
       discussion_title: Título do tópico
-      outcome_author: Autoria da resolução
-      outcome_created_at: Proposta de resolução criada em
-      outcome_statement: Texto da proposta de resolução
+      outcome_author: Autoria da conclusão
+      outcome_created_at: Conclusão criada em
+      outcome_statement: Texto da conclusão
       poll_url: URL da enquete
       reason: Motivo
       participant: Participante
@@ -229,11 +229,11 @@ pt_BR:
       explaination_html: "<p>Você está recebendo este e-mail porque é administrador do grupo Loomio: %{group}.</p><p> O grupo recebeu um email de um endereço de email não reconhecido.</p><p> Se a mensagem for de um membro do grupo, revise o e-mail e selecione o membro.</p><p> Se a mensagem for indesejada, você poderá bloquear qualquer outro e-mail desse endereço.</p>"
     notification_reason:
       group_subscribed: Você recebeu isso porque está inscrito em todas as atividades do grupo.
-      thread_subscribed: Você recebeu isso porque está inscrito no tópico.
       group_mentioned: Você recebeu isso porque o grupo foi @mencionado.
       user_mentioned: Você recebeu isso porque foi @mencionado.
       notified: Você recebeu isso porque o autor o notificou.
       poll_subscribed: Você recebeu esta mensagem porque está inscrito na enquete.
+      discussion_subscribed: Você recebeu esta mensagem porque está inscrito(a) na discussão.
   user_mailer:
     group_export_ready:
       subject: Dados do Grupo para exportar %{group_name}
@@ -335,9 +335,9 @@ pt_BR:
       subject: "%{who} solicitou entrada em %{which_group}"
       view_group: Você pode aprovar ou recusar o pedido aqui
       button_text: Ver solicitação
-    loomio_app_description: Um espaço para que as organizações tomem decisões em conjunto.
     content_was_translated: Este conteúdo foi traduzido de %{source_locale}
     content_was_translated_html: Este conteúdo foi traduzido de %{source_locale}. <a href="%{profile_url}">Ver configurações<a></a>
+    loomio_app_description: Um espaço para organizações colaborativas tomarem decisões em conjunto.
   announcement_count_emails: "%{count} e-mails"
   email_actions:
     unfollowed_discussion: Você desativou emails para esse tópico.
@@ -395,7 +395,7 @@ pt_BR:
     common:
       why_send_this: 'Você está recebendo este e-mail pelo seguinte motivo: %{reason}'
       view_on_loomio: Visualizar em %{site_name}
-      create_outcome: Compartilhar resultado
+      create_outcome: Compartilhar conclusão
       your_response: 'Você votou:'
       you_voted: Você votou!
       not_invited: Não convidado

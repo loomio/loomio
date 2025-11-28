@@ -27,13 +27,39 @@ namespace :loomio do
   end
 
   def delete_keys(hash, keys)
-    paths = []
-    hash.keys.each do |key|
-      if hash[key].is_a? Hash
-        delete_keys(hash[key], keys)
+    # Dotted keys are exact paths; undotted keys match any key (leaf or subtree) whose last segment equals the key.
+    exact_paths = keys.select { |k| k.include?('.') }
+    leaf_names  = keys - exact_paths
+
+    # Helper to delete at an exact dotted path and prune empty hashes along the way.
+    delete_exact = lambda do |h, parts|
+      return if parts.empty? || !h.is_a?(Hash)
+      key = parts.first
+      if parts.length == 1
+        h.delete(key)
       else
-        keys.each do |k|
-          hash.delete(k) if hash.key?(k)
+        child = h[key]
+        if child.is_a?(Hash)
+          delete_exact.call(child, parts[1..-1])
+          h.delete(key) if child.empty?
+        end
+      end
+    end
+
+    # Delete exact dotted paths first.
+    exact_paths.each do |path|
+      delete_exact.call(hash, path.split('.'))
+    end
+
+    # Recursively delete any key (leaf or subtree) whose last segment matches an undotted key, and prune empties.
+    if leaf_names.any?
+      hash.keys.each do |k|
+        v = hash[k]
+        if leaf_names.include?(k)
+          hash.delete(k)
+        elsif v.is_a?(Hash)
+          delete_keys(v, leaf_names)
+          hash.delete(k) if v.empty?
         end
       end
     end
@@ -102,7 +128,7 @@ namespace :loomio do
   task delete_translations: :environment do
     # I edit this each time I want to use it.. rake task arguments are terrible
     unwanted = %w[
-      loomio_app_description
+      notifications.without_title.outcome_updated
     ]
 
     %w[client server].each do |source_name|
@@ -122,8 +148,12 @@ namespace :loomio do
       google = Google::Cloud::Translate.translation_v2_service
 
       AppConfig.locales['supported'].each do |file_locale|
-        foreign = YAML.load_file("config/locales/#{source_name}.#{file_locale}.yml")[file_locale]
-        foreign_paths = list_paths(foreign, [])
+        foreign = {}
+        foreign_paths = []
+        if File.exist?("config/locales/#{source_name}.#{file_locale}.yml")
+          foreign = YAML.load_file("config/locales/#{source_name}.#{file_locale}.yml")[file_locale]
+          foreign_paths = list_paths(foreign, [])
+        end
 
         write_file = false
         (source_paths - foreign_paths).each do |path|

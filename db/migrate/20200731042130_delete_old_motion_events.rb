@@ -12,7 +12,7 @@ class DeleteOldMotionEvents < ActiveRecord::Migration[5.2]
     Event.where(kind: kinds).delete_all
 
     discussion_ids.each do |id|
-      EventService.delay(queue: :low_priority).repair_thread(id)
+      EventService.delay(queue: :low_priority).repair_discussion(id)
     end
   end
 end

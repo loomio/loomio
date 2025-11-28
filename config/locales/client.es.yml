@@ -55,8 +55,6 @@ es:
     to_use_loomio_with_your_org_start_trial: Cuando esté listo para probar Loomio con su organización, inicie una prueba gratuita.
     templates: Plantillas
     make_a_copy: Haz una copia
-    this_thread_is_a_template: Este hilo es una plantilla, haz una copia si quieres usarla.
-    this_is_a_poll_template: Esta es una plantilla de encuesta. Haga una copia si desea comenzar a votar.
     try_loomio: Prueba Loomio
     start_a_demo_group: Empezar un grupo de demostración
     start_a_demo: Iniciar demo
@@ -384,13 +382,13 @@ es:
     unreleased_emails: Correos electrónicos inéditos
     start_a_thread_by_email: Iniciar un hilo por correo electrónico
     send_email_to_start_thread: Envíe un correo electrónico a esta dirección para iniciar un hilo en su grupo.
-    subject_body_attachments: El asunto del correo electrónico se convierte en el título del hilo, el cuerpo del correo electrónico se convierte en la descripción y todos los archivos adjuntos se adjuntarán al hilo.
     copy_address: Copiar dirección
     email_me_this_address: Enviarme esta dirección por correo electrónico
     email_address_copied_to_clipboard: Dirección de correo electrónico copiada en el portapapeles
     forward_email_to_move_conversation: 'Consejo: reenvía una conversación por correo electrónico a Loomio cuando necesites tomar una decisión o mantener un registro.'
-  email_to_group_mailer:
-    your_email_address_to_start_threads_in_group: Tu dirección de correo electrónico para iniciar hilos en %{group}
+    start_a_discussion_by_email: Iniciar una discusión por correo electrónico
+    send_email_to_start_discussion: Envíe un correo electrónico a esta dirección para iniciar una discusión en su grupo.
+    subject_body_attachments: El asunto del correo electrónico se convierte en el título de la discusión, el cuerpo del correo se convierte en la descripción. Los archivos adjuntos también se copian.
   volume_levels:
     loud: Alto
     normal: Normal
@@ -414,14 +412,12 @@ es:
       loud_explain: Cuando quiera que haya una actividad
       normal_explain: cuando alguien solicita tu atención
       quiet_explain: Sin notificaciones
-    aria_label: Formulario para cambiar las notificaciones de correo electrónico
     loud_label: Toda la actividad
     normal_label: Anuncios
     quiet_label: No enviar correo
     mute_label: 'Silenciar '
     saved: Ajustes de notificaciones actualizados
     discussion:
-      title: Notificaciones de los hilos
       loud_description: Se te enviará un email con toda la actividad en este hilo.
       normal_description: Sólo se te enviará un email con actividad importante en este hilo.
       quiet_description: No se te enviará ninguna actividad en este hilo
@@ -433,6 +429,7 @@ es:
         loud: 'Recibirás la actividad de este hilo por correo electrónico. '
         normal: 'Recibirás correo electrónico sobre propuestas en este hilo. '
         quiet: No recibirás correo electrónico sobre este hilo.
+      title: Notificaciones de discusión
     membership:
       title: Notificaciones para %{title}
       loud_description: Recibirás correo electrónico siempre que haya actividad en este grupo.
@@ -464,7 +461,6 @@ es:
         normal: Recibirás por correo electrónico los anuncios de grupos nuevos.
         quiet: No recibirás correo electrónico de los nuevos grupos.
     change_your_email_settings: Cambiar la configuración de su correo electrónico
-    when_would_you_like_to_be_emailed_thread: "¿Cuándo le gustaría recibir un correo electrónico acerca de este hilo?"
     when_would_you_like_to_be_emailed_group: "¿Cuándo le gustaría recibir un correo electrónico sobre este grupo?"
     changes_all_threads_in_group: Esto cambia la configuración de todos los hilos del grupo.
     what_do_the_options_mean: "¿Qué significan las opciones?"
@@ -472,15 +468,17 @@ es:
     normal_desc: Cuando alguien me avisa
     quiet_desc: Nunca
     when_would_you_like_to_be_emailed_poll_type: "¿Cuándo le gustaría recibir un correo electrónico sobre este %{poll_type}?"
-    normal_explained: Cuando alguien ingresa su nombre en el campo "Notificar" de un hilo o una encuesta, o menciona al grupo {'@'}.
     normal_excludes_mentioning_html: Hay una configuración independiente para cuando alguien {'@'} te menciona (por ejemplo, al responderte en un comentario). <a href="%{url}">Haz clic aquí para editar la configuración de las @menciones.</a>
     loud_explained: Recibirás un correo electrónico cada vez que haya un nuevo comentario, alguien vote o inicie una encuesta o hilo.
     changes_all_threads_and_polls_in_group: Esto cambia la configuración para todos los hilos y encuestas del grupo.
     when_do_you_want_to_be_emailed: "¿Cuándo desea recibir correos electrónicos?"
     what_the_options_mean: Qué significan las opciones
     quiet_explained: No recibirás correos electrónicos, incluso si alguien intenta notificarte. Podrías perderte anuncios o decisiones importantes a menos que tengas la costumbre de consultar Loomio con regularidad.
+    when_would_you_like_to_be_emailed_discussion: "¿Cuándo le gustaría recibir un correo electrónico sobre esta discusión?"
+    changes_all_discussions_and_polls_in_group: Esto cambia la configuración de todas las discusiones y encuestas del grupo.
+    normal_explained: Cuando alguien ingresa su nombre en el campo "Notificar" de una discusión o una encuesta, o menciona al grupo {'@'}.
+    aria_label: Formulario para cambiar la configuración del correo electrónico
   close_explanation_modal:
-    aria_label: Cerrar hilo
     close_thread: 'Cerrar hilo '
     body: |
       <p>Cierra hilos viejos e irrelevantes para que no sean visibles e indicar que la discusión se ha cerrado.</p>
@@ -495,14 +493,11 @@ es:
     password_label: 'Contraseña:'
     password_confirmation_label: 'Esa contraseña otra vez:'
   signed_out_modal:
-    aria_label: 'Sesión cerrada '
     title: Su sesión ha terminado
     message: Su sesión ha sido desconectada desde otra pestaña del navegador. Por favor vuelva a entrar para continuar.
     ok: listo
-  comment_reply_form:
-    aria_label: Añade una respuesta
+    aria_label: Sesión finalizada
   comment_form:
-    aria_label: Añade un comentario
     attachments:
       add_attachment: 'Adjuntar archivos '
       remove_attachment: Quitar archivo adjunto
@@ -526,12 +521,10 @@ es:
     private_privacy_notice: Su comentario solo será visible para integrantes de %{groupName}.
     public_privacy_notice: Su comentario será público para cualquiera en internet.
     sign_in: 'Inicia sesión para unirte a la conversación '
+    add_a_comment: Añadir un comentario
   thread_nav:
     participants: Participantes
   sidebar:
-    new_thread_removed: Nuevo hilo eliminado
-    new_thread_removed_body: El botón de nuevo hilo se eliminará de la barra lateral. Para iniciar un nuevo hilo, primero navegue hasta su grupo, luego haga clic en "Nuevo hilo". Perdón por el cambio, pero es obligatorio porque debes seleccionar una plantilla al iniciar un hilo.
-    threads: Hilos
     my_groups: Mis grupos
     other_groups: Otros grupos
     all_groups: Todos los grupos
@@ -540,7 +533,6 @@ es:
     direct_threads: Hilos directos
     unread_threads: Hilos no leídos (%{count})
     muted_threads: 'Hilos silenciados '
-    start_group: Nueva organización
     start_subgroup: Nuevo subgrupo
     explore: Grupos públicos
     explore_groups: Explorar grupos
@@ -558,6 +550,10 @@ es:
       groups_list: Grupos
       user_list: Acciones de usuario
     user_settings: Configuración de usuario
+    invite_only_discussions: Discusiones solo por invitación
+    unread_discussions_count: Discusiones no leídas (%{count})
+    new_group: Nuevo grupo
+    new_subgroup: Nuevo subgrupo
   strand_nav:
     newest: El más nuevo
     oldest: El más viejo
@@ -585,7 +581,6 @@ es:
     all_subgroups: Todos los subgrupos
     parent_only: Sólo padres
   navbar:
-    search_all_threads: Busca todos los hilos
     search_threads: Busca todos los hilos %{name}
     search_polls: Encuestas de búsqueda %{name}
     search_members: Busca miembros en %{name}
@@ -614,6 +609,7 @@ es:
     search_members_short: Buscar miembros
     search_files_short: Buscar archivos
     search_subgroups_short: Buscar subgrupos
+    search_discussions_in_group: Buscar discusiones en %{name}
   user_dropdown:
     pin_sidebar: Anclar barra lateral
     unpin_sidebar: Desanclar barra lateral
@@ -637,7 +633,6 @@ es:
     dark_blue: Azul oscuro
   membership_card:
     group_members: Integrantes del grupo
-    discussion_members: Integrantes del hilo
     poll_members: "%{pollType} integrantes"
     voters: Votantes
     invite_to_group: Invitar al grupo
@@ -645,6 +640,7 @@ es:
     invite_to_poll: 'Invitar a votar '
     invite_to_wip_poll: Invitar para hacer comentarios
     invitations: Invitaciones
+    discussion_members: Miembros de la discusión
   membership_dropdown:
     set_name_and_username: Establecer nombre y nombre de usuario
     set_title: Añada un título
@@ -653,29 +649,26 @@ es:
     make_coordinator: Convertir en admin
     demote_coordinator: Degradar admin
     remove_from:
-      discussion: Eliminar del hilo
       group: Eliminar del grupo
       poll: Eliminar de %{pollType}
+      discussion: Eliminar de la discusión
     cancel_invitation: Cancelar la invitación
     view_profile: Ver perfil
     revoke_admin: Revocar administrador
     make_delegate: Hacer delegado
     revoke_delegate: Revocar delegado
   notification_models:
-    discussion: 'Hilo:'
     comment: comentar en
     poll: 'sondeo:'
     outcome: 'conclusión:'
     stance: 'votar:'
+    discussion: 'discusión:'
   notifications:
     header: Notificaciones
     no_notifications: No tienes notificaciones
     with_title:
       unknown_sender: Revise el correo electrónico del remitente no reconocido
       comment_replied_to: "%{actor} te respondió en: %{title}"
-      discussion_announced: "%{actor} te invitó al hilo: %{title}"
-      discussion_edited: "%{actor} editó el contenido del hilo: %{title}"
-      discussion_closed: "%{actor} cerró el hilo: %{title}"
       invitation_accepted: "%{actor} aceptó tu invitación a unirte a %{title}"
       membership_created: "%{actor} te ha invitado a unirte a %{title} en %{site_name}"
       membership_resent: "%{actor} te invitó a unirte a %{title} en %{site_name}"
@@ -683,7 +676,6 @@ es:
       membership_request_approved: "%{actor} aprobó tu solicitud a unirte a %{title}"
       new_comment: "%{actor} comentó en: %{title}"
       new_coordinator: "%{actor} te hizo administrador de %{title}"
-      new_discussion: "%{actor} comenzó un hilo: %{title}"
       outcome_announced: "%{actor} compartió la conclusión del %{poll_type}: %{title}"
       outcome_created: "%{actor} compartió la conclusión del %{poll_type}: %{title}"
       outcome_updated: "%{actor} actualizó la conclusión del %{poll_type}: %{title}"
@@ -709,22 +701,20 @@ es:
       group_mentioned: "%{actor} mencionó al grupo en: %{title}"
       new_delegate: "%{actor} te nombró delegado con derecho a voto en %{title}"
       poll_announced: "%{actor} te invitó a votar: %{title}"
+      discussion_announced: "%{actor} te invitó a la discusión: %{title}"
+      discussion_edited: "%{actor} editó el contexto de la discusión: %{title}"
+      discussion_closed: "%{actor} cerró la discusión: %{title}"
+      new_discussion: "%{actor} inició una discusión: %{title}"
     without_title:
       unknown_sender: Revise el correo electrónico del remitente no reconocido
-      discussion_announced: "%{actor} te invitó al hilo"
-      discussion_edited: "%{actor} editó el contenido del hilo"
-      discussion_closed: "%{actor} cerró el hilo"
       group_announced: "%{actor} te invitó al grupo"
       comment_replied_to: "%{actor} te respondió"
-      new_discussion: "%{actor} inicio un hilo"
-      new_comment: "%{actor} comentado en un hilo"
       membership_created: "%{actor} te invitó a unirte al grupo"
       membership_resent: "%{actor} te invitó a unirte a un grupo"
       membership_requested: "%{actor} solicitó unirse a "
       membership_request_approved: "%{actor} aprobó tu solicitud a unirte a %{title}"
       outcome_announced: "%{actor} compartió la conclusión del %{poll_type}"
       outcome_created: "%{actor} compartió la conclusión del %{poll_type}"
-      outcome_updated: "%{actor} actualizó la conclusión"
       outcome_review_due: Es la hora de revisar la conclusión del %{poll_type}
       poll_announced_wip: "%{actor} quiere tu feedback en un %{poll_type}"
       poll_closed_by_user: "%{actor} cerró el %{poll_type}"
@@ -746,16 +736,20 @@ es:
       user_reminded: "%{actor} te está recordando que votes"
       group_mentioned: "%{actor} mencionó el grupo"
       poll_announced: "%{actor} te invitó a votar en una %{poll_type}"
+      discussion_announced: "%{actor} te invitó a una discusión"
+      discussion_edited: "%{actor} editó el contexto de la discusión"
+      discussion_closed: "%{actor} cerró la discusión"
+      new_discussion: "%{actor} inició una discusión"
+      new_comment: "%{actor} comentó en una discusión"
+      outcome_updated: "%{actor} actualizó el resultado"
     hints:
       poll_closing_soon: Ahora es un buen momento para votar, cambiar de opinión o animar a otros a participar.
       poll_closing_soon_author: Es posible que desee recordar a las personas que voten o extiendan la fecha límite.
-      outcome_review_due: Considere comenzar una encuesta de comentarios o un nuevo hilo que invite a reflexionar sobre cómo se ha implementado la decisión.
+      outcome_review_due: Considere iniciar una encuesta de comentarios o una nueva discusión que invite a reflexionar sobre cómo se ha implementado la decisión.
     email_subject:
       unknown_sender: Revisar correo electrónico de remitente desconocido
       comment_replied_to: "%{actor} te respondió en: %{title}"
       discussion_announced: "%{title}"
-      discussion_edited: "%{actor} editó el contexto: %{title}"
-      discussion_closed: "%{actor} cerró el hilo: %{title}"
       invitation_accepted: "%{actor} aceptó tu invitación para unirse a %{title}"
       membership_created: "%{actor} te invitó a unirte a %{title} en %{site_name}"
       membership_resent: "%{actor} te invitó a unirte a %{title} en %{site_name}"
@@ -789,34 +783,15 @@ es:
       group_mentioned: "%{actor} mencionó al grupo en: %{title}"
       user_reminded: "%{actor} te recuerda que votes en: %{title}"
       poll_announced: 'Voto: %{title}'
+      discussion_edited: "%{actor} editó el contexto de la discusión: %{title}"
+      discussion_closed: "%{actor} cerró la discusión: %{title}"
   discussion_fork_actions:
-    helptext: Selecciona puntos que te gustaría mover a otro hilo.
     move: Mover
-    search_placeholder: Encuentra el hilo por título
     moved: Moviendo comentarios, esto podría llevar un tiempo
-    move_to_existing_thread: 'Mover a un hilo existente '
-    start_new_thread: O empieza un nuevo hilo
-  thread_template:
-    browse_public_templates: Explorar la galería de plantillas
-    thread_template_settings: Configuración de la plantilla de hilo
-    start_a_new_thread: Iniciar un nuevo hilo
-    thread_template_saved: Plantilla de hilo guardada
-    these_are_public_templates: Estas plantillas están disponibles para que las copie o modifique para adaptarlas a su grupo.
-    these_are_templates: Estas son las plantillas de hilos de tu grupo. Las plantillas lo guían a través de procesos comunes de toma de decisiones.
-    default_title_label: Título predeterminado
-    default_title_hint: Complete previamente el campo de título con texto editable. Esto es opcional; déjelo en blanco si no está seguro.
-    title_placeholder_label: Título de ejemplo
-    title_placeholder_hint: Un ejemplo para mostrar en el fondo del campo de título
-    title_placeholder_placeholder: Por ejemplo, así es como se ve el texto de fondo.
-    example_description_label: Descripción de ejemplo
-    example_description_placeholder: Proporcionar una plantilla que las personas puedan utilizar para iniciar un hilo.
-    hidden_templates: Plantillas ocultas
-    confirm_delete: "¿Estás seguro de que deseas eliminar permanentemente esta plantilla de hilo? Ningún hilo será eliminado como resultado de esto."
-    add_proposal_or_poll_template: Agregar propuesta o plantilla de encuesta
-    recommended_proposal_or_poll_templates: Plantillas de encuesta o propuesta recomendadas
-    decision_templates: Plantillas de decisión
-    decision_templates_help: Seleccione cualquier propuesta o plantilla de encuesta que ayude a completar este proceso.
-    share_in_template_gallery: Comparte esta plantilla en la galería de plantillas públicas.
+    helptext: Seleccione los elementos que desea mover a otra discusión
+    search_placeholder: Buscar discusión por título
+    move_to_existing_thread: Mover a la discusión existente
+    start_new_thread: O bien, iniciar una nueva discusión
   discussion_form:
     thread_templates: Plantillas de hilo
     new_thread_template: Nueva plantilla de hilo
@@ -830,10 +805,8 @@ es:
     invite_only_thread: Hilo sólo con invitación
     none_direct_thread: Hilo directo (no grupo)
     none_invite_only_thread: Hilo sólo con invitación (no grupo)
-    change_log_placeholder: Opcionalmente, describe tus cambios. Este mensaje será añadido al hilo.
     change_log_label: "¿Qué ha cambiado?"
     invite: Invitar
-    aria_label: Formulario del hilo
     start_thread: Empezar un hilo
     messages:
       created: Hilo iniciado
@@ -855,13 +828,20 @@ es:
     privacy_organisation: Los hilos serán visibles para integrantes de %{parent} e integrantes de %{group}.
     fork_notice: Un nuevo hilo será creado con %{count} elementos de %{title}
     notify_group: Grupo de notificación
+    none_invite_only_discussion: Ninguno (discusión solo por invitación)
+    new_discussion_template: Nueva plantilla de discusión
+    edit_discussion_template: Editar plantilla de discusión
+    change_log_placeholder: Opcionalmente, describa sus cambios. Este mensaje se añadirá a la discusión.
+    start_discussion: Iniciar discusión
+    discussion_updated: Discusión actualizada
+    discussion_created: Discusión creada
+    discussion_started: Discusión iniciada
   announcement:
     send_discussion: Manda hilo
     send_group: Invita a gente a %{name}
     send_poll: Enviar %{type}
     send_outcome: Enviar resultado
     cannot_reveal_when_anonymous: Lo sentimos, no podemos revelar quién ha votado o no en una encuesta anónima.
-    discussion_notification_history: Historial de la notificación del hilo
     group_notification_history: Historial de la invitación del grupo
     poll_notification_history: Historia de la notificación del sondeo
     outcome_notification_history: Historia de la notificación del resultado
@@ -873,7 +853,6 @@ es:
     preview: Vista preliminar del email
     no_notifications_sent: No se han enviado notificaciones
     history_error: Algo ha salido mal! No se pudo cargar la historia
-    inviting_guests_to_thread: Los invitados no pertenecen a tu grupo y solamente tienen acceso a este hilo
     select_groups: Grupos seleccionados
     search_by_name_or_email: Busca por nombre o introduce emails para invitar
     search_by_name: Busca a la gente por nombre
@@ -957,8 +936,6 @@ es:
       added_singular: 1 persona será añadida
       added_none: Nadie será añadido
       group_title: "%{name} (%{count} gente)"
-      visible_to_group: Cualquiera en %{group} será capaz de ver este hilo.
-      visible_to_guests: Solamente la gente invitada puede ver este hilo.
       click_group_to_see_individuals: Clica grupo para ver individual
       poll_announced:
         title: Invitación a votar
@@ -974,6 +951,8 @@ es:
       has_not_read_thread: Tiene un hilo no visto
       has_not_joined_yet: Aún no se ha unido
       has_not_joined_yet_hint: Este usuario no ha aceptado su invitación para unirse a Loomio y no recibirá más notificaciones hasta que lo haga.
+      discussion_admin: Administrador de discusión
+      has_not_read_discussion: No ha visto la discusión
     group_form:
       search_placeholder: Buscar personas...
       modal_title: Selecciona integrantes del grupo
@@ -981,6 +960,8 @@ es:
       success: "%{count} notificaciones enviadas"
     group_mentioned: "%{name} mencionó el grupo con %{length} personas:"
     poll_announced: "%{name} invitó a %{length} personas a votar:"
+    discussion_notification_history: Historial de notificaciones de discusión
+    inviting_guests_to_discussion: Los invitados no pertenecen a su grupo y solo tienen acceso a esta discusión.
   action_dock:
     actions_menu: Menú de acciones
     more_actions: Más acciones
@@ -1035,6 +1016,11 @@ es:
     add_poll_to_thread: Añadir al hilo
     count_members: "%{count} miembros"
     count_voters: "%{count} votantes"
+    pin_discussion: Discusión sobre pines
+    unpin_discussion: Desmarcar discusión
+    close_discussion: Discusión cerrada
+    reopen_discussion: Reabrir la discusión
+    delete_discussion: Eliminar discusión
   formatting:
     formatting_tools: Herramientas formateo de texto
     colors: Colores
@@ -1104,7 +1090,6 @@ es:
     messages:
       joined_group: Ahora eres integrante de %{group}
   membership_request_form:
-    aria_label: Formulario de petición de membresías
     heading: Solicita unirte al grupo
     name_label: Nombre
     email_label: Correo electrónico
@@ -1113,8 +1098,8 @@ es:
     introduction_over_limit: La respuesta es muy larga
     messages:
       membership_requested: Has solicitado unirte a %{group}
+    aria_label: Formulario de solicitud de membresía
   revision_history_modal:
-    aria_label: Historial de revisión
     discussion_header: Ediciones de debates
     comment_header: Ediciones de comentarios
     poll_header: Ediciones de encuestas
@@ -1132,6 +1117,7 @@ es:
     closing_at_changed: Cierre configurado al %{time}
     private_changed: privacidad configurada a %{private}
     group_id_changed: movido a %{name}
+    aria_label: Historial de revisiones
   reactions_input:
     add_your_reaction: 'Añadir reacción '
   reactions_display:
@@ -1140,10 +1126,6 @@ es:
     you_and_name: Tú y %{name}
     you_and_name_and_count_more: Tú,  %{name} y %{count} más
     name_and_count_more: "%{name} y %{count} más"
-  context_panel:
-    thread_status:
-      pinned: Este hilo ha sido fijado. Permanecerá en la parte superior de la lista de hilos del grupo para todos los integrantes.
-      closed: Este hilo ha sido cerrado. Ya no aparecerá en el escritorio, y será listado bajo 'Cerrado' en la página principal del grupo
   delete_group_modal:
     title: Eliminar grupo
     subgroup_title: Eliminar subgrupo
@@ -1234,6 +1216,10 @@ es:
     participation_report: Informe de participación
     my_subgroups: Mis subgrupos
     more_subgroups: Más subgrupos
+    discussions: Discusiones
+    no_discussions_here: "¡No hay discusiones para ver aquí!"
+    private_discussions: Necesitarás ser miembro para ver los hilos privados de este grupo.
+    view_closed_discussions: Ver discusiones cerradas
   export_data_modal:
     title: "¿Cómo quieres utilizar tus datos?"
     as_csv: Abrir en una hoja de cálculo
@@ -1245,15 +1231,15 @@ es:
     messages:
       description_updated: Descripción actualizada
   leave_group_form:
-    aria_label: Abandonar el grupo
     title: 'Abandonar el grupo '
     question: "¿Estás seguro de que quieres abandonar este grupo?"
     submit: Sí, quiero abandonar este grupo
+    aria_label: Salir del grupo
   archive_group_form:
-    aria_label: Desactivar el grupo
     title: 'Desactivar el grupo '
     question: "¿Estás seguro de que quieres desactivar este grupo?"
     submit: Sí, desactivar este grupo
+    aria_label: Desactivar grupo
   group_form:
     thread_defaults_help: Ajustes predeterminados para nuevos hilos
     click_to_change_image: Haga clic para cambiar la imagen de portada (4x1) o el logotipo (1x1)
@@ -1262,7 +1248,6 @@ es:
     permissions_explaination: |
       Hay dos niveles de membresía a los que una persona puede optar para un grupo: admin y miembro.
       Los administradores pueden editar los ajustes del grupo, hacer a otras personas administradores y ejecutar todas la acciones que se listan a continuación.
-    aria_label: Formulario de grupo
     parent_group: Grupo de padres
     new_organisation: Nueva organización
     new_group: Nuevo grupo
@@ -1356,6 +1341,9 @@ es:
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Actualice su suscripción</a> para crear un subgrupo'
     share_this_url_with_people_who_want_to_join: Comparte esta URL con personas que quieran unirse
     new_description_html: "<h3>¿Qué desafíos enfrenta su organización en la toma de decisiones?</h3><p></p><h3> ¿Cómo te gustaría utilizar Loomio en tu organización?</h3><p></p>"
+    allow_polls_without_discussions: Permitir encuestas sin discusión
+    allow_polls_without_discussions_help: Evitar que las personas inicien encuestas sin iniciar primero una discusión.
+    aria_label: Formulario de grupo
   group_export_modal:
     title: Exportar la data grupal
     body: |
@@ -1388,7 +1376,6 @@ es:
     group_url: Grupo URL
     reusable_invitation_link: Enlace de invitación reutilizable
     error: Error cuando se intenta copiar en el portapapeles
-    aria_label: Formulario de invitación
     invite_people: Invitar personas
     invite_guests: Gente invitada
     notify_people: Notificar a la gente
@@ -1425,6 +1412,7 @@ es:
     shareable_link_to_join_group: Enlace para compartir para unirse al grupo
     reset_the_link: Restablecer el enlace
     email_addresses_placeholder: p. ej. helperbot{'@'}loomio.org, friendlybot{'@'}loomio.org
+    aria_label: Formulario de invitación
   memberships_page:
     members: Integrantes
     name_label: Nombre
@@ -1521,7 +1509,6 @@ es:
     insert_link: Inserte un enlace
     insert_embedded_url: Video integrado
   change_picture_form:
-    aria_label: Formulario de la foto de perfil
     title: Establecer foto de perfil
     helptext: Puede cargar su propia foto de perfil, o puede usarla la de <href="https://en.gravatar.com/support/whatisgravatar/"> Gravatar </a>, si tiene cuenta.
     use_initials: Usar iniciales
@@ -1529,6 +1516,7 @@ es:
     use_uploaded: Cargar nueva foto
     existing_upload: Carga existente
     use_provider: Usa %{provider} foto
+    aria_label: Formulario de foto de perfil
   change_password_form:
     set_password_title: Establece tu contraseña
     set_password_helptext: Por favor introduce una contraseña - mínimo 8 dígitos
@@ -1585,7 +1573,6 @@ es:
     replies_count: "%{count} respuestas"
     unread_count: "%{count} no leídos"
   dashboard_page:
-    aria_label: Escritorio
     polls_to_vote_on: Sondeos para votar
     no_polls_to_vote_on: No hay encuestas en las que deba votar
     recent_polls: Sondeos recientes
@@ -1598,7 +1585,6 @@ es:
       show_all: No tienes ningún hilo reciente.
       show_proposals: No hay propuestas activas en este momento.
       show_muted: No tienes ningún hilo silenciado.
-    view_recent: "¿Ver todos los hilos recientes?"
     load_more: Cargar más hilos
     mark_as_read: Marcar como leído
     dismiss: Ignorar
@@ -1615,7 +1601,6 @@ es:
       filter_threads: Filtrar hilos
       filter_threads_aria_label: 'Filtrar hilos '
       dropdown_heading: Filtrar Escritorio
-      all: Hilos Recientes
       all_aria_label: Mostrando hilos recientes
       all_description: Ver hilos recientes
       proposals: Propuestas
@@ -1624,6 +1609,7 @@ es:
       muted: 'Hilos silenciados '
       muted_aria_label: Mostrando hilos silenciados
       muted_description: Ver únicamente hilos que han sido silenciados
+      all: Discusiones recientes
     thread_preview:
       you_voted: Votaste %{position}
       undecided: 'Estas indeciso '
@@ -1637,18 +1623,25 @@ es:
       thisweek: Esta semana
       thismonth: Este mes
       older: De hace más de un mes
+    dashboard: Panel
+    recent_discussions: Discusiones recientes
+    view_recent: "¿Ver todas las discusiones recientes?"
+    discussion_marked_as_read: Discusión marcada como leída
+    discussion_marked_as_unread: Discusión marcada como no leída
   threads_page:
     no_direct_threads: No tienes hilos directos
-    no_invite_only_threads: No tienes hilos sólo con invitación
+    no_invite_only_threads: No tienes hilos solo para invitados
   inbox_page:
     no_threads: "¡Genial! ¡Ya ha leído todos los hilos de su bandeja de entrada!"
     unread_threads: Hilos sin leer
     view_more: Ver más
     no_groups:
-      explanation: 'No tienes ningún hilo no leído porque no eres miembro de ningún grupo. '
       start: 'Empezar  '
       or: 'o '
       join_group: '<a href="/explore">únete</a> a un grupo para ver hilos.   '
+      explanation: No tienes discusiones sin leer porque no eres miembro de ningún grupo.
+    no_discussions: "¡Genial! Has leído todas las discusiones en tu bandeja de entrada."
+    unread_discussions: Discusiones no leídas
   discussion:
     direct_thread: Hilo directo
     invite_only: Sólo con invitación
@@ -1666,20 +1659,18 @@ es:
     pin:
       pinned: Hilo fijado
       unpinned: Hilo liberado
-    volume:
-      mute_message: Hilo silenciado
-      unmute_message: 'Hilo silenciado '
     closed:
       reopened: Hilo reabierto
       closed: 'Hilo cerrado '
+    volume:
+      mute_message: Discusión silenciada
+      unmute_message: Discusión activada
   discussion_last_seen_by:
     title: Visto por
     no_one: Nadie ha visto esto todavía
     disabled_anonymous_polls: El historial de visualización está deshabilitado porque el hilo contiene encuestas anónimas
   activity_card:
     count_responses: "%{count} respuestas"
-    event_pinned: Anclado para cronograma
-    event_unpinned: Desanclado de cronograma
     beginning: 'Inicio '
     end: Final
     unread: no leídos (%{count})
@@ -1688,8 +1679,8 @@ es:
     chronological: 'Cronológico '
     nested: 'Agrupado '
     attachment_display:
-      aria_label: 'Archivo adjunto:'
       image_alt: Imagen adjunta
+      aria_label: 'Archivo adjunto:'
     n_previous: Mostrar %{count} respuestas previas
     n_more: Mostrar %{count} respuestas
     add_comment: Añadir comentario
@@ -1699,33 +1690,9 @@ es:
     facilitate: Facilitar
     start_decision: Iniciar la decisión
     start_vote: Iniciar votación
-  thread_group:
-    aria_label: Nombre del grupo
-  thread_context:
-    current_poll_type_banner: Actual %{pollType}
-    item_maybe_deleted: No se puede encontrar el sitio solicitado dentro de este hilo. Debe haber sido borrado.
-    aria_label: Contexto del hilo
-    thread_options: Preferencias del hilo
-    email_settings: Ajustes de notificación
-    edit: Editar
-    edit_thread: Editar
-    close_thread: Cerrar
-    reopen_thread: Reabierto
-    pin_thread: Fijar
-    unpin_thread: Liberar
-    mute_thread: Silenciar
-    move_thread: Mover
-    print_thread: 'Imprimir '
-    delete_thread: Eliminar
-    add_comment: 'Comentar '
-    seen_by_count: Visto por %{count}
-    count_notified: Notificado %{count}
-    forked_from: Bifurcado de
-  pin_thread_modal:
-    title: Fijar hilo
-    helptext: 'Los hilos fijados siempre aparecen en la parte superior del listado de hilos del grupo. Se pueden usar para informar a los integrantes sobre anuncios importantes, o promover material grupal como el código de conducta u otras guías comunitarias. '
-    helptext_two: En cualquier momento puedes liberar nuevamente los hilos fijados, seleccionando 'Liberar' desde el menú desplegable del hilo.
-    pin_thread: 'Fijar hilo '
+    event_pinned: Añadido a la cronología de la discusión
+    event_unpinned: Eliminado de la cronología de discusión
+    start_a_vote: Iniciar una votación
   thread_arrangement_form:
     edit: Editar diseño
     title: Diseño del hilo
@@ -1744,20 +1711,11 @@ es:
     nested_twice_description: Marca las respuestas como mucho dos veces
     changing_nesting_is_slow: Cambios para anidación pueden llevar un par de minutos para procesarse.
   delete_thread_form:
-    aria_label: 'Borrar hilo '
     title: 'Borrar hilo '
     body: "¿Estás seguro que quieres eliminar este hilo?"
     confirm: 'Eliminar hilo '
     messages:
       success: Hilo eliminado
-  move_thread_form:
-    aria_label: Mover hilo
-    title: Mover hilo
-    body: Grupo destino
-    confirm: 'Mover hilo '
-    confirm_change_to_private_thread: "%{groupName} es un grupo público. Si continuas, este hilo se hará público."
-    messages:
-      success: El hilo ha sido movido a %{name}
   delete_comment_dialog:
     title: Borrar comentario
     question: Esto eliminará permanentemente este comentario. Si continúa, no se puede restaurar.
@@ -1937,7 +1895,7 @@ es:
     too_long: Demasiado largo
     edit_warning: Solamente se recomienda editar para cambios menores o arreglar errores ortográficos. Para cambios significantes, cierra este %{pollType} y empieza uno nuevo.
     no_voting: 'Para discusión solamente, el voto deshabilitado '
-    post_outcome: Resultados posteriores
+    post_outcome: Publicar conclusión
     view_all_votes: Ver todos los votos
     you_voted: Tú votaste
   poll_common_attachment_form:
@@ -1969,6 +1927,8 @@ es:
     no_results_found: No hay resultados para "%{search}""
     welcome_to_your_new_group: "¡Bienvenido a tu nuevo grupo de Loomio!"
     lets_start_a_thread: Empecemos un hilo. Haga clic en "Nuevo hilo" para continuar.
+    lets_start_a_discussion: Iniciemos una discusión. Haz clic en "Nueva discusión" para continuar.
+    new_discussion: Nueva discusión
   members_panel:
     bot: Bot
     no_results: No se han encontrado miembros
@@ -2012,6 +1972,13 @@ es:
     closed: 'Cerrado '
     need_vote: Se necesita votar
     no_polls: No se encontraron encuestas
+    standalone_disabled_title: Las encuestas independientes están deshabilitadas
+    standalone_disabled_helptext: "<p>Este grupo requiere que las encuestas se inicien dentro de una discusión.</p><p> Los debates ayudan a las personas a comprender el contexto, hacer preguntas y compartir perspectivas antes de votar. Esto conduce a mejores decisiones.</p><p> Primero, comience una discusión y luego agregue una encuesta cuando esté listo para reunir votos.</p>"
+    start_discussion: Iniciar una discusión
+    standalone_warning_title: Considere iniciar una discusión primero
+    standalone_warning_helptext: "<p>Las encuestas funcionan mejor cuando las personas pueden discutir el tema primero.</p><p> Sin un debate, los votantes no pueden hacer preguntas, plantear inquietudes ni sugerir mejoras. Esto suele resultar en una menor participación y resultados menos claros.</p><p> Recomendamos iniciar una discusión, desarrollar ideas juntos y luego agregar una encuesta cuando esté listo.</p>"
+    start_poll_anyway: Iniciar la encuesta de todos modos
+    start_discussion_instead: Iniciar una discusión en su lugar
   group_files_panel:
     no_files: No se encontraron archivos
     filename: Nombre de archivo
@@ -2237,10 +2204,10 @@ es:
     sentence: "%{numerator} de %{denominator} gente ha votado (%{percent}%))"
     target_progress: "%{percent}% del objetivo alcanzado. (%{num} / %{target})"
     pct_of_eligible_voters_must_participate: El %{pct}% de los votantes elegibles debe participar
-    pct_participation: "%{num} de %{total} votos emitidos (%{pct}% de participación)"
     vote_short_of_quorum: Se necesita 1 voto más para alcanzar el quórum del %{pct}%
     votes_short_of_quorum: Se necesitan %{num} votos más para alcanzar el quórum del %{pct}%
     quorum_reached: Se ha alcanzado el quórum del %{pct}%
+    pct_participation: "%{num} de %{total} votos emitidos (%{pct}% de participación)"
   poll_meeting_chart_panel:
     total: Total
   poll_remove_vote:
@@ -2427,8 +2394,6 @@ es:
     name_placeholder: Dar a esta inserción un nombre para poder identificarla
     event_kind_helptext: "¿Qué eventos quieres que se le notifiquen al webhook?"
     event_kinds:
-      new_discussion: Ha comenzado un hilo
-      discussion_edited: Se ha editado un hilo
       poll_edited: 'Se ha editado una encuesta '
       new_comment: Se ha hecho un comentario
       poll_created: Se ha iniciado una encuesta
@@ -2441,6 +2406,8 @@ es:
       outcome_created: Se ha compartido un resultado
       outcome_updated: Se actualiza un resultado
       outcome_review_due: Se debe realizar una revisión de los resultados
+      new_discussion: Se inicia una discusión
+      discussion_edited: Se edita una discusión
     permissions_explaination: Selecciona que acciones pueden desarrollarse por esta integración
     permissions:
       show_discussion: muestra debate
@@ -2491,6 +2458,8 @@ es:
     month: Mes
     year: Año
     country_disclaimer: El país se basa en la dirección IP del usuario y no es muy preciso. Considere esto sólo como una guía aproximada.
+    total_discussions: Discusiones totales
+    discussions_with_polls: Discusiones con encuestas
   tips:
     youve_completed_all_the_steps: "\U0001F389¡Has completado todos los pasos!"
     getting_started_checklist: Lista de verificación para comenzar
@@ -2526,7 +2495,12 @@ es:
         helptext: "<p>Para facilitar el avance de las decisiones, las propuestas tienen una fecha límite para votar. Al llegar a esta fecha, se cerrará la votación y se le notificará para que comparta el resultado de la propuesta.</p><p> El resultado es una oportunidad para decir si la propuesta tuvo éxito y qué sucederá a continuación.</p><p> Si la fecha límite para su propuesta aún no ha pasado, pero desea continuar de todos modos, puede hacer clic <b>en Cerrar antes</b> .</p><p> Cuando llegue el momento adecuado, <b>introduzca un resultado</b> para su propuesta.</p>"
         submit: Ver propuesta
         cancel: Hazlo más tarde
+      start_a_discussion:
+        title: Iniciar una discusión
+        helptext: "<p>Crea una discusión que las personas verán después de aceptar su invitación.</p><p> La intención es animar a la gente a escribir su primer comentario en Loomio.</p><p> Para facilitar esto, proporcionamos una plantilla <b>de discusión práctica</b> que puedes utilizar.</p>"
+        submit: Ver plantillas de discusión
     get_started_here: Empieza aquí
+    try_loomio_with_your_group: Prueba Loomio con tu grupo
   poll_common_settings:
     who_can_vote: "¿Quién puede votar?"
     specified_voters_only_true: Sólo personas invitadas
@@ -2681,3 +2655,49 @@ es:
     invited_by: Invitado por
     invited_on: Invitado a
     no_receipts: Esta encuesta anónima se cerró antes de que existiera la función de verificación, por lo que la verificación no es posible.
+  close_discussion_modal:
+    body: Cerrar discusiones para eliminarlas de la lista de discusiones abiertas y evitar que la gente comente.
+  comment_reply_form:
+    aria_label: Añadir una respuesta
+  discussion_template:
+    browse_public_templates: Explorar la galería de plantillas
+    start_a_new_discussion: Iniciar una nueva discusión
+    discussion_template_saved: Plantilla de discusión guardada
+    these_are_public_templates: Estas plantillas están disponibles para que las copie o modifique para adaptarlas a su grupo.
+    these_are_templates: Estas son las plantillas de discusión de tu grupo. Haz clic en una plantilla para iniciar una discusión. También puedes editarlas, eliminarlas o reordenarlas si lo deseas.
+    default_title_label: Título predeterminado
+    default_title_hint: Rellene el campo de título con texto editable. Esto es opcional; déjelo en blanco si no está seguro.
+    title_placeholder_label: Título de ejemplo
+    title_placeholder_hint: Un ejemplo para mostrar en el fondo del campo de título
+    title_placeholder_placeholder: Por ejemplo, así es como se ve el texto de fondo.
+    example_description_label: Descripción de ejemplo
+    example_description_placeholder: Proporcionar una plantilla que las personas puedan usar para iniciar un hilo.
+    hidden_templates: Plantillas ocultas
+    confirm_delete: "¿Está seguro de que desea eliminar esta plantilla de discusión?"
+    add_poll_template: Agregar plantilla de encuesta
+    add_poll_template_help: Seleccione cualquier plantilla de encuesta que ayude a completar este proceso
+    recommended_poll_templates: Plantillas de encuesta recomendadas
+    share_in_template_gallery: Comparte esta plantilla en la galería de plantillas públicas
+  context_panel:
+    thread_status:
+      pinned: Esta discusión se ha fijado. Permanecerá en la parte superior de la lista de discusiones del grupo para todos los usuarios.
+      closed: Esta discusión se ha cerrado. Ya no aparecerá en el panel y aparecerá como "cerrada" en la página del grupo.
+  thread_group:
+    aria_label: Nombre del grupo
+  discussion_context:
+    current_poll_type_banner: "%{pollType} actual"
+    seen_by_count: Visto por %{count}
+    count_notified: Notificado %{count}
+    start_a_vote: Iniciar una votación
+  pin_discussion_modal:
+    helptext: Las discusiones fijadas siempre aparecen en la lista de discusiones del grupo.
+  delete_discussion_form:
+    body: "¿Estás seguro que deseas eliminar esta discusión?"
+    discussion_deleted: Discusión eliminada
+  move_discussion_form:
+    title: Mover la discusión a otro grupo
+    body: Grupo de destino
+    confirm: Discusión sobre el movimiento
+    confirm_change_to_private: "%{groupName} es un grupo abierto. Si continúas, esta discusión será pública."
+    messages:
+      success: La discusión se trasladó a %{name}

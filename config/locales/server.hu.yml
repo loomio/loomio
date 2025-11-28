@@ -89,11 +89,11 @@ hu:
       description: <h3 id="what-is-the-purpose-of-the-document">Mi a dokumentum célja?</h3><p></p><h3 id="why-is-this-important"> Ez miért fontos?</h3><p></p><h3 id="what-are-you-asking-people-to-do"> Mit kérsz az emberektől?</h3><p></p>
       document: Dokumentum
     practice_thread:
-      process_name: Gyakorlószál
       process_subtitle: Egy téma, ahol üdvözölhetjük a csoport tagjait és gyakorolhatjuk a Loomio használatát
       process_introduction: "<p>Használd ezt a sablont az új tagok üdvözlésére és a korai részvétel ösztönzésére. Lehetőséget ad az embereknek bemutatkozni és felfedezni a Loomio funkcióit.</p>"
       title: "\U0001F44B Üdv! Köszönj be és próbálj ki dolgokat"
       description: "<p>Üdvözlünk a Loomio csoportunkban – örülünk, hogy itt vagy!</p><p> Ez a téma egy hely, ahol:</p><ul><li><p> Mutasd be magad a csoportnak</p></li><li><p> Próbáld ki a Loomio néhány funkcióját – például: próbáld ki a reakciókat \U0001F44D</p></li><li><p> Tegyél fel bármilyen kérdést ebben a szakaszban</p></li></ul><p> Ha nem tudod, mit mondj, egy egyszerű szia is elég \U0001F642</p>"
+      process_name: Gyakorlati megbeszélés
   explore:
     header: Fedezd fel a nyilvános csoportokat
   activerecord:
@@ -127,8 +127,6 @@ hu:
     '403':
       title: Tiltott
       body: Nincs jogosultsága hozzáférni ehhez az oldalhoz. Lehet, hogy be kell jelentkeznie.
-    '404':
-      body: A kért elem nem található. Ez akkor fordulhat elő, ha egy hozzászólásláncot vagy szavazást töröltek.
     '410':
       title: Elmúlt
       body: Ez az oldal már nem létezik
@@ -144,6 +142,8 @@ hu:
     '500':
       title: Belső szerverhiba
       body: Sajnáljuk, de valami hiba történt. Értesítettek minket a problémáról, és hamarosan kivizsgáljuk.
+    '404':
+      body: A kért elem nem található. Ez akkor fordulhat elő, ha egy beszélgetést vagy szavazást töröltek.
   group:
     error:
       handle_must_begin_with_parent_handle: 'A következővel kell kezdődnie: %{parent_handle}-'
@@ -226,11 +226,11 @@ hu:
       explaination_html: "<p>Azért kapta ezt az e-mailt, mert Ön a(z) %{group} Loomio csoport adminisztrátora.</p><p> A csoport e-mailt kapott egy ismeretlen e-mail címről.</p><p> Ha az üzenet a csoport egyik tagjától származik, kérjük, tekintse át az e-mailt, és válassza ki a tagot.</p><p> Ha az üzenet nem kívánt, letilthatja az erről a címről érkező további e-maileket.</p>"
     notification_reason:
       group_subscribed: Azért kaptad ezt, mert feliratkoztál a csoport összes tevékenységére.
-      thread_subscribed: Ezt azért kaptad, mert feliratkoztál a szálra.
       group_mentioned: Ezt azért kaptad, mert a csoportot @említették.
       user_mentioned: Ezt azért kaptad, mert @említettek.
       notified: Ezt azért kaptad, mert a szerző értesítette.
       poll_subscribed: Ezt azért kaptad, mert feliratkoztál a szavazásra.
+      discussion_subscribed: Ezt azért kaptad, mert feliratkoztál a beszélgetésre.
   user_mailer:
     group_export_ready:
       subject: A(z)%{group_name}csoport adatainak letöltése
@@ -321,9 +321,9 @@ hu:
       subject: "%{who} csatlakozást kért a(z)%{which_group} oldalhoz"
       view_group: Itt jóváhagyhatod vagy elutasíthatod a kérelmet
       button_text: Kérés megtekintése
-    loomio_app_description: Egy hely, ahol a szervezetek közösen hozhatnak döntéseket.
     content_was_translated: 'Ez a tartalom innen lett lefordítva: %{source_locale}'
     content_was_translated_html: 'Ez a tartalom innen lett lefordítva: %{source_locale}. <a href="%{profile_url}">Beállítások megtekintése<a></a>'
+    loomio_app_description: Egy olyan hely, ahol az együttműködő szervezetek közösen hozhatnak döntéseket.
   announcement_count_emails: "%{count} e-mail"
   email_actions:
     unfollowed_discussion: Kikapcsoltad a téma e-maileit.

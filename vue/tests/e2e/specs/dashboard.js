@@ -22,7 +22,7 @@ module.exports = {
     page.click('.action-dock__button--dismiss_thread')
     // page.expectText('.confirm-modal h1', 'Dismiss thread')
     // page.click('.confirm-modal__submit')
-    page.expectFlash('Thread marked as read')
+    page.expectFlash('Discussion marked as read')
   },
 
 }

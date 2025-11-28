@@ -89,11 +89,11 @@ pl:
       description: <h3 id="what-is-the-purpose-of-the-document">Jaki jest cel dokumentu?</h3><p></p><h3 id="why-is-this-important"> Dlaczego to jest ważne?</h3><p></p><h3 id="what-are-you-asking-people-to-do"> O co prosisz ludzi?</h3><p></p>
       document: Dokument
     practice_thread:
-      process_name: Wątek ćwiczeniowy
       process_subtitle: Wątek, w którym można powitać ludzi w grupie i ćwiczyć korzystanie z Loomio
       process_introduction: "<p>Użyj tego szablonu, aby powitać nowych członków i zachęcić do wczesnego uczestnictwa. Daje ludziom szansę na przedstawienie się i zapoznanie z funkcjami Loomio.</p>"
       title: "\U0001F44B Witaj! Powiedz cześć i wypróbuj rzeczy"
       description: "<p>Witamy w naszej grupie Loomio — cieszymy się, że jesteś tu!</p><p> Ten wątek jest miejscem do:</p><ul><li><p> Przedstaw się grupie</p></li><li><p> Wypróbuj niektóre funkcje Loomio – na przykład: spróbuj użyć reakcji \U0001F44D</p></li><li><p> Zadaj wszelkie pytania, które masz na tym etapie</p></li></ul><p> Jeśli nie wiesz co powiedzieć, wystarczy zwykłe „cześć” \U0001F642</p>"
+      process_name: Ćwicz dyskusję
   explore:
     header: Przeglądaj grupy publiczne
   activerecord:
@@ -230,11 +230,11 @@ pl:
       explaination_html: "<p>Otrzymujesz tego e-maila, ponieważ jesteś administratorem grupy Loomio: %{group}.</p><p> Grupa otrzymała wiadomość e-mail z nieznanego adresu e-mail.</p><p> Jeśli wiadomość pochodzi od członka grupy, przejrzyj wiadomość e-mail i wybierz członka.</p><p> Jeśli wiadomość jest niechciana, możesz zablokować dalsze wiadomości e-mail wysyłane z tego adresu.</p>"
     notification_reason:
       group_subscribed: Otrzymujesz to, ponieważ subskrybujesz całą aktywność w grupie.
-      thread_subscribed: Otrzymałeś to, ponieważ subskrybujesz wątek.
       group_mentioned: Otrzymałeś to, ponieważ grupa została @wspomniana.
       user_mentioned: Otrzymałeś to, ponieważ @o Tobie wspomniano.
       notified: Otrzymałeś to, ponieważ autor Cię o tym powiadomił.
       poll_subscribed: Otrzymałeś/aś tę wiadomość, ponieważ zapisałeś/aś się na ankietę.
+      discussion_subscribed: Otrzymałeś to, ponieważ zapisałeś się na dyskusję.
   user_mailer:
     group_export_ready:
       subject: Eksport danych grupy dla %{group_name}
@@ -336,9 +336,9 @@ pl:
       subject: " %{who} prosi o dołączenie do grupy %{which_group}"
       view_group: Możesz zatwierdzić lub odrzucić prośbę tutaj
       button_text: Wyświetl prośbę
-    loomio_app_description: Miejsce, w którym organizacje mogą wspólnie podejmować decyzje.
     content_was_translated: Ta treść została przetłumaczona z %{source_locale}
     content_was_translated_html: Ta treść została przetłumaczona z %{source_locale}. <a href="%{profile_url}">Wyświetl ustawienia<a></a>
+    loomio_app_description: Miejsce, w którym organizacje współpracujące mogą wspólnie podejmować decyzje.
   announcement_count_emails: "%{count} wiadomości e-mail"
   email_actions:
     unfollowed_discussion: Wyłączono wiadomości e-mail dla wątku.

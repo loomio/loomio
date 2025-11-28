@@ -55,7 +55,7 @@ export default {
       ],
       orgItems: [
         {title: I18n.global.t('sidebar.all_groups'), value: null},
-        {title: I18n.global.t('sidebar.invite_only_threads'), value: 0}
+        {title: I18n.global.t('sidebar.invite_only_discussions'), value: 0}
       ].concat(Session.user().parentGroups().map(g => ({
         title: g.name,
         value: g.id

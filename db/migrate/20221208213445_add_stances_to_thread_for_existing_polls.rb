@@ -8,7 +8,7 @@ class AddStancesToThreadForExistingPolls < ActiveRecord::Migration[6.1]
 
       if (poll.closed? || poll.hide_results != 'until_closed')
         Event.where(kind: 'stance_created', eventable_id: stance_ids).update_all(discussion_id: poll.discussion_id)
-        EventService.repair_thread(poll.discussion_id)
+        EventService.repair_discussion(poll.discussion_id)
       end
 
       if poll.closed?

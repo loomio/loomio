@@ -29,7 +29,7 @@ export default {
     submit() {
       this.loading = true
       Records.discussions.remote.patchMember(this.discussion.id, 'move', { group_id: this.groupId }).then(data => {
-        Flash.success('move_thread_form.messages.success', { name: this.targetGroup().name });
+        Flash.success('move_discussion_form.messages.success', { name: this.targetGroup().name });
         const discussionKey = data.discussions[0].key;
         Records.discussions.findOrFetchById(discussionKey, {}, true).then(() => {
           EventBus.$emit('closeModal');
@@ -44,7 +44,7 @@ export default {
 
     moveThread() {
       if (this.discussion.private && this.targetGroup().privacyIsOpen()) {
-        if (confirm(I18n.global.t('move_thread_form.confirm_change_to_private_thread', {groupName: this.targetGroup().name}))) { this.submit(); }
+        if (confirm(I18n.global.t('move_discussion_form.confirm_change_to_private', {groupName: this.targetGroup().name}))) { this.submit(); }
       } else {
         this.submit();
       }
@@ -53,7 +53,7 @@ export default {
 };
 </script>
 <template lang="pug">
-v-card.move-thread-form(:title="$t('move_thread_form.title')")
+v-card.move-thread-form(:title="$t('move_discussion_form.title')")
   template(v-slot:append)
     dismiss-modal-button
   v-card-text
@@ -63,9 +63,9 @@ v-card.move-thread-form(:title="$t('move_thread_form.title')")
       :items='availableGroups'
       item-value='id'
       item-title='fullName'
-      :label="$t('move_thread_form.body')")
+      :label="$t('move_discussion_form.body')")
   v-card-actions
     v-spacer
     v-btn.move-thread-form__submit(:disabled="!groupId && discussion.groupId != groupId" :loading="loading" color="primary" variant="tonal" @click='moveThread()')
-      span( v-t="'move_thread_form.confirm'")
+      span( v-t="'move_discussion_form.confirm'")
 </template>

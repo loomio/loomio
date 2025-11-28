@@ -210,15 +210,15 @@ en:
       decline_prompt: Is there anything you'd like to say?
   discussion_templates:
     practice_thread:
-      process_name: Practice thread
+      process_name: Practice discussion
       process_subtitle: Welcome people to the group and practice using Loomio
       process_introduction: "<p>Use this template to welcome new members and encourage early participation. It gives people a chance to introduce themselves and explore Loomio’s features.</p>"
       title: "\U0001F44B Welcome! Say hi and try things out"
       description: "<p>Welcome to our Loomio group — it’s great to have you here!</p><p>This thread is a space to:</p><ul>\n<li><p>Introduce yourself to the group</p></li>\n<li><p>Try out some of Loomio's features - for example: try using reactions \U0001F44D</p></li>\n<li><p>Ask any questions you have at this stage</p></li>\n</ul><p>If you're not sure what to say, a simple hello is fine \U0001F642</p>"
     blank:
       process_name: Blank template
-      process_subtitle: Start a new thread for any purpose
-      process_introduction: "<p>Start a thread in your group about any topic you like.</p> <p>By default everyone in the group will be notified when you start the thread. You can change this by editing the 'invite' field below.</p>"
+      process_subtitle: Start a new discussion on any topic
+      process_introduction: "<p>Start a discussion in your group about any topic you like.</p> <p>By default everyone in the group will be notified when you start the discussion. You can change this by editing the 'invite' field below.</p>"
     discuss_a_topic:
       title_placeholder: What is the topic you want to discuss?
       process_name: Discuss a topic
@@ -327,7 +327,7 @@ en:
       body: You are not permitted to access this page. You may need to sign in.
     '404':
       title: Not found
-      body: The item you requested was not found. This can happen if a thread or poll has been deleted.
+      body: The item you requested was not found. This can happen if a discussion or poll has been deleted.
     '410':
       title: Gone
       body: This page no longer exists
@@ -429,7 +429,7 @@ en:
   event_mailer:
     notification_reason:
       group_subscribed: You received this because you are subscribed to all activity in the group.
-      thread_subscribed: You received this because you are subscribed to the thread.
+      discussion_subscribed: You received this because you are subscribed to the discussion.
       poll_subscribed: You received this because you are subscribed to the poll.
       group_mentioned: You received this because the group was @mentioned.
       user_mentioned: You received this because you were @mentioned.
@@ -443,9 +443,7 @@ en:
   user_mailer:
     group_export_ready:
       subject: Group data export for %{group_name}
-      body_html: 'Download your group data <a href="%{url}">here</a>. Please note that this link will expire in one week''s time.
-
-        '
+      body_html: 'Download your group data <a href="%{url}">here</a>. Please note that this link will expire in one week''s time.'
     redacted:
       subject: Your %{site_name} user account has been deleted
       body_html: |
@@ -507,7 +505,7 @@ en:
         If you continue to have problems logging in, reply to this email to contact a support person.
     by_who: by %{person}
     reply_to_this_discussion: Reply to this discussion
-    loomio_app_description: A place for organizations to make decisions together.
+    loomio_app_description: A place for collaborative organizations to make decisions together.
     view_group: View group
     to_join_group:
       subject: "%{member} has invited you to join %{group_name} on %{site_name}"

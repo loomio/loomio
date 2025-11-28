@@ -70,20 +70,17 @@ class Comment < ApplicationRecord
 
   before_validation :assign_parent_if_nil
 
-  delegate :name, to: :user, prefix: :user
-  delegate :name, to: :user, prefix: :author
-  delegate :email, to: :user, prefix: :user
   delegate :author, to: :parent, prefix: :parent, allow_nil: true
   delegate :group, to: :discussion
   delegate :group_id, to: :discussion, allow_nil: true
-  delegate :full_name, to: :group, prefix: :group
-  delegate :locale, to: :user
-  delegate :mailer, to: :discussion
   delegate :guests, to: :discussion
   delegate :members, to: :discussion
-  delegate :title, to: :discussion
 
   define_counter_cache(:versions_count) { |comment| comment.versions.count }
+
+  def title_model
+    discussion
+  end
 
   def author_id
     user_id
