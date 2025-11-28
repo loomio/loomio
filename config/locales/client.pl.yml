@@ -315,6 +315,7 @@ pl:
       label: Formatowanie
       title: Naucz się używać Markdown, by sformatować swój tekst
     thread: Nitka
+    discard_changes_to_this_text: Odrzuć zmiany w tym tekście
   merge_accounts:
     modal:
       title: Połącz konta
@@ -1963,12 +1964,12 @@ pl:
     need_vote: Potrzebujesz głosu
     no_polls: Nie znaleziono ankiet
     standalone_disabled_title: Ankiety samodzielne są wyłączone
-    standalone_disabled_helptext: "<p>W przypadku tej grupy ankiety należy rozpoczynać w ramach dyskusji.</p><p> Dyskusje pomagają ludziom zrozumieć kontekst, zadawać pytania i dzielić się swoimi perspektywami przed głosowaniem. To prowadzi do podejmowania lepszych decyzji.</p><p> Najpierw rozpocznij dyskusję, a gdy będziesz gotowy zbierać głosy, dodaj ankietę.</p>"
     start_discussion: Rozpocznij dyskusję
     standalone_warning_title: Rozważ rozpoczęcie dyskusji na początek
     start_poll_anyway: Rozpocznij ankietę mimo wszystko
     start_discussion_instead: Zamiast tego rozpocznij dyskusję
     standalone_warning_helptext: "<p>Ankiety działają najlepiej, gdy ludzie mogą najpierw przedyskutować dany temat.</p><p> Bez dyskusji wyborcy nie mogą zadawać pytań, zgłaszać obaw ani proponować ulepszeń.</p><p> Aby uzyskać najlepsze rezultaty, zacznij od dyskusji, zbuduj wspólne zrozumienie, a następnie dodaj ankietę, gdy będziesz gotowy poznać opinie uczestników.</p>"
+    standalone_disabled_helptext: "<p>W przypadku tej grupy ankiety należy rozpoczynać w ramach dyskusji.</p><p> Dyskusje pomagają ludziom zrozumieć kontekst, zadawać pytania i dzielić się swoimi perspektywami przed głosowaniem. To prowadzi do podejmowania lepszych decyzji.</p><p> Najpierw rozpocznij dyskusję, a gdy będziesz gotowy zbierać głosy, dodaj ankietę.</p><p> Alternatywnie administrator grupy może włączyć samodzielne ankiety w Ustawieniach grupy -> Uprawnienia -> Zezwalaj na ankiety bez dyskusji</p>"
   group_files_panel:
     no_files: Nie znaleziono plików
     filename: 'Nazwa pliku '

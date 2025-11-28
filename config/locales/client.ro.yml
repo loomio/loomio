@@ -315,6 +315,7 @@ ro:
       label: Formatare
       title: Invață să folosești Markdown pentru a formata textul
     thread: Fir
+    discard_changes_to_this_text: Anulează modificările aduse acestui text
   merge_accounts:
     modal:
       title: Îmbinați conturile
@@ -1938,12 +1939,12 @@ ro:
     need_vote: Am nevoie de vot
     no_polls: Nu s-au găsit sondaje
     standalone_disabled_title: Sondajele independente sunt dezactivate
-    standalone_disabled_helptext: "<p>Acest grup necesită ca sondajele să fie pornite în cadrul unei discuții.</p><p> Discuțiile îi ajută pe oameni să înțeleagă contextul, să pună întrebări și să împărtășească perspective înainte de a vota. Acest lucru duce la decizii mai bune.</p><p> Începe mai întâi o discuție, apoi adaugă un sondaj când ești gata să aduni voturi.</p>"
     start_discussion: Începeți o discuție
     standalone_warning_title: Luați în considerare mai întâi începerea unei discuții
     start_poll_anyway: Începeți sondajul oricum
     start_discussion_instead: Începeți o discuție în schimb
     standalone_warning_helptext: "<p>Sondajele funcționează cel mai bine atunci când oamenii pot discuta mai întâi subiectul.</p><p> Fără o discuție, alegătorii nu pot pune întrebări, nu pot exprima nelămuriri sau nu pot sugera îmbunătățiri.</p><p> Pentru o experiență optimă, începeți cu o discuție, construiți o înțelegere comună și apoi adăugați un sondaj atunci când sunteți gata să surprindeți pozițiile oamenilor.</p>"
+    standalone_disabled_helptext: "<p>Acest grup necesită ca sondajele să fie pornite în cadrul unei discuții.</p><p> Discuțiile îi ajută pe oameni să înțeleagă contextul, să pună întrebări și să împărtășească perspective înainte de a vota. Acest lucru duce la decizii mai bune.</p><p> Începe mai întâi o discuție, apoi adaugă un sondaj când ești gata să aduni voturi.</p><p> Alternativ, un administrator de grup poate activa sondajele independente prin intermediul setărilor grupului -> Permisiuni -> Permite sondajele fără discuții.</p>"
   group_files_panel:
     no_files: Niciun fișier găsit
     filename: Nume de fișier

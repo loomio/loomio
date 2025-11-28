@@ -85,6 +85,7 @@ export default {
           variant="text"
           v-if="comment.id"
           @click="discardDraft"
+          :title="$t('common.discard_changes_to_this_text')"
         )
           span(v-t="'common.reset'")
         v-btn.comment-form__submit-button(

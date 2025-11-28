@@ -337,6 +337,7 @@ zh_CN:
     formatting_help:
       label: 格式化
       title: 学习如何使用 Markdown 格式化文本
+    discard_changes_to_this_text: 放弃对此文本的更改
   merge_accounts:
     modal:
       title: 合并账户
@@ -575,6 +576,7 @@ zh_CN:
     showing_unread: 显示未读
     add_comment: 添加评论
     start_decision: 开始做决定
+    recenter: 最近
   search_modal:
     all_content: 所有内容
     best_match: 最佳匹配
@@ -1970,12 +1972,12 @@ zh_CN:
     need_vote: 需要投票
     no_polls: 未找到民意调查
     standalone_disabled_title: 独立投票功能已禁用
-    standalone_disabled_helptext: "<p>本群组要求投票必须在讨论中发起。</p><p>讨论有助于人们在投票前了解背景、提出问题并分享观点，从而做出更明智的决策。</p><p>先发起讨论，准备好收集投票后再添加投票。</p>"
     start_discussion: 发起讨论
     standalone_warning_title: 不妨先发起讨论。
     standalone_warning_helptext: "<p>民意调查在人们能够先讨论相关话题的情况下效果最佳。</p><p>如果没有讨论，选民就无法提出问题、表达担忧或建议改进措施。这往往会导致参与度降低和结果不明朗。</p><p>我们建议先发起讨论，共同探讨想法，准备就绪后再添加投票。</p>"
     start_poll_anyway: 无论如何，开始投票
     start_discussion_instead: 不如发起一场讨论吧。
+    standalone_disabled_helptext: "<p>本群组要求投票必须在讨论中发起。</p><p>讨论有助于人们在投票前了解背景、提出问题并分享观点，从而做出更明智的决策。</p><p>先发起讨论，准备好收集投票后再添加投票。</p><p>或者，群组管理员可以通过“群组设置”->“权限”->“允许不经讨论的投票”启用独立投票。</p>"
   group_files_panel:
     no_files: 未找到文件
     filename: 文件名

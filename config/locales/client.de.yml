@@ -321,6 +321,7 @@ de:
       label: Markdown-Formatierung
       title: Mehr über die Textformatierung mit Markdown lernen
     thread: Faden
+    discard_changes_to_this_text: Änderungen an diesem Text werden verworfen.
   merge_accounts:
     modal:
       title: Benutzerkonten zusammenführen
@@ -1971,12 +1972,12 @@ de:
     need_vote: Brauchen Sie eine Abstimmung
     no_polls: 'Keine Umfragen gefunden '
     standalone_disabled_title: Eigenständige Umfragen sind deaktiviert
-    standalone_disabled_helptext: "<p>Diese Gruppe verlangt, dass Umfragen innerhalb einer Diskussion gestartet werden.</p><p> Diskussionen helfen den Menschen, den Kontext zu verstehen, Fragen zu stellen und ihre Perspektiven vor der Abstimmung auszutauschen. Dies führt zu besseren Entscheidungen.</p><p> Eröffnen Sie zunächst eine Diskussion und fügen Sie dann eine Umfrage hinzu, wenn Sie bereit sind, Stimmen zu sammeln.</p>"
     start_discussion: Starten Sie eine Diskussion
     standalone_warning_title: Überlegen Sie, ob Sie zunächst eine Diskussion beginnen möchten.
     start_poll_anyway: Umfrage trotzdem starten
     start_discussion_instead: Beginnen Sie stattdessen eine Diskussion.
     standalone_warning_helptext: "<p>Umfragen funktionieren am besten, wenn die Menschen das Thema vorher diskutieren können.</p><p> Ohne Diskussion können die Wähler keine Fragen stellen, Bedenken äußern oder Verbesserungen vorschlagen.</p><p> Für ein optimales Ergebnis beginnen Sie mit einer Diskussion, schaffen Sie ein gemeinsames Verständnis und fügen Sie erst dann eine Umfrage hinzu, wenn Sie bereit sind, die Meinungen der Teilnehmer zu erfassen.</p>"
+    standalone_disabled_helptext: "<p>Diese Gruppe verlangt, dass Umfragen innerhalb einer Diskussion gestartet werden.</p><p> Diskussionen helfen den Menschen, den Kontext zu verstehen, Fragen zu stellen und ihre Perspektiven vor der Abstimmung auszutauschen. Dies führt zu besseren Entscheidungen.</p><p> Eröffnen Sie zunächst eine Diskussion und fügen Sie dann eine Umfrage hinzu, wenn Sie bereit sind, Stimmen zu sammeln.</p><p> Alternativ kann ein Gruppenadministrator eigenständige Umfragen über Gruppeneinstellungen -> Berechtigungen -> Umfragen ohne Diskussion zulassen aktivieren.</p>"
   group_files_panel:
     no_files: 'Keine Dateien gefunden '
     filename: Dateiname

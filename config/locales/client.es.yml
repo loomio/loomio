@@ -315,6 +315,7 @@ es:
       label: 'Formato '
       title: Aprenda a usar Markdown para dar formato a su texto
     thread: Hilo
+    discard_changes_to_this_text: Descartar cambios a este texto
   merge_accounts:
     modal:
       title: Fusionar cuentas
@@ -1974,12 +1975,12 @@ es:
     need_vote: Se necesita votar
     no_polls: No se encontraron encuestas
     standalone_disabled_title: Las encuestas independientes están deshabilitadas
-    standalone_disabled_helptext: "<p>Este grupo requiere que las encuestas se inicien dentro de una discusión.</p><p> Los debates ayudan a las personas a comprender el contexto, hacer preguntas y compartir perspectivas antes de votar. Esto conduce a mejores decisiones.</p><p> Primero, comience una discusión y luego agregue una encuesta cuando esté listo para reunir votos.</p>"
     start_discussion: Iniciar una discusión
     standalone_warning_title: Considere iniciar una discusión primero
     start_poll_anyway: Iniciar la encuesta de todos modos
     start_discussion_instead: Iniciar una discusión en su lugar
     standalone_warning_helptext: "<p>Las encuestas funcionan mejor cuando las personas pueden discutir el tema primero.</p><p> Sin discusión, los votantes no pueden hacer preguntas, plantear preocupaciones ni sugerir mejoras.</p><p> Para obtener la mejor experiencia, comience con una discusión, genere un entendimiento compartido y luego agregue una encuesta cuando esté listo para captar las posiciones de las personas.</p>"
+    standalone_disabled_helptext: "<p>Este grupo requiere que las encuestas se inicien dentro de una discusión.</p><p> Los debates ayudan a las personas a comprender el contexto, hacer preguntas y compartir perspectivas antes de votar. Esto conduce a mejores decisiones.</p><p> Primero, comience una discusión y luego agregue una encuesta cuando esté listo para reunir votos.</p><p> Alternativamente, un administrador de grupo puede habilitar encuestas independientes a través de Configuración de grupo -> Permisos -> Permitir encuestas sin discusión</p>"
   group_files_panel:
     no_files: No se encontraron archivos
     filename: Nombre de archivo

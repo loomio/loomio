@@ -561,6 +561,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
     v-btn(
       variant="plain"
       @click="discardDraft"
+      :title="$t('common.discard_changes_to_this_text')"
     )
      span(v-t="'common.reset'")
 
