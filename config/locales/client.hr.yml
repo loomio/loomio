@@ -315,6 +315,7 @@ hr:
       label: Oblikovanje
       title: Naučite kako koristiti Markdown za oblikovanje teksta
     thread: Nit
+    discard_changes_to_this_text: Odbaci promjene ovog teksta
   merge_accounts:
     modal:
       title: Spajanje računa
@@ -1938,12 +1939,12 @@ hr:
     need_vote: Treba glasati
     no_polls: Nisu pronađene ankete
     standalone_disabled_title: Samostalne ankete su onemogućene
-    standalone_disabled_helptext: "<p>Ova grupa zahtijeva da se ankete pokrenu unutar rasprave.</p><p> Rasprave pomažu ljudima da razumiju kontekst, postavljaju pitanja i dijele gledišta prije glasanja. To vodi do boljih odluka.</p><p> Prvo započnite raspravu, a zatim dodajte anketu kada budete spremni za prikupljanje glasova.</p>"
     start_discussion: Započni raspravu
     standalone_warning_title: Razmislite o tome da prvo započnete raspravu
     start_poll_anyway: Svejedno pokreni anketu
     start_discussion_instead: Umjesto toga, započnite raspravu
     standalone_warning_helptext: "<p>Ankete najbolje funkcioniraju kada ljudi prvo mogu raspravljati o temi.</p><p> Bez rasprave, birači ne mogu postavljati pitanja, izražavati zabrinutost ili predlagati poboljšanja.</p><p> Za najbolje iskustvo, započnite s raspravom, izgradite zajedničko razumijevanje, a zatim dodajte anketu kada budete spremni zabilježiti stavove ljudi.</p>"
+    standalone_disabled_helptext: "<p>Ova grupa zahtijeva da se ankete pokrenu unutar rasprave.</p><p> Rasprave pomažu ljudima da razumiju kontekst, postavljaju pitanja i dijele gledišta prije glasanja. To vodi do boljih odluka.</p><p> Prvo započnite raspravu, a zatim dodajte anketu kada budete spremni za prikupljanje glasova.</p><p> Alternativno, administrator grupe može omogućiti samostalne ankete putem Postavke grupe -> Dozvole -> Dopusti ankete bez rasprave</p>"
   group_files_panel:
     no_files: Nije pronađena nijedna datoteka
     filename: Naziv datoteke

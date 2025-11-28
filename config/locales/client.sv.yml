@@ -315,6 +315,7 @@ sv:
       label: Utformning
       title: Lär dig hur du använder Märkspråk för att formatera din text
     thread: Tråd
+    discard_changes_to_this_text: Ignorera ändringar i den här texten
   merge_accounts:
     modal:
       title: Slå samman konton
@@ -1938,12 +1939,12 @@ sv:
     need_vote: Behöver rösta
     no_polls: Inga omröstningar hittades
     standalone_disabled_title: Fristående omröstningar är inaktiverade
-    standalone_disabled_helptext: "<p>Den här gruppen kräver att omröstningar startas inom en diskussion.</p><p> Diskussioner hjälper människor att förstå sammanhanget, ställa frågor och dela perspektiv innan de röstar. Detta leder till bättre beslut.</p><p> Starta en diskussion först, lägg sedan till en omröstning när du är redo att samla röster.</p>"
     start_discussion: Starta en diskussion
     standalone_warning_title: Överväg att starta en diskussion först
     start_poll_anyway: Starta omröstningen ändå
     start_discussion_instead: Börja en diskussion istället
     standalone_warning_helptext: "<p>Omröstningar fungerar bäst när folk kan diskutera ämnet först.</p><p> Utan en diskussion kan väljarna inte ställa frågor, ta upp farhågor eller föreslå förbättringar.</p><p> För bästa möjliga upplevelse, börja med en diskussion, bygg upp gemensam förståelse och lägg sedan till en omröstning när du är redo att samla in folks åsikter.</p>"
+    standalone_disabled_helptext: "<p>Den här gruppen kräver att omröstningar startas inom en diskussion.</p><p> Diskussioner hjälper människor att förstå sammanhanget, ställa frågor och dela perspektiv innan de röstar. Detta leder till bättre beslut.</p><p> Starta en diskussion först, lägg sedan till en omröstning när du är redo att samla röster.</p><p> Alternativt kan en gruppadministratör aktivera fristående omröstningar via Gruppinställningar -> Behörigheter -> Tillåt omröstningar utan diskussion.</p>"
   group_files_panel:
     no_files: Inga filer funna
     filename: Filnamn

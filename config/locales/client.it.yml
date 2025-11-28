@@ -323,6 +323,7 @@ it:
       label: Formattazione
       title: Impara come usare il Markdown per formattare il tuo testo
     thread: Filo
+    discard_changes_to_this_text: Ignora le modifiche a questo testo
   merge_accounts:
     modal:
       title: Unisci account
@@ -1968,12 +1969,12 @@ it:
     need_vote: Necessita voto
     no_polls: Nessuna votazione trovata
     standalone_disabled_title: I sondaggi autonomi sono disabilitati
-    standalone_disabled_helptext: "<p>Questo gruppo richiede che i sondaggi vengano avviati all'interno di una discussione.</p><p> Le discussioni aiutano le persone a comprendere il contesto, a porre domande e a condividere le proprie prospettive prima di votare. Questo porta a decisioni migliori.</p><p> Avvia prima una discussione, poi aggiungi un sondaggio quando sei pronto a raccogliere voti.</p>"
     start_discussion: Avvia una discussione
     standalone_warning_title: Considera di iniziare prima una discussione
     start_poll_anyway: Inizia comunque il sondaggio
     start_discussion_instead: Avvia invece una discussione
     standalone_warning_helptext: "<p>I sondaggi funzionano meglio quando le persone possono discutere per prime dell'argomento.</p><p> Senza una discussione, gli elettori non possono porre domande, sollevare preoccupazioni o suggerire miglioramenti.</p><p> Per un'esperienza ottimale, inizia con una discussione, crea una comprensione condivisa e poi aggiungi un sondaggio quando sei pronto a raccogliere le posizioni delle persone.</p>"
+    standalone_disabled_helptext: "<p>Questo gruppo richiede che i sondaggi vengano avviati all'interno di una discussione.</p><p> Le discussioni aiutano le persone a comprendere il contesto, a porre domande e a condividere le proprie prospettive prima di votare. Questo porta a decisioni migliori.</p><p> Avvia prima una discussione, poi aggiungi un sondaggio quando sei pronto a raccogliere voti.</p><p> In alternativa, un amministratore di gruppo può abilitare i sondaggi autonomi tramite Impostazioni gruppo -> Autorizzazioni -> Consenti sondaggi senza discussione</p>"
   group_files_panel:
     no_files: Nessun file trovato
     filename: Nome del file

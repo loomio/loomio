@@ -323,6 +323,7 @@ fr:
       label: Mise en forme
       title: Apprenez à utiliser Markdown pour mettre en forme votre texte
     thread: Fil
+    discard_changes_to_this_text: Supprimer les modifications apportées à ce texte
   merge_accounts:
     modal:
       title: Fusionner les comptes
@@ -1982,12 +1983,12 @@ fr:
     need_vote: Besoin d’un vote
     no_polls: Pas de sondage trouvé
     standalone_disabled_title: Les sondages autonomes sont désactivés.
-    standalone_disabled_helptext: "<p>Ce groupe exige que les sondages soient lancés au sein d'une discussion.</p><p> Les discussions permettent aux citoyens de comprendre le contexte, de poser des questions et de partager leurs points de vue avant de voter. Cela conduit à de meilleures décisions.</p><p> Commencez par lancer une discussion, puis ajoutez un sondage lorsque vous serez prêt à recueillir des votes.</p>"
     start_discussion: Lancer une discussion
     standalone_warning_title: Envisagez d'abord d'entamer une discussion.
     start_poll_anyway: Lancez quand même le sondage
     start_discussion_instead: Lancez plutôt une discussion
     standalone_warning_helptext: "<p>Les sondages fonctionnent mieux lorsque les gens peuvent d'abord discuter du sujet.</p><p> Sans discussion, les électeurs ne peuvent ni poser de questions, ni exprimer leurs préoccupations, ni suggérer d'améliorations.</p><p> Pour une expérience optimale, commencez par une discussion, établissez une compréhension partagée, puis ajoutez un sondage lorsque vous serez prêt à recueillir les avis des participants.</p>"
+    standalone_disabled_helptext: "<p>Ce groupe exige que les sondages soient lancés au sein d'une discussion.</p><p> Les discussions permettent aux citoyens de comprendre le contexte, de poser des questions et de partager leurs points de vue avant de voter. Cela conduit à de meilleures décisions.</p><p> Commencez par lancer une discussion, puis ajoutez un sondage lorsque vous serez prêt à recueillir des votes.</p><p> Un administrateur de groupe peut également activer les sondages indépendants via Paramètres du groupe > Autorisations > Autoriser les sondages sans discussion</p>"
   group_files_panel:
     no_files: Pas de fichiers trouvés
     filename: Nom de fichier

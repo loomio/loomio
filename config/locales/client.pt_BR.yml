@@ -323,6 +323,7 @@ pt_BR:
       label: Formatação
       title: Aprenda como usar Markdown para formatar seu texto
     thread: Fio
+    discard_changes_to_this_text: Descartar alterações neste texto
   merge_accounts:
     modal:
       title: Mesclar contas
@@ -1984,12 +1985,12 @@ pt_BR:
     need_vote: Precisa de votação
     no_polls: Nenhuma consulta encontrada
     standalone_disabled_title: Enquetes independentes estão desativadas.
-    standalone_disabled_helptext: "<p>Este grupo exige que as enquetes sejam iniciadas dentro de uma discussão.</p><p> As discussões ajudam as pessoas a entender o contexto, fazer perguntas e compartilhar perspectivas antes da votação. Isso leva a decisões melhores.</p><p> Primeiro inicie uma discussão e, em seguida, adicione uma enquete quando estiver pronto para coletar votos.</p>"
     start_discussion: Inicie uma discussão
     standalone_warning_title: Considere iniciar uma discussão primeiro.
     start_poll_anyway: Comece a enquete de qualquer maneira
     start_discussion_instead: Inicie uma discussão.
     standalone_warning_helptext: "<p>As pesquisas funcionam melhor quando as pessoas podem discutir o assunto primeiro.</p><p> Sem debate, os eleitores não podem fazer perguntas, expressar preocupações ou sugerir melhorias.</p><p> Para uma melhor experiência, comece com uma discussão, construa um entendimento comum e, em seguida, adicione uma enquete quando estiver pronto para coletar as opiniões das pessoas.</p>"
+    standalone_disabled_helptext: "<p>Este grupo exige que as enquetes sejam iniciadas dentro de uma discussão.</p><p> As discussões ajudam as pessoas a entender o contexto, fazer perguntas e compartilhar perspectivas antes da votação. Isso leva a decisões melhores.</p><p> Primeiro inicie uma discussão e, em seguida, adicione uma enquete quando estiver pronto para coletar votos.</p><p> Alternativamente, um administrador do grupo pode ativar enquetes independentes em Configurações do grupo -> Permissões -> Permitir enquetes sem discussão.</p>"
   group_files_panel:
     no_files: Nenhum arquivo encontrado
     filename: Nome do arquivo

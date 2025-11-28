@@ -245,7 +245,7 @@ v-form(ref="form" @submit.prevent="submit")
       v-btn.discussion-form__edit-layout(v-if="discussion.id" @click="openEditLayout")
         span(v-t="'thread_arrangement_form.edit'")
       v-spacer
-      v-btn.mr-2(@click="discardDraft" variant="text")
+      v-btn.mr-2(@click="discardDraft" variant="text" :title="$t('common.discard_changes_to_this_text')")
         span(v-t="'common.reset'")
       v-btn.discussion-form__submit(
         variant="elevated"

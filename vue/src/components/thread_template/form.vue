@@ -243,6 +243,7 @@ v-form(ref="form" @submit.prevent="submit")
       v-btn.mr-2(
         @click="discardDraft"
         v-t="'common.reset'"
+        :title="$t('common.discard_changes_to_this_text')"
       )
       v-btn.thread-template-form__submit(
         variant="elevated"
