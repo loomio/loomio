@@ -163,7 +163,7 @@ export default
 </script>
 
 <template lang="pug">
-v-card.group-form(:title="group.parentId ? $t('group_form.new_subgroup') : $t('sidebar.start_group')")
+v-card.group-form(:title="group.parentId ? $t('group_form.start_subgroup_heading') : $t('group_form.start_group_heading')")
   .px-4
     p.text-medium-emphasis.pb-8
       span(v-if='!group.parentId')
