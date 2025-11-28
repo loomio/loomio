@@ -22,7 +22,8 @@ supported:
   - tr
   - uk
   - zh_TW
+  - zh_CN
 fallbacks:
-  zh: zh_TW
+  zh: zh_CN
   pt: pt_BR
   nl: nl_NL
