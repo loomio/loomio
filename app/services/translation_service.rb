@@ -21,7 +21,7 @@ class TranslationService
 
   def self.plain_text(model, field, recipient)
     if show_translation(model, recipient)
-      TranslationService.create(model: model, to: @recipient.locale).fields[String(field)]
+      TranslationService.create(model: model, to: recipient.locale).fields[String(field)]
     else
       model.send(field)
     end

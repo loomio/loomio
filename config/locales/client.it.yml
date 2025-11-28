@@ -582,6 +582,7 @@ it:
     showing_unread: Visualizzazione non letti
     add_comment: Aggiungi commento
     start_decision: Inizia la decisione
+    recenter: Più recentemente
   search_modal:
     all_content: Tutti i contenuti
     best_match: Migliore abbinamento
@@ -1966,6 +1967,13 @@ it:
     closed: Chiuso
     need_vote: Necessita voto
     no_polls: Nessuna votazione trovata
+    standalone_disabled_title: I sondaggi autonomi sono disabilitati
+    standalone_disabled_helptext: "<p>Questo gruppo richiede che i sondaggi vengano avviati all'interno di una discussione.</p><p> Le discussioni aiutano le persone a comprendere il contesto, a porre domande e a condividere le proprie prospettive prima di votare. Questo porta a decisioni migliori.</p><p> Avvia prima una discussione, poi aggiungi un sondaggio quando sei pronto a raccogliere voti.</p>"
+    start_discussion: Avvia una discussione
+    standalone_warning_title: Considera di iniziare prima una discussione
+    start_poll_anyway: Inizia comunque il sondaggio
+    start_discussion_instead: Avvia invece una discussione
+    standalone_warning_helptext: "<p>I sondaggi funzionano meglio quando le persone possono discutere per prime dell'argomento.</p><p> Senza una discussione, gli elettori non possono porre domande, sollevare preoccupazioni o suggerire miglioramenti.</p><p> Per un'esperienza ottimale, inizia con una discussione, crea una comprensione condivisa e poi aggiungi un sondaggio quando sei pronto a raccogliere le posizioni delle persone.</p>"
   group_files_panel:
     no_files: Nessun file trovato
     filename: Nome del file

@@ -110,8 +110,8 @@ GEM
       ruby2_keywords (>= 0.0.2)
     ast (2.4.3)
     aws-eventstream (1.4.0)
-    aws-partitions (1.1185.0)
-    aws-sdk-core (3.238.0)
+    aws-partitions (1.1186.0)
+    aws-sdk-core (3.239.0)
       aws-eventstream (~> 1, >= 1.3.0)
       aws-partitions (~> 1, >= 1.992.0)
       aws-sigv4 (~> 1.9)
@@ -122,7 +122,7 @@ GEM
     aws-sdk-kms (1.117.0)
       aws-sdk-core (~> 3, >= 3.234.0)
       aws-sigv4 (~> 1.5)
-    aws-sdk-s3 (1.204.0)
+    aws-sdk-s3 (1.205.0)
       aws-sdk-core (~> 3, >= 3.234.0)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.5)
@@ -151,7 +151,7 @@ GEM
     cld (0.13.0)
       ffi
     concurrent-ruby (1.3.5)
-    connection_pool (2.5.4)
+    connection_pool (2.5.5)
     crack (1.0.1)
       bigdecimal
       rexml
@@ -707,11 +707,11 @@ GEM
     sentry-rails (6.1.0)
       railties (>= 5.2.0)
       sentry-ruby (~> 6.1.0)
-    sentry-ruby (6.1.0)
+    sentry-ruby (6.1.1)
       bigdecimal
       concurrent-ruby (~> 1.0, >= 1.0.2)
-    sentry-sidekiq (6.1.0)
-      sentry-ruby (~> 6.1.0)
+    sentry-sidekiq (6.1.1)
+      sentry-ruby (~> 6.1.1)
       sidekiq (>= 5.0)
     sidekiq (6.5.12)
       connection_pool (>= 2.2.5, < 3)
@@ -735,6 +735,11 @@ GEM
     terminal-table (4.0.0)
       unicode-display_width (>= 1.1.1, < 4)
     thor (1.4.0)
+    thruster (0.1.16)
+    thruster (0.1.16-aarch64-linux)
+    thruster (0.1.16-arm64-darwin)
+    thruster (0.1.16-x86_64-darwin)
+    thruster (0.1.16-x86_64-linux)
     tilt (2.6.1)
     timeout (0.4.4)
     trailblazer-option (0.1.2)
@@ -865,6 +870,7 @@ DEPENDENCIES
   sprockets-rails
   stackprof
   terminal-table
+  thruster
   twitter-text!
   tzinfo-data
   uri (= 1.1.1)

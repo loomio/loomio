@@ -570,6 +570,7 @@ tr:
     showing_unread: Okunmamış gösteriliyor
     add_comment: Yorum ekle
     start_decision: Başlangıç kararı
+    recenter: Daha yakın zamanda
   search_modal:
     all_content: Tüm içerik
     best_match: En iyi eşleşme
@@ -1936,6 +1937,13 @@ tr:
     closed: Kapalı
     need_vote: Oy Gerekiyor
     no_polls: Anket bulunamadı
+    standalone_disabled_title: Bağımsız anketler devre dışı bırakıldı
+    standalone_disabled_helptext: "<p>Bu grup, bir tartışma içerisinde anketlerin başlatılmasını gerektirir.</p><p> Tartışmalar, insanların oy vermeden önce bağlamı anlamalarına, soru sormalarına ve bakış açılarını paylaşmalarına yardımcı olur. Bu da daha iyi kararlara yol açar.</p><p> Önce bir tartışma başlatın, ardından oy toplamaya hazır olduğunuzda bir anket ekleyin.</p>"
+    start_discussion: Bir tartışma başlatın
+    standalone_warning_title: Önce bir tartışma başlatmayı düşünün
+    start_poll_anyway: Anketi yine de başlat
+    start_discussion_instead: Bunun yerine bir tartışma başlatın
+    standalone_warning_helptext: "<p>Anketler, insanların konuyu önce tartışabildiği durumlarda daha iyi sonuç verir.</p><p> Tartışma olmadan seçmenler soru soramaz, endişelerini dile getiremez veya iyileştirme önerilerinde bulunamaz.</p><p> En iyi deneyim için bir tartışmayla başlayın, ortak bir anlayış oluşturun ve ardından insanların görüşlerini almaya hazır olduğunuzda bir anket ekleyin.</p>"
   group_files_panel:
     no_files: Hiçbir dosya bulunamadı
     filename: Dosya adı

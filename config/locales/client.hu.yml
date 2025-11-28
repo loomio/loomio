@@ -572,6 +572,7 @@ hu:
     showing_unread: Olvasatlanok megjelenítése
     add_comment: Hozzászólás hozzáadása
     start_decision: Döntés megkezdése
+    recenter: Újabban
   search_modal:
     all_content: Minden tartalom
     best_match: Legjobb találat
@@ -1943,6 +1944,13 @@ hu:
     closed: Zárva
     need_vote: Szavazásra van szükség
     no_polls: Nem található szavazás
+    standalone_disabled_title: Az önálló szavazások le vannak tiltva
+    standalone_disabled_helptext: "<p>Ebben a csoportban a szavazásokat egy beszélgetésen belül kell elindítani.</p><p> A beszélgetések segítenek az embereknek megérteni a kontextust, kérdéseket feltenni és megosztani a nézőpontjaikat a szavazás előtt. Ez jobb döntésekhez vezet.</p><p> Először indíts egy beszélgetést, majd adj hozzá egy szavazást, amikor készen állsz a szavazatok gyűjtésére.</p>"
+    start_discussion: Beszélgetés indítása
+    standalone_warning_title: Először is fontold meg a beszélgetés megkezdését
+    start_poll_anyway: Szavazás indítása mindenképpen
+    start_discussion_instead: Inkább indíts beszélgetést
+    standalone_warning_helptext: "<p>A közvélemény-kutatások akkor működnek a legjobban, ha az emberek először megvitathatják a témát.</p><p> Vita nélkül a választók nem tehetnek fel kérdéseket, nem fogalmazhatnak meg aggályokat, és nem javasolhatnak fejlesztéseket.</p><p> A legjobb élmény érdekében kezdj egy beszélgetéssel, építs közös megértést, majd adj hozzá egy szavazást, amikor készen állsz az emberek álláspontjának rögzítésére.</p>"
   group_files_panel:
     no_files: Nem található fájl
     filename: Fájlnév

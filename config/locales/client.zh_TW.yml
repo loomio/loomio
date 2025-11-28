@@ -580,6 +580,7 @@ zh_TW:
     showing_unread: 顯示未讀
     add_comment: 新增評論
     start_decision: 開始決定
+    recenter: 最近
   search_modal:
     all_content: 所有內容
     best_match: 最佳匹配
@@ -1969,14 +1970,19 @@ zh_TW:
     closed: 封閉
     need_vote: 需要投票
     no_polls: 找不到投票
+    standalone_disabled_title: 獨立投票功能已停用
+    standalone_disabled_helptext: "<p>本群組要求投票必須在討論中發起。</p><p>討論有助於人們在投票前了解背景、提出問題並分享觀點，從而做出更明智的決策。</p><p>先發起討論，準備收集投票後再加入投票。</p>"
+    start_discussion: 發起討論
+    standalone_warning_title: 不妨先發起討論。
+    start_poll_anyway: 無論如何，開始投票
+    start_discussion_instead: 不如發起一場討論。
+    standalone_warning_helptext: "<p>民意調查在人們能夠先討論相關話題的情況下效果最佳。</p><p>如果沒有討論，選民就無法提出問題、表達擔憂或提出改進建議。</p><p>為了獲得最佳體驗，先進行討論，建立共識，然後在準備好了解人們的立場時再添加投票。</p>"
   group_files_panel:
     no_files: 找不到檔案
     filename: 檔案名稱
     uploaded_by: 上傳由
     uploaded_at: 上傳於
-    delete_confirmation: '您確定您想要刪除此附件嗎？其將會從任何相關的留言或討論串中移除。此動作無法復原。
-
-      '
+    delete_confirmation: 您確定您想要刪除此附件嗎？其將會從任何相關的留言或討論串中移除。此動作無法復原。
   subgroups_panel:
     search_subgroups_of_name: 搜尋 %{name} 的子群組
     group_without_subgroups: "%{name} 無子群組"

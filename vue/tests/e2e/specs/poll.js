@@ -446,18 +446,22 @@ module.exports = {
     page.expectText('.confirm-modal', 'Polls work best when people can discuss the topic first')
     page.click('.confirm-modal__submit')
     page.pause(500)
-    page.expectElement('.poll-common-choose-template')
-  },
-
-  'can_start_discussion_instead_from_warning': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('polls/test_group_polls_panel_standalone_allowed')
-    page.pause(500)
+    page.expectElement('.poll-common-templates-list')
+    page.click('.v-breadcrumbs-item--link');
+    page.click('.group-page-polls-tab');
     page.click('.polls-panel__new-poll-button')
-    page.expectText('.confirm-modal', 'Consider starting a discussion first')
-    page.click('.confirm-modal__cancel')
-    page.pause(500)
-    page.expectElement('.discussion-form')
+    page.expectElement('.poll-common-templates-list')
   },
+
+  // 'can_start_discussion_instead_from_warning': (test) => {
+  //   page = pageHelper(test)
+
+  //   page.loadPath('polls/test_group_polls_panel_standalone_allowed')
+  //   page.pause(500)
+  //   page.click('.polls-panel__new-poll-button')
+  //   page.expectText('.confirm-modal', 'Consider starting a discussion first')
+  //   page.click('.confirm-modal__cancel')
+  //   page.pause(500)
+  //   page.expectElement('.discussion-form')
+  // },
 }

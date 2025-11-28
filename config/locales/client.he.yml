@@ -570,6 +570,7 @@ he:
     showing_unread: מציג דברים שלא נקראו
     add_comment: הוסף תגובה
     start_decision: החלטה להתחיל
+    recenter: לאחרונה
   search_modal:
     all_content: כל התוכן
     best_match: ההתאמה הטובה ביותר
@@ -1955,6 +1956,13 @@ he:
     closed: סגור
     need_vote: צריך הצבעה
     no_polls: לא נמצאו סקרים
+    standalone_disabled_title: סקרים עצמאיים מושבתים
+    standalone_disabled_helptext: <p style=";text-align:right;direction:rtl">קבוצה זו דורשת פתיחת סקרים בתוך דיון.</p><p style=";text-align:right;direction:rtl"> דיונים עוזרים לאנשים להבין את ההקשר, לשאול שאלות ולשתף נקודות מבט לפני ההצבעה. זה מוביל להחלטות טובות יותר.</p><p style=";text-align:right;direction:rtl"> התחל דיון קודם, ולאחר מכן הוסף סקר כשתהיה מוכן לאסוף קולות.</p>
+    start_discussion: התחל דיון
+    standalone_warning_title: שקול להתחיל דיון קודם כל
+    start_poll_anyway: התחל את הסקר בכל זאת
+    start_discussion_instead: תתחיל דיון במקום
+    standalone_warning_helptext: <p style=";text-align:right;direction:rtl">סקרים עובדים בצורה הטובה ביותר כאשר אנשים יכולים לדון בנושא קודם.</p><p style=";text-align:right;direction:rtl"> ללא דיון, מצביעים אינם יכולים לשאול שאלות, להעלות חששות או להציע שיפורים.</p><p style=";text-align:right;direction:rtl"> לקבלת החוויה הטובה ביותר, התחילו בדיון, בנו הבנה משותפת, ולאחר מכן הוסיפו סקר כשתהיו מוכנים ללכוד את עמדותיהם של אנשים.</p>
   group_files_panel:
     no_files: לא נמצאו קבצים
     filename: שם קובץ
