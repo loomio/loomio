@@ -161,7 +161,7 @@ export default {
       const actionName = this.poll.isNew() ? 'created' : 'updated';
       this.poll.setErrors({});
       this.setPollOptionPriority();
-      this.poll.pollOptionsAttributes = this.pollOptions.map((o) => mapKeys(o, (_, k) => snakeCase(k)))
+      this.poll.pollOptionsAttributes = this.pollOptions.map((o) => mapKeys(o, (_, k) => k.startsWith('_') ? k : snakeCase(k)))
       this.poll.save().then(data => {
         const poll = Records.polls.find(data.polls[0].id);
         if (this.redirectOnSave) { this.$router.replace(this.urlFor(poll)); }
