@@ -570,6 +570,7 @@ da:
     showing_unread: Viser ulæste
     add_comment: Tilføj kommentar
     start_decision: Startbeslutning
+    recenter: For nylig
   search_modal:
     all_content: Alt indhold
     best_match: Bedste match
@@ -1940,9 +1941,9 @@ da:
     standalone_disabled_helptext: "<p>Denne gruppe kræver, at afstemninger startes i en diskussion.</p><p> Diskussioner hjælper folk med at forstå konteksten, stille spørgsmål og dele perspektiver, inden de stemmer. Dette fører til bedre beslutninger.</p><p> Start først en diskussion, og tilføj derefter en afstemning, når du er klar til at indsamle stemmer.</p>"
     start_discussion: Start en diskussion
     standalone_warning_title: Overvej at starte en diskussion først
-    standalone_warning_helptext: "<p>Afstemninger fungerer bedst, når folk kan diskutere emnet først.</p><p> Uden en diskussion kan vælgerne ikke stille spørgsmål, rejse bekymringer eller foreslå forbedringer. Dette fører ofte til lavere deltagelse og mindre klare resultater.</p><p> Vi anbefaler at starte en diskussion, udvikle idéer sammen og derefter tilføje en afstemning, når I er klar.</p>"
     start_poll_anyway: Start afstemning alligevel
     start_discussion_instead: Start en diskussion i stedet
+    standalone_warning_helptext: "<p>Afstemninger fungerer bedst, når folk kan diskutere emnet først.</p><p> Uden en diskussion kan vælgerne ikke stille spørgsmål, rejse bekymringer eller foreslå forbedringer.</p><p> For at opnå den bedste oplevelse, start med en diskussion, opbyg fælles forståelse, og tilføj derefter en afstemning, når du er klar til at indsamle folks holdninger.</p>"
   group_files_panel:
     no_files: Ingen filer fundet
     filename: Filnavn

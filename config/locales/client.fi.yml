@@ -570,6 +570,7 @@ fi:
     showing_unread: Näytetään lukemattomat
     add_comment: Lisää kommentti
     start_decision: Aloita päätös
+    recenter: Viime aikoina
   search_modal:
     all_content: Kaikki sisältö
     best_match: Paras ottelu
@@ -1940,9 +1941,9 @@ fi:
     standalone_disabled_helptext: "<p>Tässä ryhmässä kyselyt on aloitettava keskustelun sisällä.</p><p> Keskustelut auttavat ihmisiä ymmärtämään kontekstia, esittämään kysymyksiä ja jakamaan näkökulmia ennen äänestämistä. Tämä johtaa parempiin päätöksiin.</p><p> Aloita ensin keskustelu ja lisää sitten kysely, kun olet valmis keräämään ääniä.</p>"
     start_discussion: Aloita keskustelu
     standalone_warning_title: Harkitse keskustelun aloittamista ensin
-    standalone_warning_helptext: "<p>Kyselyt toimivat parhaiten, kun ihmiset pääsevät keskustelemaan aiheesta ensin.</p><p> Ilman keskustelua äänestäjät eivät voi esittää kysymyksiä, nostaa esiin huolenaiheita tai ehdottaa parannuksia. Tämä johtaa usein alhaisempaan osallistumiseen ja vähemmän selkeisiin tuloksiin.</p><p> Suosittelemme aloittamaan keskustelun, kehittämään ideoita yhdessä ja lisäämään kyselyn, kun olet valmis.</p>"
     start_poll_anyway: Aloita kysely joka tapauksessa
     start_discussion_instead: Aloita keskustelu sen sijaan
+    standalone_warning_helptext: "<p>Kyselyt toimivat parhaiten, kun ihmiset pääsevät keskustelemaan aiheesta ensin.</p><p> Ilman keskustelua äänestäjät eivät voi esittää kysymyksiä, nostaa esiin huolenaiheita tai ehdottaa parannuksia.</p><p> Parhaan kokemuksen saavuttamiseksi aloita keskustelulla, rakenna yhteisymmärrystä ja lisää sitten kysely, kun olet valmis tallentamaan ihmisten kannanotot.</p>"
   group_files_panel:
     no_files: Tiedostoja ei löytynyt
     filename: Tiedoston nimi

@@ -574,6 +574,7 @@ pl:
     showing_unread: Wyświetlanie nieprzeczytanych
     add_comment: Dodaj komentarz
     start_decision: Rozpocznij decyzję
+    recenter: Niedawno
   search_modal:
     all_content: Cała zawartość
     best_match: Najlepszy mecz
@@ -1965,9 +1966,9 @@ pl:
     standalone_disabled_helptext: "<p>W przypadku tej grupy ankiety należy rozpoczynać w ramach dyskusji.</p><p> Dyskusje pomagają ludziom zrozumieć kontekst, zadawać pytania i dzielić się swoimi perspektywami przed głosowaniem. To prowadzi do podejmowania lepszych decyzji.</p><p> Najpierw rozpocznij dyskusję, a gdy będziesz gotowy zbierać głosy, dodaj ankietę.</p>"
     start_discussion: Rozpocznij dyskusję
     standalone_warning_title: Rozważ rozpoczęcie dyskusji na początek
-    standalone_warning_helptext: "<p>Ankiety działają najlepiej, gdy ludzie mogą najpierw przedyskutować dany temat.</p><p> Bez dyskusji wyborcy nie mogą zadawać pytań, zgłaszać obaw ani proponować ulepszeń. To często prowadzi do niższej frekwencji i mniej jednoznacznych wyników.</p><p> Zalecamy rozpoczęcie dyskusji, wspólne opracowanie pomysłów, a następnie, gdy będziecie gotowi, dodanie ankiety.</p>"
     start_poll_anyway: Rozpocznij ankietę mimo wszystko
     start_discussion_instead: Zamiast tego rozpocznij dyskusję
+    standalone_warning_helptext: "<p>Ankiety działają najlepiej, gdy ludzie mogą najpierw przedyskutować dany temat.</p><p> Bez dyskusji wyborcy nie mogą zadawać pytań, zgłaszać obaw ani proponować ulepszeń.</p><p> Aby uzyskać najlepsze rezultaty, zacznij od dyskusji, zbuduj wspólne zrozumienie, a następnie dodaj ankietę, gdy będziesz gotowy poznać opinie uczestników.</p>"
   group_files_panel:
     no_files: Nie znaleziono plików
     filename: 'Nazwa pliku '

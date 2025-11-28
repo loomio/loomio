@@ -570,6 +570,7 @@ sl:
     showing_unread: Prikaz neprebranih
     add_comment: Dodaj komentar
     start_decision: Začni odločitev
+    recenter: V zadnjem času
   search_modal:
     all_content: Vse vsebine
     best_match: Najboljše ujemanje
@@ -1940,9 +1941,9 @@ sl:
     standalone_disabled_helptext: "<p>Ta skupina zahteva, da se ankete začnejo znotraj razprave.</p><p> Razprave pomagajo ljudem razumeti kontekst, postavljati vprašanja in deliti stališča pred glasovanjem. To vodi do boljših odločitev.</p><p> Najprej začnite razpravo, nato pa dodajte anketo, ko boste pripravljeni zbirati glasove.</p>"
     start_discussion: Začni razpravo
     standalone_warning_title: Najprej razmislite o začetku razprave
-    standalone_warning_helptext: "<p>Ankete delujejo najbolje, kadar se ljudje najprej lahko pogovorijo o temi.</p><p> Brez razprave volivci ne morejo postavljati vprašanj, izražati pomislekov ali predlagati izboljšav. To pogosto vodi do manjše udeležbe in manj jasnih rezultatov.</p><p> Priporočamo, da začnete razpravo, skupaj razvijete ideje in nato, ko boste pripravljeni, dodate anketo.</p>"
     start_poll_anyway: Vseeno začni anketo
     start_discussion_instead: Začnite raje razpravo
+    standalone_warning_helptext: "<p>Ankete delujejo najbolje, kadar se ljudje najprej lahko pogovorijo o temi.</p><p> Brez razprave volivci ne morejo postavljati vprašanj, izražati pomislekov ali predlagati izboljšav.</p><p> Za najboljšo izkušnjo začnite z razpravo, zgradite skupno razumevanje in nato dodajte anketo, ko ste pripravljeni zajeti stališča ljudi.</p>"
   group_files_panel:
     no_files: Ni datotek
     filename: Ime datoteke

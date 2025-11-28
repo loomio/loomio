@@ -574,6 +574,7 @@ nl_NL:
     showing_unread: Ongelezen weergeven
     add_comment: Reactie toevoegen
     start_decision: Startbeslissing
+    recenter: Recenter
   search_modal:
     all_content: Alle inhoud
     best_match: Beste overeenkomst
@@ -1965,9 +1966,9 @@ nl_NL:
     standalone_disabled_helptext: "<p>Voor deze groep is het nodig dat er peilingen binnen een discussie worden gestart.</p><p> Discussies helpen mensen de context te begrijpen, vragen te stellen en perspectieven te delen voordat ze stemmen. Dit leidt tot betere beslissingen.</p><p> Begin eerst een discussie en voeg vervolgens een poll toe als u klaar bent om stemmen te verzamelen.</p>"
     start_discussion: Start een discussie
     standalone_warning_title: Overweeg om eerst een discussie te starten
-    standalone_warning_helptext: "<p>Enquêtes werken het beste als mensen eerst over het onderwerp kunnen discussiëren.</p><p> Zonder discussie kunnen kiezers geen vragen stellen, zorgen uiten of verbeteringen voorstellen. Dit leidt vaak tot een lagere deelname en minder duidelijke uitkomsten.</p><p> Wij adviseren om een discussie te starten, samen ideeën te ontwikkelen en, als je er klaar voor bent, een poll toe te voegen.</p>"
     start_poll_anyway: Toch een poll starten
     start_discussion_instead: Begin in plaats daarvan een discussie
+    standalone_warning_helptext: "<p>Enquêtes werken het beste als mensen eerst over het onderwerp kunnen discussiëren.</p><p> Zonder discussie kunnen kiezers geen vragen stellen, zorgen uiten of verbeteringen voorstellen.</p><p> Voor de beste ervaring begint u met een discussie, bouwt u aan een gedeeld begrip en voegt u vervolgens een poll toe wanneer u klaar bent om de standpunten van mensen vast te leggen.</p>"
   group_files_panel:
     no_files: Geen bestanden gevonden
     filename: Bestandsnaam
