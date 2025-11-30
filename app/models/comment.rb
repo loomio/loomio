@@ -73,6 +73,7 @@ class Comment < ApplicationRecord
   delegate :name, to: :user, prefix: :author
   delegate :author, to: :parent, prefix: :parent, allow_nil: true
   delegate :group, to: :discussion
+  delegate :title, to: :discussion
   delegate :group_id, to: :discussion, allow_nil: true
   delegate :guests, to: :discussion
   delegate :members, to: :discussion
