@@ -51,11 +51,26 @@ class UserService
 
   def self.set_volume(user:, actor:, params:)
     actor.ability.authorize! :update, user
-    user.update!(default_membership_volume: params[:volume])
+    
+    # Support both old 'volume' param and new 'email_volume'/'push_volume' params
+    email_vol = params[:email_volume] || params[:volume]
+    push_vol = params[:push_volume] || params[:volume]
+    
+    user_updates = {}
+    user_updates[:default_membership_email_volume] = email_vol if email_vol
+    user_updates[:default_membership_push_volume] = push_vol if push_vol
+    user.update!(user_updates) if user_updates.any?
+    
     if params[:apply_to_all]
-      user.memberships.update_all(volume: Membership.volumes[params[:volume]])
-      user.discussion_readers.update_all(volume: Membership.volumes[params[:volume]])
-      user.stances.update_all(volume: Membership.volumes[params[:volume]])
+      updates = {}
+      updates[:email_volume] = Membership.email_volumes[email_vol] if email_vol
+      updates[:push_volume] = Membership.push_volumes[push_vol] if push_vol
+      
+      if updates.any?
+        user.memberships.update_all(updates)
+        user.discussion_readers.update_all(updates)
+        user.stances.update_all(updates)
+      end
     end
     EventBus.broadcast('user_set_volume', user, actor, params)
   end

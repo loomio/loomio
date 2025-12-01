@@ -483,6 +483,7 @@ GEM
     oga (3.4)
       ast
       ruby-ll (~> 2.1)
+    openssl (3.3.2)
     orm_adapter (0.5.0)
     os (1.1.4)
     ostruct (0.6.3)
@@ -770,6 +771,9 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
+    web-push (3.0.2)
+      jwt (~> 3.0)
+      openssl (~> 3.0)
     webmock (3.26.1)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
@@ -878,6 +882,7 @@ DEPENDENCIES
   victor
   video_info
   web-console
+  web-push
   webmock
 
 RUBY VERSION

@@ -1,5 +1,6 @@
 class Events::NewComment < Event
   include Events::Notify::ByEmail
+  include Events::Notify::ByWebPush
   include Events::Notify::Mentions
   include Events::Notify::Chatbots
   include Events::Notify::Subscribers

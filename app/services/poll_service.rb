@@ -183,7 +183,8 @@ class PollService
         poll: poll,
         inviter: actor,
         guest: !group_member_ids.include?(user.id),
-        volume: volumes[user.id] || user.default_membership_volume,
+        email_volume: volumes[user.id] || user.default_membership_email_volume,
+        push_volume: volumes[user.id] || user.default_membership_push_volume,
         latest: true,
         reason_format: user.default_format,
         created_at: Time.zone.now

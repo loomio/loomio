@@ -48,6 +48,7 @@ gem 'activerecord-import', '2.2.0'
 gem 'discriminator', '~> 0.1.1'
 gem 'icalendar'
 gem 'rack-attack'
+gem 'web-push'
 gem 'bootsnap', require: false
 gem 'redis-objects'
 gem 'redis-rails'

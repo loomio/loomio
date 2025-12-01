@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_11_19_022406) do
+ActiveRecord::Schema[7.2].define(version: 2025_11_30_070816) do
   create_schema "pghero"
 
   # These are extensions that must be enabled in order to support this database
@@ -225,7 +225,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_11_19_022406) do
     t.integer "discussion_id", null: false
     t.datetime "last_read_at", precision: nil
     t.integer "last_read_sequence_id", default: 0, null: false
-    t.integer "volume", default: 2, null: false
+    t.integer "email_volume", default: 2, null: false
     t.boolean "participating", default: false, null: false
     t.datetime "dismissed_at", precision: nil
     t.string "read_ranges_string"
@@ -236,6 +236,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_11_19_022406) do
     t.datetime "accepted_at", precision: nil
     t.integer "revoker_id"
     t.boolean "guest", default: false, null: false
+    t.integer "push_volume", default: 2, null: false
     t.index ["discussion_id"], name: "index_discussion_readers_discussion_id"
     t.index ["guest"], name: "discussion_readers_guests", where: "(guest = true)"
     t.index ["inviter_id"], name: "inviter_id_not_null", where: "(inviter_id IS NOT NULL)"
@@ -540,7 +541,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_11_19_022406) do
     t.datetime "revoked_at", precision: nil
     t.integer "inbox_position", default: 0
     t.boolean "admin", default: false, null: false
-    t.integer "volume"
+    t.integer "email_volume"
     t.jsonb "experiences", default: {}, null: false
     t.integer "invitation_id"
     t.string "token"
@@ -549,12 +550,15 @@ ActiveRecord::Schema[7.2].define(version: 2025_11_19_022406) do
     t.datetime "saml_session_expires_at", precision: nil
     t.integer "revoker_id"
     t.boolean "delegate", default: false, null: false
+    t.integer "push_volume", default: 2, null: false
     t.index ["created_at"], name: "index_memberships_on_created_at"
+    t.index ["email_volume"], name: "index_memberships_on_email_volume"
     t.index ["group_id", "user_id"], name: "index_memberships_on_group_id_and_user_id", unique: true
     t.index ["inviter_id"], name: "index_memberships_on_inviter_id"
+    t.index ["push_volume"], name: "index_memberships_on_push_volume"
     t.index ["token"], name: "index_memberships_on_token", unique: true
-    t.index ["user_id", "volume"], name: "index_memberships_on_user_id_and_volume"
-    t.index ["volume"], name: "index_memberships_on_volume"
+    t.index ["user_id", "email_volume"], name: "index_memberships_on_user_id_and_email_volume"
+    t.index ["user_id", "push_volume"], name: "index_memberships_on_user_id_and_push_volume"
   end
 
   create_table "notifications", id: :serial, force: :cascade do |t|
@@ -869,7 +873,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_11_19_022406) do
     t.datetime "revoked_at", precision: nil
     t.boolean "admin", default: false, null: false
     t.integer "inviter_id"
-    t.integer "volume", default: 2, null: false
+    t.integer "email_volume", default: 2, null: false
     t.datetime "accepted_at", precision: nil
     t.string "content_locale"
     t.jsonb "link_previews", default: [], null: false
@@ -877,6 +881,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_11_19_022406) do
     t.integer "revoker_id"
     t.boolean "guest", default: false, null: false
     t.boolean "none_of_the_above", default: false, null: false
+    t.integer "push_volume", default: 2, null: false
     t.index ["guest"], name: "stances_guests", where: "(guest = true)"
     t.index ["participant_id"], name: "index_stances_on_participant_id"
     t.index ["poll_id", "cast_at"], name: "index_stances_on_poll_id_and_cast_at", order: "NULLS FIRST"
@@ -1015,7 +1020,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_11_19_022406) do
     t.string "email_api_key", limit: 255
     t.boolean "email_when_mentioned", default: true, null: false
     t.boolean "email_on_participation", default: false, null: false
-    t.integer "default_membership_volume", default: 2, null: false
+    t.integer "default_membership_email_volume", default: 2, null: false
     t.string "country"
     t.string "region"
     t.string "city"
@@ -1048,6 +1053,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_11_19_022406) do
     t.string "email_sha256"
     t.integer "complaints_count", default: 0, null: false
     t.boolean "auto_translate", default: true, null: false
+    t.integer "default_membership_push_volume", default: 2, null: false
     t.index ["api_key"], name: "index_users_on_api_key"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["email_verified"], name: "index_users_on_email_verified"
@@ -1067,6 +1073,17 @@ ActiveRecord::Schema[7.2].define(version: 2025_11_19_022406) do
     t.datetime "created_at", precision: nil
     t.jsonb "object_changes"
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
+  end
+
+  create_table "web_push_subscriptions", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.text "endpoint", null: false
+    t.string "p256dh_key", null: false
+    t.string "auth_key", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "endpoint"], name: "index_web_push_subscriptions_on_user_id_and_endpoint", unique: true
+    t.index ["user_id"], name: "index_web_push_subscriptions_on_user_id"
   end
 
   create_table "webhooks", force: :cascade do |t|
@@ -1090,4 +1107,5 @@ ActiveRecord::Schema[7.2].define(version: 2025_11_19_022406) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "web_push_subscriptions", "users"
 end

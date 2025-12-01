@@ -3,6 +3,7 @@ class Events::PollCreated < Event
   include Events::Notify::Mentions
   include Events::Notify::Chatbots
   include Events::Notify::ByEmail
+  include Events::Notify::ByWebPush
   include Events::Notify::InApp
   include Events::Notify::Subscribers
 

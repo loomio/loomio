@@ -4,6 +4,8 @@ class MembershipSerializer < ApplicationSerializer
              :user_id,
              :inviter_id,
              :volume,
+             :email_volume,
+             :push_volume,
              :admin,
              :delegate,
              :experiences,

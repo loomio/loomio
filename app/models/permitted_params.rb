@@ -20,6 +20,7 @@ class PermittedParams < Struct.new(:params)
     [:name, :avatar_kind, :email, :password, :password_confirmation, :current_password,
      :remember_me, :uploaded_avatar, :username, :short_bio, :short_bio_format, :location,
      :autodetect_time_zone, :time_zone, :selected_locale, :email_when_mentioned, :default_membership_volume,
+     :default_membership_email_volume, :default_membership_push_volume,
      :email_catch_up_day, :has_password, :has_token, :email_status,
      :email_when_proposal_closing_soon, :email_new_discussions_and_proposals, :email_on_participation, :email_newsletter,
      :date_time_pref, :bot, :auto_translate,
@@ -166,11 +167,11 @@ class PermittedParams < Struct.new(:params)
   end
 
   def membership_attributes
-    [:title, :volume, :apply_to_all, :set_default]
+    [:title, :volume, :email_volume, :push_volume, :apply_to_all, :set_default]
   end
 
   def discussion_reader_attributes
-    [:discussion_id, :volume]
+    [:discussion_id, :volume, :email_volume, :push_volume]
   end
 
   def group_attributes

@@ -15,6 +15,8 @@ class StanceSerializer < ApplicationSerializer
              :attachments,
              :link_previews,
              :volume,
+             :email_volume,
+             :push_volume,
              :inviter_id,
              :poll_id,
              :participant_id,
@@ -55,7 +57,15 @@ class StanceSerializer < ApplicationSerializer
   end
 
   def volume
-    object[:volume]
+    object[:email_volume]
+  end
+  
+  def email_volume
+    object[:email_volume]
+  end
+  
+  def push_volume
+    object[:push_volume]
   end
 
   def include_reason?

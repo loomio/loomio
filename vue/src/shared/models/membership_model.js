@@ -17,7 +17,9 @@ export default class MembershipModel extends BaseModel {
       groupId: null,
       archivedAt: null,
       inviterId: null,
-      volume: null
+      volume: null,
+      emailVolume: null,
+      pushVolume: null
     };
   }
 
@@ -44,15 +46,17 @@ export default class MembershipModel extends BaseModel {
     this.processing = true;
     return Records.memberships.remote.patchMember(this.keyOrId(), 'set_volume', {
       volume,
+      email_volume: volume,
+      push_volume: volume,
       apply_to_all: applyToAll,
       unsubscribe_token: this.user().unsubscribeToken
     }
     ).then(() => {
       if (applyToAll) {
-        Records.discussions.collection.find({ groupId: { $in: this.group().organisationIds() } }).forEach(discussion => discussion.update({discussionReaderVolume: null}));
-        return each(this.user().memberships(), membership => membership.update({volume}));
+        Records.discussions.collection.find({ groupId: { $in: this.group().organisationIds() } }).forEach(discussion => discussion.update({discussionReaderVolume: null, discussionReaderEmailVolume: null, discussionReaderPushVolume: null}));
+        return each(this.user().memberships(), membership => membership.update({volume, emailVolume: volume, pushVolume: volume}));
       } else {
-        return each(this.group().discussions(), discussion => discussion.update({discussionReaderVolume: null}));
+        return each(this.group().discussions(), discussion => discussion.update({discussionReaderVolume: null, discussionReaderEmailVolume: null, discussionReaderPushVolume: null}));
       }
   }).finally(() => {
       return this.processing = false;
@@ -66,7 +70,7 @@ export default class MembershipModel extends BaseModel {
   }
 
   isMuted() {
-    return this.volume === 'mute';
+    return (this.emailVolume || this.volume) === 'mute';
   }
 
   beforeRemove() {

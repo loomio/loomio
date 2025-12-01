@@ -95,13 +95,15 @@ export default class UserModel extends BaseModel {
     this.processing = true;
     return Records[this.constructor.plural].remote.post('set_volume', {
       volume,
+      email_volume: volume,
+      push_volume: volume,
       apply_to_all: applyToAll,
       unsubscribe_token: this.unsubscribeToken
     }
     ).then(() => {
       if (!applyToAll) { return; }
-      this.allThreads().forEach(thread => thread.update({discussionReaderVolume: null}));
-      return this.memberships().forEach(membership => membership.update({volume}));
+      this.allThreads().forEach(thread => thread.update({discussionReaderVolume: null, discussionReaderEmailVolume: null, discussionReaderPushVolume: null}));
+      return this.memberships().forEach(membership => membership.update({volume, emailVolume: volume, pushVolume: volume}));
     }).finally(() => {
       return this.processing = false;
     });

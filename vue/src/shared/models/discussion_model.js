@@ -213,7 +213,7 @@ export default class DiscussionModel extends BaseModel {
     return Records.memberships.find({userId: AppConfig.currentUserId, groupId: this.groupId})[0];
   }
 
-  volume() { return this.discussionReaderVolume; }
+  volume() { return this.discussionReaderEmailVolume || this.discussionReaderVolume; }
 
   saveVolume(volume, applyToAll) {
     if (applyToAll == null) { applyToAll = false; }
@@ -221,8 +221,16 @@ export default class DiscussionModel extends BaseModel {
     if (applyToAll) {
       return this.membership().saveVolume(volume).finally(() => { return this.processing = false; });
     } else {
-      if (volume != null) { this.discussionReaderVolume = volume; }
-      return Records.discussions.remote.patchMember(this.keyOrId(), 'set_volume', { volume: this.discussionReaderVolume }).finally(() => {
+      if (volume != null) { 
+        this.discussionReaderVolume = volume;
+        this.discussionReaderEmailVolume = volume;
+        this.discussionReaderPushVolume = volume;
+      }
+      return Records.discussions.remote.patchMember(this.keyOrId(), 'set_volume', { 
+        volume: this.discussionReaderVolume,
+        email_volume: this.discussionReaderEmailVolume,
+        push_volume: this.discussionReaderPushVolume
+      }).finally(() => {
         return this.processing = false;
       });
     }

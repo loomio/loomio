@@ -6,6 +6,8 @@ class DiscussionReaderSerializer < ApplicationSerializer
              :last_read_at,
              :dismissed_at,
              :volume,
+             :email_volume,
+             :push_volume,
              :inviter_id,
              :guest,
              :admin,
@@ -23,6 +25,14 @@ class DiscussionReaderSerializer < ApplicationSerializer
   end
 
   def volume
-    object[:volume]
+    object[:email_volume]
+  end
+  
+  def email_volume
+    object[:email_volume]
+  end
+  
+  def push_volume
+    object[:push_volume]
   end
 end

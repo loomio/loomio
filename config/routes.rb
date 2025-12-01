@@ -307,6 +307,8 @@ Rails.application.routes.draw do
         post :viewed, on: :collection
       end
 
+      resources :web_push_subscriptions, only: [:create, :destroy]
+
       resources :announcements, only: [:create] do
         collection do
           get :audience

@@ -1,4 +1,11 @@
 FactoryBot.define do
+  factory :web_push_subscription do
+    user { nil }
+    endpoint { "MyText" }
+    p256dh_key { "MyString" }
+    auth_key { "MyString" }
+  end
+
 
   factory :membership do |m|
     m.user { |u| u.association(:user)}

@@ -2,6 +2,7 @@ class Events::NewDiscussion < Event
   include Events::LiveUpdate
   include Events::Notify::InApp
   include Events::Notify::ByEmail
+  include Events::Notify::ByWebPush
   include Events::Notify::Mentions
   include Events::Notify::Subscribers
   include Events::Notify::Chatbots
