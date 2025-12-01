@@ -1,5 +1,6 @@
 ---
 zh_TW:
+  hello: 您好
   start_trial:
     title: 開始免費試用 Loomio
     intro: 感謝您對 Loomio 的興趣。我們很高興為您提供 %{day} 天的免費試用，以便您了解 Loomio 是否適合您的組織。
@@ -220,6 +221,7 @@ zh_TW:
     groups: 群組
     organization: 組織
     organizations: 組織
+    thread: 討論串
     threads: 討論串
     decisions: 決策
     settings: 設定
@@ -2184,9 +2186,9 @@ zh_TW:
     consent: 同意
     abstain: 棄權
     unsure: 不確定
-    disagree: 反對
-    objection: 反對
-    object: 目的
+    disagree: 不同意
+    objection: 異議
+    object: 反對
     block: 阻擋
     no_voting: 沒有投票
   poll_count_form:
