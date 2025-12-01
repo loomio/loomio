@@ -231,13 +231,13 @@ zh_CN:
       pm: 下午
     closing_in: 关闭 %{time}
     closed_ago: 已关闭 %{time}
-    volume: 体积
-    notification_volume: 通知量
-    group: 群
-    thread: 帖子
-    groups: 群
+    volume: 容量
+    notification_volume: 通知容量
+    group: 群组
+    groups: 群组
     organization: 组织
     organizations: 组织
+    thread: 帖子
     threads: 帖子
     decisions: 决策
     settings: 设置
