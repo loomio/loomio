@@ -522,6 +522,7 @@ nl_NL:
     public_privacy_notice: Je reactie is zichtbaar voor iedereen op het web.
     sign_in: Log in om mee te praten
     add_a_comment: Voeg een opmerking toe
+    share_your_thoughts: Deel uw gedachten…
   thread_nav:
     participants: Deelnemers
   sidebar:

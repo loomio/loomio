@@ -518,6 +518,7 @@ fi:
     public_privacy_notice: Sinun kommenttisi tulee olemaan näkyvillä kaikille webissä.
     sign_in: Kirjaudu sisään liittyäksesi keskusteluun
     add_a_comment: Lisää kommentti
+    share_your_thoughts: Jaa ajatuksesi…
   thread_nav:
     participants: Osallistujat
   sidebar:

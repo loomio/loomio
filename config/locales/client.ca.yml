@@ -522,6 +522,7 @@ ca:
     public_privacy_notice: El comentari serà visible per a tothom.
     sign_in: Inicieu la sessió per unir-vos a la conversa
     add_a_comment: Afegeix un comentari
+    share_your_thoughts: Comparteix els teus pensaments…
   thread_nav:
     participants: Participants
   sidebar:

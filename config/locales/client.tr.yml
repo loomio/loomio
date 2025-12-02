@@ -518,6 +518,7 @@ tr:
     public_privacy_notice: Yorumunuz web üzerindeki herkese görünür olacak.
     sign_in: Konuşmaya katılmak için giriş yapın
     add_a_comment: Yorum ekle
+    share_your_thoughts: Düşüncelerinizi paylaşın…
   thread_nav:
     participants: Katılımcılar
   sidebar:
