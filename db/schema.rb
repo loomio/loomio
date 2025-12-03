@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_11_19_022406) do
+ActiveRecord::Schema[7.2].define(version: 2025_12_03_031449) do
   create_schema "pghero"
 
   # These are extensions that must be enabled in order to support this database
@@ -1047,7 +1047,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_11_19_022406) do
     t.boolean "autodetect_time_zone", default: true, null: false
     t.string "email_sha256"
     t.integer "complaints_count", default: 0, null: false
-    t.boolean "auto_translate", default: true, null: false
+    t.boolean "auto_translate", default: false, null: false
     t.index ["api_key"], name: "index_users_on_api_key"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["email_verified"], name: "index_users_on_email_verified"
