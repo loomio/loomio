@@ -16,7 +16,6 @@ export default {
     return {
       actor: Session.user(),
       canSubmit: true,
-      shouldReset: false,
       processing: false
     };
   },
@@ -54,7 +53,7 @@ export default {
         Flash.success(flashMessage, {name: this.comment.isReply() ? this.comment.parent().author().nameOrUsername() : undefined});
         setTimeout(() => {
           this.$emit('comment-submitted');
-          this.shouldReset = !this.shouldReset;
+          EventBus.$emit('deleteDraft', 'comment', this.comment.id, 'body');
         });
       }).catch(err => {
         Flash.error('common.something_went_wrong');
@@ -79,7 +78,7 @@ export default {
       field="body"
       :placeholder="placeholder"
       :autofocus="autofocus"
-      :should-reset="shouldReset")
+    )
       template(v-slot:actions)
         v-btn.mr-2(
           variant="text"

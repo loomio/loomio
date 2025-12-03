@@ -1,247 +1,259 @@
-<script lang="js">
+<script setup lang="js">
+import { ref, computed, onMounted } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
 import AppConfig from '@/shared/services/app_config';
 import Session from '@/shared/services/session';
-import { mapKeys, without, some, pick, snakeCase } from 'lodash-es';
+import { mapKeys, without, some, pick, snakeCase, pickBy, identity } from 'lodash-es';
 import { I18n } from '@/i18n';
 import Flash from '@/shared/services/flash';
 import Records from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
+import LmoUrlService from '@/shared/services/lmo_url_service';
 import { addMinutes, intervalToDuration, formatDuration, addHours, isAfter, startOfHour, setHours } from 'date-fns';
 import PollTemplateInfoPanel  from '@/components/poll_template/info_panel';
 import { HandleDirective } from 'vue-slicksort';
-import UrlFor from '@/mixins/url_for';
-import WatchRecords from '@/mixins/watch_records';
+import { useWatchRecords } from '@/composables/useWatchRecords';
 
-export default {
-  mixins: [UrlFor, WatchRecords],
-  directives: { handle: HandleDirective },
-  components: { PollTemplateInfoPanel },
+const props = defineProps({
+  poll: Object,
+  redirectOnSave: Boolean
+});
 
-  props: {
-    poll: Object,
-    shouldReset: Boolean,
-    redirectOnSave: Boolean
-  },
+const emit = defineEmits(['setPoll', 'saveSuccess']);
 
-  mounted() {
-    Records.users.findOrFetchGroups();
+const router = useRouter();
+const route = useRoute();
 
-    Records.pollTemplates.findOrFetchByKeyOrId(this.poll.pollTemplateKeyOrId()).then(template => {
-      this.pollTemplate = template;
-    });
+// url_for mixin functionality
+const urlFor = (model, action, params) => LmoUrlService.route({model, action, params});
+const mergeQuery = (obj) => ({query: pickBy(Object.assign({}, route.query, obj), identity)});
 
-    this.watchRecords({
-      collections: ['groups', 'memberships'],
-      query: () => {
-        return this.groupItems = [
-          {title: this.$t('discussion_form.none_invite_only_discussion'), value: null}
-        ].concat(Session.user().groups().filter( g => AbilityService.canStartPoll(g)).map(g => ({
-          title: g.fullName,
-          value: g.id
-        })));
-    }});
-  },
+// watch_records composable
+const { watchRecords } = useWatchRecords();
 
-  data() {
-    return {
-      loading: false,
-      newOption: null,
-      lastPollType: this.poll.pollType,
-      pollOptions: this.poll.pollOptionsAttributes || this.poll.clonePollOptions(),
-      groupItems: [],
-      showAdvanced: false,
-      pollTemplate: null,
+// Template refs
+const form = ref(null);
 
-      currentHideResults: this.poll.hideResults,
-      hideResultsItems: [
-        { title: this.$t('poll_common_card.do_not_hide_results'), value: 'off' },
-        { title: this.$t('poll_common_card.until_you_vote'), value: 'until_vote' },
-        { title: this.$t('poll_common_card.until_voting_is_closed'), value: 'until_closed' }
-      ],
-      newDateOption: startOfHour(setHours(new Date(), 12)),
-      minDate: new Date(),
-      closingAtWas: null
-    };
-  },
+// Data
+const loading = ref(false);
+const newOption = ref(null);
+const lastPollType = ref(props.poll.pollType);
+const pollOptions = ref(props.poll.pollOptionsAttributes || props.poll.clonePollOptions());
+const groupItems = ref([]);
+const showAdvanced = ref(false);
+const pollTemplate = ref(null);
+const currentHideResults = ref(props.poll.hideResults);
+const hideResultsItems = ref([
+  { title: I18n.global.t('poll_common_card.do_not_hide_results'), value: 'off' },
+  { title: I18n.global.t('poll_common_card.until_you_vote'), value: 'until_vote' },
+  { title: I18n.global.t('poll_common_card.until_voting_is_closed'), value: 'until_closed' }
+]);
+const newDateOption = ref(startOfHour(setHours(new Date(), 12)));
+const minDate = ref(new Date());
+const closingAtWas = ref(null);
 
-  methods: {
-    validate(field) {
-      return [ () => this.poll.errors[field] === undefined || this.poll.errors[field][0] ]
-    },
-    discardDraft() {
-      if (confirm(I18n.global.t('formatting.confirm_discard'))) {
-        EventBus.$emit('resetDraft', 'poll', this.poll.id, 'details', this.poll.details);
-      }
-    },
+// Methods
+const validate = (field) => {
+  return [ () => props.poll.errors[field] === undefined || props.poll.errors[field][0] ];
+};
 
-    optionHasVotes(option) {
-      return (this.poll.results.find(o => o.id === option.id) || {voter_count: 0}).voter_count > 0;
-    },
-
-    setPollOptionPriority() {
-      let i = 0;
-      this.pollOptions.forEach(o => o.priority = 0);
-      this.visiblePollOptions.forEach(o => o.priority = i++);
-    },
-
-    removeOption(option) {
-      if (this.optionHasVotes(option)) {
-        if (!confirm(this.$t("poll_common_form.option_has_votes_confirm_delete"))) { return; }
-      }
-
-      this.newOption = null;
-      if (option.id) {
-        option.name = '';
-        option.meaning = '';
-        option['_destroy'] = 1;
-      } else {
-        this.pollOptions = without(this.pollOptions, option);
-      }
-    },
-
-    addDateOption() {
-      setTimeout(() => {
-        const optionName = this.newDateOption.toJSON();
-        if (some(this.pollOptions, o => o.name === optionName)) {
-          Flash.error('poll_poll_form.option_already_added');
-        } else {
-          this.pollOptions.push({name: optionName});
-        }
-      });
-    },
-
-    addOption() {
-      const option = {
-        name: '',
-        meaning: '',
-        prompt: '',
-        icon: null,
-        testOperator: null,
-        testPercent: null,
-        testAgainst: null
-      };
-
-      EventBus.$emit('openModal', {
-        component: 'PollOptionForm',
-        props: {
-          pollOption: option,
-          poll: this.poll,
-          submitFn: option => {
-            if (some(this.pollOptions, o => o.name.toLowerCase() === option.name.toLowerCase())) {
-              Flash.error('poll_poll_form.option_already_added');
-            } else {
-              this.pollOptions.push(option);
-            }
-          }
-        }
-      }
-      );
-    },
-
-    editOption(option) {
-      const clone = pick(option, 'name', 'icon', 'meaning', 'prompt', 'testOperator', 'testPercent', 'testAgainst');
-
-      EventBus.$emit('openModal', {
-        component: 'PollOptionForm',
-        props: {
-          edit: true,
-          pollOption: clone,
-          poll: this.poll,
-          submitFn: clone => {
-            Object.assign(option, clone);
-          }
-        }
-      }
-      );
-    },
-
-    submit() {
-      this.loading = true;
-      const actionName = this.poll.isNew() ? 'created' : 'updated';
-      this.poll.setErrors({});
-      this.setPollOptionPriority();
-      this.poll.pollOptionsAttributes = this.pollOptions.map((o) => mapKeys(o, (_, k) => snakeCase(k)))
-      this.poll.save().then(data => {
-        const poll = Records.polls.find(data.polls[0].id);
-        if (this.redirectOnSave) { this.$router.replace(this.urlFor(poll)); }
-        this.$emit('saveSuccess', poll);
-
-        if (actionName == 'created') {
-          Flash.success("poll_common_form.poll_type_started", {poll_type: poll.translatedPollTypeCaps()});
-        } else {
-          Flash.success("poll_common_form.poll_type_updated", {poll_type: poll.translatedPollTypeCaps()});
-        }
-
-        if ((actionName == 'created') && poll.specifiedVotersOnly) {
-          EventBus.$emit('openModal', {
-            component: 'PollMembers',
-            props: { poll }
-          });
-        }
-      }).catch(error => {
-        this.$refs.form.validate();
-        Flash.error('common.check_for_errors_and_try_again');
-      }).finally(() => this.loading = false);
-    }
-  },
-
-  computed: {
-    currentTimeZone() { return Session.user().timeZone; },
-    titlePlaceholder() {
-      if (this.pollTemplate && this.pollTemplate.titlePlaceholder) {
-        return this.$t('common.prefix_eg', {val: this.pollTemplate.titlePlaceholder});
-      } else {
-        return this.$t('poll_proposal_form.title_placeholder');
-      }
-    },
-
-    knownOptions() {
-      return (AppConfig.pollTypes[this.poll.pollType].common_poll_options || []);
-    },
-
-    formattedDuration() {
-      if (!this.poll.meetingDuration) { return ''; }
-      const minutes = parseInt(this.poll.meetingDuration);
-      const duration = intervalToDuration({ start: new Date, end: addMinutes(new Date, minutes) });
-      return formatDuration(duration, { format: ['hours', 'minutes'] });
-    },
-
-    visiblePollOptions() { return this.pollOptions.filter(o => !o._destroy); },
-
-    hasOptions() { return this.poll.config().has_options; },
-    minOptions() { return this.poll.config().min_options; },
-    allowAnonymous() { return !this.poll.config().prevent_anonymous; },
-    stanceReasonRequiredItems() {
-      return [
-        {title: this.$t('poll_common_form.stance_reason_required'), value: 'required'},
-        {title: this.$t('poll_common_form.stance_reason_optional'), value: 'optional'},
-        {title: this.$t('poll_common_form.stance_reason_disabled'), value: 'disabled'}
-      ];
-    },
-
-    titlePath() {
-      return (this.poll.isNew() && 'action_dock.new_poll_type') || 'action_dock.edit_poll_type';
-    },
-
-    titleArgs() {
-      return {pollType: this.poll.translatedPollType().toLowerCase()};
-    },
-
-    closesSoon() {
-      return !(this.poll.closingAt && isAfter(this.poll.closingAt, addHours(new Date(), 24)));
-    },
-
-    closingSoonItems() {
-      return 'nobody author undecided_voters voters'.split(' ').map(name => {
-        return {title: this.$t(`poll_common_settings.notify_on_closing_soon.${name}`), value: name};
-      });
-    },
-
-    optionFormat() { return this.poll.pollOptionNameFormat; },
-    hasOptionIcon() { return this.poll.config().has_option_icon; }
+const discardDraft = () => {
+  if (confirm(I18n.global.t('formatting.confirm_discard'))) {
+    EventBus.$emit('resetDraft', 'poll', props.poll.id, 'details', props.poll.details);
   }
 };
+
+const optionHasVotes = (option) => {
+  return (props.poll.results.find(o => o.id === option.id) || {voter_count: 0}).voter_count > 0;
+};
+
+const setPollOptionPriority = () => {
+  let i = 0;
+  pollOptions.value.forEach(o => o.priority = 0);
+  visiblePollOptions.value.forEach(o => o.priority = i++);
+};
+
+const removeOption = (option) => {
+  if (optionHasVotes(option)) {
+    if (!confirm(I18n.global.t("poll_common_form.option_has_votes_confirm_delete"))) { return; }
+  }
+
+  newOption.value = null;
+  if (option.id) {
+    option.name = '';
+    option.meaning = '';
+    option['_destroy'] = 1;
+  } else {
+    pollOptions.value = without(pollOptions.value, option);
+  }
+};
+
+const addDateOption = () => {
+  setTimeout(() => {
+    const optionName = newDateOption.value.toJSON();
+    if (some(pollOptions.value, o => o.name === optionName)) {
+      Flash.error('poll_poll_form.option_already_added');
+    } else {
+      pollOptions.value.push({name: optionName});
+    }
+  });
+};
+
+const addOption = () => {
+  const option = {
+    name: '',
+    meaning: '',
+    prompt: '',
+    icon: null,
+    testOperator: null,
+    testPercent: null,
+    testAgainst: null
+  };
+
+  EventBus.$emit('openModal', {
+    component: 'PollOptionForm',
+    props: {
+      pollOption: option,
+      poll: props.poll,
+      submitFn: option => {
+        if (some(pollOptions.value, o => o.name.toLowerCase() === option.name.toLowerCase())) {
+          Flash.error('poll_poll_form.option_already_added');
+        } else {
+          pollOptions.value.push(option);
+        }
+      }
+    }
+  });
+};
+
+const editOption = (option) => {
+  const clone = pick(option, 'name', 'icon', 'meaning', 'prompt', 'testOperator', 'testPercent', 'testAgainst');
+
+  EventBus.$emit('openModal', {
+    component: 'PollOptionForm',
+    props: {
+      edit: true,
+      pollOption: clone,
+      poll: props.poll,
+      submitFn: clone => {
+        Object.assign(option, clone);
+      }
+    }
+  });
+};
+
+const submit = () => {
+  loading.value = true;
+  const actionName = props.poll.isNew() ? 'created' : 'updated';
+  props.poll.setErrors({});
+  setPollOptionPriority();
+  props.poll.pollOptionsAttributes = pollOptions.value.map((o) => mapKeys(o, (_, k) => snakeCase(k)));
+  props.poll.save().then(data => {
+    EventBus.$emit('deleteDraft', 'poll', props.poll.id, 'details');
+
+    const poll = Records.polls.find(data.polls[0].id);
+    if (props.redirectOnSave) { router.replace(urlFor(poll)); }
+    emit('saveSuccess', poll);
+
+    if (actionName == 'created') {
+      Flash.success("poll_common_form.poll_type_started", {poll_type: poll.translatedPollTypeCaps()});
+    } else {
+      Flash.success("poll_common_form.poll_type_updated", {poll_type: poll.translatedPollTypeCaps()});
+    }
+
+    if ((actionName == 'created') && poll.specifiedVotersOnly) {
+      EventBus.$emit('openModal', {
+        component: 'PollMembers',
+        props: { poll }
+      });
+    }
+  }).catch(error => {
+    form.value.validate();
+    Flash.error('common.check_for_errors_and_try_again');
+  }).finally(() => loading.value = false);
+};
+
+// Computed
+const currentTimeZone = computed(() => Session.user().timeZone);
+
+const titlePlaceholder = computed(() => {
+  if (pollTemplate.value && pollTemplate.value.titlePlaceholder) {
+    return I18n.global.t('common.prefix_eg', {val: pollTemplate.value.titlePlaceholder});
+  } else {
+    return I18n.global.t('poll_proposal_form.title_placeholder');
+  }
+});
+
+const knownOptions = computed(() => {
+  return (AppConfig.pollTypes[props.poll.pollType].common_poll_options || []);
+});
+
+const formattedDuration = computed(() => {
+  if (!props.poll.meetingDuration) { return ''; }
+  const minutes = parseInt(props.poll.meetingDuration);
+  const duration = intervalToDuration({ start: new Date, end: addMinutes(new Date, minutes) });
+  return formatDuration(duration, { format: ['hours', 'minutes'] });
+});
+
+const visiblePollOptions = computed(() => pollOptions.value.filter(o => !o._destroy));
+
+const hasOptions = computed(() => props.poll.config().has_options);
+const minOptions = computed(() => props.poll.config().min_options);
+const allowAnonymous = computed(() => !props.poll.config().prevent_anonymous);
+
+const stanceReasonRequiredItems = computed(() => [
+  {title: I18n.global.t('poll_common_form.stance_reason_required'), value: 'required'},
+  {title: I18n.global.t('poll_common_form.stance_reason_optional'), value: 'optional'},
+  {title: I18n.global.t('poll_common_form.stance_reason_disabled'), value: 'disabled'}
+]);
+
+const titlePath = computed(() => {
+  return (props.poll.isNew() && 'action_dock.new_poll_type') || 'action_dock.edit_poll_type';
+});
+
+const titleArgs = computed(() => {
+  return {pollType: props.poll.translatedPollType().toLowerCase()};
+});
+
+const closesSoon = computed(() => {
+  return !(props.poll.closingAt && isAfter(props.poll.closingAt, addHours(new Date(), 24)));
+});
+
+const closingSoonItems = computed(() => {
+  return 'nobody author undecided_voters voters'.split(' ').map(name => {
+    return {title: I18n.global.t(`poll_common_settings.notify_on_closing_soon.${name}`), value: name};
+  });
+});
+
+const optionFormat = computed(() => props.poll.pollOptionNameFormat);
+const hasOptionIcon = computed(() => props.poll.config().has_option_icon);
+
+// Lifecycle
+onMounted(() => {
+  Records.users.findOrFetchGroups();
+
+  Records.pollTemplates.findOrFetchByKeyOrId(props.poll.pollTemplateKeyOrId()).then(template => {
+    pollTemplate.value = template;
+  });
+
+  watchRecords({
+    collections: ['groups', 'memberships'],
+    query: () => {
+      return groupItems.value = [
+        {title: I18n.global.t('discussion_form.none_invite_only_discussion'), value: null}
+      ].concat(Session.user().groups().filter(g => AbilityService.canStartPoll(g)).map(g => ({
+        title: g.fullName,
+        value: g.id
+      })));
+    }
+  });
+});
+
+// Expose handle directive for template
+defineOptions({
+  directives: { handle: HandleDirective }
+});
 </script>
 <template lang="pug">
 v-form.poll-common-form(ref="form" @submit.prevent="submit")
@@ -271,7 +283,8 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
     :label="$t('poll_common_form.title')"
     v-model='poll.title'
     :rules="validate('title')"
-    maxlength='250')
+    maxlength='250'
+  )
 
   tags-field(:model="poll")
 
@@ -280,7 +293,6 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
     field="details"
     :placeholder="$t('poll_common_form.details_placeholder')"
     :label="$t('poll_common_form.details')"
-    :should-reset="shouldReset"
   )
 
   template(v-if="hasOptions")
@@ -566,7 +578,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
 
     v-btn.poll-common-form__submit(
       color="primary"
-      @click='submit()'
+      @click='submit'
       :loading="loading"
       :disabled="hasOptions && pollOptions.length < minOptions"
       variant="elevated"

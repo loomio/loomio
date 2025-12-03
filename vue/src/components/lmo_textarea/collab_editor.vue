@@ -70,7 +70,6 @@ const props = defineProps({
   label: String,
   placeholder: String,
   maxLength: Number,
-  shouldReset: Boolean,
   autofocus: Boolean
 });
 
@@ -140,22 +139,27 @@ const format = computed(() => {
   return props.model[`${props.field}Format`];
 });
 
-// Watch
-watch(() => props.shouldReset, (newVal) => {
-  if (newVal) {
-    reset();
+
+
+const resetDraft = (content) => {
+  if (!editor.value) return;
+  editor.value.commands.setContent(content);
+};
+
+const deleteDraft = () => {
+  if (!editor.value) return;
+  editor.value.chain().clearContent().run();
+  if (provider) {
+    provider.document.getMap('config').set('initialContentLoaded', false);
   }
-});
+  resetFiles();
+};
 
 watch(() => props.model, (newModel, oldModel) => {
   if (newModel !== oldModel) {
     // Clear editor content when model changes (after successful post)
     if (editor.value && oldModel) {
-      editor.value.chain().clearContent().run();
-      if (provider) {
-        provider.document.getMap('config').set('initialContentLoaded', false);
-      }
-      resetFiles();
+      deleteDraft();
     }
 
     // Register callback on new model instance
@@ -172,11 +176,6 @@ const reasonTooLong = () => {
 
 const charCount = () => {
   return editor.value?.storage?.characterCount?.characters() || 0;
-};
-
-const resetDraft = (content) => {
-  if (!editor.value) return;
-  editor.value.commands.setContent(content);
 };
 
 const openRecordVideoModal = () => {
@@ -216,15 +215,6 @@ const selectedText = () => {
   const { selection } = editor.value.state;
   const { from, to } = selection;
   return state.doc.textBetween(from, to, ' ');
-};
-
-const reset = () => {
-  if (!editor.value) return;
-  editor.value.chain().clearContent().run();
-  if (provider) {
-    provider.document.getMap('config').set('initialContentLoaded', false);
-  }
-  resetFiles();
 };
 
 const convertToMdHandler = () => {
@@ -441,12 +431,21 @@ onMounted(() => {
       resetDraft(content);
     }
   });
+
+  EventBus.$on('deleteDraft', (type, id, field) => {
+    if (type == props.model.constructor.singular &&
+        id == props.model.id &&
+        field == props.field) {
+      deleteDraft();
+    }
+  });
 });
 
 onBeforeUnmount(() => {
   // Clean up event listeners
   EventBus.$off('focusEditor');
   EventBus.$off('resetDraft');
+  EventBus.$off('deleteDraft');
 
   // Clean up editor
   if (editor.value) {
@@ -465,7 +464,6 @@ defineExpose({
   editor,
   updateModel,
   charCount,
-  reset
 });
 </script>
 

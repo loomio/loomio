@@ -5,13 +5,20 @@ class Api::HocuspocusController < ActionController::Base
 
   def create
     user_id, secret_token = params[:user_secret].split(',')
+    record_type, record_id, user_id_if_new = params[:document_name].split('-')
+    raise "invalid record type #{record_type}" unless RECORD_TYPES.include?(record_type)
 
     if user_id == '0'
-      head :ok
+      if record_type == 'group' && record_id == 'new'
+        head :ok
+      else
+        head :unauthorized
+      end
       return
     end
 
     u = User.active.find_by!(id: user_id)
+
     logger.debug({
       hocuspocus: 'debugme',
       params_user_secret: params[:user_secret],
@@ -24,10 +31,6 @@ class Api::HocuspocusController < ActionController::Base
     })
 
     user = User.active.find_by!(id: user_id, secret_token: secret_token)
-
-    record_type, record_id, user_id_if_new = params[:document_name].split('-')
-
-    raise "invalid record type #{record_type}" unless RECORD_TYPES.include?(record_type)
 
     if record_id == 'new'
       if user_id_if_new.to_i == user.id

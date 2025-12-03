@@ -13,7 +13,6 @@ const props = defineProps({
   field: String,
   label: String,
   placeholder: String,
-  shouldReset: Boolean,
   maxLength: Number,
   autofocus: {
     type: Boolean,
@@ -77,12 +76,7 @@ const {
   fileSelected: fileSelectedBase
 } = useAttaching(modelRef, emit);
 
-// Watch
-watch(() => props.shouldReset, (newVal) => {
-  if (newVal) {
-    reset();
-  }
-});
+
 
 // Methods
 const reset = () => {
