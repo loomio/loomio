@@ -47,12 +47,8 @@ zh_TW:
     copy_of_title: "%{title} 的副本"
     loomio_default_templates: Loomio 預設模板
     which_templates_would_you_like_to_use: 您想使用哪些模板？
-    login_to_start_demo: '這是 Loomio 的展示。歡迎您到處看看。
-
-      '
-    sign_in_to_try_features: '若您想要在展示用的決策中投票，或為您的組織開始免費試用，請點擊「登入」。
-
-      '
+    login_to_start_demo: '這是 Loomio 的展示。歡迎您到處看看。'
+    sign_in_to_try_features: '若您想要在展示用的決策中投票，或為您的組織開始免費試用，請點擊「登入」。'
     click_button_to_start_demo: 歡迎！若要嘗試投票和其他功能，請按一下開始示範。
     welcome_to_your_demo: 這是您自己的展示用群組！
     try_voting_to_see_it_work: 嘗試對提案進行投票，以了解 Loomio 如何運作。
@@ -71,9 +67,7 @@ zh_TW:
     start_a_x_day_free_trial: 開始%{day}天的免費試用
     ready_to_trial: 準備好與您的組織一起使用 Loomio 了嗎？
     start_a_no_obligation_x_day_trial: 免費試用%{day}天，為您的組織建立 Loomio 群組。
-    you_can_test_it_out: '您可以邀請其他人加入，將其與您的其他工具整合，並試試看做出一些決策。
-
-      '
+    you_can_test_it_out: '您可以邀請其他人加入，將其與您的其他工具整合，並試試看做出一些決策。'
     demo_created: 示範用群組已建立，只為您！
     start_demo: 試用範例
     view_demo: 檢視展示
@@ -322,7 +316,7 @@ zh_TW:
     formatting_help:
       label: 格式化
       title: 學習如何使用 Markdown 來格式化您的文字
-    thread: 線
+    thread: 討論串
   merge_accounts:
     modal:
       title: 合併帳號
