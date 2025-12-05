@@ -316,7 +316,6 @@ zh_TW:
     formatting_help:
       label: 格式化
       title: 學習如何使用 Markdown 來格式化您的文字
-    thread: 討論串
   merge_accounts:
     modal:
       title: 合併帳號
