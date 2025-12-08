@@ -233,7 +233,7 @@ GEM
     formtastic (5.0.0)
       actionpack (>= 6.0.0)
     formtastic_i18n (0.7.0)
-    friendly_id (5.5.1)
+    friendly_id (5.6.0)
       activerecord (>= 4.0.0)
     gapic-common (1.2.0)
       faraday (>= 1.9, < 3.a)
@@ -445,7 +445,7 @@ GEM
     mini_magick (5.3.0)
       logger
     mini_mime (1.1.5)
-    minitest (5.26.0)
+    minitest (5.26.2)
     msgpack (1.8.0)
     multi_json (1.17.0)
     multi_xml (0.7.2)
@@ -824,7 +824,7 @@ DEPENDENCIES
   drb
   factory_bot_rails
   faker
-  friendly_id (~> 5.5.1)
+  friendly_id (~> 5.6.0)
   google-cloud-storage (~> 1.57)
   google-cloud-translate
   gravtastic
