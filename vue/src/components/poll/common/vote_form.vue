@@ -1,6 +1,7 @@
 <script lang="js">
 import EventBus from '@/shared/services/event_bus';
 import Flash   from '@/shared/services/flash';
+import { I18n } from '@/i18n';
 import { compact } from 'lodash-es';
 import WatchRecords from '@/mixins/watch_records';
 
@@ -99,6 +100,12 @@ export default {
       }).finally(() => this.loading = false);
     },
 
+    discardDraft() {
+      if (confirm(I18n.global.t('formatting.confirm_discard'))) {
+        EventBus.$emit('resetDraft', 'stance', this.stance.id, 'pollOptionIds', this.stance.pollOptionIds());
+      }
+    },
+
     isSelected(option) {
       if (this.singleChoice) {
         return this.selectedOptionId === option.id;
@@ -187,13 +194,20 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop
   )
 
   v-card-actions.poll-common-form-actions
+    v-btn.mr-2(
+      @click="discardDraft"
+      variant="text"
+      :title="$t('common.discard_changes_to_this_text')"
+    )
+      span(v-t="'common.reset'")
+
+    v-spacer
     v-btn.poll-common-vote-form__submit(
       @click='submit()'
       :disabled='!optionCountValid || !poll.isVotable()'
       :loading="loading"
       color="primary"
       variant="elevated"
-      block
     )
       span(v-t="submitText")
 </template>

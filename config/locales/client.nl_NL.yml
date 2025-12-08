@@ -315,6 +315,7 @@ nl_NL:
       label: Aan het formatteren
       title: Leer hoe je Markdown kan gebruiken om tekst op te maken
     thread: Draad
+    discard_changes_to_this_text: Wijzigingen in deze tekst negeren
   merge_accounts:
     modal:
       title: Accounts samenvoegen
@@ -1963,12 +1964,12 @@ nl_NL:
     need_vote: Stem nodig
     no_polls: Geen peilingen gevonden
     standalone_disabled_title: Zelfstandige peilingen zijn uitgeschakeld
-    standalone_disabled_helptext: "<p>Voor deze groep is het nodig dat er peilingen binnen een discussie worden gestart.</p><p> Discussies helpen mensen de context te begrijpen, vragen te stellen en perspectieven te delen voordat ze stemmen. Dit leidt tot betere beslissingen.</p><p> Begin eerst een discussie en voeg vervolgens een poll toe als u klaar bent om stemmen te verzamelen.</p>"
     start_discussion: Start een discussie
     standalone_warning_title: Overweeg om eerst een discussie te starten
     start_poll_anyway: Toch een poll starten
     start_discussion_instead: Begin in plaats daarvan een discussie
     standalone_warning_helptext: "<p>Enquêtes werken het beste als mensen eerst over het onderwerp kunnen discussiëren.</p><p> Zonder discussie kunnen kiezers geen vragen stellen, zorgen uiten of verbeteringen voorstellen.</p><p> Voor de beste ervaring begint u met een discussie, bouwt u aan een gedeeld begrip en voegt u vervolgens een poll toe wanneer u klaar bent om de standpunten van mensen vast te leggen.</p>"
+    standalone_disabled_helptext: "<p>Voor deze groep is het nodig dat er peilingen binnen een discussie worden gestart.</p><p> Discussies helpen mensen de context te begrijpen, vragen te stellen en perspectieven te delen voordat ze stemmen. Dit leidt tot betere beslissingen.</p><p> Begin eerst een discussie en voeg vervolgens een poll toe als u klaar bent om stemmen te verzamelen.</p><p> Als alternatief kan een groepsbeheerder zelfstandige peilingen inschakelen via Groepsinstellingen -> Rechten -> Peilingen toestaan zonder discussie</p>"
   group_files_panel:
     no_files: Geen bestanden gevonden
     filename: Bestandsnaam

@@ -315,6 +315,7 @@ ca:
       label: Formatació
       title: Aprèn a escriure el text en format Markdown
     thread: Fil
+    discard_changes_to_this_text: Descarta els canvis en aquest text
   merge_accounts:
     modal:
       title: Combina comptes
@@ -1963,12 +1964,12 @@ ca:
     need_vote: Cal Votar
     no_polls: No s'ha trobat cap enquesta
     standalone_disabled_title: Les enquestes independents estan desactivades
-    standalone_disabled_helptext: "<p>Aquest grup requereix que les enquestes s'iniciïn dins d'una discussió.</p><p> Els debats ajuden a la gent a entendre el context, fer preguntes i compartir punts de vista abans de votar. Això porta a millors decisions.</p><p> Primer comença una discussió i després afegeix una enquesta quan estiguis a punt per recollir vots.</p>"
     start_discussion: Inicia una discussió
     standalone_warning_title: Considera iniciar primer una discussió
     start_poll_anyway: Inicia l'enquesta de totes maneres
     start_discussion_instead: Inicia una discussió en comptes d'això
     standalone_warning_helptext: "<p>Les enquestes funcionen millor quan la gent pot parlar primer del tema.</p><p> Sense un debat, els votants no poden fer preguntes, plantejar preocupacions ni suggerir millores.</p><p> Per a una experiència òptima, comença amb una discussió, crea una comprensió compartida i, a continuació, afegeix una enquesta quan estiguis a punt per captar les opinions de la gent.</p>"
+    standalone_disabled_helptext: "<p>Aquest grup requereix que les enquestes s'iniciïn dins d'una discussió.</p><p> Els debats ajuden a la gent a entendre el context, fer preguntes i compartir punts de vista abans de votar. Això porta a millors decisions.</p><p> Primer comença una discussió i després afegeix una enquesta quan estiguis a punt per recollir vots.</p><p> Alternativament, un administrador de grup pot habilitar enquestes independents a través de Configuració del grup -> Permisos -> Permet enquestes sense debat.</p>"
   group_files_panel:
     no_files: No s'ha trobat cap fitxer
     filename: Nom del fitxer

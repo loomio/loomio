@@ -317,6 +317,7 @@ hu:
       label: Formázás
       title: Így használhatod a Markdown-t a szöveg formázására
     thread: Szál
+    discard_changes_to_this_text: A szöveg módosításainak elvetése
   merge_accounts:
     modal:
       title: Fiókok egyesítése
@@ -1945,12 +1946,12 @@ hu:
     need_vote: Szavazásra van szükség
     no_polls: Nem található szavazás
     standalone_disabled_title: Az önálló szavazások le vannak tiltva
-    standalone_disabled_helptext: "<p>Ebben a csoportban a szavazásokat egy beszélgetésen belül kell elindítani.</p><p> A beszélgetések segítenek az embereknek megérteni a kontextust, kérdéseket feltenni és megosztani a nézőpontjaikat a szavazás előtt. Ez jobb döntésekhez vezet.</p><p> Először indíts egy beszélgetést, majd adj hozzá egy szavazást, amikor készen állsz a szavazatok gyűjtésére.</p>"
     start_discussion: Beszélgetés indítása
     standalone_warning_title: Először is fontold meg a beszélgetés megkezdését
     start_poll_anyway: Szavazás indítása mindenképpen
     start_discussion_instead: Inkább indíts beszélgetést
     standalone_warning_helptext: "<p>A közvélemény-kutatások akkor működnek a legjobban, ha az emberek először megvitathatják a témát.</p><p> Vita nélkül a választók nem tehetnek fel kérdéseket, nem fogalmazhatnak meg aggályokat, és nem javasolhatnak fejlesztéseket.</p><p> A legjobb élmény érdekében kezdj egy beszélgetéssel, építs közös megértést, majd adj hozzá egy szavazást, amikor készen állsz az emberek álláspontjának rögzítésére.</p>"
+    standalone_disabled_helptext: "<p>Ebben a csoportban a szavazásokat egy beszélgetésen belül kell elindítani.</p><p> A beszélgetések segítenek az embereknek megérteni a kontextust, kérdéseket feltenni és megosztani a nézőpontjaikat a szavazás előtt. Ez jobb döntésekhez vezet.</p><p> Először indíts egy beszélgetést, majd adj hozzá egy szavazást, amikor készen állsz a szavazatok gyűjtésére.</p><p> Alternatív megoldásként a csoport adminisztrátora engedélyezheti az önálló szavazásokat a Csoport beállításai -> Engedélyek -> Szavazások engedélyezése megbeszélés nélkül menüpontban.</p>"
   group_files_panel:
     no_files: Nem található fájl
     filename: Fájlnév
