@@ -23,7 +23,7 @@ gem 'twitter-text', github: 'loomio/twitter-text'
 gem 'redcarpet', '~> 3.6.1'
 gem 'paper_trail', '~> 17.0.0'
 gem 'sidekiq', '~> 6.5.12'
-gem 'friendly_id', '~> 5.5.1'
+gem 'friendly_id', '~> 5.6.0'
 gem 'httparty', '~> 0.23.2'
 gem 'browser', '~> 6.2.0'
 gem "aws-sdk-s3", require: false

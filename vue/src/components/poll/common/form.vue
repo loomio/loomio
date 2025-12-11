@@ -148,7 +148,7 @@ const submit = () => {
   const actionName = props.poll.isNew() ? 'created' : 'updated';
   props.poll.setErrors({});
   setPollOptionPriority();
-  props.poll.pollOptionsAttributes = pollOptions.value.map((o) => mapKeys(o, (_, k) => snakeCase(k)));
+  props.poll.pollOptionsAttributes = pollOptions.value.map((o) => mapKeys(o, (_, k) => k === '_destroy' ? k : snakeCase(k)))
   props.poll.save().then(data => {
     EventBus.$emit('deleteDraft', 'poll', props.poll.id, 'details');
 
