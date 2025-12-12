@@ -522,6 +522,7 @@ es:
     public_privacy_notice: Su comentario será público para cualquiera en internet.
     sign_in: 'Inicia sesión para unirte a la conversación '
     add_a_comment: Añadir un comentario
+    share_your_thoughts: Comparte tus pensamientos…
   thread_nav:
     participants: Participantes
   sidebar:

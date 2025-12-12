@@ -22,7 +22,6 @@ export default {
     back: Object,
     name: String,
     size: Number,
-    shouldReset: Boolean
   },
 
   computed: {
@@ -46,5 +45,5 @@ export default {
 </script>
 
 <template>
-<component :is="componentName" :poll='poll' :stance='stance' :stance-choice='stanceChoice' :outcome='outcome' :back='back' :size="size" :should-reset="shouldReset"></component>
+<component :is="componentName" :poll='poll' :stance='stance' :stance-choice='stanceChoice' :outcome='outcome' :back='back' :size="size"></component>
 </template>

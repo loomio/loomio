@@ -15,7 +15,6 @@ module Boot
         newsletterEnabled:   ENV['NEWSLETTER_ENABLED'],
         baseUrl:             root_url,
         contactEmail:        ENV['SUPPORT_EMAIL'],
-        plugins:             { installed: [], outlets: [], routes: [] },
         theme:               AppConfig.theme,
         sentry_dsn:          ENV['SENTRY_PUBLIC_DSN'],
         plausible_src:       ENV['PLAUSIBLE_SRC'],

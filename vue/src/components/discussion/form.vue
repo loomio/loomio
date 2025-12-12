@@ -35,7 +35,6 @@ export default {
       initialRecipients: [],
       discussionTemplate: null,
       loaded: false,
-      shouldReset: false,
       titleRules: [
         value => {
           if (value) return true
@@ -90,7 +89,6 @@ export default {
         this.initialRecipients = [];
         this.initialRecipients = this.initialRecipients.concat(users);
         this.discussion.private = this.discussion.privateDefaultValue();
-        this.reset = !this.reset;
       }
     }
   },
@@ -111,9 +109,9 @@ export default {
       this.discussion.setErrors();
       this.$refs.form.resetValidation();
       this.discussion.save().then(data => {
+        EventBus.$emit('deleteDraft', 'discussion', this.discussion.id, 'description');
+
         const discussionKey = data.discussions[0].key;
-        EventBus.$emit('closeModal');
-        this.shouldReset = !this.shouldReset;
         Records.discussions.findOrFetchById(discussionKey, {}, true).then(discussion => {
           Flash.success(`discussion_form.discussion_${actionName}`);
           this.$router.push(this.urlFor(discussion));
@@ -236,7 +234,6 @@ v-form(ref="form" @submit.prevent="submit")
           field="description"
           :label="$t('discussion_form.context_label')"
           :placeholder="$t('discussion_form.context_placeholder')"
-          :shouldReset="shouldReset"
         )
 
         common-notify-fields(v-if="loaded" :model="discussion" :initial-recipients="initialRecipients")
