@@ -300,6 +300,7 @@ describe Api::V1::MembershipsController do
       expect(JSON.parse(response.body)['memberships'][0]['delegate']).to be true
       expect(membership.reload.delegate).to be true
       expect(group.reload.delegates_count).to eq 1
+      expect(another_user.reload.experiences['delegates'][group.id.to_s]).to be true
     end
 
     it 'only works for group admins' do
@@ -322,6 +323,7 @@ describe Api::V1::MembershipsController do
       expect(JSON.parse(response.body)['memberships'][0]['delegate']).to be false
       expect(membership.reload.delegate).to be false
       expect(group.reload.delegates_count).to eq 0
+      expect(another_user.reload.experiences['delegates'][group.id.to_s]).to be nil
     end
 
     it 'only works for group admins' do
