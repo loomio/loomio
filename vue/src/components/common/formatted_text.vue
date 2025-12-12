@@ -181,7 +181,7 @@ img.emoji
     margin: 0.5rem 0
 
   h1, h2, h3
-    margin-top: 1rem
+    margin-top: 1.5rem
     margin-bottom: 0.75rem
 
   h1:first-child, h2:first-child, h3:first-child
@@ -190,11 +190,11 @@ img.emoji
   h1
     font-size: 1.75rem
     font-weight: 400
-    letter-spacing: 0.015625rem
+    letter-spacing: -0.015625rem
 
   h2
     font-size: 1.25rem
-    font-weight: 400
+    font-weight: 500
     letter-spacing: normal
 
   h3
@@ -303,10 +303,8 @@ img.emoji
     overflow-x: auto
     font-family: 'Roboto mono', monospace, monospace
     white-space: pre-wrap
-
-  code::before
-    content: ''
-    letter-spacing: normal
+    font-size: 0.88rem;
+    margin: 1rem 0;
 
   pre code
     display: block

@@ -60,7 +60,7 @@ module Ability::Poll
 
     can [:update], ::Poll do |poll|
       (poll.discussion_id.blank? || !poll.discussion.closed_at) &&
-      poll.admins.exists?(user.id)
+      poll.admins.exists?(user.id) && !poll.closed?
     end
 
     can [:destroy], ::Poll do |poll|
@@ -76,7 +76,8 @@ module Ability::Poll
     can :reopen, ::Poll do |poll|
       poll.closed? &&
       !poll.anonymous &&
-      can?(:update, poll)
+      (poll.discussion_id.blank? || !poll.discussion.closed_at) &&
+      poll.admins.exists?(user.id)
     end
   end
 end

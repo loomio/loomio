@@ -241,12 +241,12 @@ export default class PollModel extends BaseModel {
 
   adminsInclude(user) {
     const stance = this.stanceFor(user);
-    return ((this.authorId === user.id) && !this.groupId) ||
-    ((this.authorId === user.id) && (this.groupId && this.group().membersInclude(user))) ||
-    ((this.authorId === user.id) && (this.discussionId && this.discussion().membersInclude(user))) ||
-    (stance && stance.admin) ||
-    (this.discussionId && this.discussion().adminsInclude(user)) ||
-    this.group().adminsInclude(user);
+    return (this.authorId === user.id && !this.groupId) ||
+           (this.authorId === user.id && this.groupId && this.group().membersInclude(user)) ||
+           (this.authorId === user.id && this.discussionId && this.discussion().membersInclude(user)) ||
+           (stance && stance.admin) ||
+           (this.discussionId && this.discussion().adminsInclude(user)) ||
+           this.group().adminsInclude(user);
   }
 
   votersInclude(user) {
