@@ -60,7 +60,7 @@ module Ability::Poll
 
     can [:update], ::Poll do |poll|
       (poll.discussion_id.blank? || !poll.discussion.closed_at) &&
-      poll.admins.exists?(user.id)
+      poll.admins.exists?(user.id) && !poll.closed?
     end
 
     can [:destroy], ::Poll do |poll|
