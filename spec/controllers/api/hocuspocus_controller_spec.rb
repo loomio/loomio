@@ -25,7 +25,7 @@ describe Api::HocuspocusController do
         user_secret: "0,anything at all",
         document_name: "discussion-new-#{user.id}-1-1-1"
       }
-      expect(response.status).to eq 403
+      expect(response.status).to eq 401
     end
   end
 
