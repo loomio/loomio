@@ -535,6 +535,7 @@ zh_CN:
     private_privacy_notice: 您的评论仅对 %{groupName} 的成员可见。
     public_privacy_notice: 您的评论将对网络上的所有人可见。
     sign_in: 登录参与
+    share_your_thoughts: 分享你的想法……
   sidebar:
     user_settings: 用户设置
     my_groups: 我的群组
@@ -575,6 +576,7 @@ zh_CN:
     showing_unread: 显示未读
     add_comment: 添加评论
     start_decision: 开始做决定
+    recenter: 最近
   search_modal:
     all_content: 所有内容
     best_match: 最佳匹配

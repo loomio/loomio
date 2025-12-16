@@ -10,12 +10,22 @@ describe Api::HocuspocusController do
   end
 
   describe 'logged out user' do
-    it 'valid secret_token returns 200' do
+    # we allow logged out users to create groups from a template
+    # but not anything else
+    it 'allows new groups' do
       post :create, params: {
         user_secret: "0,anything at all",
-        document_name: "comment-new-#{user.id}-1-1-1"
+        document_name: "group-new-#{user.id}-1-1-1"
       }
       expect(response.status).to eq 200
+    end
+
+    it 'denies non groups' do
+      post :create, params: {
+        user_secret: "0,anything at all",
+        document_name: "discussion-new-#{user.id}-1-1-1"
+      }
+      expect(response.status).to eq 401
     end
   end
 

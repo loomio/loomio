@@ -518,6 +518,7 @@ el:
     public_privacy_notice: Το σχόλιο σας θα είναι ορατό σε όλους στο διαδίκτυο.
     sign_in: Εισέλθετε για να συμμετάσχετε στην συζήτηση
     add_a_comment: Προσθήκη σχολίου
+    share_your_thoughts: Μοιραστείτε τις σκέψεις σας…
   thread_nav:
     participants: Συμμετέχοντες
   sidebar:

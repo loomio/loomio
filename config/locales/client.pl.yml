@@ -522,6 +522,7 @@ pl:
     public_privacy_notice: Twój komentarz będzie widoczny dla wszystkich.
     sign_in: Zaloguj się, aby dołączyć do rozmowy
     add_a_comment: Dodaj komentarz
+    share_your_thoughts: Podziel się swoimi przemyśleniami…
   thread_nav:
     participants: Uczestnicy
   sidebar:
