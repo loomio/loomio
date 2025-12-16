@@ -84,7 +84,7 @@
     "@originjs/vite-plugin-commonjs": "latest",
     "@originjs/vite-plugin-content": "latest",
     "unplugin-vue-components": "latest",
-    "@vitejs/plugin-vue": "^6.0.2",
+    "@vitejs/plugin-vue": "^6.0.3",
     "nightwatch": "^3.13.0",
     "pug": "latest",
     "sass": "latest",
