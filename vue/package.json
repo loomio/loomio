@@ -10,8 +10,6 @@
   },
   "dependencies": {
     "@mdi/js": "^6.9.96",
-    "@sentry/browser": "^10.27.0",
-    "@sentry/vue": "^10.27.0",
     "@hocuspocus/provider": "^3.4.0",
     "@tiptap/core": "^3.11.1",
     "@tiptap/extension-blockquote": "^3.11.1",
@@ -49,6 +47,8 @@
     "@tiptap/pm": "^3.11.1",
     "@tiptap/suggestion": "^3.11.1",
     "@tiptap/vue-3": "^3.11.1",
+    "@sentry/browser": "^10.30.0",
+    "@sentry/vue": "^10.31.0",
     "activestorage": "^5.2.8",
     "chart.js": "^3.9.1",
     "date-fns": "2.30.0",
@@ -81,13 +81,13 @@
     "@originjs/vite-plugin-commonjs": "latest",
     "@originjs/vite-plugin-content": "latest",
     "unplugin-vue-components": "latest",
-    "@vitejs/plugin-vue": "^6.0.2",
-    "nightwatch": "^3.12.3",
+    "@vitejs/plugin-vue": "^6.0.3",
+    "nightwatch": "^3.13.0",
     "pug": "latest",
     "sass": "latest",
     "vite-plugin-env-compatible": "latest",
     "vite-plugin-vuetify": "latest",
-    "vite": "^7.2.6"
+    "vite": "^7.3.0"
   },
   "optionalDependencies": {
     "@esbuild/darwin-arm64": "latest",
