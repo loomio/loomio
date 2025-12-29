@@ -131,7 +131,7 @@ GEM
     base64 (0.3.0)
     bcrypt (3.1.20)
     benchmark (0.5.0)
-    bigdecimal (3.3.1)
+    bigdecimal (4.0.1)
     bindex (0.8.1)
     blazer (3.3.0)
       activerecord (>= 7.1)
@@ -375,7 +375,7 @@ GEM
     hiredis (0.6.3)
     htmlentities (4.3.4)
     http_accept_language (2.1.1)
-    httparty (0.23.2)
+    httparty (0.24.0)
       csv
       mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
@@ -448,8 +448,8 @@ GEM
     minitest (5.26.2)
     msgpack (1.8.0)
     multi_json (1.17.0)
-    multi_xml (0.7.2)
-      bigdecimal (~> 3.1)
+    multi_xml (0.8.0)
+      bigdecimal (>= 3.1, < 5)
     multipart-post (2.4.1)
     net-http (0.7.0)
       uri
@@ -831,7 +831,7 @@ DEPENDENCIES
   haml-rails (~> 3.0.0)
   hiredis
   http_accept_language
-  httparty (~> 0.23.2)
+  httparty (~> 0.24.0)
   i18n-timezones
   icalendar
   image_processing (~> 1.14)
