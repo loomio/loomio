@@ -43,10 +43,8 @@ export default {
 .poll-form-page
   v-main
     v-container.max-width-800.px-0.px-sm-3
-      v-card.poll-common-modal
-        div.pa-4
-          thread-template-form(
-            v-if="discussionTemplate"
-            :discussion-template="discussionTemplate"
-          )
+      thread-template-form(
+        v-if="discussionTemplate"
+        :discussion-template="discussionTemplate"
+      )
 </template>

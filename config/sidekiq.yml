@@ -9,6 +9,7 @@ production:
   - mailers
   - notification_emails
   - default
+  - action_mailbox_routing
   - active_storage_analysis
   - active_storage_purge
   - low

@@ -1,3 +1,4 @@
+---
 da:
   discussion_templates:
     blank:
@@ -87,6 +88,12 @@ da:
       process_introduction: "<p>Introducer dokumentet sammen med eventuelle baggrundsoplysninger. Angiv formålet med dokumentet for at hjælpe med at holde fokus.</p><p> Inviter folk til at bidrage med information og deres ekspertise, og brug dette til at indramme dokumentet. Anerkend og overvej feedback og bidrag fra folk.</p><p> Integrer bidrag i et første udkast til dokumentet og efterfølgende udkast, indtil det er klar til at blive godkendt.</p><p> Brug en Sense-tjek-afstemning til at undersøge meninger og afklare eventuelle problemer med udkastet.</p><p> Når feedback er overvejet og indarbejdet i dokumentet, skal du fortsætte til godkendelse eller aftale med et samtykke eller konsensusforslag.</p><p> Tråden bliver en klar registrering af fremskridt i oprettelse af dokumenter og truffet beslutninger.</p>"
       description: <h3 id="what-is-the-purpose-of-the-document">Hvad er formålet med dokumentet?</h3><p></p><h3 id="why-is-this-important"> Hvorfor er dette vigtigt?</h3><p></p><h3 id="what-are-you-asking-people-to-do"> Hvad beder du folk om at gøre?</h3><p></p>
       document: Dokument
+    practice_thread:
+      process_subtitle: En tråd for at byde folk velkommen til gruppen og øve sig i at bruge Loomio
+      process_introduction: "<p>Brug denne skabelon til at byde nye medlemmer velkommen og opfordre til tidlig deltagelse. Den giver folk mulighed for at præsentere sig selv og udforske Loomios funktioner.</p>"
+      title: "\U0001F44B Velkommen! Sig hej og prøv tingene ud"
+      description: "<p>Velkommen til vores Loomio-gruppe — det er dejligt at have dig her!</p><p> Denne tråd er et sted til at:</p><ul><li><p> Præsenter dig selv for gruppen</p></li><li><p> Prøv nogle af Loomios funktioner - for eksempel: prøv at bruge reaktioner \U0001F44D</p></li><li><p> Stil eventuelle spørgsmål, du måtte have på dette tidspunkt</p></li></ul><p> Hvis du ikke er sikker på, hvad du skal sige, er et simpelt hej fint \U0001F642</p>"
+      process_name: Øvelsesdiskussion
   explore:
     header: Udforsk offentlige grupper
   activerecord:
@@ -96,26 +103,51 @@ da:
         invalid: er ikke en gyldig værdi
   unauthorized:
     manage:
-      all: "Ikke autoriseret til %{action} %{subject}."
+      all: Ikke autoriseret til %{action} %{subject}.
     add_guests:
-      all: "Du skal opgradere dit Loomio-abonnement for at tilføje gæster til dit %{subject}. Alternativt kan du invitere dem til at være medlemmer af din gruppe."
+      all: Du skal opgradere dit Loomio-abonnement for at tilføje gæster til dit %{subject}. Alternativt kan du invitere dem til at være medlemmer af din gruppe.
   errors:
-    clear_cache: "Indlæsningsproblem fundet. Hold shift nede, og tryk på genindlæs, eller tøm din browsers cache."
+    clear_cache: Indlæsningsproblem fundet. Hold shift nede, og tryk på genindlæs, eller tøm din browsers cache.
     404:
       title: Ingen resultater fundet
     noscript: Loomio kræver javascript for at virke! Aktiver venligst javascript i din browser for at fortsætte
-    upgrade_browser: |-
-        Åh åh! Din webbrowser er for gammel, og Loomio fungerer muligvis ikke korrekt. <a href="https://browser-update.org/update.html">Opgrader venligst din browser.</a>
+    upgrade_browser: Åh åh! Din webbrowser er for gammel, og Loomio fungerer muligvis ikke korrekt. <a href="https://browser-update.org/update.html">Opgrader venligst din browser.</a>
     return_home: Vende hjem
     not_found: 404 fil ikke fundet.
     messages:
       email: ikke en gyldig e-mailadresse
       spoofed_media_type: Indholdet af denne fil stemmer ikke overens med dens filnavn
       pwned_password: Denne adgangskode har tidligere vist sig i et databrud og bør aldrig bruges
+    '400':
+      title: Dårlig anmodning
+      body: Beklager, vi forstod ikke anmodningen.
+    '401':
+      title: Uberettiget
+      body: Du har ikke adgang til denne side. Du skal muligvis logge ind.
+    '403':
+      title: Forbudt
+      body: Du har ikke adgang til denne side. Du skal muligvis logge ind.
+    '410':
+      title: Væk
+      body: Denne side findes ikke længere
+    '417':
+      title: Browser inkompatibel
+      body: <a href="https://browser-update.org/update.html?force_outdated=true">Opgrader venligst din browser</a> for at bruge Loomio
+    '422':
+      title: Ubehandlelig enhed
+      body: Den ønskede ændring blev afvist. Måske har du prøvet at ændre noget, du ikke havde adgang til.
+    '429':
+      title: For mange anmodninger
+      body: Beklager, du har overskredet det maksimalt tilladte antal anmodninger pr. minut for denne handling. Vent et øjeblik, og prøv igen.
+    '500':
+      title: Intern serverfejl
+      body: Vi beklager, men noget gik galt. Vi er blevet underrettet om dette problem, og vi vil se på det snarest.
+    '404':
+      body: Det element, du anmodede om, blev ikke fundet. Dette kan ske, hvis en diskussion eller afstemning er blevet slettet.
   group:
     error:
-      handle_must_begin_with_parent_handle: "Skal begynde med %{parent_handle}-"
-      no_public_trials: "Opgrader venligst fra prøveversion for at ændre gruppebeskyttelsesindstillingen"
+      handle_must_begin_with_parent_handle: Skal begynde med %{parent_handle}-
+      no_public_trials: Opgrader venligst fra prøveversion for at ændre gruppebeskyttelsesindstillingen
     stats:
       group_stats: Gruppestatistik
       org_stats: Organisationsstatistik (inklusive undergrupper)
@@ -136,14 +168,13 @@ da:
         rank: Rang
         time: Find et tidspunkt
   user:
-    deleted_user: "Slettet bruger"
-    placeholder_name: "Inviteret bruger (%{hostname})"
+    deleted_user: Slettet bruger
+    placeholder_name: Inviteret bruger (%{hostname})
     error:
-      sign_in_required_html: |-
-          Du skal være logget ind for at fortsætte. <a href="/dashboard" target="_blank">Log ind</a> og genindlæs siden for at fortsætte.
-      recaptcha: "Vi var ikke i stand til at bekræfte, at du ikke er en robot. Prøv igen!"
-      bad_login: "Beklager, den adgangskode stemmer ikke overens med den, vi har registreret"
-      username_must_be_alphanumeric: "Brugernavne må kun være små bogstaver og tal"
+      sign_in_required_html: Du skal være logget ind for at fortsætte. <a href="/dashboard" target="_blank">Log ind</a> og genindlæs siden for at fortsætte.
+      recaptcha: Vi var ikke i stand til at bekræfte, at du ikke er en robot. Prøv igen!
+      bad_login: Beklager, den adgangskode stemmer ikke overens med den, vi har registreret
+      username_must_be_alphanumeric: Brugernavne må kun være små bogstaver og tal
   poll:
     error:
       cannot_add_options: Kan ikke tilføje valgmuligheder til denne afstemning
@@ -151,6 +182,7 @@ da:
       must_have_options: Skal have mindst én afstemningsmulighed
       must_be_in_the_future: Skal være i fremtiden
       templates_cannot_close: Skabeloner kan ikke lukkes
+      poll_options_dont_match: En fejl med Loomio forhindrede din stemme i at blive gemt. Vi arbejder på at løse dette. Genindlæs venligst og prøv igen.
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) medlemmer har tilkendegivet deres holdning"
       title: Titel
@@ -175,7 +207,7 @@ da:
       participant: Deltager
       also_available: Fås også i
       total: Total
-    waiting_for_votes_from: "Venter på stemmer fra"
+    waiting_for_votes_from: Venter på stemmer fra
   stance:
     error:
       too_short: Foretag venligst et valg
@@ -189,35 +221,35 @@ da:
     via_loomio: "%{name} (via %{site_name})"
   event_mailer:
     received_email:
-      explaination_html: |-
-          <p>Du modtager denne e-mail, fordi du er administrator for Loomio-gruppen: %{group}.</p><p> Gruppen har modtaget en e-mail fra en ikke-genkendt e-mailadresse.</p><p> Hvis beskeden er fra et medlem af gruppen, skal du gennemgå e-mailen og vælge medlemmet.</p><p> Hvis beskeden er uønsket, kan du blokere yderligere e-mails fra den adresse.</p>
+      explaination_html: "<p>Du modtager denne e-mail, fordi du er administrator for Loomio-gruppen: %{group}.</p><p> Gruppen har modtaget en e-mail fra en ikke-genkendt e-mailadresse.</p><p> Hvis beskeden er fra et medlem af gruppen, skal du gennemgå e-mailen og vælge medlemmet.</p><p> Hvis beskeden er uønsket, kan du blokere yderligere e-mails fra den adresse.</p>"
+    notification_reason:
+      group_subscribed: Du har modtaget dette, fordi du er tilmeldt al aktivitet i gruppen.
+      group_mentioned: Du har modtaget dette, fordi gruppen blev @omtalt.
+      user_mentioned: Du har modtaget dette, fordi du blev @omtalt.
+      notified: Du har modtaget dette, fordi forfatteren har givet dig besked.
+      poll_subscribed: Du har modtaget dette, fordi du er tilmeldt afstemningen.
+      discussion_subscribed: Du har modtaget dette, fordi du er tilmeldt diskussionen.
   user_mailer:
     group_export_ready:
       subject: Eksport af gruppedata for %{group_name}
-      body_html: |-
-          Download dine gruppedata <a href="%{url}">her</a> . Bemærk venligst, at dette link udløber om en uges tid.
+      body_html: Download dine gruppedata <a href="%{url}">her</a> . Bemærk venligst, at dette link udløber om en uges tid.
     redacted:
-      subject: "Din %{site_name} brugerkonto er blevet slettet"
-      body_html: |-
-          <p>Din %{site_name} brugerkonto er blevet slettet.</p><p> Alle personligt identificerende data er blevet fjernet.</p><p> Hvis du ikke har anmodet om dette, bedes du kontakte %{support_email}</p>
+      subject: Din %{site_name} brugerkonto er blevet slettet
+      body_html: "<p>Din %{site_name} brugerkonto er blevet slettet.</p><p> Alle personligt identificerende data er blevet fjernet.</p><p> Hvis du ikke har anmodet om dette, bedes du kontakte %{support_email}</p>"
     accounts_merged:
-      subject: "Dine %{site_name} brugerkonti er blevet flettet."
-      body_html: |-
-          Hej %{name}, Dine to loomio-konti er blevet slået sammen til én konto. For at få adgang til loomio fra nu af skal du bruge <strong>%{email},</strong> når du logger ind.
+      subject: Dine %{site_name} brugerkonti er blevet flettet.
+      body_html: Hej %{name}, Dine to loomio-konti er blevet slået sammen til én konto. For at få adgang til loomio fra nu af skal du bruge <strong>%{email},</strong> når du logger ind.
     merge_verification:
-      subject: "Bekræft din %{site_name}-e-mailadresse for at flette"
-      body_html: |-
-          <p>Hej %{name},</p><p> Der blev fremsat en anmodning om at flette din brugerkonto under adressen <strong>%{source_email}</strong> med den konto, der tilhører denne adresse, <strong>%{target_email}</strong> .</p><p> Når denne proces er fuldført, vil du ikke længere være i stand til at logge ind med <strong>%{source_email}</strong> og kun med <strong>%{target_email}</strong> .</p><p> Bekræft venligst, at det er det, du vil gøre.</p>
+      subject: Bekræft din %{site_name}-e-mailadresse for at flette
+      body_html: "<p>Hej %{name},</p><p> Der blev fremsat en anmodning om at flette din brugerkonto under adressen <strong>%{source_email}</strong> med den konto, der tilhører denne adresse, <strong>%{target_email}</strong> .</p><p> Når denne proces er fuldført, vil du ikke længere være i stand til at logge ind med <strong>%{source_email}</strong> og kun med <strong>%{target_email}</strong> .</p><p> Bekræft venligst, at det er det, du vil gøre.</p>"
       verify: Bekræft e-mail og fortsæt
       confirm_page:
         confirm: Bekræft fletning
-        body_html: |-
-            <p>Bekræft venligst, at du gerne vil flette kontoen under <strong>%{source_email}</strong> til kontoen under <strong>%{target_email}</strong> .</p><p> Din konto under <strong>%{source_email}</strong> vil blive slettet, og du vil derefter kun kunne logge ind via <strong>%{target_email}</strong> .</p><p> Denne ændring er irreversibel.</p>
+        body_html: "<p>Bekræft venligst, at du gerne vil flette kontoen under <strong>%{source_email}</strong> til kontoen under <strong>%{target_email}</strong> .</p><p> Din konto under <strong>%{source_email}</strong> vil blive slettet, og du vil derefter kun kunne logge ind via <strong>%{target_email}</strong> .</p><p> Denne ændring er irreversibel.</p>"
         merge: Flet konti
       complete_page:
         title: Sammenlægningen lykkedes!
-        body_html: |-
-            <p>Sammenlægningen af dine brugerkonti lykkedes. Du vil snart modtage en bekræftelses-e-mail på <strong>%{target_email}</strong> .</p><p> <a href="/contact" target="_blank">Kontakt os</a> venligst, hvis du har yderligere spørgsmål.</p>
+        body_html: <p>Sammenlægningen af dine brugerkonti lykkedes. Du vil snart modtage en bekræftelses-e-mail på <strong>%{target_email}</strong> .</p><p> <a href="/contact" target="_blank">Kontakt os</a> venligst, hvis du har yderligere spørgsmål.</p>
   email:
     common:
       or_enter_code: Eller indtast koden nedenfor
@@ -234,28 +266,27 @@ da:
     contact_request:
       subject: "%{name} vil gerne i forbindelse med dig på %{site_name}!"
       intro: "%{name} (%{email}) har sendt dig en anmodning om at oprette forbindelse."
-      footer: "Du kan svare %{name} direkte ved at svare på denne e-mail."
+      footer: Du kan svare %{name} direkte ved at svare på denne e-mail.
     reset_password:
       greeting: |+
-          Hej %{name}
-          Her er et link som du kan bruge til at nulstill din adgangskode for din Loomio konto:
+        Hej %{name}
+        Her er et link som du kan bruge til at nulstill din adgangskode for din Loomio konto:
 
       link_text: Nulstil din adgangskode
       signoff: |
-          Du modtager denne email fordi din email adresse blev indtastet i "Jeg har glemt min adgangskode"  formular on %{hostname}.
-          Din adgangkode vil først blive ændret når du klikker på linket herover og udfylder formularen.
-          Hvis du stadig har problemer med at logge ind, besvar denne email for at kontakte support.
+        Du modtager denne email fordi din email adresse blev indtastet i "Jeg har glemt min adgangskode"  formular on %{hostname}.
+        Din adgangkode vil først blive ændret når du klikker på linket herover og udfylder formularen.
+        Hvis du stadig har problemer med at logge ind, besvar denne email for at kontakte support.
     by_who: af %{person}
     reply_to_this_discussion: Svar på denne diskussion
-    loomio_app_description: "Et let at bruge, sikkert sted for organisationer at træffe beslutninger sammen."
     view_group: Vis gruppe
     to_join_group:
       subject: "%{member} har inviteret dig til at deltage i %{group_name} på %{site_name}"
       invitation_text: "%{member} har inviteret dig til at deltage i deres gruppe %{group_name}."
-      invitation_text_html: "har inviteret dig til at deltage i deres gruppe"
-      link_help: "Klik på linket herunder for at acceptere invitationen:"
-      accept_invitation: "Acceptér invitation"
-      stop_emails: "Stop med at modtage e-mails fra %{site_name}"
+      invitation_text_html: har inviteret dig til at deltage i deres gruppe
+      link_help: 'Klik på linket herunder for at acceptere invitationen:'
+      accept_invitation: Acceptér invitation
+      stop_emails: Stop med at modtage e-mails fra %{site_name}
       accepting_is_important: Det er vigtigt at acceptere din invitation, så du ikke går glip af meddelelser om beslutninger, der involverer dig.
     resend_to_join_group:
       subject: "%{member} venter på, at du slutter dig til %{group_name} på %{site_name}"
@@ -263,8 +294,8 @@ da:
       subject: "%{who} har føjet dig til %{which_group} på %{site_name}"
       content: "%{who} har tilføjet dig til %{which_group}."
       content_html: "<strong>%{who}</strong> har tilføjet dig til <strong>%{which_group}</strong>."
-      link_help: "Klik på linket herunder for at gå til gruppen:"
-    unsubscribe: "Afmeld abonnement eller rediger dine e-mail-indstillinger:"
+      link_help: 'Klik på linket herunder for at gå til gruppen:'
+    unsubscribe: 'Afmeld abonnement eller rediger dine e-mail-indstillinger:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> for at afmelde abonnement eller ændre dine e-mail-indstillinger."
     catch_up:
       daily_subject: I går på %{site_name}
@@ -276,27 +307,30 @@ da:
       marked_as_read_success: Alt fra e-mailen er blevet markeret som læst
       click_here: Klik her
     group_membership_approved:
-      intro: "Din anmodning om at deltage i gruppen %{group_name} er blevet godkendt."
-      intro_html: "Din anmodning om at deltage i gruppen <strong>%{group_name}</strong> er blevet godkendt."
-      link_help: "Klik på linket herunder for at blive medlem af %{group_name}:"
-      subject: "Din anmodning om at deltage i %{group_name} er blevet godkendt"
-      join_group: "Bliv medlem"
+      intro: Din anmodning om at deltage i gruppen %{group_name} er blevet godkendt.
+      intro_html: Din anmodning om at deltage i gruppen <strong>%{group_name}</strong> er blevet godkendt.
+      link_help: 'Klik på linket herunder for at blive medlem af %{group_name}:'
+      subject: Din anmodning om at deltage i %{group_name} er blevet godkendt
+      join_group: Bliv medlem
     membership_request:
       intro_html: har anmodet om adgang til en af dine Loomio-grupper.
       subject: "%{who} har anmodet om medlemskab af %{which_group}"
       view_group: Du kan godkende eller afvise anmodningen her
       button_text: Vis anmodning
+    content_was_translated: Dette indhold blev oversat fra %{source_locale}
+    content_was_translated_html: Dette indhold blev oversat fra %{source_locale}. <a href="%{profile_url}">Se indstillinger<a></a>
+    loomio_app_description: Et sted, hvor samarbejdende organisationer kan træffe beslutninger i fællesskab.
   announcement_count_emails: "%{count} e-mails"
   email_actions:
     unfollowed_discussion: Du har slået e-mails fra for tråden.
   discussion_mailer:
-    reply_or_view_online_html: "Svar på denne e-mail eller <a href='%{url}'>se det på %{hostname}</a>."
+    reply_or_view_online_html: Svar på denne e-mail eller <a href='%{url}'>se det på %{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>Slå email notifikationer fra</a> for denne diskussion."
-    change_email_preferences_html: "Skift dine <a href='%{email_preferences_url}'>e-mail-præferencer</a> ."
+    change_email_preferences_html: Skift dine <a href='%{email_preferences_url}'>e-mail-præferencer</a> .
     unsubscribe_from_discussion_announced_html: "<a href='%{url}'>Afmeld</a> yderligere meddelelser i denne tråd."
     unsubscribe_from_new_comment_html: "<a href='%{url}'>Afmeld</a> kommentarer i denne tråd."
-    unsubscribe_from_comment_replied_to_html: "Dette er en svarmeddelelse."
-    unsubscribe_from_user_mentioned_html: "Dette er en omtalemeddelelse."
+    unsubscribe_from_comment_replied_to_html: Dette er en svarmeddelelse.
+    unsubscribe_from_user_mentioned_html: Dette er en omtalemeddelelse.
     discussion_edited:
       inline: "%{actor} redigerede trådkonteksten"
     discussion_closed:
@@ -316,38 +350,248 @@ da:
     change_my_password: Skift kodeord
     confirm_new_password: Bekræft kodeord
     new_password: Nyt kodeord
-    email_guidelines_html: |-
-        <p>Indtast din e-mailadresse, og du vil få tilsendt et link til nulstilling af adgangskode.</p><p> Hvis du normalt logger ind via Facebook eller Google, skal du indtaste den e-mailadresse, der er knyttet til den pågældende konto.</p>
+    email_guidelines_html: "<p>Indtast din e-mailadresse, og du vil få tilsendt et link til nulstilling af adgangskode.</p><p> Hvis du normalt logger ind via Facebook eller Google, skal du indtaste den e-mailadresse, der er knyttet til den pågældende konto.</p>"
     reset_email_timeframe: Vent venligst i op til 5 minutter på at emailen kommer. Hvis den ikke kommer, så kontroller din spam folder.
     length_restriction: Adgangskode skal være mindst 8 tegn.
     forbidden_passwords: Almindelige adgangskoder så som "password" er forbudt for at sikre dun konto.
   task_mailer:
     task_due_reminder:
-      subject: "Opgavepåmindelse: %{name}"
-      greeting: "Hej %{name}, følgende opgave skal betales %{due}:"
-      view_task: "Vis på %{site_name}"
-      update_or_comment: "Hvis du allerede har fuldført denne opgave, skal du sætte kryds ved den. Hvis det ikke er komplet, bedes du dele en statusopdatering."
-      due_today: "i dag"
-      due_in_count_days: "om %{count} dage"
+      subject: 'Opgavepåmindelse: %{name}'
+      greeting: 'Hej %{name}, følgende opgave skal betales %{due}:'
+      view_task: Vis på %{site_name}
+      update_or_comment: Hvis du allerede har fuldført denne opgave, skal du sætte kryds ved den. Hvis det ikke er komplet, bedes du dele en statusopdatering.
+      due_today: i dag
+      due_in_count_days: om %{count} dage
   group_mailer:
-    resend: "PÅMINDELSE: %{member} venter på, at du bliver medlem af %{group_name}"
+    resend: 'PÅMINDELSE: %{member} venter på, at du bliver medlem af %{group_name}'
     destroy_warning:
       subject: Din Loomio-gruppe er planlagt til sletning.
-      body: |-
-          Din Loomio-gruppe: "%{group}" er planlagt til sletning af %{deletor}. Hvis du ikke ønsker, at din gruppe skal slettes, bedes du besvare denne e-mail. Hvis du er sikker på, at du vil slette gruppen, behøver du ikke at gøre noget. Tak skal du have.
+      body: 'Din Loomio-gruppe: "%{group}" er planlagt til sletning af %{deletor}. Hvis du ikke ønsker, at din gruppe skal slettes, bedes du besvare denne e-mail. Hvis du er sikker på, at du vil slette gruppen, behøver du ikke at gøre noget. Tak skal du have.'
   poll_mailer:
     common:
       why_send_this: Du modtager denne email fordi %{reason}
       view_on_loomio: Se det på %{site_name}
       create_outcome: Del resultat
-      your_response: "Du stemte:"
-      you_voted: "Du stemte!"
-      not_invited: "Ikke inviteret"
+      your_response: 'Du stemte:'
+      you_voted: Du stemte!
+      not_invited: Ikke inviteret
       please_respond: Svar venligst
-      time_zone: (Tider er vist i %{zone})
+      time_zone: "(Tider er vist i %{zone})"
       undecided_members: Ubesluttede medlemmer (%{count})
       undecided_visitors: Ubeslutsomme gæster (%{count})
       more_undecided: "%{count} mere..."
       vote_now: Stem nu
       you_have_until: Du har indtil %{when} til at deltage.
       people_have_voted: "%{nom} af %{dnom} personer har deltaget (%{pct}%)"
+  poll_templates:
+    practice_proposal:
+      title: Jeg begynder at få styr på det her
+      process_name: Praksisforslag
+      process_subtitle: Lær hvordan forslag fungerer på Loomio ved at prøve et af dem.
+      process_introduction: "<p>Brug denne skabelon til at hjælpe din gruppe med at blive fortrolig med at bruge forslag på Loomio. Det er en sikker og enkel måde for folk at prøve at stemme og se, hvordan det hele hænger sammen.</p>"
+      details: "<p>Dette er en øvelse, så alle kan blive fortrolige med, hvordan forslag fungerer på Loomio.</p><p> Stem venligst, og skriv en begrundelse, hvis du har lyst.</p><p> Intet pres, ingen konsekvenser i den virkelige verden. Det er bare en måde at udforske, hvordan forslag fungerer!</p>"
+      outcome_statement: "<p>Tak fordi du deltager i dette øvelsesforslag! \U0001F389</p><p> Dette var bare en chance for at se, hvordan det fungerer at stemme og kommentere på Loomio. Der bliver ikke truffet nogen egentlig beslutning her – men forhåbentlig hjalp det alle med at blive fortrolige med processen.</p>"
+    proposal:
+      process_subtitle: Fremsæt et forslag for at træffe en beslutning
+      process_introduction: <p>Det klassiske Loomio-forslag hjælper dig med at træffe en beslutning og omdanner en diskussion til et klart resultat.</p><p> Foreslå en handlingsplan, og bed folk om at stemme enig, undlader at stemme eller er uenig.</p><p> Når folk stemmer, kan de give en begrundelse for, hvorfor de har stemt på denne måde. Man kan se, hvor alle andre står i sagen, og hvorfor.</p><p> På denne måde kan du bruge et forslag til at få folk til at reagere, afdække nye oplysninger og opbygge fælles forståelse – for at hjælpe din gruppe med at træffe en bedre og mere informeret beslutning.</p><p> Et forslag og den tilhørende diskussion skaber sin egen registrering af, hvordan beslutningen blev truffet.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Læs mere om brugen af det klassiske Loomio-forslag i den enkle beslutningsproces</u></a> .</p>
+      title: Godkend det nye brandkoncept
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Hvilken beslutning skal du træffe?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Hvorfor er dette vigtigt?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Hvad beder du folk om at gøre?</strong></h3><p></p><p> For at dette forslag kan vedtages, kræver det, at et flertal af medlemmerne stemmer for.</p><p> Hvis du er uenig, så forklar hvorfor, og hvad der skal ændres, for at du kan være enig.</p>
+      agree: Enig
+      agree_meaning: Jeg støtter forslaget
+      agree_prompt: Hvad synes du om forslaget, og hvordan vil det gavne gruppen?
+      abstain: Afholde sig
+      abstain_meaning: At vælge ikke at stemme, eller ikke kunne, i denne beslutning.
+      abstain_prompt: Hvorfor undlader du at stemme, eller føler du dig ikke i stand til at stemme ved denne beslutning?
+      disagree: Være uenig
+      disagree_meaning: Noget i dette forslag skal ændres, før jeg kan støtte det.
+      disagree_prompt: Hvordan kan dette forslag forbedres, så du kan støtte det?
+    advice:
+      process_subtitle: Søg rådgivning om en beslutning, du skal træffe
+      process_introduction: <p>Søg rådgivning om en beslutning, du skal træffe, med råd fra berørte personer eller personer, der har ekspertise, så du kan træffe en bedre beslutning for din organisation.</p><ul><li><p> Rådgivning hjælper dig med at træffe en bedre beslutning for din organisation.</p></li><li><p> Fremme relationer, læringsmuligheder og forskelligartet input.</p></li><li><p> Stimuler initiativ og kreativitet, og få mere arbejdsglæde.</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>Læs mere om rådgivningsprocessen</u></a> .</p>
+      title: Hjælp Takashi med at købe en ny computer
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Hvilken beslutning skal du træffe?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Hvorfor er dette vigtigt?</strong></h3><p></p><h3 id="what-advice-are-you-asking-from-people-to-help-you-make-a-go"> <strong>Hvilke råd beder du folk om for at hjælpe dig med at træffe en god beslutning?</strong></h3><p></p><p> Jeg søger jeres input, så jeg kan træffe en god beslutning for vores organisation.</p>
+      agree: Enig
+      agree_meaning: Jeg har givet mit råd om denne beslutning
+      agree_prompt: Opsummer dine råd, eller giv en nyttig kommentar
+      abstain: Afholde sig
+      abstain_meaning: Jeg har ingen råd at tilbyde
+      abstain_prompt: Har du nogle kommentarer, der kan være nyttige?
+      outcome_statement: "<p>Tak fordi du deltog i min rådgivningsrunde!</p>"
+    consent:
+      process_subtitle: Træf en beslutning, der er 'sikker at prøve', uden indvendinger
+      process_introduction: <p>Indhent samtykke til en beslutning, du skal træffe, hvor der ikke er væsentlige indvendinger mod dit forslag, så du kan træffe en hurtig beslutning for din organisation, der er 'sikker at afprøve'.</p><ul><li><p> Sigt efter en 'god nok' beslutning</p></li><li><p> Involver mange stemmer for at udvikle et brugbart forslag</p></li><li><p> Spørg om nogen har en gyldig indsigelse</p></li><li><p> Ændr forslaget for at løse indsigelser</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Læs mere om samtykkeprocessen</a> .</p>
+      title: Ansæt Chloe til designrollen
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Hvilken beslutning skal du træffe?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Hvorfor er dette vigtigt?</strong></h3><p></p><h3 id="what-are-you-asking-of-people-in-this-proposal"> <strong>Hvad beder du folk om i dette forslag?</strong></h3><p></p><p> Hvis du har en indsigelse, bedes du angive hvorfor og foreslå en ændring af forslaget, der gør det sikkert.</p><p> Husk, at vi søger samtykke til en 'god nok' beslutning, der er 'sikker at prøve', så vi kan træffe en god beslutning for vores organisation.</p>
+      consent: Samtykke
+      consent_meaning: Forslaget er sikkert at prøve
+      consent_prompt: Hvad synes du om forslaget, og hvordan vil det gavne organisationen?
+      objection: Indvending
+      objection_meaning: Jeg har en berettiget indsigelse og mener, at forslaget vil forårsage skade
+      objection_prompt: Hvilken ændring af dette forslag er nødvendig for at gøre det 'sikkert at prøve', så du kan støtte det?
+      outcome_statement: "<p>Tak for din deltagelse i samtykkeprocessen.</p>"
+    consensus:
+      process_subtitle: Indgå kollektiv aftale med alle involverede
+      process_introduction: <p>Skab konsensus om en beslutning, du skal træffe, for at nå til enighed, der tilfredsstiller alle deltageres behov og bekymringer.</p><ul><li><p> Diskuter og udvikl et forslag sammen</p></li><li><p> Inkluder og respekter alle involverede</p></li><li><p> Søg enighed fra de fleste mennesker</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/consensus_process/index.html">Læs mere om konsensusprocessen</a> .</p>
+      title: Godkend det nye brandkoncept
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Hvilken beslutning skal du træffe?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Hvorfor er dette vigtigt?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Hvad beder du folk om at gøre?</strong></h3><p></p><p> For at dette forslag kan vedtages, kræver det, at et flertal af medlemmerne stemmer for.</p><p> Hvis du er uenig, så forklar hvorfor, og hvad der skal ændres, for at du kan være enig.</p>
+      outcome_statement: "<p>Tak for din deltagelse i konsensusprocessen.</p>"
+      agree: Enig
+      agree_meaning: Jeg støtter forslaget
+      agree_prompt: Hvad synes du om forslaget, og hvordan vil det gavne organisationen?
+      abstain: Afholde sig
+      abstain_meaning: Denne beslutning påvirker mig ikke, og jeg er tilfreds med hvad gruppen beslutter
+      abstain_prompt: Hvorfor undlader du at stemme, eller føler du dig ikke i stand til at stemme ved denne beslutning?
+      disagree: Være uenig
+      disagree_meaning: Noget i dette forslag skal ændres, før jeg kan støtte det.
+      disagree_prompt: Hvordan kan dette forslag forbedres, så du kan støtte det?
+      block: Blok
+      block_meaning: Jeg blokerer dette forslag og mener, at det ikke bør fortsætte
+      block_prompt: Forklar din indvending mod forslaget, og hvorfor det ikke bør fortsætte
+    question_round:
+      process_subtitle: Stil opklarende spørgsmål for at hjælpe folk med at forstå et forslag
+      process_introduction: <p>En spørgerunde er en mulighed for folk at stille afklarende spørgsmål om forslaget, så alle forstår forslaget, før de siger, hvad de mener om det.</p><p> Loomio-spørgsmålsrunden er et særligt forslag uden stemmemuligheder. Den giver deltagerne mulighed for at stille spørgsmål inden for en periode, du har fastsat for runden.</p><p> En spørgerunde bruges almindeligvis som et trin i samtykkeprocessen.</p><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Læs mere om samtykkeprocessen</a> .</p>
+      title: Hvilke spørgsmål har du om sundheds- og sikkerhedspolitikken?
+      details: <h3 id="what-are-you-proposing"><strong>Hvad foreslår du?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Hvorfor er dette vigtigt?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Hvad beder du folk om at gøre?</strong></h3><p></p><p> Dette er en spørgerunde, hvor du er inviteret til at stille opklarende spørgsmål.</p><p> Hvad skal du vide for at forstå forslaget?</p><p> Svar venligst inden spørgsmålsrunden slutter.</p>
+      reason_prompt: Hvad skal du vide for at forstå forslaget?
+      outcome_statement: "<p>Tak for at have indsendt dine spørgsmål i denne runde</p>"
+    sense_check:
+      process_subtitle: Bed om feedback, spørgsmål og bekymringer
+      process_introduction: <p>Sense check-forslaget er en god måde at få feedback, stille spørgsmål og afdække bekymringer. Det hjælper med at præcisere og forbedre et forslag, før der tages en beslutning.</p><p> Et "sense check" giver folk besked om, at et forslag er under udarbejdelse, og opfordrer dem til at engagere sig. Det er en mulighed for at lytte til folk, fornemme deres følelser og reagere passende – hvilket åbner op for potentialet til at inddrage deres bidrag for at træffe en bedre beslutning.</p><p> Brug forslaget "Sense check" i samtykkeprocessen til at invitere til reaktioner og kommentarer for at forbedre forslaget, og i en konsensusproces til at teste for konsensus.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Læs mere om brugen af Sense Check i den simple beslutningsproces</u></a> <span>.</span></p>
+      title: Hvad synes du om de nye brandkoncepter?
+      details: <h3 id="what-are-you-proposing"><strong>Hvad foreslår du?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Hvorfor er dette vigtigt?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Hvad beder du folk om at gøre?</strong></h3><p></p><p> Hvad synes du om forslaget? Skriv en kommentar eller kom med et forslag til forbedringer.</p><p> Dette Sense-tjek er en mulighed for at give dit input og bidrag, så vi kan træffe en bedre beslutning.</p>
+      outcome_statement: "<p>Tak for din deltagelse i sansetjekket.</p>"
+      not_sure: Ikke sikker
+      not_sure_meaning: Jeg har et spørgsmål eller har brug for mere tid
+      not_sure_prompt: Hvilke dele er uklare for dig? Hvordan kan dette løses?
+      looks_good: Ser godt ud
+      looks_good_meaning: Jeg er glad for, hvor det her går hen
+      looks_good_prompt: Har du nogle kommentarer eller forslag til, hvordan forslaget kan forbedres?
+      abstain: Afholde sig
+      abstain_meaning: Jeg har intet at tilføje, og heller ingen indvendinger mod dette arbejde.
+      abstain_prompt: At undlade at stemme indebærer samtykke til retningen i dette forslag. Er der en grund til, at du stemmer for at undlade at stemme?
+      concerned: Bekymret
+      concerned_meaning: Noget ved dette skal muligvis ændres, for at jeg kan give samtykke eller acceptere
+      concerned_prompt: Hvad er din bekymring, og hvordan kan den håndteres?
+    gradients_of_agreement:
+      process_subtitle: Udtryklig støtte til et forslag på en 8-punkts skala
+      process_introduction: <p>Forslagets gradienter for enighed gør det muligt for medlemmer af en gruppe at udtrykke deres støtte til et forslag i grader på en skala, hvilket tilbyder flere måder at udtrykke støtte på end i form af "enig" og "uenig".</p><p> Brug gradienter af enighed som en indledende runde for at teste støtte til et forslag, før man går videre til en formel aftale.</p><p> Gradienter af enighed lader folk vide, at et forslag er under udarbejdelse, og opfordrer dem til at engagere sig. Det er en mulighed for at lytte til folk, fornemme deres følelser og reagere passende – hvilket åbner op for potentialet til at inddrage deres bidrag for at træffe en bedre beslutning.</p>
+      title: Hvad synes du om den nye værdierklæring?
+      details: <h3 id="what-are-you-proposing"><strong>Hvad foreslår du?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Hvorfor er dette vigtigt?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Hvad beder du folk om at gøre?</strong></h3><p></p><p> Hvad synes du om forslaget? Udtryk din støtte på skalaen nedenfor, og skriv en kommentar eller et forslag til forbedringer.</p><p> Dette forslag til gradienter i aftalen har til formål at teste støtte til forslaget og give dig mulighed for at give dit input, før du går videre til en formel aftale.</p>
+      whole_hearted_endorsement: Helhjertet støtte
+      whole_hearted_endorsement_meaning: Jeg kan virkelig godt lide det!
+      whole_hearted_endorsement_prompt: Hvad kan du lide ved det?
+      agreement_with_minor_contention: Aftale med mindre uenighed
+      agreement_with_minor_contention_meaning: Ikke perfekt, men det er godt nok
+      agreement_with_minor_contention_prompt: Hvad er din bekymring?
+      support_with_reservations: Support med reservationer
+      support_with_reservations_meaning: Jeg kan leve med det
+      support_with_reservations_prompt: Hvad er dine forbehold?
+      abstain_meaning: Dette problem påvirker mig ikke
+      abstain_prompt: Har du noget, du gerne vil tilføje?
+      more_discussion_needed: Mere diskussion nødvendig
+      more_discussion_needed_meaning: Jeg forstår ikke problemerne godt nok endnu
+      more_discussion_needed_prompt: Hvad forstår du ikke?
+      don_t_like_but_will_support: Kan ikke lide det, men vil støtte det
+      don_t_like_but_will_support_meaning: Det er ikke fantastisk, men jeg vil ikke forsinke gruppen.
+      don_t_like_but_will_support_prompt: Hvad vil du gerne se forbedret?
+      serious_disagreement: Alvorlig uenighed
+      serious_disagreement_meaning: Jeg er ikke med på det her - regn ikke med mig
+      serious_disagreement_prompt: Hvad er du uenig i?
+      veto: Veto
+      veto_meaning: Jeg blokerer dette forslag
+      veto_prompt: Hvorfor blokerer du forslaget? Hvad skal der ændres for at du kan støtte det?
+    simple_poll:
+      process_subtitle: Find den mest populære mulighed
+      process_introduction: <p>Før du træffer en beslutning, så find ud af, hvilke muligheder folk er mest interesserede i.</p><p> En simpel afstemning hjælper dig med at finde den eller de mest populære muligheder med enkelt- eller flervalgsmuligheder.</p><p> Skriv eventuelle oplysninger om mulighederne i detaljefeltet, indtast derefter navnet på muligheden, og klik på + for at tilføje.</p><p> Angiv <strong>minimums-</strong> og <strong>maksimumsvalg, som</strong> en vælger kan vælge. Lad maksimumsvalget være 1 for en afstemning med én valgmulighed.</p><p> Du kan bruge blyantikonet ud for hver mulighed til at tilføje en <strong>betydning</strong> af muligheden og uddybe den yderligere for at hjælpe folk, når de stemmer.</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">Læs mere om Simpel afstemning</a> .</p>
+      title: Hvor bør fokus for vores strategiske retning være?
+      details: <h3 id="what-is-this-poll-about"><strong>Hvad handler denne afstemning om?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Hvorfor er dette vigtigt?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Hvad beder du folk om at gøre?</strong></h3><p></p><p> Vælg den/de mulighed(er), du foretrækker.</p>
+    score_poll:
+      process_subtitle: Mål graden af støtte til hver mulighed
+      process_introduction: <p>Brug Score-afstemning, når du vil spørge folk om deres ønske, præference eller interesse for hver mulighed.</p><p> <span>Deltagerne bliver bedt om at evaluere hver mulighed og tildele en score ved at flytte en skyder langs en skala.</span></p><p> <span>Resultaterne vises grafisk sammen med en tabel for hver mulighed, der viser samlede point, gennemsnitspoint og antal vælgere.</span></p><p> Avancerede indstillinger inkluderer 'Stemmer er anonyme' og 'Vis muligheder i tilfældig rækkefølge' - bruges ofte til scoreafstemninger for at reducere enhver bias i afstemningen.</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">Læs mere om Score-afstemning</a> .</p>
+      title: Vurdering af, hvordan beslutninger træffes i vores organisation
+      details: <h3 id="what-is-this-poll-about"><strong>Hvad handler denne afstemning om?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Hvorfor er dette vigtigt?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Hvad beder du folk om at gøre?</strong></h3><p></p><p> Vælg den/de mulighed(er), du foretrækker.</p>
+    dot_vote:
+      process_subtitle: Afsæt et budget med punkter for at afdække prioriteter
+      process_introduction: <p>Punktafstemning er nyttig for grupper, der forsøger at allokere en begrænset ressource til en række muligheder. Det går ud over en simpel afstemning ved at hjælpe deltagerne med at forstå, at der er en begrænsning, når de vælger muligheder.</p><p> Deltagerne får hver et fast antal prikker. Du bestemmer hvor mange.</p><p> De placerer prikker ud for de præsenterede muligheder, de kan lide. Deltagerne kan placere alle deres prikker på en enkelt mulighed eller fordele dem over flere muligheder.</p><p> Når deltagerne tildeler prikker, kan de overskride prikbudgetgrænsen, og de opfordres derfor til omhyggeligt at overveje, hvordan de bruger deres prikker.</p><p> Mulighederne med flest prikker "vinder". Resultattabellen indeholder yderligere data, der kan hjælpe dig med at analysere resultaterne.</p><ul><li><p> % af point</p></li><li><p> Point</p></li><li><p> Betyde</p></li><li><p> Vælgere</p></li></ul><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">Læs mere om Dot-afstemning</a> .</p>
+      title: Valg af temaer til vores konference
+      details: <h3 id="what-is-this-poll-about"><strong>Hvad handler denne afstemning om?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Hvorfor er dette vigtigt?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Hvad beder du folk om at gøre?</strong></h3><p></p><p> I denne afstemning har du et budget på 8 prikker, som du kan fordele til de muligheder, du foretrækker. Du kan placere alle prikker på én mulighed eller sprede dem ud.</p>
+    ranked_choice:
+      process_subtitle: Forstå den ordnede præference af muligheder
+      process_introduction: <p>Rangordnet valg er nyttigt, når du har et stort antal muligheder, eller når du afholder et valg.</p><p> Denne afstemningsskabelon tilbyder en række muligheder, hvor folk kan stemme i deres foretrukne rækkefølge.</p><p> Du kan indstille antallet af valgmuligheder, vælgeren får.</p><p> <span>Vælgerne trækker og slipper muligheder i præferencerækkefølge (#1 er din mest foretrukne mulighed).</span></p><p> <span>Avancerede indstillinger inkluderer 'Stemmer er anonyme' og 'Vis muligheder i tilfældig rækkefølge' - bruges ofte til</span> rangerede valg for at reducere enhver bias i stemmeafgivningen.</p><p> Resultaterne vises i rangorden. Resultattabellen indeholder yderligere data, der kan hjælpe dig med at analysere resultaterne.</p><ul><li><p> Rang</p></li><li><p> % af point</p></li><li><p> Point</p></li><li><p> Betyde</p></li></ul><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">Læs mere om Rangeret valg</a> .</p>
+      title: Valg af direktører til bestyrelsen
+      details: <h3 id="what-is-this-poll-about"><strong>Hvad handler denne afstemning om?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Hvorfor er dette vigtigt?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Hvad beder du folk om at gøre?</strong></h3><p></p><p> Stem ved at rangere mulighederne efter din foretrukne rækkefølge. Den mulighed, der rangerer først i resultaterne, vinder.</p>
+    time_poll:
+      process_subtitle: Find ud af, hvornår folk er tilgængelige til at mødes
+      process_introduction: <p><span>Spar tid ved at planlægge en dato for dit møde eller arrangement.</span></p><p> Tidsmåling gør det nemt at se alles tilgængelighed og finde det bedste tidspunkt.</p><p> Giv din tidsafstemning en titel og detaljer. Indtast en liste over dato- og tidsindstillinger i din tidszone.</p><p> Når du angiver tidsintervaller, skal du tage højde for personer i forskellige tidszoner. Deltagerne vil se tidspunkter lokaliseret i deres tidszone.</p><p> Angiv en mødevarighed.</p><p> Når tidsafstemningen lukker, skal du angive et resultat med det bedste tidspunkt og eventuelle instruktioner til mødet.</p><p> <span>Loomio vil inkludere en kalenderinvitation i e-mailen med resultatet, så deltagerne kan tilføje dem til deres kalender.</span></p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">Læs mere om Time-afstemningen</a> .</p>
+      title: Lad os finde en dato for vores næste møde
+      details: "<p><strong>Hvad er mødet eller begivenheden?</strong></p><p></p><p> <strong>Hvorfor er dette vigtigt?</strong></p><p></p><p> <strong>Hvad beder du folk om at gøre?</strong></p><p></p><p> <span>Marker de tidsrum, du er ledige, med det grønne 'tommelfinger op'-ikon, eller lad det røde 'tommelfinger ned' være på plads, når de ikke er tilgængelige.</span></p><p> <span>Brug ikonet 'tommelfingeren til siden' for at vise, at du er tilgængelig, 'hvis det er nødvendigt'.</span></p>"
+      reason_prompt: Er der noget, du kan sige for at hjælpe arrangøren med at finde et passende tidspunkt?
+    opt_in:
+      process_subtitle: Find frivillige eller spørg efter deltagere
+      process_introduction: '<p>Brug tilmelding til at invitere folk til at deltage i et team, en komité eller en arbejdsgruppe eller til at deltage i en begivenhed.</p><p> ''Tilmelding'' har to afstemningsmuligheder: Accepter eller Afvis.</p><p> Du kan definere et mål for antallet af personer, du leder efter, f.eks. 3 personer, der skal deltage i din arbejdsgruppe.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#opt-in">Læs mere om tilmelding</a> .</p>'
+      title: Arbejdsgruppe skal udarbejde vores nye bæredygtighedspolitik
+      details: "<p><strong>Hvilket team, hvilken arbejdsgruppe eller hvilket arrangement inviterer du folk til?</strong></p><p></p><p> <strong>Hvorfor er dette vigtigt?</strong></p><p></p><p> <strong>Hvad beder du folk om at gøre?</strong></p><p></p><p> Vælg 'Accepter' for at deltage!</p>"
+      accept_meaning: Jeg er villig til at deltage
+      accept_prompt: Hvorfor er du frivillig til dette?
+      decline_meaning: Jeg kan ikke deltage
+      decline_prompt: Er der noget, du gerne vil sige?
+  forward_mailer:
+    bounce:
+      subject: Din besked til Loomio blev ikke leveret
+      reason: Dette skete, fordi din e-mailklient adresserede beskeden til "Fra"-adressen i stedet for den angivne "Svar-til"-adresse.
+      recommendation: Åbn Loomio i din browser og send din besked direkte.
+  locale_names:
+    en: Engelsk
+    be-BY: Hviderussisk
+    bg-BG: Bulgarsk
+    ca: Catalansk
+    cs: Tjekkisk
+    zh-TW: Kinesisk (traditionel, Taiwan)
+    da: Dansk
+    de: Tysk
+    es: Spansk
+    eo: Esperanto
+    el: Græsk
+    fr: Fransk
+    he: Hebraisk
+    id: Indonesisk
+    it: Italiensk
+    hu: Ungarsk
+    ja: Japansk
+    ko: Koreansk
+    ml: Malayalam
+    nl-NL: Hollandsk
+    pl: Polere
+    pt-BR: Portugisisk (Brasilien)
+    ro: Rumænsk
+    sr: Serbisk (latin)
+    sr-RS: Serbisk (kyrillisk)
+    sk: Slovakisk
+    sv: Svensk
+    vi: Vietnamesisk
+    tr: Tyrkisk
+    uk: Ukrainsk
+    an: Aragonesisk
+    ar: Arabisk
+    cmn: Kinesisk (mandarin)
+    hr: Kroatisk
+    it-CH: Italiensk (Schweiz)
+    fi: Finsk
+    gl: Galicisk
+    ga-IE: Gælisk (Irland)
+    hi: Ingen
+    km: Khmer
+    lv: Lettisk
+    mk: Makedonsk
+    mi: Maori
+    fa-IR: Persisk (Iran)
+    pt-PT: Portugisisk
+    ru: Russisk
+    sl: Slovensk
+    te: Telugu
+    ur: Urdu
+    ur-PK: Urdu (Pakistan)
+    be: Hviderussisk
+    pt: Portugisisk
+    zh: Kinesisk (traditionel, Taiwan)
+    zh-HK: Kinesisk (traditionel, Taiwan)

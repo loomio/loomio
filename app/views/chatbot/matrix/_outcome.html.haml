@@ -9,5 +9,5 @@
       /   = t(option.name)
       / - if poll.poll_option_name_format == 'plain'
       /   = option.name
-  %p= render_rich_text(poll.current_outcome.statement, poll.current_outcome.statement_format)
+  %p= formatted_text(poll.current_outcome, :statement)
   %h5= t(:"poll_types.#{poll.poll_type}")

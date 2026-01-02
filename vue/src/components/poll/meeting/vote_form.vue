@@ -3,8 +3,10 @@ import EventBus from '@/shared/services/event_bus';
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
 import Flash   from '@/shared/services/flash';
+import WatchRecords from '@/mixins/watch_records';
 
 export default {
+  mixins: [WatchRecords],
   props: {
     stance: Object
   },
@@ -14,7 +16,8 @@ export default {
       stanceChoices: [],
       pollOptions: [],
       zone: null,
-      stanceValues: []
+      stanceValues: [],
+      loading: false
     };
   },
 
@@ -48,6 +51,7 @@ export default {
     },
 
     submit() {
+      this.loading = true
       this.stance.stanceChoicesAttributes = this.stanceChoices.map(choice => ({
         poll_option_id: choice.poll_option_id,
         score: choice.score
@@ -57,7 +61,9 @@ export default {
       this.stance.save().then(() => {
         EventBus.$emit("closeModal");
         Flash.success(`poll_${this.stance.poll().pollType}_vote_form.stance_${actionName}`);
-      }).catch(() => true);
+      }).catch((err) => {
+        Flash.custom(err.error || Object.values(err.errors).join(", "));
+      }).finally(() => this.loading = false);
     },
 
     buttonStyleFor(choice, score) {
@@ -98,14 +104,14 @@ export default {
 
 <template lang='pug'>
 form.poll-meeting-vote-form(@submit.prevent='submit()')
-  p.text--secondary(
+  p.text-medium-emphasis(
     v-t="{path: 'poll_meeting_vote_form.local_time_zone', args: {zone: currentUserTimeZone}}"
   )
   .poll-common-vote-form__options
     v-layout.poll-common-vote-form__option(
       v-for='choice in stanceChoices'
       :key='choice.id'
-      wrap 
+      wrap
     )
       poll-common-stance-choice(
         :poll="stance.poll()"
@@ -119,6 +125,7 @@ form.poll-meeting-vote-form(@submit.prevent='submit()')
         :key='i'
         @click='choice.score = i'
         :style="buttonStyleFor(choice, i)"
+        variant="flat"
         icon
       )
         v-avatar(:size="32")
@@ -128,8 +135,9 @@ form.poll-meeting-vote-form(@submit.prevent='submit()')
   v-card-actions.poll-common-form-actions
     v-btn.poll-common-vote-form__submit(
       block
+      variant="elevated"
       :disabled="!poll.isVotable()"
-      :loading="stance.processing"
+      :loading="loading"
       color="primary"
       type='submit'
     )

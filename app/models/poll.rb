@@ -68,10 +68,10 @@ class Poll < ApplicationRecord
 
   TEMPLATE_DEFAULT_FIELDS.each do |field|
     define_method field, -> {
-      self[field] || self[:custom_fields][field] || AppConfig.poll_types.dig(self.poll_type, 'defaults', field) 
+      self[field] || self[:custom_fields][field] || AppConfig.poll_types.dig(self.poll_type, 'defaults', field)
     }
 
-    define_method :"#{field}=", ->(value) { 
+    define_method :"#{field}=", ->(value) {
       self[:custom_fields].delete(field)
       if value == AppConfig.poll_types.dig(self.poll_type, 'defaults', field)
         self[field] = nil
@@ -98,7 +98,11 @@ class Poll < ApplicationRecord
   TEMPLATE_VALUES.each do |field|
     define_method field, -> { AppConfig.poll_types.dig(self.poll_type, field) }
   end
-  
+
+  def title_model
+    self
+  end
+
   def poll_template
     return PollTemplate.find_by(id: poll_template_id) if poll_template_id
     return PollTemplateService.default_templates.find {|pt| pt.key == poll_template_key } if poll_template_key
@@ -115,10 +119,10 @@ class Poll < ApplicationRecord
 
   def minimum_stance_choices
     if require_all_choices
-      poll.poll_options.length
+      poll_options.length
     else
-      self[:minimum_stance_choices] || 
-      self[:custom_fields][:minimum_stance_choices] || 
+      self[:minimum_stance_choices] ||
+      self[:custom_fields][:minimum_stance_choices] ||
       AppConfig.poll_types.dig(self.poll_type, 'defaults', 'minimum_stance_choices') ||
       0
     end
@@ -128,7 +132,7 @@ class Poll < ApplicationRecord
     self[:maximum_stance_choices] ||
     self[:custom_fields][:maximum_stance_choices] ||
     AppConfig.poll_types.dig(self.poll_type, 'defaults', 'maximum_stance_choices') ||
-    poll.poll_options.length
+    poll_options.length
   end
 
   include Translatable
@@ -142,9 +146,9 @@ class Poll < ApplicationRecord
   belongs_to :discussion
   belongs_to :group, class_name: "Group"
 
-  enum notify_on_closing_soon: {nobody: 0, author: 1, undecided_voters: 2, voters: 3}
-  enum hide_results: {off: 0, until_vote: 1, until_closed: 2}
-  enum stance_reason_required: {disabled: 0, optional: 1, required: 2}
+  enum :notify_on_closing_soon, {nobody: 0, author: 1, undecided_voters: 2, voters: 3}
+  enum :hide_results, {off: 0, until_vote: 1, until_closed: 2}
+  enum :stance_reason_required, {disabled: 0, optional: 1, required: 2}
 
   has_many :stances, dependent: :destroy
   has_many :stance_choices, through: :stances
@@ -152,11 +156,13 @@ class Poll < ApplicationRecord
   has_many :admin_voters, -> { merge(Stance.latest.admin) }, through: :stances, source: :participant
   has_many :undecided_voters, -> { merge(Stance.latest.undecided) }, through: :stances, source: :participant
   has_many :decided_voters, -> { merge(Stance.latest.decided) }, through: :stances, source: :participant
+  has_many :none_of_the_above_voters, -> { merge(Stance.latest.none_of_the_above) }, through: :stances, source: :participant
 
   has_many :poll_options, -> { order('priority') }, dependent: :destroy, autosave: true
   accepts_nested_attributes_for :poll_options, allow_destroy: true
 
   has_many :documents, as: :model, dependent: :destroy
+  has_many :stance_receipts, dependent: :destroy
 
   scope :dangling, -> { joins('left join groups g on polls.group_id = g.id').where('group_id is not null and g.id is null') }
   scope :active, -> { kept.where('polls.closed_at': nil) }
@@ -180,9 +186,10 @@ class Poll < ApplicationRecord
   end
 
   validates :poll_type, inclusion: { in: AppConfig.poll_types.keys }
-  validates :details, length: {maximum: Rails.application.secrets.max_message_length }
+  validates :details, length: {maximum: AppConfig.app_features[:max_message_length] }
 
-  before_save :clamp_minimum_stance_choices
+  before_validation :clamp_minimum_stance_choices
+  normalizes :quorum_pct, with: ->(v) { v.nil? ? nil : [ [ v, 0 ].max, 100 ].min }
   validate :closes_in_future
   validate :discussion_group_is_poll_group
   validate :cannot_deanonymize
@@ -209,7 +216,8 @@ class Poll < ApplicationRecord
     :tags,
     :notify_on_closing_soon,
     :poll_option_names,
-    :hide_results]
+    :hide_results,
+    :attachments]
 
   update_counter_cache :group, :polls_count
   update_counter_cache :group, :closed_polls_count
@@ -234,11 +242,11 @@ class Poll < ApplicationRecord
   def results_include_undecided
     poll_type != "meeting"
   end
-  
+
   def dates_as_options
     poll_option_name_format == 'iso8601'
   end
-  
+
   def chart_column
     case poll_type
     when 'count' then (agree_target ? 'target_percent' : 'voter_percent')
@@ -255,7 +263,7 @@ class Poll < ApplicationRecord
   def result_columns
     case poll_type
     when 'proposal'
-      %w[chart name score_percent voter_count voters]
+      %w[chart name votes votes_cast_percent voter_percent voters]
     when 'check'
       %w[chart name voter_percent voter_count voters]
     when 'count'
@@ -265,7 +273,7 @@ class Poll < ApplicationRecord
         %w[chart name voter_count voters]
       end
     when 'ranked_choice'
-      %w[chart name rank score_percent score average]
+      %w[chart name rank score_percent score average voter_count]
     when 'dot_vote'
       %w[chart name score_percent score average voter_count]
     when 'score'
@@ -278,7 +286,7 @@ class Poll < ApplicationRecord
       []
     end
   end
-  
+
   def results
     PollService.calculate_results(self, self.poll_options)
   end
@@ -344,19 +352,32 @@ class Poll < ApplicationRecord
     end
   end
 
+  def quorum_count
+    (quorum_pct.to_f/100 * voters_count).ceil
+  end
+
+  def quorum_reached?
+    quorum_pct && quorum_count <= voters_count
+  end
+
+  def quorum_votes_required
+    return 0 if quorum_pct.nil?
+    (((quorum_pct.to_f - cast_stances_pct.to_f)/100) * voters_count).ceil
+  end
+
   def group
     super || NullGroup.new
   end
 
   def show_results?(voted: false)
-    !! case hide_results
-    when 'until_closed'
-      closed_at
-    when 'until_vote'
-      closed_at || voted
-    else
-      true
-    end
+    !!case hide_results
+      when 'until_closed'
+        closed_at
+      when 'until_vote'
+        closed_at || voted
+      else
+        true
+      end
   end
 
   # this should not be run on anonymous polls
@@ -381,6 +402,7 @@ class Poll < ApplicationRecord
       stance_counts: poll_options.map(&:total_score), # should rename to option scores
       voters_count: stances.latest.count, # should rename to stances_count
       undecided_voters_count: stances.latest.undecided.count,
+      none_of_the_above_count: stances.latest.decided.where(none_of_the_above: true).count,
       versions_count: versions.count
     )
   end
@@ -423,7 +445,7 @@ class Poll < ApplicationRecord
   end
 
   def active?
-    (closing_at && closing_at > Time.now) && !closed_at
+    kept? && (closing_at && closing_at > Time.now) && !closed_at
   end
 
   def wip?
@@ -446,7 +468,7 @@ class Poll < ApplicationRecord
       option = poll_options.find_or_initialize_by(name: name)
       option.priority = priority
       os = AppConfig.poll_types.dig(self.poll_type, 'common_poll_options') || []
-      if params = os.find {|o| o['key'] == name } 
+      if params = os.find {|o| o['key'] == name }
         option.name = I18n.t(params['name_i18n'])
         option.icon = params['icon']
         option.meaning = I18n.t(params['meaning_i18n'])
@@ -502,7 +524,7 @@ class Poll < ApplicationRecord
 
   def closes_in_future
     return if closed_at
-    return if closing_at.nil? 
+    return if closing_at.nil?
     return if closing_at > Time.zone.now
     errors.add(:closing_at, I18n.t(:"poll.error.must_be_in_the_future"))
   end
@@ -516,8 +538,8 @@ class Poll < ApplicationRecord
   end
 
   def clamp_minimum_stance_choices
-    return if minimum_stance_choices.nil?
-    if minimum_stance_choices > poll_options.length
+    return if self[:minimum_stance_choices].nil?
+    if self[:minimum_stance_choices] > poll_options.length
       self.minimum_stance_choices = poll_options.length
     end
   end

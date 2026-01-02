@@ -20,6 +20,11 @@ export default {
     };
   },
 
+  computed: {
+    title() {
+      return this.tag.id ? 'loomio_tags.modal_edit_title' : 'loomio_tags.modal_title'
+    }
+  },
   methods: {
     deleteTag() {
       const tag = Records.tags.find(this.tag.id);
@@ -52,31 +57,27 @@ export default {
 
 </script>
 <template lang="pug">
-v-card.tags-modal
-  v-card-title
-    h1.text-h5(v-if="tag.id" tabindex="-1" v-t="'loomio_tags.modal_edit_title'")
-    h1.text-h5(v-if="!tag.id" tabindex="-1" v-t="'loomio_tags.modal_title'")
-    v-spacer
+v-card.tags-modal(:title="$t(title)")
+  template(v-slot:append)
     dismiss-modal-button(:close="close")
   v-card-text
     v-text-field.tags-modal__tag-name(v-model="tag.name" :label="$t('loomio_tags.name_label')" autofocus)
     validation-errors(:subject="tag" field="name")
 
-    label(for="input-708" class="v-label caption" v-t="'loomio_tags.color_label'")
+    label(for="input-708" class="v-label caption" v-t="'loomio_tags.pick_a_color'")
 
-    .tag-colors.d-flex
-      span.color-swatch(v-for="color in tag.constructor.colors" :key="color")
-        input(:id="color" v-model="tag.color" :value="color" type="radio")
-        label(:for="color" :style="{'background-color': color, color: color}") {{color}}
+    v-btn-toggle.tag-colors.flex-wrap(rounded v-model="tag.color")
+      v-btn(size="x-small" icon v-for="color in tag.constructor.colors" :key="color" :value="color" :color="color")
+        common-icon(size="large" name="mdiTag" :color="tag.color == color ? '#333' : color")
   v-card-actions
-    v-btn(v-if="tag.id", @click="deleteTag" v-t="'common.action.delete'" :disabled="loading")
+    v-btn(v-if="tag.id", @click="deleteTag" :disabled="loading")
+      span(v-t="'common.action.delete'")
     v-spacer
-    v-btn.tag-form__submit(color="primary" @click="submit" v-t="'common.action.save'" :loading="loading")
+    v-btn.tag-form__submit(:disabled="!tag.name" variant="elevated" color="primary" @click="submit" :loading="loading")
+      span(v-t="'common.action.save'")
 </template>
 
 <style lang="sass">
-.tag-colors
-  flex-wrap: wrap
 
 .color-swatch input
   opacity: 0 !important
@@ -91,5 +92,5 @@ v-card.tags-modal
   height: 28px
 
 .color-swatch input:checked + label
-  border: 2px solid #000
+  border: 2px solid #777
 </style>

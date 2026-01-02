@@ -15,11 +15,8 @@ export default {
 </script>
 
 <template lang="pug">
-v-card.edit-comment-form
-  submit-overlay(:value='comment.processing')
-  v-card-title
-    h1.text-h5(tabindex="-1" v-t="'comment_form.edit_comment'")
-    v-spacer
-    dismiss-modal-button(:model="comment")
+v-card.edit-comment-form.pb-4(:title="$t('comment_form.edit_comment')")
+  template(v-slot:append)
+    dismiss-modal-button
   comment-form.mx-4(:comment="comment" @comment-submitted="close()" autofocus)
 </template>

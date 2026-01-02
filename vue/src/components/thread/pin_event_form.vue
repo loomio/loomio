@@ -32,16 +32,14 @@ export default {
 
 </script>
 <template lang="pug">
-v-card.pin-event-form
-  v-card-title
-    span(v-t="'pin_event_form.title'")
-    v-spacer
-    dismiss-modal-button(aria-hidden='true')
+v-card.pin-event-form(:title="$t('pin_event_form.title')")
+  template(v-slot:append)
+    dismiss-modal-button
   v-card-text
     v-form(@submit.prevent="submit()")
       v-text-field(:disabled="loading" ref="focus" v-model="title" :label="$t('pin_event_form.title_label')")
-    //- p.text-caption(v-t="'pin_event_form.hint'")
   v-card-actions
     v-spacer
-    v-btn(color="primary" @click="submit()" :loading="loading" v-t="'common.action.save'")
+    v-btn(color="primary" @click="submit()" :loading="loading")
+      span(v-t="'common.action.save'")
 </template>

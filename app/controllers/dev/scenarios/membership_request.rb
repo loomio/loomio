@@ -6,6 +6,6 @@ module Dev::Scenarios::MembershipRequest
       request = MembershipRequest.new(group: create_group, introduction: "I'd like to make decisions with y'all")
       MembershipRequestService.create(membership_request: request, actor: saved(fake_user))
     end
-    redirect_to group_url(create_group)
+    redirect_to group_path(create_group)
   end
 end

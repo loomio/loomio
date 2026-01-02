@@ -1,23 +1,43 @@
 <script lang="js">
-import AbilityService from '@/shared/services/ability_service';
-
+import Session from '@/shared/services/session';
 import { pick, pickBy, assign } from 'lodash-es';
 import CommentService from '@/shared/services/comment_service';
 import EventService from '@/shared/services/event_service';
-import Session from '@/shared/services/session';
 
 export default {
   props: {
     event: Object,
-    eventable: Object
+    eventable: Object,
+    focused: Boolean,
+    unread: Boolean
   },
 
   data() {
     return {
       confirmOpts: null,
-      commentActions: CommentService.actions(this.eventable, this, this.event),
-      eventActions: EventService.actions(this.event, this)
+      commentActions: [],
+      eventActions: []
     };
+  },
+
+  mounted() {
+    this.rebuildActions();
+  },
+
+  methods: {
+    rebuildActions() {
+      this.commentActions = CommentService.actions(this.eventable, this, this.event);
+      this.eventActions = EventService.actions(this.event, this);
+    },
+
+    viewed(seen) {
+      if (seen &&
+          Session.isSignedIn() &&
+          Session.user().autoTranslate &&
+          this.commentActions['translate_comment'].canPerform()) {
+        this.commentActions['translate_comment'].perform().then(() => { this.rebuildActions() });
+      }
+    },
   },
 
   computed: {
@@ -43,11 +63,11 @@ export default {
 </script>
 
 <template lang="pug">
-section.strand-item__new-comment.new-comment(:id="'comment-'+ eventable.id")
-  strand-item-headline(:event="event" :eventable="eventable")
-  formatted-text.thread-item__body.new-comment__body(:model="eventable" column="body")
+section.strand-item__new-comment.new-comment(:id="'comment-'+ eventable.id" v-intersect.once="{handler: viewed}")
+  strand-item-headline(:event="event" :eventable="eventable" :focused="focused" :unread="unread")
+  formatted-text.thread-item__body.new-comment__body(:model="eventable" field="body")
   link-previews(:model="eventable")
   document-list(:model='eventable')
   attachment-list(:attachments="eventable.attachments")
-  action-dock(:model='eventable' :actions='dockActions' :menu-actions='menuActions' small left)
+  action-dock(:model='eventable' :actions='dockActions' :menu-actions='menuActions' size="small" left)
 </template>

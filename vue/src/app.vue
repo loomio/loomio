@@ -5,52 +5,65 @@ import EventBus from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
 import Session from '@/shared/services/session';
 import Flash from '@/shared/services/flash';
-import { each, compact, truncate } from 'lodash-es';
-import openModal from '@/shared/helpers/open_modal';
+import { compact, truncate } from 'lodash-es';
 import { initLiveUpdate, closeLiveUpdate } from '@/shared/helpers/message_bus';
 
+
+import { useTheme } from 'vuetify';
+
+import SidebarPanel from '@/components/sidebar/panel';
+
 export default {
+  components: [SidebarPanel],
   mixins: [AuthModalMixin],
+
   data() {
     return {pageError: null};
   },
 
   created() {
-    if (this.$route.query.locale) { Session.updateLocale(this.$route.query.locale); }
+    const theme = useTheme();
 
-    if (Session.user().experiences.darkMode != null) {
-      this.$vuetify.theme.dark = Session.user().experiences['darkMode'];
-    } else {
-      this.$vuetify.theme.dark = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
-    }
-
-    return each(AppConfig.theme.vuetify, (value, key) => {
-      if (value) { this.$vuetify.theme.themes.light[key] = value; }
-      if (value) { this.$vuetify.theme.themes.dark[key] = value; }
-      return true;
+    Object.entries(AppConfig.theme.light).forEach(([key, value]) => {
+      if (value) { theme.themes.value.light.colors[key] = value; }
     });
+
+    Object.entries(AppConfig.theme.lightblue).forEach(([key, value]) => {
+      if (value) { theme.themes.value.lightBlue.colors[key] = value; }
+    });
+
+    Object.entries(AppConfig.theme.dark).forEach(([key, value]) => {
+      if (value) { theme.themes.value.dark.colors[key] = value; }
+    });
+
+    Object.entries(AppConfig.theme.darkblue).forEach(([key, value]) => {
+      if (value) { theme.themes.value.darkBlue.colors[key] = value; }
+    });
+
+    if (Session.user().experiences.theme != null) {
+      theme.change(Session.user().experiences['theme']);
+    } else {
+      theme.change( (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? AppConfig.theme.default_dark_theme : AppConfig.theme.default_light_theme )
+    }
   },
 
   mounted() {
     initLiveUpdate();
-    if (!Session.isSignedIn() && this.shouldForceSignIn()) { this.openAuthModal(true); }
     EventBus.$on('currentComponent',     this.setCurrentComponent);
     EventBus.$on('openAuthModal',     () => this.openAuthModal());
     EventBus.$on('pageError', error => { return this.pageError = error; });
     EventBus.$on('signedIn',          () => { return this.pageError = null; });
-    EventBus.$on('VueForceUpdate',    () => {
-      this.$nextTick(() => {this.$forceUpdate(); });
-    });
     if (AppConfig.flash.notice) { Flash.success(AppConfig.flash.notice); }
   },
 
   destroyed() {
-    return closeLiveUpdate();
+    closeLiveUpdate();
   },
 
   watch: {
     '$route'() {
-      return this.pageError = null;
+      if (!Session.isSignedIn() && this.shouldForceSignIn()) { this.openAuthModal(true); }
+      this.pageError = null;
     }
   },
 
@@ -62,7 +75,7 @@ export default {
 
       AppConfig.currentGroup      = options.group;
       AppConfig.currentDiscussion = options.discussion;
-      return AppConfig.currentPoll       = options.poll;
+      AppConfig.currentPoll       = options.poll;
     },
 
     shouldForceSignIn(options = {}) {
@@ -72,12 +85,12 @@ export default {
 
       switch (this.$route.path) {
         case '/email_preferences': return (Session.user().restricted == null);
-        case '/dashboard':      
-             case '/inbox':          
-             case '/profile':        
-             case '/polls':          
-             case '/p/new':      
-             case '/g/new': return true;
+        case '/dashboard': return true;
+        case '/inbox':
+        case '/profile':
+        case '/polls':
+        case '/p/new':
+        case '/g/new': return true;
       }
     }
   }
@@ -88,12 +101,11 @@ export default {
 <template lang="pug">
 v-app.app-is-booted
   system-notice
+  sidebar-panel
   navbar
-  sidebar
   router-view(v-if="!pageError")
   common-error(v-if="pageError" :error="pageError")
   v-spacer
-  common-footer
   modal-launcher
   common-flash
 </template>
@@ -104,27 +116,43 @@ v-app.app-is-booted
 @import '@/css/thumbicons.css'
 @import '@/css/print.scss'
 
-.v-application .text-body-3
-  font-size: 0.9375rem !important
-  letter-spacing: normal !important
-  font-weight: 400
+.underline-on-hover:hover
+  text-decoration: underline
 
-.v-application .text-body-4
-  font-size: 1rem !important
-  letter-spacing: normal !important
-  font-weight: 400
+.v-card.group-form > .v-card__content
+  overflow: visible!important
+
+.v-card.discussion-form,
+.v-card.thread-template-form,
+.v-card.thread-template-form .v-card-item__content,
+.v-card.discussion-form .v-card-item__content,
+.v-card.poll-common-modal,
+.v-card.poll-common-modal .v-card-item__content
+  overflow: visible!important
+
+.text-on-surface
+  color: rgba(var(--v-theme-on-surface), var(--v-high-emphasis-opacity))
+
+.text-transform-none
+  text-transform: none
 
 h1:focus, h2:focus, h3:focus, h4:focus, h5:focus, h6:focus
   outline: 0
+
 a
   text-decoration: none
+  color: rgb(var(--v-theme-anchor))
 
 .lmo-relative
   position: relative
 
 .text-almost-black
   color: rgba(0, 0, 0, 0.87)
-  
+
+.max-width-320
+  max-width: 320px !important
+.max-width-400
+  max-width: 400px !important
 .max-width-640
   max-width: 640px !important
 .max-width-800

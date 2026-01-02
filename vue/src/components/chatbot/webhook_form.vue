@@ -14,10 +14,11 @@ export default {
       kinds: AppConfig.webhookEventKinds,
       testing: false,
       formats: [
-        {text: this.$t('webhook.formats.markdown'), value: "markdown"},
-        {text: this.$t('webhook.formats.microsoft'), value: "microsoft"},
-        {text: this.$t('webhook.formats.slack'), value: "slack"},
-        {text: this.$t('webhook.formats.discord'), value: "discord"}
+        {title: this.$t('webhook.formats.markdown'), value: "markdown"},
+        {title: this.$t('webhook.formats.microsoft'), value: "microsoft"},
+        {title: this.$t('webhook.formats.slack'), value: "slack"},
+        {title: this.$t('webhook.formats.discord'), value: "discord"},
+        {title: this.$t('webhook.formats.webex'), value: "webex"}
         ]
     };
   },
@@ -61,6 +62,7 @@ export default {
       case "discord": return "https://help.loomio.com/en/user_manual/groups/integrations/discord";
       case "microsoft": return "https://help.loomio.com/en/user_manual/groups/integrations/microsoft_teams";
       case "mattermost": return "https://help.loomio.com/en/user_manual/groups/integrations/mattermost";
+      case "webex": return "https://help.loomio.com/en/user_manual/groups/integrations/webex";
       }
     }
   }
@@ -68,22 +70,19 @@ export default {
 
 </script>
 <template lang="pug">
-v-card.chatbot-matrix-form
-  v-card-title
-    h1.text-h5(tabindex="-1")
-      span Webhook
-      space
-      span(v-t="'chatbot.chatbot'")
-    v-spacer
+v-card.chatbot-matrix-form(:title="'Webhook ' + $t('chatbot.chatbot')")
+  template(v-slot:append)
     dismiss-modal-button
   v-card-text
     v-text-field(
       :label="$t('chatbot.name')"
+      autocomplete="off"
       v-model="chatbot.name"
       hint="The name of your chatroom")
     validation-errors(:subject="chatbot" field="name")
     v-text-field(
       :label="$t('chatbot.webhook_url')"
+      autocomplete="off"
       v-model="chatbot.server"
       hint="Looks like: https://hooks.example.com/services/abc/xyz/123")
     validation-errors(:subject="chatbot" field="server")
@@ -92,22 +91,22 @@ v-card.chatbot-matrix-form
     //- v-select(v-model="chatbot.webhookKind" :items="formats" :label="$t('webhook.format')")
 
     v-checkbox.webhook-form__include-body(
-      v-model="chatbot.notificationOnly", 
-      :label="$t('chatbot.notification_only_label')" 
+      v-model="chatbot.notificationOnly",
+      :label="$t('chatbot.notification_only_label')"
       hide-details)
-    p.mt-4.text--secondary(v-t="'chatbot.event_kind_helptext'")
+    p.mt-4.text-medium-emphasis(v-t="'chatbot.event_kind_helptext'")
 
     v-checkbox.webhook-form__event-kind(
-      hide-details 
-      v-for='kind in kinds' 
-      v-model='chatbot.eventKinds' 
-      :key="kind" 
-      :label="$t('webhook.event_kinds.' + kind)" 
+      hide-details
+      v-for='kind in kinds'
+      v-model='chatbot.eventKinds'
+      :key="kind"
+      :label="$t('webhook.event_kinds.' + kind)"
       :value="kind")
 
-    v-card-actions
-      v-btn(v-if="chatbot.id" @click='destroy' v-t="'common.action.delete'")
-      v-spacer
-      v-btn(@click='testConnection', v-t="'chatbot.test_connection'", :loading="testing")
-      v-btn(color='primary' @click='submit' v-t="'common.action.save'")
+  v-card-actions
+    v-btn(v-if="chatbot.id" @click='destroy' v-t="'common.action.delete'")
+    v-spacer
+    v-btn(@click='testConnection', v-t="'chatbot.test_connection'", :loading="testing")
+    v-btn(color='primary' @click='submit' v-t="'common.action.save'")
 </template>

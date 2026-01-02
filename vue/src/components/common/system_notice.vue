@@ -3,9 +3,8 @@ import AppConfig from '@/shared/services/app_config';
 import EventBus from '@/shared/services/event_bus';
 import Session from '@/shared/services/session';
 import Records from '@/shared/services/records';
-// import marked from '@/marked';
 import md5 from 'md5';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 
 export default {
   data() {
@@ -35,7 +34,7 @@ export default {
   methods: {
     eatData(data) {
       this.reload = data.reload;
-      this.notice = data.notice || (AppConfig.features.app.trials && this.$route.path.startsWith('/d/') && !Session.isSignedIn() && I18n.t("powered_by.this_is_loomio_md"));
+      this.notice = data.notice || (AppConfig.features.app.trials && this.$route.path.startsWith('/d/') && !Session.isSignedIn() && I18n.global.t("powered_by.this_is_loomio_md"));
       this.showNotice = this.reload || (this.notice && !Session.user().hasExperienced(md5(this.notice)));
       this.showDismiss = data.reload || data.notice;
     },
@@ -58,7 +57,13 @@ v-system-bar.system-notice(v-if="showNotice" app color="primary" height="40")
     .system-notice__message.text-subtitle-1
       span(v-if="notice" v-marked="notice")
       span(v-else="notice" v-t="'global.messages.app_update'")
-    v-btn.system-notice__hide(v-if="showDismiss" small outlined @click="accept" v-t="(reload && 'global.messages.reload') || 'dashboard_page.dismiss'")
+    v-btn.system-notice__hide(
+      v-if="showDismiss"
+      size="small"
+      variant="tonal"
+      @click="accept"
+      v-t="(reload && 'global.messages.reload') || 'dashboard_page.dismiss'"
+    )
 </template>
 
 <style lang="sass">

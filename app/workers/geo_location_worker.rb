@@ -6,7 +6,7 @@ class GeoLocationWorker
 
     unless File.exist? db_filename
       # from https://github.com/P3TERX/GeoLite.mmdb
-      download = URI.parse("https://git.io/GeoLite2-Country.mmdb").open
+      download = URI.parse("https://github.com/P3TERX/GeoLite.mmdb/raw/download/GeoLite2-Country.mmdb").open
       IO.copy_stream(download, db_filename)
       puts "downloaded maxmind db"
     end

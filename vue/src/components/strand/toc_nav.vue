@@ -1,16 +1,30 @@
 <script lang="js">
 import EventBus from '@/shared/services/event_bus';
 import Records from '@/shared/services/records';
-// import marked from '@/shared/helpers/marked';
+import WatchRecords from '@/mixins/watch_records';
+import UrlFor from '@/mixins/url_for';
+import { sortBy, last } from 'lodash-es';
+import ScrollService from '@/shared/services/scroll_service';
+import Session        from '@/shared/services/session';
+import { mdiLightningBolt, mdiMessageBadgeOutline, mdiArrowUpThin, mdiArrowDownThin, mdiCog, mdiPlus } from '@mdi/js';
 
 export default {
+  mixins: [WatchRecords, UrlFor],
   props: {
     discussion: Object,
-    loader: Object
+    loader: Object,
+    focusMode: String,
+    focusSelector: String
   },
 
   data() {
     return {
+      mdiLightningBolt,
+      mdiMessageBadgeOutline,
+      mdiArrowUpThin,
+      mdiArrowDownThin,
+      mdiPlus,
+      mdiCog,
       open: null,
       items: [],
       visibleKeys: [],
@@ -20,10 +34,32 @@ export default {
 
   computed: {
     selectedSequenceId() { return parseInt(this.$route.params.sequence_id); },
-    selectedCommentId() { return parseInt(this.$route.params.comment_id); }
+    selectedCommentId() { return parseInt(this.$route.params.comment_id); },
+    isSignedIn() { return Session.isSignedIn(); },
   },
 
   methods: {
+    lastItemSequenceId() {
+      return this.items[this.items.length - 1].sequenceId;
+    },
+
+    scrollToNewest() {
+      ScrollService.scrollTo(`.sequenceId-${this.discussion.lastSequenceId()}`);
+    },
+    scrollToUnread() {
+      ScrollService.scrollTo(`.sequenceId-${this.loader.firstUnreadSequenceId()}`);
+    },
+    scrollToTop() {
+      ScrollService.scrollTo('#strand-page');
+    },
+    scrollToBottom() {
+      ScrollService.scrollTo(`.positionKey-${last(this.items).key}`);
+    },
+
+    scrollToSequenceId(id) {
+      ScrollService.scrollTo(`.sequenceId-${id}`);
+    },
+
     buildItems(bootData) {
       const itemsHash = {};
 
@@ -59,7 +95,7 @@ export default {
 
       Records.events.collection.chain()
              .find({discussionId: this.discussion.id})
-             .simplesort('positionKey', this.discussion.newestFirst)
+             .simplesort('positionKey')
              .data().forEach(event => {
         let poll;
         if (event.kind === "poll_created") {
@@ -85,33 +121,12 @@ export default {
         };
       });
 
-      const itemsArray = Object.values(itemsHash);
-
-      if (this.discussion.newestFirst) {
-        const newItems = [];
-        const parentIndexes = [];
-
-        itemsArray.forEach((item, index) => {
-          if (item.depth === 1) { return parentIndexes.push(index); }
-        });
-
-        parentIndexes.reverse();
-
-        parentIndexes.forEach(index => {
-          const item = itemsArray[index];
-          const slice = itemsArray.slice(index, index + item.descendantCount + 1);
-          Array.prototype.push.apply(newItems, slice);
-        });
-
-        this.items = newItems;
-      } else {
-        this.items = itemsArray;
-      }
+      this.items = sortBy(Object.values(itemsHash), i => i.key);
 
       const createdEvent = this.discussion.createdEvent();
       this.items.unshift({
         key: createdEvent.positionKey,
-        title: this.$t('activity_card.context'),
+        title: this.discussion.title,
         headings: [],
         sequenceId: 0,
         visible: this.visibleKeys.includes(createdEvent.positionKey),
@@ -167,20 +182,28 @@ export default {
 </script>
 
 <template lang="pug">
-v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion" v-model="open" :permanent="$vuetify.breakpoint.mdAndUp" width="230px" app fixed right clipped color="background" floating)
-  div.mt-12
-  div.strand-nav__toc
-    //- | {{items}}
-    router-link.strand-nav__entry.text-caption(
-      :class="{'strand-nav__entry--visible': item.visible, 'strand-nav__entry--selected': (item.sequenceId == selectedSequenceId || item.commentId == selectedCommentId), 'strand-nav__entry--unread': item.unread}"
-      :style="{'border-width': (item.depth * 2)+'px'}"
-      v-for="item in items"
-      :key="item.key"
-      :to="baseUrl+'/'+item.sequenceId")
-        .strand-nav__stance-icon-container(v-if="item.poll && item.poll.showResults()")
-          poll-common-icon-panel.poll-proposal-chart-panel__chart.mr-1(:poll="item.poll" show-my-stance :size="18" :stanceSize="12")
-        //- span {{item.key}}
-        span {{item.title}}
+v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion" v-model="open" :permanent="$vuetify.display.mdAndUp"  app fixed location="right" clipped color="background" floating)
+  template(v-if="items.length > 1")
+    v-list(nav density="compact" :lines="false")
+      v-list-subheader(v-t="'strand_nav.jump_to'")
+      v-list-item(color="info" :prepend-icon="mdiArrowUpThin" :title="$t('strand_nav.start')" @click="scrollToTop" :to="baseUrl+'/0'")
+      v-list-item(color="info" :active="focusMode == 'unread'" :prepend-icon="mdiMessageBadgeOutline" :title="$t('strand_nav.unread')" @click="scrollToUnread" :to="baseUrl+'?unread'" v-if="loader.firstUnreadSequenceId()" exact)
+      v-list-item(color="info" :active="focusMode == 'newest'" :prepend-icon="mdiLightningBolt" :title="$t('strand_nav.latest')" @click="scrollToNewest" :to="baseUrl+'?newest'" exact)
+      //v-list-item(:prepend-icon="mdiPlus" :title="$t('strand_nav.add_comment')" @click="scrollToNewest" :to="baseUrl+'?newest'" exact)
+      //v-list-item(:prepend-icon="mdiArrowDownThin" :title="$t('strand_nav.bottom')" @click="scrollToSequenceId(lastItemSequenceId())" :to="baseUrl+'/'+lastItemSequenceId()" exact)
+      v-list-subheader(v-t="'strand_nav.timeline'")
+    div.strand-nav__toc
+      router-link.strand-nav__entry.text-caption(
+        :class="{'strand-nav__entry--visible': item.visible, 'strand-nav__entry--selected': (item.sequenceId == selectedSequenceId || item.commentId == selectedCommentId), 'strand-nav__entry--unread': isSignedIn && item.unread}"
+        :style="{'border-width': (item.depth * 2)+'px'}"
+        v-for="item in items"
+        :key="item.key"
+        :to="baseUrl+'/'+item.sequenceId"
+        @click="scrollToSequenceId(item.sequenceId)")
+          .strand-nav__stance-icon-container(v-if="item.poll && item.poll.showResults()")
+            poll-common-icon-panel.poll-proposal-chart-panel__chart.mr-1(:poll="item.poll" show-my-stance :size="18" :stanceSize="12")
+          //span {{item.key}}
+          span(v-if="item.title") {{item.title}}
 </template>
 
 <style lang="sass">
@@ -192,9 +215,11 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion"
   flex-direction: column
   min-height: 70%
 
+.strand-nav__entry:empty
+  flex-grow: 1
+
 .strand-nav__entry
   display: block
-  flex-grow: 1
   border-left: 2px solid #ccc
   padding-left: 8px
   padding-right: 8px
@@ -212,14 +237,14 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion"
 .strand-nav__entry:hover
   border-color: var(--v-primary-darken1)!important
 
-.theme--dark
+.strand-nav__entry:hover, .strand-nav__entry--visible
+  background-color: #f8f8f8
+
+.v-theme--dark, .v-theme--darkBlue
   .strand-nav__entry
     border-left: 2px solid #999
   .strand-nav__entry:hover, .strand-nav__entry--visible
     background-color: #222
 
-.theme--light
-  .strand-nav__entry:hover, .strand-nav__entry--visible
-    background-color: #f8f8f8
 
 </style>

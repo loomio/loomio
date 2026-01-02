@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe API::V1::AttachmentsController do
+describe Api::V1::AttachmentsController do
   let(:user)  { create :user }
   let(:group) { create :group }
   let(:another_group) { create :group, parent: group }
@@ -18,9 +18,10 @@ describe API::V1::AttachmentsController do
     end
 
     it 'finds files attached to discussions' do
-      discussion.files.attach(io: File.open(Rails.root.join('spec', 'fixtures', 'images', 'strongbad.png')),
-                              filename: 'strongbad.png',
-                              content_type: 'image/jpeg')
+      blob = ActiveStorage::Blob.create_and_upload!(io: File.open(Rails.root.join('spec', 'fixtures', 'images', 'strongbad.png')),
+                                                    filename: 'strongbad.png',
+                                                    content_type: 'image/jpeg')
+      discussion.files.attach(blob)
       discussion.save!
       get :index, params: {q: "strongbad", group_id: discussion.group_id}
       json = JSON.parse(response.body)
@@ -38,9 +39,10 @@ describe API::V1::AttachmentsController do
   describe 'destroy' do
     before do
       sign_in user
-      discussion.files.attach(io: File.open(Rails.root.join('spec', 'fixtures', 'images', 'strongbad.png')),
-                              filename: 'strongbad.png',
-                              content_type: 'image/jpeg')
+      blob = ActiveStorage::Blob.create_and_upload!(io: File.open(Rails.root.join('spec', 'fixtures', 'images', 'strongbad.png')),
+                                                    filename: 'strongbad.png',
+                                                    content_type: 'image/jpeg')
+      discussion.files.attach(blob)
       discussion.files.last.update_attribute(:group_id, discussion.group_id)
       @attachment = discussion.files.last
     end

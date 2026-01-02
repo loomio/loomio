@@ -1,16 +1,13 @@
-- if @event.kind == "membership_request_approved"
-  - group = @event.eventable.group
-  - membership = @event.eventable
-- else
-  - group = @event.eventable
-  - membership = group.all_memberships.find_by!(user_id: @recipient.id)
-
+- # for some reason we create memberhship_created events with a group. single event for all invites.
+- # other membership notifications use _membership.html.haml
+- group = @event.eventable
+- membership = group.all_memberships.find_by!(user_id: @recipient.id)
 
 = render "event_mailer/common/notification", with_title: true, event: @event, url: membership_url(membership)
 = render "event_mailer/group/cover_and_logo", group: group
 %h1.text-h5=group.full_name
 
-=raw render_plain_text(group.description, group.description_format).truncate(280)
+=raw force_plain_text(group.description, group.description_format).truncate(280)
 
 .px-2.py-1
   .text-center
@@ -23,4 +20,3 @@
 .pt-4
   = image_tag AppConfig.theme[:email_footer_logo_src], alt: "#{AppConfig.theme[:site_name]} logo", class: "thread-mailer__footer-logo"
   %p.text-caption= t(:"email.loomio_app_description", site_name: AppConfig.theme[:site_name])
-

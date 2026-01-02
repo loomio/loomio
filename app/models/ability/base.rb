@@ -11,6 +11,7 @@ module Ability
     prepend Ability::Membership
     prepend Ability::Outcome
     prepend Ability::Poll
+    prepend Ability::PollOption
     prepend Ability::Reaction
     prepend Ability::Stance
     prepend Ability::User
@@ -21,6 +22,7 @@ module Ability
     prepend Ability::Task
     prepend Ability::PollTemplate
     prepend Ability::DiscussionTemplate
+    prepend Ability::ReceivedEmail
 
     def initialize(user)
       @user = user

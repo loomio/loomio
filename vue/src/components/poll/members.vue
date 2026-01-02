@@ -6,8 +6,10 @@ import Flash from '@/shared/services/flash';
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete';
 import StanceService from '@/shared/services/stance_service';
 import { map, debounce, uniq, compact } from 'lodash-es';
+import WatchRecords from '@/mixins/watch_records';
 
 export default {
+  mixins: [WatchRecords],
   components: {
     RecipientsAutocomplete
   },
@@ -58,6 +60,9 @@ export default {
   },
 
   methods: {
+    performableActions(poll, user) {
+      return this.actionNames.filter(name => this.canPerform(name, poll, user))
+    },
     canPerform(action, poll, user) {
       switch (action) {
         case 'makeAdmin':
@@ -98,6 +103,7 @@ export default {
         } else {
           Flash.success('poll_common_form.count_voters_added', { count });
         }
+        this.fetchStances()
 
         this.reset = !this.reset;
       }).catch(error => {
@@ -159,7 +165,7 @@ export default {
 </script>
 
 <template lang="pug">
-.poll-members-form
+v-card.poll-members-form
   .px-4.pt-4
     .d-flex.justify-space-between
       //- template(v-if="poll.notifyRecipients")
@@ -185,37 +191,41 @@ export default {
       v-btn.poll-members-form__submit(color="primary" :disabled="!someRecipients" :loading="saving" @click="inviteRecipients" )
         span(v-t="'common.action.invite'" v-if="poll.notifyRecipients")
         span(v-t="'poll_common_form.add_voters'" v-else)
-    v-alert(dense type="warning" text v-if="someRecipients && !poll.notifyRecipients")
+    v-alert(density="compact" type="warning" text v-if="someRecipients && !poll.notifyRecipients")
       span(v-t="'poll_common_form.no_notifications_warning'")
     v-textarea(v-if="poll.notifyRecipients && someRecipients" filled rows="3" v-model="message" :label="$t('announcement.form.invitation_message_label')" :placeholder="$t('announcement.form.invitation_message_placeholder')")
   v-list.poll-members-form__list
-    v-subheader
+    v-list-subheader
       span(v-t="'membership_card.voters'")
       space
       span ({{users.length}} / {{poll.votersCount}})
     v-list-item(v-for="user in users" :key="user.id")
-      v-list-item-avatar
-        user-avatar(:user="user" :size="24")
-      v-list-item-content
-        v-list-item-title
-          span.mr-2 {{user.nameWithTitle(poll.group())}}
-          v-chip.mr-1(v-if="isGuest[user.id]" outlined x-small label v-t="'members_panel.guest'" :title="$t('announcement.inviting_guests_to_thread')")
-          v-chip.mr-1(v-if="isMemberAdmin[user.id] || isStanceAdmin[user.id]" outlined x-small label v-t="'members_panel.admin'")
-          v-chip.mr-1(v-if="!user.emailVerified" outlined x-small label v-t="'announcement.members_list.has_not_joined_yet'" :title="$t('announcement.members_list.has_not_joined_yet_hint')")
-
-      v-list-item-action
+      template(v-slot:prepend)
+        user-avatar.mr-2(:user="user" :size="32")
+      v-list-item-title
+        span.mr-2 {{user.nameWithTitle(poll.group())}}
+        v-chip.mr-1(v-if="isGuest[user.id]" variant="outlined" size="x-small" label :title="$t('announcement.inviting_guests_to_discussion')")
+          span(v-t="'members_panel.guest'")
+        v-chip.mr-1(v-if="isMemberAdmin[user.id] || isStanceAdmin[user.id]" variant="outlined" size="x-small" label)
+          span(v-t="'members_panel.admin'")
+        v-chip.mr-1(v-if="!user.emailVerified" variant="outlined" size="x-small" label :title="$t('announcement.members_list.has_not_joined_yet_hint')")
+          span(v-t="'announcement.members_list.has_not_joined_yet'")
+      template(v-slot:append)
         v-menu(offset-y)
-          template(v-slot:activator="{on, attrs}")
-            v-btn.membership-dropdown__button(icon v-on="on" v-bind="attrs")
+          template(v-slot:activator="{ props }")
+            v-btn.membership-dropdown__button(variant="flat" icon size="small" v-bind="props")
               common-icon(name="mdi-dots-vertical")
           v-list
-            v-list-item(v-for="action in actionNames" v-if="canPerform(action, poll, user)" @click="perform(action, poll, user)" :key="action")
+            v-list-item(
+              v-for="action in performableActions(poll, user)"
+              @click="perform(action, poll, user)"
+              :key="action")
               v-list-item-title(v-t="{ path: service[action].name, args: { pollType: poll.translatedPollType() } }")
 
     v-list-item(v-if="query && users.length == 0")
       v-list-item-title(v-t="{ path: 'discussions_panel.no_results_found', args: { search: query }}")
   .d-flex.justify-end.mx-4.pb-4
-    help-link(
+    help-btn(
       path="en/user_manual/polls/starting_proposals/index.html#invite-members")
     v-spacer
 </template>

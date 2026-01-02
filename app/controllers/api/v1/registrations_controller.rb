@@ -1,4 +1,4 @@
-class API::V1::RegistrationsController < Devise::RegistrationsController
+class Api::V1::RegistrationsController < Devise::RegistrationsController
   include LocalesHelper
   before_action :configure_permitted_parameters
   before_action :permission_check, only: :create
@@ -11,7 +11,7 @@ class API::V1::RegistrationsController < Devise::RegistrationsController
       if @email_can_be_verified
         sign_in resource
         flash[:notice] = t(:'devise.sessions.signed_in')
-        render json: Boot::User.new(resource).payload.merge({ success: :ok, signed_in: true })
+        render json: Boot::User.new(resource, root_url: URI(root_url).origin).payload.merge({ success: :ok, signed_in: true })
       else
         LoginTokenService.create(actor: resource, uri: URI::parse(request.referrer.to_s))
         render json: { success: :ok, signed_in: false }
@@ -46,7 +46,7 @@ class API::V1::RegistrationsController < Devise::RegistrationsController
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up) do |u|
-      u.permit(:name, :email, :recaptcha, :legal_accepted, :email_newsletter)
+      u.permit(:name, :email, :legal_accepted, :email_newsletter)
     end
   end
 end

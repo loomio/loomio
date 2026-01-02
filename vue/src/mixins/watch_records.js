@@ -10,11 +10,10 @@ export default {
       const obj = args[0],
             {
               collections,
-              query
-            } = obj,
-            val = obj.key,
-            key = val != null ? val : '';
-      const name = `${collections.join('_')}_${this._uid}_${key}`;
+              query,
+              key
+            } = obj
+      const name = collections.concat(key || parseInt(Math.random()*10000)).join('_');
       this.watchedRecords.push(name);
       Records.view({
         name,
@@ -24,7 +23,7 @@ export default {
     }
   },
 
-  beforeDestroy() {
-    return this.watchedRecords.forEach(name => delete Records.views[name]);
-  }
+  unmounted() {
+    this.watchedRecords.forEach(name => delete Records.views[name]);
+  },
 }

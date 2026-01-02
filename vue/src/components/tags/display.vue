@@ -8,7 +8,10 @@ export default {
     showCounts: Boolean,
     showOrgCounts: Boolean,
     selected: String,
-    smaller: Boolean,
+    size: {
+      type: String,
+      default: 'small'
+    },
     selected: String
   },
 
@@ -17,12 +20,11 @@ export default {
       return this.group.key;
     },
 
-    byName() { 
+    byName() {
       const res = {};
       this.group.tags().forEach(t => res[t.name] = t);
       return res;
     },
-
     tagObjects() {
       return this.tags.map((name, i) => {
         return {
@@ -41,15 +43,13 @@ export default {
 span.tags-display
   v-chip.mr-1(
     v-for="tag in tagObjects"
-    :key="tag.id"
-    :outlined="tag.name != selected"
-    :small="!smaller"
-    :xSmall="smaller"
+    :key="tag.id || tag.name"
+    :size="size"
     :color="tag.color"
     :to="'/g/'+groupKey+'/tags/'+encodeURIComponent(tag.name)"
     :class="{'mb-1': showCounts}"
   )
-    span {{ tag.name }}
+    plain-text.text-on-surface(:model="tag" field="name")
     span(v-if="showCounts")
       space
       span {{tag.taggingsCount}}

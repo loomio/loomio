@@ -2,14 +2,14 @@ module Dev::Scenarios::Discussion
   def setup_discussion
     create_discussion
     sign_in patrick
-    redirect_to discussion_url(create_discussion)
+    redirect_to discussion_path(create_discussion)
   end
 
   def setup_multiple_discussions
     sign_in patrick
     create_discussion
     create_public_discussion
-    redirect_to discussion_url(create_discussion)
+    redirect_to discussion_path(create_discussion)
   end
 
   def setup_discussion_as_guest
@@ -19,7 +19,18 @@ module Dev::Scenarios::Discussion
     discussion.add_guest!(jennifer, discussion.author)
     sign_in jennifer
 
-    redirect_to discussion_url(discussion)
+    redirect_to discussion_path(discussion)
+  end
+
+  def setup_discussion_with_guest
+    group      = FactoryBot.create :group, group_privacy: 'secret'
+    discussion = FactoryBot.build :discussion, group: group, title: "Dirty Dancing Shoes"
+    group.add_member!(patrick)
+    DiscussionService.create(discussion: discussion, actor: discussion.group.creator)
+    discussion.add_guest!(jennifer, discussion.author)
+    sign_in patrick
+
+    redirect_to discussion_path(discussion)
   end
 
   def setup_forkable_discussion
@@ -32,7 +43,7 @@ module Dev::Scenarios::Discussion
     CommentService.create(comment: FactoryBot.create(:comment, discussion: create_discussion, body: "This is also off-topic"), actor: emilio)
     CommentService.create(comment: FactoryBot.create(:comment, discussion: create_discussion, body: "This is totally back on topic!"), actor: patrick)
 
-    redirect_to discussion_url(create_discussion)
+    redirect_to discussion_path(create_discussion)
   end
 
   def setup_thread_catch_up
@@ -61,12 +72,12 @@ module Dev::Scenarios::Discussion
     CommentService.create(comment: read, actor: patrick)
     CommentService.create(comment: unread, actor: jennifer)
     CommentService.create(comment: another_unread, actor: jennifer)
-    redirect_to discussion_url(create_discussion)
+    redirect_to discussion_path(create_discussion)
   end
 
   def setup_discussion_for_jennifer
     sign_in jennifer
-    redirect_to discussion_url(create_discussion)
+    redirect_to discussion_path(create_discussion)
   end
 
   def setup_open_and_closed_discussions
@@ -74,7 +85,7 @@ module Dev::Scenarios::Discussion
     create_closed_discussion
     sign_in patrick
     patrick.update(experiences: { closingThread: true })
-    redirect_to group_url(create_group)
+    redirect_to group_path(create_group)
   end
 
   def setup_pages_of_closed_discussions
@@ -84,7 +95,7 @@ module Dev::Scenarios::Discussion
     60.times do
       saved(fake_discussion(group: @group, closed_at: 5.days.ago))
     end
-    redirect_to group_url(@group)
+    redirect_to group_path(@group)
   end
 
   def setup_comment_with_versions
@@ -93,7 +104,7 @@ module Dev::Scenarios::Discussion
     comment.update(body: "What moon sign are you?")
     comment.update_versions_count
     sign_in patrick
-    redirect_to discussion_url(create_discussion)
+    redirect_to discussion_path(create_discussion)
   end
 
   def setup_discussion_with_versions
@@ -101,7 +112,7 @@ module Dev::Scenarios::Discussion
     create_discussion.update(title: "What moon sign are you?")
     create_discussion.update_versions_count
     sign_in patrick
-    redirect_to discussion_url(create_discussion)
+    redirect_to discussion_path(create_discussion)
   end
 
   # discussion mailer emails
@@ -112,9 +123,13 @@ module Dev::Scenarios::Discussion
     @group.add_admin! patrick
     @group.add_member! jennifer
     discussion = FactoryBot.build(:discussion, title: "Let's go to the moon!", group: @group)
-    discussion.files.attach(io: File.open(Rails.root.join('spec', 'fixtures', 'images', 'strongbad.png')),
-                            filename: 'strongbad.png',
-                            content_type: 'image/jpeg')
+
+    blob = ActiveStorage::Blob.create_and_upload!(
+      io: File.open(Rails.root.join('spec', 'fixtures', 'images', 'strongbad.png')),
+      filename: 'strongbad.png',
+      content_type: 'image/jpeg'
+    )
+    discussion.files.attach(blob)
 
     DiscussionService.create(discussion: discussion, actor: patrick, params: {recipient_user_ids: [jennifer.id]})
     last_email
@@ -167,6 +182,22 @@ module Dev::Scenarios::Discussion
     CommentService.create(comment: @comment, actor: jennifer)
     last_email
   end
+
+  def setup_discussion_mailer_new_comment_thread_subscribed_email
+      @group = Group.create!(name: 'Dirty Dancing Shoes')
+      @group.add_admin!(patrick).set_volume!(:normal)
+      @group.add_member! jennifer
+
+      @discussion = Discussion.new(title: 'What star sign are you?',
+                                   group: @group,
+                                   description: "Wow, what a __great__ day.",
+                                   author: jennifer)
+      DiscussionService.create(discussion: @discussion, actor: @discussion.author)
+      DiscussionReader.for(discussion: @discussion, user: @patrick).set_volume!(:loud)
+      @comment = Comment.new(author: jennifer, body: "hello _patrick_.", discussion: @discussion)
+      CommentService.create(comment: @comment, actor: jennifer)
+      last_email
+    end
 
   def setup_discussion_mailer_comment_replied_to_email
     @group = Group.create!(name: 'Dirty Dancing Shoes')

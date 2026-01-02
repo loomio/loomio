@@ -9,7 +9,6 @@ de:
     we_use_this_to_help: Die folgenden Informationen werden verwendet, um Ihre Loomio-Gruppe einzurichten und uns dabei zu helfen, mehr über Ihre Organisation zu erfahren, damit wir Sie besser unterstützen können.
     how_do_you_intend_to_use_loomio: Wie möchten Sie Loomio nutzen?
     what_decisions_do_you_need_to_make: Welche Entscheidungen müssen Sie treffen?
-    newsletter_intro: Möchten Sie unseren Newsletter abonnieren?
     newsletter_description: Bleiben Sie über neue Funktionen und inspirierende Geschichten darüber, wie Loomio von Organisationen auf der ganzen Welt eingesetzt wird, auf dem Laufenden
     subscribe_to_newsletter: Abonnieren Sie den Loomio-Newsletter
     form_incomplete: Bitte füllen Sie alle Felder im Formular aus, um fortzufahren
@@ -21,6 +20,7 @@ de:
     please_enter_a_valid_email_address: Bitte geben Sie eine gültige E-Mail-Adresse ein
     please_accept_the_terms: Bitte akzeptieren Sie die Bedingungen
     how_did_you_hear_about_loomio: Wie haben Sie von Loomio erfahren?
+    newsletter_intro: Möchten Sie über neue Funktionen, Kundeninterviews, Fallstudien und Ankündigungen des Loomio-Teams informiert werden?
   tasks:
     tasks: Aufgaben
     your_tasks: Deine Aufgaben
@@ -33,11 +33,11 @@ de:
     2_day_before: 2 Tage vorher
     3_day_before: 3 Tage vorher
     7_day_before: 7 Tage vorher
-    task_placeholder: Gib eine Aufgabe ein und @erwähne jemanden, um die Aufgabe zuzuteilen
     add_due_date: Fälligkeitsdatum hinzufügen
     task_updated_done: Aufgabe als erledigt markiert!
     task_updated_not_done: Aufgabe als nicht erledigt markiert
     no_tasks_assigned: Dir sind keine Aufgaben zugewiesen
+    task_placeholder: Geben Sie eine Aufgabe ein und {'@'}erwähnen Sie jemanden, der sie zuweisen soll
   templates:
     template_gallery: Vorlagengalerie
     title_template: "%{title}-Vorlage"
@@ -59,8 +59,6 @@ de:
     to_use_loomio_with_your_org_start_trial: Wenn du bereit bist, Loomio mit deiner Organisation auszuprobieren, starte eine kostenfreie Testphase.
     templates: Vorlagen
     make_a_copy: Eine Kopie machen
-    this_thread_is_a_template: Dieser Thread ist eine Vorlage. Erstellen Sie eine Kopie, wenn Sie sie verwenden möchten.
-    this_is_a_poll_template: Dies ist eine Umfragevorlage. Machen Sie eine Kopie, wenn Sie mit der Abstimmung beginnen möchten.
     try_loomio: Loomio ausprobieren
     start_a_demo_group: Starte eine Demogruppe
     start_a_demo: Starte eine Demo
@@ -162,6 +160,7 @@ de:
     no_tags_present: Keine Diskussionen konnten mit diesem Schlagwort gefunden werden. Versuche ein anderes.
     no_tags_in_group: Diese Gruppe hat bis jetzt noch keine Schlagwörter
     only_admins_can_edit_tags: Leider können nur Administratoren von %{group} Schlagwörter erstellen, umbenennen oder löschen
+    pick_a_color: Wählen Sie eine Farbe
   poll_types:
     proposal: Vorschlag
     count: Opt-in
@@ -302,7 +301,7 @@ de:
       discard: Verwefen
       restore: Wiederherstellen
       unsubscribe: Benachrichtigungen deaktivieren
-      subscribe: Beitreten
+      subscribe: Benachrichtigung aktivieren
       unignore: Wieder bemerken
       remind: Erinnern
       resend: Neu senden
@@ -312,14 +311,16 @@ de:
       invite: Einladen
       resent: Einladung erneut versendet
       export: Exportieren
-      fork: Abzweigung
+      fork: Abzweigen
       apply: Anwenden
       add_people: Leute hinzufügen
       zoom: Zoom
       align: Ausrichten
+      original: Original
     formatting_help:
       label: Markdown-Formatierung
       title: Mehr über die Textformatierung mit Markdown lernen
+    thread: Faden
   merge_accounts:
     modal:
       title: Benutzerkonten zusammenführen
@@ -387,13 +388,13 @@ de:
     unreleased_emails: Unveröffentlichte E-Mails
     start_a_thread_by_email: Starten Sie einen Thread per E-Mail
     send_email_to_start_thread: Senden Sie eine E-Mail an diese Adresse, um einen Thread in Ihrer Gruppe zu starten.
-    subject_body_attachments: Der E-Mail-Betreff wird zum Thread-Titel, der E-Mail-Text zur Beschreibung und alle angehängten Dateien werden an den Thread angehängt.
     copy_address: Adresse kopieren
     email_me_this_address: Schicken Sie mir diese Adresse per E-Mail
     email_address_copied_to_clipboard: E-Mail-Adresse in die Zwischenablage kopiert
     forward_email_to_move_conversation: 'Tipp: Leiten Sie eine E-Mail-Konversation an Loomio weiter, wenn Sie eine Entscheidung treffen oder Aufzeichnungen führen müssen.'
-  email_to_group_mailer:
-    your_email_address_to_start_threads_in_group: Ihre E-Mail-Adresse zum Starten von Threads in %{group}
+    start_a_discussion_by_email: Starten Sie eine Diskussion per E-Mail
+    send_email_to_start_discussion: Senden Sie eine E-Mail an diese Adresse, um eine Diskussion in Ihrer Gruppe zu starten.
+    subject_body_attachments: Der Betreff der E-Mail wird zum Diskussionstitel, der E-Mail-Text zur Beschreibung. Dateianhänge werden ebenfalls kopiert.
   volume_levels:
     loud: 'Laut '
     normal: Normal
@@ -417,14 +418,12 @@ de:
       loud_explain: wenn Aktivitäten stattfinden
       normal_explain: wenn jemand nach deiner Aufmerksamkeit fragt
       quiet_explain: 'keine Benachrichtigungen '
-    aria_label: E-Mail-Einstellungen ändern
     loud_label: Alle Aktivitäten
     normal_label: Ankündigungen
     quiet_label: Keine E-Mails
     mute_label: Stummschalten
     saved: Benachrichtigungseinstellung aktualisiert
     discussion:
-      title: 'Diskussionsbenachrichtigungen '
       loud_description: Alle Aktivitäten dieser Diskussion werden dir per E-mail mitgeteilt
       normal_description: 'Du bekommst nur E-mails zu wichtigen Aktivitäten in dieser Diskussionen '
       quiet_description: 'Du bekommst keine E-mails bezüglich Aktivitäten in dieser Diskussionen '
@@ -436,6 +435,7 @@ de:
         loud: 'Du wirst per E-Mail benachrichtigt, sobald in dieser Diskussion etwas passiert.  '
         normal: Du wirst per E-Mail über Vorschläge in diesem Thread benachrichtigt.
         quiet: Du erhälst keine E-Mail zu diesem Thread.
+      title: Diskussionsbenachrichtigungen
     membership:
       title: Benachrichtigungen für %{title}
       loud_description: Du wirst benachrichtigt, sobald in dieser Gruppe etwas passiert.
@@ -466,8 +466,25 @@ de:
         loud: Du wirst per E-Mail über alle Aktivitäten in neuen Gruppen benachrichtigt.
         normal: Du wirst per E-Mail über Ankündigungen in neuen Gruppen benachrichtigt.
         quiet: Du wirst keine E-Mail Nachrichten über neue Gruppen erhalten.
+    change_your_email_settings: Ändern Sie Ihre E-Mail-Einstellungen
+    when_would_you_like_to_be_emailed_group: Wann möchten Sie E-Mails zu dieser Gruppe erhalten?
+    changes_all_threads_in_group: Dadurch werden die Einstellungen für alle Threads in der Gruppe geändert.
+    what_do_the_options_mean: Was bedeuten die Optionen?
+    loud_desc: Jedes Mal, wenn jemand teilnimmt
+    normal_desc: Wenn mich jemand benachrichtigt
+    quiet_desc: Niemals
+    when_would_you_like_to_be_emailed_poll_type: Wann möchten Sie eine E-Mail zu diesem %{poll_type} erhalten?
+    normal_excludes_mentioning_html: Es gibt eine separate Einstellung für die Erwähnung per {'@'} (z. B. bei einer Antwort in einem Kommentar). <a href="%{url}">Klicken Sie hier, um die Einstellungen für @Erwähnungen zu bearbeiten.</a>
+    loud_explained: Sie erhalten jedes Mal eine E-Mail, wenn ein neuer Kommentar eingeht, jemand abstimmt oder eine Umfrage bzw. ein Thread startet.
+    changes_all_threads_and_polls_in_group: Dies ändert die Einstellungen für alle Threads und Umfragen in der Gruppe.
+    when_do_you_want_to_be_emailed: Wann möchten Sie per E-Mail benachrichtigt werden?
+    what_the_options_mean: Was die Optionen bedeuten
+    quiet_explained: Sie erhalten keine E-Mail-Benachrichtigung, auch nicht, wenn Sie benachrichtigt werden möchten. Wichtige Ankündigungen oder Entscheidungen könnten Ihnen entgehen, wenn Sie Loomio nicht regelmäßig besuchen.
+    when_would_you_like_to_be_emailed_discussion: Wann möchten Sie über diese Diskussion per E-Mail informiert werden?
+    changes_all_discussions_and_polls_in_group: Dies ändert die Einstellungen für alle Diskussionen und Umfragen in der Gruppe.
+    normal_explained: Wenn jemand Ihren Namen im Feld "Benachrichtigen" einer Diskussion oder einer Umfrage eingibt oder die Gruppe mit einem @-Zeichen erwähnt.
+    aria_label: Formular zum Ändern der E-Mail-Einstellungen
   close_explanation_modal:
-    aria_label: Diskussion schließen
     close_thread: Diskussion schließen
     body: |
       <p>Schliesse alte oder irrelevante Diskussionen um sie aus der Ansicht zu entfernen und um anzuzeigen das die Diskussion beendet wurde.</p>
@@ -482,14 +499,11 @@ de:
     password_label: 'Passwort:'
     password_confirmation_label: 'Nochmal dieses Passwort:'
   signed_out_modal:
-    aria_label: Sitzung beendet
     title: Deine Sitzung wurde beendet
     message: Deine Sitzung wurde in einem anderen Fenster beendet. Bitte melde dich erneut an um fortzufahren.
     ok: Ok
-  comment_reply_form:
-    aria_label: Antwort hinzufügen
+    aria_label: Sitzung beendet
   comment_form:
-    aria_label: Kommentar hinzufügen
     attachments:
       add_attachment: Datei anhängen
       remove_attachment: Anhang entfernen
@@ -513,12 +527,11 @@ de:
     private_privacy_notice: Dein Kommentar wird nur für Mitglieder von %{groupName} sichtbar sein.
     public_privacy_notice: Dein Kommentar wird für alle im Web sichtbar sein.
     sign_in: Melde dich an, um an der Diskussion teilzunehmen
+    add_a_comment: Einen Kommentar hinzufügen
+    share_your_thoughts: Teilen Sie Ihre Gedanken mit…
   thread_nav:
     participants: Teilnehmer
   sidebar:
-    new_thread_removed: Neuer Thread entfernt
-    new_thread_removed_body: Die neue Thread-Schaltfläche wird aus der Seitenleiste entfernt. Um einen neuen Thread zu starten, navigieren Sie zunächst zu Ihrer Gruppe und klicken Sie dann auf „Neuer Thread“. Entschuldigung für die Änderung, aber sie ist erforderlich, da Sie beim Starten eines Threads eine Vorlage auswählen müssen.
-    threads: Diskussionen
     my_groups: Meine Gruppen
     other_groups: Andere Gruppen
     all_groups: Alle Gruppen
@@ -527,7 +540,6 @@ de:
     direct_threads: Direkte Diskussionen
     unread_threads: 'Ungelesene Threads: (%{count})'
     muted_threads: Stummgeschaltete Diskussionen
-    start_group: Neue Organisation
     start_subgroup: Neue Untergruppe
     explore: Öffentliche Gruppen
     explore_groups: Gruppen entdecken
@@ -544,6 +556,11 @@ de:
       threads_list: Diskussions-Aktionen
       groups_list: Gruppen
       user_list: Benutzer-Aktionen
+    user_settings: Benutzereinstellungen
+    invite_only_discussions: Diskussionen nur für geladene Gäste
+    unread_discussions_count: Ungelesene Diskussionen (%{count})
+    new_group: Neue Gruppe
+    new_subgroup: Neue Untergruppe
   strand_nav:
     newest: Neueste
     oldest: 'Älteste '
@@ -554,6 +571,17 @@ de:
     from_comment: Von einer Kommentar URL
     from_sequence_id: Von einer Diskussionsbeitrag URL
     unread: Neu für Dich
+    jump_to: Springen zu
+    timeline: Zeitleiste
+    top: Spitze
+    bottom: Unten
+    start: Start
+    latest: Letzte
+    showing_latest: Aktuelles anzeigen
+    showing_unread: Ungelesene anzeigen
+    add_comment: Einen Kommentar hinzufügen
+    start_decision: Entscheidung starten
+    recenter: In jüngerer Zeit
   search_modal:
     all_content: Alle Inhalte
     best_match: Bester Treffer
@@ -561,7 +589,6 @@ de:
     all_subgroups: Alle Untergruppen
     parent_only: Nur für Eltern
   navbar:
-    search_all_threads: Alle Diskussion durchsuchen
     search_threads: Nach Diskussionen in %{name} suchen
     search_polls: Umfragen suchen in %{name}
     search_members: Mitglieder in %{name} suchen
@@ -590,6 +617,7 @@ de:
     search_members_short: Mitglieder suchen
     search_files_short: Suche nach Dateien
     search_subgroups_short: Untergruppen durchsuchen
+    search_discussions_in_group: Suche Diskussionen in %{name}
   user_dropdown:
     pin_sidebar: Seitenleiste verankern
     unpin_sidebar: Seitenleiste lösen
@@ -605,10 +633,14 @@ de:
     contact_support: Support kontaktieren
     sign_out: Abmelden
     beta_collab: "\U0001F9EA Beta-Funktionen aktiviert!"
-    outcomes: Ergebnisse
+    outcomes: Fazits
+    theme: Thema
+    light: Licht
+    dark: Dunkel
+    light_blue: Hellblau
+    dark_blue: Dunkelblau
   membership_card:
     group_members: Mitglieder der Gruppe
-    discussion_members: Diskussionsteilnehmer
     poll_members: "%{pollType} Mitglieder"
     voters: Wähler*innen
     invite_to_group: zur Gruppe einladen
@@ -616,6 +648,7 @@ de:
     invite_to_poll: zur Abstimmung einladen
     invite_to_wip_poll: Einladen, Feedback zu geben
     invitations: Einladungen
+    discussion_members: Diskussionsteilnehmer
   membership_dropdown:
     set_name_and_username: Legen Sie Namen und Benutzernamen fest
     set_title: Titel eingeben
@@ -624,45 +657,44 @@ de:
     make_coordinator: Zum Admin machen
     demote_coordinator: Adminrechte entziehen
     remove_from:
-      discussion: von Diskussion entfernen
       group: Aus der Gruppe entfernen
       poll: von %{pollType} entfernen
+      discussion: Aus der Diskussion entfernen
     cancel_invitation: Einladung abbrechen
+    view_profile: Profil ansehen
+    revoke_admin: Administrator widerrufen
+    make_delegate: Delegieren
+    revoke_delegate: Delegierten widerrufen
   notification_models:
-    discussion: 'Diskussion:'
     comment: kommentieren in
     poll: Umfrage
-    outcome: 'Ergebnis:'
+    outcome: 'Fazit:'
     stance: 'Abstimmen:'
+    discussion: 'Diskussion:'
   notifications:
     header: Benachrichtigungen
     no_notifications: Es liegen keine Benachrichtigungen vor
     with_title:
       unknown_sender: Bitte überprüfen Sie die E-Mail von einem unbekannten Absender
-      comment_replied_to: "%{actor}hat dir geantwortet in: %{title}"
-      discussion_announced: "%{actor} hat Sie zum Thread eingeladen: %{title}"
-      discussion_edited: "%{actor}hat den Threadkontext %{title} bearbeitet"
-      discussion_closed: "%{actor}hat den Thread %{title} geschlossen"
-      invitation_accepted: "%{actor}nahm deine Einladung zum Beitritt %{title} an"
+      comment_replied_to: "%{actor} hat dir geantwortet in: %{title}"
+      invitation_accepted: "%{actor} nahm deine Einladung zum Beitritt %{title} an"
       membership_created: "%{actor} hat Sie eingeladen, %{title} auf %{site_name} beizutreten"
       membership_resent: "%{actor} hat Sie eingeladen, %{title} auf %{site_name} beizutreten"
       membership_requested: "%{actor} hat darum gebeten, %{title} beizutreten"
       membership_request_approved: "%{actor} hat Ihre Beitrittsanfrage zu %{title} genehmigt"
       new_comment: "%{actor} hat kommentiert in: %{title}"
       new_coordinator: "%{actor} hat Sie zum Administrator von %{title} gemacht"
-      new_discussion: "%{actor} hat einen Thread gestartet: %{title}"
-      outcome_announced: "%{actor} teilte eine %{poll_type} Ergebnis: %{title}"
-      outcome_created: "%{actor} teilte eine %{poll_type} Ergebnis: %{title}"
-      outcome_updated: "%{actor} aktualisiere die %{poll_type} Ergebnis:%{title}"
-      outcome_review_due: Es ist Zeit, das Ergebnis von %{title} zu überprüfen.
-      poll_announced: "%{actor} hat Sie zur Abstimmung eingeladen: %{title}"
+      outcome_announced: "%{actor} hat das Fazit der %{poll_type} geteilt: %{title}"
+      outcome_created: "%{actor} hat das Fazit der %{poll_type} geteilt: %{title}"
+      outcome_updated: "%{actor} hat das Fazit der %{poll_type} aktualisiert: %{title}"
+      outcome_review_due: Es ist Zeit, das Fazit von %{title} zu überprüfen.
       poll_closed_by_user: "%{actor} hat die %{poll_type} geschlossen: %{title}"
       poll_closing_soon: "%{poll_type} endet in 24 Stunden: %{title}"
       poll_closing_soon_author: 'Ihr %{poll_type} wird in 24 Stunden geschlossen: %{title}'
       poll_created: "%{actor} startete eine %{poll_type}: %{title}"
       poll_edited: "%{actor} hat den %{poll_type} aktualisiert: %{title}"
       poll_expired: "%{poll_type} wurde geschlossen: %{title}"
-      poll_expired_author: 'Teilen Sie das Ergebnis Ihres %{poll_type} mit: %{title}'
+      poll_expired_author: 'Teilen Sie das Fazit Ihres %{poll_type} mit: %{title}'
       poll_option_added: "%{actor} hat Optionen zu %{title} hinzugefügt"
       poll_reopened: "%{actor} hat %{poll_type} erneut geöffnet: %{title}"
       poll_reminder: "%{actor} erinnert Sie daran, über %{title} abzustimmen"
@@ -674,24 +706,24 @@ de:
       user_added_to_group: "%{actor} hat Sie zur Gruppe hinzugefügt: %{title}"
       user_mentioned: "%{actor} hat dich in %{title} erwähnt"
       user_reminded: "%{actor} erinnert dich deine Stimme in %{title} abzugeben"
+      group_mentioned: "%{actor} hat die Gruppe erwähnt in: %{title}"
+      new_delegate: "%{actor} hat Sie zum Delegierten mit Stimmrecht in %{title} gemacht"
+      poll_announced: "%{actor} hat Sie zur Abstimmung eingeladen: %{title}"
+      discussion_announced: "%{actor} hat Sie zur Diskussion eingeladen: %{title}"
+      discussion_edited: "%{actor} hat den Diskussionskontext bearbeitet: %{title}"
+      discussion_closed: "%{actor} hat die Diskussion beendet: %{title}"
+      new_discussion: "%{actor} hat eine Diskussion gestartet: %{title}"
     without_title:
       unknown_sender: Bitte überprüfen Sie die E-Mail von einem unbekannten Absender
-      discussion_announced: "%{actor} hat Sie zu einem Thread eingeladen"
-      discussion_edited: "%{actor} hat den Thread-Kontext bearbeitet"
-      discussion_closed: "%{actor}den Thread geschlossen"
       group_announced: "%{actor} hat Sie zu einer Gruppe eingeladen"
       comment_replied_to: "%{actor} hat Ihnen geantwortet"
-      new_discussion: "%{actor} hat einen Thread gestartet"
-      new_comment: "%{actor} hat in einem Thread einen Kommentar abgegeben"
       membership_created: "%{actor} hat Sie eingeladen, einer Gruppe beizutreten"
       membership_resent: "%{actor} hat Sie eingeladen, einer Gruppe beizutreten"
       membership_requested: "%{actor} hat darum gebeten, Ihrer Gruppe beizutreten"
       membership_request_approved: "%{actor} hat Ihre Beitrittsanfrage zu %{title} genehmigt"
       outcome_announced: "%{actor} hat ein Ergebnis von %{poll_type} geteilt"
       outcome_created: "%{actor} hat ein Ergebnis von %{poll_type} geteilt"
-      outcome_updated: "%{actor} hat das Ergebnis aktualisiert"
       outcome_review_due: Es ist Zeit, das Ergebnis von %{poll_type} zu überprüfen
-      poll_announced: "%{actor} hat Sie eingeladen, über eine %{poll_type} abzustimmen"
       poll_announced_wip: "%{actor} möchte Ihr Feedback zu einer %{poll_type}"
       poll_closed_by_user: "%{actor} hat die %{poll_type} geschlossen"
       poll_closing_soon: "%{poll_type} schließt in 24 Stunden"
@@ -710,38 +742,64 @@ de:
       stance_created_option: "%{actor} hat für %{option} abgestimmt"
       user_mentioned: "%{actor} hat Sie erwähnt"
       user_reminded: "%{actor} erinnert Sie daran, abzustimmen"
+      group_mentioned: "%{actor} hat die Gruppe erwähnt"
+      poll_announced: "%{actor} hat Sie eingeladen, über einen %{poll_type} abzustimmen."
+      discussion_announced: "%{actor} hat Sie zu einer Diskussion eingeladen"
+      discussion_edited: "%{actor} hat den Diskussionskontext bearbeitet"
+      discussion_closed: "%{actor} hat die Diskussion beendet."
+      new_discussion: "%{actor} hat eine Diskussion gestartet"
+      new_comment: "%{actor} hat in einer Diskussion kommentiert"
+      outcome_updated: "%{actor} hat das Ergebnis aktualisiert"
     hints:
       poll_closing_soon: Jetzt ist ein guter Zeitpunkt, um abzustimmen, Ihre Meinung zu ändern oder andere zur Teilnahme zu ermutigen.
       poll_closing_soon_author: Möglicherweise möchten Sie die Menschen an die Abstimmung erinnern oder die Frist verlängern.
-      outcome_review_due: Erwägen Sie, eine Feedback-Umfrage zu starten oder einen neuen Thread zu eröffnen, der zum Nachdenken darüber einlädt, wie die Entscheidung umgesetzt wurde.
+      outcome_review_due: Erwägen Sie, eine Feedback-Umfrage oder eine neue Diskussion zu starten, um Reflexionen darüber anzuregen, wie die Entscheidung umgesetzt wurde.
+    email_subject:
+      unknown_sender: E-Mail von unbekanntem Absender prüfen
+      comment_replied_to: "%{actor} antwortete Ihnen in: %{title}"
+      discussion_announced: "%{title}"
+      invitation_accepted: "%{actor} hat Ihre Einladung angenommen, %{title} beizutreten."
+      membership_created: "%{actor} hat Sie eingeladen, %{title} auf %{site_name} beizutreten."
+      membership_resent: "%{actor} hat Sie eingeladen, %{title} auf %{site_name} beizutreten."
+      membership_requested: "%{actor} hat beantragt, %{title} beizutreten."
+      membership_request_approved: "%{actor} hat Ihre Anfrage zur Mitgliedschaft in %{title} genehmigt."
+      new_comment: "%{actor} kommentierte in: %{title}"
+      new_coordinator: "%{actor} hat Sie zum Administrator von %{title} ernannt."
+      new_delegate: "%{actor} hat Sie zum Delegierten mit Stimmrechten in %{title} ernannt."
+      new_discussion: "%{title}"
+      outcome_announced: 'Fazit für %{poll_type}: %{title}'
+      outcome_created: 'Fazit für %{poll_type}: %{title}'
+      outcome_updated: 'Fazit für %{poll_type} aktualisiert: %{title}'
+      outcome_review_due: Es ist Zeit, das Fazit zu %{title} zu überprüfen.
+      poll_closed_by_user: "%{actor} hat die %{poll_type} geschlossen: %{title}"
+      poll_closing_soon: "%{poll_type} schließt in 24 Stunden: %{title}"
+      poll_closing_soon_author: 'Ihre %{poll_type}-Abstimmung endet in 24 Stunden: %{title}'
+      poll_created: 'Abstimmung: %{title}'
+      poll_edited: "%{actor} hat den %{poll_type} aktualisiert: %{title}"
+      poll_expired: "%{poll_type} wurde geschlossen: %{title}"
+      poll_expired_author: 'Ergebnis veröffentlichen: %{title}'
+      poll_option_added: "%{actor} hat Optionen zu %{title} hinzugefügt."
+      poll_reopened: 'Abstimmung verlängert: %{title}'
+      poll_reminder: "%{actor} erinnert Sie daran, für %{title} abzustimmen."
+      poll_reminder_wip: "%{actor} erinnert Sie daran, Feedback zu geben: %{title}"
+      reaction_created: "%{actor} reagierte %{reaction} auf Ihr %{model} in %{title}"
+      stance_created: "%{actor} hat gewählt: %{title}"
+      stance_updated: "%{actor} hat gewählt: %{title}"
+      stance_created_option: "%{actor} stimmte für %{option} in %{title}"
+      user_added_to_group: "%{actor} hat dich der Gruppe hinzugefügt: %{title}"
+      user_mentioned: "%{actor} erwähnte dich in: %{title}"
+      group_mentioned: "%{actor} erwähnte die Gruppe in: %{title}"
+      user_reminded: "%{actor} erinnert Sie daran, für Folgendes abzustimmen: %{title}"
+      poll_announced: 'Abstimmung: %{title}'
+      discussion_edited: "%{actor} hat den Diskussionskontext bearbeitet: %{title}"
+      discussion_closed: "%{actor} hat die Diskussion beendet: %{title}"
   discussion_fork_actions:
-    helptext: Wähle Einträge aus, die du zu einer anderen Diskussioen verschieben willst
     move: Verschieben
-    search_placeholder: Finde eine Diskussion an Hand des Titels
     moved: Kommentare bewegen, dies kann einen Moment dauern
-    move_to_existing_thread: Zu existierender Diskussion verschieben
-    start_new_thread: Oder eine neue Diskussion starten
-  thread_template:
-    browse_public_templates: Durchsuchen Sie die Vorlagengalerie
-    thread_template_settings: Thread-Vorlageneinstellungen
-    start_a_new_thread: Starten Sie einen neuen Thread
-    thread_template_saved: Threadvorlage gespeichert
-    these_are_public_templates: Diese Vorlagen stehen Ihnen zum Kopieren oder Ändern zur Verfügung, um sie an Ihre Gruppe anzupassen
-    these_are_templates: Dies sind die Thread-Vorlagen in Ihrer Gruppe. Vorlagen führen Sie durch gängige Entscheidungsprozesse.
-    default_title_label: Standardtitel
-    default_title_hint: Füllen Sie das Titelfeld vorab mit bearbeitbarem Text aus. Dies ist optional – lassen Sie das Feld leer, wenn Sie unsicher sind.
-    title_placeholder_label: Beispieltitel
-    title_placeholder_hint: Ein Beispiel zur Anzeige im Hintergrund des Titelfelds
-    title_placeholder_placeholder: 'Beispiel: So sieht Hintergrundtext aus'
-    example_description_label: Beispielbeschreibung
-    example_description_placeholder: Stellen Sie eine Vorlage bereit, mit der Benutzer einen Thread starten können
-    hidden_templates: Versteckte Vorlagen
-    confirm_delete: Sind Sie sicher, dass Sie diese Thread-Vorlage dauerhaft löschen möchten? Dadurch werden keine Threads gelöscht.
-    add_proposal_or_poll_template: Fügen Sie eine Vorschlags- oder Umfragevorlage hinzu
-    recommended_proposal_or_poll_templates: Empfohlene Vorlagen für Vorschläge oder Umfragen
-    decision_templates: Entscheidungsvorlagen
-    decision_templates_help: Wählen Sie Vorschläge oder Umfragevorlagen aus, die zum Abschließen dieses Prozesses beitragen.
-    share_in_template_gallery: Teilen Sie diese Vorlage in der öffentlichen Vorlagengalerie
+    helptext: Wählen Sie Elemente aus, die Sie in eine andere Diskussion verschieben möchten.
+    search_placeholder: Diskussion nach Titel finden
+    move_to_existing_thread: Zur bestehenden Diskussion wechseln
+    start_new_thread: Oder starten Sie eine neue Diskussion.
   discussion_form:
     thread_templates: Thread-Vorlagen
     new_thread_template: Neue Thread-Vorlage
@@ -755,10 +813,8 @@ de:
     invite_only_thread: Diskussion nur mit Einladung
     none_direct_thread: Direkte Diskussion (Keine Gruppe)
     none_invite_only_thread: Diskussion nur mit Einladung (Keine Gruppe)
-    change_log_placeholder: Optional; beschreibe deine Änderungen. Diese Nachricht wird an die Diskussion angefügt.
     change_log_label: Was hat sich geändert?
     invite: Einladen
-    aria_label: Diskussions-Formular
     start_thread: Diskussion eröffnen
     messages:
       created: Diskussion wurde eröffnet
@@ -780,13 +836,20 @@ de:
     privacy_organisation: Diese Diskussion wird nur für Mitglieder von %{parent} und %{group} sichtbar sein.
     fork_notice: Es wird ein neuer Thread mit %{count} Elementen von %{title} erstellt
     notify_group: Gruppe benachrichtigen
+    none_invite_only_discussion: Keine (Diskussion nur für geladene Gäste)
+    new_discussion_template: Neue Diskussionsvorlage
+    edit_discussion_template: Diskussionsvorlage bearbeiten
+    change_log_placeholder: Optional können Sie Ihre Änderungen beschreiben. Diese Nachricht wird der Diskussion hinzugefügt.
+    start_discussion: Diskussion starten
+    discussion_updated: Diskussion aktualisiert
+    discussion_created: Diskussion erstellt
+    discussion_started: Diskussion gestartet
   announcement:
     send_discussion: Diskussion teilen
     send_group: Personen zu %{name} einladen
     send_poll: "%{type} schicken "
     send_outcome: 'Ergebnis senden '
     cannot_reveal_when_anonymous: Leider können wir nicht offenlegen, wer an einer anonymen Umfrage teilgenommen hat und wer nicht.
-    discussion_notification_history: Bisherige Benachrichtigungen
     group_notification_history: Gruppeneinladungen-Verlauf
     poll_notification_history: Umfragebenachrichtigungen-Verlauf
     outcome_notification_history: Ergebnisbenachrichtigungen-Verlauf
@@ -798,7 +861,6 @@ de:
     preview: Vorschau Email
     no_notifications_sent: Es wurden keine Benachrichtigungen geschickt
     history_error: 'Etwas ist schief gelaufen! Der Verlauf konnte nicht geladen werden. '
-    inviting_guests_to_thread: Gäste gehören nicht zu deiner Gruppe und haben nur Zugang zu dieser Diskussion
     select_groups: Gruppen auswählen
     search_by_name_or_email: 'Um einzuladen, suche nach dem Namen oder gebe die E-Mail-Adresse ein '
     search_by_name: Suche nach Personen nach Name
@@ -810,7 +872,6 @@ de:
     new_discussion: "%{name} hat %{length} Personen zur Diskussion eingeladen:"
     discussion_announced: "%{name} hat %{length} Personen zur Diskussion eingeladen:"
     poll_created: "%{name} hat %{length} Personen zur Umfrage einladen:"
-    poll_announced: "%{name} hat %{length} Personen zur Umfrage einladen:"
     outcome_created: "%{name} hat ein Ergebnis mit %{length} Personen geteilt:"
     outcome_announced: "%{name} hat ein Ergebnis mit %{length} Personen geteilt:"
     announcement_created: "%{name} hat %{length} Personen zur Diskussion eingeladen:"
@@ -828,6 +889,7 @@ de:
       decided_voters: Alle, die abgestimmt haben
       undecided_voters: Unentschlossene
       non_voters: Noch nicht eingeladene Mitglieder von %{name}
+      delegates_of_group: Delegierte von %{name}
     form:
       group_has_no_members_yet: Sie sind das einzige Mitglied Ihrer Gruppe. Möglicherweise möchten Sie einige Personen in Ihre Gruppe einladen, bevor Sie einen Thread oder eine Entscheidung starten.
       invite_people_to_evaluate_loomio: Laden Sie einige Leute in Ihre Loomio-Gruppe ein, um gemeinsam eine Entscheidung zu treffen
@@ -852,9 +914,6 @@ de:
       discussion_edited:
         title: Über Änderungen benachrichtigt werden
         helptext: Wen möchtest du über diese Aktualisierung benachrichtigen? (optional)
-      poll_announced:
-        title: zur Abstimmung einladen
-        helptext: Wen möchtest du zur Abstimmung einladen?
       wip_poll_announced:
         title: Einladen, Feedback zu geben
         helptext: Wen möchten Sie einladen, Feedback zu geben?
@@ -887,9 +946,10 @@ de:
       added_singular: 1 Person wird hinzugefügt.
       added_none: Es wird niemand hinzugefügt.
       group_title: "%{name} (%{count} Personen)"
-      visible_to_group: Jeder in %{group} wird diese Diskussion sehen können.
-      visible_to_guests: Nur eingeladene Personen können diese Diskussion sehen.
       click_group_to_see_individuals: Gruppe anklicken, um Einzelpersonen zu sehen
+      poll_announced:
+        title: Einladung zur Abstimmung
+        helptext: Wen möchten Sie zur Abstimmung einladen?
     members_list:
       title: geteilt mit
       last_notified: benachrichtigt
@@ -901,11 +961,17 @@ de:
       has_not_read_thread: Hat den Thread nicht angesehen
       has_not_joined_yet: Ist noch nicht beigetreten
       has_not_joined_yet_hint: Dieser Benutzer hat die Einladung zur Teilnahme an Loomio nicht angenommen und erhält keine weiteren Benachrichtigungen, bis er dies tut.
+      discussion_admin: Diskussionsadministrator
+      has_not_read_discussion: Hat die Diskussion nicht angesehen
     group_form:
       search_placeholder: Nach Personen suchen...
       modal_title: Gruppenmitglieder bestimmen
     flash:
       success: "%{count} Benachrichtigungen gesendet"
+    group_mentioned: "%{name} hat die Gruppe mit %{length} Personen erwähnt:"
+    poll_announced: "%{name} hat %{length} Personen zur Abstimmung eingeladen:"
+    discussion_notification_history: Diskussionsbenachrichtigungsverlauf
+    inviting_guests_to_discussion: Gäste gehören nicht zu Ihrer Gruppe und haben nur Zugriff auf diese Diskussion.
   action_dock:
     actions_menu: Aktions-Menü
     more_actions: Weitere Aktionen
@@ -960,6 +1026,11 @@ de:
     add_poll_to_thread: Zur Diskussion hinzufügen
     count_members: "%{count} Mitglieder "
     count_voters: "%{count} Wähler"
+    pin_discussion: Diskussion über die Pinnwand
+    unpin_discussion: Diskussion aufheben
+    close_discussion: Schließende Diskussion
+    reopen_discussion: Diskussion wieder aufnehmen
+    delete_discussion: Diskussion löschen
   formatting:
     formatting_tools: Werkzeuge für Textbearbeitung
     colors: Farben
@@ -1029,7 +1100,6 @@ de:
     messages:
       joined_group: Du bist nun ein Mitglied von %{group}
   membership_request_form:
-    aria_label: Anfrageformular zum Gruppenbeitritt
     heading: Gruppenbeitritt anfragen
     name_label: Name
     email_label: E-Mail
@@ -1038,8 +1108,8 @@ de:
     introduction_over_limit: Die Antwort ist zu lang
     messages:
       membership_requested: Du hast beantragt, %{group} beizutreten
+    aria_label: Mitgliedschaftsantragsformular
   revision_history_modal:
-    aria_label: Revisionsverlauf
     discussion_header: Diskussions Bearbeitungen
     comment_header: Kommentar Bearbeitungen
     poll_header: Abstimmungsbearbeitungen
@@ -1057,6 +1127,7 @@ de:
     closing_at_changed: 'Schliesst: %{time}'
     private_changed: Sichtbarkeit auf %{private} festgelegt
     group_id_changed: in %{name} verschoben
+    aria_label: Revisionshistorie
   reactions_input:
     add_your_reaction: Reaktion hinzufügen
   reactions_display:
@@ -1065,10 +1136,6 @@ de:
     you_and_name: Du und %{name}
     you_and_name_and_count_more: Du, %{name} und %{count} mehr
     name_and_count_more: "%{name} und %{count} weitere"
-  context_panel:
-    thread_status:
-      pinned: Diese Diskussion wurde angeheftet. Sie wird für alle Nutzer an oberster Stelle in der Diskussionsliste angezeigt.
-      closed: Diese Diskussion wurde geschlossen. Sie wird nicht mehr auf dem Dashboard angezeigt und auf der Gruppenseite unter "Geschlossen" angezeigt
   delete_group_modal:
     title: Gruppe löschen
     subgroup_title: Untergruppe löschen
@@ -1139,15 +1206,21 @@ de:
       quiet: Keine E-Mail-Benachrichtigungen für diese Gruppe senden. Aktivitäten werden auf dem Dashboard angezeigt.
       quiet_aria_description: Deine Benachrichtigungseinstellung für diese Gruppe ist auf "Leise" gestellt. Du erhältst keine Benachrichtigungen über Aktivitäten in dieser Gruppe. Aktivitäten werden aber im Dashboard angezeigt.
       quiet_message: Du bekommst keine E-Mai-Benachrichtigungen bezüglich "%{name}".
-      mute: Diese Gruppe auf dem Dashboard verbergen und nur benachrichtigen, wenn ich @erwähnt werde.
-      mute_aria_description: Deine Benachrichtigungseinstellung für diese Gruppe steht auf "Stumm". Du wirst nur per E-Mail informiert, wenn du @angesprochen wirst. Meldungen aus dieser Gruppe werden in der Statusleiste nicht angezeigt.
       mute_message: '"%{name}" wurde vom Dashboard entfernt.'
+      mute: Blenden Sie diese Gruppe im Dashboard aus und benachrichtigen Sie sie nicht, sofern sie nicht {'@'}erwähnt wird.
+      mute_aria_description: Die Benachrichtigungslautstärke für diese Gruppe ist stummgeschaltet. Sie erhalten keine E-Mails, es sei denn, jemand erwähnt Sie. Die Gruppenaktivität wird nicht in Ihrem Dashboard angezeigt.
     privacy:
       private: 'Sichtbarkeit: Diese Gruppe ist nur für Mitglieder sichtbar'
       parent_members: 'Sichtbarkeit: Diese Gruppe ist nur für Mitglieder von %{parentGroupName} und %{groupName} sichtbar.'
       public: 'Sichtbarkeit: Diese Gruppe ist im Web sichtbar'
-      aria_label: 'Sichtbarkeit der Gruppe: %{privacy}'
+      aria_label: 'Gruppendatenschutz: %{privacy}'
     participation_report: Teilnahmebericht
+    my_subgroups: Meine Untergruppen
+    more_subgroups: Weitere Untergruppen
+    discussions: Diskussionen
+    no_discussions_here: Hier gibt es keine Diskussionen!
+    private_discussions: Um private Beiträge in dieser Gruppe sehen zu können, müssen Sie Mitglied sein.
+    view_closed_discussions: Geschlossene Diskussionen ansehen
   export_data_modal:
     title: Wie willst du deine Daten benutzen?
     as_csv: In einer Tabellenkalkulation öffnen
@@ -1159,15 +1232,15 @@ de:
     messages:
       description_updated: 'Beschreibung aktualisiert '
   leave_group_form:
-    aria_label: Gruppe verlassen
     title: Gruppe verlassen
     question: Bist du sicher, dass du diese Gruppe verlassen möchtest?
     submit: Ja, Gruppe verlassen
+    aria_label: Gruppe verlassen
   archive_group_form:
-    aria_label: Gruppe deaktivieren
     title: Gruppe deaktivieren
     question: Bist du dir sicher, dass du diese Gruppe deaktivieren möchtest?
     submit: Ja, diese Gruppe deaktivieren
+    aria_label: Gruppe deaktivieren
   group_form:
     thread_defaults_help: Standarteinstellungen für neue Diskussionen
     click_to_change_image: Klicken Sie hier, um das Titelbild (4x1) oder das Logo (1x1) zu ändern.
@@ -1176,7 +1249,6 @@ de:
     permissions_explaination: |
       Es existieren zwei Ebenen der Mitgliedschaft, die eine Person in einer Gruppe haben kann: Admin und Mitglied.
       Admins können Gruppeneinstellungen bearbeiten, andere Personen zu Admins machen und alle unten aufgeführten Aktionen durchführen.
-    aria_label: Gruppenform
     parent_group: Übergeordnete Gruppe
     new_organisation: Neue Organisation
     new_group: Neue Gruppe
@@ -1202,7 +1274,6 @@ de:
     description: Beschreibung
     description_placeholder: Beschreibe die Zielsetzung der Gruppe, damit die Mitglieder wissen, weshalb sie hier sind.
     new_description_placeholder: Warum testen Sie Loomio? Welche Entscheidungen müssen Sie gemeinsam treffen?
-    new_description_html: <h3 id="how-do-you-intend-to-use-loomio">Wie wollen Sie Loomio nutzen?</h3><p></p><h3 id="why-is-this-important-for-your-group"> Warum ist das für Ihre Gruppe wichtig?</h3><p></p><h3 id="what-decisions-do-you-need-to-make"> Welche Entscheidungen müssen Sie treffen?</h3><p></p>
     secret_by_default: Deine Gruppe ist nur für diejenigen zugänglich, die zum Beitritt eingeladen sind. Dies kann später geändert werden.
     privacy_statement:
       public_on_web: Name, Beschreibung und Dokumente der Gruppe werden öffentlich sichtbar sein
@@ -1268,6 +1339,12 @@ de:
     upload_cover_photo: Neues Titel-Bild hochladen
     request_to_join_prompt: Aufforderung zur Teilnahme
     default_request_to_join_prompt: Vielen Dank für Ihr Interesse an unserer Gruppe. Bitte stellen Sie sich vor und erklären Sie, warum Sie Mitglied werden möchten.
+    upgrade_for_subgroups: 'Bitte <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">aktualisieren Sie Ihr Abonnement</a> , um eine Untergruppe zu erstellen'
+    share_this_url_with_people_who_want_to_join: Teilen Sie diese URL mit Leuten, die beitreten möchten
+    new_description_html: "<h3>Vor welchen Herausforderungen steht Ihre Organisation bei der Entscheidungsfindung?</h3><p></p><h3> Wie möchten Sie Loomio in Ihrer Organisation einsetzen?</h3><p></p>"
+    allow_polls_without_discussions: Umfragen ohne Diskussion zulassen
+    allow_polls_without_discussions_help: Verhindert, dass Personen Umfragen starten, ohne vorher eine Diskussion zu beginnen.
+    aria_label: Gruppenbildung
   group_export_modal:
     title: Gruppendaten exportieren
     body: |
@@ -1300,7 +1377,6 @@ de:
     group_url: Gruppen-URL
     reusable_invitation_link: Wiederverwendabrer Einladungslink
     error: Fehler beim Kopieren in die Zwischenablage
-    aria_label: Einladungsformular
     invite_people: Leute einladen
     invite_guests: Gäste einladen
     notify_people: Andere benachrichtigen
@@ -1311,7 +1387,6 @@ de:
     share_group: Gruppe teilen
     copy_link: Kopieren
     email_addresses: E-Mail-Adressen
-    email_addresses_placeholder: z. B. helperbot@loomio.org, friendlybot@loomio.org
     secret_group_url_explanation: Dieses ist die Adresse deiner Gruppe. Nur eingeladenen Mitglieder werden deine Gruppe sehen können.
     shareable_group_url_explanation: Du kannst diesen Link öffentlich teilen. Interessenten können eine Mitgliedschaft beantragen und du kannst diese annehmen oder ablehnen.
     shareable_invitation_explanation: Teile diesen Link nicht öffentlich. Wer diesen Link anklickt, wird automatisch Mitglied der Gruppe. Teile diesen Link nur in privaten Kommunikationen innerhalb deiner Organisation.
@@ -1330,6 +1405,15 @@ de:
       invitations_sent: "%{count} Einladungen gesendet."
       no_invitations: Bitte überprüfe, dass dein Mailadresse korrekt ist und probiere es erneut.
       max_invitations: Verwenden einen Team-Link, wenn du mehr als 100 Einladungen verschicken möchtest.
+    copy_to_clipboard: In die Zwischenablage kopieren
+    already_chatting_somewhere: Chatten Sie schon irgendwo?
+    to_stop_people_reset_the_link: Um zu verhindern, dass Personen über diesen Link beitreten, klicken Sie auf „Diesen Link zurücksetzen“. Der bestehende Link funktioniert dann nicht mehr und ein neuer Link wird erstellt.
+    try_the_shareable_link_instead: Versuchen Sie stattdessen, den gemeinsam nutzbaren Link zu verwenden.
+    enter_emails_of_people_to_invite: Geben Sie die E-Mail-Adressen der Personen ein, die Sie zur Gruppe einladen möchten. Wenn Sie eine Liste haben, kopieren Sie einfach alle Adressen und fügen Sie sie auf einmal ein.
+    shareable_link_to_join_group: Teilbarer Link zum Beitritt zur Gruppe
+    reset_the_link: Setzen Sie den Link zurück
+    email_addresses_placeholder: zB helperbot{'@'}loomio.org, friendlybot{'@'}loomio.org
+    aria_label: Einladungsformular
   memberships_page:
     members: Mitglieder
     name_label: Name
@@ -1419,13 +1503,13 @@ de:
     deactivate_account_subtitle: Stoppen Sie E-Mails und kündigen Sie Mitgliedschaften. Behalten Sie Ihr Profil bei, damit vergangene Diskussionen und Entscheidungen nicht beeinträchtigt werden.
     delete_account_subtitle: Löschen Sie Ihr Konto vollständig und entfernen Sie Ihren Namen aus früheren Diskussionen und Entscheidungen.
     updated_on_sign_in: Wird von Ihrem Browser bereitgestellt und aktualisiert, wenn Sie sich anmelden
+    translate_content_automatically: Inhalte automatisch in meine Sprache übersetzen
   text_editor:
     x_of_y_characters: "%{x} / %{y} Zeichen"
     select_text_to_link: Wählen Sie den zu verlinkenden Text aus und versuchen Sie es erneut
     insert_link: Link einfügen
     insert_embedded_url: Video einfügen
   change_picture_form:
-    aria_label: Profilbild form
     title: Profilbild ändern
     helptext: Du kannst ein eigenes Profilbild hochladen oder ein <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a>-Konto verwenden (sofern vorhanden).
     use_initials: Initialien verwenden
@@ -1433,6 +1517,7 @@ de:
     use_uploaded: Neues Profilbild hochladen
     existing_upload: Vorhandener Upload
     use_provider: Neues Foto von %{provider} hochladen
+    aria_label: Profilfoto-Formular
   change_password_form:
     set_password_title: Passwort erstellen
     set_password_helptext: 'Füge bitte ein Passwort mit minimal 8 Zeichen ein '
@@ -1466,13 +1551,11 @@ de:
     email_newsletter: Loomio Newsletter
     email_newsletter_description: Neuigkeiten zu neuen Funktionen, Schulungsangeboten und Veranstaltungen in deiner Stadt und zur zukünftigen Entwicklung von Loomio erhalten (ca. 2-3 E-Mails pro Jahr).
     email_catch_up_day: Zusammenfassung der Nachhol-E-Mail
-    daily_summary_description: Wählen Sie aus, wann Sie die E-Mail mit der Nachholübersicht erhalten möchten. Diese E-Mail enthält alle neuen Aktivitäten, die Sie noch nicht gesehen haben. Eine gute Möglichkeit, auf dem Laufenden zu bleiben, wenn Sie kein regelmäßiger Benutzer sind.
     on_participation_label: Benachrichtigungen automatisch aktivieren bei Teilnahme
     on_participation_description: Wenn du an einem Thread teilnimmst, werden dir alle weiteren Aktivitäten sofort per E-Mail zugesendet.
     announcement_label: Nur Ankündigungen
     announcement_description: Du erhälst eine E-Mail über alle Inhalte, die von Personen in Ihren Gruppen angekündigt wurden
     mentioned_label: Erwähnungen und Antworten
-    mentioned_description: Wenn jemand Sie in einem Kommentar @erwähnt oder Ihnen antwortet, erhalten Sie eine Benachrichtigungs-E-Mail
     update_settings: Änderungen speichern
     specific_groups: Einstellungen für einzelne Gruppen
     default_settings:
@@ -1483,11 +1566,14 @@ de:
     messages:
       updated: E-Mail-Einstellungen aktualisiert
     learn_more: Weitere Informationen zu den E-Mail-Einstellungen...
+    mentioned_description: Wenn jemand Sie in einem Kommentar {'@'}erwähnt, erhalten Sie eine Benachrichtigungs-E-Mail
+    daily_summary_description: Wählen Sie, wann Sie die E-Mail mit der Zusammenfassung erhalten möchten. Diese E-Mail enthält alle neuen Aktivitäten, die Sie noch nicht gesehen haben. Eine gute Möglichkeit, auf dem Laufenden zu bleiben, wenn Sie kein regelmäßiger Benutzer sind.
+    never: Niemals
+    send_email: E-Mail senden
   thread_preview:
     replies_count: "%{count} Antworten"
     unread_count: "%{count} ungelesen"
   dashboard_page:
-    aria_label: Dashboard
     polls_to_vote_on: Umfragen zum Abstimmen
     no_polls_to_vote_on: Es gibt keine Umfragen, über die Sie abstimmen müssen
     recent_polls: Aktuelle Umfragen
@@ -1500,7 +1586,6 @@ de:
       show_all: Du hast keine aktuellen Threads.
       show_proposals: Derzeit sind keine Vorschläge aktiv.
       show_muted: Du hast keine stummgeschalteten Threads.
-    view_recent: Alle neuen Diskussionen anzeigen?
     load_more: Mehr Diskussionen anzeigen
     mark_as_read: Als gelesen markieren
     dismiss: Ausblenden
@@ -1508,17 +1593,13 @@ de:
     thread_recalled: Diskussion zurückgerufen
     explain_mute:
       title: Du hast noch keine Diskussionen stumm geschaltet.
-      explanation_html: |
-        Durch Stummschalten können Diskussionen versteckt werden, an denen du nicht interessiert bist.
-        Diskussionen, die du stummgeschaltet haben, werden nicht unter "<strong>Zuletzt verwendet</strong>" oder "<strong>Ungelesen</strong>" angezeigt und du wirst nicht über Aktivitäten in diesen Diskussionen informiert.
-        Du wirst jedoch weiterhin benachrichtigt, wenn jemand Ihren <strong>@Namen</strong> in einer Diskussion erwähnt.
       instructions: Um eine Diskussion stummzuschalten, bewege den Mauszeiger darüber und klicke auf das entsprechende Symbol.
       see_muted_html: Um Ihre stummgeschalteten Diskussionen zu sehen, klicke auf "<strong>stummgeschaltet</strong>". Du kannst die Stummschaltung aufheben, indem du den Mauszeiger über die Diskussion bewegst und auf das entsprechende Symbol klickst.
+      explanation_html: Mit der Stummschaltung können Sie Threads, die Sie nicht interessieren, ausblenden oder stummschalten. Stummschaltung bedeutet, dass der Thread nicht unter <strong>„Zuletzt</strong> verwendet“ oder <strong>„Ungelesen“</strong> angezeigt wird und Sie keine Benachrichtigungen über Aktivitäten in diesem Thread, wie z. B. Vorschläge, erhalten. Sie werden nur benachrichtigt, wenn jemand Ihren Namen <strong>{'@'}erwähnt</strong> .
     filtering:
       filter_threads: Diskussionen filtern
       filter_threads_aria_label: Diskussionen filtern
       dropdown_heading: Aktuelles filtern
-      all: Aktuelle Diskussionen
       all_aria_label: Momentan werden alle aktuellen Diskussionen angezeigt
       all_description: Aktuelle Diskussionen anzeigen
       proposals: Vorschläge
@@ -1527,6 +1608,7 @@ de:
       muted: Stumm geschaltete Diskussionen
       muted_aria_label: Momentan werden nur stumm-geschaltete Diskussionen angezeigt
       muted_description: Nur Threads anzeigen, die stummgeschaltet wurden
+      all: Aktuelle Diskussionen
     thread_preview:
       you_voted: Du hast für %{position} gestimmt
       undecided: Du bist unentschlossen
@@ -1540,18 +1622,25 @@ de:
       thisweek: In dieser Woche
       thismonth: In diesem Monat
       older: Älter als ein Monat
+    dashboard: Armaturenbrett
+    recent_discussions: Aktuelle Diskussionen
+    view_recent: Alle aktuellen Diskussionen ansehen?
+    discussion_marked_as_read: Diskussion als gelesen markiert
+    discussion_marked_as_unread: Diskussion als ungelesen markiert
   threads_page:
     no_direct_threads: Du hast keine direkten Diskussionen
-    no_invite_only_threads: Du hast keine "Invite-Only"-Diskussionen
+    no_invite_only_threads: Es gibt keine Threads, die nur auf Einladung zugänglich sind.
   inbox_page:
     no_threads: Juhu! Du hast alle Diskussionsbeiträge in deinem Posteingang gelesen.
     unread_threads: Ungelesene Diskussionen
     view_more: Mehr anzeigen
     no_groups:
-      explanation: Du hast keine ungelesenen Diskussionen, da du keiner Gruppe angehörst
       start: Eröffne eine Diskussion
       or: oder
       join_group: <a href="/explore">tritt einer Gruppe bei</a> um Diskussionen zu sehen.
+      explanation: Sie haben keine ungelesenen Diskussionen, da Sie keinem Team angehören.
+    no_discussions: Juhu! Du hast alle Diskussionen in deinem Posteingang gelesen.
+    unread_discussions: Ungelesene Diskussionen
   discussion:
     direct_thread: Direkter Thread
     invite_only: Invite-only
@@ -1569,20 +1658,18 @@ de:
     pin:
       pinned: Diskussion angeheftet
       unpinned: Diskussion wird nicht mehr angeheftet
-    volume:
-      mute_message: Diskussion stummgeschaltet
-      unmute_message: Stummschalten deaktiviert
     closed:
       reopened: Diskussion wieder geöffnet
       closed: Diskussion geschlossen
+    volume:
+      mute_message: Diskussion stummgeschaltet
+      unmute_message: Diskussion stummgeschaltet
   discussion_last_seen_by:
     title: Angesehen von
     no_one: Bisher hat niemand dieses gesehen
     disabled_anonymous_polls: Der Viewer-Verlauf ist deaktiviert, da der Thread anonyme Umfragen enthält
   activity_card:
     count_responses: "%{count} Antworten"
-    event_pinned: In der Timeline angeheftet
-    event_unpinned: Nicht mehr in der Timeline angeheftet
     beginning: Anfang
     end: Ende
     unread: Ungelesen (%{count})
@@ -1591,8 +1678,8 @@ de:
     chronological: Chronologisch
     nested: Verschachtelt
     attachment_display:
-      aria_label: 'Datei angehängt:'
       image_alt: Angehängtes Bild
+      aria_label: 'Datei im Anhang:'
     n_previous: Lade %{count} vorherige Antworten
     n_more: Lade %{count} Antworten
     add_comment: 'Kommentar hinzufügen '
@@ -1602,33 +1689,9 @@ de:
     facilitate: Ermöglichen
     start_decision: Entscheidung starten
     start_vote: Abstimmung starten
-  thread_group:
-    aria_label: Gruppen-Name
-  thread_context:
-    current_poll_type_banner: Aktuell %{pollType}
-    item_maybe_deleted: Konnte nicht die gewünschte Stelle in der Diskussion finden. Vielleicht wurde sie gelöscht.
-    aria_label: Diskussionsbeschreibung
-    thread_options: Diskussionsoptionen
-    email_settings: Benachrichtigungseinstellungen
-    edit: Bearbeiten
-    edit_thread: Bearbeiten
-    close_thread: Schliessen
-    reopen_thread: erneut öffnen
-    pin_thread: Anheften
-    unpin_thread: Nicht mehr anheften
-    mute_thread: Stummschalten
-    move_thread: Verschieben
-    print_thread: Drucken
-    delete_thread: Löschen
-    add_comment: Kommentieren
-    seen_by_count: Gesehen von %{count}
-    count_notified: Benachrichtigt %{count}
-    forked_from: Gegabelt von
-  pin_thread_modal:
-    title: Diskussion anheften
-    helptext: Angeheftete Diskussionen werden immer oben in der Diskussions-Liste der jeweiligen Gruppe angezeigt. Sie können verwendet werden, um Mitglieder über wichtige Ankündigungen zu informieren oder um allgemeingültige Inhalte wie z. B. einen Verhaltenskodex oder Gemeinschaftsrichtlinien hervorzuheben.
-    helptext_two: Du kannst angeheftete Inhalte jederzeit entfernen, indem du im Drop-down-Menü die Option "Anheften deaktiveren" auswählst
-    pin_thread: Diskussion anheften
+    event_pinned: Zur Diskussionschronik hinzugefügt
+    event_unpinned: Aus der Diskussionschronik entfernt
+    start_a_vote: Jetzt abstimmen
   thread_arrangement_form:
     edit: Layout bearbeiten
     title: Diskussionsanordnung
@@ -1647,20 +1710,11 @@ de:
     nested_twice_description: Antworten höchstens zweimal einrücken.
     changing_nesting_is_slow: Änderungen an der Verschachtelung können bei der Verarbeitung einige Minuten dauern.
   delete_thread_form:
-    aria_label: Diskussion löschen
     title: Diskussion löschen
     body: Möchtest du diesen Thread wirklich löschen?
     confirm: Diskussion löschen
     messages:
       success: Diskussion gelöscht
-  move_thread_form:
-    aria_label: Diskussion verschieben
-    title: Diskussion verschieben
-    body: Zielgruppe
-    confirm: Diskussion verschieben
-    confirm_change_to_private_thread: "%{groupName} ist eine offene Gruppe. Wenn du fortfährst, wird dieser Thread öffentlich gemacht."
-    messages:
-      success: Diskussion wurde nach %{name} verschoben
   delete_comment_dialog:
     title: Kommentar löschen
     question: Dadurch wird dieser Kommentar dauerhaft gelöscht. Wenn du fortfährst, kann es nicht wiederhergestellt werden.
@@ -1701,8 +1755,8 @@ de:
     order_by: Sortiere Gruppen nach
   global:
     messages:
-      app_update: Eine neue Version von Loomio wurde veröffentlicht. Bitte speichern Sie Ihre Arbeit und laden Sie sie erneut.
       reload: Reload
+      app_update: Eine neue Version von Loomio wurde veröffentlicht. Bitte neu laden.
   decision_tools_card:
     choose_type: Wähle den Abstimmungstyp
     title: Ermöglichen
@@ -1732,6 +1786,26 @@ de:
     meaning_hint: Ein Satz, der erklärt, was die Auswahl dieser Option bedeutet
     prompt: Grundaufforderung
     prompt_hint: Eine Frage, die die Wähler dazu anregen soll, ihre Argumente darzulegen oder ihre Position zu überdenken.
+    thumb_up: Daumen hoch
+    thumb_down: Daumen runter
+    thumb_sideways: Daumen seitlich
+    hand_up: Hand hoch
+    of: von
+    at_least: Mindestens
+    no_more_than: Nicht mehr als
+    votes_cast: Abgegebene Stimmen
+    eligible_voters: Wahlberechtigte
+    gte_score_percent: Benötigt mindestens %{percent}% der abgegebenen Stimmen
+    gte_voter_percent: Benötigt mindestens %{percent}% der Wahlberechtigten
+    lte_score_percent: Darf %{percent}% der abgegebenen Stimmen nicht überschreiten
+    lte_voter_percent: Darf %{percent}% der Wahlberechtigten nicht überschreiten
+    name_gte_score_percent: "%{name} benötigt mindestens %{percent}% der abgegebenen Stimmen"
+    name_gte_voter_percent: "%{name} benötigt mindestens %{percent}% der Wahlberechtigten"
+    name_lte_score_percent: "%{name} darf %{percent}% der abgegebenen Stimmen nicht überschreiten"
+    name_lte_voter_percent: "%{name} darf %{percent}% der Wahlberechtigten nicht überschreiten"
+    vote_share_requirement: Stimmenanteilsanforderung
+    for_the_proposal_to_pass: Damit der Vorschlag angenommen wird, muss diese Option … erhalten.
+    for_the_poll_to_be_valid: Damit %{poll_type} gültig ist, muss diese Option … erhalten.
   poll_common:
     superseded: Abgelöst
     outdated: Veraltet
@@ -1820,6 +1894,9 @@ de:
     too_long: Zu lang
     edit_warning: 'Wir empfehlen dir Änderungen nur durchzuführen wenn es kleine Schreib-oder Grammatikfehler sind. Für grössere Inhaltsänderungen, schliesse diese %{pollType} und beginne eine neue. '
     no_voting: Nur für Diskussionen, Wahlen abgeschaltet
+    post_outcome: Ergebnis veröffentlichen
+    view_all_votes: Alle Abstimmungen ansehen
+    you_voted: Sie haben abgestimmt
   poll_common_attachment_form:
     label: Arbeitsmaterialien
   poll_common_add_option:
@@ -1838,6 +1915,7 @@ de:
     until_poll_type_closed: Bis %{pollType} geschlossen ist
     until_voting_is_closed: Bis die Abstimmung geschlossen ist
     deleted: Diese Abstimmung wurde entfernt
+    do_not_hide_results: Ergebnisse nicht verbergen
   discussions_panel:
     open: Offen
     all: Alle
@@ -1848,6 +1926,8 @@ de:
     no_results_found: 'Keine Ergebnisse für "%{search}" gefunden '
     welcome_to_your_new_group: Willkommen in Ihrer neuen Loomio-Gruppe!
     lets_start_a_thread: Lasst uns einen Thread starten. Klicken Sie auf „Neuer Thread“, um fortzufahren.
+    lets_start_a_discussion: Lasst uns eine Diskussion beginnen. Klickt auf „Neue Diskussion“, um fortzufahren.
+    new_discussion: Neue Diskussion
   members_panel:
     bot: Bot
     no_results: Keine Mitglieder gefunden
@@ -1879,6 +1959,9 @@ de:
     accepted: Mitglieder
     email_rejected: E-Mail abgelehnt
     email_rejected_meaning: An diese Adresse gesendete E-Mails wurden zurückgewiesen oder als Spam markiert. An diese Adresse werden keine weiteren E-Mails gesendet.
+    delegate: Delegieren
+    delegate_popover: Ein Delegierter ist ein Gruppenmitglied mit Stimmrecht
+    delegates: Delegierte
   polls_panel:
     new_poll: Neue Umfrage
     any_type: Alle Typen
@@ -1888,6 +1971,13 @@ de:
     closed: Geschlossen
     need_vote: Brauchen Sie eine Abstimmung
     no_polls: 'Keine Umfragen gefunden '
+    standalone_disabled_title: Eigenständige Umfragen sind deaktiviert
+    standalone_disabled_helptext: "<p>Diese Gruppe verlangt, dass Umfragen innerhalb einer Diskussion gestartet werden.</p><p> Diskussionen helfen den Menschen, den Kontext zu verstehen, Fragen zu stellen und ihre Perspektiven vor der Abstimmung auszutauschen. Dies führt zu besseren Entscheidungen.</p><p> Eröffnen Sie zunächst eine Diskussion und fügen Sie dann eine Umfrage hinzu, wenn Sie bereit sind, Stimmen zu sammeln.</p>"
+    start_discussion: Starten Sie eine Diskussion
+    standalone_warning_title: Überlegen Sie, ob Sie zunächst eine Diskussion beginnen möchten.
+    start_poll_anyway: Umfrage trotzdem starten
+    start_discussion_instead: Beginnen Sie stattdessen eine Diskussion.
+    standalone_warning_helptext: "<p>Umfragen funktionieren am besten, wenn die Menschen das Thema vorher diskutieren können.</p><p> Ohne Diskussion können die Wähler keine Fragen stellen, Bedenken äußern oder Verbesserungen vorschlagen.</p><p> Für ein optimales Ergebnis beginnen Sie mit einer Diskussion, schaffen Sie ein gemeinsames Verständnis und fügen Sie erst dann eine Umfrage hinzu, wenn Sie bereit sind, die Meinungen der Teilnehmer zu erfassen.</p>"
   group_files_panel:
     no_files: 'Keine Dateien gefunden '
     filename: Dateiname
@@ -1918,6 +2008,8 @@ de:
     unable_to_vote: Du wurdest nicht eingeladen in diesem %{poll_type} abzustimmen.
     draft_mode: Abstimmung deaktiviert. Hier kann noch nicht abgestimmt werden.
     voting_disabled_poll_is_template: Abstimmung deaktiviert. Dies ist eine Vorlage.
+    for_this_proposal_to_pass: 'Damit dieser Vorschlag angenommen wird:'
+    for_this_poll_type_to_be_valid: 'Damit dieser %{poll_type} gültig ist:'
   poll_common_collapsed:
     by_who: von %{name}
   poll_common_calendar_invite:
@@ -1932,47 +2024,6 @@ de:
     event_description_placeholder: Was ist die Tagesordnung für dieses Treffen?
     location: Ort
     location_placeholder: Wo wird das Meeting stattfinden?
-  poll_common_settings:
-    who_can_vote: Wer kann abstimmen?
-    short_reason_can_be_helpful: Eine kurze Abstimmungsbegründung erleichtert das Verständnis. Eine Sammlung prägnanter Begründungen ist eine gute Entscheidungshilfe.
-    specified_voters_only_true: Nur eingeladene Personen
-    specified_voters_only_false_group: Alle in der Gruppe
-    specified_voters_only_false_discussion: Alle in der Diskussion
-    invite_people_next: Du kannst wählen, wer zur Abstimmung eingeladen wird, nachdem Du den %{poll_type} gestartet hast
-    shuffle_options:
-      shuffle_options: Mischoptionen
-      title: Optionen in zufälliger Reihenfolge anzeigen
-      helptext: Wenn eine Option an erster Stelle auf der Liste steht, kann dies zu einer Voreingenommenheit führen. Verwenden Sie diese Einstellung, um diesem Effekt entgegenzuwirken.
-    multiple_choice:
-      title: Mehrfachauswahl
-      helptext_on: Wenn ausgewählt, können die Teilnehmer mehrere Optionen auswählen
-    anyone_can_participate:
-      title: Alle, die Zugriff auf den Link haben, können abstimmen
-      helptext_on: Wenn ausgewählt, kann jeder mit dem Link zur Umfrage teilnehmen.
-    notify_on_closing_soon:
-      voting_closes_too_soon: Da die Abstimmung innerhalb von 24 Stunden endet, werden keine baldigen Abschlusserinnerungen verschickt.
-      closes_too_soon: Da dieser %{pollType} innerhalb von 24 Stunden schließt, werden keine Erinnerungen an das baldige Schließen gesendet.
-      title: 24 Stunden bevor %{pollType} schließt, sende eine Erinnerung an
-      voting_title: Senden Sie 24 Stunden vor Ende der Abstimmung eine Erinnerung an
-      nobody: Keine*r
-      author: Autor*in (mich)
-      undecided_voters: Unentschiedene Wähler*innen
-      voters: Alle Wähler*innen
-    notify_on_participate:
-      title: Mich benachrichtigen, wenn jemand abstimmt
-      helptext_on: Wenn diese Option aktiviert ist, wirst du benachrichtigt, sobald jemand teilnimmt.
-    anonymous:
-      title: Anonyme Teilnahme
-      helptext_on: Wenn diese Option aktiviert ist, werden keine Informationen zu den Abstimmungsteilnehmern angezeigt.
-    voter_can_add_options:
-      title: Teilnehmervorschläge erlauben
-    can_respond_maybe:
-      title: Teilnehmer können antworten "wenn es sein muss"
-    allow_long_reason:
-      title: Der Grund für die Abstimmung darf länger als 500 Zeichen sein
-    hide_results_until_closed:
-      title: Ergebnisse ausblenden bis Abstimmung geschlossen
-      helptext_on: Zeigen nicht an, wie Personen abgestimmt haben, bis die Umfrage geschlossen ist
   poll_common_close_form:
     title: "%{poll_type} jetzt schließen?"
     helptext: Sind Sie sicher, dass Sie diese %{poll_type} vorzeitig schließen und ein Ergebnis mitteilen möchten?
@@ -2028,9 +2079,9 @@ de:
   poll_common_set_outcome_panel:
     enter_outcome: Abstimmungsergebnis eingeben
     poll_type: Dieser %{poll_type} wurde geschlossen. Nehmen Sie sich Zeit, über die Ergebnisse nachzudenken und teilen Sie dann ein Ergebnis mit, damit die Leute wissen, was als nächstes passieren wird.
+    enter_an_outcome: Geben Sie ein Ergebnis ein
   poll_common_outcome_form:
     review_due_in_days: Überprüfen Sie die Entscheidung nach wie vielen Tagen?
-    review_due_in_days_hint: Eine Zeitspanne (in Tagen), die gewartet werden muss, bevor die Entscheidung überprüft wird. (Optional)
     review_date: Prüfungsdatum
     review_date_hint: Legen Sie einen Termin für die Überprüfung der Entscheidung fest (optional)
     who_to_notify: Wen möchten Sie über dieses Ergebnis informieren? (Optional)
@@ -2040,105 +2091,17 @@ de:
     outcome_created: Ergebnis erschaffen
     outcome_updated: Ergebnis aktualisiert
     statement_placeholder: Fasse das Abstimmungsergebnis zusammen und gebe bekannt, was als nächstes passieren wird.
-    statement_template_placeholder: Stellen Sie eine Vorlage zum Verfassen eines Entscheidungsergebnisses bereit. (Optional)
     you_will_be_notified: Du wirst am Überprüfungsdatum benachrichtigt.
     submit: Ergebnis bekanntgeben
+    review_due_in_days_hint: Anzahl der Tage, die vor der Überprüfung der Entscheidung gewartet werden soll (optional).
+    statement_template_hint: Stellen Sie eine Vorlage zum Aufschreiben des Ergebnisses der Entscheidung bereit. (optional)
+    statement_template_placeholder: Vielen Dank für Ihre Teilnahme! Das Quorum wurde erreicht und wir haben Unterstützung, um fortzufahren.
   poll_common_outcome_panel:
     authored_by: Von %{name}
   poll_common_delete_modal:
     question: Wirklich löschen?
     title: "%{pollType} entfernen"
     success: Erfolgreich gelöscht
-  poll_common_form:
-    notify_everyone_when_poll_starts: Benachrichtigen Sie alle, wenn %{poll_type} startet
-    option_has_votes_confirm_delete: Einige Leute haben für diese Option gestimmt. Sind Sie sicher, dass Sie sie löschen möchten?
-    example_title: Beispieltitel
-    example_title_hint: Nennen Sie ein Beispiel für einen guten Vorschlagstitel
-    example_details_placeholder: Geben Sie einen Ausgangspunkt für einen Vorschlag oder eine Umfrage an. Fragen können nützliche Anregungen sein, um Leute zum Schreiben zu bewegen. Fügen Sie alle Regeln oder Erinnerungen hinzu, die die Teilnehmer kennen müssen.
-    confirm_delete: Sind Sie sicher, dass Sie diese Umfragevorlage löschen möchten? Das kann nicht rückgängig gemacht werden.
-    show_advanced_settings: Erweiterte Einstellungen anzeigen
-    hide_advanced_settings: Verberge erweiterte Einstellungen
-    choose_at_least: Wählen Sie mindestens
-    choose_at_most: Wählen Sie höchstens
-    please_review_the_form: Bitte überprüfen Sie das Formular
-    option_added_please_add_details: Option hinzugefügt! Bitte fügen Sie einige Details hinzu, damit die Leute wissen, was es bedeutet.
-    default_duration_in_days: Standarddauer in Tagen
-    default_duration_in_days_hint: Wie viele Tage sollten den Menschen zum Wählen gegeben werden?
-    how_many_options_can_a_voter_choose: Wie viele dieser Optionen kann ein Wähler wählen?
-    minimum_choices: Mindestauswahl
-    maximum_choices: Maximale Auswahl
-    content: Inhalt
-    reminder: Erinnerung
-    your_in_zone: 'Aktuelle Zeitzone: %{zone}'
-    show_other_zones: Andere Zeitzonen anzeigen
-    hide_other_zones: Andere Zeitzonen ausblenden
-    this_is_a_template_for_new_polls: Dies ist eine Vorlage für neue Umfragen
-    voting_method: Abstimmungsmethode
-    voting_methods:
-      question: Fragerunde
-      question_hint: Laden Sie Fragen und Kommentare zu Ihrem Vorschlag ein
-      show_thumbs: Daumen zeigen
-      show_thumbs_hint: Wähler können zwischen Daumen hoch, runter, seitwärts oder Hand hoch wählen
-      choose: Wählen
-      simple_poll: Einfache Umfrage
-      choose_hint: Wähler wählen die beste Option (oder Optionen)
-      score: Ergebnis
-      score_hint: Die Wähler weisen jeder Option eine Punktzahl zu
-      allocate: Zuweisen
-      allocate_hint: Die Wähler verteilen ein Punktebudget auf die Optionen
-      ranked_choice: Prioritätensetzung
-      ranked_choice_hint: Die Wähler ordnen die Optionen in der Reihenfolge von den meisten bis zu den am wenigsten bevorzugten Optionen
-      time_poll: Terminfindung
-      time_poll_hint: Die Wähler geben an, wann sie für ein Treffen zur Verfügung stehen
-    process: Verfahren
-    process_name: Vorlagentitel
-    process_name_hint: Wie nennt man diese Vorlage? ZB Rollenberatung, Temperaturkontrolle, Protokollgenehmigung
-    process_subtitle: Untertitel der Vorlage
-    process_subtitle_hint: Eine einzeilige Beschreibung, wann und warum diese Vorlage verwendet werden soll
-    process_introduction: Vorlagenhilfe
-    process_introduction_hint: Ein paar Absätze, die erklären, wie die Vorlage verwendet wird. Fügen Sie Links zu Ressourcen hinzu, die hilfreich sein könnten.
-    you_can_set_a_prompt_per_option: Bearbeiten Sie die Eingabeaufforderung für jede Option auf der Registerkarte „Details“.
-    chart_type: Diagramm Typ
-    title: Titel
-    title_hint: Welche Entscheidung müssen Sie treffen?
-    no_options_add_some: Diese Umfrage hat keine Optionen, fügen Sie unten einige hinzu.
-    details: Details
-    example_details: Beispieldetails
-    details_placeholder: Dies ist Ihre Gelegenheit zu erklären, worüber die Leute abstimmen
-    options: Optionen
-    options_placeholder: 'Mögliche Optionen auflisten '
-    no_options: Du hast noch keine Optionen hinzugefügt.
-    closing: Schluss
-    closed: Geschlossen
-    start: Erstellen
-    start_poll: Umfrage beginnen
-    stance_reason_required_label: Angabe eines Grundes für die Stimmabgabe ...
-    stance_reason_required: Notwendig
-    stance_reason_optional: Optional
-    stance_reason_disabled: Behinderte
-    stance_reason_is_required: Bitte begründen Sie Ihre Abstimmung
-    limit_reason_length: Begrenzen Sie den Grund auf maximal 500 Zeichen
-    save_poll: Umfrage speichern
-    start_poll_type: "%{poll_type} starten"
-    share_poll_type: "%{poll_type} teilen"
-    who_may_vote: Wer darf bei dieser %{poll_type} abstimmen?
-    update: Aktualisieren
-    add_voters: Wähler hinzufügen
-    notify_invitees: Senden Sie Benachrichtigungen
-    no_notifications_warning: Die Wähler werden nicht benachrichtigt. Dies ist nützlich, wenn Sie viele Umfragen durchführen und später alle benachrichtigen möchten.
-    count_voters_added: "%{count} Wähler hinzugefügt"
-    poll_type_created: "%{poll_type} erstellt"
-    poll_type_started: "%{poll_type} wurde gestartet"
-    poll_type_updated: "%{poll_type} aktualisiert"
-    reason_prompt: Grundaufforderung
-    anonymous_voting: Anonyme Abstimmung
-    anonymous_voting_description: Wenn diese Option aktiviert ist, wird die Identität der Wähler nicht mit ihren Stimmen verknüpft. Das kann nicht rückgängig gemacht werden.
-    votes_are_anonymous: Stimmabgaben sind anonym
-    vote_reason: Abstimmungsgrund
-    vote_reason_description: Es kann hilfreich sein zu verstehen, warum Menschen so abgestimmt haben, wie sie es getan haben. Mit dieser Einstellung können Sie Personen dazu auffordern, ihre Gedanken bei der Abstimmung mitzuteilen.
-    hide_results_description: Wenn Sie möchten, dass die Leute abstimmen, ohne zu wissen, wie andere abgestimmt haben, können Sie die Ergebnisse der Umfrage ausblenden.
-    process_helptext: Benennen und beschreiben Sie den Prozess, der zum Ausführen dieser Umfrage verwendet wird.
-    reminder_helptext: Senden Sie eine Benachrichtigung „Bald schließt“, bevor die Umfrage endet. Dies kann eine Gelegenheit für die Menschen sein, zu sehen, wie andere abgestimmt haben, und ihre eigene Stimme zu überdenken, oder einfach eine Möglichkeit, die Beteiligung an der Umfrage zu erhöhen.
   poll_proposal_form:
     start_header: Abstimmung starten
     edit_header: Angebot bearbeiten
@@ -2189,7 +2152,6 @@ de:
     no_options: Du hast noch keine Option hinzugefügt.
     add_option_placeholder: Gebe eine neue Auswahl ein
     minimum_stance_choices: Zu priorisierende Optionen
-    minimum_stance_choices_helptext: Wie viele Wahlmöglichkeiten hat der Wähler?
     minimum_stance_choices_hint: Das heißt, bewerten Sie Ihre drei besten Eissorten
     ranked_choice_created: Prioritätensetzung erstellt
     ranked_choice_updated: Prioritätensetzung aktualisiert
@@ -2197,9 +2159,13 @@ de:
     points: Punkte
     average: Durchschnitt
     mean: Bedeuten
-    pct_of_points: "% der Punkte"
-    pct_of_voters: "% der Wähler"
     percent: Prozent
+    pct_of_points: "% der Punkte"
+    pct_of_votes_cast: "% der abgegebenen Stimmen"
+    pct_of_voters: "% der Wahlberechtigten"
+    number_of_choices: Anzahl der Auswahlmöglichkeiten
+    how_many_ranking_positions_explained: 'Beispiel: Bei der Einstellung 3 kann jeder Wähler drei Optionen bewerten. Die erste Wahl erhält 3 Punkte, die zweite 2 und die dritte 1 Punkt. Alle nicht bewerteten Optionen erhalten 0 Punkte.'
+    minimum_stance_choices_helptext: Wie viele Auswahlmöglichkeiten hat jeder Wähler?
   poll_meeting_time_field:
     add_time_slot: Ergänze einen Zeitslot
     new_time_slot: Neues Zeitfenster
@@ -2238,6 +2204,11 @@ de:
   poll_common_percent_voted:
     sentence: "%{numerator} von %{denominator} Personen haben abgestimmt (%{percent}%)"
     target_progress: "%{percent} % des Ziels erreicht. (%{num} / %{target})"
+    pct_of_eligible_voters_must_participate: "%{pct}% der Wahlberechtigten müssen teilnehmen"
+    vote_short_of_quorum: 1 weitere Stimme erforderlich, um das Quorum von %{pct}% zu erreichen
+    votes_short_of_quorum: "%{num} weitere Stimmen erforderlich, um das Quorum von %{pct}% zu erreichen"
+    quorum_reached: Quorum von %{pct}% wurde erreicht
+    pct_participation: "%{num} von %{total} abgegebenen Stimmen (%{pct}% Wahlbeteiligung)"
   poll_meeting_chart_panel:
     total: Gesamt
   poll_remove_vote:
@@ -2269,146 +2240,6 @@ de:
     helptext: Ziehen Sie Optionen per Drag-and-Drop in der Reihenfolge Ihrer Präferenz (1 ist Ihre am meisten bevorzugte Option). Ihre Top-%{count}-Auswahl wird aufgezeichnet.
     stance_created: Auswahl aufgenommen
     stance_updated: Auswahl aktualisiert
-  poll_templates:
-    proposal:
-      process_subtitle: Machen Sie einen Vorschlag, um eine Entscheidung zu treffen
-      process_introduction: <p>Der klassische Loomio-Vorschlag hilft Ihnen, eine Entscheidung zu treffen und eine Diskussion in ein klares Ergebnis umzuwandeln.</p><p> Schlagen Sie eine Vorgehensweise vor und laden Sie die Leute ein, darauf zu antworten, indem sie mit „Zustimmen“, „Enthalten“ oder „Nicht zustimmen“ stimmen.</p><p> Wenn Menschen abstimmen, können sie einen Grund angeben, warum sie so abgestimmt haben. Sie können sehen, wo alle anderen zu diesem Thema stehen und warum.</p><p> Auf diese Weise können Sie einen Vorschlag nutzen, um Menschen zu einer Antwort zu veranlassen, neue Informationen aufzudecken und ein gemeinsames Verständnis aufzubauen – um Ihrer Gruppe zu helfen, eine bessere, fundiertere Entscheidung zu treffen.</p><p> Ein Vorschlag und die damit verbundene Diskussion erstellen eine eigene Aufzeichnung darüber, wie die Entscheidung zustande kam.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Lesen Sie mehr über die Verwendung des klassischen Loomio-Vorschlags im einfachen Entscheidungsprozess</u></a> .</p>
-      title: Genehmigen Sie das neue Markenkonzept
-      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Welche Entscheidung müssen Sie treffen?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Warum ist das wichtig?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Was verlangen Sie von den Leuten?</strong></h3><p></p><p> Damit dieser Vorschlag angenommen werden kann, muss die Mehrheit der Mitglieder zustimmen.</p><p> Wenn Sie nicht einverstanden sind, sagen Sie, warum und was sich ändern muss, damit Sie zustimmen. \U0001F642</p>
-      agree: Zustimmen
-      agree_meaning: Ich unterstütze den Vorschlag
-      agree_prompt: Was gefällt Ihnen an dem Vorschlag und welchen Nutzen wird er für die Gruppe haben?
-      abstain: Verzichten
-      abstain_meaning: Sie entscheiden sich dafür, bei dieser Entscheidung nicht mitzustimmen, oder sind nicht in der Lage.
-      abstain_prompt: Warum enthalten Sie sich der Stimme oder fühlen sich bei dieser Entscheidung nicht stimmberechtigt?
-      disagree: Verschiedener Meinung sein
-      disagree_meaning: An diesem Vorschlag muss etwas geändert werden, bevor ich ihn unterstützen kann.
-      disagree_prompt: Wie könnte dieser Vorschlag verbessert werden, damit Sie ihn unterstützen können?
-    advice:
-      process_subtitle: Lassen Sie sich bei einer Entscheidung, die Sie treffen müssen, beraten
-      process_introduction: <p>Holen Sie sich bei einer Entscheidung, die Sie treffen müssen, Rat und lassen Sie sich dabei von Menschen beraten, die davon betroffen sind oder über Fachwissen verfügen, damit Sie eine bessere Entscheidung für Ihr Unternehmen treffen können.</p><ul><li><p> Beratung hilft Ihnen, eine bessere Entscheidung für Ihr Unternehmen zu treffen.</p></li><li><p> Fördern Sie Beziehungen, Lernmöglichkeiten und vielfältigen Input.</p></li><li><p> Fördern Sie Initiative und Kreativität und sorgen Sie für mehr Freude an der Arbeit.</p></li></ul><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>Lesen Sie mehr über den Beratungsprozess</u></a> .</p>
-      title: Helfen Sie Takashi, einen neuen Computer zu kaufen
-      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Welche Entscheidung müssen Sie treffen?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Warum ist das wichtig?</strong></h3><p></p><h3 id="what-advice-are-you-asking-from-people-to-help-you-make-a-go"> <strong>Welchen Rat fragen Sie von anderen, um eine gute Entscheidung zu treffen?</strong></h3><p></p><p> Ich bitte um Ihren Input, der mir hilft, eine gute Entscheidung für unsere Organisation zu treffen.</p>
-      agree: Zustimmen
-      agree_meaning: Ich habe meinen Rat zu dieser Entscheidung gegeben
-      agree_prompt: Fassen Sie Ihren Rat zusammen oder geben Sie einen hilfreichen Kommentar ab
-      abstain: Verzichten
-      abstain_meaning: Ich kann keinen Rat geben
-      abstain_prompt: Haben Sie Kommentare, die hilfreich sein könnten?
-    consent:
-      process_subtitle: Treffen Sie eine Entscheidung, die Sie ohne Bedenken ausprobieren können
-      process_introduction: <p>Holen Sie die Zustimmung zu einer Entscheidung ein, die Sie treffen müssen, sofern keine sinnvollen Einwände gegen Ihren Vorschlag bestehen, damit Sie für Ihre Organisation schnell eine Entscheidung treffen können, die „sicher zum Ausprobieren“ ist.</p><ul><li><p> Streben Sie eine „gut genug“-Entscheidung an</p></li><li><p> Beziehen Sie viele Stimmen ein, um einen praktikablen Vorschlag zu entwickeln</p></li><li><p> Fragen Sie, ob jemand einen berechtigten Einwand hat</p></li><li><p> Ändern Sie den Vorschlag, um Einwände auszuräumen</p></li></ul><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consent_process/index.html">Lesen Sie mehr über den Einwilligungsprozess</a> .</p>
-      title: Stellen Sie Chloe für die Designrolle ein
-      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Welche Entscheidung müssen Sie treffen?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Warum ist das wichtig?</strong></h3><p></p><h3 id="what-are-you-asking-of-people-in-this-proposal"> <strong>Was verlangen Sie von den Leuten in diesem Vorschlag?</strong></h3><p></p><p> Wenn Sie Einwände haben, begründen Sie dies bitte und schlagen Sie eine Änderung des Vorschlags vor, die ihn sicherer macht.</p><p> Denken Sie daran, dass wir die Zustimmung zu einer Entscheidung einholen, die „gut genug“ ist und „sicher ausprobiert“ werden kann, damit wir eine gute Entscheidung für unsere Organisation treffen können.</p>
-      consent: Zustimmung
-      consent_meaning: Es ist sicher, den Vorschlag auszuprobieren
-      consent_prompt: Was gefällt Ihnen an dem Vorschlag und welchen Nutzen wird er für die Organisation haben?
-      objection: Einspruch
-      objection_meaning: Ich habe berechtigte Einwände und denke, dass der Vorschlag Schaden anrichten wird
-      objection_prompt: Welche Änderung an diesem Vorschlag ist erforderlich, damit er sicher ausprobiert werden kann und Sie ihn unterstützen können?
-    consensus:
-      process_subtitle: Treffen Sie mit allen Beteiligten einen Tarifvertrag
-      process_introduction: <p>Bauen Sie einen Konsens für eine Entscheidung auf, die Sie treffen müssen, um eine Einigung zu erzielen, die den Bedürfnissen und Anliegen aller Beteiligten gerecht wird.</p><ul><li><p> Besprechen und entwickeln Sie gemeinsam einen Vorschlag</p></li><li><p> Beziehen Sie alle Beteiligten ein und respektieren Sie sie</p></li><li><p> Holen Sie die Zustimmung der meisten Menschen ein</p></li></ul><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consensus_process/index.html">Lesen Sie mehr über den Konsensprozess</a> .</p>
-      title: Genehmigen Sie das neue Markenkonzept
-      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Welche Entscheidung müssen Sie treffen?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Warum ist das wichtig?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Was verlangen Sie von den Leuten?</strong></h3><p></p><p> Damit dieser Vorschlag angenommen werden kann, muss die Mehrheit der Mitglieder zustimmen.</p><p> Wenn Sie nicht einverstanden sind, sagen Sie, warum und was sich ändern muss, damit Sie zustimmen.</p>
-      agree: Zustimmen
-      agree_meaning: Ich unterstütze den Vorschlag
-      agree_prompt: Was gefällt Ihnen an dem Vorschlag und welchen Nutzen wird er für die Organisation haben?
-      abstain: Verzichten
-      abstain_meaning: Diese Entscheidung berührt mich nicht und ich bin zufrieden mit der Entscheidung der Gruppe
-      abstain_prompt: Warum enthalten Sie sich der Stimme oder fühlen sich bei dieser Entscheidung nicht stimmberechtigt?
-      disagree: Verschiedener Meinung sein
-      disagree_meaning: An diesem Vorschlag muss etwas geändert werden, bevor ich ihn unterstützen kann
-      disagree_prompt: Wie könnte dieser Vorschlag verbessert werden, damit Sie ihn unterstützen können?
-      block: Block
-      block_meaning: Ich blockiere diesen Vorschlag und bin der Meinung, dass er nicht weiterverfolgt werden sollte
-      block_prompt: Erläutern Sie Ihren Einwand gegen diesen Vorschlag und warum er nicht umgesetzt werden sollte
-    question_round:
-      process_subtitle: Bitten Sie um klärende Fragen, um den Leuten das Verständnis eines Vorschlags zu erleichtern
-      process_introduction: <p>Eine Fragerunde ist eine Gelegenheit für Menschen, klärende Fragen zum Vorschlag zu stellen, damit jeder den Vorschlag versteht, bevor er seine Meinung dazu äußert.</p><p> Die Loomio-Fragerunde ist ein Sondervorschlag ohne Abstimmungsmöglichkeiten. Es ermöglicht den Teilnehmern, innerhalb einer von Ihnen für die Runde festgelegten Dauer Fragen zu stellen.</p><p> Eine Fragerunde wird üblicherweise als Schritt im Einwilligungsprozess verwendet.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consent_process/index.html">Lesen Sie mehr über den Einwilligungsprozess</a> .</p>
-      title: Welche Fragen haben Sie zur Gesundheits- und Sicherheitsrichtlinie?
-      details: <h3 id="what-are-you-proposing"><strong>Was schlagen Sie vor?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Warum ist das wichtig?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Was verlangen Sie von den Leuten?</strong></h3><p></p><p> Dies ist eine Fragerunde, in der Sie dazu eingeladen sind, klärende Fragen zu stellen.</p><p> Was müssen Sie wissen, damit Sie den Vorschlag verstehen?</p><p> Bitte antworten Sie, bevor die Fragerunde endet.</p>
-      reason_prompt: Was müssen Sie wissen, damit Sie den Vorschlag verstehen?
-    sense_check:
-      process_subtitle: Bitten Sie um Feedback, Fragen und Bedenken
-      process_introduction: <p>Der Sense-Check-Vorschlag ist eine gute Möglichkeit, Feedback einzuholen, Fragen anzuregen und Bedenken aufzudecken. Es hilft, einen Vorschlag zu klären und zu verbessern, bevor eine Entscheidung getroffen wird.</p><p> Durch die Sinnüberprüfung wissen die Leute, dass ein Vorschlag entsteht, und ermutigen sie, sich zu engagieren. Es ist eine Gelegenheit, den Menschen zuzuhören, ihre Gefühle zu spüren und angemessen zu reagieren – und so die Möglichkeit zu eröffnen, ihre Beiträge einzubeziehen, um eine bessere Entscheidung zu treffen.</p><p> Verwenden Sie den Sense-Check-Vorschlag im Zustimmungsprozess, um Reaktionen und Kommentare einzufordern, um den Vorschlag zu verbessern, und in einem Konsensprozess, um den Konsens zu testen.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Weitere Informationen zur Verwendung der Sense-Prüfung finden Sie im Prozess „Einfache Entscheidung“</u></a> <span>.</span></p>
-      title: Wie stehen Sie zu den neuen Markenkonzepten?
-      details: <h3 id="what-are-you-proposing"><strong>Was schlagen Sie vor?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Warum ist das wichtig?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Was verlangen Sie von den Leuten?</strong></h3><p></p><p> Wie stehen Sie zu dem Vorschlag? Hinterlassen Sie einen Kommentar oder machen Sie einen Verbesserungsvorschlag.</p><p> Dieser Sense-Check ist eine Gelegenheit für Ihren Input und Beitrag, um uns dabei zu helfen, eine bessere Entscheidung zu treffen.</p>
-      not_sure: Nicht sicher
-      not_sure_meaning: Ich habe eine Frage oder brauche mehr Zeit
-      not_sure_prompt: Welche Teile sind Ihnen unklar? Wie könnte das gelöst werden?
-      looks_good: Sieht gut aus
-      looks_good_meaning: Ich bin zufrieden damit, wohin das führt
-      looks_good_prompt: Haben Sie Kommentare oder Vorschläge, um den Vorschlag zu verbessern?
-      abstain: Verzichten
-      abstain_meaning: Ich habe dieser Arbeit weder etwas hinzuzufügen noch etwas einzuwenden.
-      abstain_prompt: Eine Stimmenthaltung impliziert die Zustimmung zur Richtung dieses Vorschlags. Gibt es einen Grund, warum Sie für die Stimmenthaltung stimmen?
-      concerned: Betroffen
-      concerned_meaning: Möglicherweise muss sich hieran etwas ändern, damit ich zustimmen oder zustimmen kann
-      concerned_prompt: Was ist Ihr Anliegen und wie könnte es angegangen werden?
-    gradients_of_agreement:
-      process_subtitle: Drücken Sie Ihre Unterstützung für einen Vorschlag auf einer 8-Punkte-Skala aus
-      process_introduction: "<p>Der Vorschlag „Gradienten der Zustimmung“ ermöglicht es Mitgliedern einer Gruppe, ihre Unterstützung für einen Vorschlag in Graden auf einer Skala auszudrücken. Dies bietet mehr Möglichkeiten, Unterstützung auszudrücken als durch „stimme zu“ und „stimme nicht zu“.</p><p> Nutzen Sie „Gradients of Agreement“ als Vorrunde, um die Unterstützung für einen Vorschlag zu testen, bevor Sie zu einer formellen Vereinbarung übergehen.</p><p> Übereinstimmungsgrade lassen die Menschen wissen, dass ein Vorschlag entsteht, und ermutigen sie, sich zu engagieren. Es ist eine Gelegenheit, den Menschen zuzuhören, ihre Gefühle zu spüren und angemessen zu reagieren – und so die Möglichkeit zu eröffnen, ihre Beiträge einzubeziehen, um eine bessere Entscheidung zu treffen.</p>"
-      title: Wie gefällt Ihnen die neue Werteerklärung?
-      details: <h3 id="what-are-you-proposing"><strong>Was schlagen Sie vor?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Warum ist das wichtig?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Was verlangen Sie von den Leuten?</strong></h3><p></p><p> Wie gefällt Ihnen der Vorschlag? Drücken Sie Ihre Unterstützung auf der Skala unten aus und hinterlassen Sie einen Kommentar oder Verbesserungsvorschlag.</p><p> Mit diesem Vorschlag für Gradients of Agreements soll die Unterstützung für den Vorschlag getestet werden und Sie haben die Möglichkeit, Ihren Beitrag zu leisten, bevor Sie zu einer formellen Vereinbarung übergehen.</p>
-      whole_hearted_endorsement: Volle Zustimmung
-      whole_hearted_endorsement_meaning: Ich mag es wirklich!
-      whole_hearted_endorsement_prompt: Was magst du daran?
-      agreement_with_minor_contention: Zustimmung mit geringfügigen Einwänden
-      agreement_with_minor_contention_meaning: Nicht perfekt, aber gut genug
-      agreement_with_minor_contention_prompt: Was ist dein Anliegen?
-      support_with_reservations: Unterstützung bei Reservierungen
-      support_with_reservations_meaning: Ich kann damit leben
-      support_with_reservations_prompt: Welche Vorbehalte haben Sie?
-      abstain_meaning: Dieses Problem betrifft mich nicht
-      abstain_prompt: Haben Sie etwas, das Sie hinzufügen möchten?
-      more_discussion_needed: Mehr Diskussion nötig
-      more_discussion_needed_meaning: Ich verstehe die Probleme noch nicht gut genug
-      more_discussion_needed_prompt: Was verstehst Du nicht?
-      don_t_like_but_will_support: Gefällt mir nicht, werde aber unterstützen
-      don_t_like_but_will_support_meaning: Es ist nicht großartig, aber ich möchte die Gruppe nicht aufhalten
-      don_t_like_but_will_support_prompt: Was würden Sie gerne verbessert sehen?
-      serious_disagreement: Ernsthafte Meinungsverschiedenheit
-      serious_disagreement_meaning: Ich bin damit nicht einverstanden – verlassen Sie sich nicht auf mich
-      serious_disagreement_prompt: Womit sind Sie nicht einverstanden?
-      veto: Einspruch
-      veto_meaning: Ich blockiere diesen Vorschlag
-      veto_prompt: Warum blockieren Sie den Vorschlag? Was muss sich ändern, damit Sie es unterstützen können?
-    simple_poll:
-      process_subtitle: Finden Sie die beliebteste Option
-      process_introduction: <p>Bevor Sie eine Entscheidung treffen, finden Sie heraus, welche Option(en) den Menschen am meisten am Herzen liegt.</p><p> Eine einfache Umfrage hilft Ihnen, die beliebteste Option oder Optionen mit Einzel- oder Mehrfachauswahl zu finden.</p><p> Schreiben Sie alle Details zu den Optionen in das Detailfeld, geben Sie dann den Namen der Option ein und klicken Sie zum Hinzufügen auf +.</p><p> Legen Sie die <strong>minimalen</strong> und <strong>maximalen Auswahlmöglichkeiten</strong> fest, die ein Wähler wählen kann. Behalten Sie für eine Single-Choice-Umfrage die maximale Auswahl bei 1.</p><p> Sie können das Stiftsymbol neben jeder Option verwenden, um eine <strong>Bedeutung</strong> der Option hinzuzufügen und die Option weiter zu erläutern, um Menschen bei der Abstimmung zu helfen.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">Lesen Sie mehr über die einfache Umfrage</a> .</p>
-      title: Wo soll der Schwerpunkt unserer strategischen Ausrichtung liegen?
-      details: <h3 id="what-is-this-poll-about"><strong>Worum geht es in dieser Umfrage?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Warum ist das wichtig?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Was verlangen Sie von den Leuten?</strong></h3><p></p><p> Wählen Sie die Option(en), die Sie bevorzugen.</p>
-    score_poll:
-      process_subtitle: Messen Sie den Grad der Unterstützung für jede Option
-      process_introduction: <p>Verwenden Sie die Score-Umfrage, wenn Sie Menschen nach ihren Wünschen, Vorlieben oder ihrem Interesse an den einzelnen Optionen befragen möchten.</p><p> <span>Die Teilnehmer werden gebeten, jede Option zu bewerten und eine Punktzahl zuzuweisen, indem sie einen Schieberegler entlang einer Skala bewegen.</span></p><p> <span>Die Ergebnisse werden grafisch zusammen mit einer Tabelle für jede Option angezeigt, in der die Gesamtpunktzahl, die Durchschnittspunktzahl und die Anzahl der Wähler aufgeführt sind.</span></p><p> Zu den erweiterten Einstellungen gehören „Abstimmungen sind anonym“ und „Optionen in zufälliger Reihenfolge anzeigen“ – diese werden häufig für Punkteumfragen verwendet, um etwaige Abstimmungsverzerrungen zu reduzieren.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">Lesen Sie mehr über die Punkteumfrage</a> .</p>
-      title: Beurteilen, wie Entscheidungen in unserer Organisation getroffen werden
-      details: <h3 id="what-is-this-poll-about"><strong>Worum geht es in dieser Umfrage?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Warum ist das wichtig?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Was verlangen Sie von den Leuten?</strong></h3><p></p><p> Wählen Sie die Option(en), die Sie bevorzugen.</p>
-    dot_vote:
-      process_subtitle: Weisen Sie ein Punktebudget zu, um Prioritäten zu ermitteln
-      process_introduction: <p>Punktabstimmung ist nützlich für Gruppen, die versuchen, eine begrenzte Ressource mehreren Optionen zuzuweisen. Es geht über eine einfache Umfrage hinaus, indem es den Teilnehmern klar macht, dass es bei der Auswahl von Optionen Einschränkungen gibt.</p><p> Jeder Teilnehmer erhält eine festgelegte Anzahl an Punkten. Sie entscheiden, wie viele.</p><p> Sie platzieren Punkte neben den angebotenen Optionen, die ihnen gefallen. Teilnehmer können alle Punkte auf eine einzelne Option setzen oder auf mehrere Optionen verteilen.</p><p> Bei der Vergabe von Punkten kann es passieren, dass die Teilnehmer das Punktebudget überschreiten. Wir werden daher dazu angehalten, sorgfältig zu überlegen, wie sie ihre Punkte ausgeben.</p><p> Die Optionen mit den meisten Punkten „gewinnen“. Die Ergebnistabelle stellt zusätzliche Daten bereit, die Ihnen bei der Analyse der Ergebnisse helfen.</p><ul><li><p> % der Punkte</p></li><li><p> Punkte</p></li><li><p> Bedeuten</p></li><li><p> Wähler</p></li></ul><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">Lesen Sie mehr über Dot-Voting</a> .</p>
-      title: Themenauswahl für unsere Konferenz
-      details: <h3 id="what-is-this-poll-about"><strong>Worum geht es in dieser Umfrage?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Warum ist das wichtig?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Was verlangen Sie von den Leuten?</strong></h3><p></p><p> In dieser Umfrage haben Sie ein Budget von 8 Punkten, die Sie den von Ihnen bevorzugten Optionen zuweisen können. Sie können alle Punkte auf einer Option platzieren oder sie verteilen.</p>
-    ranked_choice:
-      process_subtitle: Verstehen Sie die geordnete Präferenz von Optionen
-      process_introduction: <p>Eine Rangfolgeauswahl ist nützlich, wenn Sie eine große Anzahl von Optionen haben oder eine Wahl abhalten.</p><p> Diese Umfragevorlage bietet eine Reihe von Optionen, mit denen Personen in ihrer bevorzugten Reihenfolge abstimmen können.</p><p> Sie können die Anzahl der Wahlmöglichkeiten festlegen, die der Wähler erhält.</p><p> <span>Wähler ziehen Optionen per Drag-and-Drop in der Reihenfolge ihrer Präferenz (wobei Nr. 1 Ihre am meisten bevorzugte Option ist).</span></p><p> <span>Zu den erweiterten Einstellungen gehören „Abstimmungen sind anonym“ und „Optionen in zufälliger Reihenfolge anzeigen“ – werden häufig für Ranglistenentscheidungen verwendet,</span> um etwaige Abstimmungsverzerrungen zu reduzieren.</p><p> Die Ergebnisse werden in der Rangfolge angezeigt. Die Ergebnistabelle stellt zusätzliche Daten bereit, die Ihnen bei der Analyse der Ergebnisse helfen.</p><ul><li><p> Rang</p></li><li><p> % der Punkte</p></li><li><p> Punkte</p></li><li><p> Bedeuten</p></li></ul><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">Lesen Sie mehr über die Ranglistenauswahl</a> .</p>
-      title: Wählen Sie Direktoren in den Vorstand
-      details: <h3 id="what-is-this-poll-about"><strong>Worum geht es in dieser Umfrage?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Warum ist das wichtig?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Was verlangen Sie von den Leuten?</strong></h3><p></p><p> Stimmen Sie ab, indem Sie die Optionen in der Reihenfolge Ihrer Präferenz ordnen. Die Option, die im Ergebnis an erster Stelle steht, gewinnt.</p>
-    time_poll:
-      process_subtitle: Finden Sie heraus, wann Personen für ein Treffen verfügbar sind
-      process_introduction: <p><span>Sparen Sie Zeit bei der Terminvereinbarung für Ihr Meeting oder Ihre Veranstaltung.</span></p><p> Durch die Zeitabfrage können Sie ganz einfach die Verfügbarkeit aller Personen einsehen und die beste Zeit finden.</p><p> Geben Sie Ihrer Zeitumfrage einen Titel und Details. Geben Sie eine Liste mit Datums- und Uhrzeitoptionen in Ihrer Zeitzone ein.</p><p> Berücksichtigen Sie beim Festlegen von Zeitfenstern Personen in unterschiedlichen Zeitzonen. Den Teilnehmern werden die in ihrer Zeitzone lokalisierten Zeiten angezeigt.</p><p> Legen Sie eine Besprechungsdauer fest.</p><p> Wenn die Zeitumfrage endet, legen Sie ein Ergebnis mit der besten Zeit und etwaigen Anweisungen für das Meeting fest.</p><p> <span>Loomio fügt der Ergebnisbenachrichtigungs-E-Mail eine Kalendereinladung bei, damit die Teilnehmer ihren Kalender ergänzen können.</span></p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">Lesen Sie mehr über die Zeitumfrage</a> .</p>
-      title: Lassen Sie uns einen Termin für unser nächstes Treffen finden
-      details: "<p><strong>Was ist das Treffen oder die Veranstaltung?</strong></p><p></p><p> <strong>Warum ist das wichtig?</strong></p><p></p><p> <strong>Was verlangen Sie von den Leuten?</strong></p><p></p><p> <span>Markieren Sie die Zeitfenster, die Ihnen zur Verfügung stehen, mit dem grünen „Daumen hoch“-Symbol oder lassen Sie das rote „Daumen runter“-Symbol an Ort und Stelle, wenn es nicht verfügbar ist.</span></p><p> <span>Verwenden Sie das „Daumen seitwärts“-Symbol, um zu sagen, dass Sie „bei Bedarf“ verfügbar sind.</span></p>"
-      reason_prompt: Können Sie dem Veranstalter etwas sagen, um einen geeigneten Zeitpunkt zu finden?
-    opt_in:
-      process_subtitle: Finden Sie Freiwillige oder fragen Sie nach Teilnehmern
-      process_introduction: '<p>Verwenden Sie Opt-in, um Personen einzuladen, einem Team, Ausschuss oder einer Arbeitsgruppe beizutreten oder an einer Veranstaltung teilzunehmen.</p><p> „Opt-in“ bietet zwei Abstimmungsoptionen: Akzeptieren oder Ablehnen.</p><p> Sie können eine Zielanzahl der gesuchten Personen festlegen, beispielsweise 3 Personen, die Ihrer Arbeitsgruppe beitreten möchten.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#opt-in">Lesen Sie mehr über Opt-in</a> .</p>'
-      title: Arbeitsgruppe zur Ausarbeitung unserer neuen Nachhaltigkeitspolitik
-      details: "<p><strong>Zu welchem Team, welcher Arbeitsgruppe oder Veranstaltung laden Sie Menschen ein?</strong></p><p></p><p> <strong>Warum ist das wichtig?</strong></p><p></p><p> <strong>Was verlangen Sie von den Leuten?</strong></p><p></p><p> Wählen Sie „Akzeptieren“, um teilzunehmen!</p>"
-      accept_meaning: Ich bin bereit mitzumachen
-      accept_prompt: Warum engagieren Sie sich ehrenamtlich dafür?
-      decline_meaning: Ich kann nicht teilnehmen
-      decline_prompt: Gibt es etwas, das Sie sagen möchten?
   thread_item:
     removed: Element entfernt
     deleted_group: Entfernte Gruppe
@@ -2433,6 +2264,7 @@ de:
     stance_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> hat abgestimmt zu: <strong>%{title}</strong>"
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> hat seine Abstimmung aktualisiert am: <strong>%{title}</strong>"
     event_removed: Von der Diskussion entfernt
+    new: neu
   add_poll_to_thread_modal:
     success: Erfolg, %{pollType} wurde der Diskussion hinzugefügt!
   auth_form:
@@ -2462,7 +2294,6 @@ de:
     account_locked: 'Die Anzahl an Anmeldeversuche wurde überschritten und dein Konto gesperrt. Ein Link zum Entsperren wurde dir per E-mail geschickt. '
     email_not_found: Entschuldigung, mit dieser E-Mail-Adresse ist kein Benutzerkonto verknüpft
     email_taken: Die E-Mail Adresse ist bereits registriert
-    email_placeholder: mustermann@beispiel.de
     login_with_token: 'Fertig! Klicke auf den folgenden Link, um fortzufahren. '
     login_link_helptext: 'Klicke auf den folgenden Button um einen Link für deine Anmeldung zu erhalten. '
     enter_your_password: Passwort eingeben, um fortzufahren
@@ -2503,6 +2334,7 @@ de:
     reactivate: Account wieder aktivieren
     want_to_set_password: Möchten Sie sich das nächste Mal mit einem Passwort anmelden?
     change_your_password: Möchten Sie ein neues Passwort festlegen?
+    email_placeholder: Sie{'@'}example.com
   chatbot:
     configure_chatbot: Chatbot konfigurieren
     test_connection: Testverbindung
@@ -2528,6 +2360,7 @@ de:
     event_kind_helptext: Wählen Sie Ereignisse aus, über die der Bot immer benachrichtigt wird. Wenn Sie sich nicht sicher sind, lassen Sie sie einfach alle weg.
     notification_only_label: Nur die Überschrift der Benachrichtigung senden
     check_for_test_message: Überprüfen Sie Ihren Chatroom auf eine Nachricht vom Bot!
+    webex: Webex
   webhook:
     integrations: Integrationen
     api_keys: API-Schlüssel
@@ -2562,8 +2395,6 @@ de:
     name_placeholder: Gib dieser Integration einen Namen, damit Du sie später wiedererkennen kannst
     event_kind_helptext: Über welche Ereignisse soll der Webhook benachrichtigt werden?
     event_kinds:
-      new_discussion: Eine Diskussion wurde gestartet
-      discussion_edited: Eine Diskussion wurde bearbeitet
       poll_edited: Eine Abstimmung wurde bearbeitet
       new_comment: Ein Kommentar wurde erstellt
       poll_created: Eine Abstimmung wurde gestartet
@@ -2576,6 +2407,8 @@ de:
       outcome_created: Ein Ergebnis wurde geteilt
       outcome_updated: Ein Ergebnis wird aktualisiert
       outcome_review_due: Eine Ergebnisüberprüfung ist fällig
+      new_discussion: Eine Diskussion wird begonnen
+      discussion_edited: Eine Diskussion wird bearbeitet
     permissions_explaination: Wähle aus, welche Aktionen von dieser Integration ausgeführt werden können
     permissions:
       show_discussion: Diskussion anzeigen
@@ -2626,3 +2459,246 @@ de:
     month: Monat
     year: Jahr
     country_disclaimer: Das Land basiert auf der IP-Adresse des Benutzers und ist nicht sehr genau. Betrachten Sie dies nur als grobe Richtlinie.
+    total_discussions: Gesamtzahl der Diskussionen
+    discussions_with_polls: Diskussionen mit Umfragen
+  tips:
+    youve_completed_all_the_steps: "\U0001F389 Sie haben alle Schritte abgeschlossen!"
+    getting_started_checklist: Checkliste für die ersten Schritte
+    complete_these_steps_to_set_up_your_group: Führen Sie diese Schritte aus, um Ihre Gruppe einzurichten
+    hide:
+      title: Diese Tipps ausblenden
+      hide_onboarding: Onboarding-Tipps ausblenden
+      unhide_onboarding: Onboarding-Tipps anzeigen
+      helptext: "<p>Dadurch wird die Checkliste „Erste Schritte“ aus der Titelleiste entfernt.</p><p> Wenn Sie es später wieder einblenden möchten, können Sie <b>Onboarding-Tipps in den Seitenleisteneinstellungen anzeigen</b> .</p>"
+    intro:
+      tip_title: Klicken Sie hier, um zu beginnen
+      title: Willkommen in Ihrer neuen Loomio-Gruppe!
+      body: "<p>Diese kurze Reihe kleiner Schritte soll sicherstellen, dass die Personen, die Sie zur Teilnahme an der Gruppe einladen, einen guten ersten Eindruck hinterlassen und verstehen, wie sie an Diskussionen und Entscheidungen teilnehmen können.</p><p> In der Seitenleiste finden Sie die Schaltfläche „Support kontaktieren“. Bei Fragen oder für Beratungsbedarf können Sie sich jederzeit gerne an uns wenden.</p>"
+      submit: Lass uns anfangen
+    group:
+      welcome_and_faq: Willkommen! Lesen Sie dies, um zu beginnen
+      upload_image:
+        title: Vervollständigen Sie Ihr Gruppenprofil
+        helptext: "<p>Lassen Sie uns Ihr Gruppenprofil überprüfen. Name, Beschreibung, Logo und Titelbild werden in den Einladungs-E-Mails enthalten sein, die Sie im nächsten Schritt versenden.</p><p> <b>Fügen Sie Ihr eigenes Gruppentitelbild hinzu</b> . Dies trägt dazu bei, bei den Personen, die Sie zum Beitritt einladen, einen guten ersten Eindruck zu hinterlassen.</p><p> Sie könnten ein aktuelles Teamfoto oder ein Bild verwenden, das die Arbeit Ihrer Organisation oder Community repräsentiert.</p>"
+        open_group_settings: Gruppeneinstellungen öffnen
+      invite_people:
+        title: Personen zur Gruppe einladen
+      start_a_thread:
+        title: Einen Thread starten
+        helptext: "<p>Erstellen Sie einen Thread, den die Leute sehen, nachdem sie ihre Einladung angenommen haben.</p><p> Die Absicht besteht darin, die Leute zu ermutigen, ihren ersten Kommentar in Loomio zu schreiben.</p><p> Um dies zu vereinfachen, haben wir eine <b>Übungsthread-</b> Vorlage bereitgestellt, die Sie verwenden können.</p>"
+        submit: Thread-Vorlagen ansehen
+      start_a_proposal:
+        title: Einen Vorschlag starten
+        helptext: "<p>In Loomio verwenden wir Vorschläge, um Unterstützung für eine Entscheidung aufzuzeigen oder Wege zu finden, sie zu verbessern.</p><p> Lassen Sie uns einen Vorschlag einreichen und die Mitglieder Ihrer Gruppe bitten, darüber abzustimmen.</p><p> Wir haben eine Vorlage für einen <b>Praxisvorschlag</b> für Sie erstellt.</p>"
+        submit: Siehe Angebotsvorlagen
+      share_an_outcome:
+        title: Teilen Sie das Ergebnis eines Vorschlags
+        helptext: "<p>Um Entscheidungen zu beschleunigen, gibt es für Vorschläge eine Frist zur Abstimmung. Nach Ablauf dieser Frist wird die Abstimmung geschlossen und Sie werden benachrichtigt, um das Ergebnis des Vorschlags mitzuteilen.</p><p> Das Ergebnis bietet die Möglichkeit zu sagen, ob der Vorschlag erfolgreich war und was als nächstes passieren wird.</p><p> Wenn die Frist für Ihren Vorschlag noch nicht abgelaufen ist, Sie aber trotzdem fortfahren möchten, können Sie auf <b>„Vorzeitig schließen“</b> klicken.</p><p> <b>Geben Sie zum richtigen Zeitpunkt ein Ergebnis</b> für Ihren Vorschlag ein.</p>"
+        submit: Angebot ansehen
+        cancel: Mach das später
+      start_a_discussion:
+        title: Starten Sie eine Diskussion
+        helptext: "<p>Erstelle eine Diskussionsrunde, die die Leute sehen werden, nachdem sie ihre Einladung angenommen haben.</p><p> Die Absicht besteht darin, die Nutzer zu ermutigen, ihren ersten Kommentar in Loomio zu schreiben.</p><p> Um Ihnen dies zu erleichtern, haben wir eine Vorlage für <b>eine Übungsdiskussion</b> bereitgestellt, die Sie verwenden können.</p>"
+        submit: Siehe Diskussionsvorlagen
+    get_started_here: Hier geht's los
+    try_loomio_with_your_group: Probiert Loomio mit eurer Gruppe aus!
+  poll_common_settings:
+    who_can_vote: Wer darf wählen?
+    specified_voters_only_true: Nur eingeladene Personen
+    specified_voters_only_false_group: Jeder in der Gruppe
+    specified_voters_only_false_discussion: Jeder im Thread
+    invite_people_next: Sie können auswählen, wer zur Abstimmung eingeladen wird, nachdem Sie den %{poll_type} gestartet haben
+    show_none_of_the_above: Fügen Sie die Option „Keine der oben genannten Optionen“ hinzu
+    show_options_in_random_order: Optionen in zufälliger Reihenfolge anzeigen
+    reduce_bias_by_showing_options_in_random_order: Reduzieren Sie die Verzerrung, indem Sie die Optionen in zufälliger Reihenfolge anzeigen.
+    multiple_choice:
+      title: Multiple Choice
+      helptext_on: Bei Auswahl können die Teilnehmer mehrere Optionen auswählen.
+    anyone_can_participate:
+      title: Jeder mit Link kann teilnehmen
+      helptext_on: Wenn diese Option ausgewählt ist, kann jeder mit dem Link zur Umfrage teilnehmen.
+    notify_on_closing_soon:
+      voting_closes_too_soon: Da die Abstimmung innerhalb von 24 Stunden endet, werden keine Erinnerungen an die baldige Schließung gesendet.
+      closes_too_soon: Da dieser %{pollType} innerhalb von 24 Stunden geschlossen wird, werden keine Erinnerungen für eine baldige Schließung gesendet.
+      title: 24 Stunden vor Schließung von %{pollType} senden Sie eine Erinnerung an
+      voting_title: Senden Sie 24 Stunden vor Ende der Abstimmung eine Erinnerung an
+      nobody: Niemand
+      author: Autor (ich)
+      undecided_voters: Unentschlossene Wähler
+      voters: Alle Wähler
+    notify_on_participate:
+      title: Benachrichtigen Sie mich, wenn Personen teilnehmen
+      helptext_on: Wenn Sie diese Option auswählen, werden Sie benachrichtigt, wenn jemand teilnimmt.
+    anonymous:
+      title: Anonyme Wähler
+      helptext_on: Wenn diese Option ausgewählt ist, werden die Teilnehmerinformationen nicht bei jeder Antwort angezeigt.
+    voter_can_add_options:
+      title: Wähler können alternative Optionen hinzufügen
+    can_respond_maybe:
+      title: Wähler können „bei Bedarf“ reagieren
+    allow_long_reason:
+      title: Der Abstimmungsgrund darf länger als 500 Zeichen sein.
+    hide_results_until_closed:
+      title: Ergebnisse bis zum Schließen ausblenden
+      helptext_on: Zeigen Sie nicht, wie die Leute abgestimmt haben, bis die Umfrage geschlossen ist
+    short_reason_can_be_helpful: Kurze Abstimmungsgründe sind leichter verständlich. Eine Sammlung prägnanter Begründungen ist eine hervorragende Ressource für die Entscheidungsfindung.
+    shuffle_options: Zufallsoptionen
+  poll_common_form:
+    quorum: Quorum
+    participation_quorum: Teilnahmequorum
+    quorum_hint: Wie viel Prozent der Wähler müssen teilnehmen, damit das Ergebnis gültig ist? Optional, bei fehlender Beschlussfähigkeit leer lassen.
+    quorum_placeholder: Leer lassen oder eine Zahl zwischen 0 und 100 eingeben
+    deadline: Frist
+    notify_everyone_when_poll_starts: Alle benachrichtigen, wenn %{poll_type} beginnt
+    option_has_votes_confirm_delete: Einige Leute haben für diese Option gestimmt. Möchten Sie sie wirklich löschen?
+    example_title: Beispieltitel
+    example_title_hint: Geben Sie ein Beispiel für einen guten Vorschlagstitel
+    example_details_placeholder: Geben Sie einen Ausgangspunkt für einen Vorschlag oder eine Umfrage. Fragen können hilfreich sein, um die Teilnehmer zum Schreiben zu animieren. Fügen Sie Regeln oder Hinweise hinzu, die die Teilnehmer kennen sollten.
+    confirm_delete: Möchten Sie diese Umfragevorlage wirklich löschen? Dies kann nicht rückgängig gemacht werden.
+    advanced_settings: Erweiterte Einstellungen
+    show_advanced_settings: Erweiterte Einstellungen anzeigen
+    hide_advanced_settings: Erweiterte Einstellungen ausblenden
+    choose_at_least: Wählen Sie mindestens
+    choose_at_most: Wählen Sie höchstens
+    please_review_the_form: Bitte überprüfen Sie das Formular
+    option_added_please_add_details: Option hinzugefügt! Bitte fügen Sie einige Details hinzu, damit die Leute wissen, was es bedeutet.
+    default_duration_in_days: Standarddauer in Tagen
+    how_many_options_can_a_voter_choose: Aus wie vielen Optionen kann ein Wähler wählen?
+    minimum_choices: Mindestauswahl
+    maximum_choices: Maximale Auswahl
+    content: Inhalt
+    reminder: Erinnerung
+    reminder_notification: Erinnerungsbenachrichtigung
+    your_in_zone: 'Aktuelle Zeitzone: %{zone}'
+    show_other_zones: Andere Zeitzonen anzeigen
+    hide_other_zones: Andere Zeitzonen ausblenden
+    this_is_a_template_for_new_polls: Dies ist eine Vorlage für neue Umfragen
+    voting_method: Abstimmungsverfahren
+    none_of_the_above: Nichts des oben Genannten
+    voting_methods:
+      question: Fragerunde
+      question_hint: Bitten Sie um Fragen und Kommentare zu Ihrem Vorschlag
+      show_thumbs: Daumen zeigen
+      show_thumbs_hint: Die Wähler wählen Daumen hoch, runter, zur Seite oder Hand hoch
+      choose: Wählen
+      simple_poll: Einfache Umfrage
+      choose_hint: Die Wähler wählen die beste Option (oder Optionen)
+      score: Punktzahl
+      score_hint: Die Wähler vergeben für jede Option eine Punktzahl
+      allocate: Zuweisen
+      allocate_hint: Die Wähler verteilen ein Punktebudget auf die Optionen
+      ranked_choice: Ranglistenauswahl
+      ranked_choice_hint: Die Wähler ordnen die Optionen in der Reihenfolge von der am meisten bevorzugten bis zur am wenigsten bevorzugten Option an.
+      time_poll: Zeitumfrage
+      time_poll_hint: Wähler geben an, wann sie für ein Treffen verfügbar sind
+    process: Verfahren
+    process_name: Vorlagentitel
+    process_name_hint: Wie nennt man diese Vorlage? Z. B. Rollenberatung, Temperaturkontrolle, Protokollgenehmigung
+    process_subtitle: Vorlagenuntertitel
+    process_subtitle_hint: Eine einzeilige Beschreibung, wann oder warum diese Vorlage verwendet werden soll
+    process_introduction: Vorlagenhilfe
+    process_introduction_hint: Einige Absätze, die die Verwendung der Vorlage erklären. Fügen Sie Links zu möglicherweise hilfreichen Ressourcen ein.
+    you_can_set_a_prompt_per_option: Bearbeiten Sie die Eingabeaufforderung für jede Option auf der Registerkarte „Details“
+    chart_type: Diagrammtyp
+    title: Titel
+    title_hint: Welche Entscheidung müssen Sie treffen?
+    no_options_add_some: Diese Umfrage hat keine Optionen. Fügen Sie unten welche hinzu.
+    details: Details
+    example_details: Beispieldetails
+    details_placeholder: Dies ist Ihre Gelegenheit zu erklären, worüber die Leute abstimmen
+    options: Optionen
+    options_placeholder: Listen Sie die verfügbaren Optionen auf
+    no_options: Sie haben noch keine Optionen hinzugefügt.
+    closing: Schließen
+    closed: Geschlossen
+    start: Start
+    start_poll: Umfrage starten
+    stance_reason_required_label: Die Angabe eines Grundes bei der Stimmabgabe ist ...
+    stance_reason_required: Erforderlich
+    stance_reason_optional: Optional
+    stance_reason_disabled: Deaktiviert
+    stance_reason_is_required: Bitte begründen Sie Ihre Stimme
+    limit_reason_length: Beschränken Sie den Grund auf maximal 500 Zeichen
+    save_poll: Umfrage speichern
+    start_poll_type: Starten Sie %{poll_type}
+    share_poll_type: Teilen Sie %{poll_type}
+    who_may_vote: Wer darf bei diesem %{poll_type} abstimmen?
+    update: Aktualisieren
+    add_voters: Wähler hinzufügen
+    notify_invitees: Benachrichtigungen senden
+    no_notifications_warning: Die Wähler werden nicht benachrichtigt. Dies ist nützlich, wenn Sie viele Umfragen durchführen und planen, alle später zu benachrichtigen.
+    count_voters_added: "%{count} Wähler hinzugefügt"
+    poll_type_created: "%{poll_type} erstellt"
+    poll_type_started: "%{poll_type} gestartet"
+    poll_type_updated: "%{poll_type} aktualisiert"
+    reason_prompt: Grundeingabeaufforderung
+    each_option_has_own_reason_prompt: Jede Option verfügt über eine eigene Begründung. Bearbeiten Sie eine Option, um die Begründung anzuzeigen oder zu ändern.
+    anonymous_voting: Anonyme Abstimmung
+    votes_are_anonymous: Die Abstimmungen sind anonym
+    vote_reason: Abstimmungsgrund
+    quorum_tip_vote_share_requirement: 'Tipp: Sie können auch den Grad der Zustimmung angeben, der für die Annahme eines Vorschlags erforderlich ist. Bearbeiten Sie eine Option, um die Anforderung des Stimmenanteils zu definieren'
+    how_much_time_to_vote: Wie viel Zeit geben Sie den Leuten zum Abstimmen?
+    default_duration_in_days_hint: Wie viele Tage haben die Menschen Zeit, ihre Stimme abzugeben?
+    define_minimum_and_maxmimum_score: Definieren Sie die Mindest- und Höchstpunktzahl, die ein Wähler einer Option geben kann
+    how_many_points_does_each_voter_have_to_allocate: Wie viele Punkte muss jeder Wähler vergeben?
+    anonymous_voting_description: Stimmen und Gründe anzeigen, aber nicht, wer sie abgegeben hat. Dies kann nach dem Start von %{poll_type} nicht mehr geändert werden.
+    vote_reason_description: Bitten Sie die Leute, bei der Abstimmung ihre Gründe mitzuteilen oder weitere Informationen bereitzustellen.
+    hide_results_description: Wenn Sie möchten, dass die Leute abstimmen, ohne zu sehen, wie andere abgestimmt haben, können Sie die Ergebnisse ausblenden.
+    process_helptext: Benennen und beschreiben Sie den Prozess, der zur Durchführung dieser Umfrage verwendet wird.
+    reminder_helptext: Senden Sie 24 Stunden vor Ablauf der Frist eine Benachrichtigung mit dem Hinweis „Schließt bald“. Dies kann die Teilnahme erhöhen und den Teilnehmern die Möglichkeit geben, ihre Position zu überdenken.
+  poll_receipts_page:
+    verify_participants: Teilnehmer überprüfen
+    see_votes_if_quorum_reached: Wenn die Abstimmung beendet ist und das Quorum erreicht ist, sehen Sie, wer seine Stimme abgegeben hat.
+    voter_name: Name des Wählers
+    voter_email: Wähler-E-Mail
+    vote_cast: Abgegebene Stimmen
+    member_since: Mitglied seit
+    invited_by: Eingeladen von
+    invited_on: Eingeladen am
+    no_receipts: Diese anonyme Umfrage wurde geschlossen, bevor die Überprüfungsfunktion verfügbar war. Eine Überprüfung ist daher nicht möglich.
+  close_discussion_modal:
+    body: Diskussionen schließen, um sie aus der Liste der offenen Diskussionen zu entfernen und zu verhindern, dass Leute Kommentare abgeben.
+  comment_reply_form:
+    aria_label: Eine Antwort hinzufügen
+  discussion_template:
+    browse_public_templates: Durchsuchen Sie die Vorlagengalerie
+    start_a_new_discussion: Neue Diskussion starten
+    discussion_template_saved: Diskussionsvorlage gespeichert
+    these_are_public_templates: Diese Vorlagen stehen Ihnen zur Verfügung, um sie zu kopieren oder an Ihre Gruppe anzupassen.
+    these_are_templates: Dies sind die Diskussionsvorlagen in Ihrer Gruppe. Klicken Sie auf eine Vorlage, um eine Diskussion zu starten. Sie können diese auch bearbeiten, entfernen oder neu anordnen.
+    default_title_label: Standardtitel
+    default_title_hint: Füllen Sie das Titelfeld mit einem bearbeitbaren Text vorab aus. Dies ist optional – lassen Sie es leer, wenn Sie sich nicht sicher sind.
+    title_placeholder_label: Beispieltitel
+    title_placeholder_hint: Ein Beispiel, das im Hintergrund des Titelfelds angezeigt werden soll
+    title_placeholder_placeholder: 'Beispiel: So sieht Hintergrundtext aus'
+    example_description_label: Beispielbeschreibung
+    example_description_placeholder: Stellen Sie eine Vorlage bereit, mit der die Leute einen Thread starten können
+    hidden_templates: Versteckte Vorlagen
+    confirm_delete: Möchten Sie diese Diskussionsvorlage wirklich löschen?
+    add_poll_template: Umfragevorlage hinzufügen
+    add_poll_template_help: Wählen Sie beliebige Umfragevorlagen aus, die Ihnen bei diesem Vorgang helfen.
+    recommended_poll_templates: Empfohlene Umfragevorlagen
+    share_in_template_gallery: Teile diese Vorlage in der öffentlichen Vorlagengalerie
+  context_panel:
+    thread_status:
+      pinned: Diese Diskussion wurde angepinnt. Sie bleibt für alle Benutzer ganz oben in der Diskussionsliste der Gruppe.
+      closed: Diese Diskussion wurde geschlossen. Sie wird nicht mehr im Dashboard angezeigt und ist auf der Gruppenseite unter „Geschlossen“ aufgeführt.
+  thread_group:
+    aria_label: Gruppenname
+  discussion_context:
+    current_poll_type_banner: Aktueller %{pollType}
+    seen_by_count: Gesehen von %{count}
+    count_notified: Benachrichtigt %{count}
+    start_a_vote: Jetzt abstimmen
+  pin_discussion_modal:
+    helptext: Angeheftete Diskussionen erscheinen immer in der Diskussionsliste der Gruppe.
+  delete_discussion_form:
+    body: Möchten Sie diese Diskussion wirklich löschen?
+    discussion_deleted: Diskussion gelöscht
+  move_discussion_form:
+    title: Verlegen Sie die Diskussion in eine andere Gruppe.
+    body: Zielgruppe
+    confirm: Diskussion bewegen
+    confirm_change_to_private: "%{groupName} ist eine offene Gruppe. Wenn Sie fortfahren, wird diese Diskussion öffentlich sein."
+    messages:
+      success: Die Diskussion wurde nach %{name} verlegt.

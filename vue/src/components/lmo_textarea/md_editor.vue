@@ -1,127 +1,185 @@
-<script lang="js">
+<script setup lang="js">
+import { ref, computed, watch, toRef } from 'vue';
 import { convertToHtml } from '@/shared/services/format_converter';
-import { CommonMentioning, MdMentioning } from './mentioning';
 import Records from '@/shared/services/records';
 import FilesList from './files_list.vue';
 import SuggestionList from './suggestion_list';
-import Attaching from './attaching';
+import { useCommonMentioning, useMdMentioning } from './composables/useMentioning';
+import { useAttaching } from './composables/useAttaching';
+import { useI18n } from 'vue-i18n';
 
-export default
-{
-  mixins: [CommonMentioning, MdMentioning, Attaching],
-  props: {
-    model: Object,
-    field: String,
-    label: String,
-    placeholder: String,
-    shouldReset: Boolean,
-    maxLength: Number,
-    autofocus: {
-      type: Boolean,
-      default: false
-    }
-  },
-
-  components: {
-    FilesList,
-    SuggestionList
-  },
-
-  data() {
-    return {preview: false};
-  },
-
-  watch: {
-    shouldReset: 'reset'
-  },
-
-  methods: {
-    reset() {
-      this.preview = false;
-      this.resetFiles();
-    },
-
-    convertToHtml() {
-      convertToHtml(this.model, this.field);
-      Records.users.saveExperience('html-editor.uses-markdown', false);
-    },
-
-    onPaste(event) {
-      const items = Array.from(event.clipboardData.items);
-
-      if (items.filter(item => item.getAsFile()).length === 0) { return; }
-
-      event.preventDefault();
-      this.handleUploads(items.map(item => {
-        return new File([item.getAsFile()],
-                 event.clipboardData.getData('text/plain') || Date.now(),
-                 {lastModified: Date.now(), type: item.type});
-      })
-      );
-    },
-
-    handleUploads(files) {
-      Array.from(files).forEach(file => {
-        if ((/image/i).test(file.type)) {
-          this.insertImage(file);
-        } else {
-          this.attachFile({file});
-        }
-      });
-    },
-
-    insertImage(file) {
-      const name = file.name.replace(/[\W_]+/g, '') | 'file';
-
-      const uploadingText = pct => `![uploading-${name}](${"*".repeat(parseInt(pct / 5))})`;
-
-      const insertPlaceholder = text => {
-        const beforeText = this.model[this.field].slice(0, this.textarea().selectionStart);
-        const afterText = this.model[this.field].slice(this.textarea().selectionStart);
-        this.model[this.field] = beforeText + "\n" + text + "\n" + afterText;
-      };
-
-      const updatePlaceholder = text => {
-        this.model[this.field] = this.model[this.field].replace(new RegExp(`!\\[uploading-${name}\\]\\(\\**\\)`), text);
-      };
-
-      insertPlaceholder(uploadingText(0));
-
-      return this.attachImageFile({
-        file,
-        onProgress: e => {
-          updatePlaceholder(uploadingText(parseInt((e.loaded / e.total) * 100)));
-        },
-
-        onComplete: blob => {
-          updatePlaceholder(`![${name}](${blob.preview_url})`);
-        },
-
-        onFailure: () => {
-          updatePlaceholder(`![${name}](${this.$t('formatting.upload_failed')}`);
-        }
-      });
-    },
-
-    onDrop(event) {
-      if (!event.dataTransfer || !event.dataTransfer.files || !event.dataTransfer.files.length) { return; }
-      event.preventDefault();
-      this.handleUploads(event.dataTransfer.files);
-    },
-
-    onDragOver(event) { return false; }
-  },
-
-  computed: {
-    previewAction() {
-      if (this.preview) { return 'common.action.edit'; } else { return 'common.action.preview'; }
-    },
-    previewIcon() {
-      if (this.preview) { return 'mdi-pencil'; } else { return 'mdi-eye'; }
-    }
+const props = defineProps({
+  model: Object,
+  field: String,
+  label: String,
+  placeholder: String,
+  maxLength: Number,
+  autofocus: {
+    type: Boolean,
+    default: false
   }
+});
+
+const emit = defineEmits(['is-uploading']);
+
+const { t } = useI18n();
+
+// Refs
+const preview = ref(false);
+const fieldRef = ref(null);
+const filesField = ref(null);
+
+// Composables
+const modelRef = toRef(props, 'model');
+const fieldNameRef = toRef(props, 'field');
+
+const {
+  mentionsCache,
+  mentions,
+  query,
+  navigatedUserIndex,
+  suggestionListStyles,
+  fetchingMentions,
+  fetchMentionable,
+  updateMentions
+} = useCommonMentioning(modelRef);
+
+// Get textarea element helper
+const textarea = computed(() => {
+  return fieldRef.value?.$el.querySelector('textarea');
+});
+
+const {
+  onKeyUp,
+  onKeyDown,
+  selectRow
+} = useMdMentioning(
+  modelRef,
+  fieldNameRef,
+  textarea,
+  query,
+  mentions,
+  navigatedUserIndex,
+  suggestionListStyles,
+  fetchMentionable,
+  updateMentions
+);
+
+const {
+  files,
+  imageFiles,
+  resetFiles,
+  updateFiles,
+  removeFile,
+  attachFile,
+  attachImageFile,
+  fileSelected: fileSelectedBase
+} = useAttaching(modelRef, emit);
+
+
+
+// Methods
+const reset = () => {
+  preview.value = false;
+  resetFiles();
 };
 
+const convertToHtmlHandler = () => {
+  convertToHtml(props.model, props.field);
+  Records.users.saveExperience('html-editor.uses-markdown', false);
+};
+
+const onPaste = (event) => {
+  const items = Array.from(event.clipboardData.items);
+
+  if (items.filter(item => item.getAsFile()).length === 0) { return; }
+
+  event.preventDefault();
+  handleUploads(items.map(item => {
+    return new File([item.getAsFile()],
+             event.clipboardData.getData('text/plain') || Date.now(),
+             {lastModified: Date.now(), type: item.type});
+  }));
+};
+
+const handleUploads = (uploadFiles) => {
+  Array.from(uploadFiles).forEach(file => {
+    if ((/image/i).test(file.type)) {
+      insertImage(file);
+    } else {
+      attachFile({file});
+    }
+  });
+};
+
+const insertImage = (file) => {
+  const name = file.name.replace(/[\W_]+/g, '') || 'file';
+
+  const uploadingText = pct => `![uploading-${name}](${"*".repeat(parseInt(pct / 5))})`;
+
+  const insertPlaceholder = text => {
+    const beforeText = props.model[props.field].slice(0, textarea.value.selectionStart);
+    const afterText = props.model[props.field].slice(textarea.value.selectionStart);
+    props.model[props.field] = beforeText + "\n" + text + "\n" + afterText;
+  };
+
+  const updatePlaceholder = text => {
+    props.model[props.field] = props.model[props.field].replace(new RegExp(`!\\[uploading-${name}\\]\\(\\**\\)`), text);
+  };
+
+  insertPlaceholder(uploadingText(0));
+
+  return attachImageFile({
+    file,
+    onProgress: e => {
+      updatePlaceholder(uploadingText(parseInt((e.loaded / e.total) * 100)));
+    },
+
+    onComplete: blob => {
+      updatePlaceholder(`![${name}](${blob.preview_url})`);
+    },
+
+    onFailure: () => {
+      updatePlaceholder(`![${name}](${t('formatting.upload_failed')})`);
+    }
+  });
+};
+
+const onDrop = (event) => {
+  if (!event.dataTransfer || !event.dataTransfer.files || !event.dataTransfer.files.length) { return; }
+  event.preventDefault();
+  handleUploads(event.dataTransfer.files);
+};
+
+const onDragOver = (event) => { 
+  return false; 
+};
+
+const fileSelected = () => {
+  fileSelectedBase(filesField);
+};
+
+// Computed
+const previewAction = computed(() => {
+  if (preview.value) { 
+    return 'common.action.edit'; 
+  } else { 
+    return 'common.action.preview'; 
+  }
+});
+
+const previewIcon = computed(() => {
+  if (preview.value) { 
+    return 'mdi-pencil'; 
+  } else { 
+    return 'mdi-eye'; 
+  }
+});
+
+defineExpose({
+  reset,
+  preview
+});
 </script>
 
 <template lang="pug">
@@ -129,7 +187,7 @@ div(style="position: relative")
   v-textarea(
     v-if="!preview"
     filled
-    ref="field"
+    ref="fieldRef"
     v-model="model[field]"
     :placeholder="placeholder"
     :label="label"
@@ -138,19 +196,18 @@ div(style="position: relative")
     @paste="onPaste"
     @drop="onDrop"
     @dragover.prevent="onDragOver")
-  formatted-text(v-if="preview" :model="model" :column="field")
+  formatted-text(v-if="preview" :model="model" :field="field")
   v-sheet.pa-4.my-4.poll-common-outcome-panel(v-if="preview && model[field].trim().length == 0" color="primary lighten-5" elevation="2")
     p(v-t="'common.empty'")
 
-  v-layout.menubar(align-center :aria-label="$t('formatting.formatting_tools')")
-    v-btn(icon @click='$refs.filesField.click()' :title="$t('formatting.attach')")
+  .d-flex.align-center.menubar(align-center :aria-label="$t('formatting.formatting_tools')")
+    v-btn(icon size="x-small" variant="text" @click='filesField.click()' :title="$t('formatting.attach')")
       common-icon(name="mdi-paperclip")
-    v-btn(text x-small @click="convertToHtml(model, field)" v-t="'formatting.wysiwyg'")
+    v-btn(variant="text" size="small" @click="convertToHtmlHandler" v-t="'formatting.wysiwyg'")
     v-spacer
-    v-btn.mr-4(text x-small @click="preview = !preview" v-t="previewAction")
-
+    v-btn.mr-4(variant="text" size="small" @click="preview = !preview" v-t="previewAction")
     slot(name="actions")
-  suggestion-list(:query="query" :loading="fetchingMentions" :mentionable="mentionable" :positionStyles="suggestionListStyles" :navigatedUserIndex="navigatedUserIndex" showUsername @select-user="selectUser")
+  suggestion-list(:query="query" :loading="fetchingMentions" :mentions="mentions" :positionStyles="suggestionListStyles" :navigatedUserIndex="navigatedUserIndex" showUsername @select-row="selectRow")
 
   files-list(:files="files" v-on:removeFile="removeFile")
 

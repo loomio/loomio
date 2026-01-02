@@ -7,16 +7,12 @@ class EventService
     event.update(discussion_id: nil)
     discussion.thread_item_destroyed!
     GenericWorker.perform_async('SearchService', 'reindex_by_discussion_id', discussion.id)
-    
+
     EventBus.broadcast('event_remove_from_thread', event)
     event
   end
 
   def self.move_comments(discussion:, actor:, params:)
-    # handle parent comments = events where parent_id is source.created_event.id
-      # move all events which are children of above parents (comment parent id untouched)
-    # handle any reply comments that don't have parent_id in given ids
-
     ids = Array(params[:forked_event_ids]).compact
     source = Event.find(ids.first).discussion
 
@@ -25,7 +21,7 @@ class EventService
     MoveCommentsWorker.perform_async(ids, source.id, discussion.id)
   end
 
-  def self.repair_thread(discussion_id)
+  def self.repair_discussion(discussion_id)
     discussion = Discussion.find_by(id: discussion_id)
     return unless discussion
 

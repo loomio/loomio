@@ -1,2 +1,2 @@
-= render_rich_text(eventable.body, eventable.body_format)
+= formatted_text(eventable, :body)
 = render "chatbot/matrix/attachments", resource: eventable

@@ -1,4 +1,4 @@
-class API::V1::DiscussionTemplatesController < API::V1::RestfulController
+class Api::V1::DiscussionTemplatesController < Api::V1::RestfulController
   def browse_tags
     tag_counts = {}
     DiscussionTemplate.where(public: true).pluck(:tags).flatten.each do |tag|
@@ -48,7 +48,7 @@ class API::V1::DiscussionTemplatesController < API::V1::RestfulController
     group = current_user.groups.find_by(id: params[:group_id]) || NullGroup.new
 
     if group.discussion_templates.kept.count == 0
-      group.discussion_templates = DiscussionTemplateService.initial_templates(group.category)
+      group.discussion_templates = DiscussionTemplateService.initial_templates(group.category, group.parent_id)
     end
 
     if params[:id]
@@ -67,7 +67,7 @@ class API::V1::DiscussionTemplatesController < API::V1::RestfulController
 
   def positions
     group = current_user.adminable_groups.find_by!(id: params[:group_id])
-    
+
     params[:ids].each_with_index do |val, index|
       if val.is_a? Integer
         DiscussionTemplate.where(id: val, group_id: group.id).update_all(position: index)

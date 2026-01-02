@@ -4,7 +4,30 @@ describe Discussion do
   let(:user)       { create :user }
   let(:group)      { create :group }
   let(:discussion) { create :discussion, group: group }
-  let(:motion)     { create :motion, discussion: discussion }
+
+  context "guests" do
+    let(:guest) { create(:user) }
+    let(:discussion) { create(:discussion, group: group) }
+    it "returns a guest who has never been a member" do
+      discussion.add_guest!(guest, group.creator)
+      expect(discussion.guests).to include guest
+      expect(discussion.guests.length).to eq 1
+    end
+
+    it "does not return a member" do
+      group.add_member!(guest)
+      discussion.add_guest!(guest, group.creator)
+      expect(discussion.guests.length).to eq 0
+    end
+
+    it "returns a guest who was previously a member" do
+      membership = group.add_member!(guest)
+      MembershipService.revoke(membership: membership, actor: group.creator)
+      discussion.add_guest!(guest, group.creator)
+      expect(discussion.guests).to include guest
+      expect(discussion.guests.length).to eq 1
+    end
+  end
 
   context "versioning" do
     before do

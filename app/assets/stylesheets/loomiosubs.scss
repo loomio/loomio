@@ -1,0 +1,232 @@
+@import "vtfy/typography";
+@import "vtfy/layout";
+
+$accent-color: #00BDD4;
+$primary-color: #F08B00;
+$font-color: rgba(0,0,0,0.8) !default;
+$blue: #3498db !default;
+
+%btn--base {
+  border-radius: 4px;
+  padding: 1rem 1rem*2;
+  border: 1px solid #bbb;
+  color: $font-color;
+  font-weight: 500;
+  text-decoration: none;
+  text-align: center;
+  background: transparent;
+}
+
+.btn {
+  @extend %btn--base;
+}
+
+.btn--blue {
+  @extend %btn--base;
+
+  border-color: darken($blue, 3%);
+  background-color: $blue;
+  color: white;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: white;
+    background-color: darken($blue, 10%);
+  }
+}
+
+.btn--primary {
+  @extend %btn--base;
+
+  border-color: transparent;
+  background-color: $primary-color;
+  color: white;
+
+  &:hover,
+  &:focus,
+  &:active {
+    opacity: 0.9;
+  }
+}
+
+.btn--accent--raised {
+  @extend %btn--base;
+
+  border-color: darken($accent-color, 5%);
+  background-color: $accent-color;
+  color: white;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: white;
+    background-color: lighten($accent-color, 5%);
+    border-color: $accent-color;
+  }
+}
+
+.ribbon-parent {
+  overflow: hidden; /* required */
+  position: relative; /* required  for demo*/
+}
+
+.ribbon {
+  margin: 0;
+  padding: 0;
+  background: #DCA034;
+  color: white;
+  padding:0.6em 0;
+  position: absolute;
+  top:0;
+  right:0;
+  transform: translateX(30%) translateY(0%) rotate(45deg);
+  transform-origin: top left;
+}
+
+.ribbon-grey {
+  background: rgb(41, 60, 74) !important;
+}
+
+.ribbon-grey:before,
+.ribbon-grey:after {
+  background: rgb(41, 60, 74) !important;
+}
+
+.ribbon:before,
+.ribbon:after {
+  content: '';
+  position: absolute;
+  top:0;
+  margin: 0 -1px; /* tweak */
+  width: 100%;
+  height: 100%;
+  background: #DCA034;
+}
+
+.ribbon:before {
+  right:100%;
+}
+
+.ribbon:after {
+  left:100%;
+}
+
+.main--landing {
+  section {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  h1, h2 {
+    line-height: 120%;
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    font-size: 30px;
+  }
+
+  p, li, blockquote {
+    line-height: 140%;
+  }
+
+  small {
+    font-size: 13px;
+  }
+}
+
+.btn--base--landing {
+  @extend .btn--primary;
+
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: normal;
+  display: inline-block;
+
+}
+
+.btn--ink {
+  @extend .btn--base--landing;
+  border-color: transparent;
+  background-color: #293c4a;
+  color: #fff;
+}
+
+.btn--gold {
+  @extend .btn--base--landing;
+  border-color: transparent;
+  background-color: #dca034;
+  color: #fff;
+}
+
+.btn--primary--landing {
+  @extend .btn--base--landing;
+}
+
+.btn--primary--action--landing {
+  @extend .btn--base--landing;
+  background-color: white;
+  color: $accent-color;
+  border: 1px solid $accent-color;
+}
+
+.btn--secondary--action--landing {
+  @extend .btn--base--landing;
+  color: white;
+  background: $accent-color;
+
+  &:hover {
+    background-color: rgba($accent-color, 0.8);
+  }
+}
+
+.nonprofit-warning {
+  border: 2px solid #293c4a;
+  border-radius: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.price-box {
+  border: 2px solid #293c4a;
+  border-radius: 1.5rem;
+  margin: 0 10px 20px;
+  padding-bottom: 20px;
+  width: 320px;
+  padding: 24px 18px;
+
+  h2 {
+    margin: 0;
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    color: #000;
+    font-weight: 400
+  }
+
+  &.primary {
+    border-color: #dca034;
+  }
+
+  .invitation {
+    text-align: center;
+    font-size: 19px;
+    margin-bottom: 20px;
+  }
+}
+
+.ticks--pricing {
+  list-style: outside none;
+  margin: 0 0 30px;
+  padding-left: 1em;
+  text-indent: -1em;
+  li {
+    margin-bottom: 10px;
+    font-size: 15.5px;
+  }
+  li:before {
+    content: '✓  ';
+  }
+}

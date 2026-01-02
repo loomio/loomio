@@ -3,8 +3,7 @@ import BarIcon from '@/components/poll/common/icon/bar.vue';
 import PieIcon from '@/components/poll/common/icon/pie.vue';
 import GridIcon from '@/components/poll/common/icon/grid.vue';
 
-export default
-  ({
+export default {
     components: {BarIcon, PieIcon, GridIcon},
     props: {
       poll: Object,
@@ -28,7 +27,7 @@ export default
       myStance() { return this.poll.myStance(); },
       showPosition() { return 'proposal count'.split(' ').includes(this.poll.pollType); }
     }
-  });
+};
 </script>
 
 <template lang="pug">

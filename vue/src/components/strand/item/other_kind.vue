@@ -16,7 +16,7 @@ export default {
         username: actor.username,
         key:      this.event.model().key,
         title:    eventTitle(this.event),
-        polltype: this.$t(eventPollType(this.event)).toLowerCase()
+        polltype: this.event.isPollEvent() ? this.$t(eventPollType(this.event)).toLowerCase() : null
       });
     }
   }
@@ -25,9 +25,8 @@ export default {
 
 <template lang="pug">
 .strand-other-kind.text-body-2
-  //- | hi {{event.model().poll().title}}
-  span.text--secondary(v-html='headline')
-  mid-dot.text--secondary
-  time-ago.text--secondary(:date='event.createdAt')
-  formatted-text.thread-item__body(:model="eventable" column="statement")
+  span.text-medium-emphasis(v-html='headline')
+  mid-dot.text-medium-emphasis
+  time-ago.text-medium-emphasis(:date='event.createdAt')
+  //formatted-text.thread-item__body(:model="eventable" field="statement")
 </template>

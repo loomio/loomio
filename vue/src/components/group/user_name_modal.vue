@@ -1,6 +1,7 @@
 <script lang="js">
 import Flash from '@/shared/services/flash';
 import Records from '@/shared/services/records';
+import EventBus from '@/shared/services/event_bus';
 
 export default
 {
@@ -15,7 +16,7 @@ export default
         username: this.user.username
       }).then(() => {
         Flash.success("user_name_modal.user_name_updated");
-        this.closeModal();
+        EventBus.$emit('closeModal');
       }).catch(data => {
         this.user.saveError(data);
       });
@@ -25,11 +26,8 @@ export default
 
 </script>
 <template lang="pug">
-v-card.user-name-modal
-  submit-overlay(:value='user.processing')
-  v-card-title
-    h1.text-h5(tabindex="-1" v-t="'membership_dropdown.set_name_and_username'")
-    v-spacer
+v-card.user-name-modal(:title="$t('membership_dropdown.set_name_and_username')")
+  template(v-slot:append)
     dismiss-modal-button
   v-card-text
     v-text-field(:label="$t('profile_page.email_label')" v-model="user.email" disabled)
@@ -39,5 +37,5 @@ v-card.user-name-modal
     validation-errors(:subject='user', field='username')
   v-card-actions
     v-spacer
-    v-btn.primary(@click="submit" v-t="'common.action.save'")
+    v-btn(color="primary" variant="elevated" @click="submit" v-t="'common.action.save'")
 </template>

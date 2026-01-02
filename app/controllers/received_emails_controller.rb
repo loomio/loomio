@@ -3,7 +3,7 @@ class ReceivedEmailsController < ApplicationController
 
   def create
     email = build_received_email_from_params
-    
+
     if email.is_addressed_to_loomio? && !email.is_auto_response?
       email.save!
       ReceivedEmailService.route(email)
@@ -21,8 +21,6 @@ class ReceivedEmailsController < ApplicationController
       headers: data['headers'],
       body_text: data['text'],
       body_html: data['html'],
-      dkim_valid: data['dkim'] == 'pass' ? true : false,
-      spf_valid: data['spf'] == 'pass' ? true : false,
     )
 
     email.attachments = data.fetch('attachments', []).map do |a|

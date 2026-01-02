@@ -1,4 +1,4 @@
-class API::V1::ReportsController < API::V1::RestfulController
+class Api::V1::ReportsController < Api::V1::RestfulController
   def index
     start_at = Date.parse(params.fetch(:start_month, 12.months.ago.to_date.iso8601[0..-4]) + "-01")
     end_at = Date.parse(params.fetch(:end_month, Date.today.iso8601[0..-4]) + "-01") + 1.month
@@ -7,9 +7,10 @@ class API::V1::ReportsController < API::V1::RestfulController
     group_ids = params.fetch(:group_ids).split(',').map(&:to_i)
     all_group_ids = Group.where("id IN (:group_ids) OR parent_id IN (:group_ids)", group_ids: Group.where(id: group_ids).pluck(:id, :parent_id).flatten.uniq).pluck(:id).uniq
     all_groups = Group.where(id: all_group_ids).order("parent_id NULLS FIRST, name asc").pluck(:id, :name).map {|pair| {id: pair[0], name: pair[1] } }
+    first_year = Group.where(id: all_group_ids).order("created_at").first.created_at.year
 
     if current_user.is_admin?
-      all_groups.unshift({id: 0, name: 'Direct threads'})
+      all_groups.unshift({id: 0, name: I18n.t('sidebar.invite_only_discussions')})
     else
       group_ids = group_ids & current_user.group_ids
       all_group_ids = all_group_ids & current_user.group_ids
@@ -17,6 +18,7 @@ class API::V1::ReportsController < API::V1::RestfulController
 
     @report = ReportService.new(interval: interval, group_ids: group_ids, start_at: start_at, end_at: end_at)
     render json: {
+      first_year: first_year,
       all_groups: all_groups,
       intervals: @report.intervals,
 

@@ -1,8 +1,4 @@
 <script lang="js">
-import Session        from '@/shared/services/session';
-import AbilityService from '@/shared/services/ability_service';
-import AppConfig from '@/shared/services/app_config';
-import Records from '@/shared/services/records';
 import Flash   from '@/shared/services/flash';
 export default {
   props: {
@@ -24,15 +20,13 @@ export default {
 </script>
 
 <template lang="pug">
-v-card.thread-arrangement-form
-  submit-overlay(:value='discussion.processing')
-  v-card-title
-    span(v-t="'thread_arrangement_form.title'")
-    v-spacer
+v-card.thread-arrangement-form(:title="$t('thread_arrangement_form.title')")
+  template(v-slot:append)
     dismiss-modal-button(aria-hidden='true', :close='close')
-  .px-4
-    v-alert(dense text type="info" v-t="'thread_arrangement_form.for_everyone'")
-    v-card-subtitle(v-t="'thread_arrangement_form.sorting'")
+  v-card-text
+    v-alert.mb-4(density="compact" variant="tonal" type="info")
+      span(v-t="'thread_arrangement_form.for_everyone'")
+    p.text-medium-emphasis(v-t="'thread_arrangement_form.sorting'")
     v-radio-group(v-model="clone.newestFirst")
       v-radio(:value="false")
         template(v-slot:label)
@@ -50,7 +44,7 @@ v-card.thread-arrangement-form
           space
           span(v-t="'thread_arrangement_form.latest_description'")
 
-    v-subheader(v-t="'thread_arrangement_form.replies'")
+    p.text-medium-emphasis(v-t="'thread_arrangement_form.replies'")
     v-radio-group(v-model="clone.maxDepth")
       v-radio(:value="1")
         template(v-slot:label)
@@ -73,8 +67,10 @@ v-card.thread-arrangement-form
           | -
           space
           span(v-t="'thread_arrangement_form.nested_twice_description'")
-    v-alert(type="warning" v-if="clone.maxDepth != discussion.maxDepth" v-t="'thread_arrangement_form.changing_nesting_is_slow'")
+    v-alert(type="warning" variant="tonal" v-if="clone.maxDepth != discussion.maxDepth")
+      span(v-t="'thread_arrangement_form.changing_nesting_is_slow'")
   v-card-actions
     v-spacer
-    v-btn(color="primary" @click="submit()" v-t="'common.action.save'" :loading="clone.processing")
+    v-btn(color="primary" variant="elevated" @click="submit()" :loading="clone.processing")
+      span(v-t="'common.action.save'")
 </template>

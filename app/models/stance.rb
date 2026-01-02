@@ -39,7 +39,7 @@ class Stance < ApplicationRecord
       FROM stances
         LEFT JOIN users ON users.id = stances.participant_id
         LEFT JOIN polls ON polls.id = stances.poll_id
-      WHERE polls.discarded_at IS NULL 
+      WHERE polls.discarded_at IS NULL
         AND stances.cast_at IS NOT null
         AND NOT (polls.anonymous = TRUE AND polls.closed_at IS NULL)
         AND NOT (polls.hide_results = 2 AND polls.closed_at IS NULL)
@@ -56,7 +56,7 @@ class Stance < ApplicationRecord
   is_mentionable  on: :reason
   include HasRichText
 
-  is_rich_text    on: :reason
+  is_rich_text on: :reason
 
   belongs_to :poll, required: true
   belongs_to :inviter, class_name: 'User'
@@ -64,30 +64,31 @@ class Stance < ApplicationRecord
   has_many :stance_choices, dependent: :destroy
   has_many :poll_options, through: :stance_choices
 
-  has_paper_trail only: [:reason, :option_scores, :revoked_at, :revoker_id, :inviter_id]
+  has_paper_trail only: [:reason, :option_scores, :revoked_at, :revoker_id, :inviter_id, :attachments]
 
   accepts_nested_attributes_for :stance_choices
 
   belongs_to :participant, class_name: 'User', required: true
 
-  alias :user :participant
-  alias :author :participant
+  alias user participant
+  alias author participant
 
-  scope :dangling,       -> { joins('left join polls on polls.id = poll_id').where('polls.id is null') }
-  scope :latest,         -> { where(latest: true, revoked_at: nil) }
-  scope :guests,         ->  { where(guest: true) }
-  scope :admins,         ->  { where(admin: true) }
-  scope :newest_first,   -> { order("cast_at DESC NULLS LAST") }
+  scope :dangling, -> { joins('left join polls on polls.id = poll_id').where('polls.id is null') }
+  scope :latest, -> { where(latest: true, revoked_at: nil) }
+  scope :guests, -> { where(guest: true) }
+  scope :admins, -> { where(admin: true) }
+  scope :newest_first, -> { order("cast_at DESC NULLS LAST") }
   scope :undecided_first, -> { order("cast_at DESC NULLS FIRST") }
-  scope :oldest_first,   -> { order(created_at: :asc) }
+  scope :oldest_first, -> { order(created_at: :asc) }
   scope :priority_first, -> { joins(:poll_options).order('poll_options.priority ASC') }
-  scope :priority_last,  -> { joins(:poll_options).order('poll_options.priority DESC') }
-  scope :with_reason,    -> { where("reason IS NOT NULL AND reason != '' AND reason != '<p></p>'") }
+  scope :priority_last, -> { joins(:poll_options).order('poll_options.priority DESC') }
+  scope :with_reason, -> { where("reason IS NOT NULL AND reason != '' AND reason != '<p></p>'") }
   scope :in_organisation, ->(group) { joins(:poll).where("polls.group_id": group.id_and_subgroup_ids) }
-  scope :decided,        -> { where("stances.cast_at IS NOT NULL") }
-  scope :undecided,      -> { where("stances.cast_at IS NULL") }
-  scope :revoked,  -> { where("revoked_at IS NOT NULL") }
+  scope :decided, -> { where("stances.cast_at IS NOT NULL") }
+  scope :undecided, -> { where("stances.cast_at IS NULL") }
+  scope :revoked, -> { where("revoked_at IS NOT NULL") }
   scope :guests, -> { where("inviter_id is not null") }
+  scope :none_of_the_above, -> { where(none_of_the_above: true) }
 
   scope :redeemable, -> { latest.guests.undecided.where('stances.accepted_at IS NULL') }
   scope :redeemable_by,  -> (user_id) {
@@ -96,32 +97,38 @@ class Stance < ApplicationRecord
 
   validate :valid_minimum_stance_choices
   validate :valid_maximum_stance_choices
+  validate :valid_max_score
+  validate :valid_min_score
   validate :valid_dots_per_person
   validate :valid_reason_length
   validate :valid_reason_required
   validate :valid_require_all_choices
+  validate :valid_none_of_the_above
+  validate :poll_options_must_match_stance_poll
 
-  %w(group mailer group_id discussion_id discussion members voters title tags).each do |message|
+  %w[group mailer group_id discussion_id discussion members voters tags].each do |message|
     delegate(message, to: :poll)
   end
-
-  alias :author :participant
 
   before_save :assign_option_scores
   after_save :update_versions_count!
 
+  def title_model
+    poll
+  end
+
   def build_replacement
     Stance.new(
-      poll_id: self.poll_id,
-      participant_id: self.participant_id,
-      inviter_id: self.inviter_id,
-      reason_format: self.reason_format,
+      poll_id: poll_id,
+      participant_id: participant_id,
+      inviter_id: inviter_id,
+      reason_format: reason_format,
       latest: true
     )
   end
 
   def create_missing_created_event!
-    self.events.create(
+    events.create(
       kind: created_event_kind,
       user_id: (poll.anonymous? ? nil: author_id),
       created_at: created_at,
@@ -201,8 +208,7 @@ class Stance < ApplicationRecord
     end
   end
 
-  def participant(bypass = false)
-    super() if bypass
+  def participant
     (!participant_id || poll.anonymous?) ? AnonymousUser.new : super()
   end
 
@@ -216,46 +222,84 @@ class Stance < ApplicationRecord
 
   private
 
+  def poll_options_must_match_stance_poll
+    invalid_choices = stance_choices.reject do |sc|
+      sc.poll_option.poll_id == poll_id || !sc.persisted? && sc.poll_option.poll_id.nil?
+    end
+
+    if invalid_choices.any?
+      errors.add(:base, I18n.t(:"poll.error.poll_options_dont_match"))
+      Sentry.capture_message(
+        "Invalid Stance: mismatched poll_options",
+        level: :error,
+        extra: {
+          stance_id: id,
+          poll_id: poll_id,
+          invalid_choice_ids: invalid_choices.map(&:id),
+          invalid_poll_ids: invalid_choices.map { |sc| sc.poll_option&.poll_id }
+        }
+      )
+    end
+  end
+
+  def valid_none_of_the_above
+    return if !cast_at
+    return unless none_of_the_above
+    errors.add(:none_of_the_above, "none_of_the_above not permitted for this poll") unless poll.show_none_of_the_above
+    errors.add(:none_of_the_above, "you cant choose options pluss none_of_the_above") if stance_choices.any?
+  end
+
   def valid_min_score
     return if !cast_at
+    return if none_of_the_above
     return unless poll.validate_min_score
-    return if (stance_choices.map(&:score).min || 0) >= poll.min_score
+    return if (stance_choices.map(&:score).compact.min || 0) >= poll.min_score
+
     errors.add(:stance_choices, "min_score validation failure")
   end
 
   def valid_max_score
     return if !cast_at
+    return if none_of_the_above
     return unless poll.validate_max_score
-    return if (stance_choices.map(&:score).max) <= poll.max_score
+    return if (stance_choices.map(&:score).compact.max || 0) <= poll.max_score
     errors.add(:stance_choices, "max_score validation failure")
   end
 
   def valid_dots_per_person
     return if !cast_at
+    return if none_of_the_above
     return unless poll.validate_dots_per_person
-    return if stance_choices.map(&:score).sum <= poll.dots_per_person.to_i
+    return if stance_choices.map(&:score).compact.sum <= poll.dots_per_person.to_i
+
     errors.add(:dots_per_person, "Too many dots")
   end
 
   def valid_minimum_stance_choices
     return if !cast_at
+    return if none_of_the_above
     return unless poll.validate_minimum_stance_choices
     return if stance_choices.length >= poll.minimum_stance_choices
+
     errors.add(:stance_choices, "too few stance choices")
   end
 
   def valid_maximum_stance_choices
     return if !cast_at
+    return if none_of_the_above
     return unless poll.validate_maximum_stance_choices
     return if stance_choices.length <= poll.maximum_stance_choices
+
     errors.add(:stance_choices, "too many stance choices")
   end
 
   def valid_require_all_choices
     return if !cast_at
+    return if none_of_the_above
     return unless poll.require_all_choices
     return if poll.poll_options.length == 0
     return if stance_choices.length == poll.poll_options.length
+
     errors.add(:stance_choices, "require_all_stance_choices")
   end
 
@@ -263,6 +307,7 @@ class Stance < ApplicationRecord
     return if !cast_at
     return if !poll.limit_reason_length
     return if reason_visible_text.length < 501
+
     errors.add(:reason, I18n.t(:"poll_common.too_long"))
   end
 
@@ -270,6 +315,7 @@ class Stance < ApplicationRecord
     return if !cast_at
     return if poll.stance_reason_required != "required"
     return if reason_visible_text.length > 5
+
     errors.add(:reason, I18n.t(:"poll_common_form.stance_reason_is_required"))
   end
 end

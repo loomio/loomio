@@ -6,9 +6,11 @@ import EventBus     from '@/shared/services/event_bus';
 import NullGroupModel   from '@/shared/models/null_group_model';
 import PollTemplateService     from '@/shared/services/poll_template_service';
 import PollCommonChooseTemplate from '@/components/poll/common/choose_template';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
+import WatchRecords from '@/mixins/watch_records';
 
 export default {
+  mixins: [WatchRecords],
   components: {PollCommonChooseTemplate},
 
   props: {
@@ -31,7 +33,7 @@ export default {
     fillGroups() {
       const defaultsGroup = new NullGroupModel();
       defaultsGroup.isNullGroup = false;
-      defaultsGroup.name = I18n.t('templates.loomio_default_templates');
+      defaultsGroup.name = I18n.global.t('templates.loomio_default_templates');
       const groups = [defaultsGroup];
       const groupIds = Session.user().groupIds();
       Records.groups.collection.chain().
@@ -58,12 +60,11 @@ div
     p(v-t="'templates.which_templates_would_you_like_to_use'")
     v-list
       v-list-item(v-for="group in groups" :key="group.id" @click="selectGroup(group)")
-        v-list-item-avatar(aria-hidden="true")
+        template(v-slot:prepend)
           group-avatar(:group="group" v-if="!group.parentId")
-        v-list-item-content
-          v-list-item-title {{group.name}}
+        v-list-item-title {{group.name}}
   poll-common-choose-template(
-    v-else 
+    v-else
     @setPoll="setPoll"
     :discussion="discussion"
     :group="selectedGroup")

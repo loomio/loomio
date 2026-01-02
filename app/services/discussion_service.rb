@@ -12,23 +12,24 @@ class DiscussionService
 
     return false unless discussion.valid?
 
-    discussion.save!
+    Discussion.transaction do
+      discussion.save!
 
-    DiscussionReader.for(user: actor, discussion: discussion)
-                    .update(admin: true, guest: !discussion.group.present?, inviter_id: actor.id)
+      DiscussionReader.for(user: actor, discussion: discussion)
+                      .update(admin: true, guest: !discussion.group.present?, inviter_id: actor.id)
 
-    users = add_users(user_ids: params[:recipient_user_ids],
-                      emails: params[:recipient_emails],
-                      audience: params[:recipient_audience],
-                      discussion: discussion,
-                      actor: actor)
+      users = add_users(user_ids: params[:recipient_user_ids],
+                        emails: params[:recipient_emails],
+                        audience: params[:recipient_audience],
+                        discussion: discussion,
+                        actor: actor)
 
-    EventBus.broadcast('discussion_create', discussion, actor)
-    Events::NewDiscussion.publish!(discussion: discussion,
-                                   recipient_user_ids: users.pluck(:id),
-                                   recipient_chatbot_ids: params[:recipient_chatbot_ids],
-                                   recipient_audience: params[:recipient_audience])
-
+      EventBus.broadcast('discussion_create', discussion, actor)
+      Events::NewDiscussion.publish!(discussion: discussion,
+                                     recipient_user_ids: users.pluck(:id),
+                                     recipient_chatbot_ids: params[:recipient_chatbot_ids],
+                                     recipient_audience: params[:recipient_audience])
+    end
   end
 
   def self.update(discussion:, actor:, params:)
@@ -44,25 +45,27 @@ class DiscussionService
     discussion.assign_attributes_and_files(params.except(:group_id))
     return false unless discussion.valid?
     rearrange = discussion.max_depth_changed?
-    discussion.save!
+    Discussion.transaction do
+      discussion.save!
 
-    discussion.update_versions_count
-    RepairThreadWorker.perform_async(discussion.id) if rearrange
+      discussion.update_versions_count
+      RepairThreadWorker.perform_async(discussion.id) if rearrange
 
-    users = add_users(discussion: discussion,
-                      actor: actor,
-                      user_ids: params[:recipient_user_ids],
-                      emails: params[:recipient_emails],
-                      audience: params[:recipient_audience])
+      users = add_users(discussion: discussion,
+                        actor: actor,
+                        user_ids: params[:recipient_user_ids],
+                        emails: params[:recipient_emails],
+                        audience: params[:recipient_audience])
 
-    EventBus.broadcast('discussion_update', discussion, actor, params)
+      EventBus.broadcast('discussion_update', discussion, actor, params)
 
-    Events::DiscussionEdited.publish!(discussion: discussion,
-                                      actor: actor,
-                                      recipient_user_ids: users.pluck(:id),
-                                      recipient_chatbot_ids: params[:recipient_chatbot_ids],
-                                      recipient_audience: params[:recipient_audience],
-                                      recipient_message: params[:recipient_message])
+      Events::DiscussionEdited.publish!(discussion: discussion,
+                                        actor: actor,
+                                        recipient_user_ids: users.pluck(:id),
+                                        recipient_chatbot_ids: params[:recipient_chatbot_ids],
+                                        recipient_audience: params[:recipient_audience],
+                                        recipient_message: params[:recipient_message])
+    end
   end
 
   def self.invite(discussion:, actor:, params:)
@@ -72,18 +75,24 @@ class DiscussionService
                            model: discussion,
                            actor: actor)
 
-    users = add_users(discussion: discussion,
-                      actor: actor,
-                      user_ids: params[:recipient_user_ids],
-                      emails: params[:recipient_emails],
-                      audience: params[:recipient_audience])
+    Discussion.transaction do
+      users = add_users(discussion: discussion,
+                        actor: actor,
+                        user_ids: params[:recipient_user_ids],
+                        emails: params[:recipient_emails],
+                        audience: params[:recipient_audience])
 
-    Events::DiscussionAnnounced.publish!(discussion: discussion,
-                                         actor: actor,
-                                         recipient_user_ids: users.pluck(:id),
-                                         recipient_chatbot_ids: params[:recipient_chatbot_ids],
-                                         recipient_audience: params[:recipient_audience],
-                                         recipient_message: params[:recipient_message])
+      discussion.polls.active.where(specified_voters_only: false).each do |poll|
+        PollService.create_anyone_can_vote_stances(poll)
+      end
+
+      Events::DiscussionAnnounced.publish!(discussion: discussion,
+                                           actor: actor,
+                                           recipient_user_ids: users.pluck(:id),
+                                           recipient_chatbot_ids: params[:recipient_chatbot_ids],
+                                           recipient_audience: params[:recipient_audience],
+                                           recipient_message: params[:recipient_message])
+    end
   end
 
   # def self.destroy(discussion:, actor:)
@@ -95,13 +104,15 @@ class DiscussionService
 
   def self.discard(discussion:, actor:)
     actor.ability.authorize!(:discard, discussion)
-    discussion.update(discarded_at: Time.now, discarded_by: actor.id)
+    Discussion.transaction do
+      discussion.update(discarded_at: Time.now, discarded_by: actor.id)
 
-    discussion.polls.update_all(discarded_at: Time.now, discarded_by: actor.id)
-    GenericWorker.perform_async('SearchService', 'reindex_by_discussion_id', discussion.id)
+      discussion.polls.update_all(discarded_at: Time.now, discarded_by: actor.id)
+      GenericWorker.perform_async('SearchService', 'reindex_by_discussion_id', discussion.id)
 
-    EventBus.broadcast('discussion_discard', discussion, actor)
-    discussion.created_event
+      EventBus.broadcast('discussion_discard', discussion, actor)
+      discussion.created_event
+    end
   end
 
   def self.close(discussion:, actor:)
@@ -123,14 +134,16 @@ class DiscussionService
     actor.ability.authorize! :move, discussion
     # discussion.add_admin!(actor)
 
-    discussion.update group: destination.presence, private: moved_discussion_privacy_for(discussion, destination)
-    discussion.polls.each { |poll| poll.update(group: destination.presence) }
-    ActiveStorage::Attachment.where(record: discussion.items.map(&:eventable).concat([discussion])).update_all(group_id: destination.id)
+    Discussion.transaction do
+      discussion.update group: destination.presence, private: moved_discussion_privacy_for(discussion, destination)
+      discussion.polls.each { |poll| poll.update(group: destination.presence) }
+      ActiveStorage::Attachment.where(record: discussion.items.map(&:eventable).concat([discussion])).update_all(group_id: destination.id)
 
-    GenericWorker.perform_async('PollService', 'group_members_added', discussion.group_id) if discussion.group_id
-    GenericWorker.perform_async('SearchService', 'reindex_by_discussion_id', discussion.id)
-    EventBus.broadcast('discussion_move', discussion, params, actor)
-    Events::DiscussionMoved.publish!(discussion, actor, source)
+      GenericWorker.perform_async('PollService', 'group_members_added', discussion.group_id) if discussion.group_id
+      GenericWorker.perform_async('SearchService', 'reindex_by_discussion_id', discussion.id)
+      EventBus.broadcast('discussion_move', discussion, params, actor)
+      Events::DiscussionMoved.publish!(discussion, actor, source)
+    end
   end
 
   def self.pin(discussion:, actor:)
@@ -235,7 +248,7 @@ class DiscussionService
                      user_id: users.pluck(:id)).find_each do |m|
       volumes[m.user_id] = m.volume
     end
-    
+
     DiscussionReader.
       where(discussion_id: discussion.id, user_id: users.map(&:id)).
       where("revoked_at is not null").update_all(revoked_at: nil, revoker_id: nil)

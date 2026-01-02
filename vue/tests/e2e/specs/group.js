@@ -20,7 +20,7 @@ module.exports = {
     page.pause(500)
     page.click('.join-group-button', 500)
     page.ensureSidebar()
-    page.expectText('.sidebar__groups', 'Open Dirty Dancing Shoes')
+    page.expectText('.sidenav-left', 'Open Dirty Dancing Shoes')
   },
 
   'does_not_allow_mark_as_read_or_mute': (test) => {
@@ -77,9 +77,11 @@ module.exports = {
     page.loadPath('setup_dashboard')
     page.ensureSidebar()
 
-    page.click('.sidebar__list-item-button--start-group')
+    page.click('.sidebar-start-group')
 
     page.fillIn('.group-form__name input', 'Secret please')
+    page.click('.group-form__category-select .v-field')
+    page.click('.v-overlay .v-select__content .v-list-item')
     page.click('.group-form__submit-button')
     page.expectFlash('Group started')
   },
@@ -88,17 +90,14 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_open_group')
-    page.click('.group-page-subgroups-tab')
-    page.click('.subgroups-card__start')
+    page.ensureSidebar()
+    page.click('.sidebar-start-subgroup')
 
     page.fillIn('#group-name', 'Open please')
     page.click('.group-form__privacy-open')
     page.expectElement('.group-form__joining')
     page.click('.group-form__submit-button')
     page.expectFlash('Group started')
-
-    page.expectElement('.group-invitation-form')
-    page.click('.dismiss-modal-button')
 
     page.click('.action-menu')
     page.click('.action-dock__button--edit_group')
@@ -112,17 +111,14 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_open_group')
-    page.click('.group-page-subgroups-tab')
-    page.click('.subgroups-card__start')
+    page.ensureSidebar()
+    page.click('.sidebar-start-subgroup')
 
     page.fillIn('#group-name', 'Closed please')
     page.click('.group-form__privacy-closed')
     page.expectNoElement('.group-form__joining')
     page.click('.group-form__submit-button')
     page.expectFlash('Group started')
-
-    page.expectElement('.group-invitation-form')
-    page.click('.dismiss-modal-button')
 
     page.click('.action-menu')
     page.click('.action-dock__button--edit_group')
@@ -135,17 +131,13 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_open_group')
-    page.click('.group-page-subgroups-tab')
-    page.click('.subgroups-card__start')
-
+    page.ensureSidebar()
+    page.click('.sidebar-start-subgroup')
     page.fillIn('#group-name', 'Secret please')
     page.click('.group-form__privacy-secret')
     page.expectNoElement('.group-form__joining')
     page.click('.group-form__submit-button')
     page.expectFlash('Group started')
-
-    page.expectElement('.group-invitation-form')
-    page.click('.dismiss-modal-button')
 
     page.click('.action-menu')
     page.click('.action-dock__button--edit_group')
@@ -275,7 +267,7 @@ module.exports = {
     page.fillIn('#discussion-title', 'Nobody puts baby in a corner')
     page.fillIn('.discussion-form .lmo-textarea div[contenteditable=true]', "I've had the time of my life")
     page.click('.discussion-form__submit')
-    page.expectFlash("Thread started")
+    page.expectFlash("Discussion started")
     page.expectText('.context-panel__heading', 'Nobody puts baby in a corner' )
     page.expectText('.context-panel__description', "I've had the time of my life" )
   },

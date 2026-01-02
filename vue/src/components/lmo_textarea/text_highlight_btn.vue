@@ -5,7 +5,8 @@ import { pick } from 'lodash-es';
 export default
 {
   props: {
-    editor: Object
+    editor: Object,
+    btnProps: Object
   },
 
   data() {
@@ -21,35 +22,25 @@ export default
     buttonBgColor() {
       return (this.colors[this.activeColorKey] || {lighten1: null}).lighten2;
     },
-    buttonFgColor() {
-      if (this.buttonBgColor) {
-        return '#000';
-      } else {
-        return undefined;
-      }
-    }
   }
 };
 </script>
 
 <template lang="pug">
-v-menu
-  template(v-slot:activator="{ on, attrs }")
-    div.rounded-lg.color-picker-btn
-      v-btn.drop-down-button(
-        small icon
-        :style="{'background-color': buttonBgColor, color: buttonFgColor}" 
-        v-on="on"
-        v-bind="attrs"
-        :title="$t('formatting.colors')"
-      )
-        common-icon(small name="mdi-palette")
-  v-card.color-picker.pa-2
-    .swatch.swatch-color(v-for="(value, key) in colors"
-                         :class="{'swatch--selected': key == activeColorKey }"
-                         :style="{'background-color': value.lighten1}"
-                         @click="editor.chain().setHighlight({color: key}).focus().run()") &nbsp;
-    v-btn.mt-2(block x-small outlined @click="editor.chain().unsetHighlight().focus().run()" v-t="'formatting.reset'")
+v-btn.drop-down-button(
+  v-bind="btnProps"
+  :title="$t('formatting.colors')"
+  :color="activeColorKey"
+  :variant="activeColorKey ? 'tonal' : 'text'"
+)
+  common-icon(size="small" name="mdi-palette" color="undefined")
+  v-menu(activator="parent")
+    v-card.color-picker.pa-2
+      .swatch.swatch-color(v-for="(value, key) in colors"
+                          :class="{'swatch--selected': key == activeColorKey }"
+                          :style="{'background-color': value.lighten1}"
+                          @click="editor.chain().setHighlight({color: key}).focus().run()") &nbsp;
+      v-btn.mt-2(block size="x-small" outlined @click="editor.chain().unsetHighlight().focus().run()" v-t="'formatting.reset'")
 </template>
 
 <style lang="sass">

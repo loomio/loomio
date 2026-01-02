@@ -54,6 +54,10 @@ class ReceivedEmail < ApplicationRecord
     end
   end
 
+  def sent_to_notifications_address?
+    recipient_emails.map(&:downcase).include?(BaseMailer::NOTIFICATIONS_EMAIL_ADDRESS.downcase)
+  end
+
   def body_format
     if body_html.present?
       'html'
@@ -68,7 +72,7 @@ class ReceivedEmail < ApplicationRecord
 
   def reply_body
     text = if body_html.present?
-      Premailer.new(body_html, line_length: 10000, with_html_string: true).to_plain_text
+      ReverseMarkdown.convert(body_html, unknown_tags: :bypass).gsub("&nbsp;", " ")
     else
       body_text
     end
@@ -85,11 +89,11 @@ class ReceivedEmail < ApplicationRecord
   end
 
   def is_addressed_to_loomio?
-    route_address.present?
+    route_address.present? || sent_to_notifications_address?
   end
 
   def is_auto_response?
-    return true if header('X-Autorespond') 
+    return true if header('X-Autorespond')
     return true if header('X-Precedence') ==  'auto_reply'
 
     prefixes = [

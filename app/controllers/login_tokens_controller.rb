@@ -2,7 +2,11 @@ class LoginTokensController < ApplicationController
 
   def show
     session[:pending_login_token] = login_token.token
-    redirect_to login_token.redirect || dashboard_path
+    if Rails.env.development?
+      redirect_to lmo_asset_host login_token.redirect || dashboard_path
+    else
+      redirect_to login_token.redirect || dashboard_path
+    end
   end
 
   private

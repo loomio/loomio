@@ -1,11 +1,11 @@
 require 'rails_helper'
-describe API::V1::DiscussionsController do
+describe Api::V1::DiscussionsController do
 
   let(:subgroup) { create :group, parent: group }
   let(:another_group) { create :group }
   let(:user) { create :user, name: 'normal user' }
   let(:another_user) { create :user, name: "Another user" }
-  let(:group) { create :group }
+  let(:group) { create :group, handle: 'testgroup' }
   let(:discussion) { create_discussion group: group }
   let(:discarded_discussion) { create_discussion group: group, title: "Discarded Discussion" }
   let(:poll) { create :poll, discussion: discussion }
@@ -79,12 +79,12 @@ describe API::V1::DiscussionsController do
     end
 
     describe 'as member' do
-      let(:member) { create :user, name: 'member' }
+      # let(:member) { create :user, name: 'member' }
 
-      before do
-        sign_in member
-        group.add_member! member
-      end
+      # before do
+      #   sign_in member
+      #   group.add_member! member
+      # end
 
       describe 'group.members_can_start_discussions' do
         it 'cannot start discussion' do
@@ -158,7 +158,7 @@ describe API::V1::DiscussionsController do
           discussion: {
             title: 'test',
             group_id: group.id,
-            recipient_user_ids: [another_user.id]
+            recipient_user_ids: [another_user.id],
           }
         }
         json = JSON.parse response.body
@@ -167,6 +167,7 @@ describe API::V1::DiscussionsController do
         expect(d.discussion_readers.count).to eq 2
         expect(d.discussion_readers.last.user_id).to eq another_user.id
         expect(d.created_event.notifications.count).to eq 1
+        expect(emails_sent_to(another_user.email).size).to eq 1
       end
 
       it 'create discussion and notify group' do
@@ -184,6 +185,126 @@ describe API::V1::DiscussionsController do
         d = Discussion.find(json['discussions'][0]['id'])
         expect(d.discussion_readers.count).to eq 3
         expect(d.created_event.notifications.count).to eq 2
+        expect(emails_sent_to(another_user.email).size).to eq 1
+      end
+
+      it 'create discussion and mention user' do
+        expect(group.members.count).to eq 2
+        group.add_member! another_user
+        post :create, params: {
+          discussion: {
+            title: 'test',
+            group_id: group.id,
+            description: "hi @#{another_user.username}",
+            description_format: 'md'
+          }
+        }
+        expect(response.status).to eq 200
+        expect(emails_sent_to(another_user.email).size).to eq 1
+      end
+
+      it 'create discussion and mention group' do
+        expect(group.members.count).to eq 2
+        group.add_member! another_user
+        post :create, params: {
+          discussion: {
+            title: 'test',
+            group_id: group.id,
+            description: "hi @#{group.handle}",
+            description_format: 'md'
+          }
+        }
+        expect(response.status).to eq 200
+        expect(emails_sent_to(another_user.email).size).to eq 1
+      end
+
+      it 'create discussion: notify user and user_mention user does not double notify' do
+        group.add_member! another_user
+        post :create, params: {
+          discussion: {
+            title: 'test',
+            group_id: group.id,
+            recipient_user_ids: [another_user.id],
+            description_format: 'md',
+            description: "hi @#{another_user.username}"
+          }
+        }
+        json = JSON.parse response.body
+        expect(response.status).to eq 200
+        d = Discussion.find(json['discussions'][0]['id'])
+        expect(d.discussion_readers.count).to eq 2
+        expect(d.discussion_readers.last.user_id).to eq another_user.id
+        expect(d.created_event.notifications.count).to eq 1
+        expect(emails_sent_to(another_user.email).size).to eq 1
+      end
+
+      # does not double notify recipient_user_id and group mention
+      it 'create discussion: notify user and group_mention user does not double notify' do
+        group.add_member! another_user
+        post :create, params: {
+          discussion: {
+            title: 'test',
+            group_id: group.id,
+            recipient_user_ids: [another_user.id],
+            description_format: 'md',
+            description: "hi @#{group.handle}"
+          }
+        }
+        expect(response.status).to eq 200
+        expect(emails_sent_to(another_user.email).size).to eq 1
+      end
+
+      # does not double notify recipient_audience and user mention
+      it 'create discussion: notify group and user mention user does not double notify' do
+        group.add_member! another_user
+        group.update(handle: "testgroup")
+        post :create, params: {
+          discussion: {
+            title: 'test',
+            group_id: group.id,
+            recipient_audience: 'group',
+            description_format: 'md',
+            description: "hi @#{another_user.username}"
+          }
+        }
+        expect(response.status).to eq 200
+        expect(emails_sent_to(another_user.email).size).to eq 1
+      end
+
+      # does not double notify recipient_audience and group mention
+      it 'create discussion: notify group and group mention - does not double notify' do
+        group.add_member! another_user
+        group.update(handle: "testgroup")
+        post :create, params: {
+          discussion: {
+            title: 'test',
+            group_id: group.id,
+            recipient_audience: 'group',
+            description_format: 'md',
+            description: "hi @#{group.handle}"
+          }
+        }
+        expect(response.status).to eq 200
+        expect(emails_sent_to(another_user.email).size).to eq 1
+      end
+
+      # does not double notify recipient_audience and group mention
+      it 'create discussion: notify group, notify user, user mention and group mention - does not double notify' do
+        group.add_member! another_user
+        group.update(handle: "testgroup")
+        group.membership_for(another_user).update(volume: :loud)
+        post :create, params: {
+          discussion: {
+            title: 'test',
+            group_id: group.id,
+            # recipient_audience: 'group',
+            # recipient_user_ids: [another_user.id],
+            # description_format: 'md',
+            # description: "hi @#{group.handle} and hi @#{another_user.username}"
+          }
+        }
+        expect(response.status).to eq 200
+        expect(emails_sent_to(another_user.email).size).to eq 1
       end
     end
   end

@@ -1,3 +1,4 @@
+---
 fi:
   discussion_templates:
     blank:
@@ -49,7 +50,7 @@ fi:
       title_placeholder: Jaa linkkejä ja tietoa
       process_name: Jaa linkkejä ja tietoa
       process_subtitle: Lähetä tietoja, linkkejä ja raportteja jaettavaksi kommentteja ja keskustelua varten.
-      process_introduction: "<p>Käytä viestiketjua \"seinänä\" tai \"ilmoitustauluna\" ryhmällesi lähettääksesi tietoja, uutisia ja ideoita, jotka haluat jakaa toistensa kanssa.</p><p> Kutsu ihmisiä käyttämään <strong>Lisää-linkkiä</strong> ja <strong>Upota videon</strong> muotoilutyökaluja auttaaksesi ryhmää pääsemään tietoihin Loomiosta. Käytä kommenttien <strong>otsikkoa</strong> kiinnittääksesi kommentin säikeen aikajanalle, jotta se on helposti löydettävissä.</p><p> <strong>Kiinnitä</strong> lanka niin, että se pysyy kiinni, ja rohkaise <strong>Reaktiota</strong> pitämään se vireänä, jolloin ihmiset tietävät, että näit heidän esineensä.</p><p> Tämän säikeen oletusnäyttö on <strong>Uusin</strong> , joten uusimmat kommentit ovat ketjun yläosassa.</p>"
+      process_introduction: <p>Käytä viestiketjua "seinänä" tai "ilmoitustauluna" ryhmällesi lähettääksesi tietoja, uutisia ja ideoita, jotka haluat jakaa toistensa kanssa.</p><p> Kutsu ihmisiä käyttämään <strong>Lisää-linkkiä</strong> ja <strong>Upota videon</strong> muotoilutyökaluja auttaaksesi ryhmää pääsemään tietoihin Loomiosta. Käytä kommenttien <strong>otsikkoa</strong> kiinnittääksesi kommentin säikeen aikajanalle, jotta se on helposti löydettävissä.</p><p> <strong>Kiinnitä</strong> lanka niin, että se pysyy kiinni, ja rohkaise <strong>Reaktiota</strong> pitämään se vireänä, jolloin ihmiset tietävät, että näit heidän esineensä.</p><p> Tämän säikeen oletusnäyttö on <strong>Uusin</strong> , joten uusimmat kommentit ovat ketjun yläosassa.</p>
       description: <p>Käytä tätä säiettä lähettääksesi tietoja, ilmoituksia ja asioita, jotka haluat jakaa – paikka, jossa voit nähdä, mitä tapahtuu, ja osallistua.</p><p data-text-align="start"> Jaa tapahtumia, raportteja, podcasteja ja muuta mielenkiintoista online-tietoa.</p><p data-text-align="start"> Käytä <strong>Lisää-linkkiä</strong> ja <strong>Upota videon</strong> muotoilutyökaluja auttaaksesi ihmisiä pääsemään tietoihin Loomiossa.</p>
       information: Tiedot
     prepare_for_a_meeting:
@@ -87,6 +88,12 @@ fi:
       process_introduction: "<p>Esittele asiakirja ja mahdolliset taustatiedot. Kerro asiakirjan tarkoitus auttaaksesi keskittymään.</p><p> Kutsu ihmisiä antamaan tietoja ja asiantuntemusta ja käytä tätä asiakirjan kehystämiseen. Ota huomioon ja huomioi ihmisten palaute ja panokset.</p><p> Integroi kommentit asiakirjan ensimmäiseen luonnokseen ja peräkkäisiin luonnoksiin, kunnes se on valmis hyväksyttäväksi.</p><p> Käytä Sense check -kyselyä mielipiteiden selvittämiseen ja luonnokseen liittyvien ongelmien selvittämiseen.</p><p> Kun palaute on otettu huomioon ja sisällytetty asiakirjaan, siirry hyväksymiseen tai hyväksymiseen suostumus- tai konsensusehdotuksen kanssa.</p><p> Säikeestä tulee selkeä tallenne asiakirjan luomisen edistymisestä ja tehdyistä päätöksistä.</p>"
       description: <h3 id="what-is-the-purpose-of-the-document">Mikä on asiakirjan tarkoitus?</h3><p></p><h3 id="why-is-this-important"> Miksi tämä on tärkeää?</h3><p></p><h3 id="what-are-you-asking-people-to-do"> Mitä pyydät ihmisiä tekemään?</h3><p></p>
       document: Asiakirja
+    practice_thread:
+      process_subtitle: Ketju, jossa toivotetaan ihmiset tervetulleiksi ryhmään ja harjoitellaan Loomion käyttöä
+      process_introduction: "<p>Käytä tätä mallia uusien jäsenten toivottamiseen tervetulleiksi ja kannustaaksesi heitä osallistumaan varhaisessa vaiheessa. Se antaa ihmisille mahdollisuuden esitellä itsensä ja tutustua Loomion ominaisuuksiin.</p>"
+      title: "\U0001F44B Tervetuloa! Sano hei ja kokeile jotain!"
+      description: "<p>Tervetuloa Loomio-ryhmäämme – on hienoa, että olet täällä!</p><p> Tämä ketju on tila, johon voi:</p><ul><li><p> Esittele itsesi ryhmälle</p></li><li><p> Kokeile joitakin Loomion ominaisuuksia – esimerkiksi: kokeile reaktioiden käyttöä \U0001F44D</p></li><li><p> Kysy tässä vaiheessa mitä tahansa kysymyksiä</p></li></ul><p> Jos et ole varma mitä sanoa, pelkkä hei riittää \U0001F642</p>"
+      process_name: Harjoituskeskustelu
   explore:
     header: Tutustu julkisiin ryhmiin
   activerecord:
@@ -96,26 +103,51 @@ fi:
         invalid: ei ole kelvollinen arvo
   unauthorized:
     manage:
-      all: "Ei valtuutusta %{action} %{subject}."
+      all: Ei valtuutusta %{action} %{subject}.
     add_guests:
-      all: "Sinun on päivitettävä Loomio-tilauksesi, jotta voit lisätä vieraita %{subject}. Vaihtoehtoisesti voit kutsua heidät ryhmäsi jäseniksi."
+      all: Sinun on päivitettävä Loomio-tilauksesi, jotta voit lisätä vieraita %{subject}. Vaihtoehtoisesti voit kutsua heidät ryhmäsi jäseniksi.
   errors:
-    clear_cache: "Latausongelma havaittu. Pidä vaihtonäppäintä painettuna ja paina reload-näppäintä tai tyhjennä selaimen välimuisti."
+    clear_cache: Latausongelma havaittu. Pidä vaihtonäppäintä painettuna ja paina reload-näppäintä tai tyhjennä selaimen välimuisti.
     404:
       title: Ei löydetty
     noscript: Loomio vaatii javascriptin toimiakseen! Ota javascript käyttöön selaimessasi jatkaaksesi
-    upgrade_browser: |-
-        Voi ei! Verkkoselaimesi on liian vanha, eikä Loomio välttämättä toimi kunnolla. <a href="https://browser-update.org/update.html">Päivitä selaimesi.</a>
+    upgrade_browser: Voi ei! Verkkoselaimesi on liian vanha, eikä Loomio välttämättä toimi kunnolla. <a href="https://browser-update.org/update.html">Päivitä selaimesi.</a>
     return_home: Palata kotiin
     not_found: 404 tiedostoa ei löydy.
     messages:
       email: ei ole kelvollinen sähköpostiosoite
       spoofed_media_type: Tiedoston sisältö ei vastaa sen tiedostonimeä
       pwned_password: Tämä salasana on aiemmin esiintynyt tietomurron yhteydessä, eikä sitä tule koskaan käyttää
+    '400':
+      title: Huono pyyntö
+      body: Emme valitettavasti ymmärtäneet pyyntöä.
+    '401':
+      title: Luvaton
+      body: Sinulla ei ole oikeutta käyttää tätä sivua. Sinun on ehkä kirjauduttava sisään.
+    '403':
+      title: Kielletty
+      body: Sinulla ei ole oikeutta käyttää tätä sivua. Sinun on ehkä kirjauduttava sisään.
+    '410':
+      title: Mennyt
+      body: Tätä sivua ei enää ole olemassa
+    '417':
+      title: Selain ei ole yhteensopiva
+      body: Päivitä <a href="https://browser-update.org/update.html?force_outdated=true">selaimesi</a> käyttääksesi Loomiota
+    '422':
+      title: Käsittelemätön yksikkö
+      body: Haluamasi muutos hylättiin. Ehkä yritit muuttaa jotain, johon sinulla ei ollut käyttöoikeutta.
+    '429':
+      title: Liian monta pyyntöä
+      body: Olet valitettavasti ylittänyt tälle toiminnolle sallitun pyyntöjen enimmäismäärän minuutissa. Odota hetki ja yritä uudelleen.
+    '500':
+      title: Sisäinen palvelinvirhe
+      body: Olemme pahoillamme, mutta jokin meni pieleen. Olemme saaneet ilmoituksen tästä ongelmasta ja tutkimme sitä pian.
+    '404':
+      body: Pyytämääsi kohdetta ei löytynyt. Näin voi käydä, jos keskustelu tai kysely on poistettu.
   group:
     error:
-      handle_must_begin_with_parent_handle: "Alkaa %{parent_handle}-"
-      no_public_trials: "Päivitä kokeiluversiosta muuttaaksesi ryhmän tietosuoja-asetusta"
+      handle_must_begin_with_parent_handle: Alkaa %{parent_handle}-
+      no_public_trials: Päivitä kokeiluversiosta muuttaaksesi ryhmän tietosuoja-asetusta
     stats:
       group_stats: Ryhmätilastot
       org_stats: Organisaatiotilastot (mukaan lukien alaryhmät)
@@ -136,14 +168,13 @@ fi:
         rank: Sijoitus
         time: Aikakysely
   user:
-    deleted_user: "Poistettu käyttäjä"
-    placeholder_name: "Kutsuttu käyttäjä (%{hostname})"
+    deleted_user: Poistettu käyttäjä
+    placeholder_name: Kutsuttu käyttäjä (%{hostname})
     error:
-      sign_in_required_html: |-
-          Sinun on kirjauduttava sisään jatkaaksesi. Ole hyvä <a href="/dashboard" target="_blank">ja kirjaudu sisään</a> ja lataa tämä sivu uudelleen jatkaaksesi.
-      recaptcha: "Emme voineet vahvistaa, että et ole robotti. Yritä uudelleen!"
-      bad_login: "Valitettavasti tämä salasana ei vastaa tiedoissamme olevaa salasanaa"
-      username_must_be_alphanumeric: "Käyttäjänimien tulee olla vain pieniä kirjaimia ja numeroita"
+      sign_in_required_html: Sinun on kirjauduttava sisään jatkaaksesi. Ole hyvä <a href="/dashboard" target="_blank">ja kirjaudu sisään</a> ja lataa tämä sivu uudelleen jatkaaksesi.
+      recaptcha: Emme voineet vahvistaa, että et ole robotti. Yritä uudelleen!
+      bad_login: Valitettavasti tämä salasana ei vastaa tiedoissamme olevaa salasanaa
+      username_must_be_alphanumeric: Käyttäjänimien tulee olla vain pieniä kirjaimia ja numeroita
   poll:
     error:
       cannot_add_options: Vaihtoehtoja ei voi lisätä tähän kyselyyn
@@ -151,6 +182,7 @@ fi:
       must_have_options: On oltava vähintään yksi äänestysvaihtoehto
       must_be_in_the_future: Täytyy olla tulevaisuudessa
       templates_cannot_close: Malleja ei voi sulkea
+      poll_options_dont_match: Loomiossa oli bugi, joka esti äänesi tallentamisen. Työskentelemme parhaillaan ongelman korjaamiseksi. Lataa sivu uudelleen ja yritä uudelleen.
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) jäsentä on ilmoittanut kantansa"
       title: Otsikko
@@ -175,7 +207,7 @@ fi:
       participant: Osallistuja
       also_available: Saatavilla myös in
       total: Kaikki yhteensä
-    waiting_for_votes_from: "Ääniä odotellessa"
+    waiting_for_votes_from: Ääniä odotellessa
   stance:
     error:
       too_short: Tee valinta
@@ -189,35 +221,35 @@ fi:
     via_loomio: "%{name} (%{site_name}:n kautta)"
   event_mailer:
     received_email:
-      explaination_html: |-
-          <p>Sait tämän sähköpostin, koska olet järjestelmänvalvoja Loomio-ryhmässä: %{group}.</p><p> Ryhmä on saanut sähköpostin tuntemattomasta sähköpostiosoitteesta.</p><p> Jos viesti on ryhmän jäseneltä, tarkista sähköposti ja valitse jäsen.</p><p> Jos viesti on ei-toivottu, voit estää kaikki muut sähköpostit kyseisestä osoitteesta.</p>
+      explaination_html: "<p>Sait tämän sähköpostin, koska olet järjestelmänvalvoja Loomio-ryhmässä: %{group}.</p><p> Ryhmä on saanut sähköpostin tuntemattomasta sähköpostiosoitteesta.</p><p> Jos viesti on ryhmän jäseneltä, tarkista sähköposti ja valitse jäsen.</p><p> Jos viesti on ei-toivottu, voit estää kaikki muut sähköpostit kyseisestä osoitteesta.</p>"
+    notification_reason:
+      group_subscribed: Sait tämän, koska olet tilannut kaikki ryhmän tapahtumat.
+      group_mentioned: Sait tämän, koska ryhmä @mainittiin.
+      user_mentioned: Sait tämän, koska sinut @mainittiin.
+      notified: Sait tämän, koska kirjoittaja ilmoitti sinulle.
+      poll_subscribed: Sait tämän, koska olet tilannut kyselyn.
+      discussion_subscribed: Sait tämän, koska olet tilannut keskustelun.
   user_mailer:
     group_export_ready:
       subject: 'Ryhmätietojen vienti: %{group_name}'
-      body_html: |-
-          Lataa ryhmätietosi <a href="%{url}">tästä</a> . Huomaa, että tämä linkki vanhenee viikon kuluttua.
+      body_html: Lataa ryhmätietosi <a href="%{url}">tästä</a> . Huomaa, että tämä linkki vanhenee viikon kuluttua.
     redacted:
-      subject: "Käyttäjätilisi %{site_name} on poistettu"
-      body_html: |-
-          <p>Käyttäjätilisi %{site_name} on poistettu.</p><p> Kaikki henkilötiedot on poistettu.</p><p> Jos et pyytänyt tätä, ota yhteyttä %{support_email}</p>
+      subject: Käyttäjätilisi %{site_name} on poistettu
+      body_html: "<p>Käyttäjätilisi %{site_name} on poistettu.</p><p> Kaikki henkilötiedot on poistettu.</p><p> Jos et pyytänyt tätä, ota yhteyttä %{support_email}</p>"
     accounts_merged:
       subject: "%{site_name} käyttäjätilisi on yhdistetty."
-      body_html: |-
-          Hei %{name}, kaksi loomio-tiliäsi on yhdistetty yhdeksi tiliksi. Voit käyttää loomioa tästä lähtien kirjautuessasi sisään käyttämällä <strong>%{email}</strong> .
+      body_html: Hei %{name}, kaksi loomio-tiliäsi on yhdistetty yhdeksi tiliksi. Voit käyttää loomioa tästä lähtien kirjautuessasi sisään käyttämällä <strong>%{email}</strong> .
     merge_verification:
-      subject: "Vahvista %{site_name} sähköpostiosoitteesi yhdistämistä varten"
-      body_html: |-
-          <p>Hei %{name},</p><p> Pyyntö on yhdistää käyttäjätilisi osoitteeseen <strong>%{source_email}</strong> tähän osoitteeseen <strong>%{target_email}</strong> kuuluvaan tiliin.</p><p> Kun tämä prosessi on valmis, et voi enää kirjautua sisään osoitteella <strong>%{source_email}</strong> ja vain sovelluksella <strong>%{target_email}</strong> .</p><p> Vahvista, että tämä on se, mitä haluat tehdä.</p>
+      subject: Vahvista %{site_name} sähköpostiosoitteesi yhdistämistä varten
+      body_html: "<p>Hei %{name},</p><p> Pyyntö on yhdistää käyttäjätilisi osoitteeseen <strong>%{source_email}</strong> tähän osoitteeseen <strong>%{target_email}</strong> kuuluvaan tiliin.</p><p> Kun tämä prosessi on valmis, et voi enää kirjautua sisään osoitteella <strong>%{source_email}</strong> ja vain sovelluksella <strong>%{target_email}</strong> .</p><p> Vahvista, että tämä on se, mitä haluat tehdä.</p>"
       verify: Vahvista sähköposti ja jatka
       confirm_page:
         confirm: Vahvista yhdistäminen
-        body_html: |-
-            <p>Vahvista, että haluat yhdistää <strong>%{source_email}</strong> -tilin tiliin <strong>%{target_email}</strong> .</p><p> Tilisi osoitteessa <strong>%{source_email}</strong> poistetaan, ja sen jälkeen voit kirjautua sisään vain <strong>%{target_email} -palvelun</strong> kautta.</p><p> Tämä muutos on peruuttamaton.</p>
+        body_html: "<p>Vahvista, että haluat yhdistää <strong>%{source_email}</strong> -tilin tiliin <strong>%{target_email}</strong> .</p><p> Tilisi osoitteessa <strong>%{source_email}</strong> poistetaan, ja sen jälkeen voit kirjautua sisään vain <strong>%{target_email} -palvelun</strong> kautta.</p><p> Tämä muutos on peruuttamaton.</p>"
         merge: Yhdistä tilit
       complete_page:
         title: Yhdistäminen onnistui!
-        body_html: |-
-            <p>Käyttäjätilien yhdistäminen onnistui. Saat pian vahvistussähköpostin osoitteeseen <strong>%{target_email}</strong> .</p><p> Ota <a href="/contact" target="_blank">meihin yhteyttä,</a> jos sinulla on kysyttävää.</p>
+        body_html: <p>Käyttäjätilien yhdistäminen onnistui. Saat pian vahvistussähköpostin osoitteeseen <strong>%{target_email}</strong> .</p><p> Ota <a href="/contact" target="_blank">meihin yhteyttä,</a> jos sinulla on kysyttävää.</p>
   email:
     common:
       or_enter_code: Tai syötä alla oleva koodi
@@ -234,24 +266,21 @@ fi:
     contact_request:
       subject: "%{name} haluaa olla sinuun yhteydessä %{site_name}!"
       intro: "%{name} (%{email}) on lähettänyt sinulle yhteydenottopyynnön."
-      footer: "Voit vastata suoraan osoitteeseen %{name} vastaamalla tähän sähköpostiin."
+      footer: Voit vastata suoraan osoitteeseen %{name} vastaamalla tähän sähköpostiin.
     reset_password:
-      greeting: |-
-          Hei %{name} Tässä on linkki, jonka avulla voit nollata Loomio-tilisi salasanan:
+      greeting: 'Hei %{name} Tässä on linkki, jonka avulla voit nollata Loomio-tilisi salasanan:'
       link_text: Nollaa salasana
-      signoff: |-
-          Sait tämän, koska sähköpostisi syötettiin "Unohdin salasana" -lomakkeeseen %{hostname}. Salasanaasi ei kuitenkaan vaihdeta ennen kuin seuraat yllä olevaa linkkiä ja täytät lomakkeen. Jos sinulla on edelleen ongelmia kirjautumisessa, vastaa tähän sähköpostiin ja ota yhteyttä tukihenkilöön.
+      signoff: Sait tämän, koska sähköpostisi syötettiin "Unohdin salasana" -lomakkeeseen %{hostname}. Salasanaasi ei kuitenkaan vaihdeta ennen kuin seuraat yllä olevaa linkkiä ja täytät lomakkeen. Jos sinulla on edelleen ongelmia kirjautumisessa, vastaa tähän sähköpostiin ja ota yhteyttä tukihenkilöön.
     by_who: kirjoittaja %{person}
     reply_to_this_discussion: Vastaa tähän keskusteluun
-    loomio_app_description: "Helppokäyttöinen ja turvallinen paikka organisaatioille tehdä päätöksiä yhdessä."
     view_group: Näytä ryhmä
     to_join_group:
       subject: "%{member} on kutsunut sinut ryhmään %{group_name} %{site_name}"
       invitation_text: "%{member} on kutsunut sinut liittymään ryhmään %{group_name}."
-      invitation_text_html: "on kutsunut sinut liittymään ryhmään"
-      link_help: "Napsauta alla olevaa linkkiä hyväksyäksesi kutsun:"
-      accept_invitation: "Hyväksy kutsu"
-      stop_emails: "Lopeta sähköpostien vastaanottaminen sivustolta %{site_name}"
+      invitation_text_html: on kutsunut sinut liittymään ryhmään
+      link_help: 'Napsauta alla olevaa linkkiä hyväksyäksesi kutsun:'
+      accept_invitation: Hyväksy kutsu
+      stop_emails: Lopeta sähköpostien vastaanottaminen sivustolta %{site_name}
       accepting_is_important: On tärkeää hyväksyä kutsusi, jotta et menetä ilmoituksia sinua koskevista päätöksistä.
     resend_to_join_group:
       subject: "%{member} odottaa sinua liittymään ryhmään %{group_name} %{site_name}"
@@ -259,8 +288,8 @@ fi:
       subject: "%{who} on lisännyt sinut ryhmään %{which_group} %{site_name}"
       content: "%{who} on lisännyt sinut ryhmään %{which_group}."
       content_html: "<strong>%{who}</strong> on lisännyt sinut ryhmään <strong>%{which_group}</strong> ."
-      link_help: "Klikkaa alla olevaa linkkiä päästäksesi ryhmään:"
-    unsubscribe: "Lopeta tilaus tai muuta sinun sähköpostiasetuksia:"
+      link_help: 'Klikkaa alla olevaa linkkiä päästäksesi ryhmään:'
+    unsubscribe: 'Lopeta tilaus tai muuta sinun sähköpostiasetuksia:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> peruuttaaksesi tilauksen tai muuttaaksesi sähköpostiasetuksiasi."
     catch_up:
       daily_subject: Eilen %{site_name}
@@ -272,27 +301,30 @@ fi:
       marked_as_read_success: Kaikki sähköpostista on merkitty luetuksi
       click_here: Klikkaa tästä
     group_membership_approved:
-      intro: "Pyyntösi päästä ryhmään %{group_name} on hyväksytty."
-      intro_html: "Pyyntösi päästä ryhmään <strong>%{group_name}</strong> on hyväksytty."
-      link_help: "Napsauta alla olevaa linkkiä liittyäksesi ryhmään %{group_name} ja aloittaaksesi:"
-      subject: "Pyyntösi liittyä ryhmään %{group_name} on hyväksytty"
-      join_group: "Liittyä ryhmään"
+      intro: Pyyntösi päästä ryhmään %{group_name} on hyväksytty.
+      intro_html: Pyyntösi päästä ryhmään <strong>%{group_name}</strong> on hyväksytty.
+      link_help: 'Napsauta alla olevaa linkkiä liittyäksesi ryhmään %{group_name} ja aloittaaksesi:'
+      subject: Pyyntösi liittyä ryhmään %{group_name} on hyväksytty
+      join_group: Liittyä ryhmään
     membership_request:
       intro_html: on pyytänyt pääsyä yhteen ryhmistäsi.
       subject: "%{who} on pyytänyt liittymistä ryhmään %{which_group}"
       view_group: Voit hyväksyä tai hylätä pyynnön täällä
       button_text: Näytä pyyntö
+    content_was_translated: Tämä sisältö on käännetty lähdekoodista %{source_locale}
+    content_was_translated_html: Tämä sisältö on käännetty lähdekoodista %{source_locale}. <a href="%{profile_url}">Näytä asetukset<a></a>
+    loomio_app_description: Paikka, jossa yhteistyöorganisaatiot voivat tehdä päätöksiä yhdessä.
   announcement_count_emails: "%{count} sähköpostia"
   email_actions:
     unfollowed_discussion: Olet poistanut sähköpostit käytöstä ketjussa.
   discussion_mailer:
-    reply_or_view_online_html: "Vastaa tähän sähköpostiin suoraan tai <a href='%{url}'>katso se %{hostname} -palvelussa</a> ."
+    reply_or_view_online_html: Vastaa tähän sähköpostiin suoraan tai <a href='%{url}'>katso se %{hostname} -palvelussa</a> .
     turn_off_notifications_html: "<a href='%{url}'>Poista sähköpostit käytöstä</a> tässä keskustelussa."
-    change_email_preferences_html: "Muuta <a href='%{email_preferences_url}'>sähköpostiasetuksiasi</a> ."
+    change_email_preferences_html: Muuta <a href='%{email_preferences_url}'>sähköpostiasetuksiasi</a> .
     unsubscribe_from_discussion_announced_html: "<a href='%{url}'>Peruuta</a> tämän säikeen muiden ilmoitusten tilaus."
     unsubscribe_from_new_comment_html: "<a href='%{url}'>Peruuta</a> tämän ketjun kommenttien tilaus."
-    unsubscribe_from_comment_replied_to_html: "Tämä on vastausilmoitus."
-    unsubscribe_from_user_mentioned_html: "Tämä on mainintailmoitus."
+    unsubscribe_from_comment_replied_to_html: Tämä on vastausilmoitus.
+    unsubscribe_from_user_mentioned_html: Tämä on mainintailmoitus.
     discussion_edited:
       inline: "%{actor} muokkasi viestiketjun kontekstia"
     discussion_closed:
@@ -312,38 +344,248 @@ fi:
     change_my_password: Vaihda salasana
     confirm_new_password: Vahvista salasana
     new_password: Uusi salasana
-    email_guidelines_html: |-
-        <p>Kirjoita sähköpostiosoitteesi ja sinulle lähetetään salasanan palautuslinkki.</p><p> Jos kirjaudut sisään tavallisesti Facebookin tai Googlen kautta, anna kyseiseen tiliin liitetty sähköpostiosoite.</p>
+    email_guidelines_html: "<p>Kirjoita sähköpostiosoitteesi ja sinulle lähetetään salasanan palautuslinkki.</p><p> Jos kirjaudut sisään tavallisesti Facebookin tai Googlen kautta, anna kyseiseen tiliin liitetty sähköpostiosoite.</p>"
     reset_email_timeframe: Sähköpostin saapuminen voi kestää jopa 5 minuuttia. Jos se ei tule näkyviin, muista tarkistaa roskapostikansiosi.
     length_restriction: Salasanan tulee olla vähintään 8 merkkiä pitkä.
     forbidden_passwords: Yleiset salasanat, kuten "salasana", ovat kiellettyjä tilisi suojaamiseksi.
   task_mailer:
     task_due_reminder:
-      subject: "Tehtävämuistutus: %{name}"
-      greeting: "Hei %{name}, seuraavan tehtävän määrä on %{due}:"
-      view_task: "Näytä sivustolla %{site_name}"
-      update_or_comment: "Jos olet jo suorittanut tämän tehtävän, rastita se. Jos se ei ole valmis, jaa edistymispäivitys."
-      due_today: "tänään"
+      subject: 'Tehtävämuistutus: %{name}'
+      greeting: 'Hei %{name}, seuraavan tehtävän määrä on %{due}:'
+      view_task: Näytä sivustolla %{site_name}
+      update_or_comment: Jos olet jo suorittanut tämän tehtävän, rastita se. Jos se ei ole valmis, jaa edistymispäivitys.
+      due_today: tänään
       due_in_count_days: "%{count} päivässä"
   group_mailer:
-    resend: "MUISTUTUS: %{member} odottaa sinua liittymään %{group_name}"
+    resend: 'MUISTUTUS: %{member} odottaa sinua liittymään %{group_name}'
     destroy_warning:
       subject: Loomio-ryhmäsi on ajoitettu poistettavaksi.
-      body: |-
-          %{deletor} on ajoittanut Loomio-ryhmäsi: "%{group}" poistettavaksi. Jos et halua, että ryhmääsi poistetaan, vastaa tähän sähköpostiin. Jos olet varma, että haluat poistaa ryhmän, sinun ei tarvitse tehdä mitään. Kiitos.
+      body: '%{deletor} on ajoittanut Loomio-ryhmäsi: "%{group}" poistettavaksi. Jos et halua, että ryhmääsi poistetaan, vastaa tähän sähköpostiin. Jos olet varma, että haluat poistaa ryhmän, sinun ei tarvitse tehdä mitään. Kiitos.'
   poll_mailer:
     common:
       why_send_this: Saat tämän sähköpostin, koska %{reason}
       view_on_loomio: Katso se %{site_name}
       create_outcome: Jaa tulos
-      your_response: "Äänestit:"
-      you_voted: "Äänestit!"
-      not_invited: "Ei kutsuttu"
+      your_response: 'Äänestit:'
+      you_voted: Äänestit!
+      not_invited: Ei kutsuttu
       please_respond: Ole hyvä ja vastaa
-      time_zone: (Ajat näkyvät %{zone}ssa)
+      time_zone: "(Ajat näkyvät %{zone}ssa)"
       undecided_members: Päättämättömät jäsenet (%{count})
       undecided_visitors: Päättämättömät vieraat (%{count})
       more_undecided: "%{count} muuta..."
       vote_now: Äänestä nyt
       you_have_until: Sinulla on %{when} asti aikaa osallistua.
       people_have_voted: "%{nom} %{dnom} ihmisestä on osallistunut (%{pct}%)"
+  poll_templates:
+    practice_proposal:
+      title: Alan saada tästä kiinni
+      process_name: Harjoitusehdotus
+      process_subtitle: Opi, miten ehdotukset toimivat Loomiossa kokeilemalla yhtä.
+      process_introduction: "<p>Käytä tätä mallia auttaaksesi ryhmääsi tottumaan Loomion ehdotusten käyttöön. Se on turvallinen ja yksinkertainen tapa kokeilla äänestämistä ja nähdä, miten kaikki sopii yhteen.</p>"
+      details: "<p>Tämä on harjoitusajo, jotta kaikki voivat tottua siihen, miten ehdotukset toimivat Loomiossa.</p><p> Äänestä ja jätä halutessasi perustelu.</p><p> Ei paineita, ei tosielämän seurauksia. Tämä on vain tapa tutustua siihen, miten ehdotukset toimivat!</p>"
+      outcome_statement: "<p>Kiitos osallistumisestasi tähän harjoitusehdotukseen! \U0001F389</p><p> Tämä oli vain tilaisuus nähdä, miten äänestäminen ja kommentointi toimivat Loomiossa. Täällä ei tehdä varsinaista päätöksentekoa – mutta toivottavasti tämä auttoi kaikkia tutustumaan prosessiin.</p>"
+    proposal:
+      process_subtitle: Tee ehdotus päätöksen tekemiseksi
+      process_introduction: <p>Klassinen Loomio-ehdotus auttaa sinua tekemään päätöksen ja muuttamaan keskustelun selkeäksi lopputulokseksi.</p><p> Ehdota toimintatapaa ja pyydä ihmisiä vastaamaan äänestämällä joko samaa mieltä, tyhjää tai eri mieltä.</p><p> Äänestäessään ihmiset voivat kertoa syyn äänestyspäätökselleen. Näet muiden näkemyksen asiasta ja miksi.</p><p> Tällä tavoin voit käyttää ehdotusta kannustaaksesi ihmisiä vastaamaan, paljastaaksesi uutta tietoa ja rakentaaksesi yhteistä ymmärrystä – auttaaksesi ryhmääsi tekemään paremman ja tietoisemman päätöksen.</p><p> Ehdotus ja siihen liittyvä keskustelu luovat oman tallenteensa siitä, miten päätös syntyi.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Lue lisää klassisen Loomio-ehdotuksen käyttämisestä yksinkertaisessa päätöksentekoprosessissa</u></a> .</p>
+      title: Hyväksy uusi brändikonsepti
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Mikä päätös sinun on tehtävä?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Miksi tämä on tärkeää?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mitä pyydät ihmisiä tekemään?</strong></h3><p></p><p> Jotta tämä ehdotus hyväksyttäisiin, tarvitsemme enemmistön jäsenistä äänestää sen puolesta.</p><p> Jos olet eri mieltä, kerro miksi ja mitä pitäisi muuttaa, jotta olisit samaa mieltä.</p>
+      agree: Samaa mieltä
+      agree_meaning: Kannatan ehdotusta
+      agree_prompt: Mitä pidät ehdotuksesta ja miten se hyödyttää ryhmää?
+      abstain: Pidättäydy äänestämästä
+      abstain_meaning: Päätös olla äänestämättä tai kyvyttömyys äänestää tässä päätöksessä.
+      abstain_prompt: Miksi pidättäydytte äänestämästä tai ette tunne voivanne äänestää tässä päätöksessä?
+      disagree: Eri mieltä
+      disagree_meaning: Jotain tässä ehdotuksessa on muutettava, ennen kuin voin tukea sitä.
+      disagree_prompt: Miten tätä ehdotusta voitaisiin parantaa, jotta voisitte tukea sitä?
+    advice:
+      process_subtitle: Pyydä neuvoa päätöksestä, jonka sinun on tehtävä
+      process_introduction: <p>Pyydä neuvoa päätöksessäsi asianosaisten tai muiden asiantuntijoiden kanssa, jotta voit tehdä organisaatiollesi paremman päätöksen.</p><ul><li><p> Neuvonta auttaa sinua tekemään parempia päätöksiä organisaatiollesi.</p></li><li><p> Edistä ihmissuhteita, oppimismahdollisuuksia ja monipuolista panosta.</p></li><li><p> Kannusta aloitteellisuutta ja luovuutta ja tee työstä nautinnollisempaa.</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>Lue lisää neuvontaprosessista</u></a> .</p>
+      title: Auta Takashia ostamaan uusi tietokone
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Mikä päätös sinun on tehtävä?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Miksi tämä on tärkeää?</strong></h3><p></p><h3 id="what-advice-are-you-asking-from-people-to-help-you-make-a-go"> <strong>Mitä neuvoja pyydät ihmisiltä, jotta voisit tehdä hyvän päätöksen?</strong></h3><p></p><p> Tarvitsen palautettasi, jotta voisin tehdä hyvän päätöksen organisaatiomme hyväksi.</p>
+      agree: Samaa mieltä
+      agree_meaning: Olen antanut neuvoni tästä päätöksestä
+      agree_prompt: Tiivistä neuvosi tai kirjoita hyödyllinen kommentti
+      abstain: Pidättäydy äänestämästä
+      abstain_meaning: Minulla ei ole mitään neuvoja annettavana
+      abstain_prompt: Onko sinulla kommentteja, joista voisi olla hyötyä?
+      outcome_statement: "<p>Kiitos osallistumisestasi neuvontakierrokseeni!</p>"
+    consent:
+      process_subtitle: Tee päätös, jota on "turvallista kokeilla", ilman vastalauseita
+      process_introduction: <p>Pyydä suostumusta päätökselle, joka sinun on tehtävä ilman merkittäviä vastalauseita ehdotuksellesi. Näin voit tehdä organisaatiollesi nopean ja "turvallisen" päätöksen.</p><ul><li><p> Pyri "riittävän hyvään" päätökseen</p></li><li><p> Ota mukaan useita ääniä toimivan ehdotuksen kehittämiseksi</p></li><li><p> Kysy, onko jollain asiallista vastaväitettä</p></li><li><p> Muuta ehdotusta vastalauseiden ratkaisemiseksi</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Lue lisää suostumusprosessista</a> .</p>
+      title: Palkkaa Chloe suunnittelijan rooliin
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Mikä päätös sinun on tehtävä?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Miksi tämä on tärkeää?</strong></h3><p></p><h3 id="what-are-you-asking-of-people-in-this-proposal"> <strong>Mitä pyydät ihmisiltä tässä ehdotuksessa?</strong></h3><p></p><p> Jos sinulla on vastalauseita, kerrothan syyn ja ehdotatko ehdotukseen muutosta, joka tekee siitä turvallisen.</p><p> Muista, että pyydämme suostumusta "riittävän hyvälle" päätökselle, jota on "turvallista kokeilla", jotta voimme tehdä hyvän päätöksen organisaatiomme kannalta.</p>
+      consent: Suostumus
+      consent_meaning: Ehdotus on turvallinen kokeilla
+      consent_prompt: Mitä pidät ehdotuksesta ja miten se hyödyttää organisaatiota?
+      objection: Vastalause
+      objection_meaning: Minulla on pätevä vastalause ja mielestäni ehdotus aiheuttaa haittaa.
+      objection_prompt: Mitä muutoksia tähän ehdotukseen tarvitaan, jotta siitä tulisi "turvallista kokeilla" ja jotta voit tukea sitä?
+      outcome_statement: "<p>Kiitos osallistumisestasi suostumusprosessiin.</p>"
+    consensus:
+      process_subtitle: Tee työehtosopimus kaikkien asianosaisten kanssa
+      process_introduction: <p>Rakenna yksimielisyys päätöksestä, joka sinun on tehtävä, jotta pääset sopimukseen, joka tyydyttää kaikkien osallistujien tarpeet ja huolenaiheet.</p><ul><li><p> Keskustelkaa ja kehittäkää ehdotus yhdessä</p></li><li><p> Ota mukaan ja kunnioita kaikkia asianosaisia</p></li><li><p> Hae useimpien ihmisten suostumusta</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/consensus_process/index.html">Lue lisää konsensusprosessista</a> .</p>
+      title: Hyväksy uusi brändikonsepti
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Mikä päätös sinun on tehtävä?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Miksi tämä on tärkeää?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mitä pyydät ihmisiä tekemään?</strong></h3><p></p><p> Jotta tämä ehdotus hyväksyttäisiin, tarvitsemme enemmistön jäsenistä äänestää sen puolesta.</p><p> Jos olet eri mieltä, kerro miksi ja mitä pitäisi muuttaa, jotta olisit samaa mieltä.</p>
+      outcome_statement: "<p>Kiitos osallistumisestasi konsensusprosessiin.</p>"
+      agree: Samaa mieltä
+      agree_meaning: Kannatan ehdotusta
+      agree_prompt: Mitä pidät ehdotuksesta ja miten se hyödyttää organisaatiota?
+      abstain: Pidättäydy äänestämästä
+      abstain_meaning: Tämä päätös ei vaikuta minuun, ja olen tyytyväinen siihen, mitä ryhmä päättää.
+      abstain_prompt: Miksi pidättäydytte äänestämästä tai ette tunne voivanne äänestää tässä päätöksessä?
+      disagree: Eri mieltä
+      disagree_meaning: Jotain tässä ehdotuksessa on muutettava ennen kuin voin tukea sitä.
+      disagree_prompt: Miten tätä ehdotusta voitaisiin parantaa, jotta voisitte tukea sitä?
+      block: Lohko
+      block_meaning: Vastustan tätä ehdotusta enkä usko, että sitä pitäisi edetä.
+      block_prompt: Selitä vastustuksesi tätä ehdotusta kohtaan ja miksi sitä ei pitäisi toteuttaa
+    question_round:
+      process_subtitle: Pyydä selventäviä kysymyksiä, jotka auttavat ihmisiä ymmärtämään ehdotusta
+      process_introduction: <p>Kysymyskierros on tilaisuus esittää ehdotuksesta selventäviä kysymyksiä, jotta kaikki ymmärtävät ehdotuksen ennen kuin sanovat, mitä mieltä he ovat siitä.</p><p> Loomio-kysymyskierros on erityinen ehdotus, jossa ei ole äänestysvaihtoehtoja. Se antaa osallistujille mahdollisuuden esittää kysymyksiä asettamasi kierroksen keston aikana.</p><p> Kysymyskierrosta käytetään yleisesti osana suostumusprosessia.</p><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Lue lisää suostumusprosessista</a> .</p>
+      title: Mitä kysymyksiä sinulla on työterveys- ja työturvallisuuskäytännöstä?
+      details: <h3 id="what-are-you-proposing"><strong>Mitä ehdotat?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Miksi tämä on tärkeää?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mitä pyydät ihmisiä tekemään?</strong></h3><p></p><p> Tämä on kysymyskierros, jossa sinua pyydetään esittämään tarkentavia kysymyksiä.</p><p> Mitä sinun on tiedettävä ymmärtääksesi ehdotuksen?</p><p> Ole hyvä ja vastaa ennen kysymyskierroksen päättymistä.</p>
+      reason_prompt: Mitä sinun on tiedettävä ymmärtääksesi ehdotuksen?
+      outcome_statement: "<p>Kiitos kysymyksistäsi tällä kierroksella</p>"
+    sense_check:
+      process_subtitle: Pyydä palautetta, kysymyksiä ja huolenaiheita
+      process_introduction: <p>Järkevyystarkistusehdotus on hyvä tapa saada palautetta, herättää kysymyksiä ja tuoda esiin huolenaiheita. Se auttaa selkeyttämään ja parantamaan ehdotusta ennen päätöksentekoon siirtymistä.</p><p> Järkeilytarkistus kertoo ihmisille, että ehdotus on muodostumassa, ja kannustaa heitä osallistumaan. Se on tilaisuus kuunnella ihmisiä, aistia heidän tunteitaan ja reagoida asianmukaisesti – mikä avaa mahdollisuuden ottaa heidän panoksensa huomioon paremman päätöksen tekemiseksi.</p><p> Käytä järkevyystarkistusta suostumusprosessissa reaktioiden ja kommenttien keräämiseen ehdotuksen parantamiseksi ja konsensusprosessissa konsensuksen testaamiseen.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Lue lisää järkevyystarkistuksen käytöstä yksinkertaisesta päätöksentekoprosessista</u></a> <span>.</span></p>
+      title: Mitä mieltä olet uusista brändikonsepteista?
+      details: <h3 id="what-are-you-proposing"><strong>Mitä ehdotat?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Miksi tämä on tärkeää?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mitä pyydät ihmisiä tekemään?</strong></h3><p></p><p> Mitä mieltä olet ehdotuksesta? Jätä kommentti tai tee parannusehdotus.</p><p> Tämä aistitarkistus on tilaisuus antaa palautettasi ja panostasi, jotta voimme tehdä paremman päätöksen.</p>
+      outcome_statement: "<p>Kiitos osallistumisestasi tajunnantarkastukseen.</p>"
+      not_sure: En ole varma
+      not_sure_meaning: Minulla on kysyttävää tai tarvitsen lisää aikaa
+      not_sure_prompt: Mitkä osat ovat sinulle epäselviä? Miten tämä voitaisiin ratkaista?
+      looks_good: Näyttää hyvältä
+      looks_good_meaning: Olen tyytyväinen tähän suuntaan
+      looks_good_prompt: Onko sinulla kommentteja tai ehdotuksia ehdotuksen parantamiseksi?
+      abstain: Pidättäydy äänestämästä
+      abstain_meaning: Minulla ei ole tähän työhön mitään lisättävää eikä vastalauseita.
+      abstain_prompt: Äänestämästä pidättäytyminen tarkoittaa, että hyväksyt tämän ehdotuksen suunnan. Onko syytä äänestää tyhjää?
+      concerned: Huolestunut
+      concerned_meaning: Jonkin tässä täytyy ehkä muuttua, jotta suostun tai hyväksyn sen.
+      concerned_prompt: Mikä on huolenaiheesi ja miten siihen voitaisiin puuttua?
+    gradients_of_agreement:
+      process_subtitle: Ilmaise ehdotuksen tukeminen 8-pisteisellä asteikolla
+      process_introduction: <p>Yhteisymmärryksen asteikolla varustettu ehdotus antaa ryhmän jäsenille mahdollisuuden ilmaista tukensa ehdotukselle asteikolla, joka tarjoaa useampia tapoja ilmaista tukea kuin "samaa mieltä" ja "eri mieltä".</p><p> Käytä yhteisymmärryksen asteikkoja alustavana kierroksena testataksesi ehdotuksen tukea ennen siirtymistä viralliseen sopimukseen.</p><p> Yhteisymmärryksen asteikko kertoo ihmisille, että ehdotus on muodostumassa, ja kannustaa heitä osallistumaan. Se on tilaisuus kuunnella ihmisiä, aistia heidän tunteitaan ja reagoida asianmukaisesti – mikä avaa mahdollisuuden ottaa heidän panoksensa huomioon paremman päätöksen tekemiseksi.</p>
+      title: Mitä mieltä olet uudesta arvomaailmasta?
+      details: <h3 id="what-are-you-proposing"><strong>Mitä ehdotat?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Miksi tämä on tärkeää?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mitä pyydät ihmisiä tekemään?</strong></h3><p></p><p> Mitä mieltä olet ehdotuksesta? Ilmaise tukesi alla olevalla asteikolla ja jätä kommentti tai parannusehdotus.</p><p> Tämä sopimusgradienttiehdotus on tarkoitettu testaamaan ehdotuksen kannatusta ja tarjoamaan tilaisuuden antaa palautetta ennen siirtymistä viralliseen sopimukseen.</p>
+      whole_hearted_endorsement: Täysisydäminen suositus
+      whole_hearted_endorsement_meaning: Tykkään siitä todella paljon!
+      whole_hearted_endorsement_prompt: Mitä pidät siitä?
+      agreement_with_minor_contention: Sopimus vähäisin kiistoin
+      agreement_with_minor_contention_meaning: Ei täydellinen, mutta riittävän hyvä
+      agreement_with_minor_contention_prompt: Mikä on huolesi?
+      support_with_reservations: Tuki varausten kanssa
+      support_with_reservations_meaning: Voin elää sen kanssa
+      support_with_reservations_prompt: Mitä varauksia sinulla on?
+      abstain_meaning: Tämä ongelma ei koske minua
+      abstain_prompt: Onko sinulla jotain lisättävää?
+      more_discussion_needed: Lisää keskustelua tarvitaan
+      more_discussion_needed_meaning: En ymmärrä ongelmia vielä tarpeeksi hyvin
+      more_discussion_needed_prompt: Mitä et ymmärrä?
+      don_t_like_but_will_support: En tykkää, mutta tuen sitä
+      don_t_like_but_will_support_meaning: Se ei ole hienoa, mutta en halua viivyttää ryhmää.
+      don_t_like_but_will_support_prompt: Mitä haluaisit nähdä parannettavan?
+      serious_disagreement: Vakava erimielisyys
+      serious_disagreement_meaning: En ole tässä mukana – älä luota minuun
+      serious_disagreement_prompt: Mistä olet eri mieltä?
+      veto: Veto
+      veto_meaning: Estän tämän ehdotuksen
+      veto_prompt: Miksi estät ehdotuksen? Mitä pitää muuttaa, jotta voisit tukea sitä?
+    simple_poll:
+      process_subtitle: Etsi suosituin vaihtoehto
+      process_introduction: <p>Ennen päätöksentekoa selvitä, mitkä vaihtoehdot kiinnostavat ihmisiä eniten.</p><p> Yksinkertainen kysely auttaa sinua löytämään suosituimman vaihtoehdon tai vaihtoehdot yhdellä tai useammalla valinnalla.</p><p> Kirjoita vaihtoehdon tiedot tietokenttään, anna sitten vaihtoehdon nimi ja lisää se napsauttamalla +.</p><p> Aseta äänestäjän valittavissa olevien <strong>vähimmäis-</strong> ja <strong>enimmäisvaihtoehtojen määrä</strong> . Jätä enimmäisvaihtoehdoksi 1, jos äänestyksessä on vain yksi vaihtoehto.</p><p> Voit käyttää kunkin vaihtoehdon vieressä olevaa kynäkuvaketta lisätäksesi vaihtoehdolle <strong>merkityksen</strong> ja tarkentaaksesi vaihtoehtoa äänestämisen helpottamiseksi.</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">Lue lisää yksinkertaisesta kyselystä</a> .</p>
+      title: Mihin strategisen suuntamme tulisi keskittyä?
+      details: <h3 id="what-is-this-poll-about"><strong>Mistä tässä kyselyssä on kyse?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Miksi tämä on tärkeää?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mitä pyydät ihmisiä tekemään?</strong></h3><p></p><p> Valitse mieleisesi vaihtoehto tai vaihtoehdot.</p>
+    score_poll:
+      process_subtitle: Mittaa kunkin vaihtoehdon kannatusaste
+      process_introduction: <p>Käytä Score-kyselyä, kun haluat kyselyllä selvittää ihmisten toiveita, mieltymyksiä tai kiinnostusta kutakin vaihtoehtoa kohtaan.</p><p> <span>Osallistujia pyydetään arvioimaan kutakin vaihtoehtoa ja antamaan sille pistemäärä siirtämällä liukusäädintä asteikolla.</span></p><p> <span>Tulokset näytetään graafisesti yhdessä taulukon kanssa, joka näyttää kunkin vaihtoehdon kokonaispisteet, keskipisteet ja äänestäjien lukumäärän.</span></p><p> Lisäasetuksiin kuuluvat "Äänet ovat anonyymejä" ja "Näytä vaihtoehdot satunnaisessa järjestyksessä" – näitä käytetään yleisesti pisteytyskyselyssä äänestysvinouman vähentämiseksi.</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">Lue lisää Score-kyselystä</a> .</p>
+      title: Arvioimme, miten organisaatiossamme tehdään päätöksiä
+      details: <h3 id="what-is-this-poll-about"><strong>Mistä tässä kyselyssä on kyse?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Miksi tämä on tärkeää?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mitä pyydät ihmisiä tekemään?</strong></h3><p></p><p> Valitse mieleisesi vaihtoehto tai vaihtoehdot.</p>
+    dot_vote:
+      process_subtitle: Varaa pistebudjetti prioriteettien paljastamiseksi
+      process_introduction: <p>Pisteäänestys on hyödyllinen ryhmille, jotka yrittävät allokoida rajallisen resurssin useille vaihtoehdoille. Se menee yksinkertaisen kyselyn pidemmälle auttamalla osallistujia ymmärtämään, että vaihtoehtojen valinnassa on rajoitteita.</p><p> Osallistujille annetaan kullekin tietty määrä pisteitä. Sinä päätät, kuinka monta.</p><p> He sijoittavat pisteitä niiden vaihtoehtojen viereen, joista he pitävät. Osallistujat voivat sijoittaa kaikki pisteensä yhden vaihtoehdon kohdalle tai levittää ne useiden vaihtoehtojen päälle.</p><p> Kun osallistujat jakavat pisteitä, he saattavat ylittää pistebudjetin rajan, joten heitä kannustetaan miettimään huolellisesti, miten he käyttävät pisteensä.</p><p> Eniten pisteitä saaneet vaihtoehdot "voittavat". Tulostaulukko tarjoaa lisätietoja tulosten analysoinnin helpottamiseksi.</p><ul><li><p> % pisteistä</p></li><li><p> Pisteet</p></li><li><p> Tarkoittaa</p></li><li><p> Äänestäjät</p></li></ul><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">Lue lisää Dot-äänestä</a> .</p>
+      title: Konferenssimme teemojen valinta
+      details: <h3 id="what-is-this-poll-about"><strong>Mistä tässä kyselyssä on kyse?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Miksi tämä on tärkeää?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mitä pyydät ihmisiä tekemään?</strong></h3><p></p><p> Tässä kyselyssä sinulla on kahdeksan pisteen budjetti, jonka voit varata haluamillesi vaihtoehdoille. Voit sijoittaa kaikki pisteet yhteen vaihtoehtoon tai levittää ne useampaan kohtaan.</p>
+    ranked_choice:
+      process_subtitle: Ymmärrä vaihtoehtojen järjestetty mieltymys
+      process_introduction: <p>Roolijako on hyödyllinen, kun vaihtoehtoja on paljon tai kun olet järjestämässä vaaleja.</p><p> Tämä kyselymalli tarjoaa useita vaihtoehtoja, joiden avulla ihmiset voivat äänestää haluamassaan järjestyksessä.</p><p> Voit asettaa äänestäjän saamien vaihtoehtojen määrän.</p><p> <span>Äänestäjät vetävät ja pudottavat vaihtoehtoja mieltymysjärjestyksessä (#1 on mieluisin vaihtoehto).</span></p><p> <span>Lisäasetuksiin kuuluvat ”Äänet ovat anonyymejä” ja ”Näytä vaihtoehdot satunnaisessa järjestyksessä” – näitä käytetään yleisesti rankattujen valintojen yhteydessä</span> äänestysvinouman vähentämiseksi.</p><p> Tulokset näytetään paremmuusjärjestyksessä. Tulostaulukko tarjoaa lisätietoja tulosten analysoinnin helpottamiseksi.</p><ul><li><p> Sijoitus</p></li><li><p> % pisteistä</p></li><li><p> Pisteet</p></li><li><p> Tarkoittaa</p></li></ul><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">Lue lisää Ranked choice -vaihtoehdosta</a> .</p>
+      title: Valitse hallintoneuvoston jäsenet
+      details: <h3 id="what-is-this-poll-about"><strong>Mistä tässä kyselyssä on kyse?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Miksi tämä on tärkeää?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mitä pyydät ihmisiä tekemään?</strong></h3><p></p><p> Äänestä asettamalla vaihtoehdot mieltymystesi mukaiseen järjestykseen. Tuloksissa ensimmäisenä oleva vaihtoehto voittaa.</p>
+    time_poll:
+      process_subtitle: Selvitä, milloin ihmiset ovat käytettävissä tapaamiseen
+      process_introduction: <p><span>Säästä aikaa kokouksen tai tapahtuman päivämäärän sopimisessa.</span></p><p> Aikakyselyn avulla on helppo nähdä kaikkien saatavuus ja löytää paras aika.</p><p> Anna Aika-kyselyllesi otsikko ja tiedot. Syötä luettelo päivämäärä- ja aikavaihtoehdoista aikavyöhykkeelläsi.</p><p> Aikavälejä asettaessasi ota huomioon eri aikavyöhykkeillä olevat ihmiset. Osallistujat näkevät ajat omalla aikavyöhykkeellään.</p><p> Aseta kokouksen kesto.</p><p> Kun Aika-kysely sulkeutuu, aseta tulos, joka sisältää parhaan ajankohdan ja mahdolliset kokousta koskevat ohjeet.</p><p> <span>Loomio liittää tulosilmoitussähköpostiin kalenterikutsun, jotta osallistujat voivat lisätä tehtäviä kalenteriinsa.</span></p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">Lue lisää Timen kyselystä</a> .</p>
+      title: Etsitään päivämäärä seuraavalle tapaamisellemme
+      details: "<p><strong>Mikä on kokous tai tapahtuma?</strong></p><p></p><p> <strong>Miksi tämä on tärkeää?</strong></p><p></p><p> <strong>Mitä pyydät ihmisiä tekemään?</strong></p><p></p><p> <span>Merkitse vihreällä peukku ylös -kuvakkeella ne ajat, jolloin olet vapaana, tai jätä punainen peukku alas -kuvake paikalleen, kun et ole käytettävissä.</span></p><p> <span>Käytä peukalot sivussa -kuvaketta osoittaaksesi, että olet käytettävissä tarvittaessa.</span></p>"
+      reason_prompt: Onko sinulla mitään sanottavaa, mikä auttaisi järjestäjää löytämään sopivan ajankohdan?
+    opt_in:
+      process_subtitle: Etsi vapaaehtoisia tai kysy osallistujia
+      process_introduction: '<p>Käytä Opt-in-toimintoa kutsuaksesi ihmisiä tiimiin, komiteaan tai työryhmään tai osallistumaan tapahtumaan.</p><p> ''Suostumus''-kohdassa on kaksi äänestysvaihtoehtoa: Hyväksy tai Hylkää.</p><p> Voit määritellä tavoitemäärän ihmisiä, joita etsit, esimerkiksi kolme henkilöä työryhmääsi.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#opt-in">Lue lisää opt-in-palvelusta</a> .</p>'
+      title: Työryhmä laatii uuden kestävän kehityksen politiikkamme
+      details: "<p><strong>Mihin tiimiin, työryhmään tai tapahtumaan kutsut ihmisiä?</strong></p><p></p><p> <strong>Miksi tämä on tärkeää?</strong></p><p></p><p> <strong>Mitä pyydät ihmisiä tekemään?</strong></p><p></p><p> Valitse 'Hyväksy' osallistuaksesi!</p>"
+      accept_meaning: Olen halukas osallistumaan
+      accept_prompt: Miksi ilmoittaudut tähän vapaaehtoiseksi?
+      decline_meaning: En pysty osallistumaan
+      decline_prompt: Onko sinulla jotain sanottavaa?
+  forward_mailer:
+    bounce:
+      subject: Viestiäsi Loomiolle ei toimitettu
+      reason: Tämä tapahtui, koska sähköpostiohjelmasi osoitti viestin lähettäjäosoitteeseen eikä annettuun vastausosoitteeseen.
+      recommendation: Avaa Loomio selaimessasi ja lähetä viestisi suoraan.
+  locale_names:
+    en: englanti
+    be-BY: Valko-Venäjän
+    bg-BG: Bulgaria
+    ca: katalaani
+    cs: tšekki
+    zh-TW: Kiina (perinteinen, Taiwan)
+    da: tanskalainen
+    de: saksa
+    es: espanjaa
+    eo: Esperanto
+    el: kreikkalainen
+    fr: ranskalainen
+    he: heprealainen
+    id: Indonesia
+    it: italialainen
+    hu: Unkari
+    ja: Japani
+    ko: Korealainen
+    ml: malajalam
+    nl-NL: hollantilainen
+    pl: Kiillottaa
+    pt-BR: portugali (Brasilia)
+    ro: Romania
+    sr: Serbia (latina)
+    sr-RS: Serbia (kyrillinen)
+    sk: Slovakian
+    sv: ruotsalainen
+    vi: vietnam
+    tr: Turkki
+    uk: ukrainalainen
+    an: Aragonian
+    ar: arabia
+    cmn: kiina (mandariini)
+    hr: Kroatia
+    it-CH: Italia (Sveitsi)
+    fi: suomi
+    gl: Galicialainen
+    ga-IE: gaeli (Irlanti)
+    hi: Ei
+    km: Khmer
+    lv: Latvia
+    mk: makedonialainen
+    mi: Maori
+    fa-IR: Persialainen (Iran)
+    pt-PT: portugali
+    ru: venäjä
+    sl: Slovenia
+    te: telugu
+    ur: urdu
+    ur-PK: Urdu (Pakistan)
+    be: Valko-Venäjän
+    pt: portugali
+    zh: Kiina (perinteinen, Taiwan)
+    zh-HK: Kiina (perinteinen, Taiwan)

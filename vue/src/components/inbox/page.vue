@@ -6,9 +6,12 @@ import EventBus      from '@/shared/services/event_bus';
 import ThreadFilter from '@/shared/services/thread_filter';
 import ThreadPreviewCollection from '@/components/thread/preview_collection';
 import {sum, values, sortBy} from 'lodash-es';
+import FormatDate from '@/mixins/format_date';
+import WatchRecords from '@/mixins/watch_records';
 
 export default
 {
+  mixins: [FormatDate, WatchRecords],
   components: {
     ThreadPreviewCollection
   },
@@ -51,7 +54,7 @@ export default
       }
 
       EventBus.$emit('currentComponent', {
-        titleKey: 'inbox_page.unread_threads',
+        titleKey: 'inbox_page.unread_discussions',
         page: 'inboxPage'
       }
       );
@@ -76,13 +79,13 @@ export default
 <template lang="pug">
 v-main
   v-container.inbox-page.thread-preview-collection__container.max-width-1024.px-0.px-sm-3(grid-list-lg)
-    h1.text-h4.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'inbox_page.unread_threads'")
+    h1.text-h4.my-4(tabindex="-1" v-intersect="{handler: titleVisible}" v-t="'inbox_page.unread_discussions'")
     section.dashboard-page__loading(v-if='unreadCount == 0 && loading' aria-hidden='true')
       .thread-previews-container
         loading-content.thread-preview(:lineCount='2' v-for='(item, index) in [1,2,3,4,5,6,7,8,9,10]' :key='index')
     section.inbox-page__threads(v-if='unreadCount > 0 || !loading')
       .inbox-page__no-threads(v-show='unreadCount == 0')
-        span(v-t="'inbox_page.no_threads'")
+        span(v-t="'inbox_page.no_discussions'")
         span 🙌
       .inbox-page__no-groups(v-show='groups.length == 0')
         p(v-t="'inbox_page.no_groups.explanation'")

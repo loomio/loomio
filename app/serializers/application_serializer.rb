@@ -52,9 +52,9 @@ class ApplicationSerializer < ActiveModel::Serializer
   def cache_fetch(key_or_keys, id)
     return nil if id.nil?
     if scope.has_key?(:cache)
-      scope[:cache].fetch(key_or_keys, id) { yield }
+      scope[:cache].fetch(key_or_keys, id) { block_given? ?  yield : nil }
     else
-      yield
+      block_given? ?  yield : nil
     end
   end
 
@@ -156,5 +156,25 @@ class ApplicationSerializer < ActiveModel::Serializer
 
   def include_outcomes?
     include_type?('outcome')
+  end
+
+  def translation_id
+    t = translation
+    t&.id
+  end
+
+  def translation
+    cache = scope[:cache] or return
+    by_type = cache.scope[:translations_by_type_and_id] or return
+    type_hash = by_type[object.class.to_s] or return
+    type_hash[object.id]
+  end
+
+  def include_translation?
+    translation.present?
+  end
+
+  def include_translation_id?
+    translation.present?
   end
 end

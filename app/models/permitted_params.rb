@@ -22,14 +22,14 @@ class PermittedParams < Struct.new(:params)
      :autodetect_time_zone, :time_zone, :selected_locale, :email_when_mentioned, :default_membership_volume,
      :email_catch_up_day, :has_password, :has_token, :email_status,
      :email_when_proposal_closing_soon, :email_new_discussions_and_proposals, :email_on_participation, :email_newsletter,
-     :date_time_pref, :bot,
+     :date_time_pref, :bot, :auto_translate,
      :legal_accepted, {email_new_discussions_and_proposals_group_ids: []},
      :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}
    ]
   end
 
   def poll_attributes
-    [ 
+    [
       :agree_target,
       :title,
       :details,
@@ -44,6 +44,7 @@ class PermittedParams < Struct.new(:params)
       :key,
       :limit_reason_length,
       :shuffle_options,
+      :show_none_of_the_above,
       :notify_on_closing_soon,
       :voter_can_add_options,
       :specified_voters_only,
@@ -70,10 +71,22 @@ class PermittedParams < Struct.new(:params)
       :minimum_stance_choices,
       :maximum_stance_choices,
       :chart_type,
+      :quorum_pct,
       :document_ids, {document_ids: []},
       :poll_template_id,
       :poll_template_key,
-      :poll_options_attributes, {poll_options_attributes: [:id, :name, :icon, :meaning, :prompt, :priority, :_destroy]},
+      :poll_options_attributes, {poll_options_attributes:
+        [:id,
+         :name,
+         :icon,
+         :meaning,
+         :prompt,
+         :priority,
+         :test_operator,
+         :test_percent,
+         :test_against,
+         :_destroy]
+      },
       :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}
     ]
   end
@@ -99,6 +112,7 @@ class PermittedParams < Struct.new(:params)
       :notify_on_closing_soon,
       :content_locale,
       :shuffle_options,
+      :show_none_of_the_above,
       :hide_results,
       :chart_type,
       :min_score,
@@ -108,7 +122,7 @@ class PermittedParams < Struct.new(:params)
       :dots_per_person,
       :reason_prompt,
       :tags, {tags: []},
-      :poll_options, {poll_options: [:name, :icon, :meaning, :prompt, :priority]},
+      :poll_options, {poll_options: [:name, :icon, :meaning, :prompt, :priority, :test_operator, :test_percent, :test_against]},
       :stance_reason_required,
       :limit_reason_length,
       :default_duration_in_days,
@@ -119,12 +133,13 @@ class PermittedParams < Struct.new(:params)
       :outcome_statement,
       :outcome_statement_format,
       :outcome_review_due_in_days,
+      :quorum_pct,
       :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}
     ]
   end
 
   def stance_attributes
-    [:poll_id, :reason, :reason_format,
+    [:poll_id, :reason, :reason_format, :none_of_the_above,
      :stance_choices_attributes, {stance_choices_attributes: [:score, :poll_option_id]},
      :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}
    ]
@@ -165,7 +180,7 @@ class PermittedParams < Struct.new(:params)
      :description, :description_format, :is_visible_to_parent_members, :parent_members_can_see_discussions,
      :membership_granted_upon, :cover_photo, :logo, :category, :members_can_raise_motions,
      :members_can_start_discussions, :members_can_create_subgroups, :admins_can_edit_user_content,
-     :new_threads_max_depth, :new_threads_newest_first, :request_to_join_prompt,
+     :new_threads_max_depth, :new_threads_newest_first, :request_to_join_prompt, :can_start_polls_without_discussion,
      :document_ids, {document_ids: []},
      :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}
    ]

@@ -1,12 +1,12 @@
 - stance = item.eventable
 - poll = stance.poll
 - voter = stance.participant
-.stance-created
-  .thread-item.px-3.pb-1
-    .layout.lmo-action-dock-wrapper.ml-5
+.stance-created.mt-2
+  .thread-item.pl-2.pb-1
+    .v-layout.lmo-action-dock-wrapper.ml-5
       .thread-item__avatar.mr-3.mt-0
         = render 'base_mailer/avatar', user: voter, size: 24
-      .layout.thread-item__body.column
+      .thread-item__body
         - if stance.revoked_at
           = t('poll_common_votes_panel.vote_removed')
         - else

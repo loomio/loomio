@@ -3,8 +3,6 @@
   %div{ class: 'panel-contents' }
     %table{ id: 'stats-table' }
       %tr
-        -# %td
-        -#   %h2{ style: "text-align: center"}= Queries::AdminGroupPage.visits_count(group)
         %td
           %h2{ style: "text-align: center"}= group.org_members_count
         %td
@@ -12,11 +10,13 @@
         %td
           %h2{ style: "text-align: center"}= group.subgroups.count
         %td
-          %h2{ style: "text-align: center"}= Queries::AdminGroupPage.discussions_count(group)
+          %h2{ style: "text-align: center"}= Discussion.where(group_id: group.id_and_subgroup_ids).count
         %td
-          %h2{ style: "text-align: center"}= Queries::AdminGroupPage.polls_count(group)
+          %h2{ style: "text-align: center"}= Comment.joins(:discussion).where('discussions.group_id': group.id_and_subgroup_ids).count
         %td
-          %h2{ style: "text-align: center"}= Queries::AdminGroupPage.thread_items_count(group)
+          %h2{ style: "text-align: center"}= Poll.where(group_id: group.id_and_subgroup_ids).count
+        %td
+          %h2{ style: "text-align: center"}= Stance.joins(:poll).latest.where('polls.group_id': group.id_and_subgroup_ids).count
 
       %tr
         %th
@@ -28,9 +28,11 @@
         %th
           %h4{ style: "text-align: center" } Threads
         %th
+          %h4{ style: "text-align: center" } Comments
+        %th
           %h4{ style: "text-align: center" } Polls
         %th
-          %h4{ style: "text-align: center" } Thread items
+          %h4{ style: "text-align: center" } Votes
 
     %h4 Tags:
     %h3= group.admin_tags

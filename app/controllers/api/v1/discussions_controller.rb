@@ -1,4 +1,4 @@
-class API::V1::DiscussionsController < API::V1::RestfulController
+class Api::V1::DiscussionsController < Api::V1::RestfulController
   def create
     instantiate_resource
     if resource_params[:forked_event_ids] && resource_params[:forked_event_ids].any?
@@ -26,7 +26,7 @@ class API::V1::DiscussionsController < API::V1::RestfulController
 
     # this is desperation in code, but better than auto create when nil on method call
     if resource.created_event.nil?
-      EventService.repair_thread(resource.id)
+      EventService.repair_discussion(resource.id)
       resource.reload
     end
 

@@ -5,7 +5,7 @@
     - polls.each do |poll|
       - stance = recipient_stance(@recipient, poll)
       %tr
-        %td= poll.title
+        %td= plain_text(poll, :title)
         %td
           - if @recipient.can?(:vote_in, poll)
             - if stance && stance.cast_at?

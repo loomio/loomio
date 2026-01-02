@@ -1,3 +1,4 @@
+---
 pl:
   discussion_templates:
     blank:
@@ -87,6 +88,12 @@ pl:
       process_introduction: "<p>Przedstaw dokument wraz z wszelkimi dodatkowymi informacjami. Podaj cel dokumentu, aby pomóc Ci się skoncentrować.</p><p> Poproś inne osoby o udostępnienie informacji i swojej wiedzy specjalistycznej oraz wykorzystaj je do oprawienia dokumentu. Przyjmuj do wiadomości i uwzględniaj opinie i wkłady innych osób.</p><p> Integruj uwagi z pierwszą wersją dokumentu i kolejnymi wersjami roboczymi, aż będzie gotowa do zatwierdzenia.</p><p> Użyj ankiety Sense Check, aby poznać opinie i wyjaśnić wszelkie wątpliwości dotyczące wersji roboczej.</p><p> Po rozpatrzeniu i włączeniu opinii do dokumentu należy przystąpić do zatwierdzenia lub uzgodnienia propozycji zgody lub konsensusu.</p><p> Wątek staje się czytelnym zapisem postępu tworzenia dokumentu i podjętych decyzji.</p>"
       description: <h3 id="what-is-the-purpose-of-the-document">Jaki jest cel dokumentu?</h3><p></p><h3 id="why-is-this-important"> Dlaczego to jest ważne?</h3><p></p><h3 id="what-are-you-asking-people-to-do"> O co prosisz ludzi?</h3><p></p>
       document: Dokument
+    practice_thread:
+      process_subtitle: Wątek, w którym można powitać ludzi w grupie i ćwiczyć korzystanie z Loomio
+      process_introduction: "<p>Użyj tego szablonu, aby powitać nowych członków i zachęcić do wczesnego uczestnictwa. Daje ludziom szansę na przedstawienie się i zapoznanie z funkcjami Loomio.</p>"
+      title: "\U0001F44B Witaj! Powiedz cześć i wypróbuj rzeczy"
+      description: "<p>Witamy w naszej grupie Loomio — cieszymy się, że jesteś tu!</p><p> Ten wątek jest miejscem do:</p><ul><li><p> Przedstaw się grupie</p></li><li><p> Wypróbuj niektóre funkcje Loomio – na przykład: spróbuj użyć reakcji \U0001F44D</p></li><li><p> Zadaj wszelkie pytania, które masz na tym etapie</p></li></ul><p> Jeśli nie wiesz co powiedzieć, wystarczy zwykłe „cześć” \U0001F642</p>"
+      process_name: Ćwicz dyskusję
   explore:
     header: Przeglądaj grupy publiczne
   activerecord:
@@ -96,11 +103,11 @@ pl:
         invalid: nie jest prawidłową wartością
   unauthorized:
     manage:
-      all: "Brak uprawnień do %{action} %{subject}."
+      all: Brak uprawnień do %{action} %{subject}.
     add_guests:
-      all: "Musisz uaktualnić swoją subskrypcję Loomio, aby dodać gości do swojego %{subject}. Alternatywnie możesz zaprosić ich do członkostwa w swojej grupie."
+      all: Musisz uaktualnić swoją subskrypcję Loomio, aby dodać gości do swojego %{subject}. Alternatywnie możesz zaprosić ich do członkostwa w swojej grupie.
   errors:
-    clear_cache: "Wykryto problem z wczytywaniem. Przytrzymaj Shift i naciśnij Odśwież lub wyczyść pamięć podręczną przeglądarki."
+    clear_cache: Wykryto problem z wczytywaniem. Przytrzymaj Shift i naciśnij Odśwież lub wyczyść pamięć podręczną przeglądarki.
     400:
       title: Zła prośba
       body: Przepraszamy, nie mogliśmy zrozumieć tej prośby
@@ -117,8 +124,9 @@ pl:
       body: Ta strona już nie istnieje
     417:
       title: Niekompatybilna przeglądarka
-      body: |
-          <a href="https://browser-update.org/update.html?force_outdated=true">Zaktualizuj przeglądarkę</a>, aby korzystać z Loomio
+      body: '<a href="https://browser-update.org/update.html?force_outdated=true">Zaktualizuj przeglądarkę</a>, aby korzystać z Loomio
+
+        '
     422:
       title: Jednostka niemożliwa do przetworzenia
       body: Wybrana zmiana została odrzucona. Może próbujesz zmienić coś, do czego nie masz dostępu.
@@ -129,18 +137,21 @@ pl:
       title: Wewnętrzny błąd serwera
       body: Przepraszamy, ale coś poszło nie tak. Zostaliśmy powiadomieni o tym problemie i wkrótce się nim zajmiemy.
     noscript: Loomio wymaga JavaScript do działania! Włącz obsługę JavaScript w przeglądarce, aby kontynuować
-    upgrade_browser: |
-        O jej! Twoja przeglądarka internetowa jest za stara i Loomio może nie działać poprawnie. <a href="https://browser-update.org/update.html">Zaktualizuj swoją przeglądarkę.</a>
+    upgrade_browser: 'O jej! Twoja przeglądarka internetowa jest za stara i Loomio może nie działać poprawnie. <a href="https://browser-update.org/update.html">Zaktualizuj swoją przeglądarkę.</a>
+
+      '
     return_home: Wróć na stronę główną
     not_found: Nie znaleziono pliku 404.
     messages:
       email: nieprawidłowy adres e-mail
       spoofed_media_type: Zawartość tego pliku nie pasuje do jego nazwy
       pwned_password: To hasło pojawiło się już w przypadku naruszenia bezpieczeństwa danych i nigdy nie powinno być używane
+    '401':
+      title: Nieautoryzowane
   group:
     error:
-      handle_must_begin_with_parent_handle: "Musi zaczynać się od %{parent_handle}-"
-      no_public_trials: "Zaktualizuj wersję próbną, aby zmienić ustawienia prywatności grupy"
+      handle_must_begin_with_parent_handle: Musi zaczynać się od %{parent_handle}-
+      no_public_trials: Zaktualizuj wersję próbną, aby zmienić ustawienia prywatności grupy
     stats:
       group_stats: Statystyki grupy
       org_stats: Statystyki organizacji (w tym podgrup)
@@ -161,15 +172,15 @@ pl:
         rank: Ranga
         time: Ankieta dotycząca daty spotkania
   user:
-    deleted_user: "Usunięty użytkownik"
-    placeholder_name: "Zaproszony użytkownik (%{hostname})"
+    deleted_user: Usunięty użytkownik
+    placeholder_name: Zaproszony użytkownik (%{hostname})
     error:
       sign_in_required_html: |
-          Musisz być zalogowany, aby kontynuować.
-          <a href="/dashboard" target="_blank">Zaloguj się</a>, a następnie ponownie załaduj tę stronę, aby kontynuować.
-      recaptcha: "Nie byliśmy w stanie zweryfikować, czy nie jesteś robotem. Proszę spróbuj ponownie!"
-      bad_login: "Przepraszamy, to hasło nie zgadza się z tym, które mamy zapisane"
-      username_must_be_alphanumeric: "Nazwy użytkowników muszą składać się wyłącznie z małych liter i cyfr"
+        Musisz być zalogowany, aby kontynuować.
+        <a href="/dashboard" target="_blank">Zaloguj się</a>, a następnie ponownie załaduj tę stronę, aby kontynuować.
+      recaptcha: Nie byliśmy w stanie zweryfikować, czy nie jesteś robotem. Proszę spróbuj ponownie!
+      bad_login: Przepraszamy, to hasło nie zgadza się z tym, które mamy zapisane
+      username_must_be_alphanumeric: Nazwy użytkowników muszą składać się wyłącznie z małych liter i cyfr
   poll:
     error:
       cannot_add_options: Nie można dodać opcji do tej ankiety
@@ -177,6 +188,7 @@ pl:
       must_have_options: Musi mieć co najmniej jedną opcję ankiety
       must_be_in_the_future: Musi być w przyszłości
       templates_cannot_close: Szablony nie mogą zostać zamknięte
+      poll_options_dont_match: Błąd w Loomio uniemożliwił zapisanie Twojego głosu. Pracujemy nad jego rozwiązaniem. Odśwież stronę i spróbuj ponownie.
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) członkowie podali swoje stanowisko"
       title: Tytuł
@@ -201,7 +213,7 @@ pl:
       participant: Uczestnik
       also_available: Dostępne również w
       total: W sumie
-    waiting_for_votes_from: "Czekam na głosy od"
+    waiting_for_votes_from: Czekam na głosy od
   stance:
     error:
       too_short: Proszę dokonać wyboru
@@ -215,43 +227,49 @@ pl:
     via_loomio: "%{name} (przez %{site_name})"
   event_mailer:
     received_email:
-      explaination_html: |-
-          <p>Otrzymujesz tego e-maila, ponieważ jesteś administratorem grupy Loomio: %{group}.</p><p> Grupa otrzymała wiadomość e-mail z nieznanego adresu e-mail.</p><p> Jeśli wiadomość pochodzi od członka grupy, przejrzyj wiadomość e-mail i wybierz członka.</p><p> Jeśli wiadomość jest niechciana, możesz zablokować dalsze wiadomości e-mail wysyłane z tego adresu.</p>
+      explaination_html: "<p>Otrzymujesz tego e-maila, ponieważ jesteś administratorem grupy Loomio: %{group}.</p><p> Grupa otrzymała wiadomość e-mail z nieznanego adresu e-mail.</p><p> Jeśli wiadomość pochodzi od członka grupy, przejrzyj wiadomość e-mail i wybierz członka.</p><p> Jeśli wiadomość jest niechciana, możesz zablokować dalsze wiadomości e-mail wysyłane z tego adresu.</p>"
+    notification_reason:
+      group_subscribed: Otrzymujesz to, ponieważ subskrybujesz całą aktywność w grupie.
+      group_mentioned: Otrzymałeś to, ponieważ grupa została @wspomniana.
+      user_mentioned: Otrzymałeś to, ponieważ @o Tobie wspomniano.
+      notified: Otrzymałeś to, ponieważ autor Cię o tym powiadomił.
+      poll_subscribed: Otrzymałeś/aś tę wiadomość, ponieważ zapisałeś/aś się na ankietę.
+      discussion_subscribed: Otrzymałeś to, ponieważ zapisałeś się na dyskusję.
   user_mailer:
     group_export_ready:
       subject: Eksport danych grupy dla %{group_name}
-      body_html: |
-          Pobierz dane grupy <a href="%{url}">tutaj</a>. Pamiętaj, że ten link wygaśnie za tydzień.
+      body_html: 'Pobierz dane grupy <a href="%{url}">tutaj</a>. Pamiętaj, że ten link wygaśnie za tydzień.
+
+        '
     redacted:
-      subject: "Twoje konto użytkownika %{site_name} zostało usunięte"
-      body_html: |-
-          <p>Twoje konto użytkownika %{site_name} zostało usunięte.</p><p> Wszystkie dane osobowe zostały usunięte.</p><p> Jeśli nie prosiłeś o to, skontaktuj się z %{support_email}</p>
+      subject: Twoje konto użytkownika %{site_name} zostało usunięte
+      body_html: "<p>Twoje konto użytkownika %{site_name} zostało usunięte.</p><p> Wszystkie dane osobowe zostały usunięte.</p><p> Jeśli nie prosiłeś o to, skontaktuj się z %{support_email}</p>"
     accounts_merged:
-      subject: "Twoje konta użytkowników  %{site_name} zostały scalone."
+      subject: Twoje konta użytkowników  %{site_name} zostały scalone.
       body_html: |
-          Cześć%{name} ,
-          Twoje dwa konta Loomio zostały połączone w jedno.
-          Od teraz, aby uzyskać dostęp do Loomio, użyj adresu <strong>%{email} </strong> podczas logowania.
+        Cześć%{name} ,
+        Twoje dwa konta Loomio zostały połączone w jedno.
+        Od teraz, aby uzyskać dostęp do Loomio, użyj adresu <strong>%{email} </strong> podczas logowania.
     merge_verification:
-      subject: "Zweryfikuj Twój %{site_name} adres e-mail do połączenia"
+      subject: Zweryfikuj Twój %{site_name} adres e-mail do połączenia
       body_html: |
-          <p>Cześć %{name} ,</p>
-          <p>Zażądano połączenia Twojego konta użytkownika pod tym adresem <strong>%{source_email}</strong>z kontem należącym do tego adresu,<strong>%{target_email}</strong>.</p>
-          <p>Po zakończeniu tego procesu nie będziesz już mógł logować się za pomocą <strong>%{source_email}</strong>, tylko za pomocą<strong>%{target_email}</strong>.</p>
-          <p>Potwierdź, że właśnie to chcesz zrobić.</p>
+        <p>Cześć %{name} ,</p>
+        <p>Zażądano połączenia Twojego konta użytkownika pod tym adresem <strong>%{source_email}</strong>z kontem należącym do tego adresu,<strong>%{target_email}</strong>.</p>
+        <p>Po zakończeniu tego procesu nie będziesz już mógł logować się za pomocą <strong>%{source_email}</strong>, tylko za pomocą<strong>%{target_email}</strong>.</p>
+        <p>Potwierdź, że właśnie to chcesz zrobić.</p>
       verify: Zweryfikuj adres e-mail i kontynuuj
       confirm_page:
         confirm: 'Potwierdź połączenie '
         body_html: |
-            <p>Potwierdź, że chcesz połączyć konto <strong>%{source_email}</strong> w konto <strong>%{target_email}</strong>.</p>
-            <p>Twoje konto <strong>%{source_email}</strong>zostanie usunięte, a następnie będziesz mógł zalogować się tylko za pośrednictwem<strong>%{target_email}</strong>.</p>
-            <p>Ta zmiana jest nieodwracalna.</p>
+          <p>Potwierdź, że chcesz połączyć konto <strong>%{source_email}</strong> w konto <strong>%{target_email}</strong>.</p>
+          <p>Twoje konto <strong>%{source_email}</strong>zostanie usunięte, a następnie będziesz mógł zalogować się tylko za pośrednictwem<strong>%{target_email}</strong>.</p>
+          <p>Ta zmiana jest nieodwracalna.</p>
         merge: Połącz konta
       complete_page:
         title: Łączenie zakończone powodzeniem!
         body_html: |
-            <p>Łączenie kont użytkowników zakończyło się powodzeniem. Wkrótce otrzymasz wiadomość e-mail na <strong>%{target_email}</strong>z potwierdzeniem.
-            <p><a href="/contact" target="_blank">Skontaktuj się z nami</a>, jeśli masz dodatkowe pytania.</p>
+          <p>Łączenie kont użytkowników zakończyło się powodzeniem. Wkrótce otrzymasz wiadomość e-mail na <strong>%{target_email}</strong>z potwierdzeniem.
+          <p><a href="/contact" target="_blank">Skontaktuj się z nami</a>, jeśli masz dodatkowe pytania.</p>
   email:
     common:
       or_enter_code: Lub wprowadź kod poniżej
@@ -268,27 +286,26 @@ pl:
     contact_request:
       subject: "%{name} chce się z Tobą połączyć na %{site_name}!"
       intro: "%{name}(%{email}) wysyła Ci prośbę o połączenie."
-      footer: "Możesz odpowiedzieć bezpośrednio %{name}, odpowiadając na tego e-maila."
+      footer: Możesz odpowiedzieć bezpośrednio %{name}, odpowiadając na tego e-maila.
     reset_password:
       greeting: |
-          Cześć %{name},
-          Oto link, którego możesz użyć do zresetowania hasła do swojego konta Loomio:
+        Cześć %{name},
+        Oto link, którego możesz użyć do zresetowania hasła do swojego konta Loomio:
       link_text: Zmień hasło
       signoff: |
-          Otrzymałeś to, ponieważ Twój adres e-mail został wpisany w formularzu „Nie pamiętam hasła” w dniu %{hostname}.
-          Jednak Twoje hasło nie zostanie zmienione, dopóki nie klikniesz powyższego linku i nie wypełnisz formularza.
-          Jeśli nadal będziesz mieć problemy z zalogowaniem się, odpowiedz na tą wiadomość e-mail, aby skontaktować się z obsługą klienta.
+        Otrzymałeś to, ponieważ Twój adres e-mail został wpisany w formularzu „Nie pamiętam hasła” w dniu %{hostname}.
+        Jednak Twoje hasło nie zostanie zmienione, dopóki nie klikniesz powyższego linku i nie wypełnisz formularza.
+        Jeśli nadal będziesz mieć problemy z zalogowaniem się, odpowiedz na tą wiadomość e-mail, aby skontaktować się z obsługą klienta.
     by_who: przez %{person}
     reply_to_this_discussion: Odpowiedz na tę dyskusję
-    loomio_app_description: "%{site_name} to narzędzie do podejmowania decyzji dla organizacji współpracujących"
     view_group: Wyświetl grupę
     to_join_group:
       subject: "%{member} zaprasza Cię do przyłączenia się do grupy %{group_name} na %{site_name} "
       invitation_text: "%{member} zaprasza Cię do swojej grupy %{group_name}"
-      invitation_text_html: "zaprasza Cię do swojej grupy"
-      link_help: "Kliknij poniższy link, aby zaakceptować zaproszenie:"
-      accept_invitation: "Przyjmij zaproszenie"
-      stop_emails: "Przestań otrzymywać wiadomości e-mail od %{site_name}"
+      invitation_text_html: zaprasza Cię do swojej grupy
+      link_help: 'Kliknij poniższy link, aby zaakceptować zaproszenie:'
+      accept_invitation: Przyjmij zaproszenie
+      stop_emails: Przestań otrzymywać wiadomości e-mail od %{site_name}
       accepting_is_important: Ważne jest, aby zaakceptować zaproszenie, w przeciwnym razie nie będziesz otrzymywać powiadomień o decyzjach, które Cię dotyczą.
     resend_to_join_group:
       subject: "%{member}czeka, aż dołączysz do %{group_name} na %{site_name}"
@@ -296,8 +313,8 @@ pl:
       subject: "%{who} dodał/a Cię do grupy %{which_group} na %{site_name}"
       content: "%{who} dodał/a Cię do grupy  %{which_group}."
       content_html: "<strong>%{who}</strong> dodał/a Cię do grupy <strong>%{which_group}</strong>"
-      link_help: "Kliknij poniższy link, aby przejść do grupy:"
-    unsubscribe: "Anuluj subskrypcję lub zmień preferencje dotyczące poczty e-mail:"
+      link_help: 'Kliknij poniższy link, aby przejść do grupy:'
+    unsubscribe: 'Anuluj subskrypcję lub zmień preferencje dotyczące poczty e-mail:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> aby anulować subskrypcję lub zmienić preferencje poczty e-mail."
     catch_up:
       daily_subject: Wczoraj na %{site_name}
@@ -309,27 +326,30 @@ pl:
       marked_as_read_success: Wszystko z wiadomości e-mail zostało oznaczone jako przeczytane
       click_here: Kliknij tutaj
     group_membership_approved:
-      intro: "Twoja prośba o dostęp do grupy %{group_name} została zaakceptowana."
-      intro_html: "Twoja prośba o dostęp do grupy <strong>%{group_name}</strong> została zaakceptowana."
-      link_help: "Kliknij poniższy link, aby dołączyć do grupy  %{group_name} i zacząć:"
-      subject: "Twoja prośba o dołączenie do grupy %{group_name}została zaakceptowana"
-      join_group: "Dołącz do grupy"
+      intro: Twoja prośba o dostęp do grupy %{group_name} została zaakceptowana.
+      intro_html: Twoja prośba o dostęp do grupy <strong>%{group_name}</strong> została zaakceptowana.
+      link_help: 'Kliknij poniższy link, aby dołączyć do grupy  %{group_name} i zacząć:'
+      subject: Twoja prośba o dołączenie do grupy %{group_name}została zaakceptowana
+      join_group: Dołącz do grupy
     membership_request:
       intro_html: prosi o dostęp do jednej z twoich grup.
       subject: " %{who} prosi o dołączenie do grupy %{which_group}"
       view_group: Możesz zatwierdzić lub odrzucić prośbę tutaj
       button_text: Wyświetl prośbę
+    content_was_translated: Ta treść została przetłumaczona z %{source_locale}
+    content_was_translated_html: Ta treść została przetłumaczona z %{source_locale}. <a href="%{profile_url}">Wyświetl ustawienia<a></a>
+    loomio_app_description: Miejsce, w którym organizacje współpracujące mogą wspólnie podejmować decyzje.
   announcement_count_emails: "%{count} wiadomości e-mail"
   email_actions:
     unfollowed_discussion: Wyłączono wiadomości e-mail dla wątku.
   discussion_mailer:
-    reply_or_view_online_html: "Odpowiedz bezpośrednio na tego e-maila lub <a href='%{url}'>wyświetl go na %{hostname}</a>."
+    reply_or_view_online_html: Odpowiedz bezpośrednio na tego e-maila lub <a href='%{url}'>wyświetl go na %{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>Wyłącz wiadomości e-mail</a> dla tej dyskusji."
-    change_email_preferences_html: "Zmień swoje <a href='%{email_preferences_url}'>preferencje e-mail</a>."
+    change_email_preferences_html: Zmień swoje <a href='%{email_preferences_url}'>preferencje e-mail</a>.
     unsubscribe_from_discussion_announced_html: "<a href='%{url}'>Zakończ subskrypcję</a> dalszych powiadomień w tym wątku."
     unsubscribe_from_new_comment_html: "<a href='%{url}'>Zakończ subskrypcję</a> komentarzy w tym wątku."
-    unsubscribe_from_comment_replied_to_html: "To jest powiadomienie o odpowiedzi."
-    unsubscribe_from_user_mentioned_html: "To jest powiadomienie o wzmiance."
+    unsubscribe_from_comment_replied_to_html: To jest powiadomienie o odpowiedzi.
+    unsubscribe_from_user_mentioned_html: To jest powiadomienie o wzmiance.
     discussion_edited:
       inline: "%{actor} edytował kontekst wątku"
     discussion_closed:
@@ -350,38 +370,249 @@ pl:
     confirm_new_password: Potwierdź hasło
     new_password: Nowe hasło
     email_guidelines_html: |
-        <p>Wpisz swój adres e-mail, a otrzymasz link umożliwiający zresetowanie hasła.</p>
-        <p>Jeśli zwykle logujesz się przez Facebook lub Google, wpisz adres e-mail powiązany z tym kontem.</p>
+      <p>Wpisz swój adres e-mail, a otrzymasz link umożliwiający zresetowanie hasła.</p>
+      <p>Jeśli zwykle logujesz się przez Facebook lub Google, wpisz adres e-mail powiązany z tym kontem.</p>
     reset_email_timeframe: Dostarczenie wiadomości e-mail może potrwać do 5 minut. Jeśli się nie pojawi, sprawdź folder Spam.
     length_restriction: Hasła muszą mieć co najmniej 8 znaków.
     forbidden_passwords: Typowe hasła, takie jak „hasło”, są zabronione w celu zapewnienia bezpieczeństwa konta.
   task_mailer:
     task_due_reminder:
-      subject: "Przypomnienie o zadaniu: %{name}"
-      greeting: "Cześć %{name}, termin wykonania następującego zadania %{due}:"
-      view_task: "Zobacz na %{site_name}"
-      update_or_comment: "Jeśli wykonałeś już to zadanie, zaznacz je. Jeśli nie jest kompletna, udostępnij aktualizację postępu."
-      due_today: "Dzisiaj"
-      due_in_count_days: "za %{count} dni"
+      subject: 'Przypomnienie o zadaniu: %{name}'
+      greeting: 'Cześć %{name}, termin wykonania następującego zadania %{due}:'
+      view_task: Zobacz na %{site_name}
+      update_or_comment: Jeśli wykonałeś już to zadanie, zaznacz je. Jeśli nie jest kompletna, udostępnij aktualizację postępu.
+      due_today: Dzisiaj
+      due_in_count_days: za %{count} dni
   group_mailer:
-    resend: "PRZYPOMNIENIE: %{member} czeka, aż dołączysz do %{group_name}"
+    resend: 'PRZYPOMNIENIE: %{member} czeka, aż dołączysz do %{group_name}'
     destroy_warning:
       subject: Twoja grupa Loomio ma zostać usunięta.
-      body: |-
-          Twoja grupa Loomio: „%{group}” została zaplanowana do usunięcia przez %{deletor}. Jeśli nie chcesz, aby Twoja grupa została usunięta, odpowiedz na tę wiadomość e-mail. Jeśli na pewno chcesz usunąć grupę, nie musisz nic robić. Dziękuję.
+      body: 'Twoja grupa Loomio: „%{group}” została zaplanowana do usunięcia przez %{deletor}. Jeśli nie chcesz, aby Twoja grupa została usunięta, odpowiedz na tę wiadomość e-mail. Jeśli na pewno chcesz usunąć grupę, nie musisz nic robić. Dziękuję.'
   poll_mailer:
     common:
       why_send_this: Otrzymujesz tę wiadomość e-mail, ponieważ %{reason}
       view_on_loomio: Zobacz na %{site_name}
       create_outcome: Udostępnij wynik
-      your_response: "Twój głos:"
-      you_voted: "Zagłosowałeś!"
-      not_invited: "Nie zaproszona"
+      your_response: 'Twój głos:'
+      you_voted: Zagłosowałeś!
+      not_invited: Nie zaproszona
       please_respond: Odpowiedz
-      time_zone: (Czas wyświetlany w %{zone})
+      time_zone: "(Czas wyświetlany w %{zone})"
       undecided_members: Niezdecydowani członkowie (%{count})
       undecided_visitors: Niezdecydowane zaproszone osoby (%{count})
       more_undecided: "%{count} więcej..."
       vote_now: Głosuj teraz
       you_have_until: Masz czas do %{when}  na wzięcie udziału
       people_have_voted: "%{nom} z %{dnom} osób wzięło udział (%{pct}%)"
+  poll_templates:
+    practice_proposal:
+      title: Zaczynam to rozumieć
+      process_name: Propozycja ćwiczeniowa
+      process_subtitle: Dowiedz się, jak działają propozycje w Loomio, testując jedną z nich.
+      process_introduction: "<p>Użyj tego szablonu, aby pomóc swojej grupie poczuć się komfortowo korzystając z propozycji w Loomio. To bezpieczny i prosty sposób, aby ludzie mogli spróbować głosowania i zobaczyć, jak wszystko do siebie pasuje.</p>"
+      details: "<p>Jest to próba, która pozwoli wszystkim zapoznać się ze sposobem działania propozycji w Loomio.</p><p> Proszę zagłosować i podać powód, jeśli chcesz.</p><p> Bez presji, bez realnych konsekwencji. To tylko sposób na zbadanie, jak działają propozycje!</p>"
+      outcome_statement: "<p>Dziękujemy za udział w tej propozycji praktycznej! \U0001F389</p><p> To była tylko okazja, aby zobaczyć, jak głosowanie i komentowanie działa w Loomio. Nie ma tu żadnej prawdziwej decyzji — ale mam nadzieję, że to pomogło wszystkim zapoznać się z procesem.</p>"
+    proposal:
+      process_subtitle: Złóż propozycję podjęcia decyzji
+      process_introduction: <p>Klasyczna propozycja Loomio pomaga podjąć decyzję, przekształcając dyskusję w jasny wynik.</p><p> Zaproponuj sposób działania i zachęć ludzi do głosowania „za”, „wstrzymaj się” lub „nie”.</p><p> Gdy ludzie głosują, mogą podać powód, dla którego głosowali w ten sposób. Możesz zobaczyć, jakie jest stanowisko wszystkich innych w tej sprawie i dlaczego.</p><p> W ten sposób możesz wykorzystać propozycję, aby zachęcić ludzi do odpowiedzi, odkryć nowe informacje i zbudować wspólne zrozumienie, co pomoże Twojej grupie podjąć lepszą, bardziej świadomą decyzję.</p><p> Propozycja i związana z nią dyskusja tworzą własny zapis tego, w jaki sposób zapadła decyzja.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Więcej informacji na temat wykorzystania klasycznej propozycji Loomio można znaleźć w części Prosty proces decyzyjny</u></a> .</p>
+      title: Zatwierdź nową koncepcję marki
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Jaką decyzję musisz podjąć?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Dlaczego to jest ważne?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>O co prosisz ludzi?</strong></h3><p></p><p> Aby ta propozycja została przyjęta, potrzebujemy większości głosów członków popierających ją.</p><p> Jeżeli się nie zgadzasz, podaj powód i wyjaśnij, co powinno się zmienić, abyś mógł się zgodzić.</p>
+      agree: Zgadzać się
+      agree_meaning: Popieram tę propozycję
+      agree_prompt: Co Ci się podoba w tej propozycji i jakie korzyści przyniesie ona grupie?
+      abstain: Wstrzymać się
+      abstain_meaning: Nie podjęcie decyzji o udzieleniu głosu lub niemożność głosowania w tej sprawie.
+      abstain_prompt: Dlaczego wstrzymuje się Pan od głosu lub nie czuje się Pan na siłach, aby głosować w tej sprawie?
+      disagree: Nie zgadzać się
+      disagree_meaning: Abym mógł poprzeć tę propozycję, muszę coś w niej zmienić.
+      disagree_prompt: W jaki sposób można udoskonalić tę propozycję, aby mógł Pan ją poprzeć?
+    advice:
+      process_subtitle: Poproś o poradę w sprawie decyzji, którą musisz podjąć
+      process_introduction: <p>Poproś o radę w sprawie decyzji, którą musisz podjąć, korzystając z porad osób, których ta decyzja dotyczy, lub osób posiadających wiedzę specjalistyczną, dzięki czemu będziesz mógł podjąć lepszą decyzję dla swojej organizacji.</p><ul><li><p> Porady pomagają podejmować lepsze decyzje dla Twojej organizacji.</p></li><li><p> Wspieraj relacje, możliwości uczenia się i różnorodność opinii.</p></li><li><p> Pobudzaj inicjatywę i kreatywność, a praca stanie się przyjemniejsza.</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>Przeczytaj więcej o procesie doradztwa</u></a> .</p>
+      title: Pomóż Takashi'emu kupić nowy komputer
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Jaką decyzję musisz podjąć?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Dlaczego to jest ważne?</strong></h3><p></p><h3 id="what-advice-are-you-asking-from-people-to-help-you-make-a-go"> <strong>Jakich rad szukasz u innych, aby móc podjąć dobrą decyzję?</strong></h3><p></p><p> Chciałbym poznać Państwa opinię, która pomoże mi podjąć dobrą decyzję dla naszej organizacji.</p>
+      agree: Zgadzać się
+      agree_meaning: Zaoferowałem swoją poradę dotyczącą tej decyzji
+      agree_prompt: Podsumuj swoją poradę lub napisz pomocny komentarz
+      abstain: Wstrzymać się
+      abstain_meaning: Nie mam żadnych rad do zaoferowania
+      abstain_prompt: Czy masz jakieś uwagi, które mogą okazać się pomocne?
+      outcome_statement: "<p>Dziękuję za udział w mojej rundzie porad!</p>"
+    consent:
+      process_subtitle: Podejmij decyzję, którą „bezpiecznie będzie wypróbować”, bez sprzeciwów
+      process_introduction: <p>Poproś o zgodę na decyzję, którą musisz podjąć, jeśli nie ma istotnych sprzeciwów wobec Twojej propozycji, dzięki czemu będziesz mógł szybko podjąć decyzję dla swojej organizacji, którą „można bezpiecznie wypróbować”.</p><ul><li><p> Dąż do podjęcia decyzji „wystarczająco dobrej”</p></li><li><p> Zaangażuj wiele głosów, aby opracować wykonalną propozycję</p></li><li><p> Zapytaj, czy ktoś ma uzasadnione obiekcje</p></li><li><p> Zmień propozycję rozwiązania sprzeciwów</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Przeczytaj więcej o procesie wyrażania zgody</a> .</p>
+      title: Zatrudnij Chloe na stanowisko projektanta
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Jaką decyzję musisz podjąć?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Dlaczego to jest ważne?</strong></h3><p></p><h3 id="what-are-you-asking-of-people-in-this-proposal"> <strong>Czego oczekujesz od ludzi objętych tą propozycją?</strong></h3><p></p><p> Jeśli masz sprzeciw, podaj jego uzasadnienie i zaproponuj zmianę, która sprawi, że propozycja będzie bezpieczna.</p><p> Pamiętajmy, że staramy się o zgodę na podjęcie „wystarczająco dobrej” decyzji, którą „można bezpiecznie podjąć”, abyśmy mogli podjąć decyzję dobrą dla naszej organizacji.</p>
+      consent: Zgoda
+      consent_meaning: Propozycja jest bezpieczna do wypróbowania
+      consent_prompt: Co podoba Ci się w tej propozycji i jakie korzyści przyniesie ona organizacji?
+      objection: Sprzeciw
+      objection_meaning: Mam uzasadniony sprzeciw i uważam, że propozycja spowoduje szkodę
+      objection_prompt: Jakie zmiany należy wprowadzić do tej propozycji, aby można ją było „bezpiecznie wypróbować” i aby mógł Pan ją poprzeć?
+      outcome_statement: "<p>Dziękujemy za udział w procesie wyrażania zgody.</p>"
+    consensus:
+      process_subtitle: Osiągnij porozumienie zbiorowe ze wszystkimi zaangażowanymi
+      process_introduction: <p>Wypracuj konsensus co do decyzji, którą musisz podjąć, aby osiągnąć porozumienie, które zaspokoi potrzeby i uwzględni obawy wszystkich uczestników.</p><ul><li><p> Omów i opracuj wspólnie propozycję</p></li><li><p> Włączaj i szanuj wszystkich zaangażowanych</p></li><li><p> Szukaj zgody u większości ludzi</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/consensus_process/index.html">Przeczytaj więcej o procesie konsensusu</a> .</p>
+      title: Zatwierdź nową koncepcję marki
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Jaką decyzję musisz podjąć?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Dlaczego to jest ważne?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>O co prosisz ludzi?</strong></h3><p></p><p> Aby ta propozycja została przyjęta, potrzebujemy większości głosów członków popierających ją.</p><p> Jeżeli się nie zgadzasz, podaj powód i wyjaśnij, co powinno się zmienić, abyś mógł się zgodzić.</p>
+      outcome_statement: "<p>Dziękujemy za udział w procesie konsensusu.</p>"
+      agree: Zgadzać się
+      agree_meaning: Popieram tę propozycję
+      agree_prompt: Co podoba Ci się w tej propozycji i jakie korzyści przyniesie ona organizacji?
+      abstain: Wstrzymać się
+      abstain_meaning: Ta decyzja mnie nie dotyczy i jestem zadowolony z tego, co postanowi grupa
+      abstain_prompt: Dlaczego wstrzymuje się Pan od głosu lub nie czuje się Pan na siłach, aby głosować w tej sprawie?
+      disagree: Nie zgadzać się
+      disagree_meaning: Coś w tej propozycji musi zostać zmienione, zanim będę mógł ją poprzeć
+      disagree_prompt: W jaki sposób można udoskonalić tę propozycję, aby mógł Pan ją poprzeć?
+      block: Blok
+      block_meaning: Blokuję tę propozycję i uważam, że nie powinna być kontynuowana
+      block_prompt: Wyjaśnij swój sprzeciw wobec tej propozycji i dlaczego nie powinna ona zostać zrealizowana.
+    question_round:
+      process_subtitle: Zadawaj pytania wyjaśniające, aby pomóc ludziom zrozumieć propozycję
+      process_introduction: <p>Runda pytań to okazja, aby ludzie zadawali pytania wyjaśniające dotyczące propozycji, tak aby wszyscy zrozumieli propozycję, zanim powiedzą, co o niej myślą.</p><p> Runda pytań Loomio to specjalna propozycja bez opcji głosowania. Umożliwia ona uczestnikom zadawanie pytań w czasie ustalonym dla rundy.</p><p> Runda pytań jest powszechnie stosowanym etapem procesu wyrażania zgody.</p><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Przeczytaj więcej o procesie wyrażania zgody</a> .</p>
+      title: Jakie masz pytania dotyczące polityki bezpieczeństwa i higieny pracy?
+      details: <h3 id="what-are-you-proposing"><strong>Co proponujesz?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Dlaczego to jest ważne?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>O co prosisz ludzi?</strong></h3><p></p><p> Jest to runda pytań, w której możesz zadawać pytania wyjaśniające.</p><p> Co musisz wiedzieć, aby zrozumieć propozycję?</p><p> Proszę o odpowiedź przed zakończeniem rundy pytań.</p>
+      reason_prompt: Co musisz wiedzieć, aby zrozumieć propozycję?
+      outcome_statement: "<p>Dziękujemy za przesłanie pytań w tej rundzie</p>"
+    sense_check:
+      process_subtitle: Poproś o opinie, pytania i wątpliwości
+      process_introduction: <p>Propozycja Sense check to dobry sposób na uzyskanie informacji zwrotnej, zaproszenie do zadawania pytań i odkrycie obaw. Pomaga wyjaśnić i ulepszyć propozycję przed podjęciem decyzji.</p><p> Kontrola zmysłów pozwala ludziom wiedzieć, że propozycja się tworzy i zachęca ich do zaangażowania się. Jest to okazja do słuchania ludzi, wyczuwania, co czują i odpowiedniego reagowania - otwierając potencjał do włączenia ich wkładu w podejmowanie lepszych decyzji.</p><p> Skorzystaj z propozycji sprawdzenia sensu w procesie zgody, aby zaprosić reakcje i komentarze służące ulepszeniu propozycji, a w procesie konsensusu, aby przetestować konsensus.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Więcej informacji na temat korzystania z funkcji Sense check można znaleźć w części Prosty proces decyzyjny</u></a> <span>.</span></p>
+      title: Jak podobają Ci się nowe koncepcje marki?
+      details: <h3 id="what-are-you-proposing"><strong>Co proponujesz?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Dlaczego to jest ważne?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>O co prosisz ludzi?</strong></h3><p></p><p> Co sądzisz o tej propozycji? Zostaw komentarz lub zaproponuj ulepszenie.</p><p> Kontrola zmysłów jest okazją do przekazania nam swoich opinii i wkładu, dzięki czemu możemy podejmować lepsze decyzje.</p>
+      outcome_statement: "<p>Dziękujemy za udział w teście sprawdzającym zmysły.</p>"
+      not_sure: Nie jestem pewien
+      not_sure_meaning: Mam pytanie lub potrzebuję więcej czasu
+      not_sure_prompt: Które części są dla Ciebie niejasne? Jak można to rozwiązać?
+      looks_good: Wygląda dobrze
+      looks_good_meaning: Cieszę się, że to zmierza w tym kierunku
+      looks_good_prompt: Czy masz jakieś uwagi lub sugestie, jak ulepszyć tę propozycję?
+      abstain: Wstrzymać się
+      abstain_meaning: Nie mam nic do dodania, ani nie mam żadnych zastrzeżeń do tej pracy.
+      abstain_prompt: Wstrzymanie się od głosu oznacza zgodę na kierunek tej propozycji. Czy jest jakiś powód, dla którego głosujesz wstrzymując się od głosu?
+      concerned: Zainteresowany
+      concerned_meaning: Coś w tym musi się zmienić, abym mógł wyrazić zgodę lub się zgodzić
+      concerned_prompt: Jakie są Twoje obawy i jak można je rozwiązać?
+    gradients_of_agreement:
+      process_subtitle: Wyraź poparcie dla propozycji w 8-stopniowej skali
+      process_introduction: "<p>Gradienty akceptacji propozycji pozwalają członkom grupy na wyrażenie poparcia dla propozycji w stopniach na skali, oferując więcej sposobów wyrażenia poparcia niż w przypadku „zgadzam się” i „nie zgadzam się”.</p><p> Użyj Gradientów Porozumienia jako rundy wstępnej, aby przetestować poparcie dla propozycji przed przejściem do formalnego porozumienia.</p><p> Gradienty zgody pozwalają ludziom wiedzieć, że propozycja się tworzy i zachęcają ich do zaangażowania się. To okazja, aby słuchać ludzi, wyczuwać, co czują i odpowiednio reagować - otwierając potencjał na włączenie ich wkładu w podejmowanie lepszych decyzji.</p>"
+      title: Jak podoba Ci się nowe oświadczenie wartości?
+      details: <h3 id="what-are-you-proposing"><strong>Co proponujesz?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Dlaczego to jest ważne?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>O co prosisz ludzi?</strong></h3><p></p><p> Jak podoba Ci się ta propozycja? Wyraź swoje poparcie na poniższej skali i zostaw komentarz lub sugestię dotyczącą ulepszenia.</p><p> Niniejsza propozycja Gradientów porozumienia ma na celu przetestowanie poparcia dla propozycji i stanowi okazję do wyrażenia przez Państwa opinii przed przejściem do formalnego porozumienia.</p>
+      whole_hearted_endorsement: Pełne poparcie
+      whole_hearted_endorsement_meaning: Naprawdę mi się podoba!
+      whole_hearted_endorsement_prompt: Co ci się w tym podoba?
+      agreement_with_minor_contention: Umowa z niewielkim zastrzeżeniem
+      agreement_with_minor_contention_meaning: Nie jest idealny, ale jest wystarczająco dobry
+      agreement_with_minor_contention_prompt: Jakie są Twoje obawy?
+      support_with_reservations: Wsparcie w zakresie rezerwacji
+      support_with_reservations_meaning: Mogę z tym żyć
+      support_with_reservations_prompt: Jakie masz zastrzeżenia?
+      abstain_meaning: Ten problem mnie nie dotyczy
+      abstain_prompt: Czy chciałbyś coś dodać?
+      more_discussion_needed: Potrzeba więcej dyskusji
+      more_discussion_needed_meaning: Jeszcze nie do końca rozumiem te kwestie
+      more_discussion_needed_prompt: Czego nie rozumiesz?
+      don_t_like_but_will_support: Nie lubię, ale będę wspierać
+      don_t_like_but_will_support_meaning: To nie jest świetne, ale nie chcę blokować grupy
+      don_t_like_but_will_support_prompt: Co chciałbyś zobaczyć ulepszonego?
+      serious_disagreement: Poważne nieporozumienie
+      serious_disagreement_meaning: Nie popieram tego - nie licz na mnie
+      serious_disagreement_prompt: Z czym się nie zgadzasz?
+      veto: Weto
+      veto_meaning: Blokuję tę propozycję
+      veto_prompt: Dlaczego blokujesz tę propozycję? Co musi się zmienić, żebyś ją poparł?
+    simple_poll:
+      process_subtitle: Znajdź najpopularniejszą opcję
+      process_introduction: <p>Zanim podejmiesz decyzję, sprawdź, które opcje są dla ludzi najważniejsze.</p><p> Prosta ankieta pozwala znaleźć najpopularniejszą opcję lub opcje z odpowiedziami jednokrotnego lub wielokrotnego wyboru.</p><p> W polu szczegółów wpisz wszelkie szczegóły dotyczące opcji, a następnie wpisz nazwę opcji i kliknij +, aby ją dodać.</p><p> Ustaw <strong>Minimalne wybory</strong> i <strong>Maksymalne wybory, które</strong> może wybrać wyborca. Pozostaw maksymalny wybór jako 1 dla ankiety z jednym wyborem.</p><p> Za pomocą ikony ołówka obok każdej opcji możesz dodać jej <strong>znaczenie</strong> , co ułatwi ludziom głosowanie.</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">Przeczytaj więcej o prostej ankiecie</a> .</p>
+      title: Na czym powinniśmy się skupić w ramach naszego kierunku strategicznego?
+      details: <h3 id="what-is-this-poll-about"><strong>Czego dotyczy ta ankieta?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Dlaczego to jest ważne?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>O co prosisz ludzi?</strong></h3><p></p><p> Wybierz opcję(y), które Cię interesują.</p>
+    score_poll:
+      process_subtitle: Zmierz stopień poparcia dla każdej opcji
+      process_introduction: <p>Użyj ankiety Score, gdy chcesz zbadać ludzi pod kątem ich pragnień, preferencji lub zainteresowania każdą z opcji.</p><p> <span>Uczestnicy proszeni są o ocenę każdej opcji i przypisanie jej punktów poprzez przesuwanie suwaka na skali.</span></p><p> <span>Wyniki wyświetlane są graficznie wraz z tabelą dla każdej opcji, pokazującą całkowitą liczbę punktów, średnią liczbę punktów i liczbę głosujących.</span></p><p> Zaawansowane ustawienia obejmują opcje „Głosy są anonimowe” i „Pokaż opcje w kolejności losowej” - powszechnie używane w ankietach dotyczących wyników w celu zminimalizowania ryzyka stronniczości głosowania.</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">Przeczytaj więcej o ankiecie Score</a> .</p>
+      title: Ocena sposobu podejmowania decyzji w naszej organizacji
+      details: <h3 id="what-is-this-poll-about"><strong>Czego dotyczy ta ankieta?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Dlaczego to jest ważne?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>O co prosisz ludzi?</strong></h3><p></p><p> Wybierz opcję(y), które Cię interesują.</p>
+    dot_vote:
+      process_subtitle: Przydziel budżet punktów, aby ujawnić priorytety
+      process_introduction: <p>Głosowanie kropkowe jest przydatne dla grup próbujących przydzielić ograniczone zasoby do kilku opcji. Wykracza poza prostą ankietę, pomagając uczestnikom zrozumieć, że istnieje ograniczenie przy wyborze opcji.</p><p> Uczestnicy otrzymują określoną liczbę kropek. Ty decydujesz, ile.</p><p> Umieszczają kropki obok przedstawionych opcji, które im się podobają. Uczestnicy mogą umieścić wszystkie swoje kropki na jednej opcji lub rozłożyć je na wiele opcji.</p><p> W miarę jak uczestnicy będą przydzielać punkty, może się zdarzyć, że przekroczą limit budżetu punktów, dlatego zachęcamy do ostrożnego rozważenia sposobu, w jaki wydają swoje punkty.</p><p> Opcje z największą liczbą kropek „wygrywają”. Tabela wyników zawiera dodatkowe dane, które pomogą Ci analizować wyniki.</p><ul><li><p> % punktów</p></li><li><p> Zwrotnica</p></li><li><p> Mieć na myśli</p></li><li><p> Wyborcy</p></li></ul><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">Przeczytaj więcej o głosowaniu Dot</a> .</p>
+      title: Wybór tematów na naszą konferencję
+      details: <h3 id="what-is-this-poll-about"><strong>Czego dotyczy ta ankieta?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Dlaczego to jest ważne?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>O co prosisz ludzi?</strong></h3><p></p><p> W tej ankiecie masz budżet 8 kropek do przydzielenia na preferowane opcje. Możesz umieścić wszystkie kropki na jednej opcji lub rozłożyć je.</p>
+    ranked_choice:
+      process_subtitle: Zrozumieć uporządkowaną preferencję opcji
+      process_introduction: <p>Wybór rankingowy jest przydatny, gdy masz dużą liczbę opcji lub gdy przeprowadzasz wybory.</p><p> Ten szablon ankiety oferuje szereg opcji, dzięki którym ludzie mogą głosować w preferowanej kolejności.</p><p> Możesz ustalić liczbę wyborów, jakie będzie miał wyborca.</p><p> <span>Głosujący przeciągają i upuszczają opcje w kolejności preferencji (gdzie nr 1 oznacza opcję najbardziej preferowaną).</span></p><p> <span>Zaawansowane ustawienia obejmują opcje „Głosy są anonimowe” i „Pokaż opcje w kolejności losowej” - powszechnie używane w przypadku</span> wyborów ocenianych w celu zminimalizowania ryzyka stronniczości podczas głosowania.</p><p> Wyniki są wyświetlane w kolejności rankingowej. Tabela wyników zawiera dodatkowe dane, które pomogą Ci analizować wyniki.</p><ul><li><p> Stopień</p></li><li><p> % punktów</p></li><li><p> Zwrotnica</p></li><li><p> Mieć na myśli</p></li></ul><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">Przeczytaj więcej o wyborze rankingowym</a> .</p>
+      title: Wybierz dyrektorów do rady nadzorczej
+      details: <h3 id="what-is-this-poll-about"><strong>Czego dotyczy ta ankieta?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Dlaczego to jest ważne?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>O co prosisz ludzi?</strong></h3><p></p><p> Zagłosuj, klasyfikując opcje według swoich preferencji. Opcja, która zajmie pierwsze miejsce w wynikach, wygrywa.</p>
+    time_poll:
+      process_subtitle: Znajdź osoby, które są dostępne na spotkanie
+      process_introduction: <p><span>Zaoszczędź czas na ustalaniu daty spotkania lub wydarzenia.</span></p><p> Ankieta czasowa ułatwia sprawdzenie dostępności wszystkich osób i znalezienie najlepszego czasu.</p><p> Podaj tytuł i szczegóły swojej ankiety Time. Wprowadź listę opcji daty i godziny w swojej strefie czasowej.</p><p> Przy ustalaniu przedziałów czasowych weź pod uwagę osoby z różnych stref czasowych. Uczestnicy zobaczą godziny zlokalizowane w ich strefie czasowej.</p><p> Ustaw czas trwania spotkania.</p><p> Po zamknięciu ankiety „Czas” podaj wynik zawierający najlepszy czas i wszelkie instrukcje dotyczące spotkania.</p><p> <span>Loomio dołączy do e-maila z powiadomieniem o wynikach zaproszenie do kalendarza, aby uczestnicy mogli dodawać wpisy do swoich kalendarzy.</span></p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">Przeczytaj więcej o ankiecie Time</a> .</p>
+      title: Znajdźmy datę naszego następnego spotkania
+      details: "<p><strong>Jakie to spotkanie lub wydarzenie?</strong></p><p></p><p> <strong>Dlaczego to jest ważne?</strong></p><p></p><p> <strong>O co prosisz ludzi?</strong></p><p></p><p> <span>Oznacz dostępne przedziały czasowe zieloną ikoną „kciuka w górę” lub pozostaw czerwoną ikoną „kciuka w dół”, gdy jesteś niedostępny.</span></p><p> <span>Użyj ikony z uniesionym kciukiem w bok, aby dać znać, że jesteś dostępny, „jeśli zajdzie taka potrzeba”.</span></p>"
+      reason_prompt: Czy możesz coś powiedzieć, aby pomóc organizatorowi znaleźć odpowiedni termin?
+    opt_in:
+      process_subtitle: Znajdź wolontariuszy lub poproś o uczestników
+      process_introduction: '<p>Użyj opcji Opt-in, aby zaprosić ludzi do dołączenia do zespołu, komitetu lub grupy roboczej lub do wzięcia udziału w wydarzeniu.</p><p> W przypadku opcji „Opt-in” dostępne są dwie opcje głosowania: Akceptuj lub Odrzuć.</p><p> Możesz określić docelową liczbę osób, których szukasz, np. 3 osoby, które dołączą do Twojej grupy roboczej.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#opt-in">Dowiedz się więcej o Opt-in</a> .</p>'
+      title: Grupa robocza do opracowania naszej nowej polityki zrównoważonego rozwoju
+      details: "<p><strong>Do jakiego zespołu, grupy roboczej lub na jakie wydarzenie zapraszasz ludzi?</strong></p><p></p><p> <strong>Dlaczego to jest ważne?</strong></p><p></p><p> <strong>O co prosisz ludzi?</strong></p><p></p><p> Wybierz „Akceptuję”, aby wziąć udział!</p>"
+      accept_meaning: Jestem chętny do wzięcia udziału
+      accept_prompt: Dlaczego się do tego zgłaszasz?
+      decline_meaning: Nie mogę wziąć udziału
+      decline_prompt: Czy chciałbyś coś powiedzieć?
+  forward_mailer:
+    bounce:
+      subject: Twoja wiadomość do Loomio nie została dostarczona
+      reason: Stało się tak, ponieważ Twój klient poczty e-mail zaadresował wiadomość na adres „Od”, a nie na podany adres „Odpowiedz do”.
+      recommendation: Otwórz Loomio w przeglądarce i bezpośrednio opublikuj swoją wiadomość.
+  locale_names:
+    en: angielski
+    be-BY: białoruski
+    bg-BG: bułgarski
+    ca: kataloński
+    cs: czeski
+    zh-TW: chiński (tradycyjny, tajwański)
+    da: duński
+    de: niemiecki
+    es: hiszpański
+    eo: esperanto
+    el: grecki
+    fr: francuski
+    he: hebrajski
+    id: indonezyjski
+    it: włoski
+    hu: węgierski
+    ja: japoński
+    ko: koreański
+    ml: Malajalam
+    nl-NL: Holenderski
+    pl: Polski
+    pt-BR: portugalski (Brazylia)
+    ro: rumuński
+    sr: serbski (łaciński)
+    sr-RS: serbski (cyrylica)
+    sk: słowacki
+    sv: szwedzki
+    vi: wietnamski
+    tr: turecki
+    uk: ukraiński
+    an: Aragoński
+    ar: arabski
+    cmn: chiński (mandaryński)
+    hr: chorwacki
+    it-CH: włoski (Szwajcaria)
+    fi: fiński
+    gl: Galicyjski
+    ga-IE: gaelicki (Irlandia)
+    hi: NIE
+    km: Khmer
+    lv: łotewski
+    mk: Macedoński
+    mi: Maoryski
+    fa-IR: Perski (Iran)
+    pt-PT: portugalski
+    ru: rosyjski
+    sl: słoweński
+    te: Telugu
+    ur: Urdu
+    ur-PK: Urdu (Pakistan)
+    be: białoruski
+    pt: portugalski
+    zh: chiński (tradycyjny, tajwański)
+    zh-HK: chiński (tradycyjny, tajwański)

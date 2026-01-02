@@ -44,10 +44,10 @@ export default {
 .strand-members.d-flex
   //- mid-dot
   //- span(v-show='discussion.seenByCount > 0')
-  //-   a.context-panel__seen_by_count(v-t="{ path: 'thread_context.seen_by_count', args: { count: discussion.seenByCount } }"  @click="openSeenByModal()")
+  //-   a.context-panel__seen_by_count(v-t="{ path: 'discussion_context.seen_by_count', args: { count: discussion.seenByCount } }"  @click="openSeenByModal()")
 
   user-avatar(v-for="reader in readers" :user="reader.user()" :size="28" :key="reader.id")
-  v-btn(small icon @click="openInviteModal" :title="$t('invitation_form.invite_people')")
+  v-btn(size="small" icon @click="openInviteModal" :title="$t('invitation_form.invite_people')")
     common-icon(name="mdi-plus")
 </template>
 

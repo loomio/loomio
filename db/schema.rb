@@ -10,13 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_02_15_143232) do
+ActiveRecord::Schema[7.2].define(version: 2025_12_03_031449) do
+  create_schema "pghero"
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
   enable_extension "pg_stat_statements"
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
+
+  create_table "action_mailbox_inbound_emails", force: :cascade do |t|
+    t.integer "status", default: 0, null: false
+    t.string "message_id", null: false
+    t.string "message_checksum", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["message_id", "message_checksum"], name: "index_action_mailbox_inbound_emails_uniqueness", unique: true
+  end
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -466,6 +477,9 @@ ActiveRecord::Schema[7.0].define(version: 2025_02_15_143232) do
     t.integer "discussion_templates_count", default: 0, null: false
     t.integer "poll_templates_count", default: 0, null: false
     t.string "request_to_join_prompt"
+    t.integer "delegates_count", default: 0, null: false
+    t.string "category"
+    t.boolean "can_start_polls_without_discussion", default: false, null: false
     t.index ["archived_at"], name: "index_groups_on_archived_at", where: "(archived_at IS NULL)"
     t.index ["created_at"], name: "index_groups_on_created_at"
     t.index ["full_name"], name: "index_groups_on_full_name"
@@ -534,6 +548,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_02_15_143232) do
     t.string "title"
     t.datetime "saml_session_expires_at", precision: nil
     t.integer "revoker_id"
+    t.boolean "delegate", default: false, null: false
     t.index ["created_at"], name: "index_memberships_on_created_at"
     t.index ["group_id", "user_id"], name: "index_memberships_on_group_id_and_user_id", unique: true
     t.index ["inviter_id"], name: "index_memberships_on_inviter_id"
@@ -628,7 +643,6 @@ ActiveRecord::Schema[7.0].define(version: 2025_02_15_143232) do
     t.jsonb "custom_fields", default: {}, null: false
     t.string "statement_format", limit: 10, default: "md", null: false
     t.jsonb "attachments", default: [], null: false
-    t.string "secret_token", default: -> { "public.gen_random_uuid()" }
     t.integer "versions_count", default: 0, null: false
     t.date "review_on"
     t.string "content_locale"
@@ -677,6 +691,9 @@ ActiveRecord::Schema[7.0].define(version: 2025_02_15_143232) do
     t.string "prompt"
     t.datetime "created_at", precision: nil
     t.datetime "updated_at", precision: nil
+    t.string "test_operator"
+    t.integer "test_percent"
+    t.string "test_against"
     t.index ["poll_id"], name: "index_poll_options_on_poll_id"
   end
 
@@ -725,15 +742,9 @@ ActiveRecord::Schema[7.0].define(version: 2025_02_15_143232) do
     t.string "outcome_statement_format", default: "html", null: false
     t.integer "outcome_review_due_in_days"
     t.boolean "public", default: false, null: false
+    t.boolean "show_none_of_the_above", default: false, null: false
+    t.integer "quorum_pct"
     t.index ["discarded_at"], name: "index_poll_templates_on_discarded_at"
-  end
-
-  create_table "poll_unsubscriptions", id: :serial, force: :cascade do |t|
-    t.integer "poll_id", null: false
-    t.integer "user_id", null: false
-    t.datetime "created_at", precision: nil
-    t.datetime "updated_at", precision: nil
-    t.index ["poll_id", "user_id"], name: "index_poll_unsubscriptions_on_poll_id_and_user_id", unique: true
   end
 
   create_table "polls", id: :serial, force: :cascade do |t|
@@ -787,6 +798,9 @@ ActiveRecord::Schema[7.0].define(version: 2025_02_15_143232) do
     t.string "tags", default: [], array: true
     t.integer "poll_template_id"
     t.string "poll_template_key"
+    t.boolean "show_none_of_the_above", default: false, null: false
+    t.integer "none_of_the_above_count", default: 0, null: false
+    t.integer "quorum_pct"
     t.index ["author_id"], name: "index_polls_on_author_id"
     t.index ["closed_at", "closing_at"], name: "index_polls_on_closed_at_and_closing_at"
     t.index ["closed_at", "discussion_id"], name: "index_polls_on_closed_at_and_discussion_id"
@@ -830,6 +844,16 @@ ActiveRecord::Schema[7.0].define(version: 2025_02_15_143232) do
     t.index ["stance_id"], name: "index_stance_choices_on_stance_id"
   end
 
+  create_table "stance_receipts", force: :cascade do |t|
+    t.bigint "poll_id"
+    t.bigint "voter_id"
+    t.bigint "inviter_id"
+    t.datetime "invited_at"
+    t.boolean "vote_cast"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "stances", id: :serial, force: :cascade do |t|
     t.integer "poll_id", null: false
     t.integer "participant_id"
@@ -852,6 +876,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_02_15_143232) do
     t.jsonb "option_scores", default: {}, null: false
     t.integer "revoker_id"
     t.boolean "guest", default: false, null: false
+    t.boolean "none_of_the_above", default: false, null: false
     t.index ["guest"], name: "stances_guests", where: "(guest = true)"
     t.index ["participant_id"], name: "index_stances_on_participant_id"
     t.index ["poll_id", "cast_at"], name: "index_stances_on_poll_id_and_cast_at", order: "NULLS FIRST"
@@ -880,6 +905,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_02_15_143232) do
     t.datetime "renewed_at", precision: nil
     t.boolean "allow_subgroups", default: true, null: false
     t.boolean "allow_guests", default: true, null: false
+    t.string "lead_status"
     t.index ["owner_id"], name: "index_subscriptions_on_owner_id"
     t.index ["plan"], name: "index_subscriptions_on_plan"
   end
@@ -940,13 +966,6 @@ ActiveRecord::Schema[7.0].define(version: 2025_02_15_143232) do
     t.index ["user_id"], name: "index_tasks_users_on_user_id"
   end
 
-  create_table "tasks_users_extensions", force: :cascade do |t|
-    t.bigint "task_id", null: false
-    t.bigint "user_id", null: false
-    t.boolean "hidden", default: false
-    t.index ["task_id", "user_id"], name: "index_tasks_users_extensions_on_task_id_and_user_id", unique: true
-  end
-
   create_table "translations", id: :serial, force: :cascade do |t|
     t.integer "translatable_id"
     t.string "translatable_type", limit: 255
@@ -954,6 +973,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_02_15_143232) do
     t.string "language", limit: 255
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.index ["language"], name: "index_translations_on_language"
     t.index ["translatable_type", "translatable_id"], name: "index_translations_on_translatable_type_and_translatable_id"
   end
 
@@ -1016,7 +1036,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_02_15_143232) do
     t.jsonb "attachments", default: [], null: false
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
-    t.string "secret_token", default: -> { "public.gen_random_uuid()" }
+    t.string "secret_token", default: -> { "public.gen_random_uuid()" }, null: false
     t.string "content_locale"
     t.boolean "bot", default: false, null: false
     t.jsonb "link_previews", default: [], null: false
@@ -1027,6 +1047,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_02_15_143232) do
     t.boolean "autodetect_time_zone", default: true, null: false
     t.string "email_sha256"
     t.integer "complaints_count", default: 0, null: false
+    t.boolean "auto_translate", default: false, null: false
     t.index ["api_key"], name: "index_users_on_api_key"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["email_verified"], name: "index_users_on_email_verified"
@@ -1069,6 +1090,4 @@ ActiveRecord::Schema[7.0].define(version: 2025_02_15_143232) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "tasks_users_extensions", "tasks"
-  add_foreign_key "tasks_users_extensions", "users"
 end

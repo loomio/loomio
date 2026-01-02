@@ -1,9 +1,10 @@
+---
 ca:
   discussion_templates:
     blank:
       process_name: Plantilla en blanc
       process_subtitle: Inicieu un fil nou per a qualsevol propòsit
-      process_introduction: "<p>Inicieu un fil al vostre grup sobre qualsevol tema que us agradi.</p><p> Per defecte, tots els membres del grup rebran una notificació quan inicieu el fil. Podeu canviar-ho editant el camp \"convida\" a continuació.</p>"
+      process_introduction: <p>Inicieu un fil al vostre grup sobre qualsevol tema que us agradi.</p><p> Per defecte, tots els membres del grup rebran una notificació quan inicieu el fil. Podeu canviar-ho editant el camp "convida" a continuació.</p>
     discuss_a_topic:
       title_placeholder: Quin és el tema que voleu tractar?
       process_name: Debat sobre un tema
@@ -49,7 +50,7 @@ ca:
       title_placeholder: Comparteix enllaços i informació
       process_name: Comparteix enllaços i informació
       process_subtitle: Publica informació, enllaços i informes per compartir-los per comentar i debatre.
-      process_introduction: "<p>Utilitzeu un fil com a \"mur\" o \"tauler d'anuncis\" perquè el vostre grup publiqui informació, notícies i idees que us agradaria compartir entre ells.</p><p> Convida la gent a utilitzar les <strong>eines Insereix l'enllaç</strong> i <strong>Incrusta les eines de format de vídeo</strong> per ajudar el grup a accedir a la informació des de Loomio. Utilitzeu un <strong>encapçalament</strong> als comentaris per fixar el comentari a la línia de temps del fil, de manera que es pugui trobar fàcilment.</p><p> <strong>Fixeu</strong> el fil perquè s'enganxi i animeu <strong>Reactions</strong> a mantenir-lo amb energia, fent saber a la gent que heu vist el seu article.</p><p> La visualització per defecte d'aquest fil és <strong>Més recent</strong> , de manera que els comentaris més recents es troben a la part superior del fil.</p>"
+      process_introduction: <p>Utilitzeu un fil com a "mur" o "tauler d'anuncis" perquè el vostre grup publiqui informació, notícies i idees que us agradaria compartir entre ells.</p><p> Convida la gent a utilitzar les <strong>eines Insereix l'enllaç</strong> i <strong>Incrusta les eines de format de vídeo</strong> per ajudar el grup a accedir a la informació des de Loomio. Utilitzeu un <strong>encapçalament</strong> als comentaris per fixar el comentari a la línia de temps del fil, de manera que es pugui trobar fàcilment.</p><p> <strong>Fixeu</strong> el fil perquè s'enganxi i animeu <strong>Reactions</strong> a mantenir-lo amb energia, fent saber a la gent que heu vist el seu article.</p><p> La visualització per defecte d'aquest fil és <strong>Més recent</strong> , de manera que els comentaris més recents es troben a la part superior del fil.</p>
       description: <p>Fes servir aquest fil per publicar informació, avisos i coses que t'agradaria compartir, un lloc on pots veure què està passant i participar.</p><p data-text-align="start"> Comparteix esdeveniments, informes, podcasts i altra informació interessant en línia.</p><p data-text-align="start"> Utilitzeu les <strong>eines Insereix l'enllaç</strong> i <strong>Insereix les eines de format de vídeo</strong> per ajudar les persones a accedir a la informació a Loomio.</p>
       information: Informació
     prepare_for_a_meeting:
@@ -63,7 +64,7 @@ ca:
       title_placeholder: Revisió de la nostra política de contractació
       process_name: Construir una política
       process_subtitle: Treballeu amb el vostre equip per crear i acordar una política o un document de procediment.
-      process_introduction: "<p><span>El fil és el contenidor de discussió sobre la política, on podeu acordar requisits i principis, i publicar esborranys de documents per fer comentaris.</span></p><p> <span>Utilitzeu la plantilla per desenvolupar una política amb un grup reduït de persones o fer-la transparent per a tota l'organització, convidant a fer comentaris sobre les versions progressives del document.</span></p><p> <span>Utilitzeu una proposta de comprovació Sense per notificar als membres del grup que un esborrany de document està preparat per a la seva revisió i convidar la gent a llegir el document i respondre amb qualsevol comentari o pregunta.</span></p><p> <span>Quan un esborrany \"final\" estigui preparat, planteja una proposta de consentiment o consens per aprovar el document.</span></p>"
+      process_introduction: <p><span>El fil és el contenidor de discussió sobre la política, on podeu acordar requisits i principis, i publicar esborranys de documents per fer comentaris.</span></p><p> <span>Utilitzeu la plantilla per desenvolupar una política amb un grup reduït de persones o fer-la transparent per a tota l'organització, convidant a fer comentaris sobre les versions progressives del document.</span></p><p> <span>Utilitzeu una proposta de comprovació Sense per notificar als membres del grup que un esborrany de document està preparat per a la seva revisió i convidar la gent a llegir el document i respondre amb qualsevol comentari o pregunta.</span></p><p> <span>Quan un esborrany "final" estigui preparat, planteja una proposta de consentiment o consens per aprovar el document.</span></p>
       description: "<p><strong><span>Quina és la política o el document que necessiteu per crear?</span></strong></p><p></p><p> <strong><span>Per què és important això?</span></strong></p><p></p><p> <strong><span>Què estàs demanant a la gent que faci?</span></strong></p><p></p>"
       policy: Política
     elect_a_governance_position:
@@ -87,6 +88,12 @@ ca:
       process_introduction: "<p>Introduïu el document juntament amb qualsevol informació de fons. Indiqueu el propòsit del document per ajudar-vos a mantenir la concentració.</p><p> Convideu la gent a aportar informació i la seva experiència i utilitzeu-la per emmarcar el document. Reconèixer i considerar els comentaris i les contribucions de la gent.</p><p> Integrar les aportacions en un primer esborrany del document i esborranys successius fins que estigui a punt per ser aprovat.</p><p> Utilitzeu una enquesta de verificació Sense per enquesta opinions i aclarir qualsevol problema amb l'esborrany.</p><p> Un cop considerada la retroalimentació i incorporada al document, procediu a l'aprovació o acord amb una proposta de consentiment o consens.</p><p> El fil es converteix en un registre clar del progrés de la creació de documents i de les decisions preses.</p>"
       description: <h3 id="what-is-the-purpose-of-the-document">Quin és l'objectiu del document?</h3><p></p><h3 id="why-is-this-important"> Per què és important això?</h3><p></p><h3 id="what-are-you-asking-people-to-do"> Què estàs demanant a la gent que faci?</h3><p></p>
       document: Document
+    practice_thread:
+      process_subtitle: Un fil per donar la benvinguda a la gent al grup i practicar l'ús de Loomio
+      process_introduction: "<p>Feu servir aquesta plantilla per donar la benvinguda als nous membres i fomentar la participació anticipada. Dóna a la gent l'oportunitat de presentar-se i explorar les funcions de Loomio.</p>"
+      title: "\U0001F44B Benvingut/da! Saluda i prova coses"
+      description: "<p>Benvingut/da al nostre grup de Loomio. És un plaer tenir-te aquí!</p><p> Aquest fil és un espai per a:</p><ul><li><p> Presenta't al grup</p></li><li><p> Prova algunes de les funcions de Loomio; per exemple, prova d'utilitzar reaccions \U0001F44D</p></li><li><p> Feu qualsevol pregunta que tingueu en aquesta etapa</p></li></ul><p> Si no esteu segurs de què dir, un simple hola està bé \U0001F642</p>"
+      process_name: Discussió pràctica
   explore:
     header: Explora grups públics
   activerecord:
@@ -96,26 +103,51 @@ ca:
         invalid: no és un valor vàlid
   unauthorized:
     manage:
-      all: "No està autoritzat a %{action} %{subject}."
+      all: No està autoritzat a %{action} %{subject}.
     add_guests:
-      all: "Heu d'actualitzar la vostra subscripció a Loomio per afegir convidats al vostre %{subject}. Alternativament, podeu convidar-los a ser membres del vostre grup."
+      all: Heu d'actualitzar la vostra subscripció a Loomio per afegir convidats al vostre %{subject}. Alternativament, podeu convidar-los a ser membres del vostre grup.
   errors:
-    clear_cache: "S'ha detectat un problema de càrrega. Manteniu premuda la majúscula i premeu Recarrega o esborra la memòria cau del navegador."
+    clear_cache: S'ha detectat un problema de càrrega. Manteniu premuda la majúscula i premeu Recarrega o esborra la memòria cau del navegador.
     404:
       title: No s'ha trobat
     noscript: Loomio requereix javascript per funcionar! Si us plau, activeu javascript al vostre navegador per continuar
-    upgrade_browser: |-
-        UH oh! El vostre navegador web és massa antic i és possible que Loomio no funcioni correctament. Si us plau <a href="https://browser-update.org/update.html">, actualitzeu el vostre navegador.</a>
+    upgrade_browser: UH oh! El vostre navegador web és massa antic i és possible que Loomio no funcioni correctament. Si us plau <a href="https://browser-update.org/update.html">, actualitzeu el vostre navegador.</a>
     return_home: Tornar a casa
     not_found: No s'ha trobat el fitxer 404.
     messages:
       email: no és una adreça de correu electrònic vàlida
       spoofed_media_type: El contingut d'aquest fitxer no coincideix amb el seu nom
       pwned_password: Aquesta contrasenya ha aparegut anteriorment en una violació de dades i no s'ha d'utilitzar mai
+    '400':
+      title: Sol·licitud incorrecta
+      body: Ho sentim, no hem pogut entendre aquesta sol·licitud.
+    '401':
+      title: No autoritzat
+      body: No teniu permís per accedir a aquesta pàgina. Pot ser que hàgiu d'iniciar la sessió.
+    '403':
+      title: Prohibit
+      body: No teniu permís per accedir a aquesta pàgina. Pot ser que hàgiu d'iniciar la sessió.
+    '410':
+      title: Desaparegut
+      body: Aquesta pàgina ja no existeix
+    '417':
+      title: Navegador incompatible
+      body: Si us plau, <a href="https://browser-update.org/update.html?force_outdated=true">actualitzeu el vostre navegador</a> per utilitzar Loomio
+    '422':
+      title: Entitat no processable
+      body: El canvi que volies ha estat rebutjat. Potser vas intentar canviar alguna cosa a la qual no tenies accés.
+    '429':
+      title: Massa sol·licituds
+      body: Ho sentim, heu superat el màxim de sol·licituds permeses per minut per a aquesta acció. Espereu una estona i torneu-ho a intentar.
+    '500':
+      title: Error intern del servidor
+      body: Ho sentim, però alguna cosa ha anat malament. Ens han notificat aquest problema i el revisarem en breu.
+    '404':
+      body: No s'ha trobat l'element que has sol·licitat. Això pot passar si s'ha suprimit una discussió o una enquesta.
   group:
     error:
-      handle_must_begin_with_parent_handle: "Ha de començar per %{parent_handle}-"
-      no_public_trials: "Si us plau, actualitzeu la versió de prova per canviar la configuració de privadesa del grup"
+      handle_must_begin_with_parent_handle: Ha de començar per %{parent_handle}-
+      no_public_trials: Si us plau, actualitzeu la versió de prova per canviar la configuració de privadesa del grup
     stats:
       group_stats: Estadístiques del grup
       org_stats: Estadístiques de l'organització (inclosos subgrups)
@@ -136,14 +168,13 @@ ca:
         rank: Ordena
         time: enquesta de temps
   user:
-    deleted_user: "Usuari suprimit"
-    placeholder_name: "Usuari convidat (%{hostname})"
+    deleted_user: Usuari suprimit
+    placeholder_name: Usuari convidat (%{hostname})
     error:
-      sign_in_required_html: |-
-          Heu d'iniciar la sessió per continuar. <a href="/dashboard" target="_blank">Inicieu la sessió</a> i torneu a carregar aquesta pàgina per continuar.
-      recaptcha: "No hem pogut verificar que no sou un robot. Siusplau torna-ho a provar!"
-      bad_login: "Les contrasenyes no concorden"
-      username_must_be_alphanumeric: "Els noms d'usuari només han de ser minúscules i números"
+      sign_in_required_html: Heu d'iniciar la sessió per continuar. <a href="/dashboard" target="_blank">Inicieu la sessió</a> i torneu a carregar aquesta pàgina per continuar.
+      recaptcha: No hem pogut verificar que no sou un robot. Siusplau torna-ho a provar!
+      bad_login: Les contrasenyes no concorden
+      username_must_be_alphanumeric: Els noms d'usuari només han de ser minúscules i números
   poll:
     error:
       cannot_add_options: No es poden afegir opcions a aquesta enquesta
@@ -151,6 +182,7 @@ ca:
       must_have_options: Ha de tenir almenys una opció d'enquesta
       must_be_in_the_future: Ha de ser en el futur
       templates_cannot_close: Les plantilles no es poden tancar
+      poll_options_dont_match: Un error amb Loomio ha impedit que es desés el teu vot. Estem treballant per solucionar-ho. Torna a carregar i intenta-ho de nou.
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) membres han manifestat la seva posició"
       title: Títol
@@ -175,7 +207,7 @@ ca:
       participant: Participant
       also_available: També disponible a
       total: Total
-    waiting_for_votes_from: "Esperant els vots de"
+    waiting_for_votes_from: Esperant els vots de
   stance:
     error:
       too_short: Si us plau, feu una selecció
@@ -189,35 +221,35 @@ ca:
     via_loomio: "%{name} (a través de %{site_name})"
   event_mailer:
     received_email:
-      explaination_html: |-
-          <p>Heu rebut aquest correu electrònic perquè sou administrador del grup Loomio: %{group}.</p><p> El grup ha rebut un correu electrònic d'una adreça electrònica no reconeguda.</p><p> Si el missatge és d'un membre del grup, reviseu el correu electrònic i seleccioneu el membre.</p><p> Si el missatge no és desitjat, podeu bloquejar qualsevol altre correu electrònic des d'aquesta adreça.</p>
+      explaination_html: "<p>Heu rebut aquest correu electrònic perquè sou administrador del grup Loomio: %{group}.</p><p> El grup ha rebut un correu electrònic d'una adreça electrònica no reconeguda.</p><p> Si el missatge és d'un membre del grup, reviseu el correu electrònic i seleccioneu el membre.</p><p> Si el missatge no és desitjat, podeu bloquejar qualsevol altre correu electrònic des d'aquesta adreça.</p>"
+    notification_reason:
+      group_subscribed: Ho has rebut perquè estàs subscrit a totes les activitats del grup.
+      group_mentioned: Heu rebut això perquè el grup era @esmentat.
+      user_mentioned: Has rebut això perquè ets @esmentat.
+      notified: L'heu rebut perquè l'autor us ho va notificar.
+      poll_subscribed: Has rebut això perquè estàs subscrit a l'enquesta.
+      discussion_subscribed: Has rebut això perquè estàs subscrit a la discussió.
   user_mailer:
     group_export_ready:
       subject: Exportació de dades de grup per a %{group_name}
-      body_html: |-
-          Descarrega les dades del teu grup <a href="%{url}">aquí</a> . Tingueu en compte que aquest enllaç caducarà d'aquí a una setmana.
+      body_html: Descarrega les dades del teu grup <a href="%{url}">aquí</a> . Tingueu en compte que aquest enllaç caducarà d'aquí a una setmana.
     redacted:
-      subject: "S'ha suprimit el vostre compte d'usuari %{site_name}"
-      body_html: |-
-          <p>S'ha suprimit el vostre compte d'usuari %{site_name}.</p><p> S'han eliminat totes les dades d'identificació personal.</p><p> Si no ho heu sol·licitat, poseu-vos en contacte amb %{support_email}</p>
+      subject: S'ha suprimit el vostre compte d'usuari %{site_name}
+      body_html: "<p>S'ha suprimit el vostre compte d'usuari %{site_name}.</p><p> S'han eliminat totes les dades d'identificació personal.</p><p> Si no ho heu sol·licitat, poseu-vos en contacte amb %{support_email}</p>"
     accounts_merged:
-      subject: "Els vostres comptes d'usuari %{site_name} s'han combinat."
-      body_html: |-
-          Hola %{name}, Els vostres dos comptes de loomio s'han fusionat en un sol compte. Per accedir a loomio a partir d'ara, utilitzeu <strong>%{email}</strong> quan inicieu la sessió.
+      subject: Els vostres comptes d'usuari %{site_name} s'han combinat.
+      body_html: Hola %{name}, Els vostres dos comptes de loomio s'han fusionat en un sol compte. Per accedir a loomio a partir d'ara, utilitzeu <strong>%{email}</strong> quan inicieu la sessió.
     merge_verification:
-      subject: "Verifiqueu la vostra adreça de correu electrònic %{site_name} per combinar"
-      body_html: |-
-          <p>Hola %{name},</p><p> S'ha fet una sol·licitud per combinar el vostre compte d'usuari a l'adreça <strong>%{source_email}</strong> amb el compte que pertany a aquesta adreça, <strong>%{target_email}</strong> .</p><p> Un cop finalitzat aquest procés, ja no podreu iniciar sessió amb <strong>%{source_email}</strong> i només amb <strong>%{target_email}</strong> .</p><p> Confirmeu que això és el que voleu fer.</p>
+      subject: Verifiqueu la vostra adreça de correu electrònic %{site_name} per combinar
+      body_html: "<p>Hola %{name},</p><p> S'ha fet una sol·licitud per combinar el vostre compte d'usuari a l'adreça <strong>%{source_email}</strong> amb el compte que pertany a aquesta adreça, <strong>%{target_email}</strong> .</p><p> Un cop finalitzat aquest procés, ja no podreu iniciar sessió amb <strong>%{source_email}</strong> i només amb <strong>%{target_email}</strong> .</p><p> Confirmeu que això és el que voleu fer.</p>"
       verify: Verifiqueu el correu electrònic i continueu
       confirm_page:
         confirm: Confirmeu la fusió
-        body_html: |-
-            <p>Confirmeu que voleu combinar el compte de <strong>%{source_email}</strong> amb el compte de <strong>%{target_email}</strong> .</p><p> El vostre compte a <strong>%{source_email}</strong> se suprimirà i, després, només podreu iniciar la sessió mitjançant <strong>%{target_email}</strong> .</p><p> Aquest canvi és irreversible.</p>
+        body_html: "<p>Confirmeu que voleu combinar el compte de <strong>%{source_email}</strong> amb el compte de <strong>%{target_email}</strong> .</p><p> El vostre compte a <strong>%{source_email}</strong> se suprimirà i, després, només podreu iniciar la sessió mitjançant <strong>%{target_email}</strong> .</p><p> Aquest canvi és irreversible.</p>"
         merge: Fusiona comptes
       complete_page:
         title: Combinació correcta!
-        body_html: |-
-            <p>La combinació dels vostres comptes d'usuari ha estat correcta. En breu rebràs un correu electrònic de confirmació a <strong>%{target_email}</strong> .</p><p> Si us plau, <a href="/contact" target="_blank">poseu-vos en contacte amb nosaltres</a> si teniu més preguntes.</p>
+        body_html: <p>La combinació dels vostres comptes d'usuari ha estat correcta. En breu rebràs un correu electrònic de confirmació a <strong>%{target_email}</strong> .</p><p> Si us plau, <a href="/contact" target="_blank">poseu-vos en contacte amb nosaltres</a> si teniu més preguntes.</p>
   email:
     common:
       or_enter_code: O bé, introduïu el codi a continuació
@@ -234,25 +266,23 @@ ca:
     contact_request:
       subject: "%{name} vol connectar amb tu a %{site_name}!"
       intro: "%{name} (%{email}) t'ha enviat una sol·licitud per connectar-te."
-      footer: "Podeu respondre a %{name} directament responent a aquest correu electrònic."
+      footer: Podeu respondre a %{name} directament responent a aquest correu electrònic.
     reset_password:
       greeting: |
-          Hola %{name}
-          Aquí teniu un enllaç per reiniciar la contrasenya del vostre compte de Loomio:
+        Hola %{name}
+        Aquí teniu un enllaç per reiniciar la contrasenya del vostre compte de Loomio:
       link_text: Reinicieu la contrasenya
-      signoff: |-
-          Heu rebut això perquè el vostre correu electrònic s'ha introduït al formulari "He oblidat la contrasenya" a %{hostname}. Tanmateix, la vostra contrasenya no es canviarà fins que seguiu l'enllaç anterior i ompliu el formulari. Si continueu tenint problemes per iniciar la sessió, responeu a aquest correu electrònic per contactar amb una persona d'assistència.
+      signoff: Heu rebut això perquè el vostre correu electrònic s'ha introduït al formulari "He oblidat la contrasenya" a %{hostname}. Tanmateix, la vostra contrasenya no es canviarà fins que seguiu l'enllaç anterior i ompliu el formulari. Si continueu tenint problemes per iniciar la sessió, responeu a aquest correu electrònic per contactar amb una persona d'assistència.
     by_who: per %{person}
     reply_to_this_discussion: Responeu a aquesta discussió
-    loomio_app_description: "Un lloc segur i fàcil d'utilitzar perquè les organitzacions prenguin decisions juntes."
     view_group: Mostra el grup
     to_join_group:
       subject: "%{member} t'ha convidat a unir-te a %{group_name} a %{site_name}"
       invitation_text: "%{member} us ha convidat a unir-vos al seu grup %{group_name}"
-      invitation_text_html: "us ha convidat a unir-vos al seu grup"
-      link_help: "Cliqueu a l'enllaç de sota per acceptar la invitació:"
-      accept_invitation: "Accepta la invitació"
-      stop_emails: "Deixa de rebre correus electrònics de %{site_name}"
+      invitation_text_html: us ha convidat a unir-vos al seu grup
+      link_help: 'Cliqueu a l''enllaç de sota per acceptar la invitació:'
+      accept_invitation: Accepta la invitació
+      stop_emails: Deixa de rebre correus electrònics de %{site_name}
       accepting_is_important: És important acceptar la vostra invitació, perquè no us perdeu notificacions sobre decisions que us impliquen.
     resend_to_join_group:
       subject: "%{member} està esperant que t'uneixis a %{group_name} a %{site_name}"
@@ -260,8 +290,8 @@ ca:
       subject: "%{who} t'ha afegit a %{which_group} a %{site_name}"
       content: "%{who} us ha afegit a %{which_group}"
       content_html: "<strong>%{who}</strong> us ha afegit a <strong>%{which_group}</strong>."
-      link_help: "Cliqueu a l'enllaç de sota per a anar al grup:"
-    unsubscribe: "Doneu-vos de baixa o canvieu les preferències de correu:"
+      link_help: 'Cliqueu a l''enllaç de sota per a anar al grup:'
+    unsubscribe: 'Doneu-vos de baixa o canvieu les preferències de correu:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> per donar-vos de baixa o canviar les preferències de correu."
     catch_up:
       daily_subject: Ahir a %{site_name}
@@ -273,27 +303,30 @@ ca:
       marked_as_read_success: Tot el que apareix al correu electrònic s'ha marcat com a llegit
       click_here: Fes click aquí
     group_membership_approved:
-      intro: "La vostra sol·licitud d'accés al grup %{group_name} s'ha aprovat."
-      intro_html: "La vostra sol·licitud d'accés al grup <strong>%{group_name}</strong> s'ha aprovat."
-      link_help: "Feu clic a l'enllaç següent per unir-vos a %{group_name} i començar:"
-      subject: "La teva sol·licitud per unir-te a %{group_name} s'ha aprovat"
-      join_group: "Unir-se al grup"
+      intro: La vostra sol·licitud d'accés al grup %{group_name} s'ha aprovat.
+      intro_html: La vostra sol·licitud d'accés al grup <strong>%{group_name}</strong> s'ha aprovat.
+      link_help: 'Feu clic a l''enllaç següent per unir-vos a %{group_name} i començar:'
+      subject: La teva sol·licitud per unir-te a %{group_name} s'ha aprovat
+      join_group: Unir-se al grup
     membership_request:
       intro_html: ha sol·licitat accés a un dels vostres grups.
       subject: "%{who} ha demanat unir-se a %{which_group}"
       view_group: Pots aprovar o denegar la sol·licitud aquí
       button_text: Veure sol·licitud
+    content_was_translated: Aquest contingut ha estat traduït de %{source_locale}
+    content_was_translated_html: Aquest contingut s'ha traduït de %{source_locale}. <a href="%{profile_url}">Veure la configuració<a></a>
+    loomio_app_description: Un espai on les organitzacions col·laboradores puguin prendre decisions conjuntament.
   announcement_count_emails: "%{count} correus electrònics"
   email_actions:
     unfollowed_discussion: Heu desactivat els correus electrònics per al fil.
   discussion_mailer:
-    reply_or_view_online_html: "Respon a aquest correu electrònic directament o <a href='%{url}'>visualitza'l a %{hostname}</a> ."
+    reply_or_view_online_html: Respon a aquest correu electrònic directament o <a href='%{url}'>visualitza'l a %{hostname}</a> .
     turn_off_notifications_html: "<a href='%{url}'>Desactiva els correus electrònics</a> per a aquesta discussió."
-    change_email_preferences_html: "Canvieu les vostres <a href='%{email_preferences_url}'>preferències de correu electrònic</a> ."
+    change_email_preferences_html: Canvieu les vostres <a href='%{email_preferences_url}'>preferències de correu electrònic</a> .
     unsubscribe_from_discussion_announced_html: "<a href='%{url}'>Cancel·la la subscripció</a> a més anuncis en aquest fil."
     unsubscribe_from_new_comment_html: "<a href='%{url}'>Cancel·la la subscripció</a> als comentaris d'aquest fil."
-    unsubscribe_from_comment_replied_to_html: "Aquesta és una notificació de resposta."
-    unsubscribe_from_user_mentioned_html: "Aquesta és una notificació de menció."
+    unsubscribe_from_comment_replied_to_html: Aquesta és una notificació de resposta.
+    unsubscribe_from_user_mentioned_html: Aquesta és una notificació de menció.
     discussion_edited:
       inline: "%{actor} ha editat el context del fil"
     discussion_closed:
@@ -313,38 +346,248 @@ ca:
     change_my_password: Canvia la contrasenya
     confirm_new_password: Confirma la contrassenya
     new_password: Nova contrasenya
-    email_guidelines_html: |-
-        <p>Introduïu la vostra adreça de correu electrònic i se us enviarà un enllaç de restabliment de la contrasenya.</p><p> Si normalment inicieu sessió a través de Facebook o Google, introduïu l'adreça de correu electrònic associada amb aquest compte.</p>
+    email_guidelines_html: "<p>Introduïu la vostra adreça de correu electrònic i se us enviarà un enllaç de restabliment de la contrasenya.</p><p> Si normalment inicieu sessió a través de Facebook o Google, introduïu l'adreça de correu electrònic associada amb aquest compte.</p>"
     reset_email_timeframe: El correu electrònic pot trigar fins a 5 minuts a arribar. Si no apareix, assegureu-vos de comprovar la vostra carpeta de correu brossa.
     length_restriction: Les contrasenyes han de tenir almenys 8 caràcters.
     forbidden_passwords: Les contrasenyes com "password" estan prohibides per raons de seguretat.
   task_mailer:
     task_due_reminder:
-      subject: "Recordatori de la tasca: %{name}"
-      greeting: "Hola %{name}, la tasca següent és %{due}:"
-      view_task: "Mostra a %{site_name}"
-      update_or_comment: "Si ja heu completat aquesta tasca, marqueu-la. Si no està completa, comparteix una actualització del progrés."
-      due_today: "avui"
-      due_in_count_days: "en %{count} dies"
+      subject: 'Recordatori de la tasca: %{name}'
+      greeting: 'Hola %{name}, la tasca següent és %{due}:'
+      view_task: Mostra a %{site_name}
+      update_or_comment: Si ja heu completat aquesta tasca, marqueu-la. Si no està completa, comparteix una actualització del progrés.
+      due_today: avui
+      due_in_count_days: en %{count} dies
   group_mailer:
-    resend: "RECORDATOR: %{member} està esperant que t'uneixis a %{group_name}"
+    resend: 'RECORDATOR: %{member} està esperant que t''uneixis a %{group_name}'
     destroy_warning:
       subject: El vostre grup Loomio està programat per suprimir-se.
-      body: |-
-          %{deletor} ha programat la supressió del vostre grup Loomio: "%{group}". Si no voleu que el vostre grup s'elimini, responeu a aquest correu electrònic. Si esteu segur que voleu suprimir el grup, no cal que feu res. Gràcies.
+      body: '%{deletor} ha programat la supressió del vostre grup Loomio: "%{group}". Si no voleu que el vostre grup s''elimini, responeu a aquest correu electrònic. Si esteu segur que voleu suprimir el grup, no cal que feu res. Gràcies.'
   poll_mailer:
     common:
       why_send_this: Esteu rebent aquest correu electrònic perquè %{reason}
       view_on_loomio: Veure-ho a %{site_name}
       create_outcome: Comparteix el resultat
-      your_response: "Has votat:"
-      you_voted: "Has votat!"
-      not_invited: "No convidat"
+      your_response: 'Has votat:'
+      you_voted: Has votat!
+      not_invited: No convidat
       please_respond: Si us plau, respon
-      time_zone: (Les hores es mostren a %{zone})
+      time_zone: "(Les hores es mostren a %{zone})"
       undecided_members: Membres indecisos (%{count})
       undecided_visitors: Convidats indecisos (%{count})
       more_undecided: "%{count} més..."
       vote_now: Votar ara
       you_have_until: Tens fins a %{when} per participar.
       people_have_voted: "%{nom} de %{dnom} persones han participat (%{pct}%)"
+  poll_templates:
+    practice_proposal:
+      title: Començo a agafar el truc d'això
+      process_name: Proposta de pràctica
+      process_subtitle: Aprèn com funcionen les propostes a Loomio provant-ne una.
+      process_introduction: "<p>Feu servir aquesta plantilla per ajudar el vostre grup a familiaritzar-se amb les propostes a Loomio. És una manera segura i senzilla perquè la gent provi de votar i vegi com encaixa tot.</p>"
+      details: "<p>Això és una pràctica perquè tothom es pugui familiaritzar amb el funcionament de les propostes a Loomio.</p><p> Si vols, vota i deixa una explicació del motiu.</p><p> Sense pressió, sense conseqüències al món real. És només una manera d'explorar com funcionen les propostes!</p>"
+      outcome_statement: "<p>Gràcies per participar en aquesta proposta de pràctica! \U0001F389</p><p> Això només era una oportunitat per veure com funciona votar i comentar a Loomio. No s'està prenent cap decisió real aquí, però espero que això hagi ajudat a tothom a familiaritzar-se amb el procés.</p>"
+    proposal:
+      process_subtitle: Plantejar una proposta per prendre una decisió
+      process_introduction: <p>La proposta clàssica de Loomio t'ajuda a prendre una decisió, convertint una discussió en un resultat clar.</p><p> Suggereix un curs d'acció i convida la gent a respondre votant d'acord, abstenció o en desacord.</p><p> A mesura que la gent vota, pot donar una raó per la qual ha votat d'aquesta manera. Pots veure quina és la posició de tothom sobre el tema i per què.</p><p> D'aquesta manera, podeu utilitzar una proposta per incitar la gent a respondre, descobrir nova informació i construir una comprensió compartida, per ajudar el vostre grup a prendre una decisió millor i més informada.</p><p> Una proposta i la discussió associada creen el seu propi registre de com es va prendre la decisió.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Llegiu més informació sobre l'ús de la proposta clàssica de Loomio al procés de decisió simple</u></a> .</p>
+      title: Aprovar el nou concepte de marca
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Quina és la decisió que has de prendre?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Per què és important això?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Què li demanes a la gent que faci?</strong></h3><p></p><p> Perquè aquesta proposta s'aprovi, necessitem que la majoria dels membres votin D'acord.</p><p> Si no hi esteu d'acord, digueu per què i què cal canviar perquè hi estigueu d'acord.</p>
+      agree: D'acord
+      agree_meaning: Dono suport a la proposta
+      agree_prompt: Què t'agrada de la proposta i com beneficiarà el grup?
+      abstain: Abstenir-se
+      abstain_meaning: Escollir no votar o no poder votar en aquesta decisió.
+      abstain_prompt: Per què us absteniu o no us sentiu capaços de votar a favor d'aquesta decisió?
+      disagree: En desacord
+      disagree_meaning: Cal canviar alguna cosa en aquesta proposta abans que pugui donar-hi suport.
+      disagree_prompt: Com es podria millorar aquesta proposta perquè pugueu donar-hi suport?
+    advice:
+      process_subtitle: Demana consell sobre una decisió que has de prendre
+      process_introduction: <p>Demana assessorament sobre una decisió que hagis de prendre, amb el consell de persones afectades o que tinguin experiència, per tal de poder prendre una millor decisió per a la teva organització.</p><ul><li><p> L'assessorament t'ajuda a prendre una millor decisió per a la teva organització.</p></li><li><p> Fomentar les relacions, les oportunitats d'aprenentatge i les aportacions diverses.</p></li><li><p> Estimular la iniciativa i la creativitat, i fer una feina més agradable.</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>Més informació sobre el procés d'assessorament</u></a> .</p>
+      title: Ajuda a Takashi a comprar un ordinador nou
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Quina és la decisió que has de prendre?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Per què és important això?</strong></h3><p></p><h3 id="what-advice-are-you-asking-from-people-to-help-you-make-a-go"> <strong>Quins consells demanes a la gent per ajudar-te a prendre una bona decisió?</strong></h3><p></p><p> Necessito la vostra opinió per ajudar-me a prendre una bona decisió per a la nostra organització.</p>
+      agree: D'acord
+      agree_meaning: He ofert el meu consell sobre aquesta decisió
+      agree_prompt: Resumeix el teu consell o fes un comentari útil
+      abstain: Abstenir-se
+      abstain_meaning: No tinc cap consell per oferir
+      abstain_prompt: Tens algun comentari que pugui ser útil?
+      outcome_statement: "<p>Gràcies per participar a la meva ronda d'assessorament!</p>"
+    consent:
+      process_subtitle: Prendre una decisió que sigui "segura d'intentar", sense objeccions
+      process_introduction: <p>Demaneu consentiment sobre una decisió que heu de prendre, on no hi hagi objeccions significatives a la vostra proposta, per tal de poder prendre una decisió ràpida per a la vostra organització que sigui "segura de provar".</p><ul><li><p> Intenta prendre una decisió "prou bona"</p></li><li><p> Involucrar moltes veus per desenvolupar una proposta viable</p></li><li><p> Preguntar si algú té una objecció vàlida</p></li><li><p> Modificar la proposta per resoldre les objeccions</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Més informació sobre el procés de consentiment</a> .</p>
+      title: Contracta la Chloe per a un rol de disseny
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Quina és la decisió que has de prendre?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Per què és important això?</strong></h3><p></p><h3 id="what-are-you-asking-of-people-in-this-proposal"> <strong>Què demanes a la gent amb aquesta proposta?</strong></h3><p></p><p> Si teniu alguna objecció, expliqueu-ne el motiu i proposeu un canvi a la proposta que la faci segura.</p><p> Recordeu que busquem consentiment per a una decisió "prou bona" que sigui "segura de provar", per tal que puguem prendre una bona decisió per a la nostra organització.</p>
+      consent: Consentiment
+      consent_meaning: La proposta es pot provar amb seguretat
+      consent_prompt: Què t'agrada de la proposta i com beneficiarà l'organització?
+      objection: Objecció
+      objection_meaning: Tinc una objecció vàlida i crec que la proposta causarà danys.
+      objection_prompt: Quin canvi cal fer en aquesta proposta per tal que sigui "segura d'intentar-la", de manera que pugueu donar-li suport?
+      outcome_statement: "<p>Gràcies per participar en el procés de consentiment.</p>"
+    consensus:
+      process_subtitle: Arribar a un acord col·lectiu amb tots els implicats
+      process_introduction: <p>Construir consens per a una decisió que cal prendre, per arribar a un acord que satisfaci les necessitats i les preocupacions de tots els participants.</p><ul><li><p> Debatre i desenvolupar una proposta conjuntament</p></li><li><p> Incloure i respectar a tots els implicats</p></li><li><p> Buscar l'acord de la majoria de la gent</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/consensus_process/index.html">Més informació sobre el procés de consens</a> .</p>
+      title: Aprovar el nou concepte de marca
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Quina és la decisió que has de prendre?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Per què és important això?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Què li demanes a la gent que faci?</strong></h3><p></p><p> Perquè aquesta proposta s'aprovi, necessitem que la majoria dels membres votin D'acord.</p><p> Si no hi esteu d'acord, digueu per què i què cal canviar perquè hi estigueu d'acord.</p>
+      outcome_statement: "<p>Gràcies per participar en el procés de consens.</p>"
+      agree: D'acord
+      agree_meaning: Dono suport a la proposta
+      agree_prompt: Què t'agrada de la proposta i com beneficiarà l'organització?
+      abstain: Abstenir-se
+      abstain_meaning: Aquesta decisió no m'afecta i estic content amb el que decideixi el grup.
+      abstain_prompt: Per què us absteniu o no us sentiu capaços de votar a favor d'aquesta decisió?
+      disagree: En desacord
+      disagree_meaning: Cal canviar alguna cosa en aquesta proposta abans que pugui donar-hi suport.
+      disagree_prompt: Com es podria millorar aquesta proposta perquè pugueu donar-hi suport?
+      block: Bloc
+      block_meaning: Bloquejo aquesta proposta i crec que no hauria de tirar endavant.
+      block_prompt: Expliqueu la vostra objecció a aquesta proposta i per què no s'hauria de tirar endavant
+    question_round:
+      process_subtitle: Convidar a fer preguntes aclaridores per ajudar la gent a entendre una proposta
+      process_introduction: <p>Una ronda de preguntes és una oportunitat perquè la gent faci preguntes aclaridores sobre la proposta, de manera que tothom l'entengui abans de dir què en pensa.</p><p> La ronda de preguntes de Loomio és una proposta especial sense opcions de votació. Permet als participants fer preguntes dins d'un període que definiu per a la ronda.</p><p> Una ronda de preguntes s'utilitza habitualment com a pas en el procés de consentiment.</p><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Més informació sobre el procés de consentiment</a> .</p>
+      title: Quines preguntes tens sobre la política de salut i seguretat?
+      details: <h3 id="what-are-you-proposing"><strong>Què proposes?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Per què és important això?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Què li demanes a la gent que faci?</strong></h3><p></p><p> Aquesta és una ronda de preguntes, on esteu convidats a fer preguntes aclaridores.</p><p> Què cal saber per entendre la proposta?</p><p> Si us plau, responeu abans que s'acabi el torn de preguntes.</p>
+      reason_prompt: Què cal saber per entendre la proposta?
+      outcome_statement: "<p>Gràcies per enviar les vostres preguntes durant aquesta ronda</p>"
+    sense_check:
+      process_subtitle: Demanar comentaris, preguntes i inquietuds
+      process_introduction: <p>La proposta de comprovació de Sense és una bona manera d'obtenir comentaris, convidar a fer preguntes i descobrir dubtes. Ajuda a aclarir i millorar una proposta abans de prendre una decisió.</p><p> La comprovació de sentit permet a la gent saber que s'està formant una proposta i els anima a participar-hi. És una oportunitat per escoltar la gent, percebre com se senten i respondre-hi adequadament, cosa que obre el potencial per incorporar les seves contribucions per prendre una millor decisió.</p><p> Feu servir la proposta de comprovació de Sense en el procés de consentiment per convidar reaccions i comentaris per millorar la proposta, i en un procés de consens per comprovar el consens.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Llegiu més informació sobre l'ús de la comprovació Sense al procés de decisió simple</u></a> <span>.</span></p>
+      title: Què us semblen els nous conceptes de marca?
+      details: <h3 id="what-are-you-proposing"><strong>Què proposes?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Per què és important això?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Què li demanes a la gent que faci?</strong></h3><p></p><p> Què et sembla la proposta? Deixa un comentari o fes un suggeriment de millora.</p><p> Aquesta comprovació de Sense és una oportunitat per a la vostra aportació i contribució, per ajudar-nos a prendre una millor decisió.</p>
+      outcome_statement: "<p>Gràcies per participar en la comprovació sensorial.</p>"
+      not_sure: No ho sé
+      not_sure_meaning: Tinc una pregunta o necessito més temps
+      not_sure_prompt: Quines parts no et queden clares? Com es podria resoldre això?
+      looks_good: Té bona pinta
+      looks_good_meaning: Estic content amb cap a on va això
+      looks_good_prompt: Teniu algun comentari o suggeriment per millorar la proposta?
+      abstain: Abstenir-se
+      abstain_meaning: No tinc res a afegir, ni cap objecció a aquesta obra.
+      abstain_prompt: L'abstenció implica el consentiment amb la direcció d'aquesta proposta. Hi ha alguna raó per la qual voteu a favor de l'abstenció?
+      concerned: Preocupat
+      concerned_meaning: Potser alguna cosa hagi de canviar perquè jo pugui donar el meu consentiment o estar d'acord.
+      concerned_prompt: Quina és la teva preocupació i com es podria abordar?
+    gradients_of_agreement:
+      process_subtitle: Expressar el suport a una proposta en una escala de 8 punts
+      process_introduction: <p>Els Gradients d'acord de la proposta permeten als membres d'un grup expressar el seu suport a una proposta en graus en una escala, oferint més maneres d'expressar suport que en termes d'"d'acord" i "en desacord".</p><p> Utilitzeu els gradients d'acord com a ronda preliminar per comprovar el suport a una proposta abans de passar a un acord formal.</p><p> Els gradients d'acord permeten a la gent saber que s'està formant una proposta i els animen a participar-hi. És una oportunitat per escoltar la gent, percebre com se senten i respondre-hi adequadament, cosa que obre el potencial per incorporar les seves contribucions per prendre una millor decisió.</p>
+      title: Què us sembla la nova declaració de valors?
+      details: <h3 id="what-are-you-proposing"><strong>Què proposes?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Per què és important això?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Què li demanes a la gent que faci?</strong></h3><p></p><p> Què us sembla la proposta? Expresseu el vostre suport amb l'escala següent i deixeu un comentari o suggeriment de millora.</p><p> Aquesta proposta de Gradients d'acord serveix per comprovar el suport a la proposta i una oportunitat per a la vostra aportació abans de passar a un acord formal.</p>
+      whole_hearted_endorsement: Aval de tot cor
+      whole_hearted_endorsement_meaning: M'agrada molt!
+      whole_hearted_endorsement_prompt: Què t'agrada d'això?
+      agreement_with_minor_contention: Acord amb una controvèrsia menor
+      agreement_with_minor_contention_meaning: No és perfecte, però és prou bo
+      agreement_with_minor_contention_prompt: Quina és la teva preocupació?
+      support_with_reservations: Suport amb reserves
+      support_with_reservations_meaning: Puc viure amb això
+      support_with_reservations_prompt: Quines són les teves reserves?
+      abstain_meaning: Aquest problema no m'afecta
+      abstain_prompt: Tens alguna cosa que t'agradaria afegir?
+      more_discussion_needed: Cal més debat
+      more_discussion_needed_meaning: Encara no entenc prou bé els problemes
+      more_discussion_needed_prompt: Què no entens?
+      don_t_like_but_will_support: No m'agrada però hi donaré suport
+      don_t_like_but_will_support_meaning: No és genial, però no vull destorbar el grup.
+      don_t_like_but_will_support_prompt: Què t'agradaria veure millorat?
+      serious_disagreement: Desacord seriós
+      serious_disagreement_meaning: No hi estic d'acord, no comptis amb mi.
+      serious_disagreement_prompt: Amb què no estàs d'acord?
+      veto: Vetar
+      veto_meaning: Bloquejo aquesta proposta
+      veto_prompt: Per què bloqueges la proposta? Què cal canviar perquè hi puguis donar suport?
+    simple_poll:
+      process_subtitle: Troba l'opció més popular
+      process_introduction: <p>Abans de prendre una decisió, busqueu quina o quines opcions importen més a la gent.</p><p> Una enquesta senzilla us ajuda a trobar l'opció o opcions més populars amb una o diverses opcions.</p><p> Escriviu els detalls de les opcions al camp de detalls, introduïu el nom de l'opció i feu clic a + per afegir-la.</p><p> Estableix les <strong>opcions mínimes</strong> i <strong>màximes que</strong> un votant pot triar. Deixa l'opció màxima com a 1 per a una enquesta d'una sola opció.</p><p> Podeu utilitzar la icona del llapis al costat de cada opció per afegir-ne el <strong>significat</strong> i explicar-la millor per ajudar la gent a l'hora de votar.</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">Llegiu-ne més sobre Enquesta simple</a> .</p>
+      title: On hauria de ser el focus de la nostra direcció estratègica?
+      details: <h3 id="what-is-this-poll-about"><strong>De què tracta aquesta enquesta?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Per què és important això?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Què li demanes a la gent que faci?</strong></h3><p></p><p> Trieu l'opció o opcions que preferiu.</p>
+    score_poll:
+      process_subtitle: Mesurar el grau de suport per a cada opció
+      process_introduction: <p>Feu servir l'enquesta de puntuació quan vulgueu fer una enquesta a la gent sobre el seu desitg, preferència o interès en cada opció.</p><p> <span>Es demana als participants que avaluïn cada opció i assignin una puntuació movent un control lliscant al llarg d'una escala.</span></p><p> <span>Els resultats es mostren gràficament juntament amb una taula per a cada opció que mostra la puntuació total, la mitjana de punts i el nombre de votants.</span></p><p> La configuració avançada inclou "Els vots són anònims" i "Mostra les opcions en ordre aleatori", que s'utilitzen habitualment per a les enquestes de puntuació per reduir qualsevol biaix de votació.</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">Més informació sobre l'enquesta de puntuació</a> .</p>
+      title: Avaluar com es prenen les decisions a la nostra organització
+      details: <h3 id="what-is-this-poll-about"><strong>De què tracta aquesta enquesta?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Per què és important això?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Què li demanes a la gent que faci?</strong></h3><p></p><p> Trieu l'opció o opcions que preferiu.</p>
+    dot_vote:
+      process_subtitle: Assignar un pressupost de punts per revelar prioritats
+      process_introduction: <p>El vot per punts és útil per a grups que intenten assignar un recurs limitat a diverses opcions. Va més enllà d'una simple enquesta, ja que ajuda els participants a adonar-se que hi ha una restricció a l'hora de seleccionar opcions.</p><p> A cada participant se li assigna un nombre determinat de punts. Tu decideixes quants.</p><p> Col·loquen punts al costat de les opcions presentades que els agraden. Els participants poden col·locar tots els seus punts en una sola opció o repartir-los per diverses opcions.</p><p> A mesura que els participants assignen punts, poden superar el límit del pressupost de punts, per la qual cosa s'anima a considerar amb cura com gasten els seus punts.</p><p> Les opcions amb més punts "guanyen". La taula de resultats proporciona dades addicionals per ajudar-vos a analitzar els resultats.</p><ul><li><p> % de punts</p></li><li><p> Punts</p></li><li><p> Mitjana</p></li><li><p> Votants</p></li></ul><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">Llegiu-ne més sobre el vot de Dot</a> .</p>
+      title: Escollint temes per a la nostra conferència
+      details: <h3 id="what-is-this-poll-about"><strong>De què tracta aquesta enquesta?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Per què és important això?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Què li demanes a la gent que faci?</strong></h3><p></p><p> En aquesta enquesta tens un pressupost de 8 punts per assignar a les opcions que prefereixes. Pots col·locar tots els punts en una opció o repartir-los.</p>
+    ranked_choice:
+      process_subtitle: Comprendre la preferència ordenada d'opcions
+      process_introduction: <p>L'opció classificada és útil quan tens un gran nombre d'opcions o s'està celebrant una elecció.</p><p> Aquesta plantilla d'enquesta ofereix una sèrie d'opcions perquè la gent voti en l'ordre que prefereixi.</p><p> Podeu definir el nombre d'opcions que té el votant.</p><p> <span>Els votants arrosseguen i deixen anar les opcions per ordre de preferència (la número 1 és l'opció més preferida).</span></p><p> <span>La configuració avançada inclou "Els vots són anònims" i "Mostra les opcions en ordre aleatori", que s'utilitzen habitualment per a</span> les opcions classificades per ordre de classificació per reduir qualsevol biaix de votació.</p><p> Els resultats es mostren en ordre de classificació. La taula de resultats proporciona dades addicionals per ajudar-vos a analitzar els resultats.</p><ul><li><p> Rang</p></li><li><p> % de punts</p></li><li><p> Punts</p></li><li><p> Mitjana</p></li></ul><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">Llegiu-ne més sobre l'elecció classificada</a> .</p>
+      title: Elegir els directors al consell de govern
+      details: <h3 id="what-is-this-poll-about"><strong>De què tracta aquesta enquesta?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Per què és important això?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Què li demanes a la gent que faci?</strong></h3><p></p><p> Vota classificant les opcions per ordre de preferència. Guanya l'opció que quedi primera als resultats.</p>
+    time_poll:
+      process_subtitle: Troba quan hi ha gent disponible per reunir-se
+      process_introduction: <p><span>Estalvieu temps en la planificació de la data per a la vostra reunió o esdeveniment.</span></p><p> L'enquesta horària facilita la visualització de la disponibilitat de tothom i la cerca del millor moment.</p><p> Doneu un títol i detalls a l'enquesta de temps. Introduïu una llista d'opcions de data i hora a la vostra zona horària.</p><p> Quan configureu franges horàries, tingueu en compte les persones de diferents fusos horaris. Els participants veuran les hores localitzades a la seva zona horària.</p><p> Estableix una durada de la reunió.</p><p> Quan es tanqui l'enquesta de temps, defineix un resultat amb el millor moment i les instruccions per a la reunió.</p><p> <span>Loomio inclourà una invitació al calendari amb el correu electrònic de notificació del resultat, perquè els participants puguin afegir-la al seu calendari.</span></p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">Més informació sobre l'enquesta de Time</a> .</p>
+      title: Trobem una data per a la nostra propera reunió
+      details: <p><strong>Quina és la reunió o l'esdeveniment?</strong></p><p></p><p> <strong>Per què és important això?</strong></p><p></p><p> <strong>Què li demanes a la gent que faci?</strong></p><p></p><p> <span>Marqueu les franges horàries en què esteu disponibles amb la icona verda de "m'agrada" o deixeu la icona vermella de "m'agrada" quan no estigueu disponibles.</span></p><p> <span>Fes servir la icona de "polzes cap als costats" per indicar que estàs disponible "si cal".</span></p>
+      reason_prompt: Hi ha alguna cosa que puguis dir per ajudar l'organitzador a trobar un moment adequat?
+    opt_in:
+      process_subtitle: Troba voluntaris o demana participants
+      process_introduction: '<p>Feu servir l''opció d''inscripció per convidar persones a unir-se a un equip, comitè o grup de treball, o a participar en un esdeveniment.</p><p> L''opció de votació "Opt-in" té dues opcions: Acceptar o Rebutjar.</p><p> Podeu definir un nombre objectiu de persones que busqueu, per exemple, 3 persones per unir-se al vostre grup de treball.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#opt-in">Més informació sobre l''opció de subscriure''s</a> .</p>'
+      title: Grup de treball per elaborar la nostra nova política de sostenibilitat
+      details: <p><strong>A quin equip, grup de treball o esdeveniment esteu convidant la gent?</strong></p><p></p><p> <strong>Per què és important això?</strong></p><p></p><p> <strong>Què li demanes a la gent que faci?</strong></p><p></p><p> Selecciona "Accepta" per participar!</p>
+      accept_meaning: Estic disposat a participar
+      accept_prompt: Per què et presentes com a voluntari per a això?
+      decline_meaning: No puc participar
+      decline_prompt: Hi ha alguna cosa que vulguis dir?
+  forward_mailer:
+    bounce:
+      subject: El teu missatge a Loomio no s'ha lliurat.
+      reason: Això ha passat perquè el vostre client de correu electrònic ha adreçat el missatge a l'adreça "De", en comptes de l'adreça "Respon" que heu proporcionat.
+      recommendation: Si us plau, obriu Loomio al vostre navegador i publiqueu el vostre missatge directament.
+  locale_names:
+    en: Anglès
+    be-BY: Bielorús
+    bg-BG: Búlgar
+    ca: Català
+    cs: Txec
+    zh-TW: Xinès (tradicional, taiwanès)
+    da: Danès
+    de: Alemany
+    es: espanyol
+    eo: esperanto
+    el: Grec
+    fr: Francès
+    he: Hebreu
+    id: Indonesi
+    it: Italià
+    hu: Hongarès
+    ja: Japonès
+    ko: coreà
+    ml: Malayalam
+    nl-NL: neerlandès
+    pl: Polonès
+    pt-BR: Portuguès (Brasil)
+    ro: Romanès
+    sr: serbi (llatí)
+    sr-RS: Serbi (ciríl·lic)
+    sk: Eslovac
+    sv: Suec
+    vi: Vietnamita
+    tr: Turc
+    uk: Ucraïnès
+    an: Aragonès
+    ar: Àrab
+    cmn: Xinès (mandarí)
+    hr: Croat
+    it-CH: Italià (Suïssa)
+    fi: Finlandès
+    gl: Gallec
+    ga-IE: Gaèlic (Irlanda)
+    hi: 'No'
+    km: Khmer
+    lv: Letó
+    mk: Macedonià
+    mi: Maori
+    fa-IR: Persa (Iran)
+    pt-PT: Portuguès
+    ru: Rus
+    sl: Eslovè
+    te: Telugu
+    ur: Urdú
+    ur-PK: Urdú (Pakistan)
+    be: Bielorús
+    pt: Portuguès
+    zh: Xinès (tradicional, taiwanès)
+    zh-HK: Xinès (tradicional, taiwanès)

@@ -12,8 +12,38 @@ const sumValues = obj => Object.values(obj).reduce((a, b) => a + b, 0);
 
 export default {
   components: {BarChart},
+  computed: {
+    startMonths() {
+      let months = [];
+      let next = null;
+      for (let year = this.firstYear; year <= new Date().getFullYear(); year++) {
+        for (let month = 1; month <= 12; month++) {
+          next = year+"-"+String(month).padStart(2, '0');
+          months.push(next);
+          if (next > new Date().toISOString().slice(0,7)) {
+            return months;
+          }
+        }
+      }
+    },
+    endMonths() {
+      let months = [];
+      let next = null;
+      let firstYear = new Date(this.start_month + "-01").getFullYear();
+      for (let year = firstYear; year <= new Date().getFullYear(); year++) {
+        for (let month = 1; month <= 12; month++) {
+          next = year+"-"+String(month).padStart(2, '0');
+          months.push(next);
+          if (next > new Date().toISOString().slice(0,7)) {
+            return months;
+          }
+        }
+      }
+    }
+  },
   data() {
     return {
+      firstYear: 2011,
       mdiCalendar: mdiCalendar,
       loading: false,
       chartData: {
@@ -28,10 +58,10 @@ export default {
       end_month: (new Date()).toISOString().slice(0,7),
       interval: 'month',
       intervalItems: [
-        {text: this.$t('report.day'), value: 'day'},
-        {text: this.$t('report.week'), value: 'week'},
-        {text: this.$t('report.month'), value: 'month'},
-        {text: this.$t('report.year'), value: 'year'}
+        {title: this.$t('report.day'), value: 'day'},
+        {title: this.$t('report.week'), value: 'week'},
+        {title: this.$t('report.month'), value: 'month'},
+        {title: this.$t('report.year'), value: 'year'}
       ],
       total_users: 0,
       discussions_count: 0,
@@ -40,45 +70,45 @@ export default {
       polls_with_outcomes_count: 0,
       models_per_interval: [],
       models_per_interval_headers: [
-        {text: "Date", value: "date"},
-        {text: this.$t('common.threads'), value: "threads"},
-        {text: this.$t('navbar.search.comments'), value: "comments"},
-        {text: this.$t('group_page.polls'), value: "polls"},
-        {text: this.$t('poll_common.votes'), value: "votes"},
-        {text: this.$t('poll_common.outcomes'), value: "outcomes"},
+        {title: "Date", key: "date"},
+        {title: this.$t('common.threads'), key: "threads"},
+        {title: this.$t('navbar.search.comments'), key: "comments"},
+        {title: this.$t('group_page.polls'), key: "polls"},
+        {title: this.$t('poll_common.votes'), key: "votes"},
+        {title: this.$t('poll_common.outcomes'), key: "outcomes"},
       ],
       tags_headers: [
-        {text: "Tag", value: "tag"},
-        {text: this.$t('poll_meeting_chart_panel.total'), value: "total_count"},
-        {text: this.$t('common.threads'), value: "threads_count"},
-        {text: this.$t('group_page.polls'), value: "polls_count"},
+        {title: "Tag", key: "tag"},
+        {title: this.$t('poll_meeting_chart_panel.total'), key: "total_count"},
+        {title: this.$t('common.threads'), key: "threads_count"},
+        {title: this.$t('group_page.polls'), key: "polls_count"},
       ],
       tags_rows: [],
       per_user_headers: [
-        {text: "User", value: "user"},
-        {text: this.$t('report.country'), value: "country"},
-        {text: this.$t('common.threads'), value: "threads"},
-        {text: this.$t('navbar.search.comments'), value: "comments"},
-        {text: this.$t('group_page.polls'), value: "polls"},
-        {text: this.$t('poll_common.votes'), value: "votes"},
-        {text: this.$t('poll_common.outcomes'), value: "outcomes"},
-        {text: "Reactions", value: "reactions"},
+        {title: "User", key: "user"},
+        {title: this.$t('report.country'), key: "country"},
+        {title: this.$t('common.threads'), key: "threads"},
+        {title: this.$t('navbar.search.comments'), key: "comments"},
+        {title: this.$t('group_page.polls'), key: "polls"},
+        {title: this.$t('poll_common.votes'), key: "votes"},
+        {title: this.$t('poll_common.outcomes'), key: "outcomes"},
+        {title: "Reactions", key: "reactions"},
       ],
       per_user_rows: [],
       users_per_country_rows: [],
       users_per_country_headers: [
-        {text: this.$t('report.country'), value: 'country'},
-        {text: this.$t('report.users'), value: 'users'},
+        {title: this.$t('report.country'), key: 'country'},
+        {title: this.$t('report.users'), key: 'users'},
       ],
       per_country_rows: [],
       per_country_headers: [
-        {text: 'Country', value: 'country' },
-        {text: this.$t('common.threads'), value: "threads"},
-        {text: this.$t('navbar.search.comments'), value: "comments"},
-        {text: this.$t('group_page.polls'), value: "polls"},
-        {text: this.$t('poll_common.votes'), value: "votes"},
-        {text: this.$t('poll_common.outcomes'), value: "outcomes"},
-        {text: "Reactions", value: "reactions"},
+        {title: 'Country', key: 'country' },
+        {title: this.$t('common.threads'), key: "threads"},
+        {title: this.$t('navbar.search.comments'), key: "comments"},
+        {title: this.$t('group_page.polls'), key: "polls"},
+        {title: this.$t('poll_common.votes'), key: "votes"},
+        {title: this.$t('poll_common.outcomes'), key: "outcomes"},
+        {title: "Reactions", key: "reactions"},
       ]
     };
   },
@@ -101,9 +131,14 @@ export default {
   methods: {
     fetch() {
       this.loading = true
-      const query = new URLSearchParams({interval: this.interval, start_month: this.start_month, end_month: this.end_month, group_ids: this.group_ids.join(',')}).toString()
+      const query = new URLSearchParams({
+        interval: this.interval,
+        start_month: this.start_month,
+        end_month: this.end_month,
+        group_ids: this.group_ids.join(',')}).toString()
       fetch('/api/v1/reports?'+query).then(response => {
         response.json().then(data => {
+          this.firstYear = data.first_year;
           this.loading = false;
           this.all_groups = data.all_groups,
           this.total_users = data.total_users;
@@ -141,7 +176,7 @@ export default {
                 data: data.intervals.map(interval => (data.outcomes_per_interval[interval] || 0) )
               },
             ]
-          },
+          }
 
           this.models_per_interval = data.intervals.map(interval => {
             return {
@@ -220,7 +255,7 @@ v-main
       :label="$t('common.groups')"
       v-model="group_ids"
       :items="all_groups"
-      item-text="name"
+      item-title="name"
       item-value="id"
       multiple
       small-chips
@@ -228,60 +263,19 @@ v-main
     )
 
     .d-flex
-      v-menu(
-        ref="start_menu"
-        v-model="start_menu"
-        :close-on-content-click="false"
-        transition="scale-transition"
-        offset-y
-        max-width="290px"
-        min-width="auto"
+      v-select(
+        :label="$t('report.start_on')"
+        :prepend-icon="mdiCalendar"
+        v-model="start_month"
+        :items="startMonths"
       )
-        template(v-slot:activator="{ on, attrs }")
-          v-text-field(
-            v-model="start_month"
-            :label="$t('report.start_on')"
-            readonly
-            :prepend-icon="mdiCalendar"
-            v-bind="attrs"
-            v-on="on"
-          )
-        v-sheet
-          v-date-picker(
-            v-model="start_month"
-            type="month"
-            no-title
-            scrollable
-            @input="start_menu = false"
-            :max="(new Date()).toISOString()"
-          )
-      v-menu(
-        ref="end_menu"
-        v-model="end_menu"
-        :close-on-content-click="false"
-        transition="scale-transition"
-        offset-y
-        max-width="290px"
-        min-width="auto"
+
+      v-select(
+        :label="$t('report.end_on')"
+        :prepend-icon="mdiCalendar"
+        v-model="end_month"
+        :items="endMonths"
       )
-        template(v-slot:activator="{ on, attrs }")
-          v-text-field(
-            v-model="end_month"
-            :label="$t('report.end_on')"
-            :prepend-icon="mdiCalendar"
-            readonly
-            v-bind="attrs"
-            v-on="on"
-          )
-        v-sheet
-          v-date-picker(
-            v-model="end_month"
-            type="month"
-            no-title
-            scrollable
-            @input="end_menu = false"
-            :max="(new Date()).toISOString()"
-          )
 
       v-select.ml-8(
         :label="$t('report.interval')"
@@ -295,12 +289,12 @@ v-main
 
     div(v-if="!loading")
 
-      v-simple-table.mt-8
+      v-table.mt-8
         thead
           th.pt-4(v-t="'report.total_users'")
-          th.pt-4(v-t="'report.total_threads'")
+          th.pt-4(v-t="'report.total_discussions'")
           th.pt-4(v-t="'report.total_polls'")
-          th.pt-4(v-t="'report.threads_with_polls'")
+          th.pt-4(v-t="'report.discussions_with_polls'")
           th.pt-4(v-t="'report.polls_with_outcomes'")
         tbody
           tr
@@ -315,9 +309,7 @@ v-main
       v-card.mt-8
         v-card-title(v-t="{path: 'report.actions_per_interval', args: {interval: interval}}")
         v-data-table(
-          dense
-          disable-pagination
-          hide-default-footer
+          density="compact"
           :headers="models_per_interval_headers"
           :items="models_per_interval"
         )
@@ -325,9 +317,7 @@ v-main
       v-card.mt-8
         v-card-title(v-t="'loomio_tags.tags'")
         v-data-table(
-          dense
-          disable-pagination
-          hide-default-footer
+          density="compact"
           :headers="tags_headers"
           :items="tags_rows"
         )
@@ -335,21 +325,16 @@ v-main
       v-card.mt-8
         v-card-title(v-t="'report.actions_per_user'")
         v-data-table(
-          dense
-          disable-pagination
-          hide-default-footer
+          density="compact"
           :headers="per_user_headers"
           :items="per_user_rows"
-          :items-per-page="50"
         )
 
       v-card.mt-8
         v-card-title(v-t="'report.users_per_country'")
         p.px-4.text-caption(v-t="'report.country_disclaimer'")
         v-data-table(
-          dense
-          disable-pagination
-          hide-default-footer
+          density="compact"
           :headers="users_per_country_headers"
           :items="users_per_country_rows"
         )
@@ -357,19 +342,9 @@ v-main
       v-card.mt-8
         v-card-title(v-t="'report.actions_per_country'")
         v-data-table(
-          dense
-          disable-pagination
-          hide-default-footer
+          density="compact"
           :headers="per_country_headers"
           :items="per_country_rows"
         )
 
 </template>
-
-
-<style lang="sass">
-.report-page .v-data-table
-  max-height: 100vh
-  overflow-y: auto
-
-</style>

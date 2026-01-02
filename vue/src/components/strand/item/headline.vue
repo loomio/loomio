@@ -1,17 +1,23 @@
 <script lang="js">
 import { eventHeadline, eventTitle, eventPollType } from '@/shared/helpers/helptext';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
-import Records from '@/shared/services/records';
 
 export default {
   props: {
     event: Object,
     eventable: Object,
     collapsed: Boolean,
-    dateTime: Date
+    dateTime: Date,
+    focused: Boolean,
+    unread: Boolean
   },
 
   computed: {
+    isDelegate() {
+      const actor = this.event.actor();
+      const group = this.eventable.group();
+      return actor && group && actor.delegates && actor.delegates[group.id]
+    },
     datetime() { return this.dateTime || this.eventable.castAt || this.eventable.createdAt; },
     headline() {
       const actor = this.event.actor();
@@ -23,9 +29,8 @@ export default {
           username: actor.username,
           key:      this.event.model().key,
           title:    eventTitle(this.event),
-          polltype: this.$t(eventPollType(this.event)).toLowerCase()
-        }
-        );
+          polltype: this.event.isPollEvent() ? this.$t(eventPollType(this.event)).toLowerCase() : null
+        });
       }
     },
 
@@ -40,12 +45,15 @@ export default {
 <template lang="pug">
 h3.strand-item__headline.thread-item__title.text-body-2.pb-1(tabindex="-1")
   div.d-flex.align-center
-    //- common-icon(v-if="event.pinned" name="mdi-pin")
     slot(name="headline")
-      span.strand-item__headline.text--secondary(v-html='headline')
-    mid-dot.text--secondary
-    router-link.text--secondary.text-body-2(:to='link')
+      span.strand-item__headline.text-medium-emphasis(v-html='headline')
+    space(v-if="isDelegate")
+    v-chip(v-if="isDelegate" size="x-small" variant="tonal" label :title="$t('members_panel.delegate_popover')")
+      span(v-t="'members_panel.delegate'")
+    mid-dot.text-medium-emphasis
+    router-link.text-medium-emphasis.text-body-2(:to='link')
       time-ago(:date='datetime')
+    v-badge(v-if="unread" variant="tonal" color="info" inline location="right" :content="$t('thread_item.new')")
     mid-dot(v-if="event.pinned")
     common-icon.text--disabled(v-if="event.pinned" name="mdi-pin-outline")
 
@@ -56,8 +64,7 @@ h3.strand-item__headline.thread-item__title.text-body-2.pb-1(tabindex="-1")
     font-weight: 400
   .actor-link
     color: inherit
-.text--secondary
+.text-medium-emphasis
   .actor-link
     color: inherit
-
 </style>

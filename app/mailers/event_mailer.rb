@@ -1,12 +1,11 @@
 class EventMailer < BaseMailer
   REPLY_DELIMITER = "﻿﻿"*4 # surprise! this is actually U+FEFF
 
-  # TODO this should be NotificationMailer, and take a notification id
   def event(recipient_id, event_id)
-    @current_user = @recipient = User.active.find_by!(id: recipient_id)
+    @recipient = User.active.find_by!(id: recipient_id)
     @event = Event.find_by!(id: event_id)
     @notification = Notification.find_by(user_id: recipient_id, event_id: event_id)
-    
+
     return if @event.eventable.nil?
     return if @event.eventable.respond_to?(:discarded?) && @event.eventable.discarded?
 
@@ -33,7 +32,7 @@ class EventMailer < BaseMailer
 
     @utm_hash = { utm_medium: 'email', utm_campaign: @event.kind }
 
-    thread_kinds = %w[
+    discussion_kinds = %w[
       new_comment
       new_discussion
       discussion_edited
@@ -48,32 +47,30 @@ class EventMailer < BaseMailer
 
     if @event.eventable.respond_to?(:calendar_invite) && @event.eventable.calendar_invite
       attachments['meeting.ics'] = {
-        content_type:              'text/calendar',
+        content_type: 'text/calendar',
         content_transfer_encoding: 'base64',
-        content:                   Base64.encode64(@event.eventable.calendar_invite)
+        content: Base64.encode64(@event.eventable.calendar_invite)
       }
     end
 
     template_name = @event.eventable_type.tableize.singularize
     template_name = 'poll' if @event.eventable_type == 'Outcome'
-    template_name = 'group' if @event.eventable_type == 'Membership'
 
     # this should be notification.i18n_key
-    @event_key = if (@event.kind == 'user_mentioned' &&
-       @event.eventable.respond_to?(:parent) &&
-       @event.eventable.parent.present? &&
-       @event.eventable.parent.author == @recipient)
-      "comment_replied_to"
-    elsif @event.kind == 'poll_created'
-      'poll_announced'
-    else
-      @event.kind
-    end
+    @event_key = if @event.kind == 'user_mentioned' &&
+                    @event.eventable.respond_to?(:parent) &&
+                    @event.eventable.parent.present? &&
+                    @event.eventable.parent.author == @recipient
+                   "comment_replied_to"
+                 elsif @event.kind == 'poll_created'
+                   'poll_announced'
+                 else
+                   @event.kind
+                 end
 
     subject_params = {
-      title: @event.eventable.title,
-      group_name: @event.eventable.title, # cope for old translations
-      poll_type: @poll && I18n.t("poll_types.#{@poll.poll_type}"),
+      title: plain_text(@event.eventable.title_model, :title),
+      poll_type: @poll && I18n.t("poll_types.#{@poll.poll_type}", locale: @recipient.locale),
       actor: @event.user.name,
       site_name: AppConfig.theme[:site_name]
     }
@@ -84,14 +81,15 @@ class EventMailer < BaseMailer
       locale: @recipient.locale,
       reply_to: reply_to_address_with_group_name(model: @event.eventable, user: @recipient),
       subject_prefix: group_name_prefix(@event),
-      subject_key: "notifications.with_title.#{@event_key}",
+      subject_key: "notifications.email_subject.#{@event_key}",
       subject_params: subject_params,
-      subject_is_title: thread_kinds.include?(@event.kind),
+      subject_is_title: discussion_kinds.include?(@event.kind),
       template_name: template_name
     )
   end
 
   private
+
   def group_name_prefix(event)
     model = event.eventable
     if %w[membership_requested membership_created].include? event.kind
@@ -104,6 +102,7 @@ class EventMailer < BaseMailer
   def reply_to_address_with_group_name(model:, user:)
     return nil unless user.is_logged_in?
     return nil unless model.respond_to?(:discussion) && model.discussion.present?
+
     if model.discussion.group.present?
       "\"#{I18n.transliterate(model.discussion.group.full_name).truncate(50).delete('"')}\" <#{reply_to_address(model: model, user: user)}>"
     else

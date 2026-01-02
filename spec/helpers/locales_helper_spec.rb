@@ -32,12 +32,6 @@ describe LocalesHelper do
       expect(subject).to eq :fr
     end
 
-    it 'can set via browser http header' do
-      # given zh_CN we return the fallback: zh
-      helper.stub(:request).and_return(OpenStruct.new(env: http_accept_lang_zh))
-      expect(subject).to eq :zh_TW
-    end
-
     it 'has robust fallbacks from browser http headers' do
       # given fr-fr we return the generalised 'fr'
       helper.stub(:request).and_return(OpenStruct.new(env: http_accept_lang_fallback))

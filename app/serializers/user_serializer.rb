@@ -8,7 +8,9 @@ class UserSerializer < AuthorSerializer
              :avatar_url,
              :attachments,
              :date_time_pref,
-             :complaints_count
+             :complaints_count,
+             :sign_in_count
+
 
   def include_has_password?
     scope[:include_password_status]

@@ -1,15 +1,14 @@
 import BaseModel  from  '@/shared/record_store/base_model';
-import Records  from  '@/shared/services/records';
 import { exact } from '@/shared/helpers/format_time';
 import { parseISO } from 'date-fns';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 
 export default class PollOptionModel extends BaseModel {
   static singular = 'pollOption';
   static plural = 'pollOptions';
   static indices = ['pollId'];
   static uniqueIndices = ['id'];
-  static serializableAttributes = ['id', 'name', 'icon', 'priority', 'meaning', 'prompt'];
+  static serializableAttributes = ['id', 'name', 'icon', 'priority', 'meaning', 'prompt', 'testOperator', 'testPercent', 'testAgainst'];
 
   defaultValues() {
     return {
@@ -19,12 +18,16 @@ export default class PollOptionModel extends BaseModel {
       meaning: null,
       prompt: null,
       priority: null,
+      testOperator: null,
+      testPercent: null,
+      testAgainst: null,
       _destroy: null
     };
   }
 
   relationships() {
-    return this.belongsTo('poll');
+    this.belongsTo('poll');
+    this.belongsTo('translation');
   }
 
   stances() {
@@ -38,8 +41,8 @@ export default class PollOptionModel extends BaseModel {
   optionName() {
     const poll = this.poll();
     switch (poll.pollOptionNameFormat) {
-      case 'plain': return this.name;
-      case 'i18n': return I18n.t('poll_' + poll.pollType + '_options.' + this.name);
+      case 'plain': return this.translationId ? this.translation().fields.name : this.name;
+      case 'i18n': return I18n.global.t('poll_' + poll.pollType + '_options.' + this.name);
       case 'iso8601': return exact(parseISO(this.name));
       default:
         return console.error('unsupported option format', poll.pollOptionNameFormat);

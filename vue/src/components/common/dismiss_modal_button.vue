@@ -4,7 +4,6 @@ import EventBus from '@/shared/services/event_bus';
 export default {
   props: {
     close: Function,
-    model: Object
   },
   methods: {
     closeModal() {
@@ -16,6 +15,6 @@ export default {
 </script>
 
 <template lang="pug">
-v-btn.dismiss-modal-button(icon :aria-label="$t('common.action.cancel')" @click='closeModal')
+v-btn.dismiss-modal-button(icon variant="text" :aria-label="$t('common.action.cancel')" @click='closeModal')
   common-icon(name="mdi-close")
 </template>

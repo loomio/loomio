@@ -125,7 +125,7 @@ describe PollService do
 
     it 'does not create an invalid poll' do
       new_poll.title = ''
-      expect { PollService.create(poll: new_poll, actor: user) }.to_not change { Poll.count }
+      expect { PollService.create(poll: new_poll, actor: user) }.to_not(change { Poll.count })
     end
 
     it 'does not allow users to create polls they are not allowed to' do
@@ -133,7 +133,7 @@ describe PollService do
     end
 
     it 'does not email people' do
-      expect { PollService.create(poll: new_poll, actor: user) }.to_not change { ActionMailer::Base.deliveries.count }
+      expect { PollService.create(poll: new_poll, actor: user) }.to_not(change { ActionMailer::Base.deliveries.count })
     end
 
     it 'notifies new mentions' do
@@ -206,27 +206,43 @@ describe PollService do
       expect(new_poll.save).to eq false
     end
 
+    describe 'anonymous polls' do
+      it 'removes user from stance and event after close' do
+        new_poll.anonymous = true
+        PollService.create(poll: new_poll, actor: user)
+        stance
 
-    it 'removes user from stance and event after close' do
-      new_poll.anonymous = true
-      PollService.create(poll: new_poll, actor: user)
-      stance
+        StanceService.create(stance: stance, actor: stance.real_participant)
+        expect(stance.real_participant).to be_present
+        expect(stance.participant_id).to_not be nil
+        expect(stance.created_event.user_id).to be nil
+        expect(stance.participant).to be_a AnonymousUser
+        expect(stance.created_event.user).to be_a AnonymousUser
+        PollService.close(poll: new_poll, actor: user)
+        expect(stance.reload.participant).to be_a AnonymousUser
+        expect(stance.created_event.reload.user).to be_a AnonymousUser
+        expect(stance.participant_id).to be nil
+        expect(stance.created_event.user_id).to be nil
+      end
 
-      StanceService.create(stance: stance, actor: stance.real_participant)
-      expect(stance.real_participant).to be_present
-      expect(stance.participant_id).to_not be nil
-      expect(stance.created_event.user_id).to be nil
-      expect(stance.participant).to be_a AnonymousUser
-      expect(stance.created_event.user).to be_a AnonymousUser
-      PollService.close(poll: new_poll, actor: user)
-      expect(stance.reload.participant).to be_a AnonymousUser
-      expect(stance.created_event.reload.user).to be_a AnonymousUser
-      expect(stance.participant_id).to be nil
-      expect(stance.created_event.user_id).to be nil
+      it 'create stance receipt before scrubbing stances' do
+        new_poll.anonymous = true
+        PollService.create(poll: new_poll, actor: group.creator)
+        stance = new_poll.stances.find_by(participant_id: user.id)
+        stance.choice = new_poll.poll_options.first.name
+        StanceService.create(stance: stance, actor: user)
+        PollService.close(poll: new_poll, actor: group.creator)
+
+        expect(StanceReceipt.count).to eq group.members.count
+        receipt = StanceReceipt.where(poll_id: new_poll.id, voter_id: user.id).first
+        expect(receipt.poll_id).to eq new_poll.id
+        expect(receipt.voter_id).to eq user.id
+        expect(receipt.inviter_id).to eq group.creator.id
+        expect(receipt.invited_at).to eq stance.reload.created_at
+      end
     end
 
-
-    it 'does not removes user from stance when no anonymous' do
+    it 'does not removes user from stance when not anonymous' do
       PollService.create(poll: new_poll, actor: user)
       stance
       StanceService.create(stance: stance, actor: stance.participant)
@@ -274,7 +290,7 @@ describe PollService do
     it 'does not touch closed polls' do
       PollService.create(poll: new_poll, actor: user)
       new_poll.update(closing_at: 1.day.ago, closed_at: 1.day.ago)
-      expect { PollService.expire_lapsed_polls }.to_not change { new_poll.reload.closed_at }
+      expect { PollService.expire_lapsed_polls }.to_not(change { new_poll.reload.closed_at })
     end
   end
 
@@ -293,7 +309,16 @@ describe PollService do
 
       group.add_member!(member)
       PollService.group_members_added(group.id)
-      expect(new_poll.voters.count).to eq (count+1)
+      expect(new_poll.voters.count).to eq count + 1
+    end
+
+    it "adds guests from poll's discussion" do
+      discussion.add_guest! another_user, discussion.author
+      new_poll.discussion_id = discussion.id
+      new_poll.save!
+
+      PollService.group_members_added(group.id)
+      expect(new_poll.voters).to include another_user
     end
 
     it "does not add bot users to the poll" do

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe API::V1::RegistrationsController do
+describe Api::V1::RegistrationsController do
   let(:registration_params) {{
     name: "Jon Snow",
     email: "jon@snow.com",
@@ -93,7 +93,6 @@ describe API::V1::RegistrationsController do
 
     # it 'logs in immediately if pending identity is present' do
     #   session[:pending_identity_id] = pending_identity.id
-    #   expect { post :create, params: { user: registration_params.except(:recaptcha) } }.to change { User.count }.by(0)
     #   expect(JSON.parse(response.body)['signed_in']).to be true
     #   u = User.find_by(email: registration_params[:email])
     #   expect(u.name).to eq registration_params[:name]
@@ -106,23 +105,5 @@ describe API::V1::RegistrationsController do
       expect(response.status).to eq 422
     end
 
-    describe 'RECAPTCHA env present' do
-      before { ENV['RECAPTCHA_APP_KEY'] = 'huzzah' }
-      after  { ENV.delete('RECAPTCHA_APP_KEY') }
-
-      it 'validates the recaptcha value' do
-        Clients::Recaptcha.any_instance.stub(:validate) { true }
-        post :create, params: { user: registration_params }
-        expect(response.status).to eq 200
-      end
-
-      it 'invalidtes user on recaptcha failure' do
-        Clients::Recaptcha.any_instance.stub(:validate) { false }
-        post :create, params: { user: registration_params }
-        expect(response.status).to eq 422
-        json = JSON.parse(response.body)
-        expect(json['errors']['recaptcha'][0]).to include "verify that you're not a robot"
-      end
-    end
   end
 end

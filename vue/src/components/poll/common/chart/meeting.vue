@@ -2,8 +2,10 @@
 import EventBus from '@/shared/services/event_bus';
 import AppConfig from '@/shared/services/app_config';
 import Session from '@/shared/services/session';
+import WatchRecords from '@/mixins/watch_records';
 
 export default {
+  mixins: [WatchRecords],
   props: {
     poll: Object,
     zone: Object
@@ -62,8 +64,8 @@ export default {
   table.poll-meeting-chart-table
     thead
       tr
-        td.text--secondary.text-body-2(v-if="datesAsOptions") {{currentUserTimeZone}}
-        td.pr-2.total.text--secondary.text-body-2(v-t="'poll_common.votes'")
+        td.text-medium-emphasis.text-body-2(v-if="datesAsOptions") {{currentUserTimeZone}}
+        td.pr-2.total.text-medium-emphasis.text-body-2(v-t="'poll_common.votes'")
         td(v-for="user in decidedVoters" :key="user.id")
           user-avatar(:user="user" :size="24")
     tbody
@@ -91,7 +93,7 @@ export default {
 .poll-meeting-chart-table tbody tr:hover
   background-color: #EEE
 
-.theme--dark
+.v-theme--dark, .v-theme--darkBlue
   .poll-meeting-chart-table tbody tr:hover
     background-color: #333
 

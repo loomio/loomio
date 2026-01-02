@@ -2,8 +2,9 @@ import BaseModel        from '@/shared/record_store/base_model';
 import AppConfig        from '@/shared/services/app_config';
 import Session          from '@/shared/services/session';
 import { pick }            from 'lodash-es';
-import I18n             from '@/i18n';
 import { startOfHour, addDays } from 'date-fns';
+import { I18n }             from '@/i18n';
+import Records from '@/shared/services/records';
 
 export default class PollTemplateModel extends BaseModel {
   static singular = 'pollTemplate';
@@ -36,8 +37,8 @@ export default class PollTemplateModel extends BaseModel {
       limitReasonLength: true,
       stanceReasonRequired: 'optional',
       tags: [],
-      files: [],
-      imageFiles: [],
+      files: null,
+      imageFiles: null,
       attachments: [],
       linkPreviews: [],
       notifyOnClosingSoon: 'undecided_voters',
@@ -50,8 +51,10 @@ export default class PollTemplateModel extends BaseModel {
       pollOptions: [],
       pollOptionNameFormat: 'plain',
       shuffleOptions: false,
+      showNoneOfTheAbove: false,
       hideResults: 'off',
       position: 0,
+      quorumPct: null,
       outcomeStatement: null,
       outcomeStatementFormat: 'html',
       outcomeReviewDueInDays: null
@@ -68,7 +71,7 @@ export default class PollTemplateModel extends BaseModel {
   }
 
   buildPoll() {
-    const poll = this.recordStore.polls.build();
+    const poll = Records.polls.build();
 
     const attrs = pick(this, Object.keys(this.defaultValues()));
     attrs.pollTemplateId = this.id;
@@ -86,7 +89,14 @@ export default class PollTemplateModel extends BaseModel {
       name: o.name,
       meaning: o.meaning,
       prompt: o.prompt,
-      icon: o.icon
+      icon: o.icon,
+      testOperator: o.test_operator,
+      testPercent: o.test_percent,
+      testAgainst: o.test_against
     }));
+  }
+
+  translatedPollType() {
+    return I18n.global.t(`poll_types.${this.pollType}`);
   }
 };

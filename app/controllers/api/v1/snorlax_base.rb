@@ -1,4 +1,4 @@
-class API::V1::SnorlaxBase < ActionController::Base
+class Api::V1::SnorlaxBase < ActionController::Base
   rescue_from(CanCan::AccessDenied)                    { |e| respond_with_standard_error e, 403 }
   rescue_from(Subscription::MaxMembersExceeded)        { |e| respond_with_standard_error e, 403 }
   rescue_from(ActionController::UnpermittedParameters) { |e| respond_with_standard_error e, 400 }
@@ -37,11 +37,7 @@ class API::V1::SnorlaxBase < ActionController::Base
   private
 
   def load_resource
-    if resource_class.respond_to?(:friendly)
-      self.resource = resource_class.friendly.find(params[:id])
-    else
-      self.resource = resource_class.find(params[:id])
-    end
+    self.resource = resource_class.find(params[:id])
   end
 
   def create_action
@@ -147,7 +143,6 @@ class API::V1::SnorlaxBase < ActionController::Base
     collection || Array(resource)
   end
 
-
   def collection
     instance_variable_get :"@#{resource_name.pluralize}"
   end
@@ -181,9 +176,13 @@ class API::V1::SnorlaxBase < ActionController::Base
     self.collection = accessible_records
     self.collection = yield collection if block_given?
     self.collection = timeframe_collection collection
-    self.collection_count = collection.count
+    self.collection_count = collection.count if count_collection
     self.collection = page_collection collection
     self.collection = order_collection collection
+  end
+
+  def count_collection
+    true
   end
 
   def timeframe_collection(collection)
@@ -227,10 +226,6 @@ class API::V1::SnorlaxBase < ActionController::Base
     []
   end
 
-  def public_records
-    raise NotImplementedError.new
-  end
-
   def default_page_size
     50
   end
@@ -248,15 +243,11 @@ class API::V1::SnorlaxBase < ActionController::Base
   end
 
   def success_response
-    render json: {success: 'success'}
+    render json: { success: 'success' }
   end
 
   def error_response(status = 500)
-    render json: {error: status}, root: false, status: status
-  end
-
-  def load_resource
-    self.resource = resource_class.find(params[:id])
+    render json: { error: status }, root: false, status: status
   end
 
   def resource_params
@@ -276,14 +267,14 @@ class API::V1::SnorlaxBase < ActionController::Base
   end
 
   def respond_with_standard_error(error, status)
-    render json: {exception: error.class, error: error.to_s}, root: false, status: status
+    render json: { exception: error.class, error: error.to_s }, root: false, status: status
   end
 
   def respond_with_error(status, message = "error")
-    render json: {error: message}, root: false, status: status
+    render json: { error: message }, root: false, status: status
   end
 
   def respond_with_errors(record = resource)
-    render json: {errors: record.errors.as_json}, root: false, status: 422
+    render json: { errors: record.errors.as_json }, root: false, status: 422
   end
 end

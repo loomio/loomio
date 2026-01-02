@@ -1,4 +1,4 @@
-class API::B2::DiscussionsController < API::B2::BaseController
+class Api::B2::DiscussionsController < Api::B2::BaseController
   def show
     self.resource = load_and_authorize(:discussion)
     respond_with_resource

@@ -1,5 +1,29 @@
-supported: [en, zh_TW, es, fr, de, uk, pt_BR, it, he, hu, nl_NL, pl, ca, sv, ru, da, tr, he, el, hr, fi, sl, ro, ja]
+supported:
+  - ca
+  - da
+  - de
+  - el
+  - en
+  - es
+  - fi
+  - fr
+  - he
+  - hr
+  - hu
+  - it
+  - ja
+  - nl_NL
+  - pl
+  - pt_BR
+  - ro
+  - ru
+  - sl
+  - sv
+  - tr
+  - uk
+  - zh_TW
+  - zh_CN
 fallbacks:
-  zh: zh_TW
+  zh: zh_CN
   pt: pt_BR
   nl: nl_NL

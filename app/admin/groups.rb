@@ -66,7 +66,8 @@ ActiveAdmin.register Group, as: 'Group' do
   end
 
   show do |group|
-    render 'graph', { group: group }
+    report = ReportService.new(interval: 'week', group_ids: [group.id_and_subgroup_ids], start_at: group.created_at, end_at: 1.minute.ago)
+    render 'graph', { group: group, report: report }
     render 'stats', { group: group }
 
     if defined?(SubscriptionService) && group.subscription_id
@@ -203,6 +204,10 @@ ActiveAdmin.register Group, as: 'Group' do
       f.input :handle, as: :string
       f.input :subscription_id, label: "Subscription Id"
       f.input :is_visible_to_public, label: "Visible to public? (will change privacy of group, subgroups, discussions)"
+      if f.object.parent_id
+        f.input :is_visible_to_parent_members, label: "Visible to parent members?"
+        f.input :parent_members_can_see_discussions, label: "Parent members can see private threads?"
+      end
       f.input :membership_granted_upon, as: :select, collection: %w[request approval invitation]
     end
     f.actions

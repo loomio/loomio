@@ -6,10 +6,10 @@ import EventBus     from '@/shared/services/event_bus';
 import PollTemplateService     from '@/shared/services/poll_template_service';
 import { pickBy } from 'lodash-es';
 import { ContainerMixin, HandleDirective } from 'vue-slicksort';
-import ThreadTemplateHelpPanel from '@/components/thread_template/help_panel';
+import WatchRecords from '@/mixins/watch_records';
 
 export default {
-  components: {ThreadTemplateHelpPanel},
+  mixins: [WatchRecords],
   directives: {
     handle: HandleDirective
   },
@@ -43,7 +43,7 @@ export default {
   created() {
     this.watchRecords({
       collections: ["pollTemplates"],
-      query: records => this.query()
+      query: () => this.query()
     });
 
     if (this.discussion && this.discussion.discussionTemplateId) {
@@ -106,7 +106,7 @@ export default {
     cloneTemplate(template) {
       const poll = template.buildPoll();
       if (this.discussion) {
-        poll.discussionId = this.discussion.id; 
+        poll.discussionId = this.discussion.id;
         poll.groupId = this.discussion.groupId;
       } else {
         if (this.group) { poll.groupId = this.group.id; }
@@ -159,51 +159,53 @@ export default {
 
 <template lang="pug">
 .poll-common-templates-list
-  //- thread-template-help-panel(v-if="discussionTemplate" :discussion-template="discussionTemplate")
   .d-flex(:class="{'px-4': !discussion}")
     v-chip.mr-1(
+      :color="filter == name ? 'primary' : null"
       v-for="icon, name in filters"
       label
       :key="name"
-      :outlined="filter != name"
       @click="filter = name"
       :class="'poll-common-choose-template__'+name"
     )
-      common-icon.mr-2(small :name="icon")
+      common-icon.mr-2(size="small" :name="icon" :color="filter == name ? 'primary' : null")
+
       span.poll-type-chip-name(v-t="filterLabels[name]")
     template(v-if="userIsAdmin")
       v-spacer
       v-chip(@click="filter = 'admin'" :outlined="filter != 'admin'")
-        common-icon(small name="mdi-cog").mr-2
+        common-icon(size="small" name="mdi-cog").mr-2
         span.poll-type-chip-name(v-t="filterLabels['admin']")
-  v-list.decision-tools-card__poll-types(two-line dense)
+  v-list.decision-tools-card__poll-types(lines="two" density="comfortable")
     template(v-if="filter == 'admin'")
       v-list-item.decision-tools-card__new-template(
         :to="'/poll_templates/new?group_id='+group.id+'&return_to='+returnTo"
         :class="'decision-tools-card__poll-type--new-template'"
         :key="99999"
       )
-        v-list-item-content
-          v-list-item-title(v-t="'discussion_form.new_template'")
-          v-list-item-subtitle(v-t="'poll_common.create_a_custom_process'")
+        v-list-item-title(v-t="'discussion_form.new_template'")
+        v-list-item-subtitle(v-t="'poll_common.create_a_custom_process'")
 
       v-checkbox.pl-4(v-model="singleList" :label="$t('poll_common.show_all_templates_in_one_list')")
-      v-subheader(v-if="pollTemplates.length" v-t="'poll_common.hidden_poll_templates'")
+      v-list-subheader(v-if="pollTemplates.length" v-t="'poll_common.hidden_poll_templates'")
 
     template(v-if="isSorting")
-      sortable-list(v-model="pollTemplates"  @sort-end="sortEnded" append-to=".decision-tools-card__poll-types"  lock-axis="y" axis="y")
+      sortable-list(v-model:list="pollTemplates"  @sort-end="sortEnded" append-to=".decision-tools-card__poll-types"  lock-axis="y" axis="y")
         sortable-item(v-for="(template, index) in pollTemplates" :index="index" :key="template.id || template.key")
           v-list-item.decision-tools-card__poll-type(
             :class="'decision-tools-card__poll-type--' + template.pollType"
             :key='template.id || template.key'
+            lines="two"
           )
-            v-list-item-content
-              v-list-item-title
-                span {{ template.processName }}
-                v-chip.ml-2(x-small outlined v-if="filter == 'admin' && !template.id" v-t="'poll_common_action_panel.default_template'")
-                v-chip.ml-2(x-small outlined v-if="filter == 'admin' && template.id" v-t="'poll_common_action_panel.custom_template'")
-              v-list-item-subtitle {{ template.processSubtitle }}
-            v-list-item-action.handle(v-handle style="cursor: grab")
+            v-list-item-title
+              span {{ template.processName }}
+              v-chip.ml-2(size="x-small" v-if="filter == 'admin' && !template.id")
+                span(v-t="'poll_common_action_panel.default_template'")
+              v-chip.ml-2(size="x-small" v-if="filter == 'admin' && template.id")
+                span(v-t="'poll_common_action_panel.custom_template'")
+            v-list-item-subtitle {{ template.processSubtitle }}
+            //- v-list-item-action.handle(v-handle style="cursor: grab")
+            template(v-slot:append)
               common-icon(name="mdi-drag-vertical")
     template(v-else)
       v-list-item.decision-tools-card__poll-type(
@@ -211,18 +213,24 @@ export default {
         @click="cloneTemplate(template)"
         :class="'decision-tools-card__poll-type--' + template.pollType"
         :key="template.id || template.key"
+        lines="two"
       )
-        v-list-item-content
-          v-list-item-title
-            span {{ template.processName }}
-            v-chip.ml-2(x-small outlined v-if="filter == 'admin' && !template.id" v-t="'poll_common_action_panel.default_template'")
-            v-chip.ml-2(x-small outlined v-if="filter == 'admin' && template.id" v-t="'poll_common_action_panel.custom_template'")
-          v-list-item-subtitle {{ template.processSubtitle }}
-        v-list-item-action
-          action-menu(:actions='actions[i]', small, icon, :name="$t('action_dock.more_actions')")
+        v-list-item-title
+          span {{ template.processName }}
+          v-chip.ml-2(size="x-small" outlined v-if="filter == 'admin' && !template.id")
+            span(v-t="'poll_common_action_panel.default_template'")
+          v-chip.ml-2(size="x-small" outlined v-if="filter == 'admin' && template.id")
+            span(v-t="'poll_common_action_panel.custom_template'")
+        v-list-item-subtitle {{ template.processSubtitle }}
+        template(v-slot:append)
+          action-menu(:actions='actions[i]' size="small" icon :name="$t('action_dock.more_actions')")
 
 </template>
 <style>
+.sortable-list-item {
+  cursor: grab;
+}
+
 .decision-tools-card__poll-type {
   user-select: none;
 }

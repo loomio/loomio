@@ -3,8 +3,10 @@ import Records  from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
 import Flash   from '@/shared/services/flash';
 import { sum, map, without } from 'lodash-es';
+import WatchRecords from '@/mixins/watch_records';
 
 export default {
+  mixins: [WatchRecords],
   props: {
     stance: Object
   },
@@ -12,7 +14,8 @@ export default {
   data() {
     return {
       pollOptions: [],
-      stanceChoices: []
+      stanceChoices: [],
+      loading: false
     };
   },
 
@@ -35,6 +38,7 @@ export default {
 
   methods: {
     submit() {
+      this.loading = true;
       if (sum(map(this.stanceChoices, 'score')) > 0) {
         this.stance.stanceChoicesAttributes = map(this.stanceChoices, choice => {
           return {
@@ -47,7 +51,9 @@ export default {
       this.stance.save().then(() => {
         Flash.success(`poll_${this.stance.poll().pollType}_vote_form.stance_${actionName}`);
         EventBus.$emit("closeModal");
-      }).catch(() => true);
+      }).catch((err) => {
+        Flash.custom(err.error || Object.values(err.errors).join(", "));
+      }).finally(() => this.loading = false);
     },
 
     rulesForChoice(choice) {
@@ -83,9 +89,9 @@ export default {
 
   computed: {
     poll() { return this.stance.poll(); },
-  
+
     dotsRemaining() {
-      return this.dotsPerPerson - sum(map(this.stanceChoices, 'score'));
+      return this.dotsPerPerson - sum(map(this.stanceChoices, (c) => parseInt(c.score) || 0));
     },
 
     dotsPerPerson() {
@@ -93,7 +99,7 @@ export default {
     },
 
     alertColor() {
-      if (this.dotsRemaining === 0) { return 'success'; } 
+      if (this.dotsRemaining === 0) { return 'success'; }
       if (this.dotsRemaining > 0) { return 'primary'; }
       if (this.dotsRemaining < 0) { return 'error'; }
     }
@@ -105,37 +111,40 @@ export default {
 <template lang="pug">
 div
   v-form.poll-dot-vote-vote-form(ref="form")
-    v-banner.poll-dot-vote-vote-form__dots-remaining(sticky rounded dense :color="alertColor" )
+    v-alert.poll-dot-vote-vote-form__dots-remaining.mb-4(density="compact" variant="tonal" :color="alertColor" )
       span(v-t="{ path: 'poll_dot_vote_vote_form.dots_remaining', args: { count: dotsRemaining } }")
     .poll-dot-vote-vote-form__options
-      v-list-item.poll-dot-vote-vote-form__option(v-for='choice in stanceChoices', :key='choice.option.id')
-        v-list-item-content
-          v-list-item-title {{ choice.option.name }}
-          v-list-item-subtitle(style="white-space: inherit") {{ choice.option.meaning }}
-          v-slider.poll-dot-vote-vote-form__slider.mt-4(
-            :disabled="!poll.isVotable()"
-            v-model='choice.score'
-            :color="choice.option.color"
-            track-color="grey"
-            :thumb-color="choice.option.color"
-            :height="4"
-            :min="0"
-            :max="dotsPerPerson"
-            :readonly="false")
-        v-list-item-action
+      v-list-item.poll-dot-vote-vote-form__option(
+        v-for='choice in stanceChoices'
+        :key='choice.option.id'
+        :title="choice.option.name"
+        :subtitle="choice.option.meaning"
+      )
+        template(v-slot:append)
           input.vote-form-number-input(
             :style="{'background-color': choice.option.color}"
             type="text"
             inputmode="numeric"
             v-model="choice.score")
+        v-slider.poll-dot-vote-vote-form__slider.mb-6.px-3(
+          :disabled="!poll.isVotable()"
+          v-model='choice.score'
+          :color="choice.option.color"
+          :step="1"
+          track-color="grey"
+          :height="4"
+          :min="0"
+          :max="dotsPerPerson"
+          :readonly="false")
       validation-errors(:subject='stance' field='stanceChoices')
     poll-common-stance-reason(:stance='stance', :poll='poll')
     v-card-actions.poll-common-form-actions
       v-btn.poll-common-vote-form__submit(
         block
+        variant="elevated"
         @click="submit()"
         :disabled="(dotsRemaining < 0) || !poll.isVotable()"
-        :loading="stance.processing"
+        :loading="loading"
         color="primary"
       )
         span(v-t="stance.castAt? 'poll_common.update_vote' : 'poll_common.submit_vote'")

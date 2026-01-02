@@ -1,12 +1,13 @@
 <script lang="js">
-import ThreadService  from '@/shared/services/thread_service';
+import DiscussionService  from '@/shared/services/discussion_service';
 import { omit, pickBy } from 'lodash-es';
-import EventBus from '@/shared/services/event_bus';
 import Session from '@/shared/services/session';
 import openModal      from '@/shared/helpers/open_modal';
 import StrandActionsPanel from '@/components/strand/actions_panel';
+import UrlFor from '@/mixins/url_for';
 
 export default {
+  mixins: [UrlFor],
   components: {
     StrandActionsPanel
   },
@@ -17,17 +18,21 @@ export default {
   },
 
   watch: {
-    'eventable.newestFirst'() {
-      this.actions = omit(ThreadService.actions(this.eventable, this), ['dismiss_thread']);
-    }
+    'eventable.newestFirst'() { this.rebuildActions(); },
+    'discussion.groupId': 'updateGroups'
   },
 
   data() {
-    return {actions: omit(ThreadService.actions(this.eventable, this), ['dismiss_thread'])};
+    return {
+      groups: [],
+      actions: []
+    };
   },
 
   mounted() {
     this.eventable.fetchUsersNotifiedCount();
+    this.updateGroups();
+    this.rebuildActions();
   },
 
   computed: {
@@ -56,28 +61,37 @@ export default {
     status() {
       if (this.discussion.pinned) { return 'pinned'; }
     },
+  },
 
-    groups() {
-      return this.discussion.group().parentsAndSelf().map(group => {
+  methods: {
+    rebuildActions() {
+      this.actions = omit(DiscussionService.actions(this.eventable, this), ['dismiss_thread']);
+    },
+    updateGroups() {
+      this.groups = this.discussion.group().parentsAndSelf().map(group => {
         return {
-          text: group.name,
+          title: group.name,
           disabled: false,
           to: group.id ? this.urlFor(group) : '/threads/direct'
         };
       });
-    }
-  },
+    },
 
-  methods: {
     viewed(viewed) {
-      if (viewed && Session.isSignedIn()) { this.discussion.markAsSeen(); }
+      if (viewed && Session.isSignedIn()) {
+        this.discussion.markAsSeen();
+        if (Session.user().autoTranslate && this.actions['translate_thread'].canPerform()) {
+          this.actions['translate_thread'].perform().then(() => { this.rebuildActions() });
+        }
+      }
     },
 
     openSeenByModal() {
       openModal({
         component: 'SeenByModal',
+        persistent: false,
         props: {
-          discussion: this.discussion
+          discussion: this.discussion,
         }
       });
     }
@@ -87,51 +101,42 @@ export default {
 </script>
 
 <template lang="pug">
-.strand-new-discussion.context-panel#context(v-observe-visibility="{callback: viewed, once: true}")
-  v-layout.ml-n2(align-center wrap)
-    v-breadcrumbs.context-panel__breadcrumbs(:items="groups")
+.strand-new-discussion.context-panel#context(v-intersect.once="{handler: viewed}")
+  .d-flex.ml-n3.text-body-2
+    v-breadcrumbs.context-panel__breadcrumbs(color="anchor" :items="groups")
       template(v-slot:divider)
         common-icon(name="mdi-chevron-right")
     v-spacer
     tags-display(:tags="discussion.tags" :group="discussion.group()")
-    v-chip(
-      v-if="discussion.private"
-      small outlined
-      :title="$t('discussion_form.privacy_private')"
-      )
-      i.mdi.mdi-lock-outline.mr-1
-      span(v-t="'common.privacy.private'")
-    v-chip(
-      v-if="!discussion.private"
-      small outlined
-      :title="$t('discussion_form.privacy_public')"
-      )
-      i.mdi.mdi-earth.mr-1
-      span(v-t="'common.privacy.public'")
 
-  strand-title(:discussion="discussion")
+  strand-title.text-high-emphasis(:discussion="discussion")
 
   .mb-4.text-body-2
     user-avatar.mr-2(:user='author')
-    router-link.text--secondary(:to="urlFor(author)") {{authorName}}
+    router-link.text-medium-emphasis(:to="urlFor(author)") {{authorName}}
     mid-dot
-    router-link.text--secondary(:to='urlFor(discussion)')
+    router-link.text-medium-emphasis(:to='urlFor(discussion)')
       time-ago(:date='discussion.createdAt')
-    span(v-show='discussion.seenByCount > 0')
+    span.text-medium-emphasis(v-show='discussion.seenByCount > 0')
       mid-dot
-      a.context-panel__seen_by_count(v-t="{ path: 'thread_context.seen_by_count', args: { count: discussion.seenByCount } }"  @click="openSeenByModal()")
-    span(v-show='discussion.usersNotifiedCount != null')
+      a.context-panel__seen_by_count.underline-on-hover(v-t="{ path: 'discussion_context.seen_by_count', args: { count: discussion.seenByCount } }"  @click="openSeenByModal()")
+    span.text-medium-emphasis(v-show='discussion.usersNotifiedCount != null')
       mid-dot
-      a.context-panel__users_notified_count(v-t="{ path: 'thread_context.count_notified', args: { count: discussion.usersNotifiedCount} }"  @click="actions.notification_history.perform")
+      a.context-panel__users_notified_count.underline-on-hover(v-t="{ path: 'discussion_context.count_notified', args: { count: discussion.usersNotifiedCount} }"  @click="actions.notification_history.perform")
+
   template(v-if="!collapsed")
-    formatted-text.context-panel__description(:model="discussion" column="description")
+    formatted-text.context-panel__description(:model="discussion" field="description")
     link-previews(:model="discussion")
     document-list(:model='discussion')
     attachment-list(:attachments="discussion.attachments")
-    action-dock.py-2(:model='discussion' :actions='dockActions' :menu-actions='menuActions')
-  strand-actions-panel(v-if="discussion.newestFirst" :discussion="discussion")
+    action-dock.py-2(:model='discussion' :actions='dockActions' :menu-actions='menuActions' color="primary" variant="tonal")
 </template>
 <style lang="sass">
+abbr[title]
+  text-decoration: none
+a
+  cursor: pointer
+
 .context-panel__heading-pin
   margin-left: 4px
 

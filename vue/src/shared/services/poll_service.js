@@ -6,7 +6,7 @@ import AbilityService from '@/shared/services/ability_service';
 import StanceService from '@/shared/services/stance_service';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
 import openModal      from '@/shared/helpers/open_modal';
-import i18n          from '@/i18n';
+import { I18n }          from '@/i18n';
 import { hardReload } from '@/shared/helpers/window';
 import { startOfHour, addDays, format } from 'date-fns';
 
@@ -43,12 +43,31 @@ export default new class PollService {
   actions(poll, vm, event) {
     if (!poll || !poll.config()) { return {}; }
     return {
+      view_all_votes: {
+        icon: 'mdi-list-status',
+        name: 'poll_common.view_all_votes',
+        dock: 2,
+        canPerform() { return vm.$route.path.startsWith('/d/') && poll.showResults() },
+        to() { return `/p/${poll.key}`; }
+      },
+
       translate_poll: {
         icon: 'mdi-translate',
         name: 'common.action.translate',
-        dock: 2,
+        dock: 3,
         canPerform() { return AbilityService.canTranslate(poll); },
-        perform() { return Session.user() && poll.translate(Session.user().locale); }
+        perform() {
+          poll.pollOptions().forEach((po) => Records.translations.addTo(po, Session.user().locale));
+          return Records.translations.addTo(poll, Session.user().locale);
+        }
+      },
+
+      untranslate_poll: {
+        icon: 'mdi-translate',
+        name: 'common.action.original',
+        dock: 3,
+        canPerform() { return AbilityService.canUntranslate(poll); },
+        perform() { poll.translationId = null;  poll.pollOptions().forEach((po) => po.translationId = null)}
       },
 
       edit_stance: {
@@ -60,7 +79,7 @@ export default new class PollService {
       },
 
       uncast_stance: {
-        name: (poll.config().has_options && 'poll_common.remove_your_vote') || 'poll_common.remove_your_response', 
+        name: (poll.config().has_options && 'poll_common.remove_your_vote') || 'poll_common.remove_your_response',
         icon: 'mdi-cancel',
         menu: true,
         canPerform() { return StanceService.canUpdateStance(poll.myStance()); },
@@ -153,12 +172,13 @@ export default new class PollService {
                   openSetOutcomeModal(poll);
                 },
                 text: {
-                  title: 'poll_common_close_form.title',
+                  title: 'poll_common.close_poll_type',
                   helptext: 'poll_common_close_form.helptext',
                   flash: 'poll_common_close_form.poll_type_closed'
                 },
                 textArgs: {
-                  poll_type: poll.translatedPollType()
+                  poll_type: poll.translatedPollType(),
+                  pollType: poll.translatedPollType()
                 }
               }
             }
@@ -275,6 +295,15 @@ export default new class PollService {
       //             title: 'poll_common_delete_modal.title'
       //             confirm: 'poll_common_delete_modal.question'
       //             flash: 'poll_common_delete_modal.success'
+      //
+      verify_participants: {
+        icon: 'mdi-account-check',
+        name: 'poll_receipts_page.verify_participants',
+        menu: true,
+        to() { return `/p/${poll.key}/receipts`; },
+        canPerform() { return true }
+      },
+
 
       discard_poll: {
         name: 'poll_common.delete_poll',
@@ -290,7 +319,7 @@ export default new class PollService {
               confirm: {
                 submit() { return poll.discard(); },
                 text: {
-                  raw_title: i18n.t('poll_common_delete_modal.title', {pollType: i18n.t(poll.pollTypeKey())}),
+                  raw_title: I18n.global.t('poll_common_delete_modal.title', {pollType: I18n.global.t(poll.pollTypeKey())}),
                   helptext: 'poll_common_delete_modal.question',
                   flash: 'poll_common_delete_modal.success'
                 }
@@ -302,4 +331,3 @@ export default new class PollService {
     };
   }
 };
-

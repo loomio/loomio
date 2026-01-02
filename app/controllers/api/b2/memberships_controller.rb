@@ -1,4 +1,4 @@
-class API::B2::MembershipsController < API::B2::BaseController
+class Api::B2::MembershipsController < Api::B2::BaseController
   def create
     current_emails = User.active.where(id: group.memberships.pluck(:user_id)).pluck(:email)
 

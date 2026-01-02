@@ -3,8 +3,7 @@ import Session        from '@/shared/services/session';
 import Records        from '@/shared/services/records';
 import EventBus        from '@/shared/services/event_bus';
 import Flash   from '@/shared/services/flash';
-import Vue from 'vue';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 import { mdiMagnify, mdiClose } from '@mdi/js';
 
 export default {
@@ -47,18 +46,18 @@ export default {
       users: {},
       type: null,
       typeItems: [
-        {text: I18n.t('search_modal.all_content'), value: null},
-        {text: I18n.t('group_page.threads'), value: 'Discussion'},
-        {text: I18n.t('navbar.search.comments'), value: 'Comment'},
-        {text: I18n.t('group_page.decisions'), value: 'Poll'},
-        {text: I18n.t('poll_common.votes'), value: 'Stance'},
-        {text: I18n.t('poll_common.outcomes'), value: 'Outcome'},
+        {title: I18n.global.t('search_modal.all_content'), value: null},
+        {title: I18n.global.t('group_page.threads'), value: 'Discussion'},
+        {title: I18n.global.t('navbar.search.comments'), value: 'Comment'},
+        {title: I18n.global.t('group_page.decisions'), value: 'Poll'},
+        {title: I18n.global.t('poll_common.votes'), value: 'Stance'},
+        {title: I18n.global.t('poll_common.outcomes'), value: 'Outcome'},
       ],
       orgItems: [
-        {text: I18n.t('sidebar.all_groups'), value: null},
-        {text: I18n.t('sidebar.direct_threads'), value: 0}
+        {title: I18n.global.t('sidebar.all_groups'), value: null},
+        {title: I18n.global.t('sidebar.invite_only_discussions'), value: 0}
       ].concat(Session.user().parentGroups().map(g => ({
-        text: g.name,
+        title: g.name,
         value: g.id
       }))),
       orgId: null,
@@ -66,9 +65,9 @@ export default {
       groupId: null,
       order: null,
       orderItems: [
-        {text: I18n.t('search_modal.best_match'), value: null},
-        {text: I18n.t('strand_nav.newest'), value: "authored_at_desc"},
-        {text: I18n.t('strand_nav.oldest'), value: "authored_at_asc"},
+        {title: I18n.global.t('search_modal.best_match'), value: null},
+        {title: I18n.global.t('strand_nav.newest'), value: "authored_at_desc"},
+        {title: I18n.global.t('strand_nav.oldest'), value: "authored_at_asc"},
       ],
       tag: null,
       tagItems: [],
@@ -130,8 +129,8 @@ export default {
     },
 
     updateTagItems(group) {
-      this.tagItems = [{text: I18n.t('search_modal.any_tag'), value: null}].concat(group.tagsByName().map(t => ({
-        text: t.name,
+      this.tagItems = [{title: I18n.global.t('search_modal.any_tag'), value: null}].concat(group.tagsByName().map(t => ({
+        title: t.name,
         value: t.name
       })));
     }
@@ -142,12 +141,12 @@ export default {
       if (this.orgId) {
         this.group = Records.groups.find(this.orgId);
         const base = [
-          {text: I18n.t('search_modal.all_subgroups'), value: null},
-          {text: I18n.t('search_modal.parent_only'), value: this.orgId},
+          {title: I18n.global.t('search_modal.all_subgroups'), value: null},
+          {title: I18n.global.t('search_modal.parent_only'), value: this.orgId},
         ];
         this.updateTagItems(this.group);
         this.groupItems = base.concat(this.group.subgroups().filter(g => !g.archivedAt && g.membershipFor(Session.user())).map(g => ({
-          text: g.name,
+          title: g.name,
           value: g.id
         })));
       } else {
@@ -157,7 +156,7 @@ export default {
       this.fetch();
     },
 
-    groupId(groupId) { 
+    groupId(groupId) {
       if (groupId) {
         const group = Records.groups.find(groupId);
         this.updateTagItems(group);
@@ -174,42 +173,41 @@ export default {
 
 </script>
 <template lang="pug">
-v-card.search-modal
-  .d-flex.px-4.pt-4.align-center
-    v-text-field(
-      :loading="loading"
-      autofocus
-      filled
-      rounded
-      single-line
-      :append-icon="mdiMagnify"
-      :append-outer-icon="mdiClose"
-      @click:append-outer="closeModal"
-      @click:append="fetch"
-      v-model="query"
-      :placeholder="$t('common.action.search')"
-      @keydown.enter.prevent="fetch"
-      hide-details
+v-card.search-modal(:title="$t('common.action.search')")
+  template(v-slot:append)
+    dismiss-modal-button
+  v-card-text
+    .d-flex.align-center
+      v-text-field(
+        :append-inner-icon="mdiMagnify"
+        @click:append-inner="fetch"
+        color="info"
+        variant="solo-filled"
+        :loading="loading"
+        autofocus
+        v-model="query"
+        @keydown.enter.prevent="fetch"
+        hide-details
       )
-  .d-flex.px-4.align-center
-    v-select.mr-2(v-model="orgId" :items="orgItems")
-    v-select.mr-2(v-if="groupItems.length > 2" v-model="groupId" :items="groupItems" :disabled="!orgId")
-    v-select.mr-2(v-if="tagItems.length" v-model="tag" :items="tagItems")
-    v-select.mr-2(v-model="type" :items="typeItems")
-    v-select(v-model="order" :items="orderItems")
-  v-list(two-line)
-    v-list-item.poll-common-preview(v-if="!loading && resultsQuery && results.length == 0")
-      v-list-item-title(v-t="{path: 'discussions_panel.no_results_found', args: {search: resultsQuery}}")
-    v-list-item.poll-common-preview(v-for="result in results" :key="result.id" :to="urlForResult(result)")
-      v-list-item-avatar 
-        poll-common-icon-panel(v-if="['Outcome', 'Poll'].includes(result.searchable_type)" :poll='pollById(result.poll_id)' show-my-stance)
-        user-avatar(v-else :user="userById(result.author_id)")
-      v-list-item-content
+
+    .d-flex.align-center.pt-4
+      v-select.mr-2(variant="solo-filled" density="compact" v-model="orgId" :items="orgItems")
+      v-select.mr-2(variant="solo-filled" density="compact" v-if="groupItems.length > 2" v-model="groupId" :items="groupItems" :disabled="!orgId")
+      v-select.mr-2(variant="solo-filled" density="compact" v-if="tagItems.length" v-model="tag" :items="tagItems")
+      v-select.mr-2(variant="solo-filled" density="compact" v-model="type" :items="typeItems")
+      v-select(variant="solo-filled" density="compact" v-model="order" :items="orderItems")
+    v-list(lines="two")
+      v-list-item.poll-common-preview(v-if="!loading && resultsQuery && results.length == 0")
+        v-list-item-title(v-t="{path: 'discussions_panel.no_results_found', args: {search: resultsQuery}}")
+      v-list-item(v-for="result in results" :key="result.id" :to="urlForResult(result)")
+        template(v-slot:prepend)
+          poll-common-icon-panel.mr-2(v-if="['Outcome', 'Poll'].includes(result.searchable_type)" :poll='pollById(result.poll_id)' show-my-stance)
+          user-avatar.mr-2(v-else :user="userById(result.author_id)")
         v-list-item-title.d-flex
           span.text-truncate {{ result.poll_title || result.discussion_title }}
-          tags-display.ml-1(:tags="result.tags" :group="groupById(result.group_id)" smaller)
+          tags-display.ml-1(:tags="result.tags" size="x-small" :group="groupById(result.group_id)")
           v-spacer
-          time-ago.text--secondary(style="font-size: 0.875rem;" :date="result.authored_at")
+          time-ago.text-medium-emphasis(style="font-size: 0.875rem;" :date="result.authored_at")
         v-list-item-subtitle.text--primary(v-html="result.highlight")
         v-list-item-subtitle
           span
@@ -217,6 +215,6 @@ v-card.search-modal
             mid-dot
             span {{result.author_name}}
             mid-dot
-            span {{result.group_name || $t('discussion.direct_thread')}}
+            span {{result.group_name || $t('discussion.invite_only')}}
 
 </template>

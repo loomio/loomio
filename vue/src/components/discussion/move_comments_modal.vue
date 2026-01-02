@@ -4,9 +4,11 @@ import Session from '@/shared/services/session';
 import AbilityService from '@/shared/services/ability_service';
 import Flash   from '@/shared/services/flash';
 import EventBus          from '@/shared/services/event_bus';
-import { sortBy, debounce } from 'lodash-es';
+import { sortBy, debounce, escapeRegExp } from 'lodash-es';
+import UrlFor from '@/mixins/url_for';
 
 export default {
+  mixins: [UrlFor],
   data() {
     return {
       selectedDiscussion: null,
@@ -80,8 +82,8 @@ export default {
         this.loading = false;
         this.searchResults = Records.discussions.collection.chain()
           .find({groupId: this.groupId})
-          .find({ id: { $ne: this.discussion.id } })
-          .find({title: { $regex: [this.searchFragment, 'i'] }})
+          .find({id: { $ne: this.discussion.id } })
+          .find({title: { $regex: [escapeRegExp(this.searchFragment), 'i'] }})
           .where(d => !!AbilityService.canAddComment(d))
           .simplesort('title')
           .data();
@@ -98,15 +100,12 @@ export default {
 
 </script>
 <template lang="pug">
-v-card
-  submit-overlay(:value='selectedDiscussion && selectedDiscussion.processing')
-  v-card-title
-    h1.text-h5(tabindex="-1" v-t="'action_dock.move_items'")
-    v-spacer
+v-card(:title="$t('action_dock.move_items')")
+  template(v-slot:append)
     dismiss-modal-button(aria-hidden='true')
   v-card-text
-    v-select(v-model="groupId" :items="groups" item-text="fullName" item-value="id")
-    v-autocomplete(hide-no-data return-object v-model="selectedDiscussion" :search-input.sync="searchFragment" :items="searchResults" item-text="title" :placeholder="$t('discussion_fork_actions.search_placeholder')" :label="$t('discussion_fork_actions.move_to_existing_thread')" :loading="loading")
+    v-select(v-model="groupId" :items="groups" item-title="fullName" item-value="id")
+    v-autocomplete(hide-no-data return-object v-model="selectedDiscussion" :search-input.sync="searchFragment" :items="searchResults" item-title="title" :placeholder="$t('discussion_fork_actions.search_placeholder')" :label="$t('discussion_fork_actions.move_to_existing_thread')" :loading="loading")
   v-card-actions
     v-spacer
     v-btn(color="primary" outlined @click="startNewThread()" :loading="discussion.processing")

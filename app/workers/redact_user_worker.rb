@@ -10,14 +10,14 @@ class RedactUserWorker
     deactivated_at = user.deactivated_at || DateTime.now
     group_ids = Membership.active.where(user_id: user_id).pluck(:group_id)
     user.uploaded_avatar.purge_later
-    
+
     User.transaction do
       MembershipService.revoke_by_id(group_ids, user_id, actor_id, deactivated_at)
 
       User.where(id: user_id).update_all(
         is_admin: false,
         api_key: nil,
-        secret_token: nil,
+        secret_token: User.generate_unique_secure_token,
         name: nil,
         email: nil,
         short_bio: '',

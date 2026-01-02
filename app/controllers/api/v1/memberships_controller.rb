@@ -1,10 +1,11 @@
-class API::V1::MembershipsController < API::V1::RestfulController
+class Api::V1::MembershipsController < Api::V1::RestfulController
   load_resource only: [:set_volume]
 
   def index
     instantiate_collection do |collection|
       %w[user_xids].each do |key|
         next unless params.has_key? key
+
         params[key.gsub("_xids", "_ids")] = params[key].split('x').map(&:to_i)
         params.delete(key)
       end
@@ -54,8 +55,18 @@ class API::V1::MembershipsController < API::V1::RestfulController
     respond_with_resource
   end
 
+  def make_delegate
+    service.make_delegate(membership: load_resource, actor: current_user)
+    respond_with_resource
+  end
+
+  def remove_delegate
+    service.remove_delegate(membership: load_resource, actor: current_user)
+    respond_with_resource
+  end
+
   def set_volume
-    service.set_volume membership: resource, params: params.slice(:volume, :apply_to_all), actor: current_user
+    service.set_volume membership: resource, params: params.slice(:volume, :apply_to_all), actor: (restricted_user || current_user)
     respond_with_resource
   end
 
@@ -67,7 +78,7 @@ class API::V1::MembershipsController < API::V1::RestfulController
 
   def user_name
     user = User.active.find(params[:id])
-    if (user.name.blank? || !user.email_verified) && 
+    if (user.name.blank? || !user.email_verified) &&
        (user.group_ids & current_user.adminable_group_ids).length > 0
       user.update(name: params[:name], username: params[:username])
       self.resource = user
@@ -81,7 +92,7 @@ class API::V1::MembershipsController < API::V1::RestfulController
   def destroy_action
     service.revoke(**{resource_symbol => resource, actor: current_user})
   end
-  
+
   def valid_orders
     ['memberships.created_at', 'memberships.created_at desc', 'users.name', 'admin desc', 'accepted_at desc', 'accepted_at']
   end

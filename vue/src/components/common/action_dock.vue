@@ -12,21 +12,32 @@ export default {
       type: Object,
       default() { return {}; }
     },
-    small: Boolean,
+    size: {
+      type: String,
+      default: 'default',
+    },
     left: Boolean,
-    menuIcon: { 
+    menuIcon: {
       type: String,
       default: 'mdi-dots-horizontal'
-    }
+    },
+    color: {
+      type: String,
+      default: undefined
+    },
+    variant: {
+      type: String,
+      default: 'text'
+    },
   },
-  
+
   computed: {
     leftActions() {
-      return pickBy(this.actions, v => v.dockLeft);
+      return pickBy(this.actions, v => (v.dockLeft && v.canPerform()));
     },
 
     rightActions() {
-      return pickBy(this.actions, v => !v.dockLeft);
+      return pickBy(this.actions, v => (!v.dockLeft && v.canPerform()));
     }
   }
 };
@@ -34,26 +45,53 @@ export default {
 
 <template lang="pug">
 section.d-flex.flex-wrap.align-center.action-dock.pb-1(style="margin-left: -6px" :aria-label="$t('action_dock.actions_menu')")
-  .action-dock__action(v-for='(action, name) in leftActions' v-if='action.canPerform()', :key="name")
-    action-button(v-if="name != 'react'", :action="action", :name="name", :small="small", :nameArgs="action.nameArgs && action.nameArgs()")
+  .action-dock__action(v-for='(action, name) in leftActions' :key="name")
+    action-button(
+      v-if="name != 'react'"
+      :action="action"
+      :name="name"
+      :nameArgs="action.nameArgs && action.nameArgs()"
+      :color="color"
+      :variant="variant"
+      :size="size"
+    )
   v-spacer(v-if="!left")
-  reaction-display(:model="model" v-if="!left && actions.react && actions.react.canPerform()", :small="small")
-  .action-dock__action(v-for='(action, name) in rightActions' v-if='action.canPerform()', :key="name")
-    reaction-input.action-dock__button--react(:model="model" v-if="name == 'react'", :small="small")
-    action-button(v-if="name != 'react'", :action="action", :name="name", :small="small", :nameArgs="action.nameArgs && action.nameArgs()")
-  action-menu(v-if="menuActions", :actions='menuActions', :menuIcon="menuIcon" :small="small" icon, :name="$t('action_dock.more_actions')")
-  v-spacer(v-if="left")
-  reaction-display(:model="model" v-if="left && actions.react && actions.react.canPerform()", :small="small")
+  reaction-display(
+    v-if="!left && actions.react"
+    :model="model"
+    :color="color"
+    :variant="variant"
+    :canEdit="actions.react.canPerform()"
+    :size="size"
+  )
+  .action-dock__action.mb-1(v-for='(action, name) in rightActions' :key="name")
+    reaction-input.action-dock__button--react(
+      v-if="name == 'react'"
+      :model="model"
+      :color="color"
+      :variant="variant"
+      :size="size"
+    )
+    action-button(
+      v-if="name != 'react'"
+      :action="action"
+      :name="name"
+      :nameArgs="action.nameArgs && action.nameArgs()"
+      :color="color"
+      :variant="variant"
+      :size="size"
+    )
+  action-menu.mb-1(
+    v-if="menuActions"
+    :actions='menuActions'
+    :menuIcon="menuIcon"
+    :name="$t('action_dock.more_actions')"
+    icon
+    :color="color"
+    :variant="variant"
+    :size="size"
+  )
+  template(v-if="left")
+    v-spacer
+    reaction-display(:model="model" v-if="actions.react" :canEdit="actions.react.canPerform()" :size="size")
 </template>
-
-<style lang="sass">
-.action-dock__action, .action-menu
-  transition: opacity ease-in-out 0.25s
-
-.lmo-action-dock-wrapper
-  .action-dock__action, .action-menu
-    opacity: 0.35
-  &:hover .action-dock__action, &:hover .action-menu
-    opacity: 1
-
-</style>

@@ -1,19 +1,24 @@
 class PollOption < ApplicationRecord
   include Translatable
-  
+  is_translatable on: [ :name, :meaning, :prompt ]
+
   belongs_to :poll
   validates :name, presence: true
 
   has_many :stance_choices, dependent: :destroy
   has_many :stances, -> { where("stances.revoked_at IS NULL") }, through: :stance_choices
 
-  is_translatable on: [:name, :meaning]
-
   scope :dangling, -> { joins('left join polls on polls.id = poll_id').where('polls.id is null') }
+
+  validates :test_operator, inclusion: { in: [ 'gte', 'lte' ] }, allow_nil: true
+  normalizes :test_percent, with: ->(v) { v.nil? ? nil : [ [ v, 0 ].max, 100 ].min }
+  validates :test_against, inclusion: { in: [ 'score_percent', 'voter_percent' ] }, allow_nil: true
+
+  delegate :content_locale, to: :poll
 
   def update_counts!
     update_columns(
-      voter_scores: poll.anonymous ? {} : stance_choices.latest.where('stances.participant_id is not null').includes(:stance).map { |c| [c.stance.participant_id, c.score] }.to_h,
+      voter_scores: poll.anonymous ? {} : stance_choices.latest.where('stances.participant_id is not null').includes(:stance).map { |c| [ c.stance.participant_id, c.score ] }.to_h,
       total_score: stance_choices.latest.sum(:score),
       voter_count: stances.latest.count
     )
@@ -38,7 +43,7 @@ class PollOption < ApplicationRecord
         'agree' => AppConfig.colors['proposal'][0],
         'abstain' => AppConfig.colors['proposal'][1],
         'disagree' => AppConfig.colors['proposal'][2],
-        'block' => AppConfig.colors['proposal'][3],
+        'block' => AppConfig.colors['proposal'][3]
       }.fetch(icon, AppConfig.colors['proposal'][0])
     else
       AppConfig.colors.dig('poll', self.priority % AppConfig.colors.length)
@@ -51,7 +56,7 @@ class PollOption < ApplicationRecord
     if poll.poll_type == 'meeting'
       voter_scores.keys.map(&:to_i)
     else
-      voter_scores.filter{|id, score| score != 0 }.keys.map(&:to_i)
+      voter_scores.filter { |id, score| score != 0 }.keys.map(&:to_i)
     end
   end
 

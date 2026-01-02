@@ -31,6 +31,7 @@ class Membership < ApplicationRecord
   scope :pending,       -> { active.where(accepted_at: nil) }
   scope :accepted,      -> { where('accepted_at IS NOT NULL') }
   scope :revoked,       -> { where('revoked_at IS NOT NULL') }
+  scope :delegates,     -> { where(delegate: true) }
 
   scope :search_for, ->(query) { joins(:user).where("users.name ilike :query or users.username ilike :query or users.email ilike :query", query: "%#{query}%") }
 
@@ -48,11 +49,16 @@ class Membership < ApplicationRecord
   delegate :mailer, to: :user
 
   update_counter_cache :group, :memberships_count
+  update_counter_cache :group, :delegates_count
   update_counter_cache :group, :pending_memberships_count
   update_counter_cache :group, :admin_memberships_count
   update_counter_cache :user,  :memberships_count
 
   before_create :set_volume
+
+  def title_model
+    group
+  end
 
   def author_id
     inviter_id

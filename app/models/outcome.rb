@@ -9,7 +9,7 @@ class Outcome < ApplicationRecord
   include HasEvents
   include HasRichText
   include Searchable
-  
+
   def self.pg_search_insert_statement(id: nil, author_id: nil, discussion_id: nil, poll_id: nil)
     content_str = "regexp_replace(CONCAT_WS(' ', outcomes.statement, users.name), E'<[^>]+>', '', 'gi')"
     <<~SQL.squish
@@ -39,7 +39,7 @@ class Outcome < ApplicationRecord
       FROM outcomes
         LEFT JOIN users ON users.id = outcomes.author_id
         LEFT JOIN polls ON polls.id = outcomes.poll_id
-      WHERE polls.discarded_at IS NULL 
+      WHERE polls.discarded_at IS NULL
         #{id ? " AND outcomes.id = #{id.to_s.to_i} LIMIT 1" : ""}
         #{author_id ? " AND outcomes.author_id = #{author_id.to_s.to_i}" : ""}
         #{discussion_id ? " AND polls.discussion_id = #{discussion_id.to_s.to_i}" : ""}
@@ -60,16 +60,16 @@ class Outcome < ApplicationRecord
   has_many :documents, as: :model, dependent: :destroy
 
   %w(
-    title poll_type dates_as_options group group_id discussion discussion_id
+    poll_type dates_as_options group group_id discussion discussion_id
     locale mailer members admins discarded? tags
   ).each { |message| delegate message, to: :poll }
 
   is_mentionable on: :statement
   is_translatable on: :statement
 
-  has_paper_trail only: [:statement, :statement_format, :author_id, :review_on]
+  has_paper_trail only: [:statement, :statement_format, :author_id, :review_on, :attachments]
   define_counter_cache(:versions_count) { |d| d.versions.count }
-  validates :statement, presence: true, length: { maximum: Rails.application.secrets.max_message_length }
+  validates :statement, presence: true, length: { maximum: AppConfig.app_features[:max_message_length] }
   validate :has_valid_poll_option
 
   scope :review_due_not_published, -> (due_date) do
@@ -78,6 +78,10 @@ class Outcome < ApplicationRecord
               WHERE events.eventable_id   = outcomes.id AND
                     events.eventable_type = 'Outcome' AND
                     events.kind           = 'outcome_review_due')")
+  end
+
+  def title_model
+    poll
   end
 
   def author_name

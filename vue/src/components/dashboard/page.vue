@@ -5,11 +5,13 @@ import Session            from '@/shared/services/session';
 import EventBus           from '@/shared/services/event_bus';
 import AbilityService     from '@/shared/services/ability_service';
 import RecordLoader       from '@/shared/services/record_loader';
-import ThreadFilter       from '@/shared/services/thread_filter';
-import { subMonths } from 'date-fns';
+import DiscussionService       from '@/shared/services/discussion_service';
+import WatchRecords from '@/mixins/watch_records';
+import FormatDate from '@/mixins/format_date';
 
 export default
 {
+  mixins: [WatchRecords, FormatDate],
   data() {
     return {
       dashboardLoaded: Records.discussions.collection.data.length > 0,
@@ -31,8 +33,9 @@ export default
   mounted() {
     EventBus.$emit('content-title-visible', false);
     EventBus.$emit('currentComponent', {
-      titleKey: 'dashboard_page.aria_label',
-      page: 'dashboardPage'
+      titleKey: 'dashboard_page.dashboard',
+      page: 'dashboardPage',
+      group: null,
     }
     );
   },
@@ -45,7 +48,7 @@ export default
         params: {
           exclude_types: 'poll',
           filter: this.filter,
-          per: 60
+          per: 30
         }
       });
 
@@ -70,13 +73,7 @@ export default
     },
 
     query() {
-      const groupIds = Records.memberships.collection.find({userId: Session.user().id}).map(m => m.groupId);
-      let chain = Records.discussions.collection.chain();
-      chain = chain.find({$or: [{groupId: {$in: groupIds}}, {discussionReaderUserId: Session.user().id, revokedAt: null, inviterId: {$ne: null}}]});
-      chain = chain.find({discardedAt: null});
-      chain = chain.find({closedAt: null});
-      chain = chain.find({lastActivityAt: { $gt: subMonths(new Date(), 6) }});
-      this.discussions = chain.simplesort('lastActivityAt', true).data();
+      this.discussions = DiscussionService.dashboardQuery();
     }
   },
 
@@ -93,13 +90,13 @@ export default
 <template lang="pug">
 v-main
   v-container.dashboard-page.max-width-1024.px-0.px-sm-3
-    h1.text-h4.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'dashboard_page.aria_label'")
+    h1.text-h4.my-4(tabindex="-1" v-intersect="{handler: titleVisible}" v-t="'dashboard_page.dashboard'")
 
     dashboard-polls-panel
 
     v-card.mb-3(v-if='!dashboardLoaded')
-      v-list(two-line)
-        v-subheader(v-t="'dashboard_page.recent_threads'")
+      v-list(lines="two")
+        v-list-subheader(v-t="'dashboard_page.recent_discussions'")
         loading-content(
           :lineCount='2'
           v-for='(item, index) in [1,2,3]'
@@ -117,8 +114,8 @@ v-main
               span(v-t="'dashboard_page.view_recent'")
         .dashboard-page__collections(v-if='discussions.length')
           v-card.mb-3.thread-preview-collection__container.thread-previews-container
-            v-list.thread-previews(two-line)
-              v-subheader(v-t="'dashboard_page.recent_threads'")
+            v-list.thread-previews(lines="two")
+              v-list-subheader(v-t="'dashboard_page.recent_discussions'")
               thread-preview(
                 v-for="thread in discussions"
                 :key="thread.id"

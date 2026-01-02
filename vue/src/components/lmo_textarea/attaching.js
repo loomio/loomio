@@ -1,6 +1,7 @@
 import FileUploader from '@/shared/services/file_uploader';
 import {insertImage} from './extension_image';
 import { forEach } from 'lodash-es';
+import { reactive } from 'vue';
 export default
 {
   data() {
@@ -43,7 +44,7 @@ export default
     },
 
     attachFile({file}) {
-      const wrapper = {file, key: file.name+file.size, percentComplete: 0, blob: null};
+      const wrapper = reactive({ file, key: file.name + file.size, percentComplete: 0, blob: null });
       this.files.push(wrapper);
       this.emitUploading();
       const uploader = new FileUploader({onProgress(e) {
@@ -55,8 +56,7 @@ export default
         wrapper.blob = blob;
         this.updateFiles();
       }
-      ,
-      e => console.log("attachment failed to upload"));
+      , (e) => console.log("attachment failed to upload", e));
     },
 
     attachImageFile({file, onProgress, onComplete, onFailure}) {

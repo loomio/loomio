@@ -5,17 +5,20 @@
     %meta{charset: 'utf-8'}
     %link{rel: 'stylesheet', href: '/roboto.css'}
     %link{rel: "shortcut icon", href: AppConfig.theme[:icon_src]}
-    = stylesheet_link_tag 'basic/all'
-    = stylesheet_link_tag 'web'
-    = stylesheet_link_tag 'marketing/all'
+    = stylesheet_link_tag 'basic'
+    = stylesheet_link_tag 'loomiosubs'
     = render 'plausible'
+
   %body
-    .container
-      %header.d-flex.justify-center
-        %a{href: '/'}
-          %img{style: 'max-width: 128px', src: AppConfig.theme[:app_logo_src]}
-    .container
-      = yield
+    %header
+      %a{href: '/'}
+        %img{style: 'max-width: 192px', src: AppConfig.theme[:app_logo_src]}
+
+    - if flash[:notice]
+      .sistema
+        %aside.flash-notice{role: 'alert'}= flash[:notice]
+
+    = yield
 
     - if @footer
       %footer= render @footer

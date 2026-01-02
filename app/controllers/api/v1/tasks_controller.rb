@@ -1,4 +1,4 @@
-class API::V1::TasksController < API::V1::RestfulController
+class Api::V1::TasksController < Api::V1::RestfulController
   def index
     # return tasks
     case params[:t]

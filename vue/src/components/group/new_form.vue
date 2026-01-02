@@ -9,10 +9,13 @@ import { groupPrivacyConfirm } from '@/shared/helpers/helptext';
 import Flash   from '@/shared/services/flash';
 import { isEmpty, debounce } from 'lodash-es';
 import openModal from '@/shared/helpers/open_modal';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
+import WatchRecords from '@/mixins/watch_records';
+import UrlFor from '@/mixins/url_for';
 
 export default
 {
+  mixins: [WatchRecords, UrlFor],
   props: {
     group: Object
   },
@@ -22,8 +25,6 @@ export default
       rules: {
         required(value) { return !!value || 'Required.'; }
       },
-      uploading: false,
-      progress: 0,
       hostname: AppConfig.theme.canonical_host,
       parentGroups: [],
       loadingHandle: false
@@ -34,12 +35,12 @@ export default
     this.watchRecords({
       collections: ['groups', 'memberships'],
       query: records => {
-        this.parentGroups = [{value: null, text: this.$t('common.none')}];
+        this.parentGroups = [{value: null, title: this.$t('common.none')}];
         this.parentGroups = this.parentGroups.concat(Session.user().parentGroups().
           filter(g => AbilityService.canCreateSubgroups(g)).
           map(g => ({
           value: g.id,
-          text: g.name
+          title: g.name
         }))
         );
       }
@@ -90,12 +91,7 @@ export default
         Records.groups.findOrFetchById(groupKey, {}, true).then(group => {
           EventBus.$emit('closeModal');
           this.$router.push(`/g/${groupKey}`);
-          EventBus.$emit('openModal', {
-            component: 'GroupInvitationForm',
-            props: { 
-              group
-            }
-          });
+          if (!this.group.parentId) { Records.users.saveExperience('hideOnboarding', false) }
         });
       }).catch(error => true);
     },
@@ -110,10 +106,10 @@ export default
     categoryItems() {
       // ['board', 'community', 'coop', 'membership', 'nonprofit', 'party', 'professional', 'self_managing', 'union', 'other'].map (category) ->
       return ['board', 'membership', 'self_managing', 'other'].map(category => ({
-        text: I18n.t('group_survey.categories.'+category),
+        title: I18n.global.t('group_survey.categories.'+category),
         value: category
       }));
-    }, 
+    },
     actionName() {
       if (this.group.isNew()) { return 'created'; } else { return 'updated'; }
     },
@@ -153,26 +149,35 @@ export default
       } else {
         return 'group_form.group_name';
       }
+    },
+
+    submitIsDisabled() {
+      return !this.group.name || (this.group.parentId && !this.group.parent().subscription.allow_subgroups) || (!this.group.parentId && !this.group.category)
+    },
+
+    showUpgradeAlert() {
+      return (this.group.parentId && !this.group.parent().subscription.allow_subgroups)
     }
   }
 };
 </script>
 
 <template lang="pug">
-v-card.group-form
-  v-overlay(:value="uploading")
-    v-progress-circular(size="64" :value="progress")
-  //- submit-overlay(:value='group.processing')
-  v-card-title
-    v-layout(justify-space-between style="align-items: center")
-      .group-form__group-title
-        h1.text-h5(tabindex="-1" v-if='group.parentId' v-t="'group_form.new_subgroup'")
-        h1.text-h5(tabindex="-1" v-if='!group.parentId' v-t="'group_form.new_group'")
-      dismiss-modal-button(v-if="group.parentId" :model="group")
+v-card.group-form(:title="group.parentId ? $t('group_form.start_subgroup_heading') : $t('group_form.start_group_heading')")
   .px-4
-    p.text--secondary(v-if='!group.parentId' v-t="'group_form.new_group_explainer'")
-    p.text--secondary(v-if='group.parentId' v-t="'group_form.new_subgroup_explainer'")
+    p.text-medium-emphasis.pb-8
+      span(v-if='!group.parentId')
+        span(v-t="'group_form.new_group_explainer'")
+        space
+        help-link(path="user_manual/groups/starting_a_group")
+      span(v-else)
+        span(v-t="'group_form.new_subgroup_explainer'")
+        space
+        help-link(path="user_manual/groups/subgroups")
+
     v-select.group-form__parent-group(v-if="parentGroups.length > 1" v-model='group.parentId' :items="parentGroups" :label="$t('group_form.parent_group')")
+    v-alert.mb-4(v-if="showUpgradeAlert" color="error" variant="tonal")
+      span(v-html="$t('group_form.upgrade_for_subgroups', {parent: group.parent().name})")
     v-text-field.group-form__name#group-name(
       v-model='group.name'
       :placeholder="$t(groupNamePlaceholder)"
@@ -186,7 +191,7 @@ v-card.group-form
       v-text-field.group-form__handle#group-handle(:loading="loadingHandle" v-model='group.handle' :hint="$t('group_form.group_handle_placeholder', {host: hostname, handle: group.handle})" maxlength='100' :label="$t('group_form.handle')")
       validation-errors(:subject="group", field="handle")
 
-    v-select(v-if='!group.parentId' v-model="group.category" :items="categoryItems" :label="$t('group_survey.describe_other')")
+    v-select.group-form__category-select(v-if='!group.parentId' v-model="group.category" :items="categoryItems" :label="$t('group_survey.describe_other')")
 
     lmo-textarea.group-form__group-description(
       :model='group'
@@ -198,35 +203,39 @@ v-card.group-form
       .group-form__section.group-form__privacy
         v-radio-group(v-model='group.groupPrivacy' :label="$t('common.privacy.privacy')")
           v-radio(v-for='privacy in privacyOptions' :key="privacy" :class="'md-checkbox--with-summary group-form__privacy-' + privacy" :value='privacy' :aria-label='privacy')
-            template(slot='label')
+            template(v-slot:label)
               .group-form__privacy-title
-                strong(v-t="'common.privacy.' + privacy")
-                mid-dot
-                span {{ privacyStringFor(privacy) }}
+                strong.text-high-emphasis(v-t="'common.privacy.' + privacy")
+                mid-dot.text-medium-emphasis
+                span.text-medium-emphasis {{ privacyStringFor(privacy) }}
 
-      p.group-form__privacy-statement.text-caption.text--secondary {{privacyStatement}}
+      p.group-form__privacy-statement.text-caption.text-medium-emphasis {{privacyStatement}}
       .group-form__section.group-form__joining.lmo-form-group(v-if='group.privacyIsOpen()')
-        v-subheader(v-t="'group_form.how_do_people_join'")
+        v-list-subheader(v-t="'group_form.how_do_people_join'")
         v-radio-group(v-model='group.membershipGrantedUpon')
           v-radio(v-for="granted in ['request', 'approval']" :key="granted" :class="'group-form__membership-granted-upon-' + granted" :value='granted')
-            template(slot='label')
+            template(v-slot:label)
               span(v-t="'group_form.membership_granted_upon_' + granted")
 
     div.pt-2(v-if="!group.parentId")
-      span.text--secondary
+      span.text-medium-emphasis
         //- common-icon(name="mdi-lock-outline")
         span(v-t="'common.privacy.privacy'")
         span :
         space
         span(v-t="'common.privacy.secret'")
-      p.text-caption.text--secondary
+      p.text-caption.text-medium-emphasis
         span(v-t="'group_form.secret_by_default'")
 
-
   v-card-actions.ma-2
-    help-link(path="en/user_manual/groups/starting_a_group")
     v-spacer
-    v-btn.group-form__submit-button(:loading="group.processing" color="primary" @click='submit()')
+    v-btn.group-form__submit-button(
+      :loading="group.processing"
+      color="primary"
+      @click='submit()'
+      variant="elevated"
+      :disabled="submitIsDisabled"
+    )
       span(v-if='group.isParent()' v-t="'group_form.submit_start_group'")
       span(v-if='!group.isParent()' v-t="'group_form.submit_start_subgroup'")
 </template>

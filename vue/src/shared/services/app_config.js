@@ -1,3 +1,2 @@
-import Vue from 'vue';
-window.Loomio = (Vue.prototype.$loomio = Vue.observable({}));
+window.Loomio = {}
 export default window.Loomio;

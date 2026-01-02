@@ -1,4 +1,4 @@
-class API::V1::StancesController < API::V1::RestfulController
+class Api::V1::StancesController < Api::V1::RestfulController
   def create
     super
   rescue ActiveRecord::RecordNotUnique
@@ -7,6 +7,22 @@ class API::V1::StancesController < API::V1::RestfulController
       participant_id: current_user.id)
     update_action
     update_response
+  end
+
+  def latest_stance_events
+    stances = Stance.where(
+      participant_id: current_user.id,
+      poll_id: @event.eventable.poll_id
+    ).order(id: :desc).limit(5)
+    Event.where(eventable: stances).order(id: :desc).limit(5)
+  end
+
+  def update_response
+    if resource.errors.empty?
+      render json: latest_stance_events, scope: default_scope, each_serializer: serializer_class, root: serializer_root, meta: meta.merge({root: serializer_root})
+    else
+      respond_with_errors
+    end
   end
 
   def uncast
@@ -102,6 +118,7 @@ class API::V1::StancesController < API::V1::RestfulController
 
   def live_update_outdated_stances(poll)
     return if poll.discussion.nil?
+
     # want to find stances with comments
     stance_ids = poll.discussion.items.where(
       eventable_type: 'Stance',
@@ -121,6 +138,7 @@ class API::V1::StancesController < API::V1::RestfulController
     stance = Stance.find_by(id: params[:id])
     poll = Poll.find_by(id: params[:poll_id])
     return false unless (stance || poll)
+
     (stance || poll).poll.admins.exists?(current_user.id)
   end
 

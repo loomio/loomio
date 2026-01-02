@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe API::B3::UsersController do
+describe Api::B3::UsersController do
   let(:user) { create :user }
 
   before do

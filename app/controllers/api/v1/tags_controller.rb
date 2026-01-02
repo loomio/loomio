@@ -1,4 +1,4 @@
-class API::V1::TagsController < API::V1::RestfulController
+class Api::V1::TagsController < Api::V1::RestfulController
   def priority
     load_and_authorize_group
     Array(params[:ids]).each_with_index do |id, index|

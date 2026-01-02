@@ -32,7 +32,8 @@ sudo apt-get update
 sudo apt-get install postgresql postgresql-contrib build-essential \
                      libssl-dev libreadline-dev zlib1g-dev \
                      libpq-dev libffi-dev libmagickwand-dev \
-                     imagemagick python3 redis
+                     imagemagick python3 redis libyaml-dev \
+                     git libvips ffmpeg poppler-utils \
 ```
 
 ## Install ruby
@@ -53,10 +54,10 @@ When a new version of ruby is released, you can update ruby-build with
 cd "$(rbenv root)"/plugins/ruby-build && git pull
 ```
 
-At the time of writing 3.4.1 is the version of ruby that Loomio uses. To check what the current version required is, see [.ruby-version](https://github.com/loomio/loomio/blob/master/.ruby-version)
+At the time of writing 3.4.5 is the version of ruby that Loomio uses. To check what the current version required is, see [.ruby-version](https://github.com/loomio/loomio/blob/master/.ruby-version)
 
 ```
-rbenv install 3.4.1
+rbenv install 3.4.5
 gem install bundler
 ```
 
@@ -65,14 +66,14 @@ gem install bundler
 You'll need Node.js and I recommend you use [nvm](https://github.com/creationix/nvm) to install it. Just run:
 
 ```
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.1/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 ```
 
 You'll need to restart your terminal, then run:
 
 ```
-nvm install 20
-nvm alias default 20
+nvm install 22
+nvm alias default 22
 ```
 
 ## Fork and clone the Loomio git repo

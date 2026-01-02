@@ -3,8 +3,7 @@ import svg from 'svg.js';
 import AppConfig from '@/shared/services/app_config';
 import { take, map, max, each} from 'lodash-es';
 
-export default
-  ({
+export default {
     props: {
       size: Number,
       poll: Object
@@ -72,7 +71,7 @@ export default
       this.svgEl = svg(this.$refs.svg).size('100%', '100%');
       this.draw();
     }
-  });
+};
 </script>
 
 <template lang="pug">

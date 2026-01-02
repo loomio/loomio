@@ -8,9 +8,8 @@ class UserService
     end
 
     user = User.where(email_verified: false, email: params[:email]).first_or_create
-    user.attributes = params.slice(:name, :email, :recaptcha, :legal_accepted, :email_newsletter)
+    user.attributes = params.slice(:name, :email, :legal_accepted, :email_newsletter)
     user.require_valid_signup = true
-    user.require_recaptcha = true
     user.save
 
     user
@@ -20,7 +19,7 @@ class UserService
 
   def self.verify(user: )
     return user if user.email_verified?
-    
+
     user = User.verified.find_by(email: user.email) || user.tap{ |u| u.update(email_verified: true) }
 
     if user.email_newsletter?

@@ -6,13 +6,17 @@ import Records from '@/shared/services/records';
 export default {
   props: {
     model: Object,
-    small: Boolean
+    variant: String,
+    color: String,
+    size: {
+      type: String,
+      default: 'default'
+    }
   },
 
   data() {
     return {
       search: null,
-      closeEmojiMenu: false
     };
   },
 
@@ -27,7 +31,6 @@ export default {
       const reaction = Records.reactions.find(params)[0] || Records.reactions.build(params);
       reaction.reaction = `:${emoji}:`;
       reaction.save();
-      this.closeEmojiMenu = true;
     }
   }
 };
@@ -35,10 +38,10 @@ export default {
 </script>
 
 <template lang="pug">
-v-menu.reactions-input(:close-on-content-click="true" v-model="closeEmojiMenu")
-  template(v-slot:activator="{on, attrs}")
-    v-btn.emoji-picker__toggle.action-button(icon :small="small" v-on="on" v-bind="attrs" )
-      common-icon(:small="small" name="mdi-emoticon-outline")
+v-menu.reactions-input(:close-on-content-click="true")
+  template(v-slot:activator="{ props }")
+    v-btn.mr-1.emoji-picker__toggle.action-button(icon :size="size" density="comfortable" v-bind="props" :color="color" :variant="variant")
+      common-icon(:size="size" name="mdi-emoticon-happy-outline" :color="color")
   emoji-picker(:insert="insert" :is-poll="model.isA('poll') || model.isA('stance') || model.isA('outcome')")
 </template>
 

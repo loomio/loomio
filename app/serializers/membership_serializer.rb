@@ -5,6 +5,7 @@ class MembershipSerializer < ApplicationSerializer
              :inviter_id,
              :volume,
              :admin,
+             :delegate,
              :experiences,
              :title,
              :created_at,

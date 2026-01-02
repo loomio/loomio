@@ -4,4 +4,4 @@
   %ul
     - @discussions_by_group_id[group.id].each do |discussion|
       %li
-        = link_to discussion.title, discussion_url(discussion)
+        = link_to plain_text(discussion, :title), discussion_url(discussion)

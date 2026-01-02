@@ -12,6 +12,6 @@ class ConvertPollStancesInDiscussionWorker
       stance.create_missing_created_event! if stance.created_event.nil?
     end
     Event.where(kind: 'stance_created', eventable_id: stance_ids, discussion_id: nil).update_all(discussion_id: poll.discussion_id)
-    EventService.repair_thread(poll.discussion_id)
+    EventService.repair_discussion(poll.discussion_id)
   end
 end

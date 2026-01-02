@@ -1,4 +1,4 @@
-class API::V1::CommentsController < API::V1::RestfulController
+class Api::V1::CommentsController < Api::V1::RestfulController
   def discard
     load_resource
     @event = service.discard(comment: resource, actor: current_user)

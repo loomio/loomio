@@ -1,11 +1,11 @@
-class API::V1::AnnouncementsController < API::V1::RestfulController
+class Api::V1::AnnouncementsController < Api::V1::RestfulController
   def audience
     current_user.ability.authorize! :show, target_model
-    
-    if target_model.respond_to?(:anonymous) && 
+
+    if target_model.respond_to?(:anonymous) &&
        target_model.anonymous &&
        ['decided_voters', 'undecided_voters'].include?(params[:recipient_audience])
-      raise CanCan::AccessDenied 
+      raise CanCan::AccessDenied
     end
 
     self.collection = AnnouncementService.audience_users(
@@ -136,52 +136,53 @@ class API::V1::AnnouncementsController < API::V1::RestfulController
       eventables = [target_model]
     end
 
-    event_ids = Event.where(kind: notification_kinds, eventable: eventables).pluck(:id)
+    Event.where(kind: notification_kinds, eventable: eventables).pluck(:id)
   end
 
   def notification_kinds
     %w[announcement_created
-      user_mentioned
-      announcement_resend
-      discussion_announced
-      poll_announced
-      outcome_announced
-      outcome_created
-      outcome_updated
-      outcome_edited
-      poll_created
-      poll_edited
-      poll_reminder
-      new_discussion
-      discussion_edited
-      comment_replied_to
-      poll_closing_soon]
+       user_mentioned
+       group_mentioned
+       announcement_resend
+       discussion_announced
+       poll_announced
+       outcome_announced
+       outcome_created
+       outcome_updated
+       outcome_edited
+       poll_created
+       poll_edited
+       poll_reminder
+       new_discussion
+       discussion_edited
+       comment_replied_to
+       poll_closing_soon]
   end
 
   def default_scope
-    if target_model && target_model.respond_to?(:group_id)
-      is_admin = target_model.group_id ? target_model.group.admins.exists?(current_user.id) : target_model.admins.exists?(current_user.id)
-    else
-      is_admin = false
-    end
+    is_admin = if target_model && target_model.respond_to?(:group_id)
+                 target_model.group_id ? target_model.group.admins.exists?(current_user.id) : target_model.admins.exists?(current_user.id)
+               else
+                 false
+               end
 
     super.merge(
-      include_email: (is_admin)
+      include_email: is_admin
     )
   end
 
   def authorize_model
     load_and_authorize(:group, :announce, optional: true) ||
-    load_and_authorize(:discussion, :announce, optional: true) ||
-    load_and_authorize(:poll, :announce, optional: true) ||
-    load_and_authorize(:outcome, :announce, optional: false)
+      load_and_authorize(:discussion, :announce, optional: true) ||
+      load_and_authorize(:poll, :announce, optional: true) ||
+      load_and_authorize(:outcome, :announce, optional: false)
   end
 
   def target_model
     load_and_authorize(:group, :show, optional: true) ||
-    load_and_authorize(:discussion, :show, optional: true) ||
-    load_and_authorize(:comment, :show, optional: true) ||
-    load_and_authorize(:poll, :show, optional: true) ||
-    load_and_authorize(:outcome, :show, optional: true)
+      load_and_authorize(:discussion, :show, optional: true) ||
+      load_and_authorize(:comment, :show, optional: true) ||
+      load_and_authorize(:poll, :show, optional: true) ||
+      load_and_authorize(:outcome, :show, optional: true)
   end
 end

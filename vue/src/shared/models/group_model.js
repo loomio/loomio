@@ -1,7 +1,6 @@
 import BaseModel    from '@/shared/record_store/base_model';
-import AppConfig    from '@/shared/services/app_config';
 import HasDocuments from '@/shared/mixins/has_documents';
-import HasTranslations  from '@/shared/mixins/has_translations';
+import Records from '@/shared/services/records';
 import {filter, some, map, each, compact, sortBy} from 'lodash-es';
 
 export default class GroupModel extends BaseModel {
@@ -40,8 +39,8 @@ export default class GroupModel extends BaseModel {
       motionsCanBeEdited: false,
       parentMembersCanSeeDiscussions: false,
       category: null,
-      files: [],
-      imageFiles: [],
+      files: null,
+      imageFiles: null,
       attachments: [],
       linkPreviews: [],
       subscription: {},
@@ -59,7 +58,6 @@ export default class GroupModel extends BaseModel {
 
   afterConstruction() {
     HasDocuments.apply(this, {showTitle: true});
-    return HasTranslations.apply(this);
   }
 
   relationships() {
@@ -71,6 +69,7 @@ export default class GroupModel extends BaseModel {
     this.hasMany('allDocuments', {from: 'documents', with: 'groupId', of: 'id'});
     this.hasMany('subgroups', {from: 'groups', with: 'parentId', of: 'id', orderBy: 'name'});
     this.belongsTo('parent', {from: 'groups'});
+    this.belongsTo('translation');
     return this.belongsTo('creator', {from: 'users'});
   }
 
@@ -81,15 +80,15 @@ export default class GroupModel extends BaseModel {
   }
 
   tags() {
-    return this.recordStore.tags.collection.chain().find({groupId: this.id}).simplesort('priority').data();
+    return Records.tags.collection.chain().find({groupId: this.id}).simplesort('priority').data();
   }
 
   tagsByName() {
-    return this.recordStore.tags.collection.chain().find({groupId: this.id}).simplesort('name').data();
+    return Records.tags.collection.chain().find({groupId: this.id}).simplesort('name').data();
   }
 
   tagNames() {
-    return this.recordStore.tags.collection.chain().find({groupId: this.id}).simplesort('name').data().map(t => t.name);
+    return Records.tags.collection.chain().find({groupId: this.id}).simplesort('name').data().map(t => t.name);
   }
 
   parentOrSelf() {
@@ -99,12 +98,12 @@ export default class GroupModel extends BaseModel {
   group() { return this; }
 
   fetchToken() {
-    return this.remote.getMember(this.id, 'token')
+    return Records.groups.remote.getMember(this.id, 'token')
     .then(() => this.token);
   }
 
   resetToken() {
-    return this.remote.postMember(this.id, 'reset_token')
+    return Records.groups.remote.postMember(this.id, 'reset_token')
     .then(() => this.token);
   }
 
@@ -149,19 +148,19 @@ export default class GroupModel extends BaseModel {
   }
 
   selfAndSubgroups() {
-    return this.recordStore.groups.find(this.selfAndSubgroupIds());
+    return Records.groups.find(this.selfAndSubgroupIds());
   }
 
   selfAndSubgroupIds() {
-    return [this.id].concat(sortBy(this.recordStore.groups.find({parentId: this.id}), 'name').map(g => g.id));
+    return [this.id].concat(sortBy(Records.groups.find({parentId: this.id}), 'name').map(g => g.id));
   }
 
   membershipFor(user) {
-    return this.recordStore.memberships.find({groupId: this.id, userId: user.id})[0];
+    return Records.memberships.find({groupId: this.id, userId: user.id})[0];
   }
 
   members() {
-    return this.recordStore.users.collection.find({id: {$in: this.memberIds()}});
+    return Records.users.collection.find({id: {$in: this.memberIds()}});
   }
 
   parentsAndSelf() {
@@ -173,7 +172,7 @@ export default class GroupModel extends BaseModel {
   }
 
   parentAndSelfMemberships() {
-    return this.recordStore.memberships.collection.find({groupId: {$in: this.parentOrSelf().selfAndSubgroupIds()}});
+    return Records.memberships.collection.find({groupId: {$in: this.parentOrSelf().selfAndSubgroupIds()}});
   }
 
   parentAndSelfMembershipIds() {
@@ -181,7 +180,7 @@ export default class GroupModel extends BaseModel {
   }
 
   parentAndSelfMembers() {
-    return this.recordStore.users.collection.find({id: {$in: this.parentAndSelfMemberships().map(m => m.userId)}});
+    return Records.users.collection.find({id: {$in: this.parentAndSelfMemberships().map(m => m.userId)}});
   }
 
   parentAndSelfMemberIds() {
@@ -189,19 +188,19 @@ export default class GroupModel extends BaseModel {
   }
 
   membersInclude(user) {
-    return this.membershipFor(user) || false;
+    return !!this.membershipFor(user) || false;
   }
 
   adminsInclude(user) {
-    return this.recordStore.memberships.find({groupId: this.id, userId: user.id, admin: true})[0] || false;
+    return !!Records.memberships.find({groupId: this.id, userId: user.id, admin: true})[0] || false;
   }
 
   adminMemberships() {
-    return this.recordStore.memberships.find({groupId: this.id, admin: true});
+    return Records.memberships.find({groupId: this.id, admin: true});
   }
 
   admins() {
-    return this.recordStore.users.find({id: {$in: this.adminIds()}});
+    return Records.users.find({id: {$in: this.adminIds()}});
   }
 
   memberIds() {
@@ -241,26 +240,26 @@ export default class GroupModel extends BaseModel {
   }
 
   archive() {
-    return this.remote.patchMember(this.key, 'archive').then(() => {
+    return Records.groups.remote.patchMember(this.key, 'archive').then(() => {
       this.remove();
       return each(this.memberships(), m => m.remove());
     });
   }
 
   export() {
-    return this.remote.postMember(this.id, 'export');
+    return Records.groups.remote.postMember(this.id, 'export');
   }
 
   exportCSV() {
-    return this.remote.postMember(this.id, 'export_csv');
+    return Records.groups.remote.postMember(this.id, 'export_csv');
   }
 
   uploadLogo(file) {
-    return this.remote.upload(`${this.key}/upload_photo/logo`, file, {}, function() {});
+    return Records.groups.remote.upload(`${this.key}/upload_photo/logo`, file, {}, function() {});
   }
 
   uploadCover(file) {
-    return this.remote.upload(`${this.key}/upload_photo/cover_photo`, file, {}, function() {});
+    return Records.groups.remote.upload(`${this.key}/upload_photo/cover_photo`, file, {}, function() {});
   }
 
   hasSubscription() {

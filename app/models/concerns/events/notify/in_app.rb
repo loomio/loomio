@@ -3,7 +3,7 @@ module Events::Notify::InApp
 
   def trigger!
     super
-    self.notify_users!
+    notify_users!
   end
 
   # send event notifications
@@ -21,9 +21,9 @@ module Events::Notify::InApp
   def notification_for(recipient)
     I18n.with_locale(recipient.locale) do
       notifications.build(
-        user:               recipient,
-        actor:              notification_actor,
-        url:                notification_url,
+        user: recipient,
+        actor: notification_actor,
+        url: notification_url,
         translation_values: notification_translation_values
       )
     end
@@ -44,18 +44,14 @@ module Events::Notify::InApp
   # but this method can be overridden with any translation values for a particular event
   def notification_translation_values
     {
-      name:      notification_translation_name,
-      title:     notification_translation_title,
+      name: notification_translation_name,
+      title: TranslationService.plain_text(eventable.title_model, :title, user),
       poll_type: (I18n.t(:"poll_types.#{notification_poll_type}") if notification_poll_type)
     }.compact
   end
 
   def notification_translation_name
     notification_actor&.name
-  end
-
-  def notification_translation_title
-    polymorphic_title(eventable)
   end
 
   def notification_poll_type

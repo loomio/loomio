@@ -28,6 +28,7 @@ class GroupSerializer < ApplicationSerializer
              :public_discussions_count,
              :group_privacy,
              :memberships_count,
+             :delegates_count,
              :pending_memberships_count,
              :accepted_memberships_count,
              :membership_granted_upon,
@@ -38,6 +39,7 @@ class GroupSerializer < ApplicationSerializer
              :link_previews,
              :new_threads_max_depth,
              :new_threads_newest_first,
+             :has_custom_cover_photo,
              :cover_url,
              :open_discussions_count,
              :closed_discussions_count,
@@ -52,14 +54,17 @@ class GroupSerializer < ApplicationSerializer
              :subgroups_count,
              :new_host,
              :categorize_poll_templates,
-             :request_to_join_prompt
+             :category,
+             :request_to_join_prompt,
+             :can_start_polls_without_discussion
 
   has_one :parent, serializer: GroupSerializer, root: :parent_groups
   has_one :current_user_membership, serializer: MembershipSerializer, root: :memberships
+  has_one :translation
   has_many :tags, serializer: TagSerializer, root: :tags
 
   def current_user_membership
-    cache_fetch(:memberships_by_group_id, object.id) { nil }
+    cache_fetch(:memberships_by_group_id, object.id)
   end
 
   def parent
@@ -83,6 +88,11 @@ class GroupSerializer < ApplicationSerializer
 
   def logo_url
     object.self_or_parent_logo_url
+  end
+
+
+  def has_custom_cover_photo
+    object.custom_cover_photo?
   end
 
   def cover_url

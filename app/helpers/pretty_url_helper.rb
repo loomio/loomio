@@ -8,7 +8,7 @@ module PrettyUrlHelper
   def discussion_path(discussion, options = {})
     super(discussion, options.merge(slug: discussion.title.parameterize))
   end
-  
+
   def discussion_url(discussion, options = {})
     super(discussion, options.merge(slug: discussion.title.parameterize))
   end
@@ -52,17 +52,6 @@ module PrettyUrlHelper
 
   def polymorphic_path(model, opts = {})
     # angular router throws error if you give it a whole url
-    polymorphic_url(model, opts).sub(root_url, '')
-  end
-
-  def polymorphic_title(model)
-    case model
-    when PaperTrail::Version   then model.item.title
-    when Comment, Discussion   then model.discussion.title
-    when Poll, Outcome, Stance then model.poll.title
-    when Reaction              then model.reactable.title
-    when Group                 then model.full_name
-    when Membership            then polymorphic_title(model.group)
-    end
+    polymorphic_url(model, opts).sub(root_url, '/')
   end
 end

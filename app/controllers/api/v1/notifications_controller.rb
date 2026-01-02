@@ -1,4 +1,4 @@
-class API::V1::NotificationsController < API::V1::RestfulController
+class Api::V1::NotificationsController < Api::V1::RestfulController
   def index
     self.collection = accessible_records.limit(50).select do |notification|
       current_user.can? :show, notification.event.eventable

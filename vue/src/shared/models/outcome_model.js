@@ -1,9 +1,9 @@
 import BaseModel        from '@/shared/record_store/base_model';
 import AppConfig        from '@/shared/services/app_config';
 import HasDocuments     from '@/shared/mixins/has_documents';
-import HasTranslations  from '@/shared/mixins/has_translations';
 import NullGroupModel   from '@/shared/models/null_group_model';
 import {capitalize} from 'lodash-es';
+import Records from '@/shared/services/records';
 
 export default class OutcomeModel extends BaseModel {
   static singular = 'outcome';
@@ -18,8 +18,8 @@ export default class OutcomeModel extends BaseModel {
       eventSummary: null,
       eventDescription: null,
       includeActor: false,
-      files: [],
-      imageFiles: [],
+      files: null,
+      imageFiles: null,
       attachments: [],
       linkPreviews: [],
       recipientUserIds: [],
@@ -34,22 +34,22 @@ export default class OutcomeModel extends BaseModel {
 
   afterConstruction() {
     HasDocuments.apply(this);
-    return HasTranslations.apply(this);
   }
 
   collabKeyParams() {
     return [this.pollId];
   }
-  
+
   relationships() {
     this.belongsTo('author', {from: 'users'});
     this.belongsTo('poll');
     this.belongsTo('group');
+    this.belongsTo('translation');
     return this.belongsTo('pollOption');
   }
 
   reactions() {
-    return this.recordStore.reactions.find({
+    return Records.reactions.find({
       reactableId: this.id,
       reactableType: capitalize(this.constructor.singular)
     });

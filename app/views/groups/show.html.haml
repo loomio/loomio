@@ -9,7 +9,7 @@
           %h1.text-h4.my-4
             %span.group-page__name.mr-4= @group.full_name
           .lmo-markdown-wrapper.text-body-2.text--primary.group-page__description
-            = raw render_rich_text(@group.description, @group.description_format)
+            = raw formatted_text(@group, :description)
           %hr.mt-4.v-divider.theme--auto{"aria-orientation" => "horizontal", :role => "separator"}/
           -# .v-tabs.v-tabs--centered.v-tabs--grow.theme--auto
             .v-item-group.theme--auto.v-slide-group.v-tabs-bar.v-tabs-bar--is-mobile.primary--text.transparent{:role => "tablist"}

@@ -5,9 +5,11 @@ import Session from '@/shared/services/session';
 import Flash  from '@/shared/services/flash';
 import PollCommonForm from '@/components/poll/common/form';
 import PollCommonChooseTemplate from '@/components/poll/common/choose_template';
-import { compact } from 'lodash-es'; 
+import { compact } from 'lodash-es';
+import UrlFor from '@/mixins/url_for';
 
 export default {
+  mixins: [UrlFor],
   components: {PollCommonForm, PollCommonChooseTemplate},
 
   data() {
@@ -85,7 +87,7 @@ export default {
     breadcrumbs() {
       return compact([this.group.parentId && this.group.parent(), this.group]).map(g => {
         return {
-          text: g.name,
+          title: g.name,
           disabled: false,
           to: this.urlFor(g)
         };
@@ -102,13 +104,10 @@ export default {
       loading(:until="!loading")
         div.pa-4.py-0(v-if="group")
           .d-flex
-            v-breadcrumbs.px-0.pt-0(:items="breadcrumbs")
+            v-breadcrumbs.px-0.pt-0(color="primary" :items="breadcrumbs")
               template(v-slot:divider)
                 common-icon(name="mdi-chevron-right")
         v-card.poll-common-modal(v-if="isLoggedIn")
-          v-card-title
-            h1.text-h5(v-t="'poll_common.decision_templates'")
-
           poll-common-form.px-4(
             v-if="poll"
             :poll="poll"
@@ -116,10 +115,14 @@ export default {
             redirect-on-save
           )
 
-          poll-common-choose-template(
-            v-if="!poll"
-            @setPoll="setPoll"
-            :discussion="discussion"
-            :group="group"
-          )
+          template(v-if="!poll")
+            v-card-title
+              h1.text-h5(v-t="'poll_common.poll_templates'")
+
+            poll-common-choose-template(
+              v-if="!poll"
+              @setPoll="setPoll"
+              :discussion="discussion"
+              :group="group"
+            )
 </template>

@@ -1,7 +1,7 @@
 class LoggedOutUser
   include Null::User
   include AvatarInitials
-  attr_accessor :name, :email, :token, :avatar_initials, :locale, :legal_accepted, :recaptcha, :time_zone, :date_time_pref, :autodetect_time_zone
+  attr_accessor :name, :email, :token, :avatar_initials, :locale, :legal_accepted, :time_zone, :date_time_pref, :autodetect_time_zone
 
   alias :read_attribute_for_serialization :send
 
@@ -49,8 +49,11 @@ class LoggedOutUser
                 email: email,
                 token: token,
                 legal_accepted: legal_accepted,
-                require_valid_signup: true,
-                recaptcha: recaptcha)
+                require_valid_signup: true)
+  end
+
+  def secret_token
+    User.generate_unique_secure_token
   end
 
   def memberships_count
@@ -62,7 +65,7 @@ class LoggedOutUser
   end
 
   def nil_methods
-    super + [:id, :created_at, :avatar_url, :thumb_url, :presence, :restricted, :persisted?, :secret_token, :content_locale, :browseable_group_ids]
+    super + [:id, :created_at, :avatar_url, :thumb_url, :presence, :restricted, :persisted?, :content_locale, :browseable_group_ids]
   end
 
   def false_methods

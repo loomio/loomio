@@ -30,7 +30,12 @@ export default
 };
 </script>
 <template lang="pug">
-v-alert(outlined color="primary" dense v-if="hasSubscription && isLoggedIn && isMember && (isTrial || isExpired)")
+v-alert.my-4(
+  variant="tonal"
+  color="info"
+  density="compact"
+  v-if="hasSubscription && isLoggedIn && isMember && (isTrial || isExpired)"
+)
   .d-flex.align-center
     div.pr-1(v-if="isTrial")
       span(v-if="!isExpired" v-t="{ path: 'current_plan_button.free_trial', args: { days: daysRemaining }}")
@@ -41,11 +46,12 @@ v-alert(outlined color="primary" dense v-if="hasSubscription && isLoggedIn && is
       span(v-html="$t('current_plan_button.subscription_ended')")
     v-spacer
     v-btn(
-      color="primary"
+      color="info"
+      variant="elevated"
       :href="'/upgrade/'+group.id"
       target="_blank"
       :title="$t('current_plan_button.tooltip')"
     )
-      common-icon(name="mdi-rocket")
-      span(v-t="'current_plan_button.view_plans'")
+      common-icon.mr-1(name="mdi-rocket" color="currentColor")
+      span(v-t="'current_plan_button.upgrade'")
 </template>

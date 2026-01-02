@@ -13,7 +13,7 @@ module.exports = {
   //   page.loadPath('setup_group')
   //   page.ensureSidebar()
   //
-  //   page.click('.sidebar__list-item-button--start-thread')
+  //   page.click('.sidebar-start-thread')
   //   page.expectText('.discussion-form__group-select', 'Dirty Dancing Shoes')
   // },
   //
@@ -50,7 +50,7 @@ module.exports = {
     page.click('.thread-preview')
     page.click('.action-menu')
     page.click('.action-dock__button--close_thread')
-    page.expectFlash('Thread closed')
+    page.expectFlash('Discussion closed')
     // page.click('.flash-root__action')
     // page.expectFlash('Thread reopened')
   },
@@ -109,7 +109,7 @@ module.exports = {
     page.click('.action-dock__button--discard_thread')
     page.click('.confirm-modal__submit')
 
-    page.expectFlash('Thread deleted')
+    page.expectFlash('Discussion deleted')
     page.expectText('.group-page__name', 'Dirty Dancing Shoes')
     page.expectNoText('.discussions-panel', 'What star sign are you?')
   },
@@ -198,8 +198,8 @@ module.exports = {
     page.loadPath('setup_discussion')
     page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', '@jennifer')
     page.expectText('.suggestion-list', 'Jennifer Grey')
-    page.click('.suggestion-list .v-list-item__title')
-    page.pause(1000)
+    page.click('.suggestion-list .v-list-item-title')
+    page.pause(200)
     page.click('.comment-form__submit-button')
     page.expectText('.new-comment', '@Jennifer Grey')
   },
@@ -214,8 +214,8 @@ module.exports = {
     page.acceptConfirm()
     page.fillIn('.comment-form .lmo-textarea textarea', '@jennifer')
     page.expectText('.suggestion-list', 'Jennifer Grey')
-    page.click('.suggestion-list .v-list-item__title')
-    page.pause(1000)
+    page.click('.suggestion-list .v-list-item-title')
+    page.pause(200)
     page.click('.comment-form__submit-button')
     page.expectText('.new-comment', '@jennifergrey')
   },
@@ -288,7 +288,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPathNoApp('setup_discussion_mailer_discussion_announced_email')
-    page.expectText('.base-mailer__event-headline', "invited you to a thread")
+    page.expectText('.base-mailer__event-headline', "invited you to a discussion")
     page.expectText('.thread-mailer__body', "A description for this discussion. Should this be rich?")
     page.click('.event-mailer__title a', 2000)
     page.expectText('.context-panel__heading', 'go to the moon')
@@ -304,7 +304,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPathNoApp('setup_discussion_mailer_invitation_created_email')
-    page.expectText('.base-mailer__event-headline', "invited you to a thread")
+    page.expectText('.base-mailer__event-headline', "invited you to a discussion")
     page.expectText('.thread-mailer__body', "A description for this discussion. Should this be rich?")
     page.click('.event-mailer__title a', 2000)
     page.expectValue('.auth-email-form__email input', 'jen@example.com')
@@ -322,11 +322,11 @@ module.exports = {
     page.click('.sidebar__list-item-button--private')
     page.click('.threads-page__new-thread-button')
     page.fillIn('.recipients-autocomplete input', 'test@example.com')
-    page.expectText('.announcement-chip__content', 'test@example.com')
-    page.click('.announcement-chip__content')
+    page.expectText('.recipients-autocomplete-suggestion', 'test@example.com')
+    page.click('.recipients-autocomplete-suggestion')
     page.fillIn('.discussion-form__title-input input', "private thread")
     page.click('.discussion-form__submit')
-    page.expectFlash('Thread started')
+    page.expectFlash('Discussion started')
     page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', 'Hello world!')
     page.click('.comment-form__submit-button')
     page.expectFlash('Comment added')

@@ -1,3 +1,4 @@
+---
 zh_TW:
   discussion_templates:
     blank:
@@ -21,14 +22,14 @@ zh_TW:
       title_placeholder: 制定我們的健康與安全政策
       process_name: 同意程序
       process_subtitle: 做出「可以安全嘗試」且沒有異議的決定。
-      process_introduction: '<p>在您的提案沒有任何有意義的反對意見的情況下，就您需要做出的決定尋求同意，這樣您就可以立即做出“可以安全嘗試”的快速決定。</p><p>典型角色：</p><ul><li><p>提議者：提出需要做出決定的主題的人。</p></li><li><p>協調員：能夠幫助提案者有效完成工作的人。</p></li></ul><p>常見流程步驟：</p><p>步驟 1. 透過 Loomio 話題提出提案。</p><p>步驟 2： 透過 Sense 檢查促進一輪問題、反應和任何評論，以改善提案。</p><p>步驟 3. 修改提案並提出建議和意見。</p><p>步驟 4：詢問是否有人對修訂後的提案有明確的反對意見並提出同意提案。</p><p>步驟 5：整合有效的反對意見，創建每個人都同意「可以安全嘗試」的提案修訂版本，並在完成後說明決策結果。</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consent_process/index.html">了解更多：同意流程。</a></p>'
+      process_introduction: <p>在您的提案沒有任何有意義的反對意見的情況下，就您需要做出的決定尋求同意，這樣您就可以立即做出“可以安全嘗試”的快速決定。</p><p>典型角色：</p><ul><li><p>提議者：提出需要做出決定的主題的人。</p></li><li><p>協調員：能夠幫助提案者有效完成工作的人。</p></li></ul><p>常見流程步驟：</p><p>步驟 1. 透過 Loomio 話題提出提案。</p><p>步驟 2： 透過 Sense 檢查促進一輪問題、反應和任何評論，以改善提案。</p><p>步驟 3. 修改提案並提出建議和意見。</p><p>步驟 4：詢問是否有人對修訂後的提案有明確的反對意見並提出同意提案。</p><p>步驟 5：整合有效的反對意見，創建每個人都同意「可以安全嘗試」的提案修訂版本，並在完成後說明決策結果。</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consent_process/index.html">了解更多：同意流程。</a></p>
       description: <h3 id="what-is-the-decision-you-need-to-make">您需要做什麼決定？</h3><h3 id=""></h3><h3 id="why-is-this-important-and-what-impact-does-it-have">為什麼這很重要以及它有什麼影響？</h3><p></p><h3 id="what-information-do-people-need-for-context">人們需要什麼資訊來了解背景？</h3><p></p><h3 id="who-is-the-facilitator-for-this-process">誰是這個過程的推動者？</h3><p></p>
       consent: 同意
     advice_process:
       title_placeholder: 尋求購買新電腦的建議
       process_name: 諮詢流程
       process_subtitle: 就您需要做出的決定尋求建議。
-      process_introduction: '<p>根據受影響人員或具有專業知識的人員的建議做出決策，以便您可以為您的組織做出更好的決策。</p><p>典型角色：</p><ul><li><p>協助者：做出決定的人，或請某人協助的人。</p></li><li><p>顧問：受到您邀請的受影響人員或具有專業知識的人員。</p></li></ul><p>常見流程步驟：</p><p>第 1 步：在提出行動建議之前尋求意見以試探觀點。</p><p>步驟 2. 提出建議並尋求建議 - 執行建議提案。</p><p>步驟 3：考慮收到的建議，做出決定並通知提供建議的人 - 陳述結果。</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/advice_process/index.html">了解更多：建議流程。</a></p>'
+      process_introduction: <p>根據受影響人員或具有專業知識的人員的建議做出決策，以便您可以為您的組織做出更好的決策。</p><p>典型角色：</p><ul><li><p>協助者：做出決定的人，或請某人協助的人。</p></li><li><p>顧問：受到您邀請的受影響人員或具有專業知識的人員。</p></li></ul><p>常見流程步驟：</p><p>第 1 步：在提出行動建議之前尋求意見以試探觀點。</p><p>步驟 2. 提出建議並尋求建議 - 執行建議提案。</p><p>步驟 3：考慮收到的建議，做出決定並通知提供建議的人 - 陳述結果。</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/advice_process/index.html">了解更多：建議流程。</a></p>
       description: <h3 id="what-is-the-decision-you-need-to-make">您需要做什麼決定？</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have">為什麼這很重要以及它有什麼影響？</h3><p></p><h3 id="what-advice-are-you-asking-to-help-you-make-a-good-decision">您需要什麼建議來幫助您做出正確的決定？</h3><p></p><h3 id="who-is-the-facilitator-for-this-process">誰是這個過程的推動者？</h3><p></p>
       advice: 建議
     pass_a_resolution:
@@ -42,7 +43,7 @@ zh_TW:
       title_placeholder: 修改我們的組織章程
       process_name: 協商一致決定
       process_subtitle: 與所有相關人員達成集體協議。
-      process_introduction: '<p>就需要共同做出的決定達成共識，達成滿足所有參與者的需求和關切的協議。</p><p>典型角色：</p><ul><li><p>指定一名協調員。 （在董事會會議上，這通常是主席。）</p></li><li><p>根據組織章程的規定，參與的法定人數或絕對多數成員。</p></li></ul><p>常見流程步驟：</p><p>步驟 1. 創造一個開放的空間來討論問題或提議的決策。</p><p>步驟 2. 測試共識並透過 Sense 檢查提案揭露異議。</p><p>步驟 3. 澄清任何要點，邀請建設性修改並修改提案。</p><p>步驟 4. 測試共識提案的一致性和任何剩餘的反對意見。</p><p>步驟 5. 將決定及其結果記錄在組織的正式會議記錄中。</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consensus_process/index.html">了解更多：共識過程。</a></p>'
+      process_introduction: <p>就需要共同做出的決定達成共識，達成滿足所有參與者的需求和關切的協議。</p><p>典型角色：</p><ul><li><p>指定一名協調員。 （在董事會會議上，這通常是主席。）</p></li><li><p>根據組織章程的規定，參與的法定人數或絕對多數成員。</p></li></ul><p>常見流程步驟：</p><p>步驟 1. 創造一個開放的空間來討論問題或提議的決策。</p><p>步驟 2. 測試共識並透過 Sense 檢查提案揭露異議。</p><p>步驟 3. 澄清任何要點，邀請建設性修改並修改提案。</p><p>步驟 4. 測試共識提案的一致性和任何剩餘的反對意見。</p><p>步驟 5. 將決定及其結果記錄在組織的正式會議記錄中。</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consensus_process/index.html">了解更多：共識過程。</a></p>
       description: <h3 id="what-is-the-decision-you-need-to-make">您需要做什麼決定？</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have">為什麼這很重要以及它有什麼影響？</h3><p></p><h3 id="what-information-do-people-need-for-context">人們需要什麼資訊來了解背景？</h3><p></p><h3 id="who-is-the-facilitator">誰是協調者？</h3><p></p><h3 id="what-conditions-need-to-be-met-for-a-decision">需要滿足什麼條件才能做決定？</h3><h3 id=""></h3>
       consensus: 共識
     share_links_and_info:
@@ -71,7 +72,7 @@ zh_TW:
       process_name: 選擇治理職位
       process_subtitle: 提名並選舉某人在理事會、委員會或董事會中擔任治理角色。
       process_introduction: "<p>介紹該職位的治理角色和標準，以幫助成員評估候選人。</p><p>透過選擇參與投票來徵集提名。邀請被提名者張貼候選人的照片以及他們的履歷和推薦信。嵌入候選人的視訊訊息，以便成員可以直接看到和聽到候選人的消息。</p><p>如果您準備好選舉候選人，請使用同意提案。</p><p>如果某個職位有多名候選人，請使用排名選擇提案，選民可以按偏好順序對候選人進行排名。</p>"
-      description: '<h3 id="what-position-do-you-need-to-fill">您需要填補什麼職位？</h3><p></p><h3 id="why-is-this-important">為什麼這很重要？</h3><p></p><h3 id="what-qualifications-skills-and-experiences-make-a-good-cand">什麼樣的資格、技能和經驗才能成為優秀的候選人？</h3><p></p><h3 id="what-is-the-election-process">選舉過程是怎麼樣的？</h3><p>第一階段：提名－我們邀請合適候選人提名。</p><p>第 2 階段：介紹候選人 - 包含每位候選人的照片、簡短的履歷和參考資料。</p><p>第 3 階段：選舉 - 投票任命一位候選人擔任該職位。</p>'
+      description: <h3 id="what-position-do-you-need-to-fill">您需要填補什麼職位？</h3><p></p><h3 id="why-is-this-important">為什麼這很重要？</h3><p></p><h3 id="what-qualifications-skills-and-experiences-make-a-good-cand">什麼樣的資格、技能和經驗才能成為優秀的候選人？</h3><p></p><h3 id="what-is-the-election-process">選舉過程是怎麼樣的？</h3><p>第一階段：提名－我們邀請合適候選人提名。</p><p>第 2 階段：介紹候選人 - 包含每位候選人的照片、簡短的履歷和參考資料。</p><p>第 3 階段：選舉 - 投票任命一位候選人擔任該職位。</p>
       election: 選舉
     funding_decision:
       title_placeholder: 機器人路演資金申請
@@ -87,6 +88,12 @@ zh_TW:
       process_introduction: "<p>介紹該文件以及任何背景資訊。說明該文件的目的以幫助保持專注。</p><p>邀請人們貢獻資訊和他們的專業知識，並用它來建立文件。承認並考慮人們的回饋和貢獻。</p><p>將貢獻整合到文件的初稿和後續草案中，直到準備好獲得批准。</p><p>使用 Sense 檢查民意調查來調查意見並澄清草稿中的任何問題。</p><p>一旦回饋被考慮並納入文件中，就可以繼續批准或同意同意書或共識提案。</p><p>該線程成為文件創建進度和所做決策的清晰記錄。</p>"
       description: <h3 id="what-is-the-purpose-of-the-document">該文件的目的是什麼？</h3><p></p><h3 id="why-is-this-important">為什麼這很重要？</h3><p></p><h3 id="what-are-you-asking-people-to-do">你要求人們做什麼？</h3><p></p>
       document: 文件
+    practice_thread:
+      process_subtitle: 歡迎大家加入小組並練習使用 Loomio 的帖子
+      process_introduction: "<p>使用此範本歡迎新成員並鼓勵早期參與。它為大家提供了自我介紹和探索 Loomio 功能的機會。</p>"
+      title: "\U0001F44B 歡迎！打個招呼，體驗一下"
+      description: "<p>歡迎加入我們的 Loomio 小組 — — 很高興您能來！</p><p>此主題可用於：</p><ul><li><p>向小組介紹自己</p></li><li><p>試試 Loomio 的一些功能 - 例如：嘗試使用反應\U0001F44D</p></li><li><p>在此階段提出您有的任何問題</p></li></ul><p>如果你不知道要說什麼，簡單的打個招呼就可以了 \U0001F642</p>"
+      process_name: 練習討論
   explore:
     header: 探索公開群組
   activerecord:
@@ -96,11 +103,11 @@ zh_TW:
         invalid: 不是有效的值
   unauthorized:
     manage:
-      all: "未獲得 %{action} %{subject} 的授權。"
+      all: 未獲得 %{action} %{subject} 的授權。
     add_guests:
-      all: "您必須升級您的 Loomio 訂閱才能將訪客新增至您的 %{subject}。或者，您可以邀請他們成為您小組的成員。"
+      all: 您必須升級您的 Loomio 訂閱才能將訪客新增至您的 %{subject}。或者，您可以邀請他們成為您小組的成員。
   errors:
-    clear_cache: "偵測到載入問題。按住 shift 並按下重新整理，或是清除您的瀏覽器快取。"
+    clear_cache: 偵測到載入問題。按住 shift 並按下重新整理，或是清除您的瀏覽器快取。
     400:
       title: 錯誤的請求
       body: 抱歉，我們無法理解該請求
@@ -118,8 +125,9 @@ zh_TW:
       body: 此頁面已不存在
     417:
       title: 瀏覽器不相容
-      body: |
-          請<a href="https://browser-update.org/update.html?force_outdated=true">升級您的瀏覽器</a>以使用 Loomio
+      body: '請<a href="https://browser-update.org/update.html?force_outdated=true">升級您的瀏覽器</a>以使用 Loomio
+
+        '
     422:
       title: 無法處理的實體
       body: 您想要的變更已被拒絕。也許您在試圖更改您無法存取的東西。
@@ -130,8 +138,9 @@ zh_TW:
       title: 內部伺服器錯誤
       body: 我們很抱歉，但似乎出了點問題。我們已收到有關此問題的通知，且很快就會對其進行研究。
     noscript: Loomio 需要 JavaScript！請在您的瀏覽器中啟用 JavaScript 以繼續
-    upgrade_browser: |
-        喔喔！您的網路瀏覽器太舊了，Loomio 可能無法正常運作。請<a href="https://browser-update.org/update.html">升級您的瀏覽器。</a>
+    upgrade_browser: '喔喔！您的網路瀏覽器太舊了，Loomio 可能無法正常運作。請<a href="https://browser-update.org/update.html">升級您的瀏覽器。</a>
+
+      '
     return_home: 回到首頁
     not_found: 404 檔案找不到。
     messages:
@@ -140,13 +149,12 @@ zh_TW:
       pwned_password: 該密碼之前曾出現在資料外洩事件中，切勿使用
   group:
     error:
-      handle_must_begin_with_parent_handle: "必須以 %{parent_handle} 開始。"
-      no_public_trials: "請從試用版升級以變更群組隱私設定"
+      handle_must_begin_with_parent_handle: 必須以 %{parent_handle} 開始。
+      no_public_trials: 請從試用版升級以變更群組隱私設定
     stats:
       group_stats: 群組統計
       org_stats: 組織統計（包含子群組）
       visits: 造訪
-      members: 成員 (%{count})
       subgroups: 子群組
       threads: 討論串
       polls: 投票
@@ -161,16 +169,17 @@ zh_TW:
         score: 分數
         rank: 排名
         time: 時間投票
+      members: 成員
   user:
-    deleted_user: "已刪除的使用者"
-    placeholder_name: "已邀請的使用者 (%{hostname})"
+    deleted_user: 已刪除的使用者
+    placeholder_name: 已邀請的使用者 (%{hostname})
     error:
       sign_in_required_html: |
-          您必須登入以繼續。
-          請<a href="/dashboard" target="_blank">登入</a>然後重新整理此頁面以繼續。
-      recaptcha: "我們無法確認您是不是機器人。請再試一次！"
-      bad_login: "抱歉，這個密碼與我們的檔案上的不一樣"
-      username_must_be_alphanumeric: "使用者名稱只能為小寫字母與數字"
+        您必須登入以繼續。
+        請<a href="/dashboard" target="_blank">登入</a>然後重新整理此頁面以繼續。
+      recaptcha: 我們無法確認您是不是機器人。請再試一次！
+      bad_login: 抱歉，這個密碼與我們的檔案上的不一樣
+      username_must_be_alphanumeric: 使用者名稱只能為小寫字母與數字
   poll:
     error:
       cannot_add_options: 無法新增選項到此投票
@@ -178,6 +187,7 @@ zh_TW:
       must_have_options: 必須至少有一個投票選項
       must_be_in_the_future: 必須在未來
       templates_cannot_close: 範本無法關閉
+      poll_options_dont_match: 由於 Loomio 的漏洞，您的投票未能保存。我們正在努力修復此問題。請刷新頁面後重試。
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) 的成員已經表達了他們的立場"
       title: 標題
@@ -202,7 +212,7 @@ zh_TW:
       participant: 參與者
       also_available: 也提供於
       total: 總共
-    waiting_for_votes_from: "等待投票來自"
+    waiting_for_votes_from: 等待投票來自
   stance:
     error:
       too_short: 請選擇
@@ -216,43 +226,49 @@ zh_TW:
     via_loomio: "%{name}（透過 %{site_name}）"
   event_mailer:
     received_email:
-      explaination_html: |-
-          <p>您收到這封電子郵件是因為您是 Loomio 群組的管理員：%{group}。</p><p>該小組收到了一封來自無法識別的電子郵件地址的電子郵件。</p><p>如果郵件來自群組成員，請查看電子郵件並選擇該成員。</p><p>如果您不需要該郵件，您可以封鎖來自該位址的任何其他電子郵件。</p>
+      explaination_html: "<p>您收到這封電子郵件是因為您是 Loomio 群組的管理員：%{group}。</p><p>該小組收到了一封來自無法識別的電子郵件地址的電子郵件。</p><p>如果郵件來自群組成員，請查看電子郵件並選擇該成員。</p><p>如果您不需要該郵件，您可以封鎖來自該位址的任何其他電子郵件。</p>"
+    notification_reason:
+      group_subscribed: 您收到此資訊是因為您訂閱了該小組的所有活動。
+      group_mentioned: 您收到此訊息是因為該小組被@提及。
+      user_mentioned: 您收到此郵件是因為您被@提及。
+      notified: 您收到此訊息是因為作者通知了您。
+      poll_subscribed: 您收到此郵件是因為您訂閱了該投票。
+      discussion_subscribed: 您收到此郵件是因為您訂閱了該討論。
   user_mailer:
     group_export_ready:
       subject: 匯出「%{group_name}」的群組資料
-      body_html: |
-          <a href="%{url}">在此</a>下載您群組的資料。請注意，此連結將會在一週後過期。
+      body_html: '<a href="%{url}">在此</a>下載您群組的資料。請注意，此連結將會在一週後過期。
+
+        '
     redacted:
-      subject: "您的 %{site_name} 使用者帳號已被刪除"
-      body_html: |-
-          <p>您的 %{site_name} 使用者帳號已被刪除。</p><p>所有個人識別資料已被刪除。</p><p>如果您沒有提出此要求，請聯絡%{support_email}</p>
+      subject: 您的 %{site_name} 使用者帳號已被刪除
+      body_html: "<p>您的 %{site_name} 使用者帳號已被刪除。</p><p>所有個人識別資料已被刪除。</p><p>如果您沒有提出此要求，請聯絡%{support_email}</p>"
     accounts_merged:
-      subject: "您的 %{site_name} 使用者帳號已經合併。"
+      subject: 您的 %{site_name} 使用者帳號已經合併。
       body_html: |
-          %{name} 您好，
-          您的兩個 Loomio 帳號已經合併為一個。
-          從現在開始，要存取 Loomio，請使用 <strong>%{email}</strong> 登入。
+        %{name} 您好，
+        您的兩個 Loomio 帳號已經合併為一個。
+        從現在開始，要存取 Loomio，請使用 <strong>%{email}</strong> 登入。
     merge_verification:
-      subject: "驗證您的 %{site_name} 電子郵件地址以進行合併"
+      subject: 驗證您的 %{site_name} 電子郵件地址以進行合併
       body_html: |
-          <p>您好 %{name}，</p>
-          <p>有一個將您的 <strong>%{source_email}</strong> 使用者帳號合併到屬於 <strong>%{target_email}</strong> 帳號的請求。</p>
-          <p>在這個程序完成後，您將無法再使用 <strong>%{source_email}</strong> 登入，僅能使用 <strong>%{target_email}</strong>。</p>
-          <p>請確定這是您想要執行的動作。</p>
+        <p>您好 %{name}，</p>
+        <p>有一個將您的 <strong>%{source_email}</strong> 使用者帳號合併到屬於 <strong>%{target_email}</strong> 帳號的請求。</p>
+        <p>在這個程序完成後，您將無法再使用 <strong>%{source_email}</strong> 登入，僅能使用 <strong>%{target_email}</strong>。</p>
+        <p>請確定這是您想要執行的動作。</p>
       verify: 驗證電子郵件並繼續
       confirm_page:
         confirm: 確認合併
         body_html: |
-            <p>請確認您想要將 <strong>%{source_email}</strong> 的帳號合併到 <strong>%{target_email}</strong>。</p>
-            <p>您的 <strong>%{source_email}</strong> 將會被刪除，您將只能透過 <strong>%{target_email}</strong> 登入。</p>
-            <p>此變動是不可逆的。</p>
+          <p>請確認您想要將 <strong>%{source_email}</strong> 的帳號合併到 <strong>%{target_email}</strong>。</p>
+          <p>您的 <strong>%{source_email}</strong> 將會被刪除，您將只能透過 <strong>%{target_email}</strong> 登入。</p>
+          <p>此變動是不可逆的。</p>
         merge: 合併帳號
       complete_page:
         title: 合併成功！
         body_html: |
-            <p>您的使用者帳號合併成功。您很快就會在 <strong>%{target_email}</strong> 收到確認信。</p>
-            <p>如果您還有其他問題的話，請<a href="/contact" target="_blank">聯絡我們</a>。</p>
+          <p>您的使用者帳號合併成功。您很快就會在 <strong>%{target_email}</strong> 收到確認信。</p>
+          <p>如果您還有其他問題的話，請<a href="/contact" target="_blank">聯絡我們</a>。</p>
   email:
     common:
       or_enter_code: 或是在下方輸入代碼
@@ -269,27 +285,26 @@ zh_TW:
     contact_request:
       subject: "%{name} 想要與您在 %{site_name} 上連線！"
       intro: "%{name} (%{email}) 已經傳送給您一個連線的請求。"
-      footer: "您可以透過回覆此封電子郵件來直接回應到 %{name}。"
+      footer: 您可以透過回覆此封電子郵件來直接回應到 %{name}。
     reset_password:
       greeting: |
-          嗨，%{name}
-          這是您用來重設您 Loomio 帳號之密碼的連結：
+        嗨，%{name}
+        這是您用來重設您 Loomio 帳號之密碼的連結：
       link_text: 重設您的密碼
       signoff: |
-          因為您的電子郵件在 %{hostname} 上被輸入到「忘記密碼」表單中，所以收到這份訊息。
-          然而，您的密碼在您完成上面這個連結的表單前都不會被變更。
-          若您還有登入上的問題，回覆這封電子郵件以連絡客服人員。
-    by_who: '%{person}'
+        因為您的電子郵件在 %{hostname} 上被輸入到「忘記密碼」表單中，所以收到這份訊息。
+        然而，您的密碼在您完成上面這個連結的表單前都不會被變更。
+        若您還有登入上的問題，回覆這封電子郵件以連絡客服人員。
+    by_who: "%{person}"
     reply_to_this_discussion: 回應此討論串
-    loomio_app_description: "%{site_name} 是協作組織的決策工具"
     view_group: 檢視群組
     to_join_group:
       subject: "%{member} 已邀請您加入在 %{site_name} 上的 %{group_name}"
       invitation_text: "%{member} 邀請您加入他們的 %{group_name} 群組。"
-      invitation_text_html: "已經邀請您加入他們的群組"
-      link_help: "點選下面的連結以接受邀請："
-      accept_invitation: "接受邀請"
-      stop_emails: "停止從 %{site_name} 收到電子郵件"
+      invitation_text_html: 已經邀請您加入他們的群組
+      link_help: 點選下面的連結以接受邀請：
+      accept_invitation: 接受邀請
+      stop_emails: 停止從 %{site_name} 收到電子郵件
       accepting_is_important: 接受您的邀請非常重要，這樣您就不會錯過涉及您的決策的通知。
     resend_to_join_group:
       subject: "%{member} 正等待您加入在 %{site_name} 上的 %{group_name}"
@@ -297,8 +312,8 @@ zh_TW:
       subject: "%{who} 將您加入至在 %{site_name} 上的 %{which_group}"
       content: "%{who} 將您加入至 %{which_group}。"
       content_html: "<strong>%{who}</strong> 將您加入到了 <strong>%{which_group}</strong>。"
-      link_help: "點選以下的連結以前往該群組："
-    unsubscribe: "取消訂閱或者變更您的電子郵件偏好設定："
+      link_help: 點選以下的連結以前往該群組：
+    unsubscribe: 取消訂閱或者變更您的電子郵件偏好設定：
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>取消訂閱或者變更您的電子郵件偏好設定。"
     catch_up:
       daily_subject: 昨日 %{site_name}
@@ -310,27 +325,30 @@ zh_TW:
       marked_as_read_success: 電子郵件所列的討論串現在設為已讀了
       click_here: 點這邊
     group_membership_approved:
-      intro: "您加入「%{group_name}」群組的申請已獲批准。"
-      intro_html: "您加入 <strong>%{group_name}</strong> 群組的申請已獲批准。"
-      link_help: "點選以下的連結以加入 %{group_name} 並開始："
-      subject: "您加入 %{group_name} 群組的申請已獲批准。"
-      join_group: "加入群組"
+      intro: 您加入「%{group_name}」群組的申請已獲批准。
+      intro_html: 您加入 <strong>%{group_name}</strong> 群組的申請已獲批准。
+      link_help: 點選以下的連結以加入 %{group_name} 並開始：
+      subject: 您加入 %{group_name} 群組的申請已獲批准。
+      join_group: 加入群組
     membership_request:
       intro_html: 申請加入您的其中一個群組。
       subject: "%{who} 申請加入 %{which_group}"
       view_group: 您可點此批准或拒絕申請
       button_text: 檢視申請
+    content_was_translated: 此內容由 %{source_locale} 翻譯而來
+    content_was_translated_html: 此內容由 %{source_locale} 翻譯而來。<a href="%{profile_url}">查看設定<a></a>
+    loomio_app_description: 一個供協作組織共同決策的場所。
   announcement_count_emails: "%{count} 個電子郵件"
   email_actions:
     unfollowed_discussion: 您已經關閉了討論串的電子郵件。
   discussion_mailer:
-    reply_or_view_online_html: "直接回覆這封電子郵件或<a href='%{url}'>在 %{hostname} 上檢視它</a>。"
-    turn_off_notifications_html: "在這個討論<a href='%{url}'>關閉電子郵件</a>。"
-    change_email_preferences_html: "變更您的<a href='%{email_preferences_url}'>電子郵件偏好設定</a>。"
+    reply_or_view_online_html: 直接回覆這封電子郵件或<a href='%{url}'>在 %{hostname} 上檢視它</a>。
+    turn_off_notifications_html: 在這個討論<a href='%{url}'>關閉電子郵件</a>。
+    change_email_preferences_html: 變更您的<a href='%{email_preferences_url}'>電子郵件偏好設定</a>。
     unsubscribe_from_discussion_announced_html: "<a href='%{url}'>取消訂閱</a>此討論串中的未來公告。"
     unsubscribe_from_new_comment_html: "<a href='%{url}'>取消訂閱</a>此討論串中的留言。"
-    unsubscribe_from_comment_replied_to_html: "這是回覆通知。"
-    unsubscribe_from_user_mentioned_html: "這是提及通知。"
+    unsubscribe_from_comment_replied_to_html: 這是回覆通知。
+    unsubscribe_from_user_mentioned_html: 這是提及通知。
     discussion_edited:
       inline: "%{actor} 編輯了線程上下文"
     discussion_closed:
@@ -351,41 +369,253 @@ zh_TW:
     confirm_new_password: 確認密碼
     new_password: 新密碼
     email_guidelines_html: |
-        <p>輸入您的電子郵件，然後您將會收到密碼重設連結。</p>
-        <p>若您透過 Facebook 或 Googld 登入，請輸入與帳號相關聯的電子郵件。</p>
+      <p>輸入您的電子郵件，然後您將會收到密碼重設連結。</p>
+      <p>若您透過 Facebook 或 Googld 登入，請輸入與帳號相關聯的電子郵件。</p>
     reset_email_timeframe: 這將會花費 5 分鐘的時間將電子郵件寄到。如果沒有出現，請務必檢查您的垃圾信資料夾。
     length_restriction: 密碼應至少 8 個字元長。
     forbidden_passwords: 常見的密碼，像是「password」將會被拒絕以保護您的帳號安全。
   task_mailer:
     task_due_reminder:
-      subject: "工作提醒：%{name}"
-      greeting: "嗨 %{name}，以下的工作於 %{due} 到期："
-      view_task: "在 %{site_name} 上檢視"
-      update_or_comment: "如果您已完成此工作，請勾選它。若其不完整，請分享進度更新。"
-      due_today: "今天"
+      subject: 工作提醒：%{name}
+      greeting: 嗨 %{name}，以下的工作於 %{due} 到期：
+      view_task: 在 %{site_name} 上檢視
+      update_or_comment: 如果您已完成此工作，請勾選它。若其不完整，請分享進度更新。
+      due_today: 今天
       due_in_count_days: "%{count} 天內"
   group_mailer:
-    resend: "提醒：%{member} 正等候您加入 %{group_name}"
+    resend: 提醒：%{member} 正等候您加入 %{group_name}
     destroy_warning:
       subject: 您的 Loomio 群組已安排刪除。
       body: |
-          您的 Loomio 群組：「%{group}」已被 %{deletor} 安排刪除。
-          若您不希望您的群組被刪除，請回覆此電子郵件。
-          若您確定您想要刪除群組，您就不需要任何做任何事。
-          感謝您。
+        您的 Loomio 群組：「%{group}」已被 %{deletor} 安排刪除。
+        若您不希望您的群組被刪除，請回覆此電子郵件。
+        若您確定您想要刪除群組，您就不需要任何做任何事。
+        感謝您。
   poll_mailer:
     common:
       why_send_this: 因為 %{reason}，您收到了這封電子郵件
       view_on_loomio: 在 %{site_name} 上檢視
       create_outcome: 分享成果
-      your_response: "您投票給："
-      you_voted: "您已投票！"
-      not_invited: "未邀請"
+      your_response: 您投票給：
+      you_voted: 您已投票！
+      not_invited: 未邀請
       please_respond: 請回應
-      time_zone: （在 %{zone} 顯示的時間）
+      time_zone: "（在 %{zone} 顯示的時間）"
       undecided_members: 未決定的成員（%{count}）
       undecided_visitors: 未決定的來賓 (%{count})
       more_undecided: "%{count} 更多……"
       vote_now: 現在投票
       you_have_until: 您到 %{when} 前都可以參與。
       people_have_voted: "%{dnom} 中的 %{nom} 個人已投票 (%{pct}%)"
+  poll_templates:
+    practice_proposal:
+      title: 我開始掌握這個竅門
+      process_name: 實踐建議
+      process_subtitle: 透過嘗試了解提案在 Loomio 上的運作方式。
+      process_introduction: "<p>使用此範本幫助您的團隊熟悉 Loomio 上的提案。這是一種安全簡便的方法，可供大家嘗試投票並了解所有流程是否順暢。</p>"
+      details: "<p>這是一次練習，以便每個人都能熟悉 Loomio 上的提案的工作方式。</p><p>如果您願意，請投票並留下理由。</p><p>沒有壓力，沒有現實後果。這只是探索求婚運作方式的一種方式！</p>"
+      outcome_statement: "<p>感謝你參與本次實踐提案！ \U0001F389</p><p>這只是一個機會，讓我們看看 Loomio 上的投票和評論是如何運作的。這裡並沒有做出任何真正的決定——但希望這能幫助大家熟悉整個流程。</p>"
+    proposal:
+      process_subtitle: 提出建議並做出決定
+      process_introduction: <p>經典的 Loomio 提案可協助您做出決策，將討論轉化為明確的結果。</p><p>建議一個行動方案並邀請人們透過投票同意、棄權或不同意來回應。</p><p>人們投票時，可以給出投票理由。你可以看到其他人對此問題的立場和原因。</p><p>透過這種方式，您可以使用提案來促使人們做出回應，發現新的資訊並建立共識 - 以幫助您的團隊做出更好、更明智的決策。</p><p>提案和相關討論會形成關於決策如何產生的記錄。</p><p><a target="_blank" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>閱讀更多有關在簡單決策過程中使用經典 Loomio 提案的資訊</u></a>。</p>
+      title: 認可新的品牌理念
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>您需要做什麼決定？</strong></h3><p></p><h3 id="why-is-this-important"><strong>為什麼這很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>你要求人們做什麼？</strong></h3><p></p><p>為了使該提案獲得通過，我們需要大多數成員投票同意。</p><p>如果您不同意，請說明原因以及需要進行哪些更改才能同意。</p>
+      agree: 同意
+      agree_meaning: 我支持這個提議
+      agree_prompt: 您對這個提議有什麼看法？它將為團隊帶來什麼好處？
+      abstain: 棄權
+      abstain_meaning: 選擇不投票或無法對此決定進行投票。
+      abstain_prompt: 您為什麼棄權，或覺得無法對該決定進行投票？
+      disagree: 不同意
+      disagree_meaning: 在我支持該提案之前，需要對其進行一些修改。
+      disagree_prompt: 如何改進這個提議才能讓您支持它？
+    advice:
+      process_subtitle: 就你需要做的決定尋求建議
+      process_introduction: <p>在您需要做出決定時尋求建議，聽取受影響的人或具有專業知識的人的建議，這樣您就可以為您的組織做出更好的決定。</p><ul><li><p>建議可以幫助您為您的組織做出更好的決策。</p></li><li><p>培養關係、學習機會和多元投入。</p></li><li><p>激發主動性和創造性，工作更愉快。</p></li></ul><p><a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>閱讀有關建議流程的更多資訊</u></a>。</p>
+      title: 幫助 Takashi 購買新電腦
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>您需要做什麼決定？</strong></h3><p></p><h3 id="why-is-this-important"><strong>為什麼這很重要？</strong></h3><p></p><h3 id="what-advice-are-you-asking-from-people-to-help-you-make-a-go"><strong>您會向人們尋求什麼建議來幫助您做出正確的決定？</strong></h3><p></p><p>我正在尋求您的意見，以幫助我為我們的組織做出正確的決定。</p>
+      agree: 同意
+      agree_meaning: 我已經就這個決定提出了我的建議
+      agree_prompt: 總結你的建議或提出有用的評論
+      abstain: 棄權
+      abstain_meaning: 我沒有什麼建議
+      abstain_prompt: 您有什麼有用的意見嗎？
+      outcome_statement: "<p>感謝您參與我的建議！</p>"
+    consent:
+      process_subtitle: 做出「可以安全嘗試」的決定，且沒有異議
+      process_introduction: <p>在您需要做出的決定上尋求同意，如果對您的提議沒有任何有意義的反對意見，那麼您就可以為您的組織快速做出「可以安全嘗試」的決定。</p><ul><li><p>力求做出「夠好」的決定</p></li><li><p>聽取多方意見，制定可行的提案</p></li><li><p>詢問是否有人提出合理的反對意見</p></li><li><p>修改提案以解決異議</p></li></ul><p><a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">閱讀有關同意流程的更多資訊</a>。</p>
+      title: 聘請 Chloe 擔任設計職位
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>您需要做什麼決定？</strong></h3><p></p><h3 id="why-is-this-important"><strong>為什麼這很重要？</strong></h3><p></p><h3 id="what-are-you-asking-of-people-in-this-proposal"><strong>您在這項提案中對人們有什麼要求？</strong></h3><p></p><p>如果您有異議，請說明原因並提出修改建議以確保其安全。</p><p>請記住，我們正在尋求對「足夠好」且「可以安全嘗試」的決定的同意，以便我們可以為我們的組織做出正確的決定。</p>
+      consent: 同意
+      consent_meaning: 該建議可以安全嘗試
+      consent_prompt: 您對這個提案有什麼看法？它將為組織帶來什麼好處？
+      objection: 異議
+      objection_meaning: 我有一個合理的反對意見，並認為該提議會造成損害
+      objection_prompt: 需要對該提案進行哪些修改才能使其“可以安全嘗試”，以便您可以支持它？
+      outcome_statement: "<p>感謝您參與同意流程。</p>"
+    consensus:
+      process_subtitle: 與所有相關人員達成集體協議
+      process_introduction: <p>為您需要做出的決定建立共識，以達成滿足所有參與者的需求和關切的協議。</p><ul><li><p>共同討論並制定提案</p></li><li><p>包容並尊重所有相關人員</p></li><li><p>尋求大多數人的同意</p></li></ul><p><a target="_blank" href="https://help.loomio.com/en/guides/consensus_process/index.html">閱讀有關共識過程的更多資訊</a>。</p>
+      title: 認可新的品牌理念
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>您需要做什麼決定？</strong></h3><p></p><h3 id="why-is-this-important"><strong>為什麼這很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>你要求人們做什麼？</strong></h3><p></p><p>為了使該提案獲得通過，我們需要大多數成員投票同意。</p><p>如果您不同意，請說明原因以及需要進行哪些更改才能同意。</p>
+      outcome_statement: "<p>感謝您參與共識過程。</p>"
+      agree: 同意
+      agree_meaning: 我支持這個提議
+      agree_prompt: 您對這個提案有什麼看法？它將為組織帶來什麼好處？
+      abstain: 棄權
+      abstain_meaning: 這個決定不會影響我，無論小組做出什麼決定我都會滿意
+      abstain_prompt: 您為什麼棄權，或覺得無法對該決定進行投票？
+      disagree: 不同意
+      disagree_meaning: 這項提案需要修改一些內容，我才能支持它
+      disagree_prompt: 如何改進這個提議才能讓您支持它？
+      block: 堵塞
+      block_meaning: 我阻止了這項提議並認為它不應該繼續進行
+      block_prompt: 解釋你反對這個提議的原因以及為什麼不應該繼續進行
+    question_round:
+      process_subtitle: 邀請澄清問題以幫助人們理解提案
+      process_introduction: <p>提問環節是人們就提案提出澄清問題的機會，以便每個人在表達自己的想法之前了解提案。</p><p> Loomio 問答環節是一項特殊提案，沒有投票選項。它允許參與者在您設定的時間內提問。</p><p>質詢環節通常作為同意流程的步驟。</p><p><a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">閱讀有關同意流程的更多資訊</a>。</p>
+      title: 您對健康和安全政策有什麼疑問？
+      details: <h3 id="what-are-you-proposing"><strong>你有什麼建議？</strong></h3><p></p><h3 id="why-is-this-important"><strong>為什麼這很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>你要求人們做什麼？</strong></h3><p></p><p>這是一個提問環節，歡迎您提出澄清問題。</p><p>您需要了解什麼才能理解該提案？</p><p>請在提問環節結束前作出答覆。</p>
+      reason_prompt: 您需要了解什麼才能理解該提案？
+      outcome_statement: "<p>感謝您在本輪提交問題</p>"
+    sense_check:
+      process_subtitle: 尋求回饋、問題和疑慮
+      process_introduction: <p>Sense 檢查提案是獲得回饋、提出問題和發現疑慮的好方法。它有助於在做出決策之前澄清和改進提案。</p><p>感知檢查可以讓人們了解提案正在形成，並鼓勵他們參與。這是一個傾聽人們意見、了解他們的感受並做出適當回應的機會，從而挖掘出採納他們意見的潛力，從而做出更好的決策。</p><p>在同意流程中使用 Sense 檢查提案來徵求反應和評論以改進提案，並在共識流程中使用 Sense 檢查提案來測試共識。</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>閱讀有關在簡單決策過程中使用感知檢查的更多資訊</u></a><span>。</span></p>
+      title: 您對新的品牌理念有何感想？
+      details: <h3 id="what-are-you-proposing"><strong>你有什麼建議？</strong></h3><p></p><h3 id="why-is-this-important"><strong>為什麼這很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>你要求人們做什麼？</strong></h3><p></p><p>你對這個提案有什麼看法？請留下評論或提出改進建議。</p><p>這次 Sense 檢查為您提供了一個提供意見和貢獻的機會，以幫助我們做出更好的決定。</p>
+      outcome_statement: "<p>感謝您參與感覺檢查。</p>"
+      not_sure: 沒有把握
+      not_sure_meaning: 我有問題或需要更多時間
+      not_sure_prompt: 您還有哪些地方不清楚？該如何解決？
+      looks_good: 看起來不錯
+      looks_good_meaning: 我對事情的進展很滿意
+      looks_good_prompt: 您對改進該提案有什麼意見或建議嗎？
+      abstain: 棄權
+      abstain_meaning: 我沒有什麼可補充的，對這項工作也沒有任何異議。
+      abstain_prompt: 棄權表示同意該提案的方向。您投下棄權票有什麼理由嗎？
+      concerned: 擔心的
+      concerned_meaning: 這件事可能需要改變一些才能讓我同意
+      concerned_prompt: 您擔心什麼？如何解決？
+    gradients_of_agreement:
+      process_subtitle: 以 8 分製表示對提案的支持
+      process_introduction: "<p>同意提案的梯度使小組成員能夠以一定程度表達對提案的支持，從而提供比「同意」和「不同意」更多的表達支持的方式。</p><p>使用協議梯度作為初步嘗試，在達成正式協議之前測試對提案的支持。</p><p>同意度梯度可以讓大家了解提案正在形成，並鼓勵他們參與。這是一個傾聽大家意見、了解他們的感受並做出適當回應的機會，從而挖掘出採納他們意見的潛力，最終做出更明智的決策。</p>"
+      title: 您喜歡新的價值觀表述嗎？
+      details: <h3 id="what-are-you-proposing"><strong>你有什麼建議？</strong></h3><p></p><h3 id="why-is-this-important"><strong>為什麼這很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>你要求人們做什麼？</strong></h3><p></p><p>你覺得這個方案怎麼樣？請在下方的量表中表達你的支持，並留下評論或改進建議。</p><p>此協議梯度提案旨在測試對提案的支持度，並在達成正式協議之前為您提供意見的機會。</p>
+      whole_hearted_endorsement: 全心全意的支持
+      whole_hearted_endorsement_meaning: 我真的很喜歡它！
+      whole_hearted_endorsement_prompt: 你喜歡它什麼？
+      agreement_with_minor_contention: 有輕微爭議的協議
+      agreement_with_minor_contention_meaning: 不完美，但已經夠好了
+      agreement_with_minor_contention_prompt: 您擔心什麼？
+      support_with_reservations: 預訂支持
+      support_with_reservations_meaning: 我可以忍受
+      support_with_reservations_prompt: 您有什麼保留意見？
+      abstain_meaning: 這個問題對我沒有影響
+      abstain_prompt: 您還有什麼要補充的嗎？
+      more_discussion_needed: 需要更多討論
+      more_discussion_needed_meaning: 我還不太了解這些問題
+      more_discussion_needed_prompt: 你不明白什麼？
+      don_t_like_but_will_support: 不喜歡但會支持
+      don_t_like_but_will_support_meaning: 雖然不太好，但我不想拖累團隊
+      don_t_like_but_will_support_prompt: 您希望看到哪些方面的改善？
+      serious_disagreement: 嚴重分歧
+      serious_disagreement_meaning: 我不同意這個——別指望我
+      serious_disagreement_prompt: 您不同意什麼？
+      veto: 否決
+      veto_meaning: 我阻止了這項提議
+      veto_prompt: 為什麼阻止這項提案？你需要做出哪些改變才能支持它？
+    simple_poll:
+      process_subtitle: 找到最受歡迎的選項
+      process_introduction: <p>在做出決定之前，先找出人們最關心的選項。</p><p>簡單的民意調查可以幫助您找到最受歡迎的選項或單選或多選選項。</p><p>在詳細資訊欄位中寫下有關選項的任何詳細信息，然後輸入選項的名稱並點擊 + 進行新增。</p><p>設定投票者可選擇的<strong>最小選項數</strong>和<strong>最大選項數</strong>。對於單選投票，最大選項數保留為 1。</p><p>您可以使用每個選項旁邊的鉛筆圖示來添加選項的<strong>含義</strong>，進一步闡述該選項以幫助人們投票。</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">閱讀更多有關簡單民意調查的資訊</a>。</p>
+      title: 我們的策略方向重點應該放在哪裡？
+      details: <h3 id="what-is-this-poll-about"><strong>這次民調的內容是什麼？</strong></h3><p></p><h3 id="why-is-this-important"><strong>為什麼這很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>你要求人們做什麼？</strong></h3><p></p><p>選擇您喜歡的選項。</p>
+    score_poll:
+      process_subtitle: 衡量每個選項的支持程度
+      process_introduction: <p>當您想調查人們對每個選項的願望、偏好或興趣時，請使用評分調查。</p><p><span>要求參與者評估每個選項並沿著刻度移動滑桿來分配分數。</span></p><p><span>結果以圖形方式顯示，並附有表格，顯示每個選項的總分、平均分數和投票人數。</span></p><p>高級設定包括“投票匿名”和“按隨機順序顯示選項” - 通常用於分數投票以減少任何投票偏見。</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">閱讀有關分數調查的更多資訊</a>。</p>
+      title: 評估我們組織中的決策方式
+      details: <h3 id="what-is-this-poll-about"><strong>這次民調的內容是什麼？</strong></h3><p></p><h3 id="why-is-this-important"><strong>為什麼這很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>你要求人們做什麼？</strong></h3><p></p><p>選擇您喜歡的選項。</p>
+    dot_vote:
+      process_subtitle: 分配預算點數以揭示優先事項
+      process_introduction: <p>對於需要將有限資源分配給多個選項的團體來說，點投票非常有用。它超越了簡單的投票，幫助參與者認識到選擇選項時的限制。</p><p>每位參與者都會獲得一定數量的點數。具體數量由你決定。</p><p>他們將圓點放在自己喜歡的選項旁邊。參與者可以將所有圓點放在一個選項上，也可以分散放在多個選項上。</p><p>當參與者分配點數時，他們可能會超出點數預算限制，因此鼓勵他們仔細考慮如何花費點數。</p><p>點數最多的選項「獲勝」。結果表提供額外數據，助您分析結果。</p><ul><li><p> % 點數</p></li><li><p>積分</p></li><li><p>意思是</p></li><li><p>選民</p></li></ul><p><a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">閱讀有關 Dot vote 的更多資訊</a>。</p>
+      title: 選擇會議主題
+      details: <h3 id="what-is-this-poll-about"><strong>這次民調的內容是什麼？</strong></h3><p></p><h3 id="why-is-this-important"><strong>為什麼這很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>你要求人們做什麼？</strong></h3><p></p><p>在本次投票中，您有 8 個點的預算，可以分配給您喜歡的選項。您可以將所有點放在一個選項上，也可以分散放置。</p>
+    ranked_choice:
+      process_subtitle: 理解選項的有序偏好
+      process_introduction: <p>當您有大量選擇或正在舉行選舉時，排序選擇很有用。</p><p>此投票範本提供了一系列選項，供人們按照自己喜歡的順序進行投票。</p><p>您可以設定投票者獲得的選擇數量。</p><p><span>投票者按偏好順序拖放選項（#1 是您最喜歡的選項）。</span></p><p><span>高級設定包括“投票匿名”和“按隨機順序顯示選項” - 通常用於排名</span>選擇以減少投票偏見。</p><p>結果按排序順序顯示。結果表提供了額外的數據，以幫助您分析結果。</p><ul><li><p>秩</p></li><li><p>% 點數</p></li><li><p>積分</p></li><li><p>意思是</p></li></ul><p><a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">閱讀有關排序選擇的更多資訊</a>。</p>
+      title: 選舉董事進入治理委員會
+      details: <h3 id="what-is-this-poll-about"><strong>這次民調的內容是什麼？</strong></h3><p></p><h3 id="why-is-this-important"><strong>為什麼這很重要？</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>你要求人們做什麼？</strong></h3><p></p><p>按您的偏好順序對選項進行投票。結果中排名第一的選項獲勝。</p>
+    time_poll:
+      process_subtitle: 尋找人們何時有空見面
+      process_introduction: <p><span>節省安排會議或活動日期的時間。</span></p><p>時間調查可以輕鬆查看每個人的空閒時間並找到最佳時間。</p><p>為您的“時間”投票添加標題和詳細資訊。輸入您所在時區的日期和時間選項清單。</p><p>設定時段時，請考慮不同時區的人員。參與者將看到以他們所在時區為準的時間。</p><p>設定會議時長。</p><p>當時間投票結束時，設定最佳時間結果以及會議的任何指示。</p><p> <span>Loomio 將在結果通知電子郵件中附上日曆邀請，以便參與者可以將其添加到他們的日曆中。</span></p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">閱讀更多有關“時間民意調查”的資訊</a>。</p>
+      title: 我們來定個下次見面的日期吧
+      details: "<p><strong>會議或活動是什麼？</strong></p><p></p><p><strong>為什麼這很重要？</strong></p><p></p><p><strong>你要求人們做什麼？</strong></p><p></p><p><span>使用綠色「豎起大拇指」圖示標記您可用的時間段，或在不可用時保留紅色「豎起大拇指」圖示。</span></p><p><span>使用“拇指向側面”圖示表示“如果需要”您可以隨時聯繫。</span></p>"
+      reason_prompt: 您能說些什麼來幫助組織者找到合適的時間嗎？
+    opt_in:
+      process_subtitle: 尋找志工或尋求參與者
+      process_introduction: <p>使用選擇加入邀請人們加入團隊、委員會或工作小組，或參加活動。</p><p> 「選擇加入」有兩個投票選項：接受或拒絕。</p><p>您可以定義您正在尋找的目標人數，例如 3 個人加入您的工作小組。</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#opt-in">閱讀更多有關選擇加入的資訊</a>。</p>
+      title: 工作小組起草我們的新永續發展政策
+      details: "<p><strong>您邀請人們參加哪個團隊、工作小組或活動？</strong></p><p></p><p><strong>為什麼這很重要？</strong></p><p></p><p><strong>你要求人們做什麼？</strong></p><p></p><p>選擇「接受」即可參與！</p>"
+      accept_meaning: 我願意參加
+      accept_prompt: 您為什麼要自願做這件事？
+      decline_meaning: 我無法參加
+      decline_prompt: 還有什麼想說的嗎？
+  forward_mailer:
+    bounce:
+      subject: 您發送給 Loomio 的訊息未送達
+      reason: 這是因為您的電子郵件用戶端將郵件發送到了「寄件者」地址，而不是提供的「回覆」地址。
+      recommendation: 請在瀏覽器中開啟 Loomio 並直接發布您的訊息。
+  locale_names:
+    en: 英語
+    be-BY: 白俄羅斯
+    bg-BG: 保加利亞語
+    ca: 加泰隆尼亞語
+    cs: 捷克語
+    zh-TW: 中文（繁體，台灣）
+    da: 丹麥語
+    de: 德文
+    es: 西班牙語
+    eo: 世界語
+    el: 希臘文
+    fr: 法語
+    he: 希伯來文
+    id: 印尼
+    it: 義大利語
+    hu: 匈牙利
+    ja: 日本人
+    ko: 韓國人
+    ml: 馬拉雅拉姆語
+    nl-NL: 荷蘭語
+    pl: 拋光
+    pt-BR: 葡萄牙語（巴西）
+    ro: 羅馬尼亞語
+    sr: 塞爾維亞語（拉丁語）
+    sr-RS: 塞爾維亞語（西里爾字母）
+    sk: 斯洛伐克
+    sv: 瑞典
+    vi: 越南語
+    tr: 土耳其
+    uk: 烏克蘭語
+    an: 阿拉貢語
+    ar: 阿拉伯
+    cmn: 中文（國語）
+    hr: 克羅埃西亞語
+    it-CH: 義大利語（瑞士）
+    fi: 芬蘭
+    gl: 加利西亞語
+    ga-IE: 蓋爾語（愛爾蘭）
+    hi: 不
+    km: 高棉語
+    lv: 拉脫維亞語
+    mk: 馬其頓
+    mi: 毛利人
+    fa-IR: 波斯語（伊朗）
+    pt-PT: 葡萄牙語
+    ru: 俄文
+    sl: 斯洛維尼亞語
+    te: 泰盧固語
+    ur: 烏爾都語
+    ur-PK: 烏爾都語（巴基斯坦）
+    be: 白俄羅斯
+    pt: 葡萄牙語
+    zh: 中文（繁體，台灣）
+    zh-HK: 中文（繁體，台灣）

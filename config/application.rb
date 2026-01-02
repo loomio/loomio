@@ -6,7 +6,7 @@ Bundler.require(*Rails.groups)
 
 require_relative '../lib/version'
 
-def lmo_asset_host
+def lmo_asset_host(path = nil)
   parts = []
   parts << (ENV['FORCE_SSL'] ? 'https://' : 'http://')
   parts << ENV['CANONICAL_HOST']
@@ -14,7 +14,8 @@ def lmo_asset_host
     parts << ':'
     parts << ENV['CANONICAL_PORT']
   end
-  parts.join('')
+  parts << path
+  parts.compact.join('')
 end
 
 module Loomio
@@ -29,38 +30,20 @@ module Loomio
       g.test_framework  :rspec, :fixture => false
     end
 
-    logger           = ActiveSupport::Logger.new(STDOUT)
-    logger.formatter = config.log_formatter
-    config.logger    = ActiveSupport::TaggedLogging.new(logger)
-    config.log_level = ENV.fetch('RAILS_LOG_LEVEL', :info)
-
     config.active_record.belongs_to_required_by_default = false
 
     config.force_ssl = ENV['FORCE_SSL'].present?
-    config.ssl_options = { redirect: { exclude: -> request { request.path =~ /(received_emails|email_processor|up|hocuspocus)/ } } }
+    config.assume_ssl = ENV['ASSUME_SSL'].present?
+
+    config.ssl_options = { redirect: { exclude: -> request { request.path =~ /(received_emails|email_processor|up|hocuspocus|inbound_emails)/ } } }
 
     config.i18n.enforce_available_locales = false
     config.i18n.fallbacks = [:en]
 
-    # config.assets.quiet = true
-    # config.quiet_assets = true
-
-    config.encoding = "utf-8"
-
     config.action_controller.action_on_unpermitted_parameters = :raise
-    # Configure sensitive parameters which will be filtered from the log file.
-    config.filter_parameters += [:password]
 
     # Enable the asset pipeline
     config.assets.enabled = true
-
-    # Version of your assets, change this if you want to expire all your assets
-    config.assets.version = '1.4'
-
-    # required for heroku
-    config.assets.initialize_on_precompile = false
-
-    config.action_mailer.preview_path = "#{Rails.root}/spec/mailers/previews"
 
     config.active_storage.variant_processor = :vips
 
@@ -69,6 +52,8 @@ module Loomio
     else
       config.active_storage.service = ENV.fetch('ACTIVE_STORAGE_SERVICE', :local)
     end
+
+    config.action_mailbox.ingress = :relay
 
     config.action_mailer.raise_delivery_errors = true
     config.action_mailer.perform_deliveries = true
@@ -121,5 +106,15 @@ module Loomio
     }
 
     config.active_storage.content_types_allowed_inline = %w(audio/webm video/webm image/png image/gif image/jpeg image/tiff image/vnd.adobe.photoshop image/vnd.microsoft.icon application/pdf)
+
+    # Please, add to the `ignore` list any other `lib` subdirectories that do
+    # not contain `.rb` files, or that should not be reloaded or eager loaded.
+    # Common ones are `templates`, `generators`, or `middleware`, for example.
+    config.add_autoload_paths_to_load_path = false
+    config.autoload_lib(ignore: %w[assets tasks])
+
+    config.sass.quiet_deps = true
+    config.sass.silence_deprecations = ['import']
+
   end
 end

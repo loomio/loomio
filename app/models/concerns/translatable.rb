@@ -2,8 +2,8 @@ module Translatable
   extend ActiveSupport::Concern
 
   included do
-    has_many :translations, as: :translatable
-    before_update :clear_translations, if: :translatable_fields_modified?
+    has_many :translations, as: :translatable, dependent: :destroy
+    before_update :update_translations, if: :translatable_fields_modified?
   end
 
   def translatable_fields_modified?
@@ -11,8 +11,8 @@ module Translatable
     (self.saved_changes.keys.map(&:to_sym) & self.class.translatable_fields).any?
   end
 
-  def clear_translations
-    self.translations.delete_all
+  def update_translations
+    GenericWorker.perform_async('TranslationService', 'update_and_broadcast', self.class.to_s, self.id)
   end
 
   module ClassMethods

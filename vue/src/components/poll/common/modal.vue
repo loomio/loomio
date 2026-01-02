@@ -23,7 +23,6 @@ export default {
 </script>
 <template lang="pug">
 v-card.poll-common-modal(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()").pb-2
-  submit-overlay(:value="poll.processing")
   v-card-title
     h1.text-h5(tabindex="-1" v-t="title_key")
     v-spacer

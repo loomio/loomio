@@ -11,7 +11,7 @@ const transformKeys = function(attributes, transformFn) {
   return result;
 };
 
-const isTimeAttribute = attributeName => /At$/.test(attributeName);
+const isTimeAttribute = attributeName => /(On|At)$/.test(attributeName);
 
 export default new (Utils = class Utils {
   deserialize(json) {

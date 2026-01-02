@@ -3,7 +3,7 @@ import Session        from '@/shared/services/session';
 import Records        from '@/shared/services/records';
 import EventBus       from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 import Flash  from '@/shared/services/flash';
 
 export default {
@@ -16,23 +16,23 @@ export default {
     return {
       actor: Session.user(),
       canSubmit: true,
-      shouldReset: false
+      processing: false
     };
   },
 
   computed: {
     placeholder() {
-      if (this.comment.parentId) {
+      if (this.comment.parent()) {
         return this.$t('comment_form.in_reply_to', {name: this.comment.parent().author().nameOrUsername()});
       } else {
-        return this.$t('comment_form.aria_label');
+        return this.$t('comment_form.share_your_thoughts');
       }
     }
   },
 
   methods: {
     discardDraft() {
-      if (confirm(I18n.t('formatting.confirm_discard'))) {
+      if (confirm(I18n.global.t('formatting.confirm_discard'))) {
         EventBus.$emit('resetDraft', 'comment', this.comment.id, 'body', this.comment.body);
       }
     },
@@ -42,9 +42,8 @@ export default {
     },
 
     submit() {
+      this.processing = true;
       this.comment.save().then(() => {
-        this.$emit('comment-submitted');
-        this.shouldReset = !this.shouldReset;
         const flashMessage = !this.comment.isNew() ?
                         'comment_form.messages.updated'
                       : this.comment.isReply() ?
@@ -52,9 +51,13 @@ export default {
                       :
                         'comment_form.messages.created';
         Flash.success(flashMessage, {name: this.comment.isReply() ? this.comment.parent().author().nameOrUsername() : undefined});
+        setTimeout(() => {
+          this.$emit('comment-submitted');
+          EventBus.$emit('deleteDraft', 'comment', this.comment.id, 'body');
+        });
       }).catch(err => {
         Flash.error('common.something_went_wrong');
-      });
+      }).finally(() => this.processing = false);
     }
   }
 };
@@ -62,32 +65,35 @@ export default {
 </script>
 
 <template lang="pug">
-v-layout.comment-form
+.d-flex.comment-form
   .thread-item__avatar.mr-3
     user-avatar(
       :user='comment.author() || actor'
       :size='comment.parentId ? 28 : 32'
     )
   form.thread-item__body.comment-form__body(v-on:submit.prevent='submit()' @keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
-    submit-overlay(:value='comment.processing')
     lmo-textarea.ml-n1(
       :model='comment'
       @is-uploading="handleIsUploading"
       field="body"
       :placeholder="placeholder"
       :autofocus="autofocus"
-      :shouldReset="shouldReset")
+    )
       template(v-slot:actions)
         v-btn.mr-2(
+          variant="text"
           v-if="comment.id"
           @click="discardDraft"
-          v-t="'common.reset'"
         )
+          span(v-t="'common.reset'")
         v-btn.comment-form__submit-button(
+          variant="elevated"
+          :loading="processing"
           :disabled="!canSubmit"
           color="primary"
           type='submit'
-          v-t="comment.isNew() ? 'comment_form.post_comment' : 'common.action.save' ")
+        )
+          span(v-t="comment.isNew() ? 'comment_form.post_comment' : 'common.action.save' ")
     v-alert(color="error" v-if="comment.saveFailed")
       span(v-t="'common.something_went_wrong'")
       space

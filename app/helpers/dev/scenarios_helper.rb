@@ -1,6 +1,6 @@
 module Dev::ScenariosHelper
   include Dev::FakeDataHelper
-  
+
   def poll_created_scenario(params)
     group = create_group_with_members
 
@@ -8,7 +8,7 @@ module Dev::ScenariosHelper
     DiscussionService.create(discussion: discussion, actor: group.members.first)
 
     actor = group.admins.first
-    user  = saved(fake_user(time_zone: "America/New_York"))
+    user  = saved(fake_user(time_zone: "America/New_York", auto_translate: true))
 
     group.add_member! user if !params[:guest]
     group.add_admin! user if params[:admin]
@@ -33,7 +33,7 @@ module Dev::ScenariosHelper
       observer: user,
       poll: event.eventable,
       title: event.eventable.title,
-      actor: actor,
+      actor: actor
     }
   end
 
@@ -75,7 +75,7 @@ module Dev::ScenariosHelper
     stance = Stance.find_by(poll: scenario[:poll], participant: voter, latest: true)
 
     params = cast_stance_params(scenario[:poll])
-    params[:reason] = "<p><span class='mention' data-mention-id='#{group_member.username}'>@#{group_member.name}</span></p>" 
+    params[:reason] = "<p><span class='mention' data-mention-id='#{group_member.username}'>@#{group_member.name}</span></p>"
     params[:reason_format] = "html"
 
     StanceService.update(stance: stance, actor: voter, params: params)
@@ -127,6 +127,7 @@ module Dev::ScenariosHelper
       discussion: discussion,
       wip: params[:wip],
       notify_on_closing_soon: params[:notify_on_closing_soon] || 'voters',
+      quorum_pct: 80,
       created_at: 6.days.ago,
       closing_at: if params[:wip] then nil else 1.day.from_now end
     )
@@ -199,6 +200,7 @@ module Dev::ScenariosHelper
       hide_results: (params[:hide_results] || :off),
       notify_on_closing_soon: :voters,
       discussion: discussion,
+      quorum_pct: 28,
       closing_at: if params[:wip] then nil else 1.day.from_now end
     )
     PollService.create(poll: poll, actor: actor)
@@ -209,7 +211,7 @@ module Dev::ScenariosHelper
     PollService.invite(poll: poll, params: {recipient_user_ids: [voter.id]}, actor: actor)
     PollService.publish_closing_soon
 
-    { 
+    {
       discussion: discussion,
       group: discussion.group,
       observer: voter,
@@ -321,7 +323,7 @@ module Dev::ScenariosHelper
 
     scenario.merge(observer: observer)
   end
-  
+
   def alternative_poll_option_selection(poll_option_ids, i)
     poll_option_ids.each_with_index.map {|id, j| {poll_option_id: id, score: (i+j)%3}}
   end

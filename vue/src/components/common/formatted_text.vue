@@ -1,87 +1,84 @@
-<script lang="js">
-import { emojiReplaceText } from '@/shared/helpers/emojis';
+<script setup lang="js">
+import { computed } from 'vue';
 import { merge } from 'lodash-es';
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
 import Flash from '@/shared/services/flash';
 import AbilityService from '@/shared/services/ability_service';
+import { useI18n } from 'vue-i18n';
 
-export default {
-  props: {
-    model: {
-      type: Object,
-      required: true
-    },
-    column: {
-      type: String,
-      required: true
-    }
+const props = defineProps({
+  model: {
+    type: Object,
+    required: true
   },
+  field: {
+    type: String,
+    required: true
+  }
+});
 
-  mounted() {
-    this.$el.addEventListener('click', this.onClick);
-  },
+const { t } = useI18n();
 
-  destroyed() {
-    this.$el.removeEventListener('click', this.onClick);
-  },
+const canEdit = computed(() => AbilityService.canEdit(props.model));
 
-  methods: {
-    onClick(e) {
-      if ((e.target.getAttribute('data-type') === 'taskItem') && (e.offsetX < e.target.offsetLeft) && !e.target.classList.contains('task-item-busy')) {
-        if (this.canEdit || e.target.querySelectorAll('span[data-mention-id="'+Session.user().username+'"]').length) {
-          e.target.classList.add('task-item-busy');
-          const uid = e.target.getAttribute('data-uid');
-          const checked = e.target.getAttribute('data-checked') === 'true';
-          const params = merge(this.model.namedId(), {uid, done: ((!checked && 'true') || 'false') });
-          Records.remote.post('tasks/update_done', params).finally(() => {
-            if (!checked) {
-              Flash.success('tasks.task_updated_done');
-            } else {
-              Flash.success('tasks.task_updated_not_done');
-            }
-            e.target.classList.remove('task-item-busy');
-          });
+const content = computed(() => {
+  if (props.model.translationId) {
+    return props.model.translation().fields[props.field];
+  } else {
+    return props.model[props.field];
+  }
+});
+
+const format = computed(() => props.model[props.field + 'Format'] || 'none');
+
+function onClick(e) {
+  const target = e.target;
+  if (
+    target?.getAttribute?.('data-type') === 'taskItem' &&
+    e.offsetX < target.offsetLeft &&
+    !target.classList.contains('task-item-busy')
+  ) {
+    const mentioned = target.querySelectorAll(
+      'span[data-mention-id="' + Session.user().username + '"]'
+    ).length;
+
+    if (canEdit.value || mentioned) {
+      target.classList.add('task-item-busy');
+      const uid = target.getAttribute('data-uid');
+      const checked = target.getAttribute('data-checked') === 'true';
+      const params = merge(props.model.namedId(), {
+        uid,
+        done: (!checked && 'true') || 'false'
+      });
+      Records.remote.post('tasks/update_done', params).finally(() => {
+        if (!checked) {
+          Flash.success('tasks.task_updated_done');
         } else {
-          alert(this.$t('tasks.permission_denied'));
+          Flash.success('tasks.task_updated_not_done');
         }
-      }
-    }
-  },
-
-  computed: {
-    canEdit() { return AbilityService.canEdit(this.model); },
-    isMd() { return this.format === 'md'; },
-    isHtml() { return this.format === 'html'; },
-    format() { return this.model[this.column+"Format"]; },
-    text() { return emojiReplaceText(this.model[this.column]); },
-    hasTranslation() { if (this.model.translation) { return this.model.translation[this.column]; } },
-    cookedText() {
-      if (!this.model.mentionedUsernames) { return this.model[this.column]; }
-      let cooked = this.model[this.column];
-      this.model.mentionedUsernames.forEach(username => cooked = cooked.replace(new RegExp(`@${username}`, 'g'), `[@${username}](/u/${username})`));
-      return cooked.replace(/^&gt; /, '> ').replace(/\n&gt; /, '\n> '); // fix for when > is encoded as &gt; by server
+        target.classList.remove('task-item-busy');
+      });
+    } else {
+      alert(t('tasks.permission_denied'));
     }
   }
-};
+}
 </script>
 
 <template lang="pug">
-div.lmo-markdown-wrapper
-  div(v-if="!hasTranslation && isMd" v-marked='cookedText')
-  div(v-if="!hasTranslation && isHtml" v-html='text')
-  translation(v-if="hasTranslation" :model='model' :field='column')
+div.lmo-markdown-wrapper(@click="onClick")
+  div(v-if="format == 'md'" v-marked='content')
+  div(v-if="format == 'html'" v-html='content')
+  span(v-if="format == 'none'") Format none. Use plain-text instead.
 </template>
 
 <style lang="sass">
-@import '~vuetify/src/styles/settings/_colors'
-
-.theme--dark
+.v-theme--dark, .v-theme--darkBlue
   .lmo-markdown-wrapper
+    color: rgba(255,255,255,1)
     hr
       border-bottom: 2px solid rgba(255, 255, 255, 0.5)
-    p
-      color: #FFFE
 
     blockquote
       background-color: rgba(0,0,0,0.3)
@@ -107,6 +104,8 @@ img.emoji
         content: none
 
 .lmo-markdown-wrapper
+  color: rgba(0, 0, 0, 0.88)
+
   audio,video
     display: block
     margin-bottom: 8px
@@ -130,6 +129,9 @@ img.emoji
   p:empty
     height: 1rem
 
+  p:last-child:empty
+    display: none
+
   p:last-child
     margin-bottom: 0.25rem
 
@@ -148,23 +150,23 @@ img.emoji
     padding: 0.2em 0.3em
 
   mark[data-color="red"]
-    background-color: map-get($red, lighten-1)
+    background-color: #ef5350
   mark[data-color="pink"]
-    background-color: map-get($pink, lighten-3)
+    background-color: #f48fb1
   mark[data-color="purple"]
-    background-color: map-get($purple, lighten-3)
+    background-color: #ce93d8
   mark[data-color="blue"]
-    background-color: map-get($blue, lighten-3)
+    background-color: #90caf9
   mark[data-color="green"]
-    background-color: map-get($green, lighten-3)
+    background-color: #a5d6a7
   mark[data-color="yellow"]
-    background-color: map-get($yellow, lighten-3)
+    background-color: #fff59d
   mark[data-color="orange"]
-    background-color: map-get($orange, lighten-3)
+    background-color: #ffcc80
   mark[data-color="brown"]
-    background-color: map-get($brown, lighten-3)
+    background-color: #bcaaa4
   mark[data-color="grey"]
-    background-color: map-get($grey, lighten-2)
+    background-color: #e0e0e0
 
   .cursor
     font-size: 0.8rem
@@ -173,13 +175,13 @@ img.emoji
     letter-spacing: normal
 
   span[data-mention-id]
-    color: var(--v-anchor-base)
+    color: rgb(var(--v-theme-anchor))
 
   blockquote, pre
     margin: 0.5rem 0
 
   h1, h2, h3
-    margin-top: 1rem
+    margin-top: 1.5rem
     margin-bottom: 0.75rem
 
   h1:first-child, h2:first-child, h3:first-child
@@ -188,11 +190,11 @@ img.emoji
   h1
     font-size: 1.75rem
     font-weight: 400
-    letter-spacing: 0.015625rem
+    letter-spacing: -0.015625rem
 
   h2
     font-size: 1.25rem
-    font-weight: 400
+    font-weight: 500
     letter-spacing: normal
 
   h3
@@ -230,24 +232,18 @@ img.emoji
     list-style: none
     padding: 0
 
-    // task item is
-    // li
-    //   label
-    //     input
-    //     span
-
     li
       display: flex
       align-items: center
+      justify-content: flex-start
+
+      .v-selection-control
+        flex-grow: 0
 
       input[type="checkbox"]
         margin-right: 8px
 
-      div
-        display: inline-block
       p
-        flex-shrink: 10000
-        display: inline-block
         margin: 0
 
     li[data-due-on]:not([data-due-on=""])::after
@@ -255,13 +251,13 @@ img.emoji
       color: #fff
       content: " 📅 " attr(data-due-on) ""
       border-radius: 8px
-      background-color: var(--v-primary-base)
+      background-color: rgb(var(--v-theme-primary))
       margin-left: 8px
       padding: 2px 8px
       height: 16px
       display: flex
       align-items: center
-      // border: 1px solid var(--v-primary-base)
+      // border: 1px solid rgb(var(--v-theme-primary))
 
     li::before
       content: ""
@@ -285,8 +281,8 @@ img.emoji
       color: white
       text-align: center
       vertical-align: middle
-      background-color: var(--v-primary-base)
-      border-color: var(--v-primary-base)
+      background-color: rgb(var(--v-theme-primary))
+      border-color: rgb(var(--v-theme-primary))
 
     li:hover:before
       cursor: pointer
@@ -301,16 +297,14 @@ img.emoji
     list-style: decimal
 
   li p
-    margin-bottom: 0
+    margin-bottom: 8px
 
   pre
     overflow-x: auto
     font-family: 'Roboto mono', monospace, monospace
     white-space: pre-wrap
-
-  code::before
-    content: ''
-    letter-spacing: normal
+    font-size: 0.88rem;
+    margin: 1rem 0;
 
   pre code
     display: block

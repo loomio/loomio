@@ -193,7 +193,7 @@ export default new class AbilityService {
   }
 
   canCreateSubgroups(group) {
-    return group.isParent() && group.subscription.allow_subgroups &&
+    return group.isParent() &&
     (group.adminsInclude(Session.user()) ||
     (group.membersInclude(Session.user()) && group.membersCanCreateSubgroups));
   }
@@ -273,7 +273,7 @@ export default new class AbilityService {
   }
 
   canViewGroup(group) {
-    return !group.privacyIsSecret() || group.membersInclude(Session.user());
+    return !group.archivedAt && (!group.privacyIsSecret() || group.membersInclude(Session.user()));
   }
 
   canViewPrivateContent(group) {
@@ -294,12 +294,17 @@ export default new class AbilityService {
   }
 
   canTranslate(model) {
-    if (model.discardedAt) { return false; }
-    return (AppConfig.inlineTranslation.isAvailable &&
-    (Object.keys(model.translation).length === 0) &&
-    !model.isBlank() &&
-    (model.contentLocale && (model.contentLocale !== Session.user().locale))) ||
-    (!model.contentLocale && (model.author().locale !== Session.user().locale));
+    return !model.discardedAt &&
+           AppConfig.inlineTranslation.isAvailable &&
+           !model.translationId &&
+           model.contentLocale &&
+           model.contentLocale !== Session.user().locale &&
+           !model.isBlank() &&
+           Session.isSignedIn()
+  }
+
+  canUntranslate(model) {
+    return !!model.translationId
   }
 
   canStartPoll(model) {

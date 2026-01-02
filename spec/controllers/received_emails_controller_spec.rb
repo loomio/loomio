@@ -2,17 +2,13 @@ require 'rails_helper'
 
 def mailin_params(
   token: "handle+u=123&k=123",
-  to: "Loomio Group <#{token}@#{ENV['REPLY_HOSTNAME']}>", 
-  from: 'Suzy Senderson <sender@gmail.com>', 
-  subject: "re: an important discussion", 
-  body: "Hi everybody, this is my message!",
-  dkim: 'pass',
-  spf: 'pass')
+  to: "Loomio Group <#{token}@#{ENV['REPLY_HOSTNAME']}>",
+  from: 'Suzy Senderson <sender@gmail.com>',
+  subject: "re: an important discussion",
+  body: "Hi everybody, this is my message!")
   {
     mailinMsg: {
       html: "<html><body>#{body}</body></html>",
-      dkim: dkim,
-      spf: spf,
       text: body,
       headers: {
         from: from,
@@ -39,19 +35,20 @@ describe ReceivedEmailsController do
   it "ignores emails from reply_hostname" do
     ForwardEmailRule.create(handle: 'homer', email: "homer@loomio.com")
     h = mailin_params(
-      to: "homer@#{ENV['REPLY_HOSTNAME']}", 
+      to: "homer@#{ENV['REPLY_HOSTNAME']}",
       body: "yo this is for contact",
       from: "homer@#{ENV['REPLY_HOSTNAME']}"
     )
+
     post :create, params: h
 
-    expect(ActionMailer::Base.deliveries.last).to be nil
+    expect(ActionMailer::Base.deliveries).to be_empty
   end
 
   it "forwards specific emails to contact" do
     ForwardEmailRule.create(handle: 'homer', email: "homer@simpson.com")
     h = mailin_params(
-      to: "homer@#{ENV['REPLY_HOSTNAME']}", 
+      to: "homer@#{ENV['REPLY_HOSTNAME']}",
       body: "yo this is for contact"
     )
     post :create, params: h
@@ -62,7 +59,7 @@ describe ReceivedEmailsController do
 
   it "creates a reply to comment via email" do
     h = mailin_params(
-      to: "c=#{comment.id}&d=#{discussion.id}&u=#{user.id}&k=#{user.email_api_key}@#{ENV['REPLY_HOSTNAME']}", 
+      to: "c=#{comment.id}&d=#{discussion.id}&u=#{user.id}&k=#{user.email_api_key}@#{ENV['REPLY_HOSTNAME']}",
       body: "yo"
     )
     expect { post :create, params: h}.to change { Comment.count }.by(1)
@@ -75,7 +72,7 @@ describe ReceivedEmailsController do
 
   it "creates a comment on a poll via email" do
     h = mailin_params(
-      to: "pt=p&pi=#{poll.id}&d=#{discussion.id}&u=#{user.id}&k=#{user.email_api_key}@#{ENV['REPLY_HOSTNAME']}", 
+      to: "pt=p&pi=#{poll.id}&d=#{discussion.id}&u=#{user.id}&k=#{user.email_api_key}@#{ENV['REPLY_HOSTNAME']}",
       body: "yo"
     )
     expect { post :create, params: h }.to change { Comment.count }.by(1)
@@ -88,7 +85,7 @@ describe ReceivedEmailsController do
 
   it "creates a comment via email without a parent" do
     h = mailin_params(
-      to: "d=#{discussion.id}&u=#{user.id}&k=#{user.email_api_key}@#{ENV['REPLY_HOSTNAME']}", 
+      to: "d=#{discussion.id}&u=#{user.id}&k=#{user.email_api_key}@#{ENV['REPLY_HOSTNAME']}",
       body: "yo"
     )
     expect { post :create, params: h}.to change { Comment.count }.by(1)
@@ -101,7 +98,7 @@ describe ReceivedEmailsController do
 
   it "starts a discussion in a group" do
     h = mailin_params(
-      to: "#{group.handle}+u=#{user.id}&k=#{user.email_api_key}@#{ENV['REPLY_HOSTNAME']}", 
+      to: "#{group.handle}+u=#{user.id}&k=#{user.email_api_key}@#{ENV['REPLY_HOSTNAME']}",
       body: "yo I am a discussion"
     )
     expect { post :create, params: h}.to change { Discussion.count }.by(1)
@@ -119,9 +116,7 @@ describe ReceivedEmailsController do
         body: "greetings earthlings"
       )
       expect { post :create, params: h}.to change { Discussion.count }.by(0)
-      e = ReceivedEmail.last
-      expect(e.released).to eq false
-      expect(e.group_id).to eq nil
+      expect(ReceivedEmail.count == 0)
     end
 
     it "member email, starts a discussion" do
@@ -141,22 +136,22 @@ describe ReceivedEmailsController do
       expect(e.group_id).to eq group.id
     end
 
-    # it "with existing subject adds comment to discussion" do
-    # end
-
-    it "invalid dkim & spf, member email does not start a discussion" do
-      h = mailin_params(
-        from: user.name_and_email,
+    it "email from alias creates notification" do
+      post :create, params: mailin_params(
+        from: 'alias@gmail.com',
         to: "#{group.handle}@#{ENV['REPLY_HOSTNAME']}",
         subject: "the topic at hand",
-        body: "greetings earthlings",
-        dkim: 'fail',
-        spf: 'fail'
+        body: "greetings earthlings"
       )
-      expect { post :create, params: h}.to change { Discussion.count }.by(0)
-      e = ReceivedEmail.last
-      expect(e.released).to eq false
-      expect(e.group_id).to eq group.id
+
+      email = ReceivedEmail.last
+      expect(email.released).to eq false
+      expect(email.group_id).to eq group.id
+
+      expect(Event.where(kind: 'unknown_sender').count).to eq 1
+      expect(Notification.count).to eq 1
+      assert group.admins.first.group_ids.include? ReceivedEmail.first.group_id
+      assert group.admins.first.can? :show, ReceivedEmail.first
     end
 
     it "validated member alias, starts a discussion" do
@@ -206,59 +201,6 @@ describe ReceivedEmailsController do
       expect(e.group_id).to eq nil
     end
 
-    it "invalid dkim&spf, must_validate: true, member alias does not start discussion" do
-      a = MemberEmailAlias.create(
-        user_id: user.id,
-        email: 'memberalias@example.com',
-        group_id: group.id,
-        author_id: group.admins.first.id,
-        require_dkim: true,
-        require_spf: true
-      )
-
-      h = mailin_params(
-        from: a.email,
-        to: "#{group.handle}@#{ENV['REPLY_HOSTNAME']}",
-        subject: "the topic at hand",
-        body: "greetings earthlings",
-        dkim: 'fail',
-        spf: 'fail'
-      )
-
-      expect { post :create, params: h}.to change { Discussion.count }.by(0)
-      e = ReceivedEmail.last
-      expect(e.released).to eq false
-      expect(e.group_id).to eq group.id
-    end
-
-    it "invalid dkim&spf, must_validate: false, member alias starts a discussion" do
-      a = MemberEmailAlias.create(
-        user_id: user.id,
-        email: 'memberalias@example.com',
-        group_id: group.id,
-        author_id: group.admins.first.id,
-        require_dkim: false,
-        require_spf: false
-      )
-
-      h = mailin_params(
-        from: a.email,
-        to: "#{group.handle}@#{ENV['REPLY_HOSTNAME']}",
-        subject: "the topic at hand",
-        body: "greetings earthlings",
-        dkim: 'fail',
-        spf: 'fail'
-      )
-
-      expect { post :create, params: h}.to change { Discussion.count }.by(1)
-      d = Discussion.last
-      expect(d.author).to eq user
-      expect(d.group.handle).to eq group.handle
-      expect(d.body).to eq "greetings earthlings"
-      e = ReceivedEmail.last
-      expect(e.released).to eq true
-      expect(e.group_id).to eq group.id
-    end
   end
 
   # it "does not create a comment when the user is not authorized" do

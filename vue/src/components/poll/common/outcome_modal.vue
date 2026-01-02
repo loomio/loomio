@@ -5,13 +5,12 @@ import EventBus from '@/shared/services/event_bus';
 import Session        from '@/shared/services/session';
 import AbilityService from '@/shared/services/ability_service';
 
-import Vue     from 'vue';
 import { map, sortBy, head } from 'lodash-es';
 import { format, formatDistance, parse, startOfHour, isValid, addHours, isAfter, parseISO } from 'date-fns';
 import { exact} from '@/shared/helpers/format_time';
 
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 import { mdiCalendar } from '@mdi/js';
 
 export default {
@@ -27,12 +26,13 @@ export default {
   data() {
     return {
       mdiCalendar,
+      loading: false,
       options: [],
       bestOption: null,
       isDisabled: false,
       review: false,
       isShowingDatePicker: false,
-      dateToday: format(new Date, 'yyyy-MM-dd')
+      dateToday: new Date(),
     };
   },
 
@@ -46,7 +46,7 @@ export default {
 
       this.options.unshift({
         id: null,
-        value: I18n.t('common.none'),
+        value: I18n.global.t('common.none'),
         attendees: 0
       });
 
@@ -57,7 +57,7 @@ export default {
       this.outcome.eventSummary = this.outcome.eventSummary || this.outcome.poll().title;
     }
   },
-    
+
   computed: {
     poll() { return this.outcome.poll(); }
   },
@@ -65,6 +65,7 @@ export default {
   methods: {
     submit() {
       let actionName;
+      this.loading = true;
       if (this.poll.datesAsOptions()) { this.outcome.eventDescription = this.outcome.statement; }
       if (this.poll.pollType == 'meeting') { this.outcome.includeActor = 1; }
 
@@ -76,10 +77,12 @@ export default {
 
       this.outcome.save().then(data => {
         Flash.success(`poll_common_outcome_form.outcome_${actionName}`);
-        return this.closeModal();
-      }).catch(error => {
-        Flash.custom(error.error, 'error', 5000);
-      })
+        EventBus.$emit('closeModal');
+      }).catch((err) => {
+        Flash.error('poll_common_form.please_review_the_form');
+        console.log(err);
+
+      }).finally(() => this.loading = false);
     },
 
     newRecipients(val) {
@@ -94,16 +97,15 @@ export default {
 </script>
 
 <template lang="pug">
-v-card.poll-common-outcome-modal(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
-  submit-overlay(:value='outcome.processing')
-  v-card-title
-    h1.text-h5
-      span(v-if='outcome.isNew()' v-t="'poll_common_outcome_form.new_title'")
-      span(v-if='!outcome.isNew()' v-t="'poll_common_outcome_form.update_title'")
-    v-spacer
-    dismiss-modal-button(:model="outcome")
-  .poll-common-outcome-form.px-4
-    p.text--secondary(v-t="'announcement.form.outcome_announced.helptext'")
+v-card.poll-common-outcome-modal(
+  @keyup.ctrl.enter="submit()"
+  @keydown.meta.enter.stop.capture="submit()"
+  :title="outcome.isNew() ? $t('poll_common_outcome_form.new_title') : $t('poll_common_outcome_form.update_title')"
+)
+  template(v-slot:append)
+    dismiss-modal-button
+  v-card-text.poll-common-outcome-form
+    p.pb-4.text-medium-emphasis(v-t="'announcement.form.outcome_announced.helptext'")
     recipients-autocomplete(
       :label="$t('action_dock.notify')"
       :placeholder="$t('poll_common_outcome_form.who_to_notify')"
@@ -117,7 +119,7 @@ v-card.poll-common-outcome-modal(@keyup.ctrl.enter="submit()" @keydown.meta.ente
             v-model='outcome.pollOptionId'
             :items="options"
             item-value="id"
-            item-text="value"
+            item-title="value"
             :label="$t('poll_common_calendar_invite.poll_option_id')")
         .poll-common-calendar-invite--pad-top(v-if='outcome.pollOptionId')
           v-text-field.poll-common-calendar-invite__summary(
@@ -133,24 +135,20 @@ v-card.poll-common-outcome-modal(@keyup.ctrl.enter="submit()" @keydown.meta.ente
             :label="$t('poll_common_calendar_invite.location')")
 
     .outcome-review-on(v-if="outcome.poll().pollType == 'proposal'")
-      v-menu(ref='menu' v-model='isShowingDatePicker' :close-on-content-click='false' offset-y min-width="290px")
-        template(v-slot:activator='{ on, attrs }')
-          v-text-field(
-            clearable
-            v-model='outcome.reviewOn'
-            placeholder="2050-12-31"
-            :label="$t('poll_common_outcome_form.review_date')"
-            :hint="$t('poll_common_outcome_form.review_date_hint')"
-            v-on='on'
-            v-bind="attrs"
-            :prepend-icon="mdiCalendar")
+      lmo-date-input(
+        :label="$t('poll_common_outcome_form.review_date')"
+        :hint="$t('poll_common_outcome_form.review_date_hint')"
+        v-model='outcome.reviewOn'
+        :prepend-inner-icon="mdiCalendar"
+        :min="dateToday"
+        clearable
+        @click:clear="outcome.reviewOn = null"
+        hide-actions
+      )
 
-        v-date-picker.outcome-review-on__datepicker(v-model='outcome.reviewOn' :min='dateToday' no-title @input="isShowingDatePicker = false")
-      p(v-if="outcome.reviewOn" v-t="$t('poll_common_outcome_form.you_will_be_notified')")
-
-    lmo-textarea.poll-common-outcome-form__statement.lmo-primary-form-input(:model='outcome' field='statement' :label="$t('poll_common.statement')" :placeholder="$t('poll_common_outcome_form.statement_placeholder')")
+    lmo-textarea.poll-common-outcome-form__statement.mt-4(:model='outcome' field='statement' :label="$t('poll_common.statement')" :placeholder="$t('poll_common_outcome_form.statement_placeholder')")
       template(v-slot:actions)
-        v-btn.poll-common-outcome-form__submit(color="primary" @click='submit()' :loading="outcome.processing")
-          span(v-t="'common.action.save'")
+        v-btn.poll-common-outcome-form__submit(color="primary" @click='submit()' :loading="loading")
+          span(v-t="'poll_common.post_outcome'")
     validation-errors(:subject="outcome" field="statement")
 </template>

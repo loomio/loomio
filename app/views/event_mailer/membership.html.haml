@@ -1,0 +1,27 @@
+- group = @event.eventable.group
+- membership = @event.eventable
+
+- if membership.accepted_at
+  - url = group_url(membership.group)
+  - text = t(:'email.view_group')
+- else
+  - url = membership_url(membership)
+  - text = t(:"email.to_join_group.accept_invitation")
+
+
+= render "event_mailer/common/notification", with_title: true, event: @event, url: url, title: membership.group.full_name
+= render "event_mailer/group/cover_and_logo", group: group
+%h1.text-h5=group.full_name
+
+=raw force_plain_text(group.description, group.description_format).truncate(280)
+
+.px-2.py-1
+  .text-center
+    = render 'base_mailer/button', url: url, text: text
+
+- if !@recipient.email_verified
+  %p= t(:"email.to_join_group.accepting_is_important")
+
+.pt-4
+  = image_tag AppConfig.theme[:email_footer_logo_src], alt: "#{AppConfig.theme[:site_name]} logo", class: "thread-mailer__footer-logo"
+  %p.text-caption= t(:"email.loomio_app_description", site_name: AppConfig.theme[:site_name])

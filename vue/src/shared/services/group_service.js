@@ -6,13 +6,13 @@ import AbilityService from '@/shared/services/ability_service';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
 import openModal      from '@/shared/helpers/open_modal';
 import AppConfig      from '@/shared/services/app_config';
-import i18n from '@/i18n';
+import { I18n } from '@/i18n';
 import { hardReload } from '@/shared/helpers/window';
 
 export default new class GroupService {
   actions(group) {
     const membership = group.membershipFor(Session.user());
-    
+
     return {
       email_group: {
         name: 'common.value',
@@ -20,12 +20,13 @@ export default new class GroupService {
         icon: 'mdi-email',
         dock: 2,
         canPerform() {
-          return group.handle && AbilityService.canStartThread(group);
+          return group.handle && AbilityService.canStartThread(group) && AppConfig.features.app.thread_from_mail;
         },
         perform() {
           EventBus.$emit('openModal', {
             component: 'EmailToGroupSettings',
             persistent: false,
+            scrollable: true,
             props: {
               group: group
             }
@@ -36,12 +37,24 @@ export default new class GroupService {
       translate_group: {
         name: 'common.action.translate',
         icon: 'mdi-translate',
-        dock: 2,
+        dock: 3,
         canPerform() {
-          return group.description && AbilityService.canTranslate(group);
+          return AbilityService.canTranslate(group);
         },
         perform() {
-          return Session.user() && group.translate(Session.user().locale);
+          return Records.translations.addTo(group, Session.user().locale)
+        }
+      },
+
+      untranslate_group: {
+        name: 'common.action.original',
+        icon: 'mdi-translate',
+        dock: 3,
+        canPerform() {
+          return AbilityService.canUntranslate(group);
+        },
+        perform() {
+          group.translationId = null;
         }
       },
 
@@ -55,8 +68,9 @@ export default new class GroupService {
         perform() {
           return openModal({
             component: 'GroupForm',
+            scrollable: true,
             props: {
-              group: group.clone()
+              group: group.clone(),
             }
           });
         }
@@ -89,7 +103,7 @@ export default new class GroupService {
         to() { return `/report/?group_ids=${group.selfAndSubgroupIds().join(',')}&start_on=${group.createdAt.toISOString().slice(0,7)}`; }
       },
 
-      edit_tags: { 
+      edit_tags: {
         icon: 'mdi-tag-outline',
         name: 'loomio_tags.card_title',
         menu: true,
@@ -140,7 +154,7 @@ export default new class GroupService {
         icon: 'mdi-webhook',
         menu: true,
         canPerform() { return group.adminsInclude(Session.user()); },
-        perform() { 
+        perform() {
           return hardReload(`/help/api2/?group_id=${group.id}`);
         }
       },
@@ -184,6 +198,11 @@ export default new class GroupService {
           return AbilityService.canRemoveMembership(membership);
         },
         perform() {
+          let returnUrl = '/dashboard'
+          if (membership.group().parentId) {
+            returnUrl = LmoUrlService.group(membership.group().parent())
+          }
+
           return openModal({
             component: 'ConfirmModal',
             props: {
@@ -198,7 +217,7 @@ export default new class GroupService {
                   confirm:  'leave_group_form.submit',
                   flash:    'group_page.messages.leave_group_success'
                 },
-                redirect: '/dashboard'
+                redirect: returnUrl
               }
             }
           });
@@ -214,6 +233,10 @@ export default new class GroupService {
         },
         perform() {
           const confirmText = group.handle || group.name.trim();
+          let returnUrl = '/dashboard'
+          if (membership.group().parentId) {
+            returnUrl = LmoUrlService.group(membership.group().parent())
+          }
           return openModal({
             component: 'ConfirmModal',
             props: {
@@ -221,13 +244,13 @@ export default new class GroupService {
                 submit: group.destroy,
                 text: {
                   title:    (group.isParent() && 'delete_group_modal.title') || 'delete_group_modal.subgroup_title',
-                  helptext: (group.isParent() && 'delete_group_modal.parent_body') || 'delete_group_modal.body', 
-                  raw_confirm_text_placeholder: i18n.t('delete_group_modal.confirm', {name: confirmText}),
+                  helptext: (group.isParent() && 'delete_group_modal.parent_body') || 'delete_group_modal.body',
+                  raw_confirm_text_placeholder: I18n.global.t('delete_group_modal.confirm', {name: confirmText}),
                   confirm_text: confirmText,
                   flash:    'delete_group_modal.success',
                   submit:   'delete_group_modal.title'
                 },
-                redirect:   '/dashboard'
+                redirect:   returnUrl
               }
             }
           });

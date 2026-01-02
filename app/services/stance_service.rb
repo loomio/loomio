@@ -9,8 +9,7 @@ class StanceService
     stance.save!
     stance.poll.update_counts!
 
-    event = Events::StanceCreated.publish!(stance)
-    event
+    Events::StanceCreated.publish!(stance)
   end
 
   def self.uncast(stance:, actor:)
@@ -25,7 +24,7 @@ class StanceService
     new_stance.poll.update_counts!
   end
 
-  def self.update(stance: , actor: , params: ) 
+  def self.update(stance: , actor: , params: )
     actor.ability.authorize!(:update, stance)
     is_update = !!stance.cast_at
 
@@ -33,8 +32,12 @@ class StanceService
     new_stance.assign_attributes_and_files(params)
 
     event = Event.where(eventable: stance, discussion_id: stance.poll.discussion_id).order('id desc').first
-    if is_update && stance.option_scores != new_stance.build_option_scores && event && event.child_count > 0
-      # they've changed their position and there were replies! create a new stance, so that discussion threads make sense
+
+    if is_update &&
+       stance.poll.discussion_id &&
+       stance.option_scores != new_stance.build_option_scores &&
+       stance.updated_at < 15.minutes.ago
+      # they've changed their position, in a poll in a thread, and it's more than 15 minutes since they last saved it.
 
       new_stance.cast_at = Time.zone.now
 

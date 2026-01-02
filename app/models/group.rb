@@ -1,5 +1,4 @@
 class Group < ApplicationRecord
-  include HasTimeframe
   include HasRichText
   include CustomCounterCache::Model
   include ReadableUnguessableUrls
@@ -13,7 +12,7 @@ class Group < ApplicationRecord
   extend NoSpam
 
   is_rich_text    on: :description
-  is_translatable on: :description
+  is_translatable on: [:description, :name]
   initialized_with_token :token
   no_spam_for :name, :description
 
@@ -38,6 +37,9 @@ class Group < ApplicationRecord
 
   has_many :memberships, -> { active }
   has_many :members, through: :memberships, source: :user
+
+  has_many :delegate_memberships, -> { active.delegates }, class_name: "Membership"
+  has_many :delegates, through: :delegate_memberships, source: :user
 
   has_many :accepted_memberships, -> { active.accepted }, class_name: "Membership"
   has_many :accepted_members, through: :accepted_memberships, source: :user
@@ -80,6 +82,10 @@ class Group < ApplicationRecord
   scope :parents_only, -> { where(parent_id: nil) }
   scope :visible_to_public, -> { published.where(is_visible_to_public: true) }
   scope :hidden_from_public, -> { published.where(is_visible_to_public: false) }
+  scope :mention_search, lambda { |q|
+    where("groups.name ilike :first OR groups.name ilike :other OR groups.handle ilike :first",
+          first: "#{q}%", other: "% #{q}%")
+  }
   scope :in_organisation, ->(group) { where(id: group.id_and_subgroup_ids) }
 
   scope :explore_search, ->(query) { where("name ilike :q or description ilike :q", q: "%#{query}%") }
@@ -115,6 +121,7 @@ class Group < ApplicationRecord
   define_counter_cache(:memberships_count)          { |g| g.memberships.count }
   define_counter_cache(:pending_memberships_count)  { |g| g.memberships.pending.count }
   define_counter_cache(:admin_memberships_count)    { |g| g.admin_memberships.count }
+  define_counter_cache(:delegates_count)            { |g| g.memberships.delegates.count }
   define_counter_cache(:public_discussions_count)   { |g| g.discussions.visible_to_public.count }
   define_counter_cache(:discussions_count)          { |g| g.discussions.kept.count }
   define_counter_cache(:open_discussions_count)     { |g| g.discussions.is_open.count }
@@ -154,10 +161,15 @@ class Group < ApplicationRecord
                          :new_threads_max_depth,
                          :new_threads_newest_first,
                          :admins_can_edit_user_content,
-                         :listed_in_explore]
+                         :listed_in_explore,
+                         :attachments]
 
-  validates :description, length: { maximum: Rails.application.secrets.max_message_length }
+  validates :description, length: { maximum: AppConfig.app_features[:max_message_length] }
   before_validation :ensure_handle_is_not_empty
+
+  def title_model
+    self
+  end
 
   def logo_url(size = 512)
     return nil unless logo.attached?
@@ -169,6 +181,10 @@ class Group < ApplicationRecord
   rescue ActiveStorage::UnrepresentableError
     self.cover_photo.delete
     nil
+  end
+
+  def custom_cover_photo?
+    !GroupService::DEFAULT_COVER_PHOTO_FILENAMES.include? cover_photo.filename.to_s
   end
 
   def cover_url(size = 512) # 2048x512 or 1024x256 normal res
@@ -198,7 +214,7 @@ class Group < ApplicationRecord
   def author_id
     creator_id
   end
-  
+
   def user_id
     creator_id
   end
@@ -220,7 +236,7 @@ class Group < ApplicationRecord
   end
 
   def title
-    name
+    full_name
   end
 
   def guests
@@ -342,6 +358,7 @@ class Group < ApplicationRecord
 
   def poll_template_positions
     self[:info]['poll_template_positions'] ||= {
+      'practice_proposal' => 0,
       'check' => 1,
       'advice' => 2,
       'consent' => 3,
@@ -361,14 +378,6 @@ class Group < ApplicationRecord
     else
       true
     end
-  end
-
-  def category=(val)
-    self[:info]['category'] = val
-  end
-
-  def category
-    self[:info]['category']
   end
 
   def categorize_poll_templates=(val)

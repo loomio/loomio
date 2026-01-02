@@ -1,9 +1,7 @@
 import BaseModel       from '@/shared/record_store/base_model';
-import AppConfig       from '@/shared/services/app_config';
-import HasTranslations from '@/shared/mixins/has_translations';
-import AnonymousUserModel   from '@/shared/models/anonymous_user_model';
-import i18n from '@/i18n';
+import { I18n } from '@/i18n';
 import { sumBy, map, head, compact, flatten, includes, sortBy } from 'lodash-es';
+import Records from '@/shared/services/records';
 
 const stancesBecameUpdatable = new Date("2020-08-11");
 
@@ -13,10 +11,6 @@ export default class StanceModel extends BaseModel {
   static indices = ['pollId', 'latest', 'participantId'];
   static uniqueIndices = ['id'];
 
-  afterConstruction() {
-    return HasTranslations.apply(this);
-  }
-
   collabKeyParams() {
     return [this.pollId];
   }
@@ -25,8 +19,8 @@ export default class StanceModel extends BaseModel {
     return {
       reason: '',
       reasonFormat: 'html',
-      files: [],
-      imageFiles: [],
+      files: null,
+      imageFiles: null,
       attachments: [],
       linkPreviews: [],
       revokedAt: null,
@@ -40,7 +34,7 @@ export default class StanceModel extends BaseModel {
 
   relationships() {
     this.belongsTo('poll');
-    return this.belongsTo('participant', {from: 'users'});
+    this.belongsTo('participant', {from: 'users'});
   }
 
   edited() {
@@ -56,12 +50,12 @@ export default class StanceModel extends BaseModel {
     if (this.participant()) {
       return this.participant().nameWithTitle(this.poll().group());
     } else {
-      return i18n.t('common.anonymous');
+      return I18n.global.t('common.anonymous');
     }
   }
 
   reactions() {
-    return this.recordStore.reactions.find({reactableId: this.id, reactableType: "Stance"});
+    return Records.reactions.find({reactableId: this.id, reactableType: "Stance"});
   }
 
   singleChoice() { return this.poll().singleChoice(); }
@@ -92,7 +86,7 @@ export default class StanceModel extends BaseModel {
   }
 
   pollOption() {
-    if (this.pollOptionId()) { return this.recordStore.pollOptions.find(this.pollOptionId()); }
+    if (this.pollOptionId()) { return Records.pollOptions.find(this.pollOptionId()); }
   }
 
   pollOptionId() {
@@ -104,7 +98,7 @@ export default class StanceModel extends BaseModel {
   }
 
   pollOptions() {
-    return this.recordStore.pollOptions.find(this.pollOptionIds());
+    return Records.pollOptions.find(this.pollOptionIds());
   }
 
   choose(optionIds) {
@@ -133,6 +127,8 @@ export default class StanceModel extends BaseModel {
 
     if (poll.pollType === 'meeting') {
       return sortBy(choices, c => c.pollOption.priority);
+    } else if (poll.pollType == 'ranked_choice') {
+      return sortBy(choices, 'rank');
     } else {
       return sortBy(choices, '-score');
     }
@@ -143,7 +139,7 @@ export default class StanceModel extends BaseModel {
   }
 
   scoreFor(option) {
-    return this.optionScores[option.id] || 0;
+    return this.optionScores[option.id] || this.poll().minScore;
   }
 
   totalScore() {

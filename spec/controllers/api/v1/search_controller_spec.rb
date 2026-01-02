@@ -1,5 +1,5 @@
 require 'rails_helper'
-describe API::V1::SearchController do
+describe Api::V1::SearchController do
 
   let(:group) { create :group }
   let(:visible_subgroup) { create :group, parent: group, is_visible_to_parent_members: true }
@@ -54,19 +54,19 @@ describe API::V1::SearchController do
       results = JSON.parse(response.body)['search_results']
 
       # check that each item is returned
-      expect(results.filter do |r| 
+      expect(results.filter do |r|
         r['searchable_type'] == 'Discussion' && r['searchable_id'] == discussion.id
       end.size).to eq 1
 
-      expect(results.filter do |r| 
+      expect(results.filter do |r|
         r['searchable_type'] == 'Discussion' && r['searchable_id'] == visible_subgroup_discussion.id
       end.size).to eq 1
 
-      expect(results.filter do |r| 
+      expect(results.filter do |r|
         r['searchable_type'] == 'Discussion' && r['searchable_id'] == io_discussion.id
       end.size).to eq 1
 
-      expect(results.filter do |r| 
+      expect(results.filter do |r|
         r['searchable_type'] == 'Discussion' && r['searchable_id'] == guest_discussion.id
       end.size).to eq 1
 
@@ -89,23 +89,23 @@ describe API::V1::SearchController do
       results = JSON.parse(response.body)['search_results']
 
       # check that each item is returned
-      expect(results.filter do |r| 
+      expect(results.filter do |r|
         r['searchable_type'] == 'Discussion' && r['searchable_id'] == discussion.id
       end.size).to eq 1
 
-      expect(results.filter do |r| 
+      expect(results.filter do |r|
         r['searchable_type'] == 'Comment' && r['searchable_id'] == comment.id
       end.size).to eq 1
 
-      expect(results.filter do |r| 
+      expect(results.filter do |r|
         r['searchable_type'] == 'Poll' && r['searchable_id'] == poll.id
       end.size).to eq 1
 
-      expect(results.filter do |r| 
+      expect(results.filter do |r|
         r['searchable_type'] == 'Stance' && r['searchable_id'] == stance.id
       end.size).to eq 1
 
-      expect(results.filter do |r| 
+      expect(results.filter do |r|
         r['searchable_type'] == 'Outcome' && r['searchable_id'] == outcome.id
       end.size).to eq 1
 
@@ -128,23 +128,23 @@ describe API::V1::SearchController do
       results = JSON.parse(response.body)['search_results']
 
       # check that each item is returned
-      expect(results.filter do |r| 
+      expect(results.filter do |r|
         r['searchable_type'] == 'Discussion' && r['searchable_id'] == other_discussion.id
       end.size).to eq 0
 
-      expect(results.filter do |r| 
+      expect(results.filter do |r|
         r['searchable_type'] == 'Comment' && r['searchable_id'] == other_comment.id
       end.size).to eq 0
 
-      expect(results.filter do |r| 
+      expect(results.filter do |r|
         r['searchable_type'] == 'Poll' && r['searchable_id'] == other_poll.id
       end.size).to eq 0
 
-      expect(results.filter do |r| 
+      expect(results.filter do |r|
         r['searchable_type'] == 'Stance' && r['searchable_id'] == other_stance.id
       end.size).to eq 0
 
-      expect(results.filter do |r| 
+      expect(results.filter do |r|
         r['searchable_type'] == 'Outcome' && r['searchable_id'] == other_outcome.id
       end.size).to eq 0
 
@@ -167,23 +167,23 @@ describe API::V1::SearchController do
       results = JSON.parse(response.body)['search_results']
 
       # check that each item is returned
-      expect(results.filter do |r| 
+      expect(results.filter do |r|
         r['searchable_type'] == 'Discussion' && r['searchable_id'] == io_discussion.id
       end.size).to eq 1
 
-      expect(results.filter do |r| 
+      expect(results.filter do |r|
         r['searchable_type'] == 'Comment' && r['searchable_id'] == io_comment.id
       end.size).to eq 1
 
-      expect(results.filter do |r| 
+      expect(results.filter do |r|
         r['searchable_type'] == 'Poll' && r['searchable_id'] == io_poll.id
       end.size).to eq 1
 
-      expect(results.filter do |r| 
+      expect(results.filter do |r|
         r['searchable_type'] == 'Stance' && r['searchable_id'] == io_stance.id
       end.size).to eq 1
 
-      expect(results.filter do |r| 
+      expect(results.filter do |r|
         r['searchable_type'] == 'Outcome' && r['searchable_id'] == io_outcome.id
       end.size).to eq 1
 

@@ -1,12 +1,11 @@
 import { defineConfig } from 'vite';
 import path from 'path';
-import vue from '@vitejs/plugin-vue2'
+import vue from '@vitejs/plugin-vue';
+import vuetify from 'vite-plugin-vuetify';
 import envCompatible from 'vite-plugin-env-compatible';
-// import { viteCommonjs } from '@originjs/vite-plugin-commonjs';
-import ViteYaml from '@modyfi/vite-plugin-yaml';
-import { VuetifyResolver } from 'unplugin-vue-components/resolvers';
+import yaml from '@originjs/vite-plugin-content';
 import Components from 'unplugin-vue-components/vite';
-import { splitVendorChunkPlugin } from 'vite'
+import { viteCommonjs } from '@originjs/vite-plugin-commonjs';
 
 import LoomioComponents from './src/components.js';
 
@@ -15,25 +14,13 @@ function LoomioVueResolver() {
     type: "component",
     resolve: (name) => {
       if (LoomioComponents[name]) {
-        return { default: name, from: '/src/components/'+LoomioComponents[name]+'.vue' };
+        return { default: name, from: '/src/components/' + LoomioComponents[name] + '.vue' };
       }
     }
   };
 }
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  // css: {
-  //   preprocessorOptions: {
-  //     sass: {
-  //       additionalData: [
-  //         '@import "./src/css/variables"',
-  //         '@import "vuetify/src/styles/settings/_variables"',
-  //         '', // end with newline
-  //       ].join('\n'),
-  //     },
-  //   },
-  // },
   server: {
     warmup: {
       clientFiles: ['./src/app.vue'],
@@ -56,50 +43,49 @@ export default defineConfig({
       },
     },
   },
+
   resolve: {
     alias: [
-      {
-        find: /^~/,
-        replacement: ''
-      },
-      {
-        find: '@',
-        replacement: path.resolve(__dirname, 'src')
-      },
+      { find: /^~/, replacement: '' },
+      { find: '@', replacement: path.resolve(__dirname, 'src') },
     ],
-    extensions: [
-      '.mjs',
-      '.js',
-      '.ts',
-      '.jsx',
-      '.tsx',
-      '.json',
-      '.vue'
-    ]
+    extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue']
   },
+
   plugins: [
-    splitVendorChunkPlugin(),
     vue(),
+    vuetify({ autoImport: true }),
     Components({
       directoryAsNamespace: true,
-      resolvers: [
-        LoomioVueResolver(),
-        VuetifyResolver(),
-      ],
+      resolvers: [LoomioVueResolver()],
     }),
-    // viteCommonjs(),
+    viteCommonjs(),
     envCompatible(),
-    ViteYaml(),
+    yaml(),
   ],
+
+  // --- IMPORTANT FIX ---
+  optimizeDeps: {
+    exclude: ['@emotion/is-prop-valid']
+  },
+
   build: {
     sourcemap: true,
-    emptyOutDir: true,
-    outDir: '../public/blient',
+    emptyOutDir: false,
+    outDir: '../public/client3',
+
+    // Prevent Vite from treating Nightwatch HTML reports as entries
+    rollupOptions: {
+      input: {
+        app: path.resolve(__dirname, 'index.html'),
+      },
+      external: ['@emotion/is-prop-valid']
+    }
   },
+
   experimental: {
-    renderBuiltUrl(filename, { hostId, hostType, type } ) {
-      // { hostId: string, hostType: 'js' | 'css' | 'html', type: 'public' | 'asset' }
-      return '/blient/' + filename;
+    renderBuiltUrl(filename) {
+      return '/client3/' + filename;
     }
   }
-})
+});

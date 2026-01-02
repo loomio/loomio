@@ -2,6 +2,8 @@ import BaseModel from '@/shared/record_store/base_model';
 import AppConfig from '@/shared/services/app_config';
 import { find, filter, flatten, uniq, head, compact, map, truncate  } from 'lodash-es';
 
+import Records from '@/shared/services/records';
+
 export default class UserModel extends BaseModel {
   static singular = 'user';
   static plural = 'users';
@@ -16,8 +18,8 @@ export default class UserModel extends BaseModel {
       autodetectTimeZone: false,
       shortBio: '',
       shortBioFormat: 'html',
-      files: [],
-      imageFiles: [],
+      files: null,
+      imageFiles: null,
       attachments: [],
       linkPreviews: [],
       locale: AppConfig.defaultLocale,
@@ -43,7 +45,7 @@ export default class UserModel extends BaseModel {
   }
 
   adminMemberships() {
-    return this.recordStore.memberships.find({userId: this.id, admin: true});
+    return Records.memberships.find({userId: this.id, admin: true});
   }
 
   groupIds() {
@@ -51,7 +53,7 @@ export default class UserModel extends BaseModel {
   }
 
   groups() {
-    return this.recordStore.groups.collection.chain().
+    return Records.groups.collection.chain().
       find({id: { $in: this.groupIds() }, archivedAt: null}).
       simplesort('fullName').data();
   }
@@ -77,14 +79,12 @@ export default class UserModel extends BaseModel {
   }
 
   orphanParents() {
-    return uniq(compact(this.orphanSubgroups().map(group => group.parentId && group.parent())
-    )
-    );
+    return uniq(compact(this.orphanSubgroups().map(group => group.parentId && group.parent())));
   }
 
   membershipFor(group) {
     if (!group) { return; }
-    return this.recordStore.memberships.find({groupId: group.id, userId: this.id})[0];
+    return Records.memberships.find({groupId: group.id, userId: this.id})[0];
   }
 
   firstName() {
@@ -93,7 +93,7 @@ export default class UserModel extends BaseModel {
 
   saveVolume(volume, applyToAll) {
     this.processing = true;
-    return this.remote.post('set_volume', {
+    return Records[this.constructor.plural].remote.post('set_volume', {
       volume,
       apply_to_all: applyToAll,
       unsubscribe_token: this.unsubscribeToken
@@ -102,7 +102,7 @@ export default class UserModel extends BaseModel {
       if (!applyToAll) { return; }
       this.allThreads().forEach(thread => thread.update({discussionReaderVolume: null}));
       return this.memberships().forEach(membership => membership.update({volume}));
-  }).finally(() => {
+    }).finally(() => {
       return this.processing = false;
     });
   }

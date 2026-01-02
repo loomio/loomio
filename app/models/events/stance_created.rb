@@ -1,9 +1,9 @@
 class Events::StanceCreated < Event
   include Events::LiveUpdate
-  include Events::Notify::ByEmail
   include Events::Notify::InApp
   include Events::Notify::Mentions
   include Events::Notify::Chatbots
+  include Events::Notify::Subscribers
 
   def self.publish!(stance)
     GenericWorker.perform_async('NotificationService', 'mark_as_read', "Poll", stance.poll_id, stance.participant_id)
@@ -13,9 +13,8 @@ class Events::StanceCreated < Event
           discussion: stance.add_to_discussion? ? stance.poll.discussion : nil
   end
 
-  def notify_mentions!
-    return if eventable.poll.anonymous || eventable.poll.hide_results == 'until_closed'
-    super
+  def silence_mentions?
+    eventable.poll.anonymous || eventable.poll.hide_results == 'until_closed'
   end
 
   def real_user
@@ -23,6 +22,10 @@ class Events::StanceCreated < Event
   end
 
   private
+
+  def subscribed_eventable
+    eventable
+  end
 
   def notification_translation_values
     {
@@ -33,11 +36,5 @@ class Events::StanceCreated < Event
 
   def notification_url
     @notification_url ||= polymorphic_url(eventable.poll)
-  end
-
-  def email_recipients
-    Queries::UsersByVolumeQuery.loud(eventable.poll)
-                               .where.not(id: eventable.author)
-                               .where.not(id: eventable.mentioned_users).distinct
   end
 end

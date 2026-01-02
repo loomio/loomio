@@ -1,4 +1,4 @@
-class API::V1::SearchController < API::V1::RestfulController
+class Api::V1::SearchController < Api::V1::RestfulController
   def index
     if group_or_org_id.to_i == 0
       rel = PgSearch.multisearch(params[:query]).where("group_id is null and discussion_id IN (:discussion_ids)", discussion_ids: current_user.guest_discussion_ids)
@@ -39,18 +39,18 @@ class API::V1::SearchController < API::V1::RestfulController
     authors = access_by_id(User.where(id: results.map(&:author_id)))
 
     poll_events = access_by_id(
-      Event.where("discussion_id is not null").where(eventable_type: "Poll", eventable_id: results.map(&:poll_id)), 
+      Event.where("discussion_id is not null").where(eventable_type: "Poll", eventable_id: results.map(&:poll_id)),
       :eventable_id
     )
 
     stance_events = access_by_id(
-      Event.where("discussion_id is not null").where(eventable_type: "Stance", eventable_id: results.filter {|r| r.searchable_type == 'Stance'}.map(&:searchable_id)), 
+      Event.where("discussion_id is not null").where(eventable_type: "Stance", eventable_id: results.filter {|r| r.searchable_type == 'Stance'}.map(&:searchable_id)),
       :eventable_id
     )
 
     self.collection = results.map do |res|
       poll = polls[res.poll_id]
-      discussion = discussions[res.discussion_id] 
+      discussion = discussions[res.discussion_id]
       group = groups[res.group_id]
       author = authors[res.author_id]
       sequence_id = ((res.searchable_type == "Stance" && stance_events[res.searchable_id]) || poll_events[res.poll_id] || nil)&.sequence_id
@@ -97,7 +97,7 @@ class API::V1::SearchController < API::V1::RestfulController
     if params[:group_id].present?
       current_user.browseable_group_ids & Array(params[:group_id].to_i)
     elsif params[:org_id] == '0'
-      [] 
+      []
     elsif params[:org_id].present?
       current_user.browseable_group_ids & Group.find(params[:org_id]).id_and_subgroup_ids
     else

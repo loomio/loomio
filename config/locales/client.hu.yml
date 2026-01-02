@@ -9,7 +9,6 @@ hu:
     we_use_this_to_help: Az alábbi információk a Loomio csoport létrehozására szolgálnak, és segít nekünk megérteni a szervezetét, hogy jobban tudjunk támogatni.
     how_do_you_intend_to_use_loomio: Hogyan kívánja használni a Loomio-t?
     what_decisions_do_you_need_to_make: Milyen döntéseket kell meghoznia?
-    newsletter_intro: Szeretne feliratkozni hírlevelünkre?
     newsletter_description: Legyen naprakész az új funkciókkal és inspiráló történetekkel kapcsolatban arról, hogy a Loomiot hogyan használják a szervezetek szerte a világon
     subscribe_to_newsletter: Iratkozzon fel a Loomio hírlevélre
     form_incomplete: A folytatáshoz töltse ki az űrlap összes mezőjét
@@ -21,6 +20,7 @@ hu:
     please_enter_a_valid_email_address: Kérjük valós e-mail címet adjon meg
     please_accept_the_terms: Kérjük, fogadja el a feltételeket
     how_did_you_hear_about_loomio: Honnan hallott a Loomio-ról?
+    newsletter_intro: Szeretne hallani az új funkciókról, ügyfélinterjúkról, esettanulmányokról és a Loomio csapatának bejelentéseiről?
   tasks:
     tasks: Feladatok
     your_tasks: Feladataid
@@ -33,11 +33,11 @@ hu:
     2_day_before: 2 nappal a határidő előtt
     3_day_before: 3 nappal a határidő előtt
     7_day_before: 7 nappal a határidő előtt
-    task_placeholder: Írd le a feladatot és @rendeld hozzá valakihez
     add_due_date: Adj meg egy határidőt
     task_updated_done: A feladat elvégezve!
     task_updated_not_done: A feladat nincs elvégezve!
     no_tasks_assigned: Nincs számodra kiosztott feladat!
+    task_placeholder: Írj be egy feladatot, és {'@'}említs meg valakit, akit hozzárendelhetsz hozzá
   templates:
     template_gallery: Sablongaléria
     title_template: "%{title} Sablon"
@@ -57,8 +57,6 @@ hu:
     to_use_loomio_with_your_org_start_trial: Ha készen áll a Loomio kipróbálására szervezetével, kezdjen el egy ingyenes próbaverziót.
     templates: Sablonok
     make_a_copy: Készíteni egy másolatot
-    this_thread_is_a_template: Ez a szál egy sablon. Készítsen másolatot, ha használni szeretné.
-    this_is_a_poll_template: Ez egy szavazási sablon. Készítsen másolatot, ha szavazni szeretne.
     try_loomio: Próbáld ki a Loomio-t
     start_a_demo_group: Indítson el egy bemutató csoportot
     start_a_demo: Indítson el egy bemutatót
@@ -158,6 +156,7 @@ hu:
     no_tags_present: Nem található szál ezzel a címkével! Próbáljon meg másikat választani
     no_tags_in_group: Ebben a csoportban még nincsenek kategóriacímkék
     only_admins_can_edit_tags: Sajnáljuk, csak a(z) %{group} adminisztrátorai hozhatnak létre, nevezhetnek át vagy törölhetnek címkéket
+    pick_a_color: Válasszon egy színt
   poll_types:
     proposal: javaslat
     count: feliratkozás
@@ -313,9 +312,11 @@ hu:
       add_people: Adj hozzá embereket
       zoom: Zoomolás
       align: Igazítsa
+      original: Eredeti
     formatting_help:
       label: Formázás
       title: Így használhatod a Markdown-t a szöveg formázására
+    thread: Szál
   merge_accounts:
     modal:
       title: Fiókok egyesítése
@@ -381,13 +382,13 @@ hu:
     unreleased_emails: Kiadatlan e-mailek
     start_a_thread_by_email: Indíts el egy szálat e-mailben
     send_email_to_start_thread: Küldjön egy e-mailt erre a címre, ha szálat szeretne indítani a csoportjában.
-    subject_body_attachments: Az e-mail tárgya lesz a szál címe, az e-mail törzse a leírás, és minden csatolt fájl a szálhoz csatolódik.
     copy_address: Cím másolása
     email_me_this_address: Küldje el ezt a címet
     email_address_copied_to_clipboard: Az e-mail cím a vágólapra másolva
     forward_email_to_move_conversation: 'Tipp: Továbbítson egy e-mailes beszélgetést a Loomiónak, ha döntést kell hoznia vagy nyilvántartást kell vezetnie.'
-  email_to_group_mailer:
-    your_email_address_to_start_threads_in_group: Az Ön e-mail címe a szálak indításához a %{group}
+    start_a_discussion_by_email: Beszélgetés indítása e-mailben
+    send_email_to_start_discussion: Írj egy e-mailt erre a címre, ha beszélgetést szeretnél indítani a csoportodban.
+    subject_body_attachments: Az e-mail tárgya lesz a beszélgetés címe, az e-mail törzse pedig a leírás. A fájlmellékletek is átmásolódnak.
   volume_levels:
     loud: Hangos
     normal: Normál
@@ -411,14 +412,12 @@ hu:
       loud_explain: amikor valami történik
       normal_explain: amikor valaki figyelmet kér
       quiet_explain: nincsenek értesítések
-    aria_label: E-mail beállítások módosítása
     loud_label: Összes tevékenység
     normal_label: Bejelentések
     quiet_label: Nincs új e-mail
     mute_label: Néma
     saved: Értesítési beállítások frissítve
     discussion:
-      title: Téma értesítések
       loud_description: A témán belüli összes tevékenységről értesítést kapsz e-mailben.
       normal_description: A témán belül csak a fontos tevékenységekről kapsz értesítést e-mailben.
       quiet_description: Nem fogsz e-mailt kapni az ebben a témában történő tevékenységről.
@@ -430,6 +429,7 @@ hu:
         loud: A témán belüli új tevékenység esetén értesítést kapsz e-mailben.
         normal: A témán belüli új javaslat esetén értesítést kapsz e-mailben.
         quiet: Nem fogsz e-mailt kapni a téma változásairól.
+      title: Beszélgetési értesítések
     membership:
       title: Értesítések ehhez %{title}
       loud_description: A csoporton belüli tevékenység esetén értesítést kapsz e-mailben.
@@ -460,8 +460,25 @@ hu:
         loud: Az új csoportjaidon belüli összes tevékenységről értesítést kapsz e-mailben.
         normal: 'Új csoportjaidból a bejelentéseket kapod meg e-mailben. '
         quiet: Nem kérek e-mailt az új csoportokról.
+    change_your_email_settings: Módosítsa az e-mail beállításait
+    when_would_you_like_to_be_emailed_group: Mikor szeretne e-mailt kapni erről a csoportról?
+    changes_all_threads_in_group: Ez megváltoztatja a csoport összes szálának beállítását.
+    what_do_the_options_mean: Mit jelentenek a lehetőségek?
+    loud_desc: Minden alkalommal, amikor valaki részt vesz
+    normal_desc: Amikor valaki értesít
+    quiet_desc: Soha
+    loud_explained: Minden alkalommal e-mailt fog kapni, amikor új megjegyzés érkezik, valaki szavaz, vagy szavazást vagy témát indít.
+    when_would_you_like_to_be_emailed_poll_type: 'Mikor szeretne e-mailt kapni erről: %{poll_type}?'
+    normal_excludes_mentioning_html: Külön beállítás vonatkozik arra az esetre, ha valaki {'@'}megemlít téged (pl. amikor valaki válaszol neked egy hozzászólásban). <a href="%{url}">Kattints ide az @megemlítések beállításainak szerkesztéséhez.</a>
+    changes_all_threads_and_polls_in_group: Ez megváltoztatja a csoport összes hozzászólásláncának és szavazásának beállítását.
+    when_do_you_want_to_be_emailed: Mikor szeretnél e-mailt kapni?
+    what_the_options_mean: Mit jelentenek a lehetőségek
+    quiet_explained: Nem fogsz e-mailt kapni, még akkor sem, ha valaki megpróbál értesíteni. Előfordulhat, hogy lemaradsz a fontos bejelentésekről vagy döntésekről, hacsak nem szokásod rendszeresen ellenőrizni a Loomiót.
+    when_would_you_like_to_be_emailed_discussion: Mikor szeretne e-mailben értesülni erről a beszélgetésről?
+    changes_all_discussions_and_polls_in_group: Ez megváltoztatja a csoport összes beszélgetésének és szavazásának beállítását.
+    normal_explained: Amikor valaki beírja a neved egy beszélgetés vagy szavazás „Értesítés” mezőjébe, vagy {'@'}megemlíti a csoportot.
+    aria_label: E-mail-beállítások módosítása űrlap
   close_explanation_modal:
-    aria_label: Téma lezárása
     close_thread: Téma lezárása
     body: "<p>Zárja be a régi vagy irreleváns szálakat, hogy eltávolítsa őket a nézetből, és jelezze, hogy a vita lezárult.</p><p> Továbbra is bárki hozzászólhat vagy szavazást indíthat egy lezárt szálban, de nem jelenik meg a csoport témaszállistáján vagy az irányítópulton.</p>"
     image_alt: Minden téma lezárása
@@ -474,14 +491,11 @@ hu:
     password_label: 'Jelszó:'
     password_confirmation_label: 'Jelszó megismétlése:'
   signed_out_modal:
-    aria_label: Az értekezésnek vége
     title: Az értekezésednek vége
     message: Kijelentkeztél egy másik ablakban. Kérlek jelentkezz be újra a folytatáshoz.
     ok: Rendben
-  comment_reply_form:
-    aria_label: Válasz írása
+    aria_label: Munkamenet véget ért
   comment_form:
-    aria_label: Hozzászólás
     attachments:
       add_attachment: Fájl csatolása
       remove_attachment: Csatolmány eltávolítása
@@ -505,12 +519,11 @@ hu:
     private_privacy_notice: A hozzászólásod csak a %{groupName} csoport tagjainak lesz látható.
     public_privacy_notice: A hozzászólás mindenki számára nyilvános lesz.
     sign_in: Lépj be, hogy hozzászolhass a témakörhöz.
+    add_a_comment: Hozzászólás hozzáadása
+    share_your_thoughts: Oszd meg a gondolataidat…
   thread_nav:
     participants: Résztvevők
   sidebar:
-    new_thread_removed: Új szál eltávolítva
-    new_thread_removed_body: Az új szál gomb eltávolításra kerül az oldalsávról. Új szál indításához először navigáljon a csoportjához, majd kattintson az "Új szál" gombra. Elnézést a változtatásért, de kötelező, mert a szál indításakor ki kell választani egy sablont.
-    threads: Témák
     my_groups: Saját csoportjaim
     other_groups: Más csoportok
     all_groups: Összes csoport
@@ -519,7 +532,6 @@ hu:
     direct_threads: Közvetlen szálak
     unread_threads: Olvasatlan szálak (%{count})
     muted_threads: Némított témák
-    start_group: Új szervezet
     start_subgroup: Új alcsoport
     explore: Nyilvános csoportok
     explore_groups: Fedezd fel a csoportokat
@@ -536,6 +548,11 @@ hu:
       threads_list: Téma műveletek
       groups_list: Csoportok
       user_list: Felhasználói tevékenység
+    user_settings: Felhasználói beállítások
+    invite_only_discussions: Meghívásos beszélgetések
+    unread_discussions_count: Olvasatlan beszélgetések (%{count})
+    new_group: Új csoport
+    new_subgroup: Új alcsoport
   strand_nav:
     newest: Legújabb
     oldest: Legrégebbi
@@ -546,6 +563,17 @@ hu:
     from_comment: Egy megjegyzés URL-jéből
     from_sequence_id: Egy szál elem URL-jéről
     unread: Új neked
+    jump_to: 'Ugrás ide:'
+    timeline: Idővonal
+    top: Felső
+    bottom: Alsó
+    start: Indul
+    latest: Legújabb
+    showing_latest: Legfrissebb megjelenítése
+    showing_unread: Olvasatlanok megjelenítése
+    add_comment: Hozzászólás hozzáadása
+    start_decision: Döntés megkezdése
+    recenter: Újabban
   search_modal:
     all_content: Minden tartalom
     best_match: Legjobb találat
@@ -553,7 +581,6 @@ hu:
     all_subgroups: Minden alcsoport
     parent_only: Csak szülő
   navbar:
-    search_all_threads: Keresés minden témában
     search_threads: 'Keresés a témákban itt: %{name}'
     search_polls: Szavazások keresése a (z) %{name} helyen
     search_members: 'Tagok keresése itt: %{name}'
@@ -582,6 +609,7 @@ hu:
     search_members_short: Tagok keresése
     search_files_short: Fájlok keresése
     search_subgroups_short: Alcsoportok keresése
+    search_discussions_in_group: Beszélgetések keresése a(z) %{name} fórumban
   user_dropdown:
     pin_sidebar: Oldalsáv rögzítése
     unpin_sidebar: Oldalsáv rögzítésének feloldása
@@ -597,10 +625,14 @@ hu:
     contact_support: Lépjen kapcsolatba az ügyfélszolgálattal
     sign_out: Kijelentkezés
     beta_collab: "\U0001F9EA A béta funkciók engedélyezve vannak!"
-    outcomes: Eredmények
+    outcomes: Következtetések
+    theme: Téma
+    light: Fény
+    dark: Sötét
+    light_blue: Világoskék
+    dark_blue: Sötétkék
   membership_card:
     group_members: Csoporttagok
-    discussion_members: Témában résztvevők
     poll_members: "%{pollType} tagjai"
     voters: Szavazók
     invite_to_group: Meghívás a csoportba
@@ -608,6 +640,7 @@ hu:
     invite_to_poll: Meghívás szavazásra
     invite_to_wip_poll: Meghívás visszajelzésre
     invitations: Meghívások
+    discussion_members: Fórumtagok
   membership_dropdown:
     set_name_and_username: Állítsa be a nevet és a felhasználónevet
     set_title: Cím megadása
@@ -616,25 +649,26 @@ hu:
     make_coordinator: Adminisztrátor jogok megadása
     demote_coordinator: Adminisztrátor lefokozása
     remove_from:
-      discussion: Eltávolítás a témából
       group: Eltávolítás a csoportból
       poll: 'Eltávolítás innen: %{pollType}'
+      discussion: Eltávolítás a beszélgetésből
     cancel_invitation: Meghívás visszavonása
+    view_profile: Profil megtekintése
+    revoke_admin: Rendszergazda visszavonása
+    make_delegate: Legyen küldött
+    revoke_delegate: Meghatalmazott visszavonása
   notification_models:
-    discussion: 'téma:'
     comment: hozzászólás itt
     poll: 'közvélemény kutatás:'
-    outcome: 'eredmény:'
+    outcome: 'következtetés:'
     stance: 'szavazás:'
+    discussion: 'vita:'
   notifications:
     header: Értesítések
     no_notifications: Nincsenek új értesítéseid
     with_title:
       unknown_sender: Kérjük, tekintse át az ismeretlen feladótól kapott e-mailt
       comment_replied_to: "%{actor} válaszolt neked itt: %{title}"
-      discussion_announced: "%{actor} meghívott a következő szálba: %{title}"
-      discussion_edited: "%{actor} szerkesztette a szál kontextusát: %{title}"
-      discussion_closed: "%{actor} lezárta a szálat: %{title}"
       invitation_accepted: "%{actor} elfogadta a meghívást, hogy csatlakozzon %{title}"
       membership_created: "%{actor} meghívott, hogy csatlakozz a %{title} csoporthoz a %{site_name} oldalon"
       membership_resent: "%{actor} meghívott, hogy csatlakozz a %{title} csoporthoz a %{site_name} oldalon"
@@ -642,12 +676,10 @@ hu:
       membership_request_approved: "%{actor} jóváhagyta a csatlakozási kérelmedet a %{title} csoporthoz"
       new_comment: "%{actor} hozzászólt: %{title}"
       new_coordinator: "%{actor} a %{title} rendszergazdájává tett"
-      new_discussion: "%{actor} elindított egy szálat: %{title}"
       outcome_announced: "%{actor} megosztott egy %{poll_type} eredményt: %{title}"
       outcome_created: "%{actor} megosztott egy %{poll_type} eredményt: %{title}"
       outcome_updated: "%{actor} frissítette a %{poll_type} eredményét: %{title}"
       outcome_review_due: 'Ideje áttekinteni a következő eredményét: %{title}'
-      poll_announced: "%{actor} meghívott szavazásra: %{title}"
       poll_closed_by_user: "%{actor} lezárta a %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} 24 óra múlva zár: %{title}"
       poll_closing_soon_author: "%{poll_type} 24 órán belül bezár: %{title}"
@@ -666,24 +698,24 @@ hu:
       user_added_to_group: "%{actor} felvett a következő csoportba: %{title}"
       user_mentioned: "%{actor} megemlített téged a következőben: %{title}"
       user_reminded: "%{actor} emlékeztet, hogy szavazz: %{title}"
+      group_mentioned: "%{actor} megemlítette a csoportot itt: %{title}"
+      new_delegate: "%{actor} szavazati joggal rendelkező képviselővé tett téged %{title}"
+      poll_announced: "%{actor} szavazásra hívott meg: %{title}"
+      discussion_announced: "%{actor} meghívott téged a következő beszélgetésre: %{title}"
+      discussion_edited: "%{actor} szerkesztette a vita kontextusát: %{title}"
+      discussion_closed: "%{actor} lezárta a beszélgetést: %{title}"
+      new_discussion: "%{actor} beszélgetést indított: %{title}"
     without_title:
       unknown_sender: Kérjük, tekintse át az ismeretlen feladótól kapott e-mailt
-      discussion_announced: "%{actor} meghívott egy témaszálba"
-      discussion_edited: "%{actor} szerkesztette a szál kontextusát"
-      discussion_closed: "%{actor} lezárta a szálat"
       group_announced: "%{actor} meghívott egy csoportba"
       comment_replied_to: "%{actor} válaszolt neked"
-      new_discussion: "%{actor} elindított egy szálat"
-      new_comment: "%{actor} megjegyzést fűzött egy szálhoz"
       membership_created: "%{actor} meghívott egy csoportba"
       membership_resent: "%{actor} meghívott egy csoportba"
       membership_requested: "%{actor} csatlakozást kért a csoportodhoz"
       membership_request_approved: "%{actor} jóváhagyta a csatlakozási kérelmedet a %{title} csoporthoz"
-      outcome_announced: "%{actor} megosztott egy %{poll_type} eredményt"
-      outcome_created: "%{actor} megosztott egy %{poll_type} eredményt"
-      outcome_updated: "%{actor} frissítette az eredményt"
-      outcome_review_due: Ideje áttekinteni a %{poll_type} eredményét
-      poll_announced: "%{actor} meghívott, hogy szavazz egy %{poll_type}"
+      outcome_announced: "%{actor} megosztott egy %{poll_type} következtetést"
+      outcome_created: "%{actor} megosztott egy %{poll_type} következtetést"
+      outcome_review_due: Ideje áttekinteni a %{poll_type} következtetését
       poll_announced_wip: "%{actor} visszajelzést kér egy %{poll_type}-ról"
       poll_closed_by_user: "%{actor} lezárta a %{poll_type}"
       poll_closing_soon: "%{poll_type} 24 órán belül bezár"
@@ -691,7 +723,7 @@ hu:
       poll_created: "%{actor} elindított egy %{poll_type}"
       poll_edited: "%{actor} frissítette a %{poll_type}"
       poll_expired: "%{poll_type} lezárult"
-      poll_expired_author: Oszd meg a %{poll_type} eredményét
+      poll_expired_author: Oszd meg a %{poll_type} következtetését
       poll_option_added: "%{actor} opciókat adott a %{poll_type}-hoz"
       poll_reopened: "%{actor} újra megnyitotta a %{poll_type}"
       poll_reminder: "%{actor} emlékeztet arra, hogy szavazzon"
@@ -702,38 +734,64 @@ hu:
       stance_created_option: "%{actor} szavazott: %{option}"
       user_mentioned: "%{actor} megemlített téged"
       user_reminded: "%{actor} emlékeztet arra, hogy szavazzon"
+      group_mentioned: "%{actor} megemlítette a csoportot"
+      poll_announced: "%{actor} meghívott, hogy szavazz a(z) %{poll_type} pollon."
+      discussion_announced: "%{actor} meghívott egy beszélgetésre"
+      discussion_edited: "%{actor} szerkesztette a beszélgetés kontextusát"
+      discussion_closed: "%{actor} lezárta a beszélgetést"
+      new_discussion: "%{actor} beszélgetést indított"
+      new_comment: "%{actor} hozzászólást tett egy beszélgetésben"
+      outcome_updated: "%{actor} frissítette az eredményt"
     hints:
       poll_closing_soon: Itt az ideje, hogy szavazzon, meggondolja magát, vagy bátorítson másokat a részvételre.
       poll_closing_soon_author: Emlékeztetheti az embereket, hogy szavazzanak, vagy hosszabbítsák meg a határidőt.
-      outcome_review_due: Fontolja meg egy visszajelzési szavazás vagy egy új téma indítását, amely elgondolkodtató a döntés végrehajtásáról.
+      outcome_review_due: Fontolja meg egy visszajelzési közvélemény-kutatás vagy egy új beszélgetés indítását, amely arra ösztönzi a résztvevőket, hogy hogyan valósult meg a döntés.
+    email_subject:
+      unknown_sender: Ismeretlen feladótól érkező e-mail áttekintése
+      comment_replied_to: "%{actor} válaszolt neked ebben a részben: %{title}"
+      discussion_announced: "%{title}"
+      invitation_accepted: "%{actor} elfogadta a meghívásodat, hogy csatlakozzon a(z) %{title} csapathoz"
+      membership_created: "%{actor} meghívott, hogy csatlakozz a(z) %{title} oldalhoz a(z) %{site_name} oldalon."
+      membership_resent: "%{actor} meghívott, hogy csatlakozz a(z) %{title} oldalhoz a(z) %{site_name} oldalon."
+      membership_requested: "%{actor} csatlakozni kért a(z) %{title} csapathoz"
+      membership_request_approved: "%{actor} jóváhagyta a csatlakozási kérelmedet a(z) %{title} csoporthoz"
+      new_comment: "%{actor} hozzászólása a következőhöz: %{title}"
+      new_coordinator: "%{actor} adminisztrátorrá tett a(z) %{title} webhelyen"
+      new_delegate: "%{actor} szavazati joggal rendelkező delegálttá tett téged a(z) %{title} ülésen"
+      new_discussion: "%{title}"
+      outcome_announced: "%{poll_type} következtetés: %{title}"
+      outcome_created: "%{poll_type} következtetés: %{title}"
+      outcome_updated: "%{poll_type} következtetés frissítve: %{title}"
+      outcome_review_due: 'Ideje áttekinteni a következő következtetését: %{title}'
+      poll_closed_by_user: "%{actor} lezárta a %{poll_type}-t: %{title}"
+      poll_closing_soon: "%{poll_type} 24 órán belül zárul: %{title}"
+      poll_closing_soon_author: 'A %{poll_type} 24 óra múlva zárul: %{title}'
+      poll_created: 'Szavazat: %{title}'
+      poll_edited: "%{actor} frissítette a(z) %{poll_type} elemet: %{title}"
+      poll_expired: "%{poll_type} lezárult: %{title}"
+      poll_expired_author: 'Következtetés közzététele: %{title}'
+      poll_option_added: "%{actor} opciókat adott hozzá a(z) %{title} bejegyzéshez"
+      poll_reopened: 'A szavazás meghosszabbítva: %{title}'
+      poll_reminder: "%{actor} emlékeztet, hogy szavazz a(z) %{title} bejegyzésre"
+      poll_reminder_wip: "%{actor} emlékeztet, hogy adj visszajelzést: %{title}"
+      reaction_created: "%{actor} %{reaction} módon reagált a %{model} modelledre a %{title}-ben"
+      stance_created: "%{actor} szavazott: %{title}"
+      stance_updated: "%{actor} szavazott: %{title}"
+      stance_created_option: "%{actor} szavazott %{option}-ra a %{title}-ben"
+      user_added_to_group: "%{actor} felvett téged a következő csoportba: %{title}"
+      user_mentioned: "%{actor} megemlített téged a következőben: %{title}"
+      group_mentioned: "%{actor} megemlítette a csoportot a következőben: %{title}"
+      user_reminded: "%{actor} emlékeztet, hogy szavazz erre: %{title}"
+      poll_announced: 'Szavazat: %{title}'
+      discussion_edited: "%{actor} szerkesztette a vita kontextusát: %{title}"
+      discussion_closed: "%{actor} lezárta a beszélgetést: %{title}"
   discussion_fork_actions:
-    helptext: Válassza ki azokat az elemeket, amelyeket át szeretne helyezni egy másik szálba
     move: Mozgat
-    search_placeholder: Keresse meg a szálat cím szerint
     moved: A megjegyzések áthelyezése eltarthat egy ideig
-    move_to_existing_thread: Ugrás a meglévő szálra
-    start_new_thread: Vagy indíts új témát
-  thread_template:
-    browse_public_templates: Böngésszen a sablongalériában
-    thread_template_settings: Szálsablon beállításai
-    start_a_new_thread: Indíts egy új témát
-    thread_template_saved: Szálsablon mentve
-    these_are_public_templates: Ezeket a sablonokat másolhatja vagy módosíthatja, hogy megfeleljen a csoportjának
-    these_are_templates: Ezek a szálsablonok a csoportodban. A sablonok végigvezetik a gyakori döntéshozatali folyamatokon.
-    default_title_label: Alapértelmezett cím
-    default_title_hint: Töltse ki előre a cím mezőt szerkeszthető szöveggel. Ez nem kötelező – hagyja üresen, ha nem biztos benne.
-    title_placeholder_label: Példa cím
-    title_placeholder_hint: A címmező hátterében megjelenítendő példa
-    title_placeholder_placeholder: pl. Így néz ki a háttérszöveg
-    example_description_label: Példa leírás
-    example_description_placeholder: Adjon meg egy sablont, amellyel az emberek szálat indíthatnak
-    hidden_templates: Rejtett sablonok
-    confirm_delete: Biztos benne, hogy véglegesen törli ezt a szálsablont? Ennek eredményeként egyetlen szál sem törlődik.
-    add_proposal_or_poll_template: Adjon hozzá javaslatot vagy szavazási sablont
-    recommended_proposal_or_poll_templates: Javasolt javaslat- vagy szavazási sablonok
-    decision_templates: Döntési sablonok
-    decision_templates_help: Válassza ki azokat az ajánlatokat vagy szavazási sablonokat, amelyek segítenek a folyamat befejezésében.
-    share_in_template_gallery: Ossza meg ezt a sablont a nyilvános sablongalériában
+    helptext: Jelöld ki azokat az elemeket, amelyeket egy másik beszélgetésbe szeretnél áthelyezni
+    search_placeholder: Beszélgetés keresése cím szerint
+    move_to_existing_thread: Ugrás a meglévő beszélgetésre
+    start_new_thread: Vagy indítson új beszélgetést
   discussion_form:
     thread_templates: Szálsablonok
     new_thread_template: Új szál sablon
@@ -747,10 +805,8 @@ hu:
     invite_only_thread: Meghívásos szál
     none_direct_thread: Közvetlen szál (nincs csoport)
     none_invite_only_thread: Meghívásos szál (nincs csoport)
-    change_log_placeholder: Opcionálisan írja le a változtatásokat. Ez az üzenet hozzáadódik a szálhoz.
     change_log_label: Mi változott?
     invite: Meghív
-    aria_label: Téma űrlap
     start_thread: Indítsa el a szálat
     messages:
       created: A téma elindult
@@ -772,13 +828,20 @@ hu:
     privacy_organisation: A téma látható lesz a(z) %{parent} és a(z) %{group} tagjai számára.
     fork_notice: 'Új szál jön létre %{count} elemmel a következőtől: %{title}'
     notify_group: Értesítés a csoportról
+    none_invite_only_discussion: Nincs (csak meghívásos beszélgetés)
+    new_discussion_template: Új vita sablon
+    edit_discussion_template: Beszélgetési sablon szerkesztése
+    change_log_placeholder: Opcionálisan leírhatod a módosításaidat. Ez az üzenet bekerül a beszélgetésbe.
+    start_discussion: Beszélgetés indítása
+    discussion_updated: Vita frissítve
+    discussion_created: Beszélgetés létrehozva
+    discussion_started: Megbeszélés elkezdődött
   announcement:
     send_discussion: Téma küldése
     send_group: 'Meghívás a következőhöz: %{name}'
     send_poll: Elküld %{type}
     send_outcome: Oszd meg a végeredményt
     cannot_reveal_when_anonymous: Sajnáljuk, nem árulhatjuk el, hogy ki szavazott vagy nem szavazott egy névtelen szavazáson.
-    discussion_notification_history: Szál értesítési előzményei
     group_notification_history: Csoportos meghívások előzményei
     poll_notification_history: Szavazási értesítések előzményei
     outcome_notification_history: Eredményértesítési előzmények
@@ -790,7 +853,6 @@ hu:
     preview: E-mail előnézete
     no_notifications_sent: Nem lettek értesítések küldve
     history_error: Valami elromlott! Nem tudtuk betölteni az előzményeket.
-    inviting_guests_to_thread: A vendégek nem tartoznak a csoportodhoz, és csak ehhez a szálhoz férhetnek hozzá
     select_groups: Válasszon csoportokat
     search_by_name_or_email: Keressen név szerint, vagy írja be az e-mail címeket a meghíváshoz
     search_by_name: Emberek keresése név szerint
@@ -802,14 +864,13 @@ hu:
     new_discussion: "%{name} meghívott %{length} személyt a szálba:"
     discussion_announced: "%{name} meghívott %{length} személyt a szálba:"
     poll_created: "%{name} meghívott %{length} személyt szavazásra:"
-    poll_announced: "%{name} meghívott %{length} személyt szavazásra:"
-    outcome_created: "%{name} megosztott egy eredményt %{length} személlyel:"
-    outcome_announced: "%{name} megosztott egy eredményt %{length} személlyel:"
+    outcome_created: "%{name} megosztott egy következtetést %{length} személlyel:"
+    outcome_announced: "%{name} megosztott egy következtetést %{length} személlyel:"
     announcement_created: "%{name} meghívott %{length} személyt a szálba:"
     discussion_edited: "%{name} szerkesztette a szálat, értesítve %{length} személyt:"
     poll_edited: "%{name} szerkesztett egy szavazást, amelyről %{length} személyt értesített:"
-    outcome_edited: "%{name} szerkesztett egy eredményt, amelyről %{length} személyt értesített:"
-    outcome_updated: "%{name} szerkesztett egy eredményt, amelyről %{length} személyt értesített:"
+    outcome_edited: "%{name} szerkesztett egy következtetést, amelyről %{length} személyt értesített:"
+    outcome_updated: "%{name} szerkesztett egy következtetést, amelyről %{length} személyt értesített:"
     poll_closing_soon: "%{name} szavazászáró emlékeztetője %{length} személyt értesített:"
     poll_reminder: "%{name} emlékeztetett %{length} embert, hogy szavazzanak:"
     audiences:
@@ -820,6 +881,7 @@ hu:
       decided_voters: Mindenki, aki szavazott
       undecided_voters: Mindenki, aki nem szavazott
       non_voters: A(z) %{name} tagjai még nincsenek meghívva
+      delegates_of_group: "%{name} küldöttei"
     form:
       group_has_no_members_yet: Ön a csoport egyetlen tagja. Érdemes lehet néhány embert meghívni a csoportjába, mielőtt szálat vagy döntést hozna létre.
       invite_people_to_evaluate_loomio: Hívjon meg néhány embert a Loomio csoportjába, hogy közösen döntsenek
@@ -842,9 +904,6 @@ hu:
       discussion_edited:
         title: Értesítés a módosításokról
         helptext: Kit szeretnél értesíteni erről a frissítésről? (választható)
-      poll_announced:
-        title: Meghívás szavazásra
-        helptext: Kit szeretnél meghívni a szavazásra?
       wip_poll_announced:
         title: Meghívás visszajelzésre
         helptext: Kit szeretnél visszajelzésre hívni?
@@ -877,9 +936,10 @@ hu:
       added_singular: 1 személy kerül hozzáadásra.
       added_none: Senki nem lesz hozzáadva.
       group_title: "%{name} (%{count} ember)"
-      visible_to_group: A(z) %{group} tagja láthatja ezt a szálat.
-      visible_to_guests: Csak a meghívott személyek láthatják ezt a szálat.
       click_group_to_see_individuals: Kattintson a csoportra az egyének megtekintéséhez
+      poll_announced:
+        title: Szavazásra felhívás
+        helptext: Kit szeretnél meghívni szavazásra?
     members_list:
       title: Megosztva vele
       last_notified: Értesített
@@ -891,11 +951,17 @@ hu:
       has_not_read_thread: Nem nézte meg a szálat
       has_not_joined_yet: Még nem csatlakozott
       has_not_joined_yet_hint: Ez a felhasználó nem fogadta el a meghívását, hogy csatlakozzon a Loomióhoz, és addig nem kap további értesítéseket, amíg el nem fogadja
+      discussion_admin: Beszélgetés adminisztrátor
+      has_not_read_discussion: Nem tekintette meg a beszélgetést
     group_form:
       search_placeholder: Emberek keresése ...
       modal_title: Válassza ki a csoporttagokat
     flash:
       success: "%{count} értesítés elküldve"
+    group_mentioned: "%{name} megemlítette a csoportot %{length} emberrel:"
+    poll_announced: "%{name} meghívott %{length} embert szavazásra:"
+    discussion_notification_history: Beszélgetésértesítések előzményei
+    inviting_guests_to_discussion: A vendégek nem tartoznak a csoportodhoz, és csak ehhez a beszélgetéshez férhetnek hozzá.
   action_dock:
     actions_menu: Műveletek menü
     more_actions: Több akció
@@ -923,8 +989,8 @@ hu:
     reply_to_comment: Válasz
     fork_comment: Téma elágaztatása
     translate_comment: Megjegyzés lefordítása
-    edit_outcome: Eredmény szerkesztése
-    announce_outcome: Értesítse az embereket erről az eredményről
+    edit_outcome: Következtetés szerkesztése
+    announce_outcome: Értesítse az embereket erről a következtetésről
     announce_outcome_active: "(Senki nem kapott értesítést erről az eredményről)"
     translate_outcome: Az eredmény lefordítása
     show_history: A szerkesztési előzmények megjelenítése
@@ -950,6 +1016,11 @@ hu:
     add_poll_to_thread: Hozzáadás a témához
     count_members: "%{count} tag"
     count_voters: "%{count} szavazó"
+    pin_discussion: Beszélgetés rögzítése
+    unpin_discussion: Beszélgetés rögzítésének feloldása
+    close_discussion: Bezárás
+    reopen_discussion: Vita újranyitása
+    delete_discussion: Beszélgetés törlése
   formatting:
     formatting_tools: Szövegformázó eszközök
     colors: Színek
@@ -1019,7 +1090,6 @@ hu:
     messages:
       joined_group: Most a(z) %{group} tagja vagy
   membership_request_form:
-    aria_label: Tagsági igénylőlap
     heading: Kérj belépőt a csoportba
     name_label: Név
     email_label: E-mail
@@ -1028,8 +1098,8 @@ hu:
     introduction_over_limit: A válasz túl hosszú
     messages:
       membership_requested: Csatlakozást kértél a(z) %{group} csoporthoz
+    aria_label: Tagsági kérelem űrlap
   revision_history_modal:
-    aria_label: Módosítási előzmények
     discussion_header: A vita szerkesztései
     comment_header: Megjegyzés szerkesztések
     poll_header: Szavazás szerkesztései
@@ -1047,6 +1117,7 @@ hu:
     closing_at_changed: 'a záró időpontot erre állították: %{time}'
     private_changed: Adatvédelem beállítása %{private}
     group_id_changed: 'áthelyezve ide: %{name}'
+    aria_label: Revíziós előzmények
   reactions_input:
     add_your_reaction: Válasz hozzáadása
   reactions_display:
@@ -1055,10 +1126,6 @@ hu:
     you_and_name: Te és %{name}
     you_and_name_and_count_more: Te, %{name} és további %{count}
     name_and_count_more: "%{name} és további %{count}"
-  context_panel:
-    thread_status:
-      pinned: Ezt a témát rögzítették. Az összes felhasználó számára a témák listájának tetején fog maradni.
-      closed: Ezt a témát lezárták. Már nem jelenik meg a műszerfalon, és a csoportoldal „lezárt” részében kerül felsorolásra
   delete_group_modal:
     title: Csoport törlése
     subgroup_title: Alcsoport törlése
@@ -1129,15 +1196,21 @@ hu:
       quiet: Nem kérek e-mailt erről a csoportról. Az aktivitások megjelennek a műszerfalon.
       quiet_aria_description: A csoport értesítési hangereje Csendesre lett állítva. Nem kap e-mailt e csoport tevékenységeiről. A csoporttevékenység megjelenik a műszerfalon.
       quiet_message: Nem kap e-mailt a(z) "%{name}" tevékenységekkel kapcsolatban.
-      mute: Ez a csoport ne jelenjen meg a műszerfalon és ne értesítsen amíg nem @említenek meg.
       mute_aria_description: A csoport értesítési hangereje Némítottra van állítva. Csak akkor küld e-mailt, ha valaki megemlít téged, és a csoporttevékenység nem jelenik meg a műszerfalon.
       mute_message: A(z) "%{name}" eltávolításra került a műszerfalról.
+      mute: Rejtsd el ezt a csoportot az irányítópulton, és ne értesítsd, hacsak nem említik a {'@'}-t.
     privacy:
       private: 'Adatvédelem: Ez a csoport csak a tagok számára látható'
       parent_members: 'Adatvédelem: Ez a csoport a(z) %{parentGroupName} és a %{groupName} tagjai számára látható.'
       public: 'Adatvédelem: Ez a csoport látható az interneten'
-      aria_label: 'Csoportos adatvédelem: %{privacy}'
+      aria_label: 'Csoport adatvédelme: %{privacy}'
     participation_report: Részvételi jelentés
+    my_subgroups: Az alcsoportjaim
+    more_subgroups: További alcsoportok
+    discussions: Beszélgetések
+    no_discussions_here: Nincsenek itt beszélgetések!
+    private_discussions: Tagnak kell lenned ahhoz, hogy megtekinthesd a csoport privát beszélgetéseit.
+    view_closed_discussions: Lezárt beszélgetések megtekintése
   export_data_modal:
     title: Hogyan szeretné használni az adatait?
     as_csv: Nyissa meg egy táblázatban
@@ -1149,22 +1222,21 @@ hu:
     messages:
       description_updated: Leírás frissítve
   leave_group_form:
-    aria_label: Kilépés a csoportból
     title: Kilépés a csoportból
     question: Biztosan el akarja hagyni ezt a csoportot?
     submit: Igen, hagyja el ezt a csoportot
+    aria_label: Kilépés a csoportból
   archive_group_form:
-    aria_label: Csoport deaktiválása
     title: Csoport deaktiválása
     question: Biztosan kikapcsolja ezt a csoportot?
     submit: Igen, deaktiválja ezt a csoportot
+    aria_label: Csoport deaktiválása
   group_form:
     thread_defaults_help: Az új szálak alapértelmezett beállításai
     click_to_change_image: Kattintson ide a borítókép (4x1) vagy az embléma (1x1) megváltoztatásához
     change_cover_image: borítókép módosítása
     change_logo: logó módosítása
     permissions_explaination: 'Egy személynek két tagsági szintje lehet egy csoportban: adminisztrátor és tag. Az adminisztrátorok szerkeszthetik a csoportbeállításokat, másokat tehetnek rendszergazdákká, és végrehajthatják az alább felsorolt összes műveletet.'
-    aria_label: Csoport forma
     parent_group: Szülői csoport
     new_organisation: Új szervezet
     new_group: Új csoport
@@ -1190,7 +1262,6 @@ hu:
     description: Leírás
     description_placeholder: Mutassa be csoportjának célját, hogy a csoport tagjai tudják, miért vannak itt.
     new_description_placeholder: Miért próbálod ki a Loomio-t? Milyen döntéseket kell közösen meghoznotok?
-    new_description_html: <h3 id="how-do-you-intend-to-use-loomio">Hogyan kívánja használni a Loomio-t?</h3><p></p><h3 id="why-is-this-important-for-your-group"> Miért fontos ez a csoportod számára?</h3><p></p><h3 id="what-decisions-do-you-need-to-make"> Milyen döntéseket kell meghoznia?</h3><p></p>
     secret_by_default: A csoportod csak azok számára lesz elérhető, akiket meghívtak, hogy csatlakozzanak. Ezt később módosíthatja.
     privacy_statement:
       public_on_web: A csoport kontextusának neve, leírása és mellékletei a nyilvánosság számára láthatóak lesznek
@@ -1256,6 +1327,12 @@ hu:
     upload_cover_photo: Töltse fel a borítóképét
     request_to_join_prompt: Csatlakozás kérése
     default_request_to_join_prompt: Köszönjük érdeklődését csoportunk iránt. Kérlek, mutatkozz be, és indokold meg, miért jelentkezel.
+    upgrade_for_subgroups: 'Kérjük <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">, frissítse előfizetését</a> egy alcsoport létrehozásához'
+    share_this_url_with_people_who_want_to_join: Oszd meg ezt az URL-t azokkal, akik csatlakozni szeretnének
+    new_description_html: "<h3>Milyen kihívásokkal néz szembe a szervezete a döntéshozatal során?</h3><p></p><h3> Hogyan szeretné használni a Loomio-t a szervezetében?</h3><p></p>"
+    allow_polls_without_discussions: Szavazások engedélyezése megbeszélés nélkül
+    allow_polls_without_discussions_help: Engedélyezze az önálló szavazásokat (nem ajánlott). Vita nélkül az emberek nem tudnak kérdéseket feltenni vagy hatékonyan konszenzust kialakítani.
+    aria_label: Csoportos űrlap
   group_export_modal:
     title: Csoport adatok letöltése
     body: <p>A csoport adatainak másolatát bármikor letöltheti. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Tudj meg többet.</a></p><p> A kitöltése a csoport méretétől függően néhány percet vesz igénybe. Ha készen áll, e-mailben kap egy linket a fájl letöltéséhez.</p>
@@ -1280,7 +1357,6 @@ hu:
     group_url: Csoport URL-je
     reusable_invitation_link: Újrafelhasználható meghívó link
     error: Hiba a vágólapra másolás közben
-    aria_label: Meghívó
     invite_people: Hívj meg embereket
     invite_guests: Vendégek meghívása
     notify_people: Emberek értesítése
@@ -1291,7 +1367,6 @@ hu:
     share_group: Ossza meg csoportját
     copy_link: Másolás
     email_addresses: E-mail címek
-    email_addresses_placeholder: például. helperbot@loomio.org, friendlybot@loomio.org
     secret_group_url_explanation: Ez a csoportod címe. Csak a meghívott tagok láthatják a csoportot.
     shareable_group_url_explanation: Ezt a linket megoszthatod nyilvánosan. Az emberek kérhetik a csatlakozást, Ön pedig jóváhagyhatja vagy figyelmen kívül hagyhatja a kéréseket.
     shareable_invitation_explanation: Ne ossza meg nyilvánosan ezt a linket. Bárki, aki rendelkezik ezzel, csatlakozhat a csoportjához az Ön jóváhagyása nélkül. Csak privát kommunikáción belül ossza meg ezt, hogy a szervezetéhez tartozó személyek csatlakozhassanak.
@@ -1310,6 +1385,15 @@ hu:
       invitations_sent: "%{count} meghívó elküldve."
       no_invitations: UH Oh! Ellenőrizze, hogy az e-mail cím helyes-e, és próbálja újra.
       max_invitations: Ha több mint 100 meghívót szeretne küldeni, használjon egy csapat linket.
+    copy_to_clipboard: Másolás a vágólapra
+    already_chatting_somewhere: Már csevegsz valahol?
+    to_stop_people_reset_the_link: Ha le szeretnéd tiltani másoknak a csatlakozást ezzel a linkkel, kattints a „Link visszaállítása” gombra. A meglévő link nem fog működni, és egy új link jön létre.
+    try_the_shareable_link_instead: Próbáld meg inkább a megosztható linket használni.
+    enter_emails_of_people_to_invite: Add meg azoknak az embereknek az e-mail címét, akiket meg szeretnél hívni a csoportba. Ha van egy listád, egyszerűen másold ki és illeszd be őket egyszerre.
+    shareable_link_to_join_group: Megosztható link a csoporthoz való csatlakozáshoz
+    reset_the_link: A hivatkozás visszaállítása
+    email_addresses_placeholder: pl. helperbot{'@'}loomio.org, friendlybot{'@'}loomio.org
+    aria_label: Meghívólap
   memberships_page:
     members: Tagok
     name_label: Név
@@ -1399,13 +1483,13 @@ hu:
     deactivate_account_subtitle: Az e-mailek leállítása és a tagság megszüntetése. Tartsa meg profilját, hogy a korábbi megbeszéléseket és döntéseket ne befolyásolja.
     delete_account_subtitle: Teljesen törölje fiókját, és távolítsa el a nevét a korábbi megbeszélésekből és döntésekből.
     updated_on_sign_in: A böngésző biztosítja, és bejelentkezéskor frissül
+    translate_content_automatically: Tartalom automatikus fordítása a saját nyelvemre
   text_editor:
     x_of_y_characters: "%{x} / %{y} karakter"
     select_text_to_link: Válassza ki a linkelni kívánt szöveget, és próbálja újra
     insert_link: Illessz be egy hivatkozást
     insert_embedded_url: Videó beágyazása
   change_picture_form:
-    aria_label: Profilkép űrlap
     title: Profilkép beállítása
     helptext: Feltöltheted a saját profilképed, vagy ha van egy <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a>fiókod, akkor használhatod azt.
     use_initials: Használj kezdőbetűket
@@ -1413,6 +1497,7 @@ hu:
     use_uploaded: Tölts fel új fényképet
     existing_upload: Meglévő feltöltés
     use_provider: Használj %{provider} fotót
+    aria_label: Profilkép űrlap
   change_password_form:
     set_password_title: Állítsd be a jelszavad
     set_password_helptext: Adjon meg egy jelszót - legalább 8 karakter
@@ -1446,13 +1531,11 @@ hu:
     email_newsletter: Loomio hírlevél
     email_newsletter_description: Frissítse az új funkciókat, képzéseket, eseményeket a városában és a Loomio jövőjét. Általában 2 vagy 3 e-mail évente.
     email_catch_up_day: Felzárkóztató összefoglaló e-mail
-    daily_summary_description: Válassza ki, hogy mikor kapja meg az összefoglaló e-mailt. Ez az e-mail minden olyan új tevékenységet tartalmaz, amelyet még nem látott. Jó módja annak, hogy naprakészek maradjanak, ha Ön nem rendszeres felhasználó.
     on_participation_label: Feliratkozás a részvételre
     on_participation_description: Amikor részt vesz egy témában, az összes további tevékenységet azonnal elküldjük Önnek e-mailben.
     announcement_label: Bejelentések
     announcement_description: E-mailt fog kapni az összes olyan tartalomról, amelyet a csoportok tagjai bejelentettek
     mentioned_label: Megemlíti és válaszokat
-    mentioned_description: Ha valaki @megemlít egy megjegyzésben vagy válaszol neked, értesítő e-mailt kapsz
     update_settings: Változtatások mentése
     specific_groups: Beállítások az egyes csoportokhoz
     default_settings:
@@ -1463,11 +1546,14 @@ hu:
     messages:
       updated: Az e-mail beállítások frissítve
     learn_more: További információ az e-mail beállításokról ...
+    mentioned_description: Amikor valaki {'@'}megemlít téged egy hozzászólásban, kapsz egy értesítő e-mailt.
+    daily_summary_description: Válaszd ki, mikor szeretnéd megkapni az összefoglaló e-mailt. Ez az e-mail tartalmazza azokat az új tevékenységeket, amelyeket még nem láttál. Jó módja annak, hogy naprakész maradj, ha nem vagy rendszeres felhasználó.
+    never: Soha
+    send_email: E-mail küldése
   thread_preview:
     replies_count: "%{count} válasz"
     unread_count: "%{count} olvasatlan"
   dashboard_page:
-    aria_label: Műszerfal
     polls_to_vote_on: Szavazások, amelyekre szavazni kell
     no_polls_to_vote_on: Nincsenek olyan szavazások, amelyekre szavazni kell
     recent_polls: Legutóbbi szavazások
@@ -1480,7 +1566,6 @@ hu:
       show_all: Nincs legutóbbi témája.
       show_proposals: Jelenleg nincs aktív javaslat.
       show_muted: Nincs elnémított téma.
-    view_recent: Az összes legutóbbi téma megtekintése?
     load_more: Töltsön be további témákat
     mark_as_read: Olvasottként jelöl
     dismiss: Bezárás
@@ -1488,17 +1573,13 @@ hu:
     thread_recalled: A téma visszahívásra került
     explain_mute:
       title: Még egyetlen témát sem némított el.
-      explanation_html: |
-        A némítás egy olyan módszer, amellyel elrejtheti vagy elnémíthatja azokat a szálakat, amelyeket nem érdekel.
-        A némítás azt jelenti, hogy nem fogja látni az <strong>Legutóbbi</strong> vagy a <strong>Olvasatlan</strong> verzióban, és nem kap értesítést az adott szálban zajló tevékenységekről, például a javaslatokról.
-        Csak akkor figyelmeztetünk, ha valaki <strong>@megemlíti</strong> a neved
       instructions: A témát elnémításához vigye az egérmutatót rá, és kattintson a némítás ikonra.
       see_muted_html: 'A némított témák megtekintéséhez kattints ide: <strong> "Némított" </strong> A némítást kikapcsolhatod ha rákattintasz ugyanarra az ikonra.'
+      explanation_html: A némítás egy módja annak, hogy elrejtsd vagy elnémítsd azokat a beszélgetéseket, amelyek nem érdekelnek. A némítás azt jelenti, hogy nem fogod látni a témát <strong>a Legutóbbiak</strong> vagy <strong>az Olvasatlanok</strong> között, és nem kapsz értesítést az adott beszélgetésben végzett tevékenységekről, például a javaslatokról. Csak akkor kapsz értesítést, ha valaki <strong>{'@'}megemlíti</strong> a neved.
     filtering:
       filter_threads: Témák szűrése
       filter_threads_aria_label: Témák szűrése
       dropdown_heading: Szűrő műszerfal
-      all: Legutóbbi témák
       all_aria_label: Jelenleg a legutóbbi témákat mutatjuk be
       all_description: Tekintse meg a legutóbbi témákat
       proposals: Javaslatok
@@ -1507,6 +1588,7 @@ hu:
       muted: Néma témák
       muted_aria_label: A jelenlegi néma témák
       muted_description: Csak a néma témák megtekintése
+      all: Legutóbbi beszélgetések
     thread_preview:
       you_voted: Erre szavaztál %{position}
       undecided: Még nem szavaztál
@@ -1520,18 +1602,25 @@ hu:
       thisweek: Ezen a héten
       thismonth: Ebben a hónapban
       older: Egy hónapnál régebbi
+    dashboard: Műszerfal
+    recent_discussions: Legutóbbi beszélgetések
+    view_recent: Megtekinted az összes legutóbbi beszélgetést?
+    discussion_marked_as_read: Vita megjelölve olvasottként
+    discussion_marked_as_unread: A beszélgetés olvasatlanként van megjelölve
   threads_page:
     no_direct_threads: Nincsenek közvetlen szálaid
-    no_invite_only_threads: Nincsenek meghívásos üzenetszálai
+    no_invite_only_threads: Nincsenek meghívásos beszélgetéseid
   inbox_page:
     no_threads: Ju Hú! Elolvasta a beérkező levelek összes témát.
     unread_threads: Olvasatlan témák
     view_more: Mutass többet
     no_groups:
-      explanation: Nincsenek olvasatlan témái, mert nem tagja egyetlen csoportnak sem.
       start: Indítás
       or: vagy
       join_group: <a href="/explore">csatlakozzon</a> egy csoporthoz a szálak megtekintéséhez.
+      explanation: Nincsenek olvasatlan beszélgetéseid, mert nem vagy tagja egyetlen csoportnak sem.
+    no_discussions: Hurrá! Elolvastad az összes beszélgetést a postaládádban.
+    unread_discussions: Olvasatlan beszélgetések
   discussion:
     direct_thread: Közvetlen szál
     invite_only: Csak meghívottaknak
@@ -1545,20 +1634,18 @@ hu:
     pin:
       pinned: Téma rögzítve
       unpinned: A téma nincs rögzítve
-    volume:
-      mute_message: A téma le van némítva
-      unmute_message: Téma némítás feloldva
     closed:
       reopened: A téma újra nyitott
       closed: A téma lezárva
+    volume:
+      mute_message: Beszélgetés némítva
+      unmute_message: Beszélgetés némítása feloldva
   discussion_last_seen_by:
     title: Látta
     no_one: Még senki sem látta
     disabled_anonymous_polls: A megtekintési előzmények le vannak tiltva, mert a szál névtelen szavazásokat tartalmaz
   activity_card:
     count_responses: "%{count} válasz"
-    event_pinned: Idővonalhoz rögzítve
-    event_unpinned: Nem szerepel az idővonalon
     beginning: Kezdet
     end: Vége
     unread: Olvasatlan (%{count})
@@ -1567,8 +1654,8 @@ hu:
     chronological: Időrendi
     nested: Beágyazott
     attachment_display:
-      aria_label: 'Fájl csatolva:'
       image_alt: Csatolt kép
+      aria_label: 'Csatolt fájl:'
     n_previous: "%{count} korábbi válasz betöltése"
     n_more: "%{count} válasz betöltése"
     add_comment: Megjegyzés hozzáadása
@@ -1578,33 +1665,9 @@ hu:
     facilitate: Döntéstámogatás
     start_decision: Kezdje el a döntést
     start_vote: Indítsa el a szavazást
-  thread_group:
-    aria_label: Csoport neve
-  thread_context:
-    current_poll_type_banner: Jelenlegi %{pollType}
-    item_maybe_deleted: Nem található a kért hely a szálon belül. Lehet, hogy törölték.
-    aria_label: Téma háttere
-    thread_options: Téma beállítások
-    email_settings: Értesítési beállítások
-    edit: Szerkeszt
-    edit_thread: Szerkeszt
-    close_thread: Lezár
-    reopen_thread: Újranyit
-    pin_thread: Rögzít
-    unpin_thread: Rögzítés feloldása
-    mute_thread: Néma
-    move_thread: Mozgat
-    print_thread: Nyomtatás
-    delete_thread: Törlés
-    add_comment: Megjegyzés
-    seen_by_count: "%{count} látta"
-    count_notified: Értesített %{count}
-    forked_from: 'Leágaztatva innen: '
-  pin_thread_modal:
-    title: Téma rögzítése
-    helptext: A rögzített témák mindig a csoportjuk témáinak tetején jelennek meg. Használhatók a tagok tájékoztatására a fontos bejelentésekről, vagy közös anyagok, például magatartási kódex vagy közösségi irányelvek előmozdítására.
-    helptext_two: A csapokat bármikor eltávolíthatja, ha a téma legördülő menüből kiválasztja az „Unpin” elemet
-    pin_thread: Téma rögzítése
+    event_pinned: Hozzáadva a megbeszélés idővonalához
+    event_unpinned: Eltávolítva a megbeszélés idővonaláról
+    start_a_vote: Szavazás indítása
   thread_arrangement_form:
     edit: Elrendezés szerkesztése
     title: Téma elrendezés
@@ -1623,20 +1686,11 @@ hu:
     nested_twice_description: Legfeljebb kétszer behúzza a választ.
     changing_nesting_is_slow: A beágyazás módosításainak feldolgozása néhány percet vehet igénybe.
   delete_thread_form:
-    aria_label: Törölje a témát
     title: Törölje a témát
     body: Biztosan törli ezt a témát?
     confirm: Törölje a témát
     messages:
       success: A téma törölve
-  move_thread_form:
-    aria_label: Mozgassa a témát
-    title: Mozgassa a témát
-    body: Célcsoport
-    confirm: Mozgassa a témát
-    confirm_change_to_private_thread: A %{groupName} egy nyitott csoport. Ha folytatja, ezt a témát nyilvánosságra hozzák.
-    messages:
-      success: A téma áthelyezve a(z) %{name} mappába
   delete_comment_dialog:
     title: Hozzászólás törlése
     question: Ezzel véglegesen törli ezt a megjegyzést. Ha folytatja, nem lehet visszaállítani.
@@ -1675,8 +1729,8 @@ hu:
     order_by: Csoportok rendezése szerint
   global:
     messages:
-      app_update: Megjelent a Loomio új verziója. Mentse el a munkáját, és töltse be újra.
       reload: Reload
+      app_update: Megjelent a Loomio új verziója. Kérjük, töltse be újra az oldalt.
   decision_tools_card:
     choose_type: Válassza ki a szavazás típusát
     title: Döntéstámogatás
@@ -1706,6 +1760,26 @@ hu:
     meaning_hint: Egy mondat, amely elmagyarázza, mit jelent ennek az opciónak a kiválasztása
     prompt: Indoklás
     prompt_hint: Olyan kérdés, amely arra készteti a választókat, hogy mondják el érvelésüket vagy gondolják át álláspontjukat.
+    thumb_up: hüvelykujj felfelé
+    thumb_down: Hüvelykujj lefelé
+    thumb_sideways: Hüvelykujj oldalra
+    hand_up: Fel a kezét
+    of: a
+    at_least: Legalább
+    no_more_than: Legfeljebb
+    votes_cast: Leadott szavazatok
+    eligible_voters: Jogosult szavazók
+    gte_score_percent: Legalább a leadott szavazatok %{percent}%-ára van szükség
+    gte_voter_percent: A jogosult szavazók legalább %{percent}%-ára van szükség
+    lte_score_percent: Nem haladhatja meg a leadott szavazatok %{percent}%-át
+    lte_voter_percent: Nem haladhatja meg a jogosult szavazók %{percent}%-át
+    name_gte_score_percent: "%{name} szavazónak legalább %{percent}%-ra van szüksége a leadott szavazatok közül"
+    name_gte_voter_percent: "%{name} szavazóinak legalább %{percent}%-ára van szüksége a szavazásra jogosultak közül"
+    name_lte_score_percent: A %{name} szavazat nem haladhatja meg a leadott szavazatok %{percent}%-át
+    name_lte_voter_percent: "%{name} nem haladhatja meg a jogosult szavazók %{percent}%-át"
+    vote_share_requirement: Szavazati arány követelmény
+    for_the_proposal_to_pass: Ahhoz, hogy a javaslat elfogadásra kerüljön, ennek a lehetőségnek meg kell kapnia…
+    for_the_poll_to_be_valid: Ahhoz, hogy a %{poll_type} érvényes legyen, ennek az opciónak a következőt kell kapnia…
   poll_common:
     superseded: Felváltva
     outdated: Elavult
@@ -1767,8 +1841,8 @@ hu:
     vote: Szavazás
     votes: Szavazatok
     update_outcome: Frissítsd az eredményt
-    outcome: Eredmény
-    outcomes: Eredmények
+    outcome: Következtetés
+    outcomes: Következtetések
     statement: Nyilatkozat
     change_your_stance: A válasz szerkesztése
     load_more: Több betöltése
@@ -1794,6 +1868,9 @@ hu:
     too_long: Túl hosszú
     edit_warning: A szerkesztés csak kisebb változtatásokhoz vagy helyesírási hibák javításához javasolt. Jelentős változtatások esetén zárja be ezt a %{pollType} elemet, és indítson újat.
     no_voting: Csak megbeszélésre, szavazás letiltva
+    post_outcome: Következtetés közzététele
+    view_all_votes: Az összes szavazat megtekintése
+    you_voted: Szavazott
   poll_common_attachment_form:
     label: Mellékletek
   poll_common_add_option:
@@ -1812,6 +1889,7 @@ hu:
     until_poll_type_closed: A(z) %{pollType} bezárásáig
     until_voting_is_closed: A szavazás lezárásáig
     deleted: Ezt a szavazást törölték
+    do_not_hide_results: Ne rejtsd el az eredményeket
   discussions_panel:
     open: Nyitva
     all: Minden
@@ -1822,6 +1900,8 @@ hu:
     no_results_found: Nincs eredmény a (z) "%{search}" kifejezésre
     welcome_to_your_new_group: Üdvözöljük új Loomio csoportjában!
     lets_start_a_thread: Kezdjünk egy szálat. A folytatáshoz kattintson az "Új szál" gombra.
+    lets_start_a_discussion: Kezdjünk egy beszélgetést! A folytatáshoz kattints az „Új beszélgetés” gombra.
+    new_discussion: Új beszélgetés
   members_panel:
     bot: Bot
     no_results: Nem találhatók tagok
@@ -1853,6 +1933,9 @@ hu:
     accepted: Tagok
     email_rejected: E-mail elutasítva
     email_rejected_meaning: Az erre a címre küldött e-mail visszapattant vagy spamként lett megjelölve. Erre a címre nem küldünk több e-mailt.
+    delegate: Delegált
+    delegate_popover: A delegált szavazati joggal rendelkező csoporttag
+    delegates: Küldöttek
   polls_panel:
     new_poll: Új szavazás
     any_type: Minden típus
@@ -1862,6 +1945,13 @@ hu:
     closed: Zárva
     need_vote: Szavazásra van szükség
     no_polls: Nem található szavazás
+    standalone_disabled_title: Az önálló szavazások le vannak tiltva
+    standalone_disabled_helptext: "<p>Ebben a csoportban a szavazásokat egy beszélgetésen belül kell elindítani.</p><p> A beszélgetések segítenek az embereknek megérteni a kontextust, kérdéseket feltenni és megosztani a nézőpontjaikat a szavazás előtt. Ez jobb döntésekhez vezet.</p><p> Először indíts egy beszélgetést, majd adj hozzá egy szavazást, amikor készen állsz a szavazatok gyűjtésére.</p>"
+    start_discussion: Beszélgetés indítása
+    standalone_warning_title: Először is fontold meg a beszélgetés megkezdését
+    start_poll_anyway: Szavazás indítása mindenképpen
+    start_discussion_instead: Inkább indíts beszélgetést
+    standalone_warning_helptext: "<p>A közvélemény-kutatások akkor működnek a legjobban, ha az emberek először megvitathatják a témát.</p><p> Vita nélkül a választók nem tehetnek fel kérdéseket, nem fogalmazhatnak meg aggályokat, és nem javasolhatnak fejlesztéseket.</p><p> A legjobb élmény érdekében kezdj egy beszélgetéssel, építs közös megértést, majd adj hozzá egy szavazást, amikor készen állsz az emberek álláspontjának rögzítésére.</p>"
   group_files_panel:
     no_files: Nem található fájl
     filename: Fájlnév
@@ -1890,6 +1980,8 @@ hu:
     unable_to_vote: Nem hívtak meg szavazni ebben a %{poll_type}-ban.
     draft_mode: Szavazás letiltva. Ez még nem nyitott szavazásra.
     voting_disabled_poll_is_template: Szavazás letiltva. Ez egy sablon.
+    for_this_proposal_to_pass: 'Ahhoz, hogy ez a javaslat átmenjen:'
+    for_this_poll_type_to_be_valid: 'Ahhoz, hogy ez a %{poll_type} érvényes legyen:'
   poll_common_collapsed:
     by_who: tőle %{name}
   poll_common_calendar_invite:
@@ -1904,47 +1996,6 @@ hu:
     event_description_placeholder: Mi a találkozó napirendje?
     location: Helyszín
     location_placeholder: Hol lesz ez a találkozó?
-  poll_common_settings:
-    who_can_vote: Ki szavazhat?
-    short_reason_can_be_helpful: A szavazás indoklásának rövidre szabása megkönnyíti azok megértését. A tömör indokok gyűjteménye nagyszerű forrás a döntés meghozatalához.
-    specified_voters_only_true: Csak meghívottak
-    specified_voters_only_false_group: Bárki a csoportból
-    specified_voters_only_false_discussion: Bárki a szálban
-    invite_people_next: A(z) %{poll_type} elindítása után kiválaszthatja, hogy kit hív meg szavazni
-    shuffle_options:
-      shuffle_options: Véletlenszerű lejátszási lehetőségek
-      title: A lehetőségek megjelenítése véletlenszerű sorrendben
-      helptext: A lista első helyezettje torzítást adhat neki. Ezzel a beállítással ellensúlyozhatja ezt a hatást.
-    multiple_choice:
-      title: Több választási lehetőség
-      helptext_on: Ha kiválasztod, a résztvevők több lehetőséget is kiválaszthatnak.
-    anyone_can_participate:
-      title: Bárki részt vehet, akinek megvan ez a link
-      helptext_on: Ha kiválasztod, bárki részt vehet a szavazási hivatkozással
-    notify_on_closing_soon:
-      voting_closes_too_soon: Mivel a szavazás 24 órán belül lezárul, a közeljövőben nem zárul le, emlékeztetőket küldünk.
-      closes_too_soon: Mivel ez a(z) %{pollType} 24 órán belül bezárul, nem küldenek emlékeztetőket a közeljövőben történő bezárásra.
-      title: '24 órával a %{pollType} bezárása előtt küldjön emlékeztetőt a következő címre:'
-      voting_title: 24 órával a szavazás lezárása előtt küldjön emlékeztetőt a címre
-      nobody: Senki
-      author: Szerző (én)
-      undecided_voters: Mindenki, aki nem szavazott
-      voters: Minden szavazó
-    notify_on_participate:
-      title: Értesíts engem, ha az emberek részt vesznek
-      helptext_on: Ha kiválasztod, akkor értesítést kapsz, ha valaki részt vesz.
-    anonymous:
-      title: Névtelen szavazók
-      helptext_on: Ha kiválasztja, a résztvevő információk nem kerülnek megjelenítésre minden válasznál.
-    voter_can_add_options:
-      title: A szavazók alternatív lehetőségeket adhatnak hozzá
-    can_respond_maybe:
-      title: A szavazók válaszolhatnak "ha szükséges"
-    allow_long_reason:
-      title: A szavazás „oka” 500 karakternél hosszabb legyen
-    hide_results_until_closed:
-      title: Az eredmények elrejtése bezárásig
-      helptext_on: Ne mutassa meg, hogyan szavaztak az emberek a szavazás bezárásáig
   poll_common_close_form:
     title: Bezárja most a %{poll_type}-t?
     helptext: Biztos, hogy korábban bezárja ezt a %{poll_type}-t, és megosztja az eredményt?
@@ -2000,9 +2051,9 @@ hu:
   poll_common_set_outcome_panel:
     enter_outcome: Írd be a végeredményt
     poll_type: Ez a %{poll_type} bezárt. Szánjon időt az eredmények mérlegelésére, majd ossza meg az eredményt, hogy az emberek tudják, mi fog ezután történni.
+    enter_an_outcome: Adjon meg egy következtetést
   poll_common_outcome_form:
     review_due_in_days: Hány nap múlva vizsgálja felül a döntést?
-    review_due_in_days_hint: A határozat felülvizsgálata előtti várakozási idő (napokban). (választható)
     review_date: Ellenőrzési dátum
     review_date_hint: Dátum meghatározása a határozat felülvizsgálatára (opcionális)
     who_to_notify: Kit szeretnél értesíteni erről az eredményről? (választható)
@@ -2012,105 +2063,17 @@ hu:
     outcome_created: Eredményt teremtett
     outcome_updated: Az eredmény frissítve
     statement_placeholder: Összegezze a válaszokat és magyarázza el, mi fog történni a következőkben.
-    statement_template_placeholder: Adjon sablont a döntés eredményének megírásához. (választható)
     you_will_be_notified: A felülvizsgálat időpontjáról értesítést kap.
     submit: Ossza meg az eredményt
+    review_due_in_days_hint: A döntés felülvizsgálata előtt várandó napok száma (opcionális).
+    statement_template_hint: Adjon meg egy sablont a döntés eredményének leírásához. (opcionális)
+    statement_template_placeholder: Köszönjük a részvételt! A határozatképes csoport létrejött, és támogatásunk van a folytatáshoz.
   poll_common_outcome_panel:
     authored_by: 'tőle: %{name}'
   poll_common_delete_modal:
     question: Biztosan törli ezt?
     title: "%{pollType} törlése"
     success: Sikeresen törölve
-  poll_common_form:
-    notify_everyone_when_poll_starts: Értesítsen mindenkit, amikor a %{poll_type} elindul
-    option_has_votes_confirm_delete: Néhányan erre a lehetőségre szavaztak. Biztosan törli?
-    example_title: Példa cím
-    example_title_hint: Adjon példát egy jó ajánlatcímre
-    example_details_placeholder: Adjon kiindulási pontot egy javaslathoz vagy szavazáshoz. A kérdések hasznos felhívások lehetnek, hogy az embereket írásra késztesse. Adjon meg minden olyan szabályt vagy emlékeztetőt, amelyet a résztvevőknek tudniuk kell.
-    confirm_delete: Biztosan törli ezt a szavazási sablont? Ezt nem lehet visszacsinálni.
-    show_advanced_settings: Speciális beállítások megjelenítése
-    hide_advanced_settings: Speciális beállítások elrejtése
-    choose_at_least: Válassz legalább
-    choose_at_most: Válasszon legfeljebb
-    please_review_the_form: Kérjük, tekintse át az űrlapot
-    option_added_please_add_details: Opció hozzáadva! Kérjük, adjon meg néhány részletet, hogy az emberek tudják, mit jelent.
-    default_duration_in_days: Alapértelmezett időtartam napokban
-    default_duration_in_days_hint: Hány napot kell adni a szavazásra?
-    how_many_options_can_a_voter_choose: E lehetőségek közül hányat választhat a választó?
-    minimum_choices: Minimális választási lehetőségek
-    maximum_choices: Maximális választási lehetőség
-    content: Tartalom
-    reminder: Emlékeztető
-    your_in_zone: 'Jelenlegi időzóna: %{zone}'
-    show_other_zones: Más időzónák megjelenítése
-    hide_other_zones: Más időzónák elrejtése
-    this_is_a_template_for_new_polls: Ez egy sablon az új szavazásokhoz
-    voting_method: Szavazási mód
-    voting_methods:
-      question: Kérdés kör
-      question_hint: Kérjen kérdéseket és megjegyzéseket javaslatával kapcsolatban
-      show_thumbs: A hüvelykujj felmutatását
-      show_thumbs_hint: A szavazók választhatnak hüvelykujj felfelé, lefelé, oldalra vagy felfelé mutató hüvelykujj mellett
-      choose: Választ
-      simple_poll: Egyszerű szavazás
-      choose_hint: A szavazók kiválasztják a legjobb lehetőséget (vagy lehetőségeket)
-      score: Pontszám
-      score_hint: A szavazók minden opcióhoz pontszámot rendelnek
-      allocate: Kioszt
-      allocate_hint: A szavazók pontokból álló költségvetést osztanak fel a lehetőségek között
-      ranked_choice: Sorrend választás
-      ranked_choice_hint: A szavazók a választási lehetőségeket a leginkább preferálttól a legkevésbé preferáltig rendezik
-      time_poll: Időpont választás
-      time_poll_hint: A szavazók jelzik, hogy mikor állnak találkozni
-    process: Folyamat
-    process_name: Sablon címe
-    process_name_hint: Hogy hívod ezt a sablont? Pl. Szereptanács, Hőmérséklet ellenőrzés, Jegyzőkönyv jóváhagyása
-    process_subtitle: Sablon alcím
-    process_subtitle_hint: Egysoros leírás arról, hogy mikor és miért érdemes használni ezt a sablont
-    process_introduction: Sablon súgó
-    process_introduction_hint: Néhány bekezdés, amely elmagyarázza a sablon használatát. Adjon meg hivatkozásokat olyan forrásokhoz, amelyek hasznosak lehetnek.
-    you_can_set_a_prompt_per_option: Szerkessze az egyes opciókhoz tartozó promptokat a részletek lapon
-    chart_type: Diagram típusa
-    title: Cím
-    title_hint: Milyen döntést kell meghoznia?
-    no_options_add_some: Ebben a szavazásban nincs lehetőség, adjon meg néhányat alább.
-    details: Részletek
-    example_details: Példa részletek
-    details_placeholder: Itt a lehetőség, hogy elmagyarázza, mire szavaznak az emberek
-    options: Lehetőségek
-    options_placeholder: Sorolja fel a rendelkezésre álló lehetőségeket
-    no_options: Még nem adtál meg egyetlen lehetőséget sem.
-    closing: Záródik
-    closed: Zárva
-    start: Indítás
-    start_poll: Indítsd el a szavazást
-    stance_reason_required_label: A szavazás okának megadása...
-    stance_reason_required: Kívánt
-    stance_reason_optional: Választható
-    stance_reason_disabled: Tiltva
-    stance_reason_is_required: Kérjük, szavazatát indokolja
-    limit_reason_length: Az ok legfeljebb 500 karakterből állhat
-    save_poll: Szavazás mentése
-    start_poll_type: 'Indítsa el a következőt: %{poll_type}'
-    share_poll_type: "%{poll_type} megosztása"
-    who_may_vote: Ki szavazhat ebben a %{poll_type}-ben?
-    update: Frissít
-    add_voters: Szavazók hozzáadása
-    notify_invitees: Értesítések küldése
-    no_notifications_warning: A választókat nem értesítik. Ez akkor hasznos, ha sok szavazást futtat, és azt tervezi, hogy később mindenkit értesít.
-    count_voters_added: "%{count} szavazó hozzáadva"
-    poll_type_created: "%{poll_type} létrehozva"
-    poll_type_started: "%{poll_type} elindult"
-    poll_type_updated: "%{poll_type} frissítve"
-    reason_prompt: Indoklás
-    anonymous_voting: Névtelen szavazás
-    anonymous_voting_description: Ha engedélyezve van, a szavazók személyazonossága nem lesz társítva a szavazataikkal. Ezt nem lehet visszacsinálni.
-    votes_are_anonymous: A szavazatok névtelenek
-    vote_reason: Szavazás oka
-    vote_reason_description: Hasznos lehet megérteni, miért szavaztak az emberek úgy, ahogy szavaztak. Ezzel a beállítással arra kérheti az embereket, hogy osszák meg gondolataikat, amikor szavaznak.
-    hide_results_description: Ha azt szeretné, hogy az emberek anélkül szavazzanak, hogy tudnák, mások hogyan szavaztak, elrejtheti a szavazás eredményeit.
-    process_helptext: Nevezze meg és írja le a szavazás futtatásához használt folyamatot.
-    reminder_helptext: A szavazás bezárása előtt küldjön egy „Hamarosan zárás” értesítést. Ez lehetõség lehet az emberek számára, hogy megnézzék, hogyan szavaztak mások, és átgondolják saját szavazatukat, vagy csak egy módja annak, hogy növeljék a szavazásban való részvételt.
   poll_proposal_form:
     start_header: Javaslat indítása
     edit_header: A javaslat szerkesztése
@@ -2161,7 +2124,6 @@ hu:
     no_options: Még nem adtál meg egyetlen lehetőséget sem.
     add_option_placeholder: Írjon be egy új választást
     minimum_stance_choices: Lehetőségek, amiket rangsorolni kell
-    minimum_stance_choices_helptext: Hány választási lehetőséget kap a választó?
     minimum_stance_choices_hint: azaz rangsorolja a legjobb 3 ízű fagylaltot
     ranked_choice_created: Ranked választás létrejött
     ranked_choice_updated: A rangsorolt választás frissítve
@@ -2169,9 +2131,13 @@ hu:
     points: Pont
     average: Átlagos
     mean: Átlagos
-    pct_of_points: pontok %-a
-    pct_of_voters: a szavazók %-a
     percent: Százalék
+    pct_of_points: Pontok %-a
+    pct_of_votes_cast: a leadott szavazatok %-a
+    pct_of_voters: a jogosult szavazók százalékos aránya
+    number_of_choices: Választási lehetőségek száma
+    how_many_ranking_positions_explained: 'Példa: Ha 3-ra van állítva, minden szavazó három lehetőséget rangsorolhat. Az első választás 3 pontot, a második 2-t, a harmadik pedig 1-et kap. A rangsorolatlan lehetőségek 0 pontot kapnak.'
+    minimum_stance_choices_helptext: Hány választási lehetőség közül választhat minden szavazó?
   poll_meeting_time_field:
     add_time_slot: Idősáv hozzáadása
     new_time_slot: Új időrés
@@ -2210,6 +2176,11 @@ hu:
   poll_common_percent_voted:
     sentence: "%{numerator}/%{denominator} ember vett részt (%{percent}%)"
     target_progress: A cél %{percent}%-a elérve. (%{num} / %{target})
+    pct_of_eligible_voters_must_participate: A választásra jogosult szavazók %{pct}%-ának kell részt vennie
+    vote_short_of_quorum: Még 1 szavazat szükséges a %{pct}% kvórum eléréséhez
+    votes_short_of_quorum: "%{num} további szavazat szükséges a %{pct}%-os kvórum eléréséhez"
+    quorum_reached: A határozatképesség elérte a %{pct}%-ot
+    pct_participation: A leadott szavazatok %{num} százaléka a %{total} szavazatból (%{pct}% részvétel)
   poll_meeting_chart_panel:
     total: Összesen
   poll_remove_vote:
@@ -2241,146 +2212,6 @@ hu:
     helptext: Húzd át a beállításokat preferencia szerinti sorrendben (az 1-es a leginkább preferált lehetőség). Legnépszerűbb %{count} választása rögzítésre kerül.
     stance_created: A választást rögzítették
     stance_updated: A választás frissítve
-  poll_templates:
-    proposal:
-      process_subtitle: Tegyen fel egy javaslatot a döntés meghozatalához
-      process_introduction: <p>A klasszikus Loomio-javaslat segít a döntés meghozatalában, és a vitát egyértelmű eredményre fordítja.</p><p> Javasoljon cselekvési irányt, és kérje meg az embereket, hogy az egyetértés, a tartózkodás vagy a nem egyetértés mellett szavazzanak.</p><p> Miközben az emberek szavaznak, meg tudják indokolni, miért szavaztak így. Láthatja, hogy a többiek hol áll a dologhoz, és miért.</p><p> Ily módon egy javaslat segítségével válaszadásra késztetheti az embereket, új információkat tárhat fel, és közös megértést alakíthat ki – ezzel segítve csoportját egy jobb, megalapozottabb döntés meghozatalában.</p><p> A javaslat és a kapcsolódó megbeszélés saját rekordot hoz létre arról, hogy a döntés hogyan született.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>További információ a klasszikus Loomio javaslat használatáról az Egyszerű döntési folyamatban</u></a> .</p>
-      title: Hagyja jóvá az új márkakoncepciót
-      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Milyen döntést kell meghoznia?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Ez miért fontos?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mit kérsz az emberektől?</strong></h3><p></p><p> Ahhoz, hogy ez a javaslat elfogadásra kerüljön, a tagok többségének az Egyetértés mellett kell szavaznia.</p><p> Ha nem értesz egyet, mondd el, miért és min kell változtatni ahhoz, hogy egyetérts. \U0001F642</p>
-      agree: Egyetért
-      agree_meaning: Támogatom a javaslatot
-      agree_prompt: Mi tetszik a javaslatban, és milyen előnyökkel jár a csoport számára?
-      abstain: Tartózkodni
-      abstain_meaning: Úgy döntött, hogy nem szavaz, vagy nem tud szavazni ebben a határozatban.
-      abstain_prompt: Miért tartózkodik, vagy nem érzi magát képesnek megszavazni ezt a döntést?
-      disagree: Nem ért egyet
-      disagree_meaning: Ebben a javaslatban valamit módosítani kell, mielőtt támogathatnám.
-      disagree_prompt: Hogyan lehetne javítani ezen a javaslaton, hogy Ön támogathassa azt?
-    advice:
-      process_subtitle: Kérjen tanácsot a meghozandó döntéshez
-      process_introduction: <p>Kérjen tanácsot egy meghozandó döntéssel kapcsolatban az érintett vagy szakértelemmel rendelkező személyek tanácsával, hogy jobb döntést hozhasson szervezete számára.</p><ul><li><p> A tanácsok segítenek jobb döntés meghozatalában a szervezet számára.</p></li><li><p> Elősegíti a kapcsolatokat, a tanulási lehetőségeket és a sokrétű hozzájárulást.</p></li><li><p> Ösztönözze a kezdeményezést és a kreativitást, és élvezze a munkát.</p></li></ul><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>További információ a Tanácsadás folyamatáról</u></a> .</p>
-      title: Segíts Takashinak új számítógépet vásárolni
-      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Milyen döntést kell meghoznia?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Ez miért fontos?</strong></h3><p></p><h3 id="what-advice-are-you-asking-from-people-to-help-you-make-a-go"> <strong>Milyen tanácsokat kér az emberektől, hogy segítsen meghozni a jó döntést?</strong></h3><p></p><p> Az Ön véleményét szeretném kérni, hogy jó döntést hozzak szervezetünk számára.</p>
-      agree: Egyetért
-      agree_meaning: Megadtam a tanácsomat ezzel a döntéssel kapcsolatban
-      agree_prompt: Foglalja össze tanácsát, vagy tegyen hasznos megjegyzést
-      abstain: Tartózkodni
-      abstain_meaning: Nincs tanácsom
-      abstain_prompt: Van olyan megjegyzése, amely hasznos lehet?
-    consent:
-      process_subtitle: Hozz olyan döntést, amely „megpróbálható”, kifogás nélkül
-      process_introduction: <p>Kérjen beleegyezést egy olyan döntéshez, amelyet meg kell hoznia, ha nincs érdemi kifogás a javaslatával szemben, így szervezete számára gyors döntést hozhat, amely „megpróbálható”.</p><ul><li><p> Törekedjen egy „elég jó” döntésre</p></li><li><p> Vonjon be sok hangot egy működőképes javaslat kidolgozásához</p></li><li><p> Kérdezd meg, van-e valakinek jogos kifogása</p></li><li><p> A javaslat módosítása a kifogások megoldása érdekében</p></li></ul><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consent_process/index.html">További információ a hozzájárulási folyamatról</a> .</p>
-      title: Bérelje fel Chloe-t tervezői szerepkörre
-      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Milyen döntést kell meghoznia?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Ez miért fontos?</strong></h3><p></p><h3 id="what-are-you-asking-of-people-in-this-proposal"> <strong>Mit kérsz az emberektől ebben a javaslatban?</strong></h3><p></p><p> Ha kifogása van, kérjük, mondja meg, miért, és javasoljon olyan módosítást a javaslaton, amely biztonságossá teszi.</p><p> Ne feledje, hogy beleegyezést kérünk egy „elég jó” döntéshez, amelyet „biztonságos kipróbálni”, hogy jó döntést hozhassunk szervezetünk számára.</p>
-      consent: Beleegyezés
-      consent_meaning: A javaslat kipróbálható
-      consent_prompt: Mi tetszik a javaslatban, és milyen előnyökkel jár a szervezet számára?
-      objection: Ellenvetés
-      objection_meaning: Jogos kifogásom van, és úgy gondolom, hogy a javaslat kárt okoz
-      objection_prompt: Milyen változtatásra van szükség ezen a javaslaton, hogy „biztosan kipróbálható legyen”, hogy Ön is támogathassa?
-    consensus:
-      process_subtitle: Kössön kollektív szerződést minden érintettel
-      process_introduction: <p>Konszenzus kialakítása egy olyan döntéshez, amelyet meg kell hoznia, hogy olyan megállapodást érjen el, amely kielégíti az összes résztvevő igényeit és aggályait.</p><ul><li><p> Beszéljétek meg és dolgozzanak ki egy javaslatot együtt</p></li><li><p> Be kell vonni és tisztelni minden érintettet</p></li><li><p> Kérjen megállapodást a legtöbb embertől</p></li></ul><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consensus_process/index.html">További információ a konszenzus folyamatáról</a> .</p>
-      title: Hagyja jóvá az új márkakoncepciót
-      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Milyen döntést kell meghoznia?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Ez miért fontos?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mit kérsz az emberektől?</strong></h3><p></p><p> Ahhoz, hogy ez a javaslat elfogadásra kerüljön, a tagok többségének az Egyetértés mellett kell szavaznia.</p><p> Ha nem értesz egyet, mondd el, miért és min kell változtatni ahhoz, hogy egyetérts.</p>
-      agree: Egyetért
-      agree_meaning: Támogatom a javaslatot
-      agree_prompt: Mi tetszik a javaslatban, és milyen előnyökkel jár a szervezet számára?
-      abstain: Tartózkodni
-      abstain_meaning: Ez a döntés nem érint engem, és elégedett vagyok bármivel is, amit a csoport dönt
-      abstain_prompt: Miért tartózkodik, vagy nem érzi magát képesnek megszavazni ezt a határozatot?
-      disagree: Nem ért egyet
-      disagree_meaning: Ebben a javaslatban valamit módosítani kell, mielőtt támogathatnám
-      disagree_prompt: Hogyan lehetne javítani ezen a javaslaton, hogy Ön támogathassa azt?
-      block: Blokk
-      block_meaning: Megakadályozom ezt a javaslatot, és úgy gondolom, hogy nem szabad folytatni
-      block_prompt: Indokolja ki a javaslattal szembeni kifogását, és indokolja meg, hogy miért ne lehetne elfogadni
-    question_round:
-      process_subtitle: Tegyen fel tisztázó kérdéseket, hogy segítsen az embereknek megérteni egy javaslatot
-      process_introduction: <p>A kérdéskör lehetőséget kínál arra, hogy az emberek tisztázó kérdéseket tegyenek fel a javaslattal kapcsolatban, hogy mindenki megértse a javaslatot, mielőtt elmondaná, mit gondol róla.</p><p> A Loomio kérdéskör egy speciális javaslat, szavazati lehetőség nélkül. Lehetővé teszi a résztvevők számára, hogy kérdéseket tegyenek fel a fordulóra beállított időtartamon belül.</p><p> A kérdéskört általában a beleegyezési folyamat egyik lépéseként használják.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consent_process/index.html">További információ a hozzájárulási folyamatról</a> .</p>
-      title: Milyen kérdései vannak az egészségügyi és biztonsági politikával kapcsolatban?
-      details: <h3 id="what-are-you-proposing"><strong>Mit ajánlasz?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Ez miért fontos?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mit kérsz az emberektől?</strong></h3><p></p><p> Ez egy kérdéskör, ahol felkérik Önt, hogy tisztázó kérdéseket tegyen fel.</p><p> Mit kell tudnia ahhoz, hogy megértse a javaslatot?</p><p> Kérjük, válaszoljon a kérdéskör lezárása előtt.</p>
-      reason_prompt: Mit kell tudnia ahhoz, hogy megértse a javaslatot?
-    sense_check:
-      process_subtitle: Kérjen visszajelzést, kérdéseket és aggályokat
-      process_introduction: <p>A Sense Check javaslat jó módja annak, hogy visszajelzést kapjon, kérdéseket tegyen fel és feltárja aggodalmait. Segít tisztázni és javítani a javaslatot, mielőtt döntést hozna.</p><p> Az Érzékellenőrzés tudatja az emberekkel, hogy javaslat készül, és ösztönzi őket a részvételre. Ez egy lehetőség arra, hogy meghallgassuk az embereket, érzékeljük, hogyan érzik magukat, és megfelelően reagáljunk – megnyílik a lehetőség, hogy beépítsük hozzájárulásaikat egy jobb döntés meghozatalához.</p><p> Használja az Érzékelés-ellenőrzési javaslatot a hozzájárulási folyamatban, hogy reakciókat és megjegyzéseket kérjen a javaslat javítása érdekében, a konszenzusos folyamatban pedig a konszenzus teszteléséhez.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>További információ a Sense check használatáról az Egyszerű döntési folyamatban</u></a> <span>.</span></p>
-      title: Mi a véleményed az új márkakoncepciókról?
-      details: <h3 id="what-are-you-proposing"><strong>Mit ajánlasz?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Ez miért fontos?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mit kérsz az emberektől?</strong></h3><p></p><p> Hogyan vélekedik a javaslatról? Hagyjon megjegyzést, vagy tegyen javaslatot a javításra.</p><p> Ez az Érzékellenőrzés lehetőséget kínál az Ön hozzájárulására és hozzájárulására, hogy segítsen nekünk a jobb döntés meghozatalában.</p>
-      not_sure: Nem biztos
-      not_sure_meaning: Kérdésem van, vagy több időre van szükségem
-      not_sure_prompt: Mely részek nem világosak számodra? Hogyan lehetne ezt megoldani?
-      looks_good: Jól néz ki
-      looks_good_meaning: Örülök, hogy ez merre tart
-      looks_good_prompt: Van-e észrevétele vagy javaslata a javaslat jobbítására?
-      abstain: Tartózkodni
-      abstain_meaning: Ehhez a munkához nincs hozzáfűznivalóm, és nincs kifogásom.
-      abstain_prompt: A tartózkodás a jelen javaslat irányvonalával való egyetértést jelenti. Van valami oka annak, hogy a tartózkodás mellett szavaz?
-      concerned: Aggódó
-      concerned_meaning: Lehet, hogy ezen valamit módosítani kell ahhoz, hogy beleegyezhessem vagy beleegyezhessek
-      concerned_prompt: Mi aggaszt, és hogyan lehet kezelni?
-    gradients_of_agreement:
-      process_subtitle: Nyolcfokozatú skálán fejezze ki támogatását egy javaslathoz
-      process_introduction: "<p>Az egyetértés gradiensei javaslat lehetővé teszi, hogy egy csoport tagjai egy skálán fokokban fejezzék ki támogatásukat egy javaslattal kapcsolatban, több módot kínálva a támogatás kifejezésére, mint az „egyetértek” és a „nem értek egyet”.</p><p> Használja az Egyetértési gradienseket előzetes körként, hogy tesztelje egy javaslat támogatottságát, mielőtt formális megállapodásra lépne.</p><p> Az egyetértés gradiensei tudatják az emberekkel, hogy javaslat van kialakulóban, és részvételre ösztönzi őket. Ez egy lehetőség arra, hogy meghallgassuk az embereket, érzékeljük, hogyan érzik magukat, és megfelelően reagáljunk – megnyílik a lehetőség, hogy beépítsük hozzájárulásaikat egy jobb döntés meghozatalához.</p>"
-      title: Hogy tetszik az új értéknyilatkozat?
-      details: <h3 id="what-are-you-proposing"><strong>Mit ajánlasz?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Ez miért fontos?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mit kérsz az emberektől?</strong></h3><p></p><p> Hogy tetszik a javaslat? Fejezze ki támogatását az alábbi skálán, és hagyjon megjegyzést vagy javaslatot a fejlesztésre.</p><p> Ez a megállapodási gradiens-javaslat célja, hogy tesztelje az ajánlat támogatottságát, és lehetőséget biztosítson az Ön hozzájárulására, mielőtt formális megállapodásra lépne.</p>
-      whole_hearted_endorsement: Teljes szívvel való jóváhagyás
-      whole_hearted_endorsement_meaning: Nagyon tetszik!
-      whole_hearted_endorsement_prompt: Mi tetszik benne?
-      agreement_with_minor_contention: Egyetértés kisebb ellentmondásokkal
-      agreement_with_minor_contention_meaning: Nem tökéletes, de elég jó
-      agreement_with_minor_contention_prompt: Mi a gondod?
-      support_with_reservations: Támogatás foglalásokkal
-      support_with_reservations_meaning: tudok élni vele
-      support_with_reservations_prompt: Milyen fenntartásai vannak?
-      abstain_meaning: Ez a probléma engem nem érint
-      abstain_prompt: Van valami, amit hozzá szeretne adni?
-      more_discussion_needed: További vita szükséges
-      more_discussion_needed_meaning: Még nem értem eléggé a problémákat
-      more_discussion_needed_prompt: Mit nem értesz?
-      don_t_like_but_will_support: Nem tetszik, de támogatni fog
-      don_t_like_but_will_support_meaning: Nem nagyszerű, de nem akarom feltartani a csoportot
-      don_t_like_but_will_support_prompt: Mit szeretnél javítani?
-      serious_disagreement: Komoly nézeteltérés
-      serious_disagreement_meaning: Nem értek ehhez – ne számíts rám
-      serious_disagreement_prompt: Mivel nem értesz egyet?
-      veto: Vétó
-      veto_meaning: blokkolom ezt a javaslatot
-      veto_prompt: Miért blokkolja a javaslatot? Min kell változtatni ahhoz, hogy támogasd?
-    simple_poll:
-      process_subtitle: Keresse meg a legnépszerűbb lehetőséget
-      process_introduction: <p>Mielőtt döntést hozna, találja meg, hogy az emberek melyik opció(k)ra számítanak leginkább.</p><p> Az egyszerű szavazás segít megtalálni a legnépszerűbb egy vagy több választási lehetőséget.</p><p> Írja be az opciók részleteit a részletek mezőbe, majd írja be az opció nevét, és kattintson a + gombra a hozzáadáshoz.</p><p> Állítsa be a szavazók által választható <strong>minimális</strong> és <strong>maximális választási</strong> lehetőségeket. Hagyja meg a maximális választási lehetőséget 1-ben egy szavazásnál.</p><p> Használhatja az egyes opciók melletti ceruza ikont, hogy hozzáadja az opció <strong>jelentését</strong> , és tovább részletezze a lehetőséget, hogy segítsen az embereknek a szavazás során.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">További információ az egyszerű szavazásról</a> .</p>
-      title: Hol legyen stratégiai irányunk fókusza?
-      details: <h3 id="what-is-this-poll-about"><strong>Miről szól ez a szavazás?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Ez miért fontos?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mit kérsz az emberektől?</strong></h3><p></p><p> Válassza ki az Ön által kedvelt opció(ka)t.</p>
-    score_poll:
-      process_subtitle: Mérje meg az egyes lehetőségek támogatottságának mértékét
-      process_introduction: <p>Használja a Score poll-ot, ha szeretné megkérdezni az embereket az egyes lehetőségek iránti vágyukról, preferenciáikról vagy érdeklődésükről.</p><p> <span>A résztvevőket arra kérik, hogy értékeljék az egyes lehetőségeket, és adjon pontszámot egy csúszka mozgatásával a skála mentén.</span></p><p> <span>Az eredmények grafikusan jelennek meg az egyes opciókhoz tartozó táblázattal együtt, amely az összpontszámot, az átlagpontokat és a szavazók számát mutatja.</span></p><p> A speciális beállítások közé tartozik a „A szavazatok névtelenek” és a „Lehetőségek megjelenítése véletlenszerű sorrendben” – általában a Score szavazásnál használatos, hogy csökkentsék a szavazás elfogultságát.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">További információ a Score szavazásról</a> .</p>
-      title: Felmérni, hogyan születnek döntések szervezetünkben
-      details: <h3 id="what-is-this-poll-about"><strong>Miről szól ez a szavazás?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Ez miért fontos?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mit kérsz az emberektől?</strong></h3><p></p><p> Válassza ki az Ön által kedvelt opció(ka)t.</p>
-    dot_vote:
-      process_subtitle: Rendeljen pontokból álló költségvetést a prioritások feltárásához
-      process_introduction: <p>A pontszavazás olyan csoportok számára hasznos, amelyek korlátozott erőforrásokat próbálnak lefoglalni számos lehetőséghez. Ez túlmutat egy egyszerű szavazáson azáltal, hogy segít a résztvevőknek megérteni, hogy az opciók kiválasztásakor korlátok vannak.</p><p> A résztvevők egy meghatározott számú pontot kapnak. Te döntöd el, hányat.</p><p> Pontokat helyeznek el a nekik tetsző lehetőségek mellett. A résztvevők az összes pontjukat egyetlen opcióra helyezhetik, vagy több lehetőség között eloszthatják.</p><p> Ahogy a résztvevők pontokat osztanak ki, előfordulhat, hogy túllépik a pontköltségkeretet, ezért arra ösztönzik őket, hogy alaposan fontolják meg, hogyan költik el pontjaikat.</p><p> A legtöbb pontot tartalmazó opciók „nyernek”. Az eredmények táblázata további adatokat tartalmaz az eredmények elemzéséhez.</p><ul><li><p> pontok %-a</p></li><li><p> Pontok</p></li><li><p> Átlagos</p></li><li><p> Választók</p></li></ul><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">További információ a Dot szavazásról</a> .</p>
-      title: Konferenciánk témáinak kiválasztása
-      details: <h3 id="what-is-this-poll-about"><strong>Miről szól ez a szavazás?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Ez miért fontos?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mit kérsz az emberektől?</strong></h3><p></p><p> Ebben a szavazásban 8 pontból álló költségvetésed van, hogy az általad preferált lehetőségekhez hozzárendelhesd. Az összes pontot elhelyezheti egy lehetőségre, vagy szétterítheti őket.</p>
-    ranked_choice:
-      process_subtitle: Értse meg az opciók sorrendjét
-      process_introduction: <p>A rangsorolt választás akkor hasznos, ha sok választási lehetősége van, vagy választást tart.</p><p> Ez a szavazási sablon egy sor lehetőséget kínál az emberek számára, hogy a kívánt sorrendben szavazzanak.</p><p> Beállíthatja, hogy a választó hány választási lehetőséget kapjon.</p><p> <span>A szavazók húzza át az opciókat preferencia szerinti sorrendben (az 1. szám a leginkább preferált lehetőség).</span></p><p> <span>A speciális beállítások közé tartozik a „A szavazatok névtelenek” és a „Lehetőségek megjelenítése véletlenszerű sorrendben” – általánosan használt R</span> anked választásoknál, hogy csökkentsék a szavazás elfogultságát.</p><p> Az eredmények rangsorolt sorrendben jelennek meg. Az eredmények táblázata további adatokat tartalmaz az eredmények elemzéséhez.</p><ul><li><p> Rang</p></li><li><p> pontok %-a</p></li><li><p> Pontok</p></li><li><p> Átlagos</p></li></ul><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">További információ a rangsorolt választásról</a> .</p>
-      title: Az igazgatótanácsba igazgatókat választanak
-      details: <h3 id="what-is-this-poll-about"><strong>Miről szól ez a szavazás?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Ez miért fontos?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mit kérsz az emberektől?</strong></h3><p></p><p> Szavazz úgy, hogy tetszés szerint rangsorolja a lehetőségeket. Az az opció nyer, amelyik az első helyen áll az eredményekben.</p>
-    time_poll:
-      process_subtitle: Keresse meg, mikor állnak rendelkezésre emberek a találkozásra
-      process_introduction: <p><span>Takarítson meg időt a találkozó vagy esemény időpontjának egyeztetésével.</span></p><p> Az Időkutatás segítségével könnyen megtekintheti mindenki elérhetőségét, és megtalálhatja a legjobb időt.</p><p> Adja meg a Time szavazás címét és részleteit. Adja meg a dátum- és időbeállítások listáját az időzónájában.</p><p> Az idősávok beállításakor vegye figyelembe a különböző időzónákban élő embereket. A résztvevők az időzónájukban lokalizálva látják az időpontokat.</p><p> Állítsa be a megbeszélés időtartamát.</p><p> Amikor az Idő szavazás bezárul, állítsa be a legjobb időpontot és az értekezletre vonatkozó utasításokat tartalmazó eredményt.</p><p> <span>A Loomio egy naptári meghívót mellékel az eredményértesítő e-mailhez, így a résztvevők hozzáadhatják a naptárukat.</span></p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">További információ a Time pollról</a> .</p>
-      title: Találjunk időpontot a következő találkozásunkra
-      details: <p><strong>Mi a találkozó vagy esemény?</strong></p><p></p><p> <strong>Ez miért fontos?</strong></p><p></p><p> <strong>Mit kérsz az emberektől?</strong></p><p></p><p> <span>Jelölje be a rendelkezésre álló idősávokat a zöld "tetszik" ikonnal, vagy hagyja a piros "nem tetszik" ikont, ha nem elérhető.</span></p><p> <span>Használja a „hüvelykujj oldalra” ikont, hogy jelezze, „ha szükséges”, elérhető.</span></p>
-      reason_prompt: Tudsz valamit mondani, ami segíthet a szervezőnek megfelelő időpont megtalálásában?
-    opt_in:
-      process_subtitle: Keressen önkénteseket, vagy kérjen résztvevőket
-      process_introduction: '<p>Az Opt-in funkcióval meghívhat embereket egy csapatba, bizottságba vagy munkacsoportba, vagy részt vehet egy eseményen.</p><p> Az „Opt-in” két szavazási lehetőség közül választhat: Elfogadás vagy Elutasítás.</p><p> Meghatározhatja a keresett személyek célszámát, mondjuk 3 embert, aki csatlakozhat a munkacsoportjához.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#opt-in">További információ a feliratkozásról</a> .</p>'
-      title: Munkacsoport az új fenntarthatósági politikánk kidolgozására
-      details: "<p><strong>Mi az a csapat, munkacsoport vagy esemény, amelyre meghívja az embereket?</strong></p><p></p><p> <strong>Ez miért fontos?</strong></p><p></p><p> <strong>Mit kérsz az emberektől?</strong></p><p></p><p> A részvételhez válassza az „Elfogadás” lehetőséget!</p>"
-      accept_meaning: hajlandó vagyok részt venni
-      accept_prompt: Miért önkénteskedsz erre?
-      decline_meaning: nem tudok részt venni
-      decline_prompt: Van valami, amit szeretne mondani?
   thread_item:
     removed: Elem törölve
     deleted_group: Törölt csoport
@@ -2405,6 +2236,7 @@ hu:
     stance_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> szavazott: <strong>%{title}</strong>"
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> frissítette szavazatát erre: <strong>%{title}</strong>"
     event_removed: Eltávolítva a témából
+    new: új
   add_poll_to_thread_modal:
     success: Sikeres, %{pollType} hozzáadva a szálhoz!
   auth_form:
@@ -2434,7 +2266,6 @@ hu:
     account_locked: Túl sok sikertelen bejelentkezési kísérlet után zárolódott a fiókod. Ellenőrizze e-mail címét, hogy nincs-e kinyitási link
     email_not_found: Sajnos nem találtunk ilyen e-mail címmel rendelkező fiókot
     email_taken: Ez az email fiók már regisztrálva van
-    email_placeholder: you@example.com
     login_with_token: Minden készen állsz A folytatáshoz kattintson az alábbi linkre.
     login_link_helptext: Kattintson az alábbi gombra, és küldünk egy linket a bejelentkezéshez.
     enter_your_password: Add meg a jelszavad a folytatáshoz
@@ -2475,6 +2306,7 @@ hu:
     reactivate: A fiók újraaktiválása
     want_to_set_password: Legközelebb jelszóval szeretne bejelentkezni?
     change_your_password: Szeretne új jelszót beállítani?
+    email_placeholder: te{'@'}example.com
   chatbot:
     configure_chatbot: A chatbot konfigurálása
     test_connection: Kapcsolat tesztelése
@@ -2500,6 +2332,7 @@ hu:
     event_kind_helptext: Válassza ki az eseményeket, amelyekről a bot mindig értesítést kap. Ha nem vagy biztos benne, hagyd ki őket.
     notification_only_label: Csak az értesítés címsorának küldése
     check_for_test_message: Nézze meg csevegőszobájában üzenetet a bottól!
+    webex: Webex
   webhook:
     integrations: Integrációk
     api_keys: API kulcsok
@@ -2532,8 +2365,6 @@ hu:
     name_placeholder: Adjon nevet ennek az integrációnak, hogy azonosítani tudja
     event_kind_helptext: Mely eseményekről szeretné, hogy a webhook értesítést kapjon?
     event_kinds:
-      new_discussion: A téma elindult
-      discussion_edited: A témát szerkesztették
       poll_edited: A szavazást szerkesztették
       new_comment: Új komment
       poll_created: Új szavazás
@@ -2546,6 +2377,8 @@ hu:
       outcome_created: A szavazás eredménye
       outcome_updated: A szavazás eredménye megváltozott
       outcome_review_due: Az eredmény értékelésének időpontja
+      new_discussion: Megbeszélés indult
+      discussion_edited: Egy beszélgetés szerkesztve van
     permissions_explaination: Válassza ki, hogy mely műveletek hajthatók végre ezzel az integrációval
     permissions:
       show_discussion: beszélgetést mutatnak
@@ -2596,3 +2429,246 @@ hu:
     month: Hónap
     year: Év
     country_disclaimer: Az ország a felhasználó IP-címén alapul, és nem túl pontos. Tekintse ezt csak hozzávetőleges útmutatónak.
+    total_discussions: Összes megbeszélés
+    discussions_with_polls: Beszélgetések szavazásokkal
+  tips:
+    youve_completed_all_the_steps: "\U0001F389 Minden lépést elvégeztél!"
+    getting_started_checklist: Első lépések ellenőrzőlistája
+    complete_these_steps_to_set_up_your_group: A csoport beállításához kövesse ezeket a lépéseket
+    hide:
+      title: Tippek elrejtése
+      hide_onboarding: Bevezetési tippek elrejtése
+      unhide_onboarding: Bevezetési tippek megjelenítése
+      helptext: "<p>Ez eltávolítja az „Első lépések ellenőrzőlistáját” a címsorból.</p><p> Ha később vissza szeretnéd hozni, az oldalsáv beállításaiban <b>megjelenítheted a bevezetési tippeket</b> .</p>"
+    intro:
+      tip_title: Kattintson ide a kezdéshez
+      title: Üdvözlünk az új Loomio csoportban!
+      body: "<p>Ez a rövid, apró lépésekből álló sorozat azt hivatott biztosítani, hogy a csoportba meghívott személyek jó első benyomást keltsenek bennük, és megértsék, hogyan kell részt venni a megbeszéléseken és a döntéshozatalban.</p><p> Az oldalsávon találod a Kapcsolatfelvétel az ügyfélszolgálattal gombot. Bármikor fordulj hozzánk bizalommal, ha kérdésed van, vagy tanácsra van szükséged.</p>"
+      submit: Kezdjük el
+    group:
+      welcome_and_faq: Üdvözlünk! Olvasd el ezt a kezdéshez
+      upload_image:
+        title: Töltsd ki a csoportprofilodat
+        helptext: "<p>Tekintsük át a csoportprofilodat. A név, a leírás, a logó és a borítókép a következő lépésben elküldött meghívó e-mailekben fog szerepelni.</p><p> <b>Tegyél fel saját borítóképet a csoportodhoz</b> , ez segít jó első benyomást kelteni azokban, akiket meghívsz.</p><p> Használhatsz egy friss csapatképet, vagy egy olyan képet, amely a szervezeted munkáját vagy közösségét képviseli.</p>"
+        open_group_settings: Csoportbeállítások megnyitása
+      invite_people:
+        title: Hívj meg másokat a csoportba
+      start_a_thread:
+        title: Indíts egy témát
+        helptext: "<p>Hozz létre egy témát, amelyet az emberek a meghívás elfogadása után látni fognak.</p><p> A cél az, hogy ösztönözzék az embereket arra, hogy első hozzászólásukat a Loomióban írják meg.</p><p> A könnyebb ügyintézéshez készítettünk egy <b>gyakorlószál-sablont,</b> amit használhatsz.</p>"
+        submit: Témasablonok megtekintése
+      start_a_proposal:
+        title: Javaslat indítása
+        helptext: "<p>A Loomióban javaslatokat használunk egy döntés alátámasztásának feltárására, vagy annak javítására szolgáló módok megtalálására.</p><p> Kezdjünk el egy javaslatot benyújtani, és kérjük meg a csoport tagjait, hogy szavazzanak róla.</p><p> Létrehoztunk egy <b>gyakorló javaslat</b> sablont, amit használhatsz.</p>"
+        submit: Ajánlatsablonok megtekintése
+      share_an_outcome:
+        title: Javaslat eredményének megosztása
+        helptext: "<p>A döntéshozatal elősegítése érdekében a javaslatokra szavazási határidő vonatkozik. A határidő lejártakor a szavazás lezárul, és Ön értesítést kap, hogy ossza meg a javaslat eredményét.</p><p> Az eredmény lehetőséget ad arra, hogy megmondjuk, sikeres volt-e a javaslat, és mi fog történni a továbbiakban.</p><p> Ha a javaslat határideje még nem járt le, de ennek ellenére folytatni szeretné, kattintson <b>a Korai bezárás gombra</b> .</p><p> Amikor eljön a megfelelő idő, <b>add meg a javaslatod eredményét</b> .</p>"
+        submit: Ajánlat megtekintése
+        cancel: Később csináld meg
+      start_a_discussion:
+        title: Beszélgetés indítása
+        helptext: "<p>Hozz létre egy beszélgetést, amelyet az emberek a meghívás elfogadása után fognak látni.</p><p> A cél az, hogy ösztönözzék az embereket arra, hogy első hozzászólásukat a Loomióban írják meg.</p><p> Ennek megkönnyítése érdekében készítettünk egy <b>gyakorló megbeszélés</b> sablont, amelyet használhatsz.</p>"
+        submit: Vitasablonok megtekintése
+    get_started_here: Kezdje el itt
+    try_loomio_with_your_group: Próbáld ki a Loomiót a csoportoddal
+  poll_common_settings:
+    who_can_vote: Ki szavazhat?
+    specified_voters_only_true: Csak meghívottak
+    specified_voters_only_false_group: Bárki a csoportban
+    specified_voters_only_false_discussion: Bárki a témában
+    invite_people_next: A %{poll_type} elindítása után kiválaszthatod, hogy kiket hívnak meg szavazni.
+    show_none_of_the_above: Tartalmazzon egy „A fentiek egyike sem” opciót
+    show_options_in_random_order: Opciók megjelenítése véletlenszerű sorrendben
+    reduce_bias_by_showing_options_in_random_order: Csökkentsd az elfogultságot a lehetőségek véletlenszerű sorrendben történő megjelenítésével.
+    multiple_choice:
+      title: Feleletválasztós
+      helptext_on: A kiválasztás után a résztvevők több lehetőség közül választhatnak.
+    anyone_can_participate:
+      title: Bárki, aki rendelkezik linkkel, részt vehet
+      helptext_on: Ha kiválasztották, bárki részt vehet benne, aki rendelkezik a szavazás linkjével.
+    notify_on_closing_soon:
+      voting_closes_too_soon: Mivel a szavazás 24 órán belül lezárul, nem küldünk emlékeztetőt a hamarosan lezárásra vonatkozóan.
+      closes_too_soon: Mivel ez a %{pollType} 24 órán belül lezárul, nem küldünk emlékeztetőt a hamarosan lezárásra vonatkozóan.
+      title: '24 órával a %{pollType} lezárása előtt küldjön emlékeztetőt a következő címre:'
+      voting_title: '24 órával a szavazás lezárása előtt küldjön emlékeztetőt a következő címre:'
+      nobody: Senki
+      author: Szerző (én)
+      undecided_voters: bizonytalan szavazók
+      voters: Minden szavazó
+    notify_on_participate:
+      title: Értesítsen, ha valaki részt vesz
+      helptext_on: Amikor kiválasztották, értesítést kapsz, valahányszor valaki részt vesz.
+    anonymous:
+      title: Névtelen szavazók
+      helptext_on: Ha be van jelölve, a résztvevők adatai nem jelennek meg minden egyes válasznál.
+    voter_can_add_options:
+      title: A szavazók alternatív lehetőségeket is hozzáadhatnak
+    can_respond_maybe:
+      title: A választók „szükség esetén” válaszolhatnak.
+    allow_long_reason:
+      title: A szavazás „indoklása” mező 500 karakternél hosszabb lehet
+    hide_results_until_closed:
+      title: Eredmények elrejtése bezárásig
+      helptext_on: Ne mutasd meg, hogyan szavaztak az emberek, amíg a szavazás le nem zárul
+    short_reason_can_be_helpful: A rövid szavazási indokok könnyebben érthetők. A tömör indokok gyűjteménye nagyszerű forrás a döntéshozatalhoz.
+    shuffle_options: Véletlenszerű lejátszási beállítások
+  poll_common_form:
+    quorum: Határozatképesség
+    participation_quorum: Részvételi határozatképesség
+    quorum_hint: A szavazók hány százalékának kell részt vennie az érvényes eredményhez? Opcionális, hagyja üresen, ha nincs határozatképes.
+    quorum_placeholder: Hagyja üresen, vagy adjon meg egy számot 0 és 100 között
+    deadline: Határidő
+    notify_everyone_when_poll_starts: Értesítsen mindenkit, amikor a %{poll_type} elindul
+    option_has_votes_confirm_delete: Néhányan már szavaztak erre a lehetőségre, biztosan törölni szeretnéd?
+    example_title: Példa cím
+    example_title_hint: Mondj egy példát egy jó pályázati címre
+    example_details_placeholder: Adj kiindulópontot egy javaslathoz vagy közvélemény-kutatáshoz. A kérdések hasznosak lehetnek az írásra ösztönzésben. Tüntesd fel azokat a szabályokat vagy emlékeztetőket, amelyeket a résztvevőknek ismerniük kell.
+    confirm_delete: Biztosan törölni szeretné ezt a szavazássablont? Ez a művelet nem vonható vissza.
+    advanced_settings: Speciális beállítások
+    show_advanced_settings: Speciális beállítások megjelenítése
+    hide_advanced_settings: Speciális beállítások elrejtése
+    choose_at_least: Válassz legalább
+    choose_at_most: Válasszon legfeljebb
+    please_review_the_form: Kérjük, tekintse át az űrlapot
+    option_added_please_add_details: Lehetőség hozzáadva! Kérlek, adj meg néhány részletet, hogy az emberek tudják, mit jelent.
+    default_duration_in_days: Alapértelmezett időtartam napokban
+    how_many_options_can_a_voter_choose: Hány lehetőség közül választhat egy szavazó?
+    minimum_choices: Minimális választási lehetőségek
+    maximum_choices: Maximális választási lehetőségek
+    content: Tartalom
+    reminder: Emlékeztető
+    reminder_notification: Emlékeztető értesítés
+    your_in_zone: 'Aktuális időzóna: %{zone}'
+    show_other_zones: Mutasd a többi időzónát
+    hide_other_zones: Egyéb időzónák elrejtése
+    this_is_a_template_for_new_polls: Ez egy sablon új szavazásokhoz
+    voting_method: Szavazási módszer
+    none_of_the_above: A fentiek egyike sem
+    voting_methods:
+      question: Kérdéskör
+      question_hint: Kérjen kérdéseket és észrevételeket a javaslatával kapcsolatban
+      show_thumbs: Hüvelykujj felmutatása
+      show_thumbs_hint: A szavazók a hüvelykujjukat felfelé, lefelé, oldalra vagy a kéz felfelé állítását választhatják.
+      choose: Válasszon
+      simple_poll: Egyszerű szavazás
+      choose_hint: A szavazók a legjobb opciót (vagy opciókat) választják
+      score: Pontszám
+      score_hint: A szavazók pontszámot rendelnek minden opcióhoz
+      allocate: Kiosztás
+      allocate_hint: A szavazók pontokat osztanak szét a lehetőségek között.
+      ranked_choice: Rangsorolt választás
+      ranked_choice_hint: A választók a leginkább preferálttól a legkevésbé preferáltig rendezik a lehetőségeket
+      time_poll: Időközi szavazás
+      time_poll_hint: A választók jelzik, mikor tudnak találkozni
+    process: Folyamat
+    process_name: Sablon címe
+    process_name_hint: 'Hogy hívják ezt a sablont? Pl.: Szerepköri tanácsadás, Hőmérséklet-ellenőrzés, Jegyzőkönyv jóváhagyása'
+    process_subtitle: Sablon alcíme
+    process_subtitle_hint: Egysoros leírás arról, hogy mikor vagy miért érdemes használni ezt a sablont
+    process_introduction: Sablon súgó
+    process_introduction_hint: Néhány bekezdés, amely elmagyarázza a sablon használatát. Tartalmazzon linkeket olyan forrásokhoz, amelyek hasznosak lehetnek.
+    you_can_set_a_prompt_per_option: Szerkessze az egyes opciókhoz tartozó promptot a részletek lapon
+    chart_type: Diagram típusa
+    title: Cím
+    title_hint: Milyen döntést kell meghoznod?
+    no_options_add_some: Ennek a szavazásnak nincsenek választási lehetőségei, adjon hozzá néhányat alább.
+    details: Részletek
+    example_details: Példa részletei
+    details_placeholder: Ez a lehetőség, hogy elmagyarázd, mire szavaznak az emberek
+    options: Opciók
+    options_placeholder: Sorolja fel a rendelkezésre álló lehetőségeket
+    no_options: Még nem adtál hozzá semmilyen opciót.
+    closing: Záró
+    closed: Zárt
+    start: Indul
+    start_poll: Szavazás indítása
+    stance_reason_required_label: Indoklást kell adni szavazáskor...
+    stance_reason_required: Kívánt
+    stance_reason_optional: Választható
+    stance_reason_disabled: Mozgáskorlátozott
+    stance_reason_is_required: Kérjük, indokolja meg szavazatát
+    limit_reason_length: Maximum 500 karakterben adhatja meg az indoklást
+    save_poll: Szavazás mentése
+    start_poll_type: "%{poll_type} indítása"
+    share_poll_type: Megosztás %{poll_type}
+    who_may_vote: Kik szavazhatnak ebben a %{poll_type} szavazókörben?
+    update: Frissítés
+    add_voters: Szavazók hozzáadása
+    notify_invitees: Értesítések küldése
+    no_notifications_warning: A szavazók nem kapnak értesítést. Ez akkor hasznos, ha sok szavazást futtatsz, és később tervezed, hogy mindenkit értesítesz.
+    count_voters_added: "%{count} szavazó hozzáadva"
+    poll_type_created: "%{poll_type} létrehozva"
+    poll_type_started: "%{poll_type} elindult"
+    poll_type_updated: "%{poll_type} frissítve"
+    reason_prompt: Indoklás kérése
+    each_option_has_own_reason_prompt: Minden opcióhoz saját indoklási kérdés tartozik. Szerkessze a kívánt opciót a hozzá tartozó ok megadásához.
+    anonymous_voting: Névtelen szavazás
+    votes_are_anonymous: A szavazatok névtelenek
+    vote_reason: Szavazás oka
+    quorum_tip_vote_share_requirement: 'Tipp: Megadhatja azt is, hogy milyen szintű egyetértésre van szükség a javaslat elfogadásához. Szerkesszen egy opciót a szavazati arányra vonatkozó követelmény meghatározásához.'
+    how_much_time_to_vote: Mennyi időt adnak az embereknek a szavazásra?
+    default_duration_in_days_hint: Hány napig lesznek szavazók az országban?
+    define_minimum_and_maxmimum_score: Határozza meg a szavazók által egy opcióra adható minimális és maximális pontszámot
+    how_many_points_does_each_voter_have_to_allocate: Hány pontot adhat le minden szavazó?
+    anonymous_voting_description: Szavazatok és indokok megjelenítése, de a leadók neve nem. Ez a %{poll_type} elindítása után nem módosítható.
+    vote_reason_description: Kérd meg az embereket, hogy szavazáskor osszák meg indoklásukat, vagy adjanak további információkat.
+    hide_results_description: Ha azt szeretnéd, hogy az emberek ne lássák, hogyan szavaztak mások, elrejtheted az eredményeket.
+    process_helptext: Nevezd meg és írd le a szavazás lebonyolításához használt folyamatot.
+    reminder_helptext: Küldj egy „Hamarosan lezárul” értesítést 24 órával a határidő előtt. Ez növelheti a részvételt, és lehetőséget adhat az embereknek, hogy átgondolják álláspontjukat.
+  poll_receipts_page:
+    verify_participants: Résztvevők ellenőrzése
+    see_votes_if_quorum_reached: Ha a szavazás lezárult és létrejött a határozatképző létszám, akkor láthatja, hogy kik szavaztak.
+    voter_name: Szavazó neve
+    voter_email: Szavazói e-mail cím
+    vote_cast: Leadott szavazatok
+    member_since: Tag óta
+    invited_by: Meghívott
+    invited_on: 'Meghívva ekkor:'
+    no_receipts: Ez a névtelen szavazás még az ellenőrzési funkció megjelenése előtt bezárt, így az ellenőrzés nem lehetséges.
+  close_discussion_modal:
+    body: Zárd be a beszélgetéseket, hogy eltávolítsd őket a nyitott beszélgetések listájáról, és megakadályozd, hogy mások hozzászólhassanak.
+  comment_reply_form:
+    aria_label: Válasz hozzáadása
+  discussion_template:
+    browse_public_templates: Sablongaléria böngészése
+    start_a_new_discussion: Új beszélgetés indítása
+    discussion_template_saved: Beszélgetési sablon mentve
+    these_are_public_templates: Ezek a sablonok másolhatók vagy módosíthatók a csoport igényei szerint.
+    these_are_templates: Ezek a csoportodban található beszélgetési sablonok. Kattints egy sablonra egy beszélgetés megkezdéséhez. Ezeket szerkesztheted, eltávolíthatod vagy átrendezheted is, ha szeretnéd.
+    default_title_label: Alapértelmezett cím
+    default_title_hint: Töltsd ki előre a cím mezőt szerkeszthető szöveggel. Ez opcionális - hagyd üresen, ha nem vagy biztos benne.
+    title_placeholder_label: Példa cím
+    title_placeholder_hint: Példa a cím mező hátterében való megjelenítésre
+    title_placeholder_placeholder: pl. Így néz ki a háttérszöveg
+    example_description_label: Példa leírás
+    example_description_placeholder: Adj meg egy sablont, amellyel az emberek elkezdhetnek egy témát
+    hidden_templates: Rejtett sablonok
+    confirm_delete: Biztosan törölni szeretné ezt a vita sablont?
+    add_poll_template: Szavazási sablon hozzáadása
+    add_poll_template_help: Válasszon ki bármilyen szavazássablont, amely segít a folyamat befejezésében
+    recommended_poll_templates: Ajánlott szavazássablonok
+    share_in_template_gallery: Ossza meg ezt a sablont a nyilvános sablongalériában
+  context_panel:
+    thread_status:
+      pinned: Ez a beszélgetés rögzítésre került. A csoport beszélgetési listájának tetején marad minden felhasználó számára.
+      closed: Ez a beszélgetés lezárult. Többé nem jelenik meg az irányítópulton, hanem a csoport oldalán a „lezárt” alatt fog szerepelni.
+  thread_group:
+    aria_label: Csoport neve
+  discussion_context:
+    current_poll_type_banner: Aktuális %{pollType}
+    seen_by_count: "%{count} felhasználó látta"
+    count_notified: Értesített %{count}
+    start_a_vote: Szavazás indítása
+  pin_discussion_modal:
+    helptext: A rögzített beszélgetések mindig megjelennek a csoport beszélgetéseinek listájában.
+  delete_discussion_form:
+    body: Biztosan törölni szeretnéd ezt a beszélgetést?
+    discussion_deleted: Beszélgetés törölve
+  move_discussion_form:
+    title: Vita áthelyezése egy másik csoportba
+    body: Célcsoport
+    confirm: Áthelyezési megbeszélés
+    confirm_change_to_private: A %{groupName} egy nyílt csoport. Ha folytatod, ez a beszélgetés nyilvános lesz.
+    messages:
+      success: 'Vita áthelyezve ide: %{name}'

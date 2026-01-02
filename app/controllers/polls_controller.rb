@@ -1,6 +1,5 @@
 class PollsController < ApplicationController
 
-  include UsesMetadata
   include LoadAndAuthorize
   include EmailHelper
 

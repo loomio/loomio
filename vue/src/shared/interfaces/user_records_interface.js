@@ -8,7 +8,6 @@ let groupsFetchedOnce = false;
 export default class UserRecordsInterface extends BaseRecordsInterface {
   constructor(recordStore) {
     super(recordStore);
-    this.fetchMentionable = this.fetchMentionable.bind(this);
     this.updateProfile = this.updateProfile.bind(this);
     this.uploadAvatar = this.uploadAvatar.bind(this);
     this.changePassword = this.changePassword.bind(this);
@@ -39,18 +38,6 @@ export default class UserRecordsInterface extends BaseRecordsInterface {
       path: "groups",
       params: {
         exclude_types: 'user'
-      }
-    });
-  }
-
-  fetchMentionable(q, model) {
-    if ((model.id == null) && model.discussionId) { model = model.discussion(); }
-    if ((model.id == null) && !model.discussionId) { model = model.group(); }
-    return this.fetch({
-      path: 'mentionable_users',
-      params: {
-        q,
-        [`${model.constructor.singular}_id`]: model.id
       }
     });
   }

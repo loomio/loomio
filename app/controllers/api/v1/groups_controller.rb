@@ -1,4 +1,4 @@
-class API::V1::GroupsController < API::V1::RestfulController
+class Api::V1::GroupsController < Api::V1::RestfulController
   def token
     self.resource = load_and_authorize(:group, :invite_people)
     respond_with_resource scope: {include_token: true, exclude_types: ['membership', 'user']}
@@ -56,7 +56,7 @@ class API::V1::GroupsController < API::V1::RestfulController
 
   def export_csv
     group = load_and_authorize(:group, :export)
-    GroupExportCsvWorker.perform_async(group.id, current_user.id) 
+    GroupExportCsvWorker.perform_async(group.id, current_user.id)
     render json: { success: :ok }
   end
 

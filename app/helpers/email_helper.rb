@@ -4,18 +4,35 @@ module EmailHelper
     recipient.login_tokens.create!(redirect: redirect_path)
   end
 
-  def render_markdown(str, fmt = 'md')
-    MarkdownService.render_markdown(str, fmt)
+
+  # convert html to markdown if necessary
+  def render_markdown(str, format = 'md')
+    MarkdownService.render_markdown(str, format)
   end
-  
-  def render_plain_text(str, fmt = 'md')
-    MarkdownService.render_plain_text(str, fmt)
+
+  # stripped of any user generated html
+  # newlines converted to brs
+  def force_plain_text(str, format = 'md')
+    MarkdownService.render_plain_text(str, format)
   end
-  
-  def render_rich_text(str, fmt = 'md')
-    MarkdownService.render_rich_text(str, fmt)
+
+  # translate plain text if required
+  # refuse to take formatted content
+  def plain_text(model, field)
+    TranslationService.plain_text(model, field, @recipient)
   end
-  
+
+  def show_translation(model)
+    TranslationService.show_translation(model, @recipient)
+  end
+
+  # render markdown if necessary
+  # translate if required
+  # prepare formatted text for email use
+  def formatted_text(model, field)
+    TranslationService.formatted_text(model, field, @recipient)
+  end
+
   def recipient_stance(recipient, poll)
     poll.poll.stances.latest.find_by(participant: recipient) || Stance.new(poll: poll, participant: recipient)
   end
@@ -42,18 +59,12 @@ module EmailHelper
     polymorphic_url(model, args)
   end
 
-  def unfollow_url(discussion, action_name, recipient, new_volume: :quiet)
-    email_actions_unfollow_discussion_url(
-      discussion_id: discussion.id,
-      utm_campaign: @event.kind,
-      utm_medium: 'email',
-      unsubscribe_token: @recipient.unsubscribe_token,
-      new_volume: new_volume
-    )
+  def preferences_url
+    email_preferences_url(unsubscribe_token: @recipient.unsubscribe_token)
   end
 
-  def preferences_url
-    tracked_url(email_preferences_url(unsubscribe_token: @recipient.unsubscribe_token))
+  def unsubscribe_url(eventable)
+    email_actions_unsubscribe_url(eventable.named_id.merge({unsubscribe_token: @recipient.unsubscribe_token}))
   end
 
   def pixel_src(event)

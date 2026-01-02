@@ -1,12 +1,12 @@
-import {sortBy, filter, uniq, map, debounce} from 'lodash-es';
+import {sortBy, filter, uniq, uniqBy, debounce} from 'lodash-es';
 import Records from '@/shared/services/records';
 import getCaretCoordinates from 'textarea-caret';
 
 export var CommonMentioning = {
   data() {
     return {
-      mentionableUserIds: [],
-      mentionable: [],
+      mentionsCache: [],
+      mentions: [],
       query: '',
       navigatedUserIndex: 0,
       suggestionListStyles: {},
@@ -16,27 +16,34 @@ export var CommonMentioning = {
 
   mounted() {
     this.fetchMentionable = debounce(function() {
-      if (!this.query) { return; }
+      if (!this.query && this.mentionsCache.length > 0) { return; }
       this.fetchingMentions = true;
-      return Records.users.fetchMentionable(this.query, this.model).then(response => {
+      const namedId = (this.model.discussionId && this.model.discussion().namedId()) ||
+        (this.model.id && this.model.namedId()) ||
+        (this.model.groupId && this.model.group().namedId()) ||
+        {};
+      Records.remote.get('mentions', Object.assign(namedId, { q: this.query })).then(rows => {
+        this.mentionsCache = uniqBy(this.mentionsCache.concat(rows), 'handle');
+        this.updateMentions();
+      }).finally(() => {
         this.fetchingMentions = false;
-        this.mentionableUserIds = uniq(this.mentionableUserIds.concat(map(response.users, 'id')));
-        return this.findMentionable();
-      });
-    }
-    ,
-      500);
+      })
+    } , 500);
+    this.fetchMentionable();
   },
 
   methods: {
-    findMentionable() {
-      this.mentionableUserIds = uniq(this.mentionableUserIds.concat(this.model.participantIds()));
-      const unsorted = filter(Records.users.collection.chain().find({id: {$in: this.mentionableUserIds}}).data(), u => {
-        return ((u.name || '').toLowerCase().startsWith(this.query) ||
-        (u.username || '').toLowerCase().startsWith(this.query) ||
-        (u.name || '').toLowerCase().includes(` ${this.query}`));
-      });
-      this.mentionable = sortBy(unsorted, u => 0 - Records.events.find({actorId: u.id}).length);
+    updateMentions() {
+      if (!this.query) {
+        this.mentions = this.mentionsCache;
+      } else {
+        const unsorted = filter(this.mentionsCache, u => {
+          return (u.name || '').toLowerCase().startsWith(this.query) ||
+                  (u.handle || '').toLowerCase().startsWith(this.query) ||
+                  (u.name || '').toLowerCase().includes(` ${this.query}`);
+        });
+        this.mentions = sortBy(unsorted, row => row.name);
+      }
     }
   }
 };
@@ -48,11 +55,12 @@ export var MdMentioning = {
     },
 
     onKeyUp(event) {
+      if ([38, 40, 13, 9].includes(event.keyCode)) { return }
       const res = this.textarea().value.slice(0, this.textarea().selectionStart).match(/@(\w+)$/);
       if (res) {
         this.query = res[1].toLowerCase();
         this.fetchMentionable();
-        this.findMentionable();
+        this.updateMentions();
         this.respondToKey(event);
         return this.updatePopup();
       } else {
@@ -66,33 +74,33 @@ export var MdMentioning = {
 
     respondToKey(event) {
       if (event.keyCode === 38) {
-        this.navigatedUserIndex = ((this.navigatedUserIndex + this.mentionable.length) - 1) % this.mentionable.length;
+        this.navigatedUserIndex = ((this.navigatedUserIndex + this.mentions.length) - 1) % this.mentions.length;
         event.preventDefault();
       }
 
       // down
       if (event.keyCode === 40) {
-        this.navigatedUserIndex = (this.navigatedUserIndex + 1) % this.mentionable.length;
+        this.navigatedUserIndex = (this.navigatedUserIndex + 1) % this.mentions.length;
         event.preventDefault();
       }
 
       // enter or tab
       if ([13,9].includes(event.keyCode)) {
         let user;
-        if (user = this.mentionable[this.navigatedUserIndex]) {
-          this.selectUser(user);
+        if (user = this.mentions[this.navigatedUserIndex]) {
+          this.selectRow(user);
           this.query = '';
           event.preventDefault();
         }
       }
     },
 
-    selectUser(user) {
+    selectRow(user) {
       const text = this.textarea().value;
       const beforeText = this.textarea().value.slice(0, this.textarea().selectionStart - this.query.length);
       const afterText = this.textarea().value.slice(this.textarea().selectionStart);
-      this.model[this.field] = beforeText + user.username + ' ' + afterText;
-      this.textarea().selectionEnd = (beforeText + user.username).length + 1;
+      this.model[this.field] = beforeText + user.handle + ' ' + afterText;
+      this.textarea().selectionEnd = (beforeText + user.handle).length + 1;
       this.textarea().focus;
       this.query = '';
     },
@@ -120,24 +128,22 @@ export var HtmlMentioning = {
 
   methods: {
     upHandler() {
-      this.navigatedUserIndex = ((this.navigatedUserIndex + this.mentionable.length) - 1) % this.mentionable.length;
+      this.navigatedUserIndex = ((this.navigatedUserIndex + this.mentions.length) - 1) % this.mentions.length;
     },
 
     downHandler() {
-      this.navigatedUserIndex = (this.navigatedUserIndex + 1) % this.mentionable.length;
+      this.navigatedUserIndex = (this.navigatedUserIndex + 1) % this.mentions.length;
     },
 
     enterHandler() {
-      const user = this.mentionable[this.navigatedUserIndex];
-      if (user) { this.selectUser(user); }
+      const row = this.mentions[this.navigatedUserIndex];
+      if (row) { this.selectRow(row); }
     },
 
-    selectUser(user) {
-      // range: @suggestionRange
-      // attrs:
+    selectRow(row) {
       this.insertMention({
-        id: user.username,
-        label: user.name
+        id: row.handle,
+        label: row.name
       });
       this.editor.chain().focus();
     },
@@ -169,7 +175,7 @@ export var MentionPluginConfig = function() {
             this.insertMention = props.command;
             this.updatePopup(props.clientRect());
             this.fetchMentionable();
-            this.findMentionable();
+            this.updateMentions();
           },
 
           // is called when a suggestion has changed
@@ -180,7 +186,7 @@ export var MentionPluginConfig = function() {
             this.navigatedUserIndex = 0;
             this.updatePopup(props.clientRect());
             this.fetchMentionable();
-            this.findMentionable();
+            this.updateMentions();
           },
 
           // is called when a suggestion is cancelled

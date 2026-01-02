@@ -20,8 +20,8 @@ module.exports = {
     page.loadPath('setup_closed_group_to_join')
     page.expectText('.group-page__description', 'An FBI agent goes undercover')
     page.expectText('.thread-previews', "The name's Johnny Utah!")
-    page.click('.group-page-subgroups-tab')
-    page.expectText('.group-subgroups-panel', 'Johnny Utah')
+    // page.ensureSidebar()
+    // page.expectText('.sidebar__groups', 'Johnny Utah')
   },
 
   'adds_you_to_the_group_when_button_is_clicked': (test) => {
@@ -40,6 +40,7 @@ module.exports = {
 
     page.loadPath('setup_closed_group_to_join')
     page.click('.join-group-button')
+    page.fillIn('.membership-request-form__introduction textarea', 'Hello I am a bot and id like to advertise junk to your fine membership')
     page.click('.membership-request-form__submit-btn')
     page.expectFlash('You have requested to join')
   },

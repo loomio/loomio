@@ -61,20 +61,16 @@ export default {
 </script>
 
 <template lang="pug">
-v-card.revision-history-modal
-  v-card-title
-    h1.text-h5(tabindex="-1" v-t="'revision_history_modal.' + model.constructor.singular + '_header'")
-    v-spacer
+v-card.revision-history-modal(:title="$t('revision_history_modal.' + model.constructor.singular + '_header')")
+  template(v-slot:append)
     dismiss-modal-button(:close="close")
-  .revision-history-modal__body.pa-4
-    v-layout(align-center justify-space-between)
-      v-btn.revision-history-nav--previous(icon :disabled='isOldest' @click='getPrevious()')
-        common-icon(name="mdi-arrow-left")
-
+  v-card-item
+    .d-flex.align-center.justify-space-between
+      v-btn.revision-history-nav--previous(variant="tonal" icon :disabled='isOldest' @click='getPrevious()')
+        common-icon(name="mdi-arrow-left" :color="isOldest ? null : 'primary'")
       span(v-if="version" v-t="{path: 'revision_history_modal.edit_by', args: {name: version.authorName(), date: versionDate}}")
-
-      v-btn.revision-history-nav--next(icon :disabled='isNewest' @click='getNext()')
-        common-icon(name="mdi-arrow-right")
+      v-btn.revision-history-nav--next(variant="tonal" icon :disabled='isNewest' @click='getNext()')
+        common-icon(name="mdi-arrow-right" :color="isNewest ? null : 'primary'")
     v-divider.mb-3
     revision-history-content(v-if='version' :model='model' :version='version')
 </template>

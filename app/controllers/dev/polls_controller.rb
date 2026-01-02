@@ -56,7 +56,7 @@ class Dev::PollsController < Dev::NightwatchController
     sign_in group.admins.first
     discussion = saved fake_discussion(group: group, author: group.admins.first)
     DiscussionService.create(discussion: discussion, actor: discussion.author)
-    redirect_to discussion_path(discussion)
+    redirect_to discussion_url(discussion)
   end
 
   def test_poll_in_discussion
@@ -73,6 +73,20 @@ class Dev::PollsController < Dev::NightwatchController
   def start_poll
     sign_in saved fake_user
     redirect_to new_poll_url
+  end
+
+  def test_group_polls_panel_standalone_disabled
+    group = create_group_with_members
+    group.update!(can_start_polls_without_discussion: false)
+    sign_in group.admins.first
+    redirect_to "/g/#{group.key}/polls"
+  end
+
+  def test_group_polls_panel_standalone_allowed
+    group = create_group_with_members
+    group.update!(can_start_polls_without_discussion: true)
+    sign_in group.admins.first
+    redirect_to "/g/#{group.key}/polls"
   end
 
   def test_activity_items

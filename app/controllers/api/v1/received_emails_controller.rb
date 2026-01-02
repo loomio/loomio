@@ -1,4 +1,4 @@
-class API::V1::ReceivedEmailsController < API::V1::RestfulController
+class Api::V1::ReceivedEmailsController < Api::V1::RestfulController
   def index
     raise CanCan::AccessDenied unless current_user.adminable_group_ids.include?(params[:group_id].to_i)
     instantiate_collection
@@ -8,7 +8,7 @@ class API::V1::ReceivedEmailsController < API::V1::RestfulController
   def aliases
     raise CanCan::AccessDenied unless current_user.adminable_group_ids.include?(params[:group_id].to_i)
     aliases = MemberEmailAlias.where(group_id: params[:group_id])
-    render json: aliases, scope: default_scope, each_serializer: MemberEmailAliasSerializer, root: :aliases, meta: meta.merge({root: :aliases, total: collection_count}) 
+    render json: aliases, scope: default_scope, each_serializer: MemberEmailAliasSerializer, root: :aliases, meta: meta.merge({root: :aliases, total: collection_count})
   end
 
   def destroy_alias
@@ -28,8 +28,6 @@ class API::V1::ReceivedEmailsController < API::V1::RestfulController
         email: @received_email.sender_email,
         user: user,
         group_id: @received_email.group_id,
-        require_dkim: @received_email.dkim_valid,
-        require_spf: @received_email.spf_valid,
         author_id: current_user.id
       )
       ReceivedEmailService.route(@received_email)

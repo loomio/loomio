@@ -1,6 +1,6 @@
 <script>
 import EventBus from '@/shared/services/event_bus'
-import I18n from '@/i18n'
+import { I18n } from '@/i18n'
 
 let mediaRecorder;
 let chunks = [];
@@ -34,7 +34,7 @@ export default {
 
   methods: {
     handleError(e) {
-      this.error = I18n.t("record_modal.no_camera")
+      this.error = I18n.global.t("record_modal.no_camera")
     },
 
     mediaFilename() {
@@ -114,17 +114,14 @@ export default {
 </script>
 
 <template lang="pug">
-.recording-modal
-  .pa-4
-    .d-flex.justify-space-between
-      h1.text-h5(v-t="'record_modal.record_video'")
-      v-btn.dismiss-modal-button(icon :aria-label="$t('common.action.cancel')" @click='dismiss')
-        common-icon(name="mdi-close")
- 
+v-card.recording-modal(:title="$t('record_modal.record_video')")
+  template(v-slot:append)
+    v-btn.dismiss-modal-button(icon variant="flat" :aria-label="$t('common.action.cancel')" @click='dismiss')
+      common-icon(name="mdi-close")
+  v-card-text
     v-alert(v-if="error" type="error") {{error}}
     div(v-else)
       video(ref="video" width="640" height="360" autoplay muted playsinline)
-
       .d-flex
         v-spacer
         v-btn.poll-members-form__submit(v-if="!onAir" color="primary" @click="start" v-t="'record_modal.record'")

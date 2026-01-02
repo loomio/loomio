@@ -1,16 +1,12 @@
 import Records from '@/shared/services/records';
 import {includes} from 'lodash-es';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 
-
-// a series of helpers related to getting a translation string to translate, such
-// as the headline of an event or the helptext strings on the discussion or group forms
-
-export var eventHeadline = function(event, useNesting) {
-  if (useNesting == null) { useNesting = false; }
+export var eventHeadline = function(event) {
   const key = (() => { switch (event.kind) {
-    case 'new_comment':       return newCommentKey(event, useNesting);
-    case 'stance_created':    return stanceCreatedKey(event, useNesting);
+    case 'new_comment':       return 'new_comment';
+    case 'stance_created':    return 'new_comment';
+    case 'stance_updated':    return 'new_comment';
     case 'discussion_edited': return discussionEditedKey(event);
     case 'poll_created': return 'poll_created';
     default: return event.kind;
@@ -27,9 +23,9 @@ export var eventTitle = function(event) {
     case 'Discussion':
       if (event.kind === 'discussion_moved') {
         if (event.sourceGroupId) {
-          return (Records.groups.find(event.sourceGroupId) || {fullName: I18n.t('thread_item.deleted_group')}).fullName;
+          return (Records.groups.find(event.sourceGroupId) || {fullName: I18n.global.t('thread_item.deleted_group')}).fullName;
         } else {
-          return I18n.t('thread_item.invite_only_thread');
+          return I18n.global.t('discussion.invite_only');
         }
       } else {
         return event.model().title;
@@ -100,22 +96,6 @@ export var groupPrivacyConfirm = function(group) {
     if (group.discussionPrivacyOptions === 'private_only') {
       return 'group_form.confirm_change_to_private_discussions_only';
     }
-  }
-};
-
-var newCommentKey = function(event, useNesting) {
-  if (event.isNested() && !useNesting) {
-    return 'comment_replied_to';
-  } else {
-    return 'new_comment';
-  }
-};
-
-var stanceCreatedKey = function(event, useNesting) {
-  if (event.isNested() && useNesting) {
-    return 'new_comment';
-  } else {
-    return 'stance_created';
   }
 };
 

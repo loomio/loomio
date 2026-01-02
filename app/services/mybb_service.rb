@@ -35,9 +35,9 @@ class MybbService
     		# create discussion if not exists
     		if !discussion_ids[post['tid']]
     			d = Discussion.create!(
-    				group_id: group_id, 
+    				group_id: group_id,
     				author_id: user_ids[post['uid']],
-    				title: post['subject'], 
+    				title: post['subject'],
     				description: convert_text(post['message']),
     				created_at: Time.at(post['dateline'].to_i),
     				updated_at: Time.at(post['dateline'].to_i)
@@ -69,7 +69,7 @@ class MybbService
     	end
 		end
 		ids = Discussion.where(group_id: group_id).pluck(:id)
-		ids.each {|id| EventService.repair_thread(id)}
+		ids.each {|id| EventService.repair_discussion(id)}
 		# SearchIndexWorker.new.perform(ids)
 	end
 end

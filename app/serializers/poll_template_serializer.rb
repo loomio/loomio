@@ -1,6 +1,6 @@
 class PollTemplateSerializer < ActiveModel::Serializer
   embed :ids, include: true
-  
+
   has_one :group, serializer: GroupSerializer, root: :groups
 
   attributes :id,
@@ -23,6 +23,7 @@ class PollTemplateSerializer < ActiveModel::Serializer
              :notify_on_closing_soon,
              :content_locale,
              :shuffle_options,
+             :show_none_of_the_above,
              :hide_results,
              :chart_type,
              :min_score,
@@ -42,5 +43,6 @@ class PollTemplateSerializer < ActiveModel::Serializer
              :discarded_at,
              :outcome_statement,
              :outcome_statement_format,
-             :outcome_review_due_in_days
+             :outcome_review_due_in_days,
+             :quorum_pct
 end

@@ -3,13 +3,13 @@ module Dev::Scenarios::Group
     patrick.update(is_admin: true)
     sign_in patrick
     create_group.add_member! emilio
-    redirect_to group_url(create_group)
+    redirect_to group_path(create_group)
   end
 
   def setup_group
     sign_in patrick
     create_group.add_member! emilio
-    redirect_to group_url(create_group)
+    redirect_to group_path(create_group)
   end
 
   def setup_group_with_received_email
@@ -19,8 +19,6 @@ module Dev::Scenarios::Group
       name = Faker::Name.name
       email = ReceivedEmail.create(
         body_html: "<html><body>hello everyone.</body></html>",
-        dkim_valid: true,
-        spf_valid: true,
         headers: {
           from: "\"#{name}\" <#{Faker::Internet.email(name: name)}>",
           to: create_group.handle + "@#{ENV['REPLY_HOSTNAME']}",
@@ -29,13 +27,13 @@ module Dev::Scenarios::Group
       )
     end
     ReceivedEmailService.route_all
-    redirect_to group_emails_url(create_group)
+    redirect_to group_emails_path(create_group)
   end
 
   def setup_group_with_max_members
     sign_in patrick
     create_group.subscription.update(max_members: 4)
-    redirect_to group_memberships_url(create_group)
+    redirect_to group_memberships_path(create_group)
   end
 
   def setup_trial_group_with_received_email
@@ -46,8 +44,6 @@ module Dev::Scenarios::Group
       name = Faker::Name.name
       email = ReceivedEmail.create(
         body_html: "<html><body>hello everyone.</body></html>",
-        dkim_valid: true,
-        spf_valid: true,
         headers: {
           from: "\"#{name}\" <#{Faker::Internet.email(name: name)}>",
           to: create_group.handle + "@#{ENV['REPLY_HOSTNAME']}",
@@ -56,26 +52,26 @@ module Dev::Scenarios::Group
       )
     end
     ReceivedEmailService.route_all
-    redirect_to group_emails_url(create_group)
+    redirect_to group_emails_path(create_group)
   end
 
   def setup_user_no_group
     sign_in patrick
-    redirect_to dashboard_url
+    redirect_to dashboard_path
   end
 
   def setup_group_with_discussion
     sign_in patrick
     create_group.add_member! emilio
     create_discussion
-    redirect_to group_url(create_group)
+    redirect_to group_path(create_group)
   end
 
   def setup_group_with_handle
     sign_in patrick
     group = create_group
     group.update(name: 'Ghostbusters', handle: 'ghostbusters')
-    redirect_to group_url(group)
+    redirect_to group_path(group)
   end
 
   def setup_group_with_pending_invitations
@@ -85,14 +81,14 @@ module Dev::Scenarios::Group
     my_invite    = FactoryBot.create(:user, name: nil, email: "shown@test.com")
     FactoryBot.create :membership, group: create_group, accepted_at: nil, inviter: jennifer, user: other_invite
     FactoryBot.create :membership, group: create_group, accepted_at: nil, inviter: patrick, user: my_invite
-    redirect_to group_url(create_group)
+    redirect_to group_path(create_group)
   end
 
   def visit_group_as_subgroup_member
     sign_in jennifer
     create_subgroup.add_member! jennifer
     another_create_subgroup.add_member! jennifer
-    redirect_to group_url(create_another_group)
+    redirect_to group_path(create_another_group)
   end
 
   def setup_group_with_subgroups
@@ -100,7 +96,7 @@ module Dev::Scenarios::Group
     create_another_group.add_member! jennifer
     create_subgroup.add_member! jennifer
     another_create_subgroup
-    redirect_to group_url(create_another_group)
+    redirect_to group_path(create_another_group)
   end
 
   def setup_group_with_subgroups_as_admin
@@ -109,7 +105,7 @@ module Dev::Scenarios::Group
     create_subgroup.add_member! jennifer
     create_subgroup.add_member! fake_user name: 'only in subgroup'
     another_create_subgroup
-    redirect_to group_url(create_subgroup)
+    redirect_to group_path(create_subgroup)
   end
 
   def setup_subgroup_with_parent_member_visibility
@@ -126,7 +122,7 @@ module Dev::Scenarios::Group
                                    group_privacy: 'closed', creator: jennifer)
     discussion = FactoryBot.create :discussion, group: @subgroup, title: "Vaya con dios", private: true, author: jennifer
     DiscussionService.create(discussion: discussion, actor: discussion.author)
-    redirect_to group_url(@subgroup)
+    redirect_to group_path(@subgroup)
   end
 
   def setup_group_with_subgroups_as_admin_landing_in_other_subgroup
@@ -134,7 +130,7 @@ module Dev::Scenarios::Group
     create_another_group.add_admin! jennifer
     create_subgroup.add_member! jennifer
     another_create_subgroup
-    redirect_to group_url(another_create_subgroup)
+    redirect_to group_path(another_create_subgroup)
   end
 
   def setup_open_group
@@ -144,7 +140,7 @@ module Dev::Scenarios::Group
     @group.add_member! jennifer
     membership = Membership.find_by(user: patrick, group: @group)
     sign_in patrick
-    redirect_to group_url(create_group)
+    redirect_to group_path(create_group)
   end
 
   def setup_closed_group
@@ -153,7 +149,7 @@ module Dev::Scenarios::Group
     @group.add_member! jennifer
     membership = Membership.find_by(user: patrick, group: @group)
     sign_in patrick
-    redirect_to group_url(create_group)
+    redirect_to group_path(create_group)
   end
 
   def setup_secret_group
@@ -162,20 +158,20 @@ module Dev::Scenarios::Group
     @group.add_member! jennifer
     membership = Membership.find_by(user: patrick, group: @group)
     sign_in patrick
-    redirect_to group_url(create_group)
+    redirect_to group_path(create_group)
   end
 
   def setup_group_with_multiple_coordinators
     create_group.add_admin! emilio
     sign_in patrick
-    redirect_to group_url(create_group)
+    redirect_to group_path(create_group)
   end
 
   def setup_group_with_no_coordinators
     create_group
     @group.admin_memberships.each{|m| m.update(admin: false)}
     sign_in patrick
-    redirect_to group_url(create_group)
+    redirect_to group_path(create_group)
   end
 
   def setup_group_with_restrictive_settings
@@ -191,7 +187,7 @@ module Dev::Scenarios::Group
       members_can_create_subgroups:  false
     )
     create_group.add_member! max
-    redirect_to group_url create_group
+    redirect_to group_path create_group
   end
 
   def view_open_group_as_non_member
@@ -201,7 +197,7 @@ module Dev::Scenarios::Group
     @discussion = Discussion.new(title: "I carried a watermelon", private: false, author: jennifer, group: @group)
     DiscussionService.create(discussion: @discussion, actor: jennifer)
     CommentService.create(comment: Comment.new(body: "It was real seedy", discussion: @discussion), actor: jennifer)
-    redirect_to group_url(create_group)
+    redirect_to group_path(create_group)
   end
 
   def view_open_group_as_visitor
@@ -211,7 +207,7 @@ module Dev::Scenarios::Group
     @group.add_admin! jennifer
     @discussion = Discussion.new(title: 'I carried a watermelon', private: false, author: jennifer, group: @group)
     DiscussionService.create(discussion: @discussion, actor: @discussion.author)
-    redirect_to group_url(@group)
+    redirect_to group_path(@group)
   end
 
   def setup_start_thread_form_from_url

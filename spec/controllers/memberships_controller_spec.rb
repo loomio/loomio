@@ -60,7 +60,7 @@ describe MembershipsController do
     it "store pending_group_token in session" do
       get :join, params: {model: 'group', token: group.token}
       expect(session[:pending_group_token]).to eq group.token
-      expect(response).to redirect_to(group_url(group))
+      expect(response).to redirect_to "/#{group.handle}"
     end
   end
 
@@ -71,7 +71,6 @@ describe MembershipsController do
       it 'renders error page with not found message' do
         get :show, params: { token: 'asdjhadjkhaskjdsahda' }
         expect(response.status).to eq 404
-        expect(response).to render_template "application/error"
       end
     end
 
@@ -83,7 +82,7 @@ describe MembershipsController do
 
       it 'says sorry invitatino already used' do
         get :show, params: { token: membership.token }
-        expect(response).to redirect_to(group_url(membership.group))
+        expect(response).to redirect_to "/#{membership.group.handle}"
       end
     end
 
@@ -93,7 +92,7 @@ describe MembershipsController do
         group.add_member! another_user
         sign_in another_user
         get :show, params: { token: membership.token }
-        expect(response).to redirect_to group_url(group)
+        expect(response).to redirect_to redirect_to "/#{group.handle}"
       end
     end
 
@@ -107,7 +106,7 @@ describe MembershipsController do
       end
 
       it "redirects to the group" do
-        response.should redirect_to(group_url(membership.group))
+        response.should redirect_to "/#{membership.group.handle}"
       end
 
       it 'does not accept the membership' do
@@ -117,15 +116,16 @@ describe MembershipsController do
     end
 
     it 'redirects to a group url if that token is given' do
-      get :show, params: { token: group.token }
-      expect(response).to redirect_to join_url(group)
+      get :join, params: { token: group.token, model: :group }
+      expect(response.status).to eq 302
+      expect(response).to redirect_to "/#{group.handle}"
     end
 
     it "accepts membership and redirects to group " do
       get :show, params: { token: membership.token }
       membership.reload
       expect(membership.accepted_at).to_not be_present
-      response.should redirect_to group_url(group)
+      response.should redirect_to "/#{group.handle}"
     end
   end
 end

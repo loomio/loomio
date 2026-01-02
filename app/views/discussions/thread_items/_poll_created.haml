@@ -2,42 +2,33 @@
 - event = item
 .poll-created
   .thread-item.px-3.pb-1
-    #sequence-3.layout.lmo-action-dock-wrapper{:style => "margin-left: 0px;"}
+    #sequence-3.v-layout.lmo-action-dock-wrapper{:style => "margin-left: 0px;"}
       .thread-item__avatar.mr-3.mt-0
         = render 'base_mailer/avatar', user: poll.user
-      .layout.thread-item__body.column
-        .layout.align-center.wrap
-          %h3.thread-item__title.text-body-2
-            =raw t(:"poll_mailer.header.poll_created", actor: poll.user.name, title: poll.title, poll_type: t("poll_types.#{poll.poll_type}"))
-            %span
-              %span{"aria-hidden" => "true"}  ·
-            %span.text--secondary.text-body-2
-              = render 'discussions/time_ago', time: poll.created_at
-        .layout.justify-space-between
-          %h1.poll-common-card__title.text-h5
-            %span= poll.title
-            %span.ml-2.v-chip.v-chip--outlined.theme--auto.v-size--small.warning.warning--text
-              %span.v-chip__content
-                - if poll.active?
-                  = t(:"poll_mailer.common.you_have_until", when: format_date_for_humans(poll.closing_at, current_user.time_zone, current_user.date_time_pref))
-                - if poll.closed?
-                  = t(:"poll_common_form.closed")
-                  = format_date_for_humans(poll.closed_at, current_user.time_zone, current_user.date_time_pref)
-                - if poll.wip?
-                  = t(:"poll_common_wip_field.title")
-                -# %abbr.closing-in.timeago--inline
-                -#   %span{:title => "January 21, 14:55"} Closed January 21, 14:55
+      .thread-item__body
+        %h1.poll-common-card__title.text-h5.pb-1
+          %span= poll.title
+        %p.text-medium-emphasis.text-body-2.pb-1
+          = t("poll_card.poll_type_by_name", name: poll.author_name, poll_type: t("poll_types.#{poll.poll_type}"))
+          %span{"aria-hidden" => "true"} ·
+          - if poll.active?
+            = t(:"common.closing_in", time: format_date_for_humans(poll.closing_at, current_user.time_zone, current_user.date_time_pref))
+          - if poll.closed?
+            = t(:"poll_common_form.closed")
+            = format_date_for_humans(poll.closed_at, current_user.time_zone, current_user.date_time_pref)
+          - if poll.wip?
+            = t(:"poll_common_wip_field.title")
         - if poll.current_outcome
-          .pa-4.my-4.poll-common-outcome-panel.v-sheet.theme--auto.elevation-2.primary.lighten-5
-            .title= t(:"poll_common.outcome")
-            .poll-common-outcome-panel__authored-by.caption.my-2
-              %span= t(:'email.by_who', person: poll.current_outcome.author.name)
-              %span
-                = render 'discussions/time_ago', time: poll.current_outcome.created_at
-            .lmo-markdown-wrapper.text-body-2.text--primary
-              %p= render_rich_text(poll.current_outcome.statement, poll.current_outcome.statement_format)
-        .lmo-markdown-wrapper.text-body-2.text--primary.poll-common-details-panel__details
-          %p= render_rich_text(poll.details, poll.details_format)
-
+          .poll-common-outcome-panel.v-alert.v-alert--density-default.v-alert--variant-tonal.text-info.pa-4.my-4
+            %span.v-alert__underlay
+            %div.v-alert__content
+              .title= t(:"poll_common.outcome")
+              .poll-common-outcome-panel__authored-by.caption.my-2
+                %span= t(:'email.by_who', person: poll.current_outcome.author.name)
+                %span
+                  = render 'discussions/time_ago', time: poll.current_outcome.created_at
+              .lmo-markdown-wrapper.text-body-1.pb-1
+                %p= formatted_text(poll.current_outcome, :statement)
+        .lmo-markdown-wrapper.text-body-1.poll-common-details-panel__details.pb-1
+          %p= formatted_text(poll, :details)
         = render "event_mailer/poll/results", poll: poll
-

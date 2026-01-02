@@ -21,9 +21,9 @@ export default {
 
 <template lang="pug">
 section.strand-item__removed
-  h3.strand-item__headline.text-body-2.pb-1.d-flex.align-center.text--secondary
+  h3.strand-item__headline.text-body-2.pb-1.d-flex.align-center.text-medium-emphasis
     span(v-t="'thread_item.removed'")
     mid-dot
     time-ago(:date='eventable.discardedAt')
-  action-dock(:model='eventable' :menu-actions='menuActions' small)
+  action-dock(:model='eventable' :menu-actions='menuActions' size="small")
 </template>

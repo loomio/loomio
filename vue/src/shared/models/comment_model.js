@@ -1,9 +1,8 @@
 import BaseModel       from '@/shared/record_store/base_model';
 import AppConfig       from '@/shared/services/app_config';
 import HasDocuments    from '@/shared/mixins/has_documents';
-import RecordStore    from '@/shared/record_store/record_store';
-import HasTranslations from '@/shared/mixins/has_translations';
 import {capitalize, map, invokeMap} from 'lodash-es';
+import Records from '@/shared/services/records';
 
 export default class CommentModel extends BaseModel {
   static singular = 'comment';
@@ -13,7 +12,6 @@ export default class CommentModel extends BaseModel {
 
   afterConstruction() {
     HasDocuments.apply(this);
-    HasTranslations.apply(this);
   }
 
   collabKeyParams() {
@@ -23,8 +21,8 @@ export default class CommentModel extends BaseModel {
   defaultValues() {
     return {
       discussionId: null,
-      files: [],
-      imageFiles: [],
+      files: null,
+      imageFiles: null,
       attachments: [],
       linkPreviews: [],
       body: '',
@@ -36,14 +34,15 @@ export default class CommentModel extends BaseModel {
   relationships() {
     this.belongsTo('author', {from: 'users'});
     this.belongsTo('discussion');
+    this.belongsTo('translation');
   }
 
   createdEvent() {
-    return this.recordStore.events.find({kind: "new_comment", eventableId: this.id})[0];
+    return Records.events.find({kind: "new_comment", eventableId: this.id})[0];
   }
 
   reactions() {
-    return this.recordStore.reactions.find({
+    return Records.reactions.find({
       reactableId: this.id,
       reactableType: capitalize(this.constructor.singular)
     });
@@ -72,11 +71,11 @@ export default class CommentModel extends BaseModel {
   }
 
   parent() {
-    return this.recordStore[BaseModel.eventTypeMap[this.parentType]].find(this.parentId);
+    return this.parentId && Records[BaseModel.eventTypeMap[this.parentType]].find(this.parentId);
   }
 
   reactors() {
-    return this.recordStore.users.find(map(this.reactions(), 'userId'));
+    return Records.users.find(map(this.reactions(), 'userId'));
   }
 
   authorName() {
@@ -92,6 +91,6 @@ export default class CommentModel extends BaseModel {
   }
 
   beforeDestroy() {
-    return invokeMap(this.recordStore.events.find({kind: 'new_comment', eventableId: this.id}), 'remove');
+    return invokeMap(Records.events.find({kind: 'new_comment', eventableId: this.id}), 'remove');
   }
 };

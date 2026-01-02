@@ -1,4 +1,4 @@
-%main
+%main.container
   %h1 Loomio API
 
   %p
@@ -126,8 +126,8 @@
   %pre
     curl -d 'api_key=#{params['api_key']}' #{root_url}api/b1/memberships
 
-  %h2 manage memberships  
-  %p send a list of emails. it will invite all the new email addresses to the group. 
+  %h2 manage memberships
+  %p send a list of emails. it will invite all the new email addresses to the group.
   %pre
     curl -X POST -H 'Content-Type: application/json' -d '{"emails":["person@example.com"], "api_key": "#{params['api_key']}"}' #{root_url}api/b1/memberships
 

@@ -11,7 +11,7 @@ export default {
     variableScore() { return this.poll.hasVariableScore(); },
     pollType() { return this.poll.pollType; },
     datesAsOptions() { return this.poll.datesAsOptions(); },
-    choices() { return this.stance.sortedChoices(); }
+    choices() { return this.stance.sortedChoices().filter(choice => choice.score > 0 || this.pollType == 'score'); }
   },
 
   methods: {
@@ -31,21 +31,20 @@ export default {
 
 <template lang="pug">
 .poll-common-stance-choices.pb-2.pt-2(v-if="!datesAsOptions && poll.pollType != 'question' && !poll.hasOptionIcon()")
-  span.text-caption(v-if='stance.castAt && stance.totalScore() == 0' v-t="'poll_common_votes_panel.none_of_the_above'" )
+  span.text-caption(v-if='stance.castAt && stance.totalScore() == 0' v-t="'poll_common_form.none_of_the_above'" )
   template(v-else)
-    .poll-common-stance-choice.text-truncate(
+    .poll-common-stance-choice.text-truncate.mb-1(
       v-for="choice in choices"
-      v-if="choice.score > 0 || pollType == 'score'"
       :key="choice.id"
       :class="'poll-common-stance-choice--' + pollType")
-      common-icon(small :color="choice.pollOption.color" v-if="!variableScore" name="mdi-check-circle")
-      span(:style="{color: choice.pollOption.color}" v-if="variableScore") {{choice.rank || choice.score}}
-      span.ml-2.text--secondary
-        | {{ choice.pollOption.optionName() }}
+      common-icon(size="small" :color="choice.pollOption.color" v-if="!variableScore" name="mdi-check-circle")
+      span.text-medium-emphasis
+        span.text-high-emphasis| {{ choice.pollOption.optionName() }}
+        mid-dot
+        span {{choice.rank || choice.score}}
 </template>
 <style lang="sass">
 .poll-common-stance-choices
   overflow: hidden
 
 </style>
-

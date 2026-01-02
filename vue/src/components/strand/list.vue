@@ -1,177 +1,92 @@
-<script lang="js">
-import StrandList from '@/components/strand/list.vue';
-import NewComment from '@/components/strand/item/new_comment.vue';
-import NewDiscussion from '@/components/strand/item/new_discussion.vue';
-import DiscussionEdited from '@/components/strand/item/discussion_edited.vue';
-import PollEdited from '@/components/strand/item/poll_edited.vue';
-import PollCreated from '@/components/strand/item/poll_created.vue';
-import StanceCreated from '@/components/strand/item/stance_created.vue';
-import StanceUpdated from '@/components/strand/item/stance_updated.vue';
-import OutcomeCreated from '@/components/strand/item/outcome_created.vue';
-import StrandItemRemoved from '@/components/strand/item/removed.vue';
+<script setup lang="js">
+import { ref, computed } from 'vue';
 import StrandLoadMore from '@/components/strand/load_more.vue';
-import OtherKind from '@/components/strand/item/other_kind.vue';
 import ReplyForm from '@/components/strand/reply_form.vue';
-import RangeSet from '@/shared/services/range_set';
-import EventBus from '@/shared/services/event_bus';
-import { camelCase } from 'lodash-es';
+import IntersectionWrapper from '@/components/strand/item/intersection_wrapper';
+import StemWrapper from '@/components/strand/item/stem_wrapper';
+import Collapsed from '@/components/strand/item/collapsed';
+import LmoUrlService from '@/shared/services/lmo_url_service';
 
-export default {
-  name: 'strand-list',
-  props: {
-    loader: Object,
-    newestFirst: Boolean,
-    collection: {
-      type: Array,
-      required: true
-    }
+const props = defineProps({
+  loader: Object,
+  collection: {
+    type: Array,
+    required: true
   },
+  focusSelector: String
+});
 
-  components: {
-    NewDiscussion,
-    NewComment,
-    PollCreated,
-    StanceCreated,
-    StanceUpdated,
-    OutcomeCreated,
-    OtherKind,
-    StrandLoadMore,
-    DiscussionEdited,
-    PollEdited,
-    StrandItemRemoved,
-    ReplyForm
-  },
+const parentChecked = ref(true);
 
-  computed: {
-    directedCollection() {
-      if (this.newestFirst) {
-        return this.collection.reverse();
-      } else {
-        return this.collection;
-      }
-    }
-  },
+const endUrl = computed(() => 
+  LmoUrlService.route({ model: props.loader.discussion })
+);
 
-  methods: {
-    isFocused(event) {
-      return ((event.depth === 1) && (event.position === this.loader.focusAttrs.position)) ||
-      (event.positionKey === this.loader.focusAttrs.positionKey) ||
-      (event.sequenceId === this.loader.focusAttrs.sequenceId) ||
-      ((event.eventableType === 'Comment') && (event.eventableId === this.loader.focusAttrs.commentId));
-    },
-
-    positionKeyPrefix(event) {
-      if (event.depth < 1) {
-        return event.positionKey.split('-').slice(0, event.depth - 1);
-      } else {
-        return null;
-      }
-    },
-
-    componentForKind(kind) {
-      return camelCase(['stance_created', 'stance_updated', 'discussion_edited', 'new_comment', 'outcome_created', 'poll_created', 'poll_edited', 'new_discussion'].includes(kind) ?
-        kind
-      :
-        'other_kind'
-      );
-    },
-
-    classes(event) {
-      if (!event) { return []; }
-      return ["lmo-action-dock-wrapper",
-       `positionKey-${event.positionKey}`,
-       `sequenceId-${event.sequenceId}`,
-       `position-${event.position}`];
-    }
-  }
+const isFocused = (event) => {
+  return props.focusSelector == `.sequenceId-${event.sequenceId || 0}` ||
+    (event.eventableType === 'Comment' && props.focusSelector == `.comment-${event.eventableId || 0}`);
 };
 
+const rowClasses = (obj) => {
+  if (isFocused(obj.event)) {
+    return ['strand-item__row--focused', 'rounded-lg'];
+  }
+};
 </script>
 
 <template lang="pug">
 .strand-list
-  .strand-item(
-    v-for="obj in directedCollection"
-    :key="obj.event.id"
-    :class="{'strand-item--deep': obj.event.depth > 1}"
-  )
-    .strand-item__row(v-if="!newestFirst && obj.missingEarlierCount")
-      .strand-item__gutter
-        .strand-item__stem-wrapper
-          .strand-item__stem.strand-item__stem--broken
-      //- | top !newestFirst && obj.missingEarlierCount
-      strand-load-more(
-        v-observe-visibility="{once: true, callback: (isVisible, entry) => isVisible && loader.autoLoadBefore(obj)}"
-        :label="{path: 'common.action.count_more', args: {count: obj.missingEarlierCount}}"
-        @click="loader.loadBefore(obj.event)"
-        :loading="loader.loading == 'before'+obj.event.id")
-
-    .strand-item__row(v-if="newestFirst && obj.missingAfterCount")
-      .strand-item__gutter
-        .strand-item__stem-wrapper
-          .strand-item__stem.strand-item__stem--broken
-      //- | top newestFirst && obj.missingAfterCount
-      strand-load-more(
-        v-observe-visibility="{once: true, callback: (isVisible, entry) => isVisible && loader.autoLoadAfter(obj)}"
-        :label="{path: 'common.action.count_more', args: {count: obj.missingAfterCount}}"
-        @click="loader.loadAfter(obj.event)"
-        :loading="loader.loading == 'after'+obj.event.id")
-
+  .strand-item(v-for="obj, index in collection" :key="obj.event.id" :class="{'strand-item--deep': obj.event.depth > 1}")
+    //.strand-item__row(v-if="obj.missingEarlier && obj.event.depth == 1" )
+    //  v-btn(:to="endUrl + '?end'") Jump to start
+    .strand-item__row(v-if="obj.missingEarlier")
+      strand-load-more(direction="before" :collection="collection" :index="index" :loader="loader")
+    .strand-item__row(v-if="loader.collapsed[obj.event.id]")
+      collapsed(:obj="obj" :loader="loader")
     .strand-item__row(v-if="!loader.collapsed[obj.event.id]")
       .strand-item__gutter(v-if="obj.event.depth > 0")
         .d-flex.justify-center
-          v-checkbox.thread-item__is-forking(
-            v-if="loader.discussion.forkedEventIds.length"
-            @change="obj.event.toggleForking()"
-            :disabled="obj.event.forkingDisabled()"
-            v-model="obj.event.isForking()"
-          )
+          template(v-if="loader.discussion.forkedEventIds.length")
+            v-checkbox-btn.thread-item__is-forking( v-if="obj.event.forkingDisabled()" disabled v-model="parentChecked" )
+            v-checkbox-btn.thread-item__is-forking( v-else v-model="loader.discussion.forkedEventIds" :value="obj.event.id" )
           template(v-else)
-            user-avatar(
-              :user="obj.event.actor()"
-              :size="(obj.event.depth > 1) ? 28 : 32"
-              no-link
-            )
-        .strand-item__stem-wrapper(@click.stop="loader.collapse(obj.event)")
-          .strand-item__stem(:class="{'strand-item__stem--unread': obj.isUnread, 'strand-item__stem--focused': isFocused(obj.event)}")
-      .strand-item__main(style="overflow: hidden")
-        //- div {{obj.event.kind}} {{obj.event.positionKey}} {{obj.event.sequenceId}} {{isFocused(obj.event)}} childCount{{obj.event.childCount}} chdrn {{obj.children.length}}
-        div(:class="classes(obj.event)" v-observe-visibility="{callback: (isVisible, entry) => loader.setVisible(isVisible, obj.event)}")
-          strand-item-removed(v-if="obj.eventable && obj.eventable.discardedAt" :event="obj.event" :eventable="obj.eventable")
-          component(v-else :is="componentForKind(obj.event.kind)" :event='obj.event' :eventable="obj.eventable")
+            user-avatar( :user="obj.event.actor()" :size="(obj.event.depth > 1) ? 28 : 32" no-link )
+        stem-wrapper(:loader="loader" :obj="obj" :focused="isFocused(obj.event)")
+      .strand-item__main
+        .strand-item__main--content
+          //.strand-item__row--focused-underlay(v-if="isFocused(obj.event)")
+          intersection-wrapper(:loader="loader" :obj="obj" :focused="isFocused(obj.event)")
         .strand-list__children(v-if="obj.event.childCount && (!obj.eventable.isA('stance') || obj.eventable.poll().showResults())")
-          strand-load-more(
-            v-if="obj.children.length == 0"
-            v-observe-visibility="{once: true, callback: (isVisible, entry) => isVisible && loader.loadAfter(obj.event)}"
-            :label="{path: 'common.action.count_more', args: {count: obj.missingChildCount}}"
-            @click="loader.loadAfter(obj.event)"
-            :loading="loader.loading == 'children'+obj.event.id")
-          strand-list.flex-grow-1(:loader="loader" :collection="obj.children" :newest-first="obj.event.kind == 'new_discussion' && loader.discussion.newestFirst")
+          strand-load-more(v-if="obj.children.length == 0" direction="children" :collection="collection" :index="index" :loader="loader")
+          strand-list.flex-grow-1( :loader="loader" :collection="obj.children" :focusSelector="focusSelector" )
         reply-form(:eventId="obj.event.id")
-    .strand-item__row(v-if="loader.collapsed[obj.event.id]")
-      .d-flex.align-center
-        .strand-item__circle.mr-2(v-if="loader.collapsed[obj.event.id]" @click.stop="loader.expand(obj.event)")
-          common-icon(name="mdi-unfold-more-horizontal")
-        strand-item-headline.text--secondary(:event="obj.event" :eventable="obj.eventable" collapsed)
 
-    .strand-item__row(v-if="newestFirst && obj.missingEarlierCount" )
-      //- | bottom newestFirst && obj.missingEarlierCount
-      strand-load-more(
-        v-observe-visibility="{once: true, callback: (isVisible, entry) => isVisible && loader.autoLoadBefore(obj)}"
-        :label="{path: 'common.action.count_more', args: {count: obj.missingEarlierCount}}"
-        @click="loader.loadBefore(obj.event)"
-        :loading="loader.loading == 'before'+obj.event.id")
+    .strand-item__row(v-if="obj.missingAfter" )
+      strand-load-more(direction="after" :obj="obj" :collection="collection" :index="index" :loader="loader")
 
-    .strand-item__row(v-if="!newestFirst && obj.missingAfterCount" )
-      //- | bottom !newestFirst && obj.missingAfterCount
-      strand-load-more(
-        v-observe-visibility="{once: true, callback: (isVisible, entry) => isVisible && loader.autoLoadAfter(obj)}"
-        :label="{path: 'common.action.count_more', args: {count: obj.missingAfterCount}}"
-        @click="loader.loadAfter(obj.event)"
-        :loading="loader.loading == 'after'+obj.event.id")
+    //.strand-item__row(v-if="obj.missingAfterCount && obj.event.depth == 1" )
+    //  v-btn(:to="endUrl + '?end'") Jump to end
+
 </template>
 
 <style lang="sass">
+
+.strand-item__row--focused
+  padding: 12px;
+  position: relative
+  color: rgb(var(--v-theme-info)) !important;
+
+.strand-item__row--focused-underlay
+  position: absolute
+  background: currentColor
+  opacity: var(--v-activated-opacity)
+  border-radius: inherit
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  pointer-events: none
+
 .strand-item--deep
   .strand-item__gutter
     width: 28px
@@ -190,27 +105,16 @@ export default {
   .strand-item__load-more
     min-height: 28px
 
-  // not working
-  .strand-item__branch-container
-    .strand-item__branch
-      top: -17px!important
-      right: -2px
-      // height: 36px
-      // width: 36px
-
 .strand-item__row
   display: flex
   padding-top: 4px
 
 .strand-item__gutter
+  cursor: pointer;
   display: flex
   flex-direction: column
   width: 32px
   // margin-right: 8px
-
-.strand-item__gutter:hover
-  .strand-item__stem
-    background-color: #999
 
 .strand-item__main
   flex-grow: 1
@@ -227,22 +131,23 @@ export default {
 .strand-item__stem
   width: 0
   height: 100%
-  padding: 0 0.5px
-  background-color: #dadada
+  padding: 0 1px
+  background-color: rgb(var(--v-theme-surface-light))
   margin: 0px 16px
+
+.strand-item__gutter:hover
+  .strand-item__stem
+    background-color: #d0d0d0
+
+.v-theme--dark, .v-theme--darkBlue
+  .strand-item__gutter:hover
+    .strand-item__stem
+      background-color: rgb(var(--v-theme-surface-bright))
 
 .strand-item__stem--broken
   background-image: linear-gradient(0deg, #dadada 25%, #ffffff 25%, #ffffff 50%, #dadada 50%, #dadada 75%, #ffffff 75%, #ffffff 100%)
   background-size: 16.00px 16.00px
-  // background-size: 24.00px 24.00px
-  // background-size: 32.00px 32.00px
   background-repeat: repeat-y
-
-.strand-item__stem--unread
-  background-color: var(--v-accent-lighten1)!important
-
-.strand-item__stem--focused
-  background-color: var(--v-primary-darken1)!important
 
 .strand-item__circle
   display: flex
@@ -253,29 +158,6 @@ export default {
   border: 1px solid #dadada
   border-radius: 100%
   margin: 4px 0
-
-.strand-item__circle:hover
-  background-color: #dadada
-
-
-.strand-item__stem:hover
-  background-color: #dadada
-
-.strand-item__branch-container
-  position: absolute
-  overflow: hidden
-  margin-right: 4px
-
-.strand-item__branch
-  position: relative
-  float: left
-  top: -13px
-  border: 2px solid #dadada
-  right: -2px
-  height: 28px
-  border-radius: 64px
-  width: 35px
-  margin-left: calc(50% - 1px)
-  border-style: solid
+  cursor: pointer
 
 </style>

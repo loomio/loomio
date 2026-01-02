@@ -1,6 +1,5 @@
 import {each} from 'lodash-es';
-import Vue from 'vue';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 import NullGroupModel from '@/shared/models/null_group_model';
 
 export default class NullDiscussionModel {
@@ -21,8 +20,8 @@ export default class NullDiscussionModel {
       readRanges: [],
       isForking: false,
       newestFirst: false,
-      files: [],
-      imageFiles: [],
+      files: null,
+      imageFiles: null,
       attachments: [],
       linkPreviews: [],
       recipientMessage: null,
@@ -35,7 +34,7 @@ export default class NullDiscussionModel {
     };
 
     each(defaults, (value, key) => {
-      Vue.set(this, key, value);
+      this[key] = value;
       return true;
     });
   }

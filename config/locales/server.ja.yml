@@ -88,6 +88,12 @@ ja:
       process_introduction: "<p>背景情報とともにドキュメントを紹介します。集中力を維持できるように文書の目的を述べます。</p><p>人々に情報や専門知識を提供してもらい、それを使って文書を構成します。人々からのフィードバックや貢献を認識し、考慮します。</p><p>承認の準備が整うまで、文書の最初の草案とその後の草案に貢献を統合します。</p><p>センスチェック投票を使用して意見を調査し、草案の問題点を明らかにします。</p><p>フィードバックが検討されて文書に組み込まれたら、同意またはコンセンサス提案の承認または同意に進みます。</p><p>スレッドは、文書作成の進行状況と行われた決定の明確な記録になります。</p>"
       description: <h3 id="what-is-the-purpose-of-the-document">文書の目的は何ですか?</h3><p></p><h3 id="why-is-this-important">何でこれが大切ですか？</h3><p></p><h3 id="what-are-you-asking-people-to-do">あなたは人々に何をするように求めていますか？</h3><p></p>
       document: 書類
+    practice_thread:
+      process_subtitle: グループに人を歓迎し、Loomioの使い方を練習するためのスレッド
+      process_introduction: "<p>このテンプレートを使って、新メンバーを歓迎し、早期参加を促しましょう。メンバーが自己紹介をしたり、Loomioの機能を試したりする機会を提供します。</p>"
+      title: "\U0001F44B ようこそ！挨拶して、ぜひお試しください"
+      description: "<p>Loomio グループへようこそ。ご参加いただきありがとうございます!</p><p>このスレッドは次のことを行うためのスペースです:</p><ul><li><p>グループに自己紹介する</p></li><li><p>Loomio の機能をいくつか試してみてください。たとえば、リアクションを使ってみてください \U0001F44D</p></li><li><p>この段階で質問があれば何でも聞いてください</p></li></ul><p>何を言えばいいのか分からない場合は、簡単な「こんにちは」で大丈夫です \U0001F642</p>"
+      process_name: 練習のディスカッション
   explore:
     header: 公開グループを探索する
   activerecord:
@@ -107,6 +113,32 @@ ja:
       email: 有効な電子メールアドレスではありません
       spoofed_media_type: そのファイルの内容がファイル名と一致しません
       pwned_password: このパスワードは以前にデータ侵害で使用されたことがあるため、決して使用しないでください。
+    '400':
+      title: 要求の形式が正しくありません
+      body: 申し訳ございませんが、そのリクエストを理解できませんでした
+    '401':
+      title: 不正な
+      body: このページへのアクセスは許可されていません。サインインする必要がある可能性があります。
+    '403':
+      title: 禁断
+      body: このページへのアクセスは許可されていません。サインインする必要がある可能性があります。
+    '410':
+      title: 消えた
+      body: このページは存在しません
+    '417':
+      title: ブラウザが互換性がありません
+      body: Loomioを使用するには<a href="https://browser-update.org/update.html?force_outdated=true">ブラウザをアップグレードして</a>ください
+    '422':
+      title: 処理できないエンティティ
+      body: 希望する変更は拒否されました。アクセス権のない項目を変更しようとした可能性があります。
+    '429':
+      title: リクエストが多すぎる
+      body: 申し訳ありませんが、この操作で1分あたりに許可されているリクエスト数の上限を超えました。しばらく待ってからもう一度お試しください。
+    '500':
+      title: 内部サーバーエラー
+      body: 申し訳ございませんが、問題が発生しました。この問題については既に報告を受けており、すぐに調査いたします。
+    '404':
+      body: 要求されたアイテムは見つかりませんでした。ディスカッションまたはアンケートが削除されている場合に発生する可能性があります。
   group:
     error:
       handle_must_begin_with_parent_handle: "%{parent_handle} で始める必要があります -"
@@ -145,6 +177,7 @@ ja:
       must_have_options: 少なくとも 1 つの投票オプションが必要です
       must_be_in_the_future: きっと未来にあるはず
       templates_cannot_close: テンプレートを閉じることができません
+      poll_options_dont_match: Loomioのバグにより、投票を保存できませんでした。現在修正に取り組んでいます。再読み込みしてもう一度お試しください。
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) 人のメンバーが自分の立場を表明しました"
       title: タイトル
@@ -184,6 +217,13 @@ ja:
   event_mailer:
     received_email:
       explaination_html: "<p>あなたは Loomio グループ %{group} の管理者であるため、このメールを受信しています。</p><p>グループは、認識できない電子メール アドレスから電子メールを受信しました。</p><p>メッセージがグループのメンバーからのものである場合は、メールを確認してメンバーを選択してください。</p><p>メッセージが不要な場合は、そのアドレスからの今後のメールをブロックできます。</p>"
+    notification_reason:
+      group_subscribed: グループ内のすべてのアクティビティを購読しているため、このメールを受け取りました。
+      group_mentioned: グループが@メンションされたため、このメッセージを受け取りました。
+      user_mentioned: "@メンションされたのでこれを受け取りました。"
+      notified: 著者からの通知により、これを受け取りました。
+      poll_subscribed: あなたはアンケートに登録しているので、このメールを受け取りました。
+      discussion_subscribed: あなたはこのディスカッションを購読しているので、このメッセージを受け取りました。
   user_mailer:
     group_export_ready:
       subject: "%{group_name} のグループ データのエクスポート"
@@ -226,9 +266,8 @@ ja:
       greeting: 'こんにちは %{name} こちらは、Loomio アカウントのパスワードをリセットするために使用できるリンクです:'
       link_text: あなたのパスワードをリセット
       signoff: "%{hostname} の「パスワードを忘れた場合」フォームに電子メールが入力されたため、このメッセージを受信しました。ただし、上記のリンクをクリックしてフォームに記入するまで、パスワードは変更されません。引き続きログインの問題が発生する場合は、このメールに返信してサポート担当者に連絡してください。"
-    by_who: "%{人} 著"
+    by_who: "%{person} 著"
     reply_to_this_discussion: このディスカッションに返信する
-    loomio_app_description: 組織が一緒に意思決定を行うための使いやすく安全な場所。
     view_group: グループを表示する
     to_join_group:
       subject: "%{member} が %{site_name} の %{group_name} に参加するよう招待しています"
@@ -267,6 +306,9 @@ ja:
       subject: " %{who}  が %{which_group} に参加するようにお願いしています"
       view_group: ここでリクエストを承認または拒否できます
       button_text: リクエストの表示
+    content_was_translated: このコンテンツは%{source_locale}から翻訳されました
+    content_was_translated_html: このコンテンツは%{source_locale}から翻訳されました。<a href="%{profile_url}">表示設定<a></a>
+    loomio_app_description: 協力的な組織が一緒に意思決定を行う場所。
   announcement_count_emails: "%{count} 件のメール"
   email_actions:
     unfollowed_discussion: スレッドの電子メールをオフにしました。
@@ -335,3 +377,215 @@ ja:
       all: "%{action} %{subject} を実行する権限がありません。"
     add_guests:
       all: "%{subject} にゲストを追加するには、Loomio サブスクリプションをアップグレードする必要があります。または、ゲストをグループのメンバーとして招待することもできます。"
+  poll_templates:
+    practice_proposal:
+      title: だんだん慣れてきた
+      process_name: 実践提案
+      process_subtitle: 実際に試してみて、Loomio での提案の仕組みを学びましょう。
+      process_introduction: "<p>このテンプレートを使えば、グループメンバーがLoomioで提案書の作成に慣れることができます。安全かつ簡単に投票を試し、全体の流れを確認できる方法です。</p>"
+      details: "<p>これは、Loomio での提案の仕組みを誰もが理解できるようにするための練習です。</p><p>ぜひ投票し、よろしければ理由も書いてください。</p><p>プレッシャーも現実世界での影響もありません。提案がどのように機能するかを探る、ただの方法です！</p>"
+      outcome_statement: "<p>この練習提案にご参加いただきありがとうございます！\U0001F389</p><p>これはLoomioでの投票とコメントの仕組みを確認するための機会でした。具体的な決定は行われていませんが、このプロセスに慣れるのに役立つことを願っています。</p>"
+    proposal:
+      process_subtitle: 決定を下すための提案を提出する
+      process_introduction: <p>従来の Loomio 提案は、議論を明確な結果に変換して意思決定を行うのに役立ちます。</p><p>行動方針を提案し、賛成、棄権、反対の投票によって回答するよう人々に呼びかけます。</p><p>投票する際に、なぜそのように投票したのか理由を述べることができます。他の人がその問題についてどのような立場をとっているのか、そしてその理由も知ることができます。</p><p>このように、提案を使用して人々に応答を促し、新しい情報を発見し、共通の理解を構築することで、グループがより多くの情報に基づいた、より良い決定を下せるように支援することができます。</p><p>提案とそれに関連する議論によって、決定がどのようになされたかという独自の記録が作成されます。</p><p><a target="_blank" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>シンプルな意思決定プロセスで従来の Loomio 提案を使用する方法について詳しくお読みください</u></a>。</p>
+      title: 新しいブランドコンセプトを承認する
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>あなたが下すべき決断とは何ですか?</strong></h3><p></p><h3 id="why-is-this-important"><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>人々に何をするよう求めているのですか?</strong></h3><p></p><p>この提案を可決するには、メンバーの過半数が賛成票を投じる必要があります。</p><p>同意しない場合は、その理由と、同意するために何を変える必要があるかを述べてください。</p>
+      agree: 同意する
+      agree_meaning: 私はこの提案を支持する
+      agree_prompt: この提案の何が気に入っていますか? また、グループにとってどのようなメリットがありますか?
+      abstain: 棄権
+      abstain_meaning: この決定に投票しないこと、または投票できないことを選択する。
+      abstain_prompt: なぜ棄権するのか、あるいはこの決定に投票できないと感じるのか?
+      disagree: 同意しない
+      disagree_meaning: この提案を支持するには、何かを変更する必要があります。
+      disagree_prompt: この提案をどのように改善すれば、支持していただけるでしょうか?
+    advice:
+      process_subtitle: 必要な決断についてアドバイスを求める
+      process_introduction: <p>組織にとってより良い決定を下せるよう、影響を受ける人や専門知識を持つ人からアドバイスを得て、必要な決定についてアドバイスを求めてください。</p><ul><li><p>アドバイスは、組織にとってより良い意思決定を行うのに役立ちます。</p></li><li><p>人間関係、学習機会、多様な意見を育みます。</p></li><li><p>自発性と創造性を刺激し、仕事をより楽しくします。</p></li></ul><p><a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>アドバイスプロセスの詳細については、こちらをご覧ください</u></a>。</p>
+      title: タカシが新しいパソコンを買うのを手伝ってください
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>あなたが下すべき決断とは何ですか?</strong></h3><p></p><h3 id="why-is-this-important"><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3 id="what-advice-are-you-asking-from-people-to-help-you-make-a-go"><strong>良い決断をするために、人々にどんなアドバイスを求めていますか?</strong></h3><p></p><p>私たちの組織にとって良い決断を下すために、皆さんの意見を伺いたいと考えています。</p>
+      agree: 同意する
+      agree_meaning: 私はこの決定についてアドバイスをしてきました
+      agree_prompt: アドバイスを要約するか、役立つコメントを記入してください
+      abstain: 棄権
+      abstain_meaning: アドバイスできることはない
+      abstain_prompt: 何か役に立つコメントはありますか?
+      outcome_statement: "<p>私のアドバイスラウンドに参加していただきありがとうございます!</p>"
+    consent:
+      process_subtitle: 異議なく「安全に試せる」決定を下す
+      process_introduction: <p>提案に対して意味のある異論がない場合に、必要な決定について同意を求めます。そうすることで、組織にとって「安全に試せる」迅速な決定を下すことができます。</p><ul><li><p> 「十分に良い」決断を目指す</p></li><li><p>実行可能な提案を作成するために多くの意見を取り入れる</p></li><li><p>正当な異議があるかどうか尋ねる</p></li><li><p>異議を解決するために提案を修正する</p></li></ul><p><a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">同意プロセスの詳細については、こちらをご覧ください</a>。</p>
+      title: クロエをデザイナーとして採用
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>あなたが下すべき決断とは何ですか?</strong></h3><p></p><h3 id="why-is-this-important"><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3 id="what-are-you-asking-of-people-in-this-proposal"><strong>この提案では人々に何を求めているのでしょうか?</strong></h3><p></p><p>異議がある場合は、その理由を述べ、提案が安全になるように変更を提案してください。</p><p>私たちは、組織にとって良い決定を下せるよう、「試しても安全」な「十分に良い」決定に対する同意を求めていることを忘れないでください。</p>
+      consent: 同意
+      consent_meaning: この提案は試してみるのに安全だ
+      consent_prompt: この提案のどのような点が気に入っていますか? また、組織にとってどのようなメリットがありますか?
+      objection: 異議
+      objection_meaning: 私は正当な反対意見を持っており、この提案は害を及ぼすと考えています
+      objection_prompt: この提案を「安全に試せる」ようにするには、どのような変更を加えれば支持してもらえるでしょうか?
+      outcome_statement: "<p>同意プロセスにご参加いただきありがとうございます。</p>"
+    consensus:
+      process_subtitle: 関係者全員と団体交渉協定を結ぶ
+      process_introduction: <p>必要な決定について合意を形成し、すべての参加者のニーズと懸念を満たす合意に達します。</p><ul><li><p>一緒に議論し、提案を練り上げましょう</p></li><li><p>関係者全員を包括し尊重する</p></li><li><p>大多数の人々の同意を求める</p></li></ul><p><a target="_blank" href="https://help.loomio.com/en/guides/consensus_process/index.html">コンセンサスプロセスの詳細については、こちらをご覧ください</a>。</p>
+      title: 新しいブランドコンセプトを承認する
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>あなたが下すべき決断とは何ですか?</strong></h3><p></p><h3 id="why-is-this-important"><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>人々に何をするよう求めているのですか?</strong></h3><p></p><p>この提案を可決するには、メンバーの過半数が賛成票を投じる必要があります。</p><p>同意しない場合は、その理由と、同意するために何を変える必要があるかを述べてください。</p>
+      outcome_statement: "<p>コンセンサスプロセスにご参加いただきありがとうございます。</p>"
+      agree: 同意する
+      agree_meaning: 私はこの提案を支持する
+      agree_prompt: この提案のどのような点が気に入っていますか? また、組織にとってどのようなメリットがありますか?
+      abstain: 棄権
+      abstain_meaning: この決定は私に影響を与えず、グループが何を決定しても私は満足です
+      abstain_prompt: なぜ棄権するのか、あるいはこの決定に投票できないと感じるのか?
+      disagree: 同意しない
+      disagree_meaning: この提案を支持するには、何かを変える必要がある
+      disagree_prompt: この提案をどのように改善すれば、支持していただけるでしょうか?
+      block: ブロック
+      block_meaning: 私はこの提案に反対し、進めるべきではないと思う
+      block_prompt: この提案に対する反対理由と、なぜこの提案を進めるべきではないのかを説明してください。
+    question_round:
+      process_subtitle: 提案を理解するために、明確な質問を促します
+      process_introduction: <p>質問ラウンドは、提案について明確にする質問をする機会であり、全員が提案を理解した上で、それについてどう思うかを述べる機会となります。</p><p> Loomio Questionラウンドは、投票オプションのない特別な提案です。参加者は、ラウンドで設定された時間内に質問をすることができます。</p><p>質問ラウンドは、同意プロセスのステップとしてよく使用されます。</p><p><a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">同意プロセスの詳細については、こちらをご覧ください</a>。</p>
+      title: 健康と安全に関するポリシーについて何か質問はありますか?
+      details: <h3 id="what-are-you-proposing"><strong>何を提案しているのですか?</strong></h3><p></p><h3 id="why-is-this-important"><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>人々に何をするよう求めているのですか?</strong></h3><p></p><p>これは質問ラウンドであり、説明を明確にするための質問をしていただきます。</p><p>提案を理解するために何を知る必要がありますか?</p><p>質問ラウンドが終了する前にご回答ください。</p>
+      reason_prompt: 提案を理解するために何を知る必要がありますか?
+      outcome_statement: "<p>このラウンド中に質問を送信していただきありがとうございます</p>"
+    sense_check:
+      process_subtitle: フィードバック、質問、懸念事項を尋ねる
+      process_introduction: <p>センスチェック提案は、フィードバックを得て質問を促し、懸念事項を明らかにするための優れた方法です。決定に進む前に、提案を明確にし、改善するのに役立ちます。</p><p>センスチェックは、提案が形成されつつあることを人々に知らせ、参加を促します。これは、人々の意見に耳を傾け、彼らの気持ちを察知し、適切に対応する機会であり、彼らの意見を取り入れることでより良い意思決定につながる可能性を広げます。</p><p>同意プロセスでセンスチェック提案を使用して、提案を改善するための反応やコメントを募り、コンセンサスプロセスでコンセンサスをテストします。</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>シンプルな意思決定プロセスにおけるセンスチェックの使用について詳しくは、こちらをご覧ください</u></a><span>。</span></p>
+      title: 新しいブランドコンセプトについてどう思いますか?
+      details: <h3 id="what-are-you-proposing"><strong>何を提案しているのですか?</strong></h3><p></p><h3 id="why-is-this-important"><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>人々に何をするよう求めているのですか?</strong></h3><p></p><p>この提案についてどう思われますか？コメントを残すか、改善のための提案を行ってください。</p><p>このセンスチェックは、私たちがより良い決定を下せるよう、皆さんの意見や貢献を伺う機会となります。</p>
+      outcome_statement: "<p>センスチェックにご参加いただきありがとうございます。</p>"
+      not_sure: わからない
+      not_sure_meaning: 質問がある、またはもう少し時間が必要な場合
+      not_sure_prompt: どの部分が不明瞭ですか？どうすれば解決できるでしょうか？
+      looks_good: 良さそうだ
+      looks_good_meaning: この先の展開に満足しています
+      looks_good_prompt: 提案をより良くするためのコメントや提案はありますか?
+      abstain: 棄権
+      abstain_meaning: この作品に対して、付け加えたいことや異論はありません。
+      abstain_prompt: 棄権は、本提案の方向性に同意することを意味します。棄権する理由はありますか？
+      concerned: 心配している
+      concerned_meaning: 私が同意するためには、このことについて何かを変える必要があるかもしれない
+      concerned_prompt: あなたの懸念は何ですか、そしてそれはどのように対処される可能性がありますか?
+    gradients_of_agreement:
+      process_subtitle: 8段階評価で提案への支持を表明する
+      process_introduction: "<p>同意のグラデーション提案により、グループのメンバーは提案に対する支持をスケール上の度合いで表現することができ、「賛成」や「反対」という表現よりも多くの方法で支持を表現できるようになります。</p><p>正式な合意に進む前に、提案に対する支持をテストするための予備ラウンドとして合意の勾配を使用します。</p><p>合意形成の勾配は、提案が形成されつつあることを人々に知らせ、参加を促します。これは、人々の意見に耳を傾け、彼らの気持ちを察知し、適切に対応する機会であり、彼らの意見を取り入れてより良い意思決定を行う可能性を広げます。</p>"
+      title: 新しい価値観の声明はいかがですか?
+      details: <h3 id="what-are-you-proposing"><strong>何を提案しているのですか?</strong></h3><p></p><h3 id="why-is-this-important"><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>人々に何をするよう求めているのですか?</strong></h3><p></p><p>この提案はいかがでしたでしょうか？ 下のスケールで賛同度を表明し、コメントや改善のご提案をお寄せください。</p><p>この合意段階の提案は、提案に対する支持をテストし、正式な合意に進む前に皆さんの意見を伺う機会となるものです。</p>
+      whole_hearted_endorsement: 心からの支持
+      whole_hearted_endorsement_meaning: 本当に気に入りました！
+      whole_hearted_endorsement_prompt: 何が気に入っていますか？
+      agreement_with_minor_contention: わずかな異論はあるものの合意
+      agreement_with_minor_contention_meaning: 完璧ではないが、十分だ
+      agreement_with_minor_contention_prompt: あなたの懸念は何ですか?
+      support_with_reservations: 予約サポート
+      support_with_reservations_meaning: 私はそれで生きていける
+      support_with_reservations_prompt: ご予約内容は？
+      abstain_meaning: この問題は私には影響しません
+      abstain_prompt: 何か追加したいことはありますか?
+      more_discussion_needed: さらなる議論が必要
+      more_discussion_needed_meaning: まだ問題を十分に理解していない
+      more_discussion_needed_prompt: 何が分からないのですか?
+      don_t_like_but_will_support: 好きではないが支持する
+      don_t_like_but_will_support_meaning: あまり良くないけど、グループを邪魔したくない
+      don_t_like_but_will_support_prompt: 何を改善してほしいですか?
+      serious_disagreement: 重大な意見の相違
+      serious_disagreement_meaning: 私はこれに賛成しません。私を頼りにしないでください。
+      serious_disagreement_prompt: 何に同意しないのですか?
+      veto: 拒否
+      veto_meaning: この提案をブロックします
+      veto_prompt: なぜこの提案に反対するのですか？支持するためには、何を変える必要があるのでしょうか？
+    simple_poll:
+      process_subtitle: 最も人気のあるオプションを見つける
+      process_introduction: <p>決定を下す前に、人々が最も重視するオプションを見つけます。</p><p>シンプルなアンケートは、単一または複数の選択肢から最も人気のあるオプションを見つけるのに役立ちます。</p><p>詳細フィールドにオプションに関する詳細を記入し、オプションの名前を入力して「+」をクリックして追加します。</p><p>投票者が選択できる<strong>最小選択肢数</strong>と<strong>最大選択肢数</strong>を設定します。単一選択の投票の場合は、最大選択肢数を1のままにしてください。</p><p>各オプションの横にある鉛筆アイコンを使用してオプションの<strong>意味</strong>を追加し、投票時にユーザーを支援するためにオプションの詳細をさらに説明することができます。</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">シンプルなアンケートの詳細をご覧ください</a>。</p>
+      title: 私たちの戦略的方向性の焦点はどこに置くべきでしょうか?
+      details: <h3 id="what-is-this-poll-about"><strong>この世論調査は何についてですか？</strong></h3><p></p><h3 id="why-is-this-important"><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>人々に何をするよう求めているのですか?</strong></h3><p></p><p>ご希望のオプションを選択してください。</p>
+    score_poll:
+      process_subtitle: 各オプションの支持度を測定する
+      process_introduction: <p>各オプションに対する人々の希望、好み、または関心を調査する場合は、スコア アンケートを使用します。</p><p><span>参加者は、各オプションを評価し、スケールに沿ってスライダーを動かしてスコアを割り当てるように求められます。</span></p><p><span>結果はグラフで表示され、各オプションの合計ポイント、平均ポイント、投票者数を示す表も表示されます。</span></p><p>詳細設定には、「投票は匿名です」や「オプションをランダムな順序で表示します」などがあり、スコア投票で投票の偏りを減らすためによく使用されます。</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">スコア投票の詳細をご覧ください</a>。</p>
+      title: 組織内で意思決定がどのように行われるかを評価する
+      details: <h3 id="what-is-this-poll-about"><strong>この世論調査は何についてですか？</strong></h3><p></p><h3 id="why-is-this-important"><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>人々に何をするよう求めているのですか?</strong></h3><p></p><p>ご希望のオプションを選択してください。</p>
+    dot_vote:
+      process_subtitle: 優先順位を明らかにするためにポイントの予算を割り当てる
+      process_introduction: <p>ドット投票は、限られたリソースを複数の選択肢に配分しようとするグループにとって役立ちます。参加者が選択肢を選択する際に制約があることを理解できるようにすることで、単なる投票を超えた効果をもたらします。</p><p>参加者にはそれぞれ決められた数のドットが与えられます。その数を決めてください。</p><p>参加者は提示された選択肢の中から気に入ったものに点を付けます。すべての点を1つの選択肢に付けることも、複数の選択肢に分散させることもできます。</p><p>参加者がドットを割り当てると、ドットの予算制限を超える可能性があるため、ドットの使い方を慎重に検討することが推奨されます。</p><p>最も多くのドットが付いた選択肢が「勝ち」となります。結果表には、結果を分析するのに役立つ追加データが表示されます。</p><ul><li><p>ポイントの割合</p></li><li><p>ポイント</p></li><li><p>平均</p></li><li><p>有権者</p></li></ul><p><a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">ドット投票についての詳細を読む</a>。</p>
+      title: 会議のテーマの選択
+      details: <h3 id="what-is-this-poll-about"><strong>この世論調査は何についてですか？</strong></h3><p></p><h3 id="why-is-this-important"><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>人々に何をするよう求めているのですか?</strong></h3><p></p><p>このアンケートでは、8つのドットを好きな選択肢に割り当てることができます。すべてのドットを1つの選択肢に割り当てても、分散させて割り当てても構いません。</p>
+    ranked_choice:
+      process_subtitle: 選択肢の優先順位を理解する
+      process_introduction: <p>順位付け選択は、選択肢が多数ある場合や選挙を実施する場合に役立ちます。</p><p>この投票テンプレートは、ユーザーが好みの順序で投票できる一連のオプションを提供します。</p><p>投票者が選択できる選択肢の数を設定できます。</p><p><span>投票者は、好みの順にオプションをドラッグ アンド ドロップします (#1 が最も好ましいオプションです)。</span></p><p><span>詳細設定には、「投票は匿名です」や「オプションをランダムな順序で表示します」などがあり、これらは通常、投票の偏りを減らすためにランク付けされた選択肢で使用されます</span>。</p><p>結果はランキング順に表示されます。結果表には、結果の分析に役立つ追加データが表示されます。</p><ul><li><p>ランク</p></li><li><p>ポイントの割合</p></li><li><p>ポイント</p></li><li><p>平均</p></li></ul><p><a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">ランク付け選択についての詳細をご覧ください</a>。</p>
+      title: ガバナンス委員会に取締役を選出する
+      details: <h3 id="what-is-this-poll-about"><strong>この世論調査は何についてですか？</strong></h3><p></p><h3 id="why-is-this-important"><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>人々に何をするよう求めているのですか?</strong></h3><p></p><p>選択肢をあなたの好みの順にランク付けして投票してください。結果で1位になった選択肢が勝ちとなります。</p>
+    time_poll:
+      process_subtitle: いつ会えるか調べる
+      process_introduction: <p><span>会議やイベントの日程を調整する時間を節約します。</span></p><p>時間アンケートを使用すると、全員の空き時間を簡単に確認し、最適な時間を見つけることができます。</p><p>時間に関するアンケートにタイトルと詳細を入力してください。タイムゾーンの日付と時刻の選択肢のリストを入力してください。</p><p>時間枠を設定する際は、異なるタイムゾーンにいる参加者を考慮してください。参加者には、それぞれのタイムゾーンに合わせた時刻が表示されます。</p><p>会議の継続時間を設定します。</p><p>時間に関するアンケートが終了したら、最適な時間と会議の指示を結果として設定します。</p><p> <span>Loomio は結果通知メールにカレンダーの招待状を含めるので、参加者は自分のカレンダーに追加できます。</span></p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">Time poll についてさらに詳しく読む</a>。</p>
+      title: 次回の会議の日程を決めましょう
+      details: "<p><strong>会議またはイベントとは何ですか?</strong></p><p></p><p><strong>なぜこれが重要なのでしょうか?</strong></p><p></p><p><strong>人々に何をするよう求めているのですか?</strong></p><p></p><p><span>空いている時間帯には緑の「親指を立てる」アイコンを付け、空いていない場合は赤い「親指を下げて」アイコンをそのままにしておきます。</span></p><p> <span>「必要に応じて」対応可能であることを示すには、「親指を横向きにする」アイコンを使用します。</span></p>"
+      reason_prompt: 主催者が適切な時間を見つけるために何か言えることはありますか?
+    opt_in:
+      process_subtitle: ボランティアを探すか参加者を募集する
+      process_introduction: <p>オプトインを使用して、チーム、委員会、またはワーキング グループに参加したり、イベントに参加するようユーザーを招待します。</p><p> 「オプトイン」には、「承認」または「拒否」の 2 つの投票オプションがあります。</p><p>ワーキンググループに参加してほしい人数の目標を定義できます。たとえば、3 人が参加するなどです。</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#opt-in">オプトインの詳細については、こちらをご覧ください</a>。</p>
+      title: 新しい持続可能性ポリシーを起草するためのワーキンググループ
+      details: "<p><strong>招待するチーム、ワーキンググループ、またはイベントは何ですか?</strong></p><p></p><p><strong>なぜこれが重要なのでしょうか?</strong></p><p></p><p><strong>人々に何をするように求めているのですか?</strong></p><p></p><p>参加するには「承諾」を選択してください!</p>"
+      accept_meaning: 参加したいです
+      accept_prompt: なぜこれにボランティアとして参加するのですか?
+      decline_meaning: 参加できません
+      decline_prompt: 何か言いたいことはありますか？
+  forward_mailer:
+    bounce:
+      subject: Loomioへのメッセージは配信されませんでした
+      reason: これは、電子メール クライアントが、指定された「返信先」アドレスではなく、「送信元」アドレスにメッセージを送信したために発生しました。
+      recommendation: ブラウザでLoomioを開いて、メッセージを直接投稿してください。
+  locale_names:
+    en: 英語
+    be-BY: ベラルーシ語
+    bg-BG: ブルガリア語
+    ca: カタルーニャ語
+    cs: チェコ語
+    zh-TW: 中国語（繁体字、台湾語）
+    da: デンマーク語
+    de: ドイツ語
+    es: スペイン語
+    eo: エスペラント
+    el: ギリシャ語
+    fr: フランス語
+    he: ヘブライ語
+    id: インドネシア語
+    it: イタリア語
+    hu: ハンガリー語
+    ja: 日本語
+    ko: 韓国語
+    ml: マラヤーラム語
+    nl-NL: オランダ語
+    pl: 研磨
+    pt-BR: ポルトガル語（ブラジル）
+    ro: ルーマニア語
+    sr: セルビア語（ラテン語）
+    sr-RS: セルビア語（キリル文字）
+    sk: スロバキア語
+    sv: スウェーデン語
+    vi: ベトナム語
+    tr: トルコ語
+    uk: ウクライナ語
+    an: アラゴン人
+    ar: アラビア語
+    cmn: 中国語（北京語）
+    hr: クロアチア語
+    it-CH: イタリア語（スイス）
+    fi: フィンランド語
+    gl: ガリシア語
+    ga-IE: ゲール語（アイルランド）
+    hi: いいえ
+    km: クメール語
+    lv: ラトビア語
+    mk: マケドニア語
+    mi: マオリ語
+    fa-IR: ペルシャ語（イラン）
+    pt-PT: ポルトガル語
+    ru: ロシア
+    sl: スロベニア語
+    te: テルグ語
+    ur: ウルドゥー語
+    ur-PK: ウルドゥー語（パキスタン）
+    be: ベラルーシ語
+    pt: ポルトガル語
+    zh: 中国語（繁体字、台湾語）
+    zh-HK: 中国語（繁体字、台湾語）

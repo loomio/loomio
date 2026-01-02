@@ -74,19 +74,19 @@ module Dev::Scenarios::Auth
       membership_request: membership_request,
       actor: user
     )
-    
+
     sign_in admin
     last_email
   end
 
   def setup_deactivated_user
     patrick.update(deactivated_at: 1.day.ago)
-    redirect_to dashboard_url
+    redirect_to dashboard_path
   end
 
   def setup_login_token
     login_token = FactoryBot.create(:login_token, user: patrick)
-    redirect_to(login_token_url(login_token.token))
+    redirect_to(login_token_path(login_token.token))
   end
 
   def setup_login_token_email
@@ -97,17 +97,17 @@ module Dev::Scenarios::Auth
 
   def setup_used_login_token
     login_token = FactoryBot.create(:login_token, user: patrick, used: true)
-    redirect_to(login_token_url(login_token.token))
+    redirect_to(login_token_path(login_token.token))
   end
 
   def setup_explore_as_visitor
     patrick
     recent_discussion
-    redirect_to explore_url
+    redirect_to explore_path
   end
 
   def view_closed_group_with_shareable_link
-    redirect_to join_url(create_group)
+    redirect_to "/join/group/#{create_group.token}"
   end
 
   def view_open_discussion_as_visitor
@@ -118,7 +118,7 @@ module Dev::Scenarios::Auth
     @group.add_admin! jennifer
     @discussion = Discussion.new(title: 'I carried a watermelon', private: false, author: jennifer, group: @group)
     DiscussionService.create(discussion: @discussion, actor: @discussion.author)
-    redirect_to discussion_url(@discussion)
+    redirect_to discussion_path(@discussion)
   end
 
   def view_closed_group_as_non_member
@@ -129,7 +129,7 @@ module Dev::Scenarios::Auth
     @group.add_admin! jennifer
     @discussion = Discussion.new(title: "I carried a watermelon", private: false, author: jennifer, group: @group)
     DiscussionService.create(discussion: @discussion, actor: @discussion.author)
-    redirect_to group_url(@group)
+    redirect_to group_path(@group)
   end
 
   def view_secret_group_as_non_member
@@ -137,7 +137,7 @@ module Dev::Scenarios::Auth
     sign_in patrick
     @group = Group.create!(name: 'Secret Dirty Dancing Shoes',
                                 group_privacy: 'secret')
-    redirect_to group_url(@group)
+    redirect_to group_path(@group)
   end
 
   def view_closed_group_as_visitor
@@ -151,13 +151,13 @@ module Dev::Scenarios::Auth
     DiscussionService.create(discussion: @discussion, actor: @discussion.author)
     @public_discussion = @group.discussions.create!(title: 'This thread is public', private: false, author: jennifer)
     DiscussionService.create(discussion: @public_discussion, actor: @public_discussion.author)
-    redirect_to group_url(@group)
+    redirect_to group_path(@group)
   end
 
   def view_secret_group_as_visitor
     @group = Group.create!(name: 'Secret Dirty Dancing Shoes',
                                 group_privacy: 'secret')
     @group.add_admin! patrick
-    redirect_to group_url(@group)
+    redirect_to group_path(@group)
   end
 end

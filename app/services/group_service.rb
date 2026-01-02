@@ -1,23 +1,22 @@
 module GroupService
+  DEFAULT_COVER_PHOTO_FILENAMES = %w[
+    cover1.jpg
+    cover2.jpg
+    cover3.jpg
+    cover4.jpg
+    cover5.jpg
+    cover6.jpg
+    cover7.jpg
+    cover8.jpg
+    cover9.jpg
+    cover10.jpg
+    cover11.jpg
+    cover12.jpg
+    cover13.jpg
+    cover14.jpg
+  ]
   def self.remote_cover_photo
-    # id like to use unsplash api but need to work out how to meet their attribution requirements
-    filename = %w[
-      cover1.jpg
-      cover2.jpg
-      cover3.jpg
-      cover4.jpg
-      cover5.jpg
-      cover6.jpg
-      cover7.jpg
-      cover8.jpg
-      cover9.jpg
-      cover10.jpg
-      cover11.jpg
-      cover12.jpg
-      cover13.jpg
-      cover14.jpg
-    ].sample
-    Rails.root.join("public/theme/group_cover_photos/#{filename}")
+    Rails.root.join("public/theme/group_cover_photos/#{DEFAULT_COVER_PHOTO_FILENAMES.sample}")
   end
 
   def self.invite(group:, params:, actor:)
@@ -36,7 +35,7 @@ module GroupService
       group_ids: group_ids,
       emails: Array(params[:recipient_emails]),
       user_ids: Array(params[:recipient_user_ids]),
-      actor: actor,
+      actor: actor
     )
 
     users = UserInviter.where_or_create!(
@@ -63,11 +62,9 @@ module GroupService
       Membership.import(new_memberships, on_duplicate_key_ignore: true)
 
       # mark as accepted all invitiations to people who are already part of the org.
-      if g.parent
-        parent_members = g.parent.accepted_members.where(id: users.verified.pluck(:id))
-        Membership.pending.where(group_id: g.id,
-                                 user_id: parent_members.pluck(:id)).update_all(accepted_at: Time.now)
-      end
+      other_group_ids = Group.published.where(id: g.parent_or_self.id_and_subgroup_ids).pluck(:id) - Array(g.id)
+      existing_member_ids = Membership.accepted.where(group_id: other_group_ids, user_id: users.verified.pluck(:id)).pluck(:user_id)
+      Membership.pending.where(group_id: g.id, user_id: existing_member_ids).update_all(accepted_at: Time.now)
 
       g.update_pending_memberships_count
       g.update_memberships_count
@@ -88,8 +85,6 @@ module GroupService
     actor.ability.authorize!(:create, group) unless skip_authorize
 
     return false unless group.valid?
-
-    group.is_referral = actor.groups.size > 0
 
     if group.is_parent?
       url = remote_cover_photo

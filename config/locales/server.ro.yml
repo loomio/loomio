@@ -1,3 +1,4 @@
+---
 ro:
   discussion_templates:
     blank:
@@ -87,6 +88,12 @@ ro:
       process_introduction: "<p>Introduceți documentul împreună cu orice informații de fundal. Precizați scopul documentului pentru a vă ajuta să vă concentrați.</p><p> Invitați oamenii să contribuie cu informații și cu expertiza lor și folosiți-o pentru a încadra documentul. Recunoașteți și luați în considerare feedback-ul și contribuțiile oamenilor.</p><p> Integrați contribuțiile într-o primă schiță a documentului și proiectele succesive până când acesta este gata de aprobare.</p><p> Utilizați un sondaj de verificare Sense pentru a analiza opiniile și a clarifica orice probleme legate de proiect.</p><p> Odată ce feedback-ul este luat în considerare și încorporat în document, treceți la aprobare sau acord cu o propunere de consimțământ sau consens.</p><p> Firul devine o înregistrare clară a progresului creării documentelor și a deciziilor luate.</p>"
       description: <h3 id="what-is-the-purpose-of-the-document">Care este scopul documentului?</h3><p></p><h3 id="why-is-this-important"> De ce este acest lucru important?</h3><p></p><h3 id="what-are-you-asking-people-to-do"> Ce le ceri oamenilor să facă?</h3><p></p>
       document: Document
+    practice_thread:
+      process_subtitle: Un fir de discuție pentru a ura bun venit în grup și a exersa utilizarea Loomio
+      process_introduction: "<p>Folosește acest șablon pentru a-i ura bun venit noilor membri și a încuraja participarea timpurie. Le oferă oamenilor șansa de a se prezenta și de a explora funcțiile Loomio.</p>"
+      title: "\U0001F44B Bun venit! Salută-ne și încearcă diverse lucruri"
+      description: "<p>Bine ați venit în grupul nostru Loomio — mă bucur să vă avem aici!</p><p> Acest fir de discuție este un spațiu pentru:</p><ul><li><p> Prezintă-te grupului</p></li><li><p> Încearcă câteva dintre funcțiile Loomio - de exemplu: încearcă să folosești reacții \U0001F44D</p></li><li><p> Puneți orice întrebări aveți în această etapă</p></li></ul><p> Dacă nu ești sigur ce să spui, un simplu salut e în regulă \U0001F642</p>"
+      process_name: Discuție practică
   explore:
     header: Explreaza grupuri publice
   activerecord:
@@ -96,26 +103,51 @@ ro:
         invalid: nu este o valoare valida
   unauthorized:
     manage:
-      all: "Neautorizat pentru %{action} %{subject}."
+      all: Neautorizat pentru %{action} %{subject}.
     add_guests:
-      all: "Trebuie să vă actualizați abonamentul Loomio pentru a adăuga invitați la %{subject}. Alternativ, îi puteți invita să fie membri ai grupului dvs."
+      all: Trebuie să vă actualizați abonamentul Loomio pentru a adăuga invitați la %{subject}. Alternativ, îi puteți invita să fie membri ai grupului dvs.
   errors:
-    clear_cache: "Problemă la încărcare detectată. Țineți apăsat Shift și apăsați pe Reîncărcare sau ștergeți memoria cache a browserului."
+    clear_cache: Problemă la încărcare detectată. Țineți apăsat Shift și apăsați pe Reîncărcare sau ștergeți memoria cache a browserului.
     404:
       title: Nu am găsit
     noscript: Loomio necesită javascript pentru a funcționa! Vă rugăm să activați javascript în browser pentru a continua
-    upgrade_browser: |-
-        Uh oh! Browserul dvs. web este prea vechi și este posibil ca Loomio să nu funcționeze corect. Vă rugăm <a href="https://browser-update.org/update.html">să actualizați browserul.</a>
+    upgrade_browser: Uh oh! Browserul dvs. web este prea vechi și este posibil ca Loomio să nu funcționeze corect. Vă rugăm <a href="https://browser-update.org/update.html">să actualizați browserul.</a>
     return_home: Intoarce-te acasa
     not_found: Fișierul 404 nu a fost găsit.
     messages:
       email: nu este o adresă de e-mail validă
       spoofed_media_type: Continutul acelui fisier nu corespunde cu numele lui
       pwned_password: Această parolă a apărut anterior într-o încălcare a datelor și nu ar trebui niciodată utilizată
+    '400':
+      title: Cerere greşită
+      body: Ne pare rău, nu am putut înțelege solicitarea respectivă.
+    '401':
+      title: Neautorizat
+      body: Nu aveți permisiunea de a accesa această pagină. Este posibil să fie nevoie să vă conectați.
+    '403':
+      title: Interzis
+      body: Nu aveți permisiunea de a accesa această pagină. Este posibil să fie nevoie să vă conectați.
+    '410':
+      title: Plecat
+      body: Această pagină nu mai există
+    '417':
+      title: Incompatibil cu browserul
+      body: Vă rugăm <a href="https://browser-update.org/update.html?force_outdated=true">să actualizați browserul</a> pentru a utiliza Loomio
+    '422':
+      title: Entitate neprocesabilă
+      body: Schimbarea dorită a fost respinsă. Poate ai încercat să modifici ceva la care nu aveai acces.
+    '429':
+      title: Prea multe solicitări
+      body: Ne pare rău, ați depășit numărul maxim de solicitări permise pe minut pentru această acțiune. Vă rugăm să așteptați puțin și să încercați din nou.
+    '500':
+      title: Internal Server Error
+      body: Ne pare rău, dar ceva nu a mers bine. Am fost notificați despre această problemă și o vom analiza în curând.
+    '404':
+      body: Elementul solicitat nu a fost găsit. Acest lucru se poate întâmpla dacă o discuție sau un sondaj a fost șters.
   group:
     error:
-      handle_must_begin_with_parent_handle: "Trebuie să înceapă cu %{parent_handle}-"
-      no_public_trials: "Vă rugăm să faceți upgrade de la versiunea de încercare pentru a modifica setarea de confidențialitate a grupului"
+      handle_must_begin_with_parent_handle: Trebuie să înceapă cu %{parent_handle}-
+      no_public_trials: Vă rugăm să faceți upgrade de la versiunea de încercare pentru a modifica setarea de confidențialitate a grupului
     stats:
       group_stats: Statistici de grup
       org_stats: Statistici ale organizației (inclusiv subgrupuri)
@@ -136,14 +168,13 @@ ro:
         rank: Rang
         time: Sondaj de timp
   user:
-    deleted_user: "Utilizator șters"
-    placeholder_name: "Utilizator invitat (%{hostname})"
+    deleted_user: Utilizator șters
+    placeholder_name: Utilizator invitat (%{hostname})
     error:
-      sign_in_required_html: |-
-          Trebuie să fiți conectat pentru a continua. <a href="/dashboard" target="_blank">Conectați-vă</a> , apoi reîncărcați această pagină pentru a continua.
-      recaptcha: "Nu am putut verifica dacă nu ești un robot. Vă rugăm să încercați din nou!"
-      bad_login: "Ne pare rău, acea parolă nu se potrivește cu cea pe care o avem în dosar"
-      username_must_be_alphanumeric: "Numele de utilizator trebuie să fie doar cu litere mici și cifre"
+      sign_in_required_html: Trebuie să fiți conectat pentru a continua. <a href="/dashboard" target="_blank">Conectați-vă</a> , apoi reîncărcați această pagină pentru a continua.
+      recaptcha: Nu am putut verifica dacă nu ești un robot. Vă rugăm să încercați din nou!
+      bad_login: Ne pare rău, acea parolă nu se potrivește cu cea pe care o avem în dosar
+      username_must_be_alphanumeric: Numele de utilizator trebuie să fie doar cu litere mici și cifre
   poll:
     error:
       cannot_add_options: Nu poti adauga optiuni la sondajul acesta
@@ -151,6 +182,7 @@ ro:
       must_have_options: Intr-un sondaj trebuie sa existe macar o optiune
       must_be_in_the_future: Trebuie să fie în viitor
       templates_cannot_close: Șabloanele nu se pot închide
+      poll_options_dont_match: O eroare cu Loomio a împiedicat salvarea votului tău. Lucrăm la remedierea acestei probleme. Te rugăm să reîncarci pagina și să încerci din nou.
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) membri și-au declarat poziția"
       title: Titlu
@@ -175,7 +207,7 @@ ro:
       participant: Participant
       also_available: Disponibil și în
       total: Total
-    waiting_for_votes_from: "Astept voturile de la"
+    waiting_for_votes_from: Astept voturile de la
   stance:
     error:
       too_short: Te rog selecteaza o optiune
@@ -189,35 +221,35 @@ ro:
     via_loomio: "%{name} (prin %{site_name})"
   event_mailer:
     received_email:
-      explaination_html: |-
-          <p>Primiți acest e-mail deoarece sunteți administrator pentru grupul Loomio: %{group}.</p><p> Grupul a primit un e-mail de la o adresă de e-mail nerecunoscută.</p><p> Dacă mesajul este de la un membru al grupului, consultați e-mailul și selectați membrul.</p><p> Dacă mesajul este nedorit, puteți bloca orice e-mail suplimentar de la acea adresă.</p>
+      explaination_html: "<p>Primiți acest e-mail deoarece sunteți administrator pentru grupul Loomio: %{group}.</p><p> Grupul a primit un e-mail de la o adresă de e-mail nerecunoscută.</p><p> Dacă mesajul este de la un membru al grupului, consultați e-mailul și selectați membrul.</p><p> Dacă mesajul este nedorit, puteți bloca orice e-mail suplimentar de la acea adresă.</p>"
+    notification_reason:
+      group_subscribed: Ați primit acest lucru deoarece sunteți abonat la toate activitățile din grup.
+      group_mentioned: Ați primit acest lucru deoarece grupul a fost @menționat.
+      user_mentioned: Ai primit asta pentru că ai fost @menționat.
+      notified: Ați primit acest lucru deoarece autorul v-a notificat.
+      poll_subscribed: Ai primit acest mesaj deoarece ești abonat la sondaj.
+      discussion_subscribed: Ai primit acest mesaj deoarece ești abonat la discuție.
   user_mailer:
     group_export_ready:
       subject: Export de date de grup pentru %{group_name}
-      body_html: |-
-          Descărcați datele grupului dvs. <a href="%{url}">aici</a> . Vă rugăm să rețineți că acest link va expira peste o săptămână.
+      body_html: Descărcați datele grupului dvs. <a href="%{url}">aici</a> . Vă rugăm să rețineți că acest link va expira peste o săptămână.
     redacted:
-      subject: "Contul dvs. de utilizator %{site_name} a fost șters"
-      body_html: |-
-          <p>Contul dvs. de utilizator %{site_name} a fost șters.</p><p> Toate datele de identificare personală au fost eliminate.</p><p> Dacă nu ați solicitat acest lucru, vă rugăm să contactați %{support_email}</p>
+      subject: Contul dvs. de utilizator %{site_name} a fost șters
+      body_html: "<p>Contul dvs. de utilizator %{site_name} a fost șters.</p><p> Toate datele de identificare personală au fost eliminate.</p><p> Dacă nu ați solicitat acest lucru, vă rugăm să contactați %{support_email}</p>"
     accounts_merged:
-      subject: "Conturile dvs. de utilizator %{site_name} au fost îmbinate."
-      body_html: |-
-          Bună %{name}, Cele două conturi loomio au fost îmbinate într-un singur cont. Pentru a accesa loomio de acum înainte, utilizați <strong>%{email}</strong> când vă conectați.
+      subject: Conturile dvs. de utilizator %{site_name} au fost îmbinate.
+      body_html: Bună %{name}, Cele două conturi loomio au fost îmbinate într-un singur cont. Pentru a accesa loomio de acum înainte, utilizați <strong>%{email}</strong> când vă conectați.
     merge_verification:
-      subject: "Verificați adresa dvs. de e-mail %{site_name} pentru îmbinare"
-      body_html: |-
-          <p>Bună %{name},</p><p> A fost făcută o solicitare de îmbinare a contului dvs. de utilizator sub adresa <strong>%{source_email}</strong> cu contul care aparține acestei adrese, <strong>%{target_email}</strong> .</p><p> După finalizarea acestui proces, nu vă veți mai putea autentifica cu <strong>%{source_email}</strong> și numai cu <strong>%{target_email}</strong> .</p><p> Vă rugăm să confirmați că aceasta este ceea ce doriți să faceți.</p>
+      subject: Verificați adresa dvs. de e-mail %{site_name} pentru îmbinare
+      body_html: "<p>Bună %{name},</p><p> A fost făcută o solicitare de îmbinare a contului dvs. de utilizator sub adresa <strong>%{source_email}</strong> cu contul care aparține acestei adrese, <strong>%{target_email}</strong> .</p><p> După finalizarea acestui proces, nu vă veți mai putea autentifica cu <strong>%{source_email}</strong> și numai cu <strong>%{target_email}</strong> .</p><p> Vă rugăm să confirmați că aceasta este ceea ce doriți să faceți.</p>"
       verify: Verificați e-mailul și continuați
       confirm_page:
         confirm: Confirmați îmbinarea
-        body_html: |-
-            <p>Vă rugăm să confirmați că doriți să îmbinați contul de sub <strong>%{source_email}</strong> în contul de sub <strong>%{target_email}</strong> .</p><p> Contul dvs. de sub <strong>%{source_email}</strong> va fi șters și, ulterior, vă veți putea conecta numai prin <strong>%{target_email}</strong> .</p><p> Această schimbare este ireversibilă.</p>
+        body_html: "<p>Vă rugăm să confirmați că doriți să îmbinați contul de sub <strong>%{source_email}</strong> în contul de sub <strong>%{target_email}</strong> .</p><p> Contul dvs. de sub <strong>%{source_email}</strong> va fi șters și, ulterior, vă veți putea conecta numai prin <strong>%{target_email}</strong> .</p><p> Această schimbare este ireversibilă.</p>"
         merge: Îmbinați conturile
       complete_page:
         title: Îmbinare reușită!
-        body_html: |-
-            <p>Fuzionarea conturilor dvs. de utilizator a avut succes. Veți primi în curând un e-mail de confirmare la <strong>%{target_email}</strong> .</p><p> Vă rugăm <a href="/contact" target="_blank">să ne contactați</a> dacă aveți întrebări suplimentare.</p>
+        body_html: <p>Fuzionarea conturilor dvs. de utilizator a avut succes. Veți primi în curând un e-mail de confirmare la <strong>%{target_email}</strong> .</p><p> Vă rugăm <a href="/contact" target="_blank">să ne contactați</a> dacă aveți întrebări suplimentare.</p>
   email:
     common:
       or_enter_code: Sau introduceți codul de mai jos
@@ -234,24 +266,21 @@ ro:
     contact_request:
       subject: "%{name} ar dori să se conecteze cu tine pe %{site_name}!"
       intro: "%{name} (%{email}) v-a trimis o solicitare de conectare."
-      footer: "Poti sa raspunzi direct %{name} prin raspuns la acest email"
+      footer: Poti sa raspunzi direct %{name} prin raspuns la acest email
     reset_password:
-      greeting: |-
-          Bună %{name} Iată un link pe care îl puteți folosi pentru a reseta parola din contul dvs. Loomio:
+      greeting: 'Bună %{name} Iată un link pe care îl puteți folosi pentru a reseta parola din contul dvs. Loomio:'
       link_text: Reseteaza-ti parola
-      signoff: |-
-          Ați primit acest lucru deoarece e-mailul dvs. a fost introdus în formularul „Am uitat parola” de pe %{hostname}. Cu toate acestea, parola dvs. nu va fi schimbată până când veți urma linkul de mai sus și completați formularul. Dacă întâmpinați în continuare probleme la conectare, răspundeți la acest e-mail pentru a contacta o persoană de asistență.
+      signoff: Ați primit acest lucru deoarece e-mailul dvs. a fost introdus în formularul „Am uitat parola” de pe %{hostname}. Cu toate acestea, parola dvs. nu va fi schimbată până când veți urma linkul de mai sus și completați formularul. Dacă întâmpinați în continuare probleme la conectare, răspundeți la acest e-mail pentru a contacta o persoană de asistență.
     by_who: de catre %{person}
     reply_to_this_discussion: Raspunde acestei discutii
-    loomio_app_description: "Un loc sigur și ușor de utilizat pentru ca organizațiile să ia decizii împreună."
     view_group: Vizualizeaza grupul
     to_join_group:
       subject: "%{member} te-a invitat sa intri in %{group_name} pe %{site_name}"
       invitation_text: "%{member} te-a invitat sa te alaturi grupului lor %{group_name}."
-      invitation_text_html: "te-a invitat sa te alaturi grupului lor"
-      link_help: "Apasa pe linkul de mai jos pentru a accepta invitatia:"
-      accept_invitation: "Accepta invitatia"
-      stop_emails: "Nu mai primiți e-mailuri de la %{site_name}"
+      invitation_text_html: te-a invitat sa te alaturi grupului lor
+      link_help: 'Apasa pe linkul de mai jos pentru a accepta invitatia:'
+      accept_invitation: Accepta invitatia
+      stop_emails: Nu mai primiți e-mailuri de la %{site_name}
       accepting_is_important: Este important să vă acceptați invitația, pentru a nu rata notificări despre deciziile care vă implică.
     resend_to_join_group:
       subject: "%{member} vă așteaptă să vă alăturați %{group_name} pe %{site_name}"
@@ -259,8 +288,8 @@ ro:
       subject: "%{who} te-a adăugat la %{which_group} pe %{site_name}"
       content: "%{who} te-a adăugat la %{which_group}."
       content_html: "<strong>%{who}</strong> te-a adăugat la <strong>%{which_group}</strong> ."
-      link_help: "Apasa pe linkul de mai jos pentru a intra in grup:"
-    unsubscribe: "Dezabonare sau schimbarea preferintelor de email:"
+      link_help: 'Apasa pe linkul de mai jos pentru a intra in grup:'
+    unsubscribe: 'Dezabonare sau schimbarea preferintelor de email:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> pentru dezabonare sau schimbarea preferintelor de email."
     catch_up:
       daily_subject: Ieri pe %{site_name}
@@ -272,27 +301,30 @@ ro:
       marked_as_read_success: Tot continutul acestui email a fost marcat ca fiind citit
       click_here: Apasa aici
     group_membership_approved:
-      intro: "Solicitarea dvs. de acces la grupul %{group_name} a fost aprobată."
-      intro_html: "Solicitarea dvs. de acces la grupul <strong>%{group_name}</strong> a fost aprobată."
-      link_help: "Faceți clic pe linkul de mai jos pentru a vă alătura %{group_name} și a începe:"
-      subject: "Cererea ta de a te alatura grupului %{group_name} a fost acceptata"
-      join_group: "Alatura-te grupului"
+      intro: Solicitarea dvs. de acces la grupul %{group_name} a fost aprobată.
+      intro_html: Solicitarea dvs. de acces la grupul <strong>%{group_name}</strong> a fost aprobată.
+      link_help: 'Faceți clic pe linkul de mai jos pentru a vă alătura %{group_name} și a începe:'
+      subject: Cererea ta de a te alatura grupului %{group_name} a fost acceptata
+      join_group: Alatura-te grupului
     membership_request:
       intro_html: a solicitat acces la unul dintre grupurile dvs.
       subject: "%{who} a cerut sa intre in %{which_group}"
       view_group: Aici poti aproba sau nu cererea
       button_text: Vizualizeaza cerere
+    content_was_translated: Acest conținut a fost tradus din %{source_locale}
+    content_was_translated_html: Acest conținut a fost tradus din %{source_locale}. <a href="%{profile_url}">Vizualizați setările<a></a>
+    loomio_app_description: Un loc pentru organizațiile colaborative unde pot lua decizii împreună.
   announcement_count_emails: "%{count} e-mailuri"
   email_actions:
     unfollowed_discussion: Ați dezactivat e-mailurile pentru fir.
   discussion_mailer:
-    reply_or_view_online_html: "Raspunde acestui email direct sau <a href='%{url}'>vezi pe %{hostname}</a>."
+    reply_or_view_online_html: Raspunde acestui email direct sau <a href='%{url}'>vezi pe %{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>Nu mai trimite email</a> pentru aceasta discutie."
-    change_email_preferences_html: "Modifica-ti <a href='%{email_preferences_url}'> preferintele de email</a>."
+    change_email_preferences_html: Modifica-ti <a href='%{email_preferences_url}'> preferintele de email</a>.
     unsubscribe_from_discussion_announced_html: "<a href='%{url}'>Dezabonați-vă</a> de la anunțuri ulterioare din acest thread."
     unsubscribe_from_new_comment_html: "<a href='%{url}'>Dezabonați-vă</a> de la comentariile din acest thread."
-    unsubscribe_from_comment_replied_to_html: "Aceasta este o notificare de răspuns."
-    unsubscribe_from_user_mentioned_html: "Aceasta este o notificare de mențiune."
+    unsubscribe_from_comment_replied_to_html: Aceasta este o notificare de răspuns.
+    unsubscribe_from_user_mentioned_html: Aceasta este o notificare de mențiune.
     discussion_edited:
       inline: "%{actor} a editat contextul firului de discuție"
     discussion_closed:
@@ -312,38 +344,248 @@ ro:
     change_my_password: Schimbaţi parola
     confirm_new_password: Confirmă parola
     new_password: Parolă Nouă
-    email_guidelines_html: |-
-        <p>Introdu adresa ta de e-mail și vi se va trimite un link de resetare a parolei.</p><p> Dacă vă conectați în mod normal prin Facebook sau Google, introduceți adresa de e-mail asociată contului respectiv.</p>
+    email_guidelines_html: "<p>Introdu adresa ta de e-mail și vi se va trimite un link de resetare a parolei.</p><p> Dacă vă conectați în mod normal prin Facebook sau Google, introduceți adresa de e-mail asociată contului respectiv.</p>"
     reset_email_timeframe: In aproximativ 5 minute vei primi un email. Daca nu apare verifica si recipientul spam.
     length_restriction: Parola trebuie sa contina cel putin 8 caractere.
     forbidden_passwords: Parole comune cum ar fi “parola” nu sunt permise, in vederea sigurantei contului tau.
   task_mailer:
     task_due_reminder:
-      subject: "Memento de sarcină: %{name}"
-      greeting: "Bună %{name}, următoarea sarcină urmează %{due}:"
-      view_task: "Vizualizați pe %{site_name}"
-      update_or_comment: "Dacă ați finalizat deja această sarcină, vă rugăm să o bifați. Dacă nu este complet, vă rugăm să distribuiți o actualizare a progresului."
-      due_today: "astăzi"
-      due_in_count_days: "în %{count} zile"
+      subject: 'Memento de sarcină: %{name}'
+      greeting: 'Bună %{name}, următoarea sarcină urmează %{due}:'
+      view_task: Vizualizați pe %{site_name}
+      update_or_comment: Dacă ați finalizat deja această sarcină, vă rugăm să o bifați. Dacă nu este complet, vă rugăm să distribuiți o actualizare a progresului.
+      due_today: astăzi
+      due_in_count_days: în %{count} zile
   group_mailer:
-    resend: "METOARE: %{member} vă așteaptă să vă alăturați %{group_name}"
+    resend: 'METOARE: %{member} vă așteaptă să vă alăturați %{group_name}'
     destroy_warning:
       subject: Grupul dvs. Loomio este programat pentru ștergere.
-      body: |-
-          Grupul dvs. Loomio: „%{group}” a fost programat pentru ștergere de către %{deletor}. Dacă nu doriți ca grupul dvs. să fie șters, vă rugăm să răspundeți la acest e-mail. Dacă sunteți sigur că doriți să ștergeți grupul, nu trebuie să faceți nimic. Mulțumesc.
+      body: 'Grupul dvs. Loomio: „%{group}” a fost programat pentru ștergere de către %{deletor}. Dacă nu doriți ca grupul dvs. să fie șters, vă rugăm să răspundeți la acest e-mail. Dacă sunteți sigur că doriți să ștergeți grupul, nu trebuie să faceți nimic. Mulțumesc.'
   poll_mailer:
     common:
       why_send_this: Primiți acest e-mail deoarece %{reason}
       view_on_loomio: Vizualizați-l pe %{site_name}
       create_outcome: Împărtășiți rezultatul
-      your_response: "Ai votat:"
-      you_voted: "Ai votat!"
-      not_invited: "Nu sunt invitate"
+      your_response: 'Ai votat:'
+      you_voted: Ai votat!
+      not_invited: Nu sunt invitate
       please_respond: Vă rugăm să răspundeți
-      time_zone: (Ore afișate în %{zone})
+      time_zone: "(Ore afișate în %{zone})"
       undecided_members: Membri nehotărâți (%{count})
       undecided_visitors: Oaspeți nehotărâți (%{count})
-      more_undecided: "Încă %{count}..."
+      more_undecided: Încă %{count}...
       vote_now: Voteaza acum
       you_have_until: Ai timp până la %{when} pentru a participa.
       people_have_voted: "%{nom} din %{dnom} persoane au participat (%{pct}%)"
+  poll_templates:
+    practice_proposal:
+      title: Încep să mă obișnuiesc cu asta
+      process_name: Propunere de practică
+      process_subtitle: Află cum funcționează propunerile pe Loomio încercând una.
+      process_introduction: "<p>Folosește acest șablon pentru a-ți ajuta grupul să se familiarizeze cu utilizarea propunerilor pe Loomio. Este o modalitate sigură și simplă prin care oamenii pot încerca votul și pot vedea cum se potrivesc toate aspectele.</p>"
+      details: "<p>Acesta este un exercițiu pentru ca toată lumea să se familiarizeze cu modul în care funcționează propunerile pe Loomio.</p><p> Vă rog să votați și, dacă doriți, să lăsați o explicație de motiv.</p><p> Fără presiune, fără consecințe în lumea reală. Este doar o modalitate de a explora cum funcționează propunerile!</p>"
+      outcome_statement: "<p>Mulțumesc pentru participarea la această propunere de practică! \U0001F389</p><p> Aceasta a fost doar o șansă de a vedea cum funcționează votul și comentariile pe Loomio. Nu se ia nicio decizie concretă aici — dar sperăm că acest lucru i-a ajutat pe toți să se familiarizeze cu procesul.</p>"
+    proposal:
+      process_subtitle: Faceți o propunere pentru a lua o decizie
+      process_introduction: <p>Propunerea clasică Loomio te ajută să iei o decizie, transformând o discuție într-un rezultat clar.</p><p> Sugerați o cale de acțiune și invitați oamenii să răspundă votând pentru a fi de acord, abținere sau dezacord.</p><p> Pe măsură ce oamenii votează, pot oferi un motiv pentru care au votat în acest fel. Poți vedea care este poziția fiecăruia în această privință și de ce.</p><p> În acest fel, puteți folosi o propunere pentru a determina oamenii să răspundă, a descoperi informații noi și a construi o înțelegere comună - pentru a ajuta grupul să ia o decizie mai bună și mai informată.</p><p> O propunere și discuția aferentă creează propria evidență a modului în care a fost luată decizia.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Citiți mai multe despre utilizarea propunerii clasice Loomio în Procesul decizional simplu</u></a> .</p>
+      title: Aprobați noul concept de brand
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Care este decizia pe care trebuie să o iei?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>De ce este important acest lucru?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Ce le ceri oamenilor să facă?</strong></h3><p></p><p> Pentru ca această propunere să fie adoptată, avem nevoie ca majoritatea membrilor să voteze „De acord”.</p><p> Dacă nu sunteți de acord, spuneți de ce și ce trebuie schimbat pentru a fi de acord.</p>
+      agree: De acord
+      agree_meaning: Susțin propunerea
+      agree_prompt: Ce vă place la propunere și cum va aduce beneficii grupului?
+      abstain: Abține-te
+      abstain_meaning: Alegând să nu votez sau incapacitatea de a vota în favoarea acestei decizii.
+      abstain_prompt: De ce vă abțineți sau nu vă simțiți în măsură să votați în favoarea acestei decizii?
+      disagree: Nu sunt de acord
+      disagree_meaning: Ceva din această propunere trebuie schimbat înainte să o pot susține.
+      disagree_prompt: Cum ar putea fi îmbunătățită această propunere astfel încât să o puteți susține?
+    advice:
+      process_subtitle: Cereți sfaturi cu privire la o decizie pe care trebuie să o luați
+      process_introduction: <p>Cereți sfaturi cu privire la o decizie pe care trebuie să o luați, cu sfatul persoanelor afectate sau care au expertiză, astfel încât să puteți lua o decizie mai bună pentru organizația dumneavoastră.</p><ul><li><p> Sfaturile te ajută să iei o decizie mai bună pentru organizația ta.</p></li><li><p> Să cultivăm relații, oportunități de învățare și contribuții diverse.</p></li><li><p> Stimulează inițiativa și creativitatea și oferă o muncă mai plăcută.</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>Citiți mai multe despre procesul de consiliere</u></a> .</p>
+      title: Ajutați-l pe Takashi să cumpere un computer nou
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Care este decizia pe care trebuie să o iei?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>De ce este important acest lucru?</strong></h3><p></p><h3 id="what-advice-are-you-asking-from-people-to-help-you-make-a-go"> <strong>Ce sfaturi ceri oamenilor care să te ajute să iei o decizie bună?</strong></h3><p></p><p> Aștept cu nerăbdare părerea dumneavoastră pentru a mă ajuta să iau o decizie bună pentru organizația noastră.</p>
+      agree: De acord
+      agree_meaning: Mi-am oferit sfatul cu privire la această decizie
+      agree_prompt: Rezumați sfatul dvs. sau faceți un comentariu util
+      abstain: Abține-te
+      abstain_meaning: Nu am niciun sfat de oferit
+      abstain_prompt: Aveți comentarii care ar putea fi utile?
+      outcome_statement: "<p>Mulțumesc că ai participat la runda mea de consiliere!</p>"
+    consent:
+      process_subtitle: Ia o decizie care este „sigură de încercat”, fără obiecții
+      process_introduction: <p>Solicitați consimțământul pentru o decizie pe care trebuie să o luați, în cazul în care nu există obiecții semnificative la propunerea dumneavoastră, astfel încât să puteți lua rapid o decizie pentru organizația dumneavoastră, care să fie „sigură de încercat”.</p><ul><li><p> Vizați spre o decizie „suficient de bună”</p></li><li><p> Implică mai multe voci pentru a dezvolta o propunere fezabilă</p></li><li><p> Întrebați dacă cineva are o obiecție validă.</p></li><li><p> Modificați propunerea pentru a rezolva obiecțiile</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Citiți mai multe despre procesul de consimțământ</a> .</p>
+      title: Angajează-o pe Chloe pentru un rol de design
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Care este decizia pe care trebuie să o iei?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>De ce este important acest lucru?</strong></h3><p></p><h3 id="what-are-you-asking-of-people-in-this-proposal"> <strong>Ce le cereți oamenilor în această propunere?</strong></h3><p></p><p> Dacă aveți o obiecție, vă rugăm să explicați motivul și să propuneți o modificare a propunerii care să o facă sigură.</p><p> Nu uitați că solicităm consimțământul pentru o decizie „suficient de bună” care este „sigură de încercat”, astfel încât să putem lua o decizie bună pentru organizația noastră.</p>
+      consent: Consimţământ
+      consent_meaning: Propunerea poate fi încercată în siguranță
+      consent_prompt: Ce vă place la propunere și cum va aduce beneficii organizației?
+      objection: Obiecţie
+      objection_meaning: Am o obiecție validă și cred că propunerea va cauza daune.
+      objection_prompt: Ce modificare este necesară la această propunere pentru a o face „sigură de încercat”, astfel încât să o puteți susține?
+      outcome_statement: "<p>Vă mulțumim pentru participarea la procesul de consimțământ.</p>"
+    consensus:
+      process_subtitle: Ajungeți la un acord colectiv cu toți cei implicați
+      process_introduction: <p>Construiți un consens pentru o decizie pe care trebuie să o luați, pentru a ajunge la un acord care să satisfacă nevoile și preocupările tuturor participanților.</p><ul><li><p> Discutați și dezvoltați o propunere împreună</p></li><li><p> Includeți și respectați pe toți cei implicați</p></li><li><p> Căutați acordul majorității oamenilor</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/consensus_process/index.html">Citiți mai multe despre procesul de consens</a> .</p>
+      title: Aprobați noul concept de brand
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Care este decizia pe care trebuie să o iei?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>De ce este important acest lucru?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Ce le ceri oamenilor să facă?</strong></h3><p></p><p> Pentru ca această propunere să fie adoptată, avem nevoie ca majoritatea membrilor să voteze „De acord”.</p><p> Dacă nu sunteți de acord, spuneți de ce și ce trebuie schimbat pentru a fi de acord.</p>
+      outcome_statement: "<p>Mulțumesc pentru participarea la procesul de consens.</p>"
+      agree: De acord
+      agree_meaning: Susțin propunerea
+      agree_prompt: Ce vă place la propunere și cum va aduce beneficii organizației?
+      abstain: Abține-te
+      abstain_meaning: Această decizie nu mă afectează și sunt mulțumit de orice va decide grupul.
+      abstain_prompt: De ce vă abțineți sau de ce nu vă simțiți în măsură să votați în favoarea acestei decizii?
+      disagree: Nu sunt de acord
+      disagree_meaning: Ceva din această propunere trebuie schimbat înainte să o pot susține.
+      disagree_prompt: Cum ar putea fi îmbunătățită această propunere astfel încât să o puteți susține?
+      block: Bloc
+      block_meaning: Blochez această propunere și cred că nu ar trebui să fie implementată.
+      block_prompt: Explicați obiecția dumneavoastră față de această propunere și de ce nu ar trebui să fie adoptată.
+    question_round:
+      process_subtitle: Invitați la adresarea de întrebări clarificatoare pentru a ajuta oamenii să înțeleagă o propunere
+      process_introduction: <p>O rundă de întrebări este o oportunitate pentru participanți de a pune întrebări clarificatoare despre propunere, astfel încât toată lumea să înțeleagă propunerea înainte de a-și exprima părerea despre ea.</p><p> Runda de întrebări Loomio este o propunere specială fără opțiuni de vot. Aceasta permite participanților să pună întrebări într-o durată stabilită de dumneavoastră pentru rundă.</p><p> O rundă de întrebări este utilizată în mod obișnuit ca o etapă în procesul de consimțământ.</p><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Citiți mai multe despre procesul de consimțământ</a> .</p>
+      title: Ce întrebări aveți despre politica de sănătate și securitate?
+      details: <h3 id="what-are-you-proposing"><strong>Ce propui?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>De ce este important acest lucru?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Ce le ceri oamenilor să facă?</strong></h3><p></p><p> Aceasta este o rundă de întrebări, în care sunteți invitați să adresați întrebări clarificatoare.</p><p> Ce trebuie să știi ca să înțelegi propunerea?</p><p> Vă rugăm să răspundeți înainte de încheierea rundei de întrebări.</p>
+      reason_prompt: Ce trebuie să știi ca să înțelegi propunerea?
+      outcome_statement: "<p>Vă mulțumim că ați trimis întrebările în timpul acestei runde</p>"
+    sense_check:
+      process_subtitle: Cere feedback, întrebări și nelămuriri
+      process_introduction: <p>Propunerea de verificare a Sense este o modalitate bună de a obține feedback, de a invita întrebări și de a descoperi nelămuriri. Ajută la clarificarea și îmbunătățirea unei propuneri înainte de a lua o decizie.</p><p> Verificarea simțului le permite oamenilor să știe că se formează o propunere și îi încurajează să se implice. Este o oportunitate de a asculta oamenii, de a simți cum se simt și de a răspunde în mod corespunzător - deschizând potențialul de a le încorpora contribuțiile pentru a lua o decizie mai bună.</p><p> Folosește propunerea de verificare Sense în procesul de consimțământ pentru a invita reacții și comentarii în vederea îmbunătățirii propunerii și, într-un proces de consens, pentru a testa consensul.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Citiți mai multe despre utilizarea verificării Sense în procesul decizional simplu</u></a> <span>.</span></p>
+      title: Ce părere ai despre noile concepte de brand?
+      details: <h3 id="what-are-you-proposing"><strong>Ce propui?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>De ce este important acest lucru?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Ce le ceri oamenilor să facă?</strong></h3><p></p><p> Ce părere ai despre propunere? Lasă un comentariu sau fă o sugestie de îmbunătățire.</p><p> Această verificare Sense este o oportunitate pentru sugestiile și contribuțiile dumneavoastră, care ne vor ajuta să luăm o decizie mai bună.</p>
+      outcome_statement: "<p>Mulțumesc pentru participarea la verificarea simțurilor.</p>"
+      not_sure: Nu sunt sigur
+      not_sure_meaning: Am o întrebare sau am nevoie de mai mult timp
+      not_sure_prompt: Ce părți îți sunt neclare? Cum s-ar putea rezolva acest lucru?
+      looks_good: Arată bine
+      looks_good_meaning: Sunt mulțumit de direcția în care se îndreaptă asta
+      looks_good_prompt: Aveți comentarii sau sugestii pentru a îmbunătăți propunerea?
+      abstain: Abține-te
+      abstain_meaning: Nu am nimic de adăugat și nici vreo obiecție la această lucrare.
+      abstain_prompt: Abținerea implică acordul cu direcția acestei propuneri. Există vreun motiv pentru care votați pentru abținere?
+      concerned: Îngrijorat
+      concerned_meaning: Este posibil să fie nevoie să se schimbe ceva în acest sens pentru ca eu să fiu de acord sau să fiu de acord.
+      concerned_prompt: Care este îngrijorarea dumneavoastră și cum ar putea fi abordată?
+    gradients_of_agreement:
+      process_subtitle: Exprimați sprijinul pentru o propunere pe o scară de 8 puncte
+      process_introduction: "<p>Gradienții de acord privind propunerea permit membrilor unui grup să își exprime sprijinul pentru o propunere în grade pe o scală, oferind mai multe modalități de exprimare a sprijinului decât în termeni de „acord” și „dezacord”.</p><p> Folosește Gradienții de acord ca o rundă preliminară, pentru a testa susținerea unei propuneri înainte de a trece la un acord formal.</p><p> Gradiile de acord le permit oamenilor să știe că se formează o propunere și îi încurajează să se implice. Este o oportunitate de a asculta oamenii, de a simți cum se simt și de a răspunde în mod corespunzător - deschizând potențialul de a le încorpora contribuțiile pentru a lua o decizie mai bună.</p>"
+      title: Cum vi se pare noua declarație de valori?
+      details: <h3 id="what-are-you-proposing"><strong>Ce propui?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>De ce este important acest lucru?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Ce le ceri oamenilor să facă?</strong></h3><p></p><p> Cum vi se pare propunerea? Exprimați-vă susținerea pe scala de mai jos și lăsați un comentariu sau o sugestie de îmbunătățire.</p><p> Această propunere privind gradienții de acord are scopul de a testa susținerea propunerii și de a vă oferi contribuția înainte de a trece la un acord formal.</p>
+      whole_hearted_endorsement: Susținere din toată inima
+      whole_hearted_endorsement_meaning: Îmi place foarte mult!
+      whole_hearted_endorsement_prompt: Ce îți place la el?
+      agreement_with_minor_contention: Acord cu o dispută minoră
+      agreement_with_minor_contention_meaning: Nu perfect, dar este suficient de bun
+      agreement_with_minor_contention_prompt: Care este îngrijorarea ta?
+      support_with_reservations: Suport pentru rezervări
+      support_with_reservations_meaning: Pot trăi cu asta
+      support_with_reservations_prompt: Care sunt rezervele tale?
+      abstain_meaning: Această problemă nu mă afectează
+      abstain_prompt: Ai ceva ce ai vrea să adaugi?
+      more_discussion_needed: Sunt necesare mai multe discuții
+      more_discussion_needed_meaning: Nu înțeleg încă problemele suficient de bine
+      more_discussion_needed_prompt: Ce nu înțelegi?
+      don_t_like_but_will_support: Nu-mi place, dar voi susține
+      don_t_like_but_will_support_meaning: Nu e grozav, dar nu vreau să întârzii grupul.
+      don_t_like_but_will_support_prompt: Ce ați dori să vedeți îmbunătățit?
+      serious_disagreement: Dezacord serios
+      serious_disagreement_meaning: Nu sunt de acord cu asta - nu te baza pe mine.
+      serious_disagreement_prompt: Cu ce nu ești de acord?
+      veto: Veto
+      veto_meaning: Blochez această propunere
+      veto_prompt: De ce blochezi propunerea? Ce trebuie să se schimbe pentru ca tu să o susții?
+    simple_poll:
+      process_subtitle: Găsiți cea mai populară opțiune
+      process_introduction: <p>Înainte de a lua o decizie, află care opțiune (opțiuni) îi interesează cel mai mult pe oameni.</p><p> Un sondaj simplu te ajută să găsești cea mai populară opțiune sau opțiuni cu o singură sau mai multe variante.</p><p> Scrieți orice detalii despre opțiuni în câmpul cu detalii, apoi introduceți numele opțiunii și faceți clic pe + pentru a o adăuga.</p><p> Setați <strong>opțiunile Minime</strong> și <strong>Maxime pe care</strong> un alegător le poate alege. Lăsați opțiunea maximă la 1 pentru un sondaj cu o singură opțiune.</p><p> Puteți folosi pictograma creion de lângă fiecare opțiune pentru a adăuga o <strong>semnificație</strong> a opțiunii, o detaliere suplimentară a opțiunii pentru a ajuta oamenii atunci când votează.</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">Citește mai multe despre Sondaj simplu</a> .</p>
+      title: Unde ar trebui să se concentreze direcția noastră strategică?
+      details: <h3 id="what-is-this-poll-about"><strong>Despre ce este vorba în acest sondaj?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>De ce este important acest lucru?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Ce le ceri oamenilor să facă?</strong></h3><p></p><p> Alegeți opțiunea (opțiunile) pe care le preferați.</p>
+    score_poll:
+      process_subtitle: Măsurați gradul de susținere pentru fiecare opțiune
+      process_introduction: <p>Folosește Sondajul Scor atunci când vrei să-i chestionezi pe oameni despre dorințele, preferințele sau interesul lor pentru fiecare opțiune.</p><p> <span>Participanții sunt rugați să evalueze fiecare opțiune și să atribuie un scor mutând un cursor de-a lungul unei scale.</span></p><p> <span>Rezultatele sunt afișate grafic, împreună cu un tabel pentru fiecare opțiune, care arată totalul punctelor, media punctelor și numărul de alegători.</span></p><p> Setările avansate includ „Voturile sunt anonime” și „Afișează opțiunile în ordine aleatorie” - utilizate în mod obișnuit pentru sondajul Scor pentru a reduce orice părtinire a votului.</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">Citește mai multe despre Sondajul de scor</a> .</p>
+      title: Evaluarea modului în care se iau deciziile în organizația noastră
+      details: <h3 id="what-is-this-poll-about"><strong>Despre ce este vorba în acest sondaj?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>De ce este important acest lucru?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Ce le ceri oamenilor să facă?</strong></h3><p></p><p> Alegeți opțiunea (opțiunile) pe care le preferați.</p>
+    dot_vote:
+      process_subtitle: Alocă un buget de puncte pentru a identifica prioritățile
+      process_introduction: <p>Votul cu puncte este util pentru grupurile care încearcă să aloce o resursă limitată unui număr de opțiuni. Depășește un simplu sondaj, ajutând participanții să înțeleagă că există o constrângere atunci când selectează opțiuni.</p><p> Fiecare participant primește un număr fix de puncte. Tu decizi câte.</p><p> Ei plasează puncte lângă opțiunile prezentate care le plac. Participanții își pot plasa toate punctele pe o singură opțiune sau le pot distribui pe mai multe opțiuni.</p><p> Pe măsură ce participanții alocă puncte, este posibil să depășească limita bugetului pentru puncte, așa că sunt încurajați să analizeze cu atenție modul în care își cheltuiesc punctele.</p><p> Opțiunile cu cele mai multe puncte „câștigă”. Tabelul cu rezultate oferă date suplimentare care vă ajută să analizați rezultatele.</p><ul><li><p> % din puncte</p></li><li><p> Puncte</p></li><li><p> Medie</p></li><li><p> Alegătorii</p></li></ul><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">Citește mai multe despre votul Dot</a> .</p>
+      title: Alegerea temelor pentru conferința noastră
+      details: <h3 id="what-is-this-poll-about"><strong>Despre ce este vorba în acest sondaj?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>De ce este important acest lucru?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Ce le ceri oamenilor să facă?</strong></h3><p></p><p> În acest sondaj aveți un buget de 8 puncte pe care le puteți aloca opțiunilor preferate. Puteți plasa toate punctele pe o singură opțiune sau le puteți dispersa.</p>
+    ranked_choice:
+      process_subtitle: Înțelegerea preferințelor ordonate ale opțiunilor
+      process_introduction: <p>Alegerea clasificată este utilă atunci când aveți un număr mare de opțiuni sau organizați alegeri.</p><p> Acest șablon de sondaj oferă o serie de opțiuni pentru ca oamenii să voteze în ordinea preferată.</p><p> Puteți seta numărul de opțiuni pe care le primește alegătorul.</p><p> <span>Votanții trageți și plasați opțiunile în ordinea preferințelor (#1 fiind opțiunea preferată).</span></p><p> <span>Setările avansate includ „Voturile sunt anonime” și „Afișează opțiunile în ordine aleatorie” - utilizate în mod obișnuit pentru</span> alegerile clasificate pentru a reduce orice părtinire a votului.</p><p> Rezultatele sunt afișate în ordine ierarhică. Tabelul cu rezultate oferă date suplimentare care vă ajută să analizați rezultatele.</p><ul><li><p> Rang</p></li><li><p> % din puncte</p></li><li><p> Puncte</p></li><li><p> Medie</p></li></ul><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">Citește mai multe despre alegerea clasată</a> .</p>
+      title: Alegerea directorilor în consiliul de administrație
+      details: <h3 id="what-is-this-poll-about"><strong>Despre ce este vorba în acest sondaj?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>De ce este important acest lucru?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Ce le ceri oamenilor să facă?</strong></h3><p></p><p> Votează ierarhizarea opțiunilor în ordinea preferințelor tale. Opțiunea care se clasează pe primul loc în rezultate câștigă.</p>
+    time_poll:
+      process_subtitle: Află când sunt disponibile persoane pentru întâlniri
+      process_introduction: <p><span>Economisiți timp la stabilirea datei pentru întâlnire sau eveniment.</span></p><p> Sondajul de timp facilitează verificarea disponibilității tuturor și găsirea celui mai bun moment.</p><p> Dați sondajului dvs. Time un titlu și detalii. Introduceți o listă de opțiuni de dată și oră în fusul dvs. orar.</p><p> Când setați intervalele orare, luați în considerare persoanele din diferite fusuri orare. Participanții vor vedea orele localizate în fusul lor orar.</p><p> Setați o durată a întâlnirii.</p><p> Când sondajul Time se închide, setează un rezultat cu cel mai bun moment și orice instrucțiuni pentru întâlnire.</p><p> <span>Loomio va include o invitație în calendar împreună cu e-mailul de notificare a rezultatului, astfel încât participanții să poată adăuga informații în calendarul lor.</span></p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">Citește mai multe despre sondajul Time</a> .</p>
+      title: Hai să găsim o dată pentru următoarea noastră întâlnire
+      details: "<p><strong>Ce este întâlnirea sau evenimentul?</strong></p><p></p><p> <strong>De ce este important acest lucru?</strong></p><p></p><p> <strong>Ce le ceri oamenilor să facă?</strong></p><p></p><p> <span>Marcați intervalele orare în care sunteți disponibil cu pictograma verde „degetul mare în sus” sau lăsați pictograma roșie „degetul mare în jos” activă atunci când nu sunteți disponibil.</span></p><p> <span>Folosește pictograma „degetul mare înclinat lateral” pentru a spune că ești disponibil „dacă este nevoie”.</span></p>"
+      reason_prompt: Există ceva ce puteți spune pentru a ajuta organizatorul să găsească un moment potrivit?
+    opt_in:
+      process_subtitle: Găsiți voluntari sau cereți participanți
+      process_introduction: '<p>Folosește opțiunea de înscriere pentru a invita persoane să se alăture unei echipe, unui comitet sau unui grup de lucru sau să participe la un eveniment.</p><p> „Opt-in” are două opțiuni de vot: Acceptare sau Refuzare.</p><p> Poți defini un număr țintă de persoane pe care le cauți, să zicem 3 persoane care să se alăture grupului tău de lucru.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#opt-in">Citește mai multe despre opțiunea de înscriere</a> .</p>'
+      title: Grup de lucru pentru elaborarea noii noastre politici de sustenabilitate
+      details: "<p><strong>La ce echipă, grup de lucru sau eveniment invitați oameni?</strong></p><p></p><p> <strong>De ce este important acest lucru?</strong></p><p></p><p> <strong>Ce le ceri oamenilor să facă?</strong></p><p></p><p> Selectați „Accept” pentru a participa!</p>"
+      accept_meaning: Sunt dispus să particip
+      accept_prompt: De ce te oferi voluntar pentru asta?
+      decline_meaning: Nu pot participa
+      decline_prompt: Ai vrea să spui ceva?
+  forward_mailer:
+    bounce:
+      subject: Mesajul tău către Loomio nu a fost livrat.
+      reason: Acest lucru s-a întâmplat deoarece clientul dvs. de e-mail a adresat mesajul adresei „Expeditor”, în loc de adresa „Răspuns către” furnizată.
+      recommendation: Te rugăm să deschizi Loomio în browser și să postezi mesajul direct.
+  locale_names:
+    en: Engleză
+    be-BY: Belarusă
+    bg-BG: bulgar
+    ca: catalan
+    cs: ceh
+    zh-TW: Chineză (tradițională, taiwaneză)
+    da: danez
+    de: german
+    es: Spaniolă
+    eo: esperanto
+    el: Greacă
+    fr: franceză
+    he: Ebraică
+    id: Indoneziană
+    it: italian
+    hu: Maghiară
+    ja: japonez
+    ko: coreean
+    ml: Malayalam
+    nl-NL: Olandeză
+    pl: Lustrui
+    pt-BR: Portugheză (Brazilia)
+    ro: Română
+    sr: Sârbă (latină)
+    sr-RS: Sârbă (chirilică)
+    sk: Slovacă
+    sv: suedez
+    vi: Vietnameză
+    tr: turc
+    uk: Ucraineană
+    an: Aragonez
+    ar: arabic
+    cmn: Chineză (mandarină)
+    hr: croat
+    it-CH: Italiană (Elveția)
+    fi: finlandeză
+    gl: Galiciană
+    ga-IE: Gaelică (Irlanda)
+    hi: Nu
+    km: Khmer
+    lv: Letonă
+    mk: macedonean
+    mi: Maori
+    fa-IR: Persană (Iran)
+    pt-PT: Portugheză
+    ru: Rusă
+    sl: Slovenă
+    te: Telugu
+    ur: Urdu
+    ur-PK: Urdu (Pakistan)
+    be: Belarusă
+    pt: Portugheză
+    zh: Chineză (tradițională, taiwaneză)
+    zh-HK: Chineză (tradițională, taiwaneză)

@@ -4,6 +4,7 @@ class Events::OutcomeUpdated < Event
   include Events::Notify::ByEmail
   include Events::Notify::Chatbots
   include Events::LiveUpdate
+  include Events::Notify::Subscribers
 
   def self.publish!(outcome:,
     actor:,

@@ -1,4 +1,4 @@
-class API::B2::BaseController < API::V1::SnorlaxBase
+class Api::B2::BaseController < Api::V1::SnorlaxBase
   skip_before_action :verify_authenticity_token
   before_action :authenticate_api_key!
   include ::LoadAndAuthorize

@@ -1,31 +1,26 @@
 import { differenceInHours, formatDistanceStrict, isSameYear, isValid, parse } from 'date-fns';
 import { format, utcToZonedTime } from 'date-fns-tz';
-import defaultLocale from 'date-fns/locale/en-US';
 import AppConfig from '@/shared/services/app_config';
 import Session from '@/shared/services/session';
-import i18n from '@/i18n';
-
-i18n.dateLocale = defaultLocale;
+import { I18n, dateLocale } from '@/i18n';
 
 export var day = function(date, zone) {
   if (!isValid(date)) { throw {"invalid date": "invalid date", date}; }
-  return format(utcToZonedTime(date, zone), 'EEE', {timeZone: zone, locale: i18n.dateLocale});
+  return format(utcToZonedTime(date, zone), 'EEE', {timeZone: zone, locale: dateLocale});
 };
 
 export var approximate = function(date, zone, dateTimePref) {
   if (zone == null) { zone = AppConfig.timeZone; }
-  if (dateTimePref == null) { ({
-    dateTimePref
-  } = Session.user()); }
+  if (dateTimePref == null) { ({ dateTimePref } = Session.user()); }
   if (!isValid(date)) { throw {"invalid date": "invalid date", date}; }
 
-  const localFormat = pattern => format(utcToZonedTime(date, zone), pattern, {timeZone: zone, locale: i18n.dateLocale});
+  const localFormat = pattern => format(utcToZonedTime(date, zone), pattern, {timeZone: zone, locale: dateLocale});
 
   const now = new Date;
   if (differenceInHours(now, date) < 24) {
-    return formatDistanceStrict(date, new Date(), {addSuffix: true, locale: i18n.dateLocale});
+    return formatDistanceStrict(date, new Date(), {addSuffix: true, locale: dateLocale});
   } else if (isSameYear(date, now)) {
-    return format(date, "MMMM d", {locale: i18n.dateLocale});
+    return format(date, "MMMM d", {locale: dateLocale});
   } else {
     switch (dateTimePref) {
       case 'day_iso': case 'iso':
@@ -38,7 +33,6 @@ export var approximate = function(date, zone, dateTimePref) {
   }
 };
 
-
 export var exact = function(date, zone, dateTimePref) {
   if (zone == null) { zone = AppConfig.timeZone; }
   if (dateTimePref == null) { ({
@@ -47,16 +41,16 @@ export var exact = function(date, zone, dateTimePref) {
   if (!isValid(date)) { throw {"invalid date": "invalid date", date}; }
 
   const spacePadHour = function() {
-    const pad = parseInt(format(utcToZonedTime(date, zone), "h", {timeZone: zone, locale: i18n.dateLocale})) < 10;
+    const pad = parseInt(format(utcToZonedTime(date, zone), "h", {timeZone: zone, locale: dateLocale})) < 10;
     if (pad) { return ' '; } else { return ''; }
   };
 
   const spacePadDay = function() {
-    const pad = parseInt(format(utcToZonedTime(date, zone), "d", {timeZone: zone, locale: i18n.dateLocale})) < 10;
+    const pad = parseInt(format(utcToZonedTime(date, zone), "d", {timeZone: zone, locale: dateLocale})) < 10;
     if (pad) { return ' '; } else { return ''; }
   };
 
-  const localFormat = pattern => format(utcToZonedTime(date, zone), pattern, {timeZone: zone, locale: i18n.dateLocale});
+  const localFormat = pattern => format(utcToZonedTime(date, zone), pattern, {timeZone: zone, locale: dateLocale});
 
   switch (dateTimePref) {
     case 'day_iso':

@@ -1,6 +1,12 @@
 class ReceivedEmailService
+  class SentToSelfError < StandardError
+    def initialize(email)
+      super("Email sent to self: #{email.inspect}")
+    end
+  end
+
   def self.refresh_forward_email_rules
-    forward_email_rules = File.readlines(Rails.root.join("db/default_forward_email_rules.txt")).map(&:chomp).map do |handle| 
+    forward_email_rules = File.readlines(Rails.root.join("db/default_forward_email_rules.txt")).map(&:chomp).map do |handle|
       {handle: handle, email: "#{handle}@#{ENV['REPLY_HOSTNAME']}"}
     end
 
@@ -9,64 +15,102 @@ class ReceivedEmailService
   end
 
   def self.route_all
-    ReceivedEmail.unreleased.each do |email|
+    ReceivedEmail.unreleased.where(group_id: nil).each do |email|
       route(email)
     end
   end
 
-  def self.route(email)
-    return nil if email.released
-    return nil unless email.route_address
-    return nil unless email.sender_email
-    return nil if email.sender_hostname.downcase == ENV['REPLY_HOSTNAME'].downcase
-    return nil if email.sender_hostname.downcase == ENV['CANONICAL_HOST'].downcase
+  def self.banned_sender_hosts
+    ENV.slice('REPLY_HOSTNAME', 'CANONICAL_HOST').values.compact.map(&:downcase)
+  end
 
+  def self.route(email)
+    return nil if email.released # email will be cleaned up by the cron job
+
+    # Ensure we have a sender for throttling and replies
+    return email.destroy unless email.sender_email
+
+    # Replies sent to the notifications "From" address → send a delivery-failure notice (throttled)
+    if email.sent_to_notifications_address?
+      if ThrottleService.can?(key: 'bounce', id: email.sender_email.downcase, max: 1, per: 'hour')
+        Rails.logger.info("email bounced");
+        ForwardMailer.bounce(to: email.sender_name_and_email).deliver_now
+      else
+        Rails.logger.info("bounce throttled for #{email.sender_email}");
+      end
+      return email.destroy
+    end
+
+    # Complaints handling
     if email.is_complaint? && email.complainer_address.present?
+      Rails.logger.info("complaint email recieved from #{email.complainer_address}");
       User.where(email: email.complainer_address).update_all("complaints_count = complaints_count + 1")
       email.update(released: true)
       return
     end
 
+    # Block banned sender hostnames early
+    if banned_sender_hosts.include? email.sender_hostname.downcase
+      Rails.logger.info("banned sender_hostname: #{email.sender_hostname}")
+      return email.destroy
+    end
+
+    # Require a valid Loomio route address from here
+    return email.destroy unless email.route_address
+
+    # Handle personal email-to-thread and email-to-group routes first
     case email.route_path
     when /d=.+&u=.+&k=.+/
       # personal email-to-thread, eg. d=100&k=asdfghjkl&u=999@mail.loomio.com
-      if comment = CommentService.create(comment: Comment.new(comment_params(email)), actor: actor_from_email(email))
-        email.update_attribute(:released, true) if comment.persisted?
-      end
-
-    when /[^\s]+\+u=.+&k=.+/ 
+      Rails.logger.info("creating comment from email for #{email.sender_email}");
+      CommentService.create(comment: Comment.new(comment_params(email)), actor: actor_from_email(email))
+      email.update_attribute(:released, true)
+      return
+    when /[^\s]+\+u=.+&k=.+/
       # personal email-to-group, eg. enspiral+u=99&k=adsfghjl@mail.loomio.com
-      if discussion = DiscussionService.create(discussion: Discussion.new(discussion_params(email)), actor: actor_from_email(email))
-        email.update_attribute(:released, true) if discussion.persisted?
-      end
-    else
-      if forward_email_rule = ForwardEmailRule.find_by(handle: email.route_path)
-        ForwardMailer.forward_message(
-          from: "\"#{email.sender_name}\" <#{BaseMailer::NOTIFICATIONS_EMAIL_ADDRESS}>",
-          to: forward_email_rule.email,
-          reply_to: email.from,
-          subject: email.subject,
-          body_text: email.body_text,
-          body_html: email.body_html
-        ).deliver_later
-        email.update(released: true)
+      if AppConfig.app_features[:thread_from_mail]
+        DiscussionService.create(discussion: Discussion.new(discussion_params(email)), actor: actor_from_email(email))
+        email.update_attribute(:released, true)
         return
       end
+    end
 
-      if group = Group.find_by(handle: email.route_path)
-        if !address_is_blocked(email, group)
-          email.update(group_id: group.id)
+    # Forwarding rule by handle
+    if forward_email_rule = ForwardEmailRule.find_by(handle: email.route_path)
+      Rails.logger.info("email forwarded");
+      ForwardMailer.forward_message(
+        from: "\"#{email.sender_name}\" <#{BaseMailer::NOTIFICATIONS_EMAIL_ADDRESS}>",
+        to: forward_email_rule.email,
+        reply_to: email.from,
+        subject: email.subject,
+        body_text: email.body_text,
+        body_html: email.body_html
+      ).deliver_now
+      return email.destroy
+    end
 
-          if actor = actor_from_email_and_group(email, group)
-            if discussion = DiscussionService.create(discussion: Discussion.new(discussion_params(email)), actor: actor)
-              email.update(released: true) if discussion.persisted?
-            end
-          else
-            Events::UnknownSender.publish!(email)
-          end
+    # Group by handle
+    if group = Group.find_by(handle: email.route_path)
+      unless address_is_blocked(email, group)
+        email.update(group_id: group.id)
+        if actor = actor_from_email_and_group(email, group)
+          Rails.logger.info("creating discussion from email: #{email.route_path}")
+          DiscussionService.create(discussion: Discussion.new(discussion_params(email)), actor: actor)
+          return email.update_attribute(:released, true)
+        else
+          Rails.logger.info("unrecognised sender for route: #{email.sender_email}, #{email.route_path}")
+          Events::UnknownSender.publish!(email) unless Event.where(kind: 'unknown_sender', eventable: email).exists?
+          return
         end
+      else
+        Rails.logger.info("email address blocked: #{email.sender_email}, group_id: #{group.id}")
+        return
       end
     end
+
+    # Default: no suitable route
+    Rails.logger.info("no suitable route for address: #{email.route_path}")
+    return email.destroy
   rescue CanCan::AccessDenied, ActiveRecord::RecordNotFound
     # TODO handle when user is not allowed to comment or create discussion
   end
@@ -79,7 +123,7 @@ class ReceivedEmailService
     while regex = reply_split_points(author_name).find { |regex| regex.match? text } do
       text = text.split(regex).first.strip
     end
-    
+
     text.strip
   end
 
@@ -135,13 +179,11 @@ class ReceivedEmailService
   end
 
   def self.actor_from_email_and_group(email, group)
-    if actor = (email.dkim_valid || email.spf_valid) && User.find_by(email: email.sender_email)
+    if actor = User.find_by(email: email.sender_email)
       return actor if group.members.exists?(actor.id)
     end
 
     if email_alias = MemberEmailAlias.allowed.find_by(email: email.sender_email, group_id: group.id)
-      return nil if email_alias.require_dkim && !email.dkim_valid
-      return nil if email_alias.require_spf && !email.spf_valid
       return email_alias.user if group.members.exists?(email_alias.user.id)
     end
 

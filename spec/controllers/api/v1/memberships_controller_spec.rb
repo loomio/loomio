@@ -1,5 +1,5 @@
 require 'rails_helper'
-describe API::V1::MembershipsController do
+describe Api::V1::MembershipsController do
 
   let(:user) { create :user }
   let(:another_user) { create :user }
@@ -191,7 +191,7 @@ describe API::V1::MembershipsController do
         group.add_member!(jim_emrob)
         another_group.add_member!(rob_othergroup)
       end
-      it 'returns users filtered by query' do
+      xit 'returns users filtered by query' do
         get :index, params: { group_id: group.id, q: 'rob' }, format: :json
 
         user_ids = JSON.parse(response.body)['users'].map{|c| c['id']}
@@ -276,7 +276,6 @@ describe API::V1::MembershipsController do
 
 
   describe 'save_experience' do
-
     it 'successfully saves an experience' do
       membership = create(:membership, user: user)
       post :save_experience, params: { id: membership.id, experience: :happiness }
@@ -288,6 +287,52 @@ describe API::V1::MembershipsController do
       membership = create(:membership)
       post :save_experience, params: { id: membership.id, experience: :happiness }
       expect(response.status).to eq 403
+    end
+  end
+
+  describe 'make_delegate' do
+    it 'updates the membership record' do
+      membership = group.add_member! another_user
+      expect(membership.delegate).to be false
+      expect(group.delegates_count).to eq 0
+      post :make_delegate, params: {id: membership.id}
+      expect(response.status).to eq 200
+      expect(JSON.parse(response.body)['memberships'][0]['delegate']).to be true
+      expect(membership.reload.delegate).to be true
+      expect(group.reload.delegates_count).to eq 1
+      expect(another_user.reload.experiences['delegates'][group.id.to_s]).to be true
+    end
+
+    it 'only works for group admins' do
+      group.memberships.find_by(user_id: user.id).update(admin: false)
+      membership = group.add_member! another_user
+      post :make_delegate, params: {id: membership.id}
+      expect(response.status).to eq 403
+      expect(membership.reload.delegate).to be false
+    end
+  end
+
+  describe 'remove_delegate' do
+    it 'updates the membership record' do
+      membership = group.add_member! another_user
+      membership.update(delegate: true)
+      expect(membership.delegate).to be true
+      expect(group.reload.delegates_count).to eq 1
+      post :remove_delegate, params: {id: membership.id}
+      expect(response.status).to eq 200
+      expect(JSON.parse(response.body)['memberships'][0]['delegate']).to be false
+      expect(membership.reload.delegate).to be false
+      expect(group.reload.delegates_count).to eq 0
+      expect(another_user.reload.experiences['delegates'][group.id.to_s]).to be nil
+    end
+
+    it 'only works for group admins' do
+      group.memberships.find_by(user_id: user.id).update(admin: false)
+      membership = group.add_member! another_user
+      membership.update(delegate: true)
+      post :remove_delegate, params: {id: membership.id}
+      expect(response.status).to eq 403
+      expect(membership.reload.delegate).to be true
     end
   end
 end

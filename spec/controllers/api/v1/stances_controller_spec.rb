@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe API::V1::StancesController do
+describe Api::V1::StancesController do
   let(:user) { create :user }
   let(:another_user) { create :user }
   let(:poll) { create :poll, discussion: discussion }
@@ -325,7 +325,7 @@ describe API::V1::StancesController do
           stance_choices_attributes: [],
           reason: "here is my stance"
         }
-        post :create, params: { stance: stance_params} 
+        post :create, params: { stance: stance_params}
         expect { post :create, params: { stance: stance_params} }.to_not change { Stance.count }
         expect(response.status).to eq 422
       end

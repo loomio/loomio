@@ -6,9 +6,12 @@ import Session        from '@/shared/services/session';
 import { orderBy } from 'lodash-es';
 import LmoUrlService from '@/shared/services/lmo_url_service';
 import { exact, approximate } from '@/shared/helpers/format_time';
+import UrlFor from '@/mixins/url_for';
+import WatchRecords from '@/mixins/watch_records';
 
 export default
 {
+  mixins: [UrlFor, WatchRecords],
   data() {
     return {
       requests: [],
@@ -50,7 +53,7 @@ export default
   loading(v-if="!group")
   v-card.mt-4(outlined v-else="group")
     p.text-center.pa-4(v-if="!requests.length" v-t="'common.no_results_found'")
-    v-list(two-line)
+    v-list(lines="two")
       membership-request(v-for="request in unapprovedRequestsByOldestFirst" :request="request" :key="request.id")
       membership-request(v-for="request in approvedRequestsByNewestFirst" :request="request" :key="request.id")
 </template>

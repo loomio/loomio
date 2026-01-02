@@ -26,12 +26,51 @@ namespace :loomio do
     paths
   end
 
+  def delete_keys(hash, keys)
+    # Dotted keys are exact paths; undotted keys match any key (leaf or subtree) whose last segment equals the key.
+    exact_paths = keys.select { |k| k.include?('.') }
+    leaf_names  = keys - exact_paths
+
+    # Helper to delete at an exact dotted path and prune empty hashes along the way.
+    delete_exact = lambda do |h, parts|
+      return if parts.empty? || !h.is_a?(Hash)
+      key = parts.first
+      if parts.length == 1
+        h.delete(key)
+      else
+        child = h[key]
+        if child.is_a?(Hash)
+          delete_exact.call(child, parts[1..-1])
+          h.delete(key) if child.empty?
+        end
+      end
+    end
+
+    # Delete exact dotted paths first.
+    exact_paths.each do |path|
+      delete_exact.call(hash, path.split('.'))
+    end
+
+    # Recursively delete any key (leaf or subtree) whose last segment matches an undotted key, and prune empties.
+    if leaf_names.any?
+      hash.keys.each do |k|
+        v = hash[k]
+        if leaf_names.include?(k)
+          hash.delete(k)
+        elsif v.is_a?(Hash)
+          delete_keys(v, leaf_names)
+          hash.delete(k) if v.empty?
+        end
+      end
+    end
+  end
+
   task generate_test_error: :environment do
     raise "this is a generated test error"
   end
 
   task :version do
-    puts Loomio::Version.current
+    puts Version.current
   end
 
   task update_blocked_domains: :environment do
@@ -62,19 +101,42 @@ namespace :loomio do
     end
   end
 
-  task delete_translations: :environment do
-    # I edit this each time I want to use it.. rake task arguments are terrible
+  task check_placeholder_consistency: :environment do
     %w[server client].each do |source_name|
+      source = YAML.load_file("config/locales/#{source_name}.en.yml")['en']
+      source_paths = list_paths(source, [])
+
       AppConfig.locales['supported'].each do |locale|
         foreign = YAML.load_file("config/locales/#{source_name}.#{locale}.yml")[locale]
-        if foreign.has_key? 'email_to_group'
-          %w[send_email_to_start_thread
-            subject_body_attachments
-            forward_email_to_move_conversation].each do |key|
-            foreign['email_to_group'].delete(key)
+
+        source_paths.each do |path|
+          source_string  = (source.dig(*path.split('.')) || "").to_s.strip
+          foreign_string = (foreign.dig(*path.split('.')) || "").to_s.strip
+          next if foreign_string.blank?
+
+          src_names = source_string.scan(/\%\{([a-zA-Z0-9_]+)\}/).flatten.sort.uniq
+          fr_names  = foreign_string.scan(/\%\{([a-zA-Z0-9_]+)\}/).flatten.sort.uniq
+
+          if src_names != fr_names
+            puts "config/locales/#{source_name}.#{locale}.yml #{path}"
           end
         end
-        File.write("config/locales/#{source_name}.#{locale}.yml", {locale => foreign}.to_yaml(line_width: 2000)) 
+      end
+    end
+  end
+
+  task delete_translations: :environment do
+    # I edit this each time I want to use it.. rake task arguments are terrible
+    unwanted = %w[
+      standalone_warning_helptext
+    ]
+
+    %w[client server].each do |source_name|
+      AppConfig.locales['supported'].each do |locale|
+        next if locale == 'en'
+        foreign = YAML.load_file("config/locales/#{source_name}.#{locale}.yml")[locale]
+        delete_keys(foreign, unwanted)
+        File.write("config/locales/#{source_name}.#{locale}.yml", {locale => foreign}.to_yaml(line_width: 2000))
       end
     end
   end
@@ -86,8 +148,12 @@ namespace :loomio do
       google = Google::Cloud::Translate.translation_v2_service
 
       AppConfig.locales['supported'].each do |file_locale|
-        foreign = YAML.load_file("config/locales/#{source_name}.#{file_locale}.yml")[file_locale]
-        foreign_paths = list_paths(foreign, [])
+        foreign = {}
+        foreign_paths = []
+        if File.exist?("config/locales/#{source_name}.#{file_locale}.yml")
+          foreign = YAML.load_file("config/locales/#{source_name}.#{file_locale}.yml")[file_locale]
+          foreign_paths = list_paths(foreign, [])
+        end
 
         write_file = false
         (source_paths - foreign_paths).each do |path|
@@ -104,7 +170,7 @@ namespace :loomio do
         end
 
         if write_file
-          File.write("config/locales/#{source_name}.#{file_locale}.yml", {file_locale => foreign}.to_yaml(line_width: 2000)) 
+          File.write("config/locales/#{source_name}.#{file_locale}.yml", {file_locale => foreign}.to_yaml(line_width: 2000))
         end
       end
     end
@@ -127,10 +193,10 @@ namespace :loomio do
           im = Vips::Image.new_from_buffer(current.to_s, "", {scale: 8})
           im.write_to_file dest_path.to_s+"/#{basename}-#{color}.png"
         end
-      end 
+      end
     end
   end
-  
+
   task generate_static_error_pages: :environment do
     [400, 404, 403, 410, 417, 422, 429, 500].each do |code|
       ['html'].each do |format|
@@ -175,7 +241,7 @@ namespace :loomio do
     end
 
     GenericWorker.perform_async('DemoService', 'ensure_queue')
-    
+
     if (Time.now.hour == 0 && Time.now.mday == 1)
       UpdateBlockedDomainsWorker.perform_async
     end

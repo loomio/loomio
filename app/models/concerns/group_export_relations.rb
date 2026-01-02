@@ -14,6 +14,7 @@ module GroupExportRelations
     has_many :exportable_outcomes,              through: :exportable_polls, source: :outcomes
     has_many :exportable_stances,               through: :exportable_polls, source: :stances
     has_many :exportable_stance_choices,        through: :exportable_stances, source: :stance_choices
+    has_many :poll_stance_receipts, through: :exportable_polls, source: :stance_receipts
 
     # attachments
     has_many :comment_files,          through: :comments,            source: :files_attachments
@@ -93,11 +94,8 @@ module GroupExportRelations
   #   ])
   # end
 
-  def all_taggings
-    Queries::UnionQuery.for(:taggings, [
-      self.discussion_taggings,
-      self.poll_taggings
-    ])
+  def all_tags
+    Tag.where(group_id: id_and_subgroup_ids)
   end
 
   def all_groups
