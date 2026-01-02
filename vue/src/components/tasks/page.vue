@@ -7,7 +7,8 @@ import EventBus           from '@/shared/services/event_bus';
 import AbilityService     from '@/shared/services/ability_service';
 import confirm_modal from "@/components/common/confirm_modal.vue";
 
-import {filter, groupBy, sortBy, uniq} from 'lodash-es';
+import {debounce, filter, forEach, groupBy, sortBy, uniq} from 'lodash-es';
+import {mdiMagnify} from "@mdi/js";
 
 export default {
   data() {
@@ -15,13 +16,15 @@ export default {
       records: {},
       tasks: [],
       loading: true,
-      filterTabs: [
-        {name: 'todo', filter: task => !task.done && !task.hidden},
-        {name: 'done', filter: task => task.done && !task.hidden},
-        {name: 'hidden', filter: task => task.hidden}
+      filterac: true,
+      filters: [
+        {name: 'todo', active: false},
+        {name: 'done', active: false},
+        {name: 'assigned', active: false},
+        {name: 'created', active: false},
+        {name: 'hidden', active: false},
       ],
-      activeFilter: 0,
-      dialog: false,
+      dialog: false
     };
   },
 
@@ -31,7 +34,11 @@ export default {
 
   methods: {
     refresh() {
-      this.loading = true
+      this.loading = true;
+
+      this.filters.forEach(f => {
+        f.active = this.$route.query[f.name] ?? false;
+      })
 
       Records.tasks.remote.fetch({params: this.$route.query, path: '/'}).then(data => {
         const fetchedIds = data.tasks.map(t => t.id);
@@ -98,19 +105,27 @@ export default {
       }
     },
 
-    setFilter(tabId) { this.activeFilter = tabId; },
+    menuActions() {
+      return {
+        hideall: {
+          icon: 'mdi-eye-off',
+          name: this.$t('common.action.hide') + ' ' + this.$t('common.all'),
+          menu: true,
+          canPerform() { return true; },
+          perform: () => { this.showConfirmationModal() }
+        },
+        unhideall: {
+          icon: 'mdi-eye',
+          name: this.$t('common.action.unhide') + ' ' + this.$t('common.all'),
+          menu: true,
+          canPerform() { return true; },
+          perform: () => { this.showConfirmationModal() }
+        }
+      }
+    },
 
     routeQuery(o) {
       this.$router.replace(this.mergeQuery(o));
-    },
-
-    filterName(filter) {
-      switch (filter) {
-        case 'authored': return 'tasks.dropdown.authored';
-        case 'all': return 'tasks.dropdown.all';
-        default:
-          return 'tasks.dropdown.assigned';
-      }
     },
 
     getGroupBreadcrumbs(task) {
@@ -120,13 +135,26 @@ export default {
       items.push({text: task.record().discussion().title, exact: true, link: true, href: this.taskUrlFor(task.record()) })
 
       return items
-    }
+    },
 
+    toggleFilter(filter) {
+      const currentValue = this.$route.query[filter.name];
+      let queryMod = {}
+      queryMod[filter.name] = !currentValue;
+
+      this.routeQuery(queryMod);
+    },
+
+    showConfirmationModal() {
+      console.log('received');
+      this.dialog = true;
+    }
   },
+
 
   computed: {
     filteredTasks() {
-      return this.tasks.filter(this.filterTabs[this.activeFilter].filter);
+      return this.tasks;
     }
   },
 
@@ -145,33 +173,16 @@ export default {
 v-main
   v-container.dashboard-page.max-width-1024.px-0.px-sm-3
 
-    v-container()
-      v-row(:align="'center'")
-        v-menu
-          template(v-slot:activator="{ on, attrs }")
-            v-btn.text-none.mr-2(v-on="on" v-bind="attrs" text)
-              h1.text-h4.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="filterName($route.query.t)")
-              common-icon(name="mdi-menu-down")
-          v-list
-            v-list-item(@click="routeQuery({t: 'assigned'})")
-              v-list-item-title(v-t="'tasks.dropdown.assigned'")
-            v-list-item(@click="routeQuery({t: 'authored'})")
-              v-list-item-title(v-t="'tasks.dropdown.authored'")
-            v-list-item(@click="routeQuery({t: 'all'})")
-              v-list-item-title(v-t="'tasks.dropdown.all'")
+    v-row(:align="'center'").ml-3
+      h1.text-h4.my-4(v-t="'tasks.tasks'")
+      v-spacer
+      v-chip(outlined href="https://help.loomio.org/en/user_manual/threads/thread_admin/tasks.html" target="_blank")
+        common-icon.mr-2(name="mdi-help-circle-outline")
+        span(v-t="'common.help'")
+      action-menu.ml-5.mr-5(:actions="menuActions()" :menuIcon="'mdi-dots-horizontal'" icon)
 
-        v-spacer
-        v-col(:align="'right'")
-          v-chip.mb-2(outlined @click="dialog = true")
-            common-icon.mr-2(name="mdi-eye-off")
-            span(v-t="'tasks.toggle_hide_all_button'")
 
-          v-chip.mb-2.ml-3(outlined href="https://help.loomio.org/en/user_manual/threads/thread_admin/tasks.html" target="_blank")
-            common-icon.mr-2(name="mdi-help-circle-outline")
-            span(v-t="'common.help'")
-            span :
-            space
-            span(v-t="'tasks.tasks'")
+
     template()
       v-dialog(v-model="dialog" :width="$vuetify.breakpoint.xs ? '90vw' : ' 40vw'")
         v-card.text-center
@@ -181,15 +192,14 @@ v-main
             v-btn(@click="dialog = false; toggleHideVisible()" color="red" v-t="'tasks.toggle_hide_all_confirm.button'")
 
     v-divider.mt-4
-    v-tabs(
-      background-color="transparent"
-      center-active
-      grow
-    )
-      v-tab(
-        v-for="(filter, idx) of filterTabs" @click="setFilter(idx)"
-      )
-        span(v-t="'tasks.tasks_filters.'+filter.name")
+    div.ml-4.pr-4
+      v-row(:align="'center'" :justify="'space-between'")
+        template(v-for="f in filters")
+          v-chip.flex-grow-1.ma-2(label @click="toggleFilter(f)" :color="f.active ? 'green' : ''")
+            common-icon.mr-2(v-if="f.active" name="mdi-check")
+            common-icon.mr-2(v-else name="mdi-plus")
+            span(v-t="'tasks.filters.' + f.name")
+
 
 
     loading(v-if="loading")
