@@ -21,7 +21,26 @@ en:
     please_accept_the_terms: Please accept the terms
   tasks:
     tasks: Tasks
-    your_tasks: Your tasks
+    content: Content
+    dropdown:
+      all: All Your Tasks
+      authored: Made by You
+      assigned: Assigned to You
+    author: assigned by
+    overdue: overdue
+    due_in: Due in
+    origin_title: written in
+    day_singular: day
+    day_plural: days
+    tasks_filters:
+      todo: To Do
+      done: Done
+      hidden: Hidden
+    toggle_hide_all_button: Toggle Hide All
+    toggle_hide_all_confirm:
+      title: You Are About to Modify All Tasks!
+      description: All tasks displayed in this tab will be have their visibility toggled. Are you sure you want to do this?
+      button: Edit All Tasks
     permission_denied: You don't have permission to update this task
     due_date: Due date
     send_reminder: Send reminder (if not done)
@@ -33,9 +52,11 @@ en:
     7_day_before: 7 days before
     task_placeholder: Enter a task and {'@'}mention someone to assign it
     add_due_date: Add due date
-    task_updated_done: Task marked as done!
-    task_updated_not_done: Task marked as incomplete
-    no_tasks_assigned: There are no tasks assigned to you
+    task_updated_done: 'Task marked as done!'
+    task_updated_not_done: 'Task marked as not done'
+    task_updated_hidden: Task hidden!
+    task_updated_not_hidden: Task revealed!
+    no_tasks_to_display: There are no tasks visible here... Great job! ✨
   tips:
     get_started_here: Experience Loomio in 4 easy steps
     youve_completed_all_the_steps: "\U0001F389 You've completed all the steps!"
@@ -295,6 +316,7 @@ en:
     copied: Copied to clipboard
     points_abbrev: Each vote worth %{score} points
     total: Total
+    all: All
     action:
       print: Print
       preview: Preview
