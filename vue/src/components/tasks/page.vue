@@ -5,14 +5,10 @@ import Session            from '@/shared/services/session';
 import Flash              from '@/shared/services/flash';
 import EventBus           from '@/shared/services/event_bus';
 import AbilityService     from '@/shared/services/ability_service';
-<<<<<<< HEAD
 import confirm_modal from "@/components/common/confirm_modal.vue";
-=======
 import UrlFor from '@/mixins/url_for';
 import WatchRecords from '@/mixins/watch_records';
 import FormatDate from '@/mixins/format_date';
->>>>>>> refs/remotes/origin/master
-
 import {debounce, filter, forEach, groupBy, sortBy, uniq} from 'lodash-es';
 import {mdiMagnify} from "@mdi/js";
 
@@ -25,12 +21,13 @@ export default {
       loading: true,
       filterac: true,
       filters: [
-        {name: 'todo', active: false},
-        {name: 'done', active: false},
-        {name: 'assigned', active: false},
-        {name: 'created', active: false},
-        {name: 'hidden', active: false},
+        {name: 'todo', active: false, title: this.$t('tasks.filters.todo') },
+        {name: 'done', active: false, title: this.$t('tasks.filters.done') },
+        {name: 'assigned', active: false, title: this.$t('tasks.filters.assigned') },
+        {name: 'created', active: false, title: this.$t('tasks.filters.created') },
+        {name: 'hidden', active: false, title: this.$t('tasks.filters.hidden') },
       ],
+      filterSelection: [],
       dialog: false
     };
   },
@@ -137,19 +134,23 @@ export default {
 
     getGroupBreadcrumbs(task) {
       let items = task.record().discussion().group().selfAndParents().map((group) => {
-        return { text: group.name, exact: true, link: true, href: this.urlFor(group) }
+        return { title: group.name, exact: true, link: true, href: this.urlFor(group) }
       }).reverse()
-      items.push({text: task.record().discussion().title, exact: true, link: true, href: this.taskUrlFor(task.record()) })
+      items.push({title: task.record().discussion().title, exact: true, link: true, href: this.taskUrlFor(task.record()) })
 
       return items
     },
 
-    toggleFilter(filter) {
-      const currentValue = this.$route.query[filter.name];
-      let queryMod = {}
-      queryMod[filter.name] = !currentValue;
+    applyFilters(newFilters) {
+      let queryMod = {};
+      this.filters.map((f) => { queryMod[f.name] = false })
+
+      newFilters.forEach((f) => {
+        queryMod[f.name] = true;
+      })
 
       this.routeQuery(queryMod);
+
     },
 
     showConfirmationModal() {
@@ -168,7 +169,7 @@ export default {
   watch: {
     '$route.params'(){
       this.refresh();
-    }
+    },
   }
 
 
@@ -179,99 +180,63 @@ export default {
 <template lang="pug">
 v-main
   v-container.dashboard-page.max-width-1024.px-0.px-sm-3
-<<<<<<< HEAD
 
+    //header
     v-row(:align="'center'").ml-3
       h1.text-h4.my-4(v-t="'tasks.tasks'")
       v-spacer
-=======
-    h1.text-h4.my-4(tabindex="-1" v-intersect="{handler: titleVisible}" v-t="'tasks.your_tasks'")
-    loading(v-if="loading")
-    template(v-for="(tasks, recordKey) in tasksByRecordKey")
-      v-card.mb-3
-        v-card-title
-          router-link(:to="taskUrlFor(records[recordKey])") {{records[recordKey].discussion().title}}
-        v-list(subheader)
-          v-list-item(v-for="task in tasks" :key="task.id" :title="task.name")
-            template(v-slot:prepend)
-              v-btn(color="accent" icon variant="flat" @click="toggleDone(task)" :loading="task.processing")
-                common-icon(v-if="task.done" name="mdi-checkbox-marked")
-                common-icon(v-else name="mdi-checkbox-blank-outline")
-    p(v-if="!loading && Object.keys(records).length == 0" v-t="'tasks.no_tasks_assigned'")
-    .d-flex.justify-center
->>>>>>> refs/remotes/origin/master
       v-chip(outlined href="https://help.loomio.org/en/user_manual/threads/thread_admin/tasks.html" target="_blank")
         common-icon.mr-2(name="mdi-help-circle-outline")
         span(v-t="'common.help'")
       action-menu.ml-5.mr-5(:actions="menuActions()" :menuIcon="'mdi-dots-horizontal'" icon)
 
+    v-container
+      v-col(justify="center")
+        //filter bar
+        v-select(multiple clearable return-object chips :label="$t('tasks.filterlabel')" v-model="filterSelection" :items="filters" @update:modelValue="applyFilters")
 
 
-    template()
-      v-dialog(v-model="dialog" :width="$vuetify.breakpoint.xs ? '90vw' : ' 40vw'")
-        v-card.text-center
-          v-card-title.justify-center(v-t="'tasks.toggle_hide_all_confirm.title'")
-          v-card-text(v-t="'tasks.toggle_hide_all_confirm.description'")
-          v-card-actions.justify-center
-            v-btn(@click="dialog = false; toggleHideVisible()" color="red" v-t="'tasks.toggle_hide_all_confirm.button'")
+        //task entries
+        v-card.mb-3(v-for="task in filteredTasks" :key="task.id" style="max-width: 90vw;")
+          v-list-item(lines="three")
+            v-container.ma-0.pa-0
 
-    v-divider.mt-4
-    div.ml-4.pr-4
-      v-row(:align="'center'" :justify="'space-between'")
-        template(v-for="f in filters")
-          v-chip.flex-grow-1.ma-2(label @click="toggleFilter(f)" :color="f.active ? 'green' : ''")
-            common-icon.mr-2(v-if="f.active" name="mdi-check")
-            common-icon.mr-2(v-else name="mdi-plus")
-            span(v-t="'tasks.filters.' + f.name")
+              v-row.ma-10.mt-0
+                p.ma-3(style="max-height: 30vh;") {{task.name}}
 
-
-
-    loading(v-if="loading")
-    div.pa-3()
-      template()
-        v-card.ma-3(v-for="task in filteredTasks" :key="task.id" style="max-width: 90vw;")
-          v-list-item(three-line)
-            v-list-item-content.ml-2
-              v-container.ma-0.pa-0
-                v-row.ma-0.pa-0(:align="'center'")
-                  v-btn(color="accent" icon @click="toggleDone(task)")
+              v-row(:align="'center'" no-gutters)
+                v-col(align="left")
+                  v-btn(variant="plain" color="accent" @click="toggleDone(task)")
+                    span.mr-1(v-t="$t('tasks.checkbox_title') + ':'")
                     common-icon(v-if="task.done" name="mdi-checkbox-marked")
                     common-icon(v-else name="mdi-checkbox-blank-outline")
 
-                  v-col.ma-0.pa-0(style="text-align: right")
-                    div.text-overline(outlined v-if="taskExpiryFor(task) >= 0")
-                      span(v-if="taskExpiryFor(task) === 0" v-t="'tasks.overdue'")
-                      template(v-else)
-                        span(v-t="'tasks.due_in' ")
 
-                        span.mx-1(v-t="taskExpiryFor(task)")
+                v-col(align="center")
+                  div.text-overline(outlined v-if="taskExpiryFor(task) >= 0")
+                    span(v-if="taskExpiryFor(task) === 0" v-t="'tasks.overdue'")
+                    template(v-else)
+                      span(v-t="'tasks.due_in' ")
 
-                        span(v-if="taskExpiryFor(task) > 1" v-t="'tasks.day_plural' ")
-                        span(v-else v-t=" 'tasks.day_singular'")
+                      span.mx-1(v-t="taskExpiryFor(task)")
 
-                  v-col.ma-0.pa-0(:align="'right'")
-                    v-btn(text @click='toggleHidden(task)')
-                      span.mr-2(v-t="task.hidden === false ? 'common.action.hide' : 'common.action.unhide'")
-                      common-icon(v-if="task.hidden === false" name="mdi-eye-off")
-                      common-icon(v-else name="mdi-eye")
+                      span(v-if="taskExpiryFor(task) > 1" v-t="'tasks.day_plural' ")
+                      span(v-else v-t=" 'tasks.day_singular'")
 
-              v-divider
+                v-col(align="right")
+                  v-btn(variant="plain" @click='toggleHidden(task)')
+                    span.mr-2(v-t="task.hidden === false ? 'common.action.hide' : 'common.action.unhide'")
+                    common-icon(v-if="task.hidden === false" name="mdi-eye-off")
+                    common-icon(v-else name="mdi-eye")
 
-              v-container.ml-1
-                span.text-overline.text--secondary(v-t="'tasks.content'")
-                p.ml-2(style="max-height: 30vh;") {{task.name}}
+              v-divider.pa-2
+              v-row.ms-0
+                v-col(:align="'left'")
+                  v-breadcrumbs.ma-0.pa-0(:items="getGroupBreadcrumbs(task)" :divider="'>'")
+                v-col(:align="'right'")
+                  span.mr-1 {{task.author().name}}
+                  user-avatar.ml-1(:user='task.author()')
 
-                span.text-overline.text--secondary(v-t="'tasks.origin_title'")
-                v-breadcrumbs.ml-2.pa-0(:items="getGroupBreadcrumbs(task)" :divider="'>'")
-                //this paragraph is to keep consistent spacing
-                p
-
-                div.ma-0.pa-0.text-overline.text--secondary
-                  span(v-t="'tasks.author'")
-                  v-row(:align="'center'")
-                    v-col(:align="'right'")
-                      span.mr-1 {{task.author().name}}
-                      user-avatar.ml-1(:user='task.author()')
-
+        //text when empty
         p.ma-3(style="text-align: center" v-if="!loading && filteredTasks.length == 0" v-t="'tasks.no_tasks_to_display'")
 </template>
