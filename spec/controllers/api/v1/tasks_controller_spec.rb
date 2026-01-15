@@ -96,4 +96,36 @@ describe Api::V1::TasksController, type: :controller do
       expect(li['data-checked']).to eq 'false'
     end
   end
+
+  describe 'as user' do
+    let(:task) { Task.create(author_id: author.id, uid: 123, name: 'task 1', done: false) }
+    let!(:extension) { TasksUsersExtension.create(task_id: task.id, user_id: author.id ) }
+
+    before do
+      sign_in author
+    end
+
+    it 'task can be hidden' do
+      expect(TasksUsersExtension.find_by(task_id: task.id, user_id: author.id).hidden).to eq false
+      post :mark_as_hidden, params: {id: task.id}
+      expect(response.status).to eq 200
+      expect(TasksUsersExtension.find_by(task_id: task.id, user_id: author.id).hidden).to eq true
+    end
+
+    it 'task can be revealed' do
+      expect(TasksUsersExtension.find_by(task_id: task.id, user_id: author.id).hidden).to eq false
+      post :mark_as_hidden, params: {id: task.id}
+      expect(response.status).to eq 200
+      expect(TasksUsersExtension.find_by(task_id: task.id, user_id: author.id).hidden).to eq true
+
+      post :mark_as_not_hidden, params: {id: task.id}
+      expect(TasksUsersExtension.find_by(task_id: task.id, user_id: author.id).hidden).to eq false
+    end
+
+    it 'returns hidden state for task' do
+      get :index, params: { t: 'all'}
+      expect(response.status).to eq 200
+      expect(JSON.parse(response.body)['tasks'][0]['hidden']).to eq false
+    end
+  end
 end
