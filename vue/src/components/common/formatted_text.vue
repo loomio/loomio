@@ -189,7 +189,7 @@ img.emoji
 
   h1
     font-size: 1.75rem
-    font-weight: 400
+    font-weight: 500
     letter-spacing: -0.015625rem
 
   h2
