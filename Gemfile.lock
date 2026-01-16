@@ -145,7 +145,8 @@ GEM
       racc
     browser (6.2.0)
     builder (3.3.0)
-    byebug (12.0.0)
+    byebug (13.0.0)
+      reline (>= 0.6.0)
     cancancan (3.6.1)
     chartkick (5.2.0)
     cld (0.13.0)
