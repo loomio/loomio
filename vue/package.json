@@ -48,7 +48,7 @@
     "@tiptap/suggestion": "^3.15.3",
     "@tiptap/vue-3": "^3.15.3",
     "@sentry/browser": "^10.34.0",
-    "@sentry/vue": "^10.34.0",
+    "@sentry/vue": "^10.35.0",
     "activestorage": "^5.2.8",
     "chart.js": "^3.9.1",
     "date-fns": "2.30.0",
