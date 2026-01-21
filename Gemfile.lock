@@ -617,7 +617,7 @@ GEM
       actionpack (>= 7.0)
       railties (>= 7.0)
     retriable (3.1.2)
-    reverse_markdown (3.0.1)
+    reverse_markdown (3.0.2)
       nokogiri
     rexml (3.4.4)
     rspec-collection_matchers (1.2.1)
