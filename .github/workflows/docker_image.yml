@@ -36,7 +36,7 @@ jobs:
           images: ${{ env.IMAGE_NAME }}
 
       - name: Build and push multi-arch
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         if: ${{ env.HAVESECRET == 'true' }}
         with:
           context: .
