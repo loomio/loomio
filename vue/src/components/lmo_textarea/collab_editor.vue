@@ -88,6 +88,7 @@ const iframeDialogIsOpen = ref(false);
 const fetchedUrls = ref([]);
 const filesField = ref(null);
 const imagesField = ref(null);
+let ydoc = null;
 
 const btnProps = ref({
   size: 'small',
@@ -288,7 +289,7 @@ const imageSelected = () => {
 // Lifecycle
 onMounted(() => {
   const docname = props.model.collabKey(props.field, (Session.user().id || AppConfig.channel_token));
-  const ydoc = new Y.Doc();
+  ydoc = new Y.Doc();
 
   const onSync = function() {
     if (!ydoc.getMap('config').get('initialContentLoaded')) {
