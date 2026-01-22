@@ -16,7 +16,7 @@
               .v-slide-group__wrapper
                 .v-slide-group__content.v-tabs-bar__content
                   %a.v-tab--active.v-tab.group-page-threads-tab{"aria-selected" => "true", :href => "/#{@group.handle}", :role => "tab", :tabindex => "0"}
-                    %span= t(:'group_page.threads')
+                    %span= t(:'group_page.discussions')
                   %a.v-tab.group-page-polls-tab{"aria-selected" => "false", :href => "/g/#{@group.key}/polls", :role => "tab", :tabindex => "0"}
                     %span= t(:'group_page.polls')
                   %a.v-tab.group-page-members-tab{"aria-selected" => "false", :href => "/g/#{@group.key}/members", :role => "tab", :tabindex => "0"}
