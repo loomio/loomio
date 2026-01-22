@@ -464,7 +464,7 @@ GEM
     net-smtp (0.5.1)
       net-protocol
     net_http_timeout_errors (1.0.0)
-    nio4r (2.7.4)
+    nio4r (2.7.5)
     nokogiri (1.19.0-aarch64-linux-gnu)
       racc (~> 1.4)
     nokogiri (1.19.0-aarch64-linux-musl)
@@ -520,7 +520,7 @@ GEM
       date
       stringio
     public_suffix (7.0.2)
-    puma (7.1.0)
+    puma (7.2.0)
       nio4r (~> 2.0)
     pwned (2.4.1)
     racc (1.8.1)
