@@ -50,6 +50,7 @@ import { IndexeddbPersistence } from 'y-indexeddb';
 
 import { useCommonMentioning, useHtmlMentioning, getMentionPluginConfig } from './composables/useMentioning';
 import { useAttaching } from './composables/useAttaching';
+import * as Y from 'yjs'
 
 const isValidHttpUrl = function(string) {
   let url = undefined;
@@ -60,8 +61,6 @@ const isValidHttpUrl = function(string) {
   }
   return (url.protocol === 'http:') || (url.protocol === 'https:');
 };
-
-let provider = null;
 
 const props = defineProps({
   focusId: String,
@@ -140,7 +139,6 @@ const format = computed(() => {
 });
 
 
-
 const resetDraft = (content) => {
   if (!editor.value) return;
   editor.value.commands.setContent(content);
@@ -149,9 +147,7 @@ const resetDraft = (content) => {
 const deleteDraft = () => {
   if (!editor.value) return;
   editor.value.chain().clearContent().run();
-  if (provider) {
-    provider.document.getMap('config').set('initialContentLoaded', false);
-  }
+  ydoc.getMap('config').set('initialContentLoaded', false);
   resetFiles();
 };
 
@@ -292,28 +288,37 @@ const imageSelected = () => {
 // Lifecycle
 onMounted(() => {
   const docname = props.model.collabKey(props.field, (Session.user().id || AppConfig.channel_token));
+  const ydoc = new Y.Doc();
 
-  const onSync = function(provider) {
-    if (editor.value) {
-      if (!provider.document.getMap('config').get('initialContentLoaded')) {
-        provider.document.getMap('config').set('initialContentLoaded', true);
-        editor.value.commands.setContent(props.model[props.field]);
-      } else if (editor.value.storage.characterCount.characters() == 0 && !props.model.attributeIsBlank(props.field)) {
+  const onSync = function() {
+    if (!ydoc.getMap('config').get('initialContentLoaded')) {
+      ydoc.getMap('config').set('initialContentLoaded', true);
+      editor.value.commands.setContent(props.model[props.field]);
+    } else {
+      if (editor.value.storage.characterCount.characters() == 0 && !props.model.attributeIsBlank(props.field)) {
+        console.log(`content blank when it shouldnt be! ${docname}`);
         editor.value.commands.setContent(props.model[props.field]);
       }
-    } else {
-      setTimeout(() => onSync(provider), 250);
     }
   };
 
-  provider = new HocuspocusProvider({
+  const hocusProvider = new HocuspocusProvider({
     url: AppConfig.theme.hocuspocus_url,
     name: docname,
+    document: ydoc,
     token: (Session.user().id || 0) + "," + AppConfig.channel_token,
-    onSynced: function() { onSync(provider); },
+    onSynced: () => { onSync() },
   });
 
-  new IndexeddbPersistence(docname, provider.document);
+  const localProvider = new IndexeddbPersistence(docname, ydoc);
+
+  // Fallback: If server doesn't connect within timeout, load content from local model
+  setTimeout(() => {
+    if (!ydoc.getMap('config').get('initialContentLoaded')) {
+      console.log('Hocuspocus server unavailable, loading from local model');
+      onSync();
+    }
+  }, 2000);
 
   expanded.value = Session.user().experiences['html-editor.expanded'];
 
@@ -348,10 +353,10 @@ onMounted(() => {
       CharacterCount.configure({limit: props.maxLength}),
       CustomImage.configure({attachFile: attachFile, attachImageFile: attachImageFile}),
       Collaboration.configure({
-        document: provider.document,
+        document: ydoc,
       }),
       CollaborationCaret.configure({
-        provider: provider,
+        provider: hocusProvider,
         user: {
           name: Session.user().name,
           color: '#f783ac',
@@ -442,22 +447,10 @@ onMounted(() => {
 });
 
 onBeforeUnmount(() => {
-  // Clean up event listeners
   EventBus.$off('focusEditor');
   EventBus.$off('resetDraft');
   EventBus.$off('deleteDraft');
-
-  // Clean up editor
-  if (editor.value) {
-    const editorInstance = editor.value;
-    editor.value = null;
-    editorInstance.destroy();
-  }
-
-  // Clean up provider
-  if (provider) {
-    provider.destroy();
-  }
+  editor.value.destroy();
 });
 
 defineExpose({
