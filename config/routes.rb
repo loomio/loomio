@@ -90,6 +90,8 @@ Rails.application.routes.draw do
         member do
           post :mark_as_done
           post :mark_as_not_done
+          post :mark_as_hidden
+          post :mark_as_not_hidden
         end
       end
 

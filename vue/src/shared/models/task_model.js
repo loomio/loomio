@@ -8,6 +8,7 @@ export default class TaskModel extends BaseModel {
 
   relationships() {
     this.belongsToPolymorphic('record');
+    return this.belongsTo('author', {from: 'users'});
   }
 
   toggleDone() {
@@ -18,4 +19,14 @@ export default class TaskModel extends BaseModel {
       return Records.tasks.remote.postMember(this.id, 'mark_as_done').finally(() => this.processing = false);
     }
   }
+
+  toggleHidden() {
+    if (this.hidden) {
+      return this.remote.postMember(this.id, 'mark_as_not_hidden');
+    } else {
+      return this.remote.postMember(this.id, 'mark_as_hidden');
+    }
+  }
+
+
 };
