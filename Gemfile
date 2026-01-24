@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 ruby '3.4.7'
-gem 'rails', '7.2.2.1'
+gem 'rails', '~> 8.0'
 gem 'rack', '2.2.21'
 gem 'uri', '1.1.1'
 gem 'rake'
