@@ -1,6 +1,6 @@
 class ConvertTeamsToWebhooks < ActiveRecord::Migration[5.2]
   def change
-    Identities::Base.where(identity_type: "microsoft").each do |i|
+    Identity::Base.where(identity_type: "microsoft").each do |i|
       if gi = GroupIdentity.find_by(identity_id: i.id)
         group_id = gi.group_id
         url = i.uid

@@ -452,7 +452,7 @@ Rails.application.routes.draw do
   get '/sitemap.xml' => 'application#sitemap'
 
 
-  Identities::Base::PROVIDERS.each do |provider|
+  Identity::PROVIDERS.each do |provider|
     scope provider do
       get :oauth,                           to: "identities/#{provider}#oauth",       as: :"#{provider}_oauth"
       get :authorize,                       to: "identities/#{provider}#create",      as: :"#{provider}_authorize"

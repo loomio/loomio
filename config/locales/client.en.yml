@@ -394,6 +394,8 @@ en:
     _8: 8th
     _9: 9th
     _10: 10th
+  auth:
+    oauth_cancelled: Sign in was cancelled
   devise:
     sessions:
       signed_up: Signed up successfully!

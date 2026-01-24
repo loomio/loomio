@@ -1,14 +1,23 @@
 class Clients::Oauth < Clients::Base
 
   def fetch_access_token(code, uri)
-    post ENV.fetch('OAUTH_TOKEN_URL'), params: { code: code, redirect_uri: uri, grant_type: :authorization_code }
+    post(
+      ENV.fetch('OAUTH_TOKEN_URL'),
+      params: { code: code, redirect_uri: uri, grant_type: :authorization_code }
+    ).json['access_token']
   end
 
-  def fetch_user_info
-    get ENV.fetch('OAUTH_PROFILE_URL')
+  def fetch_identity_params
+    data = get(ENV.fetch('OAUTH_PROFILE_URL')).json
+    {
+      uid: data.dig(ENV.fetch('OAUTH_ATTR_UID')),
+      name: data.dig(ENV.fetch('OAUTH_ATTR_NAME')),
+      email: data.dig(ENV.fetch('OAUTH_ATTR_EMAIL'))
+    }
   end
 
   private
+
   def perform(method, url, params, headers, options)
     options.reverse_merge!(
       success:    default_success,

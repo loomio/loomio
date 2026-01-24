@@ -144,11 +144,11 @@ module Dev::FakeDataHelper
   end
 
   def fake_identity(args = {})
-    Identities::Base.new({
+    Identity.new({
       user: fake_user,
       uid: "abc",
       access_token: SecureRandom.uuid,
-      identity_type: :slack
+      identity_type: :saml
     }.merge(args))
   end
 
