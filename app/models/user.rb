@@ -25,7 +25,11 @@ class User < ApplicationRecord
   has_secure_password validations: false
   has_many :sessions, dependent: :destroy
 
+  # Map password_digest to encrypted_password for Devise compatibility
+  alias_attribute :password_digest, :encrypted_password
+
   validates :password, length: { minimum: 8 }, if: :password_required?
+  validates :password, pwned_password: true, if: :password_required?
 
   attr_accessor :restricted
   attr_accessor :token

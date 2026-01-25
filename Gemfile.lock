@@ -508,6 +508,7 @@ GEM
     public_suffix (7.0.2)
     puma (7.2.0)
       nio4r (~> 2.0)
+    pwned (2.4.1)
     racc (1.8.1)
     rack (2.2.21)
     rack-attack (6.8.0)
@@ -806,6 +807,7 @@ DEPENDENCIES
   pg_search
   premailer-rails
   puma
+  pwned (~> 2.4)
   rack (= 2.2.21)
   rack-attack
   rack-timeout
