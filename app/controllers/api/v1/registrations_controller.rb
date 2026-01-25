@@ -1,24 +1,24 @@
-class Api::V1::RegistrationsController < Devise::RegistrationsController
+class Api::V1::RegistrationsController < ApplicationController
   include LocalesHelper
-  before_action :configure_permitted_parameters
+  allow_unauthenticated_access only: %i[ create ]
   before_action :permission_check, only: :create
 
   def create
     @email_can_be_verified = email_can_be_verified?
-    self.resource = UserService.create(params: sign_up_params)
-    if !resource.errors.any?
-      save_detected_locale(resource)
+    @user = UserService.create(params: sign_up_params)
+    if !@user.errors.any?
+      save_detected_locale(@user)
       if @email_can_be_verified
-        sign_in resource
+        sign_in @user
         flash[:notice] = t(:'devise.sessions.signed_in')
-        render json: Boot::User.new(resource, root_url: URI(root_url).origin).payload.merge({ success: :ok, signed_in: true })
+        render json: Boot::User.new(@user, root_url: URI(root_url).origin).payload.merge({ success: :ok, signed_in: true })
       else
-        LoginTokenService.create(actor: resource, uri: URI::parse(request.referrer.to_s))
+        LoginTokenService.create(actor: @user, uri: URI::parse(request.referrer.to_s))
         render json: { success: :ok, signed_in: false }
       end
-      EventBus.broadcast('registration_create', resource)
+      EventBus.broadcast('registration_create', @user)
     else
-      render json: { errors: resource.errors }, status: 422
+      render json: { errors: @user.errors }, status: 422
     end
   rescue UserService::EmailTakenError => e
     render json: {errors: {email: [I18n.t('auth_form.email_taken')]}}, status: 422
@@ -44,9 +44,7 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
     end
   end
 
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up) do |u|
-      u.permit(:name, :email, :legal_accepted, :email_newsletter)
-    end
+  def sign_up_params
+    params.require(:user).permit(:name, :email, :legal_accepted, :email_newsletter)
   end
 end

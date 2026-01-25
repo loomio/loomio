@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_12_03_031449) do
+ActiveRecord::Schema[8.0].define(version: 2026_01_24_214717) do
   create_schema "pghero"
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
+  enable_extension "pg_catalog.plpgsql"
   enable_extension "pg_stat_statements"
   enable_extension "pgcrypto"
-  enable_extension "plpgsql"
 
   create_table "action_mailbox_inbound_emails", force: :cascade do |t|
     t.integer "status", default: 0, null: false
@@ -834,6 +834,15 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_03_031449) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "sessions", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "ip_address"
+    t.string "user_agent"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sessions_on_user_id"
+  end
+
   create_table "stance_choices", id: :serial, force: :cascade do |t|
     t.integer "stance_id"
     t.integer "poll_option_id"
@@ -1048,6 +1057,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_03_031449) do
     t.string "email_sha256"
     t.integer "complaints_count", default: 0, null: false
     t.boolean "auto_translate", default: false, null: false
+    t.string "password_digest"
     t.index ["api_key"], name: "index_users_on_api_key"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["email_verified"], name: "index_users_on_email_verified"
@@ -1090,4 +1100,5 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_03_031449) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "sessions", "users"
 end

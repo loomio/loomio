@@ -22,8 +22,11 @@ class User < ApplicationRecord
 
   MAX_AVATAR_IMAGE_SIZE_CONST = 100.megabytes
 
-  devise :database_authenticatable, :recoverable, :registerable, :rememberable, :lockable, :trackable
-  devise :pwned_password if Rails.env.production?
+  has_secure_password validations: false
+  has_many :sessions, dependent: :destroy
+
+  validates :password, length: { minimum: 8 }, if: :password_required?
+
   attr_accessor :restricted
   attr_accessor :token
   attr_accessor :membership_token

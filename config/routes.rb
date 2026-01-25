@@ -11,9 +11,11 @@ end
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  resource :session
+  resources :passwords, param: :token
   get "/up", to: proc { [200, {}, ["ok"]] }, as: :rails_health_check
 
-  authenticate :user, lambda { |u| u.is_admin? } do
+  scope constraints: AdminRouteConstraint do
     mount Sidekiq::Web => '/admin/sidekiq'
     mount Blazer::Engine, at: "/admin/blazer"
   end
@@ -325,11 +327,9 @@ Rails.application.routes.draw do
       end
 
       namespace(:sessions)        { get :unauthorized }
-      devise_scope :user do
-        resource :sessions, only: [:create, :destroy]
-        resource :registrations, only: :create do
-          post :oauth, on: :collection
-        end
+      resource :sessions, only: [:create, :destroy]
+      resource :registrations, only: :create do
+        post :oauth, on: :collection
       end
       get "identities/:id/:command", to: "identities#command"
     end
@@ -340,7 +340,6 @@ Rails.application.routes.draw do
 
   get '/users/sign_in', to: redirect('/dashboard')
   get '/users/sign_up', to: redirect('/dashboard')
-  devise_for :users
 
   resources :contact_messages, only: [:new, :create] do
     get :show, on: :collection

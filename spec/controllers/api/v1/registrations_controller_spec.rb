@@ -7,12 +7,10 @@ describe Api::V1::RegistrationsController do
     legal_accepted: true
   }}
 
-  before { request.env["devise.mapping"] = Devise.mappings[:user] }
-
   describe 'create' do
     let(:login_token)        { create :login_token, user: User.create(email: registration_params[:email], email_verified: false) }
     let(:pending_membership) { create :membership, accepted_at: nil, user: User.create(email: registration_params[:email], email_verified: false) }
-    let(:pending_identity)   { create :facebook_identity, email: registration_params[:email] }
+    let(:pending_identity)   { create :identity, email: registration_params[:email] }
 
     it 'creates a new user' do
       expect { post :create, params: { user: registration_params } }.to change { User.count }.by(1)

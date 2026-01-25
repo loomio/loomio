@@ -7,11 +7,13 @@ module CurrentUserHelper
   def sign_in(user)
     @current_user = nil
     user = UserService.verify(user: user)
-    super(user) && handle_pending_actions(user) && associate_user_to_visit
+    start_new_session_for(user)
+    handle_pending_actions(user)
+    associate_user_to_visit if respond_to?(:associate_user_to_visit)
   end
 
   def current_user
-    @current_user || super || LoggedOutUser.new(locale: logged_out_preferred_locale, params: params, session: session)
+    @current_user ||= Current.user || LoggedOutUser.new(locale: logged_out_preferred_locale, params: params, session: session)
   end
 
   def deny_spam_users

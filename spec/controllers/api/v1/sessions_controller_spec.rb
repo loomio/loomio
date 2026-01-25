@@ -7,10 +7,6 @@ describe Api::V1::SessionsController do
     let(:token) { create :login_token }
 
     describe 'via password' do
-      before do
-        request.env["devise.mapping"] = Devise.mappings[:user]
-      end
-
       it 'signs in with password' do
         user.update(password: "s3curepassword123")
         post :create, params: {user: {email: "verified@example.com", password: "s3curepassword123"}}
@@ -33,7 +29,6 @@ describe Api::V1::SessionsController do
     describe 'via token' do
       before do
         session[:pending_login_token] = token.token
-        request.env["devise.mapping"] = Devise.mappings[:user]
       end
 
       it 'signs in a user' do
