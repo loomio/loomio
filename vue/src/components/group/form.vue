@@ -4,6 +4,7 @@ import LmoUrlService from '@/shared/services/lmo_url_service';
 import Records  from '@/shared/services/records';
 import Flash   from '@/shared/services/flash';
 import EventBus   from '@/shared/services/event_bus';
+import Session from '@/shared/services/session';
 import { groupPrivacy, groupPrivacyStatement } from '@/shared/helpers/helptext';
 import { isEmpty, debounce } from 'lodash-es';
 
@@ -121,7 +122,7 @@ export default
 
   watch: {
     'group.groupPrivacy'(val) {
-      if (this.group.groupPrivacy != 'open' && this.group.membershipGrantedUpon == 'request') {
+      if (this.group.groupPrivacy != 'open' && this.group.membershipGrantedUpon == 'request' && !Session.user().isAdmin) {
         this.group.membershipGrantedUpon = 'approval';
       }
     }
@@ -133,7 +134,7 @@ export default
     },
 
     membershipGrantedUponOptions() {
-      if (this.group.groupPrivacy == 'open') {
+      if (Session.user().isAdmin) {
         return ['request', 'approval', 'invitation']
       } else {
         return ['approval', 'invitation']
