@@ -69,7 +69,7 @@ module Null::User
   end
 
   def identities
-    Identities::Base.none
+    Identity.none
   end
 
   def is_admin?

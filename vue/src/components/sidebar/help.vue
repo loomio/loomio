@@ -48,7 +48,7 @@ export default {
 
 v-list(nav lines="two")
   v-list-item(to="/explore" v-if="showExploreGroups")
-    v-list-item-title(v-t="'sidebar.explore_groups'")
+    v-list-item-title(v-t="'sidebar.find_a_group'")
     template(v-slot:append)
       common-icon(name="mdi-map-search")
   v-list-item.sidebar-start-demo(v-if="canStartDemo" @click="startOrFindDemo" lines="two")

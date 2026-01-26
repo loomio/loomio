@@ -563,6 +563,7 @@ it:
     unread_discussions_count: Discussioni non lette (%{count})
     new_group: Nuovo gruppo
     new_subgroup: Nuovo sottogruppo
+    find_a_group: Trova un gruppo
   strand_nav:
     newest: Più recente
     oldest: Maggiore
@@ -1357,6 +1358,9 @@ it:
     allow_polls_without_discussions: Consenti sondaggi senza discussione
     allow_polls_without_discussions_help: Impedire alle persone di avviare sondaggi senza prima avviare una discussione.
     aria_label: Modulo di gruppo
+    list_in_the_groups_directory: Elenco nella directory dei gruppi?
+    list_in_directory_yes: Sì · mostra questo gruppo nella pagina "Trova un gruppo"
+    list_in_directory_no: No · le persone dovrebbero essere invitate o ricevere un collegamento per trovare il gruppo
   group_export_modal:
     title: Esporta i dati del gruppo
     body: <p>Puoi scaricare una copia dei dati del tuo gruppo in qualsiasi momento. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Scopri di più.</a></p><p> Il completamento richiede alcuni minuti, a seconda delle dimensioni del gruppo. Quando sarà pronto riceverai un'e-mail con un link per scaricare il file.</p>
@@ -1584,8 +1588,8 @@ it:
     current_polls: Votazioni correnti
     recent_threads: Discussioni recenti
     no_groups:
-      show_all: Benvenuta! Non sei iscritta ancora a nessun gruppo <a href="/explore">Sfoglia i gruppi pubblici</a> o <a href="/g/new">Avvia un gruppo</a>.
       show_muted: Non ci sono discussioni silenziate perchè non sei membro di alcun gruppo.
+      show_all: Benvenuto! Non sei ancora membro di nessun gruppo.
     no_threads:
       show_all: Non hai alcuna discussione recente
       show_proposals: Non ci sono proposte attive in questo momento.
@@ -1750,6 +1754,10 @@ it:
     newest_first: I voti più nuovi prima
     biggest_first: I più grandi prima
     order_by: Ornina i gruppi per
+    most_members: La maggior parte dei membri
+    least_members: Meno membri
+    newest: Più recente
+    oldest: Il più vecchio
   global:
     messages:
       reload: Ricaricare
@@ -2695,3 +2703,5 @@ it:
     confirm_change_to_private: "%{groupName} è un gruppo aperto. Se procedi, questa discussione sarà pubblica."
     messages:
       success: Discussione spostata su %{name}
+  auth:
+    oauth_cancelled: L'accesso è stato annullato

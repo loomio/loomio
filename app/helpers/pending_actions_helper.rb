@@ -22,7 +22,7 @@ module PendingActionsHelper
   end
 
   def consume_pending_identity(user)
-    user.associate_with_identity(pending_identity) if pending_identity
+    pending_identity.update(user: user) if pending_identity
   end
 
   def consume_pending_group(user)
@@ -94,7 +94,7 @@ module PendingActionsHelper
   end
 
   def pending_identity
-    Identities::Base.find_by(id: session[:pending_identity_id]) if session[:pending_identity_id]
+    Identity.find_by(id: session[:pending_identity_id]) if session[:pending_identity_id]
   end
 
   def pending_user

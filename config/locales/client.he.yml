@@ -551,6 +551,7 @@ he:
     unread_discussions_count: דיונים שלא נקראו (%{count})
     new_group: קבוצה חדשה
     new_subgroup: תת-קבוצה חדשה
+    find_a_group: מצא קבוצה
   strand_nav:
     newest: החדש ביותר
     oldest: הוותיק ביותר
@@ -1333,6 +1334,9 @@ he:
     allow_polls_without_discussions: אפשר סקרים ללא דיון
     allow_polls_without_discussions_help: מנע מאנשים להתחיל סקרים מבלי להתחיל דיון קודם.
     aria_label: טופס קבוצה
+    list_in_the_groups_directory: רשימה בספריית הקבוצות?
+    list_in_directory_yes: כן · הצג קבוצה זו בדף "מצא קבוצה"
+    list_in_directory_no: אין להזמין אנשים או לקבל קישור למציאת הקבוצה
   group_export_modal:
     title: יצוא נתונים מהקבוצה
     body: |
@@ -1568,8 +1572,8 @@ he:
     current_polls: סקרים נוכחיים
     recent_threads: שיחות אחרונות
     no_groups:
-      show_all: ברוך הבא! אתה עוד לא חבר באף קבוצה עוד. <a href="/explore">חפש בקבוצות הפומביות</a> או <a href="/g/new">פתח קבוצה</a>.
       show_muted: אין לך אף שיחה מושתקת כי אתה לא חבר באף קבוצה.
+      show_all: ברוך הבא! אינך חבר באף קבוצה עדיין.
     no_threads:
       show_all: אין לך אף שיחות אחרונות.
       show_proposals: אין כרגע הצעות אקטיביות.
@@ -1739,6 +1743,10 @@ he:
     newest_first: הכי חדש קודם
     biggest_first: הכי גדול קודם
     order_by: סדר קבוצות לפי
+    most_members: רוב החברים
+    least_members: מספר החברים המינימלי
+    newest: החדש ביותר
+    oldest: הישן ביותר
   global:
     messages:
       reload: טען מחדש
@@ -2684,3 +2692,5 @@ he:
     confirm_change_to_private: "%{groupName} היא קבוצה פתוחה. אם תמשיך, דיון זה יהיה ציבורי."
     messages:
       success: הדיון הועבר ל-%{name}
+  auth:
+    oauth_cancelled: הכניסה בוטלה

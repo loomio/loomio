@@ -551,6 +551,7 @@ hr:
     unread_discussions_count: Nepročitane rasprave (%{count})
     new_group: Nova grupa
     new_subgroup: Nova podgrupa
+    find_a_group: Pronađite grupu
   strand_nav:
     newest: Najnoviji
     oldest: Najstariji
@@ -1329,6 +1330,9 @@ hr:
     allow_polls_without_discussions: Dopusti ankete bez rasprave
     allow_polls_without_discussions_help: Spriječite ljude da pokreću ankete bez prethodnog pokretanja rasprave.
     aria_label: Grupni obrazac
+    list_in_the_groups_directory: Popis u direktoriju grupa?
+    list_in_directory_yes: Da · prikaži ovu grupu na stranici "pronađi grupu"
+    list_in_directory_no: Ne · osobe bi trebale biti pozvane ili im dati poveznicu za pronalazak grupe
   group_export_modal:
     title: Izvoz grupnih podataka
     body: <p>U bilo kojem trenutku možete preuzeti kopiju podataka svoje grupe. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Saznaj više.</a></p><p> Za dovršetak je potrebno nekoliko minuta, ovisno o veličini vaše grupe. Kada bude spremna, primit ćete e-poruku s vezom za preuzimanje datoteke.</p>
@@ -1556,8 +1560,8 @@ hr:
     current_polls: Aktualne ankete
     recent_threads: Nedavne teme
     no_groups:
-      show_all: Dobrodošli! Još niste član niti jedne grupe. <a href="/explore">Pregledajte javne grupe</a> ili <a href="/g/new">pokrenite grupu</a> .
       show_muted: Nemate nijednu utišanu niti jer niste član niti jedne grupe.
+      show_all: Dobrodošli! Još niste član nijedne grupe.
     no_threads:
       show_all: Nemate nedavnih niti.
       show_proposals: Trenutno nema aktivnih prijedloga.
@@ -1720,6 +1724,10 @@ hr:
     newest_first: Prvo najnoviji
     biggest_first: Najprije najveći
     order_by: Poredaj grupe prema
+    most_members: Većina članova
+    least_members: Najmanje članova
+    newest: Najnoviji
+    oldest: Najstariji
   global:
     messages:
       reload: Ponovno učitati
@@ -2665,3 +2673,5 @@ hr:
     confirm_change_to_private: "%{groupName} je otvorena grupa. Ako nastavite, ova će rasprava biti javna."
     messages:
       success: Rasprava je premještena na %{name}
+  auth:
+    oauth_cancelled: Prijava je otkazana

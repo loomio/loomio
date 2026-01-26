@@ -551,6 +551,7 @@ sl:
     unread_discussions_count: Neprebrane razprave (%{count})
     new_group: Nova skupina
     new_subgroup: Nova podskupina
+    find_a_group: Poiščite skupino
   strand_nav:
     newest: Najnovejša
     oldest: Najstarejši
@@ -1329,6 +1330,9 @@ sl:
     allow_polls_without_discussions: Dovoli ankete brez razprave
     allow_polls_without_discussions_help: Preprečite ljudem, da začnejo ankete brez predhodnega začetka razprave.
     aria_label: Skupinski obrazec
+    list_in_the_groups_directory: Seznam v imeniku skupin?
+    list_in_directory_yes: Da · prikaži to skupino na strani »najdi skupino«
+    list_in_directory_no: Ne · ljudi je treba povabiti ali jim dati povezavo za iskanje skupine
   group_export_modal:
     title: Izvoz podatkov skupine
     body: <p>Kopijo podatkov svoje skupine lahko prenesete kadar koli. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Izvedi več.</a></p><p> Izpolnitev traja nekaj minut, odvisno od velikosti vaše skupine. Ko bo pripravljena, boste prejeli e-poštno sporočilo s povezavo za prenos datoteke.</p>
@@ -1556,8 +1560,8 @@ sl:
     current_polls: Aktualne ankete
     recent_threads: Nedavne teme
     no_groups:
-      show_all: Dobrodošli! Niste še član nobene skupine. <a href="/explore">Prebrskajte po javnih skupinah</a> ali <a href="/g/new">ustvarite skupino</a> .
       show_muted: Nimate nobene utišane niti, ker niste član nobene skupine.
+      show_all: Dobrodošli! Še niste član nobene skupine.
     no_threads:
       show_all: Nimate nedavnih niti.
       show_proposals: Trenutno ni aktivnih predlogov.
@@ -1720,6 +1724,10 @@ sl:
     newest_first: Najprej najnovejše
     biggest_first: Najprej največji
     order_by: Razvrsti skupine po
+    most_members: Večina članov
+    least_members: Najmanj članov
+    newest: Najnovejše
+    oldest: Najstarejši
   global:
     messages:
       reload: Ponovno naloži
@@ -2665,3 +2673,5 @@ sl:
     confirm_change_to_private: "%{groupName} je odprta skupina. Če nadaljujete, bo ta razprava javna."
     messages:
       success: Razprava je bila premaknjena na %{name}
+  auth:
+    oauth_cancelled: Prijava je bila preklicana

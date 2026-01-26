@@ -208,13 +208,13 @@ describe Api::V1::GroupsController do
   describe 'count_explore_results' do
     before { sign_in user }
     it 'returns the number of explore group results matching the search term' do
-      group.update(group_privacy: 'open')
+      group.update(group_privacy: 'open', listed_in_explore: true)
       group.update_attribute(:name, 'exploration team')
       group.update_attribute(:memberships_count, 5)
       group.update_attribute(:discussions_count, 3)
       group.subscription = Subscription.create(plan: 'trial', state: 'active')
       group.save
-      second_explore_group = create(:group, name: 'inspection group', group_privacy: 'open')
+      second_explore_group = create(:group, name: 'inspection group', group_privacy: 'open', listed_in_explore: true)
       second_explore_group.update_attribute(:memberships_count, 5)
       second_explore_group.update_attribute(:discussions_count, 3)
       second_explore_group.subscription = Subscription.create(plan: 'trial', state: 'active')

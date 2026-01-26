@@ -47,8 +47,8 @@ zh_TW:
     copy_of_title: "%{title} 的副本"
     loomio_default_templates: Loomio 預設模板
     which_templates_would_you_like_to_use: 您想使用哪些模板？
-    login_to_start_demo: '這是 Loomio 的展示。歡迎您到處看看。'
-    sign_in_to_try_features: '若您想要在展示用的決策中投票，或為您的組織開始免費試用，請點擊「登入」。'
+    login_to_start_demo: 這是 Loomio 的展示。歡迎您到處看看。
+    sign_in_to_try_features: 若您想要在展示用的決策中投票，或為您的組織開始免費試用，請點擊「登入」。
     click_button_to_start_demo: 歡迎！若要嘗試投票和其他功能，請按一下開始示範。
     welcome_to_your_demo: 這是您自己的展示用群組！
     try_voting_to_see_it_work: 嘗試對提案進行投票，以了解 Loomio 如何運作。
@@ -67,7 +67,7 @@ zh_TW:
     start_a_x_day_free_trial: 開始%{day}天的免費試用
     ready_to_trial: 準備好與您的組織一起使用 Loomio 了嗎？
     start_a_no_obligation_x_day_trial: 免費試用%{day}天，為您的組織建立 Loomio 群組。
-    you_can_test_it_out: '您可以邀請其他人加入，將其與您的其他工具整合，並試試看做出一些決策。'
+    you_can_test_it_out: 您可以邀請其他人加入，將其與您的其他工具整合，並試試看做出一些決策。
     demo_created: 示範用群組已建立，只為您！
     start_demo: 試用範例
     view_demo: 檢視展示
@@ -556,6 +556,7 @@ zh_TW:
     unread_discussions_count: 未讀討論 (%{count})
     new_group: 新組
     new_subgroup: 新小組
+    find_a_group: 找個小組
   strand_nav:
     newest: 最新
     oldest: 最舊
@@ -1340,6 +1341,9 @@ zh_TW:
     allow_polls_without_discussions: 允許無討論投票
     allow_polls_without_discussions_help: 防止人們在未先開始討論的情況下發起投票。
     aria_label: 小組形式
+    list_in_the_groups_directory: 是否已列入群組目錄？
+    list_in_directory_yes: 是的 · 在「尋找群組」頁面上顯示此群組
+    list_in_directory_no: 不，不應邀請他人或提供連結讓他們找到該群組。
   group_export_modal:
     title: 匯出群組資料
     body: |
@@ -1575,8 +1579,8 @@ zh_TW:
     current_polls: 目前投票
     recent_threads: 最近的討論串
     no_groups:
-      show_all: 歡迎！您還不是任何群組的成員。<a href="/explore">瀏覽公開群組</a>或<a href="/g/new">啟動群組</a>。
       show_muted: 您沒有任何已靜音的討論串，因為您不是任何群組的成員。
+      show_all: 歡迎！您目前還不是任何群組的成員。
     no_threads:
       show_all: 您沒有任何最近的討論串
       show_proposals: 目前沒有活躍的提案。
@@ -1748,6 +1752,10 @@ zh_TW:
     newest_first: 最新的放在最前面
     biggest_first: 最大的放在最前面
     order_by: 群組排序由
+    most_members: 大多數成員
+    least_members: 最少成員
+    newest: 最新
+    oldest: 最老
   global:
     messages:
       reload: 重新整理
@@ -2695,3 +2703,5 @@ zh_TW:
     confirm_change_to_private: "%{groupName} 是一個公開群組。如果您繼續操作，本次討論將會公開顯示。"
     messages:
       success: 討論已轉移至 %{name}
+  auth:
+    oauth_cancelled: 登入已取消

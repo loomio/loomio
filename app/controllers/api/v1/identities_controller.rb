@@ -17,7 +17,7 @@ class Api::V1::IdentitiesController < Api::V1::RestfulController
   end
 
   def identity
-    @identity ||= Identities::Base.find(params[:id])
+    @identity ||= Identity.find(params[:id])
   end
 
   def api_response

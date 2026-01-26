@@ -36,7 +36,7 @@ module PrettyUrlHelper
   def polymorphic_url(model, opts = {})
     case model
     when NilClass, LoggedOutUser       then nil
-    when Group, GroupIdentity          then group_url(model.group, opts)
+    when Group                         then group_url(model.group, opts)
     when PaperTrail::Version           then polymorphic_url(model.item, opts)
     when MembershipRequest             then group_url(model.group, opts.merge(use_key: true))
     when Poll                          then discussion_poll_url(model, opts)

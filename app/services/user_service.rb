@@ -62,6 +62,14 @@ class UserService
 
   def self.update(user:, actor:, params:)
     actor.ability.authorize! :update, user
+    
+    # Remove restricted fields if SSO is forcing user attrs
+    if ENV['LOOMIO_SSO_FORCE_USER_ATTRS']
+      params.delete(:name)
+      params.delete(:email)
+      params.delete(:username)
+    end
+    
     user.assign_attributes_and_files(params)
     return false unless user.valid?
     user.save!
