@@ -17,23 +17,21 @@ module GroupPrivacy
 
   # this method's a bit chunky. New class?
   def group_privacy=(term)
+    self.listed_in_explore = false if is_subgroup?
+
     case term
     when 'open'
       self.is_visible_to_public = true
       self.discussion_privacy_options = 'public_only'
-      self.listed_in_explore = true
       unless %w[approval request invitation].include?(self.membership_granted_upon)
         self.membership_granted_upon = 'approval'
       end
     when 'closed'
       self.is_visible_to_public = true
-      self.membership_granted_upon = 'approval'
-      self.listed_in_explore = false
       unless %w[private_only public_or_private].include?(self.discussion_privacy_options)
         self.discussion_privacy_options = 'private_only'
       end
 
-      # closed subgroup of hidden parent means parent members can seeee it!
       if is_subgroup_of_hidden_parent?
         self.is_visible_to_parent_members = true
         self.is_visible_to_public = false

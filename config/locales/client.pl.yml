@@ -555,6 +555,7 @@ pl:
     unread_discussions_count: Nieprzeczytane dyskusje (%{count})
     new_group: Nowa grupa
     new_subgroup: Nowa podgrupa
+    find_a_group: Znajdź grupę
   strand_nav:
     newest: Najnowsze
     oldest: 'Od najstarszych '
@@ -1337,6 +1338,9 @@ pl:
     allow_polls_without_discussions: Zezwalaj na ankiety bez dyskusji
     allow_polls_without_discussions_help: Zapobiegaj rozpoczynaniu ankiet bez wcześniejszego rozpoczęcia dyskusji.
     aria_label: Formularz grupowy
+    list_in_the_groups_directory: Umieścić w katalogu grup?
+    list_in_directory_yes: Tak · pokaż tę grupę na stronie „Znajdź grupę”
+    list_in_directory_no: Nie · należy zapraszać ludzi lub podawać im link umożliwiający znalezienie grupy
   group_export_modal:
     title: Eksportuj dane grupy
     body: |
@@ -1572,8 +1576,8 @@ pl:
     current_polls: Aktualne ankiety
     recent_threads: Najnowsze wątki
     no_groups:
-      show_all: Witamy! Nie jesteś jeszcze członkiem żadnej grupy. <a href="/explore">Przeglądaj grupy publiczne</a> lub <a href="/g/new">Utwórz grupę</a>.
       show_muted: Nie masz wyciszonych wątków, ponieważ nie jesteś członkiem żadnej grupy.
+      show_all: Witaj! Nie jesteś jeszcze członkiem żadnej grupy.
     no_threads:
       show_all: Nie masz żadnych nowych wątków.
       show_proposals: 'Brak aktywnych propozycji '
@@ -1745,6 +1749,10 @@ pl:
     newest_first: Od najnowszych
     biggest_first: Od najaktywniejszych
     order_by: Sortuj grupy według
+    most_members: Większość członków
+    least_members: Najmniej członków
+    newest: Najnowsze
+    oldest: Najstarszy
   global:
     messages:
       reload: Załaduj ponownie
@@ -2694,3 +2702,5 @@ pl:
     confirm_change_to_private: "%{groupName} to grupa otwarta. Jeśli przejdziesz dalej, ta dyskusja stanie się publiczna."
     messages:
       success: Dyskusja przeniesiona do %{name}
+  auth:
+    oauth_cancelled: Logowanie zostało anulowane

@@ -553,6 +553,7 @@ hu:
     unread_discussions_count: Olvasatlan beszélgetések (%{count})
     new_group: Új csoport
     new_subgroup: Új alcsoport
+    find_a_group: Csoport keresése
   strand_nav:
     newest: Legújabb
     oldest: Legrégebbi
@@ -1333,6 +1334,9 @@ hu:
     allow_polls_without_discussions: Szavazások engedélyezése megbeszélés nélkül
     allow_polls_without_discussions_help: Engedélyezze az önálló szavazásokat (nem ajánlott). Vita nélkül az emberek nem tudnak kérdéseket feltenni vagy hatékonyan konszenzust kialakítani.
     aria_label: Csoportos űrlap
+    list_in_the_groups_directory: Felsorolás a csoportok könyvtárában?
+    list_in_directory_yes: Igen · jelenítse meg ezt a csoportot a „Csoport keresése” oldalon
+    list_in_directory_no: Nem · Az embereket nem szabad meghívni, és nem szabad linket adni nekik a csoport megtalálásához
   group_export_modal:
     title: Csoport adatok letöltése
     body: <p>A csoport adatainak másolatát bármikor letöltheti. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Tudj meg többet.</a></p><p> A kitöltése a csoport méretétől függően néhány percet vesz igénybe. Ha készen áll, e-mailben kap egy linket a fájl letöltéséhez.</p>
@@ -1560,8 +1564,8 @@ hu:
     current_polls: Aktuális szavazások
     recent_threads: Új témák
     no_groups:
-      show_all: Üdvözöljük! Még nem tagja egyetlen csoportnak sem. <a href="/explore">Böngészd a nyilvános csoportokat</a> vagy <a href="/g/new">Indítsd egy csoportot</a>.
       show_muted: Nincs elnémított témája, mert nem tagja egyetlen csoportnak sem.
+      show_all: Üdvözlünk! Még nem tagja egyetlen csoportnak sem.
     no_threads:
       show_all: Nincs legutóbbi témája.
       show_proposals: Jelenleg nincs aktív javaslat.
@@ -1727,6 +1731,10 @@ hu:
     newest_first: Először a legújabb
     biggest_first: Először a legnagyobb
     order_by: Csoportok rendezése szerint
+    most_members: A legtöbb tag
+    least_members: Legkevesebb tag
+    newest: Legújabb
+    oldest: Legidősebb
   global:
     messages:
       reload: Reload
@@ -2672,3 +2680,5 @@ hu:
     confirm_change_to_private: A %{groupName} egy nyílt csoport. Ha folytatod, ez a beszélgetés nyilvános lesz.
     messages:
       success: 'Vita áthelyezve ide: %{name}'
+  auth:
+    oauth_cancelled: Bejelentkezés megszakítva

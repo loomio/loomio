@@ -27,8 +27,18 @@ class Api::V1::GroupsController < Api::V1::RestfulController
         collection = GroupQuery.visible_to(user: current_user, show_public: true).where(id: ids)
       end
     else
-      order_attributes = ['created_at', 'memberships_count']
-      order = (order_attributes.include? params[:order])? "groups.#{params[:order]} DESC" : 'groups.memberships_count DESC'
+      order = case params[:order]
+              when 'memberships_count'
+                'groups.memberships_count DESC'
+              when 'memberships_count_asc'
+                'groups.memberships_count ASC'
+              when 'created_at'
+                'groups.created_at DESC'
+              when 'created_at_asc'
+                'groups.created_at ASC'
+              else
+                'groups.memberships_count DESC'
+              end
       instantiate_collection { |collection| collection.search_for(params[:q]).order(order) }
     end
     respond_with_collection

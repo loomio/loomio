@@ -551,6 +551,7 @@ ro:
     unread_discussions_count: Discuții necitite (%{count})
     new_group: Grup nou
     new_subgroup: Subgrup nou
+    find_a_group: Găsește un grup
   strand_nav:
     newest: Cel mai nou
     oldest: Cel mai vechi
@@ -1329,6 +1330,9 @@ ro:
     allow_polls_without_discussions: Permite sondaje fără discuție
     allow_polls_without_discussions_help: Împiedicați oamenii să înceapă sondaje fără a începe mai întâi o discuție.
     aria_label: Formular de grup
+    list_in_the_groups_directory: Listă în directorul de grupuri?
+    list_in_directory_yes: Da · afișează acest grup pe pagina „găsește un grup”
+    list_in_directory_no: Nicio persoană nu ar trebui invitată sau să primească un link pentru a găsi grupul
   group_export_modal:
     title: Exportați datele grupului
     body: <p>Puteți descărca oricând o copie a datelor grupului dvs. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Află mai multe.</a></p><p> Este nevoie de câteva minute pentru a finaliza, în funcție de dimensiunea grupului dvs. Când este gata, veți primi un e-mail cu un link pentru a descărca fișierul.</p>
@@ -1556,8 +1560,8 @@ ro:
     current_polls: Sondajele curente
     recent_threads: Conversatii recente
     no_groups:
-      show_all: Bine ati venit! Încă nu sunteți membru al niciunui grup. <a href="/explore">Răsfoiți grupuri publice</a> sau <a href="/g/new">începeți un grup</a> .
       show_muted: Nu aveți subiecte dezactivate pentru că nu sunteți membru al niciunui grup.
+      show_all: Bun venit! Nu ești încă membru al niciunui grup.
     no_threads:
       show_all: Nu ai nici o discutie recenta.
       show_proposals: Nu există propuneri active în prezent.
@@ -1720,6 +1724,10 @@ ro:
     newest_first: Cel mai nou primul
     biggest_first: Cel mai mare primul
     order_by: Ordonați grupurile după
+    most_members: Majoritatea membrilor
+    least_members: Cei mai puțini membri
+    newest: Cele mai noi
+    oldest: Cel mai vechi
   global:
     messages:
       reload: Reîncărcați
@@ -2665,3 +2673,5 @@ ro:
     confirm_change_to_private: "%{groupName} este un grup deschis. Dacă continuați, această discuție va fi publică."
     messages:
       success: Discuția a fost mutată la %{name}
+  auth:
+    oauth_cancelled: Conectarea a fost anulată

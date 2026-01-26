@@ -20,11 +20,7 @@ export default {
       canLoadMoreGroups: true,
       query: "",
       searching: true,
-      order: null,
-      orderOptions: [
-        {name: this.$t('explore_page.newest_first'), val: "created_at"},
-        {name: this.$t('explore_page.biggest_first'), val: "memberships_count"}
-      ]
+      order: null
     };
   },
   created() {
@@ -35,7 +31,7 @@ export default {
     }
   },
   mounted() {
-    EventBus.$emit('currentComponent', { titleKey: 'explore_page.header', page: 'explorePage'});
+    EventBus.$emit('currentComponent', { titleKey: 'sidebar.find_a_group', page: 'explorePage'});
     this.search();
   },
 
@@ -76,13 +72,18 @@ export default {
       const parser = new DOMParser();
       const doc = parser.parseFromString(description, 'text/html');
       return truncate(doc.body.textContent, {length: 100});
-    },
-
-    handleOrderChange(val) {
-      this.$router.replace(this.mergeQuery({ order: val }));
     }
   },
   computed: {
+    orderOptions() {
+      return [
+        {name: this.$t('explore_page.most_members'), val: "memberships_count"},
+        {name: this.$t('explore_page.least_members'), val: "memberships_count_asc"},
+        {name: this.$t('explore_page.newest'), val: "created_at"},
+        {name: this.$t('explore_page.oldest'), val: "created_at_asc"}
+      ];
+    },
+
     showMessage() {
       return !this.searching && (this.query.length > 0) && (this.groups().length > 0);
     },
@@ -109,11 +110,15 @@ export default {
       this.searching = true;
       return this.search();
     },
+    'order'() {
+      this.$router.replace(this.mergeQuery({ order: this.order }));
+      this.searching = true;
+      return this.search();
+    },
     '$route.query.order': {
       immediate: true,
       handler() {
         this.order = this.$route.query.order;
-        return this.search();
       }
     }
   }
@@ -125,7 +130,7 @@ v-main
   v-container.explore-page.max-width-1024.px-0.px-sm-3
     //- h1.text-h5(tabindex="-1" v-t="'explore_page.header'")
     v-text-field(v-model="query" :placeholder="$t('explore_page.search_placeholder')" id="search-field" :append-icon="mdiMagnify")
-    v-select(@change="handleOrderChange" :items="orderOptions" item-value="val" item-title="name" :placeholder="$t('explore_page.order_by')" :value="order")
+    v-select(:items="orderOptions" item-value="val" item-title="name" :label="$t('explore_page.order_by')" v-model="order")
     loading(:until="!searching")
     .explore-page__no-results-found(v-show='noResultsFound' v-html="$t('explore_page.no_results_found')")
     .explore-page__search-results(v-show='showMessage' v-html="$t(searchResultsMessage, {resultCount: resultsCount, searchTerm: query})")

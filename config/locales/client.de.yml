@@ -561,6 +561,7 @@ de:
     unread_discussions_count: Ungelesene Diskussionen (%{count})
     new_group: Neue Gruppe
     new_subgroup: Neue Untergruppe
+    find_a_group: Finde eine Gruppe
   strand_nav:
     newest: Neueste
     oldest: 'Älteste '
@@ -1345,6 +1346,9 @@ de:
     allow_polls_without_discussions: Umfragen ohne Diskussion zulassen
     allow_polls_without_discussions_help: Verhindert, dass Personen Umfragen starten, ohne vorher eine Diskussion zu beginnen.
     aria_label: Gruppenbildung
+    list_in_the_groups_directory: Eintrag im Gruppenverzeichnis?
+    list_in_directory_yes: Ja · Diese Gruppe auf der Seite „Gruppe finden“ anzeigen
+    list_in_directory_no: Nein · Personen sollten eingeladen oder mit einem Link zur Gruppe versorgt werden.
   group_export_modal:
     title: Gruppendaten exportieren
     body: |
@@ -1580,8 +1584,8 @@ de:
     current_polls: Aktuelle Umfragen
     recent_threads: Aktuelle Diskussionen
     no_groups:
-      show_all: Willkommen! Du bist noch kein Mitglied dieser Gruppe. <a href="/explore">Siehe öffentliche Gruppen</a>oder<a href="/g/new">Eröffne eine Gruppe
       show_muted: Du hast keine stummgeschalteten Diskussionen, weil du kein Mitglied einer Gruppe bist.
+      show_all: Willkommen! Sie sind noch in keiner Gruppe Mitglied.
     no_threads:
       show_all: Du hast keine aktuellen Threads.
       show_proposals: Derzeit sind keine Vorschläge aktiv.
@@ -1753,6 +1757,10 @@ de:
     newest_first: Neueste zuerst
     biggest_first: Größte zuerst
     order_by: Sortiere Gruppen nach
+    most_members: Die meisten Mitglieder
+    least_members: Mindestmitglieder
+    newest: Neueste
+    oldest: Älteste
   global:
     messages:
       reload: Reload
@@ -2702,3 +2710,5 @@ de:
     confirm_change_to_private: "%{groupName} ist eine offene Gruppe. Wenn Sie fortfahren, wird diese Diskussion öffentlich sein."
     messages:
       success: Die Diskussion wurde nach %{name} verlegt.
+  auth:
+    oauth_cancelled: Anmeldung abgebrochen
