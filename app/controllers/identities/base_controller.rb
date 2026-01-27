@@ -78,6 +78,10 @@ class Identities::BaseController < ApplicationController
     { client.client_key_name => client.key, redirect_uri: redirect_uri, scope: oauth_scope }
   end
 
+  def client
+    Clients::Oauth.instance
+  end
+
   def oauth_client_id_field
     :client_id
   end
