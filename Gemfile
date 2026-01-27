@@ -49,7 +49,6 @@ gem 'icalendar'
 gem 'rack-attack'
 gem 'bootsnap', require: false
 gem 'redis-objects'
-gem 'hiredis'
 gem 'connection_pool', '~> 2.4'
 gem 'ruby-saml'
 gem 'google-cloud-translate'

@@ -373,7 +373,6 @@ GEM
       actionpack (>= 7.0)
       activesupport (>= 7.0)
     hashdiff (1.2.1)
-    hiredis (0.6.3)
     htmlentities (4.3.4)
     http_accept_language (2.1.1)
     httparty (0.24.2)
@@ -821,7 +820,6 @@ DEPENDENCIES
   google-cloud-translate
   gravtastic
   haml-rails (~> 3.0.0)
-  hiredis
   http_accept_language
   httparty (~> 0.24.2)
   i18n-timezones
