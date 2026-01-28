@@ -128,9 +128,37 @@ describe Api::V1::GroupsController do
       end
     end
 
+    context 'signed in non-member' do
+      let(:non_member) { create :user }
+      let(:closed_group) { create :group, group_privacy: 'closed' }
+      let!(:tag) { create :tag, group_id: closed_group.id, name: 'test-tag', color: '#abc' }
+
+      before do
+        sign_in non_member
+      end
+
+      it 'does not return group tags if group is closed' do
+        get :show, params: { id: closed_group.key }, format: :json
+        json = JSON.parse(response.body)
+        expect(response.status).to eq 200
+        group_ids = json['groups'].map { |g| g['id'] }
+        expect(group_ids).to include closed_group.id
+        expect(json['tags']).to be_nil
+      end
+    end
+
     context 'logged out' do
       let(:private_group) { create(:group, is_visible_to_public: false) }
       let(:public_group) { create :group, creator: user, is_visible_to_public: true }
+
+      it 'does not return group tags if group is closed' do
+        get :show, params: { id: public_group.key }, format: :json
+        json = JSON.parse(response.body)
+        expect(response.status).to eq 200
+        group_ids = json['groups'].map { |g| g['id'] }
+        expect(group_ids).to include public_group.id
+      end
+
       it 'returns public groups if the user is logged out' do
         get :show, params: { id: public_group.key }, format: :json
         json = JSON.parse(response.body)
