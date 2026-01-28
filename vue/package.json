@@ -47,7 +47,7 @@
     "@tiptap/pm": "^3.16.0",
     "@tiptap/suggestion": "^3.16.0",
     "@tiptap/vue-3": "^3.16.0",
-    "@sentry/browser": "^10.34.0",
+    "@sentry/browser": "^10.37.0",
     "@sentry/vue": "^10.36.0",
     "activestorage": "^5.2.8",
     "chart.js": "^3.9.1",
