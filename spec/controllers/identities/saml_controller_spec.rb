@@ -198,6 +198,73 @@ describe Identities::SamlController do
       end
     end
 
+    context 'sso auth success, email login disabled, user exists but identity is missing (regression test)' do
+      let!(:existing_user) { create :user, email: 'user@example.com', name: 'Original Name', email_verified: true }
+
+      before do
+        stub_const('ENV', ENV.to_hash.merge('FEATURES_DISABLE_EMAIL_LOGIN' => 'true'))
+      end
+
+      it 'links existing user to new identity without attempting to create duplicate user' do
+        session[:back_to] = '/dashboard'
+        
+        # This should NOT raise ActiveRecord::RecordInvalid error
+        expect {
+          post :create, params: { SAMLResponse: saml_response_xml }
+        }.to change { Identity.where(identity_type: 'saml').count }.by(1)
+         .and change { User.count }.by(0)
+
+        identity = Identity.where(identity_type: 'saml').last
+        expect(identity.user).to eq existing_user
+        expect(identity.uid).to eq 'user@example.com'
+        expect(identity.email).to eq 'user@example.com'
+        
+        expect(controller.current_user).to eq existing_user
+        expect(response).to redirect_to '/dashboard'
+        expect(flash[:notice]).to eq I18n.t('devise.sessions.signed_in')
+      end
+    end
+
+    context 'sso auth success, email login disabled, user exists with different email (uid as source of truth)' do
+      let!(:existing_user) { create :user, email: 'old@example.com', name: 'Original Name', email_verified: true }
+      let!(:existing_identity) do
+        Identity.create!(
+          identity_type: 'saml',
+          uid: 'user@example.com',
+          email: 'old@example.com',
+          name: 'Original Name',
+          access_token: nil,
+          user: existing_user
+        )
+      end
+
+      before do
+        stub_const('ENV', ENV.to_hash.merge('FEATURES_DISABLE_EMAIL_LOGIN' => 'true', 'LOOMIO_SSO_FORCE_USER_ATTRS' => 'true'))
+      end
+
+      it 'updates identity with new email from SSO and syncs to user' do
+        session[:back_to] = '/dashboard'
+        
+        expect {
+          post :create, params: { SAMLResponse: saml_response_xml }
+        }.to change { Identity.where(identity_type: 'saml').count }.by(0)
+         .and change { User.count }.by(0)
+
+        existing_identity.reload
+        expect(existing_identity.email).to eq 'user@example.com'
+        expect(existing_identity.name).to eq 'SAML User'
+        expect(existing_identity.user).to eq existing_user
+        
+        # User attributes should be synced from SSO
+        existing_user.reload
+        expect(existing_user.email).to eq 'user@example.com'
+        expect(existing_user.name).to eq 'SAML User'
+        
+        expect(controller.current_user).to eq existing_user
+        expect(response).to redirect_to '/dashboard'
+      end
+    end
+
     context 'sso auth success, identity already exists with same uid' do
       let!(:existing_user) { create :user, email: 'existing@example.com' }
       let!(:existing_identity) do
