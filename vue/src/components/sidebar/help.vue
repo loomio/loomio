@@ -12,7 +12,6 @@ export default {
 
   computed: {
     canStartDemo() { return AppConfig.features.app.demos; },
-    canViewPublicGroups() { return AbilityService.canViewPublicGroups(); },
     showExploreGroups() { return AppConfig.features.app.explore_public_groups; },
     showHelp() { return AppConfig.features.app.help_link; },
     helpURL() {
