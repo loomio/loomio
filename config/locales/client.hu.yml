@@ -1611,6 +1611,7 @@ hu:
     view_recent: Megtekinted az összes legutóbbi beszélgetést?
     discussion_marked_as_read: Vita megjelölve olvasottként
     discussion_marked_as_unread: A beszélgetés olvasatlanként van megjelölve
+    polls_to_vote_on_count: Szavazandó szavazások (%{count})
   threads_page:
     no_direct_threads: Nincsenek közvetlen szálaid
     no_invite_only_threads: Nincsenek meghívásos beszélgetéseid

@@ -1607,6 +1607,7 @@ ro:
     view_recent: Vizualizați toate discuțiile recente?
     discussion_marked_as_read: Discuție marcată ca citită
     discussion_marked_as_unread: Discuție marcată ca necitită
+    polls_to_vote_on_count: Sondaje pentru care se poate vota (%{count})
   threads_page:
     no_direct_threads: Nu ai fire directe
     no_invite_only_threads: Nu aveți subiecte de discuție doar pe invitație

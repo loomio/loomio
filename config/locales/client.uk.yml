@@ -1626,6 +1626,7 @@ uk:
     view_recent: Переглянути всі останні обговорення?
     discussion_marked_as_read: Обговорення позначено як прочитане
     discussion_marked_as_unread: Обговорення позначено як непрочитане
+    polls_to_vote_on_count: Опитування для голосування (%{count})
   threads_page:
     no_direct_threads: У вас нема особистих тем
     no_invite_only_threads: У вас немає тем лише для запрошень

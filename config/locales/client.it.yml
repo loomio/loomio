@@ -1635,6 +1635,7 @@ it:
     view_recent: Visualizzare tutte le discussioni recenti?
     discussion_marked_as_read: Discussione contrassegnata come letta
     discussion_marked_as_unread: Discussione contrassegnata come non letta
+    polls_to_vote_on_count: Sondaggi su cui votare (%{count})
   threads_page:
     no_direct_threads: Non hai discussioni dirette
     no_invite_only_threads: Non hai discussioni riservate agli inviti

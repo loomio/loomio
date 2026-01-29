@@ -1607,6 +1607,7 @@ ru:
     view_recent: Просмотреть все недавние обсуждения?
     discussion_marked_as_read: Обсуждение отмечено как прочитанное
     discussion_marked_as_unread: Обсуждение отмечено как непрочитанное
+    polls_to_vote_on_count: Опросы, по которым предстоит голосовать (%{count})
   threads_page:
     no_direct_threads: У вас нет прямых тем
     no_invite_only_threads: У вас нет тем, доступных только по приглашению

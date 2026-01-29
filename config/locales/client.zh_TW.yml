@@ -1626,6 +1626,7 @@ zh_TW:
     view_recent: 查看所有近期討論？
     discussion_marked_as_read: 已讀
     discussion_marked_as_unread: 討論內容標記為未讀
+    polls_to_vote_on_count: 待投票的民調 (%{count})
   threads_page:
     no_direct_threads: 您沒有直接討論串
     no_invite_only_threads: 您沒有僅限受邀者參與的討論串。

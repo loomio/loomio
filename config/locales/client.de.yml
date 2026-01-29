@@ -1631,6 +1631,7 @@ de:
     view_recent: Alle aktuellen Diskussionen ansehen?
     discussion_marked_as_read: Diskussion als gelesen markiert
     discussion_marked_as_unread: Diskussion als ungelesen markiert
+    polls_to_vote_on_count: Umfragen zur Abstimmung (%{count})
   threads_page:
     no_direct_threads: Du hast keine direkten Diskussionen
     no_invite_only_threads: Es gibt keine Threads, die nur auf Einladung zugänglich sind.

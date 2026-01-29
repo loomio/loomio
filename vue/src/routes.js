@@ -3,6 +3,7 @@ import GroupPage from './components/group/page.vue';
 import StrandPage from './components/strand/page';
 
 const InboxPage = wrapAsyncLoader(() => import('./components/inbox/page'));
+const PollsToVoteOnPage = wrapAsyncLoader(() => import('./components/dashboard/polls_to_vote_on_page'));
 const ExplorePage = wrapAsyncLoader(() => import('./components/explore/page'));
 const ProfilePage = wrapAsyncLoader(() => import('./components/profile/page'));
 const PollShowPage = wrapAsyncLoader(() => import('./components/poll/show_page'));
@@ -65,6 +66,7 @@ const router = createRouter({
     {path: '/tasks', component: TasksPage},
     {path: '/report', component: ReportPage},
     {path: '/dashboard', component: DashboardPage},
+    {path: '/dashboard/polls_to_vote_on', component: PollsToVoteOnPage},
     {path: '/dashboard/:filter', component: DashboardPage},
     {path: '/threads/direct', component: ThreadsPage},
     {path: '/inbox', component: InboxPage },

@@ -1644,6 +1644,7 @@ pt_BR:
     view_recent: Ver todas as discussões recentes?
     discussion_marked_as_read: Discussão marcada como lida
     discussion_marked_as_unread: Discussão marcada como não lida
+    polls_to_vote_on_count: Enquetes para votar (%{count})
   threads_page:
     no_direct_threads: Você não tem tópicos diretos
     no_invite_only_threads: Você não tem tópicos somente para convidados.
