@@ -552,6 +552,7 @@ fi:
     new_group: Uusi ryhmä
     new_subgroup: Uusi alaryhmä
     find_a_group: Etsi ryhmä
+    direct_discussions: Suorat keskustelut
   strand_nav:
     newest: Uusin
     oldest: Vanhin
@@ -835,6 +836,8 @@ fi:
     discussion_updated: Keskustelu päivitetty
     discussion_created: Keskustelu luotu
     discussion_started: Keskustelu aloitettu
+    none_direct_discussion: Ei mitään (suora keskustelu)
+    direct_discussion: Suora keskustelu
   announcement:
     send_discussion: Lähetä lanka
     send_group: Kutsu ihmisiä %{name}
@@ -1640,6 +1643,7 @@ fi:
     volume:
       mute_message: Keskustelu mykistetty
       unmute_message: Keskustelun mykistys poistettu
+    direct: Suoraan
   discussion_last_seen_by:
     title: Nähnyt
     no_one: Kukaan ei ole vielä nähnyt tätä

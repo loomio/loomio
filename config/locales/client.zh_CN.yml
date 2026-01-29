@@ -561,6 +561,7 @@ zh_CN:
       groups_list: 群组
       user_list: 用户操作
     find_a_group: 找个小组
+    direct_discussions: 直接讨论
   strand_nav:
     jump_to: 跳转至
     timeline: 时间线
@@ -842,6 +843,8 @@ zh_CN:
     privacy_organisation: 该帖子将对 %{parent} 的成员和 %{group} 的成员可见。
     fork_notice: 将创建一个新主题，其中包含来自 %{title} 的 %{count} 个项目。
     notify_group: 通知组
+    none_direct_discussion: 无（直接讨论）
+    direct_discussion: 直接讨论
   announcement:
     send_discussion: 发送帖子
     send_group: 邀请人们加入 %{name}
@@ -1653,6 +1656,7 @@ zh_CN:
     closed:
       reopened: 讨论重新开启。
       closed: 讨论已结束
+    direct: 直接的
   discussion_last_seen_by:
     title: 被看到
     no_one: 目前还没有人看到这个。

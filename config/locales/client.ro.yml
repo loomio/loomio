@@ -552,6 +552,7 @@ ro:
     new_group: Grup nou
     new_subgroup: Subgrup nou
     find_a_group: Găsește un grup
+    direct_discussions: Discuții directe
   strand_nav:
     newest: Cel mai nou
     oldest: Cel mai vechi
@@ -835,6 +836,8 @@ ro:
     discussion_updated: Discuția a fost actualizată
     discussion_created: Discuție creată
     discussion_started: Discuția a început
+    none_direct_discussion: Niciunul (discuție directă)
+    direct_discussion: Discuție directă
   announcement:
     send_discussion: Trimiteți firul
     send_group: Invită persoane la %{name}
@@ -1640,6 +1643,7 @@ ro:
     volume:
       mute_message: Discuție dezactivată
       unmute_message: Discuție activată
+    direct: Direct
   discussion_last_seen_by:
     title: Văzut de
     no_one: Nimeni nu a văzut asta încă

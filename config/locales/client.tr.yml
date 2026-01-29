@@ -552,6 +552,7 @@ tr:
     new_group: Yeni grup
     new_subgroup: Yeni alt grup
     find_a_group: Bir grup bulun
+    direct_discussions: Doğrudan görüşmeler
   strand_nav:
     newest: En yeni
     oldest: En eski
@@ -835,6 +836,8 @@ tr:
     discussion_updated: Tartışma güncellendi
     discussion_created: Tartışma yaratıldı
     discussion_started: Tartışma başladı
+    none_direct_discussion: Yok (doğrudan görüşme)
+    direct_discussion: Doğrudan görüşme
   announcement:
     send_discussion: Konuyu gönder
     send_group: İnsanları %{name}'ye davet edin
@@ -1640,6 +1643,7 @@ tr:
     volume:
       mute_message: Tartışma sessize alındı
       unmute_message: Tartışma sessize alınmadı
+    direct: Doğrudan
   discussion_last_seen_by:
     title: Tarafından görüldü
     no_one: Bunu henüz kimse görmedi

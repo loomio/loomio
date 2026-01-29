@@ -552,6 +552,7 @@ el:
     new_group: Νέα ομάδα
     new_subgroup: Νέα υποομάδα
     find_a_group: Βρείτε μια ομάδα
+    direct_discussions: Άμεσες συζητήσεις
   strand_nav:
     newest: Νεότερο
     oldest: Το πιο παλιό
@@ -835,6 +836,8 @@ el:
     discussion_updated: Η συζήτηση ενημερώθηκε
     discussion_created: Συζήτηση που δημιουργήθηκε
     discussion_started: Η συζήτηση ξεκίνησε
+    none_direct_discussion: Καμία (άμεση συζήτηση)
+    direct_discussion: Άμεση συζήτηση
   announcement:
     send_discussion: Αποστολή νήματος
     send_group: Προσκαλέστε άτομα στο %{name}
@@ -1640,6 +1643,7 @@ el:
     volume:
       mute_message: Η συζήτηση τέθηκε σε σίγαση
       unmute_message: Η συζήτηση καταργήθηκε από τη σίγαση
+    direct: Απευθείας
   discussion_last_seen_by:
     title: Θεάθηκε από
     no_one: Κανείς δεν το έχει δει ακόμα αυτό

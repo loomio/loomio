@@ -554,6 +554,7 @@ hu:
     new_group: Új csoport
     new_subgroup: Új alcsoport
     find_a_group: Csoport keresése
+    direct_discussions: Közvetlen megbeszélések
   strand_nav:
     newest: Legújabb
     oldest: Legrégebbi
@@ -837,6 +838,8 @@ hu:
     discussion_updated: Vita frissítve
     discussion_created: Beszélgetés létrehozva
     discussion_started: Megbeszélés elkezdődött
+    none_direct_discussion: Nincs (közvetlen megbeszélés)
+    direct_discussion: Közvetlen beszélgetés
   announcement:
     send_discussion: Téma küldése
     send_group: 'Meghívás a következőhöz: %{name}'
@@ -1644,6 +1647,7 @@ hu:
     volume:
       mute_message: Beszélgetés némítva
       unmute_message: Beszélgetés némítása feloldva
+    direct: Közvetlen
   discussion_last_seen_by:
     title: Látta
     no_one: Még senki sem látta

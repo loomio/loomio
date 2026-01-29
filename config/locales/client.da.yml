@@ -552,6 +552,7 @@ da:
     new_group: Ny gruppe
     new_subgroup: Ny undergruppe
     find_a_group: Find en gruppe
+    direct_discussions: Direkte diskussioner
   strand_nav:
     newest: Nyeste
     oldest: Ældste
@@ -835,6 +836,8 @@ da:
     discussion_updated: Diskussionen er opdateret
     discussion_created: Diskussion oprettet
     discussion_started: Diskussionen er startet
+    none_direct_discussion: Ingen (direkte diskussion)
+    direct_discussion: Direkte diskussion
   announcement:
     send_discussion: Send tråd
     send_group: Inviter folk til %{name}
@@ -1640,6 +1643,7 @@ da:
     volume:
       mute_message: Diskussionen er slået fra
       unmute_message: Diskussionen er slået til
+    direct: Direkte
   discussion_last_seen_by:
     title: Set af
     no_one: Ingen har set dette endnu

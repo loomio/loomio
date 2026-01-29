@@ -556,6 +556,7 @@ nl_NL:
     new_group: Nieuwe groep
     new_subgroup: Nieuwe subgroep
     find_a_group: Zoek een groep
+    direct_discussions: Directe discussies
   strand_nav:
     newest: Nieuwste
     oldest: Oudste
@@ -839,6 +840,8 @@ nl_NL:
     discussion_updated: Discussie bijgewerkt
     discussion_created: Discussie gecreëerd
     discussion_started: Discussie gestart
+    none_direct_discussion: Geen (directe discussie)
+    direct_discussion: Directe discussie
   announcement:
     send_discussion: Bord verzenden
     send_group: Nodig mensen uit voor %{name}
@@ -1660,6 +1663,7 @@ nl_NL:
     volume:
       mute_message: Discussie gedempt
       unmute_message: Discussie gedempt
+    direct: Direct
   discussion_last_seen_by:
     title: Gezien door
     no_one: Nog niemand heeft dit gezien

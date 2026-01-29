@@ -557,6 +557,7 @@ uk:
     new_group: Нова група
     new_subgroup: Нова підгрупа
     find_a_group: Знайти групу
+    direct_discussions: Прямі обговорення
   strand_nav:
     newest: Найновіші
     oldest: Найстарші
@@ -840,6 +841,8 @@ uk:
     discussion_updated: Обговорення оновлено
     discussion_created: Обговорення створено
     discussion_started: Обговорення розпочато
+    none_direct_discussion: Жодного (безпосереднє обговорення)
+    direct_discussion: Пряме обговорення
   announcement:
     send_discussion: Надіслати тему
     send_group: Запросити людей до %{name}
@@ -1663,6 +1666,7 @@ uk:
     volume:
       mute_message: Обговорення вимкнено
       unmute_message: Обговорення скасовано
+    direct: Прямий
   discussion_last_seen_by:
     title: Переглянуто
     no_one: Ще ніхто не переглянув

@@ -556,6 +556,7 @@ ca:
     new_group: Grup nou
     new_subgroup: Nou subgrup
     find_a_group: Troba un grup
+    direct_discussions: Discussions directes
   strand_nav:
     newest: Més recent
     oldest: Més antic
@@ -839,6 +840,8 @@ ca:
     discussion_updated: Discussió actualitzada
     discussion_created: Discussió creada
     discussion_started: Discussió iniciada
+    none_direct_discussion: Cap (discussió directa)
+    direct_discussion: Discussió directa
   announcement:
     send_discussion: Envia fil
     send_group: Convida gent a %{name}
@@ -1662,6 +1665,7 @@ ca:
     volume:
       mute_message: Discussió silenciada
       unmute_message: Discussió activada
+    direct: Directe
   discussion_last_seen_by:
     title: Vist per
     no_one: Encara no ho ha vist ningú

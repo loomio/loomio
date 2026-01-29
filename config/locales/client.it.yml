@@ -564,6 +564,7 @@ it:
     new_group: Nuovo gruppo
     new_subgroup: Nuovo sottogruppo
     find_a_group: Trova un gruppo
+    direct_discussions: Discussioni dirette
   strand_nav:
     newest: Più recente
     oldest: Maggiore
@@ -847,6 +848,8 @@ it:
     discussion_updated: Discussione aggiornata
     discussion_created: Discussione creata
     discussion_started: Discussione iniziata
+    none_direct_discussion: Nessuno (discussione diretta)
+    direct_discussion: Discussione diretta
   announcement:
     send_discussion: Invia thread
     send_group: Invita persone a %{name}
@@ -1670,6 +1673,7 @@ it:
     volume:
       mute_message: Discussione disattivata
       unmute_message: Discussione riattivata
+    direct: Diretto
   discussion_last_seen_by:
     title: Visto da
     no_one: Nessuno l'ha ancora visto
