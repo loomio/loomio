@@ -1685,8 +1685,9 @@ en:
       thismonth: This month
       older: Older than a month
   threads_page:
-    no_direct_threads: You have no direct threads
-    no_invite_only_threads: You have no invite-only threads
+    no_direct_discussions: You have no direct discussions
+    no_direct_discussions_title: You have no direct discussions
+    no_direct_discussions_helptext: Direct discussions are for contacting another user directly, without the discussion belonging to a group.
   inbox_page:
     # no_threads: Woohoo! You've read all the threads in your inbox.
     no_discussions: Woohoo! You've read all the discussions in your inbox.

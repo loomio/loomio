@@ -202,7 +202,6 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
         v-list-item-title(:class="{'text-medium-emphasis': pollsToVoteOnCount() === 0}") {{ $t('dashboard_page.polls_to_vote_on_count', {count: pollsToVoteOnCount()}) }}
       v-list-item(to="/inbox")
         v-list-item-title(:class="{'text-medium-emphasis': unreadThreadCount() === 0}") {{ $t('sidebar.unread_discussions_count', {count: unreadThreadCount()}) }}
-      v-list-item.sidebar__list-item-button--private(to="/threads/direct")
       v-list-item.sidebar__list-item-button--private(to="/dashboard/direct_discussions")
         v-list-item-title
           span(v-t="'sidebar.direct_discussions'")
