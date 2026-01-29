@@ -1,4 +1,6 @@
 class GroupsController < ApplicationController
+  before_action :require_signed_in_user_for_explore, only: [:index]
+
   def index
     @groups = Queries::ExploreGroups.new.search_for(params[:q]).order('groups.memberships_count DESC')
     @total = @groups.count
@@ -22,5 +24,11 @@ class GroupsController < ApplicationController
     respond_to do |format|
       format.html
     end
+  end
+
+  private
+
+  def require_signed_in_user_for_explore
+    require_current_user if AppConfig.app_features[:restrict_explore_to_signed_in_users]
   end
 end

@@ -10,6 +10,43 @@ describe GroupsController do
       get :index
       expect(response.status).to eq 200
     end
+
+    context 'LOOMIO_RESTRICT_EXPLORE_TO_SIGNED_IN_USERS' do
+      let(:explore_group) { create(:group, group_privacy: 'open', listed_in_explore: true) }
+
+      before do
+        explore_group.update_attribute(:memberships_count, 5)
+        explore_group.save
+      end
+
+      context 'when restriction is disabled' do
+        before do
+          allow(AppConfig).to receive(:app_features).and_return({ restrict_explore_to_signed_in_users: false })
+        end
+
+        it 'allows logged out users to access index' do
+          get :index
+          expect(response.status).to eq 200
+        end
+      end
+
+      context 'when restriction is enabled' do
+        before do
+          allow(AppConfig).to receive(:app_features).and_return({ restrict_explore_to_signed_in_users: true })
+        end
+
+        it 'prevents logged out users from accessing index' do
+          get :index
+          expect(response.status).to eq 401
+        end
+
+        it 'allows signed in users to access index' do
+          sign_in user
+          get :index
+          expect(response.status).to eq 200
+        end
+      end
+    end
   end
 
   describe 'show' do
