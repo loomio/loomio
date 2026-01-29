@@ -1630,6 +1630,9 @@ pl:
   threads_page:
     no_direct_threads: Nie masz żadnych bezpośrednich wątków
     no_invite_only_threads: Nie masz żadnych wątków dostępnych tylko na zaproszenie
+    no_direct_discussions: Nie prowadzisz żadnych bezpośrednich dyskusji
+    no_direct_discussions_title: Nie prowadzisz żadnych bezpośrednich dyskusji
+    no_direct_discussions_helptext: Dyskusje bezpośrednie służą do bezpośredniego kontaktu z innym użytkownikiem, bez konieczności prowadzenia dyskusji w ramach grupy.
   inbox_page:
     no_threads: Hura! Przeczytałeś/aś wszystkie wątki z Twojej skrzynki.
     unread_threads: Nieprzeczytane Wątki

@@ -1614,6 +1614,9 @@ sv:
   threads_page:
     no_direct_threads: Du har inga direkta trådar
     no_invite_only_threads: Du har inga trådar endast för inbjudna
+    no_direct_discussions: Du har inga direkta diskussioner
+    no_direct_discussions_title: Du har inga direkta diskussioner
+    no_direct_discussions_helptext: Direkta diskussioner är till för att kontakta en annan användare direkt, utan att diskussionen tillhör en grupp.
   inbox_page:
     no_threads: Woohoo! Du har läst alla trådar i din inkorg.
     unread_threads: Olästa trådar

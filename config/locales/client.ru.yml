@@ -1614,6 +1614,9 @@ ru:
   threads_page:
     no_direct_threads: У вас нет прямых тем
     no_invite_only_threads: У вас нет тем, доступных только по приглашению
+    no_direct_discussions: У вас нет прямых обсуждений.
+    no_direct_discussions_title: У вас нет прямых обсуждений.
+    no_direct_discussions_helptext: Прямые обсуждения предназначены для прямого контакта с другим пользователем, без привязки обсуждения к группе.
   inbox_page:
     no_threads: Уууу! Вы прочитали все темы в своем почтовом ящике.
     unread_threads: Непрочтенные темы

@@ -1630,6 +1630,9 @@ nl_NL:
   threads_page:
     no_direct_threads: Je hebt geen directe borden
     no_invite_only_threads: Je hebt geen alleen-op-uitnodiging-threads
+    no_direct_discussions: Je hebt geen directe discussies.
+    no_direct_discussions_title: Je hebt geen directe discussies.
+    no_direct_discussions_helptext: Directe gesprekken zijn bedoeld om rechtstreeks contact op te nemen met een andere gebruiker, zonder dat het gesprek onderdeel uitmaakt van een groep.
   inbox_page:
     no_threads: Woehoe! Je hebt alle borden in je postvak gelezen.
     unread_threads: Ongelezen borden

@@ -1632,6 +1632,9 @@ ca:
   threads_page:
     no_direct_threads: No teniu fils directes
     no_invite_only_threads: No tens fils només per invitació
+    no_direct_discussions: No tens converses directes
+    no_direct_discussions_title: No tens converses directes
+    no_direct_discussions_helptext: Les discussions directes serveixen per contactar directament amb un altre usuari, sense que la discussió pertanyi a un grup.
   inbox_page:
     no_threads: Heu llegit tots els fils de la vostra safata.
     unread_threads: FIls no llegits

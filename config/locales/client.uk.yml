@@ -1633,6 +1633,9 @@ uk:
   threads_page:
     no_direct_threads: У вас нема особистих тем
     no_invite_only_threads: У вас немає тем лише для запрошень
+    no_direct_discussions: У вас немає прямих обговорень
+    no_direct_discussions_title: У вас немає прямих обговорень
+    no_direct_discussions_helptext: Прямі обговорення призначені для безпосереднього зв'язку з іншим користувачем, без приналежності обговорення до групи.
   inbox_page:
     no_threads: Вау! Ви прочитали всі теми у вашій скриньці.
     unread_threads: Непрочитані теми

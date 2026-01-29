@@ -1614,6 +1614,9 @@ fi:
   threads_page:
     no_direct_threads: Sinulla ei ole suoria lankoja
     no_invite_only_threads: Sinulla ei ole kutsusta lähetettäviä keskusteluketjuja
+    no_direct_discussions: Sinulla ei ole suoria keskusteluja
+    no_direct_discussions_title: Sinulla ei ole suoria keskusteluja
+    no_direct_discussions_helptext: Suorat keskustelut on tarkoitettu yhteydenpitoon toiseen käyttäjään suoraan ilman, että keskustelu kuuluu mihinkään ryhmään.
   inbox_page:
     no_threads: Woohoo! Olet lukenut kaikki postilaatikossasi olevat viestiketjut.
     unread_threads: Lukemattomat ketjut

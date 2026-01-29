@@ -1631,6 +1631,9 @@ zh_CN:
   threads_page:
     no_direct_threads: 您没有直接帖子
     no_invite_only_threads: 您没有仅限受邀者参与的讨论串。
+    no_direct_discussions: 你们之间没有直接的讨论。
+    no_direct_discussions_title: 你们之间没有直接的讨论。
+    no_direct_discussions_helptext: 直接讨论是指直接联系其他用户，而不属于任何群组的讨论。
   inbox_page:
     no_discussions: 哇哦！您已阅读完收件箱中的所有讨论。
     unread_discussions: 未读讨论

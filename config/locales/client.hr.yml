@@ -1614,6 +1614,9 @@ hr:
   threads_page:
     no_direct_threads: Nemate izravnih niti
     no_invite_only_threads: Nemate niti samo za pozvane
+    no_direct_discussions: Nemate izravnih rasprava
+    no_direct_discussions_title: Nemate izravnih rasprava
+    no_direct_discussions_helptext: Izravne rasprave služe za izravno kontaktiranje drugog korisnika, bez da rasprava pripada grupi.
   inbox_page:
     no_threads: Juhu! Pročitali ste sve teme u svojoj pristigloj pošti.
     unread_threads: Nepročitane niti

@@ -1651,6 +1651,9 @@ fr:
   threads_page:
     no_direct_threads: Vous n'avez pas de discussion directe
     no_invite_only_threads: Vous n'avez pas de sujets accessibles uniquement sur invitation.
+    no_direct_discussions: Vous n'avez aucune discussion directe
+    no_direct_discussions_title: Vous n'avez aucune discussion directe
+    no_direct_discussions_helptext: Les discussions directes servent à contacter directement un autre utilisateur, en dehors du cadre d'un groupe.
   inbox_page:
     no_threads: Woohoo ! Vous avez lu toutes les discussions de votre boîte de réception.
     unread_threads: Discussions non lues

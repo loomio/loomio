@@ -1614,6 +1614,9 @@ da:
   threads_page:
     no_direct_threads: Du har ingen direkte tråde
     no_invite_only_threads: Du har ingen tråde kun for inviterede
+    no_direct_discussions: Du har ingen direkte diskussioner
+    no_direct_discussions_title: Du har ingen direkte diskussioner
+    no_direct_discussions_helptext: Direkte diskussioner er til at kontakte en anden bruger direkte, uden at diskussionen tilhører en gruppe.
   inbox_page:
     no_threads: Woohoo! Du har læst alle dine debatindlæg i din indbox.
     unread_threads: Ulæste debatter

@@ -1641,6 +1641,9 @@ es:
   threads_page:
     no_direct_threads: No tienes hilos directos
     no_invite_only_threads: No tienes hilos solo para invitados
+    no_direct_discussions: No tienes discusiones directas
+    no_direct_discussions_title: No tienes discusiones directas
+    no_direct_discussions_helptext: Las discusiones directas son para contactar directamente a otro usuario, sin que la discusión pertenezca a un grupo.
   inbox_page:
     no_threads: "¡Genial! ¡Ya ha leído todos los hilos de su bandeja de entrada!"
     unread_threads: Hilos sin leer

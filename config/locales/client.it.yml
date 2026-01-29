@@ -1642,6 +1642,9 @@ it:
   threads_page:
     no_direct_threads: Non hai discussioni dirette
     no_invite_only_threads: Non hai discussioni riservate agli inviti
+    no_direct_discussions: Non hai discussioni dirette
+    no_direct_discussions_title: Non hai discussioni dirette
+    no_direct_discussions_helptext: Le discussioni dirette servono per contattare direttamente un altro utente, senza che la discussione appartenga a un gruppo.
   inbox_page:
     no_threads: Woohoo! Hai letto tutte le discussioni nella tua casella di posta..
     unread_threads: Discussioni non lette

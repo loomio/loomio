@@ -1614,6 +1614,9 @@ ro:
   threads_page:
     no_direct_threads: Nu ai fire directe
     no_invite_only_threads: Nu aveți subiecte de discuție doar pe invitație
+    no_direct_discussions: Nu aveți discuții directe
+    no_direct_discussions_title: Nu aveți discuții directe
+    no_direct_discussions_helptext: Discuțiile directe sunt pentru a contacta direct un alt utilizator, fără ca discuția să aparțină unui grup.
   inbox_page:
     no_threads: Woohoo! Ai citit toate discutiile din inbox.
     unread_threads: Discutii necitite

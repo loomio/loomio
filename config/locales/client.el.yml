@@ -1614,6 +1614,9 @@ el:
   threads_page:
     no_direct_threads: Δεν έχετε απευθείας νήματα
     no_invite_only_threads: Δεν έχετε θέματα μόνο με πρόσκληση
+    no_direct_discussions: Δεν έχετε άμεσες συζητήσεις
+    no_direct_discussions_title: Δεν έχετε άμεσες συζητήσεις
+    no_direct_discussions_helptext: Οι άμεσες συζητήσεις αφορούν την άμεση επικοινωνία με έναν άλλο χρήστη, χωρίς η συζήτηση να ανήκει σε κάποια ομάδα.
   inbox_page:
     no_threads: Ουάου! Έχετε διαβάσει όλα τα νήματα στα εισερχόμενά σας.
     unread_threads: Μη αναγνωσμένα νήματα

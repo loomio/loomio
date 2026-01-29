@@ -1626,6 +1626,9 @@ he:
   threads_page:
     no_direct_threads: אין לך שרשורים ישירים
     no_invite_only_threads: אין לך שרשורים למוזמנים בלבד
+    no_direct_discussions: אין לך דיונים ישירים
+    no_direct_discussions_title: אין לך דיונים ישירים
+    no_direct_discussions_helptext: דיונים ישירים נועדו ליצירת קשר ישיר עם משתמש אחר, מבלי שהדיון שייך לקבוצה.
   inbox_page:
     no_threads: וואו! קראת את כל השיחות בתיבת המייל שלך
     unread_threads: שיחות שלא נקראו

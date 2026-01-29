@@ -1614,6 +1614,9 @@ sl:
   threads_page:
     no_direct_threads: Nimate neposrednih niti
     no_invite_only_threads: Nimate niti samo za povabilo
+    no_direct_discussions: Nimate neposrednih razprav
+    no_direct_discussions_title: Nimate neposrednih razprav
+    no_direct_discussions_helptext: Neposredne razprave so namenjene neposrednemu stiku z drugim uporabnikom, ne da bi razprava pripadala skupini.
   inbox_page:
     no_threads: Juhu! Prebrali ste vse teme v mapi »Prejeto«.
     unread_threads: Neprebrane niti
