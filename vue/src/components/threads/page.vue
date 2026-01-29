@@ -78,14 +78,14 @@ v-main
         loading-content(:lineCount='2' v-for='(item, index) in [1,2,3]' :key='index' )
     div(v-else)
       section.threads-page__loaded
-        .threads-page__empty(v-if='threads.length == 0')
-          p(v-t="'threads_page.no_direct_threads'")
+        v-card.mb-3(v-if='threads.length == 0')
+          v-card-text(v-t="'threads_page.no_direct_threads'")
         .threads-page__collections(v-else)
           v-card.mb-3.thread-preview-collection__container
             v-list.thread-previews(lines="two")
               thread-preview(v-for="thread in threads", :key="thread.id", :thread="thread")
 
-      .d-flex.align-center.justify-center
+      .d-flex.align-center.justify-center(v-if='threads.length > 0')
         div
           p.text-center.text-medium-emphasis(v-t="{path: 'members_panel.loaded_of_total', args: {loaded: threads.length, total: loader.total}}")
           v-btn(v-if="!loader.exhausted" @click="loader.fetchRecords()", :loading="loader.loading", v-t="'common.action.load_more'")

@@ -1647,6 +1647,7 @@ fr:
     view_recent: Voir toutes les discussions récentes ?
     discussion_marked_as_read: Discussion marquée comme lue
     discussion_marked_as_unread: Discussion marquée comme non lue
+    polls_to_vote_on_count: Sondages sur lesquels voter (%{count})
   threads_page:
     no_direct_threads: Vous n'avez pas de discussion directe
     no_invite_only_threads: Vous n'avez pas de sujets accessibles uniquement sur invitation.

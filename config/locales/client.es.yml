@@ -1637,6 +1637,7 @@ es:
     view_recent: "¿Ver todas las discusiones recientes?"
     discussion_marked_as_read: Discusión marcada como leída
     discussion_marked_as_unread: Discusión marcada como no leída
+    polls_to_vote_on_count: Encuestas para votar (%{count})
   threads_page:
     no_direct_threads: No tienes hilos directos
     no_invite_only_threads: No tienes hilos solo para invitados

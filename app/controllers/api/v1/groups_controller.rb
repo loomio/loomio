@@ -1,4 +1,6 @@
 class Api::V1::GroupsController < Api::V1::RestfulController
+  before_action :require_signed_in_user_for_explore, only: [:index, :count_explore_results]
+
   def token
     self.resource = load_and_authorize(:group, :invite_people)
     respond_with_resource scope: {include_token: true, exclude_types: ['membership', 'user']}
@@ -71,6 +73,10 @@ class Api::V1::GroupsController < Api::V1::RestfulController
   end
 
   private
+
+  def require_signed_in_user_for_explore
+    require_current_user if AppConfig.app_features[:restrict_explore_to_signed_in_users]
+  end
 
   def ensure_photo_params
     params.require(:file)

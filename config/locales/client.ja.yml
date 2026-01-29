@@ -1609,6 +1609,7 @@ ja:
     view_recent: 最近のディスカッションをすべて表示しますか?
     discussion_marked_as_read: ディスカッションを既読としてマークしました
     discussion_marked_as_unread: ディスカッションを未読としてマークしました
+    polls_to_vote_on_count: 投票するアンケート（%{count}）
   threads_page:
     no_direct_threads: 直接のスレッドはありません
     no_invite_only_threads: 招待限定のスレッドはありません

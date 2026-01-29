@@ -1610,6 +1610,7 @@ da:
     view_recent: Se alle de seneste diskussioner?
     discussion_marked_as_read: Diskussion markeret som læst
     discussion_marked_as_unread: Diskussion markeret som ulæst
+    polls_to_vote_on_count: Afstemninger at stemme om (%{count})
   threads_page:
     no_direct_threads: Du har ingen direkte tråde
     no_invite_only_threads: Du har ingen tråde kun for inviterede

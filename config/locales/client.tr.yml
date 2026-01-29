@@ -1610,6 +1610,7 @@ tr:
     view_recent: Tüm son tartışmaları görüntüle?
     discussion_marked_as_read: Tartışma okundu olarak işaretlendi
     discussion_marked_as_unread: Tartışma okunmamış olarak işaretlendi
+    polls_to_vote_on_count: Oylanacak anketler (%{count})
   threads_page:
     no_direct_threads: Doğrudan konunuz yok
     no_invite_only_threads: Yalnızca davetlilerin katılabileceği bir konunuz yok

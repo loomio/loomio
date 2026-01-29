@@ -1627,6 +1627,7 @@ zh_CN:
       thisweek: 本星期
       thismonth: 本月
       older: 超过一个月
+    polls_to_vote_on_count: 待投票的民意调查 (%{count})
   threads_page:
     no_direct_threads: 您没有直接帖子
     no_invite_only_threads: 您没有仅限受邀者参与的讨论串。

@@ -1,154 +1,183 @@
-<script lang="js">
-import AppConfig      from '@/shared/services/app_config';
-import Session        from '@/shared/services/session';
-import Records        from '@/shared/services/records';
-import EventBus       from '@/shared/services/event_bus';
-import AbilityService from '@/shared/services/ability_service';
-import InboxService   from '@/shared/services/inbox_service';
-import WatchRecords from '@/mixins/watch_records';
-import UrlFor from '@/mixins/url_for';
-import FormatDate from '@/mixins/format_date';
+<script setup lang="js">
+import { ref, computed, watch, onMounted, onUnmounted } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
+import { useDisplay } from 'vuetify';
+import { useTheme } from 'vuetify';
+import { compact, filter } from 'lodash-es';
+import { subDays } from 'date-fns';
 
-import { compact } from 'lodash-es';
+import AppConfig from '@/shared/services/app_config';
+import Session from '@/shared/services/session';
+import Records from '@/shared/services/records';
+import EventBus from '@/shared/services/event_bus';
+import AbilityService from '@/shared/services/ability_service';
+import InboxService from '@/shared/services/inbox_service';
+import LmoUrlService from '@/shared/services/lmo_url_service';
+
 import SidebarSubgroups from '@/components/sidebar/subgroups';
 import SidebarSettings from '@/components/sidebar/settings';
 import SidebarHelp from '@/components/sidebar/help';
 
 import { mdiPlus, mdiCog } from '@mdi/js';
 
-import { useTheme } from 'vuetify';
+const router = useRouter();
+const route = useRoute();
+const display = useDisplay();
+const theme = useTheme();
 
-var theme = {}
+const user = ref(Session.user());
+const page = ref('dashboardPage');
+const organization = ref(null);
+const discussions = ref([]);
+const discussionsGroup = ref(null);
+const open = ref(false);
+const group = ref(null);
+const version = ref(AppConfig.version);
+const tree = ref([]);
+const myGroups = ref([]);
+const otherGroups = ref([]);
+const organizations = ref([]);
+const unreadCounts = ref({});
+const openGroups = ref([]);
+const openCounts = ref({});
+const unreadDirectThreadsCount = ref(0);
+const showSettings = ref(false);
+const watchedRecords = ref([]);
 
-export default {
-  components: { SidebarSettings, SidebarSubgroups, SidebarHelp },
-  mixins: [WatchRecords, UrlFor, FormatDate],
-  data() {
-    return {
-      mdiPlus, mdiCog,
-      page: 'dashboardPage',
-      organization: null,
-      discussions: [],
-      discussionsGroup: null,
-      open: false,
-      group: null,
-      version: AppConfig.version,
-      tree: [],
-      myGroups: [],
-      otherGroups: [],
-      organizations: [],
-      unreadCounts: {},
-      openGroups: [],
-      openCounts: {},
-      unreadDirectThreadsCount: 0,
-      showSettings: false
-    };
-  },
+// Computed properties
+const canStartGroups = computed(() => AbilityService.canStartGroups());
+const greySidebarLogo = computed(() =>
+  AppConfig.features.app.gray_sidebar_logo_in_dark_mode && theme.global.name.value.startsWith("dark")
+);
+const isSignedIn = computed(() => Session.isSignedIn());
+const activeGroup = computed(() => group.value ? [group.value.id] : []);
+const logoUrl = computed(() => AppConfig.theme.app_logo_src);
+const showTemplateGallery = computed(() => AppConfig.features.app.template_gallery);
+const showNewThreadButton = computed(() => AppConfig.features.app.new_thread_button);
 
-  created() {
-    theme = useTheme();
-    this.user = Session.user();
-
-    EventBus.$on('toggleSidebar', () => {
-      this.open = !this.open;
-      Records.users.saveExperience('sidebar', this.open)
-    });
-
-    EventBus.$on('currentComponent', data => {
-      // this.page = data.page;
-
-      if (data.group) {
-        this.page = 'groupPage'
-        this.group = data.group;
-        this.organization = data.group.parentOrSelf();
-      } else {
-        this.group = null;
-        this.organization = null;
-      }
-    });
-
-    this.watchRecords({
-      collections: ['groups', 'memberships', 'discussions'],
-      query: () => {
-        this.unreadDirectThreadsCount =
-          Records.discussions.collection.chain().
-          find({groupId: null}).
-          where(thread => thread.isUnread()).data().length;
-        this.updateGroups();
-      }
-    });
-
-    EventBus.$on('signedIn', user => {
-      this.user = Session.user();
-      this.fetchData();
-      this.openIfPinned();
-    });
-
-    if (Session.isSignedIn()) { return this.fetchData(); }
-  },
-
-  mounted() {
-    this.openIfPinned();
-  },
-
-  watch: {
-    organization: 'updateGroups',
-
-    open(val) {
-      EventBus.$emit("sidebarOpen", val);
-    }
-  },
-
-  methods: {
-    unreadThreadCount() {
-      return InboxService.unreadCount();
-    },
-
-    openIfPinned() {
-      this.open = !!Session.isSignedIn() && this.$vuetify.display.lgAndUp && (Session.user().experiences['sidebar'] === undefined) || (Session.user().experiences['sidebar'] == true);
-    },
-
-    fetchData() {
-      Records.users.findOrFetchGroups().then(() => {
-        if (this.$route.path == "/dashboard") {
-          if (Session.user().groups().length == 0) {
-            this.$router.replace("/g/new");
-          }
-          if (Session.user().groups().length == 1) {
-              this.$router.replace(`/g/${Session.user().groups()[0].key}`);
-          }
-        }
-      });
-      InboxService.load();
-    },
-
-    updateGroups() {
-      this.organizations = compact(Session.user().parentGroups().concat(Session.user().orphanParents())) || [];
-      this.openCounts = {};
-      this.openGroups = [];
-      Session.user().groups().forEach(group => {
-        this.openCounts[group.id] = group.discussions().filter(discussion => discussion.isUnread()).length;
-      });
-      Session.user().parentGroups().forEach(group => {
-        if (this.organization && (this.organization.id === group.parentOrSelf().id)) {
-          this.openGroups[group.id] = true;
-        }
-      });
-    },
-  },
-
-  computed: {
-    canStartGroups() { return AbilityService.canStartGroups(); },
-    greySidebarLogo() {
-      return AppConfig.features.app.gray_sidebar_logo_in_dark_mode && theme.global.name.value.startsWith("dark")
-    },
-    isSignedIn() { return Session.isSignedIn(); },
-    activeGroup() { if (this.group) { return [this.group.id]; } else { return []; } },
-    logoUrl() { return AppConfig.theme.app_logo_src; },
-    showTemplateGallery() { return AppConfig.features.app.template_gallery; },
-    showNewThreadButton() { return AppConfig.features.app.new_thread_button; },
-  }
+// Methods
+const unreadThreadCount = () => {
+  return InboxService.unreadCount();
 };
+
+const pollsToVoteOnCount = () => {
+  const groupIds = Session.user().groupIds();
+  const pollIds = Records.stances.find({myStance: true}).map(stance => stance.pollId);
+
+  let chain = Records.polls.collection.chain();
+  chain = chain.find({discardedAt: null, closingAt: {$ne: null}});
+  chain = chain.find({$or: [{groupId: {$in: groupIds}}, {id: {$in: pollIds}}, {authorId: Session.user().id}]});
+  chain = chain.find({$or: [{closedAt: null}, {closedAt: {$gt: subDays(new Date, 3)}}]});
+
+  const votable = p => p.iCanVote() && !p.iHaveVoted();
+  const votePolls = filter(chain.data(), votable);
+
+  return votePolls.length;
+};
+
+const urlFor = (model, action, params) => {
+  return LmoUrlService.route({model, action, params});
+};
+
+const watchRecordsFunc = (options) => {
+  const { collections, query, key } = options;
+  const name = collections.concat(key || parseInt(Math.random() * 10000)).join('_');
+  watchedRecords.value.push(name);
+  Records.view({
+    name,
+    collections,
+    query
+  });
+};
+
+const openIfPinned = () => {
+  open.value = !!Session.isSignedIn() &&
+    display.lgAndUp.value &&
+    (Session.user().experiences['sidebar'] === undefined || Session.user().experiences['sidebar'] === true);
+};
+
+const fetchData = () => {
+  Records.users.findOrFetchGroups().then(() => {
+    if (route.path === "/dashboard") {
+      if (Session.user().groups().length === 0) {
+        router.replace("/g/new");
+      }
+      if (Session.user().groups().length === 1) {
+        router.replace(`/g/${Session.user().groups()[0].key}`);
+      }
+    }
+  });
+  InboxService.load();
+};
+
+const updateGroups = () => {
+  organizations.value = compact(Session.user().parentGroups().concat(Session.user().orphanParents())) || [];
+  openCounts.value = {};
+  openGroups.value = [];
+  Session.user().groups().forEach(g => {
+    openCounts.value[g.id] = g.discussions().filter(discussion => discussion.isUnread()).length;
+  });
+  Session.user().parentGroups().forEach(g => {
+    if (organization.value && (organization.value.id === g.parentOrSelf().id)) {
+      openGroups.value[g.id] = true;
+    }
+  });
+};
+
+// Event listeners setup
+EventBus.$on('toggleSidebar', () => {
+  open.value = !open.value;
+  Records.users.saveExperience('sidebar', open.value);
+});
+
+EventBus.$on('currentComponent', data => {
+  if (data.group) {
+    page.value = 'groupPage';
+    group.value = data.group;
+    organization.value = data.group.parentOrSelf();
+  } else {
+    group.value = null;
+    organization.value = null;
+  }
+});
+
+watchRecordsFunc({
+  collections: ['groups', 'memberships', 'discussions', 'polls', 'stances'],
+  query: () => {
+    unreadDirectThreadsCount.value = Records.discussions.collection.chain()
+      .find({groupId: null})
+      .where(thread => thread.isUnread())
+      .data().length;
+    updateGroups();
+  }
+});
+
+EventBus.$on('signedIn', u => {
+  user.value = Session.user();
+  fetchData();
+  openIfPinned();
+});
+
+if (Session.isSignedIn()) {
+  fetchData();
+}
+
+onMounted(() => {
+  openIfPinned();
+});
+
+onUnmounted(() => {
+  watchedRecords.value.forEach(name => delete Records.views[name]);
+});
+
+// Watchers
+watch(organization, () => {
+  updateGroups();
+});
+
+watch(open, (val) => {
+  EventBus.$emit("sidebarOpen", val);
+});
 </script>
 
 <template lang="pug">
@@ -169,7 +198,11 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
     v-divider
     v-list(nav density="compact" :lines="false")
       v-list-item.sidebar__list-item-button--recent(to="/dashboard" :title="$t('dashboard_page.dashboard')")
-      v-list-item(to="/inbox" :title="$t('sidebar.unread_discussions_count', { count: unreadThreadCount() })")
+      v-list-item(to="/dashboard/polls_to_vote_on")
+        v-list-item-title(:class="{'text-medium-emphasis': pollsToVoteOnCount() === 0}") {{ $t('dashboard_page.polls_to_vote_on_count', {count: pollsToVoteOnCount()}) }}
+      v-list-item(to="/inbox")
+        v-list-item-title(:class="{'text-medium-emphasis': unreadThreadCount() === 0}") {{ $t('sidebar.unread_discussions_count', {count: unreadThreadCount()}) }}
+      v-list-item.sidebar__list-item-button--private(to="/threads/direct")
       v-list-item.sidebar__list-item-button--private(to="/dashboard/direct_discussions")
         v-list-item-title
           span(v-t="'sidebar.direct_discussions'")

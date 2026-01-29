@@ -1610,6 +1610,7 @@ el:
     view_recent: Δείτε όλες τις πρόσφατες συζητήσεις;
     discussion_marked_as_read: Η συζήτηση επισημάνθηκε ως αναγνωσμένη
     discussion_marked_as_unread: Η συζήτηση επισημάνθηκε ως μη αναγνωσμένη
+    polls_to_vote_on_count: Δημοσκοπήσεις για ψήφο (%{count})
   threads_page:
     no_direct_threads: Δεν έχετε απευθείας νήματα
     no_invite_only_threads: Δεν έχετε θέματα μόνο με πρόσκληση

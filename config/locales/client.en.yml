@@ -1633,6 +1633,7 @@ en:
   dashboard_page:
     dashboard: Dashboard
     polls_to_vote_on: Polls to vote on
+    polls_to_vote_on_count: Polls to vote on (%{count})
     no_polls_to_vote_on: There are no polls you need to vote on
     recent_polls: Recent polls
     current_polls: Current polls

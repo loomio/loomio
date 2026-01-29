@@ -1610,6 +1610,7 @@ sl:
     view_recent: Ogled vseh nedavnih razprav?
     discussion_marked_as_read: Razprava je označena kot prebrana
     discussion_marked_as_unread: Razprava je označena kot neprebrana
+    polls_to_vote_on_count: Ankete za glasovanje (%{count})
   threads_page:
     no_direct_threads: Nimate neposrednih niti
     no_invite_only_threads: Nimate niti samo za povabilo

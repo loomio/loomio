@@ -1622,6 +1622,7 @@ he:
     view_recent: להציג את כל הדיונים האחרונים?
     discussion_marked_as_read: דיון סומן כנקרא
     discussion_marked_as_unread: דיון סומן כלא נקרא
+    polls_to_vote_on_count: סקרים להצבעה עליהם (%{count})
   threads_page:
     no_direct_threads: אין לך שרשורים ישירים
     no_invite_only_threads: אין לך שרשורים למוזמנים בלבד

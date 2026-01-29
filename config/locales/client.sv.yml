@@ -1610,6 +1610,7 @@ sv:
     view_recent: Visa alla senaste diskussioner?
     discussion_marked_as_read: Diskussion markerad som läst
     discussion_marked_as_unread: Diskussion markerad som oläst
+    polls_to_vote_on_count: Opinionsundersökningar att rösta på (%{count})
   threads_page:
     no_direct_threads: Du har inga direkta trådar
     no_invite_only_threads: Du har inga trådar endast för inbjudna

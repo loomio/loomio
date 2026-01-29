@@ -1628,6 +1628,7 @@ ca:
     view_recent: Voleu veure totes les discussions recents?
     discussion_marked_as_read: Discussió marcada com a llegida
     discussion_marked_as_unread: Discussió marcada com a no llegida
+    polls_to_vote_on_count: Enquestes per votar (%{count})
   threads_page:
     no_direct_threads: No teniu fils directes
     no_invite_only_threads: No tens fils només per invitació
