@@ -241,7 +241,7 @@ onMounted(() => {
     collections: ['groups', 'memberships'],
     query: () => {
       return groupItems.value = [
-        {title: I18n.global.t('discussion_form.none_invite_only_discussion'), value: null}
+        {title: I18n.global.t('discussion_form.none_direct_discussion'), value: null}
       ].concat(Session.user().groups().filter(g => AbilityService.canStartPoll(g)).map(g => ({
         title: g.fullName,
         value: g.id

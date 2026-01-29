@@ -9,7 +9,7 @@ export default class NullGroupModel {
   constructor() {
     const defaults = {
       parentId: null,
-      name: I18n.global.t('discussion.invite_only'),
+      name: I18n.global.t('discussion.direct'),
       description: '',
       descriptionFormat: 'html',
       groupPrivacy: 'closed',

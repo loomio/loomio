@@ -72,7 +72,7 @@ export default {
         return {
           title: group.name,
           disabled: false,
-          to: group.id ? this.urlFor(group) : '/threads/direct'
+          to: group.id ? this.urlFor(group) : '/dashboard/direct_discussions'
         };
       });
     },

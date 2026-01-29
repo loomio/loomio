@@ -572,6 +572,7 @@ en:
     other_groups: Other groups
     all_groups: All groups
     invite_only_discussions: Invite-only discussions
+    direct_discussions: Direct discussions
     unread_discussions_count: Unread discussions (%{count})
     new_group: New group
     new_subgroup: New subgroup
@@ -838,6 +839,7 @@ en:
     share_in_template_gallery: Share this template in the public template gallery
   discussion_form:
     none_invite_only_discussion: None (invite-only discussion)
+    none_direct_discussion: None (direct discussion)
     new_discussion_template: New discussion template
     edit_discussion_template: Edit discussion template
     blank: Blank
@@ -846,6 +848,7 @@ en:
     new_template_subtitle: Create an example that others can copy
     to: To
     invite_only_thread: Invite-only discussion
+    direct_discussion: Direct discussion
     change_log_placeholder: Optionally, describe your changes. This message will be added to the discussion.
     change_log_label: What's changed?
     invite: Invite
@@ -1696,6 +1699,7 @@ en:
       join_group: <a href="/explore">join</a> a group to see threads.
   discussion:
     invite_only: Invite-only
+    direct: Direct
     max_threads_reached: |
       <p>You have used all %{maxThreads} threads available to this group.</p>
       <p>Next step, <a href="%{upgradeUrl}" target="_blank">choose a plan</a> to continue collaborating on Loomio.</p>

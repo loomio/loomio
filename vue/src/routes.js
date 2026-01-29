@@ -66,7 +66,7 @@ const router = createRouter({
     {path: '/report', component: ReportPage},
     {path: '/dashboard', component: DashboardPage},
     {path: '/dashboard/:filter', component: DashboardPage},
-    {path: '/threads/direct', component: ThreadsPage},
+    {path: '/dashboard/direct_discussions', component: ThreadsPage},
     {path: '/inbox', component: InboxPage },
     {path: '/explore', component: ExplorePage},
     {path: '/profile', component: ProfilePage},
