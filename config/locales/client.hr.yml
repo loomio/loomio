@@ -1607,6 +1607,7 @@ hr:
     view_recent: Želite li vidjeti sve nedavne rasprave?
     discussion_marked_as_read: Rasprava označena kao pročitana
     discussion_marked_as_unread: Rasprava označena kao nepročitana
+    polls_to_vote_on_count: Ankete za glasanje (%{count})
   threads_page:
     no_direct_threads: Nemate izravnih niti
     no_invite_only_threads: Nemate niti samo za pozvane
