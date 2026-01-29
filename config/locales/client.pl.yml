@@ -1623,6 +1623,7 @@ pl:
     view_recent: Zobaczyć wszystkie ostatnie dyskusje?
     discussion_marked_as_read: Dyskusja oznaczona jako przeczytana
     discussion_marked_as_unread: Dyskusja oznaczona jako nieprzeczytana
+    polls_to_vote_on_count: Ankiety, w których można głosować (%{count})
   threads_page:
     no_direct_threads: Nie masz żadnych bezpośrednich wątków
     no_invite_only_threads: Nie masz żadnych wątków dostępnych tylko na zaproszenie

@@ -1623,6 +1623,7 @@ nl_NL:
     view_recent: Alle recente discussies bekijken?
     discussion_marked_as_read: Discussie gemarkeerd als gelezen
     discussion_marked_as_unread: Discussie gemarkeerd als ongelezen
+    polls_to_vote_on_count: Peilingen om op te stemmen (%{count})
   threads_page:
     no_direct_threads: Je hebt geen directe borden
     no_invite_only_threads: Je hebt geen alleen-op-uitnodiging-threads

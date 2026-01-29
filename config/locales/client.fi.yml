@@ -1607,6 +1607,7 @@ fi:
     view_recent: Näyttääkö kaikki viimeaikaiset keskustelut?
     discussion_marked_as_read: Keskustelu merkitty luetuksi
     discussion_marked_as_unread: Keskustelu merkitty lukemattomaksi
+    polls_to_vote_on_count: Äänestettävät kyselyt (%{count})
   threads_page:
     no_direct_threads: Sinulla ei ole suoria lankoja
     no_invite_only_threads: Sinulla ei ole kutsusta lähetettäviä keskusteluketjuja
