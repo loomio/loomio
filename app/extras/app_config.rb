@@ -135,6 +135,7 @@ class AppConfig
       example_content: !ENV['FEATURES_DISABLE_EXAMPLE_CONTENT'],
       thread_from_mail: !ENV['FEATURES_DISABLE_THREAD_FROM_MAIL'],
       explore_public_groups: ENV.fetch('FEATURES_EXPLORE_PUBLIC_GROUPS', false),
+      restrict_explore_to_signed_in_users: ENV.fetch('LOOMIO_RESTRICT_EXPLORE_TO_SIGNED_IN_USERS', false),
       template_gallery: ENV.fetch('FEATURES_TEMPLATE_GALLERY', false),
       show_contact: ENV.fetch('FEATURES_SHOW_CONTACT', false),
       show_contact_consent: ENV.fetch('FEATURES_SHOW_CONTACT_CONSENT', false),
