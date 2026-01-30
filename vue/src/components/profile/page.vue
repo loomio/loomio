@@ -40,6 +40,7 @@ export default {
   },
 
   computed: {
+    ssoDisableEditProfile() { return AppConfig.features.app.sso_disable_edit_profile; },
     showHelpTranslate() { return AppConfig.features.app.help_link; },
     availableLocales() { return AppConfig.locales.map(h => { return {title: h.name, value: h.key} }) ; },
     dateTimeFormats() {
@@ -140,14 +141,14 @@ v-main
           .profile-page__details
             .d-sm-flex
               .flex-fill
-                v-text-field.profile-page__name-input(:label="$t('profile_page.name_label')" required v-model="user.name")
+                v-text-field.profile-page__name-input(:label="$t('profile_page.name_label')" required v-model="user.name" :disabled="ssoDisableEditProfile")
                 validation-errors(:subject='user', field='name')
 
-                v-text-field#user-username-field.profile-page__username-input(:label="$t('profile_page.username_label')" required v-model="user.username")
+                v-text-field#user-username-field.profile-page__username-input(:label="$t('profile_page.username_label')" required v-model="user.username" :disabled="ssoDisableEditProfile")
                 validation-errors(:subject='user', field='username')
 
                 //- span existingEmails: {{ existingEmails }}
-                v-text-field#user-email-field.profile-page__email-input(:label="$t('profile_page.email_label')" required v-model='user.email' @keyup="checkEmailExistence")
+                v-text-field#user-email-field.profile-page__email-input(:label="$t('profile_page.email_label')" required v-model='user.email' @keyup="checkEmailExistence" :disabled="ssoDisableEditProfile")
                 validation-errors(:subject='user', field='email')
                 .profile-page__email-taken(v-if="emailExists")
                   span.email-taken-message(v-t="'merge_accounts.email_taken'")

@@ -1,11 +1,19 @@
 class Clients::Google < Clients::Base
 
-  def fetch_access_token(code, uri)
-    post "token", params: { code: code, redirect_uri: uri, grant_type: :authorization_code }
+  def fetch_access_token(code, redirect_uri)
+    data = post("token", params: { code: code, redirect_uri: redirect_uri, grant_type: :authorization_code } ).json
+    data['access_token']
   end
 
-  def fetch_user_info
-    get "userinfo", options: { host: :"https://www.googleapis.com/oauth2/v2" }
+  def fetch_identity_params
+    data = get("userinfo", options: { host: :"https://www.googleapis.com/oauth2/v2" }).json
+    {
+      uid: data['id'],
+      name: data['name'],
+      email: data['email'],
+      logo: data['picture'],
+      identity_type: 'google'
+    }
   end
 
   def scope

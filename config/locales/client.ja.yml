@@ -550,6 +550,7 @@ ja:
     unread_discussions_count: 未読のディスカッション (%{count})
     new_group: 新しいグループ
     new_subgroup: 新しいサブグループ
+    find_a_group: グループを探す
   strand_nav:
     newest: 最新
     oldest: 最古の
@@ -1328,6 +1329,9 @@ ja:
     allow_polls_without_discussions: ディスカッションなしの投票を許可
     allow_polls_without_discussions_help: 最初にディスカッションを開始せずに投票を開始することを禁止します。
     aria_label: グループフォーム
+    list_in_the_groups_directory: グループディレクトリにリストしますか?
+    list_in_directory_yes: はい · このグループを「グループを探す」ページに表示します
+    list_in_directory_no: いいえ · 人々にグループを見つけるための招待やリンクを提供する必要があります
   group_export_modal:
     title: グループデータのエクスポート
     body: <p>グループのデータのコピーはいつでもダウンロードできます。<a href="https://help.loomio.org/en/user_manual/groups/data_export/">もっと詳しく調べてください。</a></p><p>グループの規模に応じて、完了までに数分かかります。準備が完了すると、ファイルをダウンロードするためのリンクが記載された電子メールが届きます。</p>
@@ -1555,8 +1559,8 @@ ja:
     current_polls: 現在の投票
     recent_threads: 最近のスレッド
     no_groups:
-      show_all: いらっしゃいませ！あなたはまだどのグループのメンバーでもありません。<a href="/explore">公開グループを参照する</a>か、<a href="/g/new">グループを開始します</a>。
       show_muted: どのグループにも所属していないため、ミュートされたスレッドはありません。
+      show_all: ようこそ！あなたはまだどのグループにも所属していません。
     no_threads:
       show_all: 最近のスレッドはありません。
       show_proposals: 現在有効な提案はありません。
@@ -1602,6 +1606,7 @@ ja:
     view_recent: 最近のディスカッションをすべて表示しますか?
     discussion_marked_as_read: ディスカッションを既読としてマークしました
     discussion_marked_as_unread: ディスカッションを未読としてマークしました
+    polls_to_vote_on_count: 投票するアンケート（%{count}）
   threads_page:
     no_direct_threads: 直接のスレッドはありません
     no_invite_only_threads: 招待限定のスレッドはありません
@@ -1719,6 +1724,10 @@ ja:
     newest_first: 新しい順
     biggest_first: 一番大きいものから
     order_by: グループの順序付け
+    most_members: ほとんどのメンバー
+    least_members: 最少メンバー
+    newest: 最新
+    oldest: 最古
   global:
     messages:
       reload: リロード
@@ -2664,3 +2673,5 @@ ja:
     confirm_change_to_private: "%{groupName} は公開グループです。続行すると、このディスカッションは公開されます。"
     messages:
       success: ディスカッションは %{name} に移動されました
+  auth:
+    oauth_cancelled: サインインはキャンセルされました

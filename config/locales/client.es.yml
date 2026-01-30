@@ -555,6 +555,7 @@ es:
     unread_discussions_count: Discusiones no leídas (%{count})
     new_group: Nuevo grupo
     new_subgroup: Nuevo subgrupo
+    find_a_group: Encuentra un grupo
   strand_nav:
     newest: El más nuevo
     oldest: El más viejo
@@ -1346,6 +1347,9 @@ es:
     allow_polls_without_discussions: Permitir encuestas sin discusión
     allow_polls_without_discussions_help: Evitar que las personas inicien encuestas sin iniciar primero una discusión.
     aria_label: Formulario de grupo
+    list_in_the_groups_directory: "¿Listado en el directorio de grupos?"
+    list_in_directory_yes: Sí · mostrar este grupo en la página "Buscar un grupo"
+    list_in_directory_no: No · Se debe invitar a las personas o darles un enlace para que encuentren el grupo.
   group_export_modal:
     title: Exportar la data grupal
     body: |
@@ -1581,8 +1585,8 @@ es:
     current_polls: Sondeos actuales
     recent_threads: Hilos recientes
     no_groups:
-      show_all: Bienvenido! Todavía no eres miembro de ningún grupo. <a href="/explore"> Explora grupos públicos</a> o <a href="/g/new"> comienza un grupo</a>.
       show_muted: No tienes ningún hilo silenciado porque no eres miembro de ningún grupo.
+      show_all: "¡Bienvenido! Aún no eres miembro de ningún grupo."
     no_threads:
       show_all: No tienes ningún hilo reciente.
       show_proposals: No hay propuestas activas en este momento.
@@ -1630,6 +1634,7 @@ es:
     view_recent: "¿Ver todas las discusiones recientes?"
     discussion_marked_as_read: Discusión marcada como leída
     discussion_marked_as_unread: Discusión marcada como no leída
+    polls_to_vote_on_count: Encuestas para votar (%{count})
   threads_page:
     no_direct_threads: No tienes hilos directos
     no_invite_only_threads: No tienes hilos solo para invitados
@@ -1756,6 +1761,10 @@ es:
     newest_first: El más reciente primero
     biggest_first: El más grande primero
     order_by: Grupos ordenados por
+    most_members: La mayoría de los miembros
+    least_members: Menos miembros
+    newest: El más nuevo
+    oldest: El más antiguo
   global:
     messages:
       reload: Actualizar
@@ -2703,3 +2712,5 @@ es:
     confirm_change_to_private: "%{groupName} es un grupo abierto. Si continúas, esta discusión será pública."
     messages:
       success: La discusión se trasladó a %{name}
+  auth:
+    oauth_cancelled: Se canceló el inicio de sesión

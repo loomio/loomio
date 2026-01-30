@@ -17,4 +17,8 @@ class Identities::NextcloudController < Identities::BaseController
   def oauth_params
     { client.client_key_name => client.key, redirect_uri: redirect_uri, response_type: :code }
   end
+
+  def client
+    Clients::Nextcloud.instance
+  end
 end

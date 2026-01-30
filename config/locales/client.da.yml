@@ -551,6 +551,7 @@ da:
     unread_discussions_count: Ulæste diskussioner (%{count})
     new_group: Ny gruppe
     new_subgroup: Ny undergruppe
+    find_a_group: Find en gruppe
   strand_nav:
     newest: Nyeste
     oldest: Ældste
@@ -1329,6 +1330,9 @@ da:
     allow_polls_without_discussions: Tillad afstemninger uden diskussion
     allow_polls_without_discussions_help: Forhindre folk i at starte afstemninger uden først at starte en diskussion.
     aria_label: Gruppeformular
+    list_in_the_groups_directory: Liste i gruppekataloget?
+    list_in_directory_yes: Ja · vis denne gruppe på siden "find en gruppe"
+    list_in_directory_no: Ingen · personer bør inviteres eller få et link til at finde gruppen
   group_export_modal:
     title: Eksporter gruppedata
     body: <p>Du kan til enhver tid downloade en kopi af din gruppes data. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Find ud af mere.</a></p><p> Det tager et par minutter at gennemføre, afhængigt af størrelsen på din gruppe. Når den er klar, modtager du en e-mail med et link til at downloade filen.</p>
@@ -1556,8 +1560,8 @@ da:
     current_polls: Aktuelle meningsmålinger
     recent_threads: Seneste debatter
     no_groups:
-      show_all: Velkommen! Du er ikke medlem af nogen grupper endnu. <a href="/explore">Gennemse offentlige grupper</a> eller <a href="/g/new">Start en gruppe</a> .
       show_muted: Du har ikke nogen debatter uden notifikationer da du ikke er medlem af nogen grupper.
+      show_all: Velkommen! Du er ikke medlem af nogen grupper endnu.
     no_threads:
       show_all: Du har ikke nogen seneste debatter.
       show_proposals: Der er pt. ikke nogen aktive forslag.
@@ -1603,6 +1607,7 @@ da:
     view_recent: Se alle de seneste diskussioner?
     discussion_marked_as_read: Diskussion markeret som læst
     discussion_marked_as_unread: Diskussion markeret som ulæst
+    polls_to_vote_on_count: Afstemninger at stemme om (%{count})
   threads_page:
     no_direct_threads: Du har ingen direkte tråde
     no_invite_only_threads: Du har ingen tråde kun for inviterede
@@ -1720,6 +1725,10 @@ da:
     newest_first: Nyeste først
     biggest_first: Største først
     order_by: Bestil grupper efter
+    most_members: De fleste medlemmer
+    least_members: Færst medlemmer
+    newest: Nyeste
+    oldest: Ældste
   global:
     messages:
       reload: Genopfrisk
@@ -2665,3 +2674,5 @@ da:
     confirm_change_to_private: "%{groupName} er en åben gruppe. Hvis du fortsætter, vil denne diskussion være offentlig."
     messages:
       success: Diskussion flyttet til %{name}
+  auth:
+    oauth_cancelled: Log ind blev annulleret

@@ -387,7 +387,7 @@ Rails.application.routes.draw do
   get 'groups'                             => 'application#index', as: :groups
   get 'polls'                              => 'application#index', as: :polls
   get 'report'                             => 'application#index', as: :report
-  get 'explore'                            => 'groups#index',      as: :explore
+  get 'explore'                            => 'groups#index',      as: :explore, constraints: lambda { |_| ENV['FEATURES_EXPLORE_PUBLIC_GROUPS'] }
   get 'profile'                            => 'application#index', as: :profile
   get 'contact'                            => 'application#index', as: :contact
   get 'email_preferences'                  => 'application#index', as: :email_preferences
@@ -452,7 +452,7 @@ Rails.application.routes.draw do
   get '/sitemap.xml' => 'application#sitemap'
 
 
-  Identities::Base::PROVIDERS.each do |provider|
+  Identity::PROVIDERS.each do |provider|
     scope provider do
       get :oauth,                           to: "identities/#{provider}#oauth",       as: :"#{provider}_oauth"
       get :authorize,                       to: "identities/#{provider}#create",      as: :"#{provider}_authorize"

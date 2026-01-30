@@ -563,6 +563,7 @@ pt_BR:
     unread_discussions_count: Discussões não lidas (%{count})
     new_group: Novo grupo
     new_subgroup: Novo subgrupo
+    find_a_group: Encontre um grupo
   strand_nav:
     newest: Mais recente
     oldest: Mais antigo
@@ -1358,6 +1359,9 @@ pt_BR:
     allow_polls_without_discussions: Permitir enquetes sem discussão
     allow_polls_without_discussions_help: Impedir que as pessoas iniciem enquetes sem primeiro iniciar uma discussão.
     aria_label: Formulário de grupo
+    list_in_the_groups_directory: Listar no diretório de grupos?
+    list_in_directory_yes: Sim · Mostrar este grupo na página "Encontrar um grupo"
+    list_in_directory_no: Não, as pessoas devem ser convidadas ou receber um link para encontrar o grupo.
   group_export_modal:
     title: Exportar data do grupo
     body: |
@@ -1593,8 +1597,8 @@ pt_BR:
     current_polls: Enquetes atuais
     recent_threads: Conversas recentes
     no_groups:
-      show_all: Bem vindo! Você ainda não é membro de nenhum grupo. <a href="/explore">Explore grupos públicos</a> ou <a href="/g/new">Inicie um novo grupo</a>.
       show_muted: Você não possui nenhuma conversa silenciada, porque você não é membro de nenhum grupo.
+      show_all: Bem-vindo(a)! Você ainda não é membro de nenhum grupo.
     no_threads:
       show_all: Você não tem nenhuma conversa recente.
       show_proposals: Não há propostas ativas no momento.
@@ -1640,6 +1644,7 @@ pt_BR:
     view_recent: Ver todas as discussões recentes?
     discussion_marked_as_read: Discussão marcada como lida
     discussion_marked_as_unread: Discussão marcada como não lida
+    polls_to_vote_on_count: Enquetes para votar (%{count})
   threads_page:
     no_direct_threads: Você não tem tópicos diretos
     no_invite_only_threads: Você não tem tópicos somente para convidados.
@@ -1766,6 +1771,10 @@ pt_BR:
     newest_first: Mais recentes primeiro
     biggest_first: Maiores primeiro
     order_by: Ordenar grupos por
+    most_members: A maioria dos membros
+    least_members: Membros mínimos
+    newest: Mais recentes
+    oldest: Mais antigo
   global:
     messages:
       reload: Recarregar
@@ -2715,3 +2724,5 @@ pt_BR:
     confirm_change_to_private: "%{groupName} é um grupo aberto. Se você prosseguir, esta discussão se tornará pública."
     messages:
       success: A discussão foi movida para %{name}
+  auth:
+    oauth_cancelled: O login foi cancelado.

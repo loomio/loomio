@@ -556,6 +556,7 @@ uk:
     unread_discussions_count: Непрочитані обговорення (%{count})
     new_group: Нова група
     new_subgroup: Нова підгрупа
+    find_a_group: Знайти групу
   strand_nav:
     newest: Найновіші
     oldest: Найстарші
@@ -1340,6 +1341,9 @@ uk:
     allow_polls_without_discussions: Дозволити опитування без обговорення
     allow_polls_without_discussions_help: Дозволити окремі опитування (не рекомендується). Без обговорення люди не можуть ефективно ставити запитання або досягати консенсусу.
     aria_label: Групова форма
+    list_in_the_groups_directory: Список у каталозі груп?
+    list_in_directory_yes: Так · показати цю групу на сторінці «знайти групу»
+    list_in_directory_no: Ні · людей слід запрошувати або надавати посилання для пошуку групи
   group_export_modal:
     title: Експортувати дані групи
     body: |
@@ -1575,8 +1579,8 @@ uk:
     current_polls: Поточні опитування
     recent_threads: Нещодавні теми
     no_groups:
-      show_all: Ласкаво просимо! Ви ще не є членом жодної групи. <a href="/explore">Переглянути загальнодоступні групи</a> або <a href="/g/new">Створіть групу</a>.
       show_muted: У Вас нема вимкнутих тем, бо Ви не є учасником жодної групи.
+      show_all: Ласкаво просимо! Ви ще не є учасником жодної групи.
     no_threads:
       show_all: У вас нема жодних недавніх тем.
       show_proposals: Наразі немає активних пропозицій.
@@ -1622,6 +1626,7 @@ uk:
     view_recent: Переглянути всі останні обговорення?
     discussion_marked_as_read: Обговорення позначено як прочитане
     discussion_marked_as_unread: Обговорення позначено як непрочитане
+    polls_to_vote_on_count: Опитування для голосування (%{count})
   threads_page:
     no_direct_threads: У вас нема особистих тем
     no_invite_only_threads: У вас немає тем лише для запрошень
@@ -1748,6 +1753,10 @@ uk:
     newest_first: Спочатку нові
     biggest_first: Спершу найбільші
     order_by: Упорядкувати групи за
+    most_members: Більшість членів
+    least_members: Найменша кількість учасників
+    newest: Найновіші
+    oldest: Найстаріший
   global:
     messages:
       reload: Перезавантажити
@@ -2697,3 +2706,5 @@ uk:
     confirm_change_to_private: "%{groupName} – це відкрита група. Якщо ви продовжите, це обговорення буде публічним."
     messages:
       success: Обговорення перенесено до %{name}
+  auth:
+    oauth_cancelled: Вхід скасовано

@@ -555,6 +555,7 @@ ca:
     unread_discussions_count: Debats no llegits (%{count})
     new_group: Grup nou
     new_subgroup: Nou subgrup
+    find_a_group: Troba un grup
   strand_nav:
     newest: Més recent
     oldest: Més antic
@@ -1337,6 +1338,9 @@ ca:
     allow_polls_without_discussions: Permetre enquestes sense discussió
     allow_polls_without_discussions_help: Impedeix que la gent iniciï enquestes sense iniciar primer una discussió.
     aria_label: Formulari de grup
+    list_in_the_groups_directory: Llista al directori de grups?
+    list_in_directory_yes: Sí · mostra aquest grup a la pàgina "cerca un grup"
+    list_in_directory_no: No s'hauria de convidar ningú ni donar-li un enllaç per trobar el grup.
   group_export_modal:
     title: Exporta dades del grup
     body: |
@@ -1572,8 +1576,8 @@ ca:
     current_polls: Enquestes actuals
     recent_threads: Fils recents
     no_groups:
-      show_all: Benvingut! Encara no sou membre de cap grup. <a href="/explore">Busqueu grups públics</a> o <a href="/g/new">Creeu un grup </a>.
       show_muted: No teniu cap fil silenciat perquè no sou membres de cap grup.
+      show_all: Benvingut/da! Encara no ets membre de cap grup.
     no_threads:
       show_all: No teniu cap fil recent.
       show_proposals: Actualment no hi ha cap proposta activa.
@@ -1621,6 +1625,7 @@ ca:
     view_recent: Voleu veure totes les discussions recents?
     discussion_marked_as_read: Discussió marcada com a llegida
     discussion_marked_as_unread: Discussió marcada com a no llegida
+    polls_to_vote_on_count: Enquestes per votar (%{count})
   threads_page:
     no_direct_threads: No teniu fils directes
     no_invite_only_threads: No tens fils només per invitació
@@ -1745,6 +1750,10 @@ ca:
     newest_first: El més recent primer
     biggest_first: El més gran primer
     order_by: Endreça els grups per
+    most_members: La majoria dels membres
+    least_members: Membres menys nombrosos
+    newest: El més nou
+    oldest: El més antic
   global:
     messages:
       reload: Recarrega
@@ -2694,3 +2703,5 @@ ca:
     confirm_change_to_private: "%{groupName} és un grup obert. Si continueu, aquesta discussió serà pública."
     messages:
       success: La discussió s'ha mogut a %{name}
+  auth:
+    oauth_cancelled: S'ha cancel·lat l'inici de sessió

@@ -83,7 +83,7 @@ class User < ApplicationRecord
   has_many :authored_polls, class_name: 'Poll', foreign_key: :author_id, dependent: :destroy
   has_many :created_groups, class_name: 'Group', foreign_key: :creator_id, dependent: :destroy
 
-  has_many :identities, class_name: "Identities::Base", dependent: :destroy
+  has_many :identities, class_name: "Identity", dependent: :destroy
 
   has_many :reactions, dependent: :destroy
   has_many :stances, foreign_key: :participant_id, dependent: :destroy
@@ -224,23 +224,6 @@ class User < ApplicationRecord
   end
 
   define_counter_cache(:memberships_count) {|user| user.memberships.count }
-
-  def associate_with_identity(identity)
-    if existing = identities.find_by(user: self, uid: identity.uid, identity_type: identity.identity_type)
-      existing.update(access_token: identity.access_token)
-      identity = existing
-    else
-      identities.push(identity)
-    end
-
-    update(name: identity.name) if self.name.nil?
-    identity.assign_logo! unless self.avatar_url
-    self
-  end
-
-  def identity_for(type)
-    identities.find_by(identity_type: type)
-  end
 
   def first_name
     name.split(' ').first

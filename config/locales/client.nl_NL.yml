@@ -555,6 +555,7 @@ nl_NL:
     unread_discussions_count: Ongelezen discussies (%{count})
     new_group: Nieuwe groep
     new_subgroup: Nieuwe subgroep
+    find_a_group: Zoek een groep
   strand_nav:
     newest: Nieuwste
     oldest: Oudste
@@ -1337,6 +1338,9 @@ nl_NL:
     allow_polls_without_discussions: Peilingen zonder discussie toestaan
     allow_polls_without_discussions_help: Voorkom dat mensen peilingen starten zonder eerst een discussie te beginnen.
     aria_label: Groepsvorm
+    list_in_the_groups_directory: Lijst in de groepsdirectory?
+    list_in_directory_yes: Ja · toon deze groep op de pagina "zoek een groep"
+    list_in_directory_no: Nee, mensen moeten worden uitgenodigd of een link krijgen om de groep te vinden.
   group_export_modal:
     title: Groepsdata exporteren
     body: |
@@ -1572,8 +1576,8 @@ nl_NL:
     current_polls: Huidige peilingen
     recent_threads: Recente borden
     no_groups:
-      show_all: Welkom! Je bent van nog geen enkele groep lid. <a href="/explore">Browse publieke groepen</a> of <a href="/g/new">Start een groep</a>.
       show_muted: Je hebt geen gedempte borden, omdat je geen lid bent van een groep.
+      show_all: Welkom! Je bent nog geen lid van een groep.
     no_threads:
       show_all: Je hebt geen recente borden.
       show_proposals: Er zijn geen voorstellen actief op dit moment.
@@ -1619,6 +1623,7 @@ nl_NL:
     view_recent: Alle recente discussies bekijken?
     discussion_marked_as_read: Discussie gemarkeerd als gelezen
     discussion_marked_as_unread: Discussie gemarkeerd als ongelezen
+    polls_to_vote_on_count: Peilingen om op te stemmen (%{count})
   threads_page:
     no_direct_threads: Je hebt geen directe borden
     no_invite_only_threads: Je hebt geen alleen-op-uitnodiging-threads
@@ -1745,6 +1750,10 @@ nl_NL:
     newest_first: Nieuwste eerst
     biggest_first: Grootste eerst
     order_by: Sorteer groepen op
+    most_members: De meeste leden
+    least_members: Minste leden
+    newest: Nieuwste
+    oldest: Oudste
   global:
     messages:
       reload: Herladen
@@ -1969,7 +1978,7 @@ nl_NL:
     standalone_warning_title: Overweeg om eerst een discussie te starten
     start_poll_anyway: Toch een poll starten
     start_discussion_instead: Begin in plaats daarvan een discussie
-    standalone_warning_helptext: "<p>Enquêtes werken het beste als mensen eerst over het onderwerp kunnen discussiëren.</p><p> Zonder discussie kunnen kiezers geen vragen stellen, zorgen uiten of verbeteringen voorstellen.</p><p> Voor de beste ervaring begint u met een discussie, bouwt u aan een gedeeld begrip en voegt u vervolgens een poll toe wanneer u klaar bent om de standpunten van mensen vast te leggen.</p>"
+    standalone_warning_helptext: "<p>Peilingen werken het beste als mensen eerst over het onderwerp kunnen discussiëren.</p><p> Zonder discussie kunnen kiezers geen vragen stellen, hun zorgen uiten of verbeteringen voorstellen.</p><p> Voor de beste ervaring begin je met een discussie, creëer je wederzijds begrip en voeg je vervolgens een enquête toe wanneer je klaar bent om de standpunten van mensen te peilen.</p>"
   group_files_panel:
     no_files: Geen bestanden gevonden
     filename: Bestandsnaam
@@ -2694,3 +2703,5 @@ nl_NL:
     confirm_change_to_private: "%{groupName} is een open groep. Als u doorgaat, wordt deze discussie openbaar."
     messages:
       success: Discussie verplaatst naar %{name}
+  auth:
+    oauth_cancelled: Aanmelden is geannuleerd

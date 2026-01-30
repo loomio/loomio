@@ -551,6 +551,7 @@ tr:
     unread_discussions_count: Okunmamış tartışmalar (%{count})
     new_group: Yeni grup
     new_subgroup: Yeni alt grup
+    find_a_group: Bir grup bulun
   strand_nav:
     newest: En yeni
     oldest: En eski
@@ -1329,6 +1330,9 @@ tr:
     allow_polls_without_discussions: Tartışma olmadan anketlere izin ver
     allow_polls_without_discussions_help: İnsanların önce bir tartışma başlatmadan anket başlatmasını engelleyin.
     aria_label: Grup formu
+    list_in_the_groups_directory: Grup dizininde listelensin mi?
+    list_in_directory_yes: Evet · Bu grubu "grup bul" sayfasında göster
+    list_in_directory_no: Hayır, insanlara gruba ulaşmaları için davet gönderilmeli veya bir bağlantı verilmelidir.
   group_export_modal:
     title: Grup verilerini dışa aktar
     body: <p>Grubunuzun verilerinin bir kopyasını istediğiniz zaman indirebilirsiniz. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Daha fazlasını bul.</a></p><p> Grubunuzun büyüklüğüne bağlı olarak tamamlanması birkaç dakika sürer. Hazır olduğunda dosyayı indirme bağlantısını içeren bir e-posta alacaksınız.</p>
@@ -1556,8 +1560,8 @@ tr:
     current_polls: Güncel anketler
     recent_threads: Son konular
     no_groups:
-      show_all: Hoş geldin! Henüz hiçbir gruba üye değilsiniz. <a href="/explore">Genel gruplara göz atın</a> veya <a href="/g/new">Grup başlatın</a> .
       show_muted: Herhangi bir gruba üye olmadığınız için sessize alınan konunuz yok.
+      show_all: Hoş geldiniz! Henüz hiçbir gruba üye değilsiniz.
     no_threads:
       show_all: Herhangi bir yeni müzakereniz yok.
       show_proposals: Şu anda etkin herhangi bir öneri yok.
@@ -1603,6 +1607,7 @@ tr:
     view_recent: Tüm son tartışmaları görüntüle?
     discussion_marked_as_read: Tartışma okundu olarak işaretlendi
     discussion_marked_as_unread: Tartışma okunmamış olarak işaretlendi
+    polls_to_vote_on_count: Oylanacak anketler (%{count})
   threads_page:
     no_direct_threads: Doğrudan konunuz yok
     no_invite_only_threads: Yalnızca davetlilerin katılabileceği bir konunuz yok
@@ -1720,6 +1725,10 @@ tr:
     newest_first: En yeni ilk
     biggest_first: İlk önce en büyüğü
     order_by: 'Grupları şuna göre sırala:'
+    most_members: Üyelerin çoğu
+    least_members: En az üye
+    newest: En Yeni
+    oldest: En Yaşlı
   global:
     messages:
       reload: Tekrar yükle
@@ -1944,7 +1953,7 @@ tr:
     standalone_warning_title: Önce bir tartışma başlatmayı düşünün
     start_poll_anyway: Anketi yine de başlat
     start_discussion_instead: Bunun yerine bir tartışma başlatın
-    standalone_warning_helptext: "<p>Anketler, insanların konuyu önce tartışabildiği durumlarda daha iyi sonuç verir.</p><p> Tartışma olmadan seçmenler soru soramaz, endişelerini dile getiremez veya iyileştirme önerilerinde bulunamaz.</p><p> En iyi deneyim için bir tartışmayla başlayın, ortak bir anlayış oluşturun ve ardından insanların görüşlerini almaya hazır olduğunuzda bir anket ekleyin.</p>"
+    standalone_warning_helptext: "<p>Anketler, insanların önce konu hakkında tartışabilmesi durumunda en iyi sonucu verir.</p><p> Tartışma olmadan seçmenler soru soramaz, endişelerini dile getiremez veya iyileştirme önerilerinde bulunamaz.</p><p> En iyi deneyim için, bir tartışmayla başlayın, ortak bir anlayış oluşturun ve ardından insanların görüşlerini almak için hazır olduğunuzda bir anket ekleyin.</p>"
   group_files_panel:
     no_files: Hiçbir dosya bulunamadı
     filename: Dosya adı
@@ -2665,3 +2674,5 @@ tr:
     confirm_change_to_private: "%{groupName} açık bir gruptur. Devam ederseniz, bu tartışma herkese açık olacaktır."
     messages:
       success: Tartışma %{name}'e taşındı
+  auth:
+    oauth_cancelled: Giriş işlemi iptal edildi.

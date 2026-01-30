@@ -1,11 +1,18 @@
 class Clients::Nextcloud < Clients::Base
 
   def fetch_access_token(code, uri)
-    post 'index.php/apps/oauth2/api/v1/token', params: { code: code, redirect_uri: uri, grant_type: :authorization_code }
+    post(
+      'index.php/apps/oauth2/api/v1/token',
+      params: { code: code, redirect_uri: uri, grant_type: :authorization_code }
+    ).json['access_token']
   end
 
-  def fetch_user_info
-    get 'ocs/v2.php/cloud/user', params: { format: :json }
+  def fetch_identity_params
+    data = get('ocs/v2.php/cloud/user', params: { format: :json }).json['ocs']['data']
+    {
+      uid: data['id'],
+      email: data['email']
+    }
   end
 
   private

@@ -560,6 +560,7 @@ zh_CN:
       threads_list: 帖子操作
       groups_list: 群组
       user_list: 用户操作
+    find_a_group: 找个小组
   strand_nav:
     jump_to: 跳转至
     timeline: 时间线
@@ -1352,6 +1353,9 @@ zh_CN:
       group_updated: 群组更新
     upload_logo: 上传徽标
     upload_cover_photo: 上传封面照片
+    list_in_the_groups_directory: 是否已列入群组目录？
+    list_in_directory_yes: 是的 · 在“查找群组”页面上显示此群组
+    list_in_directory_no: 不，不应邀请他人或提供链接让他们找到该群组。
   group_export_modal:
     title: 导出组数据
     body: <p>您可以随时下载您所在子群组的数据副本。<a href="https://help.loomio.org/en/user_manual/groups/data_export/">了解更多信息。</a></p><p>根据子群组人数，完成此操作大约需要几分钟。完成后，您将收到一封包含文件下载链接的电子邮件。</p>
@@ -1578,8 +1582,8 @@ zh_CN:
     current_polls: 当前民意调查
     recent_discussions: 近期讨论
     no_groups:
-      show_all: 欢迎！您目前还不是任何群组的成员。<a href="/explore">浏览公开群组</a>或<a href="/g/new">创建群组</a>。
       show_muted: 您没有任何被静音的帖子，因为您不是任何群组的成员。
+      show_all: 欢迎！您目前还不是任何群组的成员。
     no_threads:
       show_all: 您最近没有任何讨论。
       show_proposals: 目前没有正在进行的提案。
@@ -1620,6 +1624,7 @@ zh_CN:
       thisweek: 本星期
       thismonth: 本月
       older: 超过一个月
+    polls_to_vote_on_count: 待投票的民意调查 (%{count})
   threads_page:
     no_direct_threads: 您没有直接帖子
     no_invite_only_threads: 您没有仅限受邀者参与的讨论串。
@@ -1745,6 +1750,10 @@ zh_CN:
     newest_first: 最新优先
     biggest_first: 最大的第一
     order_by: 按排序组
+    most_members: 大多数成员
+    least_members: 最少成员
+    newest: 最新
+    oldest: 最老
   global:
     messages:
       app_update: Loomio 已发布新版本，请重新加载。
@@ -1975,9 +1984,9 @@ zh_CN:
     standalone_disabled_helptext: "<p>本群组要求投票必须在讨论中发起。</p><p>讨论有助于人们在投票前了解背景、提出问题并分享观点，从而做出更明智的决策。</p><p>先发起讨论，准备好收集投票后再添加投票。</p>"
     start_discussion: 发起讨论
     standalone_warning_title: 不妨先发起讨论。
-    standalone_warning_helptext: "<p>民意调查在人们能够先讨论相关话题的情况下效果最佳。</p><p>如果没有讨论，投票者就无法提出问题、表达担忧或建议改进措施。这往往会导致参与度降低和结果不明朗。</p><p>我们建议先发起讨论，共同探讨想法，准备就绪后再添加投票。</p>"
     start_poll_anyway: 无论如何，开始投票
     start_discussion_instead: 不如发起一场讨论吧。
+    standalone_warning_helptext: "<p>民意调查在人们能够先讨论相关话题的情况下效果最佳。</p><p>如果没有讨论，选民就无法提出问题、表达担忧或提出改进建议。</p><p>为了获得最佳体验，先进行讨论，建立共识，然后在准备好了解人们的立场时再添加投票。</p>"
   group_files_panel:
     no_files: 未找到文件
     filename: 文件名
@@ -2570,3 +2579,5 @@ zh_CN:
       community: 社区群
       government: 政府/地方政府
       other: 其他
+  auth:
+    oauth_cancelled: 登录已取消

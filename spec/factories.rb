@@ -17,6 +17,15 @@ FactoryBot.define do
     color {"#656565"}
   end
 
+  factory :identity, class: Identity do
+    identity_type { 'oauth' }
+    sequence(:uid) { |n| "user_#{n}" }
+    sequence(:email) { Faker::Internet.email }
+    sequence(:name) { Faker::Name.name }
+    access_token { 'mock_access_token' }
+    association :user
+  end
+
   factory :user do
     sequence(:email) { Faker::Internet.email }
     sequence(:name) { Faker::Name.name }

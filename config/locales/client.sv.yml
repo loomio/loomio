@@ -551,6 +551,7 @@ sv:
     unread_discussions_count: Olästa diskussioner (%{count})
     new_group: Ny grupp
     new_subgroup: Ny undergrupp
+    find_a_group: Hitta en grupp
   strand_nav:
     newest: Nyaste
     oldest: Äldst
@@ -1329,6 +1330,9 @@ sv:
     allow_polls_without_discussions: Tillåt omröstningar utan diskussion
     allow_polls_without_discussions_help: Tillåt fristående omröstningar (rekommenderas inte). Utan en diskussion kan man inte ställa frågor eller skapa enighet effektivt.
     aria_label: Gruppformulär
+    list_in_the_groups_directory: Lista i gruppkatalogen?
+    list_in_directory_yes: Ja · visa den här gruppen på sidan "hitta en grupp"
+    list_in_directory_no: Inga personer ska bjudas in eller få en länk för att hitta gruppen
   group_export_modal:
     title: Exportera gruppdata
     body: <p>Du kan ladda ner en kopia av din grupps data när som helst. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Få reda på mer.</a></p><p> Det tar några minuter att slutföra, beroende på storleken på din grupp. När den är klar får du ett e-postmeddelande med en länk för att ladda ner filen.</p>
@@ -1556,8 +1560,8 @@ sv:
     current_polls: Aktuella omröstningar
     recent_threads: Senaste trådarna
     no_groups:
-      show_all: Välkommen! Du är inte medlem i några grupper än. <a href="/explore">Bläddra bland offentliga grupper</a> eller <a href="/g/new">starta en grupp</a> .
       show_muted: Du har inga avstängda trådar eftersom du inte är medlem i några grupper.
+      show_all: Välkommen! Du är inte medlem i några grupper ännu.
     no_threads:
       show_all: Du har inga nya trådar.
       show_proposals: Det finns inga aktiva förslag för närvarande.
@@ -1598,11 +1602,12 @@ sv:
       thisweek: Denna vecka
       thismonth: Den här månaden
       older: Äldre än en månad
-    dashboard: Instrumentpanel
+    dashboard: Översikt
     recent_discussions: Senaste diskussionerna
     view_recent: Visa alla senaste diskussioner?
     discussion_marked_as_read: Diskussion markerad som läst
     discussion_marked_as_unread: Diskussion markerad som oläst
+    polls_to_vote_on_count: Opinionsundersökningar att rösta på (%{count})
   threads_page:
     no_direct_threads: Du har inga direkta trådar
     no_invite_only_threads: Du har inga trådar endast för inbjudna
@@ -1720,6 +1725,10 @@ sv:
     newest_first: Nyaste först
     biggest_first: Störst först
     order_by: Beställ grupper efter
+    most_members: De flesta medlemmar
+    least_members: Minst antal medlemmar
+    newest: Nyaste
+    oldest: Äldst
   global:
     messages:
       reload: Ladda om
@@ -2665,3 +2674,5 @@ sv:
     confirm_change_to_private: "%{groupName} är en öppen grupp. Om du fortsätter kommer diskussionen att vara offentlig."
     messages:
       success: Diskussionen flyttad till %{name}
+  auth:
+    oauth_cancelled: Inloggningen avbröts

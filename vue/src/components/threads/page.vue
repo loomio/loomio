@@ -70,7 +70,7 @@ v-main
     h1.text-h4.my-4(tabindex="-1" v-intersect="{handler: titleVisible}" v-t="'sidebar.invite_only_discussions'")
     v-layout.pb-3
       v-spacer
-      v-btn.threads-page__new-thread-button(color="primary" to="/d/new" v-t="'sidebar.new_discussion'")
+      v-btn.threads-page__new-thread-button(color="primary" to="/d/new" v-t="'discussions_panel.new_discussion'")
       //- v-text-field(clearable solo hide-details :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_all_threads')" append-icon="mdi-magnify")
 
     v-card.mb-3.dashboard-page__loading(v-if='loader.loading && threads.length == 0' aria-hidden='true')
@@ -78,14 +78,14 @@ v-main
         loading-content(:lineCount='2' v-for='(item, index) in [1,2,3]' :key='index' )
     div(v-else)
       section.threads-page__loaded
-        .threads-page__empty(v-if='threads.length == 0')
-          p(v-t="'threads_page.no_invite_only_threads'")
+        v-card.mb-3(v-if='threads.length == 0')
+          v-card-text(v-t="'threads_page.no_invite_only_threads'")
         .threads-page__collections(v-else)
           v-card.mb-3.thread-preview-collection__container
             v-list.thread-previews(lines="two")
               thread-preview(v-for="thread in threads", :key="thread.id", :thread="thread")
 
-      .d-flex.align-center.justify-center
+      .d-flex.align-center.justify-center(v-if='threads.length > 0')
         div
           p.text-center.text-medium-emphasis(v-t="{path: 'members_panel.loaded_of_total', args: {loaded: threads.length, total: loader.total}}")
           v-btn(v-if="!loader.exhausted" @click="loader.fetchRecords()", :loading="loader.loading", v-t="'common.action.load_more'")

@@ -70,6 +70,34 @@ describe Api::V1::ProfileController do
         user_emails = json['users'].map { |v| v['email'] }
         expect(user_emails).to include user_params[:email]
       end
+
+      context 'when LOOMIO_SSO_FORCE_USER_ATTRS is set' do
+        before do
+          allow(ENV).to receive(:[]).and_call_original
+          allow(ENV).to receive(:[]).with('LOOMIO_SSO_FORCE_USER_ATTRS').and_return('true')
+        end
+
+        it 'ignores name, email, and username updates' do
+          original_name = user.name
+          original_email = user.email
+          original_username = user.username
+          
+          post :update_profile, params: { user: { name: 'new name', email: 'new@email.com', username: 'newusername' } }, format: :json
+          
+          expect(response.status).to eq 200
+          expect(user.reload.name).to eq original_name
+          expect(user.reload.email).to eq original_email
+          expect(user.reload.username).to eq original_username
+        end
+
+        it 'allows updates to other profile fields' do
+          post :update_profile, params: { user: { short_bio: 'new bio', location: 'new location' } }, format: :json
+          
+          expect(response.status).to eq 200
+          expect(user.reload.short_bio).to eq 'new bio'
+          expect(user.reload.location).to eq 'new location'
+        end
+      end
     end
   end
 

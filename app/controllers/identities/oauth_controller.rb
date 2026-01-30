@@ -11,6 +11,7 @@ class Identities::OauthController < Identities::BaseController
   end
 
   def oauth_params
+    client = Clients::Oauth.instance
     { client.client_key_name => client.key, redirect_uri: redirect_uri, scope: ENV.fetch('OAUTH_SCOPE'),  response_type: :code }
   end
 end

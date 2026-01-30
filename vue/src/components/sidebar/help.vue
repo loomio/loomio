@@ -12,7 +12,6 @@ export default {
 
   computed: {
     canStartDemo() { return AppConfig.features.app.demos; },
-    canViewPublicGroups() { return AbilityService.canViewPublicGroups(); },
     showExploreGroups() { return AppConfig.features.app.explore_public_groups; },
     showHelp() { return AppConfig.features.app.help_link; },
     helpURL() {
@@ -48,7 +47,7 @@ export default {
 
 v-list(nav lines="two")
   v-list-item(to="/explore" v-if="showExploreGroups")
-    v-list-item-title(v-t="'sidebar.explore_groups'")
+    v-list-item-title(v-t="'sidebar.find_a_group'")
     template(v-slot:append)
       common-icon(name="mdi-map-search")
   v-list-item.sidebar-start-demo(v-if="canStartDemo" @click="startOrFindDemo" lines="two")

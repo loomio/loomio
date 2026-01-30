@@ -128,9 +128,37 @@ describe Api::V1::GroupsController do
       end
     end
 
+    context 'signed in non-member' do
+      let(:non_member) { create :user }
+      let(:closed_group) { create :group, group_privacy: 'closed' }
+      let!(:tag) { create :tag, group_id: closed_group.id, name: 'test-tag', color: '#abc' }
+
+      before do
+        sign_in non_member
+      end
+
+      it 'does not return group tags if group is closed' do
+        get :show, params: { id: closed_group.key }, format: :json
+        json = JSON.parse(response.body)
+        expect(response.status).to eq 200
+        group_ids = json['groups'].map { |g| g['id'] }
+        expect(group_ids).to include closed_group.id
+        expect(json['tags']).to be_nil
+      end
+    end
+
     context 'logged out' do
       let(:private_group) { create(:group, is_visible_to_public: false) }
       let(:public_group) { create :group, creator: user, is_visible_to_public: true }
+
+      it 'does not return group tags if group is closed' do
+        get :show, params: { id: public_group.key }, format: :json
+        json = JSON.parse(response.body)
+        expect(response.status).to eq 200
+        group_ids = json['groups'].map { |g| g['id'] }
+        expect(group_ids).to include public_group.id
+      end
+
       it 'returns public groups if the user is logged out' do
         get :show, params: { id: public_group.key }, format: :json
         json = JSON.parse(response.body)
@@ -208,19 +236,78 @@ describe Api::V1::GroupsController do
   describe 'count_explore_results' do
     before { sign_in user }
     it 'returns the number of explore group results matching the search term' do
-      group.update(group_privacy: 'open')
+      group.update(group_privacy: 'open', listed_in_explore: true)
       group.update_attribute(:name, 'exploration team')
       group.update_attribute(:memberships_count, 5)
       group.update_attribute(:discussions_count, 3)
       group.subscription = Subscription.create(plan: 'trial', state: 'active')
       group.save
-      second_explore_group = create(:group, name: 'inspection group', group_privacy: 'open')
+      second_explore_group = create(:group, name: 'inspection group', group_privacy: 'open', listed_in_explore: true)
       second_explore_group.update_attribute(:memberships_count, 5)
       second_explore_group.update_attribute(:discussions_count, 3)
       second_explore_group.subscription = Subscription.create(plan: 'trial', state: 'active')
       second_explore_group.save
       get :count_explore_results, params: { q: 'team' }
       expect(JSON.parse(response.body)['count']).to eq 1
+    end
+  end
+
+  describe 'LOOMIO_RESTRICT_EXPLORE_TO_SIGNED_IN_USERS' do
+    let(:explore_group) { create(:group, group_privacy: 'open', listed_in_explore: true) }
+
+    before do
+      explore_group.update_attribute(:memberships_count, 5)
+      explore_group.update_attribute(:discussions_count, 3)
+      explore_group.subscription = Subscription.create(plan: 'trial', state: 'active')
+      explore_group.save
+    end
+
+    context 'when restriction is disabled' do
+      before do
+        allow(AppConfig).to receive(:app_features).and_return({ restrict_explore_to_signed_in_users: false })
+      end
+
+      it 'allows logged out users to access index' do
+        get :index, params: { q: 'test' }
+        expect(response.status).to eq 200
+      end
+
+      it 'allows logged out users to access count_explore_results' do
+        get :count_explore_results, params: { q: 'test' }
+        expect(response.status).to eq 200
+      end
+    end
+
+    context 'when restriction is enabled' do
+      before do
+        allow(AppConfig).to receive(:app_features).and_return({ restrict_explore_to_signed_in_users: true })
+      end
+
+      it 'prevents logged out users from accessing index' do
+        get :index, params: { q: 'test' }
+        expect(response.status).to eq 401
+        json = JSON.parse(response.body)
+        expect(json['error']).to eq 'you gotta be signed in'
+      end
+
+      it 'prevents logged out users from accessing count_explore_results' do
+        get :count_explore_results, params: { q: 'test' }
+        expect(response.status).to eq 401
+        json = JSON.parse(response.body)
+        expect(json['error']).to eq 'you gotta be signed in'
+      end
+
+      it 'allows signed in users to access index' do
+        sign_in user
+        get :index, params: { q: 'test' }
+        expect(response.status).to eq 200
+      end
+
+      it 'allows signed in users to access count_explore_results' do
+        sign_in user
+        get :count_explore_results, params: { q: 'test' }
+        expect(response.status).to eq 200
+      end
     end
   end
 

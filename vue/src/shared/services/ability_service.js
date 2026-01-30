@@ -264,10 +264,6 @@ export default new class AbilityService {
     return (group.membersCanAddMembers && group.membersInclude(Session.user())) || group.adminsInclude(Session.user());
   }
 
-  canViewPublicGroups() {
-    return AppConfig.features.app.public_groups;
-  }
-
   canStartGroups() {
     return this.isEmailVerified() && (AppConfig.features.app.create_group || Session.user().isAdmin);
   }

@@ -133,10 +133,10 @@ export default
     },
 
     membershipGrantedUponOptions() {
-      if (this.group.groupPrivacy == 'open') {
-        return ['request', 'approval', 'invitation']
-      } else {
+      if (AppConfig.features.app.create_user) {
         return ['approval', 'invitation']
+      } else {
+        return ['request', 'approval', 'invitation']
       }
     },
 
@@ -237,6 +237,8 @@ v-card.group-form(:title="$t(cardTitle)")
     v-tabs-window-item(value="privacy")
       .mt-8.px-4
         .group-form__section.group-form__privacy
+          v-list-subheader(v-t="'group_form.privacy'")
+          p.text-medium-emphasis.text-caption.mb-4(v-t="'group_form.privacy_statement.private_to_group'")
           v-radio-group(v-model='group.groupPrivacy')
             v-radio(
               v-for='privacy in privacyOptions'
@@ -252,7 +254,16 @@ v-card.group-form(:title="$t(cardTitle)")
                   span {{ privacyStringFor(privacy) }}
           validation-errors(:subject="group" field="groupPrivacy")
 
-        p.group-form__privacy-statement.text-medium-emphasis(v-if="group.groupPrivacy != 'secret'") {{privacyStatement}}
+        .group-form__section.group-form__explore-listing(v-if='!group.parentId && group.groupPrivacy != "secret"')
+          v-list-subheader(v-t="'group_form.list_in_the_groups_directory'")
+          v-radio-group(v-model='group.listedInExplore')
+            v-radio(:value='true')
+              template(v-slot:label)
+                span(v-t="'group_form.list_in_directory_yes'")
+            v-radio(:value='false')
+              template(v-slot:label)
+                span(v-t="'group_form.list_in_directory_no'")
+
         .group-form__section.group-form__joining.lmo-form-group(v-if='group.groupPrivacy != "secret"')
           v-list-subheader(v-t="'group_form.how_do_people_join'")
           v-radio-group(v-model='group.membershipGrantedUpon')

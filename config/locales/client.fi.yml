@@ -551,6 +551,7 @@ fi:
     unread_discussions_count: Lukemattomat keskustelut (%{count})
     new_group: Uusi ryhmä
     new_subgroup: Uusi alaryhmä
+    find_a_group: Etsi ryhmä
   strand_nav:
     newest: Uusin
     oldest: Vanhin
@@ -1329,6 +1330,9 @@ fi:
     allow_polls_without_discussions: Salli kyselyt ilman keskustelua
     allow_polls_without_discussions_help: Estä ihmisiä aloittamasta kyselyitä ilman keskustelun aloittamista ensin.
     aria_label: Ryhmälomake
+    list_in_the_groups_directory: Lista ryhmien hakemistossa?
+    list_in_directory_yes: Kyllä · näytä tämä ryhmä "etsi ryhmä" -sivulla
+    list_in_directory_no: Ei · ihmisiä tulisi kutsua ryhmään tai antaa heille linkkiä ryhmän löytämiseksi
   group_export_modal:
     title: Vie ryhmätiedot
     body: <p>Voit ladata kopion ryhmäsi tiedoista milloin tahansa. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Lue lisää.</a></p><p> Suorittaminen kestää muutaman minuutin ryhmäsi koosta riippuen. Kun se on valmis, saat sähköpostin, jossa on linkki tiedoston lataamiseen.</p>
@@ -1556,8 +1560,8 @@ fi:
     current_polls: Nykyiset gallupit
     recent_threads: Viimeaikaiset ketjut
     no_groups:
-      show_all: Tervetuloa! Et ole vielä minkään ryhmän jäsen. <a href="/explore">Selaa julkisia ryhmiä</a> tai <a href="/g/new">aloita ryhmä</a> .
       show_muted: Sinulla ei ole yhtään mykistettyä viestiketjua, koska et ole minkään ryhmän jäsen.
+      show_all: Tervetuloa! Et ole vielä minkään ryhmän jäsen.
     no_threads:
       show_all: Sinulla ei ole viimeaikaisia ketjuja.
       show_proposals: Tällä hetkellä ei ole aktiivisia ehdotuksia.
@@ -1598,11 +1602,12 @@ fi:
       thisweek: Tämä viikko
       thismonth: Tässä kuussa
       older: Yli kuukauden vanhempi
-    dashboard: Kojelauta
+    dashboard: Yleiskatsaus
     recent_discussions: Viimeaikaiset keskustelut
     view_recent: Näyttääkö kaikki viimeaikaiset keskustelut?
     discussion_marked_as_read: Keskustelu merkitty luetuksi
     discussion_marked_as_unread: Keskustelu merkitty lukemattomaksi
+    polls_to_vote_on_count: Äänestettävät kyselyt (%{count})
   threads_page:
     no_direct_threads: Sinulla ei ole suoria lankoja
     no_invite_only_threads: Sinulla ei ole kutsusta lähetettäviä keskusteluketjuja
@@ -1720,6 +1725,10 @@ fi:
     newest_first: Uusin ensin
     biggest_first: Suurin ensin
     order_by: Tilaa ryhmät mukaan
+    most_members: Useimmat jäsenet
+    least_members: Vähiten jäseniä
+    newest: Uusin
+    oldest: Vanhin
   global:
     messages:
       reload: Lataa uudelleen
@@ -2665,3 +2674,5 @@ fi:
     confirm_change_to_private: "%{groupName} on avoin ryhmä. Jos jatkat, tästä keskustelusta tulee julkinen."
     messages:
       success: Keskustelu siirretty keskusteluun %{name}
+  auth:
+    oauth_cancelled: Kirjautuminen peruutettiin

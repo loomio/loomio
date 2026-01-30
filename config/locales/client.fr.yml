@@ -563,6 +563,7 @@ fr:
     unread_discussions_count: Discussions non lues (%{count})
     new_group: Nouveau groupe
     new_subgroup: Nouveau sous-groupe
+    find_a_group: Trouver un groupe
   strand_nav:
     newest: Les plus récents
     oldest: Les plus anciens
@@ -1358,6 +1359,9 @@ fr:
     allow_polls_without_discussions: Autoriser les sondages sans discussion
     allow_polls_without_discussions_help: Empêcher les gens de lancer des sondages sans d'abord démarrer une discussion.
     aria_label: Forme de groupe
+    list_in_the_groups_directory: Liste dans l'annuaire des groupes ?
+    list_in_directory_yes: Oui · afficher ce groupe sur la page « Trouver un groupe »
+    list_in_directory_no: Non, les gens ne devraient pas être invités ni recevoir de lien pour trouver le groupe.
   group_export_modal:
     title: Exporter les données de votre groupe
     body: |
@@ -1593,8 +1597,8 @@ fr:
     current_polls: Sondages actuels
     recent_threads: Discussions récentes
     no_groups:
-      show_all: Bienvenue ! Vous n'êtes membres d'aucun groupe pour le moment. <a href="/explore">Parcourir la liste des groupes publics</a> ou <a href="/g/new">Démarrer un groupe</a>.
       show_muted: Aucune discussion ignorée car vous n’êtes membre d’aucun groupe.
+      show_all: Bienvenue ! Vous n'êtes encore membre d'aucun groupe.
     no_threads:
       show_all: Vous n’avez aucune discussion récente.
       show_proposals: Il n’y a aucune proposition active actuellement.
@@ -1640,6 +1644,7 @@ fr:
     view_recent: Voir toutes les discussions récentes ?
     discussion_marked_as_read: Discussion marquée comme lue
     discussion_marked_as_unread: Discussion marquée comme non lue
+    polls_to_vote_on_count: Sondages sur lesquels voter (%{count})
   threads_page:
     no_direct_threads: Vous n'avez pas de discussion directe
     no_invite_only_threads: Vous n'avez pas de sujets accessibles uniquement sur invitation.
@@ -1764,6 +1769,10 @@ fr:
     newest_first: Les plus récents en premier
     biggest_first: Du plus grand au plus petit
     order_by: Trier les groupes par
+    most_members: La plupart des membres
+    least_members: Membres les moins nombreux
+    newest: Nouveautés
+    oldest: Le plus ancien
   global:
     messages:
       reload: Recharger
@@ -2711,3 +2720,5 @@ fr:
     confirm_change_to_private: "%{groupName} est un groupe ouvert. Si vous continuez, cette discussion sera publique."
     messages:
       success: Discussion déplacée vers %{name}
+  auth:
+    oauth_cancelled: La connexion a été annulée.
