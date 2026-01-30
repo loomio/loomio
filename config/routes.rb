@@ -406,7 +406,7 @@ Rails.application.routes.draw do
   get 'g/new'                              => 'application#index', as: :new_group
   get 'd/new'                              => 'application#index', as: :new_discussion
   get 'p/new(/:type)'                      => 'application#index', as: :new_poll
-  get 'threads/direct'                     => 'application#index', as: :groupless_threads
+  get 'dashboard/direct_discussions'       => 'application#index', as: :direct_discussions
   get 'tasks'                              => 'application#index', as: :tasks
   get 'poll_templates/new'                 => 'application#index'
   get 'poll_templates/:id'                 => 'application#index'

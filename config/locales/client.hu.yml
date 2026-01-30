@@ -554,6 +554,7 @@ hu:
     new_group: Új csoport
     new_subgroup: Új alcsoport
     find_a_group: Csoport keresése
+    direct_discussions: Közvetlen megbeszélések
   strand_nav:
     newest: Legújabb
     oldest: Legrégebbi
@@ -837,6 +838,8 @@ hu:
     discussion_updated: Vita frissítve
     discussion_created: Beszélgetés létrehozva
     discussion_started: Megbeszélés elkezdődött
+    none_direct_discussion: Nincs (közvetlen megbeszélés)
+    direct_discussion: Közvetlen beszélgetés
   announcement:
     send_discussion: Téma küldése
     send_group: 'Meghívás a következőhöz: %{name}'
@@ -1615,6 +1618,9 @@ hu:
   threads_page:
     no_direct_threads: Nincsenek közvetlen szálaid
     no_invite_only_threads: Nincsenek meghívásos beszélgetéseid
+    no_direct_discussions: Nincsenek közvetlen megbeszéléseid
+    no_direct_discussions_title: Nincsenek közvetlen megbeszéléseid
+    no_direct_discussions_helptext: A közvetlen beszélgetések célja, hogy közvetlenül kapcsolatba lépjünk egy másik felhasználóval anélkül, hogy a beszélgetés egy csoporthoz tartozna.
   inbox_page:
     no_threads: Ju Hú! Elolvasta a beérkező levelek összes témát.
     unread_threads: Olvasatlan témák
@@ -1645,6 +1651,7 @@ hu:
     volume:
       mute_message: Beszélgetés némítva
       unmute_message: Beszélgetés némítása feloldva
+    direct: Közvetlen
   discussion_last_seen_by:
     title: Látta
     no_one: Még senki sem látta

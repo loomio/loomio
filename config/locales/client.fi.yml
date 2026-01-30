@@ -552,6 +552,7 @@ fi:
     new_group: Uusi ryhmä
     new_subgroup: Uusi alaryhmä
     find_a_group: Etsi ryhmä
+    direct_discussions: Suorat keskustelut
   strand_nav:
     newest: Uusin
     oldest: Vanhin
@@ -835,6 +836,8 @@ fi:
     discussion_updated: Keskustelu päivitetty
     discussion_created: Keskustelu luotu
     discussion_started: Keskustelu aloitettu
+    none_direct_discussion: Ei mitään (suora keskustelu)
+    direct_discussion: Suora keskustelu
   announcement:
     send_discussion: Lähetä lanka
     send_group: Kutsu ihmisiä %{name}
@@ -1611,6 +1614,9 @@ fi:
   threads_page:
     no_direct_threads: Sinulla ei ole suoria lankoja
     no_invite_only_threads: Sinulla ei ole kutsusta lähetettäviä keskusteluketjuja
+    no_direct_discussions: Sinulla ei ole suoria keskusteluja
+    no_direct_discussions_title: Sinulla ei ole suoria keskusteluja
+    no_direct_discussions_helptext: Suorat keskustelut on tarkoitettu yhteydenpitoon toiseen käyttäjään suoraan ilman, että keskustelu kuuluu mihinkään ryhmään.
   inbox_page:
     no_threads: Woohoo! Olet lukenut kaikki postilaatikossasi olevat viestiketjut.
     unread_threads: Lukemattomat ketjut
@@ -1641,6 +1647,7 @@ fi:
     volume:
       mute_message: Keskustelu mykistetty
       unmute_message: Keskustelun mykistys poistettu
+    direct: Suoraan
   discussion_last_seen_by:
     title: Nähnyt
     no_one: Kukaan ei ole vielä nähnyt tätä

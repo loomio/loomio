@@ -552,6 +552,7 @@ sv:
     new_group: Ny grupp
     new_subgroup: Ny undergrupp
     find_a_group: Hitta en grupp
+    direct_discussions: Direkta diskussioner
   strand_nav:
     newest: Nyaste
     oldest: Äldst
@@ -835,6 +836,8 @@ sv:
     discussion_updated: Diskussionen uppdaterades
     discussion_created: Diskussion skapad
     discussion_started: Diskussionen har startat
+    none_direct_discussion: Ingen (direkt diskussion)
+    direct_discussion: Direkt diskussion
   announcement:
     send_discussion: Skicka tråd
     send_group: Bjud in personer till %{name}
@@ -1611,6 +1614,9 @@ sv:
   threads_page:
     no_direct_threads: Du har inga direkta trådar
     no_invite_only_threads: Du har inga trådar endast för inbjudna
+    no_direct_discussions: Du har inga direkta diskussioner
+    no_direct_discussions_title: Du har inga direkta diskussioner
+    no_direct_discussions_helptext: Direkta diskussioner är till för att kontakta en annan användare direkt, utan att diskussionen tillhör en grupp.
   inbox_page:
     no_threads: Woohoo! Du har läst alla trådar i din inkorg.
     unread_threads: Olästa trådar
@@ -1641,6 +1647,7 @@ sv:
     volume:
       mute_message: Diskussionen är tystad
       unmute_message: Diskussionen har avaktiverats
+    direct: Direkt
   discussion_last_seen_by:
     title: Ses av
     no_one: Ingen har sett detta än

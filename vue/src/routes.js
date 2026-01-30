@@ -68,7 +68,7 @@ const router = createRouter({
     {path: '/dashboard', component: DashboardPage},
     {path: '/dashboard/polls_to_vote_on', component: PollsToVoteOnPage},
     {path: '/dashboard/:filter', component: DashboardPage},
-    {path: '/threads/direct', component: ThreadsPage},
+    {path: '/dashboard/direct_discussions', component: ThreadsPage},
     {path: '/inbox', component: InboxPage },
     {path: '/explore', component: ExplorePage},
     {path: '/profile', component: ProfilePage},

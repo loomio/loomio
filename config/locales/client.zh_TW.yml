@@ -557,6 +557,7 @@ zh_TW:
     new_group: 新組
     new_subgroup: 新小組
     find_a_group: 找個小組
+    direct_discussions: 直接討論
   strand_nav:
     newest: 最新
     oldest: 最舊
@@ -840,6 +841,8 @@ zh_TW:
     discussion_updated: 討論已更新
     discussion_created: 討論已創建
     discussion_started: 討論開始
+    none_direct_discussion: 無（直接討論）
+    direct_discussion: 直接討論
   announcement:
     send_discussion: 傳送討論串
     send_group: 邀請夥伴到 %{name}
@@ -1630,6 +1633,9 @@ zh_TW:
   threads_page:
     no_direct_threads: 您沒有直接討論串
     no_invite_only_threads: 您沒有僅限受邀者參與的討論串。
+    no_direct_discussions: 你們之間沒有直接的討論。
+    no_direct_discussions_title: 你們之間沒有直接的討論。
+    no_direct_discussions_helptext: 直接討論是指直接聯繫其他用戶，而不屬於任何群組的討論。
   inbox_page:
     no_threads: 太棒了！您已經讀完了您收件匣中所有的討論串。
     unread_threads: 未讀的討論串
@@ -1664,6 +1670,7 @@ zh_TW:
     volume:
       mute_message: 討論已靜音
       unmute_message: 討論已解除靜音
+    direct: 直接的
   discussion_last_seen_by:
     title: 被這些人看過：
     no_one: 還沒有人看過這個

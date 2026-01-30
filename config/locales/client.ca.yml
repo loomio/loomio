@@ -556,6 +556,7 @@ ca:
     new_group: Grup nou
     new_subgroup: Nou subgrup
     find_a_group: Troba un grup
+    direct_discussions: Discussions directes
   strand_nav:
     newest: Més recent
     oldest: Més antic
@@ -839,6 +840,8 @@ ca:
     discussion_updated: Discussió actualitzada
     discussion_created: Discussió creada
     discussion_started: Discussió iniciada
+    none_direct_discussion: Cap (discussió directa)
+    direct_discussion: Discussió directa
   announcement:
     send_discussion: Envia fil
     send_group: Convida gent a %{name}
@@ -1629,6 +1632,9 @@ ca:
   threads_page:
     no_direct_threads: No teniu fils directes
     no_invite_only_threads: No tens fils només per invitació
+    no_direct_discussions: No tens converses directes
+    no_direct_discussions_title: No tens converses directes
+    no_direct_discussions_helptext: Les discussions directes serveixen per contactar directament amb un altre usuari, sense que la discussió pertanyi a un grup.
   inbox_page:
     no_threads: Heu llegit tots els fils de la vostra safata.
     unread_threads: FIls no llegits
@@ -1663,6 +1669,7 @@ ca:
     volume:
       mute_message: Discussió silenciada
       unmute_message: Discussió activada
+    direct: Directe
   discussion_last_seen_by:
     title: Vist per
     no_one: Encara no ho ha vist ningú

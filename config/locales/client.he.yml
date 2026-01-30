@@ -552,6 +552,7 @@ he:
     new_group: קבוצה חדשה
     new_subgroup: תת-קבוצה חדשה
     find_a_group: מצא קבוצה
+    direct_discussions: דיונים ישירים
   strand_nav:
     newest: החדש ביותר
     oldest: הוותיק ביותר
@@ -835,6 +836,8 @@ he:
     discussion_updated: הדיון עודכן
     discussion_created: דיון נוצר
     discussion_started: הדיון התחיל
+    none_direct_discussion: אין (דיון ישיר)
+    direct_discussion: דיון ישיר
   announcement:
     send_discussion: שלח שרשור
     send_group: הזמן אנשים ל-%{name}
@@ -1623,6 +1626,9 @@ he:
   threads_page:
     no_direct_threads: אין לך שרשורים ישירים
     no_invite_only_threads: אין לך שרשורים למוזמנים בלבד
+    no_direct_discussions: אין לך דיונים ישירים
+    no_direct_discussions_title: אין לך דיונים ישירים
+    no_direct_discussions_helptext: דיונים ישירים נועדו ליצירת קשר ישיר עם משתמש אחר, מבלי שהדיון שייך לקבוצה.
   inbox_page:
     no_threads: וואו! קראת את כל השיחות בתיבת המייל שלך
     unread_threads: שיחות שלא נקראו
@@ -1655,6 +1661,7 @@ he:
     volume:
       mute_message: הדיון הושתק
       unmute_message: השתקת הדיון בוטלה
+    direct: יָשִׁיר
   discussion_last_seen_by:
     title: נראה ע"י
     no_one: אף אחד לא ראה את זה עדיין

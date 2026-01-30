@@ -552,6 +552,7 @@ ro:
     new_group: Grup nou
     new_subgroup: Subgrup nou
     find_a_group: Găsește un grup
+    direct_discussions: Discuții directe
   strand_nav:
     newest: Cel mai nou
     oldest: Cel mai vechi
@@ -835,6 +836,8 @@ ro:
     discussion_updated: Discuția a fost actualizată
     discussion_created: Discuție creată
     discussion_started: Discuția a început
+    none_direct_discussion: Niciunul (discuție directă)
+    direct_discussion: Discuție directă
   announcement:
     send_discussion: Trimiteți firul
     send_group: Invită persoane la %{name}
@@ -1611,6 +1614,9 @@ ro:
   threads_page:
     no_direct_threads: Nu ai fire directe
     no_invite_only_threads: Nu aveți subiecte de discuție doar pe invitație
+    no_direct_discussions: Nu aveți discuții directe
+    no_direct_discussions_title: Nu aveți discuții directe
+    no_direct_discussions_helptext: Discuțiile directe sunt pentru a contacta direct un alt utilizator, fără ca discuția să aparțină unui grup.
   inbox_page:
     no_threads: Woohoo! Ai citit toate discutiile din inbox.
     unread_threads: Discutii necitite
@@ -1641,6 +1647,7 @@ ro:
     volume:
       mute_message: Discuție dezactivată
       unmute_message: Discuție activată
+    direct: Direct
   discussion_last_seen_by:
     title: Văzut de
     no_one: Nimeni nu a văzut asta încă

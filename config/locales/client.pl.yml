@@ -556,6 +556,7 @@ pl:
     new_group: Nowa grupa
     new_subgroup: Nowa podgrupa
     find_a_group: Znajdź grupę
+    direct_discussions: Dyskusje bezpośrednie
   strand_nav:
     newest: Najnowsze
     oldest: 'Od najstarszych '
@@ -839,6 +840,8 @@ pl:
     discussion_updated: Dyskusja zaktualizowana
     discussion_created: Utworzono dyskusję
     discussion_started: Rozpoczęto dyskusję
+    none_direct_discussion: Brak (bezpośrednia dyskusja)
+    direct_discussion: Bezpośrednia dyskusja
   announcement:
     send_discussion: Wyślij wątek
     send_group: Zaproś ludzi do %{name}
@@ -1627,6 +1630,9 @@ pl:
   threads_page:
     no_direct_threads: Nie masz żadnych bezpośrednich wątków
     no_invite_only_threads: Nie masz żadnych wątków dostępnych tylko na zaproszenie
+    no_direct_discussions: Nie prowadzisz żadnych bezpośrednich dyskusji
+    no_direct_discussions_title: Nie prowadzisz żadnych bezpośrednich dyskusji
+    no_direct_discussions_helptext: Dyskusje bezpośrednie służą do bezpośredniego kontaktu z innym użytkownikiem, bez konieczności prowadzenia dyskusji w ramach grupy.
   inbox_page:
     no_threads: Hura! Przeczytałeś/aś wszystkie wątki z Twojej skrzynki.
     unread_threads: Nieprzeczytane Wątki
@@ -1661,6 +1667,7 @@ pl:
     volume:
       mute_message: Dyskusja wyciszona
       unmute_message: Dyskusja włączona
+    direct: Bezpośredni
   discussion_last_seen_by:
     title: Wyświetlone przez
     no_one: Nikt jeszcze tego nie widział

@@ -123,7 +123,7 @@ export default {
     },
 
     updateGroupItems() {
-      this.groupItems = [{title: this.$t('discussion_form.none_invite_only_discussion'), value: null}].concat(Session.user().groups().map(g => ({
+      this.groupItems = [{title: this.$t('discussion_form.none_direct_discussion'), value: null}].concat(Session.user().groups().map(g => ({
         title: g.fullName,
         value: g.id
       })));

@@ -67,7 +67,7 @@ export default {
 <template lang="pug">
 v-main
   v-container.threads-page.max-width-1024.px-0.px-sm-3
-    h1.text-h4.my-4(tabindex="-1" v-intersect="{handler: titleVisible}" v-t="'sidebar.invite_only_discussions'")
+    h1.text-h4.my-4(tabindex="-1" v-intersect="{handler: titleVisible}" v-t="'sidebar.direct_discussions'")
     v-layout.pb-3
       v-spacer
       v-btn.threads-page__new-thread-button(color="primary" to="/d/new" v-t="'discussions_panel.new_discussion'")
@@ -78,8 +78,9 @@ v-main
         loading-content(:lineCount='2' v-for='(item, index) in [1,2,3]' :key='index' )
     div(v-else)
       section.threads-page__loaded
-        v-card.mb-3(v-if='threads.length == 0')
-          v-card-text(v-t="'threads_page.no_invite_only_threads'")
+        v-alert.mb-3(v-if='threads.length == 0' type="info" variant="tonal")
+          div(v-t="'threads_page.no_direct_discussions_title'")
+          div.text-body-2.mt-2(v-t="'threads_page.no_direct_discussions_helptext'")
         .threads-page__collections(v-else)
           v-card.mb-3.thread-preview-collection__container
             v-list.thread-previews(lines="two")

@@ -552,6 +552,7 @@ sl:
     new_group: Nova skupina
     new_subgroup: Nova podskupina
     find_a_group: Poiščite skupino
+    direct_discussions: Neposredne razprave
   strand_nav:
     newest: Najnovejša
     oldest: Najstarejši
@@ -835,6 +836,8 @@ sl:
     discussion_updated: Razprava posodobljena
     discussion_created: Razprava ustvarjena
     discussion_started: Razprava se je začela
+    none_direct_discussion: Brez (neposredna razprava)
+    direct_discussion: Neposredna razprava
   announcement:
     send_discussion: Pošlji nit
     send_group: Povabi ljudi v %{name}
@@ -1611,6 +1614,9 @@ sl:
   threads_page:
     no_direct_threads: Nimate neposrednih niti
     no_invite_only_threads: Nimate niti samo za povabilo
+    no_direct_discussions: Nimate neposrednih razprav
+    no_direct_discussions_title: Nimate neposrednih razprav
+    no_direct_discussions_helptext: Neposredne razprave so namenjene neposrednemu stiku z drugim uporabnikom, ne da bi razprava pripadala skupini.
   inbox_page:
     no_threads: Juhu! Prebrali ste vse teme v mapi »Prejeto«.
     unread_threads: Neprebrane niti
@@ -1641,6 +1647,7 @@ sl:
     volume:
       mute_message: Razprava je utišana
       unmute_message: Razprava je bila ponovno prezrta
+    direct: Neposredno
   discussion_last_seen_by:
     title: Videno od
     no_one: Tega še nihče ni videl

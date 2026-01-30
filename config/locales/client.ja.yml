@@ -551,6 +551,7 @@ ja:
     new_group: 新しいグループ
     new_subgroup: 新しいサブグループ
     find_a_group: グループを探す
+    direct_discussions: 直接の議論
   strand_nav:
     newest: 最新
     oldest: 最古の
@@ -834,6 +835,8 @@ ja:
     discussion_updated: ディスカッションを更新しました
     discussion_created: ディスカッションを作成しました
     discussion_started: 議論開始
+    none_direct_discussion: なし（直接議論）
+    direct_discussion: 直接の議論
   announcement:
     send_discussion: スレッドの送信
     send_group: 他の人を %{name} に招待します
@@ -1610,6 +1613,9 @@ ja:
   threads_page:
     no_direct_threads: 直接のスレッドはありません
     no_invite_only_threads: 招待限定のスレッドはありません
+    no_direct_discussions: 直接の議論はありません
+    no_direct_discussions_title: 直接の議論はありません
+    no_direct_discussions_helptext: 直接ディスカッションは、ディスカッションをグループに属さずに、他のユーザーに直接連絡するためのものです。
   inbox_page:
     no_threads: うおおお！受信箱のスレッドをすべて読みました。
     unread_threads: 未読のスレッド
@@ -1640,6 +1646,7 @@ ja:
     volume:
       mute_message: 議論はミュートされました
       unmute_message: ディスカッションのミュートを解除
+    direct: 直接
   discussion_last_seen_by:
     title: で見られる
     no_one: まだ誰もこれを見ていません

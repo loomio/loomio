@@ -16,7 +16,7 @@ module Null::Group
   end
 
   def full_name
-    I18n.t('discussion.invite_only')
+    I18n.t('discussion.direct')
   end
 
   def save
@@ -24,7 +24,7 @@ module Null::Group
   end
 
   def name
-    I18n.t('discussion.invite_only')
+    I18n.t('discussion.direct')
   end
 
   def nil_methods

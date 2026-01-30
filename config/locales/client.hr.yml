@@ -552,6 +552,7 @@ hr:
     new_group: Nova grupa
     new_subgroup: Nova podgrupa
     find_a_group: Pronađite grupu
+    direct_discussions: Izravne rasprave
   strand_nav:
     newest: Najnoviji
     oldest: Najstariji
@@ -835,6 +836,8 @@ hr:
     discussion_updated: Rasprava ažurirana
     discussion_created: Rasprava je kreirana
     discussion_started: Rasprava je započela
+    none_direct_discussion: Ništa (izravna rasprava)
+    direct_discussion: Izravna rasprava
   announcement:
     send_discussion: Pošalji nit
     send_group: Pozovi ljude u %{name}
@@ -1611,6 +1614,9 @@ hr:
   threads_page:
     no_direct_threads: Nemate izravnih niti
     no_invite_only_threads: Nemate niti samo za pozvane
+    no_direct_discussions: Nemate izravnih rasprava
+    no_direct_discussions_title: Nemate izravnih rasprava
+    no_direct_discussions_helptext: Izravne rasprave služe za izravno kontaktiranje drugog korisnika, bez da rasprava pripada grupi.
   inbox_page:
     no_threads: Juhu! Pročitali ste sve teme u svojoj pristigloj pošti.
     unread_threads: Nepročitane niti
@@ -1641,6 +1647,7 @@ hr:
     volume:
       mute_message: Rasprava je utišana
       unmute_message: Utišavanje rasprave uključeno
+    direct: Izravno
   discussion_last_seen_by:
     title: vidio od
     no_one: Ovo još nitko nije vidio

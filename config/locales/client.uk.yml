@@ -557,6 +557,7 @@ uk:
     new_group: Нова група
     new_subgroup: Нова підгрупа
     find_a_group: Знайти групу
+    direct_discussions: Прямі обговорення
   strand_nav:
     newest: Найновіші
     oldest: Найстарші
@@ -840,6 +841,8 @@ uk:
     discussion_updated: Обговорення оновлено
     discussion_created: Обговорення створено
     discussion_started: Обговорення розпочато
+    none_direct_discussion: Жодного (безпосереднє обговорення)
+    direct_discussion: Пряме обговорення
   announcement:
     send_discussion: Надіслати тему
     send_group: Запросити людей до %{name}
@@ -1630,6 +1633,9 @@ uk:
   threads_page:
     no_direct_threads: У вас нема особистих тем
     no_invite_only_threads: У вас немає тем лише для запрошень
+    no_direct_discussions: У вас немає прямих обговорень
+    no_direct_discussions_title: У вас немає прямих обговорень
+    no_direct_discussions_helptext: Прямі обговорення призначені для безпосереднього зв'язку з іншим користувачем, без приналежності обговорення до групи.
   inbox_page:
     no_threads: Вау! Ви прочитали всі теми у вашій скриньці.
     unread_threads: Непрочитані теми
@@ -1664,6 +1670,7 @@ uk:
     volume:
       mute_message: Обговорення вимкнено
       unmute_message: Обговорення скасовано
+    direct: Прямий
   discussion_last_seen_by:
     title: Переглянуто
     no_one: Ще ніхто не переглянув

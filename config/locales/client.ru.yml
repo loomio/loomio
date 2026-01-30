@@ -552,6 +552,7 @@ ru:
     new_group: Новая группа
     new_subgroup: Новая подгруппа
     find_a_group: Найти группу
+    direct_discussions: Прямые обсуждения
   strand_nav:
     newest: Новейший
     oldest: Самый старый
@@ -835,6 +836,8 @@ ru:
     discussion_updated: Обсуждение обновлено
     discussion_created: Обсуждение создано
     discussion_started: Обсуждение началось
+    none_direct_discussion: Нет (прямое обсуждение)
+    direct_discussion: Прямое обсуждение
   announcement:
     send_discussion: Отправить тему
     send_group: Пригласить людей в %{name}
@@ -1611,6 +1614,9 @@ ru:
   threads_page:
     no_direct_threads: У вас нет прямых тем
     no_invite_only_threads: У вас нет тем, доступных только по приглашению
+    no_direct_discussions: У вас нет прямых обсуждений.
+    no_direct_discussions_title: У вас нет прямых обсуждений.
+    no_direct_discussions_helptext: Прямые обсуждения предназначены для прямого контакта с другим пользователем, без привязки обсуждения к группе.
   inbox_page:
     no_threads: Уууу! Вы прочитали все темы в своем почтовом ящике.
     unread_threads: Непрочтенные темы
@@ -1641,6 +1647,7 @@ ru:
     volume:
       mute_message: Обсуждение отключено
       unmute_message: Обсуждение отключено
+    direct: Прямой
   discussion_last_seen_by:
     title: Виденный
     no_one: Этого еще никто не видел

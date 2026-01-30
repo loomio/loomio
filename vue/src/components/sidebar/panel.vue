@@ -46,7 +46,7 @@ const watchedRecords = ref([]);
 
 // Computed properties
 const canStartGroups = computed(() => AbilityService.canStartGroups());
-const greySidebarLogo = computed(() => 
+const greySidebarLogo = computed(() =>
   AppConfig.features.app.gray_sidebar_logo_in_dark_mode && theme.global.name.value.startsWith("dark")
 );
 const isSignedIn = computed(() => Session.isSignedIn());
@@ -71,7 +71,7 @@ const pollsToVoteOnCount = () => {
 
   const votable = p => p.iCanVote() && !p.iHaveVoted();
   const votePolls = filter(chain.data(), votable);
-  
+
   return votePolls.length;
 };
 
@@ -91,8 +91,8 @@ const watchRecordsFunc = (options) => {
 };
 
 const openIfPinned = () => {
-  open.value = !!Session.isSignedIn() && 
-    display.lgAndUp.value && 
+  open.value = !!Session.isSignedIn() &&
+    display.lgAndUp.value &&
     (Session.user().experiences['sidebar'] === undefined || Session.user().experiences['sidebar'] === true);
 };
 
@@ -202,9 +202,9 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
         v-list-item-title(:class="{'text-medium-emphasis': pollsToVoteOnCount() === 0}") {{ $t('dashboard_page.polls_to_vote_on_count', {count: pollsToVoteOnCount()}) }}
       v-list-item(to="/inbox")
         v-list-item-title(:class="{'text-medium-emphasis': unreadThreadCount() === 0}") {{ $t('sidebar.unread_discussions_count', {count: unreadThreadCount()}) }}
-      v-list-item.sidebar__list-item-button--private(to="/threads/direct")
+      v-list-item.sidebar__list-item-button--private(to="/dashboard/direct_discussions")
         v-list-item-title
-          span(v-t="'sidebar.invite_only_discussions'")
+          span(v-t="'sidebar.direct_discussions'")
           span(v-if="unreadDirectThreadsCount > 0")
             space
             span ({{unreadDirectThreadsCount}})
