@@ -68,6 +68,15 @@ RSpec.describe TranslationProviders::Azure do
 
       expect(result).to eq '<p>Bonjour</p>'
     end
+
+    it 'raises QuotaExceededError when quota limit hit' do
+      stub_request(:post, "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=fr")
+        .to_return(status: 429, body: 'Too Many Requests')
+
+      expect {
+        provider.translate('Hello', to: 'fr', format: :text)
+      }.to raise_error(TranslationService::QuotaExceededError)
+    end
   end
 
   describe '#normalize_locale' do

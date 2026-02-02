@@ -51,6 +51,12 @@ module TranslationProviders
     end
 
     def parse_response(response)
+      if response.code.to_i == 429 || (response.code.to_i == 403 && response.body.to_s.include?('quota'))
+        raise TranslationService::QuotaExceededError, "Azure quota exceeded"
+      end
+
+      raise "Azure API error: #{response.code} - #{response.body}" unless response.code.to_i == 200
+
       JSON.parse(response.body)[0]['translations'][0]['text']
     end
   end

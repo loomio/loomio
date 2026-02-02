@@ -37,6 +37,19 @@ RSpec.describe TranslationProviders::Google do
 
       expect(result).to eq '<p>Bonjour</p>'
     end
+
+    it 'raises QuotaExceededError when quota limit hit' do
+      google_service = double('GoogleTranslateService')
+      quota_error = Google::Cloud::Error.new('Quota exceeded')
+      allow(Google::Cloud::Translate).to receive(:translation_v2_service).and_return(google_service)
+      allow(google_service).to receive(:translate).and_raise(quota_error)
+
+      provider = TranslationProviders::Google.new
+
+      expect {
+        provider.translate('Hello', to: 'fr', format: :text)
+      }.to raise_error(TranslationService::QuotaExceededError)
+    end
   end
 
   describe '#normalize_locale' do

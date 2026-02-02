@@ -11,6 +11,8 @@ module TranslationProviders
     def translate(content, to:, format: :text)
       service = ::Google::Cloud::Translate.translation_v2_service
       service.translate(content, to: to, format: format)
+    rescue ::Google::Cloud::ResourceExhaustedError
+      raise TranslationService::QuotaExceededError, "Google quota exceeded"
     end
 
     def supported_languages

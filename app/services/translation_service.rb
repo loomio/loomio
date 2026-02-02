@@ -1,6 +1,9 @@
 class TranslationService
   extend LocalesHelper
 
+  class QuotaExceededError < StandardError; end
+  class AllProvidersExhaustedError < StandardError; end
+
   KNOWN_I18N_LABEL_KEYS = %w[
     poll_proposal_options.*
     poll_count_options.*
@@ -65,19 +68,36 @@ class TranslationService
     end.uniq
   end
 
+  def self.provider_manager
+    @provider_manager ||= TranslationProviders::ProviderManager.new
+  end
+
   def self.provider
-    @provider ||= begin
-      if TranslationProviders::Azure.available?
-        TranslationProviders::Azure.new
-      elsif TranslationProviders::Google.available?
-        TranslationProviders::Google.new
-      end
-    end
+    provider_manager.next_available_provider
   end
 
   def self.locale_for_provider(locale)
     return locale unless provider
     provider.normalize_locale(locale)
+  end
+
+  def self.attempt_translation_with_fallback(content, **options)
+    attempts = 0
+    max_attempts = provider_manager.instance_variable_get(:@providers).count
+
+    loop do
+      current_provider = provider
+      raise AllProvidersExhaustedError, "All translation providers exhausted" unless current_provider
+
+      begin
+        return current_provider.translate(content, **options)
+      rescue QuotaExceededError => e
+        provider_manager.mark_provider_exhausted(current_provider)
+        attempts += 1
+        raise AllProvidersExhaustedError, "All translation providers exhausted" if attempts >= max_attempts
+        Rails.logger.info "Falling back to next translation provider"
+      end
+    end
   end
 
   def self.find_i18n_translation(value, from:, to:)
@@ -130,7 +150,7 @@ class TranslationService
         end
       end
 
-      fields[field.to_s] = provider.translate(content, **translate_options)
+      fields[field.to_s] = attempt_translation_with_fallback(content, **translate_options)
     end
 
     fields
