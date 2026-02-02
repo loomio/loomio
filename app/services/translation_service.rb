@@ -71,6 +71,8 @@ class TranslationService
         TranslationProviders::Azure.new
       elsif TranslationProviders::Google.available?
         TranslationProviders::Google.new
+      elsif TranslationProviders::Deepl.available?
+        TranslationProviders::Deepl.new
       end
     end
   end

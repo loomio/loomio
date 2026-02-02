@@ -24,9 +24,20 @@ RSpec.describe TranslationService do
       expect(provider).to be_a(TranslationProviders::Google)
     end
 
+    it 'uses DeepL when Azure and Google are not available' do
+      allow(TranslationProviders::Azure).to receive(:available?).and_return(false)
+      allow(TranslationProviders::Google).to receive(:available?).and_return(false)
+      allow(TranslationProviders::Deepl).to receive(:available?).and_return(true)
+
+      provider = TranslationService.provider
+
+      expect(provider).to be_a(TranslationProviders::Deepl)
+    end
+
     it 'returns nil when no provider is available' do
       allow(TranslationProviders::Azure).to receive(:available?).and_return(false)
       allow(TranslationProviders::Google).to receive(:available?).and_return(false)
+      allow(TranslationProviders::Deepl).to receive(:available?).and_return(false)
 
       provider = TranslationService.provider
 
