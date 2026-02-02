@@ -31,11 +31,11 @@ v-list.membership-requests(lines="two" density="compact")
       user-avatar.mr-2(:user='request.actor()' :size='40')
     v-list-item-title.membership-request__name
       span {{request.actor().name}} &lt;{{request.requestorEmail}}&gt;
-      span.text-caption.text-medium-emphasis(v-if="!request.respondedAt")
+      span.text-body-small.text-medium-emphasis(v-if="!request.respondedAt")
         space
         mid-dot
         time-ago(:date='request.createdAt')
-      span.membership-request__response.text-caption.text-medium-emphasis(v-if="request.respondedAt")
+      span.membership-request__response.text-body-small.text-medium-emphasis(v-if="request.respondedAt")
         space
         span(v-t="{ path: 'membership_requests_page.previous_request_response', args: { response: request.formattedResponse(), responder: request.responder().name } }")
         mid-dot

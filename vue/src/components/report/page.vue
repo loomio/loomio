@@ -249,7 +249,7 @@ export default {
 <template lang="pug">
 v-main
   v-container.report-page.max-width-900
-    h1.text-h4.mb-8(v-t="'group_page.participation_report'")
+    h1.text-headline-large.mb-8(v-t="'group_page.participation_report'")
 
     v-select(
       :label="$t('common.groups')"
@@ -332,7 +332,7 @@ v-main
 
       v-card.mt-8
         v-card-title(v-t="'report.users_per_country'")
-        p.px-4.text-caption(v-t="'report.country_disclaimer'")
+        p.px-4.text-body-small(v-t="'report.country_disclaimer'")
         v-data-table(
           density="compact"
           :headers="users_per_country_headers"

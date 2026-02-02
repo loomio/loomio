@@ -24,7 +24,7 @@ export default {
 <template lang="pug">
 v-card.alert-modal
   v-card-title
-    h1.text-h5(v-t="{path: titlePath, args: args}")
+    h1.text-headline-small(v-t="{path: titlePath, args: args}")
     v-spacer
     dismiss-modal-button
   v-card-text

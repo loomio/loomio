@@ -102,7 +102,7 @@ export default {
 
 <template lang="pug">
 .strand-new-discussion.context-panel#context(v-intersect.once="{handler: viewed}")
-  .d-flex.ml-n3.text-body-2
+  .d-flex.ml-n3.text-body-medium
     v-breadcrumbs.context-panel__breadcrumbs(color="anchor" :items="groups")
       template(v-slot:divider)
         common-icon(name="mdi-chevron-right")
@@ -111,7 +111,7 @@ export default {
 
   strand-title.text-high-emphasis(:discussion="discussion")
 
-  .mb-4.text-body-2
+  .mb-4.text-body-medium
     user-avatar.mr-2(:user='author')
     router-link.text-medium-emphasis(:to="urlFor(author)") {{authorName}}
     mid-dot

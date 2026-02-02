@@ -74,7 +74,7 @@ v-card
       .text-medium-emphasis(v-t="'poll_common_card.deleted'")
   div.px-2.pb-4.px-sm-4(v-else)
     poll-template-banner(:poll="poll")
-    h1.poll-common-card__title.text-h4.py-2(tabindex="-1" v-intersect="{handler: titleVisible}")
+    h1.poll-common-card__title.text-headline-large.py-2(tabindex="-1" v-intersect="{handler: titleVisible}")
       plain-text(:model='poll' field='title')
     poll-common-set-outcome-panel(:poll='poll' v-if="!outcome")
     poll-common-outcome-panel(:outcome='outcome' v-if="outcome")

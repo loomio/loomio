@@ -193,7 +193,7 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion"
       //v-list-item(:prepend-icon="mdiArrowDownThin" :title="$t('strand_nav.bottom')" @click="scrollToSequenceId(lastItemSequenceId())" :to="baseUrl+'/'+lastItemSequenceId()" exact)
       v-list-subheader(v-t="'strand_nav.timeline'")
     div.strand-nav__toc
-      router-link.strand-nav__entry.text-caption(
+      router-link.strand-nav__entry.text-body-small(
         :class="{'strand-nav__entry--visible': item.visible, 'strand-nav__entry--selected': (item.sequenceId == selectedSequenceId || item.commentId == selectedCommentId), 'strand-nav__entry--unread': isSignedIn && item.unread}"
         :style="{'border-width': (item.depth * 2)+'px'}"
         v-for="item in items"

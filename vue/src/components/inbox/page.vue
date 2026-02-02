@@ -79,7 +79,7 @@ export default
 <template lang="pug">
 v-main
   v-container.inbox-page.thread-preview-collection__container.max-width-1024.px-0.px-sm-3(grid-list-lg)
-    h1.text-h4.my-4(tabindex="-1" v-intersect="{handler: titleVisible}" v-t="'inbox_page.unread_discussions'")
+    h1.text-headline-large.my-4(tabindex="-1" v-intersect="{handler: titleVisible}" v-t="'inbox_page.unread_discussions'")
     section.dashboard-page__loading(v-if='unreadCount == 0 && loading' aria-hidden='true')
       .thread-previews-container
         loading-content.thread-preview(:lineCount='2' v-for='(item, index) in [1,2,3,4,5,6,7,8,9,10]' :key='index')

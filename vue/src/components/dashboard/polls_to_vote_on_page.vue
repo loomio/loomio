@@ -79,7 +79,7 @@ const titleVisible = (visible) => {
 <template lang="pug">
 v-main
   v-container.polls-to-vote-on-page.max-width-1024.px-0.px-sm-3
-    h1.text-h4.my-4(tabindex="-1" v-intersect="{handler: titleVisible}" v-t="'dashboard_page.polls_to_vote_on'")
+    h1.text-headline-large.my-4(tabindex="-1" v-intersect="{handler: titleVisible}" v-t="'dashboard_page.polls_to_vote_on'")
     
     section.polls-to-vote-on-page__loading(v-if='loader.loading && votePolls.length == 0')
       v-card.mb-2

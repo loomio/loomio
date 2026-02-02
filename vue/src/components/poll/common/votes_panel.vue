@@ -98,7 +98,7 @@ export default {
 
 <template lang="pug">
 .poll-common-votes-panel
-  h2.text-h5.my-2#votes(v-t="'poll_common.votes'")
+  h2.text-headline-small.my-2#votes(v-t="'poll_common.votes'")
   .d-flex
     v-select.mr-2(:items="pollOptionItems" :label="$t('common.option')" v-model="pollOptionId")
     v-text-field(v-if="!poll.anonymous" v-model="name" @change="nameChanged" :label="$t('poll_common_votes_panel.name_or_username')")
@@ -109,7 +109,7 @@ export default {
         user-avatar(:user='stance.participant()', :size='24')
       .poll-common-votes-panel__stance-content
         .poll-common-votes-panel__stance-name-and-option
-          v-layout.text-body-2(align-center)
+          v-layout.text-body-medium(align-center)
             span.text-medium-emphasis {{ stance.participantName() }}
             span(v-if="poll.showResults() && stance.castAt && poll.hasOptionIcon()")
               poll-common-stance-choice.pl-2.pr-1(

@@ -34,7 +34,7 @@ export default
 
 <template lang="pug">
 .poll-common-card-header.d-flex.align-center.mr-3.ml-2.pb-2.pt-4.flex-wrap
-  v-breadcrumbs.py-1.ml-n2.text-body-2(:items="groups" color="anchor")
+  v-breadcrumbs.py-1.ml-n2.text-body-medium(:items="groups" color="anchor")
     template(v-slot:divider)
       common-icon(name="mdi-chevron-right")
   v-spacer

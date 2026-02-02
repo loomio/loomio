@@ -65,7 +65,7 @@ form(v-on:submit.prevent='submit()')
       dismiss-modal-button
     v-card-text
       div(v-if="hasOptionIcon")
-        .text-subtitle-1(v-t="'poll_option_form.icon'")
+        .text-body-large(v-t="'poll_option_form.icon'")
         .d-flex.mb-4.space-between
           label.poll-option-form__icon.mr-4.d-flex.flex-column.rounded.v-sheet.v-sheet--outlined.voting-enabled(
             v-for="icon in icons"
@@ -77,7 +77,7 @@ form(v-on:submit.prevent='submit()')
               img(:src="'/img/' + icon.value + '.svg'" :alt="icon.text" draggable="false")
 
         .lmo-validation-error(v-show="pollOption.name && !pollOption.icon")
-          span.text-caption.lmo-validation-error__message(v-t="'poll_option_form.please_select_an_icon'")
+          span.text-body-small.lmo-validation-error__message(v-t="'poll_option_form.please_select_an_icon'")
 
       v-text-field.poll-option-form__name.mb-4(
         autofocus
@@ -102,7 +102,7 @@ form(v-on:submit.prevent='submit()')
 
       template(v-if="poll.config().allow_vote_share_requirement")
         v-divider.pb-4
-        .text-subtitle-1.pb-2(v-t="'poll_option_form.vote_share_requirement'")
+        .text-body-large.pb-2(v-t="'poll_option_form.vote_share_requirement'")
         v-checkbox(
           v-model="testEnabled"
           :label="poll.pollType == 'proposal' ? $t('poll_option_form.for_the_proposal_to_pass') : $t('poll_option_form.for_the_poll_to_be_valid', { poll_type: poll.translatedPollType() })"

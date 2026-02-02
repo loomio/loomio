@@ -24,7 +24,7 @@ export default {
 <template lang="pug">
 v-card.poll-common-modal(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()").pb-2
   v-card-title
-    h1.text-h5(tabindex="-1" v-t="title_key")
+    h1.text-headline-small(tabindex="-1" v-t="title_key")
     v-spacer
     dismiss-modal-button(:model='poll')
   div.px-4

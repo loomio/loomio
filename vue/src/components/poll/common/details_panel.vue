@@ -10,7 +10,7 @@ export default {
 <template lang="pug">
 .poll-common-details-panel.pt-2
   v-list-subheader.ml-n4(v-t="'poll_common.details'" v-if='poll.outcome()')
-  .poll-common-details-panel__started-by.text-medium-emphasis.mb-4.text-body-2
+  .poll-common-details-panel__started-by.text-medium-emphasis.mb-4.text-body-medium
     span(v-t="{ path: 'poll_card.poll_type_by_name', args: { name: poll.authorName(), poll_type: poll.translatedPollTypeCaps() } }")
     mid-dot
     poll-common-closing-at(:poll='poll')

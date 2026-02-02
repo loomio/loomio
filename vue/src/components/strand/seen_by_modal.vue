@@ -32,7 +32,7 @@ v-card(:title="$t('discussion_last_seen_by.title')")
     dismiss-modal-button
   .d-flex.justify-center.pa-8(v-if="historyLoading")
     v-progress-circular(color="primary"  indeterminate)
-  v-card-text.text-body-2(v-else)
+  v-card-text.text-body-medium(v-else)
     template(v-if="historyError")
       p(v-if="errorMessage") {{errorMessage}}
       p(v-else v-t="'announcement.history_error'")

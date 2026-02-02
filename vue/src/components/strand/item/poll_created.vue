@@ -72,13 +72,13 @@ export default {
 <template lang="pug">
 section.strand-item.poll-created(v-intersect.once="{handler: viewed}")
   .d-flex.justify-space-between
-    .poll-common-card__title.text-h6.pb-1(tabindex="-1")
+    .poll-common-card__title.text-title-large.pb-1(tabindex="-1")
       router-link.underline-on-hover.text-high-emphasis(:to="urlFor(poll)" )
         plain-text(:model="poll" field="title")
   div(v-if="!collapsed")
     poll-common-set-outcome-panel(:poll='poll' v-if="!poll.outcome()")
     poll-common-outcome-panel(:outcome='poll.outcome()' v-if='poll.outcome()')
-    .poll-common-details-panel__started-by.text-medium-emphasis.text-body-2.mb-4
+    .poll-common-details-panel__started-by.text-medium-emphasis.text-body-medium.mb-4
       span(v-t="{ path: 'poll_card.poll_type_by_name', args: { name: poll.authorName(), poll_type: poll.translatedPollTypeCaps() } }")
       mid-dot
       poll-common-closing-at.ml-1(:poll='poll')

@@ -41,11 +41,11 @@ v-alert.my-4.poll-common-outcome-panel(
   variant="tonal"
   v-intersect.once="{handler: viewed}"
 )
-  h2.text-h6(v-t="'poll_common.outcome'")
+  h2.text-title-large(v-t="'poll_common.outcome'")
   div.my-2
     user-avatar(:user="outcome.author()", :size="24").mr-2
     space
-    //- .poll-common-outcome-panel__authored-by.text-caption.my-2
+    //- .poll-common-outcome-panel__authored-by.text-body-small.my-2
     span(v-t="{ path: 'poll_common_outcome_panel.authored_by', args: { name: outcome.authorName() } }")
     mid-dot
     time-ago(:date="outcome.createdAt")
@@ -55,7 +55,7 @@ v-alert.my-4.poll-common-outcome-panel(
       space
       time-ago(:date="outcome.reviewOn")
   .poll-common-outcome__event-info(v-if="outcome.poll().datesAsOptions() && outcome.pollOption()")
-    .text-h6 {{outcome.eventSummary}}
+    .text-title-large {{outcome.eventSummary}}
     span {{exactDate(parseISO(outcome.pollOption().name))}}
     p {{outcome.eventLocation}}
   formatted-text.text-on-surface(:model="outcome" field="statement")

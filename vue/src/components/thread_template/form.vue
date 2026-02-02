@@ -168,8 +168,8 @@ v-form(ref="form" @submit.prevent="submit")
 
       v-divider.my-4
 
-      .text-subtitle-1.py-2.text-medium-emphasis(v-t="'discussion_template.poll_templates'")
-      p.text-caption(v-t="'discussion_template.poll_templates_help'")
+      .text-body-large.py-2.text-medium-emphasis(v-t="'discussion_template.poll_templates'")
+      p.text-body-small(v-t="'discussion_template.poll_templates_help'")
       .decision-tools-card__poll-types
         sortable-list(v-model:list="pollTemplates" :useDragHandle="true" append-to=".decision-tools-card__poll-types"  lock-axis="y" axis="y")
           sortable-item(v-for="(template, index) in pollTemplates" :index="index" :key="template.id || template.key")
@@ -193,7 +193,7 @@ v-form(ref="form" @submit.prevent="submit")
       )
       v-divider.my-4
 
-      .text-subtitle-1.py-2.text-medium-emphasis(v-t="'thread_arrangement_form.sorting'")
+      .text-body-large.py-2.text-medium-emphasis(v-t="'thread_arrangement_form.sorting'")
       v-radio-group(v-model="discussionTemplate.newestFirst")
         v-radio(:value="false")
           template(v-slot:label)
@@ -211,7 +211,7 @@ v-form(ref="form" @submit.prevent="submit")
             space
             span(v-t="'thread_arrangement_form.latest_description'")
 
-      .text-subtitle-1.py-2.text-medium-emphasis(v-t="'thread_arrangement_form.replies'")
+      .text-body-large.py-2.text-medium-emphasis(v-t="'thread_arrangement_form.replies'")
       v-radio-group(v-model="discussionTemplate.maxDepth")
         v-radio(:value="1")
           template(v-slot:label)

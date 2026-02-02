@@ -100,7 +100,7 @@ export default
 </script>
 <template lang="pug">
 .group-emails-panel
-  h2.ma-4.headline(v-t="'email_to_group.unreleased_emails'")
+  h2.ma-4.text-headline-small(v-t="'email_to_group.unreleased_emails'")
   loading(v-if="!group")
   v-card.mt-4(outlined v-if="group")
     v-alert.text-center.text-medium-emphasis(v-if="emails.length == 0" v-t="'email_to_group.no_emails_to_release'")
@@ -116,7 +116,7 @@ export default
             common-icon(name="mdi-cancel")
 
   template(v-if="group && aliases.length")
-    h2.ma-4.headline(v-t="'email_to_group.email_aliases'")
+    h2.ma-4.text-headline-small(v-t="'email_to_group.email_aliases'")
     v-card.mt-4(outlined)
       v-list(lines="two")
         v-list-item(v-for="alias in aliases" :key="alias.id")

@@ -62,7 +62,7 @@ v-card.auth-complete(
     p.mb-4(v-if='user.sentPasswordLink', v-t="{ path: 'auth_form.password_link_sent', args: { email: user.email }}")
     .auth-complete__code-input.mb-4(v-if='user.sentLoginLink && attempts < 3')
       .auth-complete__code.mx-auto(style="max-width: 256px")
-        v-text-field.text-h5(
+        v-text-field.text-headline-small(
           variant="outlined"
           label="Code"
           :placeholder="$t('auth_form.code')"
@@ -71,7 +71,7 @@ v-card.auth-complete(
           v-model='user.code'
         )
         //- validation-errors(:subject='session' field='password')
-      p.text-caption
+      p.text-body-small
         | &nbsp;
         span(v-show="user.code")
           span(v-show="!user.hasPassword" v-t="'auth_form.want_to_set_password'")

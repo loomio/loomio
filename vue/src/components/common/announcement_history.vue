@@ -61,7 +61,7 @@ v-card(:title="$t('announcement.' + modelKind + '_notification_history')")
     dismiss-modal-button
   .d-flex.justify-center
     v-progress-circular(color="primary" v-if="historyLoading" indeterminate)
-  v-card-text.text-body-2(v-if="!historyLoading")
+  v-card-text.text-body-medium(v-if="!historyLoading")
     p(v-if="historyError && historyData.length == 0" v-t="'announcement.history_error'")
     p(v-if="!historyError && historyData.length == 0" v-t="'announcement.no_notifications_sent'")
     p(v-if="historyData.length && allowViewed" v-t="'announcement.notification_history_explanation'")

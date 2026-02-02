@@ -54,7 +54,7 @@ export default {
 <template lang="pug">
 v-system-bar.system-notice(v-if="showNotice" app color="primary" height="40")
   .d-flex.justify-space-between(style="width: 100%")
-    .system-notice__message.text-subtitle-1
+    .system-notice__message.text-body-large
       span(v-if="notice" v-marked="notice")
       span(v-else="notice" v-t="'global.messages.app_update'")
     v-btn.system-notice__hide(

@@ -49,7 +49,7 @@ export default
 </script>
 <template lang="pug">
 .requests-panel
-  h2.ma-4.text-h5(v-t="'membership_requests_card.heading'")
+  h2.ma-4.text-headline-small(v-t="'membership_requests_card.heading'")
   loading(v-if="!group")
   v-card.mt-4(outlined v-else="group")
     p.text-center.pa-4(v-if="!requests.length" v-t="'common.no_results_found'")

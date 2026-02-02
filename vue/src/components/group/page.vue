@@ -99,7 +99,7 @@ v-main
       //  height="48"
       //  width="48"
       //  eager)
-    h1.text-h4.my-4(tabindex="-1" v-intersect="{handler: titleVisible}")
+    h1.text-headline-large.my-4(tabindex="-1" v-intersect="{handler: titleVisible}")
       span(v-if="group && group.parentId")
         router-link(:to="urlFor(group.parent())")
           plain-text(:model="group.parent()" field="name")

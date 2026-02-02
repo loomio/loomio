@@ -124,14 +124,14 @@ v-main
             div
               span(v-t="'email_settings_page.mentioned_label'")
               br
-              span.text-medium-emphasis.text-caption(v-t="'email_settings_page.mentioned_description'")
+              span.text-medium-emphasis.text-body-small(v-t="'email_settings_page.mentioned_description'")
         v-checkbox#on-participation-email.email-settings-page__on-participation(v-model='user.emailOnParticipation')
           template(v-slot:label)
             div
               span(v-t="'email_settings_page.on_participation_label'")
               br
-              span.text-medium-emphasis.text-caption(v-t="'email_settings_page.on_participation_description'")
-        .text-subtitle-1
+              span.text-medium-emphasis.text-body-small(v-t="'email_settings_page.on_participation_description'")
+        .text-body-large
           span(v-t="'email_settings_page.email_catch_up_day'")
         p.text-medium-emphasis.pb-4(v-t="'email_settings_page.daily_summary_description'")
         v-select#email-catch-up-day(
@@ -151,16 +151,16 @@ v-main
 
     v-card.mb-4(title="Group notifications" subtitle="Change when you get emailed about activity in your groups")
       v-card-text
-        .text-subtitle-1.pb-2(v-t="'change_volume_form.what_the_options_mean'")
+        .text-body-large.pb-2(v-t="'change_volume_form.what_the_options_mean'")
 
-        .text-subtitle-2.pb-1(v-t="'change_volume_form.quiet_desc'")
-        .text-body-2.pb-4.text-medium-emphasis(v-t="'change_volume_form.quiet_explained'")
+        .text-title-small.pb-1(v-t="'change_volume_form.quiet_desc'")
+        .text-body-medium.pb-4.text-medium-emphasis(v-t="'change_volume_form.quiet_explained'")
 
-        .text-subtitle-2.pb-1(v-t="'change_volume_form.normal_desc'")
-        .text-body-2.pb-4.text-medium-emphasis(v-t="'change_volume_form.normal_explained'")
+        .text-title-small.pb-1(v-t="'change_volume_form.normal_desc'")
+        .text-body-medium.pb-4.text-medium-emphasis(v-t="'change_volume_form.normal_explained'")
 
-        .text-subtitle-2.pb-1(v-t="'change_volume_form.loud_desc'")
-        .text-body-2.pb-4.text-medium-emphasis(v-t="'change_volume_form.loud_explained'")
+        .text-title-small.pb-1(v-t="'change_volume_form.loud_desc'")
+        .text-body-medium.pb-4.text-medium-emphasis(v-t="'change_volume_form.loud_explained'")
       v-overlay(persistent :model-value="loading" class="align-center justify-center")
         v-progress-circular(color="primary" size="64" indeterminate)
 

@@ -266,13 +266,13 @@ export default
               template(v-if="!membership.acceptedAt && membership.userEmail")
                 | {{membership.userEmail}}
 
-              span.text-caption(v-if="$route.query.subgroups")
+              span.text-body-small(v-if="$route.query.subgroups")
                 space
                 span {{membership.group().name}}
 
               template(v-if="membership.user().title(group)")
                 space
-                span.text-caption {{membership.user().title(group)}}
+                span.text-body-small {{membership.user().title(group)}}
 
               template(v-if="membership.user().bot")
                 space

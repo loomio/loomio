@@ -75,8 +75,8 @@ v-main
     v-form(ref="form" @submit.prevent="submit")
       v-card.trial-started(v-if="trialStarted" :title="$t('start_trial.success')")
         v-card-text
-          p.text-body-1(v-t="{path: 'start_trial.account_created_for_you', args: {email: userEmail}}")
-          p.text-body-1(v-t="'start_trial.please_sign_in_to_continue'")
+          p.text-body-large(v-t="{path: 'start_trial.account_created_for_you', args: {email: userEmail}}")
+          p.text-body-large(v-t="'start_trial.please_sign_in_to_continue'")
         v-card-actions
           v-spacer
           v-btn(color="primary" :href="'/dashboard?user_email='+userEmail" variant="elevated")
@@ -84,7 +84,7 @@ v-main
           v-spacer
       v-card.start-trial-form(v-else :title="$t('start_trial.title')")
         v-card-text
-          p.text-subtitle-1.pb-6.text-medium-emphasis(v-t="{path: 'start_trial.intro', args: {day: trialDays}}")
+          p.text-body-large.pb-6.text-medium-emphasis(v-t="{path: 'start_trial.intro', args: {day: trialDays}}")
           v-text-field(v-if="!isSignedIn" v-model='userName' :label="$t('start_trial.your_name')" :rules="validate('user_name')")
           v-text-field(v-if="!isSignedIn" v-model='userEmail' :label="$t('start_trial.your_email')" type="email" :rules="validate('user_email')")
           v-text-field(v-model='groupName' :label="$t('group_form.organization_name')" :rules="validate('group_name')")
@@ -93,7 +93,7 @@ v-main
           template(v-if="!isSignedIn")
             v-textarea(v-model='howDidYouHearAboutLoomio' :label="$t('start_trial.how_did_you_hear_about_loomio')")
             //v-divider.pb-4
-            //.text-subtitle-1.text-medium-emphasis(v-t="'start_trial.newsletter_intro'")
+            //.text-body-large.text-medium-emphasis(v-t="'start_trial.newsletter_intro'")
             //v-checkbox(v-model='emailNewsletter' :label="$t('start_trial.subscribe_to_newsletter')")
             //v-checkbox.auth-signup-form__legal-accepted(v-model='legalAccepted' :rules="validate('user_legal_accepted')")
             //  template(v-slot:label)

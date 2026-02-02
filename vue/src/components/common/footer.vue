@@ -16,7 +16,7 @@ export default {
 </script>
 <template lang="pug">
 v-footer.d-flex.justify-center
-  .powered-by.text-caption
+  .powered-by.text-body-small
     a(:href="poweredUrl" v-t="'powered_by.powered_by_loomio'" target="_blank")
     span(v-if="privacyUrl")
       | &nbsp;

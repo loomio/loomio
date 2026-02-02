@@ -215,7 +215,7 @@ v-form.poll-template-form(ref="form" @submit.prevent="submit")
     v-btn.back-button(v-if="$route.query.return_to" icon variant="text" :aria-label="$t('common.action.cancel')" :to='$route.query.return_to')
       common-icon(name="mdi-close")
   v-card-title.px-0
-    h1.text-h4(tabindex="-1" v-t="titlePath")
+    h1.text-headline-large(tabindex="-1" v-t="titlePath")
 
   v-alert.poll-template-info-panel.mb-2(type="info" variant="tonal")
     span
@@ -278,7 +278,7 @@ v-form.poll-template-form(ref="form" @submit.prevent="submit")
 
   template(v-if="hasOptions")
     v-divider.my-4
-    .text-subtitle-1.py-2(v-t="'poll_common_form.options'")
+    .text-body-large.py-2(v-t="'poll_common_form.options'")
     v-alert(v-if="!pollOptions.length" variant="tonal" type="info")
       span(v-t="'poll_common_form.no_options_add_some'")
     sortable-list(
@@ -339,7 +339,7 @@ v-form.poll-template-form(ref="form" @submit.prevent="submit")
 
     template(v-if="pollTemplate.pollType == 'poll'")
       v-divider.my-4
-      .text-subtitle-1.pb-4(v-t="'poll_common_form.how_many_options_can_a_voter_choose'")
+      .text-body-large.pb-4(v-t="'poll_common_form.how_many_options_can_a_voter_choose'")
       .d-flex
         v-text-field.poll-common-form__minimum-stance-choices.mr-2(
           v-model="pollTemplate.minimumStanceChoices"
@@ -367,7 +367,7 @@ v-form.poll-template-form(ref="form" @submit.prevent="submit")
 
     template(v-if="pollTemplate.pollType == 'dot_vote'")
       v-divider.my-4
-      p.mt-4.text-subtitle-1.mb-4(v-t="'poll_common_form.how_many_points_does_each_voter_have_to_allocate'")
+      p.mt-4.text-body-large.mb-4(v-t="'poll_common_form.how_many_points_does_each_voter_have_to_allocate'")
       v-text-field(
         :label="$t('poll_dot_vote_form.dots_per_person')"
         type="number"
@@ -385,8 +385,8 @@ v-form.poll-template-form(ref="form" @submit.prevent="submit")
 
   v-divider.my-4
 
-  .text-subtitle-1.pb-2(v-t="'poll_common_form.deadline'")
-  .text-body-2.pb-4.text-medium-emphasis(v-t="'poll_common_form.default_duration_in_days_hint'")
+  .text-body-large.pb-2(v-t="'poll_common_form.deadline'")
+  .text-body-medium.pb-4.text-medium-emphasis(v-t="'poll_common_form.default_duration_in_days_hint'")
   v-text-field(
     :label="$t('poll_common_form.default_duration_in_days')"
     type="number"
@@ -396,7 +396,7 @@ v-form.poll-template-form(ref="form" @submit.prevent="submit")
   )
 
   v-divider.my-4
-  .text-subtitle-1.pb-2(v-t="'poll_common_settings.who_can_vote'")
+  .text-body-large.pb-2(v-t="'poll_common_settings.who_can_vote'")
   v-radio-group(
     v-model="pollTemplate.specifiedVotersOnly"
   )
@@ -408,8 +408,8 @@ v-form.poll-template-form(ref="form" @submit.prevent="submit")
       :label="$t('poll_common_settings.specified_voters_only_true')")
 
   v-divider.mb-4
-  .text-subtitle-1.pb-2(v-t="'poll_common_form.reminder_notification'")
-  .text-body-2.pb-4.text-medium-emphasis(v-t="'poll_common_form.reminder_helptext'")
+  .text-body-large.pb-2(v-t="'poll_common_form.reminder_notification'")
+  .text-body-medium.pb-4.text-medium-emphasis(v-t="'poll_common_form.reminder_helptext'")
   v-select(
     :label="$t('poll_common_settings.notify_on_closing_soon.voting_title')"
     v-model="pollTemplate.notifyOnClosingSoon"
@@ -417,16 +417,16 @@ v-form.poll-template-form(ref="form" @submit.prevent="submit")
 
   template(v-if="allowAnonymous")
     v-divider.mb-4
-    .text-subtitle-1.pb-2(v-t="'poll_common_form.anonymous_voting'")
-    .text-body-2.text-medium-emphasis(v-t="{path: 'poll_common_form.anonymous_voting_description', args: {poll_type: pollTemplate.translatedPollType()}}")
+    .text-body-large.pb-2(v-t="'poll_common_form.anonymous_voting'")
+    .text-body-medium.text-medium-emphasis(v-t="{path: 'poll_common_form.anonymous_voting_description', args: {poll_type: pollTemplate.translatedPollType()}}")
     v-checkbox.poll-settings-anonymous(
       hide-details
       v-model="pollTemplate.anonymous"
       :label="$t('poll_common_form.votes_are_anonymous')")
 
     v-divider.mb-4
-    .text-subtitle-1.pb-2(v-t="'poll_common_card.hide_results'")
-    .text-body-2.pb-4.text-medium-emphasis(v-t="'poll_common_form.hide_results_description'")
+    .text-body-large.pb-2(v-t="'poll_common_card.hide_results'")
+    .text-body-medium.pb-4.text-medium-emphasis(v-t="'poll_common_form.hide_results_description'")
     v-select.poll-common-settings__hide-results(
       :label="$t('poll_common_card.hide_results')"
       :items="hideResultsItems"
@@ -435,16 +435,16 @@ v-form.poll-template-form(ref="form" @submit.prevent="submit")
 
   template(v-if="pollTemplate.config().can_shuffle_options")
     v-divider.pb-4
-    .text-subtitle-1.pb-2(v-t="'poll_common_settings.shuffle_options'")
-    .text-body-2.text-medium-emphasis(v-t="'poll_common_settings.reduce_bias_by_showing_options_in_random_order'")
+    .text-body-large.pb-2(v-t="'poll_common_settings.shuffle_options'")
+    .text-body-medium.text-medium-emphasis(v-t="'poll_common_settings.reduce_bias_by_showing_options_in_random_order'")
     v-checkbox.poll-settings-shuffle-options(
       hide-details
       v-model="pollTemplate.shuffleOptions"
       :label="$t('poll_common_settings.show_options_in_random_order')")
 
   v-divider.pb-4
-  .text-subtitle-1.pb-2(v-t="'poll_common_form.vote_reason'")
-  .text-body-2.pb-4.text-medium-emphasis(v-t="'poll_common_form.vote_reason_description'")
+  .text-body-large.pb-2(v-t="'poll_common_form.vote_reason'")
+  .text-body-medium.pb-4.text-medium-emphasis(v-t="'poll_common_form.vote_reason_description'")
   v-select(
     :label="$t('poll_common_form.stance_reason_required_label')"
     :items="stanceReasonRequiredItems"
@@ -466,8 +466,8 @@ v-form.poll-template-form(ref="form" @submit.prevent="submit")
 
   template(v-if="pollTemplate.config().allow_quorum")
     v-divider.mb-4
-    .text-subtitle-1.pb-2(v-t="'poll_common_form.quorum'")
-    .text-body-2.pb-4.text-medium-emphasis(v-t="'poll_common_form.quorum_hint'")
+    .text-body-large.pb-2(v-t="'poll_common_form.quorum'")
+    .text-body-medium.pb-4.text-medium-emphasis(v-t="'poll_common_form.quorum_hint'")
     v-number-input.mb-4(
       v-model="pollTemplate.quorumPct"
       :label="$t('poll_common_form.participation_quorum')"
@@ -479,14 +479,14 @@ v-form.poll-template-form(ref="form" @submit.prevent="submit")
     )
       template(v-slot:append-inner)
         span.mr-4 %
-    .text-body-2.mt-n4.pb-4.font-italic.text-medium-emphasis(
+    .text-body-medium.mt-n4.pb-4.font-italic.text-medium-emphasis(
       v-if="pollTemplate.quorumPct && pollTemplate.config().allow_vote_share_requirement"
       v-t="'poll_common_form.quorum_tip_vote_share_requirement'"
     )
 
   v-divider.mb-4
-  .text-subtitle-1.pb-2(v-t="'poll_common_outcome_form.outcome_statement_template'")
-  .text-body-2.pb-4.text-medium-emphasis(v-t="'poll_common_outcome_form.statement_template_hint'")
+  .text-body-large.pb-2(v-t="'poll_common_outcome_form.outcome_statement_template'")
+  .text-body-medium.pb-4.text-medium-emphasis(v-t="'poll_common_outcome_form.statement_template_hint'")
   lmo-textarea(
     :model='pollTemplate'
     field="outcomeStatement"
@@ -494,8 +494,8 @@ v-form.poll-template-form(ref="form" @submit.prevent="submit")
   )
 
   v-divider.mb-4
-  .text-subtitle-1.pb-2 Decision review
-  .text-body-2.pb-4.text-medium-emphasis(v-t="'poll_common_outcome_form.review_due_in_days_hint'")
+  .text-body-large.pb-2 Decision review
+  .text-body-medium.pb-4.text-medium-emphasis(v-t="'poll_common_outcome_form.review_due_in_days_hint'")
   v-text-field(
     :label="$t('poll_common_outcome_form.review_due_in_days')"
     type="number"
