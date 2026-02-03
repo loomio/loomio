@@ -19,7 +19,7 @@
     "@tiptap/extension-code": "^3.16.0",
     "@tiptap/extension-code-block": "^3.16.0",
     "@tiptap/extension-collaboration": "^3.16.0",
-    "@tiptap/extension-collaboration-caret": "^3.16.0",
+    "@tiptap/extension-collaboration-caret": "^3.19.0",
     "@tiptap/extension-document": "^3.16.0",
     "@tiptap/extension-dropcursor": "^3.16.0",
     "@tiptap/extension-gapcursor": "^3.16.0",
