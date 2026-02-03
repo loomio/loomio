@@ -139,7 +139,7 @@ GEM
       csv
       railties (>= 7.1)
       safely_block (>= 0.4)
-    bootsnap (1.21.1)
+    bootsnap (1.22.0)
       msgpack (~> 1.2)
     brakeman (7.1.2)
       racc
