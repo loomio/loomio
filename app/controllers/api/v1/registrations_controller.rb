@@ -14,7 +14,7 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
         render json: Boot::User.new(resource, root_url: URI(root_url).origin).payload.merge({ success: :ok, signed_in: true })
       else
         LoginTokenService.create(actor: resource, uri: URI.parse(request.referrer.to_s))
-        render json: { success: :ok, signed_in: false
+        render json: { success: :ok, signed_in: false }
       end
       EventBus.broadcast('registration_create', resource)
     else
