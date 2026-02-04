@@ -1,36 +1,40 @@
-<script lang="js">
-import UrlFor from '@/mixins/url_for';
-import Session        from '@/shared/services/session';
-import WatchRecords from '@/mixins/watch_records';
+<script setup lang="js">
+import { ref, onUnmounted } from 'vue';
+
+import Session from '@/shared/services/session';
+import Records from '@/shared/services/records';
 import AbilityService from '@/shared/services/ability_service';
+import LmoUrlService from '@/shared/services/lmo_url_service';
 import { mdiPlus } from '@mdi/js';
 
-export default {
-  mixins: [UrlFor, WatchRecords],
-  props: ['organization', 'openCounts'],
+const props = defineProps(['organization', 'openCounts']);
 
-  data() {
-    return {
-      mdiPlus,
-      mine: [],
-      more: [],
-      canStartSubgroup: false,
-    }
-  },
+const urlFor = (model, action, params) => LmoUrlService.route({model, action, params});
 
-  created() {
-    this.watchRecords({
-      collections: ['groups', 'memberships'],
-      query: store => {
-        this.mine = this.organization.subgroups().filter(g => !g.archivedAt && g.membershipFor(Session.user()));
-        this.more = this.organization.subgroups().filter(g => AbilityService.canViewGroup(g) && !g.membershipFor(Session.user()));
-        this.canStartSubgroup = AbilityService.canCreateSubgroups(this.organization);
-      }
-    });
-  },
+const mine = ref([]);
+const more = ref([]);
+const canStartSubgroup = ref(false);
+const watchedRecords = ref([]);
 
-}
+const watchRecords = (options) => {
+  const { collections, query, key } = options;
+  const name = collections.concat(key || parseInt(Math.random() * 10000)).join('_');
+  watchedRecords.value.push(name);
+  Records.view({ name, collections, query });
+};
 
+watchRecords({
+  collections: ['groups', 'memberships'],
+  query: () => {
+    mine.value = props.organization.subgroups().filter(g => !g.archivedAt && g.membershipFor(Session.user()));
+    more.value = props.organization.subgroups().filter(g => AbilityService.canViewGroup(g) && !g.membershipFor(Session.user()));
+    canStartSubgroup.value = AbilityService.canCreateSubgroups(props.organization);
+  }
+});
+
+onUnmounted(() => {
+  watchedRecords.value.forEach(name => delete Records.views[name]);
+});
 </script>
 
 <template lang="pug">
