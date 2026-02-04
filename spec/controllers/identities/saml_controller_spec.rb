@@ -58,35 +58,10 @@ describe Identities::SamlController do
       allow(saml_response).to receive(:is_valid?).and_return(true)
     end
 
-    context 'sso auth success, email login enabled, user does not exist' do
-      it 'sets pending_identity to ask user to create or link account' do
-        session[:back_to] = '/dashboard'
-        
-        expect {
-          post :create, params: { SAMLResponse: saml_response_xml }
-        }.to change { Identity.where(identity_type: 'saml').count }.by(1)
-         .and change { User.count }.by(0)
-
-        identity = Identity.where(identity_type: 'saml').last
-        expect(identity.uid).to eq 'user@example.com'
-        expect(identity.email).to eq 'user@example.com'
-        expect(identity.name).to eq 'SAML User'
-        expect(identity.user_id).to be_nil
-        
-        expect(session[:pending_identity_id]).to eq identity.id
-        expect(controller.current_user).to be_a(LoggedOutUser)
-        expect(response).to redirect_to '/dashboard'
-      end
-    end
-
-    context 'sso auth success, email login disabled, user does not exist' do
-      before do
-        stub_const('ENV', ENV.to_hash.merge('FEATURES_DISABLE_EMAIL_LOGIN' => 'true'))
-      end
-
+    context 'sso auth success, user does not exist' do
       it 'creates user and signs in' do
         session[:back_to] = '/dashboard'
-        
+
         expect {
           post :create, params: { SAMLResponse: saml_response_xml }
         }.to change { Identity.where(identity_type: 'saml').count }.by(1)
@@ -100,19 +75,19 @@ describe Identities::SamlController do
         expect(identity.user.email).to eq 'user@example.com'
         expect(identity.user.name).to eq 'SAML User'
         expect(identity.user.email_verified).to eq true
-        
+
         expect(controller.current_user).to eq identity.user
         expect(response).to redirect_to '/dashboard'
         expect(flash[:notice]).to eq I18n.t('devise.sessions.signed_in')
       end
     end
 
-    context 'sso auth success, email verified user with same email exists' do
+    context 'sso auth success, user with same email exists' do
       let!(:existing_user) { create :user, email: 'user@example.com', name: 'Original Name', email_verified: true }
 
       it 'attaches identity to user and signs in' do
         session[:back_to] = '/dashboard'
-        
+
         expect {
           post :create, params: { SAMLResponse: saml_response_xml }
         }.to change { Identity.where(identity_type: 'saml').count }.by(1)
@@ -121,7 +96,7 @@ describe Identities::SamlController do
         identity = Identity.where(identity_type: 'saml').last
         expect(identity.user).to eq existing_user
         expect(existing_user.reload.identities.count).to eq 1
-        
+
         expect(controller.current_user).to eq existing_user
         expect(response).to redirect_to '/dashboard'
         expect(flash[:notice]).to eq I18n.t('devise.sessions.signed_in')
@@ -152,36 +127,12 @@ describe Identities::SamlController do
       end
     end
 
-    context 'sso auth success, email login enabled, unverified user with same email exists' do
+    context 'sso auth success, unverified user with same email exists (from invitation)' do
       let!(:existing_user) { create :user, email: 'user@example.com', name: 'Original Name', email_verified: false }
 
-      it 'sets pending_identity and does not attach to unverified user' do
+      it 'attaches identity to user, verifies email, and signs in' do
         session[:back_to] = '/dashboard'
-        
-        expect {
-          post :create, params: { SAMLResponse: saml_response_xml }
-        }.to change { Identity.where(identity_type: 'saml').count }.by(1)
-         .and change { User.count }.by(0)
 
-        identity = Identity.where(identity_type: 'saml').last
-        expect(identity.user).to be_nil
-        
-        expect(session[:pending_identity_id]).to eq identity.id
-        expect(controller.current_user).to be_a(LoggedOutUser)
-        expect(response).to redirect_to '/dashboard'
-      end
-    end
-
-    context 'sso auth success, email login disabled, unverified user with same email exists' do
-      let!(:existing_user) { create :user, email: 'user@example.com', name: 'Original Name', email_verified: false }
-
-      before do
-        stub_const('ENV', ENV.to_hash.merge('FEATURES_DISABLE_EMAIL_LOGIN' => 'true'))
-      end
-
-      it 'attaches identity to user and signs in' do
-        session[:back_to] = '/dashboard'
-        
         expect {
           post :create, params: { SAMLResponse: saml_response_xml }
         }.to change { Identity.where(identity_type: 'saml').count }.by(1)
@@ -189,25 +140,22 @@ describe Identities::SamlController do
 
         identity = Identity.where(identity_type: 'saml').last
         expect(identity.user).to eq existing_user
-        
+
         existing_user.reload
         expect(existing_user.email_verified).to eq true
-        
+
         expect(controller.current_user).to eq existing_user
         expect(response).to redirect_to '/dashboard'
+        expect(flash[:notice]).to eq I18n.t('devise.sessions.signed_in')
       end
     end
 
-    context 'sso auth success, email login disabled, user exists but identity is missing (regression test)' do
+    context 'sso auth success, user exists but identity is missing (regression test)' do
       let!(:existing_user) { create :user, email: 'user@example.com', name: 'Original Name', email_verified: true }
-
-      before do
-        stub_const('ENV', ENV.to_hash.merge('FEATURES_DISABLE_EMAIL_LOGIN' => 'true'))
-      end
 
       it 'links existing user to new identity without attempting to create duplicate user' do
         session[:back_to] = '/dashboard'
-        
+
         # This should NOT raise ActiveRecord::RecordInvalid error
         expect {
           post :create, params: { SAMLResponse: saml_response_xml }
@@ -218,14 +166,14 @@ describe Identities::SamlController do
         expect(identity.user).to eq existing_user
         expect(identity.uid).to eq 'user@example.com'
         expect(identity.email).to eq 'user@example.com'
-        
+
         expect(controller.current_user).to eq existing_user
         expect(response).to redirect_to '/dashboard'
         expect(flash[:notice]).to eq I18n.t('devise.sessions.signed_in')
       end
     end
 
-    context 'sso auth success, email login disabled, user exists with different email (uid as source of truth)' do
+    context 'sso auth success, user exists with different email (uid as source of truth)' do
       let!(:existing_user) { create :user, email: 'old@example.com', name: 'Original Name', email_verified: true }
       let!(:existing_identity) do
         Identity.create!(
@@ -239,12 +187,12 @@ describe Identities::SamlController do
       end
 
       before do
-        stub_const('ENV', ENV.to_hash.merge('FEATURES_DISABLE_EMAIL_LOGIN' => 'true', 'LOOMIO_SSO_FORCE_USER_ATTRS' => 'true'))
+        stub_const('ENV', ENV.to_hash.merge('LOOMIO_SSO_FORCE_USER_ATTRS' => 'true'))
       end
 
       it 'updates identity with new email from SSO and syncs to user' do
         session[:back_to] = '/dashboard'
-        
+
         expect {
           post :create, params: { SAMLResponse: saml_response_xml }
         }.to change { Identity.where(identity_type: 'saml').count }.by(0)
@@ -304,18 +252,21 @@ describe Identities::SamlController do
         sign_in current_user
       end
 
-      it 'attaches identity to current user' do
+      it 'creates pending identity instead of auto-linking' do
         session[:back_to] = '/settings'
-        
+
         expect {
           post :create, params: { SAMLResponse: saml_response_xml }
-        }.to change { current_user.identities.count }.by(1)
-         .and change { Identity.where(identity_type: 'saml').count }.by(1)
+        }.to change { Identity.where(identity_type: 'saml').count }.by(1)
+         .and change { current_user.identities.count }.by(0)
 
         identity = Identity.where(identity_type: 'saml').last
-        expect(identity.user).to eq current_user
+        expect(identity.user_id).to be_nil  # Pending identity, not linked
+        expect(identity.email).to eq 'user@example.com'
+
+        expect(session[:pending_identity_id]).to eq identity.id
         expect(response).to redirect_to '/settings'
-        expect(flash[:notice]).to eq I18n.t('devise.sessions.signed_in')
+        expect(flash[:notice]).to eq I18n.t('auth.switching_accounts')
       end
     end
 

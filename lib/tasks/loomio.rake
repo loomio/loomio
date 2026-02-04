@@ -227,6 +227,7 @@ namespace :loomio do
     GenericWorker.perform_async('TaskService', 'send_task_reminders')
     GenericWorker.perform_async('ReceivedEmailService', 'route_all')
     LoginToken.where("created_at < ?", 1.hours.ago).delete_all
+    Identity.stale(days: 7).delete_all
     GeoLocationWorker.perform_async
 
     SendDailyCatchUpEmailWorker.perform_async

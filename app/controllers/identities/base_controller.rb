@@ -16,43 +16,23 @@ class Identities::BaseController < ApplicationController
     identity_params = fetch_identity_params(access_token)
     return respond_with_error(401, "Could not fetch user profile from OAuth provider") unless identity_params[:uid].present? && identity_params[:email].present?
 
-    # Find or create identity by uid (the immutable SSO identifier)
-    identity = Identity.find_by(identity_params.slice(:uid, :identity_type))
-    
-    if identity
-      # Existing identity found - update its attributes (email/name may have changed in SSO)
-      identity.update(identity_params)
-    else
-      # New identity - need to create it and link to a user
-      identity = Identity.new(identity_params)
-      
-      if ENV['FEATURES_DISABLE_EMAIL_LOGIN']
-        # SSO-only mode: uid is the source of truth
-        # Try to find existing user by email (for initial account linking)
-        # or create a new verified user
-        identity.user = current_user.presence || User.find_by(email: identity.email)
-        
-        if identity.user.nil?
-          # No existing user found - create new verified user for SSO
-          identity.user = User.new(identity_params.slice(:name, :email).merge(email_verified: true))
-          identity.user.save!
-        end
-      else
-        # Standard mode: only link to verified users or current user
-        identity.user = current_user.presence || User.verified.find_by(email: identity.email)
-      end
-      
-      identity.save
+    identity = IdentityService.link_or_create(
+      identity_params: identity_params,
+      current_user: current_user
+    )
+
+    # Handle pending identity flow (user is switching accounts)
+    if !identity.user
+      back_to = session[:back_to]
+      sign_out
+      session[:pending_identity_id] = identity.id
+      flash[:notice] = t(:'auth.switching_accounts')
+      return redirect_to back_to || dashboard_path
     end
 
-    if identity.user
-      # In SSO mode, always sync user attributes from SSO provider
-      identity.force_user_attrs! if ENV['LOOMIO_SSO_FORCE_USER_ATTRS']
-      sign_in(identity.user)
-      flash[:notice] = t(:'devise.sessions.signed_in')
-    else
-      session[:pending_identity_id] = identity.id
-    end
+    # Handle successful login
+    sign_in(identity.user)
+    flash[:notice] = t(:'devise.sessions.signed_in')
 
     redirect_to session.delete(:back_to) || dashboard_path
   end

@@ -396,6 +396,7 @@ en:
     _10: 10th
   auth:
     oauth_cancelled: Sign in was cancelled
+    switching_accounts: Switching accounts. Please sign in with your new account details.
   devise:
     sessions:
       signed_up: Signed up successfully!

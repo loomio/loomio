@@ -10,10 +10,8 @@ class Identity < ApplicationRecord
   PROVIDERS = YAML.load_file(Rails.root.join("config", "providers.yml"))['identity']
 
   scope :with_user, -> { where.not(user: nil) }
-
-  def force_user_attrs!
-    user.update(name: name, email: email)
-  end
+  scope :pending, -> { where(user: nil) }
+  scope :stale, ->(days: 7) { pending.where('created_at < ?', days.days.ago) }
 
   def assign_logo!
     return unless user && logo
