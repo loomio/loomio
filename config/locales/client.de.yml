@@ -562,7 +562,7 @@ de:
     new_group: Neue Gruppe
     new_subgroup: Neue Untergruppe
     find_a_group: Finde eine Gruppe
-    direct_discussions: Direkte Gespräche
+    direct_discussions: Direkte Diskussionen
   strand_nav:
     newest: Neueste
     oldest: 'Älteste '
@@ -1638,8 +1638,8 @@ de:
   threads_page:
     no_direct_threads: Du hast keine direkten Diskussionen
     no_invite_only_threads: Es gibt keine Threads, die nur auf Einladung zugänglich sind.
-    no_direct_discussions: Es gibt keine direkten Gespräche.
-    no_direct_discussions_title: Es gibt keine direkten Gespräche.
+    no_direct_discussions: Es gibt keine direkten Diskussionen.
+    no_direct_discussions_title: Es gibt keine direkten Diskussionen.
     no_direct_discussions_helptext: Direkte Diskussionen dienen dazu, direkt mit einem anderen Benutzer in Kontakt zu treten, ohne dass die Diskussion einer Gruppe angehört.
   inbox_page:
     no_threads: Juhu! Du hast alle Diskussionsbeiträge in deinem Posteingang gelesen.
