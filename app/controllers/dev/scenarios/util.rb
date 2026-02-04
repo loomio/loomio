@@ -14,6 +14,7 @@ module Dev::Scenarios::Util
   def cleanup_database
     reset_session
     ::StanceReceipt.delete_all
+    ::Identity.delete_all
     ::User.delete_all
     ::Group.delete_all
     ::Membership.delete_all

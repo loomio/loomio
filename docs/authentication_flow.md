@@ -278,6 +278,12 @@ Pending identities that are not linked to any user (failed account linking attem
 
 ---
 
+## Local SAML Testing
+
+For local development and testing of SAML authentication, use the [dev-sso-idp](https://github.com/loomio/dev-sso-idp) project - a lightweight SAML Identity Provider that runs locally. See the dev-sso-idp repository for setup and usage instructions.
+
+---
+
 ## Future Enhancements
 
 1. **Account merging** - Separate flow for intentionally merging two complete accounts (currently exists in `MergeUsersService`)
