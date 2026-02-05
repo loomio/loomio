@@ -1,0 +1,75 @@
+require 'test_helper'
+
+class OutcomeServiceTest < ActiveSupport::TestCase
+  setup do
+    @user = users(:normal_user)
+    @group = groups(:test_group)
+    @discussion = create_discussion(group: @group, author: @user)
+
+    @poll = Poll.new(
+      title: "Test Poll",
+      poll_type: "proposal",
+      discussion: @discussion,
+      author: @user,
+      poll_option_names: ["Yes", "No"],
+      closed_at: 1.day.ago
+    )
+    PollService.create(poll: @poll, actor: @user)
+
+    @outcome = Outcome.create(
+      poll: @poll,
+      author: @user,
+      statement: "Test outcome"
+    )
+
+    @new_outcome = Outcome.new(
+      poll: @poll,
+      author: @user,
+      statement: "New outcome"
+    )
+
+    @group.add_member!(@user)
+    ActionMailer::Base.deliveries.clear
+  end
+
+  test "creates a new outcome" do
+    assert_difference 'Outcome.count', 1 do
+      OutcomeService.create(outcome: @new_outcome, actor: @user)
+    end
+
+    assert_equal @new_outcome.statement, @poll.reload.current_outcome.statement
+    assert_equal @new_outcome.author, @poll.current_outcome.author
+  end
+
+  test "does not create an invalid outcome" do
+    @new_outcome.statement = ""
+
+    assert_difference 'Outcome.count', 0 do
+      OutcomeService.create(outcome: @new_outcome, actor: @user)
+    end
+  end
+
+  test "publishes a due review, and only once" do
+    @outcome.update(review_on: Date.today)
+
+    ActionMailer::Base.deliveries.clear
+    assert_difference 'Events::OutcomeReviewDue.count', 1 do
+      OutcomeService.publish_review_due
+    end
+
+    assert_difference 'Events::OutcomeReviewDue.count', 0 do
+      OutcomeService.publish_review_due
+    end
+
+    last_email = ActionMailer::Base.deliveries.last
+    assert_includes last_email.to, @outcome.author.email
+  end
+
+  test "does not publish null review_on" do
+    @outcome.update(review_on: nil)
+
+    assert_difference 'Events::OutcomeReviewDue.count', 0 do
+      OutcomeService.publish_review_due
+    end
+  end
+end
