@@ -20,8 +20,8 @@ class Api::V1::TagsControllerTest < ActionController::TestCase
     )
     PollService.create(poll: @poll, actor: @user)
     
-    @group.add_member! @user unless @group.members.include?(@user)
-    @subgroup.add_member! @user unless @subgroup.members.include?(@user)
+    @group.add_admin!(@user) unless @group.members.include?(@user)
+    @subgroup.add_admin!(@user) unless @subgroup.members.include?(@user)
     
     @sub_discussion = create_discussion(group: @subgroup, author: @user, tags: ['apple', 'banana'])
     @sub_poll = Poll.new(
