@@ -9,6 +9,7 @@ WebMock.disable_net_connect!(allow_localhost: true)
 # Configure Sidekiq for testing
 require 'sidekiq/testing'
 Sidekiq::Testing.inline!
+Sidekiq.logger.level = Logger::ERROR
 
 module ActiveSupport
   class TestCase
