@@ -80,6 +80,7 @@ group :development do
 end
 
 group :test do
+  gem 'minitest', '~> 5.0'
   gem 'webmock'
   gem 'rack_session_access'
   gem 'drb'

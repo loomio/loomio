@@ -1,0 +1,50 @@
+# Memberships fixtures for testing
+normal_user_in_test_group:
+  user: normal_user
+  group: test_group
+  accepted_at: <%= 30.days.ago %>
+  admin: false
+  created_at: <%= 30.days.ago %>
+
+another_user_in_test_group:
+  user: another_user
+  group: test_group
+  accepted_at: <%= 30.days.ago %>
+  admin: false
+  created_at: <%= 30.days.ago %>
+  volume: normal
+
+author_in_test_group:
+  user: discussion_author
+  group: test_group
+  accepted_at: <%= 30.days.ago %>
+  admin: true
+  created_at: <%= 30.days.ago %>
+
+author_in_another_group:
+  user: discussion_author
+  group: another_group
+  accepted_at: <%= 30.days.ago %>
+  admin: true
+  created_at: <%= 30.days.ago %>
+
+author_in_subgroup:
+  user: discussion_author
+  group: subgroup
+  accepted_at: <%= 20.days.ago %>
+  admin: true
+  created_at: <%= 20.days.ago %>
+
+normal_user_in_subgroup:
+  user: normal_user
+  group: subgroup
+  accepted_at: <%= 20.days.ago %>
+  admin: false
+  created_at: <%= 20.days.ago %>
+
+author_in_public_group:
+  user: discussion_author
+  group: public_group
+  accepted_at: <%= 30.days.ago %>
+  admin: true
+  created_at: <%= 30.days.ago %>

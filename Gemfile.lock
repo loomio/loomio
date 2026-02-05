@@ -446,8 +446,7 @@ GEM
     mini_magick (5.3.0)
       logger
     mini_mime (1.1.5)
-    minitest (6.0.1)
-      prism (~> 1.5)
+    minitest (5.27.0)
     msgpack (1.8.0)
     multi_json (1.19.1)
     multi_xml (0.8.1)
@@ -827,6 +826,7 @@ DEPENDENCIES
   image_processing (~> 1.14)
   lograge
   maxminddb
+  minitest (~> 5.0)
   nokogiri
   paper_trail (~> 17.0.0)
   pg
