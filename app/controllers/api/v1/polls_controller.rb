@@ -12,6 +12,7 @@ class Api::V1::PollsController < Api::V1::RestfulController
     memberships = @poll.group.present? ? @poll.group.memberships.where(user_id: receipts.map(&:voter_id)).index_by(&:user_id) : {}
     voters = User.where(id: receipts.map(&:voter_id)).index_by(&:id)
     inviters = User.where(id: receipts.map(&:inviter_id)).index_by(&:id)
+    mask_receipts = AppConfig.app_features[:mask_anonymous_participants] && @poll.anonymous && !is_admin
 
     render json: {
       voters_count: @poll.voters_count,
@@ -22,10 +23,10 @@ class Api::V1::PollsController < Api::V1::RestfulController
         membership = memberships[receipt.voter_id]
         {
           poll_id: @poll.id,
-          voter_id: receipt.voter_id,
-          voter_name: voter.name,
-          voter_email: is_admin ? voter.email : (voter.email || "").split('@').last,
-          member_since: membership&.accepted_at&.to_date&.iso8601,
+          voter_id: mask_receipts ? nil : receipt.voter_id,
+          voter_name: mask_receipts ? nil : voter.name,
+          voter_email: mask_receipts ? nil : (is_admin ? voter.email : (voter.email || "").split('@').last),
+          member_since: mask_receipts ? nil : membership&.accepted_at&.to_date&.iso8601,
           inviter_id: receipt.inviter_id,
           inviter_name: inviter.name,
           invited_on: receipt.invited_at&.to_date&.iso8601,

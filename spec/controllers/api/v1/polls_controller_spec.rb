@@ -108,6 +108,78 @@ describe Api::V1::PollsController do
         }.as_json
       ]
     end
+
+    describe 'mask_anonymous_participants feature' do
+      before do
+        @original_env = ENV['FEATURES_MASK_ANONYMOUS_PARTICIPANTS']
+      end
+
+      after do
+        if @original_env
+          ENV['FEATURES_MASK_ANONYMOUS_PARTICIPANTS'] = @original_env
+        else
+          ENV.delete('FEATURES_MASK_ANONYMOUS_PARTICIPANTS')
+        end
+      end
+
+      it "masks voter info when feature enabled, poll is anonymous, and user is not admin" do
+        ENV['FEATURES_MASK_ANONYMOUS_PARTICIPANTS'] = 'true'
+        membership = group.membership_for(user)
+        stance = Stance.create(poll: anonymous_poll, participant: user, inviter: anonymous_poll.author, latest: true, cast_at: nil)
+        sign_in user
+        get :receipts, params: { id: anonymous_poll.id }
+        expect(response.status).to eq 200
+        receipt = JSON.parse(response.body)['receipts'].first
+        expect(receipt['voter_id']).to be_nil
+        expect(receipt['voter_name']).to be_nil
+        expect(receipt['voter_email']).to be_nil
+        expect(receipt['member_since']).to be_nil
+        expect(receipt['inviter_id']).to eq stance.inviter_id
+        expect(receipt['inviter_name']).to eq stance.inviter.name
+        expect(receipt['vote_cast']).to be_nil
+      end
+
+      it "does not mask voter info when feature enabled but user is admin" do
+        ENV['FEATURES_MASK_ANONYMOUS_PARTICIPANTS'] = 'true'
+        membership = group.add_admin! user
+        stance = Stance.create(poll: anonymous_poll, participant: user, inviter: anonymous_poll.author, latest: true, cast_at: nil)
+        sign_in user
+        get :receipts, params: { id: anonymous_poll.id }
+        expect(response.status).to eq 200
+        receipt = JSON.parse(response.body)['receipts'].first
+        expect(receipt['voter_id']).to eq user.id
+        expect(receipt['voter_name']).to eq user.name
+        expect(receipt['voter_email']).to eq user.email
+        expect(receipt['member_since']).to eq membership.accepted_at.to_date.iso8601
+      end
+
+      it "does not mask voter info when feature enabled but poll is not anonymous" do
+        ENV['FEATURES_MASK_ANONYMOUS_PARTICIPANTS'] = 'true'
+        membership = group.membership_for(user)
+        stance = Stance.create(poll: poll, participant: user, inviter: poll.author, latest: true, cast_at: nil)
+        sign_in user
+        get :receipts, params: { id: poll.id }
+        expect(response.status).to eq 200
+        receipt = JSON.parse(response.body)['receipts'].first
+        expect(receipt['voter_id']).to eq user.id
+        expect(receipt['voter_name']).to eq user.name
+        expect(receipt['member_since']).to eq membership.accepted_at.to_date.iso8601
+      end
+
+      it "does not mask voter info when feature is disabled" do
+        ENV.delete('FEATURES_MASK_ANONYMOUS_PARTICIPANTS')
+        membership = group.membership_for(user)
+        stance = Stance.create(poll: anonymous_poll, participant: user, inviter: anonymous_poll.author, latest: true, cast_at: nil)
+        sign_in user
+        get :receipts, params: { id: anonymous_poll.id }
+        expect(response.status).to eq 200
+        receipt = JSON.parse(response.body)['receipts'].first
+        expect(receipt['voter_id']).to eq user.id
+        expect(receipt['voter_name']).to eq user.name
+        expect(receipt['voter_email']).to eq user.email.split('@').last
+        expect(receipt['member_since']).to eq membership.accepted_at.to_date.iso8601
+      end
+    end
   end
 
   describe 'show' do
