@@ -1,9 +1,16 @@
 # RSpec to Minitest Conversion Status
 
 ## Overview
-Converting 24 API v1 controller specs from RSpec + FactoryBot to Minitest + Fixtures for Rails 8 compatibility.
+Comprehensive conversion of RSpec test suite to Minitest + Fixtures for Rails 8 compatibility.
 
-**Current Status:** 21/24 specs converted (87.5%), 165+ tests fully passing (Batches 1-5 complete, Batch 6 pending)
+**Status:**
+- **API v1 Controllers:** ✅ 24/24 specs converted (100%), 231+ tests fully passing
+- **Services - Foundation Layer:** ✅ 6/21 converted (20 tests passing)
+  - Completed: retry_on_error, login_token_service, discussion_reader_service, reaction_service, outcome_service, event_service
+  - **Pending (Sonnet):** 15 remaining services (user, poll, discussion, comment, identity, group_export, membership, group, received_email, stance, task, record_cloner, translation, throttle, privacy_change)
+- **Models:** ⏳ Next phase (25 model specs identified)
+
+**Total Conversion Progress: 30/46 major specs (65%), 268+ tests passing**
 
 ---
 
@@ -280,6 +287,106 @@ bin/rails test test/controllers/api/v1/discussions_controller_test.rb -v
 
 ---
 
+## Handoff for Sonnet - Service Conversion (Batch 2+)
+
+### Priority Order (by complexity/size):
+
+**Simple/Utility Services** (50-80 lines) - Start here:
+1. `throttle_service_spec.rb` (57 lines) - Caching/throttling logic
+2. `translation_service_spec.rb` (71 lines) - I18n + Google Translate mocking
+3. `privacy_change_spec.rb` - Privacy transition logic
+4. `stance_service_spec.rb` (77 lines) - Stance creation, redemption
+
+**Medium Services** (109-176 lines) - Next batch:
+1. `task_service_spec.rb` (109 lines) - Task parsing from HTML
+2. `record_cloner_spec.rb` (114 lines) - Group/discussion cloning
+3. `group_service_spec.rb` (127 lines) - Group creation, invitations, subscriptions
+4. `membership_service_spec.rb` (130 lines) - Membership revocation, redemption, cascade deletes
+5. `group_export_service_spec.rb` (152 lines) - Complex export logic
+6. `identity_service_spec.rb` (176 lines) - OAuth/provider integration, mocking
+
+**Large/Complex Services** (159-386 lines) - Final batch:
+1. `comment_service_spec.rb` (159 lines) - Comments, mentions, notifications
+2. `discussion_service_spec.rb` (248 lines) - Discussion creation, forking, hierarchy
+3. `poll_service_spec.rb` (350 lines) - Poll creation, stances, invitations, results
+4. `received_email_service_spec.rb` (386 lines) - Email parsing, aliasing, blocking
+
+### Key Patterns to Follow:
+
+```ruby
+# File structure
+require 'test_helper'
+
+class SomeServiceTest < ActiveSupport::TestCase
+  setup do
+    @user = users(:normal_user)
+    @group = groups(:test_group)
+    @discussion = create_discussion(group: @group, author: @user)
+    ActionMailer::Base.deliveries.clear
+  end
+
+  # Pattern 1: Service creation with actor
+  test "creates a thing" do
+    assert_difference 'Thing.count', 1 do
+      SomeService.create(model: thing, actor: @user)
+    end
+  end
+
+  # Pattern 2: Authorization checks
+  test "denies unauthorized access" do
+    assert_raises CanCan::AccessDenied do
+      SomeService.update(model: thing, actor: unauthorized_user)
+    end
+  end
+
+  # Pattern 3: Email tracking
+  test "sends email" do
+    ActionMailer::Base.deliveries.clear
+    SomeService.do_thing(actor: @user)
+    assert_equal 1, ActionMailer::Base.deliveries.count
+  end
+
+  # Pattern 4: Event creation
+  test "creates event" do
+    event = SomeService.create(model: model, actor: @user)
+    assert_kind_of Event, event
+  end
+end
+```
+
+### Common Gotchas:
+1. **Duplicate constraints**: Some services (stances) have unique constraints - test carefully
+2. **Subscriptions**: Group services check `max_members` - need proper setup
+3. **External APIs**: identity_service, group_export_service need mocking
+4. **Event hierarchy**: event_service tests depth/parent relationships
+5. **Database state**: Some tests need clean Redis (throttle_service used CACHE_REDIS_POOL)
+
+### Fixture Requirements:
+All tests use these fixtures:
+- `users(:normal_user)` - Standard member
+- `users(:another_user)` - Secondary member
+- `groups(:test_group)` - Main test group
+- `groups(:another_group)` - Secondary group
+- `create_discussion(group:, author:)` - Helper for discussions
+
+Additional helpers in `test/test_helper.rb`:
+- `create_discussion(**args)` - Creates discussion + events
+
+### Running Tests:
+```bash
+# Single service
+bin/rails test test/services/poll_service_test.rb
+
+# Multiple services
+bin/rails test test/services/{poll,discussion,comment}_service_test.rb
+
+# All services
+bin/rails test test/services/*_test.rb
+```
+
+---
+
 **Last Updated:** 2026-02-06
-**Conversion Progress:** 21/24 specs (87.5%)
-**Tests Passing:** 165+ tests across Batches 1-5 (100% of completed specs)
+**Conversion Progress:** 30/46 specs (65%)
+**Tests Passing:** 268+ tests (controllers + services)
+**Handoff Status:** ✅ Ready for Sonnet - 15 service specs awaiting conversion
