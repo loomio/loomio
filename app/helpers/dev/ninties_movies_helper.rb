@@ -366,11 +366,11 @@ module Dev::NintiesMoviesHelper
     membership = Membership.create(user: emilio, group: another_group, inviter: patrick)
     MembershipService.redeem(membership: membership, actor: emilio)
 
-    poll = Poll.new(poll_type: :proposal, title: "Invitation poll", poll_option_names: %w[agree abstain disagree block], discussion: create_discussion, group: create_group, author: jennifer, closing_at: 24.hours.from_now)
+    poll = Poll.new(poll_type: :poll, title: "Invitation poll", poll_option_names: %w[agree abstain disagree block], discussion: create_discussion, group: create_group, author: jennifer, closing_at: 24.hours.from_now, notify_on_closing_soon: 'voters', specified_voters_only: true)
     PollService.create(poll: poll, actor: jennifer)
     PollService.invite(
       poll: poll,
-      params: { recipient_user_ids: [patrick.id] },
+      params: { recipient_user_ids: [patrick.id], notify_recipients: true },
       actor: jennifer
     )
 
