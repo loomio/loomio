@@ -2,8 +2,8 @@ require 'test_helper'
 
 class GroupTest < ActiveSupport::TestCase
   setup do
-    @user = User.create!(name: "Group User #{SecureRandom.hex(4)}", email: "groupuser_#{SecureRandom.hex(4)}@test.com", email_verified: true)
-    @group = Group.create!(name: "Test Group #{SecureRandom.hex(4)}", group_privacy: 'secret')
+    @user = users(:normal_user)
+    @group = groups(:test_group)
   end
 
   # Memberships
@@ -41,8 +41,9 @@ class GroupTest < ActiveSupport::TestCase
   end
 
   test "updates the memberships_count" do
-    assert_difference -> { @group.reload.memberships_count }, 1 do
-      @group.add_member!(@user)
+    group = Group.create!(name: "Count Group #{SecureRandom.hex(4)}", group_privacy: 'secret')
+    assert_difference -> { group.reload.memberships_count }, 1 do
+      group.add_member!(@user)
     end
   end
 
@@ -81,17 +82,18 @@ class GroupTest < ActiveSupport::TestCase
 
   # Discussion counts
   test "does not count a discarded discussion" do
-    @group.add_admin!(@user)
-    discussion = create_discussion(group: @group, author: @user)
+    group = Group.create!(name: "Count Disc #{SecureRandom.hex(4)}", group_privacy: 'secret')
+    group.add_admin!(@user)
+    discussion = create_discussion(group: group, author: @user)
 
-    discarded = create_discussion(group: @group, author: @user, title: "Discarded Discussion")
+    discarded = create_discussion(group: group, author: @user, title: "Discarded Discussion")
     discarded.update!(discarded_at: Time.current)
 
-    @group.reload
-    assert_equal 0, @group.public_discussions_count
-    assert_equal 1, @group.open_discussions_count
-    assert_equal 0, @group.closed_discussions_count
-    assert_equal 1, @group.discussions_count
+    group.reload
+    assert_equal 0, group.public_discussions_count
+    assert_equal 1, group.open_discussions_count
+    assert_equal 0, group.closed_discussions_count
+    assert_equal 1, group.discussions_count
   end
 
   # Archival
@@ -114,7 +116,8 @@ class GroupTest < ActiveSupport::TestCase
   end
 
   test "returns the id for groups with no subgroups" do
-    assert_equal [@group.id], @group.id_and_subgroup_ids
+    group = groups(:another_group)
+    assert_equal [group.id], group.id_and_subgroup_ids
   end
 
   test "returns the id and subgroup ids for group with subgroups" do

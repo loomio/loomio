@@ -2,8 +2,8 @@ require 'test_helper'
 
 class PollOptionTest < ActiveSupport::TestCase
   test "does not count old stances in total score" do
-    user = User.create!(name: "PO User #{SecureRandom.hex(4)}", email: "po_#{SecureRandom.hex(4)}@test.com")
-    group = Group.create!(name: "PO Group #{SecureRandom.hex(4)}", group_privacy: 'secret')
+    user = users(:normal_user)
+    group = groups(:test_group)
     group.add_admin!(user)
 
     poll = Poll.create!(

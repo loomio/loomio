@@ -2,8 +2,8 @@ require 'test_helper'
 
 class CommentTest < ActiveSupport::TestCase
   setup do
-    @user = User.create!(name: "Comment User #{SecureRandom.hex(4)}", email: "comment_#{SecureRandom.hex(4)}@test.com", email_verified: true)
-    @group = Group.create!(name: "Comment Group #{SecureRandom.hex(4)}", group_privacy: 'secret')
+    @user = users(:normal_user)
+    @group = groups(:test_group)
     @group.add_admin!(@user)
 
     @discussion = create_discussion(group: @group, author: @user)

@@ -10,7 +10,7 @@ class Ability::PollTest < ActiveSupport::TestCase
   end
 
   setup do
-    @actor = User.create!(name: "Poll Actor #{SecureRandom.hex(4)}", email: "pollactor_#{SecureRandom.hex(4)}@test.com", email_verified: true)
+    @actor = users(:normal_user)
     @ability = Ability::Base.new(@actor)
   end
 

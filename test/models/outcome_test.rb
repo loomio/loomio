@@ -2,8 +2,8 @@ require 'test_helper'
 
 class OutcomeTest < ActiveSupport::TestCase
   setup do
-    @user = User.create!(name: "Outcome User #{SecureRandom.hex(4)}", email: "outcome_#{SecureRandom.hex(4)}@test.com")
-    @group = Group.create!(name: "Outcome Group #{SecureRandom.hex(4)}", group_privacy: 'secret')
+    @user = users(:normal_user)
+    @group = groups(:test_group)
     @group.add_admin!(@user)
 
     @meeting_poll = Poll.new(

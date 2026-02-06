@@ -2,8 +2,8 @@ require 'test_helper'
 
 class StanceTest < ActiveSupport::TestCase
   setup do
-    @user = User.create!(name: "Stance User #{SecureRandom.hex(4)}", email: "stance_#{SecureRandom.hex(4)}@test.com")
-    @group = Group.create!(name: "Stance Group #{SecureRandom.hex(4)}", group_privacy: 'secret')
+    @user = users(:normal_user)
+    @group = groups(:test_group)
     @group.add_admin!(@user)
   end
 

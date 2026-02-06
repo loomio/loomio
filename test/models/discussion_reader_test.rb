@@ -2,9 +2,9 @@ require 'test_helper'
 
 class DiscussionReaderTest < ActiveSupport::TestCase
   setup do
-    @user = User.create!(name: "DR User #{SecureRandom.hex(4)}", email: "dr_#{SecureRandom.hex(4)}@test.com", email_verified: true)
-    @other_user = User.create!(name: "DR Other #{SecureRandom.hex(4)}", email: "drother_#{SecureRandom.hex(4)}@test.com", email_verified: true)
-    @group = Group.create!(name: "DR Group #{SecureRandom.hex(4)}", group_privacy: 'secret')
+    @user = users(:normal_user)
+    @other_user = users(:another_user)
+    @group = groups(:test_group)
     @group.add_admin!(@user)
     @group.add_member!(@other_user)
 

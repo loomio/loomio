@@ -10,9 +10,9 @@ class AbilityTest < ActiveSupport::TestCase
   end
 
   setup do
-    @user = User.create!(name: "Ability User #{SecureRandom.hex(4)}", email: "ability_#{SecureRandom.hex(4)}@test.com", email_verified: true)
-    @other_user = User.create!(name: "Other User #{SecureRandom.hex(4)}", email: "other_#{SecureRandom.hex(4)}@test.com", email_verified: true)
-    @non_member = User.create!(name: "Non Member #{SecureRandom.hex(4)}", email: "nonmember_#{SecureRandom.hex(4)}@test.com", email_verified: true)
+    @user = users(:normal_user)
+    @other_user = users(:another_user)
+    @non_member = users(:discussion_author)
     @ability = Ability::Base.new(@user)
   end
 

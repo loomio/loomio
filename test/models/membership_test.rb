@@ -2,9 +2,9 @@ require 'test_helper'
 
 class MembershipTest < ActiveSupport::TestCase
   setup do
-    @user = User.create!(name: "Member #{SecureRandom.hex(4)}", email: "member_#{SecureRandom.hex(4)}@test.com")
-    @user2 = User.create!(name: "Member2 #{SecureRandom.hex(4)}", email: "member2_#{SecureRandom.hex(4)}@test.com")
-    @group = Group.create!(name: "Membership Test Group #{SecureRandom.hex(4)}", group_privacy: 'secret')
+    @user = users(:normal_user)
+    @user2 = users(:another_user)
+    @group = groups(:test_group)
   end
 
   test "cannot have duplicate memberships" do
@@ -20,7 +20,8 @@ class MembershipTest < ActiveSupport::TestCase
   end
 
   test "can have an inviter" do
-    membership = @user.memberships.new(group_id: @group.id)
+    group = groups(:another_group)
+    membership = @user.memberships.new(group_id: group.id)
     membership.inviter = @user2
     membership.save!
     assert_equal @user2, membership.inviter
