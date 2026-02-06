@@ -1,9 +1,8 @@
-require "google/cloud/translate"
-
 class TranslationService
   extend LocalesHelper
 
-  GOOGLE_LOCALES = %w[af sq am ar hy as ay az bm eu be bn bho bs bg ca ceb zh-CN zh zh-TW co hr cs da dv doi nl en eo et ee fil fi fr fy gl ka de el gn gu ht ha haw he iw hi hmn hu is ig ilo id ga it ja jv jw kn kk km rw gom ko kri ku ckb ky lo la lv ln lt lg lb mk mai mg ms ml mt mi mr mni-Mtei lus mn my ne no ny or om ps fa pl pt pa qu ro ru sm sa gd nso sr st sn sd si sk sl so es su sw sv tl tg ta tt te th ti ts tr tk ak uk ur ug uz vi cy xh yi yo zu]
+  class QuotaExceededError < StandardError; end
+  class AllProvidersExhaustedError < StandardError; end
 
   KNOWN_I18N_LABEL_KEYS = %w[
     poll_proposal_options.*
@@ -69,10 +68,36 @@ class TranslationService
     end.uniq
   end
 
-  def self.locale_for_google(locale)
-    locale = locale.to_s.downcase.gsub("_", "-")
-    return locale if GOOGLE_LOCALES.include?(locale)
-    locale.split("-")[0]
+  def self.provider_manager
+    @provider_manager ||= TranslationProviders::ProviderManager.new
+  end
+
+  def self.provider
+    provider_manager.next_available_provider
+  end
+
+  def self.locale_for_provider(locale)
+    return locale unless provider
+    provider.normalize_locale(locale)
+  end
+
+  def self.attempt_translation_with_fallback(content, **options)
+    attempts = 0
+    max_attempts = provider_manager.instance_variable_get(:@providers).count
+
+    loop do
+      current_provider = provider
+      raise AllProvidersExhaustedError, "All translation providers exhausted" unless current_provider
+
+      begin
+        return current_provider.translate(content, **options)
+      rescue QuotaExceededError => e
+        provider_manager.mark_provider_exhausted(current_provider)
+        attempts += 1
+        raise AllProvidersExhaustedError, "All translation providers exhausted" if attempts >= max_attempts
+        Rails.logger.info "Falling back to next translation provider"
+      end
+    end
   end
 
   def self.find_i18n_translation(value, from:, to:)
@@ -94,7 +119,6 @@ class TranslationService
   end
 
   def self.translated_fields_for(model, to:)
-    service = Google::Cloud::Translate.translation_v2_service
     fields = {}
     from_locale = if model.respond_to?(:content_locale) && model.content_locale.present?
       model.content_locale
@@ -126,14 +150,14 @@ class TranslationService
         end
       end
 
-      fields[field.to_s] = service.translate(content, **translate_options)
+      fields[field.to_s] = attempt_translation_with_fallback(content, **translate_options)
     end
 
     fields
   end
 
   def self.create(model:, to:)
-    locale = locale_for_google(to)
+    locale = locale_for_provider(to)
 
     if translation = model.translations.find_by(language: locale)
       return translation
@@ -159,7 +183,7 @@ class TranslationService
   end
 
   def self.available?
-    ENV['TRANSLATE_CREDENTIALS'].present?
+    provider.present?
   end
 
   def self.translate_group_content!(group, locale, cache_only = false)

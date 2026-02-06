@@ -1,6 +1,40 @@
 require 'rails_helper'
 
 RSpec.describe TranslationService do
+  describe '.provider' do
+    before do
+      TranslationService.instance_variable_set(:@provider, nil)
+    end
+
+    it 'prefers Azure when available' do
+      allow(TranslationProviders::Azure).to receive(:available?).and_return(true)
+      allow(TranslationProviders::Google).to receive(:available?).and_return(true)
+
+      provider = TranslationService.provider
+
+      expect(provider).to be_a(TranslationProviders::Azure)
+    end
+
+    it 'uses Google when Azure is not available' do
+      allow(TranslationProviders::Azure).to receive(:available?).and_return(false)
+      allow(TranslationProviders::Google).to receive(:available?).and_return(true)
+
+      provider = TranslationService.provider
+
+      expect(provider).to be_a(TranslationProviders::Google)
+    end
+
+    it 'returns nil when no provider is available' do
+      allow(TranslationProviders::Azure).to receive(:available?).and_return(false)
+      allow(TranslationProviders::Google).to receive(:available?).and_return(false)
+
+      provider = TranslationService.provider
+
+      expect(provider).to be_nil
+    end
+  end
+
+
   describe '.create' do
     let(:poll) { create(:poll, poll_option_names: []) }
     let(:poll_option) { create(:poll_option, poll: poll, name: name) }
@@ -17,6 +51,9 @@ RSpec.describe TranslationService do
       # Isolate and seed I18n translations for this spec
       I18n.backend = I18n::Backend::Simple.new
       I18n.enforce_available_locales = false
+
+      # Reset provider cache between tests
+      TranslationService.instance_variable_set(:@provider, nil)
     end
 
     after do
@@ -33,12 +70,15 @@ RSpec.describe TranslationService do
         # KNOWN_I18N_LABEL_KEYS includes "poll_proposal_options.*"
         I18n.backend.store_translations(:en, poll_proposal_options: { agree: 'Agree' })
         I18n.backend.store_translations(:fr, poll_proposal_options: { agree: "D’accord" })
+
+        allow(TranslationProviders::Google).to receive(:available?).and_return(true)
       end
 
-      it 'uses the Rails I18n translation and does not call Google Translate' do
-        google_service = double('GoogleTranslateService')
-        allow(Google::Cloud::Translate).to receive(:translation_v2_service).and_return(google_service)
-        expect(google_service).not_to receive(:translate)
+      it 'uses the Rails I18n translation and does not call provider' do
+        provider = double('TranslationProvider')
+        allow(provider).to receive(:normalize_locale).and_return('fr')
+        allow(TranslationService).to receive(:provider).and_return(provider)
+        expect(provider).not_to receive(:translate)
 
         translation = TranslationService.create(model: poll_option, to: 'fr')
 
@@ -53,10 +93,15 @@ RSpec.describe TranslationService do
     context 'when field is not an I18n-known label' do
       let(:name) { 'Plan X' }
 
-      it 'falls back to Google Translate' do
-        google_service = double('GoogleTranslateService')
-        allow(Google::Cloud::Translate).to receive(:translation_v2_service).and_return(google_service)
-        expect(google_service).to receive(:translate).with('Plan X', hash_including(to: 'fr', format: :text)).and_return('Plan X FR')
+      before do
+        allow(TranslationProviders::Google).to receive(:available?).and_return(true)
+      end
+
+      it 'falls back to translation provider' do
+        provider = double('TranslationProvider')
+        allow(provider).to receive(:normalize_locale).and_return('fr')
+        allow(TranslationService).to receive(:provider).and_return(provider)
+        expect(provider).to receive(:translate).with('Plan X', hash_including(to: 'fr', format: :text)).and_return('Plan X FR')
 
         translation = TranslationService.create(model: poll_option, to: 'fr')
 
@@ -66,6 +111,47 @@ RSpec.describe TranslationService do
         expect(translation.fields['meaning']).to be_nil
         expect(translation.fields['prompt']).to be_nil
       end
+    end
+  end
+
+  describe 'provider fallback' do
+    it 'falls back to next provider when quota exhausted' do
+      allow(TranslationProviders::Azure).to receive(:available?).and_return(true)
+      allow(TranslationProviders::Google).to receive(:available?).and_return(true)
+      TranslationService.instance_variable_set(:@provider_manager, nil)
+
+      azure = TranslationProviders::Azure.new
+      google = TranslationProviders::Google.new
+
+      allow(TranslationProviders::Azure).to receive(:new).and_return(azure)
+      allow(TranslationProviders::Google).to receive(:new).and_return(google)
+
+      allow(azure).to receive(:translate).and_raise(TranslationService::QuotaExceededError)
+      allow(google).to receive(:translate).with('Hello', to: 'fr', format: :text).and_return('Bonjour')
+      allow(azure).to receive(:normalize_locale).and_return('fr')
+      allow(google).to receive(:normalize_locale).and_return('fr')
+
+      result = TranslationService.attempt_translation_with_fallback('Hello', to: 'fr', format: :text)
+      expect(result).to eq 'Bonjour'
+    end
+
+    it 'raises AllProvidersExhaustedError when all providers exhausted' do
+      allow(TranslationProviders::Azure).to receive(:available?).and_return(true)
+      allow(TranslationProviders::Google).to receive(:available?).and_return(true)
+      TranslationService.instance_variable_set(:@provider_manager, nil)
+
+      azure = TranslationProviders::Azure.new
+      google = TranslationProviders::Google.new
+
+      allow(TranslationProviders::Azure).to receive(:new).and_return(azure)
+      allow(TranslationProviders::Google).to receive(:new).and_return(google)
+
+      allow(azure).to receive(:translate).and_raise(TranslationService::QuotaExceededError)
+      allow(google).to receive(:translate).and_raise(TranslationService::QuotaExceededError)
+
+      expect {
+        TranslationService.attempt_translation_with_fallback('Hello', to: 'fr', format: :text)
+      }.to raise_error(TranslationService::AllProvidersExhaustedError)
     end
   end
 end
