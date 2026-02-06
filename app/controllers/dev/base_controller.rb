@@ -25,6 +25,17 @@ class Dev::BaseController < ApplicationController
 
   private
 
+  def redirect_to(options = {}, response_options = {})
+    super
+    if Rails.env.development? && response.location.present?
+      uri = URI.parse(response.location)
+      if uri.port == request.port
+        uri.port = 8080
+        response.location = uri.to_s
+      end
+    end
+  end
+
   def ensure_not_production
     raise "Development and testing only" if Rails.env.production?
   end
