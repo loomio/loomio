@@ -13,9 +13,10 @@ module Dev::Scenarios::Discussion
   end
 
   def setup_discussion_as_guest
-    group      = FactoryBot.create :group, group_privacy: 'secret'
-    discussion = FactoryBot.build :discussion, group: group, title: "Dirty Dancing Shoes"
-    DiscussionService.create(discussion: discussion, actor: discussion.group.creator)
+    group      = saved fake_group(group_privacy: 'secret')
+    GroupService.create(group: group, actor: group.creator)
+    discussion = Discussion.new(group: group, title: "Dirty Dancing Shoes", private: true, author: group.creator)
+    DiscussionService.create(discussion: discussion, actor: group.creator)
     discussion.add_guest!(jennifer, discussion.author)
     sign_in jennifer
 
@@ -23,8 +24,9 @@ module Dev::Scenarios::Discussion
   end
 
   def setup_discussion_with_guest
-    group      = FactoryBot.create :group, group_privacy: 'secret'
-    discussion = FactoryBot.build :discussion, group: group, title: "Dirty Dancing Shoes"
+    group      = saved fake_group(group_privacy: 'secret')
+    GroupService.create(group: group, actor: group.creator)
+    discussion = Discussion.new(group: group, title: "Dirty Dancing Shoes", private: true, author: group.creator)
     group.add_member!(patrick)
     DiscussionService.create(discussion: discussion, actor: discussion.group.creator)
     discussion.add_guest!(jennifer, discussion.author)
@@ -37,19 +39,19 @@ module Dev::Scenarios::Discussion
     create_discussion
     create_another_discussion
     sign_in patrick
-    CommentService.create(comment: FactoryBot.create(:comment, discussion: create_discussion, body: "This is totally on topic!"), actor: jennifer)
-    event = CommentService.create(comment: FactoryBot.create(:comment, discussion: create_discussion, body: "This is totally **off** topic!"), actor: jennifer)
-    CommentService.create(comment: FactoryBot.create(:comment, discussion: create_discussion, body: "This is a reply to the off-topic thing!", parent: event.eventable), actor: emilio)
-    CommentService.create(comment: FactoryBot.create(:comment, discussion: create_discussion, body: "This is also off-topic"), actor: emilio)
-    CommentService.create(comment: FactoryBot.create(:comment, discussion: create_discussion, body: "This is totally back on topic!"), actor: patrick)
+    CommentService.create(comment: Comment.new(discussion: create_discussion, body: "This is totally on topic!"), actor: jennifer)
+    event = CommentService.create(comment: Comment.new(discussion: create_discussion, body: "This is totally **off** topic!"), actor: jennifer)
+    CommentService.create(comment: Comment.new(discussion: create_discussion, body: "This is a reply to the off-topic thing!", parent: event.eventable), actor: emilio)
+    CommentService.create(comment: Comment.new(discussion: create_discussion, body: "This is also off-topic"), actor: emilio)
+    CommentService.create(comment: Comment.new(discussion: create_discussion, body: "This is totally back on topic!"), actor: patrick)
 
     redirect_to discussion_path(create_discussion)
   end
 
   def setup_thread_catch_up
     jennifer.update(email_catch_up_day: 7)
-    CommentService.create(comment: FactoryBot.create(:comment, discussion: create_discussion, body: "first comment"), actor: patrick)
-    event = CommentService.create(comment: FactoryBot.create(:comment, discussion: create_discussion, body: "removed comment"), actor: patrick)
+    CommentService.create(comment: Comment.new(discussion: create_discussion, body: "first comment"), actor: patrick)
+    event = CommentService.create(comment: Comment.new(discussion: create_discussion, body: "removed comment"), actor: patrick)
     CommentService.discard(comment: event.eventable, actor: event.user)
     DiscussionService.update(discussion: create_discussion,
                              params: {recipient_message: 'this is an edit message'},

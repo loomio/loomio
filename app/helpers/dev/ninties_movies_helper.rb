@@ -212,8 +212,7 @@ module Dev::NintiesMoviesHelper
                                      discussion_privacy_options: 'public_or_private',
                                      group_privacy: 'closed', creator: patrick)
       GroupService.create(group: @subgroup, actor: @subgroup.creator)
-      discussion = FactoryBot.create :discussion, group: @subgroup, title: "Vaya con dios", private: false
-      # discussion = @subgroup.discussions.create(title: "Vaya con dios", private: false, author: patrick)
+      discussion = Discussion.new(title: "Vaya con dios", private: false, group: @subgroup, author: patrick)
       DiscussionService.create(discussion: discussion, actor: discussion.author)
       @subgroup.add_admin! patrick
     end
@@ -228,7 +227,7 @@ module Dev::NintiesMoviesHelper
                                              discussion_privacy_options: 'public_or_private',
                                              is_visible_to_parent_members: true, creator: patrick)
       GroupService.create(group: @another_subgroup, actor: @another_subgroup.creator)
-      discussion = FactoryBot.create :discussion, group: @another_subgroup, title: "Vaya con dios 2", private: false
+      discussion = Discussion.new(title: "Vaya con dios 2", private: false, group: @another_subgroup, author: patrick)
       DiscussionService.create(discussion: discussion, actor: discussion.author)
       @another_subgroup.add_admin! patrick
     end
@@ -367,7 +366,8 @@ module Dev::NintiesMoviesHelper
     membership = Membership.create(user: emilio, group: another_group, inviter: patrick)
     MembershipService.redeem(membership: membership, actor: emilio)
 
-    poll = FactoryBot.create(:poll, discussion: create_discussion, group: create_group, author: jennifer, closing_at: 24.hours.from_now)
+    poll = Poll.new(poll_type: :proposal, title: "Invitation poll", poll_option_names: %w[agree abstain disagree block], discussion: create_discussion, group: create_group, author: jennifer, closing_at: 24.hours.from_now)
+    PollService.create(poll: poll, actor: jennifer)
     PollService.invite(
       poll: poll,
       params: { recipient_user_ids: [patrick.id] },
@@ -378,10 +378,10 @@ module Dev::NintiesMoviesHelper
     PollService.publish_closing_soon
 
     #'outcome_created'
-    poll = FactoryBot.build(:poll, discussion: create_discussion, author: jennifer, closed_at: 1.day.ago, closing_at: 1.day.ago)
+    poll = Poll.new(poll_type: :proposal, title: "Outcome poll", poll_option_names: %w[agree abstain disagree block], discussion: create_discussion, author: jennifer, closed_at: 1.day.ago, closing_at: 1.day.ago)
 
     PollService.create(poll: poll, actor: jennifer)
-    outcome = FactoryBot.build(:outcome, poll: poll)
+    outcome = Outcome.new(poll: poll, author: jennifer, statement: "Let's do it!")
     OutcomeService.create(
       outcome: outcome,
       params: {recipient_user_ids: [patrick.id]},
@@ -390,7 +390,7 @@ module Dev::NintiesMoviesHelper
 
     #'stance_created'
     # notify patrick that someone has voted on his proposal
-    poll = FactoryBot.build(:poll, closing_at: 4.days.from_now, discussion: create_discussion, voter_can_add_options: true)
+    poll = Poll.new(poll_type: :proposal, title: "Stance poll", poll_option_names: %w[agree abstain disagree block], closing_at: 4.days.from_now, discussion: create_discussion, voter_can_add_options: true)
     PollService.create(poll: poll, actor: patrick)
   end
 end
