@@ -254,7 +254,7 @@ class PollServiceTest < ActiveSupport::TestCase
   test "does not touch already closed polls" do
     poll = create_poll
     poll.update!(closing_at: 1.day.ago, closed_at: 1.day.ago)
-    original_closed_at = poll.closed_at
+    original_closed_at = poll.reload.closed_at
     PollService.expire_lapsed_polls
     assert_equal original_closed_at, poll.reload.closed_at
   end
