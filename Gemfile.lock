@@ -174,13 +174,6 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    database_cleaner-active_record (2.2.2)
-      activerecord (>= 5.a)
-      database_cleaner-core (~> 2.0)
-    database_cleaner-core (2.0.1)
-    database_cleaner-redis (2.0.0)
-      database_cleaner-core (~> 2.0.0)
-      redis
     date (3.5.1)
     declarative (0.0.20)
     devise (4.9.4)
@@ -195,7 +188,6 @@ GEM
     devise-pwned_password (0.1.12)
       devise (~> 4)
       pwned (~> 2.4)
-    diff-lcs (1.6.2)
     digest-crc (0.7.0)
       rake (>= 12.0.0, < 14.0.0)
     discard (1.4.0)
@@ -210,7 +202,7 @@ GEM
     erb (6.0.1)
     erubi (1.13.1)
     event_stream_parser (1.0.0)
-    factory_bot (6.5.5)
+    factory_bot (6.5.6)
       activesupport (>= 6.1.0)
     factory_bot_rails (6.5.1)
       factory_bot (~> 6.5)
@@ -614,28 +606,6 @@ GEM
     reverse_markdown (3.0.2)
       nokogiri
     rexml (3.4.4)
-    rspec-collection_matchers (1.2.1)
-      rspec-expectations (>= 2.99.0.beta1)
-    rspec-core (3.13.5)
-      rspec-support (~> 3.13.0)
-    rspec-expectations (3.13.5)
-      diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.13.0)
-    rspec-its (2.0.0)
-      rspec-core (>= 3.13.0)
-      rspec-expectations (>= 3.13.0)
-    rspec-mocks (3.13.5)
-      diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.13.0)
-    rspec-rails (7.1.1)
-      actionpack (>= 7.0)
-      activesupport (>= 7.0)
-      railties (>= 7.0)
-      rspec-core (~> 3.13)
-      rspec-expectations (~> 3.13)
-      rspec-mocks (~> 3.13)
-      rspec-support (~> 3.13)
-    rspec-support (3.13.4)
     rubocop (1.79.1)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
@@ -809,8 +779,6 @@ DEPENDENCIES
   connection_pool (~> 2.4)
   custom_counter_cache
   dartsass-sprockets
-  database_cleaner-active_record
-  database_cleaner-redis
   devise (~> 4.9.4)
   devise-i18n
   devise-pwned_password
@@ -849,9 +817,6 @@ DEPENDENCIES
   redcarpet (~> 3.6.1)
   redis-objects
   reverse_markdown
-  rspec-collection_matchers
-  rspec-its
-  rspec-rails (~> 7.1.1)
   rubocop-rails-omakase
   ruby-openai
   ruby-saml

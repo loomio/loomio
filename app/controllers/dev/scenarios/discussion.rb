@@ -119,10 +119,10 @@ module Dev::Scenarios::Discussion
 
   def setup_discussion_mailer_discussion_created_email
     sign_in jennifer
-    @group = FactoryBot.create(:group, name: "Girdy Dancing Shoes", creator: patrick)
+    @group = Group.create!(name: "Girdy Dancing Shoes", creator: patrick)
     @group.add_admin! patrick
     @group.add_member! jennifer
-    discussion = FactoryBot.build(:discussion, title: "Let's go to the moon!", group: @group)
+    discussion = Discussion.new(title: "Let's go to the moon!", description: "A description for this discussion. Should this be rich?", group: @group, author: patrick)
 
     blob = ActiveStorage::Blob.create_and_upload!(
       io: File.open(Rails.root.join('spec', 'fixtures', 'images', 'strongbad.png')),
@@ -137,10 +137,10 @@ module Dev::Scenarios::Discussion
 
   def setup_discussion_mailer_discussion_edited_email
     sign_in jennifer
-    @group = FactoryBot.create(:group, name: "Girdy Dancing Shoes", creator: patrick)
+    @group = Group.create!(name: "Girdy Dancing Shoes", creator: patrick)
     @group.add_admin! patrick
     @group.add_member! jennifer
-    discussion = FactoryBot.build(:discussion, title: "Let's go to the moon!", group: @group)
+    discussion = Discussion.new(title: "Let's go to the moon!", description: "A description for this discussion. Should this be rich?", group: @group, author: patrick)
     DiscussionService.create(discussion: discussion, actor: patrick)
     DiscussionService.update(discussion: discussion, actor: patrick, params: {recipient_user_ids: [jennifer.id], recipient_message: 'change message & ampersand <yo>! &nbsp;'})
     last_email
@@ -148,21 +148,21 @@ module Dev::Scenarios::Discussion
 
   def setup_discussion_mailer_discussion_announced_email
     sign_in jennifer
-    @group = FactoryBot.create(:group, name: "Girdy Dancing Shoes", creator: patrick)
+    @group = Group.create!(name: "Girdy Dancing Shoes", creator: patrick)
     @group.add_admin! patrick
     @group.add_member! jennifer
-    discussion = FactoryBot.build(:discussion, title: "Let's go to the moon!", group: @group)
-    event = DiscussionService.create(discussion: discussion, actor: patrick)
+    discussion = Discussion.new(title: "Let's go to the moon!", description: "A description for this discussion. Should this be rich?", group: @group, author: patrick)
+    DiscussionService.create(discussion: discussion, actor: patrick)
     DiscussionService.invite(discussion: discussion, actor: patrick, params: {recipient_user_ids: [jennifer.id]})
     last_email
   end
 
   def setup_discussion_mailer_invitation_created_email
-    group = FactoryBot.create(:group, name: "Dirty Dancing Shoes", creator: patrick)
+    group = Group.create!(name: "Dirty Dancing Shoes", creator: patrick)
     group.add_admin! patrick
-    discussion = FactoryBot.build(:discussion, title: "Let's go to the moon!", group: group)
-    event = DiscussionService.create(discussion: discussion, actor: patrick)
-    comment = FactoryBot.build(:comment, discussion: discussion)
+    discussion = Discussion.new(title: "Let's go to the moon!", description: "A description for this discussion. Should this be rich?", group: group, author: patrick)
+    DiscussionService.create(discussion: discussion, actor: patrick)
+    comment = Comment.new(discussion: discussion, body: "A comment", author: patrick)
     CommentService.create(comment: comment, actor: patrick)
     DiscussionService.invite(discussion: discussion, actor: patrick, params: {recipient_emails: 'jen@example.com'})
     last_email
