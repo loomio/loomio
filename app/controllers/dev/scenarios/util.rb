@@ -13,22 +13,12 @@ module Dev::Scenarios::Util
 
   def cleanup_database
     reset_session
-    ::StanceReceipt.delete_all
-    ::Identity.delete_all
-    ::User.delete_all
-    ::Group.delete_all
-    ::Membership.delete_all
-    ::Poll.delete_all
-    ::Outcome.delete_all
-    ::Event.delete_all
-    ::Discussion.delete_all
-    ::Stance.delete_all
-    ::StanceChoice.delete_all
-    ::PollOption.delete_all
-    ::Task.delete_all
-    ::DiscussionReader.delete_all
-    ::DiscussionTemplate.delete_all
-    ::PollTemplate.delete_all
+    tables = %w[
+      stance_receipts omniauth_identities users groups memberships polls outcomes
+      events discussions stances stance_choices poll_options tasks
+      discussion_readers discussion_templates poll_templates
+    ]
+    ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{tables.join(', ')} CASCADE")
     ::ActionMailer::Base.deliveries = []
   end
 end
