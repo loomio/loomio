@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/loomio/active_model_serializers.git
+  revision: d8bb60a57dba0b3dfc5c13588b5816e352eeaa9a
+  branch: fix-frozen-string-literal-ruby3
+  specs:
+    active_model_serializers (0.8.4)
+      activemodel (>= 3.0)
+
+GIT
   remote: https://github.com/loomio/twitter-text.git
   revision: 0931cb3782bf32023e7ff05282a46023718f42fe
   specs:
@@ -57,8 +65,6 @@ GEM
       erubi (~> 1.11)
       rails-dom-testing (~> 2.2)
       rails-html-sanitizer (~> 1.6)
-    active_model_serializers (0.8.4)
-      activemodel (>= 3.0)
     active_record_extended (3.4.0)
       activerecord (>= 5.2, < 8.1)
       pg (< 3.0)
@@ -788,7 +794,7 @@ DEPENDENCIES
   actionpack-action_caching
   actionpack-cloudflare
   actionpack-page_caching
-  active_model_serializers (~> 0.8.1)
+  active_model_serializers (~> 0.8.1)!
   active_record_extended
   activeadmin (~> 3.4.0)
   activerecord-import (= 2.2.0)
