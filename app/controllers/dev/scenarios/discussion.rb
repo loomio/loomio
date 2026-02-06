@@ -13,7 +13,7 @@ module Dev::Scenarios::Discussion
   end
 
   def setup_discussion_as_guest
-    group      = saved fake_group(group_privacy: 'secret')
+    group      = saved fake_group(group_privacy: 'secret', creator: patrick)
     GroupService.create(group: group, actor: group.creator)
     discussion = Discussion.new(group: group, title: "Dirty Dancing Shoes", private: true, author: group.creator)
     DiscussionService.create(discussion: discussion, actor: group.creator)
@@ -24,7 +24,7 @@ module Dev::Scenarios::Discussion
   end
 
   def setup_discussion_with_guest
-    group      = saved fake_group(group_privacy: 'secret')
+    group      = saved fake_group(group_privacy: 'secret', creator: patrick)
     GroupService.create(group: group, actor: group.creator)
     discussion = Discussion.new(group: group, title: "Dirty Dancing Shoes", private: true, author: group.creator)
     group.add_member!(patrick)
@@ -164,7 +164,7 @@ module Dev::Scenarios::Discussion
     group.add_admin! patrick
     discussion = Discussion.new(title: "Let's go to the moon!", description: "A description for this discussion. Should this be rich?", group: group, author: patrick)
     DiscussionService.create(discussion: discussion, actor: patrick)
-    comment = Comment.new(discussion: discussion, body: "A comment", author: patrick)
+    comment = Comment.new(discussion: discussion, body: "body of the comment", author: patrick)
     CommentService.create(comment: comment, actor: patrick)
     DiscussionService.invite(discussion: discussion, actor: patrick, params: {recipient_emails: 'jen@example.com'})
     last_email

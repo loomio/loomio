@@ -110,16 +110,19 @@ module Dev::Scenarios::Group
 
   def setup_subgroup_with_parent_member_visibility
     sign_in patrick
-    @group = Group.create!(name: 'Closed Dirty Dancing Shoes',
-                                group_privacy: 'closed')
+    @group = Group.new(name: 'Closed Dirty Dancing Shoes',
+                       group_privacy: 'closed',
+                       creator: jennifer)
+    GroupService.create(group: @group, actor: jennifer)
     @group.add_admin!  jennifer
-    @group.add_member! jennifer
     @group.add_member! patrick
-    @subgroup = Group.create!(name: 'Johnny Utah',
-                                   parent: @group,
-                                   discussion_privacy_options: 'public_or_private',
-                                   parent_members_can_see_discussions: true,
-                                   group_privacy: 'closed', creator: jennifer)
+    @subgroup = Group.new(name: 'Johnny Utah',
+                          parent: @group,
+                          discussion_privacy_options: 'public_or_private',
+                          parent_members_can_see_discussions: true,
+                          group_privacy: 'closed',
+                          creator: jennifer)
+    GroupService.create(group: @subgroup, actor: jennifer)
     discussion = Discussion.new(group: @subgroup, title: "Vaya con dios", private: true, author: jennifer)
     DiscussionService.create(discussion: discussion, actor: discussion.author)
     redirect_to group_path(@subgroup)

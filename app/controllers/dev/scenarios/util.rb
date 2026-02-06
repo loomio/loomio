@@ -18,7 +18,14 @@ module Dev::Scenarios::Util
       events discussions stances stance_choices poll_options tasks
       discussion_readers discussion_templates poll_templates
     ]
-    ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{tables.join(', ')} CASCADE")
+    retries = 0
+    begin
+      ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{tables.join(', ')} CASCADE")
+    rescue ActiveRecord::Deadlocked
+      retries += 1
+      retry if retries < 3
+      raise
+    end
     ::ActionMailer::Base.deliveries = []
   end
 end
