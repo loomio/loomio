@@ -1,0 +1,35 @@
+# frozen_string_literal: true
+
+class Views::EmailComponents::Poll::Stance < Views::Base
+  include Phlex::Rails::Helpers::T
+  include EmailHelper
+
+  def initialize(stance:, recipient:)
+    @stance = stance
+    @recipient = recipient
+  end
+
+  def view_template
+    div(class: "poll-mailer__stance") do
+      table do
+        poll = @stance.poll
+        @stance.stance_choices.order('score desc').each do |choice|
+          render Views::EmailComponents::Poll::PollOption.new(
+            poll: poll,
+            poll_option: choice.poll_option,
+            stance: @stance,
+            recipient: @recipient
+          )
+        end
+      end
+
+      if @stance.real_participant == @recipient && @stance.poll.active?
+        a(href: tracked_url(@stance.poll, change_vote: @stance.poll.id)) do
+          plain t(:"poll_common.change_vote")
+        end
+      end
+
+      p { raw formatted_text(@stance, :reason) }
+    end
+  end
+end

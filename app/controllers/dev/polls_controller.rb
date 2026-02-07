@@ -16,9 +16,30 @@ class Dev::PollsController < Dev::NightwatchController
 
     sign_in(scenario[:observer]) if scenario[:observer].is_a?(User)
 
-    if params[:email]
+    case params[:format]
+    when 'email'
       @scenario = scenario
       last_email to: scenario[:observer]
+    when 'matrix'
+      if scenario[:outcome]
+        @event = scenario[:outcome].events.last
+        @outcome = scenario[:outcome]
+      else
+        @event = scenario[:poll].events.last
+      end
+      @poll = scenario[:poll]
+      @recipient = scenario[:observer]
+      render template: "chatbot/matrix/poll", layout: false
+    when 'markdown'
+      if scenario[:outcome]
+        @event = scenario[:outcome].events.last
+        @outcome = scenario[:outcome]
+      else
+        @event = scenario[:poll].events.last
+      end
+      @poll = scenario[:poll]
+      @recipient = scenario[:observer]
+      render template: "chatbot/markdown/poll", layout: false, formats: [:text], content_type: 'text/plain'
     else
       redirect_to poll_url(scenario[:poll], Hash(scenario[:params]))
     end

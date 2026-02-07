@@ -1,4 +1,6 @@
 class EventMailer < BaseMailer
+  cattr_accessor :use_phlex, default: true
+
   REPLY_DELIMITER = "﻿﻿"*4 # surprise! this is actually U+FEFF
 
   def event(recipient_id, event_id)
@@ -53,9 +55,6 @@ class EventMailer < BaseMailer
       }
     end
 
-    template_name = @event.eventable_type.tableize.singularize
-    template_name = 'poll' if @event.eventable_type == 'Outcome'
-
     # this should be notification.i18n_key
     @event_key = if @event.kind == 'user_mentioned' &&
                     @event.eventable.respond_to?(:parent) &&
@@ -75,6 +74,111 @@ class EventMailer < BaseMailer
       site_name: AppConfig.theme[:site_name]
     }
 
+    if use_phlex
+      render_with_phlex(discussion_kinds, subject_params)
+    else
+      render_with_haml(discussion_kinds, subject_params)
+    end
+  end
+
+  private
+
+  def render_with_phlex(discussion_kinds, subject_params)
+    component = case @event.eventable_type
+    when 'Poll', 'Outcome'
+      Views::EmailComponents::PollMailer.new(
+        event: @event,
+        recipient: @recipient,
+        event_key: @event_key,
+        poll: @poll,
+        notification: @notification,
+        discussion: @discussion,
+        membership: @membership
+      )
+    when 'Discussion'
+      Views::EmailComponents::DiscussionMailer.new(
+        event: @event,
+        recipient: @recipient,
+        event_key: @event_key,
+        notification: @notification,
+        discussion: @discussion,
+        poll: @poll,
+        membership: @membership
+      )
+    when 'Comment'
+      Views::EmailComponents::CommentMailer.new(
+        event: @event,
+        recipient: @recipient,
+        event_key: @event_key,
+        notification: @notification,
+        discussion: @discussion,
+        poll: @poll,
+        membership: @membership
+      )
+    when 'Stance'
+      Views::EmailComponents::StanceMailer.new(
+        event: @event,
+        recipient: @recipient,
+        event_key: @event_key,
+        notification: @notification,
+        discussion: @discussion,
+        poll: @poll,
+        membership: @membership
+      )
+    when 'Membership'
+      Views::EmailComponents::MembershipMailer.new(
+        event: @event,
+        recipient: @recipient,
+        event_key: @event_key
+      )
+    when 'Group'
+      Views::EmailComponents::GroupMailer.new(
+        event: @event,
+        recipient: @recipient,
+        event_key: @event_key
+      )
+    when 'MembershipRequest'
+      Views::EmailComponents::MembershipRequestMailer.new(
+        event: @event,
+        recipient: @recipient,
+        event_key: @event_key,
+        utm_hash: @utm_hash
+      )
+    when 'ReceivedEmail'
+      Views::EmailComponents::ReceivedEmailMailer.new(
+        event: @event,
+        recipient: @recipient,
+        event_key: @event_key
+      )
+    end
+
+    # Spam protection checks (from BaseMailer#send_single_mail)
+    return if NoSpam::SPAM_REGEX.match?(@recipient.email)
+    return if BaseMailer::NOTIFICATIONS_EMAIL_ADDRESS == @recipient.email
+    return if User.has_spam_complaints.where(email: @recipient.email).exists?
+
+    I18n.with_locale(first_supported_locale(@recipient.locale)) do
+      subject = if discussion_kinds.include?(@event.kind)
+        group_name_prefix(@event) + subject_params[:title]
+      else
+        group_name_prefix(@event) + I18n.t("notifications.email_subject.#{@event_key}", **subject_params)
+      end
+
+      mail(
+        to: @recipient.email,
+        from: from_user_via_loomio(@event.user),
+        reply_to: reply_to_address_with_group_name(model: @event.eventable, user: @recipient),
+        subject: subject
+      ) do |format|
+        format.html { render component }
+      end
+    end
+  end
+
+  def render_with_haml(discussion_kinds, subject_params)
+    template_name = @event.eventable_type.tableize.singularize
+    template_name = 'poll' if @event.eventable_type == 'Outcome'
+
     send_single_mail(
       to: @recipient.email,
       from: from_user_via_loomio(@event.user),
@@ -87,8 +191,6 @@ class EventMailer < BaseMailer
       template_name: template_name
     )
   end
-
-  private
 
   def group_name_prefix(event)
     model = event.eventable
