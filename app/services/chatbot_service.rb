@@ -54,19 +54,54 @@ class ChatbotService
               Sentry.capture_message("chatbot id #{chatbot.id} post event id #{event.id} failed: code: #{req.response.code} body: #{req.response.body}")
             end
           else
+            component = matrix_component(template_name, event: event, poll: poll, recipient: recipient)
             client.publish("chatbot/publish", {
               config: chatbot.config,
               payload: {
-                html: ApplicationController.renderer.render(
-                  layout: nil,
-                  template: "chatbot/matrix/#{template_name}",
-                  assigns: { poll: poll, event: event, recipient: recipient } )
+                html: ApplicationController.renderer.render(component, layout: false)
               }
             }.to_json)
           end
         end
       end
     end
+  end
+
+  MATRIX_COMPONENTS = {
+    'poll'         => Views::Chatbot::Matrix::Poll,
+    'discussion'   => Views::Chatbot::Matrix::Discussion,
+    'notification' => Views::Chatbot::Matrix::Notification
+  }.freeze
+
+  MARKDOWN_COMPONENTS = {
+    'poll'         => Views::Chatbot::Markdown::Poll,
+    'discussion'   => Views::Chatbot::Markdown::Discussion,
+    'comment'      => Views::Chatbot::Markdown::Comment,
+    'stance'       => Views::Chatbot::Markdown::Stance,
+    'notification' => Views::Chatbot::Markdown::Notification
+  }.freeze
+
+  SLACK_COMPONENTS = {
+    'poll'         => Views::Chatbot::Slack::Poll,
+    'discussion'   => Views::Chatbot::Slack::Discussion,
+    'comment'      => Views::Chatbot::Slack::Comment,
+    'stance'       => Views::Chatbot::Slack::Stance,
+    'notification' => Views::Chatbot::Slack::Notification
+  }.freeze
+
+  def self.matrix_component(template_name, event:, poll:, recipient:)
+    klass = MATRIX_COMPONENTS[template_name] || MATRIX_COMPONENTS['notification']
+    klass.new(event: event, poll: poll, recipient: recipient)
+  end
+
+  def self.markdown_component(template_name, event:, poll:, recipient:)
+    klass = MARKDOWN_COMPONENTS[template_name] || MARKDOWN_COMPONENTS['notification']
+    klass.new(event: event, poll: poll, recipient: recipient)
+  end
+
+  def self.slack_component(template_name, event:, poll:, recipient:)
+    klass = SLACK_COMPONENTS[template_name] || SLACK_COMPONENTS['notification']
+    klass.new(event: event, poll: poll, recipient: recipient)
   end
 
   def self.publish_test!(params)

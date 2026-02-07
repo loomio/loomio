@@ -2,7 +2,7 @@ class Metadata::DiscussionSerializer < MetadataSerializer
   attributes :title, :description, :image_urls
 
   def description
-    force_plain_text(object.description, object.description_format)
+    MarkdownService.render_plain_text(object.description, object.description_format)
   end
 
   def image_urls

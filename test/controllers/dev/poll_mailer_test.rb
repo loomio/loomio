@@ -48,7 +48,7 @@ class Dev::PollMailerTest < ActionController::TestCase
 
   POLL_TYPES.each do |poll_type|
     test "#{poll_type} created email" do
-      get :test_poll_scenario, params: {scenario: 'poll_created', poll_type: poll_type, email: true}
+      get :test_poll_scenario, params: {scenario: 'poll_created', poll_type: poll_type, format: 'email'}
       assert_response :success
       assert_text('.base-mailer__event-headline', "invited you to")
       assert_notification_headline("notifications.without_title.poll_announced")
@@ -57,7 +57,7 @@ class Dev::PollMailerTest < ActionController::TestCase
     end
 
     test "anonymous #{poll_type} created email" do
-      get :test_poll_scenario, params: {scenario: 'poll_created', poll_type: poll_type, anonymous: true, email: true}
+      get :test_poll_scenario, params: {scenario: 'poll_created', poll_type: poll_type, anonymous: true, format: 'email'}
       assert_response :success
       assert_notification_headline("notifications.without_title.poll_announced")
       assert_element('.poll-mailer-common-summary')
@@ -66,7 +66,7 @@ class Dev::PollMailerTest < ActionController::TestCase
     end
 
     test "#{poll_type} outcome_created email" do
-      get :test_poll_scenario, params: {scenario: 'poll_outcome_created', poll_type: poll_type, email: true}
+      get :test_poll_scenario, params: {scenario: 'poll_outcome_created', poll_type: poll_type, format: 'email'}
       assert_response :success
       assert_notification_headline("notifications.without_title.outcome_created")
       assert_text('.poll-mailer-common-summary', "Outcome")
@@ -75,7 +75,7 @@ class Dev::PollMailerTest < ActionController::TestCase
     end
 
     test "#{poll_type} outcome_review_due email" do
-      get :test_poll_scenario, params: {scenario: 'poll_outcome_review_due', poll_type: poll_type, email: true}
+      get :test_poll_scenario, params: {scenario: 'poll_outcome_review_due', poll_type: poll_type, format: 'email'}
       assert_response :success
       assert_notification_headline("notifications.without_title.outcome_review_due")
       assert_text('.poll-mailer-common-summary', "Outcome")
@@ -84,7 +84,7 @@ class Dev::PollMailerTest < ActionController::TestCase
     end
 
     test "anonymous #{poll_type} outcome_created email" do
-      get :test_poll_scenario, params: {scenario: 'poll_outcome_created', poll_type: poll_type, anonymous: true, email: true}
+      get :test_poll_scenario, params: {scenario: 'poll_outcome_created', poll_type: poll_type, anonymous: true, format: 'email'}
       assert_response :success
       assert_notification_headline("notifications.without_title.outcome_created")
       assert_text('.poll-mailer-common-summary', "Outcome")
@@ -95,14 +95,14 @@ class Dev::PollMailerTest < ActionController::TestCase
     end
 
     test "#{poll_type} stance_created email" do
-      get :test_poll_scenario, params: {scenario: 'poll_stance_created', poll_type: poll_type, email: true}
+      get :test_poll_scenario, params: {scenario: 'poll_stance_created', poll_type: poll_type, format: 'email'}
       assert_response :success
       assert_notification_headline("notifications.without_title.stance_created")
       assert_element('.poll-mailer__stance')
     end
 
     test "anonymous #{poll_type} stance_created email" do
-      get :test_poll_scenario, params: {scenario: 'poll_stance_created', poll_type: poll_type, anonymous: true, email: true}
+      get :test_poll_scenario, params: {scenario: 'poll_stance_created', poll_type: poll_type, anonymous: true, format: 'email'}
       assert_response :success
       assert_notification_headline("notifications.without_title.stance_created")
       assert_text(".base-mailer__event-headline", "Anonymous")
@@ -110,14 +110,14 @@ class Dev::PollMailerTest < ActionController::TestCase
     end
 
     test "results_hidden #{poll_type} stance_created email" do
-      get :test_poll_scenario, params: {scenario: 'poll_stance_created', poll_type: poll_type, hide_results: 'until_closed', email: true}
+      get :test_poll_scenario, params: {scenario: 'poll_stance_created', poll_type: poll_type, hide_results: 'until_closed', format: 'email'}
       assert_response :success
       assert_notification_headline("notifications.without_title.stance_created")
       assert_element('.poll-mailer__stance')
     end
 
     test "#{poll_type} poll_closing_soon email" do
-      get :test_poll_scenario, params: {scenario: 'poll_closing_soon', poll_type: poll_type, email: true}
+      get :test_poll_scenario, params: {scenario: 'poll_closing_soon', poll_type: poll_type, format: 'email'}
       assert_response :success
       assert_notification_headline("notifications.without_title.poll_closing_soon")
       assert_element('.poll-mailer-common-summary')
@@ -125,7 +125,7 @@ class Dev::PollMailerTest < ActionController::TestCase
     end
 
     test "anonymous #{poll_type} poll_closing_soon email" do
-      get :test_poll_scenario, params: {scenario: 'poll_closing_soon', poll_type: poll_type, anonymous: true, email: true}
+      get :test_poll_scenario, params: {scenario: 'poll_closing_soon', poll_type: poll_type, anonymous: true, format: 'email'}
       assert_response :success
       assert_notification_headline("notifications.without_title.poll_closing_soon")
       assert_element('.poll-mailer-common-summary')
@@ -133,7 +133,7 @@ class Dev::PollMailerTest < ActionController::TestCase
     end
 
     test "hide_results #{poll_type} poll_closing_soon email" do
-      get :test_poll_scenario, params: {scenario: 'poll_closing_soon', poll_type: poll_type, hide_results: 'until_closed', email: true}
+      get :test_poll_scenario, params: {scenario: 'poll_closing_soon', poll_type: poll_type, hide_results: 'until_closed', format: 'email'}
       assert_response :success
       assert_notification_headline("notifications.without_title.poll_closing_soon")
       assert_element('.poll-mailer-common-summary')
@@ -141,7 +141,7 @@ class Dev::PollMailerTest < ActionController::TestCase
     end
 
     test "#{poll_type} poll_closing_soon_author email" do
-      get :test_poll_scenario, params: {scenario: 'poll_closing_soon_author', poll_type: poll_type, email: true}
+      get :test_poll_scenario, params: {scenario: 'poll_closing_soon_author', poll_type: poll_type, format: 'email'}
       assert_response :success
       assert_notification_headline("notifications.without_title.poll_closing_soon_author")
       assert_element('.poll-mailer-common-summary')
@@ -149,25 +149,25 @@ class Dev::PollMailerTest < ActionController::TestCase
     end
 
     test "#{poll_type} poll_user_mentioned_email" do
-      get :test_poll_scenario, params: {scenario: 'poll_user_mentioned', poll_type: poll_type, email: true}
+      get :test_poll_scenario, params: {scenario: 'poll_user_mentioned', poll_type: poll_type, format: 'email'}
       assert_response :success
       assert_notification_headline("notifications.without_title.user_mentioned")
     end
 
     test "anonymous #{poll_type} poll_user_mentioned_email" do
-      get :test_poll_scenario, params: {scenario: 'poll_user_mentioned', anonymous: true, poll_type: poll_type, email: true}
+      get :test_poll_scenario, params: {scenario: 'poll_user_mentioned', anonymous: true, poll_type: poll_type, format: 'email'}
       assert_response :success
       assert_text('.error', "no emails sent")
     end
 
     test "hidden #{poll_type} poll_user_mentioned_email" do
-      get :test_poll_scenario, params: {scenario: 'poll_user_mentioned', hide_results: 'until_closed', poll_type: poll_type, email: true}
+      get :test_poll_scenario, params: {scenario: 'poll_user_mentioned', hide_results: 'until_closed', poll_type: poll_type, format: 'email'}
       assert_response :success
       assert_text('.error', "no emails sent")
     end
 
     test "#{poll_type} poll_expired_author_email" do
-      get :test_poll_scenario, params: {scenario: 'poll_expired_author', poll_type: poll_type, email: true}
+      get :test_poll_scenario, params: {scenario: 'poll_expired_author', poll_type: poll_type, format: 'email'}
       assert_response :success
       assert_notification_headline("notifications.without_title.poll_expired_author")
       assert_element('.poll-mailer__create_outcome')
@@ -177,7 +177,7 @@ class Dev::PollMailerTest < ActionController::TestCase
     end
 
     test "anonymous #{poll_type} poll_expired_author_email" do
-      get :test_poll_scenario, params: {scenario: 'poll_expired_author', poll_type: poll_type, anonymous: true, email: true}
+      get :test_poll_scenario, params: {scenario: 'poll_expired_author', poll_type: poll_type, anonymous: true, format: 'email'}
       assert_response :success
       assert_notification_headline("notifications.without_title.poll_expired_author")
       assert_element('.poll-mailer__create_outcome')
@@ -185,6 +185,13 @@ class Dev::PollMailerTest < ActionController::TestCase
       assert_element('.poll-mailer-common-responses')
       assert_text('.poll-mailer__results-chart', "Results")
       assert_text('.poll-mailer-common-responses', "Anonymous")
+    end
+
+    test "#{poll_type} compare view" do
+      get :test_poll_scenario, params: {scenario: 'poll_created', poll_type: poll_type, format: 'compare'}
+      assert_response :success
+      assert_includes response.body, "Format Comparison"
+      assert_includes response.body, "compare-grid"
     end
   end
 end

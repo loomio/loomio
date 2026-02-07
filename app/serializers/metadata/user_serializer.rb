@@ -6,7 +6,7 @@ class Metadata::UserSerializer < MetadataSerializer
   end
 
   def description
-    force_plain_text(object.short_bio, object.short_bio_format)
+    MarkdownService.render_plain_text(object.short_bio, object.short_bio_format)
   end
 
   def image_urls

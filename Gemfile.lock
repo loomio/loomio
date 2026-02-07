@@ -502,6 +502,13 @@ GEM
     pg_search (2.3.7)
       activerecord (>= 6.1)
       activesupport (>= 6.1)
+    phlex (2.4.1)
+      refract (~> 1.0)
+      zeitwerk (~> 2.7)
+    phlex-rails (2.4.0)
+      phlex (~> 2.4.0)
+      railties (>= 7.1, < 9)
+      zeitwerk (~> 2.7)
     pp (0.6.3)
       prettyprint
     premailer (1.27.0)
@@ -590,6 +597,9 @@ GEM
       connection_pool
     redis-objects (2.0.0)
       redis (~> 5.0)
+    refract (1.1.0)
+      prism
+      zeitwerk
     regexp_parser (2.10.0)
     reline (0.6.3)
       io-console (~> 0.5)
@@ -805,6 +815,7 @@ DEPENDENCIES
   paper_trail (~> 17.0.0)
   pg
   pg_search
+  phlex-rails
   premailer-rails
   puma
   rack-attack

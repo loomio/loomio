@@ -9,10 +9,14 @@ class Webhook::Slack::EventSerializer < Webhook::Markdown::EventSerializer
 
   def text
     I18n.with_locale(object.eventable.group.locale) do
-      ApplicationController.renderer.render(
-        layout: nil,
-        template: "chatbot/slack/#{scope[:template_name]}",
-        assigns: { poll: object.eventable.poll, event: object, recipient: scope[:recipient] } )
+      poll = %w[Poll Stance Outcome].include?(object.eventable_type) ? object.eventable.poll : nil
+      component = ChatbotService.slack_component(
+        scope[:template_name],
+        event: object,
+        poll: poll,
+        recipient: scope[:recipient]
+      )
+      ApplicationController.renderer.render(component, layout: false)
     end
   end
 end

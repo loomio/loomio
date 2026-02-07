@@ -4,6 +4,8 @@ class BaseMailer < ActionMailer::Base
   include EmailHelper
   include LocalesHelper
 
+  layout false
+
   helper :email
   helper :formatted_date
 
@@ -24,20 +26,20 @@ class BaseMailer < ActionMailer::Base
     end
   end
 
-  def send_single_mail(locale: , to:, subject_key:, subject_params: {}, subject_prefix: '', subject_is_title: false, **options)
-    return if NoSpam::SPAM_REGEX.match?(to)
-    return if NOTIFICATIONS_EMAIL_ADDRESS == to
-    return if User.has_spam_complaints.where(email: to).exists?
+  def send_email(to:, locale:, component:, **mail_options)
+    return if spam?(to)
 
     I18n.with_locale(first_supported_locale(locale)) do
-      if subject_is_title
-        subject = subject_prefix + subject_params[:title]
-      else
-        subject = subject_prefix + I18n.t(subject_key, **subject_params)
+      mail(mail_options.merge(to: to, subject: yield)) do |format|
+        format.html { render component }
       end
-      mail options.merge(to: to, subject: subject )
     end
-  rescue Net::SMTPSyntaxError, Net::SMTPFatalError => e
-    raise "SMTP error to: '#{to}' from: '#{options[:from]}' action: #{action_name} mailer: #{mailer_name} error: #{e}"
+  end
+
+  def spam?(to)
+    return true if NoSpam::SPAM_REGEX.match?(to)
+    return true if NOTIFICATIONS_EMAIL_ADDRESS == to
+    email = to.match(/<(.+)>/)&.[](1) || to
+    User.has_spam_complaints.where(email: email).exists?
   end
 end

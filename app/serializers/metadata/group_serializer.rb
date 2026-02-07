@@ -7,7 +7,7 @@ class Metadata::GroupSerializer < MetadataSerializer
 
   def description
     if object.is_visible_to_public?
-      force_plain_text(object.description, object.description_format)
+      MarkdownService.render_plain_text(object.description, object.description_format)
     end
   end
 

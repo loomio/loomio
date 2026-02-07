@@ -13,6 +13,7 @@ class TranslationService
   ]
 
   def self.show_translation(model, recipient)
+    recipient &&
     TranslationService.available? &&
     model.content_locale.present? &&
     model.content_locale != recipient.locale &&
