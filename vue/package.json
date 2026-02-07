@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@mdi/js": "^6.9.96",
-    "@hocuspocus/provider": "^3.4.0",
+    "@hocuspocus/provider": "^3.4.4",
     "@tiptap/core": "^3.19.0",
     "@tiptap/extension-blockquote": "^3.19.0",
     "@tiptap/extension-bold": "^3.19.0",
