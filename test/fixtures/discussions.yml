@@ -1,0 +1,81 @@
+# Discussions fixtures for testing
+test_discussion:
+  key: test_disc_key
+  title: Test Discussion
+  description: <p>A description for this discussion. Should this be <em>rich</em>?</p>
+  description_format: html
+  private: true
+  author: discussion_author
+  group: test_group
+  tags: []
+  created_at: <%= 10.days.ago %>
+  updated_at: <%= 1.day.ago %>
+  last_activity_at: <%= 10.days.ago %>
+  items_count: 0
+  closed_at: null
+
+public_discussion:
+  key: public_disc_key
+  title: Public Discussion
+  description: <p>This is a public discussion</p>
+  description_format: html
+  private: false
+  author: discussion_author
+  group: public_group
+  created_at: <%= 10.days.ago %>
+  updated_at: <%= 1.day.ago %>
+  last_activity_at: <%= 10.days.ago %>
+  items_count: 0
+
+private_discussion:
+  key: private_disc_key
+  title: Private Discussion
+  description: <p>This is a private discussion</p>
+  description_format: html
+  private: true
+  author: discussion_author
+  group: test_group
+  created_at: <%= 10.days.ago %>
+  updated_at: <%= 1.day.ago %>
+  last_activity_at: <%= 10.days.ago %>
+  items_count: 0
+
+discarded_discussion:
+  key: discarded_disc_key
+  title: Discarded Discussion
+  description: <p>This discussion has been discarded</p>
+  description_format: html
+  private: true
+  author: discussion_author
+  group: test_group
+  discarded_at: <%= 1.day.ago %>
+  created_at: <%= 10.days.ago %>
+  updated_at: <%= 1.day.ago %>
+  last_activity_at: <%= 10.days.ago %>
+  items_count: 0
+
+old_discussion:
+  key: old_disc_key
+  title: Old Discussion
+  description: <p>An old discussion from months ago</p>
+  description_format: html
+  private: true
+  author: discussion_author
+  group: test_group
+  created_at: <%= 4.months.ago %>
+  updated_at: <%= 4.months.ago %>
+  last_activity_at: <%= 4.months.ago %>
+  items_count: 0
+
+subgroup_discussion:
+  key: subgroup_disc_key
+  title: Subgroup Discussion
+  description: <p>A discussion in a subgroup</p>
+  description_format: html
+  private: true
+  author: discussion_author
+  group: subgroup
+  created_at: <%= 5.days.ago %>
+  updated_at: <%= 1.day.ago %>
+  last_activity_at: <%= 5.days.ago %>
+  items_count: 0

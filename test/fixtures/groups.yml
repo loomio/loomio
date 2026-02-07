@@ -1,0 +1,74 @@
+# Groups fixtures for testing
+test_group:
+  name: Test Group
+  handle: testgroup
+  description: A test group for discussion controller tests
+  is_visible_to_public: false
+  discussion_privacy_options: public_or_private
+  members_can_add_members: true
+  members_can_start_discussions: true
+  members_can_announce: true
+  members_can_edit_discussions: true
+  members_can_edit_comments: true
+  members_can_raise_motions: true
+  members_can_vote: true
+  members_can_create_subgroups: false
+  membership_granted_upon: approval
+  parent_members_can_see_discussions: false
+  created_at: <%= 30.days.ago %>
+  updated_at: <%= 1.day.ago %>
+
+subgroup:
+  name: Subgroup
+  handle: subgroup
+  description: A subgroup for testing
+  parent: test_group
+  is_visible_to_public: false
+  discussion_privacy_options: public_or_private
+  members_can_add_members: true
+  members_can_start_discussions: true
+  members_can_edit_discussions: true
+  members_can_edit_comments: true
+  members_can_raise_motions: true
+  members_can_vote: true
+  members_can_create_subgroups: false
+  membership_granted_upon: approval
+  parent_members_can_see_discussions: false
+  created_at: <%= 20.days.ago %>
+  updated_at: <%= 1.day.ago %>
+
+another_group:
+  name: Another Group
+  handle: anothergroup
+  description: Another group for testing
+  is_visible_to_public: false
+  discussion_privacy_options: public_or_private
+  members_can_add_members: true
+  members_can_start_discussions: true
+  members_can_edit_discussions: true
+  members_can_edit_comments: true
+  members_can_raise_motions: true
+  members_can_vote: true
+  members_can_create_subgroups: false
+  membership_granted_upon: approval
+  parent_members_can_see_discussions: false
+  created_at: <%= 30.days.ago %>
+  updated_at: <%= 1.day.ago %>
+
+public_group:
+  name: Public Group
+  handle: publicgroup
+  description: A public group for testing
+  is_visible_to_public: true
+  discussion_privacy_options: public_only
+  members_can_add_members: true
+  members_can_start_discussions: true
+  members_can_edit_discussions: true
+  members_can_edit_comments: true
+  members_can_raise_motions: true
+  members_can_vote: true
+  members_can_create_subgroups: false
+  membership_granted_upon: approval
+  parent_members_can_see_discussions: false
+  created_at: <%= 30.days.ago %>
+  updated_at: <%= 1.day.ago %>

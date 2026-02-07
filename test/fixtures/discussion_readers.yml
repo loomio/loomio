@@ -1,0 +1,24 @@
+# Discussion readers to mark discussions as read/viewed
+normal_user_read_test_discussion:
+  user: normal_user
+  discussion: test_discussion
+  last_read_at: <%= 1.day.ago %>
+  volume: 2
+  created_at: <%= 10.days.ago %>
+  updated_at: <%= 1.day.ago %>
+
+normal_user_read_private_discussion:
+  user: normal_user
+  discussion: private_discussion
+  last_read_at: <%= 1.day.ago %>
+  volume: 2
+  created_at: <%= 10.days.ago %>
+  updated_at: <%= 1.day.ago %>
+
+normal_user_read_subgroup_discussion:
+  user: normal_user
+  discussion: subgroup_discussion
+  last_read_at: <%= 1.day.ago %>
+  volume: 2
+  created_at: <%= 5.days.ago %>
+  updated_at: <%= 1.day.ago %>

@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/loomio/active_model_serializers.git
+  revision: d8bb60a57dba0b3dfc5c13588b5816e352eeaa9a
+  branch: fix-frozen-string-literal-ruby3
+  specs:
+    active_model_serializers (0.8.4)
+      activemodel (>= 3.0)
+
+GIT
   remote: https://github.com/loomio/twitter-text.git
   revision: 0931cb3782bf32023e7ff05282a46023718f42fe
   specs:
@@ -57,8 +65,6 @@ GEM
       erubi (~> 1.11)
       rails-dom-testing (~> 2.2)
       rails-html-sanitizer (~> 1.6)
-    active_model_serializers (0.8.4)
-      activemodel (>= 3.0)
     active_record_extended (3.4.0)
       activerecord (>= 5.2, < 8.1)
       pg (< 3.0)
@@ -168,13 +174,6 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    database_cleaner-active_record (2.2.2)
-      activerecord (>= 5.a)
-      database_cleaner-core (~> 2.0)
-    database_cleaner-core (2.0.1)
-    database_cleaner-redis (2.0.0)
-      database_cleaner-core (~> 2.0.0)
-      redis
     date (3.5.1)
     declarative (0.0.20)
     devise (4.9.4)
@@ -189,7 +188,6 @@ GEM
     devise-pwned_password (0.1.12)
       devise (~> 4)
       pwned (~> 2.4)
-    diff-lcs (1.6.2)
     digest-crc (0.7.0)
       rake (>= 12.0.0, < 14.0.0)
     discard (1.4.0)
@@ -204,7 +202,7 @@ GEM
     erb (6.0.1)
     erubi (1.13.1)
     event_stream_parser (1.0.0)
-    factory_bot (6.5.5)
+    factory_bot (6.5.6)
       activesupport (>= 6.1.0)
     factory_bot_rails (6.5.1)
       factory_bot (~> 6.5)
@@ -446,8 +444,7 @@ GEM
     mini_magick (5.3.0)
       logger
     mini_mime (1.1.5)
-    minitest (6.0.1)
-      prism (~> 1.5)
+    minitest (5.27.0)
     msgpack (1.8.0)
     multi_json (1.19.1)
     multi_xml (0.8.1)
@@ -609,28 +606,6 @@ GEM
     reverse_markdown (3.0.2)
       nokogiri
     rexml (3.4.4)
-    rspec-collection_matchers (1.2.1)
-      rspec-expectations (>= 2.99.0.beta1)
-    rspec-core (3.13.5)
-      rspec-support (~> 3.13.0)
-    rspec-expectations (3.13.5)
-      diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.13.0)
-    rspec-its (2.0.0)
-      rspec-core (>= 3.13.0)
-      rspec-expectations (>= 3.13.0)
-    rspec-mocks (3.13.5)
-      diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.13.0)
-    rspec-rails (7.1.1)
-      actionpack (>= 7.0)
-      activesupport (>= 7.0)
-      railties (>= 7.0)
-      rspec-core (~> 3.13)
-      rspec-expectations (~> 3.13)
-      rspec-mocks (~> 3.13)
-      rspec-support (~> 3.13)
-    rspec-support (3.13.4)
     rubocop (1.79.1)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
@@ -789,7 +764,7 @@ DEPENDENCIES
   actionpack-action_caching
   actionpack-cloudflare
   actionpack-page_caching
-  active_model_serializers (~> 0.8.1)
+  active_model_serializers (~> 0.8.1)!
   active_record_extended
   activeadmin (~> 3.4.0)
   activerecord-import (= 2.2.0)
@@ -804,8 +779,6 @@ DEPENDENCIES
   connection_pool (~> 2.4)
   custom_counter_cache
   dartsass-sprockets
-  database_cleaner-active_record
-  database_cleaner-redis
   devise (~> 4.9.4)
   devise-i18n
   devise-pwned_password
@@ -827,6 +800,7 @@ DEPENDENCIES
   image_processing (~> 1.14)
   lograge
   maxminddb
+  minitest (~> 5.0)
   nokogiri
   paper_trail (~> 17.0.0)
   pg
@@ -843,9 +817,6 @@ DEPENDENCIES
   redcarpet (~> 3.6.1)
   redis-objects
   reverse_markdown
-  rspec-collection_matchers
-  rspec-its
-  rspec-rails (~> 7.1.1)
   rubocop-rails-omakase
   ruby-openai
   ruby-saml
