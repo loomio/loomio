@@ -13,7 +13,7 @@ module MarkdownService
   def self.render_markdown(text, format = 'md')
     text.gsub!('](/rails/active_storage', ']('+lmo_asset_host+'/rails/active_storage')
     text.gsub!('"/rails/active_storage', '"'+lmo_asset_host+'/rails/active_storage')
-    
+
     if format == "md"
       text
     else
@@ -38,6 +38,8 @@ module MarkdownService
     end.html_safe
   end
 
+  # stripped of any user generated html
+  # newlines converted to brs
   def self.render_plain_text(text, format = 'md')
     return "".html_safe unless text
     ActionController::Base.helpers.strip_tags(render_rich_text(text, format)).gsub(/(?:\n\r?|\r\n?)/, '<br>').html_safe

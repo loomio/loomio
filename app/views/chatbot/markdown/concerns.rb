@@ -7,7 +7,7 @@ module Views::Chatbot::Markdown::Concerns
     url = polymorphic_url(event.eventable)
     message = event.recipient_message
     poll_type = poll ? t("poll_types.#{poll.poll_type}") : nil
-    title = plain_text(event.eventable.title_model, :title)
+    title = event.eventable.title_model.title
 
     md t("notifications.without_title.#{event.kind}",
          actor: event.user.name,
@@ -26,7 +26,7 @@ module Views::Chatbot::Markdown::Concerns
   end
 
   def render_body(eventable)
-    md render_markdown(eventable.body, eventable.body_format)
+    md MarkdownService.render_markdown(eventable.body, eventable.body_format)
     md "\n"
     render_attachments(eventable)
   end
@@ -56,7 +56,7 @@ module Views::Chatbot::Markdown::Concerns
       end
     end
 
-    md render_markdown(poll.current_outcome.statement, poll.current_outcome.statement_format)
+    md MarkdownService.render_markdown(poll.current_outcome.statement, poll.current_outcome.statement_format)
     md "\n"
     md "*#{t(:"poll_types.#{poll.poll_type}")}*\n"
   end

@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Views::Email::Poll::StanceChoices < Views::Email::Base
-  include FormattedDateHelper
 
   def initialize(poll:, stance:, recipient: nil)
     @poll = poll

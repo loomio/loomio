@@ -29,7 +29,7 @@ class PollsControllerTest < ActionController::TestCase
     sign_in @user
     get :export, params: { key: @poll.key }
     assert_response 200
-    assert_template 'polls/export'
+    assert_includes response.body, @poll.title
   end
 
   test "displays csv export" do

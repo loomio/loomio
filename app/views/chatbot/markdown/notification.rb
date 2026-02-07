@@ -20,7 +20,7 @@ class Views::Chatbot::Markdown::Notification < Views::Chatbot::Markdown::Base
     md "\n"
 
     if message.present?
-      md "  #{force_plain_text(message)}\n"
+      md "  #{MarkdownService.render_plain_text(message)}\n"
     end
   end
 end

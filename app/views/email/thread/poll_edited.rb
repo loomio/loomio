@@ -21,7 +21,7 @@ class Views::Email::Thread::PollEdited < Views::Email::Base
               poll_type: t("poll_types.#{@poll.poll_type}"),
               title: @poll.title)
           end
-          p { raw force_plain_text(@item.recipient_message) }
+          p { raw MarkdownService.render_plain_text(@item.recipient_message) }
         end
       end
     end

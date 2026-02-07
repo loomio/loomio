@@ -15,7 +15,7 @@ class Views::Email::Thread::DiscussionEdited < Views::Email::Base
         end
         td(class: "content") do
           i { plain t(:"discussion_mailer.discussion_edited.inline", actor: @item.actor.name) }
-          p { raw force_plain_text(@item.recipient_message) }
+          p { raw MarkdownService.render_plain_text(@item.recipient_message) }
         end
       end
     end

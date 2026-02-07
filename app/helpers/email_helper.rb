@@ -1,27 +1,5 @@
 module EmailHelper
   include PrettyUrlHelper
-  def login_token(recipient, redirect_path)
-    recipient.login_tokens.create!(redirect: redirect_path)
-  end
-
-  # convert html to markdown if necessary
-  def render_markdown(str, format = 'md')
-    MarkdownService.render_markdown(str, format)
-  end
-
-  # stripped of any user generated html
-  # newlines converted to brs
-  def force_plain_text(str, format = 'md')
-    MarkdownService.render_plain_text(str, format)
-  end
-
-  def plain_text(model, field, recipient = nil)
-    TranslationService.plain_text(model, field, recipient)
-  end
-
-  def formatted_text(model, field, recipient = nil)
-    TranslationService.formatted_text(model, field, recipient)
-  end
 
   def recipient_stance(recipient, poll)
     poll.poll.stances.latest.find_by(participant: recipient) || Stance.new(poll: poll, participant: recipient)
@@ -73,10 +51,6 @@ module EmailHelper
     )
   end
 
-  def can_unfollow?(discussion, recipient)
-    DiscussionReader.for(discussion: discussion, user: recipient).volume_is_loud?
-  end
-
   def reply_to_address(model:, user:)
     letter = {
       'Comment' => 'c',
@@ -102,17 +76,6 @@ module EmailHelper
                                                  format: format)
   end
 
-  def option_name(name, format, zone, date_time_pref)
-    case format
-    when 'i18n'
-      t(name)
-    when 'iso8601'
-      format_iso8601_for_humans(name, zone, date_time_pref)
-    else
-      name
-    end
-  end
-
   def google_pie_chart_url(poll)
     pie_chart_url(scores: proposal_sparkline(poll), colors: proposal_colors(poll))
   end
@@ -123,35 +86,5 @@ module EmailHelper
 
   def proposal_colors(poll)
     poll.results.map { |h| h[:color] }.map { |c| c.gsub('#', '') }.join(',')
-  end
-
-  def dot_vote_stance_choice_percentage_for(stance, stance_choice)
-    max = stance.poll.dots_per_person.to_i
-    if max > 0
-      (100 * stance_choice.score.to_f / max).to_i
-    else
-      0
-    end
-  end
-
-  def score_stance_choice_percentage_for(stance, stance_choice)
-    max = stance.poll.max_score.to_i
-    if max > 0
-      (100 * stance_choice.score.to_f / max).to_i
-    else
-      0
-    end
-  end
-
-  def optional_link(url, attrs = {}, &block)
-    if url
-      content_tag(:a, { href: url }.merge(attrs)) do
-        block.call
-      end
-    else
-      content_tag(:span) do
-        block.call
-      end
-    end
   end
 end

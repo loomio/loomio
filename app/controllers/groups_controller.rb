@@ -19,10 +19,24 @@ class GroupsController < ApplicationController
     @groups = @groups.limit(limit).offset(@offset)
   end
 
+  def show
+    resource = ModelLocator.new(resource_name, params).locate!
+    @recipient = current_user
+    if current_user.can? :show, resource
+      assign_resource
+      respond_to do |format|
+        format.html { render Views::Web::Groups::Show.new(group: @group, recipient: @recipient) }
+        format.xml
+      end
+    else
+      respond_with_error 403
+    end
+  end
+
   def export
     @exporter = GroupExporter.new(load_and_authorize(:group, :export))
     respond_to do |format|
-      format.html
+      format.html { render Views::Web::Groups::Export.new(exporter: @exporter) }
     end
   end
 

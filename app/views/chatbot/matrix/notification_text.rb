@@ -16,7 +16,7 @@ class Views::Chatbot::Matrix::NotificationText < Views::Chatbot::Base
     p { raw t("notifications.without_title.#{@event.kind}", actor: @event.user.name, title: title, poll_type: poll_type, site_name: AppConfig.theme[:site_name]).html_safe }
 
     if message.present?
-      i { raw force_plain_text(message) }
+      i { raw MarkdownService.render_plain_text(message) }
     end
   end
 end
