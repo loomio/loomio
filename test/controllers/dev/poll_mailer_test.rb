@@ -186,5 +186,12 @@ class Dev::PollMailerTest < ActionController::TestCase
       assert_text('.poll-mailer__results-chart', "Results")
       assert_text('.poll-mailer-common-responses', "Anonymous")
     end
+
+    test "#{poll_type} compare view" do
+      get :test_poll_scenario, params: {scenario: 'poll_created', poll_type: poll_type, format: 'compare'}
+      assert_response :success
+      assert_includes response.body, "Format Comparison"
+      assert_includes response.body, "compare-grid"
+    end
   end
 end

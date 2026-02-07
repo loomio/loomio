@@ -40,6 +40,21 @@ class Dev::PollsController < Dev::NightwatchController
       recipient = scenario[:observer]
       component = Views::Chatbot::Markdown::Poll.new(event: event, poll: poll, recipient: recipient)
       render component, layout: false, content_type: 'text/plain'
+    when 'compare'
+      if scenario[:outcome]
+        event = scenario[:outcome].events.last
+      else
+        event = scenario[:poll].events.last
+      end
+      poll = scenario[:poll]
+      recipient = scenario[:observer]
+
+      render Views::Dev::Polls::Compare.new(
+        email: EventMailer.build_component(event: event, recipient: recipient),
+        matrix: Views::Chatbot::Matrix::Poll.new(event: event, poll: poll, recipient: recipient),
+        markdown: Views::Chatbot::Markdown::Poll.new(event: event, poll: poll, recipient: recipient),
+        slack: Views::Chatbot::Slack::Poll.new(event: event, poll: poll, recipient: recipient)
+      ), layout: false
     else
       redirect_to poll_url(scenario[:poll], Hash(scenario[:params]))
     end

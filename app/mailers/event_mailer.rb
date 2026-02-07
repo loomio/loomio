@@ -55,16 +55,7 @@ class EventMailer < BaseMailer
     end
 
     # this should be notification.i18n_key
-    event_key = if event.kind == 'user_mentioned' &&
-                    event.eventable.respond_to?(:parent) &&
-                    event.eventable.parent.present? &&
-                    event.eventable.parent.author == recipient
-                   "comment_replied_to"
-                 elsif event.kind == 'poll_created'
-                   'poll_announced'
-                 else
-                   event.kind
-                 end
+    event_key = self.class.event_key_for(event, recipient)
 
     subject_params = {
       title: TranslationService.plain_text(event.eventable.title_model, :title, recipient),
@@ -73,73 +64,16 @@ class EventMailer < BaseMailer
       site_name: AppConfig.theme[:site_name]
     }
 
-    component = case event.eventable_type
-    when 'Poll', 'Outcome'
-      Views::Email::PollMailer.new(
-        event: event,
-        recipient: recipient,
-        event_key: event_key,
-        poll: poll,
-        notification: notification,
-        discussion: discussion,
-        membership: membership
-      )
-    when 'Discussion'
-      Views::Email::DiscussionMailer.new(
-        event: event,
-        recipient: recipient,
-        event_key: event_key,
-        notification: notification,
-        discussion: discussion,
-        poll: poll,
-        membership: membership
-      )
-    when 'Comment'
-      Views::Email::CommentMailer.new(
-        event: event,
-        recipient: recipient,
-        event_key: event_key,
-        notification: notification,
-        discussion: discussion,
-        poll: poll,
-        membership: membership
-      )
-    when 'Stance'
-      Views::Email::StanceMailer.new(
-        event: event,
-        recipient: recipient,
-        event_key: event_key,
-        notification: notification,
-        discussion: discussion,
-        poll: poll,
-        membership: membership
-      )
-    when 'Membership'
-      Views::Email::MembershipMailer.new(
-        event: event,
-        recipient: recipient,
-        event_key: event_key
-      )
-    when 'Group'
-      Views::Email::GroupMailer.new(
-        event: event,
-        recipient: recipient,
-        event_key: event_key
-      )
-    when 'MembershipRequest'
-      Views::Email::MembershipRequestMailer.new(
-        event: event,
-        recipient: recipient,
-        event_key: event_key,
-        utm_hash: utm_hash
-      )
-    when 'ReceivedEmail'
-      Views::Email::ReceivedEmailMailer.new(
-        event: event,
-        recipient: recipient,
-        event_key: event_key
-      )
-    end
+    component = self.class.build_component(
+      event: event,
+      recipient: recipient,
+      event_key: event_key,
+      poll: poll,
+      discussion: discussion,
+      notification: notification,
+      membership: membership,
+      utm_hash: utm_hash
+    )
 
     return if spam?(recipient.email)
 
@@ -158,6 +92,64 @@ class EventMailer < BaseMailer
       ) do |format|
         format.html { render component }
       end
+    end
+  end
+
+  def self.event_key_for(event, recipient)
+    if event.kind == 'user_mentioned' &&
+       event.eventable.respond_to?(:parent) &&
+       event.eventable.parent.present? &&
+       event.eventable.parent.author == recipient
+      "comment_replied_to"
+    elsif event.kind == 'poll_created'
+      'poll_announced'
+    else
+      event.kind
+    end
+  end
+
+  def self.build_component(event:, recipient:, event_key: nil, poll: nil, discussion: nil, notification: nil, membership: nil, utm_hash: {})
+    event_key ||= event_key_for(event, recipient)
+    poll ||= event.eventable.poll if %w[Poll Stance Outcome].include?(event.eventable_type)
+    discussion ||= event.eventable.discussion if event.eventable.respond_to?(:discussion)
+
+    case event.eventable_type
+    when 'Poll', 'Outcome'
+      Views::Email::PollMailer.new(
+        event: event, recipient: recipient, event_key: event_key,
+        poll: poll, notification: notification, discussion: discussion, membership: membership
+      )
+    when 'Discussion'
+      Views::Email::DiscussionMailer.new(
+        event: event, recipient: recipient, event_key: event_key,
+        notification: notification, discussion: discussion, poll: poll, membership: membership
+      )
+    when 'Comment'
+      Views::Email::CommentMailer.new(
+        event: event, recipient: recipient, event_key: event_key,
+        notification: notification, discussion: discussion, poll: poll, membership: membership
+      )
+    when 'Stance'
+      Views::Email::StanceMailer.new(
+        event: event, recipient: recipient, event_key: event_key,
+        notification: notification, discussion: discussion, poll: poll, membership: membership
+      )
+    when 'Membership'
+      Views::Email::MembershipMailer.new(
+        event: event, recipient: recipient, event_key: event_key
+      )
+    when 'Group'
+      Views::Email::GroupMailer.new(
+        event: event, recipient: recipient, event_key: event_key
+      )
+    when 'MembershipRequest'
+      Views::Email::MembershipRequestMailer.new(
+        event: event, recipient: recipient, event_key: event_key, utm_hash: utm_hash
+      )
+    when 'ReceivedEmail'
+      Views::Email::ReceivedEmailMailer.new(
+        event: event, recipient: recipient, event_key: event_key
+      )
     end
   end
 
