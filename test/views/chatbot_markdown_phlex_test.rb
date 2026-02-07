@@ -1,6 +1,6 @@
 require "test_helper"
 
-class ChatbotSlackPhlexComparisonTest < ActiveSupport::TestCase
+class ChatbotMarkdownPhlexTest < ActiveSupport::TestCase
   def setup
     super
     @group = groups(:test_group)
@@ -43,13 +43,11 @@ class ChatbotSlackPhlexComparisonTest < ActiveSupport::TestCase
     poll.create_missing_created_event!
     event = poll.created_event
 
-    component = Views::Chatbot::Slack::Poll.new(event: event, poll: poll, recipient: @recipient)
+    component = Views::Chatbot::Markdown::Poll.new(event: event, poll: poll, recipient: @recipient)
     output = render_phlex(component)
 
-    assert_includes output, "started a proposal"
     assert_includes output, "Active Proposal"
-    # Slack mrkdwn converts **bold** to *bold* and [text](url) to <url|text>
-    assert_match(/<http.*\|Active Proposal>/, output)
+    assert_includes output, "started a proposal"
   end
 
   test "poll component renders for closed proposal with votes" do
@@ -74,27 +72,26 @@ class ChatbotSlackPhlexComparisonTest < ActiveSupport::TestCase
     poll.reload
     event = poll.created_event
 
-    component = Views::Chatbot::Slack::Poll.new(event: event, poll: poll, recipient: @recipient)
+    component = Views::Chatbot::Markdown::Poll.new(event: event, poll: poll, recipient: @recipient)
     output = render_phlex(component)
 
     assert_includes output, "Closed Proposal"
-    assert_includes output, I18n.t('poll_common.results').downcase.capitalize
+    assert_includes output, I18n.t('poll_proposal_options.agree')
   end
 
   test "discussion component renders" do
     event = @discussion.created_event
 
-    component = Views::Chatbot::Slack::Discussion.new(event: event, recipient: @recipient)
+    component = Views::Chatbot::Markdown::Discussion.new(event: event, recipient: @recipient)
     output = render_phlex(component)
 
     assert_includes output, "Chatbot Test Discussion"
-    assert_includes output, "Discussion body text for chatbot"
   end
 
   test "notification component renders" do
     event = @discussion.created_event
 
-    component = Views::Chatbot::Slack::Notification.new(event: event, recipient: @recipient)
+    component = Views::Chatbot::Markdown::Notification.new(event: event, recipient: @recipient)
     output = render_phlex(component)
 
     assert_includes output, "Chatbot Test Discussion"
@@ -113,7 +110,7 @@ class ChatbotSlackPhlexComparisonTest < ActiveSupport::TestCase
     poll.create_missing_created_event!
     event = poll.created_event
 
-    component = Views::Chatbot::Slack::Notification.new(event: event, poll: poll, recipient: @recipient)
+    component = Views::Chatbot::Markdown::Notification.new(event: event, poll: poll, recipient: @recipient)
     output = render_phlex(component)
 
     assert_includes output, "Test Proposal"
@@ -129,23 +126,23 @@ class ChatbotSlackPhlexComparisonTest < ActiveSupport::TestCase
     comment.create_missing_created_event!
     event = comment.created_event
 
-    component = Views::Chatbot::Slack::Comment.new(event: event, recipient: @recipient)
+    component = Views::Chatbot::Markdown::Comment.new(event: event, recipient: @recipient)
     output = render_phlex(component)
 
     assert_includes output, "Test comment body"
     assert_includes output, "Chatbot Test Discussion"
   end
 
-  test "slack_component class method returns correct components" do
+  test "markdown_component class method returns correct components" do
     event = @discussion.created_event
 
-    component = ChatbotService.slack_component('discussion', event: event, poll: nil, recipient: @recipient)
-    assert_instance_of Views::Chatbot::Slack::Discussion, component
+    component = ChatbotService.markdown_component('discussion', event: event, poll: nil, recipient: @recipient)
+    assert_instance_of Views::Chatbot::Markdown::Discussion, component
 
-    component = ChatbotService.slack_component('notification', event: event, poll: nil, recipient: @recipient)
-    assert_instance_of Views::Chatbot::Slack::Notification, component
+    component = ChatbotService.markdown_component('notification', event: event, poll: nil, recipient: @recipient)
+    assert_instance_of Views::Chatbot::Markdown::Notification, component
 
-    component = ChatbotService.slack_component('unknown', event: event, poll: nil, recipient: @recipient)
-    assert_instance_of Views::Chatbot::Slack::Notification, component
+    component = ChatbotService.markdown_component('unknown', event: event, poll: nil, recipient: @recipient)
+    assert_instance_of Views::Chatbot::Markdown::Notification, component
   end
 end

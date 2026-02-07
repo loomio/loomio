@@ -57,6 +57,10 @@ module ActiveSupport
       last_email.parts[1].body
     end
 
+    # Clean stale data from previous test runs (e.g. e2e tests, interrupted runs)
+    ActiveRecord::Base.connection.execute("DELETE FROM partition_sequences")
+    ActiveRecord::Base.connection.execute("DELETE FROM versions")
+
     # Setup common stubs before each test
     setup do
       ActionMailer::Base.deliveries.clear
