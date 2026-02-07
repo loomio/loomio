@@ -22,14 +22,14 @@ class Dev::PollsController < Dev::NightwatchController
       last_email to: scenario[:observer]
     when 'matrix'
       if scenario[:outcome]
-        @event = scenario[:outcome].events.last
-        @outcome = scenario[:outcome]
+        event = scenario[:outcome].events.last
       else
-        @event = scenario[:poll].events.last
+        event = scenario[:poll].events.last
       end
-      @poll = scenario[:poll]
-      @recipient = scenario[:observer]
-      render template: "chatbot/matrix/poll", layout: false
+      poll = scenario[:poll]
+      recipient = scenario[:observer]
+      component = Views::Chatbot::Matrix::Poll.new(event: event, poll: poll, recipient: recipient)
+      render component, layout: false
     when 'markdown'
       if scenario[:outcome]
         @event = scenario[:outcome].events.last

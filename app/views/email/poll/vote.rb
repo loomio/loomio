@@ -26,7 +26,7 @@ class Views::Email::Poll::Vote < Views::Email::Base
           p do
             plain t(:"common.time_zone")
             plain " "
-            plain formatted_time_zone
+            plain ActiveSupport::TimeZone[@recipient.time_zone].to_s
           end
         end
 
@@ -41,7 +41,7 @@ class Views::Email::Poll::Vote < Views::Email::Base
 
         unless @poll.is_single_choice?
           render Views::Email::Common::Button.new(
-            url: tracked_url(@poll),
+            url: tracked_url(@poll, recipient: @recipient),
             text: t(:"poll_common.vote_now")
           )
         end

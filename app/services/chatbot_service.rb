@@ -69,6 +69,17 @@ class ChatbotService
     end
   end
 
+  MATRIX_COMPONENTS = {
+    'poll'         => Views::Chatbot::Matrix::Poll,
+    'discussion'   => Views::Chatbot::Matrix::Discussion,
+    'notification' => Views::Chatbot::Matrix::Notification
+  }.freeze
+
+  def self.matrix_component(template_name, event:, poll:, recipient:)
+    klass = MATRIX_COMPONENTS.fetch(template_name)
+    klass.new(event: event, poll: poll, recipient: recipient)
+  end
+
   def self.publish_test!(params)
     case params[:kind]
     when 'slack_webhook'

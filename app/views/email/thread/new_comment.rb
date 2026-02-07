@@ -19,7 +19,7 @@ class Views::Email::Thread::NewComment < Views::Email::Base
             plain t(:"thread_item.removed")
           else
             b { plain @comment.author.name_or_username }
-            p { raw formatted_text(@comment, :body) }
+            p { raw TranslationService.formatted_text(@comment, :body, @recipient) }
             if @comment.documents.any?
               render Views::Email::Common::Attachments.new(resource: @comment)
             end

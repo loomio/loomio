@@ -13,7 +13,7 @@ class Views::Email::DiscussionMailer < Views::Email::EventLayout
   end
 
   def view_template
-    render Views::Email::Common::TranslationNotice.new(event: @event)
+    render Views::Email::Common::TranslationNotice.new(event: @event, recipient: @recipient)
     render Views::Email::Group::CoverAndLogo.new(group: @discussion.group)
     render Views::Email::Common::Notification.new(
       event: @event,
@@ -21,9 +21,9 @@ class Views::Email::DiscussionMailer < Views::Email::EventLayout
       event_key: @event_key,
       poll: @poll
     )
-    render Views::Email::Common::Title.new(eventable: @discussion)
+    render Views::Email::Common::Title.new(eventable: @discussion, recipient: @recipient)
     render Views::Email::Common::Tags.new(eventable: @discussion)
-    render Views::Email::Common::Body.new(eventable: @event.eventable)
+    render Views::Email::Common::Body.new(eventable: @event.eventable, recipient: @recipient)
     render Views::Email::Discussion::CurrentPolls.new(
       discussion: @discussion,
       recipient: @recipient

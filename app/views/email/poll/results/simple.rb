@@ -79,7 +79,7 @@ class Views::Email::Poll::Results::Simple < Views::Email::Base
         when 'iso8601'
           plain format_iso8601_for_humans(option[:name], @recipient.time_zone, @recipient.date_time_pref)
         else
-          plain plain_text(::PollOption.find(option[:id]), :name)
+          plain TranslationService.plain_text(::PollOption.find(option[:id]), :name, @recipient)
         end
       end
     when 'rank'

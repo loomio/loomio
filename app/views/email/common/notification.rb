@@ -33,7 +33,7 @@ class Views::Email::Common::Notification < Views::Email::Base
       end
       td(class: "base-mailer__event-headline", style: "width: 100%") do
         h2(class: "text-subtitle-1 ml-2") do
-          raw t(notification_key, **notification_params).to_s.html_safe
+          raw t(notification_key, **notification_params).html_safe
         end
       end
     end
@@ -43,7 +43,7 @@ class Views::Email::Common::Notification < Views::Email::Base
     tr do
       td(colspan: "2") do
         p do
-          i { raw MarkdownService.render_plain_text(message).html_safe }
+          i { raw MarkdownService.render_plain_text(message) }
         end
       end
     end
@@ -71,7 +71,7 @@ class Views::Email::Common::Notification < Views::Email::Base
   end
 
   def url
-    @explicit_url || tracked_url(@event.eventable)
+    @explicit_url || tracked_url(@event.eventable, recipient: @recipient)
   end
 
   def message
@@ -80,6 +80,6 @@ class Views::Email::Common::Notification < Views::Email::Base
 
   def title_link_html
     return @title if @title
-    ActionController::Base.helpers.link_to(plain_text(@event.eventable.title_model, :title), url)
+    ActionController::Base.helpers.link_to(TranslationService.plain_text(@event.eventable.title_model, :title, @recipient), url)
   end
 end

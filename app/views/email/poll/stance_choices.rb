@@ -18,7 +18,7 @@ class Views::Email::Poll::StanceChoices < Views::Email::Base
         display_name = case @poll.poll_option_name_format
         when 'i18n' then t(poll_option.name)
         when 'iso8601' then format_iso8601_for_humans(poll_option.name, @recipient.time_zone, @recipient.date_time_pref)
-        else plain_text(poll_option, :name)
+        else TranslationService.plain_text(poll_option, :name, @recipient)
         end
 
         score = @stance && @stance.option_scores[poll_option.id.to_s]

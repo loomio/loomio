@@ -28,7 +28,7 @@ module MarkdownService
   end
 
   def self.render_rich_text(text, format = "md")
-    return "" unless text
+    return "".html_safe unless text
     text.gsub!('](/rails/active_storage', ']('+lmo_asset_host+'/rails/active_storage')
     text.gsub!('"/rails/active_storage', '"'+lmo_asset_host+'/rails/active_storage')
     if format == "md"
@@ -39,8 +39,8 @@ module MarkdownService
   end
 
   def self.render_plain_text(text, format = 'md')
-    return "" unless text
-    ActionController::Base.helpers.strip_tags(render_rich_text(text, format)).gsub(/(?:\n\r?|\r\n?)/, '<br>')
+    return "".html_safe unless text
+    ActionController::Base.helpers.strip_tags(render_rich_text(text, format)).gsub(/(?:\n\r?|\r\n?)/, '<br>').html_safe
   end
 
   def self.replace_videos(str)

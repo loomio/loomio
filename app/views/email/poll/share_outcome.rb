@@ -2,8 +2,9 @@
 
 class Views::Email::Poll::ShareOutcome < Views::Email::Base
 
-  def initialize(event:)
+  def initialize(event:, recipient:)
     @event = event
+    @recipient = recipient
     @poll = event.eventable.poll
   end
 
@@ -12,7 +13,7 @@ class Views::Email::Poll::ShareOutcome < Views::Email::Base
 
     p(class: "poll-mailer__create_outcome text-center") do
       render Views::Email::Common::Button.new(
-        url: tracked_url(@poll, set_outcome: @poll.id),
+        url: tracked_url(@poll, recipient: @recipient, args: { set_outcome: @poll.id }),
         text: t('poll_mailer.common.create_outcome')
       )
     end

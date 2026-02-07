@@ -39,7 +39,7 @@ class Views::Email::Poll::Responses < Views::Email::Base
                   end
                 end
               end
-              raw formatted_text(stance, :reason)
+              raw TranslationService.formatted_text(stance, :reason, @recipient)
             end
           end
         end

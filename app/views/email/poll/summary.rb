@@ -12,11 +12,11 @@ class Views::Email::Poll::Summary < Views::Email::Base
     div(class: "poll-mailer-common-summary") do
       if @poll.current_outcome
         h2(class: "text-subtitle-2") { plain t(:"poll_common.outcome") }
-        p { raw formatted_text(@poll.current_outcome, :statement) }
+        p { raw TranslationService.formatted_text(@poll.current_outcome, :statement, @recipient) }
         h2(class: "text-subtitle-2") { plain t(:"decision_tools_card.#{@poll.poll_type}_title") }
       end
 
-      p { raw formatted_text(@poll, :details) }
+      p { raw TranslationService.formatted_text(@poll, :details, @recipient) }
 
       if @poll.active?
         p { plain t(:"poll_mailer.common.you_have_until", when: format_date_for_humans(@poll.closing_at, @recipient.time_zone, @recipient.date_time_pref)) }

@@ -16,7 +16,7 @@ class Views::Email::Discussion::CurrentPolls < Views::Email::Base
       polls.each do |poll|
         stance = recipient_stance(@recipient, poll)
         tr do
-          td { plain plain_text(poll, :title) }
+          td { plain TranslationService.plain_text(poll, :title, @recipient) }
           td do
             if @recipient.can?(:vote_in, poll)
               if stance && stance.cast_at?

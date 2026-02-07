@@ -2,12 +2,13 @@
 
 class Views::Email::Common::TranslationNotice < Views::Email::Base
 
-  def initialize(event:)
+  def initialize(event:, recipient:)
     @event = event
+    @recipient = recipient
   end
 
   def view_template
-    return unless show_translation(@event.eventable)
+    return unless TranslationService.show_translation(@event.eventable, @recipient)
 
     p(class: "py-1") do
       # _html suffix makes Rails return SafeBuffer

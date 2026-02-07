@@ -22,12 +22,12 @@ class Views::Email::Poll::Stance < Views::Email::Base
       end
 
       if @stance.real_participant == @recipient && @stance.poll.active?
-        a(href: tracked_url(@stance.poll, change_vote: @stance.poll.id)) do
+        a(href: tracked_url(@stance.poll, recipient: @recipient, args: { change_vote: @stance.poll.id })) do
           plain t(:"poll_common.change_vote")
         end
       end
 
-      p { raw formatted_text(@stance, :reason) }
+      p { raw TranslationService.formatted_text(@stance, :reason, @recipient) }
     end
   end
 end

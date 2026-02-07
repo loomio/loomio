@@ -24,15 +24,15 @@ class Views::Email::Mailers::UserMailer::CatchUp::Discussion < Views::Email::Bas
 
   def view_template
     div(class: "light-discussion", id: @discussion.key) do
-      h2 { link_to plain_text(@discussion, :title), discussion_url(@discussion) }
+      h2 { link_to TranslationService.plain_text(@discussion, :title, @recipient), discussion_url(@discussion) }
 
       if @discussion.created_at >= @time_start
         p { em { plain "by #{@discussion.author.name}" } }
-        div(class: "description") { raw formatted_text(@discussion, :description) }
+        div(class: "description") { raw TranslationService.formatted_text(@discussion, :description, @recipient) }
       end
 
       @discussion.polls.active_or_closed_after(@time_start).each do |poll|
-        render Views::Email::Common::Title.new(eventable: poll)
+        render Views::Email::Common::Title.new(eventable: poll, recipient: @recipient)
         render Views::Email::Common::Tags.new(eventable: poll)
         render Views::Email::Poll::Summary.new(poll: poll, recipient: @recipient)
         render Views::Email::Poll::Vote.new(poll: poll, recipient: @recipient)

@@ -30,6 +30,6 @@ class Views::Email::Thread::StanceCreated < Views::Email::Base
       end
     end
 
-    p { raw formatted_text(@stance, :reason) }
+    p { raw TranslationService.formatted_text(@stance, :reason, @recipient) }
   end
 end

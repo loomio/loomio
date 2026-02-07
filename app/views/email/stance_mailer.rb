@@ -13,7 +13,7 @@ class Views::Email::StanceMailer < Views::Email::EventLayout
   end
 
   def view_template
-    render Views::Email::Common::TranslationNotice.new(event: @event)
+    render Views::Email::Common::TranslationNotice.new(event: @event, recipient: @recipient)
     render Views::Email::Common::Notification.new(
       event: @event,
       recipient: @recipient,

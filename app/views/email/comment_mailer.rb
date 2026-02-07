@@ -13,7 +13,7 @@ class Views::Email::CommentMailer < Views::Email::EventLayout
   end
 
   def view_template
-    render Views::Email::Common::TranslationNotice.new(event: @event)
+    render Views::Email::Common::TranslationNotice.new(event: @event, recipient: @recipient)
     render Views::Email::Common::Notification.new(
       event: @event,
       recipient: @recipient,
@@ -21,7 +21,7 @@ class Views::Email::CommentMailer < Views::Email::EventLayout
       poll: @poll,
       with_title: true
     )
-    render Views::Email::Common::Body.new(eventable: @event.eventable)
+    render Views::Email::Common::Body.new(eventable: @event.eventable, recipient: @recipient)
     render Views::Email::Common::Footer.new(
       event: @event,
       recipient: @recipient,

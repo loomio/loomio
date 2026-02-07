@@ -4,5 +4,5 @@
 %p
   = t('poll_common_percent_voted.pct_participation', num: nom, total: dnom, pct: pct)
 - if poll.active? && poll.undecided_voters.any?
-	%h5= t('poll.waiting_for_votes_from')
-	%p= poll.undecided_voters.map(&:username).join(', ')
+  %h5= t('poll.waiting_for_votes_from')
+  %p= poll.undecided_voters.map(&:username).join(', ')

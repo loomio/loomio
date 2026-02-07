@@ -26,7 +26,7 @@ class Views::Email::Common::Footer < Views::Email::Base
     if @notification
       img(
         class: "thread-mailer__footer-image",
-        src: mark_notification_as_read_pixel_src(@notification),
+        src: mark_notification_as_read_pixel_src(@notification, recipient: @recipient),
         alt: "",
         width: 1,
         height: 1
@@ -36,7 +36,7 @@ class Views::Email::Common::Footer < Views::Email::Base
     if @recipient.is_logged_in? && @discussion
       img(
         class: "thread-mailer__footer-image",
-        src: pixel_src(@event),
+        src: pixel_src(@event, recipient: @recipient),
         alt: "",
         width: 1,
         height: 1
@@ -51,7 +51,7 @@ class Views::Email::Common::Footer < Views::Email::Base
       span(class: "reply-or-view-online") do
         raw t(
           :'discussion_mailer.reply_or_view_online_html',
-          url: tracked_url(@event.eventable),
+          url: tracked_url(@event.eventable, recipient: @recipient),
           hostname: AppConfig.theme[:site_name]
         )
       end
@@ -71,17 +71,17 @@ class Views::Email::Common::Footer < Views::Email::Base
 
   def determine_unsubscribe_info
     if @event_key == 'group_mentioned'
-      ["event_mailer.notification_reason.group_mentioned", unsubscribe_url(@event.eventable)]
+      ["event_mailer.notification_reason.group_mentioned", unsubscribe_url(@event.eventable, recipient: @recipient)]
     elsif @event_key == 'user_mentioned' || @event_key == 'comment_replied_to'
-      ["event_mailer.notification_reason.user_mentioned", preferences_url]
+      ["event_mailer.notification_reason.user_mentioned", preferences_url(recipient: @recipient)]
     elsif @event.all_recipient_user_ids.include?(@recipient.id)
-      ["event_mailer.notification_reason.notified", unsubscribe_url(@event.eventable)]
+      ["event_mailer.notification_reason.notified", unsubscribe_url(@event.eventable, recipient: @recipient)]
     elsif @membership&.volume == 'loud'
-      ["event_mailer.notification_reason.group_subscribed", unsubscribe_url(@event.eventable)]
+      ["event_mailer.notification_reason.group_subscribed", unsubscribe_url(@event.eventable, recipient: @recipient)]
     elsif @discussion && ::DiscussionReader.for(user: @recipient, discussion: @discussion).volume == 'loud'
-      ["event_mailer.notification_reason.discussion_subscribed", unsubscribe_url(@event.eventable)]
+      ["event_mailer.notification_reason.discussion_subscribed", unsubscribe_url(@event.eventable, recipient: @recipient)]
     elsif @poll && @poll.stances.latest.find_by(participant_id: @recipient.id)&.volume == 'loud'
-      ["event_mailer.notification_reason.poll_subscribed", unsubscribe_url(@event.eventable)]
+      ["event_mailer.notification_reason.poll_subscribed", unsubscribe_url(@event.eventable, recipient: @recipient)]
     end
   end
 

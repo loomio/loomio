@@ -67,7 +67,7 @@ class EventMailer < BaseMailer
                  end
 
     subject_params = {
-      title: plain_text(event.eventable.title_model, :title),
+      title: TranslationService.plain_text(event.eventable.title_model, :title, recipient),
       poll_type: poll && I18n.t("poll_types.#{poll.poll_type}", locale: recipient.locale),
       actor: event.user.name,
       site_name: AppConfig.theme[:site_name]

@@ -14,11 +14,11 @@ class Views::Email::Poll::PollOption < Views::Email::Base
     display_name = case @poll.poll_option_name_format
     when 'i18n' then t(@poll_option.name)
     when 'iso8601' then format_iso8601_for_humans(@poll_option.name, @recipient.time_zone, @recipient.date_time_pref)
-    else plain_text(@poll_option, :name)
+    else TranslationService.plain_text(@poll_option, :name, @recipient)
     end
 
     score = @stance && @stance.option_scores[@poll_option.id.to_s]
-    link = @poll.active? && tracked_url(@poll, poll_option_id: @poll_option.id)
+    link = @poll.active? && tracked_url(@poll, recipient: @recipient, args: { poll_option_id: @poll_option.id })
     option_color = @poll_option.color.sub('#', '')
 
     table(class: "rounded mb-2 pa-1", style: "border: 1px solid #{@poll_option.color}; width: 100%; max-width: 600px") do
@@ -31,7 +31,7 @@ class Views::Email::Poll::PollOption < Views::Email::Base
         td(class: "pl-4") do
           optional_link_wrapper(link) { plain display_name }
           div(class: "text-caption") do
-            optional_link_wrapper(link) { plain plain_text(@poll_option, :meaning) }
+            optional_link_wrapper(link) { plain TranslationService.plain_text(@poll_option, :meaning, @recipient) }
           end
         end
       end

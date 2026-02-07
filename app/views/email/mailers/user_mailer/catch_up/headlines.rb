@@ -17,7 +17,7 @@ class Views::Email::Mailers::UserMailer::CatchUp::Headlines < Views::Email::Base
       h3 { link_to group.full_name, group_url(group, @utm_hash) }
       ul do
         @discussions_by_group_id[group.id].each do |discussion|
-          li { link_to plain_text(discussion, :title), discussion_url(discussion) }
+          li { link_to TranslationService.plain_text(discussion, :title, @recipient), discussion_url(discussion) }
         end
       end
     end
