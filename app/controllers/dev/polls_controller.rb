@@ -32,14 +32,14 @@ class Dev::PollsController < Dev::NightwatchController
       render component, layout: false
     when 'markdown'
       if scenario[:outcome]
-        @event = scenario[:outcome].events.last
-        @outcome = scenario[:outcome]
+        event = scenario[:outcome].events.last
       else
-        @event = scenario[:poll].events.last
+        event = scenario[:poll].events.last
       end
-      @poll = scenario[:poll]
-      @recipient = scenario[:observer]
-      render template: "chatbot/markdown/poll", layout: false, formats: [:text], content_type: 'text/plain'
+      poll = scenario[:poll]
+      recipient = scenario[:observer]
+      component = Views::Chatbot::Markdown::Poll.new(event: event, poll: poll, recipient: recipient)
+      render component, layout: false, content_type: 'text/plain'
     else
       redirect_to poll_url(scenario[:poll], Hash(scenario[:params]))
     end
