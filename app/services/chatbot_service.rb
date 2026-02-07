@@ -54,13 +54,11 @@ class ChatbotService
               Sentry.capture_message("chatbot id #{chatbot.id} post event id #{event.id} failed: code: #{req.response.code} body: #{req.response.body}")
             end
           else
+            component = matrix_component(template_name, event: event, poll: poll, recipient: recipient)
             client.publish("chatbot/publish", {
               config: chatbot.config,
               payload: {
-                html: ApplicationController.renderer.render(
-                  layout: nil,
-                  template: "chatbot/matrix/#{template_name}",
-                  assigns: { poll: poll, event: event, recipient: recipient } )
+                html: ApplicationController.renderer.render(component, layout: false)
               }
             }.to_json)
           end
@@ -76,7 +74,7 @@ class ChatbotService
   }.freeze
 
   def self.matrix_component(template_name, event:, poll:, recipient:)
-    klass = MATRIX_COMPONENTS.fetch(template_name)
+    klass = MATRIX_COMPONENTS[template_name] || MATRIX_COMPONENTS['notification']
     klass.new(event: event, poll: poll, recipient: recipient)
   end
 
