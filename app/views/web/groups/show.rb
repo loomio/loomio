@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
-class Views::Web::Groups::Show < Views::Web::Base
-  def initialize(group:, recipient:)
+class Views::Web::Groups::Show < Views::Web::ApplicationLayout
+  def initialize(group:, recipient:, **layout_args)
+    super(**layout_args)
     @group = group
     @recipient = recipient
   end

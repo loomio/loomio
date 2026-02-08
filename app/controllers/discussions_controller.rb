@@ -8,7 +8,8 @@ class DiscussionsController < ApplicationController
       respond_to do |format|
         format.html do
           render Views::Web::Discussions::Show.new(
-            discussion: @discussion, recipient: @recipient, pagination: @pagination
+            discussion: @discussion, recipient: @recipient, pagination: @pagination,
+            metadata: metadata, export: !!params[:export], bot: browser.bot?
           )
         end
         format.xml

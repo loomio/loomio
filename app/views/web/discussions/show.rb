@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
-class Views::Web::Discussions::Show < Views::Web::Base
-  def initialize(discussion:, recipient:, pagination:)
+class Views::Web::Discussions::Show < Views::Web::ApplicationLayout
+  def initialize(discussion:, recipient:, pagination:, **layout_args)
+    super(**layout_args)
     @discussion = discussion
     @recipient = recipient
     @pagination = pagination

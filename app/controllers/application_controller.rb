@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  layout false
+
   include LocalesHelper
   include ProtectedFromForgery
   include CurrentUserHelper
@@ -88,11 +90,11 @@ class ApplicationController < ActionController::Base
   end
 
   def crowdfunding
-    render layout: 'basic'
+    render Views::Web::Application::Crowdfunding.new
   end
 
   def brand
-    render layout: 'basic'
+    render Views::Web::Application::Brand.new
   end
 
   def bug_tunnel
@@ -152,6 +154,8 @@ class ApplicationController < ActionController::Base
   def boot_app(status: 200)
     expires_now
     prevent_caching
-    render 'application/boot_app', layout: false, status: status
+    render Views::Web::BootApp.new(
+      metadata: metadata, export: !!params[:export], bot: browser.bot?
+    ), status: status
   end
 end
