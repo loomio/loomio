@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::UserMailer::UserAddedToGroup < Views::BaseMailer::BaseLayout
+class Views::UserMailer::UserAddedToGroup < Views::ApplicationMailer::BaseLayout
   include PrettyUrlHelper
 
   def initialize(group:, inviter:, utm_hash:)

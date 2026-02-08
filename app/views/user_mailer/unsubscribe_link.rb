@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::UserMailer::UnsubscribeLink < Views::BaseMailer::Base
+class Views::UserMailer::UnsubscribeLink < Views::ApplicationMailer::Base
 
   def initialize(recipient:)
     @recipient = recipient

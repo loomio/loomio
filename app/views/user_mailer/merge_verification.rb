@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::UserMailer::MergeVerification < Views::BaseMailer::BaseLayout
+class Views::UserMailer::MergeVerification < Views::ApplicationMailer::BaseLayout
 
   def initialize(source_user:, target_user:, hash_value:)
     @source_user = source_user

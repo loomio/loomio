@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::TaskMailer::TaskDueReminder < Views::BaseMailer::BaseLayout
+class Views::TaskMailer::TaskDueReminder < Views::ApplicationMailer::BaseLayout
   include PrettyUrlHelper
 
   def initialize(recipient:, task:)

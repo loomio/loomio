@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::EventMailer::Common::Attachments < Views::BaseMailer::Base
+class Views::EventMailer::Common::Attachments < Views::ApplicationMailer::Base
 
   def initialize(resource:)
     @resource = resource

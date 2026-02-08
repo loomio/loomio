@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-class Views::BaseMailer::Base < Views::Base
+class Views::ApplicationMailer::Base < Views::Base
   include EmailHelper
 end

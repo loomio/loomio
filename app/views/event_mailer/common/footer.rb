@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::EventMailer::Common::Footer < Views::BaseMailer::Base
+class Views::EventMailer::Common::Footer < Views::ApplicationMailer::Base
 
   def initialize(event:, recipient:, notification: nil, discussion: nil, poll: nil, membership: nil, event_key:)
     @event = event

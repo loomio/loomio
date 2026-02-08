@@ -1,6 +1,6 @@
 class ForwardMailer < ActionMailer::Base
   layout nil
-  default :from => "\"#{AppConfig.theme[:site_name]}\" <#{BaseMailer::NOTIFICATIONS_EMAIL_ADDRESS}>"
+  default :from => "\"#{AppConfig.theme[:site_name]}\" <#{ApplicationMailer::NOTIFICATIONS_EMAIL_ADDRESS}>"
 
   def forward_message(to:, from:, reply_to:, subject:, body_text: nil, body_html: nil)
     @body_text = body_text

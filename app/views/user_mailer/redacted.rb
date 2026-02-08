@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::UserMailer::Redacted < Views::BaseMailer::BaseLayout
+class Views::UserMailer::Redacted < Views::ApplicationMailer::BaseLayout
 
   def view_template
     p do

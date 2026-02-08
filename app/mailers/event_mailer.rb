@@ -1,4 +1,4 @@
-class EventMailer < BaseMailer
+class EventMailer < ApplicationMailer
   REPLY_DELIMITER = "\uFEFF\uFEFF"*4 # surprise! this is actually U+FEFF
 
   def event(recipient_id, event_id)

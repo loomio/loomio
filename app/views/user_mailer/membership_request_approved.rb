@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::UserMailer::MembershipRequestApproved < Views::BaseMailer::BaseLayout
+class Views::UserMailer::MembershipRequestApproved < Views::ApplicationMailer::BaseLayout
   include PrettyUrlHelper
 
   def initialize(group:, utm_hash:)

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::EventMailer::Common::Body < Views::BaseMailer::Base
+class Views::EventMailer::Common::Body < Views::ApplicationMailer::Base
 
   def initialize(eventable:, recipient:)
     @eventable = eventable

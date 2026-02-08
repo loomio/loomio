@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::UserMailer::Login < Views::BaseMailer::BaseLayout
+class Views::UserMailer::Login < Views::ApplicationMailer::BaseLayout
 
   def initialize(user:, token:)
     @user = user

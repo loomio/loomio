@@ -23,7 +23,7 @@ class ReceivedEmailServiceTest < ActiveSupport::TestCase
   end
 
   test "splits on Loomio notifications address" do
-    input_body = "Hi I'm the bit you want\n      On someday (Loomio) #{BaseMailer::NOTIFICATIONS_EMAIL_ADDRESS} said:\n      This is the bit that you don't want"
+    input_body = "Hi I'm the bit you want\n      On someday (Loomio) #{ApplicationMailer::NOTIFICATIONS_EMAIL_ADDRESS} said:\n      This is the bit that you don't want"
     output_body = ReceivedEmailService.extract_reply_body(input_body)
     assert_equal "Hi I'm the bit you want", output_body
   end

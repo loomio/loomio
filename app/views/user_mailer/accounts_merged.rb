@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::UserMailer::AccountsMerged < Views::BaseMailer::BaseLayout
+class Views::UserMailer::AccountsMerged < Views::ApplicationMailer::BaseLayout
 
   def initialize(user:, token:, utm_hash:)
     @user = user

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::EventMailer::Common::Button < Views::BaseMailer::Base
+class Views::EventMailer::Common::Button < Views::ApplicationMailer::Base
   def initialize(url:, text:)
     @url = url
     @text = text

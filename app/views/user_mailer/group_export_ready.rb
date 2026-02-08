@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::UserMailer::GroupExportReady < Views::BaseMailer::BaseLayout
+class Views::UserMailer::GroupExportReady < Views::ApplicationMailer::BaseLayout
 
   def initialize(document:)
     @document = document

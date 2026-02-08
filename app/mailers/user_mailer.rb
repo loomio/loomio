@@ -1,4 +1,4 @@
-class UserMailer < BaseMailer
+class UserMailer < ApplicationMailer
   def redacted(email, locale)
     component = Views::UserMailer::Redacted.new
 

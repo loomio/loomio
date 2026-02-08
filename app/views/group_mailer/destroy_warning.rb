@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::GroupMailer::DestroyWarning < Views::BaseMailer::BaseLayout
+class Views::GroupMailer::DestroyWarning < Views::ApplicationMailer::BaseLayout
 
   def initialize(group:, recipient:, deletor:)
     @group = group

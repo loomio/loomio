@@ -278,8 +278,8 @@ class User < ApplicationRecord
   end
 
   def self.helper_bot
-    verified.find_by(email: BaseMailer::NOTIFICATIONS_EMAIL_ADDRESS) ||
-    create!(email: BaseMailer::NOTIFICATIONS_EMAIL_ADDRESS,
+    verified.find_by(email: ApplicationMailer::NOTIFICATIONS_EMAIL_ADDRESS) ||
+    create!(email: ApplicationMailer::NOTIFICATIONS_EMAIL_ADDRESS,
             name: 'Loomio Helper Bot',
             password: SecureRandom.hex(20),
             email_verified: true,

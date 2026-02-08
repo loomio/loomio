@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::EventMailer::Poll::Chip < Views::BaseMailer::Base
+class Views::EventMailer::Poll::Chip < Views::ApplicationMailer::Base
   def initialize(color:)
     @color = color
   end

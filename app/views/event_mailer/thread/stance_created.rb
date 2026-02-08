@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::EventMailer::Thread::StanceCreated < Views::BaseMailer::Base
+class Views::EventMailer::Thread::StanceCreated < Views::ApplicationMailer::Base
 
   def initialize(item:, recipient:)
     @item = item

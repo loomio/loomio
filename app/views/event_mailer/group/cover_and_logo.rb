@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::EventMailer::Group::CoverAndLogo < Views::BaseMailer::Base
+class Views::EventMailer::Group::CoverAndLogo < Views::ApplicationMailer::Base
   def initialize(group:)
     @group = group
   end

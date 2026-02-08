@@ -1,4 +1,4 @@
-class TaskMailer < BaseMailer
+class TaskMailer < ApplicationMailer
   def task_due_reminder(recipient, task)
     component = Views::TaskMailer::TaskDueReminder.new(
       recipient: recipient, task: task

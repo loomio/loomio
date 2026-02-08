@@ -79,7 +79,7 @@ class ReceivedEmailService
     if forward_email_rule = ForwardEmailRule.find_by(handle: email.route_path)
       Rails.logger.info("email forwarded");
       ForwardMailer.forward_message(
-        from: "\"#{email.sender_name}\" <#{BaseMailer::NOTIFICATIONS_EMAIL_ADDRESS}>",
+        from: "\"#{email.sender_name}\" <#{ApplicationMailer::NOTIFICATIONS_EMAIL_ADDRESS}>",
         to: forward_email_rule.email,
         reply_to: email.from,
         subject: email.subject,
