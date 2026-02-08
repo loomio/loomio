@@ -1,6 +1,6 @@
 class UserMailer < BaseMailer
   def redacted(email, locale)
-    component = Views::Email::Mailers::UserMailer::Redacted.new
+    component = Views::UserMailer::Redacted.new
 
     send_email(to: email, locale: locale, component: component) {
       I18n.t("user_mailer.redacted.subject", site_name: AppConfig.theme[:site_name])
@@ -11,7 +11,7 @@ class UserMailer < BaseMailer
     user = User.find(user_id)
     token = user.login_tokens.create!
 
-    component = Views::Email::Mailers::UserMailer::AccountsMerged.new(
+    component = Views::UserMailer::AccountsMerged.new(
       user: user, token: token, utm_hash: @utm_hash
     )
 
@@ -21,7 +21,7 @@ class UserMailer < BaseMailer
   end
 
   def merge_verification(source_user:, target_user:, hash:)
-    component = Views::Email::Mailers::UserMailer::MergeVerification.new(
+    component = Views::UserMailer::MergeVerification.new(
       source_user: source_user, target_user: target_user, hash_value: hash
     )
 
@@ -58,7 +58,7 @@ class UserMailer < BaseMailer
     subject_key = "email.catch_up.#{frequency}_subject"
     subject_params = { site_name: AppConfig.theme[:site_name] }
 
-    component = Views::Email::Mailers::UserMailer::CatchUp.new(
+    component = Views::UserMailer::CatchUp.new(
       user: user,
       recipient: user,
       groups: groups,
@@ -80,7 +80,7 @@ class UserMailer < BaseMailer
     user = User.find_by(id: recipient_id)
     group = Event.find_by(id: event_id).eventable.group
 
-    component = Views::Email::Mailers::UserMailer::MembershipRequestApproved.new(
+    component = Views::UserMailer::MembershipRequestApproved.new(
       group: group, utm_hash: @utm_hash
     )
 
@@ -96,7 +96,7 @@ class UserMailer < BaseMailer
     group   = event.eventable.group
     inviter = event.eventable.inviter || group.admins.first
 
-    component = Views::Email::Mailers::UserMailer::UserAddedToGroup.new(
+    component = Views::UserMailer::UserAddedToGroup.new(
       group: group, inviter: inviter, utm_hash: @utm_hash
     )
 
@@ -114,7 +114,7 @@ class UserMailer < BaseMailer
     user     = User.find(recipient_id)
     document = Document.find(document_id)
 
-    component = Views::Email::Mailers::UserMailer::GroupExportReady.new(
+    component = Views::UserMailer::GroupExportReady.new(
       document: document
     )
 
@@ -127,7 +127,7 @@ class UserMailer < BaseMailer
     user = User.find_by!(id: user_id)
     token = LoginToken.find_by!(id: token_id)
 
-    component = Views::Email::Mailers::UserMailer::Login.new(
+    component = Views::UserMailer::Login.new(
       user: user, token: token
     )
 

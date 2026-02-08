@@ -7,7 +7,6 @@ class DiscussionServiceTest < ActiveSupport::TestCase
     @group = groups(:test_group)
     @group.add_member!(@user)
     @group.add_member!(@another_user)
-    ActionMailer::Base.deliveries.clear
   end
 
   # -- Create --

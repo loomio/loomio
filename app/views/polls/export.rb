@@ -16,7 +16,7 @@ class Views::Polls::Export < Views::Base
             div(class: "container thread-page max-width-800 px-0 px-sm-3") do
               div(class: "thread-card v-card v-sheet--outlined v-sheet theme--auto pa-4") do
                 render Views::Discussions::ThreadItems::PollCreated.new(item: @poll.created_event, current_user: @recipient)
-                render Views::Email::Poll::Responses.new(event: @poll.created_event, recipient: @recipient)
+                render Views::EventMailer::Poll::Responses.new(event: @poll.created_event, recipient: @recipient)
               end
             end
           end

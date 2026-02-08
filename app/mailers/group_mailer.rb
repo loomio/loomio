@@ -4,7 +4,7 @@ class GroupMailer < BaseMailer
     recipient = User.find(recipient_id)
     deletor = User.find(deletor_id)
 
-    component = Views::Email::Mailers::GroupMailer::DestroyWarning.new(
+    component = Views::GroupMailer::DestroyWarning.new(
       group: group, recipient: recipient, deletor: deletor
     )
 

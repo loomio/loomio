@@ -115,39 +115,39 @@ class EventMailer < BaseMailer
 
     case event.eventable_type
     when 'Poll', 'Outcome'
-      Views::Email::PollMailer.new(
+      Views::EventMailer::Poll.new(
         event: event, recipient: recipient, event_key: event_key,
         poll: poll, notification: notification, discussion: discussion, membership: membership
       )
     when 'Discussion'
-      Views::Email::DiscussionMailer.new(
+      Views::EventMailer::Discussion.new(
         event: event, recipient: recipient, event_key: event_key,
         notification: notification, discussion: discussion, poll: poll, membership: membership
       )
     when 'Comment'
-      Views::Email::CommentMailer.new(
+      Views::EventMailer::Comment.new(
         event: event, recipient: recipient, event_key: event_key,
         notification: notification, discussion: discussion, poll: poll, membership: membership
       )
     when 'Stance'
-      Views::Email::StanceMailer.new(
+      Views::EventMailer::Stance.new(
         event: event, recipient: recipient, event_key: event_key,
         notification: notification, discussion: discussion, poll: poll, membership: membership
       )
     when 'Membership'
-      Views::Email::MembershipMailer.new(
+      Views::EventMailer::Membership.new(
         event: event, recipient: recipient, event_key: event_key
       )
     when 'Group'
-      Views::Email::GroupMailer.new(
+      Views::EventMailer::Group.new(
         event: event, recipient: recipient, event_key: event_key
       )
     when 'MembershipRequest'
-      Views::Email::MembershipRequestMailer.new(
+      Views::EventMailer::MembershipRequest.new(
         event: event, recipient: recipient, event_key: event_key, utm_hash: utm_hash
       )
     when 'ReceivedEmail'
-      Views::Email::ReceivedEmailMailer.new(
+      Views::ReceivedEmailMailer.new(
         event: event, recipient: recipient, event_key: event_key
       )
     end

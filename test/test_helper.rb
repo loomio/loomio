@@ -17,15 +17,15 @@ module ActiveSupport
     # Run tests in parallel with specified workers
     # parallelize(workers: :number_of_processors)
 
-    # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-    fixtures :all
-
     # Add more helper methods to be used by all tests here...
     include ActiveSupport::Testing::TimeHelpers
 
     # Clean stale data from previous test runs (e.g. e2e tests, interrupted runs)
-    include ResetDatabaseHelper
-    ResetDatabaseHelper::reset_database
+    ResetDatabaseHelper.reset_database
+
+    # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
+    fixtures :all
+
 
     # Helper to create a discussion with proper setup
     def create_discussion(**args)

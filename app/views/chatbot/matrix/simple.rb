@@ -66,7 +66,7 @@ class Views::Chatbot::Matrix::Simple < Views::Chatbot::Base
               when 'voters'
                 td do
                   User.where(id: option[:voter_ids]).each do |user|
-                    render Views::Email::Common::Avatar.new(user: user, size: 24)
+                    render Views::EventMailer::Common::Avatar.new(user: user, size: 24)
                   end
                   if option[:voter_ids].length == 0
                     span(style: 'display: inline-block; height: 24px') { raw '&nbsp;'.html_safe }

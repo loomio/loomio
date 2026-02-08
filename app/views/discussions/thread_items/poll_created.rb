@@ -12,7 +12,7 @@ class Views::Discussions::ThreadItems::PollCreated < Views::Base
       div(class: "thread-item px-3 pb-1") do
         div(id: "sequence-3", class: "v-layout lmo-action-dock-wrapper", style: "margin-left: 0px;") do
           div(class: "thread-item__avatar mr-3 mt-0") do
-            render Views::Email::Common::Avatar.new(user: poll.user)
+            render Views::EventMailer::Common::Avatar.new(user: poll.user)
           end
           div(class: "thread-item__body") do
             h1(class: "poll-common-card__title text-h5 pb-1") do
@@ -55,7 +55,7 @@ class Views::Discussions::ThreadItems::PollCreated < Views::Base
             div(class: "lmo-markdown-wrapper text-body-1 poll-common-details-panel__details pb-1") do
               p { raw MarkdownService.render_rich_text(poll.details, poll.details_format) }
             end
-            render Views::Email::Poll::ResultsPanel.new(poll: poll, current_user: @current_user)
+            render Views::EventMailer::Poll::ResultsPanel.new(poll: poll, current_user: @current_user)
           end
         end
       end

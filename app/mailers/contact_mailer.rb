@@ -2,7 +2,7 @@ class ContactMailer < ActionMailer::Base
   default :from => "\"#{AppConfig.theme[:site_name]}\" <#{BaseMailer::NOTIFICATIONS_EMAIL_ADDRESS}>"
 
   def contact_message(name, email, subject, body, details = {})
-    component = Views::Email::Mailers::ContactMailer::ContactMessage.new(
+    component = Views::ContactMailer::ContactMessage.new(
       details: details,
       body: body
     )

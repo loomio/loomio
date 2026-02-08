@@ -5,7 +5,6 @@ class LoginTokenServiceTest < ActiveSupport::TestCase
     @user = users(:normal_user)
     @uri = URI::parse "http://#{ENV['CANONICAL_HOST']}/explore"
     @bad_uri = URI::parse "http://badhost.biz/explore"
-    ActionMailer::Base.deliveries.clear
   end
 
   test "creates a new login token" do

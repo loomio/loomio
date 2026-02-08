@@ -7,7 +7,6 @@ class TaskServiceTest < ActiveSupport::TestCase
     @group = groups(:test_group)
     @group.add_member!(@member) unless @group.members.include?(@member)
     @discussion = create_discussion(group: @group, author: @member)
-    ActionMailer::Base.deliveries.clear
   end
 
   test "parses a simple task from HTML" do

@@ -47,7 +47,7 @@ class Views::Discussions::Show < Views::ApplicationLayout
   def render_details
     div(class: "context-panel__details my-2 text-body-2 align-center d-flex text-medium-emphasis") do
       span(class: "mr-2") do
-        render Views::Email::Common::Avatar.new(user: @discussion.author)
+        render Views::EventMailer::Common::Avatar.new(user: @discussion.author)
       end
       span(class: "text-medium-emphasis") do
         a(href: user_url(@discussion.author)) { plain @discussion.author.name }

@@ -13,7 +13,7 @@ class Views::Chatbot::Matrix::Meeting < Views::Chatbot::Base
           td { @poll.time_zone }
           td { t(:'poll_common.votes') }
           @poll.decided_voters.each do |user|
-            td { render Views::Email::Common::Avatar.new(user: user, size: 24) }
+            td { render Views::EventMailer::Common::Avatar.new(user: user, size: 24) }
           end
         end
       end

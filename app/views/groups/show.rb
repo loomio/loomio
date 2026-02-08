@@ -44,7 +44,7 @@ class Views::Groups::Show < Views::ApplicationLayout
                 @group.discussions.kept.where(private: false).order("last_activity_at desc").limit(50).each do |discussion|
                   a(class: "thread-preview thread-preview__link v-list-item v-list-item--link theme--auto", href: discussion_url(discussion), role: "listitem", tabindex: "0") do
                     div(class: "v-list-item__avatar") do
-                      render Views::Email::Common::Avatar.new(user: discussion.author)
+                      render Views::EventMailer::Common::Avatar.new(user: discussion.author)
                     end
                     div(class: "v-list-item__content") do
                       div(class: "v-list-item__title", style: "align-items: center;") do
