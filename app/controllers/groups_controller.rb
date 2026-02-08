@@ -8,7 +8,7 @@ class GroupsController < ApplicationController
     pages = total <= limit ? 1 : (total.to_f / limit).ceil
     page = params.fetch(:page, 1).to_i.clamp(1, pages)
     offset = page == 1 ? 0 : ((page - 1) * limit)
-    render Views::Web::Groups::Index.new(
+    render Views::Groups::Index.new(
       groups: groups.limit(limit).offset(offset), pages: pages, page: page,
       metadata: metadata, export: !!params[:export], bot: browser.bot?
     )
@@ -21,7 +21,7 @@ class GroupsController < ApplicationController
       assign_resource
       respond_to do |format|
         format.html do
-          render Views::Web::Groups::Show.new(
+          render Views::Groups::Show.new(
             group: @group, recipient: @recipient,
             metadata: metadata, export: !!params[:export], bot: browser.bot?
           )
@@ -36,7 +36,7 @@ class GroupsController < ApplicationController
   def export
     @exporter = GroupExporter.new(load_and_authorize(:group, :export))
     respond_to do |format|
-      format.html { render Views::Web::Groups::Export.new(exporter: @exporter) }
+      format.html { render Views::Groups::Export.new(exporter: @exporter) }
     end
   end
 

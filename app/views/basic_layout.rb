@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::Web::BasicLayout < Views::Web::Base
+class Views::BasicLayout < Views::Base
   def initialize(flash: {}, footer: nil)
     @flash = flash
     @footer = footer

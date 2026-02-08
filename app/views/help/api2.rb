@@ -1,29 +1,46 @@
 # frozen_string_literal: true
 
-class Views::Web::Help::Api < Views::Web::BasicLayout
-  def initialize(api_key:, group_id:, email:, root_url:, **layout_args)
+class Views::Help::Api2 < Views::BasicLayout
+  def initialize(api_key:, group_id:, email:, root_url:, user:, **layout_args)
     super(**layout_args)
     @api_key = api_key
     @group_id = group_id
     @email = email
     @root_url = root_url
+    @user = user
   end
 
   def view_template
     main(class: "container") do
-      h1 { plain "Loomio API" }
+      h1 { plain "Loomio API /api/b2" }
 
-      p do
-        plain "Hi! We've created this API for people who are writing integrations for Loomio. At this stage it's still new and development is request driven - meaning that if you want to see a new feature, please "
-        a(href: "https://www.loomio.org/community-product-development/", target: "_blank") { plain "join the product development group" }
-        plain " and explain what you would like to do."
+      p { plain "/api/b2 was released in October 2023. It will replace the previous /api/b1" }
+
+      p(class: "mt-4") do
+        plain "Your API key is: #{@api_key}"
+        br
+        if @user.bot?
+          plain "This user account is a bot. That's good! It will not be included in polls and notifications"
+        else
+          span { plain "This user account is a human. You may want to " }
+          a(href: "/profile") { plain "setup a bot account" }
+          span { plain " for API requests." }
+        end
       end
 
-      p(class: "mt-4 mb-4") { plain "Your API key is: #{@api_key}" }
+      plain "Select a group for example commands"
+      table do
+        @user.adminable_groups.each do |group|
+          tr do
+            td { plain group.id.to_s }
+            td { a(href: "?group_id=#{group.id}") { plain group.full_name } }
+          end
+        end
+      end
 
       h2 { plain "create discussion" }
       h3 { plain "example" }
-      pre { plain "curl -X POST -H 'Content-Type: application/json' -d '{\"group_id\": #{@group_id}, \"title\":\"example thread\", \"recipient_emails\":[\"#{@email}\"], \"api_key\": \"#{@api_key}\"}' #{@root_url}api/b1/discussions" }
+      pre { plain "curl -X POST -H 'Content-Type: application/json' -d '{\"group_id\": #{@group_id}, \"title\":\"example thread\", \"recipient_emails\":[\"#{@email}\"], \"api_key\": \"#{@api_key}\"}' #{@root_url}api/b2/discussions" }
 
       h3 { plain "params" }
       render_discussion_params
@@ -31,12 +48,12 @@ class Views::Web::Help::Api < Views::Web::BasicLayout
       h2 { plain "show discussion" }
       p { plain "Fetch a discussion using the discussion id (an integer) or key (a string) using the following request format" }
       h3 { plain "example" }
-      pre { plain "curl #{@root_url}api/b1/discussions/aBcD123?api_key=#{@api_key}" }
+      pre { plain "curl #{@root_url}api/b2/discussions/abc123?api_key=#{@api_key}" }
 
       h2 { plain "create poll" }
       h3 { plain "example" }
       closing_at = 7.days.from_now.at_beginning_of_hour.utc.iso8601
-      pre { plain "curl -X POST -H 'Content-Type: application/json' -d '{\"title\":\"example poll\", \"poll_type\": \"proposal\", \"options\": [\"agree\", \"disagree\"], \"closing_at\": \"#{closing_at}\", \"recipient_emails\":[\"#{@email}\"], \"api_key\": \"#{@api_key}\"}' #{@root_url}api/b1/polls" }
+      pre { plain "curl -X POST -H 'Content-Type: application/json' -d '{\"group_id\": #{@group_id}, \"title\":\"example poll\", \"poll_type\": \"proposal\", \"options\": [\"agree\", \"disagree\"], \"closing_at\": \"#{closing_at}\", \"recipient_emails\":[\"#{@email}\"], \"api_key\": \"#{@api_key}\"}' #{@root_url}api/b2/polls" }
 
       h3 { plain "params" }
       render_poll_params(closing_at)
@@ -44,22 +61,22 @@ class Views::Web::Help::Api < Views::Web::BasicLayout
       h2 { plain "show poll" }
       p { plain "Fetch a poll using the poll id (an integer) or key (a string)" }
       h3 { plain "example" }
-      pre { plain "curl #{@root_url}api/b1/polls/aBcD123?api_key=#{@api_key}" }
+      pre { plain "curl #{@root_url}api/b2/polls/abc123?api_key=#{@api_key}" }
 
       h2 { plain "list memberships" }
-      url = "#{@root_url}api/b1/memberships?api_key=#{@api_key}"
+      url = "#{@root_url}api/b2/memberships?api_key=#{@api_key}&group_id=#{@group_id}"
       a(href: url) { plain url }
-      pre { plain "curl -d 'api_key=#{@api_key}' #{@root_url}api/b1/memberships" }
+      pre { plain "curl #{url}" }
 
       h2 { plain "manage memberships" }
       p { plain "send a list of emails. it will invite all the new email addresses to the group." }
-      pre { plain "curl -X POST -H 'Content-Type: application/json' -d '{\"emails\":[\"person@example.com\"], \"api_key\": \"#{@api_key}\"}' #{@root_url}api/b1/memberships" }
+      pre { plain "curl -X POST -H 'Content-Type: application/json' -d '{\"group_id\": #{@group_id}, \"emails\":[\"person@example.com\"], \"api_key\": \"#{@api_key}\"}' #{@root_url}api/b2/memberships" }
 
       p do
         plain "if you pass remove_absent=1 then any members of the group who were not included in the list will be removed from the group. "
         b { plain "be careful, you could remove everyone in your group!" }
       end
-      pre { plain "curl -X POST -H 'Content-Type: application/json' -d '{\"emails\":[\"person@example.com\"], \"remove_absent\": 1, \"api_key\": \"#{@api_key}\"}' #{@root_url}api/b1/memberships" }
+      pre { plain "curl -X POST -H 'Content-Type: application/json' -d '{\"group_id\": #{@group_id}, \"emails\":[\"person@example.com\"], \"remove_absent\": 1, \"api_key\": \"#{@api_key}\"}' #{@root_url}api/b2/memberships" }
 
       h3 { plain "params" }
       table do
@@ -74,6 +91,7 @@ class Views::Web::Help::Api < Views::Web::BasicLayout
 
   def render_discussion_params
     table do
+      tr { td { plain "group_id" }; td { plain "group where thread will exist" } }
       tr { td { plain "title" }; td { plain "title of the thread (required)" } }
       tr { td { plain "description" }; td { plain "context for the thread (optional)" } }
       tr { td { plain "description_format" }; td { plain "string. either 'md' or 'html' (optional, default: md)" } }
@@ -86,6 +104,8 @@ class Views::Web::Help::Api < Views::Web::BasicLayout
 
   def render_poll_params(closing_at)
     table do
+      tr { td { plain "group_id" }; td { plain "integer. optional. default: null. id of group for poll. If discussion_id is passed, group_id is ignored." } }
+      tr { td { plain "discussion_id" }; td { plain "integer. optional. default: null. id of discussion thread to add this poll to." } }
       tr { td { plain "title" }; td { plain "string. required. title of the poll" } }
       tr { td { plain "poll_type" }; td { plain "string. required. values: 'proposal', 'poll', 'count', 'score', 'ranked_choice', 'meeting', 'dot_vote'" } }
       tr { td { plain "details" }; td { plain "string. optional. the body text of the poll" } }
@@ -96,7 +116,6 @@ class Views::Web::Help::Api < Views::Web::BasicLayout
       tr { td { plain "hide_results" }; td { plain "string. optional. default: 'off'. values: 'off', 'until_vote', 'until_closed'. allow voters to see the results before the poll has closed" } }
       tr { td { plain "shuffle_options" }; td { plain "boolean. default false. display options to voters in random order." } }
       tr { td { plain "anonymous" }; td { plain "boolean. optional. default: false. true: hide identities of voters." } }
-      tr { td { plain "discussion_id" }; td { plain "integer. optional. default: null. id of discussion thread to add this poll to." } }
       tr { td { plain "recipient_audience" }; td { plain "string 'group' or null. optional. default: null. if 'group' whole group will be notified about the new thread." } }
       tr { td { plain "notify_on_closing_soon" }; td { plain "string. optional. default: 'nobody'. values: 'nobody', 'author', 'undecided_voters' or 'voters'. specify the who to send a reminder notification to, 24 hours before the poll closes." } }
       tr { td { plain "recipient_user_ids" }; td { plain "array of user ids to notify or invite" } }

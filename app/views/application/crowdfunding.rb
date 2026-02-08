@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::Web::Application::Crowdfunding < Views::Web::BasicLayout
+class Views::Application::Crowdfunding < Views::BasicLayout
   include Phlex::Rails::Helpers::LinkTo
 
   def view_template

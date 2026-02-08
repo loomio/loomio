@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::Web::MergeUsers::Confirm < Views::Web::BasicLayout
+class Views::MergeUsers::Confirm < Views::BasicLayout
   include Phlex::Rails::Helpers::FormWith
   include Phlex::Rails::Helpers::ButtonTag
 

@@ -34,7 +34,7 @@ class PagesPhlexTest < ActiveSupport::TestCase
 
   test "discussion show renders title and group name" do
     pagination = { limit: 10, offset: 0 }
-    output = render_phlex(Views::Web::Discussions::Show.new(
+    output = render_phlex(Views::Discussions::Show.new(
       discussion: @discussion, recipient: @recipient, pagination: pagination
     ))
 
@@ -53,7 +53,7 @@ class PagesPhlexTest < ActiveSupport::TestCase
     comment.events.create!(kind: :new_comment, user: @user, discussion: @discussion, created_at: comment.created_at)
 
     pagination = { limit: 10, offset: 0 }
-    output = render_phlex(Views::Web::Discussions::Show.new(
+    output = render_phlex(Views::Discussions::Show.new(
       discussion: @discussion.reload, recipient: @recipient, pagination: pagination
     ))
 
@@ -74,7 +74,7 @@ class PagesPhlexTest < ActiveSupport::TestCase
     poll.create_missing_created_event!
 
     pagination = { limit: 10, offset: 0 }
-    output = render_phlex(Views::Web::Discussions::Show.new(
+    output = render_phlex(Views::Discussions::Show.new(
       discussion: @discussion.reload, recipient: @recipient, pagination: pagination
     ))
 
@@ -101,7 +101,7 @@ class PagesPhlexTest < ActiveSupport::TestCase
     stance.events.create!(kind: :stance_created, user: @user, discussion: @discussion, created_at: stance.created_at)
 
     pagination = { limit: 10, offset: 0 }
-    output = render_phlex(Views::Web::Discussions::Show.new(
+    output = render_phlex(Views::Discussions::Show.new(
       discussion: @discussion.reload, recipient: @recipient, pagination: pagination
     ))
 
@@ -121,7 +121,7 @@ class PagesPhlexTest < ActiveSupport::TestCase
     comment.create_missing_created_event!
     item = comment.created_event
 
-    output = render_phlex(Views::Web::Discussions::ThreadItems::NewComment.new(item: item, current_user: @recipient))
+    output = render_phlex(Views::Discussions::ThreadItems::NewComment.new(item: item, current_user: @recipient))
 
     assert_includes output, "Standalone comment test"
     assert_includes output, @user.name
@@ -143,7 +143,7 @@ class PagesPhlexTest < ActiveSupport::TestCase
     poll.create_missing_created_event!
     item = poll.created_event
 
-    output = render_phlex(Views::Web::Discussions::ThreadItems::PollCreated.new(item: item, current_user: @recipient))
+    output = render_phlex(Views::Discussions::ThreadItems::PollCreated.new(item: item, current_user: @recipient))
 
     assert_includes output, "Poll Created Component Test"
     assert_includes output, @user.name
@@ -172,7 +172,7 @@ class PagesPhlexTest < ActiveSupport::TestCase
     stance.create_missing_created_event!
     item = stance.created_event
 
-    output = render_phlex(Views::Web::Discussions::ThreadItems::StanceCreated.new(item: item, current_user: @recipient))
+    output = render_phlex(Views::Discussions::ThreadItems::StanceCreated.new(item: item, current_user: @recipient))
 
     assert_includes output, @user.name
     assert_includes output, "stance-created"
@@ -199,7 +199,7 @@ class PagesPhlexTest < ActiveSupport::TestCase
     stance.create_missing_created_event!
     item = stance.created_event
 
-    output = render_phlex(Views::Web::Discussions::ThreadItems::StanceCreated.new(item: item, current_user: @recipient, kind: :created))
+    output = render_phlex(Views::Discussions::ThreadItems::StanceCreated.new(item: item, current_user: @recipient, kind: :created))
 
     assert_includes output, I18n.t("poll_common_votes_panel.vote_removed")
   end
@@ -216,7 +216,7 @@ class PagesPhlexTest < ActiveSupport::TestCase
     comment.create_missing_created_event!
     item = comment.created_event
 
-    output = render_phlex(Views::Web::Discussions::ThreadItems::Removed.new(item: item, current_user: @recipient))
+    output = render_phlex(Views::Discussions::ThreadItems::Removed.new(item: item, current_user: @recipient))
 
     assert_includes output, "item-removed"
     assert_includes output, I18n.t("thread_item.removed")
@@ -242,7 +242,7 @@ class PagesPhlexTest < ActiveSupport::TestCase
     stance.stance_choices.build(poll_option: apple_option, score: 1)
     stance.save!
 
-    output = render_phlex(Views::Web::Discussions::StanceBody.new(
+    output = render_phlex(Views::Discussions::StanceBody.new(
       stance: stance, voter: @user, poll: poll, current_user: @recipient
     ))
 
@@ -271,7 +271,7 @@ class PagesPhlexTest < ActiveSupport::TestCase
     stance.stance_choices.build(poll_option: blue_option, score: 3)
     stance.save!
 
-    output = render_phlex(Views::Web::Discussions::StanceBody.new(
+    output = render_phlex(Views::Discussions::StanceBody.new(
       stance: stance, voter: @user, poll: poll, current_user: @recipient
     ))
 
@@ -299,7 +299,7 @@ class PagesPhlexTest < ActiveSupport::TestCase
     stance.stance_choices.build(poll_option: alpha_option, score: 7)
     stance.save!
 
-    output = render_phlex(Views::Web::Discussions::StanceBody.new(
+    output = render_phlex(Views::Discussions::StanceBody.new(
       stance: stance, voter: @user, poll: poll, current_user: @recipient
     ))
 
@@ -328,7 +328,7 @@ class PagesPhlexTest < ActiveSupport::TestCase
     stance.stance_choices.build(poll_option: second_option, score: 1)
     stance.save!
 
-    output = render_phlex(Views::Web::Discussions::StanceBody.new(
+    output = render_phlex(Views::Discussions::StanceBody.new(
       stance: stance, voter: @user, poll: poll, current_user: @recipient
     ))
 
@@ -340,7 +340,7 @@ class PagesPhlexTest < ActiveSupport::TestCase
   # ── GroupShow ───────────────────────────────────────────────────
 
   test "group show renders group name and description" do
-    output = render_phlex(Views::Web::Groups::Show.new(group: @group, recipient: @recipient))
+    output = render_phlex(Views::Groups::Show.new(group: @group, recipient: @recipient))
 
     assert_includes output, @group.full_name
     assert_includes output, "group-page"
@@ -350,7 +350,7 @@ class PagesPhlexTest < ActiveSupport::TestCase
 
   test "group export renders with export tables" do
     exporter = GroupExporter.new(@group)
-    output = render_phlex(Views::Web::Groups::Export.new(exporter: exporter))
+    output = render_phlex(Views::Groups::Export.new(exporter: exporter))
 
     assert_includes output, "Export for #{@group.full_name}"
     assert_includes output, "Groups"
@@ -376,7 +376,7 @@ class PagesPhlexTest < ActiveSupport::TestCase
     poll.create_missing_created_event!
 
     exporter = PollExporter.new(poll)
-    output = render_phlex(Views::Web::Polls::Export.new(
+    output = render_phlex(Views::Polls::Export.new(
       poll: poll, exporter: exporter, recipient: @recipient
     ))
 
@@ -391,7 +391,7 @@ class PagesPhlexTest < ActiveSupport::TestCase
     records = exporter.groups
     fields = exporter.group_fields
 
-    output = render_phlex(Views::Web::Groups::ExportTable.new(
+    output = render_phlex(Views::Groups::ExportTable.new(
       name: "Groups", records: records, fields: fields, exporter: exporter
     ))
 
@@ -402,7 +402,7 @@ class PagesPhlexTest < ActiveSupport::TestCase
   test "export table renders empty when no records" do
     exporter = GroupExporter.new(@group)
 
-    output = render_phlex(Views::Web::Groups::ExportTable.new(
+    output = render_phlex(Views::Groups::ExportTable.new(
       name: "Outcomes", records: [], fields: exporter.group_fields, exporter: exporter
     ))
 

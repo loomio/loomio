@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::Web::Help::Api3 < Views::Web::BasicLayout
+class Views::Help::Api3 < Views::BasicLayout
   def initialize(root_url:, **layout_args)
     super(**layout_args)
     @root_url = root_url

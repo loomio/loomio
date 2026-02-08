@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::Web::Discussions::ThreadItems::Removed < Views::Web::Base
+class Views::Discussions::ThreadItems::Removed < Views::Base
   def initialize(item:, current_user:)
     @item = item
     @current_user = current_user

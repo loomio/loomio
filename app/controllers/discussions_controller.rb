@@ -7,7 +7,7 @@ class DiscussionsController < ApplicationController
       @pagination = pagination_params
       respond_to do |format|
         format.html do
-          render Views::Web::Discussions::Show.new(
+          render Views::Discussions::Show.new(
             discussion: @discussion, recipient: @recipient, pagination: @pagination,
             metadata: metadata, export: !!params[:export], bot: browser.bot?
           )

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::Web::MergeUsers::Complete < Views::Web::BasicLayout
+class Views::MergeUsers::Complete < Views::BasicLayout
   def initialize(target_user:, **layout_args)
     super(**layout_args)
     @target_user = target_user

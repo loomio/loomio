@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::Web::Discussions::ThreadItems::StanceCreated < Views::Web::Base
+class Views::Discussions::ThreadItems::StanceCreated < Views::Base
   def initialize(item:, current_user:, kind: :created)
     @item = item
     @current_user = current_user
@@ -21,7 +21,7 @@ class Views::Web::Discussions::ThreadItems::StanceCreated < Views::Web::Base
             if @kind == :created && stance.revoked_at
               plain t("poll_common_votes_panel.vote_removed")
             else
-              render Views::Web::Discussions::StanceBody.new(stance: stance, voter: voter, poll: poll, current_user: @current_user)
+              render Views::Discussions::StanceBody.new(stance: stance, voter: voter, poll: poll, current_user: @current_user)
             end
           end
         end

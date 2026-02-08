@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::Web::Discussions::Show < Views::Web::ApplicationLayout
+class Views::Discussions::Show < Views::ApplicationLayout
   def initialize(discussion:, recipient:, pagination:, **layout_args)
     super(**layout_args)
     @discussion = discussion
@@ -89,7 +89,7 @@ class Views::Web::Discussions::Show < Views::Web::ApplicationLayout
 
       items.limit(@pagination[:limit]).offset(@pagination[:offset]).each do |item|
         if item.eventable.present?
-          render Views::Web::Discussions::ThreadItem.new(item: item, current_user: @recipient)
+          render Views::Discussions::ThreadItem.new(item: item, current_user: @recipient)
         end
       end
 

@@ -13,7 +13,7 @@ class PollsController < ApplicationController
 
     respond_to do |format|
       format.html do
-        render Views::Web::Polls::Export.new(
+        render Views::Polls::Export.new(
           poll: @poll, exporter: @exporter, recipient: @recipient
         )
       end

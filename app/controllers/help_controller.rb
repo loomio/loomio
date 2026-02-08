@@ -5,7 +5,7 @@ class HelpController < ApplicationController
 
   def api
     current_user.save if current_user.api_key_changed?
-    render Views::Web::Help::Api.new(
+    render Views::Help::Api.new(
       api_key: current_user.api_key,
       group_id: params[:group_id] || 123,
       email: current_user.email,
@@ -15,7 +15,7 @@ class HelpController < ApplicationController
 
   def api2
     current_user.save if current_user.api_key_changed?
-    render Views::Web::Help::Api2.new(
+    render Views::Help::Api2.new(
       api_key: current_user.api_key,
       group_id: params[:group_id] || 123,
       email: current_user.email,
@@ -25,6 +25,6 @@ class HelpController < ApplicationController
   end
 
   def api3
-    render Views::Web::Help::Api3.new(root_url: root_url)
+    render Views::Help::Api3.new(root_url: root_url)
   end
 end

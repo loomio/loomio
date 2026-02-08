@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::Web::Groups::ExportTable < Views::Web::Base
+class Views::Groups::ExportTable < Views::Base
   def initialize(name:, records:, fields:, exporter:)
     @name = name
     @records = records

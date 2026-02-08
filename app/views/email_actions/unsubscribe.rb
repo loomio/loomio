@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::Web::EmailActions::Unsubscribe < Views::Web::BasicLayout
+class Views::EmailActions::Unsubscribe < Views::BasicLayout
   include Phlex::Rails::Helpers::FormTag
   include Phlex::Rails::Helpers::OptionsForSelect
 

@@ -90,11 +90,11 @@ class ApplicationController < ActionController::Base
   end
 
   def crowdfunding
-    render Views::Web::Application::Crowdfunding.new
+    render Views::Application::Crowdfunding.new
   end
 
   def brand
-    render Views::Web::Application::Brand.new
+    render Views::Application::Brand.new
   end
 
   def bug_tunnel
@@ -154,7 +154,7 @@ class ApplicationController < ActionController::Base
   def boot_app(status: 200)
     expires_now
     prevent_caching
-    render Views::Web::BootApp.new(
+    render Views::BootApp.new(
       metadata: metadata, export: !!params[:export], bot: browser.bot?
     ), status: status
   end
