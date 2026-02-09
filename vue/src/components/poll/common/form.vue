@@ -53,6 +53,15 @@ const newDateOption = ref(startOfHour(setHours(new Date(), 12)));
 const minDate = ref(new Date());
 const closingAtWas = ref(null);
 
+const stvMethodItems = [
+  { title: I18n.global.t('poll_stv_form.method_scottish'), value: 'scottish' },
+  { title: I18n.global.t('poll_stv_form.method_meek'), value: 'meek' }
+];
+const stvQuotaItems = [
+  { title: I18n.global.t('poll_stv_form.quota_droop'), value: 'droop' },
+  { title: I18n.global.t('poll_stv_form.quota_hare'), value: 'hare' }
+];
+
 // Methods
 const validate = (field) => {
   return [ () => props.poll.errors[field] === undefined || props.poll.errors[field][0] ];
@@ -429,6 +438,28 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
         :max="poll.pollOptionNames.length"
         :rules="validate('minimumStanceChoices')"
       )
+
+  template(v-if="poll.pollType == 'stv'")
+    v-divider.my-4
+    p.mt-4.text-subtitle-1.mb-2(v-t="'poll_stv_form.settings_title'")
+    .text-body-2.pb-4.text-medium-emphasis(v-t="'poll_stv_form.settings_helptext'")
+    v-text-field.lmo-number-input(
+      v-model="poll.stvSeats"
+      :label="$t('poll_stv_form.seats_label')"
+      type="number"
+      :min="1"
+      :max="poll.pollOptionNames.length - 1"
+    )
+    v-select.mt-2(
+      v-model="poll.stvMethod"
+      :items="stvMethodItems"
+      :label="$t('poll_stv_form.method_label')"
+    )
+    v-select.mt-2(
+      v-model="poll.stvQuota"
+      :items="stvQuotaItems"
+      :label="$t('poll_stv_form.quota_label')"
+    )
 
   template(v-if="poll.pollType == 'dot_vote'")
     v-divider.my-4

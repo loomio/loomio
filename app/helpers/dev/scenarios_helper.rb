@@ -266,6 +266,12 @@ module Dev::ScenariosHelper
     )
     PollService.create(poll: poll, actor: actor)
     create_fake_stances(poll:poll)
+
+    if poll.poll_type == 'stv'
+      poll.stv_results = StvCountService.count(poll)
+      poll.save!
+    end
+
     outcome    = fake_outcome(poll: poll)
 
     OutcomeService.create(outcome: outcome, actor: actor, params: {recipient_emails: [observer.email]})
@@ -294,6 +300,12 @@ module Dev::ScenariosHelper
     )
     PollService.create(poll: poll, actor: actor)
     create_fake_stances(poll: poll)
+
+    if poll.poll_type == 'stv'
+      poll.stv_results = StvCountService.count(poll)
+      poll.save!
+    end
+
     outcome    = fake_outcome(poll: poll, author: poll.author, review_on: Date.today)
 
     Events::OutcomeReviewDue.publish!(outcome)

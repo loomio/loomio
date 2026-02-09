@@ -168,7 +168,8 @@ module Dev::FakeDataHelper
       dot_vote: options,
       meeting: option_count.times.map { |i| (seed+i).days.from_now.iso8601},
       ranked_choice: options,
-      score: options
+      score: options,
+      stv: options
     }.with_indifferent_access
   end
 
@@ -202,6 +203,11 @@ module Dev::FakeDataHelper
       options[:can_respond_maybe] = true
     when 'ranked_choice'
       options[:minimum_stance_choices] = 3
+    when 'stv'
+      options[:stv_seats] = 2
+      options[:stv_method] = 'scottish'
+      options[:stv_quota] = 'droop'
+      options[:minimum_stance_choices] = 1
     when 'score'
       options[:max_score] = 9
       options[:min_score] = 0
@@ -227,7 +233,7 @@ module Dev::FakeDataHelper
     case poll.poll_type
     when 'score'
       ((poll.min_score)..(poll.max_score)).to_a.sample
-    when 'ranked_choice'
+    when 'ranked_choice', 'stv'
       index + 1
     when 'meeting'
       if poll.can_respond_maybe

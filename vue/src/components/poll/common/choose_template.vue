@@ -72,7 +72,7 @@ export default {
             case 'proposal':
               return {pollType: {$in: ['proposal', 'question']}, discardedAt: null};
             case 'poll':
-              return {pollType: {$in: ['score', 'poll', 'ranked_choice', 'dot_vote']}, discardedAt: null};
+              return {pollType: {$in: ['score', 'poll', 'ranked_choice', 'dot_vote', 'stv']}, discardedAt: null};
             case 'meeting':
               return {pollType: {$in: ['meeting', 'count']}, discardedAt: null};
             case 'admin':

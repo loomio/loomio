@@ -11,6 +11,8 @@ module Views::Chatbot::Slack::Concerns
 
       if poll.poll_type == "meeting"
         render_meeting_table(poll)
+      elsif poll.poll_type == "stv"
+        render_stv_table(poll)
       else
         render_simple_table(poll)
       end

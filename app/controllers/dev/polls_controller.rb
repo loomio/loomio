@@ -144,22 +144,34 @@ class Dev::PollsController < Dev::NightwatchController
     options = {poll: %w[apple turnip peach],
                count: %w[yes no],
                proposal: %w[agree disagree abstain block],
-               dot_vote: %w[birds bees trees]}
+               dot_vote: %w[birds bees trees],
+               stv: %w[alice bob carol dave]}
 
     AppConfig.poll_types.keys.each do |poll_type|
-      poll = Poll.new(poll_type: poll_type,
-                      title: poll_type,
-                      details: 'fine print',
-                      poll_option_names: options[poll_type.to_sym],
-                      discussion: discussion)
+      attrs = {poll_type: poll_type,
+               title: poll_type,
+               details: 'fine print',
+               poll_option_names: options[poll_type.to_sym],
+               discussion: discussion}
+      if poll_type == 'stv'
+        attrs[:stv_seats] = 2
+        attrs[:stv_method] = 'scottish'
+        attrs[:stv_quota] = 'droop'
+      end
+      poll = Poll.new(attrs)
       PollService.create(poll: poll, actor: actor)
 
       # edit the poll
       PollService.update(poll: poll, params: {title: 'choose!'}, actor: actor)
 
       # vote on the poll
+      vote_choice = if %w[ranked_choice stv score dot_vote].include?(poll_type)
+        poll.poll_option_names.each_with_index.to_h { |name, i| [name, i + 1] }
+      else
+        poll.poll_option_names.first
+      end
       stance = Stance.new(poll: poll,
-                          choice: poll.poll_option_names.first,
+                          choice: vote_choice,
                           reason: 'democracy is in my shoes')
       StanceService.create(stance: stance, actor: actor)
 
@@ -171,11 +183,17 @@ class Dev::PollsController < Dev::NightwatchController
       OutcomeService.create(outcome: outcome, actor: actor)
 
       # create poll
-      poll = Poll.new(poll_type: poll_type,
-                      title: 'Which one?',
-                      details: 'fine print',
-                      poll_option_names: options[poll_type.to_sym],
-                      discussion: discussion)
+      attrs2 = {poll_type: poll_type,
+                title: 'Which one?',
+                details: 'fine print',
+                poll_option_names: options[poll_type.to_sym],
+                discussion: discussion}
+      if poll_type == 'stv'
+        attrs2[:stv_seats] = 2
+        attrs2[:stv_method] = 'scottish'
+        attrs2[:stv_quota] = 'droop'
+      end
+      poll = Poll.new(attrs2)
       PollService.create(poll: poll, actor: actor)
       poll.update_attribute(:closing_at, 1.day.ago)
 

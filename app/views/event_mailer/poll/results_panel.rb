@@ -16,6 +16,8 @@ class Views::EventMailer::Poll::ResultsPanel < Views::ApplicationMailer::Compone
           h3 { plain t(@poll.closed_at ? :'poll_common.results' : :'poll_common.current_results') }
           if @poll.poll_type == "meeting"
             render Views::EventMailer::Poll::Results::Meeting.new(poll: @poll, recipient: @current_user)
+          elsif @poll.poll_type == "stv"
+            render Views::EventMailer::Poll::Results::Stv.new(poll: @poll, recipient: @current_user)
           else
             render Views::EventMailer::Poll::Results::Simple.new(poll: @poll, recipient: @current_user)
           end

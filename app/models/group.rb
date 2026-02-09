@@ -357,7 +357,8 @@ class Group < ApplicationRecord
       'score' => 6,
       'dot_vote' => 7,
       'ranked_choice' => 8,
-      'meeting' => 9,
+      'stv' => 9,
+      'meeting' => 10,
     }
     self[:info]['poll_template_positions']
   end

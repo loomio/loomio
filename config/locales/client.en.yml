@@ -212,11 +212,14 @@ en:
     dot_vote: dot vote
     meeting: time poll
     ranked_choice: ranked choice
+    stv: STV election
     score: score poll
     question: question round
   timezones:
     local: Local time (%{value})
   common:
+    nonprofit: Nonprofit
+    commercial: Commercial
     value: "%{value}"
     admin_menu: Admin menu
     api_docs: API docs
@@ -1856,6 +1859,7 @@ en:
     dot_vote_title: Dot vote
     meeting_title: Time poll
     ranked_choice_title: Ranked choice
+    stv_title: STV Election
     gradients_of_agreement_title: Gradients of agreement
   poll_option_form:
     thumb_up: Thumb up
@@ -1929,6 +1933,7 @@ en:
     decision_templates: Decision templates
     remove_your_vote: Remove your vote
     remove_your_response: Remove your response
+    status: Status
     vote_now: Vote now
     review_due: Review due
     have_your_say: Have your say
@@ -2273,6 +2278,8 @@ en:
       allocate_hint: Voters allocate a budget of points between the options
       ranked_choice: Ranked choice
       ranked_choice_hint: Voters arrange options in order from most to least preferred
+      stv: STV Election
+      stv_hint: Elect multiple winners proportionally using Single Transferable Vote
       time_poll: Time poll
       time_poll_hint: Voters indicate when they are available to meet
     process: Process
@@ -2461,6 +2468,36 @@ en:
     helptext: Drag and drop options in order of preference (1 being your most preferred option). Your top %{count} choices will be recorded.
     stance_created: Choice recorded
     stance_updated: Choice updated
+  poll_stv_vote_form:
+    helptext: Drag and drop candidates in order of preference. Rank 1 is your most preferred. You may rank as many or as few as you like.
+    stance_created: Vote recorded
+    stance_updated: Vote updated
+  poll_stv_form:
+    settings_title: STV Election Settings
+    settings_helptext: Configure the number of seats to fill, counting method, and quota type for this election.
+    seats_label: Number of seats to fill
+    method_label: Counting method
+    method_scottish: Scottish STV (recommended)
+    method_meek: Meek STV
+    quota_label: Quota type
+    quota_droop: Droop quota (recommended)
+    quota_hare: Hare quota
+  poll_stv_results:
+    title: Election Results
+    elected: Elected
+    not_elected: Not elected
+    round: Round %{number}
+    quota_info: "%{method}, %{quota_type} quota (%{quota} votes needed)"
+    method_scottish: Scottish STV
+    method_meek: Meek STV
+    quota_droop: Droop
+    quota_hare: Hare
+    elected_in_round: Elected in round %{round}
+    eliminated_in_round: Eliminated in round %{round}
+    votes: votes
+    candidate: Candidate
+    view_full_results: View full results
+    results_available_when_closed: Results will be available when voting closes
   thread_item:
     new: new
     removed: Item removed

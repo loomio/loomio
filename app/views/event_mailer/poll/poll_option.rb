@@ -72,6 +72,12 @@ class Views::EventMailer::Poll::PollOption < Views::ApplicationMailer::Component
       else
         img(src: image_path("icons/checkbox-blank-outline-#{option_color}.png"), width: 24, height: 24, alt: display_name)
       end
+    when 'stv'
+      if score
+        div(class: "text-h6") { plain "##{@poll.poll_options.count - score + 1}" }
+      else
+        img(src: image_path("icons/checkbox-blank-outline-#{option_color}.png"), width: 24, height: 24, alt: display_name)
+      end
     when 'meeting'
       if score
         icon = { 0 => 'disagree', 1 => 'abstain', 2 => 'agree' }[score]
