@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::Groups::ExportTable < Views::Base
+class Views::Groups::ExportTable < Views::Application::Component
   def initialize(name:, records:, fields:, exporter:)
     @name = name
     @records = records

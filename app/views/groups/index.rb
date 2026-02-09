@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::Groups::Index < Views::ApplicationLayout
+class Views::Groups::Index < Views::Application::Layout
   def initialize(groups:, pages:, page:, **layout_args)
     super(**layout_args)
     @groups = groups

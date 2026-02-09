@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::Discussions::ThreadItems::StanceCreated < Views::Base
+class Views::Discussions::ThreadItems::StanceCreated < Views::Application::Component
   def initialize(item:, current_user:, kind: :created)
     @item = item
     @current_user = current_user

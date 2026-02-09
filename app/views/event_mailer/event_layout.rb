@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::EventMailer::EventLayout < Views::ApplicationMailer::Base
+class Views::EventMailer::EventLayout < Views::ApplicationMailer::Component
 
   def around_template(&)
     doctype

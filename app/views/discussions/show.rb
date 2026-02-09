@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::Discussions::Show < Views::ApplicationLayout
+class Views::Discussions::Show < Views::Application::Layout
   def initialize(discussion:, recipient:, pagination:, **layout_args)
     super(**layout_args)
     @discussion = discussion

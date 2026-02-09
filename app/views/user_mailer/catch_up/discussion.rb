@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::UserMailer::CatchUp::Discussion < Views::ApplicationMailer::Base
+class Views::UserMailer::CatchUp::Discussion < Views::ApplicationMailer::Component
   include PrettyUrlHelper
 
   THREAD_ITEM_KINDS = %w[new_comment new_vote stance_created discussion_closed discussion_edited poll_edited].freeze

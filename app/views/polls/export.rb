@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::Polls::Export < Views::Base
+class Views::Polls::Export < Views::Application::Component
   def initialize(poll:, exporter:, recipient:)
     @poll = poll
     @exporter = exporter

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::UserMailer::CatchUp::Headlines < Views::ApplicationMailer::Base
+class Views::UserMailer::CatchUp::Headlines < Views::ApplicationMailer::Component
   include PrettyUrlHelper
 
   def initialize(groups:, discussions_by_group_id:, recipient:, utm_hash:)

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::Groups::Export < Views::Base
+class Views::Groups::Export < Views::Application::Component
   def initialize(exporter:)
     @exporter = exporter
   end

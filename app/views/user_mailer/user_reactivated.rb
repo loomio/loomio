@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::UserMailer::UserReactivated < Views::ApplicationMailer::Base
+class Views::UserMailer::UserReactivated < Views::ApplicationMailer::Component
 
   def initialize(user:, token:, utm_hash:)
     @user = user

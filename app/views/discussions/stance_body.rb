@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::Discussions::StanceBody < Views::Base
+class Views::Discussions::StanceBody < Views::Application::Component
   def initialize(stance:, voter:, poll:, current_user:)
     @stance = stance
     @voter = voter

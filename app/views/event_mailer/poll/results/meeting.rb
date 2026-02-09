@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::EventMailer::Poll::Results::Meeting < Views::ApplicationMailer::Base
+class Views::EventMailer::Poll::Results::Meeting < Views::ApplicationMailer::Component
 
   def initialize(poll:, recipient:)
     @poll = poll

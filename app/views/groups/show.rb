@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::Groups::Show < Views::ApplicationLayout
+class Views::Groups::Show < Views::Application::Layout
   def initialize(group:, recipient:, **layout_args)
     super(**layout_args)
     @group = group

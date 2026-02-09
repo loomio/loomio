@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::ApplicationMailer::BaseLayout < Views::ApplicationMailer::Base
+class Views::ApplicationMailer::BaseLayout < Views::ApplicationMailer::Component
 
   def around_template(&)
     doctype

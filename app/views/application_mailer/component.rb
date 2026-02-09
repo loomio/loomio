@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class Views::Base < Components::Base
-  include PrettyUrlHelper
+class Views::ApplicationMailer::Component < Phlex::HTML
+  include Phlex::Rails::Helpers::Routes
   include PollHelper
   include FormattedDateHelper
   include Phlex::Rails::Helpers::T
@@ -11,6 +11,14 @@ class Views::Base < Components::Base
   include Phlex::Rails::Helpers::Sanitize
   include Phlex::Rails::Helpers::StyleSheetLinkTag
   include Phlex::Rails::Helpers::NumberToHumanSize
+  include EmailHelper
+
+  if Rails.env.development?
+    def before_template
+      comment { "Before #{self.class.name}" }
+      super
+    end
+  end
 
   def cache_store = Rails.cache
 

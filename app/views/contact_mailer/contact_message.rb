@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::ContactMailer::ContactMessage < Views::ApplicationMailer::Base
+class Views::ContactMailer::ContactMessage < Views::ApplicationMailer::Component
 
   def initialize(details:, body:)
     @details = details

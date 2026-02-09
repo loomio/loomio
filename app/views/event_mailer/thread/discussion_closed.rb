@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::EventMailer::Thread::DiscussionClosed < Views::ApplicationMailer::Base
+class Views::EventMailer::Thread::DiscussionClosed < Views::ApplicationMailer::Component
 
   def initialize(item:, recipient:)
     @item = item

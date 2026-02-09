@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::EventMailer::Common::Avatar < Views::ApplicationMailer::Base
+class Views::EventMailer::Common::Avatar < Views::ApplicationMailer::Component
 
   def initialize(user:, size: 36)
     @user = user

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::EventMailer::Poll::ResultsPanel < Views::ApplicationMailer::Base
+class Views::EventMailer::Poll::ResultsPanel < Views::ApplicationMailer::Component
 
   def initialize(poll:, current_user:)
     @poll = poll

@@ -154,7 +154,7 @@ class ApplicationController < ActionController::Base
   def boot_app(status: 200)
     expires_now
     prevent_caching
-    render Views::BootApp.new(
+    render Views::Application::Boot.new(
       metadata: metadata, export: !!params[:export], bot: browser.bot?
     ), status: status
   end

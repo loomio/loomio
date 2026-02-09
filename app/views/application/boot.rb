@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::BootApp < Views::Base
+class Views::Application::Boot < Views::Application::Component
   include ApplicationHelper
 
   def initialize(metadata: nil, export: false, bot: false)
