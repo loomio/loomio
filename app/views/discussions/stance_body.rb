@@ -195,6 +195,10 @@ class Views::Discussions::StanceBody < Views::Application::Component
     render_reason
   end
 
+  def render_stv
+    render_ranked_choice
+  end
+
   def render_count
     render_proposal
   end

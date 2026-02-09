@@ -172,6 +172,16 @@ ranked_choice:
   details_i18n: poll_templates.ranked_choice.details
   shuffle_options: true
 
+stv:
+  poll_type: stv
+  process_name_i18n: decision_tools_card.stv_title
+  process_subtitle_i18n: poll_templates.stv.process_subtitle
+  process_introduction_i18n: poll_templates.stv.process_introduction
+  title_placeholder_i18n: poll_templates.stv.title
+  details_i18n: poll_templates.stv.details
+  shuffle_options: true
+  default_duration_in_days: 7
+
 advice:
   poll_type: proposal
   process_name_i18n: decision_tools_card.advice_title

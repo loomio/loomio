@@ -110,6 +110,7 @@ export default {
   PollMeetingVoteForm: 'poll/meeting/vote_form',
   PollPollVoteForm: 'poll/poll/vote_form',
   PollRankedChoiceVoteForm: 'poll/ranked_choice/vote_form',
+  PollStvVoteForm: 'poll/stv/vote_form',
   PollReminderForm: 'poll/reminder_form',
   PollScoreVoteForm: 'poll/score/vote_form',
   RevisionHistoryContent: 'revision_history/content',
