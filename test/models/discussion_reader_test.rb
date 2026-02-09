@@ -2,13 +2,11 @@ require 'test_helper'
 
 class DiscussionReaderTest < ActiveSupport::TestCase
   setup do
-    @user = users(:normal_user)
+    @user = users(:discussion_author)
     @other_user = users(:another_user)
     @group = groups(:test_group)
-    @group.add_admin!(@user)
-    @group.add_member!(@other_user)
 
-    @discussion = create_discussion(group: @group, author: @user)
+    @discussion = discussions(:test_discussion)
     @membership = @user.memberships.find_by(group: @group)
     @membership.update!(volume: :normal)
     @reader = DiscussionReader.for(user: @user, discussion: @discussion)

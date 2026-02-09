@@ -2,9 +2,9 @@ require 'test_helper'
 
 class OutcomeServiceTest < ActiveSupport::TestCase
   setup do
-    @user = users(:normal_user)
+    @user = users(:discussion_author)
     @group = groups(:test_group)
-    @discussion = create_discussion(group: @group, author: @user)
+    @discussion = discussions(:test_discussion)
 
     @poll = Poll.new(
       title: "Test Poll",
@@ -28,7 +28,6 @@ class OutcomeServiceTest < ActiveSupport::TestCase
       statement: "New outcome"
     )
 
-    @group.add_member!(@user)
     ActionMailer::Base.deliveries.clear
   end
 

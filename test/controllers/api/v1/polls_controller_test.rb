@@ -2,20 +2,18 @@ require 'test_helper'
 
 class Api::V1::PollsControllerTest < ActionController::TestCase
   setup do
-    @user = users(:normal_user)
+    @user = users(:discussion_author)
     @another_user = users(:another_user)
     @group = groups(:test_group)
-
-    @group.add_member!(@user)
+    @discussion = discussions(:test_discussion)
   end
 
   # Show tests
   test "show displays a poll" do
-    discussion = create_discussion(group: @group, author: @user)
     poll = Poll.new(
       title: "POLL!",
       poll_type: "proposal",
-      discussion: discussion,
+      discussion: @discussion,
       author: @user,
       poll_option_names: ["Yes", "No"]
     )
@@ -32,11 +30,10 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
 
   # Index tests
   test "index responds successfully" do
-    discussion = create_discussion(group: @group, author: @user)
     poll = Poll.new(
       title: "POLL!",
       poll_type: "proposal",
-      discussion: discussion,
+      discussion: @discussion,
       author: @user,
       poll_option_names: ["Yes", "No"]
     )
@@ -49,7 +46,6 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
 
   # Create tests
   test "create creates a poll in discussion" do
-    discussion = create_discussion(group: @group, author: @user)
     sign_in @user
 
     assert_difference 'Poll.count', 1 do
@@ -58,7 +54,7 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
           title: "hello",
           poll_type: "proposal",
           details: "is it me you're looking for?",
-          discussion_id: discussion.id,
+          discussion_id: @discussion.id,
           options: ["agree", "abstain", "disagree", "block"],
           closing_at: 3.days.from_now.at_beginning_of_hour
         }
@@ -68,18 +64,17 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
     assert_response :success
     poll = Poll.last
     assert_equal "hello", poll.title
-    assert_equal discussion, poll.discussion
+    assert_equal @discussion, poll.discussion
     assert_equal @user, poll.author
     assert_includes poll.admins, @user
   end
 
   # Discard tests
   test "discard allows poll author to discard" do
-    discussion = create_discussion(group: @group, author: @user)
     poll = Poll.new(
       title: "discardable",
       poll_type: "proposal",
-      discussion: discussion,
+      discussion: @discussion,
       author: @user,
       poll_option_names: ["Yes", "No"]
     )
@@ -96,18 +91,15 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
 
   # Close tests
   test "close closes an open poll" do
-    discussion = create_discussion(group: @group, author: @user)
     poll = Poll.new(
       title: "closeable",
       poll_type: "proposal",
-      discussion: discussion,
+      discussion: @discussion,
       author: @user,
       poll_option_names: ["Yes", "No"],
       closing_at: 5.days.from_now
     )
     PollService.create(poll: poll, actor: @user)
-
-    @group.add_admin!(@user)
 
     sign_in @user
     post :close, params: { id: poll.id }

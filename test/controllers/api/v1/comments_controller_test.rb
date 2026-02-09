@@ -2,12 +2,10 @@ require 'test_helper'
 
 class Api::V1::CommentsControllerTest < ActionController::TestCase
   setup do
-    @user = users(:normal_user)
+    @user = users(:discussion_author)
     @another_user = users(:another_user)
     @group = groups(:test_group)
-    @discussion = create_discussion(group: @group, author: @user)
-    @group.add_member!(@user) unless @group.members.include?(@user)
-    @group.add_member!(@another_user) unless @group.members.include?(@another_user)
+    @discussion = discussions(:test_discussion)
 
     @comment = Comment.new(discussion: @discussion, author: @user, body: "Original comment")
     CommentService.create(comment: @comment, actor: @user)

@@ -2,16 +2,14 @@ require 'test_helper'
 
 class Api::V1::EventsControllerTest < ActionController::TestCase
   setup do
-    @user = users(:normal_user)
+    @user = users(:discussion_author)
     @another_user = users(:another_user)
     @group = groups(:test_group)
     @public_group = groups(:public_group)
 
-    @group.add_admin!(@user)
-    @group.add_member!(@another_user)
     @public_group.add_admin!(@user)
 
-    @discussion = create_discussion(group: @group, author: @user, private: true)
+    @discussion = discussions(:test_discussion)
     @public_discussion = create_discussion(group: @public_group, author: @user, private: false)
   end
 

@@ -2,12 +2,10 @@ require 'test_helper'
 
 class CommentServiceTest < ActiveSupport::TestCase
   setup do
-    @user = users(:normal_user)
+    @user = users(:discussion_author)
     @another_user = users(:another_user)
     @group = groups(:test_group)
-    @group.add_member!(@user) unless @group.members.include?(@user)
-    @group.add_member!(@another_user) unless @group.members.include?(@another_user)
-    @discussion = create_discussion(group: @group, author: @user)
+    @discussion = discussions(:test_discussion)
   end
 
   test "creates a comment and returns an event" do

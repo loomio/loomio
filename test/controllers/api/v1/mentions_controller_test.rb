@@ -2,26 +2,25 @@ require 'test_helper'
 
 class Api::V1::MentionsControllerTest < ActionController::TestCase
   test "returns redirect when signed out" do
-    user = users(:normal_user)
-    discussion = create_discussion(author: user, group: groups(:test_group))
-    
+    discussion = discussions(:test_discussion)
+
     get :index, params: { discussion_id: discussion.id }
     assert_response :redirect
   end
 
   test "returns something when signed in" do
-    user = users(:normal_user)
-    discussion = create_discussion(author: user, group: groups(:test_group))
-    
+    user = users(:discussion_author)
+    discussion = discussions(:test_discussion)
+
     sign_in user
     get :index, params: { discussion_id: discussion.id }
     assert_response :success
   end
 
   test "returns groups" do
-    user = users(:normal_user)
+    user = users(:discussion_author)
     group = groups(:test_group)
-    discussion = create_discussion(author: user, group: group)
+    discussion = discussions(:test_discussion)
     
     sign_in user
     get :index, params: { discussion_id: discussion.id }
@@ -54,9 +53,9 @@ class Api::V1::MentionsControllerTest < ActionController::TestCase
   end
 
   test "returns users" do
-    user = users(:normal_user)
-    author = users(:discussion_author)
-    
+    user = users(:discussion_author)
+    another_user = users(:another_user)
+
     # Create a user that is NOT a member
     other_user = User.create!(
       name: "Other User",
@@ -65,20 +64,18 @@ class Api::V1::MentionsControllerTest < ActionController::TestCase
       encrypted_password: "$2a$12$K3E5h0VGlqmXL8HqWw7mIe3qP0XjQSfZ1jK4PqYX7Qq5N9YK6L4/K",
       email_verified: true
     )
-    
-    group = groups(:test_group)
-    group.add_member! author unless group.members.include?(author)
-    discussion = create_discussion(author: author, group: group)
-    
-    sign_in user
+
+    discussion = discussions(:test_discussion)
+
+    sign_in another_user
     get :index, params: { discussion_id: discussion.id }
     assert_response :success
-    
+
     rows = JSON.parse(response.body)
     handles = rows.map { |row| row['handle'] }
-    
+
+    assert_includes handles, another_user.username
     assert_includes handles, user.username
-    assert_includes handles, author.username
     refute_includes handles, other_user.username
   end
 
