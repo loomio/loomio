@@ -32,6 +32,9 @@ module ResetDatabaseHelper
       versions
       webhooks
     ]
-    ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{tables.join(', ')} CASCADE")
+    conn = ActiveRecord::Base.connection
+    conn.execute("SET session_replication_role = 'replica'")
+    tables.each { |t| conn.execute("DELETE FROM #{t}") }
+    conn.execute("SET session_replication_role = 'origin'")
   end
 end

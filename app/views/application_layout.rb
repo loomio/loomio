@@ -15,7 +15,7 @@ class Views::ApplicationLayout < Views::Base
       head { render_head }
       body do
         div(id: "app", data_v_app: true) do
-          div(class: "v-theme--auto v-application v-layout v-layout--full-height v-locale--is-ltr app-is-booted") do
+          div(class: "v-theme--auto v-application v-layout v-layout--full-height v-locale--is-ltr") do
             div(class: "v-application__wrap") do
               render_navbar
               super(&)

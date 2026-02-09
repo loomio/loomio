@@ -319,7 +319,7 @@ module.exports = {
   'can_invite_non_member_to_anonymous_proposal_in_a_group': (test) => {
     page = pageHelper(test)
 
-    page.loadPathNoApp('polls/test_poll_scenario?poll_type=proposal&scenario=poll_created&email=1&anonymous=1&guest=1')
+    page.loadPathNoApp('polls/test_poll_scenario.email?poll_type=proposal&scenario=poll_created&anonymous=1&guest=1')
     page.click('.event-mailer__title a')
     page.pause(1000)
     page.click('.poll-common-vote-form__button-text')

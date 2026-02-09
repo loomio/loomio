@@ -36,13 +36,10 @@ class DiscussionTest < ActiveSupport::TestCase
 
   # Versioning
   test "creates a new version when description is edited" do
-    PaperTrail.enabled = true
     discussion = create_discussion(group: @group, author: @user)
     version_count = discussion.versions.count
     discussion.update_attribute(:description, "new description")
     assert_equal version_count + 1, discussion.versions.count
-  ensure
-    PaperTrail.enabled = false
   end
 
   # Privacy validation

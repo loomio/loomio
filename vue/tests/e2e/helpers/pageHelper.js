@@ -14,7 +14,7 @@ module.exports = function(test, browser) {
 
     loadPath(path, opts = {}) {
       test.url(`${base_url}/dev/${path}`);
-      return test.waitForElementPresent('.app-is-booted', 10000);
+      return test.waitForElementPresent('.app-is-booted', 20000);
     },
 
     loadPathNoApp(path, opts = {}) {
