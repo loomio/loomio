@@ -18,7 +18,7 @@ const authUrl = (process.env.PRIVATE_APP_URL ||
                  process.env.PUBLIC_APP_URL ||
                 `https://${process.env.CANONICAL_HOST}`) + '/api/hocuspocus'
 
-const port = (process.env.RAILS_ENV == 'production') ? 5000 : 4444
+const port = (process.env.RAILS_ENV == 'production') ? 80 : 4444
 
 console.info("hocuspocus auth authUrl: ", authUrl);
 

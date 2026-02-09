@@ -17,7 +17,7 @@ COPY config ./config
 WORKDIR /build/vue
 
 # Build Vite assets
-RUN npm run build
+RUN NODE_OPTIONS=--max-old-space-size=2048 npm run build
 
 # Install hocuspocus dependencies
 WORKDIR /build/hocuspocus
