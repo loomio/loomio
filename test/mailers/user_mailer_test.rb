@@ -24,7 +24,7 @@ class UserMailerTest < ActionMailer::TestCase
     membership = @group.add_member!(@user)
     event = Events::MembershipRequestApproved.create!(kind: 'membership_request_approved', user: @user, eventable: membership)
     mail = UserMailer.membership_request_approved(@user.id, event.id)
-    assert_includes mail.from, BaseMailer::NOTIFICATIONS_EMAIL_ADDRESS
+    assert_includes mail.from, ApplicationMailer::NOTIFICATIONS_EMAIL_ADDRESS
   end
 
   test "membership_request_approved assigns correct reply_to" do

@@ -2,12 +2,10 @@ require 'test_helper'
 
 class TaskServiceTest < ActiveSupport::TestCase
   setup do
-    @member = users(:normal_user)
+    @member = users(:discussion_author)
     @member.update(username: 'sam', name: 'Sam Sammy')
     @group = groups(:test_group)
-    @group.add_member!(@member) unless @group.members.include?(@member)
-    @discussion = create_discussion(group: @group, author: @member)
-    ActionMailer::Base.deliveries.clear
+    @discussion = discussions(:test_discussion)
   end
 
   test "parses a simple task from HTML" do

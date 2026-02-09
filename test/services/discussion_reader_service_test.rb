@@ -3,13 +3,10 @@ require 'test_helper'
 class DiscussionReaderServiceTest < ActiveSupport::TestCase
   setup do
     @group = groups(:test_group)
-    @discussion = create_discussion(group: @group, author: users(:normal_user))
-    @user = users(:normal_user)
+    @user = users(:discussion_author)
     @member = users(:another_user)
+    @discussion = discussions(:test_discussion)
     @guest = User.create(email: "guest@example.com", email_verified: false, username: "guest123")
-
-    @group.add_member!(@user)
-    @group.add_member!(@member)
 
     @guest_discussion_reader = DiscussionReader.create(
       discussion: @discussion,

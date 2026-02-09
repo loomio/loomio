@@ -2,18 +2,15 @@ require 'test_helper'
 
 class ReactionServiceTest < ActiveSupport::TestCase
   setup do
-    @user = users(:normal_user)
+    @user = users(:discussion_author)
     @another_user = users(:another_user)
     @group = groups(:test_group)
-    @discussion = create_discussion(group: @group, author: @user)
+    @discussion = discussions(:test_discussion)
     @comment = Comment.create(
       discussion: @discussion,
       author: @user,
       body: "test comment"
     )
-
-    @group.add_member!(@user)
-    @group.add_member!(@another_user)
 
     @reaction = Reaction.new(
       reaction: ":heart:",

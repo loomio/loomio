@@ -2,8 +2,8 @@ require 'test_helper'
 
 class Api::V1::ReactionsControllerTest < ActionController::TestCase
   test "create likes the comment when authorized" do
-    user = users(:normal_user)
-    discussion = create_discussion(author: user, group: groups(:test_group))
+    user = users(:discussion_author)
+    discussion = discussions(:test_discussion)
     comment = Comment.new(
       body: "Test comment",
       discussion: discussion,
@@ -24,7 +24,7 @@ class Api::V1::ReactionsControllerTest < ActionController::TestCase
 
   test "create responds with error when user is unauthorized" do
     author = users(:discussion_author)
-    discussion = create_discussion(author: author, group: groups(:test_group))
+    discussion = discussions(:test_discussion)
     comment = Comment.new(
       body: "Test comment",
       discussion: discussion,
@@ -54,9 +54,9 @@ class Api::V1::ReactionsControllerTest < ActionController::TestCase
   end
 
   test "index fetches reactions for multiple records at once" do
-    user = users(:normal_user)
+    user = users(:discussion_author)
     group = groups(:test_group)
-    discussion = create_discussion(author: user, group: group)
+    discussion = discussions(:test_discussion)
     
     comment = Comment.new(body: "Test comment", discussion: discussion, author: user)
     CommentService.create(comment: comment, actor: user)
@@ -95,7 +95,7 @@ class Api::V1::ReactionsControllerTest < ActionController::TestCase
 
   test "index denies access correctly" do
     author = users(:discussion_author)
-    discussion = create_discussion(author: author, group: groups(:test_group))
+    discussion = discussions(:test_discussion)
     
     comment = Comment.new(body: "Test comment", discussion: discussion, author: author)
     CommentService.create(comment: comment, actor: author)

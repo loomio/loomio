@@ -2,14 +2,13 @@ require 'test_helper'
 
 class DiscussionTest < ActiveSupport::TestCase
   setup do
-    @user = users(:normal_user)
+    @user = users(:discussion_author)
     @group = groups(:test_group)
-    @group.add_admin!(@user)
   end
 
   # Guests
   test "returns a guest who has never been a member" do
-    discussion = create_discussion(group: @group, author: @user)
+    discussion = discussions(:test_discussion)
     guest = User.create!(name: "Guest #{SecureRandom.hex(4)}", email: "guest_#{SecureRandom.hex(4)}@test.com", email_verified: true)
     discussion.add_guest!(guest, @user)
     assert_includes discussion.guests, guest
@@ -17,7 +16,7 @@ class DiscussionTest < ActiveSupport::TestCase
   end
 
   test "does not return a member as guest" do
-    discussion = create_discussion(group: @group, author: @user)
+    discussion = discussions(:test_discussion)
     guest = User.create!(name: "Guest #{SecureRandom.hex(4)}", email: "guest_#{SecureRandom.hex(4)}@test.com", email_verified: true)
     @group.add_member!(guest)
     discussion.add_guest!(guest, @user)
@@ -25,7 +24,7 @@ class DiscussionTest < ActiveSupport::TestCase
   end
 
   test "returns a guest who was previously a member" do
-    discussion = create_discussion(group: @group, author: @user)
+    discussion = discussions(:test_discussion)
     guest = User.create!(name: "Guest #{SecureRandom.hex(4)}", email: "guest_#{SecureRandom.hex(4)}@test.com", email_verified: true)
     membership = @group.add_member!(guest)
     MembershipService.revoke(membership: membership, actor: @user)
@@ -36,13 +35,10 @@ class DiscussionTest < ActiveSupport::TestCase
 
   # Versioning
   test "creates a new version when description is edited" do
-    PaperTrail.enabled = true
-    discussion = create_discussion(group: @group, author: @user)
+    discussion = discussions(:test_discussion)
     version_count = discussion.versions.count
     discussion.update_attribute(:description, "new description")
     assert_equal version_count + 1, discussion.versions.count
-  ensure
-    PaperTrail.enabled = false
   end
 
   # Privacy validation

@@ -1,0 +1,5 @@
+test_discussion_created_event:
+  kind: new_discussion
+  eventable_type: Discussion
+  eventable_id: <%= ActiveRecord::FixtureSet.identify(:test_discussion) %>
+  user: discussion_author

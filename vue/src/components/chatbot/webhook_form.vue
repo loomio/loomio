@@ -45,7 +45,7 @@ export default {
 
     testConnection() {
       this.testing = true;
-      Records.remote.post('chatbots/test', {
+      Records.remote.post('chatbots/check', {
         server: this.chatbot.server,
         kind: 'slack_webhook'
       }).finally(() => {

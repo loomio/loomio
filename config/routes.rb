@@ -67,7 +67,7 @@ Rails.application.routes.draw do
       resources :attachments, only: [:index, :destroy]
       resources :webhooks, only: [:create, :destroy, :index, :update]
       resources :chatbots, only: [:create, :destroy, :index, :update] do
-        post :test, on: :collection
+        post :check, on: :collection
       end
 
       resources :boot, only: [] do

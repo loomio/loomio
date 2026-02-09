@@ -2,6 +2,7 @@ ENV["RAILS_ENV"] ||= "test"
 require_relative "../config/environment"
 require "rails/test_help"
 require "webmock/minitest"
+require_relative "./reset_database_helper"
 
 # Configure WebMock
 WebMock.disable_net_connect!(allow_localhost: true)
@@ -16,11 +17,15 @@ module ActiveSupport
     # Run tests in parallel with specified workers
     # parallelize(workers: :number_of_processors)
 
+    # Add more helper methods to be used by all tests here...
+    include ActiveSupport::Testing::TimeHelpers
+
+    # Clean stale data from previous test runs (e.g. e2e tests, interrupted runs)
+    ResetDatabaseHelper.reset_database
+
     # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
     fixtures :all
 
-    # Add more helper methods to be used by all tests here...
-    include ActiveSupport::Testing::TimeHelpers
 
     # Helper to create a discussion with proper setup
     def create_discussion(**args)
@@ -30,16 +35,16 @@ module ActiveSupport
         description_format: "html",
         private: true
       }.merge(args))
-      
+
       # Set defaults if not provided
       discussion.author ||= users(:discussion_author)
       discussion.group ||= groups(:test_group)
-      
+
       # Ensure author is a member of the group
       unless discussion.group.members.include?(discussion.author)
         discussion.group.add_member!(discussion.author)
       end
-      
+
       DiscussionService.create(discussion: discussion, actor: discussion.author)
       discussion
     end
@@ -57,10 +62,11 @@ module ActiveSupport
       last_email.parts[1].body
     end
 
+
     # Setup common stubs before each test
     setup do
       ActionMailer::Base.deliveries.clear
-      
+
       # Stub external API calls
       WebMock.stub_request(:get, /\.chargifypay.com/).
         to_return(status: 200, body: '{"subscription":{"product":{"handle":"test-handle"}}}', headers: {})

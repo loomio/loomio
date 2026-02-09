@@ -6,7 +6,7 @@ class Metadata::PollSerializer < MetadataSerializer
   end
 
   def description
-    force_plain_text(object.details, object.details_format)
+    MarkdownService.render_plain_text(object.details, object.details_format)
   end
 
   def image_urls

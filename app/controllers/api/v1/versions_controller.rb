@@ -1,6 +1,8 @@
 class Api::V1::VersionsController < Api::V1::RestfulController
   def show
     self.resource = model.versions[params[:index].to_i]
+    raise ActiveRecord::RecordNotFound unless self.resource.present?
+
     respond_with_resource
   end
 

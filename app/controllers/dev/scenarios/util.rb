@@ -11,21 +11,4 @@ module Dev::Scenarios::Util
 
   private
 
-  def cleanup_database
-    reset_session
-    tables = %w[
-      stance_receipts omniauth_identities users groups memberships polls outcomes
-      events discussions stances stance_choices poll_options tasks
-      discussion_readers discussion_templates poll_templates
-    ]
-    retries = 0
-    begin
-      ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{tables.join(', ')} CASCADE")
-    rescue ActiveRecord::Deadlocked
-      retries += 1
-      retry if retries < 3
-      raise
-    end
-    ::ActionMailer::Base.deliveries = []
-  end
 end

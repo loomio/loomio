@@ -2,10 +2,9 @@ require 'test_helper'
 
 class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
   setup do
-    @user = users(:normal_user)
+    @user = users(:discussion_author)
     @another_user = users(:another_user)
     @group = groups(:test_group)
-    @group.add_admin!(@user) unless @group.members.include?(@user)
     sign_in @user
   end
 
@@ -16,7 +15,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     @group.add_member!(member)
     @group.add_member!(@user)
 
-    discussion = create_discussion(group: @group, author: @user)
+    discussion = discussions(:test_discussion)
 
     get :count, params: {
       recipient_emails_cmr: ['bill@example.com', 'new@example.com'].join(','),
@@ -220,7 +219,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
 
   # Discussion announcement tests
   test "discussion create members can add guests when permission enabled" do
-    discussion = create_discussion(group: @group, author: @user)
+    discussion = discussions(:test_discussion)
 
     discussion.group.update(members_can_add_guests: true)
     Membership.find_by(user_id: @user.id, group_id: @group.id).update(admin: false)
@@ -230,7 +229,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
   end
 
   test "discussion create members cannot add guests when permission disabled" do
-    discussion = create_discussion(group: @group, author: @user)
+    discussion = discussions(:test_discussion)
 
     discussion.group.update(members_can_add_guests: false)
     Membership.find_by(user_id: @user.id, group_id: @group.id).update(admin: false)
@@ -240,7 +239,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
   end
 
   test "discussion create members can announce when permission enabled" do
-    discussion = create_discussion(group: @group, author: @user)
+    discussion = discussions(:test_discussion)
 
     discussion.group.update(members_can_announce: true)
     Membership.find_by(user_id: @user.id, group_id: @group.id).update(admin: false)
@@ -250,7 +249,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
   end
 
   test "discussion create members cannot announce when permission disabled" do
-    discussion = create_discussion(group: @group, author: @user)
+    discussion = discussions(:test_discussion)
 
     discussion.group.update(members_can_announce: false)
     Membership.find_by(user_id: @user.id, group_id: @group.id).update(admin: false)
@@ -263,7 +262,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     member = User.create!(name: 'member', email: 'member@example.com', username: 'member1234')
     @group.add_member!(member)
 
-    discussion = create_discussion(group: @group, author: @user)
+    discussion = discussions(:test_discussion)
 
     @group.update(members_can_announce: false, members_can_add_guests: false)
     Membership.find_by(user_id: @user.id, group_id: @group.id).update(admin: true)
@@ -280,7 +279,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
   test "discussion create as admin cannot add non_member" do
     non_member = User.create!(name: 'non_member', email: 'non@example.com', username: 'nonmember1234')
 
-    discussion = create_discussion(group: @group, author: @user)
+    discussion = discussions(:test_discussion)
 
     @group.update(members_can_announce: false, members_can_add_guests: false)
     Membership.find_by(user_id: @user.id, group_id: @group.id).update(admin: true)
@@ -296,7 +295,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     member = User.create!(name: 'member', email: 'member@example.com', username: 'member1234')
     @group.add_member!(member)
 
-    discussion = create_discussion(group: @group, author: @user)
+    discussion = discussions(:test_discussion)
 
     @group.update(members_can_announce: false, members_can_add_guests: false)
     Membership.find_by(user_id: @user.id, group_id: @group.id).update(admin: true)

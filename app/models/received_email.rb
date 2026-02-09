@@ -55,7 +55,7 @@ class ReceivedEmail < ApplicationRecord
   end
 
   def sent_to_notifications_address?
-    recipient_emails.map(&:downcase).include?(BaseMailer::NOTIFICATIONS_EMAIL_ADDRESS.downcase)
+    recipient_emails.map(&:downcase).include?(ApplicationMailer::NOTIFICATIONS_EMAIL_ADDRESS.downcase)
   end
 
   def body_format
@@ -122,7 +122,7 @@ class ReceivedEmail < ApplicationRecord
 
   def complainer_address
     return nil unless attachments.first
-    @complainer_address ||= attachments.first.download.scan(AppConfig::EMAIL_REGEX).flatten.uniq.reject {|e| e.downcase == BaseMailer::NOTIFICATIONS_EMAIL_ADDRESS.downcase }.first
+    @complainer_address ||= attachments.first.download.scan(AppConfig::EMAIL_REGEX).flatten.uniq.reject {|e| e.downcase == ApplicationMailer::NOTIFICATIONS_EMAIL_ADDRESS.downcase }.first
   rescue ActiveStorage::FileNotFoundError
     nil
   end
