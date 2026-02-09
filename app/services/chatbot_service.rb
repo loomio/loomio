@@ -23,7 +23,7 @@ class ChatbotService
     event = Event.find(event_id)
     event.reload
     return if event.eventable.nil?
-    
+
     chatbots = event.eventable.group.chatbots
 
     CACHE_REDIS_POOL.with do |client|
@@ -69,6 +69,7 @@ class ChatbotService
 
   MATRIX_COMPONENTS = {
     'poll'         => Views::Chatbot::Matrix::Poll,
+    'comment'      => Views::Chatbot::Matrix::Comment,
     'discussion'   => Views::Chatbot::Matrix::Discussion,
     'notification' => Views::Chatbot::Matrix::Notification
   }.freeze
