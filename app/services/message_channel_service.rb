@@ -15,18 +15,20 @@ class MessageChannelService
   end
 
   def self.publish_serialized_records(data, group_id: nil, user_id: nil)
-    CACHE_REDIS_POOL.with do |client|
-      room = "user-#{user_id}" if user_id
-      room = "group-#{group_id}" if group_id
-      client.publish("/records", {room: room, records: data}.to_json)
+    payload = {records: data}
+
+    if user_id
+      ActionCable.server.broadcast("user_#{user_id}", payload)
+    elsif group_id
+      ActionCable.server.broadcast("group_#{group_id}", payload)
     end
   end
 
   def self.publish_system_notice(notice, reload = false)
-    CACHE_REDIS_POOL.with do |client|
-      client.publish("/system_notice", {version: Version.current,
-                                        notice: notice,
-                                        reload: reload}.to_json)
-    end
+    ActionCable.server.broadcast("notice", {
+      version: Version.current,
+      notice: notice,
+      reload: reload
+    })
   end
 end
