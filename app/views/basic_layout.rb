@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 class Views::BasicLayout < Views::Application::Component
-  def initialize(flash: {}, footer: nil)
+  def initialize(flash: {})
     @flash = flash
-    @footer = footer
   end
 
   def around_template(&)
@@ -22,9 +21,6 @@ class Views::BasicLayout < Views::Application::Component
           end
         end
         super(&)
-        if @footer
-          footer { raw @footer }
-        end
       end
     end
   end
