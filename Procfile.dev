@@ -1,0 +1,4 @@
+web:        bundle exec puma -C config/puma.rb
+#worker:     bundle exec sidekiq
+hocuspocus: node hocuspocus/server.mjs
+vite:       cd vue && npm run serve
