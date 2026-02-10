@@ -19,8 +19,10 @@ class IdentityService
     uid = identity_params[:uid]
     email = identity_params[:email]
 
-    # Find or create identity by uid (the immutable SSO identifier)
-    identity = Identity.find_by(identity_type: identity_type, uid: uid)
+    # Find existing identity by uid, preferring one already linked to a user.
+    # This matters because legacy code created orphan duplicates on every login.
+    identity = Identity.with_user.find_by(identity_type: identity_type, uid: uid) ||
+               Identity.find_by(identity_type: identity_type, uid: uid)
 
     if identity
       # Existing identity found - update its attributes (email/name may have changed in SSO)
