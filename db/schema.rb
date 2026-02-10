@@ -656,8 +656,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_10_005017) do
     t.integer "counter", default: 0
   end
 
-  create_table "pg_search_documents", id: false, force: :cascade do |t|
-    t.bigserial "id", null: false
+  create_table "pg_search_documents", force: :cascade do |t|
     t.text "content"
     t.tsvector "ts_content"
     t.bigint "author_id"
@@ -669,6 +668,14 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_10_005017) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "authored_at"
+    t.index ["author_id"], name: "index_pg_search_documents_on_author_id"
+    t.index ["authored_at"], name: "pg_search_documents_authored_at_asc_index"
+    t.index ["authored_at"], name: "pg_search_documents_authored_at_desc_index", order: :desc
+    t.index ["discussion_id"], name: "index_pg_search_documents_on_discussion_id"
+    t.index ["group_id"], name: "index_pg_search_documents_on_group_id"
+    t.index ["poll_id"], name: "index_pg_search_documents_on_poll_id"
+    t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable"
+    t.index ["ts_content"], name: "pg_search_documents_searchable_index", using: :gin
   end
 
   create_table "poll_options", id: :serial, force: :cascade do |t|
