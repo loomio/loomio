@@ -42,6 +42,7 @@ class DeduplicateIdentitiesAndAddUniqueIndex < ActiveRecord::Migration[7.0]
     SQL
 
     # Step 4: Prevent future duplicates
+    remove_index :omniauth_identities, [:identity_type, :uid], if_exists: true
     add_index :omniauth_identities, [:identity_type, :uid], unique: true
   end
 
