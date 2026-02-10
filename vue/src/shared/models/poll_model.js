@@ -50,6 +50,8 @@ export default class PollModel extends BaseModel {
       title: '',
       titlePlaceholder: null,
       closingAt: null,
+      openingAt: null,
+      openedAt: null,
       customize: false,
       details: '',
       detailsFormat: 'html',
@@ -340,8 +342,12 @@ export default class PollModel extends BaseModel {
     }).data();
   }
 
+  isOpened() {
+    return !!this.openedAt;
+  }
+
   isVotable() {
-    return !this.discardedAt && this.closingAt && (this.closedAt == null);
+    return !this.discardedAt && this.closingAt && (this.closedAt == null) && this.isOpened();
   }
 
   isClosed() {

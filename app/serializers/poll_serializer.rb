@@ -10,6 +10,8 @@ class PollSerializer < ApplicationSerializer
              :chart_column,
              :closed_at,
              :closing_at,
+             :opening_at,
+             :opened_at,
              :created_at,
              :content_locale,
              :cast_stances_pct,

@@ -16,10 +16,13 @@ class PollService
         stances = Stance.none
       end
 
-      user_ids = params[:notify_recipients] ? stances.pluck(:participant_id) : []
-
       EventBus.broadcast('poll_create', poll, actor)
-      Events::PollCreated.publish!(poll, actor, recipient_user_ids: user_ids - [actor.id])
+      Events::PollCreated.publish!(poll, actor)
+
+      if poll.opening_at.nil? || poll.opening_at <= Time.now
+        poll.update_column(:opened_at, Time.now)
+        Events::PollOpened.publish!(poll)
+      end
     end
   end
 
@@ -240,6 +243,16 @@ class PollService
     this_hour_tomorrow = hour_start..hour_finish
     Poll.closing_soon_not_published(this_hour_tomorrow).each do |poll|
       Events::PollClosingSoon.publish!(poll)
+    end
+  end
+
+  def self.open_polls
+    Poll.kept
+        .where(opened_at: nil)
+        .where("opening_at IS NOT NULL AND opening_at <= ?", Time.now)
+        .each do |poll|
+      poll.update_column(:opened_at, Time.now)
+      Events::PollOpened.publish!(poll)
     end
   end
 

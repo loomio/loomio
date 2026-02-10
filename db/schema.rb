@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_02_10_005017) do
+ActiveRecord::Schema[8.0].define(version: 2026_02_10_022241) do
   create_schema "pghero"
 
   # These are extensions that must be enabled in order to support this database
@@ -801,6 +801,8 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_10_005017) do
     t.boolean "show_none_of_the_above", default: false, null: false
     t.integer "none_of_the_above_count", default: 0, null: false
     t.integer "quorum_pct"
+    t.datetime "opening_at"
+    t.datetime "opened_at"
     t.index ["author_id"], name: "index_polls_on_author_id"
     t.index ["closed_at", "closing_at"], name: "index_polls_on_closed_at_and_closing_at"
     t.index ["closed_at", "discussion_id"], name: "index_polls_on_closed_at_and_discussion_id"

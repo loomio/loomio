@@ -149,7 +149,7 @@ class PollServiceTest < ActiveSupport::TestCase
     end
   end
 
-  test "does not email people on poll creation" do
+  test "poll_created does not email but poll_opened emails stance holders" do
     poll = Poll.new(
       title: "No Email Poll",
       poll_type: "proposal",
@@ -158,9 +158,11 @@ class PollServiceTest < ActiveSupport::TestCase
       poll_option_names: ["Agree", "Disagree"],
       closing_at: 3.days.from_now
     )
-    assert_no_difference 'ActionMailer::Base.deliveries.count' do
-      PollService.create(poll: poll, actor: @user)
-    end
+    PollService.create(poll: poll, actor: @user)
+    # PollCreated no longer sends emails (only mentions/chatbots)
+    # PollOpened sends emails to stance holders with normal/loud volume
+    assert poll.opened?
+    assert Events::PollOpened.where(eventable: poll).exists?
   end
 
   # Note: poll mention notification test omitted due to asset pipeline dependency

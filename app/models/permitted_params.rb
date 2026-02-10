@@ -39,6 +39,7 @@ class PermittedParams < Struct.new(:params)
       :poll_type,
       :group_id,
       :closing_at,
+      :opening_at,
       :anonymous,
       :hide_results,
       :key,

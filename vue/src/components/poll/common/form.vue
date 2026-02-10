@@ -52,6 +52,7 @@ const hideResultsItems = ref([
 const newDateOption = ref(startOfHour(setHours(new Date(), 12)));
 const minDate = ref(new Date());
 const closingAtWas = ref(null);
+const votingOpensImmediately = ref(!props.poll.openingAt);
 
 // Methods
 const validate = (field) => {
@@ -162,7 +163,7 @@ const submit = () => {
       Flash.success("poll_common_form.poll_type_updated", {poll_type: poll.translatedPollTypeCaps()});
     }
 
-    if ((actionName == 'created') && poll.specifiedVotersOnly) {
+    if ((actionName == 'created') && poll.specifiedVotersOnly && poll.openedAt) {
       EventBus.$emit('openModal', {
         component: 'PollMembers',
         props: { poll }
@@ -454,6 +455,17 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
   .text-body-2.pb-4.text-medium-emphasis(v-t="'poll_common_form.how_much_time_to_vote'")
   poll-common-closing-at-field.pb-4(:poll="poll")
 
+  template(v-if="poll.isNew()")
+    v-checkbox.mt-2(
+      hide-details
+      v-model="votingOpensImmediately"
+      :label="$t('poll_common_opening_at_field.voting_opens_immediately')"
+      @update:modelValue="val => { if (val) poll.openingAt = null }"
+    )
+    poll-common-opening-at-field.pb-4(v-if="!votingOpensImmediately" :poll="poll")
+    v-alert.mt-2.mb-4(v-if="!votingOpensImmediately" variant="tonal" type="info" density="compact")
+      span The poll will be visible but not votable until the opening time.
+
   v-divider.my-4
   .text-subtitle-1.pb-2(v-t="'poll_common_settings.who_can_vote'")
   v-radio-group(
@@ -476,7 +488,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
     .text-body-2.font-italic.text-medium-emphasis.mt-n4.py-4(
       v-t="{path: 'poll_common_settings.invite_people_next', args: {poll_type: poll.translatedPollType()}}")
 
-  div(style="height: 64px" v-if="!poll.id && !poll.specifiedVotersOnly")
+  div(style="height: 64px" v-if="!poll.id && !poll.specifiedVotersOnly && votingOpensImmediately")
     v-checkbox.mt-n4.pb-0(
       :label="$t('poll_common_form.notify_everyone_when_poll_starts', {poll_type: poll.translatedPollType()})"
       v-model="poll.notifyRecipients")

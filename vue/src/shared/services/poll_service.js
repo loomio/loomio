@@ -123,7 +123,7 @@ export default new class PollService {
         name: 'common.action.invite',
         dock: 2,
         canPerform() {
-          if (poll.discardedAt || poll.closedAt) { return false; }
+          if (poll.discardedAt || poll.closedAt || !poll.openedAt) { return false; }
           return AbilityService.canAddMembersPoll(poll);
         },
         perform() {
@@ -141,7 +141,7 @@ export default new class PollService {
         name: 'common.action.remind',
         dock: 2,
         canPerform() {
-          if (poll.discardedAt || poll.closedAt || (poll.votersCount < 2)) { return false; }
+          if (poll.discardedAt || poll.closedAt || !poll.openedAt || (poll.votersCount < 2)) { return false; }
           return AbilityService.canAnnouncePoll(poll);
         },
         perform() {

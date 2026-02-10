@@ -80,6 +80,7 @@ export default {
   PollCommonChooseType: 'poll/common/choose_type',
   PollCommonClosingAt: 'poll/common/closing_at',
   PollCommonClosingAtField: 'poll/common/closing_at_field',
+  PollCommonOpeningAtField: 'poll/common/opening_at_field',
   PollCommonDetailsPanel: 'poll/common/details_panel',
   PollCommonDirective: 'poll/common/directive',
   PollCommonEditVoteModal: 'poll/common/edit_vote_modal',
