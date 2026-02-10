@@ -34,13 +34,7 @@ export default {
       groupItems: [],
       initialRecipients: [],
       discussionTemplate: null,
-      loaded: false,
-      titleRules: [
-        value => {
-          if (value) return true
-          return this.$t('common.required')
-        }
-      ]
+      loaded: false
     };
   },
 
@@ -118,7 +112,7 @@ export default {
         });
       }).catch(error => {
         this.$refs.form.validate();
-        Flash.error('common.check_for_errors_and_try_again');
+        Flash.serverError(error, ['title']);
       })
     },
 

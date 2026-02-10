@@ -29,6 +29,28 @@ export default class Flash {
       duration
     });
   }
+
+  static serverError(error, inlineFields = []) {
+    if (error.error) {
+      Flash.custom(error.error);
+    } else if (error.errors) {
+      const inlineParts = [];
+      const fullParts = [];
+      Object.entries(error.errors).forEach(([field, messages]) => {
+        if (inlineFields.includes(field)) {
+          inlineParts.push(field);
+        } else {
+          fullParts.push(`${field}: ${[].concat(messages).join(', ')}`);
+        }
+      });
+      const parts = [];
+      if (inlineParts.length) { parts.push(`Please check: ${inlineParts.join(', ')}`); }
+      fullParts.forEach(p => parts.push(p));
+      Flash.custom(parts.join('. '));
+    } else {
+      Flash.error('common.check_for_errors_and_try_again');
+    }
+  }
 };
 
 window.Loomio.flash = Flash;
