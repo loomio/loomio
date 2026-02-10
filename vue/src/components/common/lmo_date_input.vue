@@ -5,7 +5,7 @@ import { format, utcToZonedTime } from 'date-fns-tz';
 import { I18n, dateLocale } from '@/i18n';
 
 export default {
-  props: ['modelValue', 'label', 'hint', 'prependInnerIcon', 'min', 'clearable'],
+  props: ['modelValue', 'label', 'hint', 'prependInnerIcon', 'min', 'clearable', 'disabled'],
   // props: ['label', 'hint'],
   emits: ['update:modelValue', 'click:clear'],
   data() {
@@ -42,6 +42,7 @@ v-menu(
   :close-on-content-click="false"
   location="bottom"
   v-model="open"
+  :disabled="disabled"
 )
   template(template v-slot:activator="{ props }")
     v-text-field.mr-2(
@@ -54,6 +55,7 @@ v-menu(
       :hint="hint"
       readonly
       persistent-hint
+      :disabled="disabled"
     )
   v-date-picker(
     hide-header

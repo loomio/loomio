@@ -451,9 +451,8 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
     )
 
   v-divider.my-4
-  .text-subtitle-1.pb-2(v-t="'poll_common_form.deadline'")
-  .text-body-2.pb-4.text-medium-emphasis(v-t="'poll_common_form.how_much_time_to_vote'")
-  poll-common-closing-at-field.pb-4(:poll="poll")
+  .text-subtitle-1.pb-2(v-t="'poll_common_form.voting_duration'")
+  .text-body-2.pb-4.text-medium-emphasis(v-t="'poll_common_form.voting_duration_hint'")
 
   template(v-if="poll.isNew()")
     v-checkbox.mt-2(
@@ -462,9 +461,9 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
       :label="$t('poll_common_opening_at_field.voting_opens_immediately')"
       @update:modelValue="val => { if (val) poll.openingAt = null }"
     )
-    poll-common-opening-at-field.pb-4(v-if="!votingOpensImmediately" :poll="poll")
-    v-alert.mt-2.mb-4(v-if="!votingOpensImmediately" variant="tonal" type="info" density="compact")
-      span The poll will be visible but not votable until the opening time.
+    poll-common-opening-at-field.pb-4(:poll="poll" :disabled="votingOpensImmediately")
+
+  poll-common-closing-at-field.pb-4(:poll="poll" :min-date="poll.openingAt")
 
   v-divider.my-4
   .text-subtitle-1.pb-2(v-t="'poll_common_settings.who_can_vote'")

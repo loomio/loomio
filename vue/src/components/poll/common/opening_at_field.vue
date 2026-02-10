@@ -6,7 +6,11 @@ import { mdiClockOutline, mdiCalendar } from '@mdi/js'
 
 export default {
   props: {
-    poll: Object
+    poll: Object,
+    disabled: {
+      type: Boolean,
+      default: false
+    }
   },
 
   data() {
@@ -25,6 +29,7 @@ export default {
   methods: {
     exact,
     updateOpeningAt() {
+      if (this.disabled) return;
       const date = parse(`${format(this.openingDate, "yyyy-MM-dd")} ${this.openingHour}`, "yyyy-MM-dd HH:mm", new Date());
       if (isValid(date)) {
         this.poll.openingAt = date;
@@ -36,12 +41,17 @@ export default {
     twelvehour() { return timeFormat() !== 'HH:mm'; },
 
     openingAtHint() {
-      return format(this.poll.openingAt, timeFormat());
+      if (!this.openingDate) { return null; }
+      try {
+        return format(this.openingDate, timeFormat());
+      } catch(e) {
+        return null;
+      }
     },
 
     label() {
-      if (!this.poll.openingAt) { return false; }
-      return formatDistance(this.poll.openingAt, new Date, {addSuffix: true});
+      if (!this.openingDate) { return false; }
+      return formatDistance(this.openingDate, new Date, {addSuffix: true});
     }
   },
 
@@ -62,8 +72,9 @@ export default {
       v-model='openingDate'
       :prepend-inner-icon="mdiCalendar"
       :label="$t('poll_common_opening_at_field.opening_date')"
-      :hint="$t('common.opening_in', { time: label })"
+      :hint="label ? $t('common.opening_in', { time: label }) : ''"
       :min="dateToday"
+      :disabled="disabled"
     )
     v-select.poll-common-opening-at-field__timepicker(
       :prepend-inner-icon="mdiClockOutline"
@@ -72,6 +83,7 @@ export default {
       :items="times"
       :hint="twelvehour ? openingAtHint : null"
       :persistent-hint="twelvehour"
+      :disabled="disabled"
     )
   validation-errors(:subject="poll", field="openingAt")
 

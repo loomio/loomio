@@ -6,7 +6,11 @@ import { mdiClockOutline, mdiCalendar } from '@mdi/js'
 
 export default {
   props: {
-    poll: Object
+    poll: Object,
+    minDate: {
+      type: Date,
+      default: null
+    }
   },
 
   data() {
@@ -17,7 +21,7 @@ export default {
       closingDate: this.poll.closingAt || new Date(),
       times: hoursOfDay(),
       timeZone: AppConfig.timeZone,
-      dateToday: startOfDay(new Date()),
+      dateToday: this.minDate ? startOfDay(this.minDate) : startOfDay(new Date()),
       isShowingDatePicker: false,
     };
   },

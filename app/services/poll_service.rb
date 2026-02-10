@@ -19,7 +19,7 @@ class PollService
       EventBus.broadcast('poll_create', poll, actor)
       Events::PollCreated.publish!(poll, actor)
 
-      if poll.opening_at.nil? || poll.opening_at <= Time.now
+      if poll.closing_at && (poll.opening_at.nil? || poll.opening_at <= Time.now)
         poll.update_column(:opened_at, Time.now)
         Events::PollOpened.publish!(poll)
       end
@@ -226,14 +226,20 @@ class PollService
   def self.reopen(poll:, params:, actor:)
     actor.ability.authorize! :reopen, poll
 
-    poll.assign_attributes(closing_at: params[:closing_at], closed_at: nil)
+    poll.assign_attributes(closing_at: params[:closing_at], closed_at: nil, opening_at: params[:opening_at])
     return false unless poll.valid?
 
     Poll.transaction do
+      if poll.opening_at.nil? || poll.opening_at <= Time.now
+        poll.opened_at = Time.now
+      else
+        poll.opened_at = nil
+      end
       poll.save!
 
       EventBus.broadcast('poll_reopen', poll, actor)
       Events::PollReopened.publish!(poll, actor)
+      Events::PollOpened.publish!(poll) if poll.opened_at
     end
   end
 

@@ -217,6 +217,8 @@ en:
   timezones:
     local: Local time (%{value})
   common:
+    commercial: Commercial
+    nonprofit: Nonprofit
     value: "%{value}"
     admin_menu: Admin menu
     api_docs: API docs
@@ -2183,6 +2185,8 @@ en:
     voting_opens_immediately: Voting opens immediately
     opening_date: Opening date
     opening_hour: Opening time
+    scheduled_hint: The poll will be visible but not votable until the opening time.
+    draft_hint: This poll will be saved as a draft. Set an opening date or check "Voting opens immediately" when you're ready to start voting.
   poll_card:
     poll_type_by_name: "%{poll_type} by %{name}"
     started_by: Started by %{name}
@@ -2239,6 +2243,8 @@ en:
     quorum_tip_vote_share_requirement: 'Tip: You can also specify the level of agreement required for a proposal to pass. Edit an option to define vote share requirement'
     deadline: Deadline
     how_much_time_to_vote: How much time will you give people to vote?
+    voting_duration: Open and close
+    voting_duration_hint: When does voting commence and when is the deadline for casting votes.
     notify_everyone_when_poll_starts: Notify everyone when %{poll_type} starts
     option_has_votes_confirm_delete: Some people have voted for this option, are you sure you want to delete it?
     example_title: Example title

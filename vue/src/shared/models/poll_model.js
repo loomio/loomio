@@ -362,7 +362,7 @@ export default class PollModel extends BaseModel {
 
   reopen() {
     this.processing = true;
-    return Records.polls.remote.postMember(this.key, 'reopen', {poll: {closing_at: this.closingAt}})
+    return Records.polls.remote.postMember(this.key, 'reopen', {poll: {closing_at: this.closingAt, opening_at: this.openingAt}})
     .finally(() => { return this.processing = false; });
   }
 
