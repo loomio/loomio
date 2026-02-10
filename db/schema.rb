@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_12_03_031449) do
+ActiveRecord::Schema[8.0].define(version: 2026_02_10_005017) do
   create_schema "pghero"
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
+  enable_extension "pg_catalog.plpgsql"
   enable_extension "pg_stat_statements"
   enable_extension "pgcrypto"
-  enable_extension "plpgsql"
 
   create_table "action_mailbox_inbound_emails", force: :cascade do |t|
     t.integer "status", default: 0, null: false
@@ -628,7 +628,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_03_031449) do
     t.string "logo"
     t.jsonb "custom_fields", default: {}, null: false
     t.index ["email"], name: "index_personas_on_email"
-    t.index ["identity_type", "uid"], name: "index_omniauth_identities_on_identity_type_and_uid"
+    t.index ["identity_type", "uid"], name: "index_omniauth_identities_on_identity_type_and_uid", unique: true
     t.index ["user_id"], name: "index_personas_on_user_id"
   end
 
@@ -656,7 +656,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_03_031449) do
     t.integer "counter", default: 0
   end
 
-  create_table "pg_search_documents", force: :cascade do |t|
+  create_table "pg_search_documents", id: false, force: :cascade do |t|
+    t.bigserial "id", null: false
     t.text "content"
     t.tsvector "ts_content"
     t.bigint "author_id"
@@ -668,14 +669,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_03_031449) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "authored_at"
-    t.index ["author_id"], name: "index_pg_search_documents_on_author_id"
-    t.index ["authored_at"], name: "pg_search_documents_authored_at_asc_index"
-    t.index ["authored_at"], name: "pg_search_documents_authored_at_desc_index", order: :desc
-    t.index ["discussion_id"], name: "index_pg_search_documents_on_discussion_id"
-    t.index ["group_id"], name: "index_pg_search_documents_on_group_id"
-    t.index ["poll_id"], name: "index_pg_search_documents_on_poll_id"
-    t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable"
-    t.index ["ts_content"], name: "pg_search_documents_searchable_index", using: :gin
   end
 
   create_table "poll_options", id: :serial, force: :cascade do |t|
