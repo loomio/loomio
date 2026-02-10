@@ -758,7 +758,7 @@ en:
       poll_closing_soon: "%{poll_type} closing in 24 hours: %{title}"
       poll_closing_soon_author: 'Your %{poll_type} is closing in 24 hours: %{title}'
       poll_created: "%{actor} started a %{poll_type}: %{title}"
-      poll_opened: "%{actor} opened voting on %{poll_type}: %{title}"
+      poll_opened: "Voting has opened: %{title}"
       poll_edited: "%{actor} updated the %{poll_type}: %{title}"
       poll_expired: "%{poll_type} has closed: %{title}"
       poll_expired_author: 'Share the outcome of your %{poll_type}: %{title}'
@@ -797,7 +797,7 @@ en:
       poll_closing_soon: "%{poll_type} closing in 24 hours"
       poll_closing_soon_author: Your %{poll_type} is closing in 24 hours
       poll_created: "%{actor} started a %{poll_type}"
-      poll_opened: "%{actor} opened voting on a %{poll_type}"
+      poll_opened: "Voting has opened"
       poll_edited: "%{actor} updated the %{poll_type}"
       poll_expired: "%{poll_type} has closed"
       poll_expired_author: Share the outcome of your %{poll_type}
