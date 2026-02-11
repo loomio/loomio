@@ -1333,6 +1333,8 @@ zh_TW:
     messages:
       group_created: 群組已啟動
       group_updated: 群組已更新
+      logo_removed: 標誌已移除
+      cover_photo_removed: 封面照片已移除
     upload_logo: 上傳圖示
     upload_cover_photo: 上傳封面圖片
     request_to_join_prompt: 請求加入提示
@@ -1347,6 +1349,9 @@ zh_TW:
     list_in_the_groups_directory: 是否已列入群組目錄？
     list_in_directory_yes: 是的 · 在「尋找群組」頁面上顯示此群組
     list_in_directory_no: 不，不應邀請他人或提供連結讓他們找到該群組。
+    upload_background: 上傳背景
+    remove_background: 移除背景
+    remove_logo: 移除標誌
   group_export_modal:
     title: 匯出群組資料
     body: |
@@ -2713,3 +2718,4 @@ zh_TW:
       success: 討論已轉移至 %{name}
   auth:
     oauth_cancelled: 登入已取消
+    switching_accounts: 正在切換帳戶。請使用新帳號資訊登入。

@@ -1352,6 +1352,8 @@ pt_BR:
     messages:
       group_created: Grupo iniciado
       group_updated: Grupo atualizado
+      logo_removed: Logotipo removido
+      cover_photo_removed: Foto de capa removida
     upload_logo: Enviar logo
     upload_cover_photo: Enviar Image da Capa
     request_to_join_prompt: Solicitação de adesão rápida
@@ -1365,6 +1367,9 @@ pt_BR:
     list_in_the_groups_directory: Listar no diretório de grupos?
     list_in_directory_yes: Sim · Mostrar este grupo na página "Encontrar um grupo"
     list_in_directory_no: Não, as pessoas devem ser convidadas ou receber um link para encontrar o grupo.
+    upload_background: carregar plano de fundo
+    remove_background: remover fundo
+    remove_logo: remover logotipo
   group_export_modal:
     title: Exportar data do grupo
     body: |
@@ -2733,3 +2738,4 @@ pt_BR:
       success: A discussão foi movida para %{name}
   auth:
     oauth_cancelled: O login foi cancelado.
+    switching_accounts: Mudando de conta. Por favor, faça login com os dados da sua nova conta.

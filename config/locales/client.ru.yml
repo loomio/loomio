@@ -1323,6 +1323,8 @@ ru:
     messages:
       group_created: Группа началась
       group_updated: Группа обновлена
+      logo_removed: Логотип удален
+      cover_photo_removed: Фотография на обложке удалена.
     upload_logo: Загрузить логотип
     upload_cover_photo: Загрузить обложку
     request_to_join_prompt: Запрос на присоединение
@@ -1336,6 +1338,9 @@ ru:
     list_in_the_groups_directory: Добавить в список групп?
     list_in_directory_yes: Да · отобразить эту группу на странице "Найти группу"
     list_in_directory_no: Нет, людей следует приглашать или предоставлять им ссылку для поиска группы.
+    upload_background: загрузить фон
+    remove_background: удалить фон
+    remove_logo: удалить логотип
   group_export_modal:
     title: Экспортировать данные группы
     body: <p>Вы можете загрузить копию данных вашей группы в любое время. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Узнать больше.</a></p><p> Это займет несколько минут, в зависимости от размера вашей группы. Когда он будет готов, вы получите электронное письмо со ссылкой для загрузки файла.</p>
@@ -2683,3 +2688,4 @@ ru:
       success: Обсуждение перенесено в %{name}
   auth:
     oauth_cancelled: Вход был отменен.
+    switching_accounts: Переключение между учетными записями. Пожалуйста, войдите в систему, используя данные вашей новой учетной записи.

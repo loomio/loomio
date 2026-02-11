@@ -1323,6 +1323,8 @@ ro:
     messages:
       group_created: Grupul a început
       group_updated: Grupul a fost actualizat
+      logo_removed: Sigla a fost eliminată
+      cover_photo_removed: Fotografia de copertă a fost eliminată
     upload_logo: Încărcați sigla
     upload_cover_photo: Încărcați fotografia de copertă
     request_to_join_prompt: Solicitare de înscriere
@@ -1336,6 +1338,9 @@ ro:
     list_in_the_groups_directory: Listă în directorul de grupuri?
     list_in_directory_yes: Da · afișează acest grup pe pagina „găsește un grup”
     list_in_directory_no: Nicio persoană nu ar trebui invitată sau să primească un link pentru a găsi grupul
+    upload_background: încărcați fundalul
+    remove_background: eliminați fundalul
+    remove_logo: eliminați sigla
   group_export_modal:
     title: Exportați datele grupului
     body: <p>Puteți descărca oricând o copie a datelor grupului dvs. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Află mai multe.</a></p><p> Este nevoie de câteva minute pentru a finaliza, în funcție de dimensiunea grupului dvs. Când este gata, veți primi un e-mail cu un link pentru a descărca fișierul.</p>
@@ -2683,3 +2688,4 @@ ro:
       success: Discuția a fost mutată la %{name}
   auth:
     oauth_cancelled: Conectarea a fost anulată
+    switching_accounts: Schimbarea conturilor. Vă rugăm să vă conectați cu detaliile noului cont.

@@ -61,6 +61,14 @@ class Api::V1::GroupsController < Api::V1::RestfulController
     respond_with_resource
   end
 
+  def remove_photo
+    kind = params.require(:kind)
+    raise ActionController::UnpermittedParameters.new([:kind]) unless ['logo', 'cover_photo'].include?(kind)
+    self.resource = load_and_authorize(:group, :update)
+    resource.send(kind).purge_later
+    respond_with_resource
+  end
+
   def export #json
     service.export(group: load_and_authorize(:group, :export), actor: current_user)
     render json: { success: :ok }

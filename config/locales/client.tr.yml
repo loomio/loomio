@@ -1323,6 +1323,8 @@ tr:
     messages:
       group_created: Grup başlatıldı
       group_updated: Grup güncellendi
+      logo_removed: Logo kaldırıldı
+      cover_photo_removed: Kapak fotoğrafı kaldırıldı.
     upload_logo: Logoyu yükle
     upload_cover_photo: Kapak fotoğrafını yükle
     request_to_join_prompt: Katılma isteği istemi
@@ -1336,6 +1338,9 @@ tr:
     list_in_the_groups_directory: Grup dizininde listelensin mi?
     list_in_directory_yes: Evet · Bu grubu "grup bul" sayfasında göster
     list_in_directory_no: Hayır, insanlara gruba ulaşmaları için davet gönderilmeli veya bir bağlantı verilmelidir.
+    upload_background: arka planı yükle
+    remove_background: arka planı kaldır
+    remove_logo: logoyu kaldır
   group_export_modal:
     title: Grup verilerini dışa aktar
     body: <p>Grubunuzun verilerinin bir kopyasını istediğiniz zaman indirebilirsiniz. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Daha fazlasını bul.</a></p><p> Grubunuzun büyüklüğüne bağlı olarak tamamlanması birkaç dakika sürer. Hazır olduğunda dosyayı indirme bağlantısını içeren bir e-posta alacaksınız.</p>
@@ -2683,3 +2688,4 @@ tr:
       success: Tartışma %{name}'e taşındı
   auth:
     oauth_cancelled: Giriş işlemi iptal edildi.
+    switching_accounts: Hesap değiştiriliyor. Lütfen yeni hesap bilgilerinizle giriş yapın.

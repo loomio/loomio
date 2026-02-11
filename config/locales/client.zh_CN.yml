@@ -1354,11 +1354,16 @@ zh_CN:
     messages:
       group_created: 子群组开始
       group_updated: 群组更新
+      logo_removed: 标志已移除
+      cover_photo_removed: 封面照片已移除
     upload_logo: 上传徽标
     upload_cover_photo: 上传封面照片
     list_in_the_groups_directory: 是否已列入群组目录？
     list_in_directory_yes: 是的 · 在“查找群组”页面上显示此群组
     list_in_directory_no: 不，不应邀请他人或提供链接让他们找到该群组。
+    upload_background: 上传背景
+    remove_background: 移除背景
+    remove_logo: 移除徽标
   group_export_modal:
     title: 导出组数据
     body: <p>您可以随时下载您所在子群组的数据副本。<a href="https://help.loomio.org/en/user_manual/groups/data_export/">了解更多信息。</a></p><p>根据子群组人数，完成此操作大约需要几分钟。完成后，您将收到一封包含文件下载链接的电子邮件。</p>
@@ -2588,3 +2593,4 @@ zh_CN:
       other: 其他
   auth:
     oauth_cancelled: 登录已取消
+    switching_accounts: 正在切换账户。请使用新账户信息登录。

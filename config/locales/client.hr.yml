@@ -1323,6 +1323,8 @@ hr:
     messages:
       group_created: Grupa je započela
       group_updated: Grupa ažurirana
+      logo_removed: Logotip uklonjen
+      cover_photo_removed: Naslovna fotografija uklonjena
     upload_logo: Učitaj logotip
     upload_cover_photo: Prenesi naslovnu fotografiju
     request_to_join_prompt: Zahtjev za pridruživanje
@@ -1336,6 +1338,9 @@ hr:
     list_in_the_groups_directory: Popis u direktoriju grupa?
     list_in_directory_yes: Da · prikaži ovu grupu na stranici "pronađi grupu"
     list_in_directory_no: Ne · osobe bi trebale biti pozvane ili im dati poveznicu za pronalazak grupe
+    upload_background: prenesi pozadinu
+    remove_background: ukloni pozadinu
+    remove_logo: ukloni logotip
   group_export_modal:
     title: Izvoz grupnih podataka
     body: <p>U bilo kojem trenutku možete preuzeti kopiju podataka svoje grupe. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Saznaj više.</a></p><p> Za dovršetak je potrebno nekoliko minuta, ovisno o veličini vaše grupe. Kada bude spremna, primit ćete e-poruku s vezom za preuzimanje datoteke.</p>
@@ -2683,3 +2688,4 @@ hr:
       success: Rasprava je premještena na %{name}
   auth:
     oauth_cancelled: Prijava je otkazana
+    switching_accounts: Prebacivanje računa. Prijavite se s novim podacima računa.

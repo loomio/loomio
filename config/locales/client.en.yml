@@ -1306,8 +1306,10 @@ en:
     default_request_to_join_prompt: 'Thanks for your interest in our group. Please introduce yourself and explain why you are requesting to join.'
     thread_defaults_help: Default settings for new threads
     click_to_change_image: Click to change the cover image (4x1) or logo (1x1)
-    change_cover_image: change cover image
-    change_logo: change logo
+    upload_background: upload background
+    remove_background: remove background
+    upload_logo: upload logo
+    remove_logo: remove logo
     permissions_explaination: |
       There are two levels of membership a person can have to a group: admin and member.
       Admins can edit group settings, make other people admins, and perform all the actions listed below.
@@ -1403,8 +1405,8 @@ en:
     messages:
       group_created: Group started
       group_updated: Group updated
-    upload_logo: Upload logo
-    upload_cover_photo: Upload cover photo
+      logo_removed: Logo removed
+      cover_photo_removed: Cover photo removed
   group_export_modal:
     title: Export group data
     body: |

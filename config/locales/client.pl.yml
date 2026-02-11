@@ -1331,6 +1331,8 @@ pl:
     messages:
       group_created: Grupa została utworzona
       group_updated: Grupa została zaktualizowana
+      logo_removed: Usunięto logo
+      cover_photo_removed: Usunięto zdjęcie na okładce
     upload_logo: Prześlij logo
     upload_cover_photo: Prześlij zdjęcie w tle
     request_to_join_prompt: Prośba o dołączenie
@@ -1344,6 +1346,9 @@ pl:
     list_in_the_groups_directory: Umieścić w katalogu grup?
     list_in_directory_yes: Tak · pokaż tę grupę na stronie „Znajdź grupę”
     list_in_directory_no: Nie · należy zapraszać ludzi lub podawać im link umożliwiający znalezienie grupy
+    upload_background: prześlij tło
+    remove_background: usuń tło
+    remove_logo: usuń logo
   group_export_modal:
     title: Eksportuj dane grupy
     body: |
@@ -2712,3 +2717,4 @@ pl:
       success: Dyskusja przeniesiona do %{name}
   auth:
     oauth_cancelled: Logowanie zostało anulowane
+    switching_accounts: Zmiana konta. Zaloguj się, używając danych nowego konta.

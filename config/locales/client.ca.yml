@@ -1331,6 +1331,8 @@ ca:
     messages:
       group_created: Grup creat
       group_updated: Grup actualitzat
+      logo_removed: Logotip eliminat
+      cover_photo_removed: Foto de portada eliminada
     upload_logo: Penja un logo
     upload_cover_photo: Penja una foto de portada
     request_to_join_prompt: Sol·licitud per unir-se
@@ -1344,6 +1346,9 @@ ca:
     list_in_the_groups_directory: Llista al directori de grups?
     list_in_directory_yes: Sí · mostra aquest grup a la pàgina "cerca un grup"
     list_in_directory_no: No s'hauria de convidar ningú ni donar-li un enllaç per trobar el grup.
+    upload_background: puja el fons
+    remove_background: eliminar el fons
+    remove_logo: eliminar el logotip
   group_export_modal:
     title: Exporta dades del grup
     body: |
@@ -2712,3 +2717,4 @@ ca:
       success: La discussió s'ha mogut a %{name}
   auth:
     oauth_cancelled: S'ha cancel·lat l'inici de sessió
+    switching_accounts: Canvi de compte. Si us plau, inicia la sessió amb les dades del teu nou compte.

@@ -1323,6 +1323,8 @@ da:
     messages:
       group_created: Gruppe oprettet
       group_updated: Gruppe gemt
+      logo_removed: Logoet er fjernet
+      cover_photo_removed: Forsidebilledet er fjernet
     upload_logo: Upload logo
     upload_cover_photo: Upload forsidebillede
     request_to_join_prompt: Anmodning om at deltage
@@ -1336,6 +1338,9 @@ da:
     list_in_the_groups_directory: Liste i gruppekataloget?
     list_in_directory_yes: Ja · vis denne gruppe på siden "find en gruppe"
     list_in_directory_no: Ingen · personer bør inviteres eller få et link til at finde gruppen
+    upload_background: upload baggrund
+    remove_background: fjern baggrund
+    remove_logo: fjern logoet
   group_export_modal:
     title: Eksporter gruppedata
     body: <p>Du kan til enhver tid downloade en kopi af din gruppes data. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Find ud af mere.</a></p><p> Det tager et par minutter at gennemføre, afhængigt af størrelsen på din gruppe. Når den er klar, modtager du en e-mail med et link til at downloade filen.</p>
@@ -2683,3 +2688,4 @@ da:
       success: Diskussion flyttet til %{name}
   auth:
     oauth_cancelled: Log ind blev annulleret
+    switching_accounts: Skifter konto. Log venligst ind med dine nye kontooplysninger.

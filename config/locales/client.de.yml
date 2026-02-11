@@ -1339,6 +1339,8 @@ de:
     messages:
       group_created: Gruppe wurde erstellt
       group_updated: Gruppe aktualisiert
+      logo_removed: Logo entfernt
+      cover_photo_removed: Titelbild entfernt
     upload_logo: Logo hochladen
     upload_cover_photo: Neues Titel-Bild hochladen
     request_to_join_prompt: Aufforderung zur Teilnahme
@@ -1352,6 +1354,9 @@ de:
     list_in_the_groups_directory: Eintrag im Gruppenverzeichnis?
     list_in_directory_yes: Ja · Diese Gruppe auf der Seite „Gruppe finden“ anzeigen
     list_in_directory_no: Nein · Personen sollten eingeladen oder mit einem Link zur Gruppe versorgt werden.
+    upload_background: Hintergrund hochladen
+    remove_background: Hintergrund entfernen
+    remove_logo: Logo entfernen
   group_export_modal:
     title: Gruppendaten exportieren
     body: |
@@ -2720,3 +2725,4 @@ de:
       success: Die Diskussion wurde nach %{name} verlegt.
   auth:
     oauth_cancelled: Anmeldung abgebrochen
+    switching_accounts: Kontowechsel. Bitte melden Sie sich mit Ihren neuen Kontodaten an.
