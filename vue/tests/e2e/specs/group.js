@@ -306,5 +306,28 @@ module.exports = {
     page.fillIn('.confirm-text-field input', 'shoes')
     page.click('.confirm-modal__submit')
     page.expectFlash("This group has been archived and is scheduled for permanent deletion in 2 weeks.")
+  },
+
+  'removes_group_logo_and_cover_photo': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_group_with_photos')
+    page.click('.action-menu')
+    page.click('.action-dock__button--edit_group')
+    page.pause(500)
+
+    // both remove links should be visible
+    page.expectElement('.group-form__remove-logo')
+    page.expectElement('.group-form__remove-cover-photo')
+
+    // remove logo
+    page.click('.group-form__remove-logo')
+    page.expectFlash('Logo removed')
+    page.expectNoElement('.group-form__remove-logo')
+
+    // remove cover photo
+    page.click('.group-form__remove-cover-photo')
+    page.expectFlash('Cover photo removed')
+    page.expectNoElement('.group-form__remove-cover-photo')
   }
 }

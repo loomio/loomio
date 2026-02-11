@@ -1352,6 +1352,8 @@ fr:
     messages:
       group_created: Groupe créé
       group_updated: Groupe mis à jour
+      logo_removed: Logo supprimé
+      cover_photo_removed: Photo de couverture supprimée
     upload_logo: Télécharger le logo
     upload_cover_photo: Télécharger la photo de couverture
     request_to_join_prompt: Demande d'adhésion rapide
@@ -1365,6 +1367,9 @@ fr:
     list_in_the_groups_directory: Liste dans l'annuaire des groupes ?
     list_in_directory_yes: Oui · afficher ce groupe sur la page « Trouver un groupe »
     list_in_directory_no: Non, les gens ne devraient pas être invités ni recevoir de lien pour trouver le groupe.
+    upload_background: télécharger l'arrière-plan
+    remove_background: supprimer l'arrière-plan
+    remove_logo: supprimer le logo
   group_export_modal:
     title: Exporter les données de votre groupe
     body: |
@@ -2729,3 +2734,4 @@ fr:
       success: Discussion déplacée vers %{name}
   auth:
     oauth_cancelled: La connexion a été annulée.
+    switching_accounts: Changement de compte. Veuillez vous connecter avec vos nouvelles informations de compte.

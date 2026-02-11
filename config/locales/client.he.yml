@@ -1327,6 +1327,8 @@ he:
     messages:
       group_created: קבוצה נפתחה
       group_updated: קבוצה עודכנה
+      logo_removed: הלוגו הוסר
+      cover_photo_removed: תמונת הנושא הוסרה
     upload_logo: העלה לוגו
     upload_cover_photo: העלה תמונת שער
     request_to_join_prompt: בקשת הצטרפות
@@ -1340,6 +1342,9 @@ he:
     list_in_the_groups_directory: רשימה בספריית הקבוצות?
     list_in_directory_yes: כן · הצג קבוצה זו בדף "מצא קבוצה"
     list_in_directory_no: אין להזמין אנשים או לקבל קישור למציאת הקבוצה
+    upload_background: העלאת רקע
+    remove_background: הסרת רקע
+    remove_logo: להסיר את הלוגו
   group_export_modal:
     title: יצוא נתונים מהקבוצה
     body: |
@@ -2702,3 +2707,4 @@ he:
       success: הדיון הועבר ל-%{name}
   auth:
     oauth_cancelled: הכניסה בוטלה
+    switching_accounts: החלפת חשבונות. אנא התחבר עם פרטי החשבון החדשים שלך.

@@ -1323,6 +1323,8 @@ sv:
     messages:
       group_created: Gruppen startade
       group_updated: Gruppen uppdaterad
+      logo_removed: Logotypen borttagen
+      cover_photo_removed: Omslagsfoto borttaget
     upload_logo: Ladda upp logotyp
     upload_cover_photo: Ladda upp omslagsfoto
     request_to_join_prompt: Begäran om att gå med
@@ -1336,6 +1338,9 @@ sv:
     list_in_the_groups_directory: Lista i gruppkatalogen?
     list_in_directory_yes: Ja · visa den här gruppen på sidan "hitta en grupp"
     list_in_directory_no: Inga personer ska bjudas in eller få en länk för att hitta gruppen
+    upload_background: ladda upp bakgrund
+    remove_background: ta bort bakgrunden
+    remove_logo: ta bort logotypen
   group_export_modal:
     title: Exportera gruppdata
     body: <p>Du kan ladda ner en kopia av din grupps data när som helst. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Få reda på mer.</a></p><p> Det tar några minuter att slutföra, beroende på storleken på din grupp. När den är klar får du ett e-postmeddelande med en länk för att ladda ner filen.</p>
@@ -2683,3 +2688,4 @@ sv:
       success: Diskussionen flyttad till %{name}
   auth:
     oauth_cancelled: Inloggningen avbröts
+    switching_accounts: Byter konto. Vänligen logga in med dina nya kontouppgifter.

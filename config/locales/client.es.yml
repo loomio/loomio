@@ -1340,6 +1340,8 @@ es:
     messages:
       group_created: Grupo ha sido creado
       group_updated: Grupo actualizado
+      logo_removed: Logotipo eliminado
+      cover_photo_removed: Foto de portada eliminada
     upload_logo: Cargar el logo
     upload_cover_photo: Cargar la foto de portada
     request_to_join_prompt: Solicitud de adhesión inmediata
@@ -1353,6 +1355,9 @@ es:
     list_in_the_groups_directory: "¿Listado en el directorio de grupos?"
     list_in_directory_yes: Sí · mostrar este grupo en la página "Buscar un grupo"
     list_in_directory_no: No · Se debe invitar a las personas o darles un enlace para que encuentren el grupo.
+    upload_background: subir fondo
+    remove_background: eliminar el fondo
+    remove_logo: eliminar logotipo
   group_export_modal:
     title: Exportar la data grupal
     body: |
@@ -2721,3 +2726,4 @@ es:
       success: La discusión se trasladó a %{name}
   auth:
     oauth_cancelled: Se canceló el inicio de sesión
+    switching_accounts: Cambiando de cuenta. Inicia sesión con los datos de tu nueva cuenta.

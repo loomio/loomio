@@ -1323,6 +1323,8 @@ fi:
     messages:
       group_created: Ryhmä alkoi
       group_updated: Ryhmä päivitetty
+      logo_removed: Logo poistettu
+      cover_photo_removed: Kansikuva poistettu
     upload_logo: Lataa logo
     upload_cover_photo: Lataa kansikuva
     request_to_join_prompt: Pyydä liittymään
@@ -1336,6 +1338,9 @@ fi:
     list_in_the_groups_directory: Lista ryhmien hakemistossa?
     list_in_directory_yes: Kyllä · näytä tämä ryhmä "etsi ryhmä" -sivulla
     list_in_directory_no: Ei · ihmisiä tulisi kutsua ryhmään tai antaa heille linkkiä ryhmän löytämiseksi
+    upload_background: lataa tausta
+    remove_background: poista tausta
+    remove_logo: poista logo
   group_export_modal:
     title: Vie ryhmätiedot
     body: <p>Voit ladata kopion ryhmäsi tiedoista milloin tahansa. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Lue lisää.</a></p><p> Suorittaminen kestää muutaman minuutin ryhmäsi koosta riippuen. Kun se on valmis, saat sähköpostin, jossa on linkki tiedoston lataamiseen.</p>
@@ -2683,3 +2688,4 @@ fi:
       success: Keskustelu siirretty keskusteluun %{name}
   auth:
     oauth_cancelled: Kirjautuminen peruutettiin
+    switching_accounts: Tilin vaihto. Kirjaudu sisään uusilla tilitiedoillasi.

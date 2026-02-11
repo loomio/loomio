@@ -101,6 +101,7 @@ Rails.application.routes.draw do
           post :export
           post :export_csv
           post 'upload_photo/:kind', action: :upload_photo
+          delete 'remove_photo/:kind', action: :remove_photo
         end
         collection do
           get :count_explore_results

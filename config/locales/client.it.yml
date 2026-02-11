@@ -1351,6 +1351,8 @@ it:
     messages:
       group_created: Gruppo avviato
       group_updated: Gruppo aggiornato
+      logo_removed: Logo rimosso
+      cover_photo_removed: Foto di copertina rimossa
     upload_logo: Carica nuovo logo
     upload_cover_photo: Carica nuova immagine di copertina
     request_to_join_prompt: Richiesta di partecipazione immediata
@@ -1364,6 +1366,9 @@ it:
     list_in_the_groups_directory: Elenco nella directory dei gruppi?
     list_in_directory_yes: Sì · mostra questo gruppo nella pagina "Trova un gruppo"
     list_in_directory_no: No · le persone dovrebbero essere invitate o ricevere un collegamento per trovare il gruppo
+    upload_background: carica sfondo
+    remove_background: rimuovere lo sfondo
+    remove_logo: rimuovere il logo
   group_export_modal:
     title: Esporta i dati del gruppo
     body: <p>Puoi scaricare una copia dei dati del tuo gruppo in qualsiasi momento. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Scopri di più.</a></p><p> Il completamento richiede alcuni minuti, a seconda delle dimensioni del gruppo. Quando sarà pronto riceverai un'e-mail con un link per scaricare il file.</p>
@@ -2713,3 +2718,4 @@ it:
       success: Discussione spostata su %{name}
   auth:
     oauth_cancelled: L'accesso è stato annullato
+    switching_accounts: Cambio account. Accedi con i dati del tuo nuovo account.

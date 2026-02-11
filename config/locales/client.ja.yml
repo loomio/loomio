@@ -1322,6 +1322,8 @@ ja:
     messages:
       group_created: グループが開始されました
       group_updated: グループが更新されました
+      logo_removed: ロゴを削除しました
+      cover_photo_removed: カバー写真を削除しました
     upload_logo: ロゴをアップロードする
     upload_cover_photo: カバー写真をアップロードする
     request_to_join_prompt: 参加リクエストプロンプト
@@ -1335,6 +1337,9 @@ ja:
     list_in_the_groups_directory: グループディレクトリにリストしますか?
     list_in_directory_yes: はい · このグループを「グループを探す」ページに表示します
     list_in_directory_no: いいえ · 人々にグループを見つけるための招待やリンクを提供する必要があります
+    upload_background: 背景をアップロード
+    remove_background: 背景を削除
+    remove_logo: ロゴを削除
   group_export_modal:
     title: グループデータのエクスポート
     body: <p>グループのデータのコピーはいつでもダウンロードできます。<a href="https://help.loomio.org/en/user_manual/groups/data_export/">もっと詳しく調べてください。</a></p><p>グループの規模に応じて、完了までに数分かかります。準備が完了すると、ファイルをダウンロードするためのリンクが記載された電子メールが届きます。</p>
@@ -2682,3 +2687,4 @@ ja:
       success: ディスカッションは %{name} に移動されました
   auth:
     oauth_cancelled: サインインはキャンセルされました
+    switching_accounts: アカウントを切り替えています。新しいアカウント情報でサインインしてください。

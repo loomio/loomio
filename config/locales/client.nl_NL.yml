@@ -1331,6 +1331,8 @@ nl_NL:
     messages:
       group_created: Groep gestart
       group_updated: Groep bijgewerkt
+      logo_removed: Logo verwijderd
+      cover_photo_removed: Omslagfoto verwijderd
     upload_logo: Upload logo
     upload_cover_photo: Upload cover photo
     request_to_join_prompt: Verzoek om deel te nemen prompt
@@ -1344,6 +1346,9 @@ nl_NL:
     list_in_the_groups_directory: Lijst in de groepsdirectory?
     list_in_directory_yes: Ja · toon deze groep op de pagina "zoek een groep"
     list_in_directory_no: Nee, mensen moeten worden uitgenodigd of een link krijgen om de groep te vinden.
+    upload_background: achtergrond uploaden
+    remove_background: achtergrond verwijderen
+    remove_logo: logo verwijderen
   group_export_modal:
     title: Groepsdata exporteren
     body: |
@@ -2712,3 +2717,4 @@ nl_NL:
       success: Discussie verplaatst naar %{name}
   auth:
     oauth_cancelled: Aanmelden is geannuleerd
+    switching_accounts: Account overzetten. Log in met uw nieuwe accountgegevens.

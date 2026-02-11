@@ -8,21 +8,22 @@ set -euo pipefail
 #   bin/e2e notifications.js                                   # run one spec file
 #   bin/e2e vue/tests/e2e/specs/notifications.js               # also works
 #   bin/e2e notifications.js --testcase has_all_the_notifications  # run one test
-#   bin/e2e --skip-build --retries 3                           # skip Vue build, retry failures
+#   bin/e2e --show                                             # run in visible browser
+#   bin/e2e --retries 3                                        # retry failures
 #
-# Pass-through args are forwarded to nightwatch (except --skip-build).
+# Pass-through args are forwarded to nightwatch.
 # A .js file arg is auto-detected and passed via --test (required by nightwatch
 # for --testcase filtering to work).
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 RAILS_PID=""
-SKIP_BUILD=false
 TEST_FILE=""
+HEADLESS=true
 NW_ARGS=()
 
 for arg in "$@"; do
-  if [ "$arg" = "--skip-build" ]; then
-    SKIP_BUILD=true
+  if [ "$arg" = "--show" ]; then
+    HEADLESS=false
   elif [[ "$arg" == *.js ]] && [ -z "$TEST_FILE" ]; then
     # Strip leading vue/ prefix since nightwatch runs from vue/
     arg="${arg#vue/}"
@@ -37,7 +38,10 @@ for arg in "$@"; do
 done
 
 # Build the nightwatch command args
-FINAL_ARGS=(--headless)
+FINAL_ARGS=()
+if [ "$HEADLESS" = true ]; then
+  FINAL_ARGS+=(--headless)
+fi
 if [ -n "$TEST_FILE" ]; then
   FINAL_ARGS+=(--test "$TEST_FILE")
 fi
@@ -55,12 +59,8 @@ cleanup() {
 trap cleanup EXIT INT TERM
 
 # 1. Build Vue assets
-if [ "$SKIP_BUILD" = false ]; then
-  echo "==> Building Vue assets..."
-  (cd "$ROOT/vue" && npm run build)
-else
-  echo "==> Skipping Vue build (--skip-build)"
-fi
+echo "==> Building Vue assets..."
+(cd "$ROOT/vue" && npm run build)
 
 # 2. Prepare test database
 echo "==> Preparing test database..."

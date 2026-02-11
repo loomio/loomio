@@ -1327,6 +1327,8 @@ hu:
     messages:
       group_created: A csoport elindult
       group_updated: A csoport frissítve
+      logo_removed: Logó eltávolítva
+      cover_photo_removed: Borítókép eltávolítva
     upload_logo: Tölts fel logót
     upload_cover_photo: Töltse fel a borítóképét
     request_to_join_prompt: Csatlakozás kérése
@@ -1340,6 +1342,9 @@ hu:
     list_in_the_groups_directory: Felsorolás a csoportok könyvtárában?
     list_in_directory_yes: Igen · jelenítse meg ezt a csoportot a „Csoport keresése” oldalon
     list_in_directory_no: Nem · Az embereket nem szabad meghívni, és nem szabad linket adni nekik a csoport megtalálásához
+    upload_background: háttér feltöltése
+    remove_background: háttér eltávolítása
+    remove_logo: logó eltávolítása
   group_export_modal:
     title: Csoport adatok letöltése
     body: <p>A csoport adatainak másolatát bármikor letöltheti. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Tudj meg többet.</a></p><p> A kitöltése a csoport méretétől függően néhány percet vesz igénybe. Ha készen áll, e-mailben kap egy linket a fájl letöltéséhez.</p>
@@ -2690,3 +2695,4 @@ hu:
       success: 'Vita áthelyezve ide: %{name}'
   auth:
     oauth_cancelled: Bejelentkezés megszakítva
+    switching_accounts: Fiókváltás. Kérjük, jelentkezzen be az új fiókadataival.

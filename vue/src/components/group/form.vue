@@ -115,6 +115,22 @@ export default
         this.uploading = false;
       };
       Records.groups.remote.upload(`${this.group.id}/upload_photo/logo`, this.$refs.logoInput.files[0], {}, args => { return this.progress = (args.loaded / args.total) * 100; });
+    },
+
+    removeCoverPhoto() {
+      Records.groups.remote.destroy(`${this.group.id}/remove_photo/cover_photo`).then(response => {
+        Records.importJSON(response);
+        this.realGroup = Records.groups.find(this.group.id);
+        Flash.success('group_form.messages.cover_photo_removed');
+      });
+    },
+
+    removeLogo() {
+      Records.groups.remote.destroy(`${this.group.id}/remove_photo/logo`).then(response => {
+        Records.importJSON(response);
+        this.realGroup = Records.groups.find(this.group.id);
+        Flash.success('group_form.messages.logo_removed');
+      });
     }
   },
 
@@ -208,15 +224,20 @@ v-form(ref="form" @submit.prevent="submit")
           group-avatar.group_form__file-select.group_form__logo(:group="realGroup", :size="64" @click="selectLogo()")
           .v-input
             label.v-label.v-label--active.lmo-font-12px
-              a(v-t="'group_form.change_cover_image'" @click="selectCoverPhoto()")
+              a(v-t="'group_form.upload_background'" @click="selectCoverPhoto()")
               space
               | (2048x512 px)
               space
+              a.group-form__remove-cover-photo(v-if="realGroup.coverUrl" v-t="'group_form.remove_background'" @click="removeCoverPhoto()")
+              space
               span(v-t="'common.or'")
               space
-              a(v-t="'group_form.change_logo'" @click="selectLogo()")
+              a(v-t="'group_form.upload_logo'" @click="selectLogo()")
               space
               | (256x256 px)
+              space
+              a.group-form__remove-logo(v-if="realGroup.logoUrl" v-t="'group_form.remove_logo'" @click="removeLogo()")
+              space
           v-text-field.group-form__name#group-name.mt-4(v-model='group.name', :placeholder="$t(groupNamePlaceholder)", :rules='validate("name")' maxlength='255', :label="$t(groupNameLabel)")
           div(v-if="!group.parentId || (group.parentId && group.parent().handle)")
             v-text-field.group-form__handle#group-handle(

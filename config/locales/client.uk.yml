@@ -1334,6 +1334,8 @@ uk:
     messages:
       group_created: Групу створено
       group_updated: Групу оновлено
+      logo_removed: Логотип видалено
+      cover_photo_removed: Обкладинку видалено
     upload_logo: Завантажити логотип
     upload_cover_photo: Завантажити зображення для обкладинки
     request_to_join_prompt: Запит на приєднання
@@ -1347,6 +1349,9 @@ uk:
     list_in_the_groups_directory: Список у каталозі груп?
     list_in_directory_yes: Так · показати цю групу на сторінці «знайти групу»
     list_in_directory_no: Ні · людей слід запрошувати або надавати посилання для пошуку групи
+    upload_background: завантажити фон
+    remove_background: видалити фон
+    remove_logo: видалити логотип
   group_export_modal:
     title: Експортувати дані групи
     body: |
@@ -2715,3 +2720,4 @@ uk:
       success: Обговорення перенесено до %{name}
   auth:
     oauth_cancelled: Вхід скасовано
+    switching_accounts: Зміна облікових записів. Будь ласка, увійдіть, використовуючи дані нового облікового запису.
