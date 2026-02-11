@@ -9,7 +9,7 @@ class Views::UserMailer::GroupExportReady < Views::ApplicationMailer::BaseLayout
   def view_template
     p do
       raw t(:"user_mailer.group_export_ready.body_html",
-        url: Rails.application.routes.url_helpers.rails_blob_url(@document.file, disposition: "attachment"))
+        url: rails_blob_url(@document.file, disposition: "attachment"))
     end
   end
 end
