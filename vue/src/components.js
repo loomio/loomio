@@ -53,7 +53,6 @@ export default {
   HelpLink: 'common/help_link',
   JoinGroupButton: 'group/join_button',
   LmoTextarea: 'lmo_textarea/lmo_textarea',
-  LmoDateInput: 'common/lmo_date_input',
   Loading: 'common/loading',
   LoadingContent: 'common/loading_content',
   LinkPreviews: 'thread/link_previews',

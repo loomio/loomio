@@ -2239,8 +2239,8 @@ en:
     quorum_tip_vote_share_requirement: 'Tip: You can also specify the level of agreement required for a proposal to pass. Edit an option to define vote share requirement'
     deadline: Deadline
     how_much_time_to_vote: How much time will you give people to vote?
-    voting_duration: Open and close
-    voting_duration_hint: When does voting commence and when is the deadline for casting votes.
+    voting_duration: Duration
+    voting_duration_hint: When does voting open and when does it close?
     notify_everyone_when_poll_starts: Notify everyone when %{poll_type} starts
     option_has_votes_confirm_delete: Some people have voted for this option, are you sure you want to delete it?
     example_title: Example title
@@ -2316,6 +2316,7 @@ en:
     limit_reason_length: Limit reason to maximum 500 characters
     save_poll: Save poll
     start_poll_type: Start %{poll_type}
+    create_poll_type: Create %{poll_type}
     share_poll_type: Share %{poll_type}
     who_may_vote: Who may vote in this %{poll_type}?
     update: Update
@@ -2323,7 +2324,7 @@ en:
     notify_invitees: Send notifications
     no_notifications_warning: Voters will not be notified. This is useful if you're running a lot of polls and plan to notify everyone later on.
     count_voters_added: "%{count} voters added"
-    notify_voters_when_poll_opens: Notify voters when %{poll_type} opens
+    notify_voters_when_voting_opens: Notify voters when voting opens
     voters_notified_when_opens: Voters will be notified when voting opens
     poll_type_created: "%{poll_type} created"
     poll_type_started: "%{poll_type} started"

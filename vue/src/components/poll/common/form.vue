@@ -171,7 +171,7 @@ const submit = () => {
     }
   }).catch(error => {
     form.value.validate();
-    Flash.serverError(error, ['title', 'minimumStanceChoices', 'dotsPerPerson', 'closingAt']);
+    Flash.serverError(error, ['title', 'minimumStanceChoices', 'dotsPerPerson', 'closingAt', 'openingAt']);
   }).finally(() => loading.value = false);
 };
 
@@ -299,6 +299,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
   template(v-if="hasOptions")
     v-divider.my-4
     .text-subtitle-1.py-2( v-t="'poll_common_form.options'")
+    p.text-caption.text-medium-emphasis(v-if="optionFormat == 'iso8601'" v-t="'poll_meeting_form.participants_see_local_times'")
     v-alert(v-if="!pollOptions.length" variant="tonal" type="info")
       span(v-t="'poll_common_form.no_options_add_some'")
     sortable-list(
@@ -361,12 +362,6 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
           @click='addDateOption()'
         )
           span(v-t="'poll_poll_form.add_option_placeholder'")
-      .poll-meeting-add-option-menu
-        p.text-caption.text-medium-emphasis
-          span(v-t="{path: 'poll_common_form.your_in_zone', args: {zone: currentTimeZone}}")
-          br
-          span(v-t="'poll_meeting_form.participants_see_local_times'")
-
       .d-flex.align-center.mt-4
         v-text-field.flex-grow-1(
           :label="$t('poll_meeting_form.meeting_duration')"
@@ -461,7 +456,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
       :label="$t('poll_common_opening_at_field.voting_opens_immediately')"
       @update:modelValue="val => { if (val) poll.openingAt = null }"
     )
-    poll-common-opening-at-field.pb-4(:poll="poll" :disabled="votingOpensImmediately")
+    poll-common-opening-at-field.pb-4(v-if="!votingOpensImmediately" :poll="poll")
 
   poll-common-closing-at-field.pb-4(:poll="poll" :min-date="poll.openingAt")
 
@@ -489,7 +484,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
 
   div(style="height: 64px" v-if="!poll.id")
     v-checkbox.mt-n4.pb-0(
-      :label="$t('poll_common_form.notify_voters_when_poll_opens', {poll_type: poll.translatedPollType()})"
+      :label="$t('poll_common_form.notify_voters_when_voting_opens', {poll_type: poll.translatedPollType()})"
       v-model="poll.notifyOnOpen")
 
   v-divider.my-4
@@ -595,7 +590,8 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
       variant="elevated"
     )
       span(v-if='poll.id' v-t="'common.action.save_changes'")
-      span(v-if='!poll.id && poll.closingAt' v-t="{path: 'poll_common_form.start_poll_type', args: {poll_type: poll.translatedPollType()}}")
+      span(v-if='!poll.id && poll.closingAt && votingOpensImmediately' v-t="{path: 'poll_common_form.start_poll_type', args: {poll_type: poll.translatedPollType()}}")
+      span(v-if='!poll.id && poll.closingAt && !votingOpensImmediately' v-t="{path: 'poll_common_form.create_poll_type', args: {poll_type: poll.translatedPollType()}}")
       span(v-if='!poll.id && !poll.closingAt' v-t="'poll_common_form.save_poll'")
 
 </template>

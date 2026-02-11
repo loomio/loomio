@@ -1,8 +1,8 @@
 <script lang="js">
 import AppConfig from '@/shared/services/app_config';
-import { format, formatDistance, parse, startOfHour, startOfDay, isValid, addHours, isAfter } from 'date-fns';
+import { format, formatDistance, parse, startOfHour, startOfDay, isValid, addDays } from 'date-fns';
 import { hoursOfDay, exact, timeFormat } from '@/shared/helpers/format_time';
-import { mdiClockOutline, mdiCalendar } from '@mdi/js'
+import { mdiClockOutline } from '@mdi/js'
 
 export default {
   props: {
@@ -15,14 +15,12 @@ export default {
 
   data() {
     return {
-      mdiCalendar,
       mdiClockOutline,
-      openingHour: format(this.poll.openingAt || startOfHour(new Date()), 'HH:mm'),
-      openingDate: this.poll.openingAt || new Date(),
+      openingHour: format(this.poll.openingAt || startOfHour(addDays(new Date(), 1)), 'HH:mm'),
+      openingDate: this.poll.openingAt || addDays(new Date(), 1),
       times: hoursOfDay(),
       timeZone: AppConfig.timeZone,
       dateToday: startOfDay(new Date()),
-      isShowingDatePicker: false,
     };
   },
 
@@ -68,13 +66,16 @@ export default {
 <template lang="pug">
 .poll-common-opening-at-field
   .poll-common-opening-at-field__inputs.d-flex
-    lmo-date-input.mr-2(
+    v-date-input.mr-2(
       v-model='openingDate'
-      :prepend-inner-icon="mdiCalendar"
+      input-format="yyyy-mm-dd"
       :label="$t('poll_common_opening_at_field.opening_date')"
       :hint="label ? $t('common.opening_in', { time: label }) : ''"
+      :error-messages="poll.errors.openingAt"
       :min="dateToday"
       :disabled="disabled"
+      persistent-hint
+      hide-header
     )
     v-select.poll-common-opening-at-field__timepicker(
       :prepend-inner-icon="mdiClockOutline"
@@ -85,6 +86,5 @@ export default {
       :persistent-hint="twelvehour"
       :disabled="disabled"
     )
-  validation-errors(:subject="poll", field="openingAt")
 
 </template>
