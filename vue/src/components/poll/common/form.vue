@@ -171,7 +171,7 @@ const submit = () => {
     }
   }).catch(error => {
     form.value.validate();
-    Flash.error('common.check_for_errors_and_try_again');
+    Flash.serverError(error, ['title', 'minimumStanceChoices', 'dotsPerPerson', 'closingAt']);
   }).finally(() => loading.value = false);
 };
 

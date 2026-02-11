@@ -147,6 +147,18 @@ class UserMailerTest < ActionMailer::TestCase
     end
   end
 
+  # Group export ready
+  test "group_export_ready sends email with download link" do
+    document = Document.new(author: @user, title: "export.csv")
+    document.file.attach(io: StringIO.new("csv,data"), filename: "export.csv", content_type: "text/csv")
+    document.save!
+
+    mail = UserMailer.group_export_ready(@user.id, @group.full_name, document.id)
+    assert_equal [@user.email], mail.to
+    assert_equal I18n.t("user_mailer.group_export_ready.subject", group_name: @group.full_name), mail.subject
+    assert_match "/rails/active_storage/blobs/", mail.body.encoded
+  end
+
   test "does not email mondays when tuesday" do
     @user.update!(email_catch_up_day: 1, time_zone: 'Pacific/Tarawa')
     @group.add_member!(@user)

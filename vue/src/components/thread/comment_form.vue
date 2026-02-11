@@ -56,7 +56,7 @@ export default {
           EventBus.$emit('deleteDraft', 'comment', this.comment.id, 'body');
         });
       }).catch(err => {
-        Flash.error('common.something_went_wrong');
+        Flash.serverError(err);
       }).finally(() => this.processing = false);
     }
   }

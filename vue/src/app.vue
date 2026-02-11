@@ -48,11 +48,11 @@ export default {
   },
 
   mounted() {
-    initLiveUpdate();
+    if (Session.isSignedIn()) { initLiveUpdate(); }
     EventBus.$on('currentComponent',     this.setCurrentComponent);
     EventBus.$on('openAuthModal',     () => this.openAuthModal());
     EventBus.$on('pageError', error => { return this.pageError = error; });
-    EventBus.$on('signedIn',          () => { return this.pageError = null; });
+    EventBus.$on('signedIn',          () => { this.pageError = null; initLiveUpdate(); });
     if (AppConfig.flash.notice) { Flash.success(AppConfig.flash.notice); }
   },
 

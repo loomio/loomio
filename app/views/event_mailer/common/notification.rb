@@ -80,6 +80,7 @@ class Views::EventMailer::Common::Notification < Views::ApplicationMailer::Compo
 
   def title_link_html
     return @title if @title
-    ActionController::Base.helpers.link_to(TranslationService.plain_text(@event.eventable.title_model, :title, @recipient), url)
+    title_text = TranslationService.plain_text(@event.eventable.title_model, :title, @recipient)
+    capture { a(href: url) { title_text } }
   end
 end
