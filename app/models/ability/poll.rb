@@ -15,6 +15,14 @@ module Ability::Poll
       user.can?(:show, poll) && poll.show_results?
     end
 
+    can :receipts, ::Poll do |poll|
+      if AppConfig.app_features[:verify_participants_admin_only]
+        poll.group_id && poll.group.admins.exists?(user.id)
+      else
+        user.can?(:show, poll)
+      end
+    end
+
     can [:show], ::Poll do |poll|
       PollQuery.visible_to(user: user).exists?(poll.id)
     end
