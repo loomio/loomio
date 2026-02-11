@@ -89,6 +89,91 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
     assert_equal @user.id, poll.discarded_by
   end
 
+  # Receipts tests
+  test "receipts returns receipts for a poll" do
+    @group.add_admin! @user
+    poll = Poll.new(
+      title: "receipts test",
+      poll_type: "proposal",
+      group: @group,
+      discussion: @discussion,
+      author: @user,
+      poll_option_names: %w[agree disagree abstain],
+      closing_at: 5.days.from_now
+    )
+    PollService.create(poll: poll, actor: @user)
+
+    sign_in @user
+    get :receipts, params: { id: poll.key }
+    assert_response :success
+
+    json = JSON.parse(response.body)
+    assert_equal poll.title, json['poll_title']
+    assert json.key?('receipts')
+  end
+
+  test "receipts allowed for non-admin member by default" do
+    @group.add_admin! @user
+    @group.add_member! @another_user
+    poll = Poll.new(
+      title: "receipts test",
+      poll_type: "proposal",
+      group: @group,
+      discussion: @discussion,
+      author: @user,
+      poll_option_names: %w[agree disagree abstain],
+      closing_at: 5.days.from_now
+    )
+    PollService.create(poll: poll, actor: @user)
+
+    sign_in @another_user
+    get :receipts, params: { id: poll.key }
+    assert_response :success
+  end
+
+  test "receipts denied for non-admin member when admin only env set" do
+    ENV['LOOMIO_VERIFY_PARTICIPANTS_ADMIN_ONLY'] = '1'
+    @group.add_admin! @user
+    @group.add_member! @another_user
+    poll = Poll.new(
+      title: "receipts test",
+      poll_type: "proposal",
+      group: @group,
+      discussion: @discussion,
+      author: @user,
+      poll_option_names: %w[agree disagree abstain],
+      closing_at: 5.days.from_now
+    )
+    PollService.create(poll: poll, actor: @user)
+
+    sign_in @another_user
+    get :receipts, params: { id: poll.key }
+    assert_response :forbidden
+  ensure
+    ENV.delete('LOOMIO_VERIFY_PARTICIPANTS_ADMIN_ONLY')
+  end
+
+  test "receipts allowed for group admin when admin only env set" do
+    ENV['LOOMIO_VERIFY_PARTICIPANTS_ADMIN_ONLY'] = '1'
+    @group.add_admin! @user
+    poll = Poll.new(
+      title: "receipts test",
+      poll_type: "proposal",
+      group: @group,
+      discussion: @discussion,
+      author: @user,
+      poll_option_names: %w[agree disagree abstain],
+      closing_at: 5.days.from_now
+    )
+    PollService.create(poll: poll, actor: @user)
+
+    sign_in @user
+    get :receipts, params: { id: poll.key }
+    assert_response :success
+  ensure
+    ENV.delete('LOOMIO_VERIFY_PARTICIPANTS_ADMIN_ONLY')
+  end
+
   # Close tests
   test "close closes an open poll" do
     poll = Poll.new(
