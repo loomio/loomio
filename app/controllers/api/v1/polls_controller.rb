@@ -1,6 +1,6 @@
 class Api::V1::PollsController < Api::V1::RestfulController
   def receipts
-    @poll = load_and_authorize(:poll)
+    @poll = load_and_authorize(:poll, :receipts)
 
     if @poll.closed_at && StanceReceipt.where(poll_id: @poll.id).exists?
       receipts = StanceReceipt.where(poll_id: @poll.id)

@@ -7,6 +7,7 @@ import StanceService from '@/shared/services/stance_service';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
 import openModal      from '@/shared/helpers/open_modal';
 import { I18n }          from '@/i18n';
+import AppConfig      from '@/shared/services/app_config';
 import { hardReload } from '@/shared/helpers/window';
 import { startOfHour, addDays, format } from 'date-fns';
 
@@ -301,7 +302,12 @@ export default new class PollService {
         name: 'poll_receipts_page.verify_participants',
         menu: true,
         to() { return `/p/${poll.key}/receipts`; },
-        canPerform() { return true }
+        canPerform() {
+          if (AppConfig.features.app.verify_participants_admin_only) {
+            return poll.group() && poll.group().adminsInclude(Session.user());
+          }
+          return true;
+        }
       },
 
 
