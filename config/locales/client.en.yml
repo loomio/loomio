@@ -720,7 +720,6 @@ en:
       poll_closing_soon: "%{poll_type} closing in 24 hours: %{title}"
       poll_closing_soon_author: 'Your %{poll_type} is closing in 24 hours: %{title}'
       poll_created: "Vote: %{title}"
-      poll_opened: "Vote: %{title}"
       poll_edited: "%{actor} updated the %{poll_type}: %{title}"
       poll_expired: "%{poll_type} has closed: %{title}"
       poll_expired_author: 'Publish an outcome: %{title}'
@@ -760,7 +759,6 @@ en:
       poll_closing_soon: "%{poll_type} closing in 24 hours: %{title}"
       poll_closing_soon_author: 'Your %{poll_type} is closing in 24 hours: %{title}'
       poll_created: "%{actor} started a %{poll_type}: %{title}"
-      poll_opened: "Voting has opened: %{title}"
       poll_edited: "%{actor} updated the %{poll_type}: %{title}"
       poll_expired: "%{poll_type} has closed: %{title}"
       poll_expired_author: 'Share the outcome of your %{poll_type}: %{title}'
@@ -799,7 +797,6 @@ en:
       poll_closing_soon: "%{poll_type} closing in 24 hours"
       poll_closing_soon_author: Your %{poll_type} is closing in 24 hours
       poll_created: "%{actor} started a %{poll_type}"
-      poll_opened: "Voting has opened"
       poll_edited: "%{actor} updated the %{poll_type}"
       poll_expired: "%{poll_type} has closed"
       poll_expired_author: Share the outcome of your %{poll_type}
@@ -913,7 +910,6 @@ en:
     new_discussion: "%{name} invited %{length} people to the thread:"
     discussion_announced: "%{name} invited %{length} people to the thread:"
     poll_created: "%{name} invited %{length} people to vote:"
-    poll_opened: "%{name} notified %{length} people that voting is open:"
     poll_announced: "%{name} invited %{length} people to vote:"
     outcome_created: "%{name} shared an outcome with %{length} people:"
     outcome_announced: "%{name} shared an outcome with %{length} people:"
@@ -2327,6 +2323,8 @@ en:
     notify_invitees: Send notifications
     no_notifications_warning: Voters will not be notified. This is useful if you're running a lot of polls and plan to notify everyone later on.
     count_voters_added: "%{count} voters added"
+    notify_voters_when_poll_opens: Notify voters when %{poll_type} opens
+    voters_notified_when_opens: Voters will be notified when voting opens
     poll_type_created: "%{poll_type} created"
     poll_type_started: "%{poll_type} started"
     poll_type_updated: "%{poll_type} updated"
@@ -2635,7 +2633,6 @@ en:
       poll_edited: A poll is edited
       new_comment: A comment is made
       poll_created: A poll is started
-      poll_opened: Voting opens on a poll
       stance_created: A vote is cast
       stance_updated: A vote is changed
       poll_closing_soon: A poll is closing soon

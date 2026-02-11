@@ -38,6 +38,7 @@ class PollTemplate < ApplicationRecord
     :specified_voters_only,
     :stance_reason_required,
     :notify_on_closing_soon,
+    :notify_on_open,
     :hide_results,
     :min_score,
     :max_score,

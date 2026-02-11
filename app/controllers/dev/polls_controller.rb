@@ -125,6 +125,12 @@ class Dev::PollsController < Dev::NightwatchController
     redirect_to "/g/#{group.key}/polls"
   end
 
+  def test_scheduled_poll
+    scenario = poll_scheduled_scenario(poll_type: params[:poll_type] || 'proposal')
+    sign_in scenario[:observer]
+    redirect_to poll_url(scenario[:poll])
+  end
+
   def test_activity_items
     user = fake_user
     group = saved fake_group

@@ -216,6 +216,7 @@ class Poll < ApplicationRecord
     :stance_reason_required,
     :tags,
     :notify_on_closing_soon,
+    :notify_on_open,
     :poll_option_names,
     :hide_results,
     :attachments]

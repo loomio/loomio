@@ -21,7 +21,7 @@ class PollService
 
       if poll.closing_at && (poll.opening_at.nil? || poll.opening_at <= Time.now)
         poll.update_column(:opened_at, Time.now)
-        Events::PollOpened.publish!(poll)
+        announce_poll_opened(poll) if poll.notify_on_open
       end
     end
   end
@@ -226,20 +226,15 @@ class PollService
   def self.reopen(poll:, params:, actor:)
     actor.ability.authorize! :reopen, poll
 
-    poll.assign_attributes(closing_at: params[:closing_at], closed_at: nil, opening_at: params[:opening_at])
+    poll.assign_attributes(closing_at: params[:closing_at], closed_at: nil, opening_at: nil, opened_at: Time.now)
     return false unless poll.valid?
 
     Poll.transaction do
-      if poll.opening_at.nil? || poll.opening_at <= Time.now
-        poll.opened_at = Time.now
-      else
-        poll.opened_at = nil
-      end
       poll.save!
 
       EventBus.broadcast('poll_reopen', poll, actor)
       Events::PollReopened.publish!(poll, actor)
-      Events::PollOpened.publish!(poll) if poll.opened_at
+      announce_poll_opened(poll) if poll.notify_on_open
     end
   end
 
@@ -252,13 +247,13 @@ class PollService
     end
   end
 
-  def self.open_polls
+  def self.open_scheduled_polls
     Poll.kept
         .where(opened_at: nil)
         .where("opening_at IS NOT NULL AND opening_at <= ?", Time.now)
         .each do |poll|
       poll.update_column(:opened_at, Time.now)
-      Events::PollOpened.publish!(poll)
+      announce_poll_opened(poll) if poll.notify_on_open
     end
   end
 
@@ -469,5 +464,16 @@ class PollService
       )
     end
     l
+  end
+
+  def self.announce_poll_opened(poll)
+    stances = poll.stances.latest.where.not(participant_id: poll.author_id)
+    return if stances.empty?
+
+    Events::PollAnnounced.publish!(
+      poll: poll,
+      actor: poll.author,
+      stances: stances
+    )
   end
 end

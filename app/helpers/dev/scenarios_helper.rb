@@ -324,6 +324,38 @@ module Dev::ScenariosHelper
     scenario.merge(observer: observer)
   end
 
+  def poll_scheduled_scenario(params)
+    group = create_group_with_members
+    actor = group.admins.first
+    user  = saved(fake_user(time_zone: "America/New_York"))
+    group.add_member! user
+
+    discussion = fake_discussion(group: group, title: "Some discussion")
+    DiscussionService.create(discussion: discussion, actor: actor)
+
+    poll = fake_poll(
+      group: group,
+      discussion: discussion,
+      poll_type: params[:poll_type] || 'proposal',
+      anonymous: !!params[:anonymous],
+      hide_results: (params[:hide_results] || :off),
+      opening_at: 3.days.from_now,
+      closing_at: 10.days.from_now,
+      specified_voters_only: true,
+      notify_on_open: true
+    )
+    PollService.create(poll: poll, actor: actor)
+
+    {
+      discussion: discussion,
+      group: group,
+      observer: actor,
+      poll: poll,
+      title: poll.title,
+      actor: actor
+    }
+  end
+
   def alternative_poll_option_selection(poll_option_ids, i)
     poll_option_ids.each_with_index.map {|id, j| {poll_option_id: id, score: (i+j)%3}}
   end

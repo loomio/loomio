@@ -77,6 +77,7 @@ export default class PollModel extends BaseModel {
       attachments: [],
       linkPreviews: [],
       notifyOnClosingSoon: 'undecided_voters',
+      notifyOnOpen: true,
       results: [],
       meetingDuration: null,
       pollTemplateId: null,

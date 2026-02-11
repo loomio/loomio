@@ -149,20 +149,34 @@ class PollServiceTest < ActiveSupport::TestCase
     end
   end
 
-  test "poll_created does not email but poll_opened emails stance holders" do
+  test "poll_created publishes poll_announced when notify_on_open is true" do
     poll = Poll.new(
       title: "No Email Poll",
       poll_type: "proposal",
       discussion: @discussion,
       author: @user,
       poll_option_names: ["Agree", "Disagree"],
-      closing_at: 3.days.from_now
+      closing_at: 3.days.from_now,
+      notify_on_open: true
     )
     PollService.create(poll: poll, actor: @user)
-    # PollCreated no longer sends emails (only mentions/chatbots)
-    # PollOpened sends emails to stance holders with normal/loud volume
     assert poll.opened?
-    assert Events::PollOpened.where(eventable: poll).exists?
+    assert Event.where(kind: 'poll_announced', eventable: poll).exists?
+  end
+
+  test "poll_created does not publish poll_announced when notify_on_open is false" do
+    poll = Poll.new(
+      title: "No Email Poll",
+      poll_type: "proposal",
+      discussion: @discussion,
+      author: @user,
+      poll_option_names: ["Agree", "Disagree"],
+      closing_at: 3.days.from_now,
+      notify_on_open: false
+    )
+    PollService.create(poll: poll, actor: @user)
+    assert poll.opened?
+    refute Event.where(kind: 'poll_announced', eventable: poll).exists?
   end
 
   # Note: poll mention notification test omitted due to asset pipeline dependency
@@ -257,6 +271,206 @@ class PollServiceTest < ActiveSupport::TestCase
     original_closed_at = poll.reload.closed_at
     PollService.expire_lapsed_polls
     assert_equal original_closed_at, poll.reload.closed_at
+  end
+
+  # -- scheduled opening (opening_at) --
+
+  test "scheduled poll is not opened at create time" do
+    poll = Poll.new(
+      title: "Scheduled Poll",
+      poll_type: "proposal",
+      discussion: @discussion,
+      author: @user,
+      poll_option_names: ["Agree", "Disagree"],
+      closing_at: 7.days.from_now,
+      opening_at: 3.days.from_now,
+      notify_on_open: true
+    )
+    PollService.create(poll: poll, actor: @user)
+    refute poll.opened?, "poll should not be opened when opening_at is in the future"
+    refute Event.where(kind: 'poll_announced', eventable: poll).exists?,
+      "no poll_announced event should be created for scheduled poll at create time"
+  end
+
+  test "open_scheduled_polls opens scheduled polls and sends poll_announced when notify_on_open is true" do
+    poll = Poll.new(
+      title: "Scheduled Notify",
+      poll_type: "proposal",
+      discussion: @discussion,
+      author: @user,
+      poll_option_names: ["Agree", "Disagree"],
+      closing_at: 7.days.from_now,
+      opening_at: 3.days.from_now,
+      notify_on_open: true
+    )
+    PollService.create(poll: poll, actor: @user)
+    refute poll.opened?
+
+    # Simulate time passing: set opening_at to the past
+    poll.update_column(:opening_at, 1.minute.ago)
+
+    PollService.open_scheduled_polls
+    poll.reload
+    assert poll.opened?, "poll should be opened after open_scheduled_polls runs"
+    assert Event.where(kind: 'poll_announced', eventable: poll).exists?,
+      "poll_announced event should be created when notify_on_open is true"
+  end
+
+  test "open_scheduled_polls opens scheduled polls without poll_announced when notify_on_open is false" do
+    poll = Poll.new(
+      title: "Scheduled Silent",
+      poll_type: "proposal",
+      discussion: @discussion,
+      author: @user,
+      poll_option_names: ["Agree", "Disagree"],
+      closing_at: 7.days.from_now,
+      opening_at: 3.days.from_now,
+      notify_on_open: false
+    )
+    PollService.create(poll: poll, actor: @user)
+    poll.update_column(:opening_at, 1.minute.ago)
+
+    PollService.open_scheduled_polls
+    poll.reload
+    assert poll.opened?, "poll should be opened after open_scheduled_polls runs"
+    refute Event.where(kind: 'poll_announced', eventable: poll).exists?,
+      "no poll_announced event when notify_on_open is false"
+  end
+
+  test "open_scheduled_polls does not open polls whose opening_at is still in the future" do
+    poll = Poll.new(
+      title: "Future Poll",
+      poll_type: "proposal",
+      discussion: @discussion,
+      author: @user,
+      poll_option_names: ["Agree", "Disagree"],
+      closing_at: 7.days.from_now,
+      opening_at: 3.days.from_now,
+      notify_on_open: true
+    )
+    PollService.create(poll: poll, actor: @user)
+    PollService.open_scheduled_polls
+    poll.reload
+    refute poll.opened?, "poll should not be opened when opening_at is still in the future"
+  end
+
+  # -- reopen --
+
+  test "reopen sends poll_announced when notify_on_open is true" do
+    poll = create_poll
+    PollService.close(poll: poll, actor: @user)
+    poll.reload
+
+    announced_count_before = Event.where(kind: 'poll_announced', eventable: poll).count
+    PollService.reopen(poll: poll, params: { closing_at: 7.days.from_now }, actor: @user)
+    poll.reload
+
+    assert poll.opened?, "poll should be opened after reopen"
+    assert_nil poll.opening_at, "opening_at should be nil after reopen"
+    assert_operator Event.where(kind: 'poll_announced', eventable: poll).count, :>, announced_count_before,
+      "poll_announced event should be created on reopen with notify_on_open=true"
+  end
+
+  test "reopen does not send poll_announced when notify_on_open is false" do
+    poll = create_poll
+    poll.update!(notify_on_open: false)
+    PollService.close(poll: poll, actor: @user)
+    poll.reload
+
+    announced_count_before = Event.where(kind: 'poll_announced', eventable: poll).count
+    PollService.reopen(poll: poll, params: { closing_at: 7.days.from_now }, actor: @user)
+    poll.reload
+
+    assert poll.opened?, "poll should be opened after reopen"
+    assert_equal announced_count_before, Event.where(kind: 'poll_announced', eventable: poll).count,
+      "no poll_announced event on reopen when notify_on_open is false"
+  end
+
+  # -- invite to scheduled poll --
+
+  test "invite to scheduled poll creates stances but does not send poll_announced" do
+    @group.add_admin!(@user)
+    poll = Poll.new(
+      title: "Scheduled Invite",
+      poll_type: "proposal",
+      discussion: @discussion,
+      author: @user,
+      poll_option_names: ["Agree", "Disagree"],
+      closing_at: 7.days.from_now,
+      opening_at: 3.days.from_now,
+      specified_voters_only: true,
+      notify_on_open: true
+    )
+    PollService.create(poll: poll, actor: @user)
+    refute poll.opened?
+
+    member = create_unique_user("scheduledinvite")
+    @group.add_member!(member)
+
+    # Invite without notify_recipients (scheduled poll UI forces this off)
+    PollService.invite(poll: poll, actor: @user, params: {
+      recipient_user_ids: [member.id],
+      notify_recipients: false
+    })
+
+    assert Stance.where(participant_id: member.id, poll: poll).exists?,
+      "stance should be created for invited user"
+    refute Event.where(kind: 'poll_announced', eventable: poll).exists?,
+      "no poll_announced when inviting to scheduled poll without notify_recipients"
+  end
+
+  # -- email delivery --
+
+  test "open_scheduled_polls delivers emails to voters when notify_on_open is true" do
+    @group.add_admin!(@user)
+    member = create_unique_user("emailvoter")
+    @group.add_member!(member)
+
+    poll = Poll.new(
+      title: "Email Test Poll",
+      poll_type: "proposal",
+      discussion: @discussion,
+      author: @user,
+      poll_option_names: ["Agree", "Disagree"],
+      closing_at: 7.days.from_now,
+      opening_at: 3.days.from_now,
+      notify_on_open: true
+    )
+    PollService.create(poll: poll, actor: @user)
+    ActionMailer::Base.deliveries.clear
+
+    poll.update_column(:opening_at, 1.minute.ago)
+    PollService.open_scheduled_polls
+
+    announced_emails = ActionMailer::Base.deliveries.select { |m| m.to.include?(member.email) }
+    assert_operator announced_emails.size, :>=, 1,
+      "voter should receive email when poll opens with notify_on_open=true"
+  end
+
+  test "open_scheduled_polls delivers no emails to voters when notify_on_open is false" do
+    @group.add_admin!(@user)
+    member = create_unique_user("noemailvoter")
+    @group.add_member!(member)
+
+    poll = Poll.new(
+      title: "No Email Test Poll",
+      poll_type: "proposal",
+      discussion: @discussion,
+      author: @user,
+      poll_option_names: ["Agree", "Disagree"],
+      closing_at: 7.days.from_now,
+      opening_at: 3.days.from_now,
+      notify_on_open: false
+    )
+    PollService.create(poll: poll, actor: @user)
+    ActionMailer::Base.deliveries.clear
+
+    poll.update_column(:opening_at, 1.minute.ago)
+    PollService.open_scheduled_polls
+
+    announced_emails = ActionMailer::Base.deliveries.select { |m| m.to.include?(member.email) }
+    assert_equal 0, announced_emails.size,
+      "voter should not receive email when poll opens with notify_on_open=false"
   end
 
   # -- group_members_added --

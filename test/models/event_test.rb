@@ -122,8 +122,8 @@ class EventTest < ActiveSupport::TestCase
     assert_includes Events::UserMentioned.last.custom_fields['user_ids'], @mentioned_user.id
   end
 
-  test "poll_created notifies mentioned users" do
-    assert_difference -> { ActionMailer::Base.deliveries.count }, 1 do
+  test "poll_created notifies mentioned users and loud subscribers" do
+    assert_difference -> { ActionMailer::Base.deliveries.count }, 3 do
       Events::PollCreated.publish!(@poll, @poll.author)
     end
     assert_equal 1, @poll.mentioned_users.length

@@ -163,7 +163,7 @@ const submit = () => {
       Flash.success("poll_common_form.poll_type_updated", {poll_type: poll.translatedPollTypeCaps()});
     }
 
-    if ((actionName == 'created') && poll.specifiedVotersOnly && poll.openedAt) {
+    if ((actionName == 'created') && poll.specifiedVotersOnly && (poll.openedAt || poll.openingAt)) {
       EventBus.$emit('openModal', {
         component: 'PollMembers',
         props: { poll }
@@ -487,10 +487,10 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
     .text-body-2.font-italic.text-medium-emphasis.mt-n4.py-4(
       v-t="{path: 'poll_common_settings.invite_people_next', args: {poll_type: poll.translatedPollType()}}")
 
-  div(style="height: 64px" v-if="!poll.id && !poll.specifiedVotersOnly && votingOpensImmediately")
+  div(style="height: 64px" v-if="!poll.id")
     v-checkbox.mt-n4.pb-0(
-      :label="$t('poll_common_form.notify_everyone_when_poll_starts', {poll_type: poll.translatedPollType()})"
-      v-model="poll.notifyRecipients")
+      :label="$t('poll_common_form.notify_voters_when_poll_opens', {poll_type: poll.translatedPollType()})"
+      v-model="poll.notifyOnOpen")
 
   v-divider.my-4
   .text-subtitle-1.pb-2(v-t="'poll_common_form.reminder_notification'")

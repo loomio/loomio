@@ -464,4 +464,27 @@ module.exports = {
   //   page.pause(500)
   //   page.expectElement('.discussion-form')
   // },
+
+  'can_view_scheduled_poll_and_add_voters': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('polls/test_scheduled_poll')
+    page.pause(500)
+
+    // Verify the poll shows "Opening in..." text
+    page.expectText('.closing-in', 'Opening')
+
+    // Verify vote form is NOT shown (poll is not open yet)
+    page.expectNoElement('.poll-common-vote-form')
+
+    // Open the add voters modal
+    page.click('.action-dock__button--announce_poll')
+    page.pause(500)
+
+    // Verify the add voters modal is shown
+    page.expectElement('.poll-members-form')
+
+    // Verify the button says "ADD VOTERS" (Vuetify uppercases button text)
+    page.expectText('.poll-members-form__submit', 'ADD VOTERS')
+  },
 }

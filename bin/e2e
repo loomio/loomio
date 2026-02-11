@@ -19,6 +19,7 @@ RAILS_PID=""
 SKIP_BUILD=false
 TEST_FILE=""
 NW_ARGS=()
+E2E_PORT="${E2E_PORT:-3001}"
 
 for arg in "$@"; do
   if [ "$arg" = "--skip-build" ]; then
@@ -67,14 +68,14 @@ echo "==> Preparing test database..."
 RAILS_ENV=test bundle exec rails db:prepare
 
 # 3. Start Rails server
-echo "==> Starting Rails server on port 3000..."
-RAILS_ENV=test bundle exec rails server -p 3000 -b 127.0.0.1 &
+echo "==> Starting Rails server on port $E2E_PORT..."
+E2E_PORT="$E2E_PORT" RAILS_ENV=test bundle exec rails server -p "$E2E_PORT" -b 127.0.0.1 &
 RAILS_PID=$!
 
 # 4. Wait for server to be ready
 echo "==> Waiting for Rails server..."
 for i in $(seq 1 30); do
-  if curl -sf http://localhost:3000/ > /dev/null 2>&1; then
+  if curl -sf "http://localhost:$E2E_PORT/" > /dev/null 2>&1; then
     echo "    Server is ready."
     break
   fi
@@ -88,7 +89,7 @@ done
 # 5. Run Nightwatch
 echo "==> Running Nightwatch: npx nightwatch ${FINAL_ARGS[*]}"
 set +e
-(cd "$ROOT/vue" && RAILS_ENV=test npx nightwatch "${FINAL_ARGS[@]}")
+(cd "$ROOT/vue" && E2E_PORT="$E2E_PORT" RAILS_ENV=test npx nightwatch "${FINAL_ARGS[@]}")
 TEST_EXIT=$?
 set -e
 

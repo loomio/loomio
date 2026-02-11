@@ -22,12 +22,6 @@ export default {
         this.close();
       });
     }
-  },
-  data() {
-    return {
-      isDisabled: false,
-      votingOpensImmediately: true
-    };
   }
 }
 </script>
@@ -38,14 +32,7 @@ v-card.poll-common-reopen-modal(:title="$t('poll_common_reopen_form.title', {pol
     dismiss-modal-button
   v-card-text.poll-common-reopen-form
     p.text-medium-emphasis(v-t="{path: 'poll_common_reopen_form.helptext', args: {poll_type: poll.translatedPollType()}}")
-    v-checkbox.mt-2(
-      hide-details
-      v-model="votingOpensImmediately"
-      :label="$t('poll_common_opening_at_field.voting_opens_immediately')"
-      @update:modelValue="val => { if (val) poll.openingAt = null }"
-    )
-    poll-common-opening-at-field.pb-4(:poll="poll" :disabled="votingOpensImmediately")
-    poll-common-closing-at-field(:poll='poll' :min-date="poll.openingAt")
+    poll-common-closing-at-field(:poll='poll')
   v-card-actions
     v-spacer
     v-btn.poll-common-reopen-form__submit(variant="elevated" color="primary" @click='submit' :loading="poll.processing")
