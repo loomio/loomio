@@ -6,21 +6,28 @@ import { createConsumer } from '@rails/actioncable';
 let consumer = null;
 
 export var initLiveUpdate = function() {
-  consumer = createConsumer();
+  if (consumer) { return; }
 
-  consumer.subscriptions.create("RecordsChannel", {
-    received(data) {
-      if (data.records) {
-        Records.importJSON(data.records);
+  try {
+    consumer = createConsumer();
+
+    consumer.subscriptions.create("RecordsChannel", {
+      received(data) {
+        if (data.records) {
+          Records.importJSON(data.records);
+        }
       }
-    }
-  });
+    });
 
-  consumer.subscriptions.create("NoticeChannel", {
-    received(data) {
-      EventBus.$emit('systemNotice', data);
-    }
-  });
+    consumer.subscriptions.create("NoticeChannel", {
+      received(data) {
+        EventBus.$emit('systemNotice', data);
+      }
+    });
+  } catch (e) {
+    console.warn('Failed to initialize live update:', e.message);
+    consumer = null;
+  }
 };
 
 export var closeLiveUpdate = function() {
