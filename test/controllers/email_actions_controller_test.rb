@@ -18,6 +18,39 @@ class EmailActionsControllerTest < ActionController::TestCase
     ActionMailer::Base.deliveries.clear
   end
 
+  # unsubscribe page rendering
+  test "unsubscribe renders with discussion reader" do
+    @discussion_reader = DiscussionReader.for(discussion: @discussion, user: @user)
+    @discussion_reader.set_volume!(:loud)
+
+    get :unsubscribe, params: { discussion_id: @discussion.id, unsubscribe_token: @user.unsubscribe_token }
+    assert_response :success
+    assert_select "select[name=value]"
+    assert_select "option[value=loud][selected]"
+  end
+
+  test "unsubscribe renders with stance and discussion reader" do
+    poll = Poll.create!(
+      title: "Unsub Poll #{SecureRandom.hex(4)}",
+      poll_type: 'proposal',
+      group: @group,
+      discussion: @discussion,
+      author: @author,
+      closing_at: 3.days.from_now,
+      poll_option_names: %w[agree disagree abstain]
+    )
+    poll.create_missing_created_event!
+    stance = Stance.create!(poll: poll, participant: @user, latest: true)
+    stance.set_volume!(:normal)
+
+    get :unsubscribe, params: {
+      discussion_id: @discussion.id,
+      poll_id: poll.id,
+      unsubscribe_token: @user.unsubscribe_token
+    }
+    assert_response :success
+  end
+
   # set_volume tests
   test "unsubscribes membership" do
     @membership.set_volume!(:loud)
