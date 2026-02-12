@@ -9,14 +9,14 @@ import EventBus from '@/shared/services/event_bus';
 import Flash   from '@/shared/services/flash';
 import { I18n } from '@/i18n';
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete';
-import ThreadTemplateHelpPanel from '@/components/thread_template/help_panel';
+import DiscussionTemplateHelpPanel from '@/components/discussion_template/help_panel';
 import FormatDate from '@/mixins/format_date';
 import WatchRecords from '@/mixins/watch_records';
 import UrlFor from '@/mixins/url_for';
 
 export default {
   mixins: [WatchRecords, FormatDate, UrlFor],
-  components: {RecipientsAutocomplete, ThreadTemplateHelpPanel},
+  components: {RecipientsAutocomplete, DiscussionTemplateHelpPanel},
 
   props: {
     discussion: Object,
@@ -199,7 +199,7 @@ v-form(ref="form" @submit.prevent="submit")
         common-icon(name="mdi-close")
 
     v-card-item
-      thread-template-help-panel.mb-8(v-if="discussionTemplate" :discussion-template="discussionTemplate")
+      discussion-template-help-panel.mb-8(v-if="discussionTemplate" :discussion-template="discussionTemplate")
       v-select.pb-4(
         :disabled="!!discussion.id"
         v-model="discussion.groupId"
@@ -208,6 +208,7 @@ v-form(ref="form" @submit.prevent="submit")
         persistent-hint
       )
       //- :hint="discussion.groupId ? $t('announcement.form.visible_to_group', {group: discussion.group().name}) : $t('announcement.form.visible_to_guests')"
+      v-alert.mb-4(v-if="!discussion.groupId && !discussionTemplate && !discussion.id" type="info" variant="tonal" density="compact") {{ $t('discussion_form.direct_discussion_hint') }}
 
       div(v-if="showUpgradeMessage")
         p(v-if="maxThreadsReached" v-html="$t('discussion.max_threads_reached', {upgradeUrl: upgradeUrl, maxThreads: maxThreads})")

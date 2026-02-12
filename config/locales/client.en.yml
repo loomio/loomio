@@ -833,14 +833,21 @@ en:
     example_description_label: Example description
     example_description_placeholder: Provide a template that people can use to start a thread with
     hidden_templates: Hidden templates
+    choose_a_group: Choose a group
+    default_templates: Default templates
+    or_start_a_direct_discussion: Or start a direct discussion
+    choose_group_for_templates: Choose a group to view its discussion templates
+    start_direct_discussion: Start direct discussion
     confirm_delete: Are you sure you want to delete this discussion template?
     add_poll_template: Add poll template
     add_poll_template_help: Select any poll templates that help to complete this process
     recommended_poll_templates: Recommended poll templates
     share_in_template_gallery: Share this template in the public template gallery
+    default_to_direct_discussion: Start as a direct discussion (no group)
   discussion_form:
     none_invite_only_discussion: None (invite-only discussion)
     none_direct_discussion: None (direct discussion)
+    direct_discussion_hint: A direct discussion is only visible to the specific people you invite. It will not appear in any group's discussion list — you can find it on your Direct discussions page.
     new_discussion_template: New discussion template
     edit_discussion_template: Edit discussion template
     blank: Blank

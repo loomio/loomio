@@ -40,7 +40,7 @@ export default {
       } else if ((templateId = parseInt(this.$route.query.template_id))) {
         Records.discussionTemplates.findOrFetchById(templateId).then(template => {
           this.discussion = template.buildDiscussion();
-          if (parseInt(this.$route.query.group_id)) {
+          if (!template.defaultToDirectDiscussion && parseInt(this.$route.query.group_id)) {
             this.discussion.groupId = parseInt(this.$route.query.group_id);
           }
         });
@@ -48,7 +48,7 @@ export default {
       } else if ((templateKey = this.$route.query.template_key)) {
         Records.discussionTemplates.findOrFetchByKey(this.$route.query.template_key, this.$route.query.group_id).then(template => {
           this.discussion = template.buildDiscussion();
-          if (parseInt(this.$route.query.group_id)) {
+          if (!template.defaultToDirectDiscussion && parseInt(this.$route.query.group_id)) {
             this.discussion.groupId = parseInt(this.$route.query.group_id);
           }
         });

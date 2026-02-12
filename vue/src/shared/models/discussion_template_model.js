@@ -26,6 +26,7 @@ export default class DiscussionTemplateModel extends BaseModel {
       newestFirst: false,
       pollTemplateKeysOrIds: [],
       recipientAudience: null,
+      defaultToDirectDiscussion: false,
       discardedAt: null
     };
   }
@@ -48,6 +49,10 @@ export default class DiscussionTemplateModel extends BaseModel {
     attrs.authorId = Session.user().id;
 
     discussion.update(attrs);
+
+    if (this.defaultToDirectDiscussion) {
+      discussion.groupId = null;
+    }
 
     return discussion;
   }

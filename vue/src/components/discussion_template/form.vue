@@ -79,7 +79,7 @@ export default {
       this.discussionTemplate.pollTemplateKeysOrIds = this.pollTemplates.map(pt => pt.keyOrId());
       this.discussionTemplate.save().then(data => {
         Flash.success("discussion_template.discussion_template_saved");
-        this.$router.push(this.$route.query.return_to || ('/thread_templates/?group_id=' + this.discussionTemplate.groupId));
+        this.$router.push(this.$route.query.return_to || ('/discussion_templates/?group_id=' + this.discussionTemplate.groupId));
       }).catch(error => {
         this.$refs.form.validate();
         Flash.error('common.check_for_errors_and_try_again');
@@ -109,7 +109,7 @@ v-form(ref="form" @submit.prevent="submit")
       template(v-slot:divider)
         common-icon(name="mdi-chevron-right")
     v-spacer
-  v-card.thread-template-form(:title="discussionTemplate.id ? $t('discussion_form.edit_discussion_template') : $t('discussion_form.new_discussion_template')")
+  v-card.discussion-template-form(:title="discussionTemplate.id ? $t('discussion_form.edit_discussion_template') : $t('discussion_form.new_discussion_template')")
     template(v-slot:append)
       v-btn.back-button(v-if="$route.query.return_to" variant="flat" icon :aria-label="$t('common.action.cancel')" :to='$route.query.return_to')
         common-icon(name="mdi-close")
@@ -138,7 +138,7 @@ v-form(ref="form" @submit.prevent="submit")
 
       v-divider.my-4
 
-      v-text-field.thread-template-form-fields__title(
+      v-text-field.discussion-template-form-fields__title(
         :label="$t('discussion_template.default_title_label')"
         :hint="$t('discussion_template.default_title_hint')"
         v-model='discussionTemplate.title'
@@ -146,7 +146,7 @@ v-form(ref="form" @submit.prevent="submit")
         :rules="validate('title')"
       )
 
-      v-text-field.thread-template-form-fields__title-placeholder(
+      v-text-field.discussion-template-form-fields__title-placeholder(
         :hint="$t('discussion_template.title_placeholder_hint')"
         :label="$t('discussion_template.title_placeholder_label')"
         :placeholder="$t('discussion_template.title_placeholder_placeholder')"
@@ -236,15 +236,16 @@ v-form(ref="form" @submit.prevent="submit")
             span(v-t="'thread_arrangement_form.nested_twice_description'")
 
       v-checkbox(v-model="discussionTemplate.public" :label="$t('discussion_template.share_in_template_gallery')")
+      v-checkbox(v-model="discussionTemplate.defaultToDirectDiscussion" :label="$t('discussion_template.default_to_direct_discussion')")
 
-      //- .d-flex.justify-space-between.my-4.mt-4.thread-template-form-actions
+      //- .d-flex.justify-space-between.my-4.mt-4.discussion-template-form-actions
     v-card-actions
       v-spacer
       v-btn.mr-2(
         @click="discardDraft"
         v-t="'common.reset'"
       )
-      v-btn.thread-template-form__submit(
+      v-btn.discussion-template-form__submit(
         variant="elevated"
         color="primary"
         @click='submit()'
