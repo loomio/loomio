@@ -24,19 +24,11 @@ class Api::V1::DiscussionTemplatesController < Api::V1::RestfulController
 
     templates = templates.limit(50).to_a
 
-    authors = access_by_id(User.where(id: templates.map(&:author_id)))
-    groups = access_by_id(Group.where(id: templates.map(&:group_id)))
-
     results = templates.map do |dt|
-      author = authors[dt.author_id]
-      group = groups[dt.group_id]
       {
         id: dt.id,
         process_name: dt.process_name,
         process_subtitle: dt.process_subtitle,
-        author_name: author&.name,
-        group_name: group&.name,
-        avatar_url: (group&.logo_url || author&.avatar_url),
         tags: dt.tags
       }
     end
@@ -47,7 +39,7 @@ class Api::V1::DiscussionTemplatesController < Api::V1::RestfulController
   def index
     group = current_user.groups.find_by(id: params[:group_id]) || NullGroup.new
 
-    if group.discussion_templates.kept.count == 0
+    if group.discussion_templates.count == 0
       group.discussion_templates = DiscussionTemplateService.initial_templates(group.category, group.parent_id)
     end
 
@@ -81,22 +73,19 @@ class Api::V1::DiscussionTemplatesController < Api::V1::RestfulController
   end
 
   def discard
-    @group = current_user.adminable_groups.find_by!(id: params[:group_id])
-    @discussion_template = @group.discussion_templates.kept.find_by!(id: params[:id])
+    @discussion_template = find_template_for_author_or_admin(:kept)
     @discussion_template.discard!
     index
   end
 
   def undiscard
-    @group = current_user.adminable_groups.find_by!(id: params[:group_id])
-    @discussion_template = @group.discussion_templates.discarded.find_by!(id: params[:id])
+    @discussion_template = find_template_for_author_or_admin(:discarded)
     @discussion_template.undiscard!
     index
   end
 
   def destroy
-    @discussion_template = DiscussionTemplate.find(params[:id])
-    current_user.adminable_groups.find(@discussion_template.group_id)
+    @discussion_template = find_template_for_author_or_admin
     @discussion_template.destroy!
     destroy_response
   end
@@ -131,6 +120,25 @@ class Api::V1::DiscussionTemplatesController < Api::V1::RestfulController
   end
 
   private
+
+  def find_template_for_author_or_admin(scope = nil)
+    if params[:group_id]
+      group = current_user.groups.find_by!(id: params[:group_id])
+      templates = group.discussion_templates
+      templates = templates.send(scope) if scope
+      template = templates.find_by!(id: params[:id])
+    else
+      template = DiscussionTemplate.find(params[:id])
+      group = current_user.groups.find_by!(id: template.group_id)
+    end
+
+    unless group.admins.exists?(current_user.id) || template.author_id == current_user.id
+      raise CanCan::AccessDenied
+    end
+
+    template
+  end
+
   def access_by_id(collection, id_col = 'id')
     h = {}
     collection.each do |row|

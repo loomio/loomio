@@ -139,6 +139,10 @@ export default {
       return this.group.adminsInclude(Session.user());
     },
 
+    userCanCreateTemplates() {
+      return this.userIsAdmin || (this.group.membersCanCreateTemplates && this.group.membersInclude(Session.user()));
+    },
+
     filters() {
       if (this.singleList) {
         return {templates: 'mdi-thumbs-up-down'};
@@ -171,7 +175,7 @@ export default {
       common-icon.mr-2(size="small" :name="icon" :color="filter == name ? 'primary' : null")
 
       span.poll-type-chip-name(v-t="filterLabels[name]")
-    template(v-if="userIsAdmin")
+    template(v-if="userIsAdmin || userCanCreateTemplates")
       v-spacer
       v-chip(@click="filter = 'admin'" :outlined="filter != 'admin'")
         common-icon(size="small" name="mdi-cog").mr-2

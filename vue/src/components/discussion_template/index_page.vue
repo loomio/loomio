@@ -8,10 +8,10 @@ import Session       from '@/shared/services/session';
 import LmoUrlService from '@/shared/services/lmo_url_service';
 import EventBus      from '@/shared/services/event_bus';
 import DiscussionTemplateService from '@/shared/services/discussion_template_service';
-
-import { mdiCog } from '@mdi/js';
+import { useWatchRecords } from '@/composables/useWatchRecords';
 
 const route = useRoute();
+const { watchRecords } = useWatchRecords();
 
 // Data
 const templates = ref([]);
@@ -21,15 +21,7 @@ const groups = ref([]);
 const returnTo = Session.returnTo();
 const isSorting = ref(false);
 const showSettings = ref(false);
-const watchedRecords = ref([]);
-
-// WatchRecords replacement
-const watchRecordsFunc = (options) => {
-  const { collections, query, key } = options;
-  const name = collections.concat(key || parseInt(Math.random() * 10000)).join('_');
-  watchedRecords.value.push(name);
-  Records.view({ name, collections, query });
-};
+const hasHiddenTemplates = ref(false);
 
 // UrlFor replacement
 const urlFor = (model, action, params) => {
@@ -43,6 +35,10 @@ const hasGroupId = computed(() => {
 
 const userIsAdmin = computed(() => {
   return group.value && group.value.adminsInclude(Session.user());
+});
+
+const userCanCreateTemplates = computed(() => {
+  return userIsAdmin.value || (group.value && group.value.membersCanCreateTemplates && group.value.membersInclude(Session.user()));
 });
 
 const breadcrumbs = computed(() => {
@@ -60,10 +56,11 @@ const breadcrumbs = computed(() => {
 const query = () => {
   if (!hasGroupId.value) { return; }
   group.value = Records.groups.findById(parseInt(route.query.group_id));
-  templates.value = Records.discussionTemplates.collection.chain().find({
-    groupId: parseInt(route.query.group_id),
-    discardedAt: (showSettings.value && {$ne: null}) || null
-  }).simplesort('position').data();
+  const groupId = parseInt(route.query.group_id);
+  const findQuery = { groupId };
+  if (!showSettings.value) { findQuery.discardedAt = null; }
+  templates.value = Records.discussionTemplates.collection.chain().find(findQuery).simplesort('position').data();
+  hasHiddenTemplates.value = Records.discussionTemplates.collection.find({ groupId, discardedAt: { $ne: null } }).length > 0;
 
   if (group.value) {
     actions.value = {};
@@ -86,7 +83,6 @@ EventBus.$on('sortDiscussionTemplates', () => { isSorting.value = true; });
 EventBus.$on('reloadDiscussionTemplates', () => { query(); });
 
 onUnmounted(() => {
-  watchedRecords.value.forEach(name => delete Records.views[name]);
   EventBus.$off('sortDiscussionTemplates');
   EventBus.$off('reloadDiscussionTemplates');
 });
@@ -101,14 +97,14 @@ onMounted(() => {
       }
     });
 
-    watchRecordsFunc({
+    watchRecords({
       key: `discussionTemplates${route.query.group_id}`,
       collections: ['discussionTemplates', 'groups'],
       query: () => query()
     });
   } else {
     Records.users.findOrFetchGroups();
-    watchRecordsFunc({
+    watchRecords({
       key: 'discussionTemplateGroups',
       collections: ['groups', 'memberships'],
       query: () => { groups.value = Session.user().parentGroups(); }
@@ -135,15 +131,14 @@ watch(showSettings, () => { query(); });
               :to="'/discussion_templates/?group_id='+group.id"
             )
               template(v-slot:prepend)
-                group-avatar.mr-2(:group="group")
+                v-icon.mr-2
+                  group-avatar(:group="group")
               v-list-item-title {{group.name}}
-
-            v-divider.my-1
 
             v-list-item(:to="'/d/new?return_to='+returnTo")
               template(v-slot:prepend)
                 v-icon.mr-2 mdi-account-multiple
-              v-list-item-title(v-t="'discussion_template.start_direct_discussion'")
+              v-list-item-title Start a direct discussion from a blank template
 
       //- Template list: shown when group_id is present
       template(v-if="hasGroupId")
@@ -151,30 +146,15 @@ watch(showSettings, () => { query(); });
           v-breadcrumbs(color="anchor" :items="breadcrumbs")
             template(v-slot:divider)
               common-icon(name="mdi-chevron-right")
-        v-card(:title="$t(showSettings ? 'discussion_template.hidden_templates' : 'discussion_template.start_a_new_discussion')")
-          template(v-slot:append)
-            v-btn(v-if="showSettings" icon @click="showSettings = false")
-              common-icon(name="mdi-close")
-
-          v-alert.mx-4(v-if="!showSettings && group && group.discussionsCount < 2" type="info" variant="tonal")
-            span(v-t="'discussion_template.these_are_templates'")
-            space
+        v-card(:title="$t('discussion_template.start_a_new_discussion')")
+          template(v-slot:append v-if="userCanCreateTemplates")
+            v-btn.text-primary(variant="text" size="small" :to="'/discussion_templates/new?group_id='+$route.query.group_id+'&return_to='+returnTo" v-t="'discussion_form.new_template'")
+          v-alert.mx-4(type="info" variant="tonal")
+            span(v-t="'discussion_template.these_are_templates_v2'")
+            |
             help-link(path="en/user_manual/threads/starting_threads")
 
           v-list.append-sort-here(lines="two")
-            .d-flex
-              v-list-subheader(v-if="!showSettings" v-t="'templates.templates'")
-              v-spacer
-              div.mr-3(v-if="userIsAdmin")
-                v-menu(v-if="!showSettings" offset-y)
-                  template(v-slot:activator="{props}")
-                    v-btn(:icon="mdiCog" variant="flat" v-bind="props" :title="$t('common.admin_menu')")
-                  v-list
-                    v-list-item(:to="'/discussion_templates/new?group_id='+$route.query.group_id+'&return_to='+returnTo")
-                      v-list-item-title(v-t="'discussion_form.new_template'")
-                    v-list-item(@click="showSettings = true")
-                      v-list-item-title(v-t="'discussion_template.hidden_templates'")
-
             template(v-if="isSorting")
               sortable-list(v-model:list="templates"  @sort-end="sortEnded" append-to=".append-sort-here"  lock-axis="y" axis="y")
                 sortable-item(v-for="(template, index) in templates" :index="index" :key="template.id || template.key")
@@ -194,9 +174,16 @@ watch(showSettings, () => { query(); });
                 v-list-item-title {{template.processName || template.title}}
                 v-list-item-subtitle {{template.processSubtitle}}
                 template(v-slot:append)
+                  common-icon.text-disabled(v-if="template.discardedAt" name="mdi-eye-off")
                   action-menu(:actions='actions[i]' size="small" icon :name="$t('action_dock.more_actions')")
 
-        .d-flex.justify-center.my-2(v-if="!showSettings && userIsAdmin")
-          v-btn(:to="'/discussion_templates/browse?group_id=' + $route.query.group_id + '&return_to='+returnTo")
-            span(v-t="'discussion_template.browse_public_templates'")
+            .d-flex.justify-center.my-2(v-if="userIsAdmin && !showSettings && hasHiddenTemplates")
+              v-btn.text-medium-emphasis(variant="tonal" size="small" @click="showSettings = true" v-t="'discussion_template.show_more_templates'")
+            template(v-if="userIsAdmin && showSettings")
+              v-list-item(:to="'/discussion_templates/browse?group_id='+$route.query.group_id+'&return_to='+returnTo")
+                v-list-item-title(v-t="'discussion_template.browse_example_templates'")
+                template(v-slot:append)
+                  common-icon(name="mdi-magnify")
+              .d-flex.justify-center.my-2
+                v-btn.text-medium-emphasis(variant="tonal" size="small" @click="showSettings = false" v-t="'discussion_template.show_fewer_templates'")
 </template>

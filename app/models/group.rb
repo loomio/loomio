@@ -153,6 +153,7 @@ class Group < ApplicationRecord
                          :members_can_announce,
                          :new_threads_max_depth,
                          :new_threads_newest_first,
+                         :members_can_create_templates,
                          :admins_can_edit_user_content,
                          :listed_in_explore,
                          :attachments]

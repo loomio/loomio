@@ -213,7 +213,7 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "destroy denies non-admin" do
+  test "destroy denies non-admin non-author" do
     template = DiscussionTemplate.create!(
       group: @group,
       author: @user,
@@ -223,7 +223,7 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
 
     sign_in @another_user
     delete :destroy, params: { id: template.id }
-    assert_response :not_found
+    assert_response :forbidden
   end
 
   # === DISCARD / UNDISCARD ===
@@ -261,7 +261,7 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
     refute template.discarded?
   end
 
-  test "discard denies non-admin" do
+  test "discard denies non-admin non-author" do
     template = DiscussionTemplate.create!(
       group: @group,
       author: @user,
@@ -271,7 +271,7 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
 
     sign_in @another_user
     post :discard, params: { id: template.id, group_id: @group.id }
-    assert_response :not_found
+    assert_response :forbidden
   end
 
   # === HIDE / UNHIDE (default templates) ===
@@ -332,6 +332,207 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
     sign_in @another_user
     post :positions, params: { group_id: @group.id, ids: ["blank"] }
     assert_response :not_found
+  end
+
+  # === MEMBERS_CAN_CREATE_TEMPLATES ===
+
+  test "member can create template when setting enabled" do
+    @group.update!(members_can_create_templates: true)
+
+    sign_in @another_user
+    assert_difference 'DiscussionTemplate.count', 1 do
+      post :create, params: {
+        discussion_template: {
+          group_id: @group.id,
+          process_name: "Member Template",
+          process_subtitle: "subtitle"
+        }
+      }
+    end
+
+    assert_response :success
+    template = DiscussionTemplate.last
+    assert_equal @another_user.id, template.author_id
+    assert template.discarded?, "member-created template should be auto-discarded"
+  end
+
+  test "admin-created template is not auto-discarded" do
+    @group.update!(members_can_create_templates: true)
+
+    sign_in @user
+    post :create, params: {
+      discussion_template: {
+        group_id: @group.id,
+        process_name: "Admin Template",
+        process_subtitle: "subtitle"
+      }
+    }
+
+    assert_response :success
+    template = DiscussionTemplate.last
+    refute template.discarded?, "admin-created template should not be auto-discarded"
+  end
+
+  test "member can edit own template when setting enabled" do
+    @group.update!(members_can_create_templates: true)
+    template = DiscussionTemplate.create!(
+      group: @group,
+      author: @another_user,
+      process_name: "Member's Template",
+      process_subtitle: "subtitle"
+    )
+
+    sign_in @another_user
+    put :update, params: {
+      id: template.id,
+      discussion_template: { process_name: "Updated by Member" }
+    }
+
+    assert_response :success
+    template.reload
+    assert_equal "Updated by Member", template.process_name
+  end
+
+  test "member cannot edit another member's template" do
+    @group.update!(members_can_create_templates: true)
+    template = DiscussionTemplate.create!(
+      group: @group,
+      author: @user,
+      process_name: "Admin's Template",
+      process_subtitle: "subtitle"
+    )
+
+    sign_in @another_user
+    put :update, params: {
+      id: template.id,
+      discussion_template: { process_name: "Unauthorized Edit" }
+    }
+
+    assert_response :forbidden
+  end
+
+  test "member can discard own template when setting enabled" do
+    @group.update!(members_can_create_templates: true)
+    template = DiscussionTemplate.create!(
+      group: @group,
+      author: @another_user,
+      process_name: "Member Discardable",
+      process_subtitle: "subtitle"
+    )
+
+    sign_in @another_user
+    post :discard, params: { id: template.id, group_id: @group.id }
+    assert_response :success
+
+    template.reload
+    assert template.discarded?
+  end
+
+  test "member can destroy own template when setting enabled" do
+    @group.update!(members_can_create_templates: true)
+    template = DiscussionTemplate.create!(
+      group: @group,
+      author: @another_user,
+      process_name: "Member Deletable",
+      process_subtitle: "subtitle"
+    )
+
+    sign_in @another_user
+    assert_difference 'DiscussionTemplate.count', -1 do
+      delete :destroy, params: { id: template.id }
+    end
+    assert_response :success
+  end
+
+  test "member can undiscard own template when setting enabled" do
+    @group.update!(members_can_create_templates: true)
+    template = DiscussionTemplate.create!(
+      group: @group,
+      author: @another_user,
+      process_name: "Member Undiscardable",
+      process_subtitle: "subtitle"
+    )
+    template.discard!
+
+    sign_in @another_user
+    post :undiscard, params: { id: template.id, group_id: @group.id }
+    assert_response :success
+
+    template.reload
+    refute template.discarded?
+  end
+
+  test "member cannot discard another member's template" do
+    @group.update!(members_can_create_templates: true)
+    template = DiscussionTemplate.create!(
+      group: @group,
+      author: @user,
+      process_name: "Admin's Kept Template",
+      process_subtitle: "subtitle"
+    )
+
+    sign_in @another_user
+    post :discard, params: { id: template.id, group_id: @group.id }
+    assert_response :forbidden
+  end
+
+  test "member cannot undiscard another member's template" do
+    @group.update!(members_can_create_templates: true)
+    template = DiscussionTemplate.create!(
+      group: @group,
+      author: @user,
+      process_name: "Admin's Hidden Template",
+      process_subtitle: "subtitle"
+    )
+    template.discard!
+
+    sign_in @another_user
+    post :undiscard, params: { id: template.id, group_id: @group.id }
+    assert_response :forbidden
+  end
+
+  test "member cannot destroy another member's template" do
+    @group.update!(members_can_create_templates: true)
+    template = DiscussionTemplate.create!(
+      group: @group,
+      author: @user,
+      process_name: "Admin's Template",
+      process_subtitle: "subtitle"
+    )
+
+    sign_in @another_user
+    assert_no_difference 'DiscussionTemplate.count' do
+      delete :destroy, params: { id: template.id }
+    end
+    assert_response :forbidden
+  end
+
+  test "non-member cannot access discard" do
+    other_user = User.create!(name: "Outsider #{SecureRandom.hex(4)}", email: "outsider_#{SecureRandom.hex(4)}@example.com", email_verified: true)
+    template = DiscussionTemplate.create!(
+      group: @group,
+      author: @user,
+      process_name: "Protected Template",
+      process_subtitle: "subtitle"
+    )
+
+    sign_in other_user
+    post :discard, params: { id: template.id, group_id: @group.id }
+    assert_response :not_found
+  end
+
+  test "member cannot create template when setting disabled" do
+    @group.update!(members_can_create_templates: false)
+
+    sign_in @another_user
+    post :create, params: {
+      discussion_template: {
+        group_id: @group.id,
+        process_name: "Unauthorized",
+        process_subtitle: "subtitle"
+      }
+    }
+    assert_response :forbidden
   end
 
   # === DEFAULT_TO_DIRECT_DISCUSSION ===

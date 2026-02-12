@@ -356,15 +356,15 @@ v-form(ref="form" @submit.prevent="submit")
           v-checkbox.group-form__members-can-start-discussions(hide-details v-model='group.membersCanStartDiscussions')
             template(v-slot:label)
               div
-                span(v-t="'group_form.members_can_start_discussions'")
+                span(v-t="'group_form.members_can_start_discussions_v2'")
                 br
-                span.text-caption(v-t="'group_form.members_can_start_discussions_help'")
+                span.text-caption(v-t="'group_form.members_can_start_discussions_help_v2'")
           v-checkbox.group-form__members-can-edit-discussions(hide-details v-model='group.membersCanEditDiscussions')
             template(v-slot:label)
               div
-                span(v-t="'group_form.members_can_edit_discussions'")
+                span(v-t="'group_form.members_can_edit_discussions_v2'")
                 br
-                span.text-caption(v-t="'group_form.members_can_edit_discussions_help'")
+                span.text-caption(v-t="'group_form.members_can_edit_discussions_help_v2'")
           v-checkbox.group-form__members-can-edit-comments(hide-details v-model='group.membersCanEditComments')
             template(v-slot:label)
               div
@@ -383,6 +383,12 @@ v-form(ref="form" @submit.prevent="submit")
                 span(v-t="'group_form.members_can_raise_motions'")
                 br
                 span.text-caption(v-t="'group_form.members_can_raise_motions_help'")
+          v-checkbox.group-form__members-can-create-templates(hide-details v-model='group.membersCanCreateTemplates')
+            template(v-slot:label)
+              div
+                span(v-t="'group_form.members_can_create_templates'")
+                br
+                span.text-caption(v-t="'group_form.members_can_create_templates_help'")
           v-checkbox.group-form__allow-polls-without-discussions(hide-details v-model='group.canStartPollsWithoutDiscussion')
             template(v-slot:label)
               div

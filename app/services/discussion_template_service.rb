@@ -12,6 +12,7 @@ class DiscussionTemplateService
     end
 
     discussion_template.save!
+    discussion_template.discard! unless discussion_template.group.admins.exists?(actor.id)
     discussion_template
   end
 
@@ -58,16 +59,13 @@ class DiscussionTemplateService
 
   def self.create_public_templates
     group = Group.find_or_create_by(handle: 'templates') do |group|
-      group.creator = User.helper_bot
+      group.creator = User.first
       group.name = 'Loomio Templates'
       group.is_visible_to_public = false
-      group.logo.attach(io: URI.open(Rails.root.join('public/brand/icon_gold_256h.png')),
-                        filename: 'loomiologo.png')
     end
 
     group.discussion_templates = default_templates.map do |dt|
       dt.public = true
-      dt.author = User.helper_bot
       dt
     end
   end

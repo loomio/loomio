@@ -128,6 +128,7 @@ v-form(ref="form" @submit.prevent="submit")
       v-text-field(
          v-model="discussionTemplate.processName"
         :label="$t('poll_common_form.process_name')"
+        :placeholder="$t('discussion_template.process_name_placeholder')"
         :hint="$t('poll_common_form.process_name_hint')"
         :rules="validate('processName')"
       )
@@ -135,6 +136,7 @@ v-form(ref="form" @submit.prevent="submit")
       v-text-field(
          v-model="discussionTemplate.processSubtitle"
         :label="$t('poll_common_form.process_subtitle')"
+        :placeholder="$t('discussion_template.process_subtitle_placeholder')"
         :hint="$t('poll_common_form.process_subtitle_hint')"
         :rules="validate('processSubtitle')"
       )
@@ -150,6 +152,7 @@ v-form(ref="form" @submit.prevent="submit")
 
       v-text-field.discussion-template-form-fields__title(
         :label="$t('discussion_template.default_title_label')"
+        :placeholder="$t('discussion_template.default_title_placeholder')"
         :hint="$t('discussion_template.default_title_hint')"
         v-model='discussionTemplate.title'
         maxlength='250'
