@@ -854,7 +854,7 @@ en:
     recommended_poll_templates: Recommended poll templates
     share_in_template_gallery: Share this template in the public template gallery
     poll_templates: Poll templates
-    poll_templates_help: Optionally add poll templates that help to complete this process. When someone starts a discussion from this template, these polls will be available to use.
+    poll_templates_help: Templates you select here will show up first when someone clicks Start a vote
     start_direct_discussion_from_blank: Start a direct discussion from a blank template
     default_to_direct_discussion: Start as a direct discussion (no group)
   discussion_form:

@@ -108,6 +108,7 @@ export default class DiscussionModel extends BaseModel {
     this.belongsTo('author', {from: 'users'});
     this.belongsTo('closer', {from: 'users'});
     this.belongsTo('translation');
+    this.belongsTo('discussionTemplate');
     return this.hasMany('discussionReaders');
   }
 

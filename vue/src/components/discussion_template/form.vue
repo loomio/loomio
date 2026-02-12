@@ -185,21 +185,20 @@ v-form(ref="form" @submit.prevent="submit")
 
       .text-subtitle-1.py-2.text-medium-emphasis(v-t="'discussion_template.poll_templates'")
       p.text-caption(v-t="'discussion_template.poll_templates_help'")
-      .decision-tools-card__poll-types
+      v-card.decision-tools-card__poll-types
         sortable-list(v-model:list="pollTemplates" :useDragHandle="true" append-to=".decision-tools-card__poll-types"  lock-axis="y" axis="y")
           sortable-item(v-for="(template, index) in pollTemplates" :index="index" :key="template.id || template.key")
-            v-list
-              v-list-item.decision-tools-card__poll-type(
-                :class="'decision-tools-card__poll-type--' + template.pollType"
-              )
-                v-list-item-title
-                  span {{ template.processName }}
-                v-list-item-subtitle {{ template.processSubtitle }}
-                template(v-slot:append)
-                  .handle(v-handle style="cursor: grab")
-                    common-icon(name="mdi-drag-vertical")
-                  v-btn(icon variant="flat" @click="removePollTemplate(template)" :title="$t('common.action.remove')")
-                    common-icon(name="mdi-close")
+            v-list-item.decision-tools-card__poll-type(
+              :class="'decision-tools-card__poll-type--' + template.pollType"
+            )
+              v-list-item-title
+                span {{ template.processName }}
+              v-list-item-subtitle {{ template.processSubtitle }}
+              template(v-slot:append)
+                .handle(v-handle style="cursor: grab")
+                  common-icon(name="mdi-drag-vertical")
+                v-btn(icon variant="flat" @click="removePollTemplate(template)" :title="$t('common.action.remove')")
+                  common-icon(name="mdi-close")
       v-select.mt-4(
         variant="solo"
         v-model="selectedPollTemplate"
@@ -226,29 +225,29 @@ v-form(ref="form" @submit.prevent="submit")
             space
             span(v-t="'thread_arrangement_form.latest_description'")
 
-      .text-subtitle-1.py-2.text-medium-emphasis(v-t="'thread_arrangement_form.replies'")
-      v-radio-group(v-model="discussionTemplate.maxDepth")
-        v-radio(:value="1")
-          template(v-slot:label)
-            strong(v-t="'thread_arrangement_form.linear'")
-            space
-            | -
-            space
-            span(v-t="'thread_arrangement_form.linear_description'")
-        v-radio(:value="2")
-          template(v-slot:label)
-            strong(v-t="'thread_arrangement_form.nested_once'")
-            space
-            | -
-            space
-            span(v-t="'thread_arrangement_form.nested_once_description'")
-        v-radio(:value="3")
-          template(v-slot:label)
-            strong(v-t="'thread_arrangement_form.nested_twice'")
-            space
-            | -
-            space
-            span(v-t="'thread_arrangement_form.nested_twice_description'")
+      //.text-subtitle-1.py-2.text-medium-emphasis(v-t="'thread_arrangement_form.replies'")
+      //v-radio-group(v-model="discussionTemplate.maxDepth")
+      //  v-radio(:value="1")
+      //    template(v-slot:label)
+      //      strong(v-t="'thread_arrangement_form.linear'")
+      //      space
+      //      | -
+      //      space
+      //      span(v-t="'thread_arrangement_form.linear_description'")
+      //  v-radio(:value="2")
+      //    template(v-slot:label)
+      //      strong(v-t="'thread_arrangement_form.nested_once'")
+      //      space
+      //      | -
+      //      space
+      //      span(v-t="'thread_arrangement_form.nested_once_description'")
+      //  v-radio(:value="3")
+      //    template(v-slot:label)
+      //      strong(v-t="'thread_arrangement_form.nested_twice'")
+      //      space
+      //      | -
+      //      space
+      //      span(v-t="'thread_arrangement_form.nested_twice_description'")
 
       v-checkbox(v-model="discussionTemplate.defaultToDirectDiscussion" :label="$t('discussion_template.default_to_direct_discussion')")
 

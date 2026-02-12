@@ -38,8 +38,8 @@ export default new class PollTemplateService {
         }
       },
 
-      move: {
-        name: 'common.action.move',
+      rearrange: {
+        name: 'common.action.rearrange',
         icon: 'mdi-arrow-up-down',
         menu: true,
         canPerform() { return !pollTemplate.discardedAt && group.adminsInclude(Session.user()); },

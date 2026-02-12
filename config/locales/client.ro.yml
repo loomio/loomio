@@ -311,6 +311,7 @@ ro:
       zoom: Zoom
       align: Alinia
       original: Original
+      rearrange: Rearanja
     formatting_help:
       label: Formatare
       title: Invață să folosești Markdown pentru a formata textul
@@ -838,6 +839,7 @@ ro:
     discussion_started: Discuția a început
     none_direct_discussion: Niciunul (discuție directă)
     direct_discussion: Discuție directă
+    direct_discussion_hint: O discuție directă este vizibilă doar persoanelor specifice pe care le invitați. Nu va apărea în lista de discuții a niciunui grup — o puteți găsi pe pagina Discuții directe.
   announcement:
     send_discussion: Trimiteți firul
     send_group: Invită persoane la %{name}
@@ -1341,6 +1343,12 @@ ro:
     upload_background: încărcați fundalul
     remove_background: eliminați fundalul
     remove_logo: eliminați sigla
+    members_can_create_templates: Membrii pot crea șabloane
+    members_can_create_templates_help: Permiteți membrilor să creeze șabloane de discuții și sondaje. Șabloanele create de membri vor fi ascunse până când un administrator le va reafișa.
+    members_can_start_discussions_v2: Membrii pot începe discuții noi
+    members_can_start_discussions_help_v2: Permiteți membrilor să înceapă discuții noi în cadrul grupului
+    members_can_edit_discussions_v2: Membrii pot gestiona discuțiile și comentariile
+    members_can_edit_discussions_help_v2: Permiteți membrilor să editeze, să mute, să fixeze, să eticheteze sau să închidă orice discuție sau comentariu din grup
   group_export_modal:
     title: Exportați datele grupului
     body: <p>Puteți descărca oricând o copie a datelor grupului dvs. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Află mai multe.</a></p><p> Este nevoie de câteva minute pentru a finaliza, în funcție de dimensiunea grupului dvs. Când este gata, veți primi un e-mail cu un link pentru a descărca fișierul.</p>
@@ -2663,6 +2671,24 @@ ro:
     add_poll_template_help: Selectați orice șabloane de sondaj care ajută la finalizarea acestui proces
     recommended_poll_templates: Șabloane de sondaj recomandate
     share_in_template_gallery: Distribuiți acest șablon în galeria publică de șabloane
+    browse_example_templates: Răsfoiți exemple de șabloane
+    example_templates: Exemple de șabloane
+    browse_public_templates_hint: Faceți clic pe numele unui șablon pentru a începe o discuție cu acesta sau faceți clic pe butonul de editare din dreapta pentru a face o copie și a-l modifica pentru propriul grup.
+    these_are_templates_v2: Aceasta este o listă cu șabloanele de discuții din grupul dvs. Faceți clic pe un șablon pentru a-l utiliza ca punct de plecare pentru o discuție nouă. Administratorii grupului pot edita șabloanele și pot rearanja lista, astfel încât să fie ușor să găsiți șabloanele importante.
+    process_name_placeholder: de exemplu, stand-up săptămânal
+    process_subtitle_placeholder: de exemplu, o scurtă verificare cu echipa în fiecare săptămână
+    default_title_placeholder: de exemplu, Stand-up - 15 ianuarie
+    more_templates: Mai multe șabloane
+    fewer_templates: Mai puține șabloane
+    choose_a_group: Alegeți un grup
+    default_templates: Șabloane implicite
+    or_start_a_direct_discussion: Sau începe o discuție directă
+    choose_group_for_templates: Alegeți un grup pentru a vizualiza șabloanele sale de discuții
+    start_direct_discussion: Începeți o discuție directă
+    poll_templates: Șabloane de sondaj
+    poll_templates_help: Șabloanele pe care le selectați aici vor apărea primele când cineva va da clic pe Începeți un vot
+    start_direct_discussion_from_blank: Începeți o discuție directă dintr-un șablon gol
+    default_to_direct_discussion: Începeți ca o discuție directă (fără grup)
   context_panel:
     thread_status:
       pinned: Această discuție a fost fixată. Va rămâne în partea de sus a listei de discuții a grupului pentru toți utilizatorii.
