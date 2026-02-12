@@ -384,6 +384,19 @@ class Group < ApplicationRecord
     self[:info]['hidden_poll_templates'] = val
   end
 
+  def discussion_template_positions
+    self[:info]['discussion_template_positions'] ||= {}
+    self[:info]['discussion_template_positions']
+  end
+
+  def hidden_discussion_templates
+    self[:info]['hidden_discussion_templates'] || []
+  end
+
+  def hidden_discussion_templates=(val)
+    self[:info]['hidden_discussion_templates'] = val
+  end
+
   def self.ransackable_attributes(auth_object = nil)
     [
     "admin_memberships_count",

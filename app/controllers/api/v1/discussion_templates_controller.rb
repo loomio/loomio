@@ -37,16 +37,12 @@ class Api::V1::DiscussionTemplatesController < Api::V1::RestfulController
   end
 
   def index
-    group = current_user.groups.find_by(id: params[:group_id]) || NullGroup.new
-
-    if group.discussion_templates.count == 0
-      group.discussion_templates = DiscussionTemplateService.initial_templates(group.category, group.parent_id)
-    end
-
     if params[:id]
       self.collection = Array(DiscussionTemplate.find_by(group_id: current_user.group_ids, id: params[:id]))
+    elsif (group = current_user.groups.find_by(id: params[:group_id]))
+      self.collection = DiscussionTemplateService.group_templates(group: group)
     else
-      self.collection = group.discussion_templates
+      self.collection = DiscussionTemplateService.default_templates
     end
 
     respond_with_collection
@@ -61,10 +57,9 @@ class Api::V1::DiscussionTemplatesController < Api::V1::RestfulController
     group = current_user.adminable_groups.find_by!(id: params[:group_id])
 
     params[:ids].each_with_index do |val, index|
-      if val.is_a? Integer
-        DiscussionTemplate.where(id: val, group_id: group.id).update_all(position: index)
-      else
-        group.discussion_template_positions[val] = index
+      group.discussion_template_positions[val.to_s] = index
+      if val.to_s =~ /\A\d+\z/
+        DiscussionTemplate.where(id: val.to_i, group_id: group.id).update_all(position: index)
       end
     end
 
@@ -94,10 +89,8 @@ class Api::V1::DiscussionTemplatesController < Api::V1::RestfulController
     @group = current_user.adminable_groups.find_by!(id: params[:group_id])
 
     if DiscussionTemplateService.group_templates(group: @group).any? {|pt| pt.key == params[:key]}
-      @group = current_user.adminable_groups.find_by(id: params[:group_id])
-      @group.hidden_discussion_templates ||= []
-      @group.hidden_discussion_templates.push params[:key].parameterize
-      @group.hidden_discussion_templates.uniq!
+      key = params[:key].parameterize
+      @group.hidden_discussion_templates = @group.hidden_discussion_templates | [key]
       @group.save!
       index
     else
@@ -109,8 +102,8 @@ class Api::V1::DiscussionTemplatesController < Api::V1::RestfulController
     @group = current_user.adminable_groups.find_by!(id: params[:group_id])
 
     if DiscussionTemplateService.group_templates(group: @group).any? {|pt| pt.key == params[:key]}
-      @group = current_user.adminable_groups.find_by(id: params[:group_id])
-      @group.hidden_discussion_templates -= [params[:key].parameterize]
+      key = params[:key].parameterize
+      @group.hidden_discussion_templates = @group.hidden_discussion_templates - [key]
       @group.save!
       self.resource = @group
       index

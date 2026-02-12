@@ -1,5 +1,6 @@
 require 'test_helper'
 
+if defined?(LoomioSubs)
 class Admin::FunnelControllerTest < ActionController::TestCase
   setup do
     @routes = LoomioSubs::Engine.routes
@@ -65,4 +66,5 @@ class Admin::FunnelControllerTest < ActionController::TestCase
     put :update, params: { id: @subscription.id, lead_status: "ignore" }
     assert_equal "ignore", @subscription.reload.lead_status
   end
+end
 end

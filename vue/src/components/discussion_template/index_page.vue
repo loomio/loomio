@@ -20,7 +20,7 @@ const group = ref(null);
 const groups = ref([]);
 const returnTo = Session.returnTo();
 const isSorting = ref(false);
-const showSettings = ref(false);
+const showHidden = ref(false);
 const hasHiddenTemplates = ref(false);
 
 // UrlFor replacement
@@ -28,16 +28,15 @@ const urlFor = (model, action, params) => {
   return LmoUrlService.route({ model, action, params });
 };
 
-// Computed
-const hasGroupId = computed(() => {
-  return !!route.query.group_id;
+const groupId = computed(() => {
+  return parseInt(route.query.group_id);
 });
 
 const userIsAdmin = computed(() => {
   return group.value && group.value.adminsInclude(Session.user());
 });
 
-const userCanCreateTemplates = computed(() => {
+const canCreateTemplates = computed(() => {
   return userIsAdmin.value || (group.value && group.value.membersCanCreateTemplates && group.value.membersInclude(Session.user()));
 });
 
@@ -52,22 +51,21 @@ const breadcrumbs = computed(() => {
   });
 });
 
-// Methods
 const query = () => {
-  if (!hasGroupId.value) { return; }
-  group.value = Records.groups.findById(parseInt(route.query.group_id));
-  const groupId = parseInt(route.query.group_id);
-  const findQuery = { groupId };
-  if (!showSettings.value) { findQuery.discardedAt = null; }
-  templates.value = Records.discussionTemplates.collection.chain().find(findQuery).simplesort('position').data();
-  hasHiddenTemplates.value = Records.discussionTemplates.collection.find({ groupId, discardedAt: { $ne: null } }).length > 0;
+  if (!groupId.value) { return }
 
-  if (group.value) {
-    actions.value = {};
-    templates.value.forEach((template, i) => {
-      actions.value[i] = DiscussionTemplateService.actions(template, group.value);
-    });
-  }
+  group.value = Records.groups.findById(groupId.value);
+  if (!group.value) { return }
+
+  const findQuery = { groupId: groupId.value };
+  if (!showHidden.value) { findQuery.discardedAt = null; }
+  templates.value = Records.discussionTemplates.collection.chain().find(findQuery).simplesort('position').data();
+  hasHiddenTemplates.value = Records.discussionTemplates.collection.find({ groupId: groupId.value, discardedAt: { $ne: null } }).length > 0;
+
+  actions.value = {};
+  templates.value.forEach((template, i) => {
+    actions.value[i] = DiscussionTemplateService.actions(template, group.value);
+  });
 };
 
 const sortEnded = () => {
@@ -89,39 +87,48 @@ onUnmounted(() => {
 
 // Mounted
 onMounted(() => {
-  if (hasGroupId.value) {
+  Records.users.findOrFetchGroups();
+
+  if (route.query.group_id) {
     Records.discussionTemplates.fetch({
       params: {
         group_id: route.query.group_id,
         per: 50
       }
     });
-
-    watchRecords({
-      key: `discussionTemplates${route.query.group_id}`,
-      collections: ['discussionTemplates', 'groups'],
-      query: () => query()
-    });
-  } else {
-    Records.users.findOrFetchGroups();
-    watchRecords({
-      key: 'discussionTemplateGroups',
-      collections: ['groups', 'memberships'],
-      query: () => { groups.value = Session.user().parentGroups(); }
-    });
   }
+
+  watchRecords({
+    key: `discussionTemplates`,
+    collections: ['discussionTemplates', 'groups'],
+    query: () => query()
+  });
+
+  watchRecords({
+    key: 'discussionTemplateGroups',
+    collections: ['groups', 'memberships'],
+    query: () => { groups.value = Session.user().parentGroups(); }
+  });
 });
 
-// Watchers
-watch(() => route.query, () => { query(); });
-watch(showSettings, () => { query(); });
+watch(() => route.query.group_id, () => {
+  if (!route.query.group_id) { return }
+  Records.discussionTemplates.fetch({
+    params: {
+      group_id: route.query.group_id,
+      per: 50
+    }
+  });
+});
+
+watch(showHidden, () => { query(); });
 </script>
 <template lang="pug">
 .discussion-templates-page
   v-main
     v-container.max-width-800.px-0.px-sm-3
       //- Group chooser: shown when no group_id
-      template(v-if="!hasGroupId")
+      template(v-if="!groupId")
         v-card(:title="$t('discussion_template.start_a_new_discussion')")
           v-list(lines="two")
             v-list-subheader(v-t="'discussion_template.choose_group_for_templates'")
@@ -135,19 +142,19 @@ watch(showSettings, () => { query(); });
                   group-avatar(:group="group")
               v-list-item-title {{group.name}}
 
-            v-list-item(:to="'/d/new?return_to='+returnTo")
+            v-list-item.discussion-templates--direct-discussion(:to="'/d/new?return_to='+returnTo")
               template(v-slot:prepend)
                 v-icon.mr-2 mdi-account-multiple
-              v-list-item-title Start a direct discussion from a blank template
+              v-list-item-title(v-t="'discussion_template.start_direct_discussion_from_blank'")
 
       //- Template list: shown when group_id is present
-      template(v-if="hasGroupId")
+      template(v-if="groupId")
         .d-flex
           v-breadcrumbs(color="anchor" :items="breadcrumbs")
             template(v-slot:divider)
               common-icon(name="mdi-chevron-right")
         v-card(:title="$t('discussion_template.start_a_new_discussion')")
-          template(v-slot:append v-if="userCanCreateTemplates")
+          template(v-slot:append v-if="canCreateTemplates")
             v-btn.text-primary(variant="text" size="small" :to="'/discussion_templates/new?group_id='+$route.query.group_id+'&return_to='+returnTo" v-t="'discussion_form.new_template'")
           v-alert.mx-4(type="info" variant="tonal")
             span(v-t="'discussion_template.these_are_templates_v2'")
@@ -177,13 +184,13 @@ watch(showSettings, () => { query(); });
                   common-icon.text-disabled(v-if="template.discardedAt" name="mdi-eye-off")
                   action-menu(:actions='actions[i]' size="small" icon :name="$t('action_dock.more_actions')")
 
-            .d-flex.justify-center.my-2(v-if="userIsAdmin && !showSettings && hasHiddenTemplates")
-              v-btn.text-medium-emphasis(variant="tonal" size="small" @click="showSettings = true" v-t="'discussion_template.show_more_templates'")
-            template(v-if="userIsAdmin && showSettings")
+            .d-flex.justify-center.my-2(v-if="userIsAdmin && !showHidden && hasHiddenTemplates")
+              v-btn.text-medium-emphasis(variant="tonal" size="small" @click="showHidden = true" v-t="'discussion_template.more_templates'")
+            template(v-if="userIsAdmin && showHidden")
               v-list-item(:to="'/discussion_templates/browse?group_id='+$route.query.group_id+'&return_to='+returnTo")
                 v-list-item-title(v-t="'discussion_template.browse_example_templates'")
                 template(v-slot:append)
                   common-icon(name="mdi-magnify")
               .d-flex.justify-center.my-2
-                v-btn.text-medium-emphasis(variant="tonal" size="small" @click="showSettings = false" v-t="'discussion_template.show_fewer_templates'")
+                v-btn.text-medium-emphasis(variant="tonal" size="small" @click="showHidden = false" v-t="'discussion_template.fewer_templates'")
 </template>

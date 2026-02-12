@@ -841,8 +841,8 @@ en:
     example_description_label: Example description
     example_description_placeholder: Provide a template that people can use to start a thread with
     hidden_templates: Hidden templates
-    show_more_templates: More templates
-    show_fewer_templates: Fewer templates
+    more_templates: More templates
+    fewer_templates: Fewer templates
     choose_a_group: Choose a group
     default_templates: Default templates
     or_start_a_direct_discussion: Or start a direct discussion
@@ -853,6 +853,9 @@ en:
     add_poll_template_help: Select any poll templates that help to complete this process
     recommended_poll_templates: Recommended poll templates
     share_in_template_gallery: Share this template in the public template gallery
+    poll_templates: Poll templates
+    poll_templates_help: Optionally add poll templates that help to complete this process. When someone starts a discussion from this template, these polls will be available to use.
+    start_direct_discussion_from_blank: Start a direct discussion from a blank template
     default_to_direct_discussion: Start as a direct discussion (no group)
   discussion_form:
     none_invite_only_discussion: None (invite-only discussion)
