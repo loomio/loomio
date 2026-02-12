@@ -150,8 +150,14 @@ watch(() => props.discussion.groupId, (groupId) => {
 // Mounted
 onMounted(() => {
   Records.users.findOrFetchGroups().then(() => {
-    if (props.discussion.discussionTemplateId) {
-      Records.discussionTemplates.findOrFetchById(props.discussion.discussionTemplateId).then(template => {
+    const templatePromise = props.discussion.discussionTemplateId
+      ? Records.discussionTemplates.findOrFetchById(props.discussion.discussionTemplateId)
+      : props.discussion.discussionTemplateKey
+        ? Records.discussionTemplates.findOrFetchByKey(props.discussion.discussionTemplateKey, props.discussion.groupId)
+        : null;
+
+    if (templatePromise) {
+      templatePromise.then(template => {
         discussionTemplate.value = template;
         if ( props.discussion.isNew() &&
              (template.recipientAudience === 'group') &&

@@ -79,13 +79,15 @@ const updatePollTemplateItems = () => {
 };
 
 const submit = () => {
+  props.discussionTemplate.setErrors();
+  form.value.resetValidation();
   props.discussionTemplate.pollTemplateKeysOrIds = pollTemplates.value.map(pt => pt.keyOrId());
   props.discussionTemplate.save().then(data => {
     Flash.success("discussion_template.discussion_template_saved");
     router.push(route.query.return_to || ('/discussion_templates/?group_id=' + props.discussionTemplate.groupId));
   }).catch(error => {
     form.value.validate();
-    Flash.error('common.check_for_errors_and_try_again');
+    Flash.serverError(error, ['processName', 'processSubtitle', 'title']);
   });
 };
 
@@ -248,7 +250,6 @@ v-form(ref="form" @submit.prevent="submit")
             space
             span(v-t="'thread_arrangement_form.nested_twice_description'")
 
-      v-checkbox(v-model="discussionTemplate.public" :label="$t('discussion_template.share_in_template_gallery')")
       v-checkbox(v-model="discussionTemplate.defaultToDirectDiscussion" :label="$t('discussion_template.default_to_direct_discussion')")
 
       //- .d-flex.justify-space-between.my-4.mt-4.discussion-template-form-actions
