@@ -1,96 +1,84 @@
-<script lang="js">
-import Records       from '@/shared/services/records';
-import Session       from '@/shared/services/session';
-import LmoUrlService from '@/shared/services/lmo_url_service';
-import EventBus      from '@/shared/services/event_bus';
-import AbilityService from '@/shared/services/ability_service';
+<script setup lang="js">
+import { ref, watch, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
 
-export default {
-  data() {
-    return {
-      discussion: null,
-      isDisabled: false,
-      groupId: null,
-      user: null
-    };
-  },
+import Records from '@/shared/services/records';
+import Session from '@/shared/services/session';
 
-  mounted() {
-    this.init();
-  },
+const route = useRoute();
 
-  watch: {
-    '$route.query.group_id': 'init',
-    '$route.query.blank_template': 'init',
-    '$route.query.new_template': 'init',
-    '$route.query.template_id': 'init',
-    '$route.params.key': 'init'
-  },
+const discussion = ref(null);
+const user = ref(null);
 
-  methods: {
-    init() {
-      let discussionId, templateId, templateKey, userId;
-      this.discussion = null;
+const init = () => {
+  let discussionId, templateId, templateKey, userId;
+  discussion.value = null;
 
-      if (this.$route.params.key) {
-        Records.discussions.findOrFetchById(this.$route.params.key).then(discussion => {
-          this.discussion = discussion.clone();
-        });
+  if (route.params.key) {
+    Records.discussions.findOrFetchById(route.params.key).then(d => {
+      discussion.value = d.clone();
+    });
 
-      } else if ((templateId = parseInt(this.$route.query.template_id))) {
-        Records.discussionTemplates.findOrFetchById(templateId).then(template => {
-          this.discussion = template.buildDiscussion();
-          if (!template.defaultToDirectDiscussion && parseInt(this.$route.query.group_id)) {
-            this.discussion.groupId = parseInt(this.$route.query.group_id);
-          }
-        });
-
-      } else if ((templateKey = this.$route.query.template_key)) {
-        Records.discussionTemplates.findOrFetchByKey(this.$route.query.template_key, this.$route.query.group_id).then(template => {
-          this.discussion = template.buildDiscussion();
-          if (!template.defaultToDirectDiscussion && parseInt(this.$route.query.group_id)) {
-            this.discussion.groupId = parseInt(this.$route.query.group_id);
-          }
-        });
-
-      } else if ((discussionId = parseInt(this.$route.query.discussion_id))) {
-        Records.discussions.findOrFetchById(discussionId).then(dt => {
-          this.discussion = dt.buildCopy();
-          if (dt.groupId && Session.user().groupIds().includes(dt.groupId)) {
-            this.discussion.groupId = dt.groupId;
-          }
-        });
-
-      } else if ((this.groupId = parseInt(this.$route.query.group_id))) {
-        Records.groups.findOrFetchById(this.groupId).then(() => {
-          this.discussion = Records.discussions.build({
-            title: this.$route.query.title,
-            groupId: this.groupId,
-            descriptionFormat: Session.defaultFormat()
-          });
-        });
-
-      } else if ((userId = parseInt(this.$route.query.user_id))) {
-        Records.users.findOrFetchById(userId).then(user => {
-          this.user = user;
-          this.discussion = Records.discussions.build({
-            title: this.$route.query.title,
-            groupId: null,
-            descriptionFormat: Session.defaultFormat()
-          });
-        });
-
-      } else {
-        this.discussion = Records.discussions.build({
-          title: this.$route.query.title,
-          descriptionFormat: Session.defaultFormat()
-        });
+  } else if ((templateId = parseInt(route.query.template_id))) {
+    Records.discussionTemplates.findOrFetchById(templateId).then(template => {
+      discussion.value = template.buildDiscussion();
+      if (!template.defaultToDirectDiscussion && parseInt(route.query.group_id)) {
+        discussion.value.groupId = parseInt(route.query.group_id);
       }
-    }
+    });
+
+  } else if ((templateKey = route.query.template_key)) {
+    Records.discussionTemplates.findOrFetchByKey(route.query.template_key, route.query.group_id).then(template => {
+      discussion.value = template.buildDiscussion();
+      if (!template.defaultToDirectDiscussion && parseInt(route.query.group_id)) {
+        discussion.value.groupId = parseInt(route.query.group_id);
+      }
+    });
+
+  } else if ((discussionId = parseInt(route.query.discussion_id))) {
+    Records.discussions.findOrFetchById(discussionId).then(dt => {
+      discussion.value = dt.buildCopy();
+      if (dt.groupId && Session.user().groupIds().includes(dt.groupId)) {
+        discussion.value.groupId = dt.groupId;
+      }
+    });
+
+  } else if (parseInt(route.query.group_id)) {
+    const groupId = parseInt(route.query.group_id);
+    Records.groups.findOrFetchById(groupId).then(() => {
+      discussion.value = Records.discussions.build({
+        title: route.query.title,
+        groupId: groupId,
+        descriptionFormat: Session.defaultFormat()
+      });
+    });
+
+  } else if ((userId = parseInt(route.query.user_id))) {
+    Records.users.findOrFetchById(userId).then(u => {
+      user.value = u;
+      discussion.value = Records.discussions.build({
+        title: route.query.title,
+        groupId: null,
+        descriptionFormat: Session.defaultFormat()
+      });
+    });
+
+  } else {
+    discussion.value = Records.discussions.build({
+      title: route.query.title,
+      descriptionFormat: Session.defaultFormat()
+    });
   }
 };
 
+onMounted(() => {
+  init();
+});
+
+watch(() => route.query, () => { init(); });
+watch(() => route.params.key, () => { init(); });
 </script>
+
 <template lang="pug">
 v-main
   v-container.start-discussion-page.max-width-800.px-0.px-sm-3

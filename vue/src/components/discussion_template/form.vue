@@ -1,105 +1,115 @@
-<script lang="js">
+<script setup lang="js">
+import { ref, computed } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
 import Records from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
 import Session from '@/shared/services/session';
-import Flash  from '@/shared/services/flash';
+import Flash from '@/shared/services/flash';
+import LmoUrlService from '@/shared/services/lmo_url_service';
 import { I18n } from '@/i18n';
 import { compact } from 'lodash-es';
-import { ContainerMixin, HandleDirective } from 'vue-slicksort';
+import { HandleDirective } from 'vue-slicksort';
+import { useWatchRecords } from '@/composables/useWatchRecords';
 
-import WatchRecords from '@/mixins/watch_records';
-import UrlFor from '@/mixins/url_for';
+const vHandle = HandleDirective;
 
-export default {
-  mixins: [WatchRecords, UrlFor],
-  directives: {
-    handle: HandleDirective
-  },
+const props = defineProps({
+  discussionTemplate: {
+    type: Object,
+    required: true
+  }
+});
 
-  props: {
-    discussionTemplate: {
-      type: Object,
-      required: true
-    }
-  },
+const router = useRouter();
+const route = useRoute();
 
-  data() {
+// url_for mixin functionality
+const urlFor = (model, action, params) => LmoUrlService.route({model, action, params});
+
+// watch_records composable
+const { watchRecords } = useWatchRecords();
+
+// Template refs
+const form = ref(null);
+
+// Data
+const pollTemplateItems = ref([]);
+const selectedPollTemplate = ref(null);
+const pollTemplates = ref([]);
+const recipientAudienceItems = ref([
+  {title: 'None', value: null},
+  {title: I18n.global.t('announcement.audiences.everyone_in_the_group'), value: 'group'}
+]);
+
+// Computed
+const breadcrumbs = computed(() => {
+  return compact([
+    props.discussionTemplate.group().parentId && props.discussionTemplate.group().parent(),
+    props.discussionTemplate.group()
+  ]).map(g => {
     return {
-      pollTemplateItems: [],
-      selectedPollTemplate: null,
-      pollTemplates: [],
-      recipientAudienceItems: [{title: 'None', value: null}, {title: I18n.global.t('announcement.audiences.everyone_in_the_group'), value: 'group'}]
+      title: g.name,
+      disabled: false,
+      to: urlFor(g)
     };
-  },
+  });
+});
 
-  created() {
-    this.pollTemplates = this.discussionTemplate.pollTemplates();
-    Records.pollTemplates.fetchByGroupId(this.discussionTemplate.groupId);
+// Methods
+const validate = (field) => {
+  return [ () => props.discussionTemplate.errors[field] === undefined || props.discussionTemplate.errors[field][0] ];
+};
 
-    this.watchRecords({
-      collections: ["pollTemplates"],
-      query: records => this.updatePollTemplateItems()
-    });
-  },
-
-  computed: {
-    breadcrumbs() {
-      return compact([this.discussionTemplate.group().parentId && this.discussionTemplate.group().parent(), this.discussionTemplate.group()]).map(g => {
-        return {
-          title: g.name,
-          disabled: false,
-          to: this.urlFor(g)
-        };
-      });
-    }
-  },
-
-  methods: {
-    validate(field) {
-      return [ () => this.discussionTemplate.errors[field] === undefined || this.discussionTemplate.errors[field][0] ]
-    },
-    discardDraft() {
-      if (confirm(I18n.global.t('formatting.confirm_discard'))) {
-        EventBus.$emit('resetDraft', 'discussionTemplate', this.discussionTemplate.id, 'description', this.discussionTemplate.description);
-        EventBus.$emit('resetDraft', 'discussionTemplate', this.discussionTemplate.id, 'processIntroduction', this.discussionTemplate.processIntroduction);
-      }
-    },
-    updatePollTemplateItems() {
-      this.pollTemplateItems = [{title: I18n.global.t('discussion_template.add_poll_template'), value: null}].concat(
-        Records.pollTemplates.find({groupId: this.discussionTemplate.group().id}).filter( pt => {
-          return !this.pollTemplates.includes(pt);
-        }).map(pt => ({
-          title: pt.processName,
-          value: pt.id || pt.key
-        }))
-      );
-    },
-
-    submit() {
-      this.discussionTemplate.pollTemplateKeysOrIds = this.pollTemplates.map(pt => pt.keyOrId());
-      this.discussionTemplate.save().then(data => {
-        Flash.success("discussion_template.discussion_template_saved");
-        this.$router.push(this.$route.query.return_to || ('/discussion_templates/?group_id=' + this.discussionTemplate.groupId));
-      }).catch(error => {
-        this.$refs.form.validate();
-        Flash.error('common.check_for_errors_and_try_again');
-      });
-    },
-
-    pollTemplateSelected(keyOrId) {
-      this.pollTemplates.push(Records.pollTemplates.find(keyOrId));
-      setTimeout(() => {
-        this.selectedPollTemplate = null;
-        this.updatePollTemplateItems();
-      });
-    },
-
-    removePollTemplate(pollTemplate) {
-      this.pollTemplates.splice(this.pollTemplates.indexOf(pollTemplate), 1);
-      this.updatePollTemplateItems();
-    }
+const discardDraft = () => {
+  if (confirm(I18n.global.t('formatting.confirm_discard'))) {
+    EventBus.$emit('resetDraft', 'discussionTemplate', props.discussionTemplate.id, 'description', props.discussionTemplate.description);
+    EventBus.$emit('resetDraft', 'discussionTemplate', props.discussionTemplate.id, 'processIntroduction', props.discussionTemplate.processIntroduction);
   }
 };
+
+const updatePollTemplateItems = () => {
+  pollTemplateItems.value = [{title: I18n.global.t('discussion_template.add_poll_template'), value: null}].concat(
+    Records.pollTemplates.find({groupId: props.discussionTemplate.group().id}).filter(pt => {
+      return !pollTemplates.value.includes(pt);
+    }).map(pt => ({
+      title: pt.processName,
+      value: pt.id || pt.key
+    }))
+  );
+};
+
+const submit = () => {
+  props.discussionTemplate.pollTemplateKeysOrIds = pollTemplates.value.map(pt => pt.keyOrId());
+  props.discussionTemplate.save().then(data => {
+    Flash.success("discussion_template.discussion_template_saved");
+    router.push(route.query.return_to || ('/discussion_templates/?group_id=' + props.discussionTemplate.groupId));
+  }).catch(error => {
+    form.value.validate();
+    Flash.error('common.check_for_errors_and_try_again');
+  });
+};
+
+const pollTemplateSelected = (keyOrId) => {
+  pollTemplates.value.push(Records.pollTemplates.find(keyOrId));
+  setTimeout(() => {
+    selectedPollTemplate.value = null;
+    updatePollTemplateItems();
+  });
+};
+
+const removePollTemplate = (pollTemplate) => {
+  pollTemplates.value.splice(pollTemplates.value.indexOf(pollTemplate), 1);
+  updatePollTemplateItems();
+};
+
+// created logic (runs immediately in script setup)
+pollTemplates.value = props.discussionTemplate.pollTemplates();
+Records.pollTemplates.fetchByGroupId(props.discussionTemplate.groupId);
+
+watchRecords({
+  collections: ["pollTemplates"],
+  query: records => updatePollTemplateItems()
+});
 
 </script>
 <template lang="pug">

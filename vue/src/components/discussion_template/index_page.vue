@@ -1,109 +1,124 @@
-<script lang="js">
+<script setup lang="js">
+import { ref, computed, watch, onMounted, onUnmounted } from 'vue';
+import { useRoute } from 'vue-router';
+import { compact } from 'lodash-es';
+
 import Records       from '@/shared/services/records';
 import Session       from '@/shared/services/session';
 import LmoUrlService from '@/shared/services/lmo_url_service';
 import EventBus      from '@/shared/services/event_bus';
-import AbilityService from '@/shared/services/ability_service';
 import DiscussionTemplateService from '@/shared/services/discussion_template_service';
-import { compact } from 'lodash-es';
-import WatchRecords from '@/mixins/watch_records';
-import UrlFor from '@/mixins/url_for';
+
 import { mdiCog } from '@mdi/js';
 
-export default {
-  mixins: [WatchRecords, UrlFor],
+const route = useRoute();
 
-  data() {
+// Data
+const templates = ref([]);
+const actions = ref({});
+const group = ref(null);
+const groups = ref([]);
+const returnTo = Session.returnTo();
+const isSorting = ref(false);
+const showSettings = ref(false);
+const watchedRecords = ref([]);
+
+// WatchRecords replacement
+const watchRecordsFunc = (options) => {
+  const { collections, query, key } = options;
+  const name = collections.concat(key || parseInt(Math.random() * 10000)).join('_');
+  watchedRecords.value.push(name);
+  Records.view({ name, collections, query });
+};
+
+// UrlFor replacement
+const urlFor = (model, action, params) => {
+  return LmoUrlService.route({ model, action, params });
+};
+
+// Computed
+const hasGroupId = computed(() => {
+  return !!route.query.group_id;
+});
+
+const userIsAdmin = computed(() => {
+  return group.value && group.value.adminsInclude(Session.user());
+});
+
+const breadcrumbs = computed(() => {
+  if (!group.value) { return []; }
+  return compact([group.value.parentId && group.value.parent(), group.value]).map(g => {
     return {
-      mdiCog,
-      templates: [],
-      actions: {},
-      group: null,
-      groups: [],
-      returnTo: Session.returnTo(),
-      isSorting: false,
-      showSettings: false
+      title: g.name,
+      disabled: false,
+      to: urlFor(g)
     };
-  },
+  });
+});
 
-  mounted() {
-    if (this.hasGroupId) {
-      Records.discussionTemplates.fetch({
-        params: {
-          group_id: this.$route.query.group_id,
-          per: 50
-        }
-      });
+// Methods
+const query = () => {
+  if (!hasGroupId.value) { return; }
+  group.value = Records.groups.findById(parseInt(route.query.group_id));
+  templates.value = Records.discussionTemplates.collection.chain().find({
+    groupId: parseInt(route.query.group_id),
+    discardedAt: (showSettings.value && {$ne: null}) || null
+  }).simplesort('position').data();
 
-      this.watchRecords({
-        key: `discussionTemplates${this.$route.query.group_id}`,
-        collections: ['discussionTemplates', 'groups'],
-        query: () => this.query()
-      });
-    } else {
-      Records.users.findOrFetchGroups();
-      this.watchRecords({
-        key: 'discussionTemplateGroups',
-        collections: ['groups', 'memberships'],
-        query: () => { this.groups = Session.user().parentGroups(); }
-      });
-    }
-
-    EventBus.$on('sortDiscussionTemplates', () => { return this.isSorting = true; });
-    EventBus.$on('reloadDiscussionTemplates', () => { return this.query(); });
-  },
-
-  methods: {
-    sortEnded() {
-      this.isSorting = false;
-      setTimeout(() => {
-        const ids = this.templates.map(p => p.id || p.key);
-        Records.remote.post('discussion_templates/positions', {group_id: this.group.id, ids});
-      });
-    },
-
-    query() {
-      if (!this.hasGroupId) { return; }
-      this.group = Records.groups.findById(parseInt(this.$route.query.group_id));
-      this.templates = Records.discussionTemplates.collection.chain().find({
-        groupId: parseInt(this.$route.query.group_id),
-        discardedAt: (this.showSettings && {$ne: null}) || null
-      }).simplesort('position').data();
-
-      if (this.group) {
-        this.actions = {};
-        this.templates.forEach((template, i) => {
-          this.actions[i] = DiscussionTemplateService.actions(template, this.group);
-        });
-      }
-    }
-  },
-
-  computed: {
-    hasGroupId() {
-      return !!this.$route.query.group_id;
-    },
-
-    userIsAdmin() {
-      return this.group && this.group.adminsInclude(Session.user());
-    },
-
-    breadcrumbs() {
-      if (!this.group) { return []; }
-      return compact([this.group.parentId && this.group.parent(), this.group]).map(g => {
-        return {
-          title: g.name,
-          disabled: false,
-          to: this.urlFor(g)
-        };
-      });
-    }
-  },
-  watch: {
-    '$route.query': 'query',
-    'showSettings': 'query'
+  if (group.value) {
+    actions.value = {};
+    templates.value.forEach((template, i) => {
+      actions.value[i] = DiscussionTemplateService.actions(template, group.value);
+    });
   }
 };
+
+const sortEnded = () => {
+  isSorting.value = false;
+  setTimeout(() => {
+    const ids = templates.value.map(p => p.id || p.key);
+    Records.remote.post('discussion_templates/positions', {group_id: group.value.id, ids});
+  });
+};
+
+// EventBus listeners
+EventBus.$on('sortDiscussionTemplates', () => { isSorting.value = true; });
+EventBus.$on('reloadDiscussionTemplates', () => { query(); });
+
+onUnmounted(() => {
+  watchedRecords.value.forEach(name => delete Records.views[name]);
+  EventBus.$off('sortDiscussionTemplates');
+  EventBus.$off('reloadDiscussionTemplates');
+});
+
+// Mounted
+onMounted(() => {
+  if (hasGroupId.value) {
+    Records.discussionTemplates.fetch({
+      params: {
+        group_id: route.query.group_id,
+        per: 50
+      }
+    });
+
+    watchRecordsFunc({
+      key: `discussionTemplates${route.query.group_id}`,
+      collections: ['discussionTemplates', 'groups'],
+      query: () => query()
+    });
+  } else {
+    Records.users.findOrFetchGroups();
+    watchRecordsFunc({
+      key: 'discussionTemplateGroups',
+      collections: ['groups', 'memberships'],
+      query: () => { groups.value = Session.user().parentGroups(); }
+    });
+  }
+});
+
+// Watchers
+watch(() => route.query, () => { query(); });
+watch(showSettings, () => { query(); });
 </script>
 <template lang="pug">
 .discussion-templates-page
