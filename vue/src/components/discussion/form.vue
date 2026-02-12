@@ -44,6 +44,12 @@ const initialRecipients = ref([]);
 const discussionTemplate = ref(null);
 const loaded = ref(false);
 
+// Computed
+const suggestedPollTemplates = computed(() => {
+  if (!discussionTemplate.value) { return []; }
+  return discussionTemplate.value.pollTemplates();
+});
+
 // Methods
 const validate = (field) => {
   return [ () => props.discussion.errors[field] === undefined || props.discussion.errors[field][0] ];
@@ -237,6 +243,14 @@ v-form(ref="form" @submit.prevent="submit")
           :label="$t('discussion_form.context_label')"
           :placeholder="$t('discussion_form.context_placeholder')"
         )
+
+        template(v-if="!discussion.id && suggestedPollTemplates.length")
+          .text-subtitle-2.text-medium-emphasis.mt-4(v-t="'discussion_form.suggested_poll_templates'")
+          v-list(density="compact")
+            v-list-item(v-for="pt in suggestedPollTemplates" :key="pt.id || pt.key")
+              template(v-slot:prepend)
+                common-icon.text-medium-emphasis(name="mdi-poll" size="small")
+              v-list-item-title.text-medium-emphasis {{ pt.processName }}
 
         common-notify-fields(v-if="loaded" :model="discussion" :initial-recipients="initialRecipients")
     v-card-actions(v-if="!showUpgradeMessage")
