@@ -10,18 +10,19 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
 
   # === INDEX ===
 
-  test "index returns default templates for group with no custom templates" do
+  test "index materializes default templates for group with no custom templates" do
     sign_in @user
     get :index, params: { group_id: @group.id }
     assert_response :success
 
     json = JSON.parse(response.body)
     templates = json['discussion_templates']
-    assert templates.length > 0, "should return default templates"
-    assert templates.any? { |t| t['key'].present? }, "default templates should have keys"
+    assert templates.length > 0, "should return materialized templates"
+    assert templates.all? { |t| t['id'].present? }, "all templates should have IDs"
   end
 
-  test "index returns custom templates merged with defaults" do
+  test "index returns custom templates merged with materialized defaults" do
+    DiscussionTemplateService.ensure_templates_materialized(@group)
     template = DiscussionTemplate.create!(
       group: @group,
       author: @user,
@@ -36,7 +37,7 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
     json = JSON.parse(response.body)
     templates = json['discussion_templates']
     assert templates.any? { |t| t['id'] == template.id }, "should include custom template"
-    assert templates.any? { |t| t['key'].present? }, "should include default templates"
+    assert templates.length > 1, "should include materialized defaults"
   end
 
   test "index returns defaults when no group_id" do
@@ -94,18 +95,6 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
     assert templates.length > 0, "should return default templates for logged-out user"
   end
 
-  test "index serializes key attribute" do
-    sign_in @user
-    get :index, params: { group_id: @group.id }
-    assert_response :success
-
-    json = JSON.parse(response.body)
-    templates = json['discussion_templates']
-    default_template = templates.find { |t| t['key'] == 'blank' }
-    assert default_template, "should have a blank default template with key serialized"
-    assert_equal 'blank', default_template['key']
-  end
-
   # === SHOW ===
 
   test "show returns a template in user group" do
@@ -141,6 +130,8 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
   # === CREATE ===
 
   test "create creates a discussion template" do
+    DiscussionTemplateService.ensure_templates_materialized(@group)
+
     sign_in @user
 
     assert_difference 'DiscussionTemplate.count', 1 do
@@ -274,38 +265,10 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
     assert_response :forbidden
   end
 
-  # === HIDE / UNHIDE (default templates) ===
-
-  test "hide hides a default template for the group" do
-    sign_in @user
-    post :hide, params: { group_id: @group.id, key: "blank" }
-    assert_response :success
-
-    @group.reload
-    assert_includes @group.hidden_discussion_templates, "blank"
-  end
-
-  test "unhide restores a hidden default template" do
-    @group.hidden_discussion_templates = ["blank"]
-    @group.save!
-
-    sign_in @user
-    post :unhide, params: { group_id: @group.id, key: "blank" }
-    assert_response :success
-
-    @group.reload
-    refute_includes @group.hidden_discussion_templates, "blank"
-  end
-
-  test "hide denies non-admin" do
-    sign_in @another_user
-    post :hide, params: { group_id: @group.id, key: "blank" }
-    assert_response :not_found
-  end
-
   # === POSITIONS ===
 
   test "positions updates template ordering" do
+    DiscussionTemplateService.ensure_templates_materialized(@group)
     t1 = DiscussionTemplate.create!(group: @group, author: @user, process_name: "First", process_subtitle: "s", position: 0)
     t2 = DiscussionTemplate.create!(group: @group, author: @user, process_name: "Second", process_subtitle: "s", position: 1)
 
@@ -313,31 +276,82 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
     post :positions, params: { group_id: @group.id, ids: [t2.id, t1.id] }
     assert_response :success
 
-    @group.reload
-    assert_equal 0, @group.discussion_template_positions[t2.id.to_s]
-    assert_equal 1, @group.discussion_template_positions[t1.id.to_s]
-  end
-
-  test "positions can reorder default templates by key" do
-    sign_in @user
-    post :positions, params: { group_id: @group.id, ids: ["blank", "practice_thread"] }
-    assert_response :success
-
-    @group.reload
-    assert_equal 0, @group.discussion_template_positions["blank"]
-    assert_equal 1, @group.discussion_template_positions["practice_thread"]
+    t1.reload
+    t2.reload
+    assert_equal 0, t2.position
+    assert_equal 1, t1.position
   end
 
   test "positions denies non-admin" do
     sign_in @another_user
-    post :positions, params: { group_id: @group.id, ids: ["blank"] }
+    post :positions, params: { group_id: @group.id, ids: [1] }
     assert_response :not_found
+  end
+
+  # === MATERIALIZATION ===
+
+  test "ensure_templates_materialized creates DB records from YAML defaults" do
+    assert_equal 0, @group.discussion_templates.count
+
+    DiscussionTemplateService.ensure_templates_materialized(@group)
+
+    templates = @group.discussion_templates.reload
+    assert templates.count > 0, "should create template records"
+    assert templates.all? { |t| t.id.present? }, "all should have IDs"
+  end
+
+  test "ensure_templates_materialized is idempotent" do
+    DiscussionTemplateService.ensure_templates_materialized(@group)
+    count = @group.discussion_templates.count
+
+    DiscussionTemplateService.ensure_templates_materialized(@group)
+    assert_equal count, @group.discussion_templates.count
+  end
+
+  test "ensure_templates_materialized marks non-visible defaults as discarded" do
+    DiscussionTemplateService.ensure_templates_materialized(@group)
+
+    visible_keys = DiscussionTemplateService::VISIBLE_BY_DEFAULT
+    @group.discussion_templates.each do |t|
+      if visible_keys.include?(t.key)
+        refute t.discarded?, "#{t.key} should be visible by default"
+      else
+        assert t.discarded?, "#{t.key} should be hidden by default"
+      end
+    end
+  end
+
+  test "ensure_templates_materialized respects existing hidden_discussion_templates from group info" do
+    @group[:info]['hidden_discussion_templates'] = ['blank']
+    @group.save!
+
+    DiscussionTemplateService.ensure_templates_materialized(@group)
+
+    blank = @group.discussion_templates.find_by(key: 'blank')
+    assert blank.discarded?, "blank should be discarded based on group info"
+
+    practice = @group.discussion_templates.find_by(key: 'practice_thread')
+    refute practice.discarded?, "practice_thread should not be discarded"
+  end
+
+  test "ensure_templates_materialized skips if group already has templates" do
+    DiscussionTemplate.create!(
+      group: @group,
+      author: @user,
+      process_name: "Existing",
+      process_subtitle: "subtitle"
+    )
+
+    assert_no_difference '@group.discussion_templates.count' do
+      DiscussionTemplateService.ensure_templates_materialized(@group)
+    end
   end
 
   # === MEMBERS_CAN_CREATE_TEMPLATES ===
 
   test "member can create template when setting enabled" do
     @group.update!(members_can_create_templates: true)
+    DiscussionTemplateService.ensure_templates_materialized(@group)
 
     sign_in @another_user
     assert_difference 'DiscussionTemplate.count', 1 do
@@ -358,6 +372,7 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
 
   test "admin-created template is not auto-discarded" do
     @group.update!(members_can_create_templates: true)
+    DiscussionTemplateService.ensure_templates_materialized(@group)
 
     sign_in @user
     post :create, params: {
@@ -538,6 +553,8 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
   # === DEFAULT_TO_DIRECT_DISCUSSION ===
 
   test "create with default_to_direct_discussion true" do
+    DiscussionTemplateService.ensure_templates_materialized(@group)
+
     sign_in @user
     post :create, params: {
       discussion_template: {
@@ -555,6 +572,7 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
   end
 
   test "index serializes default_to_direct_discussion" do
+    DiscussionTemplateService.ensure_templates_materialized(@group)
     DiscussionTemplate.create!(
       group: @group,
       author: @user,

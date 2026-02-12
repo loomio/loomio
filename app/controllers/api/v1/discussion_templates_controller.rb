@@ -26,7 +26,7 @@ class Api::V1::DiscussionTemplatesController < Api::V1::RestfulController
 
     results = templates.map do |dt|
       {
-        id: dt.id,
+        key: dt.key,
         process_name: dt.process_name,
         process_subtitle: dt.process_subtitle,
         tags: dt.tags
@@ -37,7 +37,9 @@ class Api::V1::DiscussionTemplatesController < Api::V1::RestfulController
   end
 
   def index
-    if params[:id]
+    if params[:key]
+      self.collection = DiscussionTemplateService.default_templates.select { |dt| dt.key == params[:key] }
+    elsif params[:id]
       self.collection = Array(DiscussionTemplate.find_by(group_id: current_user.group_ids, id: params[:id]))
     elsif (group = current_user.groups.find_by(id: params[:group_id]))
       self.collection = DiscussionTemplateService.group_templates(group: group)
@@ -57,13 +59,9 @@ class Api::V1::DiscussionTemplatesController < Api::V1::RestfulController
     group = current_user.adminable_groups.find_by!(id: params[:group_id])
 
     params[:ids].each_with_index do |val, index|
-      group.discussion_template_positions[val.to_s] = index
-      if val.to_s =~ /\A\d+\z/
-        DiscussionTemplate.where(id: val.to_i, group_id: group.id).update_all(position: index)
-      end
+      DiscussionTemplate.where(id: val.to_i, group_id: group.id).update_all(position: index)
     end
 
-    group.save!
     index
   end
 
@@ -83,33 +81,6 @@ class Api::V1::DiscussionTemplatesController < Api::V1::RestfulController
     @discussion_template = find_template_for_author_or_admin
     @discussion_template.destroy!
     destroy_response
-  end
-
-  def hide
-    @group = current_user.adminable_groups.find_by!(id: params[:group_id])
-
-    if DiscussionTemplateService.group_templates(group: @group).any? {|pt| pt.key == params[:key]}
-      key = params[:key].parameterize
-      @group.hidden_discussion_templates = @group.hidden_discussion_templates | [key]
-      @group.save!
-      index
-    else
-      response_with_error(404)
-    end
-  end
-
-  def unhide
-    @group = current_user.adminable_groups.find_by!(id: params[:group_id])
-
-    if DiscussionTemplateService.group_templates(group: @group).any? {|pt| pt.key == params[:key]}
-      key = params[:key].parameterize
-      @group.hidden_discussion_templates = @group.hidden_discussion_templates - [key]
-      @group.save!
-      self.resource = @group
-      index
-    else
-      response_with_error(404)
-    end
   end
 
   private
