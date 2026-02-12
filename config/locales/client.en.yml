@@ -890,7 +890,7 @@ en:
     title_placeholder: What is the topic you want to discuss?
     context_label: Context
     context_placeholder: Provide some context for this discussion, so people know how to participate
-    suggested_poll_templates: Suggested decision templates
+    suggested_poll_templates: Suggested poll templates
     privacy_label: Privacy
     privacy_public: Anyone can view this thread if they have the link
     privacy_private: Only members of the group can view this thread
