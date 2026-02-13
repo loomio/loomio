@@ -61,7 +61,7 @@ en:
       title: I'm starting to get the hang of this
       process_name: Practice proposal
       process_subtitle: Learn how proposals work by trying one out
-      process_introduction: "<p>Use this template to help your group get comfortable using proposals on Loomio. It’s a safe and simple way for people to try out voting and see how everything fits together.</p>"
+      process_introduction: "<p>Help your group get comfortable using proposals on Loomio. It’s a safe and simple way for people to try out voting and see how everything fits together.</p>"
       details: "<p>This is a practice run so everyone can get comfortable with how proposals work on Loomio.</p><p>Please vote, and leave a reason statement if you like.</p><p>No pressure, no real-world consequences. It’s just a way to explore how proposals work!</p>"
       outcome_statement: "<p>Thanks for participating in this practice proposal! \U0001F389</p><p>This was just a chance to see how voting and commenting works on Loomio. There’s no real decision being made here — but hopefully this helped everyone get familiar with the process.</p>"
     proposal:
@@ -212,7 +212,7 @@ en:
     practice_thread:
       process_name: Practice discussion
       process_subtitle: Welcome people to the group and practice using Loomio
-      process_introduction: "<p>Use this template to welcome new members and encourage early participation. It gives people a chance to introduce themselves and explore Loomio’s features.</p>"
+      process_introduction: "<p>Welcome new members and encourage early participation. Ask people to introduce themselves and explore Loomio’s features together.</p>"
       title: "\U0001F44B Welcome! Say hi and try things out"
       description: "<p>Welcome to our Loomio group — it’s great to have you here!</p><p>This thread is a space to:</p><ul>\n<li><p>Introduce yourself to the group</p></li>\n<li><p>Try out some of Loomio's features - for example: try using reactions \U0001F44D</p></li>\n<li><p>Ask any questions you have at this stage</p></li>\n</ul><p>If you're not sure what to say, a simple hello is fine \U0001F642</p>"
     blank:
@@ -229,7 +229,7 @@ en:
       title: Using Loomio for our group
       process_name: Let’s try out Loomio together
       process_subtitle: A thread to help people new to Loomio practice writing comments and voting.
-      process_introduction: "<p>Use this template to introduce people to Loomio.</p><p>A great way to experience Loomio is with a simple introductions thread and practice proposal</p>"
+      process_introduction: "<p>Introduce people to Loomio.</p><p>A great way to experience Loomio is with a simple introductions thread and practice proposal</p>"
       description: <h3 id="why-are-you-interested-in-using-loomio">Why are you interested in using Loomio?</h3><p>We are interested in using Loomio to involve people in decisions about our organization.</p><h3 id="what-are-you-asking-people-to-do">What are you asking people to do?</h3><p>I would love to hear your thoughts! Leave a comment below and vote in the proposal.</p><p>You can reply to someone's comment by clicking on the reply icon located at the bottom right of the comment.</p><p>Use @mention to notify people.</p>
       onboarding: Onboarding
     consent_process:

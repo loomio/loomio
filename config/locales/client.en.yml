@@ -829,7 +829,7 @@ en:
     these_are_public_templates: 'These templates are available for you to copy or modify to suit your group'
     browse_public_templates_hint: 'Click a template name to start a discussion with it, or click the edit button on the right to make a copy and modify it for your own group.'
     these_are_templates: 'These are the discussion templates in your group. Click a template to start a discussion with it. You can also click the ... menu button on each template to edit, hide, or reorder these if you like. '
-    these_are_templates_v2: 'This is a list of the Discussion Templates in your group. Click a template to use it as the starting point for a new discussion. Group admins can edit templates and rearrange the list so it''s easy to find the important templates.'
+    these_are_templates_v2: 'These are the discussion templates in your group. Click a template to start a new discussion. Admins can edit templates, make new templates and rearrange the list.'
     process_name_placeholder: "e.g. Weekly standup"
     process_subtitle_placeholder: "e.g. A short check-in with the team each week"
     default_title_placeholder: "e.g. Standup - January 15"
@@ -856,7 +856,8 @@ en:
     poll_templates: Poll templates
     poll_templates_help: Templates you select here will show up first when someone clicks Start a vote
     start_direct_discussion_from_blank: Start a direct discussion from a blank template
-    default_to_direct_discussion: Start as a direct discussion (no group)
+    default_to_direct_discussion: Default discussion group field to "None (direct discussion)"
+    default_to_direct_discussion_helptext: Use this if you want people to start direct discussions from this template.
   discussion_form:
     none_invite_only_discussion: None (invite-only discussion)
     none_direct_discussion: None (direct discussion)
@@ -890,7 +891,7 @@ en:
     title_placeholder: What is the topic you want to discuss?
     context_label: Context
     context_placeholder: Provide some context for this discussion, so people know how to participate
-    suggested_poll_templates: Suggested poll templates
+    recommended_poll_templates: Recommended poll templates
     privacy_label: Privacy
     privacy_public: Anyone can view this thread if they have the link
     privacy_private: Only members of the group can view this thread
@@ -1230,6 +1231,7 @@ en:
     stats: Group stats
     participation_report: Participation report
     discussions: Discussions
+    discussion_templates: Discussion templates
     polls: Polls
     decisions: Decisions
     members: Members

@@ -154,9 +154,6 @@ watch(showHidden, () => { query(); });
             template(v-slot:divider)
               common-icon(name="mdi-chevron-right")
         v-card(:title="$t('discussion_template.start_a_new_discussion')")
-          template(v-slot:append v-if="canCreateTemplates")
-            v-btn(color="primary" variant="text" size="small" :to="'/discussion_templates/new?group_id='+$route.query.group_id+'&return_to='+returnTo")
-              span(v-t="'discussion_form.new_template'")
           v-alert.mx-4(type="info" variant="tonal")
             span(v-t="'discussion_template.these_are_templates_v2'")
             |
@@ -174,6 +171,11 @@ watch(showHidden, () => { query(); });
                         common-icon(name="mdi-drag-vertical")
 
             template(v-if="!isSorting")
+              .d-flex.justify-space-between.align-center
+                v-list-subheader(v-t="'group_page.discussion_templates'")
+                span.mr-4(v-if="canCreateTemplates")
+                  v-btn(variant="tonal" size="small" :to="'/discussion_templates/new?group_id='+$route.query.group_id+'&return_to='+returnTo")
+                    span.text-medium-emphasis(v-t="'discussion_form.new_template'")
               v-list-item.discussion-templates--template(
                 v-for="(template, i) in templates"
                 :key="template.id"
@@ -186,12 +188,14 @@ watch(showHidden, () => { query(); });
                   action-menu(:actions='actions[i]' size="small" icon :name="$t('action_dock.more_actions')")
 
             .d-flex.justify-center.my-2(v-if="userIsAdmin && !showHidden")
-              v-btn.text-medium-emphasis(variant="tonal" size="small" @click="showHidden = true" v-t="'discussion_template.more_templates'")
+              v-btn.text-medium-emphasis(variant="text" size="small" @click="showHidden = true" )
+                spam(v-t="'discussion_template.more_templates'")
             template(v-if="userIsAdmin && showHidden")
               v-list-item(:to="'/discussion_templates/browse?group_id='+$route.query.group_id+'&return_to='+returnTo")
                 v-list-item-title(v-t="'discussion_template.browse_example_templates'")
                 template(v-slot:append)
                   common-icon(name="mdi-magnify")
               .d-flex.justify-center.my-2
-                v-btn.text-medium-emphasis(variant="tonal" size="small" @click="showHidden = false" v-t="'discussion_template.fewer_templates'")
+                v-btn.text-medium-emphasis(variant="text" size="small" @click="showHidden = false")
+                  span(v-t="'discussion_template.fewer_templates'")
 </template>
