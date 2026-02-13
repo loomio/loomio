@@ -16,6 +16,7 @@ jobs:
       PGPORT: 5432
       PGUSER: postgres
       RAILS_ENV: test
+      E2E_PORT: 3001
     services:
       postgres:
         image: postgres:latest
@@ -55,7 +56,7 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: '22'
-    - name: start websocker server
+    - name: start websocket server
       run: |
         echo $PWD
         git clone https://github.com/loomio/loomio_channel_server.git
@@ -67,15 +68,6 @@ jobs:
         createdb
         cp config/database.yml.postgresql config/database.yml
         bundle exec rake db:setup
-    - name: start rails server
-      env:
-        PUMA_WORKERS: 1
-        MIN_THREADS: 3
-        MAX_THREADS: 3
-      run: |
-        rm -f bin/*
-        bundle install --binstubs
-        bundle exec rails server -b 0.0.0.0 -p 3001 &
     - name: build client
       run: |
         cd vue
@@ -85,10 +77,37 @@ jobs:
     - name: run e2es
       env:
         DISPLAY: ':99'
+        PUMA_WORKERS: 1
+        MIN_THREADS: 3
+        MAX_THREADS: 3
       run: |
         /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16
+
+        # Start Rails server with output inline
+        bundle exec rails server -b 0.0.0.0 -p $E2E_PORT 2>&1 &
+        RAILS_PID=$!
+
+        # Wait for server to be ready
+        echo "Waiting for Rails server on port $E2E_PORT..."
+        for i in $(seq 1 60); do
+          if curl -sf "http://localhost:$E2E_PORT/up" > /dev/null 2>&1; then
+            echo "Rails server is ready."
+            break
+          fi
+          if [ "$i" -eq 60 ]; then
+            echo "ERROR: Rails server did not start within 60 seconds."
+            exit 1
+          fi
+          sleep 1
+        done
+
+        # Run nightwatch
         cd vue
-        npm run test
+        npx nightwatch --retries 3 --headless
+        TEST_EXIT=$?
+
+        kill $RAILS_PID 2>/dev/null || true
+        exit $TEST_EXIT
     - name: upload e2e failure screenshots
       uses: actions/upload-artifact@v4
       if: ${{ always() }}
