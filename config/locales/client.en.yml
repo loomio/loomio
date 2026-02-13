@@ -719,7 +719,7 @@ en:
       poll_closed_by_user: "%{actor} closed the %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} closing in 24 hours: %{title}"
       poll_closing_soon_author: 'Your %{poll_type} is closing in 24 hours: %{title}'
-      poll_created: "Vote: %{title}"
+      poll_created: "%{poll_type}: %{title}"
       poll_edited: "%{actor} updated the %{poll_type}: %{title}"
       poll_expired: "%{poll_type} has closed: %{title}"
       poll_expired_author: 'Publish an outcome: %{title}'
@@ -758,7 +758,7 @@ en:
       poll_closed_by_user: "%{actor} closed the %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} closing in 24 hours: %{title}"
       poll_closing_soon_author: 'Your %{poll_type} is closing in 24 hours: %{title}'
-      poll_created: "%{actor} started a %{poll_type}: %{title}"
+      poll_created: "%{actor} created a %{poll_type}: %{title}"
       poll_edited: "%{actor} updated the %{poll_type}: %{title}"
       poll_expired: "%{poll_type} has closed: %{title}"
       poll_expired_author: 'Share the outcome of your %{poll_type}: %{title}'
@@ -796,7 +796,7 @@ en:
       poll_closed_by_user: "%{actor} closed the %{poll_type}"
       poll_closing_soon: "%{poll_type} closing in 24 hours"
       poll_closing_soon_author: Your %{poll_type} is closing in 24 hours
-      poll_created: "%{actor} started a %{poll_type}"
+      poll_created: "%{actor} created a %{poll_type}"
       poll_edited: "%{actor} updated the %{poll_type}"
       poll_expired: "%{poll_type} has closed"
       poll_expired_author: Share the outcome of your %{poll_type}
@@ -2092,6 +2092,7 @@ en:
     results_hidden_until_vote: Results will be shown after you vote
     unable_to_vote: You have not been invited to vote in this %{poll_type}
     draft_mode: Voting disabled. This is not open for voting yet.
+    voting_opens_at: "This %{poll_type} opens for voting %{time}"
     for_this_proposal_to_pass: "For this proposal to pass:"
     for_this_poll_type_to_be_valid: "For this %{poll_type} to be valid:"
   poll_common_collapsed:
@@ -2493,7 +2494,7 @@ en:
     outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> shared an outcome"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> reopened the %{polltype}"
     poll_closed_by_user: "<a class='actor-link' href='/u/%{username}'>%{author}</a> closed the %{polltype}"
-    poll_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> started a %{polltype}"
+    poll_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> created a %{polltype}"
     poll_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a> edited the %{polltype}"
     poll_option_added: "<a class='actor-link' href='/u/%{username}'>%{author}</a> added options to the %{polltype}"
     poll_expired: "%{polltype} closed"

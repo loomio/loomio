@@ -17,6 +17,7 @@ class Views::Chatbot::Markdown::Poll < Views::Chatbot::Markdown::Base
     render_outcome(@poll)
     render_body(@poll)
     md "\n"
+    render_voting_period(@poll)
     render_vote(@poll)
     md "\n"
     render_rules(@poll)

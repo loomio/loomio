@@ -49,7 +49,17 @@ class Dev::PollsController < Dev::NightwatchController
       poll = scenario[:poll]
       recipient = scenario[:observer]
 
+      event_key = EventMailer.event_key_for(event, recipient)
+      subject_params = {
+        title: poll.title,
+        poll_type: I18n.t("decision_tools_card.#{poll.poll_type}_title"),
+        actor: event.user.name,
+        site_name: AppConfig.theme[:site_name]
+      }
+      email_subject = I18n.t("notifications.email_subject.#{event_key}", **subject_params)
+
       render Views::Dev::Polls::Compare.new(
+        email_subject: email_subject,
         email: EventMailer.build_component(event: event, recipient: recipient),
         matrix: Views::Chatbot::Matrix::Poll.new(event: event, poll: poll, recipient: recipient),
         markdown: Views::Chatbot::Markdown::Poll.new(event: event, poll: poll, recipient: recipient),

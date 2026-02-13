@@ -17,9 +17,10 @@ class Views::Chatbot::Slack::Poll < Views::Chatbot::Slack::Base
     md "\n"
     slack_convert { render_outcome(@poll) }
     md "\n"
-    md "\n"
     slack_convert { render_body(@poll) }
     md "\n"
+    md "\n"
+    slack_convert { render_voting_period(@poll) }
     md "\n"
     slack_convert { render_vote(@poll) }
     md "\n"

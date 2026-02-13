@@ -24,6 +24,10 @@ export default {
     };
   },
 
+  mounted() {
+    this.updateOpeningAt();
+  },
+
   methods: {
     exact,
     updateOpeningAt() {

@@ -466,6 +466,31 @@ module.exports = {
   //   page.expectElement('.discussion-form')
   // },
 
+  'can_create_a_scheduled_proposal': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('polls/test_discussion')
+    page.click('.activity-panel__add-poll')
+    page.click('.decision-tools-card__poll-type--proposal')
+    page.fillIn('.poll-common-form-fields__title input', 'A scheduled proposal')
+    page.fillIn('.poll-common-form-fields__details .lmo-textarea div[contenteditable=true]', 'Some details')
+
+    // Uncheck "opens immediately" to schedule the poll for the future
+    page.click('.poll-common-form__opens-immediately input')
+    page.pause(500)
+
+    page.click('.poll-common-form__submit')
+    page.pause(1000)
+
+    // Poll should show "Opening in..." (not "Closing in...")
+    page.expectText('.closing-in', 'Opening')
+
+    // Vote form should show as a non-interactive preview
+    page.expectElement('.poll-common-vote-form--preview')
+    // Verify the poll options are visible
+    page.expectElement('.poll-common-vote-form__button')
+  },
+
   'can_view_scheduled_poll_and_add_voters': (test) => {
     page = pageHelper(test)
 
@@ -475,8 +500,9 @@ module.exports = {
     // Verify the poll shows "Opening in..." text
     page.expectText('.closing-in', 'Opening')
 
-    // Verify vote form is NOT shown (poll is not open yet)
-    page.expectNoElement('.poll-common-vote-form')
+    // Vote form should show as a non-interactive preview with options visible
+    page.expectElement('.poll-common-vote-form--preview')
+    page.expectElement('.poll-common-vote-form__button')
 
     // Open the add voters modal
     page.click('.action-dock__button--announce_poll')

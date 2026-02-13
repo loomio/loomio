@@ -190,6 +190,7 @@ class Poll < ApplicationRecord
 
   before_validation :clamp_minimum_stance_choices
   normalizes :quorum_pct, with: ->(v) { v.nil? ? nil : [ [ v, 0 ].max, 100 ].min }
+  normalizes :closing_at, :opening_at, with: ->(v) { v&.beginning_of_hour }
   validate :closes_in_future
   validate :opening_at_before_closing_at
   validate :discussion_group_is_poll_group
@@ -454,6 +455,10 @@ class Poll < ApplicationRecord
     kept? && (closing_at && closing_at > Time.now) && !closed_at && opened?
   end
 
+  def scheduled?
+    opening_at.present? && !opened?
+  end
+
   def wip?
     closing_at.nil?
   end
@@ -536,7 +541,11 @@ class Poll < ApplicationRecord
   end
 
   def opening_at_before_closing_at
-    return if opening_at.nil? || closing_at.nil?
+    return if opening_at.nil?
+    if closing_at.nil?
+      errors.add(:closing_at, I18n.t(:"poll.error.must_be_in_the_future"))
+      return
+    end
     return if opening_at < closing_at
     errors.add(:opening_at, I18n.t(:"poll.error.opening_at_before_closing_at"))
   end

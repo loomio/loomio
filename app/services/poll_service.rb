@@ -48,6 +48,12 @@ class PollService
     Poll.transaction do
       poll.save!
       poll.update_counts!
+
+      if !poll.opened_at && poll.closing_at && (poll.opening_at.nil? || poll.opening_at <= Time.now)
+        poll.update_column(:opened_at, Time.now)
+        announce_poll_opened(poll) if poll.notify_on_open
+      end
+
       GenericWorker.perform_async('SearchService', 'reindex_by_poll_id', poll.id)
 
       GenericWorker.perform_async('PollService', 'group_members_added', poll.group_id) if poll.group_id
