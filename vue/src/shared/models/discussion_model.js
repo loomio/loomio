@@ -36,7 +36,7 @@ export default class DiscussionModel extends BaseModel {
   }
 
   collabKeyParams(){
-    return [this.groupId, this.discussionTemplateId]
+    return [this.groupId, this.discussionTemplateId, this.discussionTemplateKey]
   }
 
   defaultValues() {

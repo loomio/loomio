@@ -245,12 +245,12 @@ v-form(ref="form" @submit.prevent="submit")
         )
 
         template(v-if="!discussion.id && suggestedPollTemplates.length")
-          .text-subtitle-2.text-medium-emphasis.mt-4(v-t="'discussion_form.suggested_poll_templates'")
-          v-list(density="compact")
-            v-list-item(v-for="pt in suggestedPollTemplates" :key="pt.id || pt.key")
-              template(v-slot:prepend)
-                common-icon.text-medium-emphasis(name="mdi-poll" size="small")
-              v-list-item-title.text-medium-emphasis {{ pt.processName }}
+          .text-subtitle-2.text-medium-emphasis.mt-4(v-t="'discussion_form.recommended_poll_templates'")
+          v-card.mt-2
+            v-list-item(v-for="pt in suggestedPollTemplates" :key="pt.id || pt.key" lines="two")
+              v-list-item-title {{ pt.processName }}
+              v-list-item-subtitle {{ pt.processSubtitle }}
+            v-divider
 
         common-notify-fields(v-if="loaded" :model="discussion" :initial-recipients="initialRecipients")
     v-card-actions(v-if="!showUpgradeMessage")

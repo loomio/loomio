@@ -155,7 +155,8 @@ watch(showHidden, () => { query(); });
               common-icon(name="mdi-chevron-right")
         v-card(:title="$t('discussion_template.start_a_new_discussion')")
           template(v-slot:append v-if="canCreateTemplates")
-            v-btn.text-primary(variant="text" size="small" :to="'/discussion_templates/new?group_id='+$route.query.group_id+'&return_to='+returnTo" v-t="'discussion_form.new_template'")
+            v-btn(color="primary" variant="text" size="small" :to="'/discussion_templates/new?group_id='+$route.query.group_id+'&return_to='+returnTo")
+              span(v-t="'discussion_form.new_template'")
           v-alert.mx-4(type="info" variant="tonal")
             span(v-t="'discussion_template.these_are_templates_v2'")
             |

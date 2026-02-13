@@ -33,7 +33,7 @@ export default {
       Records.discussionTemplates.findOrFetchByKey(templateKey, groupId).then(template => {
         this.discussionTemplate = template.clone();
         this.discussionTemplate.id = null;
-        this.discussionTemplate.key = null;
+        this.discussionTemplate.key = templateKey;
         this.discussionTemplate.groupId = groupId;
         this.discussionTemplate.public = false;
       });
