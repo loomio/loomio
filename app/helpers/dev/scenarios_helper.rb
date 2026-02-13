@@ -261,10 +261,10 @@ module Dev::ScenariosHelper
       anonymous: !!params[:anonymous],
       hide_results: (params[:hide_results] || :off),
       discussion: discussion,
+      opened_at: 8.days.ago.beginning_of_hour,
       closed_at: 1.day.ago.beginning_of_hour,
       closing_at: 1.day.ago    )
     PollService.create(poll: poll, actor: actor)
-    poll.update_column(:opened_at, 8.days.ago.beginning_of_hour)
     create_fake_stances(poll:poll)
     outcome    = fake_outcome(poll: poll)
 
@@ -289,10 +289,10 @@ module Dev::ScenariosHelper
       anonymous: !!params[:anonymous],
       hide_results: (params[:hide_results] || :off),
       discussion: discussion,
+      opened_at: 8.days.ago.beginning_of_hour,
       closed_at: 1.day.ago.beginning_of_hour,
       closing_at: 1.day.ago    )
     PollService.create(poll: poll, actor: actor)
-    poll.update_column(:opened_at, 8.days.ago.beginning_of_hour)
     create_fake_stances(poll: poll)
     outcome    = fake_outcome(poll: poll, author: poll.author, review_on: Date.today)
 

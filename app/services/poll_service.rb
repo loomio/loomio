@@ -19,10 +19,7 @@ class PollService
       EventBus.broadcast('poll_create', poll, actor)
       Events::PollCreated.publish!(poll, actor)
 
-      if poll.closing_at && (poll.opening_at.nil? || poll.opening_at <= Time.now)
-        poll.update_column(:opened_at, Time.now)
-        announce_poll_opened(poll) if poll.notify_on_open
-      end
+      open_poll_if_ready(poll)
     end
   end
 
@@ -49,10 +46,7 @@ class PollService
       poll.save!
       poll.update_counts!
 
-      if !poll.opened_at && poll.closing_at && (poll.opening_at.nil? || poll.opening_at <= Time.now)
-        poll.update_column(:opened_at, Time.now)
-        announce_poll_opened(poll) if poll.notify_on_open
-      end
+      open_poll_if_ready(poll)
 
       GenericWorker.perform_async('SearchService', 'reindex_by_poll_id', poll.id)
 
@@ -257,10 +251,7 @@ class PollService
     Poll.kept
         .where(opened_at: nil)
         .where("opening_at IS NOT NULL AND opening_at <= ?", Time.now)
-        .each do |poll|
-      poll.update_column(:opened_at, Time.now)
-      announce_poll_opened(poll) if poll.notify_on_open
-    end
+        .each { |poll| open_poll_if_ready(poll) }
   end
 
   def self.group_members_added(group_id)
@@ -470,6 +461,15 @@ class PollService
       )
     end
     l
+  end
+
+  def self.open_poll_if_ready(poll)
+    return if poll.opened_at
+    return unless poll.closing_at
+    return if poll.opening_at.present? && poll.opening_at > Time.now
+
+    poll.update_column(:opened_at, Time.now)
+    announce_poll_opened(poll) if poll.notify_on_open
   end
 
   def self.announce_poll_opened(poll)
