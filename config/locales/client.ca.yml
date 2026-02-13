@@ -311,6 +311,7 @@ ca:
       zoom: Zoom
       align: Alinear
       original: Original
+      rearrange: Reorganitzar
     formatting_help:
       label: Formatació
       title: Aprèn a escriure el text en format Markdown
@@ -842,6 +843,7 @@ ca:
     discussion_started: Discussió iniciada
     none_direct_discussion: Cap (discussió directa)
     direct_discussion: Discussió directa
+    direct_discussion_hint: Una discussió directa només és visible per a les persones específiques que convideu. No apareixerà a la llista de discussió de cap grup; la podeu trobar a la pàgina de Discusions directes.
   announcement:
     send_discussion: Envia fil
     send_group: Convida gent a %{name}
@@ -1349,6 +1351,12 @@ ca:
     upload_background: puja el fons
     remove_background: eliminar el fons
     remove_logo: eliminar el logotip
+    members_can_create_templates: Els membres poden crear plantilles
+    members_can_create_templates_help: Permet que els membres creïn plantilles de debat i enquesta. Les plantilles creades pels membres s'ocultaran fins que un administrador les mostri.
+    members_can_start_discussions_v2: Els membres poden iniciar noves discussions
+    members_can_start_discussions_help_v2: Permetre que els membres iniciïn noves discussions dins del grup
+    members_can_edit_discussions_v2: Els membres poden gestionar debats i comentaris
+    members_can_edit_discussions_help_v2: Permetre que els membres editin, moguin, fixin, etiquetin o tanquin qualsevol discussió o comentari del grup
   group_export_modal:
     title: Exporta dades del grup
     body: |
@@ -2692,6 +2700,24 @@ ca:
     add_poll_template_help: Seleccioneu qualsevol plantilla d'enquesta que us ajudi a completar aquest procés
     recommended_poll_templates: Plantilles d'enquesta recomanades
     share_in_template_gallery: Comparteix aquesta plantilla a la galeria pública de plantilles
+    browse_example_templates: Navega per plantilles d'exemple
+    example_templates: Plantilles d'exemple
+    browse_public_templates_hint: Feu clic al nom d'una plantilla per iniciar-hi una discussió o feu clic al botó d'edició de la dreta per fer-ne una còpia i modificar-la per al vostre propi grup.
+    these_are_templates_v2: Aquesta és una llista de les plantilles de discussió del vostre grup. Feu clic a una plantilla per utilitzar-la com a punt de partida per a una nova discussió. Els administradors del grup poden editar plantilles i reorganitzar la llista perquè sigui fàcil trobar les plantilles importants.
+    process_name_placeholder: p. ex., monòlegs setmanals
+    process_subtitle_placeholder: p. ex. una breu reunió de seguiment amb l'equip cada setmana
+    default_title_placeholder: p. ex. Monòleg - 15 de gener
+    more_templates: Més plantilles
+    fewer_templates: Menys plantilles
+    choose_a_group: Trieu un grup
+    default_templates: Plantilles predeterminades
+    or_start_a_direct_discussion: O iniciar una conversa directa
+    choose_group_for_templates: Trieu un grup per veure'n les plantilles de discussió
+    start_direct_discussion: Inicia una discussió directa
+    poll_templates: Plantilles d'enquesta
+    poll_templates_help: Les plantilles que seleccioneu aquí es mostraran primer quan algú faci clic a Inicia una votació
+    start_direct_discussion_from_blank: Inicia una discussió directa des d'una plantilla en blanc
+    default_to_direct_discussion: Comença com una discussió directa (sense grup)
   context_panel:
     thread_status:
       pinned: Aquesta discussió s'ha fixat. Romandrà al capdamunt de la llista de discussions del grup per a tots els usuaris.

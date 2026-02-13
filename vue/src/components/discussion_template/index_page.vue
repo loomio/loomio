@@ -71,7 +71,7 @@ const query = () => {
 const sortEnded = () => {
   isSorting.value = false;
   setTimeout(() => {
-    const ids = templates.value.map(p => p.id || p.key);
+    const ids = templates.value.map(p => p.id);
     Records.remote.post('discussion_templates/positions', {group_id: group.value.id, ids});
   });
 };
@@ -154,8 +154,6 @@ watch(showHidden, () => { query(); });
             template(v-slot:divider)
               common-icon(name="mdi-chevron-right")
         v-card(:title="$t('discussion_template.start_a_new_discussion')")
-          template(v-slot:append v-if="canCreateTemplates")
-            v-btn.text-primary(variant="text" size="small" :to="'/discussion_templates/new?group_id='+$route.query.group_id+'&return_to='+returnTo" v-t="'discussion_form.new_template'")
           v-alert.mx-4(type="info" variant="tonal")
             span(v-t="'discussion_template.these_are_templates_v2'")
             |
@@ -164,7 +162,7 @@ watch(showHidden, () => { query(); });
           v-list.append-sort-here(lines="two")
             template(v-if="isSorting")
               sortable-list(v-model:list="templates"  @sort-end="sortEnded" append-to=".append-sort-here"  lock-axis="y" axis="y")
-                sortable-item(v-for="(template, index) in templates" :index="index" :key="template.id || template.key")
+                sortable-item(v-for="(template, index) in templates" :index="index" :key="template.id")
                   v-list-item(:key="template.id")
                     v-list-item-title {{template.processName || template.title}}
                     v-list-item-subtitle {{template.processSubtitle}}
@@ -173,10 +171,15 @@ watch(showHidden, () => { query(); });
                         common-icon(name="mdi-drag-vertical")
 
             template(v-if="!isSorting")
+              .d-flex.justify-space-between.align-center
+                v-list-subheader(v-t="'group_page.discussion_templates'")
+                span.mr-4(v-if="canCreateTemplates")
+                  v-btn(variant="tonal" size="small" :to="'/discussion_templates/new?group_id='+$route.query.group_id+'&return_to='+returnTo")
+                    span.text-medium-emphasis(v-t="'discussion_form.new_template'")
               v-list-item.discussion-templates--template(
                 v-for="(template, i) in templates"
-                :key="template.id || template.key"
-                :to="'/d/new?' + (template.id ? 'template_id='+template.id : 'template_key='+template.key) + '&group_id='+ $route.query.group_id + '&return_to='+returnTo"
+                :key="template.id"
+                :to="'/d/new?template_id='+template.id+'&group_id='+ $route.query.group_id + '&return_to='+returnTo"
               )
                 v-list-item-title {{template.processName || template.title}}
                 v-list-item-subtitle {{template.processSubtitle}}
@@ -184,13 +187,15 @@ watch(showHidden, () => { query(); });
                   common-icon.text-disabled(v-if="template.discardedAt" name="mdi-eye-off")
                   action-menu(:actions='actions[i]' size="small" icon :name="$t('action_dock.more_actions')")
 
-            .d-flex.justify-center.my-2(v-if="userIsAdmin && !showHidden && hasHiddenTemplates")
-              v-btn.text-medium-emphasis(variant="tonal" size="small" @click="showHidden = true" v-t="'discussion_template.more_templates'")
+            .d-flex.justify-center.my-2(v-if="userIsAdmin && !showHidden")
+              v-btn.text-medium-emphasis(variant="text" size="small" @click="showHidden = true" )
+                spam(v-t="'discussion_template.more_templates'")
             template(v-if="userIsAdmin && showHidden")
               v-list-item(:to="'/discussion_templates/browse?group_id='+$route.query.group_id+'&return_to='+returnTo")
                 v-list-item-title(v-t="'discussion_template.browse_example_templates'")
                 template(v-slot:append)
                   common-icon(name="mdi-magnify")
               .d-flex.justify-center.my-2
-                v-btn.text-medium-emphasis(variant="tonal" size="small" @click="showHidden = false" v-t="'discussion_template.fewer_templates'")
+                v-btn.text-medium-emphasis(variant="text" size="small" @click="showHidden = false")
+                  span(v-t="'discussion_template.fewer_templates'")
 </template>

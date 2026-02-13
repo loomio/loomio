@@ -311,6 +311,7 @@ da:
       zoom: Zoom
       align: Juster
       original: Original
+      rearrange: Omarranger
     formatting_help:
       label: Formatering
       title: Lær, hvordan du bruger Markdown til at formatere din tekst
@@ -838,6 +839,7 @@ da:
     discussion_started: Diskussionen er startet
     none_direct_discussion: Ingen (direkte diskussion)
     direct_discussion: Direkte diskussion
+    direct_discussion_hint: En direkte diskussion er kun synlig for de specifikke personer, du inviterer. Den vises ikke på nogen gruppers diskussionsliste – du kan finde den på din side for direkte diskussioner.
   announcement:
     send_discussion: Send tråd
     send_group: Inviter folk til %{name}
@@ -1341,6 +1343,12 @@ da:
     upload_background: upload baggrund
     remove_background: fjern baggrund
     remove_logo: fjern logoet
+    members_can_create_templates: Medlemmer kan oprette skabeloner
+    members_can_create_templates_help: Tillad medlemmer at oprette skabeloner til diskussioner og afstemninger. Skabeloner oprettet af medlemmer vil være skjult, indtil en administrator viser dem igen.
+    members_can_start_discussions_v2: Medlemmer kan starte nye diskussioner
+    members_can_start_discussions_help_v2: Tillad medlemmer at starte nye diskussioner i gruppen
+    members_can_edit_discussions_v2: Medlemmer kan administrere diskussioner og kommentarer
+    members_can_edit_discussions_help_v2: Tillad medlemmer at redigere, flytte, fastgøre, tagge eller lukke enhver diskussion eller kommentar i gruppen
   group_export_modal:
     title: Eksporter gruppedata
     body: <p>Du kan til enhver tid downloade en kopi af din gruppes data. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Find ud af mere.</a></p><p> Det tager et par minutter at gennemføre, afhængigt af størrelsen på din gruppe. Når den er klar, modtager du en e-mail med et link til at downloade filen.</p>
@@ -2663,6 +2671,24 @@ da:
     add_poll_template_help: Vælg alle afstemningsskabeloner, der hjælper med at fuldføre denne proces
     recommended_poll_templates: Anbefalede skabeloner til afstemninger
     share_in_template_gallery: Del denne skabelon i det offentlige skabelongalleri
+    browse_example_templates: Gennemse eksempelskabeloner
+    example_templates: Eksempelskabeloner
+    browse_public_templates_hint: Klik på et skabelonnavn for at starte en diskussion med det, eller klik på redigeringsknappen til højre for at lave en kopi og redigere den til din egen gruppe.
+    these_are_templates_v2: Dette er en liste over diskussionsskabelonerne i din gruppe. Klik på en skabelon for at bruge den som udgangspunkt for en ny diskussion. Gruppeadministratorer kan redigere skabeloner og omarrangere listen, så det er nemt at finde de vigtige skabeloner.
+    process_name_placeholder: f.eks. ugentlig standup
+    process_subtitle_placeholder: f.eks. et kort check-in med teamet hver uge
+    default_title_placeholder: f.eks. Standup - 15. januar
+    more_templates: Flere skabeloner
+    fewer_templates: Færre skabeloner
+    choose_a_group: Vælg en gruppe
+    default_templates: Standardskabeloner
+    or_start_a_direct_discussion: Eller start en direkte diskussion
+    choose_group_for_templates: Vælg en gruppe for at se dens diskussionsskabeloner
+    start_direct_discussion: Start direkte diskussion
+    poll_templates: Skabeloner til afstemninger
+    poll_templates_help: Skabeloner, du vælger her, vises først, når nogen klikker på Start en afstemning
+    start_direct_discussion_from_blank: Start en direkte diskussion fra en tom skabelon
+    default_to_direct_discussion: Start som en direkte diskussion (ingen gruppe)
   context_panel:
     thread_status:
       pinned: Denne diskussion er blevet fastgjort. Den vil forblive øverst på gruppens liste over diskussioner for alle brugere.

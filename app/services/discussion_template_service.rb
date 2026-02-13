@@ -6,13 +6,7 @@ class DiscussionTemplateService
 
     return false unless discussion_template.valid?
 
-    if discussion_template.key
-      group = discussion_template.group
-      group.hidden_discussion_templates = group.hidden_discussion_templates | Array(discussion_template.key)
-      group.save!
-      discussion_template.key = nil
-    end
-
+    discussion_template.key = nil if discussion_template.key
     discussion_template.save!
     discussion_template.discard! unless discussion_template.group.admins.exists?(actor.id)
     discussion_template
@@ -32,22 +26,46 @@ class DiscussionTemplateService
   VISIBLE_BY_DEFAULT = %w[blank practice_thread].freeze
 
   def self.group_templates(group:)
-    ensure_hidden_initialized(group)
-    group.discussion_templates.to_a.concat(
-      initial_templates(group.category, group.parent_id).map do |template|
-        template.position = group.discussion_template_positions.fetch(template.key, 999)
-        template.group_id = group.id
-        template.discarded_at = DateTime.now if group.hidden_discussion_templates.include?(template.key)
-        template
-      end
-    )
+    ensure_templates_materialized(group)
+    group.discussion_templates.order(:position)
   end
 
-  def self.ensure_hidden_initialized(group)
-    return if group[:info].key?('hidden_discussion_templates')
-    keys = initial_templates(group.category, group.parent_id).map(&:key) - VISIBLE_BY_DEFAULT
-    group[:info]['hidden_discussion_templates'] = keys
-    group.save!
+  def self.ensure_templates_materialized(group)
+    return if group.discussion_templates.exists?
+
+    group.with_lock do
+      return if group.discussion_templates.exists?
+
+      hidden_keys = if group[:info].key?('hidden_discussion_templates')
+        group[:info]['hidden_discussion_templates'] || []
+      else
+        initial_templates(group.category, group.parent_id).map(&:key) - VISIBLE_BY_DEFAULT
+      end
+
+      positions = group[:info]['discussion_template_positions'] || {}
+
+      initial_templates(group.category, group.parent_id).each do |template|
+        dt = group.discussion_templates.create!(
+          key: template.key,
+          process_name: template.process_name,
+          process_subtitle: template.process_subtitle,
+          process_introduction: template.process_introduction,
+          process_introduction_format: template.process_introduction_format,
+          title: template.title,
+          title_placeholder: template.title_placeholder,
+          description: template.description,
+          description_format: template.description_format,
+          tags: template.tags || [],
+          max_depth: template.max_depth,
+          newest_first: template.newest_first,
+          poll_template_keys_or_ids: template.poll_template_keys_or_ids || [],
+          recipient_audience: template.recipient_audience,
+          default_to_direct_discussion: template.default_to_direct_discussion || false,
+          position: positions.fetch(template.key, 999)
+        )
+        dt.discard! if hidden_keys.include?(template.key)
+      end
+    end
   end
 
   def self.initial_templates(category, parent_id)

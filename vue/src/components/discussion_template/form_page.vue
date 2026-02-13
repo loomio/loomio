@@ -28,9 +28,14 @@ export default {
         this.discussionTemplate.groupId = groupId;
         this.discussionTemplate.public = false;
       });
-    } else if ((templateKey = this.$route.query.template_key) && (groupId = parseInt(this.$route.query.group_id))) {
+    } else if ((templateKey = this.$route.query.template_key)) {
+      groupId = parseInt(this.$route.query.group_id) || null;
       Records.discussionTemplates.findOrFetchByKey(templateKey, groupId).then(template => {
         this.discussionTemplate = template.clone();
+        this.discussionTemplate.id = null;
+        this.discussionTemplate.key = templateKey;
+        this.discussionTemplate.groupId = groupId;
+        this.discussionTemplate.public = false;
       });
     } else if (groupId = parseInt(this.$route.query.group_id)) {
       this.discussionTemplate = Records.discussionTemplates.build({groupId});

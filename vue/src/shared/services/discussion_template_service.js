@@ -91,30 +91,6 @@ export default new class DiscussionTemplateService {
             }
           });
         }
-      },
-
-      hide: {
-        icon: 'mdi-eye-off',
-        name: 'common.action.hide',
-        menu: true,
-        canPerform() {
-          return !discussionTemplate.id && discussionTemplate.key && !discussionTemplate.discardedAt && group.adminsInclude(Session.user());
-        },
-        perform() {
-          return Records.remote.post('discussion_templates/hide', {group_id: group.id, key: discussionTemplate.key});
-        }
-      },
-
-      unhide: {
-        icon: 'mdi-eye',
-        name: 'common.action.unhide',
-        menu: true,
-        canPerform() {
-          return !discussionTemplate.id && discussionTemplate.key && discussionTemplate.discardedAt && group.adminsInclude(Session.user());
-        },
-        perform() {
-          return Records.remote.post('discussion_templates/unhide', {group_id: group.id, key: discussionTemplate.key});
-        }
       }
     };
   }

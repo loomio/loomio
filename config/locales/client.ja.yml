@@ -309,6 +309,7 @@ ja:
       zoom: ズーム
       align: 整列
       original: オリジナル
+      rearrange: 並べ替え
     formatting_help:
       label: 書式設定
       title: Markdown を使用してテキストの書式を設定する方法を学びます
@@ -837,6 +838,7 @@ ja:
     discussion_started: 議論開始
     none_direct_discussion: なし（直接議論）
     direct_discussion: 直接の議論
+    direct_discussion_hint: ダイレクトディスカッションは、招待した特定の人だけが閲覧できます。グループのディスカッションリストには表示されません。ダイレクトディスカッションページで確認できます。
   announcement:
     send_discussion: スレッドの送信
     send_group: 他の人を %{name} に招待します
@@ -1340,6 +1342,12 @@ ja:
     upload_background: 背景をアップロード
     remove_background: 背景を削除
     remove_logo: ロゴを削除
+    members_can_create_templates: メンバーはテンプレートを作成できます
+    members_can_create_templates_help: メンバーがディスカッションと投票のテンプレートを作成できるようにします。メンバーが作成したテンプレートは、管理者が非表示を解除するまで非表示になります。
+    members_can_start_discussions_v2: メンバーは新しいディスカッションを開始できます
+    members_can_start_discussions_help_v2: メンバーがグループ内で新しいディスカッションを開始できるようにする
+    members_can_edit_discussions_v2: メンバーはディスカッションやコメントを管理できる
+    members_can_edit_discussions_help_v2: メンバーがグループ内のあらゆるディスカッションやコメントを編集、移動、ピン留め、タグ付け、または閉じることを許可します
   group_export_modal:
     title: グループデータのエクスポート
     body: <p>グループのデータのコピーはいつでもダウンロードできます。<a href="https://help.loomio.org/en/user_manual/groups/data_export/">もっと詳しく調べてください。</a></p><p>グループの規模に応じて、完了までに数分かかります。準備が完了すると、ファイルをダウンロードするためのリンクが記載された電子メールが届きます。</p>
@@ -2662,6 +2670,24 @@ ja:
     add_poll_template_help: このプロセスを完了するのに役立つアンケートテンプレートを選択します
     recommended_poll_templates: 推奨される投票テンプレート
     share_in_template_gallery: このテンプレートを公開テンプレートギャラリーで共有する
+    browse_example_templates: サンプルテンプレートを参照する
+    example_templates: サンプルテンプレート
+    browse_public_templates_hint: テンプレート名をクリックしてディスカッションを開始するか、右側の編集ボタンをクリックしてコピーを作成し、自分のグループ用に変更します。
+    these_are_templates_v2: これはグループ内のディスカッションテンプレートのリストです。テンプレートをクリックすると、新しいディスカッションの出発点として使用できます。グループ管理者はテンプレートを編集したり、リストを並べ替えたりして、重要なテンプレートを簡単に見つけられるようにすることができます。
+    process_name_placeholder: 例：毎週のスタンドアップ
+    process_subtitle_placeholder: 例：毎週チームと短いチェックイン
+    default_title_placeholder: 例：スタンドアップ - 1月15日
+    more_templates: その他のテンプレート
+    fewer_templates: テンプレートが少ない
+    choose_a_group: グループを選択
+    default_templates: デフォルトのテンプレート
+    or_start_a_direct_discussion: または直接議論を始める
+    choose_group_for_templates: グループを選択してディスカッションテンプレートを表示します
+    start_direct_discussion: 直接話し合いを始める
+    poll_templates: アンケートテンプレート
+    poll_templates_help: ここで選択したテンプレートは、誰かが投票を開始をクリックしたときに最初に表示されます。
+    start_direct_discussion_from_blank: 空白のテンプレートから直接ディスカッションを開始する
+    default_to_direct_discussion: 直接ディスカッションから始める（グループなし）
   context_panel:
     thread_status:
       pinned: このディスカッションはピン留めされました。グループのディスカッションリストの一番上に、全ユーザーに表示されます。

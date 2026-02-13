@@ -313,6 +313,7 @@ hu:
       zoom: Zoomolás
       align: Igazítsa
       original: Eredeti
+      rearrange: Átrendezés
     formatting_help:
       label: Formázás
       title: Így használhatod a Markdown-t a szöveg formázására
@@ -840,6 +841,7 @@ hu:
     discussion_started: Megbeszélés elkezdődött
     none_direct_discussion: Nincs (közvetlen megbeszélés)
     direct_discussion: Közvetlen beszélgetés
+    direct_discussion_hint: A közvetlen beszélgetések csak a meghívott személyek számára láthatók. Nem jelennek meg egyetlen csoport beszélgetési listájában sem – a Közvetlen beszélgetések oldalon találod meg őket.
   announcement:
     send_discussion: Téma küldése
     send_group: 'Meghívás a következőhöz: %{name}'
@@ -1345,6 +1347,12 @@ hu:
     upload_background: háttér feltöltése
     remove_background: háttér eltávolítása
     remove_logo: logó eltávolítása
+    members_can_create_templates: A tagok sablonokat hozhatnak létre
+    members_can_create_templates_help: Engedélyezd a tagok számára a beszélgetési és szavazási sablonok létrehozását. A tagok által létrehozott sablonok rejtve maradnak, amíg egy adminisztrátor fel nem oldja azokat.
+    members_can_start_discussions_v2: A tagok új beszélgetéseket indíthatnak
+    members_can_start_discussions_help_v2: Engedélyezd a tagok számára új beszélgetések indítását a csoporton belül
+    members_can_edit_discussions_v2: A tagok kezelhetik a beszélgetéseket és a hozzászólásokat
+    members_can_edit_discussions_help_v2: A tagok szerkeszthetik, áthelyezhetik, rögzíthetik, címkézhetik vagy lezárhatják a csoportban található beszélgetéseket vagy hozzászólásokat.
   group_export_modal:
     title: Csoport adatok letöltése
     body: <p>A csoport adatainak másolatát bármikor letöltheti. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Tudj meg többet.</a></p><p> A kitöltése a csoport méretétől függően néhány percet vesz igénybe. Ha készen áll, e-mailben kap egy linket a fájl letöltéséhez.</p>
@@ -2670,6 +2678,24 @@ hu:
     add_poll_template_help: Válasszon ki bármilyen szavazássablont, amely segít a folyamat befejezésében
     recommended_poll_templates: Ajánlott szavazássablonok
     share_in_template_gallery: Ossza meg ezt a sablont a nyilvános sablongalériában
+    browse_example_templates: Példasablonok böngészése
+    example_templates: Példa sablonok
+    browse_public_templates_hint: Kattintson egy sablon nevére, ha beszélgetést szeretne indítani vele, vagy kattintson a jobb oldalon található szerkesztés gombra, ha másolatot szeretne készíteni és módosítani a saját csoportja számára.
+    these_are_templates_v2: Ez a csoportodban található vita sablonok listája. Kattints egy sablonra, hogy azt egy új vita kiindulópontjaként használd. A csoport adminisztrátorai szerkeszthetik a sablonokat és átrendezhetik a listát, hogy könnyen megtaláld a fontos sablonokat.
+    process_name_placeholder: pl. heti standup
+    process_subtitle_placeholder: pl. Egy rövid bejelentkezés a csapattal minden héten
+    default_title_placeholder: pl. Stand-up - január 15.
+    more_templates: További sablonok
+    fewer_templates: Kevesebb sablon
+    choose_a_group: Válasszon egy csoportot
+    default_templates: Alapértelmezett sablonok
+    or_start_a_direct_discussion: Vagy indítson közvetlen beszélgetést
+    choose_group_for_templates: Válasszon ki egy csoportot a hozzá tartozó beszélgetési sablonok megtekintéséhez
+    start_direct_discussion: Közvetlen beszélgetés indítása
+    poll_templates: Szavazási sablonok
+    poll_templates_help: Az itt kiválasztott sablonok jelennek meg először, amikor valaki a Szavazás indítása gombra kattint.
+    start_direct_discussion_from_blank: Közvetlen beszélgetés indítása egy üres sablonból
+    default_to_direct_discussion: Közvetlen beszélgetésként kezdés (csoport nélkül)
   context_panel:
     thread_status:
       pinned: Ez a beszélgetés rögzítésre került. A csoport beszélgetési listájának tetején marad minden felhasználó számára.

@@ -29,6 +29,12 @@ export default {
     });
   },
 
+  computed: {
+    groupIdParam() {
+      return this.$route.query.group_id ? '&group_id='+this.$route.query.group_id : '';
+    }
+  },
+
   methods: {
     changed() { return this.fetch(); },
     fetch() {
@@ -65,35 +71,35 @@ export default {
         v-alert.ma-4(type="info" variant="tonal")
           span(v-t="'discussion_template.browse_public_templates_hint'")
 
-        .d-flex.px-4.align-center
-          v-combobox(
-            :loading="loading"
-            autofocus
-            filled
-            single-line
-            hide-selected
-            clearable
-            @change="changed"
-            :append-icon="mdiMagnify"
-            @click:append="fetch"
-            v-model="query"
-            :placeholder="$t('common.action.search')"
-            @keydown.enter.prevent="fetch"
-            hide-details
-            :items="tags"
-            )
+        //- .d-flex.px-4.align-center
+        //-   v-combobox(
+        //-     :loading="loading"
+        //-     autofocus
+        //-     filled
+        //-     single-line
+        //-     hide-selected
+        //-     clearable
+        //-     @change="changed"
+        //-     :append-icon="mdiMagnify"
+        //-     @click:append="fetch"
+        //-     v-model="query"
+        //-     :placeholder="$t('common.action.search')"
+        //-     @keydown.enter.prevent="fetch"
+        //-     hide-details
+        //-     :items="tags"
+        //-     )
 
         v-list.append-sort-here(lines="two")
           v-list-item(
             v-for="result in results"
-            :key="result.id"
-            :to="'/d/new?' + (result.id ? 'template_id='+result.id : 'template_key='+result.key)+ '&group_id='+ $route.query.group_id"
+            :key="result.key"
+            :to="'/d/new?template_key='+result.key+groupIdParam"
           )
             template(v-slot:append)
               v-btn(
                 variant="plain"
                 icon
-                :to="'/discussion_templates/new?template_id='+result.id+'&group_id='+$route.query.group_id"
+                :to="'/discussion_templates/new?template_key='+result.key+groupIdParam"
                 title="Make a copy of this template and edit it"
               )
                 common-icon(name="mdi-pencil")

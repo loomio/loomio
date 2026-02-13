@@ -31,8 +31,12 @@ export default class DiscussionTemplateModel extends BaseModel {
     };
   }
 
+  keyOrId() {
+    return this.id || this.key;
+  }
+
   collabKeyParams(){
-    return [this.groupId, this.key];
+    return [this.groupId, this.key, this.id];
   }
 
   relationships() {

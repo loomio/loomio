@@ -311,6 +311,7 @@ es:
       zoom: Zoom
       align: Alinear
       original: Original
+      rearrange: Arreglar de nuevo
     formatting_help:
       label: 'Formato '
       title: Aprenda a usar Markdown para dar formato a su texto
@@ -842,6 +843,7 @@ es:
     discussion_started: Discusión iniciada
     none_direct_discussion: Ninguno (discusión directa)
     direct_discussion: Discusión directa
+    direct_discussion_hint: Una discusión directa solo es visible para las personas que invites. No aparecerá en la lista de discusiones de ningún grupo; puedes encontrarla en tu página de Discusiones directas.
   announcement:
     send_discussion: Manda hilo
     send_group: Invita a gente a %{name}
@@ -1358,6 +1360,12 @@ es:
     upload_background: subir fondo
     remove_background: eliminar el fondo
     remove_logo: eliminar logotipo
+    members_can_create_templates: Los miembros pueden crear plantillas
+    members_can_create_templates_help: Permite a los miembros crear plantillas para debates y encuestas. Las plantillas creadas por los miembros permanecerán ocultas hasta que un administrador las revele.
+    members_can_start_discussions_v2: Los miembros pueden iniciar nuevas discusiones
+    members_can_start_discussions_help_v2: Permitir que los miembros inicien nuevas discusiones dentro del grupo
+    members_can_edit_discussions_v2: Los miembros pueden gestionar discusiones y comentarios.
+    members_can_edit_discussions_help_v2: Permitir a los miembros editar, mover, fijar, etiquetar o cerrar cualquier discusión o comentario en el grupo
   group_export_modal:
     title: Exportar la data grupal
     body: |
@@ -2701,6 +2709,24 @@ es:
     add_poll_template_help: Seleccione cualquier plantilla de encuesta que ayude a completar este proceso
     recommended_poll_templates: Plantillas de encuesta recomendadas
     share_in_template_gallery: Comparte esta plantilla en la galería de plantillas públicas
+    browse_example_templates: Explorar plantillas de ejemplo
+    example_templates: Plantillas de ejemplo
+    browse_public_templates_hint: Haga clic en el nombre de una plantilla para iniciar una discusión con ella o haga clic en el botón editar a la derecha para hacer una copia y modificarla para su propio grupo.
+    these_are_templates_v2: Esta es una lista de las plantillas de discusión de tu grupo. Haz clic en una plantilla para usarla como punto de partida para una nueva discusión. Los administradores del grupo pueden editar las plantillas y reorganizar la lista para facilitar la búsqueda de las importantes.
+    process_name_placeholder: p. ej. Reunión semanal
+    process_subtitle_placeholder: Por ejemplo, una breve reunión con el equipo cada semana.
+    default_title_placeholder: ej. Standup - 15 de enero
+    more_templates: Más plantillas
+    fewer_templates: Menos plantillas
+    choose_a_group: Elige un grupo
+    default_templates: Plantillas predeterminadas
+    or_start_a_direct_discussion: O iniciar una discusión directa
+    choose_group_for_templates: Elija un grupo para ver sus plantillas de discusión
+    start_direct_discussion: Iniciar una discusión directa
+    poll_templates: Plantillas de encuestas
+    poll_templates_help: Las plantillas que seleccione aquí aparecerán primero cuando alguien haga clic en Iniciar una votación
+    start_direct_discussion_from_blank: Iniciar una discusión directa desde una plantilla en blanco
+    default_to_direct_discussion: Comenzar como una discusión directa (sin grupo)
   context_panel:
     thread_status:
       pinned: Esta discusión se ha fijado. Permanecerá en la parte superior de la lista de discusiones del grupo para todos los usuarios.

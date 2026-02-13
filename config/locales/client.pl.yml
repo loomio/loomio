@@ -311,6 +311,7 @@ pl:
       zoom: Powiększenie
       align: Wyrównywać
       original: Oryginalny
+      rearrange: Przemieniać
     formatting_help:
       label: Formatowanie
       title: Naucz się używać Markdown, by sformatować swój tekst
@@ -842,6 +843,7 @@ pl:
     discussion_started: Rozpoczęto dyskusję
     none_direct_discussion: Brak (bezpośrednia dyskusja)
     direct_discussion: Bezpośrednia dyskusja
+    direct_discussion_hint: Dyskusja bezpośrednia jest widoczna tylko dla zaproszonych przez Ciebie osób. Nie pojawi się na liście dyskusyjnej żadnej grupy — znajdziesz ją na swojej stronie „Dyskusje bezpośrednie”.
   announcement:
     send_discussion: Wyślij wątek
     send_group: Zaproś ludzi do %{name}
@@ -1349,6 +1351,12 @@ pl:
     upload_background: prześlij tło
     remove_background: usuń tło
     remove_logo: usuń logo
+    members_can_create_templates: Członkowie mogą tworzyć szablony
+    members_can_create_templates_help: Zezwól członkom na tworzenie szablonów dyskusji i ankiet. Szablony utworzone przez członków będą ukryte, dopóki administrator ich nie odkryje.
+    members_can_start_discussions_v2: Członkowie mogą rozpoczynać nowe dyskusje
+    members_can_start_discussions_help_v2: Zezwól członkom na rozpoczynanie nowych dyskusji w grupie
+    members_can_edit_discussions_v2: Członkowie mogą zarządzać dyskusjami i komentarzami
+    members_can_edit_discussions_help_v2: Zezwalaj członkom na edytowanie, przenoszenie, przypinanie, oznaczanie lub zamykanie dowolnej dyskusji lub komentarza w grupie
   group_export_modal:
     title: Eksportuj dane grupy
     body: |
@@ -2692,6 +2700,24 @@ pl:
     add_poll_template_help: Wybierz szablony ankiet, które pomogą Ci ukończyć ten proces
     recommended_poll_templates: Zalecane szablony ankiet
     share_in_template_gallery: Udostępnij ten szablon w publicznej galerii szablonów
+    browse_example_templates: Przeglądaj przykładowe szablony
+    example_templates: Przykładowe szablony
+    browse_public_templates_hint: Kliknij nazwę szablonu, aby rozpocząć dyskusję na jego temat lub kliknij przycisk edycji po prawej stronie, aby utworzyć kopię i zmodyfikować ją na potrzeby własnej grupy.
+    these_are_templates_v2: Oto lista szablonów dyskusji w Twojej grupie. Kliknij szablon, aby użyć go jako punktu wyjścia do nowej dyskusji. Administratorzy grupy mogą edytować szablony i zmieniać kolejność na liście, aby łatwo znaleźć ważne szablony.
+    process_name_placeholder: np. cotygodniowy standup
+    process_subtitle_placeholder: np. Krótkie spotkanie z zespołem co tydzień
+    default_title_placeholder: np. Standup - 15 stycznia
+    more_templates: Więcej szablonów
+    fewer_templates: Mniej szablonów
+    choose_a_group: Wybierz grupę
+    default_templates: Domyślne szablony
+    or_start_a_direct_discussion: Lub rozpocznij bezpośrednią dyskusję
+    choose_group_for_templates: Wybierz grupę, aby wyświetlić jej szablony dyskusji
+    start_direct_discussion: Rozpocznij bezpośrednią dyskusję
+    poll_templates: Szablony ankiet
+    poll_templates_help: Wybrane tutaj szablony będą wyświetlane jako pierwsze, gdy ktoś kliknie Rozpocznij głosowanie
+    start_direct_discussion_from_blank: Rozpocznij bezpośrednią dyskusję od pustego szablonu
+    default_to_direct_discussion: Rozpocznij jako bezpośrednią dyskusję (bez grupy)
   context_panel:
     thread_status:
       pinned: Ta dyskusja została przypięta. Będzie nadal wyświetlana na górze listy dyskusji grupy dla wszystkich użytkowników.

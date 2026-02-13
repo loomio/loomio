@@ -209,8 +209,6 @@ Rails.application.routes.draw do
         collection do
           get :browse_tags
           get :browse
-          post :hide
-          post :unhide
           post :discard
           post :undiscard
           post :positions
