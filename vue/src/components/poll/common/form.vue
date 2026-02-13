@@ -489,7 +489,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
 
   v-expansion-panels.my-4(variant="accordion")
     v-expansion-panel
-      v-expansion-panel-title(:expand-icon="mdiChevronDown" :collapse-icon="mdiChevronUp")
+      v-expansion-panel-title.poll-common-form__more-settings(:expand-icon="mdiChevronDown" :collapse-icon="mdiChevronUp")
         v-icon.mr-2(size="small" :icon="mdiCogOutline")
         span(v-t="'poll_common_form.more_settings'")
       v-expansion-panel-text

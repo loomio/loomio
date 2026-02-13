@@ -13,13 +13,23 @@ export default {
   },
   created() {
     EventBus.$on('flashMessage', flash => {
-      this.flash = flash;
-      this.isOpen = true;
+      if (this.isOpen) {
+        this.isOpen = false;
+        this.$nextTick(() => {
+          this.flash = flash;
+          this.isOpen = true;
+        });
+      } else {
+        this.flash = flash;
+        this.isOpen = true;
+      }
+      clearInterval(this.timer);
+      this.seconds = 0;
       this.timer = window.setInterval(() => { this.seconds += 3; } , 1000);
     });
   },
   destroyed() {
-    clearInterval(timer);
+    clearInterval(this.timer);
   }
 };
 
