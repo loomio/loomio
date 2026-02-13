@@ -1,4 +1,9 @@
 module Dev::Scenarios::Discussion
+  def setup_discussion_template_browse
+    sign_in patrick
+    redirect_to '/discussion_templates/browse'
+  end
+
   def setup_discussion
     create_discussion
     sign_in patrick

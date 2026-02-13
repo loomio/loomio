@@ -1,39 +1,35 @@
 class Api::V1::DiscussionTemplatesController < Api::V1::RestfulController
   def browse_tags
     tag_counts = {}
-    DiscussionTemplate.where(public: true).pluck(:tags).flatten.each do |tag|
-      tag_counts[tag] ||= 0
-      tag_counts[tag] += 1
+    DiscussionTemplateService.default_templates.each do |dt|
+      Array(dt.tags).each do |tag|
+        tag_counts[tag] ||= 0
+        tag_counts[tag] += 1
+      end
     end
-    render json: tag_counts.sort_by {|k,v| v}.to_h.keys.slice(0, 20), root: false
+    render json: tag_counts.sort_by {|k,v| -v}.to_h.keys.slice(0, 20), root: false
   end
 
   def browse
-    if DiscussionTemplate.where(public: true).count == 0
-      DiscussionTemplateService.create_public_templates
-    end
-
-    templates = DiscussionTemplate
-                .joins("LEFT JOIN groups ON groups.id = discussion_templates.group_id LEFT JOIN subscriptions ON groups.subscription_id = subscriptions.id")
-                .where("discussion_templates.public": true)
-                .where("groups.handle = ? OR subscriptions.plan != ?", 'templates', 'trial')
+    templates = DiscussionTemplateService.default_templates
 
     if params[:query].present?
-      templates = templates.where("process_name ILIKE :q OR process_subtitle ILIKE :q OR tags @> ARRAY[:a]::varchar[]", q: "%#{params[:query]}%", a: Array(params[:query]))
+      q = params[:query].downcase
+      templates = templates.select do |dt|
+        dt.process_name.to_s.downcase.include?(q) ||
+        dt.process_subtitle.to_s.downcase.include?(q) ||
+        Array(dt.tags).any? { |tag| tag.downcase.include?(q) }
+      end
     end
 
-    templates = templates.limit(50).to_a
-
-    results = templates.map do |dt|
+    render root: false, json: templates.first(50).map { |dt|
       {
         key: dt.key,
         process_name: dt.process_name,
         process_subtitle: dt.process_subtitle,
         tags: dt.tags
       }
-    end
-
-    render json: results, root: :results
+    }
   end
 
   def index

@@ -97,17 +97,4 @@ class DiscussionTemplateService
       DiscussionTemplate.new attrs
     end.reverse
   end
-
-  def self.create_public_templates
-    group = Group.find_or_create_by(handle: 'templates') do |group|
-      group.creator = User.first
-      group.name = 'Loomio Templates'
-      group.is_visible_to_public = false
-    end
-
-    group.discussion_templates = default_templates.map do |dt|
-      dt.public = true
-      dt
-    end
-  end
 end

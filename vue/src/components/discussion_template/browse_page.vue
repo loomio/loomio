@@ -41,7 +41,7 @@ export default {
       this.loading = true;
       this.results = [];
       Records.remote.get('discussion_templates/browse', {query: this.query}).then(data => {
-        this.results = data.results.map(utils.parseJSON);
+        this.results = data.map(utils.parseJSON);
         this.loading = false;
       });
     },
