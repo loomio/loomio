@@ -217,6 +217,8 @@ en:
   timezones:
     local: Local time (%{value})
   common:
+    commercial: Commercial
+    nonprofit: Nonprofit
     value: "%{value}"
     admin_menu: Admin menu
     api_docs: API docs
