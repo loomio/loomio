@@ -60,11 +60,21 @@ class Dev::PollsController < Dev::NightwatchController
 
       render Views::Dev::Polls::Compare.new(
         email_subject: email_subject,
+        print: Views::Polls::Export.new(poll: poll, exporter: PollExporter.new(poll), recipient: recipient),
         email: EventMailer.build_component(event: event, recipient: recipient),
         matrix: Views::Chatbot::Matrix::Poll.new(event: event, poll: poll, recipient: recipient),
         markdown: Views::Chatbot::Markdown::Poll.new(event: event, poll: poll, recipient: recipient),
         slack: Views::Chatbot::Slack::Poll.new(event: event, poll: poll, recipient: recipient)
       ), layout: false
+    when 'print'
+      render Views::Polls::Export.new(
+        poll: scenario[:poll],
+        exporter: PollExporter.new(scenario[:poll]),
+        recipient: scenario[:observer]
+      )
+    when 'csv'
+      exporter = PollExporter.new(scenario[:poll])
+      send_data exporter.to_csv, filename: exporter.file_name
     else
       redirect_to poll_url(scenario[:poll], Hash(scenario[:params]))
     end
