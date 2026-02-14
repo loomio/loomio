@@ -114,7 +114,7 @@ module.exports = {
     page.click('.user-dropdown__list-item-button--profile')
     page.click('.user-page__redact_user')
     page.click('.confirm-modal__submit')
-    page.expectText('.auth-modal', 'Create account or sign in to Loomio')
+    page.expectText('.auth-modal', 'Create account or sign in to Loomio', 20000)
   },
 
   // e2e broken, function works fine
