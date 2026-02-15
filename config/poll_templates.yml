@@ -1,30 +1,30 @@
 practice_proposal:
   poll_type: proposal
   process_name_i18n: poll_templates.practice_proposal.process_name
-  process_subtitle_i18n: poll_templates.practice_proposal.process_subtitle
-  process_introduction_i18n: poll_templates.practice_proposal.process_introduction
-  outcome_statement_i18n: poll_templates.practice_proposal.outcome_statement
-  title_i18n: poll_templates.practice_proposal.title
-  details_i18n: poll_templates.practice_proposal.details
-  default_duration_in_days: 7
+  process_subtitle_i18n: poll_templates.practice_proposal.process_subtitle_v2
+  process_introduction_i18n: poll_templates.practice_proposal.process_introduction_v2
+  outcome_statement_i18n: poll_templates.practice_proposal.outcome_statement_v2
+  title_i18n: poll_templates.practice_proposal.title_v2
+  details_i18n: poll_templates.practice_proposal.details_v2
+  default_duration_in_days: 3
   poll_options:
     - key: agree
       name_i18n: poll_proposal_options.agree
       icon: agree
-      meaning_i18n: poll_templates.proposal.agree_meaning
-      prompt_i18n: poll_templates.proposal.agree_prompt
+      meaning_i18n: poll_templates.practice_proposal.agree_meaning
+      prompt_i18n: poll_templates.practice_proposal.agree_prompt
       color: '#70C9F8'
     - key: abstain
       name_i18n: poll_proposal_options.abstain
       icon: abstain
-      meaning_i18n: poll_templates.proposal.abstain_meaning
-      prompt_i18n: poll_templates.proposal.abstain_prompt
+      meaning_i18n: poll_templates.practice_proposal.abstain_meaning
+      prompt_i18n: poll_templates.practice_proposal.abstain_prompt
       color: "#C8E56E"
     - key: disagree
       name_i18n: poll_proposal_options.disagree
       icon: disagree
-      meaning_i18n: poll_templates.proposal.disagree_meaning
-      prompt_i18n: poll_templates.proposal.disagree_prompt
+      meaning_i18n: poll_templates.practice_proposal.disagree_meaning
+      prompt_i18n: poll_templates.practice_proposal.disagree_prompt
       color: "#D38FE1"
 
 question:
