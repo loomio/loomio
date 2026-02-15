@@ -493,7 +493,7 @@ fr:
       abstain: Abstention
       abstain_meaning: Je n'ai rien à ajouter, ni aucune objection à ce travail.
       abstain_prompt: L'abstention implique votre consentement à l'orientation de cette proposition. Y a-t-il une raison pour laquelle vous votez en faveur de l'abstention ?
-      concerned: Concerné
+      concerned: Réservé
       concerned_meaning: Il faudra peut-être que quelque chose change à ce sujet pour que je puisse consentir ou être d’accord.
       concerned_prompt: Quelle est votre préoccupation et comment pourrait-elle être résolue ?
     gradients_of_agreement:
