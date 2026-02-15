@@ -317,6 +317,9 @@ zh_TW:
     formatting_help:
       label: 格式化
       title: 學習如何使用 Markdown 來格式化您的文字
+    commercial: 商業的
+    nonprofit: 非營利組織
+    opening_in: 打開 %{time}
   merge_accounts:
     modal:
       title: 合併帳號
@@ -845,6 +848,7 @@ zh_TW:
     none_direct_discussion: 無（直接討論）
     direct_discussion: 直接討論
     direct_discussion_hint: 直接討論僅對您邀請的特定人員可見。它不會出現在任何群組的討論清單中——您可以在「直接討論」頁面找到它。
+    recommended_poll_templates: 推薦的投票模板
   announcement:
     send_discussion: 傳送討論串
     send_group: 邀請夥伴到 %{name}
@@ -1222,6 +1226,7 @@ zh_TW:
     no_discussions_here: 這裡沒有任何討論！
     private_discussions: 您需要成為會員才能查看此群組中的私密討論串。
     view_closed_discussions: 查看已關閉的討論
+    discussion_templates: 討論模板
   export_data_modal:
     title: 您想要如何使用您的資料？
     as_csv: 在試算表中開啟它
@@ -1799,6 +1804,7 @@ zh_TW:
     meeting_title: 時間投票
     ranked_choice_title: 排序選擇
     gradients_of_agreement_title: 一致性梯度
+    majority_title: 多數
   poll_option_form:
     edit_option: 編輯選項
     option_name: 選項名稱
@@ -2032,6 +2038,7 @@ zh_TW:
     voting_disabled_poll_is_template: 投票已禁用。這是一個模板。
     for_this_proposal_to_pass: 為了使該提案獲得通過：
     for_this_poll_type_to_be_valid: 為了使此 %{poll_type} 有效：
+    voting_opens_at: 此 %{poll_type} 投票將於 %{time} 開放。
   poll_common_collapsed:
     by_who: 由 %{name}
   poll_common_calendar_invite:
@@ -2613,6 +2620,8 @@ zh_TW:
       ranked_choice_hint: 選民按從最喜歡到最不喜歡的順序排列選項
       time_poll: 時間調查
       time_poll_hint: 選民表明何時可以見面
+      rank: 秩
+      time: 時間
     process: 流程
     process_name: 模板標題
     process_name_hint: 這個模板叫什麼？例如：角色建議、體溫檢查、會議記錄審批
@@ -2668,6 +2677,12 @@ zh_TW:
     hide_results_description: 如果您希望人們投票時不看到其他人的投票情況，您可以隱藏結果。
     process_helptext: 命名並描述用於運行此投票的過程。
     reminder_helptext: 在截止日期前 24 小時發送「即將結束」通知。這可以提高參與度，並為人們創造重新考慮自己立場的機會。
+    voting_duration: 期間
+    voting_duration_hint: 投票何時開始，何時結束？
+    more_settings: 更多設定
+    create_poll_type: 建立 %{poll_type}
+    notify_voters_when_voting_opens: 投票開始時通知選民
+    voters_notified_when_opens: 投票開始時，選民將會收到通知。
   poll_receipts_page:
     verify_participants: 驗證參與者
     see_votes_if_quorum_reached: 如果投票已結束且達到法定人數，您將看到誰投了票。
@@ -2719,6 +2734,7 @@ zh_TW:
     poll_templates_help: 您在此處選擇的範本將在有人點擊「開始投票」時優先顯示。
     start_direct_discussion_from_blank: 從空白模板開始直接討論
     default_to_direct_discussion: 先以直接討論的形式開始（不要分組討論）。
+    default_to_direct_discussion_helptext: 如果您希望人們透過此範本直接發起討論，請使用此功能。
   context_panel:
     thread_status:
       pinned: 此討論貼文已置頂，將始終顯示在群組討論貼文清單的頂部，供所有使用者檢視。
@@ -2745,3 +2761,9 @@ zh_TW:
   auth:
     oauth_cancelled: 登入已取消
     switching_accounts: 正在切換帳戶。請使用新帳號資訊登入。
+  poll_common_opening_at_field:
+    voting_opens_immediately: 投票立即開始
+    opening_date: 開業日期
+    opening_hour: 營業時間
+    scheduled_hint: 投票將在開放時間前顯示，但無法投票。
+    draft_hint: 此投票將儲存為草稿。準備好投票時，請設定開始日期或勾選「立即開始投票」。

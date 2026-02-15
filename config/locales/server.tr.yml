@@ -94,6 +94,10 @@ tr:
       title: "\U0001F44B Hoş geldiniz! Merhaba deyin ve yeni şeyler deneyin"
       description: "<p>Loomio grubumuza hoş geldiniz — sizi burada görmek harika!</p><p> Bu konu başlığı şu amaçlar için bir alandır:</p><ul><li><p> Kendinizi gruba tanıtın</p></li><li><p> Loomio'nun bazı özelliklerini deneyin - örneğin: tepkileri kullanmayı deneyin \U0001F44D</p></li><li><p> Bu aşamada aklınıza takılan soruları sorun</p></li></ul><p> Ne söyleyeceğinizden emin değilseniz, basit bir merhaba yeterli olacaktır \U0001F642</p>"
       process_name: Uygulama tartışması
+      process_subtitle_v2: Yeni insanları karşılayın ve Loomio'yu birlikte kullanmanın keyfini çıkarın.
+      process_introduction_v2: "<p>Yeni gruplar için hoş geldiniz başlığı. İnsanlar kendilerini tanıtır, yorum yapma ve tepki verme gibi özellikleri dener ve ilk projelerini sunarlar.</p>"
+      title_v2: Hoş geldiniz! Kendinizi tanıtın ve yeni şeyler deneyin.
+      description_v2: "<p>Gruba hoş geldiniz! Bu konu başlığı, merhaba demek, sorular sormak, yeni şeyler denemek ve Loomio'yu kullanmaya alışmak için bir alan.</p><p> Aşağıdaki önerilerden birini başlatın, yorum bırakın veya tepki verin.</p><p> Ne diyeceğinizden emin değilseniz, basit bir merhaba yeterli! Ya da aşağıdaki oylama araçlarından birini deneyin.</p>"
   explore:
     header: Herkese açık grupları keşfedin
   activerecord:
@@ -183,6 +187,7 @@ tr:
       must_be_in_the_future: Gelecekte olmalı
       templates_cannot_close: Şablonlar kapatılamıyor
       poll_options_dont_match: Loomio'daki bir hata nedeniyle oylamanız kaydedilemedi. Bu sorunu düzeltmek için çalışıyoruz. Lütfen sayfayı yenileyip tekrar deneyin.
+      opening_at_before_closing_at: Açılış tarihi kapanış tarihinden önce olmalıdır.
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) üye konumlarını belirtti"
       title: Başlık
@@ -377,6 +382,9 @@ tr:
       vote_now: Şimdi oyla
       you_have_until: Katılmak için %{when} tarihine kadar vaktiniz var.
       people_have_voted: "%{dnom} kişinin %{nom}'u katıldı (%{pct}%)"
+      voting_opens_and_closes: Oylama %{opens} tarihinde açılıyor ve %{closes} tarihinde kapanıyor. (%{days} gün)
+      voting_closes: Oylama %{when} tarihinde sona eriyor.
+      voting_opened_and_closed: Oylama %{opens} tarihinde açıldı ve %{closes} tarihinde sona erdi. (%{days} gün)
   poll_templates:
     practice_proposal:
       title: Bunu kavramaya başlıyorum
@@ -385,6 +393,17 @@ tr:
       process_introduction: "<p>Grubunuzun Loomio'daki teklifleri kullanma konusunda rahat olmasına yardımcı olmak için bu şablonu kullanın. İnsanların oylamayı denemesi ve her şeyin nasıl bir araya geldiğini görmesi için güvenli ve basit bir yoldur.</p>"
       details: "<p>Bu, herkesin Loomio'da tekliflerin nasıl çalıştığını rahatça anlayabilmesi için yapılan bir deneme çalışmasıdır.</p><p> Lütfen oy verin ve dilerseniz gerekçenizi de yazın.</p><p> Hiçbir baskı yok, gerçek dünyada hiçbir sonuç yok. Bu sadece tekliflerin nasıl çalıştığını keşfetmenin bir yolu!</p>"
       outcome_statement: "<p>Bu uygulama teklifine katıldığınız için teşekkürler! \U0001F389</p><p> Bu, Loomio'da oylama ve yorumlamanın nasıl çalıştığını görme şansıydı. Burada gerçek bir karar verilmiyor — ancak umarım bu herkesin sürece aşina olmasına yardımcı olmuştur.</p>"
+      title_v2: Ananas pizzaya yakışır.
+      process_subtitle_v2: Oy verme işleminin nasıl işlediğini anlamak için bir öneriyi deneyin.
+      process_introduction_v2: "<p>Grubunuzun Loomio'da oylama yapmayı denemesi için eğlenceli bir yol. Hafif bir soru seçin, insanların oy vermesine izin verin ve bir gerekçe bırakın — gerçek bir karar yok, sadece pratik yapma.</p>"
+      details_v2: "<p>Bu bir deneme önerisi; burada gerçek bir karar yok.</p><p> Loomio'da tekliflerin nasıl işlediğini görmek için oy kullanmayı ve bir gerekçe bırakmayı deneyin.</p>"
+      outcome_statement_v2: "<p>Teklifi denediğiniz için teşekkürler! Artık Loomio'da oylamanın nasıl işlediğini biliyorsunuz.</p>"
+      agree_meaning: Buna katılıyorum.
+      agree_prompt: Neden katılıyorsunuz?
+      abstain_meaning: Bu konuda bir fikrim yok.
+      abstain_prompt: Düşünceleriniz neler?
+      disagree_meaning: Buna katılmıyorum.
+      disagree_prompt: Neden katılmıyorsunuz?
     proposal:
       process_subtitle: Karar almak için bir teklifte bulunun
       process_introduction: <p>Klasik Loomio önerisi, bir tartışmayı net bir sonuca dönüştürerek karar vermenize yardımcı olur.</p><p> Bir eylem planı önerin ve insanları "katılıyorum", "çekimserim" veya "katılmıyorum" şeklinde oylamaya davet edin.</p><p> İnsanlar oy verirken, neden bu şekilde oy verdiklerine dair bir sebep verebilirler. Herkesin bu konuda nerede durduğunu ve nedenini görebilirsiniz.</p><p> Bu şekilde, bir öneriyi insanları yanıt vermeye teşvik etmek, yeni bilgiler ortaya çıkarmak ve ortak anlayış oluşturmak için kullanabilir, böylece grubunuzun daha iyi, daha bilinçli bir karar almasına yardımcı olabilirsiniz.</p><p> Bir teklif ve onunla ilgili tartışmalar, kararın nasıl ortaya çıktığına dair kendi kaydını yaratır.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Basit karar sürecinde klasik Loomio teklifinin kullanımı hakkında daha fazla bilgi edinin</u></a> .</p>
@@ -423,6 +442,9 @@ tr:
       objection_meaning: Geçerli bir itirazım var ve teklifin zarar vereceğini düşünüyorum
       objection_prompt: Bu öneriyi 'denemek için güvenli' hale getirmek ve destekleyebilmeniz için hangi değişikliğe ihtiyaç var?
       outcome_statement: "<p>Onay sürecine katıldığınız için teşekkür ederiz.</p>"
+      process_subtitle_v2: İtiraz gelmediği sürece devam edin.
+      process_introduction_v2: "<p><strong>Onay,</strong> bir önerinin mükemmel olup olmadığını değil, denemeye değer olup olmadığını sorar. Öneri, kimse anlamlı bir itirazda bulunmadığı sürece kabul edilir. Eğer biri itiraz ederse, grup bunu çözmek için çalışır ve katılımcılar öneri geliştikçe oylarını değiştirebildikleri için, itirazlar bir engel olmaktan ziyade bir iyileştirme aracı haline gelir.</p>"
+      details_v2: "<h3><strong>Vermeniz gereken karar nedir?</strong></h3><p></p><h3> <strong>Bu neden önemli?</strong></h3><p></p><h3> <strong>Bu teklifte insanlardan ne istiyorsunuz?</strong></h3><p></p><p> Mükemmelliği hedeflemiyoruz; eğer öneri yeterince iyi ve denemeye değerse onayınızı verin. Eğer bir itirazınız varsa, uygulanabilir hale getirmek için nelerin değiştirilmesi gerektiğini belirtin.</p>"
     consensus:
       process_subtitle: İlgili herkesle toplu anlaşmaya varın
       process_introduction: <p>Tüm katılımcıların ihtiyaçlarını ve endişelerini karşılayan bir anlaşmaya varmak için almanız gereken bir karar için fikir birliği oluşturun.</p><ul><li><p> Birlikte bir öneriyi tartışın ve geliştirin</p></li><li><p> İlgili herkesi dahil edin ve onlara saygı gösterin</p></li><li><p> Çoğu insanın onayını arayın</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/consensus_process/index.html">Mutabakat süreci hakkında daha fazla bilgi edinin</a> .</p>
@@ -441,6 +463,8 @@ tr:
       block: Engellemek
       block_meaning: Bu teklifi engelliyorum ve devam etmemesi gerektiğini düşünüyorum
       block_prompt: Bu teklife itirazınızı ve neden devam etmemesi gerektiğini açıklayın
+      process_introduction_v2: "<p><strong>Konsensus,</strong> herkesin aktif olarak hemfikir olmasının önemli olduğu kararlar için kullanılır. Katılımcılar, birbirlerinin ihtiyaçlarını anlamak ve tüm grubun destekleyebileceği bir öneri oluşturmak için birlikte çalışırlar. İnsanlar konuşma geliştikçe oylarını değiştirebildikleri için, bu süreç tek seferlik bir karar yerine gerçek bir diyaloğu teşvik eder. Diğer yöntemlere göre daha fazla sabır gerektirir, ancak en güçlü bağlılığı oluşturur.</p>"
+      details_v2: "<h3><strong>Vermeniz gereken karar nedir?</strong></h3><p></p><h3> <strong>Bu neden önemli?</strong></h3><p></p><h3> <strong>İnsanlardan ne yapmalarını istiyorsunuz?</strong></h3><p></p><p> Görüşünüzü ve nedenini paylaşın. Eğer katılmıyorsanız, bunu desteklemeniz için nelerin değişmesi gerektiğini açıklayın.</p>"
     question_round:
       process_subtitle: İnsanların bir teklifi anlamalarına yardımcı olmak için açıklayıcı sorular sorun
       process_introduction: <p>Soru turu, insanların teklif hakkında açıklayıcı sorular sorarak herkesin teklif hakkında ne düşündüğünü söylemeden önce teklifi anlamasını sağlama fırsatıdır.</p><p> Loomio Soru turu, oylama seçeneği olmayan özel bir tekliftir. Katılımcıların tur için belirlediğiniz bir süre içerisinde soru sormalarına olanak tanır.</p><p> Soru turu, genellikle Onay sürecinin bir adımı olarak kullanılır.</p><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Onay süreci hakkında daha fazla bilgi edinin</a> .</p>
@@ -466,6 +490,17 @@ tr:
       concerned: Endişeli
       concerned_meaning: Benim onay vermem veya kabul etmem için bununla ilgili bir şeyin değişmesi gerekebilir
       concerned_prompt: Endişeniz nedir ve bu sorun nasıl çözülebilir?
+      process_subtitle_v2: Doğru yolda olup olmadığınızı kontrol edin.
+      process_introduction_v2: "<p><strong>Durum değerlendirmesi,</strong> bir karar vermeden önce erken geri bildirim almanıza yardımcı olur. Katılımcılar, işlerin iyi görünüp görünmediğini veya endişeleri dile getirirler; böylece resmi bir teklife geçmeden önce rotayı ayarlayabilirsiniz. Bu bir karar değil, bir durum değerlendirmesidir.</p>"
+      details_v2: "<h3><strong>Ne öneriyorsunuz?</strong></h3><p></p><h3> <strong>Bu neden önemli?</strong></h3><p></p><h3> <strong>İnsanlardan ne yapmalarını istiyorsunuz?</strong></h3><p></p><p> Bu tasarımın iyi mi, daha iyi olabilir mi yoksa yeniden düşünülmesi mi gerekiyor, bunu belirtin ve gerekçelerinizi paylaşın.</p>"
+      looks_good_meaning_v2: Yönünden memnunum.
+      looks_good_prompt_v2: Bunun hangi yönünü beğeniyorsunuz?
+      could_be_better: Daha iyi olabilirdi.
+      could_be_better_meaning: Potansiyel görüyorum ama bazı önerilerim var.
+      could_be_better_prompt: Neyi değiştirmek isterdiniz?
+      needs_a_rethink: Yeniden düşünülmesi gerekiyor
+      needs_a_rethink_meaning: Bence bu yaklaşım doğru değil.
+      needs_a_rethink_prompt: Endişeniz nedir?
     gradients_of_agreement:
       process_subtitle: Bir öneriye 8 puanlık bir ölçekte destek verin
       process_introduction: <p>Anlaşma önerisinin eğimleri, bir grubun üyelerinin bir öneriye olan desteklerini bir ölçekte dereceler halinde ifade etmelerini sağlar ve "katılıyorum" ve "katılmıyorum" ifadelerinden daha fazla destek ifade etme yolu sunar.</p><p> Resmi bir anlaşmaya varmadan önce bir teklife verilen desteği test etmek için ön tur olarak Anlaşma Gradientlerini kullanın.</p><p> Anlaşma eğimleri, insanların bir teklifin oluştuğunu bilmelerini sağlar ve onları katılmaya teşvik eder. İnsanları dinlemek, nasıl hissettiklerini anlamak ve uygun şekilde yanıt vermek için bir fırsattır - daha iyi bir karar almak için katkılarını dahil etme potansiyelini açar.</p>
@@ -499,27 +534,36 @@ tr:
       process_introduction: <p>Karar vermeden önce insanların hangi seçeneğe/seçeneklere daha çok önem verdiğini bulun.</p><p> Basit anket, tek veya çoktan seçmeli en popüler seçeneği veya seçenekleri bulmanıza yardımcı olur.</p><p> Seçenekler hakkında herhangi bir ayrıntıyı ayrıntı alanına yazın, ardından seçeneğin adını girin ve eklemek için + işaretine tıklayın.</p><p> Seçmenin seçebileceği <strong>Minimum</strong> ve <strong>Maksimum seçenekleri</strong> ayarlayın. Tek seçenekli anket için maksimum seçeneği 1 olarak bırakın.</p><p> Her seçeneğin yanındaki kalem simgesini kullanarak, seçeneğin <strong>anlamını</strong> ekleyebilir, seçeneği daha ayrıntılı olarak açıklayabilir, böylece insanların oy kullanırken daha rahat olmalarını sağlayabilirsiniz.</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">Basit anket hakkında daha fazla bilgi edinin</a> .</p>
       title: Stratejik yönümüzün odağı ne olmalı?
       details: <h3 id="what-is-this-poll-about"><strong>Bu anket neyle ilgili?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Bu neden önemli?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>İnsanlardan ne yapmalarını istiyorsunuz?</strong></h3><p></p><p> Tercih ettiğiniz seçeneği/seçenekleri seçin.</p>
+      process_introduction_v2: <p><strong>Choose özelliği,</strong> en popüler seçeneği bulmanıza yardımcı olur. Katılımcılar bir listeden seçim yaparlar; tek veya birden fazla seçenek seçmelerini yapılandırabilirsiniz.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">Choose hakkında daha fazla bilgi edinin</a> .</p>
     score_poll:
       process_subtitle: Her bir seçenek için destek derecesini ölçün
       process_introduction: <p>İnsanların her seçeneğe ilişkin arzularını, tercihlerini veya ilgilerini ölçmek istediğinizde Puan anketini kullanın.</p><p> <span>Katılımcılardan her seçeneği değerlendirmeleri ve kaydırıcıyı ölçek üzerinde hareket ettirerek bir puan vermeleri istenir.</span></p><p> <span>Sonuçlar, her bir seçeneğe ait toplam puan, ortalama puan ve oy kullanan kişi sayısını gösteren bir tabloyla birlikte grafiksel olarak gösterilir.</span></p><p> Gelişmiş Ayarlar arasında 'Oylar anonimdir' ve 'Seçenekleri rastgele sırada göster' bulunur - genellikle Puan anketlerinde oylama yanlılığını azaltmak için kullanılır.</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">Puan anketi hakkında daha fazla bilgi edinin</a> .</p>
       title: Kuruluşumuzda kararların nasıl alındığını değerlendirmek
       details: <h3 id="what-is-this-poll-about"><strong>Bu anket neyle ilgili?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Bu neden önemli?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>İnsanlardan ne yapmalarını istiyorsunuz?</strong></h3><p></p><p> Tercih ettiğiniz seçeneği/seçenekleri seçin.</p>
+      process_subtitle_v2: Her bir seçeneğe yönelik destek düzeyini ölçün.
+      process_introduction_v2: <p><strong>Puanlama özelliği,</strong> grubun her bir seçeneğe olan destek düzeyini ölçmenizi sağlar. Katılımcılar, her seçeneği kayan bir ölçekte puanlayarak değerlendirir; böylece insanların neyi tercih ettiğini değil, ne kadar tercih ettiğini de görebilirsiniz.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">Puan anketi hakkında daha fazla bilgi edinin</a> .</p>
     dot_vote:
       process_subtitle: Öncelikleri ortaya çıkarmak için puan bütçesi ayırın
       process_introduction: <p>Nokta oylama, sınırlı bir kaynağı bir dizi seçeneğe ayırmaya çalışan gruplar için yararlıdır. Katılımcıların seçenekleri seçerken bir kısıtlama olduğunu anlamalarına yardımcı olarak basit bir anketin ötesine geçer.</p><p> Katılımcıların her birine belirli sayıda nokta verilir. Kaç tane olacağına siz karar verin.</p><p> Beğendikleri sunulan seçeneklerin yanına noktalar koyarlar. Katılımcılar tüm noktalarını tek bir seçeneğe veya birden fazla seçeneğe yerleştirebilirler.</p><p> Katılımcılar noktaları tahsis ettikçe nokta bütçesi sınırını aşabilirler ve bu nedenle noktalarını nasıl harcayacaklarını dikkatli bir şekilde düşünmeleri önerilir.</p><p> En çok nokta içeren seçenekler "kazanır". Sonuç tablosu, sonuçları analiz etmenize yardımcı olacak ek veriler sağlar.</p><ul><li><p> Puanların %'si</p></li><li><p> Puanlar</p></li><li><p> Anlam</p></li><li><p> Seçmenler</p></li></ul><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">Nokta oy hakkında daha fazla bilgi edinin</a> .</p>
       title: Konferansımız için temaları seçiyoruz
       details: <h3 id="what-is-this-poll-about"><strong>Bu anket neyle ilgili?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Bu neden önemli?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>İnsanlardan ne yapmalarını istiyorsunuz?</strong></h3><p></p><p> Bu ankette tercih ettiğiniz seçeneklere tahsis etmek için 8 noktalık bir bütçeniz var. Tüm noktaları tek bir seçeneğe yerleştirebilir veya dağıtabilirsiniz.</p>
+      process_subtitle_v2: Ödünleşmeler söz konusu olduğunda öncelikleri ortaya koyun.
+      process_introduction_v2: <p><strong>Allocate,</strong> ödünleşmeler söz konusu olduğunda bir grubun önceliklerini anlamanıza yardımcı olur. Her katılımcı, seçenekler arasında dağıtmak üzere bir puan bütçesi alır; puanlarını tek bir seçeneğe tamamen yatırabilir veya birkaç seçeneğe dağıtabilir. Bütçe sınırlı olduğundan, harcanan her puan gerçek bir öncelik göstergesidir.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">Allocate hakkında daha fazla bilgi edinin</a> .</p>
     ranked_choice:
       process_subtitle: Seçeneklerin sıralı tercihlerini anlayın
       process_introduction: <p>Sıralamalı tercih, çok sayıda seçeneğiniz olduğunda veya bir seçim yaptığınızda kullanışlıdır.</p><p> Bu anket şablonu, insanların tercih ettikleri sırayla oy kullanmaları için bir dizi seçenek sunar.</p><p> Seçmenin kaç seçenek alacağını ayarlayabilirsiniz.</p><p> <span>Seçmenler tercih sırasına göre seçenekleri sürükleyip bırakabilirler (#1 en çok tercih ettiğiniz seçenektir).</span></p><p> <span>Gelişmiş Ayarlar arasında 'Oylar anonimdir' ve 'Seçenekleri rastgele sırada göster' bulunur - genellikle oylama yanlılığını azaltmak için Sıralı seçim için kullanılır</span> .</p><p> Sonuçlar sıralı olarak gösterilir. Sonuç tablosu, sonuçları analiz etmenize yardımcı olacak ek veriler sağlar.</p><ul><li><p> Rütbe</p></li><li><p> Puanların %'si</p></li><li><p> Puanlar</p></li><li><p> Anlam</p></li></ul><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">Sıralamalı seçim hakkında daha fazla bilgi edinin</a> .</p>
       title: Yönetim kuruluna direktörleri seçin
       details: <h3 id="what-is-this-poll-about"><strong>Bu anket neyle ilgili?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Bu neden önemli?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>İnsanlardan ne yapmalarını istiyorsunuz?</strong></h3><p></p><p> Tercihinize göre seçenekleri sıralayarak oy verin. Sonuçlarda ilk sırada yer alan seçenek kazanır.</p>
+      process_subtitle_v2: Grubun tercih sırasını bulun.
+      process_introduction_v2: <p><strong>Sıralama,</strong> grubun tercih sırasını ortaya koyar. Katılımcılar, seçenekleri sürükleyip bırakarak en çok tercih edilenden en az tercih edilene doğru sıralarlar ve sonuçlar genel sıralamayı gösterir.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">Rank hakkında daha fazla bilgi edinin</a> .</p>
     time_poll:
       process_subtitle: İnsanların buluşmaya ne zaman müsait olduğunu bulun
       process_introduction: <p><span>Toplantınız veya etkinliğiniz için tarih ayarlamaya zaman ayırın.</span></p><p> Zaman anketi herkesin müsaitlik durumunu görmenizi ve en uygun zamanı bulmanızı kolaylaştırır.</p><p> Zaman anketinize bir başlık ve ayrıntılar verin. Zaman diliminizde tarih ve saat seçeneklerinin bir listesini girin.</p><p> Zaman aralıklarını ayarlarken farklı zaman dilimlerindeki insanları göz önünde bulundurun. Katılımcılar zamanları kendi zaman dilimlerinde yerelleştirilmiş olarak görecekler.</p><p> Toplantı süresini ayarlayın.</p><p> Zaman anketi kapandığında, en iyi zamanı ve toplantı için talimatları içeren bir sonuç belirleyin.</p><p> <span>Loomio, katılımcıların takvimlerine ekleme yapabilmeleri için sonuç bildirim e-postasına bir takvim daveti ekleyecektir.</span></p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">Time anketi hakkında daha fazla bilgi edinin</a> .</p>
       title: Bir sonraki toplantımız için bir tarih belirleyelim
       details: "<p><strong>Toplantı veya etkinlik nedir?</strong></p><p></p><p> <strong>Bu neden önemli?</strong></p><p></p><p> <strong>İnsanlardan ne yapmalarını istiyorsunuz?</strong></p><p></p><p> <span>Uygun olduğunuz zaman aralıklarını yeşil 'başparmak yukarı' simgesiyle işaretleyin veya uygun olmadığınızda kırmızı 'başparmak aşağı' simgesini yerinde bırakın.</span></p><p> <span>İhtiyaç halinde müsait olduğunuzu belirtmek için 'baş parmakları yana' simgesini kullanın.</span></p>"
       reason_prompt: Organizatörün uygun bir zaman bulmasına yardımcı olmak için söyleyebileceğiniz bir şey var mı?
+      process_subtitle_v2: İnsanların ne zaman müsait olduğunu bulun.
+      process_introduction_v2: <p><strong>Zaman anketi,</strong> insanların ne zaman müsait olduğunu bulmanıza yardımcı olur. Önerdiğiniz zamanları ekleyin ve katılımcılar bunları kendi saat dilimlerinde göreceklerdir. Anket kapandığında, sonucu belirleyin ve Loomio herkese bir takvim daveti gönderecektir.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">Time anketine dair daha fazla bilgi edinin</a> .</p>
     opt_in:
       process_subtitle: Gönüllüler bulun veya katılımcı isteyin
       process_introduction: '<p>İnsanları bir ekibe, komiteye veya çalışma grubuna katılmaya veya bir etkinliğe katılmaya davet etmek için Opt-in''i kullanın.</p><p> ''Opt-in'' iki oylama seçeneğine sahiptir: Kabul Et veya Reddet.</p><p> Çalışma grubunuza katılacak kişi sayısını hedef olarak belirleyebilirsiniz, örneğin 3 kişi.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#opt-in">Opt-in hakkında daha fazla bilgi edinin</a> .</p>'
@@ -529,6 +573,27 @@ tr:
       accept_prompt: Neden buna gönüllü oluyorsun?
       decline_meaning: Katılamıyorum
       decline_prompt: Söylemek istediğiniz bir şey var mı?
+    try_loomio:
+      process_name: Loomio'yu deneyelim.
+      process_subtitle: Grubunuzu Loomio'yu birlikte denemeye ikna edin.
+      process_introduction: "<p>Loomio'dan en iyi şekilde yararlanmak grupça bir çaba gerektirir. Bu öneri, grubunuzun Loomio'yu hakkıyla denemek için zaman ve çaba harcamaya karar vermesine yardımcı olur; bu, bir deneme süresine katılmak veya birlikte bir plana kaydolmak olabilir.</p>"
+      title: Gelin hep birlikte Loomio'yu denemeye karar verelim.
+      details: "<p>Loomio'yu iyi kullanmak ekip çalışması gerektirir; ancak insanlar gelip katıldıklarında işe yarar.</p><p> Bu teklif, deneme süremiz boyunca herkesin Loomio'yu aktif olarak kullanmaya kendini adamasını istiyor. Bu, giriş yapmayı, tekliflere oy vermeyi ve tartışmalara katılmayı içeriyor.</p><p> Bu konuda endişeleriniz varsa, itirazda bulunun ve nelerin değiştirilmesi gerektiğini belirtin; itiraz seçeneği bunun içindir.</p>"
+      outcome_statement: "<p>Bu önerinin sonucunu grupla paylaşın; neye karar verildiğini ve bundan sonra ne olacağını anlatın.</p>"
+      consent_meaning: Denemeye hazırım.
+      consent_prompt: Loomio'yu kullanmakla ilgili olarak en çok neyi dört gözle bekliyorsunuz?
+      objection_meaning: Öncelikle ele almamız gereken bir endişem var.
+      objection_prompt: Kararınızı verebilmeniz için nelerin değişmesi gerekiyor?
+    majority:
+      process_subtitle: En çok oyu alan taraf karar versin.
+      process_introduction: "<p><strong>Çoğunluk,</strong> grup kararı almanın en basit yoludur; katılımcılar Evet veya Hayır oyu verir ve teklif, yarıdan fazlası Evet oyu verirse kabul edilir. Çekimser kalma veya engelleme yoktur, bu nedenle her oy eşit ağırlığa sahiptir.</p><p> Çoğunluk oyu, net bir sonuca ihtiyaç duyulan basit kararlar için iyi sonuç verir. İnsanların birbirlerini anlamaları ve ortak zemin bulmaları için birlikte çalışmaları gereken kararlar için ise Onay veya Konsensus oyu kullanılabilir.</p>"
+      title: 3. çeyrek bütçesini onaylayın.
+      details: "<h3><strong>Vermeniz gereken karar nedir?</strong></h3><p></p><h3> <strong>Bu neden önemli?</strong></h3><p></p><h3> <strong>İnsanlardan ne yapmalarını istiyorsunuz?</strong></h3><p></p>"
+      yes_meaning: Bu öneriyi destekliyorum.
+      yes_prompt: Bu teklifi neden destekliyorsunuz?
+      no_meaning: Bu öneriyi desteklemiyorum.
+      no_prompt: Bu teklifi neden desteklemiyorsunuz?
+      outcome_statement: "<p>Bu çoğunluk oylamasına katıldığınız için teşekkürler.</p>"
   forward_mailer:
     bounce:
       subject: Loomio'ya mesajınız iletilmedi

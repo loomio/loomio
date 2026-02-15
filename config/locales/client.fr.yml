@@ -324,6 +324,9 @@ fr:
       label: Mise en forme
       title: Apprenez à utiliser Markdown pour mettre en forme votre texte
     thread: Fil
+    commercial: Commercial
+    nonprofit: À but non lucratif
+    opening_in: Ouverture %{time}
   merge_accounts:
     modal:
       title: Fusionner les comptes
@@ -852,6 +855,7 @@ fr:
     none_direct_discussion: Aucun (discussion directe)
     direct_discussion: Discussion directe
     direct_discussion_hint: Une conversation privée n'est visible que par les personnes que vous invitez. Elle n'apparaît pas dans la liste des discussions d'un groupe ; vous la trouverez sur la page « Conversations privées ».
+    recommended_poll_templates: Modèles de sondages recommandés
   announcement:
     send_discussion: Envoyer la discussion
     send_group: Inviter des personnes à %{name}
@@ -1240,6 +1244,7 @@ fr:
     no_discussions_here: Aucune discussion à signaler ici !
     private_discussions: Vous devez être membre pour consulter les discussions privées de ce groupe.
     view_closed_discussions: Consulter les discussions fermées
+    discussion_templates: Modèles de discussion
   export_data_modal:
     title: Comment souhaitez-vous utiliser vos données ?
     as_csv: Ouvrir dans une feuille de calcul
@@ -1815,6 +1820,7 @@ fr:
     meeting_title: Sondage horaire de réunion
     ranked_choice_title: Classement par préférence
     gradients_of_agreement_title: Gradients d’accord
+    majority_title: Majorité
   poll_option_form:
     edit_option: Option Modifier
     option_name: Nom de l’option
@@ -2048,6 +2054,7 @@ fr:
     voting_disabled_poll_is_template: Vote désactivé. Il s’agit d’un modèle.
     for_this_proposal_to_pass: 'Pour que cette proposition soit adoptée :'
     for_this_poll_type_to_be_valid: 'Pour que ce %{poll_type} soit valide :'
+    voting_opens_at: Ce %{poll_type} ouvre au vote %{time}
   poll_common_collapsed:
     by_who: par %{name}
   poll_common_calendar_invite:
@@ -2629,6 +2636,8 @@ fr:
       ranked_choice_hint: Les électeurs classent les options par ordre décroissant de préférence.
       time_poll: Sondage temporel
       time_poll_hint: Les électeurs indiquent quand ils sont disponibles pour se réunir
+      rank: Rang
+      time: Temps
     process: Processus
     process_name: Titre du modèle
     process_name_hint: 'Comment appelle-t-on ce modèle ? Par exemple : « Conseils sur les rôles », « Vérification de la température », « Approbation du compte rendu ».'
@@ -2684,6 +2693,12 @@ fr:
     process_helptext: Nommez et décrivez le processus utilisé pour exécuter ce sondage.
     reminder_helptext: Envoyez une notification « Clôture prochaine » 24 heures avant la date limite. Cela peut stimuler la participation et donner l'occasion aux participants de reconsidérer leur position.
     anonymous_voting_description: Afficher les votes et leurs motifs, mais pas l'identité des votants. Ceci ne peut plus être modifié une fois le sondage %{poll_type} lancé.
+    voting_duration: Durée
+    voting_duration_hint: Quand le vote ouvre-t-il et quand se termine-t-il ?
+    more_settings: Plus de paramètres
+    create_poll_type: Créer %{poll_type}
+    notify_voters_when_voting_opens: Avertir les électeurs de l'ouverture des bureaux de vote
+    voters_notified_when_opens: Les électeurs seront avertis de l'ouverture des bureaux de vote.
   poll_receipts_page:
     verify_participants: Vérifier les participants
     see_votes_if_quorum_reached: Si le vote est clos et que le quorum est atteint, vous verrez qui a voté.
@@ -2735,6 +2750,7 @@ fr:
     poll_templates_help: Les modèles que vous sélectionnez ici s'afficheront en premier lorsqu'une personne cliquera sur « Lancer un vote ».
     start_direct_discussion_from_blank: Démarrez une discussion directe à partir d'un modèle vierge
     default_to_direct_discussion: Commencez par une discussion directe (pas de groupe).
+    default_to_direct_discussion_helptext: Utilisez ceci si vous souhaitez que les gens entament des discussions directes à partir de ce modèle.
   context_panel:
     thread_status:
       pinned: Cette discussion a été épinglée. Elle restera en haut de la liste des discussions du groupe pour tous les utilisateurs.
@@ -2761,3 +2777,9 @@ fr:
   auth:
     oauth_cancelled: La connexion a été annulée.
     switching_accounts: Changement de compte. Veuillez vous connecter avec vos nouvelles informations de compte.
+  poll_common_opening_at_field:
+    voting_opens_immediately: Le vote est ouvert immédiatement
+    opening_date: Date d'ouverture
+    opening_hour: Heures d'ouverture
+    scheduled_hint: Le sondage sera visible mais il ne sera pas possible de voter avant l'heure d'ouverture.
+    draft_hint: Ce sondage sera enregistré comme brouillon. Définissez une date d'ouverture ou cochez « Ouverture immédiate du vote » lorsque vous serez prêt(e) à voter.

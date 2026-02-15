@@ -316,6 +316,9 @@ ca:
       label: Formatació
       title: Aprèn a escriure el text en format Markdown
     thread: Fil
+    commercial: Comercial
+    nonprofit: Sense ànim de lucre
+    opening_in: Obertura %{time}
   merge_accounts:
     modal:
       title: Combina comptes
@@ -844,6 +847,7 @@ ca:
     none_direct_discussion: Cap (discussió directa)
     direct_discussion: Discussió directa
     direct_discussion_hint: Una discussió directa només és visible per a les persones específiques que convideu. No apareixerà a la llista de discussió de cap grup; la podeu trobar a la pàgina de Discusions directes.
+    recommended_poll_templates: Plantilles d'enquesta recomanades
   announcement:
     send_discussion: Envia fil
     send_group: Convida gent a %{name}
@@ -1221,6 +1225,7 @@ ca:
     no_discussions_here: No hi ha debats per veure aquí!
     private_discussions: Cal que siguis membre per veure els fils privats d'aquest grup.
     view_closed_discussions: Veure debats tancats
+    discussion_templates: Plantilles de discussió
   export_data_modal:
     title: Com voleu utilitzar les vostres dades?
     as_csv: Obre en un full de càlcul
@@ -1796,6 +1801,7 @@ ca:
     meeting_title: enquesta de temps
     ranked_choice_title: vot preferencial
     gradients_of_agreement_title: Gradients d'acord
+    majority_title: Majoria
   poll_option_form:
     edit_option: Opció d'edició
     option_name: Nom de l'opció
@@ -2031,6 +2037,7 @@ ca:
     voting_disabled_poll_is_template: Votació desactivada. Aquesta és una plantilla.
     for_this_proposal_to_pass: 'Perquè aquesta proposta s''aprovi:'
     for_this_poll_type_to_be_valid: 'Perquè aquest %{poll_type} sigui vàlid:'
+    voting_opens_at: Aquest %{poll_type} s'obre per a votacions %{time}
   poll_common_collapsed:
     by_who: per %{name}
   poll_common_calendar_invite:
@@ -2612,6 +2619,8 @@ ca:
       ranked_choice_hint: Els votants ordenen les opcions de més a menys preferides
       time_poll: Enquesta de temps
       time_poll_hint: Els votants indiquen quan estan disponibles per reunir-se
+      rank: Rang
+      time: Temps
     process: Procés
     process_name: Títol de la plantilla
     process_name_hint: Com s'anomena aquesta plantilla? Per exemple, consells sobre rols, control de temperatura, aprovació d'actes.
@@ -2667,6 +2676,12 @@ ca:
     hide_results_description: Si voleu que la gent voti sense veure com han votat els altres, podeu amagar els resultats.
     process_helptext: Anomena i descriu el procés que s'utilitza per dur a terme aquesta enquesta.
     reminder_helptext: Envia una notificació de "Properament tancament" 24 hores abans de la data límit. Això pot augmentar la participació i crear una oportunitat perquè la gent reconsideri la seva posició.
+    voting_duration: Durada
+    voting_duration_hint: Quan s'obre i quan es tanca la votació?
+    more_settings: Més configuracions
+    create_poll_type: Crea %{poll_type}
+    notify_voters_when_voting_opens: Avisar els votants quan s'obri la votació
+    voters_notified_when_opens: Els votants seran notificats quan s'obri la votació
   poll_receipts_page:
     verify_participants: Verifica els participants
     see_votes_if_quorum_reached: Si la votació s'ha tancat i s'ha arribat al quòrum, veureu qui ha votat.
@@ -2718,6 +2733,7 @@ ca:
     poll_templates_help: Les plantilles que seleccioneu aquí es mostraran primer quan algú faci clic a Inicia una votació
     start_direct_discussion_from_blank: Inicia una discussió directa des d'una plantilla en blanc
     default_to_direct_discussion: Comença com una discussió directa (sense grup)
+    default_to_direct_discussion_helptext: Feu servir això si voleu que la gent iniciï debats directes des d'aquesta plantilla.
   context_panel:
     thread_status:
       pinned: Aquesta discussió s'ha fixat. Romandrà al capdamunt de la llista de discussions del grup per a tots els usuaris.
@@ -2744,3 +2760,9 @@ ca:
   auth:
     oauth_cancelled: S'ha cancel·lat l'inici de sessió
     switching_accounts: Canvi de compte. Si us plau, inicia la sessió amb les dades del teu nou compte.
+  poll_common_opening_at_field:
+    voting_opens_immediately: La votació s'obre immediatament
+    opening_date: Data d'obertura
+    opening_hour: Horari d'obertura
+    scheduled_hint: L'enquesta serà visible però no votable fins a l'hora d'obertura.
+    draft_hint: Aquesta enquesta es desarà com a esborrany. Estableix una data d'obertura o marca "La votació s'obre immediatament" quan estiguis a punt per començar a votar.

@@ -316,6 +316,9 @@ da:
       label: Formatering
       title: Lær, hvordan du bruger Markdown til at formatere din tekst
     thread: Tråd
+    commercial: Kommerciel
+    nonprofit: Nonprofitorganisation
+    opening_in: Åbning %{tid}
   merge_accounts:
     modal:
       title: Flet konti
@@ -840,6 +843,7 @@ da:
     none_direct_discussion: Ingen (direkte diskussion)
     direct_discussion: Direkte diskussion
     direct_discussion_hint: En direkte diskussion er kun synlig for de specifikke personer, du inviterer. Den vises ikke på nogen gruppers diskussionsliste – du kan finde den på din side for direkte diskussioner.
+    recommended_poll_templates: Anbefalede skabeloner til afstemninger
   announcement:
     send_discussion: Send tråd
     send_group: Inviter folk til %{name}
@@ -1213,6 +1217,7 @@ da:
     no_discussions_here: Ingen diskussioner at se her!
     private_discussions: Du skal være medlem for at se private tråde i denne gruppe
     view_closed_discussions: Se lukkede diskussioner
+    discussion_templates: Diskussionsskabeloner
   export_data_modal:
     title: Hvordan vil du bruge dine data?
     as_csv: Åbn det i et regneark
@@ -1771,6 +1776,7 @@ da:
     meeting_title: Find et tidspunkt
     ranked_choice_title: Rangeret valg
     gradients_of_agreement_title: Gradienter af enighed
+    majority_title: Flertal
   poll_option_form:
     edit_option: Rediger mulighed
     option_name: Mulighedens navn
@@ -2004,6 +2010,7 @@ da:
     voting_disabled_poll_is_template: Afstemning deaktiveret. Dette er en skabelon.
     for_this_proposal_to_pass: 'For at dette forslag kan vedtages:'
     for_this_poll_type_to_be_valid: 'For at denne %{poll_type} skal være gyldig:'
+    voting_opens_at: Denne %{poll_type} åbner for afstemning %{time}
   poll_common_collapsed:
     by_who: af %{name}
   poll_common_calendar_invite:
@@ -2583,6 +2590,8 @@ da:
       ranked_choice_hint: Vælgerne arrangerer mulighederne i rækkefølge fra mest til mindst foretrukken
       time_poll: Tidsmåling
       time_poll_hint: Vælgerne angiver, hvornår de er til rådighed til at mødes
+      rank: Rang
+      time: Tid
     process: Behandle
     process_name: Skabelontitel
     process_name_hint: Hvad kalder du denne skabelon? F.eks. rollerådgivning, temperaturmåling, godkendelse af referat
@@ -2638,6 +2647,12 @@ da:
     hide_results_description: Hvis du vil have folk til at stemme uden at se, hvordan andre har stemt, kan du skjule resultaterne.
     process_helptext: Navngiv og beskriv den proces, der bruges til at køre denne afstemning.
     reminder_helptext: Send en "Afslutter snart"-besked 24 timer før deadline. Dette kan øge deltagelsen og give folk mulighed for at genoverveje deres holdning.
+    voting_duration: Varighed
+    voting_duration_hint: Hvornår åbner afstemningen, og hvornår lukker den?
+    more_settings: Flere indstillinger
+    create_poll_type: Opret %{poll_type}
+    notify_voters_when_voting_opens: Giv vælgerne besked, når afstemningen åbner
+    voters_notified_when_opens: Vælgerne vil blive underrettet, når afstemningen åbner
   poll_receipts_page:
     verify_participants: Bekræft deltagere
     see_votes_if_quorum_reached: Hvis afstemningen er afsluttet, og det quorum er nået, vil du se, hvem der afgav en stemme.
@@ -2689,6 +2704,7 @@ da:
     poll_templates_help: Skabeloner, du vælger her, vises først, når nogen klikker på Start en afstemning
     start_direct_discussion_from_blank: Start en direkte diskussion fra en tom skabelon
     default_to_direct_discussion: Start som en direkte diskussion (ingen gruppe)
+    default_to_direct_discussion_helptext: Brug dette, hvis du vil have folk til at starte direkte diskussioner fra denne skabelon.
   context_panel:
     thread_status:
       pinned: Denne diskussion er blevet fastgjort. Den vil forblive øverst på gruppens liste over diskussioner for alle brugere.
@@ -2715,3 +2731,9 @@ da:
   auth:
     oauth_cancelled: Log ind blev annulleret
     switching_accounts: Skifter konto. Log venligst ind med dine nye kontooplysninger.
+  poll_common_opening_at_field:
+    voting_opens_immediately: Afstemningen åbner med det samme
+    opening_date: Åbningsdato
+    opening_hour: Åbningstid
+    scheduled_hint: Afstemningen vil være synlig, men ikke mulig at stemme på, før den åbner.
+    draft_hint: Denne afstemning gemmes som et udkast. Angiv en åbningsdato, eller marker "Afstemningen åbner med det samme", når du er klar til at begynde at stemme.

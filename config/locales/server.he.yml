@@ -94,6 +94,10 @@ he:
       title: "\U0001F44B ברוכים הבאים! תגידו שלום ונסו דברים חדשים"
       description: "<p style=\";text-align:right;direction:rtl\">ברוכים הבאים לקבוצת Loomio שלנו - כיף גדול לארח אתכם כאן!</p><p style=\";text-align:right;direction:rtl\"> שרשור זה הוא מקום ל:</p><ul style=\";text-align:right;direction:rtl\"><li style=\";text-align:right;direction:rtl\"><p style=\";text-align:right;direction:rtl\"> הצג את עצמך לקבוצה</p></li><li style=\";text-align:right;direction:rtl\"><p style=\";text-align:right;direction:rtl\"> נסו כמה מהתכונות של Loomio - לדוגמה: נסו להשתמש בתגובות \U0001F44D</p></li><li style=\";text-align:right;direction:rtl\"><p style=\";text-align:right;direction:rtl\"> שאלו כל שאלה שיש לכם בשלב זה</p></li></ul><p style=\";text-align:right;direction:rtl\"> אם אתם לא בטוחים מה לומר, שלום פשוט זה בסדר \U0001F642</p>"
       process_name: דיון תרגול
+      process_subtitle_v2: קבלו את פני האנשים ותתחילו להשתמש ב-Loomio יחד
+      process_introduction_v2: <p style=";text-align:right;direction:rtl">שרשור קבלת פנים לקבוצות חדשות. אנשים מציגים את עצמם, מנסים תכונות כמו תגובות ותגובה, ומגישים את ההצעה הראשונה שלהם.</p>
+      title_v2: ברוכים הבאים! הציגו את עצמכם ונסו דברים
+      description_v2: <p style=";text-align:right;direction:rtl">ברוכים הבאים לקבוצה! אשכול זה הוא מקום לומר שלום, לשאול שאלות, לנסות דברים ולהתרגל לשימוש ב-Loomio.</p><p style=";text-align:right;direction:rtl"> השאירו תגובה, השתמשו בתגובה, או התחילו אחת מההצעות למטה.</p><p style=";text-align:right;direction:rtl"> אם אינכם בטוחים מה לומר, שלום פשוט זה בסדר! או נסו אחד מכלי ההצבעה למטה.</p>
   explore:
     header: חקור את הקבוצות הציבוריות
   activerecord:
@@ -183,6 +187,7 @@ he:
       must_be_in_the_future: חייב להיות בעתיד
       templates_cannot_close: לא ניתן לסגור תבניות
       poll_options_dont_match: באג עם Loomio מנע את שמירת ההצבעה שלך. אנו עובדים על תיקון הבעיה. אנא טען מחדש ונסה שוב.
+      opening_at_before_closing_at: תאריך הפתיחה חייב להיות לפני תאריך הסגירה
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) משתתפים הצהירו את עמדתם"
       title: כותרת
@@ -389,6 +394,9 @@ he:
       vote_now: הצבע עכשיו
       you_have_until: יש לך עד %{when} להשתתף.
       people_have_voted: "%{nom} מתוך %{dnom} אנשים השתתפו (%{pct}%)"
+      voting_opens_and_closes: ההצבעה נפתחת %{opens} ונסגרת %{closes}. (%{days} ימים)
+      voting_closes: ההצבעה נסגרת %{when}.
+      voting_opened_and_closed: ההצבעה נפתחה %{opens} ונסגרה %{closes}. (%{days} ימים)
   poll_templates:
     practice_proposal:
       title: אני מתחיל להבין את זה
@@ -397,6 +405,17 @@ he:
       process_introduction: <p style=";text-align:right;direction:rtl">השתמשו בתבנית זו כדי לעזור לקבוצה שלכם להרגיש בנוח להשתמש בהצעות ב-Loomio. זוהי דרך בטוחה ופשוטה עבור אנשים לנסות את ההצבעה ולראות איך הכל משתלב.</p>
       details: <p style=";text-align:right;direction:rtl">זהו תרגול כדי שכולם יוכלו להכיר את אופן הפעולה של הצעות בלומיו.</p><p style=";text-align:right;direction:rtl"> אנא הצביעו, והשאירו נימוק אם תרצו.</p><p style=";text-align:right;direction:rtl"> בלי לחץ, בלי השלכות בעולם האמיתי. זוהי רק דרך לחקור איך הצעות עובדות!</p>
       outcome_statement: "<p style=\";text-align:right;direction:rtl\">תודה שהשתתפתם בהצעת תרגול זו! \U0001F389</p><p style=\";text-align:right;direction:rtl\"> זו הייתה רק הזדמנות לראות איך הצבעה ותגובות עובדות ב-Loomio. אין כאן החלטה אמיתית שמתקבלת - אבל אני מקווה שזה עזר לכולם להכיר את התהליך.</p>"
+      title_v2: אננס שייך לפיצה
+      process_subtitle_v2: נסה הצעה כדי שתדע איך הצבעה עובדת
+      process_introduction_v2: <p style=";text-align:right;direction:rtl">דרך מהנה עבור הקבוצה שלכם לנסות הצבעה בלומיו. בחרו שאלה קלילה, תנו לאנשים להצביע ולהשאיר סיבה - אין החלטה אמיתית, רק תרגול.</p>
+      details_v2: <p style=";text-align:right;direction:rtl">זוהי הצעת תרגול - אין כאן החלטה של ממש.</p><p style=";text-align:right;direction:rtl"> נסו להצביע ולהשאיר סיבה כדי לראות איך הצעות עובדות בלומיו.</p>
+      outcome_statement_v2: <p style=";text-align:right;direction:rtl">תודה שניסית הצעה! עכשיו אתה יודע איך ההצבעה עובדת בלומיו.</p>
+      agree_meaning: אני מסכים עם זה
+      agree_prompt: למה אתה מסכים?
+      abstain_meaning: אין לי דעה בנושא הזה
+      abstain_prompt: יש לכם רעיונות?
+      disagree_meaning: אני לא מסכים עם זה
+      disagree_prompt: למה אתה לא מסכים?
     proposal:
       process_subtitle: העלה הצעה לקבלת החלטה
       process_introduction: <p style=";text-align:right;direction:rtl">הצעת Loomio הקלאסית עוזרת לך לקבל החלטה, והופכת דיון לתוצאה ברורה.</p><p style=";text-align:right;direction:rtl"> הציעו דרך פעולה והזמינו אנשים להגיב על ידי הצבעה בהסכמה, הימנעות או אי הסכמה.</p><p style=";text-align:right;direction:rtl"> כאשר אנשים מצביעים, הם יכולים לתת סיבה מדוע הצביעו כך. ניתן לראות את עמדות כולם בנושא, ומדוע.</p><p style=";text-align:right;direction:rtl"> בדרך זו תוכלו להשתמש בהצעה כדי לעודד אנשים להגיב, לחשוף מידע חדש ולבנות הבנה משותפת - כדי לעזור לקבוצה שלכם לקבל החלטה טובה ומושכלת יותר.</p><p style=";text-align:right;direction:rtl"> הצעה ודיון נלווה יוצרים תיעוד משלהם של אופן קבלת ההחלטה.</p><p style=";text-align:right;direction:rtl"> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>קרא עוד על השימוש בהצעת Loomio הקלאסית בתהליך ההחלטה הפשוט</u></a> .</p>
@@ -435,6 +454,9 @@ he:
       objection_meaning: יש לי התנגדות מוצדקת ואני חושב שההצעה תגרום נזק
       objection_prompt: איזה שינוי נדרש בהצעה זו כדי להפוך אותה ל"בטוחה לניסיון", כך שתוכל לתמוך בה?
       outcome_statement: <p style=";text-align:right;direction:rtl">תודה על השתתפותך בתהליך ההסכמה.</p>
+      process_subtitle_v2: המשך אלא אם כן מישהו יעלה התנגדות
+      process_introduction_v2: <p style=";text-align:right;direction:rtl"><strong>הסכמה</strong> שואלת האם הצעה בטוחה לניסיון, לא האם היא מושלמת. ההצעה עוברת כל עוד אף אחד לא מעלה התנגדות משמעותית. אם מישהו מתנגד, הקבוצה פועלת לפתור אותה - ומכיוון שהמשתתפים יכולים לשנות את הצבעתם ככל שההצעה מתפתחת, התנגדויות הופכות לכלי לשיפור ולא למכשול.</p>
+      details_v2: <h3 style=";text-align:right;direction:rtl"><strong>מהי ההחלטה שאתה צריך לקבל?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 style=";text-align:right;direction:rtl"> <strong>למה זה חשוב?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 style=";text-align:right;direction:rtl"> <strong>מה אתה מבקש מהאנשים בהצעה הזו?</strong></h3><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> אנחנו לא שואפים לשלמות - תנו את הסכמתכם אם ההצעה טובה מספיק ובטוחה לניסיון. אם יש לכם התנגדות, ציינו מה צריך להשתנות כדי להפוך אותה לניתנת לביצוע.</p>
     consensus:
       process_subtitle: להגיע להסכם קיבוצי עם כל המעורבים
       process_introduction: <p style=";text-align:right;direction:rtl">בנו קונצנזוס לקראת החלטה שעליכם לקבל, כדי להגיע להסכם שיספק את הצרכים והדאגות של כל המשתתפים.</p><ul style=";text-align:right;direction:rtl"><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> לדון ולפתח הצעה יחד</p></li><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> לכלול ולכבד את כל המעורבים</p></li><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> לבקש הסכמה מרוב האנשים</p></li></ul><p style=";text-align:right;direction:rtl"> <a target="_blank" href="https://help.loomio.com/en/guides/consensus_process/index.html">קראו עוד על תהליך הקונצנזוס</a> .</p>
@@ -453,6 +475,8 @@ he:
       block: לַחסוֹם
       block_meaning: אני חוסם את ההצעה הזו וחושב שלא כדאי להמשיך איתה
       block_prompt: הסבר את התנגדותך להצעה זו ומדוע אין לקדם אותה
+      process_introduction_v2: <p style=";text-align:right;direction:rtl"><strong>קונצנזוס</strong> מיועד להחלטות בהן חשוב שכולם יסכימו באופן פעיל. המשתתפים עובדים יחד כדי להבין את צרכיו של זה ולעצב את ההצעה עד שכל הקבוצה תוכל לתמוך בה. מכיוון שאנשים יכולים לשנות את הצבעתם ככל שהשיחה מתפתחת, התהליך מעודד דיאלוג אמיתי ולא החלטה חד פעמית. זה דורש יותר סבלנות משיטות אחרות, אך בונה את המחויבות החזקה ביותר.</p>
+      details_v2: <h3 style=";text-align:right;direction:rtl"><strong>מהי ההחלטה שאתה צריך לקבל?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 style=";text-align:right;direction:rtl"> <strong>למה זה חשוב?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 style=";text-align:right;direction:rtl"> <strong>מה אתה מבקש מאנשים לעשות?</strong></h3><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> שתף את עמדתך ומדוע. אם אינך מסכים, הסבר מה צריך להשתנות כדי שתתמוך בכך.</p>
     question_round:
       process_subtitle: הזמינו שאלות הבהרה כדי לעזור לאנשים להבין הצעה
       process_introduction: <p style=";text-align:right;direction:rtl">סבב שאלות הוא הזדמנות לאנשים לשאול שאלות הבהרה לגבי ההצעה, כך שכולם יבינו את ההצעה לפני שהם אומרים את דעתם עליה.</p><p style=";text-align:right;direction:rtl"> סבב השאלות של Loomio הוא הצעה מיוחדת ללא אפשרויות הצבעה. הוא מאפשר למשתתפים לשאול שאלות במסגרת זמן שתקבעו לסבב.</p><p style=";text-align:right;direction:rtl"> סבב שאלות משמש בדרך כלל כשלב בתהליך ההסכמה.</p><p style=";text-align:right;direction:rtl"> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">קרא עוד על תהליך ההסכמה</a> .</p>
@@ -478,6 +502,17 @@ he:
       concerned: מוּדְאָג
       concerned_meaning: משהו בזה אולי צריך להשתנות כדי שאוכל להסכים או להסכים
       concerned_prompt: מהי דאגתך וכיצד ניתן לטפל בה?
+      process_subtitle_v2: תראה אם אתה בדרך הנכונה
+      process_introduction_v2: <p style=";text-align:right;direction:rtl"><strong>בדיקת חוש</strong> עוזרת לך לקבל משוב מוקדם לפני שאתה מתחייב להחלטה. המשתתפים אומרים אם הדברים נראים טוב או מדווחים על חששות, כך שתוכל להתאים את הכיוון לפני שאתה עובר להצעה רשמית. זו לא החלטה - זו בדיקת חום.</p>
+      details_v2: <h3 style=";text-align:right;direction:rtl"><strong>מה אתה מציע?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 style=";text-align:right;direction:rtl"> <strong>למה זה חשוב?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 style=";text-align:right;direction:rtl"> <strong>מה אתה מבקש מאנשים לעשות?</strong></h3><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> אמרו אם זה נראה טוב, יכול להיות טוב יותר, או שצריך לחשוב מחדש - ושתפו את נימוקיכם.</p>
+      looks_good_meaning_v2: אני מרוצה מהכיוון
+      looks_good_prompt_v2: מה אתה אוהב בזה?
+      could_be_better: יכול להיות טוב יותר
+      could_be_better_meaning: אני רואה פוטנציאל אבל יש לי הצעות
+      could_be_better_prompt: מה היית משנה?
+      needs_a_rethink: צריך חשיבה מחודשת
+      needs_a_rethink_meaning: אני חושב שהגישה לא נכונה
+      needs_a_rethink_prompt: מה הדאגה שלך?
     gradients_of_agreement:
       process_subtitle: תמיכה מפורשת בהצעה בסולם של 8 נקודות
       process_introduction: <p style=";text-align:right;direction:rtl">הצעת "גרדיאנטים של הסכמה" מאפשרת לחברי קבוצה להביע את תמיכתם בהצעה בדרגות על סולם, ומציעה דרכים רבות יותר להביע תמיכה מאשר במונחים של "הסכמה" ו"לא מסכים".</p><p style=";text-align:right;direction:rtl"> השתמשו בדרגות הסכמה כסבב מקדים, כדי לבחון תמיכה בהצעה לפני המעבר להסכמה רשמית.</p><p style=";text-align:right;direction:rtl"> מעברי הסכמה מאפשרים לאנשים לדעת שהצעה מתגבשת ומעודדים אותם להשתתף. זוהי הזדמנות להקשיב לאנשים, לחוש איך הם מרגישים ולהגיב כראוי - מה שפותח את הפוטנציאל לשלב את תרומתם כדי לקבל החלטה טובה יותר.</p>
@@ -511,27 +546,36 @@ he:
       process_introduction: <p style=";text-align:right;direction:rtl">לפני קבלת החלטה, גלו אילו אפשרויות חשובות לאנשים ביותר.</p><p style=";text-align:right;direction:rtl"> סקר פשוט עוזר לך למצוא את האפשרות או האפשרויות הפופולריות ביותר עם בחירה אחת או מרובה.</p><p style=";text-align:right;direction:rtl"> רשמו פרטים על האפשרויות בשדה הפרטים, לאחר מכן הזינו את שם האפשרות ולחצו על + כדי להוסיף.</p><p style=";text-align:right;direction:rtl"> הגדר את <strong>מספר האפשרויות המינימלי</strong> <strong>והמקסימלי</strong> שבוחר יכול לבחור. השאר את מספר האפשרויות המקסימלי כ-1 עבור סקר עם אפשרות בודדת.</p><p style=";text-align:right;direction:rtl"> ניתן להשתמש בסמל העיפרון שליד כל אפשרות כדי להוסיף את <strong>משמעותה</strong> , להרחיב את האפשרות ולעזור לאנשים בעת ההצבעה.</p><p style=";text-align:right;direction:rtl"> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">קרא עוד על סקר פשוט</a> .</p>
       title: היכן צריך להיות המיקוד של הכיוון האסטרטגי שלנו?
       details: <h3 id="what-is-this-poll-about" style=";text-align:right;direction:rtl"><strong>על מה הסקר הזה?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="why-is-this-important" style=";text-align:right;direction:rtl"> <strong>למה זה חשוב?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="what-are-you-asking-people-to-do" style=";text-align:right;direction:rtl"> <strong>מה אתה מבקש מאנשים לעשות?</strong></h3><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> בחר את האפשרות/ות שאתה מעדיף/ה.</p>
+      process_introduction_v2: <p style=";text-align:right;direction:rtl"><strong>האפשרות "בחר"</strong> עוזרת לך למצוא את האפשרות הפופולרית ביותר. המשתתפים בוחרים מרשימה - תוכל להגדיר אם הם בוחרים אפשרות אחת או יותר.</p><p style=";text-align:right;direction:rtl"> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">קרא עוד על בחר</a> .</p>
     score_poll:
       process_subtitle: מדוד את מידת התמיכה בכל אפשרות
       process_introduction: <p style=";text-align:right;direction:rtl">השתמשו בסקר ניקוד כשתרצו לסקור אנשים לגבי רצונם, העדפתם או תחומי העניין שלהם בכל אפשרות.</p><p style=";text-align:right;direction:rtl"> <span>המשתתפים מתבקשים להעריך כל אפשרות ולהקצות ציון על ידי הזזת מחוון לאורך סולם.</span></p><p style=";text-align:right;direction:rtl"> <span>התוצאות מוצגות בצורה גרפית יחד עם טבלה עבור כל אפשרות המציגה את סך הנקודות, ממוצע הנקודות ומספר המצביעים.</span></p><p style=";text-align:right;direction:rtl"> הגדרות מתקדמות כוללות 'הצבעות אנונימיות' ו'הצג אפשרויות בסדר אקראי' - הגדרות המשמשות בדרך כלל עבור סקר ניקוד כדי להפחית הטיה בהצבעה.</p><p style=";text-align:right;direction:rtl"> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">קרא עוד על סקר ניקוד</a> .</p>
       title: הערכת אופן קבלת ההחלטות בארגון שלנו
       details: <h3 id="what-is-this-poll-about" style=";text-align:right;direction:rtl"><strong>על מה הסקר הזה?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="why-is-this-important" style=";text-align:right;direction:rtl"> <strong>למה זה חשוב?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="what-are-you-asking-people-to-do" style=";text-align:right;direction:rtl"> <strong>מה אתה מבקש מאנשים לעשות?</strong></h3><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> בחר את האפשרות/ות שאתה מעדיף/ה.</p>
+      process_subtitle_v2: מדוד את רמת התמיכה בכל אפשרות
+      process_introduction_v2: <p style=";text-align:right;direction:rtl"><strong>הציון</strong> מאפשר לך למדוד את רמת התמיכה של הקבוצה בכל אפשרות. המשתתפים מעריכים כל אפשרות על ידי מתן ציון בסולם הזזה, כך שתוכל לראות לא רק מה אנשים מעדיפים, אלא באיזו מידה.</p><p style=";text-align:right;direction:rtl"> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">קרא עוד על סקר ניקוד</a> .</p>
     dot_vote:
       process_subtitle: הקצאת תקציב של נקודות כדי לחשוף סדרי עדיפויות
       process_introduction: <p style=";text-align:right;direction:rtl">הצבעה בנקודות שימושית לקבוצות המנסות להקצות משאב מוגבל למספר אפשרויות. היא הולכת מעבר לסקר פשוט בכך שהיא עוזרת למשתתפים להבין שיש אילוץ בעת בחירת אפשרויות.</p><p style=";text-align:right;direction:rtl"> כל משתתף מקבל מספר קבוע של נקודות. אתם מחליטים כמה.</p><p style=";text-align:right;direction:rtl"> הם מניחים נקודות ליד אפשרויות שהוצגו ואהבו. המשתתפים יכולים למקם את כל הנקודות שלהם על אפשרות אחת או לפזר אותן על פני מספר אפשרויות.</p><p style=";text-align:right;direction:rtl"> כאשר המשתתפים מקצים נקודות, הם עשויים לחרוג ממגבלת תקציב הנקודות ולכן מומלץ לשקול בזהירות כיצד הם מוציאים את הנקודות שלהם.</p><p style=";text-align:right;direction:rtl"> אפשרויות עם הכי הרבה נקודות "מנצחות". טבלת התוצאות מספקת נתונים נוספים שיעזרו לך לנתח את התוצאות.</p><ul style=";text-align:right;direction:rtl"><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> אחוז הנקודות</p></li><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> נקודות</p></li><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> מְמוּצָע</p></li><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> מצביעים</p></li></ul><p style=";text-align:right;direction:rtl"> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">קרא עוד על הצבעת נקודות</a> .</p>
       title: בחירת נושאים לכנס שלנו
       details: <h3 id="what-is-this-poll-about" style=";text-align:right;direction:rtl"><strong>על מה הסקר הזה?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="why-is-this-important" style=";text-align:right;direction:rtl"> <strong>למה זה חשוב?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="what-are-you-asking-people-to-do" style=";text-align:right;direction:rtl"> <strong>מה אתה מבקש מאנשים לעשות?</strong></h3><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> בסקר הזה יש לכם תקציב של 8 נקודות להקצות לאפשרויות שאתם מעדיפים. אתם יכולים למקם את כל הנקודות על אפשרות אחת או לפזר אותן.</p>
+      process_subtitle_v2: גילוי סדרי עדיפויות כאשר יש פשרות
+      process_introduction_v2: <p style=";text-align:right;direction:rtl"><strong>הפעולה Allocate</strong> עוזרת לך להבין את סדרי העדיפויות של קבוצה כאשר יש פשרות. כל משתתף מקבל תקציב של נקודות לחלוקה על פני האפשרויות - הוא יכול ללכת על כל הקופה על אפשרות אחת או לחלק את הנקודות שלו על פני כמה. מכיוון שהתקציב מוגבל, כל נקודה המושקעת היא איתות אמיתי לעדיפות.</p><p style=";text-align:right;direction:rtl"> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">קרא עוד על הקצאה</a> .</p>
     ranked_choice:
       process_subtitle: להבין את סדר ההעדפות של האפשרויות
       process_introduction: <p style=";text-align:right;direction:rtl">בחירה מדורגת שימושית כאשר יש לך מספר רב של אפשרויות, או שאתה עורך בחירות.</p><p style=";text-align:right;direction:rtl"> תבנית סקר זו מציעה סדרה של אפשרויות לאנשים להצביע לפי הסדר המועדף עליהם.</p><p style=";text-align:right;direction:rtl"> ניתן לקבוע את מספר האפשרויות שהבוחר יקבל.</p><p style=";text-align:right;direction:rtl"> <span>הבוחרים גוררים ומשחררים אפשרויות לפי סדר העדפה (#1 היא האפשרות המועדפת עליכם ביותר).</span></p><p style=";text-align:right;direction:rtl"> <span>הגדרות מתקדמות כוללות 'הצבעות אנונימיות' ו'הצג אפשרויות בסדר אקראי' - הגדרות המשמשות בדרך כלל עבור</span> בחירות מדורגות כדי להפחית כל הטיה בהצבעה.</p><p style=";text-align:right;direction:rtl"> התוצאות מוצגות בסדר מדורג. טבלת התוצאות מספקת נתונים נוספים שיעזרו לך לנתח את התוצאות.</p><ul style=";text-align:right;direction:rtl"><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> דַרגָה</p></li><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> אחוז הנקודות</p></li><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> נקודות</p></li><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> מְמוּצָע</p></li></ul><p style=";text-align:right;direction:rtl"> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">קרא עוד על בחירת דירוג</a> .</p>
       title: בחירת דירקטורים למועצת המנהלים
       details: <h3 id="what-is-this-poll-about" style=";text-align:right;direction:rtl"><strong>על מה הסקר הזה?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="why-is-this-important" style=";text-align:right;direction:rtl"> <strong>למה זה חשוב?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="what-are-you-asking-people-to-do" style=";text-align:right;direction:rtl"> <strong>מה אתה מבקש מאנשים לעשות?</strong></h3><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> הצביעו על ידי דירוג האפשרויות לפי סדר העדפתכם. האפשרות שמדורגת ראשונה בתוצאות תנצח.</p>
+      process_subtitle_v2: מציאת סדר העדיפויות של הקבוצה
+      process_introduction_v2: <p style=";text-align:right;direction:rtl"><strong>הדירוג</strong> חושף את סדר ההעדפות של הקבוצה. המשתתפים גוררים ומשחררים את האפשרויות כדי לסדר אותן מהמועדפות ביותר לפחות, והתוצאות מציגות את הדירוג הכללי.</p><p style=";text-align:right;direction:rtl"> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">קרא עוד על דרגה</a> .</p>
     time_poll:
       process_subtitle: גלה מתי אנשים זמינים להיפגש
       process_introduction: <p style=";text-align:right;direction:rtl"><span>חסכו זמן בקביעת תאריך לפגישה או לאירוע שלכם.</span></p><p style=";text-align:right;direction:rtl"> סקר זמן מאפשר לראות בקלות את הזמינות של כולם ולמצוא את הזמן הטוב ביותר.</p><p style=";text-align:right;direction:rtl"> תן לסקר הזמן שלך כותרת ופרטים. הזן רשימה של אפשרויות תאריך ושעה באזור הזמן שלך.</p><p style=";text-align:right;direction:rtl"> בעת הגדרת משבצות זמן, יש לקחת בחשבון אנשים באזורי זמן שונים. המשתתפים יראו זמנים המותאמים לאזור הזמן שלהם.</p><p style=";text-align:right;direction:rtl"> קבעו משך זמן פגישה.</p><p style=";text-align:right;direction:rtl"> כאשר סקר הזמן נסגר, קבע תוצאה עם הזמן הטוב ביותר וכל ההוראות לפגישה.</p><p style=";text-align:right;direction:rtl"> <span>Loomio תכלול הזמנה ליומן עם דוא"ל ההודעה על התוצאות, כך שמשתתפים יוכלו להוסיף ליומן שלהם.</span></p><p style=";text-align:right;direction:rtl"> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">קרא עוד על סקר טיים</a> .</p>
       title: בואו נמצא תאריך לפגישה הבאה שלנו
       details: <p style=";text-align:right;direction:rtl"><strong>מהו הפגישה או האירוע?</strong></p><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> <strong>למה זה חשוב?</strong></p><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> <strong>מה אתה מבקש מאנשים לעשות?</strong></p><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> <span>סמנו את משבצות הזמנים הזמינות לכם באמצעות סמל ה'אגודל למעלה' הירוק או השאירו את ה'אגודל למטה' האדום במקומן כאשר אינן זמינות.</span></p><p style=";text-align:right;direction:rtl"> <span>השתמשו בסמל 'אגודל הצידה' כדי לציין שאתם זמינים 'במידת הצורך'.</span></p>
       reason_prompt: האם יש משהו שתוכלו לומר כדי לעזור למארגן למצוא זמן מתאים?
+      process_subtitle_v2: מצא מתי אנשים זמינים
+      process_introduction_v2: <p style=";text-align:right;direction:rtl"><strong>סקר זמן</strong> עוזר לך למצוא מתי אנשים זמינים. הוסף את הזמנים המוצעים שלך והמשתתפים יראו אותם באזור הזמן שלהם. כאשר הסקר ייסגר, קבע את התוצאה ו-Loomio ישלח לכולם הזמנה בלוח השנה.</p><p style=";text-align:right;direction:rtl"> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">קרא עוד על סקר טיים</a> .</p>
     opt_in:
       process_subtitle: מצא מתנדבים או בקש משתתפים
       process_introduction: '<p style=";text-align:right;direction:rtl">השתמשו בהרשמה (Opt-in) כדי להזמין אנשים להצטרף לצוות, לוועדה או לקבוצת עבודה, או להשתתף באירוע.</p><p style=";text-align:right;direction:rtl"> ל''הצטרפות'' יש שתי אפשרויות הצבעה: אישור או דחייה.</p><p style=";text-align:right;direction:rtl"> אתם יכולים להגדיר מספר יעד של אנשים שאתם מחפשים, נניח 3 אנשים שיצטרפו לקבוצת העבודה שלכם.</p><p style=";text-align:right;direction:rtl"> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#opt-in">קרא עוד על הצטרפות</a> .</p>'
@@ -541,6 +585,27 @@ he:
       accept_prompt: למה אתה מתנדב לזה?
       decline_meaning: אני לא יכול להשתתף
       decline_prompt: האם יש משהו שתרצה לומר?
+    try_loomio:
+      process_name: בואו ננסה את לומיו
+      process_subtitle: גרמו לקבוצה שלכם להתחייב לנסות יחד את Loomio
+      process_introduction: <p style=";text-align:right;direction:rtl">ניצול מרבי של Loomio דורש מחויבות קבוצתית. הצעה זו עוזרת לקבוצה שלכם להחליט האם להשקיע את הזמן והמאמץ כדי לתת ל-Loomio ניסיון ראוי - בין אם זה התחייבות לתקופת ניסיון או הרשמה משותפת לתוכנית.</p>
+      title: בואו נתחייב לנסות יחד את Loomio
+      details: <p style=";text-align:right;direction:rtl">שימוש יעיל בלומיו דורש מאמץ קבוצתי - זה עובד רק כשאנשים מגיעים ומשתתפים.</p><p style=";text-align:right;direction:rtl"> הצעה זו מבקשת מכולם להתחייב לשימוש פעיל בלומיו לתקופת הניסיון שלנו. משמעות הדבר היא צ'ק-אין, הצבעה על הצעות והצטרפות לדיונים.</p><p style=";text-align:right;direction:rtl"> אם יש לכם חששות לגבי זה, העלו התנגדות וציינו מה צריך להשתנות - בשביל זה נועדה אפשרות ההתנגדות.</p>
+      outcome_statement: <p style=";text-align:right;direction:rtl">שתפו את התוצאה של הצעה זו עם הקבוצה - מה הוחלט ומה קורה בהמשך.</p>
+      consent_meaning: אני מוכן לנסות
+      consent_prompt: למה אתה מצפה בשימוש ב-Loomio?
+      objection_meaning: יש לי דאגה שאנחנו צריכים לטפל בה קודם
+      objection_prompt: מה צריך להשתנות לפני שתוכלו להתחייב?
+    majority:
+      process_subtitle: קבלו החלטה במספר הקולות הגבוה ביותר
+      process_introduction: <p style=";text-align:right;direction:rtl"><strong>רוב</strong> הוא הדרך הפשוטה ביותר לקבל החלטה קבוצתית - המשתתפים מצביעים כן או לא, וההצעה עוברת אם יותר ממחצית מצביעים כן. אין הימנעות או חסימה, כך שלכל קול יש משקל שווה.</p><p style=";text-align:right;direction:rtl"> רוב עובד היטב לקבלת החלטות פשוטות שבהן צריך תוצאה ברורה. לקבלת החלטות שבהן חשוב שאנשים יעבדו יחד כדי להבין זה את זה ולמצוא בסיס משותף, שקלו הסכמה או קונצנזוס.</p>
+      title: לאשר את התקציב לרבעון השלישי
+      details: <h3 style=";text-align:right;direction:rtl"><strong>מהי ההחלטה שאתה צריך לקבל?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 style=";text-align:right;direction:rtl"> <strong>למה זה חשוב?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 style=";text-align:right;direction:rtl"> <strong>מה אתה מבקש מאנשים לעשות?</strong></h3><p style=";text-align:right;direction:rtl"></p>
+      yes_meaning: אני תומך בהצעה הזו
+      yes_prompt: למה אתה תומך בהצעה הזו?
+      no_meaning: אני לא תומך בהצעה הזו
+      no_prompt: למה אתם לא תומכים בהצעה הזו?
+      outcome_statement: <p style=";text-align:right;direction:rtl">תודה על השתתפותך בהצבעת הרוב הזו.</p>
   forward_mailer:
     bounce:
       subject: ההודעה שלך ללומיו לא נמסרה

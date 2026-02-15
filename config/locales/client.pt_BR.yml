@@ -324,6 +324,9 @@ pt_BR:
       label: Formatação
       title: Aprenda como usar Markdown para formatar seu texto
     thread: Fio
+    commercial: Comercial
+    nonprofit: Organização sem fins lucrativos
+    opening_in: Abertura %{time}
   merge_accounts:
     modal:
       title: Mesclar contas
@@ -852,6 +855,7 @@ pt_BR:
     none_direct_discussion: Nenhuma (discussão direta)
     direct_discussion: Discussão direta
     direct_discussion_hint: Uma conversa direta só é visível para as pessoas específicas que você convida. Ela não aparecerá na lista de discussões de nenhum grupo — você pode encontrá-la na sua página de conversas diretas.
+    recommended_poll_templates: Modelos de pesquisa recomendados
   announcement:
     send_discussion: Mandar tópico
     send_group: Convidar pessoas para %{name}
@@ -1240,6 +1244,7 @@ pt_BR:
     no_discussions_here: Nenhuma discussão por aqui!
     private_discussions: Você precisa ser membro para visualizar as conversas privadas neste grupo.
     view_closed_discussions: Ver discussões encerradas
+    discussion_templates: Modelos de discussão
   export_data_modal:
     title: Como você quer usar seus dados?
     as_csv: Abrir em uma planilha
@@ -1817,6 +1822,7 @@ pt_BR:
     meeting_title: Enquete de horário
     ranked_choice_title: Enquete de classificação
     gradients_of_agreement_title: Gradientes de concordância
+    majority_title: Maioria
   poll_option_form:
     edit_option: Editar opção
     option_name: Nome da opção
@@ -2052,6 +2058,7 @@ pt_BR:
     voting_disabled_poll_is_template: Votação desativada. Este é um modelo.
     for_this_proposal_to_pass: 'Para que esta proposta seja aprovada:'
     for_this_poll_type_to_be_valid: 'Para que este %{poll_type} seja válido:'
+    voting_opens_at: Esta %{poll_type} abre para votação %{time}
   poll_common_collapsed:
     by_who: por %{name}
   poll_common_calendar_invite:
@@ -2633,6 +2640,8 @@ pt_BR:
       ranked_choice_hint: Os eleitores organizam as opções em ordem da mais para a menos preferida
       time_poll: Enquete de tempo
       time_poll_hint: Os eleitores indicam quando estão disponíveis para se reunir
+      rank: Classificação
+      time: Tempo
     process: Processo
     process_name: Título do modelo
     process_name_hint: 'Como você chama este modelo? Por exemplo: aconselhamento de funções, verificação de temperatura, aprovação de atas.'
@@ -2688,6 +2697,12 @@ pt_BR:
     hide_results_description: Se você quiser que as pessoas votem sem ver como os outros votaram, você pode ocultar os resultados.
     process_helptext: Nomeie e descreva o processo que está sendo usado para executar esta pesquisa.
     reminder_helptext: Envie uma notificação de "Fechamento em breve" 24 horas antes do prazo final. Isso pode aumentar a participação e criar uma oportunidade para as pessoas reconsiderarem suas posições.
+    voting_duration: Duração
+    voting_duration_hint: Quando começa e quando termina a votação?
+    more_settings: Mais configurações
+    create_poll_type: Criar %{poll_type}
+    notify_voters_when_voting_opens: Avise os eleitores quando a votação começar.
+    voters_notified_when_opens: Os eleitores serão notificados quando a votação começar.
   poll_receipts_page:
     verify_participants: Verificar participantes
     see_votes_if_quorum_reached: Se a votação for encerrada e o quórum for atingido, você verá quem votou.
@@ -2739,6 +2754,7 @@ pt_BR:
     poll_templates_help: Os modelos que você selecionar aqui serão exibidos primeiro quando alguém clicar em "Iniciar uma votação".
     start_direct_discussion_from_blank: Inicie uma discussão direta a partir de um modelo em branco.
     default_to_direct_discussion: Comece com uma discussão direta (sem grupo).
+    default_to_direct_discussion_helptext: Use esta opção se quiser que as pessoas iniciem discussões diretas a partir deste modelo.
   context_panel:
     thread_status:
       pinned: Esta discussão foi fixada. Ela permanecerá no topo da lista de discussões do grupo para todos os usuários.
@@ -2765,3 +2781,9 @@ pt_BR:
   auth:
     oauth_cancelled: O login foi cancelado.
     switching_accounts: Mudando de conta. Por favor, faça login com os dados da sua nova conta.
+  poll_common_opening_at_field:
+    voting_opens_immediately: A votação começa imediatamente.
+    opening_date: Data de abertura
+    opening_hour: Horário de funcionamento
+    scheduled_hint: A enquete ficará visível, mas não será possível votar nela até o horário de abertura.
+    draft_hint: Esta enquete será salva como rascunho. Defina uma data de abertura ou marque "A votação começa imediatamente" quando estiver pronto para começar a votar.

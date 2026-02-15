@@ -338,6 +338,9 @@ zh_CN:
     formatting_help:
       label: 格式化
       title: 学习如何使用 Markdown 格式化文本
+    commercial: 商业的
+    nonprofit: 非营利组织
+    opening_in: 打开 %{time}
   merge_accounts:
     modal:
       title: 合并账户
@@ -826,6 +829,7 @@ zh_CN:
     poll_templates_help: 您在此处选择的模板将在有人点击“开始投票”时优先显示。
     start_direct_discussion_from_blank: 从空白模板开始直接讨论
     default_to_direct_discussion: 先以直接讨论的形式开始（不要分组讨论）。
+    default_to_direct_discussion_helptext: 如果您希望人们通过此模板直接发起讨论，请使用此功能。
   discussion_form:
     none_invite_only_discussion: 无（仅限受邀者参与讨论）
     new_discussion_template: 新讨论模板
@@ -865,6 +869,7 @@ zh_CN:
     none_direct_discussion: 无（直接讨论）
     direct_discussion: 直接讨论
     direct_discussion_hint: 直接讨论仅对您邀请的特定人员可见。它不会出现在任何群组的讨论列表中——您可以在“直接讨论”页面找到它。
+    recommended_poll_templates: 推荐的投票模板
   announcement:
     send_discussion: 发送帖子
     send_group: 邀请人们加入 %{name}
@@ -1254,6 +1259,7 @@ zh_CN:
       parent_members: 隐私设置：此群组对 %{parentGroupName} 的成员和 %{groupName} 的成员可见。
       public: 隐私：此群组在网络上可见
       aria_label: 群组隐私：%{privacy}
+    discussion_templates: 讨论模板
   export_data_modal:
     title: 您希望如何使用您的数据？
     as_csv: 在电子表格中打开它
@@ -1823,6 +1829,7 @@ zh_CN:
     meeting_title: 时间投票
     ranked_choice_title: 排名选择
     gradients_of_agreement_title: 一致性梯度
+    majority_title: 多数
   poll_option_form:
     thumb_up: 点赞
     thumb_down: 差评
@@ -2053,6 +2060,7 @@ zh_CN:
     draft_mode: 投票功能已关闭。此投票尚未开放。
     for_this_proposal_to_pass: 该提案要想获得通过：
     for_this_poll_type_to_be_valid: 要使此 %{poll_type} 有效：
+    voting_opens_at: 此 %{poll_type} 投票将于 %{time} 开放。
   poll_common_collapsed:
     by_who: 由 %{name}
   poll_common_calendar_invite:
@@ -2237,6 +2245,8 @@ zh_CN:
       ranked_choice_hint: 投票者按喜好程度从高到低排列选项。
       time_poll: 时间投票
       time_poll_hint: 投票者需表明他们何时可以加入会议。
+      rank: 秩
+      time: 时间
     process: 过程
     process_name: 模板标题
     process_name_hint: 这个模板叫什么？例如：角色建议、温度检查、会议纪要审批
@@ -2287,6 +2297,12 @@ zh_CN:
     hide_results_description: 如果您想让人们在不看到其他人投票结果的情况下投票，您可以隐藏投票结果。
     process_helptext: 请说出并描述用于运行此投票的过程。
     reminder_helptext: 在截止日期前24小时发送“即将截止”通知。这可以提高参与度，并让人们有机会重新考虑他们的立场。
+    voting_duration: 期间
+    voting_duration_hint: 投票何时开始，何时结束？
+    more_settings: 更多设置
+    create_poll_type: 创建 %{poll_type}
+    notify_voters_when_voting_opens: 投票开始时通知选民
+    voters_notified_when_opens: 投票开始时，选民将会收到通知。
   poll_proposal_form:
     start_header: 开始提案
     edit_header: 编辑提案
@@ -2375,6 +2391,8 @@ zh_CN:
     object: 反对
     block: 阻止
     no_voting: 不投票
+    'yes': 是的
+    'no': 不
   poll_count_form:
     pct_of_target: 目标百分比
     agree_target_helptext: 您希望招募多少志愿者？
@@ -2620,3 +2638,9 @@ zh_CN:
   auth:
     oauth_cancelled: 登录已取消
     switching_accounts: 正在切换账户。请使用新账户信息登录。
+  poll_common_opening_at_field:
+    voting_opens_immediately: 投票立即开始
+    opening_date: 开业日期
+    opening_hour: 营业时间
+    scheduled_hint: 投票将在开放时间前显示，但无法投票。
+    draft_hint: 此投票将保存为草稿。准备好投票时，请设置开始日期或勾选“立即开始投票”。

@@ -151,7 +151,7 @@ en:
       process_subtitle: Make a decision by the most votes
       process_introduction: "<p><strong>Majority</strong> is the simplest way to make a group decision — participants vote Yes or No, and the proposal passes if more than half vote Yes. There's no abstain or block, so every vote carries equal weight.</p><p>Majority works well for straightforward decisions where you need a clear outcome. For decisions where it's important that people work together to understand each other and find common ground, consider Consent or Consensus.</p>"
       title: Approve the budget for Q3
-      details: "<h3><strong>What is the decision you need to make?</strong></h3><p></p><h3><strong>Why is this important?</strong></h3><p></p><h3><strong>What are you asking people to do?</strong></h3><p></p><p>Vote Yes or No. The proposal passes if more than 50% of votes are Yes.</p>"
+      details: "<h3><strong>What is the decision you need to make?</strong></h3><p></p><h3><strong>Why is this important?</strong></h3><p></p><h3><strong>What are you asking people to do?</strong></h3><p></p>"
       yes_meaning: I support this proposal
       yes_prompt: Why do you support this proposal?
       no_meaning: I do not support this proposal

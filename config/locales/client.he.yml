@@ -316,6 +316,9 @@ he:
       label: פורמט
       title: למד איך להשתמש בMarkdown כדי לסגנן את הטקסט שלך
     thread: פְּתִיל
+    commercial: מִסְחָרִי
+    nonprofit: מלכ"ר
+    opening_in: פתיחה %{time}
   merge_accounts:
     modal:
       title: מיזוג חשבונות
@@ -840,6 +843,7 @@ he:
     none_direct_discussion: אין (דיון ישיר)
     direct_discussion: דיון ישיר
     direct_discussion_hint: דיון ישיר גלוי רק לאנשים הספציפיים שאתה מזמין. הוא לא יופיע ברשימת הדיונים של אף קבוצה - תוכל למצוא אותו בדף הדיונים הישירים שלך.
+    recommended_poll_templates: תבניות מומלצות לסקר
   announcement:
     send_discussion: שלח שרשור
     send_group: הזמן אנשים ל-%{name}
@@ -1217,6 +1221,7 @@ he:
     no_discussions_here: אין כאן דיונים לראות!
     private_discussions: עליך להיות חבר כדי לצפות בשרשורים פרטיים בקבוצה זו
     view_closed_discussions: הצג דיונים סגורים
+    discussion_templates: תבניות דיון
   export_data_modal:
     title: איך אתה רוצה להשתמש בנתונים שלך?
     as_csv: פתח אותו בגיליון אלקטרוני
@@ -1790,6 +1795,7 @@ he:
     meeting_title: הצבעת זמן
     ranked_choice_title: דירוג בחירה
     gradients_of_agreement_title: שיפועים של הסכמה
+    majority_title: רוֹב
   poll_option_form:
     edit_option: אפשרות עריכה
     option_name: שם האופציה
@@ -2023,6 +2029,7 @@ he:
     voting_disabled_poll_is_template: ההצבעה מושבתת. זו תבנית.
     for_this_proposal_to_pass: 'כדי שההצעה הזו תעבור:'
     for_this_poll_type_to_be_valid: 'כדי ש-%{poll_type} הזה יהיה תקף:'
+    voting_opens_at: "%{poll_type} הזה נפתח להצבעה %{time}"
   poll_common_collapsed:
     by_who: על פי %{name}
   poll_common_calendar_invite:
@@ -2602,6 +2609,8 @@ he:
       ranked_choice_hint: הבוחרים מסדרים את האפשרויות לפי סדר מהמועדף ביותר לפחות
       time_poll: סקר זמן
       time_poll_hint: הבוחרים מציינים מתי הם זמינים להיפגש
+      rank: דַרגָה
+      time: זְמַן
     process: תַהֲלִיך
     process_name: כותרת התבנית
     process_name_hint: 'איך קוראים לתבנית הזו? לדוגמה: ייעוץ לתפקיד, בדיקת חום, אישור פרוטוקול'
@@ -2657,6 +2666,12 @@ he:
     hide_results_description: אם אתם רוצים שאנשים יצביעו בלי לראות איך אחרים הצביעו, אתם יכולים להסתיר את התוצאות.
     process_helptext: ציין ותאר את התהליך בו נעשה שימוש להפעלת סקר זה.
     reminder_helptext: שלחו הודעת "נסגר בקרוב" 24 שעות לפני המועד האחרון. פעולה זו יכולה להגביר את ההשתתפות וליצור הזדמנות לאנשים לשקול מחדש את עמדתם.
+    voting_duration: מֶשֶׁך
+    voting_duration_hint: מתי ההצבעה נפתחת ומתי היא נסגרת?
+    more_settings: הגדרות נוספות
+    create_poll_type: צור %{poll_type}
+    notify_voters_when_voting_opens: הודעה לבוחרים עם פתיחת ההצבעה
+    voters_notified_when_opens: המצביעים יקבלו הודעה עם פתיחת ההצבעה
   poll_receipts_page:
     verify_participants: אימות משתתפים
     see_votes_if_quorum_reached: אם ההצבעה נסגרה והושג המניין החוקי, תראו מי הצביע.
@@ -2708,6 +2723,7 @@ he:
     poll_templates_help: תבניות שתבחרו כאן יופיעו ראשונות כאשר מישהו ילחץ על התחל הצבעה
     start_direct_discussion_from_blank: התחל דיון ישיר מתבנית ריקה
     default_to_direct_discussion: התחל כדיון ישיר (ללא קבוצה)
+    default_to_direct_discussion_helptext: השתמש בזה אם אתה רוצה שאנשים יתחילו דיונים ישירים מתבנית זו.
   context_panel:
     thread_status:
       pinned: דיון זה הוצמד. הוא יישאר בראש רשימת הדיונים של הקבוצה עבור כל המשתמשים.
@@ -2734,3 +2750,9 @@ he:
   auth:
     oauth_cancelled: הכניסה בוטלה
     switching_accounts: החלפת חשבונות. אנא התחבר עם פרטי החשבון החדשים שלך.
+  poll_common_opening_at_field:
+    voting_opens_immediately: ההצבעה נפתחת מיד
+    opening_date: תאריך פתיחה
+    opening_hour: זמן פתיחה
+    scheduled_hint: הסקר יהיה גלוי אך לא ניתן להצביע עליו עד לשעת הפתיחה.
+    draft_hint: סקר זה יישמר כטיוטה. הגדר תאריך פתיחה או סמן את "ההצבעה נפתחת באופן מיידי" כשתהיה מוכן להתחיל להצביע.

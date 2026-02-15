@@ -94,6 +94,10 @@ sl:
       title: "\U0001F44B Dobrodošli! Pozdravite nas in preizkusite."
       description: "<p>Dobrodošli v naši skupini Loomio – lepo vas je imeti tukaj!</p><p> Ta nit je prostor za:</p><ul><li><p> Predstavite se skupini</p></li><li><p> Preizkusite nekaj Loomiovih funkcij – na primer: poskusite uporabiti reakcije \U0001F44D</p></li><li><p> V tej fazi postavite vsa vprašanja, ki jih imate</p></li></ul><p> Če nisi prepričan/a, kaj bi rekel/a, je preprost pozdrav v redu \U0001F642</p>"
       process_name: Vaja razprave
+      process_subtitle_v2: Pozdravite ljudi in se skupaj navadite na uporabo Loomia
+      process_introduction_v2: "<p>Dobrodošlica za nove skupine. Udeleženci se predstavijo, preizkusijo funkcije, kot so komentiranje in odzivanje, ter objavijo svoj prvi predlog.</p>"
+      title_v2: Dobrodošli! Predstavite se in preizkusite stvari.
+      description_v2: "<p>Dobrodošli v skupini! Ta nit je prostor za pozdrave, postavljanje vprašanj, preizkušanje in se navaditi na uporabo Loomia.</p><p> Pustite komentar, uporabite odziv ali začnite enega od spodnjih predlogov.</p><p> Če niste prepričani, kaj bi rekli, je dovolj že preprost pozdrav! Ali pa poskusite eno od spodnjih orodij za glasovanje.</p>"
   explore:
     header: Razišči javne skupine
   activerecord:
@@ -183,6 +187,7 @@ sl:
       must_be_in_the_future: Mora biti v prihodnosti
       templates_cannot_close: Predloge ni mogoče zapreti
       poll_options_dont_match: Napaka v programu Loomio je preprečila shranjevanje vašega glasu. Delamo na odpravi te težave. Ponovno naložite in poskusite znova.
+      opening_at_before_closing_at: Datum odprtja mora biti pred datumom zaprtja
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) članov je izrazilo svoje stališče"
       title: Naslov
@@ -377,6 +382,9 @@ sl:
       vote_now: Glasujte zdaj
       you_have_until: Časa za sodelovanje imate do %{when}.
       people_have_voted: "%{nom} od %{dnom} oseb je sodelovalo (%{pct}%)"
+      voting_opens_and_closes: Glasovanje se odpre %{opens} in konča %{closes}. (%{days} dni)
+      voting_closes: Glasovanje se zaključi %{when}.
+      voting_opened_and_closed: Glasovanje se je začelo %{opens} in končalo %{closes}. (%{days} dni)
   poll_templates:
     practice_proposal:
       title: Začenjam se navajati na to
@@ -385,6 +393,17 @@ sl:
       process_introduction: "<p>Uporabite to predlogo, da se vaša skupina navadi na uporabo predlogov na Loomiu. To je varen in preprost način, da ljudje preizkusijo glasovanje in vidijo, kako se vse skupaj ujema.</p>"
       details: "<p>To je poskusna vožnja, da se lahko vsi seznanijo s tem, kako delujejo predlogi na Loomiu.</p><p> Prosim, glasujte in po želji navedite razlog.</p><p> Brez pritiska, brez posledic iz resničnega sveta. To je le način, da raziščete, kako delujejo predlogi!</p>"
       outcome_statement: "<p>Hvala za sodelovanje pri tem predlogu za prakso! \U0001F389</p><p> To je bila le priložnost, da vidimo, kako deluje glasovanje in komentiranje na Loomiu. Tukaj se ne sprejema nobena resnična odločitev – ampak upam, da je to vsem pomagalo, da se seznanijo s postopkom.</p>"
+      title_v2: Ananas sodi na pico
+      process_subtitle_v2: Preizkusite predlog, da boste vedeli, kako deluje glasovanje
+      process_introduction_v2: "<p>Zabaven način, da vaša skupina preizkusi glasovanje na Loomiu. Izberite lahkotno vprašanje, pustite ljudem, da glasujejo, in navedite razlog – ni prave odločitve, samo vadite.</p>"
+      details_v2: "<p>To je predlog za prakso – tukaj ni prave odločitve.</p><p> Poskusite glasovati in pustiti razlog, da vidite, kako predlogi delujejo na Loomiu.</p>"
+      outcome_statement_v2: "<p>Hvala, ker ste preizkusili predlog! Zdaj veste, kako deluje glasovanje na Loomiu.</p>"
+      agree_meaning: Strinjam se s tem
+      agree_prompt: Zakaj se strinjaš?
+      abstain_meaning: O tem nimam mnenja.
+      abstain_prompt: Kakšne misli?
+      disagree_meaning: S tem se ne strinjam.
+      disagree_prompt: Zakaj se ne strinjaš?
     proposal:
       process_subtitle: Predložite predlog za odločitev
       process_introduction: <p>Klasični Loomiov predlog vam pomaga pri odločitvi in pogovor spremeni v jasen izid.</p><p> Predlagajte potek dejanja in povabite ljudi, da se odzovejo tako, da glasujejo za strinjanje, vzdržanje ali nestrinjanje.</p><p> Ko ljudje glasujejo, lahko navedejo razlog, zakaj so glasovali tako. Vidite lahko, kakšno je stališče drugih o tej zadevi in zakaj.</p><p> Na ta način lahko s predlogom spodbudite ljudi k odgovoru, odkrijete nove informacije in zgradite skupno razumevanje – da pomagate svoji skupini sprejeti boljšo in bolj informirano odločitev.</p><p> Predlog in z njim povezana razprava ustvarita svoj lastni zapis o tem, kako je do odločitve prišlo.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Preberite več o uporabi klasičnega Loomiovega predloga v preprostem postopku odločanja</u></a> .</p>
@@ -423,6 +442,9 @@ sl:
       objection_meaning: Imam utemeljen ugovor in menim, da bo predlog povzročil škodo.
       objection_prompt: Kakšna sprememba tega predloga je potrebna, da bo "varen za poskus", da ga boste lahko podprli?
       outcome_statement: "<p>Hvala za sodelovanje v postopku pridobitve soglasja.</p>"
+      process_subtitle_v2: Nadaljujte, razen če kdo ugovarja
+      process_introduction_v2: "<p><strong>Soglasje</strong> sprašuje, ali je predlog varen za preizkus, ne pa ali je popoln. Predlog je sprejet, dokler nihče ne poda smiselnega ugovora. Če kdo ugovarja, skupina dela na rešitvi – in ker lahko udeleženci spreminjajo svoj glas, ko se predlog razvija, ugovori postanejo orodje za izboljšave in ne ovira.</p>"
+      details_v2: "<h3><strong>Kakšno odločitev morate sprejeti?</strong></h3><p></p><h3> <strong>Zakaj je to pomembno?</strong></h3><p></p><h3> <strong>Kaj zahtevate od ljudi v tem predlogu?</strong></h3><p></p><p> Ne stremimo k popolnosti – dajte svoje soglasje, če je predlog dovolj dober in varen za preizkus. Če imate ugovor, povejte, kaj je treba spremeniti, da bo izvedljiv.</p>"
     consensus:
       process_subtitle: Doseči kolektivni dogovor z vsemi vpletenimi
       process_introduction: <p>Dosezite soglasje za odločitev, ki jo morate sprejeti, da dosežete dogovor, ki zadovolji potrebe in skrbi vseh udeležencev.</p><ul><li><p> Skupaj razpravljajte in oblikujte predlog</p></li><li><p> Vključite in spoštujte vse vpletene</p></li><li><p> Pridobite soglasje večine ljudi</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/consensus_process/index.html">Preberite več o postopku konsenza</a> .</p>
@@ -441,6 +463,8 @@ sl:
       block: Blok
       block_meaning: Ta predlog blokiram in menim, da se ne sme nadaljevati.
       block_prompt: Pojasnite svoje nasprotovanje temu predlogu in zakaj se ne bi smel nadaljevati
+      process_introduction_v2: "<p><strong>Soglasje</strong> je namenjeno odločitvam, pri katerih je pomembno, da se vsi aktivno strinjajo. Udeleženci sodelujejo, da bi razumeli potrebe drug drugega in oblikovali predlog, dokler ga ne more podpreti celotna skupina. Ker lahko ljudje med pogovorom spremenijo svoj glas, postopek spodbuja pristen dialog in ne enkratne odločitve. Zahteva več potrpljenja kot druge metode, vendar gradi najmočnejšo zavezanost.</p>"
+      details_v2: "<h3><strong>Kakšno odločitev morate sprejeti?</strong></h3><p></p><h3> <strong>Zakaj je to pomembno?</strong></h3><p></p><h3> <strong>Kaj zahtevate od ljudi?</strong></h3><p></p><p> Delite svoje stališče in zakaj. Če se ne strinjate, pojasnite, kaj bi se moralo spremeniti, da bi to podprli.</p>"
     question_round:
       process_subtitle: Povabite pojasnjevalna vprašanja, da bi ljudem pomagali razumeti predlog
       process_introduction: <p>Krog vprašanj je priložnost, da ljudje postavijo pojasnjevalna vprašanja o predlogu, da vsi razumejo predlog, preden povedo, kaj si o njem mislijo.</p><p> Krog vprašanj Loomio je poseben predlog brez možnosti glasovanja. Udeležencem omogoča, da postavljajo vprašanja v času, ki ga določite za krog.</p><p> Krog vprašanj se pogosto uporablja kot korak v postopku pridobitve soglasja.</p><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Preberite več o postopku pridobitve soglasja</a> .</p>
@@ -466,6 +490,17 @@ sl:
       concerned: Zaskrbljen
       concerned_meaning: Nekaj pri tem se bo morda moralo spremeniti, da bom privolil/a ali se strinjal/a
       concerned_prompt: Kaj vas skrbi in kako bi se lahko z njim spopadli?
+      process_subtitle_v2: Preverite, ali ste na pravi poti
+      process_introduction_v2: "<p><strong>Preverjanje občutljivosti</strong> vam pomaga pridobiti zgodnje povratne informacije, preden se zavežete k odločitvi. Udeleženci povedo, ali so stvari videti v redu, ali pa označijo pomisleke, tako da lahko prilagodite potek, preden preidete na formalni predlog. To ni odločitev – to je preverjanje temperature.</p>"
+      details_v2: "<h3><strong>Kaj predlagaš?</strong></h3><p></p><h3> <strong>Zakaj je to pomembno?</strong></h3><p></p><h3> <strong>Kaj zahtevate od ljudi?</strong></h3><p></p><p> Povejte, ali je to videti dobro, ali bi lahko bilo boljše ali pa bi bilo treba o tem ponovno razmisliti – in delite svoje razloge.</p>"
+      looks_good_meaning_v2: Zadovoljen sem s smerjo
+      looks_good_prompt_v2: Kaj ti je pri tem všeč?
+      could_be_better: Lahko bi bilo bolje
+      could_be_better_meaning: Vidim potencial, vendar imam predloge
+      could_be_better_prompt: Kaj bi spremenili?
+      needs_a_rethink: Potreben je ponovni premislek
+      needs_a_rethink_meaning: Mislim, da pristop ni pravilen
+      needs_a_rethink_prompt: Kaj te skrbi?
     gradients_of_agreement:
       process_subtitle: Izrazite podporo predlogu na 8-stopenjski lestvici
       process_introduction: "<p>Predlog o gradientih strinjanja članom skupine omogoča, da izrazijo svojo podporo predlogu v stopnjah na lestvici, kar ponuja več načinov izražanja podpore kot le s »strinjam se« in »ne strinjam se«.</p><p> Uporabite gradiente strinjanja kot predhodni krog, da preverite podporo predlogu, preden preidete na formalni dogovor.</p><p> Gradienti strinjanja ljudem sporočajo, da se oblikuje predlog, in jih spodbujajo k sodelovanju. To je priložnost, da prisluhnemo ljudem, zaznamo, kako se počutijo, in se ustrezno odzovemo – kar odpira možnost vključitve njihovih prispevkov za boljšo odločitev.</p>"
@@ -499,27 +534,36 @@ sl:
       process_introduction: <p>Preden se odločite, ugotovite, katere možnosti ljudi najbolj zanimajo.</p><p> Preprosta anketa vam pomaga najti najbolj priljubljeno možnost ali možnosti z enim ali več možnimi odgovori.</p><p> V polje s podrobnostmi vpišite podrobnosti o možnostih, nato vnesite ime možnosti in kliknite +, da jo dodate.</p><p> Nastavite <strong>najmanjše</strong> in <strong>največje število možnosti, ki jih</strong> lahko volivec izbere. Za anketo z eno samo izbiro pustite največjo možnost 1.</p><p> Z ikono svinčnika poleg vsake možnosti lahko dodate <strong>pomen</strong> možnosti in jo podrobneje razložite, da ljudem pomagate pri glasovanju.</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">Preberite več o preprosti anketi</a> .</p>
       title: Kam naj bo usmerjena naša strateška usmeritev?
       details: <h3 id="what-is-this-poll-about"><strong>O čem je ta anketa?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Zakaj je to pomembno?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Kaj zahtevate od ljudi?</strong></h3><p></p><p> Izberite možnost(-i), ki so vam naklonjene.</p>
+      process_introduction_v2: <p><strong>Z možnostjo »Izberi«</strong> lahko najdete najbolj priljubljeno možnost. Udeleženci izbirajo s seznama – konfigurirate lahko, ali naj izberejo eno ali več možnosti.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">Preberite več o Izberi</a> .</p>
     score_poll:
       process_subtitle: Izmerite stopnjo podpore za vsako možnost
       process_introduction: <p>Uporabite anketo Score, kadar želite ljudi anketirati o njihovih željah, preferencah ali zanimanju za posamezno možnost.</p><p> <span>Udeleženci morajo oceniti vsako možnost in ji dodeliti oceno s premikanjem drsnika po lestvici.</span></p><p> <span>Rezultati so prikazani grafično skupaj s tabelo za vsako možnost, ki prikazuje skupno število točk, povprečno število točk in število volivcev.</span></p><p> Napredne nastavitve vključujejo »Glasovi so anonimni« in »Prikaži možnosti v naključnem vrstnem redu« – pogosto se uporabljajo za anketo Score za zmanjšanje morebitne pristranskosti pri glasovanju.</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">Preberite več o anketi Score</a> .</p>
       title: Ocenjevanje, kako se v naši organizaciji sprejemajo odločitve
       details: <h3 id="what-is-this-poll-about"><strong>O čem je ta anketa?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Zakaj je to pomembno?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Kaj zahtevate od ljudi?</strong></h3><p></p><p> Izberite možnost(-i), ki so vam naklonjene.</p>
+      process_subtitle_v2: Izmerite raven podpore za vsako možnost
+      process_introduction_v2: <p><strong>Z oceno</strong> lahko izmerite raven podpore skupine za vsako možnost. Udeleženci ocenijo vsako možnost tako, da jim dodelijo oceno na drsni lestvici, tako da lahko vidite ne le, kaj imajo ljudje raje, ampak tudi za koliko.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">Preberite več o anketi Score</a> .</p>
     dot_vote:
       process_subtitle: Dodelite proračun točk za razkritje prioritet
       process_introduction: <p>Glasovanje s točkami je uporabno za skupine, ki poskušajo dodeliti omejen vir več možnostim. Gre za več kot preprosto anketo, saj udeležencem pomaga razumeti, da pri izbiri možnosti obstaja omejitev.</p><p> Vsak udeleženec dobi določeno število pik. Sami se odločite, koliko.</p><p> Pike postavijo poleg možnosti, ki so jim všeč. Udeleženci lahko vse pike postavijo na eno samo možnost ali pa jih razporedijo čez več možnosti.</p><p> Ko udeleženci dodeljujejo pike, lahko presežejo omejitev proračuna za pike, zato jih spodbujamo, da skrbno premislijo, kako jih porabijo.</p><p> Možnosti z največ pikami »zmagajo«. Tabela rezultatov ponuja dodatne podatke, ki vam bodo pomagali pri analizi rezultatov.</p><ul><li><p> % točk</p></li><li><p> Točke</p></li><li><p> Povprečna</p></li><li><p> Volivci</p></li></ul><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">Preberite več o glasovanju Dot</a> .</p>
       title: Izbira tem za našo konferenco
       details: <h3 id="what-is-this-poll-about"><strong>O čem je ta anketa?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Zakaj je to pomembno?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Kaj zahtevate od ljudi?</strong></h3><p></p><p> V tej anketi imate na voljo 8 točk, ki jih lahko dodelite možnostim, ki vam ustrezajo. Vse točke lahko postavite na eno možnost ali pa jih razporedite.</p>
+      process_subtitle_v2: Razkrijte prioritete, ko pride do kompromisov
+      process_introduction_v2: <p><strong>Dodelitev</strong> vam pomaga razumeti prioritete skupine, ko pride do kompromisov. Vsak udeleženec dobi določen proračun točk, ki jih lahko razdeli med možnosti – lahko se odloči za eno možnost v celoti ali pa svoje točke razdeli med več. Ker je proračun omejen, je vsaka porabljena točka resničen znak prioritete.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">Preberite več o dodelitvi</a> .</p>
     ranked_choice:
       process_subtitle: Razumevanje urejenega preferenciranja možnosti
       process_introduction: <p>Uvrstitvena izbira je uporabna, kadar imate veliko možnosti ali kadar izvajate volitve.</p><p> Ta predloga ankete ponuja vrsto možnosti, s katerimi lahko ljudje glasujejo v želenem vrstnem redu.</p><p> Določite lahko število možnosti, ki jih volivec dobi.</p><p> <span>Volivci povlečejo in spustijo možnosti po vrstnem redu preference (številka 1 je vaša najprimernejša možnost).</span></p><p> <span>Napredne nastavitve vključujejo »Glasovi so anonimni« in »Prikaži možnosti v naključnem vrstnem redu« – pogosto se uporabljajo za</span> naključno izbiro, da se zmanjša morebitna pristranskost pri glasovanju.</p><p> Rezultati so prikazani po vrstnem redu. Tabela z rezultati ponuja dodatne podatke, ki vam bodo pomagali pri analizi rezultatov.</p><ul><li><p> Uvrstitev</p></li><li><p> % točk</p></li><li><p> Točke</p></li><li><p> Povprečna</p></li></ul><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">Preberite več o uvrstitveni izbiri</a> .</p>
       title: Izvolite direktorje v upravni odbor
       details: <h3 id="what-is-this-poll-about"><strong>O čem je ta anketa?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Zakaj je to pomembno?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Kaj zahtevate od ljudi?</strong></h3><p></p><p> Glasujte tako, da možnosti razvrstite po vrstnem redu svojih želja. Zmaga možnost, ki se v rezultatih uvrsti na prvo mesto.</p>
+      process_subtitle_v2: Poiščite vrstni red preferenc skupine
+      process_introduction_v2: <p><strong>Razvrstitev</strong> razkrije vrstni red preferenc skupine. Udeleženci povlečejo in spustijo možnosti, da jih razvrstijo od najbolj do najmanj priljubljene, rezultati pa prikazujejo skupno razvrstitev.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">Preberite več o Ranku</a> .</p>
     time_poll:
       process_subtitle: Poiščite, kdaj so ljudje na voljo za srečanje
       process_introduction: <p><span>Prihranite čas pri določanju datuma za vaš sestanek ali dogodek.</span></p><p> Časovna anketa omogoča enostaven pregled razpoložljivosti vseh in iskanje najboljšega časa.</p><p> Dajte svoji anketi Čas naslov in podrobnosti. Vnesite seznam možnosti datuma in časa v vašem časovnem pasu.</p><p> Pri določanju časovnih intervalov upoštevajte ljudi v različnih časovnih pasovih. Udeleženci bodo videli čase, lokalizirane v njihovem časovnem pasu.</p><p> Določite trajanje sestanka.</p><p> Ko se anketa o času zaključi, nastavite rezultat z najboljšim časom in morebitnimi navodili za sestanek.</p><p> <span>Loomio bo povabilo v koledar vključil v e-poštno obvestilo o rezultatih, da bodo udeleženci lahko dodali v svoj koledar.</span></p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">Preberite več o anketi Time</a> .</p>
       title: Poiščimo datum za naše naslednje srečanje
       details: "<p><strong>Kaj je srečanje ali dogodek?</strong></p><p></p><p> <strong>Zakaj je to pomembno?</strong></p><p></p><p> <strong>Kaj zahtevate od ljudi?</strong></p><p></p><p> <span>Označite časovne intervale, v katerih ste na voljo, z zeleno ikono »palec gor« ali pustite rdečo ikono »palec dol«, ko niste na voljo.</span></p><p> <span>Z ikono »palec vstran« sporočite, da ste na voljo, »če bo potrebno«.</span></p>"
       reason_prompt: Ali lahko organizatorju pomagate najti primeren čas?
+      process_subtitle_v2: Poiščite, kdaj so ljudje na voljo
+      process_introduction_v2: <p><strong>Časovna anketa</strong> vam pomaga ugotoviti, kdaj so ljudje na voljo. Dodajte predlagane čase in udeleženci jih bodo videli v svojem časovnem pasu. Ko se anketa zaključi, nastavite rezultat in Loomio bo vsem poslal povabilo v koledar.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">Preberite več o anketi Time</a> .</p>
     opt_in:
       process_subtitle: Poiščite prostovoljce ali prosite za udeležence
       process_introduction: '<p>Z možnostjo prijave povabite ljudi, da se pridružijo ekipi, odboru ali delovni skupini ali da sodelujejo na dogodku.</p><p> »Prijava« ima dve možnosti glasovanja: Sprejmi ali Zavrni.</p><p> Določite lahko ciljno število ljudi, ki jih iščete, recimo 3 osebe, ki se bodo pridružile vaši delovni skupini.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#opt-in">Preberite več o prijavi</a> .</p>'
@@ -529,6 +573,27 @@ sl:
       accept_prompt: Zakaj se prostovoljno javljaš za to?
       decline_meaning: Ne morem sodelovati
       decline_prompt: Bi radi kaj povedali?
+    try_loomio:
+      process_name: Poskusimo Loomio
+      process_subtitle: Spodbudite svojo skupino, da skupaj preizkusi Loomio
+      process_introduction: "<p>Kar najbolje izkoristiti Loomio zahteva skupinsko zavezo. Ta predlog pomaga vaši skupini, da se odloči, ali bo vložila čas in trud v to, da Loomio preizkusi – pa naj bo to zaveza k poskusnemu obdobju ali skupna prijava na načrt.</p>"
+      title: Zavežimo se, da bomo skupaj preizkusili Loomio
+      details: "<p>Dobra uporaba Loomia zahteva skupinski trud – deluje le, če se ljudje pojavijo in sodelujejo.</p><p> Ta predlog poziva vse, da se zavežejo k aktivni uporabi Loomia v našem poskusnem obdobju. To pomeni, da se prijavijo, glasujejo o predlogih in se pridružijo razpravam.</p><p> Če imate glede tega pomisleke, vložite ugovor in povejte, kaj bi bilo treba spremeniti – za to je namenjena možnost ugovora.</p>"
+      outcome_statement: "<p>Delite izid tega predloga s skupino – kaj je bilo odločeno in kaj se bo zgodilo naprej.</p>"
+      consent_meaning: Pripravljen sem poskusiti
+      consent_prompt: Česa se veselite pri uporabi Loomia?
+      objection_meaning: Imam pomislek, ki ga moramo najprej obravnavati
+      objection_prompt: Kaj se mora spremeniti, preden se lahko zavežete?
+    majority:
+      process_subtitle: Odločitev z največ glasovi
+      process_introduction: "<p><strong>Večina</strong> je najpreprostejši način za skupinsko odločitev – udeleženci glasujejo za ali proti, predlog pa je sprejet, če več kot polovica glasuje za. Ni vzdržanih ali blokiranih glasov, zato ima vsak glas enako težo.</p><p> Večina se dobro obnese pri preprostih odločitvah, kjer potrebujete jasen izid. Za odločitve, kjer je pomembno, da ljudje sodelujejo, da bi se razumeli in našli skupni jezik, razmislite o soglasju ali konsenzu.</p>"
+      title: Odobritev proračuna za tretje četrtletje
+      details: "<h3><strong>Kakšno odločitev morate sprejeti?</strong></h3><p></p><h3> <strong>Zakaj je to pomembno?</strong></h3><p></p><h3> <strong>Kaj zahtevate od ljudi?</strong></h3><p></p>"
+      yes_meaning: Podpiram ta predlog
+      yes_prompt: Zakaj podpirate ta predlog?
+      no_meaning: Tega predloga ne podpiram
+      no_prompt: Zakaj ne podpirate tega predloga?
+      outcome_statement: "<p>Hvala za sodelovanje pri tem večinskem glasovanju.</p>"
   forward_mailer:
     bounce:
       subject: Vaše sporočilo Loomiu ni bilo dostavljeno

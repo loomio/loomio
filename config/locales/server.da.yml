@@ -94,6 +94,10 @@ da:
       title: "\U0001F44B Velkommen! Sig hej og prøv tingene ud"
       description: "<p>Velkommen til vores Loomio-gruppe — det er dejligt at have dig her!</p><p> Denne tråd er et sted til at:</p><ul><li><p> Præsenter dig selv for gruppen</p></li><li><p> Prøv nogle af Loomios funktioner - for eksempel: prøv at bruge reaktioner \U0001F44D</p></li><li><p> Stil eventuelle spørgsmål, du måtte have på dette tidspunkt</p></li></ul><p> Hvis du ikke er sikker på, hvad du skal sige, er et simpelt hej fint \U0001F642</p>"
       process_name: Øvelsesdiskussion
+      process_subtitle_v2: Byd folk velkommen og bliv fortrolige med at bruge Loomio sammen
+      process_introduction_v2: "<p>En velkommen tråd for nye grupper. Folk præsenterer sig selv, afprøver funktioner som at kommentere og reagere, og kører deres første forslag.</p>"
+      title_v2: Velkommen! Præsenter dig selv og prøv tingene af
+      description_v2: "<p>Velkommen til gruppen! Denne tråd er et sted at sige hej, stille spørgsmål, afprøve ting og blive fortrolig med at bruge Loomio.</p><p> Skriv en kommentar, brug en reaktion, eller start et af forslagene nedenfor.</p><p> Hvis du ikke er sikker på, hvad du skal sige, er et simpelt hej fint! Eller prøv et af afstemningsværktøjerne nedenfor.</p>"
   explore:
     header: Udforsk offentlige grupper
   activerecord:
@@ -183,6 +187,7 @@ da:
       must_be_in_the_future: Skal være i fremtiden
       templates_cannot_close: Skabeloner kan ikke lukkes
       poll_options_dont_match: En fejl med Loomio forhindrede din stemme i at blive gemt. Vi arbejder på at løse dette. Genindlæs venligst og prøv igen.
+      opening_at_before_closing_at: Åbningsdatoen skal være før lukkedatoen
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) medlemmer har tilkendegivet deres holdning"
       title: Titel
@@ -383,6 +388,9 @@ da:
       vote_now: Stem nu
       you_have_until: Du har indtil %{when} til at deltage.
       people_have_voted: "%{nom} af %{dnom} personer har deltaget (%{pct}%)"
+      voting_opens_and_closes: Afstemningen åbner %{opens} og lukker %{closes}. (%{days} dage)
+      voting_closes: Afstemningen lukker %{when}.
+      voting_opened_and_closed: Afstemningen åbnede %{opens} og lukkede %{closes}. (%{days} dage)
   poll_templates:
     practice_proposal:
       title: Jeg begynder at få styr på det her
@@ -391,6 +399,17 @@ da:
       process_introduction: "<p>Brug denne skabelon til at hjælpe din gruppe med at blive fortrolig med at bruge forslag på Loomio. Det er en sikker og enkel måde for folk at prøve at stemme og se, hvordan det hele hænger sammen.</p>"
       details: "<p>Dette er en øvelse, så alle kan blive fortrolige med, hvordan forslag fungerer på Loomio.</p><p> Stem venligst, og skriv en begrundelse, hvis du har lyst.</p><p> Intet pres, ingen konsekvenser i den virkelige verden. Det er bare en måde at udforske, hvordan forslag fungerer!</p>"
       outcome_statement: "<p>Tak fordi du deltager i dette øvelsesforslag! \U0001F389</p><p> Dette var bare en chance for at se, hvordan det fungerer at stemme og kommentere på Loomio. Der bliver ikke truffet nogen egentlig beslutning her – men forhåbentlig hjalp det alle med at blive fortrolige med processen.</p>"
+      title_v2: Ananas hører til på pizza
+      process_subtitle_v2: Prøv et forslag, så du ved, hvordan afstemning fungerer
+      process_introduction_v2: "<p>En sjov måde for din gruppe at prøve at stemme på Loomio. Vælg et muntert spørgsmål, lad folk stemme og give en begrundelse – ingen egentlig beslutning, bare øvelse.</p>"
+      details_v2: "<p>Dette er et forslag til praksis – der er ingen egentlig beslutning her.</p><p> Prøv at stemme og skriv en grund for at se, hvordan forslag fungerer på Loomio.</p>"
+      outcome_statement_v2: "<p>Tak fordi du prøvede et forslag! Nu ved du, hvordan afstemning fungerer på Loomio.</p>"
+      agree_meaning: Jeg er enig i dette
+      agree_prompt: Hvorfor er du enig?
+      abstain_meaning: Jeg har ingen mening om dette
+      abstain_prompt: Nogle tanker?
+      disagree_meaning: Jeg er uenig i dette
+      disagree_prompt: Hvorfor er du uenig?
     proposal:
       process_subtitle: Fremsæt et forslag for at træffe en beslutning
       process_introduction: <p>Det klassiske Loomio-forslag hjælper dig med at træffe en beslutning og omdanner en diskussion til et klart resultat.</p><p> Foreslå en handlingsplan, og bed folk om at stemme enig, undlader at stemme eller er uenig.</p><p> Når folk stemmer, kan de give en begrundelse for, hvorfor de har stemt på denne måde. Man kan se, hvor alle andre står i sagen, og hvorfor.</p><p> På denne måde kan du bruge et forslag til at få folk til at reagere, afdække nye oplysninger og opbygge fælles forståelse – for at hjælpe din gruppe med at træffe en bedre og mere informeret beslutning.</p><p> Et forslag og den tilhørende diskussion skaber sin egen registrering af, hvordan beslutningen blev truffet.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Læs mere om brugen af det klassiske Loomio-forslag i den enkle beslutningsproces</u></a> .</p>
@@ -429,6 +448,9 @@ da:
       objection_meaning: Jeg har en berettiget indsigelse og mener, at forslaget vil forårsage skade
       objection_prompt: Hvilken ændring af dette forslag er nødvendig for at gøre det 'sikkert at prøve', så du kan støtte det?
       outcome_statement: "<p>Tak for din deltagelse i samtykkeprocessen.</p>"
+      process_subtitle_v2: Fortsæt, medmindre nogen gør indsigelse
+      process_introduction_v2: "<p><strong>Samtykke</strong> spørger om, hvorvidt et forslag er sikkert at afprøve, ikke om det er perfekt. Forslaget vedtages, så længe ingen rejser en meningsfuld indsigelse. Hvis nogen gør indsigelse, arbejder gruppen på at løse det – og fordi deltagerne kan ændre deres stemme, efterhånden som forslaget udvikler sig, bliver indsigelser et værktøj til forbedring snarere end en hindring.</p>"
+      details_v2: "<h3><strong>Hvilken beslutning skal du træffe?</strong></h3><p></p><h3> <strong>Hvorfor er dette vigtigt?</strong></h3><p></p><h3> <strong>Hvad beder du folk om i dette forslag?</strong></h3><p></p><p> Vi sigter ikke efter perfektion – giv dit samtykke, hvis forslaget er godt nok og sikkert at afprøve. Hvis du har en indsigelse, så fortæl, hvad der skal ændres for at det kan bruges.</p>"
     consensus:
       process_subtitle: Indgå kollektiv aftale med alle involverede
       process_introduction: <p>Skab konsensus om en beslutning, du skal træffe, for at nå til enighed, der tilfredsstiller alle deltageres behov og bekymringer.</p><ul><li><p> Diskuter og udvikl et forslag sammen</p></li><li><p> Inkluder og respekter alle involverede</p></li><li><p> Søg enighed fra de fleste mennesker</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/consensus_process/index.html">Læs mere om konsensusprocessen</a> .</p>
@@ -447,6 +469,8 @@ da:
       block: Blok
       block_meaning: Jeg blokerer dette forslag og mener, at det ikke bør fortsætte
       block_prompt: Forklar din indvending mod forslaget, og hvorfor det ikke bør fortsætte
+      process_introduction_v2: "<p><strong>Konsensus</strong> er til beslutninger, hvor det er vigtigt, at alle aktivt er enige. Deltagerne arbejder sammen for at forstå hinandens behov og forme forslaget, indtil hele gruppen kan støtte det. Fordi folk kan ændre deres stemme, efterhånden som samtalen udvikler sig, fremmer processen ægte dialog snarere end en engangsbeslutning. Det kræver mere tålmodighed end andre metoder, men det opbygger det stærkeste engagement.</p>"
+      details_v2: "<h3><strong>Hvilken beslutning skal du træffe?</strong></h3><p></p><h3> <strong>Hvorfor er dette vigtigt?</strong></h3><p></p><h3> <strong>Hvad beder du folk om at gøre?</strong></h3><p></p><p> Del din holdning og hvorfor. Hvis du er uenig, så forklar hvad der skal ændres for at du kan støtte dette.</p>"
     question_round:
       process_subtitle: Stil opklarende spørgsmål for at hjælpe folk med at forstå et forslag
       process_introduction: <p>En spørgerunde er en mulighed for folk at stille afklarende spørgsmål om forslaget, så alle forstår forslaget, før de siger, hvad de mener om det.</p><p> Loomio-spørgsmålsrunden er et særligt forslag uden stemmemuligheder. Den giver deltagerne mulighed for at stille spørgsmål inden for en periode, du har fastsat for runden.</p><p> En spørgerunde bruges almindeligvis som et trin i samtykkeprocessen.</p><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Læs mere om samtykkeprocessen</a> .</p>
@@ -472,6 +496,17 @@ da:
       concerned: Bekymret
       concerned_meaning: Noget ved dette skal muligvis ændres, for at jeg kan give samtykke eller acceptere
       concerned_prompt: Hvad er din bekymring, og hvordan kan den håndteres?
+      process_subtitle_v2: Se om du er på rette spor
+      process_introduction_v2: "<p><strong>Sense check</strong> hjælper dig med at få tidlig feedback, før du træffer en beslutning. Deltagerne siger, om tingene ser godt ud, eller markerer bekymringer, så du kan justere kursen, før du går videre til et formelt forslag. Det er ikke en beslutning – det er et temperaturtjek.</p>"
+      details_v2: "<h3><strong>Hvad foreslår du?</strong></h3><p></p><h3> <strong>Hvorfor er dette vigtigt?</strong></h3><p></p><h3> <strong>Hvad beder du folk om at gøre?</strong></h3><p></p><p> Sig, om det ser godt ud, kunne være bedre, eller trænger til en genovervejelse – og del din begrundelse.</p>"
+      looks_good_meaning_v2: Jeg er tilfreds med retningen
+      looks_good_prompt_v2: Hvad kan du lide ved det?
+      could_be_better: Kunne være bedre
+      could_be_better_meaning: Jeg ser potentiale, men har forslag
+      could_be_better_prompt: Hvad ville du ændre?
+      needs_a_rethink: Har brug for en genovervejelse
+      needs_a_rethink_meaning: Jeg synes ikke fremgangsmåden er rigtig
+      needs_a_rethink_prompt: Hvad er din bekymring?
     gradients_of_agreement:
       process_subtitle: Udtryklig støtte til et forslag på en 8-punkts skala
       process_introduction: <p>Forslagets gradienter for enighed gør det muligt for medlemmer af en gruppe at udtrykke deres støtte til et forslag i grader på en skala, hvilket tilbyder flere måder at udtrykke støtte på end i form af "enig" og "uenig".</p><p> Brug gradienter af enighed som en indledende runde for at teste støtte til et forslag, før man går videre til en formel aftale.</p><p> Gradienter af enighed lader folk vide, at et forslag er under udarbejdelse, og opfordrer dem til at engagere sig. Det er en mulighed for at lytte til folk, fornemme deres følelser og reagere passende – hvilket åbner op for potentialet til at inddrage deres bidrag for at træffe en bedre beslutning.</p>
@@ -505,27 +540,36 @@ da:
       process_introduction: <p>Før du træffer en beslutning, så find ud af, hvilke muligheder folk er mest interesserede i.</p><p> En simpel afstemning hjælper dig med at finde den eller de mest populære muligheder med enkelt- eller flervalgsmuligheder.</p><p> Skriv eventuelle oplysninger om mulighederne i detaljefeltet, indtast derefter navnet på muligheden, og klik på + for at tilføje.</p><p> Angiv <strong>minimums-</strong> og <strong>maksimumsvalg, som</strong> en vælger kan vælge. Lad maksimumsvalget være 1 for en afstemning med én valgmulighed.</p><p> Du kan bruge blyantikonet ud for hver mulighed til at tilføje en <strong>betydning</strong> af muligheden og uddybe den yderligere for at hjælpe folk, når de stemmer.</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">Læs mere om Simpel afstemning</a> .</p>
       title: Hvor bør fokus for vores strategiske retning være?
       details: <h3 id="what-is-this-poll-about"><strong>Hvad handler denne afstemning om?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Hvorfor er dette vigtigt?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Hvad beder du folk om at gøre?</strong></h3><p></p><p> Vælg den/de mulighed(er), du foretrækker.</p>
+      process_introduction_v2: <p><strong>Vælg</strong> hjælper dig med at finde den mest populære mulighed. Deltagerne vælger fra en liste – du kan konfigurere, om de skal vælge én eller flere muligheder.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">Læs mere om Vælg</a> .</p>
     score_poll:
       process_subtitle: Mål graden af støtte til hver mulighed
       process_introduction: <p>Brug Score-afstemning, når du vil spørge folk om deres ønske, præference eller interesse for hver mulighed.</p><p> <span>Deltagerne bliver bedt om at evaluere hver mulighed og tildele en score ved at flytte en skyder langs en skala.</span></p><p> <span>Resultaterne vises grafisk sammen med en tabel for hver mulighed, der viser samlede point, gennemsnitspoint og antal vælgere.</span></p><p> Avancerede indstillinger inkluderer 'Stemmer er anonyme' og 'Vis muligheder i tilfældig rækkefølge' - bruges ofte til scoreafstemninger for at reducere enhver bias i afstemningen.</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">Læs mere om Score-afstemning</a> .</p>
       title: Vurdering af, hvordan beslutninger træffes i vores organisation
       details: <h3 id="what-is-this-poll-about"><strong>Hvad handler denne afstemning om?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Hvorfor er dette vigtigt?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Hvad beder du folk om at gøre?</strong></h3><p></p><p> Vælg den/de mulighed(er), du foretrækker.</p>
+      process_subtitle_v2: Mål støtteniveauet for hver mulighed
+      process_introduction_v2: <p><strong>Med scoren</strong> kan du måle gruppens støtteniveau for hver mulighed. Deltagerne evaluerer hver mulighed ved at tildele en score på en glidende skala, så du ikke kun kan se, hvad folk foretrækker, men også hvor meget.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">Læs mere om Score-afstemning</a> .</p>
     dot_vote:
       process_subtitle: Afsæt et budget med punkter for at afdække prioriteter
       process_introduction: <p>Punktafstemning er nyttig for grupper, der forsøger at allokere en begrænset ressource til en række muligheder. Det går ud over en simpel afstemning ved at hjælpe deltagerne med at forstå, at der er en begrænsning, når de vælger muligheder.</p><p> Deltagerne får hver et fast antal prikker. Du bestemmer hvor mange.</p><p> De placerer prikker ud for de præsenterede muligheder, de kan lide. Deltagerne kan placere alle deres prikker på en enkelt mulighed eller fordele dem over flere muligheder.</p><p> Når deltagerne tildeler prikker, kan de overskride prikbudgetgrænsen, og de opfordres derfor til omhyggeligt at overveje, hvordan de bruger deres prikker.</p><p> Mulighederne med flest prikker "vinder". Resultattabellen indeholder yderligere data, der kan hjælpe dig med at analysere resultaterne.</p><ul><li><p> % af point</p></li><li><p> Point</p></li><li><p> Betyde</p></li><li><p> Vælgere</p></li></ul><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">Læs mere om Dot-afstemning</a> .</p>
       title: Valg af temaer til vores konference
       details: <h3 id="what-is-this-poll-about"><strong>Hvad handler denne afstemning om?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Hvorfor er dette vigtigt?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Hvad beder du folk om at gøre?</strong></h3><p></p><p> I denne afstemning har du et budget på 8 prikker, som du kan fordele til de muligheder, du foretrækker. Du kan placere alle prikker på én mulighed eller sprede dem ud.</p>
+      process_subtitle_v2: Afslør prioriteter, når der er kompromiser
+      process_introduction_v2: <p><strong>Allocate</strong> hjælper dig med at forstå en gruppes prioriteter, når der er kompromiser. Hver deltager får et budget af point, som de kan fordele på tværs af mulighederne – de kan gå all-in på én mulighed eller fordele deres point på tværs af flere. Fordi budgettet er begrænset, er hvert brugt point et reelt signal om prioritet.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">Læs mere om Allokering</a> .</p>
     ranked_choice:
       process_subtitle: Forstå den ordnede præference af muligheder
       process_introduction: <p>Rangordnet valg er nyttigt, når du har et stort antal muligheder, eller når du afholder et valg.</p><p> Denne afstemningsskabelon tilbyder en række muligheder, hvor folk kan stemme i deres foretrukne rækkefølge.</p><p> Du kan indstille antallet af valgmuligheder, vælgeren får.</p><p> <span>Vælgerne trækker og slipper muligheder i præferencerækkefølge (#1 er din mest foretrukne mulighed).</span></p><p> <span>Avancerede indstillinger inkluderer 'Stemmer er anonyme' og 'Vis muligheder i tilfældig rækkefølge' - bruges ofte til</span> rangerede valg for at reducere enhver bias i stemmeafgivningen.</p><p> Resultaterne vises i rangorden. Resultattabellen indeholder yderligere data, der kan hjælpe dig med at analysere resultaterne.</p><ul><li><p> Rang</p></li><li><p> % af point</p></li><li><p> Point</p></li><li><p> Betyde</p></li></ul><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">Læs mere om Rangeret valg</a> .</p>
       title: Valg af direktører til bestyrelsen
       details: <h3 id="what-is-this-poll-about"><strong>Hvad handler denne afstemning om?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Hvorfor er dette vigtigt?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Hvad beder du folk om at gøre?</strong></h3><p></p><p> Stem ved at rangere mulighederne efter din foretrukne rækkefølge. Den mulighed, der rangerer først i resultaterne, vinder.</p>
+      process_subtitle_v2: Find gruppens præferencerækkefølge
+      process_introduction_v2: <p><strong>Rangordning</strong> viser gruppens præferencerækkefølge. Deltagerne trækker og slipper mulighederne for at arrangere dem fra mest til mindst foretrukken, og resultaterne viser den samlede rangordning.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">Læs mere om Rang</a> .</p>
     time_poll:
       process_subtitle: Find ud af, hvornår folk er tilgængelige til at mødes
       process_introduction: <p><span>Spar tid ved at planlægge en dato for dit møde eller arrangement.</span></p><p> Tidsmåling gør det nemt at se alles tilgængelighed og finde det bedste tidspunkt.</p><p> Giv din tidsafstemning en titel og detaljer. Indtast en liste over dato- og tidsindstillinger i din tidszone.</p><p> Når du angiver tidsintervaller, skal du tage højde for personer i forskellige tidszoner. Deltagerne vil se tidspunkter lokaliseret i deres tidszone.</p><p> Angiv en mødevarighed.</p><p> Når tidsafstemningen lukker, skal du angive et resultat med det bedste tidspunkt og eventuelle instruktioner til mødet.</p><p> <span>Loomio vil inkludere en kalenderinvitation i e-mailen med resultatet, så deltagerne kan tilføje dem til deres kalender.</span></p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">Læs mere om Time-afstemningen</a> .</p>
       title: Lad os finde en dato for vores næste møde
       details: "<p><strong>Hvad er mødet eller begivenheden?</strong></p><p></p><p> <strong>Hvorfor er dette vigtigt?</strong></p><p></p><p> <strong>Hvad beder du folk om at gøre?</strong></p><p></p><p> <span>Marker de tidsrum, du er ledige, med det grønne 'tommelfinger op'-ikon, eller lad det røde 'tommelfinger ned' være på plads, når de ikke er tilgængelige.</span></p><p> <span>Brug ikonet 'tommelfingeren til siden' for at vise, at du er tilgængelig, 'hvis det er nødvendigt'.</span></p>"
       reason_prompt: Er der noget, du kan sige for at hjælpe arrangøren med at finde et passende tidspunkt?
+      process_subtitle_v2: Find ud af, hvornår folk er tilgængelige
+      process_introduction_v2: <p><strong>Tidsafstemningen</strong> hjælper dig med at finde ud af, hvornår folk er tilgængelige. Tilføj dine foreslåede tidspunkter, og deltagerne vil se dem i deres egen tidszone. Når afstemningen lukker, skal du angive resultatet, og Loomio sender alle en kalenderinvitation.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">Læs mere om Time-afstemningen</a> .</p>
     opt_in:
       process_subtitle: Find frivillige eller spørg efter deltagere
       process_introduction: '<p>Brug tilmelding til at invitere folk til at deltage i et team, en komité eller en arbejdsgruppe eller til at deltage i en begivenhed.</p><p> ''Tilmelding'' har to afstemningsmuligheder: Accepter eller Afvis.</p><p> Du kan definere et mål for antallet af personer, du leder efter, f.eks. 3 personer, der skal deltage i din arbejdsgruppe.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#opt-in">Læs mere om tilmelding</a> .</p>'
@@ -535,6 +579,27 @@ da:
       accept_prompt: Hvorfor er du frivillig til dette?
       decline_meaning: Jeg kan ikke deltage
       decline_prompt: Er der noget, du gerne vil sige?
+    try_loomio:
+      process_name: Lad os prøve Loomio
+      process_subtitle: Få din gruppe til at forpligte sig til at prøve Loomio sammen
+      process_introduction: "<p>Det kræver en fælles forpligtelse at få mest muligt ud af Loomio. Dette forslag hjælper jeres gruppe med at beslutte, om I skal investere tid og kræfter i at give Loomio en ordentlig chance – uanset om det er at forpligte sig til en prøveperiode eller at tilmelde sig et abonnement sammen.</p>"
+      title: Lad os prøve Loomio sammen
+      details: "<p>Det kræver en fælles indsats at bruge Loomio godt – det virker kun, når folk møder op og deltager.</p><p> Dette forslag beder alle om at forpligte sig til aktivt at bruge Loomio i vores prøveperiode. Det betyder at tjekke ind, stemme om forslag og deltage i diskussioner.</p><p> Hvis du har bekymringer om dette, så fremsæt en indsigelse og fortæl, hvad der skal ændres – det er dét indsigelsesmuligheden er til for.</p>"
+      outcome_statement: "<p>Del resultatet af dette forslag med gruppen – hvad der blev besluttet, og hvad der sker derefter.</p>"
+      consent_meaning: Jeg er villig til at give det en chance
+      consent_prompt: Hvad glæder du dig til ved at bruge Loomio?
+      objection_meaning: Jeg har en bekymring, som vi først skal tage hånd om
+      objection_prompt: Hvad skal ændres, før du kan forpligte dig?
+    majority:
+      process_subtitle: Træf en beslutning med flest stemmer
+      process_introduction: "<p><strong>Flertal</strong> er den enkleste måde at træffe en gruppebeslutning på – deltagerne stemmer ja eller nej, og forslaget vedtages, hvis mere end halvdelen stemmer ja. Der er ingen undladelse eller blokering, så hver stemme vejer lige tungt.</p><p> Flertal fungerer godt til enkle beslutninger, hvor du har brug for et klart resultat. Til beslutninger, hvor det er vigtigt, at folk arbejder sammen for at forstå hinanden og finde et fælles grundlag, kan du overveje samtykke eller konsensus.</p>"
+      title: Godkend budgettet for 3. kvartal
+      details: "<h3><strong>Hvilken beslutning skal du træffe?</strong></h3><p></p><h3> <strong>Hvorfor er dette vigtigt?</strong></h3><p></p><h3> <strong>Hvad beder du folk om at gøre?</strong></h3><p></p>"
+      yes_meaning: Jeg støtter dette forslag
+      yes_prompt: Hvorfor støtter du dette forslag?
+      no_meaning: Jeg støtter ikke dette forslag
+      no_prompt: Hvorfor støtter du ikke dette forslag?
+      outcome_statement: "<p>Tak for din deltagelse i denne flertalsafstemning.</p>"
   forward_mailer:
     bounce:
       subject: Din besked til Loomio blev ikke leveret
