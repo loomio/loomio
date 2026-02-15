@@ -275,7 +275,7 @@ en:
       process_subtitle_v2: "Welcome people and get comfortable using Loomio together"
       process_introduction_v2: "<p>A welcome thread for new groups. People introduce themselves, try out features like commenting and reacting, and run their first proposal.</p>"
       title_v2: "Welcome! Introduce yourself and try things out"
-      description_v2: "<p>Welcome to the group! This thread is a space to say hi, ask questions, try stuff out, and get comfortable using Loomio.</p><p>Leave a comment, use a reaction, or start one of the proposals below.</p>"
+      description_v2: "<p>Welcome to the group! This thread is a space to say hi, ask questions, try stuff out, and get comfortable using Loomio.</p><p>Leave a comment, use a reaction, or start one of the proposals below.</p><p>If you're not sure what to say, a simple hello is fine! Or try one of the voting tools below.</p>"
     blank:
       process_name: Blank template
       process_subtitle: Start a new discussion on any topic
