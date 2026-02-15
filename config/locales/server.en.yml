@@ -75,6 +75,17 @@ en:
       abstain_prompt: Any thoughts?
       disagree_meaning: I disagree with this
       disagree_prompt: Why do you disagree?
+    try_loomio:
+      process_name: Let's try Loomio
+      process_subtitle: Get your group to commit to trying Loomio together
+      process_introduction: "<p>Making the most of Loomio takes a group commitment. This proposal helps your group decide whether to invest the time and effort into giving Loomio a proper go — whether that's committing to a trial period or signing up for a plan together.</p>"
+      title: "Let's commit to trying Loomio together"
+      details: "<p>Using Loomio well takes a group effort — it only works when people show up and participate.</p><p>This proposal is asking everyone to commit to actively using Loomio for our trial period. That means checking in, voting on proposals, and joining discussions.</p><p>If you have concerns about this, raise an objection and say what would need to change — that's what the objection option is for.</p>"
+      outcome_statement: "<p>Share the outcome of this proposal with the group — what was decided and what happens next.</p>"
+      consent_meaning: "I'm willing to give it a go"
+      consent_prompt: What are you looking forward to about using Loomio?
+      objection_meaning: I have a concern we need to address first
+      objection_prompt: What needs to change before you can commit?
     proposal:
       process_subtitle: Raise a proposal to make a decision
       process_introduction: <p>The classic Loomio proposal helps you make a decision, converting a discussion into a clear outcome.</p><p>Suggest a course of action and invite people to respond by voting agree, abstain or disagree.</p><p>As people vote, they can give a reason why they have voted this way. You can see where everyone else stands on the matter, and why.</p><p>In this way you can use a proposal to prompt people for a response, uncover new information, and build shared understanding - to help your group make a better, more informed decision.</p><p>A proposal and associated discussion creates its own record of how the decision came about.</p><p><a target="_blank" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Read more about using the classic Loomio proposal in the Simple decision process</u></a>.</p>

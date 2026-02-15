@@ -12,6 +12,7 @@ practice_thread:
   position: 0
   poll_template_keys_or_ids:
     - practice_proposal
+    - try_loomio
 
 blank:
   process_name_i18n: discussion_templates.blank.process_name

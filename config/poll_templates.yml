@@ -27,6 +27,27 @@ practice_proposal:
       prompt_i18n: poll_templates.practice_proposal.disagree_prompt
       color: "#D38FE1"
 
+try_loomio:
+  poll_type: proposal
+  process_name_i18n: poll_templates.try_loomio.process_name
+  process_subtitle_i18n: poll_templates.try_loomio.process_subtitle
+  process_introduction_i18n: poll_templates.try_loomio.process_introduction
+  outcome_statement_i18n: poll_templates.try_loomio.outcome_statement
+  title_i18n: poll_templates.try_loomio.title
+  details_i18n: poll_templates.try_loomio.details
+  default_duration_in_days: 7
+  poll_options:
+    - name_i18n: poll_proposal_options.consent
+      icon: agree
+      meaning_i18n: poll_templates.try_loomio.consent_meaning
+      prompt_i18n: poll_templates.try_loomio.consent_prompt
+      color: '#70C9F8'
+    - name_i18n: poll_proposal_options.objection
+      icon: disagree
+      meaning_i18n: poll_templates.try_loomio.objection_meaning
+      prompt_i18n: poll_templates.try_loomio.objection_prompt
+      color: "#D38FE1"
+
 question:
   poll_type: question
   process_name_i18n: poll_common.question_round
