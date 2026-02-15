@@ -22,6 +22,7 @@ class PollService
 
       EventBus.broadcast('poll_create', poll, actor)
       Events::PollCreated.publish!(poll, actor)
+      announce_poll_opened(poll) if poll.opened_at && poll.notify_on_open
     end
   end
 
