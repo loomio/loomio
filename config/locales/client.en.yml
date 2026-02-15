@@ -314,6 +314,7 @@ en:
       update_settings: Update settings
       reply: Reply
       edit: Edit
+      rearrange: Rearrange
       remove: Remove
       undo_remove: Undo remove
       like: Like
@@ -823,10 +824,17 @@ en:
     start_new_thread: Or, start new discussion
   discussion_template:
     browse_public_templates: Browse template gallery
+    browse_example_templates: Browse example templates
+    example_templates: Example templates
     start_a_new_discussion: Start a new discussion
     discussion_template_saved: Discussion template saved
     these_are_public_templates: 'These templates are available for you to copy or modify to suit your group'
-    these_are_templates: 'These are the discussion templates in your group. Click a template to start a discussion. You can also edit, remove, or reorder these if you like. '
+    browse_public_templates_hint: 'Click a template name to start a discussion with it, or click the edit button on the right to make a copy and modify it for your own group.'
+    these_are_templates: 'These are the discussion templates in your group. Click a template to start a discussion with it. You can also click the ... menu button on each template to edit, hide, or reorder these if you like. '
+    these_are_templates_v2: 'These are the discussion templates in your group. Click a template to start a new discussion. Admins can edit templates, make new templates and rearrange the list.'
+    process_name_placeholder: "e.g. Weekly standup"
+    process_subtitle_placeholder: "e.g. A short check-in with the team each week"
+    default_title_placeholder: "e.g. Standup - January 15"
     default_title_label: Default title
     default_title_hint: Prefill the title field with editable text. This is optional - leave blank if unsure.
     title_placeholder_label: Example title
@@ -835,14 +843,27 @@ en:
     example_description_label: Example description
     example_description_placeholder: Provide a template that people can use to start a thread with
     hidden_templates: Hidden templates
+    more_templates: More templates
+    fewer_templates: Fewer templates
+    choose_a_group: Choose a group
+    default_templates: Default templates
+    or_start_a_direct_discussion: Or start a direct discussion
+    choose_group_for_templates: Choose a group to view its discussion templates
+    start_direct_discussion: Start direct discussion
     confirm_delete: Are you sure you want to delete this discussion template?
     add_poll_template: Add poll template
     add_poll_template_help: Select any poll templates that help to complete this process
     recommended_poll_templates: Recommended poll templates
     share_in_template_gallery: Share this template in the public template gallery
+    poll_templates: Poll templates
+    poll_templates_help: Templates you select here will show up first when someone clicks Start a vote
+    start_direct_discussion_from_blank: Start a direct discussion from a blank template
+    default_to_direct_discussion: Default discussion group field to "None (direct discussion)"
+    default_to_direct_discussion_helptext: Use this if you want people to start direct discussions from this template.
   discussion_form:
     none_invite_only_discussion: None (invite-only discussion)
     none_direct_discussion: None (direct discussion)
+    direct_discussion_hint: A direct discussion is only visible to the specific people you invite. It will not appear in any group's discussion list — you can find it on your Direct discussions page.
     new_discussion_template: New discussion template
     edit_discussion_template: Edit discussion template
     blank: Blank
@@ -872,6 +893,7 @@ en:
     title_placeholder: What is the topic you want to discuss?
     context_label: Context
     context_placeholder: Provide some context for this discussion, so people know how to participate
+    recommended_poll_templates: Recommended poll templates
     privacy_label: Privacy
     privacy_public: Anyone can view this thread if they have the link
     privacy_private: Only members of the group can view this thread
@@ -1211,6 +1233,7 @@ en:
     stats: Group stats
     participation_report: Participation report
     discussions: Discussions
+    discussion_templates: Discussion templates
     polls: Polls
     decisions: Decisions
     members: Members
@@ -1399,6 +1422,12 @@ en:
     members_can_start_discussions_help: Allow members to start new threads within the group
     members_can_raise_motions: Members can start polls
     members_can_raise_motions_help: Allow members to start polls and proposals within discussions or the group
+    members_can_create_templates: Members can create templates
+    members_can_create_templates_help: Allow members to create discussion and poll templates. Templates created by members will be hidden until an admin unhides them.
+    members_can_start_discussions_v2: Members can start new discussions
+    members_can_start_discussions_help_v2: Allow members to start new discussions within the group
+    members_can_edit_discussions_v2: Members can manage discussions and comments
+    members_can_edit_discussions_help_v2: Allow members to edit, move, pin, tag or close any discussion or comment in the group
     admins_can_edit_user_content: Admins can edit members' comments
     admins_can_edit_user_content_help: Allow admins to edit content written by members
     submit_start_group: Start group

@@ -313,6 +313,7 @@ zh_TW:
       zoom: Zoom
       align: 對齊
       original: 原來的
+      rearrange: 重新排列
     formatting_help:
       label: 格式化
       title: 學習如何使用 Markdown 來格式化您的文字
@@ -843,6 +844,7 @@ zh_TW:
     discussion_started: 討論開始
     none_direct_discussion: 無（直接討論）
     direct_discussion: 直接討論
+    direct_discussion_hint: 直接討論僅對您邀請的特定人員可見。它不會出現在任何群組的討論清單中——您可以在「直接討論」頁面找到它。
   announcement:
     send_discussion: 傳送討論串
     send_group: 邀請夥伴到 %{name}
@@ -1352,6 +1354,12 @@ zh_TW:
     upload_background: 上傳背景
     remove_background: 移除背景
     remove_logo: 移除標誌
+    members_can_create_templates: 成員可以建立模板
+    members_can_create_templates_help: 允許成員建立討論和投票範本。成員建立的範本將預設為隱藏，直到管理員將其取消隱藏。
+    members_can_start_discussions_v2: 成員可以發起新的討論
+    members_can_start_discussions_help_v2: 允許成員在群組內發起新的討論。
+    members_can_edit_discussions_v2: 會員可以管理討論和評論
+    members_can_edit_discussions_help_v2: 允許成員編輯、移動、置頂、標記或關閉群組中的任何討論或評論。
   group_export_modal:
     title: 匯出群組資料
     body: |
@@ -2693,6 +2701,24 @@ zh_TW:
     add_poll_template_help: 選擇任何有助於完成此過程的投票模板
     recommended_poll_templates: 推薦的投票模板
     share_in_template_gallery: 在公共模板庫中分享此模板
+    browse_example_templates: 瀏覽範例模板
+    example_templates: 範例模板
+    browse_public_templates_hint: 點擊範本名稱即可開始討論，或點擊右側的編輯按鈕進行複製並修改，以便用於您自己的團隊。
+    these_are_templates_v2: 這是您群組中的討論範本清單。點擊模板即可用作新討論的起點。群組管理員可以編輯範本並重新排列列表，以便輕鬆找到重要的範本。
+    process_name_placeholder: 例如：每週站會
+    process_subtitle_placeholder: 例如：每週與團隊進行簡短的溝通
+    default_title_placeholder: 例如：站立式演講 - 1月15日
+    more_templates: 更多模板
+    fewer_templates: 更少的模板
+    choose_a_group: 選擇一個群組
+    default_templates: 預設模板
+    or_start_a_direct_discussion: 或直接發起討論
+    choose_group_for_templates: 選擇一個群組以查看其討論模板
+    start_direct_discussion: 直接展開討論
+    poll_templates: 投票模板
+    poll_templates_help: 您在此處選擇的範本將在有人點擊「開始投票」時優先顯示。
+    start_direct_discussion_from_blank: 從空白模板開始直接討論
+    default_to_direct_discussion: 先以直接討論的形式開始（不要分組討論）。
   context_panel:
     thread_status:
       pinned: 此討論貼文已置頂，將始終顯示在群組討論貼文清單的頂部，供所有使用者檢視。

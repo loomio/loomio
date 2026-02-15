@@ -5,6 +5,7 @@ class DiscussionTemplateSerializer < ActiveModel::Serializer
   has_many :poll_templates, serializer: PollTemplateSerializer, root: :poll_templates
 
   attributes :id,
+             :key,
              :group_id,
              :position,
              :author_id,
@@ -25,5 +26,6 @@ class DiscussionTemplateSerializer < ActiveModel::Serializer
              :newest_first,
              :poll_template_keys_or_ids,
              :public,
-             :recipient_audience
+             :recipient_audience,
+             :default_to_direct_discussion
 end

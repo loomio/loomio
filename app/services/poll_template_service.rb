@@ -60,6 +60,7 @@ class PollTemplateService
     end
 
     poll_template.save!
+    poll_template.discard! unless poll_template.group.admins.exists?(actor.id)
     poll_template
   end
 

@@ -179,7 +179,7 @@ class PermittedParams < Struct.new(:params)
      :members_can_edit_discussions, :members_can_edit_comments, :members_can_delete_comments,
      :description, :description_format, :is_visible_to_parent_members, :parent_members_can_see_discussions,
      :membership_granted_upon, :cover_photo, :logo, :category, :members_can_raise_motions,
-     :members_can_start_discussions, :members_can_create_subgroups, :admins_can_edit_user_content,
+     :members_can_start_discussions, :members_can_create_subgroups, :members_can_create_templates, :admins_can_edit_user_content,
      :new_threads_max_depth, :new_threads_newest_first, :request_to_join_prompt, :can_start_polls_without_discussion, :listed_in_explore,
      :document_ids, {document_ids: []},
      :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}
@@ -233,6 +233,7 @@ class PermittedParams < Struct.new(:params)
      :newest_first,
      :max_depth,
      :public,
+     :default_to_direct_discussion,
      :poll_template_keys_or_ids, {poll_template_keys_or_ids: []},
      :tags, {tags: []},
      :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}

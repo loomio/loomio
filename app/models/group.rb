@@ -153,6 +153,7 @@ class Group < ApplicationRecord
                          :members_can_announce,
                          :new_threads_max_depth,
                          :new_threads_newest_first,
+                         :members_can_create_templates,
                          :admins_can_edit_user_content,
                          :listed_in_explore,
                          :attachments]
@@ -382,6 +383,7 @@ class Group < ApplicationRecord
   def hidden_poll_templates=(val)
     self[:info]['hidden_poll_templates'] = val
   end
+
 
   def self.ransackable_attributes(auth_object = nil)
     [

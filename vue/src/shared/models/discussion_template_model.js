@@ -26,12 +26,17 @@ export default class DiscussionTemplateModel extends BaseModel {
       newestFirst: false,
       pollTemplateKeysOrIds: [],
       recipientAudience: null,
+      defaultToDirectDiscussion: false,
       discardedAt: null
     };
   }
 
+  keyOrId() {
+    return this.id || this.key;
+  }
+
   collabKeyParams(){
-    return [this.groupId, this.key];
+    return [this.groupId, this.key, this.id];
   }
 
   relationships() {
@@ -48,6 +53,10 @@ export default class DiscussionTemplateModel extends BaseModel {
     attrs.authorId = Session.user().id;
 
     discussion.update(attrs);
+
+    if (this.defaultToDirectDiscussion) {
+      discussion.groupId = null;
+    }
 
     return discussion;
   }

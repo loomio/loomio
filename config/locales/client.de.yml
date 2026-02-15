@@ -317,6 +317,7 @@ de:
       zoom: Zoom
       align: Ausrichten
       original: Original
+      rearrange: Neu anordnen
     formatting_help:
       label: Markdown-Formatierung
       title: Mehr über die Textformatierung mit Markdown lernen
@@ -848,6 +849,7 @@ de:
     discussion_started: Diskussion gestartet
     none_direct_discussion: Keine (direkte Diskussion)
     direct_discussion: Direkte Diskussion
+    direct_discussion_hint: Eine Direktkonversation ist nur für die von Ihnen eingeladenen Personen sichtbar. Sie erscheint nicht in der Diskussionsliste einer Gruppe, sondern auf Ihrer Seite „Direktdiskussionen“.
   announcement:
     send_discussion: Diskussion teilen
     send_group: Personen zu %{name} einladen
@@ -1357,6 +1359,12 @@ de:
     upload_background: Hintergrund hochladen
     remove_background: Hintergrund entfernen
     remove_logo: Logo entfernen
+    members_can_create_templates: Mitglieder können Vorlagen erstellen.
+    members_can_create_templates_help: Ermöglichen Sie es Mitgliedern, Diskussions- und Umfragevorlagen zu erstellen. Von Mitgliedern erstellte Vorlagen sind standardmäßig ausgeblendet, bis ein Administrator sie einblendet.
+    members_can_start_discussions_v2: Mitglieder können neue Diskussionen starten.
+    members_can_start_discussions_help_v2: Erlauben Sie den Mitgliedern, neue Diskussionen innerhalb der Gruppe zu starten.
+    members_can_edit_discussions_v2: Mitglieder können Diskussionen und Kommentare verwalten.
+    members_can_edit_discussions_help_v2: Erlauben Sie den Mitgliedern, Diskussionen oder Kommentare in der Gruppe zu bearbeiten, zu verschieben, anzuheften, zu taggen oder zu schließen.
   group_export_modal:
     title: Gruppendaten exportieren
     body: |
@@ -2700,6 +2708,24 @@ de:
     add_poll_template_help: Wählen Sie beliebige Umfragevorlagen aus, die Ihnen bei diesem Vorgang helfen.
     recommended_poll_templates: Empfohlene Umfragevorlagen
     share_in_template_gallery: Teile diese Vorlage in der öffentlichen Vorlagengalerie
+    browse_example_templates: Beispielvorlagen ansehen
+    example_templates: Beispielvorlagen
+    browse_public_templates_hint: Klicken Sie auf einen Vorlagennamen, um eine Diskussion darüber zu starten, oder klicken Sie auf die Schaltfläche „Bearbeiten“ rechts, um eine Kopie zu erstellen und diese für Ihre eigene Gruppe anzupassen.
+    these_are_templates_v2: Dies ist eine Liste der Diskussionsvorlagen in Ihrer Gruppe. Klicken Sie auf eine Vorlage, um sie als Ausgangspunkt für eine neue Diskussion zu verwenden. Gruppenadministratoren können Vorlagen bearbeiten und die Liste neu anordnen, sodass wichtige Vorlagen leicht zu finden sind.
+    process_name_placeholder: z. B. wöchentliches Stand-up-Meeting
+    process_subtitle_placeholder: z. B. ein kurzes Treffen mit dem Team jede Woche
+    default_title_placeholder: z. B. Standup – 15. Januar
+    more_templates: Weitere Vorlagen
+    fewer_templates: Weniger Vorlagen
+    choose_a_group: Wählen Sie eine Gruppe
+    default_templates: Standardvorlagen
+    or_start_a_direct_discussion: Oder beginnen Sie eine direkte Diskussion
+    choose_group_for_templates: Wählen Sie eine Gruppe aus, um deren Diskussionsvorlagen anzuzeigen.
+    start_direct_discussion: Starten Sie eine direkte Diskussion
+    poll_templates: Umfragevorlagen
+    poll_templates_help: Die hier ausgewählten Vorlagen werden zuerst angezeigt, wenn jemand auf „Abstimmung starten“ klickt.
+    start_direct_discussion_from_blank: Starten Sie eine direkte Diskussion anhand einer leeren Vorlage.
+    default_to_direct_discussion: Beginnen Sie mit einer direkten Diskussion (ohne Gruppe).
   context_panel:
     thread_status:
       pinned: Diese Diskussion wurde angepinnt. Sie bleibt für alle Benutzer ganz oben in der Diskussionsliste der Gruppe.
