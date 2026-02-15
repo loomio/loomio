@@ -139,7 +139,7 @@ class AppConfig
       show_contact_consent: ENV.fetch('FEATURES_SHOW_CONTACT_CONSENT', false),
       sso_disable_edit_profile: !!ENV['LOOMIO_SSO_FORCE_USER_ATTRS'],
       sentry_sample_rate: ENV.fetch('SENTRY_SAMPLE_RATE', 0.1).to_f,
-      hidden_poll_templates: %w[proposal question advice gradients_of_agreement],
+      hidden_poll_templates: %w[proposal question advice gradients_of_agreement count],
       transcription: TranscriptionService.available?,
       max_message_length: ENV.fetch('LMO_MAX_MESSAGE_LENGTH', 100000),
       sitemap: ENV.fetch('FEATURES_SITEMAP', false),

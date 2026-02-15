@@ -1890,6 +1890,7 @@ en:
     dot_vote_title: Dot vote
     meeting_title: Time poll
     ranked_choice_title: Ranked choice
+    majority_title: Majority
     gradients_of_agreement_title: Gradients of agreement
   poll_option_form:
     thumb_up: Thumb up
@@ -2315,8 +2316,10 @@ en:
       score_hint: Voters assign a score to each option
       allocate: Allocate
       allocate_hint: Voters allocate a budget of points between the options
+      rank: Rank
       ranked_choice: Ranked choice
       ranked_choice_hint: Voters arrange options in order from most to least preferred
+      time: Time
       time_poll: Time poll
       time_poll_hint: Voters indicate when they are available to meet
     process: Process
@@ -2461,6 +2464,8 @@ en:
     objection: Objection
     object: Object
     block: Block
+    'yes': 'Yes'
+    'no': 'No'
     no_voting: No voting
   poll_count_form:
     pct_of_target: "% of target"

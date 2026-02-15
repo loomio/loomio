@@ -28,14 +28,11 @@ export default {
       discussionTemplate: null,
       actions: {},
       filter: 'proposal',
-      singleList: !this.group.categorizePollTemplates,
       filterLabels: {
         recommended: 'decision_tools_card.recommended',
         proposal: 'decision_tools_card.proposal_title',
         poll: 'decision_tools_card.poll_title',
-        meeting: 'decision_tools_card.meeting',
-        admin: 'group_page.settings',
-        templates: 'templates.templates'
+        admin: 'group_page.settings'
       }
     };
   },
@@ -67,25 +64,14 @@ export default {
         this.pollTemplates = this.discussionTemplate.pollTemplates();
       } else {
         let params;
-        if (this.group.categorizePollTemplates) {
-          params = (() => { switch (this.filter) {
-            case 'proposal':
-              return {pollType: {$in: ['proposal', 'question']}, discardedAt: null};
-            case 'poll':
-              return {pollType: {$in: ['score', 'poll', 'ranked_choice', 'dot_vote']}, discardedAt: null};
-            case 'meeting':
-              return {pollType: {$in: ['meeting', 'count']}, discardedAt: null};
-            case 'admin':
-              return {discardedAt: {$ne: null}};
-          } })();
-        } else {
-          params = (() => { switch (this.filter) {
-            case 'admin':
-              return {discardedAt: {$ne: null}};
-            default:
-              return {discardedAt: null};
-          } })();
-        }
+        params = (() => { switch (this.filter) {
+          case 'proposal':
+            return {pollType: {$in: ['proposal', 'question']}, discardedAt: null};
+          case 'poll':
+            return {pollType: {$in: ['score', 'poll', 'ranked_choice', 'dot_vote', 'meeting', 'count']}, discardedAt: null};
+          case 'admin':
+            return {discardedAt: {$ne: null}};
+        } })();
 
         this.pollTemplates = Records.pollTemplates.collection.chain().
           find({groupId: this.group.id || null}).
@@ -125,13 +111,7 @@ export default {
 
   watch: {
     filter: 'query',
-    discussionTemplate: 'query',
-    singleList() {
-      setTimeout(() => {
-        this.group.categorizePollTemplates = !this.singleList;
-        Records.remote.post('poll_templates/settings', {group_id: this.group.id, categorize_poll_templates: this.group.categorizePollTemplates});
-      });
-    }
+    discussionTemplate: 'query'
   },
 
   computed: {
@@ -144,18 +124,13 @@ export default {
     },
 
     filters() {
-      if (this.singleList) {
-        return {templates: 'mdi-thumbs-up-down'};
-      } else {
-        const recommendedIcon = (this.discussionTemplate && this.discussionTemplate.pollTemplateKeysOrIds.length && 'mdi-star') || null;
-        return pickBy({
-          recommended: recommendedIcon,
-          proposal: 'mdi-thumbs-up-down',
-          poll: 'mdi-poll',
-          meeting: 'mdi-calendar'
-        }
-        , v => !!v);
+      const recommendedIcon = (this.discussionTemplate && this.discussionTemplate.pollTemplateKeysOrIds.length && 'mdi-star') || null;
+      return pickBy({
+        recommended: recommendedIcon,
+        proposal: 'mdi-thumbs-up-down',
+        poll: 'mdi-poll'
       }
+      , v => !!v);
     }
   }
 };
@@ -190,7 +165,6 @@ export default {
         v-list-item-title(v-t="'discussion_form.new_template'")
         v-list-item-subtitle(v-t="'poll_common.create_a_custom_process'")
 
-      v-checkbox.pl-4(v-model="singleList" :label="$t('poll_common.show_all_templates_in_one_list')")
       v-list-subheader(v-if="pollTemplates.length" v-t="'poll_common.hidden_poll_templates'")
 
     template(v-if="isSorting")
