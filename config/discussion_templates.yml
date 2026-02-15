@@ -1,10 +1,10 @@
 practice_thread:
   process_name_i18n: discussion_templates.practice_thread.process_name
-  process_subtitle_i18n: discussion_templates.practice_thread.process_subtitle
-  process_introduction_i18n: discussion_templates.practice_thread.process_introduction
+  process_subtitle_i18n: discussion_templates.practice_thread.process_subtitle_v2
+  process_introduction_i18n: discussion_templates.practice_thread.process_introduction_v2
   process_introduction_format: html
-  title_i18n: discussion_templates.practice_thread.title
-  description_i18n: discussion_templates.practice_thread.description
+  title_i18n: discussion_templates.practice_thread.title_v2
+  description_i18n: discussion_templates.practice_thread.description_v2
   description_format: html
   recipient_audience: group
   newest_first: false
