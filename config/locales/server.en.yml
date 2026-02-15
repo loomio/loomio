@@ -103,6 +103,7 @@ en:
       objection: Objection
       objection_meaning: I have a valid objection and think the proposal will cause harm
       objection_prompt: What change to this proposal is needed to make it 'safe to try', so that you can support it?
+      details_v2: "<h3><strong>What is the decision you need to make?</strong></h3><p></p><h3><strong>Why is this important?</strong></h3><p></p><h3><strong>What are you asking of people in this proposal?</strong></h3><p></p><p>We're not aiming for perfection — give your consent if the proposal is good enough and safe to try. If you have an objection, say what needs to change to make it workable.</p>"
       outcome_statement: "<p>Thanks for participating in the consent process.</p>"
     consensus:
       process_subtitle: Reach collective agreement with everyone involved
@@ -110,6 +111,7 @@ en:
       process_introduction: <p>Build consensus for a decision you need to make, to reach an agreement that satisfies the needs and concerns of all participants.</p><ul><li><p>Discuss and develop a proposal together</p></li><li><p>Include and respect everyone involved</p></li><li><p>Seek agreement from most people&nbsp;</p></li></ul><p><a target="_blank" href="https://help.loomio.com/en/guides/consensus_process/index.html">Read more about the Consensus process</a>.</p>
       title: Approve the new Brand concept
       details: <h3 id="what-is-the-decision-you-need-to-make"><strong>What is the decision you need to make?</strong></h3><p></p><h3 id="why-is-this-important"><strong>Why is this important?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>What are you asking people to do?</strong></h3><p></p><p>For this proposal to pass, we need the majority of members to vote Agree. </p><p>If you Disagree, say why and what needs to change for you to Agree.</p>
+      details_v2: "<h3><strong>What is the decision you need to make?</strong></h3><p></p><h3><strong>Why is this important?</strong></h3><p></p><h3><strong>What are you asking people to do?</strong></h3><p></p><p>Share where you stand and why. If you disagree, explain what would need to change for you to support this.</p>"
       outcome_statement: "<p>Thanks for participating in the consensus process.</p>"
       agree: Agree
       agree_meaning: I support the proposal
@@ -160,6 +162,7 @@ en:
       concerned: Concerned
       concerned_meaning: Something about this may need to change for me to consent or agree
       concerned_prompt: What is your concern and how might it be addressed?
+      details_v2: "<h3><strong>What are you proposing?</strong></h3><p></p><h3><strong>Why is this important?</strong></h3><p></p><h3><strong>What are you asking people to do?</strong></h3><p></p><p>Say whether this looks good, could be better, or needs a rethink — and share your reasoning.</p>"
       looks_good_meaning_v2: I'm happy with the direction
       looks_good_prompt_v2: What do you like about it?
       could_be_better: Could be better

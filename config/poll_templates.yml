@@ -68,7 +68,7 @@ check:
   process_subtitle_i18n: poll_templates.sense_check.process_subtitle_v2
   process_introduction_i18n: poll_templates.sense_check.process_introduction_v2
   title_placeholder_i18n: poll_templates.sense_check.title
-  details_i18n: poll_templates.sense_check.details
+  details_i18n: poll_templates.sense_check.details_v2
   default_duration_in_days: 3
   outcome_statement_i18n: poll_templates.sense_check.outcome_statement
   tags_i18n:
@@ -229,7 +229,7 @@ consent:
   process_subtitle_i18n: poll_templates.consent.process_subtitle_v2
   process_introduction_i18n: poll_templates.consent.process_introduction_v2
   title_placeholder_i18n: poll_templates.consent.title
-  details_i18n: poll_templates.consent.details
+  details_i18n: poll_templates.consent.details_v2
   default_duration_in_days: 7
   outcome_statement_i18n: poll_templates.consent.outcome_statement
   tags_i18n:
@@ -253,7 +253,7 @@ consensus:
   process_subtitle_i18n: poll_templates.consensus.process_subtitle
   process_introduction_i18n: poll_templates.consensus.process_introduction_v2
   title_placeholder_i18n: poll_templates.consensus.title
-  details_i18n: poll_templates.consensus.details
+  details_i18n: poll_templates.consensus.details_v2
   default_duration_in_days: 7
   notify_on_closing_soon: 3
   outcome_statement_i18n: poll_templates.consensus.outcome_statement
