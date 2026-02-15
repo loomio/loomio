@@ -16,10 +16,12 @@ class PollService
         stances = Stance.none
       end
 
+      if !poll.opened_at && poll.closing_at && (poll.opening_at.blank? || poll.opening_at <= Time.now)
+        poll.update_column(:opened_at, Time.now)
+      end
+
       EventBus.broadcast('poll_create', poll, actor)
       Events::PollCreated.publish!(poll, actor)
-
-      open_poll_if_ready(poll)
     end
   end
 
