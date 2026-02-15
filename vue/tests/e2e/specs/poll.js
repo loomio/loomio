@@ -124,7 +124,7 @@ module.exports = {
     page.loadPath('polls/test_discussion')
     page.click('.activity-panel__add-poll')
     page.pause(500)
-    page.click(".poll-common-choose-template__meeting")
+    page.click(".poll-common-choose-template__poll")
     page.click('.decision-tools-card__poll-type--meeting')
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
     page.fillIn('.poll-common-form-fields__details .lmo-textarea div[contenteditable=true]', 'Some details')
