@@ -17,18 +17,6 @@ class Views::EventMailer::Poll::Summary < Views::ApplicationMailer::Component
 
       p { raw TranslationService.formatted_text(@poll, :details, @recipient) }
 
-      if @poll.active?
-        p { plain t(:"poll_mailer.common.you_have_until", when: format_date_for_humans(@poll.closing_at, @recipient.time_zone, @recipient.date_time_pref)) }
-      end
-
-      if @poll.closed?
-        h3(class: "text-subtitle-2") do
-          plain t(:"poll_common_form.closed")
-          plain " "
-          plain format_date_for_humans(@poll.closed_at, @recipient.time_zone, @recipient.date_time_pref)
-        end
-      end
-
       render Views::EventMailer::Common::Attachments.new(resource: @poll)
     end
   end

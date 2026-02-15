@@ -217,6 +217,7 @@ class RecordCloner
       discarded_by
       specified_voters_only
       notify_on_closing_soon
+      notify_on_open
       content_locale
       link_previews
       shuffle_options

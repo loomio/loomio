@@ -49,12 +49,32 @@ class Dev::PollsController < Dev::NightwatchController
       poll = scenario[:poll]
       recipient = scenario[:observer]
 
+      event_key = EventMailer.event_key_for(event, recipient)
+      subject_params = {
+        title: poll.title,
+        poll_type: I18n.t("decision_tools_card.#{poll.poll_type}_title"),
+        actor: event.user.name,
+        site_name: AppConfig.theme[:site_name]
+      }
+      email_subject = I18n.t("notifications.email_subject.#{event_key}", **subject_params)
+
       render Views::Dev::Polls::Compare.new(
+        email_subject: email_subject,
+        print: Views::Polls::Export.new(poll: poll, exporter: PollExporter.new(poll), recipient: recipient),
         email: EventMailer.build_component(event: event, recipient: recipient),
         matrix: Views::Chatbot::Matrix::Poll.new(event: event, poll: poll, recipient: recipient),
         markdown: Views::Chatbot::Markdown::Poll.new(event: event, poll: poll, recipient: recipient),
         slack: Views::Chatbot::Slack::Poll.new(event: event, poll: poll, recipient: recipient)
       ), layout: false
+    when 'print'
+      render Views::Polls::Export.new(
+        poll: scenario[:poll],
+        exporter: PollExporter.new(scenario[:poll]),
+        recipient: scenario[:observer]
+      )
+    when 'csv'
+      exporter = PollExporter.new(scenario[:poll])
+      send_data exporter.to_csv, filename: exporter.file_name
     else
       redirect_to poll_url(scenario[:poll], Hash(scenario[:params]))
     end
@@ -123,6 +143,12 @@ class Dev::PollsController < Dev::NightwatchController
     group.update!(can_start_polls_without_discussion: true)
     sign_in group.admins.first
     redirect_to "/g/#{group.key}/polls"
+  end
+
+  def test_scheduled_poll
+    scenario = poll_scheduled_scenario(poll_type: params[:poll_type] || 'proposal')
+    sign_in scenario[:observer]
+    redirect_to poll_url(scenario[:poll])
   end
 
   def test_activity_items

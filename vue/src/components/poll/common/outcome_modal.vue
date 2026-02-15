@@ -11,8 +11,6 @@ import { exact} from '@/shared/helpers/format_time';
 
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete';
 import { I18n } from '@/i18n';
-import { mdiCalendar } from '@mdi/js';
-
 export default {
   components: {
     RecipientsAutocomplete
@@ -25,7 +23,6 @@ export default {
 
   data() {
     return {
-      mdiCalendar,
       loading: false,
       options: [],
       bestOption: null,
@@ -135,15 +132,16 @@ v-card.poll-common-outcome-modal(
             :label="$t('poll_common_calendar_invite.location')")
 
     .outcome-review-on(v-if="outcome.poll().pollType == 'proposal'")
-      lmo-date-input(
+      v-date-input(
+        input-format="yyyy-mm-dd"
         :label="$t('poll_common_outcome_form.review_date')"
         :hint="$t('poll_common_outcome_form.review_date_hint')"
         v-model='outcome.reviewOn'
-        :prepend-inner-icon="mdiCalendar"
         :min="dateToday"
         clearable
         @click:clear="outcome.reviewOn = null"
-        hide-actions
+        persistent-hint
+        hide-header
       )
 
     lmo-textarea.poll-common-outcome-form__statement.mt-4(:model='outcome' field='statement' :label="$t('poll_common.statement')" :placeholder="$t('poll_common_outcome_form.statement_placeholder')")

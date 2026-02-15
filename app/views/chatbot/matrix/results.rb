@@ -7,6 +7,8 @@ class Views::Chatbot::Matrix::Results < Views::Chatbot::Base
   end
 
   def view_template
+    return if @poll.scheduled?
+
     if @poll.decided_voters_count > 0 || @poll.closed_at
       if @poll.show_results?
         h5 { t(@poll.closed_at ? :'poll_common.results' : :'poll_common.current_results') }

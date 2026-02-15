@@ -15,6 +15,7 @@ class PollTest < ActiveSupport::TestCase
       author: @user,
       poll_option_names: ["engage"],
       closing_at: 5.days.from_now,
+      opened_at: Time.now,
       notify_on_closing_soon: "voters"
     }
     poll = Poll.new(defaults.merge(attrs))
@@ -32,6 +33,7 @@ class PollTest < ActiveSupport::TestCase
       poll_option_names: %w[apple banana orange],
       custom_fields: { minimum_stance_choices: 2 },
       closing_at: 5.days.from_now,
+      opened_at: Time.now,
       notify_on_closing_soon: "voters"
     }
     poll = Poll.new(defaults.merge(attrs))
@@ -49,6 +51,7 @@ class PollTest < ActiveSupport::TestCase
       poll_option_names: ['01-01-2015'],
       custom_fields: { can_respond_maybe: false },
       closing_at: 5.days.from_now,
+      opened_at: Time.now,
       notify_on_closing_soon: "voters"
     }
     poll = Poll.new(defaults.merge(attrs))

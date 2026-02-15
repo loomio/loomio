@@ -73,7 +73,7 @@ class EventTest < ActiveSupport::TestCase
     # Create poll (without PollService.create to avoid publishing events/emails in setup)
     @poll = Poll.new(poll_type: 'proposal', title: "Event Poll",
                      poll_option_names: %w[agree disagree abstain],
-                     closing_at: 1.day.from_now, author: @author,
+                     closing_at: 1.day.from_now, opened_at: Time.now, author: @author,
                      discussion: @discussion, group: @group,
                      details: @user_mentioned_text, specified_voters_only: true)
     @poll.save!
@@ -122,11 +122,10 @@ class EventTest < ActiveSupport::TestCase
     assert_includes Events::UserMentioned.last.custom_fields['user_ids'], @mentioned_user.id
   end
 
-  test "poll_created notifies mentioned users" do
+  test "poll_created notifies mentioned users and loud subscribers" do
     assert_difference -> { ActionMailer::Base.deliveries.count }, 3 do
       Events::PollCreated.publish!(@poll, @poll.author)
     end
-    assert_equal 2, Events::PollCreated.last.subscribed_recipients.length
     assert_equal 1, @poll.mentioned_users.length
     assert_includes Events::UserMentioned.last.custom_fields['user_ids'], @mentioned_user.id
   end

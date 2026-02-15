@@ -16,6 +16,7 @@ jobs:
       PGPORT: 5432
       PGUSER: postgres
       RAILS_ENV: test
+      E2E_PORT: 3001
     services:
       postgres:
         image: postgres:latest
@@ -75,7 +76,7 @@ jobs:
       run: |
         rm -f bin/*
         bundle install --binstubs
-        bundle exec rails server -b 0.0.0.0 &
+        bundle exec rails server -b 0.0.0.0 -p $E2E_PORT &
     - name: build client
       run: |
         cd vue

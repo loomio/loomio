@@ -58,16 +58,25 @@ module Views::Chatbot::Markdown::Concerns
 
     md MarkdownService.render_markdown(poll.current_outcome.statement, poll.current_outcome.statement_format)
     md "\n"
+    md "\n"
     md "*#{t(:"poll_types.#{poll.poll_type}")}*\n"
+  end
+
+  def render_voting_period(poll)
+    if poll.scheduled?
+      days = ((poll.closing_at - poll.opening_at) / 1.day).round
+      md "#{t(:"poll_mailer.common.voting_opens_and_closes", opens: format_date_for_humans(poll.opening_at, @recipient.time_zone, @recipient.date_time_pref), closes: format_date_for_humans(poll.closing_at, @recipient.time_zone, @recipient.date_time_pref), days: days)}\n"
+    elsif poll.active?
+      md "#{t(:"poll_mailer.common.you_have_until", when: format_date_for_humans(poll.closing_at, @recipient.time_zone, @recipient.date_time_pref))}\n"
+    elsif poll.closed? && poll.opened_at
+      days = ((poll.closed_at - poll.opened_at) / 1.day).round
+      md "#{t('poll_mailer.common.voting_opened_and_closed', opens: format_date_for_humans(poll.opened_at, @recipient.time_zone, @recipient.date_time_pref), closes: format_date_for_humans(poll.closed_at, @recipient.time_zone, @recipient.date_time_pref), days: days)}\n"
+    end
   end
 
   def render_vote(poll)
     if poll.anonymous?
       md "#{t(:"poll_common_action_panel.anonymous")}\n"
-    end
-
-    if poll.closed?
-      md "#{t(:"poll_common_form.closed")} #{format_date_for_humans(poll.closed_at, @recipient.time_zone, @recipient.date_time_pref)}\n"
     end
 
     if poll.active?
@@ -84,8 +93,16 @@ module Views::Chatbot::Markdown::Concerns
         end
       else
         md "**[#{t('poll_common.vote_now')}](#{polymorphic_url(poll)})**\n"
-        md "\n"
-        md "#{t(:"poll_mailer.common.you_have_until", when: format_date_for_humans(poll.closing_at, @recipient.time_zone, @recipient.date_time_pref))}\n"
+      end
+    elsif poll.scheduled?
+      poll.results.each do |option|
+        next if option[:id] == 0
+        name = case option[:name_format]
+               when 'i18n' then t(option[:name])
+               when 'iso8601' then format_iso8601_for_humans(option[:name], @recipient.time_zone, @recipient.date_time_pref)
+               else option[:name]
+               end
+        md "- #{name}\n"
       end
     end
 
@@ -109,6 +126,8 @@ module Views::Chatbot::Markdown::Concerns
   end
 
   def render_results(poll)
+    return if poll.scheduled?
+
     if (poll.decided_voters_count > 0) || poll.closed_at
       if poll.show_results?
         md "**#{t(poll.closed_at ? :'poll_common.results' : :'poll_common.current_results')}**\n"

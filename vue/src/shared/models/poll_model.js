@@ -50,6 +50,8 @@ export default class PollModel extends BaseModel {
       title: '',
       titlePlaceholder: null,
       closingAt: null,
+      openingAt: null,
+      openedAt: null,
       customize: false,
       details: '',
       detailsFormat: 'html',
@@ -75,6 +77,7 @@ export default class PollModel extends BaseModel {
       attachments: [],
       linkPreviews: [],
       notifyOnClosingSoon: 'undecided_voters',
+      notifyOnOpen: true,
       results: [],
       meetingDuration: null,
       pollTemplateId: null,
@@ -340,8 +343,12 @@ export default class PollModel extends BaseModel {
     }).data();
   }
 
+  isOpened() {
+    return !!this.openedAt;
+  }
+
   isVotable() {
-    return !this.discardedAt && this.closingAt && (this.closedAt == null);
+    return !this.discardedAt && this.closingAt && (this.closedAt == null) && this.isOpened();
   }
 
   isClosed() {
@@ -356,7 +363,7 @@ export default class PollModel extends BaseModel {
 
   reopen() {
     this.processing = true;
-    return Records.polls.remote.postMember(this.key, 'reopen', {poll: {closing_at: this.closingAt}})
+    return Records.polls.remote.postMember(this.key, 'reopen', {poll: {closing_at: this.closingAt, opening_at: this.openingAt}})
     .finally(() => { return this.processing = false; });
   }
 

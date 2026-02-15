@@ -46,7 +46,7 @@ class ChatbotSlackPhlexTest < ActiveSupport::TestCase
     component = Views::Chatbot::Slack::Poll.new(event: event, poll: poll, recipient: @recipient)
     output = render_phlex(component)
 
-    assert_includes output, "started a proposal"
+    assert_includes output, "created a proposal"
     assert_includes output, "Active Proposal"
     # Slack mrkdwn converts **bold** to *bold* and [text](url) to <url|text>
     assert_match(/<http.*\|Active Proposal>/, output)

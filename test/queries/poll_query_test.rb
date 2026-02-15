@@ -13,6 +13,7 @@ class PollQueryTest < ActiveSupport::TestCase
         title: "Test poll #{SecureRandom.hex(4)}",
         author: @user,
         poll_option_names: ["engage"],
+        opened_at: Time.now,
         notify_on_closing_soon: "voters"
       }
       p = Poll.new(defaults.merge(attrs))

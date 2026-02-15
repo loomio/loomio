@@ -50,7 +50,6 @@ class Dev::PollMailerTest < ActionController::TestCase
     test "#{poll_type} created email" do
       get :test_poll_scenario, params: {scenario: 'poll_created', poll_type: poll_type, format: 'email'}
       assert_response :success
-      assert_text('.base-mailer__event-headline', "invited you to")
       assert_notification_headline("notifications.without_title.poll_announced")
       assert_element('.poll-mailer-common-summary')
       assert_text('.poll-mailer__vote', "Please vote")

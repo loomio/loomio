@@ -19,7 +19,7 @@ class Ability::PollTest < ActiveSupport::TestCase
     other = User.create!(name: "PO #{SecureRandom.hex(4)}", email: "po_#{SecureRandom.hex(4)}@test.com", email_verified: true)
     poll = Poll.create!(poll_type: 'poll', title: "PTest #{SecureRandom.hex(4)}",
                         poll_option_names: %w[Yes No], closing_at: 1.day.from_now,
-                        author: other, specified_voters_only: true)
+                        opened_at: Time.now, author: other, specified_voters_only: true)
     poll.stances.create!(participant_id: @actor.id, admin: true, guest: true, latest: true)
     assert can?(:vote_in, poll)
     assert can?(:add_voters, poll)
@@ -31,7 +31,7 @@ class Ability::PollTest < ActiveSupport::TestCase
     other = User.create!(name: "PO #{SecureRandom.hex(4)}", email: "po_#{SecureRandom.hex(4)}@test.com", email_verified: true)
     poll = Poll.create!(poll_type: 'poll', title: "PTest #{SecureRandom.hex(4)}",
                         poll_option_names: %w[Yes No], closing_at: 1.day.from_now,
-                        author: other, specified_voters_only: true)
+                        opened_at: Time.now, author: other, specified_voters_only: true)
     poll.stances.create!(participant_id: @actor.id, admin: false, guest: true, latest: true)
     assert can?(:vote_in, poll)
     assert cannot?(:add_voters, poll)
@@ -43,7 +43,7 @@ class Ability::PollTest < ActiveSupport::TestCase
     other = User.create!(name: "Other #{SecureRandom.hex(4)}", email: "pother_#{SecureRandom.hex(4)}@test.com", email_verified: true)
     poll = Poll.create!(poll_type: 'poll', title: "PTest #{SecureRandom.hex(4)}",
                         poll_option_names: %w[Yes No], closing_at: 1.day.from_now,
-                        author: other, specified_voters_only: true)
+                        opened_at: Time.now, author: other, specified_voters_only: true)
     assert cannot?(:vote_in, poll)
     assert cannot?(:add_voters, poll)
     assert cannot?(:announce, poll)

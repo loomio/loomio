@@ -16,10 +16,10 @@ class PollService
         stances = Stance.none
       end
 
-      user_ids = params[:notify_recipients] ? stances.pluck(:participant_id) : []
-
       EventBus.broadcast('poll_create', poll, actor)
-      Events::PollCreated.publish!(poll, actor, recipient_user_ids: user_ids - [actor.id])
+      Events::PollCreated.publish!(poll, actor)
+
+      open_poll_if_ready(poll)
     end
   end
 
@@ -45,6 +45,9 @@ class PollService
     Poll.transaction do
       poll.save!
       poll.update_counts!
+
+      open_poll_if_ready(poll)
+
       GenericWorker.perform_async('SearchService', 'reindex_by_poll_id', poll.id)
 
       GenericWorker.perform_async('PollService', 'group_members_added', poll.group_id) if poll.group_id
@@ -223,7 +226,7 @@ class PollService
   def self.reopen(poll:, params:, actor:)
     actor.ability.authorize! :reopen, poll
 
-    poll.assign_attributes(closing_at: params[:closing_at], closed_at: nil)
+    poll.assign_attributes(closing_at: params[:closing_at], closed_at: nil, opening_at: nil, opened_at: Time.now)
     return false unless poll.valid?
 
     Poll.transaction do
@@ -231,6 +234,7 @@ class PollService
 
       EventBus.broadcast('poll_reopen', poll, actor)
       Events::PollReopened.publish!(poll, actor)
+      announce_poll_opened(poll) if poll.notify_on_open
     end
   end
 
@@ -241,6 +245,13 @@ class PollService
     Poll.closing_soon_not_published(this_hour_tomorrow).each do |poll|
       Events::PollClosingSoon.publish!(poll)
     end
+  end
+
+  def self.open_scheduled_polls
+    Poll.kept
+        .where(opened_at: nil)
+        .where("opening_at IS NOT NULL AND opening_at <= ?", Time.now)
+        .each { |poll| open_poll_if_ready(poll) }
   end
 
   def self.group_members_added(group_id)
@@ -450,5 +461,25 @@ class PollService
       )
     end
     l
+  end
+
+  def self.open_poll_if_ready(poll)
+    return if poll.opened_at
+    return unless poll.closing_at
+    return if poll.opening_at.present? && poll.opening_at > Time.now
+
+    poll.update_column(:opened_at, Time.now)
+    announce_poll_opened(poll) if poll.notify_on_open
+  end
+
+  def self.announce_poll_opened(poll)
+    stances = poll.stances.latest.where.not(participant_id: poll.author_id)
+    return if stances.empty?
+
+    Events::PollAnnounced.publish!(
+      poll: poll,
+      actor: poll.author,
+      stances: stances
+    )
   end
 end

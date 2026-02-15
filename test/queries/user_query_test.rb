@@ -37,10 +37,10 @@ class UserQueryTest < ActiveSupport::TestCase
     @other_discussion.create_missing_created_event!
 
     @poll_author = new_user("pollauthor")
-    @poll = Poll.new(poll_type: "poll", title: "Poll #{hex}", author: @poll_author, poll_option_names: ["engage"], closing_at: 5.days.from_now, notify_on_closing_soon: "voters")
+    @poll = Poll.new(poll_type: "poll", title: "Poll #{hex}", author: @poll_author, poll_option_names: ["engage"], closing_at: 5.days.from_now, opened_at: Time.now, notify_on_closing_soon: "voters")
     @poll.save!
     @poll.create_missing_created_event!
-    @other_poll = Poll.new(poll_type: "poll", title: "Other poll #{hex}", author: @poll_author, poll_option_names: ["engage"], closing_at: 5.days.from_now, notify_on_closing_soon: "voters")
+    @other_poll = Poll.new(poll_type: "poll", title: "Other poll #{hex}", author: @poll_author, poll_option_names: ["engage"], closing_at: 5.days.from_now, opened_at: Time.now, notify_on_closing_soon: "voters")
     @other_poll.save!
     @other_poll.create_missing_created_event!
 

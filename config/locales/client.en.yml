@@ -259,6 +259,7 @@ en:
       pm: pm
     closing_in: Closing %{time}
     closed_ago: Closed %{time}
+    opening_in: Opening %{time}
     volume: Volume
     notification_volume: Notification Volume
     group: Group
@@ -719,7 +720,7 @@ en:
       poll_closed_by_user: "%{actor} closed the %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} closing in 24 hours: %{title}"
       poll_closing_soon_author: 'Your %{poll_type} is closing in 24 hours: %{title}'
-      poll_created: "Vote: %{title}"
+      poll_created: "%{poll_type}: %{title}"
       poll_edited: "%{actor} updated the %{poll_type}: %{title}"
       poll_expired: "%{poll_type} has closed: %{title}"
       poll_expired_author: 'Publish an outcome: %{title}'
@@ -758,7 +759,7 @@ en:
       poll_closed_by_user: "%{actor} closed the %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} closing in 24 hours: %{title}"
       poll_closing_soon_author: 'Your %{poll_type} is closing in 24 hours: %{title}'
-      poll_created: "%{actor} started a %{poll_type}: %{title}"
+      poll_created: "%{actor} created a %{poll_type}: %{title}"
       poll_edited: "%{actor} updated the %{poll_type}: %{title}"
       poll_expired: "%{poll_type} has closed: %{title}"
       poll_expired_author: 'Share the outcome of your %{poll_type}: %{title}'
@@ -796,7 +797,7 @@ en:
       poll_closed_by_user: "%{actor} closed the %{poll_type}"
       poll_closing_soon: "%{poll_type} closing in 24 hours"
       poll_closing_soon_author: Your %{poll_type} is closing in 24 hours
-      poll_created: "%{actor} started a %{poll_type}"
+      poll_created: "%{actor} created a %{poll_type}"
       poll_edited: "%{actor} updated the %{poll_type}"
       poll_expired: "%{poll_type} has closed"
       poll_expired_author: Share the outcome of your %{poll_type}
@@ -2122,6 +2123,7 @@ en:
     results_hidden_until_vote: Results will be shown after you vote
     unable_to_vote: You have not been invited to vote in this %{poll_type}
     draft_mode: Voting disabled. This is not open for voting yet.
+    voting_opens_at: "This %{poll_type} opens for voting %{time}"
     for_this_proposal_to_pass: "For this proposal to pass:"
     for_this_poll_type_to_be_valid: "For this %{poll_type} to be valid:"
   poll_common_collapsed:
@@ -2207,6 +2209,12 @@ en:
     closing_date: Closing date
     closing_hour: Closing time
     invalid_date: Invalid date
+  poll_common_opening_at_field:
+    voting_opens_immediately: Voting opens immediately
+    opening_date: Opening date
+    opening_hour: Opening time
+    scheduled_hint: The poll will be visible but not votable until the opening time.
+    draft_hint: This poll will be saved as a draft. Set an opening date or check "Voting opens immediately" when you're ready to start voting.
   poll_card:
     poll_type_by_name: "%{poll_type} by %{name}"
     started_by: Started by %{name}
@@ -2263,6 +2271,8 @@ en:
     quorum_tip_vote_share_requirement: 'Tip: You can also specify the level of agreement required for a proposal to pass. Edit an option to define vote share requirement'
     deadline: Deadline
     how_much_time_to_vote: How much time will you give people to vote?
+    voting_duration: Duration
+    voting_duration_hint: When does voting open and when does it close?
     notify_everyone_when_poll_starts: Notify everyone when %{poll_type} starts
     option_has_votes_confirm_delete: Some people have voted for this option, are you sure you want to delete it?
     example_title: Example title
@@ -2272,6 +2282,7 @@ en:
     advanced_settings: Advanced settings
     show_advanced_settings: Show advanced settings
     hide_advanced_settings: Hide advanced settings
+    more_settings: More settings
     choose_at_least: Choose at least
     choose_at_most: Choose at most
     please_review_the_form: Please review the form
@@ -2338,6 +2349,7 @@ en:
     limit_reason_length: Limit reason to maximum 500 characters
     save_poll: Save poll
     start_poll_type: Start %{poll_type}
+    create_poll_type: Create %{poll_type}
     share_poll_type: Share %{poll_type}
     who_may_vote: Who may vote in this %{poll_type}?
     update: Update
@@ -2345,6 +2357,8 @@ en:
     notify_invitees: Send notifications
     no_notifications_warning: Voters will not be notified. This is useful if you're running a lot of polls and plan to notify everyone later on.
     count_voters_added: "%{count} voters added"
+    notify_voters_when_voting_opens: Notify voters when voting opens
+    voters_notified_when_opens: Voters will be notified when voting opens
     poll_type_created: "%{poll_type} created"
     poll_type_started: "%{poll_type} started"
     poll_type_updated: "%{poll_type} updated"
@@ -2511,7 +2525,7 @@ en:
     outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> shared an outcome"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> reopened the %{polltype}"
     poll_closed_by_user: "<a class='actor-link' href='/u/%{username}'>%{author}</a> closed the %{polltype}"
-    poll_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> started a %{polltype}"
+    poll_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> created a %{polltype}"
     poll_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a> edited the %{polltype}"
     poll_option_added: "<a class='actor-link' href='/u/%{username}'>%{author}</a> added options to the %{polltype}"
     poll_expired: "%{polltype} closed"

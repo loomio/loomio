@@ -47,7 +47,7 @@ export default new class PollService {
       view_all_votes: {
         icon: 'mdi-list-status',
         name: 'poll_common.view_all_votes',
-        dock: 2,
+        menu: true,
         canPerform() { return vm.$route.path.startsWith('/d/') && poll.showResults() },
         to() { return `/p/${poll.key}`; }
       },
@@ -120,11 +120,11 @@ export default new class PollService {
       },
 
       announce_poll: {
-        icon: 'mdi-send',
-        name: 'common.action.invite',
+        icon: 'mdi-account-multiple-plus',
+        name: 'poll_common_form.add_voters',
         dock: 2,
         canPerform() {
-          if (poll.discardedAt || poll.closedAt) { return false; }
+          if (poll.discardedAt || poll.closedAt || (!poll.openedAt && !poll.openingAt)) { return false; }
           return AbilityService.canAddMembersPoll(poll);
         },
         perform() {
@@ -142,7 +142,7 @@ export default new class PollService {
         name: 'common.action.remind',
         dock: 2,
         canPerform() {
-          if (poll.discardedAt || poll.closedAt || (poll.votersCount < 2)) { return false; }
+          if (poll.discardedAt || poll.closedAt || !poll.openedAt || (poll.votersCount < 2)) { return false; }
           return AbilityService.canAnnouncePoll(poll);
         },
         perform() {
