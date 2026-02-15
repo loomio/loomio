@@ -44,7 +44,7 @@ export default {
       if (this.isScheduled) {
         return '';
       } else if (this.poll.isVotable()) {
-        if (differenceInHours(this.poll.closingAt, new Date) < 48) {
+        if (this.poll.closingAt && differenceInHours(this.poll.closingAt, new Date) < 48) {
           return 'warning';
         } else {
           return '';
