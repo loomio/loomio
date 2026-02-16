@@ -707,7 +707,7 @@ GEM
       actionpack (>= 6.1)
       activesupport (>= 6.1)
       sprockets (>= 3.0.0)
-    stackprof (0.2.27)
+    stackprof (0.2.28)
     stringio (3.2.0)
     temple (0.10.4)
     terminal-table (4.0.0)
