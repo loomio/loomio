@@ -1929,6 +1929,7 @@ it:
     post_outcome: Pubblica conclusione
     view_all_votes: Visualizza tutti i voti
     you_voted: Hai votato
+    these_are_templates: Questi sono i modelli decisionali del tuo gruppo. Clicca su un modello per avviare una nuova decisione. Gli amministratori possono personalizzare tutti i dettagli di un modello in modo che corrisponda alle pratiche della tua organizzazione e sia facile da trovare e utilizzare per i membri.
   poll_common_attachment_form:
     label: Allegati
   poll_common_add_option:
@@ -2702,7 +2703,6 @@ it:
     start_a_new_discussion: Inizia una nuova discussione
     discussion_template_saved: Modello di discussione salvato
     these_are_public_templates: Questi modelli sono disponibili per essere copiati o modificati in base alle esigenze del tuo gruppo
-    these_are_templates: Questi sono i modelli di discussione nel tuo gruppo. Clicca su un modello per avviare una discussione. Puoi anche modificarli, rimuoverli o riordinarli, se lo desideri.
     default_title_label: Titolo predefinito
     default_title_hint: 'Precompila il campo del titolo con testo modificabile. Questo campo è facoltativo: lascialo vuoto se non sei sicuro.'
     title_placeholder_label: Titolo di esempio
@@ -2719,7 +2719,6 @@ it:
     browse_example_templates: Sfoglia i modelli di esempio
     example_templates: Modelli di esempio
     browse_public_templates_hint: Fai clic sul nome di un modello per avviare una discussione con esso oppure fai clic sul pulsante di modifica a destra per crearne una copia e modificarlo per il tuo gruppo.
-    these_are_templates_v2: Questo è un elenco dei modelli di discussione nel tuo gruppo. Fai clic su un modello per utilizzarlo come punto di partenza per una nuova discussione. Gli amministratori del gruppo possono modificare i modelli e riorganizzare l'elenco in modo che sia facile trovare i modelli importanti.
     process_name_placeholder: ad esempio standup settimanale
     process_subtitle_placeholder: ad esempio un breve check-in con il team ogni settimana
     default_title_placeholder: ad esempio Standup - 15 gennaio

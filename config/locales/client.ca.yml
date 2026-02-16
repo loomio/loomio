@@ -1924,6 +1924,7 @@ ca:
     post_outcome: Publicar conclusió
     view_all_votes: Veure tots els vots
     you_voted: Vas votar
+    these_are_templates: Aquestes són les plantilles de decisió del vostre grup. Feu clic en una plantilla per iniciar una decisió nova. Els administradors poden personalitzar tots els detalls d'una plantilla perquè coincideixi amb les pràctiques de la vostra organització i sigui fàcil de trobar i utilitzar per als membres.
   poll_common_attachment_form:
     label: Adjunts
   poll_common_add_option:
@@ -2701,7 +2702,6 @@ ca:
     start_a_new_discussion: Inicia una nova discussió
     discussion_template_saved: S'ha desat la plantilla de discussió
     these_are_public_templates: Aquestes plantilles estan disponibles perquè les copieu o les modifiqueu per adaptar-les al vostre grup.
-    these_are_templates: Aquestes són les plantilles de discussió del vostre grup. Feu clic a una plantilla per iniciar una discussió. També podeu editar-les, eliminar-les o reordenar-les si voleu.
     default_title_label: Títol per defecte
     default_title_hint: Ompliu prèviament el camp del títol amb text editable. Això és opcional; deixeu-ho en blanc si no esteu segurs.
     title_placeholder_label: Exemple de títol
@@ -2718,7 +2718,6 @@ ca:
     browse_example_templates: Navega per plantilles d'exemple
     example_templates: Plantilles d'exemple
     browse_public_templates_hint: Feu clic al nom d'una plantilla per iniciar-hi una discussió o feu clic al botó d'edició de la dreta per fer-ne una còpia i modificar-la per al vostre propi grup.
-    these_are_templates_v2: Aquesta és una llista de les plantilles de discussió del vostre grup. Feu clic a una plantilla per utilitzar-la com a punt de partida per a una nova discussió. Els administradors del grup poden editar plantilles i reorganitzar la llista perquè sigui fàcil trobar les plantilles importants.
     process_name_placeholder: p. ex., monòlegs setmanals
     process_subtitle_placeholder: p. ex. una breu reunió de seguiment amb l'equip cada setmana
     default_title_placeholder: p. ex. Monòleg - 15 de gener

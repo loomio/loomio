@@ -1899,6 +1899,7 @@ ro:
     post_outcome: Publică rezultatul
     view_all_votes: Vezi toate voturile
     you_voted: Ai votat
+    these_are_templates: Acestea sunt șabloanele de decizie din grupul dvs. Faceți clic pe un șablon pentru a începe o nouă decizie. Administratorii pot personaliza toate detaliile unui șablon, astfel încât acesta să corespundă practicilor organizației dvs. și să fie ușor de găsit și utilizat de către membri.
   poll_common_attachment_form:
     label: Atașamente
   poll_common_add_option:
@@ -2672,7 +2673,6 @@ ro:
     start_a_new_discussion: Începeți o discuție nouă
     discussion_template_saved: Șablonul de discuție a fost salvat
     these_are_public_templates: Aceste șabloane sunt disponibile pentru copiere sau modificare, în funcție de grupul dumneavoastră.
-    these_are_templates: Acestea sunt șabloanele de discuții din grupul dvs. Faceți clic pe un șablon pentru a începe o discuție. De asemenea, puteți edita, elimina sau reordona aceste șabloane, dacă doriți.
     default_title_label: Titlu implicit
     default_title_hint: Precompletați câmpul titlu cu text editabil. Acest lucru este opțional - lăsați necompletat dacă nu sunteți sigur.
     title_placeholder_label: Exemplu de titlu
@@ -2689,7 +2689,6 @@ ro:
     browse_example_templates: Răsfoiți exemple de șabloane
     example_templates: Exemple de șabloane
     browse_public_templates_hint: Faceți clic pe numele unui șablon pentru a începe o discuție cu acesta sau faceți clic pe butonul de editare din dreapta pentru a face o copie și a-l modifica pentru propriul grup.
-    these_are_templates_v2: Aceasta este o listă cu șabloanele de discuții din grupul dvs. Faceți clic pe un șablon pentru a-l utiliza ca punct de plecare pentru o discuție nouă. Administratorii grupului pot edita șabloanele și pot rearanja lista, astfel încât să fie ușor să găsiți șabloanele importante.
     process_name_placeholder: de exemplu, stand-up săptămânal
     process_subtitle_placeholder: de exemplu, o scurtă verificare cu echipa în fiecare săptămână
     default_title_placeholder: de exemplu, Stand-up - 15 ianuarie

@@ -7,11 +7,27 @@ class PollTemplateService
         template.discarded_at = DateTime.now if group.hidden_poll_templates.include?(template.key)
         template
       end
+    ).concat(
+      example_templates.map do |template|
+        template.group_id = group.id
+        template.example = true
+        template
+      end
     )
   end
 
   def self.default_templates
-    AppConfig.poll_templates.map do |key, raw_attrs|
+    build_templates_from(AppConfig.poll_templates.reject { |_key, attrs| attrs['example'] })
+  end
+
+  def self.example_templates
+    build_templates_from(AppConfig.poll_templates.select { |_key, attrs| attrs['example'] })
+  end
+
+  private
+
+  def self.build_templates_from(config)
+    config.map do |key, raw_attrs|
       raw_attrs[:key] = key
       attrs = {}
 
@@ -60,7 +76,7 @@ class PollTemplateService
     end
 
     poll_template.save!
-    poll_template.discard! unless poll_template.group.admins.exists?(actor.id)
+    # poll_template.discard! unless poll_template.group.admins.exists?(actor.id)
     poll_template
   end
 

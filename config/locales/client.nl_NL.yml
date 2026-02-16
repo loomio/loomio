@@ -1924,6 +1924,7 @@ nl_NL:
     post_outcome: Uitkomst publiceren
     view_all_votes: Bekijk alle stemmen
     you_voted: Je hebt gestemd
+    these_are_templates: Dit zijn de beslissingssjablonen in uw groep. Klik op een sjabloon om een nieuwe beslissing te starten. Beheerders kunnen alle details van een sjabloon aanpassen, zodat deze aansluit bij de werkwijze van uw organisatie en gemakkelijk te vinden en te gebruiken is voor leden.
   poll_common_attachment_form:
     label: Bijlagen
   poll_common_add_option:
@@ -2701,7 +2702,6 @@ nl_NL:
     start_a_new_discussion: Start een nieuwe discussie
     discussion_template_saved: Discussiesjabloon opgeslagen
     these_are_public_templates: Deze sjablonen kunt u kopiëren of aanpassen aan uw groep
-    these_are_templates: Dit zijn de discussiesjablonen in je groep. Klik op een sjabloon om een discussie te starten. Je kunt deze desgewenst ook bewerken, verwijderen of opnieuw ordenen.
     default_title_label: Standaardtitel
     default_title_hint: Vul het titelveld vooraf in met bewerkbare tekst. Dit is optioneel; laat het leeg als u het niet zeker weet.
     title_placeholder_label: Voorbeeldtitel
@@ -2718,7 +2718,6 @@ nl_NL:
     browse_example_templates: Bekijk voorbeeldtemplates
     example_templates: Voorbeeldsjablonen
     browse_public_templates_hint: Klik op een sjabloonnaam om een discussie erover te starten, of klik op de bewerkingsknop aan de rechterkant om een kopie te maken en deze aan te passen voor je eigen groep.
-    these_are_templates_v2: Dit is een lijst met de discussiesjablonen in uw groep. Klik op een sjabloon om deze als uitgangspunt voor een nieuwe discussie te gebruiken. Groepsbeheerders kunnen sjablonen bewerken en de lijst herschikken, zodat de belangrijkste sjablonen gemakkelijk te vinden zijn.
     process_name_placeholder: 'bijvoorbeeld: Wekelijkse stand-up'
     process_subtitle_placeholder: 'Bijvoorbeeld: Een kort overleg met het team elke week.'
     default_title_placeholder: bijv. Standup - 15 januari

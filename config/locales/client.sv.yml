@@ -1899,6 +1899,7 @@ sv:
     post_outcome: Publicera resultat
     view_all_votes: Visa alla röster
     you_voted: Du röstade
+    these_are_templates: Det här är beslutsmallarna i din grupp. Klicka på en mall för att starta ett nytt beslut. Administratörer kan anpassa alla detaljer om en mall så att den matchar din organisations praxis och är lätt för medlemmar att hitta och använda.
   poll_common_attachment_form:
     label: Bilagor
   poll_common_add_option:
@@ -2672,7 +2673,6 @@ sv:
     start_a_new_discussion: Starta en ny diskussion
     discussion_template_saved: Diskussionsmallen sparad
     these_are_public_templates: Dessa mallar kan du kopiera eller modifiera för att passa din grupp
-    these_are_templates: Det här är diskussionsmallarna i din grupp. Klicka på en mall för att starta en diskussion. Du kan också redigera, ta bort eller ändra ordningen på dessa om du vill.
     default_title_label: Standardtitel
     default_title_hint: Fyll i titelfältet med redigerbar text. Detta är valfritt – lämna tomt om du är osäker.
     title_placeholder_label: Exempeltitel
@@ -2689,7 +2689,6 @@ sv:
     browse_example_templates: Bläddra bland exempelmallar
     example_templates: Exempelmallar
     browse_public_templates_hint: Klicka på ett mallnamn för att starta en diskussion med det, eller klicka på redigeringsknappen till höger för att skapa en kopia och ändra den för din egen grupp.
-    these_are_templates_v2: Detta är en lista över diskussionsmallarna i din grupp. Klicka på en mall för att använda den som utgångspunkt för en ny diskussion. Gruppadministratörer kan redigera mallar och ordna om listan så att det är enkelt att hitta de viktiga mallarna.
     process_name_placeholder: t.ex. veckovis standup
     process_subtitle_placeholder: t.ex. ett kort möte med teamet varje vecka
     default_title_placeholder: t.ex. Standup - 15 januari

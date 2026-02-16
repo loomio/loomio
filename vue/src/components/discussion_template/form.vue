@@ -272,6 +272,6 @@ v-form(ref="form" @submit.prevent="submit")
         @click='submit()'
         :loading="discussionTemplate.processing"
       )
-        span(v-t="'common.action.save'")
+        span(v-t="'common.action.save_template'")
 
 </template>

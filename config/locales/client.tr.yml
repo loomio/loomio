@@ -1899,6 +1899,7 @@ tr:
     post_outcome: Kararı yayınla
     view_all_votes: Tüm oyları görüntüle
     you_voted: Oy verdiniz
+    these_are_templates: Bunlar grubunuzdaki karar şablonlarıdır. Yeni bir karar başlatmak için bir şablona tıklayın. Yöneticiler, şablonun kuruluşunuzun uygulamalarına uyması ve üyelerin bulup kullanması kolay olması için şablonla ilgili tüm ayrıntıları özelleştirebilir.
   poll_common_attachment_form:
     label: Ekler
   poll_common_add_option:
@@ -2672,7 +2673,6 @@ tr:
     start_a_new_discussion: Yeni bir tartışma başlat
     discussion_template_saved: Tartışma şablonu kaydedildi
     these_are_public_templates: Bu şablonlar grubunuza uyacak şekilde kopyalayıp değiştirebilmeniz için mevcuttur
-    these_are_templates: Bunlar grubunuzdaki tartışma şablonlarıdır. Tartışma başlatmak için bir şablona tıklayın. İsterseniz bunları düzenleyebilir, kaldırabilir veya yeniden sıralayabilirsiniz.
     default_title_label: Varsayılan başlık
     default_title_hint: Başlık alanını düzenlenebilir metinle önceden doldurun. Bu isteğe bağlıdır - emin değilseniz boş bırakın.
     title_placeholder_label: Örnek başlık
@@ -2689,7 +2689,6 @@ tr:
     browse_example_templates: Örnek şablonlara göz atın
     example_templates: Örnek şablonlar
     browse_public_templates_hint: Bir şablon adına tıklayarak o şablonla ilgili bir tartışma başlatabilir veya sağdaki düzenleme düğmesine tıklayarak bir kopyasını oluşturup kendi grubunuz için değiştirebilirsiniz.
-    these_are_templates_v2: Bu, grubunuzdaki Tartışma Şablonlarının listesidir. Yeni bir tartışma başlatmak için bir şablona tıklayın. Grup yöneticileri şablonları düzenleyebilir ve listeyi yeniden sıralayarak önemli şablonları kolayca bulabilirler.
     process_name_placeholder: Örneğin, Haftalık toplantı
     process_subtitle_placeholder: Örneğin, her hafta ekiple kısa bir görüşme.
     default_title_placeholder: Örneğin Standup - 15 Ocak

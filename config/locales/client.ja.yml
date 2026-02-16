@@ -1898,6 +1898,7 @@ ja:
     post_outcome: 結論を投稿
     view_all_votes: すべての投票を表示
     you_voted: 投票しました
+    these_are_templates: これらはグループ内の意思決定テンプレートです。テンプレートをクリックすると、新しい意思決定を開始できます。管理者はテンプレートの詳細をすべてカスタマイズできるため、組織の慣習に適合し、メンバーが簡単に見つけて使用できるテンプレートを作成できます。
   poll_common_attachment_form:
     label: 添付ファイル
   poll_common_add_option:
@@ -2671,7 +2672,6 @@ ja:
     start_a_new_discussion: 新しいディスカッションを開始する
     discussion_template_saved: ディスカッションテンプレートを保存しました
     these_are_public_templates: これらのテンプレートは、グループに合わせてコピーまたは変更することができます。
-    these_are_templates: これらはグループ内のディスカッションテンプレートです。テンプレートをクリックしてディスカッションを開始してください。必要に応じて編集、削除、並べ替えも可能です。
     default_title_label: デフォルトのタイトル
     default_title_hint: タイトル欄に編集可能なテキストを事前に入力します。これはオプションです。不明な場合は空白のままにしてください。
     title_placeholder_label: タイトルの例
@@ -2688,7 +2688,6 @@ ja:
     browse_example_templates: サンプルテンプレートを参照する
     example_templates: サンプルテンプレート
     browse_public_templates_hint: テンプレート名をクリックしてディスカッションを開始するか、右側の編集ボタンをクリックしてコピーを作成し、自分のグループ用に変更します。
-    these_are_templates_v2: これはグループ内のディスカッションテンプレートのリストです。テンプレートをクリックすると、新しいディスカッションの出発点として使用できます。グループ管理者はテンプレートを編集したり、リストを並べ替えたりして、重要なテンプレートを簡単に見つけられるようにすることができます。
     process_name_placeholder: 例：毎週のスタンドアップ
     process_subtitle_placeholder: 例：毎週チームと短いチェックイン
     default_title_placeholder: 例：スタンドアップ - 1月15日

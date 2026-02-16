@@ -1918,6 +1918,7 @@ he:
     post_outcome: פרסם תוצאה
     view_all_votes: הצג את כל ההצבעות
     you_voted: הצבעת
+    these_are_templates: אלו הן תבניות ההחלטות בקבוצה שלך. לחץ על תבנית כדי להתחיל החלטה חדשה. מנהלים יכולים להתאים אישית את כל הפרטים אודות תבנית כך שתתאים לנוהלי הארגון שלך ותהיה קלה לחברים למצוא ולהשתמש בה.
   poll_common_attachment_form:
     label: קבצים מצורפים
   poll_common_add_option:
@@ -2691,7 +2692,6 @@ he:
     start_a_new_discussion: התחל דיון חדש
     discussion_template_saved: תבנית הדיון נשמרה
     these_are_public_templates: תבניות אלו זמינות להעתקה או שינוי בהתאם לקבוצה שלכם
-    these_are_templates: אלו הן תבניות הדיון בקבוצה שלך. לחץ על תבנית כדי להתחיל דיון. תוכל גם לערוך, להסיר או לשנות את הסדר שלהן אם תרצה.
     default_title_label: כותרת ברירת מחדל
     default_title_hint: מלאו מראש את שדה הכותרת בטקסט הניתן לעריכה. זה אופציונלי - השאר ריק אם אינך בטוח.
     title_placeholder_label: כותרת לדוגמה
@@ -2708,7 +2708,6 @@ he:
     browse_example_templates: עיין בתבניות לדוגמה
     example_templates: תבניות לדוגמה
     browse_public_templates_hint: לחץ על שם תבנית כדי להתחיל דיון איתה, או לחץ על כפתור העריכה מימין כדי ליצור עותק ולשנות אותו עבור הקבוצה שלך.
-    these_are_templates_v2: זוהי רשימה של תבניות הדיון בקבוצה שלך. לחץ על תבנית כדי להשתמש בה כנקודת התחלה לדיון חדש. מנהלי קבוצה יכולים לערוך תבניות ולסדר מחדש את הרשימה כך שיהיה קל למצוא את התבניות החשובות.
     process_name_placeholder: לדוגמה סטנדאפ שבועי
     process_subtitle_placeholder: לדוגמה, פגישת ייעוץ קצרה עם הצוות בכל שבוע
     default_title_placeholder: לדוגמה סטנדאפ - 15 בינואר

@@ -1943,6 +1943,7 @@ fr:
     post_outcome: Publier la conclusion
     view_all_votes: Voir tous les votes
     you_voted: Vous avez voté
+    these_are_templates: Voici les modèles de décision disponibles dans votre groupe. Cliquez sur un modèle pour démarrer une nouvelle décision. Les administrateurs peuvent personnaliser tous les détails d'un modèle afin qu'il corresponde aux pratiques de votre organisation et soit facile à trouver et à utiliser pour les membres.
   poll_common_attachment_form:
     label: Pièces jointes
   poll_common_add_option:
@@ -2718,7 +2719,6 @@ fr:
     start_a_new_discussion: Lancer une nouvelle discussion
     discussion_template_saved: Modèle de discussion enregistré
     these_are_public_templates: Ces modèles sont à votre disposition pour que vous puissiez les copier ou les modifier selon les besoins de votre groupe.
-    these_are_templates: Voici les modèles de discussion de votre groupe. Cliquez sur un modèle pour démarrer une discussion. Vous pouvez également les modifier, les supprimer ou les réorganiser à votre guise.
     default_title_label: titre par défaut
     default_title_hint: Préremplissez le champ « Titre » avec du texte modifiable. Ce champ est facultatif ; laissez-le vide en cas de doute.
     title_placeholder_label: Exemple de titre
@@ -2735,7 +2735,6 @@ fr:
     browse_example_templates: Consultez les exemples de modèles
     example_templates: Exemples de modèles
     browse_public_templates_hint: Cliquez sur le nom d'un modèle pour entamer une discussion à son sujet, ou cliquez sur le bouton Modifier à droite pour en faire une copie et le modifier pour votre propre groupe.
-    these_are_templates_v2: Voici la liste des modèles de discussion de votre groupe. Cliquez sur un modèle pour l'utiliser comme point de départ d'une nouvelle discussion. Les administrateurs du groupe peuvent modifier les modèles et réorganiser la liste afin de faciliter la recherche des modèles importants.
     process_name_placeholder: par exemple, la réunion debout hebdomadaire
     process_subtitle_placeholder: Par exemple, un bref point avec l'équipe chaque semaine
     default_title_placeholder: Ex. Stand-up - 15 janvier

@@ -1906,6 +1906,7 @@ hu:
     post_outcome: Következtetés közzététele
     view_all_votes: Az összes szavazat megtekintése
     you_voted: Szavazott
+    these_are_templates: Ezek a csoportodban található döntési sablonok. Kattintson egy sablonra új döntés meghozatalához. Az adminisztrátorok testreszabhatják a sablon összes részletét, hogy az megfeleljen a szervezeted gyakorlatának, és a tagok könnyen megtalálhassák és használhassák.
   poll_common_attachment_form:
     label: Mellékletek
   poll_common_add_option:
@@ -2679,7 +2680,6 @@ hu:
     start_a_new_discussion: Új beszélgetés indítása
     discussion_template_saved: Beszélgetési sablon mentve
     these_are_public_templates: Ezek a sablonok másolhatók vagy módosíthatók a csoport igényei szerint.
-    these_are_templates: Ezek a csoportodban található beszélgetési sablonok. Kattints egy sablonra egy beszélgetés megkezdéséhez. Ezeket szerkesztheted, eltávolíthatod vagy átrendezheted is, ha szeretnéd.
     default_title_label: Alapértelmezett cím
     default_title_hint: Töltsd ki előre a cím mezőt szerkeszthető szöveggel. Ez opcionális - hagyd üresen, ha nem vagy biztos benne.
     title_placeholder_label: Példa cím
@@ -2696,7 +2696,6 @@ hu:
     browse_example_templates: Példasablonok böngészése
     example_templates: Példa sablonok
     browse_public_templates_hint: Kattintson egy sablon nevére, ha beszélgetést szeretne indítani vele, vagy kattintson a jobb oldalon található szerkesztés gombra, ha másolatot szeretne készíteni és módosítani a saját csoportja számára.
-    these_are_templates_v2: Ez a csoportodban található vita sablonok listája. Kattints egy sablonra, hogy azt egy új vita kiindulópontjaként használd. A csoport adminisztrátorai szerkeszthetik a sablonokat és átrendezhetik a listát, hogy könnyen megtaláld a fontos sablonokat.
     process_name_placeholder: pl. heti standup
     process_subtitle_placeholder: pl. Egy rövid bejelentkezés a csapattal minden héten
     default_title_placeholder: pl. Stand-up - január 15.

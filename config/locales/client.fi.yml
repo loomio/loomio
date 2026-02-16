@@ -1899,6 +1899,7 @@ fi:
     post_outcome: Tulosten julkaisu
     view_all_votes: Näytä kaikki äänet
     you_voted: Äänestit
+    these_are_templates: Nämä ovat ryhmäsi päätösmallit. Aloita uusi päätös napsauttamalla mallia. Ylläpitäjät voivat mukauttaa kaikkia mallin tietoja, jotta se vastaa organisaatiosi käytäntöjä ja on helppo jäsenten löytää ja käyttää sitä.
   poll_common_attachment_form:
     label: Liitteet
   poll_common_add_option:
@@ -2672,7 +2673,6 @@ fi:
     start_a_new_discussion: Aloita uusi keskustelu
     discussion_template_saved: Keskustelumalli tallennettu
     these_are_public_templates: Nämä mallit ovat käytettävissäsi kopioitaviksi tai muokattavaksi ryhmällesi sopiviksi.
-    these_are_templates: Nämä ovat ryhmäsi keskustelupohjat. Aloita keskustelu napsauttamalla pohjaa. Voit myös muokata, poistaa tai järjestellä niitä uudelleen, jos haluat.
     default_title_label: Oletusotsikko
     default_title_hint: Täytä otsikkokenttä muokattavalla tekstillä. Tämä on valinnaista – jätä tyhjäksi, jos olet epävarma.
     title_placeholder_label: Esimerkki otsikosta
@@ -2689,7 +2689,6 @@ fi:
     browse_example_templates: Selaa esimerkkipohjia
     example_templates: Esimerkkimalleja
     browse_public_templates_hint: Aloita keskustelu mallipohjan nimeä napsauttamalla sen kanssa tai kopioi mallipohja ja muokkaa sitä omaa ryhmääsi varten napsauttamalla oikealla olevaa muokkauspainiketta.
-    these_are_templates_v2: Tämä on luettelo ryhmäsi keskustelumalleista. Napsauta mallia käyttääksesi sitä uuden keskustelun lähtökohtana. Ryhmän ylläpitäjät voivat muokata malleja ja järjestää luettelon uudelleen, jotta tärkeät mallit löytyvät helposti.
     process_name_placeholder: esim. viikoittainen stand up
     process_subtitle_placeholder: esim. Lyhyt yhteydenotto tiimiin joka viikko
     default_title_placeholder: esim. Stand-up - 15. tammikuuta

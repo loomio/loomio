@@ -39,6 +39,9 @@ class Api::V1::DiscussionTemplatesController < Api::V1::RestfulController
       self.collection = Array(DiscussionTemplate.find_by(group_id: current_user.group_ids, id: params[:id]))
     elsif (group = current_user.groups.find_by(id: params[:group_id]))
       self.collection = DiscussionTemplateService.group_templates(group: group)
+      unless group.admins.exists?(current_user.id)
+        self.collection = self.collection.reject { |t| t.discarded_at.present? }
+      end
     else
       self.collection = DiscussionTemplateService.default_templates
     end

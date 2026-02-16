@@ -1899,6 +1899,7 @@ da:
     post_outcome: Offentliggør resultat
     view_all_votes: Se alle stemmer
     you_voted: Du stemte
+    these_are_templates: Dette er beslutningsskabelonerne i din gruppe. Klik på en skabelon for at starte en ny beslutning. Administratorer kan tilpasse alle detaljerne om en skabelon, så den matcher din organisations praksis og er nem for medlemmer at finde og bruge.
   poll_common_attachment_form:
     label: Vedhæftede filer
   poll_common_add_option:
@@ -2672,7 +2673,6 @@ da:
     start_a_new_discussion: Start en ny diskussion
     discussion_template_saved: Diskussionsskabelon gemt
     these_are_public_templates: Disse skabeloner kan du kopiere eller ændre, så de passer til din gruppe
-    these_are_templates: Dette er diskussionsskabelonerne i din gruppe. Klik på en skabelon for at starte en diskussion. Du kan også redigere, fjerne eller ændre rækkefølgen af disse, hvis du vil.
     default_title_label: Standardtitel
     default_title_hint: Udfyld titelfeltet med redigerbar tekst. Dette er valgfrit - lad det stå tomt, hvis du er usikker.
     title_placeholder_label: Eksempeltitel
@@ -2689,7 +2689,6 @@ da:
     browse_example_templates: Gennemse eksempelskabeloner
     example_templates: Eksempelskabeloner
     browse_public_templates_hint: Klik på et skabelonnavn for at starte en diskussion med det, eller klik på redigeringsknappen til højre for at lave en kopi og redigere den til din egen gruppe.
-    these_are_templates_v2: Dette er en liste over diskussionsskabelonerne i din gruppe. Klik på en skabelon for at bruge den som udgangspunkt for en ny diskussion. Gruppeadministratorer kan redigere skabeloner og omarrangere listen, så det er nemt at finde de vigtige skabeloner.
     process_name_placeholder: f.eks. ugentlig standup
     process_subtitle_placeholder: f.eks. et kort check-in med teamet hver uge
     default_title_placeholder: f.eks. Standup - 15. januar

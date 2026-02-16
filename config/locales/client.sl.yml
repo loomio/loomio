@@ -1899,6 +1899,7 @@ sl:
     post_outcome: Objavi izid
     view_all_votes: Ogled vseh glasov
     you_voted: Glasovali ste
+    these_are_templates: To so predloge odločitev v vaši skupini. Kliknite predlogo, da začnete novo odločitev. Skrbniki lahko prilagodijo vse podrobnosti o predlogi, tako da ustreza praksam vaše organizacije in jo člani enostavno najdejo in uporabljajo.
   poll_common_attachment_form:
     label: Priloge
   poll_common_add_option:
@@ -2672,7 +2673,6 @@ sl:
     start_a_new_discussion: Začni novo razpravo
     discussion_template_saved: Predloga za razpravo je shranjena
     these_are_public_templates: Te predloge lahko kopirate ali spremenite glede na svojo skupino
-    these_are_templates: To so predloge za razprave v vaši skupini. Kliknite predlogo, da začnete razpravo. Po želji jih lahko tudi uredite, odstranite ali spremenite vrstni red.
     default_title_label: Privzeti naslov
     default_title_hint: Polje za naslov vnaprej izpolnite z besedilom, ki ga je mogoče urejati. To ni obvezno – če niste prepričani, pustite prazno.
     title_placeholder_label: Primer naslova
@@ -2689,7 +2689,6 @@ sl:
     browse_example_templates: Brskaj po vzorčnih predlogah
     example_templates: Primeri predlog
     browse_public_templates_hint: Kliknite ime predloge, da začnete razpravo o njej, ali kliknite gumb za urejanje na desni, da ustvarite kopijo in jo spremenite za svojo skupino.
-    these_are_templates_v2: To je seznam predlog za razprave v vaši skupini. Kliknite predlogo, da jo uporabite kot izhodišče za novo razpravo. Skrbniki skupine lahko urejajo predloge in prerazporejajo seznam, tako da je lažje najti pomembne predloge.
     process_name_placeholder: npr. tedenski stand-up
     process_subtitle_placeholder: npr. kratek tedenski sestanek z ekipo
     default_title_placeholder: npr. Stand-up - 15. januar

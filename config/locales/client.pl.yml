@@ -1924,6 +1924,7 @@ pl:
     post_outcome: Opublikuj wynik
     view_all_votes: Zobacz wszystkie głosy
     you_voted: Głosowałeś
+    these_are_templates: Oto szablony decyzji w Twojej grupie. Kliknij szablon, aby rozpocząć nową decyzję. Administratorzy mogą dostosować wszystkie szczegóły szablonu, aby odpowiadał on praktykom Twojej organizacji i był łatwy do znalezienia i użycia przez członków.
   poll_common_attachment_form:
     label: Załączniki
   poll_common_add_option:
@@ -2701,7 +2702,6 @@ pl:
     start_a_new_discussion: Rozpocznij nową dyskusję
     discussion_template_saved: Szablon dyskusji został zapisany
     these_are_public_templates: Możesz skopiować lub zmodyfikować te szablony, aby dostosować je do swojej grupy
-    these_are_templates: Oto szablony dyskusji w Twojej grupie. Kliknij szablon, aby rozpocząć dyskusję. Możesz je również edytować, usuwać lub zmieniać ich kolejność, jeśli chcesz.
     default_title_label: Domyślny tytuł
     default_title_hint: Wstępnie wypełnij pole tytułu edytowalnym tekstem. To pole jest opcjonalne – pozostaw puste, jeśli nie masz pewności.
     title_placeholder_label: Przykładowy tytuł
@@ -2718,7 +2718,6 @@ pl:
     browse_example_templates: Przeglądaj przykładowe szablony
     example_templates: Przykładowe szablony
     browse_public_templates_hint: Kliknij nazwę szablonu, aby rozpocząć dyskusję na jego temat lub kliknij przycisk edycji po prawej stronie, aby utworzyć kopię i zmodyfikować ją na potrzeby własnej grupy.
-    these_are_templates_v2: Oto lista szablonów dyskusji w Twojej grupie. Kliknij szablon, aby użyć go jako punktu wyjścia do nowej dyskusji. Administratorzy grupy mogą edytować szablony i zmieniać kolejność na liście, aby łatwo znaleźć ważne szablony.
     process_name_placeholder: np. cotygodniowy standup
     process_subtitle_placeholder: np. Krótkie spotkanie z zespołem co tydzień
     default_title_placeholder: np. Standup - 15 stycznia

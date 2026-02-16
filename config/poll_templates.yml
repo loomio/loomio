@@ -1,4 +1,5 @@
 practice_proposal:
+  example: true
   poll_type: proposal
   process_name_i18n: poll_templates.practice_proposal.process_name
   process_subtitle_i18n: poll_templates.practice_proposal.process_subtitle_v2
@@ -28,6 +29,7 @@ practice_proposal:
       color: "#D38FE1"
 
 try_loomio:
+  example: true
   poll_type: proposal
   process_name_i18n: poll_templates.try_loomio.process_name
   process_subtitle_i18n: poll_templates.try_loomio.process_subtitle
@@ -49,6 +51,7 @@ try_loomio:
       color: "#D38FE1"
 
 question:
+  example: true
   poll_type: question
   process_name_i18n: poll_common.question_round
   process_subtitle_i18n: poll_templates.question_round.process_subtitle
@@ -62,6 +65,7 @@ question:
     - poll_common.question_round
 
 count:
+  example: true
   poll_type: count
   process_name_i18n: decision_tools_card.count_title
   process_subtitle_i18n: poll_templates.opt_in.process_subtitle
@@ -141,34 +145,6 @@ majority:
       prompt_i18n: poll_templates.majority.no_prompt
       color: "#D38FE1"
 
-proposal:
-  poll_type: proposal
-  process_name_i18n: decision_tools_card.proposal_title
-  process_subtitle_i18n: poll_templates.proposal.process_subtitle
-  process_introduction_i18n: poll_templates.proposal.process_introduction
-  title_placeholder_i18n: poll_templates.proposal.title
-  details_i18n: poll_templates.proposal.details
-  default_duration_in_days: 7
-  poll_options:
-    - key: agree
-      name_i18n: poll_proposal_options.agree
-      icon: agree
-      meaning_i18n: poll_templates.proposal.agree_meaning
-      prompt_i18n: poll_templates.proposal.agree_prompt
-      color: '#70C9F8'
-    - key: abstain
-      name_i18n: poll_proposal_options.abstain
-      icon: abstain
-      meaning_i18n: poll_templates.proposal.abstain_meaning
-      prompt_i18n: poll_templates.proposal.abstain_prompt
-      color: "#C8E56E"
-    - key: disagree
-      name_i18n: poll_proposal_options.disagree
-      icon: disagree
-      meaning_i18n: poll_templates.proposal.disagree_meaning
-      prompt_i18n: poll_templates.proposal.disagree_prompt
-      color: "#D38FE1"
-
 meeting:
   poll_type: meeting
   meeting_duration: 60
@@ -219,30 +195,6 @@ ranked_choice:
   title_placeholder_i18n: poll_templates.ranked_choice.title
   details_i18n: poll_templates.ranked_choice.details
   shuffle_options: true
-
-advice:
-  poll_type: proposal
-  process_name_i18n: decision_tools_card.advice_title
-  process_subtitle_i18n: poll_templates.advice.process_subtitle
-  process_introduction_i18n: poll_templates.advice.process_introduction
-  title_placeholder_i18n: poll_templates.advice.title
-  details_i18n: poll_templates.advice.details
-  outcome_statement_i18n: poll_templates.advice.outcome_statement
-  tags_i18n:
-    - poll_common.advice_process
-  poll_options:
-    - key: agree
-      icon: agree
-      color: '#70C9F8'
-      name_i18n: poll_proposal_options.agree
-      meaning_i18n: poll_templates.advice.agree_meaning
-      prompt_i18n: poll_templates.advice.agree_prompt
-    - key: abstain
-      icon: abstain
-      color: '#70C9F8'
-      name_i18n: poll_proposal_options.abstain
-      meaning_i18n: poll_templates.advice.abstain_meaning
-      prompt_i18n: poll_templates.advice.abstain_prompt
 
 consent:
   poll_type: proposal
@@ -310,6 +262,7 @@ consensus:
       test_against: score_percent
 
 gradients_of_agreement:
+  example: true
   poll_type: proposal
   process_name_i18n: decision_tools_card.gradients_of_agreement_title
   process_subtitle_i18n: poll_templates.gradients_of_agreement.process_subtitle

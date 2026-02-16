@@ -8,7 +8,7 @@ class DiscussionTemplateService
 
     discussion_template.key = nil if discussion_template.key
     discussion_template.save!
-    discussion_template.discard! unless discussion_template.group.admins.exists?(actor.id)
+    # discussion_template.discard! unless discussion_template.group.admins.exists?(actor.id)
     discussion_template
   end
 

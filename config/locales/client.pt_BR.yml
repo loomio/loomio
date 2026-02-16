@@ -1945,6 +1945,7 @@ pt_BR:
     post_outcome: Publicar conclusão
     view_all_votes: Ver todos os votos
     you_voted: Você votou
+    these_are_templates: Estes são os modelos de decisão do seu grupo. Clique em um modelo para iniciar uma nova decisão. Os administradores podem personalizar todos os detalhes de um modelo para que ele corresponda às práticas da sua organização e seja fácil de encontrar e usar para os membros.
   poll_common_attachment_form:
     label: Anexos
   poll_common_add_option:
@@ -2722,7 +2723,6 @@ pt_BR:
     start_a_new_discussion: Iniciar uma nova discussão
     discussion_template_saved: Modelo de discussão salvo
     these_are_public_templates: Você pode copiar ou modificar esses modelos para adequá-los ao seu grupo.
-    these_are_templates: Estes são os modelos de discussão do seu grupo. Clique em um modelo para iniciar uma discussão. Você também pode editar, remover ou reordenar estes modelos, se desejar.
     default_title_label: Título padrão
     default_title_hint: Preencha o campo do título com um texto editável. Isso é opcional; deixe em branco se não tiver certeza.
     title_placeholder_label: Título de exemplo
@@ -2739,7 +2739,6 @@ pt_BR:
     browse_example_templates: Veja modelos de exemplo
     example_templates: Modelos de exemplo
     browse_public_templates_hint: Clique no nome de um modelo para iniciar uma discussão sobre ele ou clique no botão "Editar" à direita para fazer uma cópia e modificá-la para o seu próprio grupo.
-    these_are_templates_v2: Esta é uma lista dos Modelos de Discussão do seu grupo. Clique em um modelo para usá-lo como ponto de partida para uma nova discussão. Os administradores do grupo podem editar os modelos e reorganizar a lista para facilitar a localização dos modelos importantes.
     process_name_placeholder: 'Exemplo: Reunião semanal de acompanhamento'
     process_subtitle_placeholder: 'Exemplo: Uma breve reunião semanal com a equipe para verificar como está o andamento das coisas.'
     default_title_placeholder: 'Exemplo: Standup - 15 de janeiro'

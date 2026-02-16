@@ -1927,6 +1927,7 @@ zh_TW:
     post_outcome: 發布結論
     view_all_votes: 查看所有投票
     you_voted: 您投票了
+    these_are_templates: 這些是您所在小組的決策範本。點擊模板即可開始新的決策。管理員可以自訂範本的所有細節，使其符合您組織的實踐，並方便成員尋找和使用。
   poll_common_attachment_form:
     label: 附件
   poll_common_add_option:
@@ -2702,7 +2703,6 @@ zh_TW:
     start_a_new_discussion: 發起新的討論
     discussion_template_saved: 討論範本已儲存
     these_are_public_templates: 您可以複製或修改這些模板，以適應您的團隊需求。
-    these_are_templates: 這些是您所在群組的討論範本。點擊模板即可開始討論。您也可以根據需要編輯、刪除或重新排序這些範本。
     default_title_label: 預設標題
     default_title_hint: 請在標題欄中預先填寫可編輯文字。此項為可選，如不確定，請留空。
     title_placeholder_label: 範例標題
@@ -2719,7 +2719,6 @@ zh_TW:
     browse_example_templates: 瀏覽範例模板
     example_templates: 範例模板
     browse_public_templates_hint: 點擊範本名稱即可開始討論，或點擊右側的編輯按鈕進行複製並修改，以便用於您自己的團隊。
-    these_are_templates_v2: 這是您群組中的討論範本清單。點擊模板即可用作新討論的起點。群組管理員可以編輯範本並重新排列列表，以便輕鬆找到重要的範本。
     process_name_placeholder: 例如：每週站會
     process_subtitle_placeholder: 例如：每週與團隊進行簡短的溝通
     default_title_placeholder: 例如：站立式演講 - 1月15日

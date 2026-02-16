@@ -15,7 +15,9 @@ const { watchRecords } = useWatchRecords();
 
 // Data
 const templates = ref([]);
+const hiddenTemplates = ref([]);
 const actions = ref({});
+const hiddenActions = ref({});
 const group = ref(null);
 const groups = ref([]);
 const returnTo = Session.returnTo();
@@ -57,14 +59,18 @@ const query = () => {
   group.value = Records.groups.findById(groupId.value);
   if (!group.value) { return }
 
-  const findQuery = { groupId: groupId.value };
-  if (!showHidden.value) { findQuery.discardedAt = null; }
-  templates.value = Records.discussionTemplates.collection.chain().find(findQuery).simplesort('position').data();
-  hasHiddenTemplates.value = Records.discussionTemplates.collection.find({ groupId: groupId.value, discardedAt: { $ne: null } }).length > 0;
+  templates.value = Records.discussionTemplates.collection.chain().find({ groupId: groupId.value, discardedAt: null }).simplesort('position').data();
+  hiddenTemplates.value = Records.discussionTemplates.collection.chain().find({ groupId: groupId.value, discardedAt: { $ne: null } }).simplesort('position').data();
+  hasHiddenTemplates.value = hiddenTemplates.value.length > 0;
 
   actions.value = {};
   templates.value.forEach((template, i) => {
     actions.value[i] = DiscussionTemplateService.actions(template, group.value);
+  });
+
+  hiddenActions.value = {};
+  hiddenTemplates.value.forEach((template, i) => {
+    hiddenActions.value[i] = DiscussionTemplateService.actions(template, group.value);
   });
 };
 
@@ -149,13 +155,14 @@ watch(showHidden, () => { query(); });
 
       //- Template list: shown when group_id is present
       template(v-if="groupId")
-        .d-flex
-          v-breadcrumbs(color="anchor" :items="breadcrumbs")
-            template(v-slot:divider)
-              common-icon(name="mdi-chevron-right")
+        v-breadcrumbs(color="anchor" :items="breadcrumbs")
+          template(v-slot:divider)
+            common-icon(name="mdi-chevron-right")
         v-card(:title="$t('discussion_template.start_a_new_discussion')")
-          v-alert.mx-4(type="info" variant="tonal")
-            span(v-t="'discussion_template.these_are_templates_v2'")
+          v-alert.mx-4(v-if="userIsAdmin" type="info" variant="tonal")
+            span(v-t="'discussion_template.these_are_templates_v3'")
+            br
+            span(v-t="'discussion_template.these_are_templates_admin_hint'")
             |
             help-link(path="en/user_manual/threads/starting_threads")
 
@@ -174,7 +181,7 @@ watch(showHidden, () => { query(); });
               .d-flex.justify-space-between.align-center
                 v-list-subheader(v-t="'group_page.discussion_templates'")
                 span.mr-4(v-if="canCreateTemplates")
-                  v-btn(variant="tonal" size="small" :to="'/discussion_templates/new?group_id='+$route.query.group_id+'&return_to='+returnTo")
+                  v-btn(variant="tonal" size="small" :to="'/discussion_templates/browse?group_id='+$route.query.group_id+'&return_to='+returnTo")
                     span.text-medium-emphasis(v-t="'discussion_form.new_template'")
               v-list-item.discussion-templates--template(
                 v-for="(template, i) in templates"
@@ -184,18 +191,24 @@ watch(showHidden, () => { query(); });
                 v-list-item-title {{template.processName || template.title}}
                 v-list-item-subtitle {{template.processSubtitle}}
                 template(v-slot:append)
-                  common-icon.text-disabled(v-if="template.discardedAt" name="mdi-eye-off")
                   action-menu(:actions='actions[i]' size="small" icon :name="$t('action_dock.more_actions')")
 
-            .d-flex.justify-center.my-2(v-if="userIsAdmin && !showHidden")
+            .d-flex.justify-center.my-2(v-if="userIsAdmin && hasHiddenTemplates && !showHidden")
               v-btn.text-medium-emphasis(variant="text" size="small" @click="showHidden = true" )
-                spam(v-t="'discussion_template.more_templates'")
+                span(v-t="'discussion_template.show_hidden_templates'")
+
             template(v-if="userIsAdmin && showHidden")
-              v-list-item(:to="'/discussion_templates/browse?group_id='+$route.query.group_id+'&return_to='+returnTo")
-                v-list-item-title(v-t="'discussion_template.browse_example_templates'")
+              v-list-subheader(v-t="'discussion_template.hidden_templates'")
+              v-list-item.discussion-templates--template(
+                v-for="(template, i) in hiddenTemplates"
+                :key="template.id"
+                :to="'/d/new?template_id='+template.id+'&group_id='+ $route.query.group_id + '&return_to='+returnTo"
+              )
+                v-list-item-title {{template.processName || template.title}}
+                v-list-item-subtitle {{template.processSubtitle}}
                 template(v-slot:append)
-                  common-icon(name="mdi-magnify")
+                  action-menu(:actions='hiddenActions[i]' size="small" icon :name="$t('action_dock.more_actions')")
               .d-flex.justify-center.my-2
                 v-btn.text-medium-emphasis(variant="text" size="small" @click="showHidden = false")
-                  span(v-t="'discussion_template.fewer_templates'")
+                  span(v-t="'discussion_template.show_fewer'")
 </template>

@@ -1935,6 +1935,7 @@ es:
     post_outcome: Publicar conclusión
     view_all_votes: Ver todos los votos
     you_voted: Tú votaste
+    these_are_templates: Estas son las plantillas de decisión de su grupo. Haga clic en una plantilla para iniciar una nueva decisión. Los administradores pueden personalizar todos los detalles de una plantilla para que se ajuste a las prácticas de su organización y sea fácil de encontrar y usar para los miembros.
   poll_common_attachment_form:
     label: Adjuntos
   poll_common_add_option:
@@ -2710,7 +2711,6 @@ es:
     start_a_new_discussion: Iniciar una nueva discusión
     discussion_template_saved: Plantilla de discusión guardada
     these_are_public_templates: Estas plantillas están disponibles para que las copie o modifique para adaptarlas a su grupo.
-    these_are_templates: Estas son las plantillas de discusión de tu grupo. Haz clic en una plantilla para iniciar una discusión. También puedes editarlas, eliminarlas o reordenarlas si lo deseas.
     default_title_label: Título predeterminado
     default_title_hint: Rellene el campo de título con texto editable. Esto es opcional; déjelo en blanco si no está seguro.
     title_placeholder_label: Título de ejemplo
@@ -2727,7 +2727,6 @@ es:
     browse_example_templates: Explorar plantillas de ejemplo
     example_templates: Plantillas de ejemplo
     browse_public_templates_hint: Haga clic en el nombre de una plantilla para iniciar una discusión con ella o haga clic en el botón editar a la derecha para hacer una copia y modificarla para su propio grupo.
-    these_are_templates_v2: Esta es una lista de las plantillas de discusión de tu grupo. Haz clic en una plantilla para usarla como punto de partida para una nueva discusión. Los administradores del grupo pueden editar las plantillas y reorganizar la lista para facilitar la búsqueda de las importantes.
     process_name_placeholder: p. ej. Reunión semanal
     process_subtitle_placeholder: Por ejemplo, una breve reunión con el equipo cada semana.
     default_title_placeholder: ej. Standup - 15 de enero

@@ -797,7 +797,6 @@ zh_CN:
     start_a_new_discussion: 发起新的讨论
     discussion_template_saved: 讨论模板已保存
     these_are_public_templates: 您可以复制或修改这些模板，以适应您的团队需求。
-    these_are_templates: 这些是您所在群组的讨论模板。点击模板即可开始讨论。您也可以根据需要编辑、删除或重新排序这些模板。
     default_title_label: 默认标题
     default_title_hint: 请在标题栏中预先填写可编辑文本。此项为可选，如不确定，请留空。
     title_placeholder_label: 示例标题
@@ -814,7 +813,6 @@ zh_CN:
     browse_example_templates: 浏览示例模板
     example_templates: 示例模板
     browse_public_templates_hint: 点击模板名称即可开始讨论，或者点击右侧的编辑按钮进行复制并修改，以便用于您自己的团队。
-    these_are_templates_v2: 这是您群组中的讨论模板列表。点击模板即可将其用作新讨论的起点。群组管理员可以编辑模板并重新排列列表，以便轻松找到重要的模板。
     process_name_placeholder: 例如：每周站会
     process_subtitle_placeholder: 例如：每周与团队进行简短的沟通
     default_title_placeholder: 例如：站立式演讲 - 1月15日
@@ -1952,6 +1950,7 @@ zh_CN:
     too_long: 太长了
     edit_warning: 建议仅对细微改动或拼写错误进行编辑。如需进行重大改动，请关闭此 %{pollType} 并创建一个新的。
     no_voting: 仅供讨论，投票功能已关闭
+    these_are_templates: 这些是您所在小组的决策模板。点击模板即可开始新的决策。管理员可以自定义模板的所有细节，使其符合您组织的实践，并方便成员查找和使用。
   poll_common_attachment_form:
     label: 附件
   poll_common_add_option:
