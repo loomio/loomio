@@ -316,6 +316,9 @@ sl:
       label: Oblikovanje
       title: Naučite se uporabljati Markdown za oblikovanje besedila
     thread: nit
+    commercial: Komercialno
+    nonprofit: Neprofitna organizacija
+    opening_in: Odprtje %{čas}
   merge_accounts:
     modal:
       title: Združite račune
@@ -840,6 +843,7 @@ sl:
     none_direct_discussion: Brez (neposredna razprava)
     direct_discussion: Neposredna razprava
     direct_discussion_hint: Neposredna razprava je vidna samo določenim osebam, ki jih povabite. Ne bo prikazana na seznamu razprav nobene skupine – najdete jo na strani Neposredne razprave.
+    recommended_poll_templates: Priporočene predloge anket
   announcement:
     send_discussion: Pošlji nit
     send_group: Povabi ljudi v %{name}
@@ -1213,6 +1217,7 @@ sl:
     no_discussions_here: Tukaj ni razprav za ogled!
     private_discussions: Za ogled zasebnih tem v tej skupini morate biti član.
     view_closed_discussions: Ogled zaprtih razprav
+    discussion_templates: Predloge za razprave
   export_data_modal:
     title: Kako želite uporabljati svoje podatke?
     as_csv: Odprite ga v preglednici
@@ -1771,6 +1776,7 @@ sl:
     meeting_title: Časovna anketa
     ranked_choice_title: Uvrščena izbira
     gradients_of_agreement_title: Gradienti soglasja
+    majority_title: Večina
   poll_option_form:
     edit_option: Možnost urejanja
     option_name: Ime možnosti
@@ -1893,6 +1899,7 @@ sl:
     post_outcome: Objavi izid
     view_all_votes: Ogled vseh glasov
     you_voted: Glasovali ste
+    these_are_templates: To so predloge odločitev v vaši skupini. Kliknite predlogo, da začnete novo odločitev. Skrbniki lahko prilagodijo vse podrobnosti o predlogi, tako da ustreza praksam vaše organizacije in jo člani enostavno najdejo in uporabljajo.
   poll_common_attachment_form:
     label: Priloge
   poll_common_add_option:
@@ -2004,6 +2011,7 @@ sl:
     voting_disabled_poll_is_template: Glasovanje onemogočeno. To je predloga.
     for_this_proposal_to_pass: 'Da bi bil ta predlog sprejet:'
     for_this_poll_type_to_be_valid: 'Da bi bil ta %{poll_type} veljaven:'
+    voting_opens_at: Ta %{poll_type} se odpre za glasovanje %{time}
   poll_common_collapsed:
     by_who: avtor %{name}
   poll_common_calendar_invite:
@@ -2583,6 +2591,8 @@ sl:
       ranked_choice_hint: Volivci razvrstijo možnosti od najbolj priljubljene do najmanj priljubljene
       time_poll: Časovna anketa
       time_poll_hint: Volivci navedejo, kdaj so na voljo za sestanek
+      rank: Uvrstitev
+      time: Čas
     process: Postopek
     process_name: Naslov predloge
     process_name_hint: Kako se imenuje ta predloga? Npr. nasvet o vlogi, preverjanje temperature, odobritev zapisnika
@@ -2638,6 +2648,12 @@ sl:
     hide_results_description: Če želite, da ljudje glasujejo, ne da bi videli, kako so glasovali drugi, lahko rezultate skrijete.
     process_helptext: Poimenujte in opišite postopek, ki se uporablja za izvedbo te ankete.
     reminder_helptext: 24 ur pred rokom pošljite obvestilo »Kmalu se zapira«. To lahko poveča udeležbo in ustvari priložnost, da ljudje ponovno premislijo o svojem stališču.
+    voting_duration: Trajanje
+    voting_duration_hint: Kdaj se začne in kdaj se zaključi glasovanje?
+    more_settings: Več nastavitev
+    create_poll_type: Ustvari %{poll_type}
+    notify_voters_when_voting_opens: Obvestite volivce, ko se začne glasovanje
+    voters_notified_when_opens: Volivci bodo obveščeni, ko se bo glasovanje začelo
   poll_receipts_page:
     verify_participants: Preverjanje udeležencev
     see_votes_if_quorum_reached: Če je glasovanje končano in je dosežen kvorum, boste videli, kdo je glasoval.
@@ -2657,7 +2673,6 @@ sl:
     start_a_new_discussion: Začni novo razpravo
     discussion_template_saved: Predloga za razpravo je shranjena
     these_are_public_templates: Te predloge lahko kopirate ali spremenite glede na svojo skupino
-    these_are_templates: To so predloge za razprave v vaši skupini. Kliknite predlogo, da začnete razpravo. Po želji jih lahko tudi uredite, odstranite ali spremenite vrstni red.
     default_title_label: Privzeti naslov
     default_title_hint: Polje za naslov vnaprej izpolnite z besedilom, ki ga je mogoče urejati. To ni obvezno – če niste prepričani, pustite prazno.
     title_placeholder_label: Primer naslova
@@ -2674,7 +2689,6 @@ sl:
     browse_example_templates: Brskaj po vzorčnih predlogah
     example_templates: Primeri predlog
     browse_public_templates_hint: Kliknite ime predloge, da začnete razpravo o njej, ali kliknite gumb za urejanje na desni, da ustvarite kopijo in jo spremenite za svojo skupino.
-    these_are_templates_v2: To je seznam predlog za razprave v vaši skupini. Kliknite predlogo, da jo uporabite kot izhodišče za novo razpravo. Skrbniki skupine lahko urejajo predloge in prerazporejajo seznam, tako da je lažje najti pomembne predloge.
     process_name_placeholder: npr. tedenski stand-up
     process_subtitle_placeholder: npr. kratek tedenski sestanek z ekipo
     default_title_placeholder: npr. Stand-up - 15. januar
@@ -2689,6 +2703,7 @@ sl:
     poll_templates_help: Predloge, ki jih izberete tukaj, se bodo prikazale prve, ko nekdo klikne Začni glasovanje
     start_direct_discussion_from_blank: Začnite neposredno razpravo iz prazne predloge
     default_to_direct_discussion: Začni kot neposredna razprava (brez skupine)
+    default_to_direct_discussion_helptext: Uporabite to, če želite, da ljudje začnejo neposredne razprave iz te predloge.
   context_panel:
     thread_status:
       pinned: Ta razprava je bila pripeta. Za vse uporabnike bo ostala na vrhu seznama razprav skupine.
@@ -2715,3 +2730,9 @@ sl:
   auth:
     oauth_cancelled: Prijava je bila preklicana
     switching_accounts: Preklapljanje računov. Prijavite se z novimi podatki o računu.
+  poll_common_opening_at_field:
+    voting_opens_immediately: Glasovanje se odpre takoj
+    opening_date: Datum odprtja
+    opening_hour: Odpiralni čas
+    scheduled_hint: Anketa bo vidna, vendar ne bo mogoče glasovati do odprtja.
+    draft_hint: Ta anketa bo shranjena kot osnutek. Nastavite datum odprtja ali označite možnost »Glasovanje se odpre takoj«, ko boste pripravljeni začeti glasovati.

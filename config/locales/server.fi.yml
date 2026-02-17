@@ -94,6 +94,10 @@ fi:
       title: "\U0001F44B Tervetuloa! Sano hei ja kokeile jotain!"
       description: "<p>Tervetuloa Loomio-ryhmäämme – on hienoa, että olet täällä!</p><p> Tämä ketju on tila, johon voi:</p><ul><li><p> Esittele itsesi ryhmälle</p></li><li><p> Kokeile joitakin Loomion ominaisuuksia – esimerkiksi: kokeile reaktioiden käyttöä \U0001F44D</p></li><li><p> Kysy tässä vaiheessa mitä tahansa kysymyksiä</p></li></ul><p> Jos et ole varma mitä sanoa, pelkkä hei riittää \U0001F642</p>"
       process_name: Harjoituskeskustelu
+      process_subtitle_v2: Toivota ihmiset tervetulleiksi ja totutelkaa Loomion käyttöön yhdessä
+      process_introduction_v2: "<p>Tervetuloa uusille ryhmille. Ihmiset esittelevät itsensä, kokeilevat ominaisuuksia, kuten kommentointia ja reagointia, ja tekevät ensimmäisen ehdotuksensa.</p>"
+      title_v2: Tervetuloa! Esittele itsesi ja kokeile asioita
+      description_v2: "<p>Tervetuloa ryhmään! Tämä keskusteluketju on paikka tervehtiä, kysyä kysymyksiä, kokeilla uusia juttuja ja tottua Loomioon.</p><p> Jätä kommentti, käytä reaktiota tai aloita yksi alla olevista ehdotuksista.</p><p> Jos et ole varma, mitä sanoa, pelkkä hei riittää! Tai kokeile jotakin alla olevista äänestystyökaluista.</p>"
   explore:
     header: Tutustu julkisiin ryhmiin
   activerecord:
@@ -183,6 +187,7 @@ fi:
       must_be_in_the_future: Täytyy olla tulevaisuudessa
       templates_cannot_close: Malleja ei voi sulkea
       poll_options_dont_match: Loomiossa oli bugi, joka esti äänesi tallentamisen. Työskentelemme parhaillaan ongelman korjaamiseksi. Lataa sivu uudelleen ja yritä uudelleen.
+      opening_at_before_closing_at: Avauspäivämäärän on oltava ennen sulkemispäivämäärää
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) jäsentä on ilmoittanut kantansa"
       title: Otsikko
@@ -377,6 +382,9 @@ fi:
       vote_now: Äänestä nyt
       you_have_until: Sinulla on %{when} asti aikaa osallistua.
       people_have_voted: "%{nom} %{dnom} ihmisestä on osallistunut (%{pct}%)"
+      voting_opens_and_closes: Äänestys alkaa %{opens} ja päättyy %{closes}. (%{days} päivää)
+      voting_closes: Äänestys päättyy %{when}.
+      voting_opened_and_closed: Äänestys avattiin %{opens} ja suljettiin %{closes}. (%{days} päivää)
   poll_templates:
     practice_proposal:
       title: Alan saada tästä kiinni
@@ -385,6 +393,17 @@ fi:
       process_introduction: "<p>Käytä tätä mallia auttaaksesi ryhmääsi tottumaan Loomion ehdotusten käyttöön. Se on turvallinen ja yksinkertainen tapa kokeilla äänestämistä ja nähdä, miten kaikki sopii yhteen.</p>"
       details: "<p>Tämä on harjoitusajo, jotta kaikki voivat tottua siihen, miten ehdotukset toimivat Loomiossa.</p><p> Äänestä ja jätä halutessasi perustelu.</p><p> Ei paineita, ei tosielämän seurauksia. Tämä on vain tapa tutustua siihen, miten ehdotukset toimivat!</p>"
       outcome_statement: "<p>Kiitos osallistumisestasi tähän harjoitusehdotukseen! \U0001F389</p><p> Tämä oli vain tilaisuus nähdä, miten äänestäminen ja kommentointi toimivat Loomiossa. Täällä ei tehdä varsinaista päätöksentekoa – mutta toivottavasti tämä auttoi kaikkia tutustumaan prosessiin.</p>"
+      title_v2: Ananas kuuluu pizzaan
+      process_subtitle_v2: Kokeile ehdotusta, jotta tiedät, miten äänestäminen toimii
+      process_introduction_v2: "<p>Hauska tapa ryhmällesi kokeilla äänestämistä Loomiossa. Valitse kevytmielinen kysymys, anna ihmisten äänestää ja jätä syy – ei varsinaista päätöstä, vain harjoitusta.</p>"
+      details_v2: "<p>Tämä on käytännön ehdotus – tässä ei ole varsinaista päätöstä.</p><p> Kokeile äänestää ja jättää syy nähdäksesi, miten ehdotukset toimivat Loomiossa.</p>"
+      outcome_statement_v2: "<p>Kiitos ehdotuksen kokeilemisesta! Nyt tiedät, miten äänestäminen toimii Loomiossa.</p>"
+      agree_meaning: Olen samaa mieltä
+      agree_prompt: Miksi olet samaa mieltä?
+      abstain_meaning: Minulla ei ole tästä mielipidettä
+      abstain_prompt: Onko ajatuksia?
+      disagree_meaning: Olen eri mieltä tästä
+      disagree_prompt: Miksi olet eri mieltä?
     proposal:
       process_subtitle: Tee ehdotus päätöksen tekemiseksi
       process_introduction: <p>Klassinen Loomio-ehdotus auttaa sinua tekemään päätöksen ja muuttamaan keskustelun selkeäksi lopputulokseksi.</p><p> Ehdota toimintatapaa ja pyydä ihmisiä vastaamaan äänestämällä joko samaa mieltä, tyhjää tai eri mieltä.</p><p> Äänestäessään ihmiset voivat kertoa syyn äänestyspäätökselleen. Näet muiden näkemyksen asiasta ja miksi.</p><p> Tällä tavoin voit käyttää ehdotusta kannustaaksesi ihmisiä vastaamaan, paljastaaksesi uutta tietoa ja rakentaaksesi yhteistä ymmärrystä – auttaaksesi ryhmääsi tekemään paremman ja tietoisemman päätöksen.</p><p> Ehdotus ja siihen liittyvä keskustelu luovat oman tallenteensa siitä, miten päätös syntyi.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Lue lisää klassisen Loomio-ehdotuksen käyttämisestä yksinkertaisessa päätöksentekoprosessissa</u></a> .</p>
@@ -423,6 +442,9 @@ fi:
       objection_meaning: Minulla on pätevä vastalause ja mielestäni ehdotus aiheuttaa haittaa.
       objection_prompt: Mitä muutoksia tähän ehdotukseen tarvitaan, jotta siitä tulisi "turvallista kokeilla" ja jotta voit tukea sitä?
       outcome_statement: "<p>Kiitos osallistumisestasi suostumusprosessiin.</p>"
+      process_subtitle_v2: Jatka, ellei joku esitä vastalauseita
+      process_introduction_v2: "<p><strong>Suostumus</strong> kysyy, onko ehdotusta turvallista kokeilla, ei sitä, onko se täydellinen. Ehdotus hyväksytään, kunhan kukaan ei esitä merkityksellistä vastalausetta. Jos joku vastustaa, ryhmä pyrkii ratkaisemaan sen – ja koska osallistujat voivat muuttaa äänensä ehdotuksen kehittyessä, vastalauseista tulee pikemminkin parannuskeino kuin este.</p>"
+      details_v2: "<h3><strong>Mikä päätös sinun on tehtävä?</strong></h3><p></p><h3> <strong>Miksi tämä on tärkeää?</strong></h3><p></p><h3> <strong>Mitä pyydät ihmisiltä tässä ehdotuksessa?</strong></h3><p></p><p> Emme pyri täydellisyyteen – anna suostumuksesi, jos ehdotus on riittävän hyvä ja turvallinen kokeilla. Jos sinulla on vastalauseita, kerro, mitä pitää muuttaa, jotta se olisi toimiva.</p>"
     consensus:
       process_subtitle: Tee työehtosopimus kaikkien asianosaisten kanssa
       process_introduction: <p>Rakenna yksimielisyys päätöksestä, joka sinun on tehtävä, jotta pääset sopimukseen, joka tyydyttää kaikkien osallistujien tarpeet ja huolenaiheet.</p><ul><li><p> Keskustelkaa ja kehittäkää ehdotus yhdessä</p></li><li><p> Ota mukaan ja kunnioita kaikkia asianosaisia</p></li><li><p> Hae useimpien ihmisten suostumusta</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/consensus_process/index.html">Lue lisää konsensusprosessista</a> .</p>
@@ -441,6 +463,8 @@ fi:
       block: Lohko
       block_meaning: Vastustan tätä ehdotusta enkä usko, että sitä pitäisi edetä.
       block_prompt: Selitä vastustuksesi tätä ehdotusta kohtaan ja miksi sitä ei pitäisi toteuttaa
+      details_v2: "<h3><strong>Mikä päätös sinun on tehtävä?</strong></h3><p></p><h3> <strong>Miksi tämä on tärkeää?</strong></h3><p></p><h3> <strong>Mitä pyydät ihmisiä tekemään?</strong></h3><p></p><p> Kerro, mikä on kantasi ja miksi. Jos olet eri mieltä, selitä, mitä pitäisi muuttaa, jotta tukisit tätä näkemystä.</p>"
+      process_introduction_v2: "<p><strong>Konsensus</strong> edellyttää päätöksiä, joissa on tärkeää, että kaikki ovat aktiivisesti samaa mieltä. Osallistujat työskentelevät yhdessä ymmärtääkseen toistensa tarpeita ja muokkaavat ehdotusta, kunnes koko ryhmä voi tukea sitä. Koska ihmiset voivat muuttaa ääntään keskustelun edetessä, prosessi kannustaa aitoon vuoropuheluun kertaluonteisen päätöksen sijaan. Se vaatii enemmän kärsivällisyyttä kuin muut menetelmät, mutta rakentaa vahvimman sitoutumisen.</p><p> Tässä mallissa on oletuksena <strong>Estä-</strong> vaihtoehto. Estä-vaihtoehto ei sovi kaikille ryhmille – se voi olla kiistanalainen tai sitä voidaan käyttää väärin. Jos et käytä estoa päätöksentekoprosessissasi, suosittelemme poistamaan sen mallista muokkaamalla sitä.</p>"
     question_round:
       process_subtitle: Pyydä selventäviä kysymyksiä, jotka auttavat ihmisiä ymmärtämään ehdotusta
       process_introduction: <p>Kysymyskierros on tilaisuus esittää ehdotuksesta selventäviä kysymyksiä, jotta kaikki ymmärtävät ehdotuksen ennen kuin sanovat, mitä mieltä he ovat siitä.</p><p> Loomio-kysymyskierros on erityinen ehdotus, jossa ei ole äänestysvaihtoehtoja. Se antaa osallistujille mahdollisuuden esittää kysymyksiä asettamasi kierroksen keston aikana.</p><p> Kysymyskierrosta käytetään yleisesti osana suostumusprosessia.</p><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Lue lisää suostumusprosessista</a> .</p>
@@ -466,6 +490,17 @@ fi:
       concerned: Huolestunut
       concerned_meaning: Jonkin tässä täytyy ehkä muuttua, jotta suostun tai hyväksyn sen.
       concerned_prompt: Mikä on huolenaiheesi ja miten siihen voitaisiin puuttua?
+      process_subtitle_v2: Katso, oletko oikeilla jäljillä
+      process_introduction_v2: "<p><strong>Järkeilytarkistus</strong> auttaa sinua saamaan palautetta varhaisessa vaiheessa ennen päätöksentekoa. Osallistujat kertovat, näyttävätkö asiat hyviltä, tai nostavat esiin huolenaiheita, jotta voit muuttaa kurssia ennen siirtymistä viralliseen ehdotukseen. Se ei ole päätös – se on lämpötilan tarkistus.</p>"
+      details_v2: "<h3><strong>Mitä ehdotat?</strong></h3><p></p><h3> <strong>Miksi tämä on tärkeää?</strong></h3><p></p><h3> <strong>Mitä pyydät ihmisiä tekemään?</strong></h3><p></p><p> Kerro, näyttääkö tämä hyvältä, voisiko olla parempi vai pitäisikö sitä miettiä uudelleen – ja jaa perustelusi.</p>"
+      looks_good_meaning_v2: Olen tyytyväinen suuntaan
+      looks_good_prompt_v2: Mitä pidät siitä?
+      could_be_better: Voisi olla parempi
+      could_be_better_meaning: Näen potentiaalia, mutta minulla on ehdotuksia
+      could_be_better_prompt: Mitä muuttaisit?
+      needs_a_rethink: Tarvitsee uudelleenarviointia
+      needs_a_rethink_meaning: Mielestäni lähestymistapa ei ole oikea
+      needs_a_rethink_prompt: Mikä sinua huolestuttaa?
     gradients_of_agreement:
       process_subtitle: Ilmaise ehdotuksen tukeminen 8-pisteisellä asteikolla
       process_introduction: <p>Yhteisymmärryksen asteikolla varustettu ehdotus antaa ryhmän jäsenille mahdollisuuden ilmaista tukensa ehdotukselle asteikolla, joka tarjoaa useampia tapoja ilmaista tukea kuin "samaa mieltä" ja "eri mieltä".</p><p> Käytä yhteisymmärryksen asteikkoja alustavana kierroksena testataksesi ehdotuksen tukea ennen siirtymistä viralliseen sopimukseen.</p><p> Yhteisymmärryksen asteikko kertoo ihmisille, että ehdotus on muodostumassa, ja kannustaa heitä osallistumaan. Se on tilaisuus kuunnella ihmisiä, aistia heidän tunteitaan ja reagoida asianmukaisesti – mikä avaa mahdollisuuden ottaa heidän panoksensa huomioon paremman päätöksen tekemiseksi.</p>
@@ -499,27 +534,36 @@ fi:
       process_introduction: <p>Ennen päätöksentekoa selvitä, mitkä vaihtoehdot kiinnostavat ihmisiä eniten.</p><p> Yksinkertainen kysely auttaa sinua löytämään suosituimman vaihtoehdon tai vaihtoehdot yhdellä tai useammalla valinnalla.</p><p> Kirjoita vaihtoehdon tiedot tietokenttään, anna sitten vaihtoehdon nimi ja lisää se napsauttamalla +.</p><p> Aseta äänestäjän valittavissa olevien <strong>vähimmäis-</strong> ja <strong>enimmäisvaihtoehtojen määrä</strong> . Jätä enimmäisvaihtoehdoksi 1, jos äänestyksessä on vain yksi vaihtoehto.</p><p> Voit käyttää kunkin vaihtoehdon vieressä olevaa kynäkuvaketta lisätäksesi vaihtoehdolle <strong>merkityksen</strong> ja tarkentaaksesi vaihtoehtoa äänestämisen helpottamiseksi.</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">Lue lisää yksinkertaisesta kyselystä</a> .</p>
       title: Mihin strategisen suuntamme tulisi keskittyä?
       details: <h3 id="what-is-this-poll-about"><strong>Mistä tässä kyselyssä on kyse?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Miksi tämä on tärkeää?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mitä pyydät ihmisiä tekemään?</strong></h3><p></p><p> Valitse mieleisesi vaihtoehto tai vaihtoehdot.</p>
+      process_introduction_v2: <p><strong>Valitse-</strong> toiminnolla löydät suosituimman vaihtoehdon. Osallistujat valitsevat listalta – voit määrittää, valitsevatko he yhden vai useamman vaihtoehdon.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">Lue lisää Choosesta</a> .</p>
     score_poll:
       process_subtitle: Mittaa kunkin vaihtoehdon kannatusaste
       process_introduction: <p>Käytä Score-kyselyä, kun haluat kyselyllä selvittää ihmisten toiveita, mieltymyksiä tai kiinnostusta kutakin vaihtoehtoa kohtaan.</p><p> <span>Osallistujia pyydetään arvioimaan kutakin vaihtoehtoa ja antamaan sille pistemäärä siirtämällä liukusäädintä asteikolla.</span></p><p> <span>Tulokset näytetään graafisesti yhdessä taulukon kanssa, joka näyttää kunkin vaihtoehdon kokonaispisteet, keskipisteet ja äänestäjien lukumäärän.</span></p><p> Lisäasetuksiin kuuluvat "Äänet ovat anonyymejä" ja "Näytä vaihtoehdot satunnaisessa järjestyksessä" – näitä käytetään yleisesti pisteytyskyselyssä äänestysvinouman vähentämiseksi.</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">Lue lisää Score-kyselystä</a> .</p>
       title: Arvioimme, miten organisaatiossamme tehdään päätöksiä
       details: <h3 id="what-is-this-poll-about"><strong>Mistä tässä kyselyssä on kyse?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Miksi tämä on tärkeää?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mitä pyydät ihmisiä tekemään?</strong></h3><p></p><p> Valitse mieleisesi vaihtoehto tai vaihtoehdot.</p>
+      process_subtitle_v2: Mittaa kunkin vaihtoehdon kannatustaso
+      process_introduction_v2: <p><strong>Pisteiden</strong> avulla voit mitata ryhmän tuen tasoa kullekin vaihtoehdolle. Osallistujat arvioivat jokaisen vaihtoehdon antamalla sille pistemäärän liukuvalla asteikolla, joten näet paitsi mitä ihmiset pitävät parempana, myös kuinka paljon.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">Lue lisää Score-kyselystä</a> .</p>
     dot_vote:
       process_subtitle: Varaa pistebudjetti prioriteettien paljastamiseksi
       process_introduction: <p>Pisteäänestys on hyödyllinen ryhmille, jotka yrittävät allokoida rajallisen resurssin useille vaihtoehdoille. Se menee yksinkertaisen kyselyn pidemmälle auttamalla osallistujia ymmärtämään, että vaihtoehtojen valinnassa on rajoitteita.</p><p> Osallistujille annetaan kullekin tietty määrä pisteitä. Sinä päätät, kuinka monta.</p><p> He sijoittavat pisteitä niiden vaihtoehtojen viereen, joista he pitävät. Osallistujat voivat sijoittaa kaikki pisteensä yhden vaihtoehdon kohdalle tai levittää ne useiden vaihtoehtojen päälle.</p><p> Kun osallistujat jakavat pisteitä, he saattavat ylittää pistebudjetin rajan, joten heitä kannustetaan miettimään huolellisesti, miten he käyttävät pisteensä.</p><p> Eniten pisteitä saaneet vaihtoehdot "voittavat". Tulostaulukko tarjoaa lisätietoja tulosten analysoinnin helpottamiseksi.</p><ul><li><p> % pisteistä</p></li><li><p> Pisteet</p></li><li><p> Tarkoittaa</p></li><li><p> Äänestäjät</p></li></ul><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">Lue lisää Dot-äänestä</a> .</p>
       title: Konferenssimme teemojen valinta
       details: <h3 id="what-is-this-poll-about"><strong>Mistä tässä kyselyssä on kyse?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Miksi tämä on tärkeää?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mitä pyydät ihmisiä tekemään?</strong></h3><p></p><p> Tässä kyselyssä sinulla on kahdeksan pisteen budjetti, jonka voit varata haluamillesi vaihtoehdoille. Voit sijoittaa kaikki pisteet yhteen vaihtoehtoon tai levittää ne useampaan kohtaan.</p>
+      process_subtitle_v2: Paljasta prioriteetit, kun on kompromisseja
+      process_introduction_v2: <p><strong>Allokointi</strong> auttaa ymmärtämään ryhmän prioriteetteja kompromissien sattuessa. Jokainen osallistuja saa pisteistä budjetin, joka jaetaan vaihtoehtojen kesken – he voivat panostaa kaikki pisteet yhteen vaihtoehtoon tai jakaa ne useisiin. Koska budjetti on rajallinen, jokainen käytetty piste on aito prioriteettiosoitus.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">Lue lisää allokoinnista</a> .</p>
     ranked_choice:
       process_subtitle: Ymmärrä vaihtoehtojen järjestetty mieltymys
       process_introduction: <p>Roolijako on hyödyllinen, kun vaihtoehtoja on paljon tai kun olet järjestämässä vaaleja.</p><p> Tämä kyselymalli tarjoaa useita vaihtoehtoja, joiden avulla ihmiset voivat äänestää haluamassaan järjestyksessä.</p><p> Voit asettaa äänestäjän saamien vaihtoehtojen määrän.</p><p> <span>Äänestäjät vetävät ja pudottavat vaihtoehtoja mieltymysjärjestyksessä (#1 on mieluisin vaihtoehto).</span></p><p> <span>Lisäasetuksiin kuuluvat ”Äänet ovat anonyymejä” ja ”Näytä vaihtoehdot satunnaisessa järjestyksessä” – näitä käytetään yleisesti rankattujen valintojen yhteydessä</span> äänestysvinouman vähentämiseksi.</p><p> Tulokset näytetään paremmuusjärjestyksessä. Tulostaulukko tarjoaa lisätietoja tulosten analysoinnin helpottamiseksi.</p><ul><li><p> Sijoitus</p></li><li><p> % pisteistä</p></li><li><p> Pisteet</p></li><li><p> Tarkoittaa</p></li></ul><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">Lue lisää Ranked choice -vaihtoehdosta</a> .</p>
       title: Valitse hallintoneuvoston jäsenet
       details: <h3 id="what-is-this-poll-about"><strong>Mistä tässä kyselyssä on kyse?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Miksi tämä on tärkeää?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mitä pyydät ihmisiä tekemään?</strong></h3><p></p><p> Äänestä asettamalla vaihtoehdot mieltymystesi mukaiseen järjestykseen. Tuloksissa ensimmäisenä oleva vaihtoehto voittaa.</p>
+      process_subtitle_v2: Selvitä ryhmän mieltymysjärjestys
+      process_introduction_v2: <p><strong>Sijoitus</strong> näyttää ryhmän mieltymysjärjestyksen. Osallistujat vetävät ja pudottavat vaihtoehtoja järjestääkseen ne mieluummin mieluummin, ja tulokset näyttävät kokonaissijoituksen.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">Lue lisää Rankista</a> .</p>
     time_poll:
       process_subtitle: Selvitä, milloin ihmiset ovat käytettävissä tapaamiseen
       process_introduction: <p><span>Säästä aikaa kokouksen tai tapahtuman päivämäärän sopimisessa.</span></p><p> Aikakyselyn avulla on helppo nähdä kaikkien saatavuus ja löytää paras aika.</p><p> Anna Aika-kyselyllesi otsikko ja tiedot. Syötä luettelo päivämäärä- ja aikavaihtoehdoista aikavyöhykkeelläsi.</p><p> Aikavälejä asettaessasi ota huomioon eri aikavyöhykkeillä olevat ihmiset. Osallistujat näkevät ajat omalla aikavyöhykkeellään.</p><p> Aseta kokouksen kesto.</p><p> Kun Aika-kysely sulkeutuu, aseta tulos, joka sisältää parhaan ajankohdan ja mahdolliset kokousta koskevat ohjeet.</p><p> <span>Loomio liittää tulosilmoitussähköpostiin kalenterikutsun, jotta osallistujat voivat lisätä tehtäviä kalenteriinsa.</span></p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">Lue lisää Timen kyselystä</a> .</p>
       title: Etsitään päivämäärä seuraavalle tapaamisellemme
       details: "<p><strong>Mikä on kokous tai tapahtuma?</strong></p><p></p><p> <strong>Miksi tämä on tärkeää?</strong></p><p></p><p> <strong>Mitä pyydät ihmisiä tekemään?</strong></p><p></p><p> <span>Merkitse vihreällä peukku ylös -kuvakkeella ne ajat, jolloin olet vapaana, tai jätä punainen peukku alas -kuvake paikalleen, kun et ole käytettävissä.</span></p><p> <span>Käytä peukalot sivussa -kuvaketta osoittaaksesi, että olet käytettävissä tarvittaessa.</span></p>"
       reason_prompt: Onko sinulla mitään sanottavaa, mikä auttaisi järjestäjää löytämään sopivan ajankohdan?
+      process_subtitle_v2: Selvitä, milloin ihmiset ovat käytettävissä
+      process_introduction_v2: <p><strong>Aikakysely</strong> auttaa sinua selvittämään, milloin ihmiset ovat käytettävissä. Lisää ehdottamasi ajat, niin osallistujat näkevät ne omalla aikavyöhykkeellään. Kun kysely sulkeutuu, aseta tulos, niin Loomio lähettää kaikille kalenterikutsun.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">Lue lisää Timen kyselystä</a> .</p>
     opt_in:
       process_subtitle: Etsi vapaaehtoisia tai kysy osallistujia
       process_introduction: '<p>Käytä Opt-in-toimintoa kutsuaksesi ihmisiä tiimiin, komiteaan tai työryhmään tai osallistumaan tapahtumaan.</p><p> ''Suostumus''-kohdassa on kaksi äänestysvaihtoehtoa: Hyväksy tai Hylkää.</p><p> Voit määritellä tavoitemäärän ihmisiä, joita etsit, esimerkiksi kolme henkilöä työryhmääsi.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#opt-in">Lue lisää opt-in-palvelusta</a> .</p>'
@@ -529,6 +573,27 @@ fi:
       accept_prompt: Miksi ilmoittaudut tähän vapaaehtoiseksi?
       decline_meaning: En pysty osallistumaan
       decline_prompt: Onko sinulla jotain sanottavaa?
+    try_loomio:
+      process_name: Kokeillaanpa Loomiota
+      process_subtitle: Sitoudu ryhmäsi kokeilemaan Loomiota yhdessä
+      process_introduction: "<p>Loomion hyödyntäminen parhaalla mahdollisella tavalla vaatii ryhmän sitoutumista. Tämä ehdotus auttaa ryhmääsi päättämään, panostavatko he Loomion kunnolliseen kokeilemiseen aikaa ja vaivaa – olipa kyse sitten kokeilujaksosta tai yhteisestä sopimuksesta.</p>"
+      title: Sitoudutaan kokeilemaan Loomiota yhdessä
+      details: "<p>Loomion hyvä käyttö vaatii ryhmätyötä – se toimii vain, kun ihmiset ilmestyvät paikalle ja osallistuvat.</p><p> Tässä ehdotuksessa pyydetään kaikkia sitoutumaan Loomion aktiiviseen käyttöön kokeilujakson ajan. Tämä tarkoittaa sisäänkirjautumista, ehdotuksista äänestämistä ja keskusteluihin osallistumista.</p><p> Jos sinulla on tästä huolenaiheita, esitä vastalause ja kerro, mitä pitäisi muuttaa – sitä varten on olemassa vastalausemahdollisuus.</p>"
+      outcome_statement: "<p>Kerro ryhmän kanssa ehdotuksen lopputulos – mitä päätettiin ja mitä tapahtuu seuraavaksi.</p>"
+      consent_meaning: Olen valmis kokeilemaan
+      consent_prompt: Mitä odotat innolla Loomion käyttämisestä?
+      objection_meaning: Minulla on huolenaihe, johon meidän on ensin puututtava
+      objection_prompt: Mitä pitää muuttaa ennen kuin voit sitoutua?
+    majority:
+      process_subtitle: Tee päätös enemmistöllä äänistä
+      process_introduction: "<p><strong>Enemmistö</strong> on yksinkertaisin tapa tehdä ryhmäpäätös – osallistujat äänestävät kyllä tai ei, ja ehdotus hyväksytään, jos yli puolet äänestää kyllä. Äänestämästä pidättäytymistä tai vastustamista ei ole, joten jokaisella äänellä on sama painoarvo.</p><p> Enemmistö toimii hyvin selkeissä päätöksissä, joissa tarvitaan selkeä lopputulos. Päätöksissä, joissa on tärkeää, että ihmiset työskentelevät yhdessä ymmärtääkseen toisiaan ja löytääkseen yhteisen sävelen, harkitse suostumusta tai konsensusta.</p>"
+      title: Hyväksy kolmannen neljänneksen budjetti
+      details: "<h3><strong>Mikä päätös sinun on tehtävä?</strong></h3><p></p><h3> <strong>Miksi tämä on tärkeää?</strong></h3><p></p><h3> <strong>Mitä pyydät ihmisiä tekemään?</strong></h3><p></p>"
+      yes_meaning: Kannatan tätä ehdotusta
+      yes_prompt: Miksi kannatatte tätä ehdotusta?
+      no_meaning: En tue tätä ehdotusta
+      no_prompt: Miksi ette tue tätä ehdotusta?
+      outcome_statement: "<p>Kiitos osallistumisestasi tähän enemmistöäänestykseen.</p>"
   forward_mailer:
     bounce:
       subject: Viestiäsi Loomiolle ei toimitettu

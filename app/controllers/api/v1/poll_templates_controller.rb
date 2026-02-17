@@ -7,8 +7,25 @@ class Api::V1::PollTemplatesController < Api::V1::RestfulController
       respond_with_resource
     else
       self.collection = PollTemplateService.group_templates(group: group)
+      unless group.admins.exists?(current_user.id)
+        self.collection = self.collection.reject { |t| t.discarded_at.present? }
+      end
       respond_with_collection
     end
+  end
+
+  def browse
+    templates = PollTemplateService.default_templates + PollTemplateService.example_templates
+
+    render root: false, json: templates.map { |dt|
+      {
+        key: dt.key,
+        poll_type: dt.poll_type,
+        process_name: dt.process_name,
+        process_subtitle: dt.process_subtitle,
+        tags: dt.tags
+      }
+    }
   end
 
   def show

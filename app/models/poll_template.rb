@@ -5,6 +5,8 @@ class PollTemplate < ApplicationRecord
 
   is_rich_text on: :details
 
+  attribute :example, :boolean, default: false
+
   belongs_to :author, class_name: "User"
   belongs_to :group, class_name: "Group"
 

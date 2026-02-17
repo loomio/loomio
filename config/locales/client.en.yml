@@ -243,6 +243,7 @@ en:
     all_day: All day
     ok_got_it: Ok, got it
     learn_more: Learn more
+    read_more: Read more
     not_found: Not found
     time_zone: Time zone
     local_time: Local time
@@ -310,6 +311,8 @@ en:
       close: Close
       reopen: Reopen
       save: Save
+      save_template: Save template
+      fork_template: Fork template
       move: Move
       save_changes: Save changes
       update_settings: Update settings
@@ -827,12 +830,18 @@ en:
     browse_public_templates: Browse template gallery
     browse_example_templates: Browse example templates
     example_templates: Example templates
+    example_discussion_templates: Example discussion templates
     start_a_new_discussion: Start a new discussion
     discussion_template_saved: Discussion template saved
     these_are_public_templates: 'These templates are available for you to copy or modify to suit your group'
-    browse_public_templates_hint: 'Click a template name to start a discussion with it, or click the edit button on the right to make a copy and modify it for your own group.'
-    these_are_templates: 'These are the discussion templates in your group. Click a template to start a discussion with it. You can also click the ... menu button on each template to edit, hide, or reorder these if you like. '
-    these_are_templates_v2: 'These are the discussion templates in your group. Click a template to start a new discussion. Admins can edit templates, make new templates and rearrange the list.'
+    browse_public_templates_hint: 'Create a new discussion template from blank, or use an example as a starting point.'
+    browse_example_use_hint: "Click the template title to <b>start a discussion</b>."
+    browse_example_fork_hint: "<b>Click the fork icon</b> to create a new discussion template, using the example as a starting point."
+    new_discussion_template_title: New discussion template
+    new_template_from_blank: New template from blank
+    new_template_from_blank_subtitle: Create a new template to suit a process you have in your organization
+    these_are_templates_v3: 'These are the discussion templates in your group. Click a template to start a new discussion.'
+    these_are_templates_admin_hint: 'Group admins can edit templates, make new templates, rearrange and hide/unhide templates. Only admins can see the hidden templates.'
     process_name_placeholder: "e.g. Weekly standup"
     process_subtitle_placeholder: "e.g. A short check-in with the team each week"
     default_title_placeholder: "e.g. Standup - January 15"
@@ -846,6 +855,8 @@ en:
     hidden_templates: Hidden templates
     more_templates: More templates
     fewer_templates: Fewer templates
+    show_hidden_templates: Show hidden templates
+    show_fewer: Show fewer
     choose_a_group: Choose a group
     default_templates: Default templates
     or_start_a_direct_discussion: Or start a direct discussion
@@ -867,8 +878,8 @@ en:
     direct_discussion_hint: A direct discussion is only visible to the specific people you invite. It will not appear in any group's discussion list — you can find it on your Direct discussions page.
     new_discussion_template: New discussion template
     edit_discussion_template: Edit discussion template
-    blank: Blank
-    blank_subtitle: Start a discussion and see where it takes you
+    blank: New
+    blank_subtitle: Create a new discussion template for a specific process
     new_template: New template
     new_template_subtitle: Create an example that others can copy
     to: To
@@ -1890,6 +1901,7 @@ en:
     dot_vote_title: Dot vote
     meeting_title: Time poll
     ranked_choice_title: Ranked choice
+    majority_title: Majority
     gradients_of_agreement_title: Gradients of agreement
   poll_option_form:
     thumb_up: Thumb up
@@ -1944,6 +1956,20 @@ en:
     select_minimum_to_maximum_options: Select %{minimum} to %{maximum} options
     custom_poll_types: Custom poll types
     hidden_poll_templates: Hidden poll templates
+    these_are_templates: 'These are the poll and proposal templates in your group. You can hide templates that you don''t use and edit the remaining ones to suit your needs.'
+    example_templates: Example templates
+    example_poll_templates: Example poll templates
+    browse_example_templates: Browse example templates
+    browse_example_templates_hint: 'Create a new poll template from blank, or use an example to get started.'
+    browse_example_use_hint: "Click the template title to <b>start a poll</b>."
+    browse_example_fork_hint: "<b>Click the fork icon</b> to create a new poll template, using the example as a starting point."
+    browse_unsure_help: "Unsure how to use Poll Templates?"
+    all_templates_hidden: All templates have been hidden
+    new_poll_template_title: New poll template
+    new_template_from_blank: New template from blank
+    new_template_from_blank_subtitle: Create a new template to suit a process you have in your organization
+    blank: New
+    blank_subtitle: Create a new poll template for a specific process
     poll_template: Poll template
     poll_template_saved: Poll template saved
     poll_templates: Poll templates
@@ -2315,8 +2341,10 @@ en:
       score_hint: Voters assign a score to each option
       allocate: Allocate
       allocate_hint: Voters allocate a budget of points between the options
+      rank: Rank
       ranked_choice: Ranked choice
       ranked_choice_hint: Voters arrange options in order from most to least preferred
+      time: Time
       time_poll: Time poll
       time_poll_hint: Voters indicate when they are available to meet
     process: Process
@@ -2461,6 +2489,8 @@ en:
     objection: Objection
     object: Object
     block: Block
+    'yes': 'Yes'
+    'no': 'No'
     no_voting: No voting
   poll_count_form:
     pct_of_target: "% of target"

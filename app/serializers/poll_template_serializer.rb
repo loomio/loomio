@@ -45,5 +45,6 @@ class PollTemplateSerializer < ActiveModel::Serializer
              :outcome_statement,
              :outcome_statement_format,
              :outcome_review_due_in_days,
-             :quorum_pct
+             :quorum_pct,
+             :example
 end

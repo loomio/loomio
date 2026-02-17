@@ -94,6 +94,10 @@ hu:
       title: "\U0001F44B Üdv! Köszönj be és próbálj ki dolgokat"
       description: "<p>Üdvözlünk a Loomio csoportunkban – örülünk, hogy itt vagy!</p><p> Ez a téma egy hely, ahol:</p><ul><li><p> Mutasd be magad a csoportnak</p></li><li><p> Próbáld ki a Loomio néhány funkcióját – például: próbáld ki a reakciókat \U0001F44D</p></li><li><p> Tegyél fel bármilyen kérdést ebben a szakaszban</p></li></ul><p> Ha nem tudod, mit mondj, egy egyszerű szia is elég \U0001F642</p>"
       process_name: Gyakorlati megbeszélés
+      process_subtitle_v2: Üdvözöljük az embereket, és ismerkedjünk meg együtt a Loomio használatával
+      process_introduction_v2: "<p>Üdvözlendő téma új csoportok számára. Az emberek bemutatkoznak, kipróbálnak olyan funkciókat, mint a hozzászólás és a reagálás, és közzéteszik első javaslatukat.</p>"
+      title_v2: Üdvözlünk! Mutasd be magad és próbálj ki dolgokat
+      description_v2: "<p>Üdv a csoportban! Ez a téma egy hely, ahol köszönhetünk, kérdéseket tehetünk fel, kipróbálhatunk dolgokat, és megszokhatjuk a Loomio használatát.</p><p> Írj egy hozzászólást, használj reakciót, vagy indíts el egyet az alábbi javaslatok közül.</p><p> Ha nem tudod, mit mondj, egy egyszerű köszönés is megteszi! Vagy próbáld ki az alábbi szavazóeszközök egyikét.</p>"
   explore:
     header: Fedezd fel a nyilvános csoportokat
   activerecord:
@@ -185,6 +189,7 @@ hu:
       must_be_in_the_future: Biztosan a jövőben
       templates_cannot_close: A sablonokat nem lehet bezárni
       poll_options_dont_match: A Loomio hibája miatt nem sikerült menteni a szavazatodat. Dolgozunk a hiba kijavításán. Kérjük, töltsd be újra az oldalt, és próbáld meg újra.
+      opening_at_before_closing_at: A nyitó dátumnak a záró dátum előtt kell lennie.
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) a tagok kifejtették álláspontjukat"
       title: Cím
@@ -389,6 +394,9 @@ hu:
       vote_now: Szavazz most
       you_have_until: "%{when} -ig van lehetőséged részt venni."
       people_have_voted: "%{nom} %{dnom} ember vett részt (%{pct}%)"
+      voting_opens_and_closes: 'A szavazás ekkor kezdődik: %{opens} és ekkor zárul: %{closes}. (%{days} nap)'
+      voting_closes: 'A szavazás ekkor zárul: %{when}.'
+      voting_opened_and_closed: A szavazás megnyílt %{opens} és lezárult %{closes}. (%{days} nap)
   poll_templates:
     practice_proposal:
       title: Kezdem rájönni erre
@@ -397,6 +405,17 @@ hu:
       process_introduction: "<p>Használd ezt a sablont, hogy segíts a csoportodnak megszokni a Loomio-n található javaslatok használatát. Ez egy biztonságos és egyszerű módja annak, hogy az emberek kipróbálják a szavazást, és megnézzék, hogyan illeszkednek egymáshoz a dolgok.</p>"
       details: "<p>Ez egy gyakorlómenet, hogy mindenki megismerkedhessen a Loomio-n futó ajánlatok működésével.</p><p> Kérlek, szavazz, és ha szeretnéd, indoklást is írj.</p><p> Nincs nyomás, nincsenek valós következmények. Ez csak egy módja annak, hogy felfedezzük, hogyan működnek a javaslatok!</p>"
       outcome_statement: "<p>Köszönöm, hogy részt vettél ebben a gyakorlati javaslatban! \U0001F389</p><p> Ez csak egy lehetőség volt arra, hogy megnézzem, hogyan működik a szavazás és a kommentelés a Loomión. Itt nem hoznak igazi döntést – de remélhetőleg ez segített mindenkinek megismerkedni a folyamattal.</p>"
+      title_v2: Az ananász a pizzára való
+      process_subtitle_v2: Próbálj ki egy javaslatot, hogy tudd, hogyan működik a szavazás
+      process_introduction_v2: "<p>Egy szórakoztató módja annak, hogy a csoportod kipróbálja a Loomión való szavazást. Válassz egy könnyed kérdést, hagyd, hogy a résztvevők szavazzanak, és indokolják meg a döntésüket – nincs igazi döntés, csak gyakorlás.</p>"
+      details_v2: "<p>Ez egy gyakorlati javaslat – itt nincs valódi döntés.</p><p> Szavazz és hagyj egy indokot, hogy lásd, hogyan működnek a javaslatok a Loomión.</p>"
+      outcome_statement_v2: "<p>Köszönjük, hogy kipróbáltál egy javaslatot! Most már tudod, hogyan működik a szavazás a Loomión.</p>"
+      agree_meaning: Egyetértek ezzel
+      agree_prompt: Miért értesz egyet?
+      abstain_meaning: Nincs véleményem erről
+      abstain_prompt: Van valami ötleted?
+      disagree_meaning: Nem értek egyet ezzel
+      disagree_prompt: Miért nem értesz egyet?
     proposal:
       process_subtitle: Javaslatot tesz döntéshozatalra
       process_introduction: '<p>A klasszikus Loomio-javaslat segít a döntéshozatalban, a megbeszélést egyértelmű eredményre konvertálva.</p><p> Javasolj egy cselekvési irányt, és kérd meg az embereket, hogy szavazással válaszoljanak: egyetértés, tartózkodás vagy egyet nem értés.</p><p> Szavazás közben az emberek megindokolhatják, hogy miért szavaztak így. Láthatjuk, hogy mások hogyan állnak ehhez a kérdéshez, és miért.</p><p> Így egy javaslat segítségével válaszra ösztönözheted az embereket, új információkat tárhatsz fel, és közös megértést építhetsz ki – ezzel is segítve a csoportodat egy jobb, megalapozottabb döntés meghozatalában.</p><p> Egy javaslat és a hozzá kapcsolódó vita saját feljegyzést hoz létre arról, hogyan született meg a döntés.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Tudjon meg többet a klasszikus Loomio-javaslat használatáról az Egyszerű döntési folyamatban</u></a> .</p>'
@@ -435,6 +454,9 @@ hu:
       objection_meaning: Érvényes kifogásom van, és úgy gondolom, hogy a javaslat kárt okozna.
       objection_prompt: Milyen változtatásra van szükség ezen a javaslaton ahhoz, hogy „biztonságosan kipróbálható” legyen, és Ön is támogatni tudja?
       outcome_statement: "<p>Köszönjük, hogy részt vett a hozzájárulási folyamatban.</p>"
+      process_subtitle_v2: Folytasd, hacsak valaki nem emel kifogást
+      process_introduction_v2: "<p><strong>A beleegyezés</strong> azt kérdezi, hogy egy javaslat biztonságosan kipróbálható-e, nem pedig azt, hogy tökéletes-e. A javaslat elfogadásra kerül, amíg senki sem emel érdemi kifogást. Ha valaki kifogást emel, a csoport azon dolgozik, hogy megoldja azt – és mivel a résztvevők a javaslat alakulásával párhuzamosan módosíthatják szavazatukat, az ellenvetések a fejlesztés eszközévé, nem pedig akadályává válnak.</p>"
+      details_v2: "<h3><strong>Milyen döntést kell meghoznod?</strong></h3><p></p><h3> <strong>Miért fontos ez?</strong></h3><p></p><h3> <strong>Mit kérsz az emberektől ebben a javaslatban?</strong></h3><p></p><p> Nem törekszünk a tökéletességre – add beleegyezésedet, ha a javaslat elég jó és biztonságosan kipróbálható. Ha kifogásod van, mondd el, mit kellene megváltoztatni ahhoz, hogy működőképes legyen.</p>"
     consensus:
       process_subtitle: Kollektív szerződést kell kötni minden érintettel
       process_introduction: <p>Építs konszenzust a meghozandó döntéshez, hogy olyan megállapodásra juss, amely minden résztvevő igényeit és aggályait kielégíti.</p><ul><li><p> Megbeszéljük és közösen kidolgozzuk a javaslatot</p></li><li><p> Vonj be és tisztelj minden résztvevőt</p></li><li><p> A legtöbb ember egyetértését kérni</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/consensus_process/index.html">Tudjon meg többet a konszenzusos folyamatról</a> .</p>
@@ -453,6 +475,8 @@ hu:
       block: Tömb
       block_meaning: Blokkolom ezt a javaslatot, és úgy gondolom, hogy nem szabadna folytatni.
       block_prompt: Indokolja meg kifogását ezzel a javaslattal szemben, és indokolja meg, hogy miért nem szabadna elfogadni.
+      details_v2: "<h3><strong>Milyen döntést kell meghoznod?</strong></h3><p></p><h3> <strong>Miért fontos ez?</strong></h3><p></p><h3> <strong>Mit kérsz az emberektől?</strong></h3><p></p><p> Mondd el, hogy hol állsz, és miért. Ha nem értesz egyet, magyarázd el, min kellene változtatni ahhoz, hogy ezt alátámasztsd.</p>"
+      process_introduction_v2: "<p><strong>A konszenzus</strong> olyan döntésekhez szükséges, ahol fontos, hogy mindenki aktívan egyetértsen. A résztvevők együttműködnek, hogy megértsék egymás igényeit, és addig alakítják a javaslatot, amíg az egész csoport támogatni nem tudja. Mivel az emberek a beszélgetés során megváltoztathatják szavazatukat, a folyamat az egy csapásra hozott döntések helyett az őszinte párbeszédet ösztönzi. Több türelmet igényel, mint más módszerek, de a legerősebb elkötelezettséget építi ki.</p><p> Ez a sablon alapértelmezés szerint tartalmaz egy <strong>Blokkolás</strong> opciót. A Blokkolás nem minden csoport számára megfelelő – ellentmondásos vagy helytelenül használható. Ha nem használsz blokkolást a döntéshozatali folyamatodban, javasoljuk, hogy szerkeszd a sablont a blokkolás eltávolításához.</p>"
     question_round:
       process_subtitle: Tegyen fel tisztázó kérdéseket, hogy segítsen az embereknek megérteni a javaslatot
       process_introduction: <p>A kérdések köre lehetőséget ad arra, hogy a résztvevők tisztázó kérdéseket tegyenek fel a javaslattal kapcsolatban, hogy mindenki megértse a javaslatot, mielőtt elmondaná a véleményét róla.</p><p> A Loomio kérdéskör egy speciális javaslat szavazási lehetőségek nélkül. Lehetővé teszi a résztvevők számára, hogy a körre beállított időtartamon belül kérdéseket tegyenek fel.</p><p> A kérdezz-felelek kört gyakran alkalmazzák a beleegyezési folyamat egyik lépéseként.</p><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Tudjon meg többet a hozzájárulási folyamatról</a> .</p>
@@ -478,6 +502,17 @@ hu:
       concerned: Aggódó
       concerned_meaning: Valaminek változnia kell ebben ahhoz, hogy hozzájáruljak vagy egyetértsek.
       concerned_prompt: Mi a problémád, és hogyan lehetne orvosolni?
+      process_subtitle_v2: Nézd meg, hogy jó úton jársz-e
+      process_introduction_v2: "<p><strong>Az érzékfelmérés</strong> segít korai visszajelzést kapni, mielőtt döntést hoznál. A résztvevők megmondják, hogy a dolgok rendben vannak-e, vagy aggályokat jeleznek, így módosíthatod az irányt, mielőtt hivatalos javaslatra térnél át. Ez nem döntés – ez egy lázfelmérés.</p>"
+      details_v2: "<h3><strong>Mit javasolsz?</strong></h3><p></p><h3> <strong>Miért fontos ez?</strong></h3><p></p><h3> <strong>Mit kérsz az emberektől?</strong></h3><p></p><p> Mondd el, hogy ez jól néz-e ki, lehetne-e jobb, vagy újra kellene gondolni – és oszd meg az érveidet.</p>"
+      looks_good_meaning_v2: Elégedett vagyok az irányvonallal
+      looks_good_prompt_v2: Mi tetszik benne?
+      could_be_better: Lehetne jobb is
+      could_be_better_meaning: Látok benne potenciált, de vannak javaslataim is
+      could_be_better_prompt: Mit változtatnál?
+      needs_a_rethink: Újragondolásra van szükség
+      needs_a_rethink_meaning: Szerintem a megközelítés nem helyes
+      needs_a_rethink_prompt: Mi a gondod?
     gradients_of_agreement:
       process_subtitle: Fejezd ki a javaslat támogatását egy 8 fokú skálán
       process_introduction: "<p>Az egyetértés fokozatai módszerrel a csoport tagjai egy skálán, fokozatokban fejezhetik ki támogatásukat egy javaslattal kapcsolatban, ami több módot kínál a támogatás kifejezésére, mint az „egyetértek” és „nem értek egyet”.</p><p> Használja az egyetértési fokokat előzetes fordulóként, hogy tesztelje a javaslat támogatottságát, mielőtt hivatalos megállapodásra lépne.</p><p> Az egyetértés foka jelzi az embereknek, hogy formálódik egy javaslat, és arra ösztönzi őket, hogy bekapcsolódjanak. Lehetőséget ad arra, hogy meghallgassuk az embereket, megértsük, hogyan érzik magukat, és megfelelően reagáljunk – megnyitva a lehetőséget arra, hogy beépítsük a hozzájárulásaikat egy jobb döntés meghozatalához.</p>"
@@ -511,27 +546,36 @@ hu:
       process_introduction: <p>Mielőtt döntést hoznál, nézd meg, melyik lehetőség(ek) érdeklik a legjobban az embereket.</p><p> Az egyszerű szavazás segít megtalálni a legnépszerűbb opciót vagy opciókat egyetlen vagy többes választási lehetőséggel.</p><p> Írd be a részleteket a lehetőségekről a részletek mezőbe, majd add meg a lehetőség nevét, és kattints a + jelre a hozzáadáshoz.</p><p> Állítsa be a szavazó által választható <strong>minimális</strong> és <strong>maximális választási lehetőségek számát</strong> . Egyetlen választási lehetőség esetén hagyja a maximális választási lehetőséget 1-en.</p><p> Az egyes opciók melletti ceruza ikonnal hozzáadhatod az opció <strong>jelentését</strong> , és részletesebben is kifejtheted, hogy segítsd az embereket a szavazás során.</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">További információ az Egyszerű szavazásról</a> .</p>
       title: Mire kellene összpontosítanunk stratégiai irányunkban?
       details: <h3 id="what-is-this-poll-about"><strong>Miről szól ez a közvélemény-kutatás?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Miért fontos ez?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mit kérsz az emberektől?</strong></h3><p></p><p> Válassza ki az Önnek tetsző opció(ka)t.</p>
+      process_introduction_v2: <p><strong>A Choose (Válassz) funkció</strong> segít megtalálni a legnépszerűbb lehetőséget. A résztvevők egy listából választanak – beállíthatod, hogy egy vagy több lehetőséget válasszanak.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">További információ a Choose-ról</a> .</p>
     score_poll:
       process_subtitle: Mérje fel az egyes lehetőségek támogatottságának mértékét
       process_introduction: <p>Használd a Score poll-t, ha fel szeretnéd mérni az emberek vágyait, preferenciáit vagy érdeklődését az egyes lehetőségek iránt.</p><p> <span>A résztvevőket arra kérik, hogy értékeljék az egyes opciókat, és egy csúszka skálán történő mozgatásával rendeljenek hozzájuk pontszámot.</span></p><p> <span>Az eredményeket grafikusan jelenítjük meg, valamint minden opcióhoz táblázatot, amely mutatja az összesített pontszámot, az átlagpontszámokat és a szavazók számát.</span></p><p> A speciális beállítások között megtalálható a „Névtelen szavazatok” és az „Opciók véletlenszerű sorrendben megjelenítése” – ezeket gyakran használják a pontszám-felmérésnél a szavazási torzítás csökkentése érdekében.</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">Tudjon meg többet a Score szavazásról</a> .</p>
       title: A döntéshozatal folyamatának értékelése a szervezetünkben
       details: <h3 id="what-is-this-poll-about"><strong>Miről szól ez a közvélemény-kutatás?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Miért fontos ez?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mit kérsz az emberektől?</strong></h3><p></p><p> Válassza ki az Önnek tetsző opció(ka)t.</p>
+      process_subtitle_v2: Mérje fel az egyes lehetőségek támogatottságának szintjét
+      process_introduction_v2: <p><strong>A pontszám</strong> segítségével mérheted a csoport támogatottságának szintjét az egyes lehetőségek esetében. A résztvevők minden lehetőséget egy csúszó skálán pontszám hozzárendelésével értékelnek, így nem csak azt láthatod, hogy az emberek mit preferálnak, hanem azt is, hogy mennyire.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">Tudjon meg többet a Score szavazásról</a> .</p>
     dot_vote:
       process_subtitle: Pontok költségvetésének kiosztása a prioritások feltárása érdekében
       process_introduction: <p>A pontozott szavazás hasznos azoknak a csoportoknak, amelyek korlátozott erőforrást próbálnak több lehetőség között elosztani. Túlmutat egy egyszerű közvélemény-kutatáson, mivel segít a résztvevőknek felismerni, hogy a lehetőségek kiválasztása során korlátozások vannak.</p><p> A résztvevők mindegyike meghatározott számú pontot kap. Te döntöd el, hogy hányat.</p><p> A résztvevők pontokat helyezhetnek a nekik tetsző lehetőségek mellé. Az összes pontjukat elhelyezhetik egyetlen lehetőségre, vagy több lehetőségre is eloszthatják.</p><p> A pontok kiosztása során a résztvevők túlléphetik a pontokra vonatkozó költségvetési korlátot, ezért arra biztatjuk őket, hogy gondosan gondolják át, mire költik el a pontjaikat.</p><p> A legtöbb ponttal rendelkező lehetőségek „nyernek”. Az eredménytáblázat további adatokat tartalmaz az eredmények elemzéséhez.</p><ul><li><p> Pontok %-a</p></li><li><p> Pontok</p></li><li><p> Átlagos</p></li><li><p> Választók</p></li></ul><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">Tudj meg többet a Dot szavazásról</a> .</p>
       title: Témák kiválasztása a konferenciánkhoz
       details: <h3 id="what-is-this-poll-about"><strong>Miről szól ez a közvélemény-kutatás?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Miért fontos ez?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mit kérsz az emberektől?</strong></h3><p></p><p> Ebben a szavazásban 8 pontból álló költségvetésed van, amit a kívánt lehetőségekhez rendelhetsz. Elhelyezheted az összes pontot egyetlen lehetőségre, vagy szétszórhatod őket.</p>
+      process_subtitle_v2: Feltárja a prioritásokat, ha kompromisszumok vannak
+      process_introduction_v2: <p><strong>Az Allocate</strong> segít megérteni egy csoport prioritásait kompromisszumok esetén. Minden résztvevő kap egy pontokból álló keretet, amelyet eloszthat a lehetőségek között – mindent befektethetnek egy lehetőségbe, vagy eloszthatják a pontjaikat több között. Mivel a költségvetés korlátozott, minden elköltött pont a prioritás valódi jelzése.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">További információ az Allocate-ról</a> .</p>
     ranked_choice:
       process_subtitle: Értsd meg a lehetőségek rendezett preferenciáját
       process_introduction: <p>A rangsorolt választás akkor hasznos, ha sok lehetőség közül választhatsz, vagy választást tartasz.</p><p> Ez a szavazássablon számos lehetőséget kínál arra, hogy a felhasználók a kívánt sorrendben szavazhassanak.</p><p> Beállíthatod, hogy a szavazó hány választási lehetőséget kapjon.</p><p> <span>A szavazók a kívánt beállításokat húzással helyezhetik el preferencia sorrendben (az első a legkedveltebb opció).</span></p><p> <span>A speciális beállítások között megtalálható a „Névtelen szavazatok” és az „Opciók véletlenszerű sorrendben megjelenítése” – ezeket gyakran használják a rangsorolt</span> választási lehetőségeknél a szavazási elfogultság csökkentése érdekében.</p><p> Az eredmények rangsorolva jelennek meg. Az eredménytáblázat további adatokat tartalmaz, amelyek segítenek az eredmények elemzésében.</p><ul><li><p> Rang</p></li><li><p> Pontok %-a</p></li><li><p> Pontok</p></li><li><p> Átlagos</p></li></ul><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">További információ a rangsorolt választásról</a> .</p>
       title: Igazgatótanács megválasztása
       details: <h3 id="what-is-this-poll-about"><strong>Miről szól ez a közvélemény-kutatás?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Miért fontos ez?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mit kérsz az emberektől?</strong></h3><p></p><p> Szavazz a lehetőségek sorrendjében a preferenciáid szerint. Az a lehetőség nyer, amelyik az első helyen áll a találatokban.</p>
+      process_subtitle_v2: Keresd meg a csoport preferencia sorrendjét
+      process_introduction_v2: <p><strong>A rangsor</strong> a csoport preferenciáinak sorrendjét mutatja. A résztvevők húzással rendezhetik el a lehetőségeket a legkedvezőtlenebbtől a legkedvezőtlenebbig, az eredmények pedig az összesített rangsort mutatják.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">További információ a Rankról</a> .</p>
     time_poll:
       process_subtitle: Keresd meg, mikor érhetők el az emberek a találkozóra
       process_introduction: <p><span>Takarítson meg időt a találkozó vagy esemény időpontjának egyeztetésénél.</span></p><p> Az időalapú szavazással könnyedén láthatod mindenki elérhetőségét és megtalálhatod a legjobb időpontot.</p><p> Adj címet és részleteket az Idő szavazásodnak. Add meg a dátum- és időbeállítások listáját az időzónádban.</p><p> Az időpontok beállításánál vegye figyelembe a különböző időzónákban lévő embereket. A résztvevők a saját időzónájukban lokalizált időpontokat fogják látni.</p><p> Állítsa be a megbeszélés időtartamát.</p><p> Amikor az Időpont-szavazás lezárul, állíts be egy eredményt a legjobb időponttal és a megbeszéléssel kapcsolatos utasításokkal.</p><p> <span>A Loomio egy naptári meghívót is mellékel az eredményről szóló értesítő e-mailhez, így a résztvevők hozzáadhatják a naptárukhoz.</span></p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">Tudj meg többet a Time közvélemény-kutatásáról</a> .</p>
       title: Találjunk időpontot a következő találkozónkra
       details: "<p><strong>Mi a találkozó vagy esemény?</strong></p><p></p><p> <strong>Miért fontos ez?</strong></p><p></p><p> <strong>Mit kérsz az emberektől?</strong></p><p></p><p> <span>Jelöld meg a szabad időpontokat a zöld „felfele mutató hüvelykujj” ikonnal, vagy hagyd a piros „lefele mutató hüvelykujj” ikont a helyén, ha nem elérhető.</span></p><p> <span>Használd az „oldalra mutatott hüvelykujj” ikont, hogy jelezd, elérhető vagy „ha szükséges”.</span></p>"
       reason_prompt: Tudsz valamit mondani, ami segíthet a szervezőknek megfelelő időpontot találni?
+      process_subtitle_v2: Keresd meg, mikor érhetők el az emberek
+      process_introduction_v2: <p><strong>Az időalapú szavazás</strong> segít megtudni, hogy mikor érhetők el az emberek. Add meg a javasolt időpontokat, és a résztvevők a saját időzónájukban fogják látni azokat. Amikor a szavazás lezárul, állítsd be az eredményt, és a Loomio mindenkinek küld egy naptármeghívót.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">Tudj meg többet a Time közvélemény-kutatásáról</a> .</p>
     opt_in:
       process_subtitle: Önkéntesek keresése vagy résztvevők kérése
       process_introduction: '<p>A Feliratkozás funkcióval meghívhatsz másokat egy csapatba, bizottságba vagy munkacsoportba, vagy részt vehetsz egy eseményen.</p><p> A „Feliratkozás” két szavazási lehetőséget kínál: Elfogadás vagy Elutasítás.</p><p> Meghatározhatsz egy célzott létszámot, mondjuk 3 embert a munkacsoportodba.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#opt-in">További információ a feliratkozásról</a> .</p>'
@@ -541,6 +585,27 @@ hu:
       accept_prompt: Miért jelentkezel önkéntesnek erre?
       decline_meaning: Nem tudok részt venni
       decline_prompt: Van valami, amit szeretnél mondani?
+    try_loomio:
+      process_name: Próbáljuk ki a Loomiót
+      process_subtitle: Kérd meg a csoportodat, hogy kötelezzék el magukat a Loomio közös kipróbálása mellett
+      process_introduction: "<p>A Loomio maximális kihasználása csoportos elkötelezettséget igényel. Ez a javaslat segít a csoportnak eldönteni, hogy időt és energiát fektetnek-e abba, hogy alaposan kipróbálják a Loomiót – legyen szó akár egy próbaidőszakról, akár egy közös terv megkötéséről.</p>"
+      title: Kötelezzük el magunkat, hogy együtt kipróbáljuk a Loomiót
+      details: "<p>A Loomio hatékony használata csoportos erőfeszítést igényel – csak akkor működik, ha az emberek megjelennek és részt vesznek.</p><p> Ez a javaslat arra kér mindenkit, hogy aktívan használja a Loomiót a próbaidőszak alatt. Ez azt jelenti, hogy bejelentkeznek, szavaznak a javaslatokra és csatlakoznak a beszélgetésekhez.</p><p> Ha aggályai vannak ezzel kapcsolatban, emeljen kifogást, és mondja el, mit kellene megváltoztatni – erre szolgál a kifogásolási lehetőség.</p>"
+      outcome_statement: "<p>Oszd meg a csoporttal a javaslat eredményét – miről döntöttek, és mi történik ezután.</p>"
+      consent_meaning: Hajlandó vagyok kipróbálni
+      consent_prompt: Mire számítasz a Loomio használatával kapcsolatban?
+      objection_meaning: Van egy aggályom, amit először meg kell oldanunk
+      objection_prompt: Min kell változtatnod, mielőtt elköteleződhetsz?
+    majority:
+      process_subtitle: A legtöbb szavazattal döntsön
+      process_introduction: "<p><strong>A többség</strong> a legegyszerűbb módja a csoportos döntéshozatalnak – a résztvevők igennel vagy nemmel szavaznak, és a javaslat elfogadásra kerül, ha a résztvevők több mint fele igennel szavaz. Nincs tartózkodás vagy blokkolás, így minden szavazat egyenlő súllyal bír.</p><p> A többségi szavazás jól működik az egyszerű döntéseknél, ahol egyértelmű eredményre van szükség. Azoknál a döntéseknél, ahol fontos, hogy az emberek együttműködjenek egymás megértése és a közös nevező megtalálása érdekében, érdemes megfontolni a beleegyezést vagy a konszenzust.</p>"
+      title: Jóváhagyja a harmadik negyedév költségvetését
+      details: "<h3><strong>Milyen döntést kell meghoznod?</strong></h3><p></p><h3> <strong>Miért fontos ez?</strong></h3><p></p><h3> <strong>Mit kérsz az emberektől?</strong></h3><p></p>"
+      yes_meaning: Támogatom ezt a javaslatot
+      yes_prompt: Miért támogatja ezt a javaslatot?
+      no_meaning: Nem támogatom ezt a javaslatot
+      no_prompt: Miért nem támogatja ezt a javaslatot?
+      outcome_statement: "<p>Köszönöm, hogy részt vettél ebben a többségi szavazásban.</p>"
   forward_mailer:
     bounce:
       subject: Az üzeneted Loomiónak nem érkezett meg kézbesítésre.

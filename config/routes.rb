@@ -259,6 +259,7 @@ Rails.application.routes.draw do
 
       resources :poll_templates, only: [:index, :create, :update, :show, :destroy] do
         collection do
+          get :browse
           post :hide
           post :unhide
           post :discard
@@ -407,6 +408,7 @@ Rails.application.routes.draw do
   get 'p/new(/:type)'                      => 'application#index', as: :new_poll
   get 'dashboard/direct_discussions'       => 'application#index', as: :direct_discussions
   get 'tasks'                              => 'application#index', as: :tasks
+  get 'poll_templates/browse'              => 'application#index'
   get 'poll_templates/new'                 => 'application#index'
   get 'poll_templates/:id'                 => 'application#index'
   get 'poll_templates/:id/edit'            => 'application#index'

@@ -318,6 +318,9 @@ hu:
       label: Formázás
       title: Így használhatod a Markdown-t a szöveg formázására
     thread: Szál
+    commercial: Kereskedelmi
+    nonprofit: Nonprofit
+    opening_in: Megnyitás %{time}
   merge_accounts:
     modal:
       title: Fiókok egyesítése
@@ -842,6 +845,7 @@ hu:
     none_direct_discussion: Nincs (közvetlen megbeszélés)
     direct_discussion: Közvetlen beszélgetés
     direct_discussion_hint: A közvetlen beszélgetések csak a meghívott személyek számára láthatók. Nem jelennek meg egyetlen csoport beszélgetési listájában sem – a Közvetlen beszélgetések oldalon találod meg őket.
+    recommended_poll_templates: Ajánlott szavazássablonok
   announcement:
     send_discussion: Téma küldése
     send_group: 'Meghívás a következőhöz: %{name}'
@@ -1217,6 +1221,7 @@ hu:
     no_discussions_here: Nincsenek itt beszélgetések!
     private_discussions: Tagnak kell lenned ahhoz, hogy megtekinthesd a csoport privát beszélgetéseit.
     view_closed_discussions: Lezárt beszélgetések megtekintése
+    discussion_templates: Beszélgetési sablonok
   export_data_modal:
     title: Hogyan szeretné használni az adatait?
     as_csv: Nyissa meg egy táblázatban
@@ -1778,6 +1783,7 @@ hu:
     meeting_title: Időpont választás
     ranked_choice_title: Sorrend választás
     gradients_of_agreement_title: Az egyetértés gradiensei
+    majority_title: Többség
   poll_option_form:
     edit_option: Szerkesztési lehetőség
     option_name: Opció neve
@@ -1900,6 +1906,7 @@ hu:
     post_outcome: Következtetés közzététele
     view_all_votes: Az összes szavazat megtekintése
     you_voted: Szavazott
+    these_are_templates: Ezek a csoportodban található döntési sablonok. Kattintson egy sablonra új döntés meghozatalához. Az adminisztrátorok testreszabhatják a sablon összes részletét, hogy az megfeleljen a szervezeted gyakorlatának, és a tagok könnyen megtalálhassák és használhassák.
   poll_common_attachment_form:
     label: Mellékletek
   poll_common_add_option:
@@ -2011,6 +2018,7 @@ hu:
     voting_disabled_poll_is_template: Szavazás letiltva. Ez egy sablon.
     for_this_proposal_to_pass: 'Ahhoz, hogy ez a javaslat átmenjen:'
     for_this_poll_type_to_be_valid: 'Ahhoz, hogy ez a %{poll_type} érvényes legyen:'
+    voting_opens_at: Ez a %{poll_type} megnyílt szavazásra %{time}
   poll_common_collapsed:
     by_who: tőle %{name}
   poll_common_calendar_invite:
@@ -2590,6 +2598,8 @@ hu:
       ranked_choice_hint: A választók a leginkább preferálttól a legkevésbé preferáltig rendezik a lehetőségeket
       time_poll: Időközi szavazás
       time_poll_hint: A választók jelzik, mikor tudnak találkozni
+      rank: Rang
+      time: Idő
     process: Folyamat
     process_name: Sablon címe
     process_name_hint: 'Hogy hívják ezt a sablont? Pl.: Szerepköri tanácsadás, Hőmérséklet-ellenőrzés, Jegyzőkönyv jóváhagyása'
@@ -2645,6 +2655,12 @@ hu:
     hide_results_description: Ha azt szeretnéd, hogy az emberek ne lássák, hogyan szavaztak mások, elrejtheted az eredményeket.
     process_helptext: Nevezd meg és írd le a szavazás lebonyolításához használt folyamatot.
     reminder_helptext: Küldj egy „Hamarosan lezárul” értesítést 24 órával a határidő előtt. Ez növelheti a részvételt, és lehetőséget adhat az embereknek, hogy átgondolják álláspontjukat.
+    voting_duration: Időtartam
+    voting_duration_hint: Mikor kezdődik és mikor zárul a szavazás?
+    more_settings: További beállítások
+    create_poll_type: "%{poll_type} létrehozása"
+    notify_voters_when_voting_opens: Értesítsék a szavazókat a szavazás megkezdéséről
+    voters_notified_when_opens: A szavazókat értesíteni fogják, amikor megnyílik a szavazás
   poll_receipts_page:
     verify_participants: Résztvevők ellenőrzése
     see_votes_if_quorum_reached: Ha a szavazás lezárult és létrejött a határozatképző létszám, akkor láthatja, hogy kik szavaztak.
@@ -2664,7 +2680,6 @@ hu:
     start_a_new_discussion: Új beszélgetés indítása
     discussion_template_saved: Beszélgetési sablon mentve
     these_are_public_templates: Ezek a sablonok másolhatók vagy módosíthatók a csoport igényei szerint.
-    these_are_templates: Ezek a csoportodban található beszélgetési sablonok. Kattints egy sablonra egy beszélgetés megkezdéséhez. Ezeket szerkesztheted, eltávolíthatod vagy átrendezheted is, ha szeretnéd.
     default_title_label: Alapértelmezett cím
     default_title_hint: Töltsd ki előre a cím mezőt szerkeszthető szöveggel. Ez opcionális - hagyd üresen, ha nem vagy biztos benne.
     title_placeholder_label: Példa cím
@@ -2681,7 +2696,6 @@ hu:
     browse_example_templates: Példasablonok böngészése
     example_templates: Példa sablonok
     browse_public_templates_hint: Kattintson egy sablon nevére, ha beszélgetést szeretne indítani vele, vagy kattintson a jobb oldalon található szerkesztés gombra, ha másolatot szeretne készíteni és módosítani a saját csoportja számára.
-    these_are_templates_v2: Ez a csoportodban található vita sablonok listája. Kattints egy sablonra, hogy azt egy új vita kiindulópontjaként használd. A csoport adminisztrátorai szerkeszthetik a sablonokat és átrendezhetik a listát, hogy könnyen megtaláld a fontos sablonokat.
     process_name_placeholder: pl. heti standup
     process_subtitle_placeholder: pl. Egy rövid bejelentkezés a csapattal minden héten
     default_title_placeholder: pl. Stand-up - január 15.
@@ -2696,6 +2710,7 @@ hu:
     poll_templates_help: Az itt kiválasztott sablonok jelennek meg először, amikor valaki a Szavazás indítása gombra kattint.
     start_direct_discussion_from_blank: Közvetlen beszélgetés indítása egy üres sablonból
     default_to_direct_discussion: Közvetlen beszélgetésként kezdés (csoport nélkül)
+    default_to_direct_discussion_helptext: Használd ezt, ha azt szeretnéd, hogy az emberek közvetlen beszélgetéseket indítsanak ebből a sablonból.
   context_panel:
     thread_status:
       pinned: Ez a beszélgetés rögzítésre került. A csoport beszélgetési listájának tetején marad minden felhasználó számára.
@@ -2722,3 +2737,9 @@ hu:
   auth:
     oauth_cancelled: Bejelentkezés megszakítva
     switching_accounts: Fiókváltás. Kérjük, jelentkezzen be az új fiókadataival.
+  poll_common_opening_at_field:
+    voting_opens_immediately: A szavazás azonnal megnyílik
+    opening_date: Nyitás dátuma
+    opening_hour: Nyitvatartás
+    scheduled_hint: A szavazás látható lesz, de a nyitásig nem lehet rá szavazni.
+    draft_hint: Ez a szavazás vázlatként lesz mentve. Állítson be egy nyitási dátumot, vagy jelölje be a „A szavazás azonnal megnyílik” jelölőnégyzetet, amikor készen áll a szavazás megkezdésére.

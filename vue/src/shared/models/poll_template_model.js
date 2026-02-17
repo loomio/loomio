@@ -57,7 +57,8 @@ export default class PollTemplateModel extends BaseModel {
       quorumPct: null,
       outcomeStatement: null,
       outcomeStatementFormat: 'html',
-      outcomeReviewDueInDays: null
+      outcomeReviewDueInDays: null,
+      example: false
     };
   }
 

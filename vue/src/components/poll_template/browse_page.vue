@@ -1,35 +1,23 @@
 <script lang="js">
 import Records       from '@/shared/services/records';
-import Session       from '@/shared/services/session';
 import LmoUrlService from '@/shared/services/lmo_url_service';
-import EventBus      from '@/shared/services/event_bus';
-import AbilityService from '@/shared/services/ability_service';
-import DiscussionTemplateService from '@/shared/services/discussion_template_service';
 import utils         from '@/shared/record_store/utils';
 import { compact }   from 'lodash-es';
-import VuetifyColors  from 'vuetify/lib/util/colors';
-import { mdiMagnify, mdiSourceBranchPlus } from '@mdi/js';
-
-const colors = Object.keys(VuetifyColors).filter(name => name !== 'shades').map(name => VuetifyColors[name]['base']);
+import { mdiSourceBranchPlus } from '@mdi/js';
 
 export default {
   data() {
     return {
-      mdiMagnify,
       mdiSourceBranchPlus,
       group: null,
       results: [],
-      query: this.$route.query.query,
       loading: false,
-      tags: []
+      filter: 'proposal'
     };
   },
 
   mounted() {
     this.fetch();
-    Records.remote.get('discussion_templates/browse_tags').then(data => {
-      this.tags = data;
-    });
     const groupId = parseInt(this.$route.query.group_id);
     if (groupId) {
       Records.groups.findOrFetchById(groupId).then(group => {
@@ -49,11 +37,12 @@ export default {
         };
       });
     },
-    sortedResults() {
-      const first = ['blank', 'practice_thread'];
-      const top = first.map(k => this.results.find(r => r.key === k)).filter(Boolean);
-      const rest = this.results.filter(r => !first.includes(r.key));
-      return [...top, ...rest];
+    filteredResults() {
+      if (this.filter === 'proposal') {
+        return this.results.filter(r => ['proposal', 'question'].includes(r.pollType));
+      } else {
+        return this.results.filter(r => ['score', 'poll', 'ranked_choice', 'dot_vote', 'meeting', 'count'].includes(r.pollType));
+      }
     },
     groupIdParam() {
       return this.$route.query.group_id ? '&group_id='+this.$route.query.group_id : '';
@@ -67,55 +56,62 @@ export default {
   },
 
   methods: {
-    changed() { return this.fetch(); },
     fetch() {
       this.loading = true;
-      this.results = [];
-      Records.remote.get('discussion_templates/browse', {query: this.query}).then(data => {
+      Records.remote.get('poll_templates/browse').then(data => {
         this.results = data.map(utils.parseJSON);
         this.loading = false;
       });
-    },
-
-    tagColor(tag){
-      return colors[this.tags.indexOf(tag) % colors.length];
     }
   }
 };
-
 </script>
 <template lang="pug">
-.discussion-templates-browse-page
+.poll-templates-browse-page
   v-main
     v-container.max-width-800
       v-breadcrumbs(v-if="breadcrumbs.length" color="anchor" :items="breadcrumbs")
         template(v-slot:divider)
           common-icon(name="mdi-chevron-right")
-      v-card(:title="$t('discussion_template.example_discussion_templates')")
+      v-card(:title="$t('poll_common.example_poll_templates')")
         template(v-slot:append)
           v-btn(v-if="$route.query.return_to" icon variant="text" :to="$route.query.return_to" :aria-label="$t('common.action.back')")
             common-icon(name="mdi-close")
         v-alert.ma-4(type="info" variant="tonal" :icon="mdiSourceBranchPlus")
-          div(v-html="$t('discussion_template.browse_example_fork_hint')")
+          div(v-html="$t('poll_common.browse_example_fork_hint')")
+
+        .d-flex.px-4
+          v-chip.mr-1(
+            :color="filter === 'proposal' ? 'primary' : null"
+            label
+            @click="filter = 'proposal'"
+          )
+            common-icon.mr-2(size="small" name="mdi-thumbs-up-down" :color="filter === 'proposal' ? 'primary' : null")
+            span(v-t="'decision_tools_card.proposal_title'")
+          v-chip(
+            :color="filter === 'poll' ? 'primary' : null"
+            label
+            @click="filter = 'poll'"
+          )
+            common-icon.mr-2(size="small" name="mdi-poll" :color="filter === 'poll' ? 'primary' : null")
+            span(v-t="'decision_tools_card.poll_title'")
 
         v-list(lines="two")
           v-list-item(
-            v-for="result in sortedResults"
+            v-for="result in filteredResults"
             :key="result.key"
-            :to="'/d/new?template_key='+result.key+groupIdParam+returnToParam"
+            :to="'/p/new?template_key='+result.key+groupIdParam+returnToParam"
           )
             template(v-slot:append)
               v-btn(
                 variant="tonal"
                 color="primary"
                 icon
-                :to="'/discussion_templates/new?template_key='+result.key+groupIdParam+returnToParam"
+                :to="'/poll_templates/new?template_key='+result.key+groupIdParam+returnToParam"
                 :title="$t('common.action.fork_template')"
               )
                 common-icon(name="mdi-source-branch-plus")
 
-            v-list-item-title {{result.processName || result.title}}
+            v-list-item-title {{result.processName}}
             v-list-item-subtitle {{result.processSubtitle}}
-
-
 </template>

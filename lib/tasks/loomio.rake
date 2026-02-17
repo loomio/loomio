@@ -128,7 +128,8 @@ namespace :loomio do
   task delete_translations: :environment do
     # I edit this each time I want to use it.. rake task arguments are terrible
     unwanted = %w[
-      dashboard_page.no_groups.show_all
+      discussion_template.these_are_templates
+      discussion_template.these_are_templates_v2
     ]
 
     %w[client server].each do |source_name|

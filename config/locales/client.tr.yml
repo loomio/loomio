@@ -316,6 +316,9 @@ tr:
       label: Biçimlendirme
       title: Metninizi biçimlendirmek için Markdown'u nasıl kullanacağınızı öğrenin
     thread: İplik
+    commercial: Reklam
+    nonprofit: Kar amacı gütmeyen kuruluşlar
+    opening_in: Açılış %{zaman}
   merge_accounts:
     modal:
       title: Hesapları birleştir
@@ -840,6 +843,7 @@ tr:
     none_direct_discussion: Yok (doğrudan görüşme)
     direct_discussion: Doğrudan görüşme
     direct_discussion_hint: Doğrudan yapılan bir tartışma yalnızca davet ettiğiniz belirli kişiler tarafından görülebilir. Herhangi bir grubun tartışma listesinde görünmez; onu Doğrudan Tartışmalar sayfanızda bulabilirsiniz.
+    recommended_poll_templates: Önerilen anket şablonları
   announcement:
     send_discussion: Konuyu gönder
     send_group: İnsanları %{name}'ye davet edin
@@ -1213,6 +1217,7 @@ tr:
     no_discussions_here: Burada görülecek tartışma yok!
     private_discussions: Bu gruptaki özel konuları görüntülemek için üye olmanız gerekir
     view_closed_discussions: Kapalı tartışmaları görüntüle
+    discussion_templates: Tartışma şablonları
   export_data_modal:
     title: Verilerinizi nasıl kullanmak istiyorsunuz?
     as_csv: Bir e-tabloda açın
@@ -1771,6 +1776,7 @@ tr:
     meeting_title: Zaman anketi
     ranked_choice_title: Dereceli seçim
     gradients_of_agreement_title: Anlaşmanın gradyanları
+    majority_title: Çoğunluk
   poll_option_form:
     edit_option: Düzenleme seçeneği
     option_name: Seçenek adı
@@ -1893,6 +1899,7 @@ tr:
     post_outcome: Kararı yayınla
     view_all_votes: Tüm oyları görüntüle
     you_voted: Oy verdiniz
+    these_are_templates: Bunlar grubunuzdaki karar şablonlarıdır. Yeni bir karar başlatmak için bir şablona tıklayın. Yöneticiler, şablonun kuruluşunuzun uygulamalarına uyması ve üyelerin bulup kullanması kolay olması için şablonla ilgili tüm ayrıntıları özelleştirebilir.
   poll_common_attachment_form:
     label: Ekler
   poll_common_add_option:
@@ -2004,6 +2011,7 @@ tr:
     voting_disabled_poll_is_template: Oylama devre dışı bırakıldı. Bu bir şablon.
     for_this_proposal_to_pass: 'Bu önerinin kabul edilmesi için:'
     for_this_poll_type_to_be_valid: 'Bu %{poll_type}''ın geçerli olması için:'
+    voting_opens_at: Bu %{poll_type} anketi %{time} tarihinde oylamaya açılıyor.
   poll_common_collapsed:
     by_who: "%{name}"
   poll_common_calendar_invite:
@@ -2583,6 +2591,8 @@ tr:
       ranked_choice_hint: Seçmenler seçenekleri en çok tercih edilenden en az tercih edilene doğru sıralarlar
       time_poll: Zaman anketi
       time_poll_hint: Seçmenler toplantıya ne zaman hazır olduklarını belirtirler
+      rank: Rütbe
+      time: Zaman
     process: İşlem
     process_name: Şablon başlığı
     process_name_hint: Bu şablona ne ad veriyorsunuz? Örneğin; Rol tavsiyesi, Sıcaklık kontrolü, Tutanak onayı.
@@ -2638,6 +2648,12 @@ tr:
     hide_results_description: Eğer insanların başkalarının nasıl oy kullandığını görmeden oy kullanmasını istiyorsanız sonuçları gizleyebilirsiniz.
     process_helptext: Bu anketi çalıştırmak için kullanılan işlemi adlandırın ve açıklayın.
     reminder_helptext: Son tarihten 24 saat önce "Yakında Kapanıyor" bildirimi gönderin. Bu, katılımı artırabilir ve insanların pozisyonlarını yeniden değerlendirmeleri için bir fırsat yaratabilir.
+    voting_duration: Süre
+    voting_duration_hint: Oy verme işlemi ne zaman başlıyor ve ne zaman sona eriyor?
+    more_settings: Daha fazla ayar
+    create_poll_type: "%{poll_type} oluşturun"
+    notify_voters_when_voting_opens: Oy verme işleminin ne zaman başlayacağını seçmenlere bildirin.
+    voters_notified_when_opens: Oy verme işleminin ne zaman başlayacağı seçmenlere bildirilecektir.
   poll_receipts_page:
     verify_participants: Katılımcıları doğrulayın
     see_votes_if_quorum_reached: Oylama sona ermiş ve yeter sayı sağlanmışsa, kimin oy kullandığını göreceksiniz.
@@ -2657,7 +2673,6 @@ tr:
     start_a_new_discussion: Yeni bir tartışma başlat
     discussion_template_saved: Tartışma şablonu kaydedildi
     these_are_public_templates: Bu şablonlar grubunuza uyacak şekilde kopyalayıp değiştirebilmeniz için mevcuttur
-    these_are_templates: Bunlar grubunuzdaki tartışma şablonlarıdır. Tartışma başlatmak için bir şablona tıklayın. İsterseniz bunları düzenleyebilir, kaldırabilir veya yeniden sıralayabilirsiniz.
     default_title_label: Varsayılan başlık
     default_title_hint: Başlık alanını düzenlenebilir metinle önceden doldurun. Bu isteğe bağlıdır - emin değilseniz boş bırakın.
     title_placeholder_label: Örnek başlık
@@ -2674,7 +2689,6 @@ tr:
     browse_example_templates: Örnek şablonlara göz atın
     example_templates: Örnek şablonlar
     browse_public_templates_hint: Bir şablon adına tıklayarak o şablonla ilgili bir tartışma başlatabilir veya sağdaki düzenleme düğmesine tıklayarak bir kopyasını oluşturup kendi grubunuz için değiştirebilirsiniz.
-    these_are_templates_v2: Bu, grubunuzdaki Tartışma Şablonlarının listesidir. Yeni bir tartışma başlatmak için bir şablona tıklayın. Grup yöneticileri şablonları düzenleyebilir ve listeyi yeniden sıralayarak önemli şablonları kolayca bulabilirler.
     process_name_placeholder: Örneğin, Haftalık toplantı
     process_subtitle_placeholder: Örneğin, her hafta ekiple kısa bir görüşme.
     default_title_placeholder: Örneğin Standup - 15 Ocak
@@ -2689,6 +2703,7 @@ tr:
     poll_templates_help: Burada seçtiğiniz şablonlar, biri "Oylama başlat" düğmesine tıkladığında ilk olarak gösterilecektir.
     start_direct_discussion_from_blank: Boş bir şablon kullanarak doğrudan bir tartışma başlatın.
     default_to_direct_discussion: Doğrudan bir tartışma olarak başlayın (grup oluşturmadan).
+    default_to_direct_discussion_helptext: İnsanların bu şablonu kullanarak doğrudan tartışmalar başlatmasını istiyorsanız bunu kullanın.
   context_panel:
     thread_status:
       pinned: Bu tartışma sabitlendi. Tüm kullanıcılar için grubun tartışma listesinin en üstünde kalacak.
@@ -2715,3 +2730,9 @@ tr:
   auth:
     oauth_cancelled: Giriş işlemi iptal edildi.
     switching_accounts: Hesap değiştiriliyor. Lütfen yeni hesap bilgilerinizle giriş yapın.
+  poll_common_opening_at_field:
+    voting_opens_immediately: Oylama hemen başlıyor
+    opening_date: Açılış tarihi
+    opening_hour: Açılış saati
+    scheduled_hint: Anket, açılış saatine kadar görülebilir ancak oy verilemez olacaktır.
+    draft_hint: Bu anket taslak olarak kaydedilecektir. Oylamaya başlamaya hazır olduğunuzda bir açılış tarihi belirleyin veya "Oylama hemen açılıyor" seçeneğini işaretleyin.

@@ -316,6 +316,9 @@ pl:
       label: Formatowanie
       title: Naucz się używać Markdown, by sformatować swój tekst
     thread: Nitka
+    commercial: Handlowy
+    nonprofit: Niedochodowy
+    opening_in: Otwarcie %{time}
   merge_accounts:
     modal:
       title: Połącz konta
@@ -844,6 +847,7 @@ pl:
     none_direct_discussion: Brak (bezpośrednia dyskusja)
     direct_discussion: Bezpośrednia dyskusja
     direct_discussion_hint: Dyskusja bezpośrednia jest widoczna tylko dla zaproszonych przez Ciebie osób. Nie pojawi się na liście dyskusyjnej żadnej grupy — znajdziesz ją na swojej stronie „Dyskusje bezpośrednie”.
+    recommended_poll_templates: Zalecane szablony ankiet
   announcement:
     send_discussion: Wyślij wątek
     send_group: Zaproś ludzi do %{name}
@@ -1221,6 +1225,7 @@ pl:
     no_discussions_here: Nie ma tu żadnych dyskusji!
     private_discussions: Aby przeglądać prywatne wątki w tej grupie, musisz być jej członkiem
     view_closed_discussions: Wyświetl zamknięte dyskusje
+    discussion_templates: Szablony dyskusji
   export_data_modal:
     title: Jak chcesz wykorzystać swoje dane?
     as_csv: Otwórz w arkuszu kalkulacyjnym
@@ -1796,6 +1801,7 @@ pl:
     meeting_title: Ankieta dotycząca daty spotkania
     ranked_choice_title: Wybór rankingowy
     gradients_of_agreement_title: Gradienty zgodności
+    majority_title: Większość
   poll_option_form:
     edit_option: Edytuj opcję
     option_name: Nazwa opcji
@@ -1918,6 +1924,7 @@ pl:
     post_outcome: Opublikuj wynik
     view_all_votes: Zobacz wszystkie głosy
     you_voted: Głosowałeś
+    these_are_templates: Oto szablony decyzji w Twojej grupie. Kliknij szablon, aby rozpocząć nową decyzję. Administratorzy mogą dostosować wszystkie szczegóły szablonu, aby odpowiadał on praktykom Twojej organizacji i był łatwy do znalezienia i użycia przez członków.
   poll_common_attachment_form:
     label: Załączniki
   poll_common_add_option:
@@ -2031,6 +2038,7 @@ pl:
     voting_disabled_poll_is_template: Głosowanie wyłączone. To jest szablon.
     for_this_proposal_to_pass: 'Aby wniosek ten został przyjęty:'
     for_this_poll_type_to_be_valid: 'Aby ten %{poll_type} był ważny:'
+    voting_opens_at: Ta ankieta %{poll_type} jest otwarta do głosowania %{time}
   poll_common_collapsed:
     by_who: przez %{name}
   poll_common_calendar_invite:
@@ -2612,6 +2620,8 @@ pl:
       ranked_choice_hint: Wyborcy porządkują opcje od najbardziej do najmniej preferowanych
       time_poll: Ankieta czasowa
       time_poll_hint: Wyborcy wskazują, kiedy są dostępni na spotkanie
+      rank: Stopień
+      time: Czas
     process: Proces
     process_name: Tytuł szablonu
     process_name_hint: 'Jak nazywa się ten szablon? Np.: porady dotyczące roli, kontrola temperatury, zatwierdzenie protokołu'
@@ -2667,6 +2677,12 @@ pl:
     hide_results_description: Jeśli chcesz, aby ludzie głosowali, nie widząc, jak głosowali inni, możesz ukryć wyniki.
     process_helptext: Podaj nazwę i opisz proces, który jest używany do przeprowadzenia tej ankiety.
     reminder_helptext: Wyślij powiadomienie „Zakończenie wkrótce” 24 godziny przed upływem terminu. Może to zwiększyć frekwencję i dać ludziom szansę na ponowne rozważenie swojego stanowiska.
+    voting_duration: Czas trwania
+    voting_duration_hint: Kiedy rozpoczyna się głosowanie, a kiedy kończy?
+    more_settings: Więcej ustawień
+    create_poll_type: Utwórz %{poll_type}
+    notify_voters_when_voting_opens: Powiadom wyborców o otwarciu głosowania
+    voters_notified_when_opens: Wyborcy zostaną powiadomieni o otwarciu głosowania
   poll_receipts_page:
     verify_participants: Zweryfikuj uczestników
     see_votes_if_quorum_reached: Jeśli głosowanie zostało zamknięte i osiągnięto kworum, zobaczysz, kto oddał głos.
@@ -2686,7 +2702,6 @@ pl:
     start_a_new_discussion: Rozpocznij nową dyskusję
     discussion_template_saved: Szablon dyskusji został zapisany
     these_are_public_templates: Możesz skopiować lub zmodyfikować te szablony, aby dostosować je do swojej grupy
-    these_are_templates: Oto szablony dyskusji w Twojej grupie. Kliknij szablon, aby rozpocząć dyskusję. Możesz je również edytować, usuwać lub zmieniać ich kolejność, jeśli chcesz.
     default_title_label: Domyślny tytuł
     default_title_hint: Wstępnie wypełnij pole tytułu edytowalnym tekstem. To pole jest opcjonalne – pozostaw puste, jeśli nie masz pewności.
     title_placeholder_label: Przykładowy tytuł
@@ -2703,7 +2718,6 @@ pl:
     browse_example_templates: Przeglądaj przykładowe szablony
     example_templates: Przykładowe szablony
     browse_public_templates_hint: Kliknij nazwę szablonu, aby rozpocząć dyskusję na jego temat lub kliknij przycisk edycji po prawej stronie, aby utworzyć kopię i zmodyfikować ją na potrzeby własnej grupy.
-    these_are_templates_v2: Oto lista szablonów dyskusji w Twojej grupie. Kliknij szablon, aby użyć go jako punktu wyjścia do nowej dyskusji. Administratorzy grupy mogą edytować szablony i zmieniać kolejność na liście, aby łatwo znaleźć ważne szablony.
     process_name_placeholder: np. cotygodniowy standup
     process_subtitle_placeholder: np. Krótkie spotkanie z zespołem co tydzień
     default_title_placeholder: np. Standup - 15 stycznia
@@ -2718,6 +2732,7 @@ pl:
     poll_templates_help: Wybrane tutaj szablony będą wyświetlane jako pierwsze, gdy ktoś kliknie Rozpocznij głosowanie
     start_direct_discussion_from_blank: Rozpocznij bezpośrednią dyskusję od pustego szablonu
     default_to_direct_discussion: Rozpocznij jako bezpośrednią dyskusję (bez grupy)
+    default_to_direct_discussion_helptext: Użyj tego, jeśli chcesz, aby ludzie rozpoczynali bezpośrednie dyskusje przy użyciu tego szablonu.
   context_panel:
     thread_status:
       pinned: Ta dyskusja została przypięta. Będzie nadal wyświetlana na górze listy dyskusji grupy dla wszystkich użytkowników.
@@ -2744,3 +2759,9 @@ pl:
   auth:
     oauth_cancelled: Logowanie zostało anulowane
     switching_accounts: Zmiana konta. Zaloguj się, używając danych nowego konta.
+  poll_common_opening_at_field:
+    voting_opens_immediately: Głosowanie rozpoczyna się natychmiast
+    opening_date: Data otwarcia
+    opening_hour: Godziny otwarcia
+    scheduled_hint: Ankieta będzie widoczna, ale głosowanie w niej będzie możliwe dopiero po jej otwarciu.
+    draft_hint: Ta ankieta zostanie zapisana jako wersja robocza. Ustaw datę rozpoczęcia lub zaznacz opcję „Głosowanie rozpocznie się natychmiast”, gdy będziesz gotowy do rozpoczęcia głosowania.

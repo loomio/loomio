@@ -324,6 +324,9 @@ it:
       label: Formattazione
       title: Impara come usare il Markdown per formattare il tuo testo
     thread: Filo
+    commercial: Commerciale
+    nonprofit: Non profit
+    opening_in: Apertura %{time}
   merge_accounts:
     modal:
       title: Unisci account
@@ -852,6 +855,7 @@ it:
     none_direct_discussion: Nessuno (discussione diretta)
     direct_discussion: Discussione diretta
     direct_discussion_hint: 'Una discussione diretta è visibile solo alle persone specifiche che inviti. Non apparirà nell''elenco delle discussioni di nessun gruppo: puoi trovarla nella tua pagina Discussioni dirette.'
+    recommended_poll_templates: Modelli di sondaggio consigliati
   announcement:
     send_discussion: Invia thread
     send_group: Invita persone a %{name}
@@ -1239,6 +1243,7 @@ it:
     no_discussions_here: Nessuna discussione da vedere qui!
     private_discussions: Devi essere un membro per visualizzare le discussioni private in questo gruppo
     view_closed_discussions: Visualizza le discussioni chiuse
+    discussion_templates: Modelli di discussione
   export_data_modal:
     title: Come vuoi usare i tuoi dati?
     as_csv: Aprirlo in un foglio di calcolo
@@ -1801,6 +1806,7 @@ it:
     meeting_title: Sondaggio appuntamento
     ranked_choice_title: Scelta di preferenze
     gradients_of_agreement_title: Gradienti di accordo
+    majority_title: Maggioranza
   poll_option_form:
     edit_option: Modifica opzione
     option_name: Nome dell'opzione
@@ -1923,6 +1929,7 @@ it:
     post_outcome: Pubblica conclusione
     view_all_votes: Visualizza tutti i voti
     you_voted: Hai votato
+    these_are_templates: Questi sono i modelli decisionali del tuo gruppo. Clicca su un modello per avviare una nuova decisione. Gli amministratori possono personalizzare tutti i dettagli di un modello in modo che corrisponda alle pratiche della tua organizzazione e sia facile da trovare e utilizzare per i membri.
   poll_common_attachment_form:
     label: Allegati
   poll_common_add_option:
@@ -2034,6 +2041,7 @@ it:
     voting_disabled_poll_is_template: Voto disattivato. Questo è un modello.
     for_this_proposal_to_pass: 'Per far passare questa proposta:'
     for_this_poll_type_to_be_valid: 'Affinché questo %{poll_type} sia valido:'
+    voting_opens_at: Questo %{poll_type} si apre per votare %{time}
   poll_common_collapsed:
     by_who: di %{name}
   poll_common_calendar_invite:
@@ -2613,6 +2621,8 @@ it:
       ranked_choice_hint: Gli elettori dispongono le opzioni in ordine dalla più alla meno preferita
       time_poll: Sondaggio temporale
       time_poll_hint: Gli elettori indicano quando sono disponibili per l'incontro
+      rank: Rango
+      time: Tempo
     process: Processo
     process_name: Titolo del modello
     process_name_hint: 'Come si chiama questo modello? Ad esempio: Consulenza sul ruolo, Controllo della temperatura, Approvazione dei verbali'
@@ -2668,6 +2678,12 @@ it:
     hide_results_description: Se vuoi che le persone votino senza vedere come hanno votato gli altri, puoi nascondere i risultati.
     process_helptext: Indica e descrivi il processo utilizzato per eseguire questo sondaggio.
     reminder_helptext: Invia una notifica "Chiusura imminente" 24 ore prima della scadenza. Questo può aumentare la partecipazione e offrire alle persone l'opportunità di riconsiderare la propria posizione.
+    voting_duration: Durata
+    voting_duration_hint: Quando si aprono e quando si chiudono le votazioni?
+    more_settings: Altre impostazioni
+    create_poll_type: Crea %{poll_type}
+    notify_voters_when_voting_opens: Avvisare gli elettori quando si aprono le votazioni
+    voters_notified_when_opens: Gli elettori saranno avvisati all'apertura delle votazioni
   poll_receipts_page:
     verify_participants: Verifica i partecipanti
     see_votes_if_quorum_reached: Se la votazione è chiusa e il quorum è stato raggiunto, vedrai chi ha espresso il voto.
@@ -2687,7 +2703,6 @@ it:
     start_a_new_discussion: Inizia una nuova discussione
     discussion_template_saved: Modello di discussione salvato
     these_are_public_templates: Questi modelli sono disponibili per essere copiati o modificati in base alle esigenze del tuo gruppo
-    these_are_templates: Questi sono i modelli di discussione nel tuo gruppo. Clicca su un modello per avviare una discussione. Puoi anche modificarli, rimuoverli o riordinarli, se lo desideri.
     default_title_label: Titolo predefinito
     default_title_hint: 'Precompila il campo del titolo con testo modificabile. Questo campo è facoltativo: lascialo vuoto se non sei sicuro.'
     title_placeholder_label: Titolo di esempio
@@ -2704,7 +2719,6 @@ it:
     browse_example_templates: Sfoglia i modelli di esempio
     example_templates: Modelli di esempio
     browse_public_templates_hint: Fai clic sul nome di un modello per avviare una discussione con esso oppure fai clic sul pulsante di modifica a destra per crearne una copia e modificarlo per il tuo gruppo.
-    these_are_templates_v2: Questo è un elenco dei modelli di discussione nel tuo gruppo. Fai clic su un modello per utilizzarlo come punto di partenza per una nuova discussione. Gli amministratori del gruppo possono modificare i modelli e riorganizzare l'elenco in modo che sia facile trovare i modelli importanti.
     process_name_placeholder: ad esempio standup settimanale
     process_subtitle_placeholder: ad esempio un breve check-in con il team ogni settimana
     default_title_placeholder: ad esempio Standup - 15 gennaio
@@ -2719,6 +2733,7 @@ it:
     poll_templates_help: I modelli selezionati qui verranno visualizzati per primi quando qualcuno clicca su Avvia una votazione
     start_direct_discussion_from_blank: Avvia una discussione diretta da un modello vuoto
     default_to_direct_discussion: Inizia come una discussione diretta (nessun gruppo)
+    default_to_direct_discussion_helptext: Utilizza questa opzione se vuoi che le persone avviino discussioni dirette da questo modello.
   context_panel:
     thread_status:
       pinned: Questa discussione è stata bloccata. Rimarrà in cima all'elenco delle discussioni del gruppo per tutti gli utenti.
@@ -2745,3 +2760,9 @@ it:
   auth:
     oauth_cancelled: L'accesso è stato annullato
     switching_accounts: Cambio account. Accedi con i dati del tuo nuovo account.
+  poll_common_opening_at_field:
+    voting_opens_immediately: Le votazioni si aprono immediatamente
+    opening_date: Data di apertura
+    opening_hour: Orario di apertura
+    scheduled_hint: Il sondaggio sarà visibile ma non votabile fino all'orario di apertura.
+    draft_hint: Questo sondaggio verrà salvato come bozza. Imposta una data di apertura o seleziona "Le votazioni si aprono immediatamente" quando sei pronto a votare.

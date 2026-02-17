@@ -299,7 +299,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
   template(v-if="hasOptions")
     v-divider.my-4
     .text-subtitle-1.py-2( v-t="'poll_common_form.options'")
-    p.text-caption.text-medium-emphasis(v-if="optionFormat == 'iso8601'" v-t="'poll_meeting_form.participants_see_local_times'")
+    //p.text-caption.text-medium-emphasis(v-if="optionFormat == 'iso8601'" v-t="'poll_meeting_form.participants_see_local_times'")
     v-alert(v-if="!pollOptions.length" variant="tonal" type="info")
       span(v-t="'poll_common_form.no_options_add_some'")
     sortable-list(
