@@ -330,6 +330,7 @@ fr:
     nonprofit: À but non lucratif
     opening_in: Ouverture %{time}
     read_more: En savoir plus
+    templates_admin_hint: En tant qu'administrateur du groupe, vous pouvez masquer ou supprimer les modèles que vous ne souhaitez pas utiliser, et modifier les autres en fonction de vos besoins.
   merge_accounts:
     modal:
       title: Fusionner les comptes
@@ -1959,6 +1960,7 @@ fr:
     new_template_from_blank_subtitle: Créez un nouveau modèle adapté à un processus en place dans votre organisation.
     blank: Nouveau
     blank_subtitle: Créer un nouveau modèle de sondage pour un processus spécifique
+    start_a_poll: Lancer un sondage
   poll_common_attachment_form:
     label: Pièces jointes
   poll_common_add_option:
@@ -2731,7 +2733,6 @@ fr:
     aria_label: Ajouter une réponse
   discussion_template:
     browse_public_templates: Parcourez la galerie de modèles
-    start_a_new_discussion: Lancer une nouvelle discussion
     discussion_template_saved: Modèle de discussion enregistré
     these_are_public_templates: Ces modèles sont à votre disposition pour que vous puissiez les copier ou les modifier selon les besoins de votre groupe.
     default_title_label: titre par défaut
@@ -2775,6 +2776,10 @@ fr:
     these_are_templates_admin_hint: Les administrateurs du groupe peuvent modifier les modèles, en créer de nouveaux, les réorganiser et les afficher/masquer. Seuls les administrateurs peuvent voir les modèles masqués.
     show_hidden_templates: Afficher les modèles cachés
     show_fewer: Afficher moins
+    start_a_new_discussion: Lancer une nouvelle discussion
+    start_discussion: Lancer une discussion
+    start_a_direct_discussion: Entamez une discussion directe
+    these_are_templates: Voici les modèles de discussion de votre groupe.
   context_panel:
     thread_status:
       pinned: Cette discussion a été épinglée. Elle restera en haut de la liste des discussions du groupe pour tous les utilisateurs.

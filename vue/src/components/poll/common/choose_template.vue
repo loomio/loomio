@@ -24,6 +24,7 @@ export default {
       isSorting: false,
       showHidden: false,
       hasHiddenTemplates: false,
+      hiddenAlert: Session.user().hasExperienced('dismissPollTemplatesAlert'),
       returnTo: Session.returnTo(),
       groups: [],
       pollTemplates: [],
@@ -105,6 +106,11 @@ export default {
       });
     },
 
+    dismissAlert() {
+      this.hiddenAlert = true;
+      Records.users.saveExperience('dismissPollTemplatesAlert');
+    },
+
     cloneTemplate(template) {
       const poll = template.buildPoll();
       if (this.discussion) {
@@ -158,10 +164,10 @@ export default {
 
 <template lang="pug">
 .poll-common-templates-list
-  v-alert.ma-4(v-if="userIsAdmin && !discussion" type="info" variant="tonal")
+  v-alert.ma-4(v-if="userIsAdmin && !discussion && !hiddenAlert" type="info" variant="tonal" closable @click:close="dismissAlert")
     span(v-t="'poll_common.these_are_templates'")
-    space
-    help-link(path="user_manual/polls/poll_templates")
+    |  
+    span(v-t="'common.templates_admin_hint'")
 
   .d-flex(:class="{'px-4': !discussion}")
     v-chip.mr-1(

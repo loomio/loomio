@@ -17,6 +17,10 @@ const props = defineProps({
   discussionTemplate: {
     type: Object,
     required: true
+  },
+  sourceProcessName: {
+    type: String,
+    default: null
   }
 });
 
@@ -130,7 +134,7 @@ v-form(ref="form" @submit.prevent="submit")
       v-text-field(
          v-model="discussionTemplate.processName"
         :label="$t('poll_common_form.process_name')"
-        :placeholder="$t('discussion_template.process_name_placeholder')"
+        :placeholder="sourceProcessName || $t('discussion_template.process_name_placeholder')"
         :hint="$t('poll_common_form.process_name_hint')"
         :rules="validate('processName')"
       )

@@ -322,6 +322,7 @@ sv:
     nonprofit: Ideell organisation
     opening_in: Öppning %{tid}
     read_more: Läs mer
+    templates_admin_hint: Eftersom du är gruppadministratör kan du dölja eller ta bort mallar du inte vill ha och redigera de återstående efter dina behov.
   merge_accounts:
     modal:
       title: Slå samman konton
@@ -1915,6 +1916,7 @@ sv:
     new_template_from_blank_subtitle: Skapa en ny mall som passar en process du har i din organisation
     blank: Ny
     blank_subtitle: Skapa en ny omröstningsmall för en specifik process
+    start_a_poll: Starta en omröstning
   poll_common_attachment_form:
     label: Bilagor
   poll_common_add_option:
@@ -2685,7 +2687,6 @@ sv:
     aria_label: Lägg till ett svar
   discussion_template:
     browse_public_templates: Bläddra bland mallgalleriet
-    start_a_new_discussion: Starta en ny diskussion
     discussion_template_saved: Diskussionsmallen sparad
     these_are_public_templates: Dessa mallar kan du kopiera eller modifiera för att passa din grupp
     default_title_label: Standardtitel
@@ -2729,6 +2730,10 @@ sv:
     these_are_templates_admin_hint: Gruppadministratörer kan redigera mallar, skapa nya mallar, ordna om och dölja/visa mallar. Endast administratörer kan se de dolda mallarna.
     show_hidden_templates: Visa dolda mallar
     show_fewer: Visa färre
+    start_a_new_discussion: Starta en ny diskussion
+    start_discussion: Starta en diskussion
+    start_a_direct_discussion: Starta en direkt diskussion
+    these_are_templates: Det här är diskussionsmallarna i er grupp.
   context_panel:
     thread_status:
       pinned: Den här diskussionen har fästs. Den kommer att finnas kvar högst upp i gruppens diskussionslista för alla användare.

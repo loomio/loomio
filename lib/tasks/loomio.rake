@@ -128,7 +128,7 @@ namespace :loomio do
   task delete_translations: :environment do
     # I edit this each time I want to use it.. rake task arguments are terrible
     unwanted = %w[
-      new_description_html
+      start_a_new_discussion
     ]
 
     %w[client server].each do |source_name|

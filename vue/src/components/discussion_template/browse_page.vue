@@ -71,7 +71,7 @@ export default {
     fetch() {
       this.loading = true;
       this.results = [];
-      Records.remote.get('discussion_templates/browse', {query: this.query}).then(data => {
+      Records.remote.get('discussion_templates/browse', {query: this.query, group_id: this.$route.query.group_id}).then(data => {
         this.results = data.map(utils.parseJSON);
         this.loading = false;
       });
@@ -101,21 +101,21 @@ export default {
         v-list(lines="two")
           v-list-item(
             v-for="result in sortedResults"
-            :key="result.key"
-            :to="'/d/new?template_key='+result.key+groupIdParam+returnToParam"
+            :key="result.id || result.key"
+            :to="'/d/new?' + (result.id ? 'template_id='+result.id : 'template_key='+result.key) + groupIdParam+returnToParam"
           )
             template(v-slot:append)
               v-btn(
                 variant="tonal"
                 color="primary"
                 icon
-                :to="'/discussion_templates/new?template_key='+result.key+groupIdParam+returnToParam"
+                :to="'/discussion_templates/new?' + (result.id ? 'template_id='+result.id : 'template_key='+result.key) + groupIdParam+returnToParam"
                 :title="$t('common.action.fork_template')"
               )
                 common-icon(name="mdi-source-branch-plus")
 
             v-list-item-title {{result.processName || result.title}}
-            v-list-item-subtitle {{result.processSubtitle}}
+            v-list-item-subtitle {{result.groupName || result.processSubtitle}}
 
 
 </template>

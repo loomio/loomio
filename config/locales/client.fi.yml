@@ -322,6 +322,7 @@ fi:
     nonprofit: Voittoa tavoittelematon
     opening_in: Avautuminen %{aika}
     read_more: Lue lisää
+    templates_admin_hint: Koska olet ryhmän ylläpitäjä, voit piilottaa tai poistaa tarpeettomat mallit ja muokata jäljellä olevia tarpeidesi mukaan.
   merge_accounts:
     modal:
       title: Yhdistä tilit
@@ -1915,6 +1916,7 @@ fi:
     new_template_from_blank_subtitle: Luo uusi malli, joka sopii organisaatiossasi käytössä olevaan prosessiin
     blank: Uusi
     blank_subtitle: Luo uusi kyselymalli tietylle prosessille
+    start_a_poll: Aloita kysely
   poll_common_attachment_form:
     label: Liitteet
   poll_common_add_option:
@@ -2685,7 +2687,6 @@ fi:
     aria_label: Lisää vastaus
   discussion_template:
     browse_public_templates: Selaa mallipohjagalleriaa
-    start_a_new_discussion: Aloita uusi keskustelu
     discussion_template_saved: Keskustelumalli tallennettu
     these_are_public_templates: Nämä mallit ovat käytettävissäsi kopioitaviksi tai muokattavaksi ryhmällesi sopiviksi.
     default_title_label: Oletusotsikko
@@ -2729,6 +2730,10 @@ fi:
     these_are_templates_admin_hint: Ryhmän ylläpitäjät voivat muokata malleja, luoda uusia malleja, järjestellä niitä uudelleen ja piilottaa/näyttää malleja. Vain ylläpitäjät voivat nähdä piilotetut mallit.
     show_hidden_templates: Näytä piilotetut mallit
     show_fewer: Näytä vähemmän
+    start_a_new_discussion: Aloita uusi keskustelu
+    start_discussion: Aloita keskustelu
+    start_a_direct_discussion: Aloita suora keskustelu
+    these_are_templates: Nämä ovat ryhmäsi keskustelupohjat.
   context_panel:
     thread_status:
       pinned: Tämä keskustelu on kiinnitetty. Se pysyy ryhmän keskusteluluettelon yläosassa kaikille käyttäjille.

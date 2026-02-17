@@ -322,6 +322,7 @@ hr:
     nonprofit: Neprofitna organizacija
     opening_in: Otvaranje %{time}
     read_more: Pročitajte više
+    templates_admin_hint: Budući da ste administrator grupe, možete sakriti ili izbrisati sve predloške koje ne želite, a preostale urediti prema svojim potrebama.
   merge_accounts:
     modal:
       title: Spajanje računa
@@ -1915,6 +1916,7 @@ hr:
     new_template_from_blank_subtitle: Izradite novi predložak koji odgovara procesu koji imate u svojoj organizaciji
     blank: Novi
     blank_subtitle: Izradite novi predložak ankete za određeni proces
+    start_a_poll: Započni anketu
   poll_common_attachment_form:
     label: Prilozi
   poll_common_add_option:
@@ -2685,7 +2687,6 @@ hr:
     aria_label: Dodaj odgovor
   discussion_template:
     browse_public_templates: Pregledaj galeriju predložaka
-    start_a_new_discussion: Započni novu raspravu
     discussion_template_saved: Predložak rasprave spremljen
     these_are_public_templates: Ove predloške možete kopirati ili mijenjati kako bi odgovarali vašoj grupi
     default_title_label: Zadani naslov
@@ -2729,6 +2730,10 @@ hr:
     these_are_templates_admin_hint: Administratori grupe mogu uređivati predloške, izrađivati nove predloške, preuređivati i skrivati/otkrivati predloške. Samo administratori mogu vidjeti skrivene predloške.
     show_hidden_templates: Prikaži skrivene predloške
     show_fewer: Prikaži manje
+    start_a_new_discussion: Započni novu raspravu
+    start_discussion: Započni raspravu
+    start_a_direct_discussion: Započnite izravnu raspravu
+    these_are_templates: Ovo su predlošci za raspravu u vašoj grupi.
   context_panel:
     thread_status:
       pinned: Ova je rasprava prikvačena. Ostat će na vrhu popisa rasprava grupe za sve korisnike.

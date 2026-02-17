@@ -322,6 +322,7 @@ ro:
     nonprofit: Organizație non-profit
     opening_in: Deschidere %{time}
     read_more: Citeşte mai mult
+    templates_admin_hint: Deoarece ești administrator de grup, poți ascunde sau șterge orice șabloane pe care nu le dorești și le poți edita pe cele rămase pentru a le potrivi nevoilor tale.
   merge_accounts:
     modal:
       title: Îmbinați conturile
@@ -1915,6 +1916,7 @@ ro:
     new_template_from_blank_subtitle: Creați un șablon nou care să se potrivească unui proces pe care îl aveți în organizația dvs.
     blank: Nou
     blank_subtitle: Creați un nou șablon de sondaj pentru un anumit proces
+    start_a_poll: Începeți un sondaj
   poll_common_attachment_form:
     label: Atașamente
   poll_common_add_option:
@@ -2685,7 +2687,6 @@ ro:
     aria_label: Adăugați un răspuns
   discussion_template:
     browse_public_templates: Răsfoiți galeria de șabloane
-    start_a_new_discussion: Începeți o discuție nouă
     discussion_template_saved: Șablonul de discuție a fost salvat
     these_are_public_templates: Aceste șabloane sunt disponibile pentru copiere sau modificare, în funcție de grupul dumneavoastră.
     default_title_label: Titlu implicit
@@ -2729,6 +2730,10 @@ ro:
     these_are_templates_admin_hint: Administratorii de grup pot edita șabloane, pot crea șabloane noi, pot rearanja și pot ascunde/reafișa șabloanele. Doar administratorii pot vedea șabloanele ascunse.
     show_hidden_templates: Afișează șabloanele ascunse
     show_fewer: Afișează mai puține
+    start_a_new_discussion: Începeți o discuție nouă
+    start_discussion: Începeți o discuție
+    start_a_direct_discussion: Începeți o discuție directă
+    these_are_templates: Acestea sunt șabloanele de discuții din grupul vostru.
   context_panel:
     thread_status:
       pinned: Această discuție a fost fixată. Va rămâne în partea de sus a listei de discuții a grupului pentru toți utilizatorii.

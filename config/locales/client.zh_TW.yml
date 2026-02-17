@@ -323,6 +323,7 @@ zh_TW:
     nonprofit: 非營利組織
     opening_in: 打開 %{time}
     read_more: 閱讀更多
+    templates_admin_hint: 因為您是群組管理員，您可以隱藏或刪除任何您不需要的模板，並編輯剩餘的模板以滿足您的需求。
   merge_accounts:
     modal:
       title: 合併帳號
@@ -1943,6 +1944,7 @@ zh_TW:
     new_template_from_blank_subtitle: 建立一個新模板，以適應您組織中的流程。
     blank: 新的
     blank_subtitle: 為特定流程建立新的投票模板
+    start_a_poll: 發起投票
   poll_common_attachment_form:
     label: 附件
   poll_common_add_option:
@@ -2715,7 +2717,6 @@ zh_TW:
     aria_label: 新增回覆
   discussion_template:
     browse_public_templates: 瀏覽範本庫
-    start_a_new_discussion: 發起新的討論
     discussion_template_saved: 討論範本已儲存
     these_are_public_templates: 您可以複製或修改這些模板，以適應您的團隊需求。
     default_title_label: 預設標題
@@ -2759,6 +2760,10 @@ zh_TW:
     these_are_templates_admin_hint: 群組管理員可以編輯範本、建立新範本、重新排列範本以及隱藏/顯示範本。只有管理員才能看到隱藏的模板。
     show_hidden_templates: 顯示隱藏模板
     show_fewer: 顯示更少
+    start_a_new_discussion: 發起新的討論
+    start_discussion: 發起討論
+    start_a_direct_discussion: 發起直接討論
+    these_are_templates: 這些是你們小組的討論範本。
   context_panel:
     thread_status:
       pinned: 此討論貼文已置頂，將始終顯示在群組討論貼文清單的頂部，供所有使用者檢視。

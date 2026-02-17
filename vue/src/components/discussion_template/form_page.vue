@@ -11,7 +11,8 @@ export default {
   data() {
     return {
       discussionTemplate: null,
-      group: null
+      group: null,
+      sourceProcessName: null
     };
   },
 
@@ -24,7 +25,9 @@ export default {
     } else if ((templateId = parseInt(this.$route.query.template_id)) && (groupId = parseInt(this.$route.query.group_id))) {
       Records.discussionTemplates.findOrFetchById(templateId).then(template => {
         this.discussionTemplate = template.clone();
+        this.sourceProcessName = this.discussionTemplate.processName;
         this.discussionTemplate.id = null;
+        this.discussionTemplate.processName = null;
         this.discussionTemplate.groupId = groupId;
         this.discussionTemplate.public = false;
       });
@@ -32,7 +35,9 @@ export default {
       groupId = parseInt(this.$route.query.group_id) || null;
       Records.discussionTemplates.findOrFetchByKey(templateKey, groupId).then(template => {
         this.discussionTemplate = template.clone();
+        this.sourceProcessName = this.discussionTemplate.processName;
         this.discussionTemplate.id = null;
+        this.discussionTemplate.processName = null;
         this.discussionTemplate.key = templateKey;
         this.discussionTemplate.groupId = groupId;
         this.discussionTemplate.public = false;
@@ -51,5 +56,6 @@ export default {
       discussion-template-form(
         v-if="discussionTemplate"
         :discussion-template="discussionTemplate"
+        :source-process-name="sourceProcessName"
       )
 </template>

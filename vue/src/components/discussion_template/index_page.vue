@@ -15,6 +15,7 @@ const { watchRecords } = useWatchRecords();
 
 // Data
 const templates = ref([]);
+const directTemplates = ref([]);
 const hiddenTemplates = ref([]);
 const actions = ref({});
 const hiddenActions = ref({});
@@ -24,6 +25,12 @@ const returnTo = Session.returnTo();
 const isSorting = ref(false);
 const showHidden = ref(false);
 const hasHiddenTemplates = ref(false);
+const hiddenAlert = ref(Session.user().hasExperienced('dismissDiscussionTemplatesAlert'));
+
+const dismissAlert = () => {
+  hiddenAlert.value = true;
+  Records.users.saveExperience('dismissDiscussionTemplatesAlert');
+};
 
 // UrlFor replacement
 const urlFor = (model, action, params) => {
@@ -52,6 +59,13 @@ const breadcrumbs = computed(() => {
     };
   });
 });
+
+const queryDirect = () => {
+  const all = Records.discussionTemplates.collection.chain().find({ discardedAt: null }).simplesort('position').data();
+  const blank = all.filter(t => t.key === 'blank');
+  const rest = all.filter(t => t.key !== 'blank');
+  directTemplates.value = [...blank, ...rest];
+};
 
 const query = () => {
   if (!groupId.value) { return }
@@ -102,11 +116,15 @@ onMounted(() => {
         per: 50
       }
     });
+  } else {
+    Records.discussionTemplates.fetch({ params: { per: 50 } }).then(() => {
+      queryDirect();
+    });
   }
 
   watchRecords({
     key: `discussionTemplates`,
-    collections: ['discussionTemplates', 'groups'],
+    collections: ['discussionTemplates', 'groups', 'memberships'],
     query: () => query()
   });
 
@@ -133,38 +151,30 @@ watch(showHidden, () => { query(); });
 .discussion-templates-page
   v-main
     v-container.max-width-800.px-0.px-sm-3
-      //- Group chooser: shown when no group_id
+      //- Direct discussion templates: shown when no group_id
       template(v-if="!groupId")
-        v-card(:title="$t('discussion_template.start_a_new_discussion')")
+        v-card(:title="$t('discussion_template.start_a_direct_discussion')")
+          v-alert.mx-4(type="info" variant="tonal")
+            span(v-t="'discussion_form.direct_discussion_hint'")
           v-list(lines="two")
-            v-list-subheader(v-t="'discussion_template.choose_group_for_templates'")
             v-list-item(
-              v-for="group in groups"
-              :key="group.id"
-              :to="'/discussion_templates/?group_id='+group.id"
+              v-for="template in directTemplates"
+              :key="template.id || template.key"
+              :to="'/d/new?' + (template.id ? 'template_id='+template.id : 'template_key='+template.key) + '&return_to='+returnTo"
             )
-              template(v-slot:prepend)
-                v-icon.mr-2
-                  group-avatar(:group="group")
-              v-list-item-title {{group.name}}
-
-            v-list-item.discussion-templates--direct-discussion(:to="'/d/new?return_to='+returnTo")
-              template(v-slot:prepend)
-                v-icon.mr-2 mdi-account-multiple
-              v-list-item-title(v-t="'discussion_template.start_direct_discussion_from_blank'")
+              v-list-item-title {{template.processName || template.title}}
+              v-list-item-subtitle {{template.group() && template.group().name || template.processSubtitle}}
 
       //- Template list: shown when group_id is present
       template(v-if="groupId")
         v-breadcrumbs(color="anchor" :items="breadcrumbs")
           template(v-slot:divider)
             common-icon(name="mdi-chevron-right")
-        v-card(:title="$t('discussion_template.start_a_new_discussion')")
-          v-alert.mx-4(v-if="userIsAdmin" type="info" variant="tonal")
-            span(v-t="'discussion_template.these_are_templates_v3'")
-            br
-            span(v-t="'discussion_template.these_are_templates_admin_hint'")
-            |
-            help-link(path="en/user_manual/threads/starting_threads")
+        v-card(:title="$t('discussion_template.start_discussion')")
+          v-alert.mx-4(v-if="userIsAdmin && !hiddenAlert" type="info" variant="tonal" closable @click:close="dismissAlert")
+            span(v-t="'discussion_template.these_are_templates'")
+            |  
+            span(v-t="'common.templates_admin_hint'")
 
           v-list.append-sort-here(lines="two")
             template(v-if="isSorting")

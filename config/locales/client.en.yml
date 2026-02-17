@@ -221,6 +221,7 @@ en:
     nonprofit: Nonprofit
     value: "%{value}"
     admin_menu: Admin menu
+    templates_admin_hint: Because you are a group admin, you can hide or delete any templates you don't want, and edit the remaining ones to suit your needs.
     api_docs: API docs
     prefix_eg: e.g. %{val}
     are_you_sure: Are you sure?
@@ -832,6 +833,8 @@ en:
     example_templates: Example templates
     example_discussion_templates: Example discussion templates
     start_a_new_discussion: Start a new discussion
+    start_discussion: Start a discussion
+    start_a_direct_discussion: Start a direct discussion
     discussion_template_saved: Discussion template saved
     these_are_public_templates: 'These templates are available for you to copy or modify to suit your group'
     browse_public_templates_hint: 'Create a new discussion template from blank, or use an example as a starting point.'
@@ -840,8 +843,9 @@ en:
     new_discussion_template_title: New discussion template
     new_template_from_blank: New template from blank
     new_template_from_blank_subtitle: Create a new template to suit a process you have in your organization
+    these_are_templates: These are the discussion templates in your group.
     these_are_templates_v3: 'These are the discussion templates in your group. Click a template to start a new discussion.'
-    these_are_templates_admin_hint: 'Group admins can edit templates, make new templates, rearrange and hide/unhide templates. Only admins can see the hidden templates.'
+    these_are_templates_admin_hint: 'You can hide templates that you don''t use and edit the remaining ones to suit your needs.'
     process_name_placeholder: "e.g. Weekly standup"
     process_subtitle_placeholder: "e.g. A short check-in with the team each week"
     default_title_placeholder: "e.g. Standup - January 15"
@@ -1956,7 +1960,7 @@ en:
     select_minimum_to_maximum_options: Select %{minimum} to %{maximum} options
     custom_poll_types: Custom poll types
     hidden_poll_templates: Hidden poll templates
-    these_are_templates: 'These are the poll and proposal templates in your group. You can hide templates that you don''t use and edit the remaining ones to suit your needs.'
+    these_are_templates: These are the proposal and poll templates in your group.
     example_templates: Example templates
     example_poll_templates: Example poll templates
     browse_example_templates: Browse example templates
@@ -1973,6 +1977,7 @@ en:
     poll_template: Poll template
     poll_template_saved: Poll template saved
     poll_templates: Poll templates
+    start_a_poll: Start a poll
     poll_types: Poll types
     new_proposal_template: New proposal template
     edit_proposal_template: Edit proposal template

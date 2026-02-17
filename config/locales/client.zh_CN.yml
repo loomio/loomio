@@ -344,6 +344,7 @@ zh_CN:
     nonprofit: 非营利组织
     opening_in: 打开 %{time}
     read_more: 阅读更多
+    templates_admin_hint: 因为您是群组管理员，您可以隐藏或删除任何您不需要的模板，并编辑剩余的模板以满足您的需求。
   merge_accounts:
     modal:
       title: 合并账户
@@ -797,7 +798,6 @@ zh_CN:
     start_new_thread: 或者，发新帖子
   discussion_template:
     browse_public_templates: 浏览模板库
-    start_a_new_discussion: 发起新的讨论
     discussion_template_saved: 讨论模板已保存
     these_are_public_templates: 您可以复制或修改这些模板，以适应您的团队需求。
     default_title_label: 默认标题
@@ -841,6 +841,10 @@ zh_CN:
     these_are_templates_admin_hint: 群组管理员可以编辑模板、创建新模板、重新排列模板以及隐藏/显示模板。只有管理员才能看到隐藏的模板。
     show_hidden_templates: 显示隐藏模板
     show_fewer: 显示更少
+    start_a_new_discussion: 发起新的讨论
+    start_discussion: 发起讨论
+    start_a_direct_discussion: 发起直接讨论
+    these_are_templates: 这些是你们小组的讨论模板。
   discussion_form:
     none_invite_only_discussion: 无（仅限受邀者参与讨论）
     new_discussion_template: 新讨论模板
@@ -1976,6 +1980,7 @@ zh_CN:
     new_template_from_blank_subtitle: 创建一个新模板，以适应您组织中的流程。
     blank: 新的
     blank_subtitle: 为特定流程创建新的投票模板
+    start_a_poll: 发起投票
   poll_common_attachment_form:
     label: 附件
   poll_common_add_option:

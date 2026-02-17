@@ -324,6 +324,7 @@ hu:
     nonprofit: Nonprofit
     opening_in: Megnyitás %{time}
     read_more: További információ
+    templates_admin_hint: Mivel csoportadminisztrátor vagy, elrejtheted vagy törölheted a nem kívánt sablonokat, a fennmaradókat pedig igényeid szerint szerkesztheted.
   merge_accounts:
     modal:
       title: Fiókok egyesítése
@@ -1922,6 +1923,7 @@ hu:
     new_template_from_blank_subtitle: Hozzon létre egy új sablont, amely illeszkedik a szervezetében alkalmazott folyamathoz
     blank: Új
     blank_subtitle: Új szavazási sablon létrehozása egy adott folyamathoz
+    start_a_poll: Szavazás indítása
   poll_common_attachment_form:
     label: Mellékletek
   poll_common_add_option:
@@ -2692,7 +2694,6 @@ hu:
     aria_label: Válasz hozzáadása
   discussion_template:
     browse_public_templates: Sablongaléria böngészése
-    start_a_new_discussion: Új beszélgetés indítása
     discussion_template_saved: Beszélgetési sablon mentve
     these_are_public_templates: Ezek a sablonok másolhatók vagy módosíthatók a csoport igényei szerint.
     default_title_label: Alapértelmezett cím
@@ -2736,6 +2737,10 @@ hu:
     these_are_templates_admin_hint: A csoport adminisztrátorai szerkeszthetik a sablonokat, létrehozhatnak új sablonokat, átrendezhetik és elrejthetik/megjeleníthetik a sablonokat. Csak az adminisztrátorok láthatják a rejtett sablonokat.
     show_hidden_templates: Rejtett sablonok megjelenítése
     show_fewer: Kevesebb megjelenítése
+    start_a_new_discussion: Új beszélgetés indítása
+    start_discussion: Beszélgetés indítása
+    start_a_direct_discussion: Közvetlen beszélgetés indítása
+    these_are_templates: Ezek a csoportodban található beszélgetési sablonok.
   context_panel:
     thread_status:
       pinned: Ez a beszélgetés rögzítésre került. A csoport beszélgetési listájának tetején marad minden felhasználó számára.

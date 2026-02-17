@@ -13,7 +13,11 @@ export default {
   directives: { handle: HandleDirective },
 
   props: {
-    pollTemplate: Object
+    pollTemplate: Object,
+    sourceProcessName: {
+      type: String,
+      default: null
+    }
   },
 
   data() {
@@ -229,6 +233,7 @@ export default {
         v-text-field(
           v-model="pollTemplate.processName"
           :label="$t('poll_common_form.process_name')"
+          :placeholder="sourceProcessName"
           :hint="$t('poll_common_form.process_name_hint')"
           :rules="validate('processName')"
         )

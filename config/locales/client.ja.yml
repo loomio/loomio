@@ -321,6 +321,7 @@ ja:
     nonprofit: 非営利団体
     opening_in: "%{time} にオープン"
     read_more: 続きを読む
+    templates_admin_hint: グループ管理者であるため、不要なテンプレートを非表示にしたり削除したり、残りのテンプレートをニーズに合わせて編集することができます。
   merge_accounts:
     modal:
       title: アカウントを統合する
@@ -1914,6 +1915,7 @@ ja:
     new_template_from_blank_subtitle: 組織内のプロセスに合わせて新しいテンプレートを作成します
     blank: 新しい
     blank_subtitle: 特定のプロセス用の新しい投票テンプレートを作成する
+    start_a_poll: 投票を開始する
   poll_common_attachment_form:
     label: 添付ファイル
   poll_common_add_option:
@@ -2684,7 +2686,6 @@ ja:
     aria_label: 返信を追加
   discussion_template:
     browse_public_templates: テンプレートギャラリーを閲覧する
-    start_a_new_discussion: 新しいディスカッションを開始する
     discussion_template_saved: ディスカッションテンプレートを保存しました
     these_are_public_templates: これらのテンプレートは、グループに合わせてコピーまたは変更することができます。
     default_title_label: デフォルトのタイトル
@@ -2728,6 +2729,10 @@ ja:
     these_are_templates_admin_hint: グループ管理者はテンプレートの編集、新規作成、並べ替え、非表示/表示の切り替えができます。非表示のテンプレートは管理者のみ閲覧可能です。
     show_hidden_templates: 非表示のテンプレートを表示
     show_fewer: 表示を減らす
+    start_a_new_discussion: 新しいディスカッションを開始する
+    start_discussion: ディスカッションを始める
+    start_a_direct_discussion: 直接議論を始める
+    these_are_templates: これらはグループ内のディスカッション テンプレートです。
   context_panel:
     thread_status:
       pinned: このディスカッションはピン留めされました。グループのディスカッションリストの一番上に、全ユーザーに表示されます。

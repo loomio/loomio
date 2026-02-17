@@ -322,6 +322,7 @@ da:
     nonprofit: Nonprofitorganisation
     opening_in: Åbning %{tid}
     read_more: Læs mere
+    templates_admin_hint: Da du er gruppeadministrator, kan du skjule eller slette alle skabeloner, du ikke ønsker, og redigere de resterende, så de passer til dine behov.
   merge_accounts:
     modal:
       title: Flet konti
@@ -1915,6 +1916,7 @@ da:
     new_template_from_blank_subtitle: Opret en ny skabelon, der passer til en proces, du har i din organisation
     blank: Ny
     blank_subtitle: Opret en ny skabelon til afstemning for en specifik proces
+    start_a_poll: Start en afstemning
   poll_common_attachment_form:
     label: Vedhæftede filer
   poll_common_add_option:
@@ -2685,7 +2687,6 @@ da:
     aria_label: Tilføj et svar
   discussion_template:
     browse_public_templates: Gennemse skabelongalleriet
-    start_a_new_discussion: Start en ny diskussion
     discussion_template_saved: Diskussionsskabelon gemt
     these_are_public_templates: Disse skabeloner kan du kopiere eller ændre, så de passer til din gruppe
     default_title_label: Standardtitel
@@ -2729,6 +2730,10 @@ da:
     these_are_templates_admin_hint: Gruppeadministratorer kan redigere skabeloner, oprette nye skabeloner, omarrangere og skjule/vise skabeloner. Kun administratorer kan se de skjulte skabeloner.
     show_hidden_templates: Vis skjulte skabeloner
     show_fewer: Vis færre
+    start_a_new_discussion: Start en ny diskussion
+    start_discussion: Start en diskussion
+    start_a_direct_discussion: Start en direkte diskussion
+    these_are_templates: Dette er diskussionsskabelonerne i jeres gruppe.
   context_panel:
     thread_status:
       pinned: Denne diskussion er blevet fastgjort. Den vil forblive øverst på gruppens liste over diskussioner for alle brugere.

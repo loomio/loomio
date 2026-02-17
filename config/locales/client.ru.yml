@@ -322,6 +322,7 @@ ru:
     nonprofit: Некоммерческая организация
     opening_in: Время открытия %{time}
     read_more: Читать далее
+    templates_admin_hint: Поскольку вы являетесь администратором группы, вы можете скрывать или удалять любые ненужные шаблоны, а оставшиеся редактировать в соответствии со своими потребностями.
   merge_accounts:
     modal:
       title: Объединить аккаунты
@@ -1915,6 +1916,7 @@ ru:
     new_template_from_blank_subtitle: Создайте новый шаблон, соответствующий процессам, используемым в вашей организации.
     blank: Новый
     blank_subtitle: Создайте новый шаблон опроса для конкретного процесса.
+    start_a_poll: Начать опрос
   poll_common_attachment_form:
     label: Вложения
   poll_common_add_option:
@@ -2685,7 +2687,6 @@ ru:
     aria_label: Добавить ответ
   discussion_template:
     browse_public_templates: Просмотреть галерею шаблонов
-    start_a_new_discussion: Начать новое обсуждение
     discussion_template_saved: Шаблон обсуждения сохранен
     these_are_public_templates: Эти шаблоны доступны для копирования или изменения в соответствии с требованиями вашей группы.
     default_title_label: Заголовок по умолчанию
@@ -2729,6 +2730,10 @@ ru:
     these_are_templates_admin_hint: Администраторы групп могут редактировать шаблоны, создавать новые шаблоны, изменять их порядок и скрывать/показывать. Скрытые шаблоны видны только администраторам.
     show_hidden_templates: Показать скрытые шаблоны
     show_fewer: Показать меньше
+    start_a_new_discussion: Начать новое обсуждение
+    start_discussion: Начать обсуждение
+    start_a_direct_discussion: Начните прямое обсуждение
+    these_are_templates: Это шаблоны для обсуждений в вашей группе.
   context_panel:
     thread_status:
       pinned: Это обсуждение закреплено. Оно останется вверху списка обсуждений группы для всех пользователей.

@@ -22,7 +22,7 @@ class Api::V1::DiscussionTemplatesController < Api::V1::RestfulController
       end
     end
 
-    render root: false, json: templates.first(50).map { |dt|
+    results = templates.first(50).map { |dt|
       {
         key: dt.key,
         process_name: dt.process_name,
@@ -30,6 +30,26 @@ class Api::V1::DiscussionTemplatesController < Api::V1::RestfulController
         tags: dt.tags
       }
     }
+
+    # Include parent group's DB templates when browsing from a subgroup
+    if params[:group_id].present?
+      group = current_user.groups.find_by(id: params[:group_id])
+      if group&.parent_id && current_user.group_ids.include?(group.parent_id)
+        parent_results = DiscussionTemplate.where(group_id: group.parent_id, discarded_at: nil).order(:position).map { |dt|
+          {
+            id: dt.id,
+            key: dt.key,
+            process_name: dt.process_name,
+            process_subtitle: dt.process_subtitle,
+            group_name: dt.group.name,
+            tags: dt.tags || []
+          }
+        }
+        results = parent_results + results
+      end
+    end
+
+    render root: false, json: results
   end
 
   def index
@@ -43,7 +63,9 @@ class Api::V1::DiscussionTemplatesController < Api::V1::RestfulController
         self.collection = self.collection.reject { |t| t.discarded_at.present? }
       end
     else
-      self.collection = DiscussionTemplateService.default_templates
+      blank = DiscussionTemplateService.default_templates.select { |dt| dt.key == 'blank' }
+      direct = DiscussionTemplate.where(group_id: current_user.group_ids, default_to_direct_discussion: true).where(discarded_at: nil).to_a
+      self.collection = blank + direct
     end
 
     respond_with_collection

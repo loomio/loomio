@@ -330,6 +330,7 @@ it:
     nonprofit: Non profit
     opening_in: Apertura %{time}
     read_more: Per saperne di più
+    templates_admin_hint: Poiché sei un amministratore del gruppo, puoi nascondere o eliminare i modelli che non desideri e modificare quelli rimanenti in base alle tue esigenze.
   merge_accounts:
     modal:
       title: Unisci account
@@ -1945,6 +1946,7 @@ it:
     new_template_from_blank_subtitle: Crea un nuovo modello adatto a un processo presente nella tua organizzazione
     blank: Nuovo
     blank_subtitle: Crea un nuovo modello di sondaggio per un processo specifico
+    start_a_poll: Avvia un sondaggio
   poll_common_attachment_form:
     label: Allegati
   poll_common_add_option:
@@ -2715,7 +2717,6 @@ it:
     aria_label: Aggiungi una risposta
   discussion_template:
     browse_public_templates: Sfoglia la galleria dei modelli
-    start_a_new_discussion: Inizia una nuova discussione
     discussion_template_saved: Modello di discussione salvato
     these_are_public_templates: Questi modelli sono disponibili per essere copiati o modificati in base alle esigenze del tuo gruppo
     default_title_label: Titolo predefinito
@@ -2759,6 +2760,10 @@ it:
     these_are_templates_admin_hint: Gli amministratori del gruppo possono modificare i modelli, crearne di nuovi, riorganizzarli e nasconderli/mostrarli. Solo gli amministratori possono visualizzare i modelli nascosti.
     show_hidden_templates: Mostra modelli nascosti
     show_fewer: Mostra meno
+    start_a_new_discussion: Avvia una nuova discussione
+    start_discussion: Avvia una discussione
+    start_a_direct_discussion: Avvia una discussione diretta
+    these_are_templates: Questi sono i modelli di discussione nel tuo gruppo.
   context_panel:
     thread_status:
       pinned: Questa discussione è stata bloccata. Rimarrà in cima all'elenco delle discussioni del gruppo per tutti gli utenti.

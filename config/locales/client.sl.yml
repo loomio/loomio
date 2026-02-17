@@ -322,6 +322,7 @@ sl:
     nonprofit: Neprofitna organizacija
     opening_in: Odprtje %{čas}
     read_more: Preberi več
+    templates_admin_hint: Ker ste skrbnik skupine, lahko skrijete ali izbrišete vse predloge, ki jih ne želite, preostale pa uredite glede na svoje potrebe.
   merge_accounts:
     modal:
       title: Združite račune
@@ -1915,6 +1916,7 @@ sl:
     new_template_from_blank_subtitle: Ustvarite novo predlogo, ki ustreza postopku v vaši organizaciji
     blank: Novo
     blank_subtitle: Ustvarite novo predlogo ankete za določen postopek
+    start_a_poll: Začni anketo
   poll_common_attachment_form:
     label: Priloge
   poll_common_add_option:
@@ -2685,7 +2687,6 @@ sl:
     aria_label: Dodaj odgovor
   discussion_template:
     browse_public_templates: Brskaj po galeriji predlog
-    start_a_new_discussion: Začni novo razpravo
     discussion_template_saved: Predloga za razpravo je shranjena
     these_are_public_templates: Te predloge lahko kopirate ali spremenite glede na svojo skupino
     default_title_label: Privzeti naslov
@@ -2729,6 +2730,10 @@ sl:
     these_are_templates_admin_hint: Skrbniki skupin lahko urejajo predloge, ustvarjajo nove predloge, jih prerazporejajo in skrivajo/razkrivajo. Skrite predloge lahko vidijo samo skrbniki.
     show_hidden_templates: Prikaži skrite predloge
     show_fewer: Prikaži manj
+    start_a_new_discussion: Začni novo razpravo
+    start_discussion: Začni razpravo
+    start_a_direct_discussion: Začnite neposredno razpravo
+    these_are_templates: To so predloge za razpravo v vaši skupini.
   context_panel:
     thread_status:
       pinned: Ta razprava je bila pripeta. Za vse uporabnike bo ostala na vrhu seznama razprav skupine.

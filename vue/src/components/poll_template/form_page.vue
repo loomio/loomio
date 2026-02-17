@@ -8,7 +8,8 @@ export default {
   data() {
     return {
       pollTemplate: null,
-      group: null
+      group: null,
+      sourceProcessName: null
     };
   },
 
@@ -29,6 +30,8 @@ export default {
             Records.remote.fetch({path: "poll_templates", params: {group_id: this.group.id} }).then(() => {
               this.pollTemplate = Records.pollTemplates.find(key);
               if (this.pollTemplate) {
+                this.sourceProcessName = this.pollTemplate.processName;
+                this.pollTemplate.processName = null;
                 this.pollTemplate.groupId = this.group.id;
                 this.pollTemplate.example = false;
               } else {
@@ -54,5 +57,6 @@ export default {
       poll-template-form(
         v-if="pollTemplate"
         :poll-template="pollTemplate"
+        :source-process-name="sourceProcessName"
       )
 </template>

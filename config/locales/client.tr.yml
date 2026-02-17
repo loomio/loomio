@@ -322,6 +322,7 @@ tr:
     nonprofit: Kar amacı gütmeyen kuruluşlar
     opening_in: Açılış %{zaman}
     read_more: Devamını oku
+    templates_admin_hint: Grup yöneticisi olduğunuz için, istemediğiniz şablonları gizleyebilir veya silebilir ve kalanları ihtiyaçlarınıza göre düzenleyebilirsiniz.
   merge_accounts:
     modal:
       title: Hesapları birleştir
@@ -1915,6 +1916,7 @@ tr:
     new_template_from_blank_subtitle: Organizasyonunuzdaki bir sürece uygun yeni bir şablon oluşturun.
     blank: Yeni
     blank_subtitle: Belirli bir süreç için yeni bir anket şablonu oluşturun.
+    start_a_poll: Anket başlat
   poll_common_attachment_form:
     label: Ekler
   poll_common_add_option:
@@ -2685,7 +2687,6 @@ tr:
     aria_label: Bir cevap ekle
   discussion_template:
     browse_public_templates: Şablon galerisine göz atın
-    start_a_new_discussion: Yeni bir tartışma başlat
     discussion_template_saved: Tartışma şablonu kaydedildi
     these_are_public_templates: Bu şablonlar grubunuza uyacak şekilde kopyalayıp değiştirebilmeniz için mevcuttur
     default_title_label: Varsayılan başlık
@@ -2729,6 +2730,10 @@ tr:
     these_are_templates_admin_hint: Grup yöneticileri şablonları düzenleyebilir, yeni şablonlar oluşturabilir, şablonları yeniden sıralayabilir ve gizleyip/gösterebilir. Gizli şablonları yalnızca yöneticiler görebilir.
     show_hidden_templates: Gizli şablonları göster
     show_fewer: Daha az göster
+    start_a_new_discussion: Yeni bir tartışma başlatın
+    start_discussion: Bir tartışma başlatın
+    start_a_direct_discussion: Doğrudan bir tartışma başlatın
+    these_are_templates: Bunlar grubunuzdaki tartışma şablonlarıdır.
   context_panel:
     thread_status:
       pinned: Bu tartışma sabitlendi. Tüm kullanıcılar için grubun tartışma listesinin en üstünde kalacak.

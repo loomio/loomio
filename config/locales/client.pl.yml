@@ -322,6 +322,7 @@ pl:
     nonprofit: Niedochodowy
     opening_in: Otwarcie %{time}
     read_more: Przeczytaj więcej
+    templates_admin_hint: Jako administrator grupy możesz ukrywać lub usuwać szablony, których nie chcesz, a także edytować pozostałe, dostosowując je do swoich potrzeb.
   merge_accounts:
     modal:
       title: Połącz konta
@@ -1940,6 +1941,7 @@ pl:
     new_template_from_blank_subtitle: Utwórz nowy szablon, który będzie odpowiadał procesowi obowiązującemu w Twojej organizacji
     blank: Nowy
     blank_subtitle: Utwórz nowy szablon ankiety dla określonego procesu
+    start_a_poll: Rozpocznij ankietę
   poll_common_attachment_form:
     label: Załączniki
   poll_common_add_option:
@@ -2714,7 +2716,6 @@ pl:
     aria_label: Dodaj odpowiedź
   discussion_template:
     browse_public_templates: Przeglądaj galerię szablonów
-    start_a_new_discussion: Rozpocznij nową dyskusję
     discussion_template_saved: Szablon dyskusji został zapisany
     these_are_public_templates: Możesz skopiować lub zmodyfikować te szablony, aby dostosować je do swojej grupy
     default_title_label: Domyślny tytuł
@@ -2758,6 +2759,10 @@ pl:
     these_are_templates_admin_hint: Administratorzy grup mogą edytować szablony, tworzyć nowe szablony, zmieniać ich kolejność oraz ukrywać/pokazywać. Tylko administratorzy widzą ukryte szablony.
     show_hidden_templates: Pokaż ukryte szablony
     show_fewer: Pokaż mniej
+    start_a_new_discussion: Rozpocznij nową dyskusję
+    start_discussion: Rozpocznij dyskusję
+    start_a_direct_discussion: Rozpocznij bezpośrednią dyskusję
+    these_are_templates: Oto szablony dyskusji w Twojej grupie.
   context_panel:
     thread_status:
       pinned: Ta dyskusja została przypięta. Będzie nadal wyświetlana na górze listy dyskusji grupy dla wszystkich użytkowników.

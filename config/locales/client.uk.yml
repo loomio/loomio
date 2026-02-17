@@ -322,6 +322,7 @@ uk:
     nonprofit: Некомерційна організація
     opening_in: Відкриття %{час}
     read_more: Читати далі
+    templates_admin_hint: Оскільки ви є адміністратором групи, ви можете приховати або видалити будь-які шаблони, які вам не потрібні, а решту відредагувати відповідно до своїх потреб.
   merge_accounts:
     modal:
       title: Об’єднати облікові записи
@@ -1943,6 +1944,7 @@ uk:
     new_template_from_blank_subtitle: Створіть новий шаблон, який відповідає процесу, що діє у вашій організації
     blank: Новий
     blank_subtitle: Створення нового шаблону опитування для певного процесу
+    start_a_poll: Розпочати опитування
   poll_common_attachment_form:
     label: Вкладення
   poll_common_add_option:
@@ -2717,7 +2719,6 @@ uk:
     aria_label: Додати відповідь
   discussion_template:
     browse_public_templates: Переглянути галерею шаблонів
-    start_a_new_discussion: Розпочати нове обговорення
     discussion_template_saved: Шаблон обговорення збережено
     these_are_public_templates: Ці шаблони доступні для копіювання або зміни відповідно до вашої групи
     default_title_label: Назва за замовчуванням
@@ -2761,6 +2762,10 @@ uk:
     these_are_templates_admin_hint: Адміністратори групи можуть редагувати шаблони, створювати нові шаблони, змінювати порядок та приховувати/відображати шаблони. Приховані шаблони можуть бачити лише адміністратори.
     show_hidden_templates: Показати приховані шаблони
     show_fewer: Показати менше
+    start_a_new_discussion: Розпочати нове обговорення
+    start_discussion: Розпочати обговорення
+    start_a_direct_discussion: Почати пряму дискусію
+    these_are_templates: Це шаблони для обговорення у вашій групі.
   context_panel:
     thread_status:
       pinned: Це обговорення закріплено. Воно залишатиметься на початку списку обговорень групи для всіх користувачів.

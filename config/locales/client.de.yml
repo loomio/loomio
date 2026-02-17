@@ -328,6 +328,7 @@ de:
     nonprofit: Gemeinnützig
     opening_in: Öffnungszeit}
     read_more: Mehr lesen
+    templates_admin_hint: Da Sie Gruppenadministrator sind, können Sie alle Vorlagen, die Sie nicht benötigen, ausblenden oder löschen und die verbleibenden Vorlagen nach Ihren Bedürfnissen bearbeiten.
   merge_accounts:
     modal:
       title: Benutzerkonten zusammenführen
@@ -1948,6 +1949,7 @@ de:
     new_template_from_blank_subtitle: Erstellen Sie eine neue Vorlage, die zu einem Prozess in Ihrer Organisation passt.
     blank: Neu
     blank_subtitle: Erstellen Sie eine neue Umfragevorlage für einen bestimmten Prozess
+    start_a_poll: Starte eine Umfrage
   poll_common_attachment_form:
     label: Arbeitsmaterialien
   poll_common_add_option:
@@ -2722,7 +2724,6 @@ de:
     aria_label: Eine Antwort hinzufügen
   discussion_template:
     browse_public_templates: Durchsuchen Sie die Vorlagengalerie
-    start_a_new_discussion: Neue Diskussion starten
     discussion_template_saved: Diskussionsvorlage gespeichert
     these_are_public_templates: Diese Vorlagen stehen Ihnen zur Verfügung, um sie zu kopieren oder an Ihre Gruppe anzupassen.
     default_title_label: Standardtitel
@@ -2766,6 +2767,10 @@ de:
     these_are_templates_admin_hint: Gruppenadministratoren können Vorlagen bearbeiten, neue Vorlagen erstellen, Vorlagen neu anordnen und ein- bzw. ausblenden. Nur Administratoren können die ausgeblendeten Vorlagen sehen.
     show_hidden_templates: Ausgeblendete Vorlagen anzeigen
     show_fewer: Weniger anzeigen
+    start_a_new_discussion: Neue Diskussion starten
+    start_discussion: Starten Sie eine Diskussion
+    start_a_direct_discussion: Starten Sie eine direkte Diskussion
+    these_are_templates: Dies sind die Diskussionsvorlagen in Ihrer Gruppe.
   context_panel:
     thread_status:
       pinned: Diese Diskussion wurde angepinnt. Sie bleibt für alle Benutzer ganz oben in der Diskussionsliste der Gruppe.

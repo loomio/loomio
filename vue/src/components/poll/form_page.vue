@@ -122,7 +122,7 @@ v-main.poll-form-page
           @setPoll="setPoll"
           redirect-on-save
         )
-      v-card.poll-common-choose-template(v-if="!poll" :title="$t('poll_common.poll_templates')")
+      v-card.poll-common-choose-template(v-if="!poll" :title="$t('poll_common.start_a_poll')")
         poll-common-choose-template(
           v-if="!poll"
           @setPoll="setPoll"

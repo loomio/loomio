@@ -322,6 +322,7 @@ ca:
     nonprofit: Sense ànim de lucre
     opening_in: Obertura %{time}
     read_more: Llegir més
+    templates_admin_hint: Com que sou administrador d'un grup, podeu amagar o suprimir les plantilles que no vulgueu i editar les restants perquè s'adaptin a les vostres necessitats.
   merge_accounts:
     modal:
       title: Combina comptes
@@ -1940,6 +1941,7 @@ ca:
     new_template_from_blank_subtitle: Crea una plantilla nova que s'adapti a un procés que tinguis a la teva organització
     blank: Nou
     blank_subtitle: Crea una nova plantilla d'enquesta per a un procés específic
+    start_a_poll: Inicia una enquesta
   poll_common_attachment_form:
     label: Adjunts
   poll_common_add_option:
@@ -2714,7 +2716,6 @@ ca:
     aria_label: Afegeix una resposta
   discussion_template:
     browse_public_templates: Navega per la galeria de plantilles
-    start_a_new_discussion: Inicia una nova discussió
     discussion_template_saved: S'ha desat la plantilla de discussió
     these_are_public_templates: Aquestes plantilles estan disponibles perquè les copieu o les modifiqueu per adaptar-les al vostre grup.
     default_title_label: Títol per defecte
@@ -2758,6 +2759,10 @@ ca:
     these_are_templates_admin_hint: Els administradors de grup poden editar plantilles, crear-ne de noves, reorganitzar-les i amagar/mostrar plantilles. Només els administradors poden veure les plantilles ocultes.
     show_hidden_templates: Mostra les plantilles ocultes
     show_fewer: Mostra menys
+    start_a_new_discussion: Inicia una nova discussió
+    start_discussion: Inicia una discussió
+    start_a_direct_discussion: Inicia una discussió directa
+    these_are_templates: Aquestes són les plantilles de discussió del vostre grup.
   context_panel:
     thread_status:
       pinned: Aquesta discussió s'ha fixat. Romandrà al capdamunt de la llista de discussions del grup per a tots els usuaris.

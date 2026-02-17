@@ -64,8 +64,8 @@ RUN bundle install && \
 # Copy entire app source
 COPY . .
 
-# Copy built Vite assets from nodebuild stage
-COPY --from=nodebuild /build/public/client3 /loomio/public/client3
+# Copy built Vite assets to staging path (copied to volume at startup)
+COPY --from=nodebuild /build/public/client3 /loomio/client3-build
 
 # Copy Node.js binary and hocuspocus dependencies from nodebuild stage
 COPY --from=nodebuild /usr/local/bin/node /usr/local/bin/node

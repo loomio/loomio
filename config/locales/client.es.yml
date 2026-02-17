@@ -322,6 +322,7 @@ es:
     nonprofit: No lucrativo
     opening_in: Apertura %{time}
     read_more: Leer más
+    templates_admin_hint: Como eres administrador de un grupo, puedes ocultar o eliminar cualquier plantilla que no quieras y editar las restantes para adaptarlas a tus necesidades.
   merge_accounts:
     modal:
       title: Fusionar cuentas
@@ -1951,6 +1952,7 @@ es:
     new_template_from_blank_subtitle: Cree una nueva plantilla que se adapte a un proceso que tenga en su organización
     blank: Nuevo
     blank_subtitle: Crear una nueva plantilla de encuesta para un proceso específico
+    start_a_poll: Iniciar una encuesta
   poll_common_attachment_form:
     label: Adjuntos
   poll_common_add_option:
@@ -2723,7 +2725,6 @@ es:
     aria_label: Añadir una respuesta
   discussion_template:
     browse_public_templates: Explorar la galería de plantillas
-    start_a_new_discussion: Iniciar una nueva discusión
     discussion_template_saved: Plantilla de discusión guardada
     these_are_public_templates: Estas plantillas están disponibles para que las copie o modifique para adaptarlas a su grupo.
     default_title_label: Título predeterminado
@@ -2767,6 +2768,10 @@ es:
     these_are_templates_admin_hint: Los administradores de grupo pueden editar, crear, reorganizar y ocultar/mostrar plantillas. Solo los administradores pueden ver las plantillas ocultas.
     show_hidden_templates: Mostrar plantillas ocultas
     show_fewer: Mostrar menos
+    start_a_new_discussion: Iniciar una nueva discusión
+    start_discussion: Iniciar una discusión
+    start_a_direct_discussion: Iniciar una discusión directa
+    these_are_templates: Éstas son las plantillas de discusión en su grupo.
   context_panel:
     thread_status:
       pinned: Esta discusión se ha fijado. Permanecerá en la parte superior de la lista de discusiones del grupo para todos los usuarios.

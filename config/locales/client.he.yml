@@ -322,6 +322,7 @@ he:
     nonprofit: מלכ"ר
     opening_in: פתיחה %{time}
     read_more: קרא עוד
+    templates_admin_hint: מכיוון שאתה מנהל קבוצה, תוכל להסתיר או למחוק כל תבנית שאינך מעוניין בה, ולערוך את הנותרות בהתאם לצרכים שלך.
   merge_accounts:
     modal:
       title: מיזוג חשבונות
@@ -1934,6 +1935,7 @@ he:
     new_template_from_blank_subtitle: צור תבנית חדשה שתתאים לתהליך הקיים בארגון שלך
     blank: חָדָשׁ
     blank_subtitle: צור תבנית סקר חדשה עבור תהליך ספציפי
+    start_a_poll: התחל סקר
   poll_common_attachment_form:
     label: קבצים מצורפים
   poll_common_add_option:
@@ -2704,7 +2706,6 @@ he:
     aria_label: הוסף תגובה
   discussion_template:
     browse_public_templates: עיון בגלריית התבניות
-    start_a_new_discussion: התחל דיון חדש
     discussion_template_saved: תבנית הדיון נשמרה
     these_are_public_templates: תבניות אלו זמינות להעתקה או שינוי בהתאם לקבוצה שלכם
     default_title_label: כותרת ברירת מחדל
@@ -2748,6 +2749,10 @@ he:
     these_are_templates_admin_hint: מנהלי קבוצות יכולים לערוך תבניות, ליצור תבניות חדשות, לסדר מחדש ולהסתיר/לבטל הסתרה של תבניות. רק מנהלים יכולים לראות את התבניות המוסתרות.
     show_hidden_templates: הצג תבניות מוסתרות
     show_fewer: הצג פחות
+    start_a_new_discussion: התחל דיון חדש
+    start_discussion: התחל דיון
+    start_a_direct_discussion: התחל דיון ישיר
+    these_are_templates: אלו הן תבניות הדיון בקבוצה שלכם.
   context_panel:
     thread_status:
       pinned: דיון זה הוצמד. הוא יישאר בראש רשימת הדיונים של הקבוצה עבור כל המשתמשים.

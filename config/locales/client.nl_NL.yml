@@ -322,6 +322,7 @@ nl_NL:
     nonprofit: Non-profit
     opening_in: Openingstijden %{tijd}
     read_more: Lees meer
+    templates_admin_hint: Omdat u groepsbeheerder bent, kunt u sjablonen die u niet wilt verbergen of verwijderen en de overgebleven sjablonen aanpassen aan uw behoeften.
   merge_accounts:
     modal:
       title: Accounts samenvoegen
@@ -1940,6 +1941,7 @@ nl_NL:
     new_template_from_blank_subtitle: Maak een nieuwe sjabloon die aansluit op een proces binnen uw organisatie.
     blank: Nieuw
     blank_subtitle: Maak een nieuwe enquêtesjabloon voor een specifiek proces.
+    start_a_poll: Start een enquête
   poll_common_attachment_form:
     label: Bijlagen
   poll_common_add_option:
@@ -2714,7 +2716,6 @@ nl_NL:
     aria_label: Voeg een antwoord toe
   discussion_template:
     browse_public_templates: Blader door de sjabloongalerij
-    start_a_new_discussion: Start een nieuwe discussie
     discussion_template_saved: Discussiesjabloon opgeslagen
     these_are_public_templates: Deze sjablonen kunt u kopiëren of aanpassen aan uw groep
     default_title_label: Standaardtitel
@@ -2758,6 +2759,10 @@ nl_NL:
     these_are_templates_admin_hint: Groepsbeheerders kunnen sjablonen bewerken, nieuwe sjablonen maken, herschikken en verbergen/weergeven. Alleen beheerders kunnen de verborgen sjablonen zien.
     show_hidden_templates: Verborgen sjablonen weergeven
     show_fewer: Minder weergeven
+    start_a_new_discussion: Start een nieuwe discussie
+    start_discussion: Start een discussie
+    start_a_direct_discussion: Start een direct gesprek
+    these_are_templates: Dit zijn de discussiesjablonen in jullie groep.
   context_panel:
     thread_status:
       pinned: Deze discussie is vastgezet en blijft bovenaan de discussielijst van de groep staan voor alle gebruikers.
