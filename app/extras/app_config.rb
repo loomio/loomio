@@ -43,7 +43,6 @@ class AppConfig
 
     # here are some useful variations on these colours
     # https://maketintsandshades.com/#DCA034,293C4A,7F9EA0,E4C2B9,658AE7,C77C3B
-    default_channels_url = Rails.env.production? ? "wss://channels.#{ENV['CANONICAL_HOST']}" : "ws://localhost:5000"
     default_hocuspocus_url = Rails.env.production? ? "wss://hocuspocus.#{ENV['CANONICAL_HOST']}" : "ws://localhost:4444"
 
     light = {
@@ -90,7 +89,6 @@ class AppConfig
       brand_colors: brand_colors,
       site_name: ENV.fetch('SITE_NAME', 'Loomio'),
       site_description: ENV.fetch('SITE_DESCRIPTION', I18n.t('email.loomio_app_description')),
-      channels_url: ENV.fetch('CHANNELS_URL', ENV.fetch('CHANNELS_URI', default_channels_url)),
       hocuspocus_url: ENV.fetch('HOCUSPOCUS_URL', default_hocuspocus_url),
       terms_url: ENV['TERMS_URL'],
       privacy_url: ENV['PRIVACY_URL'],
@@ -141,10 +139,11 @@ class AppConfig
       show_contact_consent: ENV.fetch('FEATURES_SHOW_CONTACT_CONSENT', false),
       sso_disable_edit_profile: !!ENV['LOOMIO_SSO_FORCE_USER_ATTRS'],
       sentry_sample_rate: ENV.fetch('SENTRY_SAMPLE_RATE', 0.1).to_f,
-      hidden_poll_templates: %w[proposal question],
+      hidden_poll_templates: %w[proposal question advice gradients_of_agreement],
       transcription: TranscriptionService.available?,
       max_message_length: ENV.fetch('LMO_MAX_MESSAGE_LENGTH', 100000),
-      sitemap: ENV.fetch('FEATURES_SITEMAP', false)
+      sitemap: ENV.fetch('FEATURES_SITEMAP', false),
+      verify_participants_admin_only: !!ENV['LOOMIO_VERIFY_PARTICIPANTS_ADMIN_ONLY']
     }
   end
 

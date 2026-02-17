@@ -8,6 +8,8 @@ class Views::EventMailer::Poll::ResultsPanel < Views::ApplicationMailer::Compone
   end
 
   def view_template
+    return if @poll.scheduled?
+
     my_stance = @current_user && ::Stance.latest.find_by(poll_id: @poll.id, participant_id: @current_user.id)
 
     if @poll.has_options && (@poll.decided_voters_count > 0 || @poll.closed_at)

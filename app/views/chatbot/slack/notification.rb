@@ -14,7 +14,7 @@ class Views::Chatbot::Slack::Notification < Views::Chatbot::Slack::Base
 
     sd t("notifications.with_title.#{@event.kind}",
          actor: @event.user.name,
-         title: "[#{@event.eventable.title}](#{url})",
+         title: "[#{@event.eventable.title_model.title}](#{url})",
          poll_type: poll_type,
          site_name: AppConfig.theme[:site_name])
     md "\n"

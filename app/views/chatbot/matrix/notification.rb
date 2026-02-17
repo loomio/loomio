@@ -8,7 +8,7 @@ class Views::Chatbot::Matrix::Notification < Views::Chatbot::Base
   end
 
   def view_template
-    title = capture { link_to(@event.eventable.title, polymorphic_url(@event.eventable)) }
+    title = capture { link_to(@event.eventable.title_model.title, polymorphic_url(@event.eventable)) }
     poll_type = @poll ? t("poll_types.#{@poll.poll_type}") : nil
 
     raw t("notifications.with_title.#{@event.kind}", actor: @event.user.name, title: title, poll_type: poll_type, site_name: AppConfig.theme[:site_name]).html_safe

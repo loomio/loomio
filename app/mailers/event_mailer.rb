@@ -59,7 +59,7 @@ class EventMailer < ApplicationMailer
 
     subject_params = {
       title: TranslationService.plain_text(event.eventable.title_model, :title, recipient),
-      poll_type: poll && I18n.t("poll_types.#{poll.poll_type}", locale: recipient.locale),
+      poll_type: poll && I18n.t("decision_tools_card.#{poll.poll_type}_title", locale: recipient.locale),
       actor: event.user.name,
       site_name: AppConfig.theme[:site_name]
     }
@@ -101,8 +101,6 @@ class EventMailer < ApplicationMailer
        event.eventable.parent.present? &&
        event.eventable.parent.author == recipient
       "comment_replied_to"
-    elsif event.kind == 'poll_created'
-      'poll_announced'
     else
       event.kind
     end

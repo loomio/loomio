@@ -22,10 +22,38 @@ class Api::V1::DiscussionsControllerTest < ActionController::TestCase
   test "create discussion without group" do
     user = users(:normal_user)
     sign_in user
-    
+
     post :create, params: { discussion: { title: 'test' } }
-    
+
     assert_response :success
+  end
+
+  test "user without groups can create direct discussion when create_user is disabled" do
+    hex = SecureRandom.hex(4)
+    user = User.create!(name: "groupless#{hex}", email: "groupless#{hex}@example.com",
+                        username: "groupless#{hex}", email_verified: true,
+                        legal_accepted_at: Time.current)
+    assert_empty user.groups
+    sign_in user
+
+    ENV['FEATURES_DISABLE_CREATE_USER'] = '1'
+    post :create, params: { discussion: { title: 'direct thread' } }
+    assert_response :success
+  ensure
+    ENV.delete('FEATURES_DISABLE_CREATE_USER')
+  end
+
+  test "user without groups cannot create direct discussion when create_user is enabled" do
+    hex = SecureRandom.hex(4)
+    user = User.create!(name: "groupless#{hex}", email: "groupless#{hex}@example.com",
+                        username: "groupless#{hex}", email_verified: true,
+                        legal_accepted_at: Time.current)
+    assert_empty user.groups
+    sign_in user
+
+    ENV.delete('FEATURES_DISABLE_CREATE_USER')
+    post :create, params: { discussion: { title: 'direct thread' } }
+    assert_response :forbidden
   end
 
   test "doesnt email everyone on discussion create" do

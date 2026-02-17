@@ -311,6 +311,7 @@ he:
       zoom: תקריב
       align: יישר
       original: מְקוֹרִי
+      rearrange: לְסַדֵר מְחָדָשׁ
     formatting_help:
       label: פורמט
       title: למד איך להשתמש בMarkdown כדי לסגנן את הטקסט שלך
@@ -838,6 +839,7 @@ he:
     discussion_started: הדיון התחיל
     none_direct_discussion: אין (דיון ישיר)
     direct_discussion: דיון ישיר
+    direct_discussion_hint: דיון ישיר גלוי רק לאנשים הספציפיים שאתה מזמין. הוא לא יופיע ברשימת הדיונים של אף קבוצה - תוכל למצוא אותו בדף הדיונים הישירים שלך.
   announcement:
     send_discussion: שלח שרשור
     send_group: הזמן אנשים ל-%{name}
@@ -1327,6 +1329,8 @@ he:
     messages:
       group_created: קבוצה נפתחה
       group_updated: קבוצה עודכנה
+      logo_removed: הלוגו הוסר
+      cover_photo_removed: תמונת הנושא הוסרה
     upload_logo: העלה לוגו
     upload_cover_photo: העלה תמונת שער
     request_to_join_prompt: בקשת הצטרפות
@@ -1340,6 +1344,15 @@ he:
     list_in_the_groups_directory: רשימה בספריית הקבוצות?
     list_in_directory_yes: כן · הצג קבוצה זו בדף "מצא קבוצה"
     list_in_directory_no: אין להזמין אנשים או לקבל קישור למציאת הקבוצה
+    upload_background: העלאת רקע
+    remove_background: הסרת רקע
+    remove_logo: להסיר את הלוגו
+    members_can_create_templates: חברים יכולים ליצור תבניות
+    members_can_create_templates_help: אפשר לחברים ליצור תבניות דיון וסקר. תבניות שנוצרו על ידי חברים יוסתרו עד שמנהל יבטל את הסתרתן.
+    members_can_start_discussions_v2: חברים יכולים להתחיל דיונים חדשים
+    members_can_start_discussions_help_v2: לאפשר לחברים להתחיל דיונים חדשים בתוך הקבוצה
+    members_can_edit_discussions_v2: חברים יכולים לנהל דיונים ותגובות
+    members_can_edit_discussions_help_v2: אפשר לחברים לערוך, להעביר, להצמיד, לתייג או לסגור כל דיון או תגובה בקבוצה
   group_export_modal:
     title: יצוא נתונים מהקבוצה
     body: |
@@ -2677,6 +2690,24 @@ he:
     add_poll_template_help: בחר תבניות סקר שיעזרו להשלים תהליך זה
     recommended_poll_templates: תבניות מומלצות לסקר
     share_in_template_gallery: שתף תבנית זו בגלריית התבניות הציבורית
+    browse_example_templates: עיין בתבניות לדוגמה
+    example_templates: תבניות לדוגמה
+    browse_public_templates_hint: לחץ על שם תבנית כדי להתחיל דיון איתה, או לחץ על כפתור העריכה מימין כדי ליצור עותק ולשנות אותו עבור הקבוצה שלך.
+    these_are_templates_v2: זוהי רשימה של תבניות הדיון בקבוצה שלך. לחץ על תבנית כדי להשתמש בה כנקודת התחלה לדיון חדש. מנהלי קבוצה יכולים לערוך תבניות ולסדר מחדש את הרשימה כך שיהיה קל למצוא את התבניות החשובות.
+    process_name_placeholder: לדוגמה סטנדאפ שבועי
+    process_subtitle_placeholder: לדוגמה, פגישת ייעוץ קצרה עם הצוות בכל שבוע
+    default_title_placeholder: לדוגמה סטנדאפ - 15 בינואר
+    more_templates: תבניות נוספות
+    fewer_templates: פחות תבניות
+    choose_a_group: בחר קבוצה
+    default_templates: תבניות ברירת מחדל
+    or_start_a_direct_discussion: או להתחיל דיון ישיר
+    choose_group_for_templates: בחר קבוצה כדי לצפות בתבניות הדיון שלה
+    start_direct_discussion: התחל דיון ישיר
+    poll_templates: תבניות סקר
+    poll_templates_help: תבניות שתבחרו כאן יופיעו ראשונות כאשר מישהו ילחץ על התחל הצבעה
+    start_direct_discussion_from_blank: התחל דיון ישיר מתבנית ריקה
+    default_to_direct_discussion: התחל כדיון ישיר (ללא קבוצה)
   context_panel:
     thread_status:
       pinned: דיון זה הוצמד. הוא יישאר בראש רשימת הדיונים של הקבוצה עבור כל המשתמשים.
@@ -2702,3 +2733,4 @@ he:
       success: הדיון הועבר ל-%{name}
   auth:
     oauth_cancelled: הכניסה בוטלה
+    switching_accounts: החלפת חשבונות. אנא התחבר עם פרטי החשבון החדשים שלך.

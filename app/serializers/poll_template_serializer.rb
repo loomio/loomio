@@ -21,6 +21,7 @@ class PollTemplateSerializer < ActiveModel::Serializer
              :anonymous,
              :specified_voters_only,
              :notify_on_closing_soon,
+             :notify_on_open,
              :content_locale,
              :shuffle_options,
              :show_none_of_the_above,

@@ -319,6 +319,7 @@ pt_BR:
       zoom: Zoom
       align: Alinhar
       original: Original
+      rearrange: Reorganizar
     formatting_help:
       label: Formatação
       title: Aprenda como usar Markdown para formatar seu texto
@@ -850,6 +851,7 @@ pt_BR:
     discussion_started: Discussão iniciada
     none_direct_discussion: Nenhuma (discussão direta)
     direct_discussion: Discussão direta
+    direct_discussion_hint: Uma conversa direta só é visível para as pessoas específicas que você convida. Ela não aparecerá na lista de discussões de nenhum grupo — você pode encontrá-la na sua página de conversas diretas.
   announcement:
     send_discussion: Mandar tópico
     send_group: Convidar pessoas para %{name}
@@ -1352,6 +1354,8 @@ pt_BR:
     messages:
       group_created: Grupo iniciado
       group_updated: Grupo atualizado
+      logo_removed: Logotipo removido
+      cover_photo_removed: Foto de capa removida
     upload_logo: Enviar logo
     upload_cover_photo: Enviar Image da Capa
     request_to_join_prompt: Solicitação de adesão rápida
@@ -1365,6 +1369,15 @@ pt_BR:
     list_in_the_groups_directory: Listar no diretório de grupos?
     list_in_directory_yes: Sim · Mostrar este grupo na página "Encontrar um grupo"
     list_in_directory_no: Não, as pessoas devem ser convidadas ou receber um link para encontrar o grupo.
+    upload_background: carregar plano de fundo
+    remove_background: remover fundo
+    remove_logo: remover logotipo
+    members_can_create_templates: Os membros podem criar modelos.
+    members_can_create_templates_help: Permitir que os membros criem modelos de discussão e enquete. Os modelos criados pelos membros ficarão ocultos até que um administrador os exiba.
+    members_can_start_discussions_v2: Os membros podem iniciar novas discussões.
+    members_can_start_discussions_help_v2: Permitir que os membros iniciem novas discussões dentro do grupo.
+    members_can_edit_discussions_v2: Os membros podem gerenciar discussões e comentários.
+    members_can_edit_discussions_help_v2: Permitir que os membros editem, movam, fixem, marquem ou fechem qualquer discussão ou comentário no grupo.
   group_export_modal:
     title: Exportar data do grupo
     body: |
@@ -2708,6 +2721,24 @@ pt_BR:
     add_poll_template_help: Selecione quaisquer modelos de pesquisa que ajudem a concluir este processo.
     recommended_poll_templates: Modelos de pesquisa recomendados
     share_in_template_gallery: Compartilhe este modelo na galeria de modelos públicos.
+    browse_example_templates: Veja modelos de exemplo
+    example_templates: Modelos de exemplo
+    browse_public_templates_hint: Clique no nome de um modelo para iniciar uma discussão sobre ele ou clique no botão "Editar" à direita para fazer uma cópia e modificá-la para o seu próprio grupo.
+    these_are_templates_v2: Esta é uma lista dos Modelos de Discussão do seu grupo. Clique em um modelo para usá-lo como ponto de partida para uma nova discussão. Os administradores do grupo podem editar os modelos e reorganizar a lista para facilitar a localização dos modelos importantes.
+    process_name_placeholder: 'Exemplo: Reunião semanal de acompanhamento'
+    process_subtitle_placeholder: 'Exemplo: Uma breve reunião semanal com a equipe para verificar como está o andamento das coisas.'
+    default_title_placeholder: 'Exemplo: Standup - 15 de janeiro'
+    more_templates: Mais modelos
+    fewer_templates: Menos modelos
+    choose_a_group: Escolha um grupo
+    default_templates: Modelos padrão
+    or_start_a_direct_discussion: Ou inicie uma discussão direta.
+    choose_group_for_templates: Selecione um grupo para visualizar seus modelos de discussão.
+    start_direct_discussion: Iniciar discussão direta
+    poll_templates: Modelos de pesquisa
+    poll_templates_help: Os modelos que você selecionar aqui serão exibidos primeiro quando alguém clicar em "Iniciar uma votação".
+    start_direct_discussion_from_blank: Inicie uma discussão direta a partir de um modelo em branco.
+    default_to_direct_discussion: Comece com uma discussão direta (sem grupo).
   context_panel:
     thread_status:
       pinned: Esta discussão foi fixada. Ela permanecerá no topo da lista de discussões do grupo para todos os usuários.
@@ -2733,3 +2764,4 @@ pt_BR:
       success: A discussão foi movida para %{name}
   auth:
     oauth_cancelled: O login foi cancelado.
+    switching_accounts: Mudando de conta. Por favor, faça login com os dados da sua nova conta.

@@ -101,6 +101,7 @@ Rails.application.routes.draw do
           post :export
           post :export_csv
           post 'upload_photo/:kind', action: :upload_photo
+          delete 'remove_photo/:kind', action: :remove_photo
         end
         collection do
           get :count_explore_results
@@ -208,8 +209,6 @@ Rails.application.routes.draw do
         collection do
           get :browse_tags
           get :browse
-          post :hide
-          post :unhide
           post :discard
           post :undiscard
           post :positions
@@ -411,6 +410,10 @@ Rails.application.routes.draw do
   get 'poll_templates/new'                 => 'application#index'
   get 'poll_templates/:id'                 => 'application#index'
   get 'poll_templates/:id/edit'            => 'application#index'
+  get 'discussion_templates/browse'        => 'application#index'
+  get 'discussion_templates/new'           => 'application#index'
+  get 'discussion_templates/:id'           => 'application#index'
+  get 'discussion_templates/:id/edit'      => 'application#index'
   get 'thread_templates/browse'            => 'application#index'
   get 'thread_templates/new'               => 'application#index'
   get 'thread_templates/:id'               => 'application#index'

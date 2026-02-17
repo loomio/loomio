@@ -311,6 +311,7 @@ fi:
       zoom: Zoomaus
       align: Kohdistaa
       original: Alkuperäinen
+      rearrange: Järjestä uudelleen
     formatting_help:
       label: Muotoilu
       title: Opi käyttämään Markdownia tekstin muotoiluun
@@ -838,6 +839,7 @@ fi:
     discussion_started: Keskustelu aloitettu
     none_direct_discussion: Ei mitään (suora keskustelu)
     direct_discussion: Suora keskustelu
+    direct_discussion_hint: Suora keskustelu näkyy vain kutsumillesi henkilöille. Se ei näy minkään ryhmän keskusteluluettelossa – löydät sen Suorat keskustelut -sivultasi.
   announcement:
     send_discussion: Lähetä lanka
     send_group: Kutsu ihmisiä %{name}
@@ -1323,6 +1325,8 @@ fi:
     messages:
       group_created: Ryhmä alkoi
       group_updated: Ryhmä päivitetty
+      logo_removed: Logo poistettu
+      cover_photo_removed: Kansikuva poistettu
     upload_logo: Lataa logo
     upload_cover_photo: Lataa kansikuva
     request_to_join_prompt: Pyydä liittymään
@@ -1336,6 +1340,15 @@ fi:
     list_in_the_groups_directory: Lista ryhmien hakemistossa?
     list_in_directory_yes: Kyllä · näytä tämä ryhmä "etsi ryhmä" -sivulla
     list_in_directory_no: Ei · ihmisiä tulisi kutsua ryhmään tai antaa heille linkkiä ryhmän löytämiseksi
+    upload_background: lataa tausta
+    remove_background: poista tausta
+    remove_logo: poista logo
+    members_can_create_templates: Jäsenet voivat luoda malleja
+    members_can_create_templates_help: Salli jäsenten luoda keskustelu- ja kyselypohjia. Jäsenten luomat pohjat piilotetaan, kunnes ylläpitäjä tuo ne näkyviin.
+    members_can_start_discussions_v2: Jäsenet voivat aloittaa uusia keskusteluja
+    members_can_start_discussions_help_v2: Salli jäsenten aloittaa uusia keskusteluja ryhmässä
+    members_can_edit_discussions_v2: Jäsenet voivat hallita keskusteluja ja kommentteja
+    members_can_edit_discussions_help_v2: Salli jäsenten muokata, siirtää, kiinnittää, merkitä tai sulkea mitä tahansa keskustelua tai kommenttia ryhmässä
   group_export_modal:
     title: Vie ryhmätiedot
     body: <p>Voit ladata kopion ryhmäsi tiedoista milloin tahansa. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Lue lisää.</a></p><p> Suorittaminen kestää muutaman minuutin ryhmäsi koosta riippuen. Kun se on valmis, saat sähköpostin, jossa on linkki tiedoston lataamiseen.</p>
@@ -2658,6 +2671,24 @@ fi:
     add_poll_template_help: Valitse kyselypohjat, jotka auttavat tämän prosessin suorittamisessa
     recommended_poll_templates: Suositellut kyselypohjat
     share_in_template_gallery: Jaa tämä mallipohja julkisessa mallipohjagalleriassa
+    browse_example_templates: Selaa esimerkkipohjia
+    example_templates: Esimerkkimalleja
+    browse_public_templates_hint: Aloita keskustelu mallipohjan nimeä napsauttamalla sen kanssa tai kopioi mallipohja ja muokkaa sitä omaa ryhmääsi varten napsauttamalla oikealla olevaa muokkauspainiketta.
+    these_are_templates_v2: Tämä on luettelo ryhmäsi keskustelumalleista. Napsauta mallia käyttääksesi sitä uuden keskustelun lähtökohtana. Ryhmän ylläpitäjät voivat muokata malleja ja järjestää luettelon uudelleen, jotta tärkeät mallit löytyvät helposti.
+    process_name_placeholder: esim. viikoittainen stand up
+    process_subtitle_placeholder: esim. Lyhyt yhteydenotto tiimiin joka viikko
+    default_title_placeholder: esim. Stand-up - 15. tammikuuta
+    more_templates: Lisää malleja
+    fewer_templates: Vähemmän malleja
+    choose_a_group: Valitse ryhmä
+    default_templates: Oletusmallit
+    or_start_a_direct_discussion: Tai aloita suora keskustelu
+    choose_group_for_templates: Valitse ryhmä nähdäksesi sen keskustelumallit
+    start_direct_discussion: Aloita suora keskustelu
+    poll_templates: Kyselypohjat
+    poll_templates_help: Tässä valitsemasi mallit näkyvät ensin, kun joku napsauttaa Aloita äänestys -painiketta.
+    start_direct_discussion_from_blank: Aloita suora keskustelu tyhjästä mallista
+    default_to_direct_discussion: Aloita suorana keskusteluna (ei ryhmäkeskusteluna)
   context_panel:
     thread_status:
       pinned: Tämä keskustelu on kiinnitetty. Se pysyy ryhmän keskusteluluettelon yläosassa kaikille käyttäjille.
@@ -2683,3 +2714,4 @@ fi:
       success: Keskustelu siirretty keskusteluun %{name}
   auth:
     oauth_cancelled: Kirjautuminen peruutettiin
+    switching_accounts: Tilin vaihto. Kirjaudu sisään uusilla tilitiedoillasi.

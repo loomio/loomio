@@ -1,57 +1,56 @@
-<script lang="js">
-import AppConfig    from '@/shared/services/app_config';
+<script setup>
 import Session      from '@/shared/services/session';
 import Records      from '@/shared/services/records';
-import EventBus     from '@/shared/services/event_bus';
 import NullGroupModel   from '@/shared/models/null_group_model';
-import PollTemplateService     from '@/shared/services/poll_template_service';
-import PollCommonChooseTemplate from '@/components/poll/common/choose_template';
 import { I18n } from '@/i18n';
-import WatchRecords from '@/mixins/watch_records';
+import PollCommonChooseTemplate from '@/components/poll/common/choose_template';
+import { useWatchRecords } from '@/composables/useWatchRecords';
+import { ref } from 'vue';
 
-export default {
-  mixins: [WatchRecords],
-  components: {PollCommonChooseTemplate},
+const props = defineProps({
+  discussion: Object,
+  group: Object
+});
 
-  props: {
-    discussion: Object,
-    group: Object
-  },
+const emit = defineEmits(['setPoll']);
 
-  data() {
-    return {selectedGroup: this.group};
-  },
+const selectedGroup = ref(props.group);
 
-  created() {
-    this.watchRecords({
-      collections: ['groups'],
-      query: store => this.fillGroups()
+if (props.discussion && props.discussion.discussionTemplateId) {
+  Records.discussionTemplates.findOrFetchById(props.discussion.discussionTemplateId).then(dt => {
+    const g = dt.group();
+    if (g) { selectedGroup.value = g; }
+  });
+}
+const groups = ref([]);
+
+function fillGroups() {
+  const defaultsGroup = new NullGroupModel();
+  defaultsGroup.isNullGroup = false;
+  defaultsGroup.name = I18n.global.t('templates.loomio_default_templates');
+  const result = [defaultsGroup];
+  const groupIds = Session.user().groupIds();
+  Records.groups.collection.chain().
+               find({id: { $in: groupIds }, archivedAt: null, parentId: null}).
+               data().forEach(function(parent) { 
+    if (parent.pollTemplatesCount) { result.push(parent); }
+    Records.groups.collection.chain().
+               find({id: { $in: groupIds }, archivedAt: null, parentId: parent.id}).
+               data().forEach(function(subgroup) {
+      if (subgroup.pollTemplatesCount) { result.push(subgroup); }
     });
-  },
+  });
+  groups.value = result;
+}
 
-  methods: {
-    fillGroups() {
-      const defaultsGroup = new NullGroupModel();
-      defaultsGroup.isNullGroup = false;
-      defaultsGroup.name = I18n.global.t('templates.loomio_default_templates');
-      const groups = [defaultsGroup];
-      const groupIds = Session.user().groupIds();
-      Records.groups.collection.chain().
-                   find({id: { $in: groupIds }, archivedAt: null, parentId: null}).
-                   data().forEach(function(parent) { 
-        if (parent.pollTemplatesCount) { groups.push(parent); }
-        Records.groups.collection.chain().
-                   find({id: { $in: groupIds }, archivedAt: null, parentId: parent.id}).
-                   data().forEach(function(subgroup) {
-          if (subgroup.pollTemplatesCount) { groups.push(subgroup); }
-        });
-      });
-      this.groups = groups;
-    },
-    selectGroup(group) { this.selectedGroup = group; },
-    setPoll(poll) { this.$emit('setPoll', poll); }
-  }
-};
+function selectGroup(group) { selectedGroup.value = group; }
+function setPoll(poll) { emit('setPoll', poll); }
+
+const { watchRecords } = useWatchRecords();
+watchRecords({
+  collections: ['groups'],
+  query: () => fillGroups()
+});
 </script>
 
 <template lang="pug">

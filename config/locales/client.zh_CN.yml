@@ -334,6 +334,7 @@ zh_CN:
       add_people: 添加成员
       zoom: Zoom
       align: 对齐
+      rearrange: 重新排列
     formatting_help:
       label: 格式化
       title: 学习如何使用 Markdown 格式化文本
@@ -807,6 +808,24 @@ zh_CN:
     add_poll_template_help: 选择任何有助于完成此过程的投票模板
     recommended_poll_templates: 推荐的投票模板
     share_in_template_gallery: 在公共模板库中分享此模板
+    browse_example_templates: 浏览示例模板
+    example_templates: 示例模板
+    browse_public_templates_hint: 点击模板名称即可开始讨论，或者点击右侧的编辑按钮进行复制并修改，以便用于您自己的团队。
+    these_are_templates_v2: 这是您群组中的讨论模板列表。点击模板即可将其用作新讨论的起点。群组管理员可以编辑模板并重新排列列表，以便轻松找到重要的模板。
+    process_name_placeholder: 例如：每周站会
+    process_subtitle_placeholder: 例如：每周与团队进行简短的沟通
+    default_title_placeholder: 例如：站立式演讲 - 1月15日
+    more_templates: 更多模板
+    fewer_templates: 更少的模板
+    choose_a_group: 选择一个组
+    default_templates: 默认模板
+    or_start_a_direct_discussion: 或者直接发起讨论
+    choose_group_for_templates: 选择一个群组以查看其讨论模板
+    start_direct_discussion: 直接展开讨论
+    poll_templates: 投票模板
+    poll_templates_help: 您在此处选择的模板将在有人点击“开始投票”时优先显示。
+    start_direct_discussion_from_blank: 从空白模板开始直接讨论
+    default_to_direct_discussion: 先以直接讨论的形式开始（不要分组讨论）。
   discussion_form:
     none_invite_only_discussion: 无（仅限受邀者参与讨论）
     new_discussion_template: 新讨论模板
@@ -845,6 +864,7 @@ zh_CN:
     notify_group: 通知组
     none_direct_discussion: 无（直接讨论）
     direct_discussion: 直接讨论
+    direct_discussion_hint: 直接讨论仅对您邀请的特定人员可见。它不会出现在任何群组的讨论列表中——您可以在“直接讨论”页面找到它。
   announcement:
     send_discussion: 发送帖子
     send_group: 邀请人们加入 %{name}
@@ -1354,11 +1374,22 @@ zh_CN:
     messages:
       group_created: 子群组开始
       group_updated: 群组更新
+      logo_removed: 标志已移除
+      cover_photo_removed: 封面照片已移除
     upload_logo: 上传徽标
     upload_cover_photo: 上传封面照片
     list_in_the_groups_directory: 是否已列入群组目录？
     list_in_directory_yes: 是的 · 在“查找群组”页面上显示此群组
     list_in_directory_no: 不，不应邀请他人或提供链接让他们找到该群组。
+    upload_background: 上传背景
+    remove_background: 移除背景
+    remove_logo: 移除徽标
+    members_can_create_templates: 成员可以创建模板
+    members_can_create_templates_help: 允许成员创建讨论和投票模板。成员创建的模板将默认隐藏，直到管理员将其取消隐藏。
+    members_can_start_discussions_v2: 成员可以发起新的讨论
+    members_can_start_discussions_help_v2: 允许成员在群组内发起新的讨论。
+    members_can_edit_discussions_v2: 成员可以管理讨论和评论
+    members_can_edit_discussions_help_v2: 允许成员编辑、移动、置顶、标记或关闭群组中的任何讨论或评论。
   group_export_modal:
     title: 导出组数据
     body: <p>您可以随时下载您所在子群组的数据副本。<a href="https://help.loomio.org/en/user_manual/groups/data_export/">了解更多信息。</a></p><p>根据子群组人数，完成此操作大约需要几分钟。完成后，您将收到一封包含文件下载链接的电子邮件。</p>
@@ -2588,3 +2619,4 @@ zh_CN:
       other: 其他
   auth:
     oauth_cancelled: 登录已取消
+    switching_accounts: 正在切换账户。请使用新账户信息登录。

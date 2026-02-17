@@ -29,13 +29,19 @@ export default {
     });
   },
 
+  computed: {
+    groupIdParam() {
+      return this.$route.query.group_id ? '&group_id='+this.$route.query.group_id : '';
+    }
+  },
+
   methods: {
     changed() { return this.fetch(); },
     fetch() {
       this.loading = true;
       this.results = [];
       Records.remote.get('discussion_templates/browse', {query: this.query}).then(data => {
-        this.results = data.results.map(utils.parseJSON);
+        this.results = data.map(utils.parseJSON);
         this.loading = false;
       });
     },
@@ -51,7 +57,7 @@ export default {
 .thread-templates-page
   v-main
     v-container.max-width-800.px-0.px-sm-3
-      v-card(:title="$t('templates.template_gallery')")
+      v-card(:title="$t('discussion_template.example_templates')")
         template(v-slot:append)
           v-btn.back-button(
             v-if="$route.query.return_to"
@@ -63,41 +69,37 @@ export default {
             common-icon(name="mdi-close")
 
         v-alert.ma-4(type="info" variant="tonal")
-          span(v-t="'discussion_template.these_are_public_templates'")
+          span(v-t="'discussion_template.browse_public_templates_hint'")
 
-        .d-flex.px-4.align-center
-          v-combobox(
-            :loading="loading"
-            autofocus
-            filled
-            single-line
-            hide-selected
-            clearable
-            @change="changed"
-            :append-icon="mdiMagnify"
-            @click:append="fetch"
-            v-model="query"
-            :placeholder="$t('common.action.search')"
-            @keydown.enter.prevent="fetch"
-            hide-details
-            :items="tags"
-            )
+        //- .d-flex.px-4.align-center
+        //-   v-combobox(
+        //-     :loading="loading"
+        //-     autofocus
+        //-     filled
+        //-     single-line
+        //-     hide-selected
+        //-     clearable
+        //-     @change="changed"
+        //-     :append-icon="mdiMagnify"
+        //-     @click:append="fetch"
+        //-     v-model="query"
+        //-     :placeholder="$t('common.action.search')"
+        //-     @keydown.enter.prevent="fetch"
+        //-     hide-details
+        //-     :items="tags"
+        //-     )
 
-        v-list.append-sort-here(lines="three")
+        v-list.append-sort-here(lines="two")
           v-list-item(
             v-for="result in results"
-            :key="result.id"
-            :to="'/d/new?' + (result.id ? 'template_id='+result.id : 'template_key='+result.key)+ '&group_id='+ $route.query.group_id"
+            :key="result.key"
+            :to="'/d/new?template_key='+result.key+groupIdParam"
           )
-            template(v-slot:prepend)
-              v-avatar(:size="38" tile).mr-2
-                img(:alt="result.groupName || result.authorName" :src="result.avatarUrl")
-
-            template(v-slot:apppend)
+            template(v-slot:append)
               v-btn(
                 variant="plain"
                 icon
-                :to="'/thread_templates/new?template_id='+result.id+'&group_id='+$route.query.group_id"
+                :to="'/discussion_templates/new?template_key='+result.key+groupIdParam"
                 title="Make a copy of this template and edit it"
               )
                 common-icon(name="mdi-pencil")
@@ -113,12 +115,7 @@ export default {
                 :color="tagColor(tag)"
               ) {{tag}}
 
-            v-list-item-subtitle.text--primary {{result.processSubtitle}}
-            v-list-item-subtitle
-              span
-                span {{result.authorName}}
-                mid-dot
-                span {{result.groupName}}
+            v-list-item-subtitle {{result.processSubtitle}}
 
 
 </template>

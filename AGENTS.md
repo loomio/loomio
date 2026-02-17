@@ -1,5 +1,11 @@
 # Agent Instructions
 
+## i18n / Localization
+
+- **Never change the value of an existing i18n key.** Existing keys may be translated into other languages; changing the English value breaks those translations.
+- Instead, create a new key with the new value and update the code to reference the new key.
+
+
 ## Running E2E Tests
 
 E2E tests use Nightwatch + headless Chrome against a local Rails server.

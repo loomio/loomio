@@ -311,6 +311,7 @@ sv:
       zoom: Zoom
       align: Justera
       original: Original
+      rearrange: Ordna om
     formatting_help:
       label: Utformning
       title: Lär dig hur du använder Märkspråk för att formatera din text
@@ -838,6 +839,7 @@ sv:
     discussion_started: Diskussionen har startat
     none_direct_discussion: Ingen (direkt diskussion)
     direct_discussion: Direkt diskussion
+    direct_discussion_hint: En direkt diskussion är bara synlig för de specifika personer du bjuder in. Den kommer inte att visas i någon grupps diskussionslista – du hittar den på din sida för direkta diskussioner.
   announcement:
     send_discussion: Skicka tråd
     send_group: Bjud in personer till %{name}
@@ -1323,6 +1325,8 @@ sv:
     messages:
       group_created: Gruppen startade
       group_updated: Gruppen uppdaterad
+      logo_removed: Logotypen borttagen
+      cover_photo_removed: Omslagsfoto borttaget
     upload_logo: Ladda upp logotyp
     upload_cover_photo: Ladda upp omslagsfoto
     request_to_join_prompt: Begäran om att gå med
@@ -1336,6 +1340,15 @@ sv:
     list_in_the_groups_directory: Lista i gruppkatalogen?
     list_in_directory_yes: Ja · visa den här gruppen på sidan "hitta en grupp"
     list_in_directory_no: Inga personer ska bjudas in eller få en länk för att hitta gruppen
+    upload_background: ladda upp bakgrund
+    remove_background: ta bort bakgrunden
+    remove_logo: ta bort logotypen
+    members_can_create_templates: Medlemmar kan skapa mallar
+    members_can_create_templates_help: Tillåt medlemmar att skapa diskussions- och omröstningsmallar. Mallar som skapats av medlemmar kommer att döljas tills en administratör visar dem.
+    members_can_start_discussions_v2: Medlemmar kan starta nya diskussioner
+    members_can_start_discussions_help_v2: Tillåt medlemmar att starta nya diskussioner inom gruppen
+    members_can_edit_discussions_v2: Medlemmar kan hantera diskussioner och kommentarer
+    members_can_edit_discussions_help_v2: Tillåt medlemmar att redigera, flytta, fästa, tagga eller stänga diskussioner eller kommentarer i gruppen
   group_export_modal:
     title: Exportera gruppdata
     body: <p>Du kan ladda ner en kopia av din grupps data när som helst. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Få reda på mer.</a></p><p> Det tar några minuter att slutföra, beroende på storleken på din grupp. När den är klar får du ett e-postmeddelande med en länk för att ladda ner filen.</p>
@@ -2658,6 +2671,24 @@ sv:
     add_poll_template_help: Välj alla omröstningsmallar som hjälper till att slutföra den här processen
     recommended_poll_templates: Rekommenderade omröstningsmallar
     share_in_template_gallery: Dela den här mallen i det offentliga mallgalleriet
+    browse_example_templates: Bläddra bland exempelmallar
+    example_templates: Exempelmallar
+    browse_public_templates_hint: Klicka på ett mallnamn för att starta en diskussion med det, eller klicka på redigeringsknappen till höger för att skapa en kopia och ändra den för din egen grupp.
+    these_are_templates_v2: Detta är en lista över diskussionsmallarna i din grupp. Klicka på en mall för att använda den som utgångspunkt för en ny diskussion. Gruppadministratörer kan redigera mallar och ordna om listan så att det är enkelt att hitta de viktiga mallarna.
+    process_name_placeholder: t.ex. veckovis standup
+    process_subtitle_placeholder: t.ex. ett kort möte med teamet varje vecka
+    default_title_placeholder: t.ex. Standup - 15 januari
+    more_templates: Fler mallar
+    fewer_templates: Färre mallar
+    choose_a_group: Välj en grupp
+    default_templates: Standardmallar
+    or_start_a_direct_discussion: Eller starta en direkt diskussion
+    choose_group_for_templates: Välj en grupp för att visa dess diskussionsmallar
+    start_direct_discussion: Starta direkt diskussion
+    poll_templates: Mallar för omröstningar
+    poll_templates_help: Mallar du väljer här visas först när någon klickar på Starta en omröstning
+    start_direct_discussion_from_blank: Starta en direkt diskussion från en tom mall
+    default_to_direct_discussion: Börja som en direkt diskussion (ingen grupp)
   context_panel:
     thread_status:
       pinned: Den här diskussionen har fästs. Den kommer att finnas kvar högst upp i gruppens diskussionslista för alla användare.
@@ -2683,3 +2714,4 @@ sv:
       success: Diskussionen flyttad till %{name}
   auth:
     oauth_cancelled: Inloggningen avbröts
+    switching_accounts: Byter konto. Vänligen logga in med dina nya kontouppgifter.

@@ -1,9 +1,5 @@
-let base_url;
-if (process.env.RAILS_ENV === 'test') {
-  base_url = "http://localhost:3000";
-} else {
-  base_url = "http://localhost:8080";
-}
+const port = process.env.E2E_PORT || (process.env.RAILS_ENV === 'test' ? '3001' : '8080');
+const base_url = `http://localhost:${port}`;
 
 module.exports = function(test, browser) {
   test.resizeWindow(1000, 2000);

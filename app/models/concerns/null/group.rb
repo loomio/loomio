@@ -77,7 +77,6 @@ module Null::Group
       member_ids
       identities
       hidden_poll_templates
-      hidden_discussion_templates
     ]
   end
 
@@ -90,9 +89,7 @@ module Null::Group
       public_discussions_only?
       is_visible_to_parent_members
       members_can_add_members
-      members_can_add_guests
       members_can_create_subgroups
-      members_can_edit_discussions
       members_can_start_discussions
       admins_can_edit_user_content
     )
@@ -166,13 +163,6 @@ module Null::Group
     }
   end
 
-  def discussion_template_positions
-    {
-      'blank' => 0,
-      'open_discussion' => 1,
-      'updates_thread' => 2,
-    }
-  end
 
   def subscription
     {

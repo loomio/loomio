@@ -36,8 +36,8 @@ class Views::EventMailer::Poll::StanceChoices < Views::ApplicationMailer::Compon
   private
 
   def render_icon(poll_option, display_name, score, option_color)
-    if @poll.has_option_icon
-      img(src: image_path("poll_mailer/vote-button-#{poll_option.icon}.png"), width: 24, height: 24, alt: display_name, style: 'display: inline-block')
+    if @poll.has_option_icon && poll_option.icon
+      img(src: image_path("poll_mailer/vote-button-#{poll_option.icon.to_s.downcase}.png"), width: 24, height: 24, alt: display_name, style: 'display: inline-block')
     end
 
     case @poll.poll_type

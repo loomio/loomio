@@ -311,6 +311,7 @@ tr:
       zoom: Yakınlaştır
       align: Hizala
       original: Orijinal
+      rearrange: Yeniden düzenle
     formatting_help:
       label: Biçimlendirme
       title: Metninizi biçimlendirmek için Markdown'u nasıl kullanacağınızı öğrenin
@@ -838,6 +839,7 @@ tr:
     discussion_started: Tartışma başladı
     none_direct_discussion: Yok (doğrudan görüşme)
     direct_discussion: Doğrudan görüşme
+    direct_discussion_hint: Doğrudan yapılan bir tartışma yalnızca davet ettiğiniz belirli kişiler tarafından görülebilir. Herhangi bir grubun tartışma listesinde görünmez; onu Doğrudan Tartışmalar sayfanızda bulabilirsiniz.
   announcement:
     send_discussion: Konuyu gönder
     send_group: İnsanları %{name}'ye davet edin
@@ -1323,6 +1325,8 @@ tr:
     messages:
       group_created: Grup başlatıldı
       group_updated: Grup güncellendi
+      logo_removed: Logo kaldırıldı
+      cover_photo_removed: Kapak fotoğrafı kaldırıldı.
     upload_logo: Logoyu yükle
     upload_cover_photo: Kapak fotoğrafını yükle
     request_to_join_prompt: Katılma isteği istemi
@@ -1336,6 +1340,15 @@ tr:
     list_in_the_groups_directory: Grup dizininde listelensin mi?
     list_in_directory_yes: Evet · Bu grubu "grup bul" sayfasında göster
     list_in_directory_no: Hayır, insanlara gruba ulaşmaları için davet gönderilmeli veya bir bağlantı verilmelidir.
+    upload_background: arka planı yükle
+    remove_background: arka planı kaldır
+    remove_logo: logoyu kaldır
+    members_can_create_templates: Üyeler şablon oluşturabilirler.
+    members_can_create_templates_help: Üyelerin tartışma ve anket şablonları oluşturmasına izin verin. Üyeler tarafından oluşturulan şablonlar, bir yönetici tarafından görünür hale getirilene kadar gizli kalacaktır.
+    members_can_start_discussions_v2: Üyeler yeni tartışmalar başlatabilirler.
+    members_can_start_discussions_help_v2: Üyelerin grup içinde yeni tartışmalar başlatmasına izin verin.
+    members_can_edit_discussions_v2: Üyeler tartışmaları ve yorumları yönetebilirler.
+    members_can_edit_discussions_help_v2: Gruptaki üyelerin herhangi bir tartışmayı veya yorumu düzenlemesine, taşımasına, sabitlemesine, etiketlemesine veya kapatmasına izin verin.
   group_export_modal:
     title: Grup verilerini dışa aktar
     body: <p>Grubunuzun verilerinin bir kopyasını istediğiniz zaman indirebilirsiniz. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Daha fazlasını bul.</a></p><p> Grubunuzun büyüklüğüne bağlı olarak tamamlanması birkaç dakika sürer. Hazır olduğunda dosyayı indirme bağlantısını içeren bir e-posta alacaksınız.</p>
@@ -2658,6 +2671,24 @@ tr:
     add_poll_template_help: Bu süreci tamamlamaya yardımcı olan herhangi bir anket şablonunu seçin
     recommended_poll_templates: Önerilen anket şablonları
     share_in_template_gallery: Bu şablonu herkese açık şablon galerisinde paylaşın
+    browse_example_templates: Örnek şablonlara göz atın
+    example_templates: Örnek şablonlar
+    browse_public_templates_hint: Bir şablon adına tıklayarak o şablonla ilgili bir tartışma başlatabilir veya sağdaki düzenleme düğmesine tıklayarak bir kopyasını oluşturup kendi grubunuz için değiştirebilirsiniz.
+    these_are_templates_v2: Bu, grubunuzdaki Tartışma Şablonlarının listesidir. Yeni bir tartışma başlatmak için bir şablona tıklayın. Grup yöneticileri şablonları düzenleyebilir ve listeyi yeniden sıralayarak önemli şablonları kolayca bulabilirler.
+    process_name_placeholder: Örneğin, Haftalık toplantı
+    process_subtitle_placeholder: Örneğin, her hafta ekiple kısa bir görüşme.
+    default_title_placeholder: Örneğin Standup - 15 Ocak
+    more_templates: Daha fazla şablon
+    fewer_templates: Daha az şablon
+    choose_a_group: Bir grup seçin
+    default_templates: Varsayılan şablonlar
+    or_start_a_direct_discussion: Veya doğrudan bir tartışma başlatın.
+    choose_group_for_templates: Tartışma şablonlarını görüntülemek için bir grup seçin.
+    start_direct_discussion: Doğrudan görüşmeye başlayın
+    poll_templates: Anket şablonları
+    poll_templates_help: Burada seçtiğiniz şablonlar, biri "Oylama başlat" düğmesine tıkladığında ilk olarak gösterilecektir.
+    start_direct_discussion_from_blank: Boş bir şablon kullanarak doğrudan bir tartışma başlatın.
+    default_to_direct_discussion: Doğrudan bir tartışma olarak başlayın (grup oluşturmadan).
   context_panel:
     thread_status:
       pinned: Bu tartışma sabitlendi. Tüm kullanıcılar için grubun tartışma listesinin en üstünde kalacak.
@@ -2683,3 +2714,4 @@ tr:
       success: Tartışma %{name}'e taşındı
   auth:
     oauth_cancelled: Giriş işlemi iptal edildi.
+    switching_accounts: Hesap değiştiriliyor. Lütfen yeni hesap bilgilerinizle giriş yapın.

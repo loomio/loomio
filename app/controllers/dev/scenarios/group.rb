@@ -12,6 +12,14 @@ module Dev::Scenarios::Group
     redirect_to group_path(create_group)
   end
 
+  def setup_group_with_photos
+    sign_in patrick
+    group = create_group
+    group.cover_photo.attach(io: File.open(Rails.root.join('public', 'brand', 'logo_sky_256h.png')), filename: 'cover.png')
+    group.add_member! emilio
+    redirect_to group_path(group)
+  end
+
   def setup_group_with_received_email
     sign_in patrick
     create_group.add_member! emilio

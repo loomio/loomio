@@ -311,6 +311,7 @@ nl_NL:
       zoom: Zoom
       align: Uitlijnen
       original: Origineel
+      rearrange: Herschikken
     formatting_help:
       label: Aan het formatteren
       title: Leer hoe je Markdown kan gebruiken om tekst op te maken
@@ -842,6 +843,7 @@ nl_NL:
     discussion_started: Discussie gestart
     none_direct_discussion: Geen (directe discussie)
     direct_discussion: Directe discussie
+    direct_discussion_hint: Een privégesprek is alleen zichtbaar voor de specifieke personen die je uitnodigt. Het verschijnt niet in de gesprekslijst van een groep, maar je vindt het op je pagina met privégesprekken.
   announcement:
     send_discussion: Bord verzenden
     send_group: Nodig mensen uit voor %{name}
@@ -1331,6 +1333,8 @@ nl_NL:
     messages:
       group_created: Groep gestart
       group_updated: Groep bijgewerkt
+      logo_removed: Logo verwijderd
+      cover_photo_removed: Omslagfoto verwijderd
     upload_logo: Upload logo
     upload_cover_photo: Upload cover photo
     request_to_join_prompt: Verzoek om deel te nemen prompt
@@ -1344,6 +1348,15 @@ nl_NL:
     list_in_the_groups_directory: Lijst in de groepsdirectory?
     list_in_directory_yes: Ja · toon deze groep op de pagina "zoek een groep"
     list_in_directory_no: Nee, mensen moeten worden uitgenodigd of een link krijgen om de groep te vinden.
+    upload_background: achtergrond uploaden
+    remove_background: achtergrond verwijderen
+    remove_logo: logo verwijderen
+    members_can_create_templates: Leden kunnen sjablonen maken.
+    members_can_create_templates_help: Sta leden toe om sjablonen voor discussies en enquêtes te maken. Door leden gemaakte sjablonen blijven verborgen totdat een beheerder ze weer zichtbaar maakt.
+    members_can_start_discussions_v2: Leden kunnen nieuwe discussies starten.
+    members_can_start_discussions_help_v2: Sta leden toe om nieuwe discussies binnen de groep te starten.
+    members_can_edit_discussions_v2: Leden kunnen discussies en reacties beheren.
+    members_can_edit_discussions_help_v2: Geef leden de mogelijkheid om discussies en reacties in de groep te bewerken, verplaatsen, vastzetten, taggen of sluiten.
   group_export_modal:
     title: Groepsdata exporteren
     body: |
@@ -2687,6 +2700,24 @@ nl_NL:
     add_poll_template_help: Selecteer alle poll-sjablonen die u helpen dit proces te voltooien
     recommended_poll_templates: Aanbevolen poll-sjablonen
     share_in_template_gallery: Deel deze sjabloon in de openbare sjabloongalerij
+    browse_example_templates: Bekijk voorbeeldtemplates
+    example_templates: Voorbeeldsjablonen
+    browse_public_templates_hint: Klik op een sjabloonnaam om een discussie erover te starten, of klik op de bewerkingsknop aan de rechterkant om een kopie te maken en deze aan te passen voor je eigen groep.
+    these_are_templates_v2: Dit is een lijst met de discussiesjablonen in uw groep. Klik op een sjabloon om deze als uitgangspunt voor een nieuwe discussie te gebruiken. Groepsbeheerders kunnen sjablonen bewerken en de lijst herschikken, zodat de belangrijkste sjablonen gemakkelijk te vinden zijn.
+    process_name_placeholder: 'bijvoorbeeld: Wekelijkse stand-up'
+    process_subtitle_placeholder: 'Bijvoorbeeld: Een kort overleg met het team elke week.'
+    default_title_placeholder: bijv. Standup - 15 januari
+    more_templates: Meer sjablonen
+    fewer_templates: Minder sjablonen
+    choose_a_group: Kies een groep
+    default_templates: Standaardsjablonen
+    or_start_a_direct_discussion: Of start direct een discussie.
+    choose_group_for_templates: Kies een groep om de bijbehorende discussiesjablonen te bekijken.
+    start_direct_discussion: Start direct een discussie
+    poll_templates: Enquêtesjablonen
+    poll_templates_help: De sjablonen die u hier selecteert, worden als eerste weergegeven wanneer iemand op 'Een stemming starten' klikt.
+    start_direct_discussion_from_blank: Start een direct gesprek vanuit een leeg sjabloon.
+    default_to_direct_discussion: Begin als een direct gesprek (zonder groep).
   context_panel:
     thread_status:
       pinned: Deze discussie is vastgezet en blijft bovenaan de discussielijst van de groep staan voor alle gebruikers.
@@ -2712,3 +2743,4 @@ nl_NL:
       success: Discussie verplaatst naar %{name}
   auth:
     oauth_cancelled: Aanmelden is geannuleerd
+    switching_accounts: Account overzetten. Log in met uw nieuwe accountgegevens.

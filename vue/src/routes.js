@@ -22,9 +22,9 @@ const StartGroupPage = wrapAsyncLoader(() => import('./components/start_group/pa
 const ContactPage = wrapAsyncLoader(() => import('./components/contact/page'));
 const EmailSettingsPage = wrapAsyncLoader(() => import('./components/email_settings/page'));
 const ThreadFormPage = wrapAsyncLoader(() => import('./components/thread/form_page'));
-const ThreadTemplateFormPage = wrapAsyncLoader(() => import('./components/thread_template/form_page'));
-const ThreadTemplateIndexPage = wrapAsyncLoader(() => import('./components/thread_template/index_page'));
-const ThreadTemplateBrowsePage = wrapAsyncLoader(() => import('./components/thread_template/browse_page'));
+const DiscussionTemplateFormPage = wrapAsyncLoader(() => import('./components/discussion_template/form_page'));
+const DiscussionTemplateIndexPage = wrapAsyncLoader(() => import('./components/discussion_template/index_page'));
+const DiscussionTemplateBrowsePage = wrapAsyncLoader(() => import('./components/discussion_template/browse_page'));
 const UserPage = wrapAsyncLoader(() => import('./components/user/page'));
 const ThreadsPage = wrapAsyncLoader(() => import('./components/threads/page'));
 const StartTrialPage = wrapAsyncLoader(() => import('./components/start_trial/page.vue'));
@@ -83,10 +83,10 @@ const router = createRouter({
     {path: '/u/:key/:stub?', component: UserPage },
     {path: '/d/new', component: ThreadFormPage },
     {path: '/d/:key/edit', component: ThreadFormPage },
-    {path: '/thread_templates/browse', component: ThreadTemplateBrowsePage },
-    {path: '/thread_templates/new', component: ThreadTemplateFormPage },
-    {path: '/thread_templates/:id', component: ThreadTemplateFormPage },
-    {path: '/thread_templates', component: ThreadTemplateIndexPage },
+    {path: '/discussion_templates/browse', component: DiscussionTemplateBrowsePage },
+    {path: '/discussion_templates/new', component: DiscussionTemplateFormPage },
+    {path: '/discussion_templates/:id', component: DiscussionTemplateFormPage },
+    {path: '/discussion_templates', component: DiscussionTemplateIndexPage },
     {
       path: '/d/:key',
       component: StrandPage,

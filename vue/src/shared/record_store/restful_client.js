@@ -100,9 +100,11 @@ export default class RestfulClient {
     };
     if (method === 'GET') { delete opts.body; }
     this.onPrepare();
-    return fetch(path, opts)
+    const promise = fetch(path, opts)
     .then(this.onResponse, this.onFailure)
     .finally(this.onCleanup);
+    promise.catch(err => console.warn('Request failed:', method, path, err.status || err));
+    return promise;
   }
 
   postMember(keyOrId, action, params) {

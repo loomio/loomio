@@ -319,6 +319,7 @@ fr:
       zoom: Zoom
       align: Alignement
       original: Original
+      rearrange: Réarranger
     formatting_help:
       label: Mise en forme
       title: Apprenez à utiliser Markdown pour mettre en forme votre texte
@@ -850,6 +851,7 @@ fr:
     discussion_started: La discussion a commencé
     none_direct_discussion: Aucun (discussion directe)
     direct_discussion: Discussion directe
+    direct_discussion_hint: Une conversation privée n'est visible que par les personnes que vous invitez. Elle n'apparaît pas dans la liste des discussions d'un groupe ; vous la trouverez sur la page « Conversations privées ».
   announcement:
     send_discussion: Envoyer la discussion
     send_group: Inviter des personnes à %{name}
@@ -1352,6 +1354,8 @@ fr:
     messages:
       group_created: Groupe créé
       group_updated: Groupe mis à jour
+      logo_removed: Logo supprimé
+      cover_photo_removed: Photo de couverture supprimée
     upload_logo: Télécharger le logo
     upload_cover_photo: Télécharger la photo de couverture
     request_to_join_prompt: Demande d'adhésion rapide
@@ -1365,6 +1369,15 @@ fr:
     list_in_the_groups_directory: Liste dans l'annuaire des groupes ?
     list_in_directory_yes: Oui · afficher ce groupe sur la page « Trouver un groupe »
     list_in_directory_no: Non, les gens ne devraient pas être invités ni recevoir de lien pour trouver le groupe.
+    upload_background: télécharger l'arrière-plan
+    remove_background: supprimer l'arrière-plan
+    remove_logo: supprimer le logo
+    members_can_create_templates: Les membres peuvent créer des modèles
+    members_can_create_templates_help: Autoriser les membres à créer des modèles de discussion et de sondage. Les modèles créés par les membres seront masqués jusqu'à ce qu'un administrateur les affiche.
+    members_can_start_discussions_v2: Les membres peuvent entamer de nouvelles discussions.
+    members_can_start_discussions_help_v2: Autoriser les membres à entamer de nouvelles discussions au sein du groupe
+    members_can_edit_discussions_v2: Les membres peuvent gérer les discussions et les commentaires.
+    members_can_edit_discussions_help_v2: Autoriser les membres à modifier, déplacer, épingler, étiqueter ou fermer toute discussion ou tout commentaire dans le groupe
   group_export_modal:
     title: Exporter les données de votre groupe
     body: |
@@ -2704,6 +2717,24 @@ fr:
     add_poll_template_help: Sélectionnez les modèles de sondage qui vous aideront à mener à bien ce processus.
     recommended_poll_templates: Modèles de sondages recommandés
     share_in_template_gallery: Partagez ce modèle dans la galerie de modèles publique
+    browse_example_templates: Consultez les exemples de modèles
+    example_templates: Exemples de modèles
+    browse_public_templates_hint: Cliquez sur le nom d'un modèle pour entamer une discussion à son sujet, ou cliquez sur le bouton Modifier à droite pour en faire une copie et le modifier pour votre propre groupe.
+    these_are_templates_v2: Voici la liste des modèles de discussion de votre groupe. Cliquez sur un modèle pour l'utiliser comme point de départ d'une nouvelle discussion. Les administrateurs du groupe peuvent modifier les modèles et réorganiser la liste afin de faciliter la recherche des modèles importants.
+    process_name_placeholder: par exemple, la réunion debout hebdomadaire
+    process_subtitle_placeholder: Par exemple, un bref point avec l'équipe chaque semaine
+    default_title_placeholder: Ex. Stand-up - 15 janvier
+    more_templates: Plus de modèles
+    fewer_templates: Moins de modèles
+    choose_a_group: Choisissez un groupe
+    default_templates: Modèles par défaut
+    or_start_a_direct_discussion: Ou entamez une discussion directe
+    choose_group_for_templates: Choisissez un groupe pour consulter ses modèles de discussion.
+    start_direct_discussion: Entamer une discussion directe
+    poll_templates: Modèles de sondage
+    poll_templates_help: Les modèles que vous sélectionnez ici s'afficheront en premier lorsqu'une personne cliquera sur « Lancer un vote ».
+    start_direct_discussion_from_blank: Démarrez une discussion directe à partir d'un modèle vierge
+    default_to_direct_discussion: Commencez par une discussion directe (pas de groupe).
   context_panel:
     thread_status:
       pinned: Cette discussion a été épinglée. Elle restera en haut de la liste des discussions du groupe pour tous les utilisateurs.
@@ -2729,3 +2760,4 @@ fr:
       success: Discussion déplacée vers %{name}
   auth:
     oauth_cancelled: La connexion a été annulée.
+    switching_accounts: Changement de compte. Veuillez vous connecter avec vos nouvelles informations de compte.

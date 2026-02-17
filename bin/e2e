@@ -8,21 +8,23 @@ set -euo pipefail
 #   bin/e2e notifications.js                                   # run one spec file
 #   bin/e2e vue/tests/e2e/specs/notifications.js               # also works
 #   bin/e2e notifications.js --testcase has_all_the_notifications  # run one test
-#   bin/e2e --skip-build --retries 3                           # skip Vue build, retry failures
+#   bin/e2e --show                                             # run in visible browser
+#   bin/e2e --retries 3                                        # retry failures
 #
-# Pass-through args are forwarded to nightwatch (except --skip-build).
+# Pass-through args are forwarded to nightwatch.
 # A .js file arg is auto-detected and passed via --test (required by nightwatch
 # for --testcase filtering to work).
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 RAILS_PID=""
-SKIP_BUILD=false
 TEST_FILE=""
+HEADLESS=true
 NW_ARGS=()
+E2E_PORT="${E2E_PORT:-3001}"
 
 for arg in "$@"; do
-  if [ "$arg" = "--skip-build" ]; then
-    SKIP_BUILD=true
+  if [ "$arg" = "--show" ]; then
+    HEADLESS=false
   elif [[ "$arg" == *.js ]] && [ -z "$TEST_FILE" ]; then
     # Strip leading vue/ prefix since nightwatch runs from vue/
     arg="${arg#vue/}"
@@ -37,7 +39,10 @@ for arg in "$@"; do
 done
 
 # Build the nightwatch command args
-FINAL_ARGS=(--headless)
+FINAL_ARGS=()
+if [ "$HEADLESS" = true ]; then
+  FINAL_ARGS+=(--headless)
+fi
 if [ -n "$TEST_FILE" ]; then
   FINAL_ARGS+=(--test "$TEST_FILE")
 fi
@@ -55,26 +60,22 @@ cleanup() {
 trap cleanup EXIT INT TERM
 
 # 1. Build Vue assets
-if [ "$SKIP_BUILD" = false ]; then
-  echo "==> Building Vue assets..."
-  (cd "$ROOT/vue" && npm run build)
-else
-  echo "==> Skipping Vue build (--skip-build)"
-fi
+echo "==> Building Vue assets..."
+(cd "$ROOT/vue" && npm run build)
 
 # 2. Prepare test database
 echo "==> Preparing test database..."
 RAILS_ENV=test bundle exec rails db:prepare
 
 # 3. Start Rails server
-echo "==> Starting Rails server on port 3000..."
-RAILS_ENV=test bundle exec rails server -p 3000 -b 127.0.0.1 &
+echo "==> Starting Rails server on port $E2E_PORT..."
+E2E_PORT="$E2E_PORT" RAILS_ENV=test bundle exec rails server -p "$E2E_PORT" -b 127.0.0.1 &
 RAILS_PID=$!
 
 # 4. Wait for server to be ready
 echo "==> Waiting for Rails server..."
 for i in $(seq 1 30); do
-  if curl -sf http://localhost:3000/ > /dev/null 2>&1; then
+  if curl -sf "http://localhost:$E2E_PORT/" > /dev/null 2>&1; then
     echo "    Server is ready."
     break
   fi
@@ -88,7 +89,7 @@ done
 # 5. Run Nightwatch
 echo "==> Running Nightwatch: npx nightwatch ${FINAL_ARGS[*]}"
 set +e
-(cd "$ROOT/vue" && RAILS_ENV=test npx nightwatch "${FINAL_ARGS[@]}")
+(cd "$ROOT/vue" && E2E_PORT="$E2E_PORT" RAILS_ENV=test npx nightwatch "${FINAL_ARGS[@]}")
 TEST_EXIT=$?
 set -e
 

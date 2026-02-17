@@ -319,6 +319,7 @@ it:
       zoom: Zoom
       align: Allinea
       original: Originale
+      rearrange: Riorganizzare
     formatting_help:
       label: Formattazione
       title: Impara come usare il Markdown per formattare il tuo testo
@@ -850,6 +851,7 @@ it:
     discussion_started: Discussione iniziata
     none_direct_discussion: Nessuno (discussione diretta)
     direct_discussion: Discussione diretta
+    direct_discussion_hint: 'Una discussione diretta è visibile solo alle persone specifiche che inviti. Non apparirà nell''elenco delle discussioni di nessun gruppo: puoi trovarla nella tua pagina Discussioni dirette.'
   announcement:
     send_discussion: Invia thread
     send_group: Invita persone a %{name}
@@ -1351,6 +1353,8 @@ it:
     messages:
       group_created: Gruppo avviato
       group_updated: Gruppo aggiornato
+      logo_removed: Logo rimosso
+      cover_photo_removed: Foto di copertina rimossa
     upload_logo: Carica nuovo logo
     upload_cover_photo: Carica nuova immagine di copertina
     request_to_join_prompt: Richiesta di partecipazione immediata
@@ -1364,6 +1368,15 @@ it:
     list_in_the_groups_directory: Elenco nella directory dei gruppi?
     list_in_directory_yes: Sì · mostra questo gruppo nella pagina "Trova un gruppo"
     list_in_directory_no: No · le persone dovrebbero essere invitate o ricevere un collegamento per trovare il gruppo
+    upload_background: carica sfondo
+    remove_background: rimuovere lo sfondo
+    remove_logo: rimuovere il logo
+    members_can_create_templates: I membri possono creare modelli
+    members_can_create_templates_help: Consenti ai membri di creare modelli di discussione e sondaggio. I modelli creati dai membri saranno nascosti finché un amministratore non li ripristinerà.
+    members_can_start_discussions_v2: I membri possono avviare nuove discussioni
+    members_can_start_discussions_help_v2: Consenti ai membri di avviare nuove discussioni all'interno del gruppo
+    members_can_edit_discussions_v2: I membri possono gestire discussioni e commenti
+    members_can_edit_discussions_help_v2: Consenti ai membri di modificare, spostare, aggiungere, taggare o chiudere qualsiasi discussione o commento nel gruppo
   group_export_modal:
     title: Esporta i dati del gruppo
     body: <p>Puoi scaricare una copia dei dati del tuo gruppo in qualsiasi momento. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Scopri di più.</a></p><p> Il completamento richiede alcuni minuti, a seconda delle dimensioni del gruppo. Quando sarà pronto riceverai un'e-mail con un link per scaricare il file.</p>
@@ -2688,6 +2701,24 @@ it:
     add_poll_template_help: Seleziona tutti i modelli di sondaggio che ti aiutano a completare questo processo
     recommended_poll_templates: Modelli di sondaggio consigliati
     share_in_template_gallery: Condividi questo modello nella galleria pubblica dei modelli
+    browse_example_templates: Sfoglia i modelli di esempio
+    example_templates: Modelli di esempio
+    browse_public_templates_hint: Fai clic sul nome di un modello per avviare una discussione con esso oppure fai clic sul pulsante di modifica a destra per crearne una copia e modificarlo per il tuo gruppo.
+    these_are_templates_v2: Questo è un elenco dei modelli di discussione nel tuo gruppo. Fai clic su un modello per utilizzarlo come punto di partenza per una nuova discussione. Gli amministratori del gruppo possono modificare i modelli e riorganizzare l'elenco in modo che sia facile trovare i modelli importanti.
+    process_name_placeholder: ad esempio standup settimanale
+    process_subtitle_placeholder: ad esempio un breve check-in con il team ogni settimana
+    default_title_placeholder: ad esempio Standup - 15 gennaio
+    more_templates: Altri modelli
+    fewer_templates: Meno modelli
+    choose_a_group: Scegli un gruppo
+    default_templates: Modelli predefiniti
+    or_start_a_direct_discussion: Oppure avvia una discussione diretta
+    choose_group_for_templates: Scegli un gruppo per visualizzare i suoi modelli di discussione
+    start_direct_discussion: Avvia una discussione diretta
+    poll_templates: Modelli di sondaggio
+    poll_templates_help: I modelli selezionati qui verranno visualizzati per primi quando qualcuno clicca su Avvia una votazione
+    start_direct_discussion_from_blank: Avvia una discussione diretta da un modello vuoto
+    default_to_direct_discussion: Inizia come una discussione diretta (nessun gruppo)
   context_panel:
     thread_status:
       pinned: Questa discussione è stata bloccata. Rimarrà in cima all'elenco delle discussioni del gruppo per tutti gli utenti.
@@ -2713,3 +2744,4 @@ it:
       success: Discussione spostata su %{name}
   auth:
     oauth_cancelled: L'accesso è stato annullato
+    switching_accounts: Cambio account. Accedi con i dati del tuo nuovo account.

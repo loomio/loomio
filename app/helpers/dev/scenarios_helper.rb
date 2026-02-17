@@ -128,8 +128,8 @@ module Dev::ScenariosHelper
       wip: params[:wip],
       notify_on_closing_soon: params[:notify_on_closing_soon] || 'voters',
       quorum_pct: 80,
-      created_at: 6.days.ago,
-      closing_at: if params[:wip] then nil else 1.day.from_now end
+      created_at: 6.days.ago.beginning_of_hour,
+      closing_at: if params[:wip] then nil else 1.day.from_now.beginning_of_hour end
     )
     PollService.create(poll: poll, actor: actor)
 
@@ -162,8 +162,8 @@ module Dev::ScenariosHelper
       discussion: discussion,
       wip: params[:wip],
       notify_on_closing_soon: params[:notify_on_closing_soon] || 'voters',
-      created_at: 6.days.ago,
-      closing_at: if params[:wip] then nil else 1.day.from_now end
+      created_at: 6.days.ago.beginning_of_hour,
+      closing_at: if params[:wip] then nil else 1.day.from_now.beginning_of_hour end
     )
 
     PollService.create(poll: poll, actor: actor)
@@ -201,7 +201,7 @@ module Dev::ScenariosHelper
       notify_on_closing_soon: :voters,
       discussion: discussion,
       quorum_pct: 28,
-      closing_at: if params[:wip] then nil else 1.day.from_now end
+      closing_at: if params[:wip] then nil else 1.day.from_now.beginning_of_hour end
     )
     PollService.create(poll: poll, actor: actor)
     create_fake_stances(poll: poll)
@@ -261,9 +261,9 @@ module Dev::ScenariosHelper
       anonymous: !!params[:anonymous],
       hide_results: (params[:hide_results] || :off),
       discussion: discussion,
-      closed_at: 1.day.ago,
-      closing_at: 1.day.ago
-    )
+      opened_at: 8.days.ago.beginning_of_hour,
+      closed_at: 1.day.ago.beginning_of_hour,
+      closing_at: 1.day.ago    )
     PollService.create(poll: poll, actor: actor)
     create_fake_stances(poll:poll)
 
@@ -295,9 +295,9 @@ module Dev::ScenariosHelper
       anonymous: !!params[:anonymous],
       hide_results: (params[:hide_results] || :off),
       discussion: discussion,
-      closed_at: 1.day.ago,
-      closing_at: 1.day.ago
-    )
+      opened_at: 8.days.ago.beginning_of_hour,
+      closed_at: 1.day.ago.beginning_of_hour,
+      closing_at: 1.day.ago    )
     PollService.create(poll: poll, actor: actor)
     create_fake_stances(poll: poll)
 
@@ -334,6 +334,38 @@ module Dev::ScenariosHelper
     UserMailer.catch_up(observer.id).deliver_now
 
     scenario.merge(observer: observer)
+  end
+
+  def poll_scheduled_scenario(params)
+    group = create_group_with_members
+    actor = group.admins.first
+    user  = saved(fake_user(time_zone: "America/New_York"))
+    group.add_member! user
+
+    discussion = fake_discussion(group: group, title: "Some discussion")
+    DiscussionService.create(discussion: discussion, actor: actor)
+
+    poll = fake_poll(
+      group: group,
+      discussion: discussion,
+      poll_type: params[:poll_type] || 'proposal',
+      anonymous: !!params[:anonymous],
+      hide_results: (params[:hide_results] || :off),
+      opening_at: 3.days.from_now.beginning_of_hour,
+      closing_at: 10.days.from_now.beginning_of_hour,
+      specified_voters_only: true,
+      notify_on_open: true
+    )
+    PollService.create(poll: poll, actor: actor)
+
+    {
+      discussion: discussion,
+      group: group,
+      observer: actor,
+      poll: poll,
+      title: poll.title,
+      actor: actor
+    }
   end
 
   def alternative_poll_option_selection(poll_option_ids, i)

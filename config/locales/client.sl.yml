@@ -311,6 +311,7 @@ sl:
       zoom: Zoom
       align: Poravnaj
       original: Izvirnik
+      rearrange: Preuredi
     formatting_help:
       label: Oblikovanje
       title: Naučite se uporabljati Markdown za oblikovanje besedila
@@ -838,6 +839,7 @@ sl:
     discussion_started: Razprava se je začela
     none_direct_discussion: Brez (neposredna razprava)
     direct_discussion: Neposredna razprava
+    direct_discussion_hint: Neposredna razprava je vidna samo določenim osebam, ki jih povabite. Ne bo prikazana na seznamu razprav nobene skupine – najdete jo na strani Neposredne razprave.
   announcement:
     send_discussion: Pošlji nit
     send_group: Povabi ljudi v %{name}
@@ -1323,6 +1325,8 @@ sl:
     messages:
       group_created: Skupina se je začela
       group_updated: Skupina posodobljena
+      logo_removed: Logotip odstranjen
+      cover_photo_removed: Naslovna fotografija odstranjena
     upload_logo: Naloži logotip
     upload_cover_photo: Naloži naslovno fotografijo
     request_to_join_prompt: Zahteva za pridružitev
@@ -1336,6 +1340,15 @@ sl:
     list_in_the_groups_directory: Seznam v imeniku skupin?
     list_in_directory_yes: Da · prikaži to skupino na strani »najdi skupino«
     list_in_directory_no: Ne · ljudi je treba povabiti ali jim dati povezavo za iskanje skupine
+    upload_background: naloži ozadje
+    remove_background: odstranite ozadje
+    remove_logo: odstranite logotip
+    members_can_create_templates: Člani lahko ustvarijo predloge
+    members_can_create_templates_help: Dovoli članom ustvarjanje predlog za razprave in ankete. Predloge, ki jih ustvarijo člani, bodo skrite, dokler jih skrbnik ne razkrije.
+    members_can_start_discussions_v2: Člani lahko začnejo nove razprave
+    members_can_start_discussions_help_v2: Dovoli članom, da začnejo nove razprave znotraj skupine
+    members_can_edit_discussions_v2: Člani lahko upravljajo razprave in komentarje
+    members_can_edit_discussions_help_v2: Dovoli članom urejanje, premikanje, pripenjanje, označevanje ali zapiranje katere koli razprave ali komentarja v skupini
   group_export_modal:
     title: Izvoz podatkov skupine
     body: <p>Kopijo podatkov svoje skupine lahko prenesete kadar koli. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Izvedi več.</a></p><p> Izpolnitev traja nekaj minut, odvisno od velikosti vaše skupine. Ko bo pripravljena, boste prejeli e-poštno sporočilo s povezavo za prenos datoteke.</p>
@@ -2658,6 +2671,24 @@ sl:
     add_poll_template_help: Izberite predloge anket, ki vam bodo pomagale dokončati ta postopek
     recommended_poll_templates: Priporočene predloge anket
     share_in_template_gallery: Delite to predlogo v javni galeriji predlog
+    browse_example_templates: Brskaj po vzorčnih predlogah
+    example_templates: Primeri predlog
+    browse_public_templates_hint: Kliknite ime predloge, da začnete razpravo o njej, ali kliknite gumb za urejanje na desni, da ustvarite kopijo in jo spremenite za svojo skupino.
+    these_are_templates_v2: To je seznam predlog za razprave v vaši skupini. Kliknite predlogo, da jo uporabite kot izhodišče za novo razpravo. Skrbniki skupine lahko urejajo predloge in prerazporejajo seznam, tako da je lažje najti pomembne predloge.
+    process_name_placeholder: npr. tedenski stand-up
+    process_subtitle_placeholder: npr. kratek tedenski sestanek z ekipo
+    default_title_placeholder: npr. Stand-up - 15. januar
+    more_templates: Več predlog
+    fewer_templates: Manj predlog
+    choose_a_group: Izberite skupino
+    default_templates: Privzete predloge
+    or_start_a_direct_discussion: Ali pa začnite neposredno razpravo
+    choose_group_for_templates: Izberite skupino, da si ogledate njene predloge za razprave
+    start_direct_discussion: Začni neposredno razpravo
+    poll_templates: Predloge anket
+    poll_templates_help: Predloge, ki jih izberete tukaj, se bodo prikazale prve, ko nekdo klikne Začni glasovanje
+    start_direct_discussion_from_blank: Začnite neposredno razpravo iz prazne predloge
+    default_to_direct_discussion: Začni kot neposredna razprava (brez skupine)
   context_panel:
     thread_status:
       pinned: Ta razprava je bila pripeta. Za vse uporabnike bo ostala na vrhu seznama razprav skupine.
@@ -2683,3 +2714,4 @@ sl:
       success: Razprava je bila premaknjena na %{name}
   auth:
     oauth_cancelled: Prijava je bila preklicana
+    switching_accounts: Preklapljanje računov. Prijavite se z novimi podatki o računu.

@@ -11,14 +11,6 @@ class Views::Chatbot::Matrix::Vote < Views::Chatbot::Base
       p { t(:"poll_common_action_panel.anonymous") }
     end
 
-    if @poll.closed?
-      p do
-        plain t(:"poll_common_form.closed")
-        plain " "
-        plain format_date_for_humans(@poll.closed_at, @recipient.time_zone, @recipient.date_time_pref)
-      end
-    end
-
     if @poll.active?
       h5 { t(:'poll_common.have_your_say') }
 
@@ -36,8 +28,13 @@ class Views::Chatbot::Matrix::Vote < Views::Chatbot::Base
       else
         h3 { link_to t('poll_common.vote_now'), polymorphic_url(@poll) }
       end
-
-      p { t(:"poll_mailer.common.you_have_until", when: format_date_for_humans(@poll.closing_at, @recipient.time_zone, @recipient.date_time_pref)) }
+    elsif @poll.scheduled?
+      ul do
+        @poll.results.each do |option|
+          next if option[:id] == 0
+          li { plain option_name(option[:name], option[:name_format], @recipient.time_zone, @recipient.date_time_pref) }
+        end
+      end
     end
 
     if @poll.wip?

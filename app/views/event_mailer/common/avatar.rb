@@ -12,7 +12,7 @@ class Views::EventMailer::Common::Avatar < Views::ApplicationMailer::Component
     if @user.presence && @user.thumb_url
       img(
         src: @user.thumb_url,
-        alt: initials,
+        alt: @user.name,
         class: "base-mailer__avatar-image rounded-circle",
         style: "width: #{@size}px; height: #{@size}px",
         width: @size,
@@ -21,7 +21,7 @@ class Views::EventMailer::Common::Avatar < Views::ApplicationMailer::Component
     else
       img(
         src: @user.avatar_initials_url(64),
-        alt: initials,
+        alt: @user.name,
         class: "base-mailer__avatar-image rounded-circle",
         style: "width: #{@size}px; height: #{@size}px",
         width: @size,

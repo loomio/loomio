@@ -11,6 +11,7 @@ export default {
 
   created() {
     this.poll.closingAt = addDays(new Date, 7);
+    this.poll.openingAt = null;
   },
 
   methods: {
@@ -21,9 +22,6 @@ export default {
         this.close();
       });
     }
-  },
-  data() {
-    return {isDisabled: false};
   }
 }
 </script>

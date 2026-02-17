@@ -12,7 +12,7 @@ module Dev::NintiesMoviesHelper
                               is_admin: false,
                               username: 'patrickswayze',
                               password: 'gh0stmovie',
-                              experiences: {changePicture: true},
+                              experiences: {changePicture: true, hideOnboarding: true},
                               detected_locale: 'en',
                               date_time_pref: 'day_abbr',
                               avatar_kind: 'uploaded',

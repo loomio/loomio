@@ -7,4 +7,15 @@ export default class DiscussionTemplateRecordsInterface extends BaseRecordsInter
     this.model = DiscussionTemplateModel;
     this.baseConstructor(recordStore);
   }
+
+  findOrFetchByKey(key, groupId) {
+    const record = this.find(key);
+    if (record) {
+      return Promise.resolve(record);
+    } else {
+      return this.remote.fetch({params: {key: key, group_id: groupId}}).then(() => {
+        return this.find(key);
+      });
+    }
+  }
 }

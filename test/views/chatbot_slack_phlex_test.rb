@@ -46,7 +46,7 @@ class ChatbotSlackPhlexTest < ActiveSupport::TestCase
     component = Views::Chatbot::Slack::Poll.new(event: event, poll: poll, recipient: @recipient)
     output = render_phlex(component)
 
-    assert_includes output, "started a proposal"
+    assert_includes output, "created a proposal"
     assert_includes output, "Active Proposal"
     # Slack mrkdwn converts **bold** to *bold* and [text](url) to <url|text>
     assert_match(/<http.*\|Active Proposal>/, output)
@@ -117,6 +117,32 @@ class ChatbotSlackPhlexTest < ActiveSupport::TestCase
     output = render_phlex(component)
 
     assert_includes output, "Test Proposal"
+  end
+
+  test "notification component renders for stance" do
+    poll = Poll.create!(
+      title: "Stance Notification Poll",
+      poll_type: "proposal",
+      closing_at: 3.days.from_now,
+      group: @group,
+      discussion: @discussion,
+      author: @user,
+      poll_option_names: %w[agree disagree abstain],
+      specified_voters_only: true
+    )
+    poll.create_missing_created_event!
+
+    agree_option = poll.poll_options.find_by!(name: I18n.t('poll_proposal_options.agree'))
+    stance = poll.stances.build(participant: @user)
+    stance.stance_choices.build(poll_option: agree_option, score: 1)
+    stance.save!
+    event = Events::StanceCreated.create!(kind: 'stance_created', eventable: stance, user: @user)
+
+    component = Views::Chatbot::Slack::Notification.new(event: event, poll: poll, recipient: @recipient)
+    output = render_phlex(component)
+
+    assert_includes output, "Stance Notification Poll"
+    assert_includes output, @user.name
   end
 
   test "comment component renders" do

@@ -37,7 +37,7 @@ export default {
   },
 
   mounted() {
-    this.poll.notifyRecipients = true;
+    this.poll.notifyRecipients = !(this.poll.openingAt && !this.poll.openedAt);
     this.actionNames = ['makeAdmin', 'removeAdmin', 'revoke']; // 'resend'
 
     this.fetchStances();
@@ -50,6 +50,7 @@ export default {
   },
 
   computed: {
+    isScheduled() { return this.poll.openingAt && !this.poll.openedAt; },
     wipOrEmpty() { if (this.poll.closingAt) { return ''; } else { return 'wip_'; } },
     someRecipients() {
       return this.poll.recipientAudience ||
@@ -185,15 +186,21 @@ v-card.poll-members-form
       :excludeMembers="true"
       @new-query="newQuery")
 
-    .d-flex.align-center
+    .d-flex.align-center(v-if="!isScheduled")
       v-checkbox(:disabled="!someRecipients" :label="$t('poll_common_form.notify_invitees')" v-model="poll.notifyRecipients")
       v-spacer
       v-btn.poll-members-form__submit(color="primary" :disabled="!someRecipients" :loading="saving" @click="inviteRecipients" )
         span(v-t="'common.action.invite'" v-if="poll.notifyRecipients")
         span(v-t="'poll_common_form.add_voters'" v-else)
-    v-alert(density="compact" type="warning" text v-if="someRecipients && !poll.notifyRecipients")
+    .d-flex.align-center(v-if="isScheduled")
+      v-spacer
+      v-btn.poll-members-form__submit(color="primary" :disabled="!someRecipients" :loading="saving" @click="inviteRecipients" )
+        span(v-t="'poll_common_form.add_voters'")
+    v-alert(density="compact" type="info" text v-if="isScheduled && someRecipients")
+      span(v-t="'poll_common_form.voters_notified_when_opens'")
+    v-alert(density="compact" type="warning" text v-if="!isScheduled && someRecipients && !poll.notifyRecipients")
       span(v-t="'poll_common_form.no_notifications_warning'")
-    v-textarea(v-if="poll.notifyRecipients && someRecipients" filled rows="3" v-model="message" :label="$t('announcement.form.invitation_message_label')" :placeholder="$t('announcement.form.invitation_message_placeholder')")
+    v-textarea(v-if="!isScheduled && poll.notifyRecipients && someRecipients" filled rows="3" v-model="message" :label="$t('announcement.form.invitation_message_label')" :placeholder="$t('announcement.form.invitation_message_placeholder')")
   v-list.poll-members-form__list
     v-list-subheader
       span(v-t="'membership_card.voters'")

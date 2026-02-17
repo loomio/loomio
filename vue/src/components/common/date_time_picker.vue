@@ -1,9 +1,10 @@
 <script lang="js">
 import Records     from '@/shared/services/records';
 import FlashService   from '@/shared/services/flash';
+import AppConfig from '@/shared/services/app_config';
 import { hoursOfDay, timeFormat } from '@/shared/helpers/format_time';
 import { format, parse, isValid } from 'date-fns';
-import { mdiCalendar, mdiClockOutline } from '@mdi/js';
+import { mdiClockOutline } from '@mdi/js';
 import { I18n } from '@/i18n';
 
 export default {
@@ -18,8 +19,8 @@ export default {
 
   data() {
     return {
-      mdiCalendar,
       mdiClockOutline,
+      timeZone: AppConfig.timeZone,
       dateVal: new Date(),
       timeStr: (this.modelValue && format(this.modelValue, 'HH:mm')) || '12:00',
       times: hoursOfDay(),
@@ -60,11 +61,13 @@ export default {
 </script>
 <template lang="pug">
 .d-flex.date-time-picker.flex-grow-1
-  lmo-date-input.mr-2(
+  v-date-input.mr-2(
     v-model='dateVal'
-    :prepend-inner-icon="mdiCalendar"
+    input-format="yyyy-mm-dd"
+    :hint="timeZone"
     :min="dateToday"
     persistent-hint
+    hide-header
   )
   v-combobox.date-time-picker__time-field(
     :hint="twelvehour ? timeHint : null"

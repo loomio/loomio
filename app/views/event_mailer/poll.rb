@@ -25,6 +25,7 @@ class Views::EventMailer::Poll < Views::EventMailer::EventLayout
     render Views::EventMailer::Common::Title.new(eventable: @poll, recipient: @recipient)
     render Views::EventMailer::Common::Tags.new(eventable: @poll)
     render Views::EventMailer::Poll::Summary.new(poll: @poll, recipient: @recipient)
+    render Views::EventMailer::Poll::VotingPeriod.new(poll: @poll, recipient: @recipient)
     render Views::EventMailer::Poll::Vote.new(poll: @poll, recipient: @recipient)
     render Views::EventMailer::Poll::Rules.new(poll: @poll)
     render Views::EventMailer::Poll::ResultsPanel.new(poll: @poll, current_user: @recipient)

@@ -224,6 +224,7 @@ namespace :loomio do
     ThrottleService.reset!('hour')
     GenericWorker.perform_async('PollService', 'expire_lapsed_polls')
     GenericWorker.perform_async('PollService', 'publish_closing_soon')
+    GenericWorker.perform_async('PollService', 'open_scheduled_polls')
     GenericWorker.perform_async('TaskService', 'send_task_reminders')
     GenericWorker.perform_async('ReceivedEmailService', 'route_all')
     LoginToken.where("created_at < ?", 1.hours.ago).delete_all

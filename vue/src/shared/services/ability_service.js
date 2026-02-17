@@ -345,7 +345,7 @@ export default new class AbilityService {
   }
 
   canClosePoll(poll) {
-    return !!poll.closingAt && !poll.discardedAt && !poll.closedAt && this.canEditPoll(poll);
+    return poll.isVotable() && this.canEditPoll(poll);
   }
 
   canReopenPoll(poll) {
