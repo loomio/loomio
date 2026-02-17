@@ -12,7 +12,7 @@
     "@hocuspocus/provider": "^3.4.0",
     "@mdi/js": "^6.9.96",
     "@rails/actioncable": "^8.1.200",
-    "@sentry/browser": "^10.34.0",
+    "@sentry/browser": "^10.39.0",
     "@sentry/vue": "^10.38.0",
     "@tiptap/core": "^3.19.0",
     "@tiptap/extension-blockquote": "^3.19.0",
