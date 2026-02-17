@@ -320,6 +320,8 @@ it:
       align: Allinea
       original: Originale
       rearrange: Riorganizzare
+      save_template: Salva modello
+      fork_template: Modello di forcella
     formatting_help:
       label: Formattazione
       title: Impara come usare il Markdown per formattare il tuo testo
@@ -327,6 +329,7 @@ it:
     commercial: Commerciale
     nonprofit: Non profit
     opening_in: Apertura %{time}
+    read_more: Per saperne di più
   merge_accounts:
     modal:
       title: Unisci account
@@ -1366,7 +1369,6 @@ it:
     default_request_to_join_prompt: Grazie per il tuo interesse nel nostro gruppo. Presentati e spiega perché stai chiedendo di unirti a noi.
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Aggiorna il tuo abbonamento</a> per creare un sottogruppo'
     share_this_url_with_people_who_want_to_join: Condividi questo URL con le persone che vogliono unirsi
-    new_description_html: "<h3>Quali sfide deve affrontare la tua organizzazione nel processo decisionale?</h3><p></p><h3> Come vorresti utilizzare Loomio nella tua organizzazione?</h3><p></p>"
     allow_polls_without_discussions: Consenti sondaggi senza discussione
     allow_polls_without_discussions_help: Impedire alle persone di avviare sondaggi senza prima avviare una discussione.
     aria_label: Modulo di gruppo
@@ -1930,6 +1932,19 @@ it:
     view_all_votes: Visualizza tutti i voti
     you_voted: Hai votato
     these_are_templates: Questi sono i modelli decisionali del tuo gruppo. Clicca su un modello per avviare una nuova decisione. Gli amministratori possono personalizzare tutti i dettagli di un modello in modo che corrisponda alle pratiche della tua organizzazione e sia facile da trovare e utilizzare per i membri.
+    example_templates: Modelli di esempio
+    example_poll_templates: Modelli di sondaggio di esempio
+    browse_example_templates: Sfoglia i modelli di esempio
+    browse_example_templates_hint: Crea un nuovo modello di sondaggio da zero oppure usa un esempio per iniziare.
+    browse_example_use_hint: Fare clic sul titolo del modello per <b>avviare un sondaggio</b> .
+    browse_example_fork_hint: "<b>Fare clic sull'icona della forchetta</b> per creare un nuovo modello di sondaggio, utilizzando l'esempio come punto di partenza."
+    browse_unsure_help: Non sai come utilizzare i modelli di sondaggio?
+    all_templates_hidden: Tutti i modelli sono stati nascosti
+    new_poll_template_title: Nuovo modello di sondaggio
+    new_template_from_blank: Nuovo modello da vuoto
+    new_template_from_blank_subtitle: Crea un nuovo modello adatto a un processo presente nella tua organizzazione
+    blank: Nuovo
+    blank_subtitle: Crea un nuovo modello di sondaggio per un processo specifico
   poll_common_attachment_form:
     label: Allegati
   poll_common_add_option:
@@ -2734,6 +2749,16 @@ it:
     start_direct_discussion_from_blank: Avvia una discussione diretta da un modello vuoto
     default_to_direct_discussion: Inizia come una discussione diretta (nessun gruppo)
     default_to_direct_discussion_helptext: Utilizza questa opzione se vuoi che le persone avviino discussioni dirette da questo modello.
+    example_discussion_templates: Modelli di discussione di esempio
+    browse_example_use_hint: Fare clic sul titolo del modello per <b>avviare una discussione</b> .
+    browse_example_fork_hint: "<b>Fare clic sull'icona della forchetta</b> per creare un nuovo modello di discussione, utilizzando l'esempio come punto di partenza."
+    new_discussion_template_title: Nuovo modello di discussione
+    new_template_from_blank: Nuovo modello da vuoto
+    new_template_from_blank_subtitle: Crea un nuovo modello adatto a un processo presente nella tua organizzazione
+    these_are_templates_v3: Questi sono i modelli di discussione nel tuo gruppo. Clicca su un modello per avviare una nuova discussione.
+    these_are_templates_admin_hint: Gli amministratori del gruppo possono modificare i modelli, crearne di nuovi, riorganizzarli e nasconderli/mostrarli. Solo gli amministratori possono visualizzare i modelli nascosti.
+    show_hidden_templates: Mostra modelli nascosti
+    show_fewer: Mostra meno
   context_panel:
     thread_status:
       pinned: Questa discussione è stata bloccata. Rimarrà in cima all'elenco delle discussioni del gruppo per tutti gli utenti.

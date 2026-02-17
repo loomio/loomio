@@ -312,6 +312,8 @@ tr:
       align: Hizala
       original: Orijinal
       rearrange: Yeniden düzenle
+      save_template: Şablonu kaydet
+      fork_template: Çatal şablonu
     formatting_help:
       label: Biçimlendirme
       title: Metninizi biçimlendirmek için Markdown'u nasıl kullanacağınızı öğrenin
@@ -319,6 +321,7 @@ tr:
     commercial: Reklam
     nonprofit: Kar amacı gütmeyen kuruluşlar
     opening_in: Açılış %{zaman}
+    read_more: Devamını oku
   merge_accounts:
     modal:
       title: Hesapları birleştir
@@ -1338,7 +1341,6 @@ tr:
     default_request_to_join_prompt: Grubumuza olan ilginiz için teşekkür ederiz. Lütfen kendinizi tanıtın ve katılma isteğinizin nedenini açıklayın.
     upgrade_for_subgroups: 'Bir alt grup oluşturmak için lütfen <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">aboneliğinizi yükseltin</a>'
     share_this_url_with_people_who_want_to_join: Katılmak isteyen kişilerle bu URL'yi paylaşın
-    new_description_html: "<h3>Kuruluşunuz karar alma sürecinde hangi zorluklarla karşılaşıyor?</h3><p></p><h3> Loomio'yu kuruluşunuzda nasıl kullanmak istersiniz?</h3><p></p>"
     allow_polls_without_discussions: Tartışma olmadan anketlere izin ver
     allow_polls_without_discussions_help: İnsanların önce bir tartışma başlatmadan anket başlatmasını engelleyin.
     aria_label: Grup formu
@@ -1900,6 +1902,19 @@ tr:
     view_all_votes: Tüm oyları görüntüle
     you_voted: Oy verdiniz
     these_are_templates: Bunlar grubunuzdaki karar şablonlarıdır. Yeni bir karar başlatmak için bir şablona tıklayın. Yöneticiler, şablonun kuruluşunuzun uygulamalarına uyması ve üyelerin bulup kullanması kolay olması için şablonla ilgili tüm ayrıntıları özelleştirebilir.
+    example_templates: Örnek şablonlar
+    example_poll_templates: Örnek anket şablonları
+    browse_example_templates: Örnek şablonlara göz atın
+    browse_example_templates_hint: Sıfırdan yeni bir anket şablonu oluşturun veya başlamak için bir örnek kullanın.
+    browse_example_use_hint: "<b>Anket başlatmak</b> için şablon başlığına tıklayın."
+    browse_example_fork_hint: Örneği başlangıç noktası olarak kullanarak yeni bir anket şablonu oluşturmak için <b>çatal simgesine tıklayın</b> .
+    browse_unsure_help: Anket şablonlarını nasıl kullanacağınızdan emin değil misiniz?
+    all_templates_hidden: Tüm şablonlar gizlendi.
+    new_poll_template_title: Yeni anket şablonu
+    new_template_from_blank: Boş şablondan yeni şablon.
+    new_template_from_blank_subtitle: Organizasyonunuzdaki bir sürece uygun yeni bir şablon oluşturun.
+    blank: Yeni
+    blank_subtitle: Belirli bir süreç için yeni bir anket şablonu oluşturun.
   poll_common_attachment_form:
     label: Ekler
   poll_common_add_option:
@@ -2704,6 +2719,16 @@ tr:
     start_direct_discussion_from_blank: Boş bir şablon kullanarak doğrudan bir tartışma başlatın.
     default_to_direct_discussion: Doğrudan bir tartışma olarak başlayın (grup oluşturmadan).
     default_to_direct_discussion_helptext: İnsanların bu şablonu kullanarak doğrudan tartışmalar başlatmasını istiyorsanız bunu kullanın.
+    example_discussion_templates: Örnek tartışma şablonları
+    browse_example_use_hint: "<b>Tartışma başlatmak</b> için şablon başlığına tıklayın."
+    browse_example_fork_hint: Örneği başlangıç noktası olarak kullanarak yeni bir tartışma şablonu oluşturmak için <b>çatal simgesine tıklayın</b> .
+    new_discussion_template_title: Yeni tartışma şablonu
+    new_template_from_blank: Boş şablondan yeni şablon.
+    new_template_from_blank_subtitle: Organizasyonunuzdaki bir sürece uygun yeni bir şablon oluşturun.
+    these_are_templates_v3: Bunlar grubunuzdaki tartışma şablonlarıdır. Yeni bir tartışma başlatmak için bir şablona tıklayın.
+    these_are_templates_admin_hint: Grup yöneticileri şablonları düzenleyebilir, yeni şablonlar oluşturabilir, şablonları yeniden sıralayabilir ve gizleyip/gösterebilir. Gizli şablonları yalnızca yöneticiler görebilir.
+    show_hidden_templates: Gizli şablonları göster
+    show_fewer: Daha az göster
   context_panel:
     thread_status:
       pinned: Bu tartışma sabitlendi. Tüm kullanıcılar için grubun tartışma listesinin en üstünde kalacak.

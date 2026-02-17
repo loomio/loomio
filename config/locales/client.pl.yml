@@ -312,6 +312,8 @@ pl:
       align: Wyrównywać
       original: Oryginalny
       rearrange: Przemieniać
+      save_template: Zapisz szablon
+      fork_template: Szablon widelca
     formatting_help:
       label: Formatowanie
       title: Naucz się używać Markdown, by sformatować swój tekst
@@ -319,6 +321,7 @@ pl:
     commercial: Handlowy
     nonprofit: Niedochodowy
     opening_in: Otwarcie %{time}
+    read_more: Przeczytaj więcej
   merge_accounts:
     modal:
       title: Połącz konta
@@ -1346,7 +1349,6 @@ pl:
     default_request_to_join_prompt: Dziękujemy za zainteresowanie naszą grupą. Przedstaw się i wyjaśnij, dlaczego chcesz dołączyć.
     upgrade_for_subgroups: 'Aby utworzyć podgrupę, <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">zaktualizuj swoją subskrypcję</a>'
     share_this_url_with_people_who_want_to_join: Udostępnij ten adres URL osobom, które chcą dołączyć
-    new_description_html: "<h3>Z jakimi wyzwaniami w zakresie podejmowania decyzji mierzy się Twoja organizacja?</h3><p></p><h3> W jaki sposób chcesz wykorzystać Loomio w swojej organizacji?</h3><p></p>"
     allow_polls_without_discussions: Zezwalaj na ankiety bez dyskusji
     allow_polls_without_discussions_help: Zapobiegaj rozpoczynaniu ankiet bez wcześniejszego rozpoczęcia dyskusji.
     aria_label: Formularz grupowy
@@ -1925,6 +1927,19 @@ pl:
     view_all_votes: Zobacz wszystkie głosy
     you_voted: Głosowałeś
     these_are_templates: Oto szablony decyzji w Twojej grupie. Kliknij szablon, aby rozpocząć nową decyzję. Administratorzy mogą dostosować wszystkie szczegóły szablonu, aby odpowiadał on praktykom Twojej organizacji i był łatwy do znalezienia i użycia przez członków.
+    example_templates: Przykładowe szablony
+    example_poll_templates: Przykładowe szablony ankiet
+    browse_example_templates: Przeglądaj przykładowe szablony
+    browse_example_templates_hint: Utwórz nowy szablon ankiety od podstaw lub skorzystaj z przykładu, aby rozpocząć.
+    browse_example_use_hint: Kliknij tytuł szablonu, aby <b>rozpocząć ankietę</b> .
+    browse_example_fork_hint: "<b>Kliknij ikonę widelca</b> , aby utworzyć nowy szablon ankiety, używając przykładu jako punktu wyjścia."
+    browse_unsure_help: Nie wiesz, jak korzystać z szablonów ankiet?
+    all_templates_hidden: Wszystkie szablony zostały ukryte
+    new_poll_template_title: Nowy szablon ankiety
+    new_template_from_blank: Nowy szablon z pustego
+    new_template_from_blank_subtitle: Utwórz nowy szablon, który będzie odpowiadał procesowi obowiązującemu w Twojej organizacji
+    blank: Nowy
+    blank_subtitle: Utwórz nowy szablon ankiety dla określonego procesu
   poll_common_attachment_form:
     label: Załączniki
   poll_common_add_option:
@@ -2733,6 +2748,16 @@ pl:
     start_direct_discussion_from_blank: Rozpocznij bezpośrednią dyskusję od pustego szablonu
     default_to_direct_discussion: Rozpocznij jako bezpośrednią dyskusję (bez grupy)
     default_to_direct_discussion_helptext: Użyj tego, jeśli chcesz, aby ludzie rozpoczynali bezpośrednie dyskusje przy użyciu tego szablonu.
+    example_discussion_templates: Przykładowe szablony dyskusji
+    browse_example_use_hint: Kliknij tytuł szablonu, aby <b>rozpocząć dyskusję</b> .
+    browse_example_fork_hint: "<b>Kliknij ikonę rozwidlenia</b> , aby utworzyć nowy szablon dyskusji, używając przykładu jako punktu wyjścia."
+    new_discussion_template_title: Nowy szablon dyskusji
+    new_template_from_blank: Nowy szablon z pustego
+    new_template_from_blank_subtitle: Utwórz nowy szablon, który będzie odpowiadał procesowi obowiązującemu w Twojej organizacji
+    these_are_templates_v3: Oto szablony dyskusji w Twojej grupie. Kliknij szablon, aby rozpocząć nową dyskusję.
+    these_are_templates_admin_hint: Administratorzy grup mogą edytować szablony, tworzyć nowe szablony, zmieniać ich kolejność oraz ukrywać/pokazywać. Tylko administratorzy widzą ukryte szablony.
+    show_hidden_templates: Pokaż ukryte szablony
+    show_fewer: Pokaż mniej
   context_panel:
     thread_status:
       pinned: Ta dyskusja została przypięta. Będzie nadal wyświetlana na górze listy dyskusji grupy dla wszystkich użytkowników.

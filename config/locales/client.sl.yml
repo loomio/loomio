@@ -312,6 +312,8 @@ sl:
       align: Poravnaj
       original: Izvirnik
       rearrange: Preuredi
+      save_template: Shrani predlogo
+      fork_template: Predloga za vilice
     formatting_help:
       label: Oblikovanje
       title: Naučite se uporabljati Markdown za oblikovanje besedila
@@ -319,6 +321,7 @@ sl:
     commercial: Komercialno
     nonprofit: Neprofitna organizacija
     opening_in: Odprtje %{čas}
+    read_more: Preberi več
   merge_accounts:
     modal:
       title: Združite račune
@@ -1338,7 +1341,6 @@ sl:
     default_request_to_join_prompt: Hvala za vaše zanimanje za našo skupino. Predstavite se in razložite, zakaj se želite pridružiti.
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Nadgradite svojo naročnino</a> , da ustvarite podskupino.'
     share_this_url_with_people_who_want_to_join: Delite ta URL z ljudmi, ki se želijo pridružiti
-    new_description_html: "<h3>S katerimi izzivi se vaša organizacija sooča pri odločanju?</h3><p></p><h3> Kako bi želeli uporabljati Loomio v svoji organizaciji?</h3><p></p>"
     allow_polls_without_discussions: Dovoli ankete brez razprave
     allow_polls_without_discussions_help: Preprečite ljudem, da začnejo ankete brez predhodnega začetka razprave.
     aria_label: Skupinski obrazec
@@ -1900,6 +1902,19 @@ sl:
     view_all_votes: Ogled vseh glasov
     you_voted: Glasovali ste
     these_are_templates: To so predloge odločitev v vaši skupini. Kliknite predlogo, da začnete novo odločitev. Skrbniki lahko prilagodijo vse podrobnosti o predlogi, tako da ustreza praksam vaše organizacije in jo člani enostavno najdejo in uporabljajo.
+    example_templates: Primeri predlog
+    example_poll_templates: Primeri predlog anket
+    browse_example_templates: Brskaj po vzorčnih predlogah
+    browse_example_templates_hint: Ustvarite novo predlogo ankete iz nič ali pa za začetek uporabite primer.
+    browse_example_use_hint: Kliknite naslov predloge, da <b>začnete anketo</b> .
+    browse_example_fork_hint: "<b>Kliknite ikono vilic</b> , da ustvarite novo predlogo ankete, pri čemer uporabite primer kot izhodišče."
+    browse_unsure_help: Niste prepričani, kako uporabljati predloge anket?
+    all_templates_hidden: Vse predloge so bile skrite
+    new_poll_template_title: Nova predloga ankete
+    new_template_from_blank: Nova predloga iz nič
+    new_template_from_blank_subtitle: Ustvarite novo predlogo, ki ustreza postopku v vaši organizaciji
+    blank: Novo
+    blank_subtitle: Ustvarite novo predlogo ankete za določen postopek
   poll_common_attachment_form:
     label: Priloge
   poll_common_add_option:
@@ -2704,6 +2719,16 @@ sl:
     start_direct_discussion_from_blank: Začnite neposredno razpravo iz prazne predloge
     default_to_direct_discussion: Začni kot neposredna razprava (brez skupine)
     default_to_direct_discussion_helptext: Uporabite to, če želite, da ljudje začnejo neposredne razprave iz te predloge.
+    example_discussion_templates: Primeri predlog za razprave
+    browse_example_use_hint: Kliknite naslov predloge, da <b>začnete razpravo</b> .
+    browse_example_fork_hint: "<b>Kliknite ikono vilic</b> , da ustvarite novo predlogo za razpravo, pri čemer uporabite primer kot izhodišče."
+    new_discussion_template_title: Nova predloga za razpravo
+    new_template_from_blank: Nova predloga iz nič
+    new_template_from_blank_subtitle: Ustvarite novo predlogo, ki ustreza postopku v vaši organizaciji
+    these_are_templates_v3: To so predloge za razprave v vaši skupini. Kliknite predlogo, da začnete novo razpravo.
+    these_are_templates_admin_hint: Skrbniki skupin lahko urejajo predloge, ustvarjajo nove predloge, jih prerazporejajo in skrivajo/razkrivajo. Skrite predloge lahko vidijo samo skrbniki.
+    show_hidden_templates: Prikaži skrite predloge
+    show_fewer: Prikaži manj
   context_panel:
     thread_status:
       pinned: Ta razprava je bila pripeta. Za vse uporabnike bo ostala na vrhu seznama razprav skupine.

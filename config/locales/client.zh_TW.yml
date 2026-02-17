@@ -314,12 +314,15 @@ zh_TW:
       align: 對齊
       original: 原來的
       rearrange: 重新排列
+      save_template: 儲存模板
+      fork_template: 分支模板
     formatting_help:
       label: 格式化
       title: 學習如何使用 Markdown 來格式化您的文字
     commercial: 商業的
     nonprofit: 非營利組織
     opening_in: 打開 %{time}
+    read_more: 閱讀更多
   merge_accounts:
     modal:
       title: 合併帳號
@@ -1349,7 +1352,6 @@ zh_TW:
     upgrade_for_subgroups: '請<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">升級您的訂閱</a>以建立子群組'
     group_handle_placeholder: 您的群組網址與電子郵件：%{host}/%{handle}、%{handle}{'@'}%{host}
     share_this_url_with_people_who_want_to_join: 與想要加入的人分享此 URL
-    new_description_html: "<h3>您的組織在決策上面臨哪些挑戰？</h3><p></p><h3>您希望如何在您的組織中使用 Loomio？</h3><p></p>"
     allow_polls_without_discussions: 允許無討論投票
     allow_polls_without_discussions_help: 防止人們在未先開始討論的情況下發起投票。
     aria_label: 小組形式
@@ -1928,6 +1930,19 @@ zh_TW:
     view_all_votes: 查看所有投票
     you_voted: 您投票了
     these_are_templates: 這些是您所在小組的決策範本。點擊模板即可開始新的決策。管理員可以自訂範本的所有細節，使其符合您組織的實踐，並方便成員尋找和使用。
+    example_templates: 範例模板
+    example_poll_templates: 範例投票模板
+    browse_example_templates: 瀏覽範例模板
+    browse_example_templates_hint: 從空白處建立新的投票模板，或使用範例開始建立。
+    browse_example_use_hint: 點擊模板標題即可<b>發起投票</b>。
+    browse_example_fork_hint: "<b>點擊叉形圖標</b>，以範例為起點，建立一個新的投票模板。"
+    browse_unsure_help: 不知道如何使用投票範本？
+    all_templates_hidden: 所有模板均已隱藏
+    new_poll_template_title: 新投票模板
+    new_template_from_blank: 從空白模板建立新模板
+    new_template_from_blank_subtitle: 建立一個新模板，以適應您組織中的流程。
+    blank: 新的
+    blank_subtitle: 為特定流程建立新的投票模板
   poll_common_attachment_form:
     label: 附件
   poll_common_add_option:
@@ -2734,6 +2749,16 @@ zh_TW:
     start_direct_discussion_from_blank: 從空白模板開始直接討論
     default_to_direct_discussion: 先以直接討論的形式開始（不要分組討論）。
     default_to_direct_discussion_helptext: 如果您希望人們透過此範本直接發起討論，請使用此功能。
+    example_discussion_templates: 討論模板範例
+    browse_example_use_hint: 點擊模板標題即可<b>開始討論</b>。
+    browse_example_fork_hint: "<b>點擊叉形圖標</b>，以範例為起點，建立新的討論範本。"
+    new_discussion_template_title: 新討論模板
+    new_template_from_blank: 從空白模板建立新模板
+    new_template_from_blank_subtitle: 建立一個新模板，以適應您組織中的流程。
+    these_are_templates_v3: 這些是您所在小組的討論範本。點擊模板即可開始新的討論。
+    these_are_templates_admin_hint: 群組管理員可以編輯範本、建立新範本、重新排列範本以及隱藏/顯示範本。只有管理員才能看到隱藏的模板。
+    show_hidden_templates: 顯示隱藏模板
+    show_fewer: 顯示更少
   context_panel:
     thread_status:
       pinned: 此討論貼文已置頂，將始終顯示在群組討論貼文清單的頂部，供所有使用者檢視。

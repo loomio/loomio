@@ -310,6 +310,8 @@ ja:
       align: 整列
       original: オリジナル
       rearrange: 並べ替え
+      save_template: テンプレートを保存
+      fork_template: フォークテンプレート
     formatting_help:
       label: 書式設定
       title: Markdown を使用してテキストの書式を設定する方法を学びます
@@ -318,6 +320,7 @@ ja:
     commercial: コマーシャル
     nonprofit: 非営利団体
     opening_in: "%{time} にオープン"
+    read_more: 続きを読む
   merge_accounts:
     modal:
       title: アカウントを統合する
@@ -1337,7 +1340,6 @@ ja:
     default_request_to_join_prompt: 私たちのグループに興味を持っていただきありがとうございます。自己紹介と参加を希望する理由を説明してください。
     upgrade_for_subgroups: 'サブグループを作成するには、<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">サブスクリプションをアップグレードして</a>ください'
     share_this_url_with_people_who_want_to_join: 参加したい人にこのURLを共有してください
-    new_description_html: "<h3>あなたの組織は意思決定においてどのような課題に直面していますか?</h3><p></p><h3>あなたの組織ではLoomioをどのように活用したいですか?</h3><p></p>"
     allow_polls_without_discussions: ディスカッションなしの投票を許可
     allow_polls_without_discussions_help: 最初にディスカッションを開始せずに投票を開始することを禁止します。
     aria_label: グループフォーム
@@ -1899,6 +1901,19 @@ ja:
     view_all_votes: すべての投票を表示
     you_voted: 投票しました
     these_are_templates: これらはグループ内の意思決定テンプレートです。テンプレートをクリックすると、新しい意思決定を開始できます。管理者はテンプレートの詳細をすべてカスタマイズできるため、組織の慣習に適合し、メンバーが簡単に見つけて使用できるテンプレートを作成できます。
+    example_templates: サンプルテンプレート
+    example_poll_templates: アンケートテンプレートの例
+    browse_example_templates: サンプルテンプレートを参照する
+    browse_example_templates_hint: 新しいアンケートテンプレートを空白から作成するか、例を使用して開始します。
+    browse_example_use_hint: "<b>アンケートを開始する</b>には、テンプレートのタイトルをクリックします。"
+    browse_example_fork_hint: "<b>フォーク アイコンをクリックし</b>、例を開始点として新しい投票テンプレートを作成します。"
+    browse_unsure_help: アンケートテンプレートの使い方が分からないですか?
+    all_templates_hidden: すべてのテンプレートが非表示になりました
+    new_poll_template_title: 新しい投票テンプレート
+    new_template_from_blank: 空白からの新しいテンプレート
+    new_template_from_blank_subtitle: 組織内のプロセスに合わせて新しいテンプレートを作成します
+    blank: 新しい
+    blank_subtitle: 特定のプロセス用の新しい投票テンプレートを作成する
   poll_common_attachment_form:
     label: 添付ファイル
   poll_common_add_option:
@@ -2703,6 +2718,16 @@ ja:
     start_direct_discussion_from_blank: 空白のテンプレートから直接ディスカッションを開始する
     default_to_direct_discussion: 直接ディスカッションから始める（グループなし）
     default_to_direct_discussion_helptext: このテンプレートから直接ディスカッションを開始したい場合は、これを使用します。
+    example_discussion_templates: ディスカッションテンプレートの例
+    browse_example_use_hint: "<b>ディスカッションを開始する</b>には、テンプレートのタイトルをクリックします。"
+    browse_example_fork_hint: "<b>フォーク アイコンをクリックし</b>、例を開始点として新しいディスカッション テンプレートを作成します。"
+    new_discussion_template_title: 新しいディスカッションテンプレート
+    new_template_from_blank: 空白からの新しいテンプレート
+    new_template_from_blank_subtitle: 組織内のプロセスに合わせて新しいテンプレートを作成します
+    these_are_templates_v3: これらはグループ内のディスカッションテンプレートです。テンプレートをクリックして新しいディスカッションを開始してください。
+    these_are_templates_admin_hint: グループ管理者はテンプレートの編集、新規作成、並べ替え、非表示/表示の切り替えができます。非表示のテンプレートは管理者のみ閲覧可能です。
+    show_hidden_templates: 非表示のテンプレートを表示
+    show_fewer: 表示を減らす
   context_panel:
     thread_status:
       pinned: このディスカッションはピン留めされました。グループのディスカッションリストの一番上に、全ユーザーに表示されます。

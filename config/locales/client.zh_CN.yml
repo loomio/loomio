@@ -335,12 +335,15 @@ zh_CN:
       zoom: Zoom
       align: 对齐
       rearrange: 重新排列
+      save_template: 保存模板
+      fork_template: 分支模板
     formatting_help:
       label: 格式化
       title: 学习如何使用 Markdown 格式化文本
     commercial: 商业的
     nonprofit: 非营利组织
     opening_in: 打开 %{time}
+    read_more: 阅读更多
   merge_accounts:
     modal:
       title: 合并账户
@@ -828,6 +831,16 @@ zh_CN:
     start_direct_discussion_from_blank: 从空白模板开始直接讨论
     default_to_direct_discussion: 先以直接讨论的形式开始（不要分组讨论）。
     default_to_direct_discussion_helptext: 如果您希望人们通过此模板直接发起讨论，请使用此功能。
+    example_discussion_templates: 讨论模板示例
+    browse_example_use_hint: 点击模板标题即可<b>开始讨论</b>。
+    browse_example_fork_hint: "<b>点击叉形图标</b>，以示例为起点，创建新的讨论模板。"
+    new_discussion_template_title: 新讨论模板
+    new_template_from_blank: 从空白模板创建新模板
+    new_template_from_blank_subtitle: 创建一个新模板，以适应您组织中的流程。
+    these_are_templates_v3: 这些是您所在小组的讨论模板。点击模板即可开始新的讨论。
+    these_are_templates_admin_hint: 群组管理员可以编辑模板、创建新模板、重新排列模板以及隐藏/显示模板。只有管理员才能看到隐藏的模板。
+    show_hidden_templates: 显示隐藏模板
+    show_fewer: 显示更少
   discussion_form:
     none_invite_only_discussion: 无（仅限受邀者参与讨论）
     new_discussion_template: 新讨论模板
@@ -1316,7 +1329,6 @@ zh_CN:
     description: 描述
     description_placeholder: 描述一下你们子群组的目的，以便子群组成员知道他们为什么在这里。
     new_description_placeholder: 你们为什么要试用 Loomio？你们需要共同做出哪些决定？
-    new_description_html: "<h3>贵组织在决策方面面临哪些挑战？</h3><p></p><h3>您希望如何在您的组织中使用 Loomio？</h3><p></p>"
     secret_by_default: 只有受邀加入的人才能访问您的群组。您可以稍后更改此设置。
     privacy_statement:
       public_on_web: 群组名称、描述和附件将对公众可见。
@@ -1951,6 +1963,19 @@ zh_CN:
     edit_warning: 建议仅对细微改动或拼写错误进行编辑。如需进行重大改动，请关闭此 %{pollType} 并创建一个新的。
     no_voting: 仅供讨论，投票功能已关闭
     these_are_templates: 这些是您所在小组的决策模板。点击模板即可开始新的决策。管理员可以自定义模板的所有细节，使其符合您组织的实践，并方便成员查找和使用。
+    example_templates: 示例模板
+    example_poll_templates: 示例投票模板
+    browse_example_templates: 浏览示例模板
+    browse_example_templates_hint: 从空白处创建一个新的投票模板，或者使用示例开始创建。
+    browse_example_use_hint: 点击模板标题即可<b>发起投票</b>。
+    browse_example_fork_hint: "<b>点击叉形图标</b>，以示例为起点，创建一个新的投票模板。"
+    browse_unsure_help: 不知道如何使用投票模板？
+    all_templates_hidden: 所有模板均已隐藏
+    new_poll_template_title: 新投票模板
+    new_template_from_blank: 从空白模板创建新模板
+    new_template_from_blank_subtitle: 创建一个新模板，以适应您组织中的流程。
+    blank: 新的
+    blank_subtitle: 为特定流程创建新的投票模板
   poll_common_attachment_form:
     label: 附件
   poll_common_add_option:

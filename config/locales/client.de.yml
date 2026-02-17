@@ -318,6 +318,8 @@ de:
       align: Ausrichten
       original: Original
       rearrange: Neu anordnen
+      save_template: Vorlage speichern
+      fork_template: Gabelvorlage
     formatting_help:
       label: Markdown-Formatierung
       title: Mehr über die Textformatierung mit Markdown lernen
@@ -325,6 +327,7 @@ de:
     commercial: Kommerziell
     nonprofit: Gemeinnützig
     opening_in: Öffnungszeit}
+    read_more: Mehr lesen
   merge_accounts:
     modal:
       title: Benutzerkonten zusammenführen
@@ -1354,7 +1357,6 @@ de:
     default_request_to_join_prompt: Vielen Dank für Ihr Interesse an unserer Gruppe. Bitte stellen Sie sich vor und erklären Sie, warum Sie Mitglied werden möchten.
     upgrade_for_subgroups: 'Bitte <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">aktualisieren Sie Ihr Abonnement</a> , um eine Untergruppe zu erstellen'
     share_this_url_with_people_who_want_to_join: Teilen Sie diese URL mit Leuten, die beitreten möchten
-    new_description_html: "<h3>Vor welchen Herausforderungen steht Ihre Organisation bei der Entscheidungsfindung?</h3><p></p><h3> Wie möchten Sie Loomio in Ihrer Organisation einsetzen?</h3><p></p>"
     allow_polls_without_discussions: Umfragen ohne Diskussion zulassen
     allow_polls_without_discussions_help: Verhindert, dass Personen Umfragen starten, ohne vorher eine Diskussion zu beginnen.
     aria_label: Gruppenbildung
@@ -1933,6 +1935,19 @@ de:
     view_all_votes: Alle Abstimmungen ansehen
     you_voted: Sie haben abgestimmt
     these_are_templates: Dies sind die Entscheidungsvorlagen Ihrer Gruppe. Klicken Sie auf eine Vorlage, um eine neue Entscheidung zu erstellen. Administratoren können alle Details einer Vorlage anpassen, sodass sie den Vorgehensweisen Ihrer Organisation entspricht und für Mitglieder leicht auffindbar und nutzbar ist.
+    example_templates: Beispielvorlagen
+    example_poll_templates: Beispielvorlagen für Umfragen
+    browse_example_templates: Beispielvorlagen ansehen
+    browse_example_templates_hint: Erstellen Sie eine neue Umfragevorlage von Grund auf oder verwenden Sie ein Beispiel als Ausgangspunkt.
+    browse_example_use_hint: Klicken Sie auf den Vorlagentitel, um <b>eine Umfrage zu starten</b> .
+    browse_example_fork_hint: "<b>Klicken Sie auf das Gabelsymbol</b> , um eine neue Umfragevorlage zu erstellen. Das Beispiel dient dabei als Ausgangspunkt."
+    browse_unsure_help: Sie sind sich nicht sicher, wie Sie Umfragevorlagen verwenden?
+    all_templates_hidden: Alle Vorlagen wurden ausgeblendet
+    new_poll_template_title: Neue Umfragevorlage
+    new_template_from_blank: Neue Vorlage von Grund auf neu
+    new_template_from_blank_subtitle: Erstellen Sie eine neue Vorlage, die zu einem Prozess in Ihrer Organisation passt.
+    blank: Neu
+    blank_subtitle: Erstellen Sie eine neue Umfragevorlage für einen bestimmten Prozess
   poll_common_attachment_form:
     label: Arbeitsmaterialien
   poll_common_add_option:
@@ -2741,6 +2756,16 @@ de:
     start_direct_discussion_from_blank: Starten Sie eine direkte Diskussion anhand einer leeren Vorlage.
     default_to_direct_discussion: Beginnen Sie mit einer direkten Diskussion (ohne Gruppe).
     default_to_direct_discussion_helptext: Verwenden Sie diese Option, wenn Sie möchten, dass die Teilnehmer anhand dieser Vorlage direkte Diskussionen starten.
+    example_discussion_templates: Beispielhafte Diskussionsvorlagen
+    browse_example_use_hint: Klicken Sie auf den Vorlagentitel, um <b>eine Diskussion zu starten</b> .
+    browse_example_fork_hint: "<b>Klicken Sie auf das Gabelsymbol</b> , um eine neue Diskussionsvorlage zu erstellen. Das Beispiel dient dabei als Ausgangspunkt."
+    new_discussion_template_title: Neue Diskussionsvorlage
+    new_template_from_blank: Neue Vorlage von Grund auf neu
+    new_template_from_blank_subtitle: Erstellen Sie eine neue Vorlage, die zu einem Prozess in Ihrer Organisation passt.
+    these_are_templates_v3: Dies sind die Diskussionsvorlagen in Ihrer Gruppe. Klicken Sie auf eine Vorlage, um eine neue Diskussion zu starten.
+    these_are_templates_admin_hint: Gruppenadministratoren können Vorlagen bearbeiten, neue Vorlagen erstellen, Vorlagen neu anordnen und ein- bzw. ausblenden. Nur Administratoren können die ausgeblendeten Vorlagen sehen.
+    show_hidden_templates: Ausgeblendete Vorlagen anzeigen
+    show_fewer: Weniger anzeigen
   context_panel:
     thread_status:
       pinned: Diese Diskussion wurde angepinnt. Sie bleibt für alle Benutzer ganz oben in der Diskussionsliste der Gruppe.

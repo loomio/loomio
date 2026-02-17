@@ -312,6 +312,8 @@ hr:
       align: Uskladiti
       original: Izvornik
       rearrange: Preurediti
+      save_template: Spremi predložak
+      fork_template: Predložak vilice
     formatting_help:
       label: Oblikovanje
       title: Naučite kako koristiti Markdown za oblikovanje teksta
@@ -319,6 +321,7 @@ hr:
     commercial: Komercijalno
     nonprofit: Neprofitna organizacija
     opening_in: Otvaranje %{time}
+    read_more: Pročitajte više
   merge_accounts:
     modal:
       title: Spajanje računa
@@ -1338,7 +1341,6 @@ hr:
     default_request_to_join_prompt: Hvala na interesu za našu grupu. Predstavite se i objasnite zašto tražite da se pridružite.
     upgrade_for_subgroups: 'Molimo vas <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">da nadogradite svoju pretplatu</a> kako biste stvorili podgrupu'
     share_this_url_with_people_who_want_to_join: Podijelite ovaj URL s ljudima koji se žele pridružiti
-    new_description_html: "<h3>S kojim se izazovima vaša organizacija suočava u donošenju odluka?</h3><p></p><h3> Kako biste željeli koristiti Loomio u svojoj organizaciji?</h3><p></p>"
     allow_polls_without_discussions: Dopusti ankete bez rasprave
     allow_polls_without_discussions_help: Spriječite ljude da pokreću ankete bez prethodnog pokretanja rasprave.
     aria_label: Grupni obrazac
@@ -1900,6 +1902,19 @@ hr:
     view_all_votes: Prikaži sve glasove
     you_voted: Glasali ste
     these_are_templates: Ovo su predlošci odluka u vašoj grupi. Kliknite predložak za početak nove odluke. Administratori mogu prilagoditi sve detalje o predlošku kako bi odgovarao praksama vaše organizacije i bio jednostavan za pronalaženje i korištenje članovima.
+    example_templates: Primjeri predložaka
+    example_poll_templates: Primjeri predložaka anketa
+    browse_example_templates: Pregledajte primjere predložaka
+    browse_example_templates_hint: Izradite novi predložak ankete od nule ili upotrijebite primjer za početak.
+    browse_example_use_hint: Kliknite naslov predloška za <b>početak ankete</b> .
+    browse_example_fork_hint: "<b>Kliknite ikonu vilice</b> za izradu novog predloška ankete, koristeći primjer kao početnu točku."
+    browse_unsure_help: Niste sigurni kako koristiti predloške anketa?
+    all_templates_hidden: Svi predlošci su skriveni
+    new_poll_template_title: Novi predložak ankete
+    new_template_from_blank: Novi predložak od nule
+    new_template_from_blank_subtitle: Izradite novi predložak koji odgovara procesu koji imate u svojoj organizaciji
+    blank: Novi
+    blank_subtitle: Izradite novi predložak ankete za određeni proces
   poll_common_attachment_form:
     label: Prilozi
   poll_common_add_option:
@@ -2704,6 +2719,16 @@ hr:
     start_direct_discussion_from_blank: Započnite izravnu raspravu iz praznog predloška
     default_to_direct_discussion: Započnite kao izravna rasprava (bez grupe)
     default_to_direct_discussion_helptext: Koristite ovo ako želite da ljudi započnu izravne rasprave iz ovog predloška.
+    example_discussion_templates: Primjeri predložaka za raspravu
+    browse_example_use_hint: Kliknite naslov predloška za <b>početak rasprave</b> .
+    browse_example_fork_hint: "<b>Kliknite ikonu vilice</b> za izradu novog predloška rasprave, koristeći primjer kao početnu točku."
+    new_discussion_template_title: Novi predložak za raspravu
+    new_template_from_blank: Novi predložak od nule
+    new_template_from_blank_subtitle: Izradite novi predložak koji odgovara procesu koji imate u svojoj organizaciji
+    these_are_templates_v3: Ovo su predlošci rasprave u vašoj grupi. Kliknite predložak za početak nove rasprave.
+    these_are_templates_admin_hint: Administratori grupe mogu uređivati predloške, izrađivati nove predloške, preuređivati i skrivati/otkrivati predloške. Samo administratori mogu vidjeti skrivene predloške.
+    show_hidden_templates: Prikaži skrivene predloške
+    show_fewer: Prikaži manje
   context_panel:
     thread_status:
       pinned: Ova je rasprava prikvačena. Ostat će na vrhu popisa rasprava grupe za sve korisnike.

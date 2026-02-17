@@ -312,6 +312,8 @@ ca:
       align: Alinear
       original: Original
       rearrange: Reorganitzar
+      save_template: Desa la plantilla
+      fork_template: Plantilla de forquilla
     formatting_help:
       label: Formatació
       title: Aprèn a escriure el text en format Markdown
@@ -319,6 +321,7 @@ ca:
     commercial: Comercial
     nonprofit: Sense ànim de lucre
     opening_in: Obertura %{time}
+    read_more: Llegir més
   merge_accounts:
     modal:
       title: Combina comptes
@@ -1346,7 +1349,6 @@ ca:
     default_request_to_join_prompt: Gràcies pel vostre interès en el nostre grup. Si us plau, presenteu-vos i expliqueu per què demaneu unir-vos.
     upgrade_for_subgroups: 'Si us plau, <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">actualitza la teva subscripció</a> per crear un subgrup'
     share_this_url_with_people_who_want_to_join: Comparteix aquesta URL amb les persones que vulguin unir-s'hi
-    new_description_html: "<h3>Quins reptes afronta la vostra organització a l'hora de prendre decisions?</h3><p></p><h3> Com t'agradaria utilitzar Loomio a la teva organització?</h3><p></p>"
     allow_polls_without_discussions: Permetre enquestes sense discussió
     allow_polls_without_discussions_help: Impedeix que la gent iniciï enquestes sense iniciar primer una discussió.
     aria_label: Formulari de grup
@@ -1925,6 +1927,19 @@ ca:
     view_all_votes: Veure tots els vots
     you_voted: Vas votar
     these_are_templates: Aquestes són les plantilles de decisió del vostre grup. Feu clic en una plantilla per iniciar una decisió nova. Els administradors poden personalitzar tots els detalls d'una plantilla perquè coincideixi amb les pràctiques de la vostra organització i sigui fàcil de trobar i utilitzar per als membres.
+    example_templates: Plantilles d'exemple
+    example_poll_templates: Plantilles d'enquesta d'exemple
+    browse_example_templates: Navega per plantilles d'exemple
+    browse_example_templates_hint: Crea una nova plantilla d'enquesta des de zero o fes servir un exemple per començar.
+    browse_example_use_hint: Feu clic al títol de la plantilla per <b>iniciar una enquesta</b> .
+    browse_example_fork_hint: "<b>Feu clic a la icona de la forquilla</b> per crear una nova plantilla d'enquesta, utilitzant l'exemple com a punt de partida."
+    browse_unsure_help: No esteu segur de com utilitzar les plantilles d'enquesta?
+    all_templates_hidden: Totes les plantilles s'han amagat
+    new_poll_template_title: Nova plantilla d'enquesta
+    new_template_from_blank: Nova plantilla des de zero
+    new_template_from_blank_subtitle: Crea una plantilla nova que s'adapti a un procés que tinguis a la teva organització
+    blank: Nou
+    blank_subtitle: Crea una nova plantilla d'enquesta per a un procés específic
   poll_common_attachment_form:
     label: Adjunts
   poll_common_add_option:
@@ -2733,6 +2748,16 @@ ca:
     start_direct_discussion_from_blank: Inicia una discussió directa des d'una plantilla en blanc
     default_to_direct_discussion: Comença com una discussió directa (sense grup)
     default_to_direct_discussion_helptext: Feu servir això si voleu que la gent iniciï debats directes des d'aquesta plantilla.
+    example_discussion_templates: Plantilles de discussió d'exemple
+    browse_example_use_hint: Feu clic al títol de la plantilla per <b>iniciar una discussió</b> .
+    browse_example_fork_hint: "<b>Feu clic a la icona de la forquilla</b> per crear una nova plantilla de discussió, utilitzant l'exemple com a punt de partida."
+    new_discussion_template_title: Nova plantilla de discussió
+    new_template_from_blank: Nova plantilla des de zero
+    new_template_from_blank_subtitle: Crea una plantilla nova que s'adapti a un procés que tinguis a la teva organització
+    these_are_templates_v3: Aquestes són les plantilles de discussió del vostre grup. Feu clic a una plantilla per iniciar una nova discussió.
+    these_are_templates_admin_hint: Els administradors de grup poden editar plantilles, crear-ne de noves, reorganitzar-les i amagar/mostrar plantilles. Només els administradors poden veure les plantilles ocultes.
+    show_hidden_templates: Mostra les plantilles ocultes
+    show_fewer: Mostra menys
   context_panel:
     thread_status:
       pinned: Aquesta discussió s'ha fixat. Romandrà al capdamunt de la llista de discussions del grup per a tots els usuaris.

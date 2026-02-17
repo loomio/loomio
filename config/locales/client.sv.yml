@@ -312,6 +312,8 @@ sv:
       align: Justera
       original: Original
       rearrange: Ordna om
+      save_template: Spara mall
+      fork_template: Gaffelmall
     formatting_help:
       label: Utformning
       title: Lär dig hur du använder Märkspråk för att formatera din text
@@ -319,6 +321,7 @@ sv:
     commercial: Kommersiell
     nonprofit: Ideell organisation
     opening_in: Öppning %{tid}
+    read_more: Läs mer
   merge_accounts:
     modal:
       title: Slå samman konton
@@ -1338,7 +1341,6 @@ sv:
     default_request_to_join_prompt: Tack för ditt intresse för vår grupp. Presentera dig själv och förklara varför du vill vara med.
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Uppgradera din prenumeration</a> för att skapa en undergrupp'
     share_this_url_with_people_who_want_to_join: Dela den här webbadressen med personer som vill gå med
-    new_description_html: "<h3>Vilka utmaningar står er organisation inför med beslutsfattandet?</h3><p></p><h3> Hur skulle du vilja använda Loomio i din organisation?</h3><p></p>"
     allow_polls_without_discussions: Tillåt omröstningar utan diskussion
     allow_polls_without_discussions_help: Tillåt fristående omröstningar (rekommenderas inte). Utan en diskussion kan man inte ställa frågor eller skapa enighet effektivt.
     aria_label: Gruppformulär
@@ -1900,6 +1902,19 @@ sv:
     view_all_votes: Visa alla röster
     you_voted: Du röstade
     these_are_templates: Det här är beslutsmallarna i din grupp. Klicka på en mall för att starta ett nytt beslut. Administratörer kan anpassa alla detaljer om en mall så att den matchar din organisations praxis och är lätt för medlemmar att hitta och använda.
+    example_templates: Exempelmallar
+    example_poll_templates: Exempel på omröstningsmallar
+    browse_example_templates: Bläddra bland exempelmallar
+    browse_example_templates_hint: Skapa en ny omröstningsmall från tomt fält, eller använd ett exempel för att komma igång.
+    browse_example_use_hint: Klicka på mallens titel för att <b>starta en omröstning</b> .
+    browse_example_fork_hint: "<b>Klicka på gaffelikonen</b> för att skapa en ny omröstningsmall med exemplet som utgångspunkt."
+    browse_unsure_help: Osäker på hur man använder omröstningsmallar?
+    all_templates_hidden: Alla mallar har dolts
+    new_poll_template_title: Ny omröstningsmall
+    new_template_from_blank: Ny mall från tomt
+    new_template_from_blank_subtitle: Skapa en ny mall som passar en process du har i din organisation
+    blank: Ny
+    blank_subtitle: Skapa en ny omröstningsmall för en specifik process
   poll_common_attachment_form:
     label: Bilagor
   poll_common_add_option:
@@ -2704,6 +2719,16 @@ sv:
     start_direct_discussion_from_blank: Starta en direkt diskussion från en tom mall
     default_to_direct_discussion: Börja som en direkt diskussion (ingen grupp)
     default_to_direct_discussion_helptext: Använd detta om du vill att folk ska starta direkta diskussioner från den här mallen.
+    example_discussion_templates: Exempel på diskussionsmallar
+    browse_example_use_hint: Klicka på mallens titel för att <b>starta en diskussion</b> .
+    browse_example_fork_hint: "<b>Klicka på gaffelikonen</b> för att skapa en ny diskussionsmall med exemplet som utgångspunkt."
+    new_discussion_template_title: Ny diskussionsmall
+    new_template_from_blank: Ny mall från tomt
+    new_template_from_blank_subtitle: Skapa en ny mall som passar en process du har i din organisation
+    these_are_templates_v3: Det här är diskussionsmallarna i din grupp. Klicka på en mall för att starta en ny diskussion.
+    these_are_templates_admin_hint: Gruppadministratörer kan redigera mallar, skapa nya mallar, ordna om och dölja/visa mallar. Endast administratörer kan se de dolda mallarna.
+    show_hidden_templates: Visa dolda mallar
+    show_fewer: Visa färre
   context_panel:
     thread_status:
       pinned: Den här diskussionen har fästs. Den kommer att finnas kvar högst upp i gruppens diskussionslista för alla användare.

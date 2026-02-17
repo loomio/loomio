@@ -320,6 +320,8 @@ fr:
       align: Alignement
       original: Original
       rearrange: Réarranger
+      save_template: Enregistrer le modèle
+      fork_template: Modèle de fourche
     formatting_help:
       label: Mise en forme
       title: Apprenez à utiliser Markdown pour mettre en forme votre texte
@@ -327,6 +329,7 @@ fr:
     commercial: Commercial
     nonprofit: À but non lucratif
     opening_in: Ouverture %{time}
+    read_more: En savoir plus
   merge_accounts:
     modal:
       title: Fusionner les comptes
@@ -1367,7 +1370,6 @@ fr:
     default_request_to_join_prompt: Merci de votre intérêt pour notre groupe. Veuillez vous présenter et expliquer pourquoi vous souhaitez nous rejoindre.
     upgrade_for_subgroups: 'Veuillez <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">mettre à niveau votre abonnement</a> pour créer un sous-groupe'
     share_this_url_with_people_who_want_to_join: Partagez cette URL avec les personnes qui souhaitent nous rejoindre
-    new_description_html: "<h3>À quels défis votre organisation est-elle confrontée en matière de prise de décision ?</h3><p></p><h3> Comment aimeriez-vous utiliser Loomio dans votre organisation ?</h3><p></p>"
     allow_polls_without_discussions: Autoriser les sondages sans discussion
     allow_polls_without_discussions_help: Empêcher les gens de lancer des sondages sans d'abord démarrer une discussion.
     aria_label: Forme de groupe
@@ -1944,6 +1946,19 @@ fr:
     view_all_votes: Voir tous les votes
     you_voted: Vous avez voté
     these_are_templates: Voici les modèles de décision disponibles dans votre groupe. Cliquez sur un modèle pour démarrer une nouvelle décision. Les administrateurs peuvent personnaliser tous les détails d'un modèle afin qu'il corresponde aux pratiques de votre organisation et soit facile à trouver et à utiliser pour les membres.
+    example_templates: Exemples de modèles
+    example_poll_templates: Exemples de modèles de sondage
+    browse_example_templates: Consultez les exemples de modèles
+    browse_example_templates_hint: Créez un nouveau modèle de sondage à partir de zéro, ou utilisez un exemple pour commencer.
+    browse_example_use_hint: Cliquez sur le titre du modèle pour <b>lancer un sondage</b> .
+    browse_example_fork_hint: "<b>Cliquez sur l'icône en forme de fourchette</b> pour créer un nouveau modèle de sondage, en utilisant l'exemple comme point de départ."
+    browse_unsure_help: Vous ne savez pas comment utiliser les modèles de sondage ?
+    all_templates_hidden: Tous les modèles ont été masqués.
+    new_poll_template_title: Nouveau modèle de sondage
+    new_template_from_blank: Nouveau modèle à partir de zéro
+    new_template_from_blank_subtitle: Créez un nouveau modèle adapté à un processus en place dans votre organisation.
+    blank: Nouveau
+    blank_subtitle: Créer un nouveau modèle de sondage pour un processus spécifique
   poll_common_attachment_form:
     label: Pièces jointes
   poll_common_add_option:
@@ -2750,6 +2765,16 @@ fr:
     start_direct_discussion_from_blank: Démarrez une discussion directe à partir d'un modèle vierge
     default_to_direct_discussion: Commencez par une discussion directe (pas de groupe).
     default_to_direct_discussion_helptext: Utilisez ceci si vous souhaitez que les gens entament des discussions directes à partir de ce modèle.
+    example_discussion_templates: Exemples de modèles de discussion
+    browse_example_use_hint: Cliquez sur le titre du modèle pour <b>démarrer une discussion</b> .
+    browse_example_fork_hint: "<b>Cliquez sur l'icône en forme de fourchette</b> pour créer un nouveau modèle de discussion, en utilisant l'exemple comme point de départ."
+    new_discussion_template_title: Nouveau modèle de discussion
+    new_template_from_blank: Nouveau modèle à partir de zéro
+    new_template_from_blank_subtitle: Créez un nouveau modèle adapté à un processus en place dans votre organisation.
+    these_are_templates_v3: Voici les modèles de discussion de votre groupe. Cliquez sur un modèle pour démarrer une nouvelle discussion.
+    these_are_templates_admin_hint: Les administrateurs du groupe peuvent modifier les modèles, en créer de nouveaux, les réorganiser et les afficher/masquer. Seuls les administrateurs peuvent voir les modèles masqués.
+    show_hidden_templates: Afficher les modèles cachés
+    show_fewer: Afficher moins
   context_panel:
     thread_status:
       pinned: Cette discussion a été épinglée. Elle restera en haut de la liste des discussions du groupe pour tous les utilisateurs.

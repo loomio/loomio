@@ -1376,8 +1376,8 @@ en:
     organization_name_placeholder: What is the name of your organization?
     description: Description
     description_placeholder: Describe the purpose of your group so your group members know why they are here.
-    new_description_placeholder: Why are you trialing Loomio? What decisions do you need to make together?
-    new_description_html: '<h3>What challenges does your organization face with decision-making?</h3><p></p><h3>How would you like to use Loomio in your organization?</h3><p></p>'
+    new_description_html: ""
+    new_description_placeholder: What does your organization do? What decisions do you need to make together?
     secret_by_default: Your group will only be accessible by those who are invited to join. You can change this later.
     privacy_statement:
       public_on_web: Name, description, and attachments to the group context will be visible to the public

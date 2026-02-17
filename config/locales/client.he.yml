@@ -312,6 +312,8 @@ he:
       align: יישר
       original: מְקוֹרִי
       rearrange: לְסַדֵר מְחָדָשׁ
+      save_template: שמור תבנית
+      fork_template: תבנית מזלג
     formatting_help:
       label: פורמט
       title: למד איך להשתמש בMarkdown כדי לסגנן את הטקסט שלך
@@ -319,6 +321,7 @@ he:
     commercial: מִסְחָרִי
     nonprofit: מלכ"ר
     opening_in: פתיחה %{time}
+    read_more: קרא עוד
   merge_accounts:
     modal:
       title: מיזוג חשבונות
@@ -1342,7 +1345,6 @@ he:
     default_request_to_join_prompt: תודה על ההתעניינות בקבוצה שלנו. אנא הצג את עצמך והסבר מדוע אתה מבקש להצטרף.
     upgrade_for_subgroups: 'אנא <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">שדרג את המנוי שלך</a> כדי ליצור תת-קבוצה'
     share_this_url_with_people_who_want_to_join: שתף כתובת URL זו עם אנשים שרוצים להצטרף
-    new_description_html: <h3 style=";text-align:right;direction:rtl">אילו אתגרים עומדים בפני הארגון שלכם בקבלת החלטות?</h3><p style=";text-align:right;direction:rtl"></p><h3 style=";text-align:right;direction:rtl"> כיצד תרצה להשתמש ב-Loomio בארגון שלך?</h3><p style=";text-align:right;direction:rtl"></p>
     allow_polls_without_discussions: אפשר סקרים ללא דיון
     allow_polls_without_discussions_help: מנע מאנשים להתחיל סקרים מבלי להתחיל דיון קודם.
     aria_label: טופס קבוצה
@@ -1919,6 +1921,19 @@ he:
     view_all_votes: הצג את כל ההצבעות
     you_voted: הצבעת
     these_are_templates: אלו הן תבניות ההחלטות בקבוצה שלך. לחץ על תבנית כדי להתחיל החלטה חדשה. מנהלים יכולים להתאים אישית את כל הפרטים אודות תבנית כך שתתאים לנוהלי הארגון שלך ותהיה קלה לחברים למצוא ולהשתמש בה.
+    example_templates: תבניות לדוגמה
+    example_poll_templates: דוגמאות לתבניות סקר
+    browse_example_templates: עיין בתבניות לדוגמה
+    browse_example_templates_hint: צור תבנית סקר חדשה ממקום ריק, או השתמש בדוגמה כדי להתחיל.
+    browse_example_use_hint: לחץ על כותרת התבנית כדי <b>להתחיל סקר</b> .
+    browse_example_fork_hint: "<b>לחץ על סמל המזלג</b> כדי ליצור תבנית סקר חדשה, תוך שימוש בדוגמה כנקודת התחלה."
+    browse_unsure_help: לא בטוחים כיצד להשתמש בתבניות סקר?
+    all_templates_hidden: כל התבניות הוסתרו
+    new_poll_template_title: תבנית סקר חדשה
+    new_template_from_blank: תבנית חדשה מריק
+    new_template_from_blank_subtitle: צור תבנית חדשה שתתאים לתהליך הקיים בארגון שלך
+    blank: חָדָשׁ
+    blank_subtitle: צור תבנית סקר חדשה עבור תהליך ספציפי
   poll_common_attachment_form:
     label: קבצים מצורפים
   poll_common_add_option:
@@ -2723,6 +2738,16 @@ he:
     start_direct_discussion_from_blank: התחל דיון ישיר מתבנית ריקה
     default_to_direct_discussion: התחל כדיון ישיר (ללא קבוצה)
     default_to_direct_discussion_helptext: השתמש בזה אם אתה רוצה שאנשים יתחילו דיונים ישירים מתבנית זו.
+    example_discussion_templates: תבניות דיון לדוגמה
+    browse_example_use_hint: לחץ על כותרת התבנית כדי <b>להתחיל דיון</b> .
+    browse_example_fork_hint: "<b>לחץ על סמל המזלג</b> כדי ליצור תבנית דיון חדשה, תוך שימוש בדוגמה כנקודת התחלה."
+    new_discussion_template_title: תבנית דיון חדשה
+    new_template_from_blank: תבנית חדשה מריק
+    new_template_from_blank_subtitle: צור תבנית חדשה שתתאים לתהליך הקיים בארגון שלך
+    these_are_templates_v3: אלו הן תבניות הדיון בקבוצה שלך. לחץ על תבנית כדי להתחיל דיון חדש.
+    these_are_templates_admin_hint: מנהלי קבוצות יכולים לערוך תבניות, ליצור תבניות חדשות, לסדר מחדש ולהסתיר/לבטל הסתרה של תבניות. רק מנהלים יכולים לראות את התבניות המוסתרות.
+    show_hidden_templates: הצג תבניות מוסתרות
+    show_fewer: הצג פחות
   context_panel:
     thread_status:
       pinned: דיון זה הוצמד. הוא יישאר בראש רשימת הדיונים של הקבוצה עבור כל המשתמשים.

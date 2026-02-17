@@ -312,6 +312,8 @@ fi:
       align: Kohdistaa
       original: Alkuperäinen
       rearrange: Järjestä uudelleen
+      save_template: Tallenna mallipohja
+      fork_template: Haarukan mallipohja
     formatting_help:
       label: Muotoilu
       title: Opi käyttämään Markdownia tekstin muotoiluun
@@ -319,6 +321,7 @@ fi:
     commercial: Kaupallinen
     nonprofit: Voittoa tavoittelematon
     opening_in: Avautuminen %{aika}
+    read_more: Lue lisää
   merge_accounts:
     modal:
       title: Yhdistä tilit
@@ -1338,7 +1341,6 @@ fi:
     default_request_to_join_prompt: Kiitos mielenkiinnostasi ryhmäämme kohtaan. Esittele itsesi ja selitä, miksi pyydät liittymistä.
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Päivitä tilauksesi</a> luodaksesi aliryhmän'
     share_this_url_with_people_who_want_to_join: Jaa tämä URL-osoite niiden kanssa, jotka haluavat liittyä
-    new_description_html: "<h3>Millaisia haasteita organisaatiollanne on päätöksenteossa?</h3><p></p><h3> Miten haluaisit käyttää Loomiota organisaatiossasi?</h3><p></p>"
     allow_polls_without_discussions: Salli kyselyt ilman keskustelua
     allow_polls_without_discussions_help: Estä ihmisiä aloittamasta kyselyitä ilman keskustelun aloittamista ensin.
     aria_label: Ryhmälomake
@@ -1900,6 +1902,19 @@ fi:
     view_all_votes: Näytä kaikki äänet
     you_voted: Äänestit
     these_are_templates: Nämä ovat ryhmäsi päätösmallit. Aloita uusi päätös napsauttamalla mallia. Ylläpitäjät voivat mukauttaa kaikkia mallin tietoja, jotta se vastaa organisaatiosi käytäntöjä ja on helppo jäsenten löytää ja käyttää sitä.
+    example_templates: Esimerkkimalleja
+    example_poll_templates: Esimerkkikyselyn mallipohjista
+    browse_example_templates: Selaa esimerkkipohjia
+    browse_example_templates_hint: Luo uusi kyselypohja tyhjästä tai käytä esimerkkiä aloittaaksesi.
+    browse_example_use_hint: Aloita kysely napsauttamalla mallin <b>otsikkoa</b> .
+    browse_example_fork_hint: "<b>Luo uusi kyselymalli napsauttamalla haarukkakuvaketta</b> ja käytä esimerkkiä lähtökohtana."
+    browse_unsure_help: Etkö ole varma, miten kyselypohjia käytetään?
+    all_templates_hidden: Kaikki mallit on piilotettu
+    new_poll_template_title: Uusi kyselymalli
+    new_template_from_blank: Uusi pohja tyhjästä
+    new_template_from_blank_subtitle: Luo uusi malli, joka sopii organisaatiossasi käytössä olevaan prosessiin
+    blank: Uusi
+    blank_subtitle: Luo uusi kyselymalli tietylle prosessille
   poll_common_attachment_form:
     label: Liitteet
   poll_common_add_option:
@@ -2704,6 +2719,16 @@ fi:
     start_direct_discussion_from_blank: Aloita suora keskustelu tyhjästä mallista
     default_to_direct_discussion: Aloita suorana keskusteluna (ei ryhmäkeskusteluna)
     default_to_direct_discussion_helptext: Käytä tätä, jos haluat ihmisten aloittavan suoria keskusteluja tästä mallista.
+    example_discussion_templates: Esimerkkikeskustelupohjista
+    browse_example_use_hint: "<b>Aloita keskustelu</b> napsauttamalla mallipohjan otsikkoa."
+    browse_example_fork_hint: "<b>Luo uusi keskustelumalli napsauttamalla haarukkakuvaketta</b> ja käytä esimerkkiä lähtökohtana."
+    new_discussion_template_title: Uusi keskustelumalli
+    new_template_from_blank: Uusi pohja tyhjästä
+    new_template_from_blank_subtitle: Luo uusi malli, joka sopii organisaatiossasi käytössä olevaan prosessiin
+    these_are_templates_v3: Nämä ovat ryhmäsi keskustelupohjat. Aloita uusi keskustelu napsauttamalla pohjaa.
+    these_are_templates_admin_hint: Ryhmän ylläpitäjät voivat muokata malleja, luoda uusia malleja, järjestellä niitä uudelleen ja piilottaa/näyttää malleja. Vain ylläpitäjät voivat nähdä piilotetut mallit.
+    show_hidden_templates: Näytä piilotetut mallit
+    show_fewer: Näytä vähemmän
   context_panel:
     thread_status:
       pinned: Tämä keskustelu on kiinnitetty. Se pysyy ryhmän keskusteluluettelon yläosassa kaikille käyttäjille.

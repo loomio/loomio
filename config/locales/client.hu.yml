@@ -314,6 +314,8 @@ hu:
       align: Igazítsa
       original: Eredeti
       rearrange: Átrendezés
+      save_template: Sablon mentése
+      fork_template: Villa sablon
     formatting_help:
       label: Formázás
       title: Így használhatod a Markdown-t a szöveg formázására
@@ -321,6 +323,7 @@ hu:
     commercial: Kereskedelmi
     nonprofit: Nonprofit
     opening_in: Megnyitás %{time}
+    read_more: További információ
   merge_accounts:
     modal:
       title: Fiókok egyesítése
@@ -1342,7 +1345,6 @@ hu:
     default_request_to_join_prompt: Köszönjük érdeklődését csoportunk iránt. Kérlek, mutatkozz be, és indokold meg, miért jelentkezel.
     upgrade_for_subgroups: 'Kérjük <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">, frissítse előfizetését</a> egy alcsoport létrehozásához'
     share_this_url_with_people_who_want_to_join: Oszd meg ezt az URL-t azokkal, akik csatlakozni szeretnének
-    new_description_html: "<h3>Milyen kihívásokkal néz szembe a szervezete a döntéshozatal során?</h3><p></p><h3> Hogyan szeretné használni a Loomio-t a szervezetében?</h3><p></p>"
     allow_polls_without_discussions: Szavazások engedélyezése megbeszélés nélkül
     allow_polls_without_discussions_help: Engedélyezze az önálló szavazásokat (nem ajánlott). Vita nélkül az emberek nem tudnak kérdéseket feltenni vagy hatékonyan konszenzust kialakítani.
     aria_label: Csoportos űrlap
@@ -1907,6 +1909,19 @@ hu:
     view_all_votes: Az összes szavazat megtekintése
     you_voted: Szavazott
     these_are_templates: Ezek a csoportodban található döntési sablonok. Kattintson egy sablonra új döntés meghozatalához. Az adminisztrátorok testreszabhatják a sablon összes részletét, hogy az megfeleljen a szervezeted gyakorlatának, és a tagok könnyen megtalálhassák és használhassák.
+    example_templates: Példa sablonok
+    example_poll_templates: Példa szavazás sablonok
+    browse_example_templates: Példasablonok böngészése
+    browse_example_templates_hint: Hozz létre egy új szavazássablont üresen, vagy használj egy példát a kezdéshez.
+    browse_example_use_hint: Kattintson a sablon címére <b>a szavazás elindításához</b> .
+    browse_example_fork_hint: "<b>Kattintson a villa ikonra</b> egy új szavazássablon létrehozásához, a példát kiindulópontként használva."
+    browse_unsure_help: Nem biztos benne, hogyan kell használni a szavazás sablonokat?
+    all_templates_hidden: Minden sablont elrejtettünk
+    new_poll_template_title: Új szavazássablon
+    new_template_from_blank: Új sablon nulláról
+    new_template_from_blank_subtitle: Hozzon létre egy új sablont, amely illeszkedik a szervezetében alkalmazott folyamathoz
+    blank: Új
+    blank_subtitle: Új szavazási sablon létrehozása egy adott folyamathoz
   poll_common_attachment_form:
     label: Mellékletek
   poll_common_add_option:
@@ -2711,6 +2726,16 @@ hu:
     start_direct_discussion_from_blank: Közvetlen beszélgetés indítása egy üres sablonból
     default_to_direct_discussion: Közvetlen beszélgetésként kezdés (csoport nélkül)
     default_to_direct_discussion_helptext: Használd ezt, ha azt szeretnéd, hogy az emberek közvetlen beszélgetéseket indítsanak ebből a sablonból.
+    example_discussion_templates: Példa vita sablonok
+    browse_example_use_hint: Kattintson a sablon címére <b>egy beszélgetés megkezdéséhez</b> .
+    browse_example_fork_hint: "<b>Kattintson a villa ikonra</b> egy új beszélgetési sablon létrehozásához, a példát kiindulópontként használva."
+    new_discussion_template_title: Új vita sablon
+    new_template_from_blank: Új sablon nulláról
+    new_template_from_blank_subtitle: Hozzon létre egy új sablont, amely illeszkedik a szervezetében alkalmazott folyamathoz
+    these_are_templates_v3: Ezek a csoportodban található beszélgetési sablonok. Kattints egy sablonra egy új beszélgetés indításához.
+    these_are_templates_admin_hint: A csoport adminisztrátorai szerkeszthetik a sablonokat, létrehozhatnak új sablonokat, átrendezhetik és elrejthetik/megjeleníthetik a sablonokat. Csak az adminisztrátorok láthatják a rejtett sablonokat.
+    show_hidden_templates: Rejtett sablonok megjelenítése
+    show_fewer: Kevesebb megjelenítése
   context_panel:
     thread_status:
       pinned: Ez a beszélgetés rögzítésre került. A csoport beszélgetési listájának tetején marad minden felhasználó számára.

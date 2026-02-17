@@ -312,6 +312,8 @@ ro:
       align: Alinia
       original: Original
       rearrange: Rearanja
+      save_template: Salvați șablonul
+      fork_template: Șablon furcă
     formatting_help:
       label: Formatare
       title: Invață să folosești Markdown pentru a formata textul
@@ -319,6 +321,7 @@ ro:
     commercial: Comercial
     nonprofit: Organizație non-profit
     opening_in: Deschidere %{time}
+    read_more: Citeşte mai mult
   merge_accounts:
     modal:
       title: Îmbinați conturile
@@ -1338,7 +1341,6 @@ ro:
     default_request_to_join_prompt: Vă mulțumim pentru interesul acordat grupului nostru. Vă rugăm să vă prezentați și să explicați de ce solicitați să vă înscrieți.
     upgrade_for_subgroups: 'Vă rugăm <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">să actualizați abonamentul</a> pentru a crea un subgrup'
     share_this_url_with_people_who_want_to_join: Distribuiți această adresă URL cu persoanele care doresc să se alăture
-    new_description_html: "<h3>Cu ce provocări se confruntă organizația dumneavoastră în procesul decizional?</h3><p></p><h3> Cum ați dori să utilizați Loomio în organizația dumneavoastră?</h3><p></p>"
     allow_polls_without_discussions: Permite sondaje fără discuție
     allow_polls_without_discussions_help: Împiedicați oamenii să înceapă sondaje fără a începe mai întâi o discuție.
     aria_label: Formular de grup
@@ -1900,6 +1902,19 @@ ro:
     view_all_votes: Vezi toate voturile
     you_voted: Ai votat
     these_are_templates: Acestea sunt șabloanele de decizie din grupul dvs. Faceți clic pe un șablon pentru a începe o nouă decizie. Administratorii pot personaliza toate detaliile unui șablon, astfel încât acesta să corespundă practicilor organizației dvs. și să fie ușor de găsit și utilizat de către membri.
+    example_templates: Exemple de șabloane
+    example_poll_templates: Exemple de șabloane de sondaje
+    browse_example_templates: Răsfoiți exemple de șabloane
+    browse_example_templates_hint: Creați un nou șablon de sondaj din câmpuri necompletate sau folosiți un exemplu pentru a începe.
+    browse_example_use_hint: Faceți clic pe titlul șablonului pentru <b>a începe un sondaj</b> .
+    browse_example_fork_hint: "<b>Faceți clic pe pictograma furculiță</b> pentru a crea un nou șablon de sondaj, folosind exemplul ca punct de plecare."
+    browse_unsure_help: Nu ești sigur cum să folosești Șabloanele de sondaj?
+    all_templates_hidden: Toate șabloanele au fost ascunse
+    new_poll_template_title: Șablon nou de sondaj
+    new_template_from_blank: Șablon nou din gol
+    new_template_from_blank_subtitle: Creați un șablon nou care să se potrivească unui proces pe care îl aveți în organizația dvs.
+    blank: Nou
+    blank_subtitle: Creați un nou șablon de sondaj pentru un anumit proces
   poll_common_attachment_form:
     label: Atașamente
   poll_common_add_option:
@@ -2704,6 +2719,16 @@ ro:
     start_direct_discussion_from_blank: Începeți o discuție directă dintr-un șablon gol
     default_to_direct_discussion: Începeți ca o discuție directă (fără grup)
     default_to_direct_discussion_helptext: Folosește această opțiune dacă vrei ca oamenii să înceapă discuții directe din acest șablon.
+    example_discussion_templates: Exemple de șabloane de discuții
+    browse_example_use_hint: Faceți clic pe titlul șablonului pentru <b>a începe o discuție</b> .
+    browse_example_fork_hint: "<b>Faceți clic pe pictograma furculiță</b> pentru a crea un nou șablon de discuție, folosind exemplul ca punct de plecare."
+    new_discussion_template_title: Șablon nou de discuție
+    new_template_from_blank: Șablon nou din gol
+    new_template_from_blank_subtitle: Creați un șablon nou care să se potrivească unui proces pe care îl aveți în organizația dvs.
+    these_are_templates_v3: Acestea sunt șabloanele de discuții din grupul dvs. Faceți clic pe un șablon pentru a începe o discuție nouă.
+    these_are_templates_admin_hint: Administratorii de grup pot edita șabloane, pot crea șabloane noi, pot rearanja și pot ascunde/reafișa șabloanele. Doar administratorii pot vedea șabloanele ascunse.
+    show_hidden_templates: Afișează șabloanele ascunse
+    show_fewer: Afișează mai puține
   context_panel:
     thread_status:
       pinned: Această discuție a fost fixată. Va rămâne în partea de sus a listei de discuții a grupului pentru toți utilizatorii.

@@ -312,6 +312,8 @@ nl_NL:
       align: Uitlijnen
       original: Origineel
       rearrange: Herschikken
+      save_template: Sjabloon opslaan
+      fork_template: Vorksjabloon
     formatting_help:
       label: Aan het formatteren
       title: Leer hoe je Markdown kan gebruiken om tekst op te maken
@@ -319,6 +321,7 @@ nl_NL:
     commercial: Commercieel
     nonprofit: Non-profit
     opening_in: Openingstijden %{tijd}
+    read_more: Lees meer
   merge_accounts:
     modal:
       title: Accounts samenvoegen
@@ -1346,7 +1349,6 @@ nl_NL:
     default_request_to_join_prompt: Bedankt voor uw interesse in onze groep. Stel uzelf voor en leg uit waarom u lid wilt worden.
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Upgrade uw abonnement</a> om een subgroep te creëren'
     share_this_url_with_people_who_want_to_join: Deel deze URL met mensen die mee willen doen
-    new_description_html: "<h3>Voor welke uitdagingen staat uw organisatie bij het nemen van beslissingen?</h3><p></p><h3> Hoe wilt u Loomio in uw organisatie gebruiken?</h3><p></p>"
     allow_polls_without_discussions: Peilingen zonder discussie toestaan
     allow_polls_without_discussions_help: Voorkom dat mensen peilingen starten zonder eerst een discussie te beginnen.
     aria_label: Groepsvorm
@@ -1925,6 +1927,19 @@ nl_NL:
     view_all_votes: Bekijk alle stemmen
     you_voted: Je hebt gestemd
     these_are_templates: Dit zijn de beslissingssjablonen in uw groep. Klik op een sjabloon om een nieuwe beslissing te starten. Beheerders kunnen alle details van een sjabloon aanpassen, zodat deze aansluit bij de werkwijze van uw organisatie en gemakkelijk te vinden en te gebruiken is voor leden.
+    example_templates: Voorbeeldsjablonen
+    example_poll_templates: Voorbeelden van enquêtesjablonen
+    browse_example_templates: Bekijk voorbeeldtemplates
+    browse_example_templates_hint: Maak een nieuw enquêtesjabloon helemaal vanaf nul, of gebruik een voorbeeld om te beginnen.
+    browse_example_use_hint: Klik op de titel van de sjabloon om <b>een enquête te starten</b> .
+    browse_example_fork_hint: "<b>Klik op het vorkpictogram</b> om een nieuwe enquêtesjabloon te maken, waarbij u het voorbeeld als uitgangspunt gebruikt."
+    browse_unsure_help: Weet u niet zeker hoe u polltemplates moet gebruiken?
+    all_templates_hidden: Alle sjablonen zijn verborgen.
+    new_poll_template_title: Nieuw enquête-sjabloon
+    new_template_from_blank: Nieuw sjabloon vanuit een blanco pagina
+    new_template_from_blank_subtitle: Maak een nieuwe sjabloon die aansluit op een proces binnen uw organisatie.
+    blank: Nieuw
+    blank_subtitle: Maak een nieuwe enquêtesjabloon voor een specifiek proces.
   poll_common_attachment_form:
     label: Bijlagen
   poll_common_add_option:
@@ -2733,6 +2748,16 @@ nl_NL:
     start_direct_discussion_from_blank: Start een direct gesprek vanuit een leeg sjabloon.
     default_to_direct_discussion: Begin als een direct gesprek (zonder groep).
     default_to_direct_discussion_helptext: Gebruik dit als je wilt dat mensen vanuit deze sjabloon direct een discussie starten.
+    example_discussion_templates: Voorbeelden van discussiesjablonen
+    browse_example_use_hint: Klik op de titel van de sjabloon om <b>een discussie te starten</b> .
+    browse_example_fork_hint: "<b>Klik op het vorkpictogram</b> om een nieuw discussiesjabloon te maken, waarbij u het voorbeeld als uitgangspunt gebruikt."
+    new_discussion_template_title: Nieuw discussiesjabloon
+    new_template_from_blank: Nieuw sjabloon vanuit een blanco pagina
+    new_template_from_blank_subtitle: Maak een nieuwe sjabloon die aansluit op een proces binnen uw organisatie.
+    these_are_templates_v3: Dit zijn de discussiesjablonen in jouw groep. Klik op een sjabloon om een nieuwe discussie te starten.
+    these_are_templates_admin_hint: Groepsbeheerders kunnen sjablonen bewerken, nieuwe sjablonen maken, herschikken en verbergen/weergeven. Alleen beheerders kunnen de verborgen sjablonen zien.
+    show_hidden_templates: Verborgen sjablonen weergeven
+    show_fewer: Minder weergeven
   context_panel:
     thread_status:
       pinned: Deze discussie is vastgezet en blijft bovenaan de discussielijst van de groep staan voor alle gebruikers.
