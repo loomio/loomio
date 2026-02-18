@@ -70,6 +70,7 @@ vue/tests/screenshots
 .DS_Store
 node_modules
 /vue/dist
+/vue/ios
 storage/
 
 vue/tests/reports/
