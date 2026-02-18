@@ -217,8 +217,11 @@ en:
   timezones:
     local: Local time (%{value})
   common:
+    commercial: Commercial
+    nonprofit: Nonprofit
     value: "%{value}"
     admin_menu: Admin menu
+    templates_admin_hint: Because you are a group admin, you can hide or delete any templates you don't want, and edit the remaining ones to suit your needs.
     api_docs: API docs
     prefix_eg: e.g. %{val}
     are_you_sure: Are you sure?
@@ -241,6 +244,7 @@ en:
     all_day: All day
     ok_got_it: Ok, got it
     learn_more: Learn more
+    read_more: Read more
     not_found: Not found
     time_zone: Time zone
     local_time: Local time
@@ -257,6 +261,7 @@ en:
       pm: pm
     closing_in: Closing %{time}
     closed_ago: Closed %{time}
+    opening_in: Opening %{time}
     volume: Volume
     notification_volume: Notification Volume
     group: Group
@@ -307,11 +312,14 @@ en:
       close: Close
       reopen: Reopen
       save: Save
+      save_template: Save template
+      fork_template: Fork template
       move: Move
       save_changes: Save changes
       update_settings: Update settings
       reply: Reply
       edit: Edit
+      rearrange: Rearrange
       remove: Remove
       undo_remove: Undo remove
       like: Like
@@ -394,6 +402,9 @@ en:
     _8: 8th
     _9: 9th
     _10: 10th
+  auth:
+    oauth_cancelled: Sign in was cancelled
+    switching_accounts: Switching accounts. Please sign in with your new account details.
   devise:
     sessions:
       signed_up: Signed up successfully!
@@ -550,6 +561,7 @@ en:
       destroyed: Comment deleted
       removed: Comment removed
     say_something: Say something...
+    share_your_thoughts: Share your thoughts…
     edit_comment: Edit comment
     delete_comment: Delete comment
     cancel_reply: Cancel Reply
@@ -569,12 +581,14 @@ en:
     other_groups: Other groups
     all_groups: All groups
     invite_only_discussions: Invite-only discussions
+    direct_discussions: Direct discussions
     unread_discussions_count: Unread discussions (%{count})
     new_group: New group
     new_subgroup: New subgroup
     start_subgroup: New subgroup
     explore: Public groups
     explore_groups: Explore groups
+    find_a_group: Find a group
     start_decision: New decision
     more_groups: More groups
     template_gallery: Template gallery
@@ -710,7 +724,7 @@ en:
       poll_closed_by_user: "%{actor} closed the %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} closing in 24 hours: %{title}"
       poll_closing_soon_author: 'Your %{poll_type} is closing in 24 hours: %{title}'
-      poll_created: "Vote: %{title}"
+      poll_created: "%{poll_type}: %{title}"
       poll_edited: "%{actor} updated the %{poll_type}: %{title}"
       poll_expired: "%{poll_type} has closed: %{title}"
       poll_expired_author: 'Publish an outcome: %{title}'
@@ -749,7 +763,7 @@ en:
       poll_closed_by_user: "%{actor} closed the %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} closing in 24 hours: %{title}"
       poll_closing_soon_author: 'Your %{poll_type} is closing in 24 hours: %{title}'
-      poll_created: "%{actor} started a %{poll_type}: %{title}"
+      poll_created: "%{actor} created a %{poll_type}: %{title}"
       poll_edited: "%{actor} updated the %{poll_type}: %{title}"
       poll_expired: "%{poll_type} has closed: %{title}"
       poll_expired_author: 'Share the outcome of your %{poll_type}: %{title}'
@@ -787,7 +801,7 @@ en:
       poll_closed_by_user: "%{actor} closed the %{poll_type}"
       poll_closing_soon: "%{poll_type} closing in 24 hours"
       poll_closing_soon_author: Your %{poll_type} is closing in 24 hours
-      poll_created: "%{actor} started a %{poll_type}"
+      poll_created: "%{actor} created a %{poll_type}"
       poll_edited: "%{actor} updated the %{poll_type}"
       poll_expired: "%{poll_type} has closed"
       poll_expired_author: Share the outcome of your %{poll_type}
@@ -815,10 +829,26 @@ en:
     start_new_thread: Or, start new discussion
   discussion_template:
     browse_public_templates: Browse template gallery
+    browse_example_templates: Browse example templates
+    example_templates: Example templates
+    example_discussion_templates: Example discussion templates
     start_a_new_discussion: Start a new discussion
+    start_discussion: Start a discussion
+    start_a_direct_discussion: Start a direct discussion
     discussion_template_saved: Discussion template saved
     these_are_public_templates: 'These templates are available for you to copy or modify to suit your group'
-    these_are_templates: 'These are the discussion templates in your group. Click a template to start a discussion. You can also edit, remove, or reorder these if you like. '
+    browse_public_templates_hint: 'Create a new discussion template from blank, or use an example as a starting point.'
+    browse_example_use_hint: "Click the template title to <b>start a discussion</b>."
+    browse_example_fork_hint: "<b>Click the fork icon</b> to create a new discussion template, using the example as a starting point."
+    new_discussion_template_title: New discussion template
+    new_template_from_blank: New template from blank
+    new_template_from_blank_subtitle: Create a new template to suit a process you have in your organization
+    these_are_templates: These are the discussion templates in your group.
+    these_are_templates_v3: 'These are the discussion templates in your group. Click a template to start a new discussion.'
+    these_are_templates_admin_hint: 'You can hide templates that you don''t use and edit the remaining ones to suit your needs.'
+    process_name_placeholder: "e.g. Weekly standup"
+    process_subtitle_placeholder: "e.g. A short check-in with the team each week"
+    default_title_placeholder: "e.g. Standup - January 15"
     default_title_label: Default title
     default_title_hint: Prefill the title field with editable text. This is optional - leave blank if unsure.
     title_placeholder_label: Example title
@@ -827,21 +857,38 @@ en:
     example_description_label: Example description
     example_description_placeholder: Provide a template that people can use to start a thread with
     hidden_templates: Hidden templates
+    more_templates: More templates
+    fewer_templates: Fewer templates
+    show_hidden_templates: Show hidden templates
+    show_fewer: Show fewer
+    choose_a_group: Choose a group
+    default_templates: Default templates
+    or_start_a_direct_discussion: Or start a direct discussion
+    choose_group_for_templates: Choose a group to view its discussion templates
+    start_direct_discussion: Start direct discussion
     confirm_delete: Are you sure you want to delete this discussion template?
     add_poll_template: Add poll template
     add_poll_template_help: Select any poll templates that help to complete this process
     recommended_poll_templates: Recommended poll templates
     share_in_template_gallery: Share this template in the public template gallery
+    poll_templates: Poll templates
+    poll_templates_help: Templates you select here will show up first when someone clicks Start a vote
+    start_direct_discussion_from_blank: Start a direct discussion from a blank template
+    default_to_direct_discussion: Default discussion group field to "None (direct discussion)"
+    default_to_direct_discussion_helptext: Use this if you want people to start direct discussions from this template.
   discussion_form:
     none_invite_only_discussion: None (invite-only discussion)
+    none_direct_discussion: None (direct discussion)
+    direct_discussion_hint: A direct discussion is only visible to the specific people you invite. It will not appear in any group's discussion list — you can find it on your Direct discussions page.
     new_discussion_template: New discussion template
     edit_discussion_template: Edit discussion template
-    blank: Blank
-    blank_subtitle: Start a discussion and see where it takes you
+    blank: New
+    blank_subtitle: Create a new discussion template for a specific process
     new_template: New template
     new_template_subtitle: Create an example that others can copy
     to: To
     invite_only_thread: Invite-only discussion
+    direct_discussion: Direct discussion
     change_log_placeholder: Optionally, describe your changes. This message will be added to the discussion.
     change_log_label: What's changed?
     invite: Invite
@@ -862,6 +909,7 @@ en:
     title_placeholder: What is the topic you want to discuss?
     context_label: Context
     context_placeholder: Provide some context for this discussion, so people know how to participate
+    recommended_poll_templates: Recommended poll templates
     privacy_label: Privacy
     privacy_public: Anyone can view this thread if they have the link
     privacy_private: Only members of the group can view this thread
@@ -1201,6 +1249,7 @@ en:
     stats: Group stats
     participation_report: Participation report
     discussions: Discussions
+    discussion_templates: Discussion templates
     polls: Polls
     decisions: Decisions
     members: Members
@@ -1298,8 +1347,10 @@ en:
     default_request_to_join_prompt: 'Thanks for your interest in our group. Please introduce yourself and explain why you are requesting to join.'
     thread_defaults_help: Default settings for new threads
     click_to_change_image: Click to change the cover image (4x1) or logo (1x1)
-    change_cover_image: change cover image
-    change_logo: change logo
+    upload_background: upload background
+    remove_background: remove background
+    upload_logo: upload logo
+    remove_logo: remove logo
     permissions_explaination: |
       There are two levels of membership a person can have to a group: admin and member.
       Admins can edit group settings, make other people admins, and perform all the actions listed below.
@@ -1329,18 +1380,21 @@ en:
     organization_name_placeholder: What is the name of your organization?
     description: Description
     description_placeholder: Describe the purpose of your group so your group members know why they are here.
-    new_description_placeholder: Why are you trialing Loomio? What decisions do you need to make together?
-    new_description_html: '<h3>What challenges does your organization face with decision-making?</h3><p></p><h3>How would you like to use Loomio in your organization?</h3><p></p>'
+    new_description_html: ""
+    new_description_placeholder: What does your organization do? What decisions do you need to make together?
     secret_by_default: Your group will only be accessible by those who are invited to join. You can change this later.
     privacy_statement:
       public_on_web: Name, description, and attachments to the group context will be visible to the public
       private_to_group: Name and description will only be visible to members.
       private_to_parent_members: Name and description will be visible to members of %{parent}
     privacy: Privacy
-    group_privacy_is_open_description: Publicly listed. All threads are public.
-    group_privacy_is_closed_description: Unlisted. Anyone with the link can ask to join. All threads are private.
+    list_in_the_groups_directory: List in the groups directory?
+    list_in_directory_yes: Yes · show this group on the "find a group" page
+    list_in_directory_no: No · people should be invited or given a link to find the group
+    group_privacy_is_open_description: Group name, description, discussions, polls and files are public. Members are private.
+    group_privacy_is_closed_description: Group name and description is public. Discussions, polls, members and files are private.
     group_privacy_is_closed_public_threads_description: Unlisted. Anyone with the link can ask to join. Threads can be public or private.
-    group_privacy_is_secret_description: Only invited people can find the group. All threads are private.
+    group_privacy_is_secret_description: Everything is private.
     confirm_change_to_secret: If you proceed, all threads in this group and its subgroups will be made private.
     confirm_change_to_secret_subgroup: If you proceed, all threads will be made private.
     confirm_change_to_public: If you proceed, all threads in this group will be made public on the web.
@@ -1384,6 +1438,12 @@ en:
     members_can_start_discussions_help: Allow members to start new threads within the group
     members_can_raise_motions: Members can start polls
     members_can_raise_motions_help: Allow members to start polls and proposals within discussions or the group
+    members_can_create_templates: Members can create templates
+    members_can_create_templates_help: Allow members to create discussion and poll templates. Templates created by members will be hidden until an admin unhides them.
+    members_can_start_discussions_v2: Members can start new discussions
+    members_can_start_discussions_help_v2: Allow members to start new discussions within the group
+    members_can_edit_discussions_v2: Members can manage discussions and comments
+    members_can_edit_discussions_help_v2: Allow members to edit, move, pin, tag or close any discussion or comment in the group
     admins_can_edit_user_content: Admins can edit members' comments
     admins_can_edit_user_content_help: Allow admins to edit content written by members
     submit_start_group: Start group
@@ -1392,8 +1452,8 @@ en:
     messages:
       group_created: Group started
       group_updated: Group updated
-    upload_logo: Upload logo
-    upload_cover_photo: Upload cover photo
+      logo_removed: Logo removed
+      cover_photo_removed: Cover photo removed
   group_export_modal:
     title: Export group data
     body: |
@@ -1623,12 +1683,13 @@ en:
   dashboard_page:
     dashboard: Dashboard
     polls_to_vote_on: Polls to vote on
+    polls_to_vote_on_count: Polls to vote on (%{count})
     no_polls_to_vote_on: There are no polls you need to vote on
     recent_polls: Recent polls
     current_polls: Current polls
     recent_discussions: Recent discussions
     no_groups:
-      show_all: Welcome! You are not a member of any groups yet. <a href="/explore">Browse public groups</a> or <a href="/g/new">Start a group</a>.
+      show_all: Welcome! You are not a member of any groups yet.
       show_muted: You don't have any muted threads because you are not a member of any groups.
     no_threads:
       show_all: You don't have any recent discussions.
@@ -1674,8 +1735,9 @@ en:
       thismonth: This month
       older: Older than a month
   threads_page:
-    no_direct_threads: You have no direct threads
-    no_invite_only_threads: You have no invite-only threads
+    no_direct_discussions: You have no direct discussions
+    no_direct_discussions_title: You have no direct discussions
+    no_direct_discussions_helptext: Direct discussions are for contacting another user directly, without the discussion belonging to a group.
   inbox_page:
     # no_threads: Woohoo! You've read all the threads in your inbox.
     no_discussions: Woohoo! You've read all the discussions in your inbox.
@@ -1689,6 +1751,7 @@ en:
       join_group: <a href="/explore">join</a> a group to see threads.
   discussion:
     invite_only: Invite-only
+    direct: Direct
     max_threads_reached: |
       <p>You have used all %{maxThreads} threads available to this group.</p>
       <p>Next step, <a href="%{upgradeUrl}" target="_blank">choose a plan</a> to continue collaborating on Loomio.</p>
@@ -1804,9 +1867,11 @@ en:
     single_search_result: 1 public group matching <strong>%{searchTerm}:</strong>
     multiple_search_results: "%{resultCount} public groups matching <strong>%{searchTerm}:</strong>"
     no_results_found: "<strong>Can't find the group you're looking for?</strong> If a group's privacy is set to 'secret', it won't appear here."
-    newest_first: Newest first
-    biggest_first: Biggest first
-    order_by: Order groups by
+    order_by: Order by
+    most_members: Most members
+    least_members: Least members
+    newest: Newest
+    oldest: Oldest
   global:
     messages:
       app_update: A new version of Loomio has been released. Please reload.
@@ -1840,6 +1905,7 @@ en:
     dot_vote_title: Dot vote
     meeting_title: Time poll
     ranked_choice_title: Ranked choice
+    majority_title: Majority
     gradients_of_agreement_title: Gradients of agreement
   poll_option_form:
     thumb_up: Thumb up
@@ -1894,9 +1960,24 @@ en:
     select_minimum_to_maximum_options: Select %{minimum} to %{maximum} options
     custom_poll_types: Custom poll types
     hidden_poll_templates: Hidden poll templates
+    these_are_templates: These are the proposal and poll templates in your group.
+    example_templates: Example templates
+    example_poll_templates: Example poll templates
+    browse_example_templates: Browse example templates
+    browse_example_templates_hint: 'Create a new poll template from blank, or use an example to get started.'
+    browse_example_use_hint: "Click the template title to <b>start a poll</b>."
+    browse_example_fork_hint: "<b>Click the fork icon</b> to create a new poll template, using the example as a starting point."
+    browse_unsure_help: "Unsure how to use Poll Templates?"
+    all_templates_hidden: All templates have been hidden
+    new_poll_template_title: New poll template
+    new_template_from_blank: New template from blank
+    new_template_from_blank_subtitle: Create a new template to suit a process you have in your organization
+    blank: New
+    blank_subtitle: Create a new poll template for a specific process
     poll_template: Poll template
     poll_template_saved: Poll template saved
     poll_templates: Poll templates
+    start_a_poll: Start a poll
     poll_types: Poll types
     new_proposal_template: New proposal template
     edit_proposal_template: Edit proposal template
@@ -2073,6 +2154,7 @@ en:
     results_hidden_until_vote: Results will be shown after you vote
     unable_to_vote: You have not been invited to vote in this %{poll_type}
     draft_mode: Voting disabled. This is not open for voting yet.
+    voting_opens_at: "This %{poll_type} opens for voting %{time}"
     for_this_proposal_to_pass: "For this proposal to pass:"
     for_this_poll_type_to_be_valid: "For this %{poll_type} to be valid:"
   poll_common_collapsed:
@@ -2158,6 +2240,12 @@ en:
     closing_date: Closing date
     closing_hour: Closing time
     invalid_date: Invalid date
+  poll_common_opening_at_field:
+    voting_opens_immediately: Voting opens immediately
+    opening_date: Opening date
+    opening_hour: Opening time
+    scheduled_hint: The poll will be visible but not votable until the opening time.
+    draft_hint: This poll will be saved as a draft. Set an opening date or check "Voting opens immediately" when you're ready to start voting.
   poll_card:
     poll_type_by_name: "%{poll_type} by %{name}"
     started_by: Started by %{name}
@@ -2214,6 +2302,8 @@ en:
     quorum_tip_vote_share_requirement: 'Tip: You can also specify the level of agreement required for a proposal to pass. Edit an option to define vote share requirement'
     deadline: Deadline
     how_much_time_to_vote: How much time will you give people to vote?
+    voting_duration: Duration
+    voting_duration_hint: When does voting open and when does it close?
     notify_everyone_when_poll_starts: Notify everyone when %{poll_type} starts
     option_has_votes_confirm_delete: Some people have voted for this option, are you sure you want to delete it?
     example_title: Example title
@@ -2223,6 +2313,7 @@ en:
     advanced_settings: Advanced settings
     show_advanced_settings: Show advanced settings
     hide_advanced_settings: Hide advanced settings
+    more_settings: More settings
     choose_at_least: Choose at least
     choose_at_most: Choose at most
     please_review_the_form: Please review the form
@@ -2255,8 +2346,10 @@ en:
       score_hint: Voters assign a score to each option
       allocate: Allocate
       allocate_hint: Voters allocate a budget of points between the options
+      rank: Rank
       ranked_choice: Ranked choice
       ranked_choice_hint: Voters arrange options in order from most to least preferred
+      time: Time
       time_poll: Time poll
       time_poll_hint: Voters indicate when they are available to meet
     process: Process
@@ -2289,6 +2382,7 @@ en:
     limit_reason_length: Limit reason to maximum 500 characters
     save_poll: Save poll
     start_poll_type: Start %{poll_type}
+    create_poll_type: Create %{poll_type}
     share_poll_type: Share %{poll_type}
     who_may_vote: Who may vote in this %{poll_type}?
     update: Update
@@ -2296,6 +2390,8 @@ en:
     notify_invitees: Send notifications
     no_notifications_warning: Voters will not be notified. This is useful if you're running a lot of polls and plan to notify everyone later on.
     count_voters_added: "%{count} voters added"
+    notify_voters_when_voting_opens: Notify voters when voting opens
+    voters_notified_when_opens: Voters will be notified when voting opens
     poll_type_created: "%{poll_type} created"
     poll_type_started: "%{poll_type} started"
     poll_type_updated: "%{poll_type} updated"
@@ -2398,6 +2494,8 @@ en:
     objection: Objection
     object: Object
     block: Block
+    'yes': 'Yes'
+    'no': 'No'
     no_voting: No voting
   poll_count_form:
     pct_of_target: "% of target"
@@ -2462,7 +2560,7 @@ en:
     outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> shared an outcome"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> reopened the %{polltype}"
     poll_closed_by_user: "<a class='actor-link' href='/u/%{username}'>%{author}</a> closed the %{polltype}"
-    poll_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> started a %{polltype}"
+    poll_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> created a %{polltype}"
     poll_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a> edited the %{polltype}"
     poll_option_added: "<a class='actor-link' href='/u/%{username}'>%{author}</a> added options to the %{polltype}"
     poll_expired: "%{polltype} closed"

@@ -319,10 +319,18 @@ it:
       zoom: Zoom
       align: Allinea
       original: Originale
+      rearrange: Riorganizzare
+      save_template: Salva modello
+      fork_template: Modello di forcella
     formatting_help:
       label: Formattazione
       title: Impara come usare il Markdown per formattare il tuo testo
     thread: Filo
+    commercial: Commerciale
+    nonprofit: Non profit
+    opening_in: Apertura %{time}
+    read_more: Per saperne di più
+    templates_admin_hint: Poiché sei un amministratore del gruppo, puoi nascondere o eliminare i modelli che non desideri e modificare quelli rimanenti in base alle tue esigenze.
   merge_accounts:
     modal:
       title: Unisci account
@@ -530,6 +538,7 @@ it:
     public_privacy_notice: Il tuo commento sarà visibile a qualsiasi persona sul web.
     sign_in: Entra per partecipare alla discussione
     add_a_comment: Aggiungi un commento
+    share_your_thoughts: Condividi i tuoi pensieri…
   thread_nav:
     participants: Partecipanti
   sidebar:
@@ -562,6 +571,8 @@ it:
     unread_discussions_count: Discussioni non lette (%{count})
     new_group: Nuovo gruppo
     new_subgroup: Nuovo sottogruppo
+    find_a_group: Trova un gruppo
+    direct_discussions: Discussioni dirette
   strand_nav:
     newest: Più recente
     oldest: Maggiore
@@ -845,6 +856,10 @@ it:
     discussion_updated: Discussione aggiornata
     discussion_created: Discussione creata
     discussion_started: Discussione iniziata
+    none_direct_discussion: Nessuno (discussione diretta)
+    direct_discussion: Discussione diretta
+    direct_discussion_hint: 'Una discussione diretta è visibile solo alle persone specifiche che inviti. Non apparirà nell''elenco delle discussioni di nessun gruppo: puoi trovarla nella tua pagina Discussioni dirette.'
+    recommended_poll_templates: Modelli di sondaggio consigliati
   announcement:
     send_discussion: Invia thread
     send_group: Invita persone a %{name}
@@ -1232,6 +1247,7 @@ it:
     no_discussions_here: Nessuna discussione da vedere qui!
     private_discussions: Devi essere un membro per visualizzare le discussioni private in questo gruppo
     view_closed_discussions: Visualizza le discussioni chiuse
+    discussion_templates: Modelli di discussione
   export_data_modal:
     title: Come vuoi usare i tuoi dati?
     as_csv: Aprirlo in un foglio di calcolo
@@ -1346,16 +1362,29 @@ it:
     messages:
       group_created: Gruppo avviato
       group_updated: Gruppo aggiornato
+      logo_removed: Logo rimosso
+      cover_photo_removed: Foto di copertina rimossa
     upload_logo: Carica nuovo logo
     upload_cover_photo: Carica nuova immagine di copertina
     request_to_join_prompt: Richiesta di partecipazione immediata
     default_request_to_join_prompt: Grazie per il tuo interesse nel nostro gruppo. Presentati e spiega perché stai chiedendo di unirti a noi.
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Aggiorna il tuo abbonamento</a> per creare un sottogruppo'
     share_this_url_with_people_who_want_to_join: Condividi questo URL con le persone che vogliono unirsi
-    new_description_html: "<h3>Quali sfide deve affrontare la tua organizzazione nel processo decisionale?</h3><p></p><h3> Come vorresti utilizzare Loomio nella tua organizzazione?</h3><p></p>"
     allow_polls_without_discussions: Consenti sondaggi senza discussione
     allow_polls_without_discussions_help: Impedire alle persone di avviare sondaggi senza prima avviare una discussione.
     aria_label: Modulo di gruppo
+    list_in_the_groups_directory: Elenco nella directory dei gruppi?
+    list_in_directory_yes: Sì · mostra questo gruppo nella pagina "Trova un gruppo"
+    list_in_directory_no: No · le persone dovrebbero essere invitate o ricevere un collegamento per trovare il gruppo
+    upload_background: carica sfondo
+    remove_background: rimuovere lo sfondo
+    remove_logo: rimuovere il logo
+    members_can_create_templates: I membri possono creare modelli
+    members_can_create_templates_help: Consenti ai membri di creare modelli di discussione e sondaggio. I modelli creati dai membri saranno nascosti finché un amministratore non li ripristinerà.
+    members_can_start_discussions_v2: I membri possono avviare nuove discussioni
+    members_can_start_discussions_help_v2: Consenti ai membri di avviare nuove discussioni all'interno del gruppo
+    members_can_edit_discussions_v2: I membri possono gestire discussioni e commenti
+    members_can_edit_discussions_help_v2: Consenti ai membri di modificare, spostare, aggiungere, taggare o chiudere qualsiasi discussione o commento nel gruppo
   group_export_modal:
     title: Esporta i dati del gruppo
     body: <p>Puoi scaricare una copia dei dati del tuo gruppo in qualsiasi momento. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Scopri di più.</a></p><p> Il completamento richiede alcuni minuti, a seconda delle dimensioni del gruppo. Quando sarà pronto riceverai un'e-mail con un link per scaricare il file.</p>
@@ -1583,8 +1612,8 @@ it:
     current_polls: Votazioni correnti
     recent_threads: Discussioni recenti
     no_groups:
-      show_all: Benvenuta! Non sei iscritta ancora a nessun gruppo <a href="/explore">Sfoglia i gruppi pubblici</a> o <a href="/g/new">Avvia un gruppo</a>.
       show_muted: Non ci sono discussioni silenziate perchè non sei membro di alcun gruppo.
+      show_all: Benvenuto! Non sei ancora membro di nessun gruppo.
     no_threads:
       show_all: Non hai alcuna discussione recente
       show_proposals: Non ci sono proposte attive in questo momento.
@@ -1630,9 +1659,13 @@ it:
     view_recent: Visualizzare tutte le discussioni recenti?
     discussion_marked_as_read: Discussione contrassegnata come letta
     discussion_marked_as_unread: Discussione contrassegnata come non letta
+    polls_to_vote_on_count: Sondaggi su cui votare (%{count})
   threads_page:
     no_direct_threads: Non hai discussioni dirette
     no_invite_only_threads: Non hai discussioni riservate agli inviti
+    no_direct_discussions: Non hai discussioni dirette
+    no_direct_discussions_title: Non hai discussioni dirette
+    no_direct_discussions_helptext: Le discussioni dirette servono per contattare direttamente un altro utente, senza che la discussione appartenga a un gruppo.
   inbox_page:
     no_threads: Woohoo! Hai letto tutte le discussioni nella tua casella di posta..
     unread_threads: Discussioni non lette
@@ -1665,6 +1698,7 @@ it:
     volume:
       mute_message: Discussione disattivata
       unmute_message: Discussione riattivata
+    direct: Diretto
   discussion_last_seen_by:
     title: Visto da
     no_one: Nessuno l'ha ancora visto
@@ -1749,6 +1783,10 @@ it:
     newest_first: I voti più nuovi prima
     biggest_first: I più grandi prima
     order_by: Ornina i gruppi per
+    most_members: La maggior parte dei membri
+    least_members: Meno membri
+    newest: Più recente
+    oldest: Il più vecchio
   global:
     messages:
       reload: Ricaricare
@@ -1771,6 +1809,7 @@ it:
     meeting_title: Sondaggio appuntamento
     ranked_choice_title: Scelta di preferenze
     gradients_of_agreement_title: Gradienti di accordo
+    majority_title: Maggioranza
   poll_option_form:
     edit_option: Modifica opzione
     option_name: Nome dell'opzione
@@ -1893,6 +1932,21 @@ it:
     post_outcome: Pubblica conclusione
     view_all_votes: Visualizza tutti i voti
     you_voted: Hai votato
+    these_are_templates: Questi sono i modelli decisionali del tuo gruppo. Clicca su un modello per avviare una nuova decisione. Gli amministratori possono personalizzare tutti i dettagli di un modello in modo che corrisponda alle pratiche della tua organizzazione e sia facile da trovare e utilizzare per i membri.
+    example_templates: Modelli di esempio
+    example_poll_templates: Modelli di sondaggio di esempio
+    browse_example_templates: Sfoglia i modelli di esempio
+    browse_example_templates_hint: Crea un nuovo modello di sondaggio da zero oppure usa un esempio per iniziare.
+    browse_example_use_hint: Fare clic sul titolo del modello per <b>avviare un sondaggio</b> .
+    browse_example_fork_hint: "<b>Fare clic sull'icona della forchetta</b> per creare un nuovo modello di sondaggio, utilizzando l'esempio come punto di partenza."
+    browse_unsure_help: Non sai come utilizzare i modelli di sondaggio?
+    all_templates_hidden: Tutti i modelli sono stati nascosti
+    new_poll_template_title: Nuovo modello di sondaggio
+    new_template_from_blank: Nuovo modello da vuoto
+    new_template_from_blank_subtitle: Crea un nuovo modello adatto a un processo presente nella tua organizzazione
+    blank: Nuovo
+    blank_subtitle: Crea un nuovo modello di sondaggio per un processo specifico
+    start_a_poll: Avvia un sondaggio
   poll_common_attachment_form:
     label: Allegati
   poll_common_add_option:
@@ -2004,6 +2058,7 @@ it:
     voting_disabled_poll_is_template: Voto disattivato. Questo è un modello.
     for_this_proposal_to_pass: 'Per far passare questa proposta:'
     for_this_poll_type_to_be_valid: 'Affinché questo %{poll_type} sia valido:'
+    voting_opens_at: Questo %{poll_type} si apre per votare %{time}
   poll_common_collapsed:
     by_who: di %{name}
   poll_common_calendar_invite:
@@ -2583,6 +2638,8 @@ it:
       ranked_choice_hint: Gli elettori dispongono le opzioni in ordine dalla più alla meno preferita
       time_poll: Sondaggio temporale
       time_poll_hint: Gli elettori indicano quando sono disponibili per l'incontro
+      rank: Rango
+      time: Tempo
     process: Processo
     process_name: Titolo del modello
     process_name_hint: 'Come si chiama questo modello? Ad esempio: Consulenza sul ruolo, Controllo della temperatura, Approvazione dei verbali'
@@ -2638,6 +2695,12 @@ it:
     hide_results_description: Se vuoi che le persone votino senza vedere come hanno votato gli altri, puoi nascondere i risultati.
     process_helptext: Indica e descrivi il processo utilizzato per eseguire questo sondaggio.
     reminder_helptext: Invia una notifica "Chiusura imminente" 24 ore prima della scadenza. Questo può aumentare la partecipazione e offrire alle persone l'opportunità di riconsiderare la propria posizione.
+    voting_duration: Durata
+    voting_duration_hint: Quando si aprono e quando si chiudono le votazioni?
+    more_settings: Altre impostazioni
+    create_poll_type: Crea %{poll_type}
+    notify_voters_when_voting_opens: Avvisare gli elettori quando si aprono le votazioni
+    voters_notified_when_opens: Gli elettori saranno avvisati all'apertura delle votazioni
   poll_receipts_page:
     verify_participants: Verifica i partecipanti
     see_votes_if_quorum_reached: Se la votazione è chiusa e il quorum è stato raggiunto, vedrai chi ha espresso il voto.
@@ -2654,10 +2717,8 @@ it:
     aria_label: Aggiungi una risposta
   discussion_template:
     browse_public_templates: Sfoglia la galleria dei modelli
-    start_a_new_discussion: Inizia una nuova discussione
     discussion_template_saved: Modello di discussione salvato
     these_are_public_templates: Questi modelli sono disponibili per essere copiati o modificati in base alle esigenze del tuo gruppo
-    these_are_templates: Questi sono i modelli di discussione nel tuo gruppo. Clicca su un modello per avviare una discussione. Puoi anche modificarli, rimuoverli o riordinarli, se lo desideri.
     default_title_label: Titolo predefinito
     default_title_hint: 'Precompila il campo del titolo con testo modificabile. Questo campo è facoltativo: lascialo vuoto se non sei sicuro.'
     title_placeholder_label: Titolo di esempio
@@ -2671,6 +2732,38 @@ it:
     add_poll_template_help: Seleziona tutti i modelli di sondaggio che ti aiutano a completare questo processo
     recommended_poll_templates: Modelli di sondaggio consigliati
     share_in_template_gallery: Condividi questo modello nella galleria pubblica dei modelli
+    browse_example_templates: Sfoglia i modelli di esempio
+    example_templates: Modelli di esempio
+    browse_public_templates_hint: Fai clic sul nome di un modello per avviare una discussione con esso oppure fai clic sul pulsante di modifica a destra per crearne una copia e modificarlo per il tuo gruppo.
+    process_name_placeholder: ad esempio standup settimanale
+    process_subtitle_placeholder: ad esempio un breve check-in con il team ogni settimana
+    default_title_placeholder: ad esempio Standup - 15 gennaio
+    more_templates: Altri modelli
+    fewer_templates: Meno modelli
+    choose_a_group: Scegli un gruppo
+    default_templates: Modelli predefiniti
+    or_start_a_direct_discussion: Oppure avvia una discussione diretta
+    choose_group_for_templates: Scegli un gruppo per visualizzare i suoi modelli di discussione
+    start_direct_discussion: Avvia una discussione diretta
+    poll_templates: Modelli di sondaggio
+    poll_templates_help: I modelli selezionati qui verranno visualizzati per primi quando qualcuno clicca su Avvia una votazione
+    start_direct_discussion_from_blank: Avvia una discussione diretta da un modello vuoto
+    default_to_direct_discussion: Inizia come una discussione diretta (nessun gruppo)
+    default_to_direct_discussion_helptext: Utilizza questa opzione se vuoi che le persone avviino discussioni dirette da questo modello.
+    example_discussion_templates: Modelli di discussione di esempio
+    browse_example_use_hint: Fare clic sul titolo del modello per <b>avviare una discussione</b> .
+    browse_example_fork_hint: "<b>Fare clic sull'icona della forchetta</b> per creare un nuovo modello di discussione, utilizzando l'esempio come punto di partenza."
+    new_discussion_template_title: Nuovo modello di discussione
+    new_template_from_blank: Nuovo modello da vuoto
+    new_template_from_blank_subtitle: Crea un nuovo modello adatto a un processo presente nella tua organizzazione
+    these_are_templates_v3: Questi sono i modelli di discussione nel tuo gruppo. Clicca su un modello per avviare una nuova discussione.
+    these_are_templates_admin_hint: Gli amministratori del gruppo possono modificare i modelli, crearne di nuovi, riorganizzarli e nasconderli/mostrarli. Solo gli amministratori possono visualizzare i modelli nascosti.
+    show_hidden_templates: Mostra modelli nascosti
+    show_fewer: Mostra meno
+    start_a_new_discussion: Avvia una nuova discussione
+    start_discussion: Avvia una discussione
+    start_a_direct_discussion: Avvia una discussione diretta
+    these_are_templates: Questi sono i modelli di discussione nel tuo gruppo.
   context_panel:
     thread_status:
       pinned: Questa discussione è stata bloccata. Rimarrà in cima all'elenco delle discussioni del gruppo per tutti gli utenti.
@@ -2694,3 +2787,12 @@ it:
     confirm_change_to_private: "%{groupName} è un gruppo aperto. Se procedi, questa discussione sarà pubblica."
     messages:
       success: Discussione spostata su %{name}
+  auth:
+    oauth_cancelled: L'accesso è stato annullato
+    switching_accounts: Cambio account. Accedi con i dati del tuo nuovo account.
+  poll_common_opening_at_field:
+    voting_opens_immediately: Le votazioni si aprono immediatamente
+    opening_date: Data di apertura
+    opening_hour: Orario di apertura
+    scheduled_hint: Il sondaggio sarà visibile ma non votabile fino all'orario di apertura.
+    draft_hint: Questo sondaggio verrà salvato come bozza. Imposta una data di apertura o seleziona "Le votazioni si aprono immediatamente" quando sei pronto a votare.

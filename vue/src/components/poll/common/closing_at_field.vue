@@ -1,24 +1,26 @@
 <script lang="js">
 import AppConfig from '@/shared/services/app_config';
-import { format, formatDistance, parse, startOfHour, startOfDay,  isValid, addHours, isAfter } from 'date-fns';
+import { format, formatDistance, parse, startOfHour, startOfDay, isValid } from 'date-fns';
 import { hoursOfDay, exact, timeFormat} from '@/shared/helpers/format_time';
-import { mdiClockOutline, mdiCalendar } from '@mdi/js'
+import { mdiClockOutline } from '@mdi/js'
 
 export default {
   props: {
-    poll: Object
+    poll: Object,
+    minDate: {
+      type: Date,
+      default: null
+    }
   },
 
   data() {
     return {
-      mdiCalendar,
       mdiClockOutline,
       closingHour: format(this.poll.closingAt || startOfHour(new Date()), 'HH:mm'),
       closingDate: this.poll.closingAt || new Date(),
       times: hoursOfDay(),
       timeZone: AppConfig.timeZone,
-      dateToday: startOfDay(new Date()),
-      isShowingDatePicker: false,
+      dateToday: this.minDate ? startOfDay(this.minDate) : startOfDay(new Date()),
     };
   },
 
@@ -58,12 +60,15 @@ export default {
 <template lang="pug">
 .poll-common-closing-at-field
   .poll-common-closing-at-field__inputs.d-flex
-    lmo-date-input.mr-2(
+    v-date-input.mr-2(
       v-model='closingDate'
-      :prepend-inner-icon="mdiCalendar"
+      input-format="yyyy-mm-dd"
       :label="$t('poll_common_closing_at_field.closing_date')"
       :hint="$t('common.closing_in', { time: label })"
+      :error-messages="poll.errors.closingAt"
       :min="dateToday"
+      persistent-hint
+      hide-header
     )
     v-select.poll-common-closing-at-field__timepicker(
       :prepend-inner-icon="mdiClockOutline"
@@ -73,6 +78,5 @@ export default {
       :hint="twelvehour ? closingAtHint : null"
       :persistent-hint="twelvehour"
     )
-  validation-errors(:subject="poll", field="closingAt")
 
 </template>

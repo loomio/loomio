@@ -61,9 +61,31 @@ en:
       title: I'm starting to get the hang of this
       process_name: Practice proposal
       process_subtitle: Learn how proposals work by trying one out
-      process_introduction: "<p>Use this template to help your group get comfortable using proposals on Loomio. It’s a safe and simple way for people to try out voting and see how everything fits together.</p>"
+      process_introduction: "<p>Help your group get comfortable using proposals on Loomio. It’s a safe and simple way for people to try out voting and see how everything fits together.</p>"
       details: "<p>This is a practice run so everyone can get comfortable with how proposals work on Loomio.</p><p>Please vote, and leave a reason statement if you like.</p><p>No pressure, no real-world consequences. It’s just a way to explore how proposals work!</p>"
       outcome_statement: "<p>Thanks for participating in this practice proposal! \U0001F389</p><p>This was just a chance to see how voting and commenting works on Loomio. There’s no real decision being made here — but hopefully this helped everyone get familiar with the process.</p>"
+      title_v2: Pineapple belongs on pizza
+      process_subtitle_v2: Try out a proposal so you know how voting works
+      process_introduction_v2: "<p>A fun way for your group to try out voting on Loomio. Pick a lighthearted question, let people vote and leave a reason — no real decision, just practice.</p>"
+      details_v2: "<p>This is a practice proposal — there's no real decision here.</p><p>Try voting and leaving a reason to see how proposals work on Loomio.</p>"
+      outcome_statement_v2: "<p>Thanks for trying out a proposal! Now you know how voting works on Loomio.</p>"
+      agree_meaning: I agree with this
+      agree_prompt: Why do you agree?
+      abstain_meaning: I have no opinion on this
+      abstain_prompt: Any thoughts?
+      disagree_meaning: I disagree with this
+      disagree_prompt: Why do you disagree?
+    try_loomio:
+      process_name: Let's try Loomio
+      process_subtitle: Get your group to commit to trying Loomio together
+      process_introduction: "<p>Making the most of Loomio takes a group commitment. This proposal helps your group decide whether to invest the time and effort into giving Loomio a proper go — whether that's committing to a trial period or signing up for a plan together.</p>"
+      title: "Let's commit to trying Loomio together"
+      details: "<p>Using Loomio well takes a group effort — it only works when people show up and participate.</p><p>This proposal is asking everyone to commit to actively using Loomio for our trial period. That means checking in, voting on proposals, and joining discussions.</p><p>If you have concerns about this, raise an objection and say what would need to change — that's what the objection option is for.</p>"
+      outcome_statement: "<p>Share the outcome of this proposal with the group — what was decided and what happens next.</p>"
+      consent_meaning: "I'm willing to give it a go"
+      consent_prompt: What are you looking forward to about using Loomio?
+      objection_meaning: I have a concern we need to address first
+      objection_prompt: What needs to change before you can commit?
     proposal:
       process_subtitle: Raise a proposal to make a decision
       process_introduction: <p>The classic Loomio proposal helps you make a decision, converting a discussion into a clear outcome.</p><p>Suggest a course of action and invite people to respond by voting agree, abstain or disagree.</p><p>As people vote, they can give a reason why they have voted this way. You can see where everyone else stands on the matter, and why.</p><p>In this way you can use a proposal to prompt people for a response, uncover new information, and build shared understanding - to help your group make a better, more informed decision.</p><p>A proposal and associated discussion creates its own record of how the decision came about.</p><p><a target="_blank" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Read more about using the classic Loomio proposal in the Simple decision process</u></a>.</p>
@@ -92,6 +114,8 @@ en:
       outcome_statement: "<p>Thanks for participating in my advice round!</p>"
     consent:
       process_subtitle: Make a decision that is ‘safe to try’, without objections
+      process_subtitle_v2: Proceed unless someone raises an objection
+      process_introduction_v2: "<p><strong>Consent</strong> asks whether a proposal is safe to try, not whether it's perfect. The proposal passes as long as no one raises a meaningful objection. If someone objects, the group works to resolve it — and because participants can change their vote as the proposal evolves, objections become a tool for improvement rather than a roadblock.</p>"
       process_introduction: <p>Seek consent on a decision you need to make, where there are no meaningful objections to your proposal, so you can make a fast decision for your organization that is 'safe to try'.</p><ul><li><p>Aim for a ‘good enough’ decision</p></li><li><p>Involve many voices to develop a workable proposal</p></li><li><p>Ask if anyone has a valid objection</p></li><li><p>Amend the proposal to resolve objections</p></li></ul> <p><a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Read more about the Consent process</a>.</p>
       title: Hire Chloe for design role
       details: <h3 id="what-is-the-decision-you-need-to-make"><strong>What is the decision you need to make?</strong></h3><p></p><h3 id="why-is-this-important"><strong>Why is this important?</strong></h3><p></p><h3 id="what-are-you-asking-of-people-in-this-proposal"><strong>What are you asking of people in this proposal?</strong></h3><p></p><p>If you have an Objection, please say why and propose a change to the proposal that makes it safe.</p><p>Remember we are seeking consent for a ‘good enough’ decision that is 'safe to try', so we can make a good decision for our organization.</p>
@@ -101,12 +125,15 @@ en:
       objection: Objection
       objection_meaning: I have a valid objection and think the proposal will cause harm
       objection_prompt: What change to this proposal is needed to make it 'safe to try', so that you can support it?
+      details_v2: "<h3><strong>What is the decision you need to make?</strong></h3><p></p><h3><strong>Why is this important?</strong></h3><p></p><h3><strong>What are you asking of people in this proposal?</strong></h3><p></p><p>We're not aiming for perfection — give your consent if the proposal is good enough and safe to try. If you have an objection, say what needs to change to make it workable.</p>"
       outcome_statement: "<p>Thanks for participating in the consent process.</p>"
     consensus:
       process_subtitle: Reach collective agreement with everyone involved
+      process_introduction_v2: "<p><strong>Consensus</strong> is for decisions where it matters that everyone actively agrees. Participants work together to understand each other's needs and shape the proposal until the whole group can support it. Because people can change their vote as the conversation develops, the process encourages genuine dialogue rather than a one-shot decision. It takes more patience than other methods, but builds the strongest commitment.</p><p>This template includes a <strong>Block</strong> option by default. Block isn't suitable for every group — it can be controversial or misused. If you don't use block in your decision-making process, we recommend editing the template to remove it.</p>"
       process_introduction: <p>Build consensus for a decision you need to make, to reach an agreement that satisfies the needs and concerns of all participants.</p><ul><li><p>Discuss and develop a proposal together</p></li><li><p>Include and respect everyone involved</p></li><li><p>Seek agreement from most people&nbsp;</p></li></ul><p><a target="_blank" href="https://help.loomio.com/en/guides/consensus_process/index.html">Read more about the Consensus process</a>.</p>
       title: Approve the new Brand concept
       details: <h3 id="what-is-the-decision-you-need-to-make"><strong>What is the decision you need to make?</strong></h3><p></p><h3 id="why-is-this-important"><strong>Why is this important?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>What are you asking people to do?</strong></h3><p></p><p>For this proposal to pass, we need the majority of members to vote Agree. </p><p>If you Disagree, say why and what needs to change for you to Agree.</p>
+      details_v2: "<h3><strong>What is the decision you need to make?</strong></h3><p></p><h3><strong>Why is this important?</strong></h3><p></p><h3><strong>What are you asking people to do?</strong></h3><p></p><p>Share where you stand and why. If you disagree, explain what would need to change for you to support this.</p>"
       outcome_statement: "<p>Thanks for participating in the consensus process.</p>"
       agree: Agree
       agree_meaning: I support the proposal
@@ -120,6 +147,16 @@ en:
       block: Block
       block_meaning: I block this proposal and think it should not proceed
       block_prompt: Explain your objection to this proposal and why it should not go ahead
+    majority:
+      process_subtitle: Make a decision by the most votes
+      process_introduction: "<p><strong>Majority</strong> is the simplest way to make a group decision — participants vote Yes or No, and the proposal passes if more than half vote Yes. There's no abstain or block, so every vote carries equal weight.</p><p>Majority works well for straightforward decisions where you need a clear outcome. For decisions where it's important that people work together to understand each other and find common ground, consider Consent or Consensus.</p>"
+      title: Approve the budget for Q3
+      details: "<h3><strong>What is the decision you need to make?</strong></h3><p></p><h3><strong>Why is this important?</strong></h3><p></p><h3><strong>What are you asking people to do?</strong></h3><p></p>"
+      yes_meaning: I support this proposal
+      yes_prompt: Why do you support this proposal?
+      no_meaning: I do not support this proposal
+      no_prompt: Why do you not support this proposal?
+      outcome_statement: "<p>Thanks for participating in this majority vote.</p>"
     question_round:
       process_subtitle: Invite clarifying questions to help people understand a proposal
       process_introduction: <p>A Question round is an opportunity for people to ask clarifying questions about the proposal, so that everyone understands the proposal before they say what they think about it.</p><p>The Loomio Question round is a special proposal with no voting options. It enables participants to ask questions within a duration you set for the round.</p><p>A Question round is commonly used as a step in the Consent process.</p><p><a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Read more about the Consent process</a>.</p>
@@ -129,6 +166,8 @@ en:
       outcome_statement: "<p>Thanks for submitting your questions during this round</p>"
     sense_check:
       process_subtitle: Ask for feedback, questions and concerns
+      process_subtitle_v2: See if you're on the right track
+      process_introduction_v2: "<p><strong>Sense check</strong> helps you get early feedback before committing to a decision. Participants say whether things look good or flag concerns, so you can adjust course before moving to a formal proposal. It's not a decision — it's a temperature check.</p>"
       process_introduction: <p>The Sense check proposal is a good way to get feedback, invite questions and uncover concerns. It helps to clarify and improve a proposal before moving to a decision.</p><p>Sense check lets people know a proposal is forming and encourages them to engage. It is an opportunity to listen to people, sense how they feel and respond appropriately - opening the potential to incorporate their contributions to make a better decision.</p> <p>Use the Sense check proposal in the Consent process to invite reactions and comments to improve the proposal, and in a Consensus process to test for consensus.</p><p><a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Read more about using Sense check in the Simple decision process</u></a><span>.</span></p>
       title: How do you feel about the new brand concepts?
       details: <h3 id="what-are-you-proposing"><strong>What are you proposing?</strong></h3><p></p><h3 id="why-is-this-important"><strong>Why is this important?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>What are you asking people to do?</strong></h3><p></p><p>How do you feel about the proposal?  Leave a comment or make a suggestion for improvement.</p><p>This Sense check is an opportunity for your input and contribution, to help us make a better decision.</p>
@@ -145,6 +184,15 @@ en:
       concerned: Concerned
       concerned_meaning: Something about this may need to change for me to consent or agree
       concerned_prompt: What is your concern and how might it be addressed?
+      details_v2: "<h3><strong>What are you proposing?</strong></h3><p></p><h3><strong>Why is this important?</strong></h3><p></p><h3><strong>What are you asking people to do?</strong></h3><p></p><p>Say whether this looks good, could be better, or needs a rethink — and share your reasoning.</p>"
+      looks_good_meaning_v2: I'm happy with the direction
+      looks_good_prompt_v2: What do you like about it?
+      could_be_better: Could be better
+      could_be_better_meaning: I see potential but have suggestions
+      could_be_better_prompt: What would you change?
+      needs_a_rethink: Needs a rethink
+      needs_a_rethink_meaning: I think the approach isn't right
+      needs_a_rethink_prompt: What's your concern?
     gradients_of_agreement:
       process_subtitle: Express support for a proposal on an 8-point scale
       process_introduction: "<p>The Gradients of agreement proposal enables members of a group to express their support for a proposal in degrees on a scale, offering more ways of expressing support than in terms of “agree” and “disagree”.</p> <p>Use Gradients of agreement as a preliminary round, to test support for a proposal before moving to a formal agreement.</p><p>Gradients of agreement lets people know a proposal is forming and encourages them to engage. It is an opportunity to listen to people, sense how they feel and respond appropriately - opening the potential to incorporate their contributions to make a better decision.</p>"
@@ -176,26 +224,35 @@ en:
     simple_poll:
       process_subtitle: Find the most popular option
       process_introduction: <p>Find the most popular option or options with a single or multiple choice poll.</p><p><a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">Read more about Simple poll</a>.</p>
+      process_introduction_v2: "<p><strong>Choose</strong> helps you find the most popular option. Participants pick from a list — you can configure whether they select one or multiple options.</p><p><a target=\"_blank\" href=\"https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll\">Read more about Choose</a>.</p>"
       title: Where should the focus of our strategic direction be?
       details: <h3 id="what-is-this-poll-about"><strong>What is this poll about?</strong></h3><p></p><h3 id="why-is-this-important"><strong>Why is this important?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>What are you asking people to do?</strong></h3><p></p><p>Choose the option(s) you favor.</p>
     score_poll:
       process_subtitle: Measure the degree of support for each option
+      process_subtitle_v2: Measure the level of support for each option
       process_introduction: <p>Use Score poll when you want to survey people for their desire, preference or interest in each option.</p><p><span>Participants are asked to evaluate each option and assign a score by moving a slider along a scale.</span></p><p><a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">Read more about Score poll</a>.</p>
+      process_introduction_v2: "<p><strong>Score</strong> lets you measure the group's level of support for each option. Participants evaluate every option by assigning a score on a sliding scale, so you can see not just what people prefer, but by how much.</p><p><a target=\"_blank\" href=\"https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll\">Read more about Score poll</a>.</p>"
       title: Assessing how decisions are made in our organization
       details: <h3 id="what-is-this-poll-about"><strong>What is this poll about?</strong></h3><p></p><h3 id="why-is-this-important"><strong>Why is this important?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>What are you asking people to do?</strong></h3><p></p><p>Choose the option(s) you favor.</p>
     dot_vote:
       process_subtitle: Allocate a budget of points to reveal priorities
+      process_subtitle_v2: Reveal priorities when there are trade-offs
       process_introduction: <p>Dot vote can be used to allocate a limited resource across a number of options. It goes beyond a simple poll by helping participants appreciate there is a constraint when selecting options.</p><p>Participants are each given a budget of points to allocate.</p><p>Participants can allocate all their points to a single option or spread them over multiple options.</p><p>Participants may not exceed their budget so they must consider how they allocate their points carefully.</p><p><a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">Read more about Dot vote</a>.</p>
+      process_introduction_v2: "<p><strong>Allocate</strong> helps you understand a group's priorities when there are trade-offs. Each participant gets a budget of points to spread across the options — they can go all-in on one option or distribute their points across several. Because the budget is limited, every point spent is a genuine signal of priority.</p><p><a target=\"_blank\" href=\"https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote\">Read more about Allocate</a>.</p>"
       title: Choosing themes for our conference
       details: <h3 id="what-is-this-poll-about"><strong>What is this poll about?</strong></h3><p></p><h3 id="why-is-this-important"><strong>Why is this important?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>What are you asking people to do?</strong></h3><p></p><p>In this poll you have a budget of points to allocate to the options you prefer. You can allocate all points on one option or spread them out.</p>
     ranked_choice:
       process_subtitle: Understand the ordered preference of options
+      process_subtitle_v2: Find the group's order of preference
       process_introduction: <p>Ranked choice is useful when you have a large number of options, or are holding an election.</p><p>Voters drag and drop options to arrange them in order of preference.</p><p>Results are showed in ranked order.</p><p><a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">Read more about Ranked choice</a>.</p>
+      process_introduction_v2: "<p><strong>Rank</strong> reveals the group's order of preference. Participants drag and drop the options to arrange them from most to least preferred, and results show the overall ranking.</p><p><a target=\"_blank\" href=\"https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice\">Read more about Rank</a>.</p>"
       title: Elect directors to governance board
       details: <h3 id="what-is-this-poll-about"><strong>What is this poll about?</strong></h3><p></p><h3 id="why-is-this-important"><strong>Why is this important?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>What are you asking people to do?</strong></h3><p></p><p>Vote by ranking the options in order of your preference.  The option that ranks first in the results wins.</p>
     time_poll:
-      process_subtitle: Find when people are available to meet
+      process_subtitle: Find the best time for a meeting
+      process_subtitle_v2: Find when people are available
       process_introduction: <p>Quickly find the best time for your meeting or event. Add a title, details, and date/time options in your time zone. Participants will see the times localized to theirs.</p><p>When your Time poll closes, set the outcome with the best time and any meeting instructions. Loomio will send the outcome email with a calendar invite so participants can add it to their calendars.</p><p><a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">Read more about Time poll</a>.</p>
+      process_introduction_v2: "<p><strong>Time poll</strong> helps you find when people are available. Add your proposed times and participants will see them in their own time zone. When the poll closes, set the outcome and Loomio will send everyone a calendar invite.</p><p><a target=\"_blank\" href=\"https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll\">Read more about Time poll</a>.</p>"
       title: Let's find a date for our next meeting
       details: "<p><strong>What is the meeting or event?</strong></p><p></p><p><strong>Why is this important?</strong></p><p></p><p><strong>What are you asking people to do?</strong></p><p></p><p><span>Mark the timeslots you are available with the green 'thumbs up' icon or leave the red 'thumbs down' in place when unavailable. </span></p><p><span>Use the 'thumbs sideways' icon to say you are available 'if need be'.</span></p>"
       reason_prompt: Is there anything you can say to help the organizer find a suitable time?
@@ -212,9 +269,13 @@ en:
     practice_thread:
       process_name: Practice discussion
       process_subtitle: Welcome people to the group and practice using Loomio
-      process_introduction: "<p>Use this template to welcome new members and encourage early participation. It gives people a chance to introduce themselves and explore Loomio’s features.</p>"
+      process_introduction: "<p>Welcome new members and encourage early participation. Ask people to introduce themselves and explore Loomio’s features together.</p>"
       title: "\U0001F44B Welcome! Say hi and try things out"
       description: "<p>Welcome to our Loomio group — it’s great to have you here!</p><p>This thread is a space to:</p><ul>\n<li><p>Introduce yourself to the group</p></li>\n<li><p>Try out some of Loomio's features - for example: try using reactions \U0001F44D</p></li>\n<li><p>Ask any questions you have at this stage</p></li>\n</ul><p>If you're not sure what to say, a simple hello is fine \U0001F642</p>"
+      process_subtitle_v2: "Welcome people and get comfortable using Loomio together"
+      process_introduction_v2: "<p>A welcome thread for new groups. People introduce themselves, try out features like commenting and reacting, and run their first proposal.</p>"
+      title_v2: "Welcome! Introduce yourself and try things out"
+      description_v2: "<p>Welcome to the group! This thread is a space to say hi, ask questions, try stuff out, and get comfortable using Loomio.</p><p>Leave a comment, use a reaction, or start one of the proposals below.</p><p>If you're not sure what to say, a simple hello is fine! Or try one of the voting tools below.</p>"
     blank:
       process_name: Blank template
       process_subtitle: Start a new discussion on any topic
@@ -229,7 +290,7 @@ en:
       title: Using Loomio for our group
       process_name: Let’s try out Loomio together
       process_subtitle: A thread to help people new to Loomio practice writing comments and voting.
-      process_introduction: "<p>Use this template to introduce people to Loomio.</p><p>A great way to experience Loomio is with a simple introductions thread and practice proposal</p>"
+      process_introduction: "<p>Introduce people to Loomio.</p><p>A great way to experience Loomio is with a simple introductions thread and practice proposal</p>"
       description: <h3 id="why-are-you-interested-in-using-loomio">Why are you interested in using Loomio?</h3><p>We are interested in using Loomio to involve people in decisions about our organization.</p><h3 id="what-are-you-asking-people-to-do">What are you asking people to do?</h3><p>I would love to hear your thoughts! Leave a comment below and vote in the proposal.</p><p>You can reply to someone's comment by clicking on the reply icon located at the bottom right of the comment.</p><p>Use @mention to notify people.</p>
       onboarding: Onboarding
     consent_process:
@@ -389,6 +450,7 @@ en:
       must_have_options: Must have at least one poll option
       must_be_in_the_future: Must be in the future
       templates_cannot_close: Templates cannot close
+      opening_at_before_closing_at: Opening date must be before closing date
       poll_options_dont_match: A bug with Loomio prevented your vote from saving. We're working on fixing this. Please reload and try again.
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) members have stated their position"
@@ -616,4 +678,7 @@ en:
       more_undecided: "%{count} more..."
       vote_now: Vote now
       you_have_until: You have until %{when} to participate.
+      voting_opens_and_closes: "Voting opens %{opens} and closes %{closes}. (%{days} days)"
+      voting_closes: "Voting closes %{when}."
+      voting_opened_and_closed: "Voting opened %{opens} and closed %{closes}. (%{days} days)"
       people_have_voted: "%{nom} of %{dnom} people have participated (%{pct}%)"

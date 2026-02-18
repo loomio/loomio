@@ -311,10 +311,18 @@ es:
       zoom: Zoom
       align: Alinear
       original: Original
+      rearrange: Arreglar de nuevo
+      save_template: Guardar plantilla
+      fork_template: Plantilla de horquilla
     formatting_help:
       label: 'Formato '
       title: Aprenda a usar Markdown para dar formato a su texto
     thread: Hilo
+    commercial: Comercial
+    nonprofit: No lucrativo
+    opening_in: Apertura %{time}
+    read_more: Leer más
+    templates_admin_hint: Como eres administrador de un grupo, puedes ocultar o eliminar cualquier plantilla que no quieras y editar las restantes para adaptarlas a tus necesidades.
   merge_accounts:
     modal:
       title: Fusionar cuentas
@@ -522,6 +530,7 @@ es:
     public_privacy_notice: Su comentario será público para cualquiera en internet.
     sign_in: 'Inicia sesión para unirte a la conversación '
     add_a_comment: Añadir un comentario
+    share_your_thoughts: Comparte tus pensamientos…
   thread_nav:
     participants: Participantes
   sidebar:
@@ -554,6 +563,8 @@ es:
     unread_discussions_count: Discusiones no leídas (%{count})
     new_group: Nuevo grupo
     new_subgroup: Nuevo subgrupo
+    find_a_group: Encuentra un grupo
+    direct_discussions: Discusiones directas
   strand_nav:
     newest: El más nuevo
     oldest: El más viejo
@@ -837,6 +848,10 @@ es:
     discussion_updated: Discusión actualizada
     discussion_created: Discusión creada
     discussion_started: Discusión iniciada
+    none_direct_discussion: Ninguno (discusión directa)
+    direct_discussion: Discusión directa
+    direct_discussion_hint: Una discusión directa solo es visible para las personas que invites. No aparecerá en la lista de discusiones de ningún grupo; puedes encontrarla en tu página de Discusiones directas.
+    recommended_poll_templates: Plantillas de encuesta recomendadas
   announcement:
     send_discussion: Manda hilo
     send_group: Invita a gente a %{name}
@@ -1221,6 +1236,7 @@ es:
     no_discussions_here: "¡No hay discusiones para ver aquí!"
     private_discussions: Necesitarás ser miembro para ver los hilos privados de este grupo.
     view_closed_discussions: Ver discusiones cerradas
+    discussion_templates: Plantillas de discusión
   export_data_modal:
     title: "¿Cómo quieres utilizar tus datos?"
     as_csv: Abrir en una hoja de cálculo
@@ -1335,16 +1351,29 @@ es:
     messages:
       group_created: Grupo ha sido creado
       group_updated: Grupo actualizado
+      logo_removed: Logotipo eliminado
+      cover_photo_removed: Foto de portada eliminada
     upload_logo: Cargar el logo
     upload_cover_photo: Cargar la foto de portada
     request_to_join_prompt: Solicitud de adhesión inmediata
     default_request_to_join_prompt: Gracias por su interés en nuestro grupo. Preséntese y explique por qué desea unirse.
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Actualice su suscripción</a> para crear un subgrupo'
     share_this_url_with_people_who_want_to_join: Comparte esta URL con personas que quieran unirse
-    new_description_html: "<h3>¿Qué desafíos enfrenta su organización en la toma de decisiones?</h3><p></p><h3> ¿Cómo te gustaría utilizar Loomio en tu organización?</h3><p></p>"
     allow_polls_without_discussions: Permitir encuestas sin discusión
     allow_polls_without_discussions_help: Evitar que las personas inicien encuestas sin iniciar primero una discusión.
     aria_label: Formulario de grupo
+    list_in_the_groups_directory: "¿Listado en el directorio de grupos?"
+    list_in_directory_yes: Sí · mostrar este grupo en la página "Buscar un grupo"
+    list_in_directory_no: No · Se debe invitar a las personas o darles un enlace para que encuentren el grupo.
+    upload_background: subir fondo
+    remove_background: eliminar el fondo
+    remove_logo: eliminar logotipo
+    members_can_create_templates: Los miembros pueden crear plantillas
+    members_can_create_templates_help: Permite a los miembros crear plantillas para debates y encuestas. Las plantillas creadas por los miembros permanecerán ocultas hasta que un administrador las revele.
+    members_can_start_discussions_v2: Los miembros pueden iniciar nuevas discusiones
+    members_can_start_discussions_help_v2: Permitir que los miembros inicien nuevas discusiones dentro del grupo
+    members_can_edit_discussions_v2: Los miembros pueden gestionar discusiones y comentarios.
+    members_can_edit_discussions_help_v2: Permitir a los miembros editar, mover, fijar, etiquetar o cerrar cualquier discusión o comentario en el grupo
   group_export_modal:
     title: Exportar la data grupal
     body: |
@@ -1580,8 +1609,8 @@ es:
     current_polls: Sondeos actuales
     recent_threads: Hilos recientes
     no_groups:
-      show_all: Bienvenido! Todavía no eres miembro de ningún grupo. <a href="/explore"> Explora grupos públicos</a> o <a href="/g/new"> comienza un grupo</a>.
       show_muted: No tienes ningún hilo silenciado porque no eres miembro de ningún grupo.
+      show_all: "¡Bienvenido! Aún no eres miembro de ningún grupo."
     no_threads:
       show_all: No tienes ningún hilo reciente.
       show_proposals: No hay propuestas activas en este momento.
@@ -1629,9 +1658,13 @@ es:
     view_recent: "¿Ver todas las discusiones recientes?"
     discussion_marked_as_read: Discusión marcada como leída
     discussion_marked_as_unread: Discusión marcada como no leída
+    polls_to_vote_on_count: Encuestas para votar (%{count})
   threads_page:
     no_direct_threads: No tienes hilos directos
     no_invite_only_threads: No tienes hilos solo para invitados
+    no_direct_discussions: No tienes discusiones directas
+    no_direct_discussions_title: No tienes discusiones directas
+    no_direct_discussions_helptext: Las discusiones directas son para contactar directamente a otro usuario, sin que la discusión pertenezca a un grupo.
   inbox_page:
     no_threads: "¡Genial! ¡Ya ha leído todos los hilos de su bandeja de entrada!"
     unread_threads: Hilos sin leer
@@ -1666,6 +1699,7 @@ es:
     volume:
       mute_message: Discusión silenciada
       unmute_message: Discusión activada
+    direct: Directo
   discussion_last_seen_by:
     title: Visto por
     no_one: Nadie ha visto esto todavía
@@ -1755,6 +1789,10 @@ es:
     newest_first: El más reciente primero
     biggest_first: El más grande primero
     order_by: Grupos ordenados por
+    most_members: La mayoría de los miembros
+    least_members: Menos miembros
+    newest: El más nuevo
+    oldest: El más antiguo
   global:
     messages:
       reload: Actualizar
@@ -1777,6 +1815,7 @@ es:
     meeting_title: Coordinar horario
     ranked_choice_title: Opción priorizada
     gradients_of_agreement_title: Gradientes de concordancia
+    majority_title: Mayoría
   poll_option_form:
     edit_option: Opción editar
     option_name: Nombre de la opción
@@ -1899,6 +1938,21 @@ es:
     post_outcome: Publicar conclusión
     view_all_votes: Ver todos los votos
     you_voted: Tú votaste
+    these_are_templates: Estas son las plantillas de decisión de su grupo. Haga clic en una plantilla para iniciar una nueva decisión. Los administradores pueden personalizar todos los detalles de una plantilla para que se ajuste a las prácticas de su organización y sea fácil de encontrar y usar para los miembros.
+    example_templates: Plantillas de ejemplo
+    example_poll_templates: Plantillas de encuesta de ejemplo
+    browse_example_templates: Explorar plantillas de ejemplo
+    browse_example_templates_hint: Cree una nueva plantilla de encuesta desde cero o utilice un ejemplo para comenzar.
+    browse_example_use_hint: Haga clic en el título de la plantilla para <b>iniciar una encuesta</b> .
+    browse_example_fork_hint: "<b>Haga clic en el icono de bifurcación</b> para crear una nueva plantilla de encuesta, utilizando el ejemplo como punto de partida."
+    browse_unsure_help: "¿No está seguro de cómo utilizar las plantillas de encuesta?"
+    all_templates_hidden: Se han ocultado todas las plantillas.
+    new_poll_template_title: Nueva plantilla de encuesta
+    new_template_from_blank: Nueva plantilla desde cero
+    new_template_from_blank_subtitle: Cree una nueva plantilla que se adapte a un proceso que tenga en su organización
+    blank: Nuevo
+    blank_subtitle: Crear una nueva plantilla de encuesta para un proceso específico
+    start_a_poll: Iniciar una encuesta
   poll_common_attachment_form:
     label: Adjuntos
   poll_common_add_option:
@@ -2010,6 +2064,7 @@ es:
     voting_disabled_poll_is_template: Votante discapacitado. Esta es una plantilla.
     for_this_proposal_to_pass: 'Para que esta propuesta sea aprobada:'
     for_this_poll_type_to_be_valid: 'Para que este %{poll_type} sea válido:'
+    voting_opens_at: Este %{poll_type} se abre para votación %{time}
   poll_common_collapsed:
     by_who: por %{name}
   poll_common_calendar_invite:
@@ -2591,6 +2646,8 @@ es:
       ranked_choice_hint: Los votantes ordenan las opciones desde la más preferida hasta la menos preferida
       time_poll: Encuesta de tiempo
       time_poll_hint: Los votantes indican cuándo están disponibles para reunirse
+      rank: Rango
+      time: Tiempo
     process: Proceso
     process_name: Título de la plantilla
     process_name_hint: "¿Cómo se llama esta plantilla? Por ejemplo, asesoramiento sobre roles, control de temperatura, aprobación de actas."
@@ -2646,6 +2703,12 @@ es:
     hide_results_description: Si quieres que la gente vote sin ver cómo han votado los demás, puedes ocultar los resultados.
     process_helptext: Nombre y describa el proceso que se está utilizando para ejecutar esta encuesta.
     reminder_helptext: Envíe una notificación de "Cierre pronto" 24 horas antes de la fecha límite. Esto puede aumentar la participación y brindar una oportunidad para que las personas reconsideren su postura.
+    voting_duration: Duración
+    voting_duration_hint: "¿Cuando se abre y cuando se cierra la votación?"
+    more_settings: Más configuraciones
+    create_poll_type: Crear %{poll_type}
+    notify_voters_when_voting_opens: Notificar a los votantes cuando se abre la votación
+    voters_notified_when_opens: Los votantes serán notificados cuando se abra la votación.
   poll_receipts_page:
     verify_participants: Verificar participantes
     see_votes_if_quorum_reached: Si la votación se ha cerrado y se ha alcanzado el quórum, podrás ver quién emitió su voto.
@@ -2662,10 +2725,8 @@ es:
     aria_label: Añadir una respuesta
   discussion_template:
     browse_public_templates: Explorar la galería de plantillas
-    start_a_new_discussion: Iniciar una nueva discusión
     discussion_template_saved: Plantilla de discusión guardada
     these_are_public_templates: Estas plantillas están disponibles para que las copie o modifique para adaptarlas a su grupo.
-    these_are_templates: Estas son las plantillas de discusión de tu grupo. Haz clic en una plantilla para iniciar una discusión. También puedes editarlas, eliminarlas o reordenarlas si lo deseas.
     default_title_label: Título predeterminado
     default_title_hint: Rellene el campo de título con texto editable. Esto es opcional; déjelo en blanco si no está seguro.
     title_placeholder_label: Título de ejemplo
@@ -2679,6 +2740,38 @@ es:
     add_poll_template_help: Seleccione cualquier plantilla de encuesta que ayude a completar este proceso
     recommended_poll_templates: Plantillas de encuesta recomendadas
     share_in_template_gallery: Comparte esta plantilla en la galería de plantillas públicas
+    browse_example_templates: Explorar plantillas de ejemplo
+    example_templates: Plantillas de ejemplo
+    browse_public_templates_hint: Haga clic en el nombre de una plantilla para iniciar una discusión con ella o haga clic en el botón editar a la derecha para hacer una copia y modificarla para su propio grupo.
+    process_name_placeholder: p. ej. Reunión semanal
+    process_subtitle_placeholder: Por ejemplo, una breve reunión con el equipo cada semana.
+    default_title_placeholder: ej. Standup - 15 de enero
+    more_templates: Más plantillas
+    fewer_templates: Menos plantillas
+    choose_a_group: Elige un grupo
+    default_templates: Plantillas predeterminadas
+    or_start_a_direct_discussion: O iniciar una discusión directa
+    choose_group_for_templates: Elija un grupo para ver sus plantillas de discusión
+    start_direct_discussion: Iniciar una discusión directa
+    poll_templates: Plantillas de encuestas
+    poll_templates_help: Las plantillas que seleccione aquí aparecerán primero cuando alguien haga clic en Iniciar una votación
+    start_direct_discussion_from_blank: Iniciar una discusión directa desde una plantilla en blanco
+    default_to_direct_discussion: Comenzar como una discusión directa (sin grupo)
+    default_to_direct_discussion_helptext: Utilice esto si desea que las personas inicien discusiones directas desde esta plantilla.
+    example_discussion_templates: Plantillas de discusión de ejemplo
+    browse_example_use_hint: Haga clic en el título de la plantilla para <b>iniciar una discusión</b> .
+    browse_example_fork_hint: "<b>Haga clic en el icono de bifurcación</b> para crear una nueva plantilla de discusión, utilizando el ejemplo como punto de partida."
+    new_discussion_template_title: Nueva plantilla de discusión
+    new_template_from_blank: Nueva plantilla desde cero
+    new_template_from_blank_subtitle: Cree una nueva plantilla que se adapte a un proceso que tenga en su organización
+    these_are_templates_v3: Estas son las plantillas de discusión de tu grupo. Haz clic en una plantilla para iniciar una nueva discusión.
+    these_are_templates_admin_hint: Los administradores de grupo pueden editar, crear, reorganizar y ocultar/mostrar plantillas. Solo los administradores pueden ver las plantillas ocultas.
+    show_hidden_templates: Mostrar plantillas ocultas
+    show_fewer: Mostrar menos
+    start_a_new_discussion: Iniciar una nueva discusión
+    start_discussion: Iniciar una discusión
+    start_a_direct_discussion: Iniciar una discusión directa
+    these_are_templates: Éstas son las plantillas de discusión en su grupo.
   context_panel:
     thread_status:
       pinned: Esta discusión se ha fijado. Permanecerá en la parte superior de la lista de discusiones del grupo para todos los usuarios.
@@ -2702,3 +2795,12 @@ es:
     confirm_change_to_private: "%{groupName} es un grupo abierto. Si continúas, esta discusión será pública."
     messages:
       success: La discusión se trasladó a %{name}
+  auth:
+    oauth_cancelled: Se canceló el inicio de sesión
+    switching_accounts: Cambiando de cuenta. Inicia sesión con los datos de tu nueva cuenta.
+  poll_common_opening_at_field:
+    voting_opens_immediately: La votación se abre inmediatamente
+    opening_date: Fecha de apertura
+    opening_hour: Horario de apertura
+    scheduled_hint: La encuesta será visible pero no se podrá votar hasta la hora de apertura.
+    draft_hint: Esta encuesta se guardará como borrador. Establece una fecha de inicio o marca "Votación inmediata" cuando estés listo para empezar a votar.

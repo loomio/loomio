@@ -319,10 +319,18 @@ pt_BR:
       zoom: Zoom
       align: Alinhar
       original: Original
+      rearrange: Reorganizar
+      save_template: Salvar modelo
+      fork_template: Modelo de garfo
     formatting_help:
       label: Formatação
       title: Aprenda como usar Markdown para formatar seu texto
     thread: Fio
+    commercial: Comercial
+    nonprofit: Organização sem fins lucrativos
+    opening_in: Abertura %{time}
+    read_more: Leia mais
+    templates_admin_hint: Como administrador do grupo, você pode ocultar ou excluir quaisquer modelos que não desejar e editar os restantes para atender às suas necessidades.
   merge_accounts:
     modal:
       title: Mesclar contas
@@ -530,6 +538,7 @@ pt_BR:
     public_privacy_notice: Seu comentário será visível para qualquer pessoa na web
     sign_in: Entre para se juntar à conversa
     add_a_comment: Adicione um comentário
+    share_your_thoughts: Compartilhe suas ideias…
   thread_nav:
     participants: Participantes
   sidebar:
@@ -562,6 +571,8 @@ pt_BR:
     unread_discussions_count: Discussões não lidas (%{count})
     new_group: Novo grupo
     new_subgroup: Novo subgrupo
+    find_a_group: Encontre um grupo
+    direct_discussions: Discussões diretas
   strand_nav:
     newest: Mais recente
     oldest: Mais antigo
@@ -845,6 +856,10 @@ pt_BR:
     discussion_updated: Discussão atualizada
     discussion_created: Discussão criada
     discussion_started: Discussão iniciada
+    none_direct_discussion: Nenhuma (discussão direta)
+    direct_discussion: Discussão direta
+    direct_discussion_hint: Uma conversa direta só é visível para as pessoas específicas que você convida. Ela não aparecerá na lista de discussões de nenhum grupo — você pode encontrá-la na sua página de conversas diretas.
+    recommended_poll_templates: Modelos de pesquisa recomendados
   announcement:
     send_discussion: Mandar tópico
     send_group: Convidar pessoas para %{name}
@@ -1233,6 +1248,7 @@ pt_BR:
     no_discussions_here: Nenhuma discussão por aqui!
     private_discussions: Você precisa ser membro para visualizar as conversas privadas neste grupo.
     view_closed_discussions: Ver discussões encerradas
+    discussion_templates: Modelos de discussão
   export_data_modal:
     title: Como você quer usar seus dados?
     as_csv: Abrir em uma planilha
@@ -1347,16 +1363,29 @@ pt_BR:
     messages:
       group_created: Grupo iniciado
       group_updated: Grupo atualizado
+      logo_removed: Logotipo removido
+      cover_photo_removed: Foto de capa removida
     upload_logo: Enviar logo
     upload_cover_photo: Enviar Image da Capa
     request_to_join_prompt: Solicitação de adesão rápida
     default_request_to_join_prompt: Obrigado pelo seu interesse em nosso grupo. Por favor, apresente-se e explique por que você está solicitando para participar.
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Atualize sua assinatura</a> para criar um subgrupo'
     share_this_url_with_people_who_want_to_join: Compartilhe esta URL com pessoas que desejam participar
-    new_description_html: "<h3>Quais desafios sua organização enfrenta na tomada de decisões?</h3><p></p><h3> Como você gostaria de usar o Loomio na sua organização?</h3><p></p>"
     allow_polls_without_discussions: Permitir enquetes sem discussão
     allow_polls_without_discussions_help: Impedir que as pessoas iniciem enquetes sem primeiro iniciar uma discussão.
     aria_label: Formulário de grupo
+    list_in_the_groups_directory: Listar no diretório de grupos?
+    list_in_directory_yes: Sim · Mostrar este grupo na página "Encontrar um grupo"
+    list_in_directory_no: Não, as pessoas devem ser convidadas ou receber um link para encontrar o grupo.
+    upload_background: carregar plano de fundo
+    remove_background: remover fundo
+    remove_logo: remover logotipo
+    members_can_create_templates: Os membros podem criar modelos.
+    members_can_create_templates_help: Permitir que os membros criem modelos de discussão e enquete. Os modelos criados pelos membros ficarão ocultos até que um administrador os exiba.
+    members_can_start_discussions_v2: Os membros podem iniciar novas discussões.
+    members_can_start_discussions_help_v2: Permitir que os membros iniciem novas discussões dentro do grupo.
+    members_can_edit_discussions_v2: Os membros podem gerenciar discussões e comentários.
+    members_can_edit_discussions_help_v2: Permitir que os membros editem, movam, fixem, marquem ou fechem qualquer discussão ou comentário no grupo.
   group_export_modal:
     title: Exportar data do grupo
     body: |
@@ -1592,8 +1621,8 @@ pt_BR:
     current_polls: Enquetes atuais
     recent_threads: Conversas recentes
     no_groups:
-      show_all: Bem vindo! Você ainda não é membro de nenhum grupo. <a href="/explore">Explore grupos públicos</a> ou <a href="/g/new">Inicie um novo grupo</a>.
       show_muted: Você não possui nenhuma conversa silenciada, porque você não é membro de nenhum grupo.
+      show_all: Bem-vindo(a)! Você ainda não é membro de nenhum grupo.
     no_threads:
       show_all: Você não tem nenhuma conversa recente.
       show_proposals: Não há propostas ativas no momento.
@@ -1639,9 +1668,13 @@ pt_BR:
     view_recent: Ver todas as discussões recentes?
     discussion_marked_as_read: Discussão marcada como lida
     discussion_marked_as_unread: Discussão marcada como não lida
+    polls_to_vote_on_count: Enquetes para votar (%{count})
   threads_page:
     no_direct_threads: Você não tem tópicos diretos
     no_invite_only_threads: Você não tem tópicos somente para convidados.
+    no_direct_discussions: Vocês não têm conversas diretas.
+    no_direct_discussions_title: Vocês não têm conversas diretas.
+    no_direct_discussions_helptext: As discussões diretas servem para contatar outro usuário diretamente, sem que a discussão pertença a um grupo.
   inbox_page:
     no_threads: Legal! Você leu todas as conversas na sua caixa de entrada.
     unread_threads: Conversas Não Lidas
@@ -1676,6 +1709,7 @@ pt_BR:
     volume:
       mute_message: Discussão silenciada
       unmute_message: Discussão sem som
+    direct: Direto
   discussion_last_seen_by:
     title: Visto por
     no_one: Ninguém viu isso ainda
@@ -1765,6 +1799,10 @@ pt_BR:
     newest_first: Mais recentes primeiro
     biggest_first: Maiores primeiro
     order_by: Ordenar grupos por
+    most_members: A maioria dos membros
+    least_members: Membros mínimos
+    newest: Mais recentes
+    oldest: Mais antigo
   global:
     messages:
       reload: Recarregar
@@ -1787,6 +1825,7 @@ pt_BR:
     meeting_title: Enquete de horário
     ranked_choice_title: Enquete de classificação
     gradients_of_agreement_title: Gradientes de concordância
+    majority_title: Maioria
   poll_option_form:
     edit_option: Editar opção
     option_name: Nome da opção
@@ -1909,6 +1948,21 @@ pt_BR:
     post_outcome: Publicar conclusão
     view_all_votes: Ver todos os votos
     you_voted: Você votou
+    these_are_templates: Estes são os modelos de decisão do seu grupo. Clique em um modelo para iniciar uma nova decisão. Os administradores podem personalizar todos os detalhes de um modelo para que ele corresponda às práticas da sua organização e seja fácil de encontrar e usar para os membros.
+    example_templates: Modelos de exemplo
+    example_poll_templates: Exemplos de modelos de pesquisa
+    browse_example_templates: Veja modelos de exemplo
+    browse_example_templates_hint: Crie um novo modelo de pesquisa do zero ou use um exemplo para começar.
+    browse_example_use_hint: Clique no título do modelo para <b>iniciar uma enquete</b> .
+    browse_example_fork_hint: "<b>Clique no ícone de garfo</b> para criar um novo modelo de enquete, usando o exemplo como ponto de partida."
+    browse_unsure_help: Não sabe como usar os modelos de enquete?
+    all_templates_hidden: Todos os modelos foram ocultados.
+    new_poll_template_title: Novo modelo de pesquisa
+    new_template_from_blank: Novo modelo a partir de um modelo em branco
+    new_template_from_blank_subtitle: Crie um novo modelo que se adapte a um processo existente na sua organização.
+    blank: Novo
+    blank_subtitle: Crie um novo modelo de pesquisa para um processo específico.
+    start_a_poll: Iniciar uma enquete
   poll_common_attachment_form:
     label: Anexos
   poll_common_add_option:
@@ -2022,6 +2076,7 @@ pt_BR:
     voting_disabled_poll_is_template: Votação desativada. Este é um modelo.
     for_this_proposal_to_pass: 'Para que esta proposta seja aprovada:'
     for_this_poll_type_to_be_valid: 'Para que este %{poll_type} seja válido:'
+    voting_opens_at: Esta %{poll_type} abre para votação %{time}
   poll_common_collapsed:
     by_who: por %{name}
   poll_common_calendar_invite:
@@ -2603,6 +2658,8 @@ pt_BR:
       ranked_choice_hint: Os eleitores organizam as opções em ordem da mais para a menos preferida
       time_poll: Enquete de tempo
       time_poll_hint: Os eleitores indicam quando estão disponíveis para se reunir
+      rank: Classificação
+      time: Tempo
     process: Processo
     process_name: Título do modelo
     process_name_hint: 'Como você chama este modelo? Por exemplo: aconselhamento de funções, verificação de temperatura, aprovação de atas.'
@@ -2658,6 +2715,12 @@ pt_BR:
     hide_results_description: Se você quiser que as pessoas votem sem ver como os outros votaram, você pode ocultar os resultados.
     process_helptext: Nomeie e descreva o processo que está sendo usado para executar esta pesquisa.
     reminder_helptext: Envie uma notificação de "Fechamento em breve" 24 horas antes do prazo final. Isso pode aumentar a participação e criar uma oportunidade para as pessoas reconsiderarem suas posições.
+    voting_duration: Duração
+    voting_duration_hint: Quando começa e quando termina a votação?
+    more_settings: Mais configurações
+    create_poll_type: Criar %{poll_type}
+    notify_voters_when_voting_opens: Avise os eleitores quando a votação começar.
+    voters_notified_when_opens: Os eleitores serão notificados quando a votação começar.
   poll_receipts_page:
     verify_participants: Verificar participantes
     see_votes_if_quorum_reached: Se a votação for encerrada e o quórum for atingido, você verá quem votou.
@@ -2674,10 +2737,8 @@ pt_BR:
     aria_label: Adicionar uma resposta
   discussion_template:
     browse_public_templates: Navegue pela galeria de modelos
-    start_a_new_discussion: Iniciar uma nova discussão
     discussion_template_saved: Modelo de discussão salvo
     these_are_public_templates: Você pode copiar ou modificar esses modelos para adequá-los ao seu grupo.
-    these_are_templates: Estes são os modelos de discussão do seu grupo. Clique em um modelo para iniciar uma discussão. Você também pode editar, remover ou reordenar estes modelos, se desejar.
     default_title_label: Título padrão
     default_title_hint: Preencha o campo do título com um texto editável. Isso é opcional; deixe em branco se não tiver certeza.
     title_placeholder_label: Título de exemplo
@@ -2691,6 +2752,38 @@ pt_BR:
     add_poll_template_help: Selecione quaisquer modelos de pesquisa que ajudem a concluir este processo.
     recommended_poll_templates: Modelos de pesquisa recomendados
     share_in_template_gallery: Compartilhe este modelo na galeria de modelos públicos.
+    browse_example_templates: Veja modelos de exemplo
+    example_templates: Modelos de exemplo
+    browse_public_templates_hint: Clique no nome de um modelo para iniciar uma discussão sobre ele ou clique no botão "Editar" à direita para fazer uma cópia e modificá-la para o seu próprio grupo.
+    process_name_placeholder: 'Exemplo: Reunião semanal de acompanhamento'
+    process_subtitle_placeholder: 'Exemplo: Uma breve reunião semanal com a equipe para verificar como está o andamento das coisas.'
+    default_title_placeholder: 'Exemplo: Standup - 15 de janeiro'
+    more_templates: Mais modelos
+    fewer_templates: Menos modelos
+    choose_a_group: Escolha um grupo
+    default_templates: Modelos padrão
+    or_start_a_direct_discussion: Ou inicie uma discussão direta.
+    choose_group_for_templates: Selecione um grupo para visualizar seus modelos de discussão.
+    start_direct_discussion: Iniciar discussão direta
+    poll_templates: Modelos de pesquisa
+    poll_templates_help: Os modelos que você selecionar aqui serão exibidos primeiro quando alguém clicar em "Iniciar uma votação".
+    start_direct_discussion_from_blank: Inicie uma discussão direta a partir de um modelo em branco.
+    default_to_direct_discussion: Comece com uma discussão direta (sem grupo).
+    default_to_direct_discussion_helptext: Use esta opção se quiser que as pessoas iniciem discussões diretas a partir deste modelo.
+    example_discussion_templates: Exemplos de modelos de discussão
+    browse_example_use_hint: Clique no título do modelo para <b>iniciar uma discussão</b> .
+    browse_example_fork_hint: "<b>Clique no ícone de bifurcação</b> para criar um novo modelo de discussão, usando o exemplo como ponto de partida."
+    new_discussion_template_title: Novo modelo de discussão
+    new_template_from_blank: Novo modelo a partir de um modelo em branco
+    new_template_from_blank_subtitle: Crie um novo modelo que se adapte a um processo existente na sua organização.
+    these_are_templates_v3: Estes são os modelos de discussão do seu grupo. Clique em um modelo para iniciar uma nova discussão.
+    these_are_templates_admin_hint: Os administradores do grupo podem editar modelos, criar novos modelos, reorganizar e ocultar/exibir modelos. Somente os administradores podem ver os modelos ocultos.
+    show_hidden_templates: Mostrar modelos ocultos
+    show_fewer: Mostrar menos
+    start_a_new_discussion: Iniciar uma nova discussão
+    start_discussion: Inicie uma discussão
+    start_a_direct_discussion: Inicie uma conversa direta
+    these_are_templates: Esses são os modelos de discussão do seu grupo.
   context_panel:
     thread_status:
       pinned: Esta discussão foi fixada. Ela permanecerá no topo da lista de discussões do grupo para todos os usuários.
@@ -2714,3 +2807,12 @@ pt_BR:
     confirm_change_to_private: "%{groupName} é um grupo aberto. Se você prosseguir, esta discussão se tornará pública."
     messages:
       success: A discussão foi movida para %{name}
+  auth:
+    oauth_cancelled: O login foi cancelado.
+    switching_accounts: Mudando de conta. Por favor, faça login com os dados da sua nova conta.
+  poll_common_opening_at_field:
+    voting_opens_immediately: A votação começa imediatamente.
+    opening_date: Data de abertura
+    opening_hour: Horário de funcionamento
+    scheduled_hint: A enquete ficará visível, mas não será possível votar nela até o horário de abertura.
+    draft_hint: Esta enquete será salva como rascunho. Defina uma data de abertura ou marque "A votação começa imediatamente" quando estiver pronto para começar a votar.

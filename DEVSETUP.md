@@ -1,6 +1,6 @@
 # Setup a Loomio development environment
 
-A step by step guide for people wanting to install Loomio on their personal computer so they can fix bugs and write features.
+A step by step guide for people wanting to install Loomio so they can fix bugs and write features.
 
 There are 3 parts to this document: MacOS X system setup, Ubuntu system setup, and Application setup. You'll need to complete one of the system setups, and then the application setup after that.
 
@@ -115,16 +115,10 @@ rake db:setup
 
 ## Launch rails and npm serve
 
-In one terminal run
+We have a Procfile.dev that can start rails, vite and hocuspocus all at once.
 
 ```
-rails s
-```
-
-In the another run
-```
-cd vue
-npm run serve
+bin/dev
 ```
 
 You can view Loomio in your browser by visiting http://localhost:8080.
@@ -134,9 +128,7 @@ To view Loomio's features and changes to your source code, visit any of the dev 
 ## Other things to know
 Rails stuff
 
-- sometimes `rails s` and similar commands will fail. Try with `bundle exec rails s` and that can help.
-- `rails c` will bring up a rails console
-- 'rspec' will run the rails tests
-
-### Having trouble?
-Let us know in the [product development](https://www.loomio.org/g/GN7EFQTK/loomio-community-product-development) group on Loomio.
+- `rails s` will start the server outside of Foreman, which I find helpful.
+- `rails c` will bring up a rails console.
+- 'rails test' will run the tests.
+- 'bin/e2e' will run the e2e tests

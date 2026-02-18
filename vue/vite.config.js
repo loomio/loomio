@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 import path from 'path';
-import vue from '@vitejs/plugin-vue'
-import vuetify from 'vite-plugin-vuetify'
+import vue from '@vitejs/plugin-vue';
+import vuetify from 'vite-plugin-vuetify';
 import envCompatible from 'vite-plugin-env-compatible';
 import yaml from '@originjs/vite-plugin-content';
 import Components from 'unplugin-vue-components/vite';
@@ -14,7 +14,7 @@ function LoomioVueResolver() {
     type: "component",
     resolve: (name) => {
       if (LoomioComponents[name]) {
-        return { default: name, from: '/src/components/'+LoomioComponents[name]+'.vue' };
+        return { default: name, from: '/src/components/' + LoomioComponents[name] + '.vue' };
       }
     }
   };
@@ -41,51 +41,55 @@ export default defineConfig({
         target: 'http://localhost:3000',
         changeOrigin: true,
       },
+      '/cable': {
+        target: 'ws://localhost:3000',
+        ws: true,
+      },
     },
   },
+
   resolve: {
     alias: [
-      {
-        find: /^~/,
-        replacement: ''
-      },
-      {
-        find: '@',
-        replacement: path.resolve(__dirname, 'src')
-      },
+      { find: /^~/, replacement: '' },
+      { find: '@', replacement: path.resolve(__dirname, 'src') },
     ],
-    extensions: [
-      '.mjs',
-      '.js',
-      '.ts',
-      '.jsx',
-      '.tsx',
-      '.json',
-      '.vue'
-    ]
+    extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue']
   },
+
   plugins: [
     vue(),
     vuetify({ autoImport: true }),
     Components({
       directoryAsNamespace: true,
-      resolvers: [
-        LoomioVueResolver(),
-      ],
+      resolvers: [LoomioVueResolver()],
     }),
     viteCommonjs(),
     envCompatible(),
     yaml(),
   ],
+
+  // --- IMPORTANT FIX ---
+  optimizeDeps: {
+    exclude: ['@emotion/is-prop-valid']
+  },
+
   build: {
     sourcemap: true,
     emptyOutDir: false,
-    outDir: '../public/client3'
+    outDir: '../public/client3',
+
+    // Prevent Vite from treating Nightwatch HTML reports as entries
+    rollupOptions: {
+      input: {
+        app: path.resolve(__dirname, 'index.html'),
+      },
+      external: ['@emotion/is-prop-valid']
+    }
   },
+
   experimental: {
-    renderBuiltUrl(filename, { hostId, hostType, type } ) {
-      // { hostId: string, hostType: 'js' | 'css' | 'html', type: 'public' | 'asset' }
+    renderBuiltUrl(filename) {
       return '/client3/' + filename;
     }
   }
-})
+});

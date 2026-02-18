@@ -13,7 +13,7 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
         flash[:notice] = t(:'devise.sessions.signed_in')
         render json: Boot::User.new(resource, root_url: URI(root_url).origin).payload.merge({ success: :ok, signed_in: true })
       else
-        LoginTokenService.create(actor: resource, uri: URI::parse(request.referrer.to_s))
+        LoginTokenService.create(actor: resource, uri: URI.parse(request.referrer.to_s))
         render json: { success: :ok, signed_in: false }
       end
       EventBus.broadcast('registration_create', resource)
@@ -21,7 +21,7 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
       render json: { errors: resource.errors }, status: 422
     end
   rescue UserService::EmailTakenError => e
-    render json: {errors: {email: [I18n.t('auth_form.email_taken')]}}, status: 422
+    render json: { errors: { email: [ I18n.t('auth_form.email_taken') ] } }, status: 422
   end
 
   private

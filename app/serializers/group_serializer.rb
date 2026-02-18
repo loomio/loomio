@@ -19,6 +19,7 @@ class GroupSerializer < ApplicationSerializer
              :members_can_edit_comments,
              :members_can_delete_comments,
              :members_can_raise_motions,
+             :members_can_create_templates,
              :admins_can_edit_user_content,
              :token,
              :polls_count,
@@ -27,6 +28,7 @@ class GroupSerializer < ApplicationSerializer
              :discussions_count,
              :public_discussions_count,
              :group_privacy,
+             :listed_in_explore,
              :memberships_count,
              :delegates_count,
              :pending_memberships_count,
@@ -108,6 +110,14 @@ class GroupSerializer < ApplicationSerializer
   end
 
   private
+  def include_tags?
+    super && (object.group_privacy == 'open' || current_user_membership)
+  end
+
+  def include_tag_names?
+    include_tags?
+  end
+
   def include_org_members_count?
     object.is_parent?
   end

@@ -313,10 +313,18 @@ hu:
       zoom: Zoomolás
       align: Igazítsa
       original: Eredeti
+      rearrange: Átrendezés
+      save_template: Sablon mentése
+      fork_template: Villa sablon
     formatting_help:
       label: Formázás
       title: Így használhatod a Markdown-t a szöveg formázására
     thread: Szál
+    commercial: Kereskedelmi
+    nonprofit: Nonprofit
+    opening_in: Megnyitás %{time}
+    read_more: További információ
+    templates_admin_hint: Mivel csoportadminisztrátor vagy, elrejtheted vagy törölheted a nem kívánt sablonokat, a fennmaradókat pedig igényeid szerint szerkesztheted.
   merge_accounts:
     modal:
       title: Fiókok egyesítése
@@ -520,6 +528,7 @@ hu:
     public_privacy_notice: A hozzászólás mindenki számára nyilvános lesz.
     sign_in: Lépj be, hogy hozzászolhass a témakörhöz.
     add_a_comment: Hozzászólás hozzáadása
+    share_your_thoughts: Oszd meg a gondolataidat…
   thread_nav:
     participants: Résztvevők
   sidebar:
@@ -552,6 +561,8 @@ hu:
     unread_discussions_count: Olvasatlan beszélgetések (%{count})
     new_group: Új csoport
     new_subgroup: Új alcsoport
+    find_a_group: Csoport keresése
+    direct_discussions: Közvetlen megbeszélések
   strand_nav:
     newest: Legújabb
     oldest: Legrégebbi
@@ -835,6 +846,10 @@ hu:
     discussion_updated: Vita frissítve
     discussion_created: Beszélgetés létrehozva
     discussion_started: Megbeszélés elkezdődött
+    none_direct_discussion: Nincs (közvetlen megbeszélés)
+    direct_discussion: Közvetlen beszélgetés
+    direct_discussion_hint: A közvetlen beszélgetések csak a meghívott személyek számára láthatók. Nem jelennek meg egyetlen csoport beszélgetési listájában sem – a Közvetlen beszélgetések oldalon találod meg őket.
+    recommended_poll_templates: Ajánlott szavazássablonok
   announcement:
     send_discussion: Téma küldése
     send_group: 'Meghívás a következőhöz: %{name}'
@@ -1210,6 +1225,7 @@ hu:
     no_discussions_here: Nincsenek itt beszélgetések!
     private_discussions: Tagnak kell lenned ahhoz, hogy megtekinthesd a csoport privát beszélgetéseit.
     view_closed_discussions: Lezárt beszélgetések megtekintése
+    discussion_templates: Beszélgetési sablonok
   export_data_modal:
     title: Hogyan szeretné használni az adatait?
     as_csv: Nyissa meg egy táblázatban
@@ -1322,16 +1338,29 @@ hu:
     messages:
       group_created: A csoport elindult
       group_updated: A csoport frissítve
+      logo_removed: Logó eltávolítva
+      cover_photo_removed: Borítókép eltávolítva
     upload_logo: Tölts fel logót
     upload_cover_photo: Töltse fel a borítóképét
     request_to_join_prompt: Csatlakozás kérése
     default_request_to_join_prompt: Köszönjük érdeklődését csoportunk iránt. Kérlek, mutatkozz be, és indokold meg, miért jelentkezel.
     upgrade_for_subgroups: 'Kérjük <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">, frissítse előfizetését</a> egy alcsoport létrehozásához'
     share_this_url_with_people_who_want_to_join: Oszd meg ezt az URL-t azokkal, akik csatlakozni szeretnének
-    new_description_html: "<h3>Milyen kihívásokkal néz szembe a szervezete a döntéshozatal során?</h3><p></p><h3> Hogyan szeretné használni a Loomio-t a szervezetében?</h3><p></p>"
     allow_polls_without_discussions: Szavazások engedélyezése megbeszélés nélkül
     allow_polls_without_discussions_help: Engedélyezze az önálló szavazásokat (nem ajánlott). Vita nélkül az emberek nem tudnak kérdéseket feltenni vagy hatékonyan konszenzust kialakítani.
     aria_label: Csoportos űrlap
+    list_in_the_groups_directory: Felsorolás a csoportok könyvtárában?
+    list_in_directory_yes: Igen · jelenítse meg ezt a csoportot a „Csoport keresése” oldalon
+    list_in_directory_no: Nem · Az embereket nem szabad meghívni, és nem szabad linket adni nekik a csoport megtalálásához
+    upload_background: háttér feltöltése
+    remove_background: háttér eltávolítása
+    remove_logo: logó eltávolítása
+    members_can_create_templates: A tagok sablonokat hozhatnak létre
+    members_can_create_templates_help: Engedélyezd a tagok számára a beszélgetési és szavazási sablonok létrehozását. A tagok által létrehozott sablonok rejtve maradnak, amíg egy adminisztrátor fel nem oldja azokat.
+    members_can_start_discussions_v2: A tagok új beszélgetéseket indíthatnak
+    members_can_start_discussions_help_v2: Engedélyezd a tagok számára új beszélgetések indítását a csoporton belül
+    members_can_edit_discussions_v2: A tagok kezelhetik a beszélgetéseket és a hozzászólásokat
+    members_can_edit_discussions_help_v2: A tagok szerkeszthetik, áthelyezhetik, rögzíthetik, címkézhetik vagy lezárhatják a csoportban található beszélgetéseket vagy hozzászólásokat.
   group_export_modal:
     title: Csoport adatok letöltése
     body: <p>A csoport adatainak másolatát bármikor letöltheti. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Tudj meg többet.</a></p><p> A kitöltése a csoport méretétől függően néhány percet vesz igénybe. Ha készen áll, e-mailben kap egy linket a fájl letöltéséhez.</p>
@@ -1559,8 +1588,8 @@ hu:
     current_polls: Aktuális szavazások
     recent_threads: Új témák
     no_groups:
-      show_all: Üdvözöljük! Még nem tagja egyetlen csoportnak sem. <a href="/explore">Böngészd a nyilvános csoportokat</a> vagy <a href="/g/new">Indítsd egy csoportot</a>.
       show_muted: Nincs elnémított témája, mert nem tagja egyetlen csoportnak sem.
+      show_all: Üdvözlünk! Még nem tagja egyetlen csoportnak sem.
     no_threads:
       show_all: Nincs legutóbbi témája.
       show_proposals: Jelenleg nincs aktív javaslat.
@@ -1601,14 +1630,18 @@ hu:
       thisweek: Ezen a héten
       thismonth: Ebben a hónapban
       older: Egy hónapnál régebbi
-    dashboard: Műszerfal
+    dashboard: Áttekintés
     recent_discussions: Legutóbbi beszélgetések
     view_recent: Megtekinted az összes legutóbbi beszélgetést?
     discussion_marked_as_read: Vita megjelölve olvasottként
     discussion_marked_as_unread: A beszélgetés olvasatlanként van megjelölve
+    polls_to_vote_on_count: Szavazandó szavazások (%{count})
   threads_page:
     no_direct_threads: Nincsenek közvetlen szálaid
     no_invite_only_threads: Nincsenek meghívásos beszélgetéseid
+    no_direct_discussions: Nincsenek közvetlen megbeszéléseid
+    no_direct_discussions_title: Nincsenek közvetlen megbeszéléseid
+    no_direct_discussions_helptext: A közvetlen beszélgetések célja, hogy közvetlenül kapcsolatba lépjünk egy másik felhasználóval anélkül, hogy a beszélgetés egy csoporthoz tartozna.
   inbox_page:
     no_threads: Ju Hú! Elolvasta a beérkező levelek összes témát.
     unread_threads: Olvasatlan témák
@@ -1639,6 +1672,7 @@ hu:
     volume:
       mute_message: Beszélgetés némítva
       unmute_message: Beszélgetés némítása feloldva
+    direct: Közvetlen
   discussion_last_seen_by:
     title: Látta
     no_one: Még senki sem látta
@@ -1726,6 +1760,10 @@ hu:
     newest_first: Először a legújabb
     biggest_first: Először a legnagyobb
     order_by: Csoportok rendezése szerint
+    most_members: A legtöbb tag
+    least_members: Legkevesebb tag
+    newest: Legújabb
+    oldest: Legidősebb
   global:
     messages:
       reload: Reload
@@ -1748,6 +1786,7 @@ hu:
     meeting_title: Időpont választás
     ranked_choice_title: Sorrend választás
     gradients_of_agreement_title: Az egyetértés gradiensei
+    majority_title: Többség
   poll_option_form:
     edit_option: Szerkesztési lehetőség
     option_name: Opció neve
@@ -1870,6 +1909,21 @@ hu:
     post_outcome: Következtetés közzététele
     view_all_votes: Az összes szavazat megtekintése
     you_voted: Szavazott
+    these_are_templates: Ezek a csoportodban található döntési sablonok. Kattintson egy sablonra új döntés meghozatalához. Az adminisztrátorok testreszabhatják a sablon összes részletét, hogy az megfeleljen a szervezeted gyakorlatának, és a tagok könnyen megtalálhassák és használhassák.
+    example_templates: Példa sablonok
+    example_poll_templates: Példa szavazás sablonok
+    browse_example_templates: Példasablonok böngészése
+    browse_example_templates_hint: Hozz létre egy új szavazássablont üresen, vagy használj egy példát a kezdéshez.
+    browse_example_use_hint: Kattintson a sablon címére <b>a szavazás elindításához</b> .
+    browse_example_fork_hint: "<b>Kattintson a villa ikonra</b> egy új szavazássablon létrehozásához, a példát kiindulópontként használva."
+    browse_unsure_help: Nem biztos benne, hogyan kell használni a szavazás sablonokat?
+    all_templates_hidden: Minden sablont elrejtettünk
+    new_poll_template_title: Új szavazássablon
+    new_template_from_blank: Új sablon nulláról
+    new_template_from_blank_subtitle: Hozzon létre egy új sablont, amely illeszkedik a szervezetében alkalmazott folyamathoz
+    blank: Új
+    blank_subtitle: Új szavazási sablon létrehozása egy adott folyamathoz
+    start_a_poll: Szavazás indítása
   poll_common_attachment_form:
     label: Mellékletek
   poll_common_add_option:
@@ -1981,6 +2035,7 @@ hu:
     voting_disabled_poll_is_template: Szavazás letiltva. Ez egy sablon.
     for_this_proposal_to_pass: 'Ahhoz, hogy ez a javaslat átmenjen:'
     for_this_poll_type_to_be_valid: 'Ahhoz, hogy ez a %{poll_type} érvényes legyen:'
+    voting_opens_at: Ez a %{poll_type} megnyílt szavazásra %{time}
   poll_common_collapsed:
     by_who: tőle %{name}
   poll_common_calendar_invite:
@@ -2560,6 +2615,8 @@ hu:
       ranked_choice_hint: A választók a leginkább preferálttól a legkevésbé preferáltig rendezik a lehetőségeket
       time_poll: Időközi szavazás
       time_poll_hint: A választók jelzik, mikor tudnak találkozni
+      rank: Rang
+      time: Idő
     process: Folyamat
     process_name: Sablon címe
     process_name_hint: 'Hogy hívják ezt a sablont? Pl.: Szerepköri tanácsadás, Hőmérséklet-ellenőrzés, Jegyzőkönyv jóváhagyása'
@@ -2615,6 +2672,12 @@ hu:
     hide_results_description: Ha azt szeretnéd, hogy az emberek ne lássák, hogyan szavaztak mások, elrejtheted az eredményeket.
     process_helptext: Nevezd meg és írd le a szavazás lebonyolításához használt folyamatot.
     reminder_helptext: Küldj egy „Hamarosan lezárul” értesítést 24 órával a határidő előtt. Ez növelheti a részvételt, és lehetőséget adhat az embereknek, hogy átgondolják álláspontjukat.
+    voting_duration: Időtartam
+    voting_duration_hint: Mikor kezdődik és mikor zárul a szavazás?
+    more_settings: További beállítások
+    create_poll_type: "%{poll_type} létrehozása"
+    notify_voters_when_voting_opens: Értesítsék a szavazókat a szavazás megkezdéséről
+    voters_notified_when_opens: A szavazókat értesíteni fogják, amikor megnyílik a szavazás
   poll_receipts_page:
     verify_participants: Résztvevők ellenőrzése
     see_votes_if_quorum_reached: Ha a szavazás lezárult és létrejött a határozatképző létszám, akkor láthatja, hogy kik szavaztak.
@@ -2631,10 +2694,8 @@ hu:
     aria_label: Válasz hozzáadása
   discussion_template:
     browse_public_templates: Sablongaléria böngészése
-    start_a_new_discussion: Új beszélgetés indítása
     discussion_template_saved: Beszélgetési sablon mentve
     these_are_public_templates: Ezek a sablonok másolhatók vagy módosíthatók a csoport igényei szerint.
-    these_are_templates: Ezek a csoportodban található beszélgetési sablonok. Kattints egy sablonra egy beszélgetés megkezdéséhez. Ezeket szerkesztheted, eltávolíthatod vagy átrendezheted is, ha szeretnéd.
     default_title_label: Alapértelmezett cím
     default_title_hint: Töltsd ki előre a cím mezőt szerkeszthető szöveggel. Ez opcionális - hagyd üresen, ha nem vagy biztos benne.
     title_placeholder_label: Példa cím
@@ -2648,6 +2709,38 @@ hu:
     add_poll_template_help: Válasszon ki bármilyen szavazássablont, amely segít a folyamat befejezésében
     recommended_poll_templates: Ajánlott szavazássablonok
     share_in_template_gallery: Ossza meg ezt a sablont a nyilvános sablongalériában
+    browse_example_templates: Példasablonok böngészése
+    example_templates: Példa sablonok
+    browse_public_templates_hint: Kattintson egy sablon nevére, ha beszélgetést szeretne indítani vele, vagy kattintson a jobb oldalon található szerkesztés gombra, ha másolatot szeretne készíteni és módosítani a saját csoportja számára.
+    process_name_placeholder: pl. heti standup
+    process_subtitle_placeholder: pl. Egy rövid bejelentkezés a csapattal minden héten
+    default_title_placeholder: pl. Stand-up - január 15.
+    more_templates: További sablonok
+    fewer_templates: Kevesebb sablon
+    choose_a_group: Válasszon egy csoportot
+    default_templates: Alapértelmezett sablonok
+    or_start_a_direct_discussion: Vagy indítson közvetlen beszélgetést
+    choose_group_for_templates: Válasszon ki egy csoportot a hozzá tartozó beszélgetési sablonok megtekintéséhez
+    start_direct_discussion: Közvetlen beszélgetés indítása
+    poll_templates: Szavazási sablonok
+    poll_templates_help: Az itt kiválasztott sablonok jelennek meg először, amikor valaki a Szavazás indítása gombra kattint.
+    start_direct_discussion_from_blank: Közvetlen beszélgetés indítása egy üres sablonból
+    default_to_direct_discussion: Közvetlen beszélgetésként kezdés (csoport nélkül)
+    default_to_direct_discussion_helptext: Használd ezt, ha azt szeretnéd, hogy az emberek közvetlen beszélgetéseket indítsanak ebből a sablonból.
+    example_discussion_templates: Példa vita sablonok
+    browse_example_use_hint: Kattintson a sablon címére <b>egy beszélgetés megkezdéséhez</b> .
+    browse_example_fork_hint: "<b>Kattintson a villa ikonra</b> egy új beszélgetési sablon létrehozásához, a példát kiindulópontként használva."
+    new_discussion_template_title: Új vita sablon
+    new_template_from_blank: Új sablon nulláról
+    new_template_from_blank_subtitle: Hozzon létre egy új sablont, amely illeszkedik a szervezetében alkalmazott folyamathoz
+    these_are_templates_v3: Ezek a csoportodban található beszélgetési sablonok. Kattints egy sablonra egy új beszélgetés indításához.
+    these_are_templates_admin_hint: A csoport adminisztrátorai szerkeszthetik a sablonokat, létrehozhatnak új sablonokat, átrendezhetik és elrejthetik/megjeleníthetik a sablonokat. Csak az adminisztrátorok láthatják a rejtett sablonokat.
+    show_hidden_templates: Rejtett sablonok megjelenítése
+    show_fewer: Kevesebb megjelenítése
+    start_a_new_discussion: Új beszélgetés indítása
+    start_discussion: Beszélgetés indítása
+    start_a_direct_discussion: Közvetlen beszélgetés indítása
+    these_are_templates: Ezek a csoportodban található beszélgetési sablonok.
   context_panel:
     thread_status:
       pinned: Ez a beszélgetés rögzítésre került. A csoport beszélgetési listájának tetején marad minden felhasználó számára.
@@ -2671,3 +2764,12 @@ hu:
     confirm_change_to_private: A %{groupName} egy nyílt csoport. Ha folytatod, ez a beszélgetés nyilvános lesz.
     messages:
       success: 'Vita áthelyezve ide: %{name}'
+  auth:
+    oauth_cancelled: Bejelentkezés megszakítva
+    switching_accounts: Fiókváltás. Kérjük, jelentkezzen be az új fiókadataival.
+  poll_common_opening_at_field:
+    voting_opens_immediately: A szavazás azonnal megnyílik
+    opening_date: Nyitás dátuma
+    opening_hour: Nyitvatartás
+    scheduled_hint: A szavazás látható lesz, de a nyitásig nem lehet rá szavazni.
+    draft_hint: Ez a szavazás vázlatként lesz mentve. Állítson be egy nyitási dátumot, vagy jelölje be a „A szavazás azonnal megnyílik” jelölőnégyzetet, amikor készen áll a szavazás megkezdésére.

@@ -15,6 +15,14 @@ module Ability::Poll
       user.can?(:show, poll) && poll.show_results?
     end
 
+    can :receipts, ::Poll do |poll|
+      if AppConfig.app_features[:verify_participants_admin_only]
+        poll.group_id && poll.group.admins.exists?(user.id)
+      else
+        user.can?(:show, poll)
+      end
+    end
+
     can [:show], ::Poll do |poll|
       PollQuery.visible_to(user: user).exists?(poll.id)
     end
@@ -35,7 +43,18 @@ module Ability::Poll
       )
     end
 
-    can [:announce, :remind], ::Poll do |poll|
+    can [:announce], ::Poll do |poll|
+      if poll.group_id
+        poll.group.admins.exists?(user.id) ||
+        (poll.group.members_can_announce && poll.admins.exists?(user.id))
+      else
+        poll.admins.exists?(user.id) ||
+        (!poll.specified_voters_only && poll.members.exists?(user.id))
+      end
+    end
+
+    can [:remind], ::Poll do |poll|
+      poll.opened? &&
       if poll.group_id
         poll.group.admins.exists?(user.id) ||
         (poll.group.members_can_announce && poll.admins.exists?(user.id))
@@ -60,7 +79,7 @@ module Ability::Poll
 
     can [:update], ::Poll do |poll|
       (poll.discussion_id.blank? || !poll.discussion.closed_at) &&
-      poll.admins.exists?(user.id)
+      poll.admins.exists?(user.id) && !poll.closed?
     end
 
     can [:destroy], ::Poll do |poll|
@@ -76,7 +95,8 @@ module Ability::Poll
     can :reopen, ::Poll do |poll|
       poll.closed? &&
       !poll.anonymous &&
-      can?(:update, poll)
+      (poll.discussion_id.blank? || !poll.discussion.closed_at) &&
+      poll.admins.exists?(user.id)
     end
   end
 end

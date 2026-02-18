@@ -8,7 +8,7 @@ Devise.setup do |config|
 
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
-  config.parent_mailer = "BaseMailer"
+  config.parent_mailer = "ApplicationMailer"
   # Automatically apply schema changes in tableless databases
 
   # ==> ORM configuration

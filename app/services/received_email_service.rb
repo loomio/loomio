@@ -79,7 +79,7 @@ class ReceivedEmailService
     if forward_email_rule = ForwardEmailRule.find_by(handle: email.route_path)
       Rails.logger.info("email forwarded");
       ForwardMailer.forward_message(
-        from: "\"#{email.sender_name}\" <#{BaseMailer::NOTIFICATIONS_EMAIL_ADDRESS}>",
+        from: "\"#{email.sender_name}\" <#{ApplicationMailer::NOTIFICATIONS_EMAIL_ADDRESS}>",
         to: forward_email_rule.email,
         reply_to: email.from,
         subject: email.subject,
@@ -117,7 +117,7 @@ class ReceivedEmailService
 
   def self.extract_reply_body(text, author_name = nil)
     return "" if text.strip.blank?
-    text.gsub!("\r\n", "\n")
+    text = text.gsub("\r\n", "\n")
 
     # some emails match multiple split points, we run this until there are none
     while regex = reply_split_points(author_name).find { |regex| regex.match? text } do

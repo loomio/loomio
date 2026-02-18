@@ -67,7 +67,7 @@ Rails.application.routes.draw do
       resources :attachments, only: [:index, :destroy]
       resources :webhooks, only: [:create, :destroy, :index, :update]
       resources :chatbots, only: [:create, :destroy, :index, :update] do
-        post :test, on: :collection
+        post :check, on: :collection
       end
 
       resources :boot, only: [] do
@@ -101,6 +101,7 @@ Rails.application.routes.draw do
           post :export
           post :export_csv
           post 'upload_photo/:kind', action: :upload_photo
+          delete 'remove_photo/:kind', action: :remove_photo
         end
         collection do
           get :count_explore_results
@@ -208,8 +209,6 @@ Rails.application.routes.draw do
         collection do
           get :browse_tags
           get :browse
-          post :hide
-          post :unhide
           post :discard
           post :undiscard
           post :positions
@@ -260,6 +259,7 @@ Rails.application.routes.draw do
 
       resources :poll_templates, only: [:index, :create, :update, :show, :destroy] do
         collection do
+          get :browse
           post :hide
           post :unhide
           post :discard
@@ -389,7 +389,7 @@ Rails.application.routes.draw do
   get 'groups'                             => 'application#index', as: :groups
   get 'polls'                              => 'application#index', as: :polls
   get 'report'                             => 'application#index', as: :report
-  get 'explore'                            => 'groups#index',      as: :explore
+  get 'explore'                            => 'groups#index',      as: :explore, constraints: lambda { |_| ENV['FEATURES_EXPLORE_PUBLIC_GROUPS'] }
   get 'profile'                            => 'application#index', as: :profile
   get 'contact'                            => 'application#index', as: :contact
   get 'email_preferences'                  => 'application#index', as: :email_preferences
@@ -408,11 +408,16 @@ Rails.application.routes.draw do
   get 'g/new'                              => 'application#index', as: :new_group
   get 'd/new'                              => 'application#index', as: :new_discussion
   get 'p/new(/:type)'                      => 'application#index', as: :new_poll
-  get 'threads/direct'                     => 'application#index', as: :groupless_threads
+  get 'dashboard/direct_discussions'       => 'application#index', as: :direct_discussions
   get 'tasks'                              => 'application#index', as: :tasks
+  get 'poll_templates/browse'              => 'application#index'
   get 'poll_templates/new'                 => 'application#index'
   get 'poll_templates/:id'                 => 'application#index'
   get 'poll_templates/:id/edit'            => 'application#index'
+  get 'discussion_templates/browse'        => 'application#index'
+  get 'discussion_templates/new'           => 'application#index'
+  get 'discussion_templates/:id'           => 'application#index'
+  get 'discussion_templates/:id/edit'      => 'application#index'
   get 'thread_templates/browse'            => 'application#index'
   get 'thread_templates/new'               => 'application#index'
   get 'thread_templates/:id'               => 'application#index'
@@ -454,7 +459,7 @@ Rails.application.routes.draw do
   get '/sitemap.xml' => 'application#sitemap'
 
 
-  Identities::Base::PROVIDERS.each do |provider|
+  Identity::PROVIDERS.each do |provider|
     scope provider do
       get :oauth,                           to: "identities/#{provider}#oauth",       as: :"#{provider}_oauth"
       get :authorize,                       to: "identities/#{provider}#create",      as: :"#{provider}_authorize"

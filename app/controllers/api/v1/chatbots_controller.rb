@@ -5,7 +5,7 @@ class Api::V1::ChatbotsController < Api::V1::RestfulController
     respond_with_collection(scope: index_scope)
   end
 
-  def test
+  def check
     ChatbotService.publish_test!(params)
     head :ok
   end

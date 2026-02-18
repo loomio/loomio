@@ -50,6 +50,7 @@ module.exports = {
     page.loadPath('view_closed_group_with_shareable_link')
     // page.expectText('.auth-form', 'You have been invited to join Dirty Dancing Shoes')
     page.fillIn('.auth-email-form__email input', 'max_von_sydow@example.com')
+    page.pause(500)
     page.click('.auth-email-form__submit')
     page.fillIn('.auth-signup-form__name input', 'Max Von Sydow')
     page.click('.auth-signup-form__legal-accepted .v-selection-control__wrapper')

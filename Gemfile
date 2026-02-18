@@ -1,17 +1,17 @@
 source 'http://rubygems.org'
 
 ruby '3.4.7'
-gem 'rails', '7.2.2.1'
-gem 'rack', '2.2.21'
+gem 'rails', '~> 8.0.0'
 gem 'uri', '1.1.1'
 gem 'rake'
 gem 'pg'
 gem 'active_record_extended'
 gem 'haml-rails', '~> 3.0.0'
+gem 'phlex-rails'
 gem 'devise', '~> 4.9.4'
 gem 'devise-i18n'
 gem 'devise-pwned_password'
-gem 'active_model_serializers', '~> 0.8.1'
+gem 'active_model_serializers', '~> 0.8.1', github: 'loomio/active_model_serializers', branch: 'fix-frozen-string-literal-ruby3'
 gem 'actionpack-action_caching'
 gem 'actionpack-page_caching'
 gem 'cancancan'
@@ -22,13 +22,13 @@ gem 'nokogiri'
 gem 'twitter-text', github: 'loomio/twitter-text'
 gem 'redcarpet', '~> 3.6.1'
 gem 'paper_trail', '~> 17.0.0'
-gem 'sidekiq', '~> 6.5.12'
-gem 'friendly_id', '~> 5.5.1'
-gem 'httparty', '~> 0.23.2'
+gem 'sidekiq', '~> 7.0'
+gem 'friendly_id', '~> 5.6.0'
+gem 'httparty', '~> 0.24.2'
 gem 'browser', '~> 6.2.0'
 gem "aws-sdk-s3", require: false
 gem "ruby-openai"
-gem "google-cloud-storage", "~> 1.57", require: false
+gem "google-cloud-storage", "~> 1.58", require: false
 gem 'image_processing', '~> 1.14'
 gem "ruby-vips"
 gem "stackprof"
@@ -36,7 +36,7 @@ gem "sentry-ruby"
 gem "sentry-rails"
 gem "sentry-sidekiq"
 gem 'http_accept_language'
-gem 'sprockets', '3.7.2'
+gem 'sprockets', '~> 4.2'
 gem 'sprockets-rails', require: 'sprockets/railtie'
 gem 'dartsass-sprockets'
 gem 'uuidtools'
@@ -51,9 +51,7 @@ gem 'rack-attack'
 gem 'web-push'
 gem 'bootsnap', require: false
 gem 'redis-objects'
-gem 'redis-rails'
-gem 'hiredis'
-gem 'connection_pool'
+gem 'connection_pool', '~> 2.4'
 gem 'ruby-saml'
 gem 'google-cloud-translate'
 gem 'puma'
@@ -68,7 +66,6 @@ gem 'pg_search'
 gem 'i18n-timezones'
 gem 'actionpack-cloudflare'
 gem 'victor', require: false
-gem 'concurrent-ruby', '1.3.5' # can remove in rails 7.1
 
 group :development, :test do
   gem 'byebug'
@@ -85,14 +82,10 @@ group :development do
 end
 
 group :test do
+  gem 'minitest', '~> 5.0'
   gem 'webmock'
   gem 'rack_session_access'
   gem 'drb'
-  gem 'rspec-rails', '~> 7.1.1'
-  gem 'rspec-its'
-  gem 'rspec-collection_matchers'
-  gem 'database_cleaner-active_record'
-  gem 'database_cleaner-redis'
 end
 
 group :production do

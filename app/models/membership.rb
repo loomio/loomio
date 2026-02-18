@@ -10,7 +10,7 @@ class Membership < ApplicationRecord
   include HasVolume
   include HasTimeframe
   include HasExperiences
-  scope :in_organisation, -> (group) { includes(:user).where(group_id: group.id_and_subgroup_ids) }
+  scope :in_organisation, -> (group) { includes(:user).where(group_id: group.id_and_subgroup_ids).active }
 
   extend FriendlyId
   extend HasTokens

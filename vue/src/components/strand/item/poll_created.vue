@@ -48,7 +48,7 @@ export default {
       }
       const eventActions = EventService.actions(this.event, this);
       this.myStance = this.poll.myStance();
-      this.menuActinos = assign( pickBy(pollActions, v => v.menu) , pickBy(this.eventActions, v => v.menu) );
+      this.menuActions = assign( pickBy(pollActions, v => v.menu) , pickBy(this.eventActions, v => v.menu) );
       this.dockActions = pickBy(pollActions, v => v.dock);
     },
 
@@ -87,7 +87,7 @@ section.strand-item.poll-created(v-intersect.once="{handler: viewed}")
     link-previews(:model="poll")
     attachment-list(:attachments="poll.attachments")
     document-list(:model='poll')
-    poll-common-chart-panel(:poll='poll')
+    poll-common-chart-panel(v-if="poll.isOpened()" :poll='poll')
     poll-common-action-panel(:poll='poll' :editStanceAction :key="poll.id")
     action-dock.my-2(:actions="dockActions" :menu-actions="menuActions" variant="tonal" color="primary")
 </template>

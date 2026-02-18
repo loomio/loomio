@@ -311,10 +311,18 @@ sv:
       zoom: Zoom
       align: Justera
       original: Original
+      rearrange: Ordna om
+      save_template: Spara mall
+      fork_template: Gaffelmall
     formatting_help:
       label: Utformning
       title: Lär dig hur du använder Märkspråk för att formatera din text
     thread: Tråd
+    commercial: Kommersiell
+    nonprofit: Ideell organisation
+    opening_in: Öppning %{tid}
+    read_more: Läs mer
+    templates_admin_hint: Eftersom du är gruppadministratör kan du dölja eller ta bort mallar du inte vill ha och redigera de återstående efter dina behov.
   merge_accounts:
     modal:
       title: Slå samman konton
@@ -518,6 +526,7 @@ sv:
     public_privacy_notice: Din kommentar kommer att vara synlig för alla på nätet.
     sign_in: Logga in för att delta i konversationen
     add_a_comment: Lägg till en kommentar
+    share_your_thoughts: Dela dina tankar…
   thread_nav:
     participants: Deltagare
   sidebar:
@@ -550,6 +559,8 @@ sv:
     unread_discussions_count: Olästa diskussioner (%{count})
     new_group: Ny grupp
     new_subgroup: Ny undergrupp
+    find_a_group: Hitta en grupp
+    direct_discussions: Direkta diskussioner
   strand_nav:
     newest: Nyaste
     oldest: Äldst
@@ -833,6 +844,10 @@ sv:
     discussion_updated: Diskussionen uppdaterades
     discussion_created: Diskussion skapad
     discussion_started: Diskussionen har startat
+    none_direct_discussion: Ingen (direkt diskussion)
+    direct_discussion: Direkt diskussion
+    direct_discussion_hint: En direkt diskussion är bara synlig för de specifika personer du bjuder in. Den kommer inte att visas i någon grupps diskussionslista – du hittar den på din sida för direkta diskussioner.
+    recommended_poll_templates: Rekommenderade omröstningsmallar
   announcement:
     send_discussion: Skicka tråd
     send_group: Bjud in personer till %{name}
@@ -1206,6 +1221,7 @@ sv:
     no_discussions_here: Inga diskussioner att se här!
     private_discussions: Du måste vara medlem för att se privata trådar i den här gruppen.
     view_closed_discussions: Visa stängda diskussioner
+    discussion_templates: Diskussionsmallar
   export_data_modal:
     title: Hur vill du använda din data?
     as_csv: Öppna den i ett kalkylblad
@@ -1318,16 +1334,29 @@ sv:
     messages:
       group_created: Gruppen startade
       group_updated: Gruppen uppdaterad
+      logo_removed: Logotypen borttagen
+      cover_photo_removed: Omslagsfoto borttaget
     upload_logo: Ladda upp logotyp
     upload_cover_photo: Ladda upp omslagsfoto
     request_to_join_prompt: Begäran om att gå med
     default_request_to_join_prompt: Tack för ditt intresse för vår grupp. Presentera dig själv och förklara varför du vill vara med.
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Uppgradera din prenumeration</a> för att skapa en undergrupp'
     share_this_url_with_people_who_want_to_join: Dela den här webbadressen med personer som vill gå med
-    new_description_html: "<h3>Vilka utmaningar står er organisation inför med beslutsfattandet?</h3><p></p><h3> Hur skulle du vilja använda Loomio i din organisation?</h3><p></p>"
     allow_polls_without_discussions: Tillåt omröstningar utan diskussion
     allow_polls_without_discussions_help: Tillåt fristående omröstningar (rekommenderas inte). Utan en diskussion kan man inte ställa frågor eller skapa enighet effektivt.
     aria_label: Gruppformulär
+    list_in_the_groups_directory: Lista i gruppkatalogen?
+    list_in_directory_yes: Ja · visa den här gruppen på sidan "hitta en grupp"
+    list_in_directory_no: Inga personer ska bjudas in eller få en länk för att hitta gruppen
+    upload_background: ladda upp bakgrund
+    remove_background: ta bort bakgrunden
+    remove_logo: ta bort logotypen
+    members_can_create_templates: Medlemmar kan skapa mallar
+    members_can_create_templates_help: Tillåt medlemmar att skapa diskussions- och omröstningsmallar. Mallar som skapats av medlemmar kommer att döljas tills en administratör visar dem.
+    members_can_start_discussions_v2: Medlemmar kan starta nya diskussioner
+    members_can_start_discussions_help_v2: Tillåt medlemmar att starta nya diskussioner inom gruppen
+    members_can_edit_discussions_v2: Medlemmar kan hantera diskussioner och kommentarer
+    members_can_edit_discussions_help_v2: Tillåt medlemmar att redigera, flytta, fästa, tagga eller stänga diskussioner eller kommentarer i gruppen
   group_export_modal:
     title: Exportera gruppdata
     body: <p>Du kan ladda ner en kopia av din grupps data när som helst. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Få reda på mer.</a></p><p> Det tar några minuter att slutföra, beroende på storleken på din grupp. När den är klar får du ett e-postmeddelande med en länk för att ladda ner filen.</p>
@@ -1555,8 +1584,8 @@ sv:
     current_polls: Aktuella omröstningar
     recent_threads: Senaste trådarna
     no_groups:
-      show_all: Välkommen! Du är inte medlem i några grupper än. <a href="/explore">Bläddra bland offentliga grupper</a> eller <a href="/g/new">starta en grupp</a> .
       show_muted: Du har inga avstängda trådar eftersom du inte är medlem i några grupper.
+      show_all: Välkommen! Du är inte medlem i några grupper ännu.
     no_threads:
       show_all: Du har inga nya trådar.
       show_proposals: Det finns inga aktiva förslag för närvarande.
@@ -1597,14 +1626,18 @@ sv:
       thisweek: Denna vecka
       thismonth: Den här månaden
       older: Äldre än en månad
-    dashboard: Instrumentpanel
+    dashboard: Översikt
     recent_discussions: Senaste diskussionerna
     view_recent: Visa alla senaste diskussioner?
     discussion_marked_as_read: Diskussion markerad som läst
     discussion_marked_as_unread: Diskussion markerad som oläst
+    polls_to_vote_on_count: Opinionsundersökningar att rösta på (%{count})
   threads_page:
     no_direct_threads: Du har inga direkta trådar
     no_invite_only_threads: Du har inga trådar endast för inbjudna
+    no_direct_discussions: Du har inga direkta diskussioner
+    no_direct_discussions_title: Du har inga direkta diskussioner
+    no_direct_discussions_helptext: Direkta diskussioner är till för att kontakta en annan användare direkt, utan att diskussionen tillhör en grupp.
   inbox_page:
     no_threads: Woohoo! Du har läst alla trådar i din inkorg.
     unread_threads: Olästa trådar
@@ -1635,6 +1668,7 @@ sv:
     volume:
       mute_message: Diskussionen är tystad
       unmute_message: Diskussionen har avaktiverats
+    direct: Direkt
   discussion_last_seen_by:
     title: Ses av
     no_one: Ingen har sett detta än
@@ -1719,6 +1753,10 @@ sv:
     newest_first: Nyaste först
     biggest_first: Störst först
     order_by: Beställ grupper efter
+    most_members: De flesta medlemmar
+    least_members: Minst antal medlemmar
+    newest: Nyaste
+    oldest: Äldst
   global:
     messages:
       reload: Ladda om
@@ -1741,6 +1779,7 @@ sv:
     meeting_title: Tidsröstning
     ranked_choice_title: Valfritt val
     gradients_of_agreement_title: Gradienter av överensstämmelse
+    majority_title: Majoritet
   poll_option_form:
     edit_option: Redigera alternativ
     option_name: Alternativets namn
@@ -1863,6 +1902,21 @@ sv:
     post_outcome: Publicera resultat
     view_all_votes: Visa alla röster
     you_voted: Du röstade
+    these_are_templates: Det här är beslutsmallarna i din grupp. Klicka på en mall för att starta ett nytt beslut. Administratörer kan anpassa alla detaljer om en mall så att den matchar din organisations praxis och är lätt för medlemmar att hitta och använda.
+    example_templates: Exempelmallar
+    example_poll_templates: Exempel på omröstningsmallar
+    browse_example_templates: Bläddra bland exempelmallar
+    browse_example_templates_hint: Skapa en ny omröstningsmall från tomt fält, eller använd ett exempel för att komma igång.
+    browse_example_use_hint: Klicka på mallens titel för att <b>starta en omröstning</b> .
+    browse_example_fork_hint: "<b>Klicka på gaffelikonen</b> för att skapa en ny omröstningsmall med exemplet som utgångspunkt."
+    browse_unsure_help: Osäker på hur man använder omröstningsmallar?
+    all_templates_hidden: Alla mallar har dolts
+    new_poll_template_title: Ny omröstningsmall
+    new_template_from_blank: Ny mall från tomt
+    new_template_from_blank_subtitle: Skapa en ny mall som passar en process du har i din organisation
+    blank: Ny
+    blank_subtitle: Skapa en ny omröstningsmall för en specifik process
+    start_a_poll: Starta en omröstning
   poll_common_attachment_form:
     label: Bilagor
   poll_common_add_option:
@@ -1974,6 +2028,7 @@ sv:
     voting_disabled_poll_is_template: Röstning inaktiverad. Detta är en mall.
     for_this_proposal_to_pass: 'För att detta förslag ska gå igenom:'
     for_this_poll_type_to_be_valid: 'För att denna %{poll_type} ska vara giltig:'
+    voting_opens_at: Denna %{poll_type} öppnar för omröstning %{time}
   poll_common_collapsed:
     by_who: vid %{name}
   poll_common_calendar_invite:
@@ -2553,6 +2608,8 @@ sv:
       ranked_choice_hint: Väljarna ordnar alternativen i ordning från mest till minst föredragna
       time_poll: Tidsundersökning
       time_poll_hint: Väljarna anger när de är tillgängliga för att mötas
+      rank: Rang
+      time: Tid
     process: Behandla
     process_name: Malltitel
     process_name_hint: Vad kallar du den här mallen? T.ex. rollrådgivning, temperaturkontroll, godkännande av protokoll
@@ -2608,6 +2665,12 @@ sv:
     hide_results_description: Om du vill att folk ska rösta utan att se hur andra har röstat kan du dölja resultaten.
     process_helptext: Namnge och beskriv processen som används för att köra den här omröstningen.
     reminder_helptext: Skicka ett meddelande om att ansökan avslutas snart 24 timmar före deadline. Detta kan öka deltagandet och skapa en möjlighet för personer att ompröva sin ståndpunkt.
+    voting_duration: Varaktighet
+    voting_duration_hint: När öppnar omröstningen och när stänger den?
+    more_settings: Fler inställningar
+    create_poll_type: Skapa %{poll_type}
+    notify_voters_when_voting_opens: Meddela väljarna när röstningen öppnar
+    voters_notified_when_opens: Väljarna kommer att meddelas när omröstningen öppnar
   poll_receipts_page:
     verify_participants: Verifiera deltagare
     see_votes_if_quorum_reached: Om omröstningen har avslutats och beslutsmässighet uppnåtts ser du vem som avgav en röst.
@@ -2624,10 +2687,8 @@ sv:
     aria_label: Lägg till ett svar
   discussion_template:
     browse_public_templates: Bläddra bland mallgalleriet
-    start_a_new_discussion: Starta en ny diskussion
     discussion_template_saved: Diskussionsmallen sparad
     these_are_public_templates: Dessa mallar kan du kopiera eller modifiera för att passa din grupp
-    these_are_templates: Det här är diskussionsmallarna i din grupp. Klicka på en mall för att starta en diskussion. Du kan också redigera, ta bort eller ändra ordningen på dessa om du vill.
     default_title_label: Standardtitel
     default_title_hint: Fyll i titelfältet med redigerbar text. Detta är valfritt – lämna tomt om du är osäker.
     title_placeholder_label: Exempeltitel
@@ -2641,6 +2702,38 @@ sv:
     add_poll_template_help: Välj alla omröstningsmallar som hjälper till att slutföra den här processen
     recommended_poll_templates: Rekommenderade omröstningsmallar
     share_in_template_gallery: Dela den här mallen i det offentliga mallgalleriet
+    browse_example_templates: Bläddra bland exempelmallar
+    example_templates: Exempelmallar
+    browse_public_templates_hint: Klicka på ett mallnamn för att starta en diskussion med det, eller klicka på redigeringsknappen till höger för att skapa en kopia och ändra den för din egen grupp.
+    process_name_placeholder: t.ex. veckovis standup
+    process_subtitle_placeholder: t.ex. ett kort möte med teamet varje vecka
+    default_title_placeholder: t.ex. Standup - 15 januari
+    more_templates: Fler mallar
+    fewer_templates: Färre mallar
+    choose_a_group: Välj en grupp
+    default_templates: Standardmallar
+    or_start_a_direct_discussion: Eller starta en direkt diskussion
+    choose_group_for_templates: Välj en grupp för att visa dess diskussionsmallar
+    start_direct_discussion: Starta direkt diskussion
+    poll_templates: Mallar för omröstningar
+    poll_templates_help: Mallar du väljer här visas först när någon klickar på Starta en omröstning
+    start_direct_discussion_from_blank: Starta en direkt diskussion från en tom mall
+    default_to_direct_discussion: Börja som en direkt diskussion (ingen grupp)
+    default_to_direct_discussion_helptext: Använd detta om du vill att folk ska starta direkta diskussioner från den här mallen.
+    example_discussion_templates: Exempel på diskussionsmallar
+    browse_example_use_hint: Klicka på mallens titel för att <b>starta en diskussion</b> .
+    browse_example_fork_hint: "<b>Klicka på gaffelikonen</b> för att skapa en ny diskussionsmall med exemplet som utgångspunkt."
+    new_discussion_template_title: Ny diskussionsmall
+    new_template_from_blank: Ny mall från tomt
+    new_template_from_blank_subtitle: Skapa en ny mall som passar en process du har i din organisation
+    these_are_templates_v3: Det här är diskussionsmallarna i din grupp. Klicka på en mall för att starta en ny diskussion.
+    these_are_templates_admin_hint: Gruppadministratörer kan redigera mallar, skapa nya mallar, ordna om och dölja/visa mallar. Endast administratörer kan se de dolda mallarna.
+    show_hidden_templates: Visa dolda mallar
+    show_fewer: Visa färre
+    start_a_new_discussion: Starta en ny diskussion
+    start_discussion: Starta en diskussion
+    start_a_direct_discussion: Starta en direkt diskussion
+    these_are_templates: Det här är diskussionsmallarna i er grupp.
   context_panel:
     thread_status:
       pinned: Den här diskussionen har fästs. Den kommer att finnas kvar högst upp i gruppens diskussionslista för alla användare.
@@ -2664,3 +2757,12 @@ sv:
     confirm_change_to_private: "%{groupName} är en öppen grupp. Om du fortsätter kommer diskussionen att vara offentlig."
     messages:
       success: Diskussionen flyttad till %{name}
+  auth:
+    oauth_cancelled: Inloggningen avbröts
+    switching_accounts: Byter konto. Vänligen logga in med dina nya kontouppgifter.
+  poll_common_opening_at_field:
+    voting_opens_immediately: Röstningen öppnar omedelbart
+    opening_date: Öppningsdatum
+    opening_hour: Öppettid
+    scheduled_hint: Omröstningen kommer att vara synlig men inte möjlig att rösta på förrän den öppnar.
+    draft_hint: Den här omröstningen sparas som ett utkast. Ange ett öppningsdatum eller markera "Röstningen öppnar omedelbart" när du är redo att börja rösta.

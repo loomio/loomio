@@ -94,6 +94,10 @@ pl:
       title: "\U0001F44B Witaj! Powiedz cześć i wypróbuj rzeczy"
       description: "<p>Witamy w naszej grupie Loomio — cieszymy się, że jesteś tu!</p><p> Ten wątek jest miejscem do:</p><ul><li><p> Przedstaw się grupie</p></li><li><p> Wypróbuj niektóre funkcje Loomio – na przykład: spróbuj użyć reakcji \U0001F44D</p></li><li><p> Zadaj wszelkie pytania, które masz na tym etapie</p></li></ul><p> Jeśli nie wiesz co powiedzieć, wystarczy zwykłe „cześć” \U0001F642</p>"
       process_name: Ćwicz dyskusję
+      process_subtitle_v2: Witamy wszystkich i zapraszamy do wspólnego korzystania z Loomio
+      process_introduction_v2: "<p>Wątek powitalny dla nowych grup. Uczestnicy przedstawiają się, testują funkcje takie jak komentowanie i reagowanie, a następnie przedstawiają swoją pierwszą propozycję.</p>"
+      title_v2: Witamy! Przedstaw się i wypróbuj swoje możliwości
+      description_v2: "<p>Witamy w grupie! Ten wątek to miejsce, w którym możesz się przywitać, zadać pytania, wypróbować różne rzeczy i oswoić z Loomio.</p><p> Zostaw komentarz, wyślij reakcję lub rozpocznij jedną z poniższych propozycji.</p><p> Jeśli nie wiesz, co powiedzieć, wystarczy zwykłe „cześć”! Możesz też skorzystać z jednego z poniższych narzędzi do głosowania.</p>"
   explore:
     header: Przeglądaj grupy publiczne
   activerecord:
@@ -189,6 +193,7 @@ pl:
       must_be_in_the_future: Musi być w przyszłości
       templates_cannot_close: Szablony nie mogą zostać zamknięte
       poll_options_dont_match: Błąd w Loomio uniemożliwił zapisanie Twojego głosu. Pracujemy nad jego rozwiązaniem. Odśwież stronę i spróbuj ponownie.
+      opening_at_before_closing_at: Data otwarcia musi być wcześniejsza niż data zamknięcia
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) członkowie podali swoje stanowisko"
       title: Tytuł
@@ -404,6 +409,9 @@ pl:
       vote_now: Głosuj teraz
       you_have_until: Masz czas do %{when}  na wzięcie udziału
       people_have_voted: "%{nom} z %{dnom} osób wzięło udział (%{pct}%)"
+      voting_opens_and_closes: Głosowanie rozpocznie się %{opens}, a zakończy %{closes}. (%{days} dni)
+      voting_closes: Głosowanie zakończy się %{when}.
+      voting_opened_and_closed: Głosowanie rozpoczęło się %{opens}, a zakończyło %{closes}. (%{days} dni)
   poll_templates:
     practice_proposal:
       title: Zaczynam to rozumieć
@@ -412,6 +420,17 @@ pl:
       process_introduction: "<p>Użyj tego szablonu, aby pomóc swojej grupie poczuć się komfortowo korzystając z propozycji w Loomio. To bezpieczny i prosty sposób, aby ludzie mogli spróbować głosowania i zobaczyć, jak wszystko do siebie pasuje.</p>"
       details: "<p>Jest to próba, która pozwoli wszystkim zapoznać się ze sposobem działania propozycji w Loomio.</p><p> Proszę zagłosować i podać powód, jeśli chcesz.</p><p> Bez presji, bez realnych konsekwencji. To tylko sposób na zbadanie, jak działają propozycje!</p>"
       outcome_statement: "<p>Dziękujemy za udział w tej propozycji praktycznej! \U0001F389</p><p> To była tylko okazja, aby zobaczyć, jak głosowanie i komentowanie działa w Loomio. Nie ma tu żadnej prawdziwej decyzji — ale mam nadzieję, że to pomogło wszystkim zapoznać się z procesem.</p>"
+      title_v2: Ananas należy do pizzy
+      process_subtitle_v2: Wypróbuj propozycję, aby dowiedzieć się, jak działa głosowanie
+      process_introduction_v2: "<p>Świetny sposób, aby Twoja grupa spróbowała głosowania w Loomio. Wybierzcie lekkie pytanie, pozwólcie ludziom zagłosować i podajcie powód – bez podejmowania konkretnych decyzji, po prostu ćwiczcie.</p>"
+      details_v2: "<p>To jest propozycja próbna — nie ma tu mowy o podejmowaniu prawdziwej decyzji.</p><p> Spróbuj zagłosować i podać powód, aby zobaczyć, jak propozycje działają w Loomio.</p>"
+      outcome_statement_v2: "<p>Dziękujemy za wypróbowanie propozycji! Teraz wiesz, jak działa głosowanie w Loomio.</p>"
+      agree_meaning: Zgadzam się z tym
+      agree_prompt: Dlaczego się zgadzasz?
+      abstain_meaning: Nie mam na ten temat zdania.
+      abstain_prompt: Jakieś pomysły?
+      disagree_meaning: Nie zgadzam się z tym
+      disagree_prompt: Dlaczego się nie zgadzasz?
     proposal:
       process_subtitle: Złóż propozycję podjęcia decyzji
       process_introduction: <p>Klasyczna propozycja Loomio pomaga podjąć decyzję, przekształcając dyskusję w jasny wynik.</p><p> Zaproponuj sposób działania i zachęć ludzi do głosowania „za”, „wstrzymaj się” lub „nie”.</p><p> Gdy ludzie głosują, mogą podać powód, dla którego głosowali w ten sposób. Możesz zobaczyć, jakie jest stanowisko wszystkich innych w tej sprawie i dlaczego.</p><p> W ten sposób możesz wykorzystać propozycję, aby zachęcić ludzi do odpowiedzi, odkryć nowe informacje i zbudować wspólne zrozumienie, co pomoże Twojej grupie podjąć lepszą, bardziej świadomą decyzję.</p><p> Propozycja i związana z nią dyskusja tworzą własny zapis tego, w jaki sposób zapadła decyzja.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Więcej informacji na temat wykorzystania klasycznej propozycji Loomio można znaleźć w części Prosty proces decyzyjny</u></a> .</p>
@@ -450,6 +469,9 @@ pl:
       objection_meaning: Mam uzasadniony sprzeciw i uważam, że propozycja spowoduje szkodę
       objection_prompt: Jakie zmiany należy wprowadzić do tej propozycji, aby można ją było „bezpiecznie wypróbować” i aby mógł Pan ją poprzeć?
       outcome_statement: "<p>Dziękujemy za udział w procesie wyrażania zgody.</p>"
+      process_subtitle_v2: Kontynuuj, chyba że ktoś zgłosi sprzeciw
+      process_introduction_v2: "<p><strong>Zgoda</strong> pyta, czy propozycja jest bezpieczna do wypróbowania, a nie czy jest idealna. Propozycja jest akceptowana, dopóki nikt nie zgłosi sensownego sprzeciwu. Jeśli ktoś wyrazi sprzeciw, grupa pracuje nad jego rozwiązaniem — a ponieważ uczestnicy mogą zmieniać swój głos w miarę rozwoju propozycji, sprzeciwy stają się narzędziem do doskonalenia, a nie przeszkodą.</p>"
+      details_v2: "<h3><strong>Jaką decyzję musisz podjąć?</strong></h3><p></p><h3> <strong>Dlaczego to jest ważne?</strong></h3><p></p><h3> <strong>Czego oczekujesz od ludzi objętych tą propozycją?</strong></h3><p></p><p> Nie dążymy do perfekcji — wyraź zgodę, jeśli propozycja jest wystarczająco dobra i bezpieczna, aby ją wypróbować. Jeśli masz zastrzeżenia, napisz, co należy zmienić, aby była realna.</p>"
     consensus:
       process_subtitle: Osiągnij porozumienie zbiorowe ze wszystkimi zaangażowanymi
       process_introduction: <p>Wypracuj konsensus co do decyzji, którą musisz podjąć, aby osiągnąć porozumienie, które zaspokoi potrzeby i uwzględni obawy wszystkich uczestników.</p><ul><li><p> Omów i opracuj wspólnie propozycję</p></li><li><p> Włączaj i szanuj wszystkich zaangażowanych</p></li><li><p> Szukaj zgody u większości ludzi</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/consensus_process/index.html">Przeczytaj więcej o procesie konsensusu</a> .</p>
@@ -468,6 +490,8 @@ pl:
       block: Blok
       block_meaning: Blokuję tę propozycję i uważam, że nie powinna być kontynuowana
       block_prompt: Wyjaśnij swój sprzeciw wobec tej propozycji i dlaczego nie powinna ona zostać zrealizowana.
+      details_v2: "<h3><strong>Jaką decyzję musisz podjąć?</strong></h3><p></p><h3> <strong>Dlaczego to jest ważne?</strong></h3><p></p><h3> <strong>O co prosisz ludzi?</strong></h3><p></p><p> Podziel się swoim stanowiskiem i uzasadnij je. Jeśli się nie zgadzasz, wyjaśnij, co musiałoby się zmienić, abyś mógł je poprzeć.</p>"
+      process_introduction_v2: "<p><strong>Konsensus</strong> jest stosowany w przypadku decyzji, w których liczy się aktywna zgoda wszystkich. Uczestnicy współpracują, aby zrozumieć wzajemne potrzeby i kształtować propozycję, aż cała grupa będzie mogła ją poprzeć. Ponieważ uczestnicy mogą zmieniać swój głos w miarę rozwoju rozmowy, proces ten sprzyja autentycznemu dialogowi, a nie podejmowaniu jednorazowych decyzji. Wymaga więcej cierpliwości niż inne metody, ale buduje najsilniejsze zaangażowanie.</p><p> Ten szablon domyślnie zawiera opcję <strong>Blokuj</strong> . Blokowanie nie jest odpowiednie dla każdej grupy — może być kontrowersyjne lub nadużywane. Jeśli nie korzystasz z opcji Blokuj w procesie podejmowania decyzji, zalecamy edycję szablonu i jej usunięcie.</p>"
     question_round:
       process_subtitle: Zadawaj pytania wyjaśniające, aby pomóc ludziom zrozumieć propozycję
       process_introduction: <p>Runda pytań to okazja, aby ludzie zadawali pytania wyjaśniające dotyczące propozycji, tak aby wszyscy zrozumieli propozycję, zanim powiedzą, co o niej myślą.</p><p> Runda pytań Loomio to specjalna propozycja bez opcji głosowania. Umożliwia ona uczestnikom zadawanie pytań w czasie ustalonym dla rundy.</p><p> Runda pytań jest powszechnie stosowanym etapem procesu wyrażania zgody.</p><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Przeczytaj więcej o procesie wyrażania zgody</a> .</p>
@@ -493,6 +517,17 @@ pl:
       concerned: Zainteresowany
       concerned_meaning: Coś w tym musi się zmienić, abym mógł wyrazić zgodę lub się zgodzić
       concerned_prompt: Jakie są Twoje obawy i jak można je rozwiązać?
+      process_subtitle_v2: Sprawdź, czy jesteś na dobrej drodze
+      process_introduction_v2: "<p><strong>Weryfikacja zmysłów</strong> pomaga uzyskać wczesną informację zwrotną przed podjęciem decyzji. Uczestnicy oceniają, czy sytuacja wygląda dobrze, czy też zgłaszają pewne wątpliwości, dzięki czemu można skorygować kurs przed przejściem do formalnej propozycji. To nie jest decyzja — to weryfikacja temperatury.</p>"
+      details_v2: "<h3><strong>Co proponujesz?</strong></h3><p></p><h3> <strong>Dlaczego to jest ważne?</strong></h3><p></p><h3> <strong>O co prosisz ludzi?</strong></h3><p></p><p> Oceń, czy to wygląda dobrze, czy mogłoby być lepsze, a może wymaga ponownego przemyślenia — i podaj swoje uzasadnienie.</p>"
+      looks_good_meaning_v2: Jestem zadowolony z kierunku
+      looks_good_prompt_v2: Co ci się w tym podoba?
+      could_be_better: Mogło być lepiej
+      could_be_better_meaning: Widzę potencjał, ale mam sugestie
+      could_be_better_prompt: Co byś zmienił?
+      needs_a_rethink: Wymaga ponownego przemyślenia
+      needs_a_rethink_meaning: Myślę, że to podejście nie jest właściwe
+      needs_a_rethink_prompt: Co cię martwi?
     gradients_of_agreement:
       process_subtitle: Wyraź poparcie dla propozycji w 8-stopniowej skali
       process_introduction: "<p>Gradienty akceptacji propozycji pozwalają członkom grupy na wyrażenie poparcia dla propozycji w stopniach na skali, oferując więcej sposobów wyrażenia poparcia niż w przypadku „zgadzam się” i „nie zgadzam się”.</p><p> Użyj Gradientów Porozumienia jako rundy wstępnej, aby przetestować poparcie dla propozycji przed przejściem do formalnego porozumienia.</p><p> Gradienty zgody pozwalają ludziom wiedzieć, że propozycja się tworzy i zachęcają ich do zaangażowania się. To okazja, aby słuchać ludzi, wyczuwać, co czują i odpowiednio reagować - otwierając potencjał na włączenie ich wkładu w podejmowanie lepszych decyzji.</p>"
@@ -526,27 +561,36 @@ pl:
       process_introduction: <p>Zanim podejmiesz decyzję, sprawdź, które opcje są dla ludzi najważniejsze.</p><p> Prosta ankieta pozwala znaleźć najpopularniejszą opcję lub opcje z odpowiedziami jednokrotnego lub wielokrotnego wyboru.</p><p> W polu szczegółów wpisz wszelkie szczegóły dotyczące opcji, a następnie wpisz nazwę opcji i kliknij +, aby ją dodać.</p><p> Ustaw <strong>Minimalne wybory</strong> i <strong>Maksymalne wybory, które</strong> może wybrać wyborca. Pozostaw maksymalny wybór jako 1 dla ankiety z jednym wyborem.</p><p> Za pomocą ikony ołówka obok każdej opcji możesz dodać jej <strong>znaczenie</strong> , co ułatwi ludziom głosowanie.</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">Przeczytaj więcej o prostej ankiecie</a> .</p>
       title: Na czym powinniśmy się skupić w ramach naszego kierunku strategicznego?
       details: <h3 id="what-is-this-poll-about"><strong>Czego dotyczy ta ankieta?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Dlaczego to jest ważne?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>O co prosisz ludzi?</strong></h3><p></p><p> Wybierz opcję(y), które Cię interesują.</p>
+      process_introduction_v2: <p><strong>Funkcja „Wybierz”</strong> pomaga znaleźć najpopularniejszą opcję. Uczestnicy wybierają z listy — możesz skonfigurować, czy wybiorą jedną, czy kilka opcji.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">Przeczytaj więcej o Choose</a> .</p>
     score_poll:
       process_subtitle: Zmierz stopień poparcia dla każdej opcji
       process_introduction: <p>Użyj ankiety Score, gdy chcesz zbadać ludzi pod kątem ich pragnień, preferencji lub zainteresowania każdą z opcji.</p><p> <span>Uczestnicy proszeni są o ocenę każdej opcji i przypisanie jej punktów poprzez przesuwanie suwaka na skali.</span></p><p> <span>Wyniki wyświetlane są graficznie wraz z tabelą dla każdej opcji, pokazującą całkowitą liczbę punktów, średnią liczbę punktów i liczbę głosujących.</span></p><p> Zaawansowane ustawienia obejmują opcje „Głosy są anonimowe” i „Pokaż opcje w kolejności losowej” - powszechnie używane w ankietach dotyczących wyników w celu zminimalizowania ryzyka stronniczości głosowania.</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">Przeczytaj więcej o ankiecie Score</a> .</p>
       title: Ocena sposobu podejmowania decyzji w naszej organizacji
       details: <h3 id="what-is-this-poll-about"><strong>Czego dotyczy ta ankieta?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Dlaczego to jest ważne?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>O co prosisz ludzi?</strong></h3><p></p><p> Wybierz opcję(y), które Cię interesują.</p>
+      process_subtitle_v2: Zmierz poziom poparcia dla każdej opcji
+      process_introduction_v2: <p><strong>Wynik</strong> pozwala zmierzyć poziom poparcia grupy dla każdej opcji. Uczestnicy oceniają każdą opcję, przypisując jej wynik na skali przesuwnej, dzięki czemu można zobaczyć nie tylko, co ludzie preferują, ale także, jak bardzo.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">Przeczytaj więcej o ankiecie Score</a> .</p>
     dot_vote:
       process_subtitle: Przydziel budżet punktów, aby ujawnić priorytety
       process_introduction: <p>Głosowanie kropkowe jest przydatne dla grup próbujących przydzielić ograniczone zasoby do kilku opcji. Wykracza poza prostą ankietę, pomagając uczestnikom zrozumieć, że istnieje ograniczenie przy wyborze opcji.</p><p> Uczestnicy otrzymują określoną liczbę kropek. Ty decydujesz, ile.</p><p> Umieszczają kropki obok przedstawionych opcji, które im się podobają. Uczestnicy mogą umieścić wszystkie swoje kropki na jednej opcji lub rozłożyć je na wiele opcji.</p><p> W miarę jak uczestnicy będą przydzielać punkty, może się zdarzyć, że przekroczą limit budżetu punktów, dlatego zachęcamy do ostrożnego rozważenia sposobu, w jaki wydają swoje punkty.</p><p> Opcje z największą liczbą kropek „wygrywają”. Tabela wyników zawiera dodatkowe dane, które pomogą Ci analizować wyniki.</p><ul><li><p> % punktów</p></li><li><p> Zwrotnica</p></li><li><p> Mieć na myśli</p></li><li><p> Wyborcy</p></li></ul><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">Przeczytaj więcej o głosowaniu Dot</a> .</p>
       title: Wybór tematów na naszą konferencję
       details: <h3 id="what-is-this-poll-about"><strong>Czego dotyczy ta ankieta?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Dlaczego to jest ważne?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>O co prosisz ludzi?</strong></h3><p></p><p> W tej ankiecie masz budżet 8 kropek do przydzielenia na preferowane opcje. Możesz umieścić wszystkie kropki na jednej opcji lub rozłożyć je.</p>
+      process_subtitle_v2: Ujawnij priorytety, gdy występują kompromisy
+      process_introduction_v2: <p><strong>Funkcja „Allocate”</strong> pomaga zrozumieć priorytety grupy w przypadku konieczności dokonania kompromisów. Każdy uczestnik otrzymuje budżet punktów do rozdysponowania na opcje — może postawić wszystko na jedną opcję lub rozdysponować punkty na kilka. Ponieważ budżet jest ograniczony, każdy wydany punkt jest autentycznym sygnałem priorytetu.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">Dowiedz się więcej o Allocate</a> .</p>
     ranked_choice:
       process_subtitle: Zrozumieć uporządkowaną preferencję opcji
       process_introduction: <p>Wybór rankingowy jest przydatny, gdy masz dużą liczbę opcji lub gdy przeprowadzasz wybory.</p><p> Ten szablon ankiety oferuje szereg opcji, dzięki którym ludzie mogą głosować w preferowanej kolejności.</p><p> Możesz ustalić liczbę wyborów, jakie będzie miał wyborca.</p><p> <span>Głosujący przeciągają i upuszczają opcje w kolejności preferencji (gdzie nr 1 oznacza opcję najbardziej preferowaną).</span></p><p> <span>Zaawansowane ustawienia obejmują opcje „Głosy są anonimowe” i „Pokaż opcje w kolejności losowej” - powszechnie używane w przypadku</span> wyborów ocenianych w celu zminimalizowania ryzyka stronniczości podczas głosowania.</p><p> Wyniki są wyświetlane w kolejności rankingowej. Tabela wyników zawiera dodatkowe dane, które pomogą Ci analizować wyniki.</p><ul><li><p> Stopień</p></li><li><p> % punktów</p></li><li><p> Zwrotnica</p></li><li><p> Mieć na myśli</p></li></ul><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">Przeczytaj więcej o wyborze rankingowym</a> .</p>
       title: Wybierz dyrektorów do rady nadzorczej
       details: <h3 id="what-is-this-poll-about"><strong>Czego dotyczy ta ankieta?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Dlaczego to jest ważne?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>O co prosisz ludzi?</strong></h3><p></p><p> Zagłosuj, klasyfikując opcje według swoich preferencji. Opcja, która zajmie pierwsze miejsce w wynikach, wygrywa.</p>
+      process_subtitle_v2: Znajdź kolejność preferencji grupy
+      process_introduction_v2: <p><strong>Ranking</strong> pokazuje kolejność preferencji grupy. Uczestnicy przeciągają i upuszczają opcje, aby uporządkować je od najbardziej do najmniej preferowanych, a wyniki pokazują ogólną klasyfikację.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">Przeczytaj więcej o Rank</a> .</p>
     time_poll:
       process_subtitle: Znajdź osoby, które są dostępne na spotkanie
       process_introduction: <p><span>Zaoszczędź czas na ustalaniu daty spotkania lub wydarzenia.</span></p><p> Ankieta czasowa ułatwia sprawdzenie dostępności wszystkich osób i znalezienie najlepszego czasu.</p><p> Podaj tytuł i szczegóły swojej ankiety Time. Wprowadź listę opcji daty i godziny w swojej strefie czasowej.</p><p> Przy ustalaniu przedziałów czasowych weź pod uwagę osoby z różnych stref czasowych. Uczestnicy zobaczą godziny zlokalizowane w ich strefie czasowej.</p><p> Ustaw czas trwania spotkania.</p><p> Po zamknięciu ankiety „Czas” podaj wynik zawierający najlepszy czas i wszelkie instrukcje dotyczące spotkania.</p><p> <span>Loomio dołączy do e-maila z powiadomieniem o wynikach zaproszenie do kalendarza, aby uczestnicy mogli dodawać wpisy do swoich kalendarzy.</span></p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">Przeczytaj więcej o ankiecie Time</a> .</p>
       title: Znajdźmy datę naszego następnego spotkania
       details: "<p><strong>Jakie to spotkanie lub wydarzenie?</strong></p><p></p><p> <strong>Dlaczego to jest ważne?</strong></p><p></p><p> <strong>O co prosisz ludzi?</strong></p><p></p><p> <span>Oznacz dostępne przedziały czasowe zieloną ikoną „kciuka w górę” lub pozostaw czerwoną ikoną „kciuka w dół”, gdy jesteś niedostępny.</span></p><p> <span>Użyj ikony z uniesionym kciukiem w bok, aby dać znać, że jesteś dostępny, „jeśli zajdzie taka potrzeba”.</span></p>"
       reason_prompt: Czy możesz coś powiedzieć, aby pomóc organizatorowi znaleźć odpowiedni termin?
+      process_subtitle_v2: Znajdź, kiedy ludzie są dostępni
+      process_introduction_v2: <p><strong>Ankieta czasowa</strong> pomaga Ci sprawdzić, kiedy ludzie są dostępni. Dodaj proponowane godziny, a uczestnicy zobaczą je w swojej strefie czasowej. Po zamknięciu ankiety ustaw wynik, a Loomio wyśle wszystkim zaproszenie do kalendarza.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">Przeczytaj więcej o sondażu Time</a> .</p>
     opt_in:
       process_subtitle: Znajdź wolontariuszy lub poproś o uczestników
       process_introduction: '<p>Użyj opcji Opt-in, aby zaprosić ludzi do dołączenia do zespołu, komitetu lub grupy roboczej lub do wzięcia udziału w wydarzeniu.</p><p> W przypadku opcji „Opt-in” dostępne są dwie opcje głosowania: Akceptuj lub Odrzuć.</p><p> Możesz określić docelową liczbę osób, których szukasz, np. 3 osoby, które dołączą do Twojej grupy roboczej.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#opt-in">Dowiedz się więcej o Opt-in</a> .</p>'
@@ -556,6 +600,27 @@ pl:
       accept_prompt: Dlaczego się do tego zgłaszasz?
       decline_meaning: Nie mogę wziąć udziału
       decline_prompt: Czy chciałbyś coś powiedzieć?
+    try_loomio:
+      process_name: Spróbujmy Loomio
+      process_subtitle: Zachęć swoją grupę do wspólnego wypróbowania Loomio
+      process_introduction: "<p>Aby w pełni wykorzystać możliwości Loomio, potrzebne jest zaangażowanie grupy. Ta propozycja pomaga Twojej grupie zdecydować, czy zainwestować czas i wysiłek w porządne wypróbowanie Loomio — czy to poprzez zobowiązanie się do okresu próbnego, czy też wspólne zapisanie się na plan.</p>"
+      title: Zaangażujmy się wspólnie w wypróbowywanie Loomio
+      details: "<p>Aby dobrze korzystać z Loomio, potrzebny jest wysiłek grupowy — wszystko działa, gdy ludzie przychodzą i uczestniczą.</p><p> Ta propozycja wzywa wszystkich do aktywnego korzystania z Loomio w okresie próbnym. Oznacza to meldowanie się, głosowanie nad propozycjami i dołączanie do dyskusji.</p><p> Jeśli masz w tej kwestii wątpliwości, zgłoś sprzeciw i powiedz, co należałoby zmienić — do tego właśnie służy opcja sprzeciwu.</p>"
+      outcome_statement: "<p>Przedstaw grupie wynik tej propozycji — co zostało ustalone i co będzie dalej.</p>"
+      consent_meaning: Chętnie spróbuję
+      consent_prompt: Na co czekasz, korzystając z Loomio?
+      objection_meaning: Mam problem, którym musimy się najpierw zająć
+      objection_prompt: Co musi się zmienić, zanim podejmiesz decyzję?
+    majority:
+      process_subtitle: Podejmij decyzję największą liczbą głosów
+      process_introduction: "<p><strong>Większość</strong> to najprostszy sposób na podjęcie decyzji grupowej – uczestnicy głosują „tak” lub „nie”, a propozycja zostaje przyjęta, jeśli ponad połowa zagłosuje „tak”. Nie ma wstrzymujących się ani blokujących, więc każdy głos ma taką samą wagę.</p><p> Większość sprawdza się w przypadku prostych decyzji, w których potrzebny jest jasny rezultat. W przypadku decyzji, w których ważne jest, aby ludzie współpracowali, aby się zrozumieć i znaleźć wspólny język, rozważ opcję zgody lub konsensusu.</p>"
+      title: Zatwierdzenie budżetu na III kwartał
+      details: "<h3><strong>Jaką decyzję musisz podjąć?</strong></h3><p></p><h3> <strong>Dlaczego to jest ważne?</strong></h3><p></p><h3> <strong>O co prosisz ludzi?</strong></h3><p></p>"
+      yes_meaning: Popieram tę propozycję
+      yes_prompt: Dlaczego popierasz tę propozycję?
+      no_meaning: Nie popieram tej propozycji
+      no_prompt: Dlaczego nie popierasz tej propozycji?
+      outcome_statement: "<p>Dziękujemy za udział w głosowaniu większościowym.</p>"
   forward_mailer:
     bounce:
       subject: Twoja wiadomość do Loomio nie została dostarczona

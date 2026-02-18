@@ -1,16 +1,3 @@
-practice_thread:
-  process_name_i18n: discussion_templates.practice_thread.process_name
-  process_subtitle_i18n: discussion_templates.practice_thread.process_subtitle
-  process_introduction_i18n: discussion_templates.practice_thread.process_introduction
-  process_introduction_format: html
-  title_i18n: discussion_templates.practice_thread.title
-  description_i18n: discussion_templates.practice_thread.description
-  description_format: html
-  recipient_audience: group
-  newest_first: false
-  max_depth: 3
-  position: 0
-
 blank:
   process_name_i18n: discussion_templates.blank.process_name
   process_subtitle_i18n: discussion_templates.blank.process_subtitle
@@ -21,6 +8,22 @@ blank:
   newest_first: false
   max_depth: 3
   position: 0
+
+practice_thread:
+  process_name_i18n: discussion_templates.practice_thread.process_name
+  process_subtitle_i18n: discussion_templates.practice_thread.process_subtitle_v2
+  process_introduction_i18n: discussion_templates.practice_thread.process_introduction_v2
+  process_introduction_format: html
+  title_i18n: discussion_templates.practice_thread.title_v2
+  description_i18n: discussion_templates.practice_thread.description_v2
+  description_format: html
+  recipient_audience: group
+  newest_first: false
+  max_depth: 3
+  position: 0
+  poll_template_keys_or_ids:
+    - practice_proposal
+    - try_loomio
 
 discuss_a_topic:
   title_placeholder_i18n: discussion_templates.discuss_a_topic.title_placeholder
@@ -34,20 +37,6 @@ discuss_a_topic:
   newest_first: false
   max_depth: 3
   position: 1
-
-onboarding_to_loomio:
-  title_i18n: discussion_templates.onboarding_to_loomio.title
-  process_name_i18n: discussion_templates.onboarding_to_loomio.process_name
-  process_subtitle_i18n: discussion_templates.onboarding_to_loomio.process_subtitle
-  process_introduction_i18n: discussion_templates.onboarding_to_loomio.process_introduction
-  process_introduction_format: html
-  description_i18n: discussion_templates.onboarding_to_loomio.description
-  tags_i18n:
-  - discussion_templates.onboarding_to_loomio.onboarding
-  newest_first: false
-  max_depth: 3
-  position: 2
-  recipient_audience: group
 
 advice_process:
   title_placeholder_i18n: discussion_templates.advice_process.title_placeholder
@@ -170,17 +159,4 @@ elect_a_governance_position:
   max_depth: 2
   recipient_audience: group
 
-build_a_policy:
-  title_placeholder_i18n: discussion_templates.build_a_policy.title_placeholder
-  process_name_i18n: discussion_templates.build_a_policy.process_name
-  process_subtitle_i18n: discussion_templates.build_a_policy.process_subtitle
-  process_introduction_i18n: discussion_templates.build_a_policy.process_introduction
-  description_i18n: discussion_templates.build_a_policy.description
-  description_format: html
-  tags_i18n:
-  - discussion_templates.build_a_policy.policy
-  process_introduction_format: html
-  newest_first: false
-  position: 4
-  max_depth: 2
-  recipient_audience: group
+

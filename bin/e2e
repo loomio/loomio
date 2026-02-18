@@ -1,0 +1,100 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# bin/e2e — Run Nightwatch E2E tests headlessly against a local Rails server
+#
+# Usage:
+#   bin/e2e                                                    # run all specs
+#   bin/e2e notifications.js                                   # run one spec file
+#   bin/e2e vue/tests/e2e/specs/notifications.js               # also works
+#   bin/e2e notifications.js --testcase has_all_the_notifications  # run one test
+#   bin/e2e --show                                             # run in visible browser
+#   bin/e2e --retries 3                                        # retry failures
+#
+# Pass-through args are forwarded to nightwatch.
+# A .js file arg is auto-detected and passed via --test (required by nightwatch
+# for --testcase filtering to work).
+
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+RAILS_PID=""
+TEST_FILE=""
+HEADLESS=true
+NW_ARGS=()
+E2E_PORT="${E2E_PORT:-3001}"
+
+for arg in "$@"; do
+  if [ "$arg" = "--show" ]; then
+    HEADLESS=false
+  elif [[ "$arg" == *.js ]] && [ -z "$TEST_FILE" ]; then
+    # Strip leading vue/ prefix since nightwatch runs from vue/
+    arg="${arg#vue/}"
+    # Auto-resolve bare filenames like "notifications.js" to full path
+    if [[ "$arg" != */* ]]; then
+      arg="tests/e2e/specs/$arg"
+    fi
+    TEST_FILE="$arg"
+  else
+    NW_ARGS+=("$arg")
+  fi
+done
+
+# Build the nightwatch command args
+FINAL_ARGS=()
+if [ "$HEADLESS" = true ]; then
+  FINAL_ARGS+=(--headless)
+fi
+if [ -n "$TEST_FILE" ]; then
+  FINAL_ARGS+=(--test "$TEST_FILE")
+fi
+if [ ${#NW_ARGS[@]} -gt 0 ]; then
+  FINAL_ARGS+=("${NW_ARGS[@]}")
+fi
+
+cleanup() {
+  if [ -n "$RAILS_PID" ]; then
+    echo "Stopping Rails server (pid $RAILS_PID)..."
+    kill "$RAILS_PID" 2>/dev/null || true
+    wait "$RAILS_PID" 2>/dev/null || true
+  fi
+}
+trap cleanup EXIT INT TERM
+
+# 1. Build Vue assets
+echo "==> Building Vue assets..."
+(cd "$ROOT/vue" && npm run build)
+
+# 2. Prepare test database
+echo "==> Preparing test database..."
+RAILS_ENV=test bundle exec rails db:prepare
+
+# 3. Start Rails server
+echo "==> Starting Rails server on port $E2E_PORT..."
+E2E_PORT="$E2E_PORT" RAILS_ENV=test bundle exec rails server -p "$E2E_PORT" -b 127.0.0.1 &
+RAILS_PID=$!
+
+# 4. Wait for server to be ready
+echo "==> Waiting for Rails server..."
+for i in $(seq 1 30); do
+  if curl -sf "http://localhost:$E2E_PORT/" > /dev/null 2>&1; then
+    echo "    Server is ready."
+    break
+  fi
+  if [ "$i" -eq 30 ]; then
+    echo "    ERROR: Rails server did not start within 30 seconds."
+    exit 1
+  fi
+  sleep 1
+done
+
+# 5. Run Nightwatch
+echo "==> Running Nightwatch: npx nightwatch ${FINAL_ARGS[*]}"
+set +e
+(cd "$ROOT/vue" && E2E_PORT="$E2E_PORT" RAILS_ENV=test npx nightwatch "${FINAL_ARGS[@]}")
+TEST_EXIT=$?
+set -e
+
+# 6. Cleanup happens via trap; exit with test result
+if [ "$TEST_EXIT" -ne 0 ]; then
+  echo "==> Tests failed (exit code $TEST_EXIT). Screenshots in vue/tests/screenshots/"
+fi
+exit "$TEST_EXIT"

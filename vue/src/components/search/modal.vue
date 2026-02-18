@@ -47,7 +47,7 @@ export default {
       type: null,
       typeItems: [
         {title: I18n.global.t('search_modal.all_content'), value: null},
-        {title: I18n.global.t('group_page.threads'), value: 'Discussion'},
+        {title: I18n.global.t('group_page.discussions'), value: 'Discussion'},
         {title: I18n.global.t('navbar.search.comments'), value: 'Comment'},
         {title: I18n.global.t('group_page.decisions'), value: 'Poll'},
         {title: I18n.global.t('poll_common.votes'), value: 'Stance'},
@@ -55,7 +55,7 @@ export default {
       ],
       orgItems: [
         {title: I18n.global.t('sidebar.all_groups'), value: null},
-        {title: I18n.global.t('sidebar.invite_only_discussions'), value: 0}
+        {title: I18n.global.t('sidebar.direct_discussions'), value: 0}
       ].concat(Session.user().parentGroups().map(g => ({
         title: g.name,
         value: g.id
@@ -215,6 +215,6 @@ v-card.search-modal(:title="$t('common.action.search')")
             mid-dot
             span {{result.author_name}}
             mid-dot
-            span {{result.group_name || $t('discussion.invite_only')}}
+            span {{result.group_name || $t('discussion.direct')}}
 
 </template>

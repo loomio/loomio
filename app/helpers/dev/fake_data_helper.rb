@@ -144,11 +144,11 @@ module Dev::FakeDataHelper
   end
 
   def fake_identity(args = {})
-    Identities::Base.new({
+    Identity.new({
       user: fake_user,
       uid: "abc",
       access_token: SecureRandom.uuid,
-      identity_type: :slack
+      identity_type: :saml
     }.merge(args))
   end
 
@@ -327,7 +327,7 @@ module Dev::FakeDataHelper
   def create_group_with_members
     group = saved(fake_group)
     group.add_admin!(saved(fake_user))
-    (7..9).to_a.sample.times do
+    3.times do
       group.add_member!(saved(fake_user))
     end
     create_chatbots_for_group(group)

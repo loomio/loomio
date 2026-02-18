@@ -13,4 +13,8 @@ class Identities::GoogleController < Identities::BaseController
   def oauth_params
     super.merge(response_type: :code, scope: client.scope.join('+'))
   end
+
+  def client
+    Clients::Google.instance
+  end
 end

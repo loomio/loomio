@@ -6,13 +6,18 @@ class PollsController < ApplicationController
   helper :email
 
   def export
-    @exporter = PollExporter.new(load_and_authorize(:poll, :export))
+    @poll = load_and_authorize(:poll, :export)
+    @exporter = PollExporter.new(@poll)
     @recipient = current_user
     @action_name = :export
 
     respond_to do |format|
-      format.html
-      format.csv { send_data @exporter.to_csv, filename:@exporter.file_name }
+      format.html do
+        render Views::Polls::Export.new(
+          poll: @poll, exporter: @exporter, recipient: @recipient
+        )
+      end
+      format.csv { send_data @exporter.to_csv, filename: @exporter.file_name }
     end
   end
 

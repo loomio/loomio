@@ -128,7 +128,7 @@ namespace :loomio do
   task delete_translations: :environment do
     # I edit this each time I want to use it.. rake task arguments are terrible
     unwanted = %w[
-      standalone_warning_helptext
+      start_a_new_discussion
     ]
 
     %w[client server].each do |source_name|
@@ -224,9 +224,11 @@ namespace :loomio do
     ThrottleService.reset!('hour')
     GenericWorker.perform_async('PollService', 'expire_lapsed_polls')
     GenericWorker.perform_async('PollService', 'publish_closing_soon')
+    GenericWorker.perform_async('PollService', 'open_scheduled_polls')
     GenericWorker.perform_async('TaskService', 'send_task_reminders')
     GenericWorker.perform_async('ReceivedEmailService', 'route_all')
     LoginToken.where("created_at < ?", 1.hours.ago).delete_all
+    Identity.stale(days: 7).delete_all
     GeoLocationWorker.perform_async
 
     SendDailyCatchUpEmailWorker.perform_async

@@ -1,39 +1,29 @@
-<script lang="js">
+<script setup lang="js">
+import { ref, computed, watch, onMounted, onBeforeUnmount, toRef } from 'vue';
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
 import AppConfig from '@/shared/services/app_config';
-import FileUploader from '@/shared/services/file_uploader';
 import FilesList from './files_list.vue';
 import EventBus from '@/shared/services/event_bus';
 import { I18n } from '@/i18n';
 import { convertToMd } from '@/shared/services/format_converter';
-import CharacterCount from '@tiptap/extension-character-count';
 import Blockquote from '@tiptap/extension-blockquote';
 import Bold from '@tiptap/extension-bold';
-import BulletList from '@tiptap/extension-bullet-list';
 import CodeBlock from '@tiptap/extension-code-block';
 import Document from '@tiptap/extension-document';
-import Dropcursor from '@tiptap/extension-dropcursor';
-import GapCursor from '@tiptap/extension-gapcursor';
 import HardBreak from '@tiptap/extension-hard-break';
 import Heading from '@tiptap/extension-heading';
 import HorizontalRule from '@tiptap/extension-horizontal-rule';
 import Italic from '@tiptap/extension-italic';
 import Link from '@tiptap/extension-link';
-import ListItem from '@tiptap/extension-list-item';
-import OrderedList from '@tiptap/extension-ordered-list';
 import Paragraph from '@tiptap/extension-paragraph';
-import Placeholder from '@tiptap/extension-placeholder';
 import Strike from '@tiptap/extension-strike';
-import TableCell from '@tiptap/extension-table-cell';
-import TableHeader from '@tiptap/extension-table-header';
-import TableRow from '@tiptap/extension-table-row';
-import Table from '@tiptap/extension-table';
-// import TaskList from '@tiptap/extension-task-list'
+import { Table, TableRow, TableCell, TableHeader } from '@tiptap/extension-table'
+import { BulletList, OrderedList, ListItem, ListKeymap } from '@tiptap/extension-list'
+import { Focus, Placeholder, UndoRedo, Dropcursor, CharacterCount } from '@tiptap/extensions'
 import {CustomTaskItem} from './extension_custom_task_item';
 import {CustomTaskList} from './extension_custom_task_list';
-import TextStyle from '@tiptap/extension-text-style';
-// import TextAlign from '@tiptap/extension-text-align'
+import { TextStyle } from '@tiptap/extension-text-style';
 import Text from '@tiptap/extension-text';
 import Underline from '@tiptap/extension-underline';
 import {CustomMention} from './extension_mention';
@@ -46,9 +36,7 @@ import { Editor, EditorContent } from '@tiptap/vue-3';
 
 import { getEmbedLink } from '@/shared/helpers/embed_link';
 
-import { CommonMentioning, HtmlMentioning, MentionPluginConfig } from './mentioning';
 import SuggestionList from './suggestion_list';
-import Attaching from './attaching';
 import { uniq, reject, uniqBy } from 'lodash-es';
 import TextHighlightBtn from './text_highlight_btn';
 import TextAlignBtn from './text_align_btn';
@@ -56,9 +44,13 @@ import { TextAlign } from './extension_text_align';
 import { Highlight } from './extension_highlight';
 
 import Collaboration from '@tiptap/extension-collaboration';
-import CollaborationCursor from '@tiptap/extension-collaboration-cursor'
+import CollaborationCaret from '@tiptap/extension-collaboration-caret'
 import { HocuspocusProvider } from '@hocuspocus/provider';
 import { IndexeddbPersistence } from 'y-indexeddb';
+
+import { useCommonMentioning, useHtmlMentioning, getMentionPluginConfig } from './composables/useMentioning';
+import { useAttaching } from './composables/useAttaching';
+import * as Y from 'yjs'
 
 const isValidHttpUrl = function(string) {
   let url = undefined;
@@ -70,309 +62,403 @@ const isValidHttpUrl = function(string) {
   return (url.protocol === 'http:') || (url.protocol === 'https:');
 };
 
-var provider = null;
+const props = defineProps({
+  focusId: String,
+  model: Object,
+  field: String,
+  label: String,
+  placeholder: String,
+  maxLength: Number,
+  autofocus: Boolean
+});
 
-export default
-{
-  mixins: [CommonMentioning, HtmlMentioning, Attaching],
-  props: {
-    focusId: String,
-    model: Object,
-    field: String,
-    label: String,
-    placeholder: String,
-    maxLength: Number,
-    shouldReset: Boolean,
-    autofocus: Boolean
-  },
+const emit = defineEmits(['is-uploading']);
 
-  components: {
-    EditorContent,
-    TextAlignBtn,
-    TextHighlightBtn,
-    SuggestionList,
-    FilesList
-  },
+// Refs
+const loading = ref(true);
+const socket = ref(null);
+const count = ref(0);
+const editor = ref(null);
+const editorContentRef = ref(null);
+const expanded = ref(false);
+const linkUrl = ref("");
+const iframeUrl = ref("");
+const linkDialogIsOpen = ref(false);
+const iframeDialogIsOpen = ref(false);
+const fetchedUrls = ref([]);
+const filesField = ref(null);
+const imagesField = ref(null);
+let ydoc = null;
 
-  data() {
-    return {
-      loading: true,
-      socket: null,
-      count: 0,
-      editor: null,
-      expanded: false,
-      linkUrl: "",
-      iframeUrl: "",
-      linkDialogIsOpen: false,
-      iframeDialogIsOpen: false,
-      fetchedUrls: [],
-      btnProps: {
-        size: 'small',
-        density: 'comfortable',
-        icon: true,
-        variant: 'text'
-      }
-    };
-  },
+const btnProps = ref({
+  size: 'small',
+  density: 'comfortable',
+  icon: true,
+  variant: 'text'
+});
 
-  mounted() {
-    const docname = this.model.collabKey(this.field, (Session.user().id || AppConfig.channel_token));
+// Composables
+const modelRef = toRef(props, 'model');
 
-    const onSync = function(provider) {
-      if (this.editor) {
-        if (!provider.document.getMap('config').get('initialContentLoaded')) {
-          provider.document.getMap('config').set('initialContentLoaded', true)
-          this.editor.commands.setContent(this.model[this.field]);
-        } else if (this.editor.storage.characterCount.characters() == 0 && !this.model.attributeIsBlank(this.field)) {
-          this.editor.commands.setContent(this.model[this.field]);
-        }
-      } else {
-        setTimeout( () => onSync(provider) , 250);
-      }
-    }.bind(this);
+const {
+  mentionsCache,
+  mentions,
+  query,
+  navigatedUserIndex,
+  suggestionListStyles,
+  fetchingMentions,
+  fetchMentionable,
+  updateMentions
+} = useCommonMentioning(modelRef);
 
-    provider = new HocuspocusProvider({
-      url: AppConfig.theme.hocuspocus_url,
-      name: docname,
-      token: (Session.user().id || 0) + "," + AppConfig.channel_token,
-      onSynced: function() { onSync(provider); }.bind(this),
-    });
+const htmlMentioning = useHtmlMentioning(
+  editor,
+  query,
+  mentions,
+  navigatedUserIndex,
+  suggestionListStyles,
+  fetchMentionable,
+  updateMentions
+);
 
-    new IndexeddbPersistence(docname, provider.document);
+const {
+  files,
+  imageFiles,
+  resetFiles,
+  updateFiles,
+  removeFile,
+  attachFile,
+  attachImageFile,
+  fileSelected: fileSelectedBase,
+  mediaRecorded: mediaRecordedBase,
+  imageSelected: imageSelectedBase
+} = useAttaching(modelRef, emit);
 
-    this.expanded = Session.user().experiences['html-editor.expanded'];
-    this.model.beforeSaves.push(() => this.updateModel() );
-
-    this.editor = new Editor({
-      editorProps: {
-        scrollThreshold: 100,
-        scrollMargin: 100
-      },
-      autofocus: this.autofocus,
-      extensions: [
-        Blockquote,
-        Bold,
-        BulletList,
-        CodeBlock,
-        CharacterCount.configure({limit: this.maxLength}),
-        CustomImage.configure({attachFile: this.attachFile, attachImageFile: this.attachImageFile}),
-        Collaboration.configure({
-          document: provider.document,
-        }),
-        CollaborationCursor.configure({
-          provider: provider,
-          user: {
-            name: Session.user().name,
-            color: '#f783ac',
-            thumbUrl: Session.user().thumbUrl,
-          },
-          render: user => {
-            const cursor = document.createElement('span')
-
-            cursor.classList.add('collaboration-cursor__caret')
-
-            const label = document.createElement('div')
-            label.classList.add('collaboration-cursor__label')
+// Computed
+const format = computed(() => {
+  return props.model[`${props.field}Format`];
+});
 
 
-            if (user.thumbUrl) {
-              label.classList.add('collaboration-cursor__label-with-avatar')
-              const avatarDiv = document.createElement('div')
-              avatarDiv.classList.add('collaboration-cursor__avatar-div')
-              const avatar = document.createElement('img')
-              avatar.setAttribute('src', user.thumbUrl)
-              avatar.classList.add('collaboration-cursor__avatar')
-              avatarDiv.insertBefore(avatar, null)
-              label.insertBefore(avatarDiv, null)
-            }
+const resetDraft = (content) => {
+  if (!editor.value) return;
+  editor.value.commands.setContent(content);
+};
 
-            label.insertBefore(document.createTextNode(user.name), null)
-            cursor.insertBefore(label, null)
+const deleteDraft = () => {
+  if (!editor.value) return;
+  editor.value.chain().clearContent().run();
+  ydoc.getMap('config').set('initialContentLoaded', false);
+  resetFiles();
+};
 
-            return cursor
-          }
-        }),
-        Video,
-        Audio,
-        Document,
-        Dropcursor,
-        GapCursor,
-        HardBreak,
-        Heading,
-        Highlight.configure({ multicolor: true }),
-        HorizontalRule,
-        Italic,
-        Iframe,
-        Link,
-        ListItem,
-        OrderedList,
-        Paragraph,
-        Placeholder.configure({placeholder: () => this.placeholder}),
-        Strike,
-        Text,
-        Table,
-        TableHeader,
-        TableRow,
-        TableCell,
-        CustomTaskList,
-        CustomTaskItem,
-        CustomMention.configure(MentionPluginConfig.bind(this)()),
-        TextStyle,
-        TextAlign.configure({ types: ['heading', 'paragraph'] }),
-        Underline
-      ],
-      onUpdate: () => {
-        if (this.maxLength) { this.checkLength(); }
-      },
-      onCreate: () => {
-        if (this.model.isNew() && (this.charCount() > 0) && this.autofocus) { this.editor.commands.focus('end'); }
-      }
-    });
-
-    EventBus.$on('focusEditor', focusId => {
-      if (this.focusId === focusId) { return this.editor.commands.focus(); }
-    });
-
-    EventBus.$on('resetDraft', (type, id, field, content) => {
-      if (type == this.model.constructor.singular &&
-          id == this.model.id &&
-          field == this.field) {
-        this.resetDraft(content);
-      }
-    });
-  },
-
-  computed: {
-    format() {
-      return this.model[`${this.field}Format`];
-    },
-  },
-
-  watch: {
-    'shouldReset': 'reset'
-  },
-
-  methods: {
-    reasonTooLong() {
-      return this.charCount() >= this.maxLength;
-    },
-
-    charCount() {
-      return this.editor.storage.characterCount.characters()
-    },
-
-    resetDraft(content) {
-      this.editor.commands.setContent(content);
-    },
-
-    openRecordVideoModal() {
-      EventBus.$emit('openModal', {
-        component: 'RecordVideoModal',
-        props: {
-          saveFn: this.mediaRecorded
-        }
-      }
-      );
-    },
-
-    openRecordAudioModal() {
-      EventBus.$emit('openModal', {
-        component: 'RecordAudioModal',
-        props: {
-          saveFn: this.mediaRecorded
-        }
-      }
-      );
-    },
-
-    checkLength() {
-      this.model.saveDisabled = this.charCount() > this.maxLength;
-    },
-
-    setCount(count) {
-      this.count = count;
-    },
-
-    selectedText() {
-      const {
-        state
-      } = this.editor;
-      const {
-        selection
-      } = this.editor.state;
-      const { from, to } = selection;
-      return state.doc.textBetween(from, to, ' ');
-    },
-
-    reset() {
-      this.editor.chain().clearContent().run();
-      provider.document.getMap('config').set('initialContentLoaded', false);
-      this.resetFiles();
-      this.model.beforeSaves.push(() => this.updateModel() );
-    },
-
-    convertToMd() {
-      if (confirm(I18n.global.t('formatting.markdown_confirm'))) {
-        this.updateModel();
-        convertToMd(this.model, this.field);
-        Records.users.saveExperience('html-editor.uses-markdown');
-      }
-    },
-
-    toggleExpanded() {
-      this.expanded = !this.expanded;
-      Records.users.saveExperience('html-editor.expanded', this.expanded);
-    },
-
-    setLinkUrl() {
-      if (this.linkUrl) {
-        if (!this.linkUrl.includes("://")) { this.linkUrl = "http://".concat(this.linkUrl); }
-        this.editor.chain().setLink({href: this.linkUrl}).focus().run();
-        this.fetchLinkPreviews([this.linkUrl]);
-        this.linkUrl = null;
-      }
-      this.linkDialogIsOpen = false;
-    },
-
-    setIframeUrl() {
-      if (!isValidHttpUrl(this.iframeUrl)) { return; }
-      this.editor.chain().setIframe({src: getEmbedLink(this.iframeUrl)}).focus().run();
-      this.iframeUrl = null;
-      this.iframeDialogIsOpen = false;
-    },
-
-    emojiPicked(shortcode, unicode) {
-      this.editor.chain()
-          .insertContent(unicode)
-          .focus()
-          .run();
-    },
-
-    updateModel() {
-      if (this.format !== 'html') { return; }
-      this.model[this.field] = this.editor.getHTML();
-      this.updateFiles();
-    },
-
-    removeLinkPreview(url) {
-      this.model.linkPreviews = reject(this.model.linkPreviews, p => p.url === url);
-    },
-
-    fetchLinkPreviews(urls) {
-      if (urls.length) {
-        this.fetchedUrls = uniq(this.fetchedUrls.concat(urls));
-        Records.remote.post('link_previews', {urls, discussion_id: this.model.discussionId}).then(data => {
-          this.model.linkPreviews = uniqBy(this.model.linkPreviews.concat(data.previews), 'url');
-        });
-      }
+watch(() => props.model, (newModel, oldModel) => {
+  if (newModel !== oldModel) {
+    // Clear editor content when model changes (after successful post)
+    if (editor.value && oldModel) {
+      deleteDraft();
     }
-  },
 
-  beforeDestroy() {
-    if (this.editor) { this.editor.destroy(); }
+    // Register callback on new model instance
+    if (newModel && newModel.beforeSaves && !newModel.beforeSaves.includes(updateModel)) {
+      newModel.beforeSaves.push(updateModel);
+    }
+  }
+});
+
+// Methods
+const reasonTooLong = () => {
+  return charCount() >= props.maxLength;
+};
+
+const charCount = () => {
+  return editor.value?.storage?.characterCount?.characters() || 0;
+};
+
+const openRecordVideoModal = () => {
+  EventBus.$emit('openModal', {
+    component: 'RecordVideoModal',
+    props: {
+      saveFn: mediaRecorded
+    }
+  });
+};
+
+const openRecordAudioModal = () => {
+  EventBus.$emit('openModal', {
+    component: 'RecordAudioModal',
+    props: {
+      saveFn: mediaRecorded
+    }
+  });
+};
+
+const mediaRecorded = (blob) => {
+  mediaRecordedBase(blob, editor);
+};
+
+const checkLength = () => {
+  if (!editor.value) return;
+  props.model.saveDisabled = charCount() > props.maxLength;
+};
+
+const setCount = (newCount) => {
+  count.value = newCount;
+};
+
+const selectedText = () => {
+  if (!editor.value) return '';
+  const { state } = editor.value;
+  const { selection } = editor.value.state;
+  const { from, to } = selection;
+  return state.doc.textBetween(from, to, ' ');
+};
+
+const convertToMdHandler = () => {
+  if (confirm(I18n.global.t('formatting.markdown_confirm'))) {
+    updateModel();
+    convertToMd(props.model, props.field);
+    Records.users.saveExperience('html-editor.uses-markdown');
   }
 };
 
+const toggleExpanded = () => {
+  expanded.value = !expanded.value;
+  Records.users.saveExperience('html-editor.expanded', expanded.value);
+};
+
+const setLinkUrl = () => {
+  if (linkUrl.value) {
+    if (!linkUrl.value.includes("://")) {
+      linkUrl.value = "http://".concat(linkUrl.value);
+    }
+    editor.value.chain().setLink({href: linkUrl.value}).focus().run();
+    fetchLinkPreviews([linkUrl.value]);
+    linkUrl.value = null;
+  }
+  linkDialogIsOpen.value = false;
+};
+
+const setIframeUrl = () => {
+  if (!isValidHttpUrl(iframeUrl.value)) { return; }
+  editor.value.chain().setIframe({src: getEmbedLink(iframeUrl.value)}).focus().run();
+  iframeUrl.value = null;
+  iframeDialogIsOpen.value = false;
+};
+
+const emojiPicked = (shortcode, unicode) => {
+  editor.value.chain()
+      .insertContent(unicode)
+      .focus()
+      .run();
+};
+
+const updateModel = () => {
+  if (!editor.value || format.value !== 'html') return;
+  props.model[props.field] = editor.value.getHTML();
+  updateFiles();
+};
+
+const removeLinkPreview = (url) => {
+  props.model.linkPreviews = reject(props.model.linkPreviews, p => p.url === url);
+};
+
+const fetchLinkPreviews = (urls) => {
+  if (urls.length) {
+    fetchedUrls.value = uniq(fetchedUrls.value.concat(urls));
+    Records.remote.post('link_previews', {
+      urls,
+      discussion_id: props.model.discussionId
+    }).then(data => {
+      props.model.linkPreviews = uniqBy(
+        props.model.linkPreviews.concat(data.previews),
+        'url'
+      );
+    });
+  }
+};
+
+const fileSelected = () => {
+  fileSelectedBase(filesField);
+};
+
+const imageSelected = () => {
+  imageSelectedBase(imagesField, editor);
+};
+
+// Lifecycle
+onMounted(() => {
+  const docname = props.model.collabKey(props.field, (Session.user().id || AppConfig.channel_token));
+  ydoc = new Y.Doc();
+
+  const onSync = function() {
+    if (!ydoc.getMap('config').get('initialContentLoaded')) {
+      ydoc.getMap('config').set('initialContentLoaded', true);
+      editor.value.commands.setContent(props.model[props.field]);
+    } else {
+      if (editor.value.storage.characterCount.characters() == 0 && !props.model.attributeIsBlank(props.field)) {
+        console.log(`content blank when it shouldnt be! ${docname}`);
+        editor.value.commands.setContent(props.model[props.field]);
+      }
+    }
+  };
+
+  const hocusProvider = new HocuspocusProvider({
+    url: AppConfig.theme.hocuspocus_url,
+    name: docname,
+    document: ydoc,
+    token: (Session.user().id || 0) + "," + AppConfig.channel_token,
+    onSynced: () => { onSync() },
+  });
+
+  const localProvider = new IndexeddbPersistence(docname, ydoc);
+
+  // Fallback: If server doesn't connect within timeout, load content from local model
+  setTimeout(() => {
+    if (!ydoc.getMap('config').get('initialContentLoaded')) {
+      console.log('Hocuspocus server unavailable, loading from local model');
+      onSync();
+    }
+  }, 2000);
+
+  expanded.value = Session.user().experiences['html-editor.expanded'];
+
+  // Register beforeSave callback - it persists across model instances since it's on the array
+  props.model.beforeSaves.push(updateModel);
+
+  const mentionContext = {
+    query,
+    suggestionRange: htmlMentioning.suggestionRange,
+    insertMention: htmlMentioning.insertMention,
+    navigatedUserIndex,
+    suggestionListStyles,
+    fetchMentionable,
+    updateMentions,
+    upHandler: htmlMentioning.upHandler,
+    downHandler: htmlMentioning.downHandler,
+    enterHandler: htmlMentioning.enterHandler,
+    updatePopup: htmlMentioning.updatePopup
+  };
+
+  editor.value = new Editor({
+    editorProps: {
+      scrollThreshold: 100,
+      scrollMargin: 100
+    },
+    autofocus: props.autofocus,
+    extensions: [
+      Blockquote,
+      Bold,
+      BulletList, OrderedList, ListItem, ListKeymap,
+      CodeBlock,
+      CharacterCount.configure({limit: props.maxLength}),
+      CustomImage.configure({attachFile: attachFile, attachImageFile: attachImageFile}),
+      Collaboration.configure({
+        document: ydoc,
+      }),
+      CollaborationCaret.configure({
+        provider: hocusProvider,
+        user: {
+          name: Session.user().name,
+          color: '#f783ac',
+          thumbUrl: Session.user().thumbUrl,
+        },
+        render: user => {
+          const cursor = document.createElement('span');
+
+          cursor.classList.add('collaboration-cursor__caret');
+
+          const label = document.createElement('div');
+          label.classList.add('collaboration-cursor__label');
+
+          if (user.thumbUrl) {
+            label.classList.add('collaboration-cursor__label-with-avatar');
+            const avatarDiv = document.createElement('div');
+            avatarDiv.classList.add('collaboration-cursor__avatar-div');
+            const avatar = document.createElement('img');
+            avatar.setAttribute('src', user.thumbUrl);
+            avatar.classList.add('collaboration-cursor__avatar');
+            avatarDiv.insertBefore(avatar, null);
+            label.insertBefore(avatarDiv, null);
+          }
+
+          label.insertBefore(document.createTextNode(user.name), null);
+          cursor.insertBefore(label, null);
+
+          return cursor;
+        }
+      }),
+      Video,
+      Audio,
+      Document,
+      Dropcursor,
+      HardBreak,
+      Heading,
+      Highlight.configure({ multicolor: true }),
+      HorizontalRule,
+      Italic,
+      Iframe,
+      Link,
+      Paragraph,
+      Placeholder.configure({placeholder: () => props.placeholder}),
+      Strike,
+      Text,
+      Table,
+      TableHeader,
+      TableRow,
+      TableCell,
+      CustomTaskList,
+      CustomTaskItem,
+      CustomMention.configure(getMentionPluginConfig(mentionContext)),
+      TextStyle,
+      TextAlign.configure({ types: ['heading', 'paragraph'] }),
+      Underline
+    ],
+    onUpdate: () => {
+      if (props.maxLength) { checkLength(); }
+    },
+    onCreate: () => {
+      if (props.model.isNew() && (charCount() > 0) && props.autofocus) {
+        editor.value.commands.focus('end');
+      }
+    }
+  });
+
+  EventBus.$on('focusEditor', focusId => {
+    if (props.focusId === focusId) {
+      return editor.value.commands.focus();
+    }
+  });
+
+  EventBus.$on('resetDraft', (type, id, field, content) => {
+    if (type == props.model.constructor.singular &&
+        id == props.model.id &&
+        field == props.field) {
+      resetDraft(content);
+    }
+  });
+
+  EventBus.$on('deleteDraft', (type, id, field) => {
+    if (type == props.model.constructor.singular &&
+        id == props.model.id &&
+        field == props.field) {
+      deleteDraft();
+    }
+  });
+});
+
+onBeforeUnmount(() => {
+  EventBus.$off('focusEditor');
+  EventBus.$off('resetDraft');
+  EventBus.$off('deleteDraft');
+  editor.value.destroy();
+});
+
+defineExpose({
+  editor,
+  updateModel,
+  charCount,
+});
 </script>
 
 <template lang="pug">
@@ -385,7 +471,7 @@ div.mb-2
         .v-field__field(style="display: block")
           label.v-label.v-field-label.v-field-label--floating(v-if="label" aria-hidden="true")
             span {{label}}
-          editor-content.html-editor__textarea.mx-4(:class="{'mt-6': label, 'mt-2': !label}" ref="editor" :editor='editor').lmo-markdown-wrapper
+          editor-content.html-editor__textarea.mx-4(v-if="editor" :class="{'mt-6': label, 'mt-2': !label}" ref="editorContentRef" :editor='editor').lmo-markdown-wrapper
         .v-field__outline
     v-sheet.menubar.position-sticky.bottom-0
       .d-flex.align-center.pt-2(v-if="editor.isActive('table')")
@@ -413,10 +499,10 @@ div.mb-2
             v-menu(activator="parent")
               emoji-picker(:insert="emojiPicked")
 
-          v-btn(v-bind="btnProps" @click='$refs.filesField.click()' :title="$t('formatting.attach')")
+          v-btn(v-bind="btnProps" @click='filesField.click()' :title="$t('formatting.attach')")
             common-icon(name="mdi-paperclip")
 
-          v-btn(v-bind="btnProps" @click='$refs.imagesField.click()' :title="$t('formatting.insert_image')")
+          v-btn(v-bind="btnProps" @click='imagesField.click()' :title="$t('formatting.insert_image')")
             common-icon(name="mdi-image")
 
           //- link
@@ -499,7 +585,7 @@ div.mb-2
             v-btn(v-bind="btnProps" :variant="editor.isActive('table') ? 'tonal' : 'text'" @click='editor.chain().insertTable({rows: 3, cols: 3, withHeaderRow: false }).focus().run()' :title="$t('formatting.add_table')")
               common-icon(name="mdi-table")
             //- markdown (save experience)
-            v-btn(v-bind="btnProps" @click="convertToMd" :title="$t('formatting.edit_markdown')")
+            v-btn(v-bind="btnProps" @click="convertToMdHandler" :title="$t('formatting.edit_markdown')")
               common-icon.e2e-markdown-btn(size="x-small" name="mdi-language-markdown-outline")
 
             v-btn.html-editor__expand(v-bind="btnProps" @click="toggleExpanded" :title="$t('formatting.collapse')")
@@ -529,7 +615,7 @@ div.mb-2
     :mentions="mentions"
     :positionStyles="suggestionListStyles"
     :navigatedUserIndex="navigatedUserIndex"
-    @select-row="selectRow")
+    @select-row="htmlMentioning.selectRow")
   files-list(:files="files", v-on:removeFile="removeFile")
 
   form(style="display: block" @change="fileSelected")

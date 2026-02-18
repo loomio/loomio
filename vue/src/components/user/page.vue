@@ -1,62 +1,53 @@
-<script lang="js">
-import Records        from '@/shared/services/records';
-import EventBus       from '@/shared/services/event_bus';
-import AbilityService from '@/shared/services/ability_service';
+<script setup lang="js">
+import { ref, computed, onMounted } from 'vue';
+import { useRoute }                 from 'vue-router';
+import Records                      from '@/shared/services/records';
+import EventBus                     from '@/shared/services/event_bus';
+import LmoUrlService                from '@/shared/services/lmo_url_service';
+import { isEmpty }                  from 'lodash-es';
+import { approximate }              from '@/shared/helpers/format_time';
+import { useWatchRecords }          from '@/composables/useWatchRecords';
 
-import { isEmpty }     from 'lodash-es';
-import { approximate } from '@/shared/helpers/format_time';
-import WatchRecords from '@/mixins/watch_records';
-import UrlFor from '@/mixins/url_for';
+const route = useRoute();
+const { watchRecords } = useWatchRecords();
+const urlFor = (model, action, params) => LmoUrlService.route({model, action, params});
 
-export default {
-  mixins: [WatchRecords, UrlFor],
-  data() {
-    return {
-      user: {},
-      isMembershipsFetchingDone: false,
-      groups: [],
-      canContactUser: false,
-      loadingGroupsForExecuting: false
-    };
-  },
+const user                      = ref({});
+const isMembershipsFetchingDone = ref(false);
+const groups                    = ref([]);
+const canContactUser            = ref(false);
+const loadingGroupsForExecuting = ref(false);
 
-  created() {
-    this.init();
-    Records.users.findOrFetchById(this.$route.params.key).then(this.init, error => EventBus.$emit('pageError', error));
-  },
+const isEmptyUser = computed(() => isEmpty(user.value));
 
-  methods: {
-    approximate,
-    init() {
-      if (this.user = (Records.users.find(this.$route.params.key) || Records.users.find({username: this.$route.params.key}))[0]) {
-        Records.remote.get('profile/contactable', {user_id: this.user.id}).then(() => {
-          this.canContactUser = true;
-        });
-        // EventBus.$emit('currentComponent', {title: this.user.name, page: 'userPage'});
-        this.loadGroupsFor(this.user);
-        this.watchRecords({
-          key: this.user.id,
-          collections: ['groups', 'memberships'],
-          query: store => {
-            this.groups = this.user.groups();
-          }
-        });
+function init() {
+  user.value = (Records.users.find(route.params.key) || Records.users.find({username: route.params.key}))[0];
+  if (user.value) {
+    Records.remote.get('profile/contactable', {user_id: user.value.id}).then(() => {
+      canContactUser.value = true;
+    });
+    loadGroupsFor(user.value);
+    watchRecords({
+      key: user.value.id,
+      collections: ['groups', 'memberships'],
+      query: () => {
+        groups.value = user.value.groups();
       }
-    },
-
-    loadGroupsFor(user) {
-      this.loadingGroupsForExecuting = true;
-      Records.memberships.fetchByUser(user).then(() => {
-        this.loadingGroupsForExecuting = false;
-      });
-    }
-  },
-
-  computed: {
-    isEmptyUser() { return isEmpty(this.user); }
+    });
   }
-};
+}
 
+function loadGroupsFor(u) {
+  loadingGroupsForExecuting.value = true;
+  Records.memberships.fetchByUser(u).then(() => {
+    loadingGroupsForExecuting.value = false;
+  });
+}
+
+onMounted(() => {
+  init();
+  Records.users.findOrFetchById(route.params.key).then(init, error => EventBus.$emit('pageError', error));
+});
 </script>
 
 <template lang="pug">

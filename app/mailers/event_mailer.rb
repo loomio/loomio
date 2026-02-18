@@ -1,36 +1,37 @@
-class EventMailer < BaseMailer
-  REPLY_DELIMITER = "﻿﻿"*4 # surprise! this is actually U+FEFF
+class EventMailer < ApplicationMailer
+  REPLY_DELIMITER = "\uFEFF\uFEFF"*4 # surprise! this is actually U+FEFF
 
   def event(recipient_id, event_id)
-    @recipient = User.active.find_by!(id: recipient_id)
-    @event = Event.find_by!(id: event_id)
-    @notification = Notification.find_by(user_id: recipient_id, event_id: event_id)
+    recipient = User.active.find_by!(id: recipient_id)
+    event = Event.find_by!(id: event_id)
+    notification = Notification.find_by(user_id: recipient_id, event_id: event_id)
 
-    return if @event.eventable.nil?
-    return if @event.eventable.respond_to?(:discarded?) && @event.eventable.discarded?
+    return if event.eventable.nil?
+    return if event.eventable.respond_to?(:discarded?) && event.eventable.discarded?
 
-    if %w[Poll Stance Outcome].include? @event.eventable_type
-      @poll = @event.eventable.poll
+    poll = if %w[Poll Stance Outcome].include? event.eventable_type
+      event.eventable.poll
     end
 
-    if @event.eventable.respond_to? :discussion
-      @discussion = @event.eventable.discussion
+    discussion = if event.eventable.respond_to? :discussion
+      event.eventable.discussion
     end
 
-    if @event.eventable.respond_to?(:group_id) && @event.eventable.group_id
-      @membership = Membership.active.find_by(
-        group_id: @event.eventable.group_id,
+    membership = if event.eventable.respond_to?(:group_id) && event.eventable.group_id
+      m = Membership.active.find_by(
+        group_id: event.eventable.group_id,
         user_id: recipient_id
       )
 
       # this might be necessary to comply with anti-spam rules
       # if someone does not respond to the invitation, don't send them more emails
-      return if @membership &&
-                !@recipient.email_verified &&
-                !["membership_created", "membership_resent"].include?(@event.kind)
+      return if m &&
+                !recipient.email_verified &&
+                !["membership_created", "membership_resent"].include?(event.kind)
+      m
     end
 
-    @utm_hash = { utm_medium: 'email', utm_campaign: @event.kind }
+    utm_hash = { utm_medium: 'email', utm_campaign: event.kind }
 
     discussion_kinds = %w[
       new_comment
@@ -45,47 +46,109 @@ class EventMailer < BaseMailer
       "Auto-Submitted": :"auto-generated"
     }
 
-    if @event.eventable.respond_to?(:calendar_invite) && @event.eventable.calendar_invite
+    if event.eventable.respond_to?(:calendar_invite) && event.eventable.calendar_invite
       attachments['meeting.ics'] = {
         content_type: 'text/calendar',
         content_transfer_encoding: 'base64',
-        content: Base64.encode64(@event.eventable.calendar_invite)
+        content: Base64.encode64(event.eventable.calendar_invite)
       }
     end
 
-    template_name = @event.eventable_type.tableize.singularize
-    template_name = 'poll' if @event.eventable_type == 'Outcome'
-
     # this should be notification.i18n_key
-    @event_key = if @event.kind == 'user_mentioned' &&
-                    @event.eventable.respond_to?(:parent) &&
-                    @event.eventable.parent.present? &&
-                    @event.eventable.parent.author == @recipient
-                   "comment_replied_to"
-                 elsif @event.kind == 'poll_created'
-                   'poll_announced'
-                 else
-                   @event.kind
-                 end
+    event_key = self.class.event_key_for(event, recipient)
 
     subject_params = {
-      title: plain_text(@event.eventable.title_model, :title),
-      poll_type: @poll && I18n.t("poll_types.#{@poll.poll_type}", locale: @recipient.locale),
-      actor: @event.user.name,
+      title: TranslationService.plain_text(event.eventable.title_model, :title, recipient),
+      poll_type: poll && I18n.t("decision_tools_card.#{poll.poll_type}_title", locale: recipient.locale),
+      actor: event.user.name,
       site_name: AppConfig.theme[:site_name]
     }
 
-    send_single_mail(
-      to: @recipient.email,
-      from: from_user_via_loomio(@event.user),
-      locale: @recipient.locale,
-      reply_to: reply_to_address_with_group_name(model: @event.eventable, user: @recipient),
-      subject_prefix: group_name_prefix(@event),
-      subject_key: "notifications.email_subject.#{@event_key}",
-      subject_params: subject_params,
-      subject_is_title: discussion_kinds.include?(@event.kind),
-      template_name: template_name
+    component = self.class.build_component(
+      event: event,
+      recipient: recipient,
+      event_key: event_key,
+      poll: poll,
+      discussion: discussion,
+      notification: notification,
+      membership: membership,
+      utm_hash: utm_hash
     )
+
+    return if spam?(recipient.email)
+
+    I18n.with_locale(first_supported_locale(recipient.locale)) do
+      subject = if discussion_kinds.include?(event.kind)
+        group_name_prefix(event) + subject_params[:title]
+      else
+        group_name_prefix(event) + I18n.t("notifications.email_subject.#{event_key}", **subject_params)
+      end
+
+      mail(
+        to: recipient.email,
+        from: from_user_via_loomio(event.user),
+        reply_to: reply_to_address_with_group_name(model: event.eventable, user: recipient),
+        subject: subject
+      ) do |format|
+        format.html { render component }
+      end
+    end
+  end
+
+  def self.event_key_for(event, recipient)
+    if event.kind == 'user_mentioned' &&
+       event.eventable.respond_to?(:parent) &&
+       event.eventable.parent.present? &&
+       event.eventable.parent.author == recipient
+      "comment_replied_to"
+    else
+      event.kind
+    end
+  end
+
+  def self.build_component(event:, recipient:, event_key: nil, poll: nil, discussion: nil, notification: nil, membership: nil, utm_hash: {})
+    event_key ||= event_key_for(event, recipient)
+    poll ||= event.eventable.poll if %w[Poll Stance Outcome].include?(event.eventable_type)
+    discussion ||= event.eventable.discussion if event.eventable.respond_to?(:discussion)
+
+    case event.eventable_type
+    when 'Poll', 'Outcome'
+      Views::EventMailer::Poll.new(
+        event: event, recipient: recipient, event_key: event_key,
+        poll: poll, notification: notification, discussion: discussion, membership: membership
+      )
+    when 'Discussion'
+      Views::EventMailer::Discussion.new(
+        event: event, recipient: recipient, event_key: event_key,
+        notification: notification, discussion: discussion, poll: poll, membership: membership
+      )
+    when 'Comment'
+      Views::EventMailer::Comment.new(
+        event: event, recipient: recipient, event_key: event_key,
+        notification: notification, discussion: discussion, poll: poll, membership: membership
+      )
+    when 'Stance'
+      Views::EventMailer::Stance.new(
+        event: event, recipient: recipient, event_key: event_key,
+        notification: notification, discussion: discussion, poll: poll, membership: membership
+      )
+    when 'Membership'
+      Views::EventMailer::Membership.new(
+        event: event, recipient: recipient, event_key: event_key
+      )
+    when 'Group'
+      Views::EventMailer::Group.new(
+        event: event, recipient: recipient, event_key: event_key
+      )
+    when 'MembershipRequest'
+      Views::EventMailer::MembershipRequest.new(
+        event: event, recipient: recipient, event_key: event_key, utm_hash: utm_hash
+      )
+    when 'ReceivedEmail'
+      Views::ReceivedEmailMailer.new(
+        event: event, recipient: recipient, event_key: event_key
+      )
+    end
   end
 
   private

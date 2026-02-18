@@ -311,10 +311,18 @@ uk:
       zoom: Zoom
       align: Вирівняти
       original: Оригінал
+      rearrange: Переставити
+      save_template: Зберегти шаблон
+      fork_template: Шаблон виделки
     formatting_help:
       label: Форматувати
       title: Дізнайтесь як використовувати Markdown для форматування текту
     thread: Нитка
+    commercial: Комерційний
+    nonprofit: Некомерційна організація
+    opening_in: Відкриття %{час}
+    read_more: Читати далі
+    templates_admin_hint: Оскільки ви є адміністратором групи, ви можете приховати або видалити будь-які шаблони, які вам не потрібні, а решту відредагувати відповідно до своїх потреб.
   merge_accounts:
     modal:
       title: Об’єднати облікові записи
@@ -523,6 +531,7 @@ uk:
     public_privacy_notice: Ваш коментар зможе бачити будь-хто в мережі
     sign_in: Авторизуйтесь, щоб приєднатися до розмови
     add_a_comment: Додати коментар
+    share_your_thoughts: Поділіться своїми думками…
   thread_nav:
     participants: Учасники
   sidebar:
@@ -555,6 +564,8 @@ uk:
     unread_discussions_count: Непрочитані обговорення (%{count})
     new_group: Нова група
     new_subgroup: Нова підгрупа
+    find_a_group: Знайти групу
+    direct_discussions: Прямі обговорення
   strand_nav:
     newest: Найновіші
     oldest: Найстарші
@@ -838,6 +849,10 @@ uk:
     discussion_updated: Обговорення оновлено
     discussion_created: Обговорення створено
     discussion_started: Обговорення розпочато
+    none_direct_discussion: Жодного (безпосереднє обговорення)
+    direct_discussion: Пряме обговорення
+    direct_discussion_hint: Пряме обговорення видно лише певним людям, яких ви запросили. Воно не відображатиметься у списку обговорень жодної групи — ви можете знайти його на сторінці прямих обговорень.
+    recommended_poll_templates: Рекомендовані шаблони опитувань
   announcement:
     send_discussion: Надіслати тему
     send_group: Запросити людей до %{name}
@@ -1215,6 +1230,7 @@ uk:
     no_discussions_here: Тут немає обговорень!
     private_discussions: Щоб переглядати приватні теми в цій групі, вам потрібно бути учасником
     view_closed_discussions: Переглянути закриті обговорення
+    discussion_templates: Шаблони обговорень
   export_data_modal:
     title: Як ви бажаєте використовувати ващі дані?
     as_csv: Відкрити в електронній таблиці
@@ -1329,16 +1345,29 @@ uk:
     messages:
       group_created: Групу створено
       group_updated: Групу оновлено
+      logo_removed: Логотип видалено
+      cover_photo_removed: Обкладинку видалено
     upload_logo: Завантажити логотип
     upload_cover_photo: Завантажити зображення для обкладинки
     request_to_join_prompt: Запит на приєднання
     default_request_to_join_prompt: Дякуємо за інтерес до нашої групи. Будь ласка, представтеся та поясніть, чому ви хочете приєднатися.
     upgrade_for_subgroups: 'Будь ласка, <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">оновіть свою підписку</a> , щоб створити підгрупу'
     share_this_url_with_people_who_want_to_join: Поділіться цією URL-адресою з людьми, які хочуть приєднатися
-    new_description_html: "<h3>З якими труднощами стикається ваша організація під час прийняття рішень?</h3><p></p><h3> Як би ви хотіли використовувати Loomio у своїй організації?</h3><p></p>"
     allow_polls_without_discussions: Дозволити опитування без обговорення
     allow_polls_without_discussions_help: Дозволити окремі опитування (не рекомендується). Без обговорення люди не можуть ефективно ставити запитання або досягати консенсусу.
     aria_label: Групова форма
+    list_in_the_groups_directory: Список у каталозі груп?
+    list_in_directory_yes: Так · показати цю групу на сторінці «знайти групу»
+    list_in_directory_no: Ні · людей слід запрошувати або надавати посилання для пошуку групи
+    upload_background: завантажити фон
+    remove_background: видалити фон
+    remove_logo: видалити логотип
+    members_can_create_templates: Учасники можуть створювати шаблони
+    members_can_create_templates_help: Дозволити учасникам створювати шаблони для обговорень та опитувань. Шаблони, створені учасниками, будуть приховані, доки адміністратор не відобразить їх.
+    members_can_start_discussions_v2: Учасники можуть розпочинати нові обговорення
+    members_can_start_discussions_help_v2: Дозволити учасникам розпочинати нові обговорення в групі
+    members_can_edit_discussions_v2: Учасники можуть керувати обговореннями та коментарями
+    members_can_edit_discussions_help_v2: Дозволити учасникам редагувати, переміщувати, закріплювати, позначати тегами або закривати будь-яке обговорення чи коментар у групі
   group_export_modal:
     title: Експортувати дані групи
     body: |
@@ -1574,8 +1603,8 @@ uk:
     current_polls: Поточні опитування
     recent_threads: Нещодавні теми
     no_groups:
-      show_all: Ласкаво просимо! Ви ще не є членом жодної групи. <a href="/explore">Переглянути загальнодоступні групи</a> або <a href="/g/new">Створіть групу</a>.
       show_muted: У Вас нема вимкнутих тем, бо Ви не є учасником жодної групи.
+      show_all: Ласкаво просимо! Ви ще не є учасником жодної групи.
     no_threads:
       show_all: У вас нема жодних недавніх тем.
       show_proposals: Наразі немає активних пропозицій.
@@ -1621,9 +1650,13 @@ uk:
     view_recent: Переглянути всі останні обговорення?
     discussion_marked_as_read: Обговорення позначено як прочитане
     discussion_marked_as_unread: Обговорення позначено як непрочитане
+    polls_to_vote_on_count: Опитування для голосування (%{count})
   threads_page:
     no_direct_threads: У вас нема особистих тем
     no_invite_only_threads: У вас немає тем лише для запрошень
+    no_direct_discussions: У вас немає прямих обговорень
+    no_direct_discussions_title: У вас немає прямих обговорень
+    no_direct_discussions_helptext: Прямі обговорення призначені для безпосереднього зв'язку з іншим користувачем, без приналежності обговорення до групи.
   inbox_page:
     no_threads: Вау! Ви прочитали всі теми у вашій скриньці.
     unread_threads: Непрочитані теми
@@ -1658,6 +1691,7 @@ uk:
     volume:
       mute_message: Обговорення вимкнено
       unmute_message: Обговорення скасовано
+    direct: Прямий
   discussion_last_seen_by:
     title: Переглянуто
     no_one: Ще ніхто не переглянув
@@ -1747,6 +1781,10 @@ uk:
     newest_first: Спочатку нові
     biggest_first: Спершу найбільші
     order_by: Упорядкувати групи за
+    most_members: Більшість членів
+    least_members: Найменша кількість учасників
+    newest: Найновіші
+    oldest: Найстаріший
   global:
     messages:
       reload: Перезавантажити
@@ -1769,6 +1807,7 @@ uk:
     meeting_title: Опитування щодо часу
     ranked_choice_title: Ранговий вибір
     gradients_of_agreement_title: Градієнти згоди
+    majority_title: Більшість
   poll_option_form:
     edit_option: Опція редагування
     option_name: Назва опції
@@ -1891,6 +1930,21 @@ uk:
     post_outcome: Опублікувати результат
     view_all_votes: Переглянути всі голоси
     you_voted: Ви проголосували
+    these_are_templates: Це шаблони рішень у вашій групі. Натисніть шаблон, щоб розпочати нове рішення. Адміністратори можуть налаштувати всі деталі шаблону, щоб він відповідав практикам вашої організації та був легким для пошуку та використання учасниками.
+    example_templates: Приклади шаблонів
+    example_poll_templates: Приклади шаблонів опитувань
+    browse_example_templates: Переглянути приклади шаблонів
+    browse_example_templates_hint: Створіть новий шаблон опитування з нуля або скористайтеся прикладом для початку.
+    browse_example_use_hint: Клацніть на заголовку шаблону, щоб <b>розпочати опитування</b> .
+    browse_example_fork_hint: "<b>Натисніть значок вилки</b> , щоб створити новий шаблон опитування, використовуючи приклад як відправну точку."
+    browse_unsure_help: Не знаєте, як користуватися шаблонами опитувань?
+    all_templates_hidden: Усі шаблони приховано
+    new_poll_template_title: Новий шаблон опитування
+    new_template_from_blank: Новий шаблон з нуля
+    new_template_from_blank_subtitle: Створіть новий шаблон, який відповідає процесу, що діє у вашій організації
+    blank: Новий
+    blank_subtitle: Створення нового шаблону опитування для певного процесу
+    start_a_poll: Розпочати опитування
   poll_common_attachment_form:
     label: Вкладення
   poll_common_add_option:
@@ -2004,6 +2058,7 @@ uk:
     voting_disabled_poll_is_template: Голосування вимкнено. Це шаблон.
     for_this_proposal_to_pass: 'Щоб ця пропозиція була прийнята:'
     for_this_poll_type_to_be_valid: 'Щоб цей %{poll_type} був дійсним:'
+    voting_opens_at: Цей %{poll_type} відкривається для голосування %{time}
   poll_common_collapsed:
     by_who: від %{name}
   poll_common_calendar_invite:
@@ -2585,6 +2640,8 @@ uk:
       ranked_choice_hint: Виборці розташовують варіанти в порядку від найбільш бажаного до найменш бажаного
       time_poll: Опитування часу
       time_poll_hint: Виборці вказують, коли вони вільні для зустрічі
+      rank: Ранг
+      time: Час
     process: Процес
     process_name: Назва шаблону
     process_name_hint: Як називається цей шаблон? Наприклад, Порада щодо ролі, Перевірка температури, Затвердження протоколу
@@ -2640,6 +2697,12 @@ uk:
     hide_results_description: Якщо ви хочете, щоб люди голосували, не бачачи, як проголосували інші, ви можете приховати результати.
     process_helptext: Назвіть та опишіть процес, який використовується для проведення цього опитування.
     reminder_helptext: Надішліть сповіщення «Закриття незабаром» за 24 години до дедлайну. Це може збільшити кількість учасників та створити можливість для людей переглянути свою позицію.
+    voting_duration: Тривалість
+    voting_duration_hint: Коли починається голосування, а коли закінчується?
+    more_settings: Більше налаштувань
+    create_poll_type: Створити %{poll_type}
+    notify_voters_when_voting_opens: Повідомити виборців про початок голосування
+    voters_notified_when_opens: Виборців буде повідомлено про початок голосування
   poll_receipts_page:
     verify_participants: Перевірити учасників
     see_votes_if_quorum_reached: Якщо голосування завершено і досягнуто кворуму, ви побачите, хто проголосував.
@@ -2656,10 +2719,8 @@ uk:
     aria_label: Додати відповідь
   discussion_template:
     browse_public_templates: Переглянути галерею шаблонів
-    start_a_new_discussion: Розпочати нове обговорення
     discussion_template_saved: Шаблон обговорення збережено
     these_are_public_templates: Ці шаблони доступні для копіювання або зміни відповідно до вашої групи
-    these_are_templates: Це шаблони для обговорення у вашій групі. Натисніть на шаблон, щоб розпочати обговорення. Ви також можете редагувати, видаляти або змінювати їх порядок, якщо хочете.
     default_title_label: Назва за замовчуванням
     default_title_hint: Попередньо заповніть поле заголовка текстом, який можна редагувати. Це необов’язково – залиште порожнім, якщо не впевнені.
     title_placeholder_label: Приклад назви
@@ -2673,6 +2734,38 @@ uk:
     add_poll_template_help: Виберіть будь-які шаблони опитувань, які допоможуть завершити цей процес
     recommended_poll_templates: Рекомендовані шаблони опитувань
     share_in_template_gallery: Поділитися цим шаблоном у загальнодоступній галереї шаблонів
+    browse_example_templates: Переглянути приклади шаблонів
+    example_templates: Приклади шаблонів
+    browse_public_templates_hint: Клацніть назву шаблону, щоб розпочати його обговорення, або натисніть кнопку редагування праворуч, щоб зробити копію та змінити її для своєї групи.
+    process_name_placeholder: наприклад, щотижнева стендап-акція
+    process_subtitle_placeholder: наприклад, коротка зустріч з командою щотижня
+    default_title_placeholder: наприклад, стендап – 15 січня
+    more_templates: Більше шаблонів
+    fewer_templates: Менше шаблонів
+    choose_a_group: Виберіть групу
+    default_templates: Шаблони за замовчуванням
+    or_start_a_direct_discussion: Або розпочніть пряму дискусію
+    choose_group_for_templates: Виберіть групу, щоб переглянути її шаблони обговорень
+    start_direct_discussion: Почати пряме обговорення
+    poll_templates: Шаблони опитувань
+    poll_templates_help: Вибрані тут шаблони відображатимуться першими, коли хтось натискатиме кнопку «Почати голосування».
+    start_direct_discussion_from_blank: Початок прямого обговорення з пустого шаблону
+    default_to_direct_discussion: Почніть як пряме обговорення (без групової роботи)
+    default_to_direct_discussion_helptext: Використовуйте це, якщо хочете, щоб люди починали прямі обговорення з цього шаблону.
+    example_discussion_templates: Приклади шаблонів для обговорення
+    browse_example_use_hint: Натисніть на заголовок шаблону, щоб <b>розпочати обговорення</b> .
+    browse_example_fork_hint: "<b>Клацніть значок вилки</b> , щоб створити новий шаблон обговорення, використовуючи приклад як відправну точку."
+    new_discussion_template_title: Новий шаблон обговорення
+    new_template_from_blank: Новий шаблон з нуля
+    new_template_from_blank_subtitle: Створіть новий шаблон, який відповідає процесу, що діє у вашій організації
+    these_are_templates_v3: Це шаблони обговорень у вашій групі. Натисніть шаблон, щоб розпочати нове обговорення.
+    these_are_templates_admin_hint: Адміністратори групи можуть редагувати шаблони, створювати нові шаблони, змінювати порядок та приховувати/відображати шаблони. Приховані шаблони можуть бачити лише адміністратори.
+    show_hidden_templates: Показати приховані шаблони
+    show_fewer: Показати менше
+    start_a_new_discussion: Розпочати нове обговорення
+    start_discussion: Розпочати обговорення
+    start_a_direct_discussion: Почати пряму дискусію
+    these_are_templates: Це шаблони для обговорення у вашій групі.
   context_panel:
     thread_status:
       pinned: Це обговорення закріплено. Воно залишатиметься на початку списку обговорень групи для всіх користувачів.
@@ -2696,3 +2789,12 @@ uk:
     confirm_change_to_private: "%{groupName} – це відкрита група. Якщо ви продовжите, це обговорення буде публічним."
     messages:
       success: Обговорення перенесено до %{name}
+  auth:
+    oauth_cancelled: Вхід скасовано
+    switching_accounts: Зміна облікових записів. Будь ласка, увійдіть, використовуючи дані нового облікового запису.
+  poll_common_opening_at_field:
+    voting_opens_immediately: Голосування відкривається негайно
+    opening_date: Дата відкриття
+    opening_hour: Час роботи
+    scheduled_hint: Опитування буде видимим, але голосувати за нього не можна буде до моменту відкриття.
+    draft_hint: Це опитування буде збережено як чернетку. Встановіть дату відкриття або поставте позначку навпроти опції «Голосування відкривається негайно», коли будете готові розпочати голосування.

@@ -5,6 +5,8 @@ class PollTemplate < ApplicationRecord
 
   is_rich_text on: :details
 
+  attribute :example, :boolean, default: false
+
   belongs_to :author, class_name: "User"
   belongs_to :group, class_name: "Group"
 
@@ -38,6 +40,7 @@ class PollTemplate < ApplicationRecord
     :specified_voters_only,
     :stance_reason_required,
     :notify_on_closing_soon,
+    :notify_on_open,
     :hide_results,
     :min_score,
     :max_score,

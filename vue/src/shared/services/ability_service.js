@@ -264,10 +264,6 @@ export default new class AbilityService {
     return (group.membersCanAddMembers && group.membersInclude(Session.user())) || group.adminsInclude(Session.user());
   }
 
-  canViewPublicGroups() {
-    return AppConfig.features.app.public_groups;
-  }
-
   canStartGroups() {
     return this.isEmailVerified() && (AppConfig.features.app.create_group || Session.user().isAdmin);
   }
@@ -349,7 +345,7 @@ export default new class AbilityService {
   }
 
   canClosePoll(poll) {
-    return !!poll.closingAt && !poll.discardedAt && !poll.closedAt && this.canEditPoll(poll);
+    return poll.isVotable() && this.canEditPoll(poll);
   }
 
   canReopenPoll(poll) {

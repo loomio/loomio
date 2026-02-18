@@ -58,8 +58,6 @@ class Group < ApplicationRecord
   has_many :comments, through: :discussions
   has_many :public_comments, through: :public_discussions, source: :comments
 
-  has_many :group_identities, dependent: :destroy, foreign_key: :group_id
-  has_many :identities, through: :group_identities
   has_many :chatbots, dependent: :destroy
 
   has_many :discussion_documents,        through: :discussions,        source: :documents
@@ -93,11 +91,6 @@ class Group < ApplicationRecord
   scope :by_slack_team, ->(team_id) {
      joins(:identities)
     .where("(omniauth_identities.custom_fields->'slack_team_id')::jsonb ? :team_id", team_id: team_id)
-  }
-
-  scope :by_slack_channel, ->(channel_id) {
-     joins(:group_identities)
-    .where("(group_identities.custom_fields->'slack_channel_id')::jsonb ? :channel_id", channel_id: channel_id)
   }
 
   scope :search_for, ->(query) { where("name ilike :q", q: "%#{query}%") }
@@ -160,6 +153,7 @@ class Group < ApplicationRecord
                          :members_can_announce,
                          :new_threads_max_depth,
                          :new_threads_newest_first,
+                         :members_can_create_templates,
                          :admins_can_edit_user_content,
                          :listed_in_explore,
                          :attachments]
@@ -352,9 +346,6 @@ class Group < ApplicationRecord
     subgroup_ids.concat([id]).compact.uniq
   end
 
-  def identity_for(type)
-    group_identities.joins(:identity).find_by("omniauth_identities.identity_type": type)
-  end
 
   def poll_template_positions
     self[:info]['poll_template_positions'] ||= {
@@ -392,6 +383,7 @@ class Group < ApplicationRecord
   def hidden_poll_templates=(val)
     self[:info]['hidden_poll_templates'] = val
   end
+
 
   def self.ransackable_attributes(auth_object = nil)
     [

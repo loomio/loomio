@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  layout false
+
   include LocalesHelper
   include ProtectedFromForgery
   include CurrentUserHelper
@@ -88,11 +90,11 @@ class ApplicationController < ActionController::Base
   end
 
   def crowdfunding
-    render layout: 'basic'
+    render Views::Application::Crowdfunding.new
   end
 
   def brand
-    render layout: 'basic'
+    render Views::Application::Brand.new
   end
 
   def bug_tunnel
@@ -131,8 +133,8 @@ class ApplicationController < ActionController::Base
     @metadata = {title: @title, description: @body }
     respond_to do |format|
       format.html { boot_app(status: status) }
-      format.json { render json: { error: @title }, root: false, status: status }
-      format.xml { render xml: { error: @title }, status: status }
+      format.json { render json: { error: message || @title }, root: false, status: status }
+      format.xml { render xml: { error: message || @title }, status: status }
     end
   end
 
@@ -152,6 +154,8 @@ class ApplicationController < ActionController::Base
   def boot_app(status: 200)
     expires_now
     prevent_caching
-    render 'application/boot_app', layout: false, status: status
+    render Views::Application::Boot.new(
+      metadata: metadata, export: !!params[:export], bot: browser.bot?
+    ), status: status
   end
 end

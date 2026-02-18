@@ -3,12 +3,14 @@ import GroupPage from './components/group/page.vue';
 import StrandPage from './components/strand/page';
 
 const InboxPage = wrapAsyncLoader(() => import('./components/inbox/page'));
+const PollsToVoteOnPage = wrapAsyncLoader(() => import('./components/dashboard/polls_to_vote_on_page'));
 const ExplorePage = wrapAsyncLoader(() => import('./components/explore/page'));
 const ProfilePage = wrapAsyncLoader(() => import('./components/profile/page'));
 const PollShowPage = wrapAsyncLoader(() => import('./components/poll/show_page'));
 const PollReceiptsPage = wrapAsyncLoader(() => import('./components/poll/receipts_page'));
 const PollFormPage = wrapAsyncLoader(() => import('./components/poll/form_page'));
 const PollTemplateFormPage = wrapAsyncLoader(() => import('./components/poll_template/form_page'));
+const PollTemplateBrowsePage = wrapAsyncLoader(() => import('./components/poll_template/browse_page'));
 const TasksPage = wrapAsyncLoader(() => import('./components/tasks/page'));
 const GroupDiscussionsPanel = wrapAsyncLoader(() => import('./components/group/discussions_panel'));
 const GroupPollsPanel = wrapAsyncLoader(() => import('./components/group/polls_panel'));
@@ -21,9 +23,9 @@ const StartGroupPage = wrapAsyncLoader(() => import('./components/start_group/pa
 const ContactPage = wrapAsyncLoader(() => import('./components/contact/page'));
 const EmailSettingsPage = wrapAsyncLoader(() => import('./components/email_settings/page'));
 const ThreadFormPage = wrapAsyncLoader(() => import('./components/thread/form_page'));
-const ThreadTemplateFormPage = wrapAsyncLoader(() => import('./components/thread_template/form_page'));
-const ThreadTemplateIndexPage = wrapAsyncLoader(() => import('./components/thread_template/index_page'));
-const ThreadTemplateBrowsePage = wrapAsyncLoader(() => import('./components/thread_template/browse_page'));
+const DiscussionTemplateFormPage = wrapAsyncLoader(() => import('./components/discussion_template/form_page'));
+const DiscussionTemplateIndexPage = wrapAsyncLoader(() => import('./components/discussion_template/index_page'));
+const DiscussionTemplateBrowsePage = wrapAsyncLoader(() => import('./components/discussion_template/browse_page'));
 const UserPage = wrapAsyncLoader(() => import('./components/user/page'));
 const ThreadsPage = wrapAsyncLoader(() => import('./components/threads/page'));
 const StartTrialPage = wrapAsyncLoader(() => import('./components/start_trial/page.vue'));
@@ -65,8 +67,9 @@ const router = createRouter({
     {path: '/tasks', component: TasksPage},
     {path: '/report', component: ReportPage},
     {path: '/dashboard', component: DashboardPage},
+    {path: '/dashboard/polls_to_vote_on', component: PollsToVoteOnPage},
     {path: '/dashboard/:filter', component: DashboardPage},
-    {path: '/threads/direct', component: ThreadsPage},
+    {path: '/dashboard/direct_discussions', component: ThreadsPage},
     {path: '/inbox', component: InboxPage },
     {path: '/explore', component: ExplorePage},
     {path: '/profile', component: ProfilePage},
@@ -76,15 +79,16 @@ const router = createRouter({
     {path: '/p/:id/receipts', component: PollReceiptsPage, props: true },
     {path: '/p/new', component: PollFormPage },
     {path: '/p/:key/:stub?', component: PollShowPage},
+    {path: '/poll_templates/browse', component: PollTemplateBrowsePage},
     {path: '/poll_templates/new', component: PollTemplateFormPage},
     {path: '/poll_templates/:id/edit', component: PollTemplateFormPage},
     {path: '/u/:key/:stub?', component: UserPage },
     {path: '/d/new', component: ThreadFormPage },
     {path: '/d/:key/edit', component: ThreadFormPage },
-    {path: '/thread_templates/browse', component: ThreadTemplateBrowsePage },
-    {path: '/thread_templates/new', component: ThreadTemplateFormPage },
-    {path: '/thread_templates/:id', component: ThreadTemplateFormPage },
-    {path: '/thread_templates', component: ThreadTemplateIndexPage },
+    {path: '/discussion_templates/browse', component: DiscussionTemplateBrowsePage },
+    {path: '/discussion_templates/new', component: DiscussionTemplateFormPage },
+    {path: '/discussion_templates/:id', component: DiscussionTemplateFormPage },
+    {path: '/discussion_templates', component: DiscussionTemplateIndexPage },
     {
       path: '/d/:key',
       component: StrandPage,

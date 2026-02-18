@@ -5,12 +5,36 @@ class Identities::BaseController < ApplicationController
   end
 
   def create
-    if identity.save
-      associate_identity
-      redirect_to session.delete(:back_to) || dashboard_path
-    else
-      respond_with_error 500, "Could not connect to #{controller_name}!"
+    if params[:error].present?
+      flash[:error] = t(:'auth.oauth_cancelled')
+      return redirect_to session.delete(:back_to) || dashboard_path
     end
+
+    access_token = fetch_access_token
+    return respond_with_error(401, "OAuth authorization failed") unless access_token.present?
+
+    identity_params = fetch_identity_params(access_token)
+    return respond_with_error(401, "Could not fetch user profile from OAuth provider") unless identity_params[:uid].present? && identity_params[:email].present?
+
+    identity = IdentityService.link_or_create(
+      identity_params: identity_params,
+      current_user: current_user
+    )
+
+    # Handle pending identity flow (user is switching accounts)
+    if !identity.user
+      back_to = session[:back_to]
+      sign_out
+      session[:pending_identity_id] = identity.id
+      flash[:notice] = t(:'auth.switching_accounts')
+      return redirect_to back_to || dashboard_path
+    end
+
+    # Handle successful login
+    sign_in(identity.user)
+    flash[:notice] = t(:'devise.sessions.signed_in')
+
+    redirect_to session.delete(:back_to) || dashboard_path
   end
 
   def destroy
@@ -24,52 +48,18 @@ class Identities::BaseController < ApplicationController
 
   private
 
-  def client
-    @client ||= "Clients::#{controller_name.classify}".constantize.instance
+  def fetch_access_token
+    client = "Clients::#{controller_name.classify}".constantize.instance
+    client.fetch_access_token(params[:code], redirect_uri)
+  end
+
+  def fetch_identity_params(token)
+    client = "Clients::#{controller_name.classify}".constantize.new(token: token)
+    client.fetch_identity_params.merge({ access_token: token, identity_type: controller_name })
   end
 
   def redirect_uri
     send :"#{controller_name}_authorize_url"
-  end
-
-  def identity
-    @identity ||= identity_class.new(identity_params).tap { |i| complete_identity(i) }
-  end
-
-  def existing_identity
-    @existing_identity ||= identity_class.with_user.find_by(
-      identity_type: identity.identity_type,
-      uid: identity.uid
-    )
-  end
-
-  def existing_user
-    @existing_user ||= User.verified.find_by(email: identity.email)
-  end
-
-  def associate_identity
-    if user = existing_identity&.user || current_user.presence || existing_user
-      user.associate_with_identity(identity)
-      sign_in(user)
-      flash[:notice] = t(:'devise.sessions.signed_in')
-    else
-      session[:pending_identity_id] = identity.tap(&:save).id
-    end
-  end
-
-  # override with differing ways to fetch the access token from the response
-  def identity_params
-    { access_token: client.fetch_access_token(params[:code], redirect_uri).json['access_token'] }
-  end
-
-  # override with additional follow-up API calls if they're needed to gather more info
-  # (such as logo url, user name, etc)
-  def complete_identity(i)
-    i.fetch_user_info
-  end
-
-  def identity_class
-    "Identities::#{controller_name.classify}".constantize
   end
 
   def oauth_url
@@ -82,6 +72,10 @@ class Identities::BaseController < ApplicationController
 
   def oauth_params
     { client.client_key_name => client.key, redirect_uri: redirect_uri, scope: oauth_scope }
+  end
+
+  def client
+    Clients::Oauth.instance
   end
 
   def oauth_client_id_field

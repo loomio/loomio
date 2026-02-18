@@ -123,7 +123,13 @@ class MembershipService
     user.experiences['titles'] = titles
 
     delegates = user.experiences.fetch('delegates', {})
-    delegates[group.id] = membership.delegate
+
+    if membership.delegate
+      delegates[group.id.to_s] = true
+    else
+      delegates.delete(group.id.to_s)
+    end
+
     user.experiences['delegates'] = delegates
 
     user.save!
@@ -193,8 +199,8 @@ class MembershipService
 
   def self.remove_delegate(membership:, actor:)
     actor.ability.authorize! :remove_delegate, membership
-    update_user_titles_and_broadcast(membership.id)
     membership.update delegate: false
+    update_user_titles_and_broadcast(membership.id)
   end
 
   def self.join_group(group:, actor:)

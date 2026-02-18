@@ -1,4 +1,6 @@
+require_relative Rails.root.join('test/reset_database_helper')
 class Dev::NightwatchController < Dev::BaseController
+  include ResetDatabaseHelper
   include Dev::NintiesMoviesHelper
   include PrettyUrlHelper
 
@@ -22,7 +24,7 @@ class Dev::NightwatchController < Dev::BaseController
     :index,
     :accept_last_invitation,
   ]
-  before_action :cleanup_database, except: [
+  before_action :reset_database, except: [
     :last_email,
     :use_last_login_token,
     :index,

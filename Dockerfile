@@ -17,7 +17,12 @@ COPY config ./config
 WORKDIR /build/vue
 
 # Build Vite assets
-RUN npm run build
+RUN NODE_OPTIONS=--max-old-space-size=2048 npm run build
+
+# Install hocuspocus dependencies
+WORKDIR /build/hocuspocus
+COPY hocuspocus/package.json ./
+RUN npm install --prefer-offline --no-audit --no-fund
 
 FROM ruby:3.4.7-slim
 
@@ -59,8 +64,12 @@ RUN bundle install && \
 # Copy entire app source
 COPY . .
 
-# Copy built Vite assets from nodebuild stage
-COPY --from=nodebuild /build/public/client3 /loomio/public/client3
+# Copy built Vite assets to staging path (copied to volume at startup)
+COPY --from=nodebuild /build/public/client3 /loomio/client3-build
+
+# Copy Node.js binary and hocuspocus dependencies from nodebuild stage
+COPY --from=nodebuild /usr/local/bin/node /usr/local/bin/node
+COPY --from=nodebuild /build/hocuspocus/node_modules /loomio/hocuspocus/node_modules
 
 EXPOSE 80
 

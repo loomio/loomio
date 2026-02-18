@@ -1,5 +1,6 @@
 ---
 zh_TW:
+  hello: 您好
   start_trial:
     title: 開始免費試用 Loomio
     intro: 感謝您對 Loomio 的興趣。我們很高興為您提供 %{day} 天的免費試用，以便您了解 Loomio 是否適合您的組織。
@@ -46,12 +47,8 @@ zh_TW:
     copy_of_title: "%{title} 的副本"
     loomio_default_templates: Loomio 預設模板
     which_templates_would_you_like_to_use: 您想使用哪些模板？
-    login_to_start_demo: '這是 Loomio 的展示。歡迎您到處看看。
-
-      '
-    sign_in_to_try_features: '若您想要在展示用的決策中投票，或為您的組織開始免費試用，請點擊「登入」。
-
-      '
+    login_to_start_demo: 這是 Loomio 的展示。歡迎您到處看看。
+    sign_in_to_try_features: 若您想要在展示用的決策中投票，或為您的組織開始免費試用，請點擊「登入」。
     click_button_to_start_demo: 歡迎！若要嘗試投票和其他功能，請按一下開始示範。
     welcome_to_your_demo: 這是您自己的展示用群組！
     try_voting_to_see_it_work: 嘗試對提案進行投票，以了解 Loomio 如何運作。
@@ -70,9 +67,7 @@ zh_TW:
     start_a_x_day_free_trial: 開始%{day}天的免費試用
     ready_to_trial: 準備好與您的組織一起使用 Loomio 了嗎？
     start_a_no_obligation_x_day_trial: 免費試用%{day}天，為您的組織建立 Loomio 群組。
-    you_can_test_it_out: '您可以邀請其他人加入，將其與您的其他工具整合，並試試看做出一些決策。
-
-      '
+    you_can_test_it_out: 您可以邀請其他人加入，將其與您的其他工具整合，並試試看做出一些決策。
     demo_created: 示範用群組已建立，只為您！
     start_demo: 試用範例
     view_demo: 檢視展示
@@ -220,6 +215,7 @@ zh_TW:
     groups: 群組
     organization: 組織
     organizations: 組織
+    thread: 討論串
     threads: 討論串
     decisions: 決策
     settings: 設定
@@ -317,10 +313,17 @@ zh_TW:
       zoom: Zoom
       align: 對齊
       original: 原來的
+      rearrange: 重新排列
+      save_template: 儲存模板
+      fork_template: 分支模板
     formatting_help:
       label: 格式化
       title: 學習如何使用 Markdown 來格式化您的文字
-    thread: 線
+    commercial: 商業的
+    nonprofit: 非營利組織
+    opening_in: 打開 %{time}
+    read_more: 閱讀更多
+    templates_admin_hint: 因為您是群組管理員，您可以隱藏或刪除任何您不需要的模板，並編輯剩餘的模板以滿足您的需求。
   merge_accounts:
     modal:
       title: 合併帳號
@@ -528,6 +531,7 @@ zh_TW:
     public_privacy_notice: 您的意見將會讓任何在網路上的人看到。
     sign_in: 登入以加入對話
     add_a_comment: 新增評論
+    share_your_thoughts: 分享你的想法…
   thread_nav:
     participants: 參與者
   sidebar:
@@ -560,6 +564,8 @@ zh_TW:
     unread_discussions_count: 未讀討論 (%{count})
     new_group: 新組
     new_subgroup: 新小組
+    find_a_group: 找個小組
+    direct_discussions: 直接討論
   strand_nav:
     newest: 最新
     oldest: 最舊
@@ -843,6 +849,10 @@ zh_TW:
     discussion_updated: 討論已更新
     discussion_created: 討論已創建
     discussion_started: 討論開始
+    none_direct_discussion: 無（直接討論）
+    direct_discussion: 直接討論
+    direct_discussion_hint: 直接討論僅對您邀請的特定人員可見。它不會出現在任何群組的討論清單中——您可以在「直接討論」頁面找到它。
+    recommended_poll_templates: 推薦的投票模板
   announcement:
     send_discussion: 傳送討論串
     send_group: 邀請夥伴到 %{name}
@@ -1220,6 +1230,7 @@ zh_TW:
     no_discussions_here: 這裡沒有任何討論！
     private_discussions: 您需要成為會員才能查看此群組中的私密討論串。
     view_closed_discussions: 查看已關閉的討論
+    discussion_templates: 討論模板
   export_data_modal:
     title: 您想要如何使用您的資料？
     as_csv: 在試算表中開啟它
@@ -1333,6 +1344,8 @@ zh_TW:
     messages:
       group_created: 群組已啟動
       group_updated: 群組已更新
+      logo_removed: 標誌已移除
+      cover_photo_removed: 封面照片已移除
     upload_logo: 上傳圖示
     upload_cover_photo: 上傳封面圖片
     request_to_join_prompt: 請求加入提示
@@ -1340,10 +1353,21 @@ zh_TW:
     upgrade_for_subgroups: '請<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">升級您的訂閱</a>以建立子群組'
     group_handle_placeholder: 您的群組網址與電子郵件：%{host}/%{handle}、%{handle}{'@'}%{host}
     share_this_url_with_people_who_want_to_join: 與想要加入的人分享此 URL
-    new_description_html: "<h3>您的組織在決策上面臨哪些挑戰？</h3><p></p><h3>您希望如何在您的組織中使用 Loomio？</h3><p></p>"
     allow_polls_without_discussions: 允許無討論投票
     allow_polls_without_discussions_help: 防止人們在未先開始討論的情況下發起投票。
     aria_label: 小組形式
+    list_in_the_groups_directory: 是否已列入群組目錄？
+    list_in_directory_yes: 是的 · 在「尋找群組」頁面上顯示此群組
+    list_in_directory_no: 不，不應邀請他人或提供連結讓他們找到該群組。
+    upload_background: 上傳背景
+    remove_background: 移除背景
+    remove_logo: 移除標誌
+    members_can_create_templates: 成員可以建立模板
+    members_can_create_templates_help: 允許成員建立討論和投票範本。成員建立的範本將預設為隱藏，直到管理員將其取消隱藏。
+    members_can_start_discussions_v2: 成員可以發起新的討論
+    members_can_start_discussions_help_v2: 允許成員在群組內發起新的討論。
+    members_can_edit_discussions_v2: 會員可以管理討論和評論
+    members_can_edit_discussions_help_v2: 允許成員編輯、移動、置頂、標記或關閉群組中的任何討論或評論。
   group_export_modal:
     title: 匯出群組資料
     body: |
@@ -1579,8 +1603,8 @@ zh_TW:
     current_polls: 目前投票
     recent_threads: 最近的討論串
     no_groups:
-      show_all: 歡迎！您還不是任何群組的成員。<a href="/explore">瀏覽公開群組</a>或<a href="/g/new">啟動群組</a>。
       show_muted: 您沒有任何已靜音的討論串，因為您不是任何群組的成員。
+      show_all: 歡迎！您目前還不是任何群組的成員。
     no_threads:
       show_all: 您沒有任何最近的討論串
       show_proposals: 目前沒有活躍的提案。
@@ -1626,9 +1650,13 @@ zh_TW:
     view_recent: 查看所有近期討論？
     discussion_marked_as_read: 已讀
     discussion_marked_as_unread: 討論內容標記為未讀
+    polls_to_vote_on_count: 待投票的民調 (%{count})
   threads_page:
     no_direct_threads: 您沒有直接討論串
     no_invite_only_threads: 您沒有僅限受邀者參與的討論串。
+    no_direct_discussions: 你們之間沒有直接的討論。
+    no_direct_discussions_title: 你們之間沒有直接的討論。
+    no_direct_discussions_helptext: 直接討論是指直接聯繫其他用戶，而不屬於任何群組的討論。
   inbox_page:
     no_threads: 太棒了！您已經讀完了您收件匣中所有的討論串。
     unread_threads: 未讀的討論串
@@ -1663,6 +1691,7 @@ zh_TW:
     volume:
       mute_message: 討論已靜音
       unmute_message: 討論已解除靜音
+    direct: 直接的
   discussion_last_seen_by:
     title: 被這些人看過：
     no_one: 還沒有人看過這個
@@ -1752,6 +1781,10 @@ zh_TW:
     newest_first: 最新的放在最前面
     biggest_first: 最大的放在最前面
     order_by: 群組排序由
+    most_members: 大多數成員
+    least_members: 最少成員
+    newest: 最新
+    oldest: 最老
   global:
     messages:
       reload: 重新整理
@@ -1774,6 +1807,7 @@ zh_TW:
     meeting_title: 時間投票
     ranked_choice_title: 排序選擇
     gradients_of_agreement_title: 一致性梯度
+    majority_title: 多數
   poll_option_form:
     edit_option: 編輯選項
     option_name: 選項名稱
@@ -1896,6 +1930,21 @@ zh_TW:
     post_outcome: 發布結論
     view_all_votes: 查看所有投票
     you_voted: 您投票了
+    these_are_templates: 這些是您所在小組的決策範本。點擊模板即可開始新的決策。管理員可以自訂範本的所有細節，使其符合您組織的實踐，並方便成員尋找和使用。
+    example_templates: 範例模板
+    example_poll_templates: 範例投票模板
+    browse_example_templates: 瀏覽範例模板
+    browse_example_templates_hint: 從空白處建立新的投票模板，或使用範例開始建立。
+    browse_example_use_hint: 點擊模板標題即可<b>發起投票</b>。
+    browse_example_fork_hint: "<b>點擊叉形圖標</b>，以範例為起點，建立一個新的投票模板。"
+    browse_unsure_help: 不知道如何使用投票範本？
+    all_templates_hidden: 所有模板均已隱藏
+    new_poll_template_title: 新投票模板
+    new_template_from_blank: 從空白模板建立新模板
+    new_template_from_blank_subtitle: 建立一個新模板，以適應您組織中的流程。
+    blank: 新的
+    blank_subtitle: 為特定流程建立新的投票模板
+    start_a_poll: 發起投票
   poll_common_attachment_form:
     label: 附件
   poll_common_add_option:
@@ -2007,6 +2056,7 @@ zh_TW:
     voting_disabled_poll_is_template: 投票已禁用。這是一個模板。
     for_this_proposal_to_pass: 為了使該提案獲得通過：
     for_this_poll_type_to_be_valid: 為了使此 %{poll_type} 有效：
+    voting_opens_at: 此 %{poll_type} 投票將於 %{time} 開放。
   poll_common_collapsed:
     by_who: 由 %{name}
   poll_common_calendar_invite:
@@ -2184,9 +2234,9 @@ zh_TW:
     consent: 同意
     abstain: 棄權
     unsure: 不確定
-    disagree: 反對
-    objection: 反對
-    object: 目的
+    disagree: 不同意
+    objection: 異議
+    object: 反對
     block: 阻擋
     no_voting: 沒有投票
   poll_count_form:
@@ -2588,6 +2638,8 @@ zh_TW:
       ranked_choice_hint: 選民按從最喜歡到最不喜歡的順序排列選項
       time_poll: 時間調查
       time_poll_hint: 選民表明何時可以見面
+      rank: 秩
+      time: 時間
     process: 流程
     process_name: 模板標題
     process_name_hint: 這個模板叫什麼？例如：角色建議、體溫檢查、會議記錄審批
@@ -2643,6 +2695,12 @@ zh_TW:
     hide_results_description: 如果您希望人們投票時不看到其他人的投票情況，您可以隱藏結果。
     process_helptext: 命名並描述用於運行此投票的過程。
     reminder_helptext: 在截止日期前 24 小時發送「即將結束」通知。這可以提高參與度，並為人們創造重新考慮自己立場的機會。
+    voting_duration: 期間
+    voting_duration_hint: 投票何時開始，何時結束？
+    more_settings: 更多設定
+    create_poll_type: 建立 %{poll_type}
+    notify_voters_when_voting_opens: 投票開始時通知選民
+    voters_notified_when_opens: 投票開始時，選民將會收到通知。
   poll_receipts_page:
     verify_participants: 驗證參與者
     see_votes_if_quorum_reached: 如果投票已結束且達到法定人數，您將看到誰投了票。
@@ -2659,10 +2717,8 @@ zh_TW:
     aria_label: 新增回覆
   discussion_template:
     browse_public_templates: 瀏覽範本庫
-    start_a_new_discussion: 發起新的討論
     discussion_template_saved: 討論範本已儲存
     these_are_public_templates: 您可以複製或修改這些模板，以適應您的團隊需求。
-    these_are_templates: 這些是您所在群組的討論範本。點擊模板即可開始討論。您也可以根據需要編輯、刪除或重新排序這些範本。
     default_title_label: 預設標題
     default_title_hint: 請在標題欄中預先填寫可編輯文字。此項為可選，如不確定，請留空。
     title_placeholder_label: 範例標題
@@ -2676,6 +2732,38 @@ zh_TW:
     add_poll_template_help: 選擇任何有助於完成此過程的投票模板
     recommended_poll_templates: 推薦的投票模板
     share_in_template_gallery: 在公共模板庫中分享此模板
+    browse_example_templates: 瀏覽範例模板
+    example_templates: 範例模板
+    browse_public_templates_hint: 點擊範本名稱即可開始討論，或點擊右側的編輯按鈕進行複製並修改，以便用於您自己的團隊。
+    process_name_placeholder: 例如：每週站會
+    process_subtitle_placeholder: 例如：每週與團隊進行簡短的溝通
+    default_title_placeholder: 例如：站立式演講 - 1月15日
+    more_templates: 更多模板
+    fewer_templates: 更少的模板
+    choose_a_group: 選擇一個群組
+    default_templates: 預設模板
+    or_start_a_direct_discussion: 或直接發起討論
+    choose_group_for_templates: 選擇一個群組以查看其討論模板
+    start_direct_discussion: 直接展開討論
+    poll_templates: 投票模板
+    poll_templates_help: 您在此處選擇的範本將在有人點擊「開始投票」時優先顯示。
+    start_direct_discussion_from_blank: 從空白模板開始直接討論
+    default_to_direct_discussion: 先以直接討論的形式開始（不要分組討論）。
+    default_to_direct_discussion_helptext: 如果您希望人們透過此範本直接發起討論，請使用此功能。
+    example_discussion_templates: 討論模板範例
+    browse_example_use_hint: 點擊模板標題即可<b>開始討論</b>。
+    browse_example_fork_hint: "<b>點擊叉形圖標</b>，以範例為起點，建立新的討論範本。"
+    new_discussion_template_title: 新討論模板
+    new_template_from_blank: 從空白模板建立新模板
+    new_template_from_blank_subtitle: 建立一個新模板，以適應您組織中的流程。
+    these_are_templates_v3: 這些是您所在小組的討論範本。點擊模板即可開始新的討論。
+    these_are_templates_admin_hint: 群組管理員可以編輯範本、建立新範本、重新排列範本以及隱藏/顯示範本。只有管理員才能看到隱藏的模板。
+    show_hidden_templates: 顯示隱藏模板
+    show_fewer: 顯示更少
+    start_a_new_discussion: 發起新的討論
+    start_discussion: 發起討論
+    start_a_direct_discussion: 發起直接討論
+    these_are_templates: 這些是你們小組的討論範本。
   context_panel:
     thread_status:
       pinned: 此討論貼文已置頂，將始終顯示在群組討論貼文清單的頂部，供所有使用者檢視。
@@ -2699,3 +2787,12 @@ zh_TW:
     confirm_change_to_private: "%{groupName} 是一個公開群組。如果您繼續操作，本次討論將會公開顯示。"
     messages:
       success: 討論已轉移至 %{name}
+  auth:
+    oauth_cancelled: 登入已取消
+    switching_accounts: 正在切換帳戶。請使用新帳號資訊登入。
+  poll_common_opening_at_field:
+    voting_opens_immediately: 投票立即開始
+    opening_date: 開業日期
+    opening_hour: 營業時間
+    scheduled_hint: 投票將在開放時間前顯示，但無法投票。
+    draft_hint: 此投票將儲存為草稿。準備好投票時，請設定開始日期或勾選「立即開始投票」。

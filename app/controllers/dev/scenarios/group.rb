@@ -12,6 +12,14 @@ module Dev::Scenarios::Group
     redirect_to group_path(create_group)
   end
 
+  def setup_group_with_photos
+    sign_in patrick
+    group = create_group
+    group.cover_photo.attach(io: File.open(Rails.root.join('public', 'brand', 'logo_sky_256h.png')), filename: 'cover.png')
+    group.add_member! emilio
+    redirect_to group_path(group)
+  end
+
   def setup_group_with_received_email
     sign_in patrick
     create_group.add_member! emilio
@@ -77,10 +85,10 @@ module Dev::Scenarios::Group
   def setup_group_with_pending_invitations
     sign_in patrick
     create_group
-    other_invite = FactoryBot.create(:user, name: nil, email: "hidden@test.com")
-    my_invite    = FactoryBot.create(:user, name: nil, email: "shown@test.com")
-    FactoryBot.create :membership, group: create_group, accepted_at: nil, inviter: jennifer, user: other_invite
-    FactoryBot.create :membership, group: create_group, accepted_at: nil, inviter: patrick, user: my_invite
+    other_invite = User.create!(email: "hidden@test.com", email_verified: true)
+    my_invite    = User.create!(email: "shown@test.com", email_verified: true)
+    Membership.create!(group: create_group, accepted_at: nil, inviter: jennifer, user: other_invite)
+    Membership.create!(group: create_group, accepted_at: nil, inviter: patrick, user: my_invite)
     redirect_to group_path(create_group)
   end
 
@@ -110,17 +118,20 @@ module Dev::Scenarios::Group
 
   def setup_subgroup_with_parent_member_visibility
     sign_in patrick
-    @group = Group.create!(name: 'Closed Dirty Dancing Shoes',
-                                group_privacy: 'closed')
+    @group = Group.new(name: 'Closed Dirty Dancing Shoes',
+                       group_privacy: 'closed',
+                       creator: jennifer)
+    GroupService.create(group: @group, actor: jennifer)
     @group.add_admin!  jennifer
-    @group.add_member! jennifer
     @group.add_member! patrick
-    @subgroup = Group.create!(name: 'Johnny Utah',
-                                   parent: @group,
-                                   discussion_privacy_options: 'public_or_private',
-                                   parent_members_can_see_discussions: true,
-                                   group_privacy: 'closed', creator: jennifer)
-    discussion = FactoryBot.create :discussion, group: @subgroup, title: "Vaya con dios", private: true, author: jennifer
+    @subgroup = Group.new(name: 'Johnny Utah',
+                          parent: @group,
+                          discussion_privacy_options: 'public_or_private',
+                          parent_members_can_see_discussions: true,
+                          group_privacy: 'closed',
+                          creator: jennifer)
+    GroupService.create(group: @subgroup, actor: jennifer)
+    discussion = Discussion.new(group: @subgroup, title: "Vaya con dios", private: true, author: jennifer)
     DiscussionService.create(discussion: discussion, actor: discussion.author)
     redirect_to group_path(@subgroup)
   end
