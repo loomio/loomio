@@ -6,9 +6,12 @@
     "serve": "vite",
     "build": "vite build",
     "vv": "vite --version",
+    "build:mobile": "vite build --config vite.config.mobile.js",
     "test": "nightwatch --retries 3 --headless"
   },
   "dependencies": {
+    "@capacitor/core": "^8.1.0",
+    "@capacitor/ios": "^8.1.0",
     "@hocuspocus/provider": "^3.4.0",
     "@mdi/js": "^6.9.96",
     "@rails/actioncable": "^8.1.200",
@@ -78,6 +81,7 @@
     "yjs": "^13.6.29"
   },
   "devDependencies": {
+    "@capacitor/cli": "^8.1.0",
     "@originjs/vite-plugin-commonjs": "latest",
     "@originjs/vite-plugin-content": "latest",
     "@vitejs/plugin-vue": "^6.0.4",

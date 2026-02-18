@@ -20,13 +20,16 @@ export default {
       volumeLevels: ["loud", "normal", "quiet"],
       isDisabled: false,
       applyToAll: this.defaultApplyToAll(),
-      volume: this.defaultVolume()
+      emailVolume: this.defaultEmailVolume(),
+      pushVolume: this.defaultPushVolume()
     };
   },
 
   computed: {
     formChanged() {
-      return (this.volume !== this.defaultVolume()) || (this.applyToAll !== this.defaultApplyToAll());
+      return (this.emailVolume !== this.defaultEmailVolume()) ||
+             (this.pushVolume !== this.defaultPushVolume()) ||
+             (this.applyToAll !== this.defaultApplyToAll());
     },
 
     title() {
@@ -40,7 +43,7 @@ export default {
 
   methods: {
     submit() {
-      this.model.saveVolume(this.volume, this.applyToAll)
+      this.model.saveVolume(this.emailVolume, this.pushVolume, this.applyToAll)
       .then(() => {
         Flash.success('change_volume_form.saved');
         EventBus.$emit('closeModal');
@@ -51,10 +54,18 @@ export default {
       if (this.model.isA('user')) { return true; } else { return false; }
     },
 
-    defaultVolume() {
+    defaultEmailVolume() {
       switch (this.model.constructor.singular) {
-      case 'discussion': return this.model.volume();
-      case 'membership': return this.model.volume;
+      case 'discussion': return this.model.discussionReaderEmailVolume;
+      case 'membership': return this.model.emailVolume;
+      case 'user':       return null;
+      }
+    },
+
+    defaultPushVolume() {
+      switch (this.model.constructor.singular) {
+      case 'discussion': return this.model.discussionReaderPushVolume;
+      case 'membership': return this.model.pushVolume;
       case 'user':       return null;
       }
     },
@@ -100,7 +111,12 @@ v-card.change-volume-form(:title="$t(translateKey() + '.title', { title: title }
       span(v-t="'change_volume_form.explain_scope.group'")
       br
       a(@click="openUserPreferences()" v-t="'change_volume_form.discussion.user'")
-    v-radio-group.mb-4(hide-details v-model='volume' :label="$t('change_volume_form.when_do_you_want_to_be_emailed')")
+    v-radio-group.mb-4(hide-details v-model='emailVolume' :label="$t('change_volume_form.email_volume_label')")
+      v-radio.volume-loud(value='loud' :label="$t('change_volume_form.loud_desc')")
+      v-radio.volume-normal(value='normal' :label="$t('change_volume_form.normal_desc')")
+      v-radio.volume-quiet(value='quiet' :label="$t('change_volume_form.quiet_desc')")
+
+    v-radio-group.mb-4(hide-details v-model='pushVolume' :label="$t('change_volume_form.push_volume_label')")
       v-radio.volume-loud(value='loud' :label="$t('change_volume_form.loud_desc')")
       v-radio.volume-normal(value='normal' :label="$t('change_volume_form.normal_desc')")
       v-radio.volume-quiet(value='quiet' :label="$t('change_volume_form.quiet_desc')")

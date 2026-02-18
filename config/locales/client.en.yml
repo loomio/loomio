@@ -457,6 +457,8 @@ en:
     title_label: Title
     hint: 'Hint for next time: Try highlighting some text before you click "Pin".'
   change_volume_form:
+    email_volume_label: Email notifications
+    push_volume_label: Push notifications
     when_do_you_want_to_be_emailed: When do you want to be emailed?
     change_your_email_settings: Change your email settings
     when_would_you_like_to_be_emailed_discussion: When would you like to be emailed about this discussion?
@@ -1655,6 +1657,9 @@ en:
     never: Never
     header: Notification settings
     send_email: Send email
+    send_push: Send push
+    push_notifications_header: Push notification settings
+    push_notifications_subtitle: Change when you get push notifications about activity in your groups
     account_deactivated: Your account has been deactivated. You will not receive any emails, ever.
     deactivate_header: Stop all emails forever
     deactivate_description: If you never want to get another email from us ever again, you can deactivate your user account.
@@ -1680,6 +1685,20 @@ en:
   thread_preview:
     replies_count: "%{count} replies"
     unread_count: "%{count} unread"
+  push_subscriptions_page:
+    header: Push notification devices
+    no_subscriptions: You don't have any push notification subscriptions yet.
+    subscribe_this_device: Enable push notifications on this device
+    device_name: Device name
+    device_name_placeholder: e.g. Work laptop, Phone
+    subscribed_at: Subscribed
+    remove: Remove
+    removed: Device removed
+    subscribed: Push notifications enabled for this device
+    update_name: Rename
+    name_updated: Device name updated
+    notifications_not_supported: Push notifications are not supported in this browser.
+    notifications_denied: Push notifications are blocked. Please enable them in your browser settings.
   dashboard_page:
     dashboard: Dashboard
     polls_to_vote_on: Polls to vote on

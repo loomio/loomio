@@ -22,22 +22,22 @@ class Queries::UsersByVolumeQueryTest < ActiveSupport::TestCase
     @user_membership_mute = new_user("membership_mute")
     @user_revoked = new_user("revoked")
 
-    @group.add_member!(@user_membership_loud).set_volume!(:loud)
-    @group.add_member!(@user_membership_normal).set_volume!(:normal)
-    @group.add_member!(@user_membership_quiet).set_volume!(:quiet)
-    @group.add_member!(@user_membership_mute).set_volume!(:mute)
-    @group.add_member!(@user_revoked).set_volume!(:normal)
+    @group.add_member!(@user_membership_loud).set_email_volume!(:loud)
+    @group.add_member!(@user_membership_normal).set_email_volume!(:normal)
+    @group.add_member!(@user_membership_quiet).set_email_volume!(:quiet)
+    @group.add_member!(@user_membership_mute).set_email_volume!(:mute)
+    @group.add_member!(@user_revoked).set_email_volume!(:normal)
     @group.membership_for(@user_revoked).update!(revoked_at: 1.day.ago)
 
-    @group.add_member!(@user_reader_loud).set_volume!(:mute)
-    @group.add_member!(@user_reader_normal).set_volume!(:mute)
-    @group.add_member!(@user_reader_quiet).set_volume!(:mute)
-    @group.add_member!(@user_reader_mute).set_volume!(:mute)
+    @group.add_member!(@user_reader_loud).set_email_volume!(:mute)
+    @group.add_member!(@user_reader_normal).set_email_volume!(:mute)
+    @group.add_member!(@user_reader_quiet).set_email_volume!(:mute)
+    @group.add_member!(@user_reader_mute).set_email_volume!(:mute)
 
-    DiscussionReader.for(discussion: @discussion, user: @user_reader_loud).set_volume!(:loud)
-    DiscussionReader.for(discussion: @discussion, user: @user_reader_normal).set_volume!(:normal)
-    DiscussionReader.for(discussion: @discussion, user: @user_reader_quiet).set_volume!(:quiet)
-    DiscussionReader.for(discussion: @discussion, user: @user_reader_mute).set_volume!(:mute)
+    DiscussionReader.for(discussion: @discussion, user: @user_reader_loud).set_email_volume!(:loud)
+    DiscussionReader.for(discussion: @discussion, user: @user_reader_normal).set_email_volume!(:normal)
+    DiscussionReader.for(discussion: @discussion, user: @user_reader_quiet).set_email_volume!(:quiet)
+    DiscussionReader.for(discussion: @discussion, user: @user_reader_mute).set_email_volume!(:mute)
 
     ActionMailer::Base.deliveries.clear
   end

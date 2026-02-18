@@ -100,6 +100,7 @@ class User < ApplicationRecord
   has_many :documents, foreign_key: :author_id, dependent: :destroy
   has_many :login_tokens, dependent: :destroy
   has_many :events, dependent: :destroy
+  has_many :push_subscriptions, dependent: :destroy
 
   has_many :tags, through: :groups
 
@@ -110,7 +111,8 @@ class User < ApplicationRecord
   initialized_with_token :api_key
   initialized_with_token :secret_token
 
-  enum :default_membership_volume, [:mute, :quiet, :normal, :loud]
+  enum :default_membership_email_volume, [:mute, :quiet, :normal, :loud], prefix: :default_email
+  enum :default_membership_push_volume, [:mute, :quiet, :normal, :loud], prefix: :default_push
 
   scope :active, -> { where(deactivated_at: nil) }
   scope :no_spam_complaints, -> { where(complaints_count: 0) }
