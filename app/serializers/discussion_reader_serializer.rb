@@ -5,7 +5,6 @@ class DiscussionReaderSerializer < ApplicationSerializer
              :read_ranges,
              :last_read_at,
              :dismissed_at,
-             :volume,
              :email_volume,
              :push_volume,
              :inviter_id,
@@ -24,14 +23,10 @@ class DiscussionReaderSerializer < ApplicationSerializer
     object.discussion.anonymous_polls_count == 0 ? object.read_ranges : []
   end
 
-  def volume
-    object[:email_volume]
-  end
-  
   def email_volume
     object[:email_volume]
   end
-  
+
   def push_volume
     object[:push_volume]
   end

@@ -2,7 +2,7 @@ class Events::OutcomeCreated < Event
   include Events::Notify::Mentions
   include Events::Notify::InApp
   include Events::Notify::ByEmail
-  include Events::Notify::ByWebPush
+  include Events::Notify::ByPush
   include Events::Notify::Chatbots
   include Events::LiveUpdate
   include Events::Notify::Subscribers

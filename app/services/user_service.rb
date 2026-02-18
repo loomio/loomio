@@ -52,9 +52,8 @@ class UserService
   def self.set_volume(user:, actor:, params:)
     actor.ability.authorize! :update, user
     
-    # Support both old 'volume' param and new 'email_volume'/'push_volume' params
-    email_vol = params[:email_volume] || params[:volume]
-    push_vol = params[:push_volume] || params[:volume]
+    email_vol = params[:email_volume]
+    push_vol = params[:push_volume]
     
     user_updates = {}
     user_updates[:default_membership_email_volume] = email_vol if email_vol

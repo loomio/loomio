@@ -36,26 +36,26 @@ class EventTest < ActiveSupport::TestCase
 
     # User who left group
     m = @group.add_member!(@user_left_group)
-    DiscussionReader.for(discussion: @discussion, user: @user_left_group).set_volume!(:loud)
+    DiscussionReader.for(discussion: @discussion, user: @user_left_group).set_email_volume!(:loud)
     m.destroy
 
     # Thread volume users (membership muted, thread overrides)
-    @group.add_member!(@user_thread_loud).set_volume!(:mute)
-    @group.add_member!(@user_thread_normal).set_volume!(:mute)
-    @group.add_member!(@user_thread_quiet).set_volume!(:mute)
-    @group.add_member!(@user_thread_mute).set_volume!(:mute)
-    @group.membership_for(@mentioned_user).set_volume!(:mute)
+    @group.add_member!(@user_thread_loud).set_email_volume!(:mute)
+    @group.add_member!(@user_thread_normal).set_email_volume!(:mute)
+    @group.add_member!(@user_thread_quiet).set_email_volume!(:mute)
+    @group.add_member!(@user_thread_mute).set_email_volume!(:mute)
+    @group.membership_for(@mentioned_user).set_email_volume!(:mute)
 
-    DiscussionReader.for(discussion: @discussion, user: @user_thread_loud).set_volume!(:loud)
-    DiscussionReader.for(discussion: @discussion, user: @user_thread_normal).set_volume!(:normal)
-    DiscussionReader.for(discussion: @discussion, user: @user_thread_quiet).set_volume!(:quiet)
-    DiscussionReader.for(discussion: @discussion, user: @user_thread_mute).set_volume!(:mute)
+    DiscussionReader.for(discussion: @discussion, user: @user_thread_loud).set_email_volume!(:loud)
+    DiscussionReader.for(discussion: @discussion, user: @user_thread_normal).set_email_volume!(:normal)
+    DiscussionReader.for(discussion: @discussion, user: @user_thread_quiet).set_email_volume!(:quiet)
+    DiscussionReader.for(discussion: @discussion, user: @user_thread_mute).set_email_volume!(:mute)
 
     # Membership volume users
-    @group.add_member!(@user_membership_loud).set_volume!(:loud)
-    @group.add_member!(@user_membership_normal).set_volume!(:normal)
-    @group.add_member!(@user_membership_quiet).set_volume!(:quiet)
-    @group.add_member!(@user_membership_mute).set_volume!(:mute)
+    @group.add_member!(@user_membership_loud).set_email_volume!(:loud)
+    @group.add_member!(@user_membership_normal).set_email_volume!(:normal)
+    @group.add_member!(@user_membership_quiet).set_email_volume!(:quiet)
+    @group.add_member!(@user_membership_mute).set_email_volume!(:mute)
 
     # Webhook (created before poll so it's present when events fire)
     @webhook_url = "https://webhook-#{SecureRandom.hex(4)}.example.com/hook"
@@ -148,8 +148,8 @@ class EventTest < ActiveSupport::TestCase
     @poll.update!(notify_on_closing_soon: 'voters')
     Stance.create!(poll: @poll, choice: 'Agree', participant: @user_thread_loud, cast_at: Time.current)
     Stance.create!(poll: @poll, choice: 'Agree', participant: @user_thread_normal, cast_at: Time.current)
-    Stance.create!(poll: @poll, choice: 'Agree', participant: @user_thread_quiet, volume: 'quiet', cast_at: Time.current)
-    Stance.create!(poll: @poll, choice: 'Agree', participant: @user_thread_mute, volume: 'mute', cast_at: Time.current)
+    Stance.create!(poll: @poll, choice: 'Agree', participant: @user_thread_quiet, email_volume: 'quiet', cast_at: Time.current)
+    Stance.create!(poll: @poll, choice: 'Agree', participant: @user_thread_mute, email_volume: 'mute', cast_at: Time.current)
 
     assert_difference -> { ActionMailer::Base.deliveries.count }, 2 do
       Events::PollClosingSoon.publish!(@poll)
@@ -239,7 +239,7 @@ class EventTest < ActiveSupport::TestCase
   end
 
   test "stance_created notifies author if volume loud" do
-    @poll.stances.create!(participant: @poll.author, volume: 'loud')
+    @poll.stances.create!(participant: @poll.author, email_volume: 'loud')
     stance = Stance.create!(poll: @poll, participant: @user_thread_normal, choice: 'Agree', cast_at: Time.current)
     assert_difference -> { ActionMailer::Base.deliveries.count }, 3 do
       Events::StanceCreated.publish!(stance)
@@ -252,7 +252,7 @@ class EventTest < ActiveSupport::TestCase
   end
 
   test "stance_created does not notify author if volume normal" do
-    @poll.stances.create!(participant: @poll.author, volume: 'normal')
+    @poll.stances.create!(participant: @poll.author, email_volume: 'normal')
     stance = Stance.create!(poll: @poll, participant: @user_thread_normal, choice: 'Agree', cast_at: Time.current)
     assert_difference -> { ActionMailer::Base.deliveries.count }, 2 do
       Events::StanceCreated.publish!(stance)
@@ -265,7 +265,7 @@ class EventTest < ActiveSupport::TestCase
 
   test "stance_created does not notify deactivated users" do
     [@user_thread_loud, @user_membership_loud].each { |u| u.update!(deactivated_at: Time.current) }
-    @poll.stances.create!(participant: @poll.author, volume: 'normal')
+    @poll.stances.create!(participant: @poll.author, email_volume: 'normal')
     stance = Stance.create!(poll: @poll, participant: @user_thread_normal, choice: 'Agree', cast_at: Time.current)
     assert_no_difference -> { ActionMailer::Base.deliveries.count } do
       Events::StanceCreated.publish!(stance)
@@ -274,7 +274,7 @@ class EventTest < ActiveSupport::TestCase
   end
 
   test "poll_announced does not email people with stance volume quiet" do
-    stance = Stance.create!(participant: @user_thread_normal, poll: @poll, volume: :quiet)
+    stance = Stance.create!(participant: @user_thread_normal, poll: @poll, email_volume: :quiet)
     assert_no_difference -> { ActionMailer::Base.deliveries.count } do
       Events::PollAnnounced.publish!(poll: @poll, actor: @poll.author, stances: [stance])
     end

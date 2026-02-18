@@ -13,7 +13,7 @@ class Events::NewDelegate < Event
   end
 
   def email_recipients
-    if eventable.volume_is_normal_or_loud?
+    if eventable.email_volume_is_normal_or_loud?
       User.where(id: eventable.user_id)
     else
       User.none

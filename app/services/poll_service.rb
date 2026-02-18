@@ -156,7 +156,8 @@ class PollService
       emails: emails
     ).where.not(id: existing_voter_ids)
 
-    volumes = {}
+    email_volumes = {}
+    push_volumes = {}
     group_member_ids = (poll.group || NullGroup.new).member_ids
 
     if poll.discussion_id
@@ -164,7 +165,8 @@ class PollService
         discussion_id: poll.discussion_id,
         user_id: users.pluck(:id),
       ).find_each do |dr|
-        volumes[dr.user_id] = dr.volume
+        email_volumes[dr.user_id] = dr.email_volume
+        push_volumes[dr.user_id] = dr.push_volume
       end
     end
 
@@ -173,7 +175,8 @@ class PollService
         group_id: poll.group_id,
         user_id: users.pluck(:id),
       ).find_each do |m|
-        volumes[m.user_id] = m.volume unless volumes.has_key? m.user_id
+        email_volumes[m.user_id] ||= m.email_volume
+        push_volumes[m.user_id] ||= m.push_volume
       end
     end
 
@@ -189,8 +192,8 @@ class PollService
         poll: poll,
         inviter: actor,
         guest: !group_member_ids.include?(user.id),
-        email_volume: volumes[user.id] || user.default_membership_email_volume,
-        push_volume: volumes[user.id] || user.default_membership_push_volume,
+        email_volume: email_volumes[user.id] || user.default_membership_email_volume,
+        push_volume: push_volumes[user.id] || user.default_membership_push_volume,
         latest: true,
         reason_format: user.default_format,
         created_at: Time.zone.now

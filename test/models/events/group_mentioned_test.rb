@@ -17,9 +17,9 @@ class Events::GroupMentionedTest < ActiveSupport::TestCase
     end
     @group.add_admin!(@actor)
 
-    @group.membership_for(@volume_quiet_member).update!(volume: :quiet)
-    @group.membership_for(@volume_normal_member).update!(volume: :normal)
-    @group.membership_for(@volume_loud_member).update!(volume: :loud)
+    @group.membership_for(@volume_quiet_member).update!(email_volume: :quiet)
+    @group.membership_for(@volume_normal_member).update!(email_volume: :normal)
+    @group.membership_for(@volume_loud_member).update!(email_volume: :loud)
 
     @discussion = create_discussion(group: @group, author: @actor)
     ActionMailer::Base.deliveries.clear

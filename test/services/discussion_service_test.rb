@@ -87,7 +87,7 @@ class DiscussionServiceTest < ActiveSupport::TestCase
     end
   end
 
-  test "sets volume to loud when email_on_participation is true" do
+  test "sets email_volume to loud when email_on_participation is true" do
     @user.update_attribute(:email_on_participation, true)
     discussion = Discussion.new(
       title: 'Loud Discussion',
@@ -96,10 +96,10 @@ class DiscussionServiceTest < ActiveSupport::TestCase
       author: @user
     )
     DiscussionService.create(discussion: discussion, actor: @user)
-    assert_equal 'loud', DiscussionReader.for(user: @user, discussion: discussion).volume
+    assert_equal 'loud', DiscussionReader.for(user: @user, discussion: discussion).email_volume
   end
 
-  test "does not set volume to loud when email_on_participation is false" do
+  test "does not set email_volume to loud when email_on_participation is false" do
     @user.update_attribute(:email_on_participation, false)
     discussion = Discussion.new(
       title: 'Normal Discussion',
@@ -108,7 +108,7 @@ class DiscussionServiceTest < ActiveSupport::TestCase
       author: @user
     )
     DiscussionService.create(discussion: discussion, actor: @user)
-    assert_not_equal 'loud', DiscussionReader.for(user: @user, discussion: discussion).volume
+    assert_not_equal 'loud', DiscussionReader.for(user: @user, discussion: discussion).email_volume
   end
 
   test "creates discussion reader for author" do
@@ -123,7 +123,7 @@ class DiscussionServiceTest < ActiveSupport::TestCase
 
     reader = DiscussionReader.for(user: @user, discussion: discussion)
     assert_not_nil reader
-    assert_includes ['normal', 'loud'], reader.volume
+    assert_includes ['normal', 'loud'], reader.email_volume
   end
 
   # -- Update --
@@ -225,15 +225,15 @@ class DiscussionServiceTest < ActiveSupport::TestCase
     )
     PollService.create(poll: poll, actor: @user)
     stance = poll.stances.find_by(participant_id: @user.id)
-    stance.update!(volume: 2) if stance
+    stance.update!(email_volume: 2) if stance
 
     DiscussionService.update_reader(
       discussion: discussion,
-      params: { volume: :mute },
+      params: { email_volume: :mute },
       actor: @user
     )
-    assert_equal "mute", DiscussionReader.for(user: @user, discussion: discussion).volume
-    assert_equal "mute", stance.reload.volume if stance
+    assert_equal "mute", DiscussionReader.for(user: @user, discussion: discussion).email_volume
+    assert_equal "mute", stance.reload.email_volume if stance
   end
 
   test "update_reader denies access for non-members" do
@@ -246,7 +246,7 @@ class DiscussionServiceTest < ActiveSupport::TestCase
     assert_raises CanCan::AccessDenied do
       DiscussionService.update_reader(
         discussion: other_discussion,
-        params: { volume: :mute },
+        params: { email_volume: :mute },
         actor: @user
       )
     end

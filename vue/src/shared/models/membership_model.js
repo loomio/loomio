@@ -41,26 +41,42 @@ export default class MembershipModel extends BaseModel {
     return this.group().name;
   }
 
-  saveVolume(volume, applyToAll) {
+  saveVolume(emailVolume, pushVolume, applyToAll) {
     if (applyToAll == null) { applyToAll = false; }
     this.processing = true;
     return Records.memberships.remote.patchMember(this.keyOrId(), 'set_volume', {
-      volume,
-      email_volume: volume,
-      push_volume: volume,
+      email_volume: emailVolume,
+      push_volume: pushVolume,
       apply_to_all: applyToAll,
       unsubscribe_token: this.user().unsubscribeToken
-    }
-    ).then(() => {
+    }).then(() => {
       if (applyToAll) {
-        Records.discussions.collection.find({ groupId: { $in: this.group().organisationIds() } }).forEach(discussion => discussion.update({discussionReaderVolume: null, discussionReaderEmailVolume: null, discussionReaderPushVolume: null}));
-        return each(this.user().memberships(), membership => membership.update({volume, emailVolume: volume, pushVolume: volume}));
+        Records.discussions.collection.find({ groupId: { $in: this.group().organisationIds() } }).forEach(discussion => discussion.update({discussionReaderEmailVolume: null, discussionReaderPushVolume: null}));
+        return each(this.user().memberships(), membership => membership.update({emailVolume: emailVolume, pushVolume: pushVolume}));
       } else {
-        return each(this.group().discussions(), discussion => discussion.update({discussionReaderVolume: null, discussionReaderEmailVolume: null, discussionReaderPushVolume: null}));
+        return each(this.group().discussions(), discussion => discussion.update({discussionReaderEmailVolume: null, discussionReaderPushVolume: null}));
       }
-  }).finally(() => {
+    }).finally(() => {
       return this.processing = false;
     });
+  }
+
+  saveEmailVolume(emailVolume) {
+    this.processing = true;
+    return Records.memberships.remote.patchMember(this.keyOrId(), 'set_volume', {
+      email_volume: emailVolume,
+      push_volume: this.pushVolume,
+      unsubscribe_token: this.user().unsubscribeToken
+    }).finally(() => { this.processing = false; });
+  }
+
+  savePushVolume(pushVolume) {
+    this.processing = true;
+    return Records.memberships.remote.patchMember(this.keyOrId(), 'set_volume', {
+      email_volume: this.emailVolume,
+      push_volume: pushVolume,
+      unsubscribe_token: this.user().unsubscribeToken
+    }).finally(() => { this.processing = false; });
   }
 
   resend() {
@@ -70,7 +86,7 @@ export default class MembershipModel extends BaseModel {
   }
 
   isMuted() {
-    return (this.emailVolume || this.volume) === 'mute';
+    return this.emailVolume === 'mute';
   }
 
   beforeRemove() {

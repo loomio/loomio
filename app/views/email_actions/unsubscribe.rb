@@ -28,7 +28,7 @@ class Views::EmailActions::Unsubscribe < Views::BasicLayout
           input(type: :hidden, name: "unsubscribe_token", value: @unsubscribe_token)
           input(type: :hidden, name: "discussion_id", value: @discussion_reader.discussion_id)
           input(type: :hidden, name: "poll_id", value: @stance.poll_id) if @stance
-          volume_select(volume_options, selected: @discussion_reader.volume)
+          volume_select(volume_options, selected: @discussion_reader.email_volume)
           input(type: "submit", value: t(:"common.action.save"))
         end
       end
@@ -40,7 +40,7 @@ class Views::EmailActions::Unsubscribe < Views::BasicLayout
           input(type: :hidden, name: "unsubscribe_token", value: @unsubscribe_token)
           input(type: :hidden, name: "poll_id", value: @stance.poll.id)
           input(type: :hidden, name: "discussion_id", value: @discussion_reader.discussion_id) if @discussion_reader
-          volume_select(volume_options, selected: @stance.volume)
+          volume_select(volume_options, selected: @stance.email_volume)
           input(type: "submit", value: t(:"common.action.save"))
         end
       end
@@ -52,7 +52,7 @@ class Views::EmailActions::Unsubscribe < Views::BasicLayout
           input(type: :hidden, name: "unsubscribe_token", value: @unsubscribe_token)
           input(type: :hidden, name: "discussion_id", value: @discussion_reader.discussion_id) if @discussion_reader
           input(type: :hidden, name: "poll_id", value: @stance.poll_id) if @stance
-          volume_select(volume_options, selected: @membership.volume)
+          volume_select(volume_options, selected: @membership.email_volume)
           input(type: "submit", value: t(:"common.action.save"))
         end
         p { i { t(:"change_volume_form.changes_all_discussions_and_polls_in_group") } }

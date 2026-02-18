@@ -139,9 +139,8 @@ class MembershipService
   def self.set_volume(membership:, params:, actor:)
     actor.ability.authorize! :update, membership
     
-    # Support both old 'volume' param and new 'email_volume'/'push_volume' params
-    email_vol = params[:email_volume] || params[:volume]
-    push_vol = params[:push_volume] || params[:volume]
+    email_vol = params[:email_volume]
+    push_vol = params[:push_volume]
     
     email_val = Membership.email_volumes[email_vol] if email_vol
     push_val = Membership.push_volumes[push_vol] if push_vol

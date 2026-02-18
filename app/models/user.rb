@@ -100,7 +100,7 @@ class User < ApplicationRecord
   has_many :documents, foreign_key: :author_id, dependent: :destroy
   has_many :login_tokens, dependent: :destroy
   has_many :events, dependent: :destroy
-  has_many :web_push_subscriptions, dependent: :destroy
+  has_many :push_subscriptions, dependent: :destroy
 
   has_many :tags, through: :groups
 

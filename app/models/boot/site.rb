@@ -28,6 +28,7 @@ module Boot
         pollTypes:         AppConfig.poll_types,
         pollColors:        AppConfig.colors,
         webhookEventKinds: AppConfig.webhook_event_kinds,
+        vapidPublicKey:     ENV['VAPID_PUBLIC_KEY'],
         identityProviders: AppConfig.providers.fetch('identity', []).map do |provider|
           ({ name: provider, href: send("#{provider}_oauth_path") } if ENV["#{provider.upcase}_APP_KEY"])
         end.compact

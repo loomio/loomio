@@ -1,7 +1,7 @@
 class Events::UserMentioned < Event
   include Events::Notify::InApp
   include Events::Notify::ByEmail
-  include Events::Notify::ByWebPush
+  include Events::Notify::ByPush
 
   def self.publish!(model, actor, user_ids)
     super model, user: actor, custom_fields: { user_ids: }
@@ -17,7 +17,4 @@ class Events::UserMentioned < Event
     User.active.verified.where(id: custom_fields['user_ids'])
   end
   
-  def push_recipients
-    notification_recipients.where(email_when_mentioned: true)
-  end
 end

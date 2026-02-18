@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_02_13_175153) do
+ActiveRecord::Schema[8.0].define(version: 2026_02_18_033533) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -67,6 +67,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_13_175153) do
   create_table "active_storage_variant_records", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
+    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
   create_table "attachments", id: :serial, force: :cascade do |t|
@@ -477,7 +478,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_13_175153) do
     t.string "request_to_join_prompt"
     t.integer "delegates_count", default: 0, null: false
     t.string "category"
-    t.boolean "can_start_polls_without_discussion", default: false, null: false
+    t.boolean "can_start_polls_without_discussion", default: true, null: false
     t.boolean "members_can_create_templates", default: false, null: false
     t.index ["archived_at"], name: "index_groups_on_archived_at", where: "(archived_at IS NULL)"
     t.index ["created_at"], name: "index_groups_on_created_at"
@@ -816,6 +817,18 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_13_175153) do
     t.index ["tags"], name: "index_polls_on_tags", using: :gin
   end
 
+  create_table "push_subscriptions", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.text "endpoint", null: false
+    t.string "p256dh_key", null: false
+    t.string "auth_key", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.index ["user_id", "endpoint"], name: "index_push_subscriptions_on_user_id_and_endpoint", unique: true
+    t.index ["user_id"], name: "index_push_subscriptions_on_user_id"
+  end
+
   create_table "reactions", id: :serial, force: :cascade do |t|
     t.integer "reactable_id"
     t.integer "user_id"
@@ -1077,17 +1090,6 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_13_175153) do
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 
-  create_table "web_push_subscriptions", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.text "endpoint", null: false
-    t.string "p256dh_key", null: false
-    t.string "auth_key", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id", "endpoint"], name: "index_web_push_subscriptions_on_user_id_and_endpoint", unique: true
-    t.index ["user_id"], name: "index_web_push_subscriptions_on_user_id"
-  end
-
   create_table "webhooks", force: :cascade do |t|
     t.integer "group_id", null: false
     t.string "name", null: false
@@ -1109,5 +1111,5 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_13_175153) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "web_push_subscriptions", "users"
+  add_foreign_key "push_subscriptions", "users"
 end

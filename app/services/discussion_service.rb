@@ -165,11 +165,11 @@ class DiscussionService
   def self.update_reader(discussion:, params:, actor:)
     actor.ability.authorize! :show, discussion
     reader = DiscussionReader.for(discussion: discussion, user: actor)
-    reader.update(params.slice(:volume))
+    reader.update(params.slice(:email_volume, :push_volume))
     Stance.joins(:poll).
            where('polls.discussion_id': reader.discussion_id).
            where(participant_id: actor.id).
-           update(params.slice(:volume))
+           update(params.slice(:email_volume, :push_volume))
 
     EventBus.broadcast('discussion_update_reader', reader, params, actor)
   end
@@ -243,10 +243,14 @@ class DiscussionService
                                          audience: audience)
 
 
-    volumes = {}
+    email_volumes = {}
+    push_volumes = {}
+    member_user_ids = Set.new
     Membership.where(group_id: discussion.group_id,
                      user_id: users.pluck(:id)).find_each do |m|
-      volumes[m.user_id] = m.volume
+      email_volumes[m.user_id] = m.email_volume
+      push_volumes[m.user_id] = m.push_volume
+      member_user_ids << m.user_id
     end
 
     DiscussionReader.
@@ -257,10 +261,10 @@ class DiscussionService
       DiscussionReader.new(user: user,
                            discussion: discussion,
                            inviter: actor,
-                           guest: !volumes.has_key?(user.id),
+                           guest: !member_user_ids.include?(user.id),
                            admin: !discussion.group_id,
-                           email_volume: volumes[user.id] || user.default_membership_email_volume,
-                           push_volume: volumes[user.id] || user.default_membership_push_volume)
+                           email_volume: email_volumes[user.id] || user.default_membership_email_volume,
+                           push_volume: push_volumes[user.id] || user.default_membership_push_volume)
     end
 
     DiscussionReader.import(new_discussion_readers, on_duplicate_key_ignore: true)

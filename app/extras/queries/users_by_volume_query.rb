@@ -28,6 +28,7 @@ class Queries::UsersByVolumeQuery
   private
 
   def self.users_by_volume(model, operator, volume, volume_column = :email_volume)
+    raise ArgumentError, "invalid volume_column" unless %i[email_volume push_volume].include?(volume_column)
     return User.none if model.nil?
     User.active.distinct.
       joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{model.discussion_id || 0} AND dr.user_id = users.id").

@@ -64,7 +64,7 @@ class Api::V1::ProfileController < Api::V1::RestfulController
   end
 
   def set_volume
-    service.set_volume(user: current_user, actor: current_user, params: params.slice(:volume, :apply_to_all))
+    service.set_volume(user: current_user, actor: current_user, params: params.slice(:email_volume, :push_volume, :apply_to_all))
     respond_with_resource
   end
 

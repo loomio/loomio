@@ -382,8 +382,8 @@ class Api::V1::DiscussionsControllerTest < ActionController::TestCase
     sign_in user
     
     reader = DiscussionReader.for(user: user, discussion: discussion)
-    reader.update(volume: DiscussionReader.volumes[:normal])
-    
+    reader.update(email_volume: :normal)
+
     patch :dismiss, params: { id: discussion.key }
     
     assert_response :success
@@ -397,7 +397,7 @@ class Api::V1::DiscussionsControllerTest < ActionController::TestCase
     sign_in user
     
     reader = DiscussionReader.for(user: user, discussion: discussion)
-    reader.update(volume: DiscussionReader.volumes[:normal], dismissed_at: 1.day.ago)
+    reader.update(email_volume: :normal, dismissed_at: 1.day.ago)
     
     patch :recall, params: { id: discussion.key }
     
@@ -549,21 +549,21 @@ class Api::V1::DiscussionsControllerTest < ActionController::TestCase
   end
 
   # Test set_volume action
-  test "sets the volume of a thread" do
+  test "sets the email_volume of a thread" do
     user = users(:normal_user)
     discussion = discussions(:test_discussion)
     sign_in user
-    
+
     reader = DiscussionReader.for(user: user, discussion: discussion)
-    reader.update(volume: :loud)
-    
-    put :set_volume, params: { id: discussion.id, volume: :mute }, format: :json
-    
+    reader.update(email_volume: :loud)
+
+    put :set_volume, params: { id: discussion.id, email_volume: :mute }, format: :json
+
     assert_response :success
-    assert_equal :mute, reader.reload.volume.to_sym
+    assert_equal :mute, reader.reload.email_volume.to_sym
   end
 
-  test "does not update volume for unauthorized discussion" do
+  test "does not update email_volume for unauthorized discussion" do
     user = users(:normal_user)
     # Use an existing discussion from another group where user is not a member
     another_discussion = create_discussion(
@@ -571,9 +571,9 @@ class Api::V1::DiscussionsControllerTest < ActionController::TestCase
       author: users(:discussion_author)
     )
     sign_in user
-    
-    put :set_volume, params: { id: another_discussion.id, volume: :mute }, format: :json
-    
+
+    put :set_volume, params: { id: another_discussion.id, email_volume: :mute }, format: :json
+
     refute_equal 200, response.status
   end
 end

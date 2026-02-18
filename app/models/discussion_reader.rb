@@ -34,7 +34,8 @@ class DiscussionReader < ApplicationRecord
     if user&.is_logged_in?
       find_or_initialize_by(user_id: user.id, discussion_id: discussion.id) do |dr|
         m = user.memberships.find_by(group_id: discussion.group_id)
-        dr.volume = (m && m.volume) || 'normal'
+        dr.email_volume = (m && m.email_volume) || 'normal'
+        dr.push_volume = (m && m.push_volume) || 'normal'
       end
     else
       new(discussion: discussion)
@@ -45,9 +46,9 @@ class DiscussionReader < ApplicationRecord
     self.for(user: actor || model.author, discussion: model.discussion)
   end
 
-  def update_reader(ranges: nil, volume: nil, participate: false, dismiss: false)
+  def update_reader(ranges: nil, email_volume: nil, participate: false, dismiss: false)
     viewed!(ranges, persist: false)     if ranges
-    set_volume!(volume, persist: false) if volume && (volume != :loud || user.email_on_participation?)
+    set_email_volume!(email_volume, persist: false) if email_volume && (email_volume != :loud || user.email_on_participation?)
     dismiss!(persist: false)            if dismiss
     save!                               if changed?
     self
@@ -80,16 +81,20 @@ class DiscussionReader < ApplicationRecord
     save if persist
   end
 
-  def computed_volume
+  def computed_email_volume
     if persisted?
-      volume || membership&.volume || 'normal'
+      email_volume || membership&.email_volume || 'normal'
     else
-      membership.volume
+      membership.email_volume
     end
   end
 
-  def discussion_reader_volume
-    self[:volume]
+  def discussion_reader_email_volume
+    self[:email_volume]
+  end
+
+  def discussion_reader_push_volume
+    self[:push_volume]
   end
 
   def discussion_reader_user_id

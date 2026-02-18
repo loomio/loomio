@@ -2,7 +2,7 @@ import AppConfig from '@/shared/services/app_config';
 import App from '@/app.vue';
 import { createApp } from 'vue';
 import markedDirective from '@/marked_directive';
-import './removeServiceWorker';
+import './registerServiceWorker';
 import { pick } from 'lodash-es';
 import * as Sentry from '@sentry/browser';
 import PlausibleService from '@/shared/services/plausible_service';
