@@ -88,7 +88,6 @@
     "nightwatch": "^3.15.0",
     "pug": "latest",
     "sass": "latest",
-    "typescript": "^5.9.3",
     "unplugin-vue-components": "latest",
     "vite": "^7.3.1",
     "vite-plugin-env-compatible": "latest",
