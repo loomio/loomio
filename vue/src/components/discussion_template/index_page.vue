@@ -157,7 +157,7 @@ watch(showHidden, () => { query(); });
           v-alert.mx-4(type="info" variant="tonal")
             span(v-t="'discussion_form.direct_discussion_hint'")
           v-list(lines="two")
-            v-list-item(
+            v-list-item.discussion-templates--direct-discussion(
               v-for="template in directTemplates"
               :key="template.id || template.key"
               :to="'/d/new?' + (template.id ? 'template_id='+template.id : 'template_key='+template.key) + '&return_to='+returnTo"
