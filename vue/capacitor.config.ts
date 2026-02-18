@@ -5,9 +5,8 @@ const config: CapacitorConfig = {
   appName: 'Loomio',
   webDir: 'dist',
   server: {
-    // For development, uncomment and point to your Vite dev server:
-    // url: 'http://YOUR_LOCAL_IP:8080',
-    // cleartext: true,
+    url: 'http://localhost:8080',
+    cleartext: true,
   }
 };
 

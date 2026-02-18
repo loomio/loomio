@@ -1,3 +1,4 @@
+import { Capacitor } from '@capacitor/core';
 import AppConfig from '@/shared/services/app_config';
 import App from '@/app.vue';
 import { createApp } from 'vue';
@@ -6,6 +7,10 @@ import './removeServiceWorker';
 import { pick } from 'lodash-es';
 import * as Sentry from '@sentry/browser';
 import PlausibleService from '@/shared/services/plausible_service';
+
+if (Capacitor.isNativePlatform()) {
+  document.body.classList.add('capacitor');
+}
 
 try {
   document.querySelectorAll("link[rel=stylesheet][href*=themeauto]")[0].remove();
