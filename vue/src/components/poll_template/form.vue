@@ -510,9 +510,10 @@ export default {
       v-spacer
       v-btn.mr-2(
         @click="discardDraft"
-        v-t="'common.reset'"
       )
+        span(v-t="'common.reset'")
       v-btn.poll-common-form__submit(
+        variant="elevated"
         color="primary"
         @click='submit()'
         :loading="pollTemplate.processing"

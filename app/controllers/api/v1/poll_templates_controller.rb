@@ -17,7 +17,7 @@ class Api::V1::PollTemplatesController < Api::V1::RestfulController
   def browse
     templates = PollTemplateService.default_templates + PollTemplateService.example_templates
 
-    render root: false, json: templates.map { |dt|
+    results = templates.map { |dt|
       {
         key: dt.key,
         poll_type: dt.poll_type,
@@ -26,6 +26,27 @@ class Api::V1::PollTemplatesController < Api::V1::RestfulController
         tags: dt.tags
       }
     }
+
+    # Include parent group's DB templates when browsing from a subgroup
+    if params[:group_id].present?
+      group = current_user.groups.find_by(id: params[:group_id])
+      if group&.parent_id && current_user.group_ids.include?(group.parent_id)
+        parent_results = PollTemplate.where(group_id: group.parent_id, discarded_at: nil).order(:position).map { |dt|
+          {
+            id: dt.id,
+            key: dt.key,
+            poll_type: dt.poll_type,
+            process_name: dt.process_name,
+            process_subtitle: dt.process_subtitle,
+            group_name: dt.group.name,
+            tags: dt.tags || []
+          }
+        }
+        results = parent_results + results
+      end
+    end
+
+    render root: false, json: results
   end
 
   def show
