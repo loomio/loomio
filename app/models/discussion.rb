@@ -254,6 +254,10 @@ class Discussion < ApplicationRecord
     topic&.drop_sequence_id_sequence
   end
 
+  def pending_private
+    @pending_private
+  end
+
   def private=(val)
     @pending_private = val
     topic.private = val if topic
@@ -286,6 +290,7 @@ class Discussion < ApplicationRecord
   private
 
   def build_default_topic
+    return if topic_id.present? || @skip_default_topic
     if topic.present?
       # Topic was pre-assigned in memory (e.g., by RecordCloner).
       # Save only the topic record (without cascading to items) so that
@@ -347,6 +352,7 @@ class Discussion < ApplicationRecord
   end
 
   def set_last_activity_at_to_created_at
+    return if topic&.last_activity_at.present?
     topic&.update_column(:last_activity_at, created_at)
   end
 

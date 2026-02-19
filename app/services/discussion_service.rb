@@ -7,7 +7,19 @@ class DiscussionService
     return false unless discussion.valid?
 
     Discussion.transaction do
+      discussion.instance_variable_set(:@skip_default_topic, true)
       discussion.save!
+
+      topic = Topic.create!(
+        topicable: discussion,
+        group_id: discussion.group_id,
+        private: discussion.pending_private.nil? ? true : discussion.pending_private,
+        max_depth: 2,
+        newest_first: false,
+        last_activity_at: discussion.created_at
+      )
+      discussion.update_column(:topic_id, topic.id)
+      discussion.topic = topic
 
       UserInviter.authorize!(user_ids: params[:recipient_user_ids],
                              emails: params[:recipient_emails],
@@ -15,7 +27,7 @@ class DiscussionService
                              model: discussion,
                              actor: actor)
 
-      TopicReader.for(user: actor, topic: discussion.topic)
+      TopicReader.for(user: actor, topic: topic)
                       .update(admin: true, guest: !discussion.group.present?, inviter_id: actor.id)
 
       users = add_users(user_ids: params[:recipient_user_ids],
