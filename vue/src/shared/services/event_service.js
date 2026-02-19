@@ -17,7 +17,7 @@ export default new class EventService {
         },
         canPerform() {
           const discussion = event.discussion();
-          return discussion &&
+          return discussion && discussion.id &&
           !event.model().discardedAt &&
           !discussion.closedAt &&
           AbilityService.canMoveThread(discussion);

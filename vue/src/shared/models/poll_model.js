@@ -246,11 +246,11 @@ export default class PollModel extends BaseModel {
   adminsInclude(user) {
     const topic = this.topic();
     return (this.authorId === user.id && !this.groupId) ||
-           (this.authorId === user.id && this.groupId && this.group().membersInclude(user)) ||
-           (this.authorId === user.id && this.discussionId && this.discussion().membersInclude(user)) ||
+           (this.authorId === user.id && this.groupId && this.group() && this.group().membersInclude(user)) ||
+           (this.authorId === user.id && this.discussionId && this.discussion() && this.discussion().membersInclude(user)) ||
            (topic && topic.readerAdmin) ||
-           (this.discussionId && this.discussion().adminsInclude(user)) ||
-           this.group().adminsInclude(user);
+           (this.discussionId && this.discussion() && this.discussion().adminsInclude(user)) ||
+           (this.groupId && this.group() && this.group().adminsInclude(user));
   }
 
   votersInclude(user) {
@@ -262,7 +262,13 @@ export default class PollModel extends BaseModel {
   }
 
   membersInclude(user) {
-    return !!(this.stanceFor(user) || (this.discussionId && this.discussion().membersInclude(user)) || this.group().membersInclude(user));
+    const topic = this.topic();
+    return !!(
+      this.stanceFor(user) ||
+      (this.discussionId && this.discussion() && this.discussion().membersInclude(user)) ||
+      (this.groupId && this.group() && this.group().membersInclude(user)) ||
+      (topic && topic.readerGuest && Session.user().id === user.id)
+    );
   }
 
   stanceFor(user) {

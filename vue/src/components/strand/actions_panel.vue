@@ -78,6 +78,11 @@ export default {
       return this.model.constructor.singular === 'discussion';
     },
 
+    topicClosedAt() {
+      const topic = this.model.topic ? this.model.topic() : null;
+      return topic ? topic.closedAt : this.model.closedAt;
+    },
+
     newestFirst() {
       const topic = this.model.topic ? this.model.topic() : null;
       return topic ? topic.newestFirst : false;
@@ -97,7 +102,7 @@ export default {
 
 <template lang="pug">
 section.actions-panel#add-comment(:key="model.id" :class="{'mt-2 px-2 px-sm-4': !newestFirst}")
-  template(v-if="isDiscussion && model.closedAt")
+  template(v-if="isDiscussion && topicClosedAt")
     v-alert(type="info" variant="tonal")
       span(v-t="{path: 'notifications.without_title.discussion_closed', args: {actor: model.closer().name} }")
       mid-dot
@@ -127,7 +132,7 @@ section.actions-panel#add-comment(:key="model.id" :class="{'mt-2 px-2 px-sm-4': 
             @setPoll="setPoll"
             :discussion="model"
             :group="modelGroup")
-  template(v-if="!model.closedAt && !canAddComment")
+  template(v-if="!topicClosedAt && !canAddComment")
     .add-comment-panel__join-actions.mb-2
       join-group-button(
         v-if='isLoggedIn() && modelGroup'
