@@ -82,7 +82,7 @@ const count = ref("~");
 watch(() => collection.length, () => {
   Records.fetch({
     path: 'events/count',
-    params: Object.assign({}, { discussion_id: loader.discussion.id }, params())
+    params: Object.assign({}, { topic_id: loader.topic.id }, params())
   }).then((val) => count.value = val );
 }, { immediate: true })
 
