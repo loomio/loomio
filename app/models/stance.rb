@@ -124,6 +124,10 @@ class Stance < ApplicationRecord
     )
   end
 
+  def topic_event
+    Event.where(eventable: self).where.not(topic_id: nil).first
+  end
+
   def create_missing_created_event!
     events.create(
       kind: created_event_kind,
