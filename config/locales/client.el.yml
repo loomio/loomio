@@ -527,6 +527,7 @@ el:
     sign_in: Εισέλθετε για να συμμετάσχετε στην συζήτηση
     add_a_comment: Προσθήκη σχολίου
     share_your_thoughts: Μοιραστείτε τις σκέψεις σας…
+    share_on_poll: Κάντε μια ερώτηση ή μοιραστείτε νέες πληροφορίες
   thread_nav:
     participants: Συμμετέχοντες
   sidebar:

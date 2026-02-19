@@ -568,6 +568,7 @@ en:
     confirm_delete_message: Are you sure you want to delete this comment?
     confirm_delete: Delete comment
     in_reply_to: Reply to %{name}
+    share_on_poll: Ask a question or share new information
     write_a_comment: Write a comment...
     post_comment: Post comment
     submit_button:

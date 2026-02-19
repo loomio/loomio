@@ -527,6 +527,7 @@ tr:
     sign_in: Konuşmaya katılmak için giriş yapın
     add_a_comment: Yorum ekle
     share_your_thoughts: Düşüncelerinizi paylaşın…
+    share_on_poll: Bir soru sorun veya yeni bilgiler paylaşın
   thread_nav:
     participants: Katılımcılar
   sidebar:

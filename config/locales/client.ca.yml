@@ -531,6 +531,7 @@ ca:
     sign_in: Inicieu la sessió per unir-vos a la conversa
     add_a_comment: Afegeix un comentari
     share_your_thoughts: Comparteix els teus pensaments…
+    share_on_poll: Fes una pregunta o comparteix informació nova
   thread_nav:
     participants: Participants
   sidebar:

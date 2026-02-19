@@ -544,6 +544,7 @@ zh_CN:
     public_privacy_notice: 您的评论将对网络上的所有人可见。
     sign_in: 登录参与
     share_your_thoughts: 分享你的想法……
+    share_on_poll: 提出问题或分享新信息
   sidebar:
     user_settings: 用户设置
     my_groups: 我的群组

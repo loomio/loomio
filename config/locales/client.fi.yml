@@ -527,6 +527,7 @@ fi:
     sign_in: Kirjaudu sisään liittyäksesi keskusteluun
     add_a_comment: Lisää kommentti
     share_your_thoughts: Jaa ajatuksesi…
+    share_on_poll: Esitä kysymys tai jaa uutta tietoa
   thread_nav:
     participants: Osallistujat
   sidebar:

@@ -22,8 +22,13 @@ export default {
 
   computed: {
     placeholder() {
-      if (this.comment.parent()) {
-        return this.$t('comment_form.in_reply_to', {name: this.comment.parent().author().nameOrUsername()});
+      const parent = this.comment.parent();
+      if (!parent) { return this.$t('comment_form.share_your_thoughts'); }
+      if (parent.isA('poll')) {
+        return this.$t('comment_form.share_on_poll');
+      } else
+      if (parent.isA('comment')) {
+        return this.$t('comment_form.in_reply_to', {name: parent.author().nameOrUsername()});
       } else {
         return this.$t('comment_form.share_your_thoughts');
       }

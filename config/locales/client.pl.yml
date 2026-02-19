@@ -531,6 +531,7 @@ pl:
     sign_in: Zaloguj się, aby dołączyć do rozmowy
     add_a_comment: Dodaj komentarz
     share_your_thoughts: Podziel się swoimi przemyśleniami…
+    share_on_poll: Zadaj pytanie lub udostępnij nowe informacje
   thread_nav:
     participants: Uczestnicy
   sidebar:

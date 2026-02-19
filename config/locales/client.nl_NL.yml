@@ -531,6 +531,7 @@ nl_NL:
     sign_in: Log in om mee te praten
     add_a_comment: Voeg een opmerking toe
     share_your_thoughts: Deel uw gedachten…
+    share_on_poll: Stel een vraag of deel nieuwe informatie.
   thread_nav:
     participants: Deelnemers
   sidebar:

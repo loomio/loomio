@@ -527,6 +527,7 @@ sv:
     sign_in: Logga in för att delta i konversationen
     add_a_comment: Lägg till en kommentar
     share_your_thoughts: Dela dina tankar…
+    share_on_poll: Ställ en fråga eller dela ny information
   thread_nav:
     participants: Deltagare
   sidebar:
