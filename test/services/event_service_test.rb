@@ -19,21 +19,19 @@ class EventServiceTest < ActiveSupport::TestCase
 
     @comment1 = Comment.create!(
       body: "comment1",
-      discussion: @discussion,
+      parent: @discussion,
       author: @user
     )
 
     @comment2 = Comment.create!(
       body: "comment2",
       parent: @comment1,
-      discussion: @discussion,
       author: @user
     )
 
     @comment3 = Comment.create!(
       body: "comment3",
       parent: @comment2,
-      discussion: @discussion,
       author: @user
     )
 
@@ -63,7 +61,7 @@ class EventServiceTest < ActiveSupport::TestCase
 
   test "flattens events to max_depth 1" do
     @discussion.update(max_depth: 1)
-    EventService.repair_discussion(@discussion.id)
+    EventService.repair_thread(@discussion.topic)
 
     [@comment1_event, @comment2_event, @comment3_event, @poll_created_event].each(&:reload)
 
@@ -79,7 +77,7 @@ class EventServiceTest < ActiveSupport::TestCase
 
   test "branches events at max_depth 2" do
     @discussion.update(max_depth: 2)
-    EventService.repair_discussion(@discussion.id)
+    EventService.repair_thread(@discussion.topic)
 
     [@comment1_event, @comment2_event, @comment3_event, @poll_created_event].each(&:reload)
 
@@ -95,7 +93,7 @@ class EventServiceTest < ActiveSupport::TestCase
 
   test "branches events at max_depth 3" do
     @discussion.update(max_depth: 3)
-    EventService.repair_discussion(@discussion.id)
+    EventService.repair_thread(@discussion.topic)
 
     [@comment1_event, @comment2_event, @comment3_event, @poll_created_event].each(&:reload)
 

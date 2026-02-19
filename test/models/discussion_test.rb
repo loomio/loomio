@@ -60,7 +60,7 @@ class DiscussionTest < ActiveSupport::TestCase
 
   test "creating a comment increments correctly" do
     discussion = create_discussion(group: @group, author: @user)
-    comment = Comment.new(discussion: discussion, body: "A comment", author: @user)
+    comment = Comment.new(parent: discussion, body: "A comment", author: @user)
     event = CommentService.create(comment: comment, actor: @user)
     event.reload
     comment.reload
@@ -73,7 +73,7 @@ class DiscussionTest < ActiveSupport::TestCase
 
   test "deleting only comment decrements correctly" do
     discussion = create_discussion(group: @group, author: @user)
-    comment = Comment.new(discussion: discussion, body: "A comment", author: @user)
+    comment = Comment.new(parent: discussion, body: "A comment", author: @user)
     event = CommentService.create(comment: comment, actor: @user)
     event.reload
     discussion.reload
@@ -89,10 +89,10 @@ class DiscussionTest < ActiveSupport::TestCase
 
   test "deleting first comment of two decrements correctly" do
     discussion = create_discussion(group: @group, author: @user)
-    comment1 = Comment.new(discussion: discussion, body: "First", author: @user)
+    comment1 = Comment.new(parent: discussion, body: "First", author: @user)
     event1 = CommentService.create(comment: comment1, actor: @user)
 
-    comment2 = Comment.new(discussion: discussion, body: "Second", author: @user)
+    comment2 = Comment.new(parent: discussion, body: "Second", author: @user)
     event2 = CommentService.create(comment: comment2, actor: @user)
 
     event1.reload
@@ -111,10 +111,10 @@ class DiscussionTest < ActiveSupport::TestCase
 
   test "deleting last comment of two decrements correctly" do
     discussion = create_discussion(group: @group, author: @user)
-    comment1 = Comment.new(discussion: discussion, body: "First", author: @user)
+    comment1 = Comment.new(parent: discussion, body: "First", author: @user)
     event1 = CommentService.create(comment: comment1, actor: @user)
 
-    comment2 = Comment.new(discussion: discussion, body: "Second", author: @user)
+    comment2 = Comment.new(parent: discussion, body: "Second", author: @user)
     event2 = CommentService.create(comment: comment2, actor: @user)
 
     event1.reload

@@ -25,7 +25,7 @@ class ReceivedEmailMailboxTest < ActionMailbox::TestCase
     )
     PollService.create(poll: @poll, actor: @user)
 
-    @comment = Comment.new(discussion: @discussion, body: "parent comment")
+    @comment = Comment.new(parent: @discussion, body: "parent comment")
     CommentService.create(comment: @comment, actor: @user)
     ActionMailer::Base.deliveries.clear
   end

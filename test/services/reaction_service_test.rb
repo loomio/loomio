@@ -7,7 +7,7 @@ class ReactionServiceTest < ActiveSupport::TestCase
     @group = groups(:test_group)
     @discussion = discussions(:test_discussion)
     @comment = Comment.create(
-      discussion: @discussion,
+      parent: @discussion,
       author: @user,
       body: "test comment"
     )

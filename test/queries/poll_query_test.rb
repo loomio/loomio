@@ -32,6 +32,7 @@ class PollQueryTest < ActiveSupport::TestCase
     hex = SecureRandom.hex(4)
     @guest_user = User.create!(name: "pollguest#{hex}", email: "pollguest#{hex}@example.com", username: "pollguest#{hex}")
     @participated = make_poll(closing_at: 5.days.from_now)
+    @participated.stances.create!(participant_id: @user.id, inviter: @authored.author)
     @participated.add_guest!(@user, @authored.author)
 
     @in_a_discussion = make_poll(discussion: @discussion, group: @group, closing_at: 5.days.from_now)

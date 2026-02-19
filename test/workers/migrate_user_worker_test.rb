@@ -28,13 +28,13 @@ class MigrateUserWorkerTest < ActiveSupport::TestCase
     version = @discussion.versions.last
     version.update!(whodunnit: @patrick.id) if version
 
-    DiscussionReader.for(user: @patrick, discussion: @discussion)
-    DiscussionReader.for(user: @jennifer, discussion: @discussion)
+    TopicReader.for(user: @patrick, topic: @discussion.topic)
+    TopicReader.for(user: @jennifer, topic: @discussion.topic)
 
-    @patrick_comment = Comment.new(discussion: @discussion, body: "Patrick's comment #{hex}")
+    @patrick_comment = Comment.new(parent: @discussion, body: "Patrick's comment #{hex}")
     CommentService.create(comment: @patrick_comment, actor: @patrick)
 
-    @jennifer_comment = Comment.new(discussion: @discussion, body: "Jennifer's comment #{hex}")
+    @jennifer_comment = Comment.new(parent: @discussion, body: "Jennifer's comment #{hex}")
     CommentService.create(comment: @jennifer_comment, actor: @jennifer)
 
     @reaction = Reaction.create!(reactable: @patrick_comment, user: @patrick, reaction: "+1")
@@ -97,7 +97,7 @@ class MigrateUserWorkerTest < ActiveSupport::TestCase
     assert_equal true, j_stance.reload.latest
     assert_equal @jennifer, @membership_request.reload.requestor
     assert_equal @jennifer, @identity.reload.user
-    assert DiscussionReader.find_by(discussion: @discussion, user: @jennifer).present?
+    assert TopicReader.find_by(topic: @discussion.topic, user: @jennifer).present?
     assert @another_group.members.exists?(@jennifer.id)
     assert_equal 2, @jennifer.memberships_count
 

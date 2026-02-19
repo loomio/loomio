@@ -313,21 +313,19 @@ module Dev::NintiesMoviesHelper
 
   def create_all_notifications
     #'reaction_created'
-    patrick_comment = Comment.new(discussion: create_discussion, body: 'I\'m rather likeable')
+    patrick_comment = Comment.new(parent: create_discussion, body: 'I\'m rather likeable')
     reaction = Reaction.new(reactable: patrick_comment, reaction: ":heart:")
     new_comment_event = CommentService.create(comment: patrick_comment, actor: patrick)
     reaction_created_event = ReactionService.update(reaction: reaction, params: {reaction: ':slight_smile:'}, actor: jennifer)
     create_another_group.add_member! jennifer
 
     #'comment_replied_to'
-    jennifer_comment = Comment.new(discussion: create_discussion,
-                          parent: patrick_comment,
+    jennifer_comment = Comment.new(parent: patrick_comment,
                           body: 'hey @patrickswayze you look great in that tuxeido (jen reply to patrick)')
     CommentService.create(comment: jennifer_comment, actor: jennifer)
 
     #'user_mentioned'
-    reply_comment = Comment.new(discussion: create_discussion,
-                                body: 'I agree with @patrickswayze (jen mention patrick)', parent: jennifer_comment)
+    reply_comment = Comment.new(body: 'I agree with @patrickswayze (jen mention patrick)', parent: jennifer_comment)
     CommentService.create(comment: reply_comment, actor: jennifer)
 
 

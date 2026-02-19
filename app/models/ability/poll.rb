@@ -29,16 +29,16 @@ module Ability::Poll
 
     can [:create], ::Poll do |poll|
       (poll.poll_template_id.nil? || poll.poll_template.public? || user.group_ids.include?(poll.poll_template.group_id)) &&
-      (poll.discussion_id.nil? || !poll.discussion.closed_at) &&
+      !poll.topic&.closed_at &&
       (
         (poll.group_id &&
           (
            (poll.group.admins.exists?(user.id) || # user is admin
            (poll.group.members_can_raise_motions && poll.group.members.exists?(user.id)) || # user is member
-           (poll.group.members_can_raise_motions && poll.discussion.present? && poll.discussion.guests.exists?(user.id)))
+           (poll.group.members_can_raise_motions && poll.topic&.guests&.exists?(user.id)))
           )
         ) ||
-        (poll.group_id.nil? && poll.discussion_id && poll.discussion.members.exists?(user.id)) ||
+        (poll.group_id.nil? && poll.discussion_id && poll.topic.members.exists?(user.id)) ||
         (poll.group_id.nil? && poll.discussion_id.nil? && user.is_logged_in? && user.email_verified?)
       )
     end
@@ -78,12 +78,12 @@ module Ability::Poll
     end
 
     can [:update], ::Poll do |poll|
-      (poll.discussion_id.blank? || !poll.discussion.closed_at) &&
+      !poll.topic&.closed_at &&
       poll.admins.exists?(user.id) && !poll.closed?
     end
 
     can [:destroy], ::Poll do |poll|
-      (poll.discussion_id.blank? || !poll.discussion.closed_at) &&
+      !poll.topic&.closed_at &&
       poll.admins.exists?(user.id)
     end
 
@@ -95,7 +95,7 @@ module Ability::Poll
     can :reopen, ::Poll do |poll|
       poll.closed? &&
       !poll.anonymous &&
-      (poll.discussion_id.blank? || !poll.discussion.closed_at) &&
+      !poll.topic&.closed_at &&
       poll.admins.exists?(user.id)
     end
   end

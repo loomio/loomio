@@ -27,9 +27,10 @@ class Group < ApplicationRecord
   scope :expired_demo, -> { joins(:subscription).where('subscriptions.plan = ?', 'demo').where('groups.created_at < ?', 7.days.ago) }
   scope :not_demo, -> { joins(:subscription).where('subscriptions.plan != ?', 'demo') }
 
-  has_many :discussions, dependent: :destroy
+  has_many :topics, dependent: :destroy
+  has_many :discussions, through: :topics, source: :topicable, source_type: 'Discussion'
   has_many :discussion_templates, dependent: :destroy
-  has_many :public_discussions, -> { visible_to_public }, foreign_key: :group_id, class_name: 'Discussion'
+  has_many :public_discussions, -> { visible_to_public }, through: :topics, source: :topicable, source_type: 'Discussion'
   has_many :comments, through: :discussions
 
   has_many :all_memberships, dependent: :destroy, class_name: 'Membership'
@@ -50,7 +51,7 @@ class Group < ApplicationRecord
   has_many :membership_requests, dependent: :destroy
   has_many :pending_membership_requests, -> { where response: nil }, class_name: 'MembershipRequest'
 
-  has_many :polls, dependent: :destroy
+  has_many :polls, through: :topics, source: :topicable, source_type: 'Poll'
   has_many :poll_templates, dependent: :destroy
 
   has_many :documents, as: :model, dependent: :destroy

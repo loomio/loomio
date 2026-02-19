@@ -7,8 +7,10 @@ import Session from '@/shared/services/session';
 import AppConfig from '@/shared/services/app_config';
 
 export default class ThreadLoader {
-  constructor(discussion) {
-    this.discussion = discussion;
+  // model: a Discussion or Poll
+  constructor(model) {
+    this.discussion = model; // backward compat for strand components
+    this.topic = model.topic ? model.topic() : null;
     this.reset();
   }
 
@@ -17,10 +19,10 @@ export default class ThreadLoader {
     this.rules = [];
     this.ruleStrings = [];
     this.fetchedRules = [];
-    this.discussionLastReadAt = this.discussion.lastReadAt;
-    this.ranges = cloneDeep(this.discussion.ranges);
-    this.readRanges = cloneDeep(this.discussion.readRanges);
-    this.unreadRanges = RangeSet.subtractRanges(this.discussion.ranges, this.readRanges);
+    this.discussionLastReadAt = this.topic ? this.topic.lastReadAt : null;
+    this.ranges = cloneDeep(this.topic ? this.topic.ranges : []);
+    this.readRanges = cloneDeep(this.topic ? this.topic.readRanges : []);
+    this.unreadRanges = RangeSet.subtractRanges(this.ranges, this.readRanges);
     this.visibleKeys = {};
     this.collapsed = reactive({});
     this.loading = false;
@@ -43,7 +45,7 @@ export default class ThreadLoader {
   }
 
   setVisible(isVisible, event) {
-    if (isVisible && Session.isSignedIn()) { event.markAsRead(); }
+    if (isVisible && Session.isSignedIn() && this.topic) { this.topic.markAsRead(event.sequenceId); }
     this.visibleKeys[event.positionKey] = isVisible;
     return EventBus.$emit('visibleKeys', Object.keys(this.visibleKeys).filter(key => this.visibleKeys[key]).sort());
   }
@@ -56,8 +58,8 @@ export default class ThreadLoader {
   }
 
   isUnread(event) {
-    if (event.kind === "new_discussion") {
-      return this.discussion.updatedAt > this.discussion.lastReadAt;
+    if (event.kind === "new_discussion" || (event.kind === "poll_created" && event.parentId === null)) {
+      return this.discussion.updatedAt > (this.topic ? this.topic.lastReadAt : null);
     } else {
       return !RangeSet.includesValue(this.readRanges, event.sequenceId);
     }
@@ -65,7 +67,7 @@ export default class ThreadLoader {
 
   sequenceIdIsUnread(id) {
     if (id === 0) {
-      return this.discussion.updatedAt > this.discussion.lastReadAt;
+      return this.discussion.updatedAt > (this.topic ? this.topic.lastReadAt : null);
     } else {
       return !RangeSet.includesValue(this.readRanges, id);
     }
@@ -75,10 +77,19 @@ export default class ThreadLoader {
     return this.collapsed[event.id] = false;
   }
 
-  addLoadArgsRule(args) {
-    const andParts = [{discussionId: this.discussion.id}]
+  // Local find clause: match events by topic_id
+  localTopicFind() {
+    return this.topic ? { topicId: this.topic.id } : {};
+  }
 
-    // need sequenceId depth parent_id etc
+  // Remote param: always use topic_id
+  remoteTopicParam() {
+    return this.topic ? { topic_id: this.topic.id } : {};
+  }
+
+  addLoadArgsRule(args) {
+    const andParts = [this.localTopicFind()]
+
     if (args.depth) {
       andParts.push({depth: args.depth})
     }
@@ -111,7 +122,7 @@ export default class ThreadLoader {
         limit: this.padding
       },
       remote: pickBy({
-        discussion_id: this.discussion.id,
+        ...this.remoteTopicParam(),
         depth: args.depth,
         depth_lte: args.depth_lte,
         position_key_gt: args.position_key_gt,
@@ -131,7 +142,7 @@ export default class ThreadLoader {
       local: {
         find: {
           actorId: AppConfig.currentUserId,
-          discussionId: this.discussion.id,
+          ...this.localTopicFind(),
           createdAt: { $gte: new Date() }
         }
       }
@@ -143,14 +154,14 @@ export default class ThreadLoader {
       name: "comment from url",
       local: {
         find: {
-          discussionId: this.discussion.id,
+          ...this.localTopicFind(),
           eventableId: commentId,
           eventableType: 'Comment'
         }
       },
       remote: {
         order: 'sequence_id',
-        discussion_id: this.discussion.id,
+        ...this.remoteTopicParam(),
         comment_id: commentId
       }
     });
@@ -164,7 +175,7 @@ export default class ThreadLoader {
       local: {
         find: {
           $and: [
-            { discussionId: this.discussion.id },
+            this.localTopicFind(),
             { sequenceId: {'$gte': id} },
           ]
         },
@@ -173,7 +184,7 @@ export default class ThreadLoader {
       },
       remote: {
         sequence_id_gte: id,
-        discussion_id: this.discussion.id,
+        ...this.remoteTopicParam(),
         order: 'sequence_id',
         per: this.padding
       }
@@ -184,7 +195,7 @@ export default class ThreadLoader {
     return this.addRule({
       local: {
         find: {
-          discussionId: this.discussion.id,
+          ...this.localTopicFind(),
           sequenceId: { $lte: this.lastSequenceId() }
         },
         simplesort: 'sequenceId',
@@ -192,7 +203,7 @@ export default class ThreadLoader {
         limit: this.padding
       },
       remote: {
-        discussion_id: this.discussion.id,
+        ...this.remoteTopicParam(),
         sequence_id_lte: this.lastSequenceId(),
         order_by: 'sequence_id',
         order_desc: true,
@@ -202,11 +213,13 @@ export default class ThreadLoader {
   }
 
   addContextRule() {
+    const createdEvent = this.topic ? this.topic.createdEvent() : this.discussion.createdEvent();
+    if (!createdEvent) { return; }
     return this.addRule({
       name: 'context',
       local: {
         find: {
-          id: this.discussion.createdEvent().id
+          id: createdEvent.id
         }
       }
     });
@@ -217,14 +230,14 @@ export default class ThreadLoader {
       name: 'oldest',
       local: {
         find: {
-          discussionId: this.discussion.id,
+          ...this.localTopicFind(),
           sequenceId: { $lte: this.lastSequenceId() }
         },
         simplesort: 'sequenceId',
         limit: this.padding
       },
       remote: {
-        discussion_id: this.discussion.id,
+        ...this.remoteTopicParam(),
         order_by: 'sequence_id',
         per: this.padding
       }
@@ -236,16 +249,15 @@ export default class ThreadLoader {
       name: {path: "strand_nav.new_to_you"},
       local: {
         find: {
-          discussionId: this.discussion.id,
+          ...this.localTopicFind(),
           sequenceId: {$in: RangeSet.rangesToArray(this.unreadRanges)}
         },
         limit: this.padding,
         simplesort: 'sequenceId'
       },
       remote: {
-        discussion_id: this.discussion.id,
+        ...this.remoteTopicParam(),
         sequence_id_in: RangeSet.serialize(this.unreadRanges).replace(/,/g, '_'),
-        // sequence_id_not_in: RangeSet.serialize(this.readRanges).replace(/,/g, '_'),
         order_by: "sequence_id",
         per: this.padding
       }
@@ -282,7 +294,6 @@ export default class ThreadLoader {
 
   updateCollection() {
     this.records = [];
-    // console.log("Updating collection");
     this.rules.forEach(rule => {
       let chain = Records.events.collection.chain().find(rule.local.find);
 
@@ -306,7 +317,6 @@ export default class ThreadLoader {
         chain = chain.limit(rule.local.limit);
       }
 
-      // console.log(JSON.stringify(rule.local), chain.data().length, chain.data().map(event => [event.sequenceId, event.positionKey].join(',')).join("\n"));
       this.records = this.records.concat(chain.data());
     });
 

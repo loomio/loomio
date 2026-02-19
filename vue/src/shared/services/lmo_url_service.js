@@ -83,7 +83,8 @@ export default class LmoUrlService {
 
   static comment(c, params) {
     if (params == null) { params = {}; }
-    return this.route({model: c.discussion(), action: `comment/${c.id}`, params});
+    const topicable = c.topic() ? c.topic().topicable() : (c.discussion ? c.discussion() : null);
+    return topicable ? this.route({model: topicable, action: `comment/${c.id}`, params}) : '';
   }
 
   static membership(m, params, options) {
@@ -101,7 +102,12 @@ export default class LmoUrlService {
   static event(e, params, options) {
     if (params == null) { params = {}; }
     if (options == null) { options = {}; }
-    return this.discussion(e.discussion(), params, options) + `/${e.sequenceId}`;
+    const topic = e.topic();
+    const topicable = topic ? topic.topicable() : (e.discussion ? e.discussion() : null);
+    if (topicable) {
+      return this.route({model: topicable, params, ...options}) + `/${e.sequenceId}`;
+    }
+    return '';
   }
 
   static buildModelRoute(path, key, name, params, options) {

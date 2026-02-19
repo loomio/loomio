@@ -6,17 +6,17 @@ class Api::V1::ReactionsControllerTest < ActionController::TestCase
     discussion = discussions(:test_discussion)
     comment = Comment.new(
       body: "Test comment",
-      discussion: discussion,
+      parent: discussion,
       author: user
     )
     CommentService.create(comment: comment, actor: user)
-    
+
     reaction_params = {
       reaction: '+1',
       reactable_id: comment.id,
       reactable_type: 'Comment'
     }
-    
+
     sign_in user
     post :create, params: { reaction: reaction_params }
     assert_response :success
@@ -27,7 +27,7 @@ class Api::V1::ReactionsControllerTest < ActionController::TestCase
     discussion = discussions(:test_discussion)
     comment = Comment.new(
       body: "Test comment",
-      discussion: discussion,
+      parent: discussion,
       author: author
     )
     CommentService.create(comment: comment, actor: author)
@@ -58,7 +58,7 @@ class Api::V1::ReactionsControllerTest < ActionController::TestCase
     group = groups(:test_group)
     discussion = discussions(:test_discussion)
     
-    comment = Comment.new(body: "Test comment", discussion: discussion, author: user)
+    comment = Comment.new(body: "Test comment", parent: discussion, author: user)
     CommentService.create(comment: comment, actor: user)
     
     poll = Poll.new(
@@ -97,7 +97,7 @@ class Api::V1::ReactionsControllerTest < ActionController::TestCase
     author = users(:discussion_author)
     discussion = discussions(:test_discussion)
     
-    comment = Comment.new(body: "Test comment", discussion: discussion, author: author)
+    comment = Comment.new(body: "Test comment", parent: discussion, author: author)
     CommentService.create(comment: comment, actor: author)
     
     Reaction.create!(user: author, reactable: comment, reaction: '+1')

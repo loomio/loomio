@@ -31,9 +31,11 @@ export default new class AbilityService {
   }
 
   canRespondToComment(comment) {
-    return !comment.discussion().closedAt &&
+    const topic = comment.topic();
+    return topic &&
+    !topic.closedAt &&
     !comment.discardedAt &&
-    comment.discussion().membersInclude(Session.user());
+    topic.membersInclude(Session.user());
   }
 
   canEdit(model) {
@@ -80,16 +82,18 @@ export default new class AbilityService {
   }
 
   canPinEvent(event) {
+    const topic = event.topic();
     return (event.depth === 1) &&
     !event.model().discardedAt &&
     !event.pinned &&
-    !event.discussion().closedAt &&
-    this.canEditThread(event.discussion());
+    topic && !topic.closedAt &&
+    topic.adminsInclude(Session.user());
   }
 
   canUnpinEvent(event) {
-    return !event.discussion().closedAt &&
-    event.pinned && this.canEditThread(event.discussion());
+    const topic = event.topic();
+    return topic && !topic.closedAt &&
+    event.pinned && topic.adminsInclude(Session.user());
   }
 
   canMoveThread(thread) {
@@ -109,8 +113,12 @@ export default new class AbilityService {
 
   canAdminister(model) {
     switch (model.constructor.singular) {
-      case 'group':                     return model.adminsInclude(Session.user());
-      case 'discussion': case 'comment':     return model.discussion().adminsInclude(Session.user());
+      case 'group':       return model.adminsInclude(Session.user());
+      case 'discussion':  return model.adminsInclude(Session.user());
+      case 'comment': {
+        const topic = model.topic();
+        return topic ? topic.adminsInclude(Session.user()) : false;
+      }
       case 'outcome': case 'stance': case 'poll': return model.poll().adminsInclude(Session.user());
     }
   }
@@ -215,35 +223,40 @@ export default new class AbilityService {
   }
 
   canEditComment(comment) {
-    return !comment.discussion().closedAt && (
-      (comment.discussion().adminsInclude(Session.user()) && comment.group().adminsCanEditUserContent) ||
-      (comment.authorIs(Session.user()) && comment.group().membersCanEditComments && comment.discussion().membersInclude(Session.user()))
+    const topic = comment.topic();
+    return topic && !topic.closedAt && (
+      (topic.adminsInclude(Session.user()) && comment.group() && comment.group().adminsCanEditUserContent) ||
+      (comment.authorIs(Session.user()) && comment.group() && comment.group().membersCanEditComments && topic.membersInclude(Session.user()))
     );
   }
 
   canDeleteComment(comment) {
+    const topic = comment.topic();
     return (Records.comments.find({parentId: comment.id, parentType: 'Comment'}).length === 0) &&
     comment.discardedAt &&
+    topic &&
     (
-      comment.discussion().adminsInclude(Session.user()) ||
-      (comment.group().membersCanDeleteComments && comment.authorIs(Session.user()))
+      topic.adminsInclude(Session.user()) ||
+      (comment.group() && comment.group().membersCanDeleteComments && comment.authorIs(Session.user()))
     );
   }
 
   canDiscardComment(comment) {
-    return !comment.discussion().closedAt &&
+    const topic = comment.topic();
+    return topic && !topic.closedAt &&
     !comment.discardedAt &&
     (
       comment.authorIs(Session.user()) ||
-      comment.discussion().adminsInclude(Session.user())
+      topic.adminsInclude(Session.user())
     );
   }
 
   canUndiscardComment(comment) {
-    return !comment.discussion().closedAt &&
+    const topic = comment.topic();
+    return topic && !topic.closedAt &&
     comment.discardedAt && (
       comment.authorIs(Session.user()) ||
-      comment.discussion().adminsInclude(Session.user())
+      topic.adminsInclude(Session.user())
     );
   }
 
@@ -315,17 +328,20 @@ export default new class AbilityService {
   }
 
   canMovePoll(poll) {
-    return (!poll.discussionId || !poll.discussion().closedAt) &&
+    const discussion = poll.discussionId ? poll.discussion() : null;
+    return (!discussion || !discussion.closedAt) &&
     !poll.discussionId && poll.adminsInclude(Session.user());
   }
 
   canEditPoll(poll) {
-    return (!poll.discussionId || !poll.discussion().closedAt) &&
+    const discussion = poll.discussionId ? poll.discussion() : null;
+    return (!discussion || !discussion.closedAt) &&
     poll.adminsInclude(Session.user()) && !poll.closedAt;
   }
 
   canDeletePoll(poll) {
-    return (!poll.discussionId || !poll.discussion().closedAt) &&
+    const discussion = poll.discussionId ? poll.discussion() : null;
+    return (!discussion || !discussion.closedAt) &&
     !poll.discardedAt && poll.adminsInclude(Session.user());
   }
 
@@ -338,7 +354,8 @@ export default new class AbilityService {
   }
 
   canSetPollOutcome(poll) {
-    return (!poll.discussionId || !poll.discussion().closedAt) &&
+    const discussion = poll.discussionId ? poll.discussion() : null;
+    return (!discussion || !discussion.closedAt) &&
     !poll.discardedAt &&
     poll.closedAt &&
     poll.adminsInclude(Session.user());

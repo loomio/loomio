@@ -26,7 +26,7 @@ class EmailHelperTest < ActiveSupport::TestCase
   end
 
   test "reply_to_address gives correct format for a comment" do
-    comment = Comment.new(discussion: @discussion, body: "Test comment")
+    comment = Comment.new(parent: @discussion, body: "Test comment")
     CommentService.create(comment: comment, actor: @author)
     output = reply_to_address(model: comment, user: @user)
     assert_equal "pt=c&pi=#{comment.id}&d=#{@discussion.id}&u=#{@user.id}&k=#{@user.email_api_key}@replyhostname.com", output
@@ -47,13 +47,13 @@ class EmailHelperTest < ActiveSupport::TestCase
   end
 
   test "polymorphic_url returns a comment url" do
-    comment = Comment.new(discussion: @discussion, body: "Test comment")
+    comment = Comment.new(parent: @discussion, body: "Test comment")
     CommentService.create(comment: comment, actor: @author)
     assert_match "/d/#{@discussion.key}/comment/#{comment.id}", send(:polymorphic_url, comment)
   end
 
   test "polymorphic_url can accept a utm hash" do
-    comment = Comment.new(discussion: @discussion, body: "Test comment")
+    comment = Comment.new(parent: @discussion, body: "Test comment")
     CommentService.create(comment: comment, actor: @author)
     assert_match "utm_medium=wark", send(:polymorphic_url, comment, { utm_medium: "wark" })
   end

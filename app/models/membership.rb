@@ -80,16 +80,17 @@ class Membership < ApplicationRecord
     update_attribute(:admin, false)
   end
 
-  def discussion_readers
-    DiscussionReader.
-      joins(:discussion).
-      where("discussions.group_id": group_id).
-      where("discussion_readers.user_id": user_id)
+  def topic_readers
+    TopicReader
+      .joins("INNER JOIN topics ON topics.id = topic_readers.topic_id")
+      .where(user_id: user_id)
+      .where("topics.group_id = ?", group_id)
   end
 
   def stances
     Stance.joins(:poll).
-           where("polls.group_id": group_id).
+           joins("LEFT JOIN topics t ON t.id = polls.topic_id").
+           where("t.group_id": group_id).
            where(participant_id: user_id)
   end
 

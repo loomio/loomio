@@ -1,11 +1,10 @@
 class EventSerializer < ApplicationSerializer
   attributes :id, :sequence_id, :position, :depth, :child_count, :descendant_count, :kind,
-    :discussion_id, :created_at, :eventable_id, :eventable_type, :custom_fields,
+    :topic_id, :discussion_id, :created_at, :eventable_id, :eventable_type, :custom_fields,
     :pinned, :pinned_title, :parent_id, :actor_id, :position_key, :recipient_message
 
   has_one :actor, serializer: AuthorSerializer, root: :users
   has_one :eventable, polymorphic: true
-  has_one :discussion, serializer: DiscussionSerializer, root: :discussions
   has_one :parent, serializer: EventSerializer, root: :parent_events
 
   # for discussion moved event
@@ -13,6 +12,11 @@ class EventSerializer < ApplicationSerializer
 
   def parent
     cache_fetch(:events_by_id, object.parent_id) { object.parent }
+  end
+
+  # Computed discussion_id for frontend transition
+  def discussion_id
+    object.discussion_id
   end
 
   def include_eventable?
@@ -31,7 +35,6 @@ class EventSerializer < ApplicationSerializer
     when 'Group' then cache_fetch(:groups_by_id, object.eventable_id) { object.eventable }
     when 'MembershipRequest' then cache_fetch(:membership_requests_by_id, object.eventable_id) { object.eventable }
     else
-      # raise "waht is it? #{object.eventable} #{object.kind}"
       object.eventable
     end
   end

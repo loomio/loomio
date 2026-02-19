@@ -2,20 +2,20 @@ module Ability::DiscussionReader
   def initialize(user)
     super(user)
 
-    can [:update], ::DiscussionReader do |discussion_reader|
-      discussion_reader.user.id == user.id
+    can [:update], ::TopicReader do |topic_reader|
+      topic_reader.user.id == user.id
     end
 
-    can [:redeem], ::DiscussionReader do |discussion_reader|
-      DiscussionReader.redeemable.exists?(discussion_reader.id)
+    can [:redeem], ::TopicReader do |topic_reader|
+      TopicReader.redeemable.exists?(topic_reader.id)
     end
 
-    can [:make_admin, :remove_admin, :resend], ::DiscussionReader do |discussion_reader|
-      discussion_reader.discussion.admins.exists?(user.id)
+    can [:make_admin, :remove_admin, :resend], ::TopicReader do |topic_reader|
+      topic_reader.topic&.admins&.exists?(user.id)
     end
 
-    can [:remove], ::DiscussionReader do |discussion_reader|
-      discussion_reader.guest && discussion_reader.discussion.admins.exists?(user.id)
+    can [:remove], ::TopicReader do |topic_reader|
+      topic_reader.guest && topic_reader.topic&.admins&.exists?(user.id)
     end
   end
 end

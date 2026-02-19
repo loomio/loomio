@@ -207,7 +207,7 @@ module Dev::Scenarios::Group
     @group.add_admin! jennifer
     @discussion = Discussion.new(title: "I carried a watermelon", private: false, author: jennifer, group: @group)
     DiscussionService.create(discussion: @discussion, actor: jennifer)
-    CommentService.create(comment: Comment.new(body: "It was real seedy", discussion: @discussion), actor: jennifer)
+    CommentService.create(comment: Comment.new(body: "It was real seedy", parent: @discussion), actor: jennifer)
     redirect_to group_path(create_group)
   end
 

@@ -56,7 +56,8 @@ class PollSerializer < ApplicationSerializer
              :poll_template_key,
              :quorum_pct,
              :quorum_count,
-             :quorum_votes_required
+             :quorum_votes_required,
+             :topic_id
 
   has_one :discussion, serializer: DiscussionSerializer, root: :discussions
   has_one :created_event, serializer: EventSerializer, root: :events
@@ -64,6 +65,7 @@ class PollSerializer < ApplicationSerializer
   has_one :author, serializer: AuthorSerializer, root: :users
   has_one :current_outcome, serializer: OutcomeSerializer, root: :outcomes
   has_one :my_stance, serializer: StanceSerializer, root: :stances
+  has_one :topic, serializer: TopicSerializer, root: :topics
   has_many :poll_options, serializer: PollOptionSerializer, root: :poll_options
 
   hide_when_discarded [
@@ -144,5 +146,17 @@ class PollSerializer < ApplicationSerializer
 
   def include_my_stance?
     my_stance.present?
+  end
+
+  def topic_id
+    object.topic&.id
+  end
+
+  def topic
+    object.topic
+  end
+
+  def include_topic?
+    topic.present?
   end
 end

@@ -56,7 +56,7 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     end
   end
 
-  # -- Stance admin actions --
+  # -- Revoke actions --
 
   test "revoke with permission sets revoked_at" do
     voter = User.create!(name: 'Voter', email: "voter#{SecureRandom.hex(4)}@example.com",
@@ -87,70 +87,6 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     post :revoke, params: { participant_id: stance.participant_id, poll_id: stance.poll_id }
     assert_response :forbidden
     assert_nil stance.reload.revoked_at
-  end
-
-  test "make_admin with permission makes user admin of poll" do
-    voter = User.create!(name: 'Voter3', email: "voter3#{SecureRandom.hex(4)}@example.com",
-                         email_verified: true, username: "voter3#{SecureRandom.hex(4)}")
-    @group.add_member!(voter)
-    stance = @poll.stances.find_by(participant_id: voter.id) ||
-             @poll.stances.create!(participant_id: voter.id, latest: true)
-
-    assert_equal false, stance.reload.admin
-
-    sign_in @user  # group admin
-    post :make_admin, params: { participant_id: stance.participant_id, poll_id: stance.poll_id }
-    assert_response :success
-    assert_equal true, stance.reload.admin
-  end
-
-  test "make_admin without permission returns 403" do
-    voter = User.create!(name: 'Voter4', email: "voter4#{SecureRandom.hex(4)}@example.com",
-                         email_verified: true, username: "voter4#{SecureRandom.hex(4)}")
-    @group.add_member!(voter)
-    stance = @poll.stances.find_by(participant_id: voter.id) ||
-             @poll.stances.create!(participant_id: voter.id, latest: true)
-
-    outsider = User.create!(name: 'Outsider3', email: "outsider3#{SecureRandom.hex(4)}@example.com",
-                            email_verified: true, username: "outsider3#{SecureRandom.hex(4)}")
-
-    sign_in outsider
-    post :make_admin, params: { participant_id: stance.participant_id, poll_id: stance.poll_id }
-    assert_response :forbidden
-    assert_equal false, stance.reload.admin
-  end
-
-  test "remove_admin with permission removes admin status" do
-    voter = User.create!(name: 'Voter5', email: "voter5#{SecureRandom.hex(4)}@example.com",
-                         email_verified: true, username: "voter5#{SecureRandom.hex(4)}")
-    @group.add_member!(voter)
-    stance = @poll.stances.find_by(participant_id: voter.id) ||
-             @poll.stances.create!(participant_id: voter.id, latest: true)
-    stance.update!(admin: true)
-
-    assert_equal true, stance.reload.admin
-
-    sign_in @user  # group admin
-    post :remove_admin, params: { participant_id: stance.participant_id, poll_id: stance.poll_id }
-    assert_response :success
-    assert_equal false, stance.reload.admin
-  end
-
-  test "remove_admin without permission returns 403" do
-    voter = User.create!(name: 'Voter6', email: "voter6#{SecureRandom.hex(4)}@example.com",
-                         email_verified: true, username: "voter6#{SecureRandom.hex(4)}")
-    @group.add_member!(voter)
-    stance = @poll.stances.find_by(participant_id: voter.id) ||
-             @poll.stances.create!(participant_id: voter.id, latest: true)
-    stance.update!(admin: true)
-
-    outsider = User.create!(name: 'Outsider4', email: "outsider4#{SecureRandom.hex(4)}@example.com",
-                            email_verified: true, username: "outsider4#{SecureRandom.hex(4)}")
-
-    sign_in outsider
-    post :make_admin, params: { participant_id: stance.participant_id, poll_id: stance.poll_id }
-    assert_response :forbidden
-    assert_equal true, stance.reload.admin
   end
 
   # -- Uncast tests --
@@ -272,7 +208,8 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     @poll.update!(specified_voters_only: true)
     guest = User.create!(name: 'PollGuest', email: "pollguest#{SecureRandom.hex(4)}@example.com",
                          email_verified: true, username: "pollguest#{SecureRandom.hex(4)}")
-    stance = @poll.add_guest!(guest, @user)
+    stance = @poll.stances.create!(participant_id: guest.id, inviter: @user)
+    @poll.add_guest!(guest, @user)
     sign_in guest
     stance_params = {
       poll_id: @poll.id,

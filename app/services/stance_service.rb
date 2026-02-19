@@ -31,7 +31,7 @@ class StanceService
     new_stance = stance.build_replacement
     new_stance.assign_attributes_and_files(params)
 
-    event = Event.where(eventable: stance, discussion_id: stance.poll.discussion_id).order('id desc').first
+    event = Event.where(eventable: stance, topic_id: stance.poll.topic&.id).order('id desc').first
 
     if is_update &&
        stance.poll.discussion_id &&

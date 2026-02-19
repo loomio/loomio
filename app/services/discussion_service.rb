@@ -2,12 +2,6 @@ class DiscussionService
   def self.create(discussion:, actor:, params: {})
     actor.ability.authorize!(:create, discussion)
 
-    UserInviter.authorize!(user_ids: params[:recipient_user_ids],
-                           emails: params[:recipient_emails],
-                           audience: params[:recipient_audience],
-                           model: discussion,
-                           actor: actor)
-
     discussion.author = actor
 
     return false unless discussion.valid?
@@ -15,7 +9,13 @@ class DiscussionService
     Discussion.transaction do
       discussion.save!
 
-      DiscussionReader.for(user: actor, discussion: discussion)
+      UserInviter.authorize!(user_ids: params[:recipient_user_ids],
+                             emails: params[:recipient_emails],
+                             audience: params[:recipient_audience],
+                             model: discussion,
+                             actor: actor)
+
+      TopicReader.for(user: actor, topic: discussion.topic)
                       .update(admin: true, guest: !discussion.group.present?, inviter_id: actor.id)
 
       users = add_users(user_ids: params[:recipient_user_ids],
@@ -49,7 +49,7 @@ class DiscussionService
       discussion.save!
 
       discussion.update_versions_count
-      RepairThreadWorker.perform_async(discussion.id) if rearrange
+      RepairThreadWorker.perform_async(discussion.topic.id) if rearrange
 
       users = add_users(discussion: discussion,
                         actor: actor,
@@ -95,13 +95,6 @@ class DiscussionService
     end
   end
 
-  # def self.destroy(discussion:, actor:)
-  #   actor.ability.authorize!(:destroy, discussion)
-  #   discussion.discard!
-  #   DestroyDiscussionWorker.perform_async(discussion.id)
-  #   EventBus.broadcast('discussion_destroy', discussion, actor)
-  # end
-
   def self.discard(discussion:, actor:)
     actor.ability.authorize!(:discard, discussion)
     Discussion.transaction do
@@ -117,13 +110,13 @@ class DiscussionService
 
   def self.close(discussion:, actor:)
     actor.ability.authorize! :update, discussion
-    discussion.update(closed_at: Time.now, closer_id: actor.id)
+    discussion.topic.update(closed_at: Time.now, closer_id: actor.id)
     MessageChannelService.publish_models([discussion], group_id: discussion.group_id, user_id: actor.id)
   end
 
   def self.reopen(discussion:, actor:)
     actor.ability.authorize! :update, discussion
-    discussion.update(closed_at: nil, closer_id: nil)
+    discussion.topic.update(closed_at: nil, closer_id: nil)
     MessageChannelService.publish_models([discussion], group_id: discussion.group_id, user_id: actor.id)
   end
 
@@ -132,11 +125,10 @@ class DiscussionService
     destination = ModelLocator.new(:group, params).locate || NullGroup.new
     destination.present? && actor.ability.authorize!(:move_discussions_to, destination)
     actor.ability.authorize! :move, discussion
-    # discussion.add_admin!(actor)
 
     Discussion.transaction do
-      discussion.update group: destination.presence, private: moved_discussion_privacy_for(discussion, destination)
-      discussion.polls.each { |poll| poll.update(group: destination.presence) }
+      discussion.topic.update!(group_id: destination.present? ? destination.id : nil)
+      discussion.update private: moved_discussion_privacy_for(discussion, destination)
       ActiveStorage::Attachment.where(record: discussion.items.map(&:eventable).concat([discussion])).update_all(group_id: destination.id)
 
       GenericWorker.perform_async('PollService', 'group_members_added', discussion.group_id) if discussion.group_id
@@ -149,7 +141,7 @@ class DiscussionService
   def self.pin(discussion:, actor:)
     actor.ability.authorize! :pin, discussion
 
-    discussion.update(pinned_at: Time.now)
+    discussion.topic.update(pinned_at: Time.now)
 
     EventBus.broadcast('discussion_pin', discussion, actor)
   end
@@ -157,28 +149,24 @@ class DiscussionService
   def self.unpin(discussion:, actor:)
     actor.ability.authorize! :pin, discussion
 
-    discussion.update(pinned_at: nil)
+    discussion.topic.update(pinned_at: nil)
 
     EventBus.broadcast('discussion_pin', discussion, actor)
   end
 
   def self.update_reader(discussion:, params:, actor:)
     actor.ability.authorize! :show, discussion
-    reader = DiscussionReader.for(discussion: discussion, user: actor)
+    reader = TopicReader.for(topic: discussion.topic, user: actor)
     reader.update(params.slice(:volume))
-    Stance.joins(:poll).
-           where('polls.discussion_id': reader.discussion_id).
-           where(participant_id: actor.id).
-           update(params.slice(:volume))
 
     EventBus.broadcast('discussion_update_reader', reader, params, actor)
   end
 
   def self.mark_as_seen(discussion:, actor:)
     actor.ability.authorize! :mark_as_seen, discussion
-    reader = DiscussionReader.for_model(discussion, actor)
+    reader = TopicReader.for_model(discussion, actor)
     reader.viewed!
-    MessageChannelService.publish_models([reader.discussion], group_id: reader.discussion.group_id)
+    MessageChannelService.publish_models([discussion], group_id: discussion.group_id)
     EventBus.broadcast('discussion_mark_as_seen', reader, actor)
   end
 
@@ -192,8 +180,8 @@ class DiscussionService
     return unless actor.ability.can?(:mark_as_read, discussion)
     RetryOnError.with_limit(2) do
       sequence_ids = RangeSet.ranges_to_list(RangeSet.to_ranges(params[:ranges]))
-      NotificationService.viewed_events(actor_id: actor.id, discussion_id: discussion.id, sequence_ids: sequence_ids)
-      reader = DiscussionReader.for_model(discussion, actor)
+      NotificationService.viewed_events(actor_id: actor.id, topic_id: discussion.topic&.id, sequence_ids: sequence_ids)
+      reader = TopicReader.for_model(discussion, actor)
       reader.viewed!(params[:ranges])
       EventBus.broadcast('discussion_mark_as_read', reader, actor)
     end
@@ -201,14 +189,14 @@ class DiscussionService
 
   def self.dismiss(discussion:, params:, actor:)
     actor.ability.authorize! :dismiss, discussion
-    reader = DiscussionReader.for(user: actor, discussion: discussion)
+    reader = TopicReader.for(user: actor, topic: discussion.topic)
     reader.dismiss!
     EventBus.broadcast('discussion_dismiss', reader, actor)
   end
 
   def self.recall(discussion:, params:, actor:)
     actor.ability.authorize! :dismiss, discussion
-    reader = DiscussionReader.for(user: actor, discussion: discussion)
+    reader = TopicReader.for(user: actor, topic: discussion.topic)
     reader.recall!
     EventBus.broadcast('discussion_recall', reader, actor)
   end
@@ -230,7 +218,7 @@ class DiscussionService
     DiscussionQuery.visible_to(user: user, only_unread: true, or_public: false, or_subgroups: false).last_activity_after(time_start).each do |discussion|
       RetryOnError.with_limit(2) do
         sequence_ids = discussion.items.where("events.created_at": time_range).pluck(:sequence_id)
-        DiscussionReader.for(user: user, discussion: discussion).viewed!(sequence_ids)
+        TopicReader.for(user: user, topic: discussion.topic).viewed!(sequence_ids)
       end
     end
   end
@@ -242,6 +230,7 @@ class DiscussionService
                                          model: discussion,
                                          audience: audience)
 
+    topic = discussion.topic
 
     volumes = {}
     Membership.where(group_id: discussion.group_id,
@@ -249,20 +238,20 @@ class DiscussionService
       volumes[m.user_id] = m.volume
     end
 
-    DiscussionReader.
-      where(discussion_id: discussion.id, user_id: users.map(&:id)).
+    TopicReader.
+      where(topic_id: topic.id, user_id: users.map(&:id)).
       where("revoked_at is not null").update_all(revoked_at: nil, revoker_id: nil)
 
-    new_discussion_readers = users.map do |user|
-      DiscussionReader.new(user: user,
-                           discussion: discussion,
+    new_topic_readers = users.map do |user|
+      TopicReader.new(user: user,
+                           topic: topic,
                            inviter: actor,
                            guest: !volumes.has_key?(user.id),
                            admin: !discussion.group_id,
                            volume: volumes[user.id] || user.default_membership_volume)
     end
 
-    DiscussionReader.import(new_discussion_readers, on_duplicate_key_ignore: true)
+    TopicReader.import(new_topic_readers, on_duplicate_key_ignore: true)
 
     discussion.update_members_count
     users

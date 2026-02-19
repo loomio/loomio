@@ -33,18 +33,6 @@ class Views::EmailActions::Unsubscribe < Views::BasicLayout
         end
       end
 
-      if @stance
-        h3 { "#{t(:"poll_types.#{@stance.poll.poll_type}")}: #{@stance.poll.title}" }
-        p { t(:"change_volume_form.when_would_you_like_to_be_emailed_poll_type", poll_type: I18n.t(:"poll_types.#{@stance.poll.poll_type}")) }
-        form_tag(email_actions_set_poll_volume_path, method: :put) do
-          input(type: :hidden, name: "unsubscribe_token", value: @unsubscribe_token)
-          input(type: :hidden, name: "poll_id", value: @stance.poll.id)
-          input(type: :hidden, name: "discussion_id", value: @discussion_reader.discussion_id) if @discussion_reader
-          volume_select(volume_options, selected: @stance.volume)
-          input(type: "submit", value: t(:"common.action.save"))
-        end
-      end
-
       if @membership
         h3 { "#{t(:'common.group')}: #{@membership.group.full_name}" }
         p { t(:"change_volume_form.when_would_you_like_to_be_emailed_group") }

@@ -32,7 +32,7 @@ class RecordClonerTest < ActiveSupport::TestCase
     @discussion = create_discussion(group: @group, author: @user)
 
     # Create a comment in the discussion
-    comment = Comment.new(body: "Test comment", discussion: @discussion, author: @user)
+    comment = Comment.new(body: "Test comment", parent: @discussion, author: @user)
     CommentService.create(comment: comment, actor: @user)
 
     # Create poll with stance and outcome
@@ -66,7 +66,7 @@ class RecordClonerTest < ActiveSupport::TestCase
     OutcomeService.create(outcome: @outcome, actor: @user)
 
     # Repair event chain for discussion
-    EventService.repair_discussion(@discussion.id)
+    EventService.repair_thread(@discussion.topic)
   end
 
   # -- Clone Group --
@@ -96,10 +96,10 @@ class RecordClonerTest < ActiveSupport::TestCase
     assert_equal 'private_only', clone.discussion_privacy_options
     assert_equal 'approval', clone.membership_granted_upon
 
-    # Check discussions and polls are cloned
+    # Check discussions and their polls are cloned
     assert_equal @group.discussions.kept.count, clone.discussions.count
     assert clone.discussions.count >= 1
-    assert clone.polls.count >= 1
+    assert clone.discussions.first.polls.count >= 1
   end
 
   # -- Clone Discussion --

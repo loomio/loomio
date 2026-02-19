@@ -7,7 +7,7 @@ class Api::V1::SearchControllerTest < ActionController::TestCase
     @group.add_member!(@user) unless @group.members.include?(@user)
 
     @discussion = create_discussion(group: @group, author: @user, title: "findme discussion")
-    @comment = Comment.new(discussion: @discussion, body: "findme in comment")
+    @comment = Comment.new(parent: @discussion, body: "findme in comment")
     CommentService.create(comment: @comment, actor: @user)
 
     @poll = Poll.new(

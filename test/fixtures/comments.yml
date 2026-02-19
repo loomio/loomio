@@ -3,7 +3,6 @@ test_comment:
   body: body of the comment
   body_format: html
   user: discussion_author
-  discussion: test_discussion
-  parent_type: Discussion
+  parent: test_discussion (Discussion)
   created_at: <%= 5.days.ago %>
   updated_at: <%= 5.days.ago %>

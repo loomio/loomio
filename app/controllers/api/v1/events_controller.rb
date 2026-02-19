@@ -1,13 +1,13 @@
 class Api::V1::EventsController < Api::V1::RestfulController
   def position_keys
-    load_and_authorize(:discussion)
-    keys = Event.where(discussion_id: params[:discussion_id]).pluck(:position_key).sort
+    load_and_authorize_topic
+    keys = Event.where(topic_id: @topic.id).pluck(:position_key).sort
     render json: keys, root: 'position_keys'
   end
 
   def timeline
-    load_and_authorize(:discussion)
-    data = Event.where(discussion_id: params[:discussion_id])
+    load_and_authorize_topic
+    data = Event.where(topic_id: @topic.id)
                 .order(:position_key)
                 .pluck(:position_key, :sequence_id, :created_at, :user_id, :depth, :descendant_count)
     render json: data.to_json, root: 'timeline'
@@ -19,7 +19,7 @@ class Api::V1::EventsController < Api::V1::RestfulController
   end
 
   def comment
-    load_and_authorize(:discussion)
+    load_and_authorize_topic
     self.resource = Event.find_by!(kind: "new_comment", eventable_type: "Comment", eventable_id: params[:comment_id])
     respond_with_resource
   end
@@ -44,6 +44,24 @@ class Api::V1::EventsController < Api::V1::RestfulController
 
   private
 
+  def load_and_authorize_topic
+    if params[:discussion_id] || params[:discussion_key]
+      @discussion = load_and_authorize(:discussion)
+      @topic = @discussion.topic
+    elsif params[:poll_id] || params[:poll_key]
+      @poll = load_and_authorize(:poll)
+      @topic = @poll.topic
+    elsif params[:topic_id]
+      @topic = Topic.find(params[:topic_id])
+      # Authorize via topicable
+      if @topic.topicable_type == 'Discussion'
+        load_and_authorize(:discussion, id: @topic.topicable_id)
+      elsif @topic.topicable_type == 'Poll'
+        load_and_authorize(:poll, id: @topic.topicable_id)
+      end
+    end
+  end
+
   def order
     %w(sequence_id position position_key).detect {|col| col == params[:order] } || "sequence_id"
   end
@@ -55,7 +73,7 @@ class Api::V1::EventsController < Api::V1::RestfulController
   def from
     if params[:from_sequence_id_of_position]
       position = [params[:from_sequence_id_of_position].to_i, 1].max
-      Event.find_by!(discussion: @discussion, depth: 1, position: position)&.sequence_id
+      Event.find_by!(topic_id: @topic.id, depth: 1, position: position)&.sequence_id
     elsif params[:comment_id]
       Event.find_by!(kind: "new_comment", eventable_type: "Comment", eventable_id: params[:comment_id])&.sequence_id
     else
@@ -64,8 +82,8 @@ class Api::V1::EventsController < Api::V1::RestfulController
   end
 
   def accessible_records
-    load_and_authorize(:discussion)
-    records = Event.where(discussion_id: @discussion.id)
+    load_and_authorize_topic
+    records = Event.where(topic_id: @topic.id)
 
     if %w[position_key sequence_id].include?(params[:order_by])
       records = records.order("#{params[:order_by]}#{params[:order_desc] ? " DESC" : ''}")

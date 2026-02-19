@@ -1,6 +1,7 @@
 class DiscussionReaderSerializer < ApplicationSerializer
   attributes :id,
              :user_id,
+             :topic_id,
              :discussion_id,
              :read_ranges,
              :last_read_at,
@@ -12,14 +13,27 @@ class DiscussionReaderSerializer < ApplicationSerializer
              :revoked_at
 
   has_one :user, serializer: AuthorSerializer, root: :users
-  # has_one :discussion, serializer: DiscussionSerializer, root: :discussions
+
+  def discussion_id
+    object.discussion_id
+  end
 
   def last_read_at
-    object.discussion.anonymous_polls_count == 0 ? object.last_read_at : nil
+    topicable = object.topic&.topicable
+    if topicable.is_a?(Discussion) && topicable.anonymous_polls_count > 0
+      nil
+    else
+      object.last_read_at
+    end
   end
 
   def read_ranges
-    object.discussion.anonymous_polls_count == 0 ? object.read_ranges : []
+    topicable = object.topic&.topicable
+    if topicable.is_a?(Discussion) && topicable.anonymous_polls_count > 0
+      []
+    else
+      object.read_ranges
+    end
   end
 
   def volume

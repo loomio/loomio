@@ -29,6 +29,7 @@ import AttachmentRecordsInterface from '@/shared/interfaces/attachment_records_i
 import LoginTokenRecordsInterface from '@/shared/interfaces/login_token_records_interface';
 import MessageChannelRecordsInterface from '@/shared/interfaces/message_channel_records_interface';
 import TagRecordsInterface from '@/shared/interfaces/tag_records_interface';
+import TopicRecordsInterface from '@/shared/interfaces/topic_records_interface';
 import TaskRecordsInterface from '@/shared/interfaces/task_records_interface';
 import WebhookRecordsInterface from '@/shared/interfaces/webhook_records_interface';
 import ReceivedEmailRecordsInterface from '@/shared/interfaces/received_email_records_interface';
@@ -63,6 +64,7 @@ records.addRecordsInterface(AttachmentRecordsInterface);
 records.addRecordsInterface(LoginTokenRecordsInterface);
 records.addRecordsInterface(MessageChannelRecordsInterface);
 records.addRecordsInterface(TagRecordsInterface);
+records.addRecordsInterface(TopicRecordsInterface);
 records.addRecordsInterface(TaskRecordsInterface);
 records.addRecordsInterface(WebhookRecordsInterface);
 records.addRecordsInterface(ReceivedEmailRecordsInterface);

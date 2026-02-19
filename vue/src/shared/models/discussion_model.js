@@ -64,6 +64,7 @@ export default class DiscussionModel extends BaseModel {
       recipientEmails: [],
       notifyRecipients: true,
       groupId: null,
+      topicId: null,
       usersNotifiedCount: null,
       discussionReaderUserId: null,
       pinnedAt: null,
@@ -113,6 +114,10 @@ export default class DiscussionModel extends BaseModel {
   }
 
   discussion() { return this; }
+
+  topic() {
+    if (this.topicId) { return Records.topics.find(this.topicId); }
+  }
 
   template() {
     return Records.discussionTemplates.find(this.discussionTemplateId);

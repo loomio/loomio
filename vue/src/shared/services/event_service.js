@@ -12,12 +12,15 @@ export default new class EventService {
         icon: 'mdi-call-split',
         kinds: ['new_discussion', 'poll_created', 'new_comment'],
         perform() {
-          return event.discussion().forkedEventIds.push(event.id);
+          const discussion = event.discussion();
+          if (discussion) { return discussion.forkedEventIds.push(event.id); }
         },
         canPerform() {
-          return !event.model().discardedAt &&
-          !event.discussion().closedAt &&
-          AbilityService.canMoveThread(event.discussion());
+          const discussion = event.discussion();
+          return discussion &&
+          !event.model().discardedAt &&
+          !discussion.closedAt &&
+          AbilityService.canMoveThread(discussion);
         }
       },
 

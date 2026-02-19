@@ -90,8 +90,9 @@ module Dev::ScenariosHelper
     voter    = saved(fake_user)
     scenario[:poll].group.add_member!(voter)
 
-    Stance.where(poll_id: scenario[:poll].id,
-                 participant_id: scenario[:poll].author_id).update(volume: 'loud')
+    # Ensure author gets email notifications by setting topic reader volume to loud
+    topic = scenario[:poll].topic
+    TopicReader.find_or_create_by!(topic: topic, user: scenario[:poll].author).set_volume!('loud') if topic
 
     stance = Stance.find_by(poll: scenario[:poll], participant: voter, latest: true)
     event = StanceService.update(stance: stance, actor: voter, params: cast_stance_params(scenario[:poll]))

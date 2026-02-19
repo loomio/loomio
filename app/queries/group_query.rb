@@ -4,7 +4,7 @@ class GroupQuery
   end
 
   def self.visible_to(user: LoggedOutUser.new, chain: start, show_public: false)
-    guest_discussion_group_ids = Discussion.where(id: user.guest_discussion_ids).pluck(:group_id)
+    guest_discussion_group_ids = Discussion.where(id: user.guest_discussion_ids).joins(:topic).pluck('topics.group_id')
     group_ids = user.group_ids.concat(guest_discussion_group_ids)
     chain.published.
       where("#{'is_visible_to_public = true OR ' if show_public}

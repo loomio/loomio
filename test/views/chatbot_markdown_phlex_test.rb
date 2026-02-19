@@ -146,7 +146,7 @@ class ChatbotMarkdownPhlexTest < ActiveSupport::TestCase
     comment = Comment.create!(
       body: "Test comment body",
       body_format: "md",
-      discussion: @discussion,
+      parent: @discussion,
       author: @user
     )
     comment.create_missing_created_event!

@@ -6,11 +6,11 @@ class Api::V1::VersionsControllerTest < ActionController::TestCase
     discussion = create_discussion(author: user, group: groups(:test_group))
     comment = Comment.new(
       body: "Test comment",
-      discussion: discussion,
+      parent: discussion,
       author: user
     )
     CommentService.create(comment: comment, actor: user)
-    
+
     sign_in user
     get :show, params: { comment_id: comment.id }
     assert_response :success
@@ -21,7 +21,7 @@ class Api::V1::VersionsControllerTest < ActionController::TestCase
     discussion = create_discussion(author: user, group: groups(:test_group))
     comment = Comment.new(
       body: "Test comment",
-      discussion: discussion,
+      parent: discussion,
       author: user
     )
     CommentService.create(comment: comment, actor: user)

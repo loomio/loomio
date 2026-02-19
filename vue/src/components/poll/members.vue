@@ -23,8 +23,8 @@ export default {
       users: [],
       userIds: [],
       isGuest: {},
-      isMemberAdmin: {},
-      isStanceAdmin: {},
+      isGroupAdmin: {},
+      isTopicAdmin: {},
       reset: false,
       saving: false,
       loading: false,
@@ -38,7 +38,7 @@ export default {
 
   mounted() {
     this.poll.notifyRecipients = !(this.poll.openingAt && !this.poll.openedAt);
-    this.actionNames = ['makeAdmin', 'removeAdmin', 'revoke']; // 'resend'
+    this.actionNames = ['revoke'];
 
     this.fetchStances();
     this.updateStances();
@@ -66,10 +66,6 @@ export default {
     },
     canPerform(action, poll, user) {
       switch (action) {
-        case 'makeAdmin':
-          return poll.adminsInclude(Session.user()) && !this.isStanceAdmin[user.id] && !this.isMemberAdmin[user.id];
-        case 'removeAdmin':
-          return poll.adminsInclude(Session.user()) && this.isStanceAdmin[user.id];
         case 'revoke':
           return poll.adminsInclude(Session.user());
       }
@@ -78,8 +74,8 @@ export default {
     perform(action, poll, user) {
       this.userIds = [];
       this.isMember = {};
-      this.isMemberAdmin= {};
-      this.isStanceAdmin= {};
+      this.isGroupAdmin= {};
+      this.isTopicAdmin= {};
       this.service[action].perform(poll, user).then(() => {
         this.fetchStances();
       });
@@ -136,8 +132,8 @@ export default {
           query: this.query
       }}).then(data => {
         this.isGuest = this.toHash(data['meta']['guest_ids']);
-        this.isMemberAdmin = this.toHash(data['meta']['member_admin_ids']);
-        this.isStanceAdmin = this.toHash(data['meta']['stance_admin_ids']);
+        this.isGroupAdmin = this.toHash(data['meta']['group_admin_ids']);
+        this.isTopicAdmin = this.toHash(data['meta']['topic_admin_ids']);
         this.userIds = uniq(compact(this.userIds.concat(map(data['users'], 'id'))));
         this.updateStances();
       }).finally(() => {
@@ -213,7 +209,7 @@ v-card.poll-members-form
         span.mr-2 {{user.nameWithTitle(poll.group())}}
         v-chip.mr-1(v-if="isGuest[user.id]" variant="outlined" size="x-small" label :title="$t('announcement.inviting_guests_to_discussion')")
           span(v-t="'members_panel.guest'")
-        v-chip.mr-1(v-if="isMemberAdmin[user.id] || isStanceAdmin[user.id]" variant="outlined" size="x-small" label)
+        v-chip.mr-1(v-if="isGroupAdmin[user.id] || isTopicAdmin[user.id]" variant="outlined" size="x-small" label)
           span(v-t="'members_panel.admin'")
         v-chip.mr-1(v-if="!user.emailVerified" variant="outlined" size="x-small" label :title="$t('announcement.members_list.has_not_joined_yet_hint')")
           span(v-t="'announcement.members_list.has_not_joined_yet'")

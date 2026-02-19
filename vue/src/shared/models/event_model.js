@@ -6,7 +6,7 @@ import Records from '@/shared/services/records';
 export default class EventModel extends BaseModel {
   static singular = 'event';
   static plural = 'events';
-  static indices = ['discussionId', 'sequenceId', 'position', 'depth', 'parentId', 'positionKey'];
+  static indices = ['discussionId', 'topicId', 'sequenceId', 'position', 'depth', 'parentId', 'positionKey'];
   static uniqueIndices = ['id'];
 
   constructor(...args) {
@@ -27,6 +27,7 @@ export default class EventModel extends BaseModel {
       eventableId: null,
       eventableType: null,
       discussionId: null,
+      topicId: null,
       sequenceId: null,
       positition: 0,
       showReplyForm: true
@@ -55,7 +56,9 @@ export default class EventModel extends BaseModel {
 
   actorName() {
     if (this.actor()) {
-      return this.actor().nameWithTitle(this.discussion().group());
+      const topic = this.topic();
+      const group = topic ? topic.group() : null;
+      return this.actor().nameWithTitle(group);
     } else {
       return I18n.global.t('common.anonymous');
     }
@@ -73,12 +76,19 @@ export default class EventModel extends BaseModel {
     return ['Poll', 'Outcome', 'Stance'].includes(this.eventableType);
   }
 
+  topic() {
+    if (this.topicId) { return Records.topics.find(this.topicId); }
+  }
+
   isUnread() {
-    return !this.discussion().hasRead(this.sequenceId);
+    const topic = this.topic();
+    if (topic) { return !topic.hasRead(this.sequenceId); }
+    return false;
   }
 
   markAsRead() {
-    return this.discussion().markAsRead(this.sequenceId);
+    const topic = this.topic();
+    if (topic) { return topic.markAsRead(this.sequenceId); }
   }
 
   beforeRemove() {
@@ -118,7 +128,8 @@ export default class EventModel extends BaseModel {
   unpin() { return Records.events.remote.patchMember(this.id, 'unpin'); }
 
   isForking() {
-    return this.discussion() && (this.discussion().forkedEventIds.includes(this.id) || this.parentIsForking());
+    const d = this.discussion();
+    return d && d.forkedEventIds && (d.forkedEventIds.includes(this.id) || this.parentIsForking());
   }
 
   parentIsForking() {

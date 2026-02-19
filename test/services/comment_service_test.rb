@@ -10,7 +10,7 @@ class CommentServiceTest < ActiveSupport::TestCase
 
   test "creates a comment and returns an event" do
     comment = Comment.new(
-      discussion: @discussion,
+      parent: @discussion,
       author: @user,
       body: "My body is ready",
       body_format: "md"
@@ -25,7 +25,7 @@ class CommentServiceTest < ActiveSupport::TestCase
 
   test "returns false when creating invalid comment" do
     comment = Comment.new(
-      discussion: @discussion,
+      parent: @discussion,
       author: @user,
       body: "",  # Empty body is invalid
       body_format: "md"
@@ -40,7 +40,7 @@ class CommentServiceTest < ActiveSupport::TestCase
   test "creates user_mentioned event when mentioning a user" do
     @another_user.update(username: 'testuser')
     comment = Comment.new(
-      discussion: @discussion,
+      parent: @discussion,
       author: @user,
       body: "A mention for @testuser!",
       body_format: "md"
@@ -60,7 +60,7 @@ class CommentServiceTest < ActiveSupport::TestCase
 
     mention_comment = Comment.new(
       author: @another_user,
-      discussion: @discussion,
+      parent: @discussion,
       body: "hi @originaluser",
       body_format: "md"
     )
@@ -73,7 +73,6 @@ class CommentServiceTest < ActiveSupport::TestCase
     reply_comment = Comment.new(
       parent: mention_comment,
       author: @user,
-      discussion: @discussion,
       body: "gidday",
       body_format: "md"
     )
@@ -85,7 +84,7 @@ class CommentServiceTest < ActiveSupport::TestCase
 
   test "updates a comment" do
     comment = Comment.new(
-      discussion: @discussion,
+      parent: @discussion,
       author: @user,
       body: "Original body",
       body_format: "md"
@@ -101,7 +100,7 @@ class CommentServiceTest < ActiveSupport::TestCase
     @another_user.update(username: 'mentiontest')
 
     comment = Comment.new(
-      discussion: @discussion,
+      parent: @discussion,
       author: @user,
       body: "Original",
       body_format: "md"
@@ -121,7 +120,7 @@ class CommentServiceTest < ActiveSupport::TestCase
 
   test "does not update an invalid comment" do
     comment = Comment.new(
-      discussion: @discussion,
+      parent: @discussion,
       author: @user,
       body: "Original body",
       body_format: "md"
@@ -135,7 +134,7 @@ class CommentServiceTest < ActiveSupport::TestCase
 
   test "destroys a comment when authorized" do
     comment = Comment.new(
-      discussion: @discussion,
+      parent: @discussion,
       author: @user,
       body: "To be deleted",
       body_format: "md"
@@ -149,7 +148,7 @@ class CommentServiceTest < ActiveSupport::TestCase
 
   test "does not destroy comment when unauthorized" do
     comment = Comment.new(
-      discussion: @discussion,
+      parent: @discussion,
       author: @user,
       body: "Protected comment",
       body_format: "md"

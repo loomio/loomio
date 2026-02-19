@@ -14,13 +14,13 @@ class EmailActionsControllerTest < ActionController::TestCase
 
     @discussion = Discussion.new(title: "Discussion #{hex}", group: @group, author: @author)
     @event = DiscussionService.create(discussion: @discussion, actor: @author)
-    @discussion_reader = DiscussionReader.for(discussion: @discussion, user: @user)
+    @discussion_reader = TopicReader.for(user: @user, topic: @discussion.topic)
     ActionMailer::Base.deliveries.clear
   end
 
   # unsubscribe page rendering
   test "unsubscribe renders with discussion reader" do
-    @discussion_reader = DiscussionReader.for(discussion: @discussion, user: @user)
+    @discussion_reader = TopicReader.for(user: @user, topic: @discussion.topic)
     @discussion_reader.set_volume!(:loud)
 
     get :unsubscribe, params: { discussion_id: @discussion.id, unsubscribe_token: @user.unsubscribe_token }
@@ -40,8 +40,7 @@ class EmailActionsControllerTest < ActionController::TestCase
       poll_option_names: %w[agree disagree abstain]
     )
     poll.create_missing_created_event!
-    stance = Stance.create!(poll: poll, participant: @user, latest: true)
-    stance.set_volume!(:normal)
+    Stance.create!(poll: poll, participant: @user, latest: true)
 
     get :unsubscribe, params: {
       discussion_id: @discussion.id,
@@ -94,35 +93,10 @@ class EmailActionsControllerTest < ActionController::TestCase
     assert_equal 'normal', @discussion_reader.volume
   end
 
-  test "unsubscribes stance" do
-    @membership.set_volume!(:loud)
-    poll = Poll.new(
-      title: "EA Poll #{SecureRandom.hex(4)}",
-      poll_type: 'proposal',
-      group: @group,
-      author: @author,
-      closing_at: 3.days.from_now,
-      poll_option_names: %w[agree disagree abstain]
-    )
-    poll.save!
-    poll.create_missing_created_event!
-    stance = Stance.create!(poll: poll, participant: @user, latest: true)
-    stance.set_volume!(:loud)
-
-    put :set_poll_volume, params: { stance_id: stance.id, unsubscribe_token: @user.unsubscribe_token, value: :normal }
-    assert_response 302
-
-    @membership.reload
-    stance.reload
-
-    assert_equal 'loud', @membership.volume
-    assert_equal 'normal', stance.volume
-  end
-
   # mark_discussion_as_read tests
   test "marks the discussion as read at event created_at" do
     get :mark_discussion_as_read, params: { discussion_id: @discussion.id, event_id: @event.id, unsubscribe_token: @user.unsubscribe_token }
-    reader = DiscussionReader.for(discussion: @discussion, user: @user)
+    reader = TopicReader.for(user: @user, topic: @discussion.topic)
     assert_in_delta @event.created_at.to_f, reader.last_read_at.to_f, 1.0
   end
 
@@ -132,12 +106,12 @@ class EmailActionsControllerTest < ActionController::TestCase
   end
 
   test "marks a comment as read" do
-    comment_event = CommentService.create(comment: Comment.new(discussion: @discussion, body: "hello"), actor: @author)
-    reader = DiscussionReader.for(discussion: @discussion, user: @user)
+    comment_event = CommentService.create(comment: Comment.new(parent: @discussion, body: "hello"), actor: @author)
+    reader = TopicReader.for(user: @user, topic: @discussion.topic)
     refute reader.has_read?(comment_event.sequence_id)
 
     get :mark_discussion_as_read, params: { discussion_id: @discussion.id, event_id: comment_event.id, unsubscribe_token: @user.unsubscribe_token }
-    reader = DiscussionReader.for(discussion: @discussion, user: @user)
+    reader = TopicReader.for(user: @user, topic: @discussion.topic)
     assert_in_delta Time.now.to_f, reader.last_read_at.to_f, 2.0
     assert reader.has_read?(comment_event.sequence_id)
   end
@@ -152,7 +126,7 @@ class EmailActionsControllerTest < ActionController::TestCase
   # mark_summary_email_as_read test
   test "marks content as read" do
     time_start = 1.hour.ago
-    comment = Comment.new(discussion: @discussion, body: "summary test", created_at: time_start)
+    comment = Comment.new(parent: @discussion, body: "summary test", created_at: time_start)
     CommentService.create(comment: comment, actor: @author)
 
     get :mark_summary_email_as_read, params: {

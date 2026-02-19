@@ -311,7 +311,7 @@ class Api::V1::DocumentsControllerTest < ActionController::TestCase
     
     comment = Comment.new(
       body: "Test comment",
-      discussion: discussion,
+      parent: discussion,
       author: user
     )
     CommentService.create(comment: comment, actor: user)
@@ -329,7 +329,7 @@ class Api::V1::DocumentsControllerTest < ActionController::TestCase
     
     another_comment = Comment.new(
       body: "Another comment",
-      discussion: another_discussion,
+      parent: another_discussion,
       author: users(:discussion_author)
     )
     CommentService.create(comment: another_comment, actor: users(:discussion_author))

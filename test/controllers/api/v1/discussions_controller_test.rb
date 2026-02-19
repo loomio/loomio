@@ -14,8 +14,8 @@ class Api::V1::DiscussionsControllerTest < ActionController::TestCase
     json = JSON.parse(response.body)
     discussion = Discussion.find(json['discussions'][0]['id'])
     
-    assert_equal 1, discussion.discussion_readers.count
-    assert_equal user.id, discussion.discussion_readers.first.user_id
+    assert_equal 1, discussion.topic_readers.count
+    assert_equal user.id, discussion.topic_readers.first.user_id
     assert_equal 0, discussion.created_event.notifications.count
   end
 
@@ -269,14 +269,14 @@ class Api::V1::DiscussionsControllerTest < ActionController::TestCase
     sign_in user
     
     # Mark discussion as read
-    reader = DiscussionReader.for(user: user, discussion: discussion)
+    reader = TopicReader.for(user: user, topic: discussion.topic)
     reader.viewed!
-    
+
     # Add a new comment to make it unread
-    new_comment = Comment.create!(
+    new_comment = Comment.new(
       body: "New comment",
-      discussion: discussion,
-      user: another_user
+      parent: discussion,
+      author: another_user
     )
     CommentService.create(comment: new_comment, actor: another_user)
     
@@ -381,8 +381,8 @@ class Api::V1::DiscussionsControllerTest < ActionController::TestCase
     discussion = discussions(:test_discussion)
     sign_in user
     
-    reader = DiscussionReader.for(user: user, discussion: discussion)
-    reader.update(volume: DiscussionReader.volumes[:normal])
+    reader = TopicReader.for(user: user, topic: discussion.topic)
+    reader.update(volume: TopicReader.volumes[:normal])
     
     patch :dismiss, params: { id: discussion.key }
     
@@ -396,8 +396,8 @@ class Api::V1::DiscussionsControllerTest < ActionController::TestCase
     discussion = discussions(:test_discussion)
     sign_in user
     
-    reader = DiscussionReader.for(user: user, discussion: discussion)
-    reader.update(volume: DiscussionReader.volumes[:normal], dismissed_at: 1.day.ago)
+    reader = TopicReader.for(user: user, topic: discussion.topic)
+    reader.update(volume: TopicReader.volumes[:normal], dismissed_at: 1.day.ago)
     
     patch :recall, params: { id: discussion.key }
     
@@ -449,14 +449,14 @@ class Api::V1::DiscussionsControllerTest < ActionController::TestCase
   test "allows admins to reopen a thread" do
     user = users(:normal_user)
     discussion = discussions(:test_discussion)
-    discussion.update(closed_at: 1.day.ago)
+    discussion.topic.update!(closed_at: 1.day.ago)
     sign_in user
-    
+
     post :reopen, params: { id: discussion.id }
-    
+
     assert_response :success
-    assert_nil discussion.reload.closed_at
-    
+    assert_nil discussion.topic.reload.closed_at
+
     json = JSON.parse(response.body)
     assert_includes json.keys, 'events'
   end
@@ -464,18 +464,18 @@ class Api::V1::DiscussionsControllerTest < ActionController::TestCase
   test "does not allow non-admins to reopen a thread" do
     # Create a non-admin user who is not a member
     non_admin = User.create!(
-      name: "Non Admin Reopen", 
+      name: "Non Admin Reopen",
       email: "nonadmin2@example.com",
       username: "nonadmin2",
       encrypted_password: "$2a$12$K3E5h0VGlqmXL8HqWw7mIe3qP0XjQSfZ1jK4PqYX7Qq5N9YK6L4/K",
       email_verified: true
     )
     discussion = discussions(:test_discussion)
-    discussion.update(closed_at: 1.day.ago)
+    discussion.topic.update!(closed_at: 1.day.ago)
     sign_in non_admin
-    
+
     post :reopen, params: { id: discussion.id }
-    
+
     assert_response :forbidden
   end
 
@@ -488,19 +488,19 @@ class Api::V1::DiscussionsControllerTest < ActionController::TestCase
     post :pin, params: { id: discussion.id }
     
     assert_response :success
-    assert_not_nil discussion.reload.pinned_at
+    assert_not_nil discussion.topic.reload.pinned_at
   end
 
   test "allows admins to unpin a thread" do
     user = users(:normal_user)
     discussion = discussions(:test_discussion)
-    discussion.update(pinned_at: Time.now)
+    discussion.topic.update!(pinned_at: Time.now)
     sign_in user
-    
+
     post :unpin, params: { id: discussion.id }
-    
+
     assert_response :success
-    assert_nil discussion.reload.pinned_at
+    assert_nil discussion.topic.reload.pinned_at
   end
 
   test "does not allow non-admins to pin a thread" do
@@ -530,12 +530,12 @@ class Api::V1::DiscussionsControllerTest < ActionController::TestCase
     )
     sign_in user
     
-    assert_difference 'user.discussion_readers.count', 1 do
+    assert_difference 'user.topic_readers.count', 1 do
       post :mark_as_seen, params: { id: new_discussion.id }
     end
     
-    dr = DiscussionReader.last
-    assert_equal new_discussion, dr.discussion
+    dr = TopicReader.last
+    assert_equal new_discussion, dr.topic.topicable
     assert_not_nil dr.last_read_at
     assert_equal 0, dr.read_items_count
   end
@@ -554,7 +554,7 @@ class Api::V1::DiscussionsControllerTest < ActionController::TestCase
     discussion = discussions(:test_discussion)
     sign_in user
     
-    reader = DiscussionReader.for(user: user, discussion: discussion)
+    reader = TopicReader.for(user: user, topic: discussion.topic)
     reader.update(volume: :loud)
     
     put :set_volume, params: { id: discussion.id, volume: :mute }, format: :json

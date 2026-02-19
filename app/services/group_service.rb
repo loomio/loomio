@@ -150,8 +150,7 @@ module GroupService
 
     Group.transaction do
       source.subgroups.update_all(parent_id: target.id)
-      source.discussions.update_all(group_id: target.id)
-      source.polls.update_all(group_id: target.id)
+      Topic.where(group_id: source.id).update_all(group_id: target.id)
       source.membership_requests.update_all(group_id: target.id)
       source.memberships.where.not(user_id: target.member_ids).update_all(group_id: target.id)
       source.destroy

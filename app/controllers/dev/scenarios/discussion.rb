@@ -44,19 +44,19 @@ module Dev::Scenarios::Discussion
     create_discussion
     create_another_discussion
     sign_in patrick
-    CommentService.create(comment: Comment.new(discussion: create_discussion, body: "This is totally on topic!"), actor: jennifer)
-    event = CommentService.create(comment: Comment.new(discussion: create_discussion, body: "This is totally **off** topic!"), actor: jennifer)
-    CommentService.create(comment: Comment.new(discussion: create_discussion, body: "This is a reply to the off-topic thing!", parent: event.eventable), actor: emilio)
-    CommentService.create(comment: Comment.new(discussion: create_discussion, body: "This is also off-topic"), actor: emilio)
-    CommentService.create(comment: Comment.new(discussion: create_discussion, body: "This is totally back on topic!"), actor: patrick)
+    CommentService.create(comment: Comment.new(parent: create_discussion, body: "This is totally on topic!"), actor: jennifer)
+    event = CommentService.create(comment: Comment.new(parent: create_discussion, body: "This is totally **off** topic!"), actor: jennifer)
+    CommentService.create(comment: Comment.new(parent: event.eventable, body: "This is a reply to the off-topic thing!"), actor: emilio)
+    CommentService.create(comment: Comment.new(parent: create_discussion, body: "This is also off-topic"), actor: emilio)
+    CommentService.create(comment: Comment.new(parent: create_discussion, body: "This is totally back on topic!"), actor: patrick)
 
     redirect_to discussion_path(create_discussion)
   end
 
   def setup_thread_catch_up
     jennifer.update(email_catch_up_day: 7)
-    CommentService.create(comment: Comment.new(discussion: create_discussion, body: "first comment"), actor: patrick)
-    event = CommentService.create(comment: Comment.new(discussion: create_discussion, body: "removed comment"), actor: patrick)
+    CommentService.create(comment: Comment.new(parent: create_discussion, body: "first comment"), actor: patrick)
+    event = CommentService.create(comment: Comment.new(parent: create_discussion, body: "removed comment"), actor: patrick)
     CommentService.discard(comment: event.eventable, actor: event.user)
     DiscussionService.update(discussion: create_discussion,
                              params: {recipient_message: 'this is an edit message'},
@@ -71,9 +71,9 @@ module Dev::Scenarios::Discussion
   end
 
   def setup_unread_discussion
-    read = Comment.new(discussion: create_discussion, body: "Here is some read content")
-    unread = Comment.new(discussion: create_discussion, body: "Here is some unread content")
-    another_unread = Comment.new(discussion: create_discussion, body: "Here is some more unread content")
+    read = Comment.new(parent: create_discussion, body: "Here is some read content")
+    unread = Comment.new(parent: create_discussion, body: "Here is some unread content")
+    another_unread = Comment.new(parent: create_discussion, body: "Here is some more unread content")
     sign_in patrick
 
     CommentService.create(comment: read, actor: patrick)
@@ -100,13 +100,14 @@ module Dev::Scenarios::Discussion
     @group.add_admin!(patrick)
     sign_in patrick
     60.times do
-      saved(fake_discussion(group: @group, closed_at: 5.days.ago))
+      d = saved(fake_discussion(group: @group))
+      d.topic.update!(closed_at: 5.days.ago)
     end
     redirect_to group_path(@group)
   end
 
   def setup_comment_with_versions
-    comment = Comment.new(discussion: create_discussion, body: "What star sign are you?")
+    comment = Comment.new(parent: create_discussion, body: "What star sign are you?")
     CommentService.create(comment: comment, actor: jennifer)
     comment.update(body: "What moon sign are you?")
     comment.update_versions_count
@@ -169,7 +170,7 @@ module Dev::Scenarios::Discussion
     group.add_admin! patrick
     discussion = Discussion.new(title: "Let's go to the moon!", description: "A description for this discussion. Should this be rich?", group: group, author: patrick)
     DiscussionService.create(discussion: discussion, actor: patrick)
-    comment = Comment.new(discussion: discussion, body: "body of the comment", author: patrick)
+    comment = Comment.new(parent: discussion, body: "body of the comment", author: patrick)
     CommentService.create(comment: comment, actor: patrick)
     DiscussionService.invite(discussion: discussion, actor: patrick, params: {recipient_emails: 'jen@example.com'})
     last_email
@@ -185,7 +186,7 @@ module Dev::Scenarios::Discussion
                                  description: "Wow, what a __great__ day.",
                                  author: jennifer)
     DiscussionService.create(discussion: @discussion, actor: @discussion.author)
-    @comment = Comment.new(author: jennifer, body: "hello _patrick_.", discussion: @discussion)
+    @comment = Comment.new(author: jennifer, body: "hello _patrick_.", parent: @discussion)
     CommentService.create(comment: @comment, actor: jennifer)
     last_email
   end
@@ -200,8 +201,8 @@ module Dev::Scenarios::Discussion
                                    description: "Wow, what a __great__ day.",
                                    author: jennifer)
       DiscussionService.create(discussion: @discussion, actor: @discussion.author)
-      DiscussionReader.for(discussion: @discussion, user: @patrick).set_volume!(:loud)
-      @comment = Comment.new(author: jennifer, body: "hello _patrick_.", discussion: @discussion)
+      TopicReader.for(user: @patrick, topic: @discussion.topic).set_volume!(:loud)
+      @comment = Comment.new(author: jennifer, body: "hello _patrick_.", parent: @discussion)
       CommentService.create(comment: @comment, actor: jennifer)
       last_email
     end
@@ -217,9 +218,9 @@ module Dev::Scenarios::Discussion
                                  description: "Wow, what a __great__ day.",
                                  author: jennifer)
     DiscussionService.create(discussion: @discussion, actor: @discussion.author)
-    @comment = Comment.new(body: "hello _patrick.", discussion: @discussion)
+    @comment = Comment.new(body: "hello _patrick.", parent: @discussion)
     CommentService.create(comment: @comment, actor: jennifer)
-    @reply_comment = Comment.new(body: "why, hello there @#{jennifer.username}", parent: @comment, discussion: @discussion)
+    @reply_comment = Comment.new(body: "why, hello there @#{jennifer.username}", parent: @comment)
     CommentService.create(comment: @reply_comment, actor: patrick)
     last_email
   end

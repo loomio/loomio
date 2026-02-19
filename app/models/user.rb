@@ -90,10 +90,20 @@ class User < ApplicationRecord
   has_many :participated_polls, through: :stances, source: :poll
   has_many :group_polls, through: :groups, source: :polls
 
-  has_many :discussion_readers, dependent: :destroy
-  has_many :guest_discussion_readers, -> { DiscussionReader.active.guests }, class_name: 'DiscussionReader', dependent: :destroy
-  has_many :guest_discussions, through: :guest_discussion_readers, source: :discussion
-  has_many :guest_stances, -> { Stance.latest.guests }, class_name: 'Stance', dependent: :destroy, foreign_key: :participant_id
+  has_many :topic_readers, dependent: :destroy
+  has_many :guest_topic_readers, -> { TopicReader.active.guests }, class_name: 'TopicReader', dependent: :destroy
+
+  def guest_discussions
+    Discussion.where(id: guest_topic_readers
+      .joins(:topic)
+      .where(topics: { topicable_type: 'Discussion' })
+      .select('topics.topicable_id'))
+  end
+
+  def guest_discussion_ids
+    guest_discussions.pluck(:id)
+  end
+  has_many :guest_stances, -> { Stance.latest.invited }, class_name: 'Stance', dependent: :destroy, foreign_key: :participant_id
   has_many :guest_polls, through: :guest_stances, source: :poll
   has_many :notifications, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -145,15 +155,16 @@ class User < ApplicationRecord
     end
 
     if model.discussion_id
-      ids += DiscussionReader.active.guests.where(discussion_id: model.discussion_id).pluck(:user_id)
+      topic_id = Topic.where(topicable_type: 'Discussion', topicable_id: model.discussion_id).pick(:id)
+      ids += TopicReader.active.guests.where(topic_id: topic_id).pluck(:user_id) if topic_id
     end
 
     if model.poll_id
-      ids += Stance.latest.guests.where(poll_id: model.poll_id).pluck(:participant_id)
+      ids += Stance.latest.invited.where(poll_id: model.poll_id).pluck(:participant_id)
     end
 
     if model.respond_to?(:poll_ids) and model.poll_ids.any?
-      ids += Stance.latest.guests.where(poll_id: model.poll_ids).pluck(:participant_id)
+      ids += Stance.latest.invited.where(poll_id: model.poll_ids).pluck(:participant_id)
     end
 
     active.search_for(query).where(id: ids)

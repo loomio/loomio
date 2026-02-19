@@ -32,10 +32,11 @@ export default {
             }
           }
 
+          const discussion = eventable.discussion ? eventable.discussion() : null;
           this.newComment = Records.comments.build({
             bodyFormat: Session.defaultFormat(),
             body,
-            discussionId: eventable.discussion().id,
+            discussionId: discussion ? discussion.id : null,
             authorId: Session.user().id,
             parentId: eventable.id,
             parentType: startCase(eventable.constructor.singular)

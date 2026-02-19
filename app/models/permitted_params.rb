@@ -34,10 +34,10 @@ class PermittedParams < Struct.new(:params)
       :title,
       :details,
       :details_format,
-      :discussion_id,
       :default_duration_in_days,
       :poll_type,
       :group_id,
+      :discussion_id,
       :closing_at,
       :opening_at,
       :anonymous,
@@ -173,7 +173,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def discussion_reader_attributes
-    [:discussion_id, :volume]
+    [:volume]
   end
 
   def group_attributes

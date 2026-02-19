@@ -24,8 +24,8 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     discussion = Discussion.create!(title: "export_discussion#{SecureRandom.hex(4)}", group: group, author: admin, discussion_template_id: discussion_template.id, tags: [tag.name])
     sub_discussion = Discussion.create!(title: "export_sub_discussion#{SecureRandom.hex(4)}", group: subgroup, author: admin)
 
-    comment = Comment.create!(body: 'export_comment', discussion: discussion, author: admin)
-    sub_comment = Comment.create!(body: 'export_sub_comment', discussion: sub_discussion, author: admin)
+    comment = Comment.create!(parent: discussion, body: 'export_comment', author: admin)
+    sub_comment = Comment.create!(parent: sub_discussion, body: 'export_sub_comment', author: admin)
 
     poll = Poll.create!(title: "export_poll#{SecureRandom.hex(4)}", group: group, author: admin, poll_type: 'proposal', closing_at: 1.day.from_now, opened_at: Time.now, poll_template_id: poll_template.id)
     sub_poll = Poll.create!(title: "export_sub_poll#{SecureRandom.hex(4)}", group: subgroup, author: admin, poll_type: 'proposal', closing_at: 1.day.from_now, opened_at: Time.now)
@@ -47,9 +47,9 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     PollService.close(poll: sub_poll, actor: admin)
 
     discussion_event = Event.create!(eventable: discussion, user: admin, kind: 'discussion_created')
-    comment_event = Event.create!(discussion: discussion, eventable: comment, user: admin, kind: 'new_comment')
+    comment_event = Event.create!(topic: discussion.topic, eventable: comment, user: admin, kind: 'new_comment')
 
-    DiscussionReader.create!(discussion: discussion, user: admin)
+    TopicReader.create!(topic: discussion.topic, user: admin)
 
     notification = discussion_event.notifications.create!(user: member, actor: admin)
 
@@ -81,18 +81,26 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     another_user_id = data[:another_user].id
 
     # Clean up in reverse dependency order
-    StanceReceipt.where(poll: Poll.where(group_id: group_ids)).delete_all
+    # Polls and discussions are now found via topics.group_id
+    group_poll_ids = Poll.joins(:topic).where(topics: { group_id: group_ids }).pluck(:id)
+    group_discussion_ids = Discussion.joins(:topic).where(topics: { group_id: group_ids }).pluck(:id)
+
+    group_topic_ids = Topic.where(group_id: group_ids).pluck(:id)
+    comment_ids = Event.where(topic_id: group_topic_ids, eventable_type: 'Comment').pluck(:eventable_id)
+
+    StanceReceipt.where(poll_id: group_poll_ids).delete_all
     Reaction.where(user_id: [admin_id, member_id]).delete_all
     Notification.where(user_id: [admin_id, member_id]).delete_all
-    Event.where(discussion: Discussion.where(group_id: group_ids)).delete_all
-    Event.where(eventable_type: 'Poll', eventable_id: Poll.where(group_id: group_ids).pluck(:id)).delete_all
-    DiscussionReader.where(discussion: Discussion.where(group_id: group_ids)).delete_all
-    StanceChoice.where(stance: Stance.where(poll: Poll.where(group_id: group_ids))).delete_all
-    Stance.where(poll: Poll.where(group_id: group_ids)).delete_all
-    PollOption.where(poll: Poll.where(group_id: group_ids)).delete_all
-    Poll.where(group_id: group_ids).delete_all
-    Comment.where(discussion: Discussion.where(group_id: group_ids)).delete_all
-    Discussion.where(group_id: group_ids).delete_all
+    Event.where(topic_id: group_topic_ids).delete_all
+    TopicReader.where(topic_id: group_topic_ids).delete_all
+    StanceChoice.where(stance: Stance.where(poll_id: group_poll_ids)).delete_all
+    Stance.where(poll_id: group_poll_ids).delete_all
+    PollOption.where(poll_id: group_poll_ids).delete_all
+    Outcome.where(poll_id: group_poll_ids).delete_all
+    Poll.where(id: group_poll_ids).delete_all
+    Comment.where(id: comment_ids).delete_all
+    Topic.where(id: group_topic_ids).delete_all
+    Discussion.where(id: group_discussion_ids).delete_all
     DiscussionTemplate.where(group_id: group_ids).delete_all
     PollTemplate.where(group_id: group_ids).delete_all
     Tag.where(group_id: group_ids).delete_all
@@ -120,9 +128,9 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     assert Membership.find_by(user: imported_member, group: imported_group, admin: false)
     assert Membership.find_by(user: imported_member, group: imported_subgroup, admin: false)
 
-    # Discussions
-    imported_discussion = Discussion.find_by!(title: data[:discussion].title, group: imported_group, author: imported_admin)
-    Discussion.find_by!(title: data[:sub_discussion].title, group: imported_subgroup, author: imported_admin)
+    # Discussions (group_id is on topics, not discussions)
+    imported_discussion = imported_group.discussions.find_by!(title: data[:discussion].title, author: imported_admin)
+    imported_subgroup.discussions.find_by!(title: data[:sub_discussion].title, author: imported_admin)
 
     assert_equal 1, imported_discussion.tags.count
     assert_equal data[:tag].name, imported_discussion.tags.first
@@ -130,11 +138,11 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     Tag.find_by!(name: data[:tag].name, group: imported_group, color: '#abcdef')
 
     # Comments
-    Comment.find_by!(discussion: imported_discussion, user: imported_admin, body: 'export_comment')
+    imported_comment = imported_discussion.comments.find_by!(user: imported_admin, body: 'export_comment')
 
-    # Polls and stances
-    imported_poll = Poll.find_by!(title: data[:poll].title, group: imported_group, author: imported_admin)
-    imported_sub_poll = Poll.find_by!(title: data[:sub_poll].title, group: imported_subgroup, author: imported_admin)
+    # Polls and stances (group_id is on topics, not polls)
+    imported_poll = imported_group.polls.find_by!(title: data[:poll].title, author: imported_admin)
+    imported_sub_poll = imported_subgroup.polls.find_by!(title: data[:sub_poll].title, author: imported_admin)
 
     imported_poll.update_counts!
     imported_sub_poll.update_counts!

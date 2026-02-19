@@ -12,6 +12,7 @@ class DiscussionSerializer < ApplicationSerializer
 
   attributes :id,
              :key,
+             :topic_id,
              :group_id,
              :title,
              :tags,
@@ -51,6 +52,7 @@ class DiscussionSerializer < ApplicationSerializer
                          :guest,
                          :admin
 
+  has_one :topic, serializer: TopicSerializer, root: :topics
   has_one :author, serializer: AuthorSerializer, root: :users
   has_one :group, serializer: GroupSerializer, root: :groups
   has_many :active_polls, serializer: PollSerializer, root: :polls
@@ -60,8 +62,28 @@ class DiscussionSerializer < ApplicationSerializer
   has_one :translation, serializer: TranslationSerializer, root: :translations
   hide_when_discarded [:description, :title]
 
+  def topic_id
+    object.topic&.id
+  end
+
+  def closed_at
+    object.topic&.closed_at
+  end
+
+  def closer_id
+    object.topic&.closer_id
+  end
+
+  def pinned_at
+    object.topic&.pinned_at
+  end
+
+  def closer
+    object.topic&.closer
+  end
+
   def include_closer?
-    object.closer_id.present?
+    closer_id.present?
   end
 
   def include_mentioned_usernames?
@@ -69,24 +91,26 @@ class DiscussionSerializer < ApplicationSerializer
   end
 
   def active_polls
-    cache_fetch(:polls_by_discussion_id, object.id) { [] }
+    cache_fetch(:polls_by_topic_id, object.topic_id) { [] }
   end
 
   def reader
     return nil unless scope[:current_user_id]
+    topic = object.topic
+    return nil unless topic
 
-    result = cache_fetch(:discussion_readers_by_discussion_id, object.id) do
+    result = cache_fetch(:topic_readers_by_topic_id, topic.id) do
       m = cache_fetch(:memberships_by_group_id, object.group_id)
-      DiscussionReader.find_or_initialize_by(user_id: scope[:current_user_id], discussion_id: object.id) do |dr|
-        dr.volume = (m && m.volume) || 'normal'
+      TopicReader.find_or_initialize_by(user_id: scope[:current_user_id], topic_id: topic.id) do |tr|
+        tr.volume = (m && m.volume) || 'normal'
       end
     end
 
     return result if result.present?
 
-    # record def does not exist, becasue key exists in cache and it's empty
+    # record does not exist, because key exists in cache and it's empty
     m = cache_fetch(:memberships_by_group_id, object.group_id)
-    DiscussionReader.new(user_id: scope[:current_user_id], discussion_id: object.id, volume: (m && m.volume) || 'normal')
+    TopicReader.new(user_id: scope[:current_user_id], topic_id: topic.id, volume: (m && m.volume) || 'normal')
   end
 
   def created_event

@@ -11,7 +11,7 @@ class Events::PollReminder < Event
     recipient_message: nil,
     recipient_audience: nil)
     super(poll,
-          discussion_id: nil,
+          topic: nil,
           user: actor,
           recipient_user_ids: recipient_user_ids,
           recipient_chatbot_ids: recipient_chatbot_ids,

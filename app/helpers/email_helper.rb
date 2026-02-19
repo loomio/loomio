@@ -17,7 +17,7 @@ module EmailHelper
       end
 
       if model.is_a?(Discussion) || model.is_a?(Comment)
-        if reader = DiscussionReader.redeemable.find_by(user: recipient, discussion: model.discussion)
+        if reader = TopicReader.redeemable.find_by(user: recipient, topic_id: model.discussion&.topic&.id)
           args.merge!(discussion_reader_token: reader.token)
         end
       end

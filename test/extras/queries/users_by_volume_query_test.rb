@@ -34,10 +34,10 @@ class Queries::UsersByVolumeQueryTest < ActiveSupport::TestCase
     @group.add_member!(@user_reader_quiet).set_volume!(:mute)
     @group.add_member!(@user_reader_mute).set_volume!(:mute)
 
-    DiscussionReader.for(discussion: @discussion, user: @user_reader_loud).set_volume!(:loud)
-    DiscussionReader.for(discussion: @discussion, user: @user_reader_normal).set_volume!(:normal)
-    DiscussionReader.for(discussion: @discussion, user: @user_reader_quiet).set_volume!(:quiet)
-    DiscussionReader.for(discussion: @discussion, user: @user_reader_mute).set_volume!(:mute)
+    TopicReader.for(user: @user_reader_loud, topic: @discussion.topic).set_volume!(:loud)
+    TopicReader.for(user: @user_reader_normal, topic: @discussion.topic).set_volume!(:normal)
+    TopicReader.for(user: @user_reader_quiet, topic: @discussion.topic).set_volume!(:quiet)
+    TopicReader.for(user: @user_reader_mute, topic: @discussion.topic).set_volume!(:mute)
 
     ActionMailer::Base.deliveries.clear
   end

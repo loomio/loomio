@@ -153,6 +153,7 @@ class PollTest < ActiveSupport::TestCase
     hex = SecureRandom.hex(4)
     guest = User.create!(name: "Guest", email: "guest_#{hex}@example.com", username: "guest#{hex}")
     assert_difference -> { poll.members.count }, 1 do
+      poll.stances.create!(participant_id: guest.id, inviter: @user)
       poll.add_guest!(guest, @user)
     end
   end

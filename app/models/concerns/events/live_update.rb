@@ -10,8 +10,8 @@ module Events::LiveUpdate
     if eventable.group_id
       MessageChannelService.publish_models([self], group_id: eventable.group.id)
     end
-    if eventable.respond_to?(:guests)
-      eventable.guests.find_each do |user|
+    if eventable.respond_to?(:topic) && eventable.topic
+      eventable.topic.guests.find_each do |user|
         MessageChannelService.publish_models([self], user_id: user.id)
       end
     end

@@ -6,14 +6,14 @@ class Events::NewCommentTest < ActiveSupport::TestCase
     @group = Group.create!(name: "NC Group #{SecureRandom.hex(4)}", group_privacy: 'secret')
     @group.add_admin!(@user)
     @discussion = create_discussion(group: @group, author: @user)
-    @comment = Comment.new(discussion: @discussion, body: "First", author: @user)
+    @comment = Comment.new(parent: @discussion, body: "First", author: @user)
     CommentService.create(comment: @comment, actor: @user)
-    @reply = Comment.new(discussion: @discussion, body: "Reply", parent: @comment, author: @user)
+    @reply = Comment.new(body: "Reply", parent: @comment, author: @user)
     CommentService.create(comment: @reply, actor: @user)
   end
 
   test "creates an event" do
-    comment = Comment.new(discussion: @discussion, body: "Another", author: @user)
+    comment = Comment.new(parent: @discussion, body: "Another", author: @user)
     assert_difference -> { Event.where(kind: 'new_comment').count }, 1 do
       Events::NewComment.publish!(comment)
     end
@@ -26,7 +26,7 @@ class Events::NewCommentTest < ActiveSupport::TestCase
   end
 
   test "returns an event" do
-    comment = Comment.new(discussion: @discussion, body: "Yet another", author: @user)
+    comment = Comment.new(parent: @discussion, body: "Yet another", author: @user)
     result = Events::NewComment.publish!(comment)
     assert_kind_of Events::NewComment, result
   end

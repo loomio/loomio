@@ -47,10 +47,10 @@ class PagesPhlexTest < ActiveSupport::TestCase
     comment = Comment.create!(
       body: "Test comment in pages",
       body_format: "md",
-      discussion: @discussion,
+      parent: @discussion,
       author: @user
     )
-    comment.events.create!(kind: :new_comment, user: @user, discussion: @discussion, created_at: comment.created_at)
+    comment.events.create!(kind: :new_comment, user: @user, topic: @discussion.topic, created_at: comment.created_at)
 
     pagination = { limit: 10, offset: 0 }
     output = render_phlex(Views::Discussions::Show.new(
@@ -98,7 +98,7 @@ class PagesPhlexTest < ActiveSupport::TestCase
     stance = poll.stances.build(participant: @user)
     stance.stance_choices.build(poll_option: agree_option, score: 1)
     stance.save!
-    stance.events.create!(kind: :stance_created, user: @user, discussion: @discussion, created_at: stance.created_at)
+    stance.events.create!(kind: :stance_created, user: @user, topic: @discussion.topic, created_at: stance.created_at)
 
     pagination = { limit: 10, offset: 0 }
     output = render_phlex(Views::Discussions::Show.new(
@@ -115,7 +115,7 @@ class PagesPhlexTest < ActiveSupport::TestCase
     comment = Comment.create!(
       body: "Standalone comment test",
       body_format: "md",
-      discussion: @discussion,
+      parent: @discussion,
       author: @user
     )
     comment.create_missing_created_event!
@@ -210,7 +210,7 @@ class PagesPhlexTest < ActiveSupport::TestCase
     comment = Comment.create!(
       body: "Will be discarded",
       body_format: "md",
-      discussion: @discussion,
+      parent: @discussion,
       author: @user
     )
     comment.create_missing_created_event!

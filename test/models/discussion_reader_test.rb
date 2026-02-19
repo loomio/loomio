@@ -9,7 +9,7 @@ class DiscussionReaderTest < ActiveSupport::TestCase
     @discussion = discussions(:test_discussion)
     @membership = @user.memberships.find_by(group: @group)
     @membership.update!(volume: :normal)
-    @reader = DiscussionReader.for(user: @user, discussion: @discussion)
+    @reader = TopicReader.for(user: @user, topic: @discussion.topic)
   end
 
   # Computed volume
@@ -26,10 +26,10 @@ class DiscussionReaderTest < ActiveSupport::TestCase
   test "updates counts correctly from existing last_read_at" do
     @reader.update!(last_read_at: 6.days.ago)
 
-    comment1 = Comment.new(discussion: @discussion, body: "Older", author: @user)
+    comment1 = Comment.new(parent: @discussion, body: "Older", author: @user)
     older_event = CommentService.create(comment: comment1, actor: @user)
 
-    comment2 = Comment.new(discussion: @discussion, body: "Newer", author: @user)
+    comment2 = Comment.new(parent: @discussion, body: "Newer", author: @user)
     newer_event = CommentService.create(comment: comment2, actor: @user)
 
     @reader.viewed!([newer_event, older_event].map(&:sequence_id))
@@ -40,10 +40,10 @@ class DiscussionReaderTest < ActiveSupport::TestCase
   test "updates existing counts correctly" do
     @reader.update!(last_read_at: 6.days.ago)
 
-    comment1 = Comment.new(discussion: @discussion, body: "Older", author: @user)
+    comment1 = Comment.new(parent: @discussion, body: "Older", author: @user)
     older_event = CommentService.create(comment: comment1, actor: @user)
 
-    comment2 = Comment.new(discussion: @discussion, body: "Newer", author: @user)
+    comment2 = Comment.new(parent: @discussion, body: "Newer", author: @user)
     newer_event = CommentService.create(comment: comment2, actor: @user)
 
     @reader.viewed!(newer_event.sequence_id)
@@ -55,7 +55,7 @@ class DiscussionReaderTest < ActiveSupport::TestCase
   test "does not duplicate views" do
     @reader.update!(last_read_at: 6.days.ago)
 
-    comment = Comment.new(discussion: @discussion, body: "Older", author: @user)
+    comment = Comment.new(parent: @discussion, body: "Older", author: @user)
     event = CommentService.create(comment: comment, actor: @user)
 
     @reader.viewed!(event.sequence_id)

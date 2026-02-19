@@ -80,7 +80,7 @@ class DiscussionQueryTest < ActiveSupport::TestCase
   end
 
   test "does not include dismissed discussions" do
-    DiscussionReader.for(discussion: @discussion, user: @user).dismiss!
+    TopicReader.for(user: @user, topic: @discussion.topic).dismiss!
     results = DiscussionQuery.visible_to(user: @user, only_unread: true)
     refute_includes results, @discussion
   end
@@ -102,7 +102,7 @@ class DiscussionQueryTest < ActiveSupport::TestCase
     child_group.add_admin!(@author)
     disc = create_discussion(group: child_group, author: @author, private: true)
     disc.add_guest!(disc_user, disc.author)
-    disc.update(group_id: nil)
+    disc.topic.update!(group_id: nil)
 
     assert DiscussionQuery.visible_to(user: disc_user).exists?(disc.id)
     refute DiscussionQuery.visible_to(user: group_user).exists?(disc.id)

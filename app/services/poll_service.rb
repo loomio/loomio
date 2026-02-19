@@ -36,7 +36,7 @@ class PollService
       model: poll,
       actor: actor
     )
-    poll.assign_attributes_and_files(params.except(:poll_type, :discussion_id, :poll_template_id, :poll_template_key))
+    poll.assign_attributes_and_files(params.except(:poll_type, :poll_template_id, :poll_template_key))
 
     # check again, because the group id could be updated to a untrusted group
     actor.ability.authorize! :update, poll
@@ -156,31 +156,10 @@ class PollService
       emails: emails
     ).where.not(id: existing_voter_ids)
 
-    volumes = {}
-    group_member_ids = (poll.group || NullGroup.new).member_ids
-
-    if poll.discussion_id
-      DiscussionReader.active.where(
-        discussion_id: poll.discussion_id,
-        user_id: users.pluck(:id),
-      ).find_each do |dr|
-        volumes[dr.user_id] = dr.volume
-      end
-    end
-
-    if poll.group_id
-      Membership.active.where(
-        group_id: poll.group_id,
-        user_id: users.pluck(:id),
-      ).find_each do |m|
-        volumes[m.user_id] = m.volume unless volumes.has_key? m.user_id
-      end
-    end
-
     reinvited_user_ids = Stance.revoked.where(poll_id: poll.id).pluck(:participant_id) & users.pluck(:id)
 
     Stance.where(poll_id: poll.id, participant_id: reinvited_user_ids).each do |stance|
-      stance.update(revoked_at: nil, revoker_id: nil, inviter_id: actor.id, admin: false)
+      stance.update(revoked_at: nil, revoker_id: nil, inviter_id: actor.id)
     end
 
     new_stances = users.where.not(id: reinvited_user_ids).map do |user|
@@ -188,8 +167,6 @@ class PollService
         participant: user,
         poll: poll,
         inviter: actor,
-        guest: !group_member_ids.include?(user.id),
-        volume: volumes[user.id] || user.default_membership_volume,
         latest: true,
         reason_format: user.default_format,
         created_at: Time.zone.now
@@ -209,9 +186,9 @@ class PollService
 
     Poll.transaction do
       poll.update(discarded_at: Time.now, discarded_by: actor.id)
-      Event.where(kind: ["stance_created", "stance_updated"], eventable_id: poll.stances.pluck(:id)).update_all(discussion_id: nil)
+      Event.where(kind: ["stance_created", "stance_updated"], eventable_id: poll.stances.pluck(:id)).update_all(topic_id: nil)
       poll.created_event.update!(user_id: nil, child_count: 0, pinned: false)
-      poll.discussion.update_sequence_info! if poll.discussion
+      poll.discussion&.update_sequence_info!
     end
 
     MessageChannelService.publish_models([poll.created_event], scope: {current_user: actor, current_user_id: actor.id}, group_id: poll.group_id)
@@ -260,7 +237,7 @@ class PollService
   def self.group_members_added(group_id)
     return if group_id.nil?
 
-    Poll.active.where(group_id: group_id, specified_voters_only: false).each do |poll|
+    Poll.active.joins(:topic).where(topics: { group_id: group_id }, specified_voters_only: false).each do |poll|
       create_anyone_can_vote_stances(poll)
     end
   end
@@ -272,7 +249,7 @@ class PollService
     member_ids = Group.find(poll.group_id).accepted_members.humans.pluck(:id) if poll.group_id && poll.group
 
     guest_ids = []
-    guest_ids = poll.discussion.guest_ids if poll.discussion
+    guest_ids = poll.guest_ids if poll.discussion
 
     revoked_user_ids = poll.stances.revoked.pluck(:participant_id).uniq
     create_stances(
@@ -283,7 +260,7 @@ class PollService
   end
 
   def self.group_members_removed(group_id, removed_user_ids, actor_id, revoked_at)
-    Poll.active.where(group_id: group_id).each do |poll|
+    Poll.active.joins(:topic).where(topics: { group_id: group_id }).each do |poll|
       Stance.where(
         poll_id: poll.id,
         revoked_at: nil,
@@ -307,10 +284,10 @@ class PollService
 
     poll.stances.update_all(participant_id: nil) if poll.anonymous
 
-    if poll.discussion_id && poll.hide_results == 'until_closed'
+    if poll.topic && poll.hide_results == 'until_closed'
       stance_ids = poll.stances.latest.reject(&:body_is_blank?).map(&:id)
-      Event.where(kind: 'stance_created', eventable_id: stance_ids, discussion_id: nil).update_all(discussion_id: poll.discussion_id)
-      EventService.repair_discussion(poll.discussion_id)
+      Event.where(kind: 'stance_created', eventable_id: stance_ids, topic_id: nil).update_all(topic_id: poll.topic.id)
+      EventService.repair_thread(poll.topic)
     end
 
     poll.update_attribute(:closed_at, Time.now)
@@ -343,20 +320,22 @@ class PollService
     actor.ability.authorize! :update, poll
     actor.ability.authorize! :update, discussion
     ActiveRecord::Base.transaction do
-      poll.update(discussion_id: discussion.id, group_id: discussion.group.id)
+      old_topic = poll.topic if poll.topic&.topicable_type == 'Poll'
+      poll.update(topic_id: discussion.topic_id)
+      old_topic&.destroy
       event = poll.created_event
-      event.discussion_id = discussion.id
+      event.topic_id = discussion.topic.id
       event.parent_id = discussion.created_event.id
       event.pinned = true
       event.set_sequences
       event.save
-      poll.created_event.update_sequence_info!
+      discussion.update_sequence_info!
     end
 
     if (poll.closed? || poll.hide_results != 'until_closed')
       stance_ids = poll.stances.latest.reject(&:body_is_blank?).map(&:id)
-      Event.where(kind: 'stance_created', eventable_id: stance_ids).update_all(discussion_id: poll.discussion_id)
-      EventService.repair_discussion(poll.discussion_id)
+      Event.where(kind: 'stance_created', eventable_id: stance_ids).update_all(topic_id: discussion.topic.id)
+      EventService.repair_thread(discussion.topic)
     end
 
     GenericWorker.perform_async('SearchService', 'reindex_by_discussion_id', discussion.id)

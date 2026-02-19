@@ -244,6 +244,10 @@ Rails.application.routes.draw do
 
       resources :search, only: :index
 
+      resources :topics, only: [] do
+        patch :mark_as_read, on: :member
+      end
+
       resources :polls, only: [:show, :index, :create, :update] do
         member do
           get :receipts
@@ -280,8 +284,6 @@ Rails.application.routes.draw do
           get :invite
           get :users
           get :my_stances
-          post :make_admin
-          post :remove_admin
           post :revoke
         end
       end
@@ -364,7 +366,6 @@ Rails.application.routes.draw do
     get :unsubscribe
     put :set_group_volume
     put :set_discussion_volume
-    put :set_poll_volume
     get 'mark_summary_email_as_read', action: 'mark_summary_email_as_read', as: :mark_summary_email_as_read
     get 'mark_discussion_as_read/:discussion_id/:event_id/:unsubscribe_token', action: 'mark_discussion_as_read', as: :mark_discussion_as_read
     get 'mark_notification_as_read/:id/:unsubscribe_token', action: 'mark_notification_as_read', as: :mark_notification_as_read

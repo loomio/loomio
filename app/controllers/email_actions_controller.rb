@@ -2,7 +2,7 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
   def unsubscribe
     load_models_or_404
     membership = Membership.find_by(group_id: @group.id, user_id: current_user.id) if @group
-    discussion_reader = DiscussionReader.for(discussion: @discussion, user: current_user) if @discussion
+    discussion_reader = TopicReader.for(user: current_user, topic: @discussion.topic) if @discussion
     stance = Stance.latest.find_by(poll_id: @poll.id, participant_id: current_user.id) if @poll
     render Views::EmailActions::Unsubscribe.new(
       discussion_reader: discussion_reader,
@@ -21,15 +21,8 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
 
   def set_discussion_volume
     load_models_or_404
-    discussion_reader = DiscussionReader.find_by!(discussion_id: @discussion.id, user_id: current_user.id)
+    discussion_reader = TopicReader.find_by!(topic_id: @discussion.topic.id, user_id: current_user.id)
     discussion_reader.set_volume!(params[:value])
-    redirect_to_unsubscribe
-  end
-
-  def set_poll_volume
-    load_models_or_404
-    stance = Stance.latest.find_by!(poll_id: @poll.id, participant_id: current_user.id)
-    stance.set_volume!(params[:value])
     redirect_to_unsubscribe
   end
 

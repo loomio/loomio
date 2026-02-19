@@ -4,6 +4,6 @@ class Events::DiscussionReopened < Event
   def self.publish!(discussion, actor)
     super discussion,
           user: actor,
-          discussion: discussion
+          topic: discussion.topic
   end
 end

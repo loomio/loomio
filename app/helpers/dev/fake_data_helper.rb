@@ -90,7 +90,7 @@ module Dev::FakeDataHelper
       user: comment.author,
       kind: 'new_comment',
       eventable: comment,
-      discussion: comment.discussion
+      topic: comment.topic
     )
   end
 
@@ -107,7 +107,7 @@ module Dev::FakeDataHelper
       user: poll.author,
       kind: 'poll_created',
       eventable: poll,
-      discussion: poll.discussion
+      topic: poll.topic
     )
   end
 
@@ -116,7 +116,7 @@ module Dev::FakeDataHelper
       user_id: stance[:participant_id],
       kind: 'stance_created',
       eventable: stance,
-      discussion: stance.poll.discussion
+      topic: stance.poll.topic
     )
   end
 
@@ -125,7 +125,7 @@ module Dev::FakeDataHelper
       user_id: outcome.author_id,
       kind: 'outcome_created',
       eventable: outcome,
-      discussion: outcome.discussion
+      topic: outcome.poll.topic
     )
   end
 
@@ -193,6 +193,10 @@ module Dev::FakeDataHelper
       specified_voters_only: false,
       custom_fields: {}
     }.merge args.tap {|a| a.delete(:wip)}
+
+    if options[:discussion] && !options[:discussion].persisted?
+      options[:discussion].save!
+    end
 
     case options[:poll_type].to_s
     when 'dot_vote'
@@ -293,7 +297,7 @@ module Dev::FakeDataHelper
 
   def fake_comment(args = {})
     Comment.new({
-      discussion: fake_discussion,
+      parent: fake_discussion,
       body: Faker::ChuckNorris.fact,
       author: fake_user
     }.merge(args))

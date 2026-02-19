@@ -5,7 +5,7 @@ module CleanupService
      MembershipRequest,
      Discussion,
      Subscription,
-     DiscussionReader,
+     TopicReader,
      Comment,
      Poll,
      PollOption,

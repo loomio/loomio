@@ -15,12 +15,13 @@ class Ability::PollTest < ActiveSupport::TestCase
   end
 
   # Poll without group
-  test "poll without group as poll admin can vote and manage" do
+  test "poll without group as topic admin can vote and manage" do
     other = User.create!(name: "PO #{SecureRandom.hex(4)}", email: "po_#{SecureRandom.hex(4)}@test.com", email_verified: true)
     poll = Poll.create!(poll_type: 'poll', title: "PTest #{SecureRandom.hex(4)}",
                         poll_option_names: %w[Yes No], closing_at: 1.day.from_now,
                         opened_at: Time.now, author: other, specified_voters_only: true)
-    poll.stances.create!(participant_id: @actor.id, admin: true, guest: true, latest: true)
+    poll.stances.create!(participant_id: @actor.id, inviter: other, latest: true)
+    poll.topic.topic_readers.create!(user: @actor, admin: true, guest: true)
     assert can?(:vote_in, poll)
     assert can?(:add_voters, poll)
     assert can?(:announce, poll)
@@ -32,7 +33,7 @@ class Ability::PollTest < ActiveSupport::TestCase
     poll = Poll.create!(poll_type: 'poll', title: "PTest #{SecureRandom.hex(4)}",
                         poll_option_names: %w[Yes No], closing_at: 1.day.from_now,
                         opened_at: Time.now, author: other, specified_voters_only: true)
-    poll.stances.create!(participant_id: @actor.id, admin: false, guest: true, latest: true)
+    poll.stances.create!(participant_id: @actor.id, inviter: other, latest: true)
     assert can?(:vote_in, poll)
     assert cannot?(:add_voters, poll)
     assert cannot?(:announce, poll)
@@ -103,33 +104,37 @@ class Ability::PollTest < ActiveSupport::TestCase
     assert can?(:vote_in, poll)
   end
 
-  # Poll in group - as group member, poll admin
-  # Use specified_voters_only: true to avoid auto-stance creation, then manually set stance
-  test "group member poll admin with members_can_add_guests true" do
+  # Poll in group - as group member, topic admin
+  # Use specified_voters_only: true to avoid auto-stance creation, then manually set topic_reader
+  test "group member topic admin with members_can_add_guests true" do
     group, discussion, poll = create_group_discussion_poll(members_can_add_guests: true, specified_voters_only: true)
     group.add_member!(@actor)
-    poll.stances.create!(participant_id: @actor.id, admin: true, latest: true)
+    poll.stances.create!(participant_id: @actor.id, latest: true)
+    poll.topic.topic_readers.find_or_create_by!(user: @actor).update!(admin: true)
     assert can?(:add_guests, poll)
   end
 
-  test "group member poll admin with members_can_add_guests false" do
+  test "group member topic admin with members_can_add_guests false" do
     group, discussion, poll = create_group_discussion_poll(members_can_add_guests: false, specified_voters_only: true)
     group.add_member!(@actor)
-    poll.stances.create!(participant_id: @actor.id, admin: true, latest: true)
+    poll.stances.create!(participant_id: @actor.id, latest: true)
+    poll.topic.topic_readers.find_or_create_by!(user: @actor).update!(admin: true)
     assert cannot?(:add_guests, poll)
   end
 
-  test "group member poll admin with members_can_announce true" do
+  test "group member topic admin with members_can_announce true" do
     group, discussion, poll = create_group_discussion_poll(members_can_announce: true, specified_voters_only: true)
     group.add_member!(@actor)
-    poll.stances.create!(participant_id: @actor.id, admin: true, latest: true)
+    poll.stances.create!(participant_id: @actor.id, latest: true)
+    poll.topic.topic_readers.find_or_create_by!(user: @actor).update!(admin: true)
     assert can?(:announce, poll)
   end
 
-  test "group member poll admin with members_can_announce false" do
+  test "group member topic admin with members_can_announce false" do
     group, discussion, poll = create_group_discussion_poll(members_can_announce: false, specified_voters_only: true)
     group.add_member!(@actor)
-    poll.stances.create!(participant_id: @actor.id, admin: true, latest: true)
+    poll.stances.create!(participant_id: @actor.id, latest: true)
+    poll.topic.topic_readers.find_or_create_by!(user: @actor).update!(admin: true)
     assert cannot?(:announce, poll)
   end
 

@@ -16,11 +16,11 @@ class Api::V1::DiscussionsController < Api::V1::RestfulController
   def show
     load_and_authorize(:discussion)
 
-    if resource.closed_at && resource.closer_id.nil?
-      if closed_event = Event.where(discussion_id: resource.id, kind: 'discussion_closed').order(:id).last
-        resource.update_attribute(:closer_id, closed_event.user_id)
+    if resource.topic&.closed_at && resource.topic.closer_id.nil?
+      if closed_event = Event.where(topic_id: resource.topic.id, kind: 'discussion_closed').order(:id).last
+        resource.topic.update_column(:closer_id, closed_event.user_id)
       else
-        resource.update_attribute(:closer_id, resource.author_id)
+        resource.topic.update_column(:closer_id, resource.author_id)
       end
     end
 
@@ -84,7 +84,7 @@ class Api::V1::DiscussionsController < Api::V1::RestfulController
     if @discussion.polls.kept.where(anonymous:true).any?
       render root: false, json: {message: I18n.t("discussion_last_seen_by.disabled_anonymous_polls")}, status: 403
     else
-      res = DiscussionReader.joins(:user).where(discussion: @discussion).where.not(last_read_at: nil).map do |reader|
+      res = TopicReader.joins(:user).where(topic: @discussion.topic).where.not(last_read_at: nil).map do |reader|
         {reader_id: reader.id,
          last_read_at: reader.last_read_at,
          user_name: reader.user.name_or_username }

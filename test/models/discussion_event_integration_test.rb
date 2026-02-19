@@ -9,8 +9,8 @@ class DiscussionEventIntegrationTest < ActiveSupport::TestCase
     @group.add_member!(@viewer)
 
     @discussion = create_discussion(group: @group, author: @commentor)
-    @first_comment = Comment.new(discussion: @discussion, body: "First", author: @commentor)
-    @second_comment = Comment.new(discussion: @discussion, body: "Second", author: @commentor)
+    @first_comment = Comment.new(parent: @discussion, body: "First", author: @commentor)
+    @second_comment = Comment.new(parent: @discussion, body: "Second", author: @commentor)
   end
 
   test "user has seen nothing, first comment deleted" do
@@ -18,14 +18,14 @@ class DiscussionEventIntegrationTest < ActiveSupport::TestCase
     CommentService.create(comment: @second_comment, actor: @commentor)
     CommentService.destroy(comment: @first_comment, actor: @commentor)
     @discussion.reload
-    dr = DiscussionReader.for(user: @viewer, discussion: @discussion)
+    dr = TopicReader.for(user: @viewer, topic: @discussion.topic)
     dr.save
     dr.reload
     assert_equal 1, @discussion.items_count - dr.read_items_count
   end
 
   test "user sees discussion before comments, first comment deleted" do
-    dr = DiscussionReader.for(user: @viewer, discussion: @discussion)
+    dr = TopicReader.for(user: @viewer, topic: @discussion.topic)
     dr.save
     dr.viewed!
 

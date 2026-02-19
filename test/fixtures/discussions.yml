@@ -6,13 +6,11 @@ test_discussion:
   description_format: html
   private: true
   author: discussion_author
-  group: test_group
+  topic: test_discussion_topic
   tags: []
   created_at: <%= 10.days.ago %>
   updated_at: <%= 1.day.ago %>
-  last_activity_at: <%= 10.days.ago %>
-  items_count: 0
-  closed_at: null
+
 
 public_discussion:
   key: public_disc_key
@@ -21,11 +19,9 @@ public_discussion:
   description_format: html
   private: false
   author: discussion_author
-  group: public_group
+  topic: public_discussion_topic
   created_at: <%= 10.days.ago %>
   updated_at: <%= 1.day.ago %>
-  last_activity_at: <%= 10.days.ago %>
-  items_count: 0
 
 private_discussion:
   key: private_disc_key
@@ -34,11 +30,9 @@ private_discussion:
   description_format: html
   private: true
   author: discussion_author
-  group: test_group
+  topic: private_discussion_topic
   created_at: <%= 10.days.ago %>
   updated_at: <%= 1.day.ago %>
-  last_activity_at: <%= 10.days.ago %>
-  items_count: 0
 
 discarded_discussion:
   key: discarded_disc_key
@@ -47,12 +41,10 @@ discarded_discussion:
   description_format: html
   private: true
   author: discussion_author
-  group: test_group
+  topic: discarded_discussion_topic
   discarded_at: <%= 1.day.ago %>
   created_at: <%= 10.days.ago %>
   updated_at: <%= 1.day.ago %>
-  last_activity_at: <%= 10.days.ago %>
-  items_count: 0
 
 old_discussion:
   key: old_disc_key
@@ -61,11 +53,9 @@ old_discussion:
   description_format: html
   private: true
   author: discussion_author
-  group: test_group
+  topic: old_discussion_topic
   created_at: <%= 4.months.ago %>
   updated_at: <%= 4.months.ago %>
-  last_activity_at: <%= 4.months.ago %>
-  items_count: 0
 
 subgroup_discussion:
   key: subgroup_disc_key
@@ -74,8 +64,6 @@ subgroup_discussion:
   description_format: html
   private: true
   author: discussion_author
-  group: subgroup
+  topic: subgroup_discussion_topic
   created_at: <%= 5.days.ago %>
   updated_at: <%= 1.day.ago %>
-  last_activity_at: <%= 5.days.ago %>
-  items_count: 0

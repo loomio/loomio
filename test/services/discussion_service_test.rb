@@ -96,7 +96,7 @@ class DiscussionServiceTest < ActiveSupport::TestCase
       author: @user
     )
     DiscussionService.create(discussion: discussion, actor: @user)
-    assert_equal 'loud', DiscussionReader.for(user: @user, discussion: discussion).volume
+    assert_equal 'loud', TopicReader.for(user: @user, topic: discussion.topic).volume
   end
 
   test "does not set volume to loud when email_on_participation is false" do
@@ -108,7 +108,7 @@ class DiscussionServiceTest < ActiveSupport::TestCase
       author: @user
     )
     DiscussionService.create(discussion: discussion, actor: @user)
-    assert_not_equal 'loud', DiscussionReader.for(user: @user, discussion: discussion).volume
+    assert_not_equal 'loud', TopicReader.for(user: @user, topic: discussion.topic).volume
   end
 
   test "creates discussion reader for author" do
@@ -121,7 +121,7 @@ class DiscussionServiceTest < ActiveSupport::TestCase
 
     DiscussionService.create(discussion: discussion, actor: @user)
 
-    reader = DiscussionReader.for(user: @user, discussion: discussion)
+    reader = TopicReader.for(user: @user, topic: discussion.topic)
     assert_not_nil reader
     assert_includes ['normal', 'loud'], reader.volume
   end
@@ -213,27 +213,15 @@ class DiscussionServiceTest < ActiveSupport::TestCase
 
   # -- Update reader --
 
-  test "can save reader volume and propagates to stances" do
+  test "can save reader volume" do
     discussion = create_discussion(group: @group, author: @user)
-    poll = Poll.new(
-      title: "Reader Poll",
-      poll_type: "proposal",
-      discussion: discussion,
-      author: @user,
-      poll_option_names: ["Agree", "Disagree"],
-      closing_at: 3.days.from_now
-    )
-    PollService.create(poll: poll, actor: @user)
-    stance = poll.stances.find_by(participant_id: @user.id)
-    stance.update!(volume: 2) if stance
 
     DiscussionService.update_reader(
       discussion: discussion,
       params: { volume: :mute },
       actor: @user
     )
-    assert_equal "mute", DiscussionReader.for(user: @user, discussion: discussion).volume
-    assert_equal "mute", stance.reload.volume if stance
+    assert_equal "mute", TopicReader.for(user: @user, topic: discussion.topic).volume
   end
 
   test "update_reader denies access for non-members" do
@@ -326,6 +314,14 @@ class DiscussionServiceTest < ActiveSupport::TestCase
   end
 
   test "move updates privacy for private_only groups" do
+    source_group = Group.create!(
+      name: 'Public Source',
+      handle: "publicsource#{SecureRandom.hex(4)}",
+      is_visible_to_public: true,
+      discussion_privacy_options: 'public_or_private'
+    )
+    source_group.add_admin!(@user)
+
     another_group = Group.create!(
       name: 'Private Only',
       handle: "privateonly#{SecureRandom.hex(4)}"
@@ -333,7 +329,7 @@ class DiscussionServiceTest < ActiveSupport::TestCase
     another_group.add_member!(@user)
     another_group.update_column(:discussion_privacy_options, 'private_only')
 
-    discussion = create_discussion(group: @group, author: @user, private: false)
+    discussion = create_discussion(group: source_group, author: @user, private: false)
     DiscussionService.move(discussion: discussion, params: { group_id: another_group.id }, actor: @user)
     assert_equal true, discussion.reload.private
   end
@@ -391,10 +387,10 @@ class DiscussionServiceTest < ActiveSupport::TestCase
 
   test "reopens a closed discussion" do
     discussion = create_discussion(group: @group, author: @user)
-    discussion.update!(closed_at: 1.day.ago)
+    discussion.topic.update!(closed_at: 1.day.ago)
 
     DiscussionService.reopen(discussion: discussion, actor: @user)
 
-    assert_nil discussion.reload.closed_at
+    assert_nil discussion.topic.reload.closed_at
   end
 end

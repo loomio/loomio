@@ -19,13 +19,13 @@ class UserQuery
 
       # people who have been invited by actor
       rels.push(
-        User.joins("LEFT OUTER JOIN discussion_readers dr on dr.user_id = users.id").
+        User.joins("LEFT OUTER JOIN topic_readers dr on dr.user_id = users.id").
         where("dr.inviter_id = ? AND revoked_at IS NULL AND guest = TRUE", actor.id)
       )
 
       rels.push(
         User.joins("LEFT OUTER JOIN stances on stances.participant_id = users.id").
-        where("stances.inviter_id = ? AND revoked_at IS NULL AND guest = TRUE", actor.id)
+        where("stances.inviter_id = ? AND stances.revoked_at IS NULL", actor.id)
       )
     end
 
@@ -35,22 +35,31 @@ class UserQuery
                        where('m.group_id IN (:group_ids) AND m.revoked_at IS NULL', {group_ids: model.group.id})
       end
 
-      if model.discussion_id
-        rels.push(
-          User.joins('LEFT OUTER JOIN discussion_readers dr ON dr.user_id = users.id').
-          where('dr.discussion_id': model.discussion_id).where('dr.revoked_at IS NULL and dr.guest = TRUE')
-        )
+      discussion = if model.is_a?(Discussion)
+        model
+      elsif model.respond_to?(:discussion_id) && model.discussion_id
+        model.discussion
+      end
+
+      if discussion
+        topic_id = discussion.topic&.id
+        if topic_id
+          rels.push(
+            User.joins('LEFT OUTER JOIN topic_readers dr ON dr.user_id = users.id').
+            where('dr.topic_id': topic_id).where('dr.revoked_at IS NULL and dr.guest = TRUE')
+          )
+        end
 
         rels.push(
           User.joins('LEFT OUTER JOIN stances ON stances.participant_id = users.id').
-          where('stances.poll_id': model.discussion.poll_ids).where("stances.revoked_at IS NULL and stances.guest = TRUE")
+          where('stances.poll_id': Poll.where(topic_id: discussion.topic_id).select(:id)).where("stances.revoked_at IS NULL AND stances.inviter_id IS NOT NULL")
         )
       end
 
       if model.poll_id
         rels.push(
           User.joins('LEFT OUTER JOIN stances ON stances.participant_id = users.id').
-          where('stances.poll_id': model.poll_id).where("stances.revoked_at IS NULL AND stances.guest = TRUE")
+          where('stances.poll_id': model.poll_id).where("stances.revoked_at IS NULL AND stances.inviter_id IS NOT NULL")
         )
       end
     end

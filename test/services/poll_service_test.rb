@@ -57,37 +57,14 @@ class PollServiceTest < ActiveSupport::TestCase
     assert_equal count, Stance.where(participant_id: member.id, poll: poll).where(revoked_at: nil).count
   end
 
-  test "uses normal volume by default for stances" do
+  test "creates stances for specified voters" do
     poll = create_specified_voters_poll
     member = create_unique_user("voldefault")
     @group.add_admin!(@user)
     @group.add_member!(member)
 
     PollService.create_stances(poll: poll, actor: @user, user_ids: [member.id])
-    assert_equal 'normal', Stance.where(participant_id: member.id, poll: poll).order(created_at: :desc).first.volume
-  end
-
-  test "uses quiet discussion reader volume for stances" do
-    poll = create_specified_voters_poll
-    member = create_unique_user("volquiet")
-    @group.add_admin!(@user)
-    @group.add_member!(member)
-    DiscussionReader.create!(user_id: member.id, discussion_id: @discussion.id, volume: 'quiet')
-
-    PollService.create_stances(poll: poll, actor: @user, user_ids: [member.id])
-    assert_equal 'quiet', Stance.where(participant_id: member.id, poll: poll).order(created_at: :desc).first.volume
-  end
-
-  test "uses quiet membership volume for stances" do
-    poll = create_specified_voters_poll
-    member = create_unique_user("volmembership")
-    @group.add_admin!(@user)
-    @group.add_member!(member)
-    DiscussionReader.where(user_id: member.id).delete_all
-    Membership.where(user_id: member.id).update_all(volume: Membership.volumes[:quiet])
-
-    PollService.create_stances(poll: poll, actor: @user, user_ids: [member.id])
-    assert_equal 'quiet', Stance.where(participant_id: member.id, poll: poll).order(created_at: :desc).first.volume
+    assert Stance.where(participant_id: member.id, poll: poll).exists?
   end
 
   # -- create --

@@ -9,11 +9,10 @@ EventBus.configure do |config|
                 'stance_created_event',
                 'outcome_created_event',
                 'poll_closed_by_user_event') do |event|
-    if event.discussion
-      reader = DiscussionReader.for_model(event.discussion, event.user.presence || event.eventable.real_participant)
+    if event.topic
+      reader = TopicReader.for_model(event.topic.topicable, event.user.presence || event.eventable.real_participant)
                                .update_reader(ranges: event.sequence_id,
                                               volume: :loud)
-      # MessageChannelService.publish_models([reader], root: :discussions, user_id: event.real_user.id)
     end
   end
 
@@ -21,10 +20,12 @@ EventBus.configure do |config|
   config.listen('discussion_mark_as_read',
                 'discussion_dismiss',
                 'discussion_mark_as_seen') do |reader|
-    collection = Discussion.where(id: reader.discussion_id)
-    MessageChannelService.publish_models([reader.discussion],
-                                         serializer: DiscussionSerializer,
-                                         root: :discussions,
-                                         user_id: reader.user_id)
+    topicable = reader.topic&.topicable
+    if topicable.is_a?(Discussion)
+      MessageChannelService.publish_models([topicable],
+                                           serializer: DiscussionSerializer,
+                                           root: :discussions,
+                                           user_id: reader.user_id)
+    end
   end
 end

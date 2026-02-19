@@ -4,13 +4,12 @@ class Stance < ApplicationRecord
   include Reactable
   include HasEvents
   include HasCreatedEvent
-  include HasVolume
   include Searchable
 
   extend HasTokens
   initialized_with_token :token
 
-  def self.pg_search_insert_statement(id: nil, author_id: nil, discussion_id: nil, poll_id: nil)
+  def self.pg_search_insert_statement(id: nil, author_id: nil, poll_id: nil)
     content_str = "regexp_replace(CONCAT_WS(' ', stances.reason, users.name), E'<[^>]+>', '', 'gi')"
     <<~SQL.squish
       INSERT INTO pg_search_documents (
@@ -28,8 +27,8 @@ class Stance < ApplicationRecord
       SELECT 'Stance' AS searchable_type,
         stances.id AS searchable_id,
         stances.poll_id AS poll_id,
-        polls.group_id as group_id,
-        polls.discussion_id AS discussion_id,
+        t.group_id as group_id,
+        CASE WHEN t.topicable_type = 'Discussion' THEN t.topicable_id ELSE NULL END AS discussion_id,
         stances.participant_id AS author_id,
         stances.cast_at AS authored_at,
         #{content_str} AS content,
@@ -39,13 +38,13 @@ class Stance < ApplicationRecord
       FROM stances
         LEFT JOIN users ON users.id = stances.participant_id
         LEFT JOIN polls ON polls.id = stances.poll_id
+        LEFT JOIN topics t ON t.id = polls.topic_id
       WHERE polls.discarded_at IS NULL
         AND stances.cast_at IS NOT null
         AND NOT (polls.anonymous = TRUE AND polls.closed_at IS NULL)
         AND NOT (polls.hide_results = 2 AND polls.closed_at IS NULL)
         #{id ? " AND stances.id = #{id.to_i} LIMIT 1" : ''}
         #{author_id ? " AND stances.participant_id = #{author_id.to_i}" : ''}
-        #{discussion_id ? " AND polls.discussion_id = #{discussion_id.to_i}" : ''}
         #{poll_id ? " AND stances.poll_id = #{poll_id.to_i}" : ''}
     SQL
   end
@@ -75,22 +74,20 @@ class Stance < ApplicationRecord
 
   scope :dangling, -> { joins('left join polls on polls.id = poll_id').where('polls.id is null') }
   scope :latest, -> { where(latest: true, revoked_at: nil) }
-  scope :guests, -> { where(guest: true) }
-  scope :admins, -> { where(admin: true) }
   scope :newest_first, -> { order("cast_at DESC NULLS LAST") }
   scope :undecided_first, -> { order("cast_at DESC NULLS FIRST") }
   scope :oldest_first, -> { order(created_at: :asc) }
   scope :priority_first, -> { joins(:poll_options).order('poll_options.priority ASC') }
   scope :priority_last, -> { joins(:poll_options).order('poll_options.priority DESC') }
   scope :with_reason, -> { where("reason IS NOT NULL AND reason != '' AND reason != '<p></p>'") }
-  scope :in_organisation, ->(group) { joins(:poll).where("polls.group_id": group.id_and_subgroup_ids) }
+  scope :in_organisation, ->(group) { joins(:poll).joins("LEFT JOIN topics t ON t.id = polls.topic_id").where("t.group_id": group.id_and_subgroup_ids) }
   scope :decided, -> { where("stances.cast_at IS NOT NULL") }
   scope :undecided, -> { where("stances.cast_at IS NULL") }
   scope :revoked, -> { where("revoked_at IS NOT NULL") }
-  scope :guests, -> { where("inviter_id is not null") }
+  scope :invited, -> { where("inviter_id is not null") }
   scope :none_of_the_above, -> { where(none_of_the_above: true) }
 
-  scope :redeemable, -> { latest.guests.undecided.where('stances.accepted_at IS NULL') }
+  scope :redeemable, -> { latest.invited.undecided.where('stances.accepted_at IS NULL') }
   scope :redeemable_by,  -> (user_id) {
     redeemable.joins(:participant).where("stances.participant_id = ? or users.email_verified = false", user_id)
   }
@@ -132,7 +129,7 @@ class Stance < ApplicationRecord
       kind: created_event_kind,
       user_id: (poll.anonymous? ? nil: author_id),
       created_at: created_at,
-      discussion_id: (add_to_discussion? ? poll.discussion_id : nil)
+      topic: (add_to_thread? ? poll.topic : nil)
     )
   end
 
@@ -168,14 +165,17 @@ class Stance < ApplicationRecord
     author&.locale || group&.locale || poll.author.locale
   end
 
-  def add_to_discussion?
-    poll.discussion_id &&
+  def add_to_thread?
+    poll.topic &&
     poll.hide_results != 'until_closed' &&
     !body_is_blank? &&
     !Event.where(eventable: self,
-                 discussion_id: poll.discussion_id,
+                 topic_id: poll.topic.id,
                  kind: ['stance_created', 'stance_updated']).exists?
   end
+
+  # Keep old name as alias for compatibility
+  alias_method :add_to_discussion?, :add_to_thread?
 
   def body
     reason

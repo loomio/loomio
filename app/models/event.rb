@@ -5,26 +5,26 @@ class Event < ApplicationRecord
 
   has_many :notifications, dependent: :destroy
   belongs_to :eventable, polymorphic: true
-  belongs_to :discussion, required: false
+  belongs_to :topic, required: false
   belongs_to :user, required: false
   belongs_to :parent, class_name: "Event", required: false
-  has_many :children, (-> { where("discussion_id is not null") }), class_name: "Event", foreign_key: :parent_id
+  has_many :children, (-> { where("topic_id is not null") }), class_name: "Event", foreign_key: :parent_id
   set_custom_fields :pinned_title, :recipient_user_ids, :recipient_chatbot_ids, :recipient_message, :recipient_audience, :stance_ids
 
-  before_create :set_parent_and_depth, if: :discussion_id
-  before_create :set_sequences, if: :discussion_id
-  after_rollback :reset_sequences, if: :discussion_id
-  before_destroy :reset_sequences, if: :discussion_id
+  before_create :set_parent_and_depth, if: :topic_id
+  before_create :set_sequences, if: :topic_id
+  after_rollback :reset_sequences, if: :topic_id
+  before_destroy :reset_sequences, if: :topic_id
 
-  after_create  :update_sequence_info!, if: :discussion_id
-  after_destroy :update_sequence_info!, if: :discussion_id
+  after_create  :update_sequence_info!, if: :topic_id
+  after_destroy :update_sequence_info!, if: :topic_id
 
   define_counter_cache(:child_count) { |e| e.children.count  }
   define_counter_cache(:descendant_count) { |e|
     if e.kind == "new_discussion"
-      Event.where(discussion_id: e.eventable_id).count
-    elsif e.position_key && e.discussion_id
-      Event.where(discussion_id: e.discussion_id).
+      Event.where(topic_id: e.eventable&.topic&.id).count
+    elsif e.position_key && e.topic_id
+      Event.where(topic_id: e.topic_id).
             where("id != ?", e.id).
             where('position_key like ?', e.position_key+"%").count
     else
@@ -37,7 +37,9 @@ class Event < ApplicationRecord
   validates :kind, presence: true
   validates :eventable, presence: true
 
-  scope :dangling, -> { joins('left join discussions d on events.discussion_id = d.id').where('d.id is null and discussion_id is not null') }
+  before_save :sync_eventable_foreign_key
+
+  scope :dangling, -> { joins('LEFT JOIN topics ON events.topic_id = topics.id').where('events.topic_id IS NOT NULL AND topics.id IS NULL') }
   scope :unreadable, -> { where.not(kind: 'discussion_closed') }
 
   scope :invitations_in_period, ->(since, till) {
@@ -47,7 +49,16 @@ class Event < ApplicationRecord
   delegate :group, to: :eventable, allow_nil: true
   delegate :poll, to: :eventable, allow_nil: true
   delegate :groups, to: :eventable, allow_nil: true
-  delegate :update_sequence_info!, to: :discussion, allow_nil: true
+  delegate :update_sequence_info!, to: :topic, allow_nil: true
+
+  # Convenience accessors for transition
+  def discussion
+    topic&.topicable if topic&.topicable_type == 'Discussion'
+  end
+
+  def discussion_id
+    topic&.topicable_id if topic&.topicable_type == 'Discussion'
+  end
 
   def self.sti_find(id)
     e = self.find(id)
@@ -106,6 +117,7 @@ class Event < ApplicationRecord
   end
 
   def set_parent_and_depth
+    return if position_key.present? # Skip if already set (e.g., cloned events)
     self.parent = max_depth_adjusted_parent
     self.depth = parent ? parent.depth + 1 : 0
   end
@@ -116,9 +128,10 @@ class Event < ApplicationRecord
   end
 
   def set_sequences
+    return unless parent_id # Root events (new_discussion) don't participate in the sequence
+    return if sequence_id.present? # Skip if already set (e.g., cloned events)
     self.sequence_id = next_sequence_id!
     self.position = next_position!
-    # self.position_key = self_and_parents.reverse.map(&:position).map{|p| Event.zero_fill(p) }.join('-')
     self.position_key = [parent&.position_key, Event.zero_fill(position)].compact.join('-')
   end
 
@@ -127,27 +140,27 @@ class Event < ApplicationRecord
   end
 
   def reset_sequences
-    SequenceService.drop_seq!('discussions_sequence_id', discussion_id)
+    SequenceService.drop_seq!('topic_sequence_id', topic_id)
     EventService.reset_child_positions(parent.id, parent.position_key) if parent_id && parent
   end
 
   def next_sequence_id!
-    unless SequenceService.seq_present?('discussions_sequence_id', discussion_id)
+    unless SequenceService.seq_present?('topic_sequence_id', topic_id)
       val = Event.
-            where(discussion_id: discussion_id).
+            where(topic_id: topic_id).
             where("sequence_id is not null").
             order(sequence_id: :desc).
             limit(1).pluck(:sequence_id).last || 0
-      SequenceService.create_seq!('discussions_sequence_id', discussion_id, val)
+      SequenceService.create_seq!('topic_sequence_id', topic_id, val)
     end
-    SequenceService.next_seq!('discussions_sequence_id', discussion_id)
+    SequenceService.next_seq!('topic_sequence_id', topic_id)
   end
 
   def next_position!
-    return 0 unless (discussion_id and parent_id)
+    return 0 unless (topic_id and parent_id)
     unless SequenceService.seq_present?('events_position', parent_id)
       val = Event.where(parent_id: parent_id,
-                       discussion_id: discussion_id).
+                       topic_id: topic_id).
                        order(position: :desc).
                        limit(1).pluck(:position).last || 0
       SequenceService.create_seq!('events_position', parent_id, val)
@@ -163,8 +176,8 @@ class Event < ApplicationRecord
     case kind
     when 'discussion_closed'   then eventable.created_event
     when 'discussion_forked'   then eventable.created_event
-    when 'discussion_moved'    then discussion.created_event
-    when 'discussion_edited'   then (eventable || discussion)&.created_event
+    when 'discussion_moved'    then eventable.created_event
+    when 'discussion_edited'   then eventable&.created_event
     when 'discussion_reopened' then eventable.created_event
     when 'outcome_created'     then eventable.parent_event
     when 'new_comment'         then eventable.parent_event
@@ -183,13 +196,13 @@ class Event < ApplicationRecord
   end
 
   def self_and_parents
-    [self, (parent && parent.discussion_id && parent.self_and_parents)].flatten.compact
+    [self, (parent && parent.topic_id && parent.self_and_parents)].flatten.compact
   end
 
   def max_depth_adjusted_parent
     original_parent = find_parent_event
     return nil unless original_parent
-    if discussion && discussion.max_depth == original_parent.depth
+    if topic && topic.max_depth == original_parent.depth
       original_parent.parent
     else
       original_parent
@@ -210,5 +223,16 @@ class Event < ApplicationRecord
 
   def all_recipient_user_ids
     (recipient_user_ids || []).uniq.compact #.without(actor_id)
+  end
+
+  private
+
+  # When an event's eventable is assigned but saved by a different association path
+  # (e.g., in RecordCloner), the FK may be nil even though the target is persisted.
+  def sync_eventable_foreign_key
+    assoc = association(:eventable)
+    if eventable_id.nil? && assoc.loaded? && assoc.target&.persisted?
+      self.eventable_id = assoc.target.id
+    end
   end
 end

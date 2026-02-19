@@ -210,11 +210,11 @@ class AbilityTest < ActiveSupport::TestCase
     other_membership = group.add_member!(@other_user)
 
     discussion = Discussion.create!(group: group, title: "Test Discussion", private: true, author: admin)
-    comment = Comment.new(discussion: discussion, author: @user)
+    comment = Comment.new(parent: discussion, author: @user)
     user_discussion = Discussion.create!(group: group, title: "My Discussion", private: true, author: @user)
     new_discussion = @user.authored_discussions.new(group: group, title: "new discussion")
-    user_comment = Comment.create!(discussion: discussion, body: "My comment", author: @user)
-    another_user_comment = Comment.create!(discussion: discussion, body: "Their comment", author: @other_user)
+    user_comment = Comment.create!(parent: discussion, body: "My comment", author: @user)
+    another_user_comment = Comment.create!(parent: discussion, body: "Their comment", author: @other_user)
 
     # members_can_edit_comments (default true)
     assert can?(:update, user_comment)
@@ -249,8 +249,8 @@ class AbilityTest < ActiveSupport::TestCase
     group.add_member!(@other_user)
     author = group.memberships.where(admin: true).first&.user || @user
     discussion = Discussion.create!(group: group, title: "Test Discussion", private: true, author: author)
-    user_comment = Comment.create!(discussion: discussion, body: "My comment", author: @user)
-    Comment.create!(discussion: discussion, body: "Newer comment", author: @other_user)
+    user_comment = Comment.create!(parent: discussion, body: "My comment", author: @user)
+    Comment.create!(parent: discussion, body: "Newer comment", author: @other_user)
     assert cannot?(:update, user_comment)
   end
 
@@ -302,7 +302,7 @@ class AbilityTest < ActiveSupport::TestCase
     other_membership = group.add_member!(@other_user)
 
     discussion = Discussion.create!(group: group, title: "Test", private: true, author: @user)
-    another_user_comment = Comment.create!(discussion: discussion, body: "comment", author: @other_user)
+    another_user_comment = Comment.create!(parent: discussion, body: "comment", author: @other_user)
     mr = MembershipRequest.create!(group: group, requestor: @non_member)
 
     assert can?(:update, group)
@@ -355,8 +355,8 @@ class AbilityTest < ActiveSupport::TestCase
     group.add_admin!(@other_user)
     discussion = Discussion.create!(group: group, title: "Private", private: true, author: @other_user)
     new_discussion = Discussion.new(group: group, author: @user, title: 'title')
-    user_comment = Comment.new(discussion: discussion, author: @user)
-    another_user_comment = Comment.create!(discussion: discussion, body: "comment", author: @other_user)
+    user_comment = Comment.new(parent: discussion, author: @user)
+    another_user_comment = Comment.create!(parent: discussion, body: "comment", author: @other_user)
 
     assert cannot?(:show, group)
     assert cannot?(:update, group)
@@ -384,10 +384,10 @@ class AbilityTest < ActiveSupport::TestCase
 
     private_discussion = Discussion.create!(group: group, title: "Private", private: true, author: other_admin)
     public_discussion = Discussion.create!(group: group, title: "Public", private: false, author: other_admin)
-    comment_in_private = Comment.new(discussion: private_discussion, author: @user, body: 'hi')
-    comment_in_public = Comment.new(discussion: public_discussion, author: @user, body: 'hi')
+    comment_in_private = Comment.new(parent: private_discussion, author: @user, body: 'hi')
+    comment_in_public = Comment.new(parent: public_discussion, author: @user, body: 'hi')
     new_discussion = @user.authored_discussions.new(group: group, title: "new discussion")
-    another_user_comment = Comment.create!(discussion: private_discussion, body: "comment", author: other_admin)
+    another_user_comment = Comment.create!(parent: private_discussion, body: "comment", author: other_admin)
     mr_requestor = User.create!(name: "MRReq #{SecureRandom.hex(4)}", email: "mrreq_#{SecureRandom.hex(4)}@test.com", email_verified: true)
     my_mr = MembershipRequest.create!(group: group, requestor: @user)
     other_mr = MembershipRequest.create!(group: group, requestor: mr_requestor)

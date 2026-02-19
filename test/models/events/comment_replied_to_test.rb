@@ -8,9 +8,9 @@ class Events::CommentRepliedToTest < ActiveSupport::TestCase
     @group.add_admin!(@user)
     @group.add_member!(@replier)
     @discussion = create_discussion(group: @group, author: @user)
-    @parent = Comment.new(discussion: @discussion, body: "Parent", author: @user)
+    @parent = Comment.new(parent: @discussion, body: "Parent", author: @user)
     CommentService.create(comment: @parent, actor: @user)
-    @comment = Comment.new(discussion: @discussion, body: "Reply", parent: @parent, author: @replier)
+    @comment = Comment.new(body: "Reply", parent: @parent, author: @replier)
     CommentService.create(comment: @comment, actor: @replier)
   end
 

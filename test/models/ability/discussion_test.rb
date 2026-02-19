@@ -18,7 +18,7 @@ class Ability::DiscussionTest < ActiveSupport::TestCase
   test "discussion without group as admin" do
     author = User.create!(name: "DA #{SecureRandom.hex(4)}", email: "da_#{SecureRandom.hex(4)}@test.com", email_verified: true)
     discussion = Discussion.create!(title: "No group disc", author: author, private: true)
-    discussion.discussion_readers.create!(user_id: @actor.id, admin: true, guest: true, inviter_id: @actor.id)
+    discussion.topic.topic_readers.create!(user_id: @actor.id, admin: true, guest: true, inviter_id: @actor.id)
     assert can?(:announce, discussion)
     assert can?(:add_guests, discussion)
     assert can?(:update, discussion)
@@ -27,7 +27,7 @@ class Ability::DiscussionTest < ActiveSupport::TestCase
   test "discussion without group as member" do
     author = User.create!(name: "DA #{SecureRandom.hex(4)}", email: "da_#{SecureRandom.hex(4)}@test.com", email_verified: true)
     discussion = Discussion.create!(title: "No group disc", author: author, private: true)
-    discussion.discussion_readers.create!(user_id: @actor.id, admin: false, guest: true, inviter_id: @actor.id)
+    discussion.topic.topic_readers.create!(user_id: @actor.id, admin: false, guest: true, inviter_id: @actor.id)
     assert cannot?(:announce, discussion)
     assert cannot?(:add_guests, discussion)
     assert can?(:update, discussion)
@@ -55,28 +55,28 @@ class Ability::DiscussionTest < ActiveSupport::TestCase
   test "group member discussion admin with members_can_add_guests true" do
     group, discussion = create_group_and_discussion(members_can_add_guests: true)
     group.add_member!(@actor)
-    discussion.discussion_readers.create!(user_id: @actor.id, admin: true)
+    discussion.topic.topic_readers.create!(user_id: @actor.id, admin: true)
     assert can?(:add_guests, discussion)
   end
 
   test "group member discussion admin with members_can_add_guests false" do
     group, discussion = create_group_and_discussion(members_can_add_guests: false)
     group.add_member!(@actor)
-    discussion.discussion_readers.create!(user_id: @actor.id, admin: true)
+    discussion.topic.topic_readers.create!(user_id: @actor.id, admin: true)
     assert cannot?(:add_guests, discussion)
   end
 
   test "group member discussion admin with members_can_announce true" do
     group, discussion = create_group_and_discussion(members_can_announce: true)
     group.add_member!(@actor)
-    discussion.discussion_readers.create!(user_id: @actor.id, admin: true)
+    discussion.topic.topic_readers.create!(user_id: @actor.id, admin: true)
     assert can?(:announce, discussion)
   end
 
   test "group member discussion admin with members_can_announce false" do
     group, discussion = create_group_and_discussion(members_can_announce: false)
     group.add_member!(@actor)
-    discussion.discussion_readers.create!(user_id: @actor.id, admin: true)
+    discussion.topic.topic_readers.create!(user_id: @actor.id, admin: true)
     assert cannot?(:announce, discussion)
   end
 

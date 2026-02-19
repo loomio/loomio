@@ -43,7 +43,7 @@ class RecordCache
       collection_ids = collection.map(&:id)
       obj.add_discussions(collection)
       obj.add_groups_subscriptions_memberships Group.with_attached_logo.with_attached_cover_photo.includes(:subscription).where(id: ids_and_parent_ids(Group, collection.map(&:group_id).compact))
-      obj.add_polls_options_stances_outcomes Poll.active.where(discussion_id: collection_ids)
+      obj.add_polls_options_stances_outcomes Poll.active.where(topic_id: Discussion.where(id: collection_ids).select(:topic_id))
 
     when 'Reaction'
       obj.user_ids.concat collection.map(&:user_id)
@@ -62,7 +62,7 @@ class RecordCache
 
     when 'Poll'
       obj.add_groups Group.with_attached_logo.with_attached_cover_photo.includes(:subscription).where(id: ids_and_parent_ids(Group, collection.map(&:group_id)))
-      obj.add_discussions(Discussion.where(id: collection.map(&:discussion_id).uniq.compact))
+      obj.add_discussions(Discussion.where(id: Topic.where(id: collection.map(&:topic_id).uniq.compact, topicable_type: 'Discussion').select(:topicable_id)))
       obj.add_polls_options_stances_outcomes collection
       obj.add_inline_translations
 
@@ -77,7 +77,7 @@ class RecordCache
     when 'User'
       # do nothing
 
-    when 'DiscussionReader'
+    when 'TopicReader', 'DiscussionReader'
       obj.user_ids.concat collection.map(&:user_id)
 
     when 'Comment'
@@ -98,7 +98,8 @@ class RecordCache
     end
 
     obj.add_users User.with_attached_uploaded_avatar.where(id: obj.user_ids)
-    obj.add_discussion_readers(DiscussionReader.where(discussion_id: obj.discussion_ids, user_id: user_id))
+    topic_ids = Topic.where(topicable_type: 'Discussion', topicable_id: obj.discussion_ids).pluck(:id)
+    obj.add_topic_readers(TopicReader.where(topic_id: topic_ids, user_id: user_id))
     obj.add_events Event.where(kind: 'new_discussion', eventable_id: obj.discussion_ids)
     obj.add_events Event.where(kind: 'discussion_forked', eventable_id: obj.discussion_ids)
     obj.add_events Event.where(kind: 'poll_created', eventable_id: obj.poll_ids)
@@ -130,8 +131,8 @@ class RecordCache
 
     # find related group ids
     unless exclude_types.include?('group')
-      ids[:group].concat Discussion.where(id: ids[:discussion]).pluck(:group_id)
-      ids[:group].concat Poll.where(id: ids[:poll]).pluck(:group_id)
+      ids[:group].concat Discussion.where(id: ids[:discussion]).joins(:topic).pluck('topics.group_id')
+      ids[:group].concat Poll.where(id: ids[:poll]).joins(:topic).pluck('topics.group_id')
       # ids[:group].concat all_parent_ids_for(Group, ids[:group])
     end
 
@@ -208,13 +209,13 @@ class RecordCache
 
   def add_polls(collection)
     return if exclude_types.include?('poll')
-    scope[:polls_by_discussion_id] ||= {}
+    scope[:polls_by_topic_id] ||= {}
     scope[:polls_by_id] ||= {}
     collection.each do |poll|
       @user_ids.push poll.author_id
       scope[:polls_by_id][poll.id] = poll
-      scope[:polls_by_discussion_id][poll.discussion_id] ||= []
-      scope[:polls_by_discussion_id][poll.discussion_id].push poll
+      scope[:polls_by_topic_id][poll.topic_id] ||= []
+      scope[:polls_by_topic_id][poll.topic_id].push poll
     end
   end
 
@@ -330,13 +331,12 @@ class RecordCache
     scope[:discussions_by_id] = collection.index_by(&:id)
   end
 
-  def add_discussion_readers(collection)
+  def add_topic_readers(collection)
     return if exclude_types.include?('discussion_reader')
-    readers_by_discussion_id = collection.index_by(&:discussion_id)
-    scope[:discussion_readers_by_discussion_id] ||= {}
-    discussion_ids.each do |id|
-      # so if key exists, but value is null, we know not to try to look up the reader
-      scope[:discussion_readers_by_discussion_id][id] = readers_by_discussion_id[id]
+    # Index by discussion_id for backwards compatibility with serializers
+    scope[:topic_readers_by_topic_id] ||= {}
+    collection.each do |reader|
+      scope[:topic_readers_by_topic_id][reader.topic_id] = reader
     end
   end
 

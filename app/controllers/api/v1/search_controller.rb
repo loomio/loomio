@@ -13,8 +13,8 @@ class Api::V1::SearchController < Api::V1::RestfulController
     end
 
     if params[:tag]
-      discussion_ids = Discussion.where(group_id: group_ids).where("tags @> ARRAY[?]::varchar[]", Array(params[:tag])).pluck(:id)
-      poll_ids = Poll.where(group_id: group_ids).where("tags @> ARRAY[?]::varchar[]", Array(params[:tag])).pluck(:id)
+      discussion_ids = Discussion.joins(:topic).where(topics: { group_id: group_ids }).where("tags @> ARRAY[?]::varchar[]", Array(params[:tag])).pluck(:id)
+      poll_ids = Poll.joins(:topic).where(topics: { group_id: group_ids }).where("tags @> ARRAY[?]::varchar[]", Array(params[:tag])).pluck(:id)
       rel = rel.where("discussion_id in (:discussion_ids) or poll_id in (:poll_ids)", discussion_ids: discussion_ids, poll_ids: poll_ids)
     end
 
@@ -39,12 +39,12 @@ class Api::V1::SearchController < Api::V1::RestfulController
     authors = access_by_id(User.where(id: results.map(&:author_id)))
 
     poll_events = access_by_id(
-      Event.where("discussion_id is not null").where(eventable_type: "Poll", eventable_id: results.map(&:poll_id)),
+      Event.where("topic_id is not null").where(eventable_type: "Poll", eventable_id: results.map(&:poll_id)),
       :eventable_id
     )
 
     stance_events = access_by_id(
-      Event.where("discussion_id is not null").where(eventable_type: "Stance", eventable_id: results.filter {|r| r.searchable_type == 'Stance'}.map(&:searchable_id)),
+      Event.where("topic_id is not null").where(eventable_type: "Stance", eventable_id: results.filter {|r| r.searchable_type == 'Stance'}.map(&:searchable_id)),
       :eventable_id
     )
 

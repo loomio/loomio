@@ -31,7 +31,7 @@ class Discussion < ApplicationRecord
         updated_at)
       SELECT 'Discussion' AS searchable_type,
         discussions.id AS searchable_id,
-        discussions.group_id as group_id,
+        topics.group_id as group_id,
         discussions.id AS discussion_id,
         discussions.author_id AS author_id,
         discussions.created_at AS authored_at,
@@ -40,6 +40,7 @@ class Discussion < ApplicationRecord
         now() AS created_at,
         now() AS updated_at
       FROM discussions
+        LEFT JOIN topics ON topics.id = discussions.topic_id
         LEFT JOIN users ON users.id = discussions.author_id
       WHERE discarded_at IS NULL
         #{id ? " AND discussions.id = #{id.to_i} LIMIT 1" : ''}
@@ -48,21 +49,21 @@ class Discussion < ApplicationRecord
   end
 
   scope :dangling, lambda {
-    joins('left join groups g on discussions.group_id = g.id').where('group_id is not null and g.id is null')
+    joins(:topic).joins('left join groups g on topics.group_id = g.id').where('topics.group_id is not null and g.id is null')
   }
-  scope :in_organisation, ->(group) { includes(:author).where(group_id: group.id_and_subgroup_ids) }
-  scope :last_activity_after, ->(time) { where('last_activity_at > ?', time) }
-  scope :order_by_latest_activity, -> { order(last_activity_at: :desc) }
-  scope :order_by_pinned_then_latest_activity, -> { order('pinned_at, last_activity_at DESC') }
-  scope :recent, -> { where('last_activity_at > ?', 6.weeks.ago) }
+  scope :in_organisation, ->(group) { includes(:author).joins(:topic).where(topics: { group_id: group.id_and_subgroup_ids }) }
+  scope :last_activity_after, ->(time) { joins(:topic).where('topics.last_activity_at > ?', time) }
+  scope :order_by_latest_activity, -> { joins(:topic).order('topics.last_activity_at DESC') }
+  scope :order_by_pinned_then_latest_activity, -> { joins(:topic).order('topics.pinned_at, topics.last_activity_at DESC') }
+  scope :recent, -> { joins(:topic).where('topics.last_activity_at > ?', 6.weeks.ago) }
 
   scope :visible_to_public, -> { kept.where(private: false) }
   scope :not_visible_to_public, -> { kept.where(private: true) }
 
-  scope :is_open, -> { kept.where(closed_at: nil) }
-  scope :is_closed, -> { kept.where('closed_at is not null') }
+  scope :is_open, -> { kept.joins(:topic).where('topics.closed_at IS NULL') }
+  scope :is_closed, -> { kept.joins(:topic).where('topics.closed_at IS NOT NULL') }
 
-  validates_presence_of :title, :group, :author
+  validates_presence_of :title, :author
   validates :title, length: { maximum: 150 }
   validates :description, length: { maximum: AppConfig.app_features[:max_message_length] }
   validate :privacy_is_permitted_by_group
@@ -70,26 +71,21 @@ class Discussion < ApplicationRecord
   is_mentionable  on: :description
   is_translatable on: %i[title description], load_via: :find_by_key!, id_field: :key
   is_rich_text    on: :description
-  has_paper_trail only: %i[title description description_format private group_id author_id tags closed_at
-                           closer_id attachments]
+  has_paper_trail only: %i[title description description_format private author_id tags attachments]
 
-  belongs_to :group, class_name: 'Group'
+  belongs_to :topic, optional: true, autosave: true
   belongs_to :author, class_name: 'User'
   belongs_to :user, foreign_key: 'author_id'
-  belongs_to :closer, foreign_key: 'closer_id', class_name: 'User'
-  has_many :polls, dependent: :destroy
-  has_many :active_polls, -> { where(closed_at: nil) }, class_name: 'Poll'
+  delegate :closed_at, :closer_id, :closer, :pinned_at, to: :topic, allow_nil: true
+  has_many :polls, primary_key: :topic_id, foreign_key: :topic_id, dependent: :destroy
+  has_many :active_polls, -> { where(closed_at: nil) }, class_name: 'Poll', primary_key: :topic_id, foreign_key: :topic_id
 
-  has_many :comments, dependent: :destroy
+  has_many :topic_readers, through: :topic
+  has_many :readers, -> { merge TopicReader.active }, through: :topic_readers, source: :user
+
   has_many :commenters, -> { uniq }, through: :comments, source: :user
   has_many :documents, as: :model, dependent: :destroy
   has_many :poll_documents,    through: :polls,    source: :documents
-  has_many :comment_documents, through: :comments, source: :documents
-
-  has_many :items, -> { includes(:user) }, class_name: 'Event', dependent: :destroy
-
-  has_many :discussion_readers, dependent: :destroy
-  has_many :readers, -> { merge DiscussionReader.active }, through: :discussion_readers, source: :user
 
   include DiscussionExportRelations
 
@@ -104,22 +100,28 @@ class Discussion < ApplicationRecord
   delegate :email, to: :author, prefix: :author
   delegate :name_and_email, to: :author, prefix: :author
   delegate :locale, to: :author
+  delegate :members, :admins, :guests, :guest_ids, :add_guest!, :add_admin!, to: :topic
 
+  after_create :build_default_topic
+  after_create :save_pending_topic_items
   after_create :set_last_activity_at_to_created_at
   after_destroy :drop_sequence_id_sequence
 
   define_counter_cache(:closed_polls_count)         { |d| d.polls.closed.count }
   define_counter_cache(:versions_count)             { |d| d.versions.count }
-  define_counter_cache(:seen_by_count)              { |d| d.discussion_readers.where('last_read_at is not null').count }
-  define_counter_cache(:members_count)              { |d| d.discussion_readers.where('revoked_at is null').count }
+  define_counter_cache(:seen_by_count)              { |d| d.topic_readers.where('last_read_at is not null').count }
+  define_counter_cache(:members_count)              { |d| d.topic_readers.where('revoked_at is null').count }
   define_counter_cache(:anonymous_polls_count)      { |d| d.polls.where(anonymous: true).count }
 
-  update_counter_cache :group, :discussions_count
-  update_counter_cache :group, :public_discussions_count
-  update_counter_cache :group, :open_discussions_count
-  update_counter_cache :group, :closed_discussions_count
-  update_counter_cache :group, :closed_polls_count
-
+  after_commit :update_group_counter_caches
+  def update_group_counter_caches
+    return unless (g = group) && g.id
+    g.update_discussions_count
+    g.update_public_discussions_count
+    g.update_open_discussions_count
+    g.update_closed_discussions_count
+    g.update_closed_polls_count
+  end
 
   def title_model
     self
@@ -129,8 +131,27 @@ class Discussion < ApplicationRecord
     nil
   end
 
+  def group_id
+    if topic
+      topic.group_id
+    else
+      @pending_group_id
+    end
+  end
+
+  def group_id=(id)
+    @pending_group_id = id
+    topic.group_id = id if topic
+  end
+
   def group
-    super || NullGroup.new
+    gid = group_id
+    (gid && Group.find_by(id: gid)) || NullGroup.new
+  end
+
+  def group=(g)
+    @pending_group_id = g&.id
+    topic.group_id = g&.id if topic
   end
 
   def existing_member_ids
@@ -145,48 +166,66 @@ class Discussion < ApplicationRecord
     super || AnonymousUser.new
   end
 
-  def members
-    User.active
-        .joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{id || 0} AND dr.user_id = users.id")
-        .joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{group_id || 0}")
-        .where('(m.id IS NOT NULL AND m.revoked_at IS NULL) OR
-                (dr.id IS NOT NULL AND dr.guest = TRUE AND dr.revoked_at IS NULL)')
+  # Thread state delegations through topic
+  def items
+    topic&.items || Event.none
   end
 
-  def admins
-    User.active
-        .joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{id || 0} AND dr.user_id = users.id")
-        .joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{group_id || 0}")
-        .where('(m.admin = TRUE AND m.id IS NOT NULL AND m.revoked_at IS NULL) OR
-                (dr.admin = TRUE AND dr.id IS NOT NULL AND dr.revoked_at IS NULL)')
+  def items_count
+    topic&.items_count || 0
   end
 
-  def guests
-    User.active
-        .joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{id || 0} AND dr.user_id = users.id")
-        .joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{group_id || 0}")
-        .where('(m.id IS NULL OR m.revoked_at IS NOT NULL) AND (dr.id IS NOT NULL AND dr.guest = TRUE AND dr.revoked_at IS NULL)')
-  end
-
-  def guest_ids
-    guests.pluck(:id)
-  end
-
-  def add_guest!(user, inviter)
-    if (dr = discussion_readers.find_by(user: user))
-      dr.update(guest: true, inviter: inviter)
+  def ranges_string
+    if topic
+      topic.update_sequence_info! if topic.ranges_string.nil?
+      topic.ranges_string
     else
-      discussion_readers.create!(user: user, inviter: inviter, guest: true, volume: DiscussionReader.volumes[:normal])
+      ''
     end
   end
 
-  def add_admin!(user, inviter)
-    if (dr = discussion_readers.find_by(user: user))
-      dr.update(inviter: inviter, admin: true)
-    else
-      discussion_readers.create!(user: user, inviter: inviter, admin: true, volume: DiscussionReader.volumes[:normal])
+  def ranges
+    topic&.ranges || []
+  end
+
+  def first_sequence_id
+    topic&.first_sequence_id || 0
+  end
+
+  def last_sequence_id
+    topic&.last_sequence_id || 0
+  end
+
+  def max_depth
+    topic&.max_depth || 2
+  end
+
+  def max_depth=(val)
+    if topic
+      topic.max_depth = val
     end
   end
+
+  def max_depth_changed?
+    topic&.max_depth_changed? || false
+  end
+
+  def newest_first
+    topic&.newest_first || false
+  end
+
+  def newest_first=(val)
+    if topic
+      topic.newest_first = val
+    end
+  end
+
+  def last_activity_at
+    topic&.last_activity_at
+  end
+
+  has_many :comments, through: :topic
+  has_many :comment_documents, through: :comments, source: :documents
 
   def poll_id
     nil
@@ -207,18 +246,12 @@ class Discussion < ApplicationRecord
   end
 
   def update_sequence_info!
-    sequence_ids = discussion.items.order(:sequence_id).pluck(:sequence_id).compact
-    discussion.ranges_string = RangeSet.serialize RangeSet.reduce RangeSet.ranges_from_list sequence_ids
-    discussion.last_activity_at = find_last_activity_at
-    update_columns(
-      items_count: sequence_ids.count,
-      ranges_string: discussion.ranges_string,
-      last_activity_at: discussion.last_activity_at
-    )
+    ensure_topic!
+    topic.update_sequence_info!
   end
 
   def drop_sequence_id_sequence
-    SequenceService.drop_seq!('discussions_sequence_id', id)
+    topic&.drop_sequence_id_sequence
   end
 
   def public?
@@ -245,32 +278,75 @@ class Discussion < ApplicationRecord
     self.description_format = (val)
   end
 
-  def ranges
-    RangeSet.parse(ranges_string)
-  end
-
-  def first_sequence_id
-    Array(ranges.first).first.to_i
-  end
-
-  def last_sequence_id
-    Array(ranges.last).last.to_i
-  end
-
-  # this is insted of a big slow migration
-  def ranges_string
-    update_sequence_info! if self[:ranges_string].nil?
-    self[:ranges_string]
-  end
-
   def is_new_version?
     (%w[title description private] & changes.keys).any?
   end
 
   private
 
+  def build_default_topic
+    if topic.present?
+      # Topic was pre-assigned in memory (e.g., by RecordCloner).
+      # Save only the topic record (without cascading to items) so that
+      # eventable records can be persisted first, then items saved later.
+      if topic.new_record?
+        topic.topicable = self
+        topic.group_id ||= group_id
+        pending_items = topic.items.to_a
+        topic.items.reset
+        topic.save!
+        update_column(:topic_id, topic.id)
+        topic.instance_variable_set(:@_pending_items, pending_items)
+      end
+      return
+    end
+    t = Topic.create!(topicable: self, group_id: group_id, max_depth: 2, newest_first: false, last_activity_at: created_at)
+    update_column(:topic_id, t.id)
+    self.topic = t
+  end
+
+  def ensure_topic!
+    return topic if topic.present?
+    t = Topic.find_or_create_by!(topicable: self) do |topic|
+      topic.group_id = group_id
+      topic.max_depth = 2
+      topic.newest_first = false
+      topic.last_activity_at = created_at || Time.current
+    end
+    update_column(:topic_id, t.id) unless topic_id == t.id
+    self.topic = t
+  end
+
+  def save_pending_topic_items
+    return unless topic
+
+    # Save deferred polls that share this discussion's topic
+    cloned_polls = instance_variable_get(:@_cloned_polls)
+    if cloned_polls.present?
+      cloned_polls.each do |cp|
+        cp.topic_id = topic.id
+        cp.save!
+      end
+      remove_instance_variable(:@_cloned_polls)
+    end
+
+    # Save deferred topic items (events) held back from build_default_topic
+    pending_items = topic.instance_variable_get(:@_pending_items)
+    return unless pending_items.present?
+
+    pending_items.each do |event|
+      # Save eventable first if not yet persisted
+      if event.eventable && event.eventable.new_record?
+        event.eventable.save!
+      end
+      event.topic = topic
+      event.save!
+    end
+    topic.remove_instance_variable(:@_pending_items)
+  end
+
   def set_last_activity_at_to_created_at
-    update_column(:last_activity_at, created_at)
+    topic&.update_column(:last_activity_at, created_at)
   end
 
   def sequence_id_or_0(item)

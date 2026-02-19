@@ -64,7 +64,7 @@ class UserMailerTest < ActionMailer::TestCase
     author = @inviter
     discussion = Discussion.new(title: "Catch up #{SecureRandom.hex(4)}", group: @group, author: author)
     DiscussionService.create(discussion: discussion, actor: author)
-    comment = Comment.new(discussion: discussion, body: "catch up comment")
+    comment = Comment.new(parent: discussion, body: "catch up comment")
     CommentService.create(comment: comment, actor: author)
     ActionMailer::Base.deliveries.clear
 

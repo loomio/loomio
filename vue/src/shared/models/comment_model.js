@@ -21,6 +21,7 @@ export default class CommentModel extends BaseModel {
   defaultValues() {
     return {
       discussionId: null,
+      pollId: null,
       files: null,
       imageFiles: null,
       attachments: [],
@@ -34,7 +35,16 @@ export default class CommentModel extends BaseModel {
   relationships() {
     this.belongsTo('author', {from: 'users'});
     this.belongsTo('discussion');
+    this.belongsTo('poll');
     this.belongsTo('translation');
+  }
+
+  topic() {
+    const discussion = this.discussionId ? this.discussion() : null;
+    if (discussion) { return discussion.topic(); }
+    const poll = this.pollId ? this.poll() : null;
+    if (poll) { return poll.topic(); }
+    return null;
   }
 
   createdEvent() {
@@ -49,17 +59,18 @@ export default class CommentModel extends BaseModel {
   }
 
   group() {
-    return this.discussion().group();
+    const topic = this.topic();
+    return topic ? topic.group() : null;
   }
 
   memberIds() {
-    return this.discussion().memberIds();
+    const topicable = this.topic()?.topicable();
+    return topicable && topicable.memberIds ? topicable.memberIds() : [];
   }
 
-  // isMostRecent: ->
-  //   discussion().comments()) == @
   participantIds() {
-    return this.discussion().participantIds();
+    const topicable = this.topic()?.topicable();
+    return topicable && topicable.participantIds ? topicable.participantIds() : [];
   }
 
   isReply() {
@@ -79,7 +90,7 @@ export default class CommentModel extends BaseModel {
   }
 
   authorName() {
-    if (this.author()) { return this.author().nameWithTitle(this.discussion().group()); }
+    if (this.author()) { return this.author().nameWithTitle(this.group()); }
   }
 
   authorUsername() {

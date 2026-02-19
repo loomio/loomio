@@ -10,10 +10,10 @@ class Events::PositionTest < ActiveSupport::TestCase
 
   test "gives events a position sequence" do
     comments = 6.times.map do |i|
-      Comment.create!(discussion: @discussion, body: "Comment #{i}", author: @user)
+      Comment.create!(parent: @discussion, body: "Comment #{i}", author: @user)
     end
     events = comments.map do |c|
-      Event.create!(kind: "new_comment", discussion: @discussion, eventable: c)
+      Event.create!(kind: "new_comment", topic: @discussion.topic, eventable: c)
     end
 
     assert_equal 1, events[0].position
@@ -42,13 +42,13 @@ class Events::PositionTest < ActiveSupport::TestCase
   end
 
   test "enforces max depth 2" do
-    c1 = Comment.create!(discussion: @discussion, body: "C1", author: @user)
-    c2 = Comment.create!(discussion: @discussion, body: "C2", parent: c1, author: @user)
-    c3 = Comment.create!(discussion: @discussion, body: "C3", parent: c2, author: @user)
+    c1 = Comment.create!(parent: @discussion, body: "C1", author: @user)
+    c2 = Comment.create!(body: "C2", parent: c1, author: @user)
+    c3 = Comment.create!(body: "C3", parent: c2, author: @user)
 
-    e1 = Event.create!(kind: "new_comment", discussion: @discussion, eventable: c1)
-    e2 = Event.create!(kind: "new_comment", discussion: @discussion, eventable: c2)
-    e3 = Event.create!(kind: "new_comment", discussion: @discussion, eventable: c3)
+    e1 = Event.create!(kind: "new_comment", topic: @discussion.topic, eventable: c1)
+    e2 = Event.create!(kind: "new_comment", topic: @discussion.topic, eventable: c2)
+    e3 = Event.create!(kind: "new_comment", topic: @discussion.topic, eventable: c3)
 
     assert_equal 1, e1.depth
     assert_equal "00001", e1.position_key
@@ -65,13 +65,13 @@ class Events::PositionTest < ActiveSupport::TestCase
 
   test "enforces max depth 1" do
     @discussion.update!(max_depth: 1)
-    c1 = Comment.create!(discussion: @discussion, body: "C1", author: @user)
-    c2 = Comment.create!(discussion: @discussion, body: "C2", parent: c1, author: @user)
-    c3 = Comment.create!(discussion: @discussion, body: "C3", parent: c2, author: @user)
+    c1 = Comment.create!(parent: @discussion, body: "C1", author: @user)
+    c2 = Comment.create!(body: "C2", parent: c1, author: @user)
+    c3 = Comment.create!(body: "C3", parent: c2, author: @user)
 
-    e1 = Event.create!(kind: "new_comment", discussion: @discussion, eventable: c1)
-    e2 = Event.create!(kind: "new_comment", discussion: @discussion, eventable: c2)
-    e3 = Event.create!(kind: "new_comment", discussion: @discussion, eventable: c3)
+    e1 = Event.create!(kind: "new_comment", topic: @discussion.topic, eventable: c1)
+    e2 = Event.create!(kind: "new_comment", topic: @discussion.topic, eventable: c2)
+    e3 = Event.create!(kind: "new_comment", topic: @discussion.topic, eventable: c3)
 
     assert_equal 1, e1.depth
     assert_equal "00001", e1.position_key
@@ -83,13 +83,13 @@ class Events::PositionTest < ActiveSupport::TestCase
 
   test "enforces max depth 3" do
     @discussion.update!(max_depth: 3)
-    c1 = Comment.create!(discussion: @discussion, body: "C1", author: @user)
-    c2 = Comment.create!(discussion: @discussion, body: "C2", parent: c1, author: @user)
-    c3 = Comment.create!(discussion: @discussion, body: "C3", parent: c2, author: @user)
+    c1 = Comment.create!(parent: @discussion, body: "C1", author: @user)
+    c2 = Comment.create!(body: "C2", parent: c1, author: @user)
+    c3 = Comment.create!(body: "C3", parent: c2, author: @user)
 
-    e1 = Event.create!(kind: "new_comment", discussion: @discussion, eventable: c1)
-    e2 = Event.create!(kind: "new_comment", discussion: @discussion, eventable: c2)
-    e3 = Event.create!(kind: "new_comment", discussion: @discussion, eventable: c3)
+    e1 = Event.create!(kind: "new_comment", topic: @discussion.topic, eventable: c1)
+    e2 = Event.create!(kind: "new_comment", topic: @discussion.topic, eventable: c2)
+    e3 = Event.create!(kind: "new_comment", topic: @discussion.topic, eventable: c3)
 
     assert_equal 1, e1.depth
     assert_equal "00001", e1.position_key
@@ -100,42 +100,42 @@ class Events::PositionTest < ActiveSupport::TestCase
   end
 
   test "reorders if parent changes" do
-    c1 = Comment.create!(discussion: @discussion, body: "C1", author: @user)
-    c2 = Comment.create!(discussion: @discussion, body: "C2", author: @user)
-    e1 = Event.create!(kind: "new_comment", discussion: @discussion, eventable: c1)
-    e2 = Event.create!(kind: "new_comment", discussion: @discussion, eventable: c2)
+    c1 = Comment.create!(parent: @discussion, body: "C1", author: @user)
+    c2 = Comment.create!(parent: @discussion, body: "C2", author: @user)
+    e1 = Event.create!(kind: "new_comment", topic: @discussion.topic, eventable: c1)
+    e2 = Event.create!(kind: "new_comment", topic: @discussion.topic, eventable: c2)
     assert_equal 1, e1.reload.position
     assert_equal 2, e2.reload.position
   end
 
-  test "removes position if discussion_id is dropped" do
-    c1 = Comment.create!(discussion: @discussion, body: "C1", author: @user)
-    c2 = Comment.create!(discussion: @discussion, body: "C2", author: @user)
-    c3 = Comment.create!(discussion: @discussion, body: "C3", author: @user)
-    e1 = Event.create!(kind: "new_comment", discussion: @discussion, eventable: c1)
-    e2 = Event.create!(kind: "new_comment", discussion: @discussion, eventable: c2)
-    e3 = Event.create!(kind: "new_comment", discussion: @discussion, eventable: c3)
+  test "removes position if topic_id is dropped" do
+    c1 = Comment.create!(parent: @discussion, body: "C1", author: @user)
+    c2 = Comment.create!(parent: @discussion, body: "C2", author: @user)
+    c3 = Comment.create!(parent: @discussion, body: "C3", author: @user)
+    e1 = Event.create!(kind: "new_comment", topic: @discussion.topic, eventable: c1)
+    e2 = Event.create!(kind: "new_comment", topic: @discussion.topic, eventable: c2)
+    e3 = Event.create!(kind: "new_comment", topic: @discussion.topic, eventable: c3)
 
     assert_equal 1, e1.position
     assert_equal 2, e2.position
     assert_equal 3, e3.position
 
-    e2.update!(discussion_id: nil, parent_id: nil)
-    EventService.repair_discussion(@discussion.id)
+    e2.update!(topic_id: nil, parent_id: nil)
+    EventService.repair_thread(@discussion.topic)
     assert_equal 2, e3.reload.position
     assert_equal "00002", e3.reload.position_key
     assert_equal 3, e3.reload.sequence_id
   end
 
   test "handles destroy" do
-    c1 = Comment.create!(discussion: @discussion, body: "C1", author: @user)
-    c2 = Comment.create!(discussion: @discussion, body: "C2", author: @user)
-    e1 = Event.create!(kind: "new_comment", discussion: @discussion, eventable: c1)
-    e2 = Event.create!(kind: "new_comment", discussion: @discussion, eventable: c2)
+    c1 = Comment.create!(parent: @discussion, body: "C1", author: @user)
+    c2 = Comment.create!(parent: @discussion, body: "C2", author: @user)
+    e1 = Event.create!(kind: "new_comment", topic: @discussion.topic, eventable: c1)
+    e2 = Event.create!(kind: "new_comment", topic: @discussion.topic, eventable: c2)
     assert_equal 1, e1.position
     assert_equal 2, e2.position
     e1.destroy
-    EventService.repair_discussion(@discussion.id)
+    EventService.repair_thread(@discussion.topic)
     e2.reload
     assert_equal 1, e2.position
     assert_equal 2, e2.sequence_id

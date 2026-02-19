@@ -7,10 +7,10 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
     @group = groups(:test_group)
     @discussion = discussions(:test_discussion)
 
-    @comment = Comment.new(discussion: @discussion, author: @user, body: "Original comment")
+    @comment = Comment.new(parent: @discussion, author: @user, body: "Original comment")
     CommentService.create(comment: @comment, actor: @user)
 
-    @another_comment = Comment.new(discussion: @discussion, author: @another_user, body: "Another comment")
+    @another_comment = Comment.new(parent: @discussion, author: @another_user, body: "Another comment")
     CommentService.create(comment: @another_comment, actor: @another_user)
   end
 
@@ -107,7 +107,7 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
   test "create disallows aliens to comment" do
     sign_in @user
     @discussion.group.memberships.find_by(user: @user).destroy
-    @discussion.discussion_readers.find_by(user: @user).destroy
+    @discussion.topic_readers.find_by(user: @user).destroy
     comment_params = { discussion_id: @discussion.id, body: "original content" }
     post :create, params: { comment: comment_params }
     assert_response :forbidden

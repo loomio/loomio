@@ -108,7 +108,6 @@ class StanceServiceTest < ActiveSupport::TestCase
 
     guest_stance = @poll.stances.create!(
       participant_id: guest.id,
-      guest: true,
       reason: "Old one",
       inviter: @user,
       latest: true

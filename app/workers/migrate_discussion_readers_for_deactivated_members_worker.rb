@@ -3,11 +3,11 @@ class MigrateDiscussionReadersForDeactivatedMembersWorker
 
   def perform
     Membership.includes(:user).where("revoked_at is not null").each do |m|
-      rel = DiscussionReader
-            .joins(:discussion)
+      rel = TopicReader
+            .joins("INNER JOIN topics ON topics.id = topic_readers.topic_id")
             .where(
               user_id: m.user_id,
-              'discussion.group_id': m.group_id,
+              'topics.group_id': m.group_id,
               guest: false,
               revoked_at: nil,
             )

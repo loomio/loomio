@@ -5,7 +5,7 @@ module ResetDatabaseHelper
     tables = %w[
       stance_receipts omniauth_identities users groups memberships polls outcomes
       events discussions stances stance_choices poll_options tasks
-      discussion_readers discussion_templates poll_templates
+      topics topic_readers discussion_templates poll_templates
       action_mailbox_inbound_emails
       active_storage_attachments
       active_storage_blobs
