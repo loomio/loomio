@@ -310,7 +310,7 @@ class DiscussionServiceTest < ActiveSupport::TestCase
 
     discussion = create_discussion(group: @group, author: @user, private: true)
     DiscussionService.move(discussion: discussion, params: { group_id: another_group.id }, actor: @user)
-    assert_equal false, discussion.reload.private
+    assert_equal false, discussion.topic.reload.private
   end
 
   test "move updates privacy for private_only groups" do
@@ -331,7 +331,7 @@ class DiscussionServiceTest < ActiveSupport::TestCase
 
     discussion = create_discussion(group: source_group, author: @user, private: false)
     DiscussionService.move(discussion: discussion, params: { group_id: another_group.id }, actor: @user)
-    assert_equal true, discussion.reload.private
+    assert_equal true, discussion.topic.reload.private
   end
 
   test "move updates polls group" do
@@ -378,11 +378,11 @@ class DiscussionServiceTest < ActiveSupport::TestCase
   test "closes a discussion" do
     discussion = create_discussion(group: @group, author: @user)
 
-    assert_nil discussion.closed_at
+    assert_nil discussion.topic.closed_at
 
     DiscussionService.close(discussion: discussion, actor: @user)
 
-    assert_not_nil discussion.reload.closed_at
+    assert_not_nil discussion.topic.reload.closed_at
   end
 
   test "reopens a closed discussion" do

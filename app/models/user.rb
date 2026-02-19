@@ -93,16 +93,10 @@ class User < ApplicationRecord
   has_many :topic_readers, dependent: :destroy
   has_many :guest_topic_readers, -> { TopicReader.active.guests }, class_name: 'TopicReader', dependent: :destroy
 
-  def guest_discussions
-    Discussion.where(id: guest_topic_readers
-      .joins(:topic)
-      .where(topics: { topicable_type: 'Discussion' })
-      .select('topics.topicable_id'))
+  def guest_topic_ids
+    guest_topic_readers.pluck(:topic_id)
   end
 
-  def guest_discussion_ids
-    guest_discussions.pluck(:id)
-  end
   has_many :guest_stances, -> { Stance.latest.invited }, class_name: 'Stance', dependent: :destroy, foreign_key: :participant_id
   has_many :guest_polls, through: :guest_stances, source: :poll
   has_many :notifications, dependent: :destroy

@@ -4,7 +4,6 @@ test_discussion:
   title: Test Discussion
   description: <p>A description for this discussion. Should this be <em>rich</em>?</p>
   description_format: html
-  private: true
   author: discussion_author
   topic: test_discussion_topic
   tags: []
@@ -17,7 +16,6 @@ public_discussion:
   title: Public Discussion
   description: <p>This is a public discussion</p>
   description_format: html
-  private: false
   author: discussion_author
   topic: public_discussion_topic
   created_at: <%= 10.days.ago %>
@@ -28,7 +26,6 @@ private_discussion:
   title: Private Discussion
   description: <p>This is a private discussion</p>
   description_format: html
-  private: true
   author: discussion_author
   topic: private_discussion_topic
   created_at: <%= 10.days.ago %>
@@ -39,7 +36,6 @@ discarded_discussion:
   title: Discarded Discussion
   description: <p>This discussion has been discarded</p>
   description_format: html
-  private: true
   author: discussion_author
   topic: discarded_discussion_topic
   discarded_at: <%= 1.day.ago %>
@@ -51,7 +47,6 @@ old_discussion:
   title: Old Discussion
   description: <p>An old discussion from months ago</p>
   description_format: html
-  private: true
   author: discussion_author
   topic: old_discussion_topic
   created_at: <%= 4.months.ago %>
@@ -62,7 +57,6 @@ subgroup_discussion:
   title: Subgroup Discussion
   description: <p>A discussion in a subgroup</p>
   description_format: html
-  private: true
   author: discussion_author
   topic: subgroup_discussion_topic
   created_at: <%= 5.days.ago %>

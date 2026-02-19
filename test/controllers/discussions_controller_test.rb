@@ -34,7 +34,7 @@ class DiscussionsControllerTest < ActionController::TestCase
   end
 
   test "signed out displays xml feed for public discussion" do
-    @discussion.update_columns(private: false)
+    @discussion.topic.update_columns(private: false)
     get :show, params: { key: @discussion.key }, format: :xml
     assert_response 200
     assert_equal @discussion, assigns(:discussion)

@@ -9,14 +9,13 @@ class DiscussionQuery
   end
 
   def self.dashboard(chain: start, user: )
-    chain = chain.where("topics.group_id IN (:group_ids) OR discussions.id IN (:discussion_ids)",
-                         group_ids: user.group_ids, discussion_ids: user.guest_discussion_ids)
+    chain = chain.where("topics.group_id IN (:group_ids) OR topics.id IN (:topic_ids)",
+                         group_ids: user.group_ids, topic_ids: user.guest_topic_ids)
   end
 
   def self.inbox(chain: start, user: )
-    chain.joins(:topic)
-          .joins("LEFT OUTER JOIN topic_readers dr ON dr.topic_id = topics.id AND dr.user_id = #{user.id}")
-          .where("topics.group_id IN (:group_ids) OR discussions.id IN (:discussion_ids)", group_ids: user.group_ids, discussion_ids: user.guest_discussion_ids)
+    chain.joins("LEFT OUTER JOIN topic_readers dr ON dr.topic_id = topics.id AND dr.user_id = #{user.id}")
+          .where("topics.group_id IN (:group_ids) OR topics.id IN (:topic_ids)", group_ids: user.group_ids, topic_ids: user.guest_topic_ids)
           .where('dr.dismissed_at IS NULL OR (dr.dismissed_at < topics.last_activity_at)')
           .where('dr.last_read_at IS NULL OR (dr.last_read_at < topics.last_activity_at)')
   end
@@ -35,11 +34,10 @@ class DiscussionQuery
       or_discussion_reader_token = "OR dr.token = #{ActiveRecord::Base.connection.quote(user.discussion_reader_token)}"
     end
 
-    chain = chain.joins(:topic)
-                 .joins("LEFT OUTER JOIN topic_readers dr
+    chain = chain.joins("LEFT OUTER JOIN topic_readers dr
                          ON dr.topic_id = topics.id
                          AND (dr.user_id = #{user.id || 0} #{or_discussion_reader_token})")
-                 .where("#{'(discussions.private = false) OR ' if or_public}
+                 .where("#{'(topics.private = false) OR ' if or_public}
                          (topics.group_id in (:user_group_ids)) OR
                          (dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.guest = TRUE)
                          #{'OR (groups.parent_members_can_see_discussions = TRUE AND groups.parent_id IN (:user_group_ids))' if or_subgroups}", user_group_ids: user.group_ids)

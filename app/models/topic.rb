@@ -71,6 +71,10 @@ class Topic < ApplicationRecord
     Array(ranges.last).last.to_i
   end
 
+  def public?
+    !self.private
+  end
+
   def drop_sequence_id_sequence
     SequenceService.drop_seq!('topic_sequence_id', id)
   end

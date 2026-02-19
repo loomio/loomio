@@ -414,8 +414,8 @@ class Api::V1::DiscussionsControllerTest < ActionController::TestCase
     post :close, params: { id: discussion.id }
     
     assert_response :success
-    assert_not_nil discussion.reload.closed_at
-    
+    assert_not_nil discussion.topic.reload.closed_at
+
     json = JSON.parse(response.body)
     assert_includes json.keys, 'events'
   end

@@ -57,8 +57,8 @@ class Discussion < ApplicationRecord
   scope :order_by_pinned_then_latest_activity, -> { joins(:topic).order('topics.pinned_at, topics.last_activity_at DESC') }
   scope :recent, -> { joins(:topic).where('topics.last_activity_at > ?', 6.weeks.ago) }
 
-  scope :visible_to_public, -> { kept.where(private: false) }
-  scope :not_visible_to_public, -> { kept.where(private: true) }
+  scope :visible_to_public, -> { kept.joins(:topic).where(topics: { private: false }) }
+  scope :not_visible_to_public, -> { kept.joins(:topic).where(topics: { private: true }) }
 
   scope :is_open, -> { kept.joins(:topic).where('topics.closed_at IS NULL') }
   scope :is_closed, -> { kept.joins(:topic).where('topics.closed_at IS NOT NULL') }
@@ -71,12 +71,12 @@ class Discussion < ApplicationRecord
   is_mentionable  on: :description
   is_translatable on: %i[title description], load_via: :find_by_key!, id_field: :key
   is_rich_text    on: :description
-  has_paper_trail only: %i[title description description_format private author_id tags attachments]
+  has_paper_trail only: %i[title description description_format author_id tags attachments]
 
   belongs_to :topic, optional: true, autosave: true
   belongs_to :author, class_name: 'User'
   belongs_to :user, foreign_key: 'author_id'
-  delegate :closed_at, :closer_id, :closer, :pinned_at, to: :topic, allow_nil: true
+
   has_many :polls, primary_key: :topic_id, foreign_key: :topic_id, dependent: :destroy
   has_many :active_polls, -> { where(closed_at: nil) }, class_name: 'Poll', primary_key: :topic_id, foreign_key: :topic_id
 
@@ -254,8 +254,9 @@ class Discussion < ApplicationRecord
     topic&.drop_sequence_id_sequence
   end
 
-  def public?
-    !private
+  def private=(val)
+    @pending_private = val
+    topic.private = val if topic
   end
 
   def discussion
@@ -279,7 +280,7 @@ class Discussion < ApplicationRecord
   end
 
   def is_new_version?
-    (%w[title description private] & changes.keys).any?
+    (%w[title description] & changes.keys).any? || topic&.private_changed?
   end
 
   private
@@ -300,7 +301,7 @@ class Discussion < ApplicationRecord
       end
       return
     end
-    t = Topic.create!(topicable: self, group_id: group_id, max_depth: 2, newest_first: false, last_activity_at: created_at)
+    t = Topic.create!(topicable: self, group_id: group_id, private: @pending_private.nil? ? true : @pending_private, max_depth: 2, newest_first: false, last_activity_at: created_at)
     update_column(:topic_id, t.id)
     self.topic = t
   end
@@ -354,9 +355,11 @@ class Discussion < ApplicationRecord
   end
 
   def privacy_is_permitted_by_group
-    errors.add(:private, 'must be private') if public? and group.private_discussions_only?
+    is_private = topic ? topic.private : @pending_private
+    is_private = true if is_private.nil?
+    errors.add(:private, 'must be private') if !is_private and group.private_discussions_only?
 
-    return unless private? and group.public_discussions_only?
+    return unless is_private and group.public_discussions_only?
 
     errors.add(:private, 'must be public')
   end

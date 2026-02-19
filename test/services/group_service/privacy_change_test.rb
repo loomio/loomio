@@ -44,7 +44,7 @@ class GroupService::PrivacyChangeTest < ActiveSupport::TestCase
     privacy_change.commit!
 
     # Verify discussions are now private
-    assert Discussion.joins(:topic).where(topics: { group_id: group.id_and_subgroup_ids }).all?(&:private?)
+    assert Topic.where(group_id: group.id_and_subgroup_ids).all?(&:private?)
   end
 
   test "makes all public subgroups closed and visible to parent members when is_visible_to_public changes to false" do
@@ -105,7 +105,7 @@ class GroupService::PrivacyChangeTest < ActiveSupport::TestCase
     privacy_change.commit!
 
     # Verify discussions are private
-    assert group.discussions.all?(&:private?)
+    assert group.topics.all?(&:private?)
   end
 
   test "makes discussions public when discussion_privacy_options changes to public_only" do
@@ -129,6 +129,6 @@ class GroupService::PrivacyChangeTest < ActiveSupport::TestCase
     privacy_change.commit!
 
     # Verify discussions are public
-    assert group.discussions.all?(&:public?)
+    assert group.topics.all?(&:public?)
   end
 end

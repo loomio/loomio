@@ -45,21 +45,14 @@ class Api::V1::EventsController < Api::V1::RestfulController
   private
 
   def load_and_authorize_topic
-    if params[:discussion_id] || params[:discussion_key]
-      @discussion = load_and_authorize(:discussion)
-      @topic = @discussion.topic
-    elsif params[:poll_id] || params[:poll_key]
-      @poll = load_and_authorize(:poll)
-      @topic = @poll.topic
-    elsif params[:topic_id]
+    if params[:topic_id]
       @topic = Topic.find(params[:topic_id])
-      # Authorize via topicable
-      if @topic.topicable_type == 'Discussion'
-        load_and_authorize(:discussion, id: @topic.topicable_id)
-      elsif @topic.topicable_type == 'Poll'
-        load_and_authorize(:poll, id: @topic.topicable_id)
-      end
+    elsif params[:discussion_id] || params[:discussion_key]
+      @topic = ModelLocator.new(:discussion, params).locate!.topic
+    elsif params[:poll_id] || params[:poll_key]
+      @topic = ModelLocator.new(:poll, params).locate!.topic
     end
+    current_user.ability.authorize!(:show, @topic)
   end
 
   def order

@@ -156,7 +156,7 @@ export default {
     Records.events.remote.fetch({
       path: 'timeline',
       params: {
-        discussion_id: this.discussion.id
+        topic_id: this.discussion.topicId
     }}).then(data => {
       bootData = data;
       return this.buildItems(bootData);

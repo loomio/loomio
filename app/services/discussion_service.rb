@@ -127,8 +127,8 @@ class DiscussionService
     actor.ability.authorize! :move, discussion
 
     Discussion.transaction do
-      discussion.topic.update!(group_id: destination.present? ? destination.id : nil)
-      discussion.update private: moved_discussion_privacy_for(discussion, destination)
+      discussion.topic.update!(group_id: destination.present? ? destination.id : nil,
+                               private: moved_discussion_privacy_for(discussion, destination))
       ActiveStorage::Attachment.where(record: discussion.items.map(&:eventable).concat([discussion])).update_all(group_id: destination.id)
 
       GenericWorker.perform_async('PollService', 'group_members_added', discussion.group_id) if discussion.group_id
@@ -205,7 +205,7 @@ class DiscussionService
     case destination.discussion_privacy_options
     when 'public_only'  then false
     when 'private_only' then true
-    else                     discussion.private
+    else                     discussion.topic.private
     end
   end
 

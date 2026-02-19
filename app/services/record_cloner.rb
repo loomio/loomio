@@ -210,12 +210,8 @@ class RecordCloner
       tags
     ]
 
-    required_values = {
-      private: true
-    }
-
     attachments = [:files, :image_files]
-    new_clone(discussion, copy_fields, required_values, attachments)
+    new_clone(discussion, copy_fields, {}, attachments)
   end
 
   def new_clone_discussion_and_events(discussion)

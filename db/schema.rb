@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_02_19_230000) do
+ActiveRecord::Schema[8.0].define(version: 2026_02_19_200000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -251,7 +251,6 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_19_230000) do
     t.string "title", limit: 255
     t.datetime "last_comment_at", precision: nil
     t.text "description"
-    t.boolean "private", default: true, null: false
     t.string "key", limit: 255
     t.string "iframe_src", limit: 255
     t.integer "versions_count", default: 0
@@ -276,7 +275,6 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_19_230000) do
     t.index ["created_at"], name: "index_discussions_on_created_at"
     t.index ["discarded_at"], name: "index_discussions_on_discarded_at", where: "(discarded_at IS NULL)"
     t.index ["key"], name: "index_discussions_on_key", unique: true
-    t.index ["private"], name: "index_discussions_on_private"
     t.index ["tags"], name: "index_discussions_on_tags", using: :gin
     t.index ["template"], name: "index_discussions_on_template", where: "(template IS TRUE)"
     t.index ["topic_id"], name: "index_discussions_on_topic_id"
@@ -972,6 +970,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_19_230000) do
     t.datetime "closed_at", precision: nil
     t.integer "closer_id"
     t.datetime "pinned_at", precision: nil
+    t.boolean "private", default: true, null: false
     t.integer "group_id"
     t.index ["group_id"], name: "index_topics_on_group_id"
     t.index ["topicable_type", "topicable_id"], name: "index_topics_on_topicable_type_and_topicable_id", unique: true

@@ -78,6 +78,10 @@ class DiscussionSerializer < ApplicationSerializer
     object.topic&.pinned_at
   end
 
+  def private
+    object.topic&.private
+  end
+
   def closer
     object.topic&.closer
   end

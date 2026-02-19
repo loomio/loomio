@@ -23,6 +23,7 @@ module Ability
     prepend Ability::PollTemplate
     prepend Ability::DiscussionTemplate
     prepend Ability::ReceivedEmail
+    prepend Ability::Topic
 
     def initialize(user)
       @user = user

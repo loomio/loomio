@@ -13,17 +13,14 @@ class ContactableQuery
     ids = []
     ids.concat(user.all_memberships.pluck(:group_id))
     ids.concat(user.membership_requests.pluck(:group_id))
-    ids.concat(user.discussions.joins(:topic).pluck('topics.group_id'))
-    ids.concat(user.group_polls.joins(:topic).pluck('topics.group_id'))
-    ids.concat(user.guest_discussions.joins(:topic).pluck('topics.group_id'))
-    ids.concat(user.participated_polls.joins(:topic).pluck('topics.group_id'))
+    ids.concat(Topic.where(id: user.guest_topic_ids).pluck(:group_id))
     ids.flatten.compact.uniq
   end
 
   def self.discussion_ids(user)
-    %w[discussions guest_discussions].map do |relation|
-      user.send(relation).pluck(:id)
-    end.flatten.uniq
+    ids = user.discussions.pluck(:id)
+    ids.concat(Topic.where(id: user.guest_topic_ids, topicable_type: 'Discussion').pluck(:topicable_id))
+    ids.uniq
   end
 
   def self.poll_ids(user)

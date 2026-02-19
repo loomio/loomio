@@ -5,6 +5,7 @@ test_discussion_topic:
   items_count: 0
   max_depth: 2
   newest_first: false
+  private: true
   last_activity_at: <%= 10.days.ago %>
   created_at: <%= 10.days.ago %>
   updated_at: <%= 1.day.ago %>
@@ -15,6 +16,7 @@ public_discussion_topic:
   items_count: 0
   max_depth: 2
   newest_first: false
+  private: false
   last_activity_at: <%= 10.days.ago %>
   created_at: <%= 10.days.ago %>
   updated_at: <%= 1.day.ago %>
@@ -25,6 +27,7 @@ private_discussion_topic:
   items_count: 0
   max_depth: 2
   newest_first: false
+  private: true
   last_activity_at: <%= 10.days.ago %>
   created_at: <%= 10.days.ago %>
   updated_at: <%= 1.day.ago %>
@@ -35,6 +38,7 @@ discarded_discussion_topic:
   items_count: 0
   max_depth: 2
   newest_first: false
+  private: true
   last_activity_at: <%= 10.days.ago %>
   created_at: <%= 10.days.ago %>
   updated_at: <%= 1.day.ago %>
@@ -45,6 +49,7 @@ old_discussion_topic:
   items_count: 0
   max_depth: 2
   newest_first: false
+  private: true
   last_activity_at: <%= 4.months.ago %>
   created_at: <%= 4.months.ago %>
   updated_at: <%= 4.months.ago %>
@@ -55,6 +60,7 @@ subgroup_discussion_topic:
   items_count: 0
   max_depth: 2
   newest_first: false
+  private: true
   last_activity_at: <%= 5.days.ago %>
   created_at: <%= 5.days.ago %>
   updated_at: <%= 1.day.ago %>

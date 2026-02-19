@@ -1,7 +1,9 @@
 class Api::V1::SearchController < Api::V1::RestfulController
   def index
+    guest_discussion_ids = Topic.where(id: current_user.guest_topic_ids, topicable_type: 'Discussion').pluck(:topicable_id)
+
     if group_or_org_id.to_i == 0
-      rel = PgSearch.multisearch(params[:query]).where("group_id is null and discussion_id IN (:discussion_ids)", discussion_ids: current_user.guest_discussion_ids)
+      rel = PgSearch.multisearch(params[:query]).where("group_id is null and discussion_id IN (:discussion_ids)", discussion_ids: guest_discussion_ids)
     end
 
     if group_or_org_id.to_i > 0
@@ -9,7 +11,7 @@ class Api::V1::SearchController < Api::V1::RestfulController
     end
 
     if group_or_org_id.blank?
-      rel = PgSearch.multisearch(params[:query]).where("group_id IN (:group_ids) OR discussion_id in (:discussion_ids)", group_ids: group_ids, discussion_ids: current_user.guest_discussion_ids)
+      rel = PgSearch.multisearch(params[:query]).where("group_id IN (:group_ids) OR discussion_id in (:discussion_ids)", group_ids: group_ids, discussion_ids: guest_discussion_ids)
     end
 
     if params[:tag]

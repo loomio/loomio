@@ -41,7 +41,7 @@ class Views::Groups::Show < Views::Application::Layout
           div(class: "discussions-panel__content") do
             div(class: "discussions-panel__list thread-preview-collection__container") do
               div(class: "v-list thread-previews v-sheet v-sheet--tile theme--auto v-list--two-line", role: "list") do
-                @group.discussions.kept.where(private: false).joins(:topic).order("topics.last_activity_at desc nulls last").limit(50).each do |discussion|
+                @group.discussions.kept.joins(:topic).where(topics: { private: false }).order("topics.last_activity_at desc nulls last").limit(50).each do |discussion|
                   a(class: "thread-preview thread-preview__link v-list-item v-list-item--link theme--auto", href: discussion_url(discussion), role: "listitem", tabindex: "0") do
                     div(class: "v-list-item__avatar") do
                       render Views::EventMailer::Common::Avatar.new(user: discussion.author)
