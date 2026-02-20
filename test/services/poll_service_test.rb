@@ -14,7 +14,7 @@ class PollServiceTest < ActiveSupport::TestCase
   test "creates stance by user id" do
     poll = create_specified_voters_poll
     member = create_unique_user("stancemember")
-    @group.add_admin!(@user)
+
     @group.add_member!(member)
 
     assert_equal 0, Stance.where(participant_id: member.id, poll: poll).where(revoked_at: nil).count
@@ -25,7 +25,7 @@ class PollServiceTest < ActiveSupport::TestCase
   test "creates stance by email" do
     poll = create_specified_voters_poll
     member = create_unique_user("stanceemail")
-    @group.add_admin!(@user)
+
     @group.add_member!(member)
 
     PollService.create_stances(poll: poll, actor: @user, emails: [member.email])
@@ -35,7 +35,7 @@ class PollServiceTest < ActiveSupport::TestCase
   test "creates stance by audience" do
     poll = create_specified_voters_poll
     member = create_unique_user("stanceaudience")
-    @group.add_admin!(@user)
+
     @group.add_member!(member)
 
     PollService.create_stances(poll: poll, actor: @user, audience: 'group')
@@ -45,7 +45,7 @@ class PollServiceTest < ActiveSupport::TestCase
   test "only creates stances once per user" do
     poll = create_specified_voters_poll
     member = create_unique_user("stanceonce")
-    @group.add_admin!(@user)
+
     @group.add_member!(member)
 
     PollService.create_stances(poll: poll, actor: @user, user_ids: [member.id])
@@ -60,7 +60,7 @@ class PollServiceTest < ActiveSupport::TestCase
   test "creates stances for specified voters" do
     poll = create_specified_voters_poll
     member = create_unique_user("voldefault")
-    @group.add_admin!(@user)
+
     @group.add_member!(member)
 
     PollService.create_stances(poll: poll, actor: @user, user_ids: [member.id])
@@ -366,7 +366,7 @@ class PollServiceTest < ActiveSupport::TestCase
   # -- invite to scheduled poll --
 
   test "invite to scheduled poll creates stances but does not send poll_announced" do
-    @group.add_admin!(@user)
+
     poll = Poll.new(
       title: "Scheduled Invite",
       poll_type: "proposal",
@@ -399,7 +399,7 @@ class PollServiceTest < ActiveSupport::TestCase
   # -- email delivery --
 
   test "open_scheduled_polls delivers emails to voters when notify_on_open is true" do
-    @group.add_admin!(@user)
+
     member = create_unique_user("emailvoter")
     @group.add_member!(member)
 
@@ -425,7 +425,7 @@ class PollServiceTest < ActiveSupport::TestCase
   end
 
   test "open_scheduled_polls delivers no emails to voters when notify_on_open is false" do
-    @group.add_admin!(@user)
+
     member = create_unique_user("noemailvoter")
     @group.add_member!(member)
 

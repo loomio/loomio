@@ -24,7 +24,6 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
 
   test "update admins can edit user content true" do
     sign_in @user
-    @group.add_admin!(@user)
     @group.update(admins_can_edit_user_content: true)
     comment_params = { body: "updated content" }
     post :update, params: { id: @another_comment.id, comment: comment_params }
@@ -34,7 +33,6 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
 
   test "update admins can edit user content false" do
     sign_in @user
-    @group.add_admin!(@user)
     @group.update(admins_can_edit_user_content: false)
     comment_params = { body: "updated content" }
     post :update, params: { id: @another_comment.id, comment: comment_params }

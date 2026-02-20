@@ -92,9 +92,8 @@ class Dev::PollsController < Dev::NightwatchController
       group.add_member! user
     end
 
-    discussion = fake_discussion(group: group)
-
-    DiscussionService.create(discussion: discussion, actor: admin)
+    result = DiscussionService.create(params: {group_id: group.id, title: Faker::Quote.yoda.truncate(150), private: true}, actor: admin)
+    discussion = result[:discussion]
 
     # select poll type here
     poll = fake_poll(group: group, discussion: discussion, author: admin)
@@ -110,16 +109,16 @@ class Dev::PollsController < Dev::NightwatchController
   def test_discussion
     group = create_group_with_members
     sign_in group.admins.first
-    discussion = saved fake_discussion(group: group, author: group.admins.first)
-    DiscussionService.create(discussion: discussion, actor: discussion.author)
+    result = DiscussionService.create(params: {group_id: group.id, title: Faker::Quote.yoda.truncate(150), private: true}, actor: group.admins.first)
+    discussion = result[:discussion]
     redirect_to discussion_url(discussion)
   end
 
   def test_poll_in_discussion
     group = create_group_with_members
     sign_in group.admins.first
-    discussion = saved fake_discussion(group: group, author: group.admins.first)
-    DiscussionService.create(discussion: discussion, actor: discussion.author)
+    result = DiscussionService.create(params: {group_id: group.id, title: Faker::Quote.yoda.truncate(150), private: true}, actor: group.admins.first)
+    discussion = result[:discussion]
     poll = saved fake_poll(discussion: discussion)
     stance = saved fake_stance(poll: poll)
     StanceService.create(stance: stance, actor: group.members.last)
@@ -155,8 +154,8 @@ class Dev::PollsController < Dev::NightwatchController
     user = fake_user
     group = saved fake_group
     group.add_admin! user
-    discussion = saved fake_discussion(group: group)
-    DiscussionService.create(discussion: discussion, actor: discussion.author)
+    result = DiscussionService.create(params: {group_id: group.id, title: Faker::Quote.yoda.truncate(150), private: true}, actor: user)
+    discussion = result[:discussion]
 
     sign_in user
     create_activity_items(discussion: discussion, actor: user)

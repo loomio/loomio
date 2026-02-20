@@ -7,8 +7,6 @@ class Api::V1::EventsControllerTest < ActionController::TestCase
     @group = groups(:test_group)
     @public_group = groups(:public_group)
 
-    @public_group.add_admin!(@user)
-
     @discussion = discussions(:test_discussion)
     @public_discussion = create_discussion(group: @public_group, author: @user, private: false)
   end

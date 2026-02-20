@@ -6,8 +6,7 @@ class Api::V1::OutcomesControllerTest < ActionController::TestCase
     @another_user = users(:another_user)
     @non_member_user = User.create!(name: "Non Member", username: "nonmember", email: "nonmember@example.com")
     @group = groups(:test_group)
-    @group.add_member! @user unless @group.members.include?(@user)
-    @discussion = create_discussion(group: @group, author: @user)
+    @discussion = discussions(:test_discussion)
     
     # Create poll
     @poll = Poll.new(
@@ -99,7 +98,7 @@ class Api::V1::OutcomesControllerTest < ActionController::TestCase
     assert_response :success
 
     outcome = Outcome.find(JSON.parse(response.body)['outcomes'][0]['id'])
-    assert_equal 3, outcome.created_event.notifications.count
+    assert_equal 4, outcome.created_event.notifications.count
   end
   
   test "create does not allow creating an invalid outcome" do

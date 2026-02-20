@@ -4,7 +4,6 @@ class Queries::UsersByVolumeQueryTest < ActiveSupport::TestCase
   setup do
     @group = groups(:test_group)
     @author = users(:discussion_author)
-    @group.add_admin!(@author)
     @discussion = create_discussion(group: @group, author: @author)
 
     def new_user(name)

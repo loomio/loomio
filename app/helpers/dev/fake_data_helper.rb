@@ -408,8 +408,8 @@ module Dev::FakeDataHelper
   def create_discussion_with_nested_comments
     group = create_group_with_members
     group.reload
-    discussion    = saved fake_discussion(group: group)
-    DiscussionService.create(discussion: discussion, actor: group.admins.first)
+    result = DiscussionService.create(params: {group_id: group.id, title: Faker::Quote.yoda.truncate(150), private: true}, actor: group.admins.first)
+    discussion = result[:discussion]
 
     15.times do
       parent_author = fake_user
@@ -433,8 +433,8 @@ module Dev::FakeDataHelper
   def create_discussion_with_sampled_comments
     group = create_group_with_members
 
-    discussion = saved fake_discussion(group: group)
-    DiscussionService.create(discussion: discussion, actor: group.admins.first)
+    result = DiscussionService.create(params: {group_id: group.id, title: Faker::Quote.yoda.truncate(150), private: true}, actor: group.admins.first)
+    discussion = result[:discussion]
     discussion.update(max_depth: 3)
 
     5.times do

@@ -23,8 +23,8 @@ module Dev::DashboardHelper
     if existing = instance_variable_get(var_name)
       existing
     else
-      instance_variable_set(var_name, Discussion.create!(title: name.to_s.humanize, group: group, author: author, private: false).tap do |discussion|
-        DiscussionService.create(discussion: discussion, actor: discussion.author)
+      result = DiscussionService.create(params: {group_id: group.id, title: name.to_s.humanize, private: false}, actor: author)
+      instance_variable_set(var_name, result[:discussion].tap do |discussion|
         yield discussion if block_given?
       end)
     end

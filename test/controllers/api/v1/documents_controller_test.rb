@@ -10,134 +10,80 @@ class Api::V1::DocumentsControllerTest < ActionController::TestCase
     another_user = users(:another_user)
     group = groups(:test_group)
     group.update(group_privacy: 'open')
-    
-    # Create discussions
-    public_discussion = create_discussion(group: group, author: user, private: false)
-    private_discussion = create_discussion(group: group, author: user, private: true)
-    
+
+    # Create public discussions (open groups only allow public)
+    discussion1 = create_discussion(group: group, author: user, private: false)
+    discussion2 = create_discussion(group: group, author: user, private: false)
+
     # Create documents
-    group_document = Document.create!(
-      model: group,
-      author: user,
-      title: "Group Document",
-      url: "https://example.com/group.pdf",
-      doctype: "pdf",
-      color: "#000000"
-    )
-    public_discussion_document = Document.create!(
-      model: public_discussion,
-      author: user,
-      title: "Public Discussion Document",
-      url: "https://example.com/public.pdf",
-      doctype: "pdf",
-      color: "#000000"
-    )
-    private_discussion_document = Document.create!(
-      model: private_discussion,
-      author: user,
-      title: "Private Discussion Document",
-      url: "https://example.com/private.pdf",
-      doctype: "pdf",
-      color: "#000000"
-    )
-    
+    group_document = Document.create!(model: group, author: user, title: "Group Document",
+      url: "https://example.com/group.pdf", doctype: "pdf", color: "#000000")
+    disc1_document = Document.create!(model: discussion1, author: user, title: "Disc 1 Document",
+      url: "https://example.com/disc1.pdf", doctype: "pdf", color: "#000000")
+    disc2_document = Document.create!(model: discussion2, author: user, title: "Disc 2 Document",
+      url: "https://example.com/disc2.pdf", doctype: "pdf", color: "#000000")
+
     sign_in another_user
     get :for_group, params: { group_id: group.id }
     json = JSON.parse(response.body)
     document_ids = json['documents'].map { |d| d['id'] }
-    
+
     assert_includes document_ids, group_document.id
-    assert_includes document_ids, public_discussion_document.id
-    assert_includes document_ids, private_discussion_document.id
+    assert_includes document_ids, disc1_document.id
+    assert_includes document_ids, disc2_document.id
   end
-  
+
   test "for_group displays all documents for members in open group" do
     user = users(:normal_user)
     group = groups(:test_group)
     group.update(group_privacy: 'open')
-    
-    # Create discussions
-    public_discussion = create_discussion(group: group, author: user, private: false)
-    private_discussion = create_discussion(group: group, author: user, private: true)
-    
+
+    # Create public discussions (open groups only allow public)
+    discussion1 = create_discussion(group: group, author: user, private: false)
+    discussion2 = create_discussion(group: group, author: user, private: false)
+
     # Create documents
-    group_document = Document.create!(
-      model: group,
-      author: user,
-      title: "Group Document",
-      url: "https://example.com/group.pdf",
-      doctype: "pdf",
-      color: "#000000"
-    )
-    public_discussion_document = Document.create!(
-      model: public_discussion,
-      author: user,
-      title: "Public Discussion Document",
-      url: "https://example.com/public.pdf",
-      doctype: "pdf",
-      color: "#000000"
-    )
-    private_discussion_document = Document.create!(
-      model: private_discussion,
-      author: user,
-      title: "Private Discussion Document",
-      url: "https://example.com/private.pdf",
-      doctype: "pdf",
-      color: "#000000"
-    )
-    
+    group_document = Document.create!(model: group, author: user, title: "Group Document",
+      url: "https://example.com/group.pdf", doctype: "pdf", color: "#000000")
+    disc1_document = Document.create!(model: discussion1, author: user, title: "Disc 1 Document",
+      url: "https://example.com/disc1.pdf", doctype: "pdf", color: "#000000")
+    disc2_document = Document.create!(model: discussion2, author: user, title: "Disc 2 Document",
+      url: "https://example.com/disc2.pdf", doctype: "pdf", color: "#000000")
+
     sign_in user
     get :for_group, params: { group_id: group.id }
     json = JSON.parse(response.body)
     document_ids = json['documents'].map { |d| d['id'] }
-    
+
     assert_includes document_ids, group_document.id
-    assert_includes document_ids, public_discussion_document.id
-    assert_includes document_ids, private_discussion_document.id
+    assert_includes document_ids, disc1_document.id
+    assert_includes document_ids, disc2_document.id
   end
   
   test "for_group displays all documents for visitors in open group" do
     user = users(:normal_user)
     group = groups(:test_group)
     group.update(group_privacy: 'open')
-    
-    # Create discussions
-    public_discussion = create_discussion(group: group, author: user, private: false)
-    private_discussion = create_discussion(group: group, author: user, private: true)
-    
+
+    # Create public discussions (open groups only allow public)
+    discussion1 = create_discussion(group: group, author: user, private: false)
+    discussion2 = create_discussion(group: group, author: user, private: false)
+
     # Create documents
-    group_document = Document.create!(
-      model: group,
-      author: user,
-      title: "Group Document",
-      url: "https://example.com/group.pdf",
-      doctype: "pdf",
-      color: "#000000"
-    )
-    public_discussion_document = Document.create!(
-      model: public_discussion,
-      author: user,
-      title: "Public Discussion Document",
-      url: "https://example.com/public.pdf",
-      doctype: "pdf",
-      color: "#000000"
-    )
-    private_discussion_document = Document.create!(
-      model: private_discussion,
-      author: user,
-      title: "Private Discussion Document",
-      url: "https://example.com/private.pdf",
-      doctype: "pdf",
-      color: "#000000"
-    )
-    
+    group_document = Document.create!(model: group, author: user, title: "Group Document",
+      url: "https://example.com/group.pdf", doctype: "pdf", color: "#000000")
+    disc1_document = Document.create!(model: discussion1, author: user, title: "Disc 1 Document",
+      url: "https://example.com/disc1.pdf", doctype: "pdf", color: "#000000")
+    disc2_document = Document.create!(model: discussion2, author: user, title: "Disc 2 Document",
+      url: "https://example.com/disc2.pdf", doctype: "pdf", color: "#000000")
+
     get :for_group, params: { group_id: group.id }
     json = JSON.parse(response.body)
     document_ids = json['documents'].map { |d| d['id'] }
-    
+
     assert_includes document_ids, group_document.id
-    assert_includes document_ids, public_discussion_document.id
-    assert_includes document_ids, private_discussion_document.id
+    assert_includes document_ids, disc1_document.id
+    assert_includes document_ids, disc2_document.id
   end
   
   # Closed group tests
@@ -145,10 +91,10 @@ class Api::V1::DocumentsControllerTest < ActionController::TestCase
     user = users(:normal_user)
     group = groups(:test_group)
     group.update(group_privacy: 'closed')
-    
+
     # Create discussions
-    public_discussion = create_discussion(group: group, author: user, private: false)
-    private_discussion = create_discussion(group: group, author: user, private: true)
+    discussion1 = create_discussion(group: group, author: user, private: true)
+    discussion2 = create_discussion(group: group, author: user, private: true)
     
     # Create documents
     group_document = Document.create!(
@@ -159,129 +105,90 @@ class Api::V1::DocumentsControllerTest < ActionController::TestCase
       doctype: "pdf",
       color: "#000000"
     )
-    public_discussion_document = Document.create!(
-      model: public_discussion,
+    discussion1_document = Document.create!(
+      model: discussion1,
       author: user,
-      title: "Public Discussion Document",
-      url: "https://example.com/public.pdf",
+      title: "Discussion 1 Document",
+      url: "https://example.com/disc1.pdf",
       doctype: "pdf",
       color: "#000000"
     )
-    private_discussion_document = Document.create!(
-      model: private_discussion,
+    discussion2_document = Document.create!(
+      model: discussion2,
       author: user,
-      title: "Private Discussion Document",
-      url: "https://example.com/private.pdf",
+      title: "Discussion 2 Document",
+      url: "https://example.com/disc2.pdf",
       doctype: "pdf",
       color: "#000000"
     )
-    
+
     sign_in user
     get :for_group, params: { group_id: group.id }
     json = JSON.parse(response.body)
     document_ids = json['documents'].map { |d| d['id'] }
-    
+
     assert_includes document_ids, group_document.id
-    assert_includes document_ids, public_discussion_document.id
-    assert_includes document_ids, private_discussion_document.id
+    assert_includes document_ids, discussion1_document.id
+    assert_includes document_ids, discussion2_document.id
   end
-  
+
   # Secret group tests
   test "for_group unauthorized for non-members in secret group" do
     user = users(:normal_user)
     another_user = users(:another_user)
     group = groups(:test_group)
     group.update(group_privacy: 'secret')
-    
+
     # Create discussions
-    public_discussion = create_discussion(group: group, author: user, private: false)
-    private_discussion = create_discussion(group: group, author: user, private: true)
-    
+    discussion = create_discussion(group: group, author: user, private: true)
+
     # Create documents
-    Document.create!(
-      model: group,
-      author: user,
-      title: "Group Document",
-      url: "https://example.com/group.pdf",
-      doctype: "pdf",
-      color: "#000000"
-    )
-    Document.create!(
-      model: public_discussion,
-      author: user,
-      title: "Public Discussion Document",
-      url: "https://example.com/public.pdf",
-      doctype: "pdf",
-      color: "#000000"
-    )
-    Document.create!(
-      model: private_discussion,
-      author: user,
-      title: "Private Discussion Document",
-      url: "https://example.com/private.pdf",
-      doctype: "pdf",
-      color: "#000000"
-    )
-    
+    Document.create!(model: group, author: user, title: "Group Document",
+      url: "https://example.com/group.pdf", doctype: "pdf", color: "#000000")
+    Document.create!(model: discussion, author: user, title: "Discussion Document",
+      url: "https://example.com/disc.pdf", doctype: "pdf", color: "#000000")
+
     # Remove another_user from group
     group.memberships.where(user: another_user).destroy_all
-    
+
     sign_in another_user
     get :for_group, params: { group_id: group.id }
-    
+
     assert_response :forbidden
   end
-  
+
   test "for_group displays all documents for members in secret group" do
     user = users(:normal_user)
     group = groups(:test_group)
     group.update(group_privacy: 'secret')
-    
+
     # Create discussions
-    public_discussion = create_discussion(group: group, author: user, private: false)
-    private_discussion = create_discussion(group: group, author: user, private: true)
-    
+    discussion1 = create_discussion(group: group, author: user, private: true)
+    discussion2 = create_discussion(group: group, author: user, private: true)
+
     # Create documents
-    group_document = Document.create!(
-      model: group,
-      author: user,
-      title: "Group Document",
-      url: "https://example.com/group.pdf",
-      doctype: "pdf",
-      color: "#000000"
-    )
-    public_discussion_document = Document.create!(
-      model: public_discussion,
-      author: user,
-      title: "Public Discussion Document",
-      url: "https://example.com/public.pdf",
-      doctype: "pdf",
-      color: "#000000"
-    )
-    private_discussion_document = Document.create!(
-      model: private_discussion,
-      author: user,
-      title: "Private Discussion Document",
-      url: "https://example.com/private.pdf",
-      doctype: "pdf",
-      color: "#000000"
-    )
-    
+    group_document = Document.create!(model: group, author: user, title: "Group Document",
+      url: "https://example.com/group.pdf", doctype: "pdf", color: "#000000")
+    discussion1_document = Document.create!(model: discussion1, author: user, title: "Discussion 1 Document",
+      url: "https://example.com/disc1.pdf", doctype: "pdf", color: "#000000")
+    discussion2_document = Document.create!(model: discussion2, author: user, title: "Discussion 2 Document",
+      url: "https://example.com/disc2.pdf", doctype: "pdf", color: "#000000")
+
     sign_in user
     get :for_group, params: { group_id: group.id }
     json = JSON.parse(response.body)
     document_ids = json['documents'].map { |d| d['id'] }
-    
+
     assert_includes document_ids, group_document.id
-    assert_includes document_ids, public_discussion_document.id
-    assert_includes document_ids, private_discussion_document.id
+    assert_includes document_ids, discussion1_document.id
+    assert_includes document_ids, discussion2_document.id
   end
   
   test "for_group forbidden for non-members in secret group with closed group check" do
     user = users(:normal_user)
     another_user = users(:another_user)
     group = groups(:test_group)
-    group.update(group_privacy: 'secret')
+    group.update(group_privacy: 'secret', discussion_privacy_options: 'public_or_private')
     
     # Remove another_user from group
     group.memberships.where(user: another_user).destroy_all

@@ -2,9 +2,8 @@ require 'test_helper'
 
 class OutcomeTest < ActiveSupport::TestCase
   setup do
-    @user = users(:normal_user)
+    @user = users(:group_admin)
     @group = groups(:test_group)
-    @group.add_admin!(@user)
 
     @meeting_poll = Poll.new(
       poll_type: 'meeting',

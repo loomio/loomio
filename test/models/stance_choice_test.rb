@@ -2,9 +2,8 @@ require 'test_helper'
 
 class StanceChoiceTest < ActiveSupport::TestCase
   setup do
-    @user = users(:normal_user)
+    @user = users(:group_admin)
     @group = groups(:test_group)
-    @group.add_admin!(@user)
 
     # A simple poll (min_score == max_score == 1, so has_variable_score is false)
     @poll = Poll.create!(

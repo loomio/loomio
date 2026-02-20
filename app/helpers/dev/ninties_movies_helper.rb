@@ -154,53 +154,40 @@ module Dev::NintiesMoviesHelper
 
   def create_discussion
     unless @discussion
-      @discussion = Discussion.create(title: 'What star sign are you?', private: false, group: create_group, link_previews: [{'title': 'link title', 'url': 'https://www.example.com', 'description': 'a link to a page', 'image': 'https://www.loomio.org/theme/logo.svg', 'hostname':'www.example.com'}], author: jennifer)
-      DiscussionService.create(discussion: @discussion, actor: @discussion.author)
+      result = DiscussionService.create(params: {group_id: create_group.id, title: 'What star sign are you?', private: false, link_previews: [{'title': 'link title', 'url': 'https://www.example.com', 'description': 'a link to a page', 'image': 'https://www.loomio.org/theme/logo.svg', 'hostname':'www.example.com'}]}, actor: jennifer)
+      @discussion = result[:discussion]
     end
     @discussion
   end
 
   def create_another_discussion
     unless @another_discussion
-      @another_discussion = Discussion.create(title: 'Waking Up in Reno',
-                                       private: false,
-                                       group: create_group,
-                                       author: jennifer)
-      DiscussionService.create(discussion: @another_discussion, actor: @another_discussion.author)
+      result = DiscussionService.create(params: {group_id: create_group.id, title: 'Waking Up in Reno', private: false}, actor: jennifer)
+      @another_discussion = result[:discussion]
     end
     @another_discussion
   end
 
   def create_closed_discussion
     unless @closed_discussion
-      @closed_discussion = Discussion.create(title: 'This thread is old and closed',
-                                             private: false,
-                                             closed_at: Time.now,
-                                             group: create_group,
-                                             author: jennifer)
-      DiscussionService.create(discussion: @closed_discussion, actor: @closed_discussion.author)
+      result = DiscussionService.create(params: {group_id: create_group.id, title: 'This thread is old and closed', private: false, closed_at: Time.now}, actor: jennifer)
+      @closed_discussion = result[:discussion]
     end
     @closed_discussion
   end
 
   def create_public_discussion
     unless @another_discussion
-      @another_discussion = Discussion.create!(title: "The name's Johnny Utah!",
-                                                    private: false,
-                                                    group: create_another_group,
-                                                    author: patrick)
-      DiscussionService.create(discussion: @another_discussion, actor: @another_discussion.author)
+      result = DiscussionService.create(params: {group_id: create_another_group.id, title: "The name's Johnny Utah!", private: false}, actor: patrick)
+      @another_discussion = result[:discussion]
     end
     @another_discussion
   end
 
   def private_create_discussion
     unless @another_discussion
-      @another_discussion = Discussion.create!(title: 'But are you crazy enough?',
-                                                    private: true,
-                                                    group: create_another_group,
-                                                    author: patrick)
-      DiscussionService.create(discussion: @another_discussion, actor: @another_discussion.author)
+      result = DiscussionService.create(params: {group_id: create_another_group.id, title: 'But are you crazy enough?', private: true}, actor: patrick)
+      @another_discussion = result[:discussion]
     end
     @another_discussion
   end
@@ -212,8 +199,7 @@ module Dev::NintiesMoviesHelper
                                      discussion_privacy_options: 'public_or_private',
                                      group_privacy: 'closed', creator: patrick)
       GroupService.create(group: @subgroup, actor: @subgroup.creator)
-      discussion = Discussion.new(title: "Vaya con dios", private: false, group: @subgroup, author: patrick)
-      DiscussionService.create(discussion: discussion, actor: discussion.author)
+      DiscussionService.create(params: {group_id: @subgroup.id, title: "Vaya con dios", private: false}, actor: patrick)
       @subgroup.add_admin! patrick
     end
     @subgroup
@@ -227,8 +213,7 @@ module Dev::NintiesMoviesHelper
                                              discussion_privacy_options: 'public_or_private',
                                              is_visible_to_parent_members: true, creator: patrick)
       GroupService.create(group: @another_subgroup, actor: @another_subgroup.creator)
-      discussion = Discussion.new(title: "Vaya con dios 2", private: false, group: @another_subgroup, author: patrick)
-      DiscussionService.create(discussion: discussion, actor: discussion.author)
+      DiscussionService.create(params: {group_id: @another_subgroup.id, title: "Vaya con dios 2", private: false}, actor: patrick)
       @another_subgroup.add_admin! patrick
     end
     @another_subgroup

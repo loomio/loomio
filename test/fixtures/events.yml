@@ -4,3 +4,38 @@ test_discussion_created_event:
   eventable_id: <%= ActiveRecord::FixtureSet.identify(:test_discussion) %>
   topic: test_discussion_topic
   user: discussion_author
+
+public_discussion_created_event:
+  kind: new_discussion
+  eventable_type: Discussion
+  eventable_id: <%= ActiveRecord::FixtureSet.identify(:public_discussion) %>
+  topic: public_discussion_topic
+  user: discussion_author
+
+private_discussion_created_event:
+  kind: new_discussion
+  eventable_type: Discussion
+  eventable_id: <%= ActiveRecord::FixtureSet.identify(:private_discussion) %>
+  topic: private_discussion_topic
+  user: discussion_author
+
+discarded_discussion_created_event:
+  kind: new_discussion
+  eventable_type: Discussion
+  eventable_id: <%= ActiveRecord::FixtureSet.identify(:discarded_discussion) %>
+  topic: discarded_discussion_topic
+  user: discussion_author
+
+old_discussion_created_event:
+  kind: new_discussion
+  eventable_type: Discussion
+  eventable_id: <%= ActiveRecord::FixtureSet.identify(:old_discussion) %>
+  topic: old_discussion_topic
+  user: discussion_author
+
+subgroup_discussion_created_event:
+  kind: new_discussion
+  eventable_type: Discussion
+  eventable_id: <%= ActiveRecord::FixtureSet.identify(:subgroup_discussion) %>
+  topic: subgroup_discussion_topic
+  user: discussion_author

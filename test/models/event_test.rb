@@ -13,10 +13,11 @@ class EventTest < ActiveSupport::TestCase
                                    email_verified: true, username: "sam#{SecureRandom.hex(3)}")
     @user_mentioned_text = "Hello @#{@mentioned_user.username}"
 
-    @discussion = Discussion.new(group: @group, title: "Event Test Discussion",
-                                 description: @user_mentioned_text, description_format: 'md',
-                                 private: true, author: @author)
-    DiscussionService.create(discussion: @discussion, actor: @author)
+    @discussion = DiscussionService.create(params: {
+      group_id: @group.id, title: "Event Test Discussion",
+      description: @user_mentioned_text, description_format: 'md',
+      private: true
+    }, actor: @author)[:discussion]
 
     @group.add_member!(@mentioned_user)
 

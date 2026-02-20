@@ -2,9 +2,8 @@ require 'test_helper'
 
 class PollOptionTest < ActiveSupport::TestCase
   test "does not count old stances in total score" do
-    user = users(:normal_user)
+    user = users(:group_admin)
     group = groups(:test_group)
-    group.add_admin!(user)
 
     poll = Poll.create!(
       poll_type: 'dot_vote',

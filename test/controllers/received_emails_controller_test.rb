@@ -11,8 +11,7 @@ class ReceivedEmailsControllerTest < ActionController::TestCase
     @group.add_admin!(@user)
     @group.add_member!(@another_user)
 
-    @discussion = Discussion.new(title: "RE Discussion #{hex}", group: @group, author: @user)
-    DiscussionService.create(discussion: @discussion, actor: @user)
+    @discussion = DiscussionService.create(params: { title: "RE Discussion #{hex}", group_id: @group.id }, actor: @user)[:discussion]
 
     @poll = Poll.new(
       title: "RE Poll #{hex}",

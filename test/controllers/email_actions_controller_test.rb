@@ -12,8 +12,9 @@ class EmailActionsControllerTest < ActionController::TestCase
     @group.add_member!(@author)
     @membership = Membership.find_by(group: @group, user: @user)
 
-    @discussion = Discussion.new(title: "Discussion #{hex}", group: @group, author: @author)
-    @event = DiscussionService.create(discussion: @discussion, actor: @author)
+    result = DiscussionService.create(params: { title: "Discussion #{hex}", group_id: @group.id }, actor: @author)
+    @event = result[:event]
+    @discussion = result[:discussion]
     @discussion_reader = TopicReader.for(user: @user, topic: @discussion.topic)
     ActionMailer::Base.deliveries.clear
   end

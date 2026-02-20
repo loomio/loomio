@@ -8,8 +8,7 @@ class DiscussionsControllerTest < ActionController::TestCase
     @group.creator = @user
     @group.save!
     @group.add_member!(@user)
-    @discussion = Discussion.new(title: "Test Discussion #{hex}", group: @group, author: @user, private: true)
-    DiscussionService.create(discussion: @discussion, actor: @user)
+    @discussion = DiscussionService.create(params: { title: "Test Discussion #{hex}", group_id: @group.id, private: true }, actor: @user)[:discussion]
     ActionMailer::Base.deliveries.clear
   end
 

@@ -4,8 +4,8 @@ module Dev::ScenariosHelper
   def poll_created_scenario(params)
     group = create_group_with_members
 
-    discussion = fake_discussion(group: group, title: "Some discussion")
-    DiscussionService.create(discussion: discussion, actor: group.members.first)
+    result = DiscussionService.create(params: {group_id: group.id, title: "Some discussion", private: true}, actor: group.members.first)
+    discussion = result[:discussion]
 
     actor = group.admins.first
     user  = saved(fake_user(time_zone: "America/New_York", auto_translate: true))
@@ -31,8 +31,8 @@ module Dev::ScenariosHelper
       discussion: discussion,
       group: group,
       observer: user,
-      poll: event.eventable,
-      title: event.eventable.title,
+      poll: poll,
+      title: poll.title,
       actor: actor
     }
   end
@@ -60,8 +60,8 @@ module Dev::ScenariosHelper
       observer: observer,
       group: group,
       actor: observer,
-      title: event.eventable.title,
-      poll: event.eventable
+      title: poll.title,
+      poll: poll
     }
   end
 
@@ -115,11 +115,12 @@ module Dev::ScenariosHelper
   end
 
   def poll_closing_soon_scenario(params)
-    discussion = fake_discussion(group: create_group_with_members)
+    group = create_group_with_members
     non_voter  = saved(fake_user)
-    discussion.group.add_member! non_voter
-    actor      = discussion.group.admins.first
-    DiscussionService.create(discussion: discussion, actor: actor)
+    group.add_member! non_voter
+    actor      = group.admins.first
+    result = DiscussionService.create(params: {group_id: group.id, title: Faker::Quote.yoda.truncate(150), private: true}, actor: actor)
+    discussion = result[:discussion]
     poll       = fake_poll(
       author: actor,
       poll_type: params[:poll_type],
@@ -141,7 +142,7 @@ module Dev::ScenariosHelper
 
     {
       discussion: discussion,
-      group: discussion.group,
+      group: group,
       observer: non_voter,
       actor: actor,
       poll: poll,
@@ -150,11 +151,12 @@ module Dev::ScenariosHelper
   end
 
   def poll_reminder_scenario(params)
-    discussion = fake_discussion(group: create_group_with_members)
+    group = create_group_with_members
     non_voter  = saved(fake_user)
-    discussion.group.add_member! non_voter
-    actor      = discussion.group.admins.first
-    DiscussionService.create(discussion: discussion, actor: actor)
+    group.add_member! non_voter
+    actor      = group.admins.first
+    result = DiscussionService.create(params: {group_id: group.id, title: Faker::Quote.yoda.truncate(150), private: true}, actor: actor)
+    discussion = result[:discussion]
     poll       = fake_poll(
       author: actor,
       poll_type: params[:poll_type],
@@ -177,7 +179,7 @@ module Dev::ScenariosHelper
 
     {
       discussion: discussion,
-      group: discussion.group,
+      group: group,
       observer: non_voter,
       actor: actor,
       poll: poll,
@@ -331,8 +333,8 @@ module Dev::ScenariosHelper
     user  = saved(fake_user(time_zone: "America/New_York"))
     group.add_member! user
 
-    discussion = fake_discussion(group: group, title: "Some discussion")
-    DiscussionService.create(discussion: discussion, actor: actor)
+    result = DiscussionService.create(params: {group_id: group.id, title: "Some discussion", private: true}, actor: actor)
+    discussion = result[:discussion]
 
     poll = fake_poll(
       group: group,

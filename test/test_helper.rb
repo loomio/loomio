@@ -29,24 +29,27 @@ module ActiveSupport
 
     # Helper to create a discussion with proper setup
     def create_discussion(**args)
-      discussion = Discussion.new({
+      params = {
         title: "Test Discussion",
         description: "<p>A test discussion</p>",
         description_format: "html",
         private: true
-      }.merge(args))
+      }.merge(args)
 
       # Set defaults if not provided
-      discussion.author ||= users(:discussion_author)
-      discussion.group ||= groups(:test_group)
+      params[:author] ||= users(:discussion_author)
+      params[:group] ||= groups(:test_group)
+
+      author = params.delete(:author)
+      group = params.delete(:group)
+      params[:group_id] ||= group.id
 
       # Ensure author is a member of the group
-      unless discussion.group.members.include?(discussion.author)
-        discussion.group.add_member!(discussion.author)
+      unless group.members.include?(author)
+        group.add_member!(author)
       end
 
-      DiscussionService.create(discussion: discussion, actor: discussion.author)
-      discussion
+      DiscussionService.create(params: params, actor: author)[:discussion]
     end
 
     # Email helper methods

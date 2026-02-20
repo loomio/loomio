@@ -6,8 +6,8 @@ class MembershipServiceTest < ActiveSupport::TestCase
     @user = users(:another_user)
     @group = Group.create!(
       name: 'Test Group',
-      discussion_privacy_options: 'public_only',
-      is_visible_to_public: true,
+      discussion_privacy_options: 'private_only',
+      is_visible_to_public: false,
       membership_granted_upon: 'request',
       handle: "testgroup-#{SecureRandom.hex(4)}"
     )

@@ -2,11 +2,9 @@ require 'test_helper'
 
 class Api::B2::PollsControllerTest < ActionController::TestCase
   setup do
-    @admin = users(:normal_user)
+    @admin = users(:group_admin)
     @member = users(:another_user)
     @group = groups(:test_group)
-    @group.add_admin!(@admin)
-    @group.add_member!(@member)
 
     hex = SecureRandom.hex(4)
     @bot = User.create!(name: "bot#{hex}", email: "bot#{hex}@example.com", username: "bot#{hex}", email_verified: true, bot: true)

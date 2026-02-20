@@ -1,6 +1,7 @@
 # Users fixtures for testing
 # encrypted_password generated with: BCrypt::Password.create('complex_password')
 normal_user:
+  key: normukey
   name: normal user
   email: normaluser@example.com
   legal_accepted_at: <%= 30.days.ago %>
@@ -8,10 +9,15 @@ normal_user:
   time_zone: Pacific/Tarawa
   email_verified: true
   username: normal_user
+  unsubscribe_token: normaluserunsubtoken12345678
+  email_api_key: normaluseremailapikey1234567
+  api_key: normaluserapikey123456789012
+  secret_token: normalusersecrettoken1234567
   created_at: <%= 30.days.ago %>
   updated_at: <%= 1.day.ago %>
 
 another_user:
+  key: anothuky
   name: Another user
   email: anotheruser@example.com
   legal_accepted_at: <%= 30.days.ago %>
@@ -19,10 +25,15 @@ another_user:
   time_zone: Pacific/Tarawa
   email_verified: true
   username: another_user
+  unsubscribe_token: anotheruserunsubtoken123456
+  email_api_key: anotheruseremailapikey12345
+  api_key: anotheruserapikey12345678901
+  secret_token: anotherusersecrettoken123456
   created_at: <%= 30.days.ago %>
   updated_at: <%= 1.day.ago %>
 
 admin_user:
+  key: adminuky
   name: Admin User
   email: admin@example.com
   is_admin: true
@@ -31,11 +42,33 @@ admin_user:
   time_zone: Pacific/Tarawa
   email_verified: true
   username: admin_user
+  unsubscribe_token: adminuserunsubtoken12345678
+  email_api_key: adminuseremailapikey12345678
+  api_key: adminuserapikey1234567890123
+  secret_token: adminusersecrettoken12345678
+  created_at: <%= 30.days.ago %>
+  updated_at: <%= 1.day.ago %>
+
+# 5th user — always admin of test_group, subgroup, another_group
+group_admin:
+  key: grpadkey
+  name: Group Admin
+  email: groupadmin@example.com
+  legal_accepted_at: <%= 30.days.ago %>
+  encrypted_password: $2a$12$K3E5h0VGlqmXL8HqWw7mIe3qP0XjQSfZ1jK4PqYX7Qq5N9YK6L4/K
+  time_zone: Pacific/Tarawa
+  email_verified: true
+  username: group_admin
+  unsubscribe_token: grpadminunsubtoken123456789
+  email_api_key: grpadminemailapikey12345678
+  api_key: grpadminapikey12345678901234
+  secret_token: grpadminsecrettoken123456789
   created_at: <%= 30.days.ago %>
   updated_at: <%= 1.day.ago %>
 
 # Author for discussions
 discussion_author:
+  key: dscaukey
   name: Discussion Author
   email: author@example.com
   legal_accepted_at: <%= 30.days.ago %>
@@ -43,5 +76,9 @@ discussion_author:
   time_zone: Pacific/Tarawa
   email_verified: true
   username: discussion_author
+  unsubscribe_token: dscauthorunsubtoken12345678
+  email_api_key: dscauthoremailapikey1234567
+  api_key: dscauthorapikey1234567890123
+  secret_token: dscauthorsecrettoken12345678
   created_at: <%= 30.days.ago %>
   updated_at: <%= 1.day.ago %>

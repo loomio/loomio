@@ -2,13 +2,10 @@ require 'test_helper'
 
 class Api::V1::MembershipsControllerTest < ActionController::TestCase
   setup do
-    @normal_user = users(:normal_user)
+    @normal_user = users(:group_admin)
     @another_user = users(:another_user)
     @test_group = groups(:test_group)
     @subgroup = groups(:subgroup)
-
-    @test_group.add_admin!(@normal_user)
-    @subgroup.add_admin!(@normal_user)
     sign_in @normal_user
   end
 
@@ -48,9 +45,6 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
   # ===== Set Volume Tests =====
 
   test 'updates volume for single membership' do
-    @test_group.add_member!(@normal_user)
-    @subgroup.add_member!(@normal_user)
-
     membership = @test_group.membership_for(@normal_user)
     membership.set_volume!('quiet')
 
@@ -67,9 +61,6 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
   end
 
   test 'updates volume for all memberships when apply_to_all is true' do
-    @test_group.add_member!(@normal_user)
-    @subgroup.add_member!(@normal_user)
-
     membership = @test_group.membership_for(@normal_user)
     membership.set_volume!('quiet')
 
@@ -148,8 +139,6 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
   # ===== For User Tests =====
 
   test 'returns visible groups for the given user' do
-    @test_group.add_member!(@another_user)
-
     get :for_user, params: { user_id: @another_user.id }
 
     json = JSON.parse(response.body)
@@ -226,7 +215,6 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     @test_group.add_member!(delegate_user)
 
     sign_in @another_user
-    @test_group.add_member!(@another_user)
     membership = @test_group.add_member!(delegate_user)
 
     post :make_delegate, params: { id: membership.id }
@@ -268,7 +256,6 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     membership.update(delegate: true)
 
     sign_in @another_user
-    @test_group.add_member!(@another_user)
 
     post :remove_delegate, params: { id: membership.id }
 

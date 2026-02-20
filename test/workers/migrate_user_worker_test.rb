@@ -21,8 +21,7 @@ class MigrateUserWorkerTest < ActiveSupport::TestCase
     @jennifer_membership = @group.memberships.find_by(user: @jennifer)
     @jennifer_membership.update!(accepted_at: 2.days.ago)
 
-    @discussion = Discussion.new(title: "MigrateTest#{hex}", group: @group, author: @patrick)
-    DiscussionService.create(discussion: @discussion, actor: @patrick)
+    @discussion = DiscussionService.create(params: { title: "MigrateTest#{hex}", group_id: @group.id }, actor: @patrick)[:discussion]
     DiscussionService.update(discussion: @discussion, params: {title: "new version #{hex}"}, actor: @patrick)
 
     version = @discussion.versions.last

@@ -5,7 +5,6 @@ class ChatbotSlackPhlexTest < ActiveSupport::TestCase
     super
     @group = groups(:test_group)
     @user = users(:discussion_author)
-    @group.add_admin!(@user)
 
     @recipient = LoggedOutUser.new(
       locale: 'en',

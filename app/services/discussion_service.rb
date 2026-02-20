@@ -1,10 +1,21 @@
 class DiscussionService
-  def self.create(discussion:, actor:, params: {})
-    actor.ability.authorize!(:create, discussion)
+  TOPIC_ATTRS = %w[group_id private max_depth newest_first closed_at pinned_at].freeze
 
+  def self.create(params:, actor:)
+    params = params.to_h.with_indifferent_access
+    topic_params = params.extract!(*TOPIC_ATTRS)
+    group_id = topic_params[:group_id]
+    group = group_id ? Group.find(group_id) : NullGroup.new
+
+    authorize_create!(actor: actor, group: group)
+
+    discussion = Discussion.new
+    discussion.assign_attributes_and_files(params)
     discussion.author = actor
+    discussion.instance_variable_set(:@pending_private, topic_params.key?(:private) ? topic_params[:private] : true)
+    discussion.instance_variable_set(:@pending_group_id, group_id)
 
-    return false unless discussion.valid?
+    return { discussion: discussion } unless discussion.valid?
 
     Discussion.transaction do
       discussion.instance_variable_set(:@skip_default_topic, true)
@@ -12,10 +23,12 @@ class DiscussionService
 
       topic = Topic.create!(
         topicable: discussion,
-        group_id: discussion.group_id,
-        private: discussion.pending_private.nil? ? true : discussion.pending_private,
-        max_depth: 2,
-        newest_first: false,
+        group_id: group_id,
+        private: topic_params.key?(:private) ? topic_params[:private] : true,
+        max_depth: topic_params[:max_depth] || 2,
+        newest_first: topic_params[:newest_first] || false,
+        closed_at: topic_params[:closed_at],
+        pinned_at: topic_params[:pinned_at],
         last_activity_at: discussion.created_at
       )
       discussion.update_column(:topic_id, topic.id)
@@ -28,7 +41,7 @@ class DiscussionService
                              actor: actor)
 
       TopicReader.for(user: actor, topic: topic)
-                      .update(admin: true, guest: !discussion.group.present?, inviter_id: actor.id)
+                      .update(admin: true, guest: !group.present?, inviter_id: actor.id)
 
       users = add_users(user_ids: params[:recipient_user_ids],
                         emails: params[:recipient_emails],
@@ -37,10 +50,12 @@ class DiscussionService
                         actor: actor)
 
       EventBus.broadcast('discussion_create', discussion, actor)
-      Events::NewDiscussion.publish!(discussion: discussion,
-                                     recipient_user_ids: users.pluck(:id),
-                                     recipient_chatbot_ids: params[:recipient_chatbot_ids],
-                                     recipient_audience: params[:recipient_audience])
+      event = Events::NewDiscussion.publish!(discussion: discussion,
+                                             recipient_user_ids: users.pluck(:id),
+                                             recipient_chatbot_ids: params[:recipient_chatbot_ids],
+                                             recipient_audience: params[:recipient_audience])
+
+      { discussion: discussion, topic: topic, event: event }
     end
   end
 
@@ -277,5 +292,16 @@ class DiscussionService
       end
     end
     urls.compact.uniq
+  end
+
+  def self.authorize_create!(actor:, group:)
+    raise CanCan::AccessDenied unless actor.email_verified?
+
+    if group.present?
+      raise CanCan::AccessDenied unless group.admins.exists?(actor.id) ||
+        (group.members_can_start_discussions && group.members.exists?(actor.id))
+    else
+      raise CanCan::AccessDenied if AppConfig.app_features[:create_user] && actor.group_ids.empty?
+    end
   end
 end

@@ -1,5 +1,7 @@
 # Groups fixtures for testing
 test_group:
+  key: testgrpk
+  token: testgrouptoken01234567890123456
   name: Test Group
   handle: testgroup
   description: A test group for discussion controller tests
@@ -19,6 +21,8 @@ test_group:
   updated_at: <%= 1.day.ago %>
 
 subgroup:
+  key: subgrpky
+  token: subgrouptoken012345678901234567
   name: Subgroup
   handle: subgroup
   description: A subgroup for testing
@@ -38,6 +42,8 @@ subgroup:
   updated_at: <%= 1.day.ago %>
 
 another_group:
+  key: angrpkey
+  token: anothergrouptoken0123456789012
   name: Another Group
   handle: anothergroup
   description: Another group for testing
@@ -56,6 +62,8 @@ another_group:
   updated_at: <%= 1.day.ago %>
 
 public_group:
+  key: pubgrpky
+  token: publicgrouptoken01234567890123
   name: Public Group
   handle: publicgroup
   description: A public group for testing

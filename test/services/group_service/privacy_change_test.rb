@@ -88,10 +88,10 @@ class GroupService::PrivacyChangeTest < ActiveSupport::TestCase
     # Create a user to author discussions
     author = users(:normal_user)
 
-    # Create a closed group with public discussions
+    # Create a group that allows public discussions
     group = Group.create!(
-      name: 'Closed Group',
-      group_privacy: 'closed',
+      name: 'Open Group',
+      group_privacy: 'open',
       handle: 'closedgroup'
     )
     group.add_member!(author)

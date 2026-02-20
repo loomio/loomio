@@ -2,20 +2,14 @@ require 'test_helper'
 
 class EventServiceTest < ActiveSupport::TestCase
   setup do
-    @user = users(:normal_user)
+    @user = users(:group_admin)
     @group = groups(:test_group)
 
-    @discussion = Discussion.new(
+    @discussion = DiscussionService.create(params: {
       title: "Test Discussion",
-      group: @group,
-      author: @user,
+      group_id: @group.id,
       max_depth: 2
-    )
-
-    @group.add_admin!(@user)
-    @group.add_admin!(@discussion.author)
-
-    DiscussionService.create(discussion: @discussion, actor: @discussion.author)
+    }, actor: @user)[:discussion]
 
     @comment1 = Comment.create!(
       body: "comment1",

@@ -5,8 +5,7 @@ class DiscussionQueryTest < ActiveSupport::TestCase
     @user = users(:normal_user)
     @author = users(:discussion_author)
     @group = groups(:test_group)
-    @group.add_admin!(@author)
-    @group.add_member!(@user)
+    # discussion_author is already admin, normal_user is already member via fixtures
     @discussion = create_discussion(group: @group, author: @author, private: true)
     ActionMailer::Base.deliveries.clear
   end

@@ -13,8 +13,6 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     bill = User.create!(name: 'bill', email: 'bill@example.com', username: 'bill1234')
     member = User.create!(name: 'member', email: 'member@example.com', username: 'member1234')
     @group.add_member!(member)
-    @group.add_member!(@user)
-
     discussion = discussions(:test_discussion)
 
     get :count, params: {
@@ -32,7 +30,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
   # History tests
   test "history responds with event history" do
     sign_in @user
-    @group.add_admin!(@user) unless @group.members.include?(@user)
+    # discussion_author is already admin of test_group via fixture
 
     get :history, params: { group_id: @group.id }
     assert_response :success

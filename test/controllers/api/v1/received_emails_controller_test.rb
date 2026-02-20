@@ -2,11 +2,10 @@ require 'test_helper'
 
 class Api::V1::ReceivedEmailsControllerTest < ActionController::TestCase
   setup do
-    @user = users(:normal_user)
+    @user = users(:group_admin)
     @group = groups(:test_group)
-    @another_group = groups(:another_group)
-
-    @group.add_admin!(@user)
+    hex = SecureRandom.hex(4)
+    @another_group = Group.create!(name: "unauth_group_#{hex}", handle: "unauthgrp#{hex}", group_privacy: 'secret')
     sign_in @user
   end
 

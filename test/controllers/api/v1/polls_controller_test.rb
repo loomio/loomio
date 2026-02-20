@@ -91,7 +91,7 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
 
   # Receipts tests
   test "receipts returns receipts for a poll" do
-    @group.add_admin! @user
+
     poll = Poll.new(
       title: "receipts test",
       poll_type: "proposal",
@@ -113,8 +113,8 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
   end
 
   test "receipts allowed for non-admin member by default" do
-    @group.add_admin! @user
-    @group.add_member! @another_user
+
+
     poll = Poll.new(
       title: "receipts test",
       poll_type: "proposal",
@@ -133,8 +133,8 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
 
   test "receipts denied for non-admin member when admin only env set" do
     ENV['LOOMIO_VERIFY_PARTICIPANTS_ADMIN_ONLY'] = '1'
-    @group.add_admin! @user
-    @group.add_member! @another_user
+
+
     poll = Poll.new(
       title: "receipts test",
       poll_type: "proposal",
@@ -155,7 +155,7 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
 
   test "receipts allowed for group admin when admin only env set" do
     ENV['LOOMIO_VERIFY_PARTICIPANTS_ADMIN_ONLY'] = '1'
-    @group.add_admin! @user
+
     poll = Poll.new(
       title: "receipts test",
       poll_type: "proposal",

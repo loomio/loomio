@@ -20,8 +20,8 @@ module Dev::Scenarios::Discussion
   def setup_discussion_as_guest
     group      = saved fake_group(group_privacy: 'secret', creator: patrick)
     GroupService.create(group: group, actor: group.creator)
-    discussion = Discussion.new(group: group, title: "Dirty Dancing Shoes", private: true, author: group.creator)
-    DiscussionService.create(discussion: discussion, actor: group.creator)
+    result = DiscussionService.create(params: {group_id: group.id, title: "Dirty Dancing Shoes", private: true}, actor: group.creator)
+    discussion = result[:discussion]
     discussion.add_guest!(jennifer, discussion.author)
     sign_in jennifer
 
@@ -31,9 +31,9 @@ module Dev::Scenarios::Discussion
   def setup_discussion_with_guest
     group      = saved fake_group(group_privacy: 'secret', creator: patrick)
     GroupService.create(group: group, actor: group.creator)
-    discussion = Discussion.new(group: group, title: "Dirty Dancing Shoes", private: true, author: group.creator)
     group.add_member!(patrick)
-    DiscussionService.create(discussion: discussion, actor: discussion.group.creator)
+    result = DiscussionService.create(params: {group_id: group.id, title: "Dirty Dancing Shoes", private: true}, actor: group.creator)
+    discussion = result[:discussion]
     discussion.add_guest!(jennifer, discussion.author)
     sign_in patrick
 
@@ -130,16 +130,14 @@ module Dev::Scenarios::Discussion
     @group = Group.create!(name: "Girdy Dancing Shoes", creator: patrick)
     @group.add_admin! patrick
     @group.add_member! jennifer
-    discussion = Discussion.new(title: "Let's go to the moon!", description: "A description for this discussion. Should this be rich?", group: @group, author: patrick)
-
     blob = ActiveStorage::Blob.create_and_upload!(
       io: File.open(Rails.root.join('spec', 'fixtures', 'images', 'strongbad.png')),
       filename: 'strongbad.png',
       content_type: 'image/jpeg'
     )
-    discussion.files.attach(blob)
 
-    DiscussionService.create(discussion: discussion, actor: patrick, params: {recipient_user_ids: [jennifer.id]})
+    result = DiscussionService.create(params: {group_id: @group.id, title: "Let's go to the moon!", description: "A description for this discussion. Should this be rich?", recipient_user_ids: [jennifer.id]}, actor: patrick)
+    result[:discussion].files.attach(blob)
     last_email
   end
 
@@ -148,8 +146,8 @@ module Dev::Scenarios::Discussion
     @group = Group.create!(name: "Girdy Dancing Shoes", creator: patrick)
     @group.add_admin! patrick
     @group.add_member! jennifer
-    discussion = Discussion.new(title: "Let's go to the moon!", description: "A description for this discussion. Should this be rich?", group: @group, author: patrick)
-    DiscussionService.create(discussion: discussion, actor: patrick)
+    result = DiscussionService.create(params: {group_id: @group.id, title: "Let's go to the moon!", description: "A description for this discussion. Should this be rich?"}, actor: patrick)
+    discussion = result[:discussion]
     DiscussionService.update(discussion: discussion, actor: patrick, params: {recipient_user_ids: [jennifer.id], recipient_message: 'change message & ampersand <yo>! &nbsp;'})
     last_email
   end
@@ -159,8 +157,8 @@ module Dev::Scenarios::Discussion
     @group = Group.create!(name: "Girdy Dancing Shoes", creator: patrick)
     @group.add_admin! patrick
     @group.add_member! jennifer
-    discussion = Discussion.new(title: "Let's go to the moon!", description: "A description for this discussion. Should this be rich?", group: @group, author: patrick)
-    DiscussionService.create(discussion: discussion, actor: patrick)
+    result = DiscussionService.create(params: {group_id: @group.id, title: "Let's go to the moon!", description: "A description for this discussion. Should this be rich?"}, actor: patrick)
+    discussion = result[:discussion]
     DiscussionService.invite(discussion: discussion, actor: patrick, params: {recipient_user_ids: [jennifer.id]})
     last_email
   end
@@ -168,8 +166,8 @@ module Dev::Scenarios::Discussion
   def setup_discussion_mailer_invitation_created_email
     group = Group.create!(name: "Dirty Dancing Shoes", creator: patrick)
     group.add_admin! patrick
-    discussion = Discussion.new(title: "Let's go to the moon!", description: "A description for this discussion. Should this be rich?", group: group, author: patrick)
-    DiscussionService.create(discussion: discussion, actor: patrick)
+    result = DiscussionService.create(params: {group_id: group.id, title: "Let's go to the moon!", description: "A description for this discussion. Should this be rich?"}, actor: patrick)
+    discussion = result[:discussion]
     comment = Comment.new(parent: discussion, body: "body of the comment", author: patrick)
     CommentService.create(comment: comment, actor: patrick)
     DiscussionService.invite(discussion: discussion, actor: patrick, params: {recipient_emails: 'jen@example.com'})
@@ -181,11 +179,8 @@ module Dev::Scenarios::Discussion
     @group.add_admin!(patrick).set_volume!(:loud)
     @group.add_member! jennifer
 
-    @discussion = Discussion.new(title: 'What star sign are you?',
-                                 group: @group,
-                                 description: "Wow, what a __great__ day.",
-                                 author: jennifer)
-    DiscussionService.create(discussion: @discussion, actor: @discussion.author)
+    result = DiscussionService.create(params: {group_id: @group.id, title: 'What star sign are you?', description: "Wow, what a __great__ day."}, actor: jennifer)
+    @discussion = result[:discussion]
     @comment = Comment.new(author: jennifer, body: "hello _patrick_.", parent: @discussion)
     CommentService.create(comment: @comment, actor: jennifer)
     last_email
@@ -196,11 +191,8 @@ module Dev::Scenarios::Discussion
       @group.add_admin!(patrick).set_volume!(:normal)
       @group.add_member! jennifer
 
-      @discussion = Discussion.new(title: 'What star sign are you?',
-                                   group: @group,
-                                   description: "Wow, what a __great__ day.",
-                                   author: jennifer)
-      DiscussionService.create(discussion: @discussion, actor: @discussion.author)
+      result = DiscussionService.create(params: {group_id: @group.id, title: 'What star sign are you?', description: "Wow, what a __great__ day."}, actor: jennifer)
+      @discussion = result[:discussion]
       TopicReader.for(user: @patrick, topic: @discussion.topic).set_volume!(:loud)
       @comment = Comment.new(author: jennifer, body: "hello _patrick_.", parent: @discussion)
       CommentService.create(comment: @comment, actor: jennifer)
@@ -213,11 +205,8 @@ module Dev::Scenarios::Discussion
     @group.add_member! jennifer
 
 
-    @discussion = Discussion.new(title: 'What star sign are you?',
-                                 group: @group,
-                                 description: "Wow, what a __great__ day.",
-                                 author: jennifer)
-    DiscussionService.create(discussion: @discussion, actor: @discussion.author)
+    result = DiscussionService.create(params: {group_id: @group.id, title: 'What star sign are you?', description: "Wow, what a __great__ day."}, actor: jennifer)
+    @discussion = result[:discussion]
     @comment = Comment.new(body: "hello _patrick.", parent: @discussion)
     CommentService.create(comment: @comment, actor: jennifer)
     @reply_comment = Comment.new(body: "why, hello there @#{jennifer.username}", parent: @comment)
@@ -230,8 +219,8 @@ module Dev::Scenarios::Discussion
     GroupService.create(group: @group, actor: patrick)
 
     @group.add_member! jennifer
-    @discussion = fake_discussion(group: @group, description: "hey @#{patrick.username} wanna dance?")
-    DiscussionService.create(discussion: @discussion, actor: jennifer)
+    result = DiscussionService.create(params: {group_id: @group.id, description: "hey @#{patrick.username} wanna dance?", title: "Discussion", private: true}, actor: jennifer)
+    @discussion = result[:discussion]
     last_email
   end
 
@@ -242,12 +231,8 @@ module Dev::Scenarios::Discussion
     @group.add_member! jennifer
     datestr = "2021-06-16"
 
-    @discussion = Discussion.new(title: 'time to do your chores!',
-                                 description_format: 'html',
-                                 group: @group,
-                                 description: "<li data-uid='123' data-type='taskItem' data-due-on='#{datestr}' data-remind='1'>this is a task for <span data-mention-id='#{jennifer.username}'>#{jennifer.name}</span></li>",
-                                 author: jennifer)
-    DiscussionService.create(discussion: @discussion, actor: @discussion.author)
+    result = DiscussionService.create(params: {group_id: @group.id, title: 'time to do your chores!', description_format: 'html', description: "<li data-uid='123' data-type='taskItem' data-due-on='#{datestr}' data-remind='1'>this is a task for <span data-mention-id='#{jennifer.username}'>#{jennifer.name}</span></li>"}, actor: jennifer)
+    @discussion = result[:discussion]
     expected_remind_at = "{datestr} 06:00".in_time_zone("Pacific/Auckland") - 1.day
     TaskService.send_task_reminders(expected_remind_at)
     last_email

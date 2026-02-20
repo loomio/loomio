@@ -1,16 +1,12 @@
 class Api::V1::DiscussionsController < Api::V1::RestfulController
   def create
-    instantiate_resource
-    if resource_params[:forked_event_ids] && resource_params[:forked_event_ids].any?
-      EventService.move_comments(discussion: create_action.discussion, params: resource_params, actor: current_user)
-    else
-      create_action
+    result = service.create(params: resource_params, actor: current_user)
+    @event = result[:event]
+    self.resource = result[:discussion]
+    if @event && resource_params[:forked_event_ids]&.any?
+      EventService.move_comments(discussion: resource, params: resource_params, actor: current_user)
     end
     respond_with_resource
-  end
-
-  def create_action
-    @event = service.create(**{resource_symbol => resource, actor: current_user, params: resource_params})
   end
 
   def show

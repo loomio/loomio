@@ -2,14 +2,11 @@ require 'test_helper'
 
 class Api::V1::StancesControllerTest < ActionController::TestCase
   setup do
-    @user = users(:normal_user)
+    @user = users(:group_admin)
     @another_user = users(:another_user)
     @group = groups(:test_group)
 
-    @group.add_admin!(@user)
-    @group.add_member!(@another_user)
-
-    @discussion = create_discussion(group: @group, author: @user)
+    @discussion = discussions(:test_discussion)
     @poll = Poll.new(
       title: "Test Poll",
       poll_type: "proposal",

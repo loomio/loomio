@@ -2,7 +2,7 @@ require 'test_helper'
 
 class Api::V1::TagsControllerTest < ActionController::TestCase
   setup do
-    @user = users(:normal_user)
+    @user = users(:group_admin)
     @group = groups(:test_group)
     @subgroup = Group.create!(
       name: "Test Subgroup",
@@ -20,7 +20,6 @@ class Api::V1::TagsControllerTest < ActionController::TestCase
     )
     PollService.create(poll: @poll, actor: @user)
     
-    @group.add_admin!(@user)
     @subgroup.add_admin!(@user)
     
     @sub_discussion = create_discussion(group: @subgroup, author: @user, tags: ['apple', 'banana'])

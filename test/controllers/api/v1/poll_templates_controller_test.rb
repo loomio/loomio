@@ -2,10 +2,9 @@ require 'test_helper'
 
 class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
   setup do
-    @user = users(:normal_user)
+    @user = users(:group_admin)
     @another_user = users(:another_user)
     @group = groups(:test_group)
-    @group.add_admin!(@user)
   end
 
   def create_poll_template(attrs = {})
