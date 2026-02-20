@@ -210,11 +210,11 @@ class Event < ApplicationRecord
   end
 
   def email_recipients
-    Queries::UsersByVolumeQuery.email_notifications(eventable).where(id: all_recipient_user_ids)
+    Queries::UsersByVolumeQuery.email_notifications(topic).where(id: all_recipient_user_ids)
   end
 
   def notification_recipients
-    Queries::UsersByVolumeQuery.app_notifications(eventable).where(id: all_recipient_user_ids).where.not(id: user.id || 0)
+    Queries::UsersByVolumeQuery.app_notifications(topic).where(id: all_recipient_user_ids).where.not(id: user.id || 0)
   end
 
   def all_recipients

@@ -14,6 +14,9 @@ class CreateTopicsAndRefactorThreading < ActiveRecord::Migration[7.0]
       t.integer :closer_id
       t.datetime :pinned_at, precision: nil
       t.datetime :last_activity_at, precision: nil
+      t.integer :seen_by_count, default: 0, null: false
+      t.integer :members_count
+      t.integer :anonymous_polls_count, default: 0, null: false
       t.timestamps
     end
     add_index :topics, [:topicable_type, :topicable_id], unique: true
@@ -23,10 +26,10 @@ class CreateTopicsAndRefactorThreading < ActiveRecord::Migration[7.0]
     execute <<~SQL
       INSERT INTO topics (topicable_type, topicable_id, group_id, items_count, ranges_string,
                           max_depth, newest_first, private, closed_at, closer_id, pinned_at,
-                          last_activity_at, created_at, updated_at)
+                          last_activity_at, seen_by_count, members_count, anonymous_polls_count, created_at, updated_at)
       SELECT 'Discussion', id, group_id, items_count, ranges_string,
              max_depth, newest_first, private, closed_at, closer_id, pinned_at,
-             last_activity_at, created_at, updated_at
+             last_activity_at, seen_by_count, members_count, anonymous_polls_count, created_at, updated_at
       FROM discussions
     SQL
 
@@ -53,6 +56,7 @@ class CreateTopicsAndRefactorThreading < ActiveRecord::Migration[7.0]
     SQL
 
     add_index :discussions, :topic_id
+    add_index :polls, :topic_id
 
     # 4. Add topic_id to events and backfill
     add_column :events, :topic_id, :integer
@@ -86,10 +90,10 @@ class CreateTopicsAndRefactorThreading < ActiveRecord::Migration[7.0]
 
     remove_index :topic_readers, name: "index_discussion_readers_discussion_id"
     execute 'DROP INDEX IF EXISTS "index_discussion_readers_on_user_id_and_discussion_id"'
-    add_index :topic_readers, [:user_id, :topic_id], unique: true
-    add_index :topic_readers, [:topic_id]
 
-    # 7. Remove columns that have been fully moved (no old-column retention needed)
+    add_index :topic_readers, [:topic_id, :user_id], unique: true
+
+    # TODO before deploy, move this to a new migration, not to be run until ready.
     remove_column :events, :discussion_id
     remove_index :comments, name: "index_comments_on_discussion_id"
     remove_column :comments, :discussion_id
@@ -103,13 +107,23 @@ class CreateTopicsAndRefactorThreading < ActiveRecord::Migration[7.0]
     remove_column :discussions, :last_activity_at
     remove_column :discussions, :last_sequence_id
     remove_column :discussions, :first_sequence_id
+    remove_column :discussions, :seen_by_count
+    remove_column :discussions, :members_count
+    remove_column :discussions, :anonymous_polls_count
+    remove_column :discussions, :closed_polls_count
+    remove_column :discussions, :group_id
+    remove_column :discussions, :closed_at
+    remove_column :discussions, :closer_id
+    remove_column :discussions, :pinned_at
+    remove_column :discussions, :private
 
-    # NOTE: The following columns are intentionally LEFT on their old tables.
-    # They should be removed in a follow-up migration after production confirms success:
-    #
-    #   discussions: group_id, closed_at, closer_id, pinned_at, private
-    #   polls: group_id, discussion_id
-    #
+    remove_column :polls, :group_id
+    remove_column :polls, :discussion_id
+
+    remove_index :stances, name: :stances_guests, if_exists: true
+    remove_column :stances, :volume, :integer, default: 2, null: false
+    remove_column :stances, :guest, :boolean, default: false, null: false
+    remove_column :stances, :admin, :boolean, null: false, default: false
   end
 
   def down

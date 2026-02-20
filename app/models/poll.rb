@@ -50,7 +50,7 @@ class Poll < ApplicationRecord
 
   is_rich_text on: :details
 
-  extend  NoSpam
+  extend NoSpam
   no_spam_for :title, :details
 
   set_custom_fields :meeting_duration,
@@ -143,7 +143,7 @@ class Poll < ApplicationRecord
   has_many   :outcomes, dependent: :destroy
   has_one    :current_outcome, -> { where(latest: true) }, class_name: 'Outcome'
 
-  belongs_to :topic, optional: true, autosave: true
+  belongs_to :topic, autosave: true
 
   enum :notify_on_closing_soon, {nobody: 0, author: 1, undecided_voters: 2, voters: 3}
   enum :hide_results, {off: 0, until_vote: 1, until_closed: 2}
@@ -201,8 +201,6 @@ class Poll < ApplicationRecord
   validate :cannot_reveal_results_early
   validate :title_if_not_discarded
 
-  after_create :assign_topic!
-
   alias_method :user, :author
 
   has_paper_trail only: [
@@ -234,25 +232,26 @@ class Poll < ApplicationRecord
 
   delegate :locale, to: :author
   delegate :name, to: :author, prefix: true
-  delegate :guests, :guest_ids, :add_guest!, :add_admin!, to: :topic
+  delegate :guests, :guest_ids, :add_guest!, :add_admin!, :admins, :members, to: :topic
 
-  def discussion
-    topic&.topicable_type == 'Discussion' ? topic.topicable : nil
-  end
+  # Id like to see what happens if I remove these
+  # def discussion
+  #   topic&.topicable_type == 'Discussion' ? topic.topicable : nil
+  # end
 
-  def discussion=(d)
-    self.topic_id = d&.topic_id
-  end
+  # def discussion=(d)
+  #   self.topic_id = d&.topic_id
+  # end
 
-  def discussion_id
-    topic&.topicable_type == 'Discussion' ? topic.topicable_id : nil
-  end
+  # def discussion_id
+  #   topic&.topicable_type == 'Discussion' ? topic.topicable_id : nil
+  # end
 
-  def discussion_id=(id)
-    if id.present?
-      self.topic_id = Discussion.find(id).topic_id
-    end
-  end
+  # def discussion_id=(id)
+  #   if id.present?
+  #     self.topic_id = Discussion.find(id).topic_id
+  #   end
+  # end
 
   def has_score_icons
     vote_method == "time_poll"
@@ -322,10 +321,6 @@ class Poll < ApplicationRecord
     author_id
   end
 
-  def existing_member_ids
-    voter_ids
-  end
-
   def decided_voters_count
     voters_count - undecided_voters_count
   end
@@ -371,10 +366,6 @@ class Poll < ApplicationRecord
     custom_fields.fetch('time_zone', author.time_zone)
   end
 
-  def parent_event
-    discussion&.created_event
-  end
-
   def quorum_count
     (quorum_pct.to_f/100 * voters_count).ceil
   end
@@ -386,29 +377,6 @@ class Poll < ApplicationRecord
   def quorum_votes_required
     return 0 if quorum_pct.nil?
     (((quorum_pct.to_f - cast_stances_pct.to_f)/100) * voters_count).ceil
-  end
-
-  def group_id
-    if topic
-      topic.group_id
-    else
-      @pending_group_id
-    end
-  end
-
-  def group_id=(id)
-    @pending_group_id = id
-    topic.group_id = id if topic
-  end
-
-  def group
-    gid = group_id
-    (gid && Group.find_by(id: gid)) || NullGroup.new
-  end
-
-  def group=(g)
-    @pending_group_id = g&.id
-    topic.group_id = g&.id if topic
   end
 
   def show_results?(voted: false)
@@ -447,33 +415,6 @@ class Poll < ApplicationRecord
       none_of_the_above_count: stances.latest.decided.where(none_of_the_above: true).count,
       versions_count: versions.count
     )
-  end
-
-  # people who administer the poll (not necessarily vote)
-  def admins
-    raise "poll.admins only makes sense for persisted polls" if self.new_record?
-    topic_id_val = self.topic&.id || 0
-    has_group = self.group_id.present?
-    User.active.
-      joins("LEFT OUTER JOIN topic_readers tr ON tr.topic_id = #{topic_id_val} AND tr.user_id = users.id").
-      joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
-      joins("LEFT OUTER JOIN polls p ON p.author_id = users.id AND p.id = #{self.id || 0}").
-      where("(m.id  IS NOT NULL AND m.revoked_at IS NULL AND m.admin = TRUE) OR                                             /* group admin */
-             (p.author_id = users.id #{has_group ? 'AND m.id IS NOT NULL' : ''}) OR                                         /* poll author #{has_group ? 'and group member' : '(no group)'} */
-             (p.author_id = users.id AND tr.id IS NOT NULL AND tr.revoked_at IS NULL AND tr.guest = TRUE) OR                /* poll author and topic guest */
-             (tr.id IS NOT NULL AND m.id IS NOT NULL AND tr.revoked_at IS NULL AND tr.admin = TRUE) OR                      /* topic admin, group member */
-             (tr.id IS NOT NULL AND m.id IS NULL     AND tr.revoked_at IS NULL AND tr.admin = TRUE AND tr.guest = TRUE)      /* topic guest admin, not group member */")
-  end
-
-  # people who can read the poll, not necessarily vote
-  def members
-      User.active.
-      joins("LEFT OUTER JOIN topic_readers tr ON tr.topic_id = #{self.topic&.id || 0} AND tr.user_id = users.id").
-      joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
-      joins("LEFT OUTER JOIN stances s ON s.participant_id = users.id AND s.poll_id = #{self.id || 0}").
-      where("(tr.id IS NOT NULL AND tr.revoked_at IS NULL AND tr.guest = TRUE) OR
-             (m.id  IS NOT NULL AND m.revoked_at IS NULL) OR
-             (s.id  IS NOT NULL AND s.revoked_at IS NULL AND s.latest = TRUE)")
   end
 
   def opened?
@@ -534,27 +475,7 @@ class Poll < ApplicationRecord
     end
   end
 
-  def find_last_activity_at
-    [
-      Outcome.where(poll_id: id).order('created_at desc'),
-      Stance.latest.where(poll_id: id).order('updated_at, created_at desc'),
-      Poll.where(id: id)
-    ].map { |rel| rel.first&.created_at }.compact.max
-  end
-
   private
-
-  def assign_topic!
-    return if topic_id.present?
-    t = Topic.find_or_create_by!(topicable: self) do |topic|
-      topic.group_id = @pending_group_id
-      topic.max_depth = 2
-      topic.newest_first = false
-      topic.last_activity_at = created_at
-    end
-    update_column(:topic_id, t.id)
-    self.topic = t
-  end
 
   def title_if_not_discarded
     if !discarded_at && title.to_s.empty?

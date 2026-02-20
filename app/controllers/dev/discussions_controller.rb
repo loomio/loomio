@@ -12,24 +12,25 @@ class Dev::DiscussionsController < Dev::BaseController
     EventService.repair_discussion(discussion.id)
     discussion.author.experienced!('betaFeatures')
     sign_in discussion.author
-    read_ids = discussion.items.order(sequence_id: :asc).limit(5).pluck(:sequence_id)
-    TopicReader.for_model(discussion, discussion.author).viewed!(read_ids)
+    topic = discussion.topic
+    read_ids = topic.items.order(sequence_id: :asc).limit(5).pluck(:sequence_id)
+    TopicReader.for(topic: topic, user: discussion.author).viewed!(read_ids)
     redirect_to discussion_url(discussion)
   end
 
   def test_most_read
     discussion = create_discussion_with_nested_comments
     sign_in discussion.author
-    read_ids = discussion.items.order(sequence_id: :asc).limit(5).pluck(:sequence_id)
-    TopicReader.for_model(discussion, discussion.author).viewed!(read_ids)
+    read_ids = discussion.topic.items.order(sequence_id: :asc).limit(5).pluck(:sequence_id)
+    TopicReader.for(topic: discussion.topic, user: discussion.author).viewed!(read_ids)
     redirect_to discussion_url(discussion)
   end
 
   def test_all_read
     discussion = create_discussion_with_nested_comments
     sign_in discussion.author
-    read_ids = discussion.items.order(sequence_id: :asc).pluck(:sequence_id)
-    TopicReader.for_model(discussion, discussion.author).viewed!(read_ids)
+    read_ids = discussion.topic.items.order(sequence_id: :asc).pluck(:sequence_id)
+    TopicReader.for(topic: discussion, user: discussion.author).viewed!(read_ids)
     redirect_to discussion_url(discussion)
   end
 

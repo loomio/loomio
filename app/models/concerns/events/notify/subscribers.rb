@@ -10,12 +10,8 @@ module Events::Notify::Subscribers
     end
   end
 
-  def subscribed_eventable
-    eventable.discussion || eventable.poll
-  end
-
   def subscribed_recipients
-    Queries::UsersByVolumeQuery.loud(subscribed_eventable)
+    Queries::UsersByVolumeQuery.loud(topic)
                                .where.not(id: eventable.author)
                                .where.not(id: eventable.mentioned_users)
                                .where.not(id: eventable.mentioned_group_users)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_02_19_200000) do
+ActiveRecord::Schema[8.0].define(version: 2026_02_19_000000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -67,7 +67,6 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_19_200000) do
   create_table "active_storage_variant_records", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
-    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
   create_table "attachments", id: :serial, force: :cascade do |t|
@@ -256,13 +255,10 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_19_200000) do
     t.integer "versions_count", default: 0
     t.integer "closed_polls_count", default: 0, null: false
     t.integer "importance", default: 0, null: false
-    t.integer "seen_by_count", default: 0, null: false
     t.string "description_format", limit: 10, default: "md", null: false
     t.jsonb "attachments", default: [], null: false
     t.jsonb "info", default: {}, null: false
     t.datetime "discarded_at", precision: nil
-    t.integer "members_count"
-    t.integer "anonymous_polls_count", default: 0, null: false
     t.string "content_locale"
     t.jsonb "link_previews", default: [], null: false
     t.integer "discarded_by"
@@ -438,7 +434,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_19_200000) do
     t.string "request_to_join_prompt"
     t.integer "delegates_count", default: 0, null: false
     t.string "category"
-    t.boolean "can_start_polls_without_discussion", default: true, null: false
+    t.boolean "can_start_polls_without_discussion", default: false, null: false
     t.boolean "members_can_create_templates", default: false, null: false
     t.index ["archived_at"], name: "index_groups_on_archived_at", where: "(archived_at IS NULL)"
     t.index ["created_at"], name: "index_groups_on_created_at"
@@ -500,6 +496,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_19_200000) do
     t.datetime "revoked_at", precision: nil
     t.integer "inbox_position", default: 0
     t.boolean "admin", default: false, null: false
+    t.integer "volume"
     t.jsonb "experiences", default: {}, null: false
     t.integer "invitation_id"
     t.string "token"
@@ -508,11 +505,12 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_19_200000) do
     t.datetime "saml_session_expires_at", precision: nil
     t.integer "revoker_id"
     t.boolean "delegate", default: false, null: false
-    t.integer "volume"
     t.index ["created_at"], name: "index_memberships_on_created_at"
     t.index ["group_id", "user_id"], name: "index_memberships_on_group_id_and_user_id", unique: true
     t.index ["inviter_id"], name: "index_memberships_on_inviter_id"
     t.index ["token"], name: "index_memberships_on_token", unique: true
+    t.index ["user_id", "volume"], name: "index_memberships_on_user_id_and_volume"
+    t.index ["volume"], name: "index_memberships_on_volume"
   end
 
   create_table "notifications", id: :serial, force: :cascade do |t|
@@ -766,18 +764,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_19_200000) do
     t.index ["closed_at", "closing_at"], name: "index_polls_on_closed_at_and_closing_at"
     t.index ["key"], name: "index_polls_on_key", unique: true
     t.index ["tags"], name: "index_polls_on_tags", using: :gin
-  end
-
-  create_table "push_subscriptions", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.text "endpoint", null: false
-    t.string "p256dh_key", null: false
-    t.string "auth_key", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "name"
-    t.index ["user_id", "endpoint"], name: "index_push_subscriptions_on_user_id_and_endpoint", unique: true
-    t.index ["user_id"], name: "index_push_subscriptions_on_user_id"
+    t.index ["topic_id"], name: "index_polls_on_topic_id"
   end
 
   create_table "reactions", id: :serial, force: :cascade do |t|
@@ -938,6 +925,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_19_200000) do
     t.datetime "updated_at", precision: nil
     t.datetime "last_read_at", precision: nil
     t.integer "last_read_sequence_id", default: 0, null: false
+    t.integer "volume", default: 2, null: false
     t.boolean "participating", default: false, null: false
     t.datetime "dismissed_at", precision: nil
     t.string "read_ranges_string"
@@ -949,29 +937,30 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_19_200000) do
     t.integer "revoker_id"
     t.boolean "guest", default: false, null: false
     t.integer "topic_id"
-    t.integer "volume", default: 2, null: false
     t.index ["guest"], name: "discussion_readers_guests", where: "(guest = true)"
     t.index ["inviter_id"], name: "inviter_id_not_null", where: "(inviter_id IS NOT NULL)"
     t.index ["token"], name: "index_topic_readers_on_token", unique: true
-    t.index ["topic_id"], name: "index_topic_readers_on_topic_id"
-    t.index ["user_id", "topic_id"], name: "index_topic_readers_on_user_id_and_topic_id", unique: true
+    t.index ["topic_id", "user_id"], name: "index_topic_readers_on_topic_id_and_user_id", unique: true
   end
 
   create_table "topics", force: :cascade do |t|
     t.string "topicable_type", null: false
     t.integer "topicable_id", null: false
+    t.integer "group_id"
     t.integer "items_count", default: 0, null: false
     t.string "ranges_string"
     t.integer "max_depth", default: 2, null: false
     t.boolean "newest_first", default: false, null: false
-    t.datetime "last_activity_at", precision: nil
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean "private", default: true, null: false
     t.datetime "closed_at", precision: nil
     t.integer "closer_id"
     t.datetime "pinned_at", precision: nil
-    t.boolean "private", default: true, null: false
-    t.integer "group_id"
+    t.datetime "last_activity_at", precision: nil
+    t.integer "seen_by_count", default: 0, null: false
+    t.integer "members_count"
+    t.integer "anonymous_polls_count", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_topics_on_group_id"
     t.index ["topicable_type", "topicable_id"], name: "index_topics_on_topicable_type_and_topicable_id", unique: true
   end
@@ -1025,6 +1014,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_19_200000) do
     t.string "email_api_key", limit: 255
     t.boolean "email_when_mentioned", default: true, null: false
     t.boolean "email_on_participation", default: false, null: false
+    t.integer "default_membership_volume", default: 2, null: false
     t.string "country"
     t.string "region"
     t.string "city"
@@ -1057,7 +1047,6 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_19_200000) do
     t.string "email_sha256"
     t.integer "complaints_count", default: 0, null: false
     t.boolean "auto_translate", default: false, null: false
-    t.integer "default_membership_volume", default: 2, null: false
     t.index ["api_key"], name: "index_users_on_api_key"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["email_verified"], name: "index_users_on_email_verified"
@@ -1100,5 +1089,4 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_19_200000) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "push_subscriptions", "users"
 end

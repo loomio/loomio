@@ -202,9 +202,7 @@ class Group < ApplicationRecord
     cover_url(size) || (parent && parent.cover_url(size))
   end
 
-  def existing_member_ids
-    member_ids
-  end
+
 
   def author_id
     creator_id

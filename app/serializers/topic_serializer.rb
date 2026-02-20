@@ -25,6 +25,10 @@ class TopicSerializer < ApplicationSerializer
     object.ranges || []
   end
 
+  # def active_polls
+  #   cache_fetch(:polls_by_topic_id, object.topic_id) { [] }
+  # end
+
   def reader
     return @reader if defined?(@reader)
     return @reader = nil unless scope[:current_user_id]

@@ -4,35 +4,28 @@ class DiscussionService
   def self.create(params:, actor:)
     params = params.to_h.with_indifferent_access
     topic_params = params.extract!(*TOPIC_ATTRS)
-    group_id = topic_params[:group_id]
-    group = group_id ? Group.find(group_id) : NullGroup.new
-
-    authorize_create!(actor: actor, group: group)
-
-    discussion = Discussion.new
-    discussion.assign_attributes_and_files(params)
-    discussion.author = actor
-    discussion.instance_variable_set(:@pending_private, topic_params.key?(:private) ? topic_params[:private] : true)
-    discussion.instance_variable_set(:@pending_group_id, group_id)
-
-    return { discussion: discussion } unless discussion.valid?
 
     Discussion.transaction do
-      discussion.instance_variable_set(:@skip_default_topic, true)
-      discussion.save!
+      discussion = Discussion.new
+      discussion.assign_attributes_and_files(params)
+      discussion.author = actor
 
-      topic = Topic.create!(
+      topic = Topic.new(
         topicable: discussion,
-        group_id: group_id,
+        group_id: topic_params[:group_id],
         private: topic_params.key?(:private) ? topic_params[:private] : true,
-        max_depth: topic_params[:max_depth] || 2,
-        newest_first: topic_params[:newest_first] || false,
+        max_depth: topic_params[:max_depth] || 3,
+        newest_first: !!topic_params[:newest_first],
         closed_at: topic_params[:closed_at],
-        pinned_at: topic_params[:pinned_at],
-        last_activity_at: discussion.created_at
+        pinned_at: topic_params[:pinned_at]
       )
-      discussion.update_column(:topic_id, topic.id)
       discussion.topic = topic
+
+      return { discussion: discussion, topic: topic } if !discussion.valid? || !topic.valid?
+
+      actor.ability.authorize!(:create, discussion)
+
+      discussion.save!
 
       UserInviter.authorize!(user_ids: params[:recipient_user_ids],
                              emails: params[:recipient_emails],
@@ -41,13 +34,13 @@ class DiscussionService
                              actor: actor)
 
       TopicReader.for(user: actor, topic: topic)
-                      .update(admin: true, guest: !group.present?, inviter_id: actor.id)
+                 .update(admin: true, guest: !topic.group_id.present?, inviter_id: actor.id)
 
-      users = add_users(user_ids: params[:recipient_user_ids],
-                        emails: params[:recipient_emails],
-                        audience: params[:recipient_audience],
-                        discussion: discussion,
-                        actor: actor)
+      users = TopicService.add_users(user_ids: params[:recipient_user_ids],
+                                     emails: params[:recipient_emails],
+                                     audience: params[:recipient_audience],
+                                     topic: topic,
+                                     actor: actor)
 
       EventBus.broadcast('discussion_create', discussion, actor)
       event = Events::NewDiscussion.publish!(discussion: discussion,
@@ -76,15 +69,13 @@ class DiscussionService
       discussion.save!
 
       discussion.update_versions_count
-      RepairThreadWorker.perform_async(discussion.topic.id) if rearrange
+      RepairThreadWorker.perform_async(discussion.topic_id) if rearrange
 
-      users = add_users(discussion: discussion,
-                        actor: actor,
-                        user_ids: params[:recipient_user_ids],
-                        emails: params[:recipient_emails],
-                        audience: params[:recipient_audience])
-
-      EventBus.broadcast('discussion_update', discussion, actor, params)
+      users = TopicService.add_users(topic: topic,
+                                     actor: actor,
+                                     user_ids: params[:recipient_user_ids],
+                                     emails: params[:recipient_emails],
+                                     audience: params[:recipient_audience])
 
       Events::DiscussionEdited.publish!(discussion: discussion,
                                         actor: actor,
@@ -92,33 +83,6 @@ class DiscussionService
                                         recipient_chatbot_ids: params[:recipient_chatbot_ids],
                                         recipient_audience: params[:recipient_audience],
                                         recipient_message: params[:recipient_message])
-    end
-  end
-
-  def self.invite(discussion:, actor:, params:)
-    UserInviter.authorize!(user_ids: params[:recipient_user_ids],
-                           emails: params[:recipient_emails],
-                           audience: params[:recipient_audience],
-                           model: discussion,
-                           actor: actor)
-
-    Discussion.transaction do
-      users = add_users(discussion: discussion,
-                        actor: actor,
-                        user_ids: params[:recipient_user_ids],
-                        emails: params[:recipient_emails],
-                        audience: params[:recipient_audience])
-
-      discussion.polls.active.where(specified_voters_only: false).each do |poll|
-        PollService.create_anyone_can_vote_stances(poll)
-      end
-
-      Events::DiscussionAnnounced.publish!(discussion: discussion,
-                                           actor: actor,
-                                           recipient_user_ids: users.pluck(:id),
-                                           recipient_chatbot_ids: params[:recipient_chatbot_ids],
-                                           recipient_audience: params[:recipient_audience],
-                                           recipient_message: params[:recipient_message])
     end
   end
 
@@ -135,155 +99,6 @@ class DiscussionService
     end
   end
 
-  def self.close(discussion:, actor:)
-    actor.ability.authorize! :update, discussion
-    discussion.topic.update(closed_at: Time.now, closer_id: actor.id)
-    MessageChannelService.publish_models([discussion], group_id: discussion.group_id, user_id: actor.id)
-  end
-
-  def self.reopen(discussion:, actor:)
-    actor.ability.authorize! :update, discussion
-    discussion.topic.update(closed_at: nil, closer_id: nil)
-    MessageChannelService.publish_models([discussion], group_id: discussion.group_id, user_id: actor.id)
-  end
-
-  def self.move(discussion:, params:, actor:)
-    source = discussion.group
-    destination = ModelLocator.new(:group, params).locate || NullGroup.new
-    destination.present? && actor.ability.authorize!(:move_discussions_to, destination)
-    actor.ability.authorize! :move, discussion
-
-    Discussion.transaction do
-      discussion.topic.update!(group_id: destination.present? ? destination.id : nil,
-                               private: moved_discussion_privacy_for(discussion, destination))
-      ActiveStorage::Attachment.where(record: discussion.items.map(&:eventable).concat([discussion])).update_all(group_id: destination.id)
-
-      GenericWorker.perform_async('PollService', 'group_members_added', discussion.group_id) if discussion.group_id
-      GenericWorker.perform_async('SearchService', 'reindex_by_discussion_id', discussion.id)
-      EventBus.broadcast('discussion_move', discussion, params, actor)
-      Events::DiscussionMoved.publish!(discussion, actor, source)
-    end
-  end
-
-  def self.pin(discussion:, actor:)
-    actor.ability.authorize! :pin, discussion
-
-    discussion.topic.update(pinned_at: Time.now)
-
-    EventBus.broadcast('discussion_pin', discussion, actor)
-  end
-
-  def self.unpin(discussion:, actor:)
-    actor.ability.authorize! :pin, discussion
-
-    discussion.topic.update(pinned_at: nil)
-
-    EventBus.broadcast('discussion_pin', discussion, actor)
-  end
-
-  def self.update_reader(discussion:, params:, actor:)
-    actor.ability.authorize! :show, discussion
-    reader = TopicReader.for(topic: discussion.topic, user: actor)
-    reader.update(params.slice(:volume))
-
-    EventBus.broadcast('discussion_update_reader', reader, params, actor)
-  end
-
-  def self.mark_as_seen(discussion:, actor:)
-    actor.ability.authorize! :mark_as_seen, discussion
-    reader = TopicReader.for_model(discussion, actor)
-    reader.viewed!
-    MessageChannelService.publish_models([discussion], group_id: discussion.group_id)
-    EventBus.broadcast('discussion_mark_as_seen', reader, actor)
-  end
-
-  def self.mark_as_read_simple_params(discussion_id, ranges, actor_id)
-    discussion = Discussion.find(discussion_id)
-    actor = User.find(actor_id)
-    mark_as_read(discussion: discussion, params: {ranges: ranges}, actor: actor)
-  end
-
-  def self.mark_as_read(discussion:, params:, actor:)
-    return unless actor.ability.can?(:mark_as_read, discussion)
-    RetryOnError.with_limit(2) do
-      sequence_ids = RangeSet.ranges_to_list(RangeSet.to_ranges(params[:ranges]))
-      NotificationService.viewed_events(actor_id: actor.id, topic_id: discussion.topic&.id, sequence_ids: sequence_ids)
-      reader = TopicReader.for_model(discussion, actor)
-      reader.viewed!(params[:ranges])
-      EventBus.broadcast('discussion_mark_as_read', reader, actor)
-    end
-  end
-
-  def self.dismiss(discussion:, params:, actor:)
-    actor.ability.authorize! :dismiss, discussion
-    reader = TopicReader.for(user: actor, topic: discussion.topic)
-    reader.dismiss!
-    EventBus.broadcast('discussion_dismiss', reader, actor)
-  end
-
-  def self.recall(discussion:, params:, actor:)
-    actor.ability.authorize! :dismiss, discussion
-    reader = TopicReader.for(user: actor, topic: discussion.topic)
-    reader.recall!
-    EventBus.broadcast('discussion_recall', reader, actor)
-  end
-
-  def self.moved_discussion_privacy_for(discussion, destination)
-    case destination.discussion_privacy_options
-    when 'public_only'  then false
-    when 'private_only' then true
-    else                     discussion.topic.private
-    end
-  end
-
-  def self.mark_summary_email_as_read(user_id, time_start_i, time_finish_i)
-    user = User.find_by!(id: user_id)
-    time_start  = Time.at(time_start_i).utc
-    time_finish = Time.at(time_finish_i).utc
-    time_range = time_start..time_finish
-
-    DiscussionQuery.visible_to(user: user, only_unread: true, or_public: false, or_subgroups: false).last_activity_after(time_start).each do |discussion|
-      RetryOnError.with_limit(2) do
-        sequence_ids = discussion.items.where("events.created_at": time_range).pluck(:sequence_id)
-        TopicReader.for(user: user, topic: discussion.topic).viewed!(sequence_ids)
-      end
-    end
-  end
-
-  def self.add_users(discussion:, actor:, user_ids:, emails:, audience:)
-    users = UserInviter.where_or_create!(actor: actor,
-                                         user_ids: user_ids,
-                                         emails: emails,
-                                         model: discussion,
-                                         audience: audience)
-
-    topic = discussion.topic
-
-    volumes = {}
-    Membership.where(group_id: discussion.group_id,
-                     user_id: users.pluck(:id)).find_each do |m|
-      volumes[m.user_id] = m.volume
-    end
-
-    TopicReader.
-      where(topic_id: topic.id, user_id: users.map(&:id)).
-      where("revoked_at is not null").update_all(revoked_at: nil, revoker_id: nil)
-
-    new_topic_readers = users.map do |user|
-      TopicReader.new(user: user,
-                           topic: topic,
-                           inviter: actor,
-                           guest: !volumes.has_key?(user.id),
-                           admin: !discussion.group_id,
-                           volume: volumes[user.id] || user.default_membership_volume)
-    end
-
-    TopicReader.import(new_topic_readers, on_duplicate_key_ignore: true)
-
-    discussion.update_members_count
-    users
-  end
-
   def self.extract_link_preview_urls(discussion)
     urls = discussion.link_previews.map { |lp| lp['url'] }
     discussion.items.each do |event|
@@ -292,16 +107,5 @@ class DiscussionService
       end
     end
     urls.compact.uniq
-  end
-
-  def self.authorize_create!(actor:, group:)
-    raise CanCan::AccessDenied unless actor.email_verified?
-
-    if group.present?
-      raise CanCan::AccessDenied unless group.admins.exists?(actor.id) ||
-        (group.members_can_start_discussions && group.members.exists?(actor.id))
-    else
-      raise CanCan::AccessDenied if AppConfig.app_features[:create_user] && actor.group_ids.empty?
-    end
   end
 end

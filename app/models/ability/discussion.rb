@@ -18,11 +18,13 @@ module Ability::Discussion
     end
 
     can :create, ::Discussion do |discussion|
+      topic = discussion.topic
+      group = topic.group
       user.email_verified? &&
       (
-        (discussion.group.blank? && (!AppConfig.app_features[:create_user] || user.group_ids.any?)) ||
-        discussion.group.admins.exists?(user.id) ||
-        (discussion.group.members_can_start_discussions && discussion.group.members.exists?(user.id))
+        (group.blank? && (!AppConfig.app_features[:create_user] || user.group_ids.any?)) ||
+        group.admins.exists?(user.id) ||
+        (group.members_can_start_discussions && group.members.exists?(user.id))
       )
     end
 
@@ -40,11 +42,13 @@ module Ability::Discussion
     end
 
     can [:add_guests], ::Discussion do |discussion|
-      if discussion.group_id
-        Subscription.for(discussion.group).allow_guests &&
-        (discussion.group.admins.exists?(user.id) || (discussion.group.members_can_add_guests && discussion.members.exists?(user.id)))
+      topic = discussion.topic
+      group = topic.group
+      if topic.group_id
+        Subscription.for(group).allow_guests &&
+        (group.admins.exists?(user.id) || (group.members_can_add_guests && topic.members.exists?(user.id)))
       else
-        !discussion.id || discussion.admins.exists?(user.id)
+        topic.admins.exists?(user.id)
       end
     end
 

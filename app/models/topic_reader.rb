@@ -27,41 +27,18 @@ class TopicReader < ApplicationRecord
     redeemable.joins(:user).where('user_id = ? OR users.email_verified = false', user_id)
   }
 
-  after_save    :update_topicable_counters
-  after_destroy :update_topicable_counters
+  after_save    :update_topic_counters
+  after_destroy :update_topic_counters
 
   def self.for(user:, topic:)
     if user&.is_logged_in?
       find_or_initialize_by(user_id: user.id, topic_id: topic.id) do |tr|
-        group = topic.topicable.respond_to?(:group) ? topic.topicable.group : nil
-        m = group && user.memberships.find_by(group_id: group.id)
+        m = topic.group_id && user.memberships.find_by(group_id: topic.group_id)
         tr.volume = (m && m.volume) || 'normal'
       end
     else
       new(topic: topic)
     end
-  end
-
-  def self.for_model(model, actor = nil)
-    user = actor || model.author
-    topic = if model.respond_to?(:topic) && model.topic
-              model.topic
-            elsif model.respond_to?(:discussion) && model.discussion&.topic
-              model.discussion.topic
-            else
-              nil
-            end
-    return new unless topic
-    self.for(user: user, topic: topic)
-  end
-
-  # Convenience accessors for backwards compatibility
-  def discussion
-    topic&.topicable if topic&.topicable_type == 'Discussion'
-  end
-
-  def discussion_id
-    topic&.topicable_id if topic&.topicable_type == 'Discussion'
   end
 
   def update_reader(ranges: nil, volume: nil, participate: false, dismiss: false)
@@ -111,15 +88,6 @@ class TopicReader < ApplicationRecord
     self[:volume]
   end
 
-  # Keep old name for serializer compatibility
-  def discussion_reader_volume
-    self[:volume]
-  end
-
-  def discussion_reader_user_id
-    user_id
-  end
-
   def topic_reader_user_id
     user_id
   end
@@ -167,10 +135,8 @@ class TopicReader < ApplicationRecord
     @membership ||= group&.membership_for(user)
   end
 
-  def update_topicable_counters
-    topicable = topic&.topicable
-    return unless topicable.is_a?(Discussion)
-    topicable.update_seen_by_count
-    topicable.update_members_count
+  def update_topic_counters
+    topic.update_seen_by_count
+    topic.update_members_count
   end
 end

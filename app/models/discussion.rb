@@ -66,14 +66,13 @@ class Discussion < ApplicationRecord
   validates_presence_of :title, :author
   validates :title, length: { maximum: 150 }
   validates :description, length: { maximum: AppConfig.app_features[:max_message_length] }
-  validate :privacy_is_permitted_by_group
 
   is_mentionable  on: :description
   is_translatable on: %i[title description], load_via: :find_by_key!, id_field: :key
   is_rich_text    on: :description
   has_paper_trail only: %i[title description description_format author_id tags attachments]
 
-  belongs_to :topic, optional: true, autosave: true
+  belongs_to :topic, autosave: true
   belongs_to :author, class_name: 'User'
   belongs_to :user, foreign_key: 'author_id'
 
@@ -82,6 +81,9 @@ class Discussion < ApplicationRecord
 
   has_many :topic_readers, through: :topic
   has_many :readers, -> { merge TopicReader.active }, through: :topic_readers, source: :user
+
+  has_many :comments, through: :topic
+  has_many :comment_documents, through: :comments, source: :documents
 
   has_many :commenters, -> { uniq }, through: :comments, source: :user
   has_many :documents, as: :model, dependent: :destroy
@@ -102,22 +104,15 @@ class Discussion < ApplicationRecord
   delegate :locale, to: :author
   delegate :members, :admins, :guests, :guest_ids, :add_guest!, :add_admin!, to: :topic
 
-  after_create :build_default_topic
-  after_create :save_pending_topic_items
-  after_create :set_last_activity_at_to_created_at
-  after_destroy :drop_sequence_id_sequence
-
-  define_counter_cache(:closed_polls_count)         { |d| d.polls.closed.count }
   define_counter_cache(:versions_count)             { |d| d.versions.count }
-  define_counter_cache(:seen_by_count)              { |d| d.topic_readers.where('last_read_at is not null').count }
-  define_counter_cache(:members_count)              { |d| d.topic_readers.where('revoked_at is null').count }
-  define_counter_cache(:anonymous_polls_count)      { |d| d.polls.where(anonymous: true).count }
 
   after_commit :update_group_counter_caches
+
   def update_group_counter_caches
-    return unless (g = group) && g.id
+    #TODO can this be a background job or materialized view
+    return unless (g = topic.group) && g.id
     g.update_discussions_count
-    g.update_public_discussions_count
+    # g.update_public_discussions_count
     g.update_open_discussions_count
     g.update_closed_discussions_count
     g.update_closed_polls_count
@@ -127,144 +122,12 @@ class Discussion < ApplicationRecord
     self
   end
 
-  def poll
-    nil
-  end
-
-  def group_id
-    if topic
-      topic.group_id
-    else
-      @pending_group_id
-    end
-  end
-
-  def group_id=(id)
-    @pending_group_id = id
-    topic.group_id = id if topic
-  end
-
-  def group
-    gid = group_id
-    (gid && Group.find_by(id: gid)) || NullGroup.new
-  end
-
-  def group=(g)
-    @pending_group_id = g&.id
-    topic.group_id = g&.id if topic
-  end
-
-  def existing_member_ids
-    reader_ids
-  end
-
   def user_id
     author_id
   end
 
-  def author
-    super || AnonymousUser.new
-  end
-
-  # Thread state delegations through topic
-  def items
-    topic&.items || Event.none
-  end
-
-  def items_count
-    topic&.items_count || 0
-  end
-
-  def ranges_string
-    if topic
-      topic.update_sequence_info! if topic.ranges_string.nil?
-      topic.ranges_string
-    else
-      ''
-    end
-  end
-
-  def ranges
-    topic&.ranges || []
-  end
-
-  def first_sequence_id
-    topic&.first_sequence_id || 0
-  end
-
-  def last_sequence_id
-    topic&.last_sequence_id || 0
-  end
-
-  def max_depth
-    topic&.max_depth || 2
-  end
-
-  def max_depth=(val)
-    if topic
-      topic.max_depth = val
-    end
-  end
-
-  def max_depth_changed?
-    topic&.max_depth_changed? || false
-  end
-
-  def newest_first
-    topic&.newest_first || false
-  end
-
-  def newest_first=(val)
-    if topic
-      topic.newest_first = val
-    end
-  end
-
-  def last_activity_at
-    topic&.last_activity_at
-  end
-
-  has_many :comments, through: :topic
-  has_many :comment_documents, through: :comments, source: :documents
-
-  def poll_id
-    nil
-  end
-
   def created_event_kind
     :new_discussion
-  end
-
-  def find_last_activity_at
-    [
-      comments.kept.order('created_at desc'),
-      polls.kept.order('created_at desc'),
-      Outcome.where(poll_id: poll_ids).order('created_at desc'),
-      Stance.latest.where(poll_id: poll_ids).order('updated_at, created_at desc'),
-      Discussion.where(id: id)
-    ].map { |rel| rel.first&.created_at }.compact.max
-  end
-
-  def update_sequence_info!
-    ensure_topic!
-    topic.update_sequence_info!
-  end
-
-  def drop_sequence_id_sequence
-    topic&.drop_sequence_id_sequence
-  end
-
-  def pending_private
-    @pending_private
-  end
-
-  def private=(val)
-    @pending_private = val
-    topic.private = val if topic
-  end
-
-  def discussion
-    self
   end
 
   def body=(val)
@@ -287,86 +150,4 @@ class Discussion < ApplicationRecord
     (%w[title description] & changes.keys).any? || topic&.private_changed?
   end
 
-  private
-
-  def build_default_topic
-    return if topic_id.present? || @skip_default_topic
-    if topic.present?
-      # Topic was pre-assigned in memory (e.g., by RecordCloner).
-      # Save only the topic record (without cascading to items) so that
-      # eventable records can be persisted first, then items saved later.
-      if topic.new_record?
-        topic.topicable = self
-        topic.group_id ||= group_id
-        pending_items = topic.items.to_a
-        topic.items.reset
-        topic.save!
-        update_column(:topic_id, topic.id)
-        topic.instance_variable_set(:@_pending_items, pending_items)
-      end
-      return
-    end
-    t = Topic.create!(topicable: self, group_id: group_id, private: @pending_private.nil? ? true : @pending_private, max_depth: 2, newest_first: false, last_activity_at: created_at)
-    update_column(:topic_id, t.id)
-    self.topic = t
-  end
-
-  def ensure_topic!
-    return topic if topic.present?
-    t = Topic.find_or_create_by!(topicable: self) do |topic|
-      topic.group_id = group_id
-      topic.max_depth = 2
-      topic.newest_first = false
-      topic.last_activity_at = created_at || Time.current
-    end
-    update_column(:topic_id, t.id) unless topic_id == t.id
-    self.topic = t
-  end
-
-  def save_pending_topic_items
-    return unless topic
-
-    # Save deferred polls that share this discussion's topic
-    cloned_polls = instance_variable_get(:@_cloned_polls)
-    if cloned_polls.present?
-      cloned_polls.each do |cp|
-        cp.topic_id = topic.id
-        cp.save!
-      end
-      remove_instance_variable(:@_cloned_polls)
-    end
-
-    # Save deferred topic items (events) held back from build_default_topic
-    pending_items = topic.instance_variable_get(:@_pending_items)
-    return unless pending_items.present?
-
-    pending_items.each do |event|
-      # Save eventable first if not yet persisted
-      if event.eventable && event.eventable.new_record?
-        event.eventable.save!
-      end
-      event.topic = topic
-      event.save!
-    end
-    topic.remove_instance_variable(:@_pending_items)
-  end
-
-  def set_last_activity_at_to_created_at
-    return if topic&.last_activity_at.present?
-    topic&.update_column(:last_activity_at, created_at)
-  end
-
-  def sequence_id_or_0(item)
-    item.try(:sequence_id) || 0
-  end
-
-  def privacy_is_permitted_by_group
-    is_private = topic ? topic.private : @pending_private
-    is_private = true if is_private.nil?
-    errors.add(:private, 'must be private') if !is_private and group.private_discussions_only?
-
-    return unless is_private and group.public_discussions_only?
-
-    errors.add(:private, 'must be public')
-  end
 end

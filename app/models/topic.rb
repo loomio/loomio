@@ -6,6 +6,16 @@ class Topic < ApplicationRecord
   has_many :topic_readers, dependent: :destroy
   has_many :comments, through: :items, source: :eventable, source_type: 'Comment'
 
+  include CustomCounterCache::Model
+  define_counter_cache(:closed_polls_count)         { |t| t.polls.closed.count }
+  define_counter_cache(:seen_by_count)              { |t| t.topic_readers.where('last_read_at is not null').count }
+  define_counter_cache(:members_count)              { |t| t.topic_readers.where('revoked_at is null').count }
+  define_counter_cache(:anonymous_polls_count)      { |t| t.polls.where(anonymous: true).count }
+
+  validate :privacy_is_permitted_by_group
+
+  after_destroy :drop_sequence_id_sequence
+
   def members
     User.active
         .joins("LEFT OUTER JOIN topic_readers tr ON tr.topic_id = #{id} AND tr.user_id = users.id")
@@ -55,7 +65,7 @@ class Topic < ApplicationRecord
     update_columns(
       items_count: sequence_ids.count,
       ranges_string: new_ranges,
-      last_activity_at: topicable.find_last_activity_at
+      last_activity_at: items.order(:sequence_id).last&.created_at || topicable.created_at
     )
   end
 
@@ -77,5 +87,11 @@ class Topic < ApplicationRecord
 
   def drop_sequence_id_sequence
     SequenceService.drop_seq!('topic_sequence_id', id)
+  end
+
+  private
+  def privacy_is_permitted_by_group
+    errors.add(:private, 'must be private') if !self.private && group.private_discussions_only?
+    errors.add(:private, 'must be public') if self.private && group.public_discussions_only?
   end
 end
