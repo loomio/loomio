@@ -426,7 +426,7 @@ module Dev::FakeDataHelper
     end
 
     discussion.reload
-    EventService.repair_discussion(discussion.id)
+    TopicService.repair_thread(discussion.topic_id)
     discussion.reload
   end
 
@@ -457,7 +457,7 @@ module Dev::FakeDataHelper
     end
 
     discussion.reload
-    EventService.repair_discussion(discussion.id)
+    TopicService.repair_thread(discussion.topic_id)
     discussion.reload
     discussion
   end

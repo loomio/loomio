@@ -57,7 +57,7 @@ class Comment < ApplicationRecord
 
   validates_presence_of :user, unless: :discarded_at
 
-  validate :parent_comment_belongs_to_same_topic
+  validate :parent_belongs_to_same_topic
   validate :has_body_or_attachment
 
   alias_method :author, :user
@@ -79,54 +79,16 @@ class Comment < ApplicationRecord
 
   delegate :name, to: :user, prefix: :author
   delegate :author, to: :parent, prefix: :parent, allow_nil: true
+  delegate :topic, :topic_id, :group, :group_id, :members, :guests, to: :parent
 
   define_counter_cache(:versions_count) { |comment| comment.versions.count }
 
-  def topic
-    case parent
-    when Comment then parent.topic
-    when Discussion then parent.topic
-    when Poll then parent.topic
-    when Stance then parent.poll.topic
-    else nil
-    end
-  end
-
-  def discussion
-    topic&.topicable if topic&.topicable_type == 'Discussion'
-  end
-
-  def discussion_id
-    topic&.topicable_id if topic&.topicable_type == 'Discussion'
-  end
-
-  def discussion_id=(id)
-    return if id.blank?
-    self.parent ||= Discussion.find_by(id: id)
-  end
-
-  def group
-    topic&.group
-  end
-
-  def group_id
-    topic&.group_id
-  end
-
   def title
-    topic&.topicable&.title
-  end
-
-  def members
-    topic&.members || User.none
-  end
-
-  def guests
-    topic&.guests || User.none
+    topic.topicable.title
   end
 
   def title_model
-    topic&.topicable || self
+    topic.topicable
   end
 
   def author_id
@@ -139,6 +101,14 @@ class Comment < ApplicationRecord
 
   def assign_parent_if_nil
     self.parent = self.discussion if self.parent_id.nil? && self.parent_type.nil? && respond_to?(:discussion) && self.discussion.present?
+  end
+
+  def discussion
+    topic&.topicable if topic&.topicable_type == 'Discussion'
+  end
+
+  def discussion_id
+    topic&.topicable_id if topic&.topicable_type == 'Discussion'
   end
 
   def poll
@@ -159,14 +129,6 @@ class Comment < ApplicationRecord
   end
 
   def parent_event
-    if parent.nil?
-      topicable = topic&.topicable
-      if topicable
-        self.parent = topicable
-        save!(validate: false)
-      end
-    end
-
     if parent.is_a? Stance
       Event.where(eventable_type: parent_type, eventable_id: parent_id).where('topic_id is not null').first
     else
@@ -176,10 +138,6 @@ class Comment < ApplicationRecord
 
   def created_event_kind
     :new_comment
-  end
-
-  def is_most_recent?
-    discussion&.comments&.last == self
   end
 
   def is_edited?
@@ -198,26 +156,7 @@ class Comment < ApplicationRecord
     body.to_s.empty? || body.to_s == "<p></p>"
   end
 
-  def parent_comment_belongs_to_same_topic
-    # if someone replies to a deleted comment (in practice, by email), reparent to the topicable
-    if parent.nil?
-      topicable = topic&.topicable
-      self.parent = topicable if topicable
-    end
-
-    return if parent.nil? # standalone comment without topic context
-
-    # Both comment and parent should resolve to the same topic
-    parent_topic = case parent
-                   when Comment then parent.topic
-                   when Discussion then parent.topic
-                   when Poll then parent.topic
-                   when Stance then parent.poll.topic
-                   else nil
-                   end
-
-    unless topic.nil? || parent_topic.nil? || topic == parent_topic
-      errors.add(:parent, "Needs to have same topic")
-    end
+  def parent_belongs_to_same_topic
+    errors.add(:parent, "parent needs same topic") unless parent.topic == topic
   end
 end

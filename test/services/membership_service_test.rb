@@ -2,8 +2,8 @@ require 'test_helper'
 
 class MembershipServiceTest < ActiveSupport::TestCase
   setup do
-    @admin = users(:normal_user)
-    @user = users(:another_user)
+    @admin = users(:user)
+    @user = users(:alien)
     @group = Group.create!(
       name: 'Test Group',
       discussion_privacy_options: 'private_only',
@@ -34,7 +34,7 @@ class MembershipServiceTest < ActiveSupport::TestCase
 
   test "revoke cascade deletes discussion reader access" do
     membership = @group.add_member!(@user)
-    discussion = create_discussion(group: @group, author: @admin)
+    discussion = DiscussionService.create(params: { title: "Test", group_id: @group.id }, actor: @admin)
 
     # User should have access before revoke
     assert_includes @group.members, @user

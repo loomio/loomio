@@ -20,8 +20,6 @@ class PollSerializer < ApplicationSerializer
              :details_format,
              :discarded_at,
              :discarded_by,
-             :discussion_id,
-             :group_id,
              :hide_results,
              :key,
              :link_previews,
@@ -59,9 +57,7 @@ class PollSerializer < ApplicationSerializer
              :quorum_votes_required,
              :topic_id
 
-  has_one :discussion, serializer: DiscussionSerializer, root: :discussions
   has_one :created_event, serializer: EventSerializer, root: :events
-  has_one :group, serializer: GroupSerializer, root: :groups
   has_one :author, serializer: AuthorSerializer, root: :users
   has_one :current_outcome, serializer: OutcomeSerializer, root: :outcomes
   has_one :my_stance, serializer: StanceSerializer, root: :stances

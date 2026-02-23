@@ -16,12 +16,12 @@ class Events::PollClosingSoon < Event
 
   private
   def email_recipients
-    Queries::UsersByVolumeQuery.email_notifications(poll)
+    Queries::UsersByVolumeQuery.email_notifications(poll.topic)
                                .where('users.id': raw_recipients.pluck(:id))
   end
 
   def notification_recipients
-    Queries::UsersByVolumeQuery.app_notifications(poll)
+    Queries::UsersByVolumeQuery.app_notifications(poll.topic)
                                .where('users.id': raw_recipients.pluck(:id))
   end
 

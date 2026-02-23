@@ -2,10 +2,8 @@ require 'test_helper'
 
 class Events::PositionTest < ActiveSupport::TestCase
   setup do
-    @user = User.create!(name: "Pos User #{SecureRandom.hex(4)}", email: "posuser_#{SecureRandom.hex(4)}@test.com", email_verified: true)
-    @group = Group.create!(name: "Pos Group #{SecureRandom.hex(4)}", group_privacy: 'secret')
-    @group.add_admin!(@user)
-    @discussion = create_discussion(group: @group, author: @user)
+    @user = users(:user)
+    @discussion = discussions(:discussion)
   end
 
   test "gives events a position sequence" do
@@ -64,7 +62,7 @@ class Events::PositionTest < ActiveSupport::TestCase
   end
 
   test "enforces max depth 1" do
-    @discussion.update!(max_depth: 1)
+    @discussion.topic.update!(max_depth: 1)
     c1 = Comment.create!(parent: @discussion, body: "C1", author: @user)
     c2 = Comment.create!(body: "C2", parent: c1, author: @user)
     c3 = Comment.create!(body: "C3", parent: c2, author: @user)
@@ -82,7 +80,7 @@ class Events::PositionTest < ActiveSupport::TestCase
   end
 
   test "enforces max depth 3" do
-    @discussion.update!(max_depth: 3)
+    @discussion.topic.update!(max_depth: 3)
     c1 = Comment.create!(parent: @discussion, body: "C1", author: @user)
     c2 = Comment.create!(body: "C2", parent: c1, author: @user)
     c3 = Comment.create!(body: "C3", parent: c2, author: @user)
@@ -121,7 +119,7 @@ class Events::PositionTest < ActiveSupport::TestCase
     assert_equal 3, e3.position
 
     e2.update!(topic_id: nil, parent_id: nil)
-    EventService.repair_thread(@discussion.topic)
+    TopicService.repair_thread(@discussion.topic.id)
     assert_equal 2, e3.reload.position
     assert_equal "00002", e3.reload.position_key
     assert_equal 3, e3.reload.sequence_id
@@ -135,7 +133,7 @@ class Events::PositionTest < ActiveSupport::TestCase
     assert_equal 1, e1.position
     assert_equal 2, e2.position
     e1.destroy
-    EventService.repair_thread(@discussion.topic)
+    TopicService.repair_thread(@discussion.topic.id)
     e2.reload
     assert_equal 1, e2.position
     assert_equal 2, e2.sequence_id

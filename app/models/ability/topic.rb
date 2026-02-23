@@ -5,5 +5,9 @@ module Ability::Topic
     can [:show], ::Topic do |topic|
       can?(:show, topic.topicable)
     end
+
+    can [:update, :move], ::Topic do |topic|
+      topic.admins_include?(user)
+    end
   end
 end

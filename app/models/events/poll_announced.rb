@@ -11,7 +11,7 @@ class Events::PollAnnounced < Event
     recipient_chatbot_ids: [],
     recipient_audience: nil,
     recipient_message: nil)
-  
+
     super poll,
       user: actor,
       stance_ids: stances.map(&:id),
@@ -28,7 +28,7 @@ class Events::PollAnnounced < Event
   end
 
   def email_recipients
-    notification_recipients.where(id: Queries::UsersByVolumeQuery.normal_or_loud(eventable))
+    notification_recipients.where(id: Queries::UsersByVolumeQuery.normal_or_loud(eventable.topic))
   end
 
   def notification_recipients

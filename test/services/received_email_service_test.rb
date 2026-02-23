@@ -76,7 +76,7 @@ class ReceivedEmailServiceTest < ActiveSupport::TestCase
                         email_verified: true, username: "emailuser#{SecureRandom.hex(4)}")
     group = Group.create!(name: 'Email Group', handle: "emailgroup#{SecureRandom.hex(4)}")
     group.add_member!(user)
-    discussion = create_discussion(group: group, author: user)
+    discussion = DiscussionService.create(params: { title: "Test", group_id: group.id }, actor: user)
 
     route_local = "d=#{discussion.id}&u=#{user.id}&k=#{user.email_api_key}"
     to = "#{route_local}@#{ENV['REPLY_HOSTNAME']}"

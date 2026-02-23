@@ -3,7 +3,7 @@ require 'test_helper'
 class GroupService::PrivacyChangeTest < ActiveSupport::TestCase
   test "makes discussions in group and subgroups private when is_visible_to_public changes to false" do
     # Create a user to author discussions
-    author = users(:normal_user)
+    author = users(:user)
 
     # Create an open group with public discussions
     group = Group.create!(
@@ -33,9 +33,9 @@ class GroupService::PrivacyChangeTest < ActiveSupport::TestCase
     other_subgroup.add_member!(author)
 
     # Create public discussions
-    create_discussion(group: group, author: author, private: false)
-    create_discussion(group: subgroup, author: author, private: false)
-    create_discussion(group: other_subgroup, author: author, private: false)
+    DiscussionService.create(params: { title: "Test 1", group_id: group.id, private: false }, actor: author)
+    DiscussionService.create(params: { title: "Test 2", group_id: subgroup.id, private: false }, actor: author)
+    DiscussionService.create(params: { title: "Test 3", group_id: other_subgroup.id, private: false }, actor: author)
 
     # Change privacy
     group.is_visible_to_public = false
@@ -86,7 +86,7 @@ class GroupService::PrivacyChangeTest < ActiveSupport::TestCase
 
   test "makes discussions private when discussion_privacy_options changes to private_only" do
     # Create a user to author discussions
-    author = users(:normal_user)
+    author = users(:user)
 
     # Create a group that allows public discussions
     group = Group.create!(
@@ -96,7 +96,7 @@ class GroupService::PrivacyChangeTest < ActiveSupport::TestCase
     )
     group.add_member!(author)
 
-    create_discussion(group: group, author: author, private: false)
+    DiscussionService.create(params: { title: "Test", group_id: group.id, private: false }, actor: author)
 
     # Change privacy options
     group.discussion_privacy_options = 'private_only'
@@ -110,7 +110,7 @@ class GroupService::PrivacyChangeTest < ActiveSupport::TestCase
 
   test "makes discussions public when discussion_privacy_options changes to public_only" do
     # Create a user to author discussions
-    author = users(:normal_user)
+    author = users(:user)
 
     # Create a secret group with private discussions
     group = Group.create!(
@@ -120,7 +120,7 @@ class GroupService::PrivacyChangeTest < ActiveSupport::TestCase
     )
     group.add_member!(author)
 
-    create_discussion(group: group, author: author, private: true)
+    DiscussionService.create(params: { title: "Test", group_id: group.id, private: true }, actor: author)
 
     # Change to open
     group.group_privacy = 'open'

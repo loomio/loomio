@@ -1,14 +1,10 @@
 class CommentService
-
   def self.create(comment:, actor:)
-    actor.ability.authorize! :create, comment
     comment.author = actor
-    return false unless comment.valid?
+    actor.ability.authorize! :create, comment
     comment.save!
-    EventBus.broadcast('comment_create', comment, actor)
-    event = Events::NewComment.publish!(comment)
     comment.update_pg_search_document
-    event
+    Events::NewComment.publish!(comment)
   end
 
   def self.discard(comment:, actor:)

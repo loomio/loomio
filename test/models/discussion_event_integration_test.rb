@@ -8,7 +8,7 @@ class DiscussionEventIntegrationTest < ActiveSupport::TestCase
     @group.add_admin!(@commentor)
     @group.add_member!(@viewer)
 
-    @discussion = create_discussion(group: @group, author: @commentor)
+    @discussion = DiscussionService.create(params: { group_id: @group.id, title: "Integration Test #{SecureRandom.hex(4)}" }, actor: @commentor)
     @first_comment = Comment.new(parent: @discussion, body: "First", author: @commentor)
     @second_comment = Comment.new(parent: @discussion, body: "Second", author: @commentor)
   end
@@ -21,7 +21,7 @@ class DiscussionEventIntegrationTest < ActiveSupport::TestCase
     dr = TopicReader.for(user: @viewer, topic: @discussion.topic)
     dr.save
     dr.reload
-    assert_equal 1, @discussion.items_count - dr.read_items_count
+    assert_equal 1, @discussion.topic.items_count - dr.read_items_count
   end
 
   test "user sees discussion before comments, first comment deleted" do
@@ -34,6 +34,6 @@ class DiscussionEventIntegrationTest < ActiveSupport::TestCase
     CommentService.destroy(comment: @first_comment, actor: @commentor)
     @discussion.reload
     dr.reload
-    assert_equal 1, @discussion.items_count - dr.read_items_count
+    assert_equal 1, @discussion.topic.items_count - dr.read_items_count
   end
 end

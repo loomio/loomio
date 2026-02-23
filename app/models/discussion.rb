@@ -72,7 +72,7 @@ class Discussion < ApplicationRecord
   is_rich_text    on: :description
   has_paper_trail only: %i[title description description_format author_id tags attachments]
 
-  belongs_to :topic, autosave: true
+  belongs_to :topic
   belongs_to :author, class_name: 'User'
   belongs_to :user, foreign_key: 'author_id'
 
@@ -102,7 +102,9 @@ class Discussion < ApplicationRecord
   delegate :email, to: :author, prefix: :author
   delegate :name_and_email, to: :author, prefix: :author
   delegate :locale, to: :author
-  delegate :members, :admins, :guests, :guest_ids, :add_guest!, :add_admin!, to: :topic
+  delegate :members, :admins, :guests, :guest_ids, :add_guest!, :add_admin!, :group_id, :group,
+           :seen_by_count, :members_count, :closed_polls_count, :anonymous_polls_count,
+           :items, :newest_first, :private, :closed_at, :pinned_at, to: :topic
 
   define_counter_cache(:versions_count)             { |d| d.versions.count }
 

@@ -4,17 +4,17 @@ class GroupExportServiceTest < ActiveSupport::TestCase
   def create_scenario
     admin = User.create!(email: "exportadmin#{SecureRandom.hex(4)}@example.com", name: 'admin', password: 'password')
     member = User.create!(email: "exportmember#{SecureRandom.hex(4)}@example.com", name: 'member', password: 'password')
-    another_user = User.create!(email: "exportother#{SecureRandom.hex(4)}@example.com", name: 'another_user', password: 'password')
+    alien = User.create!(email: "exportother#{SecureRandom.hex(4)}@example.com", name: 'alien', password: 'password')
 
     group = Group.create!(name: "exportgroup#{SecureRandom.hex(4)}", creator_id: admin.id)
     subgroup = Group.create!(name: "exportsubgroup#{SecureRandom.hex(4)}", creator_id: admin.id, parent_id: group.id)
-    another_group = Group.create!(name: "exportanothergroup#{SecureRandom.hex(4)}", creator_id: another_user.id)
+    another_group = Group.create!(name: "exportanothergroup#{SecureRandom.hex(4)}", creator_id: alien.id)
 
     group.add_admin!(admin)
     group.add_member!(member)
     subgroup.add_admin!(admin)
     subgroup.add_member!(member)
-    another_group.add_admin!(another_user)
+    another_group.add_admin!(alien)
 
     discussion_template = DiscussionTemplate.create!(title: 'discussion_template', group: group, process_name: 'process_name', process_subtitle: 'process_subtitle', author: admin)
     poll_template = PollTemplate.create!(title: 'poll_template', group: group, process_name: 'process_name', process_subtitle: 'process_subtitle', poll_type: 'proposal', author: admin)
@@ -58,7 +58,7 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     Reaction.create!(reactable: comment, user: member)
 
     {
-      admin: admin, member: member, another_user: another_user,
+      admin: admin, member: member, alien: alien,
       group: group, subgroup: subgroup, another_group: another_group,
       discussion: discussion, sub_discussion: sub_discussion,
       comment: comment, poll: poll, sub_poll: sub_poll,
@@ -78,7 +78,7 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     group_ids = group.all_groups.pluck(:id)
     admin_id = admin.id
     member_id = member.id
-    another_user_id = data[:another_user].id
+    alien_id = data[:alien].id
 
     # Clean up in reverse dependency order
     # Polls and discussions are now found via topics.group_id
@@ -108,15 +108,15 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     Membership.where(group_id: data[:another_group].id).delete_all
     Group.where(id: data[:another_group].id).delete_all
     Group.where(id: group_ids).delete_all
-    Identity.where(user_id: [admin_id, member_id, another_user_id]).delete_all
-    User.where(id: [admin_id, member_id, another_user_id]).delete_all
+    Identity.where(user_id: [admin_id, member_id, alien_id]).delete_all
+    User.where(id: [admin_id, member_id, alien_id]).delete_all
 
     GroupExportService.import(filename)
 
     # Verify import recreated the data
     imported_admin = User.find_by!(email: admin.email)
     imported_member = User.find_by!(email: member.email)
-    assert_nil User.find_by(email: data[:another_user].email), "another_user should not be imported"
+    assert_nil User.find_by(email: data[:alien].email), "alien should not be imported"
 
     imported_group = Group.find_by!(name: group.name)
     imported_subgroup = Group.find_by!(name: data[:subgroup].name)

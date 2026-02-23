@@ -5,8 +5,10 @@ class Api::B2::PollsController < Api::B2::BaseController
   end
 
   def create
-    instantiate_resource
-    if PollService.create(actor: current_user, poll: @poll, params: params)
+    result = PollService.create(params: resource_params, actor: current_user)
+    @event = result[:event]
+    self.resource = result[:poll]
+    if result[:event]
       PollService.invite(actor: current_user, poll: @poll, params: params)
       respond_with_resource
     else

@@ -2,16 +2,14 @@ require 'test_helper'
 
 class Events::CommentRepliedToTest < ActiveSupport::TestCase
   setup do
-    @user = User.create!(name: "CRT User #{SecureRandom.hex(4)}", email: "crtuser_#{SecureRandom.hex(4)}@test.com", email_verified: true)
-    @replier = User.create!(name: "Replier #{SecureRandom.hex(4)}", email: "replier_#{SecureRandom.hex(4)}@test.com", email_verified: true)
-    @group = Group.create!(name: "CRT Group #{SecureRandom.hex(4)}", group_privacy: 'secret')
-    @group.add_admin!(@user)
-    @group.add_member!(@replier)
-    @discussion = create_discussion(group: @group, author: @user)
+    @user = users(:user)
+    @alien = users(:alien)
+    @discussion = discussions(:discussion)
+    @discussion.add_guest!(@alien, @user)
     @parent = Comment.new(parent: @discussion, body: "Parent", author: @user)
     CommentService.create(comment: @parent, actor: @user)
-    @comment = Comment.new(body: "Reply", parent: @parent, author: @replier)
-    CommentService.create(comment: @comment, actor: @replier)
+    @comment = Comment.new(body: "Reply", parent: @parent, author: @alien)
+    CommentService.create(comment: @comment, actor: @alien)
   end
 
   test "returns an event" do

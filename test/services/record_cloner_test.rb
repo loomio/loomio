@@ -2,8 +2,8 @@ require 'test_helper'
 
 class RecordClonerTest < ActiveSupport::TestCase
   setup do
-    @user = users(:normal_user)
-    @actor = users(:another_user)
+    @user = users(:user)
+    @actor = users(:alien)
 
     # Reset invitation throttle from accumulated test runs
     CACHE_REDIS_POOL.with do |r|
@@ -29,27 +29,25 @@ class RecordClonerTest < ActiveSupport::TestCase
     @group.save!
     @group.add_admin!(@user)
 
-    @discussion = create_discussion(group: @group, author: @user)
+    @discussion = DiscussionService.create(params: { title: "Cloner Test", group_id: @group.id }, actor: @user)
 
     # Create a comment in the discussion
     comment = Comment.new(body: "Test comment", parent: @discussion, author: @user)
     CommentService.create(comment: comment, actor: @user)
 
-    # Create poll with stance and outcome
-    @poll = Poll.new(
+    # Create poll in the discussion's topic
+    @poll = PollService.create(params: {
       title: 'Test Poll',
-      author: @user,
       poll_type: 'proposal',
       closing_at: 3.days.from_now,
-      poll_option_names: ['Agree', 'Disagree'],
-      discussion: @discussion
-    )
-    PollService.create(poll: @poll, actor: @user)
-    @poll.reload
+      poll_option_names: ['agree', 'disagree'],
+      group_id: @group.id,
+      topic_id: @discussion.topic_id
+    }, actor: @user)
 
     # Cast a stance - use only choice= setter (not stance_choices.build)
     # to avoid exceeding dots_per_person limit on proposal polls
-    stance = @poll.stances.find_by(participant_id: @user.id, latest: true)
+    stance = @poll.stances.undecided.find_by(participant_id: @user.id, latest: true)
     if stance
       stance.choice = 'Agree'
       stance.reason = "good idea"
@@ -66,7 +64,7 @@ class RecordClonerTest < ActiveSupport::TestCase
     OutcomeService.create(outcome: @outcome, actor: @user)
 
     # Repair event chain for discussion
-    EventService.repair_thread(@discussion.topic)
+    TopicService.repair_thread(@discussion.topic.id)
   end
 
   # -- Clone Group --
@@ -115,11 +113,10 @@ class RecordClonerTest < ActiveSupport::TestCase
     assert_equal @discussion.comments.count, clone.comments.count
     assert_equal @discussion.polls.count, clone.polls.count
 
-    # Clone drops poll_closed_by_user/poll_expired/poll_reopened events,
-    # so items count may differ from original
+    # Clone drops poll_closed_by_user/poll_expired/poll_reopened events
     drop_kinds = %w[poll_closed_by_user poll_expired poll_reopened]
-    expected_items = @discussion.items.reject { |i| drop_kinds.include?(i.kind) }.count
-    assert_equal expected_items, clone.items.count
+    expected_items = @discussion.topic.items.reject { |i| drop_kinds.include?(i.kind) }.count
+    assert_equal expected_items, clone.topic.items.count
   end
 
   # -- Clone Poll --

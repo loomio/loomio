@@ -2,10 +2,10 @@ require 'test_helper'
 
 class ReactionServiceTest < ActiveSupport::TestCase
   setup do
-    @user = users(:discussion_author)
-    @another_user = users(:another_user)
-    @group = groups(:test_group)
-    @discussion = discussions(:test_discussion)
+    @user = users(:user)
+    @admin = users(:admin)
+    @group = groups(:group)
+    @discussion = discussions(:discussion)
     @comment = Comment.create(
       parent: @discussion,
       author: @user,
@@ -26,10 +26,10 @@ class ReactionServiceTest < ActiveSupport::TestCase
   end
 
   test "does not notify if the user is no longer in the group" do
-    @comment
-    @group.memberships.find_by(user: @reaction.user).destroy
+    @group.memberships.find_by(user: @user).destroy
 
-    ReactionService.update(reaction: @reaction, params: { reaction: 'smiley' }, actor: @another_user)
+    reactor_reaction = Reaction.new(reaction: ":heart:", reactable: @comment, user: @admin)
+    ReactionService.update(reaction: reactor_reaction, params: { reaction: 'smiley' }, actor: @admin)
 
     assert_equal 0, @user.notifications.count
   end
@@ -45,8 +45,15 @@ class ReactionServiceTest < ActiveSupport::TestCase
   test "does not allow others to destroy a reaction" do
     @reaction.save
 
+    outsider = User.create!(
+      name: 'Outsider',
+      email: "outsider#{SecureRandom.hex(4)}@example.com",
+      email_verified: true,
+      username: "outsider#{SecureRandom.hex(4)}"
+    )
+
     assert_raises CanCan::AccessDenied do
-      ReactionService.destroy(reaction: @reaction, actor: @another_user)
+      ReactionService.destroy(reaction: @reaction, actor: outsider)
     end
   end
 end

@@ -1,28 +1,45 @@
 class PollService
-  def self.create(poll:, actor:, params: {})
-    actor.ability.authorize! :create, poll
+  def self.build(params:, actor:)
+    params = params.to_h.with_indifferent_access
+    topic_params = params.extract!(*DiscussionService::TOPIC_ATTRS)
+
+    poll = Poll.new
+    poll.assign_attributes_and_files(params)
+    poll.author = actor
+    poll.prioritise_poll_options!
+
+    poll.topic ||= Topic.new(
+                     topicable: poll,
+                     group_id: topic_params[:group_id],
+                     private: topic_params.key?(:private) ? topic_params[:private] : true,
+                    )
+
+    if !poll.opened_at &&
+        poll.closing_at &&
+        poll.opening_at.blank? || poll.opening_at <= Time.now
+      poll.opened_at = Time.now
+    end
+
+    poll
+  end
+
+  def self.create(params:, actor:)
+    poll = build(params: params, actor: actor)
 
     Poll.transaction do
-      poll.assign_attributes(author: actor)
-      poll.prioritise_poll_options!
+      actor.ability.authorize!(:create, poll)
 
-      return false unless poll.valid?
       poll.save!
       poll.update_counts!
+      create_anyone_can_vote_stances(poll) if !poll.specified_voters_only
 
-      if !poll.specified_voters_only
-        stances = create_anyone_can_vote_stances(poll)
-      else
-        stances = Stance.none
-      end
-
-      if !poll.opened_at && poll.closing_at && (poll.opening_at.blank? || poll.opening_at <= Time.now)
-        poll.update_column(:opened_at, Time.now)
-      end
+      TopicReader.for(user: actor, topic: poll.topic)
+                  .update(admin: true, guest: !poll.topic.group_id.present?, inviter_id: actor.id)
 
       EventBus.broadcast('poll_create', poll, actor)
-      Events::PollCreated.publish!(poll, actor)
+      event = Events::PollCreated.publish!(poll, actor)
       announce_poll_opened(poll) if poll.opened_at && poll.notify_on_open
+      poll
     end
   end
 
@@ -88,15 +105,13 @@ class PollService
     stances = nil
 
     Poll.transaction do
-      if poll.discussion
-        DiscussionService.add_users(
-          discussion: poll.discussion,
-          actor: actor,
-          user_ids: params[:recipient_user_ids],
-          emails: params[:recipient_emails],
-          audience: params[:recipient_audience],
-        )
-      end
+      TopicService.add_users(
+        topic:  poll.topic,
+        actor: actor,
+        user_ids: params[:recipient_user_ids],
+        emails: params[:recipient_emails],
+        audience: params[:recipient_audience],
+      )
 
       stances = create_stances(
         poll: poll, actor: actor,
@@ -245,17 +260,13 @@ class PollService
   def self.create_anyone_can_vote_stances(poll)
     raise "only use on specified_voters_only=false" if poll.specified_voters_only
 
-    member_ids = []
-    member_ids = Group.find(poll.group_id).accepted_members.humans.pluck(:id) if poll.group_id && poll.group
-
-    guest_ids = []
-    guest_ids = poll.guest_ids if poll.discussion
-
+    member_ids = poll.members.humans.pluck(:id).uniq
     revoked_user_ids = poll.stances.revoked.pluck(:participant_id).uniq
+
     create_stances(
       poll: poll,
       actor: poll.author,
-      user_ids: ((guest_ids + member_ids) - poll.voter_ids) - revoked_user_ids
+      user_ids: (member_ids - poll.voter_ids) - revoked_user_ids
     )
   end
 
@@ -287,7 +298,7 @@ class PollService
     if poll.topic && poll.hide_results == 'until_closed'
       stance_ids = poll.stances.latest.reject(&:body_is_blank?).map(&:id)
       Event.where(kind: 'stance_created', eventable_id: stance_ids, topic_id: nil).update_all(topic_id: poll.topic.id)
-      EventService.repair_thread(poll.topic)
+      TopicService.repair_thread(poll.topic_id)
     end
 
     poll.update_attribute(:closed_at, Time.now)
@@ -335,7 +346,7 @@ class PollService
     if (poll.closed? || poll.hide_results != 'until_closed')
       stance_ids = poll.stances.latest.reject(&:body_is_blank?).map(&:id)
       Event.where(kind: 'stance_created', eventable_id: stance_ids).update_all(topic_id: discussion.topic.id)
-      EventService.repair_thread(discussion.topic)
+      TopicService.repair_thread(discussion.topic_id)
     end
 
     GenericWorker.perform_async('SearchService', 'reindex_by_discussion_id', discussion.id)

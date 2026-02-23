@@ -6,10 +6,10 @@ class EmailHelperTest < ActiveSupport::TestCase
 
   setup do
     ENV['REPLY_HOSTNAME'] = 'replyhostname.com'
-    @user = users(:group_admin)
-    @group = groups(:test_group)
-    @author = users(:discussion_author)
-    @discussion = discussions(:test_discussion)
+    @user = users(:admin)
+    @group = groups(:group)
+    @author = users(:admin)
+    @discussion = discussions(:discussion)
     @user.update_columns(email_api_key: 'abc123')
     ActionMailer::Base.deliveries.clear
   end

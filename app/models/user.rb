@@ -139,26 +139,19 @@ class User < ApplicationRecord
   scope :mention_search, lambda { |model, query|
     return none unless model.present?
 
-    ids = []
     if model.is_a?(User)
       return active.search_for(query).where(id: User.visible_by(model).pluck(:id))
     end
 
-    if model.group_id
+    ids = []
+
+    if model.is_a?(Group)
+      ids += Membership.active.where(group_id: model.id).pluck(:user_id)
+    elsif model.is_a?(Topic)
       ids += Membership.active.where(group_id: model.group_id).pluck(:user_id) if model.group_id
-    end
-
-    if model.discussion_id
-      topic_id = Topic.where(topicable_type: 'Discussion', topicable_id: model.discussion_id).pick(:id)
-      ids += TopicReader.active.guests.where(topic_id: topic_id).pluck(:user_id) if topic_id
-    end
-
-    if model.poll_id
-      ids += Stance.latest.invited.where(poll_id: model.poll_id).pluck(:participant_id)
-    end
-
-    if model.respond_to?(:poll_ids) and model.poll_ids.any?
-      ids += Stance.latest.invited.where(poll_id: model.poll_ids).pluck(:participant_id)
+      ids += model.topic_readers.active.guests.pluck(:user_id)
+      poll_ids = Poll.where(topic_id: model.id).pluck(:id)
+      ids += Stance.latest.invited.where(poll_id: poll_ids).pluck(:participant_id) if poll_ids.any?
     end
 
     active.search_for(query).where(id: ids)

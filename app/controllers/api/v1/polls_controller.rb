@@ -85,10 +85,14 @@ class Api::V1::PollsController < Api::V1::RestfulController
       respond_with_collection serializer: AuthorSerializer, root: :users, scope: {cache: cache, exclude_types: exclude_types}
   end
 
-  private
-  def create_action
-    @event = service.create(**{resource_symbol => resource, actor: current_user, params: resource_params})
+  def create
+    result = service.create(params: resource_params, actor: current_user)
+    @event = result[:event]
+    self.resource = result[:poll]
+    respond_with_resource
   end
+
+  private
 
   def accessible_records
     PollQuery.visible_to(user: current_user)

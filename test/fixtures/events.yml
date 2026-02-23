@@ -1,41 +1,22 @@
-test_discussion_created_event:
+discussion_created_event:
   kind: new_discussion
-  eventable_type: Discussion
-  eventable_id: <%= ActiveRecord::FixtureSet.identify(:test_discussion) %>
-  topic: test_discussion_topic
-  user: discussion_author
+  eventable: discussion (Discussion)
+  user: admin
+
+discussion_in_subgroup_created_event:
+  kind: new_discussion
+  eventable: discussion_in_subgroup (Discussion)
+  topic: discussion_in_subgroup_topic
+  user: admin
 
 public_discussion_created_event:
   kind: new_discussion
-  eventable_type: Discussion
-  eventable_id: <%= ActiveRecord::FixtureSet.identify(:public_discussion) %>
+  eventable: public_discussion (Discussion)
   topic: public_discussion_topic
-  user: discussion_author
+  user: admin
 
-private_discussion_created_event:
+alien_discussion_created_event:
   kind: new_discussion
-  eventable_type: Discussion
-  eventable_id: <%= ActiveRecord::FixtureSet.identify(:private_discussion) %>
-  topic: private_discussion_topic
-  user: discussion_author
-
-discarded_discussion_created_event:
-  kind: new_discussion
-  eventable_type: Discussion
-  eventable_id: <%= ActiveRecord::FixtureSet.identify(:discarded_discussion) %>
-  topic: discarded_discussion_topic
-  user: discussion_author
-
-old_discussion_created_event:
-  kind: new_discussion
-  eventable_type: Discussion
-  eventable_id: <%= ActiveRecord::FixtureSet.identify(:old_discussion) %>
-  topic: old_discussion_topic
-  user: discussion_author
-
-subgroup_discussion_created_event:
-  kind: new_discussion
-  eventable_type: Discussion
-  eventable_id: <%= ActiveRecord::FixtureSet.identify(:subgroup_discussion) %>
-  topic: subgroup_discussion_topic
-  user: discussion_author
+  eventable: alien_discussion (Discussion)
+  topic: alien_discussion_topic
+  user: alien

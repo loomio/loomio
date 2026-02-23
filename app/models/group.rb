@@ -202,7 +202,13 @@ class Group < ApplicationRecord
     cover_url(size) || (parent && parent.cover_url(size))
   end
 
+  def admins_include?(user)
+    admins.exists?(user.id)
+  end
 
+  def members_include?(user)
+    members.exists?(user.id)
+  end
 
   def author_id
     creator_id

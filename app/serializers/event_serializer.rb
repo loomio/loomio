@@ -1,6 +1,6 @@
 class EventSerializer < ApplicationSerializer
   attributes :id, :sequence_id, :position, :depth, :child_count, :descendant_count, :kind,
-    :topic_id, :discussion_id, :created_at, :eventable_id, :eventable_type, :custom_fields,
+    :topic_id, :created_at, :eventable_id, :eventable_type, :custom_fields,
     :pinned, :pinned_title, :parent_id, :actor_id, :position_key, :recipient_message
 
   has_one :actor, serializer: AuthorSerializer, root: :users
@@ -12,11 +12,6 @@ class EventSerializer < ApplicationSerializer
 
   def parent
     cache_fetch(:events_by_id, object.parent_id) { object.parent }
-  end
-
-  # Computed discussion_id for frontend transition
-  def discussion_id
-    object.discussion_id
   end
 
   def include_eventable?

@@ -103,7 +103,7 @@ class Stance < ApplicationRecord
   validate :valid_none_of_the_above
   validate :poll_options_must_match_stance_poll
 
-  %w[group mailer group_id discussion_id discussion members voters tags].each do |message|
+  %w[group mailer group_id discussion_id discussion members voters tags topic].each do |message|
     delegate(message, to: :poll)
   end
 

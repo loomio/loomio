@@ -2,9 +2,9 @@ require 'test_helper'
 
 class MembershipTest < ActiveSupport::TestCase
   setup do
-    @user = users(:normal_user)
-    @user2 = users(:another_user)
-    @group = groups(:test_group)
+    @user = users(:user)
+    @user2 = users(:alien)
+    @group = groups(:group)
   end
 
   test "cannot have duplicate memberships" do
@@ -20,7 +20,7 @@ class MembershipTest < ActiveSupport::TestCase
   end
 
   test "can have an inviter" do
-    group = groups(:another_group)
+    group = groups(:alien_group)
     membership = @user.memberships.new(group_id: group.id)
     membership.inviter = @user2
     membership.save!

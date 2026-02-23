@@ -2,84 +2,53 @@ require 'test_helper'
 
 class PollTest < ActiveSupport::TestCase
   setup do
-    @user = users(:group_admin)
-    @group = groups(:test_group)
+    @admin = users(:admin)
+    @group = groups(:group)
   end
 
-  def create_poll(**attrs)
-    defaults = {
+  def poll_params(**overrides)
+    {
       poll_type: "poll",
       title: "Test poll",
       details: "with a description",
-      author: @user,
       poll_option_names: ["engage"],
       closing_at: 5.days.from_now,
-      opened_at: Time.now,
-      notify_on_closing_soon: "voters"
-    }
-    poll = Poll.new(defaults.merge(attrs))
-    poll.save!
-    poll.create_missing_created_event!
-    poll
+      notify_on_closing_soon: "voters",
+      notify_on_open: false
+    }.merge(overrides)
   end
 
-  def create_ranked_choice(**attrs)
-    defaults = {
+  def create_poll(**overrides)
+    PollService.create(params: poll_params(**overrides), actor: @admin)
+  end
+
+  def create_ranked_choice(**overrides)
+    PollService.create(params: poll_params(
       poll_type: "ranked_choice",
       title: "Ranked choice",
-      details: "with a description",
-      author: @user,
       poll_option_names: %w[apple banana orange],
       custom_fields: { minimum_stance_choices: 2 },
-      closing_at: 5.days.from_now,
-      opened_at: Time.now,
-      notify_on_closing_soon: "voters"
-    }
-    poll = Poll.new(defaults.merge(attrs))
-    poll.save!
-    poll.create_missing_created_event!
-    poll
+      **overrides
+    ), actor: @admin)
   end
 
-  def create_meeting(**attrs)
-    defaults = {
+  def create_meeting(**overrides)
+    PollService.create(params: poll_params(
       poll_type: "meeting",
       title: "Test meeting",
-      details: "with a description",
-      author: @user,
       poll_option_names: ['01-01-2015'],
       custom_fields: { can_respond_maybe: false },
-      closing_at: 5.days.from_now,
-      opened_at: Time.now,
-      notify_on_closing_soon: "voters"
-    }
-    poll = Poll.new(defaults.merge(attrs))
-    poll.save!
-    poll.create_missing_created_event!
-    poll
+      **overrides
+    ), actor: @admin)
   end
 
   test "validates correctly if no poll option changes have been made" do
-    poll = Poll.new(
-      poll_type: "poll",
-      title: "Test poll",
-      author: @user,
-      poll_option_names: ["agree"],
-      closing_at: 5.days.from_now
-    )
-    poll.save!
+    poll = create_poll(poll_option_names: ["agree"])
     assert poll.valid?
   end
 
   test "does not allow changing poll options if the template does not allow" do
-    poll = Poll.new(
-      poll_type: "poll",
-      title: "Test poll",
-      author: @user,
-      poll_option_names: ["agree"],
-      closing_at: 5.days.from_now
-    )
-    poll.save!
+    poll = create_poll(poll_option_names: ["agree"])
     poll.poll_options.build
     refute poll.valid?
   end
@@ -95,7 +64,7 @@ class PollTest < ActiveSupport::TestCase
     poll = Poll.new(
       poll_type: "poll",
       title: "Test poll",
-      author: @user,
+      author: @admin,
       poll_option_names: ["agree"],
       closing_at: 1.day.from_now
     )
@@ -106,7 +75,7 @@ class PollTest < ActiveSupport::TestCase
     poll = Poll.new(
       poll_type: "poll",
       title: "Test poll",
-      author: @user,
+      author: @admin,
       poll_option_names: ["agree"],
       closing_at: 1.day.ago
     )
@@ -117,7 +86,7 @@ class PollTest < ActiveSupport::TestCase
     poll = Poll.new(
       poll_type: "poll",
       title: "Test poll",
-      author: @user,
+      author: @admin,
       poll_option_names: ["agree"],
       closed_at: 1.day.ago,
       closing_at: 1.day.ago
@@ -148,17 +117,17 @@ class PollTest < ActiveSupport::TestCase
   end
 
   test "members includes guests" do
-    poll = create_poll(group: @group)
+    poll = create_poll(group_id: @group.id)
     hex = SecureRandom.hex(4)
     guest = User.create!(name: "Guest", email: "guest_#{hex}@example.com", username: "guest#{hex}")
     assert_difference -> { poll.members.count }, 1 do
-      poll.stances.create!(participant_id: guest.id, inviter: @user)
-      poll.add_guest!(guest, @user)
+      poll.stances.create!(participant_id: guest.id, inviter: @admin)
+      poll.add_guest!(guest, @admin)
     end
   end
 
   test "members includes members of the formal group" do
-    poll = create_poll(group: @group)
+    poll = create_poll(group_id: @group.id)
     hex = SecureRandom.hex(4)
     new_member = User.create!(name: "New Member", email: "newmember#{hex}@example.com", username: "newmember#{hex}")
     assert_difference -> { poll.members.count }, 1 do
@@ -167,48 +136,48 @@ class PollTest < ActiveSupport::TestCase
   end
 
   test "increments voters" do
-    poll = create_poll(group: @group, specified_voters_only: true)
-    voter = users(:another_user)
+    poll = create_poll(group_id: @group.id, specified_voters_only: true)
+    voter = users(:alien)
     assert_difference -> { poll.voters.count }, 1 do
       Stance.create!(poll: poll, participant: voter)
     end
   end
 
   test "does not increment decided_voters without a choice" do
-    poll = create_poll(group: @group, specified_voters_only: true)
-    voter = users(:another_user)
+    poll = create_poll(group_id: @group.id, specified_voters_only: true)
+    voter = users(:alien)
     assert_no_difference -> { poll.decided_voters.count } do
       Stance.create!(poll: poll, participant: voter)
     end
   end
 
   test "increments undecided_voters without a choice" do
-    poll = create_poll(group: @group, specified_voters_only: true)
-    voter = users(:another_user)
+    poll = create_poll(group_id: @group.id, specified_voters_only: true)
+    voter = users(:alien)
     assert_difference -> { poll.undecided_voters.count }, 1 do
       Stance.create!(poll: poll, participant: voter)
     end
   end
 
   test "cast vote increments voters" do
-    poll = create_poll(group: @group, specified_voters_only: true)
-    voter = users(:another_user)
+    poll = create_poll(group_id: @group.id, specified_voters_only: true)
+    voter = users(:alien)
     assert_difference -> { poll.voters.count }, 1 do
       Stance.create!(poll: poll, choice: poll.poll_option_names.first, participant: voter)
     end
   end
 
   test "cast vote increments decided_voters" do
-    poll = create_poll(group: @group, specified_voters_only: true)
-    voter = users(:another_user)
+    poll = create_poll(group_id: @group.id, specified_voters_only: true)
+    voter = users(:alien)
     assert_difference -> { poll.decided_voters.count }, 1 do
       Stance.create!(poll: poll, choice: poll.poll_option_names.first, participant: voter)
     end
   end
 
   test "cast vote does not increment undecided voters" do
-    poll = create_poll(group: @group, specified_voters_only: true)
-    voter = users(:another_user)
+    poll = create_poll(group_id: @group.id, specified_voters_only: true)
+    voter = users(:alien)
     assert_no_difference -> { poll.undecided_voters.count } do
       Stance.create!(poll: poll, choice: poll.poll_option_names.first, participant: voter)
     end
@@ -218,7 +187,7 @@ class PollTest < ActiveSupport::TestCase
     hex = SecureRandom.hex(4)
     author = User.create!(name: "Seoul User", email: "seoul#{hex}@example.com", username: "seoul#{hex}", time_zone: "Asia/Seoul")
     @group.add_member!(author)
-    poll = create_poll(author: author, group: @group)
+    poll = PollService.create(params: poll_params(group_id: @group.id), actor: author)
     assert_equal "Asia/Seoul", poll.time_zone
   end
 end

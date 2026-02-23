@@ -1,7 +1,7 @@
 # Topics fixtures - one per discussion (topics own thread state)
-test_discussion_topic:
-  topicable: test_discussion (Discussion)
-  group: test_group
+discussion_topic:
+  topicable: discussion (Discussion)
+  group: group
   items_count: 0
   max_depth: 2
   newest_first: false
@@ -21,9 +21,9 @@ public_discussion_topic:
   created_at: <%= 10.days.ago %>
   updated_at: <%= 1.day.ago %>
 
-private_discussion_topic:
-  topicable: private_discussion (Discussion)
-  group: test_group
+alien_discussion_topic:
+  topicable: alien_discussion (Discussion)
+  group: alien_group
   items_count: 0
   max_depth: 2
   newest_first: false
@@ -31,28 +31,6 @@ private_discussion_topic:
   last_activity_at: <%= 10.days.ago %>
   created_at: <%= 10.days.ago %>
   updated_at: <%= 1.day.ago %>
-
-discarded_discussion_topic:
-  topicable: discarded_discussion (Discussion)
-  group: test_group
-  items_count: 0
-  max_depth: 2
-  newest_first: false
-  private: true
-  last_activity_at: <%= 10.days.ago %>
-  created_at: <%= 10.days.ago %>
-  updated_at: <%= 1.day.ago %>
-
-old_discussion_topic:
-  topicable: old_discussion (Discussion)
-  group: test_group
-  items_count: 0
-  max_depth: 2
-  newest_first: false
-  private: true
-  last_activity_at: <%= 4.months.ago %>
-  created_at: <%= 4.months.ago %>
-  updated_at: <%= 4.months.ago %>
 
 subgroup_discussion_topic:
   topicable: subgroup_discussion (Discussion)

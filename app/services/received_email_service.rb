@@ -222,8 +222,12 @@ class ReceivedEmailService
       parent_id = params['pi']
     end
 
+    unless parent_id
+      parent_id = params['d'].to_i
+      parent_type = 'Discussion'
+    end
+
     {
-      discussion_id: params['d'].to_i,
       parent_id: parent_id,
       parent_type: parent_type,
       body: email.reply_body,

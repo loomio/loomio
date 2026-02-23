@@ -16,6 +16,37 @@ class Topic < ApplicationRecord
 
   after_destroy :drop_sequence_id_sequence
 
+  delegate :members_can_raise_motions, to: :group
+
+  def discussion
+    topicable_type == 'Discussion' && topicable
+  end
+
+  def poll
+    topicable_type == 'Poll' && topicable
+  end
+
+  def group
+    super || NullGroup.new
+  end
+
+  def admins_include?(user)
+    if persisted?
+      admins.exists?(user.id)
+    else
+      if group.present?
+        group.admins_include?(user)
+      else
+        topicable.author == user
+      end
+    end
+  end
+
+  def members_include?(user)
+    return members.exists?(user.id) if persisted?
+    group.present? ? group.members_include?(user) : topicable.author == user
+  end
+
   def members
     User.active
         .joins("LEFT OUTER JOIN topic_readers tr ON tr.topic_id = #{id} AND tr.user_id = users.id")

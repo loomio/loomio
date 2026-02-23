@@ -68,8 +68,8 @@ class MybbService
 	  		end
     	end
 		end
-		ids = Discussion.joins(:topic).where(topics: { group_id: group_id }).pluck(:id)
-		ids.each {|id| EventService.repair_discussion(id)}
+		topic_ids = Topic.where(group_id: group_id, topicable_type: 'Discussion').pluck(:id)
+		topic_ids.each {|id| TopicService.repair_thread(id)}
 		# SearchIndexWorker.new.perform(ids)
 	end
 end

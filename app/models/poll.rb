@@ -225,14 +225,14 @@ class Poll < ApplicationRecord
 
   after_commit :update_group_counter_caches
   def update_group_counter_caches
-    return unless (g = group) && g.id
+    return unless (g = topic.group) && g.id
     g.update_polls_count
     g.update_closed_polls_count
   end
 
   delegate :locale, to: :author
   delegate :name, to: :author, prefix: true
-  delegate :guests, :guest_ids, :add_guest!, :add_admin!, :admins, :members, to: :topic
+  delegate :guests, :guest_ids, :add_guest!, :add_admin!, :admins, :members, :group_id, :group, to: :topic
 
   # Id like to see what happens if I remove these
   # def discussion

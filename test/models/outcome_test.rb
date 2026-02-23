@@ -2,18 +2,17 @@ require 'test_helper'
 
 class OutcomeTest < ActiveSupport::TestCase
   setup do
-    @user = users(:group_admin)
-    @group = groups(:test_group)
+    @user = users(:user)
+    @group = groups(:group)
 
-    @meeting_poll = Poll.new(
+    @meeting_poll = PollService.create(params: {
       poll_type: 'meeting',
       title: 'Meeting poll',
       closing_at: 5.days.from_now,
-      author: @user,
-      group: @group,
-      poll_option_names: ["2026-02-15"]
-    )
-    PollService.create(poll: @meeting_poll, actor: @user)
+      group_id: @group.id,
+      poll_option_names: ["2026-02-15"],
+      notify_on_open: false
+    }, actor: users(:admin))
     @meeting_poll.update!(closed_at: 1.day.ago)
   end
 

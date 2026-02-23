@@ -57,7 +57,7 @@ class TopicService
 
       GenericWorker.perform_async('PollService', 'group_members_added', topic.group_id) if topic.group_id
       GenericWorker.perform_async('SearchService', 'reindex_by_discussion_id', topic.id)
-      Events::TopicMoved.publish!(topic, actor, source)
+      Events::DiscussionMoved.publish!(topic.topicable, actor, source)
     end
   end
 
@@ -117,11 +117,11 @@ class TopicService
     EventBus.broadcast('discussion_recall', reader, actor)
   end
 
-  def self.moved_discussion_privacy_for(discussion, destination)
+  def self.moved_discussion_privacy_for(topic, destination)
     case destination.discussion_privacy_options
     when 'public_only'  then false
     when 'private_only' then true
-    else                     discussion.topic.private
+    else                     topic.private
     end
   end
 
@@ -139,6 +139,91 @@ class TopicService
     end
   end
 
+  def self.repair_thread(topic_id)
+    topic = Topic.find_by(id: topic_id)
+    return unless topic
+    topicable = topic.topicable
+
+    # ensure topicable.created_event exists
+    unless topicable.created_event
+      Event.import [Event.new(kind: topicable.created_event_kind.to_s,
+                              user_id: topicable.author_id,
+                              eventable_id: topicable.id,
+                              eventable_type: topicable.class.name,
+                              created_at: topicable.created_at)]
+      topicable.reload
+    end
+
+    created_event = topicable.created_event
+    Event.where(topic_id: topic.id, sequence_id: nil).where.not(id: created_event.id).order(:id).each(&:set_sequence_id!)
+
+    # rebuild ancestry of events based on eventable relationships
+    items = Event.where(topic_id: topic.id).where.not(id: created_event.id).order(:sequence_id)
+    items.update_all(parent_id: created_event.id, position: 0, position_key: nil, depth: 1)
+    items.reload.compact.each(&:set_parent_and_depth!)
+
+    parent_ids = items.pluck(:parent_id).compact.uniq
+
+    reset_child_positions(created_event.id, nil)
+    Event.where(id: parent_ids).order(:depth).each do |parent_event|
+      parent_event.reload
+      reset_child_positions(parent_event.id, parent_event.position_key)
+    end
+
+    ActiveRecord::Base.connection.execute(
+      "UPDATE events
+       SET descendant_count = (
+         SELECT count(descendants.id)
+         FROM events descendants
+         WHERE
+            descendants.topic_id = events.topic_id AND
+            descendants.id != events.id AND
+            descendants.position_key like CONCAT(events.position_key, '%')
+      ), child_count = (
+        SELECT count(children.id) FROM events children
+        WHERE children.parent_id = events.id AND children.topic_id IS NOT NULL
+      )
+      WHERE topic_id = #{topic.id.to_i}")
+
+    created_event.reload.update_child_count
+    created_event.update_descendant_count
+    topic.update_sequence_info!
+
+    # ensure all the topic_readers have valid read_ranges values
+    TopicReader.where(topic_id: topic.id).each do |reader|
+      reader.update_columns(
+        read_ranges_string: RangeSet.serialize(
+          RangeSet.intersect_ranges(reader.read_ranges, topic.ranges)
+        )
+      )
+    end
+  end
+
+  def self.reset_child_positions(parent_id, parent_position_key)
+    position_key_sql = if parent_position_key.nil?
+      "CONCAT(REPEAT('0',5-LENGTH(CONCAT(t.seq))), t.seq)"
+    else
+      "CONCAT('#{parent_position_key}-', CONCAT(REPEAT('0',5-LENGTH(CONCAT(t.seq) ) ), t.seq) )"
+    end
+    ActiveRecord::Base.connection.execute(
+      "UPDATE events SET position = t.seq, position_key = #{position_key_sql}
+        FROM (
+          SELECT id AS id, row_number() OVER(ORDER BY sequence_id) AS seq
+          FROM events
+          WHERE parent_id = #{parent_id}
+          AND   topic_id IS NOT NULL
+        ) AS t
+      WHERE events.id = t.id and
+            events.position is distinct from t.seq")
+    SequenceService.drop_seq!('events_position', parent_id)
+  end
+
+  def self.repair_all_threads
+    Topic.pluck(:id).each do |id|
+      RepairThreadWorker.perform_async(id)
+    end
+  end
+
   def self.add_users(topic:, actor:, user_ids:, emails:, audience:)
     users = UserInviter.where_or_create!(actor: actor,
                                          user_ids: user_ids,
@@ -147,9 +232,12 @@ class TopicService
                                          audience: audience)
 
     volumes = {}
-    Membership.where(group_id: topic.group_id,
-                     user_id: users.pluck(:id)).find_each do |m|
-      volumes[m.user_id] = m.volume
+
+    if topic.group_id
+      Membership.where(group_id: topic.group_id,
+                      user_id: users.pluck(:id)).find_each do |m|
+        volumes[m.user_id] = m.volume
+      end
     end
 
     TopicReader.
@@ -161,7 +249,7 @@ class TopicService
                       topic: topic,
                       inviter: actor,
                       guest: !volumes.has_key?(user.id),
-                      admin: !discussion.group_id,
+                      admin: !topic.group_id,
                       volume: volumes[user.id] || user.default_membership_volume)
     end
 

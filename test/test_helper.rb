@@ -27,31 +27,6 @@ module ActiveSupport
     fixtures :all
 
 
-    # Helper to create a discussion with proper setup
-    def create_discussion(**args)
-      params = {
-        title: "Test Discussion",
-        description: "<p>A test discussion</p>",
-        description_format: "html",
-        private: true
-      }.merge(args)
-
-      # Set defaults if not provided
-      params[:author] ||= users(:discussion_author)
-      params[:group] ||= groups(:test_group)
-
-      author = params.delete(:author)
-      group = params.delete(:group)
-      params[:group_id] ||= group.id
-
-      # Ensure author is a member of the group
-      unless group.members.include?(author)
-        group.add_member!(author)
-      end
-
-      DiscussionService.create(params: params, actor: author)[:discussion]
-    end
-
     # Email helper methods
     def emails_sent_to(address)
       ActionMailer::Base.deliveries.filter { |email| Array(email.to).include?(address) }

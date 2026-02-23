@@ -14,7 +14,6 @@ class Events::NewDiscussion < Event
 
     super(discussion,
           user: discussion.author,
-          topic: discussion.topic,
           recipient_user_ids: recipient_user_ids,
           recipient_chatbot_ids: recipient_chatbot_ids,
           recipient_audience: recipient_audience.presence)

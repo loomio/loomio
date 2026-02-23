@@ -13,9 +13,7 @@ class EventMailer < ApplicationMailer
       event.eventable.poll
     end
 
-    discussion = if event.eventable.respond_to? :discussion
-      event.eventable.discussion
-    end
+    discussion = event.eventable.topic.topicable_type == 'Discussion' ? event.topic.topicable : nil
 
     membership = if event.eventable.respond_to?(:group_id) && event.eventable.group_id
       m = Membership.active.find_by(
@@ -109,7 +107,7 @@ class EventMailer < ApplicationMailer
   def self.build_component(event:, recipient:, event_key: nil, poll: nil, discussion: nil, notification: nil, membership: nil, utm_hash: {})
     event_key ||= event_key_for(event, recipient)
     poll ||= event.eventable.poll if %w[Poll Stance Outcome].include?(event.eventable_type)
-    discussion ||= event.eventable.discussion if event.eventable.respond_to?(:discussion)
+    discussion ||= event.topic&.topicable_type == 'Discussion' ? event.topic.topicable : nil
 
     case event.eventable_type
     when 'Poll', 'Outcome'
@@ -164,10 +162,10 @@ class EventMailer < ApplicationMailer
 
   def reply_to_address_with_group_name(model:, user:)
     return nil unless user.is_logged_in?
-    return nil unless model.respond_to?(:discussion) && model.discussion.present?
+    return nil unless model.respond_to?(:topic) && model.topic.present?
 
-    if model.discussion.group.present?
-      "\"#{I18n.transliterate(model.discussion.group.full_name).truncate(50).delete('"')}\" <#{reply_to_address(model: model, user: user)}>"
+    if model.topic.group.present?
+      "\"#{I18n.transliterate(model.topic.group.full_name).truncate(50).delete('"')}\" <#{reply_to_address(model: model, user: user)}>"
     else
       "\"#{user.name}\" <#{reply_to_address(model: model, user: user)}>"
     end

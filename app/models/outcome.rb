@@ -60,8 +60,8 @@ class Outcome < ApplicationRecord
   has_many :documents, as: :model, dependent: :destroy
 
   %w(
-    poll_type dates_as_options group group_id discussion discussion_id
-    locale mailer members admins discarded? tags
+    poll_type dates_as_options group group_id
+    locale mailer members admins discarded? tags topic
   ).each { |message| delegate message, to: :poll }
 
   is_mentionable on: :statement

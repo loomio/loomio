@@ -1,81 +1,39 @@
 # Memberships fixtures for testing
-normal_user_in_test_group:
-  user: normal_user
-  group: test_group
+user_membership:
+  user: user
+  group: group
   token: normalusertestgrouptoken12345
   accepted_at: <%= 30.days.ago %>
   admin: false
   created_at: <%= 30.days.ago %>
 
-another_user_in_test_group:
-  user: another_user
-  group: test_group
-  token: anotherusertestgrouptoken1234
-  accepted_at: <%= 30.days.ago %>
-  admin: false
-  created_at: <%= 30.days.ago %>
-  volume: normal
-
-author_in_test_group:
-  user: discussion_author
-  group: test_group
+admin_membership:
+  user: admin
+  group: group
   token: authortestgrouptoken12345678
   accepted_at: <%= 30.days.ago %>
   admin: true
   created_at: <%= 30.days.ago %>
 
-author_in_another_group:
-  user: discussion_author
-  group: another_group
-  token: authoranothergrouptoken12345
-  accepted_at: <%= 30.days.ago %>
-  admin: true
-  created_at: <%= 30.days.ago %>
-
-author_in_subgroup:
-  user: discussion_author
+subgroup_user_membership:
+  user: subgroup_user
   group: subgroup
-  token: authorsubgrouptoken123456789
-  accepted_at: <%= 20.days.ago %>
-  admin: true
-  created_at: <%= 20.days.ago %>
-
-normal_user_in_subgroup:
-  user: normal_user
-  group: subgroup
-  token: normalusersubgrouptoken12345
+  token: subgroupusersubgrouptoken123
   accepted_at: <%= 20.days.ago %>
   admin: false
   created_at: <%= 20.days.ago %>
 
-author_in_public_group:
-  user: discussion_author
-  group: public_group
-  token: authorpublicgrouptoken12345
-  accepted_at: <%= 30.days.ago %>
-  admin: true
-  created_at: <%= 30.days.ago %>
-
-# group_admin memberships — admin in all groups
-group_admin_in_test_group:
-  user: group_admin
-  group: test_group
-  token: grpadmintestgrouptoken123456
-  accepted_at: <%= 30.days.ago %>
-  admin: true
-  created_at: <%= 30.days.ago %>
-
-group_admin_in_subgroup:
-  user: group_admin
+admin_subgroup_membership:
+  user: admin
   group: subgroup
   token: grpadminsubgrouptoken1234567
   accepted_at: <%= 20.days.ago %>
   admin: true
   created_at: <%= 20.days.ago %>
 
-group_admin_in_another_group:
-  user: group_admin
-  group: another_group
+alien_group_membership:
+  user: alien
+  group: alien_group
   token: grpadminanothergrouptoken123
   accepted_at: <%= 30.days.ago %>
   admin: true

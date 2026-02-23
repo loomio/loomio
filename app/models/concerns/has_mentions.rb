@@ -29,8 +29,8 @@ module HasMentions
   end
 
   def mentioned_users
-    members.where("users.username in (:usernames) or users.id in (:ids)",
-                  usernames: mentioned_usernames, ids: mentioned_user_ids)
+    topic.members.where("users.username in (:usernames) or users.id in (:ids)",
+                        usernames: mentioned_usernames, ids: mentioned_user_ids)
   end
 
   def mentioned_group_users

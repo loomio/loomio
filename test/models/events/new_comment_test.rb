@@ -2,10 +2,8 @@ require 'test_helper'
 
 class Events::NewCommentTest < ActiveSupport::TestCase
   setup do
-    @user = User.create!(name: "NC User #{SecureRandom.hex(4)}", email: "ncuser_#{SecureRandom.hex(4)}@test.com", email_verified: true)
-    @group = Group.create!(name: "NC Group #{SecureRandom.hex(4)}", group_privacy: 'secret')
-    @group.add_admin!(@user)
-    @discussion = create_discussion(group: @group, author: @user)
+    @user = users(:user)
+    @discussion = discussions(:discussion)
     @comment = Comment.new(parent: @discussion, body: "First", author: @user)
     CommentService.create(comment: @comment, actor: @user)
     @reply = Comment.new(body: "Reply", parent: @comment, author: @user)

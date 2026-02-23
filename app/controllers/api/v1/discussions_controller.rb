@@ -1,9 +1,7 @@
 class Api::V1::DiscussionsController < Api::V1::RestfulController
   def create
-    result = service.create(params: resource_params, actor: current_user)
-    @event = result[:event]
-    self.resource = result[:discussion]
-    if @event && resource_params[:forked_event_ids]&.any?
+    self.resource = service.create(params: resource_params, actor: current_user)
+    if resource_params[:forked_event_ids]&.any?
       EventService.move_comments(discussion: resource, params: resource_params, actor: current_user)
     end
     respond_with_resource
@@ -22,7 +20,7 @@ class Api::V1::DiscussionsController < Api::V1::RestfulController
 
     # this is desperation in code, but better than auto create when nil on method call
     if resource.created_event.nil?
-      EventService.repair_discussion(resource.id)
+      TopicService.repair_thread(resource.topic_id)
       resource.reload
     end
 

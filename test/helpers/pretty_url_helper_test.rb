@@ -4,8 +4,8 @@ class PrettyUrlHelperTest < ActionView::TestCase
   include PrettyUrlHelper
 
   setup do
-    @user = users(:group_admin)
-    @group = groups(:test_group)
+    @user = users(:admin)
+    @group = groups(:group)
   end
 
   test "gives normal group url for group without handle" do

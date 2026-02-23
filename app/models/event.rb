@@ -51,15 +51,6 @@ class Event < ApplicationRecord
   delegate :groups, to: :eventable, allow_nil: true
   delegate :update_sequence_info!, to: :topic, allow_nil: true
 
-  # Convenience accessors for transition
-  def discussion
-    topic&.topicable if topic&.topicable_type == 'Discussion'
-  end
-
-  def discussion_id
-    topic&.topicable_id if topic&.topicable_type == 'Discussion'
-  end
-
   def self.sti_find(id)
     e = self.find(id)
     e.kind_class.find(id)
@@ -141,7 +132,7 @@ class Event < ApplicationRecord
 
   def reset_sequences
     SequenceService.drop_seq!('topic_sequence_id', topic_id)
-    EventService.reset_child_positions(parent.id, parent.position_key) if parent_id && parent
+    TopicService.reset_child_positions(parent.id, parent.position_key) if parent_id && parent
   end
 
   def next_sequence_id!
@@ -180,10 +171,10 @@ class Event < ApplicationRecord
     when 'discussion_edited'   then eventable&.created_event
     when 'discussion_reopened' then eventable.created_event
     when 'outcome_created'     then eventable.parent_event
-    when 'new_comment'         then eventable.parent_event
+    when 'new_comment'         then eventable.parent.created_event
     when 'poll_closed_by_user' then eventable.created_event
     when 'poll_closing_soon'   then eventable.created_event
-    when 'poll_created'        then eventable.parent_event
+    when 'poll_created'        then eventable.topic.topicable == eventable ? nil : eventable.topic.topicable.created_event
     when 'poll_edited'         then eventable.created_event
     when 'poll_expired'        then eventable.created_event
     when 'poll_option_added'   then eventable.created_event

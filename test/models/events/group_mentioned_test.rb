@@ -21,7 +21,7 @@ class Events::GroupMentionedTest < ActiveSupport::TestCase
     @group.membership_for(@volume_normal_member).update!(volume: :normal)
     @group.membership_for(@volume_loud_member).update!(volume: :loud)
 
-    @discussion = create_discussion(group: @group, author: @actor)
+    @discussion = DiscussionService.create(params: { group_id: @group.id, title: "GM Test #{SecureRandom.hex(4)}" }, actor: @actor)
     ActionMailer::Base.deliveries.clear
   end
 

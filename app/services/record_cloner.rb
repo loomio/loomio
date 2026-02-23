@@ -31,7 +31,7 @@ class RecordCloner
       poll.update_counts!
       poll.stances.each {|s| s.update_option_scores!}
     end
-    clone_group.discussions.each {|d| EventService.repair_discussion(d.id) }
+    clone_group.discussions.each {|d| TopicService.repair_thread(d.topic_id) }
     clone_group.reload
   end
 
@@ -58,7 +58,7 @@ class RecordCloner
       poll.update_counts!
       poll.stances.each {|s| s.update_option_scores!}
     end
-    clone_group.discussions.each {|d| EventService.repair_discussion(d.id) }
+    clone_group.discussions.each {|d| TopicService.repair_thread(d.topic_id) }
     clone_group.add_member! actor
     clone_group.reload
   end
@@ -85,7 +85,7 @@ class RecordCloner
       poll.stances.each {|s| s.update_option_scores!}
     end
 
-    group.discussions.each {|d| EventService.repair_discussion(d.id) }
+    group.discussions.each {|d| TopicService.repair_thread(d.topic_id) }
     group.reload
 
     group.save!
@@ -117,7 +117,7 @@ class RecordCloner
       poll.update_counts!
       poll.stances.each {|s| s.update_option_scores!}
     end
-    clone_group.discussions.each {|d| EventService.repair_discussion(d.id) }
+    clone_group.discussions.each {|d| TopicService.repair_thread(d.topic_id) }
     clone_group.reload
     clone_group
   end
@@ -130,16 +130,13 @@ class RecordCloner
     cloned_polls = clone_group.instance_variable_get(:@_cloned_polls) || []
 
     cloned_discussions.each do |cd|
-      cd.group = clone_group
+      cd.topic.group = clone_group
       cd.save!
-      # build_default_topic + save_pending_topic_items callbacks handle
-      # persisting the topic and its events
     end
 
     cloned_polls.each do |cp|
-      cp.group = clone_group
+      cp.topic.group = clone_group
       cp.save!
-      # assign_topic! callback handles creating the topic
     end
   end
 
@@ -214,16 +211,26 @@ class RecordCloner
     new_clone(discussion, copy_fields, {}, attachments)
   end
 
+  def new_clone_topic(topic, topicable)
+    copy_fields = %w[
+      max_depth
+      newest_first
+      private
+      closed_at
+      closer_id
+      pinned_at
+      last_activity_at
+      created_at
+      updated_at
+    ]
+    clone_topic = new_clone(topic, copy_fields)
+    clone_topic.topicable = topicable
+    clone_topic
+  end
+
   def new_clone_discussion_and_events(discussion)
     clone_discussion = new_clone_discussion(discussion)
-
-    # Build topic for the cloned discussion
-    clone_topic = Topic.new(
-      topicable: clone_discussion,
-      max_depth: discussion.max_depth,
-      newest_first: discussion.newest_first,
-      last_activity_at: discussion.last_activity_at
-    )
+    clone_topic = new_clone_topic(discussion.topic, clone_discussion)
     clone_discussion.topic = clone_topic
 
     created_event = new_clone_event(discussion.created_event)
@@ -231,16 +238,12 @@ class RecordCloner
 
     drop_kinds = %w[poll_closed_by_user poll_expired poll_reopened]
     created_event_id = discussion.created_event&.id
-    thread_events = discussion.items.order(:sequence_id)
+    thread_events = discussion.topic.items.order(:sequence_id)
       .reject { |i| drop_kinds.include?(i.kind) || i.id == created_event_id }
       .map { |event| new_clone_event_and_eventable(event) }
 
-    # All events go into the topic's items (comments are saved via events' belongs_to autosave)
-    clone_topic.items = [created_event] + thread_events
-
-    # Store cloned polls for deferred save (polls need topic_id set after topic is created)
-    clone_discussion.instance_variable_set(:@_cloned_polls,
-      discussion.polls.map {|p| new_clone_poll(p) })
+    # clone_discussion.events << created_event
+    clone_topic.items = thread_events
     clone_discussion
   end
 
@@ -291,6 +294,9 @@ class RecordCloner
     attachments = [:files, :image_files]
 
     clone_poll = new_clone(poll, copy_fields, {}, attachments)
+    # In-thread polls share the discussion's cloned topic;
+    # standalone polls get their own topic
+    clone_poll.topic = existing_clone(poll.topic) || new_clone_topic(poll.topic, clone_poll)
     clone_poll.poll_options = poll.poll_options.map {|poll_option| new_clone_poll_option(poll_option) }
     clone_poll.stances = poll.stances.map {|stance| new_clone_stance(stance) }
     clone_poll.outcomes = poll.outcomes.map {|outcome| new_clone_outcome(outcome) }

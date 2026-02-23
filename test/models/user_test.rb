@@ -2,13 +2,10 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   setup do
-    @user = User.create!(
-      name: "Test User #{SecureRandom.hex(4)}",
-      email: "user_#{SecureRandom.hex(4)}@test.com",
-      password: "a_good_password",
-      password_confirmation: "a_good_password"
-    )
-    @group = Group.create!(name: "User Group #{SecureRandom.hex(4)}", group_privacy: 'secret')
+    @user = users(:user)
+    @admin = users(:admin)
+    @discussion = discussions(:discussion)
+    @group = groups(:group)
   end
 
   # Password validations
@@ -97,26 +94,19 @@ class UserTest < ActiveSupport::TestCase
 
   # Associations
   test "has many groups" do
-    @group.add_member!(@user)
     assert_includes @user.groups, @group
   end
 
   test "has many adminable_groups" do
-    @group.add_admin!(@user)
-    assert_includes @user.adminable_groups, @group
+    assert_includes @admin.adminable_groups, @group
   end
 
   test "has many admin memberships" do
-    membership = @group.add_admin!(@user)
-    assert_includes @user.admin_memberships, membership
+    assert_includes @admin.admin_memberships, memberships(:admin_membership)
   end
 
   test "has authored discussions" do
-    @group.add_member!(@user)
-    discussion = Discussion.new(group: @group, title: "Hello world", private: true)
-    discussion.author = @user
-    discussion.save!
-    assert_includes @user.authored_discussions, discussion
+    assert_includes @admin.authored_discussions, @discussion
   end
 
   # Experiences

@@ -1,63 +1,41 @@
 # Discussions fixtures for testing
-test_discussion:
-  key: test_disc_key
+discussion:
+  key: disc123
   title: Test Discussion
   description: <p>A description for this discussion. Should this be <em>rich</em>?</p>
   description_format: html
-  author: discussion_author
-  topic: test_discussion_topic
-  tags: []
+  author: admin
+  topic: discussion_topic
+  tags: [tag]
   created_at: <%= 10.days.ago %>
   updated_at: <%= 1.day.ago %>
 
+discussion_in_subgroup:
+  key: subgroup_disc_key
+  title: Subgroup Discussion
+  description: <p>A discussion in a subgroup</p>
+  description_format: html
+  author: admin
+  topic: subgroup_discussion_topic
+  created_at: <%= 5.days.ago %>
+  updated_at: <%= 1.day.ago %>
 
 public_discussion:
   key: public_disc_key
   title: Public Discussion
   description: <p>This is a public discussion</p>
   description_format: html
-  author: discussion_author
+  author: admin
   topic: public_discussion_topic
   created_at: <%= 10.days.ago %>
   updated_at: <%= 1.day.ago %>
 
-private_discussion:
-  key: private_disc_key
-  title: Private Discussion
-  description: <p>This is a private discussion</p>
+alien_discussion:
+  key: alien_disc_key
+  title: Alien Discussion
+  description: <p>A discussion in the alien group</p>
   description_format: html
-  author: discussion_author
-  topic: private_discussion_topic
+  author: alien
+  topic: alien_discussion_topic
   created_at: <%= 10.days.ago %>
-  updated_at: <%= 1.day.ago %>
-
-discarded_discussion:
-  key: discarded_disc_key
-  title: Discarded Discussion
-  description: <p>This discussion has been discarded</p>
-  description_format: html
-  author: discussion_author
-  topic: discarded_discussion_topic
-  discarded_at: <%= 1.day.ago %>
-  created_at: <%= 10.days.ago %>
-  updated_at: <%= 1.day.ago %>
-
-old_discussion:
-  key: old_disc_key
-  title: Old Discussion
-  description: <p>An old discussion from months ago</p>
-  description_format: html
-  author: discussion_author
-  topic: old_discussion_topic
-  created_at: <%= 4.months.ago %>
-  updated_at: <%= 4.months.ago %>
-
-subgroup_discussion:
-  key: subgroup_disc_key
-  title: Subgroup Discussion
-  description: <p>A discussion in a subgroup</p>
-  description_format: html
-  author: discussion_author
-  topic: subgroup_discussion_topic
-  created_at: <%= 5.days.ago %>
   updated_at: <%= 1.day.ago %>
