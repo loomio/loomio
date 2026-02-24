@@ -8,47 +8,23 @@ import openModal      from '@/shared/helpers/open_modal';
 import { hardReload } from '@/shared/helpers/window';
 import { subMonths } from 'date-fns';
 
-export default new class DiscussionService {
-  actions(discussion, vm) {
+export default new class TopicService {
+  actions(topic, vm) {
     return {
-      make_a_copy: {
-        icon: 'mdi-content-copy',
-        name: 'templates.make_a_copy',
-        menu: true,
-        canPerform() { return Session.user(); },
-        to() { return `/d/new?discussion_id=${discussion.id}`; }
-      },
-
-      translate_thread: {
-        icon: 'mdi-translate',
-        name: 'common.action.translate',
-        dock: 3,
-        canPerform() { return AbilityService.canTranslate(discussion); },
-        perform() { return Records.translations.addTo(discussion, Session.user().locale) }
-      },
-
-      untranslate_thread: {
-        icon: 'mdi-translate',
-        name: 'common.action.original',
-        dock: 3,
-        canPerform() { return AbilityService.canUntranslate(discussion); },
-        perform() { discussion.translationId = null }
-      },
-
       subscribe: {
         name: 'common.action.subscribe',
         icon: 'mdi-bell',
         menu: true,
         canPerform() {
-          return !discussion.closedAt &&
-          (discussion.volume() === 'normal') &&
-          AbilityService.canChangeVolume(discussion);
+          return !topic.closedAt &&
+          (topic.volume() === 'normal') &&
+          AbilityService.canChangeVolume(topic);
         },
         perform() {
           return openModal({
             component: 'ChangeVolumeForm',
             props: {
-              model: discussion
+              model: topic
             }
           });
         }
@@ -59,13 +35,13 @@ export default new class DiscussionService {
         icon: 'mdi-bell-off',
         menu: true,
         canPerform() {
-          return (discussion.volume() === 'loud') && AbilityService.canChangeVolume(discussion);
+          return (topic.volume() === 'loud') && AbilityService.canChangeVolume(topic);
         },
         perform() {
           return openModal({
             component: 'ChangeVolumeForm',
             props: {
-              model: discussion
+              model: topic
             }
           });
         }
@@ -76,13 +52,13 @@ export default new class DiscussionService {
         icon: 'mdi-bell-outline',
         dock: 2,
         canPerform() {
-          return (discussion.volume() === 'quiet') && AbilityService.canChangeVolume(discussion);
+          return (topic.volume() === 'quiet') && AbilityService.canChangeVolume(topic);
         },
         perform() {
           return openModal({
             component: 'ChangeVolumeForm',
             props: {
-              model: discussion
+              model: topic
             }
           });
         }
@@ -93,92 +69,14 @@ export default new class DiscussionService {
         icon: 'mdi-bullhorn',
         dock: 3,
         canPerform() {
-          return discussion.group().adminsInclude(Session.user()) ||
-          ((discussion.group().membersCanAnnounce || discussion.group().membersCanAddGuests) && discussion.membersInclude(Session.user()));
+          return topic.group().adminsInclude(Session.user()) ||
+          ((topic.group().membersCanAnnounce || topic.group().membersCanAddGuests) && topic.membersInclude(Session.user()));
         },
         perform() {
           return EventBus.$emit('openModal', {
             component: 'StrandMembersList',
-            props: { topic: discussion.topic() }
+            props: { topic }
           });
-        }
-      },
-
-      react: {
-        dock: 1,
-        canPerform() { return AbilityService.canAddComment(discussion); }
-      },
-
-      add_comment: {
-        icon: 'mdi-reply',
-        dockDisplay: 'icon',
-        dock: 1,
-        canPerform() {
-          return AbilityService.canAddComment(discussion) &&
-                 !(discussion.group().adminsInclude(Session.user()) ||
-                  ((discussion.group().membersCanAnnounce || discussion.group().membersCanAddGuests) && discussion.membersInclude(Session.user())))
-        },
-        perform() {
-          document.querySelector('#add-comment').scrollIntoView();
-          document.querySelector('#add-comment').focus();
-        }
-      },
-
-      edit_thread: {
-        name: 'common.action.edit',
-        icon: 'mdi-pencil',
-        dock: 1,
-        canPerform() { return AbilityService.canEditThread(discussion); },
-        to() { return `/d/${discussion.key}/edit`; }
-      },
-        // perform: ->
-        //   Records.discussions.remote.fetchById(discussion.key, {exclude_types: 'group user poll event'}).then ->
-        //     openModal
-        //       component: 'DiscussionForm',
-        //       props:
-        //         discussion: discussion.clone()
-
-      show_history: {
-        icon: 'mdi-history',
-        name: 'action_dock.show_edits',
-        dock: 1,
-        canPerform() { return discussion.edited(); },
-        perform() {
-          return openModal({
-            component: 'RevisionHistoryModal',
-            props: {
-              model: discussion
-            }
-          });
-        }
-      },
-
-      notification_history: {
-        name: 'action_dock.notification_history',
-        icon: 'mdi-bell-ring-outline',
-        menu: true,
-        perform() {
-          return openModal({
-            component: 'AnnouncementHistory',
-            persistent: false,
-            props: {
-              model: discussion,
-            }
-          });
-        },
-        canPerform() { return true; }
-      },
-
-      export_thread: {
-        name: 'common.action.print',
-        icon: 'mdi-printer-outline',
-        dock: 0,
-        menu: true,
-        canPerform() {
-          return AbilityService.canExportThread(discussion);
-        },
-        perform() {
-          return hardReload(LmoUrlService.discussion(discussion, {export: 1}, {absolute: true, print: true}));
         }
       },
 
@@ -207,14 +105,14 @@ export default new class DiscussionService {
       },
 
       edit_arrangement: {
-        icon: (discussion.topic().newestFirst && 'mdi-arrow-up') || 'mdi-arrow-down',
-        name: (discussion.topic().newestFirst && 'strand_nav.newest_first') || 'strand_nav.oldest_first',
-        canPerform() { return AbilityService.canEditThread(discussion); },
+        icon: (topic.newestFirst && 'mdi-arrow-up') || 'mdi-arrow-down',
+        name: (topic.newestFirst && 'strand_nav.newest_first') || 'strand_nav.oldest_first',
+        canPerform() { return AbilityService.canEditThread(topic); },
         perform() {
           return openModal({
             component: 'ArrangementForm',
             props: {
-              topic: discussion.topic().clone()
+              topic: topic.clone()
             }
           });
         }

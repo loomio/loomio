@@ -1,7 +1,7 @@
 class PermittedParams < Struct.new(:params)
   MODELS = %w(
     user group membership_request membership poll poll_template outcome
-    stance discussion discussion_template discussion_reader comment
+    stance discussion discussion_template discussion_reader topic comment
     contact_message document
     webhook chatbot contact_request reaction tag
   )
@@ -176,6 +176,10 @@ class PermittedParams < Struct.new(:params)
     [:volume]
   end
 
+  def topic_attributes
+    [:newest_first, :max_depth]
+  end
+
   def group_attributes
     [:parent_id, :name, :handle, :group_privacy, :is_visible_to_public, :discussion_privacy_options,
      :members_can_add_members, :members_can_add_guests, :members_can_announce,
@@ -204,8 +208,6 @@ class PermittedParams < Struct.new(:params)
      :discussion_template_id,
      :discussion_template_key,
      :group_id,
-     :newest_first,
-     :max_depth,
      :private,
      :notify_recipients,
      :recipient_audience,

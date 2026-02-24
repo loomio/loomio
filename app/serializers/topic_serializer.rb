@@ -9,7 +9,11 @@ class TopicSerializer < ApplicationSerializer
              :closer_id,
              :pinned_at,
              :topicable_id,
-             :topicable_type
+             :topicable_type,
+             :members_count,
+             :anonymous_polls_count,
+             :closed_polls_count,
+             :seen_by_count
 
   # Reader attributes
   attributes :topic_reader_id,

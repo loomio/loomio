@@ -1,4 +1,10 @@
 class Api::V1::TopicsController < Api::V1::RestfulController
+  def update
+    self.resource = Topic.find(params[:id])
+    TopicService.update(topic: resource, params: permitted_params.topic, actor: current_user)
+    respond_with_resource
+  end
+
   def mark_as_read
     @topic = Topic.find(params[:id])
     authorize_topic!

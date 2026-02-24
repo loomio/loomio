@@ -215,7 +215,7 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :discussion_readers, only: [:index] do
+      resources :topic_readers, only: [:index] do
         member do
           post :remove_admin
           post :make_admin
@@ -244,7 +244,7 @@ Rails.application.routes.draw do
 
       resources :search, only: :index
 
-      resources :topics, only: [] do
+      resources :topics, only: [:update] do
         patch :mark_as_read, on: :member
       end
 

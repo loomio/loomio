@@ -30,6 +30,14 @@ class TopicService
     end
   end
 
+  def self.update(topic:, params:, actor:)
+    actor.ability.authorize! :update, topic
+    topic.assign_attributes(params)
+    rearrange = topic.max_depth_changed?
+    topic.save!
+    RepairThreadWorker.perform_async(topic.id) if rearrange
+  end
+
   def self.close(topic:, actor:)
     actor.ability.authorize! :update, topic
     topic.update(closed_at: Time.now, closer_id: actor.id)

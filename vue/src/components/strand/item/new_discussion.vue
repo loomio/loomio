@@ -36,6 +36,9 @@ export default {
   },
 
   computed: {
+    topic() {
+      return this.eventable.topic();
+    },
     author() {
       return this.discussion.author();
     },
@@ -117,9 +120,9 @@ export default {
     mid-dot
     router-link.text-medium-emphasis(:to='urlFor(discussion)')
       time-ago(:date='discussion.createdAt')
-    span.text-medium-emphasis(v-show='discussion.seenByCount > 0')
+    span.text-medium-emphasis(v-show='topic.seenByCount > 0')
       mid-dot
-      a.context-panel__seen_by_count.underline-on-hover(v-t="{ path: 'discussion_context.seen_by_count', args: { count: discussion.seenByCount } }"  @click="openSeenByModal()")
+      a.context-panel__seen_by_count.underline-on-hover(v-t="{ path: 'discussion_context.seen_by_count', args: { count: topic.seenByCount } }"  @click="openSeenByModal()")
     span.text-medium-emphasis(v-show='discussion.usersNotifiedCount != null')
       mid-dot
       a.context-panel__users_notified_count.underline-on-hover(v-t="{ path: 'discussion_context.count_notified', args: { count: discussion.usersNotifiedCount} }"  @click="actions.notification_history.perform")

@@ -110,7 +110,6 @@ export default class DiscussionModel extends BaseModel {
     this.belongsTo('closer', {from: 'users'});
     this.belongsTo('translation');
     this.belongsTo('discussionTemplate');
-    return this.hasMany('discussionReaders');
   }
 
   discussion() { return this; }
@@ -128,7 +127,8 @@ export default class DiscussionModel extends BaseModel {
   }
 
   members() {
-    return Records.users.find(this.group().memberIds().concat(map(this.discussionReaders(), 'userId')));
+    const topicReaderUserIds = map(Records.topicReaders.collection.find({topicId: this.topicId}), 'userId');
+    return Records.users.find(this.group().memberIds().concat(topicReaderUserIds));
   }
 
   membersInclude(user) {

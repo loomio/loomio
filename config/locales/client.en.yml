@@ -1032,6 +1032,7 @@ en:
       no_members: This hasn't been shared with anyone yet!
       group_admin: Group admin
       discussion_admin: Discussion admin
+      thread_admin: Thread admin
       last_read_at: Last viewed %{time}
       has_not_read_discussion: Has not viewed discussion
       has_not_joined_yet: Has not joined yet

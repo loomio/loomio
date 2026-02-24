@@ -70,12 +70,10 @@ class DiscussionService
 
     discussion.assign_attributes_and_files(params.except(:group_id))
     return false unless discussion.valid?
-    rearrange = discussion.topic.max_depth_changed?
     Discussion.transaction do
       discussion.save!
 
       discussion.update_versions_count
-      RepairThreadWorker.perform_async(discussion.topic_id) if rearrange
 
       users = TopicService.add_users(topic: discussion.topic,
                                      actor: actor,
