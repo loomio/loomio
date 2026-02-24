@@ -25,10 +25,9 @@ export default new class AbilityService {
     intersection(Session.user().groupIds(), user.groupIds()).length;
   }
 
-  canAddComment(thread) {
-    const topic = thread.topic ? thread.topic() : null;
+  canAddComment(topic) {
     const closedAt = topic ? topic.closedAt : thread.closedAt;
-    return !closedAt && thread.membersInclude(Session.user());
+    return !closedAt && topic.membersInclude(Session.user());
   }
 
   canRespondToComment(comment) {
@@ -317,9 +316,9 @@ export default new class AbilityService {
     return !!model.translationId
   }
 
-  canStartPoll(model) {
-    return model.adminsInclude(Session.user()) ||
-    (model.membersInclude(Session.user()) && model.group().membersCanRaiseMotions);
+  canStartPoll(topic) {
+    return topic.adminsInclude(Session.user()) ||
+           (topic.membersCanRaiseMotions && topic.membersInclude(Session.user()))
   }
 
   canParticipateInPoll(poll) {

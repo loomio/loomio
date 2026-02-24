@@ -12,7 +12,10 @@ export default {
   mixins: [ AuthModalMixin, WatchRecords ],
 
   props: {
-    model: Object
+    topic: {
+      type: Object,
+      required: true
+    }
   },
 
   data() {
@@ -26,10 +29,10 @@ export default {
 
   created() {
     this.watchRecords({
-      key: this.model.id,
-      collections: ['groups', 'memberships', 'polls'],
+      key: this.topic.id,
+      collections: ['topics', 'groups', 'memberships', 'polls'],
       query: () => {
-        this.canAddComment = AbilityService.canAddComment(this.model);
+        this.canAddComment = AbilityService.canAddComment(this.topic);
       }
     });
     this.resetComment();
@@ -37,20 +40,12 @@ export default {
 
   methods: {
     resetComment() {
-      if (this.isDiscussion) {
-        this.newComment = Records.comments.build({
-          bodyFormat: Session.defaultFormat(),
-          discussionId: this.model.id,
-          authorId: Session.user().id
-        });
-      } else {
-        this.newComment = Records.comments.build({
-          bodyFormat: Session.defaultFormat(),
-          parentType: 'Poll',
-          parentId: this.model.id,
-          authorId: Session.user().id
-        });
-      }
+      this.newComment = Records.comments.build({
+        bodyFormat: Session.defaultFormat(),
+        parentType: this.topic.topicableType,
+        parentId: this.topic.topicableId,
+        authorId: Session.user().id
+      })
     },
 
     setPoll(poll) { return this.poll = poll; },
@@ -67,46 +62,28 @@ export default {
     '$route.query.current_action'(val) {
       this.currentAction = (val == "add-poll" ? 'add-poll' : 'add-comment')
     },
-    'model.id'() {
+    'topic.id'() {
       this.resetComment();
       this.resetPoll();
     }
   },
 
   computed: {
-    isDiscussion() {
-      return this.model.constructor.singular === 'discussion';
-    },
-
-    topicClosedAt() {
-      const topic = this.model.topic ? this.model.topic() : null;
-      return topic ? topic.closedAt : this.model.closedAt;
-    },
-
-    newestFirst() {
-      const topic = this.model.topic ? this.model.topic() : null;
-      return topic ? topic.newestFirst : false;
-    },
-
     canStartPoll() {
-      return this.isDiscussion && AbilityService.canStartPoll(this.model);
+      return AbilityService.canStartPoll(this.topic);
     },
-
-    modelGroup() {
-      return this.model.group ? this.model.group() : null;
-    }
   }
 };
 
 </script>
 
 <template lang="pug">
-section.actions-panel#add-comment(:key="model.id" :class="{'mt-2 px-2 px-sm-4': !newestFirst}")
-  template(v-if="isDiscussion && topicClosedAt")
+section.actions-panel#add-comment(:key="topic.id" :class="{'mt-2 px-2 px-sm-4': !topic.newestFirst}")
+  template(v-if="topic.closedAt")
     v-alert(type="info" variant="tonal")
-      span(v-t="{path: 'notifications.without_title.discussion_closed', args: {actor: model.closer().name} }")
+      span(v-t="{path: 'notifications.without_title.discussion_closed', args: {actor: topic.closer().name} }")
       mid-dot
-      time-ago(:date='model.closedAt')
+      time-ago(:date='topic.closedAt')
   template(v-if="canAddComment")
     v-divider(aria-hidden="true")
     v-tabs.activity-panel__actions.mb-3(grow color="primary" v-model="currentAction")
@@ -130,13 +107,13 @@ section.actions-panel#add-comment(:key="model.id" :class="{'mt-2 px-2 px-sm-4': 
           poll-common-choose-template-wrapper(
             v-if="!poll"
             @setPoll="setPoll"
-            :discussion="model"
-            :group="modelGroup")
-  template(v-if="!topicClosedAt && !canAddComment")
+            :topic="topic"
+          )
+  template(v-if="!topic.closedAt && !canAddComment")
     .add-comment-panel__join-actions.mb-2
       join-group-button(
-        v-if='isLoggedIn() && modelGroup'
-        :group='modelGroup'
+        v-if='isLoggedIn() && topic.group()'
+        :group='topic.group()'
       )
       v-btn.add-comment-panel__sign-in-btn(
         variant="tonal"

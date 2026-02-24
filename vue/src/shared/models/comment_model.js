@@ -20,7 +20,8 @@ export default class CommentModel extends BaseModel {
 
   defaultValues() {
     return {
-      discussionId: null,
+      parentType: null,
+      parentId: null,
       pollId: null,
       files: null,
       imageFiles: null,
@@ -34,17 +35,13 @@ export default class CommentModel extends BaseModel {
 
   relationships() {
     this.belongsTo('author', {from: 'users'});
-    this.belongsTo('discussion');
+    this.belongsToPolymorphic('parent');
     this.belongsTo('poll');
     this.belongsTo('translation');
   }
 
   topic() {
-    const discussion = this.discussionId ? this.discussion() : null;
-    if (discussion) { return discussion.topic(); }
-    const poll = this.pollId ? this.poll() : null;
-    if (poll) { return poll.topic(); }
-    return null;
+    return this.parent().topic();
   }
 
   createdEvent() {

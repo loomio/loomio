@@ -68,5 +68,5 @@ export default {
         poll-common-card(:poll='poll' is-page)
         v-sheet.strand-card.thread-card.mb-8.pb-4.rounded(v-if="loader" elevation=1)
           strand-list.pt-3.pr-1.pr-sm-3.px-sm-2(:loader="loader" :collection="loader.collection")
-          strand-actions-panel(:model="poll")
+          strand-actions-panel(:topic="poll.topic()")
 </template>

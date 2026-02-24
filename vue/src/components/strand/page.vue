@@ -240,7 +240,7 @@ export default {
             span.text-center(v-if="focusMode == 'unread'" v-t="'strand_nav.showing_unread'")
             span.text-center(v-if="focusMode == 'newest'" v-t="'strand_nav.showing_latest'")
         strand-list.pt-3.pr-1.pr-sm-3.px-sm-2(:loader="loader" :collection="loader.collection" :focus-selector="focusSelector" :focus-mode="focusMode")
-        strand-actions-panel(:model="discussion")
+        strand-actions-panel(:topic="discussion.topic()")
   strand-toc-nav(v-if="loader" :discussion="discussion" :loader="loader" :key="discussion.id" :focus-mode="focusMode" :focus-selector="focusSelector")
   v-fab(v-if="focusSelector && !focusedItemVisible" icon app extended :text="$t('strand_nav.recenter')" location="bottom center" @click="scrollToFocused" color="accent" variant="elevated")
     v-icon(:icon="mdiArrowULeftTop")
