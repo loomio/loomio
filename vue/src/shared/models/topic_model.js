@@ -41,19 +41,15 @@ export default class TopicModel extends BaseModel {
   }
 
   relationships() {
+    this.belongsToPolymorphic('topicable');
   }
 
-  topicable() {
-    if (this.topicableType === 'Discussion') {
-      return Records.discussions.find(this.topicableId);
-    } else if (this.topicableType === 'Poll') {
-      return Records.polls.find(this.topicableId);
-    }
+  discussion() {
+    return this.topicableType === 'Discussion' ? Records.discussions.find(this.topicableId) : null
   }
 
   createdEvent() {
-    const topicable = this.topicable();
-    return topicable && topicable.createdEvent ? topicable.createdEvent() : null;
+    return this.topicable().createdEvent();
   }
 
   hasRead(id) {

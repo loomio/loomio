@@ -8,16 +8,17 @@ import { useWatchRecords } from '@/composables/useWatchRecords';
 import { ref } from 'vue';
 
 const props = defineProps({
-  discussion: Object,
-  group: Object
+  topic: Object,
 });
 
 const emit = defineEmits(['setPoll']);
 
-const selectedGroup = ref(props.group);
+const selectedGroup = ref(props.topic.group());
 
-if (props.discussion && props.discussion.discussionTemplateId) {
-  Records.discussionTemplates.findOrFetchById(props.discussion.discussionTemplateId).then(dt => {
+const discussionTemplateId = props.topic.discussion() && props.topic.discussion().discussionTemplateId
+
+if (discussionTemplateId) {
+  Records.discussionTemplates.findOrFetchById(discussionTemplateId).then(dt => {
     const g = dt.group();
     if (g) { selectedGroup.value = g; }
   });
@@ -32,7 +33,7 @@ function fillGroups() {
   const groupIds = Session.user().groupIds();
   Records.groups.collection.chain().
                find({id: { $in: groupIds }, archivedAt: null, parentId: null}).
-               data().forEach(function(parent) { 
+               data().forEach(function(parent) {
     if (parent.pollTemplatesCount) { result.push(parent); }
     Records.groups.collection.chain().
                find({id: { $in: groupIds }, archivedAt: null, parentId: parent.id}).
@@ -65,6 +66,6 @@ div
   poll-common-choose-template(
     v-else
     @setPoll="setPoll"
-    :discussion="discussion"
+    :topic="topic"
     :group="selectedGroup")
 </template>
