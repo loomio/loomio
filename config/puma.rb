@@ -20,7 +20,8 @@
 # Any libraries that use a connection pool or another resource pool should
 # be configured to provide at least as many connections as the number of
 # threads. This includes Active Record's `pool` parameter in `database.yml`.
-workers Integer(ENV['PUMA_WORKERS'] || ENV['WEB_CONCURRENCY'] || 0)
+worker_value = ENV['PUMA_WORKERS'] || ENV['WEB_CONCURRENCY'] || 0
+workers worker_value.to_s.downcase == "auto" ? :auto : Integer(worker_value)
 
 threads_count = Integer(ENV['RAILS_MAX_THREADS'] || ENV['MAX_THREADS'] ||  3)
 threads threads_count, threads_count
