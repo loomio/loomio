@@ -88,32 +88,32 @@ class Api::V1::DiscussionsController < Api::V1::RestfulController
   end
 
   def mark_as_seen
-    service.mark_as_seen discussion: load_resource, actor: current_user
+    TopicService.mark_as_seen topic: load_resource.topic, actor: current_user
     respond_ok
   end
 
   def mark_as_read
-    service.mark_as_read(discussion: load_resource, params: params, actor: current_user)
+    TopicService.mark_as_read(topic: load_resource.topic, params: params, actor: current_user)
     respond_ok
   end
 
   def dismiss
-    service.dismiss discussion: load_resource, params: params, actor: current_user
+    TopicService.dismiss discussion: load_resource, params: params, actor: current_user
     respond_with_resource
   end
 
   def recall
-    service.recall discussion: load_resource, params: params, actor: current_user
+    TopicService.recall discussion: load_resource, params: params, actor: current_user
     respond_with_resource
   end
 
   def close
-    @event = service.close discussion: load_resource, actor: current_user
+    TopicService.close topic: load_resource.topic, actor: current_user
     respond_with_resource
   end
 
   def reopen
-    @event = service.reopen discussion: load_resource, actor: current_user
+    TopicService.reopen topic: load_resource.topic, actor: current_user
     respond_with_resource
   end
 
@@ -123,12 +123,12 @@ class Api::V1::DiscussionsController < Api::V1::RestfulController
   end
 
   def pin
-    service.pin discussion: load_resource, actor: current_user
+    TopicService.pin topic: load_resource.topic, actor: current_user
     respond_with_resource
   end
 
   def unpin
-    service.unpin discussion: load_resource, actor: current_user
+    TopicService.unpin topic: load_resource.topic, actor: current_user
     respond_with_resource
   end
 
@@ -175,7 +175,7 @@ class Api::V1::DiscussionsController < Api::V1::RestfulController
   end
 
   def update_reader(params = {})
-    service.update_reader discussion: load_resource, params: params, actor: current_user
+    TopicService.update_reader topic: load_resource.topic, params: params, actor: current_user
     respond_with_resource
   end
 end

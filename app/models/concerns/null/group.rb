@@ -56,7 +56,6 @@ module Null::Group
       description_format
       group_id
       add_member!
-      message_channel
       logo_or_parent_logo
       created_at
       creator_id

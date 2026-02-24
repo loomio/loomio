@@ -2,11 +2,11 @@ require 'test_helper'
 
 class DiscussionQueryTest < ActiveSupport::TestCase
   setup do
-    @user = users(:normal_user)
-    @author = users(:discussion_author)
-    @group = groups(:test_group)
+    @user = users(:user)
+    @author = users(:admin)
+    @group = groups(:group)
     # discussion_author is already admin, normal_user is already member via fixtures
-    @discussion = create_discussion(group: @group, author: @author, private: true)
+    @discussion = discussions(:discussion)
     ActionMailer::Base.deliveries.clear
   end
 
@@ -26,14 +26,14 @@ class DiscussionQueryTest < ActiveSupport::TestCase
     pub_group2.add_admin!(pub_author)
     priv_group.add_admin!(pub_author)
 
-    # Create discussions without DiscussionService to bypass authorization
-    pub_disc1 = Discussion.new(title: "Pub1", private: false, author: pub_author, group: pub_group1, description_format: "html")
+    # Create discussions without DiscussionService.create to bypass authorization
+    pub_disc1 = DiscussionService.build(params: { title: "Pub1", group_id: pub_group1.id, private: false, description_format: "html" }, actor: pub_author)
     pub_disc1.save(validate: false)
     pub_disc1.create_missing_created_event!
-    pub_disc2 = Discussion.new(title: "Pub2", private: false, author: pub_author, group: pub_group2, description_format: "html")
+    pub_disc2 = DiscussionService.build(params: { title: "Pub2", group_id: pub_group2.id, private: false, description_format: "html" }, actor: pub_author)
     pub_disc2.save(validate: false)
     pub_disc2.create_missing_created_event!
-    priv_disc = Discussion.new(title: "Priv", private: true, author: pub_author, group: priv_group, description_format: "html")
+    priv_disc = DiscussionService.build(params: { title: "Priv", group_id: priv_group.id, private: true, description_format: "html" }, actor: pub_author)
     priv_disc.save(validate: false)
     priv_disc.create_missing_created_event!
 
@@ -49,7 +49,7 @@ class DiscussionQueryTest < ActiveSupport::TestCase
     hex = SecureRandom.hex(4)
     pub_author = User.create!(name: "pubauth#{hex}", email: "pubauth#{hex}@example.com", username: "pubauth#{hex}")
     pub_group.add_admin!(pub_author)
-    pub_disc = Discussion.new(title: "PubDisc", private: false, author: pub_author, group: pub_group, description_format: "html")
+    pub_disc = DiscussionService.build(params: { title: "PubDisc", group_id: pub_group.id, private: false, description_format: "html" }, actor: pub_author)
     pub_disc.save(validate: false)
     pub_disc.create_missing_created_event!
 
@@ -63,7 +63,7 @@ class DiscussionQueryTest < ActiveSupport::TestCase
     hex = SecureRandom.hex(4)
     priv_author = User.create!(name: "privauth#{hex}", email: "privauth#{hex}@example.com", username: "privauth#{hex}")
     priv_group.add_admin!(priv_author)
-    priv_disc = Discussion.new(title: "PrivDisc", private: true, author: priv_author, group: priv_group, description_format: "html")
+    priv_disc = DiscussionService.build(params: { title: "PrivDisc", group_id: priv_group.id, private: true, description_format: "html" }, actor: priv_author)
     priv_disc.save(validate: false)
     priv_disc.create_missing_created_event!
 
@@ -99,7 +99,7 @@ class DiscussionQueryTest < ActiveSupport::TestCase
 
     child_group.add_member!(group_user)
     child_group.add_admin!(@author)
-    disc = create_discussion(group: child_group, author: @author, private: true)
+    disc = DiscussionService.create(params: { title: "Null #{SecureRandom.hex(4)}", group_id: child_group.id, private: true }, actor: @author)
     disc.add_guest!(disc_user, disc.author)
     disc.topic.update!(group_id: nil)
 
@@ -126,7 +126,7 @@ class DiscussionQueryTest < ActiveSupport::TestCase
 
     child_group.add_member!(group_user)
     child_group.add_admin!(@author)
-    disc = create_discussion(group: child_group, author: @author, private: true)
+    disc = DiscussionService.create(params: { title: "Grp #{SecureRandom.hex(4)}", group_id: child_group.id, private: true }, actor: @author)
     disc.add_guest!(disc_user, disc.author)
 
     assert DiscussionQuery.visible_to(user: disc_user).exists?(disc.id)
@@ -152,9 +152,9 @@ class DiscussionQueryTest < ActiveSupport::TestCase
 
     child_group.add_member!(group_user)
     child_group.add_admin!(@author)
-    disc = create_discussion(group: child_group, author: @author, private: true)
+    disc = DiscussionService.create(params: { title: "Pub #{SecureRandom.hex(4)}", group_id: child_group.id, private: true }, actor: @author)
     disc.add_guest!(disc_user, disc.author)
-    disc.update(private: false)
+    disc.topic.update!(private: false)
 
     assert DiscussionQuery.visible_to(user: disc_user).exists?(disc.id)
     assert DiscussionQuery.visible_to(user: group_user).exists?(disc.id)
@@ -180,7 +180,7 @@ class DiscussionQueryTest < ActiveSupport::TestCase
     )
     child.save(validate: false)
     child.add_admin!(@author)
-    disc = create_discussion(group: child, author: @author, private: true)
+    disc = DiscussionService.create(params: { title: "Child #{SecureRandom.hex(4)}", group_id: child.id, private: true }, actor: @author)
 
     results = DiscussionQuery.visible_to(user: @user, group_ids: [child.id])
     refute_includes results, disc
@@ -201,7 +201,7 @@ class DiscussionQueryTest < ActiveSupport::TestCase
     )
     child.save(validate: false)
     child.add_admin!(@author)
-    disc = create_discussion(group: child, author: @author, private: true)
+    disc = DiscussionService.create(params: { title: "Child #{SecureRandom.hex(4)}", group_id: child.id, private: true }, actor: @author)
 
     parent.add_member!(@user)
     results = DiscussionQuery.visible_to(user: @user, group_ids: [child.id])
@@ -223,7 +223,7 @@ class DiscussionQueryTest < ActiveSupport::TestCase
     )
     child.save(validate: false)
     child.add_admin!(@author)
-    disc = create_discussion(group: child, author: @author, private: true)
+    disc = DiscussionService.create(params: { title: "Child #{SecureRandom.hex(4)}", group_id: child.id, private: true }, actor: @author)
 
     results = DiscussionQuery.visible_to(user: @user, group_ids: [child.id])
     refute_includes results, disc
@@ -244,7 +244,7 @@ class DiscussionQueryTest < ActiveSupport::TestCase
   test "guest access returns discussions via discussion reader" do
     hex = SecureRandom.hex(4)
     guest_author = User.create!(name: "guestauth#{hex}", email: "guestauth#{hex}@example.com", username: "guestauth#{hex}")
-    disc = Discussion.new(title: "Guest Disc #{hex}", private: true, author: guest_author, description_format: "html")
+    disc = DiscussionService.build(params: { title: "Guest Disc #{hex}", private: true, description_format: "html" }, actor: guest_author)
     disc.save(validate: false)
     disc.create_missing_created_event!
     disc.add_guest!(@user, guest_author)
@@ -254,7 +254,7 @@ class DiscussionQueryTest < ActiveSupport::TestCase
   test "guest access does not return discussions without reader" do
     hex = SecureRandom.hex(4)
     guest_author = User.create!(name: "guestauth#{hex}", email: "guestauth#{hex}@example.com", username: "guestauth#{hex}")
-    disc = Discussion.new(title: "Guest Disc #{hex}", private: true, author: guest_author, description_format: "html")
+    disc = DiscussionService.build(params: { title: "Guest Disc #{hex}", private: true, description_format: "html" }, actor: guest_author)
     disc.save(validate: false)
     disc.create_missing_created_event!
     refute_includes DiscussionQuery.visible_to(user: @user), disc
@@ -264,8 +264,8 @@ class DiscussionQueryTest < ActiveSupport::TestCase
 
   test "returns tagged discussions" do
     Tag.create!(group: @group, name: 'test', color: '#abc')
-    tagged = create_discussion(group: @group, author: @author, private: true, tags: ["test"])
-    untagged = create_discussion(group: @group, author: @author, private: true, tags: [])
+    tagged = DiscussionService.create(params: { title: "Tagged #{SecureRandom.hex(4)}", group_id: @group.id, private: true, tags: ["test"] }, actor: @author)
+    untagged = DiscussionService.create(params: { title: "Untagged #{SecureRandom.hex(4)}", group_id: @group.id, private: true, tags: [] }, actor: @author)
 
     results = DiscussionQuery.visible_to(user: @user, tags: ['test'])
     assert_includes results, tagged

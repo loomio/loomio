@@ -1,12 +1,10 @@
 class EmailActionsController < AuthenticateByUnsubscribeTokenController
   def unsubscribe
     load_models_or_404
+    topic_reader = TopicReader.for(user: current_user, topic: @topic) if @topic
     membership = Membership.find_by(group_id: @group.id, user_id: current_user.id) if @group
-    discussion_reader = TopicReader.for(user: current_user, topic: @discussion.topic) if @discussion
-    stance = Stance.latest.find_by(poll_id: @poll.id, participant_id: current_user.id) if @poll
     render Views::EmailActions::Unsubscribe.new(
-      discussion_reader: discussion_reader,
-      stance: stance,
+      topic_reader: topic_reader,
       membership: membership,
       unsubscribe_token: params[:unsubscribe_token]
     )
@@ -21,14 +19,14 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
 
   def set_discussion_volume
     load_models_or_404
-    discussion_reader = TopicReader.find_by!(topic_id: @discussion.topic.id, user_id: current_user.id)
-    discussion_reader.set_volume!(params[:value])
+    topic_reader = TopicReader.find_by!(topic_id: @topic.id, user_id: current_user.id)
+    topic_reader.set_volume!(params[:value])
     redirect_to_unsubscribe
   end
 
   def mark_discussion_as_read
     GenericWorker.perform_async(
-      'DiscussionService',
+      'TopicService',
       'mark_as_read_simple_params',
       discussion.id,
       event.sequence_id || [],
@@ -48,7 +46,7 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
   end
 
   def mark_summary_email_as_read
-    GenericWorker.perform_async('DiscussionService', 'mark_summary_email_as_read', current_user.id, params[:time_start].to_i,
+    GenericWorker.perform_async('TopicService', 'mark_summary_email_as_read', current_user.id, params[:time_start].to_i,
                                 params[:time_finish].to_i)
 
     respond_to do |format|
@@ -63,29 +61,18 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
   private
 
   def redirect_to_unsubscribe
-    args = params.permit!.slice(:discussion_id, :outcome_id, :poll_id, :group_id).compact.merge(unsubscribe_token: params[:unsubscribe_token])
+    args = params.permit!.slice(:topic_id, :group_id).compact.merge(unsubscribe_token: params[:unsubscribe_token])
     redirect_to email_actions_unsubscribe_path(args), notice: t(:'change_volume_form.saved')
   end
 
   def load_models_or_404
-    @discussion = if (@comment = load_and_authorize(:comment, :show, optional: true))
-                    @comment.discussion
-                  else
-                    load_and_authorize(:discussion, :show, optional: true)
-                  end
+    if @topic = load_and_authorize(:topic, :show, optional: true)
+      @group = @topic.group
+    else
+      @group = load_and_authorize(:group, :show, optional: true)
+    end
 
-    @poll = if (@outcome = load_and_authorize(:outcome, :show, optional: true))
-              @outcome.poll
-            elsif (@stance = load_and_authorize(:stance, :show, optional: true))
-              @stance.poll
-            else
-              load_and_authorize(:poll, :show, optional: true)
-            end
-
-    @group = load_and_authorize(:group, :show, optional: true)
-    @group = @poll.group if !@group && @poll
-    @group = @discussion.group if !@group && @discussion
-    raise ActiveRecord::RecordNotFound unless @group || @discussion || @poll
+    raise ActiveRecord::RecordNotFound unless @group || @topic
   end
 
   def respond_with_pixel

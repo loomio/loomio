@@ -27,7 +27,6 @@ module Ability
 
     def initialize(user)
       @user = user
-      can(:subscribe_to, GlobalMessageChannel) { true }
     end
 
     private

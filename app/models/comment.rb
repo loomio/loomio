@@ -75,8 +75,6 @@ class Comment < ApplicationRecord
     .where("topics.group_id IN (?)", group.id_and_subgroup_ids)
   }
 
-  before_validation :assign_parent_if_nil
-
   delegate :name, to: :user, prefix: :author
   delegate :author, to: :parent, prefix: :parent, allow_nil: true
   delegate :topic, :topic_id, :group, :group_id, :members, :guests, to: :parent
@@ -97,26 +95,6 @@ class Comment < ApplicationRecord
 
   def real_participant
     author
-  end
-
-  def assign_parent_if_nil
-    self.parent = self.discussion if self.parent_id.nil? && self.parent_type.nil? && respond_to?(:discussion) && self.discussion.present?
-  end
-
-  def discussion
-    topic&.topicable if topic&.topicable_type == 'Discussion'
-  end
-
-  def discussion_id
-    topic&.topicable_id if topic&.topicable_type == 'Discussion'
-  end
-
-  def poll
-    topic&.topicable if topic&.topicable_type == 'Poll'
-  end
-
-  def poll_id
-    topic&.topicable_id if topic&.topicable_type == 'Poll'
   end
 
   def user

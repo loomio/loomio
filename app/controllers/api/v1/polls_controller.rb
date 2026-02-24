@@ -86,9 +86,7 @@ class Api::V1::PollsController < Api::V1::RestfulController
   end
 
   def create
-    result = service.create(params: resource_params, actor: current_user)
-    @event = result[:event]
-    self.resource = result[:poll]
+    self.resource = service.create(params: resource_params, actor: current_user)
     respond_with_resource
   end
 

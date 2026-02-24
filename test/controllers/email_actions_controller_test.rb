@@ -12,40 +12,34 @@ class EmailActionsControllerTest < ActionController::TestCase
     @group.add_member!(@author)
     @membership = Membership.find_by(group: @group, user: @user)
 
-    result = DiscussionService.create(params: { title: "Discussion #{hex}", group_id: @group.id }, actor: @author)
-    @event = result[:event]
-    @discussion = result[:discussion]
-    @discussion_reader = TopicReader.for(user: @user, topic: @discussion.topic)
+    @discussion = DiscussionService.create(params: { title: "Discussion #{hex}", group_id: @group.id }, actor: @author)
+    @topic = @discussion.topic
+    @event = @discussion.created_event
+    @topic_reader = TopicReader.for(user: @user, topic: @topic)
     ActionMailer::Base.deliveries.clear
   end
 
   # unsubscribe page rendering
-  test "unsubscribe renders with discussion reader" do
-    @discussion_reader = TopicReader.for(user: @user, topic: @discussion.topic)
-    @discussion_reader.set_volume!(:loud)
+  test "unsubscribe renders with topic reader" do
+    @topic_reader.set_volume!(:loud)
 
-    get :unsubscribe, params: { discussion_id: @discussion.id, unsubscribe_token: @user.unsubscribe_token }
+    get :unsubscribe, params: { topic_id: @topic.id, unsubscribe_token: @user.unsubscribe_token }
     assert_response :success
     assert_select "select[name=value]"
     assert_select "option[value=loud][selected]"
   end
 
-  test "unsubscribe renders with stance and discussion reader" do
-    poll = Poll.create!(
+  test "unsubscribe renders with stance and topic reader" do
+    poll = PollService.create(params: {
       title: "Unsub Poll #{SecureRandom.hex(4)}",
       poll_type: 'proposal',
-      group: @group,
-      discussion: @discussion,
-      author: @author,
+      topic_id: @topic.id,
       closing_at: 3.days.from_now,
       poll_option_names: %w[agree disagree abstain]
-    )
-    poll.create_missing_created_event!
-    Stance.create!(poll: poll, participant: @user, latest: true)
+    }, actor: @author)
 
     get :unsubscribe, params: {
-      discussion_id: @discussion.id,
-      poll_id: poll.id,
+      topic_id: @topic.id,
       unsubscribe_token: @user.unsubscribe_token
     }
     assert_response :success
@@ -54,50 +48,50 @@ class EmailActionsControllerTest < ActionController::TestCase
   # set_volume tests
   test "unsubscribes membership" do
     @membership.set_volume!(:loud)
-    @discussion_reader.set_volume!(:loud)
+    @topic_reader.set_volume!(:loud)
 
     put :set_group_volume, params: { group_id: @group.id, unsubscribe_token: @user.unsubscribe_token, value: :normal }
     assert_response 302
 
     @membership.reload
-    @discussion_reader.reload
+    @topic_reader.reload
 
     assert_equal 'normal', @membership.volume
-    assert_equal 'normal', @discussion_reader.volume
+    assert_equal 'normal', @topic_reader.volume
   end
 
   test "quiets membership" do
     @membership.set_volume!(:loud)
-    @discussion_reader.set_volume!(:loud)
+    @topic_reader.set_volume!(:loud)
 
     put :set_group_volume, params: { group_id: @group.id, unsubscribe_token: @user.unsubscribe_token, value: :quiet }
     assert_response 302
 
     @membership.reload
-    @discussion_reader.reload
+    @topic_reader.reload
 
     assert_equal 'quiet', @membership.volume
-    assert_equal 'quiet', @discussion_reader.volume
+    assert_equal 'quiet', @topic_reader.volume
   end
 
   test "unsubscribes discussion" do
     @membership.set_volume!(:normal)
-    @discussion_reader.set_volume!(:loud)
+    @topic_reader.set_volume!(:loud)
 
-    put :set_discussion_volume, params: { discussion_id: @discussion.id, unsubscribe_token: @user.unsubscribe_token, value: :normal }
+    put :set_discussion_volume, params: { topic_id: @topic.id, unsubscribe_token: @user.unsubscribe_token, value: :normal }
     assert_response 302
 
     @membership.reload
-    @discussion_reader.reload
+    @topic_reader.reload
 
     assert_equal 'normal', @membership.volume
-    assert_equal 'normal', @discussion_reader.volume
+    assert_equal 'normal', @topic_reader.volume
   end
 
   # mark_discussion_as_read tests
   test "marks the discussion as read at event created_at" do
     get :mark_discussion_as_read, params: { discussion_id: @discussion.id, event_id: @event.id, unsubscribe_token: @user.unsubscribe_token }
-    reader = TopicReader.for(user: @user, topic: @discussion.topic)
+    reader = TopicReader.for(user: @user, topic: @topic)
     assert_in_delta @event.created_at.to_f, reader.last_read_at.to_f, 1.0
   end
 
@@ -108,11 +102,11 @@ class EmailActionsControllerTest < ActionController::TestCase
 
   test "marks a comment as read" do
     comment_event = CommentService.create(comment: Comment.new(parent: @discussion, body: "hello"), actor: @author)
-    reader = TopicReader.for(user: @user, topic: @discussion.topic)
+    reader = TopicReader.for(user: @user, topic: @topic)
     refute reader.has_read?(comment_event.sequence_id)
 
     get :mark_discussion_as_read, params: { discussion_id: @discussion.id, event_id: comment_event.id, unsubscribe_token: @user.unsubscribe_token }
-    reader = TopicReader.for(user: @user, topic: @discussion.topic)
+    reader = TopicReader.for(user: @user, topic: @topic)
     assert_in_delta Time.now.to_f, reader.last_read_at.to_f, 2.0
     assert reader.has_read?(comment_event.sequence_id)
   end

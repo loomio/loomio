@@ -248,7 +248,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def comment_attributes
-    [:body, :body_format, :discussion_id, :parent_id, :parent_type,
+    [:body, :body_format, :parent_id, :parent_type,
       :document_ids, {document_ids: []},
       :link_previews, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]},
       :files, {files: []},

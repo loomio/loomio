@@ -2,7 +2,7 @@ require 'test_helper'
 
 class GroupExportServiceTest < ActiveSupport::TestCase
   def create_scenario
-    admin = User.create!(email: "exportadmin#{SecureRandom.hex(4)}@example.com", name: 'admin', password: 'password')
+    admin = User.create!(email: "exportadmin#{SecureRandom.hex(4)}@example.com", name: 'admin', password: 'password', email_verified: true)
     member = User.create!(email: "exportmember#{SecureRandom.hex(4)}@example.com", name: 'member', password: 'password')
     alien = User.create!(email: "exportother#{SecureRandom.hex(4)}@example.com", name: 'alien', password: 'password')
 
@@ -21,24 +21,23 @@ class GroupExportServiceTest < ActiveSupport::TestCase
 
     tag = Tag.create!(name: "exptag#{SecureRandom.hex(4)}", group: group, color: '#abcdef')
 
-    discussion = Discussion.create!(title: "export_discussion#{SecureRandom.hex(4)}", group: group, author: admin, discussion_template_id: discussion_template.id, tags: [tag.name])
-    sub_discussion = Discussion.create!(title: "export_sub_discussion#{SecureRandom.hex(4)}", group: subgroup, author: admin)
+    discussion = DiscussionService.create(params: { title: "export_discussion#{SecureRandom.hex(4)}", group_id: group.id, discussion_template_id: discussion_template.id, tags: [tag.name] }, actor: admin)
+    sub_discussion = DiscussionService.create(params: { title: "export_sub_discussion#{SecureRandom.hex(4)}", group_id: subgroup.id }, actor: admin)
 
-    comment = Comment.create!(parent: discussion, body: 'export_comment', author: admin)
-    sub_comment = Comment.create!(parent: sub_discussion, body: 'export_sub_comment', author: admin)
+    comment = Comment.new(parent: discussion, body: 'export_comment')
+    CommentService.create(comment: comment, actor: admin)
+    sub_comment = Comment.new(parent: sub_discussion, body: 'export_sub_comment')
+    CommentService.create(comment: sub_comment, actor: admin)
 
-    poll = Poll.create!(title: "export_poll#{SecureRandom.hex(4)}", group: group, author: admin, poll_type: 'proposal', closing_at: 1.day.from_now, opened_at: Time.now, poll_template_id: poll_template.id)
-    sub_poll = Poll.create!(title: "export_sub_poll#{SecureRandom.hex(4)}", group: subgroup, author: admin, poll_type: 'proposal', closing_at: 1.day.from_now, opened_at: Time.now)
+    poll = PollService.create(params: { title: "export_poll#{SecureRandom.hex(4)}", group_id: group.id, poll_type: 'proposal', closing_at: 1.day.from_now, poll_option_names: %w[Agree Disagree], poll_template_id: poll_template.id }, actor: admin)
+    sub_poll = PollService.create(params: { title: "export_sub_poll#{SecureRandom.hex(4)}", group_id: subgroup.id, poll_type: 'proposal', closing_at: 1.day.from_now, poll_option_names: %w[Agree Disagree] }, actor: admin)
 
-    PollOption.create!(poll: poll, name: 'agree')
-    PollOption.create!(poll: poll, name: 'disagree')
-    PollOption.create!(poll: sub_poll, name: 'agree')
-    PollOption.create!(poll: sub_poll, name: 'disagree')
-
-    Stance.create!(poll: poll, participant: admin, choice: 'agree')
-    Stance.create!(poll: poll, participant: member, choice: 'disagree')
-    Stance.create!(poll: sub_poll, participant: admin, choice: nil, cast_at: nil)
-    Stance.create!(poll: sub_poll, participant: member, choice: nil, cast_at: nil)
+    # PollService.create already created poll options and stances for group members
+    # Cast stances for the main poll
+    admin_stance = poll.stances.find_by(participant_id: admin.id, latest: true)
+    admin_stance.update!(choice: 'Agree', cast_at: Time.current)
+    member_stance = poll.stances.find_by(participant_id: member.id, latest: true)
+    member_stance.update!(choice: 'Disagree', cast_at: Time.current)
 
     poll.update_counts!
     sub_poll.update_counts!
@@ -46,12 +45,8 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     PollService.close(poll: poll, actor: admin)
     PollService.close(poll: sub_poll, actor: admin)
 
-    discussion_event = Event.create!(eventable: discussion, user: admin, kind: 'discussion_created')
-    comment_event = Event.create!(topic: discussion.topic, eventable: comment, user: admin, kind: 'new_comment')
-
-    TopicReader.create!(topic: discussion.topic, user: admin)
-
-    notification = discussion_event.notifications.create!(user: member, actor: admin)
+    # Services already created events and topic readers
+    discussion_event = discussion.created_event
 
     Reaction.create!(reactable: discussion, user: member)
     Reaction.create!(reactable: poll, user: member)

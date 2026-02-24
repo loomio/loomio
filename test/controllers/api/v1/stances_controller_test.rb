@@ -2,27 +2,24 @@ require 'test_helper'
 
 class Api::V1::StancesControllerTest < ActionController::TestCase
   setup do
-    @user = users(:group_admin)
-    @another_user = users(:another_user)
-    @group = groups(:test_group)
+    @admin = users(:admin)
+    @user = users(:user)
+    @group = groups(:group)
 
-    @discussion = discussions(:test_discussion)
-    @poll = Poll.new(
+    @discussion = discussions(:discussion)
+    @poll = PollService.create(params: {
       title: "Test Poll",
       poll_type: "proposal",
-      discussion: @discussion,
-      author: @user,
+      topic_id: @discussion.topic.id,
       poll_option_names: ["Agree", "Disagree"],
       closing_at: 5.days.from_now
-    )
-    PollService.create(poll: @poll, actor: @user)
-    @poll.reload
+    }, actor: @admin)
   end
 
   # -- Index tests --
 
   test "index returns stances for a poll" do
-    sign_in @user
+    sign_in @admin
     get :index, params: { poll_id: @poll.id }
     assert_response :success
 
@@ -41,7 +38,7 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
   test "index hides participant_id for anonymous polls" do
     @poll.update!(anonymous: true)
     # Another user's stance exists from auto-creation
-    sign_in @user
+    sign_in @admin
     get :index, params: { poll_id: @poll.id }
     assert_response :success
 
@@ -64,7 +61,7 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
 
     assert_nil stance.reload.revoked_at
 
-    sign_in @user  # admin
+    sign_in @admin  # admin
     post :revoke, params: { participant_id: stance.participant_id, poll_id: stance.poll_id }
     assert_response :success
     assert_not_nil stance.reload.revoked_at
@@ -93,7 +90,7 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
                          email_verified: true, username: "uncastvoter#{SecureRandom.hex(4)}")
     @group.add_member!(voter)
 
-    stances = PollService.invite(poll: @poll, actor: @user, params: { recipient_emails: [voter.email] })
+    stances = PollService.invite(poll: @poll, actor: @admin, params: { recipient_emails: [voter.email] })
     stance = @poll.stances.latest.find_by(participant_id: voter.id)
     stance_params = {
       poll_id: @poll.id,
@@ -114,7 +111,7 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
                          email_verified: true, username: "uncastvoter2#{SecureRandom.hex(4)}")
     @group.add_member!(voter)
 
-    PollService.invite(poll: @poll, actor: @user, params: { recipient_emails: [voter.email] })
+    PollService.invite(poll: @poll, actor: @admin, params: { recipient_emails: [voter.email] })
     stance = @poll.stances.latest.find_by(participant_id: voter.id)
     stance_params = {
       poll_id: @poll.id,
@@ -123,7 +120,7 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     }
     StanceService.update(stance: stance, actor: voter, params: stance_params)
 
-    sign_in @user  # not the voter
+    sign_in @admin  # not the voter
     put :uncast, params: { id: stance.id }
     assert_includes [403, 404], response.status
     assert_not_nil stance.reload.cast_at
@@ -134,7 +131,7 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
                          email_verified: true, username: "uncastvoter3#{SecureRandom.hex(4)}")
     @group.add_member!(voter)
 
-    PollService.invite(poll: @poll, actor: @user, params: { recipient_emails: [voter.email] })
+    PollService.invite(poll: @poll, actor: @admin, params: { recipient_emails: [voter.email] })
     stance = @poll.stances.latest.find_by(participant_id: voter.id)
     stance_params = {
       poll_id: @poll.id,
@@ -175,8 +172,8 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
   end
 
   test "create allows group member to vote" do
-    sign_in @another_user
-    stance = @poll.stances.find_by(participant_id: @another_user.id)
+    sign_in @user
+    stance = @poll.stances.find_by(participant_id: @user.id)
     stance_params = {
       poll_id: @poll.id,
       stance_choices_attributes: [{ poll_option_id: @poll.poll_options.first.id }],
@@ -205,8 +202,8 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
     @poll.update!(specified_voters_only: true)
     guest = User.create!(name: 'PollGuest', email: "pollguest#{SecureRandom.hex(4)}@example.com",
                          email_verified: true, username: "pollguest#{SecureRandom.hex(4)}")
-    stance = @poll.stances.create!(participant_id: guest.id, inviter: @user)
-    @poll.add_guest!(guest, @user)
+    stance = @poll.stances.create!(participant_id: guest.id, inviter: @admin)
+    @poll.add_guest!(guest, @admin)
     sign_in guest
     stance_params = {
       poll_id: @poll.id,
@@ -218,8 +215,8 @@ class Api::V1::StancesControllerTest < ActionController::TestCase
   end
 
   test "validates minimum stance choices for proposals" do
-    sign_in @another_user
-    stance = @poll.stances.find_by(participant_id: @another_user.id)
+    sign_in @user
+    stance = @poll.stances.find_by(participant_id: @user.id)
     stance_params = {
       poll_id: @poll.id,
       stance_choices_attributes: [],

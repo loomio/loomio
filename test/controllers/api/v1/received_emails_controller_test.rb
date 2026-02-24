@@ -2,8 +2,8 @@ require 'test_helper'
 
 class Api::V1::ReceivedEmailsControllerTest < ActionController::TestCase
   setup do
-    @user = users(:group_admin)
-    @group = groups(:test_group)
+    @user = users(:admin)
+    @group = groups(:group)
     hex = SecureRandom.hex(4)
     @another_group = Group.create!(name: "unauth_group_#{hex}", handle: "unauthgrp#{hex}", group_privacy: 'secret')
     sign_in @user
@@ -75,7 +75,8 @@ class Api::V1::ReceivedEmailsControllerTest < ActionController::TestCase
       group_id: @group.id,
       headers: {
         to: "#{@group.handle}@#{ENV['REPLY_HOSTNAME']}",
-        from: "someone@gmail.com"
+        from: "someone@gmail.com",
+        subject: "Test email subject"
       },
       body_html: "<p>hello there</p>",
       body_text: "hello there"

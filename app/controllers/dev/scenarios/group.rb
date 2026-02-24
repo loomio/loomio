@@ -204,8 +204,7 @@ module Dev::Scenarios::Group
     sign_in patrick
     @group = Group.create!(name: 'Open Dirty Dancing Shoes', membership_granted_upon: 'request', group_privacy: 'open')
     @group.add_admin! jennifer
-    result = DiscussionService.create(params: {group_id: @group.id, title: "I carried a watermelon", private: false}, actor: jennifer)
-    @discussion = result[:discussion]
+    @discussion = DiscussionService.create(params: {group_id: @group.id, title: "I carried a watermelon", private: false}, actor: jennifer)
     CommentService.create(comment: Comment.new(body: "It was real seedy", parent: @discussion), actor: jennifer)
     redirect_to group_path(create_group)
   end
@@ -215,8 +214,7 @@ module Dev::Scenarios::Group
                                 membership_granted_upon: 'request',
                                 group_privacy: 'open')
     @group.add_admin! jennifer
-    result = DiscussionService.create(params: {group_id: @group.id, title: 'I carried a watermelon', private: false}, actor: jennifer)
-    @discussion = result[:discussion]
+    @discussion = DiscussionService.create(params: {group_id: @group.id, title: 'I carried a watermelon', private: false}, actor: jennifer)
     redirect_to group_path(@group)
   end
 

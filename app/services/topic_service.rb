@@ -7,7 +7,7 @@ class TopicService
                            actor: actor)
 
     Topic.transaction do
-      users = add_users(topic: discussion,
+      users = add_users(topic: topic,
                         actor: actor,
                         user_ids: params[:recipient_user_ids],
                         emails: params[:recipient_emails],
@@ -82,13 +82,13 @@ class TopicService
     reader = TopicReader.for(topic: topic, user: actor)
     reader.viewed!
     MessageChannelService.publish_models([topic.topicable], group_id: topic.group_id)
-    MessageChannelService.publish_models([toipc.topicable], user_id: actor.id)
+    MessageChannelService.publish_models([topic.topicable], user_id: actor.id)
   end
 
   def self.mark_as_read_simple_params(discussion_id, ranges, actor_id)
     discussion = Discussion.find(discussion_id)
     actor = User.find(actor_id)
-    mark_as_read(discussion: discussion, params: {ranges: ranges}, actor: actor)
+    mark_as_read(topic: discussion.topic, params: {ranges: ranges}, actor: actor)
   end
 
   def self.mark_as_read(topic:, params:, actor:)
@@ -98,8 +98,8 @@ class TopicService
       NotificationService.viewed_events(actor_id: actor.id, topic_id: topic.id, sequence_ids: sequence_ids)
       reader = TopicReader.for(topic: topic, user: actor)
       reader.viewed!(params[:ranges])
-      MessageChannelService.publish_models([topicable], group_id: topic.group_id)
-      MessageChannelService.publish_models([topicable], user_id: actor.id)
+      MessageChannelService.publish_models([topic.topicable], group_id: topic.group_id)
+      MessageChannelService.publish_models([topic.topicable], user_id: actor.id)
     end
   end
 

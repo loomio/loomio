@@ -5,8 +5,7 @@ class Api::B2::DiscussionsController < Api::B2::BaseController
   end
 
   def create
-    result = DiscussionService.create(actor: current_user, params: resource_params)
-    self.resource = result[:discussion]
+    self.resource = DiscussionService.create(params: resource_params, actor: current_user)
     respond_with_resource
   end
 end

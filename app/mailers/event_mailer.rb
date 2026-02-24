@@ -13,7 +13,7 @@ class EventMailer < ApplicationMailer
       event.eventable.poll
     end
 
-    discussion = event.eventable.topic.topicable_type == 'Discussion' ? event.topic.topicable : nil
+    discussion = event.eventable.respond_to?(:topic) ? event.eventable.topic.discussion : nil
 
     membership = if event.eventable.respond_to?(:group_id) && event.eventable.group_id
       m = Membership.active.find_by(

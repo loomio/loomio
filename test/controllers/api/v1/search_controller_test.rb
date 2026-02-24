@@ -2,24 +2,24 @@ require 'test_helper'
 
 class Api::V1::SearchControllerTest < ActionController::TestCase
   setup do
-    @user = users(:normal_user)
-    @group = groups(:test_group)
+    @user = users(:user)
+    @group = groups(:group)
     @group.add_member!(@user) unless @group.members.include?(@user)
 
-    @discussion = create_discussion(group: @group, author: @user, title: "findme discussion")
+    @discussion = discussions(:discussion)
+    @discussion.update!(title: "findme discussion")
     @comment = Comment.new(parent: @discussion, body: "findme in comment")
     CommentService.create(comment: @comment, actor: @user)
 
-    @poll = Poll.new(
+    @poll = PollService.create(params: {
       title: "findme poll",
       poll_type: "proposal",
-      discussion: @discussion,
-      group: @group,
-      author: @user,
-      closed_at: 1.day.ago,
+      topic_id: @discussion.topic.id,
+      specified_voters_only: true,
+      closing_at: 5.days.from_now,
       poll_option_names: ["findme"]
-    )
-    PollService.create(poll: @poll, actor: @user)
+    }, actor: @user)
+    @poll.update!(closed_at: 1.day.ago)
 
     @outcome = Outcome.new(
       poll: @poll,
@@ -27,6 +27,10 @@ class Api::V1::SearchControllerTest < ActionController::TestCase
       statement: "findme outcome"
     )
     OutcomeService.create(outcome: @outcome, actor: @user)
+
+    # Rebuild search documents after events are created
+    PgSearch::Document.delete_all
+    [Discussion, Comment, Poll, Outcome].each(&:rebuild_pg_search_documents)
   end
 
   test "returns visible records for group member" do
@@ -52,7 +56,7 @@ class Api::V1::SearchControllerTest < ActionController::TestCase
 
   test "filters by group id" do
     sign_in @user
-    other_group = groups(:another_group)
+    other_group = groups(:alien_group)
     other_group.add_member!(@user) unless other_group.members.include?(@user)
 
     get :index, params: { query: "findme", group_id: other_group.id }

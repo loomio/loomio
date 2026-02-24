@@ -6,7 +6,6 @@ class Discussion < ApplicationRecord
   include HasTimeframe
   include HasEvents
   include HasMentions
-  include MessageChannel
   include SelfReferencing
   include HasCreatedEvent
   include HasRichText

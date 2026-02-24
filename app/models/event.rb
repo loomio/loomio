@@ -91,9 +91,6 @@ class Event < ApplicationRecord
     user_id
   end
 
-  def message_channel
-    eventable.group.message_channel
-  end
 
   # this is called after create, and calls methods defined by the event concerns
   # included per event type
@@ -200,12 +197,16 @@ class Event < ApplicationRecord
     end
   end
 
+  def notification_model
+    topic || (eventable.respond_to?(:topic) && eventable.topic) || eventable
+  end
+
   def email_recipients
-    Queries::UsersByVolumeQuery.email_notifications(topic).where(id: all_recipient_user_ids)
+    notification_model.email_notification_members.where(id: all_recipient_user_ids)
   end
 
   def notification_recipients
-    Queries::UsersByVolumeQuery.app_notifications(topic).where(id: all_recipient_user_ids).where.not(id: user.id || 0)
+    notification_model.app_notification_members.where(id: all_recipient_user_ids).where.not(id: user.id || 0)
   end
 
   def all_recipients

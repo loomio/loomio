@@ -6,7 +6,6 @@ discussion:
   description_format: html
   author: admin
   topic: discussion_topic
-  tags: [tag]
   created_at: <%= 10.days.ago %>
   updated_at: <%= 1.day.ago %>
 

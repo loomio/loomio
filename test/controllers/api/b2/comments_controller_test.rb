@@ -2,9 +2,9 @@ require 'test_helper'
 
 class Api::B2::CommentsControllerTest < ActionController::TestCase
   setup do
-    @user = users(:group_admin)
+    @user = users(:admin)
     @user.update_columns(api_key: "apikey#{SecureRandom.hex(8)}")
-    @discussion = discussions(:test_discussion)
+    @discussion = discussions(:discussion)
   end
 
   test "create happy case" do

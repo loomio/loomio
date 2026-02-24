@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ModelLocatorTest < ActiveSupport::TestCase
   setup do
-    @discussion = discussions(:test_discussion)
+    @discussion = discussions(:discussion)
   end
 
   test "finds a model when the param model_id is present" do

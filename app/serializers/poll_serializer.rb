@@ -55,7 +55,8 @@ class PollSerializer < ApplicationSerializer
              :quorum_pct,
              :quorum_count,
              :quorum_votes_required,
-             :topic_id
+             :topic_id,
+             :group_id
 
   has_one :created_event, serializer: EventSerializer, root: :events
   has_one :author, serializer: AuthorSerializer, root: :users
@@ -146,6 +147,10 @@ class PollSerializer < ApplicationSerializer
 
   def topic_id
     object.topic&.id
+  end
+
+  def group_id
+    object.topic&.group_id
   end
 
   def topic

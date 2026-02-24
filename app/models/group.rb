@@ -3,7 +3,6 @@ class Group < ApplicationRecord
   include CustomCounterCache::Model
   include ReadableUnguessableUrls
   include SelfReferencing
-  include MessageChannel
   include GroupPrivacy
   include HasEvents
   include Translatable
@@ -210,6 +209,25 @@ class Group < ApplicationRecord
     members.exists?(user.id)
   end
 
+  def members_by_volume(operator, volume)
+    User.active.distinct
+        .joins("INNER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{id}")
+        .where('m.revoked_at IS NULL')
+        .where("coalesce(m.volume, 2) #{operator} :volume", volume: volume)
+  end
+
+  def app_notification_members
+    members_by_volume('>=', Membership.volumes[:quiet])
+  end
+
+  def email_notification_members
+    members_by_volume('>=', Membership.volumes[:normal])
+  end
+
+  def email_everything_members
+    members_by_volume('=', Membership.volumes[:loud])
+  end
+
   def author_id
     creator_id
   end
@@ -242,9 +260,7 @@ class Group < ApplicationRecord
     User.none
   end
 
-  def message_channel
-    "/group-#{self.key}"
-  end
+
 
   def parent_or_self
     parent || self

@@ -2,58 +2,59 @@ require 'test_helper'
 
 class Api::V1::CommentsControllerTest < ActionController::TestCase
   setup do
-    @user = users(:discussion_author)
-    @another_user = users(:another_user)
-    @group = groups(:test_group)
-    @discussion = discussions(:test_discussion)
+    @admin = users(:admin)
+    @user = users(:user)
+    @alien = users(:alien)
+    @group = groups(:group)
+    @discussion = discussions(:discussion)
 
-    @comment = Comment.new(parent: @discussion, author: @user, body: "Original comment")
-    CommentService.create(comment: @comment, actor: @user)
+    @admin_comment = Comment.new(parent: @discussion, author: @admin, body: "Admin comment")
+    CommentService.create(comment: @admin_comment, actor: @admin)
 
-    @another_comment = Comment.new(parent: @discussion, author: @another_user, body: "Another comment")
-    CommentService.create(comment: @another_comment, actor: @another_user)
+    @user_comment = Comment.new(parent: @discussion, author: @user, body: "User comment")
+    CommentService.create(comment: @user_comment, actor: @user)
   end
 
   test "update success" do
-    sign_in @user
+    sign_in @admin
     comment_params = { body: "updated content" }
-    post :update, params: { id: @comment.id, comment: comment_params }
+    post :update, params: { id: @admin_comment.id, comment: comment_params }
     assert_response :success
-    assert_equal comment_params[:body], @comment.reload.body
+    assert_equal comment_params[:body], @admin_comment.reload.body
   end
 
   test "update admins can edit user content true" do
-    sign_in @user
+    sign_in @admin
     @group.update(admins_can_edit_user_content: true)
     comment_params = { body: "updated content" }
-    post :update, params: { id: @another_comment.id, comment: comment_params }
+    post :update, params: { id: @user_comment.id, comment: comment_params }
     assert_response :success
-    assert_equal comment_params[:body], @another_comment.reload.body
+    assert_equal comment_params[:body], @user_comment.reload.body
   end
 
   test "update admins can edit user content false" do
-    sign_in @user
+    sign_in @admin
     @group.update(admins_can_edit_user_content: false)
     comment_params = { body: "updated content" }
-    post :update, params: { id: @another_comment.id, comment: comment_params }
+    post :update, params: { id: @user_comment.id, comment: comment_params }
     assert_response :forbidden
   end
 
   test "update unpermitted params" do
     sign_in @user
     comment_params = { body: "updated content", dontmindme: "wild wooly byte virus" }
-    put :update, params: { id: @comment.id, comment: comment_params }
+    put :update, params: { id: @user_comment.id, comment: comment_params }
     assert_response :bad_request
     json = JSON.parse(response.body)
     assert_includes json['exception'], 'ActionController::UnpermittedParameters'
   end
 
   test "update unauthorized user" do
-    sign_in @another_user
+    sign_in @alien
     other_user = User.create!(name: "Other User", username: "otheruser", email: "other@example.com")
     sign_in other_user
     comment_params = { body: "updated content" }
-    put :update, params: { id: @another_comment.id, comment: comment_params }
+    put :update, params: { id: @user_comment.id, comment: comment_params }
     assert_response :forbidden
     json = JSON.parse(response.body)
     assert_includes json['exception'], 'CanCan::AccessDenied'
@@ -62,7 +63,7 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
   test "update validation errors" do
     sign_in @user
     comment_params = { body: "" }
-    put :update, params: { id: @comment.id, comment: comment_params }
+    put :update, params: { id: @user_comment.id, comment: comment_params }
     assert_response :unprocessable_entity
     json = JSON.parse(response.body)
     assert_includes json['errors']['body'].join, "can't be blank"
@@ -70,7 +71,7 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
 
   test "create success" do
     sign_in @user
-    comment_params = { discussion_id: @discussion.id, body: "original content" }
+    comment_params = { parent_type: 'Discussion', parent_id: @discussion.id, body: "original content" }
     assert_difference 'Comment.count', 1 do
       post :create, params: { comment: comment_params }
     end
@@ -79,14 +80,14 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
 
   test "create prevents xss src" do
     sign_in @user
-    post :create, params: { comment: { discussion_id: @discussion.id, body: "<img src=\"javascript:alert('hi')\" >hello", body_format: "html" } }
+    post :create, params: { comment: { parent_type: 'Discussion', parent_id: @discussion.id, body: "<img src=\"javascript:alert('hi')\" >hello", body_format: "html" } }
     assert_response :success
     assert_equal "<img>hello", Comment.last.body
   end
 
   test "create prevents xss href" do
     sign_in @user
-    post :create, params: { comment: { discussion_id: @discussion.id, body: "<a href=\"javascript:alert('hi')\" >hello</a>", body_format: "html" } }
+    post :create, params: { comment: { parent_type: 'Discussion', parent_id: @discussion.id, body: "<a href=\"javascript:alert('hi')\" >hello</a>", body_format: "html" } }
     assert_response :success
   end
 
@@ -95,7 +96,7 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
     @discussion.group.memberships.find_by(user: @user).destroy
     @discussion.add_guest!(@user, @discussion.author)
 
-    comment_params = { discussion_id: @discussion.id, body: "original content" }
+    comment_params = { parent_type: 'Discussion', parent_id: @discussion.id, body: "original content" }
     assert_difference 'Comment.count', 1 do
       post :create, params: { comment: comment_params }
     end
@@ -106,22 +107,23 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
     sign_in @user
     @discussion.group.memberships.find_by(user: @user).destroy
     @discussion.topic_readers.find_by(user: @user).destroy
-    comment_params = { discussion_id: @discussion.id, body: "original content" }
+    comment_params = { parent_type: 'Discussion', parent_id: @discussion.id, body: "original content" }
     post :create, params: { comment: comment_params }
     assert_response :forbidden
   end
 
-  test "create responds with discussion with reader" do
+  test "create responds with discussion and topic with reader" do
     sign_in @user
-    comment_params = { discussion_id: @discussion.id, body: "original content" }
+    comment_params = { parent_type: 'Discussion', parent_id: @discussion.id, body: "original content" }
     post :create, params: { comment: comment_params }
     json = JSON.parse(response.body)
-    assert json['discussions'][0]['discussion_reader_id'].present?
+    assert json['discussions'][0].present?
+    assert json['topics'][0]['topic_reader_id'].present?
   end
 
   test "create responds with json" do
     sign_in @user
-    comment_params = { discussion_id: @discussion.id, body: "original content" }
+    comment_params = { parent_type: 'Discussion', parent_id: @discussion.id, body: "original content" }
     post :create, params: { comment: comment_params }
     json = JSON.parse(response.body)
     assert_includes json.keys, "users"
@@ -130,8 +132,8 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
 
   test "create mentions appropriate users" do
     sign_in @user
-    @group.add_member!(@another_user) unless @group.members.include?(@another_user)
-    comment_params = { discussion_id: @discussion.id, body: "Hello, @#{@another_user.username}!" }
+    @group.add_member!(@alien) unless @group.members.include?(@alien)
+    comment_params = { parent_type: 'Discussion', parent_id: @discussion.id, body: "Hello, @#{@alien.username}!" }
     assert_difference 'Event.where(kind: :user_mentioned).count', 1 do
       post :create, params: { comment: comment_params }, format: :json
     end
@@ -140,14 +142,14 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
   test "create does not invite non members to discussion" do
     sign_in @user
     non_member_user = User.create!(name: "Non Member", username: "nonmembercomment", email: "nonmembercomment@example.com")
-    comment_params = { discussion_id: @discussion.id, body: "Hello, @#{non_member_user.username}!" }
+    comment_params = { parent_type: 'Discussion', parent_id: @discussion.id, body: "Hello, @#{non_member_user.username}!" }
     post :create, params: { comment: comment_params }, format: :json
     assert_response :success
   end
 
   test "create unpermitted params" do
     sign_in @user
-    comment_params = { discussion_id: @discussion.id, body: "original content", dontmindme: "wild wooly byte virus" }
+    comment_params = { parent_type: 'Discussion', parent_id: @discussion.id, body: "original content", dontmindme: "wild wooly byte virus" }
     post :create, params: { comment: comment_params }
     json = JSON.parse(response.body)
     assert_includes json['exception'], 'ActionController::UnpermittedParameters'
@@ -155,7 +157,7 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
 
   test "create validation errors" do
     sign_in @user
-    comment_params = { discussion_id: @discussion.id, body: "" }
+    comment_params = { parent_type: 'Discussion', parent_id: @discussion.id, body: "" }
     post :create, params: { comment: comment_params }
     json = JSON.parse(response.body)
     assert_response :unprocessable_entity
@@ -163,19 +165,19 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
   end
 
   test "discard allowed" do
-    sign_in @user
-    delete :discard, params: { id: @comment.id }
+    sign_in @admin
+    delete :discard, params: { id: @admin_comment.id }
     assert_response :success
-    @comment.reload
-    assert @comment.discarded?
-    assert_equal @user.id, @comment.discarded_by
+    @admin_comment.reload
+    assert @admin_comment.discarded?
+    assert_equal @admin.id, @admin_comment.discarded_by
   end
 
   test "discard not allowed" do
-    sign_in @another_user
-    delete :discard, params: { id: @comment.id }
+    sign_in @alien
+    delete :discard, params: { id: @admin_comment.id }
     assert_response :forbidden
-    @comment.reload
-    assert_not @comment.discarded?
+    @admin_comment.reload
+    assert_not @admin_comment.discarded?
   end
 end

@@ -28,7 +28,7 @@ class Events::PollAnnounced < Event
   end
 
   def email_recipients
-    notification_recipients.where(id: Queries::UsersByVolumeQuery.normal_or_loud(eventable.topic))
+    notification_recipients.where(id: eventable.topic.email_notification_members)
   end
 
   def notification_recipients

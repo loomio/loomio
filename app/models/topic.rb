@@ -5,6 +5,7 @@ class Topic < ApplicationRecord
   has_many :items, -> { includes(:user) }, class_name: 'Event', dependent: :destroy
   has_many :topic_readers, dependent: :destroy
   has_many :comments, through: :items, source: :eventable, source_type: 'Comment'
+  has_many :polls
 
   include CustomCounterCache::Model
   define_counter_cache(:closed_polls_count)         { |t| t.polls.closed.count }
@@ -110,6 +111,28 @@ class Topic < ApplicationRecord
 
   def last_sequence_id
     Array(ranges.last).last.to_i
+  end
+
+  def members_by_volume(operator, volume)
+    User.active.distinct
+        .joins("LEFT OUTER JOIN topic_readers tr ON tr.topic_id = #{id} AND tr.user_id = users.id")
+        .joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{group_id || 0}")
+        .where('(m.id IS NOT NULL AND m.revoked_at IS NULL) OR
+                (tr.id IS NOT NULL AND tr.guest = TRUE AND tr.revoked_at IS NULL) OR
+                (m.id IS NULL and tr.id IS NULL)')
+        .where("coalesce(tr.volume, m.volume, 2) #{operator} :volume", volume: volume)
+  end
+
+  def app_notification_members
+    members_by_volume('>=', TopicReader.volumes[:quiet])
+  end
+
+  def email_notification_members
+    members_by_volume('>=', TopicReader.volumes[:normal])
+  end
+
+  def email_everything_members
+    members_by_volume('=', TopicReader.volumes[:loud])
   end
 
   def public?

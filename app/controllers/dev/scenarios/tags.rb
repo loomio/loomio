@@ -15,8 +15,7 @@ module Dev::Scenarios::Tags
   def view_discussion_as_visitor_with_tags
     group = Group.create!(name: 'Open Dirty Dancing Shoes', group_privacy: 'open')
     group.add_admin! patrick
-    result = DiscussionService.create(params: {group_id: group.id, title: 'This thread is public', private: false}, actor: patrick)
-    discussion = result[:discussion]
+    discussion = DiscussionService.create(params: {group_id: group.id, title: 'This thread is public', private: false}, actor: patrick)
     tag = group.tags.create(name: "Tag Name", color: "#cccccc")
     discussion_tag = discussion.discussion_tags.create(tag: tag)
     redirect_to discussion_path(discussion)
@@ -25,8 +24,7 @@ module Dev::Scenarios::Tags
   def visit_tags_page
     group = Group.create!(name: 'Open Dirty Dancing Shoes', group_privacy: 'open')
     group.add_admin! patrick
-    result = DiscussionService.create(params: {group_id: group.id, title: 'This thread is public', private: false}, actor: patrick)
-    discussion = result[:discussion]
+    discussion = DiscussionService.create(params: {group_id: group.id, title: 'This thread is public', private: false}, actor: patrick)
     tag = group.tags.create(name: "Tag Name", color: "#cccccc")
     discussion_tag = discussion.discussion_tags.create(tag: tag)
     redirect_to "/g/#{group.key}/tags"

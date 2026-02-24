@@ -4,7 +4,6 @@ class Poll < ApplicationRecord
   include ReadableUnguessableUrls
   include HasEvents
   include HasMentions
-  include MessageChannel
   include SelfReferencing
   include Reactable
   include HasCreatedEvent

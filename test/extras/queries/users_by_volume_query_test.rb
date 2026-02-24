@@ -2,9 +2,9 @@ require 'test_helper'
 
 class Queries::UsersByVolumeQueryTest < ActiveSupport::TestCase
   setup do
-    @group = groups(:test_group)
-    @author = users(:discussion_author)
-    @discussion = create_discussion(group: @group, author: @author)
+    @group = groups(:group)
+    @author = users(:admin)
+    @discussion = discussions(:discussion)
 
     def new_user(name)
       hex = SecureRandom.hex(4)
@@ -42,7 +42,7 @@ class Queries::UsersByVolumeQueryTest < ActiveSupport::TestCase
   end
 
   test "loud returns only loud users" do
-    users = Queries::UsersByVolumeQuery.loud(@discussion)
+    users = Queries::UsersByVolumeQuery.loud(@discussion.topic)
     assert_includes users, @user_reader_loud
     assert_includes users, @user_membership_loud
     refute_includes users, @user_membership_normal
@@ -55,7 +55,7 @@ class Queries::UsersByVolumeQueryTest < ActiveSupport::TestCase
   end
 
   test "normal or loud returns normal and loud users" do
-    users = Queries::UsersByVolumeQuery.normal_or_loud(@discussion)
+    users = Queries::UsersByVolumeQuery.normal_or_loud(@discussion.topic)
     assert_includes users, @user_reader_loud
     assert_includes users, @user_reader_normal
     assert_includes users, @user_membership_loud
@@ -68,7 +68,7 @@ class Queries::UsersByVolumeQueryTest < ActiveSupport::TestCase
   end
 
   test "mute returns only muted users" do
-    users = Queries::UsersByVolumeQuery.mute(@discussion)
+    users = Queries::UsersByVolumeQuery.mute(@discussion.topic)
     assert_includes users, @user_membership_mute
     assert_includes users, @user_reader_mute
     refute_includes users, @user_reader_loud

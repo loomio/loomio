@@ -3,10 +3,9 @@
 class Views::EmailActions::Unsubscribe < Views::BasicLayout
   include Phlex::Rails::Helpers::FormTag
 
-  def initialize(discussion_reader:, stance:, membership:, unsubscribe_token:, **layout_args)
+  def initialize(topic_reader:, membership:, unsubscribe_token:, **layout_args)
     super(**layout_args)
-    @discussion_reader = discussion_reader
-    @stance = stance
+    @topic_reader = topic_reader
     @membership = membership
     @unsubscribe_token = unsubscribe_token
   end
@@ -21,14 +20,13 @@ class Views::EmailActions::Unsubscribe < Views::BasicLayout
     main(class: "sistema") do
       h1 { t(:"change_volume_form.change_your_email_settings") }
 
-      if @discussion_reader
-        h3 { "#{t(:'common.thread')}: #{@discussion_reader.discussion.title}" }
+      if @topic_reader
+        h3 { "#{t(:'common.thread')}: #{@topic_reader.topic.topicable.title}" }
         p { t(:"change_volume_form.when_would_you_like_to_be_emailed_discussion") }
         form_tag(email_actions_set_discussion_volume_path, method: :put) do
           input(type: :hidden, name: "unsubscribe_token", value: @unsubscribe_token)
-          input(type: :hidden, name: "discussion_id", value: @discussion_reader.discussion_id)
-          input(type: :hidden, name: "poll_id", value: @stance.poll_id) if @stance
-          volume_select(volume_options, selected: @discussion_reader.volume)
+          input(type: :hidden, name: "topic_id", value: @topic_reader.topic_id)
+          volume_select(volume_options, selected: @topic_reader.volume)
           input(type: "submit", value: t(:"common.action.save"))
         end
       end
@@ -38,8 +36,7 @@ class Views::EmailActions::Unsubscribe < Views::BasicLayout
         p { t(:"change_volume_form.when_would_you_like_to_be_emailed_group") }
         form_tag(email_actions_set_group_volume_path, method: :put) do
           input(type: :hidden, name: "unsubscribe_token", value: @unsubscribe_token)
-          input(type: :hidden, name: "discussion_id", value: @discussion_reader.discussion_id) if @discussion_reader
-          input(type: :hidden, name: "poll_id", value: @stance.poll_id) if @stance
+          input(type: :hidden, name: "group_id", value: @membership.group_id) if @membership.group_id
           volume_select(volume_options, selected: @membership.volume)
           input(type: "submit", value: t(:"common.action.save"))
         end

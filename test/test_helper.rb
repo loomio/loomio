@@ -44,6 +44,8 @@ module ActiveSupport
     # Setup common stubs before each test
     setup do
       ActionMailer::Base.deliveries.clear
+      ThrottleService.reset!('hour')
+      ThrottleService.reset!('day')
 
       # Stub external API calls
       WebMock.stub_request(:get, /\.chargifypay.com/).

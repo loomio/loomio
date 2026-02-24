@@ -9,8 +9,6 @@ class TopicReader < ApplicationRecord
   belongs_to :topic
   belongs_to :inviter, class_name: 'User'
 
-  delegate :message_channel, to: :user
-
   scope :dangling, lambda {
     joins('left join topics on topics.id = topic_id left join users on users.id = user_id')
       .where('topics.id is null or users.id is null')

@@ -1,7 +1,6 @@
 class User < ApplicationRecord
   include CustomCounterCache::Model
   include ReadableUnguessableUrls
-  include MessageChannel
   include HasExperiences
   include HasAvatar
   include SelfReferencing

@@ -10,12 +10,12 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
 
   setup do
     Rails.application.routes.default_url_options[:host] = "https://loomio.test"
-    @group = groups(:test_group)
-    @actor = users(:group_admin)
-    @observer = users(:normal_user)
-    @voter = users(:another_user)
-    @mentioned = users(:discussion_author)
-    @discussion = discussions(:test_discussion)
+    @group = groups(:group)
+    @actor = users(:admin)
+    @observer = users(:user)
+    @voter = users(:member)
+    @mentioned = users(:admin)
+    @discussion = discussions(:discussion)
     ActionMailer::Base.deliveries.clear
   end
 
@@ -40,19 +40,17 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
     end
   end
 
-  def build_poll(poll_type:, anonymous: false, hide_results: :off, **overrides)
-    Poll.new({
+  def build_poll_params(poll_type:, anonymous: false, hide_results: :off, **overrides)
+    {
       title: "Test #{poll_type} poll",
       poll_type: poll_type,
-      discussion: @discussion,
-      group: @group,
-      author: @actor,
+      topic_id: @discussion.topic.id,
       anonymous: anonymous,
       hide_results: hide_results,
       closing_at: 5.days.from_now,
       poll_option_names: option_names_for(poll_type),
       specified_voters_only: false
-    }.merge(poll_extra_config(poll_type)).merge(overrides))
+    }.merge(poll_extra_config(poll_type)).merge(overrides)
   end
 
   # Cast stance via service (triggers events/emails, requires open poll)
@@ -90,8 +88,7 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
   # Scenario builders
 
   def build_poll_created(poll_type:, anonymous: false, hide_results: :off)
-    @poll = build_poll(poll_type: poll_type, anonymous: anonymous, hide_results: hide_results)
-    PollService.create(poll: @poll, actor: @actor, params: {notify_recipients: true})
+    @poll = PollService.create(params: build_poll_params(poll_type: poll_type, anonymous: anonymous, hide_results: hide_results, notify_on_open: true), actor: @actor)
     @scenario_observer = @observer
     @scenario_actor = @actor
     @email = find_email_for(@observer)
@@ -99,10 +96,9 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
   end
 
   def build_poll_outcome_created(poll_type:, anonymous: false, hide_results: :off)
-    @poll = build_poll(poll_type: poll_type, anonymous: anonymous, hide_results: hide_results,
-                       closed_at: 1.day.ago, closing_at: 1.day.ago)
-    PollService.create(poll: @poll, actor: @actor)
+    @poll = PollService.create(params: build_poll_params(poll_type: poll_type, anonymous: anonymous, hide_results: hide_results), actor: @actor)
     save_cast_stance(@poll, @voter)
+    @poll.update!(closed_at: 1.day.ago, closing_at: 1.day.ago)
     @poll.update_counts!
     outcome = Outcome.new(poll: @poll, author: @actor, statement: "The outcome statement")
     OutcomeService.create(outcome: outcome, actor: @actor, params: {recipient_emails: [@observer.email]})
@@ -113,10 +109,9 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
   end
 
   def build_poll_outcome_review_due(poll_type:, anonymous: false, hide_results: :off)
-    @poll = build_poll(poll_type: poll_type, anonymous: anonymous, hide_results: hide_results,
-                       closed_at: 1.day.ago, closing_at: 1.day.ago)
-    PollService.create(poll: @poll, actor: @actor)
+    @poll = PollService.create(params: build_poll_params(poll_type: poll_type, anonymous: anonymous, hide_results: hide_results), actor: @actor)
     save_cast_stance(@poll, @voter)
+    @poll.update!(closed_at: 1.day.ago, closing_at: 1.day.ago)
     @poll.update_counts!
     outcome = Outcome.new(poll: @poll, author: @actor, statement: "The outcome statement", review_on: Date.today)
     outcome.save!
@@ -128,8 +123,7 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
   end
 
   def build_poll_stance_created(poll_type:, anonymous: false, hide_results: :off)
-    @poll = build_poll(poll_type: poll_type, anonymous: anonymous, hide_results: hide_results)
-    PollService.create(poll: @poll, actor: @actor)
+    @poll = PollService.create(params: build_poll_params(poll_type: poll_type, anonymous: anonymous, hide_results: hide_results), actor: @actor)
     topic = @poll.topic
     TopicReader.find_or_create_by!(topic: topic, user: @actor).set_volume!('loud') if topic
     event = cast_stance(@poll, @voter)
@@ -141,12 +135,11 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
   end
 
   def build_poll_closing_soon(poll_type:, anonymous: false, hide_results: :off, notify_on_closing_soon: 'voters')
-    @poll = build_poll(poll_type: poll_type, anonymous: anonymous, hide_results: hide_results,
+    @poll = PollService.create(params: build_poll_params(poll_type: poll_type, anonymous: anonymous, hide_results: hide_results,
                        created_at: 6.days.ago,
                        closing_at: 1.day.from_now.beginning_of_hour,
                        quorum_pct: 80,
-                       notify_on_closing_soon: notify_on_closing_soon)
-    PollService.create(poll: @poll, actor: @actor)
+                       notify_on_closing_soon: notify_on_closing_soon), actor: @actor)
     # Cast a stance while poll is open so we have voter data
     save_cast_stance(@poll, @voter)
     @poll.update_counts!
@@ -159,8 +152,7 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
   end
 
   def build_poll_user_mentioned(poll_type:, anonymous: false, hide_results: :off)
-    @poll = build_poll(poll_type: poll_type, anonymous: anonymous, hide_results: hide_results)
-    PollService.create(poll: @poll, actor: @actor)
+    @poll = PollService.create(params: build_poll_params(poll_type: poll_type, anonymous: anonymous, hide_results: hide_results), actor: @actor)
     # Clear deliveries so we only see emails from the mention, not poll_announced
     ActionMailer::Base.deliveries.clear
     stance = @poll.stances.find_by(participant_id: @voter.id, latest: true)
@@ -175,8 +167,7 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
   end
 
   def build_poll_expired_author(poll_type:, anonymous: false, hide_results: :off)
-    @poll = build_poll(poll_type: poll_type, anonymous: anonymous, hide_results: hide_results)
-    PollService.create(poll: @poll, actor: @actor)
+    @poll = PollService.create(params: build_poll_params(poll_type: poll_type, anonymous: anonymous, hide_results: hide_results), actor: @actor)
     # Cast stances while poll is still open, then expire it
     save_cast_stance(@poll, @voter)
     save_cast_stance(@poll, @observer)
@@ -354,8 +345,7 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
 
     test "#{poll_type} compare view" do
       skip "while refacting"
-      @poll = build_poll(poll_type: poll_type)
-      PollService.create(poll: @poll, actor: @actor, params: {notify_recipients: true})
+      @poll = PollService.create(params: build_poll_params(poll_type: poll_type, notify_on_open: true), actor: @actor)
 
       event = @poll.events.last
       recipient = @observer

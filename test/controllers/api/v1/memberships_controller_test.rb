@@ -2,9 +2,9 @@ require 'test_helper'
 
 class Api::V1::MembershipsControllerTest < ActionController::TestCase
   setup do
-    @normal_user = users(:group_admin)
-    @another_user = users(:another_user)
-    @test_group = groups(:test_group)
+    @normal_user = users(:admin)
+    @alien = users(:alien)
+    @test_group = groups(:group)
     @subgroup = groups(:subgroup)
     sign_in @normal_user
   end
@@ -139,12 +139,15 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
   # ===== For User Tests =====
 
   test 'returns visible groups for the given user' do
-    get :for_user, params: { user_id: @another_user.id }
+    alien_group = groups(:alien_group)
+    alien_group.update!(listed_in_explore: true)
+
+    get :for_user, params: { user_id: @alien.id }
 
     json = JSON.parse(response.body)
     group_ids = json['groups'].map { |g| g['id'] }
 
-    assert_includes group_ids, @test_group.id
+    assert_includes group_ids, alien_group.id
   end
 
   # ===== Save Experience Tests =====
@@ -214,7 +217,7 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     )
     @test_group.add_member!(delegate_user)
 
-    sign_in @another_user
+    sign_in @alien
     membership = @test_group.add_member!(delegate_user)
 
     post :make_delegate, params: { id: membership.id }
@@ -255,7 +258,7 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     membership = @test_group.add_member!(delegate_user)
     membership.update(delegate: true)
 
-    sign_in @another_user
+    sign_in @alien
 
     post :remove_delegate, params: { id: membership.id }
 

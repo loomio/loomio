@@ -116,8 +116,7 @@ module Dev::Scenarios::Auth
                            group_privacy: 'open')
     @group.add_member! patrick
     @group.add_admin! jennifer
-    result = DiscussionService.create(params: {group_id: @group.id, title: 'I carried a watermelon', private: false}, actor: jennifer)
-    @discussion = result[:discussion]
+    @discussion = DiscussionService.create(params: {group_id: @group.id, title: 'I carried a watermelon', private: false}, actor: jennifer)
     redirect_to discussion_path(@discussion)
   end
 
@@ -127,8 +126,7 @@ module Dev::Scenarios::Auth
                                 group_privacy: 'closed',
                                 discussion_privacy_options: 'public_or_private')
     @group.add_admin! jennifer
-    result = DiscussionService.create(params: {group_id: @group.id, title: "I carried a watermelon", private: false}, actor: jennifer)
-    @discussion = result[:discussion]
+    @discussion = DiscussionService.create(params: {group_id: @group.id, title: "I carried a watermelon", private: false}, actor: jennifer)
     redirect_to group_path(@group)
   end
 
@@ -147,10 +145,8 @@ module Dev::Scenarios::Auth
                                 discussion_privacy_options: 'public_or_private')
     @group.add_member! patrick
     @group.add_admin! jennifer
-    result = DiscussionService.create(params: {group_id: @group.id, title: 'This thread is private', private: true}, actor: jennifer)
-    @discussion = result[:discussion]
-    result = DiscussionService.create(params: {group_id: @group.id, title: 'This thread is public', private: false}, actor: jennifer)
-    @public_discussion = result[:discussion]
+    @discussion = DiscussionService.create(params: {group_id: @group.id, title: 'This thread is private', private: true}, actor: jennifer)
+    @public_discussion = DiscussionService.create(params: {group_id: @group.id, title: 'This thread is public', private: false}, actor: jennifer)
     redirect_to group_path(@group)
   end
 

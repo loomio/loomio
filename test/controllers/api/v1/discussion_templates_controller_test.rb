@@ -2,15 +2,15 @@ require 'test_helper'
 
 class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
   setup do
-    @user = users(:group_admin)
-    @another_user = users(:another_user)
-    @group = groups(:test_group)
+    @admin = users(:admin)
+    @user = users(:user)
+    @group = groups(:group)
   end
 
   # === INDEX ===
 
   test "index materializes default templates for group with no custom templates" do
-    sign_in @user
+    sign_in @admin
     get :index, params: { group_id: @group.id }
     assert_response :success
 
@@ -24,12 +24,12 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
     DiscussionTemplateService.ensure_templates_materialized(@group)
     template = DiscussionTemplate.create!(
       group: @group,
-      author: @user,
+      author: @admin,
       process_name: "Custom Process",
       process_subtitle: "Custom subtitle"
     )
 
-    sign_in @user
+    sign_in @admin
     get :index, params: { group_id: @group.id }
     assert_response :success
 
@@ -40,7 +40,7 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
   end
 
   test "index returns defaults when no group_id" do
-    sign_in @user
+    sign_in @admin
     get :index
     assert_response :success
 
@@ -53,12 +53,12 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
   test "index returns single template by id" do
     template = DiscussionTemplate.create!(
       group: @group,
-      author: @user,
+      author: @admin,
       process_name: "Find Me",
       process_subtitle: "subtitle"
     )
 
-    sign_in @user
+    sign_in @admin
     get :index, params: { group_id: @group.id, id: template.id }
     assert_response :success
 
@@ -68,16 +68,16 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
   end
 
   test "index cannot find template in another user group" do
-    other_group = Group.create!(name: "Other Group #{SecureRandom.hex(4)}", creator: @another_user)
+    other_group = Group.create!(name: "Other Group #{SecureRandom.hex(4)}", creator: @user)
 
     template = DiscussionTemplate.create!(
       group: other_group,
-      author: @another_user,
+      author: @user,
       process_name: "Secret",
       process_subtitle: "subtitle"
     )
 
-    sign_in @user
+    sign_in @admin
     get :index, params: { id: template.id }
     assert_response :success
 
@@ -99,12 +99,12 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
   test "show returns a template in user group" do
     template = DiscussionTemplate.create!(
       group: @group,
-      author: @user,
+      author: @admin,
       process_name: "Showable",
       process_subtitle: "subtitle"
     )
 
-    sign_in @user
+    sign_in @admin
     get :show, params: { id: template.id }
     assert_response :success
 
@@ -113,15 +113,15 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
   end
 
   test "show returns 404 for template not in user groups" do
-    other_group = Group.create!(name: "Other #{SecureRandom.hex(4)}", creator: @another_user)
+    other_group = Group.create!(name: "Other #{SecureRandom.hex(4)}", creator: @user)
     template = DiscussionTemplate.create!(
       group: other_group,
-      author: @another_user,
+      author: @user,
       process_name: "Hidden",
       process_subtitle: "subtitle"
     )
 
-    sign_in @user
+    sign_in @admin
     get :show, params: { id: template.id }
     assert_response :not_found
   end
@@ -131,7 +131,7 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
   test "create creates a discussion template" do
     DiscussionTemplateService.ensure_templates_materialized(@group)
 
-    sign_in @user
+    sign_in @admin
 
     assert_difference 'DiscussionTemplate.count', 1 do
       post :create, params: {
@@ -154,7 +154,7 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
   end
 
   test "create denies non-admin" do
-    sign_in @another_user
+    sign_in @user
     post :create, params: {
       discussion_template: {
         group_id: @group.id,
@@ -170,12 +170,12 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
   test "update modifies a discussion template" do
     template = DiscussionTemplate.create!(
       group: @group,
-      author: @user,
+      author: @admin,
       process_name: "Original",
       process_subtitle: "subtitle"
     )
 
-    sign_in @user
+    sign_in @admin
     put :update, params: {
       id: template.id,
       discussion_template: { process_name: "Updated" }
@@ -191,12 +191,12 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
   test "destroy deletes a discussion template" do
     template = DiscussionTemplate.create!(
       group: @group,
-      author: @user,
+      author: @admin,
       process_name: "Deletable",
       process_subtitle: "subtitle"
     )
 
-    sign_in @user
+    sign_in @admin
     assert_difference 'DiscussionTemplate.count', -1 do
       delete :destroy, params: { id: template.id }
     end
@@ -206,12 +206,12 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
   test "destroy denies non-admin non-author" do
     template = DiscussionTemplate.create!(
       group: @group,
-      author: @user,
+      author: @admin,
       process_name: "Protected",
       process_subtitle: "subtitle"
     )
 
-    sign_in @another_user
+    sign_in @user
     delete :destroy, params: { id: template.id }
     assert_response :forbidden
   end
@@ -221,12 +221,12 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
   test "discard discards a discussion template" do
     template = DiscussionTemplate.create!(
       group: @group,
-      author: @user,
+      author: @admin,
       process_name: "Discardable",
       process_subtitle: "subtitle"
     )
 
-    sign_in @user
+    sign_in @admin
     post :discard, params: { id: template.id, group_id: @group.id }
     assert_response :success
 
@@ -237,13 +237,13 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
   test "undiscard restores a discarded discussion template" do
     template = DiscussionTemplate.create!(
       group: @group,
-      author: @user,
+      author: @admin,
       process_name: "Restorable",
       process_subtitle: "subtitle"
     )
     template.discard!
 
-    sign_in @user
+    sign_in @admin
     post :undiscard, params: { id: template.id, group_id: @group.id }
     assert_response :success
 
@@ -254,12 +254,12 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
   test "discard denies non-admin non-author" do
     template = DiscussionTemplate.create!(
       group: @group,
-      author: @user,
+      author: @admin,
       process_name: "Protected",
       process_subtitle: "subtitle"
     )
 
-    sign_in @another_user
+    sign_in @user
     post :discard, params: { id: template.id, group_id: @group.id }
     assert_response :forbidden
   end
@@ -268,10 +268,10 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
 
   test "positions updates template ordering" do
     DiscussionTemplateService.ensure_templates_materialized(@group)
-    t1 = DiscussionTemplate.create!(group: @group, author: @user, process_name: "First", process_subtitle: "s", position: 0)
-    t2 = DiscussionTemplate.create!(group: @group, author: @user, process_name: "Second", process_subtitle: "s", position: 1)
+    t1 = DiscussionTemplate.create!(group: @group, author: @admin, process_name: "First", process_subtitle: "s", position: 0)
+    t2 = DiscussionTemplate.create!(group: @group, author: @admin, process_name: "Second", process_subtitle: "s", position: 1)
 
-    sign_in @user
+    sign_in @admin
     post :positions, params: { group_id: @group.id, ids: [t2.id, t1.id] }
     assert_response :success
 
@@ -282,7 +282,7 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
   end
 
   test "positions denies non-admin" do
-    sign_in @another_user
+    sign_in @user
     post :positions, params: { group_id: @group.id, ids: [1] }
     assert_response :not_found
   end
@@ -336,7 +336,7 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
   test "ensure_templates_materialized skips if group already has templates" do
     DiscussionTemplate.create!(
       group: @group,
-      author: @user,
+      author: @admin,
       process_name: "Existing",
       process_subtitle: "subtitle"
     )
@@ -352,7 +352,7 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
     @group.update!(members_can_create_templates: true)
     DiscussionTemplateService.ensure_templates_materialized(@group)
 
-    sign_in @another_user
+    sign_in @user
     assert_difference 'DiscussionTemplate.count', 1 do
       post :create, params: {
         discussion_template: {
@@ -365,7 +365,7 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
 
     assert_response :success
     template = DiscussionTemplate.last
-    assert_equal @another_user.id, template.author_id
+    assert_equal @user.id, template.author_id
     assert_not template.discarded?, "member-created template should not be auto-discarded"
   end
 
@@ -373,7 +373,7 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
     @group.update!(members_can_create_templates: true)
     DiscussionTemplateService.ensure_templates_materialized(@group)
 
-    sign_in @user
+    sign_in @admin
     post :create, params: {
       discussion_template: {
         group_id: @group.id,
@@ -391,12 +391,12 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
     @group.update!(members_can_create_templates: true)
     template = DiscussionTemplate.create!(
       group: @group,
-      author: @another_user,
+      author: @user,
       process_name: "Member's Template",
       process_subtitle: "subtitle"
     )
 
-    sign_in @another_user
+    sign_in @user
     put :update, params: {
       id: template.id,
       discussion_template: { process_name: "Updated by Member" }
@@ -411,12 +411,12 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
     @group.update!(members_can_create_templates: true)
     template = DiscussionTemplate.create!(
       group: @group,
-      author: @user,
+      author: @admin,
       process_name: "Admin's Template",
       process_subtitle: "subtitle"
     )
 
-    sign_in @another_user
+    sign_in @user
     put :update, params: {
       id: template.id,
       discussion_template: { process_name: "Unauthorized Edit" }
@@ -429,12 +429,12 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
     @group.update!(members_can_create_templates: true)
     template = DiscussionTemplate.create!(
       group: @group,
-      author: @another_user,
+      author: @user,
       process_name: "Member Discardable",
       process_subtitle: "subtitle"
     )
 
-    sign_in @another_user
+    sign_in @user
     post :discard, params: { id: template.id, group_id: @group.id }
     assert_response :success
 
@@ -446,12 +446,12 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
     @group.update!(members_can_create_templates: true)
     template = DiscussionTemplate.create!(
       group: @group,
-      author: @another_user,
+      author: @user,
       process_name: "Member Deletable",
       process_subtitle: "subtitle"
     )
 
-    sign_in @another_user
+    sign_in @user
     assert_difference 'DiscussionTemplate.count', -1 do
       delete :destroy, params: { id: template.id }
     end
@@ -462,13 +462,13 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
     @group.update!(members_can_create_templates: true)
     template = DiscussionTemplate.create!(
       group: @group,
-      author: @another_user,
+      author: @user,
       process_name: "Member Undiscardable",
       process_subtitle: "subtitle"
     )
     template.discard!
 
-    sign_in @another_user
+    sign_in @user
     post :undiscard, params: { id: template.id, group_id: @group.id }
     assert_response :success
 
@@ -480,12 +480,12 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
     @group.update!(members_can_create_templates: true)
     template = DiscussionTemplate.create!(
       group: @group,
-      author: @user,
+      author: @admin,
       process_name: "Admin's Kept Template",
       process_subtitle: "subtitle"
     )
 
-    sign_in @another_user
+    sign_in @user
     post :discard, params: { id: template.id, group_id: @group.id }
     assert_response :forbidden
   end
@@ -494,13 +494,13 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
     @group.update!(members_can_create_templates: true)
     template = DiscussionTemplate.create!(
       group: @group,
-      author: @user,
+      author: @admin,
       process_name: "Admin's Hidden Template",
       process_subtitle: "subtitle"
     )
     template.discard!
 
-    sign_in @another_user
+    sign_in @user
     post :undiscard, params: { id: template.id, group_id: @group.id }
     assert_response :forbidden
   end
@@ -509,12 +509,12 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
     @group.update!(members_can_create_templates: true)
     template = DiscussionTemplate.create!(
       group: @group,
-      author: @user,
+      author: @admin,
       process_name: "Admin's Template",
       process_subtitle: "subtitle"
     )
 
-    sign_in @another_user
+    sign_in @user
     assert_no_difference 'DiscussionTemplate.count' do
       delete :destroy, params: { id: template.id }
     end
@@ -525,7 +525,7 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
     other_user = User.create!(name: "Outsider #{SecureRandom.hex(4)}", email: "outsider_#{SecureRandom.hex(4)}@example.com", email_verified: true)
     template = DiscussionTemplate.create!(
       group: @group,
-      author: @user,
+      author: @admin,
       process_name: "Protected Template",
       process_subtitle: "subtitle"
     )
@@ -538,7 +538,7 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
   test "member cannot create template when setting disabled" do
     @group.update!(members_can_create_templates: false)
 
-    sign_in @another_user
+    sign_in @user
     post :create, params: {
       discussion_template: {
         group_id: @group.id,
@@ -554,7 +554,7 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
   test "create with default_to_direct_discussion true" do
     DiscussionTemplateService.ensure_templates_materialized(@group)
 
-    sign_in @user
+    sign_in @admin
     post :create, params: {
       discussion_template: {
         group_id: @group.id,
@@ -574,13 +574,13 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
     DiscussionTemplateService.ensure_templates_materialized(@group)
     DiscussionTemplate.create!(
       group: @group,
-      author: @user,
+      author: @admin,
       process_name: "Direct Template",
       process_subtitle: "subtitle",
       default_to_direct_discussion: true
     )
 
-    sign_in @user
+    sign_in @admin
     get :index, params: { group_id: @group.id }
     assert_response :success
 
@@ -593,13 +593,13 @@ class Api::V1::DiscussionTemplatesControllerTest < ActionController::TestCase
   test "update default_to_direct_discussion" do
     template = DiscussionTemplate.create!(
       group: @group,
-      author: @user,
+      author: @admin,
       process_name: "Toggle Direct",
       process_subtitle: "subtitle",
       default_to_direct_discussion: false
     )
 
-    sign_in @user
+    sign_in @admin
     put :update, params: {
       id: template.id,
       discussion_template: { default_to_direct_discussion: true }

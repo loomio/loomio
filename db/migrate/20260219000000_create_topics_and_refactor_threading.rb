@@ -16,6 +16,7 @@ class CreateTopicsAndRefactorThreading < ActiveRecord::Migration[7.0]
       t.datetime :last_activity_at, precision: nil
       t.integer :seen_by_count, default: 0, null: false
       t.integer :members_count
+      t.integer :closed_polls_count, default: 0, null: false
       t.integer :anonymous_polls_count, default: 0, null: false
       t.timestamps
     end
@@ -26,10 +27,10 @@ class CreateTopicsAndRefactorThreading < ActiveRecord::Migration[7.0]
     execute <<~SQL
       INSERT INTO topics (topicable_type, topicable_id, group_id, items_count, ranges_string,
                           max_depth, newest_first, private, closed_at, closer_id, pinned_at,
-                          last_activity_at, seen_by_count, members_count, anonymous_polls_count, created_at, updated_at)
+                          last_activity_at, seen_by_count, members_count, closed_polls_count, anonymous_polls_count, created_at, updated_at)
       SELECT 'Discussion', id, group_id, items_count, ranges_string,
              max_depth, newest_first, private, closed_at, closer_id, pinned_at,
-             last_activity_at, seen_by_count, members_count, anonymous_polls_count, created_at, updated_at
+             last_activity_at, seen_by_count, members_count, closed_polls_count, anonymous_polls_count, created_at, updated_at
       FROM discussions
     SQL
 

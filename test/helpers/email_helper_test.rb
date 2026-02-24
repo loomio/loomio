@@ -47,7 +47,7 @@ class EmailHelperTest < ActiveSupport::TestCase
   test "polymorphic_url returns a comment url" do
     comment = Comment.new(parent: @discussion, body: "Test comment")
     CommentService.create(comment: comment, actor: @author)
-    assert_match "/d/#{@discussion.key}/comment/#{comment.id}", send(:polymorphic_url, comment)
+    assert_match "/c/#{comment.id}", send(:polymorphic_url, comment)
   end
 
   test "polymorphic_url can accept a utm hash" do

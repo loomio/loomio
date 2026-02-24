@@ -16,7 +16,7 @@ class PollService
 
     if !poll.opened_at &&
         poll.closing_at &&
-        poll.opening_at.blank? || poll.opening_at <= Time.now
+        (poll.opening_at.blank? || poll.opening_at <= Time.now)
       poll.opened_at = Time.now
     end
 
@@ -203,7 +203,7 @@ class PollService
       poll.update(discarded_at: Time.now, discarded_by: actor.id)
       Event.where(kind: ["stance_created", "stance_updated"], eventable_id: poll.stances.pluck(:id)).update_all(topic_id: nil)
       poll.created_event.update!(user_id: nil, child_count: 0, pinned: false)
-      poll.discussion&.update_sequence_info!
+      poll.topic.update_sequence_info!
     end
 
     MessageChannelService.publish_models([poll.created_event], scope: {current_user: actor, current_user_id: actor.id}, group_id: poll.group_id)

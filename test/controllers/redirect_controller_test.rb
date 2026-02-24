@@ -2,8 +2,8 @@ require 'test_helper'
 
 class RedirectControllerTest < ActionController::TestCase
   setup do
-    @group = groups(:test_group)
-    @discussion = discussions(:test_discussion)
+    @group = groups(:group)
+    @discussion = discussions(:discussion)
   end
 
   test "redirects to group path" do

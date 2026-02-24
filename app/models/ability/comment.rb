@@ -4,7 +4,6 @@ module Ability::Comment
 
     can [:create], ::Comment do |comment|
       topic = comment.topic
-      comment.parent.kept? &&
       !topic.closed_at &&
       topic.members.exists?(user.id)
     end

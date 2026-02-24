@@ -29,18 +29,18 @@ class UserQueryTest < ActiveSupport::TestCase
     @other_group.subscription = Subscription.create!(plan: 'trial', state: 'active')
     @other_group.save(validate: false)
 
-    @discussion = Discussion.new(title: "Disc #{hex}", author: @actor, description_format: "html", private: true)
+    @discussion = DiscussionService.build(params: { title: "Disc #{hex}", private: true, description_format: "html" }, actor: @actor)
     @discussion.save(validate: false)
     @discussion.create_missing_created_event!
-    @other_discussion = Discussion.new(title: "Other disc #{hex}", author: @actor, description_format: "html", private: true)
+    @other_discussion = DiscussionService.build(params: { title: "Other disc #{hex}", private: true, description_format: "html" }, actor: @actor)
     @other_discussion.save(validate: false)
     @other_discussion.create_missing_created_event!
 
     @poll_author = new_user("pollauthor")
-    @poll = Poll.new(poll_type: "poll", title: "Poll #{hex}", author: @poll_author, poll_option_names: ["engage"], closing_at: 5.days.from_now, opened_at: Time.now, notify_on_closing_soon: "voters")
+    @poll = PollService.build(params: { poll_type: "poll", title: "Poll #{hex}", poll_option_names: ["engage"], closing_at: 5.days.from_now, notify_on_closing_soon: "voters" }, actor: @poll_author)
     @poll.save!
     @poll.create_missing_created_event!
-    @other_poll = Poll.new(poll_type: "poll", title: "Other poll #{hex}", author: @poll_author, poll_option_names: ["engage"], closing_at: 5.days.from_now, opened_at: Time.now, notify_on_closing_soon: "voters")
+    @other_poll = PollService.build(params: { poll_type: "poll", title: "Other poll #{hex}", poll_option_names: ["engage"], closing_at: 5.days.from_now, notify_on_closing_soon: "voters" }, actor: @poll_author)
     @other_poll.save!
     @other_poll.create_missing_created_event!
 
@@ -56,6 +56,7 @@ class UserQueryTest < ActiveSupport::TestCase
     @other_discussion.topic.topic_readers.create!(user_id: @actor.id, inviter_id: @actor.id)
     @other_discussion.topic.topic_readers.create!(user_id: @other_guest.id, guest: true, inviter_id: @actor.id)
 
+    @poll.update!(topic: @discussion.topic)
     @poll.stances.create!(participant_id: @actor.id, inviter_id: @actor.id)
     @poll.stances.create!(participant_id: @poll_guest.id, inviter: @actor)
     @poll.add_guest!(@poll_guest, @actor)
@@ -75,7 +76,7 @@ class UserQueryTest < ActiveSupport::TestCase
   # -- discussion without group, as admin --
 
   test "discussion without group as admin returns actors group members and previous guests" do
-    @poll.update(discussion: @discussion)
+    @poll.update(topic: @discussion.topic)
     @discussion.topic.topic_readers.where(user_id: @actor.id).update_all(admin: true, guest: true)
 
     names = UserQuery.invitable_search(model: @discussion, actor: @actor).pluck(:name)
@@ -88,7 +89,7 @@ class UserQueryTest < ActiveSupport::TestCase
   # -- discussion without group, as member --
 
   test "discussion without group as member returns only thread and poll guests" do
-    @poll.update(discussion: @discussion)
+    @poll.update(topic: @discussion.topic)
     @discussion.topic.topic_readers.where(user_id: @actor.id).update_all(guest: true)
 
     names = UserQuery.invitable_search(model: @discussion, actor: @actor).pluck(:name)
@@ -101,8 +102,8 @@ class UserQueryTest < ActiveSupport::TestCase
   # -- discussion in group, as group admin --
 
   test "discussion in group as admin returns group and subgroup members and guests" do
-    @poll.update(discussion: @discussion)
-    @discussion.update(group_id: @group.id)
+    @poll.update(topic: @discussion.topic)
+    @discussion.topic.update!(group_id: @group.id)
     Membership.where(user: @actor, group: @group).update(admin: true)
 
     names = UserQuery.invitable_search(model: @discussion, actor: @actor).pluck(:name)
@@ -112,8 +113,8 @@ class UserQueryTest < ActiveSupport::TestCase
   end
 
   test "discussion in group as admin excludes other org members and unrelated users" do
-    @poll.update(discussion: @discussion)
-    @discussion.update(group_id: @group.id)
+    @poll.update(topic: @discussion.topic)
+    @discussion.topic.update!(group_id: @group.id)
     Membership.where(user: @actor, group: @group).update(admin: true)
 
     names = UserQuery.invitable_search(model: @discussion, actor: @actor).pluck(:name)
@@ -125,8 +126,8 @@ class UserQueryTest < ActiveSupport::TestCase
   # -- discussion in group, as member, members_can_add_guests=true --
 
   test "discussion in group as member with guests allowed returns group and subgroup members" do
-    @poll.update(discussion: @discussion)
-    @discussion.update(group_id: @group.id)
+    @poll.update(topic: @discussion.topic)
+    @discussion.topic.update!(group_id: @group.id)
     Membership.where(user: @actor, group: @group).update(admin: false)
     @group.update(members_can_add_guests: true)
 
@@ -142,11 +143,11 @@ class UserQueryTest < ActiveSupport::TestCase
   # -- discussion in group, as member, members_can_add_guests=false --
 
   test "discussion in group as member without guests returns group members and thread guests" do
-    @poll.update(discussion: @discussion)
+    @poll.update(topic: @discussion.topic)
     @discussion.topic.update!(group_id: @group.id)
     @discussion.reload
     Membership.where(user: @actor, group: @group).update(admin: false)
-    @discussion.group.update_column(:members_can_add_guests, false)
+    @discussion.topic.group.update_column(:members_can_add_guests, false)
 
     names = UserQuery.invitable_search(model: @discussion, actor: @actor).pluck(:name)
     [@member, @thread_guest, @poll_guest].each do |u|
@@ -180,7 +181,6 @@ class UserQueryTest < ActiveSupport::TestCase
   # -- poll in discussion without group, as discussion admin --
 
   test "poll in discussion without group as discussion admin returns all guests" do
-    @poll.update(discussion_id: @discussion.id, group_id: nil)
     @discussion.topic.topic_readers.where(user_id: @actor.id).update_all(admin: true, guest: true)
 
     names = UserQuery.invitable_search(model: @poll, actor: @actor).pluck(:name)
@@ -193,7 +193,6 @@ class UserQueryTest < ActiveSupport::TestCase
   # -- poll in discussion without group, as discussion member --
 
   test "poll in discussion without group as discussion member cannot invite" do
-    @poll.update(discussion_id: @discussion.id, group_id: nil)
     @discussion.topic.topic_readers.where(user_id: @actor.id).update_all(admin: false)
 
     names = UserQuery.invitable_search(model: @poll, actor: @actor).pluck(:name)
@@ -206,7 +205,7 @@ class UserQueryTest < ActiveSupport::TestCase
   # -- poll in group, as group admin --
 
   test "poll in group as admin returns group and subgroup members and poll guests" do
-    @poll.update(group: @group)
+    @poll.topic.update!(group_id: @group.id)
     Membership.where(user: @actor, group: @group).update(admin: true)
 
     names = UserQuery.invitable_search(model: @poll, actor: @actor).pluck(:name)
@@ -221,7 +220,7 @@ class UserQueryTest < ActiveSupport::TestCase
   # -- poll in group, as member + poll admin, guests allowed --
 
   test "poll in group as member topic admin with guests allowed returns group and subgroup" do
-    @poll.update(group: @group)
+    @poll.topic.update!(group_id: @group.id)
     Membership.where(user: @actor, group: @group).update(admin: false)
     @poll.topic.topic_readers.find_or_create_by!(user: @actor).update!(admin: true)
     @group.update(members_can_add_guests: true)
@@ -237,18 +236,17 @@ class UserQueryTest < ActiveSupport::TestCase
 
   # -- poll in group, as member + poll admin, guests not allowed --
 
-  test "poll in group as member topic admin without guests returns group members and poll guest" do
-    @poll.update(group: @group)
+  test "poll in group as member topic admin without guests returns group members and topic guests" do
+    @poll.topic.update!(group_id: @group.id)
     Membership.where(user: @actor, group: @group).update(admin: false)
     @poll.topic.topic_readers.find_or_create_by!(user: @actor).update!(admin: true)
     @group.update_column(:members_can_add_guests, false)
 
     names = UserQuery.invitable_search(model: @poll, actor: @actor).pluck(:name)
-    [@member, @poll_guest, @actor].each do |u|
+    [@member, @poll_guest, @thread_guest, @actor].each do |u|
       assert_includes names, u.name
     end
-    assert_equal 3, names.size
-    [@other_member, @thread_guest, @unrelated].each do |u|
+    [@other_member, @unrelated].each do |u|
       refute_includes names, u.name
     end
   end
@@ -256,36 +254,40 @@ class UserQueryTest < ActiveSupport::TestCase
   # -- poll in group, as member (not poll admin), various guest settings --
 
   test "poll in group as member with guests allowed and specified_voters_only returns nobody" do
-    @poll.update(group: @group, specified_voters_only: true)
+    @poll.topic.update!(group_id: @group.id)
+    @poll.update!(specified_voters_only: true)
     Membership.where(user: @actor, group: @group).update(admin: false)
-    @poll.group.update(members_can_add_guests: true)
+    @poll.topic.group.update(members_can_add_guests: true)
 
     names = UserQuery.invitable_search(model: @poll, actor: @actor).pluck(:name)
     assert_equal 0, names.size
   end
 
   test "poll in group as member with guests allowed and specified_voters_only false returns nobody" do
-    @poll.update(group: @group, specified_voters_only: false)
+    @poll.topic.update!(group_id: @group.id)
+    @poll.update!(specified_voters_only: false)
     Membership.where(user: @actor, group: @group).update(admin: false)
-    @poll.group.update(members_can_add_guests: true)
+    @poll.topic.group.update(members_can_add_guests: true)
 
     names = UserQuery.invitable_search(model: @poll, actor: @actor).pluck(:name)
     assert_equal 0, names.size
   end
 
   test "poll in group as member without guests and specified_voters_only returns nobody" do
-    @poll.update(group: @group, specified_voters_only: true)
+    @poll.topic.update!(group_id: @group.id)
+    @poll.update!(specified_voters_only: true)
     Membership.where(user: @actor, group: @group).update(admin: false)
-    @poll.group.update_column(:members_can_add_guests, false)
+    @poll.topic.group.update_column(:members_can_add_guests, false)
 
     names = UserQuery.invitable_search(model: @poll, actor: @actor).pluck(:name)
     assert_equal 0, names.size
   end
 
   test "poll in group as member without guests and specified_voters_only false returns nobody" do
-    @poll.update(group: @group, specified_voters_only: false)
+    @poll.topic.update!(group_id: @group.id)
+    @poll.update!(specified_voters_only: false)
     Membership.where(user: @actor, group: @group).update(admin: false)
-    @poll.group.update_column(:members_can_add_guests, false)
+    @poll.topic.group.update_column(:members_can_add_guests, false)
 
     names = UserQuery.invitable_search(model: @poll, actor: @actor).pluck(:name)
     assert_equal 0, names.size

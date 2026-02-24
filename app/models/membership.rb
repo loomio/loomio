@@ -68,9 +68,7 @@ class Membership < ApplicationRecord
     inviter
   end
 
-  def message_channel
-    "membership-#{token}"
-  end
+
 
   def make_admin!
     update_attribute(:admin, true)

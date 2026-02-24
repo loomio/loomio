@@ -93,7 +93,7 @@ class ReceivedEmailServiceTest < ActiveSupport::TestCase
 
     assert email.reload.released
     comment = Comment.last
-    assert_equal discussion.id, comment.discussion_id
+    assert_equal discussion.id, comment.topic.topicable_id
     assert_equal user.id, comment.user_id
   ensure
     ENV['REPLY_HOSTNAME'] = original_reply

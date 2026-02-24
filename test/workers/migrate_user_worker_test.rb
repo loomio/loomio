@@ -21,7 +21,7 @@ class MigrateUserWorkerTest < ActiveSupport::TestCase
     @jennifer_membership = @group.memberships.find_by(user: @jennifer)
     @jennifer_membership.update!(accepted_at: 2.days.ago)
 
-    @discussion = DiscussionService.create(params: { title: "MigrateTest#{hex}", group_id: @group.id }, actor: @patrick)[:discussion]
+    @discussion = DiscussionService.create(params: { title: "MigrateTest#{hex}", group_id: @group.id }, actor: @patrick)
     DiscussionService.update(discussion: @discussion, params: {title: "new version #{hex}"}, actor: @patrick)
 
     version = @discussion.versions.last
@@ -38,16 +38,13 @@ class MigrateUserWorkerTest < ActiveSupport::TestCase
 
     @reaction = Reaction.create!(reactable: @patrick_comment, user: @patrick, reaction: "+1")
 
-    @poll = Poll.new(
+    @poll = PollService.create(params: {
       title: "MigratePoll#{hex}",
       poll_type: 'proposal',
-      group: @group,
-      discussion: @discussion,
-      author: @patrick,
+      group_id: @group.id,
       closing_at: 3.days.from_now,
-      poll_option_names: %w[agree disagree abstain]
-    )
-    PollService.create(poll: @poll, actor: @patrick)
+      poll_option_names: %w[Agree Disagree Abstain]
+    }, actor: @patrick)
 
     jennifer_stance = Stance.find_by(poll: @poll, participant: @jennifer, latest: true)
     jennifer_stance.choice = @poll.poll_option_names.first

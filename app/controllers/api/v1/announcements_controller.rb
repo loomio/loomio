@@ -64,9 +64,9 @@ class Api::V1::AnnouncementsController < Api::V1::RestfulController
       self.collection = GroupService.invite(group: target_model, actor: current_user, params: params)
       respond_with_collection serializer: MembershipSerializer, root: :memberships
     elsif target_model.is_a?(Discussion)
-      event = DiscussionService.invite(discussion: target_model, actor: current_user, params: params)
-      self.collection = TopicReader.where(topic_id: target_model.topic&.id, user_id: event.recipient_user_ids)
-      respond_with_collection serializer: DiscussionReaderSerializer, root: :discussion_readers
+      event = TopicService.invite(topic: target_model.topic, actor: current_user, params: params)
+      self.collection = TopicReader.where(topic_id: target_model.topic_id, user_id: event.recipient_user_ids)
+      respond_with_collection serializer: TopicReaderSerializer, root: :topic_readers
     elsif target_model.is_a?(Poll)
       self.collection = PollService.invite(poll: target_model, actor: current_user, params: params)
       respond_with_collection serializer: StanceSerializer, root: :stances
@@ -95,9 +95,9 @@ class Api::V1::AnnouncementsController < Api::V1::RestfulController
 
     allow_viewed = true
 
-    if target_model.respond_to?(:discussion) &&
-       target_model.discussion.present? &&
-       target_model.discussion.polls.kept.where(anonymous: true).any?
+    if target_model.respond_to?(:topic) &&
+       target_model.topic.present? &&
+       Poll.joins(:topic).where(topics: { id: target_model.topic_id }).kept.where(anonymous: true).any?
       allow_viewed = false
     end
 

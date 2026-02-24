@@ -12,7 +12,7 @@ class TopicSerializer < ApplicationSerializer
              :topicable_type
 
   # Reader attributes
-  attributes :reader_id,
+  attributes :topic_reader_id,
              :reader_volume,
              :last_read_at,
              :dismissed_at,
@@ -48,11 +48,11 @@ class TopicSerializer < ApplicationSerializer
     @reader = TopicReader.new(user_id: scope[:current_user_id], topic_id: object.id, volume: (m && m.volume) || 'normal')
   end
 
-  def reader_id
+  def topic_reader_id
     reader&.id
   end
 
-  def include_reader_id?
+  def include_topic_reader_id?
     reader.present? && reader.persisted?
   end
 

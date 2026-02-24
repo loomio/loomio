@@ -49,6 +49,22 @@ subgroup_user:
   created_at: <%= 30.days.ago %>
   updated_at: <%= 1.day.ago %>
 
+member:
+  key: membruky
+  name: Member User
+  email: member@example.com
+  legal_accepted_at: <%= 30.days.ago %>
+  encrypted_password: $2a$12$K3E5h0VGlqmXL8HqWw7mIe3qP0XjQSfZ1jK4PqYX7Qq5N9YK6L4/K
+  time_zone: Pacific/Tarawa
+  email_verified: true
+  username: member
+  unsubscribe_token: memberuserunsubtoken1234567
+  email_api_key: memberuseremailapikey123456
+  api_key: memberuserapikey12345678901
+  secret_token: memberusersecrettoken123456
+  created_at: <%= 30.days.ago %>
+  updated_at: <%= 1.day.ago %>
+
 alien:
   key: anothuky
   name: Alien User

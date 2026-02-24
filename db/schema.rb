@@ -961,6 +961,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_19_000000) do
     t.integer "anonymous_polls_count", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "closed_polls_count", default: 0, null: false
     t.index ["group_id"], name: "index_topics_on_group_id"
     t.index ["topicable_type", "topicable_id"], name: "index_topics_on_topicable_type_and_topicable_id", unique: true
   end

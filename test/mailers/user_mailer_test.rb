@@ -62,7 +62,7 @@ class UserMailerTest < ActionMailer::TestCase
     @user.update!(email_catch_up_day: 7)
     @group.add_member!(@user)
     author = @inviter
-    discussion = DiscussionService.create(params: { title: "Catch up #{SecureRandom.hex(4)}", group_id: @group.id }, actor: author)[:discussion]
+    discussion = DiscussionService.create(params: { title: "Catch up #{SecureRandom.hex(4)}", group_id: @group.id }, actor: author)
     comment = Comment.new(parent: discussion, body: "catch up comment")
     CommentService.create(comment: comment, actor: author)
     ActionMailer::Base.deliveries.clear
