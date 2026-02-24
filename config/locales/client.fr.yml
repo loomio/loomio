@@ -1372,8 +1372,6 @@ fr:
     default_request_to_join_prompt: Merci de votre intérêt pour notre groupe. Veuillez vous présenter et expliquer pourquoi vous souhaitez nous rejoindre.
     upgrade_for_subgroups: 'Veuillez <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">mettre à niveau votre abonnement</a> pour créer un sous-groupe'
     share_this_url_with_people_who_want_to_join: Partagez cette URL avec les personnes qui souhaitent nous rejoindre
-    allow_polls_without_discussions: Autoriser les sondages sans discussion
-    allow_polls_without_discussions_help: Empêcher les gens de lancer des sondages sans d'abord démarrer une discussion.
     aria_label: Forme de groupe
     list_in_the_groups_directory: Liste dans l'annuaire des groupes ?
     list_in_directory_yes: Oui · afficher ce groupe sur la page « Trouver un groupe »
@@ -2036,13 +2034,6 @@ fr:
     closed: Clôturée
     need_vote: Besoin d’un vote
     no_polls: Pas de sondage trouvé
-    standalone_disabled_title: Les sondages autonomes sont désactivés.
-    standalone_disabled_helptext: "<p>Ce groupe exige que les sondages soient lancés au sein d'une discussion.</p><p> Les discussions permettent aux citoyens de comprendre le contexte, de poser des questions et de partager leurs points de vue avant de voter. Cela conduit à de meilleures décisions.</p><p> Commencez par lancer une discussion, puis ajoutez un sondage lorsque vous serez prêt à recueillir des votes.</p>"
-    start_discussion: Lancer une discussion
-    standalone_warning_title: Envisagez d'abord d'entamer une discussion.
-    start_poll_anyway: Lancez quand même le sondage
-    start_discussion_instead: Lancez plutôt une discussion
-    standalone_warning_helptext: "<p>Les sondages fonctionnent mieux lorsque les gens peuvent d'abord discuter du sujet.</p><p> Sans discussion, les électeurs ne peuvent ni poser de questions, ni exprimer leurs préoccupations, ni suggérer d'améliorations.</p><p> Pour une expérience optimale, commencez par une discussion, établissez une compréhension partagée, puis ajoutez un sondage lorsque vous serez prêt à recueillir les avis des participants.</p>"
   group_files_panel:
     no_files: Pas de fichiers trouvés
     filename: Nom de fichier
@@ -2777,7 +2768,6 @@ fr:
     these_are_templates_admin_hint: Les administrateurs du groupe peuvent modifier les modèles, en créer de nouveaux, les réorganiser et les afficher/masquer. Seuls les administrateurs peuvent voir les modèles masqués.
     show_hidden_templates: Afficher les modèles cachés
     show_fewer: Afficher moins
-    start_a_new_discussion: Lancer une nouvelle discussion
     start_discussion: Lancer une discussion
     start_a_direct_discussion: Entamez une discussion directe
     these_are_templates: Voici les modèles de discussion de votre groupe.

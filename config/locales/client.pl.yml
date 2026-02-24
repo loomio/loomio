@@ -1351,8 +1351,6 @@ pl:
     default_request_to_join_prompt: Dziękujemy za zainteresowanie naszą grupą. Przedstaw się i wyjaśnij, dlaczego chcesz dołączyć.
     upgrade_for_subgroups: 'Aby utworzyć podgrupę, <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">zaktualizuj swoją subskrypcję</a>'
     share_this_url_with_people_who_want_to_join: Udostępnij ten adres URL osobom, które chcą dołączyć
-    allow_polls_without_discussions: Zezwalaj na ankiety bez dyskusji
-    allow_polls_without_discussions_help: Zapobiegaj rozpoczynaniu ankiet bez wcześniejszego rozpoczęcia dyskusji.
     aria_label: Formularz grupowy
     list_in_the_groups_directory: Umieścić w katalogu grup?
     list_in_directory_yes: Tak · pokaż tę grupę na stronie „Znajdź grupę”
@@ -2017,13 +2015,6 @@ pl:
     closed: Zamknięte
     need_vote: Potrzebujesz głosu
     no_polls: Nie znaleziono ankiet
-    standalone_disabled_title: Ankiety samodzielne są wyłączone
-    standalone_disabled_helptext: "<p>W przypadku tej grupy ankiety należy rozpoczynać w ramach dyskusji.</p><p> Dyskusje pomagają ludziom zrozumieć kontekst, zadawać pytania i dzielić się swoimi perspektywami przed głosowaniem. To prowadzi do podejmowania lepszych decyzji.</p><p> Najpierw rozpocznij dyskusję, a gdy będziesz gotowy zbierać głosy, dodaj ankietę.</p>"
-    start_discussion: Rozpocznij dyskusję
-    standalone_warning_title: Rozważ rozpoczęcie dyskusji na początek
-    start_poll_anyway: Rozpocznij ankietę mimo wszystko
-    start_discussion_instead: Zamiast tego rozpocznij dyskusję
-    standalone_warning_helptext: "<p>Ankiety działają najlepiej, gdy ludzie mogą najpierw przedyskutować dany temat.</p><p> Bez dyskusji wyborcy nie mogą zadawać pytań, zgłaszać obaw ani proponować ulepszeń.</p><p> Aby uzyskać najlepsze rezultaty, zacznij od dyskusji, zbuduj wspólne zrozumienie, a następnie dodaj ankietę, gdy będziesz gotowy poznać opinie uczestników.</p>"
   group_files_panel:
     no_files: Nie znaleziono plików
     filename: 'Nazwa pliku '
@@ -2760,7 +2751,6 @@ pl:
     these_are_templates_admin_hint: Administratorzy grup mogą edytować szablony, tworzyć nowe szablony, zmieniać ich kolejność oraz ukrywać/pokazywać. Tylko administratorzy widzą ukryte szablony.
     show_hidden_templates: Pokaż ukryte szablony
     show_fewer: Pokaż mniej
-    start_a_new_discussion: Rozpocznij nową dyskusję
     start_discussion: Rozpocznij dyskusję
     start_a_direct_discussion: Rozpocznij bezpośrednią dyskusję
     these_are_templates: Oto szablony dyskusji w Twojej grupie.

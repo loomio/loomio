@@ -842,7 +842,6 @@ zh_CN:
     these_are_templates_admin_hint: 群组管理员可以编辑模板、创建新模板、重新排列模板以及隐藏/显示模板。只有管理员才能看到隐藏的模板。
     show_hidden_templates: 显示隐藏模板
     show_fewer: 显示更少
-    start_a_new_discussion: 发起新的讨论
     start_discussion: 发起讨论
     start_a_direct_discussion: 发起直接讨论
     these_are_templates: 这些是你们小组的讨论模板。
@@ -1297,8 +1296,6 @@ zh_CN:
     question: 您确定要停用此群组吗？
     submit: 是的，停用此群组
   group_form:
-    allow_polls_without_discussions: 允许不经讨论的投票
-    allow_polls_without_discussions_help: 不要阻止人们在没有先发起讨论的情况下发起投票。
     share_this_url_with_people_who_want_to_join: 将此网址分享给想要加入的人
     request_to_join_prompt: 请求加入提示
     default_request_to_join_prompt: 感谢您对我们子群组的关注。请您自我介绍一下，并说明您应用加入的原因。
@@ -2055,13 +2052,6 @@ zh_CN:
     closed: 关闭
     need_vote: 需要投票
     no_polls: 未找到民意调查
-    standalone_disabled_title: 独立投票功能已禁用
-    standalone_disabled_helptext: "<p>本群组要求投票必须在讨论中发起。</p><p>讨论有助于人们在投票前了解背景、提出问题并分享观点，从而做出更明智的决策。</p><p>先发起讨论，准备好收集投票后再添加投票。</p>"
-    start_discussion: 发起讨论
-    standalone_warning_title: 不妨先发起讨论。
-    start_poll_anyway: 无论如何，开始投票
-    start_discussion_instead: 不如发起一场讨论吧。
-    standalone_warning_helptext: "<p>民意调查在人们能够先讨论相关话题的情况下效果最佳。</p><p>如果没有讨论，选民就无法提出问题、表达担忧或提出改进建议。</p><p>为了获得最佳体验，先进行讨论，建立共识，然后在准备好了解人们的立场时再添加投票。</p>"
   group_files_panel:
     no_files: 未找到文件
     filename: 文件名

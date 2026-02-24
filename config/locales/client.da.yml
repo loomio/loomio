@@ -1343,8 +1343,6 @@ da:
     default_request_to_join_prompt: Tak for din interesse i vores gruppe. Præsentér dig selv og forklar, hvorfor du anmoder om at deltage.
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Opgrader venligst dit abonnement</a> for at oprette en undergruppe'
     share_this_url_with_people_who_want_to_join: Del denne URL med personer, der ønsker at deltage
-    allow_polls_without_discussions: Tillad afstemninger uden diskussion
-    allow_polls_without_discussions_help: Forhindre folk i at starte afstemninger uden først at starte en diskussion.
     aria_label: Gruppeformular
     list_in_the_groups_directory: Liste i gruppekataloget?
     list_in_directory_yes: Ja · vis denne gruppe på siden "find en gruppe"
@@ -1992,13 +1990,6 @@ da:
     closed: Lukket
     need_vote: Skal stemme
     no_polls: Ingen meningsmålinger fundet
-    standalone_disabled_title: Selvstændige afstemninger er deaktiveret
-    standalone_disabled_helptext: "<p>Denne gruppe kræver, at afstemninger startes i en diskussion.</p><p> Diskussioner hjælper folk med at forstå konteksten, stille spørgsmål og dele perspektiver, inden de stemmer. Dette fører til bedre beslutninger.</p><p> Start først en diskussion, og tilføj derefter en afstemning, når du er klar til at indsamle stemmer.</p>"
-    start_discussion: Start en diskussion
-    standalone_warning_title: Overvej at starte en diskussion først
-    start_poll_anyway: Start afstemning alligevel
-    start_discussion_instead: Start en diskussion i stedet
-    standalone_warning_helptext: "<p>Afstemninger fungerer bedst, når folk kan diskutere emnet først.</p><p> Uden en diskussion kan vælgerne ikke stille spørgsmål, rejse bekymringer eller foreslå forbedringer.</p><p> For at opnå den bedste oplevelse, start med en diskussion, opbyg fælles forståelse, og tilføj derefter en afstemning, når du er klar til at indsamle folks holdninger.</p>"
   group_files_panel:
     no_files: Ingen filer fundet
     filename: Filnavn
@@ -2731,7 +2722,6 @@ da:
     these_are_templates_admin_hint: Gruppeadministratorer kan redigere skabeloner, oprette nye skabeloner, omarrangere og skjule/vise skabeloner. Kun administratorer kan se de skjulte skabeloner.
     show_hidden_templates: Vis skjulte skabeloner
     show_fewer: Vis færre
-    start_a_new_discussion: Start en ny diskussion
     start_discussion: Start en diskussion
     start_a_direct_discussion: Start en direkte diskussion
     these_are_templates: Dette er diskussionsskabelonerne i jeres gruppe.

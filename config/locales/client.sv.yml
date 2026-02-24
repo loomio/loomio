@@ -1343,8 +1343,6 @@ sv:
     default_request_to_join_prompt: Tack för ditt intresse för vår grupp. Presentera dig själv och förklara varför du vill vara med.
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Uppgradera din prenumeration</a> för att skapa en undergrupp'
     share_this_url_with_people_who_want_to_join: Dela den här webbadressen med personer som vill gå med
-    allow_polls_without_discussions: Tillåt omröstningar utan diskussion
-    allow_polls_without_discussions_help: Tillåt fristående omröstningar (rekommenderas inte). Utan en diskussion kan man inte ställa frågor eller skapa enighet effektivt.
     aria_label: Gruppformulär
     list_in_the_groups_directory: Lista i gruppkatalogen?
     list_in_directory_yes: Ja · visa den här gruppen på sidan "hitta en grupp"
@@ -1992,13 +1990,6 @@ sv:
     closed: Stängd
     need_vote: Behöver rösta
     no_polls: Inga omröstningar hittades
-    standalone_disabled_title: Fristående omröstningar är inaktiverade
-    standalone_disabled_helptext: "<p>Den här gruppen kräver att omröstningar startas inom en diskussion.</p><p> Diskussioner hjälper människor att förstå sammanhanget, ställa frågor och dela perspektiv innan de röstar. Detta leder till bättre beslut.</p><p> Starta en diskussion först, lägg sedan till en omröstning när du är redo att samla röster.</p>"
-    start_discussion: Starta en diskussion
-    standalone_warning_title: Överväg att starta en diskussion först
-    start_poll_anyway: Starta omröstningen ändå
-    start_discussion_instead: Börja en diskussion istället
-    standalone_warning_helptext: "<p>Omröstningar fungerar bäst när folk kan diskutera ämnet först.</p><p> Utan en diskussion kan väljarna inte ställa frågor, ta upp farhågor eller föreslå förbättringar.</p><p> För bästa möjliga upplevelse, börja med en diskussion, bygg upp gemensam förståelse och lägg sedan till en omröstning när du är redo att samla in folks åsikter.</p>"
   group_files_panel:
     no_files: Inga filer funna
     filename: Filnamn
@@ -2731,7 +2722,6 @@ sv:
     these_are_templates_admin_hint: Gruppadministratörer kan redigera mallar, skapa nya mallar, ordna om och dölja/visa mallar. Endast administratörer kan se de dolda mallarna.
     show_hidden_templates: Visa dolda mallar
     show_fewer: Visa färre
-    start_a_new_discussion: Starta en ny diskussion
     start_discussion: Starta en diskussion
     start_a_direct_discussion: Starta en direkt diskussion
     these_are_templates: Det här är diskussionsmallarna i er grupp.

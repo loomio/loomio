@@ -1354,8 +1354,6 @@ zh_TW:
     upgrade_for_subgroups: '請<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">升級您的訂閱</a>以建立子群組'
     group_handle_placeholder: 您的群組網址與電子郵件：%{host}/%{handle}、%{handle}{'@'}%{host}
     share_this_url_with_people_who_want_to_join: 與想要加入的人分享此 URL
-    allow_polls_without_discussions: 允許無討論投票
-    allow_polls_without_discussions_help: 防止人們在未先開始討論的情況下發起投票。
     aria_label: 小組形式
     list_in_the_groups_directory: 是否已列入群組目錄？
     list_in_directory_yes: 是的 · 在「尋找群組」頁面上顯示此群組
@@ -2020,13 +2018,6 @@ zh_TW:
     closed: 封閉
     need_vote: 需要投票
     no_polls: 找不到投票
-    standalone_disabled_title: 獨立投票功能已停用
-    standalone_disabled_helptext: "<p>本群組要求投票必須在討論中發起。</p><p>討論有助於人們在投票前了解背景、提出問題並分享觀點，從而做出更明智的決策。</p><p>先發起討論，準備收集投票後再加入投票。</p>"
-    start_discussion: 發起討論
-    standalone_warning_title: 不妨先發起討論。
-    start_poll_anyway: 無論如何，開始投票
-    start_discussion_instead: 不如發起一場討論。
-    standalone_warning_helptext: "<p>民意調查在人們能夠先討論相關話題的情況下效果最佳。</p><p>如果沒有討論，選民就無法提出問題、表達擔憂或提出改進建議。</p><p>為了獲得最佳體驗，先進行討論，建立共識，然後在準備好了解人們的立場時再添加投票。</p>"
   group_files_panel:
     no_files: 找不到檔案
     filename: 檔案名稱
@@ -2761,7 +2752,6 @@ zh_TW:
     these_are_templates_admin_hint: 群組管理員可以編輯範本、建立新範本、重新排列範本以及隱藏/顯示範本。只有管理員才能看到隱藏的模板。
     show_hidden_templates: 顯示隱藏模板
     show_fewer: 顯示更少
-    start_a_new_discussion: 發起新的討論
     start_discussion: 發起討論
     start_a_direct_discussion: 發起直接討論
     these_are_templates: 這些是你們小組的討論範本。

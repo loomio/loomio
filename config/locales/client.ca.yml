@@ -1351,8 +1351,6 @@ ca:
     default_request_to_join_prompt: Gràcies pel vostre interès en el nostre grup. Si us plau, presenteu-vos i expliqueu per què demaneu unir-vos.
     upgrade_for_subgroups: 'Si us plau, <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">actualitza la teva subscripció</a> per crear un subgrup'
     share_this_url_with_people_who_want_to_join: Comparteix aquesta URL amb les persones que vulguin unir-s'hi
-    allow_polls_without_discussions: Permetre enquestes sense discussió
-    allow_polls_without_discussions_help: Impedeix que la gent iniciï enquestes sense iniciar primer una discussió.
     aria_label: Formulari de grup
     list_in_the_groups_directory: Llista al directori de grups?
     list_in_directory_yes: Sí · mostra aquest grup a la pàgina "cerca un grup"
@@ -2017,13 +2015,6 @@ ca:
     closed: Tancat
     need_vote: Cal Votar
     no_polls: No s'ha trobat cap enquesta
-    standalone_disabled_title: Les enquestes independents estan desactivades
-    standalone_disabled_helptext: "<p>Aquest grup requereix que les enquestes s'iniciïn dins d'una discussió.</p><p> Els debats ajuden a la gent a entendre el context, fer preguntes i compartir punts de vista abans de votar. Això porta a millors decisions.</p><p> Primer comença una discussió i després afegeix una enquesta quan estiguis a punt per recollir vots.</p>"
-    start_discussion: Inicia una discussió
-    standalone_warning_title: Considera iniciar primer una discussió
-    start_poll_anyway: Inicia l'enquesta de totes maneres
-    start_discussion_instead: Inicia una discussió en comptes d'això
-    standalone_warning_helptext: "<p>Les enquestes funcionen millor quan la gent pot parlar primer del tema.</p><p> Sense un debat, els votants no poden fer preguntes, plantejar preocupacions ni suggerir millores.</p><p> Per a una experiència òptima, comença amb una discussió, crea una comprensió compartida i, a continuació, afegeix una enquesta quan estiguis a punt per captar les opinions de la gent.</p>"
   group_files_panel:
     no_files: No s'ha trobat cap fitxer
     filename: Nom del fitxer
@@ -2760,7 +2751,6 @@ ca:
     these_are_templates_admin_hint: Els administradors de grup poden editar plantilles, crear-ne de noves, reorganitzar-les i amagar/mostrar plantilles. Només els administradors poden veure les plantilles ocultes.
     show_hidden_templates: Mostra les plantilles ocultes
     show_fewer: Mostra menys
-    start_a_new_discussion: Inicia una nova discussió
     start_discussion: Inicia una discussió
     start_a_direct_discussion: Inicia una discussió directa
     these_are_templates: Aquestes són les plantilles de discussió del vostre grup.

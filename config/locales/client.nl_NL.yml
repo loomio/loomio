@@ -1351,8 +1351,6 @@ nl_NL:
     default_request_to_join_prompt: Bedankt voor uw interesse in onze groep. Stel uzelf voor en leg uit waarom u lid wilt worden.
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Upgrade uw abonnement</a> om een subgroep te creëren'
     share_this_url_with_people_who_want_to_join: Deel deze URL met mensen die mee willen doen
-    allow_polls_without_discussions: Peilingen zonder discussie toestaan
-    allow_polls_without_discussions_help: Voorkom dat mensen peilingen starten zonder eerst een discussie te beginnen.
     aria_label: Groepsvorm
     list_in_the_groups_directory: Lijst in de groepsdirectory?
     list_in_directory_yes: Ja · toon deze groep op de pagina "zoek een groep"
@@ -2017,13 +2015,6 @@ nl_NL:
     closed: Gesloten
     need_vote: Stem nodig
     no_polls: Geen peilingen gevonden
-    standalone_disabled_title: Zelfstandige peilingen zijn uitgeschakeld
-    standalone_disabled_helptext: "<p>Voor deze groep is het nodig dat er peilingen binnen een discussie worden gestart.</p><p> Discussies helpen mensen de context te begrijpen, vragen te stellen en perspectieven te delen voordat ze stemmen. Dit leidt tot betere beslissingen.</p><p> Begin eerst een discussie en voeg vervolgens een poll toe als u klaar bent om stemmen te verzamelen.</p>"
-    start_discussion: Start een discussie
-    standalone_warning_title: Overweeg om eerst een discussie te starten
-    start_poll_anyway: Toch een poll starten
-    start_discussion_instead: Begin in plaats daarvan een discussie
-    standalone_warning_helptext: "<p>Peilingen werken het beste als mensen eerst over het onderwerp kunnen discussiëren.</p><p> Zonder discussie kunnen kiezers geen vragen stellen, hun zorgen uiten of verbeteringen voorstellen.</p><p> Voor de beste ervaring begin je met een discussie, creëer je wederzijds begrip en voeg je vervolgens een enquête toe wanneer je klaar bent om de standpunten van mensen te peilen.</p>"
   group_files_panel:
     no_files: Geen bestanden gevonden
     filename: Bestandsnaam
@@ -2760,7 +2751,6 @@ nl_NL:
     these_are_templates_admin_hint: Groepsbeheerders kunnen sjablonen bewerken, nieuwe sjablonen maken, herschikken en verbergen/weergeven. Alleen beheerders kunnen de verborgen sjablonen zien.
     show_hidden_templates: Verborgen sjablonen weergeven
     show_fewer: Minder weergeven
-    start_a_new_discussion: Start een nieuwe discussie
     start_discussion: Start een discussie
     start_a_direct_discussion: Start een direct gesprek
     these_are_templates: Dit zijn de discussiesjablonen in jullie groep.

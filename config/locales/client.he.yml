@@ -1347,8 +1347,6 @@ he:
     default_request_to_join_prompt: תודה על ההתעניינות בקבוצה שלנו. אנא הצג את עצמך והסבר מדוע אתה מבקש להצטרף.
     upgrade_for_subgroups: 'אנא <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">שדרג את המנוי שלך</a> כדי ליצור תת-קבוצה'
     share_this_url_with_people_who_want_to_join: שתף כתובת URL זו עם אנשים שרוצים להצטרף
-    allow_polls_without_discussions: אפשר סקרים ללא דיון
-    allow_polls_without_discussions_help: מנע מאנשים להתחיל סקרים מבלי להתחיל דיון קודם.
     aria_label: טופס קבוצה
     list_in_the_groups_directory: רשימה בספריית הקבוצות?
     list_in_directory_yes: כן · הצג קבוצה זו בדף "מצא קבוצה"
@@ -2011,13 +2009,6 @@ he:
     closed: סגור
     need_vote: צריך הצבעה
     no_polls: לא נמצאו סקרים
-    standalone_disabled_title: סקרים עצמאיים מושבתים
-    standalone_disabled_helptext: <p style=";text-align:right;direction:rtl">קבוצה זו דורשת פתיחת סקרים בתוך דיון.</p><p style=";text-align:right;direction:rtl"> דיונים עוזרים לאנשים להבין את ההקשר, לשאול שאלות ולשתף נקודות מבט לפני ההצבעה. זה מוביל להחלטות טובות יותר.</p><p style=";text-align:right;direction:rtl"> התחל דיון קודם, ולאחר מכן הוסף סקר כשתהיה מוכן לאסוף קולות.</p>
-    start_discussion: התחל דיון
-    standalone_warning_title: שקול להתחיל דיון קודם כל
-    start_poll_anyway: התחל את הסקר בכל זאת
-    start_discussion_instead: תתחיל דיון במקום
-    standalone_warning_helptext: <p style=";text-align:right;direction:rtl">סקרים עובדים בצורה הטובה ביותר כאשר אנשים יכולים לדון בנושא קודם.</p><p style=";text-align:right;direction:rtl"> ללא דיון, מצביעים אינם יכולים לשאול שאלות, להעלות חששות או להציע שיפורים.</p><p style=";text-align:right;direction:rtl"> לקבלת החוויה הטובה ביותר, התחילו בדיון, בנו הבנה משותפת, ולאחר מכן הוסיפו סקר כשתהיו מוכנים ללכוד את עמדותיהם של אנשים.</p>
   group_files_panel:
     no_files: לא נמצאו קבצים
     filename: שם קובץ
@@ -2750,7 +2741,6 @@ he:
     these_are_templates_admin_hint: מנהלי קבוצות יכולים לערוך תבניות, ליצור תבניות חדשות, לסדר מחדש ולהסתיר/לבטל הסתרה של תבניות. רק מנהלים יכולים לראות את התבניות המוסתרות.
     show_hidden_templates: הצג תבניות מוסתרות
     show_fewer: הצג פחות
-    start_a_new_discussion: התחל דיון חדש
     start_discussion: התחל דיון
     start_a_direct_discussion: התחל דיון ישיר
     these_are_templates: אלו הן תבניות הדיון בקבוצה שלכם.

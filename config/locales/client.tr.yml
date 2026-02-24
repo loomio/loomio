@@ -1343,8 +1343,6 @@ tr:
     default_request_to_join_prompt: Grubumuza olan ilginiz için teşekkür ederiz. Lütfen kendinizi tanıtın ve katılma isteğinizin nedenini açıklayın.
     upgrade_for_subgroups: 'Bir alt grup oluşturmak için lütfen <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">aboneliğinizi yükseltin</a>'
     share_this_url_with_people_who_want_to_join: Katılmak isteyen kişilerle bu URL'yi paylaşın
-    allow_polls_without_discussions: Tartışma olmadan anketlere izin ver
-    allow_polls_without_discussions_help: İnsanların önce bir tartışma başlatmadan anket başlatmasını engelleyin.
     aria_label: Grup formu
     list_in_the_groups_directory: Grup dizininde listelensin mi?
     list_in_directory_yes: Evet · Bu grubu "grup bul" sayfasında göster
@@ -1992,13 +1990,6 @@ tr:
     closed: Kapalı
     need_vote: Oy Gerekiyor
     no_polls: Anket bulunamadı
-    standalone_disabled_title: Bağımsız anketler devre dışı bırakıldı
-    standalone_disabled_helptext: "<p>Bu grup, bir tartışma içerisinde anketlerin başlatılmasını gerektirir.</p><p> Tartışmalar, insanların oy vermeden önce bağlamı anlamalarına, soru sormalarına ve bakış açılarını paylaşmalarına yardımcı olur. Bu da daha iyi kararlara yol açar.</p><p> Önce bir tartışma başlatın, ardından oy toplamaya hazır olduğunuzda bir anket ekleyin.</p>"
-    start_discussion: Bir tartışma başlatın
-    standalone_warning_title: Önce bir tartışma başlatmayı düşünün
-    start_poll_anyway: Anketi yine de başlat
-    start_discussion_instead: Bunun yerine bir tartışma başlatın
-    standalone_warning_helptext: "<p>Anketler, insanların önce konu hakkında tartışabilmesi durumunda en iyi sonucu verir.</p><p> Tartışma olmadan seçmenler soru soramaz, endişelerini dile getiremez veya iyileştirme önerilerinde bulunamaz.</p><p> En iyi deneyim için, bir tartışmayla başlayın, ortak bir anlayış oluşturun ve ardından insanların görüşlerini almak için hazır olduğunuzda bir anket ekleyin.</p>"
   group_files_panel:
     no_files: Hiçbir dosya bulunamadı
     filename: Dosya adı
@@ -2731,7 +2722,6 @@ tr:
     these_are_templates_admin_hint: Grup yöneticileri şablonları düzenleyebilir, yeni şablonlar oluşturabilir, şablonları yeniden sıralayabilir ve gizleyip/gösterebilir. Gizli şablonları yalnızca yöneticiler görebilir.
     show_hidden_templates: Gizli şablonları göster
     show_fewer: Daha az göster
-    start_a_new_discussion: Yeni bir tartışma başlatın
     start_discussion: Bir tartışma başlatın
     start_a_direct_discussion: Doğrudan bir tartışma başlatın
     these_are_templates: Bunlar grubunuzdaki tartışma şablonlarıdır.

@@ -1372,8 +1372,6 @@ pt_BR:
     default_request_to_join_prompt: Obrigado pelo seu interesse em nosso grupo. Por favor, apresente-se e explique por que você está solicitando para participar.
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Atualize sua assinatura</a> para criar um subgrupo'
     share_this_url_with_people_who_want_to_join: Compartilhe esta URL com pessoas que desejam participar
-    allow_polls_without_discussions: Permitir enquetes sem discussão
-    allow_polls_without_discussions_help: Impedir que as pessoas iniciem enquetes sem primeiro iniciar uma discussão.
     aria_label: Formulário de grupo
     list_in_the_groups_directory: Listar no diretório de grupos?
     list_in_directory_yes: Sim · Mostrar este grupo na página "Encontrar um grupo"
@@ -2038,13 +2036,6 @@ pt_BR:
     closed: Encerrado
     need_vote: Precisa de votação
     no_polls: Nenhuma consulta encontrada
-    standalone_disabled_title: Enquetes independentes estão desativadas.
-    standalone_disabled_helptext: "<p>Este grupo exige que as enquetes sejam iniciadas dentro de uma discussão.</p><p> As discussões ajudam as pessoas a entender o contexto, fazer perguntas e compartilhar perspectivas antes da votação. Isso leva a decisões melhores.</p><p> Primeiro inicie uma discussão e, em seguida, adicione uma enquete quando estiver pronto para coletar votos.</p>"
-    start_discussion: Inicie uma discussão
-    standalone_warning_title: Considere iniciar uma discussão primeiro.
-    start_poll_anyway: Comece a enquete de qualquer maneira
-    start_discussion_instead: Inicie uma discussão.
-    standalone_warning_helptext: "<p>As pesquisas funcionam melhor quando as pessoas podem discutir o assunto primeiro.</p><p> Sem debate, os eleitores não podem fazer perguntas, expressar preocupações ou sugerir melhorias.</p><p> Para uma melhor experiência, comece com uma discussão, construa um entendimento comum e, em seguida, adicione uma enquete quando estiver pronto para coletar as opiniões das pessoas.</p>"
   group_files_panel:
     no_files: Nenhum arquivo encontrado
     filename: Nome do arquivo
@@ -2781,7 +2772,6 @@ pt_BR:
     these_are_templates_admin_hint: Os administradores do grupo podem editar modelos, criar novos modelos, reorganizar e ocultar/exibir modelos. Somente os administradores podem ver os modelos ocultos.
     show_hidden_templates: Mostrar modelos ocultos
     show_fewer: Mostrar menos
-    start_a_new_discussion: Iniciar uma nova discussão
     start_discussion: Inicie uma discussão
     start_a_direct_discussion: Inicie uma conversa direta
     these_are_templates: Esses são os modelos de discussão do seu grupo.
