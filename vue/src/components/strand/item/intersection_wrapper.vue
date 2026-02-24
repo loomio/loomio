@@ -56,7 +56,7 @@ export default {
 
 <template lang="pug">
 div.strand-item__intersection-container(:class="classes(obj.event)" v-intersect="{handler: (isVisible) => loader.setVisible(isVisible, obj.event)}")
-  //p {{obj.event.sequenceId}} {{obj.event.positionKey}}
+  //p id{{obj.event.id}} t{{obj.event.topicId}} s{{obj.event.sequenceId}} p{{obj.event.positionKey}} d{{obj.event.depth}} p{{obj.event.parentId}}
   strand-item-removed(v-if="obj.eventable && obj.eventable.discardedAt" :event="obj.event" :eventable="obj.eventable")
   component(v-else :is="componentForKind(obj.event.kind)" :event='obj.event' :eventable="obj.eventable" :focused="focused" :unread="obj.isUnread")
 

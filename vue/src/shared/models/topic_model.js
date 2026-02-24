@@ -42,6 +42,7 @@ export default class TopicModel extends BaseModel {
 
   relationships() {
     this.belongsToPolymorphic('topicable');
+    this.belongsTo('group');
   }
 
   discussion() {

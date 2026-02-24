@@ -68,6 +68,10 @@ export default class StanceModel extends BaseModel {
     return this.poll().memberIds();
   }
 
+  topic() {
+    return this.poll().topic();
+  }
+
   group() {
     return this.poll().group();
   }

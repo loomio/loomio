@@ -103,7 +103,7 @@ class Stance < ApplicationRecord
   validate :valid_none_of_the_above
   validate :poll_options_must_match_stance_poll
 
-  %w[group mailer group_id discussion_id discussion members voters tags topic].each do |message|
+  %w[group mailer group_id discussion_id discussion members voters tags topic topic_id].each do |message|
     delegate(message, to: :poll)
   end
 
@@ -170,16 +170,12 @@ class Stance < ApplicationRecord
   end
 
   def add_to_thread?
-    poll.topic &&
     poll.hide_results != 'until_closed' &&
     !body_is_blank? &&
     !Event.where(eventable: self,
-                 topic_id: poll.topic.id,
+                 topic_id: poll.topic_id,
                  kind: ['stance_created', 'stance_updated']).exists?
   end
-
-  # Keep old name as alias for compatibility
-  alias_method :add_to_discussion?, :add_to_thread?
 
   def body
     reason

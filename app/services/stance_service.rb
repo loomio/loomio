@@ -33,7 +33,7 @@ class StanceService
 
     event = Event.where(eventable: stance, topic_id: stance.poll.topic&.id).order('id desc').first
 
-    if is_update && stance.option_scores != new_stance.build_option_scores && (stance.topic_event.child_count > 0 ||  stance.updated_at < 15.minutes.ago)
+    if is_update && stance.option_scores != new_stance.build_option_scores && (Comment.kept.where(parent: stance).exists? ||  stance.updated_at < 15.minutes.ago)
       # they've changed their position, and someone has replied to them or it's been a while and people will have seeen their position
 
       new_stance.cast_at = Time.zone.now

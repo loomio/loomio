@@ -56,13 +56,11 @@ export default class CommentModel extends BaseModel {
   }
 
   group() {
-    const topic = this.topic();
-    return topic ? topic.group() : null;
+    return this.topic().group()
   }
 
   memberIds() {
-    const topicable = this.topic()?.topicable();
-    return topicable && topicable.memberIds ? topicable.memberIds() : [];
+    return this.topic().topicable().memberIds()
   }
 
   participantIds() {
@@ -76,10 +74,6 @@ export default class CommentModel extends BaseModel {
 
   isBlank() {
     return (this.body === '') || (this.body === null) || (this.body === '<p></p>');
-  }
-
-  parent() {
-    return this.parentId && Records[BaseModel.eventTypeMap[this.parentType]].find(this.parentId);
   }
 
   reactors() {
