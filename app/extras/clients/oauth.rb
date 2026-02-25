@@ -10,10 +10,11 @@ class Clients::Oauth < Clients::Base
   def fetch_identity_params
     data = get(ENV.fetch('OAUTH_PROFILE_URL')).json
     {
-      uid: data.dig(ENV.fetch('OAUTH_ATTR_UID')),
-      name: data.dig(ENV.fetch('OAUTH_ATTR_NAME')),
-      email: data.dig(ENV.fetch('OAUTH_ATTR_EMAIL'))
-    }
+      uid: data.dig(ENV.fetch('OAUTH_ATTR_UID', 'sub')),
+      name: data.dig(ENV.fetch('OAUTH_ATTR_NAME', 'name')),
+      email: data.dig(ENV.fetch('OAUTH_ATTR_EMAIL', 'email')),
+      logo: data.dig(ENV.fetch('OAUTH_ATTR_PICTURE', 'picture'))
+    }.compact
   end
 
   private
