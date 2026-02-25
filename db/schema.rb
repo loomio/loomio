@@ -11,6 +11,8 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[8.0].define(version: 2026_02_19_000000) do
+  create_schema "pghero"
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -61,12 +63,14 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_19_000000) do
     t.string "checksum"
     t.datetime "created_at", precision: nil, null: false
     t.string "service_name", null: false
+    t.index ["id"], name: "active_storage_blobs_idx", unique: true
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
   create_table "active_storage_variant_records", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
+    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
   create_table "attachments", id: :serial, force: :cascade do |t|
@@ -253,7 +257,6 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_19_000000) do
     t.string "key", limit: 255
     t.string "iframe_src", limit: 255
     t.integer "versions_count", default: 0
-    t.integer "closed_polls_count", default: 0, null: false
     t.integer "importance", default: 0, null: false
     t.string "description_format", limit: 10, default: "md", null: false
     t.jsonb "attachments", default: [], null: false
@@ -304,6 +307,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_19_000000) do
     t.integer "eventable_id"
     t.string "eventable_type", limit: 255
     t.integer "user_id"
+    t.integer "topic_id"
     t.integer "sequence_id"
     t.boolean "announcement", default: false, null: false
     t.jsonb "custom_fields", default: {}, null: false
@@ -315,7 +319,6 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_19_000000) do
     t.string "position_key"
     t.integer "descendant_count", default: 0, null: false
     t.integer "eventable_version_id"
-    t.integer "topic_id"
     t.index ["created_at"], name: "index_events_on_created_at"
     t.index ["eventable_id", "kind"], name: "index_events_on_eventable_id_and_kind"
     t.index ["eventable_type", "eventable_id"], name: "index_events_on_eventable_type_and_eventable_id"
@@ -434,7 +437,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_19_000000) do
     t.string "request_to_join_prompt"
     t.integer "delegates_count", default: 0, null: false
     t.string "category"
-    t.boolean "can_start_polls_without_discussion", default: false, null: false
+    t.boolean "can_start_polls_without_discussion", default: true, null: false
     t.boolean "members_can_create_templates", default: false, null: false
     t.index ["archived_at"], name: "index_groups_on_archived_at", where: "(archived_at IS NULL)"
     t.index ["created_at"], name: "index_groups_on_created_at"
@@ -712,6 +715,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_19_000000) do
     t.datetime "closed_at", precision: nil
     t.datetime "created_at", precision: nil
     t.datetime "updated_at", precision: nil
+    t.integer "topic_id"
     t.string "key", null: false
     t.string "poll_type", null: false
     t.jsonb "stance_data", default: {}
@@ -759,9 +763,9 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_19_000000) do
     t.datetime "opening_at"
     t.datetime "opened_at"
     t.boolean "notify_on_open", default: true, null: false
-    t.integer "topic_id"
     t.index ["author_id"], name: "index_polls_on_author_id"
     t.index ["closed_at", "closing_at"], name: "index_polls_on_closed_at_and_closing_at"
+    t.index ["closed_at", "topic_id"], name: "index_polls_on_closed_at_and_topic_id"
     t.index ["key"], name: "index_polls_on_key", unique: true
     t.index ["tags"], name: "index_polls_on_tags", using: :gin
     t.index ["topic_id"], name: "index_polls_on_topic_id"
@@ -923,6 +927,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_19_000000) do
     t.integer "user_id", null: false
     t.datetime "created_at", precision: nil
     t.datetime "updated_at", precision: nil
+    t.integer "topic_id", null: false
     t.datetime "last_read_at", precision: nil
     t.integer "last_read_sequence_id", default: 0, null: false
     t.integer "volume", default: 2, null: false
@@ -936,10 +941,9 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_19_000000) do
     t.datetime "accepted_at", precision: nil
     t.integer "revoker_id"
     t.boolean "guest", default: false, null: false
-    t.integer "topic_id"
     t.index ["guest"], name: "discussion_readers_guests", where: "(guest = true)"
     t.index ["inviter_id"], name: "inviter_id_not_null", where: "(inviter_id IS NOT NULL)"
-    t.index ["token"], name: "index_topic_readers_on_token", unique: true
+    t.index ["token"], name: "index_discussion_readers_on_token", unique: true
     t.index ["topic_id", "user_id"], name: "index_topic_readers_on_topic_id_and_user_id", unique: true
   end
 
@@ -958,10 +962,10 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_19_000000) do
     t.datetime "last_activity_at", precision: nil
     t.integer "seen_by_count", default: 0, null: false
     t.integer "members_count"
+    t.integer "closed_polls_count", default: 0, null: false
     t.integer "anonymous_polls_count", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "closed_polls_count", default: 0, null: false
     t.index ["group_id"], name: "index_topics_on_group_id"
     t.index ["topicable_type", "topicable_id"], name: "index_topics_on_topicable_type_and_topicable_id", unique: true
   end
@@ -1029,10 +1033,10 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_19_000000) do
     t.datetime "last_seen_at", precision: nil
     t.datetime "legal_accepted_at", precision: nil
     t.boolean "email_newsletter", default: false, null: false
-    t.string "short_bio_format", limit: 10, default: "md", null: false
     t.integer "failed_attempts", default: 0, null: false
     t.string "unlock_token"
     t.datetime "locked_at", precision: nil
+    t.string "short_bio_format", limit: 10, default: "md", null: false
     t.jsonb "attachments", default: [], null: false
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
@@ -1042,8 +1046,8 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_19_000000) do
     t.jsonb "link_previews", default: [], null: false
     t.integer "email_catch_up_day"
     t.string "date_time_pref"
-    t.integer "deactivator_id"
     t.string "api_key"
+    t.integer "deactivator_id"
     t.boolean "autodetect_time_zone", default: true, null: false
     t.string "email_sha256"
     t.integer "complaints_count", default: 0, null: false

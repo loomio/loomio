@@ -1,6 +1,6 @@
 class CreateTopicsAndRefactorThreading < ActiveRecord::Migration[7.0]
   def up
-    # 1. Create topics table with all columns
+    # 1. Create topics table
     create_table :topics do |t|
       t.string  :topicable_type, null: false
       t.integer :topicable_id,   null: false
@@ -23,83 +23,72 @@ class CreateTopicsAndRefactorThreading < ActiveRecord::Migration[7.0]
     add_index :topics, [:topicable_type, :topicable_id], unique: true
     add_index :topics, :group_id
 
-    # 2. Backfill topics from discussions
+    # 2. Create topics from discussions using topic.id = discussion.id
+    #    This means existing discussion_id columns already point to the right topic.
     execute <<~SQL
-      INSERT INTO topics (topicable_type, topicable_id, group_id, items_count, ranges_string,
+      INSERT INTO topics (id, topicable_type, topicable_id, group_id, items_count, ranges_string,
                           max_depth, newest_first, private, closed_at, closer_id, pinned_at,
-                          last_activity_at, seen_by_count, members_count, closed_polls_count, anonymous_polls_count, created_at, updated_at)
-      SELECT 'Discussion', id, group_id, items_count, ranges_string,
+                          last_activity_at, seen_by_count, members_count, closed_polls_count,
+                          anonymous_polls_count, created_at, updated_at)
+      SELECT id, 'Discussion', id, group_id, items_count, ranges_string,
              max_depth, newest_first, private, closed_at, closer_id, pinned_at,
-             last_activity_at, seen_by_count, members_count, closed_polls_count, anonymous_polls_count, created_at, updated_at
+             last_activity_at, seen_by_count, members_count, closed_polls_count,
+             anonymous_polls_count, created_at, updated_at
       FROM discussions
     SQL
 
-    # 3. Add topic_id to discussions and polls, backfill
+    # Set the sequence past the max discussion id so standalone poll topics get fresh ids
+    execute <<~SQL
+      SELECT setval('topics_id_seq', (SELECT COALESCE(MAX(id), 0) FROM discussions))
+    SQL
+
+    # 3. Create topics for standalone polls (no discussion_id)
+    execute <<~SQL
+      INSERT INTO topics (topicable_type, topicable_id, group_id, items_count, private,
+                          closed_at, last_activity_at, created_at, updated_at)
+      SELECT 'Poll', id, group_id, 0, true,
+             closed_at, closed_at, created_at, updated_at
+      FROM polls
+      WHERE discussion_id IS NULL
+    SQL
+
+    # 4. discussions.topic_id = discussions.id (just add column with correct value)
     add_column :discussions, :topic_id, :integer
-    add_column :polls, :topic_id, :integer
-
-    execute <<~SQL
-      UPDATE discussions SET topic_id = t.id
-      FROM topics t
-      WHERE t.topicable_type = 'Discussion' AND t.topicable_id = discussions.id
-    SQL
-
-    execute <<~SQL
-      UPDATE polls SET topic_id = t.id
-      FROM topics t
-      WHERE t.topicable_type = 'Poll' AND t.topicable_id = polls.id
-    SQL
-
-    execute <<~SQL
-      UPDATE polls SET topic_id = d.topic_id
-      FROM discussions d
-      WHERE d.id = polls.discussion_id AND polls.topic_id IS NULL
-    SQL
-
+    execute "UPDATE discussions SET topic_id = id"
     add_index :discussions, :topic_id
-    add_index :polls, :topic_id
 
-    # 4. Add topic_id to events and backfill
-    add_column :events, :topic_id, :integer
-    execute <<~SQL
-      UPDATE events SET topic_id = (
-        SELECT t.id FROM topics t
-        WHERE t.topicable_type = 'Discussion'
-        AND t.topicable_id = events.discussion_id
-      )
-      WHERE discussion_id IS NOT NULL
-    SQL
-
-    # 5. Drop old indexes on discussion_id from events, add new ones on topic_id
+    # 5. Rename events.discussion_id to topic_id — no data update needed!
     remove_index :events, name: "index_events_on_discussion_id_and_sequence_id"
     remove_index :events, name: "index_events_on_parent_id_and_discussion_id"
+    rename_column :events, :discussion_id, :topic_id
     add_index :events, [:topic_id, :sequence_id], unique: true
     add_index :events, [:topic_id]
     add_index :events, [:parent_id, :topic_id], where: "topic_id IS NOT NULL"
 
-    # 6. Transform discussion_readers to topic_readers
-    rename_table :discussion_readers, :topic_readers
-    add_column :topic_readers, :topic_id, :integer
-
-    execute <<~SQL
-      UPDATE topic_readers SET topic_id = (
-        SELECT t.id FROM topics t
-        WHERE t.topicable_type = 'Discussion'
-        AND t.topicable_id = topic_readers.discussion_id
-      )
-    SQL
-
+    # 6. Rename discussion_readers to topic_readers, rename discussion_id to topic_id
+    execute "ALTER TABLE discussion_readers RENAME TO topic_readers"
+    execute "ALTER INDEX motion_read_logs_pkey RENAME TO topic_readers_pkey"
+    execute "ALTER SEQUENCE discussion_readers_id_seq RENAME TO topic_readers_id_seq"
     remove_index :topic_readers, name: "index_discussion_readers_discussion_id"
     execute 'DROP INDEX IF EXISTS "index_discussion_readers_on_user_id_and_discussion_id"'
-
+    rename_column :topic_readers, :discussion_id, :topic_id
     add_index :topic_readers, [:topic_id, :user_id], unique: true
 
-    # TODO before deploy, move this to a new migration, not to be run until ready.
-    remove_column :events, :discussion_id
+    # 7. Polls: in-thread polls already have discussion_id = topic_id, standalone need update
+    rename_column :polls, :discussion_id, :topic_id
+    execute <<~SQL
+      UPDATE polls SET topic_id = t.id
+      FROM topics t
+      WHERE t.topicable_type = 'Poll' AND t.topicable_id = polls.id
+        AND polls.topic_id IS NULL
+    SQL
+    # index_polls_on_discussion_id was auto-renamed to index_polls_on_topic_id by rename_column
+
+    # 8. Remove comments.discussion_id (no longer needed)
     remove_index :comments, name: "index_comments_on_discussion_id"
     remove_column :comments, :discussion_id
-    remove_column :topic_readers, :discussion_id
 
+    # 9. Remove columns moved to topics
     execute 'DROP INDEX IF EXISTS "index_discussions_on_last_activity_at"'
     remove_column :discussions, :items_count
     remove_column :discussions, :ranges_string
@@ -119,7 +108,6 @@ class CreateTopicsAndRefactorThreading < ActiveRecord::Migration[7.0]
     remove_column :discussions, :private
 
     remove_column :polls, :group_id
-    remove_column :polls, :discussion_id
 
     remove_index :stances, name: :stances_guests, if_exists: true
     remove_column :stances, :volume, :integer, default: 2, null: false
