@@ -312,10 +312,17 @@ ro:
       align: Alinia
       original: Original
       rearrange: Rearanja
+      save_template: Salvați șablonul
+      fork_template: Șablon furcă
     formatting_help:
       label: Formatare
       title: Invață să folosești Markdown pentru a formata textul
     thread: Fir
+    commercial: Comercial
+    nonprofit: Organizație non-profit
+    opening_in: Deschidere %{time}
+    read_more: Citeşte mai mult
+    templates_admin_hint: Deoarece ești administrator de grup, poți ascunde sau șterge orice șabloane pe care nu le dorești și le poți edita pe cele rămase pentru a le potrivi nevoilor tale.
   merge_accounts:
     modal:
       title: Îmbinați conturile
@@ -840,6 +847,7 @@ ro:
     none_direct_discussion: Niciunul (discuție directă)
     direct_discussion: Discuție directă
     direct_discussion_hint: O discuție directă este vizibilă doar persoanelor specifice pe care le invitați. Nu va apărea în lista de discuții a niciunui grup — o puteți găsi pe pagina Discuții directe.
+    recommended_poll_templates: Șabloane de sondaj recomandate
   announcement:
     send_discussion: Trimiteți firul
     send_group: Invită persoane la %{name}
@@ -1213,6 +1221,7 @@ ro:
     no_discussions_here: Nu există discuții de văzut aici!
     private_discussions: Trebuie să fii membru pentru a vizualiza subiectele private din acest grup.
     view_closed_discussions: Vizualizați discuțiile închise
+    discussion_templates: Șabloane de discuții
   export_data_modal:
     title: Cum doriți să vă folosiți datele?
     as_csv: Deschideți-l într-o foaie de calcul
@@ -1333,7 +1342,6 @@ ro:
     default_request_to_join_prompt: Vă mulțumim pentru interesul acordat grupului nostru. Vă rugăm să vă prezentați și să explicați de ce solicitați să vă înscrieți.
     upgrade_for_subgroups: 'Vă rugăm <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">să actualizați abonamentul</a> pentru a crea un subgrup'
     share_this_url_with_people_who_want_to_join: Distribuiți această adresă URL cu persoanele care doresc să se alăture
-    new_description_html: "<h3>Cu ce provocări se confruntă organizația dumneavoastră în procesul decizional?</h3><p></p><h3> Cum ați dori să utilizați Loomio în organizația dumneavoastră?</h3><p></p>"
     allow_polls_without_discussions: Permite sondaje fără discuție
     allow_polls_without_discussions_help: Împiedicați oamenii să înceapă sondaje fără a începe mai întâi o discuție.
     aria_label: Formular de grup
@@ -1771,6 +1779,7 @@ ro:
     meeting_title: Sondaj de timp
     ranked_choice_title: Alegere clasată
     gradients_of_agreement_title: Gradiente de acord
+    majority_title: Majoritate
   poll_option_form:
     edit_option: Opțiune de editare
     option_name: Numele opțiunii
@@ -1893,6 +1902,21 @@ ro:
     post_outcome: Publică rezultatul
     view_all_votes: Vezi toate voturile
     you_voted: Ai votat
+    these_are_templates: Acestea sunt șabloanele de decizie din grupul dvs. Faceți clic pe un șablon pentru a începe o nouă decizie. Administratorii pot personaliza toate detaliile unui șablon, astfel încât acesta să corespundă practicilor organizației dvs. și să fie ușor de găsit și utilizat de către membri.
+    example_templates: Exemple de șabloane
+    example_poll_templates: Exemple de șabloane de sondaje
+    browse_example_templates: Răsfoiți exemple de șabloane
+    browse_example_templates_hint: Creați un nou șablon de sondaj din câmpuri necompletate sau folosiți un exemplu pentru a începe.
+    browse_example_use_hint: Faceți clic pe titlul șablonului pentru <b>a începe un sondaj</b> .
+    browse_example_fork_hint: "<b>Faceți clic pe pictograma furculiță</b> pentru a crea un nou șablon de sondaj, folosind exemplul ca punct de plecare."
+    browse_unsure_help: Nu ești sigur cum să folosești Șabloanele de sondaj?
+    all_templates_hidden: Toate șabloanele au fost ascunse
+    new_poll_template_title: Șablon nou de sondaj
+    new_template_from_blank: Șablon nou din gol
+    new_template_from_blank_subtitle: Creați un șablon nou care să se potrivească unui proces pe care îl aveți în organizația dvs.
+    blank: Nou
+    blank_subtitle: Creați un nou șablon de sondaj pentru un anumit proces
+    start_a_poll: Începeți un sondaj
   poll_common_attachment_form:
     label: Atașamente
   poll_common_add_option:
@@ -2004,6 +2028,7 @@ ro:
     voting_disabled_poll_is_template: Votul este dezactivat. Acesta este un șablon.
     for_this_proposal_to_pass: 'Pentru ca această propunere să fie adoptată:'
     for_this_poll_type_to_be_valid: 'Pentru ca acest %{poll_type} să fie valid:'
+    voting_opens_at: Acest %{poll_type} se deschide pentru votare %{time}
   poll_common_collapsed:
     by_who: dupa %{name}
   poll_common_calendar_invite:
@@ -2583,6 +2608,8 @@ ro:
       ranked_choice_hint: Alegătorii își ordonează opțiunile de la cea mai preferată la cea mai puțin preferată
       time_poll: Sondaj de timp
       time_poll_hint: Alegătorii indică când sunt disponibili să se întâlnească
+      rank: Rang
+      time: Timp
     process: Proces
     process_name: Titlul șablonului
     process_name_hint: Cum se numește acest șablon? De exemplu, sfaturi despre rol, verificarea temperaturii, aprobarea proceselor-verbale
@@ -2638,6 +2665,12 @@ ro:
     hide_results_description: Dacă vrei ca oamenii să voteze fără să vadă cum au votat alții, poți ascunde rezultatele.
     process_helptext: Numiți și descrieți procesul utilizat pentru a derula acest sondaj.
     reminder_helptext: Trimiteți o notificare „Se încheie în curând” cu 24 de ore înainte de termenul limită. Acest lucru poate crește participarea și poate crea o oportunitate pentru ca oamenii să își reconsidere poziția.
+    voting_duration: Durată
+    voting_duration_hint: Când se deschide și când se închide votul?
+    more_settings: Mai multe setări
+    create_poll_type: Creați %{poll_type}
+    notify_voters_when_voting_opens: Anunță alegătorii când se deschide votul
+    voters_notified_when_opens: Alegătorii vor fi anunțați când se va deschide votul
   poll_receipts_page:
     verify_participants: Verificați participanții
     see_votes_if_quorum_reached: Dacă votarea s-a închis și s-a atins cvorumul, veți vedea cine a votat.
@@ -2654,10 +2687,8 @@ ro:
     aria_label: Adăugați un răspuns
   discussion_template:
     browse_public_templates: Răsfoiți galeria de șabloane
-    start_a_new_discussion: Începeți o discuție nouă
     discussion_template_saved: Șablonul de discuție a fost salvat
     these_are_public_templates: Aceste șabloane sunt disponibile pentru copiere sau modificare, în funcție de grupul dumneavoastră.
-    these_are_templates: Acestea sunt șabloanele de discuții din grupul dvs. Faceți clic pe un șablon pentru a începe o discuție. De asemenea, puteți edita, elimina sau reordona aceste șabloane, dacă doriți.
     default_title_label: Titlu implicit
     default_title_hint: Precompletați câmpul titlu cu text editabil. Acest lucru este opțional - lăsați necompletat dacă nu sunteți sigur.
     title_placeholder_label: Exemplu de titlu
@@ -2674,7 +2705,6 @@ ro:
     browse_example_templates: Răsfoiți exemple de șabloane
     example_templates: Exemple de șabloane
     browse_public_templates_hint: Faceți clic pe numele unui șablon pentru a începe o discuție cu acesta sau faceți clic pe butonul de editare din dreapta pentru a face o copie și a-l modifica pentru propriul grup.
-    these_are_templates_v2: Aceasta este o listă cu șabloanele de discuții din grupul dvs. Faceți clic pe un șablon pentru a-l utiliza ca punct de plecare pentru o discuție nouă. Administratorii grupului pot edita șabloanele și pot rearanja lista, astfel încât să fie ușor să găsiți șabloanele importante.
     process_name_placeholder: de exemplu, stand-up săptămânal
     process_subtitle_placeholder: de exemplu, o scurtă verificare cu echipa în fiecare săptămână
     default_title_placeholder: de exemplu, Stand-up - 15 ianuarie
@@ -2689,6 +2719,21 @@ ro:
     poll_templates_help: Șabloanele pe care le selectați aici vor apărea primele când cineva va da clic pe Începeți un vot
     start_direct_discussion_from_blank: Începeți o discuție directă dintr-un șablon gol
     default_to_direct_discussion: Începeți ca o discuție directă (fără grup)
+    default_to_direct_discussion_helptext: Folosește această opțiune dacă vrei ca oamenii să înceapă discuții directe din acest șablon.
+    example_discussion_templates: Exemple de șabloane de discuții
+    browse_example_use_hint: Faceți clic pe titlul șablonului pentru <b>a începe o discuție</b> .
+    browse_example_fork_hint: "<b>Faceți clic pe pictograma furculiță</b> pentru a crea un nou șablon de discuție, folosind exemplul ca punct de plecare."
+    new_discussion_template_title: Șablon nou de discuție
+    new_template_from_blank: Șablon nou din gol
+    new_template_from_blank_subtitle: Creați un șablon nou care să se potrivească unui proces pe care îl aveți în organizația dvs.
+    these_are_templates_v3: Acestea sunt șabloanele de discuții din grupul dvs. Faceți clic pe un șablon pentru a începe o discuție nouă.
+    these_are_templates_admin_hint: Administratorii de grup pot edita șabloane, pot crea șabloane noi, pot rearanja și pot ascunde/reafișa șabloanele. Doar administratorii pot vedea șabloanele ascunse.
+    show_hidden_templates: Afișează șabloanele ascunse
+    show_fewer: Afișează mai puține
+    start_a_new_discussion: Începeți o discuție nouă
+    start_discussion: Începeți o discuție
+    start_a_direct_discussion: Începeți o discuție directă
+    these_are_templates: Acestea sunt șabloanele de discuții din grupul vostru.
   context_panel:
     thread_status:
       pinned: Această discuție a fost fixată. Va rămâne în partea de sus a listei de discuții a grupului pentru toți utilizatorii.
@@ -2715,3 +2760,9 @@ ro:
   auth:
     oauth_cancelled: Conectarea a fost anulată
     switching_accounts: Schimbarea conturilor. Vă rugăm să vă conectați cu detaliile noului cont.
+  poll_common_opening_at_field:
+    voting_opens_immediately: Votarea se deschide imediat
+    opening_date: Data deschiderii
+    opening_hour: Ora de deschidere
+    scheduled_hint: Sondajul va fi vizibil, dar nu va putea fi votat până la ora deschiderii.
+    draft_hint: Acest sondaj va fi salvat ca schiță. Setați o dată de deschidere sau bifați „Votarea se deschide imediat” când sunteți gata să începeți să votați.

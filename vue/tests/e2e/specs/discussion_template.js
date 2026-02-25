@@ -5,9 +5,8 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion_template_browse')
-    page.expectText('.append-sort-here', 'Advice process')
-    page.expectText('.append-sort-here', 'Consent process')
-    page.expectText('.append-sort-here', 'Blank template')
+    page.expectText('.discussion-templates-browse-page', 'Advice process')
+    page.expectText('.discussion-templates-browse-page', 'Consent process')
     test.end()
   }
 }

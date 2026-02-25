@@ -320,10 +320,17 @@ fr:
       align: Alignement
       original: Original
       rearrange: Réarranger
+      save_template: Enregistrer le modèle
+      fork_template: Modèle de fourche
     formatting_help:
       label: Mise en forme
       title: Apprenez à utiliser Markdown pour mettre en forme votre texte
     thread: Fil
+    commercial: Commercial
+    nonprofit: À but non lucratif
+    opening_in: Ouverture %{time}
+    read_more: En savoir plus
+    templates_admin_hint: En tant qu'administrateur du groupe, vous pouvez masquer ou supprimer les modèles que vous ne souhaitez pas utiliser, et modifier les autres en fonction de vos besoins.
   merge_accounts:
     modal:
       title: Fusionner les comptes
@@ -852,6 +859,7 @@ fr:
     none_direct_discussion: Aucun (discussion directe)
     direct_discussion: Discussion directe
     direct_discussion_hint: Une conversation privée n'est visible que par les personnes que vous invitez. Elle n'apparaît pas dans la liste des discussions d'un groupe ; vous la trouverez sur la page « Conversations privées ».
+    recommended_poll_templates: Modèles de sondages recommandés
   announcement:
     send_discussion: Envoyer la discussion
     send_group: Inviter des personnes à %{name}
@@ -1240,6 +1248,7 @@ fr:
     no_discussions_here: Aucune discussion à signaler ici !
     private_discussions: Vous devez être membre pour consulter les discussions privées de ce groupe.
     view_closed_discussions: Consulter les discussions fermées
+    discussion_templates: Modèles de discussion
   export_data_modal:
     title: Comment souhaitez-vous utiliser vos données ?
     as_csv: Ouvrir dans une feuille de calcul
@@ -1362,7 +1371,6 @@ fr:
     default_request_to_join_prompt: Merci de votre intérêt pour notre groupe. Veuillez vous présenter et expliquer pourquoi vous souhaitez nous rejoindre.
     upgrade_for_subgroups: 'Veuillez <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">mettre à niveau votre abonnement</a> pour créer un sous-groupe'
     share_this_url_with_people_who_want_to_join: Partagez cette URL avec les personnes qui souhaitent nous rejoindre
-    new_description_html: "<h3>À quels défis votre organisation est-elle confrontée en matière de prise de décision ?</h3><p></p><h3> Comment aimeriez-vous utiliser Loomio dans votre organisation ?</h3><p></p>"
     allow_polls_without_discussions: Autoriser les sondages sans discussion
     allow_polls_without_discussions_help: Empêcher les gens de lancer des sondages sans d'abord démarrer une discussion.
     aria_label: Forme de groupe
@@ -1815,6 +1823,7 @@ fr:
     meeting_title: Sondage horaire de réunion
     ranked_choice_title: Classement par préférence
     gradients_of_agreement_title: Gradients d’accord
+    majority_title: Majorité
   poll_option_form:
     edit_option: Option Modifier
     option_name: Nom de l’option
@@ -1937,6 +1946,21 @@ fr:
     post_outcome: Publier la conclusion
     view_all_votes: Voir tous les votes
     you_voted: Vous avez voté
+    these_are_templates: Voici les modèles de décision disponibles dans votre groupe. Cliquez sur un modèle pour démarrer une nouvelle décision. Les administrateurs peuvent personnaliser tous les détails d'un modèle afin qu'il corresponde aux pratiques de votre organisation et soit facile à trouver et à utiliser pour les membres.
+    example_templates: Exemples de modèles
+    example_poll_templates: Exemples de modèles de sondage
+    browse_example_templates: Consultez les exemples de modèles
+    browse_example_templates_hint: Créez un nouveau modèle de sondage à partir de zéro, ou utilisez un exemple pour commencer.
+    browse_example_use_hint: Cliquez sur le titre du modèle pour <b>lancer un sondage</b> .
+    browse_example_fork_hint: "<b>Cliquez sur l'icône en forme de fourchette</b> pour créer un nouveau modèle de sondage, en utilisant l'exemple comme point de départ."
+    browse_unsure_help: Vous ne savez pas comment utiliser les modèles de sondage ?
+    all_templates_hidden: Tous les modèles ont été masqués.
+    new_poll_template_title: Nouveau modèle de sondage
+    new_template_from_blank: Nouveau modèle à partir de zéro
+    new_template_from_blank_subtitle: Créez un nouveau modèle adapté à un processus en place dans votre organisation.
+    blank: Nouveau
+    blank_subtitle: Créer un nouveau modèle de sondage pour un processus spécifique
+    start_a_poll: Lancer un sondage
   poll_common_attachment_form:
     label: Pièces jointes
   poll_common_add_option:
@@ -2048,6 +2072,7 @@ fr:
     voting_disabled_poll_is_template: Vote désactivé. Il s’agit d’un modèle.
     for_this_proposal_to_pass: 'Pour que cette proposition soit adoptée :'
     for_this_poll_type_to_be_valid: 'Pour que ce %{poll_type} soit valide :'
+    voting_opens_at: Ce %{poll_type} ouvre au vote %{time}
   poll_common_collapsed:
     by_who: par %{name}
   poll_common_calendar_invite:
@@ -2629,6 +2654,8 @@ fr:
       ranked_choice_hint: Les électeurs classent les options par ordre décroissant de préférence.
       time_poll: Sondage temporel
       time_poll_hint: Les électeurs indiquent quand ils sont disponibles pour se réunir
+      rank: Rang
+      time: Temps
     process: Processus
     process_name: Titre du modèle
     process_name_hint: 'Comment appelle-t-on ce modèle ? Par exemple : « Conseils sur les rôles », « Vérification de la température », « Approbation du compte rendu ».'
@@ -2684,6 +2711,12 @@ fr:
     process_helptext: Nommez et décrivez le processus utilisé pour exécuter ce sondage.
     reminder_helptext: Envoyez une notification « Clôture prochaine » 24 heures avant la date limite. Cela peut stimuler la participation et donner l'occasion aux participants de reconsidérer leur position.
     anonymous_voting_description: Afficher les votes et leurs motifs, mais pas l'identité des votants. Ceci ne peut plus être modifié une fois le sondage %{poll_type} lancé.
+    voting_duration: Durée
+    voting_duration_hint: Quand le vote ouvre-t-il et quand se termine-t-il ?
+    more_settings: Plus de paramètres
+    create_poll_type: Créer %{poll_type}
+    notify_voters_when_voting_opens: Avertir les électeurs de l'ouverture des bureaux de vote
+    voters_notified_when_opens: Les électeurs seront avertis de l'ouverture des bureaux de vote.
   poll_receipts_page:
     verify_participants: Vérifier les participants
     see_votes_if_quorum_reached: Si le vote est clos et que le quorum est atteint, vous verrez qui a voté.
@@ -2700,10 +2733,8 @@ fr:
     aria_label: Ajouter une réponse
   discussion_template:
     browse_public_templates: Parcourez la galerie de modèles
-    start_a_new_discussion: Lancer une nouvelle discussion
     discussion_template_saved: Modèle de discussion enregistré
     these_are_public_templates: Ces modèles sont à votre disposition pour que vous puissiez les copier ou les modifier selon les besoins de votre groupe.
-    these_are_templates: Voici les modèles de discussion de votre groupe. Cliquez sur un modèle pour démarrer une discussion. Vous pouvez également les modifier, les supprimer ou les réorganiser à votre guise.
     default_title_label: titre par défaut
     default_title_hint: Préremplissez le champ « Titre » avec du texte modifiable. Ce champ est facultatif ; laissez-le vide en cas de doute.
     title_placeholder_label: Exemple de titre
@@ -2720,7 +2751,6 @@ fr:
     browse_example_templates: Consultez les exemples de modèles
     example_templates: Exemples de modèles
     browse_public_templates_hint: Cliquez sur le nom d'un modèle pour entamer une discussion à son sujet, ou cliquez sur le bouton Modifier à droite pour en faire une copie et le modifier pour votre propre groupe.
-    these_are_templates_v2: Voici la liste des modèles de discussion de votre groupe. Cliquez sur un modèle pour l'utiliser comme point de départ d'une nouvelle discussion. Les administrateurs du groupe peuvent modifier les modèles et réorganiser la liste afin de faciliter la recherche des modèles importants.
     process_name_placeholder: par exemple, la réunion debout hebdomadaire
     process_subtitle_placeholder: Par exemple, un bref point avec l'équipe chaque semaine
     default_title_placeholder: Ex. Stand-up - 15 janvier
@@ -2735,6 +2765,21 @@ fr:
     poll_templates_help: Les modèles que vous sélectionnez ici s'afficheront en premier lorsqu'une personne cliquera sur « Lancer un vote ».
     start_direct_discussion_from_blank: Démarrez une discussion directe à partir d'un modèle vierge
     default_to_direct_discussion: Commencez par une discussion directe (pas de groupe).
+    default_to_direct_discussion_helptext: Utilisez ceci si vous souhaitez que les gens entament des discussions directes à partir de ce modèle.
+    example_discussion_templates: Exemples de modèles de discussion
+    browse_example_use_hint: Cliquez sur le titre du modèle pour <b>démarrer une discussion</b> .
+    browse_example_fork_hint: "<b>Cliquez sur l'icône en forme de fourchette</b> pour créer un nouveau modèle de discussion, en utilisant l'exemple comme point de départ."
+    new_discussion_template_title: Nouveau modèle de discussion
+    new_template_from_blank: Nouveau modèle à partir de zéro
+    new_template_from_blank_subtitle: Créez un nouveau modèle adapté à un processus en place dans votre organisation.
+    these_are_templates_v3: Voici les modèles de discussion de votre groupe. Cliquez sur un modèle pour démarrer une nouvelle discussion.
+    these_are_templates_admin_hint: Les administrateurs du groupe peuvent modifier les modèles, en créer de nouveaux, les réorganiser et les afficher/masquer. Seuls les administrateurs peuvent voir les modèles masqués.
+    show_hidden_templates: Afficher les modèles cachés
+    show_fewer: Afficher moins
+    start_a_new_discussion: Lancer une nouvelle discussion
+    start_discussion: Lancer une discussion
+    start_a_direct_discussion: Entamez une discussion directe
+    these_are_templates: Voici les modèles de discussion de votre groupe.
   context_panel:
     thread_status:
       pinned: Cette discussion a été épinglée. Elle restera en haut de la liste des discussions du groupe pour tous les utilisateurs.
@@ -2761,3 +2806,9 @@ fr:
   auth:
     oauth_cancelled: La connexion a été annulée.
     switching_accounts: Changement de compte. Veuillez vous connecter avec vos nouvelles informations de compte.
+  poll_common_opening_at_field:
+    voting_opens_immediately: Le vote est ouvert immédiatement
+    opening_date: Date d'ouverture
+    opening_hour: Heures d'ouverture
+    scheduled_hint: Le sondage sera visible mais il ne sera pas possible de voter avant l'heure d'ouverture.
+    draft_hint: Ce sondage sera enregistré comme brouillon. Définissez une date d'ouverture ou cochez « Ouverture immédiate du vote » lorsque vous serez prêt(e) à voter.

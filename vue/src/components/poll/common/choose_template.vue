@@ -22,20 +22,21 @@ export default {
   data() {
     return {
       isSorting: false,
+      showHidden: false,
+      hasHiddenTemplates: false,
+      hiddenAlert: Session.user().hasExperienced('dismissPollTemplatesAlert'),
       returnTo: Session.returnTo(),
       groups: [],
       pollTemplates: [],
+      hiddenTemplates: [],
       discussionTemplate: null,
       actions: {},
+      hiddenActions: {},
       filter: 'proposal',
-      singleList: !this.group.categorizePollTemplates,
       filterLabels: {
         recommended: 'decision_tools_card.recommended',
         proposal: 'decision_tools_card.proposal_title',
-        poll: 'decision_tools_card.poll_title',
-        meeting: 'decision_tools_card.meeting',
-        admin: 'group_page.settings',
-        templates: 'templates.templates'
+        poll: 'decision_tools_card.poll_title'
       }
     };
   },
@@ -66,31 +67,28 @@ export default {
       if (this.filter === 'recommended') {
         this.pollTemplates = this.discussionTemplate.pollTemplates();
       } else {
-        let params;
-        if (this.group.categorizePollTemplates) {
-          params = (() => { switch (this.filter) {
-            case 'proposal':
-              return {pollType: {$in: ['proposal', 'question']}, discardedAt: null};
-            case 'poll':
-              return {pollType: {$in: ['score', 'poll', 'ranked_choice', 'dot_vote', 'stv']}, discardedAt: null};
-            case 'meeting':
-              return {pollType: {$in: ['meeting', 'count']}, discardedAt: null};
-            case 'admin':
-              return {discardedAt: {$ne: null}};
-          } })();
-        } else {
-          params = (() => { switch (this.filter) {
-            case 'admin':
-              return {discardedAt: {$ne: null}};
-            default:
-              return {discardedAt: null};
-          } })();
-        }
+        const pollTypeFilter = (() => { switch (this.filter) {
+          case 'proposal':
+            return {pollType: {$in: ['proposal', 'question']}};
+          case 'poll':
+            return {pollType: {$in: ['score', 'poll', 'ranked_choice', 'dot_vote', 'meeting', 'count', 'stv']}};
+        } })();
 
         this.pollTemplates = Records.pollTemplates.collection.chain().
           find({groupId: this.group.id || null}).
-          find(params).
+          find({example: {$ne: true}}).
+          find({discardedAt: null}).
+          find(pollTypeFilter).
           simplesort('position').data();
+
+        this.hiddenTemplates = Records.pollTemplates.collection.chain().
+          find({groupId: this.group.id || null}).
+          find({example: {$ne: true}}).
+          find({discardedAt: {$ne: null}}).
+          find(pollTypeFilter).
+          simplesort('position').data();
+
+        this.hasHiddenTemplates = this.hiddenTemplates.length > 0;
       }
 
       this.actions = {};
@@ -101,6 +99,16 @@ export default {
           this.actions[i] = PollTemplateService.actions(pollTemplate, this.group);
         }
       });
+
+      this.hiddenActions = {};
+      this.hiddenTemplates.forEach((pollTemplate, i) => {
+        this.hiddenActions[i] = PollTemplateService.actions(pollTemplate, this.group);
+      });
+    },
+
+    dismissAlert() {
+      this.hiddenAlert = true;
+      Records.users.saveExperience('dismissPollTemplatesAlert');
     },
 
     cloneTemplate(template) {
@@ -124,14 +132,12 @@ export default {
   },
 
   watch: {
-    filter: 'query',
-    discussionTemplate: 'query',
-    singleList() {
-      setTimeout(() => {
-        this.group.categorizePollTemplates = !this.singleList;
-        Records.remote.post('poll_templates/settings', {group_id: this.group.id, categorize_poll_templates: this.group.categorizePollTemplates});
-      });
-    }
+    filter() {
+      this.showHidden = false;
+      this.query();
+    },
+    showHidden: 'query',
+    discussionTemplate: 'query'
   },
 
   computed: {
@@ -144,18 +150,13 @@ export default {
     },
 
     filters() {
-      if (this.singleList) {
-        return {templates: 'mdi-thumbs-up-down'};
-      } else {
-        const recommendedIcon = (this.discussionTemplate && this.discussionTemplate.pollTemplateKeysOrIds.length && 'mdi-star') || null;
-        return pickBy({
-          recommended: recommendedIcon,
-          proposal: 'mdi-thumbs-up-down',
-          poll: 'mdi-poll',
-          meeting: 'mdi-calendar'
-        }
-        , v => !!v);
+      const recommendedIcon = (this.discussionTemplate && this.discussionTemplate.pollTemplateKeysOrIds.length && 'mdi-star') || null;
+      return pickBy({
+        recommended: recommendedIcon,
+        proposal: 'mdi-thumbs-up-down',
+        poll: 'mdi-poll'
       }
+      , v => !!v);
     }
   }
 };
@@ -163,6 +164,11 @@ export default {
 
 <template lang="pug">
 .poll-common-templates-list
+  v-alert.ma-4(v-if="userIsAdmin && !discussion && !hiddenAlert" type="info" variant="tonal" closable @click:close="dismissAlert")
+    span(v-t="'poll_common.these_are_templates'")
+    |
+    span(v-t="'common.templates_admin_hint'")
+
   .d-flex(:class="{'px-4': !discussion}")
     v-chip.mr-1(
       :color="filter == name ? 'primary' : null"
@@ -175,23 +181,11 @@ export default {
       common-icon.mr-2(size="small" :name="icon" :color="filter == name ? 'primary' : null")
 
       span.poll-type-chip-name(v-t="filterLabels[name]")
-    template(v-if="userIsAdmin || userCanCreateTemplates")
+    template(v-if="userCanCreateTemplates")
       v-spacer
-      v-chip(@click="filter = 'admin'" :outlined="filter != 'admin'")
-        common-icon(size="small" name="mdi-cog").mr-2
-        span.poll-type-chip-name(v-t="filterLabels['admin']")
+      v-btn(variant="tonal" size="small" :to="'/poll_templates/browse?group_id='+group.id+'&return_to='+returnTo")
+        span.text-medium-emphasis(v-t="'discussion_form.new_template'")
   v-list.decision-tools-card__poll-types(lines="two" density="comfortable")
-    template(v-if="filter == 'admin'")
-      v-list-item.decision-tools-card__new-template(
-        :to="'/poll_templates/new?group_id='+group.id+'&return_to='+returnTo"
-        :class="'decision-tools-card__poll-type--new-template'"
-        :key="99999"
-      )
-        v-list-item-title(v-t="'discussion_form.new_template'")
-        v-list-item-subtitle(v-t="'poll_common.create_a_custom_process'")
-
-      v-checkbox.pl-4(v-model="singleList" :label="$t('poll_common.show_all_templates_in_one_list')")
-      v-list-subheader(v-if="pollTemplates.length" v-t="'poll_common.hidden_poll_templates'")
 
     template(v-if="isSorting")
       sortable-list(v-model:list="pollTemplates"  @sort-end="sortEnded" append-to=".decision-tools-card__poll-types"  lock-axis="y" axis="y")
@@ -203,15 +197,13 @@ export default {
           )
             v-list-item-title
               span {{ template.processName }}
-              v-chip.ml-2(size="x-small" v-if="filter == 'admin' && !template.id")
-                span(v-t="'poll_common_action_panel.default_template'")
-              v-chip.ml-2(size="x-small" v-if="filter == 'admin' && template.id")
-                span(v-t="'poll_common_action_panel.custom_template'")
             v-list-item-subtitle {{ template.processSubtitle }}
             //- v-list-item-action.handle(v-handle style="cursor: grab")
             template(v-slot:append)
               common-icon(name="mdi-drag-vertical")
-    template(v-else)
+    v-list-item(v-if="!isSorting && !pollTemplates.length")
+      v-list-item-title.text-medium-emphasis(v-t="'poll_common.all_templates_hidden'")
+    template(v-else-if="!isSorting")
       v-list-item.decision-tools-card__poll-type(
         v-for='(template, i) in pollTemplates'
         @click="cloneTemplate(template)"
@@ -221,13 +213,31 @@ export default {
       )
         v-list-item-title
           span {{ template.processName }}
-          v-chip.ml-2(size="x-small" outlined v-if="filter == 'admin' && !template.id")
-            span(v-t="'poll_common_action_panel.default_template'")
-          v-chip.ml-2(size="x-small" outlined v-if="filter == 'admin' && template.id")
-            span(v-t="'poll_common_action_panel.custom_template'")
         v-list-item-subtitle {{ template.processSubtitle }}
         template(v-slot:append)
           action-menu(:actions='actions[i]' size="small" icon :name="$t('action_dock.more_actions')")
+
+    .d-flex.justify-center.my-2(v-if="userIsAdmin && hasHiddenTemplates && !showHidden && filter !== 'recommended'")
+      v-btn.text-medium-emphasis(variant="text" size="small" @click="showHidden = true")
+        span(v-t="'discussion_template.show_hidden_templates'")
+
+    template(v-if="userIsAdmin && showHidden")
+      v-list-subheader(v-t="'discussion_template.hidden_templates'")
+      v-list-item.decision-tools-card__poll-type(
+        v-for='(template, i) in hiddenTemplates'
+        @click="cloneTemplate(template)"
+        :class="'decision-tools-card__poll-type--' + template.pollType"
+        :key="template.id || template.key"
+        lines="two"
+      )
+        v-list-item-title
+          span {{ template.processName }}
+        v-list-item-subtitle {{ template.processSubtitle }}
+        template(v-slot:append)
+          action-menu(:actions='hiddenActions[i]' size="small" icon :name="$t('action_dock.more_actions')")
+      .d-flex.justify-center.my-2
+        v-btn.text-medium-emphasis(variant="text" size="small" @click="showHidden = false")
+          span(v-t="'discussion_template.show_fewer'")
 
 </template>
 <style>

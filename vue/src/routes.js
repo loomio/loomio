@@ -10,6 +10,7 @@ const PollShowPage = wrapAsyncLoader(() => import('./components/poll/show_page')
 const PollReceiptsPage = wrapAsyncLoader(() => import('./components/poll/receipts_page'));
 const PollFormPage = wrapAsyncLoader(() => import('./components/poll/form_page'));
 const PollTemplateFormPage = wrapAsyncLoader(() => import('./components/poll_template/form_page'));
+const PollTemplateBrowsePage = wrapAsyncLoader(() => import('./components/poll_template/browse_page'));
 const TasksPage = wrapAsyncLoader(() => import('./components/tasks/page'));
 const GroupDiscussionsPanel = wrapAsyncLoader(() => import('./components/group/discussions_panel'));
 const GroupPollsPanel = wrapAsyncLoader(() => import('./components/group/polls_panel'));
@@ -78,6 +79,7 @@ const router = createRouter({
     {path: '/p/:id/receipts', component: PollReceiptsPage, props: true },
     {path: '/p/new', component: PollFormPage },
     {path: '/p/:key/:stub?', component: PollShowPage},
+    {path: '/poll_templates/browse', component: PollTemplateBrowsePage},
     {path: '/poll_templates/new', component: PollTemplateFormPage},
     {path: '/poll_templates/:id/edit', component: PollTemplateFormPage},
     {path: '/u/:key/:stub?', component: UserPage },

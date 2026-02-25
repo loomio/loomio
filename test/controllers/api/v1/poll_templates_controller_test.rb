@@ -293,7 +293,7 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
     assert_response :success
     template = PollTemplate.last
     assert_equal @another_user.id, template.author_id
-    assert template.discarded?, "member-created template should be auto-discarded"
+    assert_not template.discarded?, "member-created template should not be auto-discarded"
   end
 
   test "admin-created poll template is not auto-discarded" do

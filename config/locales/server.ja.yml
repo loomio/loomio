@@ -94,6 +94,10 @@ ja:
       title: "\U0001F44B ようこそ！挨拶して、ぜひお試しください"
       description: "<p>Loomio グループへようこそ。ご参加いただきありがとうございます!</p><p>このスレッドは次のことを行うためのスペースです:</p><ul><li><p>グループに自己紹介する</p></li><li><p>Loomio の機能をいくつか試してみてください。たとえば、リアクションを使ってみてください \U0001F44D</p></li><li><p>この段階で質問があれば何でも聞いてください</p></li></ul><p>何を言えばいいのか分からない場合は、簡単な「こんにちは」で大丈夫です \U0001F642</p>"
       process_name: 練習のディスカッション
+      process_subtitle_v2: 人々を歓迎し、一緒にLoomioを使いこなしましょう
+      process_introduction_v2: "<p>新しいグループを歓迎するスレッドです。参加者は自己紹介をしたり、コメントやリアクションなどの機能を試したり、最初の提案を投稿したりします。</p>"
+      title_v2: ようこそ！自己紹介をして、いろいろ試してみましょう
+      description_v2: "<p>グループへようこそ！このスレッドは、挨拶をしたり、質問したり、いろいろ試してみたり、Loomioの使い方に慣れたりするためのスペースです。</p><p>コメントを残すか、反応を使用するか、以下のいずれかの提案を開始してください。</p><p>何を言えばいいのかわからない場合は、シンプルに「こんにちは」と言っても大丈夫です！または、以下の投票ツールをお試しください。</p>"
   explore:
     header: 公開グループを探索する
   activerecord:
@@ -178,6 +182,7 @@ ja:
       must_be_in_the_future: きっと未来にあるはず
       templates_cannot_close: テンプレートを閉じることができません
       poll_options_dont_match: Loomioのバグにより、投票を保存できませんでした。現在修正に取り組んでいます。再読み込みしてもう一度お試しください。
+      opening_at_before_closing_at: 開始日は終了日より前にする必要があります
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) 人のメンバーが自分の立場を表明しました"
       title: タイトル
@@ -372,6 +377,9 @@ ja:
       vote_now: 今すぐ投票してください
       you_have_until: "%{when} までに参加してください。"
       people_have_voted: "%{dnom} 人中 %{nom} 人が参加しました (%{pct}%)"
+      voting_opens_and_closes: 投票は %{opens} に開始され、 %{closes} に終了します。(%{days} 日)
+      voting_closes: 投票は%{when}に終了します。
+      voting_opened_and_closed: 投票は %{opens} に開始され、 %{closes} に終了しました。(%{days} 日)
   unauthorized:
     manage:
       all: "%{action} %{subject} を実行する権限がありません。"
@@ -385,6 +393,17 @@ ja:
       process_introduction: "<p>このテンプレートを使えば、グループメンバーがLoomioで提案書の作成に慣れることができます。安全かつ簡単に投票を試し、全体の流れを確認できる方法です。</p>"
       details: "<p>これは、Loomio での提案の仕組みを誰もが理解できるようにするための練習です。</p><p>ぜひ投票し、よろしければ理由も書いてください。</p><p>プレッシャーも現実世界での影響もありません。提案がどのように機能するかを探る、ただの方法です！</p>"
       outcome_statement: "<p>この練習提案にご参加いただきありがとうございます！\U0001F389</p><p>これはLoomioでの投票とコメントの仕組みを確認するための機会でした。具体的な決定は行われていませんが、このプロセスに慣れるのに役立つことを願っています。</p>"
+      title_v2: パイナップルはピザにぴったり
+      process_subtitle_v2: 提案を試してみて、投票の仕組みを理解しましょう
+      process_introduction_v2: "<p>グループでLoomioの投票を楽しく試す方法です。気軽な質問を選び、参加者に投票してもらい、理由を書いてもらいます。具体的な決定は不要で、練習するだけです。</p>"
+      details_v2: "<p>これは実践的な提案であり、実際の決定事項ではありません。</p><p>投票して理由を残して、Loomio で提案がどのように機能するかを確認してみてください。</p>"
+      outcome_statement_v2: "<p>提案をお試しいただきありがとうございます！これでLoomioでの投票の仕組みが分かりました。</p>"
+      agree_meaning: 私はこれに賛成です
+      agree_prompt: なぜ同意するのですか?
+      abstain_meaning: これについては意見はない
+      abstain_prompt: 何かご意見はございますか?
+      disagree_meaning: 私はこれに反対だ
+      disagree_prompt: なぜ反対なのですか?
     proposal:
       process_subtitle: 決定を下すための提案を提出する
       process_introduction: <p>従来の Loomio 提案は、議論を明確な結果に変換して意思決定を行うのに役立ちます。</p><p>行動方針を提案し、賛成、棄権、反対の投票によって回答するよう人々に呼びかけます。</p><p>投票する際に、なぜそのように投票したのか理由を述べることができます。他の人がその問題についてどのような立場をとっているのか、そしてその理由も知ることができます。</p><p>このように、提案を使用して人々に応答を促し、新しい情報を発見し、共通の理解を構築することで、グループがより多くの情報に基づいた、より良い決定を下せるように支援することができます。</p><p>提案とそれに関連する議論によって、決定がどのようになされたかという独自の記録が作成されます。</p><p><a target="_blank" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>シンプルな意思決定プロセスで従来の Loomio 提案を使用する方法について詳しくお読みください</u></a>。</p>
@@ -423,6 +442,9 @@ ja:
       objection_meaning: 私は正当な反対意見を持っており、この提案は害を及ぼすと考えています
       objection_prompt: この提案を「安全に試せる」ようにするには、どのような変更を加えれば支持してもらえるでしょうか?
       outcome_statement: "<p>同意プロセスにご参加いただきありがとうございます。</p>"
+      process_subtitle_v2: 誰かが異議を唱えない限り続行する
+      process_introduction_v2: "<p><strong>同意とは</strong>、提案が完璧かどうかではなく、試しても安全かどうかを問うことです。誰も意味のある異議を唱えない限り、提案は承認されます。もし誰かが異議を唱えた場合、グループはそれを解決するために取り組みます。参加者は提案の進展に合わせて投票内容を変更できるため、異議は障害ではなく、改善のためのツールとなります。</p>"
+      details_v2: "<h3><strong>あなたが下すべき決断とは何ですか?</strong></h3><p></p><h3><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3><strong>この提案では人々に何を求めているのでしょうか?</strong></h3><p></p><p>完璧を目指しているわけではありません。提案が十分に優れていて、試しても安全であれば、ご同意ください。異議がある場合は、実現可能にするために何を変更する必要があるかをお知らせください。</p>"
     consensus:
       process_subtitle: 関係者全員と団体交渉協定を結ぶ
       process_introduction: <p>必要な決定について合意を形成し、すべての参加者のニーズと懸念を満たす合意に達します。</p><ul><li><p>一緒に議論し、提案を練り上げましょう</p></li><li><p>関係者全員を包括し尊重する</p></li><li><p>大多数の人々の同意を求める</p></li></ul><p><a target="_blank" href="https://help.loomio.com/en/guides/consensus_process/index.html">コンセンサスプロセスの詳細については、こちらをご覧ください</a>。</p>
@@ -441,6 +463,8 @@ ja:
       block: ブロック
       block_meaning: 私はこの提案に反対し、進めるべきではないと思う
       block_prompt: この提案に対する反対理由と、なぜこの提案を進めるべきではないのかを説明してください。
+      details_v2: "<h3><strong>あなたが下すべき決断とは何ですか?</strong></h3><p></p><h3><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3><strong>人々に何をするよう求めているのですか?</strong></h3><p></p><p>あなたの立場とその理由を共有してください。もし反対であれば、それを支持するためにはどのような変化が必要かを説明してください。</p>"
+      process_introduction_v2: "<p><strong>コンセンサス</strong>は、全員が積極的に同意することが重要な決定において用いられます。参加者は互いのニーズを理解し、グループ全体が支持できるまで提案を具体化するために協力します。議論が進むにつれて投票内容を変更できるため、このプロセスは一発勝負の決定ではなく、真の対話を促します。他の方法よりも忍耐が必要ですが、最も強いコミットメントを築くことができます。</p><p>このテンプレートにはデフォルトで<strong>ブロック</strong>オプションが含まれています。ブロックはすべてのグループに適しているわけではありません。物議を醸したり、誤用されたりする可能性があるためです。意思決定プロセスでブロックを使用しない場合は、テンプレートを編集して削除することをお勧めします。</p>"
     question_round:
       process_subtitle: 提案を理解するために、明確な質問を促します
       process_introduction: <p>質問ラウンドは、提案について明確にする質問をする機会であり、全員が提案を理解した上で、それについてどう思うかを述べる機会となります。</p><p> Loomio Questionラウンドは、投票オプションのない特別な提案です。参加者は、ラウンドで設定された時間内に質問をすることができます。</p><p>質問ラウンドは、同意プロセスのステップとしてよく使用されます。</p><p><a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">同意プロセスの詳細については、こちらをご覧ください</a>。</p>
@@ -466,6 +490,17 @@ ja:
       concerned: 心配している
       concerned_meaning: 私が同意するためには、このことについて何かを変える必要があるかもしれない
       concerned_prompt: あなたの懸念は何ですか、そしてそれはどのように対処される可能性がありますか?
+      process_subtitle_v2: 正しい道を進んでいるか確認しましょう
+      process_introduction_v2: "<p><strong>センスチェックは、</strong>決定を下す前に早期にフィードバックを得るのに役立ちます。参加者は、状況が良さそうかどうか、あるいは懸念点を指摘してくれるので、正式な提案に進む前に方向性を調整することができます。これは決定ではなく、温度チェックです。</p>"
+      details_v2: "<h3><strong>何を提案しているのですか?</strong></h3><p></p><h3><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3><strong>人々に何をするよう求めているのですか?</strong></h3><p></p><p>これは良さそうか、もっと改善できる点があるか、再考が必要かを述べ、その理由を共有してください。</p>"
+      looks_good_meaning_v2: 方向性に満足しています
+      looks_good_prompt_v2: 何が気に入っていますか？
+      could_be_better: もっと良くなるかもしれない
+      could_be_better_meaning: 可能性を感じますが、提案があります
+      could_be_better_prompt: 何を変えたいですか?
+      needs_a_rethink: 再考が必要
+      needs_a_rethink_meaning: そのアプローチは正しくないと思う
+      needs_a_rethink_prompt: 何が心配ですか？
     gradients_of_agreement:
       process_subtitle: 8段階評価で提案への支持を表明する
       process_introduction: "<p>同意のグラデーション提案により、グループのメンバーは提案に対する支持をスケール上の度合いで表現することができ、「賛成」や「反対」という表現よりも多くの方法で支持を表現できるようになります。</p><p>正式な合意に進む前に、提案に対する支持をテストするための予備ラウンドとして合意の勾配を使用します。</p><p>合意形成の勾配は、提案が形成されつつあることを人々に知らせ、参加を促します。これは、人々の意見に耳を傾け、彼らの気持ちを察知し、適切に対応する機会であり、彼らの意見を取り入れてより良い意思決定を行う可能性を広げます。</p>"
@@ -499,27 +534,36 @@ ja:
       process_introduction: <p>決定を下す前に、人々が最も重視するオプションを見つけます。</p><p>シンプルなアンケートは、単一または複数の選択肢から最も人気のあるオプションを見つけるのに役立ちます。</p><p>詳細フィールドにオプションに関する詳細を記入し、オプションの名前を入力して「+」をクリックして追加します。</p><p>投票者が選択できる<strong>最小選択肢数</strong>と<strong>最大選択肢数</strong>を設定します。単一選択の投票の場合は、最大選択肢数を1のままにしてください。</p><p>各オプションの横にある鉛筆アイコンを使用してオプションの<strong>意味</strong>を追加し、投票時にユーザーを支援するためにオプションの詳細をさらに説明することができます。</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">シンプルなアンケートの詳細をご覧ください</a>。</p>
       title: 私たちの戦略的方向性の焦点はどこに置くべきでしょうか?
       details: <h3 id="what-is-this-poll-about"><strong>この世論調査は何についてですか？</strong></h3><p></p><h3 id="why-is-this-important"><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>人々に何をするよう求めているのですか?</strong></h3><p></p><p>ご希望のオプションを選択してください。</p>
+      process_introduction_v2: <p><strong>「選択」機能は、</strong>最も人気のあるオプションを見つけるのに役立ちます。参加者はリストから選択します。1つのオプションを選択するか、複数のオプションを選択するかを設定できます。</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">Choose についての詳細をご覧ください</a>。</p>
     score_poll:
       process_subtitle: 各オプションの支持度を測定する
       process_introduction: <p>各オプションに対する人々の希望、好み、または関心を調査する場合は、スコア アンケートを使用します。</p><p><span>参加者は、各オプションを評価し、スケールに沿ってスライダーを動かしてスコアを割り当てるように求められます。</span></p><p><span>結果はグラフで表示され、各オプションの合計ポイント、平均ポイント、投票者数を示す表も表示されます。</span></p><p>詳細設定には、「投票は匿名です」や「オプションをランダムな順序で表示します」などがあり、スコア投票で投票の偏りを減らすためによく使用されます。</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">スコア投票の詳細をご覧ください</a>。</p>
       title: 組織内で意思決定がどのように行われるかを評価する
       details: <h3 id="what-is-this-poll-about"><strong>この世論調査は何についてですか？</strong></h3><p></p><h3 id="why-is-this-important"><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>人々に何をするよう求めているのですか?</strong></h3><p></p><p>ご希望のオプションを選択してください。</p>
+      process_subtitle_v2: 各オプションのサポートレベルを測定する
+      process_introduction_v2: <p><strong>スコアを</strong>使用すると、各選択肢に対するグループの支持度を測定できます。参加者はスライドスケールに基づいて各選択肢を評価します。これにより、人々が何を好むかだけでなく、どの程度好んでいるかを把握できます。</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">スコア投票の詳細については、こちらをご覧ください</a>。</p>
     dot_vote:
       process_subtitle: 優先順位を明らかにするためにポイントの予算を割り当てる
       process_introduction: <p>ドット投票は、限られたリソースを複数の選択肢に配分しようとするグループにとって役立ちます。参加者が選択肢を選択する際に制約があることを理解できるようにすることで、単なる投票を超えた効果をもたらします。</p><p>参加者にはそれぞれ決められた数のドットが与えられます。その数を決めてください。</p><p>参加者は提示された選択肢の中から気に入ったものに点を付けます。すべての点を1つの選択肢に付けることも、複数の選択肢に分散させることもできます。</p><p>参加者がドットを割り当てると、ドットの予算制限を超える可能性があるため、ドットの使い方を慎重に検討することが推奨されます。</p><p>最も多くのドットが付いた選択肢が「勝ち」となります。結果表には、結果を分析するのに役立つ追加データが表示されます。</p><ul><li><p>ポイントの割合</p></li><li><p>ポイント</p></li><li><p>平均</p></li><li><p>有権者</p></li></ul><p><a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">ドット投票についての詳細を読む</a>。</p>
       title: 会議のテーマの選択
       details: <h3 id="what-is-this-poll-about"><strong>この世論調査は何についてですか？</strong></h3><p></p><h3 id="why-is-this-important"><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>人々に何をするよう求めているのですか?</strong></h3><p></p><p>このアンケートでは、8つのドットを好きな選択肢に割り当てることができます。すべてのドットを1つの選択肢に割り当てても、分散させて割り当てても構いません。</p>
+      process_subtitle_v2: トレードオフがある場合は優先順位を明らかにする
+      process_introduction_v2: <p><strong>Allocateは</strong>、トレードオフがある場合のグループの優先順位を理解するのに役立ちます。各参加者は、複数の選択肢に配分するためのポイントの予算を受け取ります。1つの選択肢にすべてを集中させることも、複数の選択肢にポイントを配分することもできます。予算は限られているため、費やされるポイントはすべて、優先順位の真のシグナルとなります。</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">Allocate の詳細については、こちらをご覧ください</a>。</p>
     ranked_choice:
       process_subtitle: 選択肢の優先順位を理解する
       process_introduction: <p>順位付け選択は、選択肢が多数ある場合や選挙を実施する場合に役立ちます。</p><p>この投票テンプレートは、ユーザーが好みの順序で投票できる一連のオプションを提供します。</p><p>投票者が選択できる選択肢の数を設定できます。</p><p><span>投票者は、好みの順にオプションをドラッグ アンド ドロップします (#1 が最も好ましいオプションです)。</span></p><p><span>詳細設定には、「投票は匿名です」や「オプションをランダムな順序で表示します」などがあり、これらは通常、投票の偏りを減らすためにランク付けされた選択肢で使用されます</span>。</p><p>結果はランキング順に表示されます。結果表には、結果の分析に役立つ追加データが表示されます。</p><ul><li><p>ランク</p></li><li><p>ポイントの割合</p></li><li><p>ポイント</p></li><li><p>平均</p></li></ul><p><a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">ランク付け選択についての詳細をご覧ください</a>。</p>
       title: ガバナンス委員会に取締役を選出する
       details: <h3 id="what-is-this-poll-about"><strong>この世論調査は何についてですか？</strong></h3><p></p><h3 id="why-is-this-important"><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>人々に何をするよう求めているのですか?</strong></h3><p></p><p>選択肢をあなたの好みの順にランク付けして投票してください。結果で1位になった選択肢が勝ちとなります。</p>
+      process_subtitle_v2: グループの優先順位を見つける
+      process_introduction_v2: <p><strong>ランクは</strong>グループの優先順位を示します。参加者は選択肢をドラッグ＆ドロップして、優先順位の高い順に並べ替えることができ、結果には全体の順位が表示されます。</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">ランクについて詳しくはこちらをご覧ください</a>。</p>
     time_poll:
       process_subtitle: いつ会えるか調べる
       process_introduction: <p><span>会議やイベントの日程を調整する時間を節約します。</span></p><p>時間アンケートを使用すると、全員の空き時間を簡単に確認し、最適な時間を見つけることができます。</p><p>時間に関するアンケートにタイトルと詳細を入力してください。タイムゾーンの日付と時刻の選択肢のリストを入力してください。</p><p>時間枠を設定する際は、異なるタイムゾーンにいる参加者を考慮してください。参加者には、それぞれのタイムゾーンに合わせた時刻が表示されます。</p><p>会議の継続時間を設定します。</p><p>時間に関するアンケートが終了したら、最適な時間と会議の指示を結果として設定します。</p><p> <span>Loomio は結果通知メールにカレンダーの招待状を含めるので、参加者は自分のカレンダーに追加できます。</span></p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">Time poll についてさらに詳しく読む</a>。</p>
       title: 次回の会議の日程を決めましょう
       details: "<p><strong>会議またはイベントとは何ですか?</strong></p><p></p><p><strong>なぜこれが重要なのでしょうか?</strong></p><p></p><p><strong>人々に何をするよう求めているのですか?</strong></p><p></p><p><span>空いている時間帯には緑の「親指を立てる」アイコンを付け、空いていない場合は赤い「親指を下げて」アイコンをそのままにしておきます。</span></p><p> <span>「必要に応じて」対応可能であることを示すには、「親指を横向きにする」アイコンを使用します。</span></p>"
       reason_prompt: 主催者が適切な時間を見つけるために何か言えることはありますか?
+      process_subtitle_v2: 空き時間を見つける
+      process_introduction_v2: <p><strong>時間アンケートを</strong>使えば、参加者の都合の良い時間を確認できます。希望する時間を追加すると、参加者はそれぞれのタイムゾーンで時間を確認できます。アンケートが終了したら結果を設定すると、Loomioから全員にカレンダーの招待状が送信されます。</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">Time poll の詳細をご覧ください</a>。</p>
     opt_in:
       process_subtitle: ボランティアを探すか参加者を募集する
       process_introduction: <p>オプトインを使用して、チーム、委員会、またはワーキング グループに参加したり、イベントに参加するようユーザーを招待します。</p><p> 「オプトイン」には、「承認」または「拒否」の 2 つの投票オプションがあります。</p><p>ワーキンググループに参加してほしい人数の目標を定義できます。たとえば、3 人が参加するなどです。</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#opt-in">オプトインの詳細については、こちらをご覧ください</a>。</p>
@@ -529,6 +573,27 @@ ja:
       accept_prompt: なぜこれにボランティアとして参加するのですか?
       decline_meaning: 参加できません
       decline_prompt: 何か言いたいことはありますか？
+    try_loomio:
+      process_name: Loomioを試してみましょう
+      process_subtitle: グループでLoomioを一緒に試してみましょう
+      process_introduction: "<p>Loomioを最大限に活用するには、グループでの取り組みが必要です。この提案は、グループがLoomioを本格的に使い始めるために時間と労力を費やすべきかどうかを判断するのに役立ちます。トライアル期間に参加するか、一緒にプランに申し込むかは関係ありません。</p>"
+      title: 一緒にLoomioを試してみましょう
+      details: "<p>Loomio をうまく使うにはグループの努力が必要です。人々が現れて参加して初めて機能します。</p><p>この提案では、トライアル期間中にLoomioを積極的にご利用いただくことを皆様にお願いしています。つまり、チェックイン、提案への投票、そしてディスカッションへの参加をしていただくことになります。</p><p>これについて懸念がある場合は、異議を唱えて、何を変更する必要があるかを述べてください。異議申し立てオプションはそのためにあるのです。</p>"
+      outcome_statement: "<p>この提案の結果（何が決定され、次に何が起こるか）をグループと共有します。</p>"
+      consent_meaning: やってみたいと思います
+      consent_prompt: Loomio を使う上で楽しみにしていることは何ですか?
+      objection_meaning: まず対処すべき懸念がある
+      objection_prompt: コミットする前に何を変更する必要がありますか?
+    majority:
+      process_subtitle: 最多得票数で決定する
+      process_introduction: "<p><strong>多数決は</strong>、グループで意思決定を行う最もシンプルな方法です。参加者は賛成か反対かを投票し、過半数が賛成すれば提案は可決されます。棄権や反対は認められないため、すべての投票は同等の重みを持ちます。</p><p>明確な結果が必要な、単純な決定には多数決が効果的です。人々が協力して互いを理解し、共通点を見出すことが重要となる決定には、同意またはコンセンサスを検討してください。</p>"
+      title: 第3四半期の予算を承認する
+      details: "<h3><strong>あなたが下すべき決断とは何ですか?</strong></h3><p></p><h3><strong>なぜこれが重要なのでしょうか?</strong></h3><p></p><h3><strong>人々に何をするよう求めているのですか?</strong></h3><p></p>"
+      yes_meaning: 私はこの提案を支持する
+      yes_prompt: なぜこの提案を支持するのですか?
+      no_meaning: 私はこの提案を支持しない
+      no_prompt: なぜこの提案を支持しないのですか?
+      outcome_statement: "<p>この多数決投票にご参加いただきありがとうございます。</p>"
   forward_mailer:
     bounce:
       subject: Loomioへのメッセージは配信されませんでした

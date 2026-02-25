@@ -312,10 +312,17 @@ fi:
       align: Kohdistaa
       original: Alkuperäinen
       rearrange: Järjestä uudelleen
+      save_template: Tallenna mallipohja
+      fork_template: Haarukan mallipohja
     formatting_help:
       label: Muotoilu
       title: Opi käyttämään Markdownia tekstin muotoiluun
     thread: Kierre
+    commercial: Kaupallinen
+    nonprofit: Voittoa tavoittelematon
+    opening_in: Avautuminen %{aika}
+    read_more: Lue lisää
+    templates_admin_hint: Koska olet ryhmän ylläpitäjä, voit piilottaa tai poistaa tarpeettomat mallit ja muokata jäljellä olevia tarpeidesi mukaan.
   merge_accounts:
     modal:
       title: Yhdistä tilit
@@ -840,6 +847,7 @@ fi:
     none_direct_discussion: Ei mitään (suora keskustelu)
     direct_discussion: Suora keskustelu
     direct_discussion_hint: Suora keskustelu näkyy vain kutsumillesi henkilöille. Se ei näy minkään ryhmän keskusteluluettelossa – löydät sen Suorat keskustelut -sivultasi.
+    recommended_poll_templates: Suositellut kyselypohjat
   announcement:
     send_discussion: Lähetä lanka
     send_group: Kutsu ihmisiä %{name}
@@ -1213,6 +1221,7 @@ fi:
     no_discussions_here: Ei keskusteluja nähtävänä täällä!
     private_discussions: Sinun on oltava jäsen nähdäksesi tämän ryhmän yksityiset keskustelut.
     view_closed_discussions: Näytä suljetut keskustelut
+    discussion_templates: Keskustelupohjat
   export_data_modal:
     title: Miten haluat käyttää tietojasi?
     as_csv: Avaa se laskentataulukossa
@@ -1333,7 +1342,6 @@ fi:
     default_request_to_join_prompt: Kiitos mielenkiinnostasi ryhmäämme kohtaan. Esittele itsesi ja selitä, miksi pyydät liittymistä.
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Päivitä tilauksesi</a> luodaksesi aliryhmän'
     share_this_url_with_people_who_want_to_join: Jaa tämä URL-osoite niiden kanssa, jotka haluavat liittyä
-    new_description_html: "<h3>Millaisia haasteita organisaatiollanne on päätöksenteossa?</h3><p></p><h3> Miten haluaisit käyttää Loomiota organisaatiossasi?</h3><p></p>"
     allow_polls_without_discussions: Salli kyselyt ilman keskustelua
     allow_polls_without_discussions_help: Estä ihmisiä aloittamasta kyselyitä ilman keskustelun aloittamista ensin.
     aria_label: Ryhmälomake
@@ -1771,6 +1779,7 @@ fi:
     meeting_title: Aikakysely
     ranked_choice_title: Sijoitettu valinta
     gradients_of_agreement_title: Sopimuksen gradientit
+    majority_title: Enemmistö
   poll_option_form:
     edit_option: Muokkaa vaihtoehtoa
     option_name: Vaihtoehdon nimi
@@ -1893,6 +1902,21 @@ fi:
     post_outcome: Tulosten julkaisu
     view_all_votes: Näytä kaikki äänet
     you_voted: Äänestit
+    these_are_templates: Nämä ovat ryhmäsi päätösmallit. Aloita uusi päätös napsauttamalla mallia. Ylläpitäjät voivat mukauttaa kaikkia mallin tietoja, jotta se vastaa organisaatiosi käytäntöjä ja on helppo jäsenten löytää ja käyttää sitä.
+    example_templates: Esimerkkimalleja
+    example_poll_templates: Esimerkkikyselyn mallipohjista
+    browse_example_templates: Selaa esimerkkipohjia
+    browse_example_templates_hint: Luo uusi kyselypohja tyhjästä tai käytä esimerkkiä aloittaaksesi.
+    browse_example_use_hint: Aloita kysely napsauttamalla mallin <b>otsikkoa</b> .
+    browse_example_fork_hint: "<b>Luo uusi kyselymalli napsauttamalla haarukkakuvaketta</b> ja käytä esimerkkiä lähtökohtana."
+    browse_unsure_help: Etkö ole varma, miten kyselypohjia käytetään?
+    all_templates_hidden: Kaikki mallit on piilotettu
+    new_poll_template_title: Uusi kyselymalli
+    new_template_from_blank: Uusi pohja tyhjästä
+    new_template_from_blank_subtitle: Luo uusi malli, joka sopii organisaatiossasi käytössä olevaan prosessiin
+    blank: Uusi
+    blank_subtitle: Luo uusi kyselymalli tietylle prosessille
+    start_a_poll: Aloita kysely
   poll_common_attachment_form:
     label: Liitteet
   poll_common_add_option:
@@ -2004,6 +2028,7 @@ fi:
     voting_disabled_poll_is_template: Äänestys estetty. Tämä on malli.
     for_this_proposal_to_pass: 'Jotta tämä ehdotus menisi läpi:'
     for_this_poll_type_to_be_valid: 'Jotta tämä %{poll_type} olisi kelvollinen:'
+    voting_opens_at: Tämä %{poll_type} avautuu äänestykseen %{time}
   poll_common_collapsed:
     by_who: "%{name}"
   poll_common_calendar_invite:
@@ -2583,6 +2608,8 @@ fi:
       ranked_choice_hint: Äänestäjät järjestävät vaihtoehdot mieluisimman ja vähiten toivotun mukaiseen järjestykseen
       time_poll: Aikakysely
       time_poll_hint: Äänestäjät ilmoittavat, milloin he ovat käytettävissä tapaamiseen
+      rank: Sijoitus
+      time: Aika
     process: Käsitellä
     process_name: Mallipohjan otsikko
     process_name_hint: Mikä tämän mallin nimi on? Esim. Rooliohjeet, Lämpötilan tarkistus, Pöytäkirjan hyväksyntä
@@ -2638,6 +2665,12 @@ fi:
     hide_results_description: Jos haluat ihmisten äänestävän näkemättä, miten muut ovat äänestäneet, voit piilottaa tulokset.
     process_helptext: Nimeä ja kuvaile prosessi, jota käytetään tämän kyselyn suorittamiseen.
     reminder_helptext: Lähetä "Hakuaika päättyy pian" -ilmoitus 24 tuntia ennen määräaikaa. Tämä voi lisätä osallistumisprosenttia ja antaa ihmisille mahdollisuuden harkita kantaansa uudelleen.
+    voting_duration: Kesto
+    voting_duration_hint: Milloin äänestys alkaa ja milloin se sulkeutuu?
+    more_settings: Lisää asetuksia
+    create_poll_type: Luo %{poll_type}
+    notify_voters_when_voting_opens: Ilmoita äänestäjille äänestyksen alkamisesta
+    voters_notified_when_opens: Äänestäjille ilmoitetaan äänestyksen alkamisesta
   poll_receipts_page:
     verify_participants: Vahvista osallistujat
     see_votes_if_quorum_reached: Jos äänestys on päättynyt ja päätösvaltainen määrä on saavutettu, näet ketkä äänestivät.
@@ -2654,10 +2687,8 @@ fi:
     aria_label: Lisää vastaus
   discussion_template:
     browse_public_templates: Selaa mallipohjagalleriaa
-    start_a_new_discussion: Aloita uusi keskustelu
     discussion_template_saved: Keskustelumalli tallennettu
     these_are_public_templates: Nämä mallit ovat käytettävissäsi kopioitaviksi tai muokattavaksi ryhmällesi sopiviksi.
-    these_are_templates: Nämä ovat ryhmäsi keskustelupohjat. Aloita keskustelu napsauttamalla pohjaa. Voit myös muokata, poistaa tai järjestellä niitä uudelleen, jos haluat.
     default_title_label: Oletusotsikko
     default_title_hint: Täytä otsikkokenttä muokattavalla tekstillä. Tämä on valinnaista – jätä tyhjäksi, jos olet epävarma.
     title_placeholder_label: Esimerkki otsikosta
@@ -2674,7 +2705,6 @@ fi:
     browse_example_templates: Selaa esimerkkipohjia
     example_templates: Esimerkkimalleja
     browse_public_templates_hint: Aloita keskustelu mallipohjan nimeä napsauttamalla sen kanssa tai kopioi mallipohja ja muokkaa sitä omaa ryhmääsi varten napsauttamalla oikealla olevaa muokkauspainiketta.
-    these_are_templates_v2: Tämä on luettelo ryhmäsi keskustelumalleista. Napsauta mallia käyttääksesi sitä uuden keskustelun lähtökohtana. Ryhmän ylläpitäjät voivat muokata malleja ja järjestää luettelon uudelleen, jotta tärkeät mallit löytyvät helposti.
     process_name_placeholder: esim. viikoittainen stand up
     process_subtitle_placeholder: esim. Lyhyt yhteydenotto tiimiin joka viikko
     default_title_placeholder: esim. Stand-up - 15. tammikuuta
@@ -2689,6 +2719,21 @@ fi:
     poll_templates_help: Tässä valitsemasi mallit näkyvät ensin, kun joku napsauttaa Aloita äänestys -painiketta.
     start_direct_discussion_from_blank: Aloita suora keskustelu tyhjästä mallista
     default_to_direct_discussion: Aloita suorana keskusteluna (ei ryhmäkeskusteluna)
+    default_to_direct_discussion_helptext: Käytä tätä, jos haluat ihmisten aloittavan suoria keskusteluja tästä mallista.
+    example_discussion_templates: Esimerkkikeskustelupohjista
+    browse_example_use_hint: "<b>Aloita keskustelu</b> napsauttamalla mallipohjan otsikkoa."
+    browse_example_fork_hint: "<b>Luo uusi keskustelumalli napsauttamalla haarukkakuvaketta</b> ja käytä esimerkkiä lähtökohtana."
+    new_discussion_template_title: Uusi keskustelumalli
+    new_template_from_blank: Uusi pohja tyhjästä
+    new_template_from_blank_subtitle: Luo uusi malli, joka sopii organisaatiossasi käytössä olevaan prosessiin
+    these_are_templates_v3: Nämä ovat ryhmäsi keskustelupohjat. Aloita uusi keskustelu napsauttamalla pohjaa.
+    these_are_templates_admin_hint: Ryhmän ylläpitäjät voivat muokata malleja, luoda uusia malleja, järjestellä niitä uudelleen ja piilottaa/näyttää malleja. Vain ylläpitäjät voivat nähdä piilotetut mallit.
+    show_hidden_templates: Näytä piilotetut mallit
+    show_fewer: Näytä vähemmän
+    start_a_new_discussion: Aloita uusi keskustelu
+    start_discussion: Aloita keskustelu
+    start_a_direct_discussion: Aloita suora keskustelu
+    these_are_templates: Nämä ovat ryhmäsi keskustelupohjat.
   context_panel:
     thread_status:
       pinned: Tämä keskustelu on kiinnitetty. Se pysyy ryhmän keskusteluluettelon yläosassa kaikille käyttäjille.
@@ -2715,3 +2760,9 @@ fi:
   auth:
     oauth_cancelled: Kirjautuminen peruutettiin
     switching_accounts: Tilin vaihto. Kirjaudu sisään uusilla tilitiedoillasi.
+  poll_common_opening_at_field:
+    voting_opens_immediately: Äänestys alkaa heti
+    opening_date: Avajaispäivä
+    opening_hour: Aukioloaika
+    scheduled_hint: Äänestys on näkyvissä, mutta sitä ei voi äänestää ennen sen alkamista.
+    draft_hint: Tämä kysely tallennetaan luonnoksena. Aseta aloituspäivämäärä tai valitse "Äänestys alkaa välittömästi", kun olet valmis aloittamaan äänestämisen.

@@ -312,10 +312,17 @@ nl_NL:
       align: Uitlijnen
       original: Origineel
       rearrange: Herschikken
+      save_template: Sjabloon opslaan
+      fork_template: Vorksjabloon
     formatting_help:
       label: Aan het formatteren
       title: Leer hoe je Markdown kan gebruiken om tekst op te maken
     thread: Draad
+    commercial: Commercieel
+    nonprofit: Non-profit
+    opening_in: Openingstijden %{tijd}
+    read_more: Lees meer
+    templates_admin_hint: Omdat u groepsbeheerder bent, kunt u sjablonen die u niet wilt verbergen of verwijderen en de overgebleven sjablonen aanpassen aan uw behoeften.
   merge_accounts:
     modal:
       title: Accounts samenvoegen
@@ -844,6 +851,7 @@ nl_NL:
     none_direct_discussion: Geen (directe discussie)
     direct_discussion: Directe discussie
     direct_discussion_hint: Een privégesprek is alleen zichtbaar voor de specifieke personen die je uitnodigt. Het verschijnt niet in de gesprekslijst van een groep, maar je vindt het op je pagina met privégesprekken.
+    recommended_poll_templates: Aanbevolen enquêtesjablonen
   announcement:
     send_discussion: Bord verzenden
     send_group: Nodig mensen uit voor %{name}
@@ -1221,6 +1229,7 @@ nl_NL:
     no_discussions_here: Er zijn hier geen discussies te zien!
     private_discussions: Je moet lid zijn om de privéthreads in deze groep te kunnen bekijken
     view_closed_discussions: Bekijk gesloten discussies
+    discussion_templates: Discussiesjablonen
   export_data_modal:
     title: Hoe wil je je data gebruiken?
     as_csv: Openen in een spreadsheet
@@ -1341,7 +1350,6 @@ nl_NL:
     default_request_to_join_prompt: Bedankt voor uw interesse in onze groep. Stel uzelf voor en leg uit waarom u lid wilt worden.
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Upgrade uw abonnement</a> om een subgroep te creëren'
     share_this_url_with_people_who_want_to_join: Deel deze URL met mensen die mee willen doen
-    new_description_html: "<h3>Voor welke uitdagingen staat uw organisatie bij het nemen van beslissingen?</h3><p></p><h3> Hoe wilt u Loomio in uw organisatie gebruiken?</h3><p></p>"
     allow_polls_without_discussions: Peilingen zonder discussie toestaan
     allow_polls_without_discussions_help: Voorkom dat mensen peilingen starten zonder eerst een discussie te beginnen.
     aria_label: Groepsvorm
@@ -1796,6 +1804,7 @@ nl_NL:
     meeting_title: Moment bevragen
     ranked_choice_title: Keuzes rangschikken
     gradients_of_agreement_title: Gradiënten van overeenkomst
+    majority_title: Meerderheid
   poll_option_form:
     edit_option: Optie bewerken
     option_name: Optie naam
@@ -1918,6 +1927,21 @@ nl_NL:
     post_outcome: Uitkomst publiceren
     view_all_votes: Bekijk alle stemmen
     you_voted: Je hebt gestemd
+    these_are_templates: Dit zijn de beslissingssjablonen in uw groep. Klik op een sjabloon om een nieuwe beslissing te starten. Beheerders kunnen alle details van een sjabloon aanpassen, zodat deze aansluit bij de werkwijze van uw organisatie en gemakkelijk te vinden en te gebruiken is voor leden.
+    example_templates: Voorbeeldsjablonen
+    example_poll_templates: Voorbeelden van enquêtesjablonen
+    browse_example_templates: Bekijk voorbeeldtemplates
+    browse_example_templates_hint: Maak een nieuw enquêtesjabloon helemaal vanaf nul, of gebruik een voorbeeld om te beginnen.
+    browse_example_use_hint: Klik op de titel van de sjabloon om <b>een enquête te starten</b> .
+    browse_example_fork_hint: "<b>Klik op het vorkpictogram</b> om een nieuwe enquêtesjabloon te maken, waarbij u het voorbeeld als uitgangspunt gebruikt."
+    browse_unsure_help: Weet u niet zeker hoe u polltemplates moet gebruiken?
+    all_templates_hidden: Alle sjablonen zijn verborgen.
+    new_poll_template_title: Nieuw enquête-sjabloon
+    new_template_from_blank: Nieuw sjabloon vanuit een blanco pagina
+    new_template_from_blank_subtitle: Maak een nieuwe sjabloon die aansluit op een proces binnen uw organisatie.
+    blank: Nieuw
+    blank_subtitle: Maak een nieuwe enquêtesjabloon voor een specifiek proces.
+    start_a_poll: Start een enquête
   poll_common_attachment_form:
     label: Bijlagen
   poll_common_add_option:
@@ -2031,6 +2055,7 @@ nl_NL:
     voting_disabled_poll_is_template: Stemmen uitgeschakeld. Dit is een sjabloon.
     for_this_proposal_to_pass: 'Om dit voorstel te laten slagen:'
     for_this_poll_type_to_be_valid: 'Om deze %{poll_type} geldig te laten zijn:'
+    voting_opens_at: Deze %{poll_type} opent voor stemming %{time}
   poll_common_collapsed:
     by_who: door %{name}
   poll_common_calendar_invite:
@@ -2612,6 +2637,8 @@ nl_NL:
       ranked_choice_hint: Kiezers rangschikken de opties in volgorde van meest naar minst geprefereerd
       time_poll: Tijd peiling
       time_poll_hint: Kiezers geven aan wanneer zij beschikbaar zijn om te vergaderen
+      rank: Rang
+      time: Tijd
     process: Proces
     process_name: Sjabloontitel
     process_name_hint: 'Hoe noem je deze template? Bijvoorbeeld: Roladvies, Temperatuurcontrole, Goedkeuring van notulen.'
@@ -2667,6 +2694,12 @@ nl_NL:
     hide_results_description: Als u wilt dat mensen stemmen zonder te zien wat anderen hebben gestemd, kunt u de resultaten verbergen.
     process_helptext: Benoem en beschrijf het proces dat wordt gebruikt om deze poll uit te voeren.
     reminder_helptext: Stuur 24 uur voor de deadline een melding 'Sluit binnenkort'. Dit kan de deelname vergroten en mensen de kans geven om hun standpunt te heroverwegen.
+    voting_duration: Duur
+    voting_duration_hint: Wanneer gaat de stemming open en wanneer sluit deze?
+    more_settings: Meer instellingen
+    create_poll_type: Maak %{poll_type} aan
+    notify_voters_when_voting_opens: Informeer kiezers wanneer de stembussen opengaan.
+    voters_notified_when_opens: Kiezers worden op de hoogte gesteld wanneer de stembussen opengaan.
   poll_receipts_page:
     verify_participants: Deelnemers verifiëren
     see_votes_if_quorum_reached: Als de stemming is gesloten en het quorum is bereikt, ziet u wie er gestemd heeft.
@@ -2683,10 +2716,8 @@ nl_NL:
     aria_label: Voeg een antwoord toe
   discussion_template:
     browse_public_templates: Blader door de sjabloongalerij
-    start_a_new_discussion: Start een nieuwe discussie
     discussion_template_saved: Discussiesjabloon opgeslagen
     these_are_public_templates: Deze sjablonen kunt u kopiëren of aanpassen aan uw groep
-    these_are_templates: Dit zijn de discussiesjablonen in je groep. Klik op een sjabloon om een discussie te starten. Je kunt deze desgewenst ook bewerken, verwijderen of opnieuw ordenen.
     default_title_label: Standaardtitel
     default_title_hint: Vul het titelveld vooraf in met bewerkbare tekst. Dit is optioneel; laat het leeg als u het niet zeker weet.
     title_placeholder_label: Voorbeeldtitel
@@ -2703,7 +2734,6 @@ nl_NL:
     browse_example_templates: Bekijk voorbeeldtemplates
     example_templates: Voorbeeldsjablonen
     browse_public_templates_hint: Klik op een sjabloonnaam om een discussie erover te starten, of klik op de bewerkingsknop aan de rechterkant om een kopie te maken en deze aan te passen voor je eigen groep.
-    these_are_templates_v2: Dit is een lijst met de discussiesjablonen in uw groep. Klik op een sjabloon om deze als uitgangspunt voor een nieuwe discussie te gebruiken. Groepsbeheerders kunnen sjablonen bewerken en de lijst herschikken, zodat de belangrijkste sjablonen gemakkelijk te vinden zijn.
     process_name_placeholder: 'bijvoorbeeld: Wekelijkse stand-up'
     process_subtitle_placeholder: 'Bijvoorbeeld: Een kort overleg met het team elke week.'
     default_title_placeholder: bijv. Standup - 15 januari
@@ -2718,6 +2748,21 @@ nl_NL:
     poll_templates_help: De sjablonen die u hier selecteert, worden als eerste weergegeven wanneer iemand op 'Een stemming starten' klikt.
     start_direct_discussion_from_blank: Start een direct gesprek vanuit een leeg sjabloon.
     default_to_direct_discussion: Begin als een direct gesprek (zonder groep).
+    default_to_direct_discussion_helptext: Gebruik dit als je wilt dat mensen vanuit deze sjabloon direct een discussie starten.
+    example_discussion_templates: Voorbeelden van discussiesjablonen
+    browse_example_use_hint: Klik op de titel van de sjabloon om <b>een discussie te starten</b> .
+    browse_example_fork_hint: "<b>Klik op het vorkpictogram</b> om een nieuw discussiesjabloon te maken, waarbij u het voorbeeld als uitgangspunt gebruikt."
+    new_discussion_template_title: Nieuw discussiesjabloon
+    new_template_from_blank: Nieuw sjabloon vanuit een blanco pagina
+    new_template_from_blank_subtitle: Maak een nieuwe sjabloon die aansluit op een proces binnen uw organisatie.
+    these_are_templates_v3: Dit zijn de discussiesjablonen in jouw groep. Klik op een sjabloon om een nieuwe discussie te starten.
+    these_are_templates_admin_hint: Groepsbeheerders kunnen sjablonen bewerken, nieuwe sjablonen maken, herschikken en verbergen/weergeven. Alleen beheerders kunnen de verborgen sjablonen zien.
+    show_hidden_templates: Verborgen sjablonen weergeven
+    show_fewer: Minder weergeven
+    start_a_new_discussion: Start een nieuwe discussie
+    start_discussion: Start een discussie
+    start_a_direct_discussion: Start een direct gesprek
+    these_are_templates: Dit zijn de discussiesjablonen in jullie groep.
   context_panel:
     thread_status:
       pinned: Deze discussie is vastgezet en blijft bovenaan de discussielijst van de groep staan voor alle gebruikers.
@@ -2744,3 +2789,9 @@ nl_NL:
   auth:
     oauth_cancelled: Aanmelden is geannuleerd
     switching_accounts: Account overzetten. Log in met uw nieuwe accountgegevens.
+  poll_common_opening_at_field:
+    voting_opens_immediately: De stemming is direct geopend.
+    opening_date: Openingsdatum
+    opening_hour: Openingstijd
+    scheduled_hint: De poll zal zichtbaar zijn, maar er kan pas gestemd worden vanaf het openingstijdstip.
+    draft_hint: Deze peiling wordt als concept opgeslagen. Stel een openingsdatum in of vink 'Stemmen opent direct' aan wanneer u klaar bent om te beginnen met stemmen.

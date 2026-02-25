@@ -178,9 +178,21 @@ proposal:
     - key: looks_good
       name_i18n: poll_check_options.looks_good
       icon: agree
-      meaning_i18n: poll_templates.sense_check.looks_good_meaning
-      prompt_i18n: poll_templates.sense_check.looks_good_prompt
+      meaning_i18n: poll_templates.sense_check.looks_good_meaning_v2
+      prompt_i18n: poll_templates.sense_check.looks_good_prompt_v2
       color: '#70C9F8'
+    - key: could_be_better
+      name_i18n: poll_templates.sense_check.could_be_better
+      icon: abstain
+      meaning_i18n: poll_templates.sense_check.could_be_better_meaning
+      prompt_i18n: poll_templates.sense_check.could_be_better_prompt
+      color: "#C8E56E"
+    - key: needs_a_rethink
+      name_i18n: poll_templates.sense_check.needs_a_rethink
+      icon: disagree
+      meaning_i18n: poll_templates.sense_check.needs_a_rethink_meaning
+      prompt_i18n: poll_templates.sense_check.needs_a_rethink_prompt
+      color: "#D38FE1"
     - key: accept
       name_i18n: poll_count_options.accept
       icon: agree
@@ -193,6 +205,18 @@ proposal:
       meaning_i18n: poll_templates.opt_in.decline_meaning
       prompt_i18n: poll_templates.opt_in.decline_prompt
       color: "#C8E56E"
+    - key: 'yes'
+      name_i18n: poll_proposal_options.yes
+      icon: agree
+      meaning_i18n: poll_templates.majority.yes_meaning
+      prompt_i18n: poll_templates.majority.yes_prompt
+      color: '#70C9F8'
+    - key: 'no'
+      name_i18n: poll_proposal_options.no
+      icon: disagree
+      meaning_i18n: poll_templates.majority.no_meaning
+      prompt_i18n: poll_templates.majority.no_prompt
+      color: "#D38FE1"
   defaults:
     details_format: html
     process_introduction_format: html

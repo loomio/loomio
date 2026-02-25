@@ -318,10 +318,17 @@ de:
       align: Ausrichten
       original: Original
       rearrange: Neu anordnen
+      save_template: Vorlage speichern
+      fork_template: Gabelvorlage
     formatting_help:
       label: Markdown-Formatierung
       title: Mehr über die Textformatierung mit Markdown lernen
     thread: Faden
+    commercial: Kommerziell
+    nonprofit: Gemeinnützig
+    opening_in: Öffnungszeit}
+    read_more: Mehr lesen
+    templates_admin_hint: Da Sie Gruppenadministrator sind, können Sie alle Vorlagen, die Sie nicht benötigen, ausblenden oder löschen und die verbleibenden Vorlagen nach Ihren Bedürfnissen bearbeiten.
   merge_accounts:
     modal:
       title: Benutzerkonten zusammenführen
@@ -850,6 +857,7 @@ de:
     none_direct_discussion: Keine (direkte Diskussion)
     direct_discussion: Direkte Diskussion
     direct_discussion_hint: Eine Direktkonversation ist nur für die von Ihnen eingeladenen Personen sichtbar. Sie erscheint nicht in der Diskussionsliste einer Gruppe, sondern auf Ihrer Seite „Direktdiskussionen“.
+    recommended_poll_templates: Empfohlene Umfragevorlagen
   announcement:
     send_discussion: Diskussion teilen
     send_group: Personen zu %{name} einladen
@@ -1227,6 +1235,7 @@ de:
     no_discussions_here: Hier gibt es keine Diskussionen!
     private_discussions: Um private Beiträge in dieser Gruppe sehen zu können, müssen Sie Mitglied sein.
     view_closed_discussions: Geschlossene Diskussionen ansehen
+    discussion_templates: Diskussionsvorlagen
   export_data_modal:
     title: Wie willst du deine Daten benutzen?
     as_csv: In einer Tabellenkalkulation öffnen
@@ -1349,7 +1358,6 @@ de:
     default_request_to_join_prompt: Vielen Dank für Ihr Interesse an unserer Gruppe. Bitte stellen Sie sich vor und erklären Sie, warum Sie Mitglied werden möchten.
     upgrade_for_subgroups: 'Bitte <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">aktualisieren Sie Ihr Abonnement</a> , um eine Untergruppe zu erstellen'
     share_this_url_with_people_who_want_to_join: Teilen Sie diese URL mit Leuten, die beitreten möchten
-    new_description_html: "<h3>Vor welchen Herausforderungen steht Ihre Organisation bei der Entscheidungsfindung?</h3><p></p><h3> Wie möchten Sie Loomio in Ihrer Organisation einsetzen?</h3><p></p>"
     allow_polls_without_discussions: Umfragen ohne Diskussion zulassen
     allow_polls_without_discussions_help: Verhindert, dass Personen Umfragen starten, ohne vorher eine Diskussion zu beginnen.
     aria_label: Gruppenbildung
@@ -1804,6 +1812,7 @@ de:
     meeting_title: Terminfindung
     ranked_choice_title: Prioritätensetzung
     gradients_of_agreement_title: Übereinstimmungsgradienten
+    majority_title: Mehrheitlich
   poll_option_form:
     edit_option: Option bearbeiten
     option_name: Optionsname
@@ -1926,6 +1935,21 @@ de:
     post_outcome: Ergebnis veröffentlichen
     view_all_votes: Alle Abstimmungen ansehen
     you_voted: Sie haben abgestimmt
+    these_are_templates: Dies sind die Entscheidungsvorlagen Ihrer Gruppe. Klicken Sie auf eine Vorlage, um eine neue Entscheidung zu erstellen. Administratoren können alle Details einer Vorlage anpassen, sodass sie den Vorgehensweisen Ihrer Organisation entspricht und für Mitglieder leicht auffindbar und nutzbar ist.
+    example_templates: Beispielvorlagen
+    example_poll_templates: Beispielvorlagen für Umfragen
+    browse_example_templates: Beispielvorlagen ansehen
+    browse_example_templates_hint: Erstellen Sie eine neue Umfragevorlage von Grund auf oder verwenden Sie ein Beispiel als Ausgangspunkt.
+    browse_example_use_hint: Klicken Sie auf den Vorlagentitel, um <b>eine Umfrage zu starten</b> .
+    browse_example_fork_hint: "<b>Klicken Sie auf das Gabelsymbol</b> , um eine neue Umfragevorlage zu erstellen. Das Beispiel dient dabei als Ausgangspunkt."
+    browse_unsure_help: Sie sind sich nicht sicher, wie Sie Umfragevorlagen verwenden?
+    all_templates_hidden: Alle Vorlagen wurden ausgeblendet
+    new_poll_template_title: Neue Umfragevorlage
+    new_template_from_blank: Neue Vorlage von Grund auf neu
+    new_template_from_blank_subtitle: Erstellen Sie eine neue Vorlage, die zu einem Prozess in Ihrer Organisation passt.
+    blank: Neu
+    blank_subtitle: Erstellen Sie eine neue Umfragevorlage für einen bestimmten Prozess
+    start_a_poll: Starte eine Umfrage
   poll_common_attachment_form:
     label: Arbeitsmaterialien
   poll_common_add_option:
@@ -2039,6 +2063,7 @@ de:
     voting_disabled_poll_is_template: Abstimmung deaktiviert. Dies ist eine Vorlage.
     for_this_proposal_to_pass: 'Damit dieser Vorschlag angenommen wird:'
     for_this_poll_type_to_be_valid: 'Damit dieser %{poll_type} gültig ist:'
+    voting_opens_at: Diese %{poll_type} öffnet zur Abstimmung %{time}
   poll_common_collapsed:
     by_who: von %{name}
   poll_common_calendar_invite:
@@ -2620,6 +2645,8 @@ de:
       ranked_choice_hint: Die Wähler ordnen die Optionen in der Reihenfolge von der am meisten bevorzugten bis zur am wenigsten bevorzugten Option an.
       time_poll: Zeitumfrage
       time_poll_hint: Wähler geben an, wann sie für ein Treffen verfügbar sind
+      rank: Rang
+      time: Zeit
     process: Verfahren
     process_name: Vorlagentitel
     process_name_hint: Wie nennt man diese Vorlage? Z. B. Rollenberatung, Temperaturkontrolle, Protokollgenehmigung
@@ -2675,6 +2702,12 @@ de:
     hide_results_description: Wenn Sie möchten, dass die Leute abstimmen, ohne zu sehen, wie andere abgestimmt haben, können Sie die Ergebnisse ausblenden.
     process_helptext: Benennen und beschreiben Sie den Prozess, der zur Durchführung dieser Umfrage verwendet wird.
     reminder_helptext: Senden Sie 24 Stunden vor Ablauf der Frist eine Benachrichtigung mit dem Hinweis „Schließt bald“. Dies kann die Teilnahme erhöhen und den Teilnehmern die Möglichkeit geben, ihre Position zu überdenken.
+    voting_duration: Dauer
+    voting_duration_hint: Wann beginnt und wann endet die Abstimmung?
+    more_settings: Weitere Einstellungen
+    create_poll_type: Erstelle %{poll_type}
+    notify_voters_when_voting_opens: Benachrichtigen Sie die Wähler, wenn die Wahllokale geöffnet sind
+    voters_notified_when_opens: Die Wähler werden benachrichtigt, sobald die Wahllokale geöffnet sind.
   poll_receipts_page:
     verify_participants: Teilnehmer überprüfen
     see_votes_if_quorum_reached: Wenn die Abstimmung beendet ist und das Quorum erreicht ist, sehen Sie, wer seine Stimme abgegeben hat.
@@ -2691,10 +2724,8 @@ de:
     aria_label: Eine Antwort hinzufügen
   discussion_template:
     browse_public_templates: Durchsuchen Sie die Vorlagengalerie
-    start_a_new_discussion: Neue Diskussion starten
     discussion_template_saved: Diskussionsvorlage gespeichert
     these_are_public_templates: Diese Vorlagen stehen Ihnen zur Verfügung, um sie zu kopieren oder an Ihre Gruppe anzupassen.
-    these_are_templates: Dies sind die Diskussionsvorlagen in Ihrer Gruppe. Klicken Sie auf eine Vorlage, um eine Diskussion zu starten. Sie können diese auch bearbeiten, entfernen oder neu anordnen.
     default_title_label: Standardtitel
     default_title_hint: Füllen Sie das Titelfeld mit einem bearbeitbaren Text vorab aus. Dies ist optional – lassen Sie es leer, wenn Sie sich nicht sicher sind.
     title_placeholder_label: Beispieltitel
@@ -2711,7 +2742,6 @@ de:
     browse_example_templates: Beispielvorlagen ansehen
     example_templates: Beispielvorlagen
     browse_public_templates_hint: Klicken Sie auf einen Vorlagennamen, um eine Diskussion darüber zu starten, oder klicken Sie auf die Schaltfläche „Bearbeiten“ rechts, um eine Kopie zu erstellen und diese für Ihre eigene Gruppe anzupassen.
-    these_are_templates_v2: Dies ist eine Liste der Diskussionsvorlagen in Ihrer Gruppe. Klicken Sie auf eine Vorlage, um sie als Ausgangspunkt für eine neue Diskussion zu verwenden. Gruppenadministratoren können Vorlagen bearbeiten und die Liste neu anordnen, sodass wichtige Vorlagen leicht zu finden sind.
     process_name_placeholder: z. B. wöchentliches Stand-up-Meeting
     process_subtitle_placeholder: z. B. ein kurzes Treffen mit dem Team jede Woche
     default_title_placeholder: z. B. Standup – 15. Januar
@@ -2726,6 +2756,21 @@ de:
     poll_templates_help: Die hier ausgewählten Vorlagen werden zuerst angezeigt, wenn jemand auf „Abstimmung starten“ klickt.
     start_direct_discussion_from_blank: Starten Sie eine direkte Diskussion anhand einer leeren Vorlage.
     default_to_direct_discussion: Beginnen Sie mit einer direkten Diskussion (ohne Gruppe).
+    default_to_direct_discussion_helptext: Verwenden Sie diese Option, wenn Sie möchten, dass die Teilnehmer anhand dieser Vorlage direkte Diskussionen starten.
+    example_discussion_templates: Beispielhafte Diskussionsvorlagen
+    browse_example_use_hint: Klicken Sie auf den Vorlagentitel, um <b>eine Diskussion zu starten</b> .
+    browse_example_fork_hint: "<b>Klicken Sie auf das Gabelsymbol</b> , um eine neue Diskussionsvorlage zu erstellen. Das Beispiel dient dabei als Ausgangspunkt."
+    new_discussion_template_title: Neue Diskussionsvorlage
+    new_template_from_blank: Neue Vorlage von Grund auf neu
+    new_template_from_blank_subtitle: Erstellen Sie eine neue Vorlage, die zu einem Prozess in Ihrer Organisation passt.
+    these_are_templates_v3: Dies sind die Diskussionsvorlagen in Ihrer Gruppe. Klicken Sie auf eine Vorlage, um eine neue Diskussion zu starten.
+    these_are_templates_admin_hint: Gruppenadministratoren können Vorlagen bearbeiten, neue Vorlagen erstellen, Vorlagen neu anordnen und ein- bzw. ausblenden. Nur Administratoren können die ausgeblendeten Vorlagen sehen.
+    show_hidden_templates: Ausgeblendete Vorlagen anzeigen
+    show_fewer: Weniger anzeigen
+    start_a_new_discussion: Neue Diskussion starten
+    start_discussion: Starten Sie eine Diskussion
+    start_a_direct_discussion: Starten Sie eine direkte Diskussion
+    these_are_templates: Dies sind die Diskussionsvorlagen in Ihrer Gruppe.
   context_panel:
     thread_status:
       pinned: Diese Diskussion wurde angepinnt. Sie bleibt für alle Benutzer ganz oben in der Diskussionsliste der Gruppe.
@@ -2752,3 +2797,9 @@ de:
   auth:
     oauth_cancelled: Anmeldung abgebrochen
     switching_accounts: Kontowechsel. Bitte melden Sie sich mit Ihren neuen Kontodaten an.
+  poll_common_opening_at_field:
+    voting_opens_immediately: Die Abstimmung beginnt sofort.
+    opening_date: Eröffnungsdatum
+    opening_hour: Öffnungszeit
+    scheduled_hint: Die Umfrage wird vor dem Öffnungszeitpunkt sichtbar, aber erst abstimmungsbereit sein.
+    draft_hint: Diese Umfrage wird als Entwurf gespeichert. Legen Sie ein Startdatum fest oder aktivieren Sie „Die Abstimmung beginnt sofort“, wenn Sie mit der Abstimmung beginnen möchten.
