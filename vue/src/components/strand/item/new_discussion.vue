@@ -82,7 +82,7 @@ export default {
 
     viewed(viewed) {
       if (viewed && Session.isSignedIn()) {
-        this.discussion.markAsSeen();
+        this.topic.markAsSeen();
         if (Session.user().autoTranslate && this.actions['translate_thread'].canPerform()) {
           this.actions['translate_thread'].perform().then(() => { this.rebuildActions() });
         }

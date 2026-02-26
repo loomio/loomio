@@ -122,8 +122,9 @@ class Dev::PollsController < Dev::NightwatchController
   end
 
   def start_poll
-    sign_in saved fake_user
-    redirect_to new_poll_url
+    group = create_group_with_members
+    sign_in group.admins.first
+    redirect_to new_poll_url(group_id: group.id)
   end
 
 

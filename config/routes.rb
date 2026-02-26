@@ -178,7 +178,6 @@ Rails.application.routes.draw do
       end
 
       resources :discussions, only: [:show, :index, :create, :update] do
-        patch :move_comments, on: :member
         get :history, on: :member
         get :search, on: :collection
         get :dashboard, on: :collection
@@ -236,6 +235,7 @@ Rails.application.routes.draw do
         patch :close, on: :member
         patch :reopen, on: :member
         patch :move, on: :member
+        patch :move_comments, on: :member
         delete :discard, on: :member
       end
 

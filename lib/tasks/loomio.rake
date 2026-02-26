@@ -290,4 +290,5 @@ namespace :loomio do
     puts "SearchService.reindex_everything queued as background job"
   end
 
+
 end

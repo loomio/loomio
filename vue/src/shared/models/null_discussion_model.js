@@ -42,5 +42,4 @@ export default class NullDiscussionModel {
   polls() { return []; }
   discussion() { return this; }
   group() { return new NullGroupModel(); }
-  markAsRead() { return false; }
 };

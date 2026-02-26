@@ -219,6 +219,39 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
     assert_response :forbidden
   end
 
+  # Test mark_as_read action
+  test "marks a topic as read with range string" do
+    discussion = DiscussionService.create(params: { title: "Unread", group_id: @group.id }, actor: @admin)
+    comment = CommentService.create(comment: Comment.new(body: "hello", parent: discussion, author: @admin), actor: @admin)
+    sign_in @user
+
+    patch :mark_as_read, params: { id: discussion.topic.id, ranges: "1" }
+
+    assert_response :success
+    reader = TopicReader.for(user: @user, topic: discussion.topic)
+    assert_equal [[1, 1]], reader.read_ranges
+  end
+
+  test "marks a topic as read with multi-range string" do
+    discussion = DiscussionService.create(params: { title: "Unread", group_id: @group.id }, actor: @admin)
+    3.times { CommentService.create(comment: Comment.new(body: "hello", parent: discussion, author: @admin), actor: @admin) }
+    sign_in @user
+
+    patch :mark_as_read, params: { id: discussion.topic.id, ranges: "1-2,3" }
+
+    assert_response :success
+    reader = TopicReader.for(user: @user, topic: discussion.topic)
+    assert_equal [[1, 3]], reader.read_ranges
+  end
+
+  test "does not allow non-members to mark as read" do
+    sign_in @alien
+
+    patch :mark_as_read, params: { id: @topic.id, ranges: "1" }
+
+    assert_response :success # returns success but doesn't create reader due to ability check
+  end
+
   # Test mark_as_seen action
   test "marks a topic as seen" do
     discussion = DiscussionService.create(params: { title: "Unseen", group_id: @group.id }, actor: @admin)

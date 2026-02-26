@@ -6,7 +6,7 @@ module Ability::Topic
       can?(:show, topic.topicable)
     end
 
-    can [:update, :move, :pin, :close, :reopen, :discard], ::Topic do |topic|
+    can [:update, :move, :move_comments, :pin, :close, :reopen, :discard], ::Topic do |topic|
       topic.admins_include?(user)
     end
 

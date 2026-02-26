@@ -6,7 +6,7 @@ import Records from '@/shared/services/records';
 export default class EventModel extends BaseModel {
   static singular = 'event';
   static plural = 'events';
-  static indices = ['discussionId', 'topicId', 'sequenceId', 'position', 'depth', 'parentId', 'positionKey'];
+  static indices = ['topicId', 'sequenceId', 'position', 'depth', 'parentId', 'positionKey'];
   static uniqueIndices = ['id'];
 
   constructor(...args) {
@@ -17,7 +17,6 @@ export default class EventModel extends BaseModel {
   relationships() {
     this.belongsTo('parent', { from: 'events' });
     this.belongsTo('actor', { from: 'users' });
-    this.belongsTo('discussion');
     this.hasMany('notifications');
   }
 
@@ -26,7 +25,6 @@ export default class EventModel extends BaseModel {
       pinned: false,
       eventableId: null,
       eventableType: null,
-      discussionId: null,
       topicId: null,
       sequenceId: null,
       positition: 0,
@@ -128,7 +126,8 @@ export default class EventModel extends BaseModel {
   unpin() { return Records.events.remote.patchMember(this.id, 'unpin'); }
 
   isForking() {
-    const d = this.discussion();
+    const topic = this.topic();
+    const d = topic && topic.discussion();
     return d && d.forkedEventIds && (d.forkedEventIds.includes(this.id) || this.parentIsForking());
   }
 

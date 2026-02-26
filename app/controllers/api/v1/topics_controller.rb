@@ -71,6 +71,12 @@ class Api::V1::TopicsController < Api::V1::RestfulController
     respond_with_resource
   end
 
+  def move_comments
+    load_resource
+    EventService.move_comments(topic: resource, params: params, actor: current_user)
+    respond_with_resource
+  end
+
   def discard
     load_resource
     TopicService.discard(topic: resource, actor: current_user)

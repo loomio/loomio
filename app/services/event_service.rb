@@ -12,14 +12,13 @@ class EventService
     event
   end
 
-  def self.move_comments(discussion:, actor:, params:)
+  def self.move_comments(topic:, actor:, params:)
     ids = Array(params[:forked_event_ids]).compact
     source_topic = Event.find(ids.first).topic
-    source = source_topic&.topicable
 
-    actor.ability.authorize! :move_comments, source
-    actor.ability.authorize! :move_comments, discussion
-    MoveCommentsWorker.perform_async(ids, source.id, discussion.id)
+    actor.ability.authorize! :move_comments, source_topic
+    actor.ability.authorize! :move_comments, topic
+    MoveCommentsWorker.perform_async(ids, source_topic.id, topic.id)
   end
 
 end

@@ -34,7 +34,7 @@ export default new class DiscussionService {
 
       react: {
         dock: 1,
-        canPerform() { return AbilityService.canAddComment(discussion); }
+        canPerform() { return AbilityService.canAddComment(discussion.topic()); }
       },
 
       add_comment: {
@@ -42,7 +42,7 @@ export default new class DiscussionService {
         dockDisplay: 'icon',
         dock: 1,
         canPerform() {
-          return AbilityService.canAddComment(discussion) &&
+          return AbilityService.canAddComment(discussion.topic()) &&
                  !(discussion.group().adminsInclude(Session.user()) ||
                   ((discussion.group().membersCanAnnounce || discussion.group().membersCanAddGuests) && discussion.membersInclude(Session.user())))
         },

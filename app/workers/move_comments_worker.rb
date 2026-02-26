@@ -1,10 +1,8 @@
 class MoveCommentsWorker
   include Sidekiq::Worker
-  def perform(event_ids, source_discussion_id, target_discussion_id)
-    source_discussion = Discussion.find(source_discussion_id)
-    target_discussion = Discussion.find(target_discussion_id)
-    source_topic = source_discussion.topic
-    target_topic = target_discussion.topic
+  def perform(event_ids, source_topic_id, target_topic_id)
+    source_topic = Topic.find(source_topic_id)
+    target_topic = Topic.find(target_topic_id)
 
     # sanitize event_ids (so they cannot be from another topic), and ensure we have any children
     event_ids = Event.where(id: event_ids, topic_id: source_topic.id).pluck(:id)
@@ -14,13 +12,14 @@ class MoveCommentsWorker
     all_comments = Comment.where(id: Event.where(id: event_ids, eventable_type: 'Comment').pluck(:eventable_id))
     all_polls = Poll.where(id: Event.where(id: event_ids, eventable_type: 'Poll').pluck(:eventable_id))
 
-    # update polls to point to target discussion
-    all_polls.update_all(topic_id: target_discussion.topic_id)
+    # update polls to point to target topic
+    all_polls.update_all(topic_id: target_topic.id)
 
-    # update comment parents
+    # update comment parents if they pointed to the source topicable
+    target_topicable = target_topic.topicable
     all_comments.each do |c|
-      if c.parent_type == 'Discussion' && c.parent_id != target_discussion.id
-        c.update_columns(parent_id: target_discussion.id, parent_type: 'Discussion')
+      if c.parent_type == source_topic.topicable_type && c.parent_id == source_topic.topicable_id
+        c.update_columns(parent_id: target_topicable.id, parent_type: target_topicable.class.name)
       end
     end
 
@@ -29,12 +28,12 @@ class MoveCommentsWorker
     TopicService.repair_thread(target_topic.id)
     TopicService.repair_thread(source_topic.id)
 
-    SearchService.reindex_by_discussion_id(target_discussion.id)
-    SearchService.reindex_by_discussion_id(source_discussion.id)
+    SearchService.reindex_by_discussion_id(target_topicable.id) if target_topicable.is_a?(Discussion)
+    SearchService.reindex_by_discussion_id(source_topic.topicable_id) if source_topic.topicable_type == 'Discussion'
 
-    ActiveStorage::Attachment.where(record: all_events.map(&:eventable).compact).update_all(group_id: target_discussion.group_id)
+    ActiveStorage::Attachment.where(record: all_events.map(&:eventable).compact).update_all(group_id: target_topic.group_id)
 
-    MessageChannelService.publish_models(target_discussion.items, group_id: target_discussion.group.id)
+    MessageChannelService.publish_models(target_topic.items, group_id: target_topic.group_id)
   end
 
   def all_event_ids(root_ids, topic_id)

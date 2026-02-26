@@ -36,7 +36,7 @@ const filterLabels = {
   poll: 'decision_tools_card.poll_title'
 };
 
-const discussion = computed(() => props.topic.discussion());
+const discussion = computed(() => props.topic && props.topic.discussion());
 
 const userIsAdmin = computed(() => props.group.adminsInclude(Session.user()));
 
@@ -103,7 +103,7 @@ function dismissAlert() {
 
 function cloneTemplate(template) {
   const poll = template.buildPoll();
-  poll.topicId = props.topic.id
+  if (props.topic) { poll.topicId = props.topic.id }
   emit('setPoll', poll);
 }
 

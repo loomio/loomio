@@ -192,6 +192,11 @@ export default class TopicModel extends BaseModel {
     return this.volume() === 'mute';
   }
 
+  moveComments(forkedEventIds) {
+    this.processing = true;
+    return Records.topics.remote.patchMember(this.id, 'move_comments', { forked_event_ids: forkedEventIds }).finally(() => { this.processing = false; });
+  }
+
   discard() {
     this.processing = true;
     return Records.topics.remote.discard(this.id).finally(() => { this.processing = false; });

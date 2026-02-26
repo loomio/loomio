@@ -2,7 +2,7 @@ class Api::V1::DiscussionsController < Api::V1::RestfulController
   def create
     self.resource = service.create(params: resource_params, actor: current_user)
     if resource_params[:forked_event_ids]&.any?
-      EventService.move_comments(discussion: resource, params: resource_params, actor: current_user)
+      EventService.move_comments(topic: resource.topic, params: resource_params, actor: current_user)
     end
     respond_with_resource
   end
@@ -65,11 +65,6 @@ class Api::V1::DiscussionsController < Api::V1::RestfulController
     load_and_authorize(:group)
     instantiate_collection { |collection| collection.search_for(params.require(:q)) }
     respond_with_collection
-  end
-
-  def move_comments
-    EventService.move_comments(discussion: load_resource, params: params, actor: current_user)
-    respond_with_resource
   end
 
   def history

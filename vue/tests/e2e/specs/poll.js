@@ -471,4 +471,17 @@ module.exports = {
     // Verify the button says "ADD VOTERS" (Vuetify uppercases button text)
     page.expectText('.poll-members-form__submit', 'ADD VOTERS')
   },
+
+  'can_start_a_standalone_poll': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('polls/start_poll')
+    page.expectElement('.poll-common-choose-template')
+    page.click('.decision-tools-card__poll-type--proposal')
+    page.fillIn('.poll-common-form-fields__title input', 'A standalone proposal')
+    page.fillIn('.poll-common-form-fields__details .lmo-textarea div[contenteditable=true]', 'Some details')
+    page.click('.poll-common-form__submit')
+    page.expectText('.poll-common-card__title', 'A standalone proposal')
+    page.expectText('.poll-common-details-panel__details p', 'Some details')
+  },
 }
