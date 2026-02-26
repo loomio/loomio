@@ -50,14 +50,9 @@ export default {
       if (!match) { return true; }
 
       const sequenceId = parseInt(match[1]);
-
-      if (sequenceId == 0) {
-        this.focusedItemVisible =  keys.includes("00000")
-      } else {
-        const event =  Records.events.find({ discussionId: this.discussion.id, sequenceId: sequenceId })[0];
-        if (!event) { return false; }
-        this.focusedItemVisible =  keys.includes(event.positionKey)
-      }
+      const event = Records.events.find({ topicId: this.discussion.topicId, sequenceId: sequenceId })[0];
+      if (!event) { return false; }
+      this.focusedItemVisible = keys.includes(event.positionKey);
     })
 
     this.init();
@@ -131,7 +126,7 @@ export default {
       this.loader.addContextRule();
       this.loader.addLoadMyStuffRule();
 
-      if (this.discussion.itemsCount === 0) {
+      if (this.discussion.topic().itemsCount <= 1) {
         this.loader.addLoadNewestRule();
         // this.anchorSelector = '#strand-page';
         return;

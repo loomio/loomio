@@ -34,14 +34,6 @@ class EventSerializer < ApplicationSerializer
     end
   end
 
-  def position_key
-    if object.kind == "new_discussion"
-      "00000"
-    else
-      object.position_key
-    end
-  end
-
   def source_group
     Group.find_by(id: object.custom_fields['source_group_id'])
   end

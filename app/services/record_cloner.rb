@@ -242,8 +242,7 @@ class RecordCloner
       .reject { |i| drop_kinds.include?(i.kind) || i.id == created_event_id }
       .map { |event| new_clone_event_and_eventable(event) }
 
-    # clone_discussion.events << created_event
-    clone_topic.items = thread_events
+    clone_topic.items = [created_event] + thread_events
     clone_discussion
   end
 

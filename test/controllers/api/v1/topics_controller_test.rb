@@ -264,7 +264,7 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
     dr = TopicReader.last
     assert_equal discussion, dr.topic.topicable
     assert_not_nil dr.last_read_at
-    assert_equal 0, dr.read_items_count
+    assert_equal 1, dr.read_items_count  # root event (sequence_id 0) is marked as read
   end
 
   test "does not allow non-users to mark topics as seen" do

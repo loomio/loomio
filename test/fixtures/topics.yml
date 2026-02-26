@@ -2,7 +2,8 @@
 discussion_topic:
   topicable: discussion (Discussion)
   group: group
-  items_count: 0
+  items_count: 1
+  ranges_string: "0-0"
   max_depth: 2
   newest_first: false
   private: true
@@ -13,7 +14,8 @@ discussion_topic:
 public_discussion_topic:
   topicable: public_discussion (Discussion)
   group: public_group
-  items_count: 0
+  items_count: 1
+  ranges_string: "0-0"
   max_depth: 2
   newest_first: false
   private: false
@@ -24,7 +26,8 @@ public_discussion_topic:
 alien_discussion_topic:
   topicable: alien_discussion (Discussion)
   group: alien_group
-  items_count: 0
+  items_count: 1
+  ranges_string: "0-0"
   max_depth: 2
   newest_first: false
   private: true
@@ -35,7 +38,8 @@ alien_discussion_topic:
 subgroup_discussion_topic:
   topicable: subgroup_discussion (Discussion)
   group: subgroup
-  items_count: 0
+  items_count: 1
+  ranges_string: "0-0"
   max_depth: 2
   newest_first: false
   private: true

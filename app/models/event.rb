@@ -21,9 +21,7 @@ class Event < ApplicationRecord
 
   define_counter_cache(:child_count) { |e| e.children.count  }
   define_counter_cache(:descendant_count) { |e|
-    if e.kind == "new_discussion"
-      Event.where(topic_id: e.eventable&.topic&.id).count
-    elsif e.position_key && e.topic_id
+    if e.position_key && e.topic_id
       Event.where(topic_id: e.topic_id).
             where("id != ?", e.id).
             where('position_key like ?', e.position_key+"%").count
@@ -116,11 +114,22 @@ class Event < ApplicationRecord
   end
 
   def set_sequences
-    return unless parent_id # Root events (new_discussion) don't participate in the sequence
-    return if sequence_id.present? # Skip if already set (e.g., cloned events)
-    self.sequence_id = next_sequence_id!
-    self.position = next_position!
-    self.position_key = [parent&.position_key, Event.zero_fill(position)].compact.join('-')
+    if parent_id
+      return if sequence_id.present? # Skip if already set (e.g., cloned events)
+      self.sequence_id = next_sequence_id!
+      self.position = next_position!
+      self.position_key = [parent&.position_key, Event.zero_fill(position)].compact.join('-')
+    elsif root_event?
+      self.sequence_id = 0
+      self.position = 0
+      self.position_key = Event.zero_fill(0)
+    end
+  end
+
+  def root_event?
+    return true if kind == 'new_discussion'
+    return true if kind == 'poll_created' && eventable&.topic&.topicable == eventable
+    false
   end
 
   def set_sequence_id!

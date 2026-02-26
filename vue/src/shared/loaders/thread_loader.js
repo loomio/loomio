@@ -58,19 +58,11 @@ export default class ThreadLoader {
   }
 
   isUnread(event) {
-    if (event.kind === "new_discussion" || (event.kind === "poll_created" && event.parentId === null)) {
-      return this.discussion.updatedAt > (this.topic ? this.topic.lastReadAt : null);
-    } else {
-      return !RangeSet.includesValue(this.readRanges, event.sequenceId);
-    }
+    return !RangeSet.includesValue(this.readRanges, event.sequenceId);
   }
 
   sequenceIdIsUnread(id) {
-    if (id === 0) {
-      return this.discussion.updatedAt > (this.topic ? this.topic.lastReadAt : null);
-    } else {
-      return !RangeSet.includesValue(this.readRanges, id);
-    }
+    return !RangeSet.includesValue(this.readRanges, id);
   }
 
   expand(event) {
@@ -213,14 +205,16 @@ export default class ThreadLoader {
   }
 
   addContextRule() {
-    const createdEvent = this.topic ? this.topic.createdEvent() : this.discussion.createdEvent();
-    if (!createdEvent) { return; }
+    if (!this.topic) { return; }
     return this.addRule({
       name: 'context',
       local: {
-        find: {
-          id: createdEvent.id
-        }
+        find: { ...this.localTopicFind(), sequenceId: 0 }
+      },
+      remote: {
+        ...this.remoteTopicParam(),
+        sequence_id: 0,
+        per: 1
       }
     });
   }

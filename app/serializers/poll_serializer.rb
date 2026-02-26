@@ -58,7 +58,6 @@ class PollSerializer < ApplicationSerializer
              :topic_id,
              :group_id
 
-  has_one :created_event, serializer: EventSerializer, root: :events
   has_one :author, serializer: AuthorSerializer, root: :users
   has_one :current_outcome, serializer: OutcomeSerializer, root: :outcomes
   has_one :my_stance, serializer: StanceSerializer, root: :stances
@@ -123,10 +122,6 @@ class PollSerializer < ApplicationSerializer
 
   def poll_option_names
     cache_fetch(:poll_options_by_poll_id, object.id) { poll_options }.map(&:name)
-  end
-
-  def created_event
-    cache_fetch([:events_by_kind_and_eventable_id, 'poll_created'], object.id) { object.created_event }
   end
 
   def include_mentioned_usernames?

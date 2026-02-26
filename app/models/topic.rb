@@ -101,6 +101,10 @@ class Topic < ApplicationRecord
     )
   end
 
+  def replies_count
+    [items_count - 1, 0].max
+  end
+
   def ranges
     RangeSet.parse(ranges_string)
   end

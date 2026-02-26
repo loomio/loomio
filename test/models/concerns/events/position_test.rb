@@ -16,27 +16,27 @@ class Events::PositionTest < ActiveSupport::TestCase
 
     assert_equal 1, events[0].position
     assert_equal 1, events[0].sequence_id
-    assert_equal "00001", events[0].position_key
+    assert_equal "00000-00001", events[0].position_key
 
     assert_equal 2, events[1].position
     assert_equal 2, events[1].sequence_id
-    assert_equal "00002", events[1].position_key
+    assert_equal "00000-00002", events[1].position_key
 
     assert_equal 3, events[2].position
     assert_equal 3, events[2].sequence_id
-    assert_equal "00003", events[2].position_key
+    assert_equal "00000-00003", events[2].position_key
 
     assert_equal 4, events[3].position
     assert_equal 4, events[3].sequence_id
-    assert_equal "00004", events[3].position_key
+    assert_equal "00000-00004", events[3].position_key
 
     assert_equal 5, events[4].position
     assert_equal 5, events[4].sequence_id
-    assert_equal "00005", events[4].position_key
+    assert_equal "00000-00005", events[4].position_key
 
     assert_equal 6, events[5].position
     assert_equal 6, events[5].sequence_id
-    assert_equal "00006", events[5].position_key
+    assert_equal "00000-00006", events[5].position_key
   end
 
   test "enforces max depth 2" do
@@ -49,15 +49,15 @@ class Events::PositionTest < ActiveSupport::TestCase
     e3 = Event.create!(kind: "new_comment", topic: @discussion.topic, eventable: c3)
 
     assert_equal 1, e1.depth
-    assert_equal "00001", e1.position_key
+    assert_equal "00000-00001", e1.position_key
     assert_equal 1, e1.sequence_id
 
     assert_equal 2, e2.depth
-    assert_equal "00001-00001", e2.position_key
+    assert_equal "00000-00001-00001", e2.position_key
     assert_equal 2, e2.sequence_id
 
     assert_equal 2, e3.depth
-    assert_equal "00001-00002", e3.position_key
+    assert_equal "00000-00001-00002", e3.position_key
     assert_equal 3, e3.sequence_id
   end
 
@@ -72,11 +72,11 @@ class Events::PositionTest < ActiveSupport::TestCase
     e3 = Event.create!(kind: "new_comment", topic: @discussion.topic, eventable: c3)
 
     assert_equal 1, e1.depth
-    assert_equal "00001", e1.position_key
+    assert_equal "00000-00001", e1.position_key
     assert_equal 1, e2.depth
-    assert_equal "00002", e2.position_key
+    assert_equal "00000-00002", e2.position_key
     assert_equal 1, e3.depth
-    assert_equal "00003", e3.position_key
+    assert_equal "00000-00003", e3.position_key
   end
 
   test "enforces max depth 3" do
@@ -90,11 +90,11 @@ class Events::PositionTest < ActiveSupport::TestCase
     e3 = Event.create!(kind: "new_comment", topic: @discussion.topic, eventable: c3)
 
     assert_equal 1, e1.depth
-    assert_equal "00001", e1.position_key
+    assert_equal "00000-00001", e1.position_key
     assert_equal 2, e2.depth
-    assert_equal "00001-00001", e2.position_key
+    assert_equal "00000-00001-00001", e2.position_key
     assert_equal 3, e3.depth
-    assert_equal "00001-00001-00001", e3.position_key
+    assert_equal "00000-00001-00001-00001", e3.position_key
   end
 
   test "reorders if parent changes" do
@@ -121,7 +121,7 @@ class Events::PositionTest < ActiveSupport::TestCase
     e2.update!(topic_id: nil, parent_id: nil)
     TopicService.repair_thread(@discussion.topic.id)
     assert_equal 2, e3.reload.position
-    assert_equal "00002", e3.reload.position_key
+    assert_equal "00000-00002", e3.reload.position_key
     assert_equal 3, e3.reload.sequence_id
   end
 

@@ -46,7 +46,7 @@ export default {
       return [
         "lmo-action-dock-wrapper",
         `positionKey-${event.positionKey}`,
-        `sequenceId-${event.sequenceId || 0}`
+        `sequenceId-${event.sequenceId}`
       ];
     }
   }

@@ -150,6 +150,10 @@ export default class DiscussionModel extends BaseModel {
   }
 
   createdEvent() {
+    if (this.topicId) {
+      const res = Records.events.find({topicId: this.topicId, sequenceId: 0});
+      if (!isEmpty(res)) { return res[0]; }
+    }
     const res = Records.events.find({kind: 'new_discussion', eventableId: this.id});
     if (!isEmpty(res)) { return res[0]; }
   }

@@ -88,7 +88,7 @@ class TopicService
   def self.mark_as_seen(topic:, actor:)
     actor.ability.authorize! :mark_as_seen, topic
     reader = TopicReader.for(topic: topic, user: actor)
-    reader.viewed!
+    reader.viewed!([[0, 0]])
     MessageChannelService.publish_models([topic.topicable], group_id: topic.group_id)
     MessageChannelService.publish_models([topic.topicable], user_id: actor.id)
   end
@@ -174,6 +174,8 @@ class TopicService
     end
 
     created_event = topicable.created_event
+    created_event.update_columns(sequence_id: 0, position: 0, depth: 0, position_key: '00000', topic_id: topic.id)
+
     Event.where(topic_id: topic.id, sequence_id: nil).where.not(id: created_event.id).order(:id).each(&:set_sequence_id!)
 
     # rebuild ancestry of events based on eventable relationships
@@ -183,7 +185,7 @@ class TopicService
 
     parent_ids = items.pluck(:parent_id).compact.uniq
 
-    reset_child_positions(created_event.id, nil)
+    reset_child_positions(created_event.id, "00000")
     Event.where(id: parent_ids).order(:depth).each do |parent_event|
       parent_event.reload
       reset_child_positions(parent_event.id, parent_event.position_key)

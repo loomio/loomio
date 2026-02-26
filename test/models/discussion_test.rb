@@ -49,14 +49,13 @@ class DiscussionTest < ActiveSupport::TestCase
   end
 
   # Thread items (tracked on Topic)
-  # Note: items only includes events with a sequence_id (comments, polls, etc.)
-  # The new_discussion event has nil sequence_id and doesn't count as an item.
-  # However, items.order(:sequence_id).last includes nil-sequence events in Postgres
-  # (nulls sort last), so last_activity_at reflects the new_discussion event's created_at.
+  # The root event (new_discussion) has sequence_id 0 and counts as an item.
+  # items_count includes the root event. replies_count = items_count - 1.
   test "new discussion has correct initial values" do
     discussion = DiscussionService.create(params: { group_id: @group.id, title: "Test #{SecureRandom.hex(4)}" }, actor: @admin)
     topic = discussion.topic.reload
-    assert_equal 0, topic.items_count
+    assert_equal 1, topic.items_count
+    assert_equal 0, topic.replies_count
     assert_not_nil topic.last_activity_at
     assert_equal 0, topic.first_sequence_id
     assert_equal 0, topic.last_sequence_id
@@ -68,9 +67,10 @@ class DiscussionTest < ActiveSupport::TestCase
     event = CommentService.create(comment: comment, actor: @admin)
     event.reload
     topic = discussion.topic.reload
-    assert_equal 1, topic.items_count
+    assert_equal 2, topic.items_count
+    assert_equal 1, topic.replies_count
     assert_equal event.created_at, topic.last_activity_at
-    assert_equal event.sequence_id, topic.first_sequence_id
+    assert_equal 0, topic.first_sequence_id
     assert_equal event.sequence_id, topic.last_sequence_id
   end
 
@@ -83,7 +83,8 @@ class DiscussionTest < ActiveSupport::TestCase
     topic = discussion.topic
     topic.update_sequence_info!
     topic.reload
-    assert_equal 0, topic.items_count
+    assert_equal 1, topic.items_count
+    assert_equal 0, topic.replies_count
     assert_equal 0, topic.last_sequence_id
     assert_equal 0, topic.first_sequence_id
   end
@@ -103,9 +104,10 @@ class DiscussionTest < ActiveSupport::TestCase
     comment1.destroy
     event2.reload
     topic = discussion.topic.reload
-    assert_equal 1, topic.items_count
+    assert_equal 2, topic.items_count
+    assert_equal 1, topic.replies_count
     assert_equal event2.created_at, topic.last_activity_at
-    assert_equal event2.sequence_id, topic.first_sequence_id
+    assert_equal 0, topic.first_sequence_id
     assert_equal event2.sequence_id, topic.last_sequence_id
   end
 
@@ -124,9 +126,10 @@ class DiscussionTest < ActiveSupport::TestCase
     topic = discussion.topic
     topic.update_sequence_info!
     topic.reload
-    assert_equal 1, topic.items_count
+    assert_equal 2, topic.items_count
+    assert_equal 1, topic.replies_count
     assert_equal event1.reload.created_at, topic.last_activity_at
-    assert_equal event1.sequence_id, topic.first_sequence_id
+    assert_equal 0, topic.first_sequence_id
     assert_equal event1.sequence_id, topic.last_sequence_id
   end
 

@@ -20,8 +20,6 @@ class DiscussionSerializer < ApplicationSerializer
 
   has_one :topic, serializer: TopicSerializer, root: :topics
   has_one :author, serializer: AuthorSerializer, root: :users
-  has_one :created_event, serializer: EventSerializer, root: :events
-  has_one :forked_event, serializer: EventSerializer, root: :events
   has_one :translation, serializer: TranslationSerializer, root: :translations
   hide_when_discarded [:description, :title]
 
@@ -29,11 +27,4 @@ class DiscussionSerializer < ApplicationSerializer
     description_format == "md"
   end
 
-  def created_event
-    cache_fetch([:events_by_kind_and_eventable_id, 'new_discussion'], object.id) { object.created_event }
-  end
-
-  def forked_event
-    cache_fetch([:events_by_kind_and_eventable_id, 'discussion_forked'], object.id) { nil }
-  end
 end

@@ -21,13 +21,14 @@ class DiscussionEventIntegrationTest < ActiveSupport::TestCase
     dr = TopicReader.for(user: @viewer, topic: @discussion.topic)
     dr.save
     dr.reload
-    assert_equal 1, @discussion.topic.items_count - dr.read_items_count
+    # items_count includes root event (sequence_id 0) + 1 remaining comment
+    assert_equal 2, @discussion.topic.items_count - dr.read_items_count
   end
 
   test "user sees discussion before comments, first comment deleted" do
     dr = TopicReader.for(user: @viewer, topic: @discussion.topic)
     dr.save
-    dr.viewed!
+    dr.viewed!([[0, 0]])
 
     CommentService.create(comment: @first_comment, actor: @commentor)
     CommentService.create(comment: @second_comment, actor: @commentor)

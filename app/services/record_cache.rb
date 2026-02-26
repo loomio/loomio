@@ -109,9 +109,7 @@ class RecordCache
     obj.add_users User.with_attached_uploaded_avatar.where(id: obj.user_ids)
     topic_ids = Topic.where(topicable_type: 'Discussion', topicable_id: obj.discussion_ids).pluck(:id)
     obj.add_topic_readers(TopicReader.where(topic_id: topic_ids, user_id: user_id))
-    obj.add_events Event.where(kind: 'new_discussion', eventable_id: obj.discussion_ids)
     obj.add_events Event.where(kind: 'discussion_forked', eventable_id: obj.discussion_ids)
-    obj.add_events Event.where(kind: 'poll_created', eventable_id: obj.poll_ids)
     obj.add_tags_complete
     obj.add_inline_translations
     obj
