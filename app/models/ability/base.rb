@@ -2,7 +2,7 @@ module Ability
   class Base
     include CanCan::Ability
     prepend Ability::Comment
-    prepend Ability::DiscussionReader
+    prepend Ability::TopicReader
     prepend Ability::Discussion
     prepend Ability::Document
     prepend Ability::Group

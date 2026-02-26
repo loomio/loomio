@@ -1,5 +1,6 @@
 class SearchService
   def self.reindex_everything
+    PgSearch::Document.delete_all
     [
       Discussion.pg_search_insert_statement,
       Comment.pg_search_insert_statement,

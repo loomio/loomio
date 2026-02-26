@@ -206,6 +206,7 @@ class PollService
       poll.topic.update_sequence_info!
     end
 
+    GenericWorker.perform_async('SearchService', 'reindex_by_poll_id', poll.id)
     MessageChannelService.publish_models([poll.created_event], scope: {current_user: actor, current_user_id: actor.id}, group_id: poll.group_id)
     poll.created_event
   end

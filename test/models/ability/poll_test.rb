@@ -7,7 +7,7 @@ class Ability::PollTest < ActiveSupport::TestCase
     poll = PollService.create(params: poll_params, actor: user)
     assert user.can?(:add_voters, poll)
     assert user.can?(:announce, poll)
-    assert user.can?(:add_guests, poll)
+    assert user.can?(:add_guests, poll.topic)
     assert user.can?(:vote_in, poll)
   end
 
@@ -19,7 +19,7 @@ class Ability::PollTest < ActiveSupport::TestCase
     assert user.can?(:vote_in, poll)
     assert_not user.can?(:add_voters, poll)
     assert_not user.can?(:announce, poll)
-    assert_not user.can?(:add_guests, poll)
+    assert_not user.can?(:add_guests, poll.topic)
   end
 
   test "poll without group as unrelated cannot do anything" do
@@ -29,7 +29,7 @@ class Ability::PollTest < ActiveSupport::TestCase
     assert_not user.can?(:vote_in, poll)
     assert_not user.can?(:add_voters, poll)
     assert_not user.can?(:announce, poll)
-    assert_not user.can?(:add_guests, poll)
+    assert_not user.can?(:add_guests, poll.topic)
   end
 
   # Poll in group - as group admin
@@ -41,7 +41,7 @@ class Ability::PollTest < ActiveSupport::TestCase
     poll = PollService.create(params: poll_params(group_id: group.id), actor: user)
     assert admin.can?(:add_voters, poll)
     assert admin.can?(:announce, poll)
-    assert admin.can?(:add_guests, poll)
+    assert admin.can?(:add_guests, poll.topic)
     assert admin.can?(:update, poll)
 
     poll.update!(closed_at: Time.current)
@@ -70,7 +70,7 @@ class Ability::PollTest < ActiveSupport::TestCase
     poll = PollService.create(params: poll_params(group_id: group.id, specified_voters_only: true), actor: users(:admin))
     poll.stances.create!(participant_id: user.id, latest: true)
     poll.topic.topic_readers.find_or_create_by!(user: user).update!(admin: true)
-    assert user.can?(:add_guests, poll)
+    assert user.can?(:add_guests, poll.topic)
   end
 
   test "group member topic admin with members_can_add_guests false" do
@@ -80,7 +80,7 @@ class Ability::PollTest < ActiveSupport::TestCase
     poll = PollService.create(params: poll_params(group_id: group.id, specified_voters_only: true), actor: users(:admin))
     poll.stances.create!(participant_id: user.id, latest: true)
     poll.topic.topic_readers.find_or_create_by!(user: user).update!(admin: true)
-    assert_not user.can?(:add_guests, poll)
+    assert_not user.can?(:add_guests, poll.topic)
   end
 
   test "group member topic admin with members_can_announce true" do
@@ -103,8 +103,8 @@ class Ability::PollTest < ActiveSupport::TestCase
     assert_not user.can?(:announce, poll)
   end
 
-  # Poll in group - as group member, poll member
-  test "group member poll member specified_voters_only true can vote" do
+  # Poll in group - voting permissions
+  test "group member with stance can vote when specified_voters_only" do
     user = users(:user)
     group = groups(:group)
     poll = PollService.create(params: poll_params(group_id: group.id, specified_voters_only: true), actor: users(:admin))
@@ -112,59 +112,35 @@ class Ability::PollTest < ActiveSupport::TestCase
     assert user.can?(:vote_in, poll)
   end
 
-  test "group member poll member specified_voters_only true cannot add guests even if allowed" do
-    user = users(:user)
-    group = groups(:group)
-    group.update_columns(members_can_add_guests: true)
-    poll = PollService.create(params: poll_params(group_id: group.id, specified_voters_only: true), actor: users(:admin))
-    poll.stances.create!(participant_id: user.id, inviter_id: user.id, latest: true)
-    assert_not user.can?(:add_guests, poll)
-  end
-
-  test "group member poll member specified_voters_only false can vote" do
-    user = users(:user)
-    group = groups(:group)
-    poll = PollService.create(params: poll_params(group_id: group.id), actor: users(:admin))
-    assert user.can?(:vote_in, poll)
-  end
-
-  test "group member poll member specified_voters_only false cannot add guests even if allowed" do
-    user = users(:user)
-    group = groups(:group)
-    group.update_columns(members_can_add_guests: true)
-    poll = PollService.create(params: poll_params(group_id: group.id), actor: users(:admin))
-    assert_not user.can?(:add_guests, poll)
-  end
-
-  # Poll in group - group member, not poll member
-  test "group member not poll member specified_voters_only true cannot vote" do
+  test "group member without stance cannot vote when specified_voters_only" do
     user = users(:user)
     group = groups(:group)
     poll = PollService.create(params: poll_params(group_id: group.id, specified_voters_only: true), actor: users(:admin))
     assert_not user.can?(:vote_in, poll)
   end
 
-  test "group member not poll member specified_voters_only true cannot add guests even if allowed" do
-    user = users(:user)
-    group = groups(:group)
-    group.update_columns(members_can_add_guests: true)
-    poll = PollService.create(params: poll_params(group_id: group.id, specified_voters_only: true), actor: users(:admin))
-    assert_not user.can?(:add_guests, poll)
-  end
-
-  test "group member not poll member specified_voters_only false can vote" do
+  test "group member can vote when not specified_voters_only" do
     user = users(:user)
     group = groups(:group)
     poll = PollService.create(params: poll_params(group_id: group.id), actor: users(:admin))
     assert user.can?(:vote_in, poll)
   end
 
-  test "group member not poll member specified_voters_only false cannot add guests even if allowed" do
+  # Topic add_guests governed by group setting, not poll membership
+  test "group member can add guests to topic when members_can_add_guests" do
     user = users(:user)
     group = groups(:group)
     group.update_columns(members_can_add_guests: true)
     poll = PollService.create(params: poll_params(group_id: group.id), actor: users(:admin))
-    assert_not user.can?(:add_guests, poll)
+    assert user.can?(:add_guests, poll.topic)
+  end
+
+  test "group member cannot add guests to topic when members_can_add_guests false" do
+    user = users(:user)
+    group = groups(:group)
+    group.update_columns(members_can_add_guests: false)
+    poll = PollService.create(params: poll_params(group_id: group.id), actor: users(:admin))
+    assert_not user.can?(:add_guests, poll.topic)
   end
 
   # Topic guest (not a group member, but guest on the poll's topic)
@@ -259,7 +235,7 @@ class Ability::PollTest < ActiveSupport::TestCase
     poll = PollService.create(params: poll_params(group_id: group.id), actor: users(:admin))
     assert_not unrelated.can?(:vote_in, poll)
     assert_not unrelated.can?(:announce, poll)
-    assert_not unrelated.can?(:add_guests, poll)
+    assert_not unrelated.can?(:add_guests, poll.topic)
     assert_not unrelated.can?(:update, poll)
     assert_not unrelated.can?(:destroy, poll)
     assert_not unrelated.can?(:close, poll)

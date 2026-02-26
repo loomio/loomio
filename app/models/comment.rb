@@ -17,6 +17,8 @@ class Comment < ApplicationRecord
         searchable_id,
         group_id,
         discussion_id,
+        topic_id,
+        tags,
         author_id,
         authored_at,
         content,
@@ -27,6 +29,8 @@ class Comment < ApplicationRecord
         comments.id AS searchable_id,
         topics.group_id as group_id,
         CASE WHEN topics.topicable_type = 'Discussion' THEN topics.topicable_id ELSE NULL END AS discussion_id,
+        events.topic_id AS topic_id,
+        COALESCE(discussions.tags, polls.tags, ARRAY[]::varchar[]) AS tags,
         comments.user_id AS author_id,
         comments.created_at AS authored_at,
         #{content_str} AS content,
@@ -36,6 +40,8 @@ class Comment < ApplicationRecord
       FROM comments
         LEFT JOIN events ON events.eventable_type = 'Comment' AND events.eventable_id = comments.id
         LEFT JOIN topics ON topics.id = events.topic_id
+        LEFT JOIN discussions ON discussions.id = topics.topicable_id AND topics.topicable_type = 'Discussion'
+        LEFT JOIN polls ON polls.id = topics.topicable_id AND topics.topicable_type = 'Poll'
         LEFT JOIN users ON users.id = comments.user_id
       WHERE comments.discarded_at IS NULL
         #{id ? " AND comments.id = #{id.to_i} LIMIT 1" : ""}

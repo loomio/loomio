@@ -79,4 +79,62 @@ class TopicServiceTest < ActiveSupport::TestCase
     assert_equal @comment2_event.id, @comment3_event.parent_id
     assert_equal @discussion_event.id, @poll_created_event.parent_id
   end
+
+  # -- Move --
+
+  test "move moves discussion to a public_only group" do
+    admin = users(:admin)
+    public_group = groups(:public_group)
+    public_group.add_member!(admin)
+
+    discussion = discussions(:discussion)
+    TopicService.move(topic: discussion.topic, params: { group_id: public_group.id }, actor: admin)
+    assert_equal false, discussion.topic.reload.private
+  end
+
+  test "move updates privacy for private_only groups" do
+    admin = users(:admin)
+    public_group = groups(:public_group)
+    public_group.add_admin!(admin)
+    subgroup = groups(:subgroup)
+
+    discussion = DiscussionService.create(params: { title: "Test", group_id: public_group.id, private: false }, actor: admin)
+    assert_equal false, discussion.topic.private
+    TopicService.move(topic: discussion.topic, params: { group_id: subgroup.id }, actor: admin)
+    assert_equal true, discussion.topic.reload.private
+  end
+
+  test "move updates topic group" do
+    admin = users(:admin)
+    alien_group = groups(:alien_group)
+    alien_group.add_member!(admin)
+
+    discussion = discussions(:discussion)
+    TopicService.move(topic: discussion.topic, params: { group_id: alien_group.id }, actor: admin)
+    assert_equal alien_group.id, discussion.topic.reload.group_id
+  end
+
+  # -- Close / Reopen --
+
+  test "closes a topic" do
+    discussion = DiscussionService.create(params: {
+      title: 'Closeable Discussion',
+      group_id: @group.id
+    }, actor: @user)
+
+    assert_nil discussion.topic.closed_at
+    TopicService.close(topic: discussion.topic, actor: @user)
+    assert_not_nil discussion.topic.reload.closed_at
+  end
+
+  test "reopens a closed topic" do
+    discussion = DiscussionService.create(params: {
+      title: 'Reopenable Discussion',
+      group_id: @group.id
+    }, actor: @user)
+    discussion.topic.update!(closed_at: 1.day.ago)
+
+    TopicService.reopen(topic: discussion.topic, actor: @user)
+    assert_nil discussion.topic.reload.closed_at
+  end
 end

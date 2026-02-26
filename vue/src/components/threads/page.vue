@@ -84,7 +84,7 @@ v-main
         .threads-page__collections(v-else)
           v-card.mb-3.thread-preview-collection__container
             v-list.thread-previews(lines="two")
-              thread-preview(v-for="thread in threads", :key="thread.id", :thread="thread")
+              thread-preview(v-for="topic in threads", :key="topic.id", :topic="topic")
 
       .d-flex.align-center.justify-center(v-if='threads.length > 0')
         div

@@ -111,18 +111,29 @@ class TopicService
     end
   end
 
-  def self.dismiss(discussion:, params:, actor:)
-    actor.ability.authorize! :dismiss, discussion
-    reader = TopicReader.for(user: actor, topic: discussion.topic)
+  def self.dismiss(topic:, actor:, params: {})
+    actor.ability.authorize! :dismiss, topic
+    reader = TopicReader.for(user: actor, topic: topic)
     reader.dismiss!
     EventBus.broadcast('discussion_dismiss', reader, actor)
   end
 
-  def self.recall(discussion:, params:, actor:)
-    actor.ability.authorize! :dismiss, discussion
-    reader = TopicReader.for(user: actor, topic: discussion.topic)
+  def self.recall(topic:, actor:, params: {})
+    actor.ability.authorize! :dismiss, topic
+    reader = TopicReader.for(user: actor, topic: topic)
     reader.recall!
     EventBus.broadcast('discussion_recall', reader, actor)
+  end
+
+  def self.discard(topic:, actor:)
+    actor.ability.authorize! :discard, topic
+    topicable = topic.topicable
+    Topic.transaction do
+      topicable.update(discarded_at: Time.now, discarded_by: actor.id)
+      topic.polls.update_all(discarded_at: Time.now, discarded_by: actor.id)
+      GenericWorker.perform_async('SearchService', 'reindex_by_discussion_id', topicable.id) if topicable.is_a?(Discussion)
+      EventBus.broadcast('discussion_discard', topicable, actor) if topicable.is_a?(Discussion)
+    end
   end
 
   def self.moved_discussion_privacy_for(topic, destination)

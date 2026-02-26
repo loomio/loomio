@@ -67,8 +67,8 @@ class Api::V1::DiscussionsController < Api::V1::RestfulController
     respond_with_collection
   end
 
-  def move
-    @event = service.move discussion: load_resource, params: params, actor: current_user
+  def move_comments
+    EventService.move_comments(discussion: load_resource, params: params, actor: current_user)
     respond_with_resource
   end
 
@@ -85,61 +85,6 @@ class Api::V1::DiscussionsController < Api::V1::RestfulController
       end
       render root: false, json: res
     end
-  end
-
-  def mark_as_seen
-    TopicService.mark_as_seen topic: load_resource.topic, actor: current_user
-    respond_ok
-  end
-
-  def mark_as_read
-    TopicService.mark_as_read(topic: load_resource.topic, params: params, actor: current_user)
-    respond_ok
-  end
-
-  def dismiss
-    TopicService.dismiss discussion: load_resource, params: params, actor: current_user
-    respond_with_resource
-  end
-
-  def recall
-    TopicService.recall discussion: load_resource, params: params, actor: current_user
-    respond_with_resource
-  end
-
-  def close
-    TopicService.close topic: load_resource.topic, actor: current_user
-    respond_with_resource
-  end
-
-  def reopen
-    TopicService.reopen topic: load_resource.topic, actor: current_user
-    respond_with_resource
-  end
-
-  def move_comments
-    EventService.move_comments(discussion: load_resource, params: params, actor: current_user)
-    respond_with_resource
-  end
-
-  def pin
-    TopicService.pin topic: load_resource.topic, actor: current_user
-    respond_with_resource
-  end
-
-  def unpin
-    TopicService.unpin topic: load_resource.topic, actor: current_user
-    respond_with_resource
-  end
-
-  def set_volume
-    update_reader volume: params[:volume]
-  end
-
-  def discard
-    @discussion = load_resource
-    service.discard discussion: @discussion, actor: current_user
-    respond_with_resource
   end
 
   private
@@ -172,10 +117,5 @@ class Api::V1::DiscussionsController < Api::V1::RestfulController
       group_ids: group_ids,
       tags: split_tags,
       discussion_ids: discussion_ids)
-  end
-
-  def update_reader(params = {})
-    TopicService.update_reader topic: load_resource.topic, params: params, actor: current_user
-    respond_with_resource
   end
 end

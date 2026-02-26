@@ -7,8 +7,8 @@ class Ability::DiscussionTest < ActiveSupport::TestCase
     other = users(:alien)
     discussion = DiscussionService.create(params: discussion_params, actor: other)
     discussion.topic.topic_readers.create!(user_id: user.id, admin: true, guest: true, inviter_id: other.id)
-    assert user.can?(:announce, discussion)
-    assert user.can?(:add_guests, discussion)
+    assert user.can?(:announce, discussion.topic)
+    assert user.can?(:add_guests, discussion.topic)
     assert user.can?(:update, discussion)
   end
 
@@ -36,9 +36,9 @@ class Ability::DiscussionTest < ActiveSupport::TestCase
     admin = users(:admin)
     group = groups(:group)
     discussion = DiscussionService.create(params: discussion_params(group_id: group.id), actor: admin)
-    assert admin.can?(:add_members, discussion)
-    assert admin.can?(:announce, discussion)
-    assert admin.can?(:add_guests, discussion)
+    assert admin.can?(:add_members, discussion.topic)
+    assert admin.can?(:announce, discussion.topic)
+    assert admin.can?(:add_guests, discussion.topic)
   end
 
   # Discussion in group - as group member, topic admin
@@ -48,7 +48,7 @@ class Ability::DiscussionTest < ActiveSupport::TestCase
     group.update_columns(members_can_add_guests: true)
     discussion = DiscussionService.create(params: discussion_params(group_id: group.id), actor: users(:admin))
     discussion.topic.topic_readers.find_or_create_by!(user: user).update!(admin: true)
-    assert user.can?(:add_guests, discussion)
+    assert user.can?(:add_guests, discussion.topic)
   end
 
   test "group member topic admin with members_can_add_guests false" do
@@ -84,7 +84,7 @@ class Ability::DiscussionTest < ActiveSupport::TestCase
     group = groups(:group)
     group.update_columns(members_can_add_guests: true)
     discussion = DiscussionService.create(params: discussion_params(group_id: group.id), actor: users(:admin))
-    assert user.can?(:add_guests, discussion)
+    assert user.can?(:add_guests, discussion.topic)
   end
 
   test "group member with members_can_announce true" do

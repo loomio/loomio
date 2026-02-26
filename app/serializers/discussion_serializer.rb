@@ -1,15 +1,4 @@
 class DiscussionSerializer < ApplicationSerializer
-  def self.attributes_from_reader(*attrs)
-    attrs.each do |attr|
-      case attr
-      when :discussion_reader_id then define_method attr, -> { reader.id }
-      else                            define_method attr, -> { reader.send(attr) }
-      end
-      define_method :"include_#{attr}?", -> { reader.present? }
-    end
-    attributes *attrs
-  end
-
   attributes :id,
              :key,
              :group_id,

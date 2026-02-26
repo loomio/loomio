@@ -1,4 +1,4 @@
-module Ability::DiscussionReader
+module Ability::TopicReader
   def initialize(user)
     super(user)
 
@@ -11,11 +11,11 @@ module Ability::DiscussionReader
     end
 
     can [:make_admin, :remove_admin, :resend], ::TopicReader do |topic_reader|
-      topic_reader.topic&.admins&.exists?(user.id)
+      topic_reader.topic.admins_include?(user)
     end
 
     can [:remove], ::TopicReader do |topic_reader|
-      topic_reader.guest && topic_reader.topic&.admins&.exists?(user.id)
+      topic_reader.guest && topic_reader.topic.admins_include?(user)
     end
   end
 end

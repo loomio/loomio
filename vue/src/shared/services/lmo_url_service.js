@@ -34,6 +34,12 @@ export default class LmoUrlService {
     }
   }
 
+  static topic(t, params, options) {
+    const topicable = t.topicable();
+    if (topicable) { return this.route({model: topicable, params, options}); }
+    return '';
+  }
+
   static discussion(d, params, options) {
     if (params == null) { params = {}; }
     if (options == null) { options = {}; }

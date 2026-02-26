@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_02_19_000000) do
+ActiveRecord::Schema[8.0].define(version: 2026_02_25_205631) do
   create_schema "pghero"
 
   # These are extensions that must be enabled in order to support this database
@@ -627,6 +627,8 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_19_000000) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "authored_at"
+    t.bigint "topic_id"
+    t.string "tags", default: [], array: true
     t.index ["author_id"], name: "index_pg_search_documents_on_author_id"
     t.index ["authored_at"], name: "pg_search_documents_authored_at_asc_index"
     t.index ["authored_at"], name: "pg_search_documents_authored_at_desc_index", order: :desc
@@ -634,6 +636,8 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_19_000000) do
     t.index ["group_id"], name: "index_pg_search_documents_on_group_id"
     t.index ["poll_id"], name: "index_pg_search_documents_on_poll_id"
     t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable"
+    t.index ["tags"], name: "index_pg_search_documents_on_tags", using: :gin
+    t.index ["topic_id"], name: "index_pg_search_documents_on_topic_id"
     t.index ["ts_content"], name: "pg_search_documents_searchable_index", using: :gin
   end
 

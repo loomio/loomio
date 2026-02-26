@@ -71,8 +71,9 @@ class UserInviter
     guest_ids = UserQuery.invitable_user_ids(model: model, actor: actor, user_ids: user_ids - member_ids)
 
     actor.ability.authorize!(:announce, model)    if audience == 'group'
-    actor.ability.authorize!(:add_members, model) if member_ids.any?
-    actor.ability.authorize!(:add_guests, model)  if emails.any? or guest_ids.any?
+    auth_target = model.respond_to?(:topic) ? model.topic : model
+    actor.ability.authorize!(:add_members, auth_target) if member_ids.any?
+    actor.ability.authorize!(:add_guests, auth_target)  if emails.any? or guest_ids.any?
   end
 
   def self.where_existing(user_ids:, audience:, model:, actor:)

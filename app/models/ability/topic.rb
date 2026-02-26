@@ -2,11 +2,11 @@ module Ability::Topic
   def initialize(user)
     super(user)
 
-    can [:show, :mark_as_seen, :mark_as_read], ::Topic do |topic|
+    can [:show, :mark_as_seen, :mark_as_read, :dismiss, :set_volume], ::Topic do |topic|
       can?(:show, topic.topicable)
     end
 
-    can [:update, :move, :pin], ::Topic do |topic|
+    can [:update, :move, :pin, :close, :reopen, :discard], ::Topic do |topic|
       topic.admins_include?(user)
     end
 

@@ -39,6 +39,15 @@ class RecordCache
     when 'Translation'
       obj.scope[:translations_by_id] = collection.index_by(&:id)
       return obj
+    when 'Topic'
+      topic_ids = collection.map(&:id)
+      discussion_ids = collection.select { |t| t.topicable_type == 'Discussion' }.map(&:topicable_id)
+      poll_ids = collection.select { |t| t.topicable_type == 'Poll' }.map(&:topicable_id)
+      obj.add_discussions Discussion.where(id: discussion_ids) if discussion_ids.any?
+      obj.add_polls_options_stances_outcomes Poll.where(id: poll_ids) if poll_ids.any?
+      obj.add_groups_subscriptions_memberships Group.with_attached_logo.with_attached_cover_photo.includes(:subscription).where(id: ids_and_parent_ids(Group, collection.map(&:group_id).compact))
+      obj.add_topic_readers TopicReader.where(topic_id: topic_ids, user_id: user_id)
+
     when 'Discussion'
       collection_ids = collection.map(&:id)
       obj.add_discussions(collection)

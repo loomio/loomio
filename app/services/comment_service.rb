@@ -14,6 +14,7 @@ class CommentService
       comment.created_event.update(pinned: false)
     end
     comment.topic&.update_sequence_info!
+    GenericWorker.perform_async('SearchService', 'reindex_by_comment_id', comment.id)
     comment.created_event
   end
 
@@ -23,6 +24,7 @@ class CommentService
       comment.update(discarded_at: nil, discarded_by: nil)
       comment.created_event.update(user_id: comment.user_id)
     end
+    GenericWorker.perform_async('SearchService', 'reindex_by_comment_id', comment.id)
     comment.created_event
   end
 

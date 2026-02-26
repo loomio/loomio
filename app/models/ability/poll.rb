@@ -58,17 +58,8 @@ module Ability::Poll
       end
     end
 
-    can [:add_voters, :add_members], ::Poll do |poll|
+    can [:add_voters], ::Poll do |poll|
       poll.admins.exists?(user.id)
-    end
-
-    can [:add_guests], ::Poll do |poll|
-      if poll.group_id
-        Subscription.for(poll.group).allow_guests &&
-        (poll.group.admins.exists?(user.id) || (poll.group.members_can_add_guests && poll.admins.exists?(user.id)))
-      else
-        poll.admins.exists?(user.id)
-      end
     end
 
     can [:update], ::Poll do |poll|

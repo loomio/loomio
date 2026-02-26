@@ -31,7 +31,7 @@ module Dev::DashboardHelper
   end
 
   def pin!(discussion)
-    DiscussionService.pin(discussion: discussion, actor: discussion.author)
+    TopicService.pin(topic: discussion.topic, actor: discussion.author)
   end
 
   def add_poll!(discussion, name: 'Test poll', actor: jennifer)

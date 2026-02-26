@@ -106,6 +106,7 @@ export default class DiscussionModel extends BaseModel {
   relationships() {
     this.hasMany('polls', {sortBy: 'createdAt', sortDesc: true, find: {discardedAt: null}});
     this.belongsTo('group');
+    this.belongsTo('topic');
     this.belongsTo('author', {from: 'users'});
     this.belongsTo('closer', {from: 'users'});
     this.belongsTo('translation');
@@ -113,10 +114,6 @@ export default class DiscussionModel extends BaseModel {
   }
 
   discussion() { return this; }
-
-  topic() {
-    if (this.topicId) { return Records.topics.find(this.topicId); }
-  }
 
   template() {
     return Records.discussionTemplates.find(this.discussionTemplateId);

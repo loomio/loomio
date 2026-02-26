@@ -1,5 +1,6 @@
 class TopicSerializer < ApplicationSerializer
   attributes :id,
+             :group_id,
              :items_count,
              :ranges,
              :max_depth,
@@ -24,6 +25,34 @@ class TopicSerializer < ApplicationSerializer
              :reader_inviter_id,
              :reader_guest,
              :reader_admin
+
+  has_one :discussion, serializer: DiscussionSerializer, root: :discussions
+  has_one :poll, serializer: PollSerializer, root: :polls
+  has_one :group, serializer: GroupSerializer, root: :groups
+
+  def discussion
+    cache_fetch(:discussions_by_id, object.topicable_id) { object.topicable } if object.topicable_type == 'Discussion'
+  end
+
+  def include_discussion?
+    object.topicable_type == 'Discussion'
+  end
+
+  def poll
+    cache_fetch(:polls_by_id, object.topicable_id) { object.topicable } if object.topicable_type == 'Poll'
+  end
+
+  def include_poll?
+    object.topicable_type == 'Poll'
+  end
+
+  def group
+    cache_fetch(:groups_by_id, object.group_id) { object.group }
+  end
+
+  def include_group?
+    object.group_id.present?
+  end
 
   def ranges
     object.ranges || []

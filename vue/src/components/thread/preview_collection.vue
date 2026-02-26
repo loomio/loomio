@@ -22,5 +22,5 @@ export default {
 
 <template lang="pug">
 v-list.thread-previews(lines="two")
-  thread-preview(v-for="thread in orderedThreads", :key="thread.id", :thread="thread")
+  thread-preview(v-for="topic in orderedThreads", :key="topic.id", :topic="topic")
 </template>

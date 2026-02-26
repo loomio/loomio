@@ -285,4 +285,9 @@ namespace :loomio do
     end
   end
 
+  task rebuild_search_index: :environment do
+    GenericWorker.perform_async('SearchService', 'reindex_everything')
+    puts "SearchService.reindex_everything queued as background job"
+  end
+
 end

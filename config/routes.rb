@@ -178,25 +178,6 @@ Rails.application.routes.draw do
       end
 
       resources :discussions, only: [:show, :index, :create, :update] do
-        patch :mark_as_seen, on: :member
-        patch :dismiss, on: :member
-        patch :recall, on: :member
-        patch :set_volume, on: :member
-        patch :pin, on: :member
-        patch :unpin, on: :member
-        patch :pin_reader, on: :member
-        patch :unpin_reader, on: :member
-        patch :move, on: :member
-        patch :mark_as_read, on: :member
-        patch :set_volume, on: :member
-        patch :pin, on: :member
-        patch :close, on: :member
-        patch :reopen, on: :member
-        patch :unpin, on: :member
-        patch :pin_reader, on: :member
-        patch :unpin_reader, on: :member
-        patch :move, on: :member
-        delete :discard, on: :member
         patch :move_comments, on: :member
         get :history, on: :member
         get :search, on: :collection
@@ -244,8 +225,18 @@ Rails.application.routes.draw do
 
       resources :search, only: :index
 
-      resources :topics, only: [:update] do
+      resources :topics, only: [:index, :update] do
         patch :mark_as_read, on: :member
+        patch :mark_as_seen, on: :member
+        patch :dismiss, on: :member
+        patch :recall, on: :member
+        patch :set_volume, on: :member
+        patch :pin, on: :member
+        patch :unpin, on: :member
+        patch :close, on: :member
+        patch :reopen, on: :member
+        patch :move, on: :member
+        delete :discard, on: :member
       end
 
       resources :polls, only: [:show, :index, :create, :update] do

@@ -1,6 +1,7 @@
-import BaseModel from '@/shared/record_store/base_model';
-import RangeSet  from '@/shared/services/range_set';
-import Records   from '@/shared/services/records';
+import BaseModel  from '@/shared/record_store/base_model';
+import RangeSet   from '@/shared/services/range_set';
+import Records    from '@/shared/services/records';
+import AppConfig  from '@/shared/services/app_config';
 import { head, last, isArray, isEqual, throttle } from 'lodash-es';
 
 export default class TopicModel extends BaseModel {
@@ -11,6 +12,12 @@ export default class TopicModel extends BaseModel {
 
   constructor(...args) {
     super(...args);
+    this.savePin = this.savePin.bind(this);
+    this.saveUnpin = this.saveUnpin.bind(this);
+    this.close = this.close.bind(this);
+    this.reopen = this.reopen.bind(this);
+    this.discard = this.discard.bind(this);
+    this.saveVolume = this.saveVolume.bind(this);
     this.updateReadRanges = throttle(function() {
       return Records.topics.remote.patchMember(this.id, 'mark_as_read', {ranges: RangeSet.serialize(this.readRanges)});
     }, 2000);
@@ -47,6 +54,20 @@ export default class TopicModel extends BaseModel {
 
   discussion() {
     return this.topicableType === 'Discussion' ? Records.discussions.find(this.topicableId) : null
+  }
+
+  get title() { return this.topicable().title; }
+  get key() { return this.topicable().key; }
+  get tags() { return this.topicable().tags || []; }
+  author() { return this.topicable().author(); }
+
+  hasUnreadActivity() {
+    return this.isUnread() && (this.unreadItemsCount() > 0);
+  }
+
+  isDismissed() {
+    return (this.readerId != null) && (this.dismissedAt != null) &&
+      (this.dismissedAt >= this.lastActivityAt);
   }
 
   createdEvent() {
@@ -101,17 +122,78 @@ export default class TopicModel extends BaseModel {
   }
 
   group() {
-    const t = this.topicable();
-    return t && t.group ? t.group() : null;
+    return this.topicable().group();
   }
 
   membersInclude(user) {
-    const t = this.topicable();
-    return t && t.membersInclude ? t.membersInclude(user) : false;
+    return this.topicable().membersInclude(user);
   }
 
   adminsInclude(user) {
-    const t = this.topicable();
-    return t && t.adminsInclude ? t.adminsInclude(user) : false;
+    return this.topicable().adminsInclude(user);
+  }
+
+  membership() {
+    return Records.memberships.find({userId: AppConfig.currentUserId, groupId: this.groupId})[0];
+  }
+
+  savePin() {
+    this.processing = true;
+    return Records.topics.remote.patchMember(this.id, 'pin').finally(() => { this.processing = false; });
+  }
+
+  saveUnpin() {
+    this.processing = true;
+    return Records.topics.remote.patchMember(this.id, 'unpin').finally(() => { this.processing = false; });
+  }
+
+  close() {
+    this.processing = true;
+    return Records.topics.remote.patchMember(this.id, 'close').finally(() => { this.processing = false; });
+  }
+
+  reopen() {
+    this.processing = true;
+    return Records.topics.remote.patchMember(this.id, 'reopen').finally(() => { this.processing = false; });
+  }
+
+  dismiss() {
+    this.update({dismissedAt: new Date});
+    this.processing = true;
+    return Records.topics.remote.patchMember(this.id, 'dismiss').finally(() => { this.processing = false; });
+  }
+
+  recall() {
+    this.update({dismissedAt: null});
+    this.processing = true;
+    return Records.topics.remote.patchMember(this.id, 'recall').finally(() => { this.processing = false; });
+  }
+
+  saveVolume(volume, applyToAll) {
+    if (applyToAll == null) { applyToAll = false; }
+    this.processing = true;
+    if (applyToAll) {
+      return this.membership().saveVolume(volume).finally(() => { this.processing = false; });
+    } else {
+      if (volume != null) { this.readerVolume = volume; }
+      return Records.topics.remote.patchMember(this.id, 'set_volume', { volume: this.readerVolume }).finally(() => {
+        this.processing = false;
+      });
+    }
+  }
+
+  markAsSeen() {
+    if (this.lastReadAt) { return; }
+    Records.topics.remote.patchMember(this.id, 'mark_as_seen');
+    return this.update({lastReadAt: new Date});
+  }
+
+  isMuted() {
+    return this.volume() === 'mute';
+  }
+
+  discard() {
+    this.processing = true;
+    return Records.topics.remote.discard(this.id).finally(() => { this.processing = false; });
   }
 };
