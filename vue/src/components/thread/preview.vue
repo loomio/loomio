@@ -79,7 +79,7 @@ v-list-item.thread-preview.thread-preview__link(
     template(v-if="isPoll")
       poll-common-closing-at(:poll="poll" approximate)
     template(v-else)
-      span.thread-preview__items-count(v-t="{path: 'thread_preview.replies_count', args: {count: topic.repliesCount()}}")
+      span.thread-preview__items-count(v-t="{path: 'thread_preview.replies_count', args: {count: topic.repliesCount}}")
       space
       span.thread-preview__unread-count(v-if='topic.hasUnreadActivity()' v-t="{path: 'thread_preview.unread_count', args: {count: topic.unreadItemsCount()}}")
       mid-dot
