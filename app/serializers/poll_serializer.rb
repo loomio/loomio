@@ -59,7 +59,7 @@ class PollSerializer < ApplicationSerializer
              :quorum_votes_required
 
   has_one :discussion, serializer: DiscussionSerializer, root: :discussions
-  has_one :created_event, serializer: EventSerializer, root: :events
+  has_one :created_event, serializer: EventSerializer, root: :parent_events
   has_one :group, serializer: GroupSerializer, root: :groups
   has_one :author, serializer: AuthorSerializer, root: :users
   has_one :current_outcome, serializer: OutcomeSerializer, root: :outcomes
