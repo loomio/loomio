@@ -2550,7 +2550,8 @@ en:
     stance_created: Choice recorded
     stance_updated: Choice updated
   poll_stv_vote_form:
-    helptext: Drag and drop candidates in order of preference. Rank 1 is your most preferred. You may rank as many or as few as you like.
+    helptext: Drag candidates above the line to rank them. Items below the line are unranked. Rank 1 is your most preferred.
+    divider_text: drag candidates above this line to rank them
     stance_created: Vote recorded
     stance_updated: Vote updated
   poll_stv_form:

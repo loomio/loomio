@@ -1,8 +1,10 @@
 <script lang="js">
 import EventBus from '@/shared/services/event_bus';
 import Flash   from '@/shared/services/flash';
-import { sortBy, map } from 'lodash-es';
+import { sortBy } from 'lodash-es';
 import WatchRecords from '@/mixins/watch_records';
+
+const DIVIDER = { id: 'divider', isDivider: true };
 
 export default {
   mixins: [WatchRecords],
@@ -18,7 +20,8 @@ export default {
     this.watchRecords({
       collections: ['pollOptions'],
       query: records => {
-        if (this.stance.poll().optionsDiffer(this.pollOptions)) {
+        const realOptions = this.pollOptions.filter(o => !o.isDivider);
+        if (this.stance.poll().optionsDiffer(realOptions)) {
           this.pollOptions = this.sortPollOptions();
         }
       }
@@ -27,14 +30,12 @@ export default {
 
   methods: {
     submit() {
-      // For STV, rank all dragged options. Score = numOptions - index (higher = more preferred)
-      const numOptions = this.pollOptions.length;
-      this.stance.stanceChoicesAttributes = map(this.pollOptions, (option, index) => {
-        return {
-          poll_option_id: option.id,
-          score:         numOptions - index
-        };
-      });
+      const dividerIndex = this.pollOptions.findIndex(o => o.isDivider);
+      const ranked = this.pollOptions.slice(0, dividerIndex);
+      this.stance.stanceChoicesAttributes = ranked.map((option, index) => ({
+        poll_option_id: option.id,
+        score: ranked.length - index
+      }));
       const actionName = !this.stance.castAt ? 'created' : 'updated';
       this.stance.save().then(() => {
         Flash.success(`poll_${this.stance.poll().pollType}_vote_form.stance_${actionName}`);
@@ -46,10 +47,23 @@ export default {
 
     sortPollOptions() {
       if (this.stance && this.stance.castAt) {
-        return sortBy(this.stance.poll().pollOptions(), o => -this.stance.scoreFor(o));
+        const allOptions = this.stance.poll().pollOptions();
+        const scores = this.stance.optionScores;
+        const ranked = sortBy(allOptions.filter(o => scores[o.id] !== undefined), o => -scores[o.id]);
+        const unranked = allOptions.filter(o => scores[o.id] === undefined);
+        return [...ranked, DIVIDER, ...unranked];
       } else {
-        return this.stance.poll().pollOptionsForVoting();
+        return [DIVIDER, ...this.stance.poll().pollOptionsForVoting()];
       }
+    },
+
+    isAboveDivider(index) {
+      const dividerIndex = this.pollOptions.findIndex(o => o.isDivider);
+      return index < dividerIndex;
+    },
+
+    rankFor(index) {
+      return index + 1;
     }
   },
 
@@ -71,14 +85,22 @@ export default {
         :key="option.id"
         :item="option"
       )
-        .mb-2.poll-stv-vote-form__option
-          v-list-item.rounded(variant="tonal")
-            template(v-slot:prepend)
-              common-icon(style="cursor: pointer", :color="option.color" name="mdi-drag")
-            v-list-item-title {{option.name}}
-            v-list-item-subtitle(v-if="option.meaning") {{option.meaning}}
-            template(v-slot:append)
-              span.text-medium-emphasis(style="font-size: 1.2rem") # {{index+1}}
+        template(v-if="option.isDivider")
+          .poll-stv-vote-form__divider.my-2
+            v-divider
+            .poll-stv-vote-form__divider-text.text-medium-emphasis
+              common-icon(name="mdi-drag" style="cursor: pointer")
+              span(v-t="'poll_stv_vote_form.divider_text'")
+            v-divider
+        template(v-else)
+          .mb-2.poll-stv-vote-form__option(:class="{'poll-stv-vote-form__option--unranked': !isAboveDivider(index)}")
+            v-list-item.rounded(variant="tonal")
+              template(v-slot:prepend)
+                common-icon(style="cursor: pointer", :color="option.color" name="mdi-drag")
+              v-list-item-title {{option.name}}
+              v-list-item-subtitle(v-if="option.meaning") {{option.meaning}}
+              template(v-slot:append)
+                span.text-medium-emphasis(v-if="isAboveDivider(index)" style="font-size: 1.2rem") # {{rankFor(index)}}
 
   validation-errors(:subject='stance' field='stanceChoices')
   poll-common-stance-reason(:stance='stance', :poll='poll')
@@ -97,6 +119,25 @@ export default {
 <style lang="sass">
 .poll-stv-vote-form__option
   user-select: none
+
+.poll-stv-vote-form__option--unranked
+  opacity: 0.5
+
+.poll-stv-vote-form__divider
+  display: flex
+  align-items: center
+  gap: 8px
+  user-select: none
+  cursor: pointer
+  .v-divider
+    flex: 1
+
+.poll-stv-vote-form__divider-text
+  display: flex
+  align-items: center
+  gap: 4px
+  white-space: nowrap
+  font-size: 0.85rem
 
 .app-is-booted > .sortable-list-item
   z-index: 10000
