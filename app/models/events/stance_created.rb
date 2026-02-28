@@ -10,7 +10,7 @@ class Events::StanceCreated < Event
 
     super stance,
           user: stance.participant.presence,
-          discussion: stance.add_to_discussion? ? stance.poll.discussion : nil
+          topic: stance.add_to_thread? ? stance.poll.topic : nil
   end
 
   def silence_mentions?

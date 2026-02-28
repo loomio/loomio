@@ -68,34 +68,19 @@ class Api::V1::StancesController < Api::V1::RestfulController
       end
 
       user_ids = collection.pluck(:participant_id)
-      self.add_meta :guest_ids, collection.where(guest: true).pluck(:participant_id) & user_ids
-      self.add_meta :member_admin_ids, @poll.group.admins.pluck(:user_id) & user_ids
-      self.add_meta :stance_admin_ids, collection.where(admin: true).pluck(:participant_id) & user_ids
+      self.add_meta :guest_ids, @poll.topic&.topic_readers&.guests&.pluck(:user_id)&.then { |ids| ids & user_ids } || []
+      self.add_meta :group_admin_ids, @poll.group.admins.pluck(:user_id) & user_ids
+      self.add_meta :topic_admin_ids, @poll.topic&.topic_readers&.admins&.pluck(:user_id)&.then { |ids| ids & user_ids } || []
       User.where(id: collection.pluck(:participant_id))
     end
     respond_with_collection serializer: AuthorSerializer
   end
 
   def my_stances
-    self.collection = current_user.stances.latest.includes({poll: :discussion})
-    self.collection = collection.where('polls.discussion_id': @discussion.id) if load_and_authorize(:discussion, optional: true)
-    self.collection = collection.where('discussions.group_id': @group.id)     if load_and_authorize(:group, optional: true)
+    self.collection = current_user.stances.latest.includes({poll: :topic})
+    self.collection = collection.where('polls.topic_id': @discussion.topic_id) if load_and_authorize(:discussion, optional: true)
+    self.collection = collection.joins(poll: :topic).where('topics.group_id': @group.id) if load_and_authorize(:group, optional: true)
     respond_with_collection
-  end
-
-  def make_admin
-    @stance = Stance.latest.find_by(participant_id: params[:participant_id], poll_id: params[:poll_id])
-    current_user.ability.authorize! :make_admin, @stance
-    @stance.update(admin: true)
-    respond_with_resource
-  end
-
-  def remove_admin
-    @stance = Stance.latest.find_by(participant_id: params[:participant_id], poll_id: params[:poll_id])
-    current_user.ability.authorize! :remove_admin, @stance
-    @stance.update(admin: false)
-    @stance.poll.update_counts!
-    respond_with_resource
   end
 
   def revoke
@@ -117,15 +102,15 @@ class Api::V1::StancesController < Api::V1::RestfulController
   private
 
   def live_update_outdated_stances(poll)
-    return if poll.discussion.nil?
+    return if poll.topic.nil?
 
     # want to find stances with comments
-    stance_ids = poll.discussion.items.where(
+    stance_ids = poll.topic.items.where(
       eventable_type: 'Stance',
       eventable_id: poll.stances.with_reason.where(latest: false).pluck(:id)
     ).where("child_count > 0").pluck('eventable_id')
     stances = Stance.where(id: stance_ids).order('id desc').limit(50)
-    MessageChannelService.publish_models(stances, group_id: poll.group_id, user_id: current_user.id)
+    MessageChannelService.publish_models(stances, group_id: poll.group_id, topic_id: poll.topic_id, user_id: current_user.id)
   end
 
   def respond_with_recent_stances

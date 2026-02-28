@@ -1,0 +1,48 @@
+# Topics fixtures - one per discussion (topics own thread state)
+discussion_topic:
+  topicable: discussion (Discussion)
+  group: group
+  items_count: 1
+  ranges_string: "0-0"
+  max_depth: 2
+  newest_first: false
+  private: true
+  last_activity_at: <%= 10.days.ago %>
+  created_at: <%= 10.days.ago %>
+  updated_at: <%= 1.day.ago %>
+
+public_discussion_topic:
+  topicable: public_discussion (Discussion)
+  group: public_group
+  items_count: 1
+  ranges_string: "0-0"
+  max_depth: 2
+  newest_first: false
+  private: false
+  last_activity_at: <%= 10.days.ago %>
+  created_at: <%= 10.days.ago %>
+  updated_at: <%= 1.day.ago %>
+
+alien_discussion_topic:
+  topicable: alien_discussion (Discussion)
+  group: alien_group
+  items_count: 1
+  ranges_string: "0-0"
+  max_depth: 2
+  newest_first: false
+  private: true
+  last_activity_at: <%= 10.days.ago %>
+  created_at: <%= 10.days.ago %>
+  updated_at: <%= 1.day.ago %>
+
+subgroup_discussion_topic:
+  topicable: subgroup_discussion (Discussion)
+  group: subgroup
+  items_count: 1
+  ranges_string: "0-0"
+  max_depth: 2
+  newest_first: false
+  private: true
+  last_activity_at: <%= 5.days.ago %>
+  created_at: <%= 5.days.ago %>
+  updated_at: <%= 1.day.ago %>

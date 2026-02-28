@@ -46,49 +46,7 @@ export default
 
   methods: {
     startNewPoll() {
-      if (!this.group.canStartPollsWithoutDiscussion) {
-        EventBus.$emit('openModal', {
-          component: 'ConfirmModal',
-          props: {
-            confirm: {
-              text: {
-                title: 'polls_panel.standalone_disabled_title',
-                helptext: 'polls_panel.standalone_disabled_helptext',
-                submit: 'polls_panel.start_discussion',
-                cancel: 'common.action.cancel'
-              },
-              submit: () => {
-                this.$router.push('/d/new?group_id=' + this.group.id);
-                return Promise.resolve();
-              }
-            }
-          }
-        });
-      } else if (!Session.user().hasExperienced('standalonePollWarning')) {
-        Records.users.saveExperience('standalonePollWarning');
-        EventBus.$emit('openModal', {
-          component: 'ConfirmModal',
-          props: {
-            confirm: {
-              text: {
-                title: 'polls_panel.standalone_warning_title',
-                helptext: 'polls_panel.standalone_warning_helptext',
-                submit: 'polls_panel.start_poll_anyway',
-                cancel: 'polls_panel.start_discussion_instead'
-              },
-              submit: () => {
-                this.$router.push('/p/new?group_id=' + this.group.id);
-                return Promise.resolve();
-              },
-              cancel: () => {
-                this.$router.push('/d/new?group_id=' + this.group.id);
-              }
-            }
-          }
-        });
-      } else {
-        this.$router.push('/p/new?group_id=' + this.group.id);
-      }
+      this.$router.push('/p/new?group_id=' + this.group.id);
     },
 
     openSearchModal() {

@@ -10,13 +10,13 @@
         %td
           %h2{ style: "text-align: center"}= group.subgroups.count
         %td
-          %h2{ style: "text-align: center"}= Discussion.where(group_id: group.id_and_subgroup_ids).count
+          %h2{ style: "text-align: center"}= Discussion.joins(:topic).where('topics.group_id': group.id_and_subgroup_ids).count
         %td
-          %h2{ style: "text-align: center"}= Comment.joins(:discussion).where('discussions.group_id': group.id_and_subgroup_ids).count
+          %h2{ style: "text-align: center"}= Comment.joins("INNER JOIN events ON events.eventable_type = 'Comment' AND events.eventable_id = comments.id INNER JOIN topics ON topics.id = events.topic_id").where('topics.group_id': group.id_and_subgroup_ids).count
         %td
-          %h2{ style: "text-align: center"}= Poll.where(group_id: group.id_and_subgroup_ids).count
+          %h2{ style: "text-align: center"}= Poll.joins(:topic).where('topics.group_id': group.id_and_subgroup_ids).count
         %td
-          %h2{ style: "text-align: center"}= Stance.joins(:poll).latest.where('polls.group_id': group.id_and_subgroup_ids).count
+          %h2{ style: "text-align: center"}= Stance.joins(poll: :topic).latest.where('topics.group_id': group.id_and_subgroup_ids).count
 
       %tr
         %th

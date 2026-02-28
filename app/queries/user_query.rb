@@ -1,59 +1,49 @@
 class UserQuery
   def self.relations(model:, actor:)
     rels = []
-    if model.is_a?(Group) and model.members.exists?(actor.id)
+    if model.nil?
       rels.push User.joins('LEFT OUTER JOIN memberships m ON m.user_id = users.id').
-                     where('m.group_id IN (:group_ids) AND m.revoked_at IS NULL', {group_ids: model.group.id})
+                     where('m.group_id IN (:group_ids) AND m.revoked_at IS NULL', { group_ids: actor.group_ids })
+
+      rels.push User.joins('LEFT OUTER JOIN topic_readers tr ON tr.user_id = users.id').
+                     where('tr.inviter_id = ? AND tr.revoked_at IS NULL AND tr.guest = TRUE', actor.id)
+
+      return rels
     end
 
-
-    if model.nil? or actor.can?(:add_guests, model)
-      group_ids = if model && model.group.present? && (!model.is_a?(Group) || model.parent_id)
-        actor.group_ids & model.group.parent_or_self.id_and_subgroup_ids
-      else
-        actor.group_ids
-      end
-
+    if model.is_a?(Group) and model.members.exists?(actor.id)
+      group_ids = actor.group_ids & model.parent_or_self.id_and_subgroup_ids
       rels.push User.joins('LEFT OUTER JOIN memberships m ON m.user_id = users.id').
                      where('m.group_id IN (:group_ids) AND m.revoked_at IS NULL', {group_ids: group_ids})
-
-      # people who have been invited by actor
-      rels.push(
-        User.joins("LEFT OUTER JOIN discussion_readers dr on dr.user_id = users.id").
-        where("dr.inviter_id = ? AND revoked_at IS NULL AND guest = TRUE", actor.id)
-      )
-
-      rels.push(
-        User.joins("LEFT OUTER JOIN stances on stances.participant_id = users.id").
-        where("stances.inviter_id = ? AND revoked_at IS NULL AND guest = TRUE", actor.id)
-      )
     end
 
-    if model.present? && (actor.can?(:add_members, model) || actor.can?(:add_voters, model))
-      if model.group.present?
+    if model.respond_to?(:topic)
+      topic = model.topic
+      group = topic.group
+
+      if actor.can?(:add_guests, topic)
+        group_ids = if group.present?
+          actor.group_ids & group.parent_or_self.id_and_subgroup_ids
+        else
+          actor.group_ids
+        end
+
         rels.push User.joins('LEFT OUTER JOIN memberships m ON m.user_id = users.id').
-                       where('m.group_id IN (:group_ids) AND m.revoked_at IS NULL', {group_ids: model.group.id})
-      end
+                       where('m.group_id IN (:group_ids) AND m.revoked_at IS NULL', { group_ids: group_ids })
 
-      if model.discussion_id
-        rels.push(
-          User.joins('LEFT OUTER JOIN discussion_readers dr ON dr.user_id = users.id').
-          where('dr.discussion_id': model.discussion_id).where('dr.revoked_at IS NULL and dr.guest = TRUE')
-        )
+        rels.push User.joins('LEFT OUTER JOIN topic_readers tr ON tr.user_id = users.id').
+                       where('tr.topic_id': topic.id).where('tr.revoked_at IS NULL and tr.guest = TRUE')
+      elsif actor.can?(:add_members, topic)
+        if group.present?
+          rels.push User.joins('LEFT OUTER JOIN memberships m ON m.user_id = users.id').
+                         where('m.group_id IN (:group_ids) AND m.revoked_at IS NULL', { group_ids: group.id })
+        end
 
-        rels.push(
-          User.joins('LEFT OUTER JOIN stances ON stances.participant_id = users.id').
-          where('stances.poll_id': model.discussion.poll_ids).where("stances.revoked_at IS NULL and stances.guest = TRUE")
-        )
-      end
-
-      if model.poll_id
-        rels.push(
-          User.joins('LEFT OUTER JOIN stances ON stances.participant_id = users.id').
-          where('stances.poll_id': model.poll_id).where("stances.revoked_at IS NULL AND stances.guest = TRUE")
-        )
+        rels.push User.joins('LEFT OUTER JOIN topic_readers tr ON tr.user_id = users.id').
+                       where('tr.topic_id': topic.id).where('tr.revoked_at IS NULL and tr.guest = TRUE')
       end
     end
+
     rels
   end
 

@@ -2,7 +2,7 @@ require 'test_helper'
 
 class Queries::ExploreGroupsTest < ActiveSupport::TestCase
   setup do
-    @user = users(:normal_user)
+    @user = users(:user)
 
     @group = Group.create!(name: "Explore Group #{SecureRandom.hex(4)}", handle: "explore_#{SecureRandom.hex(4)}")
     @group.subscription = Subscription.create(plan: 'trial', state: 'active')

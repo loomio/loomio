@@ -129,6 +129,15 @@ namespace :loomio do
     # I edit this each time I want to use it.. rake task arguments are terrible
     unwanted = %w[
       start_a_new_discussion
+      group_form.allow_polls_without_discussions
+      group_form.allow_polls_without_discussions_help
+      polls_panel.standalone_disabled_title
+      polls_panel.standalone_disabled_helptext
+      polls_panel.start_discussion
+      polls_panel.standalone_warning_title
+      polls_panel.standalone_warning_helptext
+      polls_panel.start_poll_anyway
+      polls_panel.start_discussion_instead
     ]
 
     %w[client server].each do |source_name|
@@ -238,6 +247,8 @@ namespace :loomio do
       Group.expired_demo.delete_all
       GenericWorker.perform_async('DemoService', 'generate_demo_groups')
       GenericWorker.perform_async('CleanupService', 'delete_orphan_records')
+      GenericWorker.perform_async('CleanupService', 'warn_and_destroy_expired_trial_groups')
+      GenericWorker.perform_async('CleanupService', 'destroy_orphan_users')
       GenericWorker.perform_async('OutcomeService', 'publish_review_due')
       GenericWorker.perform_async('ReceivedEmailService', 'delete_old_emails')
     end
@@ -273,5 +284,11 @@ namespace :loomio do
       GenericWorker.perform_async('SubscriptionService', 'populate_management_links')
     end
   end
+
+  task rebuild_search_index: :environment do
+    GenericWorker.perform_async('SearchService', 'reindex_everything')
+    puts "SearchService.reindex_everything queued as background job"
+  end
+
 
 end

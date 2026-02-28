@@ -3,11 +3,11 @@ require "test_helper"
 class Api::V1::GroupsControllerTest < ActionController::TestCase
 
   def setup
-    @user = users(:normal_user)
-    @another_user = users(:another_user)
-    @group = groups(:test_group)
+    @user = users(:user)
+    @alien = users(:alien)
+    @group = groups(:group)
     @subgroup = groups(:subgroup)
-    @another_group = groups(:another_group)
+    @another_group = groups(:alien_group)
     @public_group = groups(:public_group)
   end
 
@@ -28,7 +28,7 @@ class Api::V1::GroupsControllerTest < ActionController::TestCase
   end
 
   test "index filters groups based on user permissions" do
-    sign_in @another_user
+    sign_in @alien
 
     get :index, params: { xids: [@group, @another_group, @public_group].map(&:id).join('x') }
 
@@ -153,8 +153,8 @@ class Api::V1::GroupsControllerTest < ActionController::TestCase
   end
 
   test "update without admin privilege returns 403" do
-    sign_in @another_user
-    @group.add_member!(@another_user)
+    sign_in @alien
+    @group.add_member!(@alien)
 
     put :update, params: {
       id: @group.id,

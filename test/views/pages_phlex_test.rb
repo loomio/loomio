@@ -3,9 +3,8 @@ require "test_helper"
 class PagesPhlexTest < ActiveSupport::TestCase
   def setup
     super
-    @group = groups(:test_group)
-    @user = users(:discussion_author)
-    @group.add_admin!(@user)
+    @group = groups(:group)
+    @user = users(:admin)
 
     @recipient = LoggedOutUser.new(
       locale: "en",
@@ -13,15 +12,8 @@ class PagesPhlexTest < ActiveSupport::TestCase
       date_time_pref: "iso"
     )
 
-    @discussion = Discussion.create!(
-      title: "Pages Test Discussion",
-      description: "<p>Discussion body for pages test</p>",
-      description_format: "html",
-      private: true,
-      author: @user,
-      group: @group
-    )
-    @discussion.create_missing_created_event!
+    @discussion = discussions(:discussion)
+    @discussion.update_columns(title: "Pages Test Discussion", description: "<p>Discussion body for pages test</p>")
 
     ActionMailer::Base.deliveries.clear
   end
@@ -47,10 +39,10 @@ class PagesPhlexTest < ActiveSupport::TestCase
     comment = Comment.create!(
       body: "Test comment in pages",
       body_format: "md",
-      discussion: @discussion,
+      parent: @discussion,
       author: @user
     )
-    comment.events.create!(kind: :new_comment, user: @user, discussion: @discussion, created_at: comment.created_at)
+    comment.events.create!(kind: :new_comment, user: @user, topic: @discussion.topic, created_at: comment.created_at)
 
     pagination = { limit: 10, offset: 0 }
     output = render_phlex(Views::Discussions::Show.new(
@@ -66,8 +58,7 @@ class PagesPhlexTest < ActiveSupport::TestCase
       title: "Pages Test Proposal",
       poll_type: "proposal",
       closing_at: 3.days.from_now,
-      group: @group,
-      discussion: @discussion,
+      topic: @discussion.topic,
       author: @user,
       poll_option_names: %w[agree disagree abstain]
     )
@@ -86,8 +77,7 @@ class PagesPhlexTest < ActiveSupport::TestCase
       title: "Stance Test Proposal",
       poll_type: "proposal",
       closing_at: 3.days.from_now,
-      group: @group,
-      discussion: @discussion,
+      topic: @discussion.topic,
       author: @user,
       poll_option_names: %w[agree disagree abstain],
       specified_voters_only: true
@@ -98,7 +88,7 @@ class PagesPhlexTest < ActiveSupport::TestCase
     stance = poll.stances.build(participant: @user)
     stance.stance_choices.build(poll_option: agree_option, score: 1)
     stance.save!
-    stance.events.create!(kind: :stance_created, user: @user, discussion: @discussion, created_at: stance.created_at)
+    stance.events.create!(kind: :stance_created, user: @user, topic: @discussion.topic, created_at: stance.created_at)
 
     pagination = { limit: 10, offset: 0 }
     output = render_phlex(Views::Discussions::Show.new(
@@ -115,7 +105,7 @@ class PagesPhlexTest < ActiveSupport::TestCase
     comment = Comment.create!(
       body: "Standalone comment test",
       body_format: "md",
-      discussion: @discussion,
+      parent: @discussion,
       author: @user
     )
     comment.create_missing_created_event!
@@ -135,8 +125,7 @@ class PagesPhlexTest < ActiveSupport::TestCase
       title: "Poll Created Component Test",
       poll_type: "proposal",
       closing_at: 3.days.from_now,
-      group: @group,
-      discussion: @discussion,
+      topic: @discussion.topic,
       author: @user,
       poll_option_names: %w[agree disagree abstain]
     )
@@ -157,8 +146,7 @@ class PagesPhlexTest < ActiveSupport::TestCase
       title: "Stance Proposal",
       poll_type: "proposal",
       closing_at: 3.days.from_now,
-      group: @group,
-      discussion: @discussion,
+      topic: @discussion.topic,
       author: @user,
       poll_option_names: %w[agree disagree abstain],
       specified_voters_only: true
@@ -183,8 +171,7 @@ class PagesPhlexTest < ActiveSupport::TestCase
       title: "Revoked Stance Proposal",
       poll_type: "proposal",
       closing_at: 3.days.from_now,
-      group: @group,
-      discussion: @discussion,
+      topic: @discussion.topic,
       author: @user,
       poll_option_names: %w[agree disagree abstain],
       specified_voters_only: true
@@ -210,7 +197,7 @@ class PagesPhlexTest < ActiveSupport::TestCase
     comment = Comment.create!(
       body: "Will be discarded",
       body_format: "md",
-      discussion: @discussion,
+      parent: @discussion,
       author: @user
     )
     comment.create_missing_created_event!
@@ -229,8 +216,7 @@ class PagesPhlexTest < ActiveSupport::TestCase
       title: "Poll Type Stance",
       poll_type: "poll",
       closing_at: 3.days.from_now,
-      group: @group,
-      discussion: @discussion,
+      topic: @discussion.topic,
       author: @user,
       poll_option_names: %w[Apple Banana],
       specified_voters_only: true
@@ -255,8 +241,7 @@ class PagesPhlexTest < ActiveSupport::TestCase
       title: "Dot Vote Stance",
       poll_type: "dot_vote",
       closing_at: 3.days.from_now,
-      group: @group,
-      discussion: @discussion,
+      topic: @discussion.topic,
       author: @user,
       poll_option_names: %w[Red Blue],
       dots_per_person: 8,
@@ -285,8 +270,7 @@ class PagesPhlexTest < ActiveSupport::TestCase
       title: "Score Stance",
       poll_type: "score",
       closing_at: 3.days.from_now,
-      group: @group,
-      discussion: @discussion,
+      topic: @discussion.topic,
       author: @user,
       poll_option_names: %w[Alpha Beta],
       max_score: 9,
@@ -312,8 +296,7 @@ class PagesPhlexTest < ActiveSupport::TestCase
       title: "Ranked Choice Stance",
       poll_type: "ranked_choice",
       closing_at: 3.days.from_now,
-      group: @group,
-      discussion: @discussion,
+      topic: @discussion.topic,
       author: @user,
       poll_option_names: %w[First Second Third],
       minimum_stance_choices: 3,
@@ -368,8 +351,7 @@ class PagesPhlexTest < ActiveSupport::TestCase
       title: "Export Test Proposal",
       poll_type: "proposal",
       closing_at: 3.days.from_now,
-      group: @group,
-      discussion: @discussion,
+      topic: @discussion.topic,
       author: @user,
       poll_option_names: %w[agree disagree abstain]
     )

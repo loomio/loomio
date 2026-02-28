@@ -2,22 +2,23 @@ require 'test_helper'
 
 class Api::V1::PollsControllerTest < ActionController::TestCase
   setup do
-    @user = users(:discussion_author)
-    @another_user = users(:another_user)
-    @group = groups(:test_group)
-    @discussion = discussions(:test_discussion)
+    @user = users(:user)
+    @admin = users(:admin)
+    @alien = users(:alien)
+    @group = groups(:group)
+    @discussion = discussions(:discussion)
   end
 
   # Show tests
   test "show displays a poll" do
-    poll = Poll.new(
+    poll = PollService.create(params: {
       title: "POLL!",
       poll_type: "proposal",
-      discussion: @discussion,
-      author: @user,
-      poll_option_names: ["Yes", "No"]
-    )
-    PollService.create(poll: poll, actor: @user)
+      topic_id: @discussion.topic_id,
+      group_id: @group.id,
+      poll_option_names: %w[agree disagree],
+      closing_at: 3.days.from_now
+    }, actor: @admin)
 
     sign_in @user
     get :show, params: { id: poll.key }
@@ -30,14 +31,14 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
 
   # Index tests
   test "index responds successfully" do
-    poll = Poll.new(
+    PollService.create(params: {
       title: "POLL!",
       poll_type: "proposal",
-      discussion: @discussion,
-      author: @user,
-      poll_option_names: ["Yes", "No"]
-    )
-    PollService.create(poll: poll, actor: @user)
+      topic_id: @discussion.topic_id,
+      group_id: @group.id,
+      poll_option_names: %w[agree disagree],
+      closing_at: 3.days.from_now
+    }, actor: @admin)
 
     sign_in @user
     get :index
@@ -46,7 +47,7 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
 
   # Create tests
   test "create creates a poll in discussion" do
-    sign_in @user
+    sign_in @admin
 
     assert_difference 'Poll.count', 1 do
       post :create, params: {
@@ -54,8 +55,9 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
           title: "hello",
           poll_type: "proposal",
           details: "is it me you're looking for?",
-          discussion_id: @discussion.id,
-          options: ["agree", "abstain", "disagree", "block"],
+          topic_id: @discussion.topic_id,
+          group_id: @group.id,
+          options: %w[agree abstain disagree],
           closing_at: 3.days.from_now.at_beginning_of_hour
         }
       }
@@ -64,46 +66,42 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
     assert_response :success
     poll = Poll.last
     assert_equal "hello", poll.title
-    assert_equal @discussion, poll.discussion
-    assert_equal @user, poll.author
-    assert_includes poll.admins, @user
+    assert_equal @discussion.topic, poll.topic
+    assert_equal @admin, poll.author
+    assert_includes poll.admins, @admin
   end
 
   # Discard tests
   test "discard allows poll author to discard" do
-    poll = Poll.new(
+    poll = PollService.create(params: {
       title: "discardable",
       poll_type: "proposal",
-      discussion: @discussion,
-      author: @user,
-      poll_option_names: ["Yes", "No"]
-    )
-    PollService.create(poll: poll, actor: @user)
+      topic_id: @discussion.topic_id,
+      group_id: @group.id,
+      poll_option_names: %w[agree disagree],
+      closing_at: 3.days.from_now
+    }, actor: @admin)
 
-    sign_in @user
+    sign_in @admin
     delete :discard, params: { id: poll.id }
     assert_response :success
 
     poll.reload
     assert poll.discarded?
-    assert_equal @user.id, poll.discarded_by
+    assert_equal @admin.id, poll.discarded_by
   end
 
   # Receipts tests
   test "receipts returns receipts for a poll" do
-    @group.add_admin! @user
-    poll = Poll.new(
+    poll = PollService.create(params: {
       title: "receipts test",
       poll_type: "proposal",
-      group: @group,
-      discussion: @discussion,
-      author: @user,
+      group_id: @group.id,
       poll_option_names: %w[agree disagree abstain],
       closing_at: 5.days.from_now
-    )
-    PollService.create(poll: poll, actor: @user)
+    }, actor: @admin)
 
-    sign_in @user
+    sign_in @admin
     get :receipts, params: { id: poll.key }
     assert_response :success
 
@@ -113,40 +111,31 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
   end
 
   test "receipts allowed for non-admin member by default" do
-    @group.add_admin! @user
-    @group.add_member! @another_user
-    poll = Poll.new(
+    poll = PollService.create(params: {
       title: "receipts test",
       poll_type: "proposal",
-      group: @group,
-      discussion: @discussion,
-      author: @user,
+      group_id: @group.id,
       poll_option_names: %w[agree disagree abstain],
       closing_at: 5.days.from_now
-    )
-    PollService.create(poll: poll, actor: @user)
+    }, actor: @admin)
 
-    sign_in @another_user
+    sign_in @user
     get :receipts, params: { id: poll.key }
     assert_response :success
   end
 
   test "receipts denied for non-admin member when admin only env set" do
     ENV['LOOMIO_VERIFY_PARTICIPANTS_ADMIN_ONLY'] = '1'
-    @group.add_admin! @user
-    @group.add_member! @another_user
-    poll = Poll.new(
+
+    poll = PollService.create(params: {
       title: "receipts test",
       poll_type: "proposal",
-      group: @group,
-      discussion: @discussion,
-      author: @user,
+      group_id: @group.id,
       poll_option_names: %w[agree disagree abstain],
       closing_at: 5.days.from_now
-    )
-    PollService.create(poll: poll, actor: @user)
+    }, actor: @admin)
 
-    sign_in @another_user
+    sign_in @user
     get :receipts, params: { id: poll.key }
     assert_response :forbidden
   ensure
@@ -155,19 +144,16 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
 
   test "receipts allowed for group admin when admin only env set" do
     ENV['LOOMIO_VERIFY_PARTICIPANTS_ADMIN_ONLY'] = '1'
-    @group.add_admin! @user
-    poll = Poll.new(
+
+    poll = PollService.create(params: {
       title: "receipts test",
       poll_type: "proposal",
-      group: @group,
-      discussion: @discussion,
-      author: @user,
+      group_id: @group.id,
       poll_option_names: %w[agree disagree abstain],
       closing_at: 5.days.from_now
-    )
-    PollService.create(poll: poll, actor: @user)
+    }, actor: @admin)
 
-    sign_in @user
+    sign_in @admin
     get :receipts, params: { id: poll.key }
     assert_response :success
   ensure
@@ -176,17 +162,16 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
 
   # Close tests
   test "close closes an open poll" do
-    poll = Poll.new(
+    poll = PollService.create(params: {
       title: "closeable",
       poll_type: "proposal",
-      discussion: @discussion,
-      author: @user,
-      poll_option_names: ["Yes", "No"],
+      topic_id: @discussion.topic_id,
+      group_id: @group.id,
+      poll_option_names: %w[agree disagree],
       closing_at: 5.days.from_now
-    )
-    PollService.create(poll: poll, actor: @user)
+    }, actor: @admin)
 
-    sign_in @user
+    sign_in @admin
     post :close, params: { id: poll.id }
     assert_response :success
 

@@ -2,7 +2,7 @@ module Ability
   class Base
     include CanCan::Ability
     prepend Ability::Comment
-    prepend Ability::DiscussionReader
+    prepend Ability::TopicReader
     prepend Ability::Discussion
     prepend Ability::Document
     prepend Ability::Group
@@ -23,10 +23,10 @@ module Ability
     prepend Ability::PollTemplate
     prepend Ability::DiscussionTemplate
     prepend Ability::ReceivedEmail
+    prepend Ability::Topic
 
     def initialize(user)
       @user = user
-      can(:subscribe_to, GlobalMessageChannel) { true }
     end
 
     private

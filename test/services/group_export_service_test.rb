@@ -2,43 +2,42 @@ require 'test_helper'
 
 class GroupExportServiceTest < ActiveSupport::TestCase
   def create_scenario
-    admin = User.create!(email: "exportadmin#{SecureRandom.hex(4)}@example.com", name: 'admin', password: 'password')
+    admin = User.create!(email: "exportadmin#{SecureRandom.hex(4)}@example.com", name: 'admin', password: 'password', email_verified: true)
     member = User.create!(email: "exportmember#{SecureRandom.hex(4)}@example.com", name: 'member', password: 'password')
-    another_user = User.create!(email: "exportother#{SecureRandom.hex(4)}@example.com", name: 'another_user', password: 'password')
+    alien = User.create!(email: "exportother#{SecureRandom.hex(4)}@example.com", name: 'alien', password: 'password')
 
     group = Group.create!(name: "exportgroup#{SecureRandom.hex(4)}", creator_id: admin.id)
     subgroup = Group.create!(name: "exportsubgroup#{SecureRandom.hex(4)}", creator_id: admin.id, parent_id: group.id)
-    another_group = Group.create!(name: "exportanothergroup#{SecureRandom.hex(4)}", creator_id: another_user.id)
+    another_group = Group.create!(name: "exportanothergroup#{SecureRandom.hex(4)}", creator_id: alien.id)
 
     group.add_admin!(admin)
     group.add_member!(member)
     subgroup.add_admin!(admin)
     subgroup.add_member!(member)
-    another_group.add_admin!(another_user)
+    another_group.add_admin!(alien)
 
     discussion_template = DiscussionTemplate.create!(title: 'discussion_template', group: group, process_name: 'process_name', process_subtitle: 'process_subtitle', author: admin)
     poll_template = PollTemplate.create!(title: 'poll_template', group: group, process_name: 'process_name', process_subtitle: 'process_subtitle', poll_type: 'proposal', author: admin)
 
     tag = Tag.create!(name: "exptag#{SecureRandom.hex(4)}", group: group, color: '#abcdef')
 
-    discussion = Discussion.create!(title: "export_discussion#{SecureRandom.hex(4)}", group: group, author: admin, discussion_template_id: discussion_template.id, tags: [tag.name])
-    sub_discussion = Discussion.create!(title: "export_sub_discussion#{SecureRandom.hex(4)}", group: subgroup, author: admin)
+    discussion = DiscussionService.create(params: { title: "export_discussion#{SecureRandom.hex(4)}", group_id: group.id, discussion_template_id: discussion_template.id, tags: [tag.name] }, actor: admin)
+    sub_discussion = DiscussionService.create(params: { title: "export_sub_discussion#{SecureRandom.hex(4)}", group_id: subgroup.id }, actor: admin)
 
-    comment = Comment.create!(body: 'export_comment', discussion: discussion, author: admin)
-    sub_comment = Comment.create!(body: 'export_sub_comment', discussion: sub_discussion, author: admin)
+    comment = Comment.new(parent: discussion, body: 'export_comment')
+    CommentService.create(comment: comment, actor: admin)
+    sub_comment = Comment.new(parent: sub_discussion, body: 'export_sub_comment')
+    CommentService.create(comment: sub_comment, actor: admin)
 
-    poll = Poll.create!(title: "export_poll#{SecureRandom.hex(4)}", group: group, author: admin, poll_type: 'proposal', closing_at: 1.day.from_now, opened_at: Time.now, poll_template_id: poll_template.id)
-    sub_poll = Poll.create!(title: "export_sub_poll#{SecureRandom.hex(4)}", group: subgroup, author: admin, poll_type: 'proposal', closing_at: 1.day.from_now, opened_at: Time.now)
+    poll = PollService.create(params: { title: "export_poll#{SecureRandom.hex(4)}", group_id: group.id, poll_type: 'proposal', closing_at: 1.day.from_now, poll_option_names: %w[Agree Disagree], poll_template_id: poll_template.id }, actor: admin)
+    sub_poll = PollService.create(params: { title: "export_sub_poll#{SecureRandom.hex(4)}", group_id: subgroup.id, poll_type: 'proposal', closing_at: 1.day.from_now, poll_option_names: %w[Agree Disagree] }, actor: admin)
 
-    PollOption.create!(poll: poll, name: 'agree')
-    PollOption.create!(poll: poll, name: 'disagree')
-    PollOption.create!(poll: sub_poll, name: 'agree')
-    PollOption.create!(poll: sub_poll, name: 'disagree')
-
-    Stance.create!(poll: poll, participant: admin, choice: 'agree')
-    Stance.create!(poll: poll, participant: member, choice: 'disagree')
-    Stance.create!(poll: sub_poll, participant: admin, choice: nil, cast_at: nil)
-    Stance.create!(poll: sub_poll, participant: member, choice: nil, cast_at: nil)
+    # PollService.create already created poll options and stances for group members
+    # Cast stances for the main poll
+    admin_stance = poll.stances.find_by(participant_id: admin.id, latest: true)
+    admin_stance.update!(choice: 'Agree', cast_at: Time.current)
+    member_stance = poll.stances.find_by(participant_id: member.id, latest: true)
+    member_stance.update!(choice: 'Disagree', cast_at: Time.current)
 
     poll.update_counts!
     sub_poll.update_counts!
@@ -46,19 +45,15 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     PollService.close(poll: poll, actor: admin)
     PollService.close(poll: sub_poll, actor: admin)
 
-    discussion_event = Event.create!(eventable: discussion, user: admin, kind: 'discussion_created')
-    comment_event = Event.create!(discussion: discussion, eventable: comment, user: admin, kind: 'new_comment')
-
-    DiscussionReader.create!(discussion: discussion, user: admin)
-
-    notification = discussion_event.notifications.create!(user: member, actor: admin)
+    # Services already created events and topic readers
+    discussion_event = discussion.created_event
 
     Reaction.create!(reactable: discussion, user: member)
     Reaction.create!(reactable: poll, user: member)
     Reaction.create!(reactable: comment, user: member)
 
     {
-      admin: admin, member: member, another_user: another_user,
+      admin: admin, member: member, alien: alien,
       group: group, subgroup: subgroup, another_group: another_group,
       discussion: discussion, sub_discussion: sub_discussion,
       comment: comment, poll: poll, sub_poll: sub_poll,
@@ -78,21 +73,29 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     group_ids = group.all_groups.pluck(:id)
     admin_id = admin.id
     member_id = member.id
-    another_user_id = data[:another_user].id
+    alien_id = data[:alien].id
 
     # Clean up in reverse dependency order
-    StanceReceipt.where(poll: Poll.where(group_id: group_ids)).delete_all
+    # Polls and discussions are now found via topics.group_id
+    group_poll_ids = Poll.joins(:topic).where(topics: { group_id: group_ids }).pluck(:id)
+    group_discussion_ids = Discussion.joins(:topic).where(topics: { group_id: group_ids }).pluck(:id)
+
+    group_topic_ids = Topic.where(group_id: group_ids).pluck(:id)
+    comment_ids = Event.where(topic_id: group_topic_ids, eventable_type: 'Comment').pluck(:eventable_id)
+
+    StanceReceipt.where(poll_id: group_poll_ids).delete_all
     Reaction.where(user_id: [admin_id, member_id]).delete_all
     Notification.where(user_id: [admin_id, member_id]).delete_all
-    Event.where(discussion: Discussion.where(group_id: group_ids)).delete_all
-    Event.where(eventable_type: 'Poll', eventable_id: Poll.where(group_id: group_ids).pluck(:id)).delete_all
-    DiscussionReader.where(discussion: Discussion.where(group_id: group_ids)).delete_all
-    StanceChoice.where(stance: Stance.where(poll: Poll.where(group_id: group_ids))).delete_all
-    Stance.where(poll: Poll.where(group_id: group_ids)).delete_all
-    PollOption.where(poll: Poll.where(group_id: group_ids)).delete_all
-    Poll.where(group_id: group_ids).delete_all
-    Comment.where(discussion: Discussion.where(group_id: group_ids)).delete_all
-    Discussion.where(group_id: group_ids).delete_all
+    Event.where(topic_id: group_topic_ids).delete_all
+    TopicReader.where(topic_id: group_topic_ids).delete_all
+    StanceChoice.where(stance: Stance.where(poll_id: group_poll_ids)).delete_all
+    Stance.where(poll_id: group_poll_ids).delete_all
+    PollOption.where(poll_id: group_poll_ids).delete_all
+    Outcome.where(poll_id: group_poll_ids).delete_all
+    Poll.where(id: group_poll_ids).delete_all
+    Comment.where(id: comment_ids).delete_all
+    Topic.where(id: group_topic_ids).delete_all
+    Discussion.where(id: group_discussion_ids).delete_all
     DiscussionTemplate.where(group_id: group_ids).delete_all
     PollTemplate.where(group_id: group_ids).delete_all
     Tag.where(group_id: group_ids).delete_all
@@ -100,15 +103,15 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     Membership.where(group_id: data[:another_group].id).delete_all
     Group.where(id: data[:another_group].id).delete_all
     Group.where(id: group_ids).delete_all
-    Identity.where(user_id: [admin_id, member_id, another_user_id]).delete_all
-    User.where(id: [admin_id, member_id, another_user_id]).delete_all
+    Identity.where(user_id: [admin_id, member_id, alien_id]).delete_all
+    User.where(id: [admin_id, member_id, alien_id]).delete_all
 
     GroupExportService.import(filename)
 
     # Verify import recreated the data
     imported_admin = User.find_by!(email: admin.email)
     imported_member = User.find_by!(email: member.email)
-    assert_nil User.find_by(email: data[:another_user].email), "another_user should not be imported"
+    assert_nil User.find_by(email: data[:alien].email), "alien should not be imported"
 
     imported_group = Group.find_by!(name: group.name)
     imported_subgroup = Group.find_by!(name: data[:subgroup].name)
@@ -120,9 +123,9 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     assert Membership.find_by(user: imported_member, group: imported_group, admin: false)
     assert Membership.find_by(user: imported_member, group: imported_subgroup, admin: false)
 
-    # Discussions
-    imported_discussion = Discussion.find_by!(title: data[:discussion].title, group: imported_group, author: imported_admin)
-    Discussion.find_by!(title: data[:sub_discussion].title, group: imported_subgroup, author: imported_admin)
+    # Discussions (group_id is on topics, not discussions)
+    imported_discussion = imported_group.discussions.find_by!(title: data[:discussion].title, author: imported_admin)
+    imported_subgroup.discussions.find_by!(title: data[:sub_discussion].title, author: imported_admin)
 
     assert_equal 1, imported_discussion.tags.count
     assert_equal data[:tag].name, imported_discussion.tags.first
@@ -130,11 +133,11 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     Tag.find_by!(name: data[:tag].name, group: imported_group, color: '#abcdef')
 
     # Comments
-    Comment.find_by!(discussion: imported_discussion, user: imported_admin, body: 'export_comment')
+    imported_comment = imported_discussion.comments.find_by!(user: imported_admin, body: 'export_comment')
 
-    # Polls and stances
-    imported_poll = Poll.find_by!(title: data[:poll].title, group: imported_group, author: imported_admin)
-    imported_sub_poll = Poll.find_by!(title: data[:sub_poll].title, group: imported_subgroup, author: imported_admin)
+    # Polls and stances (group_id is on topics, not polls)
+    imported_poll = imported_group.polls.find_by!(title: data[:poll].title, author: imported_admin)
+    imported_sub_poll = imported_subgroup.polls.find_by!(title: data[:sub_poll].title, author: imported_admin)
 
     imported_poll.update_counts!
     imported_sub_poll.update_counts!

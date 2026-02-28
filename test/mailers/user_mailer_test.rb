@@ -62,9 +62,8 @@ class UserMailerTest < ActionMailer::TestCase
     @user.update!(email_catch_up_day: 7)
     @group.add_member!(@user)
     author = @inviter
-    discussion = Discussion.new(title: "Catch up #{SecureRandom.hex(4)}", group: @group, author: author)
-    DiscussionService.create(discussion: discussion, actor: author)
-    comment = Comment.new(discussion: discussion, body: "catch up comment")
+    discussion = DiscussionService.create(params: { title: "Catch up #{SecureRandom.hex(4)}", group_id: @group.id }, actor: author)
+    comment = Comment.new(parent: discussion, body: "catch up comment")
     CommentService.create(comment: comment, actor: author)
     ActionMailer::Base.deliveries.clear
 
@@ -89,8 +88,7 @@ class UserMailerTest < ActionMailer::TestCase
     author = @inviter
 
     travel_to Time.now.in_time_zone(@user.time_zone).next_occurring(:monday).change(hour: 6) do
-      discussion = Discussion.new(title: "CatchupUnsub #{SecureRandom.hex(4)}", group: @group, author: author)
-      DiscussionService.create(discussion: discussion, actor: author)
+      discussion = DiscussionService.create(params: { title: "CatchupUnsub #{SecureRandom.hex(4)}", group_id: @group.id }, actor: author)[:discussion]
       ActionMailer::Base.deliveries.clear
 
       assert_no_difference 'ActionMailer::Base.deliveries.count' do
@@ -105,8 +103,7 @@ class UserMailerTest < ActionMailer::TestCase
     author = @inviter
 
     travel_to Time.now.in_time_zone(@user.time_zone).next_occurring(:monday).change(hour: 6) do
-      discussion = Discussion.new(title: "CatchupDaily #{SecureRandom.hex(4)}", group: @group, author: author)
-      DiscussionService.create(discussion: discussion, actor: author)
+      discussion = DiscussionService.create(params: { title: "CatchupDaily #{SecureRandom.hex(4)}", group_id: @group.id }, actor: author)[:discussion]
       ActionMailer::Base.deliveries.clear
 
       assert_difference 'ActionMailer::Base.deliveries.count', 1 do
@@ -121,8 +118,7 @@ class UserMailerTest < ActionMailer::TestCase
     author = @inviter
 
     travel_to Time.now.in_time_zone(@user.time_zone).next_occurring(:monday).change(hour: 6) do
-      discussion = Discussion.new(title: "CatchupMon #{SecureRandom.hex(4)}", group: @group, author: author)
-      DiscussionService.create(discussion: discussion, actor: author)
+      discussion = DiscussionService.create(params: { title: "CatchupMon #{SecureRandom.hex(4)}", group_id: @group.id }, actor: author)[:discussion]
       ActionMailer::Base.deliveries.clear
 
       assert_difference 'ActionMailer::Base.deliveries.count', 1 do
@@ -137,8 +133,7 @@ class UserMailerTest < ActionMailer::TestCase
     author = @inviter
 
     travel_to Time.now.in_time_zone(@user.time_zone).next_occurring(:monday).change(hour: 5) do
-      discussion = Discussion.new(title: "CatchupNo5am #{SecureRandom.hex(4)}", group: @group, author: author)
-      DiscussionService.create(discussion: discussion, actor: author)
+      discussion = DiscussionService.create(params: { title: "CatchupNo5am #{SecureRandom.hex(4)}", group_id: @group.id }, actor: author)[:discussion]
       ActionMailer::Base.deliveries.clear
 
       assert_no_difference 'ActionMailer::Base.deliveries.count' do
@@ -165,8 +160,7 @@ class UserMailerTest < ActionMailer::TestCase
     author = @inviter
 
     travel_to Time.now.in_time_zone(@user.time_zone).next_occurring(:tuesday).change(hour: 6) do
-      discussion = Discussion.new(title: "CatchupTues #{SecureRandom.hex(4)}", group: @group, author: author)
-      DiscussionService.create(discussion: discussion, actor: author)
+      discussion = DiscussionService.create(params: { title: "CatchupTues #{SecureRandom.hex(4)}", group_id: @group.id }, actor: author)[:discussion]
       ActionMailer::Base.deliveries.clear
 
       assert_no_difference 'ActionMailer::Base.deliveries.count' do

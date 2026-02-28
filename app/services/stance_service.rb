@@ -31,13 +31,10 @@ class StanceService
     new_stance = stance.build_replacement
     new_stance.assign_attributes_and_files(params)
 
-    event = Event.where(eventable: stance, discussion_id: stance.poll.discussion_id).order('id desc').first
+    event = Event.where(eventable: stance, topic_id: stance.poll.topic&.id).order('id desc').first
 
-    if is_update &&
-       stance.poll.discussion_id &&
-       stance.option_scores != new_stance.build_option_scores &&
-       stance.updated_at < 15.minutes.ago
-      # they've changed their position, in a poll in a thread, and it's more than 15 minutes since they last saved it.
+    if is_update && stance.option_scores != new_stance.build_option_scores && (Comment.kept.where(parent: stance).exists? ||  stance.updated_at < 15.minutes.ago)
+      # they've changed their position, and someone has replied to them or it's been a while and people will have seeen their position
 
       new_stance.cast_at = Time.zone.now
 

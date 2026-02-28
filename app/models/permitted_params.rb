@@ -1,7 +1,7 @@
 class PermittedParams < Struct.new(:params)
   MODELS = %w(
     user group membership_request membership poll poll_template outcome
-    stance discussion discussion_template discussion_reader comment
+    stance discussion discussion_template discussion_reader topic comment
     contact_message document
     webhook chatbot contact_request reaction tag
   )
@@ -34,10 +34,10 @@ class PermittedParams < Struct.new(:params)
       :title,
       :details,
       :details_format,
-      :discussion_id,
       :default_duration_in_days,
       :poll_type,
       :group_id,
+      :topic_id,
       :closing_at,
       :opening_at,
       :anonymous,
@@ -173,7 +173,11 @@ class PermittedParams < Struct.new(:params)
   end
 
   def discussion_reader_attributes
-    [:discussion_id, :volume]
+    [:volume]
+  end
+
+  def topic_attributes
+    [:newest_first, :max_depth]
   end
 
   def group_attributes
@@ -183,7 +187,7 @@ class PermittedParams < Struct.new(:params)
      :description, :description_format, :is_visible_to_parent_members, :parent_members_can_see_discussions,
      :membership_granted_upon, :cover_photo, :logo, :category, :members_can_raise_motions,
      :members_can_start_discussions, :members_can_create_subgroups, :members_can_create_templates, :admins_can_edit_user_content,
-     :new_threads_max_depth, :new_threads_newest_first, :request_to_join_prompt, :can_start_polls_without_discussion, :listed_in_explore,
+     :new_threads_max_depth, :new_threads_newest_first, :request_to_join_prompt, :listed_in_explore,
      :document_ids, {document_ids: []},
      :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}
    ]
@@ -204,8 +208,6 @@ class PermittedParams < Struct.new(:params)
      :discussion_template_id,
      :discussion_template_key,
      :group_id,
-     :newest_first,
-     :max_depth,
      :private,
      :notify_recipients,
      :recipient_audience,
@@ -248,7 +250,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def comment_attributes
-    [:body, :body_format, :discussion_id, :parent_id, :parent_type,
+    [:body, :body_format, :parent_id, :parent_type,
       :document_ids, {document_ids: []},
       :link_previews, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]},
       :files, {files: []},

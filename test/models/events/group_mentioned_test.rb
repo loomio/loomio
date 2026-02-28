@@ -21,12 +21,12 @@ class Events::GroupMentionedTest < ActiveSupport::TestCase
     @group.membership_for(@volume_normal_member).update!(volume: :normal)
     @group.membership_for(@volume_loud_member).update!(volume: :loud)
 
-    @discussion = create_discussion(group: @group, author: @actor)
+    @discussion = DiscussionService.create(params: { group_id: @group.id, title: "GM Test #{SecureRandom.hex(4)}" }, actor: @actor)
     ActionMailer::Base.deliveries.clear
   end
 
   test "does not notify people more than it should" do
-    comment = Comment.new(discussion: @discussion, author: @actor,
+    comment = Comment.new(parent: @discussion, author: @actor,
                           body: "hello @#{@group.handle}, how's it going? special mention @#{@mentioned_member.username}",
                           body_format: 'md')
     Events::NewComment.publish!(comment)
@@ -37,7 +37,7 @@ class Events::GroupMentionedTest < ActiveSupport::TestCase
   end
 
   test "notifies normally" do
-    comment = Comment.new(discussion: @discussion, author: @actor,
+    comment = Comment.new(parent: @discussion, author: @actor,
                           body: "hello @#{@group.handle}", body_format: 'md')
     assert_difference -> { Event.where(kind: 'group_mentioned').count }, 1 do
       Events::NewComment.publish!(comment)
@@ -48,7 +48,7 @@ class Events::GroupMentionedTest < ActiveSupport::TestCase
     @group.update!(members_can_announce: false)
     non_admin = User.create!(name: "NonAdmin #{SecureRandom.hex(4)}", email: "gmnonadmin_#{SecureRandom.hex(4)}@test.com", email_verified: true)
     @group.add_member!(non_admin)
-    comment = Comment.new(discussion: @discussion, author: non_admin,
+    comment = Comment.new(parent: @discussion, author: non_admin,
                           body: "hello @#{@group.handle}", body_format: 'md')
     assert_no_difference -> { Event.where(kind: 'group_mentioned').count } do
       Events::NewComment.publish!(comment)
@@ -57,7 +57,7 @@ class Events::GroupMentionedTest < ActiveSupport::TestCase
 
   test "notifies if members cannot announce but user is admin" do
     @group.update!(members_can_announce: false)
-    comment = Comment.new(discussion: @discussion, author: @actor,
+    comment = Comment.new(parent: @discussion, author: @actor,
                           body: "hello @#{@group.handle}", body_format: 'md')
     assert_difference -> { Event.where(kind: 'group_mentioned').count }, 1 do
       Events::NewComment.publish!(comment)
@@ -65,7 +65,7 @@ class Events::GroupMentionedTest < ActiveSupport::TestCase
   end
 
   test "notifies group on edit with newly mentioned group" do
-    comment = Comment.new(discussion: @discussion, author: @actor,
+    comment = Comment.new(parent: @discussion, author: @actor,
                           body: "no mentions in here", body_format: 'md')
     Events::NewComment.publish!(comment)
     assert_equal 0, Event.where(kind: 'group_mentioned').count
@@ -76,7 +76,7 @@ class Events::GroupMentionedTest < ActiveSupport::TestCase
   end
 
   test "does not notify group on edit with existing mention" do
-    comment = Comment.new(discussion: @discussion, author: @actor,
+    comment = Comment.new(parent: @discussion, author: @actor,
                           body: "hello @#{@group.handle}", body_format: 'md')
     Events::NewComment.publish!(comment)
     assert_equal 1, Event.where(kind: 'group_mentioned').count

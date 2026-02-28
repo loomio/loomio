@@ -2,7 +2,7 @@ module DiscussionExportRelations
   extend ActiveSupport::Concern
 
   included do
-	  has_many :exportable_polls, -> { where("anonymous = false OR closed_at is not null") }, class_name: 'Poll', foreign_key: :group_id
+	  has_many :exportable_polls, -> { where("anonymous = false OR closed_at is not null") }, class_name: 'Poll', primary_key: :topic_id, foreign_key: :topic_id
 	  has_many :exportable_poll_options,          through: :exportable_polls, source: :poll_options
 	  has_many :exportable_outcomes,              through: :exportable_polls, source: :outcomes
 	  has_many :exportable_stances,               through: :exportable_polls, source: :stances

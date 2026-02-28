@@ -61,8 +61,9 @@ class UserInviter
     emails = Array(emails).map(&:presence).compact.uniq
 
     # members belong to group
-    member_ids = model.members.where(id: user_ids).pluck(:id)
-    member_ids += model.members.where(email: emails).pluck(:id)
+    members_scope = model.members
+    member_ids = members_scope.where(id: user_ids).pluck(:id)
+    member_ids += members_scope.where(email: emails).pluck(:id)
 
     emails -= User.where(email: emails, id: member_ids).pluck(:email)
 
@@ -70,14 +71,16 @@ class UserInviter
     guest_ids = UserQuery.invitable_user_ids(model: model, actor: actor, user_ids: user_ids - member_ids)
 
     actor.ability.authorize!(:announce, model)    if audience == 'group'
-    actor.ability.authorize!(:add_members, model) if member_ids.any?
-    actor.ability.authorize!(:add_guests, model)  if emails.any? or guest_ids.any?
+    auth_target = model.respond_to?(:topic) ? model.topic : model
+    actor.ability.authorize!(:add_members, auth_target) if member_ids.any?
+    actor.ability.authorize!(:add_guests, auth_target)  if emails.any? or guest_ids.any?
   end
 
   def self.where_existing(user_ids:, audience:, model:, actor:)
     user_ids = Array(user_ids).uniq.compact.map(&:to_i)
     audience_ids = AnnouncementService.audience_users(model, audience, actor).pluck(:id)
-    model.members.where('users.id': user_ids + audience_ids)
+    members_scope = model.members
+    members_scope.where('users.id': user_ids + audience_ids)
   end
 
   def self.where_or_create!(emails:, user_ids:, audience: nil, model:, actor:, include_actor: false)
@@ -92,7 +95,8 @@ class UserInviter
 
     # guests are any user outside of the group, and not yet invited
     # either by email address or by user_id, but user_ids are limited to your org
-    member_ids = model.members.where(id: user_ids).pluck(:id)
+    members_scope = model.members
+    member_ids = members_scope.where(id: user_ids).pluck(:id)
 
     # guests are outside of the group, but allowed to be referenced by user query
     guest_ids = UserQuery.invitable_user_ids(model: model, actor: actor, user_ids: user_ids - member_ids)

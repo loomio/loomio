@@ -34,7 +34,7 @@ export default {
     getSuggestions() {
       this.searchResults = Records.discussions.collection.chain()
         .find({groupId: this.groupId})
-        .where(d => !!AbilityService.canStartPoll(d))
+        .where(d => d.topic() && AbilityService.canStartPoll(d.topic()))
         .simplesort('id', true)
         .data();
     },
@@ -54,7 +54,7 @@ export default {
         this.searchResults = Records.discussions.collection.chain()
           .find({groupId: this.groupId})
           .find({title: { $regex: [escapeRegExp(this.searchFragment), 'i'] }})
-          .where(d => !!AbilityService.canStartPoll(d))
+          .where(d => d.topic() && AbilityService.canStartPoll(d.topic()))
           .simplesort('title')
           .data();
       });

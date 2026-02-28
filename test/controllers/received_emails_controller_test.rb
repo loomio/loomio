@@ -4,28 +4,24 @@ class ReceivedEmailsControllerTest < ActionController::TestCase
   setup do
     hex = SecureRandom.hex(4)
     @user = User.create!(name: "reuser#{hex}", email: "reuser#{hex}@example.com", username: "reuser#{hex}", email_verified: true)
-    @another_user = User.create!(name: "reother#{hex}", email: "reother#{hex}@example.com", username: "reother#{hex}", email_verified: true)
+    @alien = User.create!(name: "reother#{hex}", email: "reother#{hex}@example.com", username: "reother#{hex}", email_verified: true)
     @group = Group.new(name: "regroup#{hex}", group_privacy: 'secret', handle: "regroup#{hex}")
     @group.creator = @user
     @group.save!
     @group.add_admin!(@user)
-    @group.add_member!(@another_user)
+    @group.add_member!(@alien)
 
-    @discussion = Discussion.new(title: "RE Discussion #{hex}", group: @group, author: @user)
-    DiscussionService.create(discussion: @discussion, actor: @user)
+    @discussion = DiscussionService.create(params: { title: "RE Discussion #{hex}", group_id: @group.id }, actor: @user)
 
-    @poll = Poll.new(
+    @poll = PollService.create(params: {
       title: "RE Poll #{hex}",
       poll_type: 'proposal',
-      group: @group,
-      discussion: @discussion,
-      author: @user,
+      topic_id: @discussion.topic.id,
       closing_at: 3.days.from_now,
       poll_option_names: %w[agree disagree abstain]
-    )
-    PollService.create(poll: @poll, actor: @user)
+    }, actor: @user)
 
-    @comment = Comment.new(discussion: @discussion, body: "parent comment")
+    @comment = Comment.new(parent: @discussion, body: "parent comment")
     CommentService.create(comment: @comment, actor: @user)
     ActionMailer::Base.deliveries.clear
   end
@@ -86,7 +82,7 @@ class ReceivedEmailsControllerTest < ActionController::TestCase
     c = Comment.last
     assert_equal @user, c.author
     assert_equal @comment, c.parent
-    assert_equal @discussion, c.discussion
+    assert_equal @discussion, c.topic.discussion
     assert_equal 'yo', c.body
   end
 
@@ -101,7 +97,7 @@ class ReceivedEmailsControllerTest < ActionController::TestCase
     c = Comment.last
     assert_equal @user, c.author
     assert_equal @poll, c.parent
-    assert_equal @discussion, c.discussion
+    assert_equal @discussion, c.topic.discussion
     assert_equal "yo", c.body
   end
 
@@ -116,7 +112,7 @@ class ReceivedEmailsControllerTest < ActionController::TestCase
     c = Comment.last
     assert_equal @user, c.author
     assert_equal @discussion, c.parent
-    assert_equal @discussion, c.discussion
+    assert_equal @discussion, c.topic.discussion
     assert_equal 'yo', c.body
   end
 

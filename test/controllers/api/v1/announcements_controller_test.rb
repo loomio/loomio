@@ -2,26 +2,25 @@ require 'test_helper'
 
 class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
   setup do
-    @user = users(:discussion_author)
-    @another_user = users(:another_user)
-    @group = groups(:test_group)
+    @user = users(:admin)
+    @alien = users(:alien)
+    @group = groups(:group)
+    @discussion = discussions(:discussion)
     sign_in @user
   end
 
   # Count tests
   test "count returns a count of recipients" do
-    bill = User.create!(name: 'bill', email: 'bill@example.com', username: 'bill1234')
-    member = User.create!(name: 'member', email: 'member@example.com', username: 'member1234')
+    hex = SecureRandom.hex(4)
+    bill = User.create!(name: "bill#{hex}", email: "bill#{hex}@example.com", username: "bill#{hex}")
+    member = User.create!(name: "member#{hex}", email: "member#{hex}@example.com", username: "member#{hex}")
     @group.add_member!(member)
-    @group.add_member!(@user)
-
-    discussion = discussions(:test_discussion)
 
     get :count, params: {
-      recipient_emails_cmr: ['bill@example.com', 'new@example.com'].join(','),
+      recipient_emails_cmr: ["bill#{hex}@example.com", "new#{hex}@example.com"].join(','),
       recipient_user_xids: [bill.id].join('x'),
       recipient_audience: 'group',
-      discussion_id: discussion.id
+      discussion_id: @discussion.id
     }
 
     assert_response :success
@@ -31,31 +30,30 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
 
   # History tests
   test "history responds with event history" do
-    sign_in @user
-    @group.add_admin!(@user) unless @group.members.include?(@user)
-
     get :history, params: { group_id: @group.id }
     assert_response :success
   end
 
-  # Announce > Poll > Group member & poll author tests
-  test "poll create can add group members when members_can_add_guests=false" do
-    member = User.create!(name: 'member', email: 'member@example.com', username: 'member1234')
-    @group.add_member!(member)
+  # -- Poll announcement tests --
 
-    poll = Poll.new(
+  def create_test_poll(**extra)
+    PollService.create(params: {
       title: "Test Poll",
       poll_type: "proposal",
-      group: @group,
-      author: @user,
+      group_id: @group.id,
       specified_voters_only: true,
-      poll_option_names: ["Yes", "No"]
-    )
-    PollService.create(poll: poll, actor: @user)
+      poll_option_names: %w[agree disagree],
+      closing_at: 5.days.from_now
+    }.merge(extra), actor: @user)
+  end
+
+  test "poll create can add group members when members_can_add_guests=false" do
+    hex = SecureRandom.hex(4)
+    member = User.create!(name: "member#{hex}", email: "member#{hex}@example.com", username: "member#{hex}")
+    @group.add_member!(member)
+    poll = create_test_poll
 
     @group.update(members_can_add_guests: false)
-
-    # Set user as non-admin member
     Membership.find_by(user_id: @user.id, group_id: @group.id).update(admin: false)
 
     post :create, params: { poll_id: poll.id, recipient_user_ids: [member.id] }
@@ -66,15 +64,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
   end
 
   test "poll create cannot invite guests when members_can_add_guests=false" do
-    poll = Poll.new(
-      title: "Test Poll",
-      poll_type: "proposal",
-      group: @group,
-      author: @user,
-      specified_voters_only: true,
-      poll_option_names: ["Yes", "No"]
-    )
-    PollService.create(poll: poll, actor: @user)
+    poll = create_test_poll
 
     @group.update(members_can_add_guests: false)
     Membership.find_by(user_id: @user.id, group_id: @group.id).update(admin: false)
@@ -84,15 +74,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
   end
 
   test "poll create can invite guests when members_can_add_guests=true" do
-    poll = Poll.new(
-      title: "Test Poll",
-      poll_type: "proposal",
-      group: @group,
-      author: @user,
-      specified_voters_only: true,
-      poll_option_names: ["Yes", "No"]
-    )
-    PollService.create(poll: poll, actor: @user)
+    poll = create_test_poll
 
     @group.update(members_can_add_guests: true)
     Membership.find_by(user_id: @user.id, group_id: @group.id).update(admin: false)
@@ -105,15 +87,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
   end
 
   test "poll create member cannot announce when members_can_announce=false" do
-    poll = Poll.new(
-      title: "Test Poll",
-      poll_type: "proposal",
-      group: @group,
-      author: @user,
-      specified_voters_only: true,
-      poll_option_names: ["Yes", "No"]
-    )
-    PollService.create(poll: poll, actor: @user)
+    poll = create_test_poll
 
     @group.update(members_can_announce: false)
     Membership.find_by(user_id: @user.id, group_id: @group.id).update(admin: false)
@@ -123,15 +97,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
   end
 
   test "poll create member can notify voters when members_can_announce=false" do
-    poll = Poll.new(
-      title: "Test Poll",
-      poll_type: "proposal",
-      group: @group,
-      author: @user,
-      specified_voters_only: true,
-      poll_option_names: ["Yes", "No"]
-    )
-    PollService.create(poll: poll, actor: @user)
+    poll = create_test_poll
 
     @group.update(members_can_announce: false)
     Membership.find_by(user_id: @user.id, group_id: @group.id).update(admin: false)
@@ -141,18 +107,10 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
   end
 
   test "poll create member can announce when members_can_announce=true" do
-    member = User.create!(name: 'member', email: 'member@example.com', username: 'member1234')
+    hex = SecureRandom.hex(4)
+    member = User.create!(name: "member#{hex}", email: "member#{hex}@example.com", username: "member#{hex}")
     @group.add_member!(member)
-
-    poll = Poll.new(
-      title: "Test Poll",
-      poll_type: "proposal",
-      group: @group,
-      author: @user,
-      specified_voters_only: true,
-      poll_option_names: ["Yes", "No"]
-    )
-    PollService.create(poll: poll, actor: @user)
+    poll = create_test_poll
 
     @group.update(members_can_announce: true)
     Membership.find_by(user_id: @user.id, group_id: @group.id).update(admin: false)
@@ -165,19 +123,10 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
   end
 
   test "poll create as admin can add group member" do
-    member = User.create!(name: 'member', email: 'member@example.com', username: 'member1234')
+    hex = SecureRandom.hex(4)
+    member = User.create!(name: "member#{hex}", email: "member#{hex}@example.com", username: "member#{hex}")
     @group.add_member!(member)
-
-    poll = Poll.new(
-      title: "Test Poll",
-      poll_type: "proposal",
-      group: @group,
-      author: @user,
-      specified_voters_only: true,
-      poll_option_names: ["Yes", "No"],
-      closing_at: 5.days.from_now
-    )
-    PollService.create(poll: poll, actor: @user)
+    poll = create_test_poll
 
     @group.update(members_can_announce: false, members_can_add_guests: false)
     Membership.find_by(user_id: @user.id, group_id: @group.id).update(admin: true)
@@ -193,19 +142,10 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
   end
 
   test "poll create as admin can add group member with notification" do
-    member = User.create!(name: 'invited_member', email: 'invited@example.com', username: 'invitedmember1234')
+    hex = SecureRandom.hex(4)
+    member = User.create!(name: "member#{hex}", email: "member#{hex}@example.com", username: "member#{hex}")
     @group.add_member!(member)
-
-    poll = Poll.new(
-      title: "Test Poll",
-      poll_type: "proposal",
-      group: @group,
-      author: @user,
-      specified_voters_only: true,
-      poll_option_names: ["Yes", "No"],
-      closing_at: 5.days.from_now
-    )
-    PollService.create(poll: poll, actor: @user)
+    poll = create_test_poll
 
     @group.update(members_can_announce: false, members_can_add_guests: false)
 
@@ -217,138 +157,123 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     assert_equal 1, member.notifications.count
   end
 
-  # Discussion announcement tests
-  test "discussion create members can add guests when permission enabled" do
-    discussion = discussions(:test_discussion)
+  # -- Discussion announcement tests --
 
-    discussion.group.update(members_can_add_guests: true)
+  test "discussion create members can add guests when permission enabled" do
+    @group.update(members_can_add_guests: true)
     Membership.find_by(user_id: @user.id, group_id: @group.id).update(admin: false)
 
-    post :create, params: { discussion_id: discussion.id, recipient_emails: ['jim@example.com'] }
+    post :create, params: { discussion_id: @discussion.id, recipient_emails: ['jim@example.com'] }
     assert_response :success
   end
 
   test "discussion create members cannot add guests when permission disabled" do
-    discussion = discussions(:test_discussion)
-
-    discussion.group.update(members_can_add_guests: false)
+    @group.update(members_can_add_guests: false)
     Membership.find_by(user_id: @user.id, group_id: @group.id).update(admin: false)
 
-    post :create, params: { discussion_id: discussion.id, recipient_emails: ['jim@example.com'] }
+    post :create, params: { discussion_id: @discussion.id, recipient_emails: ['jim@example.com'] }
     assert_response :forbidden
   end
 
   test "discussion create members can announce when permission enabled" do
-    discussion = discussions(:test_discussion)
-
-    discussion.group.update(members_can_announce: true)
+    @group.update(members_can_announce: true)
     Membership.find_by(user_id: @user.id, group_id: @group.id).update(admin: false)
 
-    post :create, params: { discussion_id: discussion.id, recipient_audience: 'group' }
+    post :create, params: { discussion_id: @discussion.id, recipient_audience: 'group' }
     assert_response :success
   end
 
   test "discussion create members cannot announce when permission disabled" do
-    discussion = discussions(:test_discussion)
-
-    discussion.group.update(members_can_announce: false)
+    @group.update(members_can_announce: false)
     Membership.find_by(user_id: @user.id, group_id: @group.id).update(admin: false)
 
-    post :create, params: { discussion_id: discussion.id, recipient_audience: 'group' }
+    post :create, params: { discussion_id: @discussion.id, recipient_audience: 'group' }
     assert_response :forbidden
   end
 
   test "discussion create as admin can add member" do
-    member = User.create!(name: 'member', email: 'member@example.com', username: 'member1234')
+    hex = SecureRandom.hex(4)
+    member = User.create!(name: "member#{hex}", email: "member#{hex}@example.com", username: "member#{hex}")
     @group.add_member!(member)
-
-    discussion = discussions(:test_discussion)
 
     @group.update(members_can_announce: false, members_can_add_guests: false)
     Membership.find_by(user_id: @user.id, group_id: @group.id).update(admin: true)
 
-    post :create, params: { discussion_id: discussion.id, recipient_user_ids: [member.id] }
+    post :create, params: { discussion_id: @discussion.id, recipient_user_ids: [member.id] }
     assert_response :success
 
     json = JSON.parse(response.body)
-    assert_equal member.id, json['discussion_readers'][0]['user_id']
+    assert_equal member.id, json['topic_readers'][0]['user_id']
     assert_equal 1, member.notifications.count
-    assert_includes discussion.readers, member
+    assert_includes @discussion.readers, member
   end
 
   test "discussion create as admin cannot add non_member" do
-    non_member = User.create!(name: 'non_member', email: 'non@example.com', username: 'nonmember1234')
-
-    discussion = discussions(:test_discussion)
+    hex = SecureRandom.hex(4)
+    non_member = User.create!(name: "non#{hex}", email: "non#{hex}@example.com", username: "non#{hex}")
 
     @group.update(members_can_announce: false, members_can_add_guests: false)
     Membership.find_by(user_id: @user.id, group_id: @group.id).update(admin: true)
 
-    post :create, params: { discussion_id: discussion.id, recipient_user_ids: [non_member.id] }
+    post :create, params: { discussion_id: @discussion.id, recipient_user_ids: [non_member.id] }
     assert_response :success
 
     json = JSON.parse(response.body)
-    assert_equal 0, json['discussion_readers'].length
+    assert_equal 0, json['topic_readers'].length
   end
 
   test "discussion create as admin can add multiple members" do
-    member = User.create!(name: 'member', email: 'member@example.com', username: 'member1234')
+    hex = SecureRandom.hex(4)
+    member = User.create!(name: "member#{hex}", email: "member#{hex}@example.com", username: "member#{hex}")
     @group.add_member!(member)
-
-    discussion = discussions(:test_discussion)
 
     @group.update(members_can_announce: false, members_can_add_guests: false)
     Membership.find_by(user_id: @user.id, group_id: @group.id).update(admin: true)
 
-    post :create, params: { discussion_id: discussion.id, recipient_user_ids: [member.id] }
+    post :create, params: { discussion_id: @discussion.id, recipient_user_ids: [member.id] }
     assert_response :success
 
     json = JSON.parse(response.body)
-    assert_equal member.id, json['discussion_readers'][0]['user_id']
+    assert_equal member.id, json['topic_readers'][0]['user_id']
     assert_equal 1, member.notifications.count
-    assert_includes discussion.readers, member
+    assert_includes @discussion.readers, member
   end
 
-  # Outcome announcement tests
-  test "outcome create does not permit stranger to announce" do
-    poll = Poll.new(
+  # -- Outcome announcement tests --
+
+  def create_closed_poll_with_outcome
+    poll = PollService.create(params: {
       title: "Test Poll",
       poll_type: "proposal",
-      group: @group,
-      author: @user,
-      closed_at: 1.day.ago,
-      poll_option_names: ["Yes", "No"]
-    )
-    PollService.create(poll: poll, actor: @user)
-
+      group_id: @group.id,
+      poll_option_names: %w[agree disagree],
+      closing_at: 3.days.from_now
+    }, actor: @user)
+    PollService.close(poll: poll, actor: @user)
     outcome = Outcome.new(poll: poll, author: @user, statement: "Test outcome")
     OutcomeService.create(outcome: outcome, actor: @user)
+    [poll, outcome]
+  end
 
-    stranger = User.create!(name: 'stranger', email: 'stranger@example.com', username: 'stranger1234')
+  test "outcome create does not permit stranger to announce" do
+    _poll, outcome = create_closed_poll_with_outcome
+
+    hex = SecureRandom.hex(4)
+    stranger = User.create!(name: "stranger#{hex}", email: "stranger#{hex}@example.com", username: "stranger#{hex}")
     sign_in stranger
 
-    member = User.create!(name: 'member', email: 'member@example.com', username: 'member1234')
+    member = User.create!(name: "member#{hex}", email: "member#{hex}@example.com", username: "member#{hex}")
 
     post :create, params: { outcome_id: outcome.id, recipient_user_ids: [member.id] }
     assert_response :forbidden
   end
 
   test "outcome create member can add members when permission enabled" do
-    member = User.create!(name: 'member', email: 'member@example.com', username: 'member1234')
+    hex = SecureRandom.hex(4)
+    member = User.create!(name: "member#{hex}", email: "member#{hex}@example.com", username: "member#{hex}")
     @group.add_member!(member)
 
-    poll = Poll.new(
-      title: "Test Poll",
-      poll_type: "proposal",
-      group: @group,
-      author: @user,
-      closed_at: 1.day.ago,
-      poll_option_names: ["Yes", "No"]
-    )
-    PollService.create(poll: poll, actor: @user)
-
-    outcome = Outcome.new(poll: poll, author: @user, statement: "Test outcome")
-    OutcomeService.create(outcome: outcome, actor: @user)
+    _poll, outcome = create_closed_poll_with_outcome
 
     @group.update(members_can_add_guests: true)
     Membership.find_by(user_id: @user.id, group_id: @group.id).update(admin: false)
@@ -362,18 +287,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
   end
 
   test "outcome create member cannot add guests when permission disabled" do
-    poll = Poll.new(
-      title: "Test Poll",
-      poll_type: "proposal",
-      group: @group,
-      author: @user,
-      closed_at: 1.day.ago,
-      poll_option_names: ["Yes", "No"]
-    )
-    PollService.create(poll: poll, actor: @user)
-
-    outcome = Outcome.new(poll: poll, author: @user, statement: "Test outcome")
-    OutcomeService.create(outcome: outcome, actor: @user)
+    _poll, outcome = create_closed_poll_with_outcome
 
     @group.update(members_can_add_guests: false)
     Membership.find_by(user_id: @user.id, group_id: @group.id).update(admin: false)
@@ -383,21 +297,11 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
   end
 
   test "outcome create member can notify group when permission enabled" do
-    member = User.create!(name: 'member', email: 'member@example.com', username: 'member1234')
+    hex = SecureRandom.hex(4)
+    member = User.create!(name: "member#{hex}", email: "member#{hex}@example.com", username: "member#{hex}")
     @group.add_member!(member)
 
-    poll = Poll.new(
-      title: "Test Poll",
-      poll_type: "proposal",
-      group: @group,
-      author: @user,
-      closed_at: 1.day.ago,
-      poll_option_names: ["Yes", "No"]
-    )
-    PollService.create(poll: poll, actor: @user)
-
-    outcome = Outcome.new(poll: poll, author: @user, statement: "Test outcome")
-    OutcomeService.create(outcome: outcome, actor: @user)
+    _poll, outcome = create_closed_poll_with_outcome
 
     @group.update(members_can_announce: true)
     Membership.find_by(user_id: @user.id, group_id: @group.id).update(admin: false)
@@ -407,18 +311,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
   end
 
   test "outcome create member cannot notify group when permission disabled" do
-    poll = Poll.new(
-      title: "Test Poll",
-      poll_type: "proposal",
-      group: @group,
-      author: @user,
-      closed_at: 1.day.ago,
-      poll_option_names: ["Yes", "No"]
-    )
-    PollService.create(poll: poll, actor: @user)
-
-    outcome = Outcome.new(poll: poll, author: @user, statement: "Test outcome")
-    OutcomeService.create(outcome: outcome, actor: @user)
+    _poll, outcome = create_closed_poll_with_outcome
 
     @group.update(members_can_announce: false)
     Membership.find_by(user_id: @user.id, group_id: @group.id).update(admin: false)
@@ -428,63 +321,56 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
   end
 
   test "outcome create with member notification" do
-    member = User.create!(name: 'member', email: 'member@example.com', username: 'member1234')
+    hex = SecureRandom.hex(4)
+    member = User.create!(name: "member#{hex}", email: "member#{hex}@example.com", username: "member#{hex}")
     @group.add_member!(member)
 
-    poll = Poll.new(
-      title: "Test Poll",
-      poll_type: "proposal",
-      group: @group,
-      author: @user,
-      closed_at: 1.day.ago,
-      poll_option_names: ["Yes", "No"]
-    )
-    PollService.create(poll: poll, actor: @user)
-
-    outcome = Outcome.new(poll: poll, author: @user, statement: "Test outcome")
-    OutcomeService.create(outcome: outcome, actor: @user)
+    _poll, outcome = create_closed_poll_with_outcome
 
     post :create, params: { outcome_id: outcome.id, recipient_user_ids: [member.id] }
     assert_response :success
   end
 
-  # Group announcement tests
-  test "group create allows adding members when permission enabled" do
-    member = User.create!(name: 'member', email: 'member@example.com', username: 'member1234')
+  # -- Group announcement tests --
 
+  test "group create allows adding members when permission enabled" do
+    hex = SecureRandom.hex(4)
+    member = User.create!(name: "member#{hex}", email: "member#{hex}@example.com", username: "member#{hex}")
     @group.add_member!(member, inviter: @user)
     @group.update(members_can_add_members: true)
 
     sign_in member
 
-    post :create, params: { group_id: @group.id, recipient_emails: ['jim@example.com'] }
+    post :create, params: { group_id: @group.id, recipient_emails: ["jim#{hex}@example.com"] }
     assert_response :success
   end
 
   test "group create disallows adding members when permission disabled" do
-    member = User.create!(name: 'member', email: 'member@example.com', username: 'member1234')
-
+    hex = SecureRandom.hex(4)
+    member = User.create!(name: "member#{hex}", email: "member#{hex}@example.com", username: "member#{hex}")
     @group.add_member!(member, inviter: @user)
     @group.update(members_can_add_members: false)
 
     sign_in member
 
-    post :create, params: { group_id: @group.id, recipient_emails: ['jim@example.com'] }
+    post :create, params: { group_id: @group.id, recipient_emails: ["jim#{hex}@example.com"] }
     assert_response :forbidden
   end
 
   test "group create cannot add existing user by id if no groups in common" do
-    another_user = User.create!(name: 'another', email: 'another@example.com', username: 'another1234')
+    hex = SecureRandom.hex(4)
+    alien = User.create!(name: "another#{hex}", email: "another#{hex}@example.com", username: "another#{hex}")
 
-    post :create, params: { group_id: @group.id, recipient_user_ids: [another_user.id] }
+    post :create, params: { group_id: @group.id, recipient_user_ids: [alien.id] }
     assert_response :success
 
-    assert_equal 0, another_user.notifications.count
-    assert_equal 0, another_user.memberships.count
+    assert_equal 0, alien.notifications.count
+    assert_equal 0, alien.memberships.count
   end
 
   test "group create with existing member notification" do
-    member = User.create!(name: 'member', email: 'member@example.com', username: 'member1234')
+    hex = SecureRandom.hex(4)
+    member = User.create!(name: "member#{hex}", email: "member#{hex}@example.com", username: "member#{hex}")
     @group.add_member!(member)
 
     post :create, params: { group_id: @group.id, recipient_user_ids: [member.id] }
@@ -495,9 +381,10 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
   end
 
   test "group create invite with multiple groups" do
-    member = User.create!(name: 'member', email: 'member@example.com', username: 'member1234')
-    subgroup = Group.create!(name: "Test Subgroup", parent: @group, handle: "testgroup-subgroup")
-    subgroup2 = Group.create!(name: "Test Subgroup 2", parent: @group, handle: "testgroup-subgroup2")
+    hex = SecureRandom.hex(4)
+    member = User.create!(name: "member#{hex}", email: "member#{hex}@example.com", username: "member#{hex}")
+    subgroup = Group.create!(name: "Test Sub #{hex}", parent: @group, handle: "testgroup-sub#{hex}")
+    subgroup2 = Group.create!(name: "Test Sub2 #{hex}", parent: @group, handle: "testgroup-sub2#{hex}")
 
     @group.add_member!(member, inviter: @user)
     subgroup.add_admin!(@user)
@@ -514,25 +401,28 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
   end
 
   test "group create does not invite users with no group in common" do
-    another_user = User.create!(name: 'another', email: 'another@example.com', username: 'another1234')
+    hex = SecureRandom.hex(4)
+    alien = User.create!(name: "another#{hex}", email: "another#{hex}@example.com", username: "another#{hex}")
 
     post :create, params: {
       group_id: @group.id,
-      recipient_user_ids: [another_user.id],
+      recipient_user_ids: [alien.id],
       invited_group_ids: [@group.id]
     }
 
     assert_response :success
-    assert_equal 0, another_user.notifications.count
-    assert_equal 0, another_user.memberships.pending.count
+    assert_equal 0, alien.notifications.count
+    assert_equal 0, alien.memberships.pending.count
   end
 
   test "group create invites to subgroup" do
-    member = User.create!(name: 'member', email: 'member@example.com', username: 'member1234')
-    subgroup = Group.create!(name: "Test Subgroup", parent: @group, handle: "testgroup-subgroup")
+    hex = SecureRandom.hex(4)
+    member = User.create!(name: "member#{hex}", email: "member#{hex}@example.com", username: "member#{hex}")
+    subgroup = Group.create!(name: "Test Sub #{hex}", parent: @group, handle: "testgroup-sub#{hex}")
 
     @group.add_member!(member)
     subgroup.add_admin!(@user)
+    subgroup.add_member!(member)
 
     post :create, params: { group_id: subgroup.id, recipient_user_ids: [member.id] }
 

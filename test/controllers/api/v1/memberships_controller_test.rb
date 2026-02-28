@@ -2,13 +2,10 @@ require 'test_helper'
 
 class Api::V1::MembershipsControllerTest < ActionController::TestCase
   setup do
-    @normal_user = users(:normal_user)
-    @another_user = users(:another_user)
-    @test_group = groups(:test_group)
+    @normal_user = users(:admin)
+    @alien = users(:alien)
+    @test_group = groups(:group)
     @subgroup = groups(:subgroup)
-
-    @test_group.add_admin!(@normal_user)
-    @subgroup.add_admin!(@normal_user)
     sign_in @normal_user
   end
 
@@ -48,9 +45,6 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
   # ===== Set Volume Tests =====
 
   test 'updates volume for single membership' do
-    @test_group.add_member!(@normal_user)
-    @subgroup.add_member!(@normal_user)
-
     membership = @test_group.membership_for(@normal_user)
     membership.set_volume!('quiet')
 
@@ -67,9 +61,6 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
   end
 
   test 'updates volume for all memberships when apply_to_all is true' do
-    @test_group.add_member!(@normal_user)
-    @subgroup.add_member!(@normal_user)
-
     membership = @test_group.membership_for(@normal_user)
     membership.set_volume!('quiet')
 
@@ -148,14 +139,15 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
   # ===== For User Tests =====
 
   test 'returns visible groups for the given user' do
-    @test_group.add_member!(@another_user)
+    alien_group = groups(:alien_group)
+    alien_group.update!(listed_in_explore: true)
 
-    get :for_user, params: { user_id: @another_user.id }
+    get :for_user, params: { user_id: @alien.id }
 
     json = JSON.parse(response.body)
     group_ids = json['groups'].map { |g| g['id'] }
 
-    assert_includes group_ids, @test_group.id
+    assert_includes group_ids, alien_group.id
   end
 
   # ===== Save Experience Tests =====
@@ -225,8 +217,7 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     )
     @test_group.add_member!(delegate_user)
 
-    sign_in @another_user
-    @test_group.add_member!(@another_user)
+    sign_in @alien
     membership = @test_group.add_member!(delegate_user)
 
     post :make_delegate, params: { id: membership.id }
@@ -267,8 +258,7 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     membership = @test_group.add_member!(delegate_user)
     membership.update(delegate: true)
 
-    sign_in @another_user
-    @test_group.add_member!(@another_user)
+    sign_in @alien
 
     post :remove_delegate, params: { id: membership.id }
 

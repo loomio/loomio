@@ -3,9 +3,8 @@ require "test_helper"
 class ChatbotMarkdownPhlexTest < ActiveSupport::TestCase
   def setup
     super
-    @group = groups(:test_group)
-    @user = users(:discussion_author)
-    @group.add_admin!(@user)
+    @group = groups(:group)
+    @user = users(:admin)
 
     @recipient = LoggedOutUser.new(
       locale: 'en',
@@ -13,15 +12,8 @@ class ChatbotMarkdownPhlexTest < ActiveSupport::TestCase
       date_time_pref: 'iso'
     )
 
-    @discussion = Discussion.create!(
-      title: "Chatbot Test Discussion",
-      description: "<p>Discussion body text for chatbot</p>",
-      description_format: "html",
-      private: true,
-      author: @user,
-      group: @group
-    )
-    @discussion.create_missing_created_event!
+    @discussion = discussions(:discussion)
+    @discussion.update_columns(title: "Chatbot Test Discussion", description: "<p>Discussion body text for chatbot</p>")
 
     ActionMailer::Base.deliveries.clear
   end
@@ -35,8 +27,7 @@ class ChatbotMarkdownPhlexTest < ActiveSupport::TestCase
       title: "Active Proposal",
       poll_type: "proposal",
       closing_at: 3.days.from_now,
-      group: @group,
-      discussion: @discussion,
+      topic: @discussion.topic,
       author: @user,
       poll_option_names: %w[agree disagree abstain]
     )
@@ -55,8 +46,7 @@ class ChatbotMarkdownPhlexTest < ActiveSupport::TestCase
       title: "Closed Proposal",
       poll_type: "proposal",
       closing_at: 1.day.from_now,
-      group: @group,
-      discussion: @discussion,
+      topic: @discussion.topic,
       author: @user,
       poll_option_names: %w[agree disagree abstain],
       specified_voters_only: true
@@ -102,8 +92,7 @@ class ChatbotMarkdownPhlexTest < ActiveSupport::TestCase
       title: "Test Proposal",
       poll_type: "proposal",
       closing_at: 3.days.from_now,
-      group: @group,
-      discussion: @discussion,
+      topic: @discussion.topic,
       author: @user,
       poll_option_names: %w[agree disagree abstain]
     )
@@ -121,8 +110,7 @@ class ChatbotMarkdownPhlexTest < ActiveSupport::TestCase
       title: "Stance Notification Poll",
       poll_type: "proposal",
       closing_at: 3.days.from_now,
-      group: @group,
-      discussion: @discussion,
+      topic: @discussion.topic,
       author: @user,
       poll_option_names: %w[agree disagree abstain],
       specified_voters_only: true
@@ -146,7 +134,7 @@ class ChatbotMarkdownPhlexTest < ActiveSupport::TestCase
     comment = Comment.create!(
       body: "Test comment body",
       body_format: "md",
-      discussion: @discussion,
+      parent: @discussion,
       author: @user
     )
     comment.create_missing_created_event!

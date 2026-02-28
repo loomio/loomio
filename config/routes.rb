@@ -178,26 +178,6 @@ Rails.application.routes.draw do
       end
 
       resources :discussions, only: [:show, :index, :create, :update] do
-        patch :mark_as_seen, on: :member
-        patch :dismiss, on: :member
-        patch :recall, on: :member
-        patch :set_volume, on: :member
-        patch :pin, on: :member
-        patch :unpin, on: :member
-        patch :pin_reader, on: :member
-        patch :unpin_reader, on: :member
-        patch :move, on: :member
-        patch :mark_as_read, on: :member
-        patch :set_volume, on: :member
-        patch :pin, on: :member
-        patch :close, on: :member
-        patch :reopen, on: :member
-        patch :unpin, on: :member
-        patch :pin_reader, on: :member
-        patch :unpin_reader, on: :member
-        patch :move, on: :member
-        delete :discard, on: :member
-        patch :move_comments, on: :member
         get :history, on: :member
         get :search, on: :collection
         get :dashboard, on: :collection
@@ -215,7 +195,7 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :discussion_readers, only: [:index] do
+      resources :topic_readers, only: [:index] do
         member do
           post :remove_admin
           post :make_admin
@@ -243,6 +223,21 @@ Rails.application.routes.draw do
       end
 
       resources :search, only: :index
+
+      resources :topics, only: [:index, :update] do
+        patch :mark_as_read, on: :member
+        patch :mark_as_seen, on: :member
+        patch :dismiss, on: :member
+        patch :recall, on: :member
+        patch :set_volume, on: :member
+        patch :pin, on: :member
+        patch :unpin, on: :member
+        patch :close, on: :member
+        patch :reopen, on: :member
+        patch :move, on: :member
+        patch :move_comments, on: :member
+        delete :discard, on: :member
+      end
 
       resources :polls, only: [:show, :index, :create, :update] do
         member do
@@ -280,8 +275,6 @@ Rails.application.routes.draw do
           get :invite
           get :users
           get :my_stances
-          post :make_admin
-          post :remove_admin
           post :revoke
         end
       end
@@ -364,7 +357,6 @@ Rails.application.routes.draw do
     get :unsubscribe
     put :set_group_volume
     put :set_discussion_volume
-    put :set_poll_volume
     get 'mark_summary_email_as_read', action: 'mark_summary_email_as_read', as: :mark_summary_email_as_read
     get 'mark_discussion_as_read/:discussion_id/:event_id/:unsubscribe_token', action: 'mark_discussion_as_read', as: :mark_discussion_as_read
     get 'mark_notification_as_read/:id/:unsubscribe_token', action: 'mark_notification_as_read', as: :mark_notification_as_read
@@ -420,13 +412,13 @@ Rails.application.routes.draw do
   get 'thread_templates/new'               => 'application#index'
   get 'thread_templates/:id'               => 'application#index'
   get 'thread_templates/:id/edit'          => 'application#index'
+  get 'c/:id'                              => 'discussions#comment',         as: :comment
   get 'g/:key/export'                      => 'groups#export',               as: :group_export
   get 'p/:key/export'                      => 'polls#export',                as: :poll_export
   get 'd/:key/export'                      => 'discussions#export',          as: :discussion_export
   get 'g/:key(/:slug)'                     => 'groups#show',                 as: :group
   get 'd/:key/:slug(/:sequence_id)'        => 'discussions#show',            as: :discussion
   get 'd/:key(/:slug)(/:sequence_id)'      => 'discussions#show',            as: :discussion_no_slug
-  get 'd/:key/comment/:comment_id'         => 'discussions#show',            as: :comment
   get 'p/:key(/:slug)'                     => 'polls#show',                  as: :poll
   get 'vote/:key(/:slug)'                  => 'polls#show'
   get 'u/undefined'                        => redirect('404.html')

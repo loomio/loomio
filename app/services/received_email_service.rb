@@ -69,7 +69,7 @@ class ReceivedEmailService
     when /[^\s]+\+u=.+&k=.+/
       # personal email-to-group, eg. enspiral+u=99&k=adsfghjl@mail.loomio.com
       if AppConfig.app_features[:thread_from_mail]
-        DiscussionService.create(discussion: Discussion.new(discussion_params(email)), actor: actor_from_email(email))
+        DiscussionService.create(params: discussion_params(email), actor: actor_from_email(email))
         email.update_attribute(:released, true)
         return
       end
@@ -95,7 +95,7 @@ class ReceivedEmailService
         email.update(group_id: group.id)
         if actor = actor_from_email_and_group(email, group)
           Rails.logger.info("creating discussion from email: #{email.route_path}")
-          DiscussionService.create(discussion: Discussion.new(discussion_params(email)), actor: actor)
+          DiscussionService.create(params: discussion_params(email), actor: actor)
           return email.update_attribute(:released, true)
         else
           Rails.logger.info("unrecognised sender for route: #{email.sender_email}, #{email.route_path}")
@@ -222,8 +222,12 @@ class ReceivedEmailService
       parent_id = params['pi']
     end
 
+    unless parent_id
+      parent_id = params['d'].to_i
+      parent_type = 'Discussion'
+    end
+
     {
-      discussion_id: params['d'].to_i,
       parent_id: parent_id,
       parent_type: parent_type,
       body: email.reply_body,

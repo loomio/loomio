@@ -1,11 +1,9 @@
 class CommentService
-
   def self.create(comment:, actor:)
-    actor.ability.authorize! :create, comment
     comment.author = actor
-    return false unless comment.valid?
+    actor.ability.authorize! :create, comment
     comment.save!
-    EventBus.broadcast('comment_create', comment, actor)
+    comment.update_pg_search_document
     Events::NewComment.publish!(comment)
   end
 
@@ -15,7 +13,8 @@ class CommentService
       comment.update(discarded_at: Time.now, discarded_by: actor.id)
       comment.created_event.update(pinned: false)
     end
-    comment.discussion.update_sequence_info!
+    comment.topic&.update_sequence_info!
+    GenericWorker.perform_async('SearchService', 'reindex_by_comment_id', comment.id)
     comment.created_event
   end
 
@@ -25,21 +24,17 @@ class CommentService
       comment.update(discarded_at: nil, discarded_by: nil)
       comment.created_event.update(user_id: comment.user_id)
     end
+    GenericWorker.perform_async('SearchService', 'reindex_by_comment_id', comment.id)
     comment.created_event
   end
 
   def self.destroy(comment:, actor:)
     actor.ability.authorize!(:destroy, comment)
     comment_id = comment.id
-    discussion_id = comment.discussion.id
-
-    # you cannot delete a comment if it has replies
-    # but if you could, you'd need to delete all the children, or rehome them
-    # Comment.where(parent_id: comment.id, parent_type: 'Comment').destroy_all
-    # Comment.where(parent_id: comment.id, parent_type: 'Comment').update(parent: comment.parent)
+    topic = comment.topic
 
     comment.destroy
-    RepairThreadWorker.perform_async(discussion_id)
+    RepairThreadWorker.perform_async(topic.id) if topic
   end
 
   def self.update(comment:, params:, actor:)

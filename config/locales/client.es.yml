@@ -531,6 +531,7 @@ es:
     sign_in: 'Inicia sesión para unirte a la conversación '
     add_a_comment: Añadir un comentario
     share_your_thoughts: Comparte tus pensamientos…
+    share_on_poll: Haz una pregunta o comparte nueva información
   thread_nav:
     participants: Participantes
   sidebar:
@@ -1359,8 +1360,6 @@ es:
     default_request_to_join_prompt: Gracias por su interés en nuestro grupo. Preséntese y explique por qué desea unirse.
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Actualice su suscripción</a> para crear un subgrupo'
     share_this_url_with_people_who_want_to_join: Comparte esta URL con personas que quieran unirse
-    allow_polls_without_discussions: Permitir encuestas sin discusión
-    allow_polls_without_discussions_help: Evitar que las personas inicien encuestas sin iniciar primero una discusión.
     aria_label: Formulario de grupo
     list_in_the_groups_directory: "¿Listado en el directorio de grupos?"
     list_in_directory_yes: Sí · mostrar este grupo en la página "Buscar un grupo"
@@ -2027,13 +2026,6 @@ es:
     closed: 'Cerrado '
     need_vote: Se necesita votar
     no_polls: No se encontraron encuestas
-    standalone_disabled_title: Las encuestas independientes están deshabilitadas
-    standalone_disabled_helptext: "<p>Este grupo requiere que las encuestas se inicien dentro de una discusión.</p><p> Los debates ayudan a las personas a comprender el contexto, hacer preguntas y compartir perspectivas antes de votar. Esto conduce a mejores decisiones.</p><p> Primero, comience una discusión y luego agregue una encuesta cuando esté listo para reunir votos.</p>"
-    start_discussion: Iniciar una discusión
-    standalone_warning_title: Considere iniciar una discusión primero
-    start_poll_anyway: Iniciar la encuesta de todos modos
-    start_discussion_instead: Iniciar una discusión en su lugar
-    standalone_warning_helptext: "<p>Las encuestas funcionan mejor cuando las personas pueden discutir el tema primero.</p><p> Sin discusión, los votantes no pueden hacer preguntas, plantear preocupaciones ni sugerir mejoras.</p><p> Para obtener la mejor experiencia, comience con una discusión, genere un entendimiento compartido y luego agregue una encuesta cuando esté listo para captar las posiciones de las personas.</p>"
   group_files_panel:
     no_files: No se encontraron archivos
     filename: Nombre de archivo
@@ -2768,7 +2760,6 @@ es:
     these_are_templates_admin_hint: Los administradores de grupo pueden editar, crear, reorganizar y ocultar/mostrar plantillas. Solo los administradores pueden ver las plantillas ocultas.
     show_hidden_templates: Mostrar plantillas ocultas
     show_fewer: Mostrar menos
-    start_a_new_discussion: Iniciar una nueva discusión
     start_discussion: Iniciar una discusión
     start_a_direct_discussion: Iniciar una discusión directa
     these_are_templates: Éstas son las plantillas de discusión en su grupo.

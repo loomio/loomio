@@ -2,11 +2,9 @@ require 'test_helper'
 
 class Api::B2::PollsControllerTest < ActionController::TestCase
   setup do
-    @admin = users(:normal_user)
-    @member = users(:another_user)
-    @group = groups(:test_group)
-    @group.add_admin!(@admin)
-    @group.add_member!(@member)
+    @admin = users(:admin)
+    @member = users(:member)
+    @group = groups(:group)
 
     hex = SecureRandom.hex(4)
     @bot = User.create!(name: "bot#{hex}", email: "bot#{hex}@example.com", username: "bot#{hex}", email_verified: true, bot: true)
@@ -98,7 +96,7 @@ class Api::B2::PollsControllerTest < ActionController::TestCase
   end
 
   test "create incorrect group id" do
-    bad_group = groups(:another_group)
+    bad_group = groups(:alien_group)
     post :create, params: {
       group_id: bad_group.id,
       title: 'test',

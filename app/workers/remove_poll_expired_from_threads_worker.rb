@@ -4,9 +4,9 @@ class RemovePollExpiredFromThreadsWorker
 
   def perform(poll_id)
     p = Poll.find(poll_id)
-    count = Event.where(eventable: p, kind: 'poll_expired').where("discussion_id is not null").
-          update_all(discussion_id: nil, sequence_id: nil, position: 0, position_key: nil)
-    EventService.repair_discussion(p.discussion_id) if count > 0
+    count = Event.where(eventable: p, kind: 'poll_expired').where("topic_id is not null").
+          update_all(topic_id: nil, sequence_id: nil, position: 0, position_key: nil)
+    EventService.repair_thread(p.discussion.topic) if count > 0 && p.discussion&.topic
     puts "count: #{count}, poll_id: #{poll_id}, discussion_id: #{p.discussion_id}"
   end
 end

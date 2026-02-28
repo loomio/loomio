@@ -1,5 +1,39 @@
-test_discussion_created_event:
+discussion_created_event:
   kind: new_discussion
-  eventable_type: Discussion
-  eventable_id: <%= ActiveRecord::FixtureSet.identify(:test_discussion) %>
-  user: discussion_author
+  eventable: discussion (Discussion)
+  topic: discussion_topic
+  user: admin
+  sequence_id: 0
+  position: 0
+  position_key: "00000"
+  depth: 0
+
+discussion_in_subgroup_created_event:
+  kind: new_discussion
+  eventable: discussion_in_subgroup (Discussion)
+  topic: subgroup_discussion_topic
+  user: admin
+  sequence_id: 0
+  position: 0
+  position_key: "00000"
+  depth: 0
+
+public_discussion_created_event:
+  kind: new_discussion
+  eventable: public_discussion (Discussion)
+  topic: public_discussion_topic
+  user: admin
+  sequence_id: 0
+  position: 0
+  position_key: "00000"
+  depth: 0
+
+alien_discussion_created_event:
+  kind: new_discussion
+  eventable: alien_discussion (Discussion)
+  topic: alien_discussion_topic
+  user: alien
+  sequence_id: 0
+  position: 0
+  position_key: "00000"
+  depth: 0

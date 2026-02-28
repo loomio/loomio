@@ -25,7 +25,6 @@ class NullPoll
       details
       details_format
       group_id
-      message_channel
       created_at
       author_id
     )

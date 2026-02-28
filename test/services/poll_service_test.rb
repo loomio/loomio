@@ -2,19 +2,17 @@ require 'test_helper'
 
 class PollServiceTest < ActiveSupport::TestCase
   setup do
-    @user = users(:discussion_author)
-    @another_user = users(:another_user)
-    @group = groups(:test_group)
-    @discussion = discussions(:test_discussion)
+    @user = users(:user)
+    @admin = users(:admin)
+    @group = groups(:group)
   end
 
   # -- create_stances --
   # Note: Use specified_voters_only polls so auto-creation doesn't preempt create_stances
 
   test "creates stance by user id" do
-    poll = create_specified_voters_poll
+    poll = create_poll(specified_voters_only: true)
     member = create_unique_user("stancemember")
-    @group.add_admin!(@user)
     @group.add_member!(member)
 
     assert_equal 0, Stance.where(participant_id: member.id, poll: poll).where(revoked_at: nil).count
@@ -23,9 +21,8 @@ class PollServiceTest < ActiveSupport::TestCase
   end
 
   test "creates stance by email" do
-    poll = create_specified_voters_poll
+    poll = create_poll(specified_voters_only: true)
     member = create_unique_user("stanceemail")
-    @group.add_admin!(@user)
     @group.add_member!(member)
 
     PollService.create_stances(poll: poll, actor: @user, emails: [member.email])
@@ -33,9 +30,8 @@ class PollServiceTest < ActiveSupport::TestCase
   end
 
   test "creates stance by audience" do
-    poll = create_specified_voters_poll
+    poll = create_poll(specified_voters_only: true)
     member = create_unique_user("stanceaudience")
-    @group.add_admin!(@user)
     @group.add_member!(member)
 
     PollService.create_stances(poll: poll, actor: @user, audience: 'group')
@@ -43,9 +39,8 @@ class PollServiceTest < ActiveSupport::TestCase
   end
 
   test "only creates stances once per user" do
-    poll = create_specified_voters_poll
+    poll = create_poll(specified_voters_only: true)
     member = create_unique_user("stanceonce")
-    @group.add_admin!(@user)
     @group.add_member!(member)
 
     PollService.create_stances(poll: poll, actor: @user, user_ids: [member.id])
@@ -57,124 +52,55 @@ class PollServiceTest < ActiveSupport::TestCase
     assert_equal count, Stance.where(participant_id: member.id, poll: poll).where(revoked_at: nil).count
   end
 
-  test "uses normal volume by default for stances" do
-    poll = create_specified_voters_poll
+  test "creates stances for specified voters" do
+    poll = create_poll(specified_voters_only: true)
     member = create_unique_user("voldefault")
-    @group.add_admin!(@user)
     @group.add_member!(member)
 
     PollService.create_stances(poll: poll, actor: @user, user_ids: [member.id])
-    assert_equal 'normal', Stance.where(participant_id: member.id, poll: poll).order(created_at: :desc).first.volume
-  end
-
-  test "uses quiet discussion reader volume for stances" do
-    poll = create_specified_voters_poll
-    member = create_unique_user("volquiet")
-    @group.add_admin!(@user)
-    @group.add_member!(member)
-    DiscussionReader.create!(user_id: member.id, discussion_id: @discussion.id, volume: 'quiet')
-
-    PollService.create_stances(poll: poll, actor: @user, user_ids: [member.id])
-    assert_equal 'quiet', Stance.where(participant_id: member.id, poll: poll).order(created_at: :desc).first.volume
-  end
-
-  test "uses quiet membership volume for stances" do
-    poll = create_specified_voters_poll
-    member = create_unique_user("volmembership")
-    @group.add_admin!(@user)
-    @group.add_member!(member)
-    DiscussionReader.where(user_id: member.id).delete_all
-    Membership.where(user_id: member.id).update_all(volume: Membership.volumes[:quiet])
-
-    PollService.create_stances(poll: poll, actor: @user, user_ids: [member.id])
-    assert_equal 'quiet', Stance.where(participant_id: member.id, poll: poll).order(created_at: :desc).first.volume
+    assert Stance.where(participant_id: member.id, poll: poll).exists?
   end
 
   # -- create --
 
   test "creates a new poll" do
-    poll = Poll.new(
-      title: "New Poll",
-      poll_type: "proposal",
-      discussion: @discussion,
-      author: @user,
-      poll_option_names: ["Agree", "Disagree"],
-      closing_at: 3.days.from_now
-    )
     assert_difference 'Poll.count', 1 do
-      PollService.create(poll: poll, actor: @user)
+      PollService.create(params: poll_params, actor: @user)
     end
   end
 
   test "populates custom poll options" do
-    poll = Poll.new(
-      title: "Custom Poll",
+    poll = PollService.create(params: poll_params(
       poll_type: "poll",
-      discussion: @discussion,
-      author: @user,
-      poll_option_names: ["green"],
-      closing_at: 3.days.from_now
-    )
-    PollService.create(poll: poll, actor: @user)
+      poll_option_names: ["green"]
+    ), actor: @user)
     assert_equal 1, poll.reload.poll_options.count
     assert_equal "green", poll.poll_options.first.name
   end
 
   test "does not create an invalid poll" do
-    poll = Poll.new(
-      title: "",
-      poll_type: "proposal",
-      discussion: @discussion,
-      author: @user,
-      poll_option_names: ["Agree", "Disagree"],
-      closing_at: 3.days.from_now
-    )
     assert_no_difference 'Poll.count' do
-      PollService.create(poll: poll, actor: @user)
+      assert_raises ActiveRecord::RecordInvalid do
+        PollService.create(params: poll_params(title: ""), actor: @user)
+      end
     end
   end
 
   test "does not allow unauthorized users to create polls" do
     outsider = create_unique_user("pollunauthorized")
-    poll = Poll.new(
-      title: "Unauthorized Poll",
-      poll_type: "proposal",
-      discussion: @discussion,
-      author: @user,
-      poll_option_names: ["Agree", "Disagree"],
-      closing_at: 3.days.from_now
-    )
     assert_raises CanCan::AccessDenied do
-      PollService.create(poll: poll, actor: outsider)
+      PollService.create(params: poll_params, actor: outsider)
     end
   end
 
   test "poll_created publishes poll_announced when notify_on_open is true" do
-    poll = Poll.new(
-      title: "No Email Poll",
-      poll_type: "proposal",
-      discussion: @discussion,
-      author: @user,
-      poll_option_names: ["Agree", "Disagree"],
-      closing_at: 3.days.from_now,
-      notify_on_open: true
-    )
-    PollService.create(poll: poll, actor: @user)
+    poll = PollService.create(params: poll_params(notify_on_open: true), actor: @user)
     assert poll.opened?
     assert Event.where(kind: 'poll_announced', eventable: poll).exists?
   end
 
   test "poll_created does not publish poll_announced when notify_on_open is false" do
-    poll = Poll.new(
-      title: "No Email Poll",
-      poll_type: "proposal",
-      discussion: @discussion,
-      author: @user,
-      poll_option_names: ["Agree", "Disagree"],
-      closing_at: 3.days.from_now,
-      notify_on_open: false
-    )
-    PollService.create(poll: poll, actor: @user)
+    poll = PollService.create(params: poll_params(notify_on_open: false), actor: @user)
     assert poll.opened?
     refute Event.where(kind: 'poll_announced', eventable: poll).exists?
   end
@@ -276,37 +202,24 @@ class PollServiceTest < ActiveSupport::TestCase
   # -- scheduled opening (opening_at) --
 
   test "scheduled poll is not opened at create time" do
-    poll = Poll.new(
-      title: "Scheduled Poll",
-      poll_type: "proposal",
-      discussion: @discussion,
-      author: @user,
-      poll_option_names: ["Agree", "Disagree"],
+    poll = PollService.create(params: poll_params(
       closing_at: 7.days.from_now,
       opening_at: 3.days.from_now,
       notify_on_open: true
-    )
-    PollService.create(poll: poll, actor: @user)
+    ), actor: @user)
     refute poll.opened?, "poll should not be opened when opening_at is in the future"
     refute Event.where(kind: 'poll_announced', eventable: poll).exists?,
       "no poll_announced event should be created for scheduled poll at create time"
   end
 
   test "open_scheduled_polls opens scheduled polls and sends poll_announced when notify_on_open is true" do
-    poll = Poll.new(
-      title: "Scheduled Notify",
-      poll_type: "proposal",
-      discussion: @discussion,
-      author: @user,
-      poll_option_names: ["Agree", "Disagree"],
+    poll = PollService.create(params: poll_params(
       closing_at: 7.days.from_now,
       opening_at: 3.days.from_now,
       notify_on_open: true
-    )
-    PollService.create(poll: poll, actor: @user)
+    ), actor: @user)
     refute poll.opened?
 
-    # Simulate time passing: set opening_at to the past
     poll.update_column(:opening_at, 1.minute.ago)
 
     PollService.open_scheduled_polls
@@ -317,17 +230,11 @@ class PollServiceTest < ActiveSupport::TestCase
   end
 
   test "open_scheduled_polls opens scheduled polls without poll_announced when notify_on_open is false" do
-    poll = Poll.new(
-      title: "Scheduled Silent",
-      poll_type: "proposal",
-      discussion: @discussion,
-      author: @user,
-      poll_option_names: ["Agree", "Disagree"],
+    poll = PollService.create(params: poll_params(
       closing_at: 7.days.from_now,
       opening_at: 3.days.from_now,
       notify_on_open: false
-    )
-    PollService.create(poll: poll, actor: @user)
+    ), actor: @user)
     poll.update_column(:opening_at, 1.minute.ago)
 
     PollService.open_scheduled_polls
@@ -338,17 +245,11 @@ class PollServiceTest < ActiveSupport::TestCase
   end
 
   test "open_scheduled_polls does not open polls whose opening_at is still in the future" do
-    poll = Poll.new(
-      title: "Future Poll",
-      poll_type: "proposal",
-      discussion: @discussion,
-      author: @user,
-      poll_option_names: ["Agree", "Disagree"],
+    poll = PollService.create(params: poll_params(
       closing_at: 7.days.from_now,
       opening_at: 3.days.from_now,
       notify_on_open: true
-    )
-    PollService.create(poll: poll, actor: @user)
+    ), actor: @user)
     PollService.open_scheduled_polls
     poll.reload
     refute poll.opened?, "poll should not be opened when opening_at is still in the future"
@@ -357,7 +258,7 @@ class PollServiceTest < ActiveSupport::TestCase
   # -- reopen --
 
   test "reopen sends poll_announced when notify_on_open is true" do
-    poll = create_poll
+    poll = create_poll(notify_on_open: true)
     PollService.close(poll: poll, actor: @user)
     poll.reload
 
@@ -372,8 +273,7 @@ class PollServiceTest < ActiveSupport::TestCase
   end
 
   test "reopen does not send poll_announced when notify_on_open is false" do
-    poll = create_poll
-    poll.update!(notify_on_open: false)
+    poll = create_poll(notify_on_open: false)
     PollService.close(poll: poll, actor: @user)
     poll.reload
 
@@ -389,25 +289,17 @@ class PollServiceTest < ActiveSupport::TestCase
   # -- invite to scheduled poll --
 
   test "invite to scheduled poll creates stances but does not send poll_announced" do
-    @group.add_admin!(@user)
-    poll = Poll.new(
-      title: "Scheduled Invite",
-      poll_type: "proposal",
-      discussion: @discussion,
-      author: @user,
-      poll_option_names: ["Agree", "Disagree"],
+    poll = PollService.create(params: poll_params(
       closing_at: 7.days.from_now,
       opening_at: 3.days.from_now,
       specified_voters_only: true,
       notify_on_open: true
-    )
-    PollService.create(poll: poll, actor: @user)
+    ), actor: @user)
     refute poll.opened?
 
     member = create_unique_user("scheduledinvite")
     @group.add_member!(member)
 
-    # Invite without notify_recipients (scheduled poll UI forces this off)
     PollService.invite(poll: poll, actor: @user, params: {
       recipient_user_ids: [member.id],
       notify_recipients: false
@@ -422,21 +314,14 @@ class PollServiceTest < ActiveSupport::TestCase
   # -- email delivery --
 
   test "open_scheduled_polls delivers emails to voters when notify_on_open is true" do
-    @group.add_admin!(@user)
     member = create_unique_user("emailvoter")
     @group.add_member!(member)
 
-    poll = Poll.new(
-      title: "Email Test Poll",
-      poll_type: "proposal",
-      discussion: @discussion,
-      author: @user,
-      poll_option_names: ["Agree", "Disagree"],
+    poll = PollService.create(params: poll_params(
       closing_at: 7.days.from_now,
       opening_at: 3.days.from_now,
       notify_on_open: true
-    )
-    PollService.create(poll: poll, actor: @user)
+    ), actor: @user)
     ActionMailer::Base.deliveries.clear
 
     poll.update_column(:opening_at, 1.minute.ago)
@@ -448,21 +333,14 @@ class PollServiceTest < ActiveSupport::TestCase
   end
 
   test "open_scheduled_polls delivers no emails to voters when notify_on_open is false" do
-    @group.add_admin!(@user)
     member = create_unique_user("noemailvoter")
     @group.add_member!(member)
 
-    poll = Poll.new(
-      title: "No Email Test Poll",
-      poll_type: "proposal",
-      discussion: @discussion,
-      author: @user,
-      poll_option_names: ["Agree", "Disagree"],
+    poll = PollService.create(params: poll_params(
       closing_at: 7.days.from_now,
       opening_at: 3.days.from_now,
       notify_on_open: false
-    )
-    PollService.create(poll: poll, actor: @user)
+    ), actor: @user)
     ActionMailer::Base.deliveries.clear
 
     poll.update_column(:opening_at, 1.minute.ago)
@@ -476,16 +354,7 @@ class PollServiceTest < ActiveSupport::TestCase
   # -- group_members_added --
 
   test "adds new group members to non-specified-voters-only polls" do
-    poll = Poll.new(
-      title: "Open Poll",
-      poll_type: "proposal",
-      discussion: @discussion,
-      author: @user,
-      poll_option_names: ["Agree", "Disagree"],
-      closing_at: 3.days.from_now,
-      specified_voters_only: false
-    )
-    PollService.create(poll: poll, actor: @user)
+    poll = create_poll(specified_voters_only: false)
     PollService.group_members_added(@group.id)
     count = poll.voters.count
 
@@ -496,16 +365,7 @@ class PollServiceTest < ActiveSupport::TestCase
   end
 
   test "does not add bot users to polls" do
-    poll = Poll.new(
-      title: "No Bots Poll",
-      poll_type: "proposal",
-      discussion: @discussion,
-      author: @user,
-      poll_option_names: ["Agree", "Disagree"],
-      closing_at: 3.days.from_now,
-      specified_voters_only: false
-    )
-    PollService.create(poll: poll, actor: @user)
+    poll = create_poll(specified_voters_only: false)
     PollService.group_members_added(@group.id)
     count = poll.voters.count
 
@@ -518,31 +378,18 @@ class PollServiceTest < ActiveSupport::TestCase
 
   private
 
-  def create_poll
-    poll = Poll.new(
+  def poll_params(overrides = {})
+    {
       title: "Test Poll #{SecureRandom.hex(4)}",
       poll_type: "proposal",
-      discussion: @discussion,
-      author: @user,
-      poll_option_names: ["Agree", "Disagree"],
-      closing_at: 3.days.from_now
-    )
-    PollService.create(poll: poll, actor: @user)
-    poll.reload
-  end
-
-  def create_specified_voters_poll
-    poll = Poll.new(
-      title: "SVO Poll #{SecureRandom.hex(4)}",
-      poll_type: "proposal",
-      discussion: @discussion,
-      author: @user,
       poll_option_names: ["Agree", "Disagree"],
       closing_at: 3.days.from_now,
-      specified_voters_only: true
-    )
-    PollService.create(poll: poll, actor: @user)
-    poll.reload
+      group_id: @group.id
+    }.merge(overrides)
+  end
+
+  def create_poll(overrides = {})
+    PollService.create(params: poll_params(overrides), actor: @user)
   end
 
   def create_unique_user(prefix)

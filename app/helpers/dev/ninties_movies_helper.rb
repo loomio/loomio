@@ -154,53 +154,35 @@ module Dev::NintiesMoviesHelper
 
   def create_discussion
     unless @discussion
-      @discussion = Discussion.create(title: 'What star sign are you?', private: false, group: create_group, link_previews: [{'title': 'link title', 'url': 'https://www.example.com', 'description': 'a link to a page', 'image': 'https://www.loomio.org/theme/logo.svg', 'hostname':'www.example.com'}], author: jennifer)
-      DiscussionService.create(discussion: @discussion, actor: @discussion.author)
+      @discussion = DiscussionService.create(params: {group_id: create_group.id, title: 'What star sign are you?', private: false, link_previews: [{'title': 'link title', 'url': 'https://www.example.com', 'description': 'a link to a page', 'image': 'https://www.loomio.org/theme/logo.svg', 'hostname':'www.example.com'}]}, actor: jennifer)
     end
     @discussion
   end
 
   def create_another_discussion
     unless @another_discussion
-      @another_discussion = Discussion.create(title: 'Waking Up in Reno',
-                                       private: false,
-                                       group: create_group,
-                                       author: jennifer)
-      DiscussionService.create(discussion: @another_discussion, actor: @another_discussion.author)
+      @another_discussion = DiscussionService.create(params: {group_id: create_group.id, title: 'Waking Up in Reno', private: false}, actor: jennifer)
     end
     @another_discussion
   end
 
   def create_closed_discussion
     unless @closed_discussion
-      @closed_discussion = Discussion.create(title: 'This thread is old and closed',
-                                             private: false,
-                                             closed_at: Time.now,
-                                             group: create_group,
-                                             author: jennifer)
-      DiscussionService.create(discussion: @closed_discussion, actor: @closed_discussion.author)
+      @closed_discussion = DiscussionService.create(params: {group_id: create_group.id, title: 'This thread is old and closed', private: false, closed_at: Time.now}, actor: jennifer)
     end
     @closed_discussion
   end
 
   def create_public_discussion
     unless @another_discussion
-      @another_discussion = Discussion.create!(title: "The name's Johnny Utah!",
-                                                    private: false,
-                                                    group: create_another_group,
-                                                    author: patrick)
-      DiscussionService.create(discussion: @another_discussion, actor: @another_discussion.author)
+      @another_discussion = DiscussionService.create(params: {group_id: create_another_group.id, title: "The name's Johnny Utah!", private: false}, actor: patrick)
     end
     @another_discussion
   end
 
   def private_create_discussion
     unless @another_discussion
-      @another_discussion = Discussion.create!(title: 'But are you crazy enough?',
-                                                    private: true,
-                                                    group: create_another_group,
-                                                    author: patrick)
-      DiscussionService.create(discussion: @another_discussion, actor: @another_discussion.author)
+      @another_discussion = DiscussionService.create(params: {group_id: create_another_group.id, title: 'But are you crazy enough?', private: true}, actor: patrick)
     end
     @another_discussion
   end
@@ -212,8 +194,7 @@ module Dev::NintiesMoviesHelper
                                      discussion_privacy_options: 'public_or_private',
                                      group_privacy: 'closed', creator: patrick)
       GroupService.create(group: @subgroup, actor: @subgroup.creator)
-      discussion = Discussion.new(title: "Vaya con dios", private: false, group: @subgroup, author: patrick)
-      DiscussionService.create(discussion: discussion, actor: discussion.author)
+      DiscussionService.create(params: {group_id: @subgroup.id, title: "Vaya con dios", private: false}, actor: patrick)
       @subgroup.add_admin! patrick
     end
     @subgroup
@@ -227,8 +208,7 @@ module Dev::NintiesMoviesHelper
                                              discussion_privacy_options: 'public_or_private',
                                              is_visible_to_parent_members: true, creator: patrick)
       GroupService.create(group: @another_subgroup, actor: @another_subgroup.creator)
-      discussion = Discussion.new(title: "Vaya con dios 2", private: false, group: @another_subgroup, author: patrick)
-      DiscussionService.create(discussion: discussion, actor: discussion.author)
+      DiscussionService.create(params: {group_id: @another_subgroup.id, title: "Vaya con dios 2", private: false}, actor: patrick)
       @another_subgroup.add_admin! patrick
     end
     @another_subgroup
@@ -241,24 +221,27 @@ module Dev::NintiesMoviesHelper
 
   def create_comment
     unless @create_comment
-      @create_comment ||= Comment.create!(
-        discussion: create_discussion,
+      @create_comment ||= Comment.new(
+        parent: create_discussion,
         author: patrick,
         body: 'Hello world!'
       )
+      CommentService.create(comment: @create_comment, actor: patrick)
     end
     @create_comment
   end
 
   def create_poll
-    @create_poll ||= Poll.create!(
-      discussion: create_discussion,
-      poll_type: :proposal,
-      poll_option_names: %w(agree abstain disagree block),
-      author: patrick,
-      title: "Let's go to the moon!",
-      closing_at: 10.days.from_now
-    )
+    @create_poll ||= PollService.create(
+      params: {
+        poll_type: 'proposal',
+        poll_option_names: %w[agree abstain disagree block],
+        title: "Let's go to the moon!",
+        closing_at: 10.days.from_now,
+        group_id: create_discussion.group_id
+      },
+      actor: patrick
+    ).tap { |p| p.update!(topic: create_discussion.topic) }
   end
 
   def create_stance
@@ -313,21 +296,19 @@ module Dev::NintiesMoviesHelper
 
   def create_all_notifications
     #'reaction_created'
-    patrick_comment = Comment.new(discussion: create_discussion, body: 'I\'m rather likeable')
+    patrick_comment = Comment.new(parent: create_discussion, body: 'I\'m rather likeable')
     reaction = Reaction.new(reactable: patrick_comment, reaction: ":heart:")
     new_comment_event = CommentService.create(comment: patrick_comment, actor: patrick)
     reaction_created_event = ReactionService.update(reaction: reaction, params: {reaction: ':slight_smile:'}, actor: jennifer)
     create_another_group.add_member! jennifer
 
     #'comment_replied_to'
-    jennifer_comment = Comment.new(discussion: create_discussion,
-                          parent: patrick_comment,
+    jennifer_comment = Comment.new(parent: patrick_comment,
                           body: 'hey @patrickswayze you look great in that tuxeido (jen reply to patrick)')
     CommentService.create(comment: jennifer_comment, actor: jennifer)
 
     #'user_mentioned'
-    reply_comment = Comment.new(discussion: create_discussion,
-                                body: 'I agree with @patrickswayze (jen mention patrick)', parent: jennifer_comment)
+    reply_comment = Comment.new(body: 'I agree with @patrickswayze (jen mention patrick)', parent: jennifer_comment)
     CommentService.create(comment: reply_comment, actor: jennifer)
 
 
@@ -366,8 +347,19 @@ module Dev::NintiesMoviesHelper
     membership = Membership.create(user: emilio, group: another_group, inviter: patrick)
     MembershipService.redeem(membership: membership, actor: emilio)
 
-    poll = Poll.new(poll_type: :poll, title: "Invitation poll", poll_option_names: %w[agree abstain disagree block], discussion: create_discussion, group: create_group, author: jennifer, closing_at: 24.hours.from_now, notify_on_closing_soon: 'voters', specified_voters_only: true)
-    PollService.create(poll: poll, actor: jennifer)
+    poll = PollService.create(
+      params: {
+        poll_type: 'poll',
+        title: "Invitation poll",
+        poll_option_names: %w[agree abstain disagree block],
+        group_id: create_group.id,
+        closing_at: 24.hours.from_now,
+        notify_on_closing_soon: 'voters',
+        specified_voters_only: true
+      },
+      actor: jennifer
+    )
+    poll.update!(topic: create_discussion.topic)
     PollService.invite(
       poll: poll,
       params: { recipient_user_ids: [patrick.id], notify_recipients: true },
@@ -378,9 +370,18 @@ module Dev::NintiesMoviesHelper
     PollService.publish_closing_soon
 
     #'outcome_created'
-    poll = Poll.new(poll_type: :proposal, title: "Outcome poll", poll_option_names: %w[agree abstain disagree block], discussion: create_discussion, author: jennifer, closed_at: 1.day.ago, closing_at: 1.day.ago)
-
-    PollService.create(poll: poll, actor: jennifer)
+    poll = PollService.create(
+      params: {
+        poll_type: 'proposal',
+        title: "Outcome poll",
+        poll_option_names: %w[agree abstain disagree block],
+        group_id: create_group.id,
+        closing_at: 3.days.from_now
+      },
+      actor: jennifer
+    )
+    poll.update!(topic: create_discussion.topic)
+    poll.update_columns(closed_at: 1.day.ago, closing_at: 1.day.ago)
     outcome = Outcome.new(poll: poll, author: jennifer, statement: "Let's do it!")
     OutcomeService.create(
       outcome: outcome,
@@ -390,7 +391,17 @@ module Dev::NintiesMoviesHelper
 
     #'stance_created'
     # notify patrick that someone has voted on his proposal
-    poll = Poll.new(poll_type: :proposal, title: "Stance poll", poll_option_names: %w[agree abstain disagree block], closing_at: 4.days.from_now, discussion: create_discussion, voter_can_add_options: true)
-    PollService.create(poll: poll, actor: patrick)
+    poll = PollService.create(
+      params: {
+        poll_type: 'proposal',
+        title: "Stance poll",
+        poll_option_names: %w[agree abstain disagree block],
+        closing_at: 4.days.from_now,
+        group_id: create_group.id,
+        voter_can_add_options: true
+      },
+      actor: patrick
+    )
+    poll.update!(topic: create_discussion.topic)
   end
 end

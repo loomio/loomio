@@ -1,15 +1,14 @@
 require 'test_helper'
 
-class DiscussionReaderTest < ActiveSupport::TestCase
+class TopicReaderTest < ActiveSupport::TestCase
   setup do
-    @user = users(:discussion_author)
-    @other_user = users(:another_user)
-    @group = groups(:test_group)
+    @admin = users(:admin)
+    @group = groups(:group)
 
-    @discussion = discussions(:test_discussion)
-    @membership = @user.memberships.find_by(group: @group)
+    @discussion = discussions(:discussion)
+    @membership = @admin.memberships.find_by(group: @group)
     @membership.update!(volume: :normal)
-    @reader = DiscussionReader.for(user: @user, discussion: @discussion)
+    @reader = TopicReader.for(user: @admin, topic: @discussion.topic)
   end
 
   # Computed volume
@@ -26,11 +25,11 @@ class DiscussionReaderTest < ActiveSupport::TestCase
   test "updates counts correctly from existing last_read_at" do
     @reader.update!(last_read_at: 6.days.ago)
 
-    comment1 = Comment.new(discussion: @discussion, body: "Older", author: @user)
-    older_event = CommentService.create(comment: comment1, actor: @user)
+    comment1 = Comment.new(parent: @discussion, body: "Older", author: @admin)
+    older_event = CommentService.create(comment: comment1, actor: @admin)
 
-    comment2 = Comment.new(discussion: @discussion, body: "Newer", author: @user)
-    newer_event = CommentService.create(comment: comment2, actor: @user)
+    comment2 = Comment.new(parent: @discussion, body: "Newer", author: @admin)
+    newer_event = CommentService.create(comment: comment2, actor: @admin)
 
     @reader.viewed!([newer_event, older_event].map(&:sequence_id))
     assert_equal 2, @reader.read_items_count
@@ -40,11 +39,11 @@ class DiscussionReaderTest < ActiveSupport::TestCase
   test "updates existing counts correctly" do
     @reader.update!(last_read_at: 6.days.ago)
 
-    comment1 = Comment.new(discussion: @discussion, body: "Older", author: @user)
-    older_event = CommentService.create(comment: comment1, actor: @user)
+    comment1 = Comment.new(parent: @discussion, body: "Older", author: @admin)
+    older_event = CommentService.create(comment: comment1, actor: @admin)
 
-    comment2 = Comment.new(discussion: @discussion, body: "Newer", author: @user)
-    newer_event = CommentService.create(comment: comment2, actor: @user)
+    comment2 = Comment.new(parent: @discussion, body: "Newer", author: @admin)
+    newer_event = CommentService.create(comment: comment2, actor: @admin)
 
     @reader.viewed!(newer_event.sequence_id)
     assert_not @reader.has_read?(older_event.sequence_id)
@@ -55,8 +54,8 @@ class DiscussionReaderTest < ActiveSupport::TestCase
   test "does not duplicate views" do
     @reader.update!(last_read_at: 6.days.ago)
 
-    comment = Comment.new(discussion: @discussion, body: "Older", author: @user)
-    event = CommentService.create(comment: comment, actor: @user)
+    comment = Comment.new(parent: @discussion, body: "Older", author: @admin)
+    event = CommentService.create(comment: comment, actor: @admin)
 
     @reader.viewed!(event.sequence_id)
     assert_equal 1, @reader.read_items_count

@@ -50,14 +50,9 @@ export default {
       if (!match) { return true; }
 
       const sequenceId = parseInt(match[1]);
-
-      if (sequenceId == 0) {
-        this.focusedItemVisible =  keys.includes("00000")
-      } else {
-        const event =  Records.events.find({ discussionId: this.discussion.id, sequenceId: sequenceId })[0];
-        if (!event) { return false; }
-        this.focusedItemVisible =  keys.includes(event.positionKey)
-      }
+      const event = Records.events.find({ topicId: this.discussion.topicId, sequenceId: sequenceId })[0];
+      if (!event) { return false; }
+      this.focusedItemVisible = keys.includes(event.positionKey);
     })
 
     this.init();
@@ -131,7 +126,7 @@ export default {
       this.loader.addContextRule();
       this.loader.addLoadMyStuffRule();
 
-      if (this.discussion.itemsCount === 0) {
+      if (this.discussion.topic().itemsCount <= 1) {
         this.loader.addLoadNewestRule();
         // this.anchorSelector = '#strand-page';
         return;
@@ -240,7 +235,7 @@ export default {
             span.text-center(v-if="focusMode == 'unread'" v-t="'strand_nav.showing_unread'")
             span.text-center(v-if="focusMode == 'newest'" v-t="'strand_nav.showing_latest'")
         strand-list.pt-3.pr-1.pr-sm-3.px-sm-2(:loader="loader" :collection="loader.collection" :focus-selector="focusSelector" :focus-mode="focusMode")
-        strand-actions-panel(:discussion="discussion")
+        strand-actions-panel(:topic="discussion.topic()")
   strand-toc-nav(v-if="loader" :discussion="discussion" :loader="loader" :key="discussion.id" :focus-mode="focusMode" :focus-selector="focusSelector")
   v-fab(v-if="focusSelector && !focusedItemVisible" icon app extended :text="$t('strand_nav.recenter')" location="bottom center" @click="scrollToFocused" color="accent" variant="elevated")
     v-icon(:icon="mdiArrowULeftTop")

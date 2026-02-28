@@ -12,7 +12,7 @@ class Views::Chatbot::Slack::Comment < Views::Chatbot::Slack::Base
   def view_template
     slack_convert { render_notification_text(@event, @poll) }
     md "\n"
-    slack_convert { render_title(@event.eventable.discussion) }
+    slack_convert { render_title(@event.eventable.topic.topicable) }
     md "\n"
     slack_convert { render_body(@event.eventable) }
     md "\n"

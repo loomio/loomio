@@ -2,47 +2,42 @@ require 'test_helper'
 
 class Api::V1::TagsControllerTest < ActionController::TestCase
   setup do
-    @user = users(:normal_user)
-    @group = groups(:test_group)
-    @subgroup = Group.create!(
-      name: "Test Subgroup",
-      parent: @group,
-      handle: "testgroup-subgroup"
-    )
-    
-    @discussion = create_discussion(group: @group, author: @user, tags: ['apple', 'banana'])
-    @poll = Poll.new(
+    @user = users(:admin)
+    @group = groups(:group)
+    @subgroup = groups(:subgroup)
+
+    @discussion = DiscussionService.create(params: { title: "Tags #{SecureRandom.hex(4)}", group_id: @group.id, tags: ['apple', 'banana'] }, actor: @user)
+    @poll = PollService.create(params: {
       title: "Test Poll",
       poll_type: "proposal",
-      group: @group,
-      author: @user,
+      group_id: @group.id,
+      specified_voters_only: true,
+      closing_at: 5.days.from_now,
+      poll_option_names: ["Agree", "Disagree"],
       tags: ['apple', 'banana']
-    )
-    PollService.create(poll: @poll, actor: @user)
-    
-    @group.add_admin!(@user)
-    @subgroup.add_admin!(@user)
-    
-    @sub_discussion = create_discussion(group: @subgroup, author: @user, tags: ['apple', 'banana'])
-    @sub_poll = Poll.new(
+    }, actor: @user)
+
+    @sub_discussion = DiscussionService.create(params: { title: "SubTags #{SecureRandom.hex(4)}", group_id: @subgroup.id, tags: ['apple', 'banana'] }, actor: @user)
+    @sub_poll = PollService.create(params: {
       title: "Subgroup Poll",
       poll_type: "proposal",
-      group: @subgroup,
-      author: @user,
+      group_id: @subgroup.id,
+      specified_voters_only: true,
+      closing_at: 5.days.from_now,
+      poll_option_names: ["Agree", "Disagree"],
       tags: ['apple', 'banana']
-    )
-    PollService.create(poll: @sub_poll, actor: @user)
-    
+    }, actor: @user)
+
     TagService.update_group_tags(@subgroup.id)
     TagService.update_group_and_org_tags(@group.id)
-    
+
     sign_in @user
   end
 
   test "create creates a new tag" do
     post :create, params: { tag: { name: 'newtag', color: '#ccc', group_id: @group.id } }
     assert_response :success
-    
+
     tag = JSON.parse(response.body)['tags'].find { |t| t['name'] == 'newtag' }
     assert_equal @group.id, tag['group_id']
     assert_equal '#ccc', tag['color']
@@ -54,7 +49,7 @@ class Api::V1::TagsControllerTest < ActionController::TestCase
     tag = Tag.find_by(group_id: @group.id, name: 'apple')
     put :update, params: { id: tag.id, tag: { name: 'apple2', color: '#aaa' } }
     assert_response :success
-    
+
     tag_attrs = JSON.parse(response.body)['tags'][0]
     assert_equal 'apple2', tag_attrs['name']
     assert_equal @group.id, tag_attrs['group_id']
@@ -67,7 +62,7 @@ class Api::V1::TagsControllerTest < ActionController::TestCase
     tag = Tag.find_by(group_id: @group.id, name: 'apple')
     put :update, params: { id: tag.id, tag: { name: 'apple2', color: '#aaa' } }
     assert_response :success
-    
+
     assert_equal ['apple2', 'banana'], @discussion.reload.tags
     assert_equal ['apple2', 'banana'], @sub_discussion.reload.tags
     assert_equal ['apple2', 'banana'], @poll.reload.tags
@@ -79,7 +74,7 @@ class Api::V1::TagsControllerTest < ActionController::TestCase
     tag = Tag.find_by(group_id: @group.id, name: 'apple')
     put :update, params: { id: tag.id, tag: { name: 'banana', color: '#aaa' } }
     assert_response :success
-    
+
     assert_equal ['banana'], @discussion.reload.tags
     assert_equal ['banana'], @sub_discussion.reload.tags
     assert_equal ['banana'], @poll.reload.tags
@@ -91,7 +86,7 @@ class Api::V1::TagsControllerTest < ActionController::TestCase
     tag = Tag.find_by(group_id: @subgroup.id, name: 'apple')
     put :update, params: { id: tag.id, tag: { name: 'apple2', color: '#aaa' } }
     assert_response :success
-    
+
     assert_equal ['apple', 'banana'], @discussion.reload.tags
     assert_equal ['apple2', 'banana'], @sub_discussion.reload.tags
     assert_equal ['apple', 'banana'], @poll.reload.tags
@@ -105,7 +100,7 @@ class Api::V1::TagsControllerTest < ActionController::TestCase
   test "merge subgroup tag" do
     tag = Tag.find_by(group_id: @subgroup.id, name: 'apple')
     put :update, params: { id: tag.id, tag: { name: 'banana', color: '#aaa' } }
-    
+
     assert_equal ['apple', 'banana'], @discussion.reload.tags
     assert_equal ['banana'], @sub_discussion.reload.tags
     assert_equal ['apple', 'banana'], @poll.reload.tags

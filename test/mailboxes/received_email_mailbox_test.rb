@@ -4,28 +4,24 @@ class ReceivedEmailMailboxTest < ActionMailbox::TestCase
   setup do
     hex = SecureRandom.hex(4)
     @user = User.create!(name: "mboxuser#{hex}", email: "mboxuser#{hex}@example.com", username: "mboxuser#{hex}", email_verified: true)
-    @another_user = User.create!(name: "mboxother#{hex}", email: "mboxother#{hex}@example.com", username: "mboxother#{hex}", email_verified: true)
+    @alien = User.create!(name: "mboxother#{hex}", email: "mboxother#{hex}@example.com", username: "mboxother#{hex}", email_verified: true)
     @group = Group.new(name: "mboxgroup#{hex}", group_privacy: 'secret', handle: "mboxgroup#{hex}")
     @group.creator = @user
     @group.save!
     @group.add_admin!(@user)
-    @group.add_member!(@another_user)
+    @group.add_member!(@alien)
 
-    @discussion = Discussion.new(title: "Mbox Discussion #{hex}", group: @group, author: @user)
-    DiscussionService.create(discussion: @discussion, actor: @user)
+    @discussion = DiscussionService.create(params: { title: "Mbox Discussion #{hex}", group_id: @group.id }, actor: @user)
 
-    @poll = Poll.new(
+    @poll = PollService.create(params: {
       title: "Mbox Poll #{hex}",
       poll_type: 'proposal',
-      group: @group,
-      discussion: @discussion,
-      author: @user,
+      topic_id: @discussion.topic.id,
       closing_at: 3.days.from_now,
       poll_option_names: %w[agree disagree abstain]
-    )
-    PollService.create(poll: @poll, actor: @user)
+    }, actor: @user)
 
-    @comment = Comment.new(discussion: @discussion, body: "parent comment")
+    @comment = Comment.new(parent: @discussion, body: "parent comment")
     CommentService.create(comment: @comment, actor: @user)
     ActionMailer::Base.deliveries.clear
   end
@@ -93,7 +89,7 @@ class ReceivedEmailMailboxTest < ActionMailbox::TestCase
     c = Comment.last
     assert_equal @user, c.author
     assert_equal @comment, c.parent
-    assert_equal @discussion, c.discussion
+    assert_equal @discussion, c.topic.discussion
     assert_equal 'reply to comment via email', c.body
   end
 
@@ -108,7 +104,7 @@ class ReceivedEmailMailboxTest < ActionMailbox::TestCase
     c = Comment.last
     assert_equal @user, c.author
     assert_equal @poll, c.parent
-    assert_equal @discussion, c.discussion
+    assert_equal @discussion, c.topic.discussion
     assert_equal "comment on a poll via email", c.body
   end
 
@@ -123,7 +119,7 @@ class ReceivedEmailMailboxTest < ActionMailbox::TestCase
     c = Comment.last
     assert_equal @user, c.author
     assert_equal @discussion, c.parent
-    assert_equal @discussion, c.discussion
+    assert_equal @discussion, c.topic.discussion
     assert_equal 'comment via email without a parent', c.body
   end
 

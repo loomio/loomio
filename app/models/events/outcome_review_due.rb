@@ -10,13 +10,13 @@ class Events::OutcomeReviewDue < Event
 
   private
   def email_recipients
-    Queries::UsersByVolumeQuery.email_notifications(poll)
-                               .where('users.id': raw_recipients.pluck(:id))
+    poll.topic.email_notification_members
+              .where('users.id': raw_recipients.pluck(:id))
   end
 
   def notification_recipients
-    Queries::UsersByVolumeQuery.app_notifications(poll)
-                               .where('users.id': raw_recipients.pluck(:id))
+    poll.topic.app_notification_members
+              .where('users.id': raw_recipients.pluck(:id))
   end
 
   def raw_recipients

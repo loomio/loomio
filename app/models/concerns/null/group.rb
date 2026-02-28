@@ -7,6 +7,14 @@ module Null::Group
 
   alias :read_attribute_for_serialization :send
 
+  def admins_include?(user)
+    false
+  end
+
+  def members_include?(user)
+    false
+  end
+
   def new_threads_max_depth
     2
   end
@@ -48,7 +56,6 @@ module Null::Group
       description_format
       group_id
       add_member!
-      message_channel
       logo_or_parent_logo
       created_at
       creator_id
@@ -56,6 +63,7 @@ module Null::Group
       cover_url
       logo_url
       category
+      archived_at
     )
   end
 

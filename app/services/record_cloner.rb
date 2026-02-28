@@ -15,10 +15,15 @@ class RecordCloner
     clone_group.members_can_announce = true
     clone_group.discussion_privacy_options = 'public_only'
     clone_group.membership_granted_upon = 'request'
-    clone_group.discussions.each {|d| d.private = false }
-    clone_group.polls.each {|p| p.specified_voters_only = false }
+
+    # Apply overrides to cloned discussions and polls before saving
+    cloned_discussions = clone_group.instance_variable_get(:@_cloned_discussions) || []
+    cloned_polls = clone_group.instance_variable_get(:@_cloned_polls) || []
+    cloned_discussions.each {|d| d.private = false }
+    cloned_polls.each {|p| p.specified_voters_only = false }
 
     clone_group.save!
+    save_cloned_content!(clone_group)
 
     update_tag_colors(clone_group, group)
 
@@ -26,7 +31,7 @@ class RecordCloner
       poll.update_counts!
       poll.stances.each {|s| s.update_option_scores!}
     end
-    clone_group.discussions.each {|d| EventService.repair_discussion(d.id) }
+    clone_group.discussions.each {|d| TopicService.repair_thread(d.topic_id) }
     clone_group.reload
   end
 
@@ -43,6 +48,7 @@ class RecordCloner
     clone_group.creator = actor
     clone_group.subscription = Subscription.new(plan: 'demo', owner: actor)
     clone_group.save!
+    save_cloned_content!(clone_group)
 
     update_tag_colors(clone_group, group)
     store_source_record_ids(clone_group)
@@ -52,7 +58,7 @@ class RecordCloner
       poll.update_counts!
       poll.stances.each {|s| s.update_option_scores!}
     end
-    clone_group.discussions.each {|d| EventService.repair_discussion(d.id) }
+    clone_group.discussions.each {|d| TopicService.repair_thread(d.topic_id) }
     clone_group.add_member! actor
     clone_group.reload
   end
@@ -60,9 +66,14 @@ class RecordCloner
   def clone_trial_content_into_group(group, actor)
     source_group = Group.find_by(handle: 'trial-group-template')
 
-    group.discussions = source_group.discussions.kept.map {|d| new_clone_discussion_and_events(d) }
-    group.polls = source_group.polls.kept.map {|p| new_clone_poll(p) }
+    cloned_discussions = source_group.discussions.kept.map {|d| new_clone_discussion_and_events(d) }
+    cloned_polls = source_group.polls.kept.map {|p| new_clone_poll(p) }
+
+    group.instance_variable_set(:@_cloned_discussions, cloned_discussions)
+    group.instance_variable_set(:@_cloned_polls, cloned_polls)
+
     group.save!
+    save_cloned_content!(group)
 
     update_tag_colors(group, source_group)
     store_source_record_ids(group)
@@ -74,7 +85,7 @@ class RecordCloner
       poll.stances.each {|s| s.update_option_scores!}
     end
 
-    group.discussions.each {|d| EventService.repair_discussion(d.id) }
+    group.discussions.each {|d| TopicService.repair_thread(d.topic_id) }
     group.reload
 
     group.save!
@@ -96,6 +107,7 @@ class RecordCloner
   def create_clone_group(group)
     clone_group = new_clone_group(group)
     clone_group.save!
+    save_cloned_content!(clone_group)
 
     update_tag_colors(clone_group, group)
 
@@ -105,9 +117,27 @@ class RecordCloner
       poll.update_counts!
       poll.stances.each {|s| s.update_option_scores!}
     end
-    clone_group.discussions.each {|d| EventService.repair_discussion(d.id) }
+    clone_group.discussions.each {|d| TopicService.repair_thread(d.topic_id) }
     clone_group.reload
     clone_group
+  end
+
+  # After the group is saved, save cloned discussions and polls.
+  # Discussions/polls connect to groups through topics, so the topicable
+  # must be persisted before the topic can reference it.
+  def save_cloned_content!(clone_group)
+    cloned_discussions = clone_group.instance_variable_get(:@_cloned_discussions) || []
+    cloned_polls = clone_group.instance_variable_get(:@_cloned_polls) || []
+
+    cloned_discussions.each do |cd|
+      cd.topic.group = clone_group
+      cd.save!
+    end
+
+    cloned_polls.each do |cp|
+      cp.topic.group = clone_group
+      cp.save!
+    end
   end
 
   def new_clone_group(group, clone_parent = nil)
@@ -148,9 +178,14 @@ class RecordCloner
     clone_group.parent = clone_parent
 
     clone_group.memberships = group.memberships.map {|m| new_clone_membership(m) }
-    clone_group.discussions = group.discussions.kept.map {|d| new_clone_discussion_and_events(d) }
     clone_group.subgroups = group.subgroups.published.map {|g| new_clone_group(g, clone_group) }
-    clone_group.polls = group.polls.kept.map {|p| new_clone_poll(p) }
+
+    # Store cloned discussions and polls for deferred save via save_cloned_content!.
+    # These connect to the group through topics, so they must be saved after the group.
+    clone_group.instance_variable_set(:@_cloned_discussions,
+      group.discussions.kept.map {|d| new_clone_discussion_and_events(d) })
+    clone_group.instance_variable_set(:@_cloned_polls,
+      group.polls.kept.map {|p| new_clone_poll(p) })
 
     clone_group
   end
@@ -163,37 +198,51 @@ class RecordCloner
       discussion_template_key
       description
       description_format
-      pinned_at
-      max_depth
-      newest_first
       content_locale
       link_previews
       created_at
       updated_at
-      closed_at
-      last_activity_at
       discarded_at
       template
       tags
     ]
 
-    required_values = {
-      private: true
-    }
-
     attachments = [:files, :image_files]
-    new_clone(discussion, copy_fields, required_values, attachments)
+    new_clone(discussion, copy_fields, {}, attachments)
+  end
+
+  def new_clone_topic(topic, topicable)
+    copy_fields = %w[
+      max_depth
+      newest_first
+      private
+      closed_at
+      closer_id
+      pinned_at
+      last_activity_at
+      created_at
+      updated_at
+    ]
+    clone_topic = new_clone(topic, copy_fields)
+    clone_topic.topicable = topicable
+    clone_topic
   end
 
   def new_clone_discussion_and_events(discussion)
     clone_discussion = new_clone_discussion(discussion)
+    clone_topic = new_clone_topic(discussion.topic, clone_discussion)
+    clone_discussion.topic = clone_topic
+
     created_event = new_clone_event(discussion.created_event)
     created_event.eventable = clone_discussion
-    clone_discussion.events << created_event
+
     drop_kinds = %w[poll_closed_by_user poll_expired poll_reopened]
-    clone_discussion.items = discussion.items.order(:sequence_id).select{|i| !drop_kinds.include?(i.kind) }.map { |event| new_clone_event_and_eventable(event) }
-    clone_discussion.polls = discussion.polls.map {|p| new_clone_poll(p) }
-    clone_discussion.comments = discussion.comments.order(:id).map { |c| new_clone_comment(c) }
+    created_event_id = discussion.created_event&.id
+    thread_events = discussion.topic.items.order(:sequence_id)
+      .reject { |i| drop_kinds.include?(i.kind) || i.id == created_event_id }
+      .map { |event| new_clone_event_and_eventable(event) }
+
+    clone_topic.items = [created_event] + thread_events
     clone_discussion
   end
 
@@ -244,6 +293,9 @@ class RecordCloner
     attachments = [:files, :image_files]
 
     clone_poll = new_clone(poll, copy_fields, {}, attachments)
+    # In-thread polls share the discussion's cloned topic;
+    # standalone polls get their own topic
+    clone_poll.topic = existing_clone(poll.topic) || new_clone_topic(poll.topic, clone_poll)
     clone_poll.poll_options = poll.poll_options.map {|poll_option| new_clone_poll_option(poll_option) }
     clone_poll.stances = poll.stances.map {|stance| new_clone_stance(stance) }
     clone_poll.outcomes = poll.outcomes.map {|outcome| new_clone_outcome(outcome) }
@@ -279,7 +331,6 @@ class RecordCloner
   def new_clone_stance(stance)
     copy_fields = %w[
       accepted_at
-      admin
       cast_at
       content_locale
       inviter_id
@@ -291,7 +342,6 @@ class RecordCloner
       revoked_at
       created_at
       updated_at
-      volume
     ]
     attachments = [:files, :image_files]
     clone_stance = new_clone(stance, copy_fields, {}, attachments)
@@ -394,7 +444,6 @@ class RecordCloner
     ]
     attachments = [:files, :image_files]
     clone_comment = new_clone(comment, copy_fields, {}, attachments)
-    clone_comment.discussion = existing_clone(comment.discussion)
     clone_comment.parent = existing_clone(comment.parent)
     clone_comment
   end

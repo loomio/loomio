@@ -10,10 +10,16 @@ class NotificationService
     MessageChannelService.publish_models(notifications, user_id: actor_id)
   end
 
-  def self.viewed_events(actor_id:, discussion_id: , sequence_ids: )
+  def self.viewed_events(actor_id:, discussion_id: nil, topic_id: nil, sequence_ids: )
     event_ids = []
 
-    events = Event.includes(:eventable).where(discussion_id: discussion_id, sequence_id: sequence_ids)
+    # Resolve topic_id from discussion_id if needed
+    if topic_id.nil? && discussion_id
+      topic_id = Topic.where(topicable_type: 'Discussion', topicable_id: discussion_id).pick(:id)
+    end
+    return if topic_id.nil?
+
+    events = Event.includes(:eventable).where(topic_id: topic_id, sequence_id: sequence_ids)
 
     reactions = Reaction.where(reactable: events.map(&:eventable))
     event_ids.concat Event.where(eventable: reactions).pluck(:id)
@@ -22,9 +28,9 @@ class NotificationService
 
     %w[Comment Discussion Poll Stance Outcome].each do |type|
       eventable_ids[type] = Event.where(
-        discussion_id: discussion_id,
+        topic_id: topic_id,
         sequence_id: sequence_ids,
-        eventable_type: type).pluck(:eventable_id) 
+        eventable_type: type).pluck(:eventable_id)
     end
 
     

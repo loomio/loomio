@@ -48,8 +48,8 @@ class Views::UserMailer::CatchUp::Discussion < Views::ApplicationMailer::Compone
   private
 
   def render_activity_feed
-    reader = @cache.fetch(:discussion_readers_by_discussion_id, @discussion.id) ||
-      DiscussionReader.for(user: @recipient, discussion: @discussion)
+    reader = @cache.fetch(:topic_readers_by_topic_id, @discussion.topic&.id) ||
+      TopicReader.for(user: @recipient, topic: @discussion.topic)
     since = [reader.last_read_at, @time_start].compact.max
 
     div(class: "activity-feed") do

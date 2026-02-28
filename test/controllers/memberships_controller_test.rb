@@ -4,7 +4,7 @@ class MembershipsControllerTest < ActionController::TestCase
   setup do
     hex = SecureRandom.hex(4)
     @user = User.create!(name: "memuser#{hex}", email: "memuser#{hex}@example.com", username: "memuser#{hex}", email_verified: true)
-    @another_user = User.create!(name: "memoth#{hex}", email: "memoth#{hex}@example.com", username: "memoth#{hex}", email_verified: true)
+    @alien = User.create!(name: "memoth#{hex}", email: "memoth#{hex}@example.com", username: "memoth#{hex}", email_verified: true)
     @invitee = User.create!(name: "invitee#{hex}", email: "invitee#{hex}@example.com", username: "invitee#{hex}", email_verified: true)
     @group = Group.new(name: "memgroup#{hex}", group_privacy: 'closed', handle: "memgroup#{hex}")
     @group.creator = @user
@@ -17,7 +17,7 @@ class MembershipsControllerTest < ActionController::TestCase
   test "redeem pending membership" do
     hex = SecureRandom.hex(4)
     redeem_group = Group.new(name: "redeem#{hex}", group_privacy: 'closed', handle: "redeem#{hex}")
-    redeem_group.creator = @another_user
+    redeem_group.creator = @alien
     redeem_group.save!
     membership = Membership.create!(group: redeem_group, user: @invitee, accepted_at: nil)
     session[:pending_membership_token] = membership.token
@@ -36,11 +36,11 @@ class MembershipsControllerTest < ActionController::TestCase
   test "redeem multiple pending memberships in same org" do
     hex = SecureRandom.hex(4)
     redeem_group = Group.new(name: "redeem#{hex}", group_privacy: 'closed', handle: "redeem#{hex}")
-    redeem_group.creator = @another_user
+    redeem_group.creator = @alien
     redeem_group.save!
     membership = Membership.create!(group: redeem_group, user: @invitee, accepted_at: nil)
     subgroup = Group.new(name: "sub#{SecureRandom.hex(4)}", parent: redeem_group, group_privacy: 'secret', handle: "#{redeem_group.handle}-sub#{SecureRandom.hex(4)}")
-    subgroup.creator = @another_user
+    subgroup.creator = @alien
     subgroup.save!
     subgroup_membership = Membership.create!(group: subgroup, user: @invitee, accepted_at: nil)
 
@@ -74,7 +74,7 @@ class MembershipsControllerTest < ActionController::TestCase
   test "does not redeem accepted membership" do
     hex = SecureRandom.hex(4)
     redeem_group = Group.new(name: "redeem#{hex}", group_privacy: 'closed', handle: "redeem#{hex}")
-    redeem_group.creator = @another_user
+    redeem_group.creator = @alien
     redeem_group.save!
     membership = Membership.create!(group: redeem_group, user: @invitee, accepted_at: Time.zone.now)
     session[:pending_membership_token] = membership.token
@@ -110,8 +110,8 @@ class MembershipsControllerTest < ActionController::TestCase
   end
 
   test "show redirects to group if already a member" do
-    @group.add_member!(@another_user)
-    sign_in @another_user
+    @group.add_member!(@alien)
+    sign_in @alien
     membership = Membership.create!(group: @group, user: @invitee, accepted_at: nil)
     get :show, params: { token: membership.token }
     assert_redirected_to "/#{@group.handle}"

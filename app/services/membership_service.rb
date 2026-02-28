@@ -39,18 +39,18 @@ class MembershipService
     end
 
     # remove any existing guest access in these groups
-    DiscussionReader.joins(:discussion)
-    .where(user_id: actor.id, 'discussions.group_id': invited_group_ids)
+    TopicReader
+    .joins("INNER JOIN topics ON topics.id = topic_readers.topic_id")
+    .joins("LEFT JOIN discussions ON topics.topicable_type = 'Discussion' AND topics.topicable_id = discussions.id")
+    .joins("LEFT JOIN polls ON topics.topicable_type = 'Poll' AND topics.topicable_id = polls.id")
+    .where(user_id: actor.id)
+    .where("topics.group_id IN (?)", invited_group_ids)
     .update_all(guest: false, revoked_at: nil, revoker_id: nil)
 
-    Stance.joins(:poll)
-    .where(participant_id: actor.id, 'polls.group_id': invited_group_ids)
-    .update_all(guest: false)
-
     # unrevoke any votes on active polls
-    Stance.joins(:poll)
+    Stance.joins(poll: :topic)
     .where(participant_id: actor.id)
-    .where('polls.group_id': invited_group_ids)
+    .where('topics.group_id': invited_group_ids)
     .where('stances.revoked_at is not null')
     .where('polls.closed_at is null')
     .update_all(revoked_at: nil, revoker_id: nil)
@@ -75,14 +75,13 @@ class MembershipService
   end
 
   def self.revoke_by_id(group_ids, user_id, actor_id, revoked_at = DateTime.now)
-    DiscussionReader
-    .joins(:discussion)
-    .where('discussions.group_id': group_ids, user_id: user_id)
+    TopicReader
+    .joins("INNER JOIN topics ON topics.id = topic_readers.topic_id")
+    .joins("LEFT JOIN discussions ON topics.topicable_type = 'Discussion' AND topics.topicable_id = discussions.id")
+    .joins("LEFT JOIN polls ON topics.topicable_type = 'Poll' AND topics.topicable_id = polls.id")
+    .where(user_id: user_id)
+    .where("topics.group_id IN (?)", group_ids)
     .update_all(guest: false, revoked_at: revoked_at, revoker_id: actor_id)
-
-    Stance.joins(:poll).guests
-    .where('polls.group_id': group_ids, participant_id: user_id)
-    .update_all(guest: false)
 
     # remove them from active polls
     group_ids.each do |group_id|
@@ -142,17 +141,15 @@ class MembershipService
     if params[:apply_to_all]
       group_ids = membership.group.parent_or_self.id_and_subgroup_ids
       actor.memberships.where(group_id: group_ids).update_all(volume: val)
-      actor.discussion_readers.joins(:discussion).
-            where('discussions.group_id': group_ids).
-            update_all(volume: val)
-      Stance.joins(:poll).
-             where('polls.group_id': group_ids).
-             where(participant_id: actor.id).
-             update_all(volume: val)
+      TopicReader
+            .joins("INNER JOIN topics ON topics.id = topic_readers.topic_id")
+            .joins("LEFT JOIN discussions ON topics.topicable_type = 'Discussion' AND topics.topicable_id = discussions.id")
+            .where(user_id: actor.id)
+            .where("topics.group_id IN (?)", group_ids)
+            .update_all(volume: val)
     else
       membership.set_volume! params[:volume]
-      membership.discussion_readers.update_all(volume: val)
-      membership.stances.update_all(volume: val)
+      membership.topic_readers.update_all(volume: val)
     end
   end
 

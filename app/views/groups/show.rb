@@ -41,7 +41,7 @@ class Views::Groups::Show < Views::Application::Layout
           div(class: "discussions-panel__content") do
             div(class: "discussions-panel__list thread-preview-collection__container") do
               div(class: "v-list thread-previews v-sheet v-sheet--tile theme--auto v-list--two-line", role: "list") do
-                @group.discussions.kept.where(private: false).order("last_activity_at desc").limit(50).each do |discussion|
+                @group.discussions.kept.joins(:topic).where(topics: { private: false }).order("topics.last_activity_at desc nulls last").limit(50).each do |discussion|
                   a(class: "thread-preview thread-preview__link v-list-item v-list-item--link theme--auto", href: discussion_url(discussion), role: "listitem", tabindex: "0") do
                     div(class: "v-list-item__avatar") do
                       render Views::EventMailer::Common::Avatar.new(user: discussion.author)
@@ -51,7 +51,7 @@ class Views::Groups::Show < Views::Application::Layout
                         span(class: "thread-preview__title") { plain discussion.title }
                       end
                       div(class: "v-list-item__subtitle") do
-                        span(class: "thread-preview__items-count") { plain t("thread_preview.replies_count", count: discussion.items_count.to_i) }
+                        span(class: "thread-preview__items-count") { plain t("thread_preview.replies_count", count: discussion.topic.replies_count) }
                         span
                         comment { "/" }
                         span do

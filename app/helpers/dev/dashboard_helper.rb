@@ -15,7 +15,7 @@ module Dev::DashboardHelper
   end
 
   def old_discussion
-    create_discussion!(:old_discussion) { |discussion| discussion.update last_activity_at: 2.years.ago }
+    create_discussion!(:old_discussion) { |discussion| discussion.topic.update last_activity_at: 2.years.ago }
   end
 
   def create_discussion!(name, group: create_group, author: patrick)
@@ -23,19 +23,28 @@ module Dev::DashboardHelper
     if existing = instance_variable_get(var_name)
       existing
     else
-      instance_variable_set(var_name, Discussion.create!(title: name.to_s.humanize, group: group, author: author, private: false).tap do |discussion|
-        DiscussionService.create(discussion: discussion, actor: discussion.author)
-        yield discussion if block_given?
+      discussion = DiscussionService.create(params: {group_id: group.id, title: name.to_s.humanize, private: false}, actor: author)
+      instance_variable_set(var_name, discussion.tap do |d|
+        yield d if block_given?
       end)
     end
   end
 
   def pin!(discussion)
-    DiscussionService.pin(discussion: discussion, actor: discussion.author)
+    TopicService.pin(topic: discussion.topic, actor: discussion.author)
   end
 
   def add_poll!(discussion, name: 'Test poll', actor: jennifer)
-    PollService.create(poll: Poll.new(poll_type: :poll, poll_option_names: ["Apple", "Banana"], title: name, closing_at: 3.days.from_now, discussion: discussion), actor: actor)
+    PollService.create(
+      params: {
+        poll_type: 'poll',
+        poll_option_names: ["Apple", "Banana"],
+        title: name,
+        closing_at: 3.days.from_now,
+        group_id: discussion.group_id
+      },
+      actor: actor
+    ).tap { |p| p.update!(topic: discussion.topic) }
   end
 
 end

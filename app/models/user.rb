@@ -1,7 +1,6 @@
 class User < ApplicationRecord
   include CustomCounterCache::Model
   include ReadableUnguessableUrls
-  include MessageChannel
   include HasExperiences
   include HasAvatar
   include SelfReferencing
@@ -90,10 +89,14 @@ class User < ApplicationRecord
   has_many :participated_polls, through: :stances, source: :poll
   has_many :group_polls, through: :groups, source: :polls
 
-  has_many :discussion_readers, dependent: :destroy
-  has_many :guest_discussion_readers, -> { DiscussionReader.active.guests }, class_name: 'DiscussionReader', dependent: :destroy
-  has_many :guest_discussions, through: :guest_discussion_readers, source: :discussion
-  has_many :guest_stances, -> { Stance.latest.guests }, class_name: 'Stance', dependent: :destroy, foreign_key: :participant_id
+  has_many :topic_readers, dependent: :destroy
+  has_many :guest_topic_readers, -> { TopicReader.active.guests }, class_name: 'TopicReader', dependent: :destroy
+
+  def guest_topic_ids
+    guest_topic_readers.pluck(:topic_id)
+  end
+
+  has_many :guest_stances, -> { Stance.latest.invited }, class_name: 'Stance', dependent: :destroy, foreign_key: :participant_id
   has_many :guest_polls, through: :guest_stances, source: :poll
   has_many :notifications, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -135,25 +138,19 @@ class User < ApplicationRecord
   scope :mention_search, lambda { |model, query|
     return none unless model.present?
 
-    ids = []
     if model.is_a?(User)
       return active.search_for(query).where(id: User.visible_by(model).pluck(:id))
     end
 
-    if model.group_id
+    ids = []
+
+    if model.is_a?(Group)
+      ids += Membership.active.where(group_id: model.id).pluck(:user_id)
+    elsif model.is_a?(Topic)
       ids += Membership.active.where(group_id: model.group_id).pluck(:user_id) if model.group_id
-    end
-
-    if model.discussion_id
-      ids += DiscussionReader.active.guests.where(discussion_id: model.discussion_id).pluck(:user_id)
-    end
-
-    if model.poll_id
-      ids += Stance.latest.guests.where(poll_id: model.poll_id).pluck(:participant_id)
-    end
-
-    if model.respond_to?(:poll_ids) and model.poll_ids.any?
-      ids += Stance.latest.guests.where(poll_id: model.poll_ids).pluck(:participant_id)
+      ids += model.topic_readers.active.guests.pluck(:user_id)
+      poll_ids = Poll.where(topic_id: model.id).pluck(:id)
+      ids += Stance.latest.invited.where(poll_id: poll_ids).pluck(:participant_id) if poll_ids.any?
     end
 
     active.search_for(query).where(id: ids)
