@@ -368,6 +368,21 @@ module Dev::ScenariosHelper
     }
   end
 
+  def stv_vote_cast_scenario(params)
+    scenario = poll_created_scenario(params.merge(poll_type: 'stv'))
+    poll = scenario[:poll]
+    voter = scenario[:observer]
+
+    stance = Stance.find_by(poll: poll, participant: voter, latest: true)
+    # Rank only the first 2 candidates, leaving the rest unranked
+    choices = poll.poll_options.first(2).each_with_index.map do |opt, i|
+      { poll_option_id: opt.id, score: 2 - i }
+    end
+    StanceService.update(stance: stance, actor: voter, params: { stance_choices_attributes: choices })
+
+    scenario
+  end
+
   def alternative_poll_option_selection(poll_option_ids, i)
     poll_option_ids.each_with_index.map {|id, j| {poll_option_id: id, score: (i+j)%3}}
   end
