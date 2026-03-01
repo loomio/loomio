@@ -23,14 +23,14 @@ class PollExporterTest < ActiveSupport::TestCase
     @bob   = @poll.poll_options.find_by(name: 'Bob')
     @carol = @poll.poll_options.find_by(name: 'Carol')
 
-    # 3 voters: Alice > Bob > Carol
+    # 3 voters: Alice > Bob > Carol (score = rank placement, 1 = first choice)
     3.times do
       voter = User.create!(name: "V #{SecureRandom.hex(4)}", email: "#{SecureRandom.hex(4)}@test.com")
       @group.add_member!(voter)
       stance = @poll.stances.build(participant: voter, poll: @poll)
-      stance.stance_choices.build(poll_option: @alice, score: 3)
+      stance.stance_choices.build(poll_option: @alice, score: 1)
       stance.stance_choices.build(poll_option: @bob,   score: 2)
-      stance.stance_choices.build(poll_option: @carol,  score: 1)
+      stance.stance_choices.build(poll_option: @carol,  score: 3)
       stance.cast_at = Time.current
       stance.save!
     end
@@ -40,8 +40,8 @@ class PollExporterTest < ActiveSupport::TestCase
       voter = User.create!(name: "V #{SecureRandom.hex(4)}", email: "#{SecureRandom.hex(4)}@test.com")
       @group.add_member!(voter)
       stance = @poll.stances.build(participant: voter, poll: @poll)
-      stance.stance_choices.build(poll_option: @bob,   score: 2)
-      stance.stance_choices.build(poll_option: @carol,  score: 1)
+      stance.stance_choices.build(poll_option: @bob,   score: 1)
+      stance.stance_choices.build(poll_option: @carol,  score: 2)
       stance.cast_at = Time.current
       stance.save!
     end

@@ -20,7 +20,7 @@ module StvCountService
   def self.extract_ballots(poll)
     poll.stances.latest.decided.includes(:stance_choices).map do |stance|
       stance.stance_choices
-            .sort_by { |sc| -sc.score }
+            .sort_by { |sc| sc.score }
             .map(&:poll_option_id)
     end
   end

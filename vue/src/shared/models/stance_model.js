@@ -130,11 +130,11 @@ export default class StanceModel extends BaseModel {
     } else if (poll.pollType == 'ranked_choice') {
       return sortBy(choices, 'rank');
     } else if (poll.pollType === 'stv') {
-      const sorted = sortBy(choices, '-score');
+      const sorted = sortBy(choices, 'score');
       sorted.forEach((c, i) => c.rank = i + 1);
       return sorted;
     } else {
-      return sortBy(choices, '-score');
+      return sortBy(choices, c => -c.score);
     }
   }
 

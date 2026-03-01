@@ -34,7 +34,7 @@ export default {
       const ranked = this.pollOptions.slice(0, dividerIndex);
       this.stance.stanceChoicesAttributes = ranked.map((option, index) => ({
         poll_option_id: option.id,
-        score: ranked.length - index
+        score: index + 1
       }));
       const actionName = !this.stance.castAt ? 'created' : 'updated';
       this.stance.save().then(() => {
@@ -49,7 +49,7 @@ export default {
       if (this.stance && this.stance.castAt) {
         const allOptions = this.stance.poll().pollOptions();
         const scores = this.stance.optionScores;
-        const ranked = sortBy(allOptions.filter(o => scores[o.id] !== undefined), o => -scores[o.id]);
+        const ranked = sortBy(allOptions.filter(o => scores[o.id] !== undefined), o => scores[o.id]);
         const unranked = allOptions.filter(o => scores[o.id] === undefined);
         return [...ranked, DIVIDER, ...unranked];
       } else {

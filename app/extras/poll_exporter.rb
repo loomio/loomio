@@ -20,7 +20,7 @@ class PollExporter
 
     ballots = @poll.stances.latest.decided.includes(:stance_choices).map do |stance|
       stance.stance_choices
-            .sort_by { |sc| -sc.score }
+            .sort_by { |sc| sc.score }
             .map { |sc| option_id_to_index[sc.poll_option_id] }
     end
 

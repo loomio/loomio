@@ -20,7 +20,7 @@ class StanceChoice < ApplicationRecord
     when 'ranked_choice'
       self.poll.minimum_stance_choices - self.score + 1
     when 'stv'
-      self.poll.poll_options.count - self.score + 1
+      self.score
     end
   end
 

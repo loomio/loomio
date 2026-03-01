@@ -376,7 +376,7 @@ module Dev::ScenariosHelper
     stance = Stance.find_by(poll: poll, participant: voter, latest: true)
     # Rank only the first 2 candidates, leaving the rest unranked
     choices = poll.poll_options.first(2).each_with_index.map do |opt, i|
-      { poll_option_id: opt.id, score: 2 - i }
+      { poll_option_id: opt.id, score: i + 1 }
     end
     StanceService.update(stance: stance, actor: voter, params: { stance_choices_attributes: choices })
 
