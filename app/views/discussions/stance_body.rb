@@ -195,6 +195,29 @@ class Views::Discussions::StanceBody < Views::Application::Component
     render_reason
   end
 
+  def render_stv
+    div(class: "layout align-center wrap") do
+      h3(class: "thread-item__title text-body-2 d-flex") do
+        a(href: user_url(@voter)) { plain @voter.name }
+        span do
+          span("aria-hidden": "true") { plain " \u00b7" }
+        end
+        span(class: "text--secondary text-body-2") do
+          time_ago(@stance.created_at, @current_user)
+        end
+      end
+    end
+    table(style: "width: 100%", cellspacing: 0) do
+      @stance.stance_choices.order("score asc").each do |stance_choice|
+        tr do
+          td { render Views::EventMailer::Poll::Chip.new(color: stance_choice.poll_option.color) }
+          td { plain "#{stance_choice.rank} - #{stance_choice.poll_option.name}" }
+        end
+      end
+    end
+    render_reason
+  end
+
   def render_count
     render_proposal
   end

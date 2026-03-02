@@ -52,6 +52,10 @@ class PollSerializer < ApplicationSerializer
              :minimum_stance_choices,
              :maximum_stance_choices,
              :meeting_duration,
+             :stv_seats,
+             :stv_method,
+             :stv_quota,
+             :stv_results,
              :poll_template_id,
              :poll_template_key,
              :quorum_pct,
@@ -112,6 +116,14 @@ class PollSerializer < ApplicationSerializer
 
   def include_results?
     poll.show_results?(voted: true)
+  end
+
+  def stv_results
+    object.stv_results
+  end
+
+  def include_stv_results?
+    object.poll_type == 'stv' && poll.show_results?(voted: true)
   end
 
   def current_outcome

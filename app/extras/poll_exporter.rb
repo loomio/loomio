@@ -9,6 +9,34 @@ class PollExporter
     "poll-#{@poll.id}-#{@poll.key}-#{@poll.title.parameterize}.csv"
   end
 
+  def blt_file_name
+    "poll-#{@poll.id}-#{@poll.key}-#{@poll.title.parameterize}.blt"
+  end
+
+  def to_blt
+    options = @poll.poll_options.order(:priority)
+    option_id_to_index = options.each_with_index.map { |o, i| [o.id, i + 1] }.to_h
+    seats = @poll.stv_seats || 1
+
+    ballots = @poll.stances.latest.decided.includes(:stance_choices).map do |stance|
+      stance.stance_choices
+            .sort_by { |sc| sc.score }
+            .map { |sc| option_id_to_index[sc.poll_option_id] }
+    end
+
+    grouped = ballots.tally
+
+    lines = []
+    lines << "#{options.size} #{seats}"
+    grouped.each do |ballot, count|
+      lines << "#{count} #{ballot.join(' ')} 0"
+    end
+    lines << "0"
+    options.each { |o| lines << "\"#{o.name}\"" }
+    lines << "\"#{@poll.title}\""
+    lines.join("\n") + "\n"
+  end
+
   def meta_table
     outcome = @poll.current_outcome
 
