@@ -48,37 +48,40 @@ class Views::Chatbot::Matrix::Stv < Views::Chatbot::Base
       end
     end
 
-    # Round-by-round table
+    # Round-by-round table (candidates as rows, rounds as columns)
     rounds = stv['rounds'] || []
     candidates = @poll.poll_options
     if rounds.any?
       elected_so_far = []
       eliminated_so_far = []
+      round_state = rounds.map do |round|
+        elected_so_far += (round['elected'] || [])
+        eliminated_so_far += (round['eliminated'] || [])
+        { elected_so_far: elected_so_far.dup, eliminated_so_far: eliminated_so_far.dup }
+      end
 
       table do
         thead do
           tr do
-            th { t('poll_stv_results.round', number: '').strip }
-            candidates.each do |c|
-              th { c.name }
+            th { t('poll_stv_results.candidate') }
+            rounds.each do |round|
+              th { round['round'].to_s }
             end
           end
         end
         tbody do
-          rounds.each do |round|
-            elected_so_far += (round['elected'] || [])
-            eliminated_so_far += (round['eliminated'] || [])
-
+          candidates.each do |c|
             tr do
-              td { round['round'].to_s }
-              candidates.each do |c|
+              td { c.name }
+              rounds.each_with_index do |round, i|
                 tally = round['tallies']&.dig(c.id.to_s)
                 elected_this_round = (round['elected'] || []).include?(c.id)
                 eliminated_this_round = (round['eliminated'] || []).include?(c.id)
-                was_out = (eliminated_so_far.include?(c.id) && !eliminated_this_round) ||
-                          (elected_so_far.include?(c.id) && !elected_this_round)
-
                 tied_this_round = (round['tied'] || []).include?(c.id)
+                was_out = if i > 0
+                            round_state[i - 1][:elected_so_far].include?(c.id) ||
+                            round_state[i - 1][:eliminated_so_far].include?(c.id)
+                          end
 
                 td do
                   if elected_this_round

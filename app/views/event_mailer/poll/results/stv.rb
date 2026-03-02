@@ -60,39 +60,43 @@ class Views::EventMailer::Poll::Results::Stv < Views::ApplicationMailer::Compone
     all_eliminated_ids = rounds.flat_map { |r| r['eliminated'] || [] }
     all_tied_ids = tied.map { |e| e['poll_option_id'] }
 
-    table(class: "v-table", style: "min-width: 600px; border-collapse: collapse", cellspacing: 0) do
+    table(class: "v-table", style: "border-collapse: collapse", cellspacing: 0) do
       tbody do
-        # Header row
+        # Header row: Candidate, Round 1, Round 2, ...
         tr do
           th(style: "text-align: left; padding: 4px 8px; border-bottom: 2px solid #ccc") do
-            plain t('poll_stv_results.round', number: '').strip
+            plain t('poll_stv_results.candidate')
           end
-          candidates.each do |c|
-            style = "text-align: right; padding: 4px 8px; border-bottom: 2px solid #ccc"
-            style += "; color: green" if all_elected_ids.include?(c.id)
-            style += "; color: #e65100" if all_tied_ids.include?(c.id)
-            th(style: style) { plain c.name }
+          rounds.each do |round|
+            th(style: "text-align: right; padding: 4px 8px; border-bottom: 2px solid #ccc") do
+              plain round['round'].to_s
+            end
           end
         end
 
-        # Data rows
+        # Data rows: one per candidate
         elected_so_far = []
         eliminated_so_far = []
-        rounds.each do |round|
+        round_state = rounds.map do |round|
           elected_so_far += (round['elected'] || [])
           eliminated_so_far += (round['eliminated'] || [])
+          { elected_so_far: elected_so_far.dup, eliminated_so_far: eliminated_so_far.dup }
+        end
 
+        candidates.each do |c|
           tr do
-            td(style: "padding: 4px 8px; font-weight: bold; border-bottom: 1px solid #eee") do
-              plain round['round'].to_s
-            end
-            candidates.each do |c|
+            name_style = "padding: 4px 8px; font-weight: bold; border-bottom: 1px solid #eee"
+            name_style += "; color: green" if all_elected_ids.include?(c.id)
+            name_style += "; color: #e65100" if all_tied_ids.include?(c.id)
+            td(style: name_style) { plain c.name }
+
+            rounds.each_with_index do |round, i|
               tally = round['tallies']&.dig(c.id.to_s)
               elected_this_round = (round['elected'] || []).include?(c.id)
               eliminated_this_round = (round['eliminated'] || []).include?(c.id)
               tied_this_round = (round['tied'] || []).include?(c.id)
-              was_eliminated = eliminated_so_far.include?(c.id) && !eliminated_this_round
-              was_elected = elected_so_far.include?(c.id) && !elected_this_round
+              was_elected = i > 0 && round_state[i - 1][:elected_so_far].include?(c.id)
+              was_eliminated = i > 0 && round_state[i - 1][:eliminated_so_far].include?(c.id)
 
               cell_style = "text-align: right; padding: 4px 8px; border-bottom: 1px solid #eee"
               if elected_this_round
@@ -117,7 +121,7 @@ class Views::EventMailer::Poll::Results::Stv < Views::ApplicationMailer::Compone
           td(style: "padding: 4px 8px; font-style: italic; border-top: 2px solid #ccc") do
             plain "Quota"
           end
-          candidates.each do
+          rounds.each do
             td(style: "text-align: right; padding: 4px 8px; font-style: italic; border-top: 2px solid #ccc") do
               plain format_quota(stv['quota'])
             end

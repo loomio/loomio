@@ -216,30 +216,33 @@ module Views::Chatbot::Markdown::Concerns
       md "```\n#{tied_table}\n```\n"
     end
 
-    # Round-by-round table
+    # Round-by-round table (candidates as rows, rounds as columns)
     rounds = stv['rounds'] || []
     candidates = poll.poll_options
     if rounds.any?
       elected_so_far = []
       eliminated_so_far = []
+      round_state = rounds.map do |round|
+        elected_so_far += (round['elected'] || [])
+        eliminated_so_far += (round['eliminated'] || [])
+        { elected_so_far: elected_so_far.dup, eliminated_so_far: eliminated_so_far.dup }
+      end
 
       details = Terminal::Table.new do |tbl|
         tbl.style = { border: :unicode }
-        tbl.headings = [t('poll_stv_results.round', number: '').strip, *candidates.map(&:name)]
+        tbl.headings = [t('poll_stv_results.candidate'), *rounds.map { |r| { value: r['round'], alignment: :right } }]
 
-        rounds.each do |round|
-          elected_so_far += (round['elected'] || [])
-          eliminated_so_far += (round['eliminated'] || [])
-
-          row = [{ value: round['round'], alignment: :right }]
-          candidates.each do |c|
+        candidates.each do |c|
+          row = [c.name]
+          rounds.each_with_index do |round, i|
             tally = round['tallies']&.dig(c.id.to_s)
             elected_this_round = (round['elected'] || []).include?(c.id)
             eliminated_this_round = (round['eliminated'] || []).include?(c.id)
-            was_out = (eliminated_so_far.include?(c.id) && !eliminated_this_round) ||
-                      (elected_so_far.include?(c.id) && !elected_this_round)
-
             tied_this_round = (round['tied'] || []).include?(c.id)
+            was_out = if i > 0
+                        round_state[i - 1][:elected_so_far].include?(c.id) ||
+                        round_state[i - 1][:eliminated_so_far].include?(c.id)
+                      end
 
             val = if was_out
                     '-'
@@ -263,7 +266,7 @@ module Views::Chatbot::Markdown::Concerns
         end
 
         tbl.add_separator
-        tbl << ["Quota", *candidates.map { { value: quota_str, alignment: :right } }]
+        tbl << ["Quota", *rounds.map { { value: quota_str, alignment: :right } }]
       end
 
       md "```\n#{details}\n```\n"

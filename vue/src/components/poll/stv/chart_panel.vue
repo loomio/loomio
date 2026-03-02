@@ -171,33 +171,33 @@ export default {
         v-icon.mr-1(icon="mdi-approximately-equal" size="small")
         | {{ candidate.name }}
 
-    //- Round-by-round table
+    //- Round-by-round table (candidates as rows, rounds as columns)
     v-table.mt-4(density="compact")
       thead
         tr
-          th(v-t="'poll_stv_results.round'", :args="{number: ''}")
-          th(v-for="cid in candidates" :key="cid")
-            .d-flex.flex-column.align-center
+          th {{ $t('poll_stv_results.candidate') }}
+          th.text-center(v-for="round in rounds" :key="round.round")
+            | {{ $t('poll_stv_results.round', { number: round.round }) }}
+      tbody
+        tr(v-for="cid in candidates" :key="cid")
+          td
+            .d-flex.align-center
               span {{ candidateName(cid) }}
-              v-chip.mt-1(
+              v-chip.ml-2(
                 v-if="electedIds.has(cid)"
                 color="success"
                 size="x-small"
                 variant="flat"
               ) {{ $t('poll_stv_results.elected') }}
-              v-chip.mt-1(
+              v-chip.ml-2(
                 v-else-if="tiedIds.has(cid)"
                 color="warning"
                 size="x-small"
                 variant="flat"
               ) {{ $t('poll_stv_results.tied') }}
-      tbody
-        tr(v-for="round in rounds" :key="round.round")
-          td
-            strong {{ $t('poll_stv_results.round', { number: round.round }) }}
           td.text-center(
-            v-for="cid in candidates"
-            :key="cid"
+            v-for="round in rounds"
+            :key="round.round"
             :class="cellClass(round, cid)"
           )
             | {{ tallyForRound(round, cid) }}
