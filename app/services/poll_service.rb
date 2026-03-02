@@ -485,11 +485,14 @@ class PollService
   def self.calculate_stv_results(poll, poll_options)
     stv = poll.stv_results || {}
     elected_ids = (stv['elected'] || []).map { |e| e['poll_option_id'] }
+    tied_ids = (stv['tied'] || []).map { |e| e['poll_option_id'] }
     elected_rounds = (stv['elected'] || []).each_with_object({}) { |e, h| h[e['poll_option_id']] = e['round_elected'] }
 
     poll_options.map do |option|
       status = if elected_ids.include?(option.id)
                  'elected'
+               elsif tied_ids.include?(option.id)
+                 'tied'
                elsif poll.closed_at
                  'not_elected'
                else

@@ -87,6 +87,7 @@ class Views::EventMailer::Poll::Results::Simple < Views::ApplicationMailer::Comp
       status = option[:stv_status]
       style = case status
               when 'elected' then "color: green; font-weight: bold"
+              when 'tied' then "color: #e65100; font-weight: bold"
               when 'not_elected' then "color: #999"
               else ""
               end

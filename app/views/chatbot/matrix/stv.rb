@@ -11,6 +11,7 @@ class Views::Chatbot::Matrix::Stv < Views::Chatbot::Base
     return unless stv
 
     elected = stv['elected'] || []
+    tied = stv['tied'] || []
 
     # Winners table
     if elected.any?
@@ -27,6 +28,20 @@ class Views::Chatbot::Matrix::Stv < Views::Chatbot::Base
             tr do
               td { strong { e['name'] } }
               td { e['round_elected'].to_s }
+            end
+          end
+        end
+      end
+    end
+
+    # Tied candidates
+    if tied.any?
+      h5 { t('poll_stv_results.tied') }
+      table do
+        tbody do
+          tied.each do |e|
+            tr do
+              td { strong { e['name'] } }
             end
           end
         end
@@ -63,6 +78,8 @@ class Views::Chatbot::Matrix::Stv < Views::Chatbot::Base
                 was_out = (eliminated_so_far.include?(c.id) && !eliminated_this_round) ||
                           (elected_so_far.include?(c.id) && !elected_this_round)
 
+                tied_this_round = (round['tied'] || []).include?(c.id)
+
                 td do
                   if elected_this_round
                     strong { format_number(tally) }
@@ -70,6 +87,9 @@ class Views::Chatbot::Matrix::Stv < Views::Chatbot::Base
                   elsif eliminated_this_round
                     s { format_number(tally) }
                     plain " \u2717"
+                  elsif tied_this_round
+                    strong { format_number(tally) }
+                    plain " \u2248"
                   elsif was_out
                     plain '-'
                   else
@@ -83,7 +103,7 @@ class Views::Chatbot::Matrix::Stv < Views::Chatbot::Base
       end
 
       p { plain "Quota: #{format_number(stv['quota'])}" }
-      p { plain "\u2713 = #{t('poll_stv_results.elected')}, \u2717 = #{t('poll_stv_results.not_elected')}" }
+      p { plain "\u2713 = #{t('poll_stv_results.elected')}, \u2717 = #{t('poll_stv_results.not_elected')}, \u2248 = #{t('poll_stv_results.tied')}" }
     end
 
     # Method/quota info

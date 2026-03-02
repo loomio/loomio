@@ -36,6 +36,21 @@ class Views::EventMailer::Poll::Results::Stv < Views::ApplicationMailer::Compone
       end
     end
 
+    # Tied candidates
+    tied = stv['tied'] || []
+    if tied.any?
+      h4 { plain t('poll_stv_results.tied') }
+      table(cellspacing: 0, style: "margin-bottom: 16px") do
+        tied.each do |e|
+          tr do
+            td(style: "padding: 4px 8px; color: #e65100; font-weight: bold") do
+              plain e['name']
+            end
+          end
+        end
+      end
+    end
+
     # Round-by-round table
     rounds = stv['rounds'] || []
     candidates = @poll.poll_options
@@ -43,6 +58,7 @@ class Views::EventMailer::Poll::Results::Stv < Views::ApplicationMailer::Compone
 
     all_elected_ids = elected.map { |e| e['poll_option_id'] }
     all_eliminated_ids = rounds.flat_map { |r| r['eliminated'] || [] }
+    all_tied_ids = tied.map { |e| e['poll_option_id'] }
 
     table(class: "v-table", style: "min-width: 600px; border-collapse: collapse", cellspacing: 0) do
       tbody do
@@ -54,6 +70,7 @@ class Views::EventMailer::Poll::Results::Stv < Views::ApplicationMailer::Compone
           candidates.each do |c|
             style = "text-align: right; padding: 4px 8px; border-bottom: 2px solid #ccc"
             style += "; color: green" if all_elected_ids.include?(c.id)
+            style += "; color: #e65100" if all_tied_ids.include?(c.id)
             th(style: style) { plain c.name }
           end
         end
@@ -73,6 +90,7 @@ class Views::EventMailer::Poll::Results::Stv < Views::ApplicationMailer::Compone
               tally = round['tallies']&.dig(c.id.to_s)
               elected_this_round = (round['elected'] || []).include?(c.id)
               eliminated_this_round = (round['eliminated'] || []).include?(c.id)
+              tied_this_round = (round['tied'] || []).include?(c.id)
               was_eliminated = eliminated_so_far.include?(c.id) && !eliminated_this_round
               was_elected = elected_so_far.include?(c.id) && !elected_this_round
 
@@ -81,6 +99,8 @@ class Views::EventMailer::Poll::Results::Stv < Views::ApplicationMailer::Compone
                 cell_style += "; color: green; font-weight: bold"
               elsif eliminated_this_round
                 cell_style += "; color: #c00; text-decoration: line-through"
+              elsif tied_this_round
+                cell_style += "; color: #e65100; font-weight: bold"
               elsif was_eliminated || was_elected
                 cell_style += "; color: #ccc"
               end

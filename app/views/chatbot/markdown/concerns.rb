@@ -186,6 +186,7 @@ module Views::Chatbot::Markdown::Concerns
     return unless stv
 
     elected = stv['elected'] || []
+    tied = stv['tied'] || []
     quota_val = stv['quota']
     quota_str = stv_format_number(quota_val)
 
@@ -200,6 +201,19 @@ module Views::Chatbot::Markdown::Concerns
         end
       end
       md "```\n#{winners}\n```\n"
+    end
+
+    # Tied candidates
+    if tied.any?
+      md "**#{t('poll_stv_results.tied')}**\n"
+      tied_table = Terminal::Table.new do |tbl|
+        tbl.style = { border: :unicode }
+        tbl.headings = [t('poll_stv_results.candidate')]
+        tied.each do |e|
+          tbl << [e['name']]
+        end
+      end
+      md "```\n#{tied_table}\n```\n"
     end
 
     # Round-by-round table
@@ -225,6 +239,8 @@ module Views::Chatbot::Markdown::Concerns
             was_out = (eliminated_so_far.include?(c.id) && !eliminated_this_round) ||
                       (elected_so_far.include?(c.id) && !elected_this_round)
 
+            tied_this_round = (round['tied'] || []).include?(c.id)
+
             val = if was_out
                     '-'
                   elsif tally
@@ -233,6 +249,8 @@ module Views::Chatbot::Markdown::Concerns
                       "#{formatted} \u2713"
                     elsif eliminated_this_round
                       "#{formatted} \u2717"
+                    elsif tied_this_round
+                      "#{formatted} \u2248"
                     else
                       formatted
                     end
@@ -249,7 +267,7 @@ module Views::Chatbot::Markdown::Concerns
       end
 
       md "```\n#{details}\n```\n"
-      md "\u2713 = #{t('poll_stv_results.elected')}, \u2717 = #{t('poll_stv_results.not_elected')}\n"
+      md "\u2713 = #{t('poll_stv_results.elected')}, \u2717 = #{t('poll_stv_results.not_elected')}, \u2248 = #{t('poll_stv_results.tied')}\n"
     end
 
     # Method/quota info
