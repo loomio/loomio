@@ -28,6 +28,8 @@ class Views::Chatbot::Matrix::Simple < Views::Chatbot::Base
               th { t('poll_ranked_choice_form.points') }
             when 'average'
               th { t('poll_ranked_choice_form.mean') }
+            when 'stv_status'
+              th { t('poll_common.status') }
             when 'voter_count'
               th { t('membership_card.voters') }
             when 'votes'
@@ -51,6 +53,9 @@ class Views::Chatbot::Matrix::Simple < Views::Chatbot::Base
                 td do
                   plain option_name(option[:name], option[:name_format], @recipient.time_zone, @recipient.date_time_pref)
                 end
+              when 'stv_status'
+                status = option[:stv_status]
+                td { status ? t("poll_stv_results.#{status}") : '' }
               when 'rank'
                 td { option[:rank].to_s }
               when 'score'

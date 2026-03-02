@@ -11,6 +11,8 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[8.0].define(version: 2026_02_13_175153) do
+  create_schema "pghero"
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -803,6 +805,9 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_13_175153) do
     t.datetime "opening_at"
     t.datetime "opened_at"
     t.boolean "notify_on_open", default: true, null: false
+    t.integer "stv_seats"
+    t.string "stv_method"
+    t.string "stv_quota"
     t.index ["author_id"], name: "index_polls_on_author_id"
     t.index ["closed_at", "closing_at"], name: "index_polls_on_closed_at_and_closing_at"
     t.index ["closed_at", "discussion_id"], name: "index_polls_on_closed_at_and_discussion_id"
@@ -834,6 +839,15 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_13_175153) do
     t.boolean "released", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "sessions", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "ip_address"
+    t.string "user_agent"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sessions_on_user_id"
   end
 
   create_table "stance_choices", id: :serial, force: :cascade do |t|
@@ -1050,6 +1064,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_13_175153) do
     t.string "email_sha256"
     t.integer "complaints_count", default: 0, null: false
     t.boolean "auto_translate", default: false, null: false
+    t.string "password_digest"
     t.index ["api_key"], name: "index_users_on_api_key"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["email_verified"], name: "index_users_on_email_verified"
@@ -1092,4 +1107,5 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_13_175153) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "sessions", "users"
 end

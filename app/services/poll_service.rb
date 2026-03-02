@@ -230,6 +230,7 @@ class PollService
     actor.ability.authorize! :reopen, poll
 
     poll.assign_attributes(closing_at: params[:closing_at], closed_at: nil, opening_at: nil, opened_at: Time.now)
+    poll.stv_results = nil if poll.poll_type == 'stv'
     return false unless poll.valid?
 
     Poll.transaction do
@@ -313,7 +314,16 @@ class PollService
       EventService.repair_discussion(poll.discussion_id)
     end
 
+    if poll.poll_type == 'stv'
+      poll.stv_results = StvCountService.count(poll)
+    end
+
     poll.update_attribute(:closed_at, Time.now)
+
+    if poll.poll_type == 'stv'
+      poll.save!  # persist stv_results in custom_fields
+    end
+
     GenericWorker.perform_async('SearchService', 'reindex_by_poll_id', poll.id)
   end
 
@@ -365,6 +375,8 @@ class PollService
   end
 
   def self.calculate_results(poll, poll_options)
+    return calculate_stv_results(poll, poll_options) if poll.poll_type == 'stv'
+
     sorted_poll_options = case poll.order_results_by
     when 'priority'
       poll_options.sort_by {|o| o.priority }
@@ -464,6 +476,50 @@ class PollService
       )
     end
     l
+  end
+
+  # STV results are computed at close time and stored in custom_fields.
+  # This method returns a simplified per-candidate result list for the
+  # standard results serialization (the round-by-round data is served
+  # separately via stv_results).
+  def self.calculate_stv_results(poll, poll_options)
+    stv = poll.stv_results || {}
+    elected_ids = (stv['elected'] || []).map { |e| e['poll_option_id'] }
+    tied_ids = (stv['tied'] || []).map { |e| e['poll_option_id'] }
+    elected_rounds = (stv['elected'] || []).each_with_object({}) { |e, h| h[e['poll_option_id']] = e['round_elected'] }
+
+    poll_options.map do |option|
+      status = if elected_ids.include?(option.id)
+                 'elected'
+               elsif tied_ids.include?(option.id)
+                 'tied'
+               elsif poll.closed_at
+                 'not_elected'
+               else
+                 'pending'
+               end
+
+      {
+        id: option.id,
+        poll_id: option.poll_id,
+        name: option.name,
+        name_format: poll.poll_option_name_format,
+        icon: option.icon,
+        rank: elected_ids.index(option.id)&.+(1),
+        stv_status: status,
+        round_elected: elected_rounds[option.id],
+        score: option.total_score,
+        score_percent: 0,
+        max_score_percent: 0,
+        voter_percent: poll.voters_count > 0 ? ((option.voter_count.to_f / poll.voters_count.to_f) * 100) : 0,
+        average: option.average_score,
+        voter_scores: option.voter_scores,
+        voter_ids: option.voter_ids.take(500),
+        voter_count: option.voter_count,
+        color: option.color,
+        test_result: nil
+      }.with_indifferent_access.freeze
+    end
   end
 
   def self.open_poll_if_ready(poll)

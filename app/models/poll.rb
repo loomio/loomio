@@ -277,6 +277,8 @@ class Poll < ApplicationRecord
       end
     when 'ranked_choice'
       %w[chart name rank score_percent score average voter_count]
+    when 'stv'
+      %w[chart name stv_status voter_count]
     when 'dot_vote'
       %w[chart name score_percent score average voter_count]
     when 'score'
@@ -292,6 +294,14 @@ class Poll < ApplicationRecord
 
   def results
     PollService.calculate_results(self, self.poll_options)
+  end
+
+  def stv_results
+    custom_fields['stv_results']
+  end
+
+  def stv_results=(value)
+    custom_fields['stv_results'] = value
   end
 
   def user_id

@@ -248,6 +248,11 @@ en:
       process_introduction_v2: "<p><strong>Rank</strong> reveals the group's order of preference. Participants drag and drop the options to arrange them from most to least preferred, and results show the overall ranking.</p><p><a target=\"_blank\" href=\"https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice\">Read more about Rank</a>.</p>"
       title: Elect directors to governance board
       details: <h3 id="what-is-this-poll-about"><strong>What is this poll about?</strong></h3><p></p><h3 id="why-is-this-important"><strong>Why is this important?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"><strong>What are you asking people to do?</strong></h3><p></p><p>Vote by ranking the options in order of your preference.  The option that ranks first in the results wins.</p>
+    stv:
+      process_subtitle: Elect multiple winners proportionally
+      process_introduction: <p>STV (Single Transferable Vote) is a proportional representation method for multi-winner elections. Voters rank candidates in order of preference. Candidates who reach a vote quota are elected, and surplus or eliminated votes transfer to next preferences.</p><p>Configure the number of seats, counting method (Scottish or Meek), and quota type (Droop or Hare). Results show a round-by-round breakdown of how votes transferred.</p><p><a target="_blank" href="https://help.loomio.com/en/user_manual/polls/stv/index.html">Read more about STV Elections</a>.</p>
+      title: Elect committee members
+      details: <h3 id="what-is-this-election-about"><strong>What is this election about?</strong></h3><p></p><h3 id="how-many-seats"><strong>How many seats are being filled?</strong></h3><p></p><h3 id="who-are-the-candidates"><strong>Who are the candidates?</strong></h3><p></p><p>Vote by dragging candidates into your preferred order. Rank 1 is your most preferred candidate. You may rank as many or as few candidates as you like.</p>
     time_poll:
       process_subtitle: Find the best time for a meeting
       process_subtitle_v2: Find when people are available

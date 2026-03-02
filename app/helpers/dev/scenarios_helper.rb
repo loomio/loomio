@@ -266,6 +266,12 @@ module Dev::ScenariosHelper
       closing_at: 1.day.ago    )
     PollService.create(poll: poll, actor: actor)
     create_fake_stances(poll:poll)
+
+    if poll.poll_type == 'stv'
+      poll.stv_results = StvCountService.count(poll)
+      poll.save!
+    end
+
     outcome    = fake_outcome(poll: poll)
 
     OutcomeService.create(outcome: outcome, actor: actor, params: {recipient_emails: [observer.email]})
@@ -294,6 +300,12 @@ module Dev::ScenariosHelper
       closing_at: 1.day.ago    )
     PollService.create(poll: poll, actor: actor)
     create_fake_stances(poll: poll)
+
+    if poll.poll_type == 'stv'
+      poll.stv_results = StvCountService.count(poll)
+      poll.save!
+    end
+
     outcome    = fake_outcome(poll: poll, author: poll.author, review_on: Date.today)
 
     Events::OutcomeReviewDue.publish!(outcome)
@@ -354,6 +366,21 @@ module Dev::ScenariosHelper
       title: poll.title,
       actor: actor
     }
+  end
+
+  def stv_vote_cast_scenario(params)
+    scenario = poll_created_scenario(params.merge(poll_type: 'stv'))
+    poll = scenario[:poll]
+    voter = scenario[:observer]
+
+    stance = Stance.find_by(poll: poll, participant: voter, latest: true)
+    # Rank only the first 2 candidates, leaving the rest unranked
+    choices = poll.poll_options.first(2).each_with_index.map do |opt, i|
+      { poll_option_id: opt.id, score: i + 1 }
+    end
+    StanceService.update(stance: stance, actor: voter, params: { stance_choices_attributes: choices })
+
+    scenario
   end
 
   def alternative_poll_option_selection(poll_option_ids, i)

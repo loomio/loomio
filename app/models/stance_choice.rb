@@ -16,7 +16,12 @@ class StanceChoice < ApplicationRecord
   }
 
   def rank
-    self.poll.minimum_stance_choices - self.score + 1 if poll.poll_type == 'ranked_choice'
+    case poll.poll_type
+    when 'ranked_choice'
+      self.poll.minimum_stance_choices - self.score + 1
+    when 'stv'
+      self.score
+    end
   end
 
   def rank_or_score

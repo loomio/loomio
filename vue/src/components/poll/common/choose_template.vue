@@ -71,7 +71,7 @@ export default {
           case 'proposal':
             return {pollType: {$in: ['proposal', 'question']}};
           case 'poll':
-            return {pollType: {$in: ['score', 'poll', 'ranked_choice', 'dot_vote', 'meeting', 'count']}};
+            return {pollType: {$in: ['score', 'poll', 'ranked_choice', 'dot_vote', 'meeting', 'count', 'stv']}};
         } })();
 
         this.pollTemplates = Records.pollTemplates.collection.chain().
@@ -166,7 +166,7 @@ export default {
 .poll-common-templates-list
   v-alert.ma-4(v-if="userIsAdmin && !discussion && !hiddenAlert" type="info" variant="tonal" closable @click:close="dismissAlert")
     span(v-t="'poll_common.these_are_templates'")
-    |  
+    |
     span(v-t="'common.templates_admin_hint'")
 
   .d-flex(:class="{'px-4': !discussion}")

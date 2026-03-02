@@ -18,6 +18,7 @@ class PollsController < ApplicationController
         )
       end
       format.csv { send_data @exporter.to_csv, filename: @exporter.file_name }
+      format.blt { send_data @exporter.to_blt, filename: @exporter.blt_file_name }
     end
   end
 
