@@ -292,6 +292,57 @@ class StvCountServiceTest < ActiveSupport::TestCase
     assert_equal 'A', result[:elected].first[:name]
   end
 
+  # ── Tie Detection ─────────────────────────────────────────────────
+
+  test "scottish: tie for elimination that affects outcome is reported" do
+    # 3 candidates, 2 seats, 1 voter ranks only A
+    # A elected, B and C tied at 0 votes for the last seat
+    options = build_options(%w[A B C])
+    ballots = [[1]]  # Only A ranked
+
+    counter = StvCountService::ScottishCounter.new(ballots, 2, 'droop', options)
+    result = counter.count
+
+    assert_equal 1, result[:elected].size
+    assert_equal 'A', result[:elected].first[:name]
+    assert_equal 2, result[:tied].size
+    tied_names = result[:tied].map { |t| t[:name] }.sort
+    assert_equal %w[B C], tied_names
+  end
+
+  test "meek: tie for elimination that affects outcome is reported" do
+    options = build_options(%w[A B C])
+    ballots = [[1]]
+
+    counter = StvCountService::MeekCounter.new(ballots, 2, 'droop', options)
+    result = counter.count
+
+    assert_equal 1, result[:elected].size
+    assert_equal 'A', result[:elected].first[:name]
+    assert_equal 2, result[:tied].size
+    tied_names = result[:tied].map { |t| t[:name] }.sort
+    assert_equal %w[B C], tied_names
+  end
+
+  test "scottish: tie for elimination that does not affect outcome is broken" do
+    # 4 candidates, 1 seat, C and D tied at bottom but 2 candidates must be
+    # eliminated before winner is decided — safe to break the tie
+    options = build_options(%w[A B C D])
+    ballots = []
+    5.times { ballots << [1, 2, 3, 4] }  # A > B > C > D
+    4.times { ballots << [2, 1, 3, 4] }  # B > A > C > D
+    1.times { ballots << [3, 1, 2, 4] }  # C > A > B > D
+
+    # 1 seat, 10 voters, Droop quota = 6
+    # Round 1: A=5, B=4, C=1, D=0. C and D not tied (different counts).
+    # D eliminated. Then C eliminated. A wins.
+    counter = StvCountService::ScottishCounter.new(ballots, 1, 'droop', options)
+    result = counter.count
+
+    assert_equal 1, result[:elected].size
+    assert_equal 0, result[:tied].size
+  end
+
   # ── Integration with StvCountService.count ────────────────────────
 
   test "StvCountService.count dispatches to scottish counter" do

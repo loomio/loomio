@@ -2568,6 +2568,8 @@ en:
     title: Election Results
     elected: Elected
     not_elected: Not elected
+    tied: Tie
+    no_candidates_elected: No candidates elected
     round: Round %{number}
     quota_info: "%{method}, %{quota_type} quota (%{quota} votes needed)"
     method_scottish: Scottish STV
@@ -2576,6 +2578,7 @@ en:
     quota_hare: Hare
     elected_in_round: Elected in round %{round}
     eliminated_in_round: Eliminated in round %{round}
+    tied_in_round: Tied in round %{round}
     votes: votes
     candidate: Candidate
     view_full_results: View full results

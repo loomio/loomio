@@ -32,6 +32,7 @@ module StvCountService
       method: method,
       quota_type: quota_type,
       elected: [],
+      tied: [],
       rounds: []
     }
   end

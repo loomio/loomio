@@ -28,6 +28,7 @@ module StvCountService
       return empty_result if @ballots.empty?
 
       @elected = []
+      @tied = []
       @eliminated_set = Set.new
       @rounds = []
       @continuing = Set.new(@candidate_ids)
@@ -75,11 +76,20 @@ module StvCountService
             @keep[cid] = @keep[cid] * quota / votes if votes > 0
           end
         else
-          # Eliminate candidate with fewest votes; tie-break by lowest id
+          # Eliminate candidate with fewest votes
           continuing_tallies = tallies.select { |cid, _| @continuing.include?(cid) }
           min_votes = continuing_tallies.values.min
-          eliminated_cid = continuing_tallies.select { |_cid, v| v == min_votes }.keys.min
+          tied_cids = continuing_tallies.select { |_cid, v| v == min_votes }.keys
 
+          if tied_cids.size > 1 && @continuing.size - 1 <= (@seats - @elected.size)
+            # Tie affects the outcome: record tie and stop counting
+            @tied = @continuing.map { |cid| { poll_option_id: cid, name: @candidate_names[cid] } }
+            round_data[:tied] = @continuing.to_a
+            @rounds << round_data
+            break
+          end
+
+          eliminated_cid = tied_cids.min
           @eliminated_set.add(eliminated_cid)
           @continuing.delete(eliminated_cid)
           @keep[eliminated_cid] = 0.0
@@ -98,6 +108,7 @@ module StvCountService
         method: 'meek',
         quota_type: @quota_type,
         elected: @elected,
+        tied: @tied,
         rounds: @rounds
       }
     end
@@ -105,7 +116,7 @@ module StvCountService
     private
 
     def empty_result
-      { quota: 0, seats: @seats, method: 'meek', quota_type: @quota_type, elected: [], rounds: [] }
+      { quota: 0, seats: @seats, method: 'meek', quota_type: @quota_type, elected: [], tied: [], rounds: [] }
     end
 
     def elect_candidate(cid, round_data)

@@ -28,6 +28,8 @@ module StvCountService
       @rounds = []
       @continuing = @candidate_ids.dup
 
+      @tied = []
+
       return empty_result if @ballots.empty?
 
       @quota = QuotaCalculator.calculate(@ballots.size, @seats, @quota_type)
@@ -79,10 +81,20 @@ module StvCountService
             end
           end
         else
-          # Eliminate candidate with fewest votes; tie-break by lowest id
+          # Eliminate candidate with fewest votes
           min_votes = tallies.values.min
-          eliminated_cid = tallies.select { |_cid, v| v == min_votes }.keys.min
+          tied_cids = tallies.select { |_cid, v| v == min_votes }.keys
 
+          if tied_cids.size > 1 && @continuing.size - 1 <= (@seats - @elected.size)
+            # Tie affects the outcome: eliminating different candidates could change who wins.
+            # Record the tie and stop counting.
+            @tied = @continuing.map { |cid| { poll_option_id: cid, name: @candidate_names[cid] } }
+            round_data[:tied] = @continuing.to_a
+            @rounds << round_data
+            break
+          end
+
+          eliminated_cid = tied_cids.min
           @eliminated << eliminated_cid
           @continuing.delete(eliminated_cid)
           round_data[:eliminated] << eliminated_cid
@@ -103,6 +115,7 @@ module StvCountService
         method: 'scottish',
         quota_type: @quota_type,
         elected: @elected,
+        tied: @tied,
         rounds: @rounds
       }
     end
@@ -110,7 +123,7 @@ module StvCountService
     private
 
     def empty_result
-      { quota: 0, seats: @seats, method: 'scottish', quota_type: @quota_type, elected: [], rounds: [] }
+      { quota: 0, seats: @seats, method: 'scottish', quota_type: @quota_type, elected: [], tied: [], rounds: [] }
     end
 
     def elect_candidate(cid, round_data)
