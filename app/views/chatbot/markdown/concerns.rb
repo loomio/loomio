@@ -190,14 +190,33 @@ module Views::Chatbot::Markdown::Concerns
     quota_val = stv['quota']
     quota_str = stv_format_number(quota_val)
 
+    rounds = stv['rounds'] || []
+
     # Winners table
     if elected.any?
       md "**#{t('poll_stv_results.elected')}**\n"
       winners = Terminal::Table.new do |tbl|
         tbl.style = { border: :unicode }
-        tbl.headings = [t('poll_stv_results.candidate'), t('poll_stv_results.round', number: '').strip]
+        tbl.headings = [
+          t('poll_stv_results.candidate'),
+          { value: t('poll_stv_results.round_elected'), alignment: :right },
+          { value: t('poll_stv_results.first_preferences'), alignment: :right },
+          { value: t('poll_stv_results.final_tally'), alignment: :right },
+          { value: t('poll_stv_results.quota_surplus'), alignment: :right }
+        ]
         elected.each do |e|
-          tbl << [e['name'], { value: e['round_elected'], alignment: :right }]
+          cid = e['poll_option_id'].to_s
+          first_pref = rounds.any? ? rounds[0]['tallies']&.dig(cid) : nil
+          elected_round = rounds.find { |r| r['round'] == e['round_elected'] }
+          final_tally = elected_round ? elected_round['tallies']&.dig(cid) : nil
+          surplus = final_tally && quota_val ? final_tally - quota_val : nil
+          tbl << [
+            e['name'],
+            { value: e['round_elected'], alignment: :right },
+            { value: first_pref ? stv_format_number(first_pref) : '-', alignment: :right },
+            { value: final_tally ? stv_format_number(final_tally) : '-', alignment: :right },
+            { value: surplus ? stv_format_number(surplus) : '-', alignment: :right }
+          ]
         end
       end
       md "```\n#{winners}\n```\n"
@@ -208,16 +227,23 @@ module Views::Chatbot::Markdown::Concerns
       md "**#{t('poll_stv_results.tied')}**\n"
       tied_table = Terminal::Table.new do |tbl|
         tbl.style = { border: :unicode }
-        tbl.headings = [t('poll_stv_results.candidate')]
+        tbl.headings = [
+          t('poll_stv_results.candidate'),
+          { value: t('poll_stv_results.first_preferences'), alignment: :right }
+        ]
         tied.each do |e|
-          tbl << [e['name']]
+          cid = e['poll_option_id'].to_s
+          first_pref = rounds.any? ? rounds[0]['tallies']&.dig(cid) : nil
+          tbl << [
+            e['name'],
+            { value: first_pref ? stv_format_number(first_pref) : '-', alignment: :right }
+          ]
         end
       end
       md "```\n#{tied_table}\n```\n"
     end
 
     # Round-by-round table (candidates as rows, rounds as columns)
-    rounds = stv['rounds'] || []
     candidates = poll.poll_options
     if rounds.any?
       elected_so_far = []

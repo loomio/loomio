@@ -15,19 +15,40 @@ export default {
       return this.stvResults.rounds && this.stvResults.rounds.length > 0;
     },
 
+    quota() {
+      return this.stvResults.quota;
+    },
+
     elected() {
-      return (this.stvResults.elected || []).map(e => ({
-        ...e,
-        name: e.name,
-        roundElected: e.round_elected
-      }));
+      const rounds = this.rounds;
+      const quota = this.quota;
+      return (this.stvResults.elected || []).map(e => {
+        const cid = e.poll_option_id.toString();
+        const firstPref = rounds.length ? (rounds[0].tallies || {})[cid] : null;
+        const electedRound = rounds.find(r => r.round === e.round_elected);
+        const finalTally = electedRound ? (electedRound.tallies || {})[cid] : null;
+        return {
+          ...e,
+          name: e.name,
+          roundElected: e.round_elected,
+          firstPreferences: this.formatNumber(firstPref),
+          finalTally: this.formatNumber(finalTally),
+          surplus: finalTally != null && quota != null ? this.formatNumber(finalTally - quota) : '-'
+        };
+      });
     },
 
     tied() {
-      return (this.stvResults.tied || []).map(e => ({
-        ...e,
-        name: e.name
-      }));
+      const rounds = this.rounds;
+      return (this.stvResults.tied || []).map(e => {
+        const cid = e.poll_option_id.toString();
+        const firstPref = rounds.length ? (rounds[0].tallies || {})[cid] : null;
+        return {
+          ...e,
+          name: e.name,
+          firstPreferences: this.formatNumber(firstPref)
+        };
+      });
     },
 
     rounds() {
@@ -100,14 +121,17 @@ export default {
   },
 
   methods: {
+    formatNumber(val) {
+      if (val === undefined || val === null) return '-';
+      return Math.round(val * 100) / 100;
+    },
+
     candidateName(id) {
       return this.candidateNames[id.toString()] || `#${id}`;
     },
 
     tallyForRound(round, candidateId) {
-      const val = (round.tallies || {})[candidateId.toString()];
-      if (val === undefined || val === null) return '-';
-      return Math.round(val * 100) / 100;
+      return this.formatNumber((round.tallies || {})[candidateId.toString()]);
     },
 
     cellClass(round, candidateId) {
@@ -149,58 +173,74 @@ export default {
 
     //- Winners summary
     h3.text-subtitle-1.mb-2(v-t="'poll_stv_results.elected'")
-    v-chip.mr-2.mb-2(
-      v-for="winner in elected"
-      :key="winner.poll_option_id"
-      color="success"
-      variant="tonal"
-    )
-      v-icon.mr-1(icon="mdi-check-circle" size="small")
-      | {{ winner.name }}
+    v-table.mb-4(density="compact" v-if="elected.length")
+      thead
+        tr
+          th {{ $t('poll_stv_results.candidate') }}
+          th.text-right {{ $t('poll_stv_results.round_elected') }}
+          th.text-right {{ $t('poll_stv_results.first_preferences') }}
+          th.text-right {{ $t('poll_stv_results.final_tally') }}
+          th.text-right {{ $t('poll_stv_results.quota_surplus') }}
+      tbody
+        tr(v-for="winner in elected" :key="winner.poll_option_id")
+          td
+            v-icon.mr-1(icon="mdi-check-circle" size="small" color="success")
+            | {{ winner.name }}
+          td.text-right {{ winner.roundElected }}
+          td.text-right {{ winner.firstPreferences }}
+          td.text-right {{ winner.finalTally }}
+          td.text-right {{ winner.surplus }}
     span.text-medium-emphasis(v-if="!elected.length") {{ $t('poll_stv_results.no_candidates_elected') }}
 
     //- Tied candidates summary
     template(v-if="tied.length")
       h3.text-subtitle-1.mb-2.mt-4(v-t="'poll_stv_results.tied'")
-      v-chip.mr-2.mb-2(
-        v-for="candidate in tied"
-        :key="candidate.poll_option_id"
-        color="warning"
-        variant="tonal"
-      )
-        v-icon.mr-1(icon="mdi-approximately-equal" size="small")
-        | {{ candidate.name }}
+      v-table.mb-4(density="compact")
+        thead
+          tr
+            th {{ $t('poll_stv_results.candidate') }}
+            th.text-right {{ $t('poll_stv_results.first_preferences') }}
+        tbody
+          tr(v-for="candidate in tied" :key="candidate.poll_option_id")
+            td
+              v-icon.mr-1(icon="mdi-approximately-equal" size="small" color="warning")
+              | {{ candidate.name }}
+            td.text-right {{ candidate.firstPreferences }}
 
-    //- Round-by-round table (candidates as rows, rounds as columns)
-    v-table.mt-4(density="compact")
-      thead
-        tr
-          th {{ $t('poll_stv_results.candidate') }}
-          th.text-center(v-for="round in rounds" :key="round.round")
-            | {{ $t('poll_stv_results.round', { number: round.round }) }}
-      tbody
-        tr(v-for="cid in candidates" :key="cid")
-          td
-            .d-flex.align-center
-              span {{ candidateName(cid) }}
-              v-chip.ml-2(
-                v-if="electedIds.has(cid)"
-                color="success"
-                size="x-small"
-                variant="flat"
-              ) {{ $t('poll_stv_results.elected') }}
-              v-chip.ml-2(
-                v-else-if="tiedIds.has(cid)"
-                color="warning"
-                size="x-small"
-                variant="flat"
-              ) {{ $t('poll_stv_results.tied') }}
-          td.text-center(
-            v-for="round in rounds"
-            :key="round.round"
-            :class="cellClass(round, cid)"
-          )
-            | {{ tallyForRound(round, cid) }}
+    //- Round-by-round details (expandable)
+    v-expansion-panels.mt-2(variant="accordion")
+      v-expansion-panel
+        v-expansion-panel-title {{ $t('poll_stv_results.round_details') }}
+        v-expansion-panel-text
+          v-table(density="compact")
+            thead
+              tr
+                th {{ $t('poll_stv_results.candidate') }}
+                th.text-center(v-for="round in rounds" :key="round.round")
+                  | {{ $t('poll_stv_results.round', { number: round.round }) }}
+            tbody
+              tr(v-for="cid in candidates" :key="cid")
+                td
+                  .d-flex.align-center
+                    span {{ candidateName(cid) }}
+                    v-chip.ml-2(
+                      v-if="electedIds.has(cid)"
+                      color="success"
+                      size="x-small"
+                      variant="flat"
+                    ) {{ $t('poll_stv_results.elected') }}
+                    v-chip.ml-2(
+                      v-else-if="tiedIds.has(cid)"
+                      color="warning"
+                      size="x-small"
+                      variant="flat"
+                    ) {{ $t('poll_stv_results.tied') }}
+                td.text-center(
+                  v-for="round in rounds"
+                  :key="round.round"
+                  :class="cellClass(round, cid)"
+                )
+                  | {{ tallyForRound(round, cid) }}
 </template>
 
 <style lang="sass">

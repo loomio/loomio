@@ -20,17 +20,32 @@ class Views::EventMailer::Poll::Results::Stv < Views::ApplicationMailer::Compone
 
     # Winners
     elected = stv['elected'] || []
+    rounds = stv['rounds'] || []
+    quota_val = stv['quota']
     if elected.any?
       h4 { plain t('poll_stv_results.elected') }
-      table(cellspacing: 0, style: "margin-bottom: 16px") do
+      hdr_style = "padding: 4px 8px; border-bottom: 2px solid #ccc"
+      cell_style = "padding: 4px 8px; border-bottom: 1px solid #eee"
+      table(cellspacing: 0, style: "border-collapse: collapse; margin-bottom: 16px") do
+        tr do
+          th(style: "#{hdr_style}; text-align: left") { plain t('poll_stv_results.candidate') }
+          th(style: "#{hdr_style}; text-align: right") { plain t('poll_stv_results.round_elected') }
+          th(style: "#{hdr_style}; text-align: right") { plain t('poll_stv_results.first_preferences') }
+          th(style: "#{hdr_style}; text-align: right") { plain t('poll_stv_results.final_tally') }
+          th(style: "#{hdr_style}; text-align: right") { plain t('poll_stv_results.quota_surplus') }
+        end
         elected.each do |e|
+          cid = e['poll_option_id'].to_s
+          first_pref = rounds.any? ? rounds[0]['tallies']&.dig(cid) : nil
+          elected_round = rounds.find { |r| r['round'] == e['round_elected'] }
+          final_tally = elected_round ? elected_round['tallies']&.dig(cid) : nil
+          surplus = final_tally && quota_val ? final_tally - quota_val : nil
           tr do
-            td(style: "padding: 4px 8px; color: green; font-weight: bold") do
-              plain e['name']
-            end
-            td(style: "padding: 4px 8px; color: #666") do
-              plain t('poll_stv_results.elected_in_round', round: e['round_elected'])
-            end
+            td(style: "#{cell_style}; color: green; font-weight: bold") { plain e['name'] }
+            td(style: "#{cell_style}; text-align: right") { plain e['round_elected'].to_s }
+            td(style: "#{cell_style}; text-align: right") { plain first_pref ? format_tally(first_pref) : '-' }
+            td(style: "#{cell_style}; text-align: right") { plain final_tally ? format_tally(final_tally) : '-' }
+            td(style: "#{cell_style}; text-align: right") { plain surplus ? format_tally(surplus) : '-' }
           end
         end
       end
@@ -40,19 +55,25 @@ class Views::EventMailer::Poll::Results::Stv < Views::ApplicationMailer::Compone
     tied = stv['tied'] || []
     if tied.any?
       h4 { plain t('poll_stv_results.tied') }
-      table(cellspacing: 0, style: "margin-bottom: 16px") do
+      hdr_style = "padding: 4px 8px; border-bottom: 2px solid #ccc"
+      cell_style = "padding: 4px 8px; border-bottom: 1px solid #eee"
+      table(cellspacing: 0, style: "border-collapse: collapse; margin-bottom: 16px") do
+        tr do
+          th(style: "#{hdr_style}; text-align: left") { plain t('poll_stv_results.candidate') }
+          th(style: "#{hdr_style}; text-align: right") { plain t('poll_stv_results.first_preferences') }
+        end
         tied.each do |e|
+          cid = e['poll_option_id'].to_s
+          first_pref = rounds.any? ? rounds[0]['tallies']&.dig(cid) : nil
           tr do
-            td(style: "padding: 4px 8px; color: #e65100; font-weight: bold") do
-              plain e['name']
-            end
+            td(style: "#{cell_style}; color: #e65100; font-weight: bold") { plain e['name'] }
+            td(style: "#{cell_style}; text-align: right") { plain first_pref ? format_tally(first_pref) : '-' }
           end
         end
       end
     end
 
     # Round-by-round table
-    rounds = stv['rounds'] || []
     candidates = @poll.poll_options
     return unless rounds.any?
 

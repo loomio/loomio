@@ -2581,6 +2581,11 @@ en:
     tied_in_round: Tied in round %{round}
     votes: votes
     candidate: Candidate
+    round_elected: Round elected
+    first_preferences: First preferences
+    final_tally: Final tally
+    quota_surplus: Surplus
+    round_details: Round-by-round details
     view_full_results: View full results
     results_available_when_closed: Results will be available when voting closes
   thread_item:

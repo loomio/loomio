@@ -12,6 +12,8 @@ class Views::Chatbot::Matrix::Stv < Views::Chatbot::Base
 
     elected = stv['elected'] || []
     tied = stv['tied'] || []
+    rounds = stv['rounds'] || []
+    quota_val = stv['quota']
 
     # Winners table
     if elected.any?
@@ -20,14 +22,25 @@ class Views::Chatbot::Matrix::Stv < Views::Chatbot::Base
         thead do
           tr do
             th { t('poll_stv_results.candidate') }
-            th { t('poll_stv_results.round', number: '').strip }
+            th { t('poll_stv_results.round_elected') }
+            th { t('poll_stv_results.first_preferences') }
+            th { t('poll_stv_results.final_tally') }
+            th { t('poll_stv_results.quota_surplus') }
           end
         end
         tbody do
           elected.each do |e|
+            cid = e['poll_option_id'].to_s
+            first_pref = rounds.any? ? rounds[0]['tallies']&.dig(cid) : nil
+            elected_round = rounds.find { |r| r['round'] == e['round_elected'] }
+            final_tally = elected_round ? elected_round['tallies']&.dig(cid) : nil
+            surplus = final_tally && quota_val ? final_tally - quota_val : nil
             tr do
               td { strong { e['name'] } }
               td { e['round_elected'].to_s }
+              td { first_pref ? format_number(first_pref) : '-' }
+              td { final_tally ? format_number(final_tally) : '-' }
+              td { surplus ? format_number(surplus) : '-' }
             end
           end
         end
@@ -38,10 +51,19 @@ class Views::Chatbot::Matrix::Stv < Views::Chatbot::Base
     if tied.any?
       h5 { t('poll_stv_results.tied') }
       table do
+        thead do
+          tr do
+            th { t('poll_stv_results.candidate') }
+            th { t('poll_stv_results.first_preferences') }
+          end
+        end
         tbody do
           tied.each do |e|
+            cid = e['poll_option_id'].to_s
+            first_pref = rounds.any? ? rounds[0]['tallies']&.dig(cid) : nil
             tr do
               td { strong { e['name'] } }
+              td { first_pref ? format_number(first_pref) : '-' }
             end
           end
         end
@@ -49,7 +71,6 @@ class Views::Chatbot::Matrix::Stv < Views::Chatbot::Base
     end
 
     # Round-by-round table (candidates as rows, rounds as columns)
-    rounds = stv['rounds'] || []
     candidates = @poll.poll_options
     if rounds.any?
       elected_so_far = []
