@@ -246,7 +246,6 @@ Rails.application.routes.draw do
           delete :discard
           post :close
           post :reopen
-          patch :add_to_thread
           get :voters
         end
         get :closed, on: :collection

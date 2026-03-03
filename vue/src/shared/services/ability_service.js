@@ -349,10 +349,6 @@ export default new class AbilityService {
     return !poll.discardedAt && poll.membersInclude(Session.user()) && (poll.closedAt || (poll.hideResults !== "until_closed"));
   }
 
-  canAddPollToThread(poll) {
-    return !poll.discardedAt && !poll.discussionId && poll.adminsInclude(Session.user());
-  }
-
   canSetPollOutcome(poll) {
     const discussion = poll.discussionId ? poll.discussion() : null;
     return (!discussion || !discussion.closedAt) &&

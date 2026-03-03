@@ -104,21 +104,6 @@ export default new class PollService {
         to() { return `/p/new?template_id=${poll.id}`; }
       },
 
-      add_poll_to_thread: {
-        menu: true,
-        name: 'action_dock.add_poll_to_thread',
-        icon: 'mdi-comment-plus-outline',
-        canPerform() { return AbilityService.canAddPollToThread(poll); },
-        perform() {
-          return openModal({
-            component: 'AddPollToThreadModal',
-            props: {
-              poll
-            }
-          });
-        }
-      },
-
       announce_poll: {
         icon: 'mdi-account-multiple-plus',
         name: 'poll_common_form.add_voters',

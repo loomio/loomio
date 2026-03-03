@@ -327,34 +327,6 @@ class PollService
   #   EventBus.broadcast('poll_destroy', poll, actor)
   # end
 
-  def self.add_to_thread(poll:, params:, actor:)
-    discussion = Discussion.find(params[:discussion_id])
-    actor.ability.authorize! :update, poll
-    actor.ability.authorize! :update, discussion
-    ActiveRecord::Base.transaction do
-      old_topic = poll.topic if poll.topic&.topicable_type == 'Poll'
-      poll.update(topic_id: discussion.topic_id)
-      old_topic&.destroy
-      event = poll.created_event
-      event.topic_id = discussion.topic.id
-      event.parent_id = discussion.created_event.id
-      event.pinned = true
-      event.set_sequences
-      event.save
-      discussion.update_sequence_info!
-    end
-
-    if (poll.closed? || poll.hide_results != 'until_closed')
-      stance_ids = poll.stances.latest.reject(&:body_is_blank?).map(&:id)
-      Event.where(kind: 'stance_created', eventable_id: stance_ids).update_all(topic_id: discussion.topic.id)
-      TopicService.repair_thread(discussion.topic_id)
-    end
-
-    GenericWorker.perform_async('SearchService', 'reindex_by_discussion_id', discussion.id)
-
-    poll.created_event
-  end
-
   def self.calculate_results(poll, poll_options)
     sorted_poll_options = case poll.order_results_by
     when 'priority'

@@ -17,7 +17,6 @@ export default class PollModel extends BaseModel {
     super(...args);
     this.close = this.close.bind(this);
     this.reopen = this.reopen.bind(this);
-    this.addToThread = this.addToThread.bind(this);
     this.addOption = this.addOption.bind(this);
     this.poll = this.poll.bind(this);
   }
@@ -371,12 +370,6 @@ export default class PollModel extends BaseModel {
   reopen() {
     this.processing = true;
     return Records.polls.remote.postMember(this.key, 'reopen', {poll: {closing_at: this.closingAt, opening_at: this.openingAt}})
-    .finally(() => { return this.processing = false; });
-  }
-
-  addToThread(discussionId) {
-    this.processing = true;
-    return Records.polls.remote.patchMember(this.keyOrId(), 'add_to_thread', { discussion_id: discussionId })
     .finally(() => { return this.processing = false; });
   }
 

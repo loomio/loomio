@@ -187,6 +187,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('polls/test_poll_scenario?scenario=poll_closed&poll_type=proposal')
+    page.execute("document.querySelector('.poll-common-set-outcome-panel__submit').scrollIntoView({block: 'center'})")
     page.click('.poll-common-set-outcome-panel__submit')
 
     page.fillIn('.poll-common-outcome-form__statement .lmo-textarea div[contenteditable=true]', 'This is an outcome')
@@ -281,6 +282,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('polls/test_poll_scenario?poll_type=proposal&scenario=poll_closing_soon_with_vote')
+    page.execute("document.querySelector('.action-menu--btn').scrollIntoView({block: 'center'})")
     page.click('.action-menu--btn')
     page.click('.action-dock__button--uncast_stance')
     page.expectText('.confirm-modal', 'Remove your vote?')
@@ -292,6 +294,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('polls/test_poll_scenario?scenario=poll_closed&poll_type=meeting')
+    page.execute("document.querySelector('.poll-common-set-outcome-panel__submit').scrollIntoView({block: 'center'})")
     page.click('.poll-common-set-outcome-panel__submit')
 
     page.fillIn('.poll-common-outcome-form__statement .lmo-textarea div[contenteditable=true]', 'Here is a statement')
@@ -302,19 +305,6 @@ module.exports = {
     page.expectFlash('Outcome created')
     // page.click('.dismiss-modal-button')
     // page.expectText('.poll-common-outcome-panel .lmo-markdown-wrapper', 'Here is a statement')
-  },
-
-  'can_add_standalone_poll_to_thread': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('polls/test_poll_scenario?poll_type=proposal&scenario=poll_created&standalone=1&admin=1')
-    page.click('.action-menu')
-    page.click('.action-dock__button--add_poll_to_thread')
-    page.fillIn('.add-to-thread-modal__search input', "Some")
-    page.pause(1000)
-    page.click('.v-autocomplete__content .v-list-item__content')
-    page.click('.add-to-thread-modal__submit')
-    page.expectFlash("Success, proposal added to thread!")
   },
 
   'can_invite_non_member_to_anonymous_proposal_in_a_group': (test) => {

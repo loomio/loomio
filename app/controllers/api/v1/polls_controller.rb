@@ -69,11 +69,6 @@ class Api::V1::PollsController < Api::V1::RestfulController
     respond_with_resource
   end
 
-  def add_to_thread
-    @event = service.add_to_thread(poll: load_resource, params: params, actor: current_user)
-    respond_with_resource
-  end
-
   def voters
     load_and_authorize(:poll)
     if !@poll.anonymous

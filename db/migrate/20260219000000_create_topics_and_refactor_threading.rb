@@ -67,7 +67,8 @@ class CreateTopicsAndRefactorThreading < ActiveRecord::Migration[7.0]
 
     # 6. Rename discussion_readers to topic_readers, rename discussion_id to topic_id
     execute "ALTER TABLE discussion_readers RENAME TO topic_readers"
-    execute "ALTER INDEX motion_read_logs_pkey RENAME TO topic_readers_pkey"
+    execute "ALTER INDEX IF EXISTS motion_read_logs_pkey RENAME TO topic_readers_pkey"
+    execute "ALTER INDEX IF EXISTS discussion_readers_pkey RENAME TO topic_readers_pkey"
     execute "ALTER SEQUENCE discussion_readers_id_seq RENAME TO topic_readers_id_seq"
     remove_index :topic_readers, name: "index_discussion_readers_discussion_id"
     execute 'DROP INDEX IF EXISTS "index_discussion_readers_on_user_id_and_discussion_id"'
