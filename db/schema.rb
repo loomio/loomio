@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_02_27_000000) do
-  create_schema "pghero"
-
+ActiveRecord::Schema[8.0].define(version: 2026_03_03_000000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -63,14 +61,12 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_27_000000) do
     t.string "checksum"
     t.datetime "created_at", precision: nil, null: false
     t.string "service_name", null: false
-    t.index ["id"], name: "active_storage_blobs_idx", unique: true
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
   create_table "active_storage_variant_records", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
-    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
   create_table "attachments", id: :serial, force: :cascade do |t|
@@ -437,7 +433,6 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_27_000000) do
     t.string "request_to_join_prompt"
     t.integer "delegates_count", default: 0, null: false
     t.string "category"
-    t.boolean "can_start_polls_without_discussion", default: true, null: false
     t.boolean "members_can_create_templates", default: false, null: false
     t.index ["archived_at"], name: "index_groups_on_archived_at", where: "(archived_at IS NULL)"
     t.index ["created_at"], name: "index_groups_on_created_at"
@@ -1037,10 +1032,10 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_27_000000) do
     t.datetime "last_seen_at", precision: nil
     t.datetime "legal_accepted_at", precision: nil
     t.boolean "email_newsletter", default: false, null: false
+    t.string "short_bio_format", limit: 10, default: "md", null: false
     t.integer "failed_attempts", default: 0, null: false
     t.string "unlock_token"
     t.datetime "locked_at", precision: nil
-    t.string "short_bio_format", limit: 10, default: "md", null: false
     t.jsonb "attachments", default: [], null: false
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
@@ -1050,8 +1045,8 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_27_000000) do
     t.jsonb "link_previews", default: [], null: false
     t.integer "email_catch_up_day"
     t.string "date_time_pref"
-    t.string "api_key"
     t.integer "deactivator_id"
+    t.string "api_key"
     t.boolean "autodetect_time_zone", default: true, null: false
     t.string "email_sha256"
     t.integer "complaints_count", default: 0, null: false
