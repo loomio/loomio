@@ -39,7 +39,7 @@ class CreateTopicsAndRefactorThreading < ActiveRecord::Migration[7.0]
 
     # Set the sequence past the max discussion id so standalone poll topics get fresh ids
     execute <<~SQL
-      SELECT setval('topics_id_seq', (SELECT COALESCE(MAX(id), 0) FROM discussions))
+      SELECT setval('topics_id_seq', (SELECT COALESCE(MAX(id), 1) FROM discussions))
     SQL
 
     # 3. Create topics for standalone polls (no discussion_id)
