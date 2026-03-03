@@ -15,14 +15,6 @@ module Null::Group
     false
   end
 
-  def new_threads_max_depth
-    2
-  end
-
-  def new_threads_newest_first
-    false
-  end
-
   def full_name
     I18n.t('discussion.direct')
   end

@@ -39,8 +39,6 @@ class GroupSerializer < ApplicationSerializer
              :archived_at,
              :attachments,
              :link_previews,
-             :new_threads_max_depth,
-             :new_threads_newest_first,
              :has_custom_cover_photo,
              :cover_url,
              :open_discussions_count,

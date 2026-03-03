@@ -4,6 +4,7 @@ import { useRouter, useRoute } from 'vue-router';
 import Session from '@/shared/services/session';
 import AbilityService from '@/shared/services/ability_service';
 import DiscussionService from '@/shared/services/discussion_service';
+import TopicService from '@/shared/services/topic_service';
 import { compact } from 'lodash-es';
 import AppConfig from '@/shared/services/app_config';
 import Records from '@/shared/services/records';
@@ -87,7 +88,7 @@ const submit = () => {
 };
 
 const openEditLayout = () => {
-  return DiscussionService.actions(props.discussion, null)['edit_arrangement'].perform();
+  return TopicService.actions(props.discussion.topic())['edit_arrangement'].perform();
 };
 
 // Computed

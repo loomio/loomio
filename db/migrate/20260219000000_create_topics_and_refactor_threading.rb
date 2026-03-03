@@ -7,7 +7,7 @@ class CreateTopicsAndRefactorThreading < ActiveRecord::Migration[7.0]
       t.integer :group_id
       t.integer :items_count,    default: 0, null: false
       t.string  :ranges_string
-      t.integer :max_depth,      default: 2, null: false
+      t.integer :max_depth,      default: 3, null: false
       t.boolean :newest_first,   default: false, null: false
       t.boolean :private,        default: true, null: false
       t.datetime :closed_at, precision: nil

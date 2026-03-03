@@ -153,8 +153,6 @@ class RecordCloner
       members_can_start_discussions
       members_can_create_subgroups
       members_can_announce
-      new_threads_max_depth
-      new_threads_newest_first
       admins_can_edit_user_content
       members_can_add_guests
       members_can_delete_comments

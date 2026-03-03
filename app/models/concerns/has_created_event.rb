@@ -3,6 +3,10 @@ module HasCreatedEvent
     events.find_by(kind: created_event_kind)
   end
 
+  def topic_event
+    events.where.not(topic_id: nil).order(id: :desc).first
+  end
+
   def created_event_kind
     :"#{self.class.name.downcase}_created"
   end

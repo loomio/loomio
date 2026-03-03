@@ -28,7 +28,7 @@ export default class TopicModel extends BaseModel {
       itemsCount: 0,
       ranges: [],
       readRanges: [],
-      maxDepth: 2,
+      maxDepth: 3,
       newestFirst: false,
       lastActivityAt: null,
       topicableId: null,
@@ -56,8 +56,6 @@ export default class TopicModel extends BaseModel {
     return this.topicableType === 'Discussion' ? Records.discussions.find(this.topicableId) : null
   }
 
-  get title() { return this.topicable().title; }
-  get key() { return this.topicable().key; }
   get tags() { return this.topicable().tags || []; }
   author() { return this.topicable().author(); }
 

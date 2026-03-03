@@ -185,7 +185,7 @@ export default new class TopicService {
       const previousVolume = topic.volume();
       return topic.saveVolume('mute').then(() => {
         return Flash.success("discussion.volume.mute_message",
-          {name: topic.title}
+          {name: topic.topicable().title}
         , 'undo', () => this.unmute(topic, previousVolume));
       });
     }
@@ -195,7 +195,7 @@ export default new class TopicService {
     if (previousVolume == null) { previousVolume = 'normal'; }
     return topic.saveVolume(previousVolume).then(() => {
       return Flash.success("discussion.volume.unmute_message",
-        {name: topic.title}
+        {name: topic.topicable().title}
       , 'undo', () => this.mute(topic));
     });
   }
