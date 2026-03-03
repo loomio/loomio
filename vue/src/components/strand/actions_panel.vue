@@ -86,29 +86,34 @@ section.actions-panel#add-comment(:key="topic.id" :class="{'mt-2 px-2 px-sm-4': 
       time-ago(:date='topic.closedAt')
   template(v-if="canAddComment")
     v-divider(aria-hidden="true")
-    v-tabs.activity-panel__actions.mb-3(grow color="primary" v-model="currentAction")
-      v-tab(value='add-comment')
-        span(v-t="'comment_form.add_a_comment'")
-      v-tab.activity-panel__add-poll(value='add-poll' v-if="canStartPoll")
-        span(v-t="'discussion_context.start_a_vote'")
-    v-window(v-model="currentAction")
-      v-window-item(value="add-comment")
-        .add-comment-panel
-          comment-form(
-            :comment="newComment"
-            @comment-submitted="resetComment")
-      v-window-item(value="add-poll" v-if="canStartPoll")
-        .poll-common-start-form
-          poll-common-form(
-            v-if="poll"
-            :poll="poll"
-            @setPoll="setPoll"
-            @saveSuccess="resetPoll")
-          poll-common-choose-template-wrapper(
-            v-if="!poll"
-            @setPoll="setPoll"
-            :topic="topic"
-          )
+    .add-comment-panel.mt-4(v-if="!canStartPoll")
+      comment-form(
+        :comment="newComment"
+        @comment-submitted="resetComment")
+    template(v-else)
+      v-tabs.activity-panel__actions.mb-3(grow color="primary" v-model="currentAction")
+        v-tab(value='add-comment')
+          span(v-t="'comment_form.add_a_comment'")
+        v-tab.activity-panel__add-poll(value='add-poll')
+          span(v-t="'discussion_context.start_a_vote'")
+      v-window(v-model="currentAction")
+        v-window-item(value="add-comment")
+          .add-comment-panel
+            comment-form(
+              :comment="newComment"
+              @comment-submitted="resetComment")
+        v-window-item(value="add-poll")
+          .poll-common-start-form
+            poll-common-form(
+              v-if="poll"
+              :poll="poll"
+              @setPoll="setPoll"
+              @saveSuccess="resetPoll")
+            poll-common-choose-template-wrapper(
+              v-if="!poll"
+              @setPoll="setPoll"
+              :topic="topic"
+            )
   template(v-if="!topic.closedAt && !canAddComment")
     .add-comment-panel__join-actions.mb-2
       join-group-button(

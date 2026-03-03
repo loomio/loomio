@@ -39,6 +39,7 @@ class PollService
       EventBus.broadcast('poll_create', poll, actor)
       event = Events::PollCreated.publish!(poll, actor)
       announce_poll_opened(poll) if poll.opened_at && poll.notify_on_open
+      publish_topic_if_active(poll) if poll.opened_at
       poll
     end
   end
@@ -217,6 +218,7 @@ class PollService
       do_closing_work(poll: poll)
       Events::PollClosedByUser.publish!(poll, actor)
     end
+    publish_topic_if_active(poll)
   end
 
   def self.reopen(poll:, params:, actor:)
@@ -232,6 +234,7 @@ class PollService
       Events::PollReopened.publish!(poll, actor)
       announce_poll_opened(poll) if poll.notify_on_open
     end
+    publish_topic_if_active(poll)
   end
 
   def self.publish_closing_soon
@@ -436,6 +439,16 @@ class PollService
 
     poll.update_column(:opened_at, Time.now)
     announce_poll_opened(poll) if poll.notify_on_open
+    publish_topic_if_active(poll)
+  end
+
+  def self.publish_topic_if_active(poll)
+    topic = poll.topic
+    topic.update_active_polls_count
+    MessageChannelService.publish_models([topic], group_id: topic.group_id) if topic.group_id
+    topic.guests.find_each do |user|
+      MessageChannelService.publish_models([topic], user_id: user.id)
+    end
   end
 
   def self.announce_poll_opened(poll)

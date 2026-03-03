@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_03_03_000001) do
+ActiveRecord::Schema[8.0].define(version: 2026_03_04_000000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -240,6 +240,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_03_03_000001) do
     t.boolean "public", default: false, null: false
     t.string "recipient_audience"
     t.boolean "default_to_direct_discussion", default: false, null: false
+    t.boolean "allow_concurrent_polls", default: false, null: false
     t.index ["discarded_at"], name: "index_discussion_templates_on_discarded_at"
   end
 
@@ -950,7 +951,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_03_03_000001) do
     t.integer "group_id"
     t.integer "items_count", default: 0, null: false
     t.string "ranges_string"
-    t.integer "max_depth", default: 2, null: false
+    t.integer "max_depth", default: 3, null: false
     t.boolean "newest_first", default: false, null: false
     t.boolean "private", default: true, null: false
     t.datetime "closed_at", precision: nil
@@ -963,6 +964,8 @@ ActiveRecord::Schema[8.0].define(version: 2026_03_03_000001) do
     t.integer "anonymous_polls_count", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "allow_concurrent_polls", default: false, null: false
+    t.integer "active_polls_count", default: 0, null: false
     t.index ["group_id"], name: "index_topics_on_group_id"
     t.index ["topicable_type", "topicable_id"], name: "index_topics_on_topicable_type_and_topicable_id", unique: true
   end

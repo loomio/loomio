@@ -4,7 +4,7 @@ module HasCreatedEvent
   end
 
   def topic_event
-    events.where.not(topic_id: nil).order(id: :desc).first
+    events.where.not(topic_id: nil).first
   end
 
   def created_event_kind

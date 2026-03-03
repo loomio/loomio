@@ -32,9 +32,10 @@ module Ability::Poll
       group = topic.group
       !group.archived_at &&
       !topic.closed_at &&
+      (topic.allow_concurrent_polls || topic.active_polls_count == 0) &&
       (poll.poll_template_id.nil? || poll.poll_template.public? || user.group_ids.include?(poll.poll_template.group_id)) &&
-      (group.admins_include?(user) || (group.members_can_raise_motions && group.members_include?(user))) ||
-      (topic.admins_include?(user) || (topic.members_can_raise_motions && topic.members_include?(user)))
+      (group.admins_include?(user) || (group.members_can_raise_motions && group.members_include?(user)) ||
+       topic.admins_include?(user) || (topic.members_can_raise_motions && topic.members_include?(user)))
     end
 
     can [ :announce ], ::Poll do |poll|

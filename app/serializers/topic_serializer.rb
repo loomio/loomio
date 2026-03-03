@@ -6,6 +6,8 @@ class TopicSerializer < ApplicationSerializer
              :ranges,
              :max_depth,
              :newest_first,
+             :allow_concurrent_polls,
+             :active_polls_count,
              :last_activity_at,
              :closed_at,
              :closer_id,

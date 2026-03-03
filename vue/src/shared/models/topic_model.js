@@ -30,6 +30,8 @@ export default class TopicModel extends BaseModel {
       readRanges: [],
       maxDepth: 3,
       newestFirst: false,
+      allowConcurrentPolls: false,
+      activePollsCount: 0,
       lastActivityAt: null,
       topicableId: null,
       topicableType: null,

@@ -172,8 +172,9 @@ class Ability::PollTest < ActiveSupport::TestCase
     guest = users(:alien)
     group = groups(:group)
     group.update_columns(members_can_raise_motions: true)
-    poll = PollService.create(params: poll_params(group_id: group.id), actor: users(:admin))
-    poll.topic.add_guest!(guest, poll.author)
+    discussion = DiscussionService.create(params: discussion_params(group_id: group.id), actor: users(:admin))
+    discussion.topic.add_guest!(guest, discussion.author)
+    poll = PollService.build(params: poll_params(topic: discussion.topic), actor: guest)
     assert guest.can?(:create, poll)
   end
 

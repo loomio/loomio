@@ -24,6 +24,7 @@ export default class DiscussionTemplateModel extends BaseModel {
       linkPreviews: [],
       maxDepth: 3,
       newestFirst: false,
+      allowConcurrentPolls: false,
       pollTemplateKeysOrIds: [],
       recipientAudience: null,
       defaultToDirectDiscussion: false,

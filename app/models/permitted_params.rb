@@ -177,7 +177,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def topic_attributes
-    [:newest_first, :max_depth]
+    [:newest_first, :max_depth, :allow_concurrent_polls]
   end
 
   def group_attributes
@@ -237,6 +237,7 @@ class PermittedParams < Struct.new(:params)
      :group_id,
      :newest_first,
      :max_depth,
+     :allow_concurrent_polls,
      :public,
      :default_to_direct_discussion,
      :poll_template_keys_or_ids, {poll_template_keys_or_ids: []},
