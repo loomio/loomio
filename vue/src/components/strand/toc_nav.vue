@@ -94,7 +94,7 @@ export default {
       });
 
       Records.events.collection.chain()
-             .find({discussionId: this.discussion.id})
+             .find({topicId: this.discussion.topicId})
              .simplesort('positionKey')
              .data().forEach(event => {
         let poll;
@@ -109,7 +109,7 @@ export default {
           sequenceId: event.sequenceId,
           createdAt: event.createdAt,
           actorId: event.actorId,
-          title: event.pinned ? (event.pinnedTitle || event.fillPinnedTitle()) : null,
+          title: event.kind === 'new_discussion' ? this.discussion.title : (event.pinned ? (event.pinnedTitle || event.fillPinnedTitle()) : null),
           visible: false,
           unread: this.loader.sequenceIdIsUnread(event.sequenceId),
           headings: [],
@@ -122,21 +122,6 @@ export default {
       });
 
       this.items = sortBy(Object.values(itemsHash), i => i.key);
-
-      const createdEvent = this.discussion.createdEvent();
-      this.items.unshift({
-        key: createdEvent.positionKey,
-        title: this.discussion.title,
-        headings: [],
-        sequenceId: 0,
-        visible: this.visibleKeys.includes(createdEvent.positionKey),
-        unread: false,
-        event: createdEvent,
-        poll: null,
-        stance: null,
-        depth: 1,
-        descendantCount: 0
-      });
     }
   },
 
@@ -156,7 +141,7 @@ export default {
     Records.events.remote.fetch({
       path: 'timeline',
       params: {
-        discussion_id: this.discussion.id
+        topic_id: this.discussion.topicId
     }}).then(data => {
       bootData = data;
       return this.buildItems(bootData);

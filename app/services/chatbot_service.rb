@@ -24,7 +24,7 @@ class ChatbotService
     event.reload
     return if event.eventable.nil?
 
-    chatbots = event.eventable.group.chatbots
+    chatbots = event.eventable.topic.group.chatbots
 
     chatbots.where(id: event.recipient_chatbot_ids).
                 or(chatbots.where.any(event_kinds: event.kind)).each do |chatbot|

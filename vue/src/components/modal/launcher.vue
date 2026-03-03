@@ -37,7 +37,6 @@ export default
     PinEventForm: asyncComponent(() => import('@/components/thread/pin_event_form')),
     MoveCommentsModal: asyncComponent(() => import('@/components/discussion/move_comments_modal')),
     ExportDataModal: asyncComponent(() => import('@/components/group/export_data_modal')),
-    AddPollToThreadModal: asyncComponent(() => import('@/components/poll/add_to_thread_modal')),
     StrandMembersList: asyncComponent(() => import('@/components/strand/members_list')),
     SeenByModal: asyncComponent(() => import('@/components/strand/seen_by_modal')),
     PollMembers: asyncComponent(() => import('@/components/poll/members')),

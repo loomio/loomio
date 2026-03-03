@@ -4,7 +4,7 @@ class Events::DiscussionClosed < Event
   def self.publish!(discussion, actor)
     super discussion,
           user: actor,
-          discussion: discussion,
-          created_at: discussion.closed_at
+          topic: discussion.topic,
+          created_at: discussion.topic.closed_at
   end
 end

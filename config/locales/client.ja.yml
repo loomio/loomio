@@ -526,6 +526,7 @@ ja:
     sign_in: ログインして会話に参加してください
     add_a_comment: コメントを追加する
     share_your_thoughts: あなたの考えを共有してください…
+    share_on_poll: 質問をしたり新しい情報を共有したりしましょう
   thread_nav:
     participants: 参加者
   sidebar:
@@ -1341,8 +1342,6 @@ ja:
     default_request_to_join_prompt: 私たちのグループに興味を持っていただきありがとうございます。自己紹介と参加を希望する理由を説明してください。
     upgrade_for_subgroups: 'サブグループを作成するには、<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">サブスクリプションをアップグレードして</a>ください'
     share_this_url_with_people_who_want_to_join: 参加したい人にこのURLを共有してください
-    allow_polls_without_discussions: ディスカッションなしの投票を許可
-    allow_polls_without_discussions_help: 最初にディスカッションを開始せずに投票を開始することを禁止します。
     aria_label: グループフォーム
     list_in_the_groups_directory: グループディレクトリにリストしますか?
     list_in_directory_yes: はい · このグループを「グループを探す」ページに表示します
@@ -1990,13 +1989,6 @@ ja:
     closed: 議論終了
     need_vote: 投票が必要です
     no_polls: 投票が見つかりませんでした
-    standalone_disabled_title: スタンドアロンのアンケートは無効です
-    standalone_disabled_helptext: "<p>このグループでは、ディスカッション内で投票を開始する必要があります。</p><p>議論は、人々が投票前に状況を理解し、質問し、視点を共有するのに役立ちます。これにより、より良い意思決定につながります。</p><p>まずディスカッションを開始し、投票を集める準備ができたらアンケートを追加します。</p>"
-    start_discussion: ディスカッションを始める
-    standalone_warning_title: まずは議論を始めることを検討しましょう
-    start_poll_anyway: とにかく投票を開始する
-    start_discussion_instead: 代わりに議論を始める
-    standalone_warning_helptext: "<p>投票は、まず人々がそのトピックについて議論できる場合に最も効果的です。</p><p>議論がなければ、有権者は質問したり、懸念を表明したり、改善を提案したりすることができません。</p><p>最良のエクスペリエンスを得るには、ディスカッションから始めて共通の理解を構築し、人々の立場を把握する準備ができたらアンケートを追加します。</p>"
   group_files_panel:
     no_files: ファイルが見つかりません
     filename: ファイル名
@@ -2729,7 +2721,6 @@ ja:
     these_are_templates_admin_hint: グループ管理者はテンプレートの編集、新規作成、並べ替え、非表示/表示の切り替えができます。非表示のテンプレートは管理者のみ閲覧可能です。
     show_hidden_templates: 非表示のテンプレートを表示
     show_fewer: 表示を減らす
-    start_a_new_discussion: 新しいディスカッションを開始する
     start_discussion: ディスカッションを始める
     start_a_direct_discussion: 直接議論を始める
     these_are_templates: これらはグループ内のディスカッション テンプレートです。

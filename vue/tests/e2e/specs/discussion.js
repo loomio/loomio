@@ -315,6 +315,24 @@ module.exports = {
     page.expectText('.new-comment__body', 'body of the comment')
   },
 
+  'can_move_comments_to_another_thread': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_forkable_discussion')
+    page.expectText('.strand-list', 'totally on topic')
+    page.click('.new-comment .action-menu')
+    page.click('.action-dock__button--move_event')
+    page.expectElement('.discussion-fork-actions')
+    page.click('.discussion-fork-actions .v-banner-actions .v-btn')
+    page.pause(2000)
+    page.fillIn('.v-card .v-autocomplete input', 'Waking')
+    page.pause(2000)
+    page.click('.v-autocomplete__content .v-list-item__content')
+    page.pause(500)
+    page.click('.v-card-actions .v-btn:last-child')
+    page.expectFlash('Moving comments')
+  },
+
   'private_thread': (test) => {
     page = pageHelper(test)
     page.loadPath('setup_discussion')

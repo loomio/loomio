@@ -17,10 +17,5 @@ class Reaction < ApplicationRecord
     user_id
   end
 
-  def message_channel
-    case reactable
-    when Outcome, Stance, Poll then reactable.poll.message_channel
-    when Comment, Discussion   then reactable.discussion.message_channel
-    end
-  end
+
 end

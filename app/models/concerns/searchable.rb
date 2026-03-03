@@ -11,7 +11,7 @@ module Searchable
 	    connection.execute pg_search_insert_statement 
 	  end
 
-	  def pg_search_insert_statement(id: nil, author_id: nil, discussion_id: nil)
+	  def pg_search_insert_statement(id: nil, author_id: nil)
 	  	raise "expected to be overwritten"
 	  end
   end

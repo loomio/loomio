@@ -93,9 +93,9 @@ export default
         )
           v-list.thread-previews(lines="two")
             thread-preview(
-              v-for="thread in discussions"
-              :key="thread.id"
-              :thread="thread"
+              v-for="topic in discussions"
+              :key="topic.id"
+              :topic="topic"
               group-page
             )
           .d-flex.justify-center

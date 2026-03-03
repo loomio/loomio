@@ -62,6 +62,14 @@ class RangeSetTest < ActiveSupport::TestCase
     assert_equal [[1,6]],           RangeSet.reduce([[1,2], [3,4], [5,6]])
   end
 
+  test "parses range strings" do
+    assert_equal [],                  RangeSet.parse("")
+    assert_equal [[1, 1]],           RangeSet.parse("1")
+    assert_equal [[1, 2]],           RangeSet.parse("1-2")
+    assert_equal [[1, 2], [4, 5]],   RangeSet.parse("1-2,4-5")
+    assert_equal [[1, 2], [3, 3]],   RangeSet.parse("1-2,3")
+  end
+
   test "creates ranges from list" do
     assert_equal [[1,1]],           RangeSet.ranges_from_list([1])
     assert_equal [[2,2]],           RangeSet.ranges_from_list([2])

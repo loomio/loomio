@@ -17,8 +17,8 @@ module EmailHelper
       end
 
       if model.is_a?(Discussion) || model.is_a?(Comment)
-        if reader = DiscussionReader.redeemable.find_by(user: recipient, discussion: model.discussion)
-          args.merge!(discussion_reader_token: reader.token)
+        if reader = TopicReader.redeemable.find_by(user: recipient, topic_id: model.topic_id)
+          args.merge!(topic_reader_token: reader.token)
         end
       end
     end
@@ -35,8 +35,10 @@ module EmailHelper
   end
 
   def pixel_src(event, recipient:)
+    topic = event.topic
+    return nil unless topic&.topicable_type == 'Discussion'
     email_actions_mark_discussion_as_read_url(
-      discussion_id: event.eventable.discussion.id,
+      discussion_id: topic.topicable_id,
       event_id: event.id,
       unsubscribe_token: recipient.unsubscribe_token,
       format: 'gif'
@@ -62,7 +64,7 @@ module EmailHelper
     address = {
       pt: letter,
       pi: letter ? model.id : nil,
-      d: model.discussion_id,
+      d: model.topic&.topicable_type == 'Discussion' ? model.topic.topicable_id : nil,
       u: user.id,
       k: user.email_api_key
     }.compact.map { |k, v| [k, v].join('=') }.join('&')

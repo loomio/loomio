@@ -529,6 +529,7 @@ hu:
     sign_in: Lépj be, hogy hozzászolhass a témakörhöz.
     add_a_comment: Hozzászólás hozzáadása
     share_your_thoughts: Oszd meg a gondolataidat…
+    share_on_poll: Tegyen fel kérdést, vagy osszon meg új információkat
   thread_nav:
     participants: Résztvevők
   sidebar:
@@ -1346,8 +1347,6 @@ hu:
     default_request_to_join_prompt: Köszönjük érdeklődését csoportunk iránt. Kérlek, mutatkozz be, és indokold meg, miért jelentkezel.
     upgrade_for_subgroups: 'Kérjük <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">, frissítse előfizetését</a> egy alcsoport létrehozásához'
     share_this_url_with_people_who_want_to_join: Oszd meg ezt az URL-t azokkal, akik csatlakozni szeretnének
-    allow_polls_without_discussions: Szavazások engedélyezése megbeszélés nélkül
-    allow_polls_without_discussions_help: Engedélyezze az önálló szavazásokat (nem ajánlott). Vita nélkül az emberek nem tudnak kérdéseket feltenni vagy hatékonyan konszenzust kialakítani.
     aria_label: Csoportos űrlap
     list_in_the_groups_directory: Felsorolás a csoportok könyvtárában?
     list_in_directory_yes: Igen · jelenítse meg ezt a csoportot a „Csoport keresése” oldalon
@@ -1998,13 +1997,6 @@ hu:
     closed: Zárva
     need_vote: Szavazásra van szükség
     no_polls: Nem található szavazás
-    standalone_disabled_title: Az önálló szavazások le vannak tiltva
-    standalone_disabled_helptext: "<p>Ebben a csoportban a szavazásokat egy beszélgetésen belül kell elindítani.</p><p> A beszélgetések segítenek az embereknek megérteni a kontextust, kérdéseket feltenni és megosztani a nézőpontjaikat a szavazás előtt. Ez jobb döntésekhez vezet.</p><p> Először indíts egy beszélgetést, majd adj hozzá egy szavazást, amikor készen állsz a szavazatok gyűjtésére.</p>"
-    start_discussion: Beszélgetés indítása
-    standalone_warning_title: Először is fontold meg a beszélgetés megkezdését
-    start_poll_anyway: Szavazás indítása mindenképpen
-    start_discussion_instead: Inkább indíts beszélgetést
-    standalone_warning_helptext: "<p>A közvélemény-kutatások akkor működnek a legjobban, ha az emberek először megvitathatják a témát.</p><p> Vita nélkül a választók nem tehetnek fel kérdéseket, nem fogalmazhatnak meg aggályokat, és nem javasolhatnak fejlesztéseket.</p><p> A legjobb élmény érdekében kezdj egy beszélgetéssel, építs közös megértést, majd adj hozzá egy szavazást, amikor készen állsz az emberek álláspontjának rögzítésére.</p>"
   group_files_panel:
     no_files: Nem található fájl
     filename: Fájlnév
@@ -2737,7 +2729,6 @@ hu:
     these_are_templates_admin_hint: A csoport adminisztrátorai szerkeszthetik a sablonokat, létrehozhatnak új sablonokat, átrendezhetik és elrejthetik/megjeleníthetik a sablonokat. Csak az adminisztrátorok láthatják a rejtett sablonokat.
     show_hidden_templates: Rejtett sablonok megjelenítése
     show_fewer: Kevesebb megjelenítése
-    start_a_new_discussion: Új beszélgetés indítása
     start_discussion: Beszélgetés indítása
     start_a_direct_discussion: Közvetlen beszélgetés indítása
     these_are_templates: Ezek a csoportodban található beszélgetési sablonok.

@@ -4,13 +4,8 @@ module Ability::Discussion
 
     can [:show,
          :print,
-         :dismiss,
-         :subscribe_to], ::Discussion do |discussion|
+         :dismiss], ::Discussion do |discussion|
       DiscussionQuery.visible_to(user: user).exists?(discussion.id)
-    end
-
-    can [:mark_as_read, :mark_as_seen], ::Discussion do |discussion|
-      user.is_logged_in? && can?(:show, discussion)
     end
 
     can :update_version, ::Discussion do |discussion|
@@ -18,11 +13,13 @@ module Ability::Discussion
     end
 
     can :create, ::Discussion do |discussion|
+      topic = discussion.topic
+      group = topic.group
       user.email_verified? &&
       (
-        (discussion.group.blank? && (!AppConfig.app_features[:create_user] || user.group_ids.any?)) ||
-        discussion.group.admins.exists?(user.id) ||
-        (discussion.group.members_can_start_discussions && discussion.group.members.exists?(user.id))
+        (group.blank? && (!AppConfig.app_features[:create_user] || user.group_ids.any?)) ||
+        group.admins.exists?(user.id) ||
+        (group.members_can_start_discussions && group.members.exists?(user.id))
       )
     end
 
@@ -31,24 +28,11 @@ module Ability::Discussion
         discussion.group.admins.exists?(user.id) ||
         (discussion.group.members_can_announce && discussion.members.exists?(user.id))
       else
-        discussion.admins.exists?(user.id)
+        discussion.topic.admins_include?(user)
       end
     end
 
-    can [:add_members], ::Discussion do |discussion|
-      discussion.members.exists?(user.id)
-    end
-
-    can [:add_guests], ::Discussion do |discussion|
-      if discussion.group_id
-        Subscription.for(discussion.group).allow_guests &&
-        (discussion.group.admins.exists?(user.id) || (discussion.group.members_can_add_guests && discussion.members.exists?(user.id)))
-      else
-        !discussion.id || discussion.admins.exists?(user.id)
-      end
-    end
-
-    can [:update, :move, :move_comments, :pin], ::Discussion do |discussion|
+    can [:update, :move], ::Discussion do |discussion|
       discussion.discarded_at.nil? &&
       (discussion.author == user ||
       discussion.admins.exists?(user.id) ||
@@ -58,14 +42,6 @@ module Ability::Discussion
     can [:destroy, :discard], ::Discussion do |discussion|
       discussion.discarded_at.nil? &&
       (discussion.author == user || discussion.admins.exists?(user.id))
-    end
-
-    can [:set_volume], ::Discussion do |discussion|
-      discussion.members.exists?(user.id)
-    end
-
-    can :remove_events, ::Discussion do |discussion|
-      discussion.author == user or discussion.admins.exists?(user.id)
     end
   end
 end

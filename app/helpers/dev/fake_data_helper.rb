@@ -70,7 +70,13 @@ module Dev::FakeDataHelper
   end
 
   def fake_discussion(args = {})
-    Discussion.new({
+    group = args.delete(:group) || saved(fake_group)
+    group.save! unless group.persisted?
+    author = args.delete(:author) || fake_user
+    author.save! unless author.persisted?
+    group.add_admin!(author) unless group.members.exists?(author.id)
+
+    defaults = {
       title: [Faker::TvShows::BojackHorseman.tongue_twister,
               Faker::TvShows::Friends.quote,
               Faker::Quote.yoda,
@@ -80,8 +86,10 @@ module Dev::FakeDataHelper
                     Faker::Quote.famous_last_words].sample,
       private: true,
       tags: ['spicy'],
-      group: fake_group,
-      author: fake_user}.merge(args))
+      group_id: group.id
+    }
+
+    DiscussionService.build(params: defaults.merge(args), actor: author)
   end
 
 
@@ -90,7 +98,7 @@ module Dev::FakeDataHelper
       user: comment.author,
       kind: 'new_comment',
       eventable: comment,
-      discussion: comment.discussion
+      topic: comment.topic
     )
   end
 
@@ -107,7 +115,7 @@ module Dev::FakeDataHelper
       user: poll.author,
       kind: 'poll_created',
       eventable: poll,
-      discussion: poll.discussion
+      topic: poll.topic
     )
   end
 
@@ -116,7 +124,7 @@ module Dev::FakeDataHelper
       user_id: stance[:participant_id],
       kind: 'stance_created',
       eventable: stance,
-      discussion: stance.poll.discussion
+      topic: stance.poll.topic
     )
   end
 
@@ -125,7 +133,7 @@ module Dev::FakeDataHelper
       user_id: outcome.author_id,
       kind: 'outcome_created',
       eventable: outcome,
-      discussion: outcome.discussion
+      topic: outcome.poll.topic
     )
   end
 
@@ -172,13 +180,12 @@ module Dev::FakeDataHelper
     }.with_indifferent_access
   end
 
-  def fake_poll(args = {})
+  def fake_poll_params(args = {})
     names = option_names(args.delete(:option_count) || (2..7).to_a.sample)
+    is_wip = args.delete(:wip)
+    closing_at = is_wip ? nil : (args.delete(:closing_at) || 3.days.from_now)
 
-    closing_at = args[:wip] ? nil : 3.days.from_now
-    options = {
-      author: fake_user,
-      discussion: fake_discussion,
+    {
       poll_type: 'poll',
       title: [Faker::Superhero.name, Faker::Movies::StarWars.quote].sample.truncate(140),
       tags: ['biggin'],
@@ -192,22 +199,29 @@ module Dev::FakeDataHelper
       closing_at: closing_at,
       specified_voters_only: false,
       custom_fields: {}
-    }.merge args.tap {|a| a.delete(:wip)}
+    }.merge(args)
+  end
 
-    case options[:poll_type].to_s
-    when 'dot_vote'
-      options[:dots_per_person] = 10
-    when 'meeting'
-      options[:time_zone] = 'Asia/Seoul'
-      options[:can_respond_maybe] = true
-    when 'ranked_choice'
-      options[:minimum_stance_choices] = 3
-    when 'score'
-      options[:max_score] = 9
-      options[:min_score] = 0
+  def fake_poll(args = {})
+    author = args.delete(:author) || fake_user
+    author.save! unless author.persisted?
+
+    discussion = args.delete(:discussion)
+    group = args.delete(:group)
+
+    if discussion
+      discussion.save! unless discussion.persisted?
+      args[:topic_id] = discussion.topic_id
+    elsif group
+      group.save! unless group.persisted?
+      args[:group_id] = group.id
     end
 
-    Poll.new(options)
+    if (gid = args[:group_id] || (args[:topic_id] && Topic.find(args[:topic_id]).group_id))
+      Group.find(gid).add_admin!(author) unless Group.find(gid).members.exists?(author.id)
+    end
+
+    PollService.build(params: fake_poll_params(**args), actor: author)
   end
 
   def create_fake_stances(poll:)
@@ -293,7 +307,7 @@ module Dev::FakeDataHelper
 
   def fake_comment(args = {})
     Comment.new({
-      discussion: fake_discussion,
+      parent: fake_discussion,
       body: Faker::ChuckNorris.fact,
       author: fake_user
     }.merge(args))
@@ -404,56 +418,54 @@ module Dev::FakeDataHelper
   def create_discussion_with_nested_comments
     group = create_group_with_members
     group.reload
-    discussion    = saved fake_discussion(group: group)
-    DiscussionService.create(discussion: discussion, actor: group.admins.first)
+    discussion = DiscussionService.create(params: {group_id: group.id, title: Faker::Quote.yoda.truncate(150), private: true}, actor: group.admins.first)
 
     15.times do
       parent_author = fake_user
       group.add_member! parent_author
-      parent = fake_comment(discussion: discussion)
+      parent = fake_comment(parent: discussion)
       CommentService.create(comment: parent, actor: parent_author)
 
       (0..3).to_a.sample.times do
         reply_author = fake_user
         group.add_member! reply_author
-        reply = fake_comment(discussion: discussion, parent: parent)
+        reply = fake_comment(parent: parent)
         CommentService.create(comment: reply, actor: reply_author)
       end
     end
 
     discussion.reload
-    EventService.repair_discussion(discussion.id)
+    TopicService.repair_thread(discussion.topic_id)
     discussion.reload
   end
 
   def create_discussion_with_sampled_comments
     group = create_group_with_members
 
-    discussion = saved fake_discussion(group: group)
-    DiscussionService.create(discussion: discussion, actor: group.admins.first)
-    discussion.update(max_depth: 3)
+    discussion = DiscussionService.create(params: {group_id: group.id, title: Faker::Quote.yoda.truncate(150), private: true}, actor: group.admins.first)
+    discussion.topic.update!(max_depth: 3)
 
     5.times do
       group.add_member! saved(fake_user)
     end
 
     10.times do
-      CommentService.create(comment: fake_comment(discussion: discussion), actor: group.members.sample)
+      CommentService.create(comment: fake_comment(parent: discussion), actor: group.members.sample)
     end
     comments = discussion.reload.comments
 
     10.times do
-      CommentService.create(comment: fake_comment(discussion: discussion, parent: comments.sample), actor: group.members.sample)
+      CommentService.create(comment: fake_comment(parent: comments.sample), actor: group.members.sample)
     end
 
     comments = discussion.reload.comments
 
     10.times do
-      CommentService.create(comment: fake_comment(discussion: discussion, parent: comments.sample), actor: group.members.sample)
+      CommentService.create(comment: fake_comment(parent: comments.sample), actor: group.members.sample)
     end
 
     discussion.reload
-    EventService.repair_discussion(discussion.id)
+    TopicService.repair_thread(discussion.topic_id)
     discussion.reload
     discussion
   end

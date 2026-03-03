@@ -527,6 +527,7 @@ sl:
     sign_in: Vpišite se, da se pridružite pogovoru
     add_a_comment: Dodaj komentar
     share_your_thoughts: Delite svoje misli …
+    share_on_poll: Postavite vprašanje ali delite nove informacije
   thread_nav:
     participants: Udeleženci
   sidebar:
@@ -1342,8 +1343,6 @@ sl:
     default_request_to_join_prompt: Hvala za vaše zanimanje za našo skupino. Predstavite se in razložite, zakaj se želite pridružiti.
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Nadgradite svojo naročnino</a> , da ustvarite podskupino.'
     share_this_url_with_people_who_want_to_join: Delite ta URL z ljudmi, ki se želijo pridružiti
-    allow_polls_without_discussions: Dovoli ankete brez razprave
-    allow_polls_without_discussions_help: Preprečite ljudem, da začnejo ankete brez predhodnega začetka razprave.
     aria_label: Skupinski obrazec
     list_in_the_groups_directory: Seznam v imeniku skupin?
     list_in_directory_yes: Da · prikaži to skupino na strani »najdi skupino«
@@ -1991,13 +1990,6 @@ sl:
     closed: Zaprto
     need_vote: Potrebujem glasovanje
     no_polls: Ankete niso bile najdene
-    standalone_disabled_title: Samostojne ankete so onemogočene
-    standalone_disabled_helptext: "<p>Ta skupina zahteva, da se ankete začnejo znotraj razprave.</p><p> Razprave pomagajo ljudem razumeti kontekst, postavljati vprašanja in deliti stališča pred glasovanjem. To vodi do boljših odločitev.</p><p> Najprej začnite razpravo, nato pa dodajte anketo, ko boste pripravljeni zbirati glasove.</p>"
-    start_discussion: Začni razpravo
-    standalone_warning_title: Najprej razmislite o začetku razprave
-    start_poll_anyway: Vseeno začni anketo
-    start_discussion_instead: Začnite raje razpravo
-    standalone_warning_helptext: "<p>Ankete delujejo najbolje, kadar se ljudje najprej lahko pogovorijo o temi.</p><p> Brez razprave volivci ne morejo postavljati vprašanj, izražati pomislekov ali predlagati izboljšav.</p><p> Za najboljšo izkušnjo začnite z razpravo, zgradite skupno razumevanje in nato dodajte anketo, ko ste pripravljeni zajeti stališča ljudi.</p>"
   group_files_panel:
     no_files: Ni datotek
     filename: Ime datoteke
@@ -2730,7 +2722,6 @@ sl:
     these_are_templates_admin_hint: Skrbniki skupin lahko urejajo predloge, ustvarjajo nove predloge, jih prerazporejajo in skrivajo/razkrivajo. Skrite predloge lahko vidijo samo skrbniki.
     show_hidden_templates: Prikaži skrite predloge
     show_fewer: Prikaži manj
-    start_a_new_discussion: Začni novo razpravo
     start_discussion: Začni razpravo
     start_a_direct_discussion: Začnite neposredno razpravo
     these_are_templates: To so predloge za razpravo v vaši skupini.

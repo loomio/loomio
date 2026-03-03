@@ -2,8 +2,8 @@ require 'test_helper'
 
 class MergeUsersControllerTest < ActionController::TestCase
   setup do
-    @source_user = users(:normal_user)
-    @target_user = users(:another_user)
+    @source_user = users(:user)
+    @target_user = users(:alien)
     MergeUsersService.prep_for_merge!(source_user: @source_user, target_user: @target_user)
   end
 

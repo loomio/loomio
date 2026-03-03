@@ -2,36 +2,36 @@ require 'test_helper'
 
 class Api::V1::ReactionsControllerTest < ActionController::TestCase
   test "create likes the comment when authorized" do
-    user = users(:discussion_author)
-    discussion = discussions(:test_discussion)
+    user = users(:admin)
+    discussion = discussions(:discussion)
     comment = Comment.new(
       body: "Test comment",
-      discussion: discussion,
+      parent: discussion,
       author: user
     )
     CommentService.create(comment: comment, actor: user)
-    
+
     reaction_params = {
       reaction: '+1',
       reactable_id: comment.id,
       reactable_type: 'Comment'
     }
-    
+
     sign_in user
     post :create, params: { reaction: reaction_params }
     assert_response :success
   end
 
   test "create responds with error when user is unauthorized" do
-    author = users(:discussion_author)
-    discussion = discussions(:test_discussion)
+    author = users(:admin)
+    discussion = discussions(:discussion)
     comment = Comment.new(
       body: "Test comment",
-      discussion: discussion,
+      parent: discussion,
       author: author
     )
     CommentService.create(comment: comment, actor: author)
-    
+
     # Create a user who is NOT a member of the group
     unauthorized_user = User.create!(
       name: "Unauthorized User",
@@ -40,13 +40,13 @@ class Api::V1::ReactionsControllerTest < ActionController::TestCase
       encrypted_password: "$2a$12$K3E5h0VGlqmXL8HqWw7mIe3qP0XjQSfZ1jK4PqYX7Qq5N9YK6L4/K",
       email_verified: true
     )
-    
+
     reaction_params = {
       reaction: '+1',
       reactable_id: comment.id,
       reactable_type: 'Comment'
     }
-    
+
     sign_in unauthorized_user
     post :create, params: { reaction: reaction_params }
     assert_response :forbidden
@@ -54,34 +54,35 @@ class Api::V1::ReactionsControllerTest < ActionController::TestCase
   end
 
   test "index fetches reactions for multiple records at once" do
-    user = users(:discussion_author)
-    group = groups(:test_group)
-    discussion = discussions(:test_discussion)
-    
-    comment = Comment.new(body: "Test comment", discussion: discussion, author: user)
+    user = users(:admin)
+    group = groups(:group)
+    discussion = discussions(:discussion)
+
+    comment = Comment.new(body: "Test comment", parent: discussion, author: user)
     CommentService.create(comment: comment, actor: user)
-    
-    poll = Poll.new(
+
+    poll = PollService.create(params: {
       title: "Test Poll",
       poll_type: "proposal",
-      discussion: discussion,
-      author: user,
-      group: group
-    )
-    PollService.create(poll: poll, actor: user)
-    
+      topic_id: discussion.topic.id,
+      specified_voters_only: true,
+      closing_at: 5.days.from_now,
+      poll_option_names: %w[agree disagree]
+    }, actor: user)
+    poll.update!(closed_at: 1.day.ago)
+
     outcome = Outcome.new(
       statement: "Test outcome",
       poll: poll,
       author: user
     )
     OutcomeService.create(outcome: outcome, actor: user)
-    
+
     comment_reaction = Reaction.create!(user: user, reactable: comment, reaction: '+1')
     discussion_reaction = Reaction.create!(user: user, reactable: discussion, reaction: '+1')
     poll_reaction = Reaction.create!(user: user, reactable: poll, reaction: '+1')
     outcome_reaction = Reaction.create!(user: user, reactable: outcome, reaction: '+1')
-    
+
     sign_in user
     get :index, params: {
       comment_ids: comment.id,
@@ -89,20 +90,20 @@ class Api::V1::ReactionsControllerTest < ActionController::TestCase
       poll_ids: poll.id,
       outcome_ids: outcome.id
     }
-    
+
     assert_equal 4, JSON.parse(response.body)['reactions'].length
   end
 
   test "index denies access correctly" do
-    author = users(:discussion_author)
-    discussion = discussions(:test_discussion)
-    
-    comment = Comment.new(body: "Test comment", discussion: discussion, author: author)
+    author = users(:admin)
+    discussion = discussions(:discussion)
+
+    comment = Comment.new(body: "Test comment", parent: discussion, author: author)
     CommentService.create(comment: comment, actor: author)
-    
+
     Reaction.create!(user: author, reactable: comment, reaction: '+1')
     Reaction.create!(user: author, reactable: discussion, reaction: '+1')
-    
+
     # Create a user who is NOT a member of the group
     unauthorized_user = User.create!(
       name: "Unauthorized User 2",
@@ -111,7 +112,7 @@ class Api::V1::ReactionsControllerTest < ActionController::TestCase
       encrypted_password: "$2a$12$K3E5h0VGlqmXL8HqWw7mIe3qP0XjQSfZ1jK4PqYX7Qq5N9YK6L4/K",
       email_verified: true
     )
-    
+
     sign_in unauthorized_user
     get :index, params: { comment_ids: comment.id, discussion_ids: discussion.id }
     assert_response :forbidden

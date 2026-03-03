@@ -1,90 +1,79 @@
-<script lang="js">
-import AppConfig          from '@/shared/services/app_config';
-import Records            from '@/shared/services/records';
-import Session            from '@/shared/services/session';
-import EventBus           from '@/shared/services/event_bus';
-import AbilityService     from '@/shared/services/ability_service';
-import RecordLoader       from '@/shared/services/record_loader';
-import DiscussionService       from '@/shared/services/discussion_service';
-import WatchRecords from '@/mixins/watch_records';
-import FormatDate from '@/mixins/format_date';
+<script setup>
+import { ref, computed, onMounted, onUnmounted } from 'vue';
+import { useRoute } from 'vue-router';
+import Records        from '@/shared/services/records';
+import Session        from '@/shared/services/session';
+import EventBus       from '@/shared/services/event_bus';
+import AbilityService from '@/shared/services/ability_service';
+import RecordLoader   from '@/shared/services/record_loader';
+import { useWatchRecords } from '@/composables/useWatchRecords';
 
-export default
-{
-  mixins: [WatchRecords, FormatDate],
-  data() {
-    return {
-      dashboardLoaded: Records.discussions.collection.data.length > 0,
-      filter: this.$route.params.filter || 'hide_muted',
-      discussions: [],
-      loader: null
-    };
-  },
+const route = useRoute();
+const { watchRecords } = useWatchRecords();
 
-  created() {
-    this.init();
-    EventBus.$on('signedIn', this.init);
-  },
+const dashboardLoaded = ref(Records.topics.collection.data.length > 0);
+const filter = ref(route.params.filter || 'hide_muted');
+const topics = ref([]);
+const loader = ref(null);
 
-  beforeDestroy() {
-    EventBus.$off('signedIn', this.init);
-  },
+const noGroups = computed(() => Session.user().groups().length === 0);
+const userHasMuted = computed(() => Session.user().hasExperienced("mutingThread"));
 
-  mounted() {
-    EventBus.$emit('content-title-visible', false);
-    EventBus.$emit('currentComponent', {
-      titleKey: 'dashboard_page.dashboard',
-      page: 'dashboardPage',
-      group: null,
+function titleVisible(visible) {
+  EventBus.$emit('content-title-visible', visible);
+}
+
+function query() {
+  let chain = Records.topics.collection.chain();
+  chain = chain.find({closedAt: null});
+  chain = chain.simplesort('lastActivityAt', true);
+  chain = chain.limit(30);
+  topics.value = chain.data();
+}
+
+function fetch() {
+  if (!loader.value) { return; }
+  loader.value.fetchRecords().then(() => { dashboardLoaded.value = true; });
+}
+
+function refresh() {
+  if (!Session.isSignedIn()) { return; }
+  fetch();
+  query();
+}
+
+function init() {
+  loader.value = new RecordLoader({
+    collection: 'topics',
+    params: {
+      per: 30
     }
-    );
-  },
+  });
 
-  methods: {
-    init() {
-      this.loader = new RecordLoader({
-        collection: 'discussions',
-        path: 'dashboard',
-        params: {
-          exclude_types: 'poll',
-          filter: this.filter,
-          per: 30
-        }
-      });
+  watchRecords({
+    key: 'dashboard',
+    collections: ['topics', 'memberships'],
+    query
+  });
 
-      this.watchRecords({
-        key: 'dashboard',
-        collections: ['discussions', 'memberships'],
-        query: this.query
-      });
+  refresh();
+}
 
-      this.refresh();
-    },
+init();
+EventBus.$on('signedIn', init);
 
-    refresh() {
-      if (!Session.isSignedIn()) { return; }
-      this.fetch();
-      this.query();
-    },
+onMounted(() => {
+  EventBus.$emit('content-title-visible', false);
+  EventBus.$emit('currentComponent', {
+    titleKey: 'dashboard_page.dashboard',
+    page: 'dashboardPage',
+    group: null,
+  });
+});
 
-    fetch() {
-      if (!this.loader) { return; }
-      this.loader.fetchRecords().then(() => { return this.dashboardLoaded = true; });
-    },
-
-    query() {
-      this.discussions = DiscussionService.dashboardQuery();
-    }
-  },
-
-  computed: {
-    noGroups() { return Session.user().groups().length === 0; },
-    promptStart() { return this.noGroups && AbilityService.canStartGroups(); },
-    userHasMuted() { return Session.user().hasExperienced("mutingThread"); },
-    showLargeImage() { return true; }
-  }
-};
-
+onUnmounted(() => {
+  EventBus.$off('signedIn', init);
+});
 </script>
 
 <template lang="pug">
@@ -96,7 +85,7 @@ v-main
 
     v-card.mb-3(v-if='!dashboardLoaded')
       v-list(lines="two")
-        v-list-subheader(v-t="'dashboard_page.recent_discussions'")
+        v-list-subheader(v-t="'dashboard_page.recent_threads'")
         loading-content(
           :lineCount='2'
           v-for='(item, index) in [1,2,3]'
@@ -104,22 +93,21 @@ v-main
 
     div(v-if="dashboardLoaded")
       section.dashboard-page__loaded
-        .dashboard-page__empty(v-if='discussions.length == 0')
+        .dashboard-page__empty(v-if='topics.length == 0')
           p(v-html="$t('dashboard_page.no_groups.show_all')" v-if='noGroups')
           .dashboard-page__no-threads(v-if='!noGroups')
             span(v-show="filter == 'show_all'" v-t="'dashboard_page.no_threads.show_all'")
-            //- p(v-t="'dashboard_page.no_threads.show_all'")
             span(v-show="filter == 'show_muted' && userHasMuted", v-t="'dashboard_page.no_threads.show_muted'")
             router-link(to='/dashboard', v-show="filter != 'show_all' && userHasMuted")
               span(v-t="'dashboard_page.view_recent'")
-        .dashboard-page__collections(v-if='discussions.length')
+        .dashboard-page__collections(v-if='topics.length')
           v-card.mb-3.thread-preview-collection__container.thread-previews-container
             v-list.thread-previews(lines="two")
-              v-list-subheader(v-t="'dashboard_page.recent_discussions'")
+              v-list-subheader(v-t="'dashboard_page.recent_threads'")
               thread-preview(
-                v-for="thread in discussions"
-                :key="thread.id"
-                :thread="thread")
+                v-for="topic in topics"
+                :key="topic.id"
+                :topic="topic")
           .dashboard-page__footer(v-if='!loader.exhausted')  
           loading(v-show='loader.loading')
 </template>

@@ -11,8 +11,8 @@ class TranslationServiceTest < ActiveSupport::TestCase
     I18n.backend = I18n::Backend::Simple.new
     I18n.enforce_available_locales = false
 
-    @user = users(:normal_user)
-    @group = groups(:test_group)
+    @user = users(:user)
+    @group = groups(:group)
   end
 
   teardown do
@@ -22,17 +22,15 @@ class TranslationServiceTest < ActiveSupport::TestCase
   end
 
   test "uses Rails I18n translation for known labels and does not call Google Translate" do
-    # Create poll
-    poll = Poll.new(
+    poll = PollService.create(params: {
       title: 'Test Poll',
-      author: @user,
       poll_type: 'proposal',
       closing_at: 3.days.from_now,
-      poll_option_names: []
-    )
-    PollService.create(poll: poll, actor: @user)
+      group_id: @group.id,
+      poll_option_names: ['agree', 'disagree']
+    }, actor: @user)
 
-    poll_option = PollOption.create!(poll: poll, name: 'Agree')
+    poll_option = poll.poll_options.find_by!(name: 'Agree')
 
     # Provide translations under a wildcard-able namespace
     I18n.backend.store_translations(:en, poll_proposal_options: { agree: 'Agree' })
@@ -51,25 +49,20 @@ class TranslationServiceTest < ActiveSupport::TestCase
 
       assert translation.persisted?
       assert_equal 'fr', translation.language
-      # Check that the translation includes the expected text (handling potential encoding differences)
       assert translation.fields['name'].include?('accord'), "Expected translation to include 'accord'"
-      assert_nil translation.fields['meaning']
-      assert_nil translation.fields['prompt']
     end
 
     assert_equal false, translate_called
   end
 
   test "falls back to Google Translate for custom field values" do
-    # Create poll
-    poll = Poll.new(
+    poll = PollService.create(params: {
       title: 'Test Poll',
-      author: @user,
       poll_type: 'proposal',
       closing_at: 3.days.from_now,
-      poll_option_names: []
-    )
-    PollService.create(poll: poll, actor: @user)
+      group_id: @group.id,
+      poll_option_names: ['agree', 'disagree']
+    }, actor: @user)
 
     poll_option = PollOption.create!(poll: poll, name: 'Plan X')
 

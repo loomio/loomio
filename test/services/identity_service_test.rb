@@ -65,7 +65,7 @@ class IdentityServiceTest < ActiveSupport::TestCase
   end
 
   test "creates pending identity when user already signed in" do
-    current_user = users(:normal_user)
+    current_user = users(:user)
 
     identity = IdentityService.link_or_create(
       identity_params: @identity_params,
@@ -78,7 +78,7 @@ class IdentityServiceTest < ActiveSupport::TestCase
   end
 
   test "returns existing identity if it exists" do
-    user = users(:normal_user)
+    user = users(:user)
     existing_identity = Identity.create!(
       user: user,
       uid: 'oauth_user_123',

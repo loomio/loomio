@@ -27,33 +27,27 @@ module Ability::Poll
       PollQuery.visible_to(user: user).exists?(poll.id)
     end
 
-    can [:create], ::Poll do |poll|
+    can [ :create ], ::Poll do |poll|
+      topic = poll.topic
+      group = topic.group
+      !group.archived_at &&
+      !topic.closed_at &&
       (poll.poll_template_id.nil? || poll.poll_template.public? || user.group_ids.include?(poll.poll_template.group_id)) &&
-      (poll.discussion_id.nil? || !poll.discussion.closed_at) &&
-      (
-        (poll.group_id &&
-          (
-           (poll.group.admins.exists?(user.id) || # user is admin
-           (poll.group.members_can_raise_motions && poll.group.members.exists?(user.id)) || # user is member
-           (poll.group.members_can_raise_motions && poll.discussion.present? && poll.discussion.guests.exists?(user.id)))
-          )
-        ) ||
-        (poll.group_id.nil? && poll.discussion_id && poll.discussion.members.exists?(user.id)) ||
-        (poll.group_id.nil? && poll.discussion_id.nil? && user.is_logged_in? && user.email_verified?)
-      )
+      (group.admins_include?(user) || (group.members_can_raise_motions && group.members_include?(user))) ||
+      (topic.admins_include?(user) || (topic.members_can_raise_motions && topic.members_include?(user)))
     end
 
-    can [:announce], ::Poll do |poll|
-      if poll.group_id
-        poll.group.admins.exists?(user.id) ||
-        (poll.group.members_can_announce && poll.admins.exists?(user.id))
+    can [ :announce ], ::Poll do |poll|
+      topic = poll.topic
+      group = topic.group
+      if topic.group_id
+        group.admins.exists?(user.id) || (group.members_can_announce && topic.admins.exists?(user.id))
       else
-        poll.admins.exists?(user.id) ||
-        (!poll.specified_voters_only && poll.members.exists?(user.id))
+        topic.admins.exists?(user.id) || (!poll.specified_voters_only && topic.members.exists?(user.id))
       end
     end
 
-    can [:remind], ::Poll do |poll|
+    can [ :remind ], ::Poll do |poll|
       poll.opened? &&
       if poll.group_id
         poll.group.admins.exists?(user.id) ||
@@ -64,26 +58,17 @@ module Ability::Poll
       end
     end
 
-    can [:add_voters, :add_members], ::Poll do |poll|
+    can [:add_voters], ::Poll do |poll|
       poll.admins.exists?(user.id)
     end
 
-    can [:add_guests], ::Poll do |poll|
-      if poll.group_id
-        Subscription.for(poll.group).allow_guests &&
-        (poll.group.admins.exists?(user.id) || (poll.group.members_can_add_guests && poll.admins.exists?(user.id)))
-      else
-        poll.admins.exists?(user.id)
-      end
-    end
-
     can [:update], ::Poll do |poll|
-      (poll.discussion_id.blank? || !poll.discussion.closed_at) &&
+      !poll.topic&.closed_at &&
       poll.admins.exists?(user.id) && !poll.closed?
     end
 
     can [:destroy], ::Poll do |poll|
-      (poll.discussion_id.blank? || !poll.discussion.closed_at) &&
+      !poll.topic&.closed_at &&
       poll.admins.exists?(user.id)
     end
 
@@ -95,7 +80,7 @@ module Ability::Poll
     can :reopen, ::Poll do |poll|
       poll.closed? &&
       !poll.anonymous &&
-      (poll.discussion_id.blank? || !poll.discussion.closed_at) &&
+      !poll.topic&.closed_at &&
       poll.admins.exists?(user.id)
     end
   end

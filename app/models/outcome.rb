@@ -10,7 +10,7 @@ class Outcome < ApplicationRecord
   include HasRichText
   include Searchable
 
-  def self.pg_search_insert_statement(id: nil, author_id: nil, discussion_id: nil, poll_id: nil)
+  def self.pg_search_insert_statement(id: nil, author_id: nil, poll_id: nil)
     content_str = "regexp_replace(CONCAT_WS(' ', outcomes.statement, users.name), E'<[^>]+>', '', 'gi')"
     <<~SQL.squish
       INSERT INTO pg_search_documents (
@@ -19,6 +19,8 @@ class Outcome < ApplicationRecord
         poll_id,
         group_id,
         discussion_id,
+        topic_id,
+        tags,
         author_id,
         authored_at,
         content,
@@ -28,8 +30,10 @@ class Outcome < ApplicationRecord
       SELECT 'Outcome' AS searchable_type,
         outcomes.id AS searchable_id,
         outcomes.poll_id AS poll_id,
-        polls.group_id as group_id,
-        polls.discussion_id AS discussion_id,
+        t.group_id as group_id,
+        CASE WHEN t.topicable_type = 'Discussion' THEN t.topicable_id ELSE NULL END AS discussion_id,
+        polls.topic_id AS topic_id,
+        polls.tags AS tags,
         outcomes.author_id AS author_id,
         outcomes.created_at as authored_at,
         #{content_str} AS content,
@@ -39,10 +43,10 @@ class Outcome < ApplicationRecord
       FROM outcomes
         LEFT JOIN users ON users.id = outcomes.author_id
         LEFT JOIN polls ON polls.id = outcomes.poll_id
+        LEFT JOIN topics t ON t.id = polls.topic_id
       WHERE polls.discarded_at IS NULL
         #{id ? " AND outcomes.id = #{id.to_s.to_i} LIMIT 1" : ""}
         #{author_id ? " AND outcomes.author_id = #{author_id.to_s.to_i}" : ""}
-        #{discussion_id ? " AND polls.discussion_id = #{discussion_id.to_s.to_i}" : ""}
         #{poll_id ? " AND outcomes.poll_id = #{poll_id.to_s.to_i}" : ""}
     SQL
   end
@@ -52,7 +56,7 @@ class Outcome < ApplicationRecord
 
   scope :latest, -> { where(latest: true) }
   scope :dangling, -> { joins('left join polls on polls.id = poll_id').where('polls.id is null') }
-  scope :in_organisation, -> (group) { joins(:poll).where('polls.group_id': group.id_and_subgroup_ids) }
+  scope :in_organisation, -> (group) { joins(:poll).joins("LEFT JOIN topics t ON t.id = polls.topic_id").where("t.group_id": group.id_and_subgroup_ids) }
   belongs_to :poll, required: true
   belongs_to :poll_option, required: false
   belongs_to :author, class_name: 'User', required: true
@@ -60,8 +64,8 @@ class Outcome < ApplicationRecord
   has_many :documents, as: :model, dependent: :destroy
 
   %w(
-    poll_type dates_as_options group group_id discussion discussion_id
-    locale mailer members admins discarded? tags
+    poll_type dates_as_options group group_id
+    locale mailer members admins discarded? tags topic
   ).each { |message| delegate message, to: :poll }
 
   is_mentionable on: :statement

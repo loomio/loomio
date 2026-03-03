@@ -116,8 +116,10 @@ class RangeSet
 
   def self.parse(string)
     # ranges string format [[1,2], [4,5]] == 1-2,4-5
-    string.to_s.split(',').map do |pair|
-      pair.split('-').map(&:to_i)
+    string.to_s.split(',').filter_map do |pair|
+      nums = pair.split('-').map(&:to_i)
+      next if nums.empty?
+      nums.length == 1 ? [nums[0], nums[0]] : nums
     end
   end
 

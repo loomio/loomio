@@ -5,7 +5,7 @@ import RangeSet         from '@/shared/services/range_set';
 import HasDocuments     from '@/shared/mixins/has_documents';
 import { isAfter } from 'date-fns';
 import dateIsEqual from 'date-fns/isEqual';
-import { map, compact, flatten, isEqual, isEmpty, filter, some, head, last, sortBy, isArray, throttle } from 'lodash-es';
+import { map, compact, flatten, isEqual, isEmpty, filter, some, head, last, sortBy, isArray } from 'lodash-es';
 import { I18n } from '@/i18n';
 import Records from '@/shared/services/records';
 
@@ -23,11 +23,7 @@ export default class DiscussionModel extends BaseModel {
     this.saveUnpin = this.saveUnpin.bind(this);
     this.close = this.close.bind(this);
     this.reopen = this.reopen.bind(this);
-    this.moveComments = this.moveComments.bind(this);
     this.discussion = this.discussion.bind(this);
-    this.updateReadRanges = throttle(function() {
-      return Records.discussions.remote.patchMember(this.keyOrId(), 'mark_as_read', {ranges: RangeSet.serialize(this.readRanges)});
-    } , 2000);
   }
 
   afterConstruction() {
@@ -64,6 +60,7 @@ export default class DiscussionModel extends BaseModel {
       recipientEmails: [],
       notifyRecipients: true,
       groupId: null,
+      topicId: null,
       usersNotifiedCount: null,
       discussionReaderUserId: null,
       pinnedAt: null,
@@ -105,11 +102,11 @@ export default class DiscussionModel extends BaseModel {
   relationships() {
     this.hasMany('polls', {sortBy: 'createdAt', sortDesc: true, find: {discardedAt: null}});
     this.belongsTo('group');
+    this.belongsTo('topic');
     this.belongsTo('author', {from: 'users'});
     this.belongsTo('closer', {from: 'users'});
     this.belongsTo('translation');
     this.belongsTo('discussionTemplate');
-    return this.hasMany('discussionReaders');
   }
 
   discussion() { return this; }
@@ -123,7 +120,8 @@ export default class DiscussionModel extends BaseModel {
   }
 
   members() {
-    return Records.users.find(this.group().memberIds().concat(map(this.discussionReaders(), 'userId')));
+    const topicReaderUserIds = map(Records.topicReaders.collection.find({topicId: this.topicId}), 'userId');
+    return Records.users.find(this.group().memberIds().concat(topicReaderUserIds));
   }
 
   membersInclude(user) {
@@ -152,6 +150,10 @@ export default class DiscussionModel extends BaseModel {
   }
 
   createdEvent() {
+    if (this.topicId) {
+      const res = Records.events.find({topicId: this.topicId, sequenceId: 0});
+      if (!isEmpty(res)) { return res[0]; }
+    }
     const res = Records.events.find({kind: 'new_discussion', eventableId: this.id});
     if (!isEmpty(res)) { return res[0]; }
   }
@@ -233,19 +235,6 @@ export default class DiscussionModel extends BaseModel {
     return this.volume() === 'mute';
   }
 
-  markAsSeen() {
-    if (this.lastReadAt) { return; }
-    Records.discussions.remote.patchMember(this.keyOrId(), 'mark_as_seen');
-    return this.update({lastReadAt: new Date});
-  }
-
-  markAsRead(id) {
-    if (this.hasRead(id)) { return; }
-    this.readRanges.push([id,id]);
-    this.readRanges = RangeSet.reduce(this.readRanges);
-    return this.updateReadRanges();
-  }
-
   update(attributes) {
     if (isArray(this.readRanges) && isArray(attributes.readRanges) && !isEqual(attributes.readRanges, this.readRanges)) {
       attributes.readRanges = RangeSet.reduce(this.readRanges.concat(attributes.readRanges));
@@ -324,11 +313,6 @@ export default class DiscussionModel extends BaseModel {
   reopen() {
     this.processing = true;
     return Records.discussions.remote.patchMember(this.keyOrId(), 'reopen').finally(() => { return this.processing = false; });
-  }
-
-  moveComments() {
-    this.processing = true;
-    return Records.discussions.remote.patchMember(this.keyOrId(), 'move_comments', { forked_event_ids: this.forkedEventIds }).finally(() => { return this.processing = false; });
   }
 
   fetchUsersNotifiedCount() {

@@ -1,6 +1,6 @@
 class PollQuery
   def self.start
-    Poll.distinct.kept.includes(:poll_options, :group, :author)
+    Poll.distinct.kept.includes(:poll_options, :author)
   end
 
   def self.visible_to(user: LoggedOutUser.new,
@@ -15,17 +15,17 @@ class PollQuery
       or_stance_token = "OR s.token = #{ActiveRecord::Base.connection.quote(user.discussion_reader_token)}"
     end
 
-    chain = chain.where('polls.group_id IN (:group_ids)', group_ids: group_ids) if group_ids.any?
-    chain = chain.joins("LEFT OUTER JOIN discussions d on d.id = polls.discussion_id")
-    chain = chain.joins("LEFT OUTER JOIN groups g on g.id = polls.group_id")
-    chain = chain.joins("LEFT OUTER JOIN memberships m ON m.group_id = polls.group_id AND m.user_id = #{user.id || 0}")
-                 .joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = polls.discussion_id AND (dr.user_id = #{user.id || 0} #{or_discussion_reader_token})")
+    chain = chain.joins("LEFT OUTER JOIN topics t ON t.id = polls.topic_id")
+    chain = chain.where('t.group_id IN (:group_ids)', group_ids: group_ids) if group_ids.any?
+    chain = chain.joins("LEFT OUTER JOIN groups g on g.id = t.group_id")
+    chain = chain.joins("LEFT OUTER JOIN memberships m ON m.group_id = t.group_id AND m.user_id = #{user.id || 0}")
+                 .joins("LEFT OUTER JOIN topic_readers dr ON dr.topic_id = t.id AND (dr.user_id = #{user.id || 0} #{or_discussion_reader_token})")
                  .joins("LEFT OUTER JOIN stances s ON s.poll_id = polls.id AND (s.participant_id = #{user.id || 0} #{or_stance_token})")
                  .where("polls.author_id = :user_id OR
                          g.discussion_privacy_options = :public_only OR
                          (m.id IS NOT NULL AND m.revoked_at IS NULL) OR
                          (dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.guest = TRUE) OR
-                         (s.id IS NOT NULL AND s.revoked_at IS NULL AND s.guest = TRUE)", public_only: :public_only, user_id: user.id)
+                         (s.id IS NOT NULL AND s.revoked_at IS NULL)", public_only: :public_only, user_id: user.id)
     chain
   end
 
@@ -34,11 +34,11 @@ class PollQuery
     # how to do this....
     if group = Group.find_by(key: params[:group_key])
       group_ids = (params[:subgroups] == "none") ? [group.id] : group.id_and_subgroup_ids
-      chain = chain.where(group_id: group_ids)
+      chain = chain.joins(:topic).where("topics.group_id": group_ids)
     end
 
     if discussion = Discussion.find_by(key: params[:discussion_key]) || Discussion.find_by(id: params[:discussion_id])
-      chain = chain.where(discussion_id: discussion.id)
+      chain = chain.where(topic_id: discussion.topic_id)
     end
 
     if (tags = (params[:tags] || '').split('|')).any?

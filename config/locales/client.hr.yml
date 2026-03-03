@@ -527,6 +527,7 @@ hr:
     sign_in: Prijavite se da biste se pridružili razgovoru
     add_a_comment: Dodaj komentar
     share_your_thoughts: Podijelite svoje misli…
+    share_on_poll: Postavite pitanje ili podijelite nove informacije
   thread_nav:
     participants: Sudionici
   sidebar:
@@ -1342,8 +1343,6 @@ hr:
     default_request_to_join_prompt: Hvala na interesu za našu grupu. Predstavite se i objasnite zašto tražite da se pridružite.
     upgrade_for_subgroups: 'Molimo vas <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">da nadogradite svoju pretplatu</a> kako biste stvorili podgrupu'
     share_this_url_with_people_who_want_to_join: Podijelite ovaj URL s ljudima koji se žele pridružiti
-    allow_polls_without_discussions: Dopusti ankete bez rasprave
-    allow_polls_without_discussions_help: Spriječite ljude da pokreću ankete bez prethodnog pokretanja rasprave.
     aria_label: Grupni obrazac
     list_in_the_groups_directory: Popis u direktoriju grupa?
     list_in_directory_yes: Da · prikaži ovu grupu na stranici "pronađi grupu"
@@ -1991,13 +1990,6 @@ hr:
     closed: Zatvoreno
     need_vote: Treba glasati
     no_polls: Nisu pronađene ankete
-    standalone_disabled_title: Samostalne ankete su onemogućene
-    standalone_disabled_helptext: "<p>Ova grupa zahtijeva da se ankete pokrenu unutar rasprave.</p><p> Rasprave pomažu ljudima da razumiju kontekst, postavljaju pitanja i dijele gledišta prije glasanja. To vodi do boljih odluka.</p><p> Prvo započnite raspravu, a zatim dodajte anketu kada budete spremni za prikupljanje glasova.</p>"
-    start_discussion: Započni raspravu
-    standalone_warning_title: Razmislite o tome da prvo započnete raspravu
-    start_poll_anyway: Svejedno pokreni anketu
-    start_discussion_instead: Umjesto toga, započnite raspravu
-    standalone_warning_helptext: "<p>Ankete najbolje funkcioniraju kada ljudi prvo mogu raspravljati o temi.</p><p> Bez rasprave, birači ne mogu postavljati pitanja, izražavati zabrinutost ili predlagati poboljšanja.</p><p> Za najbolje iskustvo, započnite s raspravom, izgradite zajedničko razumijevanje, a zatim dodajte anketu kada budete spremni zabilježiti stavove ljudi.</p>"
   group_files_panel:
     no_files: Nije pronađena nijedna datoteka
     filename: Naziv datoteke
@@ -2730,7 +2722,6 @@ hr:
     these_are_templates_admin_hint: Administratori grupe mogu uređivati predloške, izrađivati nove predloške, preuređivati i skrivati/otkrivati predloške. Samo administratori mogu vidjeti skrivene predloške.
     show_hidden_templates: Prikaži skrivene predloške
     show_fewer: Prikaži manje
-    start_a_new_discussion: Započni novu raspravu
     start_discussion: Započni raspravu
     start_a_direct_discussion: Započnite izravnu raspravu
     these_are_templates: Ovo su predlošci za raspravu u vašoj grupi.

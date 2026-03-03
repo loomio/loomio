@@ -4,7 +4,6 @@ class Poll < ApplicationRecord
   include ReadableUnguessableUrls
   include HasEvents
   include HasMentions
-  include MessageChannel
   include SelfReferencing
   include Reactable
   include HasCreatedEvent
@@ -13,7 +12,7 @@ class Poll < ApplicationRecord
   include Discard::Model
   include Searchable
 
-  def self.pg_search_insert_statement(id: nil, author_id: nil, discussion_id: nil)
+  def self.pg_search_insert_statement(id: nil, author_id: nil)
     content_str = "regexp_replace(CONCAT_WS(' ', polls.title, polls.details, users.name), E'<[^>]+>', '', 'gi')"
     <<~SQL.squish
       INSERT INTO pg_search_documents (
@@ -22,6 +21,8 @@ class Poll < ApplicationRecord
         poll_id,
         group_id,
         discussion_id,
+        topic_id,
+        tags,
         author_id,
         authored_at,
         content,
@@ -31,8 +32,10 @@ class Poll < ApplicationRecord
       SELECT 'Poll' AS searchable_type,
         polls.id AS searchable_id,
         polls.id AS poll_id,
-        polls.group_id as group_id,
-        polls.discussion_id AS discussion_id,
+        t.group_id as group_id,
+        CASE WHEN t.topicable_type = 'Discussion' THEN t.topicable_id ELSE NULL END AS discussion_id,
+        polls.topic_id AS topic_id,
+        polls.tags AS tags,
         polls.author_id AS author_id,
         polls.created_at AS authored_at,
         #{content_str} AS content,
@@ -40,17 +43,17 @@ class Poll < ApplicationRecord
         now() AS created_at,
         now() AS updated_at
       FROM polls
+        LEFT JOIN topics t ON t.id = polls.topic_id
         LEFT JOIN users ON users.id = polls.author_id
       WHERE polls.discarded_at IS NULL
         #{id ? " AND polls.id = #{id.to_i} LIMIT 1" : ""}
         #{author_id ? " AND polls.author_id = #{author_id.to_i}" : ""}
-        #{discussion_id ? " AND polls.discussion_id = #{discussion_id.to_i}" : ""}
     SQL
   end
 
   is_rich_text on: :details
 
-  extend  NoSpam
+  extend NoSpam
   no_spam_for :title, :details
 
   set_custom_fields :meeting_duration,
@@ -114,7 +117,7 @@ class Poll < ApplicationRecord
       kind: created_event_kind,
       user_id: author_id,
       created_at: created_at,
-      discussion_id: discussion_id)
+      topic: topic)
   end
 
   def minimum_stance_choices
@@ -143,8 +146,7 @@ class Poll < ApplicationRecord
   has_many   :outcomes, dependent: :destroy
   has_one    :current_outcome, -> { where(latest: true) }, class_name: 'Outcome'
 
-  belongs_to :discussion
-  belongs_to :group, class_name: "Group"
+  belongs_to :topic, autosave: true
 
   enum :notify_on_closing_soon, {nobody: 0, author: 1, undecided_voters: 2, voters: 3}
   enum :hide_results, {off: 0, until_vote: 1, until_closed: 2}
@@ -153,7 +155,6 @@ class Poll < ApplicationRecord
   has_many :stances, dependent: :destroy
   has_many :stance_choices, through: :stances
   has_many :voters,       -> { merge(Stance.latest) }, through: :stances, source: :participant
-  has_many :admin_voters, -> { merge(Stance.latest.admin) }, through: :stances, source: :participant
   has_many :undecided_voters, -> { merge(Stance.latest.undecided) }, through: :stances, source: :participant
   has_many :decided_voters, -> { merge(Stance.latest.decided) }, through: :stances, source: :participant
   has_many :none_of_the_above_voters, -> { merge(Stance.latest.none_of_the_above) }, through: :stances, source: :participant
@@ -164,7 +165,11 @@ class Poll < ApplicationRecord
   has_many :documents, as: :model, dependent: :destroy
   has_many :stance_receipts, dependent: :destroy
 
-  scope :dangling, -> { joins('left join groups g on polls.group_id = g.id').where('group_id is not null and g.id is null') }
+  scope :dangling, -> {
+    joins("LEFT JOIN topics t ON t.id = polls.topic_id")
+    .joins("LEFT JOIN groups g ON g.id = t.group_id")
+    .where("t.group_id IS NOT NULL AND g.id IS NULL")
+  }
   scope :active, -> { kept.where('polls.closed_at': nil).where('polls.opened_at IS NOT NULL') }
   scope :template, -> { kept.where('polls.template': true) }
   scope :closed, -> { kept.where("polls.closed_at IS NOT NULL") }
@@ -172,7 +177,9 @@ class Poll < ApplicationRecord
   scope :search_for, ->(fragment) { kept.where("polls.title ilike :fragment", fragment: "%#{fragment}%") }
   scope :lapsed_but_not_closed, -> { active.where("polls.closing_at < ?", Time.now) }
   scope :active_or_closed_after, ->(since) { kept.where("polls.closed_at IS NULL OR polls.closed_at > ?", since) }
-  scope :in_organisation, -> (group) { kept.where(group_id: group.id_and_subgroup_ids) }
+  scope :in_organisation, ->(group) {
+    kept.joins(:topic).where("topics.group_id IN (?)", group.id_and_subgroup_ids)
+  }
 
   scope :closing_soon_not_published, ->(timeframe, recency_threshold = 24.hours.ago) do
      active
@@ -193,7 +200,6 @@ class Poll < ApplicationRecord
   normalizes :closing_at, :opening_at, with: ->(v) { v&.beginning_of_hour }
   validate :closes_in_future
   validate :opening_at_before_closing_at
-  validate :discussion_group_is_poll_group
   validate :cannot_deanonymize
   validate :cannot_reveal_results_early
   validate :title_if_not_discarded
@@ -207,8 +213,6 @@ class Poll < ApplicationRecord
     :details_format,
     :closing_at,
     :closed_at,
-    :group_id,
-    :discussion_id,
     :anonymous,
     :discarded_at,
     :discarded_by,
@@ -222,13 +226,35 @@ class Poll < ApplicationRecord
     :hide_results,
     :attachments]
 
-  update_counter_cache :group, :polls_count
-  update_counter_cache :group, :closed_polls_count
-  update_counter_cache :discussion, :closed_polls_count
-  update_counter_cache :discussion, :anonymous_polls_count
+  after_commit :update_group_counter_caches
+  def update_group_counter_caches
+    return unless (g = topic.group) && g.id
+    g.update_polls_count
+    g.update_closed_polls_count
+  end
 
   delegate :locale, to: :author
   delegate :name, to: :author, prefix: true
+  delegate :guests, :guest_ids, :add_guest!, :add_admin!, :admins, :members, :group_id, :group, to: :topic
+
+  # Id like to see what happens if I remove these
+  # def discussion
+  #   topic&.topicable_type == 'Discussion' ? topic.topicable : nil
+  # end
+
+  # def discussion=(d)
+  #   self.topic_id = d&.topic_id
+  # end
+
+  # def discussion_id
+  #   topic&.topicable_type == 'Discussion' ? topic.topicable_id : nil
+  # end
+
+  # def discussion_id=(id)
+  #   if id.present?
+  #     self.topic_id = Discussion.find(id).topic_id
+  #   end
+  # end
 
   def has_score_icons
     vote_method == "time_poll"
@@ -298,10 +324,6 @@ class Poll < ApplicationRecord
     author_id
   end
 
-  def existing_member_ids
-    voter_ids
-  end
-
   def decided_voters_count
     voters_count - undecided_voters_count
   end
@@ -347,14 +369,6 @@ class Poll < ApplicationRecord
     custom_fields.fetch('time_zone', author.time_zone)
   end
 
-  def parent_event
-    if discussion
-      discussion.created_event
-    else
-      nil
-    end
-  end
-
   def quorum_count
     (quorum_pct.to_f/100 * voters_count).ceil
   end
@@ -366,10 +380,6 @@ class Poll < ApplicationRecord
   def quorum_votes_required
     return 0 if quorum_pct.nil?
     (((quorum_pct.to_f - cast_stances_pct.to_f)/100) * voters_count).ceil
-  end
-
-  def group
-    super || NullGroup.new
   end
 
   def show_results?(voted: false)
@@ -408,43 +418,6 @@ class Poll < ApplicationRecord
       none_of_the_above_count: stances.latest.decided.where(none_of_the_above: true).count,
       versions_count: versions.count
     )
-  end
-
-  # people who administer the poll (not necessarily vote)
-  def admins
-    raise "poll.admins only makes sense for persisted polls" if self.new_record?
-    User.active.
-      joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.discussion_id || 0} AND dr.user_id = users.id").
-      joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
-      joins("LEFT OUTER JOIN stances s ON s.participant_id = users.id AND s.poll_id = #{self.id || 0}").
-      joins("LEFT OUTER JOIN polls p ON p.author_id = users.id AND p.id = #{self.id || 0}").
-      where("(m.id  IS NOT NULL AND m.revoked_at IS NULL AND m.admin = TRUE) OR                                             /* group admin */
-             (p.author_id = users.id AND p.group_id IS NOT NULL AND m.id IS NOT NULL) OR                                    /* poll author and group member */
-             (p.author_id = users.id AND p.group_id IS NULL) OR                                                             /* poll author and no group */
-             (p.author_id = users.id AND dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.guest = TRUE) OR                /* poll author and discussion guest */
-             (dr.id IS NOT NULL AND m.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.admin = TRUE) OR                      /* discussion admin, group member */
-             (dr.id IS NOT NULL AND m.id IS NULL     AND dr.revoked_at IS NULL AND dr.admin = TRUE AND dr.guest = TRUE) OR  /* discussion guest admin, not group member */
-             (s.id  IS NOT NULL AND m.id IS NOT NULL AND s.revoked_at IS NULL AND latest = TRUE AND s.admin = TRUE) OR      /* poll admin, group member */
-             (s.id  IS NOT NULL AND m.id IS NULL     AND s.revoked_at IS NULL AND latest = TRUE AND s.admin = TRUE AND s.guest = TRUE /* poll admin guest */)")
-  end
-
-  # people who can read the poll, not necessarily vote
-  def members
-      User.active.
-      joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.discussion_id || 0} AND dr.user_id = users.id").
-      joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
-      joins("LEFT OUTER JOIN stances s ON s.participant_id = users.id AND s.poll_id = #{self.id || 0}").
-      where("(dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.guest = TRUE) OR
-             (m.id  IS NOT NULL AND m.revoked_at IS NULL) OR
-             (s.id  IS NOT NULL AND s.revoked_at IS NULL AND s.guest = TRUE AND latest = TRUE)")
-  end
-
-  def add_guest!(user, author)
-    stances.create!(participant_id: user.id, inviter: author, guest: true, volume: DiscussionReader.volumes[:normal])
-  end
-
-  def add_admin!(user, author)
-    stances.create!(participant_id: user.id, inviter: author, volume: DiscussionReader.volumes[:normal], admin: true)
   end
 
   def opened?
@@ -499,14 +472,6 @@ class Poll < ApplicationRecord
     (['title', 'details', 'closing_at', 'opening_at'] & self.changes.keys).any?
   end
 
-  def discussion_id=(discussion_id)
-    super.tap { self.group_id = self.discussion&.group_id }
-  end
-
-  def discussion=(discussion)
-    super.tap { self.group_id = self.discussion&.group_id }
-  end
-
   def prioritise_poll_options!
     if self.poll_type == 'meeting'
       self.poll_options.sort {|a,b| a.name <=> b.name }.each_with_index {|o, i| o.priority = i }
@@ -548,14 +513,6 @@ class Poll < ApplicationRecord
     end
     return if opening_at < closing_at
     errors.add(:opening_at, I18n.t(:"poll.error.opening_at_before_closing_at"))
-  end
-
-  def discussion_group_is_poll_group
-    return if poll.group.nil?
-    return if poll.discussion.nil?
-    poll.group_id = poll.discussion.group_id if poll.group_id.nil? && poll.discussion.group_id
-    return if poll.discussion.group_id == poll.group_id
-    self.errors.add(:group, 'Poll group is not discussion group')
   end
 
   def clamp_minimum_stance_choices

@@ -2,20 +2,20 @@ require 'test_helper'
 
 class DiscussionReaderServiceTest < ActiveSupport::TestCase
   setup do
-    @group = groups(:test_group)
-    @user = users(:discussion_author)
-    @member = users(:another_user)
-    @discussion = discussions(:test_discussion)
+    @group = groups(:group)
+    @user = users(:admin)
+    @member = users(:alien)
+    @discussion = discussions(:discussion)
     @guest = User.create(email: "guest@example.com", email_verified: false, username: "guest123")
 
-    @guest_discussion_reader = DiscussionReader.create(
-      discussion: @discussion,
+    @guest_discussion_reader = TopicReader.create(
+      topic: @discussion.topic,
       user: @guest,
       guest: true,
       inviter: @discussion.author
     )
-    @member_discussion_reader = DiscussionReader.create(
-      discussion: @discussion,
+    @member_discussion_reader = TopicReader.create(
+      topic: @discussion.topic,
       user: @member,
       inviter: @discussion.author
     )
@@ -31,7 +31,7 @@ class DiscussionReaderServiceTest < ActiveSupport::TestCase
     DiscussionReaderService.redeem(discussion_reader: @guest_discussion_reader, actor: @user)
 
     # After redeem, check that the user for this discussion has been changed
-    redeemed_reader = DiscussionReader.find_by(discussion_id: @discussion.id, user_id: @user.id)
+    redeemed_reader = TopicReader.find_by(topic: @discussion.topic, user_id: @user.id)
     assert_not_nil redeemed_reader
   end
 

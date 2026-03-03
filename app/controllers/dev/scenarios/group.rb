@@ -131,8 +131,7 @@ module Dev::Scenarios::Group
                           group_privacy: 'closed',
                           creator: jennifer)
     GroupService.create(group: @subgroup, actor: jennifer)
-    discussion = Discussion.new(group: @subgroup, title: "Vaya con dios", private: true, author: jennifer)
-    DiscussionService.create(discussion: discussion, actor: discussion.author)
+    DiscussionService.create(params: {group_id: @subgroup.id, title: "Vaya con dios", private: true}, actor: jennifer)
     redirect_to group_path(@subgroup)
   end
 
@@ -205,9 +204,8 @@ module Dev::Scenarios::Group
     sign_in patrick
     @group = Group.create!(name: 'Open Dirty Dancing Shoes', membership_granted_upon: 'request', group_privacy: 'open')
     @group.add_admin! jennifer
-    @discussion = Discussion.new(title: "I carried a watermelon", private: false, author: jennifer, group: @group)
-    DiscussionService.create(discussion: @discussion, actor: jennifer)
-    CommentService.create(comment: Comment.new(body: "It was real seedy", discussion: @discussion), actor: jennifer)
+    @discussion = DiscussionService.create(params: {group_id: @group.id, title: "I carried a watermelon", private: false}, actor: jennifer)
+    CommentService.create(comment: Comment.new(body: "It was real seedy", parent: @discussion), actor: jennifer)
     redirect_to group_path(create_group)
   end
 
@@ -216,8 +214,7 @@ module Dev::Scenarios::Group
                                 membership_granted_upon: 'request',
                                 group_privacy: 'open')
     @group.add_admin! jennifer
-    @discussion = Discussion.new(title: 'I carried a watermelon', private: false, author: jennifer, group: @group)
-    DiscussionService.create(discussion: @discussion, actor: @discussion.author)
+    @discussion = DiscussionService.create(params: {group_id: @group.id, title: 'I carried a watermelon', private: false}, actor: jennifer)
     redirect_to group_path(@group)
   end
 

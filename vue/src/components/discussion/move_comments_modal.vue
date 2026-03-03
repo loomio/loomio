@@ -37,7 +37,7 @@ export default {
     getSuggestions() {
       this.searchResults = Records.discussions.collection.chain()
         .find({groupId: this.groupId})
-        .where(d => !!AbilityService.canStartPoll(d))
+        .where(d => d.topic() && AbilityService.canStartPoll(d.topic()))
         .simplesort('id', true)
         .data();
     },
@@ -48,7 +48,7 @@ export default {
 
     startNewThread() {
       this.selectedDiscussion = Records.discussions.build({groupId: this.groupId});
-      this.setIsForking();
+      this.selectedDiscussion.update({forkedEventIds: this.discussion.forkedEventIds});
       this.resetSourceDiscussion();
       EventBus.$emit('openModal', {
         component: 'DiscussionForm',
@@ -61,18 +61,14 @@ export default {
 
     submit() {
       this.loading = true;
-      this.selectedDiscussion.moveComments().then(() => {
+      const topic = this.selectedDiscussion.topic();
+      topic.moveComments(this.discussion.forkedEventIds).then(() => {
         this.loading = false;
         this.resetSourceDiscussion();
-        this.selectedDiscussion.update({forkedEventIds: []});
         EventBus.$emit('closeModal');
         Flash.success("discussion_fork_actions.moved");
         this.$router.push(this.urlFor(this.selectedDiscussion));
       });
-    },
-
-    setIsForking() {
-      this.selectedDiscussion.update({forkedEventIds: this.discussion.forkedEventIds});
     },
 
     fetch: debounce(function() {
@@ -84,7 +80,7 @@ export default {
           .find({groupId: this.groupId})
           .find({id: { $ne: this.discussion.id } })
           .find({title: { $regex: [escapeRegExp(this.searchFragment), 'i'] }})
-          .where(d => !!AbilityService.canAddComment(d))
+          .where(d => d.topic() && AbilityService.canAddComment(d.topic()))
           .simplesort('title')
           .data();
       });
@@ -92,7 +88,6 @@ export default {
   },
 
   watch: {
-    selectedDiscussion: 'setIsForking',
     searchFragment: 'fetch',
     groupId: 'getSuggestions'
   }

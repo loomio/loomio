@@ -8,26 +8,6 @@ import LmoUrlService  from '@/shared/services/lmo_url_service';
 import openModal      from '@/shared/helpers/open_modal';
 
 export default new class StanceService {
-  makeAdmin = {
-    name: 'membership_dropdown.make_coordinator',
-    canPerform(poll, user) {
-      return poll.adminsInclude(Session.user()) && !poll.adminsInclude(user);
-    },
-    perform(poll, user) {
-      return Records.remote.post('stances/make_admin', {participant_id: user.id, poll_id: poll.id, exclude_types: 'discussion'});
-    }
-  };
-
-  removeAdmin = {
-    name: 'membership_dropdown.revoke_admin',
-    canPerform(poll, user) {
-      return poll.adminsInclude(Session.user()) && poll.adminsInclude(user);
-    },
-    perform(poll, user) {
-      return Records.remote.post('stances/remove_admin', {participant_id: user.id, poll_id: poll.id, exclude_types: 'discussion'});
-    }
-  };
-
   revoke = {
     name: 'membership_dropdown.remove_from.poll',
     canPerform(poll, user) {
@@ -49,12 +29,14 @@ export default new class StanceService {
       react: {
         dock: 1,
         canPerform() {
+          const poll = stance.poll();
+          const topic = poll ? poll.topic() : null;
           return stance.castAt &&
           !stance.discardedAt &&
           !stance.revokedAt &&
-          stance.poll().showResults() &&
-          stance.poll().membersInclude(Session.user()) &&
-          ((stance.poll().discussionId === null) || !stance.poll().discussion().closedAt);
+          poll && poll.showResults() &&
+          poll.membersInclude(Session.user()) &&
+          (!topic || !topic.closedAt);
         }
       },
 
@@ -71,16 +53,20 @@ export default new class StanceService {
         icon: 'mdi-reply',
         dock: 1,
         canPerform() {
+          const poll = stance.poll();
+          const topic = poll ? poll.topic() : null;
           return stance.castAt &&
           !stance.discardedAt &&
           !stance.revokedAt &&
-          !stance.poll().anonymous &&
-          stance.poll().showResults() &&
-          stance.poll().discussionId &&
-          AbilityService.canAddComment(stance.poll().discussion());
+          poll && !poll.anonymous &&
+          poll.showResults() &&
+          topic && topic.membersInclude(Session.user()) &&
+          !topic.closedAt;
         },
         perform() {
-          if (event.depth === stance.discussion().maxDepth) {
+          const topic = stance.poll() ? stance.poll().topic() : null;
+          const maxDepth = topic ? topic.maxDepth : 2;
+          if (event.depth === maxDepth) {
             return EventBus.$emit('toggle-reply', stance, event.parentId);
           } else {
             return EventBus.$emit('toggle-reply', stance, event.id);

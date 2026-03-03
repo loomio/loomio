@@ -27,8 +27,7 @@ export default class StanceModel extends BaseModel {
       participantId: null,
       pollId: null,
       optionScores: {},
-      castAt: null,
-      guest: false
+      castAt: null
     };
   }
 
@@ -67,6 +66,10 @@ export default class StanceModel extends BaseModel {
 
   memberIds() {
     return this.poll().memberIds();
+  }
+
+  topic() {
+    return this.poll().topic();
   }
 
   group() {

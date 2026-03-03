@@ -4,7 +4,7 @@ class LocalesHelperTest < ActiveSupport::TestCase
   include LocalesHelper
 
   setup do
-    @user = users(:normal_user)
+    @user = users(:user)
     @params = {}
     @request_env = { 'HTTP_ACCEPT_LANGUAGE' => '' }
   end

@@ -8,11 +8,11 @@ class DestroyTagWorker
     Tag.transaction do
       Tag.where(group_id: group_ids, name: name).delete_all
 
-      Discussion.where(group_id: group_ids).where.contains(tags: [name]).find_each do |d|
+      Discussion.joins(:topic).where(topics: { group_id: group_ids }).where.contains(tags: [name]).find_each do |d|
         d.update_column(:tags, d.tags - Array(name))
       end
 
-      Poll.where(group_id: group_ids).where.contains(tags: [name]).find_each do |p|
+      Poll.joins(:topic).where(topics: { group_id: group_ids }).where.contains(tags: [name]).find_each do |p|
         p.update_column(:tags, p.tags - Array(name))
       end
     end

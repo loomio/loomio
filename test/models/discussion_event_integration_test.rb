@@ -8,9 +8,9 @@ class DiscussionEventIntegrationTest < ActiveSupport::TestCase
     @group.add_admin!(@commentor)
     @group.add_member!(@viewer)
 
-    @discussion = create_discussion(group: @group, author: @commentor)
-    @first_comment = Comment.new(discussion: @discussion, body: "First", author: @commentor)
-    @second_comment = Comment.new(discussion: @discussion, body: "Second", author: @commentor)
+    @discussion = DiscussionService.create(params: { group_id: @group.id, title: "Integration Test #{SecureRandom.hex(4)}" }, actor: @commentor)
+    @first_comment = Comment.new(parent: @discussion, body: "First", author: @commentor)
+    @second_comment = Comment.new(parent: @discussion, body: "Second", author: @commentor)
   end
 
   test "user has seen nothing, first comment deleted" do
@@ -18,22 +18,23 @@ class DiscussionEventIntegrationTest < ActiveSupport::TestCase
     CommentService.create(comment: @second_comment, actor: @commentor)
     CommentService.destroy(comment: @first_comment, actor: @commentor)
     @discussion.reload
-    dr = DiscussionReader.for(user: @viewer, discussion: @discussion)
+    dr = TopicReader.for(user: @viewer, topic: @discussion.topic)
     dr.save
     dr.reload
-    assert_equal 1, @discussion.items_count - dr.read_items_count
+    # items_count includes root event (sequence_id 0) + 1 remaining comment
+    assert_equal 2, @discussion.topic.items_count - dr.read_items_count
   end
 
   test "user sees discussion before comments, first comment deleted" do
-    dr = DiscussionReader.for(user: @viewer, discussion: @discussion)
+    dr = TopicReader.for(user: @viewer, topic: @discussion.topic)
     dr.save
-    dr.viewed!
+    dr.viewed!([[0, 0]])
 
     CommentService.create(comment: @first_comment, actor: @commentor)
     CommentService.create(comment: @second_comment, actor: @commentor)
     CommentService.destroy(comment: @first_comment, actor: @commentor)
     @discussion.reload
     dr.reload
-    assert_equal 1, @discussion.items_count - dr.read_items_count
+    assert_equal 1, @discussion.topic.items_count - dr.read_items_count
   end
 end

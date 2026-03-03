@@ -16,11 +16,11 @@ module Ability::Outcome
     end
 
     can [:add_members], ::Outcome do |outcome|
-      !outcome.poll.active? && can?(:add_members, outcome.poll)
+      !outcome.poll.active? && can?(:add_members, outcome.poll.topic)
     end
 
     can [:add_guests], ::Outcome do |outcome|
-      !outcome.poll.active? && can?(:add_guests, outcome.poll)
+      !outcome.poll.active? && can?(:add_guests, outcome.poll.topic)
     end
   end
 end

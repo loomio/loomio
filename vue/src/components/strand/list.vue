@@ -18,9 +18,10 @@ const props = defineProps({
 
 const parentChecked = ref(true);
 
-const endUrl = computed(() => 
-  LmoUrlService.route({ model: props.loader.discussion })
-);
+const endUrl = computed(() => {
+  if (!props.loader || !props.loader.discussion) { return ''; }
+  return LmoUrlService.route({ model: props.loader.discussion });
+});
 
 const isFocused = (event) => {
   return props.focusSelector == `.sequenceId-${event.sequenceId || 0}` ||
@@ -46,7 +47,7 @@ const rowClasses = (obj) => {
     .strand-item__row(v-if="!loader.collapsed[obj.event.id]")
       .strand-item__gutter(v-if="obj.event.depth > 0")
         .d-flex.justify-center
-          template(v-if="loader.discussion.forkedEventIds.length")
+          template(v-if="loader.discussion && loader.discussion.forkedEventIds && loader.discussion.forkedEventIds.length")
             v-checkbox-btn.thread-item__is-forking( v-if="obj.event.forkingDisabled()" disabled v-model="parentChecked" )
             v-checkbox-btn.thread-item__is-forking( v-else v-model="loader.discussion.forkedEventIds" :value="obj.event.id" )
           template(v-else)

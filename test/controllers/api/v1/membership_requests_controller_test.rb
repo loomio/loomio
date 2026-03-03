@@ -2,8 +2,8 @@ require 'test_helper'
 
 class Api::V1::MembershipRequestsControllerTest < ActionController::TestCase
   setup do
-    @user = users(:normal_user)
-    @group = groups(:test_group)
+    @user = users(:user)
+    @group = groups(:group)
     @group.update(members_can_add_members: true)
     @group.add_member! @user unless @group.members.include?(@user)
 
@@ -53,7 +53,7 @@ class Api::V1::MembershipRequestsControllerTest < ActionController::TestCase
   test "pending returns membership requests filtered by group when permitted" do
     get :pending, params: { group_id: @group.id }
     assert_response :success
-    
+
     json = JSON.parse(response.body)
     assert_includes json.keys, 'membership_requests'
     assert_equal @pending_request.id, json['membership_requests'].first['id']
@@ -61,7 +61,7 @@ class Api::V1::MembershipRequestsControllerTest < ActionController::TestCase
 
   test "pending returns access denied when not permitted" do
     @group.update_attribute(:members_can_add_members, false)
-    
+
     get :pending, params: { group_id: @group.id }
     assert_response :forbidden
     assert_includes JSON.parse(response.body)['exception'], 'CanCan::AccessDenied'
@@ -70,7 +70,7 @@ class Api::V1::MembershipRequestsControllerTest < ActionController::TestCase
   test "previous returns approved membership requests filtered by group when permitted" do
     get :previous, params: { group_id: @group.id }
     assert_response :success
-    
+
     json = JSON.parse(response.body)
     assert_includes json.keys, 'membership_requests'
     assert_equal @approved_request.id, json['membership_requests'].first['id']
@@ -78,7 +78,7 @@ class Api::V1::MembershipRequestsControllerTest < ActionController::TestCase
 
   test "previous returns access denied when not permitted" do
     @group.update_attribute(:members_can_add_members, false)
-    
+
     get :previous, params: { group_id: @group.id }
     assert_response :forbidden
     assert_includes JSON.parse(response.body)['exception'], 'CanCan::AccessDenied'
@@ -87,7 +87,7 @@ class Api::V1::MembershipRequestsControllerTest < ActionController::TestCase
   test "approve membership request when permitted" do
     post :approve, params: { id: @pending_request.id }
     assert_response :success
-    
+
     record = JSON.parse(response.body)['membership_requests'].first
     assert_equal @user.id, record['responder_id']
     assert_equal 'approved', record['response']
@@ -102,7 +102,7 @@ class Api::V1::MembershipRequestsControllerTest < ActionController::TestCase
   test "ignore membership request when permitted" do
     post :ignore, params: { id: @pending_request.id }
     assert_response :success
-    
+
     record = JSON.parse(response.body)['membership_requests'].first
     assert_equal @user.id, record['responder_id']
     assert_equal 'ignored', record['response']

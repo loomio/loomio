@@ -6,7 +6,6 @@ class Discussion < ApplicationRecord
   include HasTimeframe
   include HasEvents
   include HasMentions
-  include MessageChannel
   include SelfReferencing
   include HasCreatedEvent
   include HasRichText
@@ -23,6 +22,8 @@ class Discussion < ApplicationRecord
         searchable_id,
         group_id,
         discussion_id,
+        topic_id,
+        tags,
         author_id,
         authored_at,
         content,
@@ -31,8 +32,10 @@ class Discussion < ApplicationRecord
         updated_at)
       SELECT 'Discussion' AS searchable_type,
         discussions.id AS searchable_id,
-        discussions.group_id as group_id,
+        topics.group_id as group_id,
         discussions.id AS discussion_id,
+        discussions.topic_id AS topic_id,
+        discussions.tags AS tags,
         discussions.author_id AS author_id,
         discussions.created_at AS authored_at,
         #{content_str} AS content,
@@ -40,6 +43,7 @@ class Discussion < ApplicationRecord
         now() AS created_at,
         now() AS updated_at
       FROM discussions
+        LEFT JOIN topics ON topics.id = discussions.topic_id
         LEFT JOIN users ON users.id = discussions.author_id
       WHERE discarded_at IS NULL
         #{id ? " AND discussions.id = #{id.to_i} LIMIT 1" : ''}
@@ -48,48 +52,45 @@ class Discussion < ApplicationRecord
   end
 
   scope :dangling, lambda {
-    joins('left join groups g on discussions.group_id = g.id').where('group_id is not null and g.id is null')
+    joins(:topic).joins('left join groups g on topics.group_id = g.id').where('topics.group_id is not null and g.id is null')
   }
-  scope :in_organisation, ->(group) { includes(:author).where(group_id: group.id_and_subgroup_ids) }
-  scope :last_activity_after, ->(time) { where('last_activity_at > ?', time) }
-  scope :order_by_latest_activity, -> { order(last_activity_at: :desc) }
-  scope :order_by_pinned_then_latest_activity, -> { order('pinned_at, last_activity_at DESC') }
-  scope :recent, -> { where('last_activity_at > ?', 6.weeks.ago) }
+  scope :in_organisation, ->(group) { includes(:author).joins(:topic).where(topics: { group_id: group.id_and_subgroup_ids }) }
+  scope :last_activity_after, ->(time) { joins(:topic).where('topics.last_activity_at > ?', time) }
+  scope :order_by_latest_activity, -> { joins(:topic).order('topics.last_activity_at DESC') }
+  scope :order_by_pinned_then_latest_activity, -> { joins(:topic).order('topics.pinned_at, topics.last_activity_at DESC') }
+  scope :recent, -> { joins(:topic).where('topics.last_activity_at > ?', 6.weeks.ago) }
 
-  scope :visible_to_public, -> { kept.where(private: false) }
-  scope :not_visible_to_public, -> { kept.where(private: true) }
+  scope :visible_to_public, -> { kept.joins(:topic).where(topics: { private: false }) }
+  scope :not_visible_to_public, -> { kept.joins(:topic).where(topics: { private: true }) }
 
-  scope :is_open, -> { kept.where(closed_at: nil) }
-  scope :is_closed, -> { kept.where('closed_at is not null') }
+  scope :is_open, -> { kept.joins(:topic).where('topics.closed_at IS NULL') }
+  scope :is_closed, -> { kept.joins(:topic).where('topics.closed_at IS NOT NULL') }
 
-  validates_presence_of :title, :group, :author
+  validates_presence_of :title, :author
   validates :title, length: { maximum: 150 }
   validates :description, length: { maximum: AppConfig.app_features[:max_message_length] }
-  validate :privacy_is_permitted_by_group
 
   is_mentionable  on: :description
   is_translatable on: %i[title description], load_via: :find_by_key!, id_field: :key
   is_rich_text    on: :description
-  has_paper_trail only: %i[title description description_format private group_id author_id tags closed_at
-                           closer_id attachments]
+  has_paper_trail only: %i[title description description_format author_id tags attachments]
 
-  belongs_to :group, class_name: 'Group'
+  belongs_to :topic
   belongs_to :author, class_name: 'User'
   belongs_to :user, foreign_key: 'author_id'
-  belongs_to :closer, foreign_key: 'closer_id', class_name: 'User'
-  has_many :polls, dependent: :destroy
-  has_many :active_polls, -> { where(closed_at: nil) }, class_name: 'Poll'
 
-  has_many :comments, dependent: :destroy
+  has_many :polls, primary_key: :topic_id, foreign_key: :topic_id, dependent: :destroy
+  has_many :active_polls, -> { where(closed_at: nil) }, class_name: 'Poll', primary_key: :topic_id, foreign_key: :topic_id
+
+  has_many :topic_readers, through: :topic
+  has_many :readers, -> { merge TopicReader.active }, through: :topic_readers, source: :user
+
+  has_many :comments, through: :topic
+  has_many :comment_documents, through: :comments, source: :documents
+
   has_many :commenters, -> { uniq }, through: :comments, source: :user
   has_many :documents, as: :model, dependent: :destroy
   has_many :poll_documents,    through: :polls,    source: :documents
-  has_many :comment_documents, through: :comments, source: :documents
-
-  has_many :items, -> { includes(:user) }, class_name: 'Event', dependent: :destroy
-
-  has_many :discussion_readers, dependent: :destroy
-  has_many :readers, -> { merge DiscussionReader.active }, through: :discussion_readers, source: :user
 
   include DiscussionExportRelations
 
@@ -104,129 +105,34 @@ class Discussion < ApplicationRecord
   delegate :email, to: :author, prefix: :author
   delegate :name_and_email, to: :author, prefix: :author
   delegate :locale, to: :author
+  delegate :members, :admins, :guests, :guest_ids, :add_guest!, :add_admin!, :group_id, :group,
+           :seen_by_count, :members_count, :closed_polls_count, :anonymous_polls_count,
+           :items, :newest_first, :private, :closed_at, :pinned_at, to: :topic
 
-  after_create :set_last_activity_at_to_created_at
-  after_destroy :drop_sequence_id_sequence
-
-  define_counter_cache(:closed_polls_count)         { |d| d.polls.closed.count }
   define_counter_cache(:versions_count)             { |d| d.versions.count }
-  define_counter_cache(:seen_by_count)              { |d| d.discussion_readers.where('last_read_at is not null').count }
-  define_counter_cache(:members_count)              { |d| d.discussion_readers.where('revoked_at is null').count }
-  define_counter_cache(:anonymous_polls_count)      { |d| d.polls.where(anonymous: true).count }
 
-  update_counter_cache :group, :discussions_count
-  update_counter_cache :group, :public_discussions_count
-  update_counter_cache :group, :open_discussions_count
-  update_counter_cache :group, :closed_discussions_count
-  update_counter_cache :group, :closed_polls_count
+  after_commit :update_group_counter_caches
 
+  def update_group_counter_caches
+    #TODO can this be a background job or materialized view
+    return unless (g = topic.group) && g.id
+    g.update_discussions_count
+    # g.update_public_discussions_count
+    g.update_open_discussions_count
+    g.update_closed_discussions_count
+    g.update_closed_polls_count
+  end
 
   def title_model
     self
-  end
-
-  def poll
-    nil
-  end
-
-  def group
-    super || NullGroup.new
-  end
-
-  def existing_member_ids
-    reader_ids
   end
 
   def user_id
     author_id
   end
 
-  def author
-    super || AnonymousUser.new
-  end
-
-  def members
-    User.active
-        .joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{id || 0} AND dr.user_id = users.id")
-        .joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{group_id || 0}")
-        .where('(m.id IS NOT NULL AND m.revoked_at IS NULL) OR
-                (dr.id IS NOT NULL AND dr.guest = TRUE AND dr.revoked_at IS NULL)')
-  end
-
-  def admins
-    User.active
-        .joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{id || 0} AND dr.user_id = users.id")
-        .joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{group_id || 0}")
-        .where('(m.admin = TRUE AND m.id IS NOT NULL AND m.revoked_at IS NULL) OR
-                (dr.admin = TRUE AND dr.id IS NOT NULL AND dr.revoked_at IS NULL)')
-  end
-
-  def guests
-    User.active
-        .joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{id || 0} AND dr.user_id = users.id")
-        .joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{group_id || 0}")
-        .where('(m.id IS NULL OR m.revoked_at IS NOT NULL) AND (dr.id IS NOT NULL AND dr.guest = TRUE AND dr.revoked_at IS NULL)')
-  end
-
-  def guest_ids
-    guests.pluck(:id)
-  end
-
-  def add_guest!(user, inviter)
-    if (dr = discussion_readers.find_by(user: user))
-      dr.update(guest: true, inviter: inviter)
-    else
-      discussion_readers.create!(user: user, inviter: inviter, guest: true, volume: DiscussionReader.volumes[:normal])
-    end
-  end
-
-  def add_admin!(user, inviter)
-    if (dr = discussion_readers.find_by(user: user))
-      dr.update(inviter: inviter, admin: true)
-    else
-      discussion_readers.create!(user: user, inviter: inviter, admin: true, volume: DiscussionReader.volumes[:normal])
-    end
-  end
-
-  def poll_id
-    nil
-  end
-
   def created_event_kind
     :new_discussion
-  end
-
-  def find_last_activity_at
-    [
-      comments.kept.order('created_at desc'),
-      polls.kept.order('created_at desc'),
-      Outcome.where(poll_id: poll_ids).order('created_at desc'),
-      Stance.latest.where(poll_id: poll_ids).order('updated_at, created_at desc'),
-      Discussion.where(id: id)
-    ].map { |rel| rel.first&.created_at }.compact.max
-  end
-
-  def update_sequence_info!
-    sequence_ids = discussion.items.order(:sequence_id).pluck(:sequence_id).compact
-    discussion.ranges_string = RangeSet.serialize RangeSet.reduce RangeSet.ranges_from_list sequence_ids
-    discussion.last_activity_at = find_last_activity_at
-    update_columns(
-      items_count: sequence_ids.count,
-      ranges_string: discussion.ranges_string,
-      last_activity_at: discussion.last_activity_at
-    )
-  end
-
-  def drop_sequence_id_sequence
-    SequenceService.drop_seq!('discussions_sequence_id', id)
-  end
-
-  def public?
-    !private
-  end
-
-  def discussion
-    self
   end
 
   def body=(val)
@@ -245,43 +151,8 @@ class Discussion < ApplicationRecord
     self.description_format = (val)
   end
 
-  def ranges
-    RangeSet.parse(ranges_string)
-  end
-
-  def first_sequence_id
-    Array(ranges.first).first.to_i
-  end
-
-  def last_sequence_id
-    Array(ranges.last).last.to_i
-  end
-
-  # this is insted of a big slow migration
-  def ranges_string
-    update_sequence_info! if self[:ranges_string].nil?
-    self[:ranges_string]
-  end
-
   def is_new_version?
-    (%w[title description private] & changes.keys).any?
+    (%w[title description] & changes.keys).any? || topic&.private_changed?
   end
 
-  private
-
-  def set_last_activity_at_to_created_at
-    update_column(:last_activity_at, created_at)
-  end
-
-  def sequence_id_or_0(item)
-    item.try(:sequence_id) || 0
-  end
-
-  def privacy_is_permitted_by_group
-    errors.add(:private, 'must be private') if public? and group.private_discussions_only?
-
-    return unless private? and group.public_discussions_only?
-
-    errors.add(:private, 'must be public')
-  end
 end

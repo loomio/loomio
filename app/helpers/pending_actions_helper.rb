@@ -82,7 +82,7 @@ module PendingActionsHelper
   end
 
   def pending_discussion_reader
-    DiscussionReader.redeemable.find_by(token: pending_discussion_reader_token) if pending_discussion_reader_token
+    TopicReader.redeemable.find_by(token: pending_discussion_reader_token) if pending_discussion_reader_token
   end
 
   def pending_stance_token

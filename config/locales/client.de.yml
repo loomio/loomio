@@ -537,6 +537,7 @@ de:
     sign_in: Melde dich an, um an der Diskussion teilzunehmen
     add_a_comment: Einen Kommentar hinzufügen
     share_your_thoughts: Teilen Sie Ihre Gedanken mit…
+    share_on_poll: Stellen Sie eine Frage oder teilen Sie neue Informationen.
   thread_nav:
     participants: Teilnehmer
   sidebar:
@@ -1358,8 +1359,6 @@ de:
     default_request_to_join_prompt: Vielen Dank für Ihr Interesse an unserer Gruppe. Bitte stellen Sie sich vor und erklären Sie, warum Sie Mitglied werden möchten.
     upgrade_for_subgroups: 'Bitte <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">aktualisieren Sie Ihr Abonnement</a> , um eine Untergruppe zu erstellen'
     share_this_url_with_people_who_want_to_join: Teilen Sie diese URL mit Leuten, die beitreten möchten
-    allow_polls_without_discussions: Umfragen ohne Diskussion zulassen
-    allow_polls_without_discussions_help: Verhindert, dass Personen Umfragen starten, ohne vorher eine Diskussion zu beginnen.
     aria_label: Gruppenbildung
     list_in_the_groups_directory: Eintrag im Gruppenverzeichnis?
     list_in_directory_yes: Ja · Diese Gruppe auf der Seite „Gruppe finden“ anzeigen
@@ -2024,13 +2023,6 @@ de:
     closed: Geschlossen
     need_vote: Brauchen Sie eine Abstimmung
     no_polls: 'Keine Umfragen gefunden '
-    standalone_disabled_title: Eigenständige Umfragen sind deaktiviert
-    standalone_disabled_helptext: "<p>Diese Gruppe verlangt, dass Umfragen innerhalb einer Diskussion gestartet werden.</p><p> Diskussionen helfen den Menschen, den Kontext zu verstehen, Fragen zu stellen und ihre Perspektiven vor der Abstimmung auszutauschen. Dies führt zu besseren Entscheidungen.</p><p> Eröffnen Sie zunächst eine Diskussion und fügen Sie dann eine Umfrage hinzu, wenn Sie bereit sind, Stimmen zu sammeln.</p>"
-    start_discussion: Starten Sie eine Diskussion
-    standalone_warning_title: Überlegen Sie, ob Sie zunächst eine Diskussion beginnen möchten.
-    start_poll_anyway: Umfrage trotzdem starten
-    start_discussion_instead: Beginnen Sie stattdessen eine Diskussion.
-    standalone_warning_helptext: "<p>Umfragen funktionieren am besten, wenn die Menschen das Thema vorher diskutieren können.</p><p> Ohne Diskussion können die Wähler keine Fragen stellen, Bedenken äußern oder Verbesserungen vorschlagen.</p><p> Für ein optimales Ergebnis beginnen Sie mit einer Diskussion, schaffen Sie ein gemeinsames Verständnis und fügen Sie erst dann eine Umfrage hinzu, wenn Sie bereit sind, die Meinungen der Teilnehmer zu erfassen.</p>"
   group_files_panel:
     no_files: 'Keine Dateien gefunden '
     filename: Dateiname
@@ -2767,7 +2759,6 @@ de:
     these_are_templates_admin_hint: Gruppenadministratoren können Vorlagen bearbeiten, neue Vorlagen erstellen, Vorlagen neu anordnen und ein- bzw. ausblenden. Nur Administratoren können die ausgeblendeten Vorlagen sehen.
     show_hidden_templates: Ausgeblendete Vorlagen anzeigen
     show_fewer: Weniger anzeigen
-    start_a_new_discussion: Neue Diskussion starten
     start_discussion: Starten Sie eine Diskussion
     start_a_direct_discussion: Starten Sie eine direkte Diskussion
     these_are_templates: Dies sind die Diskussionsvorlagen in Ihrer Gruppe.

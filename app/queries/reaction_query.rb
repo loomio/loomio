@@ -7,7 +7,14 @@ class ReactionQuery
     discussion_ids = []
     poll_ids = []
 
-    discussion_ids.concat(Comment.where(id: params[:comment_ids]).pluck(:discussion_id)) if params[:comment_ids]
+    if params[:comment_ids]
+      discussion_ids.concat(
+        Comment.joins(:events)
+               .joins("INNER JOIN topics ON topics.id = events.topic_id AND topics.topicable_type = 'Discussion'")
+               .where(comments: { id: params[:comment_ids] })
+               .pluck('topics.topicable_id')
+      )
+    end
     discussion_ids.concat(params[:discussion_ids]) if params[:discussion_ids]
 
     poll_ids.concat(Stance.where(id: params[:stance_ids]).pluck(:poll_id)) if params[:stance_ids]

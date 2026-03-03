@@ -2,11 +2,11 @@
 import Flash   from '@/shared/services/flash';
 export default {
   props: {
-    discussion: Object,
+    topic: Object,
     close: Function
   },
   data() {
-    return {clone: this.discussion.clone()};
+    return {clone: this.topic.clone()};
   },
   methods: {
     submit() {
@@ -67,7 +67,7 @@ v-card.thread-arrangement-form(:title="$t('thread_arrangement_form.title')")
           | -
           space
           span(v-t="'thread_arrangement_form.nested_twice_description'")
-    v-alert(type="warning" variant="tonal" v-if="clone.maxDepth != discussion.maxDepth")
+    v-alert(type="warning" variant="tonal" v-if="clone.maxDepth != topic.maxDepth")
       span(v-t="'thread_arrangement_form.changing_nesting_is_slow'")
   v-card-actions
     v-spacer

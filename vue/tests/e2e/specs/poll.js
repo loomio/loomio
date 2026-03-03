@@ -187,6 +187,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('polls/test_poll_scenario?scenario=poll_closed&poll_type=proposal')
+    page.execute("document.querySelector('.poll-common-set-outcome-panel__submit').scrollIntoView({block: 'center'})")
     page.click('.poll-common-set-outcome-panel__submit')
 
     page.fillIn('.poll-common-outcome-form__statement .lmo-textarea div[contenteditable=true]', 'This is an outcome')
@@ -281,6 +282,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('polls/test_poll_scenario?poll_type=proposal&scenario=poll_closing_soon_with_vote')
+    page.execute("document.querySelector('.action-menu--btn').scrollIntoView({block: 'center'})")
     page.click('.action-menu--btn')
     page.click('.action-dock__button--uncast_stance')
     page.expectText('.confirm-modal', 'Remove your vote?')
@@ -292,6 +294,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('polls/test_poll_scenario?scenario=poll_closed&poll_type=meeting')
+    page.execute("document.querySelector('.poll-common-set-outcome-panel__submit').scrollIntoView({block: 'center'})")
     page.click('.poll-common-set-outcome-panel__submit')
 
     page.fillIn('.poll-common-outcome-form__statement .lmo-textarea div[contenteditable=true]', 'Here is a statement')
@@ -302,19 +305,6 @@ module.exports = {
     page.expectFlash('Outcome created')
     // page.click('.dismiss-modal-button')
     // page.expectText('.poll-common-outcome-panel .lmo-markdown-wrapper', 'Here is a statement')
-  },
-
-  'can_add_standalone_poll_to_thread': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('polls/test_poll_scenario?poll_type=proposal&scenario=poll_created&standalone=1&admin=1')
-    page.click('.action-menu')
-    page.click('.action-dock__button--add_poll_to_thread')
-    page.fillIn('.add-to-thread-modal__search input', "Some")
-    page.pause(1000)
-    page.click('.v-autocomplete__content .v-list-item__content')
-    page.click('.add-to-thread-modal__submit')
-    page.expectFlash("Success, proposal added to thread!")
   },
 
   'can_invite_non_member_to_anonymous_proposal_in_a_group': (test) => {
@@ -423,49 +413,6 @@ module.exports = {
   //   page.expectFlash('Vote updated')
   // },
 
-  'shows_disabled_dialog_when_standalone_polls_not_allowed': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('polls/test_group_polls_panel_standalone_disabled')
-    page.pause(500)
-    page.click('.polls-panel__new-poll-button')
-    page.expectText('.confirm-modal', 'Standalone polls are disabled')
-    page.expectText('.confirm-modal', 'This group requires polls to be started within a discussion')
-    page.click('.confirm-modal__submit')
-    page.pause(500)
-    page.expectElement('.discussion-form')
-  },
-
-  'shows_warning_dialog_first_time_only': (test) => {
-    page = pageHelper(test)
-
-    // First click should show warning dialog
-    page.loadPath('polls/test_group_polls_panel_standalone_allowed')
-    page.pause(500)
-    page.click('.polls-panel__new-poll-button')
-    page.expectText('.confirm-modal', 'Consider starting a discussion first')
-    page.expectText('.confirm-modal', 'Polls work best when people can discuss the topic first')
-    page.click('.confirm-modal__submit')
-    page.pause(500)
-    page.expectElement('.poll-common-templates-list')
-    page.click('.v-breadcrumbs-item--link');
-    page.click('.group-page-polls-tab');
-    page.click('.polls-panel__new-poll-button')
-    page.expectElement('.poll-common-templates-list')
-  },
-
-  // 'can_start_discussion_instead_from_warning': (test) => {
-  //   page = pageHelper(test)
-
-  //   page.loadPath('polls/test_group_polls_panel_standalone_allowed')
-  //   page.pause(500)
-  //   page.click('.polls-panel__new-poll-button')
-  //   page.expectText('.confirm-modal', 'Consider starting a discussion first')
-  //   page.click('.confirm-modal__cancel')
-  //   page.pause(500)
-  //   page.expectElement('.discussion-form')
-  // },
-
   'can_create_a_scheduled_proposal': (test) => {
     page = pageHelper(test)
 
@@ -513,5 +460,18 @@ module.exports = {
 
     // Verify the button says "ADD VOTERS" (Vuetify uppercases button text)
     page.expectText('.poll-members-form__submit', 'ADD VOTERS')
+  },
+
+  'can_start_a_standalone_poll': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('polls/start_poll')
+    page.expectElement('.poll-common-choose-template')
+    page.click('.decision-tools-card__poll-type--proposal')
+    page.fillIn('.poll-common-form-fields__title input', 'A standalone proposal')
+    page.fillIn('.poll-common-form-fields__details .lmo-textarea div[contenteditable=true]', 'Some details')
+    page.click('.poll-common-form__submit')
+    page.expectText('.poll-common-card__title', 'A standalone proposal')
+    page.expectText('.poll-common-details-panel__details p', 'Some details')
   },
 }

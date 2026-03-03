@@ -92,13 +92,10 @@ class Dev::PollsController < Dev::NightwatchController
       group.add_member! user
     end
 
-    discussion = fake_discussion(group: group)
-
-    DiscussionService.create(discussion: discussion, actor: admin)
+    discussion = DiscussionService.create(params: {group_id: group.id, title: Faker::Quote.yoda.truncate(150), private: true}, actor: admin)
 
     # select poll type here
-    poll = fake_poll(group: group, discussion: discussion, author: admin)
-    PollService.create(poll: poll, actor: poll.author, params: {notify_recipients: true})
+    poll = PollService.create(params: fake_poll_params(topic_id: discussion.topic_id), actor: admin)
 
     if params[:guest]
       PollService.invite(poll: poll, params: {recipient_emails: [user.email], notify_recipients: true}, actor: poll.author)
@@ -110,16 +107,14 @@ class Dev::PollsController < Dev::NightwatchController
   def test_discussion
     group = create_group_with_members
     sign_in group.admins.first
-    discussion = saved fake_discussion(group: group, author: group.admins.first)
-    DiscussionService.create(discussion: discussion, actor: discussion.author)
+    discussion = DiscussionService.create(params: {group_id: group.id, title: Faker::Quote.yoda.truncate(150), private: true}, actor: group.admins.first)
     redirect_to discussion_url(discussion)
   end
 
   def test_poll_in_discussion
     group = create_group_with_members
     sign_in group.admins.first
-    discussion = saved fake_discussion(group: group, author: group.admins.first)
-    DiscussionService.create(discussion: discussion, actor: discussion.author)
+    discussion = DiscussionService.create(params: {group_id: group.id, title: Faker::Quote.yoda.truncate(150), private: true}, actor: group.admins.first)
     poll = saved fake_poll(discussion: discussion)
     stance = saved fake_stance(poll: poll)
     StanceService.create(stance: stance, actor: group.members.last)
@@ -127,23 +122,11 @@ class Dev::PollsController < Dev::NightwatchController
   end
 
   def start_poll
-    sign_in saved fake_user
-    redirect_to new_poll_url
+    group = create_group_with_members
+    sign_in group.admins.first
+    redirect_to new_poll_url(group_id: group.id)
   end
 
-  def test_group_polls_panel_standalone_disabled
-    group = create_group_with_members
-    group.update!(can_start_polls_without_discussion: false)
-    sign_in group.admins.first
-    redirect_to "/g/#{group.key}/polls"
-  end
-
-  def test_group_polls_panel_standalone_allowed
-    group = create_group_with_members
-    group.update!(can_start_polls_without_discussion: true)
-    sign_in group.admins.first
-    redirect_to "/g/#{group.key}/polls"
-  end
 
   def test_scheduled_poll
     scenario = poll_scheduled_scenario(poll_type: params[:poll_type] || 'proposal')
@@ -155,8 +138,7 @@ class Dev::PollsController < Dev::NightwatchController
     user = fake_user
     group = saved fake_group
     group.add_admin! user
-    discussion = saved fake_discussion(group: group)
-    DiscussionService.create(discussion: discussion, actor: discussion.author)
+    discussion = DiscussionService.create(params: {group_id: group.id, title: Faker::Quote.yoda.truncate(150), private: true}, actor: user)
 
     sign_in user
     create_activity_items(discussion: discussion, actor: user)
@@ -173,12 +155,11 @@ class Dev::PollsController < Dev::NightwatchController
                dot_vote: %w[birds bees trees]}
 
     AppConfig.poll_types.keys.each do |poll_type|
-      poll = Poll.new(poll_type: poll_type,
-                      title: poll_type,
-                      details: 'fine print',
-                      poll_option_names: options[poll_type.to_sym],
-                      discussion: discussion)
-      PollService.create(poll: poll, actor: actor)
+      poll = PollService.create(
+        params: {poll_type: poll_type, title: poll_type, details: 'fine print',
+                 poll_option_names: options[poll_type.to_sym],
+                 topic_id: discussion.topic_id},
+        actor: actor)
 
       # edit the poll
       PollService.update(poll: poll, params: {title: 'choose!'}, actor: actor)
@@ -197,12 +178,11 @@ class Dev::PollsController < Dev::NightwatchController
       OutcomeService.create(outcome: outcome, actor: actor)
 
       # create poll
-      poll = Poll.new(poll_type: poll_type,
-                      title: 'Which one?',
-                      details: 'fine print',
-                      poll_option_names: options[poll_type.to_sym],
-                      discussion: discussion)
-      PollService.create(poll: poll, actor: actor)
+      poll = PollService.create(
+        params: {poll_type: poll_type, title: 'Which one?', details: 'fine print',
+                 poll_option_names: options[poll_type.to_sym],
+                 topic_id: discussion.topic_id},
+        actor: actor)
       poll.update_attribute(:closing_at, 1.day.ago)
 
       # expire the poll
