@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_03_03_000000) do
+ActiveRecord::Schema[8.0].define(version: 2026_03_03_000001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -420,8 +420,6 @@ ActiveRecord::Schema[8.0].define(version: 2026_03_03_000000) do
     t.string "description_format", limit: 10, default: "md", null: false
     t.jsonb "attachments", default: [], null: false
     t.jsonb "info", default: {}, null: false
-    t.integer "new_threads_max_depth", default: 3, null: false
-    t.boolean "new_threads_newest_first", default: false, null: false
     t.boolean "admins_can_edit_user_content", default: true, null: false
     t.boolean "listed_in_explore", default: false, null: false
     t.string "content_locale"

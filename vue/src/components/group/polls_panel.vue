@@ -200,6 +200,7 @@ export default
       v-spacer
       v-btn.polls-panel__new-poll-button(
         v-if='canStartPoll'
+        color="primary"
         variant="elevated"
         @click="startNewPoll"
       )

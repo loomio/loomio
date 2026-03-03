@@ -99,10 +99,6 @@ export default {
           type='submit'
         )
           span(v-t="comment.isNew() ? 'comment_form.post_comment' : 'common.action.save' ")
-    v-alert(color="error" v-if="comment.saveFailed")
-      span(v-t="'common.something_went_wrong'")
-      space
-      span(v-t="'common.please_try_again'")
 </template>
 
 <style lang="sass">

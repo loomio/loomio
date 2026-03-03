@@ -69,7 +69,7 @@ v-list-item.thread-preview.thread-preview__link(
   v-list-item-title(style="align-items: center")
     span(v-if='topic.pinnedAt', :title="$t('context_panel.thread_status.pinned')")
       common-icon(size="x-small" name="mdi-pin-outline")
-    plain-text.thread-preview__title(:model="topic" field="title" :class="{'text-medium-emphasis': !isUnread, 'font-weight-medium': isUnread }")
+    plain-text.thread-preview__title(:model="topic.topicable()" field="title" :class="{'text-medium-emphasis': !isUnread, 'font-weight-medium': isUnread }")
     v-chip.ml-1(size="x-small" label outlined color="warning" v-if='topic.closedAt')
       span(v-t="'poll_common_action_panel.custom_template'")
     tags-display.ml-1(:tags="topic.tags" :group="topic.group()" size="x-small")

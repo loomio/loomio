@@ -148,7 +148,7 @@ EventBus.$on('sortPollTemplates', () => { isSorting.value = true; });
 .poll-common-templates-list
   v-alert.ma-4(v-if="userIsAdmin && !discussion && !hiddenAlert" type="info" variant="tonal" closable @click:close="dismissAlert")
     span(v-t="'poll_common.these_are_templates'")
-    |
+    space
     span(v-t="'common.templates_admin_hint'")
 
   .d-flex(:class="{'px-4': !discussion}")
