@@ -11,7 +11,7 @@ import { mdiLightningBolt, mdiMessageBadgeOutline, mdiArrowUpThin, mdiArrowDownT
 export default {
   mixins: [WatchRecords, UrlFor],
   props: {
-    discussion: Object,
+    topic: Object,
     loader: Object,
     focusMode: String,
     focusSelector: String
@@ -44,7 +44,7 @@ export default {
     },
 
     scrollToNewest() {
-      ScrollService.scrollTo(`.sequenceId-${this.discussion.lastSequenceId()}`);
+      ScrollService.scrollTo(`.sequenceId-${this.topic.lastSequenceId()}`);
     },
     scrollToUnread() {
       ScrollService.scrollTo(`.sequenceId-${this.loader.firstUnreadSequenceId()}`);
@@ -63,7 +63,7 @@ export default {
     buildItems(bootData) {
       const itemsHash = {};
 
-      this.baseUrl = this.urlFor(this.discussion);
+      this.baseUrl = this.urlFor(this.topic.topicable());
       // parser = new DOMParser()
       // doc = parser.parseFromString(@context, 'text/html')
       // headings = Array.from(doc.querySelectorAll('h1,h2,h3')).map (el) =>
@@ -94,7 +94,7 @@ export default {
       });
 
       Records.events.collection.chain()
-             .find({topicId: this.discussion.topicId})
+             .find({topicId: this.topic.id})
              .simplesort('positionKey')
              .data().forEach(event => {
         let poll;
@@ -109,7 +109,7 @@ export default {
           sequenceId: event.sequenceId,
           createdAt: event.createdAt,
           actorId: event.actorId,
-          title: event.kind === 'new_discussion' ? this.discussion.title : (event.pinned ? (event.pinnedTitle || event.fillPinnedTitle()) : null),
+          title: (event.model() && event.model().title) || (event.pinned ? (event.pinnedTitle || event.fillPinnedTitle()) : null),
           visible: false,
           unread: this.loader.sequenceIdIsUnread(event.sequenceId),
           headings: [],
@@ -131,7 +131,7 @@ export default {
     Records.events.fetch({
       params: {
         exclude_types: 'group discussion',
-        discussion_id: this.discussion.id,
+        topic_id: this.topic.id,
         pinned: true,
         per: 200
       }
@@ -141,15 +141,15 @@ export default {
     Records.events.remote.fetch({
       path: 'timeline',
       params: {
-        topic_id: this.discussion.topicId
+        topic_id: this.topic.id
     }}).then(data => {
       bootData = data;
       return this.buildItems(bootData);
     });
 
     this.watchRecords({
-      key: 'thread-nav'+this.discussion.id,
-      collections: ["events", "discussions"],
+      key: 'thread-nav'+this.topic.id,
+      collections: ["events", "discussions", "polls"],
       query: () => {
         if (bootData.length) { this.buildItems(bootData); }
       }
@@ -167,7 +167,7 @@ export default {
 </script>
 
 <template lang="pug">
-v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion" v-model="open" :permanent="$vuetify.display.mdAndUp"  app fixed location="right" clipped color="background" floating)
+v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="topic" v-model="open" :permanent="$vuetify.display.mdAndUp"  app fixed location="right" clipped color="background" floating)
   template(v-if="items.length > 1")
     v-list(nav density="compact" :lines="false")
       v-list-subheader(v-t="'strand_nav.jump_to'")

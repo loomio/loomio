@@ -21,11 +21,11 @@ export default {
     return {
       mdiMenuOpen,
       mdiArrowULeftTop,
-      discussion: null,
+      topic: null,
+      topicable: null,
       loader: null,
       position: 0,
       group: null,
-      discussionFetchError: null,
       focusMode: null,
       focusSelector: null,
       anchorSelector: null,
@@ -50,7 +50,7 @@ export default {
       if (!match) { return true; }
 
       const sequenceId = parseInt(match[1]);
-      const event = Records.events.find({ topicId: this.discussion.topicId, sequenceId: sequenceId })[0];
+      const event = Records.events.find({ topicId: this.topic.id, sequenceId: sequenceId })[0];
       if (!event) { return false; }
       this.focusedItemVisible = keys.includes(event.positionKey);
     })
@@ -85,23 +85,30 @@ export default {
     },
 
     init() {
-      Records.discussions.findOrFetchById(this.$route.params.key, {exclude_types: 'poll outcome'}).then(discussion => {
-        if (discussion.group().newHost) { window.location.host = discussion.group().newHost; }
-        this.discussion = discussion;
-        this.loader = new ThreadLoader(this.discussion);
+      const isPoll = this.$route.path.startsWith('/p/');
+      const collection = isPoll ? Records.polls : Records.discussions;
+      const fetchParams = isPoll ? {} : {exclude_types: 'poll outcome'};
+
+      collection.findOrFetchById(this.$route.params.key, fetchParams).then(model => {
+        if (model.group() && model.group().newHost) { window.location.host = model.group().newHost; }
+        this.topicable = model;
+        this.topic = model.topic();
+        this.loader = new ThreadLoader(this.topicable);
 
         this.respondToRoute();
 
+        const isPollTopicable = this.topicable.constructor.singular === 'poll';
         EventBus.$emit('currentComponent', {
           focusHeading: false,
           page: 'discussionPage',
-          discussion: this.discussion,
-          group: this.discussion.group(),
-          title: this.discussion.title
+          discussion: isPollTopicable ? null : this.topicable,
+          poll: isPollTopicable ? this.topicable : null,
+          group: this.topic.group(),
+          title: this.topicable.title
         });
 
         this.watchRecords({
-          key: 'strand'+this.discussion.id,
+          key: 'strand'+this.topic.id,
           collections: ['events'],
           query: () => {
             this.loader.updateCollection();
@@ -115,8 +122,8 @@ export default {
     },
 
     loadContent() {
-      if (!this.discussion) { return; }
-      if (this.discussion.key !== this.$route.params.key) { return; }
+      if (!this.topicable) { return; }
+      if (this.topicable.key !== this.$route.params.key) { return; }
 
       this.focusMode = null;
       this.focusSelector = null;
@@ -126,7 +133,7 @@ export default {
       this.loader.addContextRule();
       this.loader.addLoadMyStuffRule();
 
-      if (this.discussion.topic().itemsCount <= 1) {
+      if (this.topic.itemsCount <= 1) {
         this.loader.addLoadNewestRule();
         // this.anchorSelector = '#strand-page';
         return;
@@ -159,13 +166,13 @@ export default {
         this.loader.clearRules();
         this.loader.addLoadNewestRule();
         this.focusMode = 'newest';
-        this.focusSelector = `.sequenceId-${parseInt(this.discussion.lastSequenceId())}`;
+        this.focusSelector = `.sequenceId-${parseInt(this.topic.lastSequenceId())}`;
         return;
       }
 
       // never been read before
-      if (!this.discussion.lastReadAt) {
-        if (this.discussion.newestFirst) {
+      if (!this.topic.lastReadAt) {
+        if (this.topic.newestFirst) {
           this.loader.addLoadNewestRule();
         } else {
           this.loader.addLoadOldestRule();
@@ -183,7 +190,7 @@ export default {
       } else {
         this.loader.addLoadNewestRule();
         this.focusMode = 'newest';
-        this.anchorSelector = `.sequenceId-${parseInt(this.discussion.lastSequenceId())}`;
+        this.anchorSelector = `.sequenceId-${parseInt(this.topic.lastSequenceId())}`;
         return;
       }
     },
@@ -226,17 +233,16 @@ export default {
 <template lang="pug">
 .strand-page
   v-main
-    v-container.max-width-800.px-0.px-sm-3#strand-page(v-if="discussion")
-      thread-current-poll-banner(:discussion="discussion")
-      discussion-fork-actions(:discussion='discussion' :key="'fork-actions'+ discussion.id")
+    v-container.max-width-800.px-0.px-sm-3#strand-page(v-if="topicable")
+      discussion-fork-actions(v-if="topicable.constructor.singular === 'discussion'" :discussion='topicable' :key="'fork-actions'+ topicable.id")
       v-sheet.strand-card.thread-card.mb-8.pb-4.rounded(elevation=1)
         v-snackbar(v-if="focusMode" v-model="snackbar" location="bottom center" color="info")
           div.text-center
             span.text-center(v-if="focusMode == 'unread'" v-t="'strand_nav.showing_unread'")
             span.text-center(v-if="focusMode == 'newest'" v-t="'strand_nav.showing_latest'")
         strand-list.pt-3.pr-1.pr-sm-3.px-sm-2(:loader="loader" :collection="loader.collection" :focus-selector="focusSelector" :focus-mode="focusMode")
-        strand-actions-panel(:topic="discussion.topic()")
-  strand-toc-nav(v-if="loader" :discussion="discussion" :loader="loader" :key="discussion.id" :focus-mode="focusMode" :focus-selector="focusSelector")
+        strand-actions-panel(:topic="topic")
+  strand-toc-nav(v-if="loader" :topic="topic" :loader="loader" :key="topic.id" :focus-mode="focusMode" :focus-selector="focusSelector")
   v-fab(v-if="focusSelector && !focusedItemVisible" icon app extended :text="$t('strand_nav.recenter')" location="bottom center" @click="scrollToFocused" color="accent" variant="elevated")
     v-icon(:icon="mdiArrowULeftTop")
   v-fab(v-if="!$vuetify.display.mdAndUp" icon app location="bottom right" @click="openThreadNav" color="primary" variant="tonal")
