@@ -176,7 +176,7 @@ class Discussion < ApplicationRecord
     if (dr = discussion_readers.find_by(user: user))
       dr.update(guest: true, inviter: inviter)
     else
-      discussion_readers.create!(user: user, inviter: inviter, guest: true, volume: DiscussionReader.volumes[:normal])
+      discussion_readers.create!(user: user, inviter: inviter, guest: true, email_volume: :normal, push_volume: :normal)
     end
   end
 
@@ -184,7 +184,7 @@ class Discussion < ApplicationRecord
     if (dr = discussion_readers.find_by(user: user))
       dr.update(inviter: inviter, admin: true)
     else
-      discussion_readers.create!(user: user, inviter: inviter, admin: true, volume: DiscussionReader.volumes[:normal])
+      discussion_readers.create!(user: user, inviter: inviter, admin: true, email_volume: :normal, push_volume: :normal)
     end
   end
 

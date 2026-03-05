@@ -8,18 +8,18 @@ class DiscussionReaderTest < ActiveSupport::TestCase
 
     @discussion = discussions(:test_discussion)
     @membership = @user.memberships.find_by(group: @group)
-    @membership.update!(volume: :normal)
+    @membership.update!(email_volume: :normal)
     @reader = DiscussionReader.for(user: @user, discussion: @discussion)
   end
 
   # Computed volume
-  test "can change its volume" do
-    @reader.set_volume!(:loud)
-    assert_equal :loud, @reader.reload.volume.to_sym
+  test "can change its email_volume" do
+    @reader.set_email_volume!(:loud)
+    assert_equal :loud, @reader.reload.email_volume.to_sym
   end
 
-  test "defaults to the memberships volume when nil" do
-    assert_equal @membership.volume, @reader.computed_volume
+  test "defaults to the memberships email_volume when nil" do
+    assert_equal @membership.email_volume, @reader.computed_email_volume
   end
 
   # Viewed

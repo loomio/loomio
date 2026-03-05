@@ -12,7 +12,7 @@ another_user_in_test_group:
   accepted_at: <%= 30.days.ago %>
   admin: false
   created_at: <%= 30.days.ago %>
-  volume: normal
+  email_volume: normal
 
 author_in_test_group:
   user: discussion_author

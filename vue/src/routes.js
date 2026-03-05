@@ -22,6 +22,7 @@ const MembershipRequestsPanel = wrapAsyncLoader(() => import('./components/group
 const StartGroupPage = wrapAsyncLoader(() => import('./components/start_group/page'));
 const ContactPage = wrapAsyncLoader(() => import('./components/contact/page'));
 const EmailSettingsPage = wrapAsyncLoader(() => import('./components/email_settings/page'));
+const PushSubscriptionsPage = wrapAsyncLoader(() => import('./components/push_subscriptions/page'));
 const ThreadFormPage = wrapAsyncLoader(() => import('./components/thread/form_page'));
 const DiscussionTemplateFormPage = wrapAsyncLoader(() => import('./components/discussion_template/form_page'));
 const DiscussionTemplateIndexPage = wrapAsyncLoader(() => import('./components/discussion_template/index_page'));
@@ -75,6 +76,7 @@ const router = createRouter({
     {path: '/profile', component: ProfilePage},
     {path: '/contact', component: ContactPage},
     {path: '/email_preferences', component: EmailSettingsPage },
+    {path: '/push_subscriptions', component: PushSubscriptionsPage },
     {path: '/p/:key/edit', component: PollFormPage },
     {path: '/p/:id/receipts', component: PollReceiptsPage, props: true },
     {path: '/p/new', component: PollFormPage },

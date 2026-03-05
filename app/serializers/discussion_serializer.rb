@@ -41,7 +41,8 @@ class DiscussionSerializer < ApplicationSerializer
              :translation_id
 
   attributes_from_reader :discussion_reader_id,
-                         :discussion_reader_volume,
+                         :discussion_reader_email_volume,
+                         :discussion_reader_push_volume,
                          :discussion_reader_user_id,
                          :last_read_at,
                          :dismissed_at,
@@ -78,7 +79,8 @@ class DiscussionSerializer < ApplicationSerializer
     result = cache_fetch(:discussion_readers_by_discussion_id, object.id) do
       m = cache_fetch(:memberships_by_group_id, object.group_id)
       DiscussionReader.find_or_initialize_by(user_id: scope[:current_user_id], discussion_id: object.id) do |dr|
-        dr.volume = (m && m.volume) || 'normal'
+        dr.email_volume = (m && m.email_volume) || 'normal'
+        dr.push_volume = (m && m.push_volume) || 'normal'
       end
     end
 
@@ -86,7 +88,9 @@ class DiscussionSerializer < ApplicationSerializer
 
     # record def does not exist, becasue key exists in cache and it's empty
     m = cache_fetch(:memberships_by_group_id, object.group_id)
-    DiscussionReader.new(user_id: scope[:current_user_id], discussion_id: object.id, volume: (m && m.volume) || 'normal')
+    DiscussionReader.new(user_id: scope[:current_user_id], discussion_id: object.id,
+                         email_volume: (m && m.email_volume) || 'normal',
+                         push_volume: (m && m.push_volume) || 'normal')
   end
 
   def created_event

@@ -1,6 +1,6 @@
 class Queries::UsersByVolumeQuery
   def self.normal_or_loud(model)
-    users_by_volume(model, '>=', DiscussionReader.volumes[:normal])
+    users_by_volume(model, '>=', DiscussionReader.email_volumes[:normal], :email_volume)
   end
 
   def self.email_notifications(model)
@@ -8,18 +8,27 @@ class Queries::UsersByVolumeQuery
   end
 
   def self.app_notifications(model)
-    users_by_volume(model, '>=', DiscussionReader.volumes[:quiet])
+    users_by_volume(model, '>=', DiscussionReader.email_volumes[:quiet], :email_volume)
+  end
+
+  def self.push_notifications(model)
+    users_by_volume(model, '>=', DiscussionReader.push_volumes[:normal], :push_volume)
   end
 
   %w(mute quiet normal loud).map(&:to_sym).each do |volume|
     define_singleton_method volume, ->(model) {
-      users_by_volume(model, '=', DiscussionReader.volumes[volume])
+      users_by_volume(model, '=', DiscussionReader.email_volumes[volume], :email_volume)
+    }
+    
+    define_singleton_method "push_#{volume}", ->(model) {
+      users_by_volume(model, '=', DiscussionReader.push_volumes[volume], :push_volume)
     }
   end
 
   private
 
-  def self.users_by_volume(model, operator, volume)
+  def self.users_by_volume(model, operator, volume, volume_column = :email_volume)
+    raise ArgumentError, "invalid volume_column" unless %i[email_volume push_volume].include?(volume_column)
     return User.none if model.nil?
     User.active.distinct.
       joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{model.discussion_id || 0} AND dr.user_id = users.id").
@@ -29,6 +38,6 @@ class Queries::UsersByVolumeQuery
              (dr.id IS NOT NULL AND dr.guest = TRUE AND dr.revoked_at IS NULL) OR
              (s.id IS NOT NULL AND s.guest = TRUE AND s.revoked_at IS NULL) OR
              (m.id IS NULL and dr.id IS NULL and s.id IS NULL)').
-      where("coalesce(s.volume, dr.volume, m.volume, 2) #{operator} :volume", volume: volume)
+      where("coalesce(s.#{volume_column}, dr.#{volume_column}, m.#{volume_column}, 2) #{operator} :volume", volume: volume)
   end
 end

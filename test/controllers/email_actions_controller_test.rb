@@ -21,7 +21,7 @@ class EmailActionsControllerTest < ActionController::TestCase
   # unsubscribe page rendering
   test "unsubscribe renders with discussion reader" do
     @discussion_reader = DiscussionReader.for(discussion: @discussion, user: @user)
-    @discussion_reader.set_volume!(:loud)
+    @discussion_reader.set_email_volume!(:loud)
 
     get :unsubscribe, params: { discussion_id: @discussion.id, unsubscribe_token: @user.unsubscribe_token }
     assert_response :success
@@ -41,7 +41,7 @@ class EmailActionsControllerTest < ActionController::TestCase
     )
     poll.create_missing_created_event!
     stance = Stance.create!(poll: poll, participant: @user, latest: true)
-    stance.set_volume!(:normal)
+    stance.set_email_volume!(:normal)
 
     get :unsubscribe, params: {
       discussion_id: @discussion.id,
@@ -53,8 +53,8 @@ class EmailActionsControllerTest < ActionController::TestCase
 
   # set_volume tests
   test "unsubscribes membership" do
-    @membership.set_volume!(:loud)
-    @discussion_reader.set_volume!(:loud)
+    @membership.set_email_volume!(:loud)
+    @discussion_reader.set_email_volume!(:loud)
 
     put :set_group_volume, params: { group_id: @group.id, unsubscribe_token: @user.unsubscribe_token, value: :normal }
     assert_response 302
@@ -62,13 +62,13 @@ class EmailActionsControllerTest < ActionController::TestCase
     @membership.reload
     @discussion_reader.reload
 
-    assert_equal 'normal', @membership.volume
-    assert_equal 'normal', @discussion_reader.volume
+    assert_equal 'normal', @membership.email_volume
+    assert_equal 'normal', @discussion_reader.email_volume
   end
 
   test "quiets membership" do
-    @membership.set_volume!(:loud)
-    @discussion_reader.set_volume!(:loud)
+    @membership.set_email_volume!(:loud)
+    @discussion_reader.set_email_volume!(:loud)
 
     put :set_group_volume, params: { group_id: @group.id, unsubscribe_token: @user.unsubscribe_token, value: :quiet }
     assert_response 302
@@ -76,13 +76,13 @@ class EmailActionsControllerTest < ActionController::TestCase
     @membership.reload
     @discussion_reader.reload
 
-    assert_equal 'quiet', @membership.volume
-    assert_equal 'quiet', @discussion_reader.volume
+    assert_equal 'quiet', @membership.email_volume
+    assert_equal 'quiet', @discussion_reader.email_volume
   end
 
   test "unsubscribes discussion" do
-    @membership.set_volume!(:normal)
-    @discussion_reader.set_volume!(:loud)
+    @membership.set_email_volume!(:normal)
+    @discussion_reader.set_email_volume!(:loud)
 
     put :set_discussion_volume, params: { discussion_id: @discussion.id, unsubscribe_token: @user.unsubscribe_token, value: :normal }
     assert_response 302
@@ -90,12 +90,12 @@ class EmailActionsControllerTest < ActionController::TestCase
     @membership.reload
     @discussion_reader.reload
 
-    assert_equal 'normal', @membership.volume
-    assert_equal 'normal', @discussion_reader.volume
+    assert_equal 'normal', @membership.email_volume
+    assert_equal 'normal', @discussion_reader.email_volume
   end
 
   test "unsubscribes stance" do
-    @membership.set_volume!(:loud)
+    @membership.set_email_volume!(:loud)
     poll = Poll.new(
       title: "EA Poll #{SecureRandom.hex(4)}",
       poll_type: 'proposal',
@@ -107,7 +107,7 @@ class EmailActionsControllerTest < ActionController::TestCase
     poll.save!
     poll.create_missing_created_event!
     stance = Stance.create!(poll: poll, participant: @user, latest: true)
-    stance.set_volume!(:loud)
+    stance.set_email_volume!(:loud)
 
     put :set_poll_volume, params: { stance_id: stance.id, unsubscribe_token: @user.unsubscribe_token, value: :normal }
     assert_response 302
@@ -115,8 +115,8 @@ class EmailActionsControllerTest < ActionController::TestCase
     @membership.reload
     stance.reload
 
-    assert_equal 'loud', @membership.volume
-    assert_equal 'normal', stance.volume
+    assert_equal 'loud', @membership.email_volume
+    assert_equal 'normal', stance.email_volume
   end
 
   # mark_discussion_as_read tests

@@ -214,16 +214,20 @@ export default class DiscussionModel extends BaseModel {
     return Records.memberships.find({userId: AppConfig.currentUserId, groupId: this.groupId})[0];
   }
 
-  volume() { return this.discussionReaderVolume; }
+  volume() { return this.discussionReaderEmailVolume; }
 
-  saveVolume(volume, applyToAll) {
+  saveVolume(emailVolume, pushVolume, applyToAll) {
     if (applyToAll == null) { applyToAll = false; }
     this.processing = true;
     if (applyToAll) {
-      return this.membership().saveVolume(volume).finally(() => { return this.processing = false; });
+      return this.membership().saveVolume(emailVolume, pushVolume).finally(() => { return this.processing = false; });
     } else {
-      if (volume != null) { this.discussionReaderVolume = volume; }
-      return Records.discussions.remote.patchMember(this.keyOrId(), 'set_volume', { volume: this.discussionReaderVolume }).finally(() => {
+      if (emailVolume != null) { this.discussionReaderEmailVolume = emailVolume; }
+      if (pushVolume != null) { this.discussionReaderPushVolume = pushVolume; }
+      return Records.discussions.remote.patchMember(this.keyOrId(), 'set_volume', {
+        email_volume: this.discussionReaderEmailVolume,
+        push_volume: this.discussionReaderPushVolume
+      }).finally(() => {
         return this.processing = false;
       });
     }

@@ -139,7 +139,7 @@ class Api::V1::DiscussionsController < Api::V1::RestfulController
   end
 
   def set_volume
-    update_reader volume: params[:volume]
+    update_reader email_volume: params[:email_volume]
   end
 
   def discard

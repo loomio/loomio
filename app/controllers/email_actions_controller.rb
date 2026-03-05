@@ -15,21 +15,21 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
   def set_group_volume
     load_models_or_404
     membership = Membership.find_by!(user_id: current_user.id, group_id: @group.id)
-    MembershipService.set_volume(membership: membership, actor: current_user, params: {volume: params[:value]})
+    MembershipService.set_volume(membership: membership, actor: current_user, params: {email_volume: params[:value]})
     redirect_to_unsubscribe
   end
 
   def set_discussion_volume
     load_models_or_404
     discussion_reader = DiscussionReader.find_by!(discussion_id: @discussion.id, user_id: current_user.id)
-    discussion_reader.set_volume!(params[:value])
+    discussion_reader.set_email_volume!(params[:value])
     redirect_to_unsubscribe
   end
 
   def set_poll_volume
     load_models_or_404
     stance = Stance.latest.find_by!(poll_id: @poll.id, participant_id: current_user.id)
-    stance.set_volume!(params[:value])
+    stance.set_email_volume!(params[:value])
     redirect_to_unsubscribe
   end
 

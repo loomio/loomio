@@ -21,36 +21,7 @@ function LoomioVueResolver() {
 }
 
 export default defineConfig({
-  server: {
-    warmup: {
-      clientFiles: ['./src/app.vue'],
-    },
-    fs: {
-      allow: ['..']
-    },
-    port: 8080,
-    proxy: {
-      '/api': {
-        target: 'http://localhost:3000',
-      },
-      '/direct_uploads': {
-        target: 'http://localhost:3000',
-        changeOrigin: false,
-      },
-      '/service-worker.js': {
-        target: 'http://localhost:3000',
-        changeOrigin: true,
-      },
-      '^/(pie_chart|saml|dev|brand|login_tokens|theme|fonts|files|img|join|invitations|system|rails|slack|oauth|facebook|google|beta|admin|assets|upgrade|pricing|special_pricing|community_applications|417|saml_providers|merge_users|intro|bcorp|bhoy|sidekiq|message-bus|email_actions|help|bug_tunnel|contact_messages|css)': {
-        target: 'http://localhost:3000',
-        changeOrigin: true,
-      },
-      '/cable': {
-        target: 'ws://localhost:3000',
-        ws: true,
-      },
-    },
-  },
+  base: './',
 
   resolve: {
     alias: [
@@ -72,17 +43,14 @@ export default defineConfig({
     yaml(),
   ],
 
-  // --- IMPORTANT FIX ---
   optimizeDeps: {
     exclude: ['@emotion/is-prop-valid']
   },
 
   build: {
     sourcemap: true,
-    emptyOutDir: false,
-    outDir: '../public/client3',
-
-    // Prevent Vite from treating Nightwatch HTML reports as entries
+    emptyOutDir: true,
+    outDir: 'dist',
     rollupOptions: {
       input: {
         app: path.resolve(__dirname, 'index.html'),
@@ -90,10 +58,4 @@ export default defineConfig({
       external: ['@emotion/is-prop-valid']
     }
   },
-
-  experimental: {
-    renderBuiltUrl(filename) {
-      return '/client3/' + filename;
-    }
-  }
 });

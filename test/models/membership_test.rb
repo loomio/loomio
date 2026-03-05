@@ -27,18 +27,18 @@ class MembershipTest < ActiveSupport::TestCase
     assert_equal @user2, membership.inviter
   end
 
-  test "responds to volume" do
+  test "responds to email_volume" do
     @group.add_member!(@user)
     membership = @user.memberships.find_by(group: @group)
-    membership.update!(volume: :normal)
-    assert_equal :normal, membership.volume.to_sym
+    membership.update!(email_volume: :normal)
+    assert_equal :normal, membership.email_volume.to_sym
   end
 
-  test "can change its volume" do
+  test "can change its email_volume" do
     @group.add_member!(@user)
     membership = @user.memberships.find_by(group: @group)
-    membership.update!(volume: :normal)
-    membership.set_volume!(:quiet)
-    assert_equal :quiet, membership.reload.volume.to_sym
+    membership.update!(email_volume: :normal)
+    membership.set_email_volume!(:quiet)
+    assert_equal :quiet, membership.reload.email_volume.to_sym
   end
 end

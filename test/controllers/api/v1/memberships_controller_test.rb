@@ -20,11 +20,12 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
       handle: 'newgroup',
       is_visible_to_public: false
     )
-    @normal_user.update(default_membership_volume: 'quiet')
+    @normal_user.update(default_membership_email_volume: 'quiet', default_membership_push_volume: 'quiet')
 
     membership = Membership.create!(user: @normal_user, group: new_group)
 
-    assert_equal 'quiet', membership.volume
+    assert_equal 'quiet', membership.email_volume
+    assert_equal 'quiet', membership.push_volume
   end
 
   # ===== Update Tests =====
@@ -52,37 +53,37 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     @subgroup.add_member!(@normal_user)
 
     membership = @test_group.membership_for(@normal_user)
-    membership.set_volume!('quiet')
+    membership.set_email_volume!('quiet')
 
     second_membership = @subgroup.membership_for(@normal_user)
-    second_membership.set_volume!('quiet')
+    second_membership.set_email_volume!('quiet')
 
-    put :set_volume, params: { id: membership.id, volume: 'loud' }
+    put :set_volume, params: { id: membership.id, email_volume: 'loud' }
 
     membership.reload
     second_membership.reload
 
-    assert_equal 'loud', membership.volume
-    assert_not_equal 'loud', second_membership.volume
+    assert_equal 'loud', membership.email_volume
+    assert_not_equal 'loud', second_membership.email_volume
   end
 
-  test 'updates volume for all memberships when apply_to_all is true' do
+  test 'updates email_volume for all memberships when apply_to_all is true' do
     @test_group.add_member!(@normal_user)
     @subgroup.add_member!(@normal_user)
 
     membership = @test_group.membership_for(@normal_user)
-    membership.set_volume!('quiet')
+    membership.set_email_volume!('quiet')
 
     second_membership = @subgroup.membership_for(@normal_user)
-    second_membership.set_volume!('quiet')
+    second_membership.set_email_volume!('quiet')
 
-    put :set_volume, params: { id: membership.id, volume: 'loud', apply_to_all: true }
+    put :set_volume, params: { id: membership.id, email_volume: 'loud', apply_to_all: true }
 
     membership.reload
     second_membership.reload
 
-    assert_equal 'loud', membership.volume
-    assert_equal 'loud', second_membership.volume
+    assert_equal 'loud', membership.email_volume
+    assert_equal 'loud', second_membership.email_volume
   end
 
   # ===== Index Tests =====

@@ -162,6 +162,12 @@ a
 .max-width-1024
   max-width: 1024px !important
 
+body.capacitor .v-app-bar
+  padding-top: env(safe-area-inset-top) !important
+
+body.capacitor .v-navigation-drawer
+  padding-top: env(safe-area-inset-top) !important
+
 @media (prefers-color-scheme: dark)
   body
     background-color: #000

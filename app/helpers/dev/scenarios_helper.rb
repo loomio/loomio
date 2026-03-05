@@ -91,7 +91,7 @@ module Dev::ScenariosHelper
     scenario[:poll].group.add_member!(voter)
 
     Stance.where(poll_id: scenario[:poll].id,
-                 participant_id: scenario[:poll].author_id).update(volume: 'loud')
+                 participant_id: scenario[:poll].author_id).update(email_volume: 'loud')
 
     stance = Stance.find_by(poll: scenario[:poll], participant: voter, latest: true)
     event = StanceService.update(stance: stance, actor: voter, params: cast_stance_params(scenario[:poll]))

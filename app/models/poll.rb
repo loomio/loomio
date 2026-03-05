@@ -440,11 +440,11 @@ class Poll < ApplicationRecord
   end
 
   def add_guest!(user, author)
-    stances.create!(participant_id: user.id, inviter: author, guest: true, volume: DiscussionReader.volumes[:normal])
+    stances.create!(participant_id: user.id, inviter: author, guest: true, email_volume: :normal, push_volume: :normal)
   end
 
   def add_admin!(user, author)
-    stances.create!(participant_id: user.id, inviter: author, volume: DiscussionReader.volumes[:normal], admin: true)
+    stances.create!(participant_id: user.id, inviter: author, email_volume: :normal, push_volume: :normal, admin: true)
   end
 
   def opened?

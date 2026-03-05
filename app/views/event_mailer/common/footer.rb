@@ -76,11 +76,11 @@ class Views::EventMailer::Common::Footer < Views::ApplicationMailer::Component
       ["event_mailer.notification_reason.user_mentioned", preferences_url(recipient: @recipient)]
     elsif @event.all_recipient_user_ids.include?(@recipient.id)
       ["event_mailer.notification_reason.notified", unsubscribe_url(@event.eventable, recipient: @recipient)]
-    elsif @membership&.volume == 'loud'
+    elsif @membership&.email_volume == 'loud'
       ["event_mailer.notification_reason.group_subscribed", unsubscribe_url(@event.eventable, recipient: @recipient)]
-    elsif @discussion && ::DiscussionReader.for(user: @recipient, discussion: @discussion).volume == 'loud'
+    elsif @discussion && ::DiscussionReader.for(user: @recipient, discussion: @discussion).email_volume == 'loud'
       ["event_mailer.notification_reason.discussion_subscribed", unsubscribe_url(@event.eventable, recipient: @recipient)]
-    elsif @poll && @poll.stances.latest.find_by(participant_id: @recipient.id)&.volume == 'loud'
+    elsif @poll && @poll.stances.latest.find_by(participant_id: @recipient.id)&.email_volume == 'loud'
       ["event_mailer.notification_reason.poll_subscribed", unsubscribe_url(@event.eventable, recipient: @recipient)]
     end
   end

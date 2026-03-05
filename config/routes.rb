@@ -307,6 +307,8 @@ Rails.application.routes.draw do
         post :viewed, on: :collection
       end
 
+      resources :push_subscriptions, only: [:index, :create, :update, :destroy]
+
       resources :announcements, only: [:create] do
         collection do
           get :audience
@@ -391,6 +393,7 @@ Rails.application.routes.draw do
   get 'profile'                            => 'application#index', as: :profile
   get 'contact'                            => 'application#index', as: :contact
   get 'email_preferences'                  => 'application#index', as: :email_preferences
+  get 'push_subscriptions'                  => 'application#index', as: :push_subscriptions
   get 'apps/registered'                    => 'application#index'
   get 'apps/authorized'                    => 'application#index'
   get 'apps/registered/:id'                => 'application#index'

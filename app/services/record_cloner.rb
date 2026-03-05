@@ -291,7 +291,8 @@ class RecordCloner
       revoked_at
       created_at
       updated_at
-      volume
+      email_volume
+      push_volume
     ]
     attachments = [:files, :image_files]
     clone_stance = new_clone(stance, copy_fields, {}, attachments)
@@ -371,7 +372,8 @@ class RecordCloner
       revoked_at
       revoker_id
       admin
-      volume
+      email_volume
+      push_volume
       experiences
       accepted_at
       title

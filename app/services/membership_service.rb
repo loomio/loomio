@@ -138,21 +138,37 @@ class MembershipService
 
   def self.set_volume(membership:, params:, actor:)
     actor.ability.authorize! :update, membership
-    val = Membership.volumes[params[:volume]]
+    
+    email_vol = params[:email_volume]
+    push_vol = params[:push_volume]
+    
+    email_val = Membership.email_volumes[email_vol] if email_vol
+    push_val = Membership.push_volumes[push_vol] if push_vol
+    
     if params[:apply_to_all]
       group_ids = membership.group.parent_or_self.id_and_subgroup_ids
-      actor.memberships.where(group_id: group_ids).update_all(volume: val)
+      updates = {}
+      updates[:email_volume] = email_val if email_val
+      updates[:push_volume] = push_val if push_val
+      
+      actor.memberships.where(group_id: group_ids).update_all(updates) if updates.any?
       actor.discussion_readers.joins(:discussion).
             where('discussions.group_id': group_ids).
-            update_all(volume: val)
+            update_all(updates) if updates.any?
       Stance.joins(:poll).
              where('polls.group_id': group_ids).
              where(participant_id: actor.id).
-             update_all(volume: val)
+             update_all(updates) if updates.any?
     else
-      membership.set_volume! params[:volume]
-      membership.discussion_readers.update_all(volume: val)
-      membership.stances.update_all(volume: val)
+      membership.set_email_volume!(email_vol) if email_vol
+      membership.set_push_volume!(push_vol) if push_vol
+      
+      updates = {}
+      updates[:email_volume] = email_val if email_val
+      updates[:push_volume] = push_val if push_val
+      
+      membership.discussion_readers.update_all(updates) if updates.any?
+      membership.stances.update_all(updates) if updates.any?
     end
   end
 
