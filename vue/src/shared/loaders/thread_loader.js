@@ -132,7 +132,7 @@ export default class ThreadLoader {
         find: {
           actorId: AppConfig.currentUserId,
           discussionId: this.discussion.id,
-          createdAt: { $gte: new Date() }
+          createdAt: { $gte: this.discussion.createdAt }
         }
       }
     })
