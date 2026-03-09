@@ -57,7 +57,7 @@ class Views::Groups::Show < Views::Application::Layout
                         span do
                           span("aria-hidden": "true") { plain " \u00b7" }
                         end
-                        span { plain t("common.active_time_ago", time_ago: discussion.last_activity_at.to_formatted_s(:long_ordinal)) }
+                        span { plain t("common.active_time_ago", time_ago: discussion.topic.last_activity_at.to_formatted_s(:long_ordinal)) }
                       end
                     end
                   end
