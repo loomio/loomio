@@ -98,7 +98,10 @@ class Api::V1::TopicsController < Api::V1::RestfulController
                          (groups.parent_members_can_see_discussions = TRUE AND groups.parent_id IN (:user_group_ids))",
                          user_group_ids: current_user.group_ids)
 
-    scope = scope.where(group_id: params[:group_id].to_i) if params[:group_id].present?
+    if params[:group_id].present?
+      group = Group.find(params[:group_id])
+      scope = scope.where(group_id: [group.id] + group.subgroup_ids)
+    end
 
     case params[:filter]
     when 'closed'

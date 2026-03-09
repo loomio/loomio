@@ -73,16 +73,18 @@ export default
     query() {
       if (!this.group) { return }
 
+      const groupIds = this.group.organisationIds();
+
       let pinnedTopics = [];
       if (this.page == 1 && !this.$route.query.t && !this.$route.query.tag) {
         pinnedTopics = Records.topics.collection.chain().find({
-          groupId: this.group.id,
+          groupId: {$in: groupIds},
           pinnedAt: {$ne: null}
         }).simplesort('pinnedAt', true).data();
       }
 
       let chain = Records.topics.collection.chain().find({
-        groupId: this.group.id,
+        groupId: {$in: groupIds},
         id: {$nin: pinnedTopics.map(t => t.id)}
       }).simplesort('lastActivityAt', true);
 
