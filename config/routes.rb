@@ -68,6 +68,7 @@ Rails.application.routes.draw do
       resources :webhooks, only: [:create, :destroy, :index, :update]
       resources :chatbots, only: [:create, :destroy, :index, :update] do
         post :check, on: :collection
+        post :create_notion_database, on: :collection
       end
 
       resources :boot, only: [] do

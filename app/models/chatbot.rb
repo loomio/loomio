@@ -5,7 +5,7 @@ class Chatbot < ApplicationRecord
   validates_presence_of :server
   validates_presence_of :name
   validates_inclusion_of :kind, in: ['matrix', 'webhook']
-  validates_inclusion_of :webhook_kind, in: ['slack', 'microsoft', 'discord', 'markdown', 'webex', nil]
+  validates_inclusion_of :webhook_kind, in: ['slack', 'microsoft', 'discord', 'markdown', 'webex', 'notion', nil]
 
   def config
     {

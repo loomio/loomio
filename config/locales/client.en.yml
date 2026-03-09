@@ -2660,9 +2660,33 @@ en:
     discord: Discord
     mattermost: Mattermost
     microsoft_teams: Microsoft Teams
+    notion: Notion
+    notion_helptext: Connect Loomio to a Notion database to automatically log decisions and discussions. Create a Notion integration at notion.so/profile/integrations, then share your target page with it.
+    notion_api_token: Notion API token
+    notion_api_token_hint: "Create at notion.so/profile/integrations — starts with ntn_"
+    notion_database_id: Notion database ID
+    notion_database_id_hint: Found in the database URL between the workspace name and the question mark
+    notion_page_id: Notion page ID
+    notion_page_id_hint: The ID of the page where the database will be created. Find it in the page URL.
+    notion_create_new_database: Create new database
+    notion_use_existing_database: Use existing database
+    notion_create_database_btn: Create Loomio database in Notion
+    notion_database_created: Notion database created successfully!
+    notion_database_create_failed: "Failed to create Notion database. Check your API token and that the page is shared with your integration."
+    notion_test_success: Check your Notion database for a test entry!
     event_kind_helptext: Select events the bot will always be notified about. If you're not sure, just leave them all off.
     notification_only_label: Send notification headline only
     check_for_test_message: Check your chatroom for a message from the bot!
+    integration: Integration
+    integrations: Integrations
+    add_integration: Add integration
+    integration_name: Integration name
+    integration_saved: Integration saved!
+    configure_integration: Configure integration
+    integration_event_kind_helptext: Select events this integration will be notified about. If you're not sure, just leave them all off.
+    integration_notification_only_label: Send notification headline only
+    check_for_test_notification: Check your service for a test notification!
+    integration_connection_test_successful: Loomio connection test successful!
   webhook:
     integrations: Integrations
     api_keys: API keys

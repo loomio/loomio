@@ -44,7 +44,9 @@ class ChatbotService
                                     date_time_pref: example_user.date_time_pref)
 
       I18n.with_locale(recipient.locale) do
-        if chatbot.kind == "webhook"
+        if chatbot.webhook_kind == "notion"
+          publish_to_notion!(chatbot, event, template_name, recipient)
+        elsif chatbot.kind == "webhook"
           serializer = "Webhook::#{chatbot.webhook_kind.classify}::EventSerializer".constantize
           payload = serializer.new(event, root: false, scope: {template_name: template_name, recipient: recipient}).as_json
           req = Clients::Webhook.new.post(chatbot.server, params: payload)
@@ -58,6 +60,28 @@ class ChatbotService
           matrix_client.send_html(chatbot.channel, html)
         end
       end
+    end
+  end
+
+  def self.publish_to_notion!(chatbot, event, template_name, recipient)
+    serializer = Webhook::Notion::EventSerializer.new(event, root: false, scope: {template_name: template_name, recipient: recipient})
+    payload = serializer.as_json
+    properties = payload["properties"]
+    event_url = properties.dig("URL", "url")
+
+    client = Clients::Notion.new(access_token: chatbot.access_token)
+
+    # Update existing page if one exists for this URL, otherwise create
+    existing = event_url && client.find_page_by_loomio_id(database_id: chatbot.channel, loomio_url: event_url)
+
+    if existing
+      response = client.update_page(page_id: existing["id"], properties: properties)
+    else
+      response = client.create_page(database_id: chatbot.channel, properties: properties)
+    end
+
+    unless response.success?
+      Sentry.capture_message("chatbot id #{chatbot.id} notion post event id #{event.id} failed: code: #{response.code} body: #{response.body}")
     end
   end
 
@@ -103,6 +127,14 @@ class ChatbotService
     case params[:kind]
     when 'slack_webhook'
       Clients::Webhook.new.post(params[:server], params: {text: I18n.t('chatbot.connection_test_successful')})
+    when 'notion'
+      client = Clients::Notion.new(access_token: params[:access_token])
+      client.create_page(
+        database_id: params[:channel],
+        properties: {
+          "Title" => { title: [{ text: { content: I18n.t('chatbot.connection_test_successful') } }] }
+        }
+      )
     else
       matrix_client = Clients::Matrix.new(server: params[:server], access_token: params[:access_token])
       message = I18n.t('chatbot.connection_test_successful', group: params[:group_name])
