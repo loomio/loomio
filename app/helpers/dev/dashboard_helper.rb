@@ -11,7 +11,11 @@ module Dev::DashboardHelper
   end
 
   def recent_discussion(group: create_group)
-    create_discussion!(:recent_discussion, group: group)
+    create_discussion!(:recent_discussion, group: group).tap do |discussion|
+      commenter = (group.members - [patrick]).first || jennifer
+      group.add_member!(commenter) unless group.members.include?(commenter)
+      CommentService.create(comment: Comment.new(body: "a new comment", parent: discussion, author: commenter), actor: commenter)
+    end
   end
 
   def old_discussion

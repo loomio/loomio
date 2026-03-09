@@ -69,7 +69,7 @@ export default class CommentModel extends BaseModel {
   }
 
   isReply() {
-    return (this.parentId != null);
+    return this.parentType === 'Comment';
   }
 
   isBlank() {
