@@ -15,6 +15,11 @@ class UserQuery
       group_ids = actor.group_ids & model.parent_or_self.id_and_subgroup_ids
       rels.push User.joins('LEFT OUTER JOIN memberships m ON m.user_id = users.id').
                      where('m.group_id IN (:group_ids) AND m.revoked_at IS NULL', {group_ids: group_ids})
+
+      if actor.can?(:add_guests, model)
+        rels.push User.joins('LEFT OUTER JOIN memberships m ON m.user_id = users.id').
+                       where('m.group_id IN (:group_ids) AND m.revoked_at IS NULL', {group_ids: actor.group_ids})
+      end
     end
 
     if model.respond_to?(:topic)
