@@ -2,6 +2,7 @@ import BaseModel  from '@/shared/record_store/base_model';
 import RangeSet   from '@/shared/services/range_set';
 import Records    from '@/shared/services/records';
 import AppConfig  from '@/shared/services/app_config';
+import Session    from '@/shared/services/session';
 import { head, last, isArray, isEqual, throttle } from 'lodash-es';
 
 export default class TopicModel extends BaseModel {
@@ -130,11 +131,17 @@ export default class TopicModel extends BaseModel {
   }
 
   membersInclude(user) {
-    return this.topicable().membersInclude(user);
+    if (this.readerGuest && Session.user().id === user.id) { return true; }
+    const group = this.group();
+    return group && group.membersInclude(user);
   }
 
   adminsInclude(user) {
-    return this.topicable().adminsInclude(user);
+    if (this.readerAdmin && Session.user().id === user.id) { return true; }
+    const topicable = this.topicable();
+    if (topicable.authorId === user.id) { return true; }
+    const group = this.group();
+    return group && group.adminsInclude(user);
   }
 
   membership() {
