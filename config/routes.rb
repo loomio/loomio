@@ -225,6 +225,7 @@ Rails.application.routes.draw do
       resources :search, only: :index
 
       resources :topics, only: [:index, :update] do
+        get :dashboard, on: :collection
         patch :mark_as_read, on: :member
         patch :mark_as_seen, on: :member
         patch :dismiss, on: :member

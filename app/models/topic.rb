@@ -18,7 +18,7 @@ class Topic < ApplicationRecord
 
   after_destroy :drop_sequence_id_sequence
 
-  delegate :members_can_raise_motions, to: :group
+  delegate :members_can_raise_motions, to: :group, allow_nil: true
 
   def discussion
     topicable_type == 'Discussion' && topicable
@@ -150,6 +150,7 @@ class Topic < ApplicationRecord
 
   private
   def privacy_is_permitted_by_group
+    return unless group
     errors.add(:private, 'must be private') if !self.private && group.private_discussions_only?
     errors.add(:private, 'must be public') if self.private && group.public_discussions_only?
   end

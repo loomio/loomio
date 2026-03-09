@@ -107,7 +107,8 @@ class Discussion < ApplicationRecord
   delegate :locale, to: :author
   delegate :members, :admins, :guests, :guest_ids, :add_guest!, :add_admin!, :group_id, :group,
            :seen_by_count, :members_count, :closed_polls_count, :anonymous_polls_count,
-           :items, :newest_first, :private, :closed_at, :pinned_at, to: :topic
+           :items, :newest_first, :private, :closed_at, :closer_id, :pinned_at,
+           :last_activity_at, :items_count, :ranges, to: :topic
 
   define_counter_cache(:versions_count)             { |d| d.versions.count }
 

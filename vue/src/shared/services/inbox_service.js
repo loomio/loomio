@@ -13,7 +13,7 @@ export default new class InboxService {
 
   load(options) {
     if (options == null) { options = {}; }
-    return Records.discussions.fetchInbox(options).then(() => { return this.loaded = true; });
+    return Records.topics.fetchInbox(options).then(() => { return this.loaded = true; });
   }
 
   unreadCount() {

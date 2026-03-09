@@ -40,7 +40,7 @@ export default class TopicModel extends BaseModel {
       closerId: null,
       pinnedAt: null,
       // reader state
-      readerId: null,
+      topicReaderId: null,
       readerVolume: null,
       lastReadAt: null,
       dismissedAt: null,
@@ -71,7 +71,7 @@ export default class TopicModel extends BaseModel {
   }
 
   isDismissed() {
-    return (this.readerId != null) && (this.dismissedAt != null) &&
+    return (this.topicReaderId != null) && (this.dismissedAt != null) &&
       (this.dismissedAt >= this.lastActivityAt);
   }
 

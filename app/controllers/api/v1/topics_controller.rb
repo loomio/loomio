@@ -4,6 +4,19 @@ class Api::V1::TopicsController < Api::V1::RestfulController
     respond_with_collection
   end
 
+  def dashboard
+    raise CanCan::AccessDenied.new unless current_user.is_logged_in?
+    @accessible_records = Topic.joins("LEFT OUTER JOIN groups ON topics.group_id = groups.id")
+                               .where("groups.archived_at IS NULL OR topics.group_id IS NULL")
+                               .where("topics.group_id IN (:group_ids) OR topics.id IN (:topic_ids)",
+                                      group_ids: current_user.group_ids,
+                                      topic_ids: current_user.guest_topic_ids)
+                               .where(closed_at: nil)
+                               .order(last_activity_at: :desc)
+    instantiate_collection
+    respond_with_collection
+  end
+
   def update
     load_resource
     TopicService.update(topic: resource, params: permitted_params.topic, actor: current_user)

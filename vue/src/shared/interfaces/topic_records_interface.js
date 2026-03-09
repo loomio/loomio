@@ -7,4 +7,14 @@ export default class TopicRecordsInterface extends BaseRecordsInterface {
     this.model = TopicModel;
     this.baseConstructor(recordStore);
   }
+
+  fetchInbox(options) {
+    if (options == null) { options = {}; }
+    return this.fetch({
+      path: 'dashboard',
+      params: {
+        per: 50
+      }
+    });
+  }
 };
