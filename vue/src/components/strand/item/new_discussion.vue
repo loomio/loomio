@@ -1,6 +1,7 @@
 <script lang="js">
 import DiscussionService  from '@/shared/services/discussion_service';
-import { omit, pickBy } from 'lodash-es';
+import TopicService  from '@/shared/services/topic_service';
+import { omit, pickBy, merge } from 'lodash-es';
 import Session from '@/shared/services/session';
 import openModal      from '@/shared/helpers/open_modal';
 import StrandActionsPanel from '@/components/strand/actions_panel';
@@ -68,7 +69,8 @@ export default {
 
   methods: {
     rebuildActions() {
-      this.actions = omit(DiscussionService.actions(this.eventable, this), ['dismiss_thread']);
+      const topicActions = this.topic ? TopicService.actions(this.topic, this) : {};
+      this.actions = omit(merge({}, topicActions, DiscussionService.actions(this.eventable, this)), ['dismiss_thread']);
     },
     updateGroups() {
       this.groups = this.discussion.group().parentsAndSelf().map(group => {

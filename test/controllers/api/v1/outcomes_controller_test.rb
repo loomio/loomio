@@ -7,6 +7,7 @@ class Api::V1::OutcomesControllerTest < ActionController::TestCase
     @non_member_user = User.create!(name: "Non Member", username: "nonmember", email: "nonmember@example.com")
     @group = groups(:group)
     @discussion = discussions(:discussion)
+    @discussion.topic.update!(allow_concurrent_polls: true)
 
     # Create poll
     @poll = PollService.create(params: {

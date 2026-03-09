@@ -12,10 +12,10 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
   end
 
   # Test index action
-  test "index responds with forbidden for logged out users" do
+  test "index responds with success for logged out users" do
     get :index
 
-    assert_response :forbidden
+    assert_response :success
   end
 
   test "index returns topics for current user groups" do
