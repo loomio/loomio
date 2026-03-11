@@ -379,9 +379,12 @@ GEM
       multi_xml (>= 0.5.2)
     i18n (1.14.8)
       concurrent-ruby (~> 1.0)
-    i18n-timezones (1.4.8)
-      i18n (>= 0.9.3)
-      rails (>= 5.1.6.2)
+    i18n-timezones (2.3.0)
+      activesupport (>= 7.0, < 9)
+      i18n (>= 1.0, < 3)
+      i18n-timezones-data (~> 1.1)
+      railties (>= 7.0, < 9)
+    i18n-timezones-data (1.1.0)
     icalendar (2.12.1)
       base64
       ice_cube (~> 0.16)
@@ -453,7 +456,7 @@ GEM
     multipart-post (2.4.1)
     net-http (0.9.1)
       uri (>= 0.11.1)
-    net-imap (0.6.2)
+    net-imap (0.6.3)
       date
       net-protocol
     net-pop (0.1.2)
