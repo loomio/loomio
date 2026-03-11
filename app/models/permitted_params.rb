@@ -137,6 +137,8 @@ class PermittedParams < Struct.new(:params)
       :outcome_statement_format,
       :outcome_review_due_in_days,
       :quorum_pct,
+      :allow_comments,
+      :allow_reactions,
       :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}
     ]
   end
@@ -177,7 +179,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def topic_attributes
-    [:newest_first, :max_depth, :allow_concurrent_polls]
+    [:newest_first, :max_depth, :allow_concurrent_polls, :allow_comments, :allow_reactions]
   end
 
   def group_attributes
@@ -238,6 +240,8 @@ class PermittedParams < Struct.new(:params)
      :newest_first,
      :max_depth,
      :allow_concurrent_polls,
+     :allow_comments,
+     :allow_reactions,
      :public,
      :default_to_direct_discussion,
      :poll_template_keys_or_ids, {poll_template_keys_or_ids: []},

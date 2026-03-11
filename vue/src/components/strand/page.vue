@@ -97,12 +97,10 @@ export default {
 
         this.respondToRoute();
 
-        const isPollTopicable = this.topicable.constructor.singular === 'poll';
         EventBus.$emit('currentComponent', {
           focusHeading: false,
           page: 'discussionPage',
-          discussion: isPollTopicable ? null : this.topicable,
-          poll: isPollTopicable ? this.topicable : null,
+          topic: this.topic,
           group: this.topic.group(),
           title: this.topicable.title
         });
@@ -240,7 +238,8 @@ export default {
           div.text-center
             span.text-center(v-if="focusMode == 'unread'" v-t="'strand_nav.showing_unread'")
             span.text-center(v-if="focusMode == 'newest'" v-t="'strand_nav.showing_latest'")
-        strand-list.pt-3.pr-1.pr-sm-3.px-sm-2(:loader="loader" :collection="loader.collection" :focus-selector="focusSelector" :focus-mode="focusMode")
+        strand-header.pt-3.px-1.px-sm-3(:topicable="topicable")
+        strand-list.pr-1.pr-sm-3.px-sm-2(:loader="loader" :collection="loader.collection" :focus-selector="focusSelector" :focus-mode="focusMode")
         strand-actions-panel(:topic="topic")
   strand-toc-nav(v-if="loader" :topic="topic" :loader="loader" :key="topic.id" :focus-mode="focusMode" :focus-selector="focusSelector")
   v-fab(v-if="focusSelector && !focusedItemVisible" icon app extended :text="$t('strand_nav.recenter')" location="bottom center" @click="scrollToFocused" color="accent" variant="elevated")

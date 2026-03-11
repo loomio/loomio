@@ -4,7 +4,6 @@ import { useRouter, useRoute } from 'vue-router';
 import Session from '@/shared/services/session';
 import AbilityService from '@/shared/services/ability_service';
 import DiscussionService from '@/shared/services/discussion_service';
-import TopicService from '@/shared/services/topic_service';
 import { compact } from 'lodash-es';
 import AppConfig from '@/shared/services/app_config';
 import Records from '@/shared/services/records';
@@ -85,10 +84,6 @@ const submit = () => {
     form.value.validate();
     Flash.serverError(error, ['title']);
   });
-};
-
-const openEditLayout = () => {
-  return TopicService.actions(props.discussion.topic())['edit_arrangement'].perform();
 };
 
 // Computed
@@ -256,8 +251,6 @@ v-form(ref="form" @submit.prevent="submit")
         common-notify-fields(v-if="loaded" :model="discussion" :initial-recipients="initialRecipients")
     v-card-actions(v-if="!showUpgradeMessage")
       help-btn(path='en/user_manual/threads/starting_threads')
-      v-btn.discussion-form__edit-layout(v-if="discussion.id" @click="openEditLayout")
-        span(v-t="'thread_arrangement_form.edit'")
       v-spacer
       v-btn.mr-2(@click="discardDraft" variant="text")
         span(v-t="'common.reset'")

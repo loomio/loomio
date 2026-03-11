@@ -9,10 +9,11 @@ class PollService
     poll.prioritise_poll_options!
 
     poll.topic ||= Topic.new(
-                     topicable: poll,
-                     group_id: topic_params[:group_id],
-                     private: topic_params.key?(:private) ? topic_params[:private] : true,
-                    )
+                     topic_params.merge(
+                       topicable: poll,
+                       private: topic_params.key?(:private) ? topic_params[:private] : true,
+                     )
+                   )
 
     if !poll.opened_at &&
         poll.closing_at &&

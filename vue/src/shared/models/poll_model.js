@@ -94,7 +94,9 @@ export default class PollModel extends BaseModel {
       tags: [],
       hideResults: 'off',
       stanceCounts: [],
-      topicId: null
+      topicId: null,
+      allowComments: true,
+      allowReactions: true
     };
   }
 

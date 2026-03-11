@@ -75,7 +75,7 @@ export default new class TopicService {
 
       pin_thread: {
         icon: 'mdi-pin-outline',
-        name: 'action_dock.pin_discussion',
+        name: 'action_dock.pin_thread',
         menu: true,
         canPerform() { return AbilityService.canPinThread(topic); },
         perform: () => this.pin(topic)
@@ -83,7 +83,7 @@ export default new class TopicService {
 
       unpin_thread: {
         icon: 'mdi-pin-off',
-        name: 'action_dock.unpin_discussion',
+        name: 'action_dock.unpin_thread',
         menu: true,
         canPerform() { return AbilityService.canUnpinThread(topic); },
         perform: () => this.unpin(topic)
@@ -97,20 +97,8 @@ export default new class TopicService {
         perform: () => this.dismiss(topic)
       },
 
-      edit_arrangement: {
-        icon: (topic.newestFirst && 'mdi-arrow-up') || 'mdi-arrow-down',
-        name: (topic.newestFirst && 'strand_nav.newest_first') || 'strand_nav.oldest_first',
-        canPerform() { return topic.adminsInclude(Session.user()); },
-        perform() {
-          return openModal({
-            component: 'ArrangementForm',
-            props: { topic: topic.clone() }
-          });
-        }
-      },
-
       close_thread: {
-        name: 'action_dock.close_discussion',
+        name: 'action_dock.close_thread',
         menu: true,
         icon: 'mdi-archive-outline',
         canPerform() { return AbilityService.canCloseThread(topic); },
@@ -118,7 +106,7 @@ export default new class TopicService {
       },
 
       reopen_thread: {
-        name: 'action_dock.reopen_discussion',
+        name: 'action_dock.reopen_thread',
         menu: true,
         icon: 'mdi-refresh',
         dock: 2,
@@ -139,7 +127,7 @@ export default new class TopicService {
       },
 
       discard_thread: {
-        name: 'action_dock.delete_discussion',
+        name: 'action_dock.delete_thread',
         icon: 'mdi-delete-outline',
         menu: true,
         canPerform() { return AbilityService.canDeleteThread(topic); },
@@ -150,9 +138,9 @@ export default new class TopicService {
               confirm: {
                 submit: topic.discard,
                 text: {
-                  title: 'action_dock.delete_discussion',
+                  title: 'action_dock.delete_thread',
                   helptext: 'delete_discussion_form.body',
-                  submit: 'action_dock.delete_discussion',
+                  submit: 'action_dock.delete_thread',
                   flash: 'delete_discussion_form.discussion_deleted'
                 },
                 redirect: LmoUrlService.group(topic.group())

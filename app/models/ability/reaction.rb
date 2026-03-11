@@ -7,7 +7,9 @@ module Ability::Reaction
     end
     
     can :update, ::Reaction do |reaction|
-      user.is_logged_in? && can?(:show, reaction.reactable)
+      user.is_logged_in? &&
+      can?(:show, reaction.reactable) &&
+      (!reaction.reactable.respond_to?(:topic) || reaction.reactable.topic&.allow_reactions != false)
     end
 
     can :destroy, ::Reaction do |reaction|

@@ -52,7 +52,7 @@ export default new class CommentService {
         dock: 1,
         canPerform() {
           const topic = comment.topic();
-          return !comment.discardedAt && topic && AbilityService.canAddComment(topic);
+          return !comment.discardedAt && topic && AbilityService.canAddReaction(topic);
         }
       },
 

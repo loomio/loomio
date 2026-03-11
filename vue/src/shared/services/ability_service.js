@@ -27,7 +27,11 @@ export default new class AbilityService {
 
   canAddComment(topic) {
     const closedAt = topic ? topic.closedAt : thread.closedAt;
-    return !closedAt && topic.membersInclude(Session.user());
+    return !closedAt && topic.allowComments && topic.membersInclude(Session.user());
+  }
+
+  canAddReaction(topic) {
+    return topic && !topic.closedAt && topic.allowReactions && topic.membersInclude(Session.user());
   }
 
   canRespondToComment(comment) {

@@ -180,4 +180,12 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
     @admin_comment.reload
     assert_not @admin_comment.discarded?
   end
+
+  test "create denied when allow_comments is false" do
+    sign_in @user
+    @discussion.topic.update!(allow_comments: false)
+    comment_params = { parent_type: 'Discussion', parent_id: @discussion.id, body: "should be denied" }
+    post :create, params: { comment: comment_params }
+    assert_response :forbidden
+  end
 end

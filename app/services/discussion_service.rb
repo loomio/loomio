@@ -1,5 +1,5 @@
 class DiscussionService
-  TOPIC_ATTRS = %w[group_id private max_depth newest_first allow_concurrent_polls closed_at pinned_at].freeze
+  TOPIC_ATTRS = %w[group_id private max_depth newest_first allow_concurrent_polls allow_comments allow_reactions closed_at pinned_at].freeze
 
   def self.build(params:, actor:)
     params = params.to_h.with_indifferent_access

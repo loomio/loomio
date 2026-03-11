@@ -5,6 +5,7 @@ module Ability::Comment
     can [:create], ::Comment do |comment|
       topic = comment.topic
       !topic.closed_at &&
+      topic.allow_comments &&
       topic.members.exists?(user.id)
     end
 

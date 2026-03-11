@@ -299,6 +299,22 @@ export default new class PollService {
       },
 
 
+      thread_settings: {
+        name: 'thread_arrangement_form.thread_settings',
+        icon: 'mdi-cog',
+        menu: true,
+        canPerform() {
+          const topic = poll.topic();
+          return topic && topic.topicableType === 'Poll' && topic.adminsInclude(Session.user());
+        },
+        perform() {
+          return openModal({
+            component: 'TopicForm',
+            props: { topic: poll.topic().clone() }
+          });
+        }
+      },
+
       discard_poll: {
         name: 'poll_common.delete_poll',
         menu: true,

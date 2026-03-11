@@ -94,6 +94,19 @@ class Api::V1::ReactionsControllerTest < ActionController::TestCase
     assert_equal 4, JSON.parse(response.body)['reactions'].length
   end
 
+  test "create denied when allow_reactions is false" do
+    user = users(:admin)
+    discussion = discussions(:discussion)
+    comment = Comment.new(body: "Test comment", parent: discussion, author: user)
+    CommentService.create(comment: comment, actor: user)
+
+    discussion.topic.update!(allow_reactions: false)
+
+    sign_in user
+    post :create, params: { reaction: { reaction: '+1', reactable_id: comment.id, reactable_type: 'Comment' } }
+    assert_response :forbidden
+  end
+
   test "index denies access correctly" do
     author = users(:admin)
     discussion = discussions(:discussion)

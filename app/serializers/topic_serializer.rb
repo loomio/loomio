@@ -7,6 +7,8 @@ class TopicSerializer < ApplicationSerializer
              :max_depth,
              :newest_first,
              :allow_concurrent_polls,
+             :allow_comments,
+             :allow_reactions,
              :active_polls_count,
              :last_activity_at,
              :closed_at,

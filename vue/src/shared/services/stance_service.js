@@ -36,7 +36,7 @@ export default new class StanceService {
           !stance.revokedAt &&
           poll && poll.showResults() &&
           poll.membersInclude(Session.user()) &&
-          (!topic || !topic.closedAt);
+          (!topic || (!topic.closedAt && topic.allowReactions));
         }
       },
 

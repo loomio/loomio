@@ -34,7 +34,7 @@ export default new class DiscussionService {
 
       react: {
         dock: 1,
-        canPerform() { return AbilityService.canAddComment(discussion.topic()); }
+        canPerform() { return AbilityService.canAddReaction(discussion.topic()); }
       },
 
       add_comment: {
@@ -89,6 +89,22 @@ export default new class DiscussionService {
           });
         },
         canPerform() { return true; }
+      },
+
+      thread_settings: {
+        name: 'thread_arrangement_form.thread_settings',
+        icon: 'mdi-cog',
+        menu: true,
+        canPerform() {
+          const topic = discussion.topic();
+          return topic && topic.adminsInclude(Session.user());
+        },
+        perform() {
+          return openModal({
+            component: 'TopicForm',
+            props: { topic: discussion.topic().clone() }
+          });
+        }
       },
 
       export_thread: {

@@ -32,6 +32,8 @@ export default class TopicModel extends BaseModel {
       maxDepth: 3,
       newestFirst: false,
       allowConcurrentPolls: false,
+      allowComments: true,
+      allowReactions: true,
       activePollsCount: 0,
       lastActivityAt: null,
       topicableId: null,

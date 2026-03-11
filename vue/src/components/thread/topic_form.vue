@@ -68,6 +68,8 @@ v-card.thread-arrangement-form(:title="$t('thread_arrangement_form.title')")
           space
           span(v-t="'thread_arrangement_form.nested_twice_description'")
     v-checkbox(v-model="clone.allowConcurrentPolls" :label="$t('thread_arrangement_form.allow_concurrent_polls')" :hint="$t('thread_arrangement_form.allow_concurrent_polls_description')" persistent-hint)
+    v-checkbox(v-model="clone.allowComments" :label="$t('thread_arrangement_form.allow_comments')" :hint="$t('thread_arrangement_form.allow_comments_description')" persistent-hint)
+    v-checkbox(v-model="clone.allowReactions" :label="$t('thread_arrangement_form.allow_reactions')" :hint="$t('thread_arrangement_form.allow_reactions_description')" persistent-hint)
     v-alert(type="warning" variant="tonal" v-if="clone.maxDepth != topic.maxDepth")
       span(v-t="'thread_arrangement_form.changing_nesting_is_slow'")
   v-card-actions
