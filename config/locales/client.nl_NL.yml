@@ -2485,6 +2485,7 @@ nl_NL:
       community: Community groep
       government: Overheid/lokale overheid
       other: Andere
+      cohousing: Samenwonen en co-housing
   report:
     start_on: Begin op
     end_on: Eindigt op

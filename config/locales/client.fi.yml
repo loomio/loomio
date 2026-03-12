@@ -2456,6 +2456,7 @@ fi:
       community: yhteisön ryhmä
       government: Hallitus/paikallinen hallinto
       other: Muut
+      cohousing: Yhteisasuminen ja yhteisasuminen
   report:
     start_on: Aloittaa
     end_on: Lopeta
