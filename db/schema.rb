@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_02_13_175153) do
+ActiveRecord::Schema[8.0].define(version: 2026_03_12_000000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -199,19 +199,6 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_13_175153) do
     t.datetime "cover_photo_updated_at", precision: nil
     t.datetime "created_at", precision: nil
     t.datetime "updated_at", precision: nil
-  end
-
-  create_table "demos", force: :cascade do |t|
-    t.integer "author_id", null: false
-    t.integer "group_id", null: false
-    t.string "name", null: false
-    t.string "description"
-    t.datetime "recorded_at", precision: nil, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "priority", default: 0, null: false
-    t.string "demo_handle"
-    t.index ["author_id"], name: "index_demos_on_author_id"
   end
 
   create_table "discussion_readers", id: :serial, force: :cascade do |t|

@@ -76,9 +76,7 @@ Rails.application.routes.draw do
         get :version, on: :collection
       end
 
-      resources :demos, only: [:index] do
-        post :clone, on: :collection
-      end
+      post 'demos/clone', to: 'demos#clone'
 
       resources :link_previews, only: [:create]
 

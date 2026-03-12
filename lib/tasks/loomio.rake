@@ -236,7 +236,7 @@ namespace :loomio do
     if (Time.now.hour == 0)
       ThrottleService.reset!('day')
       Group.expired_demo.delete_all
-      GenericWorker.perform_async('DemoService', 'generate_demo_groups')
+      GenericWorker.perform_async('DemoService', 'refill_queue')
       GenericWorker.perform_async('CleanupService', 'delete_orphan_records')
       GenericWorker.perform_async('OutcomeService', 'publish_review_due')
       GenericWorker.perform_async('ReceivedEmailService', 'delete_old_emails')

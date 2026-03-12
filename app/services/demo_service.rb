@@ -1,20 +1,32 @@
 class DemoService
+  DEMO_JSON_PATH = Rails.root.join('db/demo/demo.json')
+  METADATA_PATH  = Rails.root.join('db/demo/metadata.yml')
+
+  def self.create_demo_group
+    raise "Demo data not found at #{DEMO_JSON_PATH}" unless File.exist?(DEMO_JSON_PATH)
+
+    metadata = YAML.load_file(METADATA_PATH)
+    recorded_at = Time.parse(metadata['recorded_at'])
+
+    cloner = RecordCloner.new(recorded_at: recorded_at)
+    group = cloner.create_clone_group_from_json(DEMO_JSON_PATH)
+    group.handle = nil
+    group.is_visible_to_public = false
+    group.subscription = Subscription.new(plan: 'demo')
+    group.save!
+
+    group
+  end
+
   def self.refill_queue
     return unless ENV['FEATURES_DEMO_GROUPS']
+    return unless File.exist?(DEMO_JSON_PATH)
 
-    demo = Demo.where('demo_handle is not null').last
-    return unless demo
-
-    # precache translations
-    AppConfig.locales['supported'].each do |locale|
-      TranslationService.translate_group_content!(demo.group, locale, true)
-    end
-
-    expected = ENV.fetch('FEATURES_DEMO_GROUPS_SIZE', 3)
+    expected = ENV.fetch('FEATURES_DEMO_GROUPS_SIZE', 3).to_i
     remaining = Redis::List.new('demo_group_ids').value.size
 
     (expected - remaining).times do
-      group = RecordCloner.new(recorded_at: demo.recorded_at).create_clone_group(demo.group)
+      group = create_demo_group
       Redis::List.new('demo_group_ids').push(group.id)
     end
   end
@@ -40,14 +52,5 @@ class DemoService
     Redis::List.new('demo_group_ids').clear
     Redis::List.new('demo_group_ids').unshift(*existing_ids) if existing_ids.any?
     refill_queue
-  end
-
-  def self.generate_demo_groups
-    return unless ActiveRecord::Base.connection.table_exists? 'demos'
-    Demo.where('demo_handle IS NOT NULL').each do |template|
-      Group.where(handle: template.demo_handle).update_all(handle: nil)
-      RecordCloner.new(recorded_at: template.recorded_at)
-                  .create_clone_group_for_public_demo(template.group, template.demo_handle)
-    end
   end
 end

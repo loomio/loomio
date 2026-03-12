@@ -93,6 +93,140 @@ class RecordCloner
   end
 
 
+  def create_clone_group_from_json(filename)
+    datas = File.readlines(filename).map { |line| JSON.parse(line) }
+    tables = datas.map { |d| d['table'] }.uniq - ['attachments']
+
+    migrate_ids = {}
+    group_ids = []
+
+    ActiveRecord::Base.transaction do
+      tables.each do |table|
+        migrate_ids[table] = {}
+        klass = table.classify.constantize
+
+        datas.each do |data|
+          next unless data['table'] == table
+
+          attrs = wind_dates(data['record'])
+
+          # remap foreign keys that reference already-imported tables
+          GroupExportService::BACK_REFERENCES.each do |ref_table, refs|
+            next unless refs.key?(table)
+            next unless migrate_ids[ref_table].present?
+            refs[table].each do |column|
+              next if ['eventable', 'reactable'].include?(column)
+              if attrs[column] && migrate_ids[ref_table][attrs[column]]
+                attrs[column] = migrate_ids[ref_table][attrs[column]]
+              end
+            end
+          end
+
+          record = klass.new(attrs)
+
+          # generate fresh tokens
+          ['secret_token', 'token'].each do |name|
+            record.send("#{name}=", klass.generate_unique_secure_token) if attrs.key?(name)
+          end
+
+          record.key = nil if attrs.key?('key')
+          record.set_key if record.respond_to?(:set_key) && attrs.key?('key')
+
+          if table == 'users'
+            existing = User.find_by(email: record.email)
+            if existing
+              migrate_ids[table][data['record']['id']] = existing.id
+              next
+            end
+          end
+
+          if table == 'groups'
+            record.handle = nil
+            record.is_visible_to_public = false
+          end
+
+          old_id = record.id
+          record.id = nil
+          result = klass.import([record], validate: false, on_duplicate_key_ignore: true)
+
+          if new_id = result.ids.map(&:to_i).first
+            migrate_ids[table][old_id] = new_id
+            group_ids << new_id if table == 'groups'
+          else
+            if table == 'users'
+              migrate_ids[table][old_id] = User.find_by(email: record.email).id
+            else
+              raise "failed to import #{table} record"
+            end
+          end
+        end
+      end
+
+      # rewrite references to old ids
+      (tables - ['attachments']).each do |table|
+        migrate_ids[table].each_pair do |old_id, new_id|
+          next unless GroupExportService::BACK_REFERENCES.key?(table)
+          GroupExportService::BACK_REFERENCES[table].each_pair do |ref_table, columns|
+            next unless migrate_ids[ref_table].present?
+            imported_ids = migrate_ids[ref_table].values
+            columns.each do |column|
+              if ['eventable', 'reactable'].include?(column)
+                ref_table.classify.constantize
+                  .where(id: imported_ids)
+                  .where("#{column}_type" => table.classify, "#{column}_id" => old_id)
+                  .update_all("#{column}_id" => new_id)
+              else
+                ref_table.classify.constantize
+                  .where(id: imported_ids)
+                  .where(column => old_id)
+                  .update_all(column => new_id)
+              end
+            end
+          end
+        end
+      end
+
+      # fix up polls
+      datas.each do |data|
+        next unless data['table'] == 'polls'
+        new_id = migrate_ids['polls'][data['record']['id']]
+        next unless new_id
+        poll = Poll.find(new_id)
+        poll.update_counts!
+        poll.stances.each(&:update_option_scores!)
+      end
+    end
+
+    # handle attachments in background
+    if datas.any? { |d| d['table'] == 'attachments' }
+      datas.each do |data|
+        next unless data['table'] == 'attachments'
+        table = data['record']['record_type'].tableize
+        new_id = migrate_ids[table]&.dig(data['record']['record_id'])
+        DownloadAttachmentWorker.perform_async(data['record'], new_id) if new_id
+      end
+    end
+
+    Group.find(group_ids.first)
+  end
+
+  def wind_dates(attrs)
+    time_delta = Time.now - @recorded_at
+    date_delta = (Date.today - @recorded_at.to_date).to_i
+
+    attrs.each_with_object({}) do |(key, value), result|
+      if value.nil?
+        result[key] = value
+      elsif key.end_with?('_at') && value.is_a?(String)
+        result[key] = Time.parse(value) + time_delta
+      elsif key.end_with?('_on') && value.is_a?(String)
+        result[key] = Date.parse(value) + date_delta
+      else
+        result[key] = value
+      end
+    end
+  end
+
   def create_clone_group(group)
     clone_group = new_clone_group(group)
     clone_group.save!
