@@ -5,16 +5,15 @@ class Api::V1::ReportsController < Api::V1::RestfulController
     interval = params.fetch(:interval, 'month')
     user_group_ids = current_user.group_ids
     group_ids = params.fetch(:group_ids).split(',').map(&:to_i)
-    all_group_ids = Group.where("id IN (:group_ids) OR parent_id IN (:group_ids)", group_ids: Group.where(id: group_ids).pluck(:id, :parent_id).flatten.uniq).pluck(:id).uniq
-    all_groups = Group.where(id: all_group_ids).order("parent_id NULLS FIRST, name asc").pluck(:id, :name).map {|pair| {id: pair[0], name: pair[1] } }
-    first_year = Group.where(id: all_group_ids).order("created_at").first.created_at.year
+    group_ids = group_ids & current_user.group_ids unless current_user.is_admin?
 
-    if current_user.is_admin?
-      all_groups.unshift({id: 0, name: I18n.t('sidebar.direct_discussions')})
-    else
-      group_ids = group_ids & current_user.group_ids
-      all_group_ids = all_group_ids & current_user.group_ids
-    end
+    all_group_ids = Group.where("id IN (:group_ids) OR parent_id IN (:group_ids)", group_ids: Group.where(id: group_ids).pluck(:id, :parent_id).flatten.uniq).pluck(:id).uniq
+    all_group_ids = all_group_ids & current_user.group_ids unless current_user.is_admin?
+
+    all_groups = Group.where(id: all_group_ids).order("parent_id NULLS FIRST, name asc").pluck(:id, :name).map {|pair| {id: pair[0], name: pair[1] } }
+    all_groups.unshift({id: 0, name: I18n.t('sidebar.direct_discussions')}) if current_user.is_admin?
+
+    first_year = Group.where(id: all_group_ids).order("created_at").first&.created_at&.year || Date.today.year
 
     @report = ReportService.new(interval: interval, group_ids: group_ids, start_at: start_at, end_at: end_at)
     render json: {

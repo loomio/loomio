@@ -24,7 +24,7 @@ const errors = ref({});
 const form = useTemplateRef('form')
 
 const isSignedIn = Session.isSignedIn();
-const categoryItems = ['board', 'membership', 'self_managing', 'other'].map(category => ({
+const categoryItems = ['board', 'membership', 'self_managing', 'cohousing', 'other'].map(category => ({
   title: I18n.global.t('group_survey.categories.'+category),
   value: category
 }));

@@ -2664,6 +2664,7 @@ zh_CN:
       community: 社区群
       government: 政府/地方政府
       other: 其他
+      cohousing: 共享居住与共享住房
   auth:
     oauth_cancelled: 登录已取消
     switching_accounts: 正在切换账户。请使用新账户信息登录。
