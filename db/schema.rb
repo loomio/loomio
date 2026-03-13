@@ -803,6 +803,9 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_13_175153) do
     t.datetime "opening_at"
     t.datetime "opened_at"
     t.boolean "notify_on_open", default: true, null: false
+    t.integer "stv_seats"
+    t.string "stv_method"
+    t.string "stv_quota"
     t.index ["author_id"], name: "index_polls_on_author_id"
     t.index ["closed_at", "closing_at"], name: "index_polls_on_closed_at_and_closing_at"
     t.index ["closed_at", "discussion_id"], name: "index_polls_on_closed_at_and_discussion_id"

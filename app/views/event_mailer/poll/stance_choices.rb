@@ -60,6 +60,12 @@ class Views::EventMailer::Poll::StanceChoices < Views::ApplicationMailer::Compon
       else
         img(src: image_path("icons/checkbox-blank-outline-#{option_color}.png"), width: 24, height: 24, alt: display_name)
       end
+    when 'stv'
+      if score
+        div(class: "text-h6") { plain "##{score}" }
+      else
+        img(src: image_path("icons/checkbox-blank-outline-#{option_color}.png"), width: 24, height: 24, alt: display_name)
+      end
     when 'meeting'
       if score
         icon = { 0 => 'disagree', 1 => 'abstain', 2 => 'agree' }[score]

@@ -196,6 +196,40 @@ ranked_choice:
   details_i18n: poll_templates.ranked_choice.details
   shuffle_options: true
 
+stv:
+  poll_type: stv
+  process_name_i18n: decision_tools_card.stv_title
+  process_subtitle_i18n: poll_templates.stv.process_subtitle
+  process_introduction_i18n: poll_templates.stv.process_introduction
+  title_placeholder_i18n: poll_templates.stv.title
+  details_i18n: poll_templates.stv.details
+  shuffle_options: true
+  default_duration_in_days: 7
+
+advice:
+  poll_type: proposal
+  process_name_i18n: decision_tools_card.advice_title
+  process_subtitle_i18n: poll_templates.advice.process_subtitle
+  process_introduction_i18n: poll_templates.advice.process_introduction
+  title_placeholder_i18n: poll_templates.advice.title
+  details_i18n: poll_templates.advice.details
+  outcome_statement_i18n: poll_templates.advice.outcome_statement
+  tags_i18n:
+    - poll_common.advice_process
+  poll_options:
+    - key: agree
+      icon: agree
+      color: '#70C9F8'
+      name_i18n: poll_proposal_options.agree
+      meaning_i18n: poll_templates.advice.agree_meaning
+      prompt_i18n: poll_templates.advice.agree_prompt
+    - key: abstain
+      icon: abstain
+      color: '#70C9F8'
+      name_i18n: poll_proposal_options.abstain
+      meaning_i18n: poll_templates.advice.abstain_meaning
+      prompt_i18n: poll_templates.advice.abstain_prompt
+
 consent:
   poll_type: proposal
   process_name_i18n: decision_tools_card.consent_title

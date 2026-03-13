@@ -94,7 +94,11 @@ export default class PollModel extends BaseModel {
       showNoneOfTheAbove: false,
       tags: [],
       hideResults: 'off',
-      stanceCounts: []
+      stanceCounts: [],
+      stvSeats: 1,
+      stvMethod: 'scottish',
+      stvQuota: 'droop',
+      stvResults: null
     };
   }
 

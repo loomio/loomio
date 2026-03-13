@@ -212,6 +212,7 @@ en:
     dot_vote: dot vote
     meeting: time poll
     ranked_choice: ranked choice
+    stv: STV election
     score: score poll
     question: question round
   timezones:
@@ -1905,6 +1906,7 @@ en:
     dot_vote_title: Dot vote
     meeting_title: Time poll
     ranked_choice_title: Ranked choice
+    stv_title: STV Election
     majority_title: Majority
     gradients_of_agreement_title: Gradients of agreement
   poll_option_form:
@@ -1956,6 +1958,7 @@ en:
     custom_process: Custom process
     custom_poll: Custom poll
     delete_poll: Delete poll
+    export_blt: Export ballots (BLT)
     select_count_options: Select %{count} options
     select_minimum_to_maximum_options: Select %{minimum} to %{maximum} options
     custom_poll_types: Custom poll types
@@ -1994,6 +1997,7 @@ en:
     decision_templates: Decision templates
     remove_your_vote: Remove your vote
     remove_your_response: Remove your response
+    status: Status
     vote_now: Vote now
     review_due: Review due
     have_your_say: Have your say
@@ -2349,6 +2353,8 @@ en:
       rank: Rank
       ranked_choice: Ranked choice
       ranked_choice_hint: Voters arrange options in order from most to least preferred
+      stv: STV Election
+      stv_hint: Elect multiple winners proportionally using Single Transferable Vote
       time: Time
       time_poll: Time poll
       time_poll_hint: Voters indicate when they are available to meet
@@ -2543,6 +2549,45 @@ en:
     helptext: Drag and drop options in order of preference (1 being your most preferred option). Your top %{count} choices will be recorded.
     stance_created: Choice recorded
     stance_updated: Choice updated
+  poll_stv_vote_form:
+    helptext: Drag candidates above the line to rank them. Items below the line are unranked. Rank 1 is your most preferred.
+    divider_text: drag candidates above this line to rank them
+    stance_created: Vote recorded
+    stance_updated: Vote updated
+  poll_stv_form:
+    settings_title: STV Election Settings
+    settings_helptext: Configure the number of seats to fill, counting method, and quota type for this election.
+    seats_label: Number of seats to fill
+    method_label: Counting method
+    method_scottish: Scottish STV (recommended)
+    method_meek: Meek STV
+    quota_label: Quota type
+    quota_droop: Droop quota (recommended)
+    quota_hare: Hare quota
+  poll_stv_results:
+    title: Election Results
+    elected: Elected
+    not_elected: Not elected
+    tied: Tie
+    no_candidates_elected: No candidates elected
+    round: Round %{number}
+    quota_info: "%{method}, %{quota_type} quota (%{quota} votes needed)"
+    method_scottish: Scottish STV
+    method_meek: Meek STV
+    quota_droop: Droop
+    quota_hare: Hare
+    elected_in_round: Elected in round %{round}
+    eliminated_in_round: Eliminated in round %{round}
+    tied_in_round: Tied in round %{round}
+    votes: votes
+    candidate: Candidate
+    round_elected: Round elected
+    first_preferences: First preferences
+    final_tally: Final tally
+    quota_surplus: Surplus
+    round_details: Round-by-round details
+    view_full_results: View full results
+    results_available_when_closed: Results will be available when voting closes
   thread_item:
     new: new
     removed: Item removed

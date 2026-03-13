@@ -270,6 +270,18 @@ export default new class PollService {
         }
       },
 
+      export_poll_blt: {
+        name: 'poll_common.export_blt',
+        icon: 'mdi-database-export',
+        menu: true,
+        canPerform() {
+          return AbilityService.canExportPoll(poll) && poll.pollType === 'stv';
+        },
+        perform() {
+          return hardReload(LmoUrlService.poll(poll, {export: 1}, {action: 'export', ext: 'blt', absolute: true}));
+        }
+      },
+
       print_poll: {
         name: 'common.action.print',
         icon: 'mdi-printer-outline',
