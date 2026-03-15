@@ -458,6 +458,7 @@ Rails.application.routes.draw do
 
 
   Identity::PROVIDERS.each do |provider|
+    next unless provider == 'saml' || ENV["#{provider.upcase}_APP_KEY"]
     scope provider do
       get :oauth,                           to: "identities/#{provider}#oauth",       as: :"#{provider}_oauth"
       get :authorize,                       to: "identities/#{provider}#create",      as: :"#{provider}_authorize"
