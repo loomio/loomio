@@ -195,6 +195,8 @@ ranked_choice:
   title_placeholder_i18n: poll_templates.ranked_choice.title
   details_i18n: poll_templates.ranked_choice.details
   shuffle_options: true
+  anonymous: true
+  hide_results: until_closed
 
 consent:
   poll_type: proposal
