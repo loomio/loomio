@@ -50,7 +50,7 @@ export default class LmoUrlService {
   static discussionPoll(p, params, options) {
     if (params == null) { params = {}; }
     if (options == null) { options = {}; }
-    if (p.discussionId) {
+    if (!p.isTopicable()) {
       return this.event(p.createdEvent());
     } else {
       return this.buildModelRoute('p', p.key, options.action || p.title, params, options);

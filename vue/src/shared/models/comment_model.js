@@ -7,7 +7,7 @@ import Records from '@/shared/services/records';
 export default class CommentModel extends BaseModel {
   static singular = 'comment';
   static plural = 'comments';
-  static indices = ['discussionId', 'authorId'];
+  static indices = ['authorId'];
   static uniqueIndices = ['id'];
 
   afterConstruction() {
@@ -15,7 +15,7 @@ export default class CommentModel extends BaseModel {
   }
 
   collabKeyParams() {
-    return [this.discussionId, this.parentType, this.parentId];
+    return [this.parentType, this.parentId];
   }
 
   defaultValues() {

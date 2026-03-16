@@ -245,6 +245,16 @@ class TopicService
     end
   end
 
+  def self.extract_link_preview_urls(topic)
+    urls = topic.topicable.respond_to?(:link_previews) ? topic.topicable.link_previews.map { |lp| lp['url'] } : []
+    topic.items.each do |event|
+      if event.eventable.present? && event.eventable.respond_to?(:link_previews)
+        urls.concat(event.eventable.link_previews.map {|lp| lp['url']})
+      end
+    end
+    urls.compact.uniq
+  end
+
   def self.add_users(topic:, actor:, user_ids:, emails:, audience:)
     users = UserInviter.where_or_create!(actor: actor,
                                          user_ids: user_ids,

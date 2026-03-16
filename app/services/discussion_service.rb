@@ -103,13 +103,4 @@ class DiscussionService
     end
   end
 
-  def self.extract_link_preview_urls(discussion)
-    urls = discussion.link_previews.map { |lp| lp['url'] }
-    discussion.items.each do |event|
-      if event.eventable.present? && event.eventable.respond_to?(:link_previews)
-        urls.concat(event.eventable.link_previews.map {|lp| lp['url']})
-      end
-    end
-    urls.compact.uniq
-  end
 end

@@ -15,10 +15,4 @@ export default class EventRecordsInterface extends BaseRecordsInterface {
       params: options});
   }
 
-  findByDiscussionAndSequenceId(discussion, sequenceId) {
-    return this.collection.chain()
-               .find({discussionId: discussion.id})
-               .find({sequenceId})
-               .data()[0];
-  }
 };

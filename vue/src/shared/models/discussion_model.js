@@ -138,8 +138,8 @@ export default class DiscussionModel extends BaseModel {
   // known current participants for quick mentioning
   participantIds() {
     return compact(flatten(
-      map(Records.comments.find({discussionId: this.id}), 'authorId'),
-      map(Records.polls.find({discussionId: this.id}), p => p.participantIds()),
+      map(Records.events.find({topicId: this.topicId}), 'userId'),
+      map(Records.polls.find({topicId: this.topicId}), p => p.participantIds()),
       [this.authorId]
     )
     );

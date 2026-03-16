@@ -27,6 +27,7 @@ class Api::V1::MentionsController < ApplicationController
   def topic_or_group
     @topic_or_group ||= begin
       model =
+        load_and_authorize(:topic, optional: true) ||
         load_and_authorize(:group, optional: true) ||
         load_and_authorize(:discussion, optional: true) ||
         load_and_authorize(:poll, optional: true) ||
@@ -35,6 +36,7 @@ class Api::V1::MentionsController < ApplicationController
         load_and_authorize(:outcome, optional: true)
 
       case model
+      when Topic then model
       when Group, NilClass then model
       when Discussion, Poll then model.topic
       when Comment then model.topic
