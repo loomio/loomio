@@ -2448,6 +2448,7 @@ tr:
       community: Topluluk grubu
       government: Hükümet/Yerel Yönetim
       other: Diğer
+      cohousing: Ortak yaşam ve ortak konut
   report:
     start_on: Başla
     end_on: Bitiş tarihi

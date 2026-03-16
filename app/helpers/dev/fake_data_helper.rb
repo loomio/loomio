@@ -176,7 +176,8 @@ module Dev::FakeDataHelper
       dot_vote: options,
       meeting: option_count.times.map { |i| (seed+i).days.from_now.iso8601},
       ranked_choice: options,
-      score: options
+      score: options,
+      stv: options
     }.with_indifferent_access
   end
 
@@ -241,7 +242,7 @@ module Dev::FakeDataHelper
     case poll.poll_type
     when 'score'
       ((poll.min_score)..(poll.max_score)).to_a.sample
-    when 'ranked_choice'
+    when 'ranked_choice', 'stv'
       index + 1
     when 'meeting'
       if poll.can_respond_maybe

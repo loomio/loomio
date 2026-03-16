@@ -353,3 +353,26 @@ ranked_choice:
     min_score: 1
     default_duration_in_days: 3
     notify_on_closing_soon: 2
+
+stv:
+  material_icon: mdi-vote
+  vote_method: ranked_choice
+  vote_method_hint_i18n: poll_common_form.voting_methods.stv_hint
+  can_shuffle_options: true
+  validate_minimum_stance_choices: false
+  require_all_choices: false
+  validate_min_score: true
+  order_results_by: total_score_desc
+  options_have_meaning: true
+  has_options: true
+  min_options: 2
+  allow_none_of_the_above: false
+  allow_quorum: true
+  defaults:
+    details_format: html
+    process_introduction_format: html
+    poll_option_name_format: plain
+    chart_type: bar
+    min_score: 1
+    default_duration_in_days: 7
+    notify_on_closing_soon: 2

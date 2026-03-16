@@ -61,7 +61,7 @@ function query() {
       case 'proposal':
         return {pollType: {$in: ['proposal', 'question']}};
       case 'poll':
-        return {pollType: {$in: ['score', 'poll', 'ranked_choice', 'dot_vote', 'meeting', 'count']}};
+        return {pollType: {$in: ['score', 'poll', 'ranked_choice', 'dot_vote', 'meeting', 'count', 'stv']}};
     } })();
 
     pollTemplates.value = Records.pollTemplates.collection.chain().
