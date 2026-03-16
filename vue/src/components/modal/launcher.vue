@@ -28,7 +28,6 @@ export default
     PollOptionForm: asyncComponent(() => import('@/components/poll/common/poll_option_form')),
     PollTemplateForm: asyncComponent(() => import('@/components/poll_template/form')),
     MoveThreadForm: asyncComponent(() => import('@/components/thread/move_thread_form')),
-    PollCommonMoveForm: asyncComponent(() => import('@/components/poll/common/move_form')),
     RevisionHistoryModal: asyncComponent(() => import('@/components/revision_history/modal')),
     TagsSelect: asyncComponent(() => import('@/components/tags/select')),
     TagsModal: asyncComponent(() => import('@/components/tags/modal')),

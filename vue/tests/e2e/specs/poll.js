@@ -471,7 +471,7 @@ module.exports = {
     page.fillIn('.poll-common-form-fields__title input', 'A standalone proposal')
     page.fillIn('.poll-common-form-fields__details .lmo-textarea div[contenteditable=true]', 'Some details')
     page.click('.poll-common-form__submit')
-    page.expectText('.poll-common-card__title', 'A standalone proposal')
+    page.expectText('.context-panel__heading', 'A standalone proposal')
     page.expectText('.poll-common-details-panel__details p', 'Some details')
   },
 }

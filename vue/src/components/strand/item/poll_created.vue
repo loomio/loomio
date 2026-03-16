@@ -71,7 +71,7 @@ export default {
 
 <template lang="pug">
 section.strand-item.poll-created(v-intersect.once="{handler: viewed}")
-  .d-flex.justify-space-between(v-if="poll.discussionId")
+  .d-flex.justify-space-between(v-if="!poll.isTopicable()")
     .poll-common-card__title.text-h6.pb-1(tabindex="-1")
       router-link.underline-on-hover.text-high-emphasis(:to="urlFor(poll)" )
         plain-text(:model="poll" field="title")

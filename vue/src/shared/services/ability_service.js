@@ -332,21 +332,13 @@ export default new class AbilityService {
     return poll.myStance() || (!poll.specifiedVotersOnly && poll.membersInclude(Session.user()));
   }
 
-  canMovePoll(poll) {
-    const discussion = poll.discussionId ? poll.discussion() : null;
-    return (!discussion || !discussion.closedAt) &&
-    !poll.discussionId && poll.adminsInclude(Session.user());
-  }
-
   canEditPoll(poll) {
-    const discussion = poll.discussionId ? poll.discussion() : null;
-    return (!discussion || !discussion.closedAt) &&
+    return !poll.topic().closedAt &&
     poll.adminsInclude(Session.user()) && !poll.closedAt;
   }
 
   canDeletePoll(poll) {
-    const discussion = poll.discussionId ? poll.discussion() : null;
-    return (!discussion || !discussion.closedAt) &&
+    return !poll.topic().closedAt &&
     !poll.discardedAt && poll.adminsInclude(Session.user());
   }
 
@@ -355,8 +347,7 @@ export default new class AbilityService {
   }
 
   canSetPollOutcome(poll) {
-    const discussion = poll.discussionId ? poll.discussion() : null;
-    return (!discussion || !discussion.closedAt) &&
+    return !poll.topic().closedAt &&
     !poll.discardedAt &&
     poll.closedAt &&
     poll.adminsInclude(Session.user());

@@ -229,22 +229,6 @@ export default new class PollService {
         canPerform() { return !poll.discardedAt; }
       },
 
-      move_poll: {
-        name: 'action_dock.move_thread', // the text is 'move to group'
-        icon: 'mdi-folder-swap-outline',
-        menu: true,
-        canPerform() {
-          return AbilityService.canMovePoll(poll);
-        },
-        perform() {
-          return openModal({
-            component: 'PollCommonMoveForm',
-            props: {
-              poll: poll.clone()
-            }
-          });
-        }
-      },
 
       export_poll: {
         name: 'common.action.export',
