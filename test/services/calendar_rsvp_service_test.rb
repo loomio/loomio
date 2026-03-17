@@ -60,9 +60,9 @@ class CalendarRsvpServiceTest < ActionMailbox::TestCase
     assert_not CalendarRsvpService.process(mail)
   end
 
-  test "ignores rsvp from unknown sender" do
+  test "ignores rsvp with invalid credentials" do
     ics = build_ics(partstat: "ACCEPTED")
-    mail = build_rsvp_mail(ics: ics, from: "unknown@example.com")
+    mail = build_rsvp_mail(ics: ics, to: "pt=p&pi=#{@poll.id}&d=#{@discussion.id}&u=#{@voter.id}&k=badkey@#{ENV['REPLY_HOSTNAME']}")
     assert_not CalendarRsvpService.process(mail)
   end
 
@@ -103,9 +103,9 @@ class CalendarRsvpServiceTest < ActionMailbox::TestCase
     ICS
   end
 
-  def build_rsvp_mail(ics:, from: nil)
+  def build_rsvp_mail(ics:, from: nil, to: nil)
     from ||= @voter.email
-    to = "pt=p&pi=#{@poll.id}&d=#{@discussion.id}&u=#{@voter.id}&k=#{@voter.email_api_key}@#{ENV['REPLY_HOSTNAME']}"
+    to ||= "pt=p&pi=#{@poll.id}&d=#{@discussion.id}&u=#{@voter.id}&k=#{@voter.email_api_key}@#{ENV['REPLY_HOSTNAME']}"
 
     Mail.new do |m|
       m.from = from

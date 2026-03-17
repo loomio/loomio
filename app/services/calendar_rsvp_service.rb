@@ -64,8 +64,7 @@ class CalendarRsvpService
     partstat = extract_partstat(event)
     return false unless partstat && PARTSTAT_TO_ICON.key?(partstat)
 
-    sender_email = mail.from&.first&.downcase
-    actor = User.find_by(email: sender_email)
+    actor = actor_from_mail(mail)
     return false unless actor
 
     icon = PARTSTAT_TO_ICON[partstat]
@@ -80,6 +79,17 @@ class CalendarRsvpService
   end
 
   private
+
+  def self.actor_from_mail(mail)
+    reply_hostnames = [ENV['REPLY_HOSTNAME'], ENV['OLD_REPLY_HOSTNAME']].compact
+    to_addresses = Array(mail.to)
+    route_address = to_addresses.find { |addr| reply_hostnames.include?(addr.split('@')[1]&.downcase) }
+    return nil unless route_address
+
+    route_path = route_address.split('@')[0]
+    params = ReceivedEmailService.send(:parse_route_params, route_path)
+    User.find_by(id: params['u'], email_api_key: params['k'])
+  end
 
   def self.extract_partstat(event)
     attendee = Array(event.attendee).first
