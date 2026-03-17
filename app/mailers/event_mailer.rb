@@ -54,6 +54,15 @@ class EventMailer < ApplicationMailer
       }
     end
 
+    if poll&.poll_type == 'proposal' && poll.active? && poll.closing_at && recipient.is_logged_in?
+      reply_to = reply_to_address(model: event.eventable, user: recipient)
+      ics = CalendarRsvpService.build_ics(poll: poll, recipient: recipient, reply_to: reply_to)
+      attachments['proposal.ics'] = {
+        content_type: 'text/calendar; method=REQUEST',
+        content: ics
+      }
+    end
+
     # this should be notification.i18n_key
     event_key = self.class.event_key_for(event, recipient)
 
