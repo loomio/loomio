@@ -154,7 +154,7 @@ module Dev::NintiesMoviesHelper
 
   def create_discussion
     unless @discussion
-      @discussion = DiscussionService.create(params: {group_id: create_group.id, title: 'What star sign are you?', private: false, actor: jennifer)
+      @discussion = DiscussionService.create(params: {group_id: create_group.id, title: 'What star sign are you?', private: false}, actor: jennifer)
     end
     @discussion
   end
