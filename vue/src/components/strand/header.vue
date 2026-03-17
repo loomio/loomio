@@ -42,7 +42,7 @@ export default {
 <template lang="pug">
 .strand-header
   .d-flex.ml-n3.text-body-2
-    v-breadcrumbs(color="anchor" :items="groups")
+    v-breadcrumbs.context-panel__breadcrumbs(color="anchor" :items="groups")
       template(v-slot:divider)
         common-icon(name="mdi-chevron-right")
     v-spacer

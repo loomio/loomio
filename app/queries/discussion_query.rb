@@ -30,13 +30,13 @@ class DiscussionQuery
                       only_direct: false,
                       only_unread: false)
 
-    if user.discussion_reader_token
-      or_discussion_reader_token = "OR dr.token = #{ActiveRecord::Base.connection.quote(user.discussion_reader_token)}"
+    if user.topic_reader_token
+      or_topic_reader_token = "OR dr.token = #{ActiveRecord::Base.connection.quote(user.topic_reader_token)}"
     end
 
     chain = chain.joins("LEFT OUTER JOIN topic_readers dr
                          ON dr.topic_id = topics.id
-                         AND (dr.user_id = #{user.id || 0} #{or_discussion_reader_token})")
+                         AND (dr.user_id = #{user.id || 0} #{or_topic_reader_token})")
                  .where("#{'(topics.private = false) OR ' if or_public}
                          (topics.group_id in (:user_group_ids)) OR
                          (dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.guest = TRUE)

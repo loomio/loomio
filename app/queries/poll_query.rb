@@ -7,19 +7,19 @@ class PollQuery
                       chain: start,
                       group_ids: [])
 
-    if user.discussion_reader_token
-      or_discussion_reader_token = "OR dr.token = #{ActiveRecord::Base.connection.quote(user.discussion_reader_token)}"
+    if user.topic_reader_token
+      or_topic_reader_token = "OR dr.token = #{ActiveRecord::Base.connection.quote(user.topic_reader_token)}"
     end
 
     if user.stance_token
-      or_stance_token = "OR s.token = #{ActiveRecord::Base.connection.quote(user.discussion_reader_token)}"
+      or_stance_token = "OR s.token = #{ActiveRecord::Base.connection.quote(user.stance_token)}"
     end
 
     chain = chain.joins("LEFT OUTER JOIN topics t ON t.id = polls.topic_id")
     chain = chain.where('t.group_id IN (:group_ids)', group_ids: group_ids) if group_ids.any?
     chain = chain.joins("LEFT OUTER JOIN groups g on g.id = t.group_id")
     chain = chain.joins("LEFT OUTER JOIN memberships m ON m.group_id = t.group_id AND m.user_id = #{user.id || 0}")
-                 .joins("LEFT OUTER JOIN topic_readers dr ON dr.topic_id = t.id AND (dr.user_id = #{user.id || 0} #{or_discussion_reader_token})")
+                 .joins("LEFT OUTER JOIN topic_readers dr ON dr.topic_id = t.id AND (dr.user_id = #{user.id || 0} #{or_topic_reader_token})")
                  .joins("LEFT OUTER JOIN stances s ON s.poll_id = polls.id AND (s.participant_id = #{user.id || 0} #{or_stance_token})")
                  .where("polls.author_id = :user_id OR
                          g.discussion_privacy_options = :public_only OR

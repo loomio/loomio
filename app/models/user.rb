@@ -27,7 +27,7 @@ class User < ApplicationRecord
   attr_accessor :token
   attr_accessor :membership_token
   attr_accessor :group_token
-  attr_accessor :discussion_reader_token
+  attr_accessor :topic_reader_token
   attr_accessor :stance_token
 
   attr_accessor :legal_accepted

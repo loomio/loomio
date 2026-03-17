@@ -40,8 +40,8 @@ class LoggedOutUser
     @params[:stance_token]
   end
 
-  def discussion_reader_token
-    @params[:discussion_reader_token]
+  def topic_reader_token
+    @params[:topic_reader_token]
   end
 
   def create_user
