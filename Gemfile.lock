@@ -597,7 +597,7 @@ GEM
     redcarpet (3.6.1)
     redis (5.4.1)
       redis-client (>= 0.22.0)
-    redis-client (0.26.4)
+    redis-client (0.27.0)
       connection_pool
     redis-objects (2.0.0)
       redis (~> 5.0)
@@ -683,15 +683,15 @@ GEM
     sassc-embedded (1.80.5)
       sass-embedded (~> 1.80)
     securerandom (0.4.1)
-    sentry-rails (6.4.1)
+    sentry-rails (6.5.0)
       railties (>= 5.2.0)
-      sentry-ruby (~> 6.4.1)
-    sentry-ruby (6.4.1)
+      sentry-ruby (~> 6.5.0)
+    sentry-ruby (6.5.0)
       bigdecimal
       concurrent-ruby (~> 1.0, >= 1.0.2)
       logger
-    sentry-sidekiq (6.4.1)
-      sentry-ruby (~> 6.4.1)
+    sentry-sidekiq (6.5.0)
+      sentry-ruby (~> 6.5.0)
       sidekiq (>= 5.0)
     sidekiq (7.3.9)
       base64
