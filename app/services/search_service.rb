@@ -15,14 +15,14 @@ class SearchService
     min_id = 0
     max = model.unscoped.maximum(:id).to_i
     count = model.respond_to?(:kept) ? model.kept.count : model.count
-    puts "  #{type}: #{count} records to index (max id: #{max})"
+    # puts "  #{type}: #{count} records to index (max id: #{max})"
     cursor = max
     while cursor > 0
       lower = [cursor - BATCH_SIZE, 0].max
       sql = model.pg_search_insert_statement + " AND #{model.table_name}.id > #{lower} AND #{model.table_name}.id <= #{cursor}"
       rows = ActiveRecord::Base.connection.execute(sql).cmd_tuples
       total += rows
-      puts "  reindex_everything #{type}: #{total} rows inserted so far (id #{lower}..#{cursor})"
+      # puts "  reindex_everything #{type}: #{total} rows inserted so far (id #{lower}..#{cursor})"
       cursor = lower
     end
   end

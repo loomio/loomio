@@ -153,38 +153,23 @@ module Dev::NintiesMoviesHelper
   end
 
   def create_discussion
-    unless @discussion
-      @discussion = DiscussionService.create(params: {group_id: create_group.id, title: 'What star sign are you?', private: false}, actor: jennifer)
-    end
-    @discussion
+    @discussion ||= DiscussionService.create(params: {group_id: create_group.id, title: 'What star sign are you?', private: false}, actor: jennifer)
   end
 
   def create_another_discussion
-    unless @another_discussion
-      @another_discussion = DiscussionService.create(params: {group_id: create_group.id, title: 'Waking Up in Reno', private: false}, actor: jennifer)
-    end
-    @another_discussion
+    @another_discussion ||= DiscussionService.create(params: {group_id: create_group.id, title: 'Waking Up in Reno', private: false}, actor: jennifer)
   end
 
   def create_closed_discussion
-    unless @closed_discussion
-      @closed_discussion = DiscussionService.create(params: {group_id: create_group.id, title: 'This thread is old and closed', private: false, closed_at: Time.now}, actor: jennifer)
-    end
-    @closed_discussion
+    @closed_discussion ||= DiscussionService.create(params: {group_id: create_group.id, title: 'This thread is old and closed', private: false, closed_at: Time.now}, actor: jennifer)
   end
 
   def create_public_discussion
-    unless @another_discussion
-      @another_discussion = DiscussionService.create(params: {group_id: create_another_group.id, title: "The name's Johnny Utah!", private: false}, actor: patrick)
-    end
-    @another_discussion
+    @public_discussion ||= DiscussionService.create(params: {group_id: create_another_group.id, title: "The name's Johnny Utah!", private: false}, actor: patrick)
   end
 
   def private_create_discussion
-    unless @another_discussion
-      @another_discussion = DiscussionService.create(params: {group_id: create_another_group.id, title: 'But are you crazy enough?', private: true}, actor: patrick)
-    end
-    @another_discussion
+    @create_public_discussion = DiscussionService.create(params: {group_id: create_another_group.id, title: 'But are you crazy enough?', private: true}, actor: patrick)
   end
 
   def create_subgroup

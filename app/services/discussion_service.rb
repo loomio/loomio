@@ -24,18 +24,18 @@ class DiscussionService
       discussion.save!
       discussion.topic.update_sequence_info!
 
+      TopicReader.for(
+        user: actor, topic: discussion.topic
+      ).update(
+        admin: true, guest: !discussion.group_id.present?, inviter_id: actor.id
+      )
+
       UserInviter.authorize!(
         user_ids: params[:recipient_user_ids],
         emails: params[:recipient_emails],
         audience: params[:recipient_audience],
         model: discussion,
         actor: actor
-      )
-
-      TopicReader.for(
-        user: actor, topic: discussion.topic
-      ).update(
-        admin: true, guest: !discussion.group_id.present?, inviter_id: actor.id
       )
 
       users = TopicService.add_users(
