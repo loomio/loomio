@@ -13,6 +13,19 @@ class MakeRootEventsThreadItems < ActiveRecord::Migration[7.0]
         AND events.topic_id IS NULL
     SQL
 
+    # Step 1b: Delete duplicate new_discussion events (keep the one with the lowest id)
+    execute <<~SQL
+      DELETE FROM events
+      WHERE kind = 'new_discussion'
+        AND eventable_type = 'Discussion'
+        AND id NOT IN (
+          SELECT MIN(id)
+          FROM events
+          WHERE kind = 'new_discussion' AND eventable_type = 'Discussion'
+          GROUP BY eventable_id
+        )
+    SQL
+
     # Step 2: Give root events (new_discussion + standalone poll_created) sequence data
     execute <<~SQL
       UPDATE events
