@@ -127,8 +127,8 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     imported_discussion = imported_group.discussions.find_by!(title: data[:discussion].title, author: imported_admin)
     imported_subgroup.discussions.find_by!(title: data[:sub_discussion].title, author: imported_admin)
 
-    assert_equal 1, imported_discussion.tags.count
-    assert_equal data[:tag].name, imported_discussion.tags.first
+    assert_equal 1, imported_discussion.topic.tags.count
+    assert_equal data[:tag].name, imported_discussion.topic.tags.first
 
     Tag.find_by!(name: data[:tag].name, group: imported_group, color: '#abcdef')
 

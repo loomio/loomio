@@ -19,7 +19,8 @@ class TopicSerializer < ApplicationSerializer
              :members_count,
              :anonymous_polls_count,
              :closed_polls_count,
-             :seen_by_count
+             :seen_by_count,
+             :tags
 
   # Reader attributes
   attributes :topic_reader_id,

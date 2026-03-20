@@ -32,6 +32,6 @@ export default
     template(v-slot:divider)
       common-icon(name="mdi-chevron-right")
   v-spacer
-  tags-display(:tags="poll.tags" :group="poll.group()")
+  tags-display(:tags="poll.topic().tags" :group="poll.group()")
 </template>
 

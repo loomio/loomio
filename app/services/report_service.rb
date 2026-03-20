@@ -180,31 +180,18 @@ class ReportService
     ActiveRecord::Base.connection.execute(query).map { |row| row['id'] }
   end
 
-  def discussion_tag_counts
-    tag_counts = {}
-    Discussion.where(id: discussion_ids).each do |discussion|
-      discussion.tags.each {|tag| tag_counts[tag] = tag_counts.fetch(tag, 0) + 1 }
-    end
-    tag_counts
-  end
-
-  def poll_tag_counts
-    tag_counts = {}
-    Poll.where(id: poll_ids).each do |poll|
-      poll.tags.each {|tag| tag_counts[tag] = tag_counts.fetch(tag, 0) + 1 }
-    end
-    tag_counts
-  end
-
   def tag_counts
-    total_counts = {}
-    discussion_tag_counts.each_pair {|tag, count| total_counts[tag] = total_counts.fetch(tag, 0) + count }
-    poll_tag_counts.each_pair {|tag, count| total_counts[tag] = total_counts.fetch(tag, 0) + count }
-    total_counts
+    counts = {}
+    topic_ids = Discussion.where(id: discussion_ids).pluck(:topic_id) +
+                Poll.where(id: poll_ids).pluck(:topic_id)
+    Topic.where(id: topic_ids.compact.uniq).pluck(:tags).flatten.each do |tag|
+      counts[tag] = counts.fetch(tag, 0) + 1
+    end
+    counts
   end
 
   def tag_names
-    (discussion_tag_counts.keys + poll_tag_counts.keys).uniq.sort
+    tag_counts.keys.sort
   end
 
   def discussions_per_user

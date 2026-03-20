@@ -15,9 +15,8 @@ class Api::V1::SearchController < Api::V1::RestfulController
     end
 
     if params[:tag]
-      discussion_ids = Discussion.joins(:topic).where(topics: { group_id: group_ids }).where("tags @> ARRAY[?]::varchar[]", Array(params[:tag])).pluck(:id)
-      poll_ids = Poll.joins(:topic).where(topics: { group_id: group_ids }).where("tags @> ARRAY[?]::varchar[]", Array(params[:tag])).pluck(:id)
-      rel = rel.where("discussion_id in (:discussion_ids) or poll_id in (:poll_ids)", discussion_ids: discussion_ids, poll_ids: poll_ids)
+      tag_topic_ids = Topic.where(group_id: group_ids).where("tags @> ARRAY[?]::varchar[]", Array(params[:tag])).pluck(:id)
+      rel = rel.where(topic_id: tag_topic_ids)
     end
 
     if %w[Discussion Comment Poll Stance Outcome].include?(params[:type])
@@ -74,7 +73,7 @@ class Api::V1::SearchController < Api::V1::RestfulController
         author_name: author&.name,
         author_id: res.author_id,
         authored_at: res.authored_at,
-        tags: (Array(poll&.tags) + Array(discussion&.tags)).uniq
+        tags: Array(res.tags)
       )
     end
 

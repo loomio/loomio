@@ -45,7 +45,7 @@ class DiscussionQuery
     chain = chain.where("topics.group_id IN (?)", group_ids) if Array(group_ids).any?
     chain = chain.where("discussions.id IN (?)", discussion_ids)  if Array(discussion_ids).any?
     chain = chain.where("topics.group_id IS NULL")           if only_direct
-    chain = chain.where("tags @> ARRAY[?]::varchar[]", tags)      if tags.any?
+    chain = chain.where("topics.tags @> ARRAY[?]::varchar[]", tags)      if tags.any?
 
     if only_unread
       chain = chain.where('(dr.dismissed_at IS NULL) OR (dr.dismissed_at < topics.last_activity_at)').

@@ -29,7 +29,7 @@ export default {
     },
 
     tags() {
-      return this.topicable.tags;
+      return this.topic.tags;
     },
 
     isPinned() {

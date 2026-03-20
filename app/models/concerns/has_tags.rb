@@ -6,11 +6,11 @@ module HasTags
   end
 
   def tag_models
-    topic.group.tags.where(name: self.tags).order(:priority)
+    group.tags.where(name: self.tags).order(:priority)
   end
 
   def update_group_tags
-    return unless topic.group_id
-    GenericWorker.perform_async('TagService', 'update_group_and_org_tags', self.topic.group_id)
+    return unless group_id
+    GenericWorker.perform_async('TagService', 'update_group_and_org_tags', self.group_id)
   end
 end

@@ -7,6 +7,49 @@ class Topic < ApplicationRecord
   has_many :comments, through: :items, source: :eventable, source_type: 'Comment'
   has_many :polls
 
+  scope :joins_topicables, -> {
+    joins("LEFT OUTER JOIN discussions ON discussions.id = topics.topicable_id AND topics.topicable_type = 'Discussion'")
+    .joins("LEFT OUTER JOIN polls ON polls.id = topics.topicable_id AND topics.topicable_type = 'Poll'")
+  }
+
+  scope :joins_groups, -> {
+    joins("LEFT OUTER JOIN groups ON topics.group_id = groups.id")
+  }
+
+  scope :joins_reader, ->(user_id) {
+    joins("LEFT OUTER JOIN topic_readers dr ON dr.topic_id = topics.id AND dr.user_id = #{user_id.to_i}")
+  }
+
+  scope :not_discarded, -> {
+    where("COALESCE(discussions.discarded_at, polls.discarded_at) IS NULL")
+  }
+
+  scope :not_archived, -> {
+    where("groups.archived_at IS NULL OR topics.group_id IS NULL")
+  }
+
+  scope :closed, -> { where.not(closed_at: nil) }
+  scope :not_closed, -> { where(closed_at: nil) }
+
+  scope :tagged, ->(tags) {
+    where("topics.tags @> ARRAY[?]::varchar[]", tags)
+  }
+
+  scope :recent_activity_first, -> { order(last_activity_at: :desc) }
+
+  scope :visible_to, ->(user) {
+    joins_topicables
+      .joins_groups
+      .joins_reader(user.id)
+      .not_discarded
+      .not_archived
+      .where("(topics.group_id IN (:user_group_ids)) OR
+              (dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.guest = TRUE) OR
+              (groups.parent_members_can_see_discussions = TRUE AND groups.parent_id IN (:user_group_ids))",
+              user_group_ids: user.group_ids)
+  }
+
+  include HasTags
   include CustomCounterCache::Model
   define_counter_cache(:active_polls_count)          { |t| t.polls.active.count }
   define_counter_cache(:closed_polls_count)         { |t| t.polls.closed.count }

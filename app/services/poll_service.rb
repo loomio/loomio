@@ -55,6 +55,9 @@ class PollService
       model: poll,
       actor: actor
     )
+    params = params.to_h.with_indifferent_access
+    topic_params = params.extract!(*DiscussionService::TOPIC_ATTRS)
+    poll.topic.update!(topic_params) if topic_params.any? && poll.topic.persisted?
     poll.assign_attributes_and_files(params.except(:poll_type, :poll_template_id, :poll_template_key))
 
     # check again, because the group id could be updated to a untrusted group

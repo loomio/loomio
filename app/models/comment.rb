@@ -30,7 +30,7 @@ class Comment < ApplicationRecord
         topics.group_id as group_id,
         CASE WHEN topics.topicable_type = 'Discussion' THEN topics.topicable_id ELSE NULL END AS discussion_id,
         events.topic_id AS topic_id,
-        COALESCE(discussions.tags, polls.tags, ARRAY[]::varchar[]) AS tags,
+        COALESCE(topics.tags, ARRAY[]::varchar[]) AS tags,
         comments.user_id AS author_id,
         comments.created_at AS authored_at,
         #{content_str} AS content,

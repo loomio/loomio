@@ -42,7 +42,7 @@ class PollQuery
     end
 
     if (tags = (params[:tags] || '').split('|')).any?
-      chain = chain.where.contains(tags: tags)
+      chain = chain.joins(:topic).where("topics.tags @> ARRAY[?]::varchar[]", tags)
     end
 
     if params[:status] == 'vote'

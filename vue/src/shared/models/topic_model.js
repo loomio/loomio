@@ -38,6 +38,7 @@ export default class TopicModel extends BaseModel {
       lastActivityAt: null,
       topicableId: null,
       topicableType: null,
+      tags: [],
       closedAt: null,
       closerId: null,
       pinnedAt: null,
@@ -55,13 +56,13 @@ export default class TopicModel extends BaseModel {
   relationships() {
     this.belongsToPolymorphic('topicable');
     this.belongsTo('group');
+    this.belongsTo('closer', {from: 'users'});
   }
 
   discussion() {
     return this.topicableType === 'Discussion' ? Records.discussions.find(this.topicableId) : null
   }
 
-  get tags() { return this.topicable().tags || []; }
   author() { return this.topicable().author(); }
 
   repliesCount() {

@@ -63,10 +63,10 @@ class Api::V1::TagsControllerTest < ActionController::TestCase
     put :update, params: { id: tag.id, tag: { name: 'apple2', color: '#aaa' } }
     assert_response :success
 
-    assert_equal ['apple2', 'banana'], @discussion.reload.tags
-    assert_equal ['apple2', 'banana'], @sub_discussion.reload.tags
-    assert_equal ['apple2', 'banana'], @poll.reload.tags
-    assert_equal ['apple2', 'banana'], @sub_poll.reload.tags
+    assert_equal ['apple2', 'banana'], @discussion.topic.reload.tags
+    assert_equal ['apple2', 'banana'], @sub_discussion.topic.reload.tags
+    assert_equal ['apple2', 'banana'], @poll.topic.reload.tags
+    assert_equal ['apple2', 'banana'], @sub_poll.topic.reload.tags
     assert_equal 4, Tag.where(group_id: @group.parent_or_self.id_and_subgroup_ids).count
   end
 
@@ -75,10 +75,10 @@ class Api::V1::TagsControllerTest < ActionController::TestCase
     put :update, params: { id: tag.id, tag: { name: 'banana', color: '#aaa' } }
     assert_response :success
 
-    assert_equal ['banana'], @discussion.reload.tags
-    assert_equal ['banana'], @sub_discussion.reload.tags
-    assert_equal ['banana'], @poll.reload.tags
-    assert_equal ['banana'], @sub_poll.reload.tags
+    assert_equal ['banana'], @discussion.topic.reload.tags
+    assert_equal ['banana'], @sub_discussion.topic.reload.tags
+    assert_equal ['banana'], @poll.topic.reload.tags
+    assert_equal ['banana'], @sub_poll.topic.reload.tags
     assert_equal 2, Tag.where(group_id: @group.parent_or_self.id_and_subgroup_ids).count
   end
 
@@ -87,10 +87,10 @@ class Api::V1::TagsControllerTest < ActionController::TestCase
     put :update, params: { id: tag.id, tag: { name: 'apple2', color: '#aaa' } }
     assert_response :success
 
-    assert_equal ['apple', 'banana'], @discussion.reload.tags
-    assert_equal ['apple2', 'banana'], @sub_discussion.reload.tags
-    assert_equal ['apple', 'banana'], @poll.reload.tags
-    assert_equal ['apple2', 'banana'], @sub_poll.reload.tags
+    assert_equal ['apple', 'banana'], @discussion.topic.reload.tags
+    assert_equal ['apple2', 'banana'], @sub_discussion.topic.reload.tags
+    assert_equal ['apple', 'banana'], @poll.topic.reload.tags
+    assert_equal ['apple2', 'banana'], @sub_poll.topic.reload.tags
     assert_equal 2, Tag.find_by(group_id: @group.id, name: 'apple').taggings_count
     assert_equal 2, Tag.find_by(group_id: @group.id, name: 'apple').org_taggings_count
     assert_equal 2, Tag.find_by(group_id: @group.id, name: 'apple2').org_taggings_count
@@ -101,10 +101,10 @@ class Api::V1::TagsControllerTest < ActionController::TestCase
     tag = Tag.find_by(group_id: @subgroup.id, name: 'apple')
     put :update, params: { id: tag.id, tag: { name: 'banana', color: '#aaa' } }
 
-    assert_equal ['apple', 'banana'], @discussion.reload.tags
-    assert_equal ['banana'], @sub_discussion.reload.tags
-    assert_equal ['apple', 'banana'], @poll.reload.tags
-    assert_equal ['banana'], @sub_poll.reload.tags
+    assert_equal ['apple', 'banana'], @discussion.topic.reload.tags
+    assert_equal ['banana'], @sub_discussion.topic.reload.tags
+    assert_equal ['apple', 'banana'], @poll.topic.reload.tags
+    assert_equal ['banana'], @sub_poll.topic.reload.tags
     assert_equal 3, Tag.where(group_id: @group.parent_or_self.id_and_subgroup_ids).count
   end
 end

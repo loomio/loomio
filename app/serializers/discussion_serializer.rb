@@ -4,7 +4,6 @@ class DiscussionSerializer < ApplicationSerializer
              :group_id,
              :topic_id,
              :title,
-             :tags,
              :content_locale,
              :description,
              :description_format,

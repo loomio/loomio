@@ -6,13 +6,6 @@ class Api::V1::TopicsController < Api::V1::RestfulController
 
   def dashboard
     raise CanCan::AccessDenied.new unless current_user.is_logged_in?
-    @accessible_records = Topic.joins("LEFT OUTER JOIN groups ON topics.group_id = groups.id")
-                               .where("groups.archived_at IS NULL OR topics.group_id IS NULL")
-                               .where("topics.group_id IN (:group_ids) OR topics.id IN (:topic_ids)",
-                                      group_ids: current_user.group_ids,
-                                      topic_ids: current_user.guest_topic_ids)
-                               .where(closed_at: nil)
-                               .order(last_activity_at: :desc)
     instantiate_collection
     respond_with_collection
   end
@@ -98,18 +91,7 @@ class Api::V1::TopicsController < Api::V1::RestfulController
   private
 
   def accessible_records
-    user_id = current_user.id || 0
-    scope = Topic.joins("INNER JOIN pg_search_documents psd ON psd.topic_id = topics.id
-                         AND psd.searchable_type = topics.topicable_type
-                         AND psd.searchable_id = topics.topicable_id")
-                 .joins("LEFT OUTER JOIN groups ON topics.group_id = groups.id")
-                 .joins("LEFT OUTER JOIN topic_readers dr ON dr.topic_id = topics.id AND dr.user_id = #{user_id}")
-                 .where("groups.archived_at IS NULL OR topics.group_id IS NULL")
-                 .where("(topics.private = false) OR
-                         (topics.group_id IN (:user_group_ids)) OR
-                         (dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.guest = TRUE) OR
-                         (groups.parent_members_can_see_discussions = TRUE AND groups.parent_id IN (:user_group_ids))",
-                         user_group_ids: current_user.group_ids)
+    scope = Topic.visible_to(current_user)
 
     if params[:group_id].present?
       group = Group.find(params[:group_id])
@@ -118,17 +100,17 @@ class Api::V1::TopicsController < Api::V1::RestfulController
 
     case params[:filter]
     when 'closed'
-      scope = scope.where.not(closed_at: nil)
+      scope = scope.closed
     when 'all'
       # no filter
     else
-      scope = scope.where(closed_at: nil)
+      scope = scope.not_closed
     end
 
     tags = Array(params[:tags]).reject(&:blank?)
-    scope = scope.where("psd.tags @> ARRAY[?]::varchar[]", tags) if tags.any?
+    scope = scope.tagged(tags) if tags.any?
 
-    scope.order(last_activity_at: :desc)
+    scope.recent_activity_first
   end
 
   def default_page_size

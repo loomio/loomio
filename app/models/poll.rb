@@ -8,7 +8,6 @@ class Poll < ApplicationRecord
   include Reactable
   include HasCreatedEvent
   include HasRichText
-  include HasTags
   include Discard::Model
   include Searchable
 
@@ -35,7 +34,7 @@ class Poll < ApplicationRecord
         t.group_id as group_id,
         CASE WHEN t.topicable_type = 'Discussion' THEN t.topicable_id ELSE NULL END AS discussion_id,
         polls.topic_id AS topic_id,
-        polls.tags AS tags,
+        t.tags AS tags,
         polls.author_id AS author_id,
         polls.created_at AS authored_at,
         #{content_str} AS content,

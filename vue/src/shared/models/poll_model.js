@@ -420,7 +420,8 @@ export default class PollModel extends BaseModel {
   }
 
   isTopicable() {
-    return this.topic().topicableType === 'Poll' && this.topic().topicableId === this.id;
+    const topic = this.topic();
+    return topic && topic.topicableType === 'Poll' && topic.topicableId === this.id;
   }
 
   maxDepth() {

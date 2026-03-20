@@ -38,7 +38,6 @@ class PollSerializer < ApplicationSerializer
              :specified_voters_only,
              :total_score,
              :title,
-             :tags,
              :undecided_voters_count,
              :voter_can_add_options,
              :voters_count,
