@@ -38,6 +38,95 @@ class Api::V1::EventsController < Api::V1::RestfulController
     render json: MessageChannelService.serialize_models(@event, scope: default_scope)
   end
 
+  def thread
+    load_and_authorize_topic
+    accept_pending_membership
+
+    padding = per
+
+    # For in-thread polls (not the topic's own topicable), focus on the poll's created event
+    if params[:poll_key]
+      poll = Poll.find_by!(key: params[:poll_key])
+      if poll != @topic.topicable && (poll_event = poll.created_event)
+        params[:sequence_id] ||= poll_event.sequence_id.to_s
+      end
+    end
+
+    # Context event (sequence_id 0) always included
+    context_ids = Event.where(topic_id: @topic.id, sequence_id: 0).pluck(:id)
+
+    window_ids = if @topic.items_count <= 1
+      # Empty or single-item thread — just context is enough
+      []
+    elsif params[:sequence_id]
+      from_id = [params[:sequence_id].to_i - padding / 2, 0].max
+      Event.where(topic_id: @topic.id)
+           .where("sequence_id >= ?", from_id)
+           .order(:sequence_id)
+           .limit(padding)
+           .pluck(:id)
+    elsif params[:comment_id]
+      comment_seq = Event.find_by!(
+        kind: "new_comment",
+        eventable_type: "Comment",
+        eventable_id: params[:comment_id]
+      ).sequence_id
+      from_id = [comment_seq - padding / 2, 0].max
+      comment_ids = Event.where(topic_id: @topic.id)
+                         .where("sequence_id >= ?", from_id)
+                         .order(:sequence_id)
+                         .limit(padding)
+                         .pluck(:id)
+      newest_ids = Event.where(topic_id: @topic.id)
+                        .order(sequence_id: :desc)
+                        .limit(padding)
+                        .pluck(:id)
+      (comment_ids + newest_ids).uniq
+    elsif params[:newest]
+      Event.where(topic_id: @topic.id)
+           .order(sequence_id: :desc)
+           .limit(padding)
+           .pluck(:id)
+    else
+      # Default: use reader state to decide
+      reader = TopicReader.find_by(topic_id: @topic.id, user_id: current_user.id)
+      if reader && reader.last_read_at && reader.first_unread_sequence_id > 0
+        # Has unread content — load from first unread + newest
+        unread_ids = Event.where(topic_id: @topic.id, sequence_id: reader.unread_ranges.map { |r| r[0]..r[1] })
+                          .order(:sequence_id)
+                          .limit(padding)
+                          .pluck(:id)
+        newest_ids = Event.where(topic_id: @topic.id)
+                          .order(sequence_id: :desc)
+                          .limit(padding)
+                          .pluck(:id)
+        (unread_ids + newest_ids).uniq
+      elsif reader && reader.last_read_at
+        # All read — show newest
+        Event.where(topic_id: @topic.id)
+             .order(sequence_id: :desc)
+             .limit(padding)
+             .pluck(:id)
+      else
+        # Never read
+        if @topic.newest_first
+          Event.where(topic_id: @topic.id)
+               .order(sequence_id: :desc)
+               .limit(padding)
+               .pluck(:id)
+        else
+          Event.where(topic_id: @topic.id)
+               .order(:sequence_id)
+               .limit(padding)
+               .pluck(:id)
+        end
+      end
+    end
+
+    self.collection = Event.where(id: (context_ids + window_ids).uniq)
+    respond_with_collection
+  end
+
   def count
     render json: accessible_records.count
   end
@@ -64,10 +153,7 @@ class Api::V1::EventsController < Api::V1::RestfulController
   end
 
   def from
-    if params[:from_sequence_id_of_position]
-      position = [params[:from_sequence_id_of_position].to_i, 1].max
-      Event.find_by!(topic_id: @topic.id, depth: 1, position: position)&.sequence_id
-    elsif params[:comment_id]
+    if params[:comment_id]
       Event.find_by!(kind: "new_comment", eventable_type: "Comment", eventable_id: params[:comment_id])&.sequence_id
     else
       params[:from] || 0

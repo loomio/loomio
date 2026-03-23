@@ -14,7 +14,7 @@ export function useCommonMentioning(model) {
   const fetchMentionable = debounce(function() {
     if (!query.value && mentionsCache.value.length > 0) { return; }
     fetchingMentions.value = true;
-    const namedId = (model.value.topic && model.value.topic().namedId()) ||
+    const namedId = (model.value.topicId && model.value.topic().namedId()) ||
       (model.value.groupId && model.value.group().namedId()) ||
       {};
     Records.remote.get('mentions', Object.assign(namedId, { q: query.value })).then(rows => {

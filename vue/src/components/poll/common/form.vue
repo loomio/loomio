@@ -500,7 +500,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
     :disabled="!poll.closingAt"
   )
     v-radio(
-      v-if="!poll.topic().groupId"
+      v-if="!poll.groupId"
       :value="false"
       :label="$t('poll_common_settings.specified_voters_only_false_discussion')")
     v-radio(
