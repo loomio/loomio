@@ -11,7 +11,7 @@
   "dependencies": {
     "@hocuspocus/provider": "^3.4.0",
     "@mdi/js": "^6.9.96",
-    "@rails/actioncable": "^8.1.200",
+    "@rails/actioncable": "^8.1.201",
     "@sentry/browser": "^10.34.0",
     "@sentry/vue": "^10.43.0",
     "@tiptap/core": "^3.19.0",
