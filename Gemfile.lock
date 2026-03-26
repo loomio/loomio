@@ -108,7 +108,7 @@ GEM
       securerandom (>= 0.3)
       tzinfo (~> 2.0, >= 2.0.5)
       uri (>= 0.13.1)
-    addressable (2.8.8)
+    addressable (2.8.9)
       public_suffix (>= 2.0.2, < 8.0)
     ansi (1.5.0)
     arbre (1.7.0)
@@ -209,7 +209,7 @@ GEM
       railties (>= 6.1.0)
     faker (3.6.1)
       i18n (>= 1.8.11, < 2)
-    faraday (2.14.0)
+    faraday (2.14.1)
       faraday-net_http (>= 2.0, < 3.5)
       json
       logger
@@ -256,7 +256,7 @@ GEM
       retriable (~> 3.1)
     google-apis-iamcredentials_v1 (0.26.0)
       google-apis-core (>= 0.15.0, < 2.a)
-    google-apis-storage_v1 (0.58.0)
+    google-apis-storage_v1 (0.61.0)
       google-apis-core (>= 0.15.0, < 2.a)
     google-cloud-core (1.8.0)
       google-cloud-env (>= 1.0, < 3.a)
@@ -264,11 +264,11 @@ GEM
     google-cloud-env (2.3.1)
       base64 (~> 0.2)
       faraday (>= 1.0, < 3.a)
-    google-cloud-errors (1.5.0)
+    google-cloud-errors (1.6.0)
     google-cloud-location (1.2.1)
       gapic-common (~> 1.2)
       google-cloud-errors (~> 1.0)
-    google-cloud-storage (1.58.0)
+    google-cloud-storage (1.59.0)
       addressable (~> 2.8)
       digest-crc (~> 0.4)
       google-apis-core (>= 0.18, < 2)
@@ -324,7 +324,7 @@ GEM
       grpc (~> 1.41)
     googleapis-common-protos-types (1.22.0)
       google-protobuf (~> 4.26)
-    googleauth (1.16.1)
+    googleauth (1.16.2)
       faraday (>= 1.0, < 3.a)
       google-cloud-env (~> 2.2)
       google-logging-utils (~> 0.1)
@@ -411,7 +411,7 @@ GEM
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
-    json (2.18.0)
+    json (2.19.3)
     jwt (3.1.2)
       base64
     kaminari (1.2.2)
@@ -528,7 +528,7 @@ GEM
     psych (5.3.1)
       date
       stringio
-    public_suffix (7.0.2)
+    public_suffix (7.0.5)
     puma (7.2.0)
       nio4r (~> 2.0)
     pwned (2.4.1)
@@ -616,7 +616,7 @@ GEM
     responders (3.2.0)
       actionpack (>= 7.0)
       railties (>= 7.0)
-    retriable (3.1.2)
+    retriable (3.4.1)
     reverse_markdown (3.0.2)
       nokogiri
     rexml (3.4.4)
@@ -803,7 +803,7 @@ DEPENDENCIES
   factory_bot_rails
   faker
   friendly_id (~> 5.6.0)
-  google-cloud-storage (~> 1.58)
+  google-cloud-storage (~> 1.59)
   google-cloud-translate
   gravtastic
   haml-rails (~> 3.0.0)
