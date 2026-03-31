@@ -119,6 +119,26 @@ export default new class ChatbotService {
           });
         }
       },
+
+      notion: {
+        name: 'chatbot.notion',
+        icon: 'mdi-note-text-outline',
+        menu: true,
+        canPerform() { return true; },
+        perform() {
+          return openModal({
+            component: 'ChatbotNotionForm',
+            props: {
+              chatbot: Records.chatbots.build({
+                groupId: group.id,
+                kind: "webhook",
+                webhookKind: "notion",
+                server: "https://api.notion.com"
+              })
+            }
+          });
+        }
+      },
     };
   }
 };

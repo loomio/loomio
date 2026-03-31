@@ -20,7 +20,7 @@ export default {
     submit() {
       this.chatbot.save()
       .then(() => {
-        Flash.success('chatbot.saved');
+        Flash.success('chatbot.integration_saved');
         EventBus.$emit('closeModal');
       }).catch(b => {
         Flash.error('common.something_went_wrong');
@@ -46,7 +46,7 @@ export default {
         channel: this.chatbot.channel,
         group_name: "group name was here"
       }).finally(() => {
-        Flash.success('chatbot.check_for_test_message');
+        Flash.success('chatbot.check_for_test_notification');
         this.testing = false;
       });
     }
@@ -55,11 +55,11 @@ export default {
 
 </script>
 <template lang="pug">
-v-card.chatbot-matrix-form(:title="$t('chatbot.chatbot')")
+v-card.chatbot-matrix-form(:title="$t('chatbot.integration')")
   template(v-slot:append)
     dismiss-modal-button
   v-card-text
-    v-text-field(:label="$t('chatbot.name')" v-model="chatbot.name" hint="The name of your chatroom")
+    v-text-field(:label="$t('chatbot.integration_name')" v-model="chatbot.name" hint="The name of your chatroom")
     v-text-field(:label="$t('chatbot.homeserver_url')"  v-model="chatbot.server" hint="https://example.com")
     v-text-field(
       :label="$t('chatbot.access_token')"
@@ -74,10 +74,10 @@ v-card.chatbot-matrix-form(:title="$t('chatbot.chatbot')")
       
     v-checkbox.webhook-form__include-body(
       v-model="chatbot.notificationOnly", 
-      :label="$t('chatbot.notification_only_label')" 
+      :label="$t('chatbot.integration_notification_only_label')"
       hide-details)
 
-    p.mt-4.text-medium-emphasis(v-t="'chatbot.event_kind_helptext'")
+    p.mt-4.text-medium-emphasis(v-t="'chatbot.integration_event_kind_helptext'")
 
     v-checkbox.webhook-form__event-kind(
       hide-details 

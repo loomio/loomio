@@ -133,8 +133,8 @@ export default new class GroupService {
       },
 
       chatbots: {
-        name: 'chatbot.chatbots',
-        icon: 'mdi-robot',
+        name: 'chatbot.integrations',
+        icon: 'mdi-connection',
         menu: true,
         canPerform() {
           return group.adminsInclude(Session.user());

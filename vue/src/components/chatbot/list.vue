@@ -15,7 +15,7 @@ export default {
   data() {
     return {
       chatbots: [],
-      kinds: ['matrix', 'slack', 'discord', 'mattermost', 'teams', 'webex'],
+      kinds: ['matrix', 'slack', 'discord', 'mattermost', 'teams', 'webex', 'notion'],
       loading: true,
       addActions: {},
       icons: {
@@ -24,7 +24,8 @@ export default {
         discord: 'mdi-discord',
         mattermost: 'mdi-chat-processing',
         teams: 'mdi-microsoft-teams',
-        webex: 'webex'
+        webex: 'webex',
+        notion: 'mdi-note-text-outline'
       }
     };
   },
@@ -50,28 +51,25 @@ export default {
     },
 
     editChatbot(bot) {
-      if (bot.kind === "webhook") {
-        EventBus.$emit('openModal', {
-          component: 'ChatbotWebhookForm',
-          props: {
-            chatbot: bot
-          }
-        });
+      let component;
+      if (bot.webhookKind === "notion") {
+        component = 'ChatbotNotionForm';
+      } else if (bot.kind === "webhook") {
+        component = 'ChatbotWebhookForm';
       } else {
-        EventBus.$emit('openModal', {
-          component: 'ChatbotMatrixForm',
-          props: {
-            chatbot: bot
-          }
-        });
+        component = 'ChatbotMatrixForm';
       }
+      EventBus.$emit('openModal', {
+        component: component,
+        props: { chatbot: bot }
+      });
     }
   }
 };
 
 </script>
 <template lang="pug">
-v-card.chatbot-list(:title="$t('chatbot.chatbots')")
+v-card.chatbot-list(:title="$t('chatbot.integrations')")
   template(v-slot:append)
     dismiss-modal-button
   v-card-text
@@ -81,7 +79,7 @@ v-card.chatbot-list(:title="$t('chatbot.chatbots')")
         v-list-item-title {{bot.name}}
         v-list-item-subtitle {{bot.kind}} {{bot.server}} {{bot.channel}}
   v-card-actions
-    help-btn(path='en/user_manual/groups/integrations/chatbots')
+    help-btn(path='en/user_manual/groups/integrations')
     v-spacer
-    action-menu(:actions='addActions' :name="$t('chatbot.add_chatbot')")
+    action-menu(:actions='addActions' :name="$t('chatbot.add_integration')")
 </template>
