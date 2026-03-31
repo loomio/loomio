@@ -524,7 +524,7 @@ GEM
       net-smtp
       premailer (~> 1.7, >= 1.7.9)
     prettyprint (0.2.0)
-    prism (1.8.0)
+    prism (1.9.0)
     psych (5.3.1)
       date
       stringio
@@ -683,15 +683,15 @@ GEM
     sassc-embedded (1.80.5)
       sass-embedded (~> 1.80)
     securerandom (0.4.1)
-    sentry-rails (6.4.1)
+    sentry-rails (6.5.0)
       railties (>= 5.2.0)
-      sentry-ruby (~> 6.4.1)
-    sentry-ruby (6.4.1)
+      sentry-ruby (~> 6.5.0)
+    sentry-ruby (6.5.0)
       bigdecimal
       concurrent-ruby (~> 1.0, >= 1.0.2)
       logger
-    sentry-sidekiq (6.4.1)
-      sentry-ruby (~> 6.4.1)
+    sentry-sidekiq (6.5.0)
+      sentry-ruby (~> 6.5.0)
       sidekiq (>= 5.0)
     sidekiq (7.3.9)
       base64
