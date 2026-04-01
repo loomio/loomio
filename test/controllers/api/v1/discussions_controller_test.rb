@@ -417,7 +417,7 @@ class Api::V1::DiscussionsControllerTest < ActionController::TestCase
     assert_not_nil discussion.reload.closed_at
     
     json = JSON.parse(response.body)
-    assert_includes json.keys, 'events'
+    assert_includes json.keys, 'parent_events'
   end
 
   test "does not allow non-admins to close a thread" do
@@ -458,7 +458,7 @@ class Api::V1::DiscussionsControllerTest < ActionController::TestCase
     assert_nil discussion.reload.closed_at
     
     json = JSON.parse(response.body)
-    assert_includes json.keys, 'events'
+    assert_includes json.keys, 'parent_events'
   end
 
   test "does not allow non-admins to reopen a thread" do
