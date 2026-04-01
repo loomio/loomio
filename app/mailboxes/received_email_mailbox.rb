@@ -1,5 +1,9 @@
 class ReceivedEmailMailbox < ApplicationMailbox
   def process
+    # Handle calendar RSVP replies (Accept/Decline/Maybe on proposal invites)
+    # before building a ReceivedEmail, since these are often auto-generated
+    return if CalendarRsvpService.process(mail)
+
     email = build_received_email
 
     if !email.is_addressed_to_loomio? || email.is_auto_response?

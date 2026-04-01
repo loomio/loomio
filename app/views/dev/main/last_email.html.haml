@@ -31,4 +31,4 @@
             %td Reply to
             %td= Array(@email.reply_to).join(', ')
         %hr
-        %main{style:"margin: 8px"}=  raw @email.body.parts.last.decoded
+        %main{style:"margin: 8px"}=  raw (@email.html_part || @email.body.parts.last).decoded
