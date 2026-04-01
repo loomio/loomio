@@ -1,5 +1,4 @@
 require 'test_helper'
-require 'minitest/mock'
 
 class TranslationServiceTest < ActiveSupport::TestCase
   setup do
@@ -13,16 +12,18 @@ class TranslationServiceTest < ActiveSupport::TestCase
 
     @user = users(:normal_user)
     @group = groups(:test_group)
+
+    @old_provider = TranslationService.instance_variable_get(:@provider)
   end
 
   teardown do
     I18n.backend = @old_backend
     I18n.locale = @old_locale
     I18n.enforce_available_locales = @old_enforce
+    TranslationService.instance_variable_set(:@provider, @old_provider)
   end
 
-  test "uses Rails I18n translation for known labels and does not call Google Translate" do
-    # Create poll
+  test "uses Rails I18n translation for known labels and does not call provider" do
     poll = Poll.new(
       title: 'Test Poll',
       author: @user,
@@ -34,34 +35,31 @@ class TranslationServiceTest < ActiveSupport::TestCase
 
     poll_option = PollOption.create!(poll: poll, name: 'Agree')
 
-    # Provide translations under a wildcard-able namespace
     I18n.backend.store_translations(:en, poll_proposal_options: { agree: 'Agree' })
     I18n.backend.store_translations(:fr, poll_proposal_options: { agree: "D'accord" })
 
-    # Create a stub that will raise if Google Translate is called
     translate_called = false
-    google_service = Object.new
-    google_service.define_singleton_method(:translate) do |*args, **kwargs|
+    fake_provider = Object.new
+    fake_provider.define_singleton_method(:translate) do |*args, **kwargs|
       translate_called = true
-      raise "Google Translate should not be called for I18n-known labels"
+      raise "Provider should not be called for I18n-known labels"
     end
+    fake_provider.define_singleton_method(:normalize_locale) { |locale| locale.to_s }
 
-    Google::Cloud::Translate.stub :translation_v2_service, google_service do
-      translation = TranslationService.create(model: poll_option, to: 'fr')
+    TranslationService.instance_variable_set(:@provider, fake_provider)
 
-      assert translation.persisted?
-      assert_equal 'fr', translation.language
-      # Check that the translation includes the expected text (handling potential encoding differences)
-      assert translation.fields['name'].include?('accord'), "Expected translation to include 'accord'"
-      assert_nil translation.fields['meaning']
-      assert_nil translation.fields['prompt']
-    end
+    translation = TranslationService.create(model: poll_option, to: 'fr')
+
+    assert translation.persisted?
+    assert_equal 'fr', translation.language
+    assert translation.fields['name'].include?('accord'), "Expected translation to include 'accord'"
+    assert_nil translation.fields['meaning']
+    assert_nil translation.fields['prompt']
 
     assert_equal false, translate_called
   end
 
-  test "falls back to Google Translate for custom field values" do
-    # Create poll
+  test "falls back to provider for custom field values" do
     poll = Poll.new(
       title: 'Test Poll',
       author: @user,
@@ -73,29 +71,27 @@ class TranslationServiceTest < ActiveSupport::TestCase
 
     poll_option = PollOption.create!(poll: poll, name: 'Plan X')
 
-    # Create a stub that returns translated text and validates arguments
-    test_context = self
     translate_text = nil
     translate_options = nil
 
-    google_service = Object.new
-    google_service.define_singleton_method(:translate) do |text, **options|
+    fake_provider = Object.new
+    fake_provider.define_singleton_method(:translate) do |text, **options|
       translate_text = text
       translate_options = options
       'Plan X FR'
     end
+    fake_provider.define_singleton_method(:normalize_locale) { |locale| locale.to_s }
 
-    Google::Cloud::Translate.stub :translation_v2_service, google_service do
-      translation = TranslationService.create(model: poll_option, to: 'fr')
+    TranslationService.instance_variable_set(:@provider, fake_provider)
 
-      assert translation.persisted?
-      assert_equal 'fr', translation.language
-      assert_equal 'Plan X FR', translation.fields['name']
-      assert_nil translation.fields['meaning']
-      assert_nil translation.fields['prompt']
-    end
+    translation = TranslationService.create(model: poll_option, to: 'fr')
 
-    # Verify Google Translate was called with correct arguments
+    assert translation.persisted?
+    assert_equal 'fr', translation.language
+    assert_equal 'Plan X FR', translation.fields['name']
+    assert_nil translation.fields['meaning']
+    assert_nil translation.fields['prompt']
+
     assert_equal 'Plan X', translate_text
     assert_equal 'fr', translate_options[:to]
     assert_equal :text, translate_options[:format]
