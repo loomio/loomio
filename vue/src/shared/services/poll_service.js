@@ -189,13 +189,14 @@ export default new class PollService {
       add_comment: {
         name: 'activity_card.add_comment',
         icon: 'mdi-reply',
-        dock: 1,
+        menu: true,
         canPerform() {
           const topic = poll.topic();
-          return !poll.discardedAt && topic && AbilityService.canAddComment(topic) && !poll.closingAt;
+          return !poll.discardedAt && topic && AbilityService.canAddComment(topic);
         },
         perform() {
-          return EventBus.$emit('toggle-reply', poll, event.id);
+          EventBus.$emit('show-add-comment-form');
+          document.querySelector('#add-comment')?.scrollIntoView({behavior: 'smooth'});
         }
       },
 

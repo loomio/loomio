@@ -91,6 +91,7 @@ export default {
 
 <template lang="pug">
 .strand-new-discussion.context-panel#context(v-intersect.once="{handler: viewed}")
+  strand-header.pt-3(:topicable="discussion")
   .mb-4.text-body-2
     user-avatar.mr-2(:user='author')
     router-link.text-medium-emphasis(:to="urlFor(author)") {{authorName}}

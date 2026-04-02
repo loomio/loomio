@@ -93,6 +93,10 @@ class Api::V1::TopicsController < Api::V1::RestfulController
   def accessible_records
     scope = Topic.visible_to(current_user)
 
+    if params[:topicable_type].present?
+      scope = scope.where(topicable_type: params[:topicable_type])
+    end
+
     if params[:group_id].present?
       group = Group.find(params[:group_id])
       scope = scope.where(group_id: [group.id] + group.subgroup_ids)

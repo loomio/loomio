@@ -59,6 +59,7 @@ export default
           order: 'lastActivityAt',
           params: {
             group_id: this.group.id,
+            topicable_type: 'Discussion',
             filter: this.$route.query.t,
             tags: this.$route.query.tag,
             per: this.per
@@ -79,12 +80,14 @@ export default
       if (this.page == 1 && !this.$route.query.t && !this.$route.query.tag) {
         pinnedTopics = Records.topics.collection.chain().find({
           groupId: {$in: groupIds},
+          topicableType: 'Discussion',
           pinnedAt: {$ne: null}
         }).simplesort('pinnedAt', true).data();
       }
 
       let chain = Records.topics.collection.chain().find({
         groupId: {$in: groupIds},
+        topicableType: 'Discussion',
         id: {$nin: pinnedTopics.map(t => t.id)}
       }).simplesort('lastActivityAt', true);
 

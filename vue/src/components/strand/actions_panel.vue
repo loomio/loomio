@@ -6,6 +6,7 @@ import Session from '@/shared/services/session';
 import AuthModalMixin from '@/mixins/auth_modal';
 import Records from '@/shared/services/records';
 import WatchRecords from '@/mixins/watch_records';
+import EventBus from '@/shared/services/event_bus';
 
 export default {
   components: {PollCommonForm, PollCommonChooseTemplateWrapper},
@@ -21,6 +22,7 @@ export default {
   data() {
     return {
       canAddComment: false,
+      forceShowCommentForm: false,
       currentAction: this.$route.query.current_action == "add-poll" ? 'add-poll' : 'add-comment',
       newComment: null,
       poll: null
@@ -30,12 +32,13 @@ export default {
   created() {
     this.watchRecords({
       key: this.topic.id,
-      collections: ['topics', 'groups', 'memberships', 'polls'],
+      collections: ['topics', 'groups', 'memberships', 'polls', 'stances'],
       query: () => {
         this.canAddComment = AbilityService.canAddComment(this.topic);
       }
     });
     this.resetComment();
+    EventBus.$on('show-add-comment-form', () => { this.forceShowCommentForm = true; });
   },
 
   methods: {
@@ -72,6 +75,15 @@ export default {
     canStartPoll() {
       return AbilityService.canStartPoll(this.topic);
     },
+    showAddCommentForm() {
+      if (!this.canAddComment) { return false; }
+      if (this.forceShowCommentForm) { return true; }
+      if (this.topic.topicableType === 'Poll') {
+        const poll = this.topic.topicable();
+        return !poll || poll.closedAt || poll.iHaveVoted();
+      }
+      return true;
+    },
   }
 };
 
@@ -84,7 +96,7 @@ section.actions-panel#add-comment(:key="topic.id" :class="{'mt-2 px-2 px-sm-4': 
       span(v-t="{path: 'notifications.without_title.discussion_closed', args: {actor: topic.closer().name} }")
       mid-dot
       time-ago(:date='topic.closedAt')
-  template(v-if="canAddComment")
+  template(v-if="showAddCommentForm")
     v-divider(aria-hidden="true")
     .add-comment-panel.mt-4(v-if="!canStartPoll")
       comment-form(
