@@ -54,7 +54,7 @@ class PollExporter
       voters_count: @poll.voters_count,
       details: @poll.details,
       group_name: @poll.group&.full_name,
-      discussion_title: @poll.topic&.discussion&.title,
+      discussion_title: @poll.topic.topicable.title,
       outcome_author_id: outcome&.author_id,
       outcome_author_name: outcome&.author&.name,
       outcome_created_at: outcome&.created_at,
