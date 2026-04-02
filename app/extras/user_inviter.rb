@@ -78,8 +78,7 @@ class UserInviter
   def self.where_existing(user_ids:, audience:, model:, actor:)
     user_ids = Array(user_ids).uniq.compact.map(&:to_i)
     audience_ids = AnnouncementService.audience_users(model, audience, actor).pluck(:id)
-    members_scope = model.members
-    members_scope.where('users.id': user_ids + audience_ids)
+    model.members.where('users.id': user_ids + audience_ids)
   end
 
   def self.where_or_create!(emails:, user_ids:, audience: nil, model:, actor:, include_actor: false)
