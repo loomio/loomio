@@ -94,8 +94,7 @@ class UserInviter
 
     # guests are any user outside of the group, and not yet invited
     # either by email address or by user_id, but user_ids are limited to your org
-    members_scope = model.members
-    member_ids = members_scope.where(id: user_ids).pluck(:id)
+    member_ids = model.members.where(id: user_ids).pluck(:id)
 
     # guests are outside of the group, but allowed to be referenced by user query
     guest_ids = UserQuery.invitable_user_ids(model: model, actor: actor, user_ids: user_ids - member_ids)
