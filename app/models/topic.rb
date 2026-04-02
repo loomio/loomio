@@ -44,6 +44,7 @@ class Topic < ApplicationRecord
       .not_discarded
       .not_archived
       .where("(topics.group_id IN (:user_group_ids)) OR
+              (topics.private = FALSE) OR
               (dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.guest = TRUE) OR
               (groups.parent_members_can_see_discussions = TRUE AND groups.parent_id IN (:user_group_ids))",
               user_group_ids: user.group_ids)

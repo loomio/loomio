@@ -85,6 +85,27 @@ class CreateTopicsAndRefactorThreading < ActiveRecord::Migration[7.0]
     SQL
     # index_polls_on_discussion_id was auto-renamed to index_polls_on_topic_id by rename_column
 
+    # 7b. Set topic_id on poll_created events for standalone polls (root events).
+    #     Some polls have duplicate poll_created events, so use DISTINCT ON to pick the oldest.
+    execute <<~SQL
+      UPDATE events
+      SET topic_id = sub.topic_id,
+          sequence_id = 0,
+          position = 0,
+          position_key = '00000'
+      FROM (
+        SELECT DISTINCT ON (e.eventable_id)
+               e.id AS event_id, t.id AS topic_id
+        FROM events e
+        JOIN topics t ON t.topicable_type = 'Poll' AND t.topicable_id = e.eventable_id
+        WHERE e.eventable_type = 'Poll'
+          AND e.kind = 'poll_created'
+          AND e.topic_id IS NULL
+        ORDER BY e.eventable_id, e.id
+      ) sub
+      WHERE events.id = sub.event_id
+    SQL
+
     # 8. Remove comments.discussion_id (no longer needed)
     remove_index :comments, name: "index_comments_on_discussion_id"
     remove_column :comments, :discussion_id
