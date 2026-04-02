@@ -61,8 +61,8 @@ class UserInviter
     emails = Array(emails).map(&:presence).compact.uniq
 
     # members belong to group
-    member_ids =  model.members.where(id: user_ids).pluck(:id)
-    member_ids +=  model.members.where(email: emails).pluck(:id)
+    member_ids = model.members.where(id: user_ids).pluck(:id)
+    member_ids += model.members.where(email: emails).pluck(:id)
 
     emails -= User.where(email: emails, id: member_ids).pluck(:email)
 
