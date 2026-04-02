@@ -24,7 +24,7 @@ class DiscussionsController < ApplicationController
     return respond_with_error(403) unless current_user.can?(:show, comment)
 
     topic = comment.topic
-    sequence_id = comment.created_event&.sequence_id
+    sequence_id = comment.created_event.sequence_id
 
     case topic.topicable
     when Discussion
