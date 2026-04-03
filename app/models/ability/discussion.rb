@@ -2,9 +2,7 @@ module Ability::Discussion
   def initialize(user)
     super(user)
 
-    can [:show,
-         :print,
-         :dismiss], ::Discussion do |discussion|
+    can [ :show, :print ], ::Discussion do |discussion|
       DiscussionQuery.visible_to(user: user).exists?(discussion.id)
     end
 
@@ -23,7 +21,7 @@ module Ability::Discussion
       )
     end
 
-    can [:announce], ::Discussion do |discussion|
+    can [ :announce ], ::Discussion do |discussion|
       if discussion.group_id
         discussion.group.admins.exists?(user.id) ||
         (discussion.group.members_can_announce && discussion.members.exists?(user.id))
@@ -32,14 +30,14 @@ module Ability::Discussion
       end
     end
 
-    can [:update, :move], ::Discussion do |discussion|
+    can [ :update ], ::Discussion do |discussion|
       discussion.discarded_at.nil? &&
       (discussion.author == user ||
       discussion.admins.exists?(user.id) ||
       (discussion.group.members_can_edit_discussions && discussion.members.exists?(user.id)))
     end
 
-    can [:destroy, :discard], ::Discussion do |discussion|
+    can [ :destroy, :discard ], ::Discussion do |discussion|
       discussion.discarded_at.nil? &&
       (discussion.author == user || discussion.admins.exists?(user.id))
     end
