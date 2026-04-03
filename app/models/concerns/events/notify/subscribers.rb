@@ -11,7 +11,7 @@ module Events::Notify::Subscribers
   end
 
   def subscribed_recipients
-    (topic || eventable.topic).email_everything_members
+    (topic || eventable.topic).volume_loud_members
                                .where.not(id: eventable.author)
                                .where.not(id: eventable.mentioned_users)
                                .where.not(id: eventable.mentioned_group_users)

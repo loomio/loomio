@@ -28,7 +28,7 @@ class Events::PollAnnounced < Event
   end
 
   def email_recipients
-    notification_recipients.where(id: eventable.topic.email_notification_members)
+    notification_recipients.where(id: eventable.topic.volume_gte_normal_members)
   end
 
   def notification_recipients

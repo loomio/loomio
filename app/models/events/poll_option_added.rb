@@ -12,7 +12,7 @@ class Events::PollOptionAdded < Event
   private
 
   def notify_author?
-    eventable.topic.email_notification_members.exists?(poll.author_id)
+    eventable.topic.volume_gte_normal_members.exists?(poll.author_id)
   end
 
   def notification_recipients

@@ -218,11 +218,11 @@ class Group < ApplicationRecord
     members_by_volume('>=', Membership.volumes[:quiet])
   end
 
-  def email_notification_members
+  def volume_gte_normal_members
     members_by_volume('>=', Membership.volumes[:normal])
   end
 
-  def email_everything_members
+  def volume_loud_members
     members_by_volume('=', Membership.volumes[:loud])
   end
 

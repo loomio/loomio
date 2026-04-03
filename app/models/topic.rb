@@ -176,11 +176,11 @@ class Topic < ApplicationRecord
     members_by_volume('>=', TopicReader.volumes[:quiet])
   end
 
-  def email_notification_members
+  def volume_gte_normal_members
     members_by_volume('>=', TopicReader.volumes[:normal])
   end
 
-  def email_everything_members
+  def volume_loud_members
     members_by_volume('=', TopicReader.volumes[:loud])
   end
 

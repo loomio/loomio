@@ -13,7 +13,7 @@ class Events::MembershipRequested < Event
   end
 
   def email_recipients
-    eventable.group.email_notification_members.
+    eventable.group.volume_gte_normal_members.
       where(id: eventable.admins.active.pluck(:id))
   end
 

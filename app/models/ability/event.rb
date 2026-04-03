@@ -4,8 +4,7 @@ module Ability
       super(user)
 
       can [:pin, :unpin], ::Event do |event|
-        topicable = event.topic&.topicable
-        topicable && can?(:update, topicable)
+        can?(:update, event.topic)
       end
     end
   end

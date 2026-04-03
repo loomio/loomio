@@ -211,7 +211,7 @@ class Event < ApplicationRecord
   end
 
   def email_recipients
-    notification_model.email_notification_members.where(id: all_recipient_user_ids)
+    notification_model.volume_gte_normal_members.where(id: all_recipient_user_ids)
   end
 
   def notification_recipients

@@ -13,7 +13,7 @@ module Ability::Comment
       topic = comment.topic
       topic && !topic.closed_at && (
         (topic.members.exists?(user.id) && comment.author == user && comment.group&.members_can_edit_comments) ||
-        (topic.admins.exists?(user.id) && comment.group&.admins_can_edit_user_content)
+        (topic.admins.exists?(user.id) && comment.group.admins_can_edit_user_content)
       )
     end
 
@@ -34,13 +34,12 @@ module Ability::Comment
         topic.admins.exists?(user.id) ||
         (comment.author == user &&
          topic.members.exists?(user.id) &&
-         comment.group&.members_can_delete_comments)
+         comment.group.members_can_delete_comments)
       )
     end
 
     can [:show], ::Comment do |comment|
-      topicable = comment.topic&.topicable
-      topicable && can?(:show, topicable) && comment.kept?
+      can?(:show, comment.topic) && comment.kept?
     end
   end
 end

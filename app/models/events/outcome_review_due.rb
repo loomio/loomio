@@ -10,7 +10,7 @@ class Events::OutcomeReviewDue < Event
 
   private
   def email_recipients
-    poll.topic.email_notification_members
+    poll.topic.volume_gte_normal_members
               .where('users.id': raw_recipients.pluck(:id))
   end
 
