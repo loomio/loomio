@@ -221,7 +221,6 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
     end
 
     test "anonymous #{poll_type} created email" do
-      skip "while refacting"
       build_poll_created(poll_type: poll_type, anonymous: true)
       assert_notification_headline("notifications.without_title.poll_announced")
       assert_element('.poll-mailer-common-summary')
@@ -246,7 +245,6 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
     end
 
     test "anonymous #{poll_type} outcome_created email" do
-      skip "while refacting"
       build_poll_outcome_created(poll_type: poll_type, anonymous: true)
       assert_notification_headline("notifications.without_title.outcome_created")
       assert_text('.poll-mailer-common-summary', "Outcome")
@@ -263,7 +261,6 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
     end
 
     test "anonymous #{poll_type} stance_created email" do
-      skip "while refacting"
       build_poll_stance_created(poll_type: poll_type, anonymous: true)
       assert_notification_headline("notifications.without_title.stance_created")
       assert_text(".base-mailer__event-headline", "Anonymous")
@@ -271,7 +268,6 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
     end
 
     test "results_hidden #{poll_type} stance_created email" do
-      skip "while refacting"
       build_poll_stance_created(poll_type: poll_type, hide_results: 'until_closed')
       assert_notification_headline("notifications.without_title.stance_created")
       assert_element('.poll-mailer__stance')
@@ -285,7 +281,6 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
     end
 
     test "anonymous #{poll_type} poll_closing_soon email" do
-      skip "while refacting"
       build_poll_closing_soon(poll_type: poll_type, anonymous: true)
       assert_notification_headline("notifications.without_title.poll_closing_soon")
       assert_element('.poll-mailer-common-summary')
@@ -300,7 +295,6 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
     end
 
     test "#{poll_type} poll_closing_soon_author email" do
-      skip "while refacting"
       build_poll_closing_soon(poll_type: poll_type, notify_on_closing_soon: 'author')
       assert_notification_headline("notifications.without_title.poll_closing_soon_author")
       assert_element('.poll-mailer-common-summary')
@@ -313,7 +307,6 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
     end
 
     test "anonymous #{poll_type} poll_user_mentioned_email" do
-      skip "while refacting"
       build_poll_user_mentioned(poll_type: poll_type, anonymous: true)
       assert_no_email_sent
     end
@@ -333,7 +326,6 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
     end
 
     test "anonymous #{poll_type} poll_expired_author_email" do
-      skip "while refacting"
       build_poll_expired_author(poll_type: poll_type, anonymous: true)
       assert_notification_headline("notifications.without_title.poll_expired_author")
       assert_element('.poll-mailer__create_outcome')

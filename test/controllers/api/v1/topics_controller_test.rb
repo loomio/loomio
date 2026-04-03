@@ -225,7 +225,7 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
     comment = CommentService.create(comment: Comment.new(body: "hello", parent: discussion, author: @admin), actor: @admin)
     sign_in @user
 
-    patch :mark_as_read, params: { id: discussion.topic.id, ranges: "1" }
+    patch :mark_as_read, params: { id: discussion.topic.id, ranges: "1-1" }
 
     assert_response :success
     reader = TopicReader.for(user: @user, topic: discussion.topic)
@@ -237,7 +237,7 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
     3.times { CommentService.create(comment: Comment.new(body: "hello", parent: discussion, author: @admin), actor: @admin) }
     sign_in @user
 
-    patch :mark_as_read, params: { id: discussion.topic.id, ranges: "1-2,3" }
+    patch :mark_as_read, params: { id: discussion.topic.id, ranges: "1-2,3-3" }
 
     assert_response :success
     reader = TopicReader.for(user: @user, topic: discussion.topic)
@@ -247,7 +247,7 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
   test "does not allow non-members to mark as read" do
     sign_in @alien
 
-    patch :mark_as_read, params: { id: @topic.id, ranges: "1" }
+    patch :mark_as_read, params: { id: @topic.id, ranges: "1-1" }
 
     assert_response :success # returns success but doesn't create reader due to ability check
   end

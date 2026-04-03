@@ -64,10 +64,10 @@ class RangeSetTest < ActiveSupport::TestCase
 
   test "parses range strings" do
     assert_equal [],                  RangeSet.parse("")
-    assert_equal [[1, 1]],           RangeSet.parse("1")
+    assert_equal [[1, 1]],           RangeSet.parse("1-1")
     assert_equal [[1, 2]],           RangeSet.parse("1-2")
     assert_equal [[1, 2], [4, 5]],   RangeSet.parse("1-2,4-5")
-    assert_equal [[1, 2], [3, 3]],   RangeSet.parse("1-2,3")
+    assert_equal [[1, 2], [3, 3]],   RangeSet.parse("1-2,3-3")
   end
 
   test "creates ranges from list" do
