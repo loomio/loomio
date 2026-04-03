@@ -63,10 +63,7 @@ class Outcome < ApplicationRecord
   has_many :stances, through: :poll
   has_many :documents, as: :model, dependent: :destroy
 
-  %w(
-    poll_type dates_as_options group group_id
-    locale mailer members admins discarded? tags topic
-  ).each { |message| delegate message, to: :poll }
+  delegate :poll_type, :dates_as_options, :group, :group_id, :locale, :mailer, :members, :admins, :discarded?, :tags, :topic, to: :poll
 
   is_mentionable on: :statement
   is_translatable on: :statement
