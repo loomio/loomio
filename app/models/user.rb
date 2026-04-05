@@ -127,6 +127,12 @@ class User < ApplicationRecord
   scope :mention_search, lambda { |q|
     where("users.name ilike :first OR
            users.name ilike :other OR
+           users.username ilike :first",
+          first: "#{q}%", other: "% #{q}%")
+  }
+  scope :invitable_search, lambda { |q|
+    where("users.name ilike :first OR
+           users.name ilike :other OR
            users.username ilike :first OR
            users.email ilike :first",
           first: "#{q}%", other: "% #{q}%")
