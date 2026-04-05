@@ -15,7 +15,7 @@ class Events::OutcomeReviewDue < Event
   end
 
   def notification_recipients
-    poll.topic.app_notification_members
+    poll.topic.volume_gte_quiet_members
               .where('users.id': raw_recipients.pluck(:id))
   end
 

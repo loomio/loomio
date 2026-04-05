@@ -215,7 +215,7 @@ class Event < ApplicationRecord
   end
 
   def notification_recipients
-    notification_model.app_notification_members.where(id: all_recipient_user_ids).where.not(id: user.id || 0)
+    notification_model.volume_gte_quiet_members.where(id: all_recipient_user_ids).where.not(id: user.id || 0)
   end
 
   def all_recipients

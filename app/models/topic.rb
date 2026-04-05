@@ -172,7 +172,7 @@ class Topic < ApplicationRecord
         .where("coalesce(tr.volume, m.volume, 2) #{operator} :volume", volume: volume)
   end
 
-  def app_notification_members
+  def volume_gte_quiet_members
     members_by_volume('>=', TopicReader.volumes[:quiet])
   end
 

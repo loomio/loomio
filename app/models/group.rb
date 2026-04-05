@@ -214,7 +214,7 @@ class Group < ApplicationRecord
         .where("coalesce(m.volume, 2) #{operator} :volume", volume: volume)
   end
 
-  def app_notification_members
+  def volume_gte_quiet_members
     members_by_volume('>=', Membership.volumes[:quiet])
   end
 
