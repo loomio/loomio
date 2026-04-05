@@ -14,7 +14,7 @@ class Events::DiscussionEdited < Event
     recipient_message: nil)
     super(discussion,
           user: actor,
-          topic: (recipient_message ? discussion.topic : nil),
+          topic: (recipient_message.present? ? discussion.topic : nil),
           recipient_user_ids: recipient_user_ids,
           recipient_chatbot_ids: recipient_chatbot_ids,
           recipient_audience: recipient_audience,
