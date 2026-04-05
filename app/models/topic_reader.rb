@@ -104,18 +104,7 @@ class TopicReader < ApplicationRecord
   end
 
   def unread_ranges
-    topicable = topic&.topicable
-    topic_ranges = topic&.ranges || []
-    RangeSet.subtract_ranges(topic_ranges, read_ranges)
-  end
-
-  def read_ranges_string
-    self[:read_ranges_string] ||= if last_read_sequence_id == 0
-                                    ''
-                                  else
-                                    first_seq = topic&.first_sequence_id || 1
-                                    "#{[first_seq, 1].max}-#{last_read_sequence_id}"
-                                  end
+    RangeSet.subtract_ranges(topic.ranges, read_ranges)
   end
 
   def read_items_count

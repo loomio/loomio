@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_04_01_000000) do
+ActiveRecord::Schema[8.0].define(version: 2026_04_06_000000) do
   create_schema "pghero"
 
   # These are extensions that must be enabled in order to support this database
@@ -938,7 +938,6 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_01_000000) do
     t.datetime "updated_at", precision: nil
     t.integer "topic_id", null: false
     t.datetime "last_read_at", precision: nil
-    t.integer "last_read_sequence_id", default: 0, null: false
     t.integer "volume", default: 2, null: false
     t.boolean "participating", default: false, null: false
     t.datetime "dismissed_at", precision: nil

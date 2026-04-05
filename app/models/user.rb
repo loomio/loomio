@@ -124,7 +124,7 @@ class User < ApplicationRecord
   scope :coordinators, -> { joins(:memberships).where('memberships.admin = ?', true).group('users.id') }
   scope :verified, -> { where(email_verified: true) }
   scope :unverified, -> { where(email_verified: false) }
-  scope :search_for, lambda { |q|
+  scope :mention_search, lambda { |q|
     where("users.name ilike :first OR
            users.name ilike :other OR
            users.username ilike :first OR
@@ -134,27 +134,6 @@ class User < ApplicationRecord
   scope :visible_by, ->(user) { distinct.active.verified.joins(:memberships).where("memberships.group_id": user.group_ids).where.not(id: user.id) }
   scope :humans, -> { where(bot: false) }
   scope :bots, -> { where(bot: true) }
-
-  scope :mention_search, lambda { |model, query|
-    return none unless model.present?
-
-    if model.is_a?(User)
-      return active.search_for(query).where(id: User.visible_by(model).pluck(:id))
-    end
-
-    ids = []
-
-    if model.is_a?(Group)
-      ids += Membership.active.where(group_id: model.id).pluck(:user_id)
-    elsif model.is_a?(Topic)
-      ids += Membership.active.where(group_id: model.group_id).pluck(:user_id) if model.group_id
-      ids += model.topic_readers.active.guests.pluck(:user_id)
-      poll_ids = Poll.where(topic_id: model.id).pluck(:id)
-      ids += Stance.latest.invited.where(poll_id: poll_ids).pluck(:participant_id) if poll_ids.any?
-    end
-
-    active.search_for(query).where(id: ids)
-  }
 
   scope :email_when_proposal_closing_soon, -> { active.where(email_when_proposal_closing_soon: true) }
 
