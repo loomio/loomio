@@ -174,7 +174,7 @@ class Event < ApplicationRecord
     when 'discussion_closed'   then eventable.created_event
     when 'discussion_forked'   then eventable.created_event
     when 'discussion_moved'    then eventable.created_event
-    when 'discussion_edited'   then eventable&.created_event
+    when 'discussion_edited'   then eventable.created_event
     when 'discussion_reopened' then eventable.created_event
     when 'outcome_created'     then eventable.parent_event
     when 'new_comment'         then eventable.parent.topic_event || eventable.parent.created_event
