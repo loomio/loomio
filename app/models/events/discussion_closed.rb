@@ -1,3 +1,3 @@
 class Events::DiscussionClosed < Event
-  # we no longer created discussion closed events. but legacy items may exist
+  # legacy, no these events are longer created
 end
