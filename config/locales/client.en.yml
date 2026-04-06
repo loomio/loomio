@@ -1239,6 +1239,7 @@ en:
     discussions_with_polls: Discussions with polls
     threads_with_polls: Threads with polls
     polls_with_outcomes: Polls with outcomes
+    download_csv: Download CSV
     actions_per_interval: Actions per %{interval}
     actions_per_user: Actions per user
     users_per_country: Users per country

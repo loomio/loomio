@@ -9,6 +9,25 @@ import BarChart from '@/components/report/bar_chart';
 
 const sumValues = obj => Object.values(obj).reduce((a, b) => a + b, 0);
 
+function downloadCsv(headers, rows, filename) {
+  const headerRow = headers.map(h => h.title).join(',');
+  const keys = headers.map(h => h.key);
+  const dataRows = rows.map(row => keys.map(k => {
+    const val = row[k];
+    if (typeof val === 'string' && (val.includes(',') || val.includes('"') || val.includes('\n'))) {
+      return '"' + val.replace(/"/g, '""') + '"';
+    }
+    return val ?? '';
+  }).join(','));
+  const csv = [headerRow, ...dataRows].join('\n');
+  const blob = new Blob([csv], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(url);
+}
 
 export default {
   components: {BarChart},
@@ -128,6 +147,21 @@ export default {
     }
   },
   methods: {
+    downloadIntervalCsv() {
+      downloadCsv(this.models_per_interval_headers, this.models_per_interval, 'activity_per_interval.csv');
+    },
+    downloadTagsCsv() {
+      downloadCsv(this.tags_headers, this.tags_rows, 'tags.csv');
+    },
+    downloadPerUserCsv() {
+      downloadCsv(this.per_user_headers, this.per_user_rows, 'activity_per_user.csv');
+    },
+    downloadUsersPerCountryCsv() {
+      downloadCsv(this.users_per_country_headers, this.users_per_country_rows, 'users_per_country.csv');
+    },
+    downloadPerCountryCsv() {
+      downloadCsv(this.per_country_headers, this.per_country_rows, 'activity_per_country.csv');
+    },
     fetch() {
       this.loading = true
       const query = new URLSearchParams({
@@ -304,32 +338,40 @@ v-main
 
       bar-chart.mt-8(:chart-data="chartData")
 
-      v-card.mt-8
-        v-card-title(v-t="{path: 'report.actions_per_interval', args: {interval: interval}}")
+      v-card.mt-8(:title="$t('report.actions_per_interval', {interval: interval})")
+        template(v-slot:append)
+          v-btn(variant="text" size="small" @click="downloadIntervalCsv")
+            span(v-t="'report.download_csv'")
         v-data-table(
           density="compact"
           :headers="models_per_interval_headers"
           :items="models_per_interval"
         )
 
-      v-card.mt-8
-        v-card-title(v-t="'loomio_tags.tags'")
+      v-card.mt-8(:title="$t('loomio_tags.tags')")
+        template(v-slot:append)
+          v-btn(variant="text" size="small" @click="downloadTagsCsv")
+            span(v-t="'report.download_csv'")
         v-data-table(
           density="compact"
           :headers="tags_headers"
           :items="tags_rows"
         )
 
-      v-card.mt-8
-        v-card-title(v-t="'report.actions_per_user'")
+      v-card.mt-8(:title="$t('report.actions_per_user')")
+        template(v-slot:append)
+          v-btn(variant="text" size="small" @click="downloadPerUserCsv")
+            span(v-t="'report.download_csv'")
         v-data-table(
           density="compact"
           :headers="per_user_headers"
           :items="per_user_rows"
         )
 
-      v-card.mt-8
-        v-card-title(v-t="'report.users_per_country'")
+      v-card.mt-8(:title="$t('report.users_per_country')")
+        template(v-slot:append)
+          v-btn(variant="text" size="small" @click="downloadUsersPerCountryCsv")
+            span(v-t="'report.download_csv'")
         p.px-4.text-caption(v-t="'report.country_disclaimer'")
         v-data-table(
           density="compact"
@@ -337,8 +379,10 @@ v-main
           :items="users_per_country_rows"
         )
 
-      v-card.mt-8
-        v-card-title(v-t="'report.actions_per_country'")
+      v-card.mt-8(:title="$t('report.actions_per_country')")
+        template(v-slot:append)
+          v-btn(variant="text" size="small" @click="downloadPerCountryCsv")
+            span(v-t="'report.download_csv'")
         v-data-table(
           density="compact"
           :headers="per_country_headers"
