@@ -19,8 +19,8 @@ class RecordCloner
     # Apply overrides to cloned discussions and polls before saving
     cloned_discussions = clone_group.instance_variable_get(:@_cloned_discussions) || []
     cloned_polls = clone_group.instance_variable_get(:@_cloned_polls) || []
-    cloned_discussions.each {|d| d.private = false }
-    cloned_polls.each {|p| p.specified_voters_only = false }
+    cloned_discussions.each { |d| d.private = false }
+    cloned_polls.each { |p| p.specified_voters_only = false }
 
     clone_group.save!
     save_cloned_content!(clone_group)
@@ -31,7 +31,7 @@ class RecordCloner
       poll.update_counts!
       poll.stances.each {|s| s.update_option_scores!}
     end
-    clone_group.discussions.each {|d| TopicService.repair_thread(d.topic_id) }
+    clone_group.discussions.each { |d| TopicService.repair_thread(d.topic_id) }
     clone_group.reload
   end
 
@@ -56,7 +56,7 @@ class RecordCloner
 
     clone_group.polls.each do |poll|
       poll.update_counts!
-      poll.stances.each {|s| s.update_option_scores!}
+      poll.stances.each { |s| s.update_option_scores!}
     end
     clone_group.discussions.each {|d| TopicService.repair_thread(d.topic_id) }
     clone_group.add_member! actor
@@ -66,11 +66,8 @@ class RecordCloner
   def clone_trial_content_into_group(group, actor)
     source_group = Group.find_by(handle: 'trial-group-template')
 
-    cloned_discussions = source_group.discussions.kept.map {|d| new_clone_discussion_and_events(d) }
-    cloned_polls = source_group.polls.kept.map {|p| new_clone_poll(p) }
-
-    group.instance_variable_set(:@_cloned_discussions, cloned_discussions)
-    group.instance_variable_set(:@_cloned_polls, cloned_polls)
+    group.discussions = source_group.discussions.kept.map { |d| new_clone_discussion_and_events(d) }
+    group.polls = source_group.polls.kept.map { |p| new_clone_poll(p) }
 
     group.save!
     save_cloned_content!(group)
@@ -85,7 +82,7 @@ class RecordCloner
       poll.stances.each {|s| s.update_option_scores!}
     end
 
-    group.discussions.each {|d| TopicService.repair_thread(d.topic_id) }
+    group.discussions.each { |d| TopicService.repair_thread(d.topic_id) }
     group.reload
 
     group.save!
@@ -240,7 +237,7 @@ class RecordCloner
       .reject { |i| drop_kinds.include?(i.kind) || i.id == created_event_id }
       .map { |event| new_clone_event_and_eventable(event) }
 
-    clone_topic.items = [created_event] + thread_events
+    clone_topic.items = [ created_event ] + thread_events
     clone_discussion
   end
 

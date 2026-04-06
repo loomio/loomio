@@ -98,6 +98,14 @@ class RecordClonerTest < ActiveSupport::TestCase
     assert_equal @group.discussions.kept.count, clone.discussions.count
     assert clone.discussions.count >= 1
     assert clone.discussions.first.polls.count >= 1
+
+    # Each cloned discussion has its own topic pointing to the clone group
+    clone.discussions.each do |disc|
+      assert disc.topic.persisted?
+      assert_equal clone.id, disc.topic.group_id, "Discussion topic should belong to clone group"
+      assert_equal 'Discussion', disc.topic.topicable_type
+      assert_equal disc.id, disc.topic.topicable_id
+    end
   end
 
   # -- Clone Discussion --
@@ -117,6 +125,24 @@ class RecordClonerTest < ActiveSupport::TestCase
     drop_kinds = %w[poll_closed_by_user poll_expired poll_reopened]
     expected_items = @discussion.topic.items.reject { |i| drop_kinds.include?(i.kind) }.count
     assert_equal expected_items, clone.topic.items.count
+
+    # Topic is a new record, not the original
+    assert_not_equal @discussion.topic_id, clone.topic_id
+    assert clone.topic.persisted?
+
+    # Topic fields are cloned from the original
+    assert_equal @discussion.topic.max_depth, clone.topic.max_depth
+    assert_equal @discussion.topic.newest_first, clone.topic.newest_first
+    assert_equal @discussion.topic.private, clone.topic.private
+
+    # Topic points back to the cloned discussion
+    assert_equal 'Discussion', clone.topic.topicable_type
+    assert_equal clone.id, clone.topic.topicable_id
+
+    # In-thread polls share the discussion's topic
+    clone.polls.each do |poll|
+      assert_equal clone.topic_id, poll.topic_id, "In-thread poll should share discussion topic"
+    end
   end
 
   # -- Clone Poll --
