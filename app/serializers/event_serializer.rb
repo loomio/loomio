@@ -4,6 +4,7 @@ class EventSerializer < ApplicationSerializer
     :pinned, :pinned_title, :parent_id, :actor_id, :position_key, :recipient_message
 
   has_one :actor, serializer: AuthorSerializer, root: :users
+  has_one :topic, serializer: TopicSerializer, root: :topics
   has_one :eventable, polymorphic: true
   has_one :parent, serializer: EventSerializer, root: :parent_events
 
@@ -12,6 +13,10 @@ class EventSerializer < ApplicationSerializer
 
   def parent
     cache_fetch(:events_by_id, object.parent_id) { object.parent }
+  end
+
+  def include_topic?
+    include_type?('topic') && object.topic_id.present?
   end
 
   def include_eventable?
