@@ -64,9 +64,10 @@ export default {
         {title: this.$t('report.year'), value: 'year'}
       ],
       total_users: 0,
-      discussions_count: 0,
+      topics_count: 0,
+      discussion_topics_count: 0,
+      poll_topics_count: 0,
       polls_count: 0,
-      discussions_with_polls_count: 0,
       polls_with_outcomes_count: 0,
       models_per_interval: [],
       models_per_interval_headers: [
@@ -79,9 +80,7 @@ export default {
       ],
       tags_headers: [
         {title: "Tag", key: "tag"},
-        {title: this.$t('poll_meeting_chart_panel.total'), key: "total_count"},
-        {title: this.$t('common.threads'), key: "threads_count"},
-        {title: this.$t('group_page.polls'), key: "polls_count"},
+        {title:  this.$t('common.threads'), key: "total_count"},
       ],
       tags_rows: [],
       per_user_headers: [
@@ -142,9 +141,10 @@ export default {
           this.loading = false;
           this.all_groups = data.all_groups,
           this.total_users = data.total_users;
-          this.discussions_count = data.discussions_count;
+          this.topics_count = data.topics_count;
+          this.discussion_topics_count = data.discussion_topics_count;
+          this.poll_topics_count = data.poll_topics_count;
           this.polls_count = data.polls_count;
-          this.discussions_with_polls_count = data.discussions_with_polls_count;
           this.polls_with_outcomes_count = data.polls_with_outcomes_count;
 
           this.chartData = {
@@ -153,7 +153,7 @@ export default {
               {
                 label: this.$t('common.threads'),
                 backgroundColor: '#2196F3',
-                data: data.intervals.map(interval => (data.discussions_per_interval[interval] || 0) )
+                data: data.intervals.map(interval => (data.topics_per_interval[interval] || 0) )
               },
               {
                 label: this.$t('navbar.search.comments'),
@@ -181,7 +181,7 @@ export default {
           this.models_per_interval = data.intervals.map(interval => {
             return {
               date: interval,
-              threads: data.discussions_per_interval[interval] || 0,
+              threads: data.topics_per_interval[interval] || 0,
               comments: data.comments_per_interval[interval] || 0,
               polls: data.polls_per_interval[interval] || 0,
               votes: data.stances_per_interval[interval] || 0,
@@ -191,7 +191,7 @@ export default {
 
           this.models_per_interval.push({
             date: 'total',
-            threads: sumValues(data.discussions_per_interval),
+            threads: sumValues(data.topics_per_interval),
             comments: sumValues(data.comments_per_interval),
             polls: sumValues(data.polls_per_interval),
             votes: sumValues(data.stances_per_interval),
@@ -202,8 +202,6 @@ export default {
             return {
               tag: tag,
               total_count: data.tag_counts[tag],
-              threads_count: data.discussion_tag_counts[tag],
-              polls_count: data.poll_tag_counts[tag],
             };
           });
 
@@ -292,16 +290,16 @@ v-main
       v-table.mt-8
         thead
           th.pt-4(v-t="'report.total_users'")
+          th.pt-4(v-t="'report.total_threads'")
           th.pt-4(v-t="'report.total_discussions'")
           th.pt-4(v-t="'report.total_polls'")
-          th.pt-4(v-t="'report.discussions_with_polls'")
           th.pt-4(v-t="'report.polls_with_outcomes'")
         tbody
           tr
             td.text-center {{total_users}}
-            td.text-center {{discussions_count}}
+            td.text-center {{topics_count}}
+            td.text-center {{discussion_topics_count}}
             td.text-center {{polls_count}}
-            td.text-center {{discussions_with_polls_count}}
             td.text-center {{polls_with_outcomes_count}}
 
       bar-chart.mt-8(:chart-data="chartData")

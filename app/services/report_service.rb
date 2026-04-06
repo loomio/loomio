@@ -46,13 +46,12 @@ class ReportService
     rows_to_hash ActiveRecord::Base.connection.execute query
   end
 
-  def discussions_per_interval
+  def topics_per_interval
     query = <<~SQL
-      SELECT date_trunc('#{@interval}', discussions.created_at)::date AS interval, count(discussions.id) count
-      FROM discussions
-      JOIN topics ON topics.id = discussions.topic_id
+      SELECT date_trunc('#{@interval}', topics.created_at)::date AS interval, count(topics.id) count
+      FROM topics
       WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
-      AND discussions.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
+      AND topics.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
       group by interval
     SQL
     rows_to_hash ActiveRecord::Base.connection.execute query
@@ -62,9 +61,8 @@ class ReportService
     query = <<~SQL
       SELECT date_trunc('#{@interval}', comments.created_at)::date AS interval, count(comments.id) count
       FROM comments
-        LEFT JOIN events ON events.eventable_type = 'Comment' AND events.eventable_id = comments.id
-      JOIN topics ON topics.id = events.topic_id AND topics.topicable_type = 'Discussion'
-      JOIN discussions ON discussions.id = topics.topicable_id
+      LEFT JOIN events ON events.eventable_type = 'Comment' AND events.eventable_id = comments.id
+      JOIN topics ON topics.id = events.topic_id
       WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
       AND comments.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
       group by interval
@@ -112,13 +110,34 @@ class ReportService
     rows_to_hash ActiveRecord::Base.connection.execute query
   end
 
-  def discussions_count
+  def topics_count
     query = <<~SQL
-      SELECT count(discussions.id) count
-      FROM discussions
-      JOIN topics ON topics.id = discussions.topic_id
+      SELECT count(topics.id) count
+      FROM topics
       WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
-      AND discussions.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
+      AND topics.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
+    SQL
+    ActiveRecord::Base.connection.execute(query).to_a.first['count']
+  end
+
+  def discussion_topics_count
+    query = <<~SQL
+      SELECT count(topics.id) count
+      FROM topics
+      WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
+      AND topics.topicable_type = 'Discussion'
+      AND topics.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
+    SQL
+    ActiveRecord::Base.connection.execute(query).to_a.first['count']
+  end
+
+  def poll_topics_count
+    query = <<~SQL
+      SELECT count(topics.id) count
+      FROM topics
+      WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
+      AND topics.topicable_type = 'Poll'
+      AND topics.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
     SQL
     ActiveRecord::Base.connection.execute(query).to_a.first['count']
   end
@@ -130,18 +149,6 @@ class ReportService
       JOIN topics ON topics.id = polls.topic_id
       WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
       AND polls.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
-    SQL
-    ActiveRecord::Base.connection.execute(query).to_a.first['count']
-  end
-
-  def discussions_with_polls_count
-    query = <<~SQL
-      SELECT count(discussions.id) count
-      FROM discussions
-      JOIN topics ON topics.id = discussions.topic_id
-      INNER JOIN polls ON polls.topic_id = discussions.topic_id
-      WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
-      AND discussions.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
     SQL
     ActiveRecord::Base.connection.execute(query).to_a.first['count']
   end
@@ -158,35 +165,14 @@ class ReportService
     ActiveRecord::Base.connection.execute(query).to_a.first['count']
   end
 
-  def discussion_ids
-    query = <<~SQL
-      SELECT discussions.id
-      FROM discussions
-      JOIN topics ON topics.id = discussions.topic_id
-      WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
-      AND discussions.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
-    SQL
-    ActiveRecord::Base.connection.execute(query).map { |row| row['id'] }
-  end
-
-  def poll_ids
-    query = <<~SQL
-      SELECT polls.id
-      FROM polls
-      JOIN topics ON topics.id = polls.topic_id
-      WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
-      AND polls.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
-    SQL
-    ActiveRecord::Base.connection.execute(query).map { |row| row['id'] }
-  end
-
   def tag_counts
     counts = {}
-    topic_ids = Discussion.where(id: discussion_ids).pluck(:topic_id) +
-                Poll.where(id: poll_ids).pluck(:topic_id)
-    Topic.where(id: topic_ids.compact.uniq).pluck(:tags).flatten.each do |tag|
-      counts[tag] = counts.fetch(tag, 0) + 1
-    end
+    Topic
+      .where("topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''}")
+      .where("topics.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'")
+      .pluck(:tags).flatten.each do |tag|
+        counts[tag] = counts.fetch(tag, 0) + 1
+      end
     counts
   end
 
@@ -208,14 +194,13 @@ class ReportService
 
   def comments_per_user
     query = <<~SQL
-      SELECT count(comments.id) count, user_id
+      SELECT count(comments.id) count, comments.user_id
       FROM comments
       JOIN events ON events.eventable_type = 'Comment' AND events.eventable_id = comments.id
-      JOIN topics ON topics.id = events.topic_id AND topics.topicable_type = 'Discussion'
-      JOIN discussions ON discussions.id = topics.topicable_id
+      JOIN topics ON topics.id = events.topic_id
       WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
       AND comments.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
-      group by user_id
+      group by comments.user_id
     SQL
     rows_to_hash ActiveRecord::Base.connection.execute(query), 'user_id', 'count'
   end

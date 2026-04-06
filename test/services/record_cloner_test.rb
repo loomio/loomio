@@ -161,6 +161,13 @@ class RecordClonerTest < ActiveSupport::TestCase
     # Check poll options are cloned
     assert_equal @poll.poll_options.count, clone.poll_options.count
     assert_equal @poll.poll_options.first.name, clone.poll_options.first.name
+
+    # Standalone clone gets its own topic
+    assert clone.topic.persisted?
+    assert_not_equal @poll.topic_id, clone.topic_id
+    assert_equal 'Poll', clone.topic.topicable_type
+    assert_equal clone.id, clone.topic.topicable_id
+    assert_equal @poll.topic.max_depth, clone.topic.max_depth
   end
 
   test "clones poll stances and outcomes" do

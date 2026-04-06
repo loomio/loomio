@@ -1234,8 +1234,10 @@ en:
     interval: Interval
     total_users: Total users
     total_discussions: Total discussions
+    total_threads: Total threads
     total_polls: Total polls
     discussions_with_polls: Discussions with polls
+    threads_with_polls: Threads with polls
     polls_with_outcomes: Polls with outcomes
     actions_per_interval: Actions per %{interval}
     actions_per_user: Actions per user
