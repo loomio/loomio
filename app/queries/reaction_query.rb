@@ -10,7 +10,7 @@ class ReactionQuery
     if params[:comment_ids]
       discussion_ids.concat(
         Comment.joins(:events)
-               .joins("INNER JOIN topics ON topics.id = events.topic_id AND topics.topicable_type = 'Discussion'")
+               .joins("INNER JOIN topics ON topics.id = events.topic_id")
                .where(comments: { id: params[:comment_ids] })
                .pluck('topics.topicable_id')
       )
