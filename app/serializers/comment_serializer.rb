@@ -4,7 +4,6 @@ class CommentSerializer < ApplicationSerializer
              :body_format,
              :mentioned_usernames,
              :topic_id,
-             :discussion_id,
              :created_at,
              :updated_at,
              :parent_id,

@@ -18,7 +18,7 @@ class Api::B2::CommentsControllerTest < ActionController::TestCase
     json = JSON.parse(response.body)
     comment = json['comments'][0]
     assert comment['id'].present?
-    assert_equal @discussion.id, comment['discussion_id']
+    assert_equal @discussion.topic_id, comment['topic_id']
     assert_equal 'This is a test comment', comment['body']
   end
 

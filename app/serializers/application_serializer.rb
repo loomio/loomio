@@ -13,6 +13,10 @@ class ApplicationSerializer < ActiveModel::Serializer
     cache_fetch(:polls_by_id, object.poll_id) { object.poll }
   end
 
+  def topic
+    cache_fetch(:topics_by_id, object.topic_id) { object.topic }
+  end
+
   def group
     cache_fetch(:groups_by_id, object.group_id) { object.group }
   end

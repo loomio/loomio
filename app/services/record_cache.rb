@@ -43,6 +43,7 @@ class RecordCache
       topic_ids = collection.map(&:id)
       discussion_ids = collection.select { |t| t.topicable_type == 'Discussion' }.map(&:topicable_id)
       poll_ids = collection.select { |t| t.topicable_type == 'Poll' }.map(&:topicable_id)
+      obj.add_topics(collection)
       obj.add_discussions Discussion.where(id: discussion_ids) if discussion_ids.any?
       obj.add_polls_options_stances_outcomes Poll.where(id: poll_ids) if poll_ids.any?
       obj.add_groups_subscriptions_memberships Group.with_attached_logo.with_attached_cover_photo.includes(:subscription).where(id: ids_and_parent_ids(Group, collection.map(&:group_id).compact))
@@ -107,8 +108,9 @@ class RecordCache
     end
 
     obj.add_users User.with_attached_uploaded_avatar.where(id: obj.user_ids)
-    topic_ids = Topic.where(topicable_type: 'Discussion', topicable_id: obj.discussion_ids).pluck(:id)
-    obj.add_topic_readers(TopicReader.where(topic_id: topic_ids, user_id: user_id))
+    topics = Topic.where(topicable_type: 'Discussion', topicable_id: obj.discussion_ids)
+    obj.add_topics(topics)
+    obj.add_topic_readers(TopicReader.where(topic_id: topics.select(:id), user_id: user_id))
     obj.add_events Event.where(kind: 'discussion_forked', eventable_id: obj.discussion_ids)
     obj.add_tags_complete
     obj.add_inline_translations
@@ -329,6 +331,14 @@ class RecordCache
         scope[:translations_by_type_and_id][type] ||= {}
         scope[:translations_by_type_and_id][type][tr.translatable_id] = tr
       end
+    end
+  end
+
+  def add_topics(collection)
+    return if exclude_types.include?('topic')
+    scope[:topics_by_id] ||= {}
+    collection.each do |topic|
+      scope[:topics_by_id][topic.id] = topic
     end
   end
 
