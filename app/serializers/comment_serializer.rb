@@ -20,11 +20,6 @@ class CommentSerializer < ApplicationSerializer
 
   hide_when_discarded [:body]
 
-  def discussion_id
-    topic = object.topic
-    topic&.topicable_type == 'Discussion' ? topic.topicable_id : nil
-  end
-
   def include_mentioned_usernames?
     body_format == "md"
   end
