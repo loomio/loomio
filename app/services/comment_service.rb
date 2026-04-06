@@ -13,7 +13,7 @@ class CommentService
       comment.update(discarded_at: Time.now, discarded_by: actor.id)
       comment.created_event.update(pinned: false)
     end
-    comment.topic&.update_sequence_info!
+    comment.topic.update_sequence_info!
     GenericWorker.perform_async('SearchService', 'reindex_by_comment_id', comment.id)
     comment.created_event
   end
@@ -30,11 +30,9 @@ class CommentService
 
   def self.destroy(comment:, actor:)
     actor.ability.authorize!(:destroy, comment)
-    comment_id = comment.id
-    topic = comment.topic
-
+    topic_id = comment.topic.id
     comment.destroy
-    RepairThreadWorker.perform_async(topic.id) if topic
+    RepairThreadWorker.perform_async(topic_id)
   end
 
   def self.update(comment:, params:, actor:)
