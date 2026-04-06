@@ -37,7 +37,7 @@ class TopicSerializer < ApplicationSerializer
   has_one :group, serializer: GroupSerializer, root: :groups
 
   def discussion
-    cache_fetch(:discussions_by_id, object.topicable_id) { object.topicable } if object.topicable_type == 'Discussion'
+    cache_fetch(:discussions_by_id, object.topicable_id) { object.topicable }
   end
 
   def include_discussion?
@@ -45,7 +45,7 @@ class TopicSerializer < ApplicationSerializer
   end
 
   def poll
-    cache_fetch(:polls_by_id, object.topicable_id) { object.topicable } if object.topicable_type == 'Poll'
+    cache_fetch(:polls_by_id, object.topicable_id) { object.topicable }
   end
 
   def include_poll?
@@ -77,8 +77,7 @@ class TopicSerializer < ApplicationSerializer
     return @reader = nil unless scope[:current_user_id]
 
     @reader = cache_fetch(:topic_readers_by_topic_id, object.id) do
-      group_id = object.topicable.try(:group_id)
-      m = group_id && cache_fetch(:memberships_by_group_id, group_id)
+      m = object.group_id && cache_fetch(:memberships_by_group_id, object.group_id)
       TopicReader.find_or_initialize_by(user_id: scope[:current_user_id], topic_id: object.id) do |tr|
         tr.volume = (m && m.volume) || 'normal'
       end
@@ -86,8 +85,7 @@ class TopicSerializer < ApplicationSerializer
 
     return @reader if @reader.present?
 
-    group_id = object.topicable.try(:group_id)
-    m = group_id && cache_fetch(:memberships_by_group_id, group_id)
+    m = object.group_id && cache_fetch(:memberships_by_group_id, object.group_id)
     @reader = TopicReader.new(user_id: scope[:current_user_id], topic_id: object.id, volume: (m && m.volume) || 'normal')
   end
 
