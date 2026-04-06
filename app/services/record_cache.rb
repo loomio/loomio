@@ -51,9 +51,11 @@ class RecordCache
 
     when 'Discussion'
       collection_ids = collection.map(&:id)
+      topic_ids = collection.map(&:topic_id)
       obj.add_discussions(collection)
+      obj.add_topics(Topic.where(id: topic_ids))
       obj.add_groups_subscriptions_memberships Group.with_attached_logo.with_attached_cover_photo.includes(:subscription).where(id: ids_and_parent_ids(Group, collection.map(&:group_id).compact))
-      obj.add_polls_options_stances_outcomes Poll.active.where(topic_id: Discussion.where(id: collection_ids).select(:topic_id))
+      obj.add_polls_options_stances_outcomes Poll.active.where(topic_id: topic_ids)
 
     when 'Reaction'
       obj.user_ids.concat collection.map(&:user_id)
@@ -71,8 +73,10 @@ class RecordCache
       obj.user_ids.concat collection.map(&:user_id).concat(collection.map(&:inviter_id).compact).compact.uniq
 
     when 'Poll'
+      topic_ids = collection.map(&:topic_id)
       obj.add_groups Group.with_attached_logo.with_attached_cover_photo.includes(:subscription).where(id: ids_and_parent_ids(Group, collection.map(&:group_id)))
-      obj.add_discussions(Discussion.where(id: Topic.where(id: collection.map(&:topic_id).uniq.compact, topicable_type: 'Discussion').select(:topicable_id)))
+      obj.add_topics(Topic.where(id: topic_ids))
+      obj.add_discussions(Discussion.where(topic_id: topic_ids))
       obj.add_polls_options_stances_outcomes collection
       obj.add_inline_translations
 

@@ -7,13 +7,7 @@ class PollService
     poll.assign_attributes_and_files(params)
     poll.author = actor
     poll.prioritise_poll_options!
-
-    poll.topic ||= Topic.new(
-                     topic_params.merge(
-                       topicable: poll,
-                       private: topic_params.key?(:private) ? topic_params[:private] : true,
-                     )
-                   )
+    poll.topic ||= Topic.new topic_params.merge(topicable: poll)
 
     if !poll.opened_at &&
         poll.closing_at &&
