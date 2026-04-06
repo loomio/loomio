@@ -143,27 +143,15 @@ class PollSerializer < ApplicationSerializer
     object.poll_option_attributes.select { |attr| attr[:_destroy] }.map { |attr| attr[:id] }
   end
 
+  def group_id
+    topic&.group_id
+  end
+
   def my_stance
     cache_fetch(:my_stances_by_poll_id, object.id) { Stance.latest.find_by(poll_id: object.id, participant_id: scope[:current_user_id]) }
   end
 
   def include_my_stance?
     my_stance.present?
-  end
-
-  def topic_id
-    object.topic&.id
-  end
-
-  def group_id
-    object.topic&.group_id
-  end
-
-  def topic
-    object.topic
-  end
-
-  def include_topic?
-    topic.present?
   end
 end

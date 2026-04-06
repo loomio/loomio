@@ -94,6 +94,10 @@ class ApplicationSerializer < ActiveModel::Serializer
     include_type?('event')
   end
 
+  def include_topic?
+    include_type?('topic') && object.respond_to?(:topic_id) && object.topic_id.present?
+  end
+
   def include_group?
     include_type?('group') && object.group_id
   end

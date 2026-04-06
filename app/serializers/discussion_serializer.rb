@@ -22,6 +22,10 @@ class DiscussionSerializer < ApplicationSerializer
   has_one :translation, serializer: TranslationSerializer, root: :translations
   hide_when_discarded [:description, :title]
 
+  def group_id
+    topic&.group_id
+  end
+
   def include_mentioned_usernames?
     description_format == "md"
   end
