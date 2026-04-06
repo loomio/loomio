@@ -15,7 +15,7 @@ class Events::PollEdited < Event
     recipient_audience: nil
   )
     super(poll,
-          discussion_id: (recipient_message && poll.discussion_id) || nil,
+          topic: (recipient_message && poll.topic) || nil,
           user: actor,
           recipient_user_ids: recipient_user_ids,
           recipient_chatbot_ids: recipient_chatbot_ids,

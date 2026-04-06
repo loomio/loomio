@@ -9,8 +9,8 @@ class Api::V1::LinkPreviewsController < Api::V1::RestfulController
   private
   def filtered_urls
     known_urls = []
-    if d = Discussion.find_by(id: params[:discussion_id])
-      known_urls = DiscussionService.extract_link_preview_urls(d)
+    if topic = Topic.find_by(id: params[:topic_id])
+      known_urls = TopicService.extract_link_preview_urls(topic)
     end
     params[:urls].reject {|url| known_urls.include?(url) }
   end

@@ -30,10 +30,11 @@ class Views::EventMailer::Poll < Views::EventMailer::EventLayout
     render Views::EventMailer::Poll::Rules.new(poll: @poll)
     render Views::EventMailer::Poll::ResultsPanel.new(poll: @poll, current_user: @recipient)
 
-    if %w[poll_announced poll_created poll_reminder].include?(@event.kind) && @event.eventable.discussion
+    if %w[poll_announced poll_created poll_reminder].include?(@event.kind) &&
+       discussion = @event.eventable.topic.discussion
       hr
-      render Views::EventMailer::Common::Title.new(eventable: @event.eventable.discussion, recipient: @recipient)
-      render Views::EventMailer::Common::Body.new(eventable: @event.eventable.discussion, recipient: @recipient)
+      render Views::EventMailer::Common::Title.new(eventable: discussion, recipient: @recipient)
+      render Views::EventMailer::Common::Body.new(eventable: discussion, recipient: @recipient)
     else
       render Views::EventMailer::Poll::Responses.new(event: @event, recipient: @recipient)
     end

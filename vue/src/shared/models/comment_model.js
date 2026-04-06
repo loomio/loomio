@@ -7,7 +7,7 @@ import Records from '@/shared/services/records';
 export default class CommentModel extends BaseModel {
   static singular = 'comment';
   static plural = 'comments';
-  static indices = ['discussionId', 'authorId'];
+  static indices = ['authorId'];
   static uniqueIndices = ['id'];
 
   afterConstruction() {
@@ -15,12 +15,14 @@ export default class CommentModel extends BaseModel {
   }
 
   collabKeyParams() {
-    return [this.discussionId, this.parentType, this.parentId];
+    return [this.parentType, this.parentId];
   }
 
   defaultValues() {
     return {
-      discussionId: null,
+      parentType: null,
+      parentId: null,
+      pollId: null,
       files: null,
       imageFiles: null,
       attachments: [],
@@ -33,8 +35,13 @@ export default class CommentModel extends BaseModel {
 
   relationships() {
     this.belongsTo('author', {from: 'users'});
-    this.belongsTo('discussion');
+    this.belongsToPolymorphic('parent');
+    this.belongsTo('poll');
     this.belongsTo('translation');
+  }
+
+  topic() {
+    return this.parent().topic();
   }
 
   createdEvent() {
@@ -49,29 +56,24 @@ export default class CommentModel extends BaseModel {
   }
 
   group() {
-    return this.discussion().group();
+    return this.topic().group()
   }
 
   memberIds() {
-    return this.discussion().memberIds();
+    return this.topic().topicable().memberIds()
   }
 
-  // isMostRecent: ->
-  //   discussion().comments()) == @
   participantIds() {
-    return this.discussion().participantIds();
+    const topicable = this.topic()?.topicable();
+    return topicable && topicable.participantIds ? topicable.participantIds() : [];
   }
 
   isReply() {
-    return (this.parentId != null);
+    return this.parentType === 'Comment';
   }
 
   isBlank() {
     return (this.body === '') || (this.body === null) || (this.body === '<p></p>');
-  }
-
-  parent() {
-    return this.parentId && Records[BaseModel.eventTypeMap[this.parentType]].find(this.parentId);
   }
 
   reactors() {
@@ -79,7 +81,7 @@ export default class CommentModel extends BaseModel {
   }
 
   authorName() {
-    if (this.author()) { return this.author().nameWithTitle(this.discussion().group()); }
+    if (this.author()) { return this.author().nameWithTitle(this.group()); }
   }
 
   authorUsername() {

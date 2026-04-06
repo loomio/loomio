@@ -1,0 +1,27 @@
+# # Topic readers to mark topics as read/viewed
+# normal_user_read_test_discussion:
+#   user: normal_user
+#   topic: test_discussion_topic
+#   token: nureatestdiscussiontoken1234
+#   last_read_at: <%= 1.day.ago %>
+#   volume: 2
+#   created_at: <%= 10.days.ago %>
+#   updated_at: <%= 1.day.ago %>
+
+# normal_user_read_private_discussion:
+#   user: normal_user
+#   topic: private_discussion_topic
+#   token: nureadprivdiscussiontoken12
+#   last_read_at: <%= 1.day.ago %>
+#   volume: 2
+#   created_at: <%= 10.days.ago %>
+#   updated_at: <%= 1.day.ago %>
+
+# normal_user_read_subgroup_discussion:
+#   user: normal_user
+#   topic: subgroup_discussion_topic
+#   token: nureadsubgrpdisctoken123456
+#   last_read_at: <%= 1.day.ago %>
+#   volume: 2
+#   created_at: <%= 5.days.ago %>
+#   updated_at: <%= 1.day.ago %>

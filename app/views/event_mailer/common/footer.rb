@@ -78,10 +78,8 @@ class Views::EventMailer::Common::Footer < Views::ApplicationMailer::Component
       ["event_mailer.notification_reason.notified", unsubscribe_url(@event.eventable, recipient: @recipient)]
     elsif @membership&.volume == 'loud'
       ["event_mailer.notification_reason.group_subscribed", unsubscribe_url(@event.eventable, recipient: @recipient)]
-    elsif @discussion && ::DiscussionReader.for(user: @recipient, discussion: @discussion).volume == 'loud'
+    elsif @discussion && ::TopicReader.for(user: @recipient, topic: @discussion.topic).volume == 'loud'
       ["event_mailer.notification_reason.discussion_subscribed", unsubscribe_url(@event.eventable, recipient: @recipient)]
-    elsif @poll && @poll.stances.latest.find_by(participant_id: @recipient.id)&.volume == 'loud'
-      ["event_mailer.notification_reason.poll_subscribed", unsubscribe_url(@event.eventable, recipient: @recipient)]
     end
   end
 

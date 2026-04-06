@@ -86,10 +86,6 @@ const submit = () => {
   });
 };
 
-const openEditLayout = () => {
-  return DiscussionService.actions(props.discussion, null)['edit_arrangement'].perform();
-};
-
 // Computed
 const cardTitle = computed(() => {
   if (isMovingItems.value) {
@@ -255,8 +251,6 @@ v-form(ref="form" @submit.prevent="submit")
         common-notify-fields(v-if="loaded" :model="discussion" :initial-recipients="initialRecipients")
     v-card-actions(v-if="!showUpgradeMessage")
       help-btn(path='en/user_manual/threads/starting_threads')
-      v-btn.discussion-form__edit-layout(v-if="discussion.id" @click="openEditLayout")
-        span(v-t="'thread_arrangement_form.edit'")
       v-spacer
       v-btn.mr-2(@click="discardDraft" variant="text")
         span(v-t="'common.reset'")

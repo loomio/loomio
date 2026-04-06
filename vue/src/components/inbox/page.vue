@@ -50,7 +50,7 @@ export default
       if (options == null) { options = {}; }
       if (Session.isSignedIn()) {
         this.loading = true;
-        Records.discussions.fetchInbox(options).then(() => { return this.loading = false; });
+        Records.topics.fetchInbox(options).then(() => { return this.loading = false; });
       }
 
       EventBus.$emit('currentComponent', {
@@ -60,7 +60,7 @@ export default
       );
 
       this.watchRecords({
-        collections: ['discussions', 'groups'],
+        collections: ['topics', 'groups'],
         query: store => {
           this.groups = sortBy(Session.user().inboxGroups(), 'name');
           this.views = {};

@@ -21,34 +21,30 @@ class MigrateUserWorkerTest < ActiveSupport::TestCase
     @jennifer_membership = @group.memberships.find_by(user: @jennifer)
     @jennifer_membership.update!(accepted_at: 2.days.ago)
 
-    @discussion = Discussion.new(title: "MigrateTest#{hex}", group: @group, author: @patrick)
-    DiscussionService.create(discussion: @discussion, actor: @patrick)
+    @discussion = DiscussionService.create(params: { title: "MigrateTest#{hex}", group_id: @group.id }, actor: @patrick)
     DiscussionService.update(discussion: @discussion, params: {title: "new version #{hex}"}, actor: @patrick)
 
     version = @discussion.versions.last
     version.update!(whodunnit: @patrick.id) if version
 
-    DiscussionReader.for(user: @patrick, discussion: @discussion)
-    DiscussionReader.for(user: @jennifer, discussion: @discussion)
+    TopicReader.for(user: @patrick, topic: @discussion.topic)
+    TopicReader.for(user: @jennifer, topic: @discussion.topic)
 
-    @patrick_comment = Comment.new(discussion: @discussion, body: "Patrick's comment #{hex}")
+    @patrick_comment = Comment.new(parent: @discussion, body: "Patrick's comment #{hex}")
     CommentService.create(comment: @patrick_comment, actor: @patrick)
 
-    @jennifer_comment = Comment.new(discussion: @discussion, body: "Jennifer's comment #{hex}")
+    @jennifer_comment = Comment.new(parent: @discussion, body: "Jennifer's comment #{hex}")
     CommentService.create(comment: @jennifer_comment, actor: @jennifer)
 
     @reaction = Reaction.create!(reactable: @patrick_comment, user: @patrick, reaction: "+1")
 
-    @poll = Poll.new(
+    @poll = PollService.create(params: {
       title: "MigratePoll#{hex}",
       poll_type: 'proposal',
-      group: @group,
-      discussion: @discussion,
-      author: @patrick,
+      group_id: @group.id,
       closing_at: 3.days.from_now,
-      poll_option_names: %w[agree disagree abstain]
-    )
-    PollService.create(poll: @poll, actor: @patrick)
+      poll_option_names: %w[Agree Disagree Abstain]
+    }, actor: @patrick)
 
     jennifer_stance = Stance.find_by(poll: @poll, participant: @jennifer, latest: true)
     jennifer_stance.choice = @poll.poll_option_names.first
@@ -97,7 +93,7 @@ class MigrateUserWorkerTest < ActiveSupport::TestCase
     assert_equal true, j_stance.reload.latest
     assert_equal @jennifer, @membership_request.reload.requestor
     assert_equal @jennifer, @identity.reload.user
-    assert DiscussionReader.find_by(discussion: @discussion, user: @jennifer).present?
+    assert TopicReader.find_by(topic: @discussion.topic, user: @jennifer).present?
     assert @another_group.members.exists?(@jennifer.id)
     assert_equal 2, @jennifer.memberships_count
 

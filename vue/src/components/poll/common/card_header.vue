@@ -1,5 +1,4 @@
 <script lang="js">
-import AbilityService from '@/shared/services/ability_service';
 import { map, compact  } from 'lodash-es';
 import UrlFor from '@/mixins/url_for';
 
@@ -12,20 +11,15 @@ export default
 
   computed: {
     groups() {
-      return map(compact([(this.poll.groupId && this.poll.group()), (this.poll.discussionId && this.poll.discussion())]), model => {
-        if (model.isA('discussion')) {
-          return {
-            title: model.name || model.title,
-            disabled: false,
-            to: this.urlFor(model)+'/'+this.poll.createdEvent().sequenceId
-          };
-        } else {
-          return {
-            title: model.name || model.title,
-            disabled: false,
-            to: this.urlFor(model)
-          };
-        }
+      const topic = this.poll.topic();
+      const group = topic.group();
+      const topicable = topic.topicable();
+      return map(compact([group, topicable]), model => {
+        return {
+          title: model.name || model.title,
+          disabled: false,
+          to: this.urlFor(model)
+        };
       });
     }
   }
@@ -38,6 +32,6 @@ export default
     template(v-slot:divider)
       common-icon(name="mdi-chevron-right")
   v-spacer
-  tags-display(:tags="poll.tags" :group="poll.group()")
+  tags-display(:tags="poll.topic().tags" :group="poll.group()")
 </template>
 

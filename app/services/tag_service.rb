@@ -46,8 +46,7 @@ class TagService
   def self.update_group_tags(group_id)
     return unless group = Group.find_by(id: group_id)
 
-    names = (group.discussions.kept.select(:tags).pluck(:tags).flatten +
-             group.polls.kept.select(:tags).pluck(:tags).flatten)
+    names = group.topics.pluck(:tags).flatten
 
     return if names.empty?
 

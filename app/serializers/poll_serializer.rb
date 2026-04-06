@@ -20,8 +20,6 @@ class PollSerializer < ApplicationSerializer
              :details_format,
              :discarded_at,
              :discarded_by,
-             :discussion_id,
-             :group_id,
              :hide_results,
              :key,
              :link_previews,
@@ -40,7 +38,6 @@ class PollSerializer < ApplicationSerializer
              :specified_voters_only,
              :total_score,
              :title,
-             :tags,
              :undecided_voters_count,
              :voter_can_add_options,
              :voters_count,
@@ -60,14 +57,14 @@ class PollSerializer < ApplicationSerializer
              :poll_template_key,
              :quorum_pct,
              :quorum_count,
-             :quorum_votes_required
+             :quorum_votes_required,
+             :topic_id,
+             :group_id
 
-  has_one :discussion, serializer: DiscussionSerializer, root: :discussions
-  has_one :created_event, serializer: EventSerializer, root: :events
-  has_one :group, serializer: GroupSerializer, root: :groups
   has_one :author, serializer: AuthorSerializer, root: :users
   has_one :current_outcome, serializer: OutcomeSerializer, root: :outcomes
   has_one :my_stance, serializer: StanceSerializer, root: :stances
+  has_one :topic, serializer: TopicSerializer, root: :topics
   has_many :poll_options, serializer: PollOptionSerializer, root: :poll_options
 
   hide_when_discarded [
@@ -138,16 +135,16 @@ class PollSerializer < ApplicationSerializer
     cache_fetch(:poll_options_by_poll_id, object.id) { poll_options }.map(&:name)
   end
 
-  def created_event
-    cache_fetch([:events_by_kind_and_eventable_id, 'poll_created'], object.id) { object.created_event }
-  end
-
   def include_mentioned_usernames?
     details_format == "md"
   end
 
   def removed_poll_option_ids
     object.poll_option_attributes.select { |attr| attr[:_destroy] }.map { |attr| attr[:id] }
+  end
+
+  def group_id
+    topic&.group_id
   end
 
   def my_stance

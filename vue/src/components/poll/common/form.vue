@@ -279,7 +279,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
   poll-template-info-panel.mb-4(v-if="pollTemplate" :poll-template="pollTemplate")
 
   v-select(
-    v-if="!poll.id && !poll.discussionId"
+    v-if="!poll.topicId"
     v-model="poll.groupId"
     :items="groupItems"
     :label="$t('common.group')"
@@ -500,7 +500,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
     :disabled="!poll.closingAt"
   )
     v-radio(
-      v-if="poll.discussionId && !poll.groupId"
+      v-if="!poll.groupId"
       :value="false"
       :label="$t('poll_common_settings.specified_voters_only_false_discussion')")
     v-radio(
@@ -607,6 +607,12 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
             v-if="poll.quorumPct && poll.pollType == 'proposal' && poll.config().allow_vote_share_requirement"
             v-t="'poll_common_form.quorum_tip_vote_share_requirement'"
           )
+
+        template(v-if="!poll.topicId")
+          v-divider.mb-4
+          .text-subtitle-1.pb-2(v-t="'thread_arrangement_form.topic_settings'")
+          v-checkbox(v-model="poll.allowComments" :label="$t('thread_arrangement_form.allow_comments')" :hint="$t('thread_arrangement_form.allow_comments_description')" persistent-hint hide-details="auto")
+          v-checkbox(v-model="poll.allowReactions" :label="$t('thread_arrangement_form.allow_reactions')" :hint="$t('thread_arrangement_form.allow_reactions_description')" persistent-hint hide-details="auto")
 
         common-notify-fields(v-if="poll.id" :model="poll" includeActor)
 

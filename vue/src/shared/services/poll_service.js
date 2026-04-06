@@ -104,21 +104,6 @@ export default new class PollService {
         to() { return `/p/new?template_id=${poll.id}`; }
       },
 
-      add_poll_to_thread: {
-        menu: true,
-        name: 'action_dock.add_poll_to_thread',
-        icon: 'mdi-comment-plus-outline',
-        canPerform() { return AbilityService.canAddPollToThread(poll); },
-        perform() {
-          return openModal({
-            component: 'AddPollToThreadModal',
-            props: {
-              poll
-            }
-          });
-        }
-      },
-
       announce_poll: {
         icon: 'mdi-account-multiple-plus',
         name: 'poll_common_form.add_voters',
@@ -204,10 +189,14 @@ export default new class PollService {
       add_comment: {
         name: 'activity_card.add_comment',
         icon: 'mdi-reply',
-        dock: 1,
-        canPerform() { return !poll.discardedAt && poll.discussionId && AbilityService.canAddComment(poll.discussion()) && !poll.closingAt; },
+        menu: true,
+        canPerform() {
+          const topic = poll.topic();
+          return !poll.discardedAt && topic && AbilityService.canAddComment(topic);
+        },
         perform() {
-          return EventBus.$emit('toggle-reply', poll, event.id);
+          EventBus.$emit('show-add-comment-form');
+          document.querySelector('#add-comment')?.scrollIntoView({behavior: 'smooth'});
         }
       },
 
@@ -241,22 +230,6 @@ export default new class PollService {
         canPerform() { return !poll.discardedAt; }
       },
 
-      move_poll: {
-        name: 'action_dock.move_thread', // the text is 'move to group'
-        icon: 'mdi-folder-swap-outline',
-        menu: true,
-        canPerform() {
-          return AbilityService.canMovePoll(poll);
-        },
-        perform() {
-          return openModal({
-            component: 'PollCommonMoveForm',
-            props: {
-              poll: poll.clone()
-            }
-          });
-        }
-      },
 
       export_poll: {
         name: 'common.action.export',
@@ -322,6 +295,22 @@ export default new class PollService {
         }
       },
 
+
+      thread_settings: {
+        name: 'thread_arrangement_form.thread_settings',
+        icon: 'mdi-cog',
+        menu: true,
+        canPerform() {
+          const topic = poll.topic();
+          return topic && topic.topicableType === 'Poll' && topic.adminsInclude(Session.user());
+        },
+        perform() {
+          return openModal({
+            component: 'TopicForm',
+            props: { topic: poll.topic().clone() }
+          });
+        }
+      },
 
       discard_poll: {
         name: 'poll_common.delete_poll',

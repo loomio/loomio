@@ -58,7 +58,7 @@ class Views::Discussions::Show < Views::Application::Layout
         end
         span do
           span("aria-hidden": "true") { plain " \u00b7" }
-          if @discussion.private
+          if @discussion.topic&.private
             span(class: "nowrap context-panel__discussion-privacy context-panel__discussion-privacy--private") do
               i(class: "mdi mdi-lock-outline")
               span { plain t("common.privacy.private") }

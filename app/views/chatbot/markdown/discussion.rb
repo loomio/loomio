@@ -12,7 +12,7 @@ class Views::Chatbot::Markdown::Discussion < Views::Chatbot::Markdown::Base
   def view_template
     render_notification_text(@event, @poll)
     md "\n"
-    render_title(@event.eventable.discussion)
+    render_title(@event.eventable)
     md "\n"
     render_body(@event.eventable)
     md "\n"

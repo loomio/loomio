@@ -8,7 +8,7 @@ export default {
     fullName: Boolean
   },
   computed: {
-    link() { return LmoUrlService.discussionPoll(this.poll); },
+    link() { return LmoUrlService.route({model: this.poll}); },
     needsVote() { return this.poll.iCanVote() && !this.poll.iHaveVoted() }
   }
 };
@@ -20,7 +20,7 @@ v-list-item.poll-common-preview(:to='link')
     poll-common-icon-panel.mr-2(:poll='poll' show-my-stance :size="36")
   v-list-item-title(:class="{'text-medium-emphasis': !needsVote, 'font-weight-medium': needsVote }")
     plain-text(:model="poll" field="title")
-    tags-display.ml-1(:tags="poll.tags" :group="poll.group()" size="x-small")
+    tags-display.ml-1(v-if="poll.topic()" :tags="poll.topic().tags" :group="poll.group()" size="x-small")
   v-list-item-subtitle
     span(v-if='displayGroupName && poll.groupId')
       span(v-if="fullName") {{ poll.group().fullName }}

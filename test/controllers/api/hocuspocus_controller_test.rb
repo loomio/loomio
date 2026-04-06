@@ -2,15 +2,14 @@ require 'test_helper'
 
 class Api::HocuspocusControllerTest < ActionController::TestCase
   setup do
-    @user = users(:normal_user)
-    @group = groups(:test_group)
-    @group.add_admin!(@user)
-    @discussion = create_discussion(group: @group, author: @user)
+    @user = users(:admin)
+    @group = groups(:group)
+    @discussion = discussions(:discussion)
     hex = SecureRandom.hex(4)
     @other_user = User.create!(name: "other#{hex}", email: "other#{hex}@example.com", username: "other#{hex}", email_verified: true)
-    @other_group = groups(:another_group)
+    @other_group = Group.create!(name: "hpother#{hex}", handle: "hpother#{hex}", group_privacy: 'secret')
     @other_group.add_admin!(@other_user)
-    @other_discussion = create_discussion(group: @other_group, author: @other_user)
+    @other_discussion = DiscussionService.create(params: { title: "Other #{SecureRandom.hex(4)}", group_id: @other_group.id }, actor: @other_user)
     ActionMailer::Base.deliveries.clear
   end
 

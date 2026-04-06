@@ -7,7 +7,7 @@ class Views::EventMailer::Discussion < Views::EventMailer::EventLayout
     @recipient = recipient
     @event_key = event_key
     @notification = notification
-    @discussion = discussion || @event.eventable.discussion
+    @discussion = discussion || @event.eventable.topic.discussion
     @poll = poll
     @membership = membership
   end

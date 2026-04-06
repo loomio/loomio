@@ -2,12 +2,9 @@ require 'test_helper'
 
 class Api::B2::CommentsControllerTest < ActionController::TestCase
   setup do
-    @user = users(:normal_user)
-    @group = groups(:test_group)
-    @group.add_admin!(@user)
+    @user = users(:admin)
     @user.update_columns(api_key: "apikey#{SecureRandom.hex(8)}")
-    @discussion = create_discussion(group: @group, author: @user)
-    ActionMailer::Base.deliveries.clear
+    @discussion = discussions(:discussion)
   end
 
   test "create happy case" do
@@ -21,7 +18,7 @@ class Api::B2::CommentsControllerTest < ActionController::TestCase
     json = JSON.parse(response.body)
     comment = json['comments'][0]
     assert comment['id'].present?
-    assert_equal @discussion.id, comment['discussion_id']
+    assert_equal @discussion.topic_id, comment['topic_id']
     assert_equal 'This is a test comment', comment['body']
   end
 

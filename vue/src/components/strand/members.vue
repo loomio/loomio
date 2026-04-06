@@ -12,18 +12,17 @@ export default {
   },
 
   mounted() {
-    Records.discussionReaders.fetch({
-      path: '',
+    Records.topicReaders.fetch({
       params: {
         discussion_id: this.discussion.id
       }
     });
 
     this.watchRecords({
-      collections: ['discussionReaders'],
+      collections: ['topicReaders'],
       query: records => {
-        this.readers = Records.discussionReaders.collection.chain().
-          find({discussionId: this.discussion.id}).simplesort('lastReadAt', true).limit(20).data();
+        this.readers = Records.topicReaders.collection.chain().
+          find({topicId: this.discussion.topicId}).simplesort('lastReadAt', true).limit(20).data();
       }
     });
   },
@@ -32,7 +31,7 @@ export default {
     openInviteModal() {
       EventBus.$emit('openModal', {
         component: 'StrandMembersList',
-        props: { discussion: this.discussion }
+        props: { topic: this.discussion.topic() }
       });
     }
   }

@@ -346,24 +346,22 @@ class StvCountServiceTest < ActiveSupport::TestCase
   # ── Integration with StvCountService.count ────────────────────────
 
   test "StvCountService.count dispatches to scottish counter" do
-    group = groups(:test_group)
-    user = users(:normal_user)
-    group.add_admin!(user)
+    group = groups(:group)
+    admin = users(:admin)
 
-    poll = Poll.new(
-      title: "Board Election",
-      poll_type: 'stv',
-      author: user,
-      group: group,
-      closing_at: 1.day.from_now,
-      stv_seats: 2,
-      stv_method: 'scottish',
-      stv_quota: 'droop',
-      specified_voters_only: true
-    )
-    poll.poll_option_names = %w[Alice Bob Carol]
-    poll.save!
-    poll.create_missing_created_event!
+    poll = PollService.create(
+      params: {
+        title: "Board Election",
+        poll_type: 'stv',
+        group_id: group.id,
+        closing_at: 1.day.from_now,
+        stv_seats: 2,
+        stv_method: 'scottish',
+        stv_quota: 'droop',
+        specified_voters_only: true,
+        poll_option_names: %w[Alice Bob Carol]
+      },
+      actor: admin)
 
     alice = poll.poll_options.find_by(name: 'Alice')
     bob = poll.poll_options.find_by(name: 'Bob')
@@ -406,24 +404,22 @@ class StvCountServiceTest < ActiveSupport::TestCase
   end
 
   test "StvCountService.count dispatches to meek counter" do
-    group = groups(:test_group)
-    user = users(:normal_user)
-    group.add_admin!(user)
+    group = groups(:group)
+    admin = users(:admin)
 
-    poll = Poll.new(
-      title: "Board Election Meek",
-      poll_type: 'stv',
-      author: user,
-      group: group,
-      closing_at: 1.day.from_now,
-      stv_seats: 2,
-      stv_method: 'meek',
-      stv_quota: 'hare',
-      specified_voters_only: true
-    )
-    poll.poll_option_names = %w[Alice Bob Carol]
-    poll.save!
-    poll.create_missing_created_event!
+    poll = PollService.create(
+      params: {
+        title: "Board Election Meek",
+        poll_type: 'stv',
+        group_id: group.id,
+        closing_at: 1.day.from_now,
+        stv_seats: 2,
+        stv_method: 'meek',
+        stv_quota: 'hare',
+        specified_voters_only: true,
+        poll_option_names: %w[Alice Bob Carol]
+      },
+      actor: admin)
 
     alice = poll.poll_options.find_by(name: 'Alice')
     bob = poll.poll_options.find_by(name: 'Bob')

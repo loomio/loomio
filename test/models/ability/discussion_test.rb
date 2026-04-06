@@ -1,117 +1,122 @@
 require 'test_helper'
 
 class Ability::DiscussionTest < ActiveSupport::TestCase
-  def can?(action, subject)
-    @ability.can?(action, subject)
-  end
-
-  def cannot?(action, subject)
-    !@ability.can?(action, subject)
-  end
-
-  setup do
-    @actor = users(:normal_user)
-    @ability = Ability::Base.new(@actor)
-  end
-
   # Discussion without group
   test "discussion without group as admin" do
-    author = User.create!(name: "DA #{SecureRandom.hex(4)}", email: "da_#{SecureRandom.hex(4)}@test.com", email_verified: true)
-    discussion = Discussion.create!(title: "No group disc", author: author, private: true)
-    discussion.discussion_readers.create!(user_id: @actor.id, admin: true, guest: true, inviter_id: @actor.id)
-    assert can?(:announce, discussion)
-    assert can?(:add_guests, discussion)
-    assert can?(:update, discussion)
+    user = users(:user)
+    other = users(:alien)
+    discussion = DiscussionService.create(params: discussion_params, actor: other)
+    discussion.topic.topic_readers.create!(user_id: user.id, admin: true, guest: true, inviter_id: other.id)
+    assert user.can?(:announce, discussion.topic)
+    assert user.can?(:add_guests, discussion.topic)
+    assert user.can?(:update, discussion)
   end
 
   test "discussion without group as member" do
-    author = User.create!(name: "DA #{SecureRandom.hex(4)}", email: "da_#{SecureRandom.hex(4)}@test.com", email_verified: true)
-    discussion = Discussion.create!(title: "No group disc", author: author, private: true)
-    discussion.discussion_readers.create!(user_id: @actor.id, admin: false, guest: true, inviter_id: @actor.id)
-    assert cannot?(:announce, discussion)
-    assert cannot?(:add_guests, discussion)
-    assert can?(:update, discussion)
+    user = users(:user)
+    other = users(:alien)
+    discussion = DiscussionService.create(params: discussion_params, actor: other)
+    discussion.topic.topic_readers.create!(user_id: user.id, admin: false, guest: true, inviter_id: other.id)
+    assert_not user.can?(:announce, discussion)
+    assert_not user.can?(:add_guests, discussion)
+    assert user.can?(:update, discussion)
   end
 
   test "discussion without group as unrelated" do
-    author = User.create!(name: "DA #{SecureRandom.hex(4)}", email: "da_#{SecureRandom.hex(4)}@test.com", email_verified: true)
-    discussion = Discussion.create!(title: "No group disc", author: author, private: true)
-    assert cannot?(:announce, discussion)
-    assert cannot?(:add_guests, discussion)
-    assert cannot?(:update, discussion)
+    user = users(:user)
+    other = users(:alien)
+    discussion = DiscussionService.create(params: discussion_params, actor: other)
+    assert_not user.can?(:announce, discussion)
+    assert_not user.can?(:add_guests, discussion)
+    assert_not user.can?(:update, discussion)
   end
 
   # Discussion in group - as group admin
   test "group admin can manage discussion" do
-    group = Group.create!(name: "DGrp #{SecureRandom.hex(4)}", group_privacy: 'secret')
-    group.add_admin!(@actor)
-    discussion = create_discussion(group: group, author: @actor)
-    assert can?(:add_members, discussion)
-    assert can?(:announce, discussion)
-    assert can?(:add_guests, discussion)
+    admin = users(:admin)
+    group = groups(:group)
+    discussion = DiscussionService.create(params: discussion_params(group_id: group.id), actor: admin)
+    assert admin.can?(:add_members, discussion.topic)
+    assert admin.can?(:announce, discussion.topic)
+    assert admin.can?(:add_guests, discussion.topic)
   end
 
-  # Discussion in group - as group member, discussion admin
-  test "group member discussion admin with members_can_add_guests true" do
-    group, discussion = create_group_and_discussion(members_can_add_guests: true)
-    group.add_member!(@actor)
-    discussion.discussion_readers.create!(user_id: @actor.id, admin: true)
-    assert can?(:add_guests, discussion)
+  # Discussion in group - as group member, topic admin
+  test "group member topic admin with members_can_add_guests true" do
+    user = users(:user)
+    group = groups(:group)
+    group.update_columns(members_can_add_guests: true)
+    discussion = DiscussionService.create(params: discussion_params(group_id: group.id), actor: users(:admin))
+    discussion.topic.topic_readers.find_or_create_by!(user: user).update!(admin: true)
+    assert user.can?(:add_guests, discussion.topic)
   end
 
-  test "group member discussion admin with members_can_add_guests false" do
-    group, discussion = create_group_and_discussion(members_can_add_guests: false)
-    group.add_member!(@actor)
-    discussion.discussion_readers.create!(user_id: @actor.id, admin: true)
-    assert cannot?(:add_guests, discussion)
+  test "group member topic admin with members_can_add_guests false" do
+    user = users(:user)
+    group = groups(:group)
+    group.update_columns(members_can_add_guests: false)
+    discussion = DiscussionService.create(params: discussion_params(group_id: group.id), actor: users(:admin))
+    discussion.topic.topic_readers.find_or_create_by!(user: user).update!(admin: true)
+    assert_not user.can?(:add_guests, discussion)
   end
 
-  test "group member discussion admin with members_can_announce true" do
-    group, discussion = create_group_and_discussion(members_can_announce: true)
-    group.add_member!(@actor)
-    discussion.discussion_readers.create!(user_id: @actor.id, admin: true)
-    assert can?(:announce, discussion)
+  test "group member topic admin with members_can_announce true" do
+    user = users(:user)
+    group = groups(:group)
+    group.update_columns(members_can_announce: true)
+    discussion = DiscussionService.create(params: discussion_params(group_id: group.id), actor: users(:admin))
+    discussion.topic.topic_readers.find_or_create_by!(user: user).update!(admin: true)
+    assert user.can?(:announce, discussion)
   end
 
-  test "group member discussion admin with members_can_announce false" do
-    group, discussion = create_group_and_discussion(members_can_announce: false)
-    group.add_member!(@actor)
-    discussion.discussion_readers.create!(user_id: @actor.id, admin: true)
-    assert cannot?(:announce, discussion)
+  test "group member topic admin with members_can_announce false" do
+    user = users(:user)
+    group = groups(:group)
+    group.update_columns(members_can_announce: false)
+    discussion = DiscussionService.create(params: discussion_params(group_id: group.id), actor: users(:admin))
+    discussion.topic.topic_readers.find_or_create_by!(user: user).update!(admin: true)
+    assert_not user.can?(:announce, discussion)
   end
 
-  # Discussion in group - as group member (not discussion admin)
+  # Discussion in group - as group member (not topic admin)
   test "group member with members_can_add_guests true" do
-    group, discussion = create_group_and_discussion(members_can_add_guests: true)
-    group.add_member!(@actor)
-    assert can?(:add_guests, discussion)
+    user = users(:user)
+    group = groups(:group)
+    group.update_columns(members_can_add_guests: true)
+    discussion = DiscussionService.create(params: discussion_params(group_id: group.id), actor: users(:admin))
+    assert user.can?(:add_guests, discussion.topic)
   end
 
   test "group member with members_can_announce true" do
-    group, discussion = create_group_and_discussion(members_can_announce: true)
-    group.add_member!(@actor)
-    assert can?(:announce, discussion)
+    user = users(:user)
+    group = groups(:group)
+    group.update_columns(members_can_announce: true)
+    discussion = DiscussionService.create(params: discussion_params(group_id: group.id), actor: users(:admin))
+    assert user.can?(:announce, discussion)
   end
 
   test "group member with members_can_edit_discussions true" do
-    group, discussion = create_group_and_discussion(members_can_edit_discussions: true)
-    group.add_member!(@actor)
-    assert can?(:update, discussion)
+    user = users(:user)
+    group = groups(:group)
+    group.update_columns(members_can_edit_discussions: true)
+    discussion = DiscussionService.create(params: discussion_params(group_id: group.id), actor: users(:admin))
+    assert user.can?(:update, discussion)
   end
 
   test "group member with members_can_edit_discussions false" do
-    group, discussion = create_group_and_discussion(members_can_edit_discussions: false)
-    group.add_member!(@actor)
-    assert cannot?(:update, discussion)
+    user = users(:user)
+    group = groups(:group)
+    group.update_columns(members_can_edit_discussions: false)
+    discussion = DiscussionService.create(params: discussion_params(group_id: group.id), actor: users(:admin))
+    assert_not user.can?(:update, discussion)
   end
 
   private
 
-  def create_group_and_discussion(**group_options)
-    author = User.create!(name: "DA #{SecureRandom.hex(4)}", email: "da_#{SecureRandom.hex(4)}@test.com", email_verified: true)
-    group = Group.create!({ name: "DG #{SecureRandom.hex(4)}", group_privacy: 'secret' }.merge(group_options))
-    group.add_admin!(author)
-    discussion = create_discussion(group: group, author: author)
-    [group, discussion]
+  def discussion_params(**overrides)
+    {
+      title: "Discussion #{SecureRandom.hex(4)}",
+      private: true
+    }.merge(overrides)
   end
 end

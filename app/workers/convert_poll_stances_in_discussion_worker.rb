@@ -11,7 +11,8 @@ class ConvertPollStancesInDiscussionWorker
     Stance.where(id: stance_ids).each do |stance|
       stance.create_missing_created_event! if stance.created_event.nil?
     end
-    Event.where(kind: 'stance_created', eventable_id: stance_ids, discussion_id: nil).update_all(discussion_id: poll.discussion_id)
-    EventService.repair_discussion(poll.discussion_id)
+    topic_id = poll.discussion&.topic&.id
+    Event.where(kind: 'stance_created', eventable_id: stance_ids, topic_id: nil).update_all(topic_id: topic_id) if topic_id
+    EventService.repair_thread(poll.discussion.topic) if poll.discussion&.topic
   end
 end

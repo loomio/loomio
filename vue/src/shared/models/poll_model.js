@@ -11,13 +11,12 @@ export default class PollModel extends BaseModel {
   static singular = 'poll';
   static plural = 'polls';
   static uniqueIndices = ['id', 'key'];
-  static indices = ['discussionId', 'authorId', 'groupId'];
+  static indices = ['authorId', 'groupId', 'topicId'];
 
   constructor(...args) {
     super(...args);
     this.close = this.close.bind(this);
     this.reopen = this.reopen.bind(this);
-    this.addToThread = this.addToThread.bind(this);
     this.addOption = this.addOption.bind(this);
     this.poll = this.poll.bind(this);
   }
@@ -46,7 +45,6 @@ export default class PollModel extends BaseModel {
 
   defaultValues() {
     return {
-      discussionId: null,
       title: '',
       titlePlaceholder: null,
       closingAt: null,
@@ -95,6 +93,9 @@ export default class PollModel extends BaseModel {
       tags: [],
       hideResults: 'off',
       stanceCounts: [],
+      topicId: null,
+      allowComments: true,
+      allowReactions: true,
       stvSeats: 1,
       stvMethod: 'scottish',
       stvQuota: 'droop',
@@ -113,7 +114,7 @@ export default class PollModel extends BaseModel {
     clone.sourceTemplateId = this.id;
     clone.authorId = Session.user().id;
     clone.groupId = null;
-    clone.discussionId = null;
+    clone.topicId = null;
 
     clone.template = false;
     clone.closingAt = startOfHour(addDays(new Date(), this.defaultDurationInDays || 7));
@@ -175,7 +176,7 @@ export default class PollModel extends BaseModel {
     this.belongsTo('group');
     this.belongsTo('translation');
     this.hasMany('stances');
-    return this.hasMany('versions');
+    this.hasMany('versions');
   }
 
   pieSlices() {
@@ -247,13 +248,7 @@ export default class PollModel extends BaseModel {
   }
 
   adminsInclude(user) {
-    const stance = this.stanceFor(user);
-    return (this.authorId === user.id && !this.groupId) ||
-           (this.authorId === user.id && this.groupId && this.group().membersInclude(user)) ||
-           (this.authorId === user.id && this.discussionId && this.discussion().membersInclude(user)) ||
-           (stance && stance.admin) ||
-           (this.discussionId && this.discussion().adminsInclude(user)) ||
-           this.group().adminsInclude(user);
+    return this.topic().adminsInclude(user);
   }
 
   votersInclude(user) {
@@ -265,7 +260,10 @@ export default class PollModel extends BaseModel {
   }
 
   membersInclude(user) {
-    return !!(this.stanceFor(user) || (this.discussionId && this.discussion().membersInclude(user)) || this.group().membersInclude(user));
+    return !!(
+      this.stanceFor(user) ||
+      this.topic().membersInclude(user)
+    );
   }
 
   stanceFor(user) {
@@ -371,12 +369,6 @@ export default class PollModel extends BaseModel {
     .finally(() => { return this.processing = false; });
   }
 
-  addToThread(discussionId) {
-    this.processing = true;
-    return Records.polls.remote.patchMember(this.keyOrId(), 'add_to_thread', { discussion_id: discussionId })
-    .finally(() => { return this.processing = false; });
-  }
-
   notifyAction() {
     if (this.isNew()) {
       return 'publish';
@@ -421,5 +413,19 @@ export default class PollModel extends BaseModel {
     return this.pollOptions().forEach(option => {
       if (!this.pollOptionNames.includes(option.name)) { return option.remove(); }
     });
+  }
+
+  topic() {
+    if (this.topicId) { return Records.topics.find(this.topicId); }
+  }
+
+  isTopicable() {
+    const topic = this.topic();
+    return topic && topic.topicableType === 'Poll' && topic.topicableId === this.id;
+  }
+
+  maxDepth() {
+    const topic = this.topic();
+    return topic ? topic.maxDepth : 2;
   }
 };

@@ -5,8 +5,7 @@ class Api::B2::DiscussionsController < Api::B2::BaseController
   end
 
   def create
-    instantiate_resource
-    DiscussionService.create(actor: current_user, discussion: @discussion, params: params)
+    self.resource = DiscussionService.create(params: resource_params, actor: current_user)
     respond_with_resource
   end
 end

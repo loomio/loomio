@@ -71,7 +71,8 @@ export default {
 
 <template lang="pug">
 section.strand-item.poll-created(v-intersect.once="{handler: viewed}")
-  .d-flex.justify-space-between
+  strand-header.pt-3(v-if="poll.isTopicable()" :topicable="poll")
+  .d-flex.justify-space-between(v-if="!poll.isTopicable()")
     .poll-common-card__title.text-h6.pb-1(tabindex="-1")
       router-link.underline-on-hover.text-high-emphasis(:to="urlFor(poll)" )
         plain-text(:model="poll" field="title")
@@ -82,7 +83,7 @@ section.strand-item.poll-created(v-intersect.once="{handler: viewed}")
       span(v-t="{ path: 'poll_card.poll_type_by_name', args: { name: poll.authorName(), poll_type: poll.translatedPollTypeCaps() } }")
       mid-dot
       poll-common-closing-at.ml-1(:poll='poll')
-      tags-display.ml-2(:tags="poll.tags" :group="poll.group()" smaller)
+      tags-display.ml-2(:tags="poll.topic().tags" :group="poll.group()" smaller)
     formatted-text.poll-common-details-panel__details(:model="poll" field="details")
     link-previews(:model="poll")
     attachment-list(:attachments="poll.attachments")

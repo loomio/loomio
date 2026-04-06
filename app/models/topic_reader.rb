@@ -1,4 +1,4 @@
-class DiscussionReader < ApplicationRecord
+class TopicReader < ApplicationRecord
   include CustomCounterCache::Model
   include HasVolume
 
@@ -6,43 +6,37 @@ class DiscussionReader < ApplicationRecord
   initialized_with_token :token
 
   belongs_to :user
-  belongs_to :discussion
+  belongs_to :topic
   belongs_to :inviter, class_name: 'User'
 
-  delegate :message_channel, to: :user
-
   scope :dangling, lambda {
-    joins('left join discussions on discussions.id = discussion_id left join users on users.id = user_id')
-      .where('discussions.id is null or users.id is null')
+    joins('left join topics on topics.id = topic_id left join users on users.id = user_id')
+      .where('topics.id is null or users.id is null')
   }
 
-  scope :active, -> { where('discussion_readers.revoked_at IS NULL') }
+  scope :active, -> { where('topic_readers.revoked_at IS NULL') }
 
-  scope :guests, -> { active.where('discussion_readers.guest': true) }
-  scope :admins, -> { active.where('discussion_readers.admin': true) }
+  scope :guests, -> { active.where('topic_readers.guest': true) }
+  scope :admins, -> { active.where('topic_readers.admin': true) }
 
-  scope :redeemable, -> { guests.where('discussion_readers.accepted_at IS NULL') }
+  scope :redeemable, -> { guests.where('topic_readers.accepted_at IS NULL') }
 
   scope :redeemable_by, lambda { |user_id|
     redeemable.joins(:user).where('user_id = ? OR users.email_verified = false', user_id)
   }
 
-  update_counter_cache :discussion, :seen_by_count
-  update_counter_cache :discussion, :members_count
+  after_save    :update_topic_counters
+  after_destroy :update_topic_counters
 
-  def self.for(user:, discussion:)
+  def self.for(user:, topic:)
     if user&.is_logged_in?
-      find_or_initialize_by(user_id: user.id, discussion_id: discussion.id) do |dr|
-        m = user.memberships.find_by(group_id: discussion.group_id)
-        dr.volume = (m && m.volume) || 'normal'
+      find_or_initialize_by(user_id: user.id, topic_id: topic.id) do |tr|
+        m = topic.group_id && user.memberships.find_by(group_id: topic.group_id)
+        tr.volume = (m && m.volume) || 'normal'
       end
     else
-      new(discussion: discussion)
+      new(topic: topic)
     end
-  end
-
-  def self.for_model(model, actor = nil)
-    self.for(user: actor || model.author, discussion: model.discussion)
   end
 
   def update_reader(ranges: nil, volume: nil, participate: false, dismiss: false)
@@ -88,11 +82,11 @@ class DiscussionReader < ApplicationRecord
     end
   end
 
-  def discussion_reader_volume
+  def topic_reader_volume
     self[:volume]
   end
 
-  def discussion_reader_user_id
+  def topic_reader_user_id
     user_id
   end
 
@@ -109,17 +103,8 @@ class DiscussionReader < ApplicationRecord
     Array(unread_ranges.first).first.to_i
   end
 
-  # maybe yagni, because the client should do this locally
   def unread_ranges
-    RangeSet.subtract_ranges(discussion.ranges, read_ranges)
-  end
-
-  def read_ranges_string
-    self[:read_ranges_string] ||= if last_read_sequence_id == 0
-                                    ''
-                                  else
-                                    "#{[discussion.first_sequence_id, 1].max}-#{last_read_sequence_id}"
-                                  end
+    RangeSet.subtract_ranges(topic.ranges, read_ranges)
   end
 
   def read_items_count
@@ -133,6 +118,12 @@ class DiscussionReader < ApplicationRecord
   private
 
   def membership
-    @membership ||= discussion.group.membership_for(user)
+    group = topic&.topicable&.respond_to?(:group) ? topic.topicable.group : nil
+    @membership ||= group&.membership_for(user)
+  end
+
+  def update_topic_counters
+    topic.update_seen_by_count
+    topic.update_members_count
   end
 end

@@ -6,12 +6,10 @@ class EmailHelperTest < ActiveSupport::TestCase
 
   setup do
     ENV['REPLY_HOSTNAME'] = 'replyhostname.com'
-    @user = users(:normal_user)
-    @group = groups(:test_group)
-    @group.add_admin!(@user)
-    @author = users(:discussion_author)
-    @group.add_member!(@author)
-    @discussion = create_discussion(group: @group, author: @author)
+    @user = users(:admin)
+    @group = groups(:group)
+    @author = users(:admin)
+    @discussion = discussions(:discussion)
     @user.update_columns(email_api_key: 'abc123')
     ActionMailer::Base.deliveries.clear
   end
@@ -26,7 +24,7 @@ class EmailHelperTest < ActiveSupport::TestCase
   end
 
   test "reply_to_address gives correct format for a comment" do
-    comment = Comment.new(discussion: @discussion, body: "Test comment")
+    comment = Comment.new(parent: @discussion, body: "Test comment")
     CommentService.create(comment: comment, actor: @author)
     output = reply_to_address(model: comment, user: @user)
     assert_equal "pt=c&pi=#{comment.id}&d=#{@discussion.id}&u=#{@user.id}&k=#{@user.email_api_key}@replyhostname.com", output
@@ -47,13 +45,13 @@ class EmailHelperTest < ActiveSupport::TestCase
   end
 
   test "polymorphic_url returns a comment url" do
-    comment = Comment.new(discussion: @discussion, body: "Test comment")
+    comment = Comment.new(parent: @discussion, body: "Test comment")
     CommentService.create(comment: comment, actor: @author)
-    assert_match "/d/#{@discussion.key}/comment/#{comment.id}", send(:polymorphic_url, comment)
+    assert_match "/c/#{comment.id}", send(:polymorphic_url, comment)
   end
 
   test "polymorphic_url can accept a utm hash" do
-    comment = Comment.new(discussion: @discussion, body: "Test comment")
+    comment = Comment.new(parent: @discussion, body: "Test comment")
     CommentService.create(comment: comment, actor: @author)
     assert_match "utm_medium=wark", send(:polymorphic_url, comment, { utm_medium: "wark" })
   end
