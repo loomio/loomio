@@ -10,14 +10,8 @@ class NotificationService
     MessageChannelService.publish_models(notifications, user_id: actor_id)
   end
 
-  def self.viewed_events(actor_id:, discussion_id: nil, topic_id: nil, sequence_ids: )
+  def self.viewed_events(actor_id:, topic_id:, sequence_ids:)
     event_ids = []
-
-    # Resolve topic_id from discussion_id if needed
-    if topic_id.nil? && discussion_id
-      topic_id = Topic.where(topicable_type: 'Discussion', topicable_id: discussion_id).pick(:id)
-    end
-    return if topic_id.nil?
 
     events = Event.includes(:eventable).where(topic_id: topic_id, sequence_id: sequence_ids)
 
@@ -33,7 +27,6 @@ class NotificationService
         eventable_type: type).pluck(:eventable_id)
     end
 
-    
     eventable_ids.each_pair do |type, ids|
       event_ids.concat Notification.joins(:event).where(
         user_id: actor_id,
@@ -42,9 +35,7 @@ class NotificationService
         'events.eventable_id': ids).pluck('events.id')
     end
 
-    notifications = Notification.where(user_id: actor_id).
-      where(event_id: event_ids.uniq).
-      where('viewed': false)
+    notifications = Notification.where(user_id: actor_id, event_id: event_ids.uniq, viewed: false)
     notifications.update_all(viewed: true)
     notifications.reload
     MessageChannelService.publish_models(notifications, user_id: actor_id)
