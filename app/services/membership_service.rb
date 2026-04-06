@@ -30,7 +30,7 @@ class MembershipService
     .where(user_id: membership.user_id, group_id: (invited_group_ids - existing_group_ids))
     .update(user_id: actor.id, accepted_at: accepted_at)
 
-    if (membership.user_id != actor.id)
+    if membership.user_id != actor.id
       Membership.where(user_id: membership.user_id, group_id: invited_group_ids).destroy_all
     end
 
@@ -40,9 +40,7 @@ class MembershipService
 
     # remove any existing guest access in these groups
     TopicReader
-    .joins("INNER JOIN topics ON topics.id = topic_readers.topic_id")
-    .joins("LEFT JOIN discussions ON topics.topicable_type = 'Discussion' AND topics.topicable_id = discussions.id")
-    .joins("LEFT JOIN polls ON topics.topicable_type = 'Poll' AND topics.topicable_id = polls.id")
+    .joins(:topic)
     .where(user_id: actor.id)
     .where("topics.group_id IN (?)", invited_group_ids)
     .update_all(guest: false, revoked_at: nil, revoker_id: nil)
@@ -76,12 +74,9 @@ class MembershipService
 
   def self.revoke_by_id(group_ids, user_id, actor_id, revoked_at = DateTime.now)
     TopicReader
-    .joins("INNER JOIN topics ON topics.id = topic_readers.topic_id")
-    .joins("LEFT JOIN discussions ON topics.topicable_type = 'Discussion' AND topics.topicable_id = discussions.id")
-    .joins("LEFT JOIN polls ON topics.topicable_type = 'Poll' AND topics.topicable_id = polls.id")
-    .where(user_id: user_id)
-    .where("topics.group_id IN (?)", group_ids)
-    .update_all(guest: false, revoked_at: revoked_at, revoker_id: actor_id)
+      .joins(:topic).where(user_id: user_id)
+      .where("topics.group_id IN (?)", group_ids)
+      .update_all(guest: false, revoked_at: revoked_at, revoker_id: actor_id)
 
     # remove them from active polls
     group_ids.each do |group_id|
@@ -89,9 +84,10 @@ class MembershipService
     end
 
     # revoke the membership
-    Membership.active
-    .where(user_id: user_id, group_id: group_ids)
-    .update_all(revoked_at: revoked_at, revoker_id: actor_id)
+    Membership
+      .active
+      .where(user_id: user_id, group_id: group_ids)
+      .update_all(revoked_at: revoked_at, revoker_id: actor_id)
 
     Group.where(id: group_ids).map(&:update_memberships_count)
   end
@@ -142,11 +138,10 @@ class MembershipService
       group_ids = membership.group.parent_or_self.id_and_subgroup_ids
       actor.memberships.where(group_id: group_ids).update_all(volume: val)
       TopicReader
-            .joins("INNER JOIN topics ON topics.id = topic_readers.topic_id")
-            .joins("LEFT JOIN discussions ON topics.topicable_type = 'Discussion' AND topics.topicable_id = discussions.id")
-            .where(user_id: actor.id)
-            .where("topics.group_id IN (?)", group_ids)
-            .update_all(volume: val)
+        .joins(:topic)
+        .where(user_id: actor.id)
+        .where("topics.group_id IN (?)", group_ids)
+        .update_all(volume: val)
     else
       membership.set_volume! params[:volume]
       membership.topic_readers.update_all(volume: val)
