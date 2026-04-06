@@ -11,7 +11,6 @@ export default class EventModel extends BaseModel {
 
   constructor(...args) {
     super(...args);
-    this.removeFromThread = this.removeFromThread.bind(this);
   }
 
   relationships() {
@@ -91,10 +90,6 @@ export default class EventModel extends BaseModel {
 
   beforeRemove() {
     return invokeMap(this.notifications(), 'remove');
-  }
-
-  removeFromThread() {
-    return Records.events.remote.patchMember(this.id, 'remove_from_thread').then(() => this.remove());
   }
 
   pin(title) {

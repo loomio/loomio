@@ -13,11 +13,6 @@ class Api::V1::EventsController < Api::V1::RestfulController
     render json: data.to_json, root: 'timeline'
   end
 
-  def remove_from_thread
-    service.remove_from_thread(event: load_resource, actor: current_user)
-    respond_with_resource
-  end
-
   def comment
     load_and_authorize_topic
     self.resource = Event.find_by!(kind: "new_comment", eventable_type: "Comment", eventable_id: params[:comment_id])

@@ -174,7 +174,6 @@ Rails.application.routes.draw do
         get :comment, on: :collection
         get :position_keys, on: :collection
         get :timeline, on: :collection
-        patch :remove_from_thread, on: :member
       end
 
       resources :discussions, only: [:show, :index, :create, :update] do
