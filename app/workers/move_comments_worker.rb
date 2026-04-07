@@ -5,15 +5,15 @@ class MoveCommentsWorker
     target_topic = Topic.find(target_topic_id)
 
     # sanitize event_ids (so they cannot be from another topic), and ensure we have any children
-    event_ids = Event.where(id: event_ids, topic_id: source_topic.id).pluck(:id)
-    event_ids = all_event_ids(event_ids, source_topic.id)
+    event_ids = Event.where(id: event_ids, topic_id: source_topic_id).pluck(:id)
+    event_ids = all_event_ids(event_ids, source_topic_id)
 
     all_events = Event.where(id: event_ids)
     all_comments = Comment.where(id: Event.where(id: event_ids, eventable_type: 'Comment').pluck(:eventable_id))
     all_polls = Poll.where(id: Event.where(id: event_ids, eventable_type: 'Poll').pluck(:eventable_id))
 
     # update polls to point to target topic
-    all_polls.update_all(topic_id: target_topic.id)
+    all_polls.update_all(topic_id: target_topic_id)
 
     # update comment parents if they pointed to the source topicable
     target_topicable = target_topic.topicable
@@ -23,10 +23,10 @@ class MoveCommentsWorker
       end
     end
 
-    all_events.update_all(topic_id: target_topic.id, sequence_id: nil)
+    all_events.update_all(topic_id: target_topic_id, sequence_id: nil)
 
-    TopicService.repair_thread(target_topic.id)
-    TopicService.repair_thread(source_topic.id)
+    TopicService.repair_thread(target_topic_id)
+    TopicService.repair_thread(source_topic_id)
 
     SearchService.reindex_by_discussion_id(target_topicable.id) if target_topicable.is_a?(Discussion)
     SearchService.reindex_by_discussion_id(source_topic.topicable_id) if source_topic.topicable_type == 'Discussion'
