@@ -150,10 +150,11 @@ class TopicService
     time_finish = Time.at(time_finish_i).utc
     time_range = time_start..time_finish
 
-    DiscussionQuery.visible_to(user: user, only_unread: true, or_public: false, or_subgroups: false).last_activity_after(time_start).each do |discussion|
+    TopicQuery.visible_to(user: user, only_unread: true, or_public: false, or_subgroups: false)
+      .where("topics.last_activity_at > ?", time_start).each do |topic|
       RetryOnError.with_limit(2) do
-        sequence_ids = discussion.items.where("events.created_at": time_range).pluck(:sequence_id)
-        TopicReader.for(user: user, topic: discussion.topic).viewed!(sequence_ids)
+        sequence_ids = topic.items.where("events.created_at": time_range).pluck(:sequence_id)
+        TopicReader.for(user: user, topic: topic).viewed!(sequence_ids)
       end
     end
   end
