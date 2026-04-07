@@ -69,6 +69,25 @@ module Dev::Scenarios::Discussion
     last_email
   end
 
+  def setup_thread_catch_up_with_standalone_poll
+    jennifer.update(email_catch_up_day: 7)
+
+    # Discussion thread with a comment
+    CommentService.create(comment: Comment.new(parent: create_discussion, body: "first comment"), actor: patrick)
+
+    # Standalone poll (not inside a discussion)
+    standalone = PollService.create(params: {
+      title: 'Standalone proposal',
+      poll_type: 'proposal',
+      closing_at: 3.days.from_now,
+      poll_option_names: ['agree', 'disagree', 'abstain'],
+      group_id: create_group.id
+    }, actor: patrick)
+
+    UserMailer.catch_up(jennifer.id, 1.hour.ago).deliver_now
+    last_email
+  end
+
   def setup_unread_discussion
     read = Comment.new(parent: create_discussion, body: "Here is some read content")
     unread = Comment.new(parent: create_discussion, body: "Here is some unread content")
