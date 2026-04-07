@@ -75,46 +75,6 @@ class MakeRootEventsThreadItems < ActiveRecord::Migration[7.0]
   end
 
   def down
-    # Reverse Step 5: Remove sequence_id 0 from ranges and decrement items_count
-    execute <<~SQL
-      UPDATE topics
-      SET items_count = GREATEST(items_count - 1, 0),
-          ranges_string = CASE
-            WHEN ranges_string = '0-0' THEN NULL
-            WHEN ranges_string LIKE '0-0,%' THEN SUBSTRING(ranges_string FROM 5)
-            ELSE ranges_string
-          END
-      WHERE id IN (
-        SELECT DISTINCT topic_id FROM events
-        WHERE parent_id IS NULL AND sequence_id = 0 AND topic_id IS NOT NULL
-      )
-    SQL
-
-    # Reverse Step 3: Remove "00000-" prefix from non-root position_keys
-    execute <<~SQL
-      UPDATE events
-      SET position_key = SUBSTRING(position_key FROM 7)
-      WHERE topic_id IS NOT NULL
-        AND parent_id IS NOT NULL
-        AND position_key LIKE '00000-%'
-    SQL
-
-    # Reverse Step 2: Remove sequence data from root events
-    execute <<~SQL
-      UPDATE events
-      SET sequence_id = NULL, position = NULL, depth = NULL, position_key = NULL
-      WHERE topic_id IS NOT NULL
-        AND parent_id IS NULL
-        AND sequence_id = 0
-    SQL
-
-    # Reverse Step 1: Remove topic_id from new_discussion events
-    execute <<~SQL
-      UPDATE events
-      SET topic_id = NULL
-      WHERE kind = 'new_discussion'
-        AND eventable_type = 'Discussion'
-        AND topic_id IS NOT NULL
-    SQL
+    raise ActiveRecord::IrreversibleMigration
   end
 end
