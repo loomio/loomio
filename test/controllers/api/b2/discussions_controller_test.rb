@@ -2,7 +2,7 @@ require 'test_helper'
 
 class Api::B2::DiscussionsControllerTest < ActionController::TestCase
   setup do
-    @user = users(:admin)
+    @user = users(:user)
     @group = groups(:group)
     @user.update_columns(api_key: "apikey#{SecureRandom.hex(8)}")
     ActionMailer::Base.deliveries.clear

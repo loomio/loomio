@@ -4,7 +4,7 @@ class PrettyUrlHelperTest < ActionView::TestCase
   include PrettyUrlHelper
 
   setup do
-    @user = users(:admin)
+    @user = users(:user)
     @group = groups(:group)
   end
 

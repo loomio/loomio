@@ -4,7 +4,7 @@ class PagesPhlexTest < ActiveSupport::TestCase
   def setup
     super
     @group = groups(:group)
-    @user = users(:admin)
+    @user = users(:user)
 
     @recipient = LoggedOutUser.new(
       locale: "en",
@@ -32,7 +32,7 @@ class PagesPhlexTest < ActiveSupport::TestCase
 
     assert_includes output, "Pages Test Discussion"
     assert_includes output, @group.full_name
-    assert_includes output, @user.name
+    assert_includes output, @discussion.author.name
   end
 
   test "discussion show renders comment thread items" do

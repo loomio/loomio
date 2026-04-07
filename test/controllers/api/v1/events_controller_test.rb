@@ -2,7 +2,8 @@ require 'test_helper'
 
 class Api::V1::EventsControllerTest < ActionController::TestCase
   setup do
-    @user = users(:admin)
+    @user = users(:user)
+    @admin = users(:admin)
     @alien = users(:alien)
     @group = groups(:group)
     @public_group = groups(:public_group)
@@ -12,7 +13,7 @@ class Api::V1::EventsControllerTest < ActionController::TestCase
   end
 
   test "pin event pins an event" do
-    sign_in @user
+    sign_in @admin
     comment = Comment.new(parent: @discussion, body: "Test comment")
     event = CommentService.create(comment: comment, actor: @user)
 

@@ -2,11 +2,11 @@ require 'test_helper'
 
 class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
   setup do
-    @user = users(:admin)
+    @admin = users(:admin)
     @alien = users(:alien)
     @group = groups(:group)
     @discussion = discussions(:discussion)
-    sign_in @user
+    sign_in @admin
   end
 
   # Count tests
@@ -44,7 +44,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
       specified_voters_only: true,
       poll_option_names: %w[agree disagree],
       closing_at: 5.days.from_now
-    }.merge(extra), actor: @user)
+    }.merge(extra), actor: @admin)
   end
 
   test "poll create can add group members when members_can_add_guests=false" do
@@ -54,7 +54,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     poll = create_test_poll
 
     @group.update(members_can_add_guests: false)
-    Membership.find_by(user_id: @user.id, group_id: @group.id).update(admin: false)
+    Membership.find_by(user_id: @admin.id, group_id: @group.id).update(admin: false)
 
     post :create, params: { poll_id: poll.id, recipient_user_ids: [member.id] }
     assert_response :success
@@ -67,7 +67,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     poll = create_test_poll
 
     @group.update(members_can_add_guests: false)
-    Membership.find_by(user_id: @user.id, group_id: @group.id).update(admin: false)
+    Membership.find_by(user_id: @admin.id, group_id: @group.id).update(admin: false)
 
     post :create, params: { poll_id: poll.id, recipient_emails: ['jim@example.com'] }
     assert_response :forbidden
@@ -77,7 +77,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     poll = create_test_poll
 
     @group.update(members_can_add_guests: true)
-    Membership.find_by(user_id: @user.id, group_id: @group.id).update(admin: false)
+    Membership.find_by(user_id: @admin.id, group_id: @group.id).update(admin: false)
 
     post :create, params: { poll_id: poll.id, recipient_emails: ['jim@example.com'] }
     assert_response :success
@@ -90,7 +90,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     poll = create_test_poll
 
     @group.update(members_can_announce: false)
-    Membership.find_by(user_id: @user.id, group_id: @group.id).update(admin: false)
+    Membership.find_by(user_id: @admin.id, group_id: @group.id).update(admin: false)
 
     post :create, params: { poll_id: poll.id, recipient_audience: 'group' }
     assert_response :forbidden
@@ -100,7 +100,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     poll = create_test_poll
 
     @group.update(members_can_announce: false)
-    Membership.find_by(user_id: @user.id, group_id: @group.id).update(admin: false)
+    Membership.find_by(user_id: @admin.id, group_id: @group.id).update(admin: false)
 
     post :create, params: { poll_id: poll.id, recipient_audience: 'voters' }
     assert_response :success
@@ -113,9 +113,9 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     poll = create_test_poll
 
     @group.update(members_can_announce: true)
-    Membership.find_by(user_id: @user.id, group_id: @group.id).update(admin: false)
+    Membership.find_by(user_id: @admin.id, group_id: @group.id).update(admin: false)
 
-    post :create, params: { poll_id: poll.id, recipient_audience: 'group', recipient_user_ids: [@user.id] }
+    post :create, params: { poll_id: poll.id, recipient_audience: 'group', recipient_user_ids: [@admin.id] }
     assert_response :success
 
     json = JSON.parse(response.body)
@@ -129,7 +129,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     poll = create_test_poll
 
     @group.update(members_can_announce: false, members_can_add_guests: false)
-    Membership.find_by(user_id: @user.id, group_id: @group.id).update(admin: true)
+    Membership.find_by(user_id: @admin.id, group_id: @group.id).update(admin: true)
 
     post :create, params: { poll_id: poll.id, recipient_user_ids: [member.id], notify_recipients: true }
     assert_response :success
@@ -161,7 +161,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
 
   test "discussion create members can add guests when permission enabled" do
     @group.update(members_can_add_guests: true)
-    Membership.find_by(user_id: @user.id, group_id: @group.id).update(admin: false)
+    Membership.find_by(user_id: @admin.id, group_id: @group.id).update(admin: false)
 
     post :create, params: { discussion_id: @discussion.id, recipient_emails: ['jim@example.com'] }
     assert_response :success
@@ -169,7 +169,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
 
   test "discussion create members cannot add guests when permission disabled" do
     @group.update(members_can_add_guests: false)
-    Membership.find_by(user_id: @user.id, group_id: @group.id).update(admin: false)
+    Membership.find_by(user_id: @admin.id, group_id: @group.id).update(admin: false)
 
     post :create, params: { discussion_id: @discussion.id, recipient_emails: ['jim@example.com'] }
     assert_response :forbidden
@@ -177,7 +177,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
 
   test "discussion create members can announce when permission enabled" do
     @group.update(members_can_announce: true)
-    Membership.find_by(user_id: @user.id, group_id: @group.id).update(admin: false)
+    Membership.find_by(user_id: @admin.id, group_id: @group.id).update(admin: false)
 
     post :create, params: { discussion_id: @discussion.id, recipient_audience: 'group' }
     assert_response :success
@@ -185,7 +185,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
 
   test "discussion create members cannot announce when permission disabled" do
     @group.update(members_can_announce: false)
-    Membership.find_by(user_id: @user.id, group_id: @group.id).update(admin: false)
+    Membership.find_by(user_id: @admin.id, group_id: @group.id).update(admin: false)
 
     post :create, params: { discussion_id: @discussion.id, recipient_audience: 'group' }
     assert_response :forbidden
@@ -197,7 +197,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     @group.add_member!(member)
 
     @group.update(members_can_announce: false, members_can_add_guests: false)
-    Membership.find_by(user_id: @user.id, group_id: @group.id).update(admin: true)
+    Membership.find_by(user_id: @admin.id, group_id: @group.id).update(admin: true)
 
     post :create, params: { discussion_id: @discussion.id, recipient_user_ids: [member.id] }
     assert_response :success
@@ -213,7 +213,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     non_member = User.create!(name: "non#{hex}", email: "non#{hex}@example.com", username: "non#{hex}")
 
     @group.update(members_can_announce: false, members_can_add_guests: false)
-    Membership.find_by(user_id: @user.id, group_id: @group.id).update(admin: true)
+    Membership.find_by(user_id: @admin.id, group_id: @group.id).update(admin: true)
 
     post :create, params: { discussion_id: @discussion.id, recipient_user_ids: [non_member.id] }
     assert_response :success
@@ -228,7 +228,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     @group.add_member!(member)
 
     @group.update(members_can_announce: false, members_can_add_guests: false)
-    Membership.find_by(user_id: @user.id, group_id: @group.id).update(admin: true)
+    Membership.find_by(user_id: @admin.id, group_id: @group.id).update(admin: true)
 
     post :create, params: { discussion_id: @discussion.id, recipient_user_ids: [member.id] }
     assert_response :success
@@ -248,10 +248,10 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
       group_id: @group.id,
       poll_option_names: %w[agree disagree],
       closing_at: 3.days.from_now
-    }, actor: @user)
-    PollService.close(poll: poll, actor: @user)
-    outcome = Outcome.new(poll: poll, author: @user, statement: "Test outcome")
-    OutcomeService.create(outcome: outcome, actor: @user)
+    }, actor: @admin)
+    PollService.close(poll: poll, actor: @admin)
+    outcome = Outcome.new(poll: poll, author: @admin, statement: "Test outcome")
+    OutcomeService.create(outcome: outcome, actor: @admin)
     [poll, outcome]
   end
 
@@ -276,7 +276,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     _poll, outcome = create_closed_poll_with_outcome
 
     @group.update(members_can_add_guests: true)
-    Membership.find_by(user_id: @user.id, group_id: @group.id).update(admin: false)
+    Membership.find_by(user_id: @admin.id, group_id: @group.id).update(admin: false)
 
     member.notifications.destroy_all
 
@@ -290,7 +290,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     _poll, outcome = create_closed_poll_with_outcome
 
     @group.update(members_can_add_guests: false)
-    Membership.find_by(user_id: @user.id, group_id: @group.id).update(admin: false)
+    Membership.find_by(user_id: @admin.id, group_id: @group.id).update(admin: false)
 
     post :create, params: { outcome_id: outcome.id, recipient_emails: ['jim@example.com'] }
     assert_response :forbidden
@@ -304,7 +304,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     _poll, outcome = create_closed_poll_with_outcome
 
     @group.update(members_can_announce: true)
-    Membership.find_by(user_id: @user.id, group_id: @group.id).update(admin: false)
+    Membership.find_by(user_id: @admin.id, group_id: @group.id).update(admin: false)
 
     post :create, params: { outcome_id: outcome.id, recipient_audience: 'group' }
     assert_response :success
@@ -314,7 +314,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     _poll, outcome = create_closed_poll_with_outcome
 
     @group.update(members_can_announce: false)
-    Membership.find_by(user_id: @user.id, group_id: @group.id).update(admin: false)
+    Membership.find_by(user_id: @admin.id, group_id: @group.id).update(admin: false)
 
     post :create, params: { outcome_id: outcome.id, recipient_audience: 'group' }
     assert_response :forbidden
@@ -336,7 +336,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
   test "group create allows adding members when permission enabled" do
     hex = SecureRandom.hex(4)
     member = User.create!(name: "member#{hex}", email: "member#{hex}@example.com", username: "member#{hex}")
-    @group.add_member!(member, inviter: @user)
+    @group.add_member!(member, inviter: @admin)
     @group.update(members_can_add_members: true)
 
     sign_in member
@@ -348,7 +348,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
   test "group create disallows adding members when permission disabled" do
     hex = SecureRandom.hex(4)
     member = User.create!(name: "member#{hex}", email: "member#{hex}@example.com", username: "member#{hex}")
-    @group.add_member!(member, inviter: @user)
+    @group.add_member!(member, inviter: @admin)
     @group.update(members_can_add_members: false)
 
     sign_in member
@@ -386,9 +386,9 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     subgroup = Group.create!(name: "Test Sub #{hex}", parent: @group, handle: "testgroup-sub#{hex}")
     subgroup2 = Group.create!(name: "Test Sub2 #{hex}", parent: @group, handle: "testgroup-sub2#{hex}")
 
-    @group.add_member!(member, inviter: @user)
-    subgroup.add_admin!(@user)
-    subgroup2.add_admin!(@user)
+    @group.add_member!(member, inviter: @admin)
+    subgroup.add_admin!(@admin)
+    subgroup2.add_admin!(@admin)
 
     post :create, params: {
       group_id: @group.id,
@@ -421,7 +421,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     subgroup = Group.create!(name: "Test Sub #{hex}", parent: @group, handle: "testgroup-sub#{hex}")
 
     @group.add_member!(member)
-    subgroup.add_admin!(@user)
+    subgroup.add_admin!(@admin)
     subgroup.add_member!(member)
 
     post :create, params: { group_id: subgroup.id, recipient_user_ids: [member.id] }

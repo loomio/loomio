@@ -61,10 +61,11 @@ class AbilityTest < ActiveSupport::TestCase
   end
 
   test "parent_members_can_see_discussions false" do
+    parent_only_member = users(:member)
     subgroup = groups(:subgroup)
     subgroup.update_columns(parent_members_can_see_discussions: false, is_visible_to_parent_members: true, is_visible_to_public: false)
     discussion = DiscussionService.create(params: { group_id: subgroup.id, title: "Test", private: true }, actor: @admin)
-    assert_not @user.can?(:show, discussion)
+    assert_not parent_only_member.can?(:show, discussion)
   end
 
   test "subgroup not visible to parent members not visible to non member" do
@@ -74,9 +75,10 @@ class AbilityTest < ActiveSupport::TestCase
   end
 
   test "subgroup not visible to parent members not visible to parent member" do
+    parent_only_member = users(:member)
     subgroup = groups(:subgroup)
     subgroup.update_columns(is_visible_to_parent_members: false, is_visible_to_public: false)
-    assert_not @user.can?(:show, subgroup)
+    assert_not parent_only_member.can?(:show, subgroup)
   end
 
   test "subgroup not visible to parent members parent group still visible" do

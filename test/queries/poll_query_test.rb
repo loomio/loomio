@@ -2,7 +2,7 @@ require 'test_helper'
 
 class PollQueryTest < ActiveSupport::TestCase
   setup do
-    @user = users(:admin)
+    @user = users(:user)
     @group = groups(:group)
     @discussion = discussions(:discussion)
 

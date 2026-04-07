@@ -6,7 +6,7 @@ class EmailHelperTest < ActiveSupport::TestCase
 
   setup do
     ENV['REPLY_HOSTNAME'] = 'replyhostname.com'
-    @user = users(:admin)
+    @user = users(:user)
     @group = groups(:group)
     @author = users(:admin)
     @discussion = discussions(:discussion)

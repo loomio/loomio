@@ -23,6 +23,14 @@ subgroup_user_membership:
   admin: false
   created_at: <%= 20.days.ago %>
 
+user_subgroup_membership:
+  user: user
+  group: subgroup
+  token: normalusersubgrouptoken12345
+  accepted_at: <%= 20.days.ago %>
+  admin: false
+  created_at: <%= 20.days.ago %>
+
 admin_subgroup_membership:
   user: admin
   group: subgroup

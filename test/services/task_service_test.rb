@@ -2,7 +2,7 @@ require 'test_helper'
 
 class TaskServiceTest < ActiveSupport::TestCase
   setup do
-    @member = users(:admin)
+    @member = users(:user)
     @member.update(username: 'sam', name: 'Sam Sammy')
     @group = groups(:group)
     @discussion = discussions(:discussion)

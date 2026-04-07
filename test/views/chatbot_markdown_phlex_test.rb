@@ -4,7 +4,7 @@ class ChatbotMarkdownPhlexTest < ActiveSupport::TestCase
   def setup
     super
     @group = groups(:group)
-    @user = users(:admin)
+    @user = users(:user)
 
     @recipient = LoggedOutUser.new(
       locale: 'en',

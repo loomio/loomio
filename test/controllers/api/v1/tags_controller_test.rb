@@ -2,11 +2,11 @@ require 'test_helper'
 
 class Api::V1::TagsControllerTest < ActionController::TestCase
   setup do
-    @user = users(:admin)
+    @admin = users(:admin)
     @group = groups(:group)
     @subgroup = groups(:subgroup)
 
-    @discussion = DiscussionService.create(params: { title: "Tags #{SecureRandom.hex(4)}", group_id: @group.id, tags: ['apple', 'banana'] }, actor: @user)
+    @discussion = DiscussionService.create(params: { title: "Tags #{SecureRandom.hex(4)}", group_id: @group.id, tags: ['apple', 'banana'] }, actor: @admin)
     @poll = PollService.create(params: {
       title: "Test Poll",
       poll_type: "proposal",
@@ -15,9 +15,9 @@ class Api::V1::TagsControllerTest < ActionController::TestCase
       closing_at: 5.days.from_now,
       poll_option_names: ["Agree", "Disagree"],
       tags: ['apple', 'banana']
-    }, actor: @user)
+    }, actor: @admin)
 
-    @sub_discussion = DiscussionService.create(params: { title: "SubTags #{SecureRandom.hex(4)}", group_id: @subgroup.id, tags: ['apple', 'banana'] }, actor: @user)
+    @sub_discussion = DiscussionService.create(params: { title: "SubTags #{SecureRandom.hex(4)}", group_id: @subgroup.id, tags: ['apple', 'banana'] }, actor: @admin)
     @sub_poll = PollService.create(params: {
       title: "Subgroup Poll",
       poll_type: "proposal",
@@ -26,12 +26,12 @@ class Api::V1::TagsControllerTest < ActionController::TestCase
       closing_at: 5.days.from_now,
       poll_option_names: ["Agree", "Disagree"],
       tags: ['apple', 'banana']
-    }, actor: @user)
+    }, actor: @admin)
 
     TagService.update_group_tags(@subgroup.id)
     TagService.update_group_and_org_tags(@group.id)
 
-    sign_in @user
+    sign_in @admin
   end
 
   test "create creates a new tag" do
