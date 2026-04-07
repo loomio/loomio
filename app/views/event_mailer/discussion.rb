@@ -32,8 +32,6 @@ class Views::EventMailer::Discussion < Views::EventMailer::EventLayout
       event: @event,
       recipient: @recipient,
       notification: @notification,
-      discussion: @discussion,
-      poll: @poll,
       membership: @membership,
       event_key: @event_key
     )

@@ -2,12 +2,11 @@
 
 class Views::EventMailer::Common::Footer < Views::ApplicationMailer::Component
 
-  def initialize(event:, recipient:, notification: nil, discussion: nil, poll: nil, membership: nil, event_key:)
+  def initialize(event:, recipient:, notification: nil, membership: nil, event_key:)
     @event = event
     @recipient = recipient
     @notification = notification
-    @discussion = discussion
-    @poll = poll
+    @topic = event.topic
     @membership = membership
     @event_key = event_key
   end
@@ -33,7 +32,7 @@ class Views::EventMailer::Common::Footer < Views::ApplicationMailer::Component
       )
     end
 
-    if @recipient.is_logged_in? && @discussion
+    if @recipient.is_logged_in? && @topic
       img(
         class: "thread-mailer__footer-image",
         src: pixel_src(@event, recipient: @recipient),
@@ -78,8 +77,8 @@ class Views::EventMailer::Common::Footer < Views::ApplicationMailer::Component
       ["event_mailer.notification_reason.notified", unsubscribe_url(@event.eventable, recipient: @recipient)]
     elsif @membership&.volume == 'loud'
       ["event_mailer.notification_reason.group_subscribed", unsubscribe_url(@event.eventable, recipient: @recipient)]
-    elsif @discussion && ::TopicReader.for(user: @recipient, topic: @discussion.topic).volume == 'loud'
-      ["event_mailer.notification_reason.discussion_subscribed", unsubscribe_url(@event.eventable, recipient: @recipient)]
+    elsif @topic && TopicReader.for(user: @recipient, topic: @topic).volume == 'loud'
+      ["event_mailer.notification_reason.thread_subscribed", unsubscribe_url(@event.eventable, recipient: @recipient)]
     end
   end
 
