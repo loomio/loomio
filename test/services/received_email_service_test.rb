@@ -158,4 +158,106 @@ class ReceivedEmailServiceTest < ActiveSupport::TestCase
   ensure
     ENV['REPLY_HOSTNAME'] = original_reply
   end
+
+  # -- Bounce handling --
+
+  test "bounce email increments bounces_count" do
+    bounce_address = ENV.fetch('BOUNCE_ADDRESS', "bounce@email-abuse.amazonses.com")
+    hex = SecureRandom.hex(4)
+    user = User.create!(name: "BounceUser#{hex}", email: "bounceuser#{hex}@example.com",
+                        email_verified: true, username: "bounceuser#{hex}")
+
+    dsn_body = <<~DSN
+      Reporting-MTA: dns; a27-24.smtp-out.us-west-2.amazonses.com
+      Arrival-Date: Wed, 08 Apr 2026 12:00:00 +0000
+
+      Final-Recipient: rfc822; #{user.email}
+      Original-Recipient: rfc822; #{user.email}
+      Action: failed
+      Status: 5.1.1
+      Diagnostic-Code: smtp; 550 5.1.1 user unknown
+      Last-Attempt-Date: Wed, 08 Apr 2026 12:00:05 +0000
+    DSN
+
+    email = ReceivedEmail.create!(
+      headers: { from: bounce_address, to: "anything@example.com" },
+      body_text: "The following message was undeliverable."
+    )
+    email.attachments.attach(
+      io: StringIO.new(dsn_body),
+      filename: "delivery-status.txt",
+      content_type: "message/delivery-status"
+    )
+
+    assert_difference -> { user.reload.bounces_count }, 1 do
+      ReceivedEmailService.route(email)
+    end
+    assert email.reload.released
+  end
+
+  test "bounce email excludes notifications address and finds recipient" do
+    bounce_address = ENV.fetch('BOUNCE_ADDRESS', "bounce@email-abuse.amazonses.com")
+    hex = SecureRandom.hex(4)
+    user = User.create!(name: "BounceUser#{hex}", email: "bounceuser#{hex}@example.com",
+                        email_verified: true, username: "bounceuser#{hex}")
+
+    # DSN contains both the notifications address and the bounced user address
+    dsn_body = <<~DSN
+      From: #{ApplicationMailer::NOTIFICATIONS_EMAIL_ADDRESS}
+      To: #{user.email}
+      Final-Recipient: rfc822; #{user.email}
+    DSN
+
+    email = ReceivedEmail.create!(
+      headers: { from: bounce_address, to: "anything@example.com" },
+      body_text: "Delivery failed"
+    )
+    email.attachments.attach(
+      io: StringIO.new(dsn_body),
+      filename: "delivery-status.txt",
+      content_type: "message/delivery-status"
+    )
+
+    assert_difference -> { user.reload.bounces_count }, 1 do
+      ReceivedEmailService.route(email)
+    end
+  end
+
+  test "bounce email without matching user still marks released" do
+    bounce_address = ENV.fetch('BOUNCE_ADDRESS', "bounce@email-abuse.amazonses.com")
+
+    email = ReceivedEmail.create!(
+      headers: { from: bounce_address, to: "anything@example.com" },
+      body_text: "Delivery failed"
+    )
+    email.attachments.attach(
+      io: StringIO.new("Final-Recipient: rfc822; nonexistent@example.com"),
+      filename: "delivery-status.txt",
+      content_type: "message/delivery-status"
+    )
+
+    ReceivedEmailService.route(email)
+    assert email.reload.released
+  end
+
+  test "complaint email increments complaints_count" do
+    complaints_address = ENV.fetch('COMPLAINTS_ADDRESS', "complaints@email-abuse.amazonses.com")
+    user = User.create!(name: 'ComplaintUser', email: "complaintuser#{SecureRandom.hex(4)}@example.com",
+                        email_verified: true, username: "complaintuser#{SecureRandom.hex(4)}")
+
+    email = ReceivedEmail.create!(
+      headers: { from: complaints_address, to: "anything@example.com" },
+      body_text: "Complaint received"
+    )
+    email.attachments.attach(
+      io: StringIO.new("From: #{user.email}\nTo: notifications@loomio.com"),
+      filename: "complaint-report.txt",
+      content_type: "message/feedback-report"
+    )
+
+    assert_difference -> { user.reload.complaints_count }, 1 do
+      ReceivedEmailService.route(email)
+    end
+    assert email.reload.released
+  end
 end

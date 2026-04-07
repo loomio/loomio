@@ -41,9 +41,17 @@ class ReceivedEmailService
       return email.destroy
     end
 
+    # Bounce handling
+    if email.is_bounce? && email.bounced_address.present?
+      Rails.logger.info("bounce email received for #{email.bounced_address}")
+      User.where(email: email.bounced_address).update_all("bounces_count = bounces_count + 1")
+      email.update(released: true)
+      return
+    end
+
     # Complaints handling
     if email.is_complaint? && email.complainer_address.present?
-      Rails.logger.info("complaint email recieved from #{email.complainer_address}");
+      Rails.logger.info("complaint email received from #{email.complainer_address}")
       User.where(email: email.complainer_address).update_all("complaints_count = complaints_count + 1")
       email.update(released: true)
       return
