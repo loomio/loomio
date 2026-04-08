@@ -39,6 +39,7 @@ export default class TopicModel extends BaseModel {
       topicableId: null,
       topicableType: null,
       tags: [],
+      forkedEventIds: [],
       closedAt: null,
       closerId: null,
       pinnedAt: null,

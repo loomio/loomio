@@ -125,7 +125,6 @@ export default {
   StrandList: 'strand/list',
   StrandCard: 'strand/card',
   StrandPage: 'strand/page',
-  StrandWall: 'strand/wall',
   StrandTitle: 'strand/title',
   StrandTocNav: 'strand/toc_nav',
   StrandItemHeadline: 'strand/item/headline',

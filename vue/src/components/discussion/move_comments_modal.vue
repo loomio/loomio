@@ -14,14 +14,14 @@ export default {
       selectedDiscussion: null,
       searchFragment: '',
       searchResults: [],
-      groupId: this.discussion.groupId,
+      groupId: this.topic.groupId,
       groups: sortBy(Session.user().groups(), 'fullName'),
       loading: false
     };
   },
 
   props: {
-    discussion: Object
+    topic: Object
   },
 
   mounted() {
@@ -42,29 +42,28 @@ export default {
         .data();
     },
 
-    resetSourceDiscussion() {
-      this.discussion.update({forkedEventIds: []});
+    resetForkedEvents() {
+      this.topic.forkedEventIds = [];
     },
 
     startNewThread() {
       this.selectedDiscussion = Records.discussions.build({groupId: this.groupId});
-      this.selectedDiscussion.update({forkedEventIds: this.discussion.forkedEventIds});
-      this.resetSourceDiscussion();
+      this.selectedDiscussion.forkedEventIds = this.topic.forkedEventIds;
+      this.resetForkedEvents();
       EventBus.$emit('openModal', {
         component: 'DiscussionForm',
         props: {
           discussion: this.selectedDiscussion
         }
-      }
-      );
+      });
     },
 
     submit() {
       this.loading = true;
-      const topic = this.selectedDiscussion.topic();
-      topic.moveComments(this.discussion.forkedEventIds).then(() => {
+      const targetTopic = this.selectedDiscussion.topic();
+      targetTopic.moveComments(this.topic.forkedEventIds).then(() => {
         this.loading = false;
-        this.resetSourceDiscussion();
+        this.resetForkedEvents();
         EventBus.$emit('closeModal');
         Flash.success("discussion_fork_actions.moved");
         this.$router.push(this.urlFor(this.selectedDiscussion));
@@ -78,7 +77,6 @@ export default {
         this.loading = false;
         this.searchResults = Records.discussions.collection.chain()
           .find({groupId: this.groupId})
-          .find({id: { $ne: this.discussion.id } })
           .find({title: { $regex: [escapeRegExp(this.searchFragment), 'i'] }})
           .where(d => d.topic() && AbilityService.canAddComment(d.topic()))
           .simplesort('title')
@@ -103,8 +101,8 @@ v-card(:title="$t('action_dock.move_items')")
     v-autocomplete(hide-no-data return-object v-model="selectedDiscussion" :search-input.sync="searchFragment" :items="searchResults" item-title="title" :placeholder="$t('discussion_fork_actions.search_placeholder')" :label="$t('discussion_fork_actions.move_to_existing_thread')" :loading="loading")
   v-card-actions
     v-spacer
-    v-btn(color="primary" outlined @click="startNewThread()" :loading="discussion.processing")
+    v-btn(color="primary" outlined @click="startNewThread()" :loading="topic.processing")
       span(v-t="'discussion_fork_actions.start_new_thread'")
-    v-btn(color="primary" @click="submit()" :disabled="!selectedDiscussion" :loading="discussion.processing")
+    v-btn(color="primary" @click="submit()" :disabled="!selectedDiscussion" :loading="topic.processing")
       span(v-t="'common.action.save'")
 </template>

@@ -93,7 +93,7 @@ export default {
         if (model.group() && model.group().newHost) { window.location.host = model.group().newHost; }
         this.topicable = model;
         this.topic = model.topic();
-        this.loader = new ThreadLoader(this.topicable);
+        this.loader = new ThreadLoader(this.topic);
 
         this.respondToRoute();
 
@@ -236,7 +236,7 @@ export default {
 .strand-page
   v-main
     v-container.max-width-800.px-0.px-sm-3#strand-page(v-if="topicable")
-      discussion-fork-actions(v-if="topicable.constructor.singular === 'discussion'" :discussion='topicable' :key="'fork-actions'+ topicable.id")
+      discussion-fork-actions(v-if="topic" :topic='topic' :key="'fork-actions'+ topic.id")
       v-sheet.strand-card.thread-card.mb-8.pb-4.rounded(elevation=1)
         v-snackbar(v-if="focusMode" v-model="snackbar" location="bottom center" color="info")
           div.text-center

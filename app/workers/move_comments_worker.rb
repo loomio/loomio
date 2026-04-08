@@ -15,10 +15,13 @@ class MoveCommentsWorker
     # update polls to point to target topic
     all_polls.update_all(topic_id: target_topic_id)
 
-    # update comment parents if they pointed to the source topicable
+    # update comment parents: if the parent was the source topicable or a comment
+    # that is NOT being moved, reparent to the target topicable
     target_topicable = target_topic.topicable
+    moved_comment_ids = all_comments.pluck(:id)
     all_comments.each do |c|
-      if c.parent_type == source_topic.topicable_type && c.parent_id == source_topic.topicable_id
+      if (c.parent_type == source_topic.topicable_type && c.parent_id == source_topic.topicable_id) ||
+         (c.parent_type == 'Comment' && !moved_comment_ids.include?(c.parent_id))
         c.update_columns(parent_id: target_topicable.id, parent_type: target_topicable.class.name)
       end
     end

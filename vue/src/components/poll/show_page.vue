@@ -37,7 +37,7 @@ export default {
         });
 
         if (poll.topic()) {
-          this.loader = new ThreadLoader(poll);
+          this.loader = new ThreadLoader(poll.topic());
           this.loader.addContextRule();
           this.loader.addLoadOldestRule();
           this.loader.fetch();

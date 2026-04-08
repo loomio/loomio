@@ -7,10 +7,8 @@ import Session from '@/shared/services/session';
 import AppConfig from '@/shared/services/app_config';
 
 export default class ThreadLoader {
-  // model: a Discussion or Poll
-  constructor(model) {
-    this.discussion = model; // backward compat for strand components
-    this.topic = model.topic ? model.topic() : null;
+  constructor(topic) {
+    this.topic = topic;
     this.reset();
   }
 
@@ -19,9 +17,9 @@ export default class ThreadLoader {
     this.rules = [];
     this.ruleStrings = [];
     this.fetchedRules = [];
-    this.discussionLastReadAt = this.topic ? this.topic.lastReadAt : null;
-    this.ranges = cloneDeep(this.topic ? this.topic.ranges : []);
-    this.readRanges = cloneDeep(this.topic ? this.topic.readRanges : []);
+    this.lastReadAt = this.topic.lastReadAt;
+    this.ranges = cloneDeep(this.topic.ranges);
+    this.readRanges = cloneDeep(this.topic.readRanges);
     this.unreadRanges = RangeSet.subtractRanges(this.ranges, this.readRanges);
     this.visibleKeys = {};
     this.collapsed = reactive({});
@@ -45,7 +43,7 @@ export default class ThreadLoader {
   }
 
   setVisible(isVisible, event) {
-    if (isVisible && Session.isSignedIn() && this.topic) { this.topic.markAsRead(event.sequenceId); }
+    if (isVisible && Session.isSignedIn()) { this.topic.markAsRead(event.sequenceId); }
     this.visibleKeys[event.positionKey] = isVisible;
     return EventBus.$emit('visibleKeys', Object.keys(this.visibleKeys).filter(key => this.visibleKeys[key]).sort());
   }
@@ -69,14 +67,12 @@ export default class ThreadLoader {
     return this.collapsed[event.id] = false;
   }
 
-  // Local find clause: match events by topic_id
   localTopicFind() {
-    return this.topic ? { topicId: this.topic.id } : {};
+    return { topicId: this.topic.id };
   }
 
-  // Remote param: always use topic_id
   remoteTopicParam() {
-    return this.topic ? { topic_id: this.topic.id } : {};
+    return { topic_id: this.topic.id };
   }
 
   addLoadArgsRule(args) {
@@ -205,7 +201,6 @@ export default class ThreadLoader {
   }
 
   addContextRule() {
-    if (!this.topic) { return; }
     return this.addRule({
       name: 'context',
       local: {
@@ -341,7 +336,7 @@ export default class ThreadLoader {
 
     this.addMetaData(this.collection);
 
-    EventBus.$emit('collectionUpdated', this.discussion.id);
+    EventBus.$emit('collectionUpdated', this.topic.id);
 
     return this.collection;
   }
@@ -359,7 +354,7 @@ export default class ThreadLoader {
       const isLastInRange = some(ranges, range => range[1] === obj.event.position);
       const isLastInLastRange = last(ranges)[1] === obj.event.position;
 
-      obj.isUnread = this.discussionLastReadAt && this.isUnread(obj.event);
+      obj.isUnread = this.lastReadAt && this.isUnread(obj.event);
       obj.missingEarlier = isFirstInRange && obj.event.position > 1;
       obj.missingAfter = isLastInLastRange && obj.event.position !== lastPosition;
       obj.missingChildCount = obj.event.childCount - obj.children.length;

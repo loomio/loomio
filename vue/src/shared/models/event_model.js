@@ -122,8 +122,7 @@ export default class EventModel extends BaseModel {
 
   isForking() {
     const topic = this.topic();
-    const d = topic && topic.discussion();
-    return d && d.forkedEventIds && (d.forkedEventIds.includes(this.id) || this.parentIsForking());
+    return topic && topic.forkedEventIds && (topic.forkedEventIds.includes(this.id) || this.parentIsForking());
   }
 
   parentIsForking() {

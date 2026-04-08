@@ -13,16 +13,14 @@ export default new class EventService {
         kinds: ['new_discussion', 'poll_created', 'new_comment'],
         perform() {
           const topic = event.topic();
-          const discussion = topic && topic.discussion();
-          if (discussion) { return discussion.forkedEventIds.push(event.id); }
+          if (topic) { topic.forkedEventIds.push(event.id); }
         },
         canPerform() {
           const topic = event.topic();
-          const discussion = topic && topic.discussion();
-          return discussion && discussion.id &&
+          return topic &&
           !event.model().discardedAt &&
           !topic.closedAt &&
-          AbilityService.canMoveThread(discussion);
+          AbilityService.canMoveThread(topic);
         }
       },
 
