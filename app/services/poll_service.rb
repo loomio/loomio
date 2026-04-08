@@ -384,7 +384,7 @@ class PollService
         voter_percent: voter_percent,
         average: option.average_score,
         voter_scores: option.voter_scores,
-        voter_ids: option.voter_ids.take(500),
+        voter_ids: option.voter_ids.take(50),
         voter_count: option.voter_count,
         color: option.color,
         test_operator: option.test_operator,
@@ -409,7 +409,7 @@ class PollService
           voter_percent: poll.voters_count > 0 ? (poll.none_of_the_above_count.to_f / poll.voters_count.to_f * 100) : 0,
           average: 0,
           voter_scores: {},
-          voter_ids: poll.none_of_the_above_voters.map(&:id).take(500),
+          voter_ids: poll.none_of_the_above_voters.map(&:id).take(50),
           voter_count: poll.none_of_the_above_count,
           color: '#BBBBBB',
           test_result: nil
@@ -432,7 +432,7 @@ class PollService
           voter_percent: poll.voters_count > 0 ? (poll.undecided_voters_count.to_f / poll.voters_count.to_f * 100) : 0,
           average: 0,
           voter_scores: {},
-          voter_ids: poll.undecided_voters.map(&:id).take(500),
+          voter_ids: poll.undecided_voters.map(&:id).take(50),
           voter_count: poll.undecided_voters_count,
           color: '#BBBBBB',
           test_result: nil
@@ -478,7 +478,7 @@ class PollService
         voter_percent: poll.voters_count > 0 ? ((option.voter_count.to_f / poll.voters_count.to_f) * 100) : 0,
         average: option.average_score,
         voter_scores: option.voter_scores,
-        voter_ids: option.voter_ids.take(500),
+        voter_ids: option.voter_ids.take(50),
         voter_count: option.voter_count,
         color: option.color,
         test_result: nil

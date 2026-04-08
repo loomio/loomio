@@ -44,14 +44,6 @@ export default new class PollService {
   actions(poll, vm, event) {
     if (!poll || !poll.config()) { return {}; }
     return {
-      view_all_votes: {
-        icon: 'mdi-list-status',
-        name: 'poll_common.view_all_votes',
-        menu: true,
-        canPerform() { return vm.$route.path.startsWith('/d/') && poll.showResults() },
-        to() { return `/p/${poll.key}`; }
-      },
-
       translate_poll: {
         icon: 'mdi-translate',
         name: 'common.action.translate',
