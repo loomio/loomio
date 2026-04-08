@@ -424,11 +424,11 @@ it:
       agree_meaning: Io sostengo la proposta
       agree_prompt: Cosa ti piace della proposta e in che modo sarà utile al gruppo?
       abstain: Astenersi
-      abstain_meaning: Scegliere di non votare o non essere in grado di farlo in questa decisione.
-      abstain_prompt: Perché ti astieni o non ti senti in grado di votare per questa decisione?
       disagree: Non sono d’accordo
       disagree_meaning: Qualcosa in questa proposta deve essere cambiato prima che io possa sostenerla.
       disagree_prompt: Come si potrebbe migliorare questa proposta affinché tu possa sostenerla?
+      abstain_meaning: Scelta di non votare o impossibilità di votare su questa decisione.
+      abstain_prompt: Perché si astiene o non si sente in grado di votare su questa decisione?
     advice:
       process_subtitle: Chiedi consiglio su una decisione che devi prendere
       process_introduction: <p>Chiedi consiglio su una decisione che devi prendere, con il parere di persone direttamente interessate o esperte, in modo da poter prendere una decisione migliore per la tua organizzazione.</p><ul><li><p> I consigli ti aiutano a prendere una decisione migliore per la tua organizzazione.</p></li><li><p> Promuovere relazioni, opportunità di apprendimento e contributi diversificati.</p></li><li><p> Stimola l'iniziativa e la creatività, rendendo il lavoro più piacevole.</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>Per saperne di più sul processo di consulenza</u></a> .</p>
@@ -467,7 +467,6 @@ it:
       agree_prompt: Cosa ti piace della proposta e in che modo sarà utile all'organizzazione?
       abstain: Astenersi
       abstain_meaning: Questa decisione non mi riguarda e sono contento di qualunque cosa decida il gruppo
-      abstain_prompt: Perché ti astieni o non ti senti in grado di votare per questa decisione?
       disagree: Non sono d’accordo
       disagree_meaning: Qualcosa in questa proposta deve essere cambiato prima che io possa supportarla
       disagree_prompt: Come si potrebbe migliorare questa proposta affinché tu possa sostenerla?
@@ -476,6 +475,7 @@ it:
       block_prompt: Spiega la tua obiezione a questa proposta e perché non dovrebbe andare avanti
       details_v2: "<h3><strong>Quale decisione devi prendere?</strong></h3><p></p><h3> <strong>Perché è importante?</strong></h3><p></p><h3> <strong>Cosa chiedi alle persone di fare?</strong></h3><p></p><p> Condividi la tua posizione e il perché. Se non sei d'accordo, spiega cosa dovresti cambiare per sostenere questa tesi.</p>"
       process_introduction_v2: '<p><strong>Il consenso</strong> riguarda le decisioni in cui è importante che tutti siano attivamente d''accordo. I partecipanti lavorano insieme per comprendere le esigenze reciproche e modellare la proposta fino a quando l''intero gruppo non può sostenerla. Poiché i partecipanti possono modificare il proprio voto man mano che la conversazione si sviluppa, il processo incoraggia un dialogo autentico piuttosto che una decisione una tantum. Richiede più pazienza rispetto ad altri metodi, ma crea il massimo impegno.</p><p> Questo modello include l''opzione <strong>"Blocca"</strong> di default. L''opzione "Blocca" non è adatta a tutti i gruppi: può essere controversa o utilizzata in modo improprio. Se non utilizzi l''opzione "Blocca" nel tuo processo decisionale, ti consigliamo di modificare il modello per rimuoverla.</p>'
+      abstain_prompt: Perché si astiene o non si sente in grado di votare su questa decisione?
     question_round:
       process_subtitle: Invitare domande di chiarimento per aiutare le persone a comprendere una proposta
       process_introduction: <p>Il round di domande è un'opportunità per porre domande di chiarimento sulla proposta, in modo che tutti la comprendano prima di esprimere la propria opinione.</p><p> Il round di domande di Loomio è una proposta speciale senza possibilità di voto. Permette ai partecipanti di porre domande entro un periodo di tempo da te impostato per il round.</p><p> Il round di domande è comunemente utilizzato come fase del processo di consenso.</p><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Per saperne di più sulla procedura di consenso</a> .</p>

@@ -128,7 +128,15 @@ namespace :loomio do
   task delete_translations: :environment do
     # I edit this each time I want to use it.. rake task arguments are terrible
     unwanted = %w[
-      start_a_new_discussion
+      poll_templates.proposal.abstain_meaning
+      poll_templates.proposal.abstain_prompt
+      poll_templates.consensus.abstain_prompt
+      poll_templates.onboarding_to_loomio.description
+      notifications.email_subject.user_reminded
+      notifications.with_title.user_reminded
+      profile_page.bot_account_warning
+      poll_common_action_panel.unable_to_vote
+      poll_common_form.who_may_vote
     ]
 
     %w[client server].each do |source_name|

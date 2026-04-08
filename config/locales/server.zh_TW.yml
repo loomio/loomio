@@ -443,11 +443,11 @@ zh_TW:
       agree_meaning: 我支持這個提議
       agree_prompt: 您對這個提議有什麼看法？它將為團隊帶來什麼好處？
       abstain: 棄權
-      abstain_meaning: 選擇不投票或無法對此決定進行投票。
-      abstain_prompt: 您為什麼棄權，或覺得無法對該決定進行投票？
       disagree: 不同意
       disagree_meaning: 在我支持該提案之前，需要對其進行一些修改。
       disagree_prompt: 如何改進這個提議才能讓您支持它？
+      abstain_meaning: 選擇不參與投票，或無法參與投票。
+      abstain_prompt: 你為什麼要棄權，或為什麼覺得自己無法就此決定投票？
     advice:
       process_subtitle: 就你需要做的決定尋求建議
       process_introduction: <p>在您需要做出決定時尋求建議，聽取受影響的人或具有專業知識的人的建議，這樣您就可以為您的組織做出更好的決定。</p><ul><li><p>建議可以幫助您為您的組織做出更好的決策。</p></li><li><p>培養關係、學習機會和多元投入。</p></li><li><p>激發主動性和創造性，工作更愉快。</p></li></ul><p><a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>閱讀有關建議流程的更多資訊</u></a>。</p>
@@ -486,7 +486,6 @@ zh_TW:
       agree_prompt: 您對這個提案有什麼看法？它將為組織帶來什麼好處？
       abstain: 棄權
       abstain_meaning: 這個決定不會影響我，無論小組做出什麼決定我都會滿意
-      abstain_prompt: 您為什麼棄權，或覺得無法對該決定進行投票？
       disagree: 不同意
       disagree_meaning: 這項提案需要修改一些內容，我才能支持它
       disagree_prompt: 如何改進這個提議才能讓您支持它？
@@ -495,6 +494,7 @@ zh_TW:
       block_prompt: 解釋你反對這個提議的原因以及為什麼不應該繼續進行
       details_v2: "<h3><strong>你需要做什麼決定？</strong></h3><p></p><h3><strong>為什麼這很重要？</strong></h3><p></p><h3><strong>你要求人們做什麼？</strong></h3><p></p><p>請分享您的立場以及原因。如果您不同意，請解釋需要做出哪些改變才能讓您支持。</p>"
       process_introduction_v2: "<p><strong>共識</strong>適用於需要所有人積極同意的決策。參與者共同努力，了解彼此的需求，並不斷改進提案，直到獲得全體成員的支持。由於人們可以在討論過程中改變投票，因此該過程鼓勵真誠的對話，而非一蹴可幾的決定。與其他方法相比，它需要更多的耐心，但也能建立最牢固的承諾。</p><p>此範本預設包含<strong>“封鎖”</strong>選項。 「阻止」功能並非適用於所有群體——它可能引發爭議或被濫用。如果您在決策過程中不使用「封鎖」功能，我們建議您編輯範本將其移除。</p>"
+      abstain_prompt: 你為什麼要棄權，或為什麼覺得自己無法就此決定投票？
     question_round:
       process_subtitle: 邀請澄清問題以幫助人們理解提案
       process_introduction: <p>提問環節是人們就提案提出澄清問題的機會，以便每個人在表達自己的想法之前了解提案。</p><p> Loomio 問答環節是一項特殊提案，沒有投票選項。它允許參與者在您設定的時間內提問。</p><p>質詢環節通常作為同意流程的步驟。</p><p><a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">閱讀有關同意流程的更多資訊</a>。</p>

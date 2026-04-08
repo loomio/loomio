@@ -705,7 +705,6 @@ ru:
       stance_created_option: "%{actor} проголосовал за %{option} в %{title}"
       user_added_to_group: "%{actor} добавил вас в группу: %{title}"
       user_mentioned: "%{actor} упомянули вас в: %{title}"
-      user_reminded: "%{actor} напоминает, чтобы вы проголосовали за: %{title}"
       group_mentioned: "%{actor} упомянул группу в: %{title}"
       new_delegate: "%{actor} сделал вас делегатом с правом голоса в %{title}"
       poll_announced: "%{actor} пригласил вас проголосовать: %{title}"
@@ -713,6 +712,7 @@ ru:
       discussion_edited: "%{actor} отредактировал контекст обсуждения: %{title}"
       discussion_closed: "%{actor} закрыл обсуждение: %{title}"
       new_discussion: "%{actor} начал обсуждение: %{title}"
+      user_reminded: "%{actor} напоминает вам проголосовать за: %{title}"
     without_title:
       unknown_sender: Пожалуйста, просмотрите письмо от неизвестного отправителя
       group_announced: "%{actor} пригласил вас в группу"
@@ -789,10 +789,10 @@ ru:
       user_added_to_group: "%{actor} добавил вас в группу: %{title}"
       user_mentioned: "%{actor} упомянул вас в: %{title}"
       group_mentioned: "%{actor} упомянул группу в: %{title}"
-      user_reminded: "%{actor} напоминает вам проголосовать за: %{title}"
       poll_announced: 'Голосование: %{title}'
       discussion_edited: "%{actor} отредактировал контекст обсуждения: %{title}"
       discussion_closed: "%{actor} закрыл обсуждение: %{title}"
+      user_reminded: "%{actor} напоминает вам проголосовать за: %{title}"
   discussion_fork_actions:
     move: Переместить
     moved: Перемещение комментариев. Это может занять некоторое время.
@@ -1473,7 +1473,6 @@ ru:
   profile_page:
     autodetect_time_zone: Автоопределение часового пояса
     account_is_bot: Это аккаунт бота
-    bot_account_warning: Аккаунты ботов не будут приглашены голосовать в опросах или участвовать в обсуждениях.
     incomplete_profile: Неполный профиль!
     set_your_profile_picture: Установите изображение профиля
     messages:
@@ -1508,6 +1507,7 @@ ru:
     delete_account_subtitle: Полностью удалите свою учетную запись и удалите свое имя из прошлых обсуждений и решений.
     updated_on_sign_in: Предоставляется вашим браузером и обновляется при входе в систему.
     translate_content_automatically: Переводить контент на мой язык автоматически
+    bot_account_warning: Боты не будут приглашаться к голосованию в опросах или участию в обсуждениях.
   text_editor:
     x_of_y_characters: "%{x}/%{y} символов"
     select_text_to_link: Выделите текст для ссылки и повторите попытку.
@@ -2023,12 +2023,12 @@ ru:
     anonymous: Голоса анонимны
     results_hidden_until_closed: Результаты будут показаны после закрытия голосования
     results_hidden_until_vote: Результаты будут показаны после того, как вы проголосуете.
-    unable_to_vote: Вас не пригласили голосовать в этом %{poll_type}
     draft_mode: Голосование отключено. Это еще не открыто для голосования.
     voting_disabled_poll_is_template: Голосование отключено. Это шаблон.
     for_this_proposal_to_pass: 'Для принятия этого предложения:'
     for_this_poll_type_to_be_valid: 'Чтобы %{poll_type} был действителен:'
     voting_opens_at: Этот опрос открывается для голосования на %{время}.
+    unable_to_vote: Вам не было предложено проголосовать по этому опросу %{poll_type}
   poll_common_collapsed:
     by_who: по %{name}
   poll_common_calendar_invite:
@@ -2642,7 +2642,6 @@ ru:
     save_poll: Сохранить опрос
     start_poll_type: Начать %{poll_type}
     share_poll_type: Поделиться %{poll_type}
-    who_may_vote: Кто может голосовать в этом %{poll_type}?
     update: Обновлять
     add_voters: Добавить избирателей
     notify_invitees: Отправлять уведомления
@@ -2672,6 +2671,7 @@ ru:
     create_poll_type: Создать %{poll_type}
     notify_voters_when_voting_opens: Уведомите избирателей о начале голосования.
     voters_notified_when_opens: Избиратели будут уведомлены о начале голосования.
+    who_may_vote: Кто может голосовать по этому %{poll_type}?
   poll_receipts_page:
     verify_participants: Проверка участников
     see_votes_if_quorum_reached: Если голосование закрыто и кворум достигнут, вы увидите, кто отдал свой голос.

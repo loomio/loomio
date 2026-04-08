@@ -715,7 +715,6 @@ de:
       stance_created_option: "%{actor} hat für %{option} in %{title} abgestimmt"
       user_added_to_group: "%{actor} hat Sie zur Gruppe hinzugefügt: %{title}"
       user_mentioned: "%{actor} hat dich in %{title} erwähnt"
-      user_reminded: "%{actor} erinnert dich deine Stimme in %{title} abzugeben"
       group_mentioned: "%{actor} hat die Gruppe erwähnt in: %{title}"
       new_delegate: "%{actor} hat Sie zum Delegierten mit Stimmrecht in %{title} gemacht"
       poll_announced: "%{actor} hat Sie zur Abstimmung eingeladen: %{title}"
@@ -723,6 +722,7 @@ de:
       discussion_edited: "%{actor} hat den Diskussionskontext bearbeitet: %{title}"
       discussion_closed: "%{actor} hat die Diskussion beendet: %{title}"
       new_discussion: "%{actor} hat eine Diskussion gestartet: %{title}"
+      user_reminded: "%{actor} erinnert Sie daran, über Folgendes abzustimmen: %{title}"
     without_title:
       unknown_sender: Bitte überprüfen Sie die E-Mail von einem unbekannten Absender
       group_announced: "%{actor} hat Sie zu einer Gruppe eingeladen"
@@ -799,10 +799,10 @@ de:
       user_added_to_group: "%{actor} hat dich der Gruppe hinzugefügt: %{title}"
       user_mentioned: "%{actor} erwähnte dich in: %{title}"
       group_mentioned: "%{actor} erwähnte die Gruppe in: %{title}"
-      user_reminded: "%{actor} erinnert Sie daran, für Folgendes abzustimmen: %{title}"
       poll_announced: 'Abstimmung: %{title}'
       discussion_edited: "%{actor} hat den Diskussionskontext bearbeitet: %{title}"
       discussion_closed: "%{actor} hat die Diskussion beendet: %{title}"
+      user_reminded: "%{actor} erinnert Sie daran, über Folgendes abzustimmen: %{title}"
   discussion_fork_actions:
     move: Verschieben
     moved: Kommentare bewegen, dies kann einen Moment dauern
@@ -1497,7 +1497,6 @@ de:
   profile_page:
     autodetect_time_zone: Zeitzone automatisch erkennen
     account_is_bot: Dies ist ein Bot-Konto
-    bot_account_warning: Bot-Konten werden nicht eingeladen, an Umfragen teilzunehmen oder an Diskussionen teilzunehmen
     incomplete_profile: Unvollständiges Profil!
     set_your_profile_picture: Stell dein Profilbild ein
     messages:
@@ -1532,6 +1531,7 @@ de:
     delete_account_subtitle: Löschen Sie Ihr Konto vollständig und entfernen Sie Ihren Namen aus früheren Diskussionen und Entscheidungen.
     updated_on_sign_in: Wird von Ihrem Browser bereitgestellt und aktualisiert, wenn Sie sich anmelden
     translate_content_automatically: Inhalte automatisch in meine Sprache übersetzen
+    bot_account_warning: Bot-Konten werden nicht zur Teilnahme an Umfragen oder Diskussionen eingeladen.
   text_editor:
     x_of_y_characters: "%{x} / %{y} Zeichen"
     select_text_to_link: Wählen Sie den zu verlinkenden Text aus und versuchen Sie es erneut
@@ -2058,12 +2058,12 @@ de:
     anonymous: Stimmabgaben sind anonym
     results_hidden_until_closed: Die Ergebnisse werden nach Abschluss der Abstimmung angezeigt
     results_hidden_until_vote: Die Ergebnisse werden nach Ihrer Abstimmung angezeigt
-    unable_to_vote: Du wurdest nicht eingeladen in diesem %{poll_type} abzustimmen.
     draft_mode: Abstimmung deaktiviert. Hier kann noch nicht abgestimmt werden.
     voting_disabled_poll_is_template: Abstimmung deaktiviert. Dies ist eine Vorlage.
     for_this_proposal_to_pass: 'Damit dieser Vorschlag angenommen wird:'
     for_this_poll_type_to_be_valid: 'Damit dieser %{poll_type} gültig ist:'
     voting_opens_at: Diese %{poll_type} öffnet zur Abstimmung %{time}
+    unable_to_vote: Du wurdest nicht eingeladen, über diesen %{poll_type} abzustimmen.
   poll_common_collapsed:
     by_who: von %{name}
   poll_common_calendar_invite:
@@ -2679,7 +2679,6 @@ de:
     save_poll: Umfrage speichern
     start_poll_type: Starten Sie %{poll_type}
     share_poll_type: Teilen Sie %{poll_type}
-    who_may_vote: Wer darf bei diesem %{poll_type} abstimmen?
     update: Aktualisieren
     add_voters: Wähler hinzufügen
     notify_invitees: Benachrichtigungen senden
@@ -2709,6 +2708,7 @@ de:
     create_poll_type: Erstelle %{poll_type}
     notify_voters_when_voting_opens: Benachrichtigen Sie die Wähler, wenn die Wahllokale geöffnet sind
     voters_notified_when_opens: Die Wähler werden benachrichtigt, sobald die Wahllokale geöffnet sind.
+    who_may_vote: Wer darf bei dieser %{poll_type} abstimmen?
   poll_receipts_page:
     verify_participants: Teilnehmer überprüfen
     see_votes_if_quorum_reached: Wenn die Abstimmung beendet ist und das Quorum erreicht ist, sehen Sie, wer seine Stimme abgegeben hat.

@@ -705,7 +705,6 @@ hr:
       stance_created_option: "%{actor} je glasao %{option} u %{title}"
       user_added_to_group: "%{actor} vas je dodao u grupu: %{title}"
       user_mentioned: "%{actor} vas je spomenuo u: %{title}"
-      user_reminded: "%{actor} vas podsjeća da glasate u: %{title}"
       group_mentioned: "%{actor} je spomenuo grupu u: %{title}"
       new_delegate: "%{actor} postavio vas je za delegata s pravom glasa u %{title}"
       poll_announced: "%{actor} vas je pozvao/la da glasate: %{title}"
@@ -713,6 +712,7 @@ hr:
       discussion_edited: "%{actor} je uredio/la kontekst rasprave: %{title}"
       discussion_closed: "%{actor} je zatvorio raspravu: %{title}"
       new_discussion: "%{actor} je započeo raspravu: %{title}"
+      user_reminded: "%{actor} vas podsjeća da glasate za: %{title}"
     without_title:
       unknown_sender: Pregledajte e-poštu neprepoznatog pošiljatelja
       group_announced: "%{actor} vas je pozvao u grupu"
@@ -789,10 +789,10 @@ hr:
       user_added_to_group: "%{actor} vas je dodao/la u grupu: %{title}"
       user_mentioned: "%{actor} vas je spomenuo u: %{title}"
       group_mentioned: "%{actor} je spomenuo grupu u: %{title}"
-      user_reminded: "%{actor} vas podsjeća da glasate u: %{title}"
       poll_announced: 'Glas: %{title}'
       discussion_edited: "%{actor} je uredio/la kontekst rasprave: %{title}"
       discussion_closed: "%{actor} je zatvorio raspravu: %{title}"
+      user_reminded: "%{actor} vas podsjeća da glasate za: %{title}"
   discussion_fork_actions:
     move: Potez
     moved: Dirljivi komentari, ovo bi moglo potrajati
@@ -1473,7 +1473,6 @@ hr:
   profile_page:
     autodetect_time_zone: Automatsko otkrivanje vremenske zone
     account_is_bot: Ovo je bot račun
-    bot_account_warning: Bot računi neće biti pozvani da glasaju u anketama ili sudjeluju u raspravama
     incomplete_profile: Nepotpun profil!
     set_your_profile_picture: Postavite svoju profilnu sliku
     messages:
@@ -1508,6 +1507,7 @@ hr:
     delete_account_subtitle: Potpuno izbrišite svoj račun i uklonite svoje ime iz prošlih rasprava i odluka.
     updated_on_sign_in: Dostavlja vaš preglednik i ažurira se kada se prijavite
     translate_content_automatically: Automatski prevedi sadržaj na moj jezik
+    bot_account_warning: Bot računi neće biti pozvani da glasaju na anketama ili sudjeluju u raspravama
   text_editor:
     x_of_y_characters: "%{x} / %{y} znakova"
     select_text_to_link: Odaberite tekst za povezivanje i pokušajte ponovno
@@ -2023,12 +2023,12 @@ hr:
     anonymous: Glasovi su anonimni
     results_hidden_until_closed: Rezultati će biti prikazani nakon završetka glasovanja
     results_hidden_until_vote: Rezultati će biti prikazani nakon što glasate
-    unable_to_vote: Niste pozvani da glasate u ovom %{poll_type}
     draft_mode: Glasanje onemogućeno. Ovo još nije otvoreno za glasovanje.
     voting_disabled_poll_is_template: Glasanje onemogućeno. Ovo je predložak.
     for_this_proposal_to_pass: 'Da bi ovaj prijedlog prošao:'
     for_this_poll_type_to_be_valid: 'Da bi ovaj %{poll_type} bio valjan:'
     voting_opens_at: Ovaj %{poll_type} otvara se za glasanje %{time}
+    unable_to_vote: Niste pozvani glasati na ovom %{poll_type}
   poll_common_collapsed:
     by_who: "%{name}"
   poll_common_calendar_invite:
@@ -2642,7 +2642,6 @@ hr:
     save_poll: Spremi anketu
     start_poll_type: Početak %{poll_type}
     share_poll_type: Podijeli %{poll_type}
-    who_may_vote: Tko može glasati u ovom %{poll_type}?
     update: Ažurirati
     add_voters: Dodaj birače
     notify_invitees: Pošalji obavijesti
@@ -2672,6 +2671,7 @@ hr:
     create_poll_type: Kreiraj %{poll_type}
     notify_voters_when_voting_opens: Obavijestite birače kada je otvoreno glasanje
     voters_notified_when_opens: Birači će biti obaviješteni kada se otvori glasanje
+    who_may_vote: Tko može glasati na ovom %{poll_type}?
   poll_receipts_page:
     verify_participants: Potvrdite sudionike
     see_votes_if_quorum_reached: Ako je glasanje zatvoreno i postignut je kvorum, vidjet ćete tko je glasao.

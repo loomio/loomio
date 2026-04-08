@@ -413,11 +413,11 @@ sl:
       agree_meaning: Podpiram predlog
       agree_prompt: Kaj vam je pri predlogu všeč in kako bo koristil skupini?
       abstain: Vzdržan
-      abstain_meaning: Odločitev, da pri tej odločitvi ne bom glasoval ali da pri njej ne bom glasoval.
-      abstain_prompt: Zakaj se vzdržite glasovanja ali se ne čutite sposobni glasovati pri tej odločitvi?
       disagree: Ne strinjam se
       disagree_meaning: Nekaj v tem predlogu je treba spremeniti, preden ga lahko podprem.
       disagree_prompt: Kako bi lahko ta predlog izboljšali, da bi ga lahko podprli?
+      abstain_meaning: Odločitev, da ne bom glasoval/a ali da ne bom mogel/a glasovati o tej odločitvi.
+      abstain_prompt: Zakaj se vzdržite glasovanja ali se ne čutite sposobni glasovati o tej odločitvi?
     advice:
       process_subtitle: Poiščite nasvet glede odločitve, ki jo morate sprejeti
       process_introduction: <p>Poiščite nasvet glede odločitve, ki jo morate sprejeti, pri čemer se posvetujte z ljudmi, na katere to vpliva, ali tistimi, ki imajo strokovno znanje, da boste lahko sprejeli boljšo odločitev za svojo organizacijo.</p><ul><li><p> Nasveti vam pomagajo pri sprejemanju boljših odločitev za vašo organizacijo.</p></li><li><p> Spodbujati odnose, priložnosti za učenje in raznolike prispevke.</p></li><li><p> Spodbujajte iniciativnost in ustvarjalnost ter delo, ki vam bo v veselje.</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>Preberite več o postopku svetovanja</u></a> .</p>
@@ -456,7 +456,6 @@ sl:
       agree_prompt: Kaj vam je pri predlogu všeč in kako bo koristil organizaciji?
       abstain: Vzdržan
       abstain_meaning: Ta odločitev me ne zadeva in zadovoljen sem z odločitvijo skupine.
-      abstain_prompt: Zakaj se vzdržite glasovanja ali se ne čutite sposobni glasovati pri tej odločitvi?
       disagree: Ne strinjam se
       disagree_meaning: Nekaj v tem predlogu je treba spremeniti, preden ga lahko podprem
       disagree_prompt: Kako bi lahko ta predlog izboljšali, da bi ga lahko podprli?
@@ -465,6 +464,7 @@ sl:
       block_prompt: Pojasnite svoje nasprotovanje temu predlogu in zakaj se ne bi smel nadaljevati
       details_v2: "<h3><strong>Kakšno odločitev morate sprejeti?</strong></h3><p></p><h3> <strong>Zakaj je to pomembno?</strong></h3><p></p><h3> <strong>Kaj zahtevate od ljudi?</strong></h3><p></p><p> Delite svoje stališče in zakaj. Če se ne strinjate, pojasnite, kaj bi se moralo spremeniti, da bi to podprli.</p>"
       process_introduction_v2: "<p><strong>Soglasje</strong> je namenjeno odločitvam, pri katerih je pomembno, da se vsi aktivno strinjajo. Udeleženci sodelujejo, da bi razumeli potrebe drug drugega in oblikovali predlog, dokler ga ne more podpreti celotna skupina. Ker lahko ljudje med pogovorom spremenijo svoj glas, postopek spodbuja pristen dialog in ne enkratne odločitve. Zahteva več potrpljenja kot druge metode, vendar gradi najmočnejšo zavezanost.</p><p> Ta predloga privzeto vključuje možnost <strong>blokiranja</strong> . Blokiranje ni primerno za vsako skupino – lahko je kontroverzno ali zlorabljeno. Če blokiranja ne uporabljate v svojem procesu odločanja, priporočamo, da ga uredite in odstranite.</p>"
+      abstain_prompt: Zakaj se vzdržite glasovanja ali se ne čutite sposobni glasovati o tej odločitvi?
     question_round:
       process_subtitle: Povabite pojasnjevalna vprašanja, da bi ljudem pomagali razumeti predlog
       process_introduction: <p>Krog vprašanj je priložnost, da ljudje postavijo pojasnjevalna vprašanja o predlogu, da vsi razumejo predlog, preden povedo, kaj si o njem mislijo.</p><p> Krog vprašanj Loomio je poseben predlog brez možnosti glasovanja. Udeležencem omogoča, da postavljajo vprašanja v času, ki ga določite za krog.</p><p> Krog vprašanj se pogosto uporablja kot korak v postopku pridobitve soglasja.</p><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Preberite več o postopku pridobitve soglasja</a> .</p>

@@ -709,7 +709,6 @@ ca:
       stance_created_option: "%{actor} ha votat %{option} a %{title}"
       user_added_to_group: "%{actor} t'ha afegit al grup: %{title}"
       user_mentioned: "%{actor} t'ha mencionat a: %{title}"
-      user_reminded: "%{actor} us recorda que voteu a: %{title}"
       group_mentioned: "%{actor} ha mencionat el grup a: %{title}"
       new_delegate: "%{actor} et va convertir en delegat amb dret de vot a %{title}"
       poll_announced: "%{actor} t'ha convidat a votar: %{title}"
@@ -717,6 +716,7 @@ ca:
       discussion_edited: "%{actor} ha editat el context de la discussió: %{title}"
       discussion_closed: "%{actor} ha tancat la discussió: %{title}"
       new_discussion: "%{actor} ha iniciat una discussió: %{title}"
+      user_reminded: "%{actor} et recorda que votes per: %{title}"
     without_title:
       unknown_sender: Reviseu el correu electrònic d'un remitent no reconegut
       group_announced: "%{actor} t'ha convidat a un grup"
@@ -793,10 +793,10 @@ ca:
       user_added_to_group: "%{actor} t'ha afegit al grup: %{title}"
       user_mentioned: "%{actor} t'ha mencionat a: %{title}"
       group_mentioned: "%{actor} ha esmentat el grup a: %{title}"
-      user_reminded: "%{actor} et recorda que votes a: %{title}"
       poll_announced: 'Vot: %{title}'
       discussion_edited: "%{actor} ha editat el context de la discussió: %{title}"
       discussion_closed: "%{actor} ha tancat la discussió: %{title}"
+      user_reminded: "%{actor} et recorda que votes per: %{title}"
   discussion_fork_actions:
     move: Mou
     moved: S'estan movent els comentaris, aquesta acció podria tardar uns minuts
@@ -1489,7 +1489,6 @@ ca:
   profile_page:
     autodetect_time_zone: Autodetecció de zona horària
     account_is_bot: Aquest és un compte de bot
-    bot_account_warning: Els comptes de bot no seran convidats a votar a les enquestes ni a participar en debats
     incomplete_profile: Perfil incomplet!
     set_your_profile_picture: Estableix la teva foto de perfil
     messages:
@@ -1524,6 +1523,7 @@ ca:
     delete_account_subtitle: Suprimeix completament el teu compte i elimina el teu nom de discussions i decisions anteriors.
     updated_on_sign_in: Proporcionat pel vostre navegador i actualitzat quan inicieu la sessió
     translate_content_automatically: Tradueix el contingut al meu idioma automàticament
+    bot_account_warning: Els comptes de bot no seran convidats a votar en enquestes ni a participar en debats.
   text_editor:
     x_of_y_characters: "%{x} / %{y} caràcters"
     select_text_to_link: Seleccioneu el text per enllaçar i torneu-ho a provar
@@ -2050,12 +2050,12 @@ ca:
     anonymous: Els vots són anònims
     results_hidden_until_closed: Els resultats es mostraran un cop finalitzada la votació
     results_hidden_until_vote: Els resultats es mostraran després de votar
-    unable_to_vote: No heu estat convidat a votar en aquesta %{poll_type}.
     draft_mode: Votació desactivada. Això encara no està obert a la votació.
     voting_disabled_poll_is_template: Votació desactivada. Aquesta és una plantilla.
     for_this_proposal_to_pass: 'Perquè aquesta proposta s''aprovi:'
     for_this_poll_type_to_be_valid: 'Perquè aquest %{poll_type} sigui vàlid:'
     voting_opens_at: Aquest %{poll_type} s'obre per a votacions %{time}
+    unable_to_vote: No has estat convidat a votar en aquest %{poll_type}
   poll_common_collapsed:
     by_who: per %{name}
   poll_common_calendar_invite:
@@ -2671,7 +2671,6 @@ ca:
     save_poll: Desa l'enquesta
     start_poll_type: Inicia %{poll_type}
     share_poll_type: Comparteix %{poll_type}
-    who_may_vote: Qui pot votar en aquest %{poll_type}?
     update: Actualització
     add_voters: Afegeix votants
     notify_invitees: Enviar notificacions
@@ -2701,6 +2700,7 @@ ca:
     create_poll_type: Crea %{poll_type}
     notify_voters_when_voting_opens: Avisar els votants quan s'obri la votació
     voters_notified_when_opens: Els votants seran notificats quan s'obri la votació
+    who_may_vote: Qui pot votar en aquest %{poll_type}?
   poll_receipts_page:
     verify_participants: Verifica els participants
     see_votes_if_quorum_reached: Si la votació s'ha tancat i s'ha arribat al quòrum, veureu qui ha votat.

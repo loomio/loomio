@@ -740,7 +740,7 @@ en:
       user_added_to_group: "%{actor} added you to the group: %{title}"
       user_mentioned: "%{actor} mentioned you in: %{title}"
       group_mentioned: "%{actor} mentioned the group in: %{title}"
-      user_reminded: "%{actor} is reminding you to vote in: %{title}"
+      user_reminded: "%{actor} is reminding you to vote on: %{title}"
     with_title:
       unknown_sender: Please review email from unrecognised sender
       comment_replied_to: "%{actor} replied to you in: %{title}"
@@ -779,7 +779,7 @@ en:
       user_added_to_group: "%{actor} added you to the group: %{title}"
       user_mentioned: "%{actor} mentioned you in: %{title}"
       group_mentioned: "%{actor} mentioned the group in: %{title}"
-      user_reminded: "%{actor} is reminding you to vote in: %{title}"
+      user_reminded: "%{actor} is reminding you to vote on: %{title}"
     without_title:
       unknown_sender: Please review email from unrecognised sender
       discussion_announced: "%{actor} invited you to a discussion"
@@ -1579,7 +1579,7 @@ en:
     translate_content_automatically: Translate content to my language automatically
     autodetect_time_zone: Autodetect time zone
     account_is_bot: This is a bot account
-    bot_account_warning: Bot accounts will not be invited to vote in polls or participate in discussions
+    bot_account_warning: Bot accounts will not be invited to vote on polls or participate in discussions
     incomplete_profile: Incomplete profile!
     set_your_profile_picture: Set your profile picture
     messages:
@@ -2156,7 +2156,7 @@ en:
     anonymous: Votes are anonymous
     results_hidden_until_closed: Results will be shown after voting has closed
     results_hidden_until_vote: Results will be shown after you vote
-    unable_to_vote: You have not been invited to vote in this %{poll_type}
+    unable_to_vote: You have not been invited to vote on this %{poll_type}
     draft_mode: Voting disabled. This is not open for voting yet.
     voting_opens_at: "This %{poll_type} opens for voting %{time}"
     for_this_proposal_to_pass: "For this proposal to pass:"
@@ -2390,7 +2390,7 @@ en:
     start_poll_type: Start %{poll_type}
     create_poll_type: Create %{poll_type}
     share_poll_type: Share %{poll_type}
-    who_may_vote: Who may vote in this %{poll_type}?
+    who_may_vote: Who may vote on this %{poll_type}?
     update: Update
     add_voters: Add voters
     notify_invitees: Send notifications
