@@ -3,7 +3,7 @@ require 'test_helper'
 class MembershipTest < ActiveSupport::TestCase
   setup do
     @user = users(:user)
-    @user2 = users(:alien)
+    @alien = users(:alien)
     @group = groups(:group)
   end
 
@@ -20,11 +20,11 @@ class MembershipTest < ActiveSupport::TestCase
   end
 
   test "can have an inviter" do
-    group = groups(:alien_group)
-    membership = @user.memberships.new(group_id: group.id)
-    membership.inviter = @user2
+    alien_group = groups(:alien_group)
+    membership = @user.memberships.new(group_id: alien_group.id)
+    membership.inviter = @alien
     membership.save!
-    assert_equal @user2, membership.inviter
+    assert_equal @alien, membership.inviter
   end
 
   test "responds to volume" do

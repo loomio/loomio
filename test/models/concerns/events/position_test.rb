@@ -6,6 +6,17 @@ class Events::PositionTest < ActiveSupport::TestCase
     @discussion = discussions(:discussion)
   end
 
+  test "new_discussion event is the root at position 0" do
+    root = @discussion.created_event
+    assert_equal "new_discussion", root.kind
+    assert_equal 0, root.sequence_id
+    assert_equal 0, root.position
+    assert_equal 0, root.depth
+    assert_equal "00000", root.position_key
+    assert_nil root.parent_id
+    assert_equal @discussion.topic_id, root.topic_id
+  end
+
   test "gives events a position sequence" do
     comments = 6.times.map do |i|
       Comment.create!(parent: @discussion, body: "Comment #{i}", author: @user)
