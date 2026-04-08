@@ -64,6 +64,10 @@ export default {
 
   p.text-medium-emphasis.my-2(v-if="poll.closingAt && poll.pollType != 'count'")
     span( v-t="{ path: 'poll_common_percent_voted.pct_participation', args: { num: poll.decidedVotersCount, total: poll.votersCount, pct: poll.castStancesPct } }" )
+    template(v-if="poll.decidedVotersCount > 0")
+      mid-dot
+      router-link.text-medium-emphasis(:to="'/p/' + poll.key + '/votes'")
+        span(v-t="'poll_common.view_all_votes'")
     //template(v-if="poll.quorumPct")
     //  br
     //  span(v-if="poll.quorumVotesRequired <= 0" v-t="{ path: 'poll_common_percent_voted.quorum_reached', args: { pct: poll.quorumPct }  }" )

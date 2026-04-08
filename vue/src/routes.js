@@ -6,8 +6,8 @@ const InboxPage = wrapAsyncLoader(() => import('./components/inbox/page'));
 const PollsToVoteOnPage = wrapAsyncLoader(() => import('./components/dashboard/polls_to_vote_on_page'));
 const ExplorePage = wrapAsyncLoader(() => import('./components/explore/page'));
 const ProfilePage = wrapAsyncLoader(() => import('./components/profile/page'));
-const PollShowPage = wrapAsyncLoader(() => import('./components/poll/show_page'));
 const PollReceiptsPage = wrapAsyncLoader(() => import('./components/poll/receipts_page'));
+const PollVotesPage = wrapAsyncLoader(() => import('./components/poll/votes_page'));
 const PollFormPage = wrapAsyncLoader(() => import('./components/poll/form_page'));
 const PollTemplateFormPage = wrapAsyncLoader(() => import('./components/poll_template/form_page'));
 const PollTemplateBrowsePage = wrapAsyncLoader(() => import('./components/poll_template/browse_page'));
@@ -77,6 +77,7 @@ const router = createRouter({
     {path: '/email_preferences', component: EmailSettingsPage },
     {path: '/p/:key/edit', component: PollFormPage },
     {path: '/p/:id/receipts', component: PollReceiptsPage, props: true },
+    {path: '/p/:key/votes', component: PollVotesPage },
     {path: '/p/new', component: PollFormPage },
     {path: '/p/:key', component: StrandPage},
     {path: '/p/:key/comment/:comment_id', component: StrandPage},
