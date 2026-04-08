@@ -125,7 +125,21 @@ class GroupExportServiceTest < ActiveSupport::TestCase
 
     # Discussions (group_id is on topics, not discussions)
     imported_discussion = imported_group.discussions.find_by!(title: data[:discussion].title, author: imported_admin)
-    imported_subgroup.discussions.find_by!(title: data[:sub_discussion].title, author: imported_admin)
+    imported_sub_discussion = imported_subgroup.discussions.find_by!(title: data[:sub_discussion].title, author: imported_admin)
+
+    # Topics — 1 discussion + 1 standalone poll per group
+    assert_equal 2, Topic.where(group_id: imported_group.id).count
+    assert_equal 2, Topic.where(group_id: imported_subgroup.id).count
+
+    assert imported_discussion.topic.persisted?
+    assert_equal imported_group.id, imported_discussion.topic.group_id
+    assert_equal 'Discussion', imported_discussion.topic.topicable_type
+    assert_equal imported_discussion.id, imported_discussion.topic.topicable_id
+
+    assert imported_sub_discussion.topic.persisted?
+    assert_equal imported_subgroup.id, imported_sub_discussion.topic.group_id
+    assert_equal 'Discussion', imported_sub_discussion.topic.topicable_type
+    assert_equal imported_sub_discussion.id, imported_sub_discussion.topic.topicable_id
 
     assert_equal 1, imported_discussion.topic.tags.count
     assert_equal data[:tag].name, imported_discussion.topic.tags.first
@@ -138,6 +152,15 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     # Polls and stances (group_id is on topics, not polls)
     imported_poll = imported_group.polls.find_by!(title: data[:poll].title, author: imported_admin)
     imported_sub_poll = imported_subgroup.polls.find_by!(title: data[:sub_poll].title, author: imported_admin)
+
+    # Poll topics
+    assert imported_poll.topic.persisted?
+    assert_equal imported_group.id, imported_poll.topic.group_id
+    assert_equal 'Poll', imported_poll.topic.topicable_type
+    assert_equal imported_poll.id, imported_poll.topic.topicable_id
+
+    assert imported_sub_poll.topic.persisted?
+    assert_equal imported_subgroup.id, imported_sub_poll.topic.group_id
 
     imported_poll.update_counts!
     imported_sub_poll.update_counts!
