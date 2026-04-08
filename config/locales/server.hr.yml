@@ -413,11 +413,11 @@ hr:
       agree_meaning: Podržavam prijedlog
       agree_prompt: Što vam se sviđa u vezi s prijedlogom i kako će on koristiti grupi?
       abstain: Suzdržati se
-      abstain_meaning: Odabir da se ne glasa ili ne može glasati u ovoj odluci.
-      abstain_prompt: Zašto ste suzdržani ili se ne osjećate sposobnim glasati u ovoj odluci?
       disagree: Ne slažem se
       disagree_meaning: Nešto u ovom prijedlogu treba promijeniti prije nego što ga mogu podržati.
       disagree_prompt: Kako bi se ovaj prijedlog mogao poboljšati kako biste ga mogli podržati?
+      abstain_meaning: Odabir da se ne glasa ili ne može glasati o ovoj odluci.
+      abstain_prompt: Zašto ste suzdržani ili se ne osjećate sposobnim glasati o ovoj odluci?
     advice:
       process_subtitle: Potražite savjet o odluci koju trebate donijeti
       process_introduction: <p>Potražite savjet o odluci koju trebate donijeti, uz savjet ljudi na koje to utječe ili koji imaju stručnost, kako biste mogli donijeti bolju odluku za svoju organizaciju.</p><ul><li><p> Savjeti vam pomažu da donesete bolju odluku za svoju organizaciju.</p></li><li><p> Poticati odnose, prilike za učenje i raznolike doprinose.</p></li><li><p> Potaknite inicijativu i kreativnost te ugodniji rad.</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>Pročitajte više o postupku savjetovanja</u></a> .</p>
@@ -456,7 +456,6 @@ hr:
       agree_prompt: Što vam se sviđa u vezi s prijedlogom i kako će on koristiti organizaciji?
       abstain: Suzdržati se
       abstain_meaning: Ova odluka me ne utječe i zadovoljan sam s onim što grupa odluči.
-      abstain_prompt: Zašto ste suzdržani ili se ne osjećate sposobnim glasati u ovoj odluci?
       disagree: Ne slažem se
       disagree_meaning: Nešto u ovom prijedlogu treba promijeniti prije nego što ga mogu podržati
       disagree_prompt: Kako bi se ovaj prijedlog mogao poboljšati kako biste ga mogli podržati?
@@ -465,6 +464,7 @@ hr:
       block_prompt: Objasnite svoje protivljenje ovom prijedlogu i zašto se ne bi trebao nastaviti
       details_v2: "<h3><strong>Koju odluku trebate donijeti?</strong></h3><p></p><h3> <strong>Zašto je ovo važno?</strong></h3><p></p><h3> <strong>Što tražite od ljudi da učine?</strong></h3><p></p><p> Podijelite svoj stav i zašto. Ako se ne slažete, objasnite što bi trebalo promijeniti da biste to podržali.</p>"
       process_introduction_v2: "<p><strong>Konsenzus</strong> se postiže za odluke gdje je važno da se svi aktivno slažu. Sudionici rade zajedno kako bi razumjeli međusobne potrebe i oblikovali prijedlog sve dok ga cijela grupa ne podrži. Budući da ljudi mogu mijenjati svoj glas kako se razgovor razvija, proces potiče istinski dijalog, a ne jednokratnu odluku. Potrebno je više strpljenja od drugih metoda, ali gradi najjaču predanost.</p><p> Ovaj predložak prema zadanim postavkama uključuje opciju <strong>Blokiraj</strong> . Blokiranje nije prikladno za svaku skupinu - može biti kontroverzno ili zloupotrijebljeno. Ako ne koristite blokiranje u procesu donošenja odluka, preporučujemo da uredite predložak kako biste ga uklonili.</p>"
+      abstain_prompt: Zašto ste suzdržani ili se ne osjećate sposobnim glasati o ovoj odluci?
     question_round:
       process_subtitle: Pozovite ljude da postave pojašnjavajuća pitanja kako biste im pomogli da razumiju prijedlog.
       process_introduction: <p>Krug pitanja prilika je ljudima da postave pojašnjenja o prijedlogu, kako bi svi razumjeli prijedlog prije nego što kažu što o njemu misle.</p><p> Loomio runda pitanja je poseban prijedlog bez mogućnosti glasanja. Omogućuje sudionicima da postavljaju pitanja unutar trajanja koje odredite za rundu.</p><p> Krug pitanja se obično koristi kao korak u procesu davanja privole.</p><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Pročitajte više o postupku privole</a> .</p>

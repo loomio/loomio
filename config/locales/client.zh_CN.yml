@@ -708,7 +708,7 @@ zh_CN:
       user_added_to_group: "%{actor} 将您添加到了群组：%{title}"
       user_mentioned: "%{actor} 在 %{title} 中提到了您"
       group_mentioned: "%{actor} 在以下文章中提到了该群：%{title}"
-      user_reminded: "%{actor} 提醒您参与以下投票：%{title}"
+      user_reminded: 演员 %{actor} 提醒您投票：%{title}
     with_title:
       unknown_sender: 请查收来自未知发件人的电子邮件
       comment_replied_to: "%{actor} 在 %{title} 中回复了您。"
@@ -747,7 +747,7 @@ zh_CN:
       user_added_to_group: "%{actor} 将您添加到了群组：%{title}"
       user_mentioned: "%{actor} 在 %{title} 中提到了您"
       group_mentioned: "%{actor} 在以下文章中提到了该群：%{title}"
-      user_reminded: "%{actor} 提醒您参与以下投票：%{title}"
+      user_reminded: 演员 %{actor} 提醒您投票：%{title}
     without_title:
       unknown_sender: 请查收来自未知发件人的电子邮件
       discussion_announced: "%{actor} 邀请您加入讨论"
@@ -1526,7 +1526,6 @@ zh_CN:
     translate_content_automatically: 自动将内容翻译成我的语言
     autodetect_time_zone: 自动检测时区
     account_is_bot: 这是一个机器人账号
-    bot_account_warning: 机器人账号将不会被邀请参与投票或讨论。
     incomplete_profile: 个人资料不完整！
     set_your_profile_picture: 设置您的个人资料图片
     messages:
@@ -1560,6 +1559,7 @@ zh_CN:
     deactivate_account_subtitle: 停止接收邮件并取消会员资格。保留您的个人资料，以免影响之前的讨论和决定。
     delete_account_subtitle: 彻底删除您的账户，并将您的名字从过去的讨论和决定中删除。
     updated_on_sign_in: 由您的浏览器提供，并在您登录时更新。
+    bot_account_warning: 机器人账号将不会被邀请参与投票或讨论。
   text_editor:
     x_of_y_characters: "%{x} / %{y} 个字符"
     select_text_to_link: 选择要链接的文本，然后重试
@@ -2085,11 +2085,11 @@ zh_CN:
     anonymous: 投票匿名
     results_hidden_until_closed: 投票结束后将公布结果。
     results_hidden_until_vote: 投票结束后将显示结果。
-    unable_to_vote: 您未被邀请加入本次 %{poll_type} 投票。
     draft_mode: 投票功能已关闭。此投票尚未开放。
     for_this_proposal_to_pass: 该提案要想获得通过：
     for_this_poll_type_to_be_valid: 要使此 %{poll_type} 有效：
     voting_opens_at: 此 %{poll_type} 投票将于 %{time} 开放。
+    unable_to_vote: 您未被邀请参与此项 %{poll_type} 的投票。
   poll_common_collapsed:
     by_who: 由 %{name}
   poll_common_calendar_invite:
@@ -2307,7 +2307,6 @@ zh_CN:
     save_poll: 保存投票
     start_poll_type: 开始 %{poll_type}
     share_poll_type: 分享 %{poll_type}
-    who_may_vote: 谁可以加入本次 %{poll_type} 投票？
     update: 更新
     add_voters: 添加投票者
     notify_invitees: 发送通知
@@ -2332,6 +2331,7 @@ zh_CN:
     create_poll_type: 创建 %{poll_type}
     notify_voters_when_voting_opens: 投票开始时通知选民
     voters_notified_when_opens: 投票开始时，选民将会收到通知。
+    who_may_vote: 谁可以参与此次 %{poll_type} 投票？
   poll_proposal_form:
     start_header: 开始提案
     edit_header: 编辑提案

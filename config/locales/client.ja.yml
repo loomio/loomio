@@ -704,7 +704,6 @@ ja:
       stance_created_option: "%{actor} は %{title} の %{option} に投票しました"
       user_added_to_group: "%{actor} があなたをグループに追加しました: %{title}"
       user_mentioned: "%{actor} が次の記事であなたの名前を挙げました: %{title}"
-      user_reminded: "%{actor} が投票するよう促しています: %{title}"
       group_mentioned: "%{actor} が %{title} でこのグループについて言及しました"
       new_delegate: "%{actor} があなたを %{title} の投票権を持つ代表者に任命しました"
       poll_announced: "%{actor} さんが投票に招待しました: %{title}"
@@ -712,6 +711,7 @@ ja:
       discussion_edited: "%{actor} がディスカッションのコンテキストを編集しました: %{title}"
       discussion_closed: "%{actor} がディスカッションを終了しました: %{title}"
       new_discussion: "%{actor} がディスカッションを開始しました: %{title}"
+      user_reminded: "%{actor} が、%{title} への投票を呼びかけています。"
     without_title:
       unknown_sender: 認識できない送信者からのメールを確認してください
       group_announced: "%{actor} があなたをグループに招待しました"
@@ -788,10 +788,10 @@ ja:
       user_added_to_group: "%{actor} があなたをグループに追加しました: %{title}"
       user_mentioned: "%{actor} さんが %{title} であなたに言及しました"
       group_mentioned: "%{actor} が %{title} でこのグループについて言及しました"
-      user_reminded: "%{actor} が %{title} への投票を促しています"
       poll_announced: '投票: %{title}'
       discussion_edited: "%{actor} がディスカッションのコンテキストを編集しました: %{title}"
       discussion_closed: "%{actor} がディスカッションを終了しました: %{title}"
+      user_reminded: "%{actor} が、%{title} への投票を呼びかけています。"
   discussion_fork_actions:
     move: 動く
     moved: コメントを移動しています。少し時間がかかる場合があります
@@ -1471,7 +1471,6 @@ ja:
     email_sent: メールは %{name} に送信されました
   profile_page:
     account_is_bot: これはボットアカウントです
-    bot_account_warning: ボット アカウントは、投票やディスカッションへの参加に招待されません。
     incomplete_profile: プロフィールが不完全です！
     set_your_profile_picture: プロフィール写真を設定する
     messages:
@@ -1507,6 +1506,7 @@ ja:
     deactivate_account_subtitle: メールを停止し、メンバーシップをキャンセルします。過去の議論や決定に影響が及ばないように、プロフィールを保持します。
     delete_account_subtitle: アカウントを完全に削除し、過去の議論や決定からあなたの名前を削除します。
     translate_content_automatically: コンテンツを自動的に自分の言語に翻訳する
+    bot_account_warning: ボットアカウントは、投票やディスカッションへの参加を招待されません。
   text_editor:
     x_of_y_characters: "%{x} / %{y} 文字"
     select_text_to_link: リンクするテキストを選択して再試行してください
@@ -2022,12 +2022,12 @@ ja:
     anonymous: 投票は匿名です
     results_hidden_until_closed: 結果は投票終了後に表示されます
     results_hidden_until_vote: 投票後に結果が表示されます
-    unable_to_vote: この %{poll_type} への投票には招待されていません
     draft_mode: 投票が無効になりました。これはまだ投票を受け付けていません。
     voting_disabled_poll_is_template: 投票が無効になりました。これはテンプレートです。
     for_this_proposal_to_pass: この提案が可決されるためには：
     for_this_poll_type_to_be_valid: 'この %{poll_type} が有効になるためには:'
     voting_opens_at: この %{poll_type} は %{time} に投票開始となります
+    unable_to_vote: この%{poll_type}への投票には招待されていません。
   poll_common_collapsed:
     by_who: "%{name} による"
   poll_common_calendar_invite:
@@ -2641,7 +2641,6 @@ ja:
     save_poll: アンケートを保存
     start_poll_type: "%{poll_type} を開始"
     share_poll_type: "%{poll_type} を共有"
-    who_may_vote: この %{poll_type} に投票できるのは誰ですか?
     update: アップデート
     add_voters: 投票者を追加
     notify_invitees: 通知を送信する
@@ -2671,6 +2670,7 @@ ja:
     create_poll_type: "%{poll_type} を作成"
     notify_voters_when_voting_opens: 投票開始時に有権者に通知する
     voters_notified_when_opens: 投票開始時に投票者に通知されます
+    who_may_vote: この%{poll_type}に投票できるのは誰ですか？
   poll_receipts_page:
     verify_participants: 参加者を確認する
     see_votes_if_quorum_reached: 投票が終了し、定足数に達した場合は、誰が投票したかが表示されます。

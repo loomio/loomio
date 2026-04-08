@@ -445,11 +445,11 @@ de:
       agree_meaning: Ich unterstütze den Vorschlag
       agree_prompt: Was gefällt Ihnen an dem Vorschlag und welchen Nutzen hat die Gruppe davon?
       abstain: Verzichten
-      abstain_meaning: Die Entscheidung, bei dieser Entscheidung nicht abzustimmen oder nicht abstimmen zu können.
-      abstain_prompt: Warum enthalten Sie sich der Stimme oder fühlen sich nicht in der Lage, bei dieser Entscheidung abzustimmen?
       disagree: Verschiedener Meinung sein
       disagree_meaning: An diesem Vorschlag muss etwas geändert werden, bevor ich ihn unterstützen kann.
       disagree_prompt: Wie könnte dieser Vorschlag verbessert werden, damit Sie ihn unterstützen können?
+      abstain_meaning: Er/Sie entschied sich, nicht abzustimmen, oder war nicht in der Lage, an dieser Abstimmung teilzunehmen.
+      abstain_prompt: Warum enthalten Sie sich der Stimme oder warum fühlen Sie sich nicht in der Lage, über diese Entscheidung abzustimmen?
     advice:
       process_subtitle: Lassen Sie sich bei einer Entscheidung beraten, die Sie treffen müssen
       process_introduction: <p>Holen Sie sich bei einer Entscheidung, die Sie treffen müssen, Rat von Betroffenen oder Fachleuten ein, damit Sie eine bessere Entscheidung für Ihr Unternehmen treffen können.</p><ul><li><p> Beratung hilft Ihnen, eine bessere Entscheidung für Ihre Organisation zu treffen.</p></li><li><p> Fördern Sie Beziehungen, Lernmöglichkeiten und vielfältige Anregungen.</p></li><li><p> Fördern Sie Eigeninitiative und Kreativität und sorgen Sie für mehr Freude an der Arbeit.</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>Lesen Sie mehr über den Beratungsprozess</u></a> .</p>
@@ -488,7 +488,6 @@ de:
       agree_prompt: Was gefällt Ihnen an dem Vorschlag und welchen Nutzen hat die Organisation davon?
       abstain: Verzichten
       abstain_meaning: Diese Entscheidung betrifft mich nicht und ich bin mit der Entscheidung der Gruppe zufrieden.
-      abstain_prompt: Warum enthalten Sie sich der Stimme oder fühlen sich nicht in der Lage, bei dieser Entscheidung abzustimmen?
       disagree: Verschiedener Meinung sein
       disagree_meaning: Etwas an diesem Vorschlag muss geändert werden, bevor ich ihn unterstützen kann
       disagree_prompt: Wie könnte dieser Vorschlag verbessert werden, damit Sie ihn unterstützen können?
@@ -497,6 +496,7 @@ de:
       block_prompt: Erläutern Sie Ihre Einwände gegen diesen Vorschlag und warum er nicht umgesetzt werden sollte.
       details_v2: "<h3><strong>Welche Entscheidung müssen Sie treffen?</strong></h3><p></p><h3> <strong>Warum ist das wichtig?</strong></h3><p></p><h3> <strong>Was verlangen Sie von den Leuten?</strong></h3><p></p><p> Teilen Sie uns Ihre Position und Ihre Gründe mit. Falls Sie nicht einverstanden sind, erklären Sie, was sich ändern müsste, damit Sie dies unterstützen.</p>"
       process_introduction_v2: "<p><strong>Konsens</strong> ist wichtig für Entscheidungen, bei denen die aktive Zustimmung aller Beteiligten entscheidend ist. Die Teilnehmenden arbeiten zusammen, um die Bedürfnisse der anderen zu verstehen und den Vorschlag so lange zu gestalten, bis er von der gesamten Gruppe getragen werden kann. Da die Abstimmung im Laufe der Diskussion jederzeit angepasst werden kann, fördert dieser Prozess einen echten Dialog anstelle einer einseitigen Entscheidung. Er erfordert mehr Geduld als andere Methoden, schafft aber die stärkste Verbindlichkeit.</p><p> Diese Vorlage enthält standardmäßig eine <strong>Blockierungsoption</strong> . Die Blockierungsfunktion ist nicht für jede Gruppe geeignet – sie kann kontrovers diskutiert oder missbraucht werden. Wenn Sie die Blockierungsfunktion in Ihrem Entscheidungsprozess nicht verwenden, empfehlen wir Ihnen, die Vorlage entsprechend zu bearbeiten und die Option zu entfernen.</p>"
+      abstain_prompt: Warum enthalten Sie sich der Stimme oder warum fühlen Sie sich nicht in der Lage, über diese Entscheidung abzustimmen?
     question_round:
       process_subtitle: Bitten Sie um klärende Fragen, um den Leuten zu helfen, einen Vorschlag zu verstehen
       process_introduction: <p>Eine Fragerunde bietet den Teilnehmern die Möglichkeit, klärende Fragen zum Vorschlag zu stellen, damit jeder den Vorschlag versteht, bevor er seine Meinung dazu äußert.</p><p> Die Loomio-Fragerunde ist ein spezieller Vorschlag ohne Abstimmungsmöglichkeit. Sie ermöglicht es den Teilnehmern, innerhalb einer von Ihnen festgelegten Dauer Fragen zu stellen.</p><p> Eine Fragerunde wird häufig als Schritt im Zustimmungsprozess verwendet.</p><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Lesen Sie mehr über den Zustimmungsprozess</a> .</p>

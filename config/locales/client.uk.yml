@@ -710,7 +710,6 @@ uk:
       stance_created_option: "%{actor} проголосував за %{option} у %{title}"
       user_added_to_group: "%{actor} додав вас до групи: %{title}"
       user_mentioned: "%{actor} згадав вас в: %{title}"
-      user_reminded: "%{actor} нагадує вам щодо голосування: %{title}"
       group_mentioned: "%{actor} згадав групу в: %{title}"
       new_delegate: "%{actor} зробив вас делегатом із правом голосу в %{title}"
       poll_announced: "%{actor} запросив вас проголосувати: %{title}"
@@ -718,6 +717,7 @@ uk:
       discussion_edited: "%{actor} відредагував контекст обговорення: %{title}"
       discussion_closed: "%{actor} закрив обговорення: %{title}"
       new_discussion: "%{actor} розпочав обговорення: %{title}"
+      user_reminded: "%{actor} нагадує вам проголосувати за: %{title}"
     without_title:
       unknown_sender: Будь ласка, перегляньте електронний лист від нерозпізнаного відправника
       group_announced: "%{actor} запросив вас до групи"
@@ -794,10 +794,10 @@ uk:
       user_added_to_group: "%{actor} додав вас до групи: %{title}"
       user_mentioned: "%{actor} згадав вас у: %{title}"
       group_mentioned: "%{actor} згадав групу в: %{title}"
-      user_reminded: "%{actor} нагадує вам проголосувати: %{title}"
       poll_announced: 'Голосувати: %{title}'
       discussion_edited: "%{actor} відредагував контекст обговорення: %{title}"
       discussion_closed: "%{actor} закрив обговорення: %{title}"
+      user_reminded: "%{actor} нагадує вам проголосувати за: %{title}"
   discussion_fork_actions:
     move: Перемістити
     moved: Переміщення коментарів може зайняти певний час
@@ -1492,7 +1492,6 @@ uk:
   profile_page:
     autodetect_time_zone: Автоматичне визначення часового поясу
     account_is_bot: Це обліковий запис бота
-    bot_account_warning: Облікові записи ботів не будуть запрошені голосувати в опитуваннях або брати участь в обговореннях
     incomplete_profile: Неповний профіль!
     set_your_profile_picture: Виберіть картинку профілю
     messages:
@@ -1527,6 +1526,7 @@ uk:
     delete_account_subtitle: Повністю видаліть свій обліковий запис і вилучіть своє ім’я з минулих обговорень і рішень.
     updated_on_sign_in: Забезпечується вашим браузером і оновлюється під час входу
     translate_content_automatically: Автоматично перекладати контент моєю мовою
+    bot_account_warning: Облікові записи ботів не будуть запрошені до голосування в опитуваннях або участі в обговореннях.
   text_editor:
     x_of_y_characters: "%{x} / %{y} символів"
     select_text_to_link: Виберіть текст для посилання та повторіть спробу
@@ -2053,12 +2053,12 @@ uk:
     anonymous: Анонімне голосування
     results_hidden_until_closed: Результати будуть відомі після завершення голосування
     results_hidden_until_vote: Результати будуть показані після вашого голосування
-    unable_to_vote: Вас не запросили голосувати в %{poll_type}.
     draft_mode: Голосування вимкнено. Це ще не відкрито для голосування.
     voting_disabled_poll_is_template: Голосування вимкнено. Це шаблон.
     for_this_proposal_to_pass: 'Щоб ця пропозиція була прийнята:'
     for_this_poll_type_to_be_valid: 'Щоб цей %{poll_type} був дійсним:'
     voting_opens_at: Цей %{poll_type} відкривається для голосування %{time}
+    unable_to_vote: Вас не запросили голосувати за цей %{poll_type}
   poll_common_collapsed:
     by_who: від %{name}
   poll_common_calendar_invite:
@@ -2674,7 +2674,6 @@ uk:
     save_poll: Зберегти опитування
     start_poll_type: Початок %{poll_type}
     share_poll_type: Поділитися %{poll_type}
-    who_may_vote: Хто може голосувати в цьому %{poll_type}?
     update: Оновлення
     add_voters: Додати виборців
     notify_invitees: Надсилати сповіщення
@@ -2704,6 +2703,7 @@ uk:
     create_poll_type: Створити %{poll_type}
     notify_voters_when_voting_opens: Повідомити виборців про початок голосування
     voters_notified_when_opens: Виборців буде повідомлено про початок голосування
+    who_may_vote: Хто може голосувати в цьому %{poll_type}?
   poll_receipts_page:
     verify_participants: Перевірити учасників
     see_votes_if_quorum_reached: Якщо голосування завершено і досягнуто кворуму, ви побачите, хто проголосував.

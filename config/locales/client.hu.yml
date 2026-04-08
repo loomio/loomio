@@ -707,7 +707,6 @@ hu:
       stance_created_option: "%{actor} %{option} szavazatot adott itt: %{title}"
       user_added_to_group: "%{actor} felvett a következő csoportba: %{title}"
       user_mentioned: "%{actor} megemlített téged a következőben: %{title}"
-      user_reminded: "%{actor} emlékeztet, hogy szavazz: %{title}"
       group_mentioned: "%{actor} megemlítette a csoportot itt: %{title}"
       new_delegate: "%{actor} szavazati joggal rendelkező képviselővé tett téged %{title}"
       poll_announced: "%{actor} szavazásra hívott meg: %{title}"
@@ -715,6 +714,7 @@ hu:
       discussion_edited: "%{actor} szerkesztette a vita kontextusát: %{title}"
       discussion_closed: "%{actor} lezárta a beszélgetést: %{title}"
       new_discussion: "%{actor} beszélgetést indított: %{title}"
+      user_reminded: "%{actor} emlékeztet, hogy szavazz erre: %{title}"
     without_title:
       unknown_sender: Kérjük, tekintse át az ismeretlen feladótól kapott e-mailt
       group_announced: "%{actor} meghívott egy csoportba"
@@ -791,10 +791,10 @@ hu:
       user_added_to_group: "%{actor} felvett téged a következő csoportba: %{title}"
       user_mentioned: "%{actor} megemlített téged a következőben: %{title}"
       group_mentioned: "%{actor} megemlítette a csoportot a következőben: %{title}"
-      user_reminded: "%{actor} emlékeztet, hogy szavazz erre: %{title}"
       poll_announced: 'Szavazat: %{title}'
       discussion_edited: "%{actor} szerkesztette a vita kontextusát: %{title}"
       discussion_closed: "%{actor} lezárta a beszélgetést: %{title}"
+      user_reminded: "%{actor} emlékeztet, hogy szavazz erre: %{title}"
   discussion_fork_actions:
     move: Mozgat
     moved: A megjegyzések áthelyezése eltarthat egy ideig
@@ -1477,7 +1477,6 @@ hu:
   profile_page:
     autodetect_time_zone: Időzóna automatikus felismerése
     account_is_bot: Ez egy bot fiók
-    bot_account_warning: A robotfiókokat nem hívják meg szavazásra vagy vitákban való részvételre
     incomplete_profile: Hiányos profil!
     set_your_profile_picture: Állítsa be a profilképét
     messages:
@@ -1512,6 +1511,7 @@ hu:
     delete_account_subtitle: Teljesen törölje fiókját, és távolítsa el a nevét a korábbi megbeszélésekből és döntésekből.
     updated_on_sign_in: A böngésző biztosítja, és bejelentkezéskor frissül
     translate_content_automatically: Tartalom automatikus fordítása a saját nyelvemre
+    bot_account_warning: A botfiókok nem kapnak meghívást szavazásra vagy beszélgetésekben való részvételre.
   text_editor:
     x_of_y_characters: "%{x} / %{y} karakter"
     select_text_to_link: Válassza ki a linkelni kívánt szöveget, és próbálja újra
@@ -2030,12 +2030,12 @@ hu:
     anonymous: A szavazatok névtelenek
     results_hidden_until_closed: Az eredményeket a szavazás lezárása után mutatjuk be
     results_hidden_until_vote: Az eredmények a szavazás után jelennek meg
-    unable_to_vote: Nem hívtak meg szavazni ebben a %{poll_type}-ban.
     draft_mode: Szavazás letiltva. Ez még nem nyitott szavazásra.
     voting_disabled_poll_is_template: Szavazás letiltva. Ez egy sablon.
     for_this_proposal_to_pass: 'Ahhoz, hogy ez a javaslat átmenjen:'
     for_this_poll_type_to_be_valid: 'Ahhoz, hogy ez a %{poll_type} érvényes legyen:'
     voting_opens_at: Ez a %{poll_type} megnyílt szavazásra %{time}
+    unable_to_vote: Nem kaptál meghívást szavazásra erre a(z) %{poll_type} elemre
   poll_common_collapsed:
     by_who: tőle %{name}
   poll_common_calendar_invite:
@@ -2649,7 +2649,6 @@ hu:
     save_poll: Szavazás mentése
     start_poll_type: "%{poll_type} indítása"
     share_poll_type: Megosztás %{poll_type}
-    who_may_vote: Kik szavazhatnak ebben a %{poll_type} szavazókörben?
     update: Frissítés
     add_voters: Szavazók hozzáadása
     notify_invitees: Értesítések küldése
@@ -2679,6 +2678,7 @@ hu:
     create_poll_type: "%{poll_type} létrehozása"
     notify_voters_when_voting_opens: Értesítsék a szavazókat a szavazás megkezdéséről
     voters_notified_when_opens: A szavazókat értesíteni fogják, amikor megnyílik a szavazás
+    who_may_vote: Kik szavazhatnak ezen a %{poll_type}-on?
   poll_receipts_page:
     verify_participants: Résztvevők ellenőrzése
     see_votes_if_quorum_reached: Ha a szavazás lezárult és létrejött a határozatképző létszám, akkor láthatja, hogy kik szavaztak.
