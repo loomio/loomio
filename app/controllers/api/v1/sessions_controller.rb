@@ -7,6 +7,7 @@ class Api::V1::SessionsController < Devise::SessionsController
       sign_in(user)
       flash[:notice] = t(:'devise.sessions.signed_in')
       user.update(name: resource_params[:name]) if resource_params[:name]
+      user.update_columns(bounces_count: 0, complaints_count: 0) if user.bounces_count > 0 || user.complaints_count > 0
       render json: Boot::User.new(user, root_url: URI(root_url).origin).payload
       EventBus.broadcast('session_create', user)
     else

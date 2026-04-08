@@ -64,6 +64,10 @@ module Null::User
     0
   end
 
+  def bounces_count
+    0
+  end
+
   def short_bio_format
     "html"
   end
