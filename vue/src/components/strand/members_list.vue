@@ -9,12 +9,11 @@ import { useWatchRecords } from '@/composables/useWatchRecords';
 import { approximate } from '@/shared/helpers/format_time';
 import { ref, computed } from 'vue';
 
-const props = defineProps({
+const { topic } = defineProps({
   topic: Object
 });
 
-const discussion = computed(() => props.topic.discussion());
-const group = computed(() => props.topic.group());
+const group = computed(() => topic.group());
 
 const readers = ref([]);
 const query = ref('');
@@ -28,11 +27,10 @@ const actionNames = ['makeAdmin', 'removeAdmin', 'revoke'];
 const service = TopicReaderService;
 
 const hasRecipients = computed(() => {
-  return discussion.value &&
-    (discussion.value.recipientAudience ||
-    discussion.value.recipientUserIds.length ||
-    discussion.value.recipientChatbotIds.length ||
-    discussion.value.recipientEmails.length);
+  return topic.recipientAudience ||
+    topic.recipientUserIds.length ||
+    topic.recipientChatbotIds.length ||
+    topic.recipientEmails.length;
 });
 
 const excludedUserIds = computed(() => {
@@ -55,11 +53,11 @@ function inviteRecipients() {
   const count = recipients.value.length;
   saving.value = true;
   const params = {
-    discussion_id: discussion.value.id,
-    recipient_audience: discussion.value.recipientAudience,
-    recipient_user_ids: discussion.value.recipientUserIds,
-    recipient_chatbot_ids: discussion.value.recipientChatbotIds,
-    recipient_emails: discussion.value.recipientEmails,
+    topic_id: topic.id,
+    recipient_audience: topic.recipientAudience,
+    recipient_user_ids: topic.recipientUserIds,
+    recipient_chatbot_ids: topic.recipientChatbotIds,
+    recipient_emails: topic.recipientEmails,
     recipient_message: message.value
   };
   Records.remote.post('announcements', params).then(() => {
@@ -84,7 +82,7 @@ const fetchReaders = debounce(function() {
   Records.topicReaders.fetch({
     params: {
       query: query.value,
-      discussion_id: discussion.value.id
+      topic_id: topic.id
     }
   }).then(records => {
     const userIds = map(records['users'], 'id');
@@ -102,7 +100,7 @@ const fetchReaders = debounce(function() {
 
 function updateReaders() {
   let chain = Records.topicReaders.collection.chain().
-          find({topicId: props.topic.id}).
+          find({topicId: topic.id}).
           find({revokedAt: null});
 
   if (query.value) {
@@ -118,7 +116,7 @@ function updateReaders() {
 
   chain = chain.simplesort('id', true);
   readers.value = chain.data();
-  readerUserIds.value = map(Records.topicReaders.collection.find({topicId: props.topic.id}), 'userId');
+  readerUserIds.value = map(Records.topicReaders.collection.find({topicId: topic.id}), 'userId');
 
   membershipsByUserId.value = {};
   if (group.value) {
@@ -148,7 +146,7 @@ v-card.strand-members-list(:title="$t('announcement.form.discussion_announced.ti
     recipients-autocomplete(
       :label="$t('announcement.form.discussion_announced.helptext')"
       :placeholder="$t('announcement.form.placeholder')"
-      :model="discussion"
+      :model="topic"
       :excluded-audiences="['discussion_group']"
       :reset="reset"
       @new-query="newQuery"

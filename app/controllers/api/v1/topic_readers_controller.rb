@@ -1,7 +1,6 @@
 class Api::V1::TopicReadersController < Api::V1::RestfulController
   def index
-    @discussion = load_and_authorize(:discussion)
-    @topic = @discussion.topic
+    @topic = load_and_authorize(:topic)
     query = params[:query]
     instantiate_collection do |collection|
       collection = collection.where(topic_id: @topic.id)
@@ -49,12 +48,8 @@ class Api::V1::TopicReadersController < Api::V1::RestfulController
   end
 
   def default_scope
-    tr = @topic_reader || TopicReader.find_by(topic_id: @topic&.id)
-    topicable = (tr || @discussion)
-    topicable = topicable.topic.topicable if topicable.respond_to?(:topic) && topicable.topic
-    topicable = topicable.discussion if topicable.respond_to?(:discussion) && !topicable.is_a?(Discussion)
-    topicable = @discussion if topicable.nil?
-    is_admin = topicable.admins.exists?(current_user.id)
+    topic = @topic || @topic_reader&.topic
+    is_admin = topic ? topic.admins.exists?(current_user.id) : false
     super.merge({include_email: is_admin})
   end
 

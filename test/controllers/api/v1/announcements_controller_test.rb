@@ -157,41 +157,41 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     assert_equal 1, member.notifications.count
   end
 
-  # -- Discussion announcement tests --
+  # -- Topic announcement tests --
 
-  test "discussion create members can add guests when permission enabled" do
+  test "topic create members can add guests when permission enabled" do
     @group.update(members_can_add_guests: true)
     Membership.find_by(user_id: @admin.id, group_id: @group.id).update(admin: false)
 
-    post :create, params: { discussion_id: @discussion.id, recipient_emails: ['jim@example.com'] }
+    post :create, params: { topic_id: @discussion.topic_id, recipient_emails: ['jim@example.com'] }
     assert_response :success
   end
 
-  test "discussion create members cannot add guests when permission disabled" do
+  test "topic create members cannot add guests when permission disabled" do
     @group.update(members_can_add_guests: false)
     Membership.find_by(user_id: @admin.id, group_id: @group.id).update(admin: false)
 
-    post :create, params: { discussion_id: @discussion.id, recipient_emails: ['jim@example.com'] }
+    post :create, params: { topic_id: @discussion.topic_id, recipient_emails: ['jim@example.com'] }
     assert_response :forbidden
   end
 
-  test "discussion create members can announce when permission enabled" do
+  test "topic create members can announce when permission enabled" do
     @group.update(members_can_announce: true)
     Membership.find_by(user_id: @admin.id, group_id: @group.id).update(admin: false)
 
-    post :create, params: { discussion_id: @discussion.id, recipient_audience: 'group' }
+    post :create, params: { topic_id: @discussion.topic_id, recipient_audience: 'group' }
     assert_response :success
   end
 
-  test "discussion create members cannot announce when permission disabled" do
+  test "topic create members cannot announce when permission disabled" do
     @group.update(members_can_announce: false)
     Membership.find_by(user_id: @admin.id, group_id: @group.id).update(admin: false)
 
-    post :create, params: { discussion_id: @discussion.id, recipient_audience: 'group' }
+    post :create, params: { topic_id: @discussion.topic_id, recipient_audience: 'group' }
     assert_response :forbidden
   end
 
-  test "discussion create as admin can add member" do
+  test "topic create as admin can add member" do
     hex = SecureRandom.hex(4)
     member = User.create!(name: "member#{hex}", email: "member#{hex}@example.com", username: "member#{hex}")
     @group.add_member!(member)
@@ -199,7 +199,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     @group.update(members_can_announce: false, members_can_add_guests: false)
     Membership.find_by(user_id: @admin.id, group_id: @group.id).update(admin: true)
 
-    post :create, params: { discussion_id: @discussion.id, recipient_user_ids: [member.id] }
+    post :create, params: { topic_id: @discussion.topic_id, recipient_user_ids: [member.id] }
     assert_response :success
 
     json = JSON.parse(response.body)
@@ -208,21 +208,21 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     assert_includes @discussion.readers, member
   end
 
-  test "discussion create as admin cannot add non_member" do
+  test "topic create as admin cannot add non_member" do
     hex = SecureRandom.hex(4)
     non_member = User.create!(name: "non#{hex}", email: "non#{hex}@example.com", username: "non#{hex}")
 
     @group.update(members_can_announce: false, members_can_add_guests: false)
     Membership.find_by(user_id: @admin.id, group_id: @group.id).update(admin: true)
 
-    post :create, params: { discussion_id: @discussion.id, recipient_user_ids: [non_member.id] }
+    post :create, params: { topic_id: @discussion.topic_id, recipient_user_ids: [non_member.id] }
     assert_response :success
 
     json = JSON.parse(response.body)
     assert_equal 0, json['topic_readers'].length
   end
 
-  test "discussion create as admin can add multiple members" do
+  test "topic create as admin can add multiple members" do
     hex = SecureRandom.hex(4)
     member = User.create!(name: "member#{hex}", email: "member#{hex}@example.com", username: "member#{hex}")
     @group.add_member!(member)
@@ -230,7 +230,7 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     @group.update(members_can_announce: false, members_can_add_guests: false)
     Membership.find_by(user_id: @admin.id, group_id: @group.id).update(admin: true)
 
-    post :create, params: { discussion_id: @discussion.id, recipient_user_ids: [member.id] }
+    post :create, params: { topic_id: @discussion.topic_id, recipient_user_ids: [member.id] }
     assert_response :success
 
     json = JSON.parse(response.body)

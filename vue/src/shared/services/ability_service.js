@@ -152,6 +152,8 @@ export default new class AbilityService {
   canAnnounce(model) {
     if ((typeof model.isA === 'function' ? model.isA('poll') : undefined)) {
       return this.canAnnouncePoll(model);
+    } else if ((typeof model.isA === 'function' ? model.isA('topic') : undefined)) {
+      return this.canAnnounceTopic(model);
     } else {
       return this.canAnnounceDiscussion(model);
     }
@@ -160,6 +162,8 @@ export default new class AbilityService {
   canAddGuests(model) {
     if ((typeof model.isA === 'function' ? model.isA('poll') : undefined)) {
       return this.canAddGuestsPoll(model);
+    } else if ((typeof model.isA === 'function' ? model.isA('topic') : undefined)) {
+      return this.canAddGuestsTopic(model);
     } else {
       return this.canAddGuestsDiscussion(model);
     }
@@ -196,6 +200,25 @@ export default new class AbilityService {
       (poll.group().membersCanAddGuests && poll.adminsInclude(Session.user()));
     } else {
       return poll.adminsInclude(Session.user());
+    }
+  }
+
+  canAnnounceTopic(topic) {
+    if (topic.closedAt) { return false; }
+    if (topic.groupId) {
+      return topic.group().adminsInclude(Session.user()) ||
+      (topic.group().membersCanAnnounce && topic.membersInclude(Session.user()));
+    } else {
+      return topic.adminsInclude(Session.user());
+    }
+  }
+
+  canAddGuestsTopic(topic) {
+    if (topic.groupId) {
+      return topic.group().adminsInclude(Session.user()) ||
+      (topic.group().membersCanAddGuests && topic.membersInclude(Session.user()));
+    } else {
+      return topic.adminsInclude(Session.user());
     }
   }
 

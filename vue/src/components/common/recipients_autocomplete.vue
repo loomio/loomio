@@ -290,7 +290,7 @@ export default {
 
         if (!this.excludedAudiences.includes('group')) {
           const groups = (() => { switch (this.model.constructor.singular) {
-            case 'poll': case 'discussion': case 'outcome':
+            case 'poll': case 'discussion': case 'outcome': case 'topic':
               return compact([
                 this.model.group(),
                 (this.model.group().parentId && this.model.group().parent()),

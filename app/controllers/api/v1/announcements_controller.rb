@@ -63,9 +63,9 @@ class Api::V1::AnnouncementsController < Api::V1::RestfulController
     if target_model.is_a?(Group)
       self.collection = GroupService.invite(group: target_model, actor: current_user, params: params)
       respond_with_collection serializer: MembershipSerializer, root: :memberships
-    elsif target_model.is_a?(Discussion)
-      event = TopicService.invite(topic: target_model.topic, actor: current_user, params: params)
-      self.collection = TopicReader.where(topic_id: target_model.topic_id, user_id: event.recipient_user_ids)
+    elsif target_model.is_a?(Topic)
+      event = TopicService.invite(topic: target_model, actor: current_user, params: params)
+      self.collection = TopicReader.where(topic_id: target_model.id, user_id: event.recipient_user_ids)
       respond_with_collection serializer: TopicReaderSerializer, root: :topic_readers
     elsif target_model.is_a?(Poll)
       self.collection = PollService.invite(poll: target_model, actor: current_user, params: params)
@@ -179,6 +179,7 @@ class Api::V1::AnnouncementsController < Api::V1::RestfulController
 
   def authorize_model
     load_and_authorize(:group, :announce, optional: true) ||
+      load_and_authorize(:topic, :announce, optional: true) ||
       load_and_authorize(:discussion, :announce, optional: true) ||
       load_and_authorize(:poll, :announce, optional: true) ||
       load_and_authorize(:outcome, :announce, optional: false)
@@ -186,6 +187,7 @@ class Api::V1::AnnouncementsController < Api::V1::RestfulController
 
   def target_model
     load_and_authorize(:group, :show, optional: true) ||
+      load_and_authorize(:topic, :show, optional: true) ||
       load_and_authorize(:discussion, :show, optional: true) ||
       load_and_authorize(:comment, :show, optional: true) ||
       load_and_authorize(:poll, :show, optional: true) ||
