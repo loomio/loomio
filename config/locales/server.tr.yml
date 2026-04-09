@@ -499,8 +499,8 @@ tr:
       could_be_better_meaning: Potansiyel görüyorum ama bazı önerilerim var.
       could_be_better_prompt: Neyi değiştirmek isterdiniz?
       needs_a_rethink: Yeniden düşünülmesi gerekiyor
-      needs_a_rethink_meaning: Bence bu yaklaşım doğru değil.
       needs_a_rethink_prompt: Endişeniz nedir?
+      needs_a_rethink_meaning: Bence bu yanlış bir yaklaşım.
     gradients_of_agreement:
       process_subtitle: Bir öneriye 8 puanlık bir ölçekte destek verin
       process_introduction: <p>Anlaşma önerisinin eğimleri, bir grubun üyelerinin bir öneriye olan desteklerini bir ölçekte dereceler halinde ifade etmelerini sağlar ve "katılıyorum" ve "katılmıyorum" ifadelerinden daha fazla destek ifade etme yolu sunar.</p><p> Resmi bir anlaşmaya varmadan önce bir teklife verilen desteği test etmek için ön tur olarak Anlaşma Gradientlerini kullanın.</p><p> Anlaşma eğimleri, insanların bir teklifin oluştuğunu bilmelerini sağlar ve onları katılmaya teşvik eder. İnsanları dinlemek, nasıl hissettiklerini anlamak ve uygun şekilde yanıt vermek için bir fırsattır - daha iyi bir karar almak için katkılarını dahil etme potansiyelini açar.</p>

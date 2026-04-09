@@ -501,8 +501,8 @@ ca:
       could_be_better_meaning: Veig potencial però tinc suggeriments
       could_be_better_prompt: Què canviaries?
       needs_a_rethink: Cal un replantejament
-      needs_a_rethink_meaning: Crec que l'enfocament no és correcte
       needs_a_rethink_prompt: Quina és la teva preocupació?
+      needs_a_rethink_meaning: Crec que aquest és l'enfocament equivocat
     gradients_of_agreement:
       process_subtitle: Expressar el suport a una proposta en una escala de 8 punts
       process_introduction: <p>Els Gradients d'acord de la proposta permeten als membres d'un grup expressar el seu suport a una proposta en graus en una escala, oferint més maneres d'expressar suport que en termes d'"d'acord" i "en desacord".</p><p> Utilitzeu els gradients d'acord com a ronda preliminar per comprovar el suport a una proposta abans de passar a un acord formal.</p><p> Els gradients d'acord permeten a la gent saber que s'està formant una proposta i els animen a participar-hi. És una oportunitat per escoltar la gent, percebre com se senten i respondre-hi adequadament, cosa que obre el potencial per incorporar les seves contribucions per prendre una millor decisió.</p>

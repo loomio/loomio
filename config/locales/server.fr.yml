@@ -529,8 +529,8 @@ fr:
       could_be_better_meaning: Je vois du potentiel, mais j'ai des suggestions.
       could_be_better_prompt: Que changeriez-vous ?
       needs_a_rethink: Il faut le repenser
-      needs_a_rethink_meaning: Je pense que cette approche n'est pas la bonne.
       needs_a_rethink_prompt: Quel est votre souci ?
+      needs_a_rethink_meaning: Je pense que c'est une mauvaise approche.
     gradients_of_agreement:
       process_subtitle: Exprimez votre soutien à une proposition sur une échelle de 8 points
       process_introduction: "<p>La proposition Gradients d’accord permet aux membres d’un groupe d’exprimer leur soutien à une proposition en degrés sur une échelle, offrant plus de façons d’exprimer leur soutien qu’en termes de « d’accord » et de « pas d’accord ».</p><p> Utilisez les gradients d’accord comme un tour préliminaire, pour tester le soutien à une proposition avant de passer à un accord formel.</p><p> Les gradients d’accord indiquent aux participants qu'une proposition est en cours d'élaboration et les encouragent à s'engager. C'est l'occasion d'écouter les autres, de comprendre leurs sentiments et de réagir de manière appropriée, ouvrant ainsi la possibilité d'intégrer leurs contributions pour prendre une meilleure décision.</p>"

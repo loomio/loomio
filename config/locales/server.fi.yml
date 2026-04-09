@@ -499,8 +499,8 @@ fi:
       could_be_better_meaning: Näen potentiaalia, mutta minulla on ehdotuksia
       could_be_better_prompt: Mitä muuttaisit?
       needs_a_rethink: Tarvitsee uudelleenarviointia
-      needs_a_rethink_meaning: Mielestäni lähestymistapa ei ole oikea
       needs_a_rethink_prompt: Mikä sinua huolestuttaa?
+      needs_a_rethink_meaning: Mielestäni tämä on väärä lähestymistapa
     gradients_of_agreement:
       process_subtitle: Ilmaise ehdotuksen tukeminen 8-pisteisellä asteikolla
       process_introduction: <p>Yhteisymmärryksen asteikolla varustettu ehdotus antaa ryhmän jäsenille mahdollisuuden ilmaista tukensa ehdotukselle asteikolla, joka tarjoaa useampia tapoja ilmaista tukea kuin "samaa mieltä" ja "eri mieltä".</p><p> Käytä yhteisymmärryksen asteikkoja alustavana kierroksena testataksesi ehdotuksen tukea ennen siirtymistä viralliseen sopimukseen.</p><p> Yhteisymmärryksen asteikko kertoo ihmisille, että ehdotus on muodostumassa, ja kannustaa heitä osallistumaan. Se on tilaisuus kuunnella ihmisiä, aistia heidän tunteitaan ja reagoida asianmukaisesti – mikä avaa mahdollisuuden ottaa heidän panoksensa huomioon paremman päätöksen tekemiseksi.</p>

@@ -511,8 +511,8 @@ hu:
       could_be_better_meaning: Látok benne potenciált, de vannak javaslataim is
       could_be_better_prompt: Mit változtatnál?
       needs_a_rethink: Újragondolásra van szükség
-      needs_a_rethink_meaning: Szerintem a megközelítés nem helyes
       needs_a_rethink_prompt: Mi a gondod?
+      needs_a_rethink_meaning: Szerintem ez a rossz megközelítés
     gradients_of_agreement:
       process_subtitle: Fejezd ki a javaslat támogatását egy 8 fokú skálán
       process_introduction: "<p>Az egyetértés fokozatai módszerrel a csoport tagjai egy skálán, fokozatokban fejezhetik ki támogatásukat egy javaslattal kapcsolatban, ami több módot kínál a támogatás kifejezésére, mint az „egyetértek” és „nem értek egyet”.</p><p> Használja az egyetértési fokokat előzetes fordulóként, hogy tesztelje a javaslat támogatottságát, mielőtt hivatalos megállapodásra lépne.</p><p> Az egyetértés foka jelzi az embereknek, hogy formálódik egy javaslat, és arra ösztönzi őket, hogy bekapcsolódjanak. Lehetőséget ad arra, hogy meghallgassuk az embereket, megértsük, hogyan érzik magukat, és megfelelően reagáljunk – megnyitva a lehetőséget arra, hogy beépítsük a hozzájárulásaikat egy jobb döntés meghozatalához.</p>"

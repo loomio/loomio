@@ -499,8 +499,8 @@ ro:
       could_be_better_meaning: Văd potențial, dar am sugestii
       could_be_better_prompt: Ce ai schimba?
       needs_a_rethink: Necesită o regândire
-      needs_a_rethink_meaning: Cred că abordarea nu este corectă
       needs_a_rethink_prompt: Care este îngrijorarea ta?
+      needs_a_rethink_meaning: Cred că aceasta este abordarea greșită
     gradients_of_agreement:
       process_subtitle: Exprimați sprijinul pentru o propunere pe o scară de 8 puncte
       process_introduction: "<p>Gradienții de acord privind propunerea permit membrilor unui grup să își exprime sprijinul pentru o propunere în grade pe o scală, oferind mai multe modalități de exprimare a sprijinului decât în termeni de „acord” și „dezacord”.</p><p> Folosește Gradienții de acord ca o rundă preliminară, pentru a testa susținerea unei propuneri înainte de a trece la un acord formal.</p><p> Gradiile de acord le permit oamenilor să știe că se formează o propunere și îi încurajează să se implice. Este o oportunitate de a asculta oamenii, de a simți cum se simt și de a răspunde în mod corespunzător - deschizând potențialul de a le încorpora contribuțiile pentru a lua o decizie mai bună.</p>"

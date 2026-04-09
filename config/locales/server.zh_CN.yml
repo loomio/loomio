@@ -169,8 +169,8 @@ zh_CN:
       could_be_better_meaning: 我看到了潜力，但也有一些建议
       could_be_better_prompt: 你会做出哪些改变？
       needs_a_rethink: 需要重新考虑
-      needs_a_rethink_meaning: 我认为这种方法不对。
       needs_a_rethink_prompt: 你担心的是什么？
+      needs_a_rethink_meaning: 我认为这种做法是错误的。
     gradients_of_agreement:
       process_subtitle: 请用 8 分制表达您对该提案的支持程度
       process_introduction: "<p>同意程度梯度提案允许小组成员以等级的方式表达他们对提案的支持，提供的表达支持的方式比“同意”和“不同意”更多。</p><p>使用“同意梯度”作为初步阶段，在达成正式协议之前测试对提案的支持度。</p><p>意见分歧程度的差异让人们知道提案正在形成，并鼓励他们参与讨论。这是一个倾听他人意见、了解他们感受并做出适当回应的机会，从而有可能将他们的建议纳入决策，做出更明智的决定。</p>"

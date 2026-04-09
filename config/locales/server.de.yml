@@ -531,8 +531,8 @@ de:
       could_be_better_meaning: Ich sehe Potenzial, habe aber Vorschläge.
       could_be_better_prompt: Was würdest du ändern?
       needs_a_rethink: Ein Umdenken ist erforderlich
-      needs_a_rethink_meaning: Ich glaube, der Ansatz ist nicht der richtige.
       needs_a_rethink_prompt: Was ist Ihr Anliegen?
+      needs_a_rethink_meaning: Ich glaube, das ist der falsche Ansatz.
     gradients_of_agreement:
       process_subtitle: Drücken Sie Ihre Unterstützung für einen Vorschlag auf einer 8-stufigen Skala aus
       process_introduction: "<p>Mithilfe der Gradienten der Zustimmung zu einem Vorschlag können die Mitglieder einer Gruppe ihre Unterstützung für einen Vorschlag in Graden auf einer Skala ausdrücken. Dies bietet mehr Möglichkeiten, die Unterstützung auszudrücken als nur in Form von „Zustimmen“ und „Nichtzustimmen“.</p><p> Verwenden Sie Zustimmungsgradienten als Vorrunde, um die Unterstützung für einen Vorschlag zu testen, bevor Sie zu einer formellen Vereinbarung übergehen.</p><p> Graduelle Zustimmung signalisiert den Teilnehmern, dass ein Vorschlag entsteht, und ermutigt sie, sich zu engagieren. Es bietet die Möglichkeit, den Teilnehmern zuzuhören, ihre Gefühle zu erfassen und angemessen zu reagieren. Dies eröffnet die Möglichkeit, ihre Beiträge zu berücksichtigen und so eine bessere Entscheidung zu treffen.</p>"

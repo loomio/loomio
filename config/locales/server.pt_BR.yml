@@ -529,8 +529,8 @@ pt_BR:
       could_be_better_meaning: Vejo potencial, mas tenho sugestões.
       could_be_better_prompt: O que você mudaria?
       needs_a_rethink: Precisa ser repensado.
-      needs_a_rethink_meaning: Acho que a abordagem não está correta.
       needs_a_rethink_prompt: Qual é a sua preocupação?
+      needs_a_rethink_meaning: Penso que esta é a abordagem errada.
     gradients_of_agreement:
       process_subtitle: Expressar apoio a uma proposta em uma escala de 8 pontos
       process_introduction: <p>A proposta de Gradientes de concordância permite que os membros de um grupo expressem seu apoio a uma proposta em graus e em uma escala, oferecendo mais maneiras de expressar apoio do que em termos de "concordo" e "discordo".</p><p> Use Gradientes de concordância como uma rodada preliminar para testar o suporte a uma proposta antes de passar para um acordo formal.</p><p> Gradientes de concordância permitem que as pessoas saibam que uma proposta está sendo formada e as incentivam a se envolver. É uma oportunidade de ouvir as pessoas, perceber como elas se sentem e responder adequadamente – abrindo o potencial para incorporar suas contribuições e tomar uma decisão mais acertada.</p>

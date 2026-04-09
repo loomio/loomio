@@ -499,8 +499,8 @@ hr:
       could_be_better_meaning: Vidim potencijal, ali imam prijedloge
       could_be_better_prompt: Što biste promijenili?
       needs_a_rethink: Potrebno je preispitati
-      needs_a_rethink_meaning: Mislim da pristup nije ispravan
       needs_a_rethink_prompt: Što te brine?
+      needs_a_rethink_meaning: Mislim da je ovo pogrešan pristup
     gradients_of_agreement:
       process_subtitle: Izrazite podršku prijedlogu na ljestvici od 8 stupnjeva
       process_introduction: "<p>Prijedlog gradijenta slaganja omogućuje članovima grupe da izraze svoju podršku prijedlogu u stupnjevima na skali, nudeći više načina izražavanja podrške nego u smislu „slažem se“ i „ne slažem se“.</p><p> Koristite gradijente slaganja kao preliminarni krug za testiranje podrške prijedlogu prije nego što se prijeđe na formalni sporazum.</p><p> Gradijenti slaganja daju ljudima do znanja da se oblikuje prijedlog i potiču ih na sudjelovanje. To je prilika da se slušaju ljudi, osjeti kako se osjećaju i reagira na odgovarajući način - otvarajući potencijal za uključivanje njihovih doprinosa kako bi se donijela bolja odluka.</p>"

@@ -526,8 +526,8 @@ nl_NL:
       could_be_better_meaning: Ik zie potentie, maar heb suggesties.
       could_be_better_prompt: Wat zou je veranderen?
       needs_a_rethink: Moet opnieuw worden bekeken
-      needs_a_rethink_meaning: Ik denk dat deze aanpak niet de juiste is.
       needs_a_rethink_prompt: Waar maakt u zich zorgen over?
+      needs_a_rethink_meaning: Ik denk dat dit de verkeerde aanpak is.
     gradients_of_agreement:
       process_subtitle: Steun uitspreken voor een voorstel op een schaal van 8 punten
       process_introduction: "<p>Met het voorstel Gradiënten van overeenstemming kunnen groepsleden hun steun voor een voorstel in graden op een schaal uitdrukken. Hierdoor zijn er meer mogelijkheden om steun te uiten dan alleen in termen van 'mee eens' en 'oneens'.</p><p> Gebruik gradaties van overeenstemming als een voorronde, om steun voor een voorstel te testen voordat u tot een formele overeenkomst overgaat.</p><p> Gradiënten van overeenstemming laten mensen weten dat er een voorstel in de maak is en moedigen hen aan om zich ermee bezig te houden. Het biedt een kans om naar mensen te luisteren, aan te voelen hoe ze zich voelen en gepast te reageren – waardoor de mogelijkheid ontstaat om hun bijdragen te integreren en zo tot een betere beslissing te komen.</p>"

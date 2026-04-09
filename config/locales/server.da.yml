@@ -505,8 +505,8 @@ da:
       could_be_better_meaning: Jeg ser potentiale, men har forslag
       could_be_better_prompt: Hvad ville du ændre?
       needs_a_rethink: Har brug for en genovervejelse
-      needs_a_rethink_meaning: Jeg synes ikke fremgangsmåden er rigtig
       needs_a_rethink_prompt: Hvad er din bekymring?
+      needs_a_rethink_meaning: Jeg synes, det er den forkerte tilgang
     gradients_of_agreement:
       process_subtitle: Udtryklig støtte til et forslag på en 8-punkts skala
       process_introduction: <p>Forslagets gradienter for enighed gør det muligt for medlemmer af en gruppe at udtrykke deres støtte til et forslag i grader på en skala, hvilket tilbyder flere måder at udtrykke støtte på end i form af "enig" og "uenig".</p><p> Brug gradienter af enighed som en indledende runde for at teste støtte til et forslag, før man går videre til en formel aftale.</p><p> Gradienter af enighed lader folk vide, at et forslag er under udarbejdelse, og opfordrer dem til at engagere sig. Det er en mulighed for at lytte til folk, fornemme deres følelser og reagere passende – hvilket åbner op for potentialet til at inddrage deres bidrag for at træffe en bedre beslutning.</p>

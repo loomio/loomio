@@ -511,8 +511,8 @@ he:
       could_be_better_meaning: אני רואה פוטנציאל אבל יש לי הצעות
       could_be_better_prompt: מה היית משנה?
       needs_a_rethink: צריך חשיבה מחודשת
-      needs_a_rethink_meaning: אני חושב שהגישה לא נכונה
       needs_a_rethink_prompt: מה הדאגה שלך?
+      needs_a_rethink_meaning: אני חושב שזו הגישה הלא נכונה
     gradients_of_agreement:
       process_subtitle: תמיכה מפורשת בהצעה בסולם של 8 נקודות
       process_introduction: <p style=";text-align:right;direction:rtl">הצעת "גרדיאנטים של הסכמה" מאפשרת לחברי קבוצה להביע את תמיכתם בהצעה בדרגות על סולם, ומציעה דרכים רבות יותר להביע תמיכה מאשר במונחים של "הסכמה" ו"לא מסכים".</p><p style=";text-align:right;direction:rtl"> השתמשו בדרגות הסכמה כסבב מקדים, כדי לבחון תמיכה בהצעה לפני המעבר להסכמה רשמית.</p><p style=";text-align:right;direction:rtl"> מעברי הסכמה מאפשרים לאנשים לדעת שהצעה מתגבשת ומעודדים אותם להשתתף. זוהי הזדמנות להקשיב לאנשים, לחוש איך הם מרגישים ולהגיב כראוי - מה שפותח את הפוטנציאל לשלב את תרומתם כדי לקבל החלטה טובה יותר.</p>

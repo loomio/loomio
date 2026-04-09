@@ -499,8 +499,8 @@ sv:
       could_be_better_meaning: Jag ser potential men har förslag
       could_be_better_prompt: Vad skulle du ändra?
       needs_a_rethink: Behöver omprövas
-      needs_a_rethink_meaning: Jag tycker att tillvägagångssättet inte är rätt
       needs_a_rethink_prompt: Vad är din oro?
+      needs_a_rethink_meaning: Jag tror att detta är fel tillvägagångssätt
     gradients_of_agreement:
       process_subtitle: Uttryckligt stöd för ett förslag på en 8-gradig skala
       process_introduction: <p>Med hjälp av överenskommelsesgradienter kan medlemmar i en grupp uttrycka sitt stöd för ett förslag i grader på en skala, vilket erbjuder fler sätt att uttrycka stöd än i termer av "håller med" och "håller inte med".</p><p> Använd gradienter av överenskommelse som en preliminär omgång för att testa stöd för ett förslag innan man går vidare till en formell överenskommelse.</p><p> Gradienter av enighet låter människor veta att ett förslag håller på att utformas och uppmuntrar dem att engagera sig. Det är en möjlighet att lyssna på människor, känna av hur de känner och reagera på lämpligt sätt – vilket öppnar upp möjligheten att integrera deras bidrag för att fatta ett bättre beslut.</p>

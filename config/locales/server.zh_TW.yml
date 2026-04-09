@@ -529,8 +529,8 @@ zh_TW:
       could_be_better_meaning: 我看到了潛力，但也有一些建議
       could_be_better_prompt: 你會做出哪些改變？
       needs_a_rethink: 需要重新考慮
-      needs_a_rethink_meaning: 我認為這種方法不對。
       needs_a_rethink_prompt: 你擔心的是什麼？
+      needs_a_rethink_meaning: 我認為這種做法是錯誤的。
     gradients_of_agreement:
       process_subtitle: 以 8 分製表示對提案的支持
       process_introduction: "<p>同意提案的梯度使小組成員能夠以一定程度表達對提案的支持，從而提供比「同意」和「不同意」更多的表達支持的方式。</p><p>使用協議梯度作為初步嘗試，在達成正式協議之前測試對提案的支持。</p><p>同意度梯度可以讓大家了解提案正在形成，並鼓勵他們參與。這是一個傾聽大家意見、了解他們的感受並做出適當回應的機會，從而挖掘出採納他們意見的潛力，最終做出更明智的決策。</p>"

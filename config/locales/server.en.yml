@@ -191,7 +191,7 @@ en:
       could_be_better_meaning: I see potential but have suggestions
       could_be_better_prompt: What would you change?
       needs_a_rethink: Needs a rethink
-      needs_a_rethink_meaning: I think the approach isn't right
+      needs_a_rethink_meaning: I think this is the wrong approach
       needs_a_rethink_prompt: What's your concern?
     gradients_of_agreement:
       process_subtitle: Express support for a proposal on an 8-point scale

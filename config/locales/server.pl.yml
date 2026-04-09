@@ -526,8 +526,8 @@ pl:
       could_be_better_meaning: Widzę potencjał, ale mam sugestie
       could_be_better_prompt: Co byś zmienił?
       needs_a_rethink: Wymaga ponownego przemyślenia
-      needs_a_rethink_meaning: Myślę, że to podejście nie jest właściwe
       needs_a_rethink_prompt: Co cię martwi?
+      needs_a_rethink_meaning: Uważam, że to złe podejście.
     gradients_of_agreement:
       process_subtitle: Wyraź poparcie dla propozycji w 8-stopniowej skali
       process_introduction: "<p>Gradienty akceptacji propozycji pozwalają członkom grupy na wyrażenie poparcia dla propozycji w stopniach na skali, oferując więcej sposobów wyrażenia poparcia niż w przypadku „zgadzam się” i „nie zgadzam się”.</p><p> Użyj Gradientów Porozumienia jako rundy wstępnej, aby przetestować poparcie dla propozycji przed przejściem do formalnego porozumienia.</p><p> Gradienty zgody pozwalają ludziom wiedzieć, że propozycja się tworzy i zachęcają ich do zaangażowania się. To okazja, aby słuchać ludzi, wyczuwać, co czują i odpowiednio reagować - otwierając potencjał na włączenie ich wkładu w podejmowanie lepszych decyzji.</p>"
