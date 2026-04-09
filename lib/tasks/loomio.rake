@@ -137,6 +137,7 @@ namespace :loomio do
       profile_page.bot_account_warning
       poll_common_action_panel.unable_to_vote
       poll_common_form.who_may_vote
+      needs_a_rethink_meaning
     ]
 
     %w[client server].each do |source_name|
