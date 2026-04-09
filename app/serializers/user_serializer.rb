@@ -9,6 +9,7 @@ class UserSerializer < AuthorSerializer
              :attachments,
              :date_time_pref,
              :complaints_count,
+             :bounces_count,
              :sign_in_count
 
 
@@ -18,5 +19,9 @@ class UserSerializer < AuthorSerializer
 
   def include_complaints_count?
     object.complaints_count > 0
+  end
+
+  def include_bounces_count?
+    object.bounces_count > 0
   end
 end

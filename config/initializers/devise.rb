@@ -149,7 +149,7 @@ Devise.setup do |config|
 
   # Number of authentication tries before locking an account if lock_strategy
   # is failed attempts.
-  config.maximum_attempts = ENV.fetch('MAX_LOGIN_ATTEMPTS', 20).to_i
+  config.maximum_attempts = ENV.fetch('MAX_LOGIN_ATTEMPTS', 10).to_i
 
   # Time interval to unlock the account if :time is enabled as unlock_strategy.
   config.unlock_in = 6.hours

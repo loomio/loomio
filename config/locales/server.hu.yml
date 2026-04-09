@@ -425,11 +425,11 @@ hu:
       agree_meaning: Támogatom a javaslatot
       agree_prompt: Mi tetszik a javaslatban, és hogyan válik a csoport javára?
       abstain: Tartózkodj
-      abstain_meaning: Ha nem szavaz, vagy nem tud szavazni ebben a döntésben.
-      abstain_prompt: Miért tartózkodik, vagy miért nem érzi magát képesnek szavazni ebben a döntésben?
       disagree: Nem ért egyet
       disagree_meaning: Valamit meg kell változtatni ebben a javaslatban, mielőtt támogatni tudom.
       disagree_prompt: Hogyan lehetne ezt a javaslatot úgy javítani, hogy támogatni tudja?
+      abstain_meaning: Ha nem szavaznak, vagy nem tudnak szavazni erről a döntésről.
+      abstain_prompt: Miért tartózkodik, vagy miért nem érzi magát képesnek szavazni erről a döntésről?
     advice:
       process_subtitle: Kérjen tanácsot egy döntéssel kapcsolatban, amit meg kell hoznia
       process_introduction: <p>Kérjen tanácsot a meghozandó döntéssel kapcsolatban, kérje ki az érintettek vagy a szakértelemmel rendelkező személyek tanácsait, hogy jobb döntést hozhasson szervezete számára.</p><ul><li><p> A tanácsadás segít jobb döntéseket hozni a szervezete számára.</p></li><li><p> Támogasd a kapcsolatokat, a tanulási lehetőségeket és a sokszínű véleménynyilvánítást.</p></li><li><p> Ösztönözze a kezdeményezőkészséget és a kreativitást, és tegye a munkát élvezetesebbé.</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>Tudjon meg többet a tanácsadási folyamatról</u></a> .</p>
@@ -468,7 +468,6 @@ hu:
       agree_prompt: Mi tetszik a javaslatban, és hogyan válik az szervezet javára?
       abstain: Tartózkodj
       abstain_meaning: Ez a döntés engem nem érint, és elégedett vagyok azzal, amit a csoport dönt.
-      abstain_prompt: Miért tartózkodik, vagy miért nem érzi magát képesnek szavazni ebben a döntésben?
       disagree: Nem ért egyet
       disagree_meaning: Valamit meg kell változtatni ebben a javaslatban, mielőtt támogatni tudom.
       disagree_prompt: Hogyan lehetne ezt a javaslatot úgy javítani, hogy támogatni tudja?
@@ -477,6 +476,7 @@ hu:
       block_prompt: Indokolja meg kifogását ezzel a javaslattal szemben, és indokolja meg, hogy miért nem szabadna elfogadni.
       details_v2: "<h3><strong>Milyen döntést kell meghoznod?</strong></h3><p></p><h3> <strong>Miért fontos ez?</strong></h3><p></p><h3> <strong>Mit kérsz az emberektől?</strong></h3><p></p><p> Mondd el, hogy hol állsz, és miért. Ha nem értesz egyet, magyarázd el, min kellene változtatni ahhoz, hogy ezt alátámasztsd.</p>"
       process_introduction_v2: "<p><strong>A konszenzus</strong> olyan döntésekhez szükséges, ahol fontos, hogy mindenki aktívan egyetértsen. A résztvevők együttműködnek, hogy megértsék egymás igényeit, és addig alakítják a javaslatot, amíg az egész csoport támogatni nem tudja. Mivel az emberek a beszélgetés során megváltoztathatják szavazatukat, a folyamat az egy csapásra hozott döntések helyett az őszinte párbeszédet ösztönzi. Több türelmet igényel, mint más módszerek, de a legerősebb elkötelezettséget építi ki.</p><p> Ez a sablon alapértelmezés szerint tartalmaz egy <strong>Blokkolás</strong> opciót. A Blokkolás nem minden csoport számára megfelelő – ellentmondásos vagy helytelenül használható. Ha nem használsz blokkolást a döntéshozatali folyamatodban, javasoljuk, hogy szerkeszd a sablont a blokkolás eltávolításához.</p>"
+      abstain_prompt: Miért tartózkodik, vagy miért nem érzi magát képesnek szavazni erről a döntésről?
     question_round:
       process_subtitle: Tegyen fel tisztázó kérdéseket, hogy segítsen az embereknek megérteni a javaslatot
       process_introduction: <p>A kérdések köre lehetőséget ad arra, hogy a résztvevők tisztázó kérdéseket tegyenek fel a javaslattal kapcsolatban, hogy mindenki megértse a javaslatot, mielőtt elmondaná a véleményét róla.</p><p> A Loomio kérdéskör egy speciális javaslat szavazási lehetőségek nélkül. Lehetővé teszi a résztvevők számára, hogy a körre beállított időtartamon belül kérdéseket tegyenek fel.</p><p> A kérdezz-felelek kört gyakran alkalmazzák a beleegyezési folyamat egyik lépéseként.</p><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Tudjon meg többet a hozzájárulási folyamatról</a> .</p>
@@ -511,8 +511,8 @@ hu:
       could_be_better_meaning: Látok benne potenciált, de vannak javaslataim is
       could_be_better_prompt: Mit változtatnál?
       needs_a_rethink: Újragondolásra van szükség
-      needs_a_rethink_meaning: Szerintem a megközelítés nem helyes
       needs_a_rethink_prompt: Mi a gondod?
+      needs_a_rethink_meaning: Szerintem ez a rossz megközelítés
     gradients_of_agreement:
       process_subtitle: Fejezd ki a javaslat támogatását egy 8 fokú skálán
       process_introduction: "<p>Az egyetértés fokozatai módszerrel a csoport tagjai egy skálán, fokozatokban fejezhetik ki támogatásukat egy javaslattal kapcsolatban, ami több módot kínál a támogatás kifejezésére, mint az „egyetértek” és „nem értek egyet”.</p><p> Használja az egyetértési fokokat előzetes fordulóként, hogy tesztelje a javaslat támogatottságát, mielőtt hivatalos megállapodásra lépne.</p><p> Az egyetértés foka jelzi az embereknek, hogy formálódik egy javaslat, és arra ösztönzi őket, hogy bekapcsolódjanak. Lehetőséget ad arra, hogy meghallgassuk az embereket, megértsük, hogyan érzik magukat, és megfelelően reagáljunk – megnyitva a lehetőséget arra, hogy beépítsük a hozzájárulásaikat egy jobb döntés meghozatalához.</p>"

@@ -413,11 +413,11 @@ ro:
       agree_meaning: Susțin propunerea
       agree_prompt: Ce vă place la propunere și cum va aduce beneficii grupului?
       abstain: Abține-te
-      abstain_meaning: Alegând să nu votez sau incapacitatea de a vota în favoarea acestei decizii.
-      abstain_prompt: De ce vă abțineți sau nu vă simțiți în măsură să votați în favoarea acestei decizii?
       disagree: Nu sunt de acord
       disagree_meaning: Ceva din această propunere trebuie schimbat înainte să o pot susține.
       disagree_prompt: Cum ar putea fi îmbunătățită această propunere astfel încât să o puteți susține?
+      abstain_meaning: Alegând să nu votez sau incapacitatea de a vota asupra acestei decizii.
+      abstain_prompt: De ce vă abțineți sau nu vă simțiți în măsură să votați asupra acestei decizii?
     advice:
       process_subtitle: Cereți sfaturi cu privire la o decizie pe care trebuie să o luați
       process_introduction: <p>Cereți sfaturi cu privire la o decizie pe care trebuie să o luați, cu sfatul persoanelor afectate sau care au expertiză, astfel încât să puteți lua o decizie mai bună pentru organizația dumneavoastră.</p><ul><li><p> Sfaturile te ajută să iei o decizie mai bună pentru organizația ta.</p></li><li><p> Să cultivăm relații, oportunități de învățare și contribuții diverse.</p></li><li><p> Stimulează inițiativa și creativitatea și oferă o muncă mai plăcută.</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>Citiți mai multe despre procesul de consiliere</u></a> .</p>
@@ -456,7 +456,6 @@ ro:
       agree_prompt: Ce vă place la propunere și cum va aduce beneficii organizației?
       abstain: Abține-te
       abstain_meaning: Această decizie nu mă afectează și sunt mulțumit de orice va decide grupul.
-      abstain_prompt: De ce vă abțineți sau de ce nu vă simțiți în măsură să votați în favoarea acestei decizii?
       disagree: Nu sunt de acord
       disagree_meaning: Ceva din această propunere trebuie schimbat înainte să o pot susține.
       disagree_prompt: Cum ar putea fi îmbunătățită această propunere astfel încât să o puteți susține?
@@ -465,6 +464,7 @@ ro:
       block_prompt: Explicați obiecția dumneavoastră față de această propunere și de ce nu ar trebui să fie adoptată.
       details_v2: "<h3><strong>Care este decizia pe care trebuie să o iei?</strong></h3><p></p><h3> <strong>De ce este important acest lucru?</strong></h3><p></p><h3> <strong>Ce le ceri oamenilor să facă?</strong></h3><p></p><p> Împărtășește-ți poziția și de ce. Dacă nu ești de acord, explică ce ar trebui schimbat pentru a susține acest lucru.</p>"
       process_introduction_v2: "<p><strong>Consensul</strong> este valabil pentru deciziile în care contează ca toată lumea să fie de acord în mod activ. Participanții lucrează împreună pentru a înțelege nevoile celuilalt și pentru a modela propunerea până când întregul grup o poate susține. Deoarece oamenii își pot schimba votul pe măsură ce conversația evoluează, procesul încurajează un dialog autentic, mai degrabă decât o decizie luată într-o singură încercare. Necesită mai multă răbdare decât alte metode, dar construiește cel mai puternic angajament.</p><p> Acest șablon include în mod implicit o opțiune <strong>de blocare</strong> . Opțiunea „Blocare” nu este potrivită pentru orice grup — poate fi controversată sau utilizată greșit. Dacă nu utilizați opțiunea „Blocare” în procesul decizional, vă recomandăm să editați șablonul pentru a o elimina.</p>"
+      abstain_prompt: De ce vă abțineți sau nu vă simțiți în măsură să votați asupra acestei decizii?
     question_round:
       process_subtitle: Invitați la adresarea de întrebări clarificatoare pentru a ajuta oamenii să înțeleagă o propunere
       process_introduction: <p>O rundă de întrebări este o oportunitate pentru participanți de a pune întrebări clarificatoare despre propunere, astfel încât toată lumea să înțeleagă propunerea înainte de a-și exprima părerea despre ea.</p><p> Runda de întrebări Loomio este o propunere specială fără opțiuni de vot. Aceasta permite participanților să pună întrebări într-o durată stabilită de dumneavoastră pentru rundă.</p><p> O rundă de întrebări este utilizată în mod obișnuit ca o etapă în procesul de consimțământ.</p><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Citiți mai multe despre procesul de consimțământ</a> .</p>
@@ -499,8 +499,8 @@ ro:
       could_be_better_meaning: Văd potențial, dar am sugestii
       could_be_better_prompt: Ce ai schimba?
       needs_a_rethink: Necesită o regândire
-      needs_a_rethink_meaning: Cred că abordarea nu este corectă
       needs_a_rethink_prompt: Care este îngrijorarea ta?
+      needs_a_rethink_meaning: Cred că aceasta este abordarea greșită
     gradients_of_agreement:
       process_subtitle: Exprimați sprijinul pentru o propunere pe o scară de 8 puncte
       process_introduction: "<p>Gradienții de acord privind propunerea permit membrilor unui grup să își exprime sprijinul pentru o propunere în grade pe o scală, oferind mai multe modalități de exprimare a sprijinului decât în termeni de „acord” și „dezacord”.</p><p> Folosește Gradienții de acord ca o rundă preliminară, pentru a testa susținerea unei propuneri înainte de a trece la un acord formal.</p><p> Gradiile de acord le permit oamenilor să știe că se formează o propunere și îi încurajează să se implice. Este o oportunitate de a asculta oamenii, de a simți cum se simt și de a răspunde în mod corespunzător - deschizând potențialul de a le încorpora contribuțiile pentru a lua o decizie mai bună.</p>"

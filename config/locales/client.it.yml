@@ -718,7 +718,6 @@ it:
       stance_created_option: "%{actor} ha votato %{option} su %{title}"
       user_added_to_group: "%{actor} ti ha aggionto al gruppo: %{title}"
       user_mentioned: "%{actor} ti ha menzionato in: %{title}"
-      user_reminded: "%{actor} ti sta ricordando di votare su: %{title}"
       group_mentioned: "%{actor} ha menzionato il gruppo in: %{title}"
       new_delegate: "%{actor} ti ha nominato delegato con diritto di voto in %{title}"
       poll_announced: "%{actor} ti ha invitato a votare: %{title}"
@@ -726,6 +725,7 @@ it:
       discussion_edited: "%{actor} ha modificato il contesto della discussione: %{title}"
       discussion_closed: "%{actor} ha chiuso la discussione: %{title}"
       new_discussion: "%{actor} ha avviato una discussione: %{title}"
+      user_reminded: "%{actor} ti ricorda di votare su: %{title}"
     without_title:
       unknown_sender: Controlla l'e-mail proveniente da un mittente non riconosciuto
       group_announced: "%{actor} ti ha invitato a un gruppo"
@@ -802,10 +802,10 @@ it:
       user_added_to_group: "%{actor} ti ha aggiunto al gruppo: %{title}"
       user_mentioned: "%{actor} ti ha menzionato in: %{title}"
       group_mentioned: "%{actor} ha menzionato il gruppo in: %{title}"
-      user_reminded: "%{actor} ti ricorda di votare: %{title}"
       poll_announced: 'Vota: %{title}'
       discussion_edited: "%{actor} ha modificato il contesto della discussione: %{title}"
       discussion_closed: "%{actor} ha chiuso la discussione: %{title}"
+      user_reminded: "%{actor} ti ricorda di votare su: %{title}"
   discussion_fork_actions:
     move: Sposta
     moved: Commenti in movimento, questo potrebbe richiedere un momento
@@ -1500,7 +1500,6 @@ it:
   profile_page:
     autodetect_time_zone: Rilevamento automatico del fuso orario
     account_is_bot: Questo è un account bot
-    bot_account_warning: Gli account bot non saranno invitati a votare nei sondaggi o a partecipare alle discussioni
     incomplete_profile: Profilo incompleto!
     set_your_profile_picture: Inserisci la tua immagine del profilo
     messages:
@@ -1535,6 +1534,7 @@ it:
     delete_account_subtitle: Elimina completamente il tuo account e rimuovi il tuo nome dalle discussioni e decisioni passate.
     updated_on_sign_in: Fornito dal tuo browser e aggiornato quando accedi
     translate_content_automatically: Traduci automaticamente il contenuto nella mia lingua
+    bot_account_warning: Gli account bot non saranno invitati a votare nei sondaggi né a partecipare alle discussioni.
   text_editor:
     x_of_y_characters: "%{x} / %{y} caratteri"
     select_text_to_link: Seleziona il testo da collegare e riprova
@@ -2045,12 +2045,12 @@ it:
     anonymous: I voti sono anonimi
     results_hidden_until_closed: I risultati verranno mostrati dopo che la votazione sarà terminata
     results_hidden_until_vote: I risultati verranno mostrati dopo che avrai votato
-    unable_to_vote: Non sei stato invitato a votare in questo %{poll_type}.
     draft_mode: Voto disattivato. Questo non è ancora aperto per il voto.
     voting_disabled_poll_is_template: Voto disattivato. Questo è un modello.
     for_this_proposal_to_pass: 'Per far passare questa proposta:'
     for_this_poll_type_to_be_valid: 'Affinché questo %{poll_type} sia valido:'
     voting_opens_at: Questo %{poll_type} si apre per votare %{time}
+    unable_to_vote: Non sei stato invitato a votare su questo %{poll_type}
   poll_common_collapsed:
     by_who: di %{name}
   poll_common_calendar_invite:
@@ -2664,7 +2664,6 @@ it:
     save_poll: Salva il sondaggio
     start_poll_type: Avvia %{poll_type}
     share_poll_type: Condividi %{poll_type}
-    who_may_vote: Chi può votare in questo %{poll_type}?
     update: Aggiornamento
     add_voters: Aggiungi elettori
     notify_invitees: Invia notifiche
@@ -2694,6 +2693,7 @@ it:
     create_poll_type: Crea %{poll_type}
     notify_voters_when_voting_opens: Avvisare gli elettori quando si aprono le votazioni
     voters_notified_when_opens: Gli elettori saranno avvisati all'apertura delle votazioni
+    who_may_vote: Chi può votare su questo %{poll_type}?
   poll_receipts_page:
     verify_participants: Verifica i partecipanti
     see_votes_if_quorum_reached: Se la votazione è chiusa e il quorum è stato raggiunto, vedrai chi ha espresso il voto.

@@ -83,11 +83,11 @@ zh_CN:
       agree_meaning: 我支持这项提议。
       agree_prompt: 你觉得这个方案有哪些优点？它将如何使团队受益？
       abstain: 弃权
-      abstain_meaning: 选择不参与投票，或无法参与此次投票。
-      abstain_prompt: 你为什么弃权，或者为什么觉得自己无法参与这项决定的投票？
       disagree: 不同意
       disagree_meaning: 这项提案需要修改一些内容，我才能支持它。
       disagree_prompt: 如何改进这项提案才能让您支持它？
+      abstain_meaning: 选择不参与投票，或无法参与投票。
+      abstain_prompt: 你为什么弃权，或者为什么觉得自己无法就此决定投票？
     advice:
       process_subtitle: 就你需要做的决定寻求建议。
       process_introduction: <p>在需要做出决定时，向受影响的人或有专业知识的人寻求建议，以便为你的组织做出更好的决定。</p><ul><li><p>建议可以帮助您为您的组织做出更好的决策。</p></li><li><p>促进人际关系、学习机会和多元化意见的形成。</p></li><li><p>激发主动性和创造力，让工作更有趣。</p></li></ul><p><a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>了解更多关于咨询流程的信息</u></a>。</p>
@@ -126,7 +126,6 @@ zh_CN:
       agree_prompt: 您觉得这个方案有哪些优点？它将如何使组织受益？
       abstain: 弃权
       abstain_meaning: 这个决定对我没有影响，我对小组的任何决定都表示理解和支持。
-      abstain_prompt: 你为什么弃权，或者为什么觉得自己无法参与这项决定的投票？
       disagree: 不同意
       disagree_meaning: 这份提案需要修改一些内容，我才能支持它。
       disagree_prompt: 如何改进这项提案才能让您支持它？
@@ -135,6 +134,7 @@ zh_CN:
       block_prompt: 请解释您反对这项提议的原因以及它为何不应实施。
       details_v2: "<h3><strong>你需要做出什么决定？</strong></h3><p></p><h3><strong>为什么这很重要？</strong></h3><p></p><h3><strong>你要求人们做什么？</strong></h3><p></p><p>请分享您的立场以及原因。如果您不同意，请解释需要做出哪些改变才能让您支持。</p>"
       process_introduction_v2: "<p><strong>共识</strong>适用于需要所有人积极同意的决策。参与者共同努力，了解彼此的需求，并不断完善提案，直至获得全体成员的支持。由于人们可以在讨论过程中改变投票，因此该过程鼓励真诚的对话，而非一蹴而就的决定。与其他方法相比，它需要更多的耐心，但也能建立最牢固的承诺。</p><p>此模板默认包含<strong>“阻止”</strong>选项。“阻止”功能并非适用于所有群体——它可能引发争议或被滥用。如果您在决策过程中不使用“阻止”功能，我们建议您编辑模板将其移除。</p>"
+      abstain_prompt: 你为什么弃权，或者为什么觉得自己无法就此决定投票？
     question_round:
       process_subtitle: 邀请提问者提出澄清问题，以帮助人们理解提案。
       process_introduction: <p>提问环节是让人们有机会就提案提出澄清性问题，以便每个人在发表意见之前都能理解提案。</p><p> Loomio 问答环节是一种特殊的活动形式，不设投票选项。参与者可以在您设定的时长内提问。</p><p>问答环节通常用作知情同意流程中的一个步骤。</p><p><a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">阅读更多关于同意流程的信息</a>。</p>
@@ -169,8 +169,8 @@ zh_CN:
       could_be_better_meaning: 我看到了潜力，但也有一些建议
       could_be_better_prompt: 你会做出哪些改变？
       needs_a_rethink: 需要重新考虑
-      needs_a_rethink_meaning: 我认为这种方法不对。
       needs_a_rethink_prompt: 你担心的是什么？
+      needs_a_rethink_meaning: 我认为这种做法是错误的。
     gradients_of_agreement:
       process_subtitle: 请用 8 分制表达您对该提案的支持程度
       process_introduction: "<p>同意程度梯度提案允许小组成员以等级的方式表达他们对提案的支持，提供的表达支持的方式比“同意”和“不同意”更多。</p><p>使用“同意梯度”作为初步阶段，在达成正式协议之前测试对提案的支持度。</p><p>意见分歧程度的差异让人们知道提案正在形成，并鼓励他们参与讨论。这是一个倾听他人意见、了解他们感受并做出适当回应的机会，从而有可能将他们的建议纳入决策，做出更明智的决定。</p>"

@@ -437,11 +437,11 @@ es:
       agree_meaning: Apoyo la propuesta
       agree_prompt: "¿Qué te gusta de la propuesta y cómo beneficiará al grupo?"
       abstain: Abstenerse
-      abstain_meaning: Elegir no votar o no poder votar en esta decisión.
-      abstain_prompt: "¿Por qué se abstiene o no se siente capaz de votar en esta decisión?"
       disagree: Discrepar
       disagree_meaning: Es necesario cambiar algo en esta propuesta antes de poder apoyarla.
       disagree_prompt: "¿Cómo se podría mejorar esta propuesta para que puedas apoyarla?"
+      abstain_meaning: Optar por no votar o no poder votar sobre esta decisión.
+      abstain_prompt: "¿Por qué se abstiene o no se siente capaz de votar sobre esta decisión?"
     advice:
       process_subtitle: Busque asesoramiento sobre una decisión que necesita tomar
       process_introduction: <p>Busque asesoramiento sobre una decisión que necesita tomar, con el asesoramiento de personas afectadas o que tengan experiencia, para que pueda tomar una mejor decisión para su organización.</p><ul><li><p> El asesoramiento le ayudará a tomar una mejor decisión para su organización.</p></li><li><p> Fomentar las relaciones, las oportunidades de aprendizaje y la diversidad de aportaciones.</p></li><li><p> Estimular la iniciativa y la creatividad y hacer más agradable el trabajo.</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>Lea más acerca del proceso de Asesoramiento</u></a> .</p>
@@ -480,7 +480,6 @@ es:
       agree_prompt: "¿Qué te gusta de la propuesta y cómo beneficiará a la organización?"
       abstain: Abstenerse
       abstain_meaning: Esta decisión no me afecta y estoy contento con lo que decida el grupo.
-      abstain_prompt: "¿Por qué se abstiene o no se siente capaz de votar en esta decisión?"
       disagree: Discrepar
       disagree_meaning: Es necesario cambiar algo en esta propuesta antes de poder apoyarla.
       disagree_prompt: "¿Cómo se podría mejorar esta propuesta para que puedas apoyarla?"
@@ -489,6 +488,7 @@ es:
       block_prompt: Explique su objeción a esta propuesta y por qué no debería seguir adelante.
       details_v2: "<h3><strong>¿Cuál es la decisión que debes tomar?</strong></h3><p></p><h3> <strong>¿Por qué es esto importante?</strong></h3><p></p><h3> <strong>¿Qué le estás pidiendo a la gente que haga?</strong></h3><p></p><p> Comparte tu postura y por qué. Si no estás de acuerdo, explica qué debería cambiar para que apoyes esta postura.</p>"
       process_introduction_v2: "<p><strong>El consenso</strong> se utiliza para tomar decisiones donde es fundamental que todos estén de acuerdo. Los participantes colaboran para comprender las necesidades de los demás y dar forma a la propuesta hasta que todo el grupo pueda apoyarla. Dado que las personas pueden cambiar su voto a medida que avanza la conversación, el proceso fomenta un diálogo genuino en lugar de una decisión improvisada. Requiere más paciencia que otros métodos, pero genera un compromiso más sólido.</p><p> Esta plantilla incluye la opción <strong>Bloquear</strong> por defecto. Esta opción no es adecuada para todos los grupos; puede ser controvertida o mal utilizada. Si no utiliza la opción Bloquear en su proceso de toma de decisiones, le recomendamos editar la plantilla para eliminarla.</p>"
+      abstain_prompt: "¿Por qué se abstiene o no se siente capaz de votar sobre esta decisión?"
     question_round:
       process_subtitle: Invitar a hacer preguntas aclaratorias para ayudar a las personas a comprender una propuesta.
       process_introduction: <p>Una ronda de preguntas es una oportunidad para que las personas hagan preguntas aclaratorias sobre la propuesta, de modo que todos entiendan la propuesta antes de decir lo que piensan sobre ella.</p><p> La ronda de preguntas de Loomio es una propuesta especial sin opción de votación. Permite a los participantes hacer preguntas dentro del tiempo establecido para la ronda.</p><p> Una ronda de preguntas se utiliza comúnmente como un paso en el proceso de consentimiento.</p><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Lea más sobre el proceso de consentimiento</a> .</p>
@@ -523,8 +523,8 @@ es:
       could_be_better_meaning: Veo potencial pero tengo sugerencias.
       could_be_better_prompt: "¿Qué cambiarías?"
       needs_a_rethink: Necesita un replanteamiento
-      needs_a_rethink_meaning: Creo que el enfoque no es el correcto.
       needs_a_rethink_prompt: "¿Cual es tu preocupación?"
+      needs_a_rethink_meaning: Creo que este es el enfoque equivocado.
     gradients_of_agreement:
       process_subtitle: Expresar apoyo a una propuesta en una escala de 8 puntos
       process_introduction: "<p>La propuesta de Gradientes de acuerdo permite a los miembros de un grupo expresar su apoyo a una propuesta en grados en una escala, ofreciendo más formas de expresar apoyo que en términos de “de acuerdo” y “en desacuerdo”.</p><p> Utilice los gradientes de acuerdo como una ronda preliminar para probar el apoyo a una propuesta antes de pasar a un acuerdo formal.</p><p> Los gradientes de acuerdo permiten a las personas saber que se está formando una propuesta y las animan a participar. Es una oportunidad para escuchar a las personas, percibir sus sentimientos y responder adecuadamente, lo que abre la posibilidad de incorporar sus contribuciones para tomar una mejor decisión.</p>"

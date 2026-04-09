@@ -415,11 +415,11 @@ ca:
       agree_meaning: Dono suport a la proposta
       agree_prompt: Què t'agrada de la proposta i com beneficiarà el grup?
       abstain: Abstenir-se
-      abstain_meaning: Escollir no votar o no poder votar en aquesta decisió.
-      abstain_prompt: Per què us absteniu o no us sentiu capaços de votar a favor d'aquesta decisió?
       disagree: En desacord
       disagree_meaning: Cal canviar alguna cosa en aquesta proposta abans que pugui donar-hi suport.
       disagree_prompt: Com es podria millorar aquesta proposta perquè pugueu donar-hi suport?
+      abstain_meaning: Escollir no votar o no poder votar sobre aquesta decisió.
+      abstain_prompt: Per què us absteniu o no us sentiu en condicions de votar sobre aquesta decisió?
     advice:
       process_subtitle: Demana consell sobre una decisió que has de prendre
       process_introduction: <p>Demana assessorament sobre una decisió que hagis de prendre, amb el consell de persones afectades o que tinguin experiència, per tal de poder prendre una millor decisió per a la teva organització.</p><ul><li><p> L'assessorament t'ajuda a prendre una millor decisió per a la teva organització.</p></li><li><p> Fomentar les relacions, les oportunitats d'aprenentatge i les aportacions diverses.</p></li><li><p> Estimular la iniciativa i la creativitat, i fer una feina més agradable.</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>Més informació sobre el procés d'assessorament</u></a> .</p>
@@ -458,7 +458,6 @@ ca:
       agree_prompt: Què t'agrada de la proposta i com beneficiarà l'organització?
       abstain: Abstenir-se
       abstain_meaning: Aquesta decisió no m'afecta i estic content amb el que decideixi el grup.
-      abstain_prompt: Per què us absteniu o no us sentiu capaços de votar a favor d'aquesta decisió?
       disagree: En desacord
       disagree_meaning: Cal canviar alguna cosa en aquesta proposta abans que pugui donar-hi suport.
       disagree_prompt: Com es podria millorar aquesta proposta perquè pugueu donar-hi suport?
@@ -467,6 +466,7 @@ ca:
       block_prompt: Expliqueu la vostra objecció a aquesta proposta i per què no s'hauria de tirar endavant
       details_v2: "<h3><strong>Quina és la decisió que has de prendre?</strong></h3><p></p><h3> <strong>Per què és important això?</strong></h3><p></p><h3> <strong>Què li demanes a la gent que faci?</strong></h3><p></p><p> Comparteix la teva posició i per què. Si no hi estàs d'acord, explica què caldria canviar perquè ho donessis suport.</p>"
       process_introduction_v2: "<p><strong>El consens</strong> és per a decisions en què importa que tothom hi estigui d'acord activament. Els participants treballen junts per entendre les necessitats dels altres i donar forma a la proposta fins que tot el grup pugui donar-hi suport. Com que la gent pot canviar el seu vot a mesura que la conversa es desenvolupa, el procés fomenta un diàleg genuí en lloc d'una decisió puntual. Requereix més paciència que altres mètodes, però genera el compromís més fort.</p><p> Aquesta plantilla inclou una opció <strong>de bloqueig</strong> per defecte. El bloqueig no és adequat per a tots els grups; pot ser controvertit o mal utilitzat. Si no utilitzeu el bloqueig en el vostre procés de presa de decisions, us recomanem que editeu la plantilla per eliminar-lo.</p>"
+      abstain_prompt: Per què us absteniu o no us sentiu en condicions de votar sobre aquesta decisió?
     question_round:
       process_subtitle: Convidar a fer preguntes aclaridores per ajudar la gent a entendre una proposta
       process_introduction: <p>Una ronda de preguntes és una oportunitat perquè la gent faci preguntes aclaridores sobre la proposta, de manera que tothom l'entengui abans de dir què en pensa.</p><p> La ronda de preguntes de Loomio és una proposta especial sense opcions de votació. Permet als participants fer preguntes dins d'un període que definiu per a la ronda.</p><p> Una ronda de preguntes s'utilitza habitualment com a pas en el procés de consentiment.</p><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Més informació sobre el procés de consentiment</a> .</p>
@@ -501,8 +501,8 @@ ca:
       could_be_better_meaning: Veig potencial però tinc suggeriments
       could_be_better_prompt: Què canviaries?
       needs_a_rethink: Cal un replantejament
-      needs_a_rethink_meaning: Crec que l'enfocament no és correcte
       needs_a_rethink_prompt: Quina és la teva preocupació?
+      needs_a_rethink_meaning: Crec que aquest és l'enfocament equivocat
     gradients_of_agreement:
       process_subtitle: Expressar el suport a una proposta en una escala de 8 punts
       process_introduction: <p>Els Gradients d'acord de la proposta permeten als membres d'un grup expressar el seu suport a una proposta en graus en una escala, oferint més maneres d'expressar suport que en termes d'"d'acord" i "en desacord".</p><p> Utilitzeu els gradients d'acord com a ronda preliminar per comprovar el suport a una proposta abans de passar a un acord formal.</p><p> Els gradients d'acord permeten a la gent saber que s'està formant una proposta i els animen a participar-hi. És una oportunitat per escoltar la gent, percebre com se senten i respondre-hi adequadament, cosa que obre el potencial per incorporar les seves contribucions per prendre una millor decisió.</p>

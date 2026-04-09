@@ -73,7 +73,7 @@ class EventMailer < ApplicationMailer
       utm_hash: utm_hash
     )
 
-    return if spam?(recipient.email)
+    return if spam?(recipient.email) || rejected_address?(recipient.email)
 
     I18n.with_locale(first_supported_locale(recipient.locale)) do
       subject = if discussion_kinds.include?(event.kind)

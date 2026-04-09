@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_04_06_000000) do
+ActiveRecord::Schema[8.0].define(version: 2026_04_07_230356) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -1064,6 +1064,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_06_000000) do
     t.string "email_sha256"
     t.integer "complaints_count", default: 0, null: false
     t.boolean "auto_translate", default: false, null: false
+    t.integer "bounces_count", default: 0, null: false
     t.index ["api_key"], name: "index_users_on_api_key"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["email_verified"], name: "index_users_on_email_verified"

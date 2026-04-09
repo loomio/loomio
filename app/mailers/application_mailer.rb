@@ -27,7 +27,7 @@ class ApplicationMailer < ActionMailer::Base
   end
 
   def send_email(to:, locale:, component:, **mail_options)
-    return if spam?(to)
+    return if spam?(to) || rejected_address?(to)
 
     I18n.with_locale(first_supported_locale(locale)) do
       mail(mail_options.merge(to: to, subject: yield)) do |format|
@@ -37,9 +37,11 @@ class ApplicationMailer < ActionMailer::Base
   end
 
   def spam?(to)
-    return true if NoSpam::SPAM_REGEX.match?(to)
-    return true if NOTIFICATIONS_EMAIL_ADDRESS == to
+    NoSpam::SPAM_REGEX.match?(to) || NOTIFICATIONS_EMAIL_ADDRESS == to
+  end
+
+  def rejected_address?(to)
     email = to.match(/<(.+)>/)&.[](1) || to
-    User.has_spam_complaints.where(email: email).exists?
+    User.where(email: email).where("complaints_count > 0 OR bounces_count > 0").exists?
   end
 end

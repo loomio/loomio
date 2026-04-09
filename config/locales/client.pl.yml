@@ -710,7 +710,6 @@ pl:
       stance_created_option: "%{actor} zagłosował na %{option} w %{title}"
       user_added_to_group: "%{actor} dodał Cię do grupy: %{title}"
       user_mentioned: "%{actor} wspomniał/a o Tobie w: %{title}"
-      user_reminded: "%{actor}przypomina Ci o głosowaniu w:%{title}"
       group_mentioned: "%{actor} wspomniał o grupie w: %{title}"
       new_delegate: "%{actor} nadał Ci status delegata z prawem głosu w %{title}"
       poll_announced: "%{actor} zaprosił Cię do głosowania: %{title}"
@@ -718,6 +717,7 @@ pl:
       discussion_edited: "%{actor} edytował kontekst dyskusji: %{title}"
       discussion_closed: "%{actor} zamknął dyskusję: %{title}"
       new_discussion: "%{actor} rozpoczął dyskusję: %{title}"
+      user_reminded: "%{actor} przypomina o głosowaniu na: %{title}"
     without_title:
       unknown_sender: Sprawdź wiadomość e-mail od nierozpoznanego nadawcy
       group_announced: "%{actor} zaprosił Cię do grupy"
@@ -794,10 +794,10 @@ pl:
       user_added_to_group: "%{actor} dodał Cię do grupy: %{title}"
       user_mentioned: "%{actor} wspomniał o Tobie w: %{title}"
       group_mentioned: "%{actor} wspomniał o grupie w: %{title}"
-      user_reminded: "%{actor} przypomina o oddaniu głosu w: %{title}"
       poll_announced: 'Głosuj: %{title}'
       discussion_edited: "%{actor} edytował kontekst dyskusji: %{title}"
       discussion_closed: "%{actor} zamknął dyskusję: %{title}"
+      user_reminded: "%{actor} przypomina o głosowaniu na: %{title}"
   discussion_fork_actions:
     move: Przenieś
     moved: Przenoszenie komentarzy, to może zająć chwilę
@@ -1488,7 +1488,6 @@ pl:
   profile_page:
     autodetect_time_zone: Automatycznie wykrywa strefę czasową
     account_is_bot: To jest konto bota
-    bot_account_warning: Konta botów nie będą zapraszane do głosowania w ankietach ani do udziału w dyskusjach
     incomplete_profile: Niekompletny profil!
     set_your_profile_picture: Ustaw swoje zdjęcie profilowe
     messages:
@@ -1523,6 +1522,7 @@ pl:
     delete_account_subtitle: Całkowicie usuń swoje konto i usuń swoje imię i nazwisko z poprzednich dyskusji i decyzji.
     updated_on_sign_in: Dostarczane przez przeglądarkę i aktualizowane po zalogowaniu
     translate_content_automatically: Automatycznie tłumacz treść na mój język
+    bot_account_warning: Konta botów nie będą zapraszane do głosowania w ankietach ani do udziału w dyskusjach
   text_editor:
     x_of_y_characters: "%{x} / %{y} znaków"
     select_text_to_link: Wybierz tekst do połączenia i spróbuj ponownie
@@ -2042,12 +2042,12 @@ pl:
     anonymous: Głosy są anonimowe
     results_hidden_until_closed: Wyniki zostaną wyświetlone po zakończeniu głosowania
     results_hidden_until_vote: Wyniki zostaną wyświetlone po oddaniu głosu
-    unable_to_vote: Nie zostałeś zaproszony do głosowania w %{poll_type}
     draft_mode: Głosowanie wyłączone. To nie jest jeszcze otwarte do głosowania.
     voting_disabled_poll_is_template: Głosowanie wyłączone. To jest szablon.
     for_this_proposal_to_pass: 'Aby wniosek ten został przyjęty:'
     for_this_poll_type_to_be_valid: 'Aby ten %{poll_type} był ważny:'
     voting_opens_at: Ta ankieta %{poll_type} jest otwarta do głosowania %{time}
+    unable_to_vote: Nie zaproszono Cię do głosowania w tej ankiecie %{poll_type}
   poll_common_collapsed:
     by_who: przez %{name}
   poll_common_calendar_invite:
@@ -2663,7 +2663,6 @@ pl:
     save_poll: Zapisz ankietę
     start_poll_type: Rozpocznij %{poll_type}
     share_poll_type: Udostępnij %{poll_type}
-    who_may_vote: Kto może głosować w tej ankiecie %{poll_type}?
     update: Aktualizacja
     add_voters: Dodaj wyborców
     notify_invitees: Wysyłaj powiadomienia
@@ -2693,6 +2692,7 @@ pl:
     create_poll_type: Utwórz %{poll_type}
     notify_voters_when_voting_opens: Powiadom wyborców o otwarciu głosowania
     voters_notified_when_opens: Wyborcy zostaną powiadomieni o otwarciu głosowania
+    who_may_vote: Kto może głosować w tej ankiecie %{poll_type}?
   poll_receipts_page:
     verify_participants: Zweryfikuj uczestników
     see_votes_if_quorum_reached: Jeśli głosowanie zostało zamknięte i osiągnięto kworum, zobaczysz, kto oddał głos.

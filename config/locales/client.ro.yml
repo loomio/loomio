@@ -706,7 +706,6 @@ ro:
       stance_created_option: "%{actor} a votat %{option} în %{title}"
       user_added_to_group: "%{actor} te-a adăugat în grupul: %{title}"
       user_mentioned: "%{actor} te-a menționat în: %{title}"
-      user_reminded: "%{actor} vă reamintește să votați în: %{title}"
       group_mentioned: "%{actor} a menționat grupul în: %{title}"
       new_delegate: "%{actor} te-a făcut delegat cu drept de vot în %{title}"
       poll_announced: "%{actor} te-a invitat să votezi: %{title}"
@@ -714,6 +713,7 @@ ro:
       discussion_edited: "%{actor} a editat contextul discuției: %{title}"
       discussion_closed: "%{actor} a închis discuția: %{title}"
       new_discussion: "%{actor} a început o discuție: %{title}"
+      user_reminded: "%{actor} vă reamintește să votați pentru: %{title}"
     without_title:
       unknown_sender: Vă rugăm să examinați e-mailul de la expeditor nerecunoscut
       group_announced: "%{actor} te-a invitat într-un grup"
@@ -790,10 +790,10 @@ ro:
       user_added_to_group: "%{actor} te-a adăugat la grup: %{title}"
       user_mentioned: "%{actor} te-a menționat în: %{title}"
       group_mentioned: "%{actor} a menționat grupul în: %{title}"
-      user_reminded: "%{actor} vă reamintește să votați pentru: %{title}"
       poll_announced: 'Vot: %{title}'
       discussion_edited: "%{actor} a editat contextul discuției: %{title}"
       discussion_closed: "%{actor} a închis discuția: %{title}"
+      user_reminded: "%{actor} vă reamintește să votați pentru: %{title}"
   discussion_fork_actions:
     move: Mișcare
     moved: Comentarii în mișcare, acest lucru ar putea dura un moment
@@ -1472,7 +1472,6 @@ ro:
   profile_page:
     autodetect_time_zone: Autodetectare fus orar
     account_is_bot: Acesta este un cont bot
-    bot_account_warning: Conturile bot nu vor fi invitate să voteze în sondaje sau să participe la discuții
     incomplete_profile: Profil incomplet!
     set_your_profile_picture: Setează-ți fotografia de profil
     messages:
@@ -1507,6 +1506,7 @@ ro:
     delete_account_subtitle: Ștergeți-vă complet contul și eliminați-vă numele din discuțiile și deciziile anterioare.
     updated_on_sign_in: Furnizat de browserul dvs. și actualizat atunci când vă conectați
     translate_content_automatically: Traduceți automat conținutul în limba mea
+    bot_account_warning: Conturile de bot nu vor fi invitate să voteze în sondaje sau să participe la discuții.
   text_editor:
     x_of_y_characters: "%{x} / %{y} caractere"
     select_text_to_link: Selectați textul de conectat și încercați din nou
@@ -2015,12 +2015,12 @@ ro:
     anonymous: Voturile sunt anonime
     results_hidden_until_closed: Rezultatele vor fi afișate după încheierea votării
     results_hidden_until_vote: Rezultatele vor fi afișate după ce votați
-    unable_to_vote: Nu ați fost invitat să votați în acest %{poll_type}
     draft_mode: Votul este dezactivat. Acesta nu este încă deschis pentru vot.
     voting_disabled_poll_is_template: Votul este dezactivat. Acesta este un șablon.
     for_this_proposal_to_pass: 'Pentru ca această propunere să fie adoptată:'
     for_this_poll_type_to_be_valid: 'Pentru ca acest %{poll_type} să fie valid:'
     voting_opens_at: Acest %{poll_type} se deschide pentru votare %{time}
+    unable_to_vote: Nu ați fost invitat să votați pentru acest %{poll_type}
   poll_common_collapsed:
     by_who: dupa %{name}
   poll_common_calendar_invite:
@@ -2634,7 +2634,6 @@ ro:
     save_poll: Salvați sondajul
     start_poll_type: Începeți %{poll_type}
     share_poll_type: Distribuie %{poll_type}
-    who_may_vote: Cine poate vota în acest %{poll_type}?
     update: Actualizare
     add_voters: Adăugați alegători
     notify_invitees: Trimiteți notificări
@@ -2664,6 +2663,7 @@ ro:
     create_poll_type: Creați %{poll_type}
     notify_voters_when_voting_opens: Anunță alegătorii când se deschide votul
     voters_notified_when_opens: Alegătorii vor fi anunțați când se va deschide votul
+    who_may_vote: Cine poate vota pentru acest %{poll_type}?
   poll_receipts_page:
     verify_participants: Verificați participanții
     see_votes_if_quorum_reached: Dacă votarea s-a închis și s-a atins cvorumul, veți vedea cine a votat.

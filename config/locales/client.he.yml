@@ -706,7 +706,6 @@ he:
       stance_created_option: "%{actor} הצביע %{option} ב-%{title}"
       user_added_to_group: "%{actor} הוסיף אותך לקבוצה: %{title}"
       user_mentioned: "%{actor} הזכיר אותך ב: %{title}"
-      user_reminded: "%{actor} מזכיר לך להצביע ב:%{title}"
       group_mentioned: "%{actor} הזכיר את הקבוצה ב: %{title}"
       new_delegate: "%{actor} הפך אותך לנציג עם זכויות הצבעה ב-%{title}"
       poll_announced: "%{actor} הזמין אותך להצביע: %{title}"
@@ -714,6 +713,7 @@ he:
       discussion_edited: "%{actor} ערך את הקשר הדיון: %{title}"
       discussion_closed: "%{actor} סגר את הדיון: %{title}"
       new_discussion: "%{actor} פתח דיון: %{title}"
+      user_reminded: "%{actor} מזכיר לך להצביע על: %{title}"
     without_title:
       unknown_sender: אנא עיין באימייל משולח לא מזוהה
       group_announced: "%{actor} הזמין אותך לקבוצה"
@@ -790,10 +790,10 @@ he:
       user_added_to_group: "%{actor} הוסיף אותך לקבוצה: %{title}"
       user_mentioned: "%{actor} הזכיר אותך ב: %{title}"
       group_mentioned: "%{actor} הזכיר את הקבוצה ב: %{title}"
-      user_reminded: "%{actor} מזכיר לך להצביע ב: %{title}"
       poll_announced: 'הצבעה: %{title}'
       discussion_edited: "%{actor} ערך את הקשר הדיון: %{title}"
       discussion_closed: "%{actor} סגר את הדיון: %{title}"
+      user_reminded: "%{actor} מזכיר לך להצביע על: %{title}"
   discussion_fork_actions:
     move: העבר
     moved: הערות מרגשות, זה עשוי לקחת רגע
@@ -1484,7 +1484,6 @@ he:
   profile_page:
     autodetect_time_zone: זיהוי אוטומטי של אזור זמן
     account_is_bot: זה חשבון בוט
-    bot_account_warning: חשבונות בוטים לא יוזמנו להצביע בסקרים או להשתתף בדיונים
     incomplete_profile: פרופיל לא שלם!
     set_your_profile_picture: הגדר את תמונת הפרופיל שלך
     messages:
@@ -1519,6 +1518,7 @@ he:
     delete_account_subtitle: מחק לחלוטין את חשבונך והסר את שמך מדיונים והחלטות בעבר.
     updated_on_sign_in: מסופק על ידי הדפדפן שלך ומעודכן בעת הכניסה
     translate_content_automatically: תרגם תוכן לשפה שלי באופן אוטומטי
+    bot_account_warning: חשבונות בוט לא יוזמנו להצביע בסקרים או להשתתף בדיונים
   text_editor:
     x_of_y_characters: "%{x} / %{y} תווים"
     select_text_to_link: בחר טקסט לקישור ונסה שוב
@@ -2034,12 +2034,12 @@ he:
     anonymous: ההצבעות הן אנונימיות
     results_hidden_until_closed: התוצאות יוצגו לאחר סגירת ההצבעה
     results_hidden_until_vote: התוצאות יוצגו לאחר ההצבעה
-    unable_to_vote: לא הוזמנת להצביע ב-%{poll_type} הזה
     draft_mode: ההצבעה מושבתת. זה עדיין לא פתוח להצבעה.
     voting_disabled_poll_is_template: ההצבעה מושבתת. זו תבנית.
     for_this_proposal_to_pass: 'כדי שההצעה הזו תעבור:'
     for_this_poll_type_to_be_valid: 'כדי ש-%{poll_type} הזה יהיה תקף:'
     voting_opens_at: "%{poll_type} הזה נפתח להצבעה %{time}"
+    unable_to_vote: לא הוזמנת להצביע ב-%{poll_type} הזה
   poll_common_collapsed:
     by_who: על פי %{name}
   poll_common_calendar_invite:
@@ -2653,7 +2653,6 @@ he:
     save_poll: שמור את הסקר
     start_poll_type: התחל %{poll_type}
     share_poll_type: שתף %{poll_type}
-    who_may_vote: מי רשאי להצביע ב-%{poll_type} הזה?
     update: לְעַדְכֵּן
     add_voters: הוסף מצביעים
     notify_invitees: שלח התראות
@@ -2683,6 +2682,7 @@ he:
     create_poll_type: צור %{poll_type}
     notify_voters_when_voting_opens: הודעה לבוחרים עם פתיחת ההצבעה
     voters_notified_when_opens: המצביעים יקבלו הודעה עם פתיחת ההצבעה
+    who_may_vote: מי רשאי להצביע ב%{poll_type} הזה?
   poll_receipts_page:
     verify_participants: אימות משתתפים
     see_votes_if_quorum_reached: אם ההצבעה נסגרה והושג המניין החוקי, תראו מי הצביע.

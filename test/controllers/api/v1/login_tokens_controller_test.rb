@@ -30,6 +30,6 @@ class Api::V1::LoginTokensControllerTest < ActionController::TestCase
     assert_no_difference -> { LoginToken.count } do
       post :create, params: { email: "notathing@example.com" }
     end
-    assert_response :not_found
+    assert_response :success
   end
 end

@@ -52,6 +52,23 @@ class Rack::Attack
     end
   end
 
+  # Per-email rate limiting on auth endpoints
+  throttle("login_tokens/email", limit: 5 * RATE_MULTIPLIER, period: (1 * TIME_MULTIPLIER).hour) do |req|
+    if req.post? && req.path.starts_with?('/api/v1/login_tokens')
+      req.params['email'].to_s.downcase.presence
+    end
+  end
+
+  throttle("sessions/email", limit: 10 * RATE_MULTIPLIER, period: (1 * TIME_MULTIPLIER).hour) do |req|
+    if req.post? && req.path.starts_with?('/api/v1/sessions')
+      req.params.dig('user', 'email').to_s.downcase.presence
+    end
+  end
+
+  throttle("profile_get/ip", limit: 20 * RATE_MULTIPLIER, period: (1 * TIME_MULTIPLIER).hour) do |req|
+    req.remote_ip if req.get? && req.path.starts_with?('/api/v1/profile/')
+  end
+
   ActiveSupport::Notifications.subscribe(/rack_attack/) do |name, start, finish, request_id, req_h|
     req = req_h[:request]
     Rails.logger.warn [name,

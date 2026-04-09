@@ -419,11 +419,11 @@ da:
       agree_meaning: Jeg støtter forslaget
       agree_prompt: Hvad synes du om forslaget, og hvordan vil det gavne gruppen?
       abstain: Afholde sig
-      abstain_meaning: At vælge ikke at stemme, eller ikke kunne, i denne beslutning.
-      abstain_prompt: Hvorfor undlader du at stemme, eller føler du dig ikke i stand til at stemme ved denne beslutning?
       disagree: Være uenig
       disagree_meaning: Noget i dette forslag skal ændres, før jeg kan støtte det.
       disagree_prompt: Hvordan kan dette forslag forbedres, så du kan støtte det?
+      abstain_meaning: At vælge ikke at stemme om denne beslutning, eller at være ude af stand til det.
+      abstain_prompt: Hvorfor undlader du at stemme, eller føler du dig ikke i stand til at stemme om denne beslutning?
     advice:
       process_subtitle: Søg rådgivning om en beslutning, du skal træffe
       process_introduction: <p>Søg rådgivning om en beslutning, du skal træffe, med råd fra berørte personer eller personer, der har ekspertise, så du kan træffe en bedre beslutning for din organisation.</p><ul><li><p> Rådgivning hjælper dig med at træffe en bedre beslutning for din organisation.</p></li><li><p> Fremme relationer, læringsmuligheder og forskelligartet input.</p></li><li><p> Stimuler initiativ og kreativitet, og få mere arbejdsglæde.</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>Læs mere om rådgivningsprocessen</u></a> .</p>
@@ -462,7 +462,6 @@ da:
       agree_prompt: Hvad synes du om forslaget, og hvordan vil det gavne organisationen?
       abstain: Afholde sig
       abstain_meaning: Denne beslutning påvirker mig ikke, og jeg er tilfreds med hvad gruppen beslutter
-      abstain_prompt: Hvorfor undlader du at stemme, eller føler du dig ikke i stand til at stemme ved denne beslutning?
       disagree: Være uenig
       disagree_meaning: Noget i dette forslag skal ændres, før jeg kan støtte det.
       disagree_prompt: Hvordan kan dette forslag forbedres, så du kan støtte det?
@@ -471,6 +470,7 @@ da:
       block_prompt: Forklar din indvending mod forslaget, og hvorfor det ikke bør fortsætte
       details_v2: "<h3><strong>Hvilken beslutning skal du træffe?</strong></h3><p></p><h3> <strong>Hvorfor er dette vigtigt?</strong></h3><p></p><h3> <strong>Hvad beder du folk om at gøre?</strong></h3><p></p><p> Del din holdning og hvorfor. Hvis du er uenig, så forklar hvad der skal ændres for at du kan støtte dette.</p>"
       process_introduction_v2: "<p><strong>Konsensus</strong> er til beslutninger, hvor det er vigtigt, at alle aktivt er enige. Deltagerne arbejder sammen for at forstå hinandens behov og forme forslaget, indtil hele gruppen kan støtte det. Fordi folk kan ændre deres stemme, efterhånden som samtalen udvikler sig, fremmer processen ægte dialog snarere end en engangsbeslutning. Det kræver mere tålmodighed end andre metoder, men det opbygger det stærkeste engagement.</p><p> Denne skabelon indeholder som standard en <strong>blokeringsmulighed</strong> . Blokering er ikke egnet til alle grupper — den kan være kontroversiel eller misbruges. Hvis du ikke bruger blokering i din beslutningsproces, anbefaler vi, at du redigerer skabelonen for at fjerne den.</p>"
+      abstain_prompt: Hvorfor undlader du at stemme, eller føler du dig ikke i stand til at stemme om denne beslutning?
     question_round:
       process_subtitle: Stil opklarende spørgsmål for at hjælpe folk med at forstå et forslag
       process_introduction: <p>En spørgerunde er en mulighed for folk at stille afklarende spørgsmål om forslaget, så alle forstår forslaget, før de siger, hvad de mener om det.</p><p> Loomio-spørgsmålsrunden er et særligt forslag uden stemmemuligheder. Den giver deltagerne mulighed for at stille spørgsmål inden for en periode, du har fastsat for runden.</p><p> En spørgerunde bruges almindeligvis som et trin i samtykkeprocessen.</p><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Læs mere om samtykkeprocessen</a> .</p>
@@ -505,8 +505,8 @@ da:
       could_be_better_meaning: Jeg ser potentiale, men har forslag
       could_be_better_prompt: Hvad ville du ændre?
       needs_a_rethink: Har brug for en genovervejelse
-      needs_a_rethink_meaning: Jeg synes ikke fremgangsmåden er rigtig
       needs_a_rethink_prompt: Hvad er din bekymring?
+      needs_a_rethink_meaning: Jeg synes, det er den forkerte tilgang
     gradients_of_agreement:
       process_subtitle: Udtryklig støtte til et forslag på en 8-punkts skala
       process_introduction: <p>Forslagets gradienter for enighed gør det muligt for medlemmer af en gruppe at udtrykke deres støtte til et forslag i grader på en skala, hvilket tilbyder flere måder at udtrykke støtte på end i form af "enig" og "uenig".</p><p> Brug gradienter af enighed som en indledende runde for at teste støtte til et forslag, før man går videre til en formel aftale.</p><p> Gradienter af enighed lader folk vide, at et forslag er under udarbejdelse, og opfordrer dem til at engagere sig. Det er en mulighed for at lytte til folk, fornemme deres følelser og reagere passende – hvilket åbner op for potentialet til at inddrage deres bidrag for at træffe en bedre beslutning.</p>

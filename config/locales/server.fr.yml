@@ -443,11 +443,11 @@ fr:
       agree_meaning: Je soutiens la proposition
       agree_prompt: Qu’est-ce que vous aimez dans la proposition et comment bénéficiera-t-elle au groupe ?
       abstain: Abstention
-      abstain_meaning: Choisir de ne pas voter ou ne pas pouvoir voter dans cette décision.
-      abstain_prompt: Pourquoi vous abstenez-vous ou ne vous sentez-vous pas en mesure de voter sur cette décision ?
       disagree: Être en désaccord
       disagree_meaning: Il faut que quelque chose soit modifié dans cette proposition avant que je puisse la soutenir.
       disagree_prompt: Comment cette proposition pourrait-elle être améliorée pour que vous puissiez la soutenir ?
+      abstain_meaning: Choisir de ne pas voter, ou être dans l'incapacité de voter sur cette décision.
+      abstain_prompt: Pourquoi vous abstenez-vous ou pourquoi ne vous sentez-vous pas en mesure de voter sur cette décision ?
     advice:
       process_subtitle: Demandez conseil sur une décision que vous devez prendre
       process_introduction: <p>Demandez conseil sur une décision que vous devez prendre, avec l’avis de personnes concernées ou possédant une expertise, afin que vous puissiez prendre une meilleure décision pour votre organisation.</p><ul><li><p> Les conseils vous aident à prendre une meilleure décision pour votre organisation.</p></li><li><p> Favoriser les relations, les opportunités d’apprentissage et les apports diversifiés.</p></li><li><p> Stimuler l’initiative et la créativité, et un travail plus agréable.</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>En savoir plus sur le processus de conseil</u></a> .</p>
@@ -486,7 +486,6 @@ fr:
       agree_prompt: Qu’est-ce qui vous plaît dans la proposition et comment bénéficiera-t-elle à l’organisation ?
       abstain: Abstention
       abstain_meaning: Cette décision ne m’affecte pas et je suis satisfait de la décision du groupe.
-      abstain_prompt: Pourquoi vous abstenez-vous ou ne vous sentez-vous pas en mesure de voter sur cette décision ?
       disagree: Être en désaccord
       disagree_meaning: Il faut que quelque chose soit modifié dans cette proposition avant que je puisse la soutenir.
       disagree_prompt: Comment cette proposition pourrait-elle être améliorée pour que vous puissiez la soutenir ?
@@ -495,6 +494,7 @@ fr:
       block_prompt: Expliquez votre objection à cette proposition et pourquoi elle ne devrait pas être mise en œuvre.
       details_v2: "<h3><strong>Quelle décision devez-vous prendre ?</strong></h3><p></p><h3> <strong>Pourquoi est-ce important ?</strong></h3><p></p><h3> <strong>Que demandez-vous aux gens de faire ?</strong></h3><p></p><p> Expliquez votre position et pourquoi. Si vous n'êtes pas d'accord, expliquez ce qui devrait changer pour que vous puissiez la soutenir.</p>"
       process_introduction_v2: "<p><strong>Le consensus</strong> est utilisé pour les décisions où l'accord actif de tous est essentiel. Les participants collaborent pour comprendre les besoins de chacun et affiner la proposition jusqu'à ce qu'elle recueille l'adhésion de l'ensemble du groupe. La possibilité de modifier son vote au fil de la discussion favorise un véritable dialogue plutôt qu'une décision unilatérale. Plus exigeant que d'autres méthodes, il permet en revanche de bâtir un engagement plus solide.</p><p> Ce modèle inclut par défaut une option <strong>de blocage</strong> . Cette option n'est pas adaptée à tous les groupes : elle peut être source de controverses ou mal utilisée. Si vous n'utilisez pas le blocage dans votre processus de décision, nous vous recommandons de modifier le modèle pour le supprimer.</p>"
+      abstain_prompt: Pourquoi vous abstenez-vous ou pourquoi ne vous sentez-vous pas en mesure de voter sur cette décision ?
     question_round:
       process_subtitle: Invitez les gens à poser des questions de clarification pour les aider à comprendre une proposition.
       process_introduction: <p>Une séance de questions est une occasion pour les participants de poser des questions de clarification sur la proposition, afin que chacun comprenne la proposition avant de dire ce qu'il en pense.</p><p> Le tour de questions Loomio est une proposition spéciale sans possibilité de vote. Il permet aux participants de poser des questions pendant une durée que vous définissez.</p><p> Une série de questions est généralement utilisée comme étape du processus de consentement.</p><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">En savoir plus sur le processus de consentement</a> .</p>
@@ -529,8 +529,8 @@ fr:
       could_be_better_meaning: Je vois du potentiel, mais j'ai des suggestions.
       could_be_better_prompt: Que changeriez-vous ?
       needs_a_rethink: Il faut le repenser
-      needs_a_rethink_meaning: Je pense que cette approche n'est pas la bonne.
       needs_a_rethink_prompt: Quel est votre souci ?
+      needs_a_rethink_meaning: Je pense que c'est une mauvaise approche.
     gradients_of_agreement:
       process_subtitle: Exprimez votre soutien à une proposition sur une échelle de 8 points
       process_introduction: "<p>La proposition Gradients d’accord permet aux membres d’un groupe d’exprimer leur soutien à une proposition en degrés sur une échelle, offrant plus de façons d’exprimer leur soutien qu’en termes de « d’accord » et de « pas d’accord ».</p><p> Utilisez les gradients d’accord comme un tour préliminaire, pour tester le soutien à une proposition avant de passer à un accord formel.</p><p> Les gradients d’accord indiquent aux participants qu'une proposition est en cours d'élaboration et les encouragent à s'engager. C'est l'occasion d'écouter les autres, de comprendre leurs sentiments et de réagir de manière appropriée, ouvrant ainsi la possibilité d'intégrer leurs contributions pour prendre une meilleure décision.</p>"

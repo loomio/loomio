@@ -118,6 +118,7 @@ class User < ApplicationRecord
   scope :active, -> { where(deactivated_at: nil) }
   scope :no_spam_complaints, -> { where(complaints_count: 0) }
   scope :has_spam_complaints, -> { where("complaints_count > 0") }
+  scope :has_bounces, -> { where("bounces_count > 0") }
   scope :deactivated, -> { where("deactivated_at IS NOT NULL") }
   scope :sorted_by_name, -> { order("lower(name)") }
   scope :admins, -> { where(is_admin: true) }

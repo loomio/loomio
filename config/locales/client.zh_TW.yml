@@ -711,7 +711,6 @@ zh_TW:
       stance_created_option: "%{actor} 已投票 %{option} 於 %{title}"
       user_added_to_group: "%{actor} 將您新增至群組：%{title}"
       user_mentioned: "%{actor} 提到您在：%{title}"
-      user_reminded: "%{actor} 正在提醒您要投票：%{title}"
       group_mentioned: "%{actor} 在 %{title} 中提及了該組合"
       new_delegate: "%{actor} 讓你成為 %{title} 中擁有投票權的代表"
       poll_announced: "%{actor} 邀請您投票：%{title}"
@@ -719,6 +718,7 @@ zh_TW:
       discussion_edited: "%{actor} 編輯了討論內容：%{title}"
       discussion_closed: "%{actor} 關閉了討論：%{title}"
       new_discussion: "%{actor} 發起了一場討論：%{title}"
+      user_reminded: 演員 %{actor} 提醒您投票：%{title}
     without_title:
       unknown_sender: 請檢查來自無法識別的寄件者的電子郵件
       group_announced: "%{actor} 邀請您加入群組"
@@ -795,10 +795,10 @@ zh_TW:
       user_added_to_group: "%{actor} 將您加入了群組：%{title}"
       user_mentioned: "%{actor} 在 %{title} 中提到了你"
       group_mentioned: "%{actor} 在以下文章中提到了這個團體：%{title}"
-      user_reminded: "%{actor} 提醒您參與以下投票：%{title}"
       poll_announced: 投票：%{title}
       discussion_edited: "%{actor} 編輯了討論內容：%{title}"
       discussion_closed: "%{actor} 關閉了討論：%{title}"
+      user_reminded: 演員 %{actor} 提醒您投票：%{title}
   discussion_fork_actions:
     move: 移動
     moved: 正在移動留言，這可能需要一點時間
@@ -1491,7 +1491,6 @@ zh_TW:
   profile_page:
     autodetect_time_zone: 自動偵測時區
     account_is_bot: 這是一個機器人帳戶
-    bot_account_warning: 機器人帳號不會被邀請投票或參與討論
     incomplete_profile: 資料不完整！
     set_your_profile_picture: 設定您的個人檔案照片
     messages:
@@ -1526,6 +1525,7 @@ zh_TW:
     delete_account_subtitle: 徹底刪除您的帳戶，並從過去的討論和決定中刪除您的名字。
     updated_on_sign_in: 由您的瀏覽器提供並在您登入時更新
     translate_content_automatically: 自動將內容翻譯成我的語言
+    bot_account_warning: 機器人帳號將不會被邀請參與投票或討論。
   text_editor:
     x_of_y_characters: "%{x} / %{y} 個字元"
     select_text_to_link: 選取要連結的文字並再試一次
@@ -2043,12 +2043,12 @@ zh_TW:
     anonymous: 匿名投票
     results_hidden_until_closed: 投票結束後將顯示結果
     results_hidden_until_vote: 結果將在您投票後顯示
-    unable_to_vote: 您尚未被邀請到此 %{poll_type} 進行投票。
     draft_mode: 投票已禁用。目前尚未開放投票。
     voting_disabled_poll_is_template: 投票已禁用。這是一個模板。
     for_this_proposal_to_pass: 為了使該提案獲得通過：
     for_this_poll_type_to_be_valid: 為了使此 %{poll_type} 有效：
     voting_opens_at: 此 %{poll_type} 投票將於 %{time} 開放。
+    unable_to_vote: 您未被邀請參與此項 %{poll_type} 的投票。
   poll_common_collapsed:
     by_who: 由 %{name}
   poll_common_calendar_invite:
@@ -2664,7 +2664,6 @@ zh_TW:
     save_poll: 保存投票
     start_poll_type: 開始 %{poll_type}
     share_poll_type: 分享 %{poll_type}
-    who_may_vote: 誰可以參與此 %{poll_type} 投票？
     update: 更新
     add_voters: 添加選民
     notify_invitees: 發送通知
@@ -2694,6 +2693,7 @@ zh_TW:
     create_poll_type: 建立 %{poll_type}
     notify_voters_when_voting_opens: 投票開始時通知選民
     voters_notified_when_opens: 投票開始時，選民將會收到通知。
+    who_may_vote: 誰可以參與此次 %{poll_type} 投票？
   poll_receipts_page:
     verify_participants: 驗證參與者
     see_votes_if_quorum_reached: 如果投票已結束且達到法定人數，您將看到誰投了票。

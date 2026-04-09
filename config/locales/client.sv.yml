@@ -706,7 +706,6 @@ sv:
       stance_created_option: "%{actor} röstade %{option} i %{title}"
       user_added_to_group: "%{actor} lade till dig i gruppen: %{title}"
       user_mentioned: "%{actor} nämnde dig i: %{title}"
-      user_reminded: "%{actor} påminner dig om att rösta i: %{title}"
       group_mentioned: "%{actor} nämnde gruppen i: %{title}"
       new_delegate: "%{actor} gjorde dig till en delegat med rösträtt i %{title}"
       poll_announced: "%{actor} bjöd in dig att rösta: %{title}"
@@ -714,6 +713,7 @@ sv:
       discussion_edited: "%{actor} redigerade diskussionssammanhanget: %{title}"
       discussion_closed: "%{actor} avslutade diskussionen: %{title}"
       new_discussion: "%{actor} startade en diskussion: %{title}"
+      user_reminded: "%{actor} påminner dig om att rösta på: %{title}"
     without_title:
       unknown_sender: Granska e-post från okänd avsändare
       group_announced: "%{actor} bjöd in dig till en grupp"
@@ -790,10 +790,10 @@ sv:
       user_added_to_group: "%{actor} lade till dig i gruppen: %{title}"
       user_mentioned: "%{actor} nämnde dig i: %{title}"
       group_mentioned: "%{actor} nämnde gruppen i: %{title}"
-      user_reminded: "%{actor} påminner dig om att rösta i: %{title}"
       poll_announced: 'Rösta: %{title}'
       discussion_edited: "%{actor} redigerade diskussionssammanhanget: %{title}"
       discussion_closed: "%{actor} avslutade diskussionen: %{title}"
+      user_reminded: "%{actor} påminner dig om att rösta på: %{title}"
   discussion_fork_actions:
     move: Flytta
     moved: Rörande kommentarer, det här kan ta en stund
@@ -1472,7 +1472,6 @@ sv:
   profile_page:
     autodetect_time_zone: Autoupptäck tidszon
     account_is_bot: Detta är ett botkonto
-    bot_account_warning: Botkonton kommer inte att bjudas in att rösta i omröstningar eller delta i diskussioner
     incomplete_profile: Ofullständig profil!
     set_your_profile_picture: Ställ in din profilbild
     messages:
@@ -1507,6 +1506,7 @@ sv:
     delete_account_subtitle: Ta bort ditt konto helt och hållet och ta bort ditt namn från tidigare diskussioner och beslut.
     updated_on_sign_in: Tillhandahålls av din webbläsare och uppdateras när du loggar in
     translate_content_automatically: Översätt innehåll till mitt språk automatiskt
+    bot_account_warning: Botkonton kommer inte att bjudas in att rösta i omröstningar eller delta i diskussioner
   text_editor:
     x_of_y_characters: "%{x} / %{y} tecken"
     select_text_to_link: Välj text att länka och försök igen
@@ -2015,12 +2015,12 @@ sv:
     anonymous: Rösterna är anonyma
     results_hidden_until_closed: Resultaten kommer att visas efter att omröstningen har avslutats
     results_hidden_until_vote: Resultaten kommer att visas efter att du röstat
-    unable_to_vote: Du har inte blivit inbjuden att rösta i denna %{poll_type}
     draft_mode: Röstning inaktiverad. Detta är inte öppet för omröstning ännu.
     voting_disabled_poll_is_template: Röstning inaktiverad. Detta är en mall.
     for_this_proposal_to_pass: 'För att detta förslag ska gå igenom:'
     for_this_poll_type_to_be_valid: 'För att denna %{poll_type} ska vara giltig:'
     voting_opens_at: Denna %{poll_type} öppnar för omröstning %{time}
+    unable_to_vote: Du har inte blivit inbjuden att rösta på denna %{poll_type}
   poll_common_collapsed:
     by_who: vid %{name}
   poll_common_calendar_invite:
@@ -2634,7 +2634,6 @@ sv:
     save_poll: Spara omröstning
     start_poll_type: Starta %{poll_type}
     share_poll_type: Dela %{poll_type}
-    who_may_vote: Vilka får rösta i denna %{poll_type}?
     update: Uppdatera
     add_voters: Lägg till väljare
     notify_invitees: Skicka aviseringar
@@ -2664,6 +2663,7 @@ sv:
     create_poll_type: Skapa %{poll_type}
     notify_voters_when_voting_opens: Meddela väljarna när röstningen öppnar
     voters_notified_when_opens: Väljarna kommer att meddelas när omröstningen öppnar
+    who_may_vote: Vem får rösta på denna %{poll_type}?
   poll_receipts_page:
     verify_participants: Verifiera deltagare
     see_votes_if_quorum_reached: Om omröstningen har avslutats och beslutsmässighet uppnåtts ser du vem som avgav en röst.
