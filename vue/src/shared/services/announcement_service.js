@@ -5,9 +5,7 @@ export default new class AnnouncementService {
   audiencesFor(model) {
     const audiences = [];
 
-    if (model.discussion && model.discussion().id && model.discussion().membersCount) {
-      model.adminsInclude(user()) ||
-       (model.group().membersCanAnnounce && model.membersInclude(user()));
+    if (model.topic && model.topic().membersCount) {
       audiences.push('discussion_group');
     }
 

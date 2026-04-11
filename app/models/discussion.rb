@@ -44,7 +44,7 @@ class Discussion < ApplicationRecord
       FROM discussions
         LEFT JOIN topics ON topics.id = discussions.topic_id
         LEFT JOIN users ON users.id = discussions.author_id
-      WHERE discarded_at IS NULL
+      WHERE discussions.discarded_at IS NULL
         #{id ? " AND discussions.id = #{id.to_i} LIMIT 1" : ''}
         #{author_id ? " AND discussions.author_id = #{author_id.to_i}" : ''}
     SQL

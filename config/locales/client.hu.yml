@@ -481,7 +481,6 @@ hu:
     changes_all_threads_and_polls_in_group: Ez megváltoztatja a csoport összes hozzászólásláncának és szavazásának beállítását.
     when_do_you_want_to_be_emailed: Mikor szeretnél e-mailt kapni?
     what_the_options_mean: Mit jelentenek a lehetőségek
-    quiet_explained: Nem fogsz e-mailt kapni, még akkor sem, ha valaki megpróbál értesíteni. Előfordulhat, hogy lemaradsz a fontos bejelentésekről vagy döntésekről, hacsak nem szokásod rendszeresen ellenőrizni a Loomiót.
     when_would_you_like_to_be_emailed_discussion: Mikor szeretne e-mailben értesülni erről a beszélgetésről?
     changes_all_discussions_and_polls_in_group: Ez megváltoztatja a csoport összes beszélgetésének és szavazásának beállítását.
     normal_explained: Amikor valaki beírja a neved egy beszélgetés vagy szavazás „Értesítés” mezőjébe, vagy {'@'}megemlíti a csoportot.
@@ -715,7 +714,6 @@ hu:
       discussion_edited: "%{actor} szerkesztette a vita kontextusát: %{title}"
       discussion_closed: "%{actor} lezárta a beszélgetést: %{title}"
       new_discussion: "%{actor} beszélgetést indított: %{title}"
-      user_reminded: "%{actor} emlékeztet, hogy szavazz erre: %{title}"
     without_title:
       unknown_sender: Kérjük, tekintse át az ismeretlen feladótól kapott e-mailt
       group_announced: "%{actor} meghívott egy csoportba"
@@ -795,7 +793,6 @@ hu:
       poll_announced: 'Szavazat: %{title}'
       discussion_edited: "%{actor} szerkesztette a vita kontextusát: %{title}"
       discussion_closed: "%{actor} lezárta a beszélgetést: %{title}"
-      user_reminded: "%{actor} emlékeztet, hogy szavazz erre: %{title}"
   discussion_fork_actions:
     move: Mozgat
     moved: A megjegyzések áthelyezése eltarthat egy ideig
@@ -1510,7 +1507,6 @@ hu:
     delete_account_subtitle: Teljesen törölje fiókját, és távolítsa el a nevét a korábbi megbeszélésekből és döntésekből.
     updated_on_sign_in: A böngésző biztosítja, és bejelentkezéskor frissül
     translate_content_automatically: Tartalom automatikus fordítása a saját nyelvemre
-    bot_account_warning: A botfiókok nem kapnak meghívást szavazásra vagy beszélgetésekben való részvételre.
   text_editor:
     x_of_y_characters: "%{x} / %{y} karakter"
     select_text_to_link: Válassza ki a linkelni kívánt szöveget, és próbálja újra
@@ -2027,7 +2023,6 @@ hu:
     for_this_proposal_to_pass: 'Ahhoz, hogy ez a javaslat átmenjen:'
     for_this_poll_type_to_be_valid: 'Ahhoz, hogy ez a %{poll_type} érvényes legyen:'
     voting_opens_at: Ez a %{poll_type} megnyílt szavazásra %{time}
-    unable_to_vote: Nem kaptál meghívást szavazásra erre a(z) %{poll_type} elemre
   poll_common_collapsed:
     by_who: tőle %{name}
   poll_common_calendar_invite:
@@ -2670,7 +2665,6 @@ hu:
     create_poll_type: "%{poll_type} létrehozása"
     notify_voters_when_voting_opens: Értesítsék a szavazókat a szavazás megkezdéséről
     voters_notified_when_opens: A szavazókat értesíteni fogják, amikor megnyílik a szavazás
-    who_may_vote: Kik szavazhatnak ezen a %{poll_type}-on?
   poll_receipts_page:
     verify_participants: Résztvevők ellenőrzése
     see_votes_if_quorum_reached: Ha a szavazás lezárult és létrejött a határozatképző létszám, akkor láthatja, hogy kik szavaztak.
@@ -2747,7 +2741,6 @@ hu:
   pin_discussion_modal:
     helptext: A rögzített beszélgetések mindig megjelennek a csoport beszélgetéseinek listájában.
   delete_discussion_form:
-    body: Biztosan törölni szeretnéd ezt a beszélgetést?
     discussion_deleted: Beszélgetés törölve
   move_discussion_form:
     title: Vita áthelyezése egy másik csoportba

@@ -20,7 +20,7 @@ export default new class EventService {
           return topic &&
           !event.model().discardedAt &&
           !topic.closedAt &&
-          AbilityService.canMoveThread(topic);
+          AbilityService.canMoveTopic(topic);
         }
       },
 

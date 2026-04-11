@@ -479,7 +479,6 @@ sv:
     changes_all_threads_and_polls_in_group: Detta ändrar inställningarna för alla trådar och omröstningar i gruppen.
     when_do_you_want_to_be_emailed: När vill du bli mejlad?
     what_the_options_mean: Vad alternativen betyder
-    quiet_explained: Du kommer inte att få ett e-postmeddelande, inte ens när någon försöker meddela dig. Du kan missa viktiga meddelanden eller beslut om du inte har för vana att kolla Loomio regelbundet.
     when_would_you_like_to_be_emailed_discussion: När vill du få e-postmeddelande om den här diskussionen?
     changes_all_discussions_and_polls_in_group: Detta ändrar inställningarna för alla diskussioner och omröstningar i gruppen.
     normal_explained: När någon skriver in ditt namn i fältet "Meddela" i en diskussion eller en omröstning, eller när de {'@'}nämner gruppen.
@@ -713,7 +712,6 @@ sv:
       discussion_edited: "%{actor} redigerade diskussionssammanhanget: %{title}"
       discussion_closed: "%{actor} avslutade diskussionen: %{title}"
       new_discussion: "%{actor} startade en diskussion: %{title}"
-      user_reminded: "%{actor} påminner dig om att rösta på: %{title}"
     without_title:
       unknown_sender: Granska e-post från okänd avsändare
       group_announced: "%{actor} bjöd in dig till en grupp"
@@ -793,7 +791,6 @@ sv:
       poll_announced: 'Rösta: %{title}'
       discussion_edited: "%{actor} redigerade diskussionssammanhanget: %{title}"
       discussion_closed: "%{actor} avslutade diskussionen: %{title}"
-      user_reminded: "%{actor} påminner dig om att rösta på: %{title}"
   discussion_fork_actions:
     move: Flytta
     moved: Rörande kommentarer, det här kan ta en stund
@@ -1506,7 +1503,6 @@ sv:
     delete_account_subtitle: Ta bort ditt konto helt och hållet och ta bort ditt namn från tidigare diskussioner och beslut.
     updated_on_sign_in: Tillhandahålls av din webbläsare och uppdateras när du loggar in
     translate_content_automatically: Översätt innehåll till mitt språk automatiskt
-    bot_account_warning: Botkonton kommer inte att bjudas in att rösta i omröstningar eller delta i diskussioner
   text_editor:
     x_of_y_characters: "%{x} / %{y} tecken"
     select_text_to_link: Välj text att länka och försök igen
@@ -2020,7 +2016,6 @@ sv:
     for_this_proposal_to_pass: 'För att detta förslag ska gå igenom:'
     for_this_poll_type_to_be_valid: 'För att denna %{poll_type} ska vara giltig:'
     voting_opens_at: Denna %{poll_type} öppnar för omröstning %{time}
-    unable_to_vote: Du har inte blivit inbjuden att rösta på denna %{poll_type}
   poll_common_collapsed:
     by_who: vid %{name}
   poll_common_calendar_invite:
@@ -2663,7 +2658,6 @@ sv:
     create_poll_type: Skapa %{poll_type}
     notify_voters_when_voting_opens: Meddela väljarna när röstningen öppnar
     voters_notified_when_opens: Väljarna kommer att meddelas när omröstningen öppnar
-    who_may_vote: Vem får rösta på denna %{poll_type}?
   poll_receipts_page:
     verify_participants: Verifiera deltagare
     see_votes_if_quorum_reached: Om omröstningen har avslutats och beslutsmässighet uppnåtts ser du vem som avgav en röst.
@@ -2740,7 +2734,6 @@ sv:
   pin_discussion_modal:
     helptext: Fästade diskussioner visas alltid i gruppens diskussionslista.
   delete_discussion_form:
-    body: Är du säker på att du vill ta bort den här diskussionen?
     discussion_deleted: Diskussionen raderad
   move_discussion_form:
     title: Flytta diskussionen till en annan grupp

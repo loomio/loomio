@@ -115,7 +115,7 @@ const updateGroups = () => {
   openCounts.value = {};
   openGroups.value = [];
   Session.user().groups().forEach(g => {
-    openCounts.value[g.id] = g.discussions().filter(discussion => discussion.isUnread()).length;
+    openCounts.value[g.id] = g.topics().filter(topic => topic.isUnread()).length;
   });
   Session.user().parentGroups().forEach(g => {
     if (organization.value && (organization.value.id === g.parentOrSelf().id)) {

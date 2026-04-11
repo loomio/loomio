@@ -479,7 +479,6 @@ he:
     changes_all_threads_and_polls_in_group: זה משנה את ההגדרה עבור כל השרשורים והסקרים בקבוצה.
     when_do_you_want_to_be_emailed: מתי אתה רוצה לקבל אימייל?
     what_the_options_mean: מה המשמעות של האפשרויות
-    quiet_explained: לא תקבלו אימייל, גם אם מישהו ינסה להודיע לכם. ייתכן שתפספסו הודעות או החלטות חשובות אלא אם כן אתם נוהגים לבדוק את Loomio באופן קבוע.
     when_would_you_like_to_be_emailed_discussion: מתי תרצה לקבל אימייל בנוגע לדיון הזה?
     changes_all_discussions_and_polls_in_group: זה משנה את ההגדרה עבור כל הדיונים והסקרים בקבוצה.
     normal_explained: כאשר מישהו מזין את שמך בשדה "הודעה" של דיון או סקר, או כאשר הוא {'@'}מזכיר את הקבוצה.
@@ -713,7 +712,6 @@ he:
       discussion_edited: "%{actor} ערך את הקשר הדיון: %{title}"
       discussion_closed: "%{actor} סגר את הדיון: %{title}"
       new_discussion: "%{actor} פתח דיון: %{title}"
-      user_reminded: "%{actor} מזכיר לך להצביע על: %{title}"
     without_title:
       unknown_sender: אנא עיין באימייל משולח לא מזוהה
       group_announced: "%{actor} הזמין אותך לקבוצה"
@@ -793,7 +791,6 @@ he:
       poll_announced: 'הצבעה: %{title}'
       discussion_edited: "%{actor} ערך את הקשר הדיון: %{title}"
       discussion_closed: "%{actor} סגר את הדיון: %{title}"
-      user_reminded: "%{actor} מזכיר לך להצביע על: %{title}"
   discussion_fork_actions:
     move: העבר
     moved: הערות מרגשות, זה עשוי לקחת רגע
@@ -1518,7 +1515,6 @@ he:
     delete_account_subtitle: מחק לחלוטין את חשבונך והסר את שמך מדיונים והחלטות בעבר.
     updated_on_sign_in: מסופק על ידי הדפדפן שלך ומעודכן בעת הכניסה
     translate_content_automatically: תרגם תוכן לשפה שלי באופן אוטומטי
-    bot_account_warning: חשבונות בוט לא יוזמנו להצביע בסקרים או להשתתף בדיונים
   text_editor:
     x_of_y_characters: "%{x} / %{y} תווים"
     select_text_to_link: בחר טקסט לקישור ונסה שוב
@@ -2039,7 +2035,6 @@ he:
     for_this_proposal_to_pass: 'כדי שההצעה הזו תעבור:'
     for_this_poll_type_to_be_valid: 'כדי ש-%{poll_type} הזה יהיה תקף:'
     voting_opens_at: "%{poll_type} הזה נפתח להצבעה %{time}"
-    unable_to_vote: לא הוזמנת להצביע ב-%{poll_type} הזה
   poll_common_collapsed:
     by_who: על פי %{name}
   poll_common_calendar_invite:
@@ -2682,7 +2677,6 @@ he:
     create_poll_type: צור %{poll_type}
     notify_voters_when_voting_opens: הודעה לבוחרים עם פתיחת ההצבעה
     voters_notified_when_opens: המצביעים יקבלו הודעה עם פתיחת ההצבעה
-    who_may_vote: מי רשאי להצביע ב%{poll_type} הזה?
   poll_receipts_page:
     verify_participants: אימות משתתפים
     see_votes_if_quorum_reached: אם ההצבעה נסגרה והושג המניין החוקי, תראו מי הצביע.
@@ -2759,7 +2753,6 @@ he:
   pin_discussion_modal:
     helptext: דיונים מוצמדים תמיד מופיעים ברשימת הדיונים של הקבוצה.
   delete_discussion_form:
-    body: האם אתה בטוח שאתה רוצה למחוק את הדיון הזה?
     discussion_deleted: הדיון נמחק
   move_discussion_form:
     title: העברת דיון לקבוצה אחרת

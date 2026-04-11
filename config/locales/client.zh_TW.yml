@@ -482,7 +482,6 @@ zh_TW:
     changes_all_threads_and_polls_in_group: 這將更改群組中所有貼文和投票的設定。
     when_do_you_want_to_be_emailed: 您希望何時收到郵件？
     what_the_options_mean: 這些選項的含義
-    quiet_explained: 即使有人嘗試通知您，您也不會收到電子郵件。如果您不養成定期查看 Loomio 的習慣，可能會錯過重要公告或決定。
     when_would_you_like_to_be_emailed_discussion: 您希望何時收到關於此次討論的電子郵件？
     changes_all_discussions_and_polls_in_group: 這將更改群組中所有討論和投票的設定。
     normal_explained: 當有人在討論或投票的「通知」欄位中輸入你的名字，或他們使用「@」提及該群組。
@@ -718,7 +717,6 @@ zh_TW:
       discussion_edited: "%{actor} 編輯了討論內容：%{title}"
       discussion_closed: "%{actor} 關閉了討論：%{title}"
       new_discussion: "%{actor} 發起了一場討論：%{title}"
-      user_reminded: 演員 %{actor} 提醒您投票：%{title}
     without_title:
       unknown_sender: 請檢查來自無法識別的寄件者的電子郵件
       group_announced: "%{actor} 邀請您加入群組"
@@ -798,7 +796,6 @@ zh_TW:
       poll_announced: 投票：%{title}
       discussion_edited: "%{actor} 編輯了討論內容：%{title}"
       discussion_closed: "%{actor} 關閉了討論：%{title}"
-      user_reminded: 演員 %{actor} 提醒您投票：%{title}
   discussion_fork_actions:
     move: 移動
     moved: 正在移動留言，這可能需要一點時間
@@ -1525,7 +1522,6 @@ zh_TW:
     delete_account_subtitle: 徹底刪除您的帳戶，並從過去的討論和決定中刪除您的名字。
     updated_on_sign_in: 由您的瀏覽器提供並在您登入時更新
     translate_content_automatically: 自動將內容翻譯成我的語言
-    bot_account_warning: 機器人帳號將不會被邀請參與投票或討論。
   text_editor:
     x_of_y_characters: "%{x} / %{y} 個字元"
     select_text_to_link: 選取要連結的文字並再試一次
@@ -2048,7 +2044,6 @@ zh_TW:
     for_this_proposal_to_pass: 為了使該提案獲得通過：
     for_this_poll_type_to_be_valid: 為了使此 %{poll_type} 有效：
     voting_opens_at: 此 %{poll_type} 投票將於 %{time} 開放。
-    unable_to_vote: 您未被邀請參與此項 %{poll_type} 的投票。
   poll_common_collapsed:
     by_who: 由 %{name}
   poll_common_calendar_invite:
@@ -2693,7 +2688,6 @@ zh_TW:
     create_poll_type: 建立 %{poll_type}
     notify_voters_when_voting_opens: 投票開始時通知選民
     voters_notified_when_opens: 投票開始時，選民將會收到通知。
-    who_may_vote: 誰可以參與此次 %{poll_type} 投票？
   poll_receipts_page:
     verify_participants: 驗證參與者
     see_votes_if_quorum_reached: 如果投票已結束且達到法定人數，您將看到誰投了票。
@@ -2770,7 +2764,6 @@ zh_TW:
   pin_discussion_modal:
     helptext: 置頂討論始終顯示在群組的討論清單中。
   delete_discussion_form:
-    body: 您確定要刪除此討論嗎？
     discussion_deleted: 討論已刪除
   move_discussion_form:
     title: 將討論轉移到另一個群組

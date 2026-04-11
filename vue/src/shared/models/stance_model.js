@@ -60,10 +60,6 @@ export default class StanceModel extends BaseModel {
   singleChoice() { return this.poll().singleChoice(); }
   hasOptionIcon() { return this.poll().config().has_option_icon; }
 
-  participantIds() {
-    return this.poll().participantIds();
-  }
-
   memberIds() {
     return this.poll().memberIds();
   }

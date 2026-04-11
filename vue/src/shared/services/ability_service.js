@@ -43,7 +43,7 @@ export default new class AbilityService {
   }
 
   canEdit(model) {
-    return (model.isA('discussion') && this.canEditThread(model)) ||
+    return (model.isA('discussion') && this.canEditDiscussion(model)) ||
     (model.isA('comment') && this.canEditComment(model)) ||
     (model.isA('poll') && this.canEditPoll(model)) ||
     (model.isA('stance') && this.canEditStance(model));
@@ -53,36 +53,10 @@ export default new class AbilityService {
     return Session.user() === stance.author();
   }
 
-  canEditThread(thread) {
-    return thread.adminsInclude(Session.user()) ||
-    (!thread.closedAt && thread.membersInclude(Session.user()) &&
-     (thread.group().membersCanEditDiscussions || (thread.author() === Session.user())));
-  }
-
-  canCloseThread(thread) {
-    return !thread.closedAt && (
-      thread.adminsInclude(Session.user()) ||
-      (thread.membersInclude(Session.user()) && (thread.group().membersCanEditDiscussions || (thread.author() === Session.user())))
-    );
-  }
-
-  canReopenThread(thread) {
-    return thread.closedAt && (
-      thread.adminsInclude(Session.user()) ||
-      (thread.membersInclude(Session.user()) && (thread.group().membersCanEditDiscussions || (thread.author() === Session.user())))
-    );
-  }
-
-  canPinThread(thread) {
-    return !thread.closedAt && !thread.pinnedAt && this.canEditThread(thread);
-  }
-
-  canUnpinThread(thread) {
-    return thread.pinnedAt && this.canEditThread(thread);
-  }
-
-  canExportThread(thread) {
-    return !thread.discardedAt && thread.membersInclude(Session.user());
+  canEditDiscussion(discussion) {
+    const topic = discussion.topic();
+    return topic.adminsInclude(Session.user()) ||
+    (!topic.closedAt && topic.group().membersCanEditDiscussions && topic.membersInclude(Session.user()));
   }
 
   canPinEvent(event) {
@@ -100,15 +74,11 @@ export default new class AbilityService {
     event.pinned && topic.adminsInclude(Session.user());
   }
 
-  canMoveThread(thread) {
-    return thread.adminsInclude(Session.user()) || (
-      thread.membersInclude(Session.user()) &&
-      (thread.group().membersCanEditDiscussions || (thread.author() === Session.user()))
+  canMoveTopic(topic) {
+    return topic.adminsInclude(Session.user()) || (
+      topic.membersInclude(Session.user()) &&
+      topic.group().membersCanEditDiscussions
     )
-  }
-
-  canDeleteThread(thread) {
-    return thread.adminsInclude(Session.user()) || (thread.author() === Session.user());
   }
 
   canChangeGroupVolume(group) {
@@ -116,18 +86,12 @@ export default new class AbilityService {
   }
 
   canAdminister(model) {
-    switch (model.constructor.singular) {
-      case 'group':       return model.adminsInclude(Session.user());
-      case 'discussion':  return model.adminsInclude(Session.user());
-      case 'comment': {
-        const topic = model.topic();
-        return topic ? topic.adminsInclude(Session.user()) : false;
-      }
-      case 'outcome': case 'stance': case 'poll': return model.poll().adminsInclude(Session.user());
+    if (model.constructor.singular == 'group') {
+      return model.adminsInclude(Session.user());
+    } else {
+      return model.topic().adminsInclude(Session.user());
     }
   }
-
-  canChangeVolume(discussion) { return discussion.membersInclude(Session.user()); }
 
   canStartThread(group) {
     return group.adminsInclude(Session.user()) ||

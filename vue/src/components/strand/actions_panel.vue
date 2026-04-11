@@ -38,7 +38,8 @@ export default {
       }
     });
     this.resetComment();
-    EventBus.$on('show-add-comment-form', () => { this.forceShowCommentForm = true; });
+    EventBus.$on('show-add-comment-form', () => { this.forceShowCommentForm = true; this.currentAction = 'add-comment'; });
+    EventBus.$on('show-add-poll-form', () => { this.currentAction = 'add-poll'; });
   },
 
   methods: {

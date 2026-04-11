@@ -75,10 +75,6 @@ export default class OutcomeModel extends BaseModel {
     return this.poll().adminsInclude(user);
   }
 
-  participantIds() {
-    return this.poll().participantIds();
-  }
-
   memberIds() {
     return this.poll().memberIds();
   }

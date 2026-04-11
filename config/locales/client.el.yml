@@ -479,7 +479,6 @@ el:
     changes_all_threads_and_polls_in_group: Αυτό αλλάζει τη ρύθμιση για όλα τα νήματα και τις δημοσκοπήσεις στην ομάδα.
     when_do_you_want_to_be_emailed: Πότε θέλετε να σας στείλουν email;
     what_the_options_mean: Τι σημαίνουν οι επιλογές
-    quiet_explained: Δεν θα λαμβάνετε email, ακόμα και όταν κάποιος προσπαθήσει να σας ειδοποιήσει. Ενδέχεται να χάσετε σημαντικές ανακοινώσεις ή αποφάσεις, εκτός αν έχετε τη συνήθεια να ελέγχετε τακτικά το Loomio.
     when_would_you_like_to_be_emailed_discussion: Πότε θα θέλατε να λάβετε email σχετικά με αυτήν τη συζήτηση;
     changes_all_discussions_and_polls_in_group: Αυτό αλλάζει τη ρύθμιση για όλες τις συζητήσεις και τις δημοσκοπήσεις στην ομάδα.
     normal_explained: Όταν κάποιος εισάγει το όνομά σας στο πεδίο "Ειδοποίηση" μιας συζήτησης ή μιας δημοσκόπησης, ή {'@'}αναφέρει την ομάδα.
@@ -713,7 +712,6 @@ el:
       discussion_edited: 'Ο %{actor} επεξεργάστηκε το περιεχόμενο της συζήτησης: %{title}'
       discussion_closed: 'Ο %{actor} έκλεισε τη συζήτηση: %{title}'
       new_discussion: 'Ο/Η %{actor} ξεκίνησε μια συζήτηση: %{title}'
-      user_reminded: 'Ο χρήστης %{actor} σας υπενθυμίζει να ψηφίσετε για: %{title}'
     without_title:
       unknown_sender: Ελέγξτε τα μηνύματα ηλεκτρονικού ταχυδρομείου από μη αναγνωρισμένο αποστολέα
       group_announced: Ο %{actor} σας προσκάλεσε σε μια ομάδα
@@ -793,7 +791,6 @@ el:
       poll_announced: 'Ψηφοφορία: %{title}'
       discussion_edited: 'Ο %{actor} επεξεργάστηκε το περιεχόμενο της συζήτησης: %{title}'
       discussion_closed: 'Ο %{actor} έκλεισε τη συζήτηση: %{title}'
-      user_reminded: 'Ο χρήστης %{actor} σας υπενθυμίζει να ψηφίσετε για: %{title}'
   discussion_fork_actions:
     move: Κίνηση
     moved: Μετακινώντας τα σχόλια, αυτό μπορεί να διαρκέσει λίγο
@@ -1506,7 +1503,6 @@ el:
     delete_account_subtitle: Διαγράψτε πλήρως τον λογαριασμό σας και αφαιρέστε το όνομά σας από προηγούμενες συζητήσεις και αποφάσεις.
     updated_on_sign_in: Παρέχεται από το πρόγραμμα περιήγησής σας και ενημερώνεται όταν συνδέεστε
     translate_content_automatically: Αυτόματη μετάφραση περιεχομένου στη γλώσσα μου
-    bot_account_warning: Οι λογαριασμοί bot δεν θα προσκληθούν να ψηφίσουν σε δημοσκοπήσεις ή να συμμετάσχουν σε συζητήσεις.
   text_editor:
     x_of_y_characters: "%{x} / %{y} χαρακτήρες"
     select_text_to_link: Επιλέξτε κείμενο για σύνδεση και δοκιμάστε ξανά
@@ -2020,7 +2016,6 @@ el:
     for_this_proposal_to_pass: 'Για να περάσει αυτή η πρόταση:'
     for_this_poll_type_to_be_valid: 'Για να είναι έγκυρο αυτό το %{poll_type}:'
     voting_opens_at: Αυτό το %{poll_type} ανοίγει για ψηφοφορία %{time}
-    unable_to_vote: Δεν έχετε προσκληθεί να ψηφίσετε σε αυτό το %{poll_type}
   poll_common_collapsed:
     by_who: από %{name}
   poll_common_calendar_invite:
@@ -2663,7 +2658,6 @@ el:
     create_poll_type: Δημιουργία %{poll_type}
     notify_voters_when_voting_opens: Ειδοποιήστε τους ψηφοφόρους όταν ανοίξει η ψηφοφορία
     voters_notified_when_opens: Οι ψηφοφόροι θα ειδοποιηθούν όταν ανοίξει η ψηφοφορία
-    who_may_vote: Ποιος μπορεί να ψηφίσει σε αυτό το %{poll_type};
   poll_receipts_page:
     verify_participants: Επαλήθευση συμμετεχόντων
     see_votes_if_quorum_reached: Εάν η ψηφοφορία έχει ολοκληρωθεί και έχει επιτευχθεί απαρτία, θα δείτε ποιος ψήφισε.
@@ -2740,7 +2734,6 @@ el:
   pin_discussion_modal:
     helptext: Οι καρφιτσωμένες συζητήσεις εμφανίζονται πάντα στη λίστα συζητήσεων της ομάδας.
   delete_discussion_form:
-    body: Είστε σίγουροι ότι θέλετε να διαγράψετε αυτήν τη συζήτηση;
     discussion_deleted: Η συζήτηση διαγράφηκε
   move_discussion_form:
     title: Μετακίνηση συζήτησης σε άλλη ομάδα

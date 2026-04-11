@@ -239,14 +239,6 @@ export default class PollModel extends BaseModel {
     return ((this.group() && this.group().members()) || []).concat(this.voters());
   }
 
-  participantIds() {
-    return compact(flatten(
-      [this.authorId],
-      map(this.stances(), 'participantId')
-    )
-    );
-  }
-
   adminsInclude(user) {
     return this.topic().adminsInclude(user);
   }

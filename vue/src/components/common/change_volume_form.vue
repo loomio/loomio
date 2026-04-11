@@ -31,7 +31,7 @@ export default {
 
     title() {
       switch (this.model.constructor.singular) {
-      case 'discussion': return this.model.title;
+      case 'topic':      return this.model.topicable().title;
       case 'membership': return this.model.group().name;
       case 'user':       return this.model.name;
       }
@@ -53,7 +53,7 @@ export default {
 
     defaultVolume() {
       switch (this.model.constructor.singular) {
-      case 'discussion': return this.model.volume();
+      case 'topic':      return this.model.volume();
       case 'membership': return this.model.volume;
       case 'user':       return null;
       }
@@ -63,7 +63,8 @@ export default {
       if (this.model.isA('user')) {
         return "change_volume_form.all_groups";
       } else {
-        return `change_volume_form.${key || this.model.constructor.singular}`;
+        const singular = this.model.isA('topic') ? 'discussion' : this.model.constructor.singular;
+        return `change_volume_form.${key || singular}`;
       }
     },
 
@@ -91,28 +92,19 @@ export default {
 v-card.change-volume-form(:title="$t(translateKey() + '.title', { title: title } )")
   template(v-slot:append)
     dismiss-modal-button(v-if="showClose")
-  v-card-text
-    v-alert(v-if="model.isA('discussion')" variant="tonal" type="info")
-      span(v-t="'change_volume_form.explain_scope.thread'")
-      br
-      a(@click="openGroupVolumeModal()" v-t="'change_volume_form.discussion.group'")
-    v-alert(v-if="model.isA('membership')" variant="tonal" type="info")
-      span(v-t="'change_volume_form.explain_scope.group'")
-      br
-      a(@click="openUserPreferences()" v-t="'change_volume_form.discussion.user'")
-    v-radio-group.mb-4(hide-details v-model='volume' :label="$t('change_volume_form.when_do_you_want_to_be_emailed')")
-      v-radio.volume-loud(value='loud' :label="$t('change_volume_form.loud_desc')")
-      v-radio.volume-normal(value='normal' :label="$t('change_volume_form.normal_desc')")
-      v-radio.volume-quiet(value='quiet' :label="$t('change_volume_form.quiet_desc')")
+  v-card-text.px-2
+    v-radio-group.mb-4(hide-details v-model='volume' :label="$t(model.isA('topic') ? 'change_volume_form.when_do_you_want_to_be_emailed_thread' : 'change_volume_form.when_do_you_want_to_be_emailed')")
+      v-radio.volume-loud(value='loud' :label="$t('change_volume_form.loud_option')")
+      v-radio.volume-normal(value='normal' :label="$t('change_volume_form.normal_option')")
+      v-radio.volume-quiet(value='quiet' :label="$t('change_volume_form.quiet_option')")
 
     div(v-if="model.isA('membership') && model.group().parentOrSelf().hasSubgroups()")
       v-checkbox#apply-to-all.mb-4(v-if="model.isA('membership')" v-model='applyToAll', :label="$t('change_volume_form.membership.apply_to_organization', { organization: model.group().parentOrSelf().name })" hide-details)
 
-    p.mt-4(v-if="model.isA('discussion')")
     p.mt-4(v-if="model.isA('membership')")
   v-card-actions(align-center)
     help-btn(path="en/user_manual/users/email_settings/#group-email-notification-settings")
     v-spacer
-    v-btn.change-volume-form__submit(:disabled='!formChanged' @click='submit()' color="primary")
+    v-btn.change-volume-form__submit(variant="tonal" :disabled='!formChanged' @click='submit()' color="primary")
       span( v-t="'common.action.update'" )
 </template>

@@ -88,13 +88,13 @@ export default new class PollService {
         to() { return `/p/${poll.key}/edit`; }
       },
 
-      make_a_copy: {
-        icon: 'mdi-content-copy',
-        name: 'templates.make_a_copy',
-        menu: true,
-        canPerform() { return Session.user(); },
-        to() { return `/p/new?template_id=${poll.id}`; }
-      },
+      // make_a_copy: {
+      //   icon: 'mdi-content-copy',
+      //   name: 'templates.make_a_copy',
+      //   menu: true,
+      //   canPerform() { return Session.user(); },
+      //   to() { return `/p/new?template_id=${poll.id}`; }
+      // },
 
       announce_poll: {
         icon: 'mdi-account-multiple-plus',
@@ -178,19 +178,19 @@ export default new class PollService {
         }
       },
 
-      add_comment: {
-        name: 'activity_card.add_comment',
-        icon: 'mdi-reply',
-        menu: true,
-        canPerform() {
-          const topic = poll.topic();
-          return !poll.discardedAt && topic && AbilityService.canAddComment(topic);
-        },
-        perform() {
-          EventBus.$emit('show-add-comment-form');
-          document.querySelector('#add-comment')?.scrollIntoView({behavior: 'smooth'});
-        }
-      },
+      // add_comment: {
+      //   name: 'activity_card.add_comment',
+      //   icon: 'mdi-reply',
+      //   menu: true,
+      //   canPerform() {
+      //     const topic = poll.topic();
+      //     return !poll.discardedAt && topic && AbilityService.canAddComment(topic);
+      //   },
+      //   perform() {
+      //     EventBus.$emit('show-add-comment-form');
+      //     document.querySelector('#add-comment')?.scrollIntoView({behavior: 'smooth'});
+      //   }
+      // },
 
       show_history: {
         icon: 'mdi-history',
@@ -247,18 +247,6 @@ export default new class PollService {
         }
       },
 
-      print_poll: {
-        name: 'common.action.print',
-        icon: 'mdi-printer-outline',
-        menu: true,
-        canPerform() {
-          return AbilityService.canExportPoll(poll);
-        },
-        perform() {
-          return hardReload(LmoUrlService.poll(poll, {export: 1}, {action: 'export', ext: 'html', absolute: true}));
-        }
-      },
-
       // delete_poll:
       //   name: 'common.action.delete'
       //   canPerform: ->
@@ -274,33 +262,18 @@ export default new class PollService {
       //             confirm: 'poll_common_delete_modal.question'
       //             flash: 'poll_common_delete_modal.success'
       //
+
       verify_participants: {
         icon: 'mdi-account-check',
         name: 'poll_receipts_page.verify_participants',
         menu: true,
         to() { return `/p/${poll.key}/receipts`; },
         canPerform() {
+          if (!poll.anonymous) { return false };
           if (AppConfig.features.app.verify_participants_admin_only) {
             return poll.group() && poll.group().adminsInclude(Session.user());
           }
           return true;
-        }
-      },
-
-
-      thread_settings: {
-        name: 'thread_arrangement_form.thread_settings',
-        icon: 'mdi-cog',
-        menu: true,
-        canPerform() {
-          const topic = poll.topic();
-          return topic && topic.topicableType === 'Poll' && topic.adminsInclude(Session.user());
-        },
-        perform() {
-          return openModal({
-            component: 'TopicForm',
-            props: { topic: poll.topic().clone() }
-          });
         }
       },
 
@@ -309,7 +282,7 @@ export default new class PollService {
         menu: true,
         icon: 'mdi-delete',
         canPerform() {
-          return AbilityService.canDeletePoll(poll);
+          return !poll.isTopicable() && AbilityService.canDeletePoll(poll);
         },
         perform() {
           return openModal({

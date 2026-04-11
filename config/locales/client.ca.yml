@@ -481,7 +481,6 @@ ca:
     changes_all_threads_and_polls_in_group: Això canvia la configuració de tots els fils i enquestes del grup.
     when_do_you_want_to_be_emailed: Quan vols que t'enviem el correu electrònic?
     what_the_options_mean: Què signifiquen les opcions
-    quiet_explained: No rebràs correus electrònics, ni tan sols quan algú intenti notificar-te. És possible que et perdis anuncis o decisions importants, tret que tinguis el costum de consultar Loomio regularment.
     when_would_you_like_to_be_emailed_discussion: Quan vols rebre correus electrònics sobre aquesta discussió?
     changes_all_discussions_and_polls_in_group: Això canvia la configuració de totes les discussions i enquestes del grup.
     normal_explained: Quan algú introdueix el vostre nom al camp "Notificar" d'una discussió o una enquesta, o bé {'@'}esmenta el grup.
@@ -717,7 +716,6 @@ ca:
       discussion_edited: "%{actor} ha editat el context de la discussió: %{title}"
       discussion_closed: "%{actor} ha tancat la discussió: %{title}"
       new_discussion: "%{actor} ha iniciat una discussió: %{title}"
-      user_reminded: "%{actor} et recorda que votes per: %{title}"
     without_title:
       unknown_sender: Reviseu el correu electrònic d'un remitent no reconegut
       group_announced: "%{actor} t'ha convidat a un grup"
@@ -797,7 +795,6 @@ ca:
       poll_announced: 'Vot: %{title}'
       discussion_edited: "%{actor} ha editat el context de la discussió: %{title}"
       discussion_closed: "%{actor} ha tancat la discussió: %{title}"
-      user_reminded: "%{actor} et recorda que votes per: %{title}"
   discussion_fork_actions:
     move: Mou
     moved: S'estan movent els comentaris, aquesta acció podria tardar uns minuts
@@ -1522,7 +1519,6 @@ ca:
     delete_account_subtitle: Suprimeix completament el teu compte i elimina el teu nom de discussions i decisions anteriors.
     updated_on_sign_in: Proporcionat pel vostre navegador i actualitzat quan inicieu la sessió
     translate_content_automatically: Tradueix el contingut al meu idioma automàticament
-    bot_account_warning: Els comptes de bot no seran convidats a votar en enquestes ni a participar en debats.
   text_editor:
     x_of_y_characters: "%{x} / %{y} caràcters"
     select_text_to_link: Seleccioneu el text per enllaçar i torneu-ho a provar
@@ -2047,7 +2043,6 @@ ca:
     for_this_proposal_to_pass: 'Perquè aquesta proposta s''aprovi:'
     for_this_poll_type_to_be_valid: 'Perquè aquest %{poll_type} sigui vàlid:'
     voting_opens_at: Aquest %{poll_type} s'obre per a votacions %{time}
-    unable_to_vote: No has estat convidat a votar en aquest %{poll_type}
   poll_common_collapsed:
     by_who: per %{name}
   poll_common_calendar_invite:
@@ -2692,7 +2687,6 @@ ca:
     create_poll_type: Crea %{poll_type}
     notify_voters_when_voting_opens: Avisar els votants quan s'obri la votació
     voters_notified_when_opens: Els votants seran notificats quan s'obri la votació
-    who_may_vote: Qui pot votar en aquest %{poll_type}?
   poll_receipts_page:
     verify_participants: Verifica els participants
     see_votes_if_quorum_reached: Si la votació s'ha tancat i s'ha arribat al quòrum, veureu qui ha votat.
@@ -2769,7 +2763,6 @@ ca:
   pin_discussion_modal:
     helptext: Les discussions fixades sempre apareixen a la llista de discussions del grup.
   delete_discussion_form:
-    body: Esteu segur que voleu suprimir aquesta discussió?
     discussion_deleted: Discussió suprimida
   move_discussion_form:
     title: Mou la discussió a un altre grup

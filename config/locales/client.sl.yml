@@ -479,7 +479,6 @@ sl:
     changes_all_threads_and_polls_in_group: To spremeni nastavitve za vse niti in ankete v skupini.
     when_do_you_want_to_be_emailed: Kdaj želite prejeti e-pošto?
     what_the_options_mean: Kaj pomenijo možnosti
-    quiet_explained: Ne boste prejeli e-poštnega sporočila, niti če vas bo kdo poskušal obvestiti. Pomembna obvestila ali odločitve boste morda spregledali, razen če imate navado redno preverjati Loomio.
     when_would_you_like_to_be_emailed_discussion: Kdaj želite prejeti e-poštno sporočilo o tej razpravi?
     changes_all_discussions_and_polls_in_group: S tem se spremenijo nastavitve za vse razprave in ankete v skupini.
     normal_explained: Ko nekdo vnese vaše ime v polje »Obvesti« v razpravi ali anketi ali ko {'@'}omeni skupino.
@@ -713,7 +712,6 @@ sl:
       discussion_edited: "%{actor} je uredil kontekst razprave: %{title}"
       discussion_closed: "%{actor} je zaključil razpravo: %{title}"
       new_discussion: "%{actor} je začel razpravo: %{title}"
-      user_reminded: "%{actor} vas opominja, da glasujete o: %{title}"
     without_title:
       unknown_sender: Preglejte e-pošto neprepoznanega pošiljatelja
       group_announced: "%{actor} vas je povabil v skupino"
@@ -793,7 +791,6 @@ sl:
       poll_announced: 'Glas: %{title}'
       discussion_edited: "%{actor} je uredil kontekst razprave: %{title}"
       discussion_closed: "%{actor} je zaključil razpravo: %{title}"
-      user_reminded: "%{actor} vas opominja, da glasujete o: %{title}"
   discussion_fork_actions:
     move: Premakni se
     moved: Ganljivi komentarji, to lahko traja nekaj časa
@@ -1506,7 +1503,6 @@ sl:
     delete_account_subtitle: Popolnoma izbrišite svoj račun in odstranite svoje ime iz preteklih razprav in odločitev.
     updated_on_sign_in: Zagotavlja vaš brskalnik in se posodobi, ko se prijavite
     translate_content_automatically: Samodejno prevedi vsebino v moj jezik
-    bot_account_warning: Računi botov ne bodo povabljeni k glasovanju v anketah ali sodelovanju v razpravah.
   text_editor:
     x_of_y_characters: "%{x} / %{y} znakov"
     select_text_to_link: Izberite besedilo za povezavo in poskusite znova
@@ -2020,7 +2016,6 @@ sl:
     for_this_proposal_to_pass: 'Da bi bil ta predlog sprejet:'
     for_this_poll_type_to_be_valid: 'Da bi bil ta %{poll_type} veljaven:'
     voting_opens_at: Ta %{poll_type} se odpre za glasovanje %{time}
-    unable_to_vote: Niste bili povabljeni k glasovanju o tem %{poll_type}
   poll_common_collapsed:
     by_who: avtor %{name}
   poll_common_calendar_invite:
@@ -2663,7 +2658,6 @@ sl:
     create_poll_type: Ustvari %{poll_type}
     notify_voters_when_voting_opens: Obvestite volivce, ko se začne glasovanje
     voters_notified_when_opens: Volivci bodo obveščeni, ko se bo glasovanje začelo
-    who_may_vote: Kdo lahko glasuje na tej anketi %{poll_type}?
   poll_receipts_page:
     verify_participants: Preverjanje udeležencev
     see_votes_if_quorum_reached: Če je glasovanje končano in je dosežen kvorum, boste videli, kdo je glasoval.
@@ -2740,7 +2734,6 @@ sl:
   pin_discussion_modal:
     helptext: Pripete razprave se vedno prikažejo na seznamu razprav skupine.
   delete_discussion_form:
-    body: Ali ste prepričani, da želite izbrisati to razpravo?
     discussion_deleted: Razprava je bila izbrisana
   move_discussion_form:
     title: Premakni razpravo v drugo skupino

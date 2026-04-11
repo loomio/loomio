@@ -8,13 +8,13 @@ import { hardReload } from '@/shared/helpers/window';
 export default new class DiscussionService {
   actions(discussion, vm) {
     return {
-      make_a_copy: {
-        icon: 'mdi-content-copy',
-        name: 'templates.make_a_copy',
-        menu: true,
-        canPerform() { return Session.user(); },
-        to() { return `/d/new?discussion_id=${discussion.id}`; }
-      },
+      // make_a_copy: {
+      //   icon: 'mdi-content-copy',
+      //   name: 'templates.make_a_copy',
+      //   menu: true,
+      //   canPerform() { return Session.user(); },
+      //   to() { return `/d/new?discussion_id=${discussion.id}`; }
+      // },
 
       translate_thread: {
         icon: 'mdi-translate',
@@ -56,7 +56,7 @@ export default new class DiscussionService {
         name: 'common.action.edit',
         icon: 'mdi-pencil',
         dock: 1,
-        canPerform() { return AbilityService.canEditThread(discussion); },
+        canPerform() { return AbilityService.canEditDiscussion(discussion); },
         to() { return `/d/${discussion.key}/edit`; }
       },
 
@@ -75,50 +75,7 @@ export default new class DiscussionService {
         }
       },
 
-      notification_history: {
-        name: 'action_dock.notification_history',
-        icon: 'mdi-bell-ring-outline',
-        menu: true,
-        perform() {
-          return openModal({
-            component: 'AnnouncementHistory',
-            persistent: false,
-            props: {
-              model: discussion,
-            }
-          });
-        },
-        canPerform() { return true; }
-      },
 
-      thread_settings: {
-        name: 'thread_arrangement_form.thread_settings',
-        icon: 'mdi-cog',
-        menu: true,
-        canPerform() {
-          const topic = discussion.topic();
-          return topic && topic.adminsInclude(Session.user());
-        },
-        perform() {
-          return openModal({
-            component: 'TopicForm',
-            props: { topic: discussion.topic().clone() }
-          });
-        }
-      },
-
-      export_thread: {
-        name: 'common.action.print',
-        icon: 'mdi-printer-outline',
-        dock: 0,
-        menu: true,
-        canPerform() {
-          return AbilityService.canExportThread(discussion);
-        },
-        perform() {
-          return hardReload(LmoUrlService.discussion(discussion, {export: 1}, {absolute: true, print: true}));
-        }
-      }
     };
   }
 

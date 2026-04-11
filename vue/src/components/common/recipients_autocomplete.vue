@@ -257,7 +257,7 @@ export default {
               ret.push({
                 id: 'discussion_group',
                 name: this.$t('announcement.audiences.discussion_group'),
-                size: this.model.discussion().membersCount,
+                size: this.model.membersCount,
                 icon: 'mdi-forum'
               });
               break;

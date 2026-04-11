@@ -129,6 +129,7 @@ class TopicService
     actor.ability.authorize! :discard, topic
     topicable = topic.topicable
     Topic.transaction do
+      topic.update(discarded_at: Time.now, discarded_by: actor.id)
       topicable.update(discarded_at: Time.now, discarded_by: actor.id)
       topic.polls.update_all(discarded_at: Time.now, discarded_by: actor.id)
       GenericWorker.perform_async('SearchService', 'reindex_by_discussion_id', topicable.id) if topicable.is_a?(Discussion)

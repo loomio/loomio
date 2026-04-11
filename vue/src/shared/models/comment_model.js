@@ -63,11 +63,6 @@ export default class CommentModel extends BaseModel {
     return this.topic().topicable().memberIds()
   }
 
-  participantIds() {
-    const topicable = this.topic()?.topicable();
-    return topicable && topicable.participantIds ? topicable.participantIds() : [];
-  }
-
   isReply() {
     return this.parentType === 'Comment';
   }

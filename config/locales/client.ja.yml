@@ -478,7 +478,6 @@ ja:
     changes_all_threads_and_polls_in_group: これにより、グループ内のすべてのスレッドと投票の設定が変更されます。
     when_do_you_want_to_be_emailed: いつメールを受け取りたいですか?
     what_the_options_mean: オプションの意味
-    quiet_explained: 誰かが通知しようとしても、メールは届きません。Loomioを定期的にチェックする習慣がない限り、重要なお知らせや決定事項を見逃してしまう可能性があります。
     when_would_you_like_to_be_emailed_discussion: このディスカッションについていつメールを受け取りたいですか?
     changes_all_discussions_and_polls_in_group: これにより、グループ内のすべてのディスカッションとアンケートの設定が変更されます。
     normal_explained: 誰かがディスカッションやアンケートの「通知」フィールドにあなたの名前を入力したとき、またはグループをメンションしたとき。
@@ -712,7 +711,6 @@ ja:
       discussion_edited: "%{actor} がディスカッションのコンテキストを編集しました: %{title}"
       discussion_closed: "%{actor} がディスカッションを終了しました: %{title}"
       new_discussion: "%{actor} がディスカッションを開始しました: %{title}"
-      user_reminded: "%{actor} が、%{title} への投票を呼びかけています。"
     without_title:
       unknown_sender: 認識できない送信者からのメールを確認してください
       group_announced: "%{actor} があなたをグループに招待しました"
@@ -792,7 +790,6 @@ ja:
       poll_announced: '投票: %{title}'
       discussion_edited: "%{actor} がディスカッションのコンテキストを編集しました: %{title}"
       discussion_closed: "%{actor} がディスカッションを終了しました: %{title}"
-      user_reminded: "%{actor} が、%{title} への投票を呼びかけています。"
   discussion_fork_actions:
     move: 動く
     moved: コメントを移動しています。少し時間がかかる場合があります
@@ -1505,7 +1502,6 @@ ja:
     deactivate_account_subtitle: メールを停止し、メンバーシップをキャンセルします。過去の議論や決定に影響が及ばないように、プロフィールを保持します。
     delete_account_subtitle: アカウントを完全に削除し、過去の議論や決定からあなたの名前を削除します。
     translate_content_automatically: コンテンツを自動的に自分の言語に翻訳する
-    bot_account_warning: ボットアカウントは、投票やディスカッションへの参加を招待されません。
   text_editor:
     x_of_y_characters: "%{x} / %{y} 文字"
     select_text_to_link: リンクするテキストを選択して再試行してください
@@ -2019,7 +2015,6 @@ ja:
     for_this_proposal_to_pass: この提案が可決されるためには：
     for_this_poll_type_to_be_valid: 'この %{poll_type} が有効になるためには:'
     voting_opens_at: この %{poll_type} は %{time} に投票開始となります
-    unable_to_vote: この%{poll_type}への投票には招待されていません。
   poll_common_collapsed:
     by_who: "%{name} による"
   poll_common_calendar_invite:
@@ -2662,7 +2657,6 @@ ja:
     create_poll_type: "%{poll_type} を作成"
     notify_voters_when_voting_opens: 投票開始時に有権者に通知する
     voters_notified_when_opens: 投票開始時に投票者に通知されます
-    who_may_vote: この%{poll_type}に投票できるのは誰ですか？
   poll_receipts_page:
     verify_participants: 参加者を確認する
     see_votes_if_quorum_reached: 投票が終了し、定足数に達した場合は、誰が投票したかが表示されます。
@@ -2739,7 +2733,6 @@ ja:
   pin_discussion_modal:
     helptext: 固定されたディスカッションは常にグループのディスカッション リストに表示されます。
   delete_discussion_form:
-    body: このディスカッションを削除してもよろしいですか?
     discussion_deleted: ディスカッションを削除しました
   move_discussion_form:
     title: ディスカッションを別のグループに移動する

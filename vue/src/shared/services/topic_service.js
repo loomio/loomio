@@ -5,6 +5,7 @@ import EventBus      from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
 import openModal      from '@/shared/helpers/open_modal';
+import { hardReload } from '@/shared/helpers/window';
 import { subMonths } from 'date-fns';
 
 export default new class TopicService {
@@ -13,11 +14,10 @@ export default new class TopicService {
       subscribe: {
         name: 'common.action.subscribe',
         icon: 'mdi-bell',
-        menu: true,
         canPerform() {
           return !topic.closedAt &&
           (topic.volume() === 'normal') &&
-          AbilityService.canChangeVolume(topic);
+          topic.membersInclude(Session.user());
         },
         perform() {
           return openModal({
@@ -30,9 +30,8 @@ export default new class TopicService {
       unsubscribe: {
         name: 'common.action.unsubscribe',
         icon: 'mdi-bell-off',
-        menu: true,
         canPerform() {
-          return (topic.volume() === 'loud') && AbilityService.canChangeVolume(topic);
+          return (topic.volume() === 'loud') && topic.membersInclude(Session.user());
         },
         perform() {
           return openModal({
@@ -45,9 +44,8 @@ export default new class TopicService {
       unignore: {
         name: 'common.action.unignore',
         icon: 'mdi-bell-outline',
-        dock: 2,
         canPerform() {
-          return (topic.volume() === 'quiet') && AbilityService.canChangeVolume(topic);
+          return (topic.volume() === 'quiet') && topic.membersInclude(Session.user());
         },
         perform() {
           return openModal({
@@ -61,6 +59,7 @@ export default new class TopicService {
         name: 'common.action.invite',
         icon: 'mdi-bullhorn',
         dock: 3,
+        menu: true,
         canPerform() {
           return topic.group().adminsInclude(Session.user()) ||
           ((topic.group().membersCanAnnounce || topic.group().membersCanAddGuests) && topic.membersInclude(Session.user()));
@@ -76,16 +75,24 @@ export default new class TopicService {
       pin_thread: {
         icon: 'mdi-pin-outline',
         name: 'action_dock.pin_thread',
-        menu: true,
-        canPerform() { return AbilityService.canPinThread(topic); },
+        canPerform() {
+          return !topic.closedAt && !topic.pinnedAt && (
+            topic.adminsInclude(Session.user()) ||
+            (topic.group().membersCanEditDiscussions && topic.membersInclude(Session.user()))
+          );
+        },
         perform: () => this.pin(topic)
       },
 
       unpin_thread: {
         icon: 'mdi-pin-off',
         name: 'action_dock.unpin_thread',
-        menu: true,
-        canPerform() { return AbilityService.canUnpinThread(topic); },
+        canPerform() {
+          return topic.pinnedAt && (
+            topic.adminsInclude(Session.user()) ||
+            (topic.group().membersCanEditDiscussions && topic.membersInclude(Session.user()))
+          );
+        },
         perform: () => this.unpin(topic)
       },
 
@@ -97,27 +104,29 @@ export default new class TopicService {
         perform: () => this.dismiss(topic)
       },
 
-      close_thread: {
-        name: 'action_dock.close_thread',
+      export_thread: {
+      name: 'common.action.print',
+        icon: 'mdi-printer-outline',
+        dock: 0,
         menu: true,
-        icon: 'mdi-archive-outline',
-        canPerform() { return AbilityService.canCloseThread(topic); },
-        perform: () => this.close(topic)
-      },
-
-      reopen_thread: {
-        name: 'action_dock.reopen_thread',
-        menu: true,
-        icon: 'mdi-refresh',
-        dock: 2,
-        canPerform() { return AbilityService.canReopenThread(topic); },
-        perform: () => this.reopen(topic)
+        canPerform() {
+          return !topic.discardedAt && topic.membersInclude(Session.user());
+        },
+        perform() {
+          const topicable = topic.topicable();
+          if (topicable.isA('poll')) {
+            return hardReload(LmoUrlService.poll(topicable, {export: 1}, {action: 'export', ext: 'html', absolute: true}));
+          } else {
+            return hardReload(LmoUrlService.discussion(topicable, {export: 1}, {absolute: true, print: true}));
+          }
+        }
       },
 
       move_thread: {
+        name: 'action_dock.move_thread',
         menu: true,
         icon: 'mdi-arrow-right',
-        canPerform() { return AbilityService.canMoveThread(topic); },
+        canPerform() { return AbilityService.canMoveTopic(topic); },
         perform() {
           return openModal({
             component: 'MoveThreadForm',
@@ -126,11 +135,57 @@ export default new class TopicService {
         }
       },
 
+
+      thread_settings: {
+        name: 'thread_arrangement_form.thread_settings',
+        icon: 'mdi-cog',
+        menu: true,
+        canPerform() {
+          return topic && topic.adminsInclude(Session.user());
+        },
+        perform() {
+          return openModal({
+            component: 'TopicForm',
+            props: { topic: topic.clone() }
+          });
+        }
+      },
+
+      close_thread: {
+        name: 'action_dock.close_thread',
+        menu: true,
+        icon: 'mdi-archive-outline',
+        canPerform() {
+          return !topic.closedAt && (
+            topic.adminsInclude(Session.user()) ||
+            (topic.group().membersCanEditDiscussions && topic.membersInclude(Session.user()))
+          );
+        },
+        perform: () => this.close(topic)
+      },
+
+      reopen_thread: {
+        name: 'action_dock.reopen_thread',
+        menu: true,
+        icon: 'mdi-refresh',
+        dock: 2,
+        canPerform() {
+          return topic.closedAt && (
+            topic.adminsInclude(Session.user()) ||
+            (topic.group().membersCanEditDiscussions && topic.membersInclude(Session.user()))
+          );
+        },
+        perform: () => this.reopen(topic)
+      },
+
+
       discard_thread: {
         name: 'action_dock.delete_thread',
         icon: 'mdi-delete-outline',
         menu: true,
-        canPerform() { return AbilityService.canDeleteThread(topic); },
+        canPerform() {
+          return topic.adminsInclude(Session.user()) || (topic.author() === Session.user());
+        },
         perform() {
           return openModal({
             component: 'ConfirmModal',
@@ -149,6 +204,7 @@ export default new class TopicService {
           });
         }
       }
+
     };
   }
 

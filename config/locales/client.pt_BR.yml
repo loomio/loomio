@@ -489,7 +489,6 @@ pt_BR:
     changes_all_threads_and_polls_in_group: Isso altera a configuração para todas as threads e enquetes do grupo.
     when_do_you_want_to_be_emailed: Quando você deseja receber e-mails?
     what_the_options_mean: O que significam as opções
-    quiet_explained: Você não receberá e-mails, mesmo que alguém tente notificá-lo. Você poderá perder anúncios ou decisões importantes, a menos que tenha o hábito de verificar o Loomio regularmente.
     when_would_you_like_to_be_emailed_discussion: Quando você gostaria de receber um e-mail sobre esta discussão?
     changes_all_discussions_and_polls_in_group: Isso altera as configurações de todas as discussões e enquetes do grupo.
     normal_explained: Quando alguém insere seu nome no campo "Notificar" de uma discussão ou enquete, ou quando menciona o grupo com um @.
@@ -725,7 +724,6 @@ pt_BR:
       discussion_edited: "%{actor} editou o contexto da discussão: %{title}"
       discussion_closed: "%{actor} encerrou a discussão: %{title}"
       new_discussion: "%{actor} iniciou uma discussão: %{title}"
-      user_reminded: "%{actor} está te lembrando de votar em: %{title}"
     without_title:
       unknown_sender: Revise o e-mail de um remetente não reconhecido
       group_announced: "%{actor} convidou você para um grupo"
@@ -805,7 +803,6 @@ pt_BR:
       poll_announced: 'Voto: %{title}'
       discussion_edited: "%{actor} editou o contexto da discussão: %{title}"
       discussion_closed: "%{actor} encerrou a discussão: %{title}"
-      user_reminded: "%{actor} está te lembrando de votar em: %{title}"
   discussion_fork_actions:
     move: Mover
     moved: Mudando os comentários, isso pode demorar um pouco
@@ -1543,7 +1540,6 @@ pt_BR:
     delete_account_subtitle: Exclua completamente sua conta e remova seu nome de discussões e decisões anteriores.
     updated_on_sign_in: Fornecido pelo seu navegador e atualizado quando você faz login
     translate_content_automatically: Traduzir conteúdo para o meu idioma automaticamente
-    bot_account_warning: Contas de bots não serão convidadas a votar em enquetes ou participar de discussões.
   text_editor:
     x_of_y_characters: "%{x} / %{y} caracteres"
     select_text_to_link: Selecione o texto para vincular e tente novamente
@@ -2068,7 +2064,6 @@ pt_BR:
     for_this_proposal_to_pass: 'Para que esta proposta seja aprovada:'
     for_this_poll_type_to_be_valid: 'Para que este %{poll_type} seja válido:'
     voting_opens_at: Esta %{poll_type} abre para votação %{time}
-    unable_to_vote: Você não foi convidado(a) a votar nesta %{poll_type}
   poll_common_collapsed:
     by_who: por %{name}
   poll_common_calendar_invite:
@@ -2713,7 +2708,6 @@ pt_BR:
     create_poll_type: Criar %{poll_type}
     notify_voters_when_voting_opens: Avise os eleitores quando a votação começar.
     voters_notified_when_opens: Os eleitores serão notificados quando a votação começar.
-    who_may_vote: Quem pode votar nesta %{poll_type}?
   poll_receipts_page:
     verify_participants: Verificar participantes
     see_votes_if_quorum_reached: Se a votação for encerrada e o quórum for atingido, você verá quem votou.
@@ -2790,7 +2784,6 @@ pt_BR:
   pin_discussion_modal:
     helptext: As discussões fixadas sempre aparecem na lista de discussões do grupo.
   delete_discussion_form:
-    body: Tem certeza de que deseja excluir esta discussão?
     discussion_deleted: Discussão excluída
   move_discussion_form:
     title: Mova a discussão para outro grupo.

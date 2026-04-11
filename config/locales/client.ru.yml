@@ -479,7 +479,6 @@ ru:
     changes_all_threads_and_polls_in_group: Это изменяет настройки всех тем и опросов в группе.
     when_do_you_want_to_be_emailed: Когда вы хотите получать электронные письма?
     what_the_options_mean: Что означают эти опции
-    quiet_explained: Вы не будете получать электронные письма, даже если кто-то попытается вас уведомить. Вы можете пропустить важные объявления или решения, если не привыкли регулярно проверять Loomio.
     when_would_you_like_to_be_emailed_discussion: Когда бы вы хотели получить уведомление по электронной почте об этом обсуждении?
     changes_all_discussions_and_polls_in_group: Это изменяет настройки всех обсуждений и опросов в группе.
     normal_explained: Когда кто-то вводит ваше имя в поле «Уведомить» обсуждения или опроса или {'@'}упоминает группу.
@@ -713,7 +712,6 @@ ru:
       discussion_edited: "%{actor} отредактировал контекст обсуждения: %{title}"
       discussion_closed: "%{actor} закрыл обсуждение: %{title}"
       new_discussion: "%{actor} начал обсуждение: %{title}"
-      user_reminded: "%{actor} напоминает вам проголосовать за: %{title}"
     without_title:
       unknown_sender: Пожалуйста, просмотрите письмо от неизвестного отправителя
       group_announced: "%{actor} пригласил вас в группу"
@@ -793,7 +791,6 @@ ru:
       poll_announced: 'Голосование: %{title}'
       discussion_edited: "%{actor} отредактировал контекст обсуждения: %{title}"
       discussion_closed: "%{actor} закрыл обсуждение: %{title}"
-      user_reminded: "%{actor} напоминает вам проголосовать за: %{title}"
   discussion_fork_actions:
     move: Переместить
     moved: Перемещение комментариев. Это может занять некоторое время.
@@ -1506,7 +1503,6 @@ ru:
     delete_account_subtitle: Полностью удалите свою учетную запись и удалите свое имя из прошлых обсуждений и решений.
     updated_on_sign_in: Предоставляется вашим браузером и обновляется при входе в систему.
     translate_content_automatically: Переводить контент на мой язык автоматически
-    bot_account_warning: Боты не будут приглашаться к голосованию в опросах или участию в обсуждениях.
   text_editor:
     x_of_y_characters: "%{x}/%{y} символов"
     select_text_to_link: Выделите текст для ссылки и повторите попытку.
@@ -2020,7 +2016,6 @@ ru:
     for_this_proposal_to_pass: 'Для принятия этого предложения:'
     for_this_poll_type_to_be_valid: 'Чтобы %{poll_type} был действителен:'
     voting_opens_at: Этот опрос открывается для голосования на %{время}.
-    unable_to_vote: Вам не было предложено проголосовать по этому опросу %{poll_type}
   poll_common_collapsed:
     by_who: по %{name}
   poll_common_calendar_invite:
@@ -2663,7 +2658,6 @@ ru:
     create_poll_type: Создать %{poll_type}
     notify_voters_when_voting_opens: Уведомите избирателей о начале голосования.
     voters_notified_when_opens: Избиратели будут уведомлены о начале голосования.
-    who_may_vote: Кто может голосовать по этому %{poll_type}?
   poll_receipts_page:
     verify_participants: Проверка участников
     see_votes_if_quorum_reached: Если голосование закрыто и кворум достигнут, вы увидите, кто отдал свой голос.
@@ -2740,7 +2734,6 @@ ru:
   pin_discussion_modal:
     helptext: Закрепленные обсуждения всегда отображаются в списке обсуждений группы.
   delete_discussion_form:
-    body: Вы уверены, что хотите удалить это обсуждение?
     discussion_deleted: Обсуждение удалено
   move_discussion_form:
     title: Перенести обсуждение в другую группу

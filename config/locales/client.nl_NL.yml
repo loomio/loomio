@@ -481,7 +481,6 @@ nl_NL:
     changes_all_threads_and_polls_in_group: Hiermee worden de instellingen voor alle threads en polls in de groep gewijzigd.
     when_do_you_want_to_be_emailed: Wanneer wilt u een e-mail ontvangen?
     what_the_options_mean: Wat de opties betekenen
-    quiet_explained: Je ontvangt geen e-mails, zelfs niet wanneer iemand je probeert te informeren. Je mist mogelijk belangrijke aankondigingen of beslissingen, tenzij je de gewoonte hebt om Loomio regelmatig te checken.
     when_would_you_like_to_be_emailed_discussion: Wanneer wilt u een e-mail ontvangen over deze discussie?
     changes_all_discussions_and_polls_in_group: Hiermee wijzigt u de instellingen voor alle discussies en peilingen in de groep.
     normal_explained: Wanneer iemand jouw naam invoert in het veld 'Melden' van een discussie of poll, of de groep vermeldt.
@@ -717,7 +716,6 @@ nl_NL:
       discussion_edited: "%{actor} heeft de discussiecontext bewerkt: %{title}"
       discussion_closed: "%{actor} heeft de discussie gesloten: %{title}"
       new_discussion: "%{actor} startte een discussie: %{title}"
-      user_reminded: "%{actor} herinnert je eraan om te stemmen op: %{title}"
     without_title:
       unknown_sender: Controleer de e-mail van een onbekende afzender
       group_announced: "%{actor} heeft je uitgenodigd voor een groep"
@@ -797,7 +795,6 @@ nl_NL:
       poll_announced: 'Stem: %{title}'
       discussion_edited: "%{actor} heeft de discussiecontext bewerkt: %{title}"
       discussion_closed: "%{actor} heeft de discussie gesloten: %{title}"
-      user_reminded: "%{actor} herinnert je eraan om te stemmen op: %{title}"
   discussion_fork_actions:
     move: Verplaatsen
     moved: Reacties aan het verplaatsen, dit kan even duren
@@ -1522,7 +1519,6 @@ nl_NL:
     delete_account_subtitle: Verwijder uw account volledig en verwijder uw naam uit eerdere discussies en beslissingen.
     updated_on_sign_in: Verstrekt door uw browser en bijgewerkt wanneer u zich aanmeldt
     translate_content_automatically: Vertaal inhoud automatisch naar mijn taal
-    bot_account_warning: Botaccounts worden niet uitgenodigd om te stemmen in peilingen of deel te nemen aan discussies.
   text_editor:
     x_of_y_characters: "%{x} / %{y} tekens"
     select_text_to_link: Selecteer tekst om te linken en probeer het opnieuw
@@ -2047,7 +2043,6 @@ nl_NL:
     for_this_proposal_to_pass: 'Om dit voorstel te laten slagen:'
     for_this_poll_type_to_be_valid: 'Om deze %{poll_type} geldig te laten zijn:'
     voting_opens_at: Deze %{poll_type} opent voor stemming %{time}
-    unable_to_vote: U bent niet uitgenodigd om te stemmen over deze %{poll_type}
   poll_common_collapsed:
     by_who: door %{name}
   poll_common_calendar_invite:
@@ -2692,7 +2687,6 @@ nl_NL:
     create_poll_type: Maak %{poll_type} aan
     notify_voters_when_voting_opens: Informeer kiezers wanneer de stembussen opengaan.
     voters_notified_when_opens: Kiezers worden op de hoogte gesteld wanneer de stembussen opengaan.
-    who_may_vote: Wie mag stemmen op deze %{poll_type}?
   poll_receipts_page:
     verify_participants: Deelnemers verifiëren
     see_votes_if_quorum_reached: Als de stemming is gesloten en het quorum is bereikt, ziet u wie er gestemd heeft.
@@ -2769,7 +2763,6 @@ nl_NL:
   pin_discussion_modal:
     helptext: Vastgezette discussies verschijnen altijd in de discussielijst van de groep.
   delete_discussion_form:
-    body: Weet u zeker dat u deze discussie wilt verwijderen?
     discussion_deleted: Discussie verwijderd
   move_discussion_form:
     title: Discussie verplaatsen naar een andere groep

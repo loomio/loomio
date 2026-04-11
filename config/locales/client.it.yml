@@ -489,7 +489,6 @@ it:
     changes_all_threads_and_polls_in_group: In questo modo vengono modificate le impostazioni per tutti i thread e i sondaggi nel gruppo.
     when_do_you_want_to_be_emailed: Quando vuoi ricevere la nostra email?
     what_the_options_mean: Cosa significano le opzioni
-    quiet_explained: Non riceverai email, nemmeno quando qualcuno cercherà di avvisarti. Potresti perderti annunci o decisioni importanti, a meno che tu non abbia l'abitudine di controllare regolarmente Loomio.
     when_would_you_like_to_be_emailed_discussion: Quando desideri ricevere un'e-mail su questa discussione?
     changes_all_discussions_and_polls_in_group: In questo modo vengono modificate le impostazioni per tutte le discussioni e i sondaggi nel gruppo.
     normal_explained: Quando qualcuno inserisce il tuo nome nel campo "Notifica" di una discussione o di un sondaggio, oppure {'@'}menziona il gruppo.
@@ -725,7 +724,6 @@ it:
       discussion_edited: "%{actor} ha modificato il contesto della discussione: %{title}"
       discussion_closed: "%{actor} ha chiuso la discussione: %{title}"
       new_discussion: "%{actor} ha avviato una discussione: %{title}"
-      user_reminded: "%{actor} ti ricorda di votare su: %{title}"
     without_title:
       unknown_sender: Controlla l'e-mail proveniente da un mittente non riconosciuto
       group_announced: "%{actor} ti ha invitato a un gruppo"
@@ -805,7 +803,6 @@ it:
       poll_announced: 'Vota: %{title}'
       discussion_edited: "%{actor} ha modificato il contesto della discussione: %{title}"
       discussion_closed: "%{actor} ha chiuso la discussione: %{title}"
-      user_reminded: "%{actor} ti ricorda di votare su: %{title}"
   discussion_fork_actions:
     move: Sposta
     moved: Commenti in movimento, questo potrebbe richiedere un momento
@@ -1534,7 +1531,6 @@ it:
     delete_account_subtitle: Elimina completamente il tuo account e rimuovi il tuo nome dalle discussioni e decisioni passate.
     updated_on_sign_in: Fornito dal tuo browser e aggiornato quando accedi
     translate_content_automatically: Traduci automaticamente il contenuto nella mia lingua
-    bot_account_warning: Gli account bot non saranno invitati a votare nei sondaggi né a partecipare alle discussioni.
   text_editor:
     x_of_y_characters: "%{x} / %{y} caratteri"
     select_text_to_link: Seleziona il testo da collegare e riprova
@@ -2050,7 +2046,6 @@ it:
     for_this_proposal_to_pass: 'Per far passare questa proposta:'
     for_this_poll_type_to_be_valid: 'Affinché questo %{poll_type} sia valido:'
     voting_opens_at: Questo %{poll_type} si apre per votare %{time}
-    unable_to_vote: Non sei stato invitato a votare su questo %{poll_type}
   poll_common_collapsed:
     by_who: di %{name}
   poll_common_calendar_invite:
@@ -2693,7 +2688,6 @@ it:
     create_poll_type: Crea %{poll_type}
     notify_voters_when_voting_opens: Avvisare gli elettori quando si aprono le votazioni
     voters_notified_when_opens: Gli elettori saranno avvisati all'apertura delle votazioni
-    who_may_vote: Chi può votare su questo %{poll_type}?
   poll_receipts_page:
     verify_participants: Verifica i partecipanti
     see_votes_if_quorum_reached: Se la votazione è chiusa e il quorum è stato raggiunto, vedrai chi ha espresso il voto.
@@ -2770,7 +2764,6 @@ it:
   pin_discussion_modal:
     helptext: Le discussioni aggiunte vengono sempre visualizzate nell'elenco delle discussioni del gruppo.
   delete_discussion_form:
-    body: Sei sicuro di voler eliminare questa discussione?
     discussion_deleted: Discussione eliminata
   move_discussion_form:
     title: Sposta la discussione in un altro gruppo

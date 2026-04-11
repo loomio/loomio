@@ -369,6 +369,7 @@ en:
       add_people: Add People
       zoom: Zoom
       align: Align
+      customize: Customize
     formatting_help:
       label: Formatting
       title: Learn how to use Markdown to format your text
@@ -459,6 +460,7 @@ en:
     hint: 'Hint for next time: Try highlighting some text before you click "Pin".'
   change_volume_form:
     when_do_you_want_to_be_emailed: When do you want to be emailed?
+    when_do_you_want_to_be_emailed_thread: When do you want to be emailed about this thread?
     change_your_email_settings: Change your email settings
     when_would_you_like_to_be_emailed_discussion: When would you like to be emailed about this discussion?
     when_would_you_like_to_be_emailed_poll_type: When would you like to be emailed about this %{poll_type}?
@@ -469,7 +471,10 @@ en:
     loud_desc: Every time someone participates
     normal_desc: When someone notifies me
     quiet_desc: Never
-    quiet_explained: You will not be emailed, even when someone tries to notify you. You may miss important announcements or decisions unless you have a habit of checking Loomio regularly.
+    loud_option: "Any time someone participates (All activity)"
+    normal_option: "When someone wants my attention (When notified)"
+    quiet_option: "No emails about this thread (Off)"
+    quiet_explained: You will not be emailed, even when someone tries to notify you.
     normal_explained: When someone enters your name in the "Notify" field of a discussion or a poll, or they {'@'}mention the group.
     normal_excludes_mentioning_html: There is a separate setting for when someone {'@'}mentions you (e.g. when a replying to you in a comment). <a href="%{url}">Click here to edit settings for @mentions</a>
     loud_explained: You will be emailed every time there is a new comment, someone votes, or starts a poll or thread.
@@ -492,7 +497,7 @@ en:
     mute_label: Mute
     saved: Notification settings updated
     discussion:
-      title: Discussion notifications
+      title: Thread emails
       loud_description: You will be emailed all activity in this thread.
       normal_description: You will only be emailed important activity in this thread.
       quiet_description: You won't be emailed any activity in this thread.
@@ -614,6 +619,10 @@ en:
     unread: Unread
     oldest: Oldest
     recenter: Recenter
+    emails: Emails
+    email_all_activity: All activity
+    email_notifications: When notified
+    email_none: Off
     newest_first: Newest first
     oldest_first: Oldest first
     showing_latest: Showing latest
@@ -1838,7 +1847,7 @@ en:
     topic_settings: Topic settings
     thread_settings: Thread settings
   delete_discussion_form:
-    body: Are you sure you want to delete this discussion?
+    body: Are you sure you want to delete this thread?
     discussion_deleted: Discussion deleted
   move_discussion_form:
     title: Move discussion to another group

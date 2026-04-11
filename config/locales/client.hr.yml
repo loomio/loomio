@@ -479,7 +479,6 @@ hr:
     changes_all_threads_and_polls_in_group: Ovo mijenja postavke za sve teme i ankete u grupi.
     when_do_you_want_to_be_emailed: Kada želite primiti e-poštu?
     what_the_options_mean: Što znače opcije
-    quiet_explained: Nećete primati e-poštu, čak ni kada vas netko pokuša obavijestiti. Možda ćete propustiti važne obavijesti ili odluke osim ako nemate naviku redovito provjeravati Loomio.
     when_would_you_like_to_be_emailed_discussion: Kada želite primiti e-poruku o ovoj raspravi?
     changes_all_discussions_and_polls_in_group: Ovo mijenja postavku za sve rasprave i ankete u grupi.
     normal_explained: Kada netko unese vaše ime u polje "Obavijesti" u raspravi ili anketi ili {'@'}spomene grupu.
@@ -713,7 +712,6 @@ hr:
       discussion_edited: "%{actor} je uredio/la kontekst rasprave: %{title}"
       discussion_closed: "%{actor} je zatvorio raspravu: %{title}"
       new_discussion: "%{actor} je započeo raspravu: %{title}"
-      user_reminded: "%{actor} vas podsjeća da glasate za: %{title}"
     without_title:
       unknown_sender: Pregledajte e-poštu neprepoznatog pošiljatelja
       group_announced: "%{actor} vas je pozvao u grupu"
@@ -793,7 +791,6 @@ hr:
       poll_announced: 'Glas: %{title}'
       discussion_edited: "%{actor} je uredio/la kontekst rasprave: %{title}"
       discussion_closed: "%{actor} je zatvorio raspravu: %{title}"
-      user_reminded: "%{actor} vas podsjeća da glasate za: %{title}"
   discussion_fork_actions:
     move: Potez
     moved: Dirljivi komentari, ovo bi moglo potrajati
@@ -1506,7 +1503,6 @@ hr:
     delete_account_subtitle: Potpuno izbrišite svoj račun i uklonite svoje ime iz prošlih rasprava i odluka.
     updated_on_sign_in: Dostavlja vaš preglednik i ažurira se kada se prijavite
     translate_content_automatically: Automatski prevedi sadržaj na moj jezik
-    bot_account_warning: Bot računi neće biti pozvani da glasaju na anketama ili sudjeluju u raspravama
   text_editor:
     x_of_y_characters: "%{x} / %{y} znakova"
     select_text_to_link: Odaberite tekst za povezivanje i pokušajte ponovno
@@ -2020,7 +2016,6 @@ hr:
     for_this_proposal_to_pass: 'Da bi ovaj prijedlog prošao:'
     for_this_poll_type_to_be_valid: 'Da bi ovaj %{poll_type} bio valjan:'
     voting_opens_at: Ovaj %{poll_type} otvara se za glasanje %{time}
-    unable_to_vote: Niste pozvani glasati na ovom %{poll_type}
   poll_common_collapsed:
     by_who: "%{name}"
   poll_common_calendar_invite:
@@ -2663,7 +2658,6 @@ hr:
     create_poll_type: Kreiraj %{poll_type}
     notify_voters_when_voting_opens: Obavijestite birače kada je otvoreno glasanje
     voters_notified_when_opens: Birači će biti obaviješteni kada se otvori glasanje
-    who_may_vote: Tko može glasati na ovom %{poll_type}?
   poll_receipts_page:
     verify_participants: Potvrdite sudionike
     see_votes_if_quorum_reached: Ako je glasanje zatvoreno i postignut je kvorum, vidjet ćete tko je glasao.
@@ -2740,7 +2734,6 @@ hr:
   pin_discussion_modal:
     helptext: Prikvačene rasprave uvijek se prikazuju na popisu rasprava grupe.
   delete_discussion_form:
-    body: Jeste li sigurni da želite izbrisati ovu raspravu?
     discussion_deleted: Rasprava je izbrisana
   move_discussion_form:
     title: Premjesti raspravu u drugu grupu

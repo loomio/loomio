@@ -3,10 +3,11 @@ import EventBus from '@/shared/services/event_bus';
 import Records from '@/shared/services/records';
 import WatchRecords from '@/mixins/watch_records';
 import UrlFor from '@/mixins/url_for';
-import { sortBy, last } from 'lodash-es';
+import TopicService from '@/shared/services/topic_service';
+import { sortBy, last, pickBy } from 'lodash-es';
 import ScrollService from '@/shared/services/scroll_service';
 import Session        from '@/shared/services/session';
-import { mdiLightningBolt, mdiMessageBadgeOutline, mdiArrowUpThin, mdiArrowDownThin, mdiCog, mdiPlus } from '@mdi/js';
+import { mdiLightningBolt, mdiMessageBadgeOutline, mdiArrowUpThin, mdiArrowDownThin, mdiCog, mdiCommentOutline, mdiThumbsUpDown, mdiBellOutline, mdiBellOffOutline, mdiBellRingOutline } from '@mdi/js';
 
 export default {
   mixins: [WatchRecords, UrlFor],
@@ -23,12 +24,17 @@ export default {
       mdiMessageBadgeOutline,
       mdiArrowUpThin,
       mdiArrowDownThin,
-      mdiPlus,
+      mdiThumbsUpDown,
+      mdiCommentOutline,
       mdiCog,
+      mdiBellOutline,
+      mdiBellOffOutline,
+      mdiBellRingOutline,
       open: null,
       items: [],
       visibleKeys: [],
-      baseUrl: ''
+      baseUrl: '',
+      topicActions: {}
     };
   },
 
@@ -36,6 +42,9 @@ export default {
     selectedSequenceId() { return parseInt(this.$route.params.sequence_id); },
     selectedCommentId() { return parseInt(this.$route.params.comment_id); },
     isSignedIn() { return Session.isSignedIn(); },
+    menuActions() {
+      return Object.values(pickBy(this.topicActions, a => a.name && a.menu && a.canPerform()));
+    },
   },
 
   methods: {
@@ -45,6 +54,20 @@ export default {
 
     scrollToNewest() {
       ScrollService.scrollTo(`.sequenceId-${this.topic.lastSequenceId()}`);
+    },
+    scrollToAddComment() {
+      EventBus.$emit('show-add-comment-form');
+      ScrollService.scrollTo('#add-comment');
+    },
+    scrollToAddPoll() {
+      EventBus.$emit('show-add-poll-form');
+      ScrollService.scrollTo('#add-comment');
+    },
+    openVolumeForm() {
+      EventBus.$emit('openModal', {
+        component: 'ChangeVolumeForm',
+        props: { model: this.topic }
+      });
     },
     scrollToUnread() {
       ScrollService.scrollTo(`.sequenceId-${this.loader.firstUnreadSequenceId()}`);
@@ -126,6 +149,7 @@ export default {
   },
 
   mounted() {
+    this.topicActions = TopicService.actions(this.topic);
     EventBus.$on('toggleThreadNav', () => { return this.open = !this.open; });
 
     Records.events.fetch({
@@ -149,9 +173,10 @@ export default {
 
     this.watchRecords({
       key: 'thread-nav'+this.topic.id,
-      collections: ["events", "discussions", "polls"],
+      collections: ["events", "discussions", "polls", "topics", "memberships"],
       query: () => {
         if (bootData.length) { this.buildItems(bootData); }
+        this.topicActions = TopicService.actions(this.topic);
       }
     });
 
@@ -168,27 +193,41 @@ export default {
 
 <template lang="pug">
 v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="topic" v-model="open" :permanent="$vuetify.display.mdAndUp"  app fixed location="right" clipped color="background" floating)
-  template(v-if="items.length > 1")
+  v-list(nav density="compact" :lines="false")
+    v-list-subheader(v-t="'strand_nav.jump_to'")
+    v-list-item(color="info" :prepend-icon="mdiArrowUpThin" :title="$t('strand_nav.start')" @click="scrollToTop" :to="baseUrl+'/0'")
+    v-list-item(color="info" :active="focusMode == 'unread'" :prepend-icon="mdiMessageBadgeOutline" :title="$t('strand_nav.unread')" @click="scrollToUnread" :to="baseUrl+'?unread'" v-if="loader.firstUnreadSequenceId()" exact)
+    v-list-item(color="info" :active="focusMode == 'newest'" :prepend-icon="mdiLightningBolt" :title="$t('strand_nav.latest')" @click="scrollToNewest" :to="baseUrl+'?newest'" exact)
+    //v-list-item(:prepend-icon="mdiArrowDownThin" :title="$t('strand_nav.bottom')" @click="scrollToSequenceId(lastItemSequenceId())" :to="baseUrl+'/'+lastItemSequenceId()" exact)
+  template(v-if="isSignedIn")
     v-list(nav density="compact" :lines="false")
-      v-list-subheader(v-t="'strand_nav.jump_to'")
-      v-list-item(color="info" :prepend-icon="mdiArrowUpThin" :title="$t('strand_nav.start')" @click="scrollToTop" :to="baseUrl+'/0'")
-      v-list-item(color="info" :active="focusMode == 'unread'" :prepend-icon="mdiMessageBadgeOutline" :title="$t('strand_nav.unread')" @click="scrollToUnread" :to="baseUrl+'?unread'" v-if="loader.firstUnreadSequenceId()" exact)
-      v-list-item(color="info" :active="focusMode == 'newest'" :prepend-icon="mdiLightningBolt" :title="$t('strand_nav.latest')" @click="scrollToNewest" :to="baseUrl+'?newest'" exact)
-      //v-list-item(:prepend-icon="mdiPlus" :title="$t('strand_nav.add_comment')" @click="scrollToNewest" :to="baseUrl+'?newest'" exact)
-      //v-list-item(:prepend-icon="mdiArrowDownThin" :title="$t('strand_nav.bottom')" @click="scrollToSequenceId(lastItemSequenceId())" :to="baseUrl+'/'+lastItemSequenceId()" exact)
-      v-list-subheader(v-t="'strand_nav.timeline'")
-    div.strand-nav__toc
-      router-link.strand-nav__entry.text-caption(
-        :class="{'strand-nav__entry--visible': item.visible, 'strand-nav__entry--selected': (item.sequenceId == selectedSequenceId || item.commentId == selectedCommentId), 'strand-nav__entry--unread': isSignedIn && item.unread}"
-        :style="{'border-width': (item.depth * 2)+'px'}"
-        v-for="item in items"
-        :key="item.key"
-        :to="baseUrl+'/'+item.sequenceId"
-        @click="scrollToSequenceId(item.sequenceId)")
-          .strand-nav__stance-icon-container(v-if="item.poll && item.poll.showResults()")
-            poll-common-icon-panel.poll-proposal-chart-panel__chart.mr-1(:poll="item.poll" show-my-stance :size="18" :stanceSize="12")
-          //span {{item.key}}
-          span(v-if="item.title") {{item.title}}
+      v-list-subheader(v-t="'strand_nav.emails'")
+      v-list-item(:prepend-icon="topic.readerVolume === 'loud' ? mdiBellRingOutline : topic.readerVolume === 'quiet' ? mdiBellOffOutline : mdiBellOutline" :title="$t(topic.readerVolume === 'loud' ? 'strand_nav.email_all_activity' : topic.readerVolume === 'quiet' ? 'strand_nav.email_none' : 'strand_nav.email_notifications')" @click="openVolumeForm")
+
+    v-list(nav density="compact" :lines="false")
+      v-list-subheader.pt-4(v-t="'members_panel.header_actions'")
+      v-list-item(:prepend-icon="mdiCommentOutline" :title="$t('comment_form.add_a_comment')" @click="scrollToAddComment")
+      v-list-item(:prepend-icon="mdiThumbsUpDown" :title="$t('activity_card.start_a_vote')" @click="scrollToAddPoll")
+      v-list-item(
+        v-for="action in menuActions"
+        :key="action.name"
+        :title="$t(action.name)"
+        @click="action.perform()")
+        template(v-slot:prepend)
+          common-icon(:name="action.icon")
+  //v-list-subheader(v-t="'strand_nav.timeline'")
+  //div.strand-nav__toc
+  //  router-link.strand-nav__entry.text-caption(
+  //    :class="{'strand-nav__entry--visible': item.visible, 'strand-nav__entry--selected': (item.sequenceId == selectedSequenceId || item.commentId == selectedCommentId), 'strand-nav__entry--unread': isSignedIn && item.unread}"
+  //    :style="{'border-width': (item.depth * 2)+'px'}"
+  //    v-for="item in items"
+  //    :key="item.key"
+  //    :to="baseUrl+'/'+item.sequenceId"
+  //    @click="scrollToSequenceId(item.sequenceId)")
+  //      .strand-nav__stance-icon-container(v-if="item.poll && item.poll.showResults()")
+  //        poll-common-icon-panel.poll-proposal-chart-panel__chart.mr-1(:poll="item.poll" show-my-stance :size="18" :stanceSize="12")
+  //      //span {{item.key}}
+  //      span(v-if="item.title") {{item.title}}
 </template>
 
 <style lang="sass">

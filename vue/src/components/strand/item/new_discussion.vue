@@ -1,7 +1,6 @@
 <script lang="js">
 import DiscussionService  from '@/shared/services/discussion_service';
-import TopicService  from '@/shared/services/topic_service';
-import { omit, pickBy, merge } from 'lodash-es';
+import { pickBy } from 'lodash-es';
 import Session from '@/shared/services/session';
 import openModal      from '@/shared/helpers/open_modal';
 import StrandActionsPanel from '@/components/strand/actions_panel';
@@ -25,7 +24,6 @@ export default {
   },
 
   mounted() {
-    this.eventable.fetchUsersNotifiedCount();
     this.rebuildActions();
   },
 
@@ -62,8 +60,7 @@ export default {
 
   methods: {
     rebuildActions() {
-      const topicActions = this.topic ? TopicService.actions(this.topic, this) : {};
-      this.actions = omit(merge({}, topicActions, DiscussionService.actions(this.eventable, this)), ['dismiss_thread']);
+      this.actions = DiscussionService.actions(this.eventable, this);
     },
 
     viewed(viewed) {
@@ -101,9 +98,6 @@ export default {
     span.text-medium-emphasis(v-show='topic.seenByCount > 0')
       mid-dot
       a.context-panel__seen_by_count.underline-on-hover(v-t="{ path: 'discussion_context.seen_by_count', args: { count: topic.seenByCount } }"  @click="openSeenByModal()")
-    span.text-medium-emphasis(v-show='discussion.usersNotifiedCount != null')
-      mid-dot
-      a.context-panel__users_notified_count.underline-on-hover(v-t="{ path: 'discussion_context.count_notified', args: { count: discussion.usersNotifiedCount} }"  @click="actions.notification_history.perform")
 
   template(v-if="!collapsed")
     formatted-text.context-panel__description(:model="discussion" field="description")

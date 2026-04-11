@@ -11,6 +11,7 @@ class TopicSerializer < ApplicationSerializer
              :allow_reactions,
              :active_polls_count,
              :last_activity_at,
+             :discarded_at,
              :closed_at,
              :closer_id,
              :pinned_at,

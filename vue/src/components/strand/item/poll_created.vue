@@ -83,12 +83,11 @@ section.strand-item.poll-created(v-intersect.once="{handler: viewed}")
       span(v-t="{ path: 'poll_card.poll_type_by_name', args: { name: poll.authorName(), poll_type: poll.translatedPollTypeCaps() } }")
       mid-dot
       poll-common-closing-at.ml-1(:poll='poll')
-      tags-display.ml-2(:tags="poll.topic().tags" :group="poll.group()" smaller)
     formatted-text.poll-common-details-panel__details(:model="poll" field="details")
     link-previews(:model="poll")
     attachment-list(:attachments="poll.attachments")
     document-list(:model='poll')
     poll-common-chart-panel(v-if="poll.isOpened()" :poll='poll')
-    poll-common-action-panel(:poll='poll' :editStanceAction :key="poll.id")
     action-dock.my-2(:actions="dockActions" :menu-actions="menuActions" variant="tonal" color="primary")
+    poll-common-action-panel(:poll='poll' :editStanceAction :key="poll.id")
 </template>

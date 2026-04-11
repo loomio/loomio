@@ -44,9 +44,11 @@ export default class TopicModel extends BaseModel {
       recipientEmails: [],
       tags: [],
       forkedEventIds: [],
+      discardedAt: null,
       closedAt: null,
       closerId: null,
       pinnedAt: null,
+      private: this.group().discussionPrivacyOptions !== 'public_only',
       // reader state
       topicReaderId: null,
       readerVolume: null,
@@ -66,6 +68,10 @@ export default class TopicModel extends BaseModel {
 
   discussion() {
     return this.topicableType === 'Discussion' ? Records.discussions.find(this.topicableId) : null
+  }
+
+  privateDefaultValue() {
+    return this.group().discussionPrivacyOptions !== 'public_only';
   }
 
   author() { return this.topicable().author(); }
@@ -134,20 +140,14 @@ export default class TopicModel extends BaseModel {
     return this.readerVolume;
   }
 
-  group() {
-    return this.topicable().group();
-  }
-
   membersInclude(user) {
-    if (this.readerGuest && Session.user().id === user.id) { return true; }
+    if (this.readerGuest && AppConfig.currentUserId === user.id) { return true; }
     const group = this.group();
     return group && group.membersInclude(user);
   }
 
   adminsInclude(user) {
-    if (this.readerAdmin && Session.user().id === user.id) { return true; }
-    const topicable = this.topicable();
-    if (topicable.authorId === user.id) { return true; }
+    if (this.readerAdmin && AppConfig.currentUserId === user.id) { return true; }
     const group = this.group();
     return group && group.adminsInclude(user);
   }

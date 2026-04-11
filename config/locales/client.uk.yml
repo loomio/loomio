@@ -482,7 +482,6 @@ uk:
     changes_all_threads_and_polls_in_group: Це змінює налаштування для всіх тем та опитувань у групі.
     when_do_you_want_to_be_emailed: Коли ви хочете отримати електронний лист?
     what_the_options_mean: Що означають опції
-    quiet_explained: Ви не отримуватимете електронних листів, навіть якщо хтось спробує вас повідомити. Ви можете пропустити важливі оголошення чи рішення, якщо у вас немає звички регулярно перевіряти Loomio.
     when_would_you_like_to_be_emailed_discussion: Коли ви бажаєте отримати електронного листа щодо цього обговорення?
     changes_all_discussions_and_polls_in_group: Це змінює налаштування для всіх обговорень та опитувань у групі.
     normal_explained: Коли хтось вводить ваше ім’я в поле «Сповістити» в обговоренні чи опитуванні, або {'@'}згадує групу.
@@ -718,7 +717,6 @@ uk:
       discussion_edited: "%{actor} відредагував контекст обговорення: %{title}"
       discussion_closed: "%{actor} закрив обговорення: %{title}"
       new_discussion: "%{actor} розпочав обговорення: %{title}"
-      user_reminded: "%{actor} нагадує вам проголосувати за: %{title}"
     without_title:
       unknown_sender: Будь ласка, перегляньте електронний лист від нерозпізнаного відправника
       group_announced: "%{actor} запросив вас до групи"
@@ -798,7 +796,6 @@ uk:
       poll_announced: 'Голосувати: %{title}'
       discussion_edited: "%{actor} відредагував контекст обговорення: %{title}"
       discussion_closed: "%{actor} закрив обговорення: %{title}"
-      user_reminded: "%{actor} нагадує вам проголосувати за: %{title}"
   discussion_fork_actions:
     move: Перемістити
     moved: Переміщення коментарів може зайняти певний час
@@ -1525,7 +1522,6 @@ uk:
     delete_account_subtitle: Повністю видаліть свій обліковий запис і вилучіть своє ім’я з минулих обговорень і рішень.
     updated_on_sign_in: Забезпечується вашим браузером і оновлюється під час входу
     translate_content_automatically: Автоматично перекладати контент моєю мовою
-    bot_account_warning: Облікові записи ботів не будуть запрошені до голосування в опитуваннях або участі в обговореннях.
   text_editor:
     x_of_y_characters: "%{x} / %{y} символів"
     select_text_to_link: Виберіть текст для посилання та повторіть спробу
@@ -2050,7 +2046,6 @@ uk:
     for_this_proposal_to_pass: 'Щоб ця пропозиція була прийнята:'
     for_this_poll_type_to_be_valid: 'Щоб цей %{poll_type} був дійсним:'
     voting_opens_at: Цей %{poll_type} відкривається для голосування %{time}
-    unable_to_vote: Вас не запросили голосувати за цей %{poll_type}
   poll_common_collapsed:
     by_who: від %{name}
   poll_common_calendar_invite:
@@ -2695,7 +2690,6 @@ uk:
     create_poll_type: Створити %{poll_type}
     notify_voters_when_voting_opens: Повідомити виборців про початок голосування
     voters_notified_when_opens: Виборців буде повідомлено про початок голосування
-    who_may_vote: Хто може голосувати в цьому %{poll_type}?
   poll_receipts_page:
     verify_participants: Перевірити учасників
     see_votes_if_quorum_reached: Якщо голосування завершено і досягнуто кворуму, ви побачите, хто проголосував.
@@ -2772,7 +2766,6 @@ uk:
   pin_discussion_modal:
     helptext: Закріплені обговорення завжди відображаються у списку обговорень групи.
   delete_discussion_form:
-    body: Ви впевнені, що хочете видалити це обговорення?
     discussion_deleted: Обговорення видалено
   move_discussion_form:
     title: Перенести обговорення до іншої групи

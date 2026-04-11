@@ -21,7 +21,7 @@ class Topic < ApplicationRecord
   }
 
   scope :not_discarded, -> {
-    where("COALESCE(discussions.discarded_at, polls.discarded_at) IS NULL")
+    where(discarded_at: nil)
   }
 
   scope :not_archived, -> {
@@ -38,8 +38,7 @@ class Topic < ApplicationRecord
   scope :recent_activity_first, -> { order(last_activity_at: :desc) }
 
   scope :visible_to, ->(user) {
-    joins_topicables
-      .joins_groups
+    joins_groups
       .joins_reader(user.id)
       .not_discarded
       .not_archived

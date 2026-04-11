@@ -479,7 +479,6 @@ da:
     changes_all_threads_and_polls_in_group: Dette ændrer indstillingerne for alle tråde og afstemninger i gruppen.
     when_do_you_want_to_be_emailed: Hvornår vil du have tilsendt en e-mail?
     what_the_options_mean: Hvad betyder valgmulighederne
-    quiet_explained: Du vil ikke modtage en e-mail, selv når nogen forsøger at give dig besked. Du kan gå glip af vigtige meddelelser eller beslutninger, medmindre du har for vane at tjekke Loomio regelmæssigt.
     when_would_you_like_to_be_emailed_discussion: Hvornår vil du gerne have en e-mail om denne diskussion?
     changes_all_discussions_and_polls_in_group: Dette ændrer indstillingerne for alle diskussioner og afstemninger i gruppen.
     normal_explained: Når nogen indtaster dit navn i feltet "Giv besked" i en diskussion eller afstemning, eller de {'@'}nævner gruppen.
@@ -713,7 +712,6 @@ da:
       discussion_edited: "%{actor} redigerede diskussionskonteksten: %{title}"
       discussion_closed: "%{actor} lukkede diskussionen: %{title}"
       new_discussion: "%{actor} startede en diskussion: %{title}"
-      user_reminded: "%{actor} minder dig om at stemme på: %{title}"
     without_title:
       unknown_sender: Gennemgå venligst e-mail fra ukendt afsender
       group_announced: "%{actor} inviterede dig til en gruppe"
@@ -793,7 +791,6 @@ da:
       poll_announced: 'Stemme: %{title}'
       discussion_edited: "%{actor} redigerede diskussionskonteksten: %{title}"
       discussion_closed: "%{actor} lukkede diskussionen: %{title}"
-      user_reminded: "%{actor} minder dig om at stemme på: %{title}"
   discussion_fork_actions:
     move: Flyt
     moved: Bevægende kommentarer, det kan tage et øjeblik
@@ -1506,7 +1503,6 @@ da:
     delete_account_subtitle: Slet din konto fuldstændigt og fjern dit navn fra tidligere diskussioner og beslutninger.
     updated_on_sign_in: Leveres af din browser og opdateres, når du logger ind
     translate_content_automatically: Oversæt indhold automatisk til mit sprog
-    bot_account_warning: Botkonti vil ikke blive inviteret til at stemme i afstemninger eller deltage i diskussioner
   text_editor:
     x_of_y_characters: "%{x} / %{y} tegn"
     select_text_to_link: Vælg tekst, der skal linkes, og prøv igen
@@ -2020,7 +2016,6 @@ da:
     for_this_proposal_to_pass: 'For at dette forslag kan vedtages:'
     for_this_poll_type_to_be_valid: 'For at denne %{poll_type} skal være gyldig:'
     voting_opens_at: Denne %{poll_type} åbner for afstemning %{time}
-    unable_to_vote: Du er ikke blevet inviteret til at stemme på denne %{poll_type}
   poll_common_collapsed:
     by_who: af %{name}
   poll_common_calendar_invite:
@@ -2663,7 +2658,6 @@ da:
     create_poll_type: Opret %{poll_type}
     notify_voters_when_voting_opens: Giv vælgerne besked, når afstemningen åbner
     voters_notified_when_opens: Vælgerne vil blive underrettet, når afstemningen åbner
-    who_may_vote: Hvem må stemme på denne %{poll_type}?
   poll_receipts_page:
     verify_participants: Bekræft deltagere
     see_votes_if_quorum_reached: Hvis afstemningen er afsluttet, og det quorum er nået, vil du se, hvem der afgav en stemme.
@@ -2740,7 +2734,6 @@ da:
   pin_discussion_modal:
     helptext: Fastgjorte diskussioner vises altid på gruppens liste over diskussioner.
   delete_discussion_form:
-    body: Er du sikker på, at du vil slette denne diskussion?
     discussion_deleted: Diskussion slettet
   move_discussion_form:
     title: Flyt diskussionen til en anden gruppe

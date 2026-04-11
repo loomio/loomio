@@ -487,7 +487,6 @@ de:
     changes_all_threads_and_polls_in_group: Dies ändert die Einstellungen für alle Threads und Umfragen in der Gruppe.
     when_do_you_want_to_be_emailed: Wann möchten Sie per E-Mail benachrichtigt werden?
     what_the_options_mean: Was die Optionen bedeuten
-    quiet_explained: Sie erhalten keine E-Mail-Benachrichtigung, auch nicht, wenn Sie benachrichtigt werden möchten. Wichtige Ankündigungen oder Entscheidungen könnten Ihnen entgehen, wenn Sie Loomio nicht regelmäßig besuchen.
     when_would_you_like_to_be_emailed_discussion: Wann möchten Sie über diese Diskussion per E-Mail informiert werden?
     changes_all_discussions_and_polls_in_group: Dies ändert die Einstellungen für alle Diskussionen und Umfragen in der Gruppe.
     normal_explained: Wenn jemand Ihren Namen im Feld "Benachrichtigen" einer Diskussion oder einer Umfrage eingibt oder die Gruppe mit einem @-Zeichen erwähnt.
@@ -723,7 +722,6 @@ de:
       discussion_edited: "%{actor} hat den Diskussionskontext bearbeitet: %{title}"
       discussion_closed: "%{actor} hat die Diskussion beendet: %{title}"
       new_discussion: "%{actor} hat eine Diskussion gestartet: %{title}"
-      user_reminded: "%{actor} erinnert Sie daran, über Folgendes abzustimmen: %{title}"
     without_title:
       unknown_sender: Bitte überprüfen Sie die E-Mail von einem unbekannten Absender
       group_announced: "%{actor} hat Sie zu einer Gruppe eingeladen"
@@ -803,7 +801,6 @@ de:
       poll_announced: 'Abstimmung: %{title}'
       discussion_edited: "%{actor} hat den Diskussionskontext bearbeitet: %{title}"
       discussion_closed: "%{actor} hat die Diskussion beendet: %{title}"
-      user_reminded: "%{actor} erinnert Sie daran, über Folgendes abzustimmen: %{title}"
   discussion_fork_actions:
     move: Verschieben
     moved: Kommentare bewegen, dies kann einen Moment dauern
@@ -1530,7 +1527,6 @@ de:
     delete_account_subtitle: Löschen Sie Ihr Konto vollständig und entfernen Sie Ihren Namen aus früheren Diskussionen und Entscheidungen.
     updated_on_sign_in: Wird von Ihrem Browser bereitgestellt und aktualisiert, wenn Sie sich anmelden
     translate_content_automatically: Inhalte automatisch in meine Sprache übersetzen
-    bot_account_warning: Bot-Konten werden nicht zur Teilnahme an Umfragen oder Diskussionen eingeladen.
   text_editor:
     x_of_y_characters: "%{x} / %{y} Zeichen"
     select_text_to_link: Wählen Sie den zu verlinkenden Text aus und versuchen Sie es erneut
@@ -2055,7 +2051,6 @@ de:
     for_this_proposal_to_pass: 'Damit dieser Vorschlag angenommen wird:'
     for_this_poll_type_to_be_valid: 'Damit dieser %{poll_type} gültig ist:'
     voting_opens_at: Diese %{poll_type} öffnet zur Abstimmung %{time}
-    unable_to_vote: Du wurdest nicht eingeladen, über diesen %{poll_type} abzustimmen.
   poll_common_collapsed:
     by_who: von %{name}
   poll_common_calendar_invite:
@@ -2700,7 +2695,6 @@ de:
     create_poll_type: Erstelle %{poll_type}
     notify_voters_when_voting_opens: Benachrichtigen Sie die Wähler, wenn die Wahllokale geöffnet sind
     voters_notified_when_opens: Die Wähler werden benachrichtigt, sobald die Wahllokale geöffnet sind.
-    who_may_vote: Wer darf bei dieser %{poll_type} abstimmen?
   poll_receipts_page:
     verify_participants: Teilnehmer überprüfen
     see_votes_if_quorum_reached: Wenn die Abstimmung beendet ist und das Quorum erreicht ist, sehen Sie, wer seine Stimme abgegeben hat.
@@ -2777,7 +2771,6 @@ de:
   pin_discussion_modal:
     helptext: Angeheftete Diskussionen erscheinen immer in der Diskussionsliste der Gruppe.
   delete_discussion_form:
-    body: Möchten Sie diese Diskussion wirklich löschen?
     discussion_deleted: Diskussion gelöscht
   move_discussion_form:
     title: Verlegen Sie die Diskussion in eine andere Gruppe.

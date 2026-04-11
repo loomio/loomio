@@ -479,7 +479,6 @@ tr:
     changes_all_threads_and_polls_in_group: Bu, gruptaki tüm konu başlıkları ve anketler için ayarları değiştirir.
     when_do_you_want_to_be_emailed: E-postanın ne zaman gönderilmesini istersiniz?
     what_the_options_mean: Seçeneklerin anlamı nedir?
-    quiet_explained: Birisi sizi bilgilendirmeye çalışsa bile, size e-posta gönderilmeyecektir. Loomio'yu düzenli olarak kontrol etme alışkanlığınız yoksa, önemli duyuruları veya kararları kaçırabilirsiniz.
     when_would_you_like_to_be_emailed_discussion: Bu tartışma hakkında ne zaman e-posta almak istersiniz?
     changes_all_discussions_and_polls_in_group: Bu, gruptaki tüm tartışmaların ve anketlerin ayarını değiştirir.
     normal_explained: Birisi bir tartışma veya anketin "Bildir" alanına adınızı girdiğinde veya gruptan {'@'}bahsettiğinde.
@@ -713,7 +712,6 @@ tr:
       discussion_edited: "%{actor} tartışma bağlamını düzenledi: %{title}"
       discussion_closed: "%{actor} tartışmayı kapattı: %{title}"
       new_discussion: "%{actor} bir tartışma başlattı: %{title}"
-      user_reminded: "%{actor} size şu konuda oy kullanmanızı hatırlatıyor: %{title}"
     without_title:
       unknown_sender: Lütfen tanınmayan gönderenden gelen e-postayı inceleyin
       group_announced: "%{actor} sizi bir gruba davet etti"
@@ -793,7 +791,6 @@ tr:
       poll_announced: 'Oy Ver: %{title}'
       discussion_edited: "%{actor} tartışma bağlamını düzenledi: %{title}"
       discussion_closed: "%{actor} tartışmayı kapattı: %{title}"
-      user_reminded: "%{actor} size şu konuda oy kullanmanızı hatırlatıyor: %{title}"
   discussion_fork_actions:
     move: Taşı
     moved: Yorumlar taşınıyor, bu işlem biraz zaman alabilir
@@ -1506,7 +1503,6 @@ tr:
     delete_account_subtitle: Hesabınızı tamamen silin ve adınızı geçmiş tartışmalardan ve kararlardan çıkarın.
     updated_on_sign_in: Tarayıcınız tarafından sağlanır ve oturum açtığınızda güncellenir
     translate_content_automatically: İçeriği otomatik olarak dilime çevir
-    bot_account_warning: Bot hesapları anketlere oy vermeye veya tartışmalara katılmaya davet edilmeyecektir.
   text_editor:
     x_of_y_characters: "%{x} / %{y} karakter"
     select_text_to_link: Bağlanacak metni seçin ve tekrar deneyin
@@ -2020,7 +2016,6 @@ tr:
     for_this_proposal_to_pass: 'Bu önerinin kabul edilmesi için:'
     for_this_poll_type_to_be_valid: 'Bu %{poll_type}''ın geçerli olması için:'
     voting_opens_at: Bu %{poll_type} anketi %{time} tarihinde oylamaya açılıyor.
-    unable_to_vote: Bu ankete (%{poll_type}) oy vermeye davet edilmediniz.
   poll_common_collapsed:
     by_who: "%{name}"
   poll_common_calendar_invite:
@@ -2663,7 +2658,6 @@ tr:
     create_poll_type: "%{poll_type} oluşturun"
     notify_voters_when_voting_opens: Oy verme işleminin ne zaman başlayacağını seçmenlere bildirin.
     voters_notified_when_opens: Oy verme işleminin ne zaman başlayacağı seçmenlere bildirilecektir.
-    who_may_vote: Bu ankete kimler oy verebilir?
   poll_receipts_page:
     verify_participants: Katılımcıları doğrulayın
     see_votes_if_quorum_reached: Oylama sona ermiş ve yeter sayı sağlanmışsa, kimin oy kullandığını göreceksiniz.
@@ -2740,7 +2734,6 @@ tr:
   pin_discussion_modal:
     helptext: Sabitlenen tartışmalar her zaman grubun tartışmalar listesinde görünür.
   delete_discussion_form:
-    body: Bu tartışmayı silmek istediğinizden emin misiniz?
     discussion_deleted: Tartışma silindi
   move_discussion_form:
     title: Tartışmayı başka bir gruba taşıyın

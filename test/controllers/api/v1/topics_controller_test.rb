@@ -95,7 +95,7 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
     sign_in @user
     discussion = DiscussionService.create(params: { title: "Soon discarded", group_id: @group.id }, actor: @admin)
     topic_id = discussion.topic.id
-    discussion.discard!
+    TopicService.discard(topic: discussion.topic, actor: @admin)
 
     get :index
 
@@ -114,7 +114,7 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
       poll_option_names: %w[agree disagree abstain]
     }, actor: @admin)
     topic_id = poll.topic.id
-    poll.discard!
+    TopicService.discard(topic: poll.topic, actor: @admin)
 
     get :index
 
