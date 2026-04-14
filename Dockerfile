@@ -24,7 +24,7 @@ WORKDIR /build/hocuspocus
 COPY hocuspocus/package.json ./
 RUN npm install --prefer-offline --no-audit --no-fund
 
-FROM ruby:3.4.9-slim
+FROM ruby:4.0.2-slim
 
 ENV MALLOC_ARENA_MAX=2 \
     RAILS_LOG_TO_STDOUT=1 \

@@ -47,7 +47,7 @@ jobs:
     - name: install ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: '3.4.7'
+        ruby-version: '4.0.2'
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - name: init db
       run: |
