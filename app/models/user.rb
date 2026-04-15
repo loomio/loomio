@@ -329,6 +329,7 @@ class User < ApplicationRecord
     [
     "avatar_initials",
     "avatar_kind",
+    "bounces_count",
     "city",
     "content_locale",
     "country",
