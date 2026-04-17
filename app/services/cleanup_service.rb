@@ -183,7 +183,7 @@ module CleanupService
         AND g.archived_at IS NULL
         AND (SELECT COUNT(*) FROM memberships m WHERE m.group_id = g.id AND m.revoked_at IS NULL) <= 1
         AND (SELECT COUNT(*) FROM discussions d WHERE d.group_id = g.id AND d.discarded_at IS NULL) >= 10
-        AND (SELECT COUNT(*) FROM comments c JOIN discussions d ON d.id = c.discussion_id WHERE d.group_id = g.id) = 0
+        AND (SELECT COUNT(*) FROM events e JOIN discussions d ON d.id = e.discussion_id WHERE d.group_id = g.id AND e.kind = 'new_comment') = 0
     SQL
     ids.merge(content_spam_ids)
     puts "Spam pattern 2 (10+ discussions, 0 comments, 1 member): #{content_spam_ids.size} groups"
