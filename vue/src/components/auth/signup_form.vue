@@ -2,8 +2,10 @@
 import EventBus    from '@/shared/services/event_bus';
 import AuthService from '@/shared/services/auth_service';
 import AppConfig from '@/shared/services/app_config';
+import TurnstileWidget from '@/components/auth/turnstile_widget.vue';
 
 export default {
+  components: { TurnstileWidget },
   props: {
     user: Object
   },
@@ -15,25 +17,33 @@ export default {
   data() {
     return {
       siteName: AppConfig.theme.site_name,
+      turnstileSiteKey: AppConfig.turnstileSiteKey,
+      turnstileToken: '',
       vars: {name: this.user.name, site_name: AppConfig.theme.site_name},
       loading: false
     };
   },
 
-  methods: {
-    submit() {
-      if (AuthService.validSignup(this.vars, this.user)) {
-        this.loading = true;
-        AuthService.signUp(this.user).finally(() => {this.loading = false; });
-      }
-    },
-  },
   computed: {
     termsUrl() { return AppConfig.theme.terms_url; },
     privacyUrl() { return AppConfig.theme.privacy_url; },
     newsletterEnabled() { return AppConfig.newsletterEnabled; },
     allow() {
       return AppConfig.features.app.create_user || (AppConfig.pendingIdentity.identity_type != null);
+    },
+    submitBlockedByCaptcha() {
+      return Boolean(this.turnstileSiteKey) && !this.turnstileToken;
+    }
+  },
+
+  methods: {
+    submit() {
+      if (this.submitBlockedByCaptcha) { return; }
+      if (AuthService.validSignup(this.vars, this.user)) {
+        this.user.turnstileToken = this.turnstileToken;
+        this.loading = true;
+        AuthService.signUp(this.user).finally(() => {this.loading = false; });
+      }
     },
   }
 };
@@ -76,6 +86,7 @@ v-card.auth-signup-form(
             template(v-slot:link)
               //- a(href='https://help.loomio.org/en/newsletter/' target='_blank' @click.stop v-t="'email_settings_page.email_newsletter'")
               span(v-t="'email_settings_page.email_newsletter'")
+    turnstile-widget(v-model='turnstileToken')
 
   v-card-actions.mt-8(v-if="allow")
     v-spacer
@@ -83,7 +94,7 @@ v-card.auth-signup-form(
       variant="elevated"
       color="primary"
       :loading="loading"
-      :disabled='!vars.name || (termsUrl && !vars.legalAccepted)'
+      :disabled='!vars.name || (termsUrl && !vars.legalAccepted) || submitBlockedByCaptcha'
     )
       span(v-t="'auth_form.create_account'" @click='submit()')
 </template>
