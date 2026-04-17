@@ -3,6 +3,10 @@ class Api::V1::SessionsController < Devise::SessionsController
   before_action :configure_permitted_parameters
 
   def create
+    unless turnstile_ok?
+      render json: { errors: { turnstile: [:'auth_form.turnstile_required'] } }, status: 403
+      return
+    end
     if user = attempt_login
       sign_in(user)
       flash[:notice] = t(:'devise.sessions.signed_in')
@@ -53,5 +57,13 @@ class Api::V1::SessionsController < Devise::SessionsController
     devise_parameter_sanitizer.permit(:sign_in) do |u|
       u.permit(:code, :email, :password, :remember_me)
     end
+  end
+
+  # Already-validated email-link clicks skip the challenge so users don't
+  # face two CAPTCHAs (one when requesting the link, one when returning).
+  def turnstile_ok?
+    return true if pending_login_token&.useable?
+    TurnstileService.verify(params.dig(:user, :turnstile_token) || params[:turnstile_token],
+                            remote_ip: request.remote_ip)
   end
 end

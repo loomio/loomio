@@ -33,7 +33,7 @@ export default new class AuthService {
   signIn(user) {
     if (user == null) { user = {}; }
     return Records.sessions.build(
-      pick(user, ['email', 'name', 'password', 'code'])
+      pick(user, ['email', 'name', 'password', 'code', 'turnstileToken'])
     ).save().then(data => {
       this.authSuccess(data);
       return data;
@@ -68,7 +68,7 @@ export default new class AuthService {
   }
 
   sendLoginLink(user) {
-    return Records.loginTokens.fetchToken(user.email).then(() => user.update({authForm: 'complete', sentLoginLink: true}));
+    return Records.loginTokens.fetchToken(user.email, user.turnstileToken).then(() => user.update({authForm: 'complete', sentLoginLink: true}));
   }
 
   validSignup(vars, user) {
