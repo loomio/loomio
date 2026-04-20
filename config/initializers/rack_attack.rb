@@ -35,7 +35,7 @@ class Rack::Attack
     '/api/v1/sessions' => 10,
     '/api/v1/contact_messages' => 10,
     '/api/v1/contact_requests' => 10,
-    '/api/v1/discussion_readers' => 1000,
+    '/api/v1/discussion_readers' => 500,
     '/rails/active_storage/direct_uploads' => 20
   }
 
