@@ -55,7 +55,7 @@ class Api::V1::SessionsController < Devise::SessionsController
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_in) do |u|
-      u.permit(:code, :email, :password, :remember_me)
+      u.permit(:code, :email, :password, :remember_me, :turnstile_token)
     end
   end
 
