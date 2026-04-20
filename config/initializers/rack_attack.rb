@@ -8,12 +8,12 @@ class Rack::Attack
     end
   end
 
-  RATE_MULTIPLIER = ENV.fetch('RACK_ATTACK_RATE_MULTPLIER', 1).to_i
-  TIME_MULTIPLIER = ENV.fetch('RACK_ATTACK_TIME_MULTPLIER', 1).to_i
+  RATE_MULTIPLIER = ENV.fetch('RACK_ATTACK_RATE_MULTIPLIER', 1).to_i
+  TIME_MULTIPLIER = ENV.fetch('RACK_ATTACK_TIME_MULTIPLIER', 1).to_i
 
-  # throttle('req/ip', limit: 300, period: 5.minutes) do |req|
-  #   req.remote_ip
-  # end
+  throttle('req/ip', limit: 300 * RATE_MULTIPLIER, period: (5 * TIME_MULTIPLIER).minutes) do |req|
+    req.remote_ip
+  end
   IP_POST_LIMITS = {
     '/api/v1/trials' => 10,
     '/api/v1/announcements' => 100,
