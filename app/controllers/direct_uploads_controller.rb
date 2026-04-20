@@ -5,6 +5,18 @@ class DirectUploadsController < ActiveStorage::DirectUploadsController
   protect_from_forgery with: :exception
   skip_before_action :verify_authenticity_token
   before_action :enforce_upload_size_limit, only: :create
+  before_action :enforce_content_type, only: :create
+
+  BLOCKED_CONTENT_TYPES = %w[
+    application/x-msdownload
+    application/x-executable
+    application/x-dosexec
+    application/x-mach-binary
+    application/x-sharedlib
+    application/javascript
+    text/javascript
+    image/svg+xml
+  ].freeze
 
   private
 
@@ -13,6 +25,14 @@ class DirectUploadsController < ActiveStorage::DirectUploadsController
   # Uphold the Loomio invariant that current_user is never nil.
   def current_user
     super || LoggedOutUser.new
+  end
+
+  def enforce_content_type
+    content_type = params.dig(:blob, :content_type).to_s.downcase
+    return if content_type.blank?
+    if BLOCKED_CONTENT_TYPES.include?(content_type)
+      render json: { error: 'This file type is not allowed' }, status: :unprocessable_entity
+    end
   end
 
   def enforce_upload_size_limit

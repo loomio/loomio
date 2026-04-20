@@ -331,7 +331,7 @@ Rails.application.routes.draw do
           post :oauth, on: :collection
         end
       end
-      get "identities/:id/:command", to: "identities#command"
+      # identities command route removed (dead code)
     end
   end
 
@@ -358,7 +358,7 @@ Rails.application.routes.draw do
     end
   end
 
-  post :email_processor, to: 'received_emails#create'
+  # old email webhook removed — use Action Mailbox instead
 
   namespace :email_actions do
     get :unsubscribe

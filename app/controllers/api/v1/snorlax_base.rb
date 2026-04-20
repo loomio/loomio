@@ -267,7 +267,8 @@ class Api::V1::SnorlaxBase < ActionController::Base
   end
 
   def respond_with_standard_error(error, status)
-    render json: { exception: error.class, error: error.to_s }, root: false, status: status
+    Rails.logger.error("API Error: #{error.class} - #{error.message}")
+    render json: { error: status }, root: false, status: status
   end
 
   def respond_with_error(status, message = "error")
