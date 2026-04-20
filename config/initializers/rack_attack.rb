@@ -69,12 +69,19 @@ class Rack::Attack
     req.remote_ip if req.get? && req.path.starts_with?('/api/v1/profile/')
   end
 
-  ActiveSupport::Notifications.subscribe(/rack_attack/) do |name, start, finish, request_id, req_h|
+  ActiveSupport::Notifications.subscribe('throttle.rack_attack') do |name, start, finish, request_id, req_h|
     req = req_h[:request]
-    Rails.logger.warn [name,
-                       req.remote_ip,
-                       req.request_method,
-                       req.fullpath,
-                       request_id].join(' ')
+    message = "#{req.env['rack.attack.match_discriminator']} #{req.request_method} #{req.fullpath}"
+    Rails.logger.warn "rack_attack:throttle #{message} from #{req.remote_ip}"
+    Sentry.capture_message("Rate limit hit: #{message}",
+      level: :warning,
+      extra: {
+        ip: req.remote_ip,
+        path: req.fullpath,
+        method: req.request_method,
+        matched: req.env['rack.attack.matched'],
+        discriminator: req.env['rack.attack.match_discriminator']
+      }
+    )
   end
 end
