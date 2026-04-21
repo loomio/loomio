@@ -133,7 +133,7 @@
       "note": "Baselined 2026-04-17 — Phase 1 audit residual (SQL Injection @ app/services/report_service.rb:375)"
     },
     {
-      "fingerprint": "ea7566f4141dcb434ee85d156ecb0ce422ae042adc440b6c91fee5908bd00457",
+      "fingerprint": "3867325373f2346ebfc395cd423f75d3d698504698d15744df5737dad396afd0",
       "note": "Baselined 2026-04-17 — Phase 1 audit residual (File Access @ app/workers/group_export_worker.rb:9)"
     },
     {
