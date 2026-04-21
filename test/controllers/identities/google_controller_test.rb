@@ -66,13 +66,14 @@ class Identities::GoogleControllerTest < ActionController::TestCase
     assert_redirected_to dashboard_path
   end
 
-  test "does not auto-link to verified user" do
-    User.create!(name: 'Existing', email: "google-#{@hex}@example.com", username: "gex#{@hex}", email_verified: true)
+  test "auto-links to verified user" do
+    existing = User.create!(name: 'Existing', email: "google-#{@hex}@example.com", username: "gex#{@hex}", email_verified: true)
 
     get :create, params: { code: 'google_auth_code' }
 
     identity = Identity.find_by(identity_type: 'google', uid: "google_#{@hex}")
-    assert_nil identity.user_id
+    assert_equal existing.id, identity.user_id
+    assert_equal existing, @controller.current_user
   end
 
   test "links to unverified user and verifies email" do

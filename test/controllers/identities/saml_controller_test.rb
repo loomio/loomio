@@ -122,10 +122,11 @@ class Identities::SamlControllerTest < ActionController::TestCase
     assert_equal I18n.t('devise.sessions.signed_in'), flash[:notice]
   end
 
-  # Create - verified user with same email exists (should NOT auto-link)
-  test "does not auto-link to verified user" do
+  # Create - verified user with same email exists
+  test "auto-links to verified user and signs in" do
     hex = SecureRandom.hex(4)
     existing_user = User.create!(name: 'Original Name', email: 'user@example.com', username: "samluser#{hex}", email_verified: true)
+    session[:back_to] = '/dashboard'
 
     with_saml_mocks do
       assert_difference 'Identity.where(identity_type: "saml").count', 1 do
@@ -136,8 +137,9 @@ class Identities::SamlControllerTest < ActionController::TestCase
     end
 
     identity = Identity.where(identity_type: 'saml').last
-    assert_nil identity.user_id, "Should not auto-link to verified user"
-    assert_equal 0, existing_user.reload.identities.count
+    assert_equal existing_user, identity.user
+    assert_equal existing_user, @controller.current_user
+    assert_redirected_to '/dashboard'
   end
 
   test "does not overwrite user name by default" do
@@ -151,11 +153,10 @@ class Identities::SamlControllerTest < ActionController::TestCase
     assert_equal 'Original Name', existing_user.reload.name
   end
 
-  # Force user attrs — only works when identity already linked
-  test "overwrites name when sso_force_user_attrs is true and identity exists" do
+  # Force user attrs
+  test "overwrites name when sso_force_user_attrs is true" do
     hex = SecureRandom.hex(4)
     existing_user = User.create!(name: 'Original Name', email: 'user@example.com', username: "samluser#{hex}", email_verified: true)
-    Identity.create!(identity_type: 'saml', uid: 'user@example.com', email: 'user@example.com', name: 'Original Name', access_token: nil, user: existing_user)
     ENV['LOOMIO_SSO_FORCE_USER_ATTRS'] = 'true'
 
     with_saml_mocks do
@@ -190,8 +191,8 @@ class Identities::SamlControllerTest < ActionController::TestCase
     assert_redirected_to '/dashboard'
   end
 
-  # Regression test - new identity for unverified user links correctly
-  test "links new identity to unverified user" do
+  # Unverified user gets linked and verified
+  test "links to unverified user and verifies email" do
     hex = SecureRandom.hex(4)
     existing_user = User.create!(name: 'Original Name', email: 'user@example.com', username: "samluser#{hex}", email_verified: false)
     session[:back_to] = '/dashboard'
@@ -206,8 +207,9 @@ class Identities::SamlControllerTest < ActionController::TestCase
 
     identity = Identity.where(identity_type: 'saml').last
     assert_equal existing_user, identity.user
-    assert_equal 'user@example.com', identity.uid
     assert existing_user.reload.email_verified?
+    assert_equal existing_user, @controller.current_user
+    assert_redirected_to '/dashboard'
   end
 
   # uid with different email, force attrs

@@ -67,13 +67,14 @@ class Identities::NextcloudControllerTest < ActionController::TestCase
     assert_redirected_to dashboard_path
   end
 
-  test "does not auto-link to verified user" do
-    User.create!(name: 'Existing', email: "nc-#{@hex}@example.com", username: "ncex#{@hex}", email_verified: true)
+  test "auto-links to verified user" do
+    existing = User.create!(name: 'Existing', email: "nc-#{@hex}@example.com", username: "ncex#{@hex}", email_verified: true)
 
     get :create, params: { code: 'nc_auth_code' }
 
     identity = Identity.find_by(identity_type: 'nextcloud', uid: "nc_#{@hex}")
-    assert_nil identity.user_id
+    assert_equal existing.id, identity.user_id
+    assert_equal existing, @controller.current_user
   end
 
   test "links to unverified user and verifies email" do
