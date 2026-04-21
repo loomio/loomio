@@ -64,7 +64,7 @@ class Api::V1::TrialsControllerTest < ActionController::TestCase
       user_name: "normal name"
     }
     assert_response :unprocessable_entity
-    assert_includes JSON.parse(response.body)["errors"]["user_email"], "Email address already exists. Please sign in to continue."
+    assert_includes JSON.parse(response.body)["errors"]["user_email"], "Email address is already registered"
   end
 
   test "creates new user and group and sends login email" do
