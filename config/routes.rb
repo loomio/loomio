@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   authenticate :user, lambda { |u| u.is_admin? } do
     mount Sidekiq::Web => '/admin/sidekiq'
-    mount Blazer::Engine, at: "/admin/blazer"
+    mount RailsPulse::Engine, at: "/admin/pulse"
   end
 
   if !Rails.env.production?
