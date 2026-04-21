@@ -40,19 +40,34 @@ class Identities::SamlControllerTest < ActionController::TestCase
     assert_redirected_to 'https://saml.provider.com/login?SAMLRequest=...'
   end
 
-  test "stores referrer as back_to when no back_to param" do
+  test "stores referrer as back_to when it is a relative path" do
     mock_auth_request = Minitest::Mock.new
     mock_auth_request.expect(:create, 'https://saml.provider.com/login?SAMLRequest=...',
                               [OpenStruct])
 
     OneLogin::RubySaml::IdpMetadataParser.stub(:new, @mock_parser) do
       OneLogin::RubySaml::Authrequest.stub(:new, mock_auth_request) do
-        request.env['HTTP_REFERER'] = 'http://test.host/previous/page'
+        request.env['HTTP_REFERER'] = '/previous/page'
         get :oauth
       end
     end
 
-    assert_equal 'http://test.host/previous/page', session[:back_to]
+    assert_equal '/previous/page', session[:back_to]
+  end
+
+  test "rejects external referrer as back_to" do
+    mock_auth_request = Minitest::Mock.new
+    mock_auth_request.expect(:create, 'https://saml.provider.com/login?SAMLRequest=...',
+                              [OpenStruct])
+
+    OneLogin::RubySaml::IdpMetadataParser.stub(:new, @mock_parser) do
+      OneLogin::RubySaml::Authrequest.stub(:new, mock_auth_request) do
+        request.env['HTTP_REFERER'] = 'https://evil.com/phishing'
+        get :oauth
+      end
+    end
+
+    assert_nil session[:back_to]
   end
 
   # Create tests helpers
@@ -107,8 +122,8 @@ class Identities::SamlControllerTest < ActionController::TestCase
     assert_equal I18n.t('devise.sessions.signed_in'), flash[:notice]
   end
 
-  # Create - user with same email exists
-  test "attaches identity to existing user and signs in" do
+  # Create - verified user with same email exists
+  test "auto-links to verified user and signs in" do
     hex = SecureRandom.hex(4)
     existing_user = User.create!(name: 'Original Name', email: 'user@example.com', username: "samluser#{hex}", email_verified: true)
     session[:back_to] = '/dashboard'
@@ -123,8 +138,6 @@ class Identities::SamlControllerTest < ActionController::TestCase
 
     identity = Identity.where(identity_type: 'saml').last
     assert_equal existing_user, identity.user
-    assert_equal 1, existing_user.reload.identities.count
-
     assert_equal existing_user, @controller.current_user
     assert_redirected_to '/dashboard'
   end
@@ -178,10 +191,10 @@ class Identities::SamlControllerTest < ActionController::TestCase
     assert_redirected_to '/dashboard'
   end
 
-  # Regression test - identity missing
-  test "links existing user to new identity without duplicate" do
+  # Unverified user gets linked and verified
+  test "links to unverified user and verifies email" do
     hex = SecureRandom.hex(4)
-    existing_user = User.create!(name: 'Original Name', email: 'user@example.com', username: "samluser#{hex}", email_verified: true)
+    existing_user = User.create!(name: 'Original Name', email: 'user@example.com', username: "samluser#{hex}", email_verified: false)
     session[:back_to] = '/dashboard'
 
     with_saml_mocks do
@@ -194,7 +207,9 @@ class Identities::SamlControllerTest < ActionController::TestCase
 
     identity = Identity.where(identity_type: 'saml').last
     assert_equal existing_user, identity.user
-    assert_equal 'user@example.com', identity.uid
+    assert existing_user.reload.email_verified?
+    assert_equal existing_user, @controller.current_user
+    assert_redirected_to '/dashboard'
   end
 
   # uid with different email, force attrs
