@@ -71,16 +71,18 @@ class Rack::Attack
 
   ActiveSupport::Notifications.subscribe('throttle.rack_attack') do |name, start, finish, request_id, req_h|
     req = req_h[:request]
-    message = "#{req.env['rack.attack.match_discriminator']} #{req.request_method} #{req.fullpath}"
-    Rails.logger.warn "rack_attack:throttle #{message} from #{req.remote_ip}"
-    Sentry.capture_message("Rate limit hit: #{message}",
+    matched = req.env['rack.attack.matched']
+    discriminator = req.env['rack.attack.match_discriminator']
+    Rails.logger.warn "rack_attack:throttle #{matched} #{discriminator} #{req.request_method} #{req.fullpath}"
+    Sentry.capture_message("Rate limit hit: #{matched}",
       level: :warning,
+      fingerprint: ['rack_attack', matched, discriminator],
       extra: {
         ip: req.remote_ip,
         path: req.fullpath,
         method: req.request_method,
-        matched: req.env['rack.attack.matched'],
-        discriminator: req.env['rack.attack.match_discriminator']
+        matched: matched,
+        discriminator: discriminator
       }
     )
   end
