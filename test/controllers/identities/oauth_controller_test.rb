@@ -56,10 +56,16 @@ class Identities::OauthControllerTest < ActionController::TestCase
     assert_includes response.location, 'scope=openid+profile+email'
   end
 
-  test "stores referrer as back_to when no back_to param" do
-    request.env['HTTP_REFERER'] = 'http://test.host/previous/page'
+  test "stores referrer as back_to when it is a relative path" do
+    request.env['HTTP_REFERER'] = '/previous/page'
     get :oauth
-    assert_equal 'http://test.host/previous/page', session[:back_to]
+    assert_equal '/previous/page', session[:back_to]
+  end
+
+  test "rejects external referrer as back_to" do
+    request.env['HTTP_REFERER'] = 'https://evil.com/phishing'
+    get :oauth
+    assert_nil session[:back_to]
   end
 
   # Create tests - user does not exist
@@ -83,11 +89,10 @@ class Identities::OauthControllerTest < ActionController::TestCase
     assert_equal I18n.t('devise.sessions.signed_in'), flash[:notice]
   end
 
-  # Create tests - user with same email exists
-  test "attaches identity to existing user and signs in" do
+  # Create tests - verified user with same email exists (should NOT auto-link)
+  test "does not auto-link to verified user" do
     hex = SecureRandom.hex(4)
     existing_user = User.create!(name: 'Original Name', email: 'oauth@example.com', username: "oauthex#{hex}", email_verified: true)
-    session[:back_to] = '/dashboard'
 
     assert_difference 'Identity.where(identity_type: "oauth").count', 1 do
       assert_no_difference 'User.count' do
@@ -96,11 +101,8 @@ class Identities::OauthControllerTest < ActionController::TestCase
     end
 
     identity = Identity.where(identity_type: 'oauth').last
-    assert_equal existing_user, identity.user
-    assert_equal 1, existing_user.reload.identities.count
-
-    assert_equal existing_user, @controller.current_user
-    assert_redirected_to '/dashboard'
+    assert_nil identity.user_id, "Should not auto-link to verified user"
+    assert_equal 0, existing_user.reload.identities.count
   end
 
   test "does not overwrite user name by default" do
@@ -110,10 +112,11 @@ class Identities::OauthControllerTest < ActionController::TestCase
     assert_equal 'Original Name', existing_user.reload.name
   end
 
-  # Force user attrs
-  test "overwrites name when sso_force_user_attrs is true" do
+  # Force user attrs — only works when identity already linked
+  test "overwrites name when sso_force_user_attrs is true and identity exists" do
     hex = SecureRandom.hex(4)
     existing_user = User.create!(name: 'Original Name', email: 'oauth@example.com', username: "oauthex#{hex}", email_verified: true)
+    Identity.create!(identity_type: 'oauth', uid: 'oauth_user_123', email: 'oauth@example.com', name: 'Original Name', access_token: 'old_token', user: existing_user)
     ENV['LOOMIO_SSO_FORCE_USER_ATTRS'] = 'true'
 
     get :create, params: { code: 'authorization_code_123' }
