@@ -8,12 +8,12 @@ class Rack::Attack
     end
   end
 
-  RATE_MULTIPLIER = ENV.fetch('RACK_ATTACK_RATE_MULTPLIER', 1).to_i
-  TIME_MULTIPLIER = ENV.fetch('RACK_ATTACK_TIME_MULTPLIER', 1).to_i
+  RATE_MULTIPLIER = ENV.fetch('RACK_ATTACK_RATE_MULTIPLIER', 1).to_i
+  TIME_MULTIPLIER = ENV.fetch('RACK_ATTACK_TIME_MULTIPLIER', 1).to_i
 
-  # throttle('req/ip', limit: 300, period: 5.minutes) do |req|
-  #   req.remote_ip
-  # end
+  throttle('req/ip', limit: 300 * RATE_MULTIPLIER, period: (5 * TIME_MULTIPLIER).minutes) do |req|
+    req.remote_ip
+  end
   IP_POST_LIMITS = {
     '/api/v1/trials' => 10,
     '/api/v1/announcements' => 100,
@@ -35,7 +35,7 @@ class Rack::Attack
     '/api/v1/sessions' => 10,
     '/api/v1/contact_messages' => 10,
     '/api/v1/contact_requests' => 10,
-    '/api/v1/discussion_readers' => 1000,
+    '/api/v1/discussion_readers' => 500,
     '/rails/active_storage/direct_uploads' => 20
   }
 
@@ -69,12 +69,19 @@ class Rack::Attack
     req.remote_ip if req.get? && req.path.starts_with?('/api/v1/profile/')
   end
 
-  ActiveSupport::Notifications.subscribe(/rack_attack/) do |name, start, finish, request_id, req_h|
+  ActiveSupport::Notifications.subscribe('throttle.rack_attack') do |name, start, finish, request_id, req_h|
     req = req_h[:request]
-    Rails.logger.warn [name,
-                       req.remote_ip,
-                       req.request_method,
-                       req.fullpath,
-                       request_id].join(' ')
+    message = "#{req.env['rack.attack.match_discriminator']} #{req.request_method} #{req.fullpath}"
+    Rails.logger.warn "rack_attack:throttle #{message} from #{req.remote_ip}"
+    Sentry.capture_message("Rate limit hit: #{message}",
+      level: :warning,
+      extra: {
+        ip: req.remote_ip,
+        path: req.fullpath,
+        method: req.request_method,
+        matched: req.env['rack.attack.matched'],
+        discriminator: req.env['rack.attack.match_discriminator']
+      }
+    )
   end
 end

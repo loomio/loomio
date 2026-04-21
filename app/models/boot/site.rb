@@ -19,6 +19,7 @@ module Boot
         sentry_dsn:          ENV['SENTRY_PUBLIC_DSN'],
         plausible_src:       ENV['PLAUSIBLE_SRC'],
         plausible_site:      ENV['PLAUSIBLE_SITE'],
+        turnstileSiteKey:    TurnstileService.site_key,
         features: {
           app:               AppConfig.app_features
         },

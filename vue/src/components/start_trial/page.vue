@@ -5,8 +5,9 @@ import Session  from '@/shared/services/session';
 import Flash   from '@/shared/services/flash';
 import { I18n } from '@/i18n';
 import EventBus   from '@/shared/services/event_bus';
-import { ref, useTemplateRef } from 'vue';
+import { ref, useTemplateRef, computed } from 'vue';
 import { useRouter } from 'vue-router';
+import TurnstileWidget from '@/components/auth/turnstile_widget.vue';
 const router = useRouter();
 
 const userName = ref(null);
@@ -20,6 +21,9 @@ const legalAccepted = ref(false);
 const loading = ref(false);
 const trialStarted = ref(false);
 const errors = ref({});
+const turnstileSiteKey = AppConfig.turnstileSiteKey;
+const turnstileToken = ref('');
+const submitBlockedByCaptcha = computed(() => Boolean(turnstileSiteKey) && !turnstileToken.value);
 
 const form = useTemplateRef('form')
 
@@ -39,6 +43,7 @@ const validate = (field) => {
 
 
 const submit = () => {
+  if (submitBlockedByCaptcha.value) { return; }
   errors.value = {};
   form.value.resetValidation();
   group.beforeSaves.forEach(f => f());
@@ -53,6 +58,7 @@ const submit = () => {
     group_description: group.description,
     group_category: groupCategory.value,
     group_how_did_you_hear_about_loomio: howDidYouHearAboutLoomio.value,
+    turnstile_token: turnstileToken.value,
   }).then((data) => {
     trialStarted.value= true
     if (isSignedIn) {
@@ -102,8 +108,9 @@ v-main
             //        a(:href='termsUrl' target='_blank' @click.stop v-t="'powered_by.terms_of_service'")
             //      template(v-slot:privacyLink)
             //        a(:href='privacyUrl' target='_blank' @click.stop v-t="'powered_by.privacy_policy'")
+          turnstile-widget(v-if="!isSignedIn" v-model='turnstileToken')
         v-card-actions
           v-spacer
-          v-btn(variant="elevated" :loading="loading" color="primary" type="submit")
+          v-btn(variant="elevated" :loading="loading" color="primary" type="submit" :disabled="!isSignedIn && submitBlockedByCaptcha")
             span(v-t="'templates.start_free_trial'")
 </template>

@@ -1,0 +1,166 @@
+{
+  "ignored_warnings": [
+    {
+      "fingerprint": "0265f35471a6bf7b27841313183e85d6bb423da145cff38c7faad033d528ae44",
+      "note": "Baselined 2026-04-17 — Phase 1 audit residual (SQL Injection @ app/models/concerns/has_timeframe.rb:5)"
+    },
+    {
+      "fingerprint": "06a77a24a5c84d4882a5b7d3db9b12afe98da8c9843f4cd131176268b9a2531d",
+      "note": "Baselined 2026-04-17 — Phase 1 audit residual (SQL Injection @ app/services/report_service.rb:139)"
+    },
+    {
+      "fingerprint": "09455223647865afde6a93693af558913e0af506d5cfbd3e2715917148311d01",
+      "note": "Baselined 2026-04-17 — Phase 1 audit residual (SQL Injection @ app/services/report_service.rb:169)"
+    },
+    {
+      "fingerprint": "0ea9f0ccef8ef1ba9af81de764ecb3417622e95a8eabc5aa919c3599f835acf1",
+      "note": "Baselined 2026-04-17 — Phase 1 audit residual (SQL Injection @ app/services/report_service.rb:49)"
+    },
+    {
+      "fingerprint": "19a0d86c4cbf6e7f4f0695e105302a66c9c6d2ec751678984494182dbb66a8d9",
+      "note": "Baselined 2026-04-17 — Phase 1 audit residual (SQL Injection @ app/extras/queries/union_query.rb:4)"
+    },
+    {
+      "fingerprint": "1e7cb7b59203baccb6ec711b2e706c83411d47861574f18da87d57898d094ef4",
+      "note": "Baselined 2026-04-17 — Phase 1 audit residual (SQL Injection @ app/services/report_service.rb:257)"
+    },
+    {
+      "fingerprint": "23cd92103e2f50ca8481c66acf8979114fed0d7d1e2ef63480dc647707c2806f",
+      "note": "Baselined 2026-04-17 — Phase 1 audit residual (SQL Injection @ app/services/report_service.rb:388)"
+    },
+    {
+      "fingerprint": "2850a46d0f70969f25a6ff4758763766863a2a8590b55ca7d4b056a7521ce205",
+      "note": "Baselined 2026-04-17 — Phase 1 audit residual (SQL Injection @ app/services/sequence_service.rb:16)"
+    },
+    {
+      "fingerprint": "38c413544e0f9fb42aaffb447b596c12c199a5192fc581708ac153c7e02d110e",
+      "note": "Baselined 2026-04-17 — Phase 1 audit residual (SQL Injection @ app/services/report_service.rb:207)"
+    },
+    {
+      "fingerprint": "43c652a78102cec9cc0b814fec488302c3164dbf7f721b9d2cc5df7b195de2b4",
+      "note": "Baselined 2026-04-17 — Phase 1 audit residual (SQL Injection @ app/helpers/current_user_helper.rb:30)"
+    },
+    {
+      "fingerprint": "4a790be1e2d59091c6a5622c3b6bd97d7a655b0cb878f4ee8a5cf7129c23307c",
+      "note": "Baselined 2026-04-17 — Phase 1 audit residual (Dangerous Send @ app/controllers/api/v1/identities_controller.rb:24)"
+    },
+    {
+      "fingerprint": "5129f4db31929c86d9057cfc5caca9bb01285c94a08851846bea5674731853ca",
+      "note": "Baselined 2026-04-17 — Phase 1 audit residual (SQL Injection @ app/services/report_service.rb:119)"
+    },
+    {
+      "fingerprint": "648521589b9d537be96257f124bb3dcbb017ac0744770b09128d65edbf18ff26",
+      "note": "Baselined 2026-04-17 — Phase 1 audit residual (SQL Injection @ app/services/report_service.rb:109)"
+    },
+    {
+      "fingerprint": "65907e019e8f45d2353dff2c4c676edfa2b718bd5a4777e14dc344e5928afafa",
+      "note": "Baselined 2026-04-17 — Phase 1 audit residual (SQL Injection @ app/workers/add_heading_ids_worker.rb:13)"
+    },
+    {
+      "fingerprint": "6e00310d3f90bb17a395f2aa7eea648b2243f00645e2b567c9cf38ca97d11062",
+      "note": "Baselined 2026-04-17 — Phase 1 audit residual (SQL Injection @ app/services/sequence_service.rb:22)"
+    },
+    {
+      "fingerprint": "70b10a9be890ab9247ae7ab11f3a4a5848f793e6104f7e97df7c57ed5abf9dfe",
+      "note": "Baselined 2026-04-17 — Phase 1 audit residual (SQL Injection @ app/services/report_service.rb:83)"
+    },
+    {
+      "fingerprint": "787da8fe5387d0d070e0b354030407588d27555b1043aa16956f2d1d9dd9c38a",
+      "note": "Baselined 2026-04-17 — Phase 1 audit residual (SQL Injection @ app/services/report_service.rb:159)"
+    },
+    {
+      "fingerprint": "78eeba6bd8ac23b846ad6cb559cdf841e1f3a3657e3a31020d29f6053fed0a48",
+      "note": "Baselined 2026-04-17 — Phase 1 audit residual (SQL Injection @ app/services/report_service.rb:363)"
+    },
+    {
+      "fingerprint": "879c7eb00bcbc3bbc0b853247ccf92d689224a550d96bae2141103b0663c2a50",
+      "note": "Baselined 2026-04-17 — Phase 1 audit residual (SQL Injection @ app/services/sequence_service.rb:10)"
+    },
+    {
+      "fingerprint": "89f2cf63cb1d4d7d291c02e674d50b2e1775279311295e21b0c8046c2a4caf19",
+      "note": "Baselined 2026-04-17 — Phase 1 audit residual (SQL Injection @ app/services/report_service.rb:338)"
+    },
+    {
+      "fingerprint": "8cfb08eb5c559db26150aeb3487a0886d0359f76aeb926a273c4c3b737e01bdb",
+      "note": "Baselined 2026-04-17 — Phase 1 audit residual (SQL Injection @ app/extras/queries/users_by_volume_query.rb:32)"
+    },
+    {
+      "fingerprint": "8d8440e325b81fbf6e097669d112756a01b47dfca85f6c766f9ec7a5851fc33e",
+      "note": "Baselined 2026-04-17 — Phase 1 audit residual (SQL Injection @ app/services/report_service.rb:97)"
+    },
+    {
+      "fingerprint": "8f31447c0f84bcb948d0b8b0c05e79322d3fb981323fff5c8baa0787ce741115",
+      "note": "Baselined 2026-04-17 — Phase 1 audit residual (SQL Injection @ app/services/report_service.rb:404)"
+    },
+    {
+      "fingerprint": "90e9f85a0d37d10934c073ac159eba9955fe0d2d3d5b501767fc09cb954d4bf3",
+      "note": "Baselined 2026-04-17 — Phase 1 audit residual (SQL Injection @ app/services/report_service.rb:350)"
+    },
+    {
+      "fingerprint": "9346129b027d0cbd3e1a45c2aaafc5e0ef6fd4f05854646ed31ad426461bcc3f",
+      "note": "Baselined 2026-04-17 — Phase 1 audit residual (File Access @ app/services/group_export_service.rb:119)"
+    },
+    {
+      "fingerprint": "95aee9fbb0420225f00629adcc1cfaab87c86754e40c81c24992439ae46a7805",
+      "note": "Baselined 2026-04-17 — Phase 1 audit residual (SQL Injection @ app/services/report_service.rb:230)"
+    },
+    {
+      "fingerprint": "95cd55aa5088c36a21e43459032d912ac2cfb50cb3106ab65b5a8982f823f0c9",
+      "note": "Baselined 2026-04-17 — Phase 1 audit residual (Redirect @ app/controllers/dev/scenarios/tags.rb:32)"
+    },
+    {
+      "fingerprint": "9ae68e59cfee3e5256c0540dadfeb74e6b72c91997fdb60411063a6e8518144a",
+      "note": "Baselined 2026-04-17 — Phase 1 audit residual (Remote Code Execution @ config/initializers/cookies_serializer.rb:8)"
+    },
+    {
+      "fingerprint": "b0381aebcb4a46d0ab3435793e92b0c2feb8db83f0465153ba98726fd5f8fd8a",
+      "note": "Baselined 2026-04-17 — Phase 1 audit residual (SQL Injection @ app/services/sequence_service.rb:4)"
+    },
+    {
+      "fingerprint": "b48669f9cf5965efde77518ba0f19bb26a9b33553b1f12ee24fb5c3d55752165",
+      "note": "Baselined 2026-04-17 — Phase 1 audit residual (SQL Injection @ app/services/report_service.rb:219)"
+    },
+    {
+      "fingerprint": "c6fec8d8a27ba81553deeee4f580192d700b92ea61db256a42ec49035b47422e",
+      "note": "Baselined 2026-04-17 — Phase 1 audit residual (SQL Injection @ app/services/report_service.rb:60)"
+    },
+    {
+      "fingerprint": "cd139c26e149d05ed584278512676ced1ca08c4778b07bc7c6052ba11cd44df1",
+      "note": "Baselined 2026-04-17 — Phase 1 audit residual (SQL Injection @ app/queries/membership_query.rb:7)"
+    },
+    {
+      "fingerprint": "d3156431a3c6ea08ac2e104b784f5f3834fb5aa125026c8413365110f00dee53",
+      "note": "Baselined 2026-04-17 — Phase 1 audit residual (SQL Injection @ app/services/report_service.rb:242)"
+    },
+    {
+      "fingerprint": "e0c8062a27429caa8187419b192e36bc0839e3fe682f693245818ae57c9deb33",
+      "note": "Baselined 2026-04-17 — Phase 1 audit residual (SQL Injection @ app/services/report_service.rb:375)"
+    },
+    {
+      "fingerprint": "ea7566f4141dcb434ee85d156ecb0ce422ae042adc440b6c91fee5908bd00457",
+      "note": "Baselined 2026-04-17 — Phase 1 audit residual (File Access @ app/workers/group_export_worker.rb:9)"
+    },
+    {
+      "fingerprint": "ec47abf45d2fb3cff822a0941c0cc21fcfd7ab01cdc0b9bc0ad2d013e70cc4f4",
+      "note": "Baselined 2026-04-17 — Phase 1 audit residual (SQL Injection @ app/services/migrate_events_service.rb:29)"
+    },
+    {
+      "fingerprint": "f2392d336525e02a15e7484a105e540507397b1686d86488677387a13c01679b",
+      "note": "Baselined 2026-04-17 — Phase 1 audit residual (SQL Injection @ app/services/report_service.rb:72)"
+    },
+    {
+      "fingerprint": "f35b97ef5cb8ddbf93129a6d50d3f7b54b4242926cfeb19721405bd45142d20e",
+      "note": "Baselined 2026-04-17 — Phase 1 audit residual (SQL Injection @ app/services/event_service.rb:91)"
+    },
+    {
+      "fingerprint": "f3b404971e32ed2d6ece60d33c082a46d67631655b2d646dfa97ce70a14bfcc6",
+      "note": "Baselined 2026-04-17 — Phase 1 audit residual (SQL Injection @ app/services/report_service.rb:149)"
+    },
+    {
+      "fingerprint": "f5a0d7784b66a4d4ddf2aef32014fda8b26599936449648c19747bd0b41d8d44",
+      "note": "Baselined 2026-04-17 — Phase 1 audit residual (SQL Injection @ app/services/report_service.rb:129)"
+    }
+  ],
+  "updated": "2026-04-17T16:03:48+12:00",
+  "brakeman_version": "8.0.4"
+}

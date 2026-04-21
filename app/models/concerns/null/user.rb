@@ -17,7 +17,7 @@ module Null::User
 
   def false_methods
     [:auto_translate, :is_logged_in?, :is_member_of?, :is_admin_of?, :is_admin?, :is_admin, :api_key_changed?,
-     :email_when_proposal_closing_soon, :has_password, :bot, :bot?,
+     :email_when_proposal_closing_soon, :has_password, :bot, :bot?, :is_paying?, :is_paying,
      :email_when_mentioned, :email_on_participation, :email_verified, :email_verified?, :email_newsletter, :marked_for_destruction?]
   end
 

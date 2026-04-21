@@ -1,4 +1,4 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
 ruby '4.0.2'
 gem 'rails', '~> 8.0.0'
@@ -8,7 +8,7 @@ gem 'pg'
 gem 'active_record_extended'
 gem 'haml-rails', '~> 3.0.0'
 gem 'phlex-rails'
-gem 'devise', '~> 4.9.4'
+gem 'devise', '~> 5.0.3'
 gem 'devise-i18n'
 gem 'devise-pwned_password'
 gem 'active_model_serializers', '~> 0.8.1', github: 'loomio/active_model_serializers', branch: 'fix-frozen-string-literal-ruby3'
@@ -73,6 +73,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'rails-controller-testing'
   gem "brakeman", require: false
+  gem "bundler-audit", require: false
   gem "rubocop-rails-omakase", require: false
 end
 
