@@ -39,17 +39,21 @@ class IdentityService
         return identity
       end
 
-      # Try to find existing user by email (verified or unverified)
-      # This enables transparent account linking for both new and invited users
-      identity.user = User.find_by(email: email)
+      existing_user = User.find_by(email: email)
 
-      if identity.user.nil?
+      if existing_user.nil?
         # No existing user found - create new verified user
         identity.user = User.new(identity_params.slice(:name, :email).merge(email_verified: true))
         identity.user.save!
+      elsif !existing_user.email_verified?
+        # Unverified user (invited but never logged in) - safe to auto-link
+        identity.user = existing_user
+        identity.user.update(email_verified: true)
       else
-        # User found (verified or unverified) - mark email as verified
-        identity.user.update(email_verified: true) unless identity.user.email_verified
+        # Verified user exists - don't auto-link, require explicit account linking
+        # This prevents account hijacking via SSO email spoofing
+        identity.save
+        return identity
       end
 
       identity.save
