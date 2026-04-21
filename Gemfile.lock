@@ -68,7 +68,7 @@ GEM
     active_record_extended (3.4.0)
       activerecord (>= 5.2, < 8.1)
       pg (< 3.0)
-    activeadmin (3.4.0)
+    activeadmin (3.5.1)
       arbre (~> 1.2, >= 1.2.1)
       csv
       formtastic (>= 3.1)
@@ -143,7 +143,7 @@ GEM
     base64 (0.3.0)
     bcrypt (3.1.22)
     benchmark (0.5.0)
-    bigdecimal (4.1.1)
+    bigdecimal (4.1.2)
     bindex (0.8.1)
     bootsnap (1.23.0)
       msgpack (~> 1.2)
@@ -239,8 +239,8 @@ GEM
     fiber-local (1.1.0)
       fiber-storage
     fiber-storage (1.0.1)
-    formtastic (5.0.0)
-      actionpack (>= 6.0.0)
+    formtastic (6.0.0)
+      actionpack (>= 7.2.0)
     formtastic_i18n (0.7.0)
     friendly_id (5.6.0)
       activerecord (>= 4.0.0)
@@ -801,7 +801,7 @@ DEPENDENCIES
   actionpack-page_caching
   active_model_serializers (~> 0.8.1)!
   active_record_extended
-  activeadmin (~> 3.4.0)
+  activeadmin (~> 3.5.1)
   activerecord-import (= 2.2.0)
   aws-sdk-s3
   bootsnap
