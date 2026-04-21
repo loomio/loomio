@@ -17,11 +17,19 @@ class UserSerializer < AuthorSerializer
     scope[:include_password_status]
   end
 
+  def include_location?
+    scope[:current_user_id] == object.id
+  end
+
+  def include_sign_in_count?
+    scope[:current_user_id] == object.id
+  end
+
   def include_complaints_count?
-    object.complaints_count > 0
+    object.complaints_count > 0 && scope[:current_user_is_admin]
   end
 
   def include_bounces_count?
-    object.bounces_count > 0
+    object.bounces_count > 0 && scope[:current_user_is_admin]
   end
 end
