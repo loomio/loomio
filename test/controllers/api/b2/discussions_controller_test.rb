@@ -80,7 +80,13 @@ class Api::B2::DiscussionsControllerTest < ActionController::TestCase
     refute_includes titles, 'Discarded Discussion'
   end
 
-  test "index respects per and from pagination" do
+  test "index respects limit pagination" do
+    get :index, params: { group_id: @group.id, api_key: @user.api_key, limit: 1 }
+    assert_response 200
+    assert_equal 1, JSON.parse(response.body)['discussions'].size
+  end
+
+  test "index still accepts legacy per param" do
     get :index, params: { group_id: @group.id, api_key: @user.api_key, per: 1 }
     assert_response 200
     assert_equal 1, JSON.parse(response.body)['discussions'].size

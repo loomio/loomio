@@ -181,10 +181,26 @@ class Api::B2::PollsControllerTest < ActionController::TestCase
     assert_includes titles, 'closed one'
   end
 
-  test "index respects per pagination" do
+  test "index respects limit pagination" do
+    3.times { |i| make_poll(title: "poll #{i}", group: @group) }
+    @member.update_columns(api_key: "mkey#{SecureRandom.hex(8)}")
+    get :index, params: { group_id: @group.id, api_key: @member.api_key, limit: 2 }
+    assert_response 200
+    assert_equal 2, JSON.parse(response.body)['polls'].size
+  end
+
+  test "index still accepts legacy per param" do
     3.times { |i| make_poll(title: "poll #{i}", group: @group) }
     @member.update_columns(api_key: "mkey#{SecureRandom.hex(8)}")
     get :index, params: { group_id: @group.id, api_key: @member.api_key, per: 2 }
+    assert_response 200
+    assert_equal 2, JSON.parse(response.body)['polls'].size
+  end
+
+  test "index respects offset pagination" do
+    3.times { |i| make_poll(title: "poll #{i}", group: @group) }
+    @member.update_columns(api_key: "mkey#{SecureRandom.hex(8)}")
+    get :index, params: { group_id: @group.id, api_key: @member.api_key, limit: 2, offset: 1 }
     assert_response 200
     assert_equal 2, JSON.parse(response.body)['polls'].size
   end

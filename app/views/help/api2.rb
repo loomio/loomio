@@ -61,9 +61,10 @@ class Views::Help::Api2 < Views::BasicLayout
       table do
         tr { td { plain "group_id" }; td { plain "integer. required. id of the group to list discussions from." } }
         tr { td { plain "status" }; td { plain "string. optional. default: 'open'. values: 'open', 'closed', 'all'." } }
-        tr { td { plain "per" }; td { plain "integer. optional. default: 50. page size." } }
-        tr { td { plain "from" }; td { plain "integer. optional. default: 0. offset for pagination." } }
+        tr { td { plain "limit" }; td { plain "integer. optional. default: 50. page size." } }
+        tr { td { plain "offset" }; td { plain "integer. optional. default: 0. offset for pagination." } }
       end
+      p { plain "Legacy: 'per' and 'from' are accepted as aliases for 'limit' and 'offset' and will continue to work." }
 
       h2 { plain "create poll" }
       h3 { plain "example" }
@@ -89,9 +90,10 @@ class Views::Help::Api2 < Views::BasicLayout
       table do
         tr { td { plain "group_id" }; td { plain "integer. required. id of the group to list polls from." } }
         tr { td { plain "status" }; td { plain "string. optional. default: 'active'. values: 'active', 'closed', 'all'." } }
-        tr { td { plain "per" }; td { plain "integer. optional. default: 50. page size." } }
-        tr { td { plain "from" }; td { plain "integer. optional. default: 0. offset for pagination." } }
+        tr { td { plain "limit" }; td { plain "integer. optional. default: 50. page size." } }
+        tr { td { plain "offset" }; td { plain "integer. optional. default: 0. offset for pagination." } }
       end
+      p { plain "Legacy: 'per' and 'from' are accepted as aliases for 'limit' and 'offset' and will continue to work." }
 
       h2 { plain "list memberships" }
       url = "#{@root_url}api/b2/memberships?api_key=#{@api_key}&group_id=#{@group_id}"
