@@ -1,8 +1,8 @@
 {
   "ignored_warnings": [
     {
-      "fingerprint": "0265f35471a6bf7b27841313183e85d6bb423da145cff38c7faad033d528ae44",
-      "note": "Baselined 2026-04-17 — Phase 1 audit residual (SQL Injection @ app/models/concerns/has_timeframe.rb:5)"
+      "fingerprint": "bf9ace7f399efc663058ca06b96011f09175dd7f594c0164a7cfd606c1d642c6",
+      "note": "Baselined — field validated against column_names before interpolation (SQL Injection @ app/models/concerns/has_timeframe.rb:7)"
     },
     {
       "fingerprint": "06a77a24a5c84d4882a5b7d3db9b12afe98da8c9843f4cd131176268b9a2531d",
@@ -39,10 +39,6 @@
     {
       "fingerprint": "43c652a78102cec9cc0b814fec488302c3164dbf7f721b9d2cc5df7b195de2b4",
       "note": "Baselined 2026-04-17 — Phase 1 audit residual (SQL Injection @ app/helpers/current_user_helper.rb:30)"
-    },
-    {
-      "fingerprint": "4a790be1e2d59091c6a5622c3b6bd97d7a655b0cb878f4ee8a5cf7129c23307c",
-      "note": "Baselined 2026-04-17 — Phase 1 audit residual (Dangerous Send @ app/controllers/api/v1/identities_controller.rb:24)"
     },
     {
       "fingerprint": "5129f4db31929c86d9057cfc5caca9bb01285c94a08851846bea5674731853ca",
@@ -159,8 +155,20 @@
     {
       "fingerprint": "f5a0d7784b66a4d4ddf2aef32014fda8b26599936449648c19747bd0b41d8d44",
       "note": "Baselined 2026-04-17 — Phase 1 audit residual (SQL Injection @ app/services/report_service.rb:129)"
+    },
+    {
+      "fingerprint": "093eca5499018a9af828bb3ea26cfcdc337cfb2a437f876afa6bff4b58d3c058",
+      "note": "Dead code — FunnelService is never called (SQL Injection @ engines/loomio_subs/app/services/funnel_service.rb:46)"
+    },
+    {
+      "fingerprint": "a41bc614b66b2c81ae70d5de0f63d835b0e9b7619ac072ae76854025eac65bf1",
+      "note": "Webhook with verify_request — trusted payment provider (Mass Assignment @ engines/loomio_subs/app/controllers/subscriptions_controller.rb:22)"
+    },
+    {
+      "fingerprint": "ecf3f4b4df22c7c266f6fe7210796b40e2fe676974e49354e1fcfabefc7b7a94",
+      "note": "Frozen constant array with connection.quote — safe (SQL Injection @ engines/loomio_subs/app/services/trial_cleanup_service.rb:160)"
     }
   ],
-  "updated": "2026-04-17T16:03:48+12:00",
+  "updated": "2026-04-21",
   "brakeman_version": "8.0.4"
 }
