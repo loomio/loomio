@@ -1,5 +1,10 @@
 class Api::V1::TrialsController < Api::V1::RestfulController
   def create
+    unless TurnstileService.verify(params[:turnstile_token], remote_ip: request.remote_ip)
+      render json: { errors: { turnstile: [:'auth_form.turnstile_required'] } }, status: 403
+      return
+    end
+
     trial = Trial.new(trial_params)
 
     trial.current_user = current_user
@@ -18,6 +23,7 @@ class Api::V1::TrialsController < Api::V1::RestfulController
   def trial_params
     params.delete(:trial)
     params.delete(:format) # I really dont know where these params come from
+    params.delete(:turnstile_token) # consumed by the Turnstile check above
     params.permit(
       :user_name,
       :user_email,
