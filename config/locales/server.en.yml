@@ -663,6 +663,7 @@ en:
         If you do not want your group to be deleted, please reply to this email.
         If you're sure you want to delete the group, you do not need to do anything.
         Thank you.
+  trial_mailer:
     trial_expired:
       subject: Your Loomio group will be deleted due to inactivity.
       body: |
