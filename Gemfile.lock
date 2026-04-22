@@ -587,11 +587,12 @@ GEM
     rails-i18n (8.1.0)
       i18n (>= 0.7, < 2)
       railties (>= 8.0.0, < 9)
-    rails_pulse (0.3.0.pre.1)
+    rails_pulse (0.2.7)
       async (~> 2.0)
       rails (>= 7.1.0, < 9.0.0)
       ransack (~> 4.0)
       request_store (~> 1.5)
+      turbo-rails (~> 2.0.11)
     railties (8.0.5)
       actionpack (= 8.0.5)
       activesupport (= 8.0.5)
@@ -744,6 +745,9 @@ GEM
     traces (0.18.2)
     trailblazer-option (0.1.2)
     tsort (0.2.0)
+    turbo-rails (2.0.23)
+      actionpack (>= 7.1.0)
+      railties (>= 7.1.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     tzinfo-data (1.2026.1)
@@ -844,7 +848,7 @@ DEPENDENCIES
   rack_session_access
   rails (~> 8.0.0)
   rails-controller-testing
-  rails_pulse (= 0.3.0.pre.1)
+  rails_pulse
   rake
   ransack (= 4.4.1)
   redcarpet (~> 3.6.1)
