@@ -112,11 +112,11 @@ class Api::V1::SnorlaxBase < ActionController::Base
   def serializer_root
     record = records_to_serialize.first
     if record.nil?
-      controller_name
+      controller_name.to_sym
     elsif record.is_a? Event
-      'events'
+      :events
     else
-      record.class.to_s.underscore.pluralize
+      record.class.to_s.underscore.pluralize.to_sym
     end
   end
 

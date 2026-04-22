@@ -116,4 +116,14 @@ class Api::B2::DiscussionsControllerTest < ActionController::TestCase
     get :index, params: { api_key: @user.api_key }
     assert_response 404
   end
+
+  test "index response has no duplicate top-level keys" do
+    get :index, params: { group_id: @group.id, api_key: @user.api_key }
+    assert_response 200
+    body = response.body
+    %w[discussions polls groups users events stances outcomes poll_options].each do |key|
+      count = body.scan(/"#{key}":/).size
+      assert count <= 1, "Expected '#{key}' key to appear at most once in response body, got #{count}"
+    end
+  end
 end
