@@ -32,7 +32,7 @@ class Rack::Attack
     '/api/v1/reactions' => 100,
     '/api/v1/link_previews' => 100,
     '/api/v1/registrations' => 10,
-    '/api/v1/sessions' => 10,
+    '/api/v1/sessions' => 30,
     '/api/v1/contact_messages' => 10,
     '/api/v1/contact_requests' => 10,
     '/api/v1/discussion_readers' => 500,
