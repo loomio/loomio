@@ -199,7 +199,9 @@ class Api::V1::SnorlaxBase < ActionController::Base
   end
 
   def page_collection(collection)
-    collection.offset(params[:from].to_i).limit((params[:per] || default_page_size).to_i)
+    offset = (params[:offset] || params[:from]).to_i
+    limit  = (params[:limit] || params[:per] || default_page_size).to_i
+    collection.offset(offset).limit(limit)
   end
 
   def order_collection(collection)

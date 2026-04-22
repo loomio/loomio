@@ -50,6 +50,22 @@ class Views::Help::Api2 < Views::BasicLayout
       h3 { plain "example" }
       pre { plain "curl #{@root_url}api/b2/discussions/abc123?api_key=#{@api_key}" }
 
+      h2 { plain "list discussions" }
+      p { plain "List discussions in a group. The caller must be a member of the group (or a global admin)." }
+      h3 { plain "example" }
+      list_discussions_url = "#{@root_url}api/b2/discussions?api_key=#{@api_key}&group_id=#{@group_id}"
+      a(href: list_discussions_url) { plain list_discussions_url }
+      pre { plain "curl '#{list_discussions_url}'" }
+
+      h3 { plain "params" }
+      table do
+        tr { td { plain "group_id" }; td { plain "integer. required. id of the group to list discussions from." } }
+        tr { td { plain "status" }; td { plain "string. optional. default: 'open'. values: 'open', 'closed', 'all'." } }
+        tr { td { plain "limit" }; td { plain "integer. optional. default: 50. page size." } }
+        tr { td { plain "offset" }; td { plain "integer. optional. default: 0. offset for pagination." } }
+      end
+      p { plain "Legacy: 'per' and 'from' are accepted as aliases for 'limit' and 'offset' and will continue to work." }
+
       h2 { plain "create poll" }
       h3 { plain "example" }
       closing_at = 7.days.from_now.at_beginning_of_hour.utc.iso8601
@@ -62,6 +78,22 @@ class Views::Help::Api2 < Views::BasicLayout
       p { plain "Fetch a poll using the poll id (an integer) or key (a string)" }
       h3 { plain "example" }
       pre { plain "curl #{@root_url}api/b2/polls/abc123?api_key=#{@api_key}" }
+
+      h2 { plain "list polls" }
+      p { plain "List polls in a group. The caller must be a member of the group (or a global admin). The response includes each poll's current outcome, so you can use status=closed to list decided proposals." }
+      h3 { plain "example" }
+      list_polls_url = "#{@root_url}api/b2/polls?api_key=#{@api_key}&group_id=#{@group_id}"
+      a(href: list_polls_url) { plain list_polls_url }
+      pre { plain "curl '#{list_polls_url}'" }
+
+      h3 { plain "params" }
+      table do
+        tr { td { plain "group_id" }; td { plain "integer. required. id of the group to list polls from." } }
+        tr { td { plain "status" }; td { plain "string. optional. default: 'active'. values: 'active', 'closed', 'all'." } }
+        tr { td { plain "limit" }; td { plain "integer. optional. default: 50. page size." } }
+        tr { td { plain "offset" }; td { plain "integer. optional. default: 0. offset for pagination." } }
+      end
+      p { plain "Legacy: 'per' and 'from' are accepted as aliases for 'limit' and 'offset' and will continue to work." }
 
       h2 { plain "list memberships" }
       url = "#{@root_url}api/b2/memberships?api_key=#{@api_key}&group_id=#{@group_id}"

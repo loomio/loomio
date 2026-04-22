@@ -51,4 +51,69 @@ class Api::B2::DiscussionsControllerTest < ActionController::TestCase
     post :create, params: { title: 'test', group_id: @group.id }
     assert_includes [400, 403], response.status, "Expected 400 or 403 but got #{response.status}"
   end
+
+  test "index returns open discussions in the group" do
+    get :index, params: { group_id: @group.id, api_key: @user.api_key }
+    assert_response 200
+    json = JSON.parse(response.body)
+    titles = json['discussions'].map { |d| d['title'] }
+    assert_includes titles, 'Test Discussion'
+    assert_includes titles, 'Private Discussion'
+    refute_includes titles, 'Discarded Discussion'
+  end
+
+  test "index status=closed returns closed discussions only" do
+    discussions(:test_discussion).update!(closed_at: Time.now)
+    get :index, params: { group_id: @group.id, api_key: @user.api_key, status: 'closed' }
+    assert_response 200
+    titles = JSON.parse(response.body)['discussions'].map { |d| d['title'] }
+    assert_equal ['Test Discussion'], titles
+  end
+
+  test "index status=all includes closed and open but not discarded" do
+    discussions(:test_discussion).update!(closed_at: Time.now)
+    get :index, params: { group_id: @group.id, api_key: @user.api_key, status: 'all' }
+    assert_response 200
+    titles = JSON.parse(response.body)['discussions'].map { |d| d['title'] }
+    assert_includes titles, 'Test Discussion'
+    assert_includes titles, 'Private Discussion'
+    refute_includes titles, 'Discarded Discussion'
+  end
+
+  test "index respects limit pagination" do
+    get :index, params: { group_id: @group.id, api_key: @user.api_key, limit: 1 }
+    assert_response 200
+    assert_equal 1, JSON.parse(response.body)['discussions'].size
+  end
+
+  test "index still accepts legacy per param" do
+    get :index, params: { group_id: @group.id, api_key: @user.api_key, per: 1 }
+    assert_response 200
+    assert_equal 1, JSON.parse(response.body)['discussions'].size
+  end
+
+  test "index rejects non-member" do
+    hex = SecureRandom.hex(4)
+    stranger = User.create!(name: "stranger#{hex}", email: "stranger#{hex}@example.com", username: "stranger#{hex}", email_verified: true)
+    stranger.update_columns(api_key: "strkey#{SecureRandom.hex(8)}")
+    get :index, params: { group_id: @group.id, api_key: stranger.api_key }
+    assert_response 403
+  end
+
+  test "index allows global admin not in group" do
+    admin = users(:admin_user)
+    admin.update_columns(api_key: "gadmkey#{SecureRandom.hex(8)}")
+    get :index, params: { group_id: @group.id, api_key: admin.api_key }
+    assert_response 200
+  end
+
+  test "index rejects bad api_key" do
+    get :index, params: { group_id: @group.id, api_key: 'nope' }
+    assert_response 403
+  end
+
+  test "index missing group_id returns 404" do
+    get :index, params: { api_key: @user.api_key }
+    assert_response 404
+  end
 end
