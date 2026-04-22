@@ -4,7 +4,7 @@ class Api::V1::SessionsController < Devise::SessionsController
 
   def create
     unless turnstile_ok?
-      render json: { errors: { turnstile: [:'auth_form.turnstile_required'] } }, status: 403
+      render json: { errors: { turnstile: [I18n.t('auth_form.turnstile_required')] } }, status: 403
       return
     end
     if user = attempt_login
@@ -32,9 +32,9 @@ class Api::V1::SessionsController < Devise::SessionsController
 
   def failure_message
     if resource_params[:password] && User.where(email: resource_params[:email]).where.not(locked_at: nil).exists?
-      { password: [:'auth_form.account_locked'] }
+      { password: [I18n.t('auth_form.account_locked')] }
     else
-      { password: [:'auth_form.invalid_password'] }
+      { password: [I18n.t('auth_form.invalid_password')] }
     end
   end
 
