@@ -25,7 +25,11 @@ export default {
   },
 
   computed: {
+    // Token-link flow (user.hasToken) doesn't render the Turnstile widget
+    // and the server bypasses verification via pending_login_token, so the
+    // client gate must not block submission in that case.
     submitBlockedByCaptcha() {
+      if (this.user.hasToken) { return false; }
       return Boolean(this.turnstileSiteKey) && !this.turnstileToken;
     }
   },
