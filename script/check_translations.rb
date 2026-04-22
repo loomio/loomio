@@ -33,6 +33,8 @@ base_ref = ARGV[0] or abort "usage: ruby script/check_translations.rb <base_ref>
 sources = ARGV[1..].map { |arg| arg.split(':', 2) }
 abort "at least one <dir:prefix> source is required" if sources.empty?
 
+supported = YAML.load_file(File.expand_path('../config/locales.yml', __dir__))['supported']
+
 missing = []
 
 sources.each do |dir, prefix|
@@ -51,9 +53,10 @@ sources.each do |dir, prefix|
 
   puts "#{en_file}: #{new_paths.size} newly-added English key(s)"
 
-  Dir.glob("#{dir}/#{prefix}.*.yml").sort.each do |file|
-    locale = file[%r{#{Regexp.escape(prefix)}\.(.+)\.yml\z}, 1]
-    next if locale.nil? || locale == 'en'
+  supported.each do |locale|
+    next if locale == 'en'
+    file = "#{dir}/#{prefix}.#{locale}.yml"
+    next unless File.exist?(file)
 
     existing = list_paths(parse_locale(File.read(file), locale))
     new_paths.each do |path|
