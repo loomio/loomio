@@ -73,6 +73,8 @@ class Rack::Attack
     req = req_h[:request]
     matched = req.env['rack.attack.matched']
     discriminator = req.env['rack.attack.match_discriminator']
+    email = (req.params['email'] || req.params.dig('user', 'email')).to_s.downcase.presence rescue nil
+    turnstile_provided = !!(req.params['turnstile_token'] || req.params.dig('user', 'turnstile_token')) rescue false
     Rails.logger.warn "rack_attack:throttle #{matched} #{discriminator} #{req.request_method} #{req.fullpath}"
     Sentry.capture_message("Rate limit hit: #{matched}",
       level: :warning,
@@ -82,7 +84,9 @@ class Rack::Attack
         path: req.fullpath,
         method: req.request_method,
         matched: matched,
-        discriminator: discriminator
+        discriminator: discriminator,
+        email: email,
+        turnstile_provided: turnstile_provided
       }
     )
   end
