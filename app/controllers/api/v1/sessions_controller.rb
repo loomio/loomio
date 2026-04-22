@@ -59,10 +59,13 @@ class Api::V1::SessionsController < Devise::SessionsController
     end
   end
 
-  # Already-validated email-link clicks skip the challenge so users don't
-  # face two CAPTCHAs (one when requesting the link, one when returning).
+  # Users who request a login-token have already solved a CAPTCHA to get the
+  # email — don't ask them to solve a second one (their previous token is now
+  # burnt at Cloudflare). The per-email sessions throttle + 6-digit code
+  # entropy make code-flow safe without a fresh CAPTCHA.
   def turnstile_ok?
     return true if pending_login_token&.useable?
+    return true if resource_params[:code].present?
     TurnstileService.verify(params.dig(:user, :turnstile_token) || params[:turnstile_token],
                             remote_ip: request.remote_ip)
   end
