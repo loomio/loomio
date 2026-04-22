@@ -38,11 +38,16 @@ export default new class AuthService {
       this.authSuccess(data);
       return data;
     }
-    , function(err) {
-      const errors = user.hasToken ?
-        { token: [I18n.global.t('auth_form.invalid_token')] }
-      :
-        { password: [I18n.global.t('auth_form.invalid_password')]};
+    , function(data) {
+      const serverErrors = (data && data.errors) || {};
+      const errors = Object.keys(serverErrors).length ? { ...serverErrors } : {};
+      if (user.code) {
+        errors.code = errors.code || errors.turnstile || errors.token ||
+                      [I18n.global.t('auth_form.invalid_code')];
+      } else if (!Object.keys(errors).length) {
+        errors[user.hasToken ? 'token' : 'password'] =
+          [I18n.global.t(user.hasToken ? 'auth_form.invalid_token' : 'auth_form.invalid_password')];
+      }
       return user.update({errors});
     });
   }
