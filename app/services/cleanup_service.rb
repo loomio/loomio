@@ -39,7 +39,11 @@ module CleanupService
   def self.orphan_user_ids
     User.where(deactivated_at: nil)
         .where("last_sign_in_at < ?", 1.year.ago)
-        .where("NOT EXISTS (SELECT 1 FROM memberships WHERE memberships.user_id = users.id AND memberships.revoked_at IS NULL)")
+        .where("NOT EXISTS (SELECT 1 FROM memberships       WHERE memberships.user_id        = users.id)")
+        .where("NOT EXISTS (SELECT 1 FROM comments          WHERE comments.user_id           = users.id)")
+        .where("NOT EXISTS (SELECT 1 FROM discussions       WHERE discussions.author_id      = users.id)")
+        .where("NOT EXISTS (SELECT 1 FROM polls             WHERE polls.author_id            = users.id)")
+        .where("NOT EXISTS (SELECT 1 FROM stances           WHERE stances.participant_id     = users.id)")
         .pluck(:id)
   end
 end
