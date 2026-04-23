@@ -41,6 +41,8 @@ Session.vim
 .powenv
 .env.production
 config/deploy.yml
+.kamal/secrets
+.kamal/secrets.*
 .byebug_history
 logfile
 
