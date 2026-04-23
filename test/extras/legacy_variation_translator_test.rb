@@ -26,6 +26,21 @@ class LegacyVariationTranslatorTest < ActiveSupport::TestCase
     assert_equal({resize_to_limit: [1280, 1280], saver: {quality: 85, strip: true}}, result)
   end
 
+  test "lifts top-level quality into saver and casts to integer" do
+    result = LegacyVariationTranslator.call(resize: "1200x1200>", quality: "85")
+    assert_equal({resize_to_limit: [1200, 1200], saver: {quality: 85}}, result)
+  end
+
+  test "lifts top-level strip into saver and casts to boolean" do
+    result = LegacyVariationTranslator.call(resize: "800x800>", strip: "true")
+    assert_equal({resize_to_limit: [800, 800], saver: {strip: true}}, result)
+  end
+
+  test "merges lifted saver keys with existing saver hash" do
+    result = LegacyVariationTranslator.call(resize_to_limit: [600, 600], saver: {strip: true}, quality: "90")
+    assert_equal({resize_to_limit: [600, 600], saver: {strip: true, quality: 90}}, result)
+  end
+
   test "passes modern transformations through unchanged" do
     input = {resize_to_limit: [512, 512], saver: {quality: 80}}
     assert_equal input, LegacyVariationTranslator.call(input)
