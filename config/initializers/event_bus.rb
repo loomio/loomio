@@ -9,11 +9,16 @@ EventBus.configure do |config|
                 'stance_created_event',
                 'outcome_created_event',
                 'poll_closed_by_user_event') do |event|
-    if event.discussion
-      reader = DiscussionReader.for_model(event.discussion, event.user.presence || event.eventable.real_participant)
-                               .update_reader(ranges: event.sequence_id,
-                                              volume: :loud)
-      # MessageChannelService.publish_models([reader], root: :discussions, user_id: event.real_user.id)
+    # real_participant only exists on Comment and Stance (for anonymous-voting
+    # flows where event.user is the placeholder and the eventable holds the
+    # real actor). Other eventables (Poll, Discussion, Outcome) don't have it,
+    # so skip the fallback there.
+    reader_user = event.user.presence
+    reader_user ||= event.eventable.real_participant if event.eventable.respond_to?(:real_participant)
+
+    if event.discussion && reader_user
+      DiscussionReader.for_model(event.discussion, reader_user)
+                      .update_reader(ranges: event.sequence_id, volume: :loud)
     end
   end
 
