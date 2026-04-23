@@ -83,8 +83,21 @@ class Rack::Attack
     end
   end
 
-  throttle("profile_get/ip", limit: 20 * RATE_MULTIPLIER, period: (1 * TIME_MULTIPLIER).hour) do |req|
-    req.remote_ip if req.get? && req.path.starts_with?('/api/v1/profile/')
+  # /api/v1/profile/email_status is unauthenticated and falls through to
+  # User.find_by(email:), so it's the enumeration surface. Throttle it
+  # tightly and separately from the rest of /api/v1/profile/*.
+  throttle("email_status/ip", limit: 20 * RATE_MULTIPLIER, period: (1 * TIME_MULTIPLIER).hour) do |req|
+    req.remote_ip if req.get? && req.path == '/api/v1/profile/email_status'
+  end
+
+  throttle("email_status/email", limit: 5 * RATE_MULTIPLIER, period: (1 * TIME_MULTIPLIER).hour) do |req|
+    if req.get? && req.path == '/api/v1/profile/email_status'
+      req.params['email'].to_s.downcase.presence
+    end
+  end
+
+  throttle("profile_get/ip", limit: 60 * RATE_MULTIPLIER, period: (1 * TIME_MULTIPLIER).hour) do |req|
+    req.remote_ip if req.get? && req.path.starts_with?('/api/v1/profile/') && req.path != '/api/v1/profile/email_status'
   end
 
   ActiveSupport::Notifications.subscribe('throttle.rack_attack') do |name, start, finish, request_id, req_h|
