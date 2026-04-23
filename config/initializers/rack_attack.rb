@@ -1,3 +1,5 @@
+require 'ipaddr'
+
 class Rack::Attack
   class Request < ::Rack::Request
     def remote_ip
@@ -10,6 +12,22 @@ class Rack::Attack
 
   RATE_MULTIPLIER = ENV.fetch('RACK_ATTACK_RATE_MULTIPLIER', 1).to_i
   TIME_MULTIPLIER = ENV.fetch('RACK_ATTACK_TIME_MULTIPLIER', 1).to_i
+
+  # Exempt internal service-to-service traffic (Docker bridge, loopback,
+  # RFC1918) from rate limits. Container-to-container requests have no
+  # CF-Connecting-IP, so they'd otherwise share one discriminator per
+  # Docker bridge address and trip global throttles quickly.
+  PRIVATE_NETWORKS = %w[
+    10.0.0.0/8
+    172.16.0.0/12
+    192.168.0.0/16
+    127.0.0.0/8
+  ].map { |cidr| IPAddr.new(cidr) }.freeze
+
+  safelist('private-network') do |req|
+    addr = IPAddr.new(req.ip.to_s) rescue nil
+    addr && PRIVATE_NETWORKS.any? { |net| net.include?(addr) }
+  end
 
   throttle('req/ip', limit: 300 * RATE_MULTIPLIER, period: (5 * TIME_MULTIPLIER).minutes) do |req|
     req.remote_ip
