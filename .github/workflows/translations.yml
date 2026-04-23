@@ -1,0 +1,18 @@
+name: translations
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '4.0.2'
+      - name: check translations
+        run: ruby script/check_translations.rb origin/${{ github.base_ref }} config/locales:server config/locales:client

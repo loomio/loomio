@@ -246,7 +246,7 @@ namespace :loomio do
       ThrottleService.reset!('day')
       Group.expired_demo.delete_all
       GenericWorker.perform_async('DemoService', 'generate_demo_groups')
-      GenericWorker.perform_async('CleanupService', 'delete_orphan_records')
+      EventBus.broadcast('loomio_daily_tick')
       GenericWorker.perform_async('OutcomeService', 'publish_review_due')
       GenericWorker.perform_async('ReceivedEmailService', 'delete_old_emails')
     end
