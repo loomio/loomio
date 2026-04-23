@@ -30,7 +30,14 @@ class Rack::Attack
   end
 
   throttle('req/ip', limit: 300 * RATE_MULTIPLIER, period: (5 * TIME_MULTIPLIER).minutes) do |req|
-    req.remote_ip
+    req.remote_ip unless req.path == '/bug_tunnel'
+  end
+
+  # Dedicated higher-ceiling throttle for the Sentry tunnel. A single client
+  # in a JS error loop can spike bug_tunnel traffic without meaning to DoS
+  # the site — give it room, but still stop runaway clients.
+  throttle('bug_tunnel/ip', limit: 500 * RATE_MULTIPLIER, period: (5 * TIME_MULTIPLIER).minutes) do |req|
+    req.remote_ip if req.path == '/bug_tunnel'
   end
   IP_POST_LIMITS = {
     '/api/v1/trials' => 10,
@@ -104,6 +111,10 @@ class Rack::Attack
     req = req_h[:request]
     matched = req.env['rack.attack.matched']
     discriminator = req.env['rack.attack.match_discriminator']
+    # bug_tunnel receives forwarded browser-side Sentry envelopes, so one
+    # client in an error loop can spam it. Skip alerting on that throttle —
+    # each blocked request would otherwise emit its own Sentry event.
+    next if matched == 'bug_tunnel/ip'
     email = (req.params['email'] || req.params.dig('user', 'email')).to_s.downcase.presence rescue nil
     turnstile_provided = !!(req.params['turnstile_token'] || req.params.dig('user', 'turnstile_token')) rescue false
     Rails.logger.warn "rack_attack:throttle #{matched} #{discriminator} #{req.request_method} #{req.fullpath}"
