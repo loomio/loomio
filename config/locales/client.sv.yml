@@ -320,7 +320,7 @@ sv:
     thread: Tråd
     commercial: Kommersiell
     nonprofit: Ideell organisation
-    opening_in: Öppning %{tid}
+    opening_in: Öppning %{time}
     read_more: Läs mer
     templates_admin_hint: Eftersom du är gruppadministratör kan du dölja eller ta bort mallar du inte vill ha och redigera de återstående efter dina behov.
   merge_accounts:

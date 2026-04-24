@@ -320,7 +320,7 @@ nl_NL:
     thread: Draad
     commercial: Commercieel
     nonprofit: Non-profit
-    opening_in: Openingstijden %{tijd}
+    opening_in: Openingstijden %{time}
     read_more: Lees meer
     templates_admin_hint: Omdat u groepsbeheerder bent, kunt u sjablonen die u niet wilt verbergen of verwijderen en de overgebleven sjablonen aanpassen aan uw behoeften.
   merge_accounts:
