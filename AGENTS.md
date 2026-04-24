@@ -4,6 +4,8 @@
 
 - **Never change the value of an existing i18n key.** Existing keys may be translated into other languages; changing the English value breaks those translations.
 - Instead, create a new key with the new value and update the code to reference the new key.
+- **Review retranslation PRs against `config/locales/translation_corrections.md`** — that file logs sense-errors Google Translate has made before (polysemous short labels, paired actions drifting, misleading German words, glossary overrides like outcome→conclusion across many locales). If a new translation pass reintroduces one of those patterns, catch it at review.
+- **When you hand-correct a translation, append it to `translation_corrections.md`** with the file, key, before/after, and a one-line "why it was wrong". The point is to accumulate the context Google doesn't have, so reviewers of the next retranslation can watch for the same traps.
 
 
 ## Running E2E Tests

@@ -33,23 +33,28 @@ export default new class AuthService {
   signIn(user) {
     if (user == null) { user = {}; }
     return Records.sessions.build(
-      pick(user, ['email', 'name', 'password', 'code'])
+      pick(user, ['email', 'name', 'password', 'code', 'turnstileToken'])
     ).save().then(data => {
       this.authSuccess(data);
       return data;
     }
-    , function(err) {
-      const errors = user.hasToken ?
-        { token: [I18n.global.t('auth_form.invalid_token')] }
-      :
-        { password: [I18n.global.t('auth_form.invalid_password')]};
+    , function(data) {
+      const serverErrors = (data && data.errors) || {};
+      const errors = Object.keys(serverErrors).length ? { ...serverErrors } : {};
+      if (user.code) {
+        errors.code = errors.code || errors.turnstile || errors.token ||
+                      [I18n.global.t('auth_form.invalid_code')];
+      } else if (!Object.keys(errors).length) {
+        errors[user.hasToken ? 'token' : 'password'] =
+          [I18n.global.t(user.hasToken ? 'auth_form.invalid_token' : 'auth_form.invalid_password')];
+      }
       return user.update({errors});
     });
   }
 
   signUp(user) {
     return Records.registrations.build(
-      pick(user, ['email', 'name', 'legalAccepted', 'emailNewsletter'])
+      pick(user, ['email', 'name', 'legalAccepted', 'emailNewsletter', 'turnstileToken'])
     ).save().then(data => {
       if (user.hasToken || data.signed_in) {
         this.authSuccess(data);
@@ -68,7 +73,7 @@ export default new class AuthService {
   }
 
   sendLoginLink(user) {
-    return Records.loginTokens.fetchToken(user.email).then(() => user.update({authForm: 'complete', sentLoginLink: true}));
+    return Records.loginTokens.fetchToken(user.email, user.turnstileToken).then(() => user.update({authForm: 'complete', sentLoginLink: true}));
   }
 
   validSignup(vars, user) {

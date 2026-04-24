@@ -45,8 +45,6 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
     comment_params = { body: "updated content", dontmindme: "wild wooly byte virus" }
     put :update, params: { id: @user_comment.id, comment: comment_params }
     assert_response :bad_request
-    json = JSON.parse(response.body)
-    assert_includes json['exception'], 'ActionController::UnpermittedParameters'
   end
 
   test "update unauthorized user" do
@@ -56,8 +54,6 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
     comment_params = { body: "updated content" }
     put :update, params: { id: @user_comment.id, comment: comment_params }
     assert_response :forbidden
-    json = JSON.parse(response.body)
-    assert_includes json['exception'], 'CanCan::AccessDenied'
   end
 
   test "update validation errors" do
@@ -151,8 +147,7 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
     sign_in @user
     comment_params = { parent_type: 'Discussion', parent_id: @discussion.id, body: "original content", dontmindme: "wild wooly byte virus" }
     post :create, params: { comment: comment_params }
-    json = JSON.parse(response.body)
-    assert_includes json['exception'], 'ActionController::UnpermittedParameters'
+    assert_response :bad_request
   end
 
   test "create validation errors" do

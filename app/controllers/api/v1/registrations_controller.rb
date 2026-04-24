@@ -5,6 +5,10 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
 
   def create
     @email_can_be_verified = email_can_be_verified?
+    unless turnstile_ok?
+      render json: { errors: { turnstile: [:'auth_form.turnstile_required'] } }, status: 403
+      return
+    end
     self.resource = UserService.create(params: sign_up_params)
     if !resource.errors.any?
       save_detected_locale(resource)
@@ -44,9 +48,18 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  # Users following a pending_membership / login_token / identity flow have
+  # proved control of their email by clicking an emailed link, so they skip
+  # the challenge — same bypass as the sessions controller's pending_login_token path.
+  def turnstile_ok?
+    return true if @email_can_be_verified
+    TurnstileService.verify(params.dig(:user, :turnstile_token) || params[:turnstile_token],
+                            remote_ip: request.remote_ip)
+  end
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up) do |u|
-      u.permit(:name, :email, :legal_accepted, :email_newsletter)
+      u.permit(:name, :email, :legal_accepted, :email_newsletter, :turnstile_token)
     end
   end
 end

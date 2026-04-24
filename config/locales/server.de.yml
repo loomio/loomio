@@ -415,7 +415,7 @@ de:
       you_have_until: Du kannst bis %{when} teilnehmen.
       people_have_voted: "%{nom} von %{dnom} Leuten haben gewählt (%{pct}%)"
       voting_opens_and_closes: Die Abstimmung beginnt %{opens} und endet %{closes}. (%{days} Tage)
-      voting_closes: Die Abstimmung endet %{wenn}.
+      voting_closes: Die Abstimmung endet %{when}.
       voting_opened_and_closed: Die Abstimmung begann %{opens} und endete %{closes}. (%{days} Tage)
   poll_templates:
     practice_proposal:

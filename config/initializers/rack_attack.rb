@@ -1,3 +1,5 @@
+require 'ipaddr'
+
 class Rack::Attack
   class Request < ::Rack::Request
     def remote_ip
@@ -8,12 +10,35 @@ class Rack::Attack
     end
   end
 
-  RATE_MULTIPLIER = ENV.fetch('RACK_ATTACK_RATE_MULTPLIER', 1).to_i
-  TIME_MULTIPLIER = ENV.fetch('RACK_ATTACK_TIME_MULTPLIER', 1).to_i
+  RATE_MULTIPLIER = ENV.fetch('RACK_ATTACK_RATE_MULTIPLIER', 1).to_i
+  TIME_MULTIPLIER = ENV.fetch('RACK_ATTACK_TIME_MULTIPLIER', 1).to_i
 
-  # throttle('req/ip', limit: 300, period: 5.minutes) do |req|
-  #   req.remote_ip
-  # end
+  # Exempt internal service-to-service traffic (Docker bridge, loopback,
+  # RFC1918) from rate limits. Container-to-container requests have no
+  # CF-Connecting-IP, so they'd otherwise share one discriminator per
+  # Docker bridge address and trip global throttles quickly.
+  PRIVATE_NETWORKS = %w[
+    10.0.0.0/8
+    172.16.0.0/12
+    192.168.0.0/16
+    127.0.0.0/8
+  ].map { |cidr| IPAddr.new(cidr) }.freeze
+
+  safelist('private-network') do |req|
+    addr = IPAddr.new(req.ip.to_s) rescue nil
+    addr && PRIVATE_NETWORKS.any? { |net| net.include?(addr) }
+  end
+
+  throttle('req/ip', limit: 300 * RATE_MULTIPLIER, period: (5 * TIME_MULTIPLIER).minutes) do |req|
+    req.remote_ip unless req.path == '/bug_tunnel'
+  end
+
+  # Dedicated higher-ceiling throttle for the Sentry tunnel. A single client
+  # in a JS error loop can spike bug_tunnel traffic without meaning to DoS
+  # the site — give it room, but still stop runaway clients.
+  throttle('bug_tunnel/ip', limit: 500 * RATE_MULTIPLIER, period: (5 * TIME_MULTIPLIER).minutes) do |req|
+    req.remote_ip if req.path == '/bug_tunnel'
+  end
   IP_POST_LIMITS = {
     '/api/v1/trials' => 10,
     '/api/v1/announcements' => 100,
@@ -32,10 +57,10 @@ class Rack::Attack
     '/api/v1/reactions' => 100,
     '/api/v1/link_previews' => 100,
     '/api/v1/registrations' => 10,
-    '/api/v1/sessions' => 10,
+    '/api/v1/sessions' => 30,
     '/api/v1/contact_messages' => 10,
     '/api/v1/contact_requests' => 10,
-    '/api/v1/discussion_readers' => 1000,
+    '/api/v1/discussion_readers' => 500,
     '/rails/active_storage/direct_uploads' => 20
   }
 
@@ -65,16 +90,46 @@ class Rack::Attack
     end
   end
 
-  throttle("profile_get/ip", limit: 20 * RATE_MULTIPLIER, period: (1 * TIME_MULTIPLIER).hour) do |req|
-    req.remote_ip if req.get? && req.path.starts_with?('/api/v1/profile/')
+  # /api/v1/profile/email_status is unauthenticated and falls through to
+  # User.find_by(email:), so it's the enumeration surface. Throttle it
+  # tightly and separately from the rest of /api/v1/profile/*.
+  throttle("email_status/ip", limit: 20 * RATE_MULTIPLIER, period: (1 * TIME_MULTIPLIER).hour) do |req|
+    req.remote_ip if req.get? && req.path == '/api/v1/profile/email_status'
   end
 
-  ActiveSupport::Notifications.subscribe(/rack_attack/) do |name, start, finish, request_id, req_h|
+  throttle("email_status/email", limit: 5 * RATE_MULTIPLIER, period: (1 * TIME_MULTIPLIER).hour) do |req|
+    if req.get? && req.path == '/api/v1/profile/email_status'
+      req.params['email'].to_s.downcase.presence
+    end
+  end
+
+  throttle("profile_get/ip", limit: 60 * RATE_MULTIPLIER, period: (1 * TIME_MULTIPLIER).hour) do |req|
+    req.remote_ip if req.get? && req.path.starts_with?('/api/v1/profile/') && req.path != '/api/v1/profile/email_status'
+  end
+
+  ActiveSupport::Notifications.subscribe('throttle.rack_attack') do |name, start, finish, request_id, req_h|
     req = req_h[:request]
-    Rails.logger.warn [name,
-                       req.remote_ip,
-                       req.request_method,
-                       req.fullpath,
-                       request_id].join(' ')
+    matched = req.env['rack.attack.matched']
+    discriminator = req.env['rack.attack.match_discriminator']
+    # bug_tunnel receives forwarded browser-side Sentry envelopes, so one
+    # client in an error loop can spam it. Skip alerting on that throttle —
+    # each blocked request would otherwise emit its own Sentry event.
+    next if matched == 'bug_tunnel/ip'
+    email = (req.params['email'] || req.params.dig('user', 'email')).to_s.downcase.presence rescue nil
+    turnstile_provided = !!(req.params['turnstile_token'] || req.params.dig('user', 'turnstile_token')) rescue false
+    Rails.logger.warn "rack_attack:throttle #{matched} #{discriminator} #{req.request_method} #{req.fullpath}"
+    Sentry.capture_message("Rate limit hit: #{matched}",
+      level: :warning,
+      fingerprint: ['rack_attack', matched, discriminator],
+      extra: {
+        ip: req.remote_ip,
+        path: req.fullpath,
+        method: req.request_method,
+        matched: matched,
+        discriminator: discriminator,
+        email: email,
+        turnstile_provided: turnstile_provided
+      }
+    )
   end
 end

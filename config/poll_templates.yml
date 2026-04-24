@@ -205,6 +205,8 @@ stv:
   details_i18n: poll_templates.stv.details
   shuffle_options: true
   default_duration_in_days: 7
+  anonymous: true
+  hide_results: until_closed
 
 advice:
   poll_type: proposal

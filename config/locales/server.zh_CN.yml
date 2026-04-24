@@ -641,7 +641,7 @@ zh_CN:
       more_undecided: 还有 %{count} 个...
       vote_now: 立即投票
       you_have_until: 您可以在 %{when} 之前参与。
-      people_have_voted: "%{n} 人参与了 %{dnom} 人的活动 (%{pct}%)"
+      people_have_voted: "%{nom} 人参与了 %{dnom} 人的活动 (%{pct}%)"
       voting_opens_and_closes: 投票于 %{opens} 开始，%{closes} 结束。（%{days} 天）
       voting_closes: 投票将于 %{when} 结束。
       voting_opened_and_closed: 投票于 %{opens} 天开始，%{closes} 天结束。（耗时 %{days} 天）

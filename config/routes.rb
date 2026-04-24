@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   authenticate :user, lambda { |u| u.is_admin? } do
     mount Sidekiq::Web => '/admin/sidekiq'
-    mount Blazer::Engine, at: "/admin/blazer"
+    mount RailsPulse::Engine, at: "/admin/pulse"
   end
 
   if !Rails.env.production?
@@ -46,8 +46,8 @@ Rails.application.routes.draw do
     end
 
     namespace :b2 do
-      resources :discussions, only: [:create, :show]
-      resources :polls, only: [:create, :show]
+      resources :discussions, only: [:create, :show, :index]
+      resources :polls, only: [:create, :show, :index]
       resources :memberships, only: [:index, :create]
       resources :comments, only: [:create]
     end
@@ -323,7 +323,7 @@ Rails.application.routes.draw do
           post :oauth, on: :collection
         end
       end
-      get "identities/:id/:command", to: "identities#command"
+      # identities command route removed (dead code)
     end
   end
 
@@ -350,7 +350,7 @@ Rails.application.routes.draw do
     end
   end
 
-  post :email_processor, to: 'received_emails#create'
+  # old email webhook removed — use Action Mailbox instead
 
   namespace :email_actions do
     get :unsubscribe

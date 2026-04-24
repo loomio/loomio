@@ -303,10 +303,15 @@ class User < ApplicationRecord
     I18n.with_locale(locale) { devise_mailer.send(notification, self, *args).deliver_now }
   end
 
+  def self.ransackable_associations(auth_object = nil)
+    ["admin_memberships", "adminable_groups", "all_memberships", "authored_discussions", "authored_polls", "comments", "created_groups", "discussion_readers", "discussions", "documents", "events", "files_attachments", "files_blobs", "group_polls", "groups", "guest_discussion_readers", "guest_discussions", "guest_polls", "guest_stances", "identities", "image_files_attachments", "image_files_blobs", "login_tokens", "membership_requests", "memberships", "notifications", "participated_polls", "reactions", "stances", "tags", "tasks", "uploaded_avatar_attachment", "uploaded_avatar_blob", "versions"]
+  end
+
   def self.ransackable_attributes(auth_object = nil)
     [
     "avatar_initials",
     "avatar_kind",
+    "bounces_count",
     "city",
     "content_locale",
     "country",

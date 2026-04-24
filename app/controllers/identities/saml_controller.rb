@@ -3,13 +3,13 @@ class Identities::SamlController < ApplicationController
   include Routing
   
   def oauth
-    session[:back_to] = params[:back_to] || request.referrer
+    session[:back_to] = safe_back_to
     auth_request = OneLogin::RubySaml::Authrequest.new
     redirect_to auth_request.create(saml_settings)
   end
 
   def create
-    saml_response = OneLogin::RubySaml::Response.new(params[:SAMLResponse], skip_recipient_check: true)
+    saml_response = OneLogin::RubySaml::Response.new(params[:SAMLResponse])
     saml_response.settings = saml_settings
 
     return respond_with_error(500, "SAML response is not valid") unless saml_response.is_valid?
@@ -59,6 +59,11 @@ class Identities::SamlController < ApplicationController
 
   private
 
+  def safe_back_to
+    path = (params[:back_to] || request.referrer).to_s
+    path if path.start_with?('/') && !path.start_with?('//', '/\\')
+  end
+
   def saml_settings
     @saml_settings ||= begin
       if ENV['SAML_IDP_METADATA']
@@ -72,14 +77,8 @@ class Identities::SamlController < ApplicationController
       settings.assertion_consumer_logout_service_url = saml_unauthorize_url
       settings.name_identifier_format         = 'urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress'
       
-      # Security settings
-      settings.soft = true
-      settings.security[:authn_requests_signed] = false
-      settings.security[:logout_requests_signed] = false
-      settings.security[:logout_responses_signed] = false
-      settings.security[:metadata_signed] = false
-      settings.security[:digest_method] = XMLSecurity::Document::SHA1
-      settings.security[:signature_method] = XMLSecurity::Document::RSA_SHA1
+      settings.security[:digest_method] = XMLSecurity::Document::SHA256
+      settings.security[:signature_method] = XMLSecurity::Document::RSA_SHA256
       
       settings
     end

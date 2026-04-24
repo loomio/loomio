@@ -101,9 +101,7 @@ class Api::V1::DiscussionsControllerTest < ActionController::TestCase
     }
 
     post :create, params: { discussion: discussion_params }
-
-    json = JSON.parse(response.body)
-    assert_includes json['exception'], 'ActionController::UnpermittedParameters'
+    assert_response :bad_request
   end
 
   test "responds with error when user is unauthorized" do
@@ -116,9 +114,7 @@ class Api::V1::DiscussionsControllerTest < ActionController::TestCase
     }
 
     post :create, params: { discussion: discussion_params }
-
-    json = JSON.parse(response.body)
-    assert_includes json['exception'], 'CanCan::AccessDenied'
+    assert_response :forbidden
   end
 
   test "responds with validation errors when title is blank" do

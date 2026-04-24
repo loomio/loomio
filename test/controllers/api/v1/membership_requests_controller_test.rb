@@ -64,7 +64,7 @@ class Api::V1::MembershipRequestsControllerTest < ActionController::TestCase
 
     get :pending, params: { group_id: @group.id }
     assert_response :forbidden
-    assert_includes JSON.parse(response.body)['exception'], 'CanCan::AccessDenied'
+    # error details no longer exposed to clients
   end
 
   test "previous returns approved membership requests filtered by group when permitted" do
@@ -81,7 +81,7 @@ class Api::V1::MembershipRequestsControllerTest < ActionController::TestCase
 
     get :previous, params: { group_id: @group.id }
     assert_response :forbidden
-    assert_includes JSON.parse(response.body)['exception'], 'CanCan::AccessDenied'
+    # error details no longer exposed to clients
   end
 
   test "approve membership request when permitted" do
@@ -96,7 +96,7 @@ class Api::V1::MembershipRequestsControllerTest < ActionController::TestCase
   test "approve raises access denied when not permitted" do
     post :approve, params: { id: @other_pending_request.id }
     assert_response :forbidden
-    assert_includes JSON.parse(response.body)['exception'], 'CanCan::AccessDenied'
+    # error details no longer exposed to clients
   end
 
   test "ignore membership request when permitted" do
@@ -111,6 +111,6 @@ class Api::V1::MembershipRequestsControllerTest < ActionController::TestCase
   test "ignore raises access denied when not permitted" do
     post :ignore, params: { id: @other_pending_request.id }
     assert_response :forbidden
-    assert_includes JSON.parse(response.body)['exception'], 'CanCan::AccessDenied'
+    # error details no longer exposed to clients
   end
 end

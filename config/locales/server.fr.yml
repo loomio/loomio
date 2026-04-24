@@ -413,7 +413,7 @@ fr:
       you_have_until: Vous avez jusqu'à %{when} pour participer.
       people_have_voted: "%{nom}de %{dnom}personnes ont voté (%{pct}%)"
       voting_opens_and_closes: Le vote est ouvert %{opens} et se termine %{closes}. (%{days} jours)
-      voting_closes: Le vote se termine %{quand}.
+      voting_closes: Le vote se termine %{when}.
       voting_opened_and_closed: Le vote a été ouvert le %{opens} et clôturé le %{closes}. (%{days} jours)
   poll_templates:
     practice_proposal:

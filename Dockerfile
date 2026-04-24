@@ -1,4 +1,4 @@
-FROM node:22-slim AS nodebuild
+FROM node:24-slim AS nodebuild
 
 WORKDIR /build/vue
 
@@ -24,7 +24,7 @@ WORKDIR /build/hocuspocus
 COPY hocuspocus/package.json ./
 RUN npm install --prefer-offline --no-audit --no-fund
 
-FROM ruby:3.4.7-slim
+FROM ruby:4.0.2-slim
 
 ENV MALLOC_ARENA_MAX=2 \
     RAILS_LOG_TO_STDOUT=1 \

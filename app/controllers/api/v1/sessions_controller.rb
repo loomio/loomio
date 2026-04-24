@@ -3,6 +3,10 @@ class Api::V1::SessionsController < Devise::SessionsController
   before_action :configure_permitted_parameters
 
   def create
+    unless turnstile_ok?
+      render json: { errors: { turnstile: [I18n.t('auth_form.turnstile_required')] } }, status: 403
+      return
+    end
     if user = attempt_login
       sign_in(user)
       flash[:notice] = t(:'devise.sessions.signed_in')
@@ -28,9 +32,11 @@ class Api::V1::SessionsController < Devise::SessionsController
 
   def failure_message
     if resource_params[:password] && User.where(email: resource_params[:email]).where.not(locked_at: nil).exists?
-      { password: [:'auth_form.account_locked'] }
+      { password: [I18n.t('auth_form.account_locked')] }
+    elsif pending_login_token
+      { token: [I18n.t('auth_form.invalid_token')] }
     else
-      { password: [:'auth_form.invalid_password'] }
+      { password: [I18n.t('auth_form.invalid_password')] }
     end
   end
 
@@ -51,7 +57,18 @@ class Api::V1::SessionsController < Devise::SessionsController
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_in) do |u|
-      u.permit(:code, :email, :password, :remember_me)
+      u.permit(:code, :email, :password, :remember_me, :turnstile_token)
     end
+  end
+
+  # Users who request a login-token have already solved a CAPTCHA to get the
+  # email — don't ask them to solve a second one (their previous token is now
+  # burnt at Cloudflare). The per-email sessions throttle + 6-digit code
+  # entropy make code-flow safe without a fresh CAPTCHA.
+  def turnstile_ok?
+    return true if pending_login_token&.useable?
+    return true if resource_params[:code].present?
+    TurnstileService.verify(params.dig(:user, :turnstile_token) || params[:turnstile_token],
+                            remote_ip: request.remote_ip)
   end
 end

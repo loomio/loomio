@@ -320,7 +320,7 @@ da:
     thread: Tråd
     commercial: Kommerciel
     nonprofit: Nonprofitorganisation
-    opening_in: Åbning %{tid}
+    opening_in: Åbning %{time}
     read_more: Læs mere
     templates_admin_hint: Da du er gruppeadministrator, kan du skjule eller slette alle skabeloner, du ikke ønsker, og redigere de resterende, så de passer til dine behov.
   merge_accounts:

@@ -320,7 +320,7 @@ sl:
     thread: nit
     commercial: Komercialno
     nonprofit: Neprofitna organizacija
-    opening_in: Odprtje %{čas}
+    opening_in: Odprtje %{time}
     read_more: Preberi več
     templates_admin_hint: Ker ste skrbnik skupine, lahko skrijete ali izbrišete vse predloge, ki jih ne želite, preostale pa uredite glede na svoje potrebe.
   merge_accounts:

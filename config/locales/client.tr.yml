@@ -320,7 +320,7 @@ tr:
     thread: İplik
     commercial: Reklam
     nonprofit: Kar amacı gütmeyen kuruluşlar
-    opening_in: Açılış %{zaman}
+    opening_in: Açılış %{time}
     read_more: Devamını oku
     templates_admin_hint: Grup yöneticisi olduğunuz için, istemediğiniz şablonları gizleyebilir veya silebilir ve kalanları ihtiyaçlarınıza göre düzenleyebilirsiniz.
   merge_accounts:

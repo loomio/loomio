@@ -112,11 +112,11 @@ class Api::V1::SnorlaxBase < ActionController::Base
   def serializer_root
     record = records_to_serialize.first
     if record.nil?
-      controller_name
+      controller_name.to_sym
     elsif record.is_a? Event
-      'events'
+      :events
     else
-      record.class.to_s.underscore.pluralize
+      record.class.to_s.underscore.pluralize.to_sym
     end
   end
 
@@ -199,7 +199,9 @@ class Api::V1::SnorlaxBase < ActionController::Base
   end
 
   def page_collection(collection)
-    collection.offset(params[:from].to_i).limit((params[:per] || default_page_size).to_i)
+    offset = (params[:offset] || params[:from]).to_i
+    limit  = (params[:limit] || params[:per] || default_page_size).to_i
+    collection.offset(offset).limit(limit)
   end
 
   def order_collection(collection)
@@ -267,7 +269,8 @@ class Api::V1::SnorlaxBase < ActionController::Base
   end
 
   def respond_with_standard_error(error, status)
-    render json: { exception: error.class, error: error.to_s }, root: false, status: status
+    Rails.logger.error("API Error: #{error.class} - #{error.message}")
+    render json: { error: status }, root: false, status: status
   end
 
   def respond_with_error(status, message = "error")

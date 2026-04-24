@@ -394,8 +394,8 @@ ru:
       you_have_until: Поучаствовать можно до %{when}.
       people_have_voted: Приняло участие %{nom} из %{dnom} человек (%{pct}%)
       voting_opens_and_closes: Голосование открывается %{opens} и закрывается %{closes}. (%{days} дней)
-      voting_closes: Голосование завершится %{когда}.
-      voting_opened_and_closed: Голосование открылось %{открылось} и закрылось %{закрылось}. (%{дней} дней)
+      voting_closes: Голосование завершится %{when}.
+      voting_opened_and_closed: Голосование открылось %{opens} и закрылось %{closes}. (%{days} дней)
   poll_templates:
     practice_proposal:
       title: Я начинаю понимать это.

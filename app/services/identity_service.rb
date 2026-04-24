@@ -39,17 +39,18 @@ class IdentityService
         return identity
       end
 
-      # Try to find existing user by email (verified or unverified)
-      # This enables transparent account linking for both new and invited users
+      # The SSO provider is fully trusted as the authority on email ownership.
+      # If the provider says this person owns this email, we link them to the
+      # matching Loomio account (or create one). This is the correct model for
+      # SSO — the IdP has already authenticated the user and verified their email.
+      # Admins control which SSO providers are configured, so trust is explicit.
       identity.user = User.find_by(email: email)
 
       if identity.user.nil?
-        # No existing user found - create new verified user
         identity.user = User.new(identity_params.slice(:name, :email).merge(email_verified: true))
         identity.user.save!
       else
-        # User found (verified or unverified) - mark email as verified
-        identity.user.update(email_verified: true) unless identity.user.email_verified
+        identity.user.update(email_verified: true) unless identity.user.email_verified?
       end
 
       identity.save
