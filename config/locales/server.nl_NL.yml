@@ -410,7 +410,7 @@ nl_NL:
       you_have_until: Je hebt tot %{when} om mee te doen.
       people_have_voted: "%{nom} van %{dnom} mensen hebben deelgenomen (%{pct}%)"
       voting_opens_and_closes: De stemming begint op %{opens} en eindigt op %{closes}. (%{days} dagen)
-      voting_closes: De stemming sluit %{wanneer}.
+      voting_closes: De stemming sluit %{when}.
       voting_opened_and_closed: De stemming is geopend op %{opens} en gesloten op %{closes}. (%{days} dagen)
   poll_templates:
     practice_proposal:

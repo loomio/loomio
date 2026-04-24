@@ -2027,7 +2027,7 @@ ru:
     voting_disabled_poll_is_template: Голосование отключено. Это шаблон.
     for_this_proposal_to_pass: 'Для принятия этого предложения:'
     for_this_poll_type_to_be_valid: 'Чтобы %{poll_type} был действителен:'
-    voting_opens_at: Этот опрос открывается для голосования на %{время}.
+    voting_opens_at: Этот %{poll_type} открывается для голосования %{time}.
     unable_to_vote: Вам не было предложено проголосовать по этому опросу %{poll_type}
   poll_common_collapsed:
     by_who: по %{name}
