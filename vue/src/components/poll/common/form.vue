@@ -437,6 +437,9 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
 
   template(v-if="poll.pollType == 'stv'")
     v-divider.my-4
+    v-alert.mt-4.mb-2(density="compact" type="warning" variant="tonal")
+      | STV is not fully tested. Be prepared to report bugs if you use it. We welcome your feedback on&nbsp;
+      a(href="https://github.com/loomio/loomio/issues" target="_blank") GitHub
     p.mt-4.text-subtitle-1.mb-2(v-t="'poll_stv_form.settings_title'")
     .text-body-2.pb-4.text-medium-emphasis(v-t="'poll_stv_form.settings_helptext'")
     v-text-field.lmo-number-input(
