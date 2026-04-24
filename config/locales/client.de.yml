@@ -301,7 +301,7 @@ de:
       discard: Verwerfen
       restore: Wiederherstellen
       unsubscribe: Benachrichtigungen deaktivieren
-      subscribe: Benachrichtigung aktivieren
+      subscribe: Benachrichtigungen aktivieren
       unignore: Wieder bemerken
       remind: Erinnern
       resend: Neu senden
@@ -1040,9 +1040,9 @@ de:
     add_poll_to_thread: Zur Diskussion hinzufügen
     count_members: "%{count} Mitglieder "
     count_voters: "%{count} Wähler"
-    pin_discussion: Diskussion über die Pinnwand
-    unpin_discussion: Diskussion aufheben
-    close_discussion: Schließende Diskussion
+    pin_discussion: Diskussion anpinnen
+    unpin_discussion: Diskussion abpinnen
+    close_discussion: Diskussion schließen
     reopen_discussion: Diskussion wieder aufnehmen
     delete_discussion: Diskussion löschen
   formatting:
