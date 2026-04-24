@@ -6,7 +6,7 @@
   "dependencies": {
     "@hocuspocus/extension-database": "^3.4.0",
     "@hocuspocus/extension-logger": "^3.4.0",
-    "@hocuspocus/extension-sqlite": "^3.4.0",
+    "@hocuspocus/extension-sqlite": "^4.0.0",
     "@hocuspocus/server": "^3.4.0",
     "@sentry/node": "^10.49.0",
     "@sentry/tracing": "^7.114.0"
