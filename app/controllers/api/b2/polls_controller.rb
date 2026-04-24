@@ -16,7 +16,7 @@ class Api::B2::PollsController < Api::B2::BaseController
   end
 
   def accessible_records
-    scope = Poll.where(group_id: group.id)
+    scope = Poll.joins(:topic).where(topics: { group_id: group.id })
     case params[:status]
     when 'closed' then scope.closed
     when 'all'    then scope.kept

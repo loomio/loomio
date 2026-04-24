@@ -35,7 +35,7 @@ class Api::V1::RegistrationsControllerTest < ActionController::TestCase
     # stub proves the email-verified bypass takes the pending_membership path.
     pending_membership = Membership.create!(
       user: User.create(email: "bypass@example.com", email_verified: false),
-      group: groups(:test_group),
+      group: groups(:group),
       accepted_at: nil
     )
     session[:pending_membership_token] = pending_membership.token

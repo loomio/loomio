@@ -212,7 +212,8 @@ class Api::B2::PollsControllerTest < ActionController::TestCase
   end
 
   test "index allows global admin not in group" do
-    admin = users(:admin_user)
+    admin = users(:admin)
+    admin.update!(is_admin: true)
     admin.update_columns(api_key: "gadmkey#{SecureRandom.hex(8)}")
     get :index, params: { group_id: @group.id, api_key: admin.api_key }
     assert_response 200
@@ -243,18 +244,16 @@ class Api::B2::PollsControllerTest < ActionController::TestCase
 
   private
 
-  def make_poll(**attrs)
-    defaults = {
-      poll_type: "poll",
-      title: "test poll #{SecureRandom.hex(4)}",
-      author: @admin,
-      poll_option_names: ["engage"],
-      opened_at: Time.now,
-      notify_on_closing_soon: "nobody"
-    }
-    p = Poll.new(defaults.merge(attrs))
-    p.save!
-    p.create_missing_created_event!
-    p
+  def make_poll(group:, title: "test poll #{SecureRandom.hex(4)}", closed_at: nil)
+    poll = PollService.create(params: {
+      poll_type: 'poll',
+      title: title,
+      group_id: group.id,
+      poll_option_names: ['engage'],
+      closing_at: 3.days.from_now,
+      notify_on_closing_soon: 'nobody'
+    }, actor: @admin)
+    poll.update!(closed_at: closed_at) if closed_at
+    poll
   end
 end
