@@ -13,7 +13,7 @@
     "@mdi/js": "^6.9.96",
     "@rails/actioncable": "^8.1.300",
     "@sentry/browser": "^10.47.0",
-    "@sentry/vue": "^10.49.0",
+    "@sentry/vue": "^10.50.0",
     "@tiptap/core": "^3.22.2",
     "@tiptap/extension-blockquote": "^3.22.2",
     "@tiptap/extension-bold": "^3.22.2",
