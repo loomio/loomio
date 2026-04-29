@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     namespace :dev do
       dev_routes_for(:discussions)
       dev_routes_for(:polls)
+      dev_routes_for(:screenshots)
       dev_routes_for(:nightwatch)
 
       get '/', to: 'nightwatch#index'
