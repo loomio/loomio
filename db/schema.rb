@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_04_20_231026) do
+ActiveRecord::Schema[8.0].define(version: 2026_04_30_113138) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pg_stat_statements"
+  enable_extension "pg_trgm"
   enable_extension "pgcrypto"
 
   create_table "action_mailbox_inbound_emails", force: :cascade do |t|
@@ -61,6 +62,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_20_231026) do
     t.string "checksum"
     t.datetime "created_at", precision: nil, null: false
     t.string "service_name", null: false
+    t.index ["filename"], name: "index_active_storage_blobs_on_filename_trgm", opclass: :gin_trgm_ops, using: :gin
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
@@ -317,6 +319,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_20_231026) do
     t.index ["private"], name: "index_discussions_on_private"
     t.index ["tags"], name: "index_discussions_on_tags", using: :gin
     t.index ["template"], name: "index_discussions_on_template", where: "(template IS TRUE)"
+    t.index ["title"], name: "index_discussions_on_title_trgm", opclass: :gin_trgm_ops, using: :gin
   end
 
   create_table "documents", id: :serial, force: :cascade do |t|
@@ -338,6 +341,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_20_231026) do
     t.index ["group_id"], name: "index_documents_on_group_id"
     t.index ["model_id"], name: "index_documents_on_model_id"
     t.index ["model_type"], name: "index_documents_on_model_type"
+    t.index ["title"], name: "index_documents_on_title_trgm", opclass: :gin_trgm_ops, using: :gin
   end
 
   create_table "events", id: :serial, force: :cascade do |t|
@@ -480,10 +484,13 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_20_231026) do
     t.boolean "members_can_create_templates", default: false, null: false
     t.index ["archived_at"], name: "index_groups_on_archived_at", where: "(archived_at IS NULL)"
     t.index ["created_at"], name: "index_groups_on_created_at"
+    t.index ["description"], name: "index_groups_on_description_trgm", opclass: :gin_trgm_ops, using: :gin
     t.index ["full_name"], name: "index_groups_on_full_name"
     t.index ["handle"], name: "index_groups_on_handle", unique: true
+    t.index ["handle"], name: "index_groups_on_handle_trgm", opclass: :gin_trgm_ops, using: :gin
     t.index ["key"], name: "index_groups_on_key", unique: true
     t.index ["name"], name: "index_groups_on_name"
+    t.index ["name"], name: "index_groups_on_name_trgm", opclass: :gin_trgm_ops, using: :gin
     t.index ["parent_id"], name: "index_groups_on_parent_id"
     t.index ["subscription_id"], name: "groups_subscription_id_idx"
     t.index ["token"], name: "index_groups_on_token", unique: true
@@ -813,143 +820,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_20_231026) do
     t.index ["group_id"], name: "index_polls_on_group_id"
     t.index ["key"], name: "index_polls_on_key", unique: true
     t.index ["tags"], name: "index_polls_on_tags", using: :gin
-  end
-
-  create_table "rails_pulse_job_runs", force: :cascade do |t|
-    t.bigint "job_id", null: false, comment: "Link to job definition"
-    t.string "run_id", null: false, comment: "Adapter specific run id"
-    t.decimal "duration", precision: 15, scale: 6, comment: "Execution duration in milliseconds"
-    t.string "status", null: false, comment: "Execution status"
-    t.string "error_class", comment: "Error class name"
-    t.text "error_message", comment: "Error message"
-    t.integer "attempts", default: 0, null: false, comment: "Retry attempts"
-    t.datetime "occurred_at", precision: nil, null: false, comment: "When the job started"
-    t.datetime "enqueued_at", precision: nil, comment: "When the job was enqueued"
-    t.text "arguments", comment: "Serialized arguments"
-    t.string "adapter", comment: "Queue adapter"
-    t.text "tags", comment: "Execution tags"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["job_id", "occurred_at"], name: "index_rails_pulse_job_runs_on_job_and_occurred"
-    t.index ["job_id", "status"], name: "index_rails_pulse_job_runs_on_job_and_status"
-    t.index ["job_id"], name: "index_rails_pulse_job_runs_on_job_id"
-    t.index ["occurred_at"], name: "index_rails_pulse_job_runs_on_occurred_at"
-    t.index ["run_id"], name: "index_rails_pulse_job_runs_on_run_id", unique: true
-    t.index ["status"], name: "index_rails_pulse_job_runs_on_status"
-  end
-
-  create_table "rails_pulse_jobs", force: :cascade do |t|
-    t.string "name", null: false, comment: "Job class name"
-    t.string "queue_name", comment: "Default queue"
-    t.text "description", comment: "Optional description"
-    t.integer "runs_count", default: 0, null: false, comment: "Cache of total runs"
-    t.integer "failures_count", default: 0, null: false, comment: "Cache of failed runs"
-    t.integer "retries_count", default: 0, null: false, comment: "Cache of retried runs"
-    t.decimal "avg_duration", precision: 15, scale: 6, comment: "Average duration in milliseconds"
-    t.text "tags", comment: "JSON array of tags"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_rails_pulse_jobs_on_name", unique: true
-    t.index ["queue_name"], name: "index_rails_pulse_jobs_on_queue"
-    t.index ["runs_count"], name: "index_rails_pulse_jobs_on_runs_count"
-  end
-
-  create_table "rails_pulse_operations", force: :cascade do |t|
-    t.bigint "request_id", comment: "Link to the request"
-    t.bigint "job_run_id", comment: "Link to a background job execution"
-    t.bigint "query_id", comment: "Link to the normalized SQL query"
-    t.string "operation_type", null: false, comment: "Type of operation (e.g., database, view, gem_call)"
-    t.string "label", null: false, comment: "Descriptive name (e.g., SELECT FROM users WHERE id = 1, render layout)"
-    t.decimal "duration", precision: 15, scale: 6, null: false, comment: "Operation duration in milliseconds"
-    t.string "codebase_location", comment: "File and line number (e.g., app/models/user.rb:25)"
-    t.float "start_time", default: 0.0, null: false, comment: "Operation start time in milliseconds"
-    t.datetime "occurred_at", precision: nil, null: false, comment: "When the request started"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["created_at", "query_id"], name: "idx_operations_for_aggregation"
-    t.index ["job_run_id"], name: "index_rails_pulse_operations_on_job_run_id"
-    t.index ["occurred_at", "duration", "operation_type"], name: "index_rails_pulse_operations_on_time_duration_type"
-    t.index ["operation_type"], name: "index_rails_pulse_operations_on_operation_type"
-    t.index ["query_id", "duration", "occurred_at"], name: "index_rails_pulse_operations_query_performance"
-    t.index ["query_id", "occurred_at"], name: "index_rails_pulse_operations_on_query_and_time"
-    t.index ["request_id"], name: "index_rails_pulse_operations_on_request_id"
-    t.check_constraint "request_id IS NOT NULL OR job_run_id IS NOT NULL", name: "rails_pulse_operations_request_or_job_run"
-  end
-
-  create_table "rails_pulse_queries", force: :cascade do |t|
-    t.string "hashed_sql", limit: 32, null: false, comment: "MD5 hash of normalized SQL for indexing"
-    t.text "normalized_sql", null: false, comment: "Normalized SQL query string (e.g., SELECT * FROM users WHERE id = ?)"
-    t.datetime "analyzed_at", comment: "When query analysis was last performed"
-    t.text "explain_plan", comment: "EXPLAIN output from actual SQL execution"
-    t.text "issues", comment: "JSON array of detected performance issues"
-    t.text "metadata", comment: "JSON object containing query complexity metrics"
-    t.text "query_stats", comment: "JSON object with query characteristics analysis"
-    t.text "backtrace_analysis", comment: "JSON object with call chain and N+1 detection"
-    t.text "index_recommendations", comment: "JSON array of database index recommendations"
-    t.text "n_plus_one_analysis", comment: "JSON object with enhanced N+1 query detection results"
-    t.text "suggestions", comment: "JSON array of optimization recommendations"
-    t.text "tags", comment: "JSON array of tags for filtering and categorization"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["hashed_sql"], name: "index_rails_pulse_queries_on_hashed_sql", unique: true
-  end
-
-  create_table "rails_pulse_requests", force: :cascade do |t|
-    t.bigint "route_id", null: false, comment: "Link to the route"
-    t.decimal "duration", precision: 15, scale: 6, null: false, comment: "Total request duration in milliseconds"
-    t.integer "status", null: false, comment: "HTTP status code (e.g., 200, 500)"
-    t.boolean "is_error", default: false, null: false, comment: "True if status >= 500"
-    t.string "request_uuid", null: false, comment: "Unique identifier for the request (e.g., UUID)"
-    t.string "controller_action", comment: "Controller and action handling the request (e.g., PostsController#show)"
-    t.datetime "occurred_at", precision: nil, null: false, comment: "When the request started"
-    t.text "tags", comment: "JSON array of tags for filtering and categorization"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["created_at", "route_id"], name: "idx_requests_for_aggregation"
-    t.index ["occurred_at"], name: "index_rails_pulse_requests_on_occurred_at"
-    t.index ["request_uuid"], name: "index_rails_pulse_requests_on_request_uuid", unique: true
-    t.index ["route_id", "occurred_at"], name: "index_rails_pulse_requests_on_route_id_and_occurred_at"
-    t.index ["route_id"], name: "index_rails_pulse_requests_on_route_id"
-  end
-
-  create_table "rails_pulse_routes", force: :cascade do |t|
-    t.string "method", null: false, comment: "HTTP method (e.g., GET, POST)"
-    t.string "path", null: false, comment: "Request path (e.g., /posts/index)"
-    t.text "tags", comment: "JSON array of tags for filtering and categorization"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["method", "path"], name: "index_rails_pulse_routes_on_method_and_path", unique: true
-    t.index ["path"], name: "index_rails_pulse_routes_on_path"
-  end
-
-  create_table "rails_pulse_summaries", force: :cascade do |t|
-    t.datetime "period_start", null: false, comment: "Start of the aggregation period"
-    t.datetime "period_end", null: false, comment: "End of the aggregation period"
-    t.string "period_type", null: false, comment: "Aggregation period type: hour, day, week, month"
-    t.string "summarizable_type", null: false
-    t.bigint "summarizable_id", null: false, comment: "Link to Route or Query"
-    t.integer "count", default: 0, null: false, comment: "Total number of requests/operations"
-    t.float "avg_duration", comment: "Average duration in milliseconds"
-    t.float "min_duration", comment: "Minimum duration in milliseconds"
-    t.float "max_duration", comment: "Maximum duration in milliseconds"
-    t.float "p50_duration", comment: "50th percentile duration"
-    t.float "p95_duration", comment: "95th percentile duration"
-    t.float "p99_duration", comment: "99th percentile duration"
-    t.float "total_duration", comment: "Total duration in milliseconds"
-    t.float "stddev_duration", comment: "Standard deviation of duration"
-    t.integer "error_count", default: 0, comment: "Number of error responses (5xx)"
-    t.integer "success_count", default: 0, comment: "Number of successful responses"
-    t.integer "status_2xx", default: 0, comment: "Number of 2xx responses"
-    t.integer "status_3xx", default: 0, comment: "Number of 3xx responses"
-    t.integer "status_4xx", default: 0, comment: "Number of 4xx responses"
-    t.integer "status_5xx", default: 0, comment: "Number of 5xx responses"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["created_at"], name: "index_rails_pulse_summaries_on_created_at"
-    t.index ["period_start"], name: "index_rails_pulse_summaries_on_period_start"
-    t.index ["period_type", "period_start"], name: "index_rails_pulse_summaries_on_period"
-    t.index ["summarizable_id"], name: "index_rails_pulse_summaries_on_summarizable_id"
-    t.index ["summarizable_type", "summarizable_id", "period_type", "period_start"], name: "idx_pulse_summaries_unique", unique: true
+    t.index ["title"], name: "index_polls_on_title_trgm", opclass: :gin_trgm_ops, using: :gin
   end
 
   create_table "reactions", id: :serial, force: :cascade do |t|
@@ -1193,13 +1064,16 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_20_231026) do
     t.integer "bounces_count", default: 0, null: false
     t.index ["api_key"], name: "index_users_on_api_key"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["email"], name: "index_users_on_email_trgm", opclass: :gin_trgm_ops, using: :gin
     t.index ["email_verified"], name: "index_users_on_email_verified"
     t.index ["key"], name: "index_users_on_key", unique: true
+    t.index ["name"], name: "index_users_on_name_trgm", opclass: :gin_trgm_ops, using: :gin
     t.index ["remember_token"], name: "users_remember_token_idx"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
     t.index ["unsubscribe_token"], name: "index_users_on_unsubscribe_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
+    t.index ["username"], name: "index_users_on_username_trgm", opclass: :gin_trgm_ops, using: :gin
   end
 
   create_table "versions", id: :serial, force: :cascade do |t|
@@ -1233,9 +1107,4 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_20_231026) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "rails_pulse_job_runs", "rails_pulse_jobs", column: "job_id"
-  add_foreign_key "rails_pulse_operations", "rails_pulse_job_runs", column: "job_run_id"
-  add_foreign_key "rails_pulse_operations", "rails_pulse_queries", column: "query_id"
-  add_foreign_key "rails_pulse_operations", "rails_pulse_requests", column: "request_id"
-  add_foreign_key "rails_pulse_requests", "rails_pulse_routes", column: "route_id"
 end
