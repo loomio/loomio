@@ -29,7 +29,7 @@ class Rack::Attack
     addr && PRIVATE_NETWORKS.any? { |net| net.include?(addr) }
   end
 
-  throttle('req/ip', limit: 300 * RATE_MULTIPLIER, period: (5 * TIME_MULTIPLIER).minutes) do |req|
+  throttle('req/ip', limit: 900 * RATE_MULTIPLIER, period: (5 * TIME_MULTIPLIER).minutes) do |req|
     req.remote_ip unless req.path == '/bug_tunnel'
   end
 
