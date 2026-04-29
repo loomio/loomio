@@ -1,0 +1,28 @@
+[book]
+authors = ["Robert Guthrie"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Loomio Help"
+
+[output.html]
+no-section-label = true
+site-url = "/docs/"
+
+[output.html.redirect]
+"/user_manual/users/sign_in/index.html" = "/docs/user_manual/overview/orientation.html"
+"/user_manual/threads/index.html" = "/docs/user_manual/discussions/index.html"
+"/user_manual/threads/intro_to_threads/index.html" = "/docs/user_manual/discussions/index.html"
+"/user_manual/threads/starting_threads/index.html" = "/docs/user_manual/discussions/starting_a_discussion/index.html"
+"/user_manual/threads/notifying_people/index.html" = "/docs/user_manual/discussions/notifying_people/index.html"
+"/user_manual/threads/navigating_threads/index.html" = "/docs/user_manual/discussions/using_discussions/index.html"
+"/user_manual/threads/thread_admin/index.html" = "/docs/user_manual/discussions/formatting/index.html"
+"/user_manual/threads/thread_admin/tasks.html" = "/docs/user_manual/discussions/tasks/index.html"
+"/user_manual/threads/invite_only/index.html" = "/docs/user_manual/discussions/direct_discussions/index.html"
+"/user_manual/threads/examples/index.html" = "/docs/user_manual/discussions/examples/index.html"
+"/user_manual/threads/templates/index.html" = "/docs/user_manual/discussions/templates/index.html"
+"/user_manual/threads/engaging_with_threads/index.html" = "/docs/user_manual/discussions/engaging_with_discussions/index.html"
+"/user_manual/getting_started/index.html" = "/docs/user_manual/overview/index.html"
+"/user_manual/getting_started/orientation.html" = "/docs/user_manual/overview/orientation.html"
+"/user_manual/getting_started/write-a-comment.html" = "/docs/user_manual/overview/how-to-participate.html"
+"/user_manual/getting_started/decisions/index.html" = "/docs/user_manual/overview/decisions/index.html"
