@@ -68,7 +68,7 @@ RailsPulse.configure do |config|
   #   config.ignored_queries  = ["SELECT 1", %r{FROM \"schema_migrations\"}]
 
   config.ignored_routes   = []
-  config.ignored_requests = []
+  config.ignored_requests = ["POST /api/v1/demos/clone"]
   config.ignored_queries  = []
 
   # ====================================================================================================

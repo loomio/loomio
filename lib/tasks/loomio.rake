@@ -185,6 +185,17 @@ namespace :loomio do
     end
   end
 
+  task warm_demo_translations: :environment do
+    locales = AppConfig.locales['supported'].reject { |l| l.to_s.start_with?('en') }
+    Demo.where.not(demo_handle: nil).each do |demo|
+      next unless demo.group
+      locales.each do |locale|
+        puts "#{DateTime.now.iso8601} warming #{demo.demo_handle} → #{locale}"
+        TranslationService.translate_group_content!(demo.group, locale, true)
+      end
+    end
+  end
+
   task generate_email_icons: :environment do
     colors = AppConfig.colors.flatten.flatten.filter {|c| c.starts_with?("#")}.map {|c| c[1..-1]}
     source_path = Rails.root.join("app", "assets", "images", "icons", "svgs", "*.svg").to_s

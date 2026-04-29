@@ -212,11 +212,9 @@ class TranslationService
 
     return if cache_only
 
-    translation.fields.each do |pair|
-      next if ignore.include?(pair[0])
-      record.update_attribute(pair[0], pair[1])
-    end
-
-    record.update_content_locale if record.has_attribute?(:content_locale)
+    ignore = Array(ignore)
+    updates = translation.fields.reject { |k, _| ignore.include?(k) }
+    updates['content_locale'] = translation.language if record.has_attribute?(:content_locale)
+    record.update_columns(updates) if updates.any?
   end
 end
