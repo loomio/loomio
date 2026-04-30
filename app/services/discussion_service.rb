@@ -176,10 +176,12 @@ class DiscussionService
 
   def self.mark_as_seen(discussion:, actor:)
     actor.ability.authorize! :mark_as_seen, discussion
-    reader = DiscussionReader.for_model(discussion, actor)
-    reader.viewed!
-    MessageChannelService.publish_models([reader.discussion], group_id: reader.discussion.group_id)
-    EventBus.broadcast('discussion_mark_as_seen', reader, actor)
+    RetryOnError.with_limit(2) do
+      reader = DiscussionReader.for_model(discussion, actor)
+      reader.viewed!
+      MessageChannelService.publish_models([reader.discussion], group_id: reader.discussion.group_id)
+      EventBus.broadcast('discussion_mark_as_seen', reader, actor)
+    end
   end
 
   def self.mark_as_read_simple_params(discussion_id, ranges, actor_id)
