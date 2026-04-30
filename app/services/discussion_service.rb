@@ -105,5 +105,4 @@ class DiscussionService
       discussion.created_event
     end
   end
-
 end

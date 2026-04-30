@@ -121,12 +121,6 @@ GEM
       activesupport (>= 3.0.0)
       ruby2_keywords (>= 0.0.2)
     ast (2.4.3)
-    async (2.39.0)
-      console (~> 1.29)
-      fiber-annotation
-      io-event (~> 1.11)
-      metrics (~> 0.12)
-      traces (~> 0.18)
     aws-eventstream (1.4.0)
     aws-partitions (1.1240.0)
     aws-sdk-core (3.245.0)
@@ -167,10 +161,6 @@ GEM
       ffi
     concurrent-ruby (1.3.6)
     connection_pool (2.5.5)
-    console (1.34.3)
-      fiber-annotation
-      fiber-local (~> 1.1)
-      json
     crack (1.0.1)
       bigdecimal
       rexml
@@ -241,10 +231,6 @@ GEM
     ffi (1.17.4-x86_64-darwin)
     ffi (1.17.4-x86_64-linux-gnu)
     ffi (1.17.4-x86_64-linux-musl)
-    fiber-annotation (0.2.0)
-    fiber-local (1.1.0)
-      fiber-storage
-    fiber-storage (1.0.1)
     formtastic (6.0.0)
       actionpack (>= 7.2.0)
     formtastic_i18n (0.7.0)
@@ -416,7 +402,6 @@ GEM
       railties (>= 6.0)
       responders (>= 2)
     io-console (0.8.2)
-    io-event (1.15.1)
     irb (1.17.0)
       pp (>= 0.6.0)
       prism (>= 1.3.0)
@@ -462,7 +447,6 @@ GEM
       net-smtp
     marcel (1.1.0)
     maxminddb (0.1.22)
-    metrics (0.15.0)
     mini_magick (5.3.0)
       logger
     mini_mime (1.1.5)
@@ -485,21 +469,21 @@ GEM
       net-protocol
     net_http_timeout_errors (1.0.0)
     nio4r (2.7.5)
-    nokogiri (1.19.2-aarch64-linux-gnu)
+    nokogiri (1.19.3-aarch64-linux-gnu)
       racc (~> 1.4)
-    nokogiri (1.19.2-aarch64-linux-musl)
+    nokogiri (1.19.3-aarch64-linux-musl)
       racc (~> 1.4)
-    nokogiri (1.19.2-arm-linux-gnu)
+    nokogiri (1.19.3-arm-linux-gnu)
       racc (~> 1.4)
-    nokogiri (1.19.2-arm-linux-musl)
+    nokogiri (1.19.3-arm-linux-musl)
       racc (~> 1.4)
-    nokogiri (1.19.2-arm64-darwin)
+    nokogiri (1.19.3-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.19.2-x86_64-darwin)
+    nokogiri (1.19.3-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.19.2-x86_64-linux-gnu)
+    nokogiri (1.19.3-x86_64-linux-gnu)
       racc (~> 1.4)
-    nokogiri (1.19.2-x86_64-linux-musl)
+    nokogiri (1.19.3-x86_64-linux-musl)
       racc (~> 1.4)
     oga (3.4)
       ast
@@ -547,7 +531,7 @@ GEM
       date
       stringio
     public_suffix (7.0.5)
-    puma (8.0.0)
+    puma (8.0.1)
       nio4r (~> 2.0)
     pwned (2.4.1)
     racc (1.8.1)
@@ -593,12 +577,6 @@ GEM
     rails-i18n (8.1.0)
       i18n (>= 0.7, < 2)
       railties (>= 8.0.0, < 9)
-    rails_pulse (0.2.7)
-      async (~> 2.0)
-      rails (>= 7.1.0, < 9.0.0)
-      ransack (~> 4.0)
-      request_store (~> 1.5)
-      turbo-rails (~> 2.0.11)
     railties (8.0.5)
       actionpack (= 8.0.5)
       activesupport (= 8.0.5)
@@ -748,12 +726,8 @@ GEM
     thruster (0.1.20-x86_64-linux)
     tilt (2.6.1)
     timeout (0.6.1)
-    traces (0.18.2)
     trailblazer-option (0.1.2)
     tsort (0.2.0)
-    turbo-rails (2.0.23)
-      actionpack (>= 7.1.0)
-      railties (>= 7.1.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     tzinfo-data (1.2026.1)
@@ -855,7 +829,6 @@ DEPENDENCIES
   rack_session_access
   rails (~> 8.0.0)
   rails-controller-testing
-  rails_pulse
   rake
   ransack (= 4.4.1)
   redcarpet (~> 3.6.1)

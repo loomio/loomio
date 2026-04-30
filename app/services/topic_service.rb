@@ -87,10 +87,12 @@ class TopicService
 
   def self.mark_as_seen(topic:, actor:)
     actor.ability.authorize! :mark_as_seen, topic
-    reader = TopicReader.for(topic: topic, user: actor)
-    reader.viewed!([[0, 0]])
-    MessageChannelService.publish_models([topic.topicable], group_id: topic.group_id)
-    MessageChannelService.publish_models([topic.topicable], user_id: actor.id)
+    RetryOnError.with_limit(2) do
+      reader = TopicReader.for(topic: topic, user: actor)
+      reader.viewed!([[0, 0]])
+      MessageChannelService.publish_models([topic.topicable], group_id: topic.group_id)
+      MessageChannelService.publish_models([topic.topicable], user_id: actor.id)
+    end
   end
 
   def self.mark_as_read_simple_params(discussion_id, ranges, actor_id)

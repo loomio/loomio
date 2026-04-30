@@ -29,7 +29,7 @@ class Rack::Attack
     addr && PRIVATE_NETWORKS.any? { |net| net.include?(addr) }
   end
 
-  throttle('req/ip', limit: 300 * RATE_MULTIPLIER, period: (5 * TIME_MULTIPLIER).minutes) do |req|
+  throttle('req/ip', limit: 900 * RATE_MULTIPLIER, period: (5 * TIME_MULTIPLIER).minutes) do |req|
     req.remote_ip unless req.path == '/bug_tunnel'
   end
 
@@ -64,16 +64,11 @@ class Rack::Attack
     '/rails/active_storage/direct_uploads' => 20
   }
 
+  # Throttle only creation (POST to the exact collection path). Updates and
+  # nested member actions fall through to the global req/ip limit above.
   IP_POST_LIMITS.each_pair do |route, limit|
     throttle("post/ip/hour #{route}", limit: limit * RATE_MULTIPLIER, period: (1 * TIME_MULTIPLIER).hour) do |req|
-      req.remote_ip if (req.post? || req.put? || req.patch?) && req.path.starts_with?(route)
-    end
-  end
-
-  # MAX posts per day is 3 times the posts per hour
-  IP_POST_LIMITS.each_pair do |route, limit|
-    throttle("post/ip/day #{route}", limit: limit * 3 * RATE_MULTIPLIER, period: (1 * TIME_MULTIPLIER).day) do |req|
-      req.remote_ip if (req.post? || req.put? || req.patch?) && req.path.starts_with?(route)
+      req.remote_ip if req.post? && req.path == route
     end
   end
 
