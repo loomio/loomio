@@ -7,7 +7,7 @@ import TopicService from '@/shared/services/topic_service';
 import { sortBy, last, pickBy } from 'lodash-es';
 import ScrollService from '@/shared/services/scroll_service';
 import Session        from '@/shared/services/session';
-import { mdiLightningBolt, mdiMessageBadgeOutline, mdiArrowUpThin, mdiArrowDownThin, mdiCog, mdiCommentOutline, mdiThumbsUpDown, mdiBellOutline, mdiBellOffOutline, mdiBellRingOutline } from '@mdi/js';
+import { mdiLightningBolt, mdiMessageBadgeOutline, mdiArrowUpThin, mdiArrowDownThin, mdiCog, mdiCommentOutline, mdiBellOutline, mdiBellOffOutline, mdiBellRingOutline } from '@mdi/js';
 
 export default {
   mixins: [WatchRecords, UrlFor],
@@ -24,7 +24,6 @@ export default {
       mdiMessageBadgeOutline,
       mdiArrowUpThin,
       mdiArrowDownThin,
-      mdiThumbsUpDown,
       mdiCommentOutline,
       mdiCog,
       mdiBellOutline,
@@ -54,14 +53,6 @@ export default {
 
     scrollToNewest() {
       ScrollService.scrollTo(`.sequenceId-${this.topic.lastSequenceId()}`);
-    },
-    scrollToAddComment() {
-      EventBus.$emit('show-add-comment-form');
-      ScrollService.scrollTo('#add-comment');
-    },
-    scrollToAddPoll() {
-      EventBus.$emit('show-add-poll-form');
-      ScrollService.scrollTo('#add-comment');
     },
     openVolumeForm() {
       EventBus.$emit('openModal', {
@@ -206,8 +197,6 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="topic" v-mo
 
     v-list(nav density="compact" :lines="false")
       v-list-subheader.pt-4(v-t="'members_panel.header_actions'")
-      v-list-item(:prepend-icon="mdiCommentOutline" :title="$t('comment_form.add_a_comment')" @click="scrollToAddComment")
-      v-list-item(:prepend-icon="mdiThumbsUpDown" :title="$t('activity_card.start_a_vote')" @click="scrollToAddPoll")
       v-list-item(
         v-for="action in menuActions"
         :key="action.name"

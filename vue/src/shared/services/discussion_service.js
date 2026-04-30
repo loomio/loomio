@@ -1,9 +1,7 @@
 import Session       from '@/shared/services/session';
 import Records       from '@/shared/services/records';
 import AbilityService from '@/shared/services/ability_service';
-import LmoUrlService  from '@/shared/services/lmo_url_service';
 import openModal      from '@/shared/helpers/open_modal';
-import { hardReload } from '@/shared/helpers/window';
 
 export default new class DiscussionService {
   actions(discussion, vm) {
@@ -37,21 +35,6 @@ export default new class DiscussionService {
         canPerform() { return AbilityService.canAddReaction(discussion.topic()); }
       },
 
-      add_comment: {
-        icon: 'mdi-reply',
-        dockDisplay: 'icon',
-        dock: 1,
-        canPerform() {
-          return AbilityService.canAddComment(discussion.topic()) &&
-                 !(discussion.group().adminsInclude(Session.user()) ||
-                  ((discussion.group().membersCanAnnounce || discussion.group().membersCanAddGuests) && discussion.membersInclude(Session.user())))
-        },
-        perform() {
-          document.querySelector('#add-comment').scrollIntoView();
-          document.querySelector('#add-comment').focus();
-        }
-      },
-
       edit_thread: {
         name: 'common.action.edit',
         icon: 'mdi-pencil',
@@ -62,8 +45,8 @@ export default new class DiscussionService {
 
       show_history: {
         icon: 'mdi-history',
-        name: 'action_dock.show_edits',
-        dock: 1,
+        name: 'action_dock.edited',
+        dock: 3,
         canPerform() { return discussion.edited(); },
         perform() {
           return openModal({
@@ -73,9 +56,7 @@ export default new class DiscussionService {
             }
           });
         }
-      },
-
-
+      }
     };
   }
 

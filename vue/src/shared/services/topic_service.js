@@ -4,6 +4,7 @@ import Flash         from '@/shared/services/flash';
 import EventBus      from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
+import ScrollService  from '@/shared/services/scroll_service';
 import openModal      from '@/shared/helpers/open_modal';
 import { hardReload } from '@/shared/helpers/window';
 import { subMonths } from 'date-fns';
@@ -52,6 +53,34 @@ export default new class TopicService {
             component: 'ChangeVolumeForm',
             props: { model: topic }
           });
+        }
+      },
+
+      start_vote: {
+        name: 'activity_card.start_a_vote',
+        icon: 'mdi-thumbs-up-down',
+        menu: true,
+        canPerform() {
+          return AbilityService.canStartPoll(topic);
+        },
+        perform() {
+          EventBus.$emit('show-add-poll-form');
+          ScrollService.scrollTo('#add-comment');
+        }
+      },
+
+      add_comment: {
+        name: 'comment_form.add_a_comment',
+        icon: 'mdi-reply',
+        dockDisplay: 'icon',
+        menu: true,
+        canPerform() {
+          return AbilityService.canAddComment(topic);
+        },
+        perform() {
+          EventBus.$emit('show-add-comment-form');
+          ScrollService.scrollTo('#add-comment');
+          document.querySelector('#add-comment').focus();
         }
       },
 
