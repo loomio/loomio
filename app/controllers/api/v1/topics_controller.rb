@@ -1,12 +1,37 @@
 class Api::V1::TopicsController < Api::V1::RestfulController
-  def index
-    instantiate_collection
-    respond_with_collection
-  end
+  before_action :require_current_user, except: :index
 
-  def dashboard
-    raise CanCan::AccessDenied.new unless current_user.is_logged_in?
-    instantiate_collection
+  def index
+    @topics = TopicQuery.visible_to(
+                          user: current_user,
+                          or_subgroups: false,
+                          or_public: false,
+                          only_unread: params.has_key?(:unread)
+                        ).recent_activity_first
+
+    if params[:topicable_type].present?
+      @topics = @topics.where(topicable_type: params[:topicable_type])
+    end
+
+    if params[:group_id].present?
+      group = Group.find(params[:group_id])
+      @topics = @topics.where(group_id: [group.id] + group.subgroup_ids)
+    end
+
+    case params[:filter]
+    when 'closed'
+      @topics = @topics.closed
+    when 'all'
+      # no filter
+    else
+      @topics = @topics.not_closed
+    end
+
+    tags = Array(params[:tags]).reject(&:blank?)
+    @topics = @topics.tagged(tags) if tags.any?
+
+    @topics = page_collection(@topics)
+
     respond_with_collection
   end
 
@@ -91,30 +116,7 @@ class Api::V1::TopicsController < Api::V1::RestfulController
   private
 
   def accessible_records
-    scope = Topic.visible_to(current_user)
 
-    if params[:topicable_type].present?
-      scope = scope.where(topicable_type: params[:topicable_type])
-    end
-
-    if params[:group_id].present?
-      group = Group.find(params[:group_id])
-      scope = scope.where(group_id: [group.id] + group.subgroup_ids)
-    end
-
-    case params[:filter]
-    when 'closed'
-      scope = scope.closed
-    when 'all'
-      # no filter
-    else
-      scope = scope.not_closed
-    end
-
-    tags = Array(params[:tags]).reject(&:blank?)
-    scope = scope.tagged(tags) if tags.any?
-
-    scope.recent_activity_first
   end
 
   def default_page_size
