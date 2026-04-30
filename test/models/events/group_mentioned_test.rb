@@ -38,7 +38,7 @@ class Events::GroupMentionedTest < ActiveSupport::TestCase
 
   test "does not notify the actor when they mention the group" do
     @group.membership_for(@actor).update!(volume: :loud)
-    comment = Comment.new(discussion: @discussion, author: @actor,
+    comment = Comment.new(parent: @discussion, author: @actor,
                           body: "hello @#{@group.handle}", body_format: 'md')
     Events::NewComment.publish!(comment)
     assert_equal 0, emails_sent_to(@actor.email).size
