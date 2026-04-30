@@ -16,7 +16,6 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_30_113138) do
   enable_extension "hstore"
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pg_stat_statements"
-  enable_extension "pg_trgm"
   enable_extension "pgcrypto"
 
   create_table "action_mailbox_inbound_emails", force: :cascade do |t|
@@ -62,7 +61,6 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_30_113138) do
     t.string "checksum"
     t.datetime "created_at", precision: nil, null: false
     t.string "service_name", null: false
-    t.index ["filename"], name: "index_active_storage_blobs_on_filename_trgm", opclass: :gin_trgm_ops, using: :gin
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
@@ -319,7 +317,6 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_30_113138) do
     t.index ["private"], name: "index_discussions_on_private"
     t.index ["tags"], name: "index_discussions_on_tags", using: :gin
     t.index ["template"], name: "index_discussions_on_template", where: "(template IS TRUE)"
-    t.index ["title"], name: "index_discussions_on_title_trgm", opclass: :gin_trgm_ops, using: :gin
   end
 
   create_table "documents", id: :serial, force: :cascade do |t|
@@ -341,7 +338,6 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_30_113138) do
     t.index ["group_id"], name: "index_documents_on_group_id"
     t.index ["model_id"], name: "index_documents_on_model_id"
     t.index ["model_type"], name: "index_documents_on_model_type"
-    t.index ["title"], name: "index_documents_on_title_trgm", opclass: :gin_trgm_ops, using: :gin
   end
 
   create_table "events", id: :serial, force: :cascade do |t|
@@ -484,13 +480,10 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_30_113138) do
     t.boolean "members_can_create_templates", default: false, null: false
     t.index ["archived_at"], name: "index_groups_on_archived_at", where: "(archived_at IS NULL)"
     t.index ["created_at"], name: "index_groups_on_created_at"
-    t.index ["description"], name: "index_groups_on_description_trgm", opclass: :gin_trgm_ops, using: :gin
     t.index ["full_name"], name: "index_groups_on_full_name"
     t.index ["handle"], name: "index_groups_on_handle", unique: true
-    t.index ["handle"], name: "index_groups_on_handle_trgm", opclass: :gin_trgm_ops, using: :gin
     t.index ["key"], name: "index_groups_on_key", unique: true
     t.index ["name"], name: "index_groups_on_name"
-    t.index ["name"], name: "index_groups_on_name_trgm", opclass: :gin_trgm_ops, using: :gin
     t.index ["parent_id"], name: "index_groups_on_parent_id"
     t.index ["subscription_id"], name: "groups_subscription_id_idx"
     t.index ["token"], name: "index_groups_on_token", unique: true
@@ -820,8 +813,14 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_30_113138) do
     t.index ["group_id"], name: "index_polls_on_group_id"
     t.index ["key"], name: "index_polls_on_key", unique: true
     t.index ["tags"], name: "index_polls_on_tags", using: :gin
-    t.index ["title"], name: "index_polls_on_title_trgm", opclass: :gin_trgm_ops, using: :gin
   end
+
+
+
+
+
+
+
 
   create_table "reactions", id: :serial, force: :cascade do |t|
     t.integer "reactable_id"
@@ -1064,16 +1063,13 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_30_113138) do
     t.integer "bounces_count", default: 0, null: false
     t.index ["api_key"], name: "index_users_on_api_key"
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["email"], name: "index_users_on_email_trgm", opclass: :gin_trgm_ops, using: :gin
     t.index ["email_verified"], name: "index_users_on_email_verified"
     t.index ["key"], name: "index_users_on_key", unique: true
-    t.index ["name"], name: "index_users_on_name_trgm", opclass: :gin_trgm_ops, using: :gin
     t.index ["remember_token"], name: "users_remember_token_idx"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
     t.index ["unsubscribe_token"], name: "index_users_on_unsubscribe_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
-    t.index ["username"], name: "index_users_on_username_trgm", opclass: :gin_trgm_ops, using: :gin
   end
 
   create_table "versions", id: :serial, force: :cascade do |t|
