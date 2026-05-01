@@ -1,6 +1,6 @@
 <script setup lang="js">
 import { ref, onUnmounted } from 'vue';
-import { sum, values, sortBy } from 'lodash-es';
+import { sumBy, sortBy } from 'lodash-es';
 
 import Session       from '@/shared/services/session';
 import Records       from '@/shared/services/records';
@@ -13,7 +13,6 @@ const threadLimit = 50;
 const filters = [
   'only_threads_in_my_groups',
   'show_unread',
-  'show_recent',
   'hide_muted',
   'hide_dismissed'
 ];
@@ -35,12 +34,14 @@ function fetchInbox() {
 }
 
 function query() {
-  groups.value = sortBy(Session.user().inboxGroups(), 'name');
-  viewsByGroup.value = {};
-  groups.value.forEach(group => {
-    viewsByGroup.value[group.key] = ThreadFilter({ filters, group });
+  const newGroups = sortBy(Session.user().inboxGroups(), 'name');
+  const newViews = {};
+  newGroups.forEach(group => {
+    newViews[group.key] = ThreadFilter({ filters, group });
   });
-  unreadCount.value = sum(values(viewsByGroup.value), v => v.length);
+  groups.value = newGroups;
+  viewsByGroup.value = newViews;
+  unreadCount.value = sumBy(newGroups, g => newViews[g.key].length);
 }
 
 function startGroup() {
