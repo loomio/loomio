@@ -188,7 +188,7 @@ export default
     },
 
     totalPages() {
-      return Math.ceil(parseFloat(this.loader.total) / parseFloat(this.per));
+      return Math.max(1, Math.ceil((this.loader.total || 0) / this.per));
     },
 
     groupTags() {
