@@ -3,6 +3,7 @@ class TopicQuery
     Topic
       .joins('LEFT JOIN groups ON topics.group_id = groups.id')
       .where('groups.archived_at IS NULL OR topics.group_id IS NULL')
+      .where('topics.discarded_at': nil)
       .includes(:topicable)
   end
 
