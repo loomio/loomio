@@ -43,7 +43,16 @@ export default class ThreadLoader {
   }
 
   setVisible(isVisible, event) {
-    if (isVisible && Session.isSignedIn()) { this.topic.markAsRead(event.sequenceId); }
+    this.readTimers = this.readTimers || {};
+    if (isVisible && Session.isSignedIn()) {
+      this.readTimers[event.sequenceId] = setTimeout(() => {
+        this.topic.markAsRead(event.sequenceId);
+        delete this.readTimers[event.sequenceId];
+      }, 500);
+    } else if (this.readTimers[event.sequenceId]) {
+      clearTimeout(this.readTimers[event.sequenceId]);
+      delete this.readTimers[event.sequenceId];
+    }
     this.visibleKeys[event.positionKey] = isVisible;
     return EventBus.$emit('visibleKeys', Object.keys(this.visibleKeys).filter(key => this.visibleKeys[key]).sort());
   }

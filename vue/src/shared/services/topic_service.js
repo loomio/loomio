@@ -58,8 +58,8 @@ export default new class TopicService {
 
       start_vote: {
         name: 'activity_card.start_a_vote',
-        icon: 'mdi-thumbs-up-down',
-        menu: true,
+        icon: 'mdi-thumbs-up-down-outline',
+        collection: 'actions',
         canPerform() {
           return AbilityService.canStartPoll(topic);
         },
@@ -71,9 +71,9 @@ export default new class TopicService {
 
       add_comment: {
         name: 'comment_form.add_a_comment',
-        icon: 'mdi-reply',
+        icon: 'mdi-comment-outline',
         dockDisplay: 'icon',
-        menu: true,
+        collection: 'actions',
         canPerform() {
           return AbilityService.canAddComment(topic);
         },
@@ -86,9 +86,9 @@ export default new class TopicService {
 
       announce_thread: {
         name: 'common.action.invite',
-        icon: 'mdi-bullhorn',
+        icon: 'mdi-account-multiple-plus',
         dock: 3,
-        menu: true,
+        collection: 'members',
         canPerform() {
           return topic.group().adminsInclude(Session.user()) ||
           ((topic.group().membersCanAnnounce || topic.group().membersCanAddGuests) && topic.membersInclude(Session.user()));
@@ -97,6 +97,36 @@ export default new class TopicService {
           return EventBus.$emit('openModal', {
             component: 'StrandMembersList',
             props: { topic }
+          });
+        }
+      },
+
+      seen_by: {
+        name: 'discussion_context.seen_by_count',
+        nameArgs: () => ({count: topic.seenByCount}),
+        icon: 'mdi-eye-outline',
+        collection: 'members',
+        canPerform() { return topic.seenByCount > 0; },
+        perform() {
+          return openModal({
+            component: 'SeenByModal',
+            persistent: false,
+            props: { topic }
+          });
+        }
+      },
+
+      users_notified: {
+        name: 'discussion_context.count_notified',
+        nameArgs: () => ({count: topic.usersNotifiedCount}),
+        icon: 'mdi-bullhorn-outline',
+        collection: 'members',
+        canPerform() { return !!topic.usersNotifiedCount; },
+        perform() {
+          return openModal({
+            component: 'AnnouncementHistory',
+            persistent: false,
+            props: { model: topic }
           });
         }
       },
@@ -137,7 +167,7 @@ export default new class TopicService {
       name: 'common.action.print',
         icon: 'mdi-printer-outline',
         dock: 0,
-        menu: true,
+        collection: 'actions',
         canPerform() {
           return !topic.discardedAt && topic.membersInclude(Session.user());
         },
@@ -153,8 +183,8 @@ export default new class TopicService {
 
       move_thread: {
         name: 'action_dock.move_thread',
-        menu: true,
-        icon: 'mdi-arrow-right',
+        collection: 'actions',
+        icon: 'mdi-file-move-outline',
         canPerform() { return AbilityService.canMoveTopic(topic); },
         perform() {
           return openModal({
@@ -167,8 +197,8 @@ export default new class TopicService {
 
       thread_settings: {
         name: 'thread_arrangement_form.thread_settings',
-        icon: 'mdi-cog',
-        menu: true,
+        icon: 'mdi-cog-outline',
+        collection: 'actions',
         canPerform() {
           return topic && topic.adminsInclude(Session.user());
         },
@@ -182,7 +212,7 @@ export default new class TopicService {
 
       close_thread: {
         name: 'action_dock.close_thread',
-        menu: true,
+        collection: 'actions',
         icon: 'mdi-archive-outline',
         canPerform() {
           return !topic.closedAt && (
@@ -195,7 +225,7 @@ export default new class TopicService {
 
       reopen_thread: {
         name: 'action_dock.reopen_thread',
-        menu: true,
+        collection: 'actions',
         icon: 'mdi-refresh',
         dock: 2,
         canPerform() {
@@ -211,7 +241,7 @@ export default new class TopicService {
       discard_thread: {
         name: 'action_dock.delete_thread',
         icon: 'mdi-delete-outline',
-        menu: true,
+        collection: 'actions',
         canPerform() {
           return topic.adminsInclude(Session.user()) || (topic.author() === Session.user());
         },

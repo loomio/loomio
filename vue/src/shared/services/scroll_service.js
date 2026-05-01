@@ -24,13 +24,18 @@ export default new class ScrollService {
       // console.log(`document.querySelector("${selector}").getBoundingClientRect().top -> `, document.querySelector(selector).getBoundingClientRect().top);
       // console.log(`document.body.getBoundingClientRect().top -> `, document.body.getBoundingClientRect().top);
       // console.log(`${document.querySelector(selector).getBoundingClientRect().top} - ${document.body.getBoundingClientRect().top} - ${offset}`);
+      const target = document.querySelector(selector);
       el.scrollTo({
         behavior: behavior,
         top:
-          document.querySelector(selector).getBoundingClientRect().top -
+          target.getBoundingClientRect().top -
           document.body.getBoundingClientRect().top -
           offset,
       })
+
+      target.classList.remove('scroll-highlight');
+      void target.offsetWidth;
+      target.classList.add('scroll-highlight');
 
       if (callback) { callback(); }
     });

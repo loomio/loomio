@@ -619,10 +619,11 @@ en:
     unread: Unread
     oldest: Oldest
     recenter: Recenter
-    emails: Emails
-    email_all_activity: All activity
-    email_notifications: When notified
-    email_none: Off
+    end: End
+    notifications: Notifications
+    email_all_activity: Email all activity
+    email_notifications: Email when notified
+    email_none: No emails
     newest_first: Newest first
     oldest_first: Oldest first
     showing_latest: Showing latest
@@ -678,6 +679,7 @@ en:
     beta_collab: "\U0001F9EA Beta features enabled!"
     outcomes: Outcomes
   membership_card:
+    thread_members: Thread members
     group_members: Group members
     discussion_members: Discussion members
     poll_members: "%{pollType} members"

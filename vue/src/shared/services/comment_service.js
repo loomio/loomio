@@ -59,7 +59,7 @@ export default new class CommentService {
       reply_to_comment: {
         name: 'common.action.reply',
         icon: 'mdi-reply',
-        dock: 1,
+        dock: 3,
         canPerform() { return AbilityService.canRespondToComment(comment); },
         perform() {
           const topic = comment.topic();
@@ -74,7 +74,7 @@ export default new class CommentService {
       edit_comment: {
         name: 'common.action.edit',
         icon: 'mdi-pencil',
-        dock: 1,
+        dock: 3,
         canPerform() { return !comment.discardedAt && comment.authorIs(Session.user()) && AbilityService.canEditComment(comment); },
         perform() {
           return openModal({

@@ -51,7 +51,7 @@ export default new class StanceService {
       add_comment: {
         name: 'common.action.reply',
         icon: 'mdi-reply',
-        dock: 1,
+        dock: 3,
         canPerform() {
           const poll = stance.poll();
           const topic = poll ? poll.topic() : null;

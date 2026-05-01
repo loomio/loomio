@@ -7,8 +7,7 @@ import TopicService from '@/shared/services/topic_service';
 import { sortBy, last, pickBy } from 'lodash-es';
 import ScrollService from '@/shared/services/scroll_service';
 import Session        from '@/shared/services/session';
-import openModal from '@/shared/helpers/open_modal';
-import { mdiLightningBolt, mdiMessageBadgeOutline, mdiArrowUpThin, mdiArrowDownThin, mdiCog, mdiCommentOutline, mdiBellOutline, mdiBellOffOutline, mdiBellRingOutline, mdiEyeOutline, mdiBullhornOutline } from '@mdi/js';
+import { mdiMessageBadgeOutline, mdiArrowUpThin, mdiArrowDownThin, mdiBellOutline, mdiBellOffOutline, mdiBellRingOutline } from '@mdi/js';
 
 export default {
   mixins: [WatchRecords, UrlFor],
@@ -21,20 +20,16 @@ export default {
 
   data() {
     return {
-      mdiLightningBolt,
       mdiMessageBadgeOutline,
       mdiArrowUpThin,
       mdiArrowDownThin,
-      mdiCommentOutline,
-      mdiCog,
       mdiBellOutline,
       mdiBellOffOutline,
       mdiBellRingOutline,
-      mdiEyeOutline,
-      mdiBullhornOutline,
       open: null,
-      items: [],
-      visibleKeys: [],
+      pinnedItems: [],
+      // items: [],
+      // visibleKeys: [],
       baseUrl: '',
       topicActions: {}
     };
@@ -44,9 +39,12 @@ export default {
     selectedSequenceId() { return parseInt(this.$route.params.sequence_id); },
     selectedCommentId() { return parseInt(this.$route.params.comment_id); },
     isSignedIn() { return Session.isSignedIn(); },
-    menuActions() {
-      return Object.values(pickBy(this.topicActions, a => a.name && a.menu && a.canPerform()));
+    memberActions() {
+      return Object.values(pickBy(this.topicActions, a => a.name && a.collection === 'members' && a.canPerform()));
     },
+    menuActions() {
+      return Object.values(pickBy(this.topicActions, a => a.name && a.collection === 'actions' && a.canPerform()));
+    }
   },
 
   methods: {
@@ -57,23 +55,12 @@ export default {
     scrollToNewest() {
       ScrollService.scrollTo(`.sequenceId-${this.topic.lastSequenceId()}`);
     },
+    scrollToEnd() {
+      ScrollService.scrollTo('#add-comment');
+    },
     openVolumeForm() {
       EventBus.$emit('openModal', {
         component: 'ChangeVolumeForm',
-        props: { model: this.topic }
-      });
-    },
-    openSeenByModal() {
-      openModal({
-        component: 'SeenByModal',
-        persistent: false,
-        props: { topic: this.topic }
-      });
-    },
-    openNotificationHistory() {
-      openModal({
-        component: 'AnnouncementHistory',
-        persistent: false,
         props: { model: this.topic }
       });
     },
@@ -81,7 +68,7 @@ export default {
       ScrollService.scrollTo(`.sequenceId-${this.loader.firstUnreadSequenceId()}`);
     },
     scrollToTop() {
-      ScrollService.scrollTo('#strand-page');
+      ScrollService.scrollTo('.sequenceId-0');
     },
     scrollToBottom() {
       ScrollService.scrollTo(`.positionKey-${last(this.items).key}`);
@@ -89,76 +76,13 @@ export default {
 
     scrollToSequenceId(id) {
       ScrollService.scrollTo(`.sequenceId-${id}`);
-    },
-
-    buildItems(bootData) {
-      const itemsHash = {};
-
-      this.baseUrl = this.urlFor(this.topic.topicable());
-      // parser = new DOMParser()
-      // doc = parser.parseFromString(@context, 'text/html')
-      // headings = Array.from(doc.querySelectorAll('h1,h2,h3')).map (el) =>
-      //   {id: el.id, name: el.textContent}
-      bootData.forEach(row => {
-        // row indexes
-        // 0 positionKey,
-        // 1 sequenceId,
-        // 2 createdAt,
-        // 3 userId,
-        // 4 depth,
-        // 5 descendantCount
-        return itemsHash[row[0]] = {
-          key: row[0],
-          title: null,
-          headings: [],
-          sequenceId: row[1],
-          createdAt: row[2],
-          actorId: row[3],
-          visible: false,
-          depth: row[4],
-          descendantCount: row[5],
-          unread: this.loader.sequenceIdIsUnread(row[1]),
-          poll: null,
-          stance: null,
-          visible: this.visibleKeys.includes(row[0])
-        };
-      });
-
-      Records.events.collection.chain()
-             .find({topicId: this.topic.id})
-             .simplesort('positionKey')
-             .data().forEach(event => {
-        let poll;
-        if (event.kind === "poll_created") {
-          poll = event.model().poll();
-          if (poll.discardedAt) { return; }
-        }
-
-        itemsHash[event.positionKey] = {
-          key: event.positionKey,
-          commentId: event.eventableType === 'Comment' ? event.eventableId : null,
-          sequenceId: event.sequenceId,
-          createdAt: event.createdAt,
-          actorId: event.actorId,
-          title: (event.model() && event.model().title) || (event.pinned ? (event.pinnedTitle || event.fillPinnedTitle()) : null),
-          visible: false,
-          unread: this.loader.sequenceIdIsUnread(event.sequenceId),
-          headings: [],
-          depth: event.depth,
-          descendantCount: event.descendantCount,
-          visible: this.visibleKeys.includes(event.positionKey),
-          poll,
-          stance: (poll && poll.myStance()) || null
-        };
-      });
-
-      this.items = sortBy(Object.values(itemsHash), i => i.key);
     }
   },
 
   mounted() {
     this.topicActions = TopicService.actions(this.topic);
     this.topic.fetchUsersNotifiedCount();
+    this.baseUrl = this.urlFor(this.topic.topicable());
     EventBus.$on('toggleThreadNav', () => { return this.open = !this.open; });
 
     Records.events.fetch({
@@ -170,31 +94,47 @@ export default {
       }
     });
 
-    let bootData = [];
-    Records.events.remote.fetch({
-      path: 'timeline',
-      params: {
-        topic_id: this.topic.id
-    }}).then(data => {
-      bootData = data;
-      return this.buildItems(bootData);
-    });
-
     this.watchRecords({
       key: 'thread-nav'+this.topic.id,
       collections: ["events", "discussions", "polls", "topics", "memberships"],
       query: () => {
-        if (bootData.length) { this.buildItems(bootData); }
         this.topicActions = TopicService.actions(this.topic);
+        this.pinnedItems = Records.events.collection.chain()
+          .find({topicId: this.topic.id, pinned: true})
+          .simplesort('positionKey')
+          .data()
+          .filter(e => !e.model()?.discardedAt)
+          .map(event => {
+            const model = event.model();
+            const isPoll = event.kind === 'poll_created';
+            const poll = isPoll ? model.poll() : null;
+            return {
+              key: event.positionKey,
+              sequenceId: event.sequenceId,
+              title: (model && model.title) || event.pinnedTitle || event.fillPinnedTitle(),
+              poll,
+              user: !isPoll && event.actor() || null
+            };
+          });
       }
     });
 
-    EventBus.$on('visibleKeys', keys => {
-      this.visibleKeys = keys;
-      this.items.forEach(item => {
-        item.visible = this.visibleKeys.includes(item.key);
-      });
-    });
+    // let bootData = [];
+    // Records.events.remote.fetch({
+    //   path: 'timeline',
+    //   params: {
+    //     topic_id: this.topic.id
+    // }}).then(data => {
+    //   bootData = data;
+    //   return this.buildItems(bootData);
+    // });
+
+    // EventBus.$on('visibleKeys', keys => {
+    //   this.visibleKeys = keys;
+    //   this.items.forEach(item => {
+    //     item.visible = this.visibleKeys.includes(item.key);
+    //   });
+    // });
   }
 };
 
@@ -205,24 +145,36 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="topic" v-mo
   v-list(nav density="compact" :lines="false")
     v-list-subheader(v-t="'strand_nav.jump_to'")
     v-list-item(color="info" :prepend-icon="mdiArrowUpThin" :title="$t('strand_nav.start')" @click="scrollToTop" :to="baseUrl+'/0'")
-    v-list-item(color="info" :active="focusMode == 'unread'" :prepend-icon="mdiMessageBadgeOutline" :title="$t('strand_nav.unread')" @click="scrollToUnread" :to="baseUrl+'?unread'" v-if="loader.firstUnreadSequenceId()" exact)
-    v-list-item(color="info" :active="focusMode == 'newest'" :prepend-icon="mdiLightningBolt" :title="$t('strand_nav.latest')" @click="scrollToNewest" :to="baseUrl+'?newest'" exact)
-    //v-list-item(:prepend-icon="mdiArrowDownThin" :title="$t('strand_nav.bottom')" @click="scrollToSequenceId(lastItemSequenceId())" :to="baseUrl+'/'+lastItemSequenceId()" exact)
+    v-list-item(v-for="item in pinnedItems" :key="item.key" :value="item.key" :title="item.title" @click="$router.push(baseUrl+'/'+item.sequenceId); scrollToSequenceId(item.sequenceId)")
+      template(v-slot:prepend)
+        poll-common-icon-panel(v-if="item.poll && item.poll.showResults()" :poll="item.poll" show-my-stance :size="24" :stanceSize="12")
+        v-icon(v-else-if="item.user")
+          user-avatar(:user="item.user" :size="24" no-link)
+        v-icon(v-else) mdi-pin-outline
+    v-list-item(color="info" :active="focusMode == 'unread'" :prepend-icon="mdiMessageBadgeOutline" :title="$t('strand_nav.unread') + ' (' + topic.unreadItemsCount() + ')'" @click="scrollToUnread" :to="baseUrl+'?unread'" v-if="loader.unreadRanges.length" exact)
+    v-list-item(color="info" :prepend-icon="mdiArrowDownThin" :title="$t('strand_nav.end')" @click="scrollToEnd" :to="baseUrl+'/'+topic.lastSequenceId()")
   template(v-if="isSignedIn")
-    v-list(nav density="compact" :lines="false" v-if="topic.seenByCount > 0 || topic.usersNotifiedCount")
-      v-list-item(v-if="topic.seenByCount > 0" :prepend-icon="mdiEyeOutline" :title="$t('discussion_context.seen_by_count', {count: topic.seenByCount})" @click="openSeenByModal")
-      v-list-item(v-if="topic.usersNotifiedCount" :prepend-icon="mdiBullhornOutline" :title="$t('discussion_context.count_notified', {count: topic.usersNotifiedCount})" @click="openNotificationHistory")
 
     v-list(nav density="compact" :lines="false")
-      v-list-subheader(v-t="'strand_nav.emails'")
+      v-list-subheader(v-t="'strand_nav.notifications'")
       v-list-item(:prepend-icon="topic.readerVolume === 'loud' ? mdiBellRingOutline : topic.readerVolume === 'quiet' ? mdiBellOffOutline : mdiBellOutline" :title="$t(topic.readerVolume === 'loud' ? 'strand_nav.email_all_activity' : topic.readerVolume === 'quiet' ? 'strand_nav.email_none' : 'strand_nav.email_notifications')" @click="openVolumeForm")
 
-    v-list(nav density="compact" :lines="false")
-      v-list-subheader.pt-4(v-t="'members_panel.header_actions'")
+    v-list(nav density="compact" :lines="false" v-if="memberActions.length")
+      v-list-subheader(v-t="'membership_card.thread_members'")
+      v-list-item(
+        v-for="action in memberActions"
+        :key="action.name"
+        :title="$t(action.name, (action.nameArgs && action.nameArgs()) || {})"
+        @click="action.perform()")
+        template(v-slot:prepend)
+          common-icon(:name="action.icon")
+
+    v-list(nav density="compact" :lines="false" v-if="menuActions.length")
+      v-list-subheader(v-t="'members_panel.header_actions'")
       v-list-item(
         v-for="action in menuActions"
         :key="action.name"
-        :title="$t(action.name)"
+        :title="$t(action.name, (action.nameArgs && action.nameArgs()) || {})"
         @click="action.perform()")
         template(v-slot:prepend)
           common-icon(:name="action.icon")
@@ -234,7 +186,6 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="topic" v-mo
   //    v-for="item in items"
   //    :key="item.key"
   //    :to="baseUrl+'/'+item.sequenceId"
-  //    @click="scrollToSequenceId(item.sequenceId)")
   //      .strand-nav__stance-icon-container(v-if="item.poll && item.poll.showResults()")
   //        poll-common-icon-panel.poll-proposal-chart-panel__chart.mr-1(:poll="item.poll" show-my-stance :size="18" :stanceSize="12")
   //      //span {{item.key}}
@@ -242,6 +193,9 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="topic" v-mo
 </template>
 
 <style lang="sass">
+.thread-sidebar .v-list-item-title
+  white-space: normal !important
+
 .strand-nav__stance-icon-container
   display: inline-block
 

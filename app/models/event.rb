@@ -5,6 +5,12 @@ class Event < ApplicationRecord
 
   has_many :notifications, dependent: :destroy
   belongs_to :eventable, polymorphic: true
+  # topic_id marks this event as a thread item: when set, the event has a
+  # sequence_id/position_key/parent_id and appears in the topic timeline.
+  # Notification/edit events (poll_announced, discussion_edited, user_mentioned,
+  # etc.) belong to a topic conceptually but leave topic_id NULL — they're
+  # found via their eventable instead. The callbacks below all gate on
+  # topic_id for that reason.
   belongs_to :topic, required: false
   belongs_to :user, required: false
   belongs_to :parent, class_name: "Event", required: false

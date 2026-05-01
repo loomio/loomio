@@ -41,7 +41,7 @@ export default class CommentModel extends BaseModel {
   }
 
   topic() {
-    return this.parent().topic();
+    return this.createdEvent().topic();
   }
 
   createdEvent() {

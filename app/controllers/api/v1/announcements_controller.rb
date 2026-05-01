@@ -128,9 +128,20 @@ class Api::V1::AnnouncementsController < Api::V1::RestfulController
 
   def target_event_ids
     if target_model.is_a?(Topic)
-      Event.where(topic_id: target_model.id,
-                  eventable_type: %w[Discussion Comment Outcome Poll],
-                  kind: notification_kinds).pluck(:id)
+      # topic_id on events identifies thread items only. Notification/edit
+      # events (poll_announced, discussion_edited, etc.) link via eventable,
+      # so we match by topicable + in-thread polls + their outcomes, plus
+      # comments via topic_id (since comment events are thread items).
+      discussion_ids = target_model.topicable_type == 'Discussion' ? [target_model.topicable_id] : []
+      poll_ids       = Poll.where(topic_id: target_model.id).pluck(:id)
+      outcome_ids    = Outcome.where(poll_id: poll_ids).pluck(:id)
+
+      Event.where(kind: notification_kinds).where(<<~SQL, d: discussion_ids, p: poll_ids, o: outcome_ids, t: target_model.id).pluck(:id)
+        (eventable_type = 'Discussion' AND eventable_id IN (:d)) OR
+        (eventable_type = 'Poll'       AND eventable_id IN (:p)) OR
+        (eventable_type = 'Outcome'    AND eventable_id IN (:o)) OR
+        (eventable_type = 'Comment'    AND topic_id = :t)
+      SQL
     else
       Event.where(kind: notification_kinds, eventable: [target_model]).pluck(:id)
     end
