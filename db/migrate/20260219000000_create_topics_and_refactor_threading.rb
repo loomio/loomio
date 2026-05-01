@@ -18,10 +18,14 @@ class CreateTopicsAndRefactorThreading < ActiveRecord::Migration[7.0]
       t.integer :members_count
       t.integer :closed_polls_count, default: 0, null: false
       t.integer :anonymous_polls_count, default: 0, null: false
+      t.datetime :discarded_at
+      t.integer :discarded_by
+      t.string :tags, array: true, default: []
       t.timestamps
     end
     add_index :topics, [:topicable_type, :topicable_id], unique: true
     add_index :topics, :group_id
+    add_index :topics, :tags, using: :gin
 
     # 2. Create topics from discussions using topic.id = discussion.id
     #    This means existing discussion_id columns already point to the right topic.
@@ -74,6 +78,9 @@ class CreateTopicsAndRefactorThreading < ActiveRecord::Migration[7.0]
     execute 'DROP INDEX IF EXISTS "index_discussion_readers_on_user_id_and_discussion_id"'
     rename_column :topic_readers, :discussion_id, :topic_id
     add_index :topic_readers, [:topic_id, :user_id], unique: true
+
+    # 6b. Remove last_read_sequence_id from topic_readers (no longer used)
+    remove_column :topic_readers, :last_read_sequence_id
 
     # 7. Polls: in-thread polls already have discussion_id = topic_id, standalone need update
     rename_column :polls, :discussion_id, :topic_id
@@ -135,6 +142,42 @@ class CreateTopicsAndRefactorThreading < ActiveRecord::Migration[7.0]
     remove_column :stances, :volume, :integer, default: 2, null: false
     remove_column :stances, :guest, :boolean, default: false, null: false
     remove_column :stances, :admin, :boolean, null: false, default: false
+
+    # 10. Backfill tags from topicables
+    execute <<~SQL
+      UPDATE topics SET tags = discussions.tags
+      FROM discussions WHERE topics.topicable_type = 'Discussion' AND topics.topicable_id = discussions.id
+      AND discussions.tags != '{}';
+    SQL
+
+    execute <<~SQL
+      UPDATE topics SET tags = polls.tags
+      FROM polls WHERE topics.topicable_type = 'Poll' AND topics.topicable_id = polls.id
+      AND polls.tags != '{}';
+    SQL
+
+    # 11. Backfill discarded_at from topicables
+    execute <<~SQL
+      UPDATE topics
+      SET discarded_at = discussions.discarded_at,
+          discarded_by = discussions.discarded_by
+      FROM discussions
+      WHERE topics.topicable_type = 'Discussion'
+        AND topics.topicable_id = discussions.id
+        AND discussions.discarded_at IS NOT NULL
+    SQL
+
+    execute <<~SQL
+      UPDATE topics
+      SET discarded_at = polls.discarded_at,
+          discarded_by = polls.discarded_by
+      FROM polls
+      WHERE topics.topicable_type = 'Poll'
+        AND topics.topicable_id = polls.id
+        AND polls.discarded_at IS NOT NULL
+    SQL
+
+    add_index :topics, :discarded_at, where: "discarded_at IS NULL", name: "index_topics_on_discarded_at_null"
   end
 
   def down

@@ -11,6 +11,8 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[8.0].define(version: 2026_04_30_113138) do
+  create_schema "pghero"
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -61,12 +63,14 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_30_113138) do
     t.string "checksum"
     t.datetime "created_at", precision: nil, null: false
     t.string "service_name", null: false
+    t.index ["id"], name: "active_storage_blobs_idx", unique: true
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
   create_table "active_storage_variant_records", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
+    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
   create_table "attachments", id: :serial, force: :cascade do |t|
@@ -776,13 +780,6 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_30_113138) do
     t.index ["topic_id"], name: "index_polls_on_topic_id"
   end
 
-
-
-
-
-
-
-
   create_table "reactions", id: :serial, force: :cascade do |t|
     t.integer "reactable_id"
     t.integer "user_id"
@@ -975,15 +972,15 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_30_113138) do
     t.integer "members_count"
     t.integer "closed_polls_count", default: 0, null: false
     t.integer "anonymous_polls_count", default: 0, null: false
+    t.datetime "discarded_at"
+    t.integer "discarded_by"
+    t.string "tags", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "allow_concurrent_polls", default: false, null: false
     t.integer "active_polls_count", default: 0, null: false
     t.boolean "allow_comments", default: true, null: false
     t.boolean "allow_reactions", default: true, null: false
-    t.string "tags", default: [], array: true
-    t.datetime "discarded_at"
-    t.integer "discarded_by"
     t.index ["closed_at"], name: "index_topics_on_closed_at"
     t.index ["discarded_at"], name: "index_topics_on_discarded_at_null", where: "(discarded_at IS NULL)"
     t.index ["group_id"], name: "index_topics_on_group_id"
