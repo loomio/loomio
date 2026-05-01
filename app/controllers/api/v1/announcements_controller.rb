@@ -127,16 +127,13 @@ class Api::V1::AnnouncementsController < Api::V1::RestfulController
   private
 
   def target_event_ids
-    if target_model.is_a?(Discussion)
-      polls = Poll.where(topic_id: target_model.topic_id)
-      outcomes = Outcome.where(poll_id: polls.map(&:id))
-      comments = target_model.comments
-      eventables = [target_model, polls, outcomes, comments].flatten.compact
+    if target_model.is_a?(Topic)
+      Event.where(topic_id: target_model.id,
+                  eventable_type: %w[Discussion Comment Outcome Poll],
+                  kind: notification_kinds).pluck(:id)
     else
-      eventables = [target_model]
+      Event.where(kind: notification_kinds, eventable: [target_model]).pluck(:id)
     end
-
-    Event.where(kind: notification_kinds, eventable: eventables).pluck(:id)
   end
 
   def notification_kinds

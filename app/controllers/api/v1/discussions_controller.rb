@@ -67,21 +67,6 @@ class Api::V1::DiscussionsController < Api::V1::RestfulController
     respond_with_collection
   end
 
-  def history
-    load_and_authorize(:discussion)
-
-    if @discussion.polls.kept.where(anonymous:true).any?
-      render root: false, json: {message: I18n.t("discussion_last_seen_by.disabled_anonymous_polls")}, status: 403
-    else
-      res = TopicReader.joins(:user).where(topic: @discussion.topic).where.not(last_read_at: nil).map do |reader|
-        {reader_id: reader.id,
-         last_read_at: reader.last_read_at,
-         user_name: reader.user.name_or_username }
-      end
-      render root: false, json: res
-    end
-  end
-
   private
   def group_ids
     case params[:subgroups]

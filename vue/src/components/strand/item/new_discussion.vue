@@ -2,7 +2,6 @@
 import DiscussionService  from '@/shared/services/discussion_service';
 import { pickBy } from 'lodash-es';
 import Session from '@/shared/services/session';
-import openModal      from '@/shared/helpers/open_modal';
 import StrandActionsPanel from '@/components/strand/actions_panel';
 import UrlFor from '@/mixins/url_for';
 
@@ -70,16 +69,6 @@ export default {
           this.actions['translate_thread'].perform().then(() => { this.rebuildActions() });
         }
       }
-    },
-
-    openSeenByModal() {
-      openModal({
-        component: 'SeenByModal',
-        persistent: false,
-        props: {
-          discussion: this.discussion,
-        }
-      });
     }
   }
 };
@@ -95,9 +84,6 @@ export default {
     mid-dot
     router-link.text-medium-emphasis(:to='urlFor(discussion)')
       time-ago(:date='discussion.createdAt')
-    span.text-medium-emphasis(v-show='topic.seenByCount > 0')
-      mid-dot
-      a.context-panel__seen_by_count.underline-on-hover(v-t="{ path: 'discussion_context.seen_by_count', args: { count: topic.seenByCount } }"  @click="openSeenByModal()")
 
   template(v-if="!collapsed")
     formatted-text.context-panel__description(:model="discussion" field="description")

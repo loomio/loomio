@@ -45,7 +45,6 @@ export default class DiscussionModel extends BaseModel {
       notifyRecipients: true,
       groupId: null,
       topicId: null,
-      usersNotifiedCount: null,
       discussionReaderUserId: null,
       pinnedAt: null,
       poll_template_keys_or_ids: []
@@ -127,15 +126,4 @@ export default class DiscussionModel extends BaseModel {
     this.baseUpdate(attributes);
     return this.readRanges = RangeSet.intersectRanges(this.readRanges, this.ranges);
   }
-
-  fetchUsersNotifiedCount() {
-    return Records.fetch({
-      path: 'announcements/users_notified_count',
-      params: {
-        discussion_id: this.id
-      }}).then(data => {
-      return this.usersNotifiedCount = data.count;
-    });
-  }
-
 };

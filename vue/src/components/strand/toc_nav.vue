@@ -7,7 +7,8 @@ import TopicService from '@/shared/services/topic_service';
 import { sortBy, last, pickBy } from 'lodash-es';
 import ScrollService from '@/shared/services/scroll_service';
 import Session        from '@/shared/services/session';
-import { mdiLightningBolt, mdiMessageBadgeOutline, mdiArrowUpThin, mdiArrowDownThin, mdiCog, mdiCommentOutline, mdiBellOutline, mdiBellOffOutline, mdiBellRingOutline } from '@mdi/js';
+import openModal from '@/shared/helpers/open_modal';
+import { mdiLightningBolt, mdiMessageBadgeOutline, mdiArrowUpThin, mdiArrowDownThin, mdiCog, mdiCommentOutline, mdiBellOutline, mdiBellOffOutline, mdiBellRingOutline, mdiEyeOutline, mdiBullhornOutline } from '@mdi/js';
 
 export default {
   mixins: [WatchRecords, UrlFor],
@@ -29,6 +30,8 @@ export default {
       mdiBellOutline,
       mdiBellOffOutline,
       mdiBellRingOutline,
+      mdiEyeOutline,
+      mdiBullhornOutline,
       open: null,
       items: [],
       visibleKeys: [],
@@ -57,6 +60,20 @@ export default {
     openVolumeForm() {
       EventBus.$emit('openModal', {
         component: 'ChangeVolumeForm',
+        props: { model: this.topic }
+      });
+    },
+    openSeenByModal() {
+      openModal({
+        component: 'SeenByModal',
+        persistent: false,
+        props: { topic: this.topic }
+      });
+    },
+    openNotificationHistory() {
+      openModal({
+        component: 'AnnouncementHistory',
+        persistent: false,
         props: { model: this.topic }
       });
     },
@@ -141,6 +158,7 @@ export default {
 
   mounted() {
     this.topicActions = TopicService.actions(this.topic);
+    this.topic.fetchUsersNotifiedCount();
     EventBus.$on('toggleThreadNav', () => { return this.open = !this.open; });
 
     Records.events.fetch({
@@ -191,6 +209,10 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="topic" v-mo
     v-list-item(color="info" :active="focusMode == 'newest'" :prepend-icon="mdiLightningBolt" :title="$t('strand_nav.latest')" @click="scrollToNewest" :to="baseUrl+'?newest'" exact)
     //v-list-item(:prepend-icon="mdiArrowDownThin" :title="$t('strand_nav.bottom')" @click="scrollToSequenceId(lastItemSequenceId())" :to="baseUrl+'/'+lastItemSequenceId()" exact)
   template(v-if="isSignedIn")
+    v-list(nav density="compact" :lines="false" v-if="topic.seenByCount > 0 || topic.usersNotifiedCount")
+      v-list-item(v-if="topic.seenByCount > 0" :prepend-icon="mdiEyeOutline" :title="$t('discussion_context.seen_by_count', {count: topic.seenByCount})" @click="openSeenByModal")
+      v-list-item(v-if="topic.usersNotifiedCount" :prepend-icon="mdiBullhornOutline" :title="$t('discussion_context.count_notified', {count: topic.usersNotifiedCount})" @click="openNotificationHistory")
+
     v-list(nav density="compact" :lines="false")
       v-list-subheader(v-t="'strand_nav.emails'")
       v-list-item(:prepend-icon="topic.readerVolume === 'loud' ? mdiBellRingOutline : topic.readerVolume === 'quiet' ? mdiBellOffOutline : mdiBellOutline" :title="$t(topic.readerVolume === 'loud' ? 'strand_nav.email_all_activity' : topic.readerVolume === 'quiet' ? 'strand_nav.email_none' : 'strand_nav.email_notifications')" @click="openVolumeForm")

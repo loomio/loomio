@@ -27,6 +27,7 @@ export default class TopicModel extends BaseModel {
   defaultValues() {
     return {
       itemsCount: 0,
+      usersNotifiedCount: null,
       ranges: [],
       readRanges: [],
       maxDepth: 3,
@@ -205,6 +206,15 @@ export default class TopicModel extends BaseModel {
     if (this.lastReadAt) { return; }
     Records.topics.remote.patchMember(this.id, 'mark_as_seen');
     return this.update({lastReadAt: new Date});
+  }
+
+  fetchUsersNotifiedCount() {
+    return Records.fetch({
+      path: 'announcements/users_notified_count',
+      params: {topic_id: this.id}
+    }).then(data => {
+      this.usersNotifiedCount = data.count;
+    });
   }
 
   isMuted() {

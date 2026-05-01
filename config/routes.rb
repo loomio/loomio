@@ -176,7 +176,6 @@ Rails.application.routes.draw do
       end
 
       resources :discussions, only: [:show, :index, :create, :update] do
-        get :history, on: :member
         get :search, on: :collection
         get :dashboard, on: :collection
         get :inbox, on: :collection
@@ -223,7 +222,7 @@ Rails.application.routes.draw do
       resources :search, only: :index
 
       resources :topics, only: [:index, :update] do
-        get :dashboard, on: :collection
+        get :history, on: :member
         patch :mark_as_read, on: :member
         patch :mark_as_seen, on: :member
         patch :dismiss, on: :member

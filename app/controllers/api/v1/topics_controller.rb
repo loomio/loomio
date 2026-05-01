@@ -6,6 +6,7 @@ class Api::V1::TopicsController < Api::V1::RestfulController
                           user: current_user,
                           or_subgroups: false,
                           or_public: false,
+                          only_direct: params.has_key?(:direct),
                           only_unread: params.has_key?(:unread)
                         ).recent_activity_first
 
@@ -111,6 +112,21 @@ class Api::V1::TopicsController < Api::V1::RestfulController
     load_resource
     TopicService.discard(topic: resource, actor: current_user)
     respond_with_resource
+  end
+
+  def history
+    topic = load_and_authorize(:topic)
+
+    if Poll.where(topic_id: topic.id).kept.where(anonymous: true).any?
+      render root: false, json: {message: I18n.t("discussion_last_seen_by.disabled_anonymous_polls")}, status: 403
+    else
+      res = TopicReader.joins(:user).where(topic_id: topic.id).where.not(last_read_at: nil).map do |reader|
+        {reader_id: reader.id,
+         last_read_at: reader.last_read_at,
+         user_name: reader.user.name_or_username }
+      end
+      render root: false, json: res
+    end
   end
 
   private
