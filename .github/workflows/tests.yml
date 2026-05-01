@@ -56,13 +56,6 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: '22'
-    - name: start websocker server
-      run: |
-        echo $PWD
-        git clone https://github.com/loomio/loomio_channel_server.git
-        cd loomio_channel_server
-        npm install
-        npm run start > ../log/channel_server.log &
     - name: create db
       run: |
         createdb
