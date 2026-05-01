@@ -1,79 +1,74 @@
-<script lang="js">
-import AppConfig     from '@/shared/services/app_config';
+<script setup lang="js">
+import { ref, onUnmounted } from 'vue';
+import { sum, values, sortBy } from 'lodash-es';
+
 import Session       from '@/shared/services/session';
 import Records       from '@/shared/services/records';
 import EventBus      from '@/shared/services/event_bus';
-import ThreadFilter from '@/shared/services/thread_filter';
+import ThreadFilter  from '@/shared/services/thread_filter';
 import ThreadPreviewCollection from '@/components/thread/preview_collection';
-import {sum, values, sortBy} from 'lodash-es';
-import FormatDate from '@/mixins/format_date';
-import WatchRecords from '@/mixins/watch_records';
+import { useWatchRecords } from '@/composables/useWatchRecords';
 
-export default
-{
-  mixins: [FormatDate, WatchRecords],
-  components: {
-    ThreadPreviewCollection
-  },
+const threadLimit = 50;
+const filters = [
+  'only_threads_in_my_groups',
+  'show_unread',
+  'show_recent',
+  'hide_muted',
+  'hide_dismissed'
+];
 
-  data() {
-    return {
-      threadLimit: 50,
-      views: {},
-      groups: [],
-      loading: false,
-      unreadCount: 0,
-      filters: [
-        'only_threads_in_my_groups',
-        'show_unread',
-        'show_recent',
-        'hide_muted',
-        'hide_dismissed'
-      ]
-    };
-  },
+const groups = ref([]);
+const viewsByGroup = ref({});
+const unreadCount = ref(0);
+const loading = ref(false);
 
-  created() {
-    this.init();
-    EventBus.$on('signedIn', () => this.init());
-  },
+const { watchRecords } = useWatchRecords();
 
-  methods: {
-    startGroup() {
-      EventBus.$emit('openModal', {
-        component: 'GroupNewForm',
-        props: { group: Records.groups.build() }
-      });
-    },
+function fetchInbox() {
+  if (!Session.isSignedIn()) return;
+  loading.value = true;
+  Records.users.findOrFetchGroups();
+  Records.topics.fetch({
+    params: { unread: 1, per: 50 }
+  }).finally(() => { loading.value = false; });
+}
 
-    init(options) {
-      if (options == null) { options = {}; }
-      if (Session.isSignedIn()) {
-        this.loading = true;
-        Records.topics.fetchInbox(options).then(() => { return this.loading = false; });
-      }
+function query() {
+  groups.value = sortBy(Session.user().inboxGroups(), 'name');
+  viewsByGroup.value = {};
+  groups.value.forEach(group => {
+    viewsByGroup.value[group.key] = ThreadFilter({ filters, group });
+  });
+  unreadCount.value = sum(values(viewsByGroup.value), v => v.length);
+}
 
-      EventBus.$emit('currentComponent', {
-        titleKey: 'inbox_page.unread_discussions',
-        page: 'inboxPage'
-      }
-      );
+function startGroup() {
+  EventBus.$emit('openModal', {
+    component: 'GroupNewForm',
+    props: { group: Records.groups.build() }
+  });
+}
 
-      this.watchRecords({
-        collections: ['topics', 'groups'],
-        query: store => {
-          this.groups = sortBy(Session.user().inboxGroups(), 'name');
-          this.views = {};
-          this.groups.forEach(group => {
-            this.views[group.key] = ThreadFilter({filters: this.filters, group});
-          });
-          this.unreadCount = sum(values(this.views), v => v.length);
-        }
-      });
-    }
-  }
-};
+function titleVisible(visible) {
+  EventBus.$emit('content-title-visible', visible);
+}
 
+watchRecords({
+  key: 'inbox',
+  collections: ['topics', 'groups', 'memberships'],
+  query
+});
+
+EventBus.$emit('currentComponent', {
+  titleKey: 'inbox_page.unread_discussions',
+  page: 'inboxPage'
+});
+
+EventBus.$on('signedIn', fetchInbox);
+onUnmounted(() => EventBus.$off('signedIn', fetchInbox));
+
+fetchInbox();
 </script>
 
 <template lang="pug">
@@ -97,12 +92,12 @@ v-main
         | &nbsp;
         span(v-html="$t('inbox_page.no_groups.join_group')")
       .inbox-page__group(v-for='group in groups', :key='group.id')
-        v-card.mb-3(v-if='views[group.key].length > 0')
+        v-card.mb-3(v-if='viewsByGroup[group.key].length > 0')
           v-list
             v-list-subheader
               router-link.inbox-page__group-link(:to="'/g/' + group.key") {{group.name}}
-            thread-preview-collection(:threads="views[group.key]", :limit="threadLimit")
-        //- strand-wall(:threads="views[group.key]")
+            thread-preview-collection(:threads="viewsByGroup[group.key]", :limit="threadLimit")
+        //- strand-wall(:threads="viewsByGroup[group.key]")
 </template>
 
 <style lang="sass">

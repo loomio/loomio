@@ -34,7 +34,6 @@ const unreadTopicCounts = ref({});
 const pollsToVoteOnCount = ref(0);
 const openGroups = ref([]);
 const openCounts = ref({});
-const unreadDirectThreadsCount = ref(0);
 const showSettings = ref(false);
 
 const { watchRecords } = useWatchRecords();
@@ -185,11 +184,11 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
       v-list-item(to="/inbox")
         v-list-item-title(:class="{'text-medium-emphasis': unreadTopicCounts['total'] === 0}") {{ $t('sidebar.unread_discussions_count', {count: unreadTopicCounts['total']}) }}
       v-list-item.sidebar__list-item-button--private(to="/dashboard/direct_discussions")
-        v-list-item-title
+        v-list-item-title(:class="{'text-medium-emphasis': !unreadTopicCounts['direct']}")
           span(v-t="'sidebar.direct_discussions'")
-          span(v-if="unreadDirectThreadsCount > 0")
-            space
-            span ({{unreadDirectThreadsCount}})
+          template(v-if="unreadTopicCounts['direct']")
+            | &nbsp;
+            span ({{unreadTopicCounts['direct']}})
       v-list-item(to="/tasks" :disabled="organizations.length == 0" :title="$t('tasks.tasks')")
 
     v-divider
