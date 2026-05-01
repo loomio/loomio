@@ -20,17 +20,7 @@ class Event < ApplicationRecord
   after_destroy :update_sequence_info!, if: :topic_id
 
   define_counter_cache(:child_count) { |e| e.children.count  }
-  define_counter_cache(:descendant_count) { |e|
-    if e.position_key && e.topic_id
-      Event.where(topic_id: e.topic_id).
-            where("id != ?", e.id).
-            where('position_key like ?', e.position_key+"%").count
-    else
-      0
-    end
-  }
   update_counter_cache :parent, :child_count
-  update_counter_cache :parent, :descendant_count
 
   validates :kind, presence: true
   validates :eventable, presence: true

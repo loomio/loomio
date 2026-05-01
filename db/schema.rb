@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_04_30_113138) do
+ActiveRecord::Schema[8.0].define(version: 2026_05_01_000000) do
   create_schema "pghero"
 
   # These are extensions that must be enabled in order to support this database
@@ -320,7 +320,6 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_30_113138) do
     t.integer "depth", default: 0, null: false
     t.boolean "pinned", default: false, null: false
     t.string "position_key"
-    t.integer "descendant_count", default: 0, null: false
     t.integer "eventable_version_id"
     t.index ["created_at"], name: "index_events_on_created_at"
     t.index ["eventable_id", "kind"], name: "index_events_on_eventable_id_and_kind"

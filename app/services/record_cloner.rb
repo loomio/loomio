@@ -383,7 +383,6 @@ class RecordCloner
       position_key
       child_count
       pinned
-      descendant_count
       custom_fields
       created_at
     ]

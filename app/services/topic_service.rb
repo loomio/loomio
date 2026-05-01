@@ -197,21 +197,13 @@ class TopicService
 
     ActiveRecord::Base.connection.execute(
       "UPDATE events
-       SET descendant_count = (
-         SELECT count(descendants.id)
-         FROM events descendants
-         WHERE
-            descendants.topic_id = events.topic_id AND
-            descendants.id != events.id AND
-            descendants.position_key like CONCAT(events.position_key, '%')
-      ), child_count = (
+       SET child_count = (
         SELECT count(children.id) FROM events children
         WHERE children.parent_id = events.id AND children.topic_id IS NOT NULL
       )
       WHERE topic_id = #{topic.id.to_i}")
 
     created_event.reload.update_child_count
-    created_event.update_descendant_count
     topic.update_sequence_info!
 
     # ensure all the topic_readers have valid read_ranges values

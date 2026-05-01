@@ -9,7 +9,7 @@ class Api::V1::EventsController < Api::V1::RestfulController
     load_and_authorize_topic
     data = Event.where(topic_id: @topic.id)
                 .order(:position_key)
-                .pluck(:position_key, :sequence_id, :created_at, :user_id, :depth, :descendant_count)
+                .pluck(:position_key, :sequence_id, :created_at, :user_id, :depth)
     render json: data.to_json, root: 'timeline'
   end
 
