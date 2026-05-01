@@ -56,5 +56,4 @@ jobs:
         bundle exec rake db:setup
     - name: run minitest
       run: |
-        bundle exec rails test test/controllers/api/v1/*_controller_test.rb
-        bundle exec rails test test/services/*_test.rb
+        bundle exec rails test
