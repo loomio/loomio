@@ -16,8 +16,10 @@ const { direction, collection, parentCollection, index, loader } = defineProps({
 const loadAndScrollTo = () => {
   if (direction == 'before') {
     const selector = `.positionKey-${collection[index].event.positionKey}`
-    const offset = document.querySelector(selector).getBoundingClientRect().top
-    EventBus.$emit('setAnchor', selector, offset);
+    const el = document.querySelector(selector);
+    if (el) {
+      EventBus.$emit('setAnchor', selector, el.getBoundingClientRect().top);
+    }
   }
   load();
 }

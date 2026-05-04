@@ -170,6 +170,7 @@ Rails.application.routes.draw do
         get :count, on: :collection
         patch :pin, on: :member
         patch :unpin, on: :member
+        get :descendant_authors, on: :member
         get :comment, on: :collection
         get :position_keys, on: :collection
         get :timeline, on: :collection

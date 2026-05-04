@@ -33,6 +33,25 @@ class Api::V1::EventsController < Api::V1::RestfulController
     render json: MessageChannelService.serialize_models(@event, scope: default_scope)
   end
 
+  def descendant_authors
+    event = Event.find(params[:id])
+    current_user.ability.authorize!(:show, event.topic)
+
+    # Up to 16 distinct authors, ordered by the sequence_id of their last
+    # event under this one.
+    user_ids = Event.where(topic_id: event.topic_id)
+                    .where("position_key LIKE ?", "#{event.position_key}-%")
+                    .where.not(user_id: nil)
+                    .group(:user_id)
+                    .order(Arel.sql('MAX(events.sequence_id) DESC'))
+                    .limit(16)
+                    .pluck(:user_id)
+
+    users = User.active.where(id: user_ids).index_by(&:id).values_at(*user_ids).compact
+    render json: {
+      users: ActiveModel::ArraySerializer.new(users, each_serializer: AuthorSerializer).as_json
+    }
+  end
 
   def count
     render json: accessible_records.count

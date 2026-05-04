@@ -42,7 +42,10 @@ const rowClasses = (obj) => {
             v-checkbox-btn.thread-item__is-forking( v-if="obj.event.forkingDisabled()" disabled v-model="parentChecked" )
             v-checkbox-btn.thread-item__is-forking( v-else v-model="loader.topic.forkedEventIds" :value="obj.event.id" )
           template(v-else)
-            user-avatar( :user="obj.event.actor()" :size="(obj.event.depth > 1) ? 28 : 32" no-link )
+            .strand-item__gutter-toggle(@click="loader.collapse(obj.event)")
+              user-avatar.strand-item__gutter-avatar( :user="obj.event.actor()" :size="(obj.event.depth > 1) ? 28 : 32" no-link )
+              .strand-item__gutter-collapse
+                common-icon(name="mdi-arrow-collapse-vertical")
         stem-wrapper(:loader="loader" :obj="obj" :focused="isFocused(obj.event)")
       .strand-item__main
         .strand-item__main--content
@@ -150,5 +153,28 @@ const rowClasses = (obj) => {
   border-radius: 100%
   margin: 4px 0
   cursor: pointer
+
+.strand-item__gutter-toggle
+  cursor: pointer
+  display: flex
+  align-items: center
+  justify-content: center
+
+.strand-item__gutter-collapse
+  display: none
+  align-items: center
+  justify-content: center
+  width: 32px
+  height: 32px
+
+.strand-item--deep .strand-item__gutter-collapse
+  width: 28px
+  height: 28px
+
+.strand-item__gutter:hover
+  .strand-item__gutter-avatar
+    display: none
+  .strand-item__gutter-collapse
+    display: flex
 
 </style>
