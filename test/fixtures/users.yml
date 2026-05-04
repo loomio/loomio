@@ -1,47 +1,82 @@
 # Users fixtures for testing
 # encrypted_password generated with: BCrypt::Password.create('complex_password')
-normal_user:
-  name: normal user
-  email: normaluser@example.com
+user:
+  key: usrky
+  name: Test User
+  email: user@example.com
   legal_accepted_at: <%= 30.days.ago %>
   encrypted_password: $2a$12$K3E5h0VGlqmXL8HqWw7mIe3qP0XjQSfZ1jK4PqYX7Qq5N9YK6L4/K
   time_zone: Pacific/Tarawa
   email_verified: true
-  username: normal_user
+  username: user
+  unsubscribe_token: normaluserunsubtoken12345678
+  email_api_key: normaluseremailapikey1234567
+  api_key: normaluserapikey123456789012
+  secret_token: normalusersecrettoken1234567
   created_at: <%= 30.days.ago %>
   updated_at: <%= 1.day.ago %>
 
-another_user:
-  name: Another user
-  email: anotheruser@example.com
-  legal_accepted_at: <%= 30.days.ago %>
-  encrypted_password: $2a$12$K3E5h0VGlqmXL8HqWw7mIe3qP0XjQSfZ1jK4PqYX7Qq5N9YK6L4/K
-  time_zone: Pacific/Tarawa
-  email_verified: true
-  username: another_user
-  created_at: <%= 30.days.ago %>
-  updated_at: <%= 1.day.ago %>
-
-admin_user:
-  name: Admin User
+admin:
+  key: adminuky
+  name: Test Admin
   email: admin@example.com
   is_admin: true
   legal_accepted_at: <%= 30.days.ago %>
   encrypted_password: $2a$12$K3E5h0VGlqmXL8HqWw7mIe3qP0XjQSfZ1jK4PqYX7Qq5N9YK6L4/K
   time_zone: Pacific/Tarawa
   email_verified: true
-  username: admin_user
+  username: admin
+  unsubscribe_token: adminuserunsubtoken12345678
+  email_api_key: adminuseremailapikey12345678
+  api_key: adminuserapikey1234567890123
+  secret_token: adminusersecrettoken12345678
   created_at: <%= 30.days.ago %>
   updated_at: <%= 1.day.ago %>
 
-# Author for discussions
-discussion_author:
-  name: Discussion Author
-  email: author@example.com
+subgroup_user:
+  key: subusrky
+  name: Subgroup User
+  email: subgroupuser@example.com
   legal_accepted_at: <%= 30.days.ago %>
   encrypted_password: $2a$12$K3E5h0VGlqmXL8HqWw7mIe3qP0XjQSfZ1jK4PqYX7Qq5N9YK6L4/K
   time_zone: Pacific/Tarawa
   email_verified: true
-  username: discussion_author
+  username: subgroupuser
+  unsubscribe_token: subgroupuserunsubtoken12345
+  email_api_key: subgroupuseremailapikey12345
+  api_key: subgroupuserapikey1234567890
+  secret_token: subgroupusersecrettoken12345
+  created_at: <%= 30.days.ago %>
+  updated_at: <%= 1.day.ago %>
+
+member:
+  key: membruky
+  name: Member User
+  email: member@example.com
+  legal_accepted_at: <%= 30.days.ago %>
+  encrypted_password: $2a$12$K3E5h0VGlqmXL8HqWw7mIe3qP0XjQSfZ1jK4PqYX7Qq5N9YK6L4/K
+  time_zone: Pacific/Tarawa
+  email_verified: true
+  username: member
+  unsubscribe_token: memberuserunsubtoken1234567
+  email_api_key: memberuseremailapikey123456
+  api_key: memberuserapikey12345678901
+  secret_token: memberusersecrettoken123456
+  created_at: <%= 30.days.ago %>
+  updated_at: <%= 1.day.ago %>
+
+alien:
+  key: anothuky
+  name: Alien User
+  email: alien@example.com
+  legal_accepted_at: <%= 30.days.ago %>
+  encrypted_password: $2a$12$K3E5h0VGlqmXL8HqWw7mIe3qP0XjQSfZ1jK4PqYX7Qq5N9YK6L4/K
+  time_zone: Pacific/Tarawa
+  email_verified: true
+  username: alien
+  unsubscribe_token: anotheruserunsubtoken123456
+  email_api_key: anotheruseremailapikey12345
+  api_key: anotheruserapikey12345678901
+  secret_token: anotherusersecrettoken123456
   created_at: <%= 30.days.ago %>
   updated_at: <%= 1.day.ago %>

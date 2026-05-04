@@ -481,7 +481,6 @@ es:
     changes_all_threads_and_polls_in_group: Esto cambia la configuración para todos los hilos y encuestas del grupo.
     when_do_you_want_to_be_emailed: "¿Cuándo desea recibir correos electrónicos?"
     what_the_options_mean: Qué significan las opciones
-    quiet_explained: No recibirás correos electrónicos, incluso si alguien intenta notificarte. Podrías perderte anuncios o decisiones importantes a menos que tengas la costumbre de consultar Loomio con regularidad.
     when_would_you_like_to_be_emailed_discussion: "¿Cuándo le gustaría recibir un correo electrónico sobre esta discusión?"
     changes_all_discussions_and_polls_in_group: Esto cambia la configuración de todas las discusiones y encuestas del grupo.
     normal_explained: Cuando alguien ingresa su nombre en el campo "Notificar" de una discusión o una encuesta, o menciona al grupo {'@'}.
@@ -531,6 +530,7 @@ es:
     sign_in: 'Inicia sesión para unirte a la conversación '
     add_a_comment: Añadir un comentario
     share_your_thoughts: Comparte tus pensamientos…
+    share_on_poll: Haz una pregunta o comparte nueva información
   thread_nav:
     participants: Participantes
   sidebar:
@@ -716,7 +716,6 @@ es:
       discussion_edited: "%{actor} editó el contexto de la discusión: %{title}"
       discussion_closed: "%{actor} cerró la discusión: %{title}"
       new_discussion: "%{actor} inició una discusión: %{title}"
-      user_reminded: "%{actor} te recuerda que votes por: %{title}"
     without_title:
       unknown_sender: Revise el correo electrónico del remitente no reconocido
       group_announced: "%{actor} te invitó al grupo"
@@ -796,7 +795,6 @@ es:
       poll_announced: 'Voto: %{title}'
       discussion_edited: "%{actor} editó el contexto de la discusión: %{title}"
       discussion_closed: "%{actor} cerró la discusión: %{title}"
-      user_reminded: "%{actor} te recuerda que votes por: %{title}"
   discussion_fork_actions:
     move: Mover
     moved: Moviendo comentarios, esto podría llevar un tiempo
@@ -1359,8 +1357,6 @@ es:
     default_request_to_join_prompt: Gracias por su interés en nuestro grupo. Preséntese y explique por qué desea unirse.
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Actualice su suscripción</a> para crear un subgrupo'
     share_this_url_with_people_who_want_to_join: Comparte esta URL con personas que quieran unirse
-    allow_polls_without_discussions: Permitir encuestas sin discusión
-    allow_polls_without_discussions_help: Evitar que las personas inicien encuestas sin iniciar primero una discusión.
     aria_label: Formulario de grupo
     list_in_the_groups_directory: "¿Listado en el directorio de grupos?"
     list_in_directory_yes: Sí · mostrar este grupo en la página "Buscar un grupo"
@@ -1532,7 +1528,6 @@ es:
     delete_account_subtitle: Elimine completamente su cuenta y elimine su nombre de discusiones y decisiones pasadas.
     updated_on_sign_in: Proporcionado por su navegador y actualizado al iniciar sesión
     translate_content_automatically: Traducir automáticamente el contenido a mi idioma
-    bot_account_warning: Las cuentas de bots no serán invitadas a votar en encuestas ni a participar en debates.
   text_editor:
     x_of_y_characters: "%{x} / %{y} caractéres"
     select_text_to_link: Selecciona el texto del enlace e inténtalo de nuevo
@@ -2027,13 +2022,6 @@ es:
     closed: 'Cerrado '
     need_vote: Se necesita votar
     no_polls: No se encontraron encuestas
-    standalone_disabled_title: Las encuestas independientes están deshabilitadas
-    standalone_disabled_helptext: "<p>Este grupo requiere que las encuestas se inicien dentro de una discusión.</p><p> Los debates ayudan a las personas a comprender el contexto, hacer preguntas y compartir perspectivas antes de votar. Esto conduce a mejores decisiones.</p><p> Primero, comience una discusión y luego agregue una encuesta cuando esté listo para reunir votos.</p>"
-    start_discussion: Iniciar una discusión
-    standalone_warning_title: Considere iniciar una discusión primero
-    start_poll_anyway: Iniciar la encuesta de todos modos
-    start_discussion_instead: Iniciar una discusión en su lugar
-    standalone_warning_helptext: "<p>Las encuestas funcionan mejor cuando las personas pueden discutir el tema primero.</p><p> Sin discusión, los votantes no pueden hacer preguntas, plantear preocupaciones ni sugerir mejoras.</p><p> Para obtener la mejor experiencia, comience con una discusión, genere un entendimiento compartido y luego agregue una encuesta cuando esté listo para captar las posiciones de las personas.</p>"
   group_files_panel:
     no_files: No se encontraron archivos
     filename: Nombre de archivo
@@ -2064,7 +2052,6 @@ es:
     for_this_proposal_to_pass: 'Para que esta propuesta sea aprobada:'
     for_this_poll_type_to_be_valid: 'Para que este %{poll_type} sea válido:'
     voting_opens_at: Este %{poll_type} se abre para votación %{time}
-    unable_to_vote: No has sido invitado a votar en esta %{poll_type}
   poll_common_collapsed:
     by_who: por %{name}
   poll_common_calendar_invite:
@@ -2709,7 +2696,6 @@ es:
     create_poll_type: Crear %{poll_type}
     notify_voters_when_voting_opens: Notificar a los votantes cuando se abre la votación
     voters_notified_when_opens: Los votantes serán notificados cuando se abra la votación.
-    who_may_vote: "¿Quién puede votar en esta %{poll_type}?"
   poll_receipts_page:
     verify_participants: Verificar participantes
     see_votes_if_quorum_reached: Si la votación se ha cerrado y se ha alcanzado el quórum, podrás ver quién emitió su voto.
@@ -2769,7 +2755,6 @@ es:
     these_are_templates_admin_hint: Los administradores de grupo pueden editar, crear, reorganizar y ocultar/mostrar plantillas. Solo los administradores pueden ver las plantillas ocultas.
     show_hidden_templates: Mostrar plantillas ocultas
     show_fewer: Mostrar menos
-    start_a_new_discussion: Iniciar una nueva discusión
     start_discussion: Iniciar una discusión
     start_a_direct_discussion: Iniciar una discusión directa
     these_are_templates: Éstas son las plantillas de discusión en su grupo.
@@ -2787,7 +2772,6 @@ es:
   pin_discussion_modal:
     helptext: Las discusiones fijadas siempre aparecen en la lista de discusiones del grupo.
   delete_discussion_form:
-    body: "¿Estás seguro que deseas eliminar esta discusión?"
     discussion_deleted: Discusión eliminada
   move_discussion_form:
     title: Mover la discusión a otro grupo

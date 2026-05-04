@@ -1,24 +1,23 @@
 <script setup lang="js">
-import { ref, computed, watch, onMounted, onUnmounted } from 'vue';
+import { ref, computed, watch, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { useDisplay } from 'vuetify';
 import { useTheme } from 'vuetify';
-import { compact, filter } from 'lodash-es';
-import { subDays } from 'date-fns';
+import { compact } from 'lodash-es';
 
 import AppConfig from '@/shared/services/app_config';
 import Session from '@/shared/services/session';
 import Records from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
-import InboxService from '@/shared/services/inbox_service';
 import LmoUrlService from '@/shared/services/lmo_url_service';
 
 import SidebarSubgroups from '@/components/sidebar/subgroups';
 import SidebarSettings from '@/components/sidebar/settings';
 import SidebarHelp from '@/components/sidebar/help';
+import { useWatchRecords } from '@/composables/useWatchRecords';
 
-import { mdiPlus, mdiCog } from '@mdi/js';
+import { mdiCog } from '@mdi/js';
 
 const router = useRouter();
 const route = useRoute();
@@ -28,21 +27,16 @@ const theme = useTheme();
 const user = ref(Session.user());
 const page = ref('dashboardPage');
 const organization = ref(null);
-const discussions = ref([]);
-const discussionsGroup = ref(null);
 const open = ref(false);
 const group = ref(null);
-const version = ref(AppConfig.version);
-const tree = ref([]);
-const myGroups = ref([]);
-const otherGroups = ref([]);
 const organizations = ref([]);
-const unreadCounts = ref({});
+const unreadTopicCounts = ref({});
+const pollsToVoteOnCount = ref(0);
 const openGroups = ref([]);
 const openCounts = ref({});
-const unreadDirectThreadsCount = ref(0);
 const showSettings = ref(false);
-const watchedRecords = ref([]);
+
+const { watchRecords } = useWatchRecords();
 
 // Computed properties
 const canStartGroups = computed(() => AbilityService.canStartGroups());
@@ -55,73 +49,14 @@ const logoUrl = computed(() => AppConfig.theme.app_logo_src);
 const showTemplateGallery = computed(() => AppConfig.features.app.template_gallery);
 const showNewThreadButton = computed(() => AppConfig.features.app.new_thread_button);
 
-// Methods
-const unreadThreadCount = () => {
-  return InboxService.unreadCount();
-};
-
-const pollsToVoteOnCount = () => {
-  const groupIds = Session.user().groupIds();
-  const pollIds = Records.stances.find({myStance: true}).map(stance => stance.pollId);
-
-  let chain = Records.polls.collection.chain();
-  chain = chain.find({discardedAt: null, closingAt: {$ne: null}});
-  chain = chain.find({$or: [{groupId: {$in: groupIds}}, {id: {$in: pollIds}}, {authorId: Session.user().id}]});
-  chain = chain.find({$or: [{closedAt: null}, {closedAt: {$gt: subDays(new Date, 3)}}]});
-
-  const votable = p => p.iCanVote() && !p.iHaveVoted();
-  const votePolls = filter(chain.data(), votable);
-
-  return votePolls.length;
-};
-
 const urlFor = (model, action, params) => {
   return LmoUrlService.route({model, action, params});
-};
-
-const watchRecordsFunc = (options) => {
-  const { collections, query, key } = options;
-  const name = collections.concat(key || parseInt(Math.random() * 10000)).join('_');
-  watchedRecords.value.push(name);
-  Records.view({
-    name,
-    collections,
-    query
-  });
 };
 
 const openIfPinned = () => {
   open.value = !!Session.isSignedIn() &&
     display.lgAndUp.value &&
     (Session.user().experiences['sidebar'] === undefined || Session.user().experiences['sidebar'] === true);
-};
-
-const fetchData = () => {
-  Records.users.findOrFetchGroups().then(() => {
-    if (route.path === "/dashboard") {
-      if (Session.user().groups().length === 0) {
-        router.replace("/g/new");
-      }
-      if (Session.user().groups().length === 1) {
-        router.replace(`/g/${Session.user().groups()[0].key}`);
-      }
-    }
-  });
-  InboxService.load();
-};
-
-const updateGroups = () => {
-  organizations.value = compact(Session.user().parentGroups().concat(Session.user().orphanParents())) || [];
-  openCounts.value = {};
-  openGroups.value = [];
-  Session.user().groups().forEach(g => {
-    openCounts.value[g.id] = g.discussions().filter(discussion => discussion.isUnread()).length;
-  });
-  Session.user().parentGroups().forEach(g => {
-    if (organization.value && (organization.value.id === g.parentOrSelf().id)) {
-      openGroups.value[g.id] = true;
-    }
-  });
 };
 
 // Event listeners setup
@@ -141,41 +76,87 @@ EventBus.$on('currentComponent', data => {
   }
 });
 
-watchRecordsFunc({
-  collections: ['groups', 'memberships', 'discussions', 'polls', 'stances'],
-  query: () => {
-    unreadDirectThreadsCount.value = Records.discussions.collection.chain()
-      .find({groupId: null})
-      .where(thread => thread.isUnread())
-      .data().length;
-    updateGroups();
-  }
+const fetchData = () => {
+  Records.users.findOrFetchGroups().then(() => {
+    if (route.path === "/dashboard") {
+      if (Session.user().groups().length === 0) {
+        router.replace("/g/new");
+      }
+      if (Session.user().groups().length === 1) {
+        router.replace(`/g/${Session.user().groups()[0].key}`);
+      }
+    }
+  });
+  Records.topics.fetch({ params: { unread: 1 } })
+  Records.stances.fetch({ path: 'my_stances' })
+};
+
+
+const updateGroups = () => {
+  organizations.value = compact(Session.user().parentGroups().concat(Session.user().orphanParents())) || [];
+  openCounts.value = {};
+  openGroups.value = [];
+  Session.user().groups().forEach(g => {
+    openCounts.value[g.id] = g.topics().filter(topic => topic.isUnread()).length;
+  });
+  Session.user().parentGroups().forEach(g => {
+    if (organization.value && (organization.value.id === g.parentOrSelf().id)) {
+      openGroups.value[g.id] = true;
+    }
+  });
+};
+
+const updateUnreadCounts = () => {
+  unreadTopicCounts.value = {};
+  Records.topics.collection.chain().where(t => t.isUnread()).data().forEach((t) => {
+    unreadTopicCounts.value['total'] = (unreadTopicCounts.value['total'] || 0) + 1;
+    const groupId = t.groupId || 'direct'
+    unreadTopicCounts.value[groupId] = (unreadTopicCounts.value[groupId] || 0) + 1;
+  });
+}
+
+const updatePollsToVoteOnCount = () => {
+  pollsToVoteOnCount.value = Records.polls.collection.chain()
+    .find({discardedAt: null, closingAt: {$ne: null}, closedAt: null, myStanceId: {$ne: null}})
+    .data()
+    .filter(p => p.iCanVote() && !p.iHaveVoted()).length;
+}
+
+watchRecords({
+  collections: ['memberships'],
+  query: () => { updateGroups() }
 });
+
+watchRecords({
+  collections: ['topics'],
+  query: () => { updateUnreadCounts() }
+});
+
+watchRecords({
+  collections: ['stances'],
+  query: () => { updatePollsToVoteOnCount() }
+});
+
+let hasFetched = false;
+const fetchOnce = () => {
+  if (hasFetched || !Session.isSignedIn()) return;
+  hasFetched = true;
+  fetchData();
+};
 
 EventBus.$on('signedIn', u => {
   user.value = Session.user();
-  fetchData();
   openIfPinned();
 });
-
-if (Session.isSignedIn()) {
-  fetchData();
-}
 
 onMounted(() => {
   openIfPinned();
+  if (open.value) fetchOnce();
 });
 
-onUnmounted(() => {
-  watchedRecords.value.forEach(name => delete Records.views[name]);
-});
-
-// Watchers
-watch(organization, () => {
-  updateGroups();
-});
-
+watch(organization, () => { updateGroups() });
 watch(open, (val) => {
+  if (val) fetchOnce();
   EventBus.$emit("sidebarOpen", val);
 });
 </script>
@@ -199,15 +180,15 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
     v-list(nav density="compact" :lines="false")
       v-list-item.sidebar__list-item-button--recent(to="/dashboard" :title="$t('dashboard_page.dashboard')")
       v-list-item(to="/dashboard/polls_to_vote_on")
-        v-list-item-title(:class="{'text-medium-emphasis': pollsToVoteOnCount() === 0}") {{ $t('dashboard_page.polls_to_vote_on_count', {count: pollsToVoteOnCount()}) }}
+        v-list-item-title(:class="{'text-medium-emphasis': pollsToVoteOnCount === 0}") {{ $t('dashboard_page.polls_to_vote_on_count', {count: pollsToVoteOnCount}) }}
       v-list-item(to="/inbox")
-        v-list-item-title(:class="{'text-medium-emphasis': unreadThreadCount() === 0}") {{ $t('sidebar.unread_discussions_count', {count: unreadThreadCount()}) }}
+        v-list-item-title(:class="{'text-medium-emphasis': unreadTopicCounts['total'] === 0}") {{ $t('sidebar.unread_discussions_count', {count: unreadTopicCounts['total']}) }}
       v-list-item.sidebar__list-item-button--private(to="/dashboard/direct_discussions")
-        v-list-item-title
+        v-list-item-title(:class="{'text-medium-emphasis': !unreadTopicCounts['direct']}")
           span(v-t="'sidebar.direct_discussions'")
-          span(v-if="unreadDirectThreadsCount > 0")
-            space
-            span ({{unreadDirectThreadsCount}})
+          template(v-if="unreadTopicCounts['direct']")
+            | &nbsp;
+            span ({{unreadTopicCounts['direct']}})
       v-list-item(to="/tasks" :disabled="organizations.length == 0" :title="$t('tasks.tasks')")
 
     v-divider

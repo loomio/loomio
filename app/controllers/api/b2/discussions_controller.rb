@@ -5,8 +5,7 @@ class Api::B2::DiscussionsController < Api::B2::BaseController
   end
 
   def create
-    instantiate_resource
-    DiscussionService.create(actor: current_user, discussion: @discussion, params: params)
+    self.resource = DiscussionService.create(params: resource_params, actor: current_user)
     respond_with_resource
   end
 
@@ -16,7 +15,7 @@ class Api::B2::DiscussionsController < Api::B2::BaseController
   end
 
   def accessible_records
-    scope = Discussion.where(group_id: group.id)
+    scope = Discussion.joins(:topic).where(topics: { group_id: group.id })
     case params[:status]
     when 'closed' then scope.is_closed
     when 'all'    then scope.kept

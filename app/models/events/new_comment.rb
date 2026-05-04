@@ -12,7 +12,7 @@ class Events::NewComment < Event
 
     super comment,
           user: comment.author,
-          discussion: comment.discussion,
+          topic: comment.topic,
           pinned: comment.should_pin
   end
 

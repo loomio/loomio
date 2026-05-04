@@ -19,7 +19,7 @@ class MigrateUserWorker
     documents: :author_id,
     comments: :user_id,
     reactions: :user_id,
-    discussion_readers: :user_id,
+    topic_readers: :user_id,
     discussions: :author_id,
     events: :user_id,
     groups: :creator_id,
@@ -40,9 +40,9 @@ class MigrateUserWorker
                              ON source.group_id = memberships.group_id
                              AND source.user_id = #{source.id}").pluck(:"source.id"))
 
-    DiscussionReader.delete(destination.discussion_readers.
-                      joins("INNER JOIN discussion_readers source
-                             ON source.discussion_id = discussion_readers.discussion_id
+    TopicReader.delete(destination.topic_readers.
+                      joins("INNER JOIN topic_readers source
+                             ON source.topic_id = topic_readers.topic_id
                              AND source.user_id = #{source.id}").pluck(:"source.id"))
   end
 

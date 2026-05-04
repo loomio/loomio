@@ -37,7 +37,7 @@ export default {
 
   computed: {
     totalPages() {
-      return Math.ceil(parseFloat(this.loader.total) / parseFloat(this.per));
+      return Math.max(1, Math.ceil((this.loader.total || 0) / this.per));
     }
   },
 
@@ -128,7 +128,7 @@ export default {
           formatted-text.poll-common-stance-created__reason(:model="stance" field="reason")
           attachment-list(:attachments="stance.attachments")
     loading(v-if="loader.loading")
-    v-pagination(v-if="!totalPages != 1" v-model="page", :length="totalPages")
+    v-pagination(v-if="totalPages > 1" v-model="page", :length="totalPages")
 </template>
 
 <style lang="sass">

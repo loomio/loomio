@@ -1,67 +1,48 @@
-<script lang="js">
-import AppConfig          from '@/shared/services/app_config';
-import Records            from '@/shared/services/records';
-import Session            from '@/shared/services/session';
-import EventBus           from '@/shared/services/event_bus';
-import AbilityService     from '@/shared/services/ability_service';
-import RecordLoader       from '@/shared/services/record_loader';
-import FormatDate from '@/mixins/format_date';
-import WatchRecords from '@/mixins/watch_records';
-export default {
-  mixins: [FormatDate, WatchRecords],
-  data() {
-    return {
-      threads: [],
-      loader: {}
-    };
-  },
+<script setup lang="js">
+import { ref, onUnmounted, watch } from 'vue';
+import { useRoute } from 'vue-router';
 
-  created() {
-    return EventBus.$on('signedIn', this.init);
-  },
+import Records from '@/shared/services/records';
+import EventBus from '@/shared/services/event_bus';
+import RecordLoader from '@/shared/services/record_loader';
+import { useWatchRecords } from '@/composables/useWatchRecords';
 
-  beforeDestroy() {
-    return EventBus.$off('signedIn', this.init);
-  },
+const route = useRoute();
+const threads = ref([]);
+const loader = ref({});
 
-  mounted() {
-    EventBus.$emit('content-title-visible', false);
-    // EventBus.$emit('currentComponent', {
-    //   titleKey: this.titleKey,
-    //   page: 'threadsPage',
-    //   // search: {
-    //   //   placeholder: this.$t('navbar.search_all_threads')
-    //   // }
-    // });
-    this.init();
-  },
+const { watchRecords } = useWatchRecords();
 
-  watch: {
-    '$route.query': 'init'
-  },
+function init() {
+  loader.value = new RecordLoader({
+    collection: 'topics',
+    params: { direct: 1 }
+  });
+  loader.value.fetchRecords();
 
-  methods: {
-    init() {
-      this.loader = new RecordLoader({
-        collection: 'discussions',
-        path: 'direct',
-        params: {
-          exclude_types: 'poll group outcome'
-        }
-      });
-      this.loader.fetchRecords();
-
-      this.watchRecords({
-        key: 'dashboard',
-        collections: ['discussions'],
-        query: () => {
-          this.threads = Records.discussions.collection.chain().find({groupId: null}).simplesort('lastActivityAt', true).data();
-        }
-      });
+  watchRecords({
+    key: 'direct-threads',
+    collections: ['topics'],
+    query: () => {
+      threads.value = Records.topics.collection.chain()
+        .find({groupId: null, discardedAt: null})
+        .simplesort('lastActivityAt', true)
+        .data();
     }
-  }
-};
+  });
+}
 
+function titleVisible(visible) {
+  EventBus.$emit('content-title-visible', visible);
+}
+
+EventBus.$emit('content-title-visible', false);
+EventBus.$on('signedIn', init);
+onUnmounted(() => EventBus.$off('signedIn', init));
+
+watch(() => route.query, init);
+
+init();
 </script>
 
 <template lang="pug">
@@ -71,7 +52,6 @@ v-main
     v-layout.pb-3
       v-spacer
       v-btn.threads-page__new-thread-button(color="primary" to="/discussion_templates/" v-t="'discussions_panel.new_discussion'")
-      //- v-text-field(clearable solo hide-details :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_all_threads')" append-icon="mdi-magnify")
 
     v-card.mb-3.dashboard-page__loading(v-if='loader.loading && threads.length == 0' aria-hidden='true')
       v-list(lines="two")
@@ -84,7 +64,7 @@ v-main
         .threads-page__collections(v-else)
           v-card.mb-3.thread-preview-collection__container
             v-list.thread-previews(lines="two")
-              thread-preview(v-for="thread in threads", :key="thread.id", :thread="thread")
+              thread-preview(v-for="topic in threads", :key="topic.id", :topic="topic")
 
       .d-flex.align-center.justify-center(v-if='threads.length > 0')
         div

@@ -479,7 +479,6 @@ he:
     changes_all_threads_and_polls_in_group: זה משנה את ההגדרה עבור כל השרשורים והסקרים בקבוצה.
     when_do_you_want_to_be_emailed: מתי אתה רוצה לקבל אימייל?
     what_the_options_mean: מה המשמעות של האפשרויות
-    quiet_explained: לא תקבלו אימייל, גם אם מישהו ינסה להודיע לכם. ייתכן שתפספסו הודעות או החלטות חשובות אלא אם כן אתם נוהגים לבדוק את Loomio באופן קבוע.
     when_would_you_like_to_be_emailed_discussion: מתי תרצה לקבל אימייל בנוגע לדיון הזה?
     changes_all_discussions_and_polls_in_group: זה משנה את ההגדרה עבור כל הדיונים והסקרים בקבוצה.
     normal_explained: כאשר מישהו מזין את שמך בשדה "הודעה" של דיון או סקר, או כאשר הוא {'@'}מזכיר את הקבוצה.
@@ -527,6 +526,7 @@ he:
     sign_in: הרשם להצטרפות לדיון
     add_a_comment: הוסף תגובה
     share_your_thoughts: שתפו את מחשבותיכם…
+    share_on_poll: שאל שאלה או שתף מידע חדש
   thread_nav:
     participants: משתתפים
   sidebar:
@@ -712,7 +712,6 @@ he:
       discussion_edited: "%{actor} ערך את הקשר הדיון: %{title}"
       discussion_closed: "%{actor} סגר את הדיון: %{title}"
       new_discussion: "%{actor} פתח דיון: %{title}"
-      user_reminded: "%{actor} מזכיר לך להצביע על: %{title}"
     without_title:
       unknown_sender: אנא עיין באימייל משולח לא מזוהה
       group_announced: "%{actor} הזמין אותך לקבוצה"
@@ -792,7 +791,6 @@ he:
       poll_announced: 'הצבעה: %{title}'
       discussion_edited: "%{actor} ערך את הקשר הדיון: %{title}"
       discussion_closed: "%{actor} סגר את הדיון: %{title}"
-      user_reminded: "%{actor} מזכיר לך להצביע על: %{title}"
   discussion_fork_actions:
     move: העבר
     moved: הערות מרגשות, זה עשוי לקחת רגע
@@ -1346,8 +1344,6 @@ he:
     default_request_to_join_prompt: תודה על ההתעניינות בקבוצה שלנו. אנא הצג את עצמך והסבר מדוע אתה מבקש להצטרף.
     upgrade_for_subgroups: 'אנא <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">שדרג את המנוי שלך</a> כדי ליצור תת-קבוצה'
     share_this_url_with_people_who_want_to_join: שתף כתובת URL זו עם אנשים שרוצים להצטרף
-    allow_polls_without_discussions: אפשר סקרים ללא דיון
-    allow_polls_without_discussions_help: מנע מאנשים להתחיל סקרים מבלי להתחיל דיון קודם.
     aria_label: טופס קבוצה
     list_in_the_groups_directory: רשימה בספריית הקבוצות?
     list_in_directory_yes: כן · הצג קבוצה זו בדף "מצא קבוצה"
@@ -1519,7 +1515,6 @@ he:
     delete_account_subtitle: מחק לחלוטין את חשבונך והסר את שמך מדיונים והחלטות בעבר.
     updated_on_sign_in: מסופק על ידי הדפדפן שלך ומעודכן בעת הכניסה
     translate_content_automatically: תרגם תוכן לשפה שלי באופן אוטומטי
-    bot_account_warning: חשבונות בוט לא יוזמנו להצביע בסקרים או להשתתף בדיונים
   text_editor:
     x_of_y_characters: "%{x} / %{y} תווים"
     select_text_to_link: בחר טקסט לקישור ונסה שוב
@@ -2010,13 +2005,6 @@ he:
     closed: סגור
     need_vote: צריך הצבעה
     no_polls: לא נמצאו סקרים
-    standalone_disabled_title: סקרים עצמאיים מושבתים
-    standalone_disabled_helptext: <p style=";text-align:right;direction:rtl">קבוצה זו דורשת פתיחת סקרים בתוך דיון.</p><p style=";text-align:right;direction:rtl"> דיונים עוזרים לאנשים להבין את ההקשר, לשאול שאלות ולשתף נקודות מבט לפני ההצבעה. זה מוביל להחלטות טובות יותר.</p><p style=";text-align:right;direction:rtl"> התחל דיון קודם, ולאחר מכן הוסף סקר כשתהיה מוכן לאסוף קולות.</p>
-    start_discussion: התחל דיון
-    standalone_warning_title: שקול להתחיל דיון קודם כל
-    start_poll_anyway: התחל את הסקר בכל זאת
-    start_discussion_instead: תתחיל דיון במקום
-    standalone_warning_helptext: <p style=";text-align:right;direction:rtl">סקרים עובדים בצורה הטובה ביותר כאשר אנשים יכולים לדון בנושא קודם.</p><p style=";text-align:right;direction:rtl"> ללא דיון, מצביעים אינם יכולים לשאול שאלות, להעלות חששות או להציע שיפורים.</p><p style=";text-align:right;direction:rtl"> לקבלת החוויה הטובה ביותר, התחילו בדיון, בנו הבנה משותפת, ולאחר מכן הוסיפו סקר כשתהיו מוכנים ללכוד את עמדותיהם של אנשים.</p>
   group_files_panel:
     no_files: לא נמצאו קבצים
     filename: שם קובץ
@@ -2047,7 +2035,6 @@ he:
     for_this_proposal_to_pass: 'כדי שההצעה הזו תעבור:'
     for_this_poll_type_to_be_valid: 'כדי ש-%{poll_type} הזה יהיה תקף:'
     voting_opens_at: "%{poll_type} הזה נפתח להצבעה %{time}"
-    unable_to_vote: לא הוזמנת להצביע ב-%{poll_type} הזה
   poll_common_collapsed:
     by_who: על פי %{name}
   poll_common_calendar_invite:
@@ -2690,7 +2677,6 @@ he:
     create_poll_type: צור %{poll_type}
     notify_voters_when_voting_opens: הודעה לבוחרים עם פתיחת ההצבעה
     voters_notified_when_opens: המצביעים יקבלו הודעה עם פתיחת ההצבעה
-    who_may_vote: מי רשאי להצביע ב%{poll_type} הזה?
   poll_receipts_page:
     verify_participants: אימות משתתפים
     see_votes_if_quorum_reached: אם ההצבעה נסגרה והושג המניין החוקי, תראו מי הצביע.
@@ -2750,7 +2736,6 @@ he:
     these_are_templates_admin_hint: מנהלי קבוצות יכולים לערוך תבניות, ליצור תבניות חדשות, לסדר מחדש ולהסתיר/לבטל הסתרה של תבניות. רק מנהלים יכולים לראות את התבניות המוסתרות.
     show_hidden_templates: הצג תבניות מוסתרות
     show_fewer: הצג פחות
-    start_a_new_discussion: התחל דיון חדש
     start_discussion: התחל דיון
     start_a_direct_discussion: התחל דיון ישיר
     these_are_templates: אלו הן תבניות הדיון בקבוצה שלכם.
@@ -2768,7 +2753,6 @@ he:
   pin_discussion_modal:
     helptext: דיונים מוצמדים תמיד מופיעים ברשימת הדיונים של הקבוצה.
   delete_discussion_form:
-    body: האם אתה בטוח שאתה רוצה למחוק את הדיון הזה?
     discussion_deleted: הדיון נמחק
   move_discussion_form:
     title: העברת דיון לקבוצה אחרת

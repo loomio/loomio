@@ -2,7 +2,7 @@ require 'test_helper'
 
 class LoginTokensControllerTest < ActionController::TestCase
   setup do
-    @user = users(:normal_user)
+    @user = users(:user)
     @token = LoginToken.create!(user: @user)
   end
 

@@ -2,8 +2,8 @@ require 'test_helper'
 
 class RecordClonerTest < ActiveSupport::TestCase
   setup do
-    @user = users(:normal_user)
-    @actor = users(:another_user)
+    @user = users(:user)
+    @actor = users(:alien)
 
     # Reset invitation throttle from accumulated test runs
     CACHE_REDIS_POOL.with do |r|
@@ -29,27 +29,25 @@ class RecordClonerTest < ActiveSupport::TestCase
     @group.save!
     @group.add_admin!(@user)
 
-    @discussion = create_discussion(group: @group, author: @user)
+    @discussion = DiscussionService.create(params: { title: "Cloner Test", group_id: @group.id }, actor: @user)
 
     # Create a comment in the discussion
-    comment = Comment.new(body: "Test comment", discussion: @discussion, author: @user)
+    comment = Comment.new(body: "Test comment", parent: @discussion, author: @user)
     CommentService.create(comment: comment, actor: @user)
 
-    # Create poll with stance and outcome
-    @poll = Poll.new(
+    # Create poll in the discussion's topic
+    @poll = PollService.create(params: {
       title: 'Test Poll',
-      author: @user,
       poll_type: 'proposal',
       closing_at: 3.days.from_now,
-      poll_option_names: ['Agree', 'Disagree'],
-      discussion: @discussion
-    )
-    PollService.create(poll: @poll, actor: @user)
-    @poll.reload
+      poll_option_names: ['agree', 'disagree'],
+      group_id: @group.id,
+      topic_id: @discussion.topic_id
+    }, actor: @user)
 
     # Cast a stance - use only choice= setter (not stance_choices.build)
     # to avoid exceeding dots_per_person limit on proposal polls
-    stance = @poll.stances.find_by(participant_id: @user.id, latest: true)
+    stance = @poll.stances.undecided.find_by(participant_id: @user.id, latest: true)
     if stance
       stance.choice = 'Agree'
       stance.reason = "good idea"
@@ -66,7 +64,7 @@ class RecordClonerTest < ActiveSupport::TestCase
     OutcomeService.create(outcome: @outcome, actor: @user)
 
     # Repair event chain for discussion
-    EventService.repair_discussion(@discussion.id)
+    TopicService.repair_thread(@discussion.topic.id)
   end
 
   # -- Clone Group --
@@ -96,10 +94,18 @@ class RecordClonerTest < ActiveSupport::TestCase
     assert_equal 'private_only', clone.discussion_privacy_options
     assert_equal 'approval', clone.membership_granted_upon
 
-    # Check discussions and polls are cloned
+    # Check discussions and their polls are cloned
     assert_equal @group.discussions.kept.count, clone.discussions.count
     assert clone.discussions.count >= 1
-    assert clone.polls.count >= 1
+    assert clone.discussions.first.polls.count >= 1
+
+    # Each cloned discussion has its own topic pointing to the clone group
+    clone.discussions.each do |disc|
+      assert disc.topic.persisted?
+      assert_equal clone.id, disc.topic.group_id, "Discussion topic should belong to clone group"
+      assert_equal 'Discussion', disc.topic.topicable_type
+      assert_equal disc.id, disc.topic.topicable_id
+    end
   end
 
   # -- Clone Discussion --
@@ -115,11 +121,28 @@ class RecordClonerTest < ActiveSupport::TestCase
     assert_equal @discussion.comments.count, clone.comments.count
     assert_equal @discussion.polls.count, clone.polls.count
 
-    # Clone drops poll_closed_by_user/poll_expired/poll_reopened events,
-    # so items count may differ from original
+    # Clone drops poll_closed_by_user/poll_expired/poll_reopened events
     drop_kinds = %w[poll_closed_by_user poll_expired poll_reopened]
-    expected_items = @discussion.items.reject { |i| drop_kinds.include?(i.kind) }.count
-    assert_equal expected_items, clone.items.count
+    expected_items = @discussion.topic.items.reject { |i| drop_kinds.include?(i.kind) }.count
+    assert_equal expected_items, clone.topic.items.count
+
+    # Topic is a new record, not the original
+    assert_not_equal @discussion.topic_id, clone.topic_id
+    assert clone.topic.persisted?
+
+    # Topic fields are cloned from the original
+    assert_equal @discussion.topic.max_depth, clone.topic.max_depth
+    assert_equal @discussion.topic.newest_first, clone.topic.newest_first
+    assert_equal @discussion.topic.private, clone.topic.private
+
+    # Topic points back to the cloned discussion
+    assert_equal 'Discussion', clone.topic.topicable_type
+    assert_equal clone.id, clone.topic.topicable_id
+
+    # In-thread polls share the discussion's topic
+    clone.polls.each do |poll|
+      assert_equal clone.topic_id, poll.topic_id, "In-thread poll should share discussion topic"
+    end
   end
 
   # -- Clone Poll --
@@ -138,6 +161,13 @@ class RecordClonerTest < ActiveSupport::TestCase
     # Check poll options are cloned
     assert_equal @poll.poll_options.count, clone.poll_options.count
     assert_equal @poll.poll_options.first.name, clone.poll_options.first.name
+
+    # Standalone clone gets its own topic
+    assert clone.topic.persisted?
+    assert_not_equal @poll.topic_id, clone.topic_id
+    assert_equal 'Poll', clone.topic.topicable_type
+    assert_equal clone.id, clone.topic.topicable_id
+    assert_equal @poll.topic.max_depth, clone.topic.max_depth
   end
 
   test "clones poll stances and outcomes" do

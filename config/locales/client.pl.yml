@@ -481,7 +481,6 @@ pl:
     changes_all_threads_and_polls_in_group: Zmienia to ustawienia dla wszystkich wątków i ankiet w grupie.
     when_do_you_want_to_be_emailed: Kiedy chcesz otrzymywać e-maile?
     what_the_options_mean: Co oznaczają opcje
-    quiet_explained: Nie otrzymasz wiadomości e-mail, nawet gdy ktoś będzie próbował Cię powiadomić. Możesz przegapić ważne ogłoszenia lub decyzje, jeśli nie będziesz regularnie sprawdzać Loomio.
     when_would_you_like_to_be_emailed_discussion: Kiedy chcesz otrzymać wiadomość e-mail na temat tej dyskusji?
     changes_all_discussions_and_polls_in_group: Zmienia to ustawienia wszystkich dyskusji i ankiet w grupie.
     normal_explained: Gdy ktoś wpisze Twoje imię i nazwisko w polu „Powiadom” w dyskusji lub ankiecie, albo {'@'}wspomni o grupie.
@@ -531,6 +530,7 @@ pl:
     sign_in: Zaloguj się, aby dołączyć do rozmowy
     add_a_comment: Dodaj komentarz
     share_your_thoughts: Podziel się swoimi przemyśleniami…
+    share_on_poll: Zadaj pytanie lub udostępnij nowe informacje
   thread_nav:
     participants: Uczestnicy
   sidebar:
@@ -716,7 +716,6 @@ pl:
       discussion_edited: "%{actor} edytował kontekst dyskusji: %{title}"
       discussion_closed: "%{actor} zamknął dyskusję: %{title}"
       new_discussion: "%{actor} rozpoczął dyskusję: %{title}"
-      user_reminded: "%{actor} przypomina o głosowaniu na: %{title}"
     without_title:
       unknown_sender: Sprawdź wiadomość e-mail od nierozpoznanego nadawcy
       group_announced: "%{actor} zaprosił Cię do grupy"
@@ -796,7 +795,6 @@ pl:
       poll_announced: 'Głosuj: %{title}'
       discussion_edited: "%{actor} edytował kontekst dyskusji: %{title}"
       discussion_closed: "%{actor} zamknął dyskusję: %{title}"
-      user_reminded: "%{actor} przypomina o głosowaniu na: %{title}"
   discussion_fork_actions:
     move: Przenieś
     moved: Przenoszenie komentarzy, to może zająć chwilę
@@ -1350,8 +1348,6 @@ pl:
     default_request_to_join_prompt: Dziękujemy za zainteresowanie naszą grupą. Przedstaw się i wyjaśnij, dlaczego chcesz dołączyć.
     upgrade_for_subgroups: 'Aby utworzyć podgrupę, <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">zaktualizuj swoją subskrypcję</a>'
     share_this_url_with_people_who_want_to_join: Udostępnij ten adres URL osobom, które chcą dołączyć
-    allow_polls_without_discussions: Zezwalaj na ankiety bez dyskusji
-    allow_polls_without_discussions_help: Zapobiegaj rozpoczynaniu ankiet bez wcześniejszego rozpoczęcia dyskusji.
     aria_label: Formularz grupowy
     list_in_the_groups_directory: Umieścić w katalogu grup?
     list_in_directory_yes: Tak · pokaż tę grupę na stronie „Znajdź grupę”
@@ -1523,7 +1519,6 @@ pl:
     delete_account_subtitle: Całkowicie usuń swoje konto i usuń swoje imię i nazwisko z poprzednich dyskusji i decyzji.
     updated_on_sign_in: Dostarczane przez przeglądarkę i aktualizowane po zalogowaniu
     translate_content_automatically: Automatycznie tłumacz treść na mój język
-    bot_account_warning: Konta botów nie będą zapraszane do głosowania w ankietach ani do udziału w dyskusjach
   text_editor:
     x_of_y_characters: "%{x} / %{y} znaków"
     select_text_to_link: Wybierz tekst do połączenia i spróbuj ponownie
@@ -2016,13 +2011,6 @@ pl:
     closed: Zamknięte
     need_vote: Potrzebujesz głosu
     no_polls: Nie znaleziono ankiet
-    standalone_disabled_title: Ankiety samodzielne są wyłączone
-    standalone_disabled_helptext: "<p>W przypadku tej grupy ankiety należy rozpoczynać w ramach dyskusji.</p><p> Dyskusje pomagają ludziom zrozumieć kontekst, zadawać pytania i dzielić się swoimi perspektywami przed głosowaniem. To prowadzi do podejmowania lepszych decyzji.</p><p> Najpierw rozpocznij dyskusję, a gdy będziesz gotowy zbierać głosy, dodaj ankietę.</p>"
-    start_discussion: Rozpocznij dyskusję
-    standalone_warning_title: Rozważ rozpoczęcie dyskusji na początek
-    start_poll_anyway: Rozpocznij ankietę mimo wszystko
-    start_discussion_instead: Zamiast tego rozpocznij dyskusję
-    standalone_warning_helptext: "<p>Ankiety działają najlepiej, gdy ludzie mogą najpierw przedyskutować dany temat.</p><p> Bez dyskusji wyborcy nie mogą zadawać pytań, zgłaszać obaw ani proponować ulepszeń.</p><p> Aby uzyskać najlepsze rezultaty, zacznij od dyskusji, zbuduj wspólne zrozumienie, a następnie dodaj ankietę, gdy będziesz gotowy poznać opinie uczestników.</p>"
   group_files_panel:
     no_files: Nie znaleziono plików
     filename: 'Nazwa pliku '
@@ -2055,7 +2043,6 @@ pl:
     for_this_proposal_to_pass: 'Aby wniosek ten został przyjęty:'
     for_this_poll_type_to_be_valid: 'Aby ten %{poll_type} był ważny:'
     voting_opens_at: Ta ankieta %{poll_type} jest otwarta do głosowania %{time}
-    unable_to_vote: Nie zaproszono Cię do głosowania w tej ankiecie %{poll_type}
   poll_common_collapsed:
     by_who: przez %{name}
   poll_common_calendar_invite:
@@ -2700,7 +2687,6 @@ pl:
     create_poll_type: Utwórz %{poll_type}
     notify_voters_when_voting_opens: Powiadom wyborców o otwarciu głosowania
     voters_notified_when_opens: Wyborcy zostaną powiadomieni o otwarciu głosowania
-    who_may_vote: Kto może głosować w tej ankiecie %{poll_type}?
   poll_receipts_page:
     verify_participants: Zweryfikuj uczestników
     see_votes_if_quorum_reached: Jeśli głosowanie zostało zamknięte i osiągnięto kworum, zobaczysz, kto oddał głos.
@@ -2760,7 +2746,6 @@ pl:
     these_are_templates_admin_hint: Administratorzy grup mogą edytować szablony, tworzyć nowe szablony, zmieniać ich kolejność oraz ukrywać/pokazywać. Tylko administratorzy widzą ukryte szablony.
     show_hidden_templates: Pokaż ukryte szablony
     show_fewer: Pokaż mniej
-    start_a_new_discussion: Rozpocznij nową dyskusję
     start_discussion: Rozpocznij dyskusję
     start_a_direct_discussion: Rozpocznij bezpośrednią dyskusję
     these_are_templates: Oto szablony dyskusji w Twojej grupie.
@@ -2778,7 +2763,6 @@ pl:
   pin_discussion_modal:
     helptext: Przypięte dyskusje zawsze pojawiają się na liście dyskusji grupy.
   delete_discussion_form:
-    body: Czy na pewno chcesz usunąć tę dyskusję?
     discussion_deleted: Dyskusja usunięta
   move_discussion_form:
     title: Przenieś dyskusję do innej grupy

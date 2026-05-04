@@ -1,52 +1,53 @@
 class MoveCommentsWorker
   include Sidekiq::Worker
-  def perform(event_ids, source_discussion_id, target_discussion_id)
-    source_discussion = Discussion.find(source_discussion_id)
-    target_discussion = Discussion.find(target_discussion_id)
+  def perform(event_ids, source_topic_id, target_topic_id)
+    source_topic = Topic.find(source_topic_id)
+    target_topic = Topic.find(target_topic_id)
 
-    # sanitize event_ids (so they cannot be from another discussion), and ensure we have any children
-    event_ids = Event.where(id: event_ids, discussion_id: source_discussion.id).pluck(:id)
-    event_ids = all_event_ids(event_ids, source_discussion.id)
+    # sanitize event_ids (so they cannot be from another topic), and ensure we have any children
+    event_ids = Event.where(id: event_ids, topic_id: source_topic_id).pluck(:id)
+    event_ids = all_event_ids(event_ids, source_topic_id)
 
     all_events = Event.where(id: event_ids)
     all_comments = Comment.where(id: Event.where(id: event_ids, eventable_type: 'Comment').pluck(:eventable_id))
     all_polls = Poll.where(id: Event.where(id: event_ids, eventable_type: 'Poll').pluck(:eventable_id))
 
-    # update eventable.discussion_id
-    all_comments.update_all(discussion_id: target_discussion.id)
-    all_polls.update_all(discussion_id: target_discussion.id)
+    # update polls to point to target topic
+    all_polls.update_all(topic_id: target_topic_id)
 
-    # update comment parents
+    # reparent comments whose parent is not also being moved
+    target_topicable = target_topic.topicable
+    moved_eventable_ids = all_events.pluck(:eventable_type, :eventable_id).map { |t, id| [t, id] }
     all_comments.each do |c|
-      if c.parent.discussion_id != target_discussion_id
-        c.update_columns(parent_id: target_discussion_id, parent_type: 'Discussion')
+      unless moved_eventable_ids.include?([c.parent_type, c.parent_id])
+        c.update_columns(parent_id: target_topicable.id, parent_type: target_topicable.class.name)
       end
     end
 
-    all_events.update(discussion_id: target_discussion_id, sequence_id: nil)
+    all_events.update_all(topic_id: target_topic_id, sequence_id: nil)
 
-    EventService.repair_discussion(target_discussion.id)
-    EventService.repair_discussion(source_discussion.id)
+    TopicService.repair_thread(target_topic_id)
+    TopicService.repair_thread(source_topic_id)
 
-    SearchService.reindex_by_discussion_id(target_discussion.id)
-    SearchService.reindex_by_discussion_id(source_discussion.id)
+    SearchService.reindex_by_discussion_id(target_topicable.id) if target_topicable.is_a?(Discussion)
+    SearchService.reindex_by_discussion_id(source_topic.topicable_id) if source_topic.topicable_type == 'Discussion'
 
-    ActiveStorage::Attachment.where(record: all_events.map(&:eventable).compact).update_all(group_id: target_discussion.group_id)
+    ActiveStorage::Attachment.where(record: all_events.map(&:eventable).compact).update_all(group_id: target_topic.group_id)
 
-    MessageChannelService.publish_models(target_discussion.items, group_id: target_discussion.group.id)
+    MessageChannelService.publish_models(target_topic.items, group_id: target_topic.group_id)
   end
 
-  def all_event_ids(root_ids, discussion_id)
-    all_ids = find_child_ids(root_ids, discussion_id)
+  def all_event_ids(root_ids, topic_id)
+    all_ids = find_child_ids(root_ids, topic_id)
     if all_ids.length == root_ids.length
       all_ids
     else
-      all_event_ids(all_ids, discussion_id)
+      all_event_ids(all_ids, topic_id)
     end
   end
 
-  def find_child_ids(ids, discussion_id)
-    ids += Event.where(discussion_id: discussion_id, parent_id: ids).pluck(:id)
+  def find_child_ids(ids, topic_id)
+    ids += Event.where(topic_id: topic_id, parent_id: ids).pluck(:id)
     ids.uniq.sort
   end
 end

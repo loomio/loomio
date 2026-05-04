@@ -7,12 +7,12 @@ module PendingActionsHelper
       consume_pending_identity(user)
       consume_pending_group(user)
       consume_pending_membership(user)
-      consume_pending_discussion_reader(user)
+      consume_pending_topic_reader(user)
       consume_pending_stance(user)
       session.delete(:pending_login_token)
       session.delete(:pending_identity_id)
       session.delete(:pending_group_token)
-      session.delete(:pending_discussion_reader_token)
+      session.delete(:pending_topic_reader_token)
       session.delete(:pending_stance_token)
     end
   end
@@ -47,9 +47,9 @@ module PendingActionsHelper
     MembershipService.redeem_if_pending!(group.membership_for(current_user))
   end
 
-  def consume_pending_discussion_reader(user)
-    if reader = pending_discussion_reader
-      DiscussionReaderService.redeem(discussion_reader: reader, actor: user)
+  def consume_pending_topic_reader(user)
+    if reader = pending_topic_reader
+      TopicReaderService.redeem(topic_reader: reader, actor: user)
     end
   end
 
@@ -66,7 +66,7 @@ module PendingActionsHelper
   end
 
   def pending_invitation
-    pending_membership || pending_discussion_reader || pending_stance
+    pending_membership || pending_topic_reader || pending_stance
   end
 
   def pending_membership_token
@@ -77,12 +77,12 @@ module PendingActionsHelper
     Membership.pending.find_by(token: pending_membership_token) if pending_membership_token
   end
 
-  def pending_discussion_reader_token
-    params[:discussion_reader_token] || session[:pending_discussion_reader_token]
+  def pending_topic_reader_token
+    params[:topic_reader_token] || session[:pending_topic_reader_token]
   end
 
-  def pending_discussion_reader
-    DiscussionReader.redeemable.find_by(token: pending_discussion_reader_token) if pending_discussion_reader_token
+  def pending_topic_reader
+    TopicReader.redeemable.find_by(token: pending_topic_reader_token) if pending_topic_reader_token
   end
 
   def pending_stance_token
@@ -106,7 +106,7 @@ module PendingActionsHelper
     Pending::IdentitySerializer.new(pending_identity, root: false).as_json ||
     Pending::MembershipSerializer.new(pending_membership, root: false).as_json ||
     Pending::StanceSerializer.new(pending_stance, root: false).as_json ||
-    Pending::DiscussionReaderSerializer.new(pending_discussion_reader, root: false).as_json ||
+    Pending::TopicReaderSerializer.new(pending_topic_reader, root: false).as_json ||
     Pending::GroupSerializer.new(pending_group, root: false).as_json ||
     Pending::UserSerializer.new(pending_user, root: false).as_json || {}
   end

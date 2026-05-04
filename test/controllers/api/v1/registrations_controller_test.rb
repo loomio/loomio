@@ -2,7 +2,7 @@ require 'test_helper'
 
 class Api::V1::RegistrationsControllerTest < ActionController::TestCase
   setup do
-    @user = users(:normal_user)
+    @user = users(:user)
     request.env['devise.mapping'] = Devise.mappings[:user]
     @original_turnstile_secret = ENV['TURNSTILE_SECRET_KEY']
   end
@@ -35,7 +35,7 @@ class Api::V1::RegistrationsControllerTest < ActionController::TestCase
     # stub proves the email-verified bypass takes the pending_membership path.
     pending_membership = Membership.create!(
       user: User.create(email: "bypass@example.com", email_verified: false),
-      group: groups(:test_group),
+      group: groups(:group),
       accepted_at: nil
     )
     session[:pending_membership_token] = pending_membership.token
@@ -106,7 +106,7 @@ class Api::V1::RegistrationsControllerTest < ActionController::TestCase
   test "signup via membership" do
     pending_membership = Membership.create!(
       user: User.create(email: "jon@snow.com", email_verified: false),
-      group: groups(:test_group),
+      group: groups(:group),
       accepted_at: nil
     )
     session[:pending_membership_token] = pending_membership.token
@@ -133,7 +133,7 @@ class Api::V1::RegistrationsControllerTest < ActionController::TestCase
   test "signup via membership with different email address" do
     pending_membership = Membership.create!(
       user: User.create(email: "jon@snow.com", email_verified: false),
-      group: groups(:test_group),
+      group: groups(:group),
       accepted_at: nil
     )
     session[:pending_membership_token] = pending_membership.token
@@ -161,7 +161,7 @@ class Api::V1::RegistrationsControllerTest < ActionController::TestCase
     other_user = User.create(email: "other@example.com", email_verified: true)
     pending_membership = Membership.create!(
       user: other_user,
-      group: groups(:test_group),
+      group: groups(:group),
       accepted_at: nil
     )
     session[:pending_membership_token] = pending_membership.token

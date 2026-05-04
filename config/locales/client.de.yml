@@ -487,7 +487,6 @@ de:
     changes_all_threads_and_polls_in_group: Dies ändert die Einstellungen für alle Threads und Umfragen in der Gruppe.
     when_do_you_want_to_be_emailed: Wann möchten Sie per E-Mail benachrichtigt werden?
     what_the_options_mean: Was die Optionen bedeuten
-    quiet_explained: Sie erhalten keine E-Mail-Benachrichtigung, auch nicht, wenn Sie benachrichtigt werden möchten. Wichtige Ankündigungen oder Entscheidungen könnten Ihnen entgehen, wenn Sie Loomio nicht regelmäßig besuchen.
     when_would_you_like_to_be_emailed_discussion: Wann möchten Sie über diese Diskussion per E-Mail informiert werden?
     changes_all_discussions_and_polls_in_group: Dies ändert die Einstellungen für alle Diskussionen und Umfragen in der Gruppe.
     normal_explained: Wenn jemand Ihren Namen im Feld "Benachrichtigen" einer Diskussion oder einer Umfrage eingibt oder die Gruppe mit einem @-Zeichen erwähnt.
@@ -537,6 +536,7 @@ de:
     sign_in: Melde dich an, um an der Diskussion teilzunehmen
     add_a_comment: Einen Kommentar hinzufügen
     share_your_thoughts: Teilen Sie Ihre Gedanken mit…
+    share_on_poll: Stellen Sie eine Frage oder teilen Sie neue Informationen.
   thread_nav:
     participants: Teilnehmer
   sidebar:
@@ -722,7 +722,6 @@ de:
       discussion_edited: "%{actor} hat den Diskussionskontext bearbeitet: %{title}"
       discussion_closed: "%{actor} hat die Diskussion beendet: %{title}"
       new_discussion: "%{actor} hat eine Diskussion gestartet: %{title}"
-      user_reminded: "%{actor} erinnert Sie daran, über Folgendes abzustimmen: %{title}"
     without_title:
       unknown_sender: Bitte überprüfen Sie die E-Mail von einem unbekannten Absender
       group_announced: "%{actor} hat Sie zu einer Gruppe eingeladen"
@@ -802,7 +801,6 @@ de:
       poll_announced: 'Abstimmung: %{title}'
       discussion_edited: "%{actor} hat den Diskussionskontext bearbeitet: %{title}"
       discussion_closed: "%{actor} hat die Diskussion beendet: %{title}"
-      user_reminded: "%{actor} erinnert Sie daran, über Folgendes abzustimmen: %{title}"
   discussion_fork_actions:
     move: Verschieben
     moved: Kommentare bewegen, dies kann einen Moment dauern
@@ -1358,8 +1356,6 @@ de:
     default_request_to_join_prompt: Vielen Dank für Ihr Interesse an unserer Gruppe. Bitte stellen Sie sich vor und erklären Sie, warum Sie Mitglied werden möchten.
     upgrade_for_subgroups: 'Bitte <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">aktualisieren Sie Ihr Abonnement</a> , um eine Untergruppe zu erstellen'
     share_this_url_with_people_who_want_to_join: Teilen Sie diese URL mit Leuten, die beitreten möchten
-    allow_polls_without_discussions: Umfragen ohne Diskussion zulassen
-    allow_polls_without_discussions_help: Verhindert, dass Personen Umfragen starten, ohne vorher eine Diskussion zu beginnen.
     aria_label: Gruppenbildung
     list_in_the_groups_directory: Eintrag im Gruppenverzeichnis?
     list_in_directory_yes: Ja · Diese Gruppe auf der Seite „Gruppe finden“ anzeigen
@@ -1531,7 +1527,6 @@ de:
     delete_account_subtitle: Löschen Sie Ihr Konto vollständig und entfernen Sie Ihren Namen aus früheren Diskussionen und Entscheidungen.
     updated_on_sign_in: Wird von Ihrem Browser bereitgestellt und aktualisiert, wenn Sie sich anmelden
     translate_content_automatically: Inhalte automatisch in meine Sprache übersetzen
-    bot_account_warning: Bot-Konten werden nicht zur Teilnahme an Umfragen oder Diskussionen eingeladen.
   text_editor:
     x_of_y_characters: "%{x} / %{y} Zeichen"
     select_text_to_link: Wählen Sie den zu verlinkenden Text aus und versuchen Sie es erneut
@@ -2024,13 +2019,6 @@ de:
     closed: Geschlossen
     need_vote: Brauchen Sie eine Abstimmung
     no_polls: 'Keine Umfragen gefunden '
-    standalone_disabled_title: Eigenständige Umfragen sind deaktiviert
-    standalone_disabled_helptext: "<p>Diese Gruppe verlangt, dass Umfragen innerhalb einer Diskussion gestartet werden.</p><p> Diskussionen helfen den Menschen, den Kontext zu verstehen, Fragen zu stellen und ihre Perspektiven vor der Abstimmung auszutauschen. Dies führt zu besseren Entscheidungen.</p><p> Eröffnen Sie zunächst eine Diskussion und fügen Sie dann eine Umfrage hinzu, wenn Sie bereit sind, Stimmen zu sammeln.</p>"
-    start_discussion: Starten Sie eine Diskussion
-    standalone_warning_title: Überlegen Sie, ob Sie zunächst eine Diskussion beginnen möchten.
-    start_poll_anyway: Umfrage trotzdem starten
-    start_discussion_instead: Beginnen Sie stattdessen eine Diskussion.
-    standalone_warning_helptext: "<p>Umfragen funktionieren am besten, wenn die Menschen das Thema vorher diskutieren können.</p><p> Ohne Diskussion können die Wähler keine Fragen stellen, Bedenken äußern oder Verbesserungen vorschlagen.</p><p> Für ein optimales Ergebnis beginnen Sie mit einer Diskussion, schaffen Sie ein gemeinsames Verständnis und fügen Sie erst dann eine Umfrage hinzu, wenn Sie bereit sind, die Meinungen der Teilnehmer zu erfassen.</p>"
   group_files_panel:
     no_files: 'Keine Dateien gefunden '
     filename: Dateiname
@@ -2063,7 +2051,6 @@ de:
     for_this_proposal_to_pass: 'Damit dieser Vorschlag angenommen wird:'
     for_this_poll_type_to_be_valid: 'Damit dieser %{poll_type} gültig ist:'
     voting_opens_at: Diese %{poll_type} öffnet zur Abstimmung %{time}
-    unable_to_vote: Du wurdest nicht eingeladen, über diesen %{poll_type} abzustimmen.
   poll_common_collapsed:
     by_who: von %{name}
   poll_common_calendar_invite:
@@ -2708,7 +2695,6 @@ de:
     create_poll_type: Erstelle %{poll_type}
     notify_voters_when_voting_opens: Benachrichtigen Sie die Wähler, wenn die Wahllokale geöffnet sind
     voters_notified_when_opens: Die Wähler werden benachrichtigt, sobald die Wahllokale geöffnet sind.
-    who_may_vote: Wer darf bei dieser %{poll_type} abstimmen?
   poll_receipts_page:
     verify_participants: Teilnehmer überprüfen
     see_votes_if_quorum_reached: Wenn die Abstimmung beendet ist und das Quorum erreicht ist, sehen Sie, wer seine Stimme abgegeben hat.
@@ -2768,7 +2754,6 @@ de:
     these_are_templates_admin_hint: Gruppenadministratoren können Vorlagen bearbeiten, neue Vorlagen erstellen, Vorlagen neu anordnen und ein- bzw. ausblenden. Nur Administratoren können die ausgeblendeten Vorlagen sehen.
     show_hidden_templates: Ausgeblendete Vorlagen anzeigen
     show_fewer: Weniger anzeigen
-    start_a_new_discussion: Neue Diskussion starten
     start_discussion: Starten Sie eine Diskussion
     start_a_direct_discussion: Starten Sie eine direkte Diskussion
     these_are_templates: Dies sind die Diskussionsvorlagen in Ihrer Gruppe.
@@ -2786,7 +2771,6 @@ de:
   pin_discussion_modal:
     helptext: Angeheftete Diskussionen erscheinen immer in der Diskussionsliste der Gruppe.
   delete_discussion_form:
-    body: Möchten Sie diese Diskussion wirklich löschen?
     discussion_deleted: Diskussion gelöscht
   move_discussion_form:
     title: Verlegen Sie die Diskussion in eine andere Gruppe.

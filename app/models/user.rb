@@ -1,7 +1,6 @@
 class User < ApplicationRecord
   include CustomCounterCache::Model
   include ReadableUnguessableUrls
-  include MessageChannel
   include HasExperiences
   include HasAvatar
   include SelfReferencing
@@ -28,7 +27,7 @@ class User < ApplicationRecord
   attr_accessor :token
   attr_accessor :membership_token
   attr_accessor :group_token
-  attr_accessor :discussion_reader_token
+  attr_accessor :topic_reader_token
   attr_accessor :stance_token
 
   attr_accessor :legal_accepted
@@ -90,10 +89,14 @@ class User < ApplicationRecord
   has_many :participated_polls, through: :stances, source: :poll
   has_many :group_polls, through: :groups, source: :polls
 
-  has_many :discussion_readers, dependent: :destroy
-  has_many :guest_discussion_readers, -> { DiscussionReader.active.guests }, class_name: 'DiscussionReader', dependent: :destroy
-  has_many :guest_discussions, through: :guest_discussion_readers, source: :discussion
-  has_many :guest_stances, -> { Stance.latest.guests }, class_name: 'Stance', dependent: :destroy, foreign_key: :participant_id
+  has_many :topic_readers, dependent: :destroy
+  has_many :guest_topic_readers, -> { TopicReader.active.guests }, class_name: 'TopicReader', dependent: :destroy
+
+  def guest_topic_ids
+    guest_topic_readers.pluck(:topic_id)
+  end
+
+  has_many :guest_stances, -> { Stance.latest.invited }, class_name: 'Stance', dependent: :destroy, foreign_key: :participant_id
   has_many :guest_polls, through: :guest_stances, source: :poll
   has_many :notifications, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -122,7 +125,13 @@ class User < ApplicationRecord
   scope :coordinators, -> { joins(:memberships).where('memberships.admin = ?', true).group('users.id') }
   scope :verified, -> { where(email_verified: true) }
   scope :unverified, -> { where(email_verified: false) }
-  scope :search_for, lambda { |q|
+  scope :mention_search, lambda { |q|
+    where("users.name ilike :first OR
+           users.name ilike :other OR
+           users.username ilike :first",
+          first: "#{q}%", other: "% #{q}%")
+  }
+  scope :invitable_search, lambda { |q|
     where("users.name ilike :first OR
            users.name ilike :other OR
            users.username ilike :first OR
@@ -132,33 +141,6 @@ class User < ApplicationRecord
   scope :visible_by, ->(user) { distinct.active.verified.joins(:memberships).where("memberships.group_id": user.group_ids).where.not(id: user.id) }
   scope :humans, -> { where(bot: false) }
   scope :bots, -> { where(bot: true) }
-
-  scope :mention_search, lambda { |model, query|
-    return none unless model.present?
-
-    ids = []
-    if model.is_a?(User)
-      return active.search_for(query).where(id: User.visible_by(model).pluck(:id))
-    end
-
-    if model.group_id
-      ids += Membership.active.where(group_id: model.group_id).pluck(:user_id) if model.group_id
-    end
-
-    if model.discussion_id
-      ids += DiscussionReader.active.guests.where(discussion_id: model.discussion_id).pluck(:user_id)
-    end
-
-    if model.poll_id
-      ids += Stance.latest.guests.where(poll_id: model.poll_id).pluck(:participant_id)
-    end
-
-    if model.respond_to?(:poll_ids) and model.poll_ids.any?
-      ids += Stance.latest.guests.where(poll_id: model.poll_ids).pluck(:participant_id)
-    end
-
-    active.search_for(query).where(id: ids)
-  }
 
   scope :email_when_proposal_closing_soon, -> { active.where(email_when_proposal_closing_soon: true) }
 

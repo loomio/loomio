@@ -2,26 +2,26 @@ require 'test_helper'
 
 class Api::V1::ProfileControllerTest < ActionController::TestCase
   setup do
-    @user = users(:normal_user)
-    @another_user = users(:another_user)
-    @group = groups(:test_group)
+    @user = users(:user)
+    @alien = users(:alien)
+    @group = groups(:group)
   end
 
   test "show returns the user json" do
     sign_in @user
-    get :show, params: { id: @another_user.username }, format: :json
+    get :show, params: { id: @alien.username }, format: :json
     json = JSON.parse(response.body)
     assert_includes json.keys, 'users'
     assert_includes json['users'][0].keys, 'id'
     assert_includes json['users'][0].keys, 'name'
-    assert_equal @another_user.name, json['users'][0]['name']
+    assert_equal @alien.name, json['users'][0]['name']
   end
 
   test "show can fetch a user by username" do
     sign_in @user
-    get :show, params: { id: @another_user.username }, format: :json
+    get :show, params: { id: @alien.username }, format: :json
     json = JSON.parse(response.body)
-    assert_equal @another_user.username, json['users'][0]['username']
+    assert_equal @alien.username, json['users'][0]['username']
   end
 
   test "me returns the current user data" do
@@ -58,8 +58,8 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
   test "contactable allows access for group members" do
     sign_in @user
     @group.add_member!(@user) unless @group.members.include?(@user)
-    @group.add_member!(@another_user) unless @group.members.include?(@another_user)
-    get :contactable, params: { user_id: @another_user.id }
+    @group.add_member!(@alien) unless @group.members.include?(@alien)
+    get :contactable, params: { user_id: @alien.id }
     assert_response :success
   end
 

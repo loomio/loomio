@@ -268,7 +268,7 @@ const fetchLinkPreviews = (urls) => {
     fetchedUrls.value = uniq(fetchedUrls.value.concat(urls));
     Records.remote.post('link_previews', {
       urls,
-      discussion_id: props.model.discussionId
+      topic_id: props.model.topicId || props.model.topic()?.id
     }).then(data => {
       props.model.linkPreviews = uniqBy(
         props.model.linkPreviews.concat(data.previews),

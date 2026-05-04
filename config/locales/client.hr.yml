@@ -479,7 +479,6 @@ hr:
     changes_all_threads_and_polls_in_group: Ovo mijenja postavke za sve teme i ankete u grupi.
     when_do_you_want_to_be_emailed: Kada želite primiti e-poštu?
     what_the_options_mean: Što znače opcije
-    quiet_explained: Nećete primati e-poštu, čak ni kada vas netko pokuša obavijestiti. Možda ćete propustiti važne obavijesti ili odluke osim ako nemate naviku redovito provjeravati Loomio.
     when_would_you_like_to_be_emailed_discussion: Kada želite primiti e-poruku o ovoj raspravi?
     changes_all_discussions_and_polls_in_group: Ovo mijenja postavku za sve rasprave i ankete u grupi.
     normal_explained: Kada netko unese vaše ime u polje "Obavijesti" u raspravi ili anketi ili {'@'}spomene grupu.
@@ -527,6 +526,7 @@ hr:
     sign_in: Prijavite se da biste se pridružili razgovoru
     add_a_comment: Dodaj komentar
     share_your_thoughts: Podijelite svoje misli…
+    share_on_poll: Postavite pitanje ili podijelite nove informacije
   thread_nav:
     participants: Sudionici
   sidebar:
@@ -712,7 +712,6 @@ hr:
       discussion_edited: "%{actor} je uredio/la kontekst rasprave: %{title}"
       discussion_closed: "%{actor} je zatvorio raspravu: %{title}"
       new_discussion: "%{actor} je započeo raspravu: %{title}"
-      user_reminded: "%{actor} vas podsjeća da glasate za: %{title}"
     without_title:
       unknown_sender: Pregledajte e-poštu neprepoznatog pošiljatelja
       group_announced: "%{actor} vas je pozvao u grupu"
@@ -792,7 +791,6 @@ hr:
       poll_announced: 'Glas: %{title}'
       discussion_edited: "%{actor} je uredio/la kontekst rasprave: %{title}"
       discussion_closed: "%{actor} je zatvorio raspravu: %{title}"
-      user_reminded: "%{actor} vas podsjeća da glasate za: %{title}"
   discussion_fork_actions:
     move: Potez
     moved: Dirljivi komentari, ovo bi moglo potrajati
@@ -1342,8 +1340,6 @@ hr:
     default_request_to_join_prompt: Hvala na interesu za našu grupu. Predstavite se i objasnite zašto tražite da se pridružite.
     upgrade_for_subgroups: 'Molimo vas <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">da nadogradite svoju pretplatu</a> kako biste stvorili podgrupu'
     share_this_url_with_people_who_want_to_join: Podijelite ovaj URL s ljudima koji se žele pridružiti
-    allow_polls_without_discussions: Dopusti ankete bez rasprave
-    allow_polls_without_discussions_help: Spriječite ljude da pokreću ankete bez prethodnog pokretanja rasprave.
     aria_label: Grupni obrazac
     list_in_the_groups_directory: Popis u direktoriju grupa?
     list_in_directory_yes: Da · prikaži ovu grupu na stranici "pronađi grupu"
@@ -1507,7 +1503,6 @@ hr:
     delete_account_subtitle: Potpuno izbrišite svoj račun i uklonite svoje ime iz prošlih rasprava i odluka.
     updated_on_sign_in: Dostavlja vaš preglednik i ažurira se kada se prijavite
     translate_content_automatically: Automatski prevedi sadržaj na moj jezik
-    bot_account_warning: Bot računi neće biti pozvani da glasaju na anketama ili sudjeluju u raspravama
   text_editor:
     x_of_y_characters: "%{x} / %{y} znakova"
     select_text_to_link: Odaberite tekst za povezivanje i pokušajte ponovno
@@ -1991,13 +1986,6 @@ hr:
     closed: Zatvoreno
     need_vote: Treba glasati
     no_polls: Nisu pronađene ankete
-    standalone_disabled_title: Samostalne ankete su onemogućene
-    standalone_disabled_helptext: "<p>Ova grupa zahtijeva da se ankete pokrenu unutar rasprave.</p><p> Rasprave pomažu ljudima da razumiju kontekst, postavljaju pitanja i dijele gledišta prije glasanja. To vodi do boljih odluka.</p><p> Prvo započnite raspravu, a zatim dodajte anketu kada budete spremni za prikupljanje glasova.</p>"
-    start_discussion: Započni raspravu
-    standalone_warning_title: Razmislite o tome da prvo započnete raspravu
-    start_poll_anyway: Svejedno pokreni anketu
-    start_discussion_instead: Umjesto toga, započnite raspravu
-    standalone_warning_helptext: "<p>Ankete najbolje funkcioniraju kada ljudi prvo mogu raspravljati o temi.</p><p> Bez rasprave, birači ne mogu postavljati pitanja, izražavati zabrinutost ili predlagati poboljšanja.</p><p> Za najbolje iskustvo, započnite s raspravom, izgradite zajedničko razumijevanje, a zatim dodajte anketu kada budete spremni zabilježiti stavove ljudi.</p>"
   group_files_panel:
     no_files: Nije pronađena nijedna datoteka
     filename: Naziv datoteke
@@ -2028,7 +2016,6 @@ hr:
     for_this_proposal_to_pass: 'Da bi ovaj prijedlog prošao:'
     for_this_poll_type_to_be_valid: 'Da bi ovaj %{poll_type} bio valjan:'
     voting_opens_at: Ovaj %{poll_type} otvara se za glasanje %{time}
-    unable_to_vote: Niste pozvani glasati na ovom %{poll_type}
   poll_common_collapsed:
     by_who: "%{name}"
   poll_common_calendar_invite:
@@ -2671,7 +2658,6 @@ hr:
     create_poll_type: Kreiraj %{poll_type}
     notify_voters_when_voting_opens: Obavijestite birače kada je otvoreno glasanje
     voters_notified_when_opens: Birači će biti obaviješteni kada se otvori glasanje
-    who_may_vote: Tko može glasati na ovom %{poll_type}?
   poll_receipts_page:
     verify_participants: Potvrdite sudionike
     see_votes_if_quorum_reached: Ako je glasanje zatvoreno i postignut je kvorum, vidjet ćete tko je glasao.
@@ -2731,7 +2717,6 @@ hr:
     these_are_templates_admin_hint: Administratori grupe mogu uređivati predloške, izrađivati nove predloške, preuređivati i skrivati/otkrivati predloške. Samo administratori mogu vidjeti skrivene predloške.
     show_hidden_templates: Prikaži skrivene predloške
     show_fewer: Prikaži manje
-    start_a_new_discussion: Započni novu raspravu
     start_discussion: Započni raspravu
     start_a_direct_discussion: Započnite izravnu raspravu
     these_are_templates: Ovo su predlošci za raspravu u vašoj grupi.
@@ -2749,7 +2734,6 @@ hr:
   pin_discussion_modal:
     helptext: Prikvačene rasprave uvijek se prikazuju na popisu rasprava grupe.
   delete_discussion_form:
-    body: Jeste li sigurni da želite izbrisati ovu raspravu?
     discussion_deleted: Rasprava je izbrisana
   move_discussion_form:
     title: Premjesti raspravu u drugu grupu

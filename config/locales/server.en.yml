@@ -379,7 +379,7 @@ en:
     manage:
       all: Not authorized to %{action} %{subject}.
     add_guests:
-      all: You must upgrade your Loomio subscription to add guests to your %{subject}. Alternatively, you can invite them to be members of your group.
+      all: You must upgrade your Loomio subscription to add guests. Alternatively, you can invite them to be members of your group.
   errors:
     clear_cache: Loading problem detected. Hold shift and press reload, or clear your browser cache.
     '400':
@@ -497,6 +497,7 @@ en:
     notification_reason:
       group_subscribed: You received this because you are subscribed to all activity in the group.
       discussion_subscribed: You received this because you are subscribed to the discussion.
+      thread_subscribed: You received this because you are subscribed to the thread.
       poll_subscribed: You received this because you are subscribed to the poll.
       group_mentioned: You received this because the group was @mentioned.
       user_mentioned: You received this because you were @mentioned.
@@ -663,6 +664,11 @@ en:
         If you do not want your group to be deleted, please reply to this email.
         If you're sure you want to delete the group, you do not need to do anything.
         Thank you.
+    trial_expired:
+      subject: Your Loomio group will be deleted due to inactivity.
+      body: |
+        Your Loomio group "%{group}" has been inactive and will be deleted in 2 weeks.
+        If you do not want your group to be deleted, please reply to this email.
   forward_mailer:
     bounce:
       subject: Your message to Loomio was not delivered

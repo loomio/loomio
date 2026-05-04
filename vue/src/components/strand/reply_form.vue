@@ -35,7 +35,6 @@ export default {
           this.newComment = Records.comments.build({
             bodyFormat: Session.defaultFormat(),
             body,
-            discussionId: eventable.discussion().id,
             authorId: Session.user().id,
             parentId: eventable.id,
             parentType: startCase(eventable.constructor.singular)

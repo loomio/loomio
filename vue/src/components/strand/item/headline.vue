@@ -21,17 +21,13 @@ export default {
     datetime() { return this.dateTime || this.eventable.castAt || this.eventable.createdAt; },
     headline() {
       const actor = this.event.actor();
-      if ((this.event.kind === 'new_comment') && this.collapsed && (this.event.descendantCount > 0)) {
-        return this.$t('reactions_display.name_and_count_more', {name: actor.nameWithTitle(this.eventable.group()), count: this.event.descendantCount});
-      } else {
-        return this.$t(eventHeadline(this.event, true ), { // useNesting
-          author:   actor.nameWithTitle(this.eventable.group()),
-          username: actor.username,
-          key:      this.event.model().key,
-          title:    eventTitle(this.event),
-          polltype: this.event.isPollEvent() ? this.$t(eventPollType(this.event)).toLowerCase() : null
-        });
-      }
+      return this.$t(eventHeadline(this.event, true ), { // useNesting
+        author:   actor.nameWithTitle(this.eventable.group()),
+        username: actor.username,
+        key:      this.event.model().key,
+        title:    eventTitle(this.event),
+        polltype: this.event.isPollEvent() ? this.$t(eventPollType(this.event)).toLowerCase() : null
+      });
     },
 
     link() {

@@ -2,8 +2,8 @@ require 'test_helper'
 
 class GroupTest < ActiveSupport::TestCase
   setup do
-    @user = users(:normal_user)
-    @group = groups(:test_group)
+    @user = users(:user)
+    @group = groups(:group)
   end
 
   # Memberships
@@ -84,9 +84,9 @@ class GroupTest < ActiveSupport::TestCase
   test "does not count a discarded discussion" do
     group = Group.create!(name: "Count Disc #{SecureRandom.hex(4)}", group_privacy: 'secret')
     group.add_admin!(@user)
-    discussion = create_discussion(group: group, author: @user)
+    discussion = DiscussionService.create(params: { group_id: group.id, title: "Active Discussion" }, actor: @user)
 
-    discarded = create_discussion(group: group, author: @user, title: "Discarded Discussion")
+    discarded = DiscussionService.create(params: { group_id: group.id, title: "Discarded Discussion" }, actor: @user)
     discarded.update!(discarded_at: Time.current)
 
     group.reload
@@ -116,7 +116,7 @@ class GroupTest < ActiveSupport::TestCase
   end
 
   test "returns the id for groups with no subgroups" do
-    group = groups(:another_group)
+    group = groups(:alien_group)
     assert_equal [group.id], group.id_and_subgroup_ids
   end
 

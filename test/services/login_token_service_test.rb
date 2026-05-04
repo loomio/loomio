@@ -2,7 +2,7 @@ require 'test_helper'
 
 class LoginTokenServiceTest < ActiveSupport::TestCase
   setup do
-    @user = users(:normal_user)
+    @user = users(:user)
     @uri = URI::parse "http://#{ENV['CANONICAL_HOST']}/explore"
     @bad_uri = URI::parse "http://badhost.biz/explore"
   end

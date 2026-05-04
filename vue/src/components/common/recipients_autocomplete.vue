@@ -257,7 +257,7 @@ export default {
               ret.push({
                 id: 'discussion_group',
                 name: this.$t('announcement.audiences.discussion_group'),
-                size: this.model.discussion().membersCount,
+                size: this.model.membersCount,
                 icon: 'mdi-forum'
               });
               break;
@@ -290,7 +290,7 @@ export default {
 
         if (!this.excludedAudiences.includes('group')) {
           const groups = (() => { switch (this.model.constructor.singular) {
-            case 'poll': case 'discussion': case 'outcome':
+            case 'poll': case 'discussion': case 'outcome': case 'topic':
               return compact([
                 this.model.group(),
                 (this.model.group().parentId && this.model.group().parent()),

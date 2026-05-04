@@ -482,7 +482,6 @@ zh_TW:
     changes_all_threads_and_polls_in_group: 這將更改群組中所有貼文和投票的設定。
     when_do_you_want_to_be_emailed: 您希望何時收到郵件？
     what_the_options_mean: 這些選項的含義
-    quiet_explained: 即使有人嘗試通知您，您也不會收到電子郵件。如果您不養成定期查看 Loomio 的習慣，可能會錯過重要公告或決定。
     when_would_you_like_to_be_emailed_discussion: 您希望何時收到關於此次討論的電子郵件？
     changes_all_discussions_and_polls_in_group: 這將更改群組中所有討論和投票的設定。
     normal_explained: 當有人在討論或投票的「通知」欄位中輸入你的名字，或他們使用「@」提及該群組。
@@ -532,6 +531,7 @@ zh_TW:
     sign_in: 登入以加入對話
     add_a_comment: 新增評論
     share_your_thoughts: 分享你的想法…
+    share_on_poll: 提出問題或分享新訊息
   thread_nav:
     participants: 參與者
   sidebar:
@@ -717,7 +717,6 @@ zh_TW:
       discussion_edited: "%{actor} 編輯了討論內容：%{title}"
       discussion_closed: "%{actor} 關閉了討論：%{title}"
       new_discussion: "%{actor} 發起了一場討論：%{title}"
-      user_reminded: 演員 %{actor} 提醒您投票：%{title}
     without_title:
       unknown_sender: 請檢查來自無法識別的寄件者的電子郵件
       group_announced: "%{actor} 邀請您加入群組"
@@ -797,7 +796,6 @@ zh_TW:
       poll_announced: 投票：%{title}
       discussion_edited: "%{actor} 編輯了討論內容：%{title}"
       discussion_closed: "%{actor} 關閉了討論：%{title}"
-      user_reminded: 演員 %{actor} 提醒您投票：%{title}
   discussion_fork_actions:
     move: 移動
     moved: 正在移動留言，這可能需要一點時間
@@ -1353,8 +1351,6 @@ zh_TW:
     upgrade_for_subgroups: '請<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">升級您的訂閱</a>以建立子群組'
     group_handle_placeholder: 您的群組網址與電子郵件：%{host}/%{handle}、%{handle}{'@'}%{host}
     share_this_url_with_people_who_want_to_join: 與想要加入的人分享此 URL
-    allow_polls_without_discussions: 允許無討論投票
-    allow_polls_without_discussions_help: 防止人們在未先開始討論的情況下發起投票。
     aria_label: 小組形式
     list_in_the_groups_directory: 是否已列入群組目錄？
     list_in_directory_yes: 是的 · 在「尋找群組」頁面上顯示此群組
@@ -1526,7 +1522,6 @@ zh_TW:
     delete_account_subtitle: 徹底刪除您的帳戶，並從過去的討論和決定中刪除您的名字。
     updated_on_sign_in: 由您的瀏覽器提供並在您登入時更新
     translate_content_automatically: 自動將內容翻譯成我的語言
-    bot_account_warning: 機器人帳號將不會被邀請參與投票或討論。
   text_editor:
     x_of_y_characters: "%{x} / %{y} 個字元"
     select_text_to_link: 選取要連結的文字並再試一次
@@ -2019,13 +2014,6 @@ zh_TW:
     closed: 封閉
     need_vote: 需要投票
     no_polls: 找不到投票
-    standalone_disabled_title: 獨立投票功能已停用
-    standalone_disabled_helptext: "<p>本群組要求投票必須在討論中發起。</p><p>討論有助於人們在投票前了解背景、提出問題並分享觀點，從而做出更明智的決策。</p><p>先發起討論，準備收集投票後再加入投票。</p>"
-    start_discussion: 發起討論
-    standalone_warning_title: 不妨先發起討論。
-    start_poll_anyway: 無論如何，開始投票
-    start_discussion_instead: 不如發起一場討論。
-    standalone_warning_helptext: "<p>民意調查在人們能夠先討論相關話題的情況下效果最佳。</p><p>如果沒有討論，選民就無法提出問題、表達擔憂或提出改進建議。</p><p>為了獲得最佳體驗，先進行討論，建立共識，然後在準備好了解人們的立場時再添加投票。</p>"
   group_files_panel:
     no_files: 找不到檔案
     filename: 檔案名稱
@@ -2056,7 +2044,6 @@ zh_TW:
     for_this_proposal_to_pass: 為了使該提案獲得通過：
     for_this_poll_type_to_be_valid: 為了使此 %{poll_type} 有效：
     voting_opens_at: 此 %{poll_type} 投票將於 %{time} 開放。
-    unable_to_vote: 您未被邀請參與此項 %{poll_type} 的投票。
   poll_common_collapsed:
     by_who: 由 %{name}
   poll_common_calendar_invite:
@@ -2701,7 +2688,6 @@ zh_TW:
     create_poll_type: 建立 %{poll_type}
     notify_voters_when_voting_opens: 投票開始時通知選民
     voters_notified_when_opens: 投票開始時，選民將會收到通知。
-    who_may_vote: 誰可以參與此次 %{poll_type} 投票？
   poll_receipts_page:
     verify_participants: 驗證參與者
     see_votes_if_quorum_reached: 如果投票已結束且達到法定人數，您將看到誰投了票。
@@ -2761,7 +2747,6 @@ zh_TW:
     these_are_templates_admin_hint: 群組管理員可以編輯範本、建立新範本、重新排列範本以及隱藏/顯示範本。只有管理員才能看到隱藏的模板。
     show_hidden_templates: 顯示隱藏模板
     show_fewer: 顯示更少
-    start_a_new_discussion: 發起新的討論
     start_discussion: 發起討論
     start_a_direct_discussion: 發起直接討論
     these_are_templates: 這些是你們小組的討論範本。
@@ -2779,7 +2764,6 @@ zh_TW:
   pin_discussion_modal:
     helptext: 置頂討論始終顯示在群組的討論清單中。
   delete_discussion_form:
-    body: 您確定要刪除此討論嗎？
     discussion_deleted: 討論已刪除
   move_discussion_form:
     title: 將討論轉移到另一個群組

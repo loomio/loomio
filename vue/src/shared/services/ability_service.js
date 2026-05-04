@@ -25,19 +25,24 @@ export default new class AbilityService {
     intersection(Session.user().groupIds(), user.groupIds()).length;
   }
 
-  canAddComment(thread) {
-    return !thread.closedAt &&
-    thread.membersInclude(Session.user());
+  canAddComment(topic) {
+    return !topic.closedAt && topic.allowComments && topic.membersInclude(Session.user());
+  }
+
+  canAddReaction(topic) {
+    return !topic.closedAt && topic.allowReactions && topic.membersInclude(Session.user());
   }
 
   canRespondToComment(comment) {
-    return !comment.discussion().closedAt &&
+    const topic = comment.topic();
+    return topic &&
+    !topic.closedAt &&
     !comment.discardedAt &&
-    comment.discussion().membersInclude(Session.user());
+    topic.membersInclude(Session.user());
   }
 
   canEdit(model) {
-    return (model.isA('discussion') && this.canEditThread(model)) ||
+    return (model.isA('discussion') && this.canEditDiscussion(model)) ||
     (model.isA('comment') && this.canEditComment(model)) ||
     (model.isA('poll') && this.canEditPoll(model)) ||
     (model.isA('stance') && this.canEditStance(model));
@@ -47,60 +52,32 @@ export default new class AbilityService {
     return Session.user() === stance.author();
   }
 
-  canEditThread(thread) {
-    return thread.adminsInclude(Session.user()) ||
-    (!thread.closedAt && thread.membersInclude(Session.user()) &&
-     (thread.group().membersCanEditDiscussions || (thread.author() === Session.user())));
-  }
-
-  canCloseThread(thread) {
-    return !thread.closedAt && (
-      thread.adminsInclude(Session.user()) ||
-      (thread.membersInclude(Session.user()) && (thread.group().membersCanEditDiscussions || (thread.author() === Session.user())))
-    );
-  }
-
-  canReopenThread(thread) {
-    return thread.closedAt && (
-      thread.adminsInclude(Session.user()) ||
-      (thread.membersInclude(Session.user()) && (thread.group().membersCanEditDiscussions || (thread.author() === Session.user())))
-    );
-  }
-
-  canPinThread(thread) {
-    return !thread.closedAt && !thread.pinnedAt && this.canEditThread(thread);
-  }
-
-  canUnpinThread(thread) {
-    return thread.pinnedAt && this.canEditThread(thread);
-  }
-
-  canExportThread(thread) {
-    return !thread.discardedAt && thread.membersInclude(Session.user());
+  canEditDiscussion(discussion) {
+    const topic = discussion.topic();
+    return topic.adminsInclude(Session.user()) ||
+    (!topic.closedAt && topic.group().membersCanEditDiscussions && topic.membersInclude(Session.user()));
   }
 
   canPinEvent(event) {
+    const topic = event.topic();
     return (event.depth === 1) &&
     !event.model().discardedAt &&
     !event.pinned &&
-    !event.discussion().closedAt &&
-    this.canEditThread(event.discussion());
+    topic && !topic.closedAt &&
+    topic.adminsInclude(Session.user());
   }
 
   canUnpinEvent(event) {
-    return !event.discussion().closedAt &&
-    event.pinned && this.canEditThread(event.discussion());
+    const topic = event.topic();
+    return topic && !topic.closedAt &&
+    event.pinned && topic.adminsInclude(Session.user());
   }
 
-  canMoveThread(thread) {
-    return thread.adminsInclude(Session.user()) || (
-      thread.membersInclude(Session.user()) &&
-      (thread.group().membersCanEditDiscussions || (thread.author() === Session.user()))
+  canMoveTopic(topic) {
+    return topic.adminsInclude(Session.user()) || (
+      topic.membersInclude(Session.user()) &&
+      topic.group().membersCanEditDiscussions
     )
-  }
-
-  canDeleteThread(thread) {
-    return thread.adminsInclude(Session.user()) || (thread.author() === Session.user());
   }
 
   canChangeGroupVolume(group) {
@@ -108,14 +85,12 @@ export default new class AbilityService {
   }
 
   canAdminister(model) {
-    switch (model.constructor.singular) {
-      case 'group':                     return model.adminsInclude(Session.user());
-      case 'discussion': case 'comment':     return model.discussion().adminsInclude(Session.user());
-      case 'outcome': case 'stance': case 'poll': return model.poll().adminsInclude(Session.user());
+    if (model.constructor.singular == 'group') {
+      return model.adminsInclude(Session.user());
+    } else {
+      return model.topic().adminsInclude(Session.user());
     }
   }
-
-  canChangeVolume(discussion) { return discussion.membersInclude(Session.user()); }
 
   canStartThread(group) {
     return group.adminsInclude(Session.user()) ||
@@ -140,6 +115,8 @@ export default new class AbilityService {
   canAnnounce(model) {
     if ((typeof model.isA === 'function' ? model.isA('poll') : undefined)) {
       return this.canAnnouncePoll(model);
+    } else if ((typeof model.isA === 'function' ? model.isA('topic') : undefined)) {
+      return this.canAnnounceTopic(model);
     } else {
       return this.canAnnounceDiscussion(model);
     }
@@ -148,6 +125,8 @@ export default new class AbilityService {
   canAddGuests(model) {
     if ((typeof model.isA === 'function' ? model.isA('poll') : undefined)) {
       return this.canAddGuestsPoll(model);
+    } else if ((typeof model.isA === 'function' ? model.isA('topic') : undefined)) {
+      return this.canAddGuestsTopic(model);
     } else {
       return this.canAddGuestsDiscussion(model);
     }
@@ -187,6 +166,25 @@ export default new class AbilityService {
     }
   }
 
+  canAnnounceTopic(topic) {
+    if (topic.closedAt) { return false; }
+    if (topic.groupId) {
+      return topic.group().adminsInclude(Session.user()) ||
+      (topic.group().membersCanAnnounce && topic.membersInclude(Session.user()));
+    } else {
+      return topic.adminsInclude(Session.user());
+    }
+  }
+
+  canAddGuestsTopic(topic) {
+    if (topic.groupId) {
+      return topic.group().adminsInclude(Session.user()) ||
+      (topic.group().membersCanAddGuests && topic.membersInclude(Session.user()));
+    } else {
+      return topic.adminsInclude(Session.user());
+    }
+  }
+
   canAddMembersToGroup(group) {
     return group.adminsInclude(Session.user()) ||
     (group.membersInclude(Session.user()) && group.membersCanAddMembers);
@@ -215,35 +213,40 @@ export default new class AbilityService {
   }
 
   canEditComment(comment) {
-    return !comment.discussion().closedAt && (
-      (comment.discussion().adminsInclude(Session.user()) && comment.group().adminsCanEditUserContent) ||
-      (comment.authorIs(Session.user()) && comment.group().membersCanEditComments && comment.discussion().membersInclude(Session.user()))
+    const topic = comment.topic();
+    return topic && !topic.closedAt && (
+      (topic.adminsInclude(Session.user()) && comment.group() && comment.group().adminsCanEditUserContent) ||
+      (comment.authorIs(Session.user()) && comment.group() && comment.group().membersCanEditComments && topic.membersInclude(Session.user()))
     );
   }
 
   canDeleteComment(comment) {
+    const topic = comment.topic();
     return (Records.comments.find({parentId: comment.id, parentType: 'Comment'}).length === 0) &&
     comment.discardedAt &&
+    topic &&
     (
-      comment.discussion().adminsInclude(Session.user()) ||
-      (comment.group().membersCanDeleteComments && comment.authorIs(Session.user()))
+      topic.adminsInclude(Session.user()) ||
+      (comment.group() && comment.group().membersCanDeleteComments && comment.authorIs(Session.user()))
     );
   }
 
   canDiscardComment(comment) {
-    return !comment.discussion().closedAt &&
+    const topic = comment.topic();
+    return topic && !topic.closedAt &&
     !comment.discardedAt &&
     (
       comment.authorIs(Session.user()) ||
-      comment.discussion().adminsInclude(Session.user())
+      topic.adminsInclude(Session.user())
     );
   }
 
   canUndiscardComment(comment) {
-    return !comment.discussion().closedAt &&
+    const topic = comment.topic();
+    return topic && !topic.closedAt &&
     comment.discardedAt && (
       comment.authorIs(Session.user()) ||
-      comment.discussion().adminsInclude(Session.user())
+      topic.adminsInclude(Session.user())
     );
   }
 
@@ -303,9 +306,10 @@ export default new class AbilityService {
     return !!model.translationId
   }
 
-  canStartPoll(model) {
-    return model.adminsInclude(Session.user()) ||
-    (model.membersInclude(Session.user()) && model.group().membersCanRaiseMotions);
+  canStartPoll(topic) {
+    if (topic.activePollsCount > 0 && !topic.allowConcurrentPolls) { return false; }
+    return topic.adminsInclude(Session.user()) ||
+           (topic.membersCanRaiseMotions && topic.membersInclude(Session.user()))
   }
 
   canParticipateInPoll(poll) {
@@ -314,18 +318,13 @@ export default new class AbilityService {
     return poll.myStance() || (!poll.specifiedVotersOnly && poll.membersInclude(Session.user()));
   }
 
-  canMovePoll(poll) {
-    return (!poll.discussionId || !poll.discussion().closedAt) &&
-    !poll.discussionId && poll.adminsInclude(Session.user());
-  }
-
   canEditPoll(poll) {
-    return (!poll.discussionId || !poll.discussion().closedAt) &&
+    return !poll.topic().closedAt &&
     poll.adminsInclude(Session.user()) && !poll.closedAt;
   }
 
   canDeletePoll(poll) {
-    return (!poll.discussionId || !poll.discussion().closedAt) &&
+    return !poll.topic().closedAt &&
     !poll.discardedAt && poll.adminsInclude(Session.user());
   }
 
@@ -333,12 +332,8 @@ export default new class AbilityService {
     return !poll.discardedAt && poll.membersInclude(Session.user()) && (poll.closedAt || (poll.hideResults !== "until_closed"));
   }
 
-  canAddPollToThread(poll) {
-    return !poll.discardedAt && !poll.discussionId && poll.adminsInclude(Session.user());
-  }
-
   canSetPollOutcome(poll) {
-    return (!poll.discussionId || !poll.discussion().closedAt) &&
+    return !poll.topic().closedAt &&
     !poll.discardedAt &&
     poll.closedAt &&
     poll.adminsInclude(Session.user());

@@ -1,7 +1,9 @@
 class Api::V1::SearchController < Api::V1::RestfulController
   def index
+    guest_discussion_ids = Topic.where(id: current_user.guest_topic_ids, topicable_type: 'Discussion').pluck(:topicable_id)
+
     if group_or_org_id.to_i == 0
-      rel = PgSearch.multisearch(params[:query]).where("group_id is null and discussion_id IN (:discussion_ids)", discussion_ids: current_user.guest_discussion_ids)
+      rel = PgSearch.multisearch(params[:query]).where("group_id is null and discussion_id IN (:discussion_ids)", discussion_ids: guest_discussion_ids)
     end
 
     if group_or_org_id.to_i > 0
@@ -9,13 +11,12 @@ class Api::V1::SearchController < Api::V1::RestfulController
     end
 
     if group_or_org_id.blank?
-      rel = PgSearch.multisearch(params[:query]).where("group_id IN (:group_ids) OR discussion_id in (:discussion_ids)", group_ids: group_ids, discussion_ids: current_user.guest_discussion_ids)
+      rel = PgSearch.multisearch(params[:query]).where("group_id IN (:group_ids) OR discussion_id in (:discussion_ids)", group_ids: group_ids, discussion_ids: guest_discussion_ids)
     end
 
     if params[:tag]
-      discussion_ids = Discussion.where(group_id: group_ids).where("tags @> ARRAY[?]::varchar[]", Array(params[:tag])).pluck(:id)
-      poll_ids = Poll.where(group_id: group_ids).where("tags @> ARRAY[?]::varchar[]", Array(params[:tag])).pluck(:id)
-      rel = rel.where("discussion_id in (:discussion_ids) or poll_id in (:poll_ids)", discussion_ids: discussion_ids, poll_ids: poll_ids)
+      tag_topic_ids = Topic.where(group_id: group_ids).where("tags @> ARRAY[?]::varchar[]", Array(params[:tag])).pluck(:id)
+      rel = rel.where(topic_id: tag_topic_ids)
     end
 
     if %w[Discussion Comment Poll Stance Outcome].include?(params[:type])
@@ -39,12 +40,12 @@ class Api::V1::SearchController < Api::V1::RestfulController
     authors = access_by_id(User.where(id: results.map(&:author_id)))
 
     poll_events = access_by_id(
-      Event.where("discussion_id is not null").where(eventable_type: "Poll", eventable_id: results.map(&:poll_id)),
+      Event.where("topic_id is not null").where(eventable_type: "Poll", eventable_id: results.map(&:poll_id)),
       :eventable_id
     )
 
     stance_events = access_by_id(
-      Event.where("discussion_id is not null").where(eventable_type: "Stance", eventable_id: results.filter {|r| r.searchable_type == 'Stance'}.map(&:searchable_id)),
+      Event.where("topic_id is not null").where(eventable_type: "Stance", eventable_id: results.filter {|r| r.searchable_type == 'Stance'}.map(&:searchable_id)),
       :eventable_id
     )
 
@@ -72,7 +73,7 @@ class Api::V1::SearchController < Api::V1::RestfulController
         author_name: author&.name,
         author_id: res.author_id,
         authored_at: res.authored_at,
-        tags: (Array(poll&.tags) + Array(discussion&.tags)).uniq
+        tags: Array(res.tags)
       )
     end
 

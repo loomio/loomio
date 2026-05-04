@@ -2,10 +2,8 @@ require 'test_helper'
 
 class RedirectControllerTest < ActionController::TestCase
   setup do
-    @user = users(:normal_user)
-    @group = groups(:test_group)
-    @group.add_admin!(@user)
-    @discussion = create_discussion(group: @group, author: @user)
+    @group = groups(:group)
+    @discussion = discussions(:discussion)
   end
 
   test "redirects to group path" do

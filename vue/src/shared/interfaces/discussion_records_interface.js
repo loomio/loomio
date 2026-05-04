@@ -22,15 +22,4 @@ export default class DiscussionRecordsInterface extends BaseRecordsInterface {
       params: options
     });
   }
-
-  fetchInbox(options) {
-    if (options == null) { options = {}; }
-    return this.fetch({
-      path: 'dashboard',
-      params: {
-        exclude_types: 'group',
-        per: 50
-      }
-    });
-  }
 };

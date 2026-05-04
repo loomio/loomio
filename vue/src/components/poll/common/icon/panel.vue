@@ -31,7 +31,7 @@ export default {
 </script>
 
 <template lang="pug">
-.poll-common-chart-preview(:style="{width: size+'px', height: size+'px'}" aria-hidden="true")
+.poll-common-chart-preview.v-icon(:style="{width: size+'px', height: size+'px'}" aria-hidden="true")
   bar-icon(v-if="poll.chartType == 'bar'", :poll="poll", :size='size')
   pie-icon(v-if="poll.chartType == 'pie'", :slices="slices", :size='size')
   grid-icon(v-if="poll.chartType == 'grid'", :poll="poll", :size='size')
@@ -44,7 +44,7 @@ export default {
 .poll-common-chart-preview__stance-container
   position: absolute
   left: -3px
-  bottom: -4px
+  bottom: -3px
   border-radius: 100%
   box-shadow: 0 2px 1px rgba(0,0,0,.15)
 

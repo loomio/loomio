@@ -115,8 +115,4 @@ export default {
   max-height: 72px
   overflow: hidden
 
-.poll-common-chart-table__voter-avatars:hover
-  max-height: none
-  overflow: show
-
 </style>

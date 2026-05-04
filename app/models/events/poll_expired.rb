@@ -6,7 +6,7 @@ class Events::PollExpired < Event
   def self.publish!(poll)
     super poll,
           user: poll.author,
-          discussion: nil,
+          topic: nil,
           created_at: poll.closed_at
   end
 
@@ -19,6 +19,6 @@ class Events::PollExpired < Event
 
   def notify_author?
     return false unless eventable.present?
-    Queries::UsersByVolumeQuery.email_notifications(eventable).exists?(eventable.author_id)
+    eventable.topic.volume_gte_normal_members.exists?(eventable.author_id)
   end
 end

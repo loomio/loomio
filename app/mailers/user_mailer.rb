@@ -44,17 +44,18 @@ class UserMailer < ApplicationMailer
 
     time_finish = Time.zone.now
 
-    discussions = DiscussionQuery.visible_to(
+    topics = TopicQuery.visible_to(
       user: user,
       only_unread: true,
       or_public: false,
-      or_subgroups: false).kept.last_activity_after(time_start)
+      or_subgroups: false
+    ).where("topics.last_activity_at > ?", time_start)
 
-    return if discussions.empty?
+    return if topics.empty?
 
     groups = user.groups.order(full_name: :asc)
-    cache = RecordCache.for_collection(discussions, user_id)
-    discussions_by_group_id = discussions.group_by(&:group_id)
+    cache = RecordCache.for_collection(topics, user_id)
+    topics_by_group_id = topics.group_by(&:group_id)
     subject_key = "email.catch_up.#{frequency}_subject"
     subject_params = { site_name: AppConfig.theme[:site_name] }
 
@@ -62,7 +63,7 @@ class UserMailer < ApplicationMailer
       user: user,
       recipient: user,
       groups: groups,
-      discussions_by_group_id: discussions_by_group_id,
+      topics_by_group_id: topics_by_group_id,
       subject_key: subject_key,
       subject_params: subject_params,
       time_start: time_start,

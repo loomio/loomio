@@ -50,16 +50,20 @@ export default new class CommentService {
 
       react: {
         dock: 1,
-        canPerform() { return !comment.discardedAt && AbilityService.canAddComment(comment.discussion()); }
+        canPerform() {
+          const topic = comment.topic();
+          return !comment.discardedAt && topic && AbilityService.canAddReaction(topic);
+        }
       },
 
       reply_to_comment: {
         name: 'common.action.reply',
         icon: 'mdi-reply',
-        dock: 1,
+        dock: 3,
         canPerform() { return AbilityService.canRespondToComment(comment); },
         perform() {
-          if (event.depth === comment.discussion().maxDepth) {
+          const topic = comment.topic();
+          if (event.depth === (topic ? topic.maxDepth : 2)) {
             return EventBus.$emit('toggle-reply', comment, event.parentId);
           } else {
             return EventBus.$emit('toggle-reply', comment, event.id);
@@ -70,7 +74,7 @@ export default new class CommentService {
       edit_comment: {
         name: 'common.action.edit',
         icon: 'mdi-pencil',
-        dock: 1,
+        dock: 3,
         canPerform() { return !comment.discardedAt && comment.authorIs(Session.user()) && AbilityService.canEditComment(comment); },
         perform() {
           return openModal({
@@ -105,8 +109,9 @@ export default new class CommentService {
         icon: 'mdi-history',
         dock: 3,
         canPerform() {
+          const topic = comment.topic();
           return comment.edited() && (!comment.discardedAt ||
-                               comment.discussion().adminsInclude(Session.user()));
+                               (topic && topic.adminsInclude(Session.user())));
         },
         perform() {
           return openModal({

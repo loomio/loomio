@@ -428,8 +428,6 @@ he:
       disagree: לֹא לְהַסכִּים
       disagree_meaning: יש צורך לשנות משהו בהצעה הזו לפני שאוכל לתמוך בה.
       disagree_prompt: כיצד ניתן לשפר את ההצעה הזו כדי שתוכלו לתמוך בה?
-      abstain_meaning: בוחרים שלא, או לא מסוגלים להצביע על החלטה זו.
-      abstain_prompt: מדוע אתה נמנע, או שאינך מרגיש מסוגל להצביע על החלטה זו?
     advice:
       process_subtitle: בקשו ייעוץ לגבי החלטה שאתם צריכים לקבל
       process_introduction: <p style=";text-align:right;direction:rtl">פנו לייעוץ בנוגע להחלטה שעליכם לקבל, בעזרת אנשים המושפעים או בעלי מומחיות, כדי שתוכלו לקבל החלטה טובה יותר עבור הארגון שלכם.</p><ul style=";text-align:right;direction:rtl"><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> ייעוץ יעזור לך לקבל החלטות טובות יותר עבור הארגון שלך.</p></li><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> לטפח קשרים, הזדמנויות למידה ותשומות מגוונות.</p></li><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> לעודד יוזמה ויצירתיות, ועבודה מהנה יותר.</p></li></ul><p style=";text-align:right;direction:rtl"> <a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>קראו עוד על תהליך הייעוץ</u></a> .</p>
@@ -476,7 +474,6 @@ he:
       block_prompt: הסבר את התנגדותך להצעה זו ומדוע אין לקדם אותה
       details_v2: <h3 style=";text-align:right;direction:rtl"><strong>מהי ההחלטה שאתה צריך לקבל?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 style=";text-align:right;direction:rtl"> <strong>למה זה חשוב?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 style=";text-align:right;direction:rtl"> <strong>מה אתה מבקש מאנשים לעשות?</strong></h3><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> שתף את עמדתך ומדוע. אם אינך מסכים, הסבר מה צריך להשתנות כדי שתתמוך בכך.</p>
       process_introduction_v2: <p style=";text-align:right;direction:rtl"><strong>קונצנזוס</strong> מיועד להחלטות בהן חשוב שכולם יסכימו באופן פעיל. המשתתפים עובדים יחד כדי להבין את צרכיו של זה ולעצב את ההצעה עד שכל הקבוצה תוכל לתמוך בה. מכיוון שאנשים יכולים לשנות את הצבעתם ככל שהשיחה מתפתחת, התהליך מעודד דיאלוג אמיתי ולא החלטה חד פעמית. זה דורש יותר סבלנות משיטות אחרות, אך בונה את המחויבות החזקה ביותר.</p><p style=";text-align:right;direction:rtl"> תבנית זו כוללת אפשרות <strong>חסימה</strong> כברירת מחדל. חסימה אינה מתאימה לכל קבוצה - היא עלולה להיות שנויה במחלוקת או להיות מנוצלת לרעה. אם אינך משתמש/ת בחסימה בתהליך קבלת ההחלטות שלך, אנו ממליצים לערוך את התבנית ולהסירה.</p>
-      abstain_prompt: מדוע אתה נמנע, או שאינך מרגיש מסוגל להצביע על החלטה זו?
     question_round:
       process_subtitle: הזמינו שאלות הבהרה כדי לעזור לאנשים להבין הצעה
       process_introduction: <p style=";text-align:right;direction:rtl">סבב שאלות הוא הזדמנות לאנשים לשאול שאלות הבהרה לגבי ההצעה, כך שכולם יבינו את ההצעה לפני שהם אומרים את דעתם עליה.</p><p style=";text-align:right;direction:rtl"> סבב השאלות של Loomio הוא הצעה מיוחדת ללא אפשרויות הצבעה. הוא מאפשר למשתתפים לשאול שאלות במסגרת זמן שתקבעו לסבב.</p><p style=";text-align:right;direction:rtl"> סבב שאלות משמש בדרך כלל כשלב בתהליך ההסכמה.</p><p style=";text-align:right;direction:rtl"> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">קרא עוד על תהליך ההסכמה</a> .</p>
@@ -512,7 +509,6 @@ he:
       could_be_better_prompt: מה היית משנה?
       needs_a_rethink: צריך חשיבה מחודשת
       needs_a_rethink_prompt: מה הדאגה שלך?
-      needs_a_rethink_meaning: אני חושב שזו הגישה הלא נכונה
     gradients_of_agreement:
       process_subtitle: תמיכה מפורשת בהצעה בסולם של 8 נקודות
       process_introduction: <p style=";text-align:right;direction:rtl">הצעת "גרדיאנטים של הסכמה" מאפשרת לחברי קבוצה להביע את תמיכתם בהצעה בדרגות על סולם, ומציעה דרכים רבות יותר להביע תמיכה מאשר במונחים של "הסכמה" ו"לא מסכים".</p><p style=";text-align:right;direction:rtl"> השתמשו בדרגות הסכמה כסבב מקדים, כדי לבחון תמיכה בהצעה לפני המעבר להסכמה רשמית.</p><p style=";text-align:right;direction:rtl"> מעברי הסכמה מאפשרים לאנשים לדעת שהצעה מתגבשת ומעודדים אותם להשתתף. זוהי הזדמנות להקשיב לאנשים, לחוש איך הם מרגישים ולהגיב כראוי - מה שפותח את הפוטנציאל לשלב את תרומתם כדי לקבל החלטה טובה יותר.</p>

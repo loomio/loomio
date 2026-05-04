@@ -489,7 +489,6 @@ it:
     changes_all_threads_and_polls_in_group: In questo modo vengono modificate le impostazioni per tutti i thread e i sondaggi nel gruppo.
     when_do_you_want_to_be_emailed: Quando vuoi ricevere la nostra email?
     what_the_options_mean: Cosa significano le opzioni
-    quiet_explained: Non riceverai email, nemmeno quando qualcuno cercherà di avvisarti. Potresti perderti annunci o decisioni importanti, a meno che tu non abbia l'abitudine di controllare regolarmente Loomio.
     when_would_you_like_to_be_emailed_discussion: Quando desideri ricevere un'e-mail su questa discussione?
     changes_all_discussions_and_polls_in_group: In questo modo vengono modificate le impostazioni per tutte le discussioni e i sondaggi nel gruppo.
     normal_explained: Quando qualcuno inserisce il tuo nome nel campo "Notifica" di una discussione o di un sondaggio, oppure {'@'}menziona il gruppo.
@@ -539,6 +538,7 @@ it:
     sign_in: Entra per partecipare alla discussione
     add_a_comment: Aggiungi un commento
     share_your_thoughts: Condividi i tuoi pensieri…
+    share_on_poll: Fai una domanda o condividi nuove informazioni
   thread_nav:
     participants: Partecipanti
   sidebar:
@@ -724,7 +724,6 @@ it:
       discussion_edited: "%{actor} ha modificato il contesto della discussione: %{title}"
       discussion_closed: "%{actor} ha chiuso la discussione: %{title}"
       new_discussion: "%{actor} ha avviato una discussione: %{title}"
-      user_reminded: "%{actor} ti ricorda di votare su: %{title}"
     without_title:
       unknown_sender: Controlla l'e-mail proveniente da un mittente non riconosciuto
       group_announced: "%{actor} ti ha invitato a un gruppo"
@@ -804,7 +803,6 @@ it:
       poll_announced: 'Vota: %{title}'
       discussion_edited: "%{actor} ha modificato il contesto della discussione: %{title}"
       discussion_closed: "%{actor} ha chiuso la discussione: %{title}"
-      user_reminded: "%{actor} ti ricorda di votare su: %{title}"
   discussion_fork_actions:
     move: Sposta
     moved: Commenti in movimento, questo potrebbe richiedere un momento
@@ -1370,8 +1368,6 @@ it:
     default_request_to_join_prompt: Grazie per il tuo interesse nel nostro gruppo. Presentati e spiega perché stai chiedendo di unirti a noi.
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Aggiorna il tuo abbonamento</a> per creare un sottogruppo'
     share_this_url_with_people_who_want_to_join: Condividi questo URL con le persone che vogliono unirsi
-    allow_polls_without_discussions: Consenti sondaggi senza discussione
-    allow_polls_without_discussions_help: Impedire alle persone di avviare sondaggi senza prima avviare una discussione.
     aria_label: Modulo di gruppo
     list_in_the_groups_directory: Elenco nella directory dei gruppi?
     list_in_directory_yes: Sì · mostra questo gruppo nella pagina "Trova un gruppo"
@@ -1535,7 +1531,6 @@ it:
     delete_account_subtitle: Elimina completamente il tuo account e rimuovi il tuo nome dalle discussioni e decisioni passate.
     updated_on_sign_in: Fornito dal tuo browser e aggiornato quando accedi
     translate_content_automatically: Traduci automaticamente il contenuto nella mia lingua
-    bot_account_warning: Gli account bot non saranno invitati a votare nei sondaggi né a partecipare alle discussioni.
   text_editor:
     x_of_y_characters: "%{x} / %{y} caratteri"
     select_text_to_link: Seleziona il testo da collegare e riprova
@@ -2021,13 +2016,6 @@ it:
     closed: Chiuso
     need_vote: Necessita voto
     no_polls: Nessuna votazione trovata
-    standalone_disabled_title: I sondaggi autonomi sono disabilitati
-    standalone_disabled_helptext: "<p>Questo gruppo richiede che i sondaggi vengano avviati all'interno di una discussione.</p><p> Le discussioni aiutano le persone a comprendere il contesto, a porre domande e a condividere le proprie prospettive prima di votare. Questo porta a decisioni migliori.</p><p> Avvia prima una discussione, poi aggiungi un sondaggio quando sei pronto a raccogliere voti.</p>"
-    start_discussion: Avvia una discussione
-    standalone_warning_title: Considera di iniziare prima una discussione
-    start_poll_anyway: Inizia comunque il sondaggio
-    start_discussion_instead: Avvia invece una discussione
-    standalone_warning_helptext: "<p>I sondaggi funzionano meglio quando le persone possono discutere per prime dell'argomento.</p><p> Senza una discussione, gli elettori non possono porre domande, sollevare preoccupazioni o suggerire miglioramenti.</p><p> Per un'esperienza ottimale, inizia con una discussione, crea una comprensione condivisa e poi aggiungi un sondaggio quando sei pronto a raccogliere le posizioni delle persone.</p>"
   group_files_panel:
     no_files: Nessun file trovato
     filename: Nome del file
@@ -2058,7 +2046,6 @@ it:
     for_this_proposal_to_pass: 'Per far passare questa proposta:'
     for_this_poll_type_to_be_valid: 'Affinché questo %{poll_type} sia valido:'
     voting_opens_at: Questo %{poll_type} si apre per votare %{time}
-    unable_to_vote: Non sei stato invitato a votare su questo %{poll_type}
   poll_common_collapsed:
     by_who: di %{name}
   poll_common_calendar_invite:
@@ -2701,7 +2688,6 @@ it:
     create_poll_type: Crea %{poll_type}
     notify_voters_when_voting_opens: Avvisare gli elettori quando si aprono le votazioni
     voters_notified_when_opens: Gli elettori saranno avvisati all'apertura delle votazioni
-    who_may_vote: Chi può votare su questo %{poll_type}?
   poll_receipts_page:
     verify_participants: Verifica i partecipanti
     see_votes_if_quorum_reached: Se la votazione è chiusa e il quorum è stato raggiunto, vedrai chi ha espresso il voto.
@@ -2761,7 +2747,6 @@ it:
     these_are_templates_admin_hint: Gli amministratori del gruppo possono modificare i modelli, crearne di nuovi, riorganizzarli e nasconderli/mostrarli. Solo gli amministratori possono visualizzare i modelli nascosti.
     show_hidden_templates: Mostra modelli nascosti
     show_fewer: Mostra meno
-    start_a_new_discussion: Avvia una nuova discussione
     start_discussion: Avvia una discussione
     start_a_direct_discussion: Avvia una discussione diretta
     these_are_templates: Questi sono i modelli di discussione nel tuo gruppo.
@@ -2779,7 +2764,6 @@ it:
   pin_discussion_modal:
     helptext: Le discussioni aggiunte vengono sempre visualizzate nell'elenco delle discussioni del gruppo.
   delete_discussion_form:
-    body: Sei sicuro di voler eliminare questa discussione?
     discussion_deleted: Discussione eliminata
   move_discussion_form:
     title: Sposta la discussione in un altro gruppo

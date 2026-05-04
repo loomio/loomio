@@ -18,8 +18,8 @@ export default {
       user: Session.user(),
       group: null,
       tips: [],
-      spin: true,
-      show: true,
+      spin: false,
+      show: false,
       menuOpen: false
     };
   },

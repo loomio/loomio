@@ -6,7 +6,7 @@ module GroupExportRelations
     has_many :tags
 
     # polls
-    has_many :exportable_polls, -> { where("anonymous = false OR closed_at is not null") }, class_name: 'Poll', foreign_key: :group_id
+    has_many :exportable_polls, -> { where("anonymous = false OR polls.closed_at is not null") }, through: :topics, source: :topicable, source_type: 'Poll'
 
     has_many :discussion_taggings, through: :discussions, source: :taggings
     has_many :poll_taggings, through: :exportable_polls, source: :taggings
@@ -44,8 +44,8 @@ module GroupExportRelations
     has_many :comment_reactions,            -> { joins(:user) }, through: :comments,            source: :reactions
     has_many :exportable_outcome_reactions, -> { joins(:user) }, through: :exportable_outcomes, source: :reactions
 
-    # readers
-    has_many :discussion_readers,  through: :discussions
+    # topics and readers
+    has_many :topic_readers, through: :topics
 
     # users
     has_many :discussion_authors,         through: :discussions,                    source: :author
@@ -53,7 +53,7 @@ module GroupExportRelations
     has_many :exportable_poll_authors,    through: :exportable_polls,               source: :author
     has_many :exportable_outcome_authors, through: :exportable_outcomes,            source: :author
     has_many :exportable_stance_authors,  through: :exportable_stances,             source: :participant
-    has_many :reader_users,               through: :discussion_readers,             source: :user
+    has_many :reader_users,               through: :topic_readers,                  source: :user
 
     # events
     has_many :membership_events,          through: :memberships,          source: :events

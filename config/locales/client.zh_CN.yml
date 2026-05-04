@@ -437,7 +437,6 @@ zh_CN:
     loud_desc: 每次有人参与
     normal_desc: 当有人通知我时
     quiet_desc: 绝不
-    quiet_explained: 即使有人尝试通知您，您也不会收到电子邮件。如果您不养成定期查看 Loomio 的习惯，可能会错过重要公告或决定。
     normal_explained: 当有人在讨论或投票的“通知”字段中输入您的名字，或者他们使用“@”提及该群组时。
     normal_excludes_mentioning_html: 对于有人使用“@”提及您（例如，在评论中回复您）的情况，有一个单独的设置。<a href="%{url}">点击此处编辑“@提及”的设置</a>。
     loud_explained: 每当有新评论、有人投票或发起投票或话题时，您都会收到电子邮件通知。
@@ -544,6 +543,7 @@ zh_CN:
     public_privacy_notice: 您的评论将对网络上的所有人可见。
     sign_in: 登录参与
     share_your_thoughts: 分享你的想法……
+    share_on_poll: 提出问题或分享新信息
   sidebar:
     user_settings: 用户设置
     my_groups: 我的群组
@@ -708,7 +708,6 @@ zh_CN:
       user_added_to_group: "%{actor} 将您添加到了群组：%{title}"
       user_mentioned: "%{actor} 在 %{title} 中提到了您"
       group_mentioned: "%{actor} 在以下文章中提到了该群：%{title}"
-      user_reminded: 演员 %{actor} 提醒您投票：%{title}
     with_title:
       unknown_sender: 请查收来自未知发件人的电子邮件
       comment_replied_to: "%{actor} 在 %{title} 中回复了您。"
@@ -747,7 +746,6 @@ zh_CN:
       user_added_to_group: "%{actor} 将您添加到了群组：%{title}"
       user_mentioned: "%{actor} 在 %{title} 中提到了您"
       group_mentioned: "%{actor} 在以下文章中提到了该群：%{title}"
-      user_reminded: 演员 %{actor} 提醒您投票：%{title}
     without_title:
       unknown_sender: 请查收来自未知发件人的电子邮件
       discussion_announced: "%{actor} 邀请您加入讨论"
@@ -841,7 +839,6 @@ zh_CN:
     these_are_templates_admin_hint: 群组管理员可以编辑模板、创建新模板、重新排列模板以及隐藏/显示模板。只有管理员才能看到隐藏的模板。
     show_hidden_templates: 显示隐藏模板
     show_fewer: 显示更少
-    start_a_new_discussion: 发起新的讨论
     start_discussion: 发起讨论
     start_a_direct_discussion: 发起直接讨论
     these_are_templates: 这些是你们小组的讨论模板。
@@ -1296,8 +1293,6 @@ zh_CN:
     question: 您确定要停用此群组吗？
     submit: 是的，停用此群组
   group_form:
-    allow_polls_without_discussions: 允许不经讨论的投票
-    allow_polls_without_discussions_help: 不要阻止人们在没有先发起讨论的情况下发起投票。
     share_this_url_with_people_who_want_to_join: 将此网址分享给想要加入的人
     request_to_join_prompt: 请求加入提示
     default_request_to_join_prompt: 感谢您对我们子群组的关注。请您自我介绍一下，并说明您应用加入的原因。
@@ -1559,7 +1554,6 @@ zh_CN:
     deactivate_account_subtitle: 停止接收邮件并取消会员资格。保留您的个人资料，以免影响之前的讨论和决定。
     delete_account_subtitle: 彻底删除您的账户，并将您的名字从过去的讨论和决定中删除。
     updated_on_sign_in: 由您的浏览器提供，并在您登录时更新。
-    bot_account_warning: 机器人账号将不会被邀请参与投票或讨论。
   text_editor:
     x_of_y_characters: "%{x} / %{y} 个字符"
     select_text_to_link: 选择要链接的文本，然后重试
@@ -1766,7 +1760,6 @@ zh_CN:
     nested_twice_description: 回复最多缩进两次。
     changing_nesting_is_slow: 更改嵌套可能需要几分钟才能处理完毕。
   delete_discussion_form:
-    body: 您确定要删除此讨论吗？
     discussion_deleted: 讨论已删除
   move_discussion_form:
     title: 将讨论转移到另一个群组
@@ -2054,13 +2047,6 @@ zh_CN:
     closed: 关闭
     need_vote: 需要投票
     no_polls: 未找到民意调查
-    standalone_disabled_title: 独立投票功能已禁用
-    standalone_disabled_helptext: "<p>本群组要求投票必须在讨论中发起。</p><p>讨论有助于人们在投票前了解背景、提出问题并分享观点，从而做出更明智的决策。</p><p>先发起讨论，准备好收集投票后再添加投票。</p>"
-    start_discussion: 发起讨论
-    standalone_warning_title: 不妨先发起讨论。
-    start_poll_anyway: 无论如何，开始投票
-    start_discussion_instead: 不如发起一场讨论吧。
-    standalone_warning_helptext: "<p>民意调查在人们能够先讨论相关话题的情况下效果最佳。</p><p>如果没有讨论，选民就无法提出问题、表达担忧或提出改进建议。</p><p>为了获得最佳体验，先进行讨论，建立共识，然后在准备好了解人们的立场时再添加投票。</p>"
   group_files_panel:
     no_files: 未找到文件
     filename: 文件名
@@ -2089,7 +2075,6 @@ zh_CN:
     for_this_proposal_to_pass: 该提案要想获得通过：
     for_this_poll_type_to_be_valid: 要使此 %{poll_type} 有效：
     voting_opens_at: 此 %{poll_type} 投票将于 %{time} 开放。
-    unable_to_vote: 您未被邀请参与此项 %{poll_type} 的投票。
   poll_common_collapsed:
     by_who: 由 %{name}
   poll_common_calendar_invite:
@@ -2331,7 +2316,6 @@ zh_CN:
     create_poll_type: 创建 %{poll_type}
     notify_voters_when_voting_opens: 投票开始时通知选民
     voters_notified_when_opens: 投票开始时，选民将会收到通知。
-    who_may_vote: 谁可以参与此次 %{poll_type} 投票？
   poll_proposal_form:
     start_header: 开始提案
     edit_header: 编辑提案

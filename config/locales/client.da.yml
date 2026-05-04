@@ -479,7 +479,6 @@ da:
     changes_all_threads_and_polls_in_group: Dette ændrer indstillingerne for alle tråde og afstemninger i gruppen.
     when_do_you_want_to_be_emailed: Hvornår vil du have tilsendt en e-mail?
     what_the_options_mean: Hvad betyder valgmulighederne
-    quiet_explained: Du vil ikke modtage en e-mail, selv når nogen forsøger at give dig besked. Du kan gå glip af vigtige meddelelser eller beslutninger, medmindre du har for vane at tjekke Loomio regelmæssigt.
     when_would_you_like_to_be_emailed_discussion: Hvornår vil du gerne have en e-mail om denne diskussion?
     changes_all_discussions_and_polls_in_group: Dette ændrer indstillingerne for alle diskussioner og afstemninger i gruppen.
     normal_explained: Når nogen indtaster dit navn i feltet "Giv besked" i en diskussion eller afstemning, eller de {'@'}nævner gruppen.
@@ -527,6 +526,7 @@ da:
     sign_in: Log ind for at deltage i debatten
     add_a_comment: Tilføj en kommentar
     share_your_thoughts: Del dine tanker…
+    share_on_poll: Stil et spørgsmål eller del nye oplysninger
   thread_nav:
     participants: Deltagere
   sidebar:
@@ -712,7 +712,6 @@ da:
       discussion_edited: "%{actor} redigerede diskussionskonteksten: %{title}"
       discussion_closed: "%{actor} lukkede diskussionen: %{title}"
       new_discussion: "%{actor} startede en diskussion: %{title}"
-      user_reminded: "%{actor} minder dig om at stemme på: %{title}"
     without_title:
       unknown_sender: Gennemgå venligst e-mail fra ukendt afsender
       group_announced: "%{actor} inviterede dig til en gruppe"
@@ -792,7 +791,6 @@ da:
       poll_announced: 'Stemme: %{title}'
       discussion_edited: "%{actor} redigerede diskussionskonteksten: %{title}"
       discussion_closed: "%{actor} lukkede diskussionen: %{title}"
-      user_reminded: "%{actor} minder dig om at stemme på: %{title}"
   discussion_fork_actions:
     move: Flyt
     moved: Bevægende kommentarer, det kan tage et øjeblik
@@ -1342,8 +1340,6 @@ da:
     default_request_to_join_prompt: Tak for din interesse i vores gruppe. Præsentér dig selv og forklar, hvorfor du anmoder om at deltage.
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Opgrader venligst dit abonnement</a> for at oprette en undergruppe'
     share_this_url_with_people_who_want_to_join: Del denne URL med personer, der ønsker at deltage
-    allow_polls_without_discussions: Tillad afstemninger uden diskussion
-    allow_polls_without_discussions_help: Forhindre folk i at starte afstemninger uden først at starte en diskussion.
     aria_label: Gruppeformular
     list_in_the_groups_directory: Liste i gruppekataloget?
     list_in_directory_yes: Ja · vis denne gruppe på siden "find en gruppe"
@@ -1507,7 +1503,6 @@ da:
     delete_account_subtitle: Slet din konto fuldstændigt og fjern dit navn fra tidligere diskussioner og beslutninger.
     updated_on_sign_in: Leveres af din browser og opdateres, når du logger ind
     translate_content_automatically: Oversæt indhold automatisk til mit sprog
-    bot_account_warning: Botkonti vil ikke blive inviteret til at stemme i afstemninger eller deltage i diskussioner
   text_editor:
     x_of_y_characters: "%{x} / %{y} tegn"
     select_text_to_link: Vælg tekst, der skal linkes, og prøv igen
@@ -1991,13 +1986,6 @@ da:
     closed: Lukket
     need_vote: Skal stemme
     no_polls: Ingen meningsmålinger fundet
-    standalone_disabled_title: Selvstændige afstemninger er deaktiveret
-    standalone_disabled_helptext: "<p>Denne gruppe kræver, at afstemninger startes i en diskussion.</p><p> Diskussioner hjælper folk med at forstå konteksten, stille spørgsmål og dele perspektiver, inden de stemmer. Dette fører til bedre beslutninger.</p><p> Start først en diskussion, og tilføj derefter en afstemning, når du er klar til at indsamle stemmer.</p>"
-    start_discussion: Start en diskussion
-    standalone_warning_title: Overvej at starte en diskussion først
-    start_poll_anyway: Start afstemning alligevel
-    start_discussion_instead: Start en diskussion i stedet
-    standalone_warning_helptext: "<p>Afstemninger fungerer bedst, når folk kan diskutere emnet først.</p><p> Uden en diskussion kan vælgerne ikke stille spørgsmål, rejse bekymringer eller foreslå forbedringer.</p><p> For at opnå den bedste oplevelse, start med en diskussion, opbyg fælles forståelse, og tilføj derefter en afstemning, når du er klar til at indsamle folks holdninger.</p>"
   group_files_panel:
     no_files: Ingen filer fundet
     filename: Filnavn
@@ -2028,7 +2016,6 @@ da:
     for_this_proposal_to_pass: 'For at dette forslag kan vedtages:'
     for_this_poll_type_to_be_valid: 'For at denne %{poll_type} skal være gyldig:'
     voting_opens_at: Denne %{poll_type} åbner for afstemning %{time}
-    unable_to_vote: Du er ikke blevet inviteret til at stemme på denne %{poll_type}
   poll_common_collapsed:
     by_who: af %{name}
   poll_common_calendar_invite:
@@ -2671,7 +2658,6 @@ da:
     create_poll_type: Opret %{poll_type}
     notify_voters_when_voting_opens: Giv vælgerne besked, når afstemningen åbner
     voters_notified_when_opens: Vælgerne vil blive underrettet, når afstemningen åbner
-    who_may_vote: Hvem må stemme på denne %{poll_type}?
   poll_receipts_page:
     verify_participants: Bekræft deltagere
     see_votes_if_quorum_reached: Hvis afstemningen er afsluttet, og det quorum er nået, vil du se, hvem der afgav en stemme.
@@ -2731,7 +2717,6 @@ da:
     these_are_templates_admin_hint: Gruppeadministratorer kan redigere skabeloner, oprette nye skabeloner, omarrangere og skjule/vise skabeloner. Kun administratorer kan se de skjulte skabeloner.
     show_hidden_templates: Vis skjulte skabeloner
     show_fewer: Vis færre
-    start_a_new_discussion: Start en ny diskussion
     start_discussion: Start en diskussion
     start_a_direct_discussion: Start en direkte diskussion
     these_are_templates: Dette er diskussionsskabelonerne i jeres gruppe.
@@ -2749,7 +2734,6 @@ da:
   pin_discussion_modal:
     helptext: Fastgjorte diskussioner vises altid på gruppens liste over diskussioner.
   delete_discussion_form:
-    body: Er du sikker på, at du vil slette denne diskussion?
     discussion_deleted: Diskussion slettet
   move_discussion_form:
     title: Flyt diskussionen til en anden gruppe

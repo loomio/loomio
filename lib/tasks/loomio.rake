@@ -126,19 +126,8 @@ namespace :loomio do
   end
 
   task delete_translations: :environment do
-    # I edit this each time I want to use it.. rake task arguments are terrible
-    unwanted = %w[
-      poll_templates.proposal.abstain_meaning
-      poll_templates.proposal.abstain_prompt
-      poll_templates.consensus.abstain_prompt
-      poll_templates.onboarding_to_loomio.description
-      notifications.email_subject.user_reminded
-      notifications.with_title.user_reminded
-      profile_page.bot_account_warning
-      poll_common_action_panel.unable_to_vote
-      poll_common_form.who_may_vote
-      needs_a_rethink_meaning
-    ]
+    # edit tmp/delete_translations.txt with one dotted key path per line
+    unwanted = File.readlines("tmp/delete_translations.txt").map(&:strip).reject(&:empty?)
 
     %w[client server].each do |source_name|
       AppConfig.locales['supported'].each do |locale|
@@ -282,5 +271,11 @@ namespace :loomio do
       GenericWorker.perform_async('SubscriptionService', 'populate_management_links')
     end
   end
+
+  task rebuild_search_index: :environment do
+    GenericWorker.perform_async('SearchService', 'reindex_everything')
+    puts "SearchService.reindex_everything queued as background job"
+  end
+
 
 end

@@ -479,7 +479,6 @@ sl:
     changes_all_threads_and_polls_in_group: To spremeni nastavitve za vse niti in ankete v skupini.
     when_do_you_want_to_be_emailed: Kdaj želite prejeti e-pošto?
     what_the_options_mean: Kaj pomenijo možnosti
-    quiet_explained: Ne boste prejeli e-poštnega sporočila, niti če vas bo kdo poskušal obvestiti. Pomembna obvestila ali odločitve boste morda spregledali, razen če imate navado redno preverjati Loomio.
     when_would_you_like_to_be_emailed_discussion: Kdaj želite prejeti e-poštno sporočilo o tej razpravi?
     changes_all_discussions_and_polls_in_group: S tem se spremenijo nastavitve za vse razprave in ankete v skupini.
     normal_explained: Ko nekdo vnese vaše ime v polje »Obvesti« v razpravi ali anketi ali ko {'@'}omeni skupino.
@@ -527,6 +526,7 @@ sl:
     sign_in: Vpišite se, da se pridružite pogovoru
     add_a_comment: Dodaj komentar
     share_your_thoughts: Delite svoje misli …
+    share_on_poll: Postavite vprašanje ali delite nove informacije
   thread_nav:
     participants: Udeleženci
   sidebar:
@@ -712,7 +712,6 @@ sl:
       discussion_edited: "%{actor} je uredil kontekst razprave: %{title}"
       discussion_closed: "%{actor} je zaključil razpravo: %{title}"
       new_discussion: "%{actor} je začel razpravo: %{title}"
-      user_reminded: "%{actor} vas opominja, da glasujete o: %{title}"
     without_title:
       unknown_sender: Preglejte e-pošto neprepoznanega pošiljatelja
       group_announced: "%{actor} vas je povabil v skupino"
@@ -792,7 +791,6 @@ sl:
       poll_announced: 'Glas: %{title}'
       discussion_edited: "%{actor} je uredil kontekst razprave: %{title}"
       discussion_closed: "%{actor} je zaključil razpravo: %{title}"
-      user_reminded: "%{actor} vas opominja, da glasujete o: %{title}"
   discussion_fork_actions:
     move: Premakni se
     moved: Ganljivi komentarji, to lahko traja nekaj časa
@@ -1342,8 +1340,6 @@ sl:
     default_request_to_join_prompt: Hvala za vaše zanimanje za našo skupino. Predstavite se in razložite, zakaj se želite pridružiti.
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Nadgradite svojo naročnino</a> , da ustvarite podskupino.'
     share_this_url_with_people_who_want_to_join: Delite ta URL z ljudmi, ki se želijo pridružiti
-    allow_polls_without_discussions: Dovoli ankete brez razprave
-    allow_polls_without_discussions_help: Preprečite ljudem, da začnejo ankete brez predhodnega začetka razprave.
     aria_label: Skupinski obrazec
     list_in_the_groups_directory: Seznam v imeniku skupin?
     list_in_directory_yes: Da · prikaži to skupino na strani »najdi skupino«
@@ -1507,7 +1503,6 @@ sl:
     delete_account_subtitle: Popolnoma izbrišite svoj račun in odstranite svoje ime iz preteklih razprav in odločitev.
     updated_on_sign_in: Zagotavlja vaš brskalnik in se posodobi, ko se prijavite
     translate_content_automatically: Samodejno prevedi vsebino v moj jezik
-    bot_account_warning: Računi botov ne bodo povabljeni k glasovanju v anketah ali sodelovanju v razpravah.
   text_editor:
     x_of_y_characters: "%{x} / %{y} znakov"
     select_text_to_link: Izberite besedilo za povezavo in poskusite znova
@@ -1991,13 +1986,6 @@ sl:
     closed: Zaprto
     need_vote: Potrebujem glasovanje
     no_polls: Ankete niso bile najdene
-    standalone_disabled_title: Samostojne ankete so onemogočene
-    standalone_disabled_helptext: "<p>Ta skupina zahteva, da se ankete začnejo znotraj razprave.</p><p> Razprave pomagajo ljudem razumeti kontekst, postavljati vprašanja in deliti stališča pred glasovanjem. To vodi do boljših odločitev.</p><p> Najprej začnite razpravo, nato pa dodajte anketo, ko boste pripravljeni zbirati glasove.</p>"
-    start_discussion: Začni razpravo
-    standalone_warning_title: Najprej razmislite o začetku razprave
-    start_poll_anyway: Vseeno začni anketo
-    start_discussion_instead: Začnite raje razpravo
-    standalone_warning_helptext: "<p>Ankete delujejo najbolje, kadar se ljudje najprej lahko pogovorijo o temi.</p><p> Brez razprave volivci ne morejo postavljati vprašanj, izražati pomislekov ali predlagati izboljšav.</p><p> Za najboljšo izkušnjo začnite z razpravo, zgradite skupno razumevanje in nato dodajte anketo, ko ste pripravljeni zajeti stališča ljudi.</p>"
   group_files_panel:
     no_files: Ni datotek
     filename: Ime datoteke
@@ -2028,7 +2016,6 @@ sl:
     for_this_proposal_to_pass: 'Da bi bil ta predlog sprejet:'
     for_this_poll_type_to_be_valid: 'Da bi bil ta %{poll_type} veljaven:'
     voting_opens_at: Ta %{poll_type} se odpre za glasovanje %{time}
-    unable_to_vote: Niste bili povabljeni k glasovanju o tem %{poll_type}
   poll_common_collapsed:
     by_who: avtor %{name}
   poll_common_calendar_invite:
@@ -2671,7 +2658,6 @@ sl:
     create_poll_type: Ustvari %{poll_type}
     notify_voters_when_voting_opens: Obvestite volivce, ko se začne glasovanje
     voters_notified_when_opens: Volivci bodo obveščeni, ko se bo glasovanje začelo
-    who_may_vote: Kdo lahko glasuje na tej anketi %{poll_type}?
   poll_receipts_page:
     verify_participants: Preverjanje udeležencev
     see_votes_if_quorum_reached: Če je glasovanje končano in je dosežen kvorum, boste videli, kdo je glasoval.
@@ -2731,7 +2717,6 @@ sl:
     these_are_templates_admin_hint: Skrbniki skupin lahko urejajo predloge, ustvarjajo nove predloge, jih prerazporejajo in skrivajo/razkrivajo. Skrite predloge lahko vidijo samo skrbniki.
     show_hidden_templates: Prikaži skrite predloge
     show_fewer: Prikaži manj
-    start_a_new_discussion: Začni novo razpravo
     start_discussion: Začni razpravo
     start_a_direct_discussion: Začnite neposredno razpravo
     these_are_templates: To so predloge za razpravo v vaši skupini.
@@ -2749,7 +2734,6 @@ sl:
   pin_discussion_modal:
     helptext: Pripete razprave se vedno prikažejo na seznamu razprav skupine.
   delete_discussion_form:
-    body: Ali ste prepričani, da želite izbrisati to razpravo?
     discussion_deleted: Razprava je bila izbrisana
   move_discussion_form:
     title: Premakni razpravo v drugo skupino

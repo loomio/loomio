@@ -315,6 +315,31 @@ module.exports = {
     page.expectText('.new-comment__body', 'body of the comment')
   },
 
+  'can_move_comments_to_another_thread': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_forkable_discussion')
+    page.expectText('.strand-list', 'totally on topic')
+    page.expectText('.strand-list', 'totally off topic')
+    page.click('.new-comment .action-menu')
+    page.click('.action-dock__button--move_event')
+    page.expectElement('.discussion-fork-actions')
+    page.click('.discussion-fork-actions__move')
+    page.pause(2000)
+    page.fillIn('.v-card .v-autocomplete input', 'Waking')
+    page.pause(2000)
+    page.click('.v-autocomplete__content .v-list-item__content')
+    page.pause(500)
+    page.click('.v-card-actions .v-btn:last-child')
+    page.pause(2000)
+    // Should have navigated to the target thread
+    page.expectText('.context-panel__heading', 'Waking Up in Reno')
+    page.refresh()
+    page.pause(3000)
+    // The moved comment should be in the target thread
+    page.expectText('.strand-list', 'totally on topic')
+  },
+
   'private_thread': (test) => {
     page = pageHelper(test)
     page.loadPath('setup_discussion')

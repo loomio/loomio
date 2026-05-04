@@ -2,16 +2,15 @@ require 'test_helper'
 
 class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
   setup do
-    @user = users(:normal_user)
-    @another_user = users(:another_user)
-    @group = groups(:test_group)
-    @group.add_admin!(@user)
+    @admin = users(:admin)
+    @user = users(:user)
+    @group = groups(:group)
   end
 
   def create_poll_template(attrs = {})
     PollTemplate.create!({
       group: @group,
-      author: @user,
+      author: @admin,
       process_name: "Test Process",
       process_subtitle: "subtitle",
       poll_type: "proposal",
@@ -24,7 +23,7 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
   test "index returns poll templates for a group" do
     template = create_poll_template
 
-    sign_in @user
+    sign_in @admin
     get :index, params: { group_id: @group.id }
     assert_response :success
 
@@ -36,7 +35,7 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
   test "index returns template by key_or_id" do
     template = create_poll_template
 
-    sign_in @user
+    sign_in @admin
     get :index, params: { group_id: @group.id, key_or_id: template.id.to_s }
     assert_response :success
 
@@ -49,7 +48,7 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
   test "show returns a template in user group" do
     template = create_poll_template
 
-    sign_in @user
+    sign_in @admin
     get :show, params: { id: template.id }
     assert_response :success
 
@@ -58,10 +57,10 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
   end
 
   test "show returns errors for template not in user groups" do
-    other_group = Group.create!(name: "Other #{SecureRandom.hex(4)}", creator: @another_user)
-    template = create_poll_template(group: other_group, author: @another_user)
+    other_group = Group.create!(name: "Other #{SecureRandom.hex(4)}", creator: @admin)
+    template = create_poll_template(group: other_group, author: @admin)
 
-    sign_in @user
+    sign_in @admin
     # PollTemplate.find_by returns nil; respond_with_resource raises on nil
     assert_raises(NoMethodError) do
       get :show, params: { id: template.id }
@@ -71,7 +70,7 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
   # === CREATE ===
 
   test "create creates a poll template as admin" do
-    sign_in @user
+    sign_in @admin
 
     assert_difference 'PollTemplate.count', 1 do
       post :create, params: {
@@ -88,12 +87,12 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
     assert_response :success
     template = PollTemplate.last
     assert_equal "New Poll Process", template.process_name
-    assert_equal @user.id, template.author_id
+    assert_equal @admin.id, template.author_id
     refute template.discarded?, "admin-created template should not be auto-discarded"
   end
 
   test "create denies non-admin when setting disabled" do
-    sign_in @another_user
+    sign_in @user
     post :create, params: {
       poll_template: {
         group_id: @group.id,
@@ -111,7 +110,7 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
   test "update modifies a poll template as admin" do
     template = create_poll_template
 
-    sign_in @user
+    sign_in @admin
     put :update, params: {
       id: template.id,
       poll_template: { process_name: "Updated Process" }
@@ -127,7 +126,7 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
   test "destroy deletes a poll template as admin" do
     template = create_poll_template
 
-    sign_in @user
+    sign_in @admin
     assert_difference 'PollTemplate.count', -1 do
       delete :destroy, params: { id: template.id }
     end
@@ -137,7 +136,7 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
   test "destroy denies non-admin non-author" do
     template = create_poll_template
 
-    sign_in @another_user
+    sign_in @user
     delete :destroy, params: { id: template.id }
     assert_response :forbidden
   end
@@ -156,7 +155,7 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
   test "discard discards a poll template as admin" do
     template = create_poll_template
 
-    sign_in @user
+    sign_in @admin
     post :discard, params: { id: template.id, group_id: @group.id }
     assert_response :success
 
@@ -168,7 +167,7 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
     template = create_poll_template
     template.discard!
 
-    sign_in @user
+    sign_in @admin
     post :undiscard, params: { id: template.id, group_id: @group.id }
     assert_response :success
 
@@ -179,7 +178,7 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
   test "discard denies non-admin non-author" do
     template = create_poll_template
 
-    sign_in @another_user
+    sign_in @user
     post :discard, params: { id: template.id, group_id: @group.id }
     assert_response :forbidden
   end
@@ -188,7 +187,7 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
     template = create_poll_template
     template.discard!
 
-    sign_in @another_user
+    sign_in @user
     post :undiscard, params: { id: template.id, group_id: @group.id }
     assert_response :forbidden
   end
@@ -205,7 +204,7 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
   # === HIDE / UNHIDE (default templates) ===
 
   test "hide hides a default template for the group" do
-    sign_in @user
+    sign_in @admin
     post :hide, params: { group_id: @group.id, key: "practice_proposal" }
     assert_response :success
 
@@ -217,7 +216,7 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
     @group.hidden_poll_templates = ["practice_proposal"]
     @group.save!
 
-    sign_in @user
+    sign_in @admin
     post :unhide, params: { group_id: @group.id, key: "practice_proposal" }
     assert_response :success
 
@@ -226,7 +225,7 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
   end
 
   test "hide denies non-admin" do
-    sign_in @another_user
+    sign_in @user
     post :hide, params: { group_id: @group.id, key: "practice_proposal" }
     assert_response :not_found
   end
@@ -235,7 +234,7 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
     @group.hidden_poll_templates = ["practice_proposal"]
     @group.save!
 
-    sign_in @another_user
+    sign_in @user
     post :unhide, params: { group_id: @group.id, key: "practice_proposal" }
     assert_response :not_found
   end
@@ -243,7 +242,7 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
   # === POSITIONS ===
 
   test "positions updates default template ordering by key" do
-    sign_in @user
+    sign_in @admin
     post :positions, params: { group_id: @group.id, ids: ["poll", "check"] }
     assert_response :success
 
@@ -253,7 +252,7 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
   end
 
   test "positions denies non-admin" do
-    sign_in @another_user
+    sign_in @user
     post :positions, params: { group_id: @group.id, ids: ["proposal"] }
     assert_response :not_found
   end
@@ -261,13 +260,13 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
   # === SETTINGS ===
 
   test "settings updates categorize_poll_templates" do
-    sign_in @user
+    sign_in @admin
     post :settings, params: { group_id: @group.id, categorize_poll_templates: false }
     assert_response :success
   end
 
   test "settings denies non-admin" do
-    sign_in @another_user
+    sign_in @user
     post :settings, params: { group_id: @group.id, categorize_poll_templates: false }
     assert_response :not_found
   end
@@ -277,7 +276,7 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
   test "member can create poll template when setting enabled" do
     @group.update!(members_can_create_templates: true)
 
-    sign_in @another_user
+    sign_in @user
     assert_difference 'PollTemplate.count', 1 do
       post :create, params: {
         poll_template: {
@@ -292,14 +291,14 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
 
     assert_response :success
     template = PollTemplate.last
-    assert_equal @another_user.id, template.author_id
+    assert_equal @user.id, template.author_id
     assert_not template.discarded?, "member-created template should not be auto-discarded"
   end
 
   test "admin-created poll template is not auto-discarded" do
     @group.update!(members_can_create_templates: true)
 
-    sign_in @user
+    sign_in @admin
     post :create, params: {
       poll_template: {
         group_id: @group.id,
@@ -317,9 +316,9 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
 
   test "member can edit own poll template when setting enabled" do
     @group.update!(members_can_create_templates: true)
-    template = create_poll_template(author: @another_user)
+    template = create_poll_template(author: @user)
 
-    sign_in @another_user
+    sign_in @user
     put :update, params: {
       id: template.id,
       poll_template: { process_name: "Updated by Member" }
@@ -332,9 +331,9 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
 
   test "member cannot edit another member's poll template" do
     @group.update!(members_can_create_templates: true)
-    template = create_poll_template(author: @user)
+    template = create_poll_template(author: @admin)
 
-    sign_in @another_user
+    sign_in @user
     put :update, params: {
       id: template.id,
       poll_template: { process_name: "Unauthorized Edit" }
@@ -345,9 +344,9 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
 
   test "member can discard own poll template when setting enabled" do
     @group.update!(members_can_create_templates: true)
-    template = create_poll_template(author: @another_user)
+    template = create_poll_template(author: @user)
 
-    sign_in @another_user
+    sign_in @user
     post :discard, params: { id: template.id, group_id: @group.id }
     assert_response :success
 
@@ -357,10 +356,10 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
 
   test "member can undiscard own poll template when setting enabled" do
     @group.update!(members_can_create_templates: true)
-    template = create_poll_template(author: @another_user)
+    template = create_poll_template(author: @user)
     template.discard!
 
-    sign_in @another_user
+    sign_in @user
     post :undiscard, params: { id: template.id, group_id: @group.id }
     assert_response :success
 
@@ -370,9 +369,9 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
 
   test "member can destroy own poll template when setting enabled" do
     @group.update!(members_can_create_templates: true)
-    template = create_poll_template(author: @another_user)
+    template = create_poll_template(author: @user)
 
-    sign_in @another_user
+    sign_in @user
     assert_difference 'PollTemplate.count', -1 do
       delete :destroy, params: { id: template.id }
     end
@@ -381,28 +380,28 @@ class Api::V1::PollTemplatesControllerTest < ActionController::TestCase
 
   test "member cannot discard another member's poll template" do
     @group.update!(members_can_create_templates: true)
-    template = create_poll_template(author: @user)
+    template = create_poll_template(author: @admin)
 
-    sign_in @another_user
+    sign_in @user
     post :discard, params: { id: template.id, group_id: @group.id }
     assert_response :forbidden
   end
 
   test "member cannot undiscard another member's poll template" do
     @group.update!(members_can_create_templates: true)
-    template = create_poll_template(author: @user)
+    template = create_poll_template(author: @admin)
     template.discard!
 
-    sign_in @another_user
+    sign_in @user
     post :undiscard, params: { id: template.id, group_id: @group.id }
     assert_response :forbidden
   end
 
   test "member cannot destroy another member's poll template" do
     @group.update!(members_can_create_templates: true)
-    template = create_poll_template(author: @user)
+    template = create_poll_template(author: @admin)
 
-    sign_in @another_user
+    sign_in @user
     assert_no_difference 'PollTemplate.count' do
       delete :destroy, params: { id: template.id }
     end

@@ -73,7 +73,7 @@ class Identities::SamlControllerTest < ActionController::TestCase
   # Create tests helpers
   private
 
-  def mock_saml_response(valid: true, nameid: 'user@example.com', name: 'SAML User')
+  def mock_saml_response(valid: true, nameid: 'samltest@example.com', name: 'SAML User')
     response = OpenStruct.new(
       nameid: nameid,
       is_valid?: valid
@@ -109,11 +109,11 @@ class Identities::SamlControllerTest < ActionController::TestCase
     end
 
     identity = Identity.where(identity_type: 'saml').last
-    assert_equal 'user@example.com', identity.uid
-    assert_equal 'user@example.com', identity.email
+    assert_equal 'samltest@example.com', identity.uid
+    assert_equal 'samltest@example.com', identity.email
     assert_equal 'SAML User', identity.name
     assert identity.user.present?
-    assert_equal 'user@example.com', identity.user.email
+    assert_equal 'samltest@example.com', identity.user.email
     assert_equal 'SAML User', identity.user.name
     assert_equal true, identity.user.email_verified
 
@@ -125,7 +125,7 @@ class Identities::SamlControllerTest < ActionController::TestCase
   # Create - verified user with same email exists
   test "auto-links to verified user and signs in" do
     hex = SecureRandom.hex(4)
-    existing_user = User.create!(name: 'Original Name', email: 'user@example.com', username: "samluser#{hex}", email_verified: true)
+    existing_user = User.create!(name: 'Original Name', email: 'samltest@example.com', username: "samluser#{hex}", email_verified: true)
     session[:back_to] = '/dashboard'
 
     with_saml_mocks do
@@ -144,7 +144,7 @@ class Identities::SamlControllerTest < ActionController::TestCase
 
   test "does not overwrite user name by default" do
     hex = SecureRandom.hex(4)
-    existing_user = User.create!(name: 'Original Name', email: 'user@example.com', username: "samluser#{hex}", email_verified: true)
+    existing_user = User.create!(name: 'Original Name', email: 'samltest@example.com', username: "samluser#{hex}", email_verified: true)
 
     with_saml_mocks do
       post :create, params: { SAMLResponse: 'base64_encoded' }
@@ -156,7 +156,7 @@ class Identities::SamlControllerTest < ActionController::TestCase
   # Force user attrs
   test "overwrites name when sso_force_user_attrs is true" do
     hex = SecureRandom.hex(4)
-    existing_user = User.create!(name: 'Original Name', email: 'user@example.com', username: "samluser#{hex}", email_verified: true)
+    existing_user = User.create!(name: 'Original Name', email: 'samltest@example.com', username: "samluser#{hex}", email_verified: true)
     ENV['LOOMIO_SSO_FORCE_USER_ATTRS'] = 'true'
 
     with_saml_mocks do
@@ -165,14 +165,14 @@ class Identities::SamlControllerTest < ActionController::TestCase
 
     existing_user.reload
     assert_equal 'SAML User', existing_user.name
-    assert_equal 'user@example.com', existing_user.email
+    assert_equal 'samltest@example.com', existing_user.email
     assert_equal existing_user, @controller.current_user
   end
 
   # Unverified user
   test "verifies email for unverified user with same email" do
     hex = SecureRandom.hex(4)
-    existing_user = User.create!(name: 'Original Name', email: 'user@example.com', username: "samluser#{hex}", email_verified: false)
+    existing_user = User.create!(name: 'Original Name', email: 'samltest@example.com', username: "samluser#{hex}", email_verified: false)
     session[:back_to] = '/dashboard'
 
     with_saml_mocks do
@@ -194,7 +194,7 @@ class Identities::SamlControllerTest < ActionController::TestCase
   # Unverified user gets linked and verified
   test "links to unverified user and verifies email" do
     hex = SecureRandom.hex(4)
-    existing_user = User.create!(name: 'Original Name', email: 'user@example.com', username: "samluser#{hex}", email_verified: false)
+    existing_user = User.create!(name: 'Original Name', email: 'samltest@example.com', username: "samluser#{hex}", email_verified: false)
     session[:back_to] = '/dashboard'
 
     with_saml_mocks do
@@ -218,7 +218,7 @@ class Identities::SamlControllerTest < ActionController::TestCase
     existing_user = User.create!(name: 'Original Name', email: 'old@example.com', username: "samluser#{hex}", email_verified: true)
     existing_identity = Identity.create!(
       identity_type: 'saml',
-      uid: 'user@example.com',
+      uid: 'samltest@example.com',
       email: 'old@example.com',
       name: 'Original Name',
       access_token: nil,
@@ -234,11 +234,11 @@ class Identities::SamlControllerTest < ActionController::TestCase
     end
 
     existing_identity.reload
-    assert_equal 'user@example.com', existing_identity.email
+    assert_equal 'samltest@example.com', existing_identity.email
     assert_equal 'SAML User', existing_identity.name
 
     existing_user.reload
-    assert_equal 'user@example.com', existing_user.email
+    assert_equal 'samltest@example.com', existing_user.email
     assert_equal 'SAML User', existing_user.name
 
     assert_equal existing_user, @controller.current_user
@@ -251,7 +251,7 @@ class Identities::SamlControllerTest < ActionController::TestCase
     existing_user = User.create!(name: 'Original', email: "existing#{hex}@example.com", username: "samluser#{hex}", email_verified: true)
     existing_identity = Identity.create!(
       identity_type: 'saml',
-      uid: 'user@example.com',
+      uid: 'samltest@example.com',
       email: 'old@example.com',
       access_token: nil,
       user: existing_user
@@ -265,8 +265,8 @@ class Identities::SamlControllerTest < ActionController::TestCase
     end
 
     existing_identity.reload
-    assert_equal 'user@example.com', existing_identity.uid
-    assert_equal 'user@example.com', existing_identity.email
+    assert_equal 'samltest@example.com', existing_identity.uid
+    assert_equal 'samltest@example.com', existing_identity.email
     assert_equal 'SAML User', existing_identity.name
 
     assert_equal existing_user, @controller.current_user
@@ -290,7 +290,7 @@ class Identities::SamlControllerTest < ActionController::TestCase
 
     identity = Identity.where(identity_type: 'saml').last
     assert_nil identity.user_id
-    assert_equal 'user@example.com', identity.email
+    assert_equal 'samltest@example.com', identity.email
 
     assert_equal identity.id, session[:pending_identity_id]
     assert_redirected_to '/settings'

@@ -479,7 +479,6 @@ ro:
     changes_all_threads_and_polls_in_group: Aceasta modifică setările pentru toate firele de discuție și sondajele din grup.
     when_do_you_want_to_be_emailed: Când doriți să primiți e-mailul?
     what_the_options_mean: Ce înseamnă opțiunile
-    quiet_explained: Nu veți primi e-mailuri, nici măcar atunci când cineva încearcă să vă notifice. Este posibil să ratați anunțuri sau decizii importante, cu excepția cazului în care aveți obiceiul de a verifica Loomio în mod regulat.
     when_would_you_like_to_be_emailed_discussion: Când doriți să primiți e-mailuri despre această discuție?
     changes_all_discussions_and_polls_in_group: Aceasta modifică setările pentru toate discuțiile și sondajele din grup.
     normal_explained: Când cineva introduce numele tău în câmpul „Notificare” al unei discuții sau al unui sondaj sau {'@'}menționează grupul.
@@ -527,6 +526,7 @@ ro:
     sign_in: Intra in cont pentru a te alatura conversatiei
     add_a_comment: Adaugă un comentariu
     share_your_thoughts: Împărtășește-ți gândurile…
+    share_on_poll: Pune o întrebare sau distribuie informații noi
   thread_nav:
     participants: Participanții
   sidebar:
@@ -712,7 +712,6 @@ ro:
       discussion_edited: "%{actor} a editat contextul discuției: %{title}"
       discussion_closed: "%{actor} a închis discuția: %{title}"
       new_discussion: "%{actor} a început o discuție: %{title}"
-      user_reminded: "%{actor} vă reamintește să votați pentru: %{title}"
     without_title:
       unknown_sender: Vă rugăm să examinați e-mailul de la expeditor nerecunoscut
       group_announced: "%{actor} te-a invitat într-un grup"
@@ -792,7 +791,6 @@ ro:
       poll_announced: 'Vot: %{title}'
       discussion_edited: "%{actor} a editat contextul discuției: %{title}"
       discussion_closed: "%{actor} a închis discuția: %{title}"
-      user_reminded: "%{actor} vă reamintește să votați pentru: %{title}"
   discussion_fork_actions:
     move: Mișcare
     moved: Comentarii în mișcare, acest lucru ar putea dura un moment
@@ -1342,8 +1340,6 @@ ro:
     default_request_to_join_prompt: Vă mulțumim pentru interesul acordat grupului nostru. Vă rugăm să vă prezentați și să explicați de ce solicitați să vă înscrieți.
     upgrade_for_subgroups: 'Vă rugăm <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">să actualizați abonamentul</a> pentru a crea un subgrup'
     share_this_url_with_people_who_want_to_join: Distribuiți această adresă URL cu persoanele care doresc să se alăture
-    allow_polls_without_discussions: Permite sondaje fără discuție
-    allow_polls_without_discussions_help: Împiedicați oamenii să înceapă sondaje fără a începe mai întâi o discuție.
     aria_label: Formular de grup
     list_in_the_groups_directory: Listă în directorul de grupuri?
     list_in_directory_yes: Da · afișează acest grup pe pagina „găsește un grup”
@@ -1507,7 +1503,6 @@ ro:
     delete_account_subtitle: Ștergeți-vă complet contul și eliminați-vă numele din discuțiile și deciziile anterioare.
     updated_on_sign_in: Furnizat de browserul dvs. și actualizat atunci când vă conectați
     translate_content_automatically: Traduceți automat conținutul în limba mea
-    bot_account_warning: Conturile de bot nu vor fi invitate să voteze în sondaje sau să participe la discuții.
   text_editor:
     x_of_y_characters: "%{x} / %{y} caractere"
     select_text_to_link: Selectați textul de conectat și încercați din nou
@@ -1991,13 +1986,6 @@ ro:
     closed: Inchis
     need_vote: Am nevoie de vot
     no_polls: Nu s-au găsit sondaje
-    standalone_disabled_title: Sondajele independente sunt dezactivate
-    standalone_disabled_helptext: "<p>Acest grup necesită ca sondajele să fie pornite în cadrul unei discuții.</p><p> Discuțiile îi ajută pe oameni să înțeleagă contextul, să pună întrebări și să împărtășească perspective înainte de a vota. Acest lucru duce la decizii mai bune.</p><p> Începe mai întâi o discuție, apoi adaugă un sondaj când ești gata să aduni voturi.</p>"
-    start_discussion: Începeți o discuție
-    standalone_warning_title: Luați în considerare mai întâi începerea unei discuții
-    start_poll_anyway: Începeți sondajul oricum
-    start_discussion_instead: Începeți o discuție în schimb
-    standalone_warning_helptext: "<p>Sondajele funcționează cel mai bine atunci când oamenii pot discuta mai întâi subiectul.</p><p> Fără o discuție, alegătorii nu pot pune întrebări, nu pot exprima nelămuriri sau nu pot sugera îmbunătățiri.</p><p> Pentru o experiență optimă, începeți cu o discuție, construiți o înțelegere comună și apoi adăugați un sondaj atunci când sunteți gata să surprindeți pozițiile oamenilor.</p>"
   group_files_panel:
     no_files: Niciun fișier găsit
     filename: Nume de fișier
@@ -2028,7 +2016,6 @@ ro:
     for_this_proposal_to_pass: 'Pentru ca această propunere să fie adoptată:'
     for_this_poll_type_to_be_valid: 'Pentru ca acest %{poll_type} să fie valid:'
     voting_opens_at: Acest %{poll_type} se deschide pentru votare %{time}
-    unable_to_vote: Nu ați fost invitat să votați pentru acest %{poll_type}
   poll_common_collapsed:
     by_who: dupa %{name}
   poll_common_calendar_invite:
@@ -2671,7 +2658,6 @@ ro:
     create_poll_type: Creați %{poll_type}
     notify_voters_when_voting_opens: Anunță alegătorii când se deschide votul
     voters_notified_when_opens: Alegătorii vor fi anunțați când se va deschide votul
-    who_may_vote: Cine poate vota pentru acest %{poll_type}?
   poll_receipts_page:
     verify_participants: Verificați participanții
     see_votes_if_quorum_reached: Dacă votarea s-a închis și s-a atins cvorumul, veți vedea cine a votat.
@@ -2731,7 +2717,6 @@ ro:
     these_are_templates_admin_hint: Administratorii de grup pot edita șabloane, pot crea șabloane noi, pot rearanja și pot ascunde/reafișa șabloanele. Doar administratorii pot vedea șabloanele ascunse.
     show_hidden_templates: Afișează șabloanele ascunse
     show_fewer: Afișează mai puține
-    start_a_new_discussion: Începeți o discuție nouă
     start_discussion: Începeți o discuție
     start_a_direct_discussion: Începeți o discuție directă
     these_are_templates: Acestea sunt șabloanele de discuții din grupul vostru.
@@ -2749,7 +2734,6 @@ ro:
   pin_discussion_modal:
     helptext: Discuțiile fixate apar întotdeauna în lista de discuții a grupului.
   delete_discussion_form:
-    body: Sigur vrei să ștergi această discuție?
     discussion_deleted: Discuția a fost ștearsă
   move_discussion_form:
     title: Mută discuția în alt grup

@@ -69,11 +69,6 @@ class Api::V1::PollsController < Api::V1::RestfulController
     respond_with_resource
   end
 
-  def add_to_thread
-    @event = service.add_to_thread(poll: load_resource, params: params, actor: current_user)
-    respond_with_resource
-  end
-
   def voters
     load_and_authorize(:poll)
     if !@poll.anonymous
@@ -85,10 +80,12 @@ class Api::V1::PollsController < Api::V1::RestfulController
       respond_with_collection serializer: AuthorSerializer, root: :users, scope: {cache: cache, exclude_types: exclude_types}
   end
 
-  private
-  def create_action
-    @event = service.create(**{resource_symbol => resource, actor: current_user, params: resource_params})
+  def create
+    self.resource = service.create(params: resource_params, actor: current_user)
+    respond_with_resource
   end
+
+  private
 
   def accessible_records
     PollQuery.visible_to(user: current_user)

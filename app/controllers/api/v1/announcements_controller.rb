@@ -63,10 +63,10 @@ class Api::V1::AnnouncementsController < Api::V1::RestfulController
     if target_model.is_a?(Group)
       self.collection = GroupService.invite(group: target_model, actor: current_user, params: params)
       respond_with_collection serializer: MembershipSerializer, root: :memberships
-    elsif target_model.is_a?(Discussion)
-      event = DiscussionService.invite(discussion: target_model, actor: current_user, params: params)
-      self.collection = DiscussionReader.where(discussion_id: target_model.id, user_id: event.recipient_user_ids)
-      respond_with_collection serializer: DiscussionReaderSerializer, root: :discussion_readers
+    elsif target_model.is_a?(Topic)
+      event = TopicService.invite(topic: target_model, actor: current_user, params: params)
+      self.collection = TopicReader.where(topic_id: target_model.id, user_id: event.recipient_user_ids)
+      respond_with_collection serializer: TopicReaderSerializer, root: :topic_readers
     elsif target_model.is_a?(Poll)
       self.collection = PollService.invite(poll: target_model, actor: current_user, params: params)
       respond_with_collection serializer: StanceSerializer, root: :stances
@@ -95,9 +95,9 @@ class Api::V1::AnnouncementsController < Api::V1::RestfulController
 
     allow_viewed = true
 
-    if target_model.respond_to?(:discussion) &&
-       target_model.discussion.present? &&
-       target_model.discussion.polls.kept.where(anonymous: true).any?
+    if target_model.respond_to?(:topic) &&
+       target_model.topic.present? &&
+       Poll.joins(:topic).where(topics: { id: target_model.topic_id }).kept.where(anonymous: true).any?
       allow_viewed = false
     end
 
@@ -127,16 +127,24 @@ class Api::V1::AnnouncementsController < Api::V1::RestfulController
   private
 
   def target_event_ids
-    if target_model.is_a?(Discussion)
-      polls = Poll.where(discussion_id: target_model.id)
-      outcomes = Outcome.where(poll_id: polls.map(&:id))
-      comments = Comment.where(discussion_id: target_model.id)
-      eventables = [target_model, polls, outcomes, comments].flatten.compact
-    else
-      eventables = [target_model]
-    end
+    if target_model.is_a?(Topic)
+      # topic_id on events identifies thread items only. Notification/edit
+      # events (poll_announced, discussion_edited, etc.) link via eventable,
+      # so we match by topicable + in-thread polls + their outcomes, plus
+      # comments via topic_id (since comment events are thread items).
+      discussion_ids = target_model.topicable_type == 'Discussion' ? [target_model.topicable_id] : []
+      poll_ids       = Poll.where(topic_id: target_model.id).pluck(:id)
+      outcome_ids    = Outcome.where(poll_id: poll_ids).pluck(:id)
 
-    Event.where(kind: notification_kinds, eventable: eventables).pluck(:id)
+      Event.where(kind: notification_kinds).where(<<~SQL, d: discussion_ids, p: poll_ids, o: outcome_ids, t: target_model.id).pluck(:id)
+        (eventable_type = 'Discussion' AND eventable_id IN (:d)) OR
+        (eventable_type = 'Poll'       AND eventable_id IN (:p)) OR
+        (eventable_type = 'Outcome'    AND eventable_id IN (:o)) OR
+        (eventable_type = 'Comment'    AND topic_id = :t)
+      SQL
+    else
+      Event.where(kind: notification_kinds, eventable: [target_model]).pluck(:id)
+    end
   end
 
   def notification_kinds
@@ -161,7 +169,13 @@ class Api::V1::AnnouncementsController < Api::V1::RestfulController
 
   def default_scope
     is_admin = if target_model && target_model.respond_to?(:group_id)
-                 target_model.group_id ? target_model.group.admins.exists?(current_user.id) : target_model.admins.exists?(current_user.id)
+                 if target_model.group_id
+                   target_model.group.admins.exists?(current_user.id)
+                 elsif target_model.respond_to?(:admins)
+                   target_model.admins.exists?(current_user.id)
+                 else
+                   false
+                 end
                else
                  false
                end
@@ -173,6 +187,7 @@ class Api::V1::AnnouncementsController < Api::V1::RestfulController
 
   def authorize_model
     load_and_authorize(:group, :announce, optional: true) ||
+      load_and_authorize(:topic, :announce, optional: true) ||
       load_and_authorize(:discussion, :announce, optional: true) ||
       load_and_authorize(:poll, :announce, optional: true) ||
       load_and_authorize(:outcome, :announce, optional: false)
@@ -180,6 +195,7 @@ class Api::V1::AnnouncementsController < Api::V1::RestfulController
 
   def target_model
     load_and_authorize(:group, :show, optional: true) ||
+      load_and_authorize(:topic, :show, optional: true) ||
       load_and_authorize(:discussion, :show, optional: true) ||
       load_and_authorize(:comment, :show, optional: true) ||
       load_and_authorize(:poll, :show, optional: true) ||

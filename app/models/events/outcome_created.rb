@@ -13,7 +13,7 @@ class Events::OutcomeCreated < Event
     recipient_audience: nil)
     super(outcome,
           user: outcome.author,
-          discussion: outcome.poll.discussion,
+          topic: outcome.poll.topic,
           recipient_user_ids: recipient_user_ids,
           recipient_chatbot_ids: recipient_chatbot_ids,
           recipient_audience: recipient_audience)

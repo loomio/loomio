@@ -1,9 +1,8 @@
 # Comments fixtures for testing
-test_comment:
-  body: body of the comment
-  body_format: html
-  user: discussion_author
-  discussion: test_discussion
-  parent_type: Discussion
-  created_at: <%= 5.days.ago %>
-  updated_at: <%= 5.days.ago %>
+# comment:
+#   body: body of the comment
+#   body_format: html
+#   user: user
+#   parent: discussion (Discussion)
+#   created_at: <%= 5.days.ago %>
+#   updated_at: <%= 5.days.ago %>

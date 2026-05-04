@@ -35,7 +35,10 @@ export default new class OutcomeService {
 
       react: {
         dock: 1,
-        canPerform() { return poll.membersInclude(user); }
+        canPerform() {
+          const topic = poll.topic();
+          return poll.membersInclude(user) && (!topic || topic.allowReactions);
+        }
       },
 
       edit_outcome: {
