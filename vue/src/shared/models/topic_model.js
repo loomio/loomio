@@ -77,10 +77,6 @@ export default class TopicModel extends BaseModel {
 
   author() { return this.topicable().author(); }
 
-  repliesCount() {
-    return Math.max(0, this.itemsCount - 1);
-  }
-
   hasUnreadActivity() {
     return this.isUnread() && (this.unreadItemsCount() > 0);
   }
