@@ -24,12 +24,10 @@ class Api::V1::ReceivedEmailsController < Api::V1::RestfulController
       respond_with_error(403, "trial groups cannot add aliases")
     else
       user = @received_email.group.members.find(params[:user_id])
-      MemberEmailAlias.create(
+      MemberEmailAlias.find_or_initialize_by(
         email: @received_email.sender_email,
-        user: user,
-        group_id: @received_email.group_id,
-        author_id: current_user.id
-      )
+        group_id: @received_email.group_id
+      ).update!(user: user, author_id: current_user.id)
       ReceivedEmailService.route(@received_email)
       respond_with_resource
     end
@@ -37,12 +35,10 @@ class Api::V1::ReceivedEmailsController < Api::V1::RestfulController
 
   def block
     @received_email = ReceivedEmail.unreleased.where(group_id: current_user.adminable_group_ids).find(params[:id])
-    MemberEmailAlias.create!(
+    MemberEmailAlias.find_or_initialize_by(
       email: @received_email.sender_email,
-      user_id: nil,
-      group_id: @received_email.group_id,
-      author_id: current_user.id
-    )
+      group_id: @received_email.group_id
+    ).update!(user_id: nil, author_id: current_user.id)
     @received_email.update(group_id: nil)
     respond_with_resource
   end
