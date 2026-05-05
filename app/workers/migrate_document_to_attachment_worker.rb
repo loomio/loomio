@@ -14,16 +14,38 @@ class MigrateDocumentToAttachmentWorker
     end
 
     existing_asa = ActiveStorage::Attachment.find_by(record_type: 'Document', record_id: doc.id, name: 'file')
-    blob =
-      if existing_asa
-        existing_asa.blob
-      elsif doc.file_file_name.blank? || doc.url.blank?
-        drop_doc(doc.id)
-        return
-      else
-        create_blob_from_url(doc) or return
-      end
+    if existing_asa
+      attach_and_finalize(parent, doc, existing_asa.blob)
+      return
+    end
 
+    if doc.file_file_name.blank? || doc.url.blank?
+      drop_doc(doc.id)
+      return
+    end
+
+    key = blob_key_from_url(doc.url)
+    if key.blank?
+      drop_doc(doc.id)
+      return
+    end
+
+    if (existing_blob = ActiveStorage::Blob.find_by(key: key))
+      attach_and_finalize(parent, doc, existing_blob)
+      return
+    end
+
+    case storage_check(key)
+    when :missing
+      drop_doc(doc.id)
+      return
+    when :transient
+      return
+    end
+
+    metadata = fetch_blob_metadata(key) or return
+
+    blob = create_blob(key, doc, metadata)
     attach_and_finalize(parent, doc, blob)
   end
 
@@ -60,38 +82,15 @@ class MigrateDocumentToAttachmentWorker
       .exists?
   end
 
-  def create_blob_from_url(doc)
-    key = blob_key_from_url(doc.url)
-    return nil if key.blank?
-
-    if (existing_blob = ActiveStorage::Blob.find_by(key: key))
-      return existing_blob
-    end
-
-    metadata = fetch_blob_metadata(key) or return nil
-
-    ActiveStorage::Blob.create!(
-      key: key,
-      filename: doc.file_file_name,
-      content_type: doc.file_content_type.presence || metadata[:content_type],
-      byte_size: metadata[:byte_size],
-      checksum: metadata[:checksum],
-      service_name: ActiveStorage::Blob.service.name.to_s
-    )
-  rescue ActiveRecord::RecordNotUnique
-    ActiveStorage::Blob.find_by(key: key)
-  end
-
-  def blob_key_from_url(url)
-    URI(url).path.to_s.sub(%r{\A/}, '')
-  rescue URI::InvalidURIError
-    nil
+  def storage_check(key)
+    ActiveStorage::Blob.service.exist?(key) ? :present : :missing
+  rescue => e
+    Sidekiq.logger.warn "MigrateDocumentToAttachmentWorker: storage check failed for key=#{key}: #{e.class}: #{e.message}"
+    :transient
   end
 
   def fetch_blob_metadata(key)
     service = ActiveStorage::Blob.service
-    return nil unless service.exist?(key)
-
     case service.class.name
     when 'ActiveStorage::Service::S3Service'
       obj = service.bucket.object(key)
@@ -108,6 +107,25 @@ class MigrateDocumentToAttachmentWorker
     end
   rescue => e
     Sidekiq.logger.warn "MigrateDocumentToAttachmentWorker: blob metadata fetch failed for key=#{key}: #{e.class}: #{e.message}"
+    nil
+  end
+
+  def create_blob(key, doc, metadata)
+    ActiveStorage::Blob.create!(
+      key: key,
+      filename: doc.file_file_name,
+      content_type: doc.file_content_type.presence || metadata[:content_type],
+      byte_size: metadata[:byte_size],
+      checksum: metadata[:checksum],
+      service_name: ActiveStorage::Blob.service.name.to_s
+    )
+  rescue ActiveRecord::RecordNotUnique
+    ActiveStorage::Blob.find_by!(key: key)
+  end
+
+  def blob_key_from_url(url)
+    URI(url).path.to_s.sub(%r{\A/}, '')
+  rescue URI::InvalidURIError
     nil
   end
 
