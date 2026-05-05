@@ -283,4 +283,11 @@ namespace :loomio do
     end
   end
 
+  desc 'Migrate legacy Document records to ActiveStorage attachments on parent records'
+  task migrate_documents_to_attachments: :environment do
+    MigrateDocumentsToAttachmentsWorker.perform_async
+    puts "Enqueued MigrateDocumentsToAttachmentsWorker. Watch Sidekiq for progress."
+    puts "Remaining documents: #{Document.count}"
+  end
+
 end
