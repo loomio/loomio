@@ -2,14 +2,14 @@
 
 class Views::UserMailer::GroupExportReady < Views::ApplicationMailer::BaseLayout
 
-  def initialize(document:)
-    @document = document
+  def initialize(blob:)
+    @blob = blob
   end
 
   def view_template
     p do
       raw t(:"user_mailer.group_export_ready.body_html",
-        url: rails_blob_url(@document.file, disposition: "attachment"))
+        url: rails_blob_url(@blob, disposition: "attachment"))
     end
   end
 end

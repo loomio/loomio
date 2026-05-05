@@ -149,11 +149,13 @@ class UserMailerTest < ActionMailer::TestCase
 
   # Group export ready
   test "group_export_ready sends email with download link" do
-    document = Document.new(author: @user, title: "export.csv")
-    document.file.attach(io: StringIO.new("csv,data"), filename: "export.csv", content_type: "text/csv")
-    document.save!
+    blob = ActiveStorage::Blob.create_and_upload!(
+      io: StringIO.new("csv,data"),
+      filename: "export.csv",
+      content_type: "text/csv"
+    )
 
-    mail = UserMailer.group_export_ready(@user.id, @group.full_name, document.id)
+    mail = UserMailer.group_export_ready(@user.id, @group.full_name, blob.signed_id)
     assert_equal [@user.email], mail.to
     assert_equal I18n.t("user_mailer.group_export_ready.subject", group_name: @group.full_name), mail.subject
     assert_match "/rails/active_storage/blobs/", mail.body.encoded

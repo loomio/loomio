@@ -14,7 +14,7 @@ module MigrateEventsService
   end
 
   def self.migrate_paperclip
-    models = [Group, User, Discussion, Comment, Poll, Stance, Outcome, Document]
+    models = [Group, User, Discussion, Comment, Poll, Stance, Outcome]
 
     models.each do |model|
       attachments = model.column_names.map do |c|

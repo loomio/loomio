@@ -2,7 +2,7 @@ class PermittedParams < Struct.new(:params)
   MODELS = %w(
     user group membership_request membership poll poll_template outcome
     stance discussion discussion_template discussion_reader comment
-    contact_message document
+    contact_message
     webhook chatbot contact_request reaction tag
   )
 
@@ -77,7 +77,6 @@ class PermittedParams < Struct.new(:params)
       :stv_method,
       :stv_quota,
       :quorum_pct,
-      :document_ids, {document_ids: []},
       :poll_template_id,
       :poll_template_key,
       :poll_options_attributes, {poll_options_attributes:
@@ -162,7 +161,6 @@ class PermittedParams < Struct.new(:params)
      :recipient_user_ids, {recipient_user_ids: []},
      :recipient_chatbot_ids, {recipient_chatbot_ids: []},
      :recipient_emails, {recipient_emails: []},
-     :document_ids, {document_ids: []},
      :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}
    ]
   end
@@ -187,7 +185,6 @@ class PermittedParams < Struct.new(:params)
      :membership_granted_upon, :cover_photo, :logo, :category, :members_can_raise_motions,
      :members_can_start_discussions, :members_can_create_subgroups, :members_can_create_templates, :admins_can_edit_user_content,
      :new_threads_max_depth, :new_threads_newest_first, :request_to_join_prompt, :can_start_polls_without_discussion, :listed_in_explore,
-     :document_ids, {document_ids: []},
      :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}
    ]
   end
@@ -218,7 +215,6 @@ class PermittedParams < Struct.new(:params)
      :recipient_chatbot_ids, {recipient_chatbot_ids: []},
      :recipient_emails, {recipient_emails: []},
      :forked_event_ids, {forked_event_ids: []},
-     :document_ids, {document_ids: []},
      :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}
     ]
   end
@@ -252,7 +248,6 @@ class PermittedParams < Struct.new(:params)
 
   def comment_attributes
     [:body, :body_format, :discussion_id, :parent_id, :parent_type,
-      :document_ids, {document_ids: []},
       :link_previews, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]},
       :files, {files: []},
       :image_files, {image_files: []}]
@@ -270,7 +265,4 @@ class PermittedParams < Struct.new(:params)
     [:recipient_id, :message]
   end
 
-  def document_attributes
-    [:url, :title, :model_id, :model_type, :file, :filename]
-  end
 end
