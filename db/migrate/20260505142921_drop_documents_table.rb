@@ -1,20 +1,41 @@
-class MigrateDocumentToAttachmentWorker
-  include Sidekiq::Worker
+class DropDocumentsTable < ActiveRecord::Migration[8.0]
+  disable_ddl_transaction!
 
   PARENT_TYPES = %w[Comment Discussion Group Outcome Poll].freeze
 
-  def perform(doc_id)
-    doc = Document.find_by(id: doc_id)
-    return unless doc
+  class LegacyDocument < ActiveRecord::Base
+    self.table_name = 'documents'
+  end
 
-    parent = parent_for(doc.model_type, doc.model_id)
-    if parent.nil?
-      drop_doc(doc.id)
-      return
+  def up
+    return unless table_exists?(:documents)
+
+    n = LegacyDocument.count
+    if n > 0
+      say_with_time "Draining #{n} legacy Document records into ActiveStorage attachments" do
+        LegacyDocument.find_each(batch_size: 200) { |doc| migrate_doc(doc) }
+        remaining = LegacyDocument.count
+        if remaining > 0
+          raise "documents table still has #{remaining} rows after drain. " \
+                "Investigate before re-running this migration."
+        end
+      end
     end
 
-    existing_asa = ActiveStorage::Attachment.find_by(record_type: 'Document', record_id: doc.id, name: 'file')
-    if existing_asa
+    drop_table :documents
+  end
+
+  def down
+    raise ActiveRecord::IrreversibleMigration
+  end
+
+  private
+
+  def migrate_doc(doc)
+    parent = parent_for(doc.model_type, doc.model_id)
+    return drop_doc(doc.id) unless parent
+
+    if (existing_asa = ActiveStorage::Attachment.find_by(record_type: 'Document', record_id: doc.id, name: 'file'))
       attach_and_finalize(parent, doc, existing_asa.blob)
       return
     end
@@ -40,16 +61,18 @@ class MigrateDocumentToAttachmentWorker
       drop_doc(doc.id)
       return
     when :transient
-      return
+      raise "Storage check failed for key=#{key} on document #{doc.id}. " \
+            "Re-run after the storage backend is reachable."
     end
 
-    metadata = fetch_blob_metadata(key) or return
+    metadata = fetch_blob_metadata(key)
+    if metadata.nil?
+      raise "Failed to fetch blob metadata for key=#{key} on document #{doc.id}."
+    end
 
     blob = create_blob(key, doc, metadata)
     attach_and_finalize(parent, doc, blob)
   end
-
-  private
 
   def parent_for(model_type, model_id)
     return nil unless PARENT_TYPES.include?(model_type) && model_id
@@ -68,11 +91,15 @@ class MigrateDocumentToAttachmentWorker
       end
 
       ActiveStorage::Attachment.where(record_type: 'Document', record_id: doc.id).delete_all
-      Document.where(id: doc.id).delete_all
+      LegacyDocument.where(id: doc.id).delete_all
 
       parent.send(:build_attachments)
       parent.update_column(:attachments, parent[:attachments])
     end
+  rescue ActiveStorage::IntegrityError => e
+    raise "IntegrityError on doc=#{doc.id} parent=#{parent.class.name}##{parent.id} " \
+          "blob=#{blob.id} key=#{blob.key.inspect} content_type=#{blob.content_type.inspect} " \
+          "checksum=#{blob.checksum.inspect}: #{e.class}"
   end
 
   def parent_already_has_filename?(parent, filename)
@@ -84,8 +111,7 @@ class MigrateDocumentToAttachmentWorker
 
   def storage_check(key)
     ActiveStorage::Blob.service.exist?(key) ? :present : :missing
-  rescue => e
-    Sidekiq.logger.warn "MigrateDocumentToAttachmentWorker: storage check failed for key=#{key}: #{e.class}: #{e.message}"
+  rescue
     :transient
   end
 
@@ -94,19 +120,14 @@ class MigrateDocumentToAttachmentWorker
     case service.class.name
     when 'ActiveStorage::Service::S3Service'
       obj = service.bucket.object(key)
-      { byte_size: obj.content_length,
-        content_type: obj.content_type,
-        checksum: obj.etag.to_s.tr('"', '') }
+      { byte_size: obj.content_length, content_type: obj.content_type, checksum: obj.etag.to_s.tr('"', '') }
     when 'ActiveStorage::Service::DiskService'
       path = service.send(:path_for, key)
-      { byte_size: File.size(path),
-        content_type: nil,
-        checksum: OpenSSL::Digest::MD5.file(path).base64digest }
+      { byte_size: File.size(path), content_type: nil, checksum: OpenSSL::Digest::MD5.file(path).base64digest }
     else
       nil
     end
-  rescue => e
-    Sidekiq.logger.warn "MigrateDocumentToAttachmentWorker: blob metadata fetch failed for key=#{key}: #{e.class}: #{e.message}"
+  rescue
     nil
   end
 
@@ -131,6 +152,6 @@ class MigrateDocumentToAttachmentWorker
 
   def drop_doc(doc_id)
     ActiveStorage::Attachment.where(record_type: 'Document', record_id: doc_id).delete_all
-    Document.where(id: doc_id).delete_all
+    LegacyDocument.where(id: doc_id).delete_all
   end
 end

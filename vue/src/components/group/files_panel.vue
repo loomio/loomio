@@ -18,7 +18,6 @@ export default
   data() {
     return {
       group: null,
-      loader: null,
       attachmentLoader: null,
       searchQuery: '',
       items: [],
@@ -46,17 +45,6 @@ export default
       }
     });
 
-    this.loader = new RecordLoader({
-      collection: 'documents',
-      path: 'for_group',
-      params: {
-        group_id: this.group.id,
-        per: this.per,
-        subgroups: this.subgroups,
-        from: this.from
-      }
-    });
-
     this.attachmentLoader = new RecordLoader({
       collection: 'attachments',
       params: {
@@ -68,7 +56,7 @@ export default
     });
 
     this.watchRecords({
-      collections: ['documents', 'attachments'],
+      collections: ['attachments'],
       query: () => this.query()
     });
 
@@ -86,29 +74,15 @@ export default
 
   methods: {
     query() {
-      const groupIds = (() => { switch (this.subgroups) {
-        case 'none': return [this.group.id];
-        case 'mine': return intersection(this.group.organisationIds(), Session.user().groupIds());
-        case 'all': return this.group.organisationIds();
-      } })();
-
-      const documents = Records.documents.collection.chain().
-                     find({groupId: {$in: groupIds}}).
-                     find({title: {$regex: new RegExp(`${escapeRegExp(this.searchQuery)}`, 'i')}}).
-                     data();
-
       const attachments = Records.attachments.collection.chain().
                      find({id: {$in: this.attachmentIds}}).
                      find({filename: {$regex: new RegExp(`${escapeRegExp(this.searchQuery)}`, 'i')}}).
                      data();
 
-      this.items = orderBy(documents.concat(attachments), 'createdAt', 'desc');
+      this.items = orderBy(attachments, 'createdAt', 'desc');
     },
 
     fetch() {
-      this.loader.fetchRecords({
-        q: this.searchQuery});
-
       this.attachmentLoader.fetchRecords({q: this.searchQuery}).then(data => {
         this.attachmentIds = uniq(this.attachmentIds.concat((data.attachments || []).map(a => a.id)));
       }).then(() => this.query());
@@ -120,8 +94,8 @@ export default
   },
 
   computed: {
-    showLoadMore() { return !this.loader.exhausted && !this.attachmentLoader.exhausted; },
-    loading() { return this.loader.loading || this.attachmentLoader.loading; },
+    showLoadMore() { return !this.attachmentLoader.exhausted; },
+    loading() { return this.attachmentLoader.loading; },
     canAdminister() { return AbilityService.canAdminister(this.group); }
   }
 };
@@ -140,9 +114,7 @@ div
       :placeholder="$t('navbar.search_files_short')"
       :prepend-inner-icon="mdiMagnify")
   v-card.group-files-panel(outlined)
-    div(v-if="loader.status == 403")
-      p.pa-4.text-center(v-t="'error_page.forbidden'")
-    div(v-else)
+    div
       p.text-center.pa-4(v-if="!loading && !items.length" v-t="'common.no_results_found'")
       v-table(v-else :items="items" hide-default-footer)
         thead
@@ -156,7 +128,7 @@ div
             td
               v-layout(align-center)
                 common-icon.mr-2(:name="'mdi-'+ item.icon")
-                a.text-on-surface(:href="item.downloadUrl || item.url") {{item.filename || item.title }}
+                a.text-on-surface(:href="item.downloadUrl") {{item.filename}}
             td
               user-avatar(:user="item.author()")
             td
@@ -166,7 +138,6 @@ div
 
       .d.flex.justify-center
         .d-flex.flex-column.justify-center.align-center
-          //- span(v-if="loader.total == null") {{items.length}} / {{attachmentLoader.total}}
           v-btn.my-2(
             variant="tonal"
             color='primary'

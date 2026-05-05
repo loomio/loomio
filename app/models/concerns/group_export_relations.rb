@@ -30,13 +30,6 @@ module GroupExportRelations
     has_many :subgroup_cover_photos,  through: :subgroups,           source: :cover_photo_attachment
     has_many :subgroup_logos,         through: :subgroups,           source: :logo_attachment
 
-    # documents
-    has_many :discussion_documents,        through: :discussions,        source: :documents
-    has_many :exportable_poll_documents,   through: :exportable_polls,   source: :documents
-    has_many :comment_documents,           through: :comments,           source: :documents
-    has_many :public_discussion_documents, through: :public_discussions, source: :documents
-    has_many :public_comment_documents,    through: :public_comments,    source: :documents
-
     # reactions
     has_many :discussion_reactions,         -> { joins(:user) }, through: :discussions,         source: :reactions
     has_many :exportable_poll_reactions,    -> { joins(:user) }, through: :exportable_polls,    source: :reactions
@@ -116,15 +109,6 @@ module GroupExportRelations
 
   def all_notifications
     Notification.where(event_id: all_events.pluck(:id))
-  end
-
-  def all_documents
-    Queries::UnionQuery.for(:documents, [
-      self.documents,
-      self.discussion_documents,
-      self.exportable_poll_documents,
-      self.comment_documents
-    ])
   end
 
   def all_reactions

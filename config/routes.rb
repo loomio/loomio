@@ -293,11 +293,6 @@ Rails.application.routes.draw do
       end
       resources :reactions,   only: [:create, :update, :index, :destroy]
 
-      resources :documents, only: [:create, :update, :destroy, :index] do
-        get :for_group, on: :collection
-        get :for_discussion, on: :collection
-      end
-
       resource :translations, only: [] do
         get :inline, to: 'translations#inline'
       end

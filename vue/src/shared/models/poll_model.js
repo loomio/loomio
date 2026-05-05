@@ -1,7 +1,6 @@
 import BaseModel        from '@/shared/record_store/base_model';
 import AppConfig        from '@/shared/services/app_config';
 import Session          from '@/shared/services/session';
-import HasDocuments     from '@/shared/mixins/has_documents';
 import { I18n }             from '@/i18n';
 import { addDays, startOfHour } from 'date-fns';
 import { snakeCase, compact, head, orderBy, sortBy, map, flatten, slice, uniq, isEqual, shuffle } from 'lodash-es';
@@ -24,10 +23,6 @@ export default class PollModel extends BaseModel {
 
   collabKeyParams() {
     return [this.groupId, this.sourceTemplateId, this.pollTemplateId, this.pollTemplateKey];
-  }
-
-  afterConstruction() {
-    HasDocuments.apply(this, {showTitle: true});
   }
 
   config() {
