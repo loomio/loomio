@@ -110,13 +110,11 @@ class UserMailer < ApplicationMailer
     }
   end
 
-  def group_export_ready(recipient_id, group_name, document_id)
-    user     = User.find(recipient_id)
-    document = Document.find(document_id)
+  def group_export_ready(recipient_id, group_name, blob_signed_id)
+    user = User.find(recipient_id)
+    blob = ActiveStorage::Blob.find_signed!(blob_signed_id)
 
-    component = Views::UserMailer::GroupExportReady.new(
-      document: document
-    )
+    component = Views::UserMailer::GroupExportReady.new(blob: blob)
 
     send_email(to: user.email, locale: user.locale, component: component) {
       I18n.t("user_mailer.group_export_ready.subject", group_name: group_name)

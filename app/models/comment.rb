@@ -55,8 +55,6 @@ class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :parent, polymorphic: true
 
-  has_many :documents, as: :model, dependent: :destroy
-
   validates_presence_of :user, unless: :discarded_at
 
   validate :parent_comment_belongs_to_same_discussion

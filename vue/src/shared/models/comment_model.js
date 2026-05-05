@@ -1,6 +1,5 @@
 import BaseModel       from '@/shared/record_store/base_model';
 import AppConfig       from '@/shared/services/app_config';
-import HasDocuments    from '@/shared/mixins/has_documents';
 import {capitalize, map, invokeMap} from 'lodash-es';
 import Records from '@/shared/services/records';
 
@@ -9,10 +8,6 @@ export default class CommentModel extends BaseModel {
   static plural = 'comments';
   static indices = ['discussionId', 'authorId'];
   static uniqueIndices = ['id'];
-
-  afterConstruction() {
-    HasDocuments.apply(this);
-  }
 
   collabKeyParams() {
     return [this.discussionId, this.parentType, this.parentId];

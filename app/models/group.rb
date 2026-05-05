@@ -53,16 +53,12 @@ class Group < ApplicationRecord
   has_many :polls, dependent: :destroy
   has_many :poll_templates, dependent: :destroy
 
-  has_many :documents, as: :model, dependent: :destroy
   has_many :requested_users, through: :membership_requests, source: :user
   has_many :comments, through: :discussions
   has_many :public_comments, through: :public_discussions, source: :comments
 
   has_many :chatbots, dependent: :destroy
 
-  has_many :discussion_documents,        through: :discussions,        source: :documents
-  has_many :poll_documents,              through: :polls,              source: :documents
-  has_many :comment_documents,           through: :comments,           source: :documents
   has_many :tags, foreign_key: :group_id
 
   belongs_to :subscription
