@@ -138,6 +138,10 @@ class DropDocumentsTable < ActiveRecord::Migration[8.0]
       content_type: doc.file_content_type.presence || metadata[:content_type],
       byte_size: metadata[:byte_size],
       checksum: metadata[:checksum],
+      # Skip ActiveStorage::AnalyzeJob — the checksum we got from S3 may be a
+      # multipart etag (not the file's MD5), which causes verify_integrity_of
+      # to raise IntegrityError on download.
+      metadata: { 'analyzed' => true },
       service_name: ActiveStorage::Blob.service.name.to_s
     )
   rescue ActiveRecord::RecordNotUnique
