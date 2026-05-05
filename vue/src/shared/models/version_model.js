@@ -15,7 +15,7 @@ export default class VersionModel extends BaseModel {
   }
 
   editedAttributeNames() {
-    return filter(keys(this.changes).sort(), key => includes(['title', 'name', 'description', 'closing_at', 'private', 'document_ids'], key));
+    return filter(keys(this.changes).sort(), key => includes(['title', 'name', 'description', 'closing_at', 'private'], key));
   }
 
   attributeEdited(name) {

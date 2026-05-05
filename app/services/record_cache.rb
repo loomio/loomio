@@ -86,9 +86,6 @@ class RecordCache
     when 'MembershipRequest'
       obj.user_ids.concat collection.map(&:requestor_id).concat(collection.map(&:responder_id)).compact.uniq
 
-    when 'Document'
-      obj.user_ids.concat collection.map(&:author_id).compact
-
     when 'SearchResult'
       obj.user_ids.concat collection.map(&:author_id).compact
       obj.add_polls_options_stances_outcomes Poll.kept.where(id: collection.map(&:poll_id))

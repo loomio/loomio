@@ -2,7 +2,6 @@ import BaseModel        from '@/shared/record_store/base_model';
 import AppConfig        from '@/shared/services/app_config';
 import Session          from '@/shared/services/session';
 import RangeSet         from '@/shared/services/range_set';
-import HasDocuments     from '@/shared/mixins/has_documents';
 import { isAfter } from 'date-fns';
 import dateIsEqual from 'date-fns/isEqual';
 import { map, compact, flatten, isEqual, isEmpty, filter, some, head, last, sortBy, isArray, throttle } from 'lodash-es';
@@ -32,7 +31,6 @@ export default class DiscussionModel extends BaseModel {
 
   afterConstruction() {
     if (this.isNew()) { this.private = this.privateDefaultValue(); }
-    HasDocuments.apply(this, {showTitle: true});
   }
 
   collabKeyParams(){

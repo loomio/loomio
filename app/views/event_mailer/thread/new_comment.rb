@@ -20,9 +20,7 @@ class Views::EventMailer::Thread::NewComment < Views::ApplicationMailer::Compone
           else
             b { plain @comment.author.name_or_username }
             p { raw TranslationService.formatted_text(@comment, :body, @recipient) }
-            if @comment.documents.any?
-              render Views::EventMailer::Common::Attachments.new(resource: @comment)
-            end
+            render Views::EventMailer::Common::Attachments.new(resource: @comment)
           end
         end
       end

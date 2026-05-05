@@ -57,7 +57,6 @@ class Outcome < ApplicationRecord
   belongs_to :poll_option, required: false
   belongs_to :author, class_name: 'User', required: true
   has_many :stances, through: :poll
-  has_many :documents, as: :model, dependent: :destroy
 
   %w(
     poll_type dates_as_options group group_id discussion discussion_id
