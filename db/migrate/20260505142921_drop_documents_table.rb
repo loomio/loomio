@@ -96,6 +96,10 @@ class DropDocumentsTable < ActiveRecord::Migration[8.0]
       parent.send(:build_attachments)
       parent.update_column(:attachments, parent[:attachments])
     end
+  rescue ActiveStorage::IntegrityError => e
+    raise "IntegrityError on doc=#{doc.id} parent=#{parent.class.name}##{parent.id} " \
+          "blob=#{blob.id} key=#{blob.key.inspect} content_type=#{blob.content_type.inspect} " \
+          "checksum=#{blob.checksum.inspect}: #{e.class}"
   end
 
   def parent_already_has_filename?(parent, filename)
