@@ -35,6 +35,8 @@ export default {
         EventBus.$emit('closeModal');
         Flash.success('email_to_group.email_released');
         this.callbackFn();
+      }).catch((err) => {
+        Flash.serverError(err);
       }).finally(() => {
         this.loading = false;
       });

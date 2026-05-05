@@ -92,6 +92,53 @@ class Api::V1::ReceivedEmailsControllerTest < ActionController::TestCase
     assert_equal @user.id, MemberEmailAlias.last.user_id
   end
 
+  test "allow succeeds when an alias for that sender already exists" do
+    MemberEmailAlias.create!(
+      email: 'someone@gmail.com',
+      user_id: @user.id,
+      group_id: @group.id,
+      author_id: @user.id
+    )
+    received_email = ReceivedEmail.create!(
+      group_id: @group.id,
+      headers: {
+        to: "#{@group.handle}@#{ENV['REPLY_HOSTNAME']}",
+        from: "someone@gmail.com"
+      },
+      body_html: "<p>hello there</p>",
+      body_text: "hello there"
+    )
+
+    assert_difference 'MemberEmailAlias.count', 0 do
+      post :allow, params: { id: received_email.id, user_id: @user.id }
+    end
+    assert_response :success
+  end
+
+  test "allow upgrades a previously blocked alias" do
+    received_email = ReceivedEmail.create!(
+      group_id: @group.id,
+      headers: {
+        to: "#{@group.handle}@#{ENV['REPLY_HOSTNAME']}",
+        from: "someone@gmail.com"
+      },
+      body_html: "<p>hello there</p>",
+      body_text: "hello there"
+    )
+    MemberEmailAlias.create!(
+      email: 'someone@gmail.com',
+      user_id: nil,
+      group_id: @group.id,
+      author_id: @user.id
+    )
+
+    assert_difference 'MemberEmailAlias.count', 0 do
+      post :allow, params: { id: received_email.id, user_id: @user.id }
+    end
+    assert_response :success
+    assert_equal @user.id, MemberEmailAlias.find_by(email: 'someone@gmail.com', group_id: @group.id).user_id
+  end
+
   test "allow returns 404 for wrong group" do
     another_received_email = ReceivedEmail.create!(
       group_id: @another_group.id,
@@ -149,6 +196,30 @@ class Api::V1::ReceivedEmailsControllerTest < ActionController::TestCase
     assert_response :success
     assert_equal 1, json['received_emails'].length
     assert_nil MemberEmailAlias.last.user_id
+  end
+
+  test "block is idempotent when alias already exists" do
+    received_email = ReceivedEmail.create!(
+      group_id: @group.id,
+      headers: {
+        to: "#{@group.handle}@#{ENV['REPLY_HOSTNAME']}",
+        from: "someone@gmail.com"
+      },
+      body_html: "<p>hello there</p>",
+      body_text: "hello there"
+    )
+    MemberEmailAlias.create!(
+      email: 'someone@gmail.com',
+      user_id: @user.id,
+      group_id: @group.id,
+      author_id: @user.id
+    )
+
+    assert_difference 'MemberEmailAlias.count', 0 do
+      post :block, params: { id: received_email.id, user_id: @user.id }
+    end
+    assert_response :success
+    assert_nil MemberEmailAlias.find_by(email: 'someone@gmail.com', group_id: @group.id).user_id
   end
 
   test "block returns 404 for wrong group" do
