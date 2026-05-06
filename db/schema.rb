@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_05_01_000001) do
-  create_schema "pghero"
-
+ActiveRecord::Schema[8.0].define(version: 2026_05_05_142921) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -280,27 +278,6 @@ ActiveRecord::Schema[8.0].define(version: 2026_05_01_000001) do
     t.index ["tags"], name: "index_discussions_on_tags", using: :gin
     t.index ["template"], name: "index_discussions_on_template", where: "(template IS TRUE)"
     t.index ["topic_id"], name: "index_discussions_on_topic_id"
-  end
-
-  create_table "documents", id: :serial, force: :cascade do |t|
-    t.integer "model_id"
-    t.string "model_type"
-    t.string "title"
-    t.string "url"
-    t.string "doctype", null: false
-    t.string "color", null: false
-    t.datetime "created_at", precision: nil
-    t.datetime "updated_at", precision: nil
-    t.string "icon"
-    t.integer "author_id", null: false
-    t.string "web_url"
-    t.string "thumb_url"
-    t.string "file_file_name"
-    t.string "file_content_type"
-    t.integer "group_id"
-    t.index ["group_id"], name: "index_documents_on_group_id"
-    t.index ["model_id"], name: "index_documents_on_model_id"
-    t.index ["model_type"], name: "index_documents_on_model_type"
   end
 
   create_table "events", id: :serial, force: :cascade do |t|

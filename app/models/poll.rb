@@ -161,7 +161,6 @@ class Poll < ApplicationRecord
   has_many :poll_options, -> { order('priority') }, dependent: :destroy, autosave: true
   accepts_nested_attributes_for :poll_options, allow_destroy: true
 
-  has_many :documents, as: :model, dependent: :destroy
   has_many :stance_receipts, dependent: :destroy
 
   scope :dangling, -> {

@@ -16,7 +16,6 @@ class MigrateUserWorker
 
   SCHEMA = {
     attachments: :user_id,
-    documents: :author_id,
     comments: :user_id,
     reactions: :user_id,
     topic_readers: :user_id,

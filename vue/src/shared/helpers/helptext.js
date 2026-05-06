@@ -107,8 +107,6 @@ var discussionEditedKey = function(event) {
     return 'discussion_privacy_edited';
   } else if (includes(changes, 'description')) {
     return 'discussion_context_edited';
-  } else if (includes(changes, 'document_ids')) {
-    return 'discussion_attachments_edited';
   } else {
     return 'discussion_edited';
   }

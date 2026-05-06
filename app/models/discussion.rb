@@ -84,13 +84,10 @@ class Discussion < ApplicationRecord
   has_many :topic_readers, through: :topic
   has_many :readers, -> { merge TopicReader.active }, through: :topic_readers, source: :user
 
+  # TODO remove these 3 associations if we can.
   has_many :comments, through: :topic
   has_many :comment_documents, through: :comments, source: :documents
-
   has_many :commenters, -> { uniq }, through: :comments, source: :user
-  has_many :documents, as: :model, dependent: :destroy
-  has_many :poll_documents,    through: :polls,    source: :documents
-
   include DiscussionExportRelations
 
   scope :search_for, lambda { |q|

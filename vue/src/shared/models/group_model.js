@@ -1,5 +1,4 @@
 import BaseModel    from '@/shared/record_store/base_model';
-import HasDocuments from '@/shared/mixins/has_documents';
 import Records from '@/shared/services/records';
 import {filter, some, map, each, compact, sortBy} from 'lodash-es';
 
@@ -56,10 +55,6 @@ export default class GroupModel extends BaseModel {
     };
   }
 
-  afterConstruction() {
-    HasDocuments.apply(this, {showTitle: true});
-  }
-
   relationships() {
     this.hasMany('topics', {find: {discardedAt: null}});
     this.hasMany('discussions', {find: {discardedAt: null}});
@@ -67,7 +62,6 @@ export default class GroupModel extends BaseModel {
     this.hasMany('membershipRequests');
     this.hasMany('memberships');
     this.hasMany('chatbots');
-    this.hasMany('allDocuments', {from: 'documents', with: 'groupId', of: 'id'});
     this.hasMany('subgroups', {from: 'groups', with: 'parentId', of: 'id', orderBy: 'name'});
     this.belongsTo('parent', {from: 'groups'});
     this.belongsTo('translation');

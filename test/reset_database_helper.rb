@@ -13,7 +13,6 @@ module ResetDatabaseHelper
       attachments
       chatbots
       comments
-      documents
       login_tokens
       member_email_aliases
       membership_requests

@@ -1,9 +1,8 @@
 class PermittedParams < Struct.new(:params)
   MODELS = %w(
     user group membership_request membership poll poll_template outcome
-    stance discussion discussion_template discussion_reader topic comment
-    contact_message document
-    webhook chatbot contact_request reaction tag
+    stance discussion discussion_template topic_reader topic comment
+    contact_message webhook chatbot contact_request reaction tag
   )
 
   MODELS.each do |kind|
@@ -77,7 +76,6 @@ class PermittedParams < Struct.new(:params)
       :stv_method,
       :stv_quota,
       :quorum_pct,
-      :document_ids, {document_ids: []},
       :poll_template_id,
       :poll_template_key,
       :poll_options_attributes, {poll_options_attributes:
@@ -164,7 +162,6 @@ class PermittedParams < Struct.new(:params)
      :recipient_user_ids, {recipient_user_ids: []},
      :recipient_chatbot_ids, {recipient_chatbot_ids: []},
      :recipient_emails, {recipient_emails: []},
-     :document_ids, {document_ids: []},
      :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}
    ]
   end
@@ -177,7 +174,7 @@ class PermittedParams < Struct.new(:params)
     [:title, :volume, :apply_to_all, :set_default]
   end
 
-  def discussion_reader_attributes
+  def topic_reader_attributes
     [:volume]
   end
 
@@ -192,8 +189,15 @@ class PermittedParams < Struct.new(:params)
      :description, :description_format, :is_visible_to_parent_members, :parent_members_can_see_discussions,
      :membership_granted_upon, :cover_photo, :logo, :category, :members_can_raise_motions,
      :members_can_start_discussions, :members_can_create_subgroups, :members_can_create_templates, :admins_can_edit_user_content,
+<<<<<<< HEAD
      :request_to_join_prompt, :listed_in_explore,
      :document_ids, {document_ids: []},
+||||||| a6de093b9d
+     :new_threads_max_depth, :new_threads_newest_first, :request_to_join_prompt, :can_start_polls_without_discussion, :listed_in_explore,
+     :document_ids, {document_ids: []},
+=======
+     :new_threads_max_depth, :new_threads_newest_first, :request_to_join_prompt, :can_start_polls_without_discussion, :listed_in_explore,
+>>>>>>> master
      :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}
    ]
   end
@@ -222,7 +226,6 @@ class PermittedParams < Struct.new(:params)
      :recipient_chatbot_ids, {recipient_chatbot_ids: []},
      :recipient_emails, {recipient_emails: []},
      :forked_event_ids, {forked_event_ids: []},
-     :document_ids, {document_ids: []},
      :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}
     ]
   end
@@ -258,8 +261,15 @@ class PermittedParams < Struct.new(:params)
   end
 
   def comment_attributes
+<<<<<<< HEAD
     [:body, :body_format, :parent_id, :parent_type,
       :document_ids, {document_ids: []},
+||||||| a6de093b9d
+    [:body, :body_format, :discussion_id, :parent_id, :parent_type,
+      :document_ids, {document_ids: []},
+=======
+    [:body, :body_format, :discussion_id, :parent_id, :parent_type,
+>>>>>>> master
       :link_previews, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]},
       :files, {files: []},
       :image_files, {image_files: []}]
@@ -277,7 +287,4 @@ class PermittedParams < Struct.new(:params)
     [:recipient_id, :message]
   end
 
-  def document_attributes
-    [:url, :title, :model_id, :model_type, :file, :filename]
-  end
 end

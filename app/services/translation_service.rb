@@ -147,9 +147,7 @@ class TranslationService
   end
 
   def self.update_and_broadcast(translatable_type, translatable_id)
-    model = Object.const_get(translatable_type).find(translatable_id)
-
-
+    return unless model = Object.const_get(translatable_type).find_by(id: translatable_id)
 
     Translation.where(translatable_type: translatable_type,
                       translatable_id: translatable_id).each do |translation|

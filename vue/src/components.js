@@ -30,7 +30,6 @@ export default {
   DiscussionForkActions: 'discussion/fork_actions',
   DiscussionStart: 'discussion/start',
   DismissModalButton: 'common/dismiss_modal_button',
-  DocumentList: 'document/list',
   EditCommentForm: 'thread/edit_comment_form',
   EventChildren: 'thread/event_children',
   CommonError: 'common/error',

@@ -1,6 +1,5 @@
 import BaseModel        from '@/shared/record_store/base_model';
 import AppConfig        from '@/shared/services/app_config';
-import HasDocuments     from '@/shared/mixins/has_documents';
 import NullGroupModel   from '@/shared/models/null_group_model';
 import {capitalize} from 'lodash-es';
 import Records from '@/shared/services/records';
@@ -30,10 +29,6 @@ export default class OutcomeModel extends BaseModel {
       groupId: null,
       reviewOn: null
     };
-  }
-
-  afterConstruction() {
-    HasDocuments.apply(this);
   }
 
   collabKeyParams() {

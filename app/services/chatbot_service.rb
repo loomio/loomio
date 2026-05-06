@@ -20,7 +20,7 @@ class ChatbotService
   end
 
   def self.publish_event!(event_id)
-    event = Event.find(event_id)
+    return unless event = Event.find_by(id: event_id)
     event.reload
     return if event.eventable.nil?
 
