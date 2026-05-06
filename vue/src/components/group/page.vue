@@ -119,7 +119,6 @@ v-main
       menu-icon='mdi-cog'
       :menu-actions='menuActions')
     join-group-button(:group='group')
-    document-list(:model='group')
     attachment-list(:attachments="group.attachments")
     v-divider.mt-4
     v-tabs(
