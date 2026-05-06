@@ -11,7 +11,6 @@ class Rack::Attack
   end
 
   RATE_MULTIPLIER = ENV.fetch('RACK_ATTACK_RATE_MULTIPLIER', 1).to_i
-  TIME_MULTIPLIER = ENV.fetch('RACK_ATTACK_TIME_MULTIPLIER', 1).to_i
 
   # Exempt internal service-to-service traffic (Docker bridge, loopback,
   # RFC1918) from rate limits. Container-to-container requests have no
@@ -29,14 +28,14 @@ class Rack::Attack
     addr && PRIVATE_NETWORKS.any? { |net| net.include?(addr) }
   end
 
-  throttle('req/ip', limit: 900 * RATE_MULTIPLIER, period: (5 * TIME_MULTIPLIER).minutes) do |req|
+  throttle('req/ip', limit: 900 * RATE_MULTIPLIER, period: 5.minutes) do |req|
     req.remote_ip unless req.path == '/bug_tunnel'
   end
 
   # Dedicated higher-ceiling throttle for the Sentry tunnel. A single client
   # in a JS error loop can spike bug_tunnel traffic without meaning to DoS
   # the site — give it room, but still stop runaway clients.
-  throttle('bug_tunnel/ip', limit: 500 * RATE_MULTIPLIER, period: (5 * TIME_MULTIPLIER).minutes) do |req|
+  throttle('bug_tunnel/ip', limit: 500 * RATE_MULTIPLIER, period: 5.minutes) do |req|
     req.remote_ip if req.path == '/bug_tunnel'
   end
   IP_POST_LIMITS = {
@@ -67,19 +66,19 @@ class Rack::Attack
   # Throttle only creation (POST to the exact collection path). Updates and
   # nested member actions fall through to the global req/ip limit above.
   IP_POST_LIMITS.each_pair do |route, limit|
-    throttle("post/ip/hour #{route}", limit: limit * RATE_MULTIPLIER, period: (1 * TIME_MULTIPLIER).hour) do |req|
+    throttle("post/ip/hour #{route}", limit: limit * RATE_MULTIPLIER, period: 1.hour) do |req|
       req.remote_ip if req.post? && req.path == route
     end
   end
 
   # Per-email rate limiting on auth endpoints
-  throttle("login_tokens/email", limit: 5 * RATE_MULTIPLIER, period: (1 * TIME_MULTIPLIER).hour) do |req|
+  throttle("login_tokens/email", limit: 5 * RATE_MULTIPLIER, period: 1.hour) do |req|
     if req.post? && req.path.starts_with?('/api/v1/login_tokens')
       req.params['email'].to_s.downcase.presence
     end
   end
 
-  throttle("sessions/email", limit: 10 * RATE_MULTIPLIER, period: (1 * TIME_MULTIPLIER).hour) do |req|
+  throttle("sessions/email", limit: 10 * RATE_MULTIPLIER, period: 1.hour) do |req|
     if req.post? && req.path.starts_with?('/api/v1/sessions')
       req.params.dig('user', 'email').to_s.downcase.presence
     end
@@ -88,17 +87,11 @@ class Rack::Attack
   # /api/v1/profile/email_status is unauthenticated and falls through to
   # User.find_by(email:), so it's the enumeration surface. Throttle it
   # tightly and separately from the rest of /api/v1/profile/*.
-  throttle("email_status/ip", limit: 20 * RATE_MULTIPLIER, period: (1 * TIME_MULTIPLIER).hour) do |req|
+  throttle("email_status/ip", limit: 20 * RATE_MULTIPLIER, period: 1.hour) do |req|
     req.remote_ip if req.get? && req.path == '/api/v1/profile/email_status'
   end
 
-  throttle("email_status/email", limit: 5 * RATE_MULTIPLIER, period: (1 * TIME_MULTIPLIER).hour) do |req|
-    if req.get? && req.path == '/api/v1/profile/email_status'
-      req.params['email'].to_s.downcase.presence
-    end
-  end
-
-  throttle("profile_get/ip", limit: 60 * RATE_MULTIPLIER, period: (1 * TIME_MULTIPLIER).hour) do |req|
+  throttle("profile_get/ip", limit: 60 * RATE_MULTIPLIER, period: 1.hour) do |req|
     req.remote_ip if req.get? && req.path.starts_with?('/api/v1/profile/') && req.path != '/api/v1/profile/email_status'
   end
 
