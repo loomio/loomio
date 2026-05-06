@@ -17,5 +17,4 @@ export default {
   formatted-text.poll-common-details-panel__details(:model="poll" field="details")
   link-previews(:model="poll")
   attachment-list(:attachments="poll.attachments")
-  document-list(:model='poll')
 </template>
