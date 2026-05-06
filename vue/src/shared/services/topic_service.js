@@ -59,7 +59,7 @@ export default new class TopicService {
       start_vote: {
         name: 'activity_card.start_a_vote',
         icon: 'mdi-thumbs-up-down-outline',
-        collection: 'actions',
+        // collection: 'actions',
         canPerform() {
           return AbilityService.canStartPoll(topic);
         },
@@ -73,7 +73,7 @@ export default new class TopicService {
         name: 'comment_form.add_a_comment',
         icon: 'mdi-comment-outline',
         dockDisplay: 'icon',
-        collection: 'actions',
+        // collection: 'actions',
         canPerform() {
           return AbilityService.canAddComment(topic);
         },

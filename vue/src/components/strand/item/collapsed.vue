@@ -21,7 +21,7 @@ onMounted(() => {
 <template lang="pug">
 .d-flex.align-center(:class="[`positionKey-${obj.event.positionKey}`, `sequenceId-${obj.event.sequenceId}`]")
   .strand-item__circle.mr-2(v-if="loader.collapsed[obj.event.id]" @click.stop="loader.expand(obj.event)")
-    common-icon(name="mdi-arrow-split-horizontal")
+    common-icon(name="mdi-unfold-more-horizontal")
   .strand-item__collapsed-headline(@click="loader.expand(obj.event)")
     strand-item-headline.text-medium-emphasis(:event="obj.event" :eventable="obj.eventable" collapsed)
   .strand-item__descendant-avatars(v-if="users.length")
