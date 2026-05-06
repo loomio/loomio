@@ -168,7 +168,7 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
   test "does not allow logged out users to close a thread" do
     patch :close, params: { id: @topic.id }
 
-    assert_response :forbidden
+    assert_response :unauthorized
   end
 
   # Test reopen action
@@ -270,7 +270,7 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
   test "does not allow non-users to mark topics as seen" do
     patch :mark_as_seen, params: { id: @topic.id }
 
-    assert_response :forbidden
+    assert_response :unauthorized
   end
 
   # Test set_volume action

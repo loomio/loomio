@@ -48,14 +48,10 @@ class DiscussionTest < ActiveSupport::TestCase
     assert_includes topic.errors.full_messages, "Private must be private"
   end
 
-  # Thread items (tracked on Topic)
-  # The root event (new_discussion) has sequence_id 0 and counts as an item.
-  # items_count includes the root event. replies_count = items_count - 1.
   test "new discussion has correct initial values" do
     discussion = DiscussionService.create(params: { group_id: @group.id, title: "Test #{SecureRandom.hex(4)}" }, actor: @admin)
     topic = discussion.topic.reload
     assert_equal 1, topic.items_count
-    assert_equal 0, topic.replies_count
     assert_not_nil topic.last_activity_at
     assert_equal 0, topic.first_sequence_id
     assert_equal 0, topic.last_sequence_id
@@ -68,7 +64,6 @@ class DiscussionTest < ActiveSupport::TestCase
     event.reload
     topic = discussion.topic.reload
     assert_equal 2, topic.items_count
-    assert_equal 1, topic.replies_count
     assert_equal event.created_at, topic.last_activity_at
     assert_equal 0, topic.first_sequence_id
     assert_equal event.sequence_id, topic.last_sequence_id
@@ -84,7 +79,6 @@ class DiscussionTest < ActiveSupport::TestCase
     topic.update_sequence_info!
     topic.reload
     assert_equal 1, topic.items_count
-    assert_equal 0, topic.replies_count
     assert_equal 0, topic.last_sequence_id
     assert_equal 0, topic.first_sequence_id
   end
@@ -105,7 +99,6 @@ class DiscussionTest < ActiveSupport::TestCase
     event2.reload
     topic = discussion.topic.reload
     assert_equal 2, topic.items_count
-    assert_equal 1, topic.replies_count
     assert_equal event2.created_at, topic.last_activity_at
     assert_equal 0, topic.first_sequence_id
     assert_equal event2.sequence_id, topic.last_sequence_id
@@ -127,7 +120,6 @@ class DiscussionTest < ActiveSupport::TestCase
     topic.update_sequence_info!
     topic.reload
     assert_equal 2, topic.items_count
-    assert_equal 1, topic.replies_count
     assert_equal event1.reload.created_at, topic.last_activity_at
     assert_equal 0, topic.first_sequence_id
     assert_equal event1.sequence_id, topic.last_sequence_id

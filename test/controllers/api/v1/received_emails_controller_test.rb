@@ -3,6 +3,7 @@ require 'test_helper'
 class Api::V1::ReceivedEmailsControllerTest < ActionController::TestCase
   setup do
     @admin = users(:admin)
+    @user = users(:user)
     @group = groups(:group)
     hex = SecureRandom.hex(4)
     @another_group = Group.create!(name: "unauth_group_#{hex}", handle: "unauthgrp#{hex}", group_privacy: 'secret')
@@ -103,7 +104,8 @@ class Api::V1::ReceivedEmailsControllerTest < ActionController::TestCase
       group_id: @group.id,
       headers: {
         to: "#{@group.handle}@#{ENV['REPLY_HOSTNAME']}",
-        from: "someone@gmail.com"
+        from: "someone@gmail.com",
+        subject: "Test email subject"
       },
       body_html: "<p>hello there</p>",
       body_text: "hello there"
@@ -120,7 +122,8 @@ class Api::V1::ReceivedEmailsControllerTest < ActionController::TestCase
       group_id: @group.id,
       headers: {
         to: "#{@group.handle}@#{ENV['REPLY_HOSTNAME']}",
-        from: "someone@gmail.com"
+        from: "someone@gmail.com",
+        subject: "Test email subject"
       },
       body_html: "<p>hello there</p>",
       body_text: "hello there"
