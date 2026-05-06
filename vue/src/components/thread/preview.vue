@@ -1,61 +1,40 @@
-<script lang="js">
+<script setup lang="js">
 import TopicService from '@/shared/services/topic_service';
+import LmoUrlService from '@/shared/services/lmo_url_service';
 import { pick, some } from 'lodash-es';
-import UrlFor from '@/mixins/url_for'
+import { computed } from 'vue';
+import { useDisplay } from 'vuetify';
 
-export default {
-  mixins: [UrlFor],
-  props: {
-    topic: Object,
+const props = defineProps({
+  topic: Object,
+  groupPage: { type: Boolean, default: false },
+  showGroupName: { type: Boolean, default: true }
+});
 
-    groupPage: {
-      type: Boolean,
-      default: false
-    },
+const { smAndDown, mdAndUp } = useDisplay();
 
-    showGroupName: {
-      type: Boolean,
-      default: true
-    }
-  },
+const urlFor = (model) => LmoUrlService.route({ model });
 
-  computed: {
-    isPoll() {
-      return this.topic.topicableType === 'Poll';
-    },
+const topicable = props.topic.topicable();
+const isPoll = props.topic.topicableType === 'Poll';
+const isUnread = computed(() => props.topic.isUnread());
 
-    poll() {
-      return this.isPoll ? this.topic.topicable() : null;
-    },
+const dockActions = computed(() =>
+  pick(TopicService.actions(props.topic), ['dismiss_thread'])
+);
 
-    isUnread() {
-      return this.topic.isUnread();
-    },
+const menuActions = computed(() => {
+  const actions = props.groupPage
+    ? smAndDown.value
+      ? ['dismiss_thread', 'pin_thread', 'unpin_thread', 'edit_thread', 'move_thread', 'close_thread', 'reopen_thread', 'discard_thread']
+      : ['pin_thread', 'unpin_thread', 'edit_thread', 'move_thread', 'close_thread', 'reopen_thread', 'discard_thread']
+    : smAndDown.value
+      ? ['dismiss_thread', 'close_thread', 'reopen_thread']
+      : ['close_thread', 'reopen_thread'];
+  return pick(TopicService.actions(props.topic), actions);
+});
 
-    dockActions() {
-      return pick(TopicService.actions(this.topic, this), ['dismiss_thread']);
-    },
-
-    menuActions() {
-      const actions = this.groupPage ?
-        this.$vuetify.display.smAndDown ?
-          ['dismiss_thread','pin_thread', 'unpin_thread', 'edit_thread', 'move_thread', 'close_thread', 'reopen_thread', 'discard_thread']
-        :
-          ['pin_thread', 'unpin_thread', 'edit_thread', 'move_thread', 'close_thread', 'reopen_thread', 'discard_thread']
-      :
-        this.$vuetify.display.smAndDown ?
-          ['dismiss_thread', 'close_thread', 'reopen_thread']
-        :
-          ['close_thread', 'reopen_thread'];
-      return pick(TopicService.actions(this.topic, this), actions);
-    },
-
-    canPerformAny() {
-      return some(this.menuActions, action => action.canPerform());
-    }
-  }
-};
-
+const canPerformAny = computed(() => some(menuActions.value, action => action.canPerform()));
 </script>
 
 <template lang="pug">
@@ -64,12 +43,12 @@ v-list-item.thread-preview.thread-preview__link(
   :to='urlFor(topic)'
 )
   template(v-slot:prepend)
-    poll-common-icon-panel.mr-3(v-if="isPoll" :poll="poll" show-my-stance :size="36")
+    poll-common-icon-panel.mr-3(v-if="isPoll" :poll="topicable" show-my-stance :size="36")
     user-avatar.mr-3(v-else :user='topic.author()' :size='36' no-link)
   v-list-item-title(style="align-items: center")
     span(v-if='topic.pinnedAt', :title="$t('context_panel.thread_status.pinned')")
       common-icon(size="x-small" name="mdi-pin-outline")
-    plain-text.thread-preview__title(:model="topic.topicable()" field="title" :class="{'text-medium-emphasis': !isUnread, 'font-weight-medium': isUnread }")
+    plain-text.thread-preview__title(:model="topicable" field="title" :class="{'text-medium-emphasis': !isUnread, 'font-weight-medium': isUnread }")
     v-chip.ml-1(size="x-small" label outlined color="warning" v-if='topic.closedAt')
       span(v-t="'poll_common_action_panel.custom_template'")
     tags-display.ml-1(:tags="topic.tags" :group="topic.group()" size="x-small")
@@ -77,7 +56,7 @@ v-list-item.thread-preview.thread-preview__link(
     span.thread-preview__group-name(v-if="showGroupName") {{ topic.group().name }}
     mid-dot(v-if="showGroupName")
     template(v-if="isPoll")
-      poll-common-closing-at(:poll="poll" approximate)
+      poll-common-closing-at(:poll="topicable" approximate)
     template(v-else)
       span.thread-preview__items-count(v-t="{path: 'thread_preview.replies_count', args: {count: topic.repliesCount}}")
       space
@@ -85,7 +64,7 @@ v-list-item.thread-preview.thread-preview__link(
       mid-dot
       active-time-ago(:date="topic.lastActivityAt")
   template(v-slot:append)
-    action-dock(v-if='$vuetify.display.mdAndUp' :actions="dockActions")
+    action-dock(v-if='mdAndUp' :actions="dockActions")
     action-menu(v-if='canPerformAny' :actions="menuActions" icon)
 </template>
 
