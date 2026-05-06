@@ -238,10 +238,6 @@ export default {
     v-container.max-width-800.px-0.px-sm-3#strand-page(v-if="topicable")
       discussion-fork-actions(v-if="topic" :topic='topic' :key="'fork-actions'+ topic.id")
       v-sheet.strand-card.thread-card.mb-8.pb-4.rounded(elevation=1)
-        v-snackbar(v-if="focusMode" v-model="snackbar" location="bottom center" color="info")
-          div.text-center
-            span.text-center(v-if="focusMode == 'unread'" v-t="'strand_nav.showing_unread'")
-            span.text-center(v-if="focusMode == 'newest'" v-t="'strand_nav.showing_latest'")
         strand-list.pr-1.pr-sm-3.px-sm-2(:loader="loader" :collection="loader.collection" :focus-selector="focusSelector" :focus-mode="focusMode")
         strand-actions-panel(:topic="topic")
   strand-toc-nav(v-if="loader" :topic="topic" :loader="loader" :key="topic.id" :focus-mode="focusMode" :focus-selector="focusSelector")
