@@ -235,10 +235,6 @@ export default {
       thread-current-poll-banner(:discussion="discussion")
       discussion-fork-actions(:discussion='discussion' :key="'fork-actions'+ discussion.id")
       v-sheet.strand-card.thread-card.mb-8.pb-4.rounded(elevation=1)
-        v-snackbar(v-if="focusMode" v-model="snackbar" location="bottom center" color="info")
-          div.text-center
-            span.text-center(v-if="focusMode == 'unread'" v-t="'strand_nav.showing_unread'")
-            span.text-center(v-if="focusMode == 'newest'" v-t="'strand_nav.showing_latest'")
         strand-list.pt-3.pr-1.pr-sm-3.px-sm-2(:loader="loader" :collection="loader.collection" :focus-selector="focusSelector" :focus-mode="focusMode")
         strand-actions-panel(:discussion="discussion")
   strand-toc-nav(v-if="loader" :discussion="discussion" :loader="loader" :key="discussion.id" :focus-mode="focusMode" :focus-selector="focusSelector")
