@@ -189,15 +189,7 @@ class PermittedParams < Struct.new(:params)
      :description, :description_format, :is_visible_to_parent_members, :parent_members_can_see_discussions,
      :membership_granted_upon, :cover_photo, :logo, :category, :members_can_raise_motions,
      :members_can_start_discussions, :members_can_create_subgroups, :members_can_create_templates, :admins_can_edit_user_content,
-<<<<<<< HEAD
      :request_to_join_prompt, :listed_in_explore,
-     :document_ids, {document_ids: []},
-||||||| a6de093b9d
-     :new_threads_max_depth, :new_threads_newest_first, :request_to_join_prompt, :can_start_polls_without_discussion, :listed_in_explore,
-     :document_ids, {document_ids: []},
-=======
-     :new_threads_max_depth, :new_threads_newest_first, :request_to_join_prompt, :can_start_polls_without_discussion, :listed_in_explore,
->>>>>>> master
      :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}
    ]
   end
@@ -261,15 +253,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def comment_attributes
-<<<<<<< HEAD
     [:body, :body_format, :parent_id, :parent_type,
-      :document_ids, {document_ids: []},
-||||||| a6de093b9d
-    [:body, :body_format, :discussion_id, :parent_id, :parent_type,
-      :document_ids, {document_ids: []},
-=======
-    [:body, :body_format, :discussion_id, :parent_id, :parent_type,
->>>>>>> master
       :link_previews, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]},
       :files, {files: []},
       :image_files, {image_files: []}]
