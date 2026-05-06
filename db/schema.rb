@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_05_05_142921) do
+ActiveRecord::Schema[8.0].define(version: 2026_05_06_034508) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -793,13 +793,6 @@ ActiveRecord::Schema[8.0].define(version: 2026_05_05_142921) do
     t.index ["key"], name: "index_polls_on_key", unique: true
     t.index ["tags"], name: "index_polls_on_tags", using: :gin
   end
-
-
-
-
-
-
-
 
   create_table "reactions", id: :serial, force: :cascade do |t|
     t.integer "reactable_id"
