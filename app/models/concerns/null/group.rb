@@ -134,11 +134,11 @@ module Null::Group
     self
   end
 
-  def self_or_parent_logo_url(size)
+  def self_or_parent_logo_url(size = 512)
     nil
   end
 
-  def self_or_parent_cover_url(size)
+  def self_or_parent_cover_url(size = 512)
     nil
   end
 
