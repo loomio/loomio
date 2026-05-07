@@ -28,6 +28,23 @@ class Rack::Attack
     addr && PRIVATE_NETWORKS.any? { |net| net.include?(addr) }
   end
 
+  # Allowlist for first-party services that egress over the public internet
+  # (hocuspocus auth callbacks, hakara inbound-email relay, etc). Set
+  # TRUSTED_INGRESS_IPS to a comma-separated list of IPs or CIDRs.
+  TRUSTED_INGRESS_IPS = ENV.fetch('TRUSTED_INGRESS_IPS', '')
+                          .split(',')
+                          .map(&:strip)
+                          .reject(&:empty?)
+                          .map { |s| IPAddr.new(s) rescue nil }
+                          .compact
+                          .freeze
+
+  safelist('trusted-ingress') do |req|
+    next false if TRUSTED_INGRESS_IPS.empty?
+    addr = IPAddr.new(req.remote_ip.to_s) rescue nil
+    addr && TRUSTED_INGRESS_IPS.any? { |net| net.include?(addr) }
+  end
+
   throttle('req/ip', limit: 900 * RATE_MULTIPLIER, period: 5.minutes) do |req|
     req.remote_ip unless req.path == '/bug_tunnel'
   end
