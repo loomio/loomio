@@ -16,12 +16,15 @@ const emit = defineEmits(['setPoll']);
 
 const selectedGroup = ref(props.group);
 
+// Direct discussions started from a template: auto-pick the template's group so
+// the user skips the picker. A discussion's own group is always source of truth.
 if (props.discussion && props.discussion.discussionTemplateId) {
   Records.discussionTemplates.findOrFetchById(props.discussion.discussionTemplateId).then(dt => {
     const g = dt.group();
-    if (g) { selectedGroup.value = g; }
+    if (g && selectedGroup.value.isNullGroup) { selectedGroup.value = g; }
   });
 }
+
 const groups = ref([]);
 
 function fillGroups() {
