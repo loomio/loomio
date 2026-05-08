@@ -581,7 +581,6 @@ tr:
     showing_unread: Okunmamış gösteriliyor
     add_comment: Yorum ekle
     start_decision: Başlangıç kararı
-    recenter: Daha yakın zamanda
   search_modal:
     all_content: Tüm içerik
     best_match: En iyi eşleşme

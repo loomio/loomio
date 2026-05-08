@@ -8,7 +8,7 @@ import WatchRecords from '@/mixins/watch_records';
 import UrlFor from '@/mixins/url_for';
 import StrandActionsPanel from './actions_panel';
 import ScrollService from '@/shared/services/scroll_service';
-import { mdiMenuOpen, mdiArrowULeftTop } from '@mdi/js';
+import { mdiMenuOpen } from '@mdi/js';
 
 export default {
   mixins: [WatchRecords, UrlFor],
@@ -20,7 +20,6 @@ export default {
   data() {
     return {
       mdiMenuOpen,
-      mdiArrowULeftTop,
       topic: null,
       topicable: null,
       loader: null,
@@ -240,9 +239,7 @@ export default {
       v-sheet.strand-card.thread-card.mb-8.pb-4.rounded(elevation=1)
         strand-list.pr-1.pr-sm-3.px-sm-2(:loader="loader" :collection="loader.collection" :focus-selector="focusSelector" :focus-mode="focusMode")
         strand-actions-panel(:topic="topic")
-  strand-toc-nav(v-if="loader" :topic="topic" :loader="loader" :key="topic.id" :focus-mode="focusMode" :focus-selector="focusSelector")
-  v-fab(v-if="focusSelector && !focusedItemVisible" icon app extended :text="$t('strand_nav.recenter')" location="bottom center" @click="scrollToFocused" color="accent" variant="elevated")
-    v-icon(:icon="mdiArrowULeftTop")
+  strand-toc-nav(v-if="loader" :topic="topic" :loader="loader" :key="topic.id" :focus-mode="focusMode" :focus-selector="focusSelector" :focused-item-visible="focusedItemVisible")
   v-fab(v-if="!$vuetify.display.mdAndUp" icon app location="bottom right" @click="openThreadNav" color="primary" variant="tonal")
     v-icon(:icon="mdiMenuOpen" )
 </template>

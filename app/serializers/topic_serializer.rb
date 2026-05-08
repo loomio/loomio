@@ -2,6 +2,7 @@ class TopicSerializer < ApplicationSerializer
   attributes :id,
              :group_id,
              :items_count,
+             :replies_count,
              :ranges,
              :max_depth,
              :newest_first,
@@ -60,7 +61,9 @@ class TopicSerializer < ApplicationSerializer
     object.group_id.present?
   end
 
-
+  def replies_count
+    object.items_count - 1
+  end
 
   def ranges
     object.ranges || []

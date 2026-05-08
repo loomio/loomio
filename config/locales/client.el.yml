@@ -581,7 +581,6 @@ el:
     showing_unread: Εμφάνιση μη αναγνωσμένων
     add_comment: Προσθήκη σχολίου
     start_decision: Απόφαση έναρξης
-    recenter: Πιο πρόσφατα
   search_modal:
     all_content: Όλο το περιεχόμενο
     best_match: Ταιριάζει καλύτερα

@@ -585,7 +585,6 @@ ca:
     showing_unread: Mostrant no llegits
     add_comment: Afegeix un comentari
     start_decision: Decisió inicial
-    recenter: Més recentment
   search_modal:
     all_content: Tot el contingut
     best_match: Millor coincidència

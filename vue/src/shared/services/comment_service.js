@@ -9,6 +9,14 @@ export default new class CommentService {
   actions(comment, vm, event) {
     const isOwnComment = comment.authorId === Session.userId;
     return {
+      react: {
+        dock: 1,
+        canPerform() {
+          const topic = comment.topic();
+          return !comment.discardedAt && topic && AbilityService.canAddReaction(topic);
+        }
+      },
+
       untranslate_comment: {
         icon: 'mdi-translate',
         name: 'common.action.original',
@@ -46,14 +54,6 @@ export default new class CommentService {
           });
         },
         canPerform() { return !comment.discardedAt; }
-      },
-
-      react: {
-        dock: 1,
-        canPerform() {
-          const topic = comment.topic();
-          return !comment.discardedAt && topic && AbilityService.canAddReaction(topic);
-        }
       },
 
       reply_to_comment: {

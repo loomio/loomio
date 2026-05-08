@@ -581,7 +581,6 @@ sv:
     showing_unread: Visar olästa
     add_comment: Lägg till kommentar
     start_decision: Startbeslut
-    recenter: Mer nyligen
   search_modal:
     all_content: Allt innehåll
     best_match: Bästa matchningen

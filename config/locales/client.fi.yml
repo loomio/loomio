@@ -581,7 +581,6 @@ fi:
     showing_unread: Näytetään lukemattomat
     add_comment: Lisää kommentti
     start_decision: Aloita päätös
-    recenter: Viime aikoina
   search_modal:
     all_content: Kaikki sisältö
     best_match: Paras ottelu

@@ -581,7 +581,6 @@ ru:
     showing_unread: Показано непрочитанное
     add_comment: Добавить комментарий
     start_decision: Начать решение
-    recenter: Совсем недавно
   search_modal:
     all_content: Весь контент
     best_match: Лучший матч
@@ -2016,7 +2015,6 @@ ru:
     for_this_proposal_to_pass: 'Для принятия этого предложения:'
     for_this_poll_type_to_be_valid: 'Чтобы %{poll_type} был действителен:'
     voting_opens_at: Этот %{poll_type} открывается для голосования %{time}.
-    unable_to_vote: Вам не было предложено проголосовать по этому опросу %{poll_type}
   poll_common_collapsed:
     by_who: по %{name}
   poll_common_calendar_invite:

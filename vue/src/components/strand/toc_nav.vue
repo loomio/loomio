@@ -7,7 +7,7 @@ import TopicService from '@/shared/services/topic_service';
 import { sortBy, last, pickBy } from 'lodash-es';
 import ScrollService from '@/shared/services/scroll_service';
 import Session        from '@/shared/services/session';
-import { mdiMessageBadgeOutline, mdiArrowUpThin, mdiArrowDownThin, mdiBellOutline, mdiBellOffOutline, mdiBellRingOutline } from '@mdi/js';
+import { mdiMessageBadgeOutline, mdiArrowUpThin, mdiArrowDownThin, mdiBellOutline, mdiBellOffOutline, mdiBellRingOutline, mdiArrowULeftTop } from '@mdi/js';
 
 export default {
   mixins: [WatchRecords, UrlFor],
@@ -15,7 +15,8 @@ export default {
     topic: Object,
     loader: Object,
     focusMode: String,
-    focusSelector: String
+    focusSelector: String,
+    focusedItemVisible: Boolean
   },
 
   data() {
@@ -26,6 +27,7 @@ export default {
       mdiBellOutline,
       mdiBellOffOutline,
       mdiBellRingOutline,
+      mdiArrowULeftTop,
       open: null,
       pinnedItems: [],
       // items: [],
@@ -56,13 +58,24 @@ export default {
       ScrollService.scrollTo(`.sequenceId-${this.topic.lastSequenceId()}`);
     },
     scrollToEnd() {
-      ScrollService.scrollTo('#add-comment');
+      this.loader.addLoadArgsRule({ order_by: 'position_key', order_desc: true });
+      this.loader.fetch().then(() => {
+        const endEvent = Records.events.collection.chain()
+          .find({ topicId: this.topic.id })
+          .simplesort('positionKey', true)
+          .limit(1)
+          .data()[0];
+        if (endEvent) this.$nextTick(() => ScrollService.scrollTo(`.positionKey-${endEvent.positionKey}`));
+      });
     },
     openVolumeForm() {
       EventBus.$emit('openModal', {
         component: 'ChangeVolumeForm',
         props: { model: this.topic }
       });
+    },
+    scrollToFocused() {
+      ScrollService.scrollTo(this.focusSelector);
     },
     scrollToUnread() {
       ScrollService.scrollTo(`.sequenceId-${this.loader.firstUnreadSequenceId()}`);
@@ -151,7 +164,8 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="topic" v-mo
         v-icon(v-else-if="item.user")
           user-avatar(:user="item.user" :size="24" no-link)
         v-icon(v-else) mdi-pin-outline
-    v-list-item(color="info" :active="focusMode == 'unread'" :prepend-icon="mdiMessageBadgeOutline" :title="$t('strand_nav.unread') + ' (' + topic.unreadItemsCount() + ')'" @click="scrollToUnread" :to="baseUrl+'?unread'" v-if="loader.unreadRanges.length" exact)
+    v-list-item(color="info" :active="focusMode == 'unread'" :prepend-icon="mdiMessageBadgeOutline" :title="$t('strand_nav.unread')" @click="scrollToUnread" :to="baseUrl+'?unread'" v-if="loader.firstUnreadSequenceId()" exact)
+    v-list-item(color="accent" :prepend-icon="mdiArrowULeftTop" :title="$t('strand_nav.return')" @click="scrollToFocused" v-if="focusSelector && !focusedItemVisible")
     v-list-item(color="info" :prepend-icon="mdiArrowDownThin" :title="$t('strand_nav.end')" @click="scrollToEnd" :to="baseUrl+'/'+topic.lastSequenceId()")
   template(v-if="isSignedIn")
 

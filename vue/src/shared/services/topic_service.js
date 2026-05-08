@@ -85,7 +85,7 @@ export default new class TopicService {
       },
 
       announce_thread: {
-        name: 'common.action.invite',
+        name: 'invitation_form.invite_people',
         icon: 'mdi-account-multiple-plus',
         dock: 3,
         collection: 'members',

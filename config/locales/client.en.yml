@@ -618,7 +618,7 @@ en:
     newest: Newest
     unread: Unread
     oldest: Oldest
-    recenter: Recenter
+    return: Return
     end: End
     notifications: Notifications
     email_all_activity: Email all activity

@@ -581,7 +581,6 @@ sl:
     showing_unread: Prikaz neprebranih
     add_comment: Dodaj komentar
     start_decision: Začni odločitev
-    recenter: V zadnjem času
   search_modal:
     all_content: Vse vsebine
     best_match: Najboljše ujemanje

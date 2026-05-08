@@ -581,7 +581,6 @@ hr:
     showing_unread: Prikazuje se nepročitano
     add_comment: Dodaj komentar
     start_decision: Započni odluku
-    recenter: U novije vrijeme
   search_modal:
     all_content: Sav sadržaj
     best_match: Najbolji spoj

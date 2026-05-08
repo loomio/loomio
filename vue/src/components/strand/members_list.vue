@@ -172,7 +172,7 @@ v-card.strand-members-list(:title="$t('announcement.form.discussion_announced.ti
 
   v-list.px-2(lines="two")
     v-list-subheader
-      span(v-t="'membership_card.discussion_members'")
+      span(v-t="'membership_card.thread_members'")
       space
       span ({{topic.membersCount}})
     v-list-item(v-for="reader in readers" :user="reader.user()" :key="reader.id")
