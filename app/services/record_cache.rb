@@ -74,7 +74,7 @@ class RecordCache
 
     when 'Poll'
       topic_ids = collection.map(&:topic_id)
-      obj.add_groups Group.with_attached_logo.with_attached_cover_photo.includes(:subscription).where(id: ids_and_parent_ids(Group, collection.map(&:group_id)))
+      obj.add_groups_subscriptions_memberships Group.with_attached_logo.with_attached_cover_photo.includes(:subscription).where(id: ids_and_parent_ids(Group, collection.map(&:group_id)))
       obj.add_topics(Topic.where(id: topic_ids))
       obj.add_discussions(Discussion.where(topic_id: topic_ids))
       obj.add_polls_options_stances_outcomes collection
