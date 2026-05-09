@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::Discussions::ThreadItems::NewComment < Views::Application::Component
+class Views::Topics::TopicItems::NewComment < Views::Application::Component
   def initialize(item:, current_user:)
     @item = item
     @current_user = current_user
@@ -23,7 +23,7 @@ class Views::Discussions::ThreadItems::NewComment < Views::Application::Componen
                   end
                 end
                 span do
-                  span("aria-hidden": "true") { plain " \u00b7" }
+                  span("aria-hidden": "true") { plain " ·" }
                 end
                 span(class: "text--secondary text-body-2") do
                   time_ago(comment.created_at, @current_user)

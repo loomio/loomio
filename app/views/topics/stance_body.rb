@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::Discussions::StanceBody < Views::Application::Component
+class Views::Topics::StanceBody < Views::Application::Component
   def initialize(stance:, voter:, poll:, current_user:)
     @stance = stance
     @voter = voter
@@ -31,7 +31,7 @@ class Views::Discussions::StanceBody < Views::Application::Component
           end
         end
         span do
-          span("aria-hidden": "true") { plain " \u00b7" }
+          span("aria-hidden": "true") { plain " ·" }
         end
         span(class: "text--secondary text-body-2") do
           time_ago(@stance.created_at, @current_user)
@@ -58,7 +58,7 @@ class Views::Discussions::StanceBody < Views::Application::Component
           end
         end
         span do
-          span("aria-hidden": "true") { plain " \u00b7" }
+          span("aria-hidden": "true") { plain " ·" }
         end
         span(class: "text--secondary text-body-2") do
           time_ago(@stance.created_at, @current_user)
@@ -73,7 +73,7 @@ class Views::Discussions::StanceBody < Views::Application::Component
       h3(class: "thread-item__title text-body-2 d-flex") do
         a(href: user_url(@voter)) { plain @voter.name }
         span do
-          span("aria-hidden": "true") { plain " \u00b7" }
+          span("aria-hidden": "true") { plain " ·" }
         end
         span(class: "text--secondary text-body-2") do
           time_ago(@stance.created_at, @current_user)
@@ -93,7 +93,7 @@ class Views::Discussions::StanceBody < Views::Application::Component
       h3(class: "thread-item__title text-body-2 d-flex") do
         a(href: user_url(@voter)) { plain @voter.name }
         span do
-          span("aria-hidden": "true") { plain " \u00b7" }
+          span("aria-hidden": "true") { plain " ·" }
         end
         span(class: "text--secondary text-body-2") do
           time_ago(@stance.created_at, @current_user)
@@ -115,7 +115,7 @@ class Views::Discussions::StanceBody < Views::Application::Component
       h3(class: "thread-item__title text-body-2 d-flex") do
         a(href: user_url(@voter)) { plain @voter.name }
         span do
-          span("aria-hidden": "true") { plain " \u00b7" }
+          span("aria-hidden": "true") { plain " ·" }
         end
         span(class: "text--secondary text-body-2") do
           time_ago(@stance.created_at, @current_user)
@@ -146,7 +146,7 @@ class Views::Discussions::StanceBody < Views::Application::Component
       h3(class: "thread-item__title text-body-2", id: "event-1473") do
         a(href: user_url(@voter)) { plain @voter.name }
         span do
-          span("aria-hidden": "true") { plain " \u00b7" }
+          span("aria-hidden": "true") { plain " ·" }
         end
         span(class: "text--secondary text-body-2") do
           time_ago(@stance.created_at, @current_user)
@@ -177,7 +177,7 @@ class Views::Discussions::StanceBody < Views::Application::Component
       h3(class: "thread-item__title text-body-2 d-flex") do
         a(href: user_url(@voter)) { plain @voter.name }
         span do
-          span("aria-hidden": "true") { plain " \u00b7" }
+          span("aria-hidden": "true") { plain " ·" }
         end
         span(class: "text--secondary text-body-2") do
           time_ago(@stance.created_at, @current_user)
@@ -200,7 +200,7 @@ class Views::Discussions::StanceBody < Views::Application::Component
       h3(class: "thread-item__title text-body-2 d-flex") do
         a(href: user_url(@voter)) { plain @voter.name }
         span do
-          span("aria-hidden": "true") { plain " \u00b7" }
+          span("aria-hidden": "true") { plain " ·" }
         end
         span(class: "text--secondary text-body-2") do
           time_ago(@stance.created_at, @current_user)

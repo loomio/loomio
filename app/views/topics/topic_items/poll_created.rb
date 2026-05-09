@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::Discussions::ThreadItems::PollCreated < Views::Application::Component
+class Views::Topics::TopicItems::PollCreated < Views::Application::Component
   def initialize(item:, current_user:)
     @item = item
     @current_user = current_user
@@ -20,7 +20,7 @@ class Views::Discussions::ThreadItems::PollCreated < Views::Application::Compone
             end
             p(class: "text-medium-emphasis text-body-2 pb-1") do
               plain t("poll_card.poll_type_by_name", name: poll.author_name, poll_type: t("poll_types.#{poll.poll_type}"))
-              span("aria-hidden": "true") { plain " \u00b7" }
+              span("aria-hidden": "true") { plain " ·" }
               plain " "
               if poll.active?
                 plain t("common.closing_in", time: format_date_for_humans(poll.closing_at, @current_user.time_zone, @current_user.date_time_pref))

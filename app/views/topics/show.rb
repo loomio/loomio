@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-class Views::Discussions::Show < Views::Application::Layout
-  def initialize(discussion:, recipient:, pagination:, **layout_args)
+class Views::Topics::Show < Views::Application::Layout
+  def initialize(topic:, recipient:, pagination:, **layout_args)
     super(**layout_args)
-    @discussion = discussion
+    @topic = topic
     @recipient = recipient
     @pagination = pagination
   end
@@ -28,17 +28,17 @@ class Views::Discussions::Show < Views::Application::Layout
       div(class: "d-flex align-center mr-3 ml-2 pt-2 text-body-2") do
         ul(class: "v-breadcrumbs v-breadcrumbs--density-default context-panel__breadcrumbs") do
           li(class: "v-breadcrumbs-item text-anchor py-1 ml-n2") do
-            a(class: "v-breadcrumbs-item--link", href: group_url(@discussion.group)) do
-              plain @discussion.group.full_name
+            a(class: "v-breadcrumbs-item--link", href: group_url(@topic.group)) do
+              plain @topic.group.full_name
             end
           end
         end
       end
-      h1(id: "sequence-0", class: "text-h4 context-panel__heading px-3") { plain @discussion.title }
+      h1(id: "sequence-0", class: "text-h4 context-panel__heading px-3") { plain @topic.topicable.title }
       div(class: "mx-3 mb-2") do
         render_details
         div(class: "lmo-markdown-wrapper text-body-1 text--primary context-panel__description") do
-          raw MarkdownService.render_rich_text(@discussion.body, @discussion.body_format)
+          raw MarkdownService.render_rich_text(@topic.topicable.body, @topic.topicable.body_format)
         end
       end
     end
@@ -47,18 +47,18 @@ class Views::Discussions::Show < Views::Application::Layout
   def render_details
     div(class: "context-panel__details my-2 text-body-2 align-center d-flex text-medium-emphasis") do
       span(class: "mr-2") do
-        render Views::EventMailer::Common::Avatar.new(user: @discussion.author)
+        render Views::EventMailer::Common::Avatar.new(user: @topic.topicable.author)
       end
       span(class: "text-medium-emphasis") do
-        a(href: user_url(@discussion.author)) { plain @discussion.author.name }
+        a(href: user_url(@topic.topicable.author)) { plain @topic.topicable.author.name }
         span do
-          span("aria-hidden": "true") { plain " \u00b7" }
+          span("aria-hidden": "true") { plain " ·" }
           plain " "
-          time_ago(@discussion.created_at, @recipient)
+          time_ago(@topic.topicable.created_at, @recipient)
         end
         span do
-          span("aria-hidden": "true") { plain " \u00b7" }
-          if @discussion.topic.private
+          span("aria-hidden": "true") { plain " ·" }
+          if @topic.private
             span(class: "nowrap context-panel__discussion-privacy context-panel__discussion-privacy--private") do
               i(class: "mdi mdi-lock-outline")
               span { plain t("common.privacy.private") }
@@ -71,9 +71,9 @@ class Views::Discussions::Show < Views::Application::Layout
           end
         end
         span do
-          span("aria-hidden": "true") { plain " \u00b7" }
+          span("aria-hidden": "true") { plain " ·" }
           span(class: "context-panel__seen_by_count") do
-            plain t("discussion_context.seen_by_count", count: @discussion.seen_by_count)
+            plain t("discussion_context.seen_by_count", count: @topic.seen_by_count)
           end
         end
       end
@@ -82,14 +82,14 @@ class Views::Discussions::Show < Views::Application::Layout
 
   def render_activity_panel
     div(class: "activity-panel") do
-      items = @discussion.items
+      items = @topic.items
         .includes(:eventable, :user)
-        .order("position_key #{@discussion.newest_first ? 'desc' : 'asc'}")
+        .order("position_key #{@topic.newest_first ? 'desc' : 'asc'}")
         .where(kind: %w[new_comment poll_created stance_created stance_updated])
 
       items.limit(@pagination[:limit]).offset(@pagination[:offset]).each do |item|
         if item.eventable.present?
-          render Views::Discussions::ThreadItem.new(item: item, current_user: @recipient)
+          render Views::Topics::TopicItem.new(item: item, current_user: @recipient)
         end
       end
 
