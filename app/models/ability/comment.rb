@@ -9,16 +9,24 @@ module Ability::Comment
     end
 
     can [:update], ::Comment do |comment|
-      !comment.discussion.closed_at && (
+      comment.kept? && !comment.discussion.closed_at && (
         (comment.discussion.members.exists?(user.id) && comment.author == user && comment.group.members_can_edit_comments) ||
         (comment.discussion.admins.exists?(user.id) && comment.group.admins_can_edit_user_content)
       )
     end
     
-    can [:discard, :undiscard], ::Comment do |comment|
+    can [:discard], ::Comment do |comment|
       !comment.discussion.closed_at &&
       (
         (comment.author == user && comment.discussion.members.exists?(user.id)) ||
+        comment.discussion.admins.exists?(user.id)
+      )
+    end
+
+    can [:undiscard], ::Comment do |comment|
+      !comment.discussion.closed_at &&
+      (
+        (comment.author == user && comment.discarded_by == user.id && comment.discussion.members.exists?(user.id)) ||
         comment.discussion.admins.exists?(user.id)
       )
     end

@@ -66,6 +66,19 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
     assert_includes json['errors']['body'].join, "can't be blank"
   end
 
+  test "update discarded comment is forbidden" do
+    @group.add_admin!(@user)
+    CommentService.discard(comment: @another_comment, actor: @user)
+
+    sign_in @another_user
+    put :update, params: { id: @another_comment.id, comment: { body: "updated content" } }
+
+    assert_response :forbidden
+    @another_comment.reload
+    assert @another_comment.discarded?
+    assert_equal "Another comment", @another_comment.body
+  end
+
   test "create success" do
     sign_in @user
     comment_params = { discussion_id: @discussion.id, body: "original content" }
@@ -174,5 +187,27 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
     assert_response :forbidden
     @comment.reload
     assert_not @comment.discarded?
+  end
+
+  test "author cannot undiscard comment discarded by admin" do
+    @group.add_admin!(@user)
+    CommentService.discard(comment: @another_comment, actor: @user)
+
+    sign_in @another_user
+    post :undiscard, params: { id: @another_comment.id }
+
+    assert_response :forbidden
+    assert @another_comment.reload.discarded?
+    assert_equal @user.id, @another_comment.discarded_by
+  end
+
+  test "author can undiscard comment they discarded" do
+    CommentService.discard(comment: @comment, actor: @user)
+
+    sign_in @user
+    post :undiscard, params: { id: @comment.id }
+
+    assert_response :success
+    assert_not @comment.reload.discarded?
   end
 end
