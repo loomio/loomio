@@ -214,7 +214,7 @@ export default new class AbilityService {
 
   canEditComment(comment) {
     const topic = comment.topic();
-    return topic && !topic.closedAt && (
+    return topic && !topic.closedAt && !comment.discardedAt && (
       (topic.adminsInclude(Session.user()) && comment.group() && comment.group().adminsCanEditUserContent) ||
       (comment.authorIs(Session.user()) && comment.group() && comment.group().membersCanEditComments && topic.membersInclude(Session.user()))
     );
@@ -245,7 +245,7 @@ export default new class AbilityService {
     const topic = comment.topic();
     return topic && !topic.closedAt &&
     comment.discardedAt && (
-      comment.authorIs(Session.user()) ||
+      (comment.authorIs(Session.user()) && comment.discardedBy === Session.user().id) ||
       topic.adminsInclude(Session.user())
     );
   }

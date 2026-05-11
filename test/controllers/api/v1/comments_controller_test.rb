@@ -65,6 +65,18 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
     assert_includes json['errors']['body'].join, "can't be blank"
   end
 
+  test "update discarded comment is forbidden" do
+    CommentService.discard(comment: @user_comment, actor: @admin)
+
+    sign_in @user
+    put :update, params: { id: @user_comment.id, comment: { body: "updated content" } }
+
+    assert_response :forbidden
+    @user_comment.reload
+    assert @user_comment.discarded?
+    assert_equal "User comment", @user_comment.body
+  end
+
   test "create success" do
     sign_in @user
     comment_params = { parent_type: 'Discussion', parent_id: @discussion.id, body: "original content" }
@@ -174,6 +186,27 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
     assert_response :forbidden
     @admin_comment.reload
     assert_not @admin_comment.discarded?
+  end
+
+  test "author cannot undiscard comment discarded by admin" do
+    CommentService.discard(comment: @user_comment, actor: @admin)
+
+    sign_in @user
+    post :undiscard, params: { id: @user_comment.id }
+
+    assert_response :forbidden
+    assert @user_comment.reload.discarded?
+    assert_equal @admin.id, @user_comment.discarded_by
+  end
+
+  test "author can undiscard comment they discarded" do
+    CommentService.discard(comment: @user_comment, actor: @user)
+
+    sign_in @user
+    post :undiscard, params: { id: @user_comment.id }
+
+    assert_response :success
+    assert_not @user_comment.reload.discarded?
   end
 
   test "create denied when allow_comments is false" do
