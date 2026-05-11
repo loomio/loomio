@@ -99,7 +99,7 @@ section.actions-panel#add-comment(:key="topic.id" :class="{'mt-2 px-2 px-sm-4': 
       time-ago(:date='topic.closedAt')
   template(v-if="showAddCommentForm")
     v-divider(aria-hidden="true")
-    .add-comment-panel.mt-4(v-if="!canStartPoll")
+    .add-comment-panel.pt-4.px-4(v-if="!canStartPoll")
       comment-form(
         :comment="newComment"
         @comment-submitted="resetComment")
