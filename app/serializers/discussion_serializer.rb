@@ -17,7 +17,6 @@ class DiscussionSerializer < ApplicationSerializer
              :discarded_at,
              :translation_id
 
-  has_one :topic, serializer: TopicSerializer, root: :topics
   has_one :author, serializer: AuthorSerializer, root: :users
   has_one :translation, serializer: TranslationSerializer, root: :translations
   hide_when_discarded [:description, :title]

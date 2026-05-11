@@ -935,6 +935,7 @@ en:
     send_poll: Send %{type}
     send_outcome: Send outcome
     cannot_reveal_when_anonymous: Sorry, we cannot reveal who has or has not voted on an anonymous poll.
+    topic_notification_history: Thread notification history
     discussion_notification_history: Discussion notification history
     group_notification_history: Group invitation history
     poll_notification_history: Poll notification history

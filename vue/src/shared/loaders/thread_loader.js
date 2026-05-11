@@ -76,16 +76,8 @@ export default class ThreadLoader {
     return this.collapsed[event.id] = false;
   }
 
-  localTopicFind() {
-    return { topicId: this.topic.id };
-  }
-
-  remoteTopicParam() {
-    return { topic_id: this.topic.id };
-  }
-
   addLoadArgsRule(args) {
-    const andParts = [this.localTopicFind()]
+    const andParts = [{ topicId: this.topic.id }]
 
     if (args.depth) {
       andParts.push({depth: args.depth})
@@ -119,7 +111,7 @@ export default class ThreadLoader {
         limit: this.padding
       },
       remote: pickBy({
-        ...this.remoteTopicParam(),
+        topic_id: this.topic.id,
         depth: args.depth,
         depth_lte: args.depth_lte,
         position_key_gt: args.position_key_gt,
@@ -139,32 +131,33 @@ export default class ThreadLoader {
       local: {
         find: {
           actorId: AppConfig.currentUserId,
-          ...this.localTopicFind(),
+          topicId: this.topic.id,
           createdAt: { $gte: new Date() }
         }
       }
     })
   }
 
-  addLoadCommentRule(commentId) {
+  addLoadCommentRule(commentId, remoteTopicParams = { topic_id: this.topic.id }) {
     return this.addRule({
       name: "comment from url",
       local: {
         find: {
-          ...this.localTopicFind(),
+          topicId: this.topic.id,
           eventableId: commentId,
           eventableType: 'Comment'
         }
       },
       remote: {
+        ...remoteTopicParams,
         order: 'sequence_id',
-        ...this.remoteTopicParam(),
-        comment_id: commentId
+        comment_id: commentId,
+        per: this.padding
       }
     });
   }
 
-  addLoadSequenceIdRule(sequenceId) {
+  addLoadSequenceIdRule(sequenceId, remoteTopicParams = { topic_id: this.topic.id }) {
     const id = max([parseInt(sequenceId) - parseInt(this.padding/2), 0]);
     this.loading = id;
     return this.addRule({
@@ -172,7 +165,7 @@ export default class ThreadLoader {
       local: {
         find: {
           $and: [
-            this.localTopicFind(),
+            { topicId: this.topic.id },
             { sequenceId: {'$gte': id} },
           ]
         },
@@ -180,19 +173,19 @@ export default class ThreadLoader {
         limit: this.padding
       },
       remote: {
+        ...remoteTopicParams,
         sequence_id_gte: id,
-        ...this.remoteTopicParam(),
         order: 'sequence_id',
         per: this.padding
       }
     });
   }
 
-  addLoadNewestRule() {
+  addLoadNewestRule(remoteTopicParams = { topic_id: this.topic.id }) {
     return this.addRule({
       local: {
         find: {
-          ...this.localTopicFind(),
+          topicId: this.topic.id,
           sequenceId: { $lte: this.lastSequenceId() }
         },
         simplesort: 'sequenceId',
@@ -200,25 +193,11 @@ export default class ThreadLoader {
         limit: this.padding
       },
       remote: {
-        ...this.remoteTopicParam(),
+        ...remoteTopicParams,
         sequence_id_lte: this.lastSequenceId(),
         order_by: 'sequence_id',
         order_desc: true,
         per: this.padding
-      }
-    });
-  }
-
-  addContextRule() {
-    return this.addRule({
-      name: 'context',
-      local: {
-        find: { ...this.localTopicFind(), sequenceId: 0 }
-      },
-      remote: {
-        ...this.remoteTopicParam(),
-        sequence_id: 0,
-        per: 1
       }
     });
   }
@@ -228,35 +207,61 @@ export default class ThreadLoader {
       name: 'oldest',
       local: {
         find: {
-          ...this.localTopicFind(),
+          topicId: this.topic.id,
           sequenceId: { $lte: this.lastSequenceId() }
         },
         simplesort: 'sequenceId',
         limit: this.padding
       },
       remote: {
-        ...this.remoteTopicParam(),
+        topic_id: this.topic.id,
         order_by: 'sequence_id',
         per: this.padding
       }
     });
   }
 
-  addLoadUnreadRule() {
+  addLoadUnreadRule(remoteTopicParams = { topic_id: this.topic.id }) {
     return this.addRule({
       name: {path: "strand_nav.new_to_you"},
       local: {
         find: {
-          ...this.localTopicFind(),
+          topicId: this.topic.id,
           sequenceId: {$in: RangeSet.rangesToArray(this.unreadRanges)}
         },
         limit: this.padding,
         simplesort: 'sequenceId'
       },
       remote: {
-        ...this.remoteTopicParam(),
+        ...remoteTopicParams,
         sequence_id_in: RangeSet.serialize(this.unreadRanges).replace(/,/g, '_'),
         order_by: "sequence_id",
+        per: this.padding
+      }
+    });
+  }
+
+  addLoadUnreadOrNewestRule(remoteTopicParams) {
+    const unreadSequenceIds = RangeSet.rangesToArray(this.unreadRanges);
+    const hasUnread = unreadSequenceIds.length > 0;
+
+    return this.addRule({
+      name: 'unread or newest',
+      local: {
+        find: hasUnread ? {
+          topicId: this.topic.id,
+          sequenceId: {$in: unreadSequenceIds}
+        } : {
+          topicId: this.topic.id,
+          sequenceId: { $lte: this.lastSequenceId() }
+        },
+        limit: this.padding,
+        simplesort: 'sequenceId',
+        simplesortDesc: !hasUnread
+      },
+      remote: {
+        ...remoteTopicParams,
+        unread_or_newest: 1,
         per: this.padding
       }
     });
@@ -279,7 +284,7 @@ export default class ThreadLoader {
                      .filter(rule => !this.fetchedRules.includes(JSON.stringify(rule.remote)))
                      .map(rule => {
       newRules.push(JSON.stringify(rule.remote));
-      const params = Object.assign({}, rule.remote, {exclude_types: 'group discussion'});
+      const params = Object.assign({}, rule.remote, {exclude_types: 'topic'});
       return Records.events.fetch({params});
     });
 

@@ -90,6 +90,36 @@ class Api::V1::EventsController < Api::V1::RestfulController
     load_and_authorize_topic
     records = Event.where(topic_id: @topic.id)
 
+    if params[:unread_or_newest].present?
+      if params[:poll_id] || params[:poll_key]
+        poll = ModelLocator.new(:poll, params).locate!
+
+        # A poll key can identify a poll embedded inside another topic. In that
+        # case the page should open the parent thread at the poll_created event,
+        # then include following activity so the surrounding conversation renders.
+        if @topic.topicable != poll
+          poll_created = records.find_by!(kind: 'poll_created', eventable: poll)
+          return records.where("sequence_id >= ?", poll_created.sequence_id).order(:sequence_id)
+        end
+      end
+
+      reader = TopicReader.for(user: current_user, topic: @topic)
+      topic_ranges = @topic.ranges
+      unread_ranges = RangeSet.intersect_ranges(reader.unread_ranges, topic_ranges)
+      read_ranges = RangeSet.intersect_ranges(reader.read_ranges, topic_ranges)
+
+      if unread_ranges.any?
+        if RangeSet.length(unread_ranges) > RangeSet.length(read_ranges)
+          records = records.where.not(sequence_id: ranges_for_query(read_ranges)) if read_ranges.any?
+          return records.order(:sequence_id)
+        else
+          return records.where(sequence_id: ranges_for_query(unread_ranges)).order(:sequence_id)
+        end
+      else
+        return records.order(sequence_id: :desc)
+      end
+    end
+
     if %w[position_key sequence_id].include?(params[:order_by])
       records = records.order("#{params[:order_by]}#{params[:order_desc] ? " DESC" : ''}")
     else
@@ -128,6 +158,10 @@ class Api::V1::EventsController < Api::V1::RestfulController
 
   def page_collection(collection)
     collection.order(order).limit(per)
+  end
+
+  def ranges_for_query(ranges)
+    ranges.map { |range| range.first..range.last }
   end
 
   def default_page_size

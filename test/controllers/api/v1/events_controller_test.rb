@@ -81,6 +81,67 @@ class Api::V1::EventsControllerTest < ActionController::TestCase
     assert_includes json.keys, 'events'
   end
 
+  test "index unread_or_newest returns unread events by discussion key" do
+    sign_in @user
+    read_event = CommentService.create(comment: Comment.new(parent: @discussion, body: "Read comment"), actor: @admin)
+    unread_event = CommentService.create(comment: Comment.new(parent: @discussion, body: "Unread comment"), actor: @admin)
+    TopicReader.for(user: @user, topic: @discussion.topic).viewed!([0, read_event.sequence_id])
+
+    get :index, params: { discussion_key: @discussion.key, unread_or_newest: 1, per: 10 }, format: :json
+    json = JSON.parse(response.body)
+    sequence_ids = json['events'].map { |e| e['sequence_id'] }
+
+    assert_equal [unread_event.sequence_id], sequence_ids
+    assert_includes json['topics'].map { |t| t['id'] }, @discussion.topic.id
+  end
+
+  test "index unread_or_newest includes root event when unread" do
+    sign_in @user
+    event = CommentService.create(comment: Comment.new(parent: @discussion, body: "Unread comment"), actor: @admin)
+
+    get :index, params: { discussion_key: @discussion.key, unread_or_newest: 1, per: 10 }, format: :json
+    json = JSON.parse(response.body)
+    sequence_ids = json['events'].map { |e| e['sequence_id'] }
+
+    assert_equal [0, event.sequence_id], sequence_ids
+  end
+
+  test "index unread_or_newest returns newest events when fully read" do
+    sign_in @user
+    first_event = CommentService.create(comment: Comment.new(parent: @discussion, body: "First comment"), actor: @admin)
+    second_event = CommentService.create(comment: Comment.new(parent: @discussion, body: "Second comment"), actor: @admin)
+    third_event = CommentService.create(comment: Comment.new(parent: @discussion, body: "Third comment"), actor: @admin)
+    TopicReader.for(user: @user, topic: @discussion.topic).viewed!(@discussion.topic.reload.items.pluck(:sequence_id))
+
+    get :index, params: { discussion_key: @discussion.key, unread_or_newest: 1, per: 2 }, format: :json
+    json = JSON.parse(response.body)
+    sequence_ids = json['events'].map { |e| e['sequence_id'] }
+
+    assert_equal [third_event.sequence_id, second_event.sequence_id], sequence_ids
+    refute_includes sequence_ids, first_event.sequence_id
+  end
+
+  test "index unread_or_newest returns poll_created event for in-thread poll key" do
+    sign_in @user
+    poll = PollService.create(params: {
+      title: "POLL!",
+      poll_type: "proposal",
+      topic_id: @discussion.topic_id,
+      group_id: @group.id,
+      poll_option_names: %w[agree disagree],
+      closing_at: 3.days.from_now
+    }, actor: @admin)
+    later_event = CommentService.create(comment: Comment.new(parent: @discussion, body: "After poll"), actor: @admin)
+
+    get :index, params: { poll_key: poll.key, unread_or_newest: 1, per: 10 }, format: :json
+    json = JSON.parse(response.body)
+    sequence_ids = json['events'].map { |e| e['sequence_id'] }
+
+    assert_equal [poll.created_event.sequence_id, later_event.sequence_id], sequence_ids
+    assert_includes json['topics'].map { |t| t['id'] }, @discussion.topic.id
+    assert_includes json['polls'].map { |p| p['id'] }, poll.id
+  end
+
   test "index handles parent_id parameter with correct filtering" do
     sign_in @user
     parent_comment = Comment.new(parent: @discussion, body: "Parent comment")
