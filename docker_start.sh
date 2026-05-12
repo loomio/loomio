@@ -8,11 +8,11 @@ cp -r /loomio/client3-build/* /loomio/public/client3/
 find /loomio/public/client3 -type f -mtime +90 -delete
 
 if [ "$TASK" = "worker" ]; then
-  bundle exec sidekiq
+  exec bundle exec sidekiq
 elif [ "$TASK" = "hocuspocus" ]; then
-  node hocuspocus/server.mjs
+  exec node hocuspocus/server.mjs
 else
   # bundle install
   bundle exec rake db:prepare
-  bundle exec thrust puma -C config/puma.rb
+  exec bundle exec thrust puma -C config/puma.rb
 fi

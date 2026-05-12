@@ -84,7 +84,7 @@
     "pug": "latest",
     "sass": "latest",
     "unplugin-vue-components": "latest",
-    "vite": "^8.0.10",
+    "vite": "^8.0.11",
     "vite-plugin-env-compatible": "latest",
     "vite-plugin-vuetify": "latest",
     "yaml": "^2.8.3"
