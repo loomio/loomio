@@ -1,77 +1,45 @@
-<script lang="js">
+<script setup lang="js">
 import DiscussionService  from '@/shared/services/discussion_service';
 import { pickBy } from 'lodash-es';
 import Session from '@/shared/services/session';
-import StrandActionsPanel from '@/components/strand/actions_panel';
-import UrlFor from '@/mixins/url_for';
+import LmoUrlService from '@/shared/services/lmo_url_service';
+import { computed, onMounted, ref } from 'vue';
 
-export default {
-  mixins: [UrlFor],
-  components: {
-    StrandActionsPanel
-  },
-  props: {
-    event: Object,
-    eventable: Object,
-    collapsed: Boolean
-  },
+const props = defineProps({
+  event: Object,
+  eventable: Object,
+  collapsed: Boolean
+});
 
-  data() {
-    return {
-      actions: []
-    };
-  },
+const actions = ref([]);
 
-  mounted() {
-    this.rebuildActions();
-  },
+const discussion = computed(() => props.eventable);
+const topic = computed(() => props.eventable.topic());
+const author = computed(() => discussion.value.author());
+const authorName = computed(() => discussion.value.authorName());
+const dockActions = computed(() => pickBy(actions.value, v => v.dock));
+const menuActions = computed(() => pickBy(actions.value, v => v.menu));
 
-  computed: {
-    topic() {
-      return this.eventable.topic();
-    },
-    author() {
-      return this.discussion.author();
-    },
+function urlFor(model, action, params) {
+  return LmoUrlService.route({model, action, params});
+}
 
-    authorName() {
-      return this.discussion.authorName();
-    },
+function rebuildActions() {
+  actions.value = DiscussionService.actions(props.eventable);
+}
 
-    discussion() { return this.eventable; },
-
-    group() {
-      return this.discussion.group();
-    },
-
-    dockActions() {
-      return pickBy(this.actions, v => v.dock);
-    },
-
-    menuActions() {
-      return pickBy(this.actions, v => v.menu);
-    },
-
-    status() {
-      if (this.discussion.pinned) { return 'pinned'; }
-    },
-  },
-
-  methods: {
-    rebuildActions() {
-      this.actions = DiscussionService.actions(this.eventable, this);
-    },
-
-    viewed(viewed) {
-      if (viewed && Session.isSignedIn()) {
-        this.topic.markAsSeen();
-        if (Session.user().autoTranslate && this.actions['translate_thread'].canPerform()) {
-          this.actions['translate_thread'].perform().then(() => { this.rebuildActions() });
-        }
-      }
+function viewed(viewed) {
+  if (viewed && Session.isSignedIn()) {
+    topic.value.markAsSeen();
+    if (Session.user().autoTranslate && actions.value['translate_thread'].canPerform()) {
+      actions.value['translate_thread'].perform().then(() => { rebuildActions(); });
     }
   }
-};
+}
+
+onMounted(() => {
+  rebuildActions();
+});
 
 </script>
 
