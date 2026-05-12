@@ -1,42 +1,30 @@
-<script lang="js">
+<script setup lang="js">
 import LmoUrlService from '@/shared/services/lmo_url_service';
-import FormatDate from '@/mixins/format_date';
+import EventBus from '@/shared/services/event_bus';
+import { computed } from 'vue';
 
-export default {
-  mixins: [FormatDate],
-  props: {
-    topicable: Object
-  },
+const props = defineProps({
+  topicable: Object
+});
 
-  computed: {
-    topic() {
-      return this.topicable.topic();
-    },
+const topic = computed(() => props.topicable.topic());
+const group = computed(() => props.topicable.group());
+const groups = computed(() => {
+  if (!group.value) { return []; }
+  return group.value.parentsAndSelf().map(group => {
+    return {
+      title: group.name,
+      disabled: false,
+      to: group.id ? LmoUrlService.route({model: group}) : '/dashboard/direct_discussions'
+    };
+  });
+});
+const tags = computed(() => topic.value.tags);
+const isPinned = computed(() => !!topic.value.pinnedAt);
 
-    group() {
-      return this.topicable.group();
-    },
-
-    groups() {
-      if (!this.group) { return []; }
-      return this.group.parentsAndSelf().map(group => {
-        return {
-          title: group.name,
-          disabled: false,
-          to: group.id ? LmoUrlService.route({model: group}) : '/dashboard/direct_discussions'
-        };
-      });
-    },
-
-    tags() {
-      return this.topic.tags;
-    },
-
-    isPinned() {
-      return !!this.topic.pinnedAt;
-    }
-  }
-};
+function titleVisible(visible) {
+  EventBus.$emit('content-title-visible', visible);
+}
 </script>
 
 <template lang="pug">
