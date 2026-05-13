@@ -108,6 +108,8 @@ module Null::Group
       polls_count
       closed_polls_count
       discussions_count
+      open_discussions_count
+      closed_discussions_count
       pending_memberships_count
       discussion_templates_count
       poll_templates_count
