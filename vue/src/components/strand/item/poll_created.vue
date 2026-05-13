@@ -77,12 +77,9 @@ section.strand-item.poll-created(v-intersect.once="{handler: viewed}")
       router-link.underline-on-hover.text-high-emphasis(:to="urlFor(poll)" )
         plain-text(:model="poll" field="title")
   div(v-if="!collapsed")
+    poll-common-details-meta(:poll="poll")
     poll-common-set-outcome-panel(:poll='poll' v-if="!poll.outcome()")
     poll-common-outcome-panel(:outcome='poll.outcome()' v-if='poll.outcome()')
-    .poll-common-details-panel__started-by.text-medium-emphasis.text-body-2.mb-4
-      span(v-t="{ path: 'poll_card.poll_type_by_name', args: { name: poll.authorName(), poll_type: poll.translatedPollTypeCaps() } }")
-      mid-dot
-      poll-common-closing-at.ml-1(:poll='poll')
     formatted-text.poll-common-details-panel__details(:model="poll" field="details")
     link-previews(:model="poll")
     attachment-list(:attachments="poll.attachments")

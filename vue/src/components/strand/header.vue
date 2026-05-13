@@ -3,13 +3,13 @@ import LmoUrlService from '@/shared/services/lmo_url_service';
 import EventBus from '@/shared/services/event_bus';
 import { computed } from 'vue';
 
-const props = defineProps({
+const { topicable } = defineProps({
   topicable: Object
 });
 
-const topic = computed(() => props.topicable.topic());
+const topic = computed(() => topicable.topic());
 const topicTopicable = computed(() => topic.value.topicable());
-const group = computed(() => props.topicable.group());
+const group = computed(() => topicable.group());
 const groups = computed(() => {
   if (!group.value) { return []; }
   return group.value.parentsAndSelf().map(group => {
@@ -22,7 +22,7 @@ const groups = computed(() => {
 });
 const breadcrumbs = computed(() => {
   const items = groups.value.slice();
-  if (props.topicable !== topicTopicable.value) {
+  if (topicable !== topicTopicable.value) {
     items.push({
       title: topicTopicable.value.title,
       disabled: false,
@@ -41,11 +41,10 @@ function titleVisible(visible) {
 
 <template lang="pug">
 .strand-header
-  .d-flex.ml-n3.text-body-2
-    v-breadcrumbs.context-panel__breadcrumbs(color="anchor" :items="breadcrumbs")
+  .d-flex.flex-wrap.align-center.text-body-2
+    v-breadcrumbs.ml-n3.context-panel__breadcrumbs.flex-grow-1(color="anchor" :items="breadcrumbs")
       template(v-slot:divider)
         common-icon(name="mdi-chevron-right")
-    v-spacer
     tags-display(:tags="tags" :group="group")
   h1.text-h4.context-panel__heading#sequence-0.pt-2.mb-4(tabindex="-1" v-intersect="{handler: titleVisible}")
     plain-text(:model='topicable' field='title')
