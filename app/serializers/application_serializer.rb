@@ -22,7 +22,7 @@ class ApplicationSerializer < ActiveModel::Serializer
   end
 
   def event
-    cache_fetch(:events_by_id, object.event_id)
+    cache_fetch(:events_by_id, object.event_id) { object.event }
   end
 
   def discussion
@@ -53,12 +53,11 @@ class ApplicationSerializer < ActiveModel::Serializer
     end
   end
 
-  def cache_fetch(key_or_keys, id)
-    return nil if id.nil?
-    if scope.has_key?(:cache)
-      scope[:cache].fetch(key_or_keys, id) { block_given? ?  yield : nil }
+  def cache_fetch(key_or_keys, id, &block)
+    if id && scope.has_key?(:cache)
+      scope[:cache].fetch(key_or_keys, id, &block)
     else
-      block_given? ?  yield : nil
+      yield
     end
   end
 

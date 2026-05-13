@@ -61,7 +61,7 @@ class GroupSerializer < ApplicationSerializer
   has_many :tags, serializer: TagSerializer, root: :tags
 
   def current_user_membership
-    cache_fetch(:memberships_by_group_id, object.id)
+    cache_fetch(:memberships_by_group_id, object.id) { nil }
   end
 
   def parent
@@ -69,7 +69,7 @@ class GroupSerializer < ApplicationSerializer
   end
 
   def subscription
-    sub = cache_fetch(:subscriptions_by_group_id, object.id) { object.subscription || Subscription.new } || Subscription.new
+    sub = cache_fetch(:subscriptions_by_group_id, object.id) { object.subscription || Subscription.new }
     {
       max_members:     sub.max_members,
       max_threads:     sub.max_threads,

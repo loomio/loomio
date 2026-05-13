@@ -78,16 +78,16 @@ class TopicSerializer < ApplicationSerializer
     return @reader = nil unless scope[:current_user_id]
 
     @reader = cache_fetch(:topic_readers_by_topic_id, object.id) do
-      m = object.group_id && cache_fetch(:memberships_by_group_id, object.group_id)
+      m = cache_fetch(:memberships_by_group_id, object.group_id) { nil }
       TopicReader.find_or_initialize_by(user_id: scope[:current_user_id], topic_id: object.id) do |tr|
-        tr.volume = (m && m.volume) || 'normal'
+        tr.volume = m&.volume || 'normal'
       end
     end
 
     return @reader if @reader.present?
 
-    m = object.group_id && cache_fetch(:memberships_by_group_id, object.group_id)
-    @reader = TopicReader.new(user_id: scope[:current_user_id], topic_id: object.id, volume: (m && m.volume) || 'normal')
+    m = cache_fetch(:memberships_by_group_id, object.group_id) { Membership.new(volume: 'normal') }
+    @reader = TopicReader.new(user_id: scope[:current_user_id], topic_id: object.id, volume: m.volume)
   end
 
   def topic_reader_id
