@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_05_06_063920) do
+ActiveRecord::Schema[8.0].define(version: 2026_05_14_000001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -384,7 +384,6 @@ ActiveRecord::Schema[8.0].define(version: 2026_05_06_063920) do
     t.integer "subscription_id"
     t.integer "invitations_count", default: 0, null: false
     t.integer "admin_memberships_count", default: 0, null: false
-    t.integer "public_discussions_count", default: 0, null: false
     t.string "country"
     t.string "region"
     t.string "city"
@@ -395,7 +394,6 @@ ActiveRecord::Schema[8.0].define(version: 2026_05_06_063920) do
     t.integer "closed_polls_count", default: 0, null: false
     t.integer "polls_count", default: 0, null: false
     t.integer "subgroups_count", default: 0, null: false
-    t.integer "open_discussions_count", default: 0, null: false
     t.integer "closed_discussions_count", default: 0, null: false
     t.string "token"
     t.string "admin_tags"

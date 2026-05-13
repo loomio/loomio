@@ -111,9 +111,7 @@ class Group < ApplicationRecord
   define_counter_cache(:pending_memberships_count)  { |g| g.memberships.pending.count }
   define_counter_cache(:admin_memberships_count)    { |g| g.admin_memberships.count }
   define_counter_cache(:delegates_count)            { |g| g.memberships.delegates.count }
-  define_counter_cache(:public_discussions_count)   { |g| g.discussions.visible_to_public.count }
   define_counter_cache(:discussions_count)          { |g| g.discussions.kept.count }
-  define_counter_cache(:open_discussions_count)     { |g| g.discussions.is_open.count }
   define_counter_cache(:closed_discussions_count)   { |g| g.discussions.is_closed.count }
   define_counter_cache(:discussion_templates_count) { |g| g.discussion_templates.kept.count }
   define_counter_cache(:subgroups_count)            { |g| g.subgroups.published.count }
@@ -319,6 +317,10 @@ class Group < ApplicationRecord
     Membership.active.accepted.where(group_id: id_and_subgroup_ids).count('distinct user_id')
   end
 
+  def open_discussions_count
+    discussions_count - closed_discussions_count
+  end
+
   def org_discussions_count
     Group.where(id: id_and_subgroup_ids).sum(:discussions_count)
   end
@@ -453,14 +455,12 @@ class Group < ApplicationRecord
     "membership_granted_upon",
     "memberships_count",
     "name",
-    "open_discussions_count",
     "parent_id",
     "parent_members_can_see_discussions",
     "pending_memberships_count",
     "poll_templates_count",
     "polls_count",
     "proposal_outcomes_count",
-    "public_discussions_count",
     "recent_activity_count",
     "region",
     "subgroups_count",

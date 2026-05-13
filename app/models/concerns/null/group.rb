@@ -36,8 +36,6 @@ module Null::Group
       update_polls_count
       update_closed_polls_count
       update_discussions_count
-      update_public_discussions_count
-      update_open_discussions_count
       update_closed_discussions_count
       update_discussion_templates_count
       presence
@@ -77,11 +75,17 @@ module Null::Group
       member_ids
       identities
       hidden_poll_templates
+      attachments
+      link_previews
     ]
   end
 
   def discussion_privacy_options
     'private_only'
+  end
+
+  def membership_granted_upon
+    'invitation'
   end
 
   def false_methods
@@ -92,6 +96,9 @@ module Null::Group
       members_can_create_subgroups
       members_can_start_discussions
       admins_can_edit_user_content
+      members_can_create_templates
+      listed_in_explore
+      custom_cover_photo?
     )
   end
 
@@ -101,9 +108,14 @@ module Null::Group
       polls_count
       closed_polls_count
       discussions_count
-      public_discussions_count
       pending_memberships_count
       discussion_templates_count
+      poll_templates_count
+      delegates_count
+      accepted_memberships_count
+      memberships_count
+      pending_memberships_count
+      admin_memberships_count
     ]
   end
 

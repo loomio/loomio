@@ -29,11 +29,9 @@ class GroupService::PrivacyChange
   private
   def make_discussions_private_in(group_or_groups)
     Topic.where(group_id: group_or_groups).update_all(private: true)
-    Array(group_or_groups).map(&:update_public_discussions_count)
   end
 
   def make_discussions_public_in(group_or_groups)
     Topic.where(group_id: group_or_groups).update_all(private: false)
-    Array(group_or_groups).map(&:update_public_discussions_count)
   end
 end

@@ -114,8 +114,6 @@ class Discussion < ApplicationRecord
     #TODO can this be a background job or materialized view
     return unless (g = topic.group) && g.id
     g.update_discussions_count
-    # g.update_public_discussions_count
-    g.update_open_discussions_count
     g.update_closed_discussions_count
     g.update_closed_polls_count
   end

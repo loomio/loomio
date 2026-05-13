@@ -26,7 +26,6 @@ class GroupSerializer < ApplicationSerializer
              :poll_templates_count,
              :closed_polls_count,
              :discussions_count,
-             :public_discussions_count,
              :group_privacy,
              :listed_in_explore,
              :memberships_count,
