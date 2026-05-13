@@ -106,6 +106,7 @@ module Null::Group
       members_can_create_templates
       listed_in_explore
       custom_cover_photo?
+      is_parent?
     )
   end
 
