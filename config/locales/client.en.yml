@@ -1695,6 +1695,7 @@ en:
     learn_more: Learn more about email settings...
   thread_preview:
     replies_count: "%{count} replies"
+    items_count: "%{count} items"
     unread_count: "%{count} unread"
   dashboard_page:
     dashboard: Dashboard
@@ -2271,6 +2272,8 @@ en:
     poll_type_by_name: "%{poll_type} by %{name}"
     started_by: Started by %{name}
   poll_common_votes_panel:
+    cast: Cast
+    uncast: Uncast
     vote_removed: Vote removed
     undecided: Undecided
     newest_first: Newest first
@@ -2281,6 +2284,15 @@ en:
     no_votes_yet: No votes have been placed yet.
     change_results_order: Change results order
     name_or_username: Name or username
+  poll_common_details_meta:
+    opened: Opened
+    opens: Opens
+    closed: Closed
+    closes: Closes
+    opened_at: Opened at
+    opening_at: Opening at
+    closed_at: Closed at
+    closing_at: Closing at
   poll_common_undecided_panel:
     show_undecided: Show %{count} undecided
     show_invitations: Show Pending Invitations

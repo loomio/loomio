@@ -9,7 +9,8 @@ export default {
   mixins: [WatchRecords],
   components: {BarIcon, PieIcon, GridIcon},
   props: {
-    poll: Object
+    poll: Object,
+    hideVoters: Boolean
   },
 
   data() {
@@ -63,7 +64,7 @@ export default {
           th.text-right(v-if="col == 'average'" v-t='"poll_ranked_choice_form.mean"')
           th.text-right(v-if="col == 'votes'" v-t='"poll_common.votes"')
           th.text-right(v-if="col == 'voter_count'" v-t='"membership_card.voters"')
-          th.d-none.d-sm-table-cell(v-if="col == 'voters'")
+          th.d-none.d-sm-table-cell(v-if="col == 'voters' && !hideVoters")
     tbody
       tr(v-for="option, index in poll.results", :key="option.id")
         template(v-for="col in poll.resultColumns")
@@ -98,7 +99,7 @@ export default {
           td.text-right(v-if="col == 'average'") {{Math.round((option.average + Number.EPSILON) * 100) / 100}}
           td.text-right(v-if="col == 'voter_percent'") {{option.voter_percent.toFixed(0)}}%
           td.text-right(v-if="col == 'score_percent' || col == 'votes_cast_percent'") {{option.score_percent === null ? '' : option.score_percent.toFixed(0) + "%"}}
-          td.text-right.d-none.d-sm-table-cell(v-if="col == 'voters'")
+          td.text-right.d-none.d-sm-table-cell(v-if="col == 'voters' && !hideVoters")
             div.poll-common-chart-table__voter-avatars
               user-avatar.float-left(v-for="id in option.voter_ids", :key="id", :user="users[id]", :size="24" no-link)
 </template>

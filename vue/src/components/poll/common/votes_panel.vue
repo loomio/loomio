@@ -1,98 +1,115 @@
-<script lang="js">
+<script setup lang="js">
 import PageLoader         from '@/shared/services/page_loader';
 import Records from '@/shared/services/records';
 import { debounce } from 'lodash-es';
 import { I18n } from '@/i18n';
-import FormatDate from '@/mixins/format_date';
+import ScrollService from '@/shared/services/scroll_service';
+import { computed, ref, watch } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 
-export default {
-  mixins: [FormatDate],
-  props: {
-    poll: Object
-  },
+const props = defineProps({
+  poll: Object
+});
 
-  data() {
-    let pollOptionItems = [{title: I18n.global.t('discussions_panel.all'), value: null}].concat(this.poll.pollOptions().map((o, i) => {
-      return {title: o.optionName(), value: o.id};
-    }))
+const route = useRoute();
+const router = useRouter();
 
-    if (!this.poll.showResults()) {
-      pollOptionItems = [{title: I18n.global.t('discussions_panel.all'), value: null}]
-    }
+const stances = ref([]);
+const per = 50;
+const loader = ref(null);
+const page = ref(parseInt(route.query.page) || 1);
+const name = ref(route.query.name);
+const castFilter = 'cast';
+const uncastFilter = 'uncast';
 
-    return {
-      stances: [],
-      per: 50,
-      loader: null,
-      pollOptionItems,
-      page: parseInt(this.$route.query.page) || 1,
-      pollOptionId: parseInt(this.$route.query.poll_option_id) || null,
-      name: this.$route.query.name
-    };
-  },
+function initialVoteFilter() {
+  const pollOptionId = parseInt(route.query.poll_option_id);
+  if (!Number.isNaN(pollOptionId)) { return pollOptionId; }
 
-  created() {
-    this.fetchNow();
-  },
+  return route.query.stance_filter === uncastFilter ? uncastFilter : castFilter;
+}
 
-  computed: {
-    totalPages() {
-      return Math.max(1, Math.ceil((this.loader.total || 0) / this.per));
-    }
-  },
+const voteFilter = ref(initialVoteFilter());
+const selectedPollOptionId = computed(() => {
+  return typeof voteFilter.value === 'number' ? voteFilter.value : null;
+});
+const selectedStanceFilter = computed(() => {
+  return voteFilter.value === uncastFilter ? uncastFilter : castFilter;
+});
 
-  watch: {
-    page(val, lastVal) {
-      if (val === lastVal) { return; }
-      this.$router.replace({query: Object.assign({}, this.$route.query, {page: val})});
-      this.fetch();
-    },
+const pollOptionItems = computed(() => {
+  const items = [
+    {title: I18n.global.t('poll_common_votes_panel.cast'), value: castFilter},
+    {title: I18n.global.t('poll_common_votes_panel.uncast'), value: uncastFilter}
+  ];
 
-    pollOptionId(val, lastVal) {
-      if (val === lastVal) { return; }
-      this.page = 1;
-      this.name = null;
-      this.$router.replace({query: Object.assign({}, this.$route.query, {poll_option_id: val, name: null})});
-      this.fetch();
-    }
-  },
+  if (!props.poll.showResults()) { return items; }
 
-  methods: {
-    nameChanged() {
-      this.$router.replace({query: Object.assign({}, this.$route.query, {name: this.name})});
-      this.fetch();
-    },
+  return items.concat(props.poll.pollOptions().map(o => {
+    return {title: o.optionName(), value: o.id};
+  }));
+});
 
-    fetch: debounce(function() {
-      this.fetchNow();
-    } , 50),
+const totalPages = computed(() => {
+  return Math.max(1, Math.ceil(((loader.value && loader.value.total) || 0) / per));
+});
 
-    fetchNow() {
-      this.loader = new PageLoader({
-        path: 'stances',
-        order: 'orderAt',
-        params: {
-          per: this.per,
-          poll_id: this.poll.id,
-          poll_option_id: this.pollOptionId,
-          name: this.name
-        }
-      });
-      this.loader.fetch(this.page).then(() => this.findRecords()).then(() => this.scrollTo('#votes'));
-    },
-
-
-    findRecords() {
-      if (this.loader.pageWindow[this.page]) {
-        let chain = Records.stances.collection.chain().find({id: {$in: this.loader.pageIds[this.page]}});
-        chain = chain.simplesort('orderAt', true);
-        this.stances = chain.data();
-      } else {
-        this.stances = [];
-      }
-    }
+function findRecords() {
+  if (loader.value.pageWindow[page.value]) {
+    let chain = Records.stances.collection.chain().find({id: {$in: loader.value.pageIds[page.value]}});
+    chain = chain.simplesort('orderAt', true);
+    stances.value = chain.data();
+  } else {
+    stances.value = [];
   }
-};
+}
+
+function fetchNow() {
+  loader.value = new PageLoader({
+    path: 'stances',
+    order: 'orderAt',
+    params: {
+      per,
+      poll_id: props.poll.id,
+      poll_option_id: selectedPollOptionId.value,
+      stance_filter: selectedStanceFilter.value,
+      name: name.value
+    }
+  });
+  loader.value.fetch(page.value).then(findRecords).then(() => ScrollService.scrollTo('#votes'));
+}
+
+const fetch = debounce(function() {
+  fetchNow();
+} , 50);
+
+watch(page, (val, lastVal) => {
+  if (val === lastVal) { return; }
+  router.replace({query: Object.assign({}, route.query, {page: val})});
+  fetch();
+});
+
+watch(voteFilter, (val, lastVal) => {
+  if (val === lastVal) { return; }
+  page.value = 1;
+  name.value = null;
+  router.replace({query: Object.assign({}, route.query, {
+    page: null,
+    poll_option_id: selectedPollOptionId.value,
+    stance_filter: selectedStanceFilter.value,
+    name: null
+  })});
+  fetch();
+});
+
+watch(name, (val, lastVal) => {
+  if (val === lastVal) { return; }
+  page.value = 1;
+  router.replace({query: Object.assign({}, route.query, {page: null, name: val || null})});
+  fetch();
+});
+
+fetchNow();
 
 </script>
 
@@ -100,8 +117,8 @@ export default {
 .poll-common-votes-panel
   h2.text-h5.my-2#votes(v-t="'poll_common.votes'")
   .d-flex
-    v-select.mr-2(:items="pollOptionItems" :label="$t('common.option')" v-model="pollOptionId")
-    v-text-field(v-if="!poll.anonymous" v-model="name" @change="nameChanged" :label="$t('poll_common_votes_panel.name_or_username')")
+    v-select.mr-2(:items="pollOptionItems" :label="$t('common.option')" v-model="voteFilter")
+    v-text-field(v-if="!poll.anonymous" v-model="name" :label="$t('poll_common_votes_panel.name_or_username')")
   .poll-common-votes-panel__no-votes.text-medium-emphasis(v-if='!poll.votersCount' v-t="'poll_common_votes_panel.no_votes_yet'")
   .poll-common-votes-panel__has-votes(v-if='poll.votersCount')
     .poll-common-votes-panel__stance(v-for='stance in stances', :key='stance.id')

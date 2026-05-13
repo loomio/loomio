@@ -24,13 +24,17 @@ Records.polls.findOrFetchById(route.params.key).then(p => {
 
 <template lang="pug">
 v-main
-  v-container.max-width-800
-    loading(:until="poll")
-      .d-flex.align-center.mb-4
-        v-breadcrumbs
-          v-breadcrumbs-item(:to="'/p/' + poll.key")
-            span {{ poll.title }}
-          v-breadcrumbs-item
-            span(v-t="'poll_common.votes'")
-      poll-common-votes-panel(:poll="poll")
+  v-container.max-width-800(v-if="poll")
+    v-sheet.votes-page.mb-8.pb-4.rounded.pa-4(elevation=1)
+      loading(:until="poll")
+        strand-header(:topicable="poll")
+        .d-flex.align-start
+          user-avatar.mr-2.mt-1(:user="poll.author()" :size="32")
+          poll-common-details-meta(:poll="poll")
+        poll-common-outcome-panel(:outcome="poll.outcome()" v-if="poll.outcome()")
+        formatted-text.poll-common-details-panel__details(v-if="poll.details" :model="poll" field="details")
+        link-previews(v-if="poll.details" :model="poll")
+        attachment-list(:attachments="poll.attachments")
+        poll-common-chart-panel(:poll="poll" hide-view-all-votes hide-voters)
+        poll-common-votes-panel(:poll="poll")
 </template>
