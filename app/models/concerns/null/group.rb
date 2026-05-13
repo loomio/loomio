@@ -54,7 +54,12 @@ module Null::Group
       logo_url
       category
       archived_at
+      request_to_join_prompt
     )
+  end
+
+  def hash_methods
+    %w[info]
   end
 
   def true_methods
@@ -90,7 +95,9 @@ module Null::Group
 
   def false_methods
     %w(
+      parent_members_can_see_discussions
       public_discussions_only?
+      is_visible_to_public
       is_visible_to_parent_members
       members_can_add_members
       members_can_create_subgroups
@@ -118,6 +125,7 @@ module Null::Group
       memberships_count
       pending_memberships_count
       admin_memberships_count
+      subgroups_count
     ]
   end
 
@@ -138,6 +146,10 @@ module Null::Group
 
   def discussion_templates=(arg)
     nil
+  end
+
+  def categorize_poll_templates
+    true
   end
 
   def group_privacy
