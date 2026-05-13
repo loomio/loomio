@@ -1,93 +1,83 @@
-<script lang="js">
-import AbilityService           from '@/shared/services/ability_service';
+<script setup>
+import { ref, computed, watch, onUnmounted } from 'vue';
+import { useRoute } from 'vue-router';
+import AbilityService from '@/shared/services/ability_service';
 import PollCommonForm from '@/components/poll/common/form';
 import PollCommonChooseTemplateWrapper from '@/components/poll/common/choose_template_wrapper';
 import Session from '@/shared/services/session';
-import AuthModalMixin from '@/mixins/auth_modal';
 import Records from '@/shared/services/records';
-import WatchRecords from '@/mixins/watch_records';
 import EventBus from '@/shared/services/event_bus';
+import { useWatchRecords } from '@/composables/useWatchRecords';
 
-export default {
-  components: {PollCommonForm, PollCommonChooseTemplateWrapper},
-  mixins: [ AuthModalMixin, WatchRecords ],
+const { topic } = defineProps({
+  topic: { type: Object, required: true }
+});
 
-  props: {
-    topic: {
-      type: Object,
-      required: true
-    }
-  },
+const route = useRoute();
+const { watchRecords } = useWatchRecords();
 
-  data() {
-    return {
-      canAddComment: false,
-      forceShowCommentForm: false,
-      currentAction: this.$route.query.current_action == "add-poll" ? 'add-poll' : 'add-comment',
-      newComment: null,
-      poll: null
-    };
-  },
+const canAddComment = ref(false);
+const canStartPoll = ref(false);
+const forceShowCommentForm = ref(false);
+const currentAction = ref(route.query.current_action == 'add-poll' ? 'add-poll' : 'add-comment');
+const newComment = ref(null);
+const poll = ref(null);
 
-  created() {
-    this.watchRecords({
-      key: this.topic.id,
-      collections: ['topics', 'groups', 'memberships', 'polls', 'stances'],
-      query: () => {
-        this.canAddComment = AbilityService.canAddComment(this.topic);
-      }
-    });
-    this.resetComment();
-    EventBus.$on('show-add-comment-form', () => { this.forceShowCommentForm = true; this.currentAction = 'add-comment'; });
-    EventBus.$on('show-add-poll-form', () => { this.currentAction = 'add-poll'; });
-  },
-
-  methods: {
-    resetComment() {
-      this.newComment = Records.comments.build({
-        bodyFormat: Session.defaultFormat(),
-        parentType: this.topic.topicableType,
-        parentId: this.topic.topicableId,
-        authorId: Session.user().id
-      })
-    },
-
-    setPoll(poll) { return this.poll = poll; },
-    resetPoll() {
-      this.poll = null;
-      this.currentAction = 'add-comment';
-    },
-
-    signIn() { this.openAuthModal(); },
-    isLoggedIn() { return Session.isSignedIn(); }
-  },
-
-  watch: {
-    '$route.query.current_action'(val) {
-      this.currentAction = (val == "add-poll" ? 'add-poll' : 'add-comment')
-    },
-    'topic.id'() {
-      this.resetComment();
-      this.resetPoll();
-    }
-  },
-
-  computed: {
-    canStartPoll() {
-      return AbilityService.canStartPoll(this.topic);
-    },
-    showAddCommentForm() {
-      if (!this.canAddComment) { return false; }
-      if (this.forceShowCommentForm) { return true; }
-      if (this.topic.topicableType === 'Poll') {
-        const poll = this.topic.topicable();
-        return !poll || poll.closedAt || poll.iHaveVoted();
-      }
-      return true;
-    },
-  }
+const resetComment = () => {
+  newComment.value = Records.comments.build({
+    bodyFormat: Session.defaultFormat(),
+    parentType: topic.topicableType,
+    parentId: topic.topicableId,
+    authorId: Session.user().id
+  });
 };
 
+const setPoll = (p) => { poll.value = p; };
+const resetPoll = () => {
+  poll.value = null;
+  currentAction.value = 'add-comment';
+};
+
+const signIn = () => EventBus.$emit('openModal', { component: 'AuthModal', props: { preventClose: false } });
+const isLoggedIn = () => Session.isSignedIn();
+
+const showAddCommentForm = computed(() => {
+  if (!canAddComment.value) return false;
+  if (forceShowCommentForm.value) return true;
+  if (topic.topicableType === 'Poll') {
+    const p = topic.topicable();
+    return !p || p.closedAt || p.iHaveVoted();
+  }
+  return true;
+});
+
+watch(() => route.query.current_action, (val) => {
+  currentAction.value = val == 'add-poll' ? 'add-poll' : 'add-comment';
+});
+
+watch(() => topic.id, () => {
+  resetComment();
+  resetPoll();
+});
+
+watchRecords({
+  key: topic.id,
+  collections: ['topics', 'groups', 'memberships', 'polls', 'stances'],
+  query: () => {
+    canAddComment.value = AbilityService.canAddComment(topic);
+    canStartPoll.value = AbilityService.canStartPoll(topic);
+  }
+});
+
+resetComment();
+
+EventBus.$on('show-add-comment-form', () => { forceShowCommentForm.value = true; currentAction.value = 'add-comment'; });
+EventBus.$on('show-add-poll-form', () => { currentAction.value = 'add-poll'; });
+
+onUnmounted(() => {
+  EventBus.$off('show-add-comment-form');
+  EventBus.$off('show-add-poll-form');
+});
 </script>
 
 <template lang="pug">
