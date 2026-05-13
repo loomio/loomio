@@ -69,7 +69,7 @@ class GroupSerializer < ApplicationSerializer
   end
 
   def subscription
-    sub = cache_fetch(:subscriptions_by_group_id, object.id) { object.subscription || Subscription.new }
+    sub = cache_fetch(:subscriptions_by_group_id, object.id) { object.subscription || Subscription.new } || Subscription.new
     {
       max_members:     sub.max_members,
       max_threads:     sub.max_threads,
