@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_05_14_000001) do
+ActiveRecord::Schema[8.0].define(version: 2026_05_14_000002) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -390,7 +390,6 @@ ActiveRecord::Schema[8.0].define(version: 2026_05_14_000001) do
     t.integer "closed_motions_count", default: 0, null: false
     t.integer "proposal_outcomes_count", default: 0, null: false
     t.integer "pending_memberships_count", default: 0, null: false
-    t.integer "recent_activity_count", default: 0, null: false
     t.integer "closed_polls_count", default: 0, null: false
     t.integer "polls_count", default: 0, null: false
     t.integer "subgroups_count", default: 0, null: false

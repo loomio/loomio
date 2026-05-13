@@ -461,7 +461,6 @@ class Group < ApplicationRecord
     "poll_templates_count",
     "polls_count",
     "proposal_outcomes_count",
-    "recent_activity_count",
     "region",
     "subgroups_count",
     "subscription_id",
