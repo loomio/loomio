@@ -63,6 +63,7 @@ class PollSerializer < ApplicationSerializer
 
   has_one :author, serializer: AuthorSerializer, root: :users
   has_one :current_outcome, serializer: OutcomeSerializer, root: :outcomes
+  has_one :topic, serializer: TopicSerializer, root: :topics
   has_one :my_stance, serializer: StanceSerializer, root: :stances
   has_many :poll_options, serializer: PollOptionSerializer, root: :poll_options
 

@@ -44,6 +44,13 @@ class Api::V1::StancesController < Api::V1::RestfulController
                  first: "#{name}%", last: "% #{name}%")
       end
 
+      case params[:stance_filter]
+      when 'cast'
+        collection = collection.decided
+      when 'uncast'
+        collection = collection.undecided
+      end
+
       if @poll.show_results?(voted: true)
         if poll_option_id = params[:poll_option_id].presence
           collection = collection.joins(:poll_options).where("poll_options.id" => poll_option_id)

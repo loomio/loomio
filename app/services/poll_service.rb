@@ -308,7 +308,9 @@ class PollService
       poll.stv_results = StvCountService.count(poll)
     end
 
-    poll.update_attribute(:closed_at, Time.now)
+    poll.update(closed_at: Time.now)
+    # why isn't active polls count being updated?
+    poll.topic.update_active_polls_count
 
     if poll.poll_type == 'stv'
       poll.save!  # persist stv_results in custom_fields
@@ -491,7 +493,7 @@ class PollService
     return unless poll.closing_at
     return if poll.opening_at.present? && poll.opening_at > Time.now
 
-    poll.update_column(:opened_at, Time.now)
+    poll.update(opened_at: Time.now)
     announce_poll_opened(poll) if poll.notify_on_open
     publish_topic_if_active(poll)
   end
