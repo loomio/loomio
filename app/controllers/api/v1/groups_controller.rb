@@ -1,5 +1,6 @@
 class Api::V1::GroupsController < Api::V1::RestfulController
   before_action :require_signed_in_user_for_explore, only: [:index, :count_explore_results]
+  before_action :enforce_trial_group_limit, only: [:create]
 
   def token
     self.resource = load_and_authorize(:group, :invite_people)
@@ -81,6 +82,17 @@ class Api::V1::GroupsController < Api::V1::RestfulController
   end
 
   private
+
+  def enforce_trial_group_limit
+    return if params.dig(:group, :parent_id).present?
+    return if current_user.is_paying?
+    return if current_user.created_at <= 7.days.ago
+    trial_groups = current_user.created_groups.where(parent_id: nil)
+                               .joins(:subscription).where(subscriptions: { plan: 'trial' })
+    if trial_groups.exists?
+      render json: { errors: { base: [t('errors.new_account_trial_group_limit')] } }, status: 429
+    end
+  end
 
   def require_signed_in_user_for_explore
     require_current_user if AppConfig.app_features[:restrict_explore_to_signed_in_users]
