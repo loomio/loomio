@@ -110,12 +110,13 @@ class Api::V1::AnnouncementsController < Api::V1::RestfulController
     Notification.includes(:user).where(event_id: events.pluck(:id)).order('users.name, users.email').each do |notification|
       next unless notification.user
       notifications[notification.event_id] = [] unless notifications.has_key?(notification.event_id)
-      notifications[notification.event_id] << {id: notification.id, to: (notification.user.name || notification.user.email), viewed: allow_viewed && notification.viewed }
+      notifications[notification.event_id] << {id: notification.id, user_id: notification.user_id, to: (notification.user.name || notification.user.email), viewed: allow_viewed && notification.viewed }
     end
 
     res = events.map do |event|
       {event_id: event.id,
        created_at: event.created_at,
+       author_id: event.user_id,
        author_name: event.user.name,
        kind: event.kind,
        notifications: notifications[event.id] || [] }

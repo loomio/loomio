@@ -123,6 +123,7 @@ class Api::V1::TopicsController < Api::V1::RestfulController
       res = TopicReader.joins(:user).where(topic_id: topic.id).where.not(last_read_at: nil).map do |reader|
         {reader_id: reader.id,
          last_read_at: reader.last_read_at,
+         user_id: reader.user_id,
          user_name: reader.user.name_or_username }
       end
       render root: false, json: res

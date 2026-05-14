@@ -1,6 +1,7 @@
 <script setup>
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
+import AbilityService from '@/shared/services/ability_service';
 import Flash from '@/shared/services/flash';
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete';
 import TopicReaderService from '@/shared/services/topic_reader_service';
@@ -14,6 +15,10 @@ const { topic } = defineProps({
 });
 
 const group = computed(() => topic.group());
+const canAddGuests = computed(() => AbilityService.canAddGuestsTopic(topic));
+const hasSpecifiedVotersOnlyPolls = computed(() =>
+  Records.polls.collection.find({topicId: topic.id, specifiedVotersOnly: true}).length > 0
+);
 
 const readers = ref([]);
 const query = ref('');
@@ -132,7 +137,7 @@ fetchReaders();
 
 const { watchRecords } = useWatchRecords();
 watchRecords({
-  collections: ['topicReaders', 'memberships'],
+  collections: ['topicReaders', 'memberships', 'polls'],
   query: () => updateReaders()
 });
 </script>
@@ -143,6 +148,12 @@ v-card.strand-members-list(:title="$t('announcement.form.discussion_announced.ti
     dismiss-modal-button
 
   v-card-text
+    v-alert.mb-2(v-if="group" type="info" variant="tonal" density="compact")
+      span(v-if="canAddGuests" v-t="'strand_members_list.notify_members_or_invite_guests_info'")
+      span(v-else v-t="'strand_members_list.notify_members_info'")
+    v-alert.mb-2(v-if="hasSpecifiedVotersOnlyPolls" type="warning" variant="tonal" density="compact")
+      span(v-t="'strand_members_list.specified_voters_only_warning'")
+
     recipients-autocomplete(
       :label="$t('announcement.form.discussion_announced.helptext')"
       :placeholder="$t('announcement.form.placeholder')"

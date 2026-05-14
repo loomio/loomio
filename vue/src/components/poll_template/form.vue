@@ -406,7 +406,7 @@ export default {
             :label="$t('poll_common_settings.specified_voters_only_false_group')")
           v-radio.poll-common-settings__specified-voters-only(
             :value="true"
-            :label="$t('poll_common_settings.specified_voters_only_true')")
+            :label="$t('poll_common_settings.selected_people_only')")
 
         v-divider.mb-4
         .text-subtitle-1.pb-2(v-t="'poll_common_form.reminder_notification'")

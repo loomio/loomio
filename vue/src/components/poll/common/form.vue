@@ -512,7 +512,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
       :label="$t('poll_common_settings.specified_voters_only_false_group')")
     v-radio.poll-common-settings__specified-voters-only(
       :value="true"
-      :label="$t('poll_common_settings.specified_voters_only_true')")
+      :label="$t('poll_common_settings.selected_people_only')")
 
   div(style="height: 64px" v-if="poll.specifiedVotersOnly")
     .text-body-2.font-italic.text-medium-emphasis.mt-n4.py-4(

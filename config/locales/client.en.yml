@@ -246,6 +246,8 @@ en:
     ok_got_it: Ok, got it
     learn_more: Learn more
     read_more: Read more
+    read: Read
+    unread: Unread
     not_found: Not found
     time_zone: Time zone
     local_time: Local time
@@ -678,6 +680,10 @@ en:
     sign_out: Sign out
     beta_collab: "\U0001F9EA Beta features enabled!"
     outcomes: Outcomes
+  strand_members_list:
+    notify_members_or_invite_guests_info: Notify group members by name, or invite non-members by email address. Invited guests can participate in this thread but won't have access to other group threads.
+    notify_members_info: Enter names of group members to notify them about this thread.
+    specified_voters_only_warning: This thread has polls where only selected people can vote. Adding someone here won't give them a vote — use "add voters" on the poll instead.
   membership_card:
     thread_members: Thread members
     group_members: Group members
@@ -936,6 +942,7 @@ en:
     send_outcome: Send outcome
     cannot_reveal_when_anonymous: Sorry, we cannot reveal who has or has not voted on an anonymous poll.
     topic_notification_history: Thread notification history
+    notification_history: Notification history
     discussion_notification_history: Discussion notification history
     group_notification_history: Group invitation history
     poll_notification_history: Poll notification history
@@ -1791,6 +1798,7 @@ en:
       closed: Discussion closed
   discussion_last_seen_by:
     title: Seen by
+    thread_engagement: Thread engagement
     no_one: No one has seen this yet
     disabled_anonymous_polls: Viewer history is disabled because thread contains anonymous polls
   activity_card:
@@ -1822,6 +1830,7 @@ en:
     current_poll_type_banner: Current %{pollType}
     seen_by_count: Seen by %{count}
     count_notified: Notified %{count}
+    notified_and_seen_by: "%{notified} Notified. Seen by %{seen}"
     start_a_vote: Start a vote
   pin_discussion_modal:
     helptext: Pinned discussions always appear at the the group's list of discussions.
@@ -2197,6 +2206,7 @@ en:
     who_can_vote: Who can vote?
     short_reason_can_be_helpful: Short vote reasons are easier to understand. A collection of concise reasons is a great resource for making a decision.
     specified_voters_only_true: Invited people only
+    selected_people_only: Selected people only
     specified_voters_only_false_group: Anyone in the group
     specified_voters_only_false_discussion: Anyone in the thread
     invite_people_next: You can choose who is invited to vote after you start the %{poll_type}
