@@ -1,5 +1,4 @@
 require 'test_helper'
-require 'minitest/mock'
 
 class TranslationServiceTest < ActiveSupport::TestCase
   setup do
