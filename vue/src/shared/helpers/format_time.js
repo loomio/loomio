@@ -96,6 +96,13 @@ export var hoursOfDay = () => [
 
 export var timeline = date => format(date, "yyyy-MM-dd");
 
+export var exactDate = function(date, zone) {
+  if (zone == null) { zone = AppConfig.timeZone; }
+  if (!isValid(date)) { return null; }
+  const pattern = Session.user().dateTimePref.includes('iso') ? 'yyyy-MM-dd' : 'd LLL yyyy';
+  return format(utcToZonedTime(date, zone), pattern, {timeZone: zone, locale: dateLocale});
+};
+
 export var timeFormat = function() {
   if (Session.user().dateTimePref.includes('abbr')) {
     return 'h:mm a';

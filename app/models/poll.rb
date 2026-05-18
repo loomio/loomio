@@ -161,14 +161,13 @@ class Poll < ApplicationRecord
   has_many :poll_options, -> { order('priority') }, dependent: :destroy, autosave: true
   accepts_nested_attributes_for :poll_options, allow_destroy: true
 
-  has_many :documents, as: :model, dependent: :destroy
   has_many :stance_receipts, dependent: :destroy
 
   scope :dangling, -> { joins('left join groups g on polls.group_id = g.id').where('group_id is not null and g.id is null') }
-  scope :active, -> { kept.where('polls.closed_at': nil) }
+  scope :active, -> { kept.where('polls.closed_at': nil).where('polls.opened_at IS NOT NULL') }
   scope :template, -> { kept.where('polls.template': true) }
   scope :closed, -> { kept.where("polls.closed_at IS NOT NULL") }
-  scope :recent, -> { kept.where("polls.closed_at IS NULL or polls.closed_at > ?", 7.days.ago) }
+  scope :recent, -> { kept.where("polls.opened_at IS NOT NULL").where("polls.closed_at IS NULL or polls.closed_at > ?", 7.days.ago) }
   scope :search_for, ->(fragment) { kept.where("polls.title ilike :fragment", fragment: "%#{fragment}%") }
   scope :lapsed_but_not_closed, -> { active.where("polls.closing_at < ?", Time.now) }
   scope :active_or_closed_after, ->(since) { kept.where("polls.closed_at IS NULL OR polls.closed_at > ?", since) }
@@ -190,7 +189,9 @@ class Poll < ApplicationRecord
 
   before_validation :clamp_minimum_stance_choices
   normalizes :quorum_pct, with: ->(v) { v.nil? ? nil : [ [ v, 0 ].max, 100 ].min }
+  normalizes :closing_at, :opening_at, with: ->(v) { v&.beginning_of_hour }
   validate :closes_in_future
+  validate :opening_at_before_closing_at
   validate :discussion_group_is_poll_group
   validate :cannot_deanonymize
   validate :cannot_reveal_results_early
@@ -215,6 +216,7 @@ class Poll < ApplicationRecord
     :stance_reason_required,
     :tags,
     :notify_on_closing_soon,
+    :notify_on_open,
     :poll_option_names,
     :hide_results,
     :attachments]
@@ -274,6 +276,8 @@ class Poll < ApplicationRecord
       end
     when 'ranked_choice'
       %w[chart name rank score_percent score average voter_count]
+    when 'stv'
+      %w[chart name stv_status voter_count]
     when 'dot_vote'
       %w[chart name score_percent score average voter_count]
     when 'score'
@@ -289,6 +293,14 @@ class Poll < ApplicationRecord
 
   def results
     PollService.calculate_results(self, self.poll_options)
+  end
+
+  def stv_results
+    custom_fields['stv_results']
+  end
+
+  def stv_results=(value)
+    custom_fields['stv_results'] = value
   end
 
   def user_id
@@ -444,8 +456,16 @@ class Poll < ApplicationRecord
     stances.create!(participant_id: user.id, inviter: author, volume: DiscussionReader.volumes[:normal], admin: true)
   end
 
+  def opened?
+    !!opened_at
+  end
+
   def active?
-    kept? && (closing_at && closing_at > Time.now) && !closed_at
+    kept? && (closing_at && closing_at > Time.now) && !closed_at && opened?
+  end
+
+  def scheduled?
+    opening_at.present? && !opened?
   end
 
   def wip?
@@ -485,7 +505,7 @@ class Poll < ApplicationRecord
 
   def is_new_version?
     !self.poll_options.map(&:persisted?).all? ||
-    (['title', 'details', 'closing_at'] & self.changes.keys).any?
+    (['title', 'details', 'closing_at', 'opening_at'] & self.changes.keys).any?
   end
 
   def discussion_id=(discussion_id)
@@ -527,6 +547,16 @@ class Poll < ApplicationRecord
     return if closing_at.nil?
     return if closing_at > Time.zone.now
     errors.add(:closing_at, I18n.t(:"poll.error.must_be_in_the_future"))
+  end
+
+  def opening_at_before_closing_at
+    return if opening_at.nil?
+    if closing_at.nil?
+      errors.add(:closing_at, I18n.t(:"poll.error.must_be_in_the_future"))
+      return
+    end
+    return if opening_at < closing_at
+    errors.add(:opening_at, I18n.t(:"poll.error.opening_at_before_closing_at"))
   end
 
   def discussion_group_is_poll_group

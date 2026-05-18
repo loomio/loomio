@@ -128,7 +128,16 @@ namespace :loomio do
   task delete_translations: :environment do
     # I edit this each time I want to use it.. rake task arguments are terrible
     unwanted = %w[
-      dashboard_page.no_groups.show_all
+      poll_templates.proposal.abstain_meaning
+      poll_templates.proposal.abstain_prompt
+      poll_templates.consensus.abstain_prompt
+      poll_templates.onboarding_to_loomio.description
+      notifications.email_subject.user_reminded
+      notifications.with_title.user_reminded
+      profile_page.bot_account_warning
+      poll_common_action_panel.unable_to_vote
+      poll_common_form.who_may_vote
+      needs_a_rethink_meaning
     ]
 
     %w[client server].each do |source_name|
@@ -224,6 +233,7 @@ namespace :loomio do
     ThrottleService.reset!('hour')
     GenericWorker.perform_async('PollService', 'expire_lapsed_polls')
     GenericWorker.perform_async('PollService', 'publish_closing_soon')
+    GenericWorker.perform_async('PollService', 'open_scheduled_polls')
     GenericWorker.perform_async('TaskService', 'send_task_reminders')
     GenericWorker.perform_async('ReceivedEmailService', 'route_all')
     LoginToken.where("created_at < ?", 1.hours.ago).delete_all
@@ -236,7 +246,7 @@ namespace :loomio do
       ThrottleService.reset!('day')
       Group.expired_demo.delete_all
       GenericWorker.perform_async('DemoService', 'generate_demo_groups')
-      GenericWorker.perform_async('CleanupService', 'delete_orphan_records')
+      EventBus.broadcast('loomio_daily_tick')
       GenericWorker.perform_async('OutcomeService', 'publish_review_due')
       GenericWorker.perform_async('ReceivedEmailService', 'delete_old_emails')
     end

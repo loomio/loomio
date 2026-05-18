@@ -5,7 +5,7 @@ class DiscussionTemplate < ApplicationRecord
 
   is_rich_text on: :description
 
-  belongs_to :author, class_name: "User"
+  belongs_to :author, class_name: "User", optional: true
   belongs_to :group, class_name: "Group"
 
   update_counter_cache :group, :discussion_templates_count

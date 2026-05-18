@@ -8,7 +8,8 @@ export default {
   data() {
     return {
       pollTemplate: null,
-      group: null
+      group: null,
+      sourceProcessName: null
     };
   },
 
@@ -28,7 +29,14 @@ export default {
           if ((key = this.$route.query.template_key)) {
             Records.remote.fetch({path: "poll_templates", params: {group_id: this.group.id} }).then(() => {
               this.pollTemplate = Records.pollTemplates.find(key);
-              this.pollTemplate.groupId = this.group.id;
+              if (this.pollTemplate) {
+                this.sourceProcessName = this.pollTemplate.processName;
+                this.pollTemplate.processName = null;
+                this.pollTemplate.groupId = this.group.id;
+                this.pollTemplate.example = false;
+              } else {
+                this.pollTemplate = Records.pollTemplates.build({pollType: 'proposal', groupId: this.group.id});
+              }
             });
           } else {
             this.pollTemplate = Records.pollTemplates.build({pollType: 'proposal', groupId: this.group.id});
@@ -46,10 +54,9 @@ export default {
 .poll-form-page
   v-main
     v-container.max-width-800.px-0.px-sm-3
-      v-card.poll-common-modal
-        div.pa-4
-          poll-template-form(
-            v-if="pollTemplate"
-            :poll-template="pollTemplate"
-          )
+      poll-template-form(
+        v-if="pollTemplate"
+        :poll-template="pollTemplate"
+        :source-process-name="sourceProcessName"
+      )
 </template>

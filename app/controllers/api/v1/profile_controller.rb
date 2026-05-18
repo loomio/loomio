@@ -1,5 +1,5 @@
 class Api::V1::ProfileController < Api::V1::RestfulController
-  before_action :require_current_user, only: [:index, :contactable]
+  before_action :require_current_user, except: [:email_status]
 
   def index
     ids = UserQuery.invitable_user_ids(model: nil, actor: current_user, user_ids: params[:xids].split('x').map(&:to_i).compact)
@@ -49,7 +49,7 @@ class Api::V1::ProfileController < Api::V1::RestfulController
   end
 
   def reset_email_api_key
-    current_user.update_attribute(:email_api_key, User.generate_unique_secure_token.slice(0,10))
+    current_user.update_attribute(:email_api_key, User.generate_unique_secure_token)
     render json: {email_api_key: current_user.email_api_key}
   end
 

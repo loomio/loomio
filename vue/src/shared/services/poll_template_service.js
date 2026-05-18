@@ -10,7 +10,13 @@ import { I18n }           from '@/i18n';
 import { hardReload } from '@/shared/helpers/window';
 
 export default new class PollTemplateService {
+  canEditTemplate(pollTemplate, group) {
+    return group.adminsInclude(Session.user()) ||
+      (group.membersCanCreateTemplates && pollTemplate.authorId === Session.user().id);
+  }
+
   actions(pollTemplate, group) {
+    const service = this;
     return {
       edit_default_template: {
         name: 'poll_common.edit_template',
@@ -21,31 +27,19 @@ export default new class PollTemplateService {
           return `/poll_templates/new?template_key=${pollTemplate.key}&group_id=${group.id}&return_to=${Session.returnTo()}`;
         }
       },
-        // perform: ->
-        //   openModal
-        //     component: 'PollTemplateForm'
-        //     props:
-        //       isModal: true
-        //       pollTemplate: pollTemplate.clone()
 
       edit_template: {
         name: 'poll_common.edit_template',
         icon: 'mdi-pencil',
         menu: true,
-        canPerform() { return pollTemplate.id && group.adminsInclude(Session.user()); },
+        canPerform() { return pollTemplate.id && service.canEditTemplate(pollTemplate, group); },
         to() {
           return `/poll_templates/${pollTemplate.id}/edit?&return_to=${Session.returnTo()}`;
         }
       },
-        // perform: ->
-        //   openModal
-        //     component: 'PollTemplateForm'
-        //     props:
-        //       isModal: true
-        //       pollTemplate: pollTemplate.clone()
 
-      move: {
-        name: 'common.action.move',
+      rearrange: {
+        name: 'common.action.rearrange',
         icon: 'mdi-arrow-up-down',
         menu: true,
         canPerform() { return !pollTemplate.discardedAt && group.adminsInclude(Session.user()); },
@@ -56,7 +50,7 @@ export default new class PollTemplateService {
         icon: 'mdi-eye-off',
         name: 'common.action.hide',
         menu: true,
-        canPerform() { return pollTemplate.id && !pollTemplate.discardedAt && group.adminsInclude(Session.user()); },
+        canPerform() { return pollTemplate.id && !pollTemplate.discardedAt && service.canEditTemplate(pollTemplate, group); },
         perform() {
           return Records.remote.post('poll_templates/discard', {group_id: group.id, id: pollTemplate.id});
         }
@@ -66,7 +60,7 @@ export default new class PollTemplateService {
         icon: 'mdi-eye',
         name: 'common.action.unhide',
         menu: true,
-        canPerform() { return pollTemplate.id && pollTemplate.discardedAt && group.adminsInclude(Session.user()); },
+        canPerform() { return pollTemplate.id && pollTemplate.discardedAt && service.canEditTemplate(pollTemplate, group); },
         perform() {
           return Records.remote.post('poll_templates/undiscard', {group_id: group.id, id: pollTemplate.id});
         }
@@ -76,8 +70,8 @@ export default new class PollTemplateService {
         icon: 'mdi-delete',
         name: 'common.action.delete',
         menu: true,
-        canPerform() { return pollTemplate.id && group.adminsInclude(Session.user()); },
-        perform() { 
+        canPerform() { return pollTemplate.id && service.canEditTemplate(pollTemplate, group); },
+        perform() {
           return openModal({
             component: 'ConfirmModal',
             props: {
@@ -100,7 +94,7 @@ export default new class PollTemplateService {
         icon: 'mdi-eye-off',
         name: 'common.action.hide',
         menu: true,
-        canPerform() { 
+        canPerform() {
           return !pollTemplate.id && pollTemplate.key && !pollTemplate.discardedAt && group.adminsInclude(Session.user());
         },
         perform() {
@@ -112,7 +106,7 @@ export default new class PollTemplateService {
         icon: 'mdi-eye',
         name: 'common.action.unhide',
         menu: true,
-        canPerform() { 
+        canPerform() {
           return !pollTemplate.id && pollTemplate.key && pollTemplate.discardedAt && group.adminsInclude(Session.user());
         },
         perform() {

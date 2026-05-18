@@ -67,7 +67,6 @@ section.strand-item__new-comment.new-comment(:id="'comment-'+ eventable.id" v-in
   strand-item-headline(:event="event" :eventable="eventable" :focused="focused" :unread="unread")
   formatted-text.thread-item__body.new-comment__body(:model="eventable" field="body")
   link-previews(:model="eventable")
-  document-list(:model='eventable')
   attachment-list(:attachments="eventable.attachments")
   action-dock(:model='eventable' :actions='dockActions' :menu-actions='menuActions' size="small" left)
 </template>

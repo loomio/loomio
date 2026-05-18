@@ -43,7 +43,18 @@ module Ability::Poll
       )
     end
 
-    can [:announce, :remind], ::Poll do |poll|
+    can [:announce], ::Poll do |poll|
+      if poll.group_id
+        poll.group.admins.exists?(user.id) ||
+        (poll.group.members_can_announce && poll.admins.exists?(user.id))
+      else
+        poll.admins.exists?(user.id) ||
+        (!poll.specified_voters_only && poll.members.exists?(user.id))
+      end
+    end
+
+    can [:remind], ::Poll do |poll|
+      poll.opened? &&
       if poll.group_id
         poll.group.admins.exists?(user.id) ||
         (poll.group.members_can_announce && poll.admins.exists?(user.id))

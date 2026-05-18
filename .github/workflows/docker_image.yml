@@ -2,9 +2,6 @@ name: Publish Docker image
 
 on:
   push:
-    branches:
-      - master
-  pull_request:
   release:
     types: [published]
   workflow_dispatch:
@@ -43,6 +40,10 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ${{ env.IMAGE_NAME }}
+          tags: |
+            type=ref,event=branch
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
 
       - name: Build and push by digest
         id: build
@@ -101,6 +102,10 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ${{ env.IMAGE_NAME }}
+          tags: |
+            type=ref,event=branch
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
 
       - name: Create manifest list and push
         if: ${{ env.HAVESECRET == 'true' }}

@@ -8,7 +8,6 @@ if (dsn) {
 }
 
 import { Server } from "@hocuspocus/server";
-import { SQLite } from "@hocuspocus/extension-sqlite";
 import { Logger } from "@hocuspocus/extension-logger";
 
 // trying make things backwards compativle for people doing ./update.sh
@@ -31,7 +30,6 @@ const server = new Server({
   name: "hocuspocus",
   extensions: [
     new Logger(),
-    new SQLite({database: ''}), // anonymous database on disk
   ],
   async onAuthenticate(data) {
     const { token, documentName } = data;

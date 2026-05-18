@@ -39,8 +39,9 @@ class TagService
   end
 
   def self.update_group_and_org_tags(group_id)
+    return unless group = Group.find_by(id: group_id)
     update_group_tags(group_id)
-    update_org_tagging_counts(Group.find(group_id).parent_or_self.id)
+    update_org_tagging_counts(group.parent_or_self.id)
   end
 
   def self.update_group_tags(group_id)

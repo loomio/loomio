@@ -230,7 +230,7 @@ div.discussions-panel(v-if="group")
     v-btn.discussions-panel__new-thread-button(
       variant="elevated"
       v-if='canStartThread'
-      :to="'/thread_templates/?group_id='+group.id"
+      :to="'/discussion_templates/?group_id='+group.id"
       color='primary'
     )
       span(v-t="'discussions_panel.new_discussion'")

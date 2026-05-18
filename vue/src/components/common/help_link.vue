@@ -12,5 +12,5 @@ a.help-link.text-decoration-underline(
   :href="'https://help.loomio.com/en/'+path"
   target="_blank"
 )
-  span(v-t="'common.learn_more'")
+  span(v-t="'common.read_more'")
 </template>

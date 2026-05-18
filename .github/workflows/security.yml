@@ -1,0 +1,35 @@
+name: security
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  brakeman:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '4.0.2'
+        bundler-cache: true
+    - name: run brakeman
+      # Baselined findings live in config/brakeman.ignore; new findings fail CI.
+      # --no-threads makes output deterministic so fingerprints in the baseline stay stable.
+      run: bundle exec brakeman --no-pager --no-threads --exit-on-warn --exit-on-error --ignore-config config/brakeman.ignore
+
+  bundler-audit:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '4.0.2'
+        bundler-cache: true
+    - name: update advisory db
+      run: bundle exec bundle-audit update
+    - name: run bundler-audit
+      run: bundle exec bundle-audit check

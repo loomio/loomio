@@ -97,7 +97,6 @@ class User < ApplicationRecord
   has_many :guest_polls, through: :guest_stances, source: :poll
   has_many :notifications, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :documents, foreign_key: :author_id, dependent: :destroy
   has_many :login_tokens, dependent: :destroy
   has_many :events, dependent: :destroy
 
@@ -115,6 +114,7 @@ class User < ApplicationRecord
   scope :active, -> { where(deactivated_at: nil) }
   scope :no_spam_complaints, -> { where(complaints_count: 0) }
   scope :has_spam_complaints, -> { where("complaints_count > 0") }
+  scope :has_bounces, -> { where("bounces_count > 0") }
   scope :deactivated, -> { where("deactivated_at IS NOT NULL") }
   scope :sorted_by_name, -> { order("lower(name)") }
   scope :admins, -> { where(is_admin: true) }
@@ -320,10 +320,15 @@ class User < ApplicationRecord
     I18n.with_locale(locale) { devise_mailer.send(notification, self, *args).deliver_now }
   end
 
+  def self.ransackable_associations(auth_object = nil)
+    ["admin_memberships", "adminable_groups", "all_memberships", "authored_discussions", "authored_polls", "comments", "created_groups", "discussion_readers", "discussions", "events", "files_attachments", "files_blobs", "group_polls", "groups", "guest_discussion_readers", "guest_discussions", "guest_polls", "guest_stances", "identities", "image_files_attachments", "image_files_blobs", "login_tokens", "membership_requests", "memberships", "notifications", "participated_polls", "reactions", "stances", "tags", "tasks", "uploaded_avatar_attachment", "uploaded_avatar_blob", "versions"]
+  end
+
   def self.ransackable_attributes(auth_object = nil)
     [
     "avatar_initials",
     "avatar_kind",
+    "bounces_count",
     "city",
     "content_locale",
     "country",

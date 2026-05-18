@@ -53,16 +53,12 @@ class Group < ApplicationRecord
   has_many :polls, dependent: :destroy
   has_many :poll_templates, dependent: :destroy
 
-  has_many :documents, as: :model, dependent: :destroy
   has_many :requested_users, through: :membership_requests, source: :user
   has_many :comments, through: :discussions
   has_many :public_comments, through: :public_discussions, source: :comments
 
   has_many :chatbots, dependent: :destroy
 
-  has_many :discussion_documents,        through: :discussions,        source: :documents
-  has_many :poll_documents,              through: :polls,              source: :documents
-  has_many :comment_documents,           through: :comments,           source: :documents
   has_many :tags, foreign_key: :group_id
 
   belongs_to :subscription
@@ -153,6 +149,7 @@ class Group < ApplicationRecord
                          :members_can_announce,
                          :new_threads_max_depth,
                          :new_threads_newest_first,
+                         :members_can_create_templates,
                          :admins_can_edit_user_content,
                          :listed_in_explore,
                          :attachments]
@@ -357,7 +354,8 @@ class Group < ApplicationRecord
       'score' => 6,
       'dot_vote' => 7,
       'ranked_choice' => 8,
-      'meeting' => 9,
+      'stv' => 9,
+      'meeting' => 10,
     }
     self[:info]['poll_template_positions']
   end
@@ -382,6 +380,7 @@ class Group < ApplicationRecord
   def hidden_poll_templates=(val)
     self[:info]['hidden_poll_templates'] = val
   end
+
 
   def self.ransackable_attributes(auth_object = nil)
     [

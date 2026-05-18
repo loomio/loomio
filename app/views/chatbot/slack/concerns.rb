@@ -4,6 +4,8 @@ module Views::Chatbot::Slack::Concerns
   private
 
   def render_slack_results(poll)
+    return if poll.scheduled?
+
     if poll.show_results?
       sd "**#{t(poll.closed_at ? :'poll_common.results' : :'poll_common.current_results')}**"
       md "\n"
@@ -11,6 +13,8 @@ module Views::Chatbot::Slack::Concerns
 
       if poll.poll_type == "meeting"
         render_meeting_table(poll)
+      elsif poll.poll_type == "stv"
+        render_stv_table(poll)
       else
         render_simple_table(poll)
       end

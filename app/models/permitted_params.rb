@@ -2,7 +2,7 @@ class PermittedParams < Struct.new(:params)
   MODELS = %w(
     user group membership_request membership poll poll_template outcome
     stance discussion discussion_template discussion_reader comment
-    contact_message document
+    contact_message
     webhook chatbot contact_request reaction tag
   )
 
@@ -39,6 +39,7 @@ class PermittedParams < Struct.new(:params)
       :poll_type,
       :group_id,
       :closing_at,
+      :opening_at,
       :anonymous,
       :hide_results,
       :key,
@@ -46,6 +47,7 @@ class PermittedParams < Struct.new(:params)
       :shuffle_options,
       :show_none_of_the_above,
       :notify_on_closing_soon,
+      :notify_on_open,
       :voter_can_add_options,
       :specified_voters_only,
       :recipient_audience,
@@ -71,8 +73,10 @@ class PermittedParams < Struct.new(:params)
       :minimum_stance_choices,
       :maximum_stance_choices,
       :chart_type,
+      :stv_seats,
+      :stv_method,
+      :stv_quota,
       :quorum_pct,
-      :document_ids, {document_ids: []},
       :poll_template_id,
       :poll_template_key,
       :poll_options_attributes, {poll_options_attributes:
@@ -110,6 +114,7 @@ class PermittedParams < Struct.new(:params)
       :anonymous,
       :specified_voters_only,
       :notify_on_closing_soon,
+      :notify_on_open,
       :content_locale,
       :shuffle_options,
       :show_none_of_the_above,
@@ -156,7 +161,6 @@ class PermittedParams < Struct.new(:params)
      :recipient_user_ids, {recipient_user_ids: []},
      :recipient_chatbot_ids, {recipient_chatbot_ids: []},
      :recipient_emails, {recipient_emails: []},
-     :document_ids, {document_ids: []},
      :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}
    ]
   end
@@ -179,9 +183,8 @@ class PermittedParams < Struct.new(:params)
      :members_can_edit_discussions, :members_can_edit_comments, :members_can_delete_comments,
      :description, :description_format, :is_visible_to_parent_members, :parent_members_can_see_discussions,
      :membership_granted_upon, :cover_photo, :logo, :category, :members_can_raise_motions,
-     :members_can_start_discussions, :members_can_create_subgroups, :admins_can_edit_user_content,
+     :members_can_start_discussions, :members_can_create_subgroups, :members_can_create_templates, :admins_can_edit_user_content,
      :new_threads_max_depth, :new_threads_newest_first, :request_to_join_prompt, :can_start_polls_without_discussion, :listed_in_explore,
-     :document_ids, {document_ids: []},
      :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}
    ]
   end
@@ -212,7 +215,6 @@ class PermittedParams < Struct.new(:params)
      :recipient_chatbot_ids, {recipient_chatbot_ids: []},
      :recipient_emails, {recipient_emails: []},
      :forked_event_ids, {forked_event_ids: []},
-     :document_ids, {document_ids: []},
      :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}
     ]
   end
@@ -233,6 +235,7 @@ class PermittedParams < Struct.new(:params)
      :newest_first,
      :max_depth,
      :public,
+     :default_to_direct_discussion,
      :poll_template_keys_or_ids, {poll_template_keys_or_ids: []},
      :tags, {tags: []},
      :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}
@@ -245,7 +248,6 @@ class PermittedParams < Struct.new(:params)
 
   def comment_attributes
     [:body, :body_format, :discussion_id, :parent_id, :parent_type,
-      :document_ids, {document_ids: []},
       :link_previews, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]},
       :files, {files: []},
       :image_files, {image_files: []}]
@@ -263,7 +265,4 @@ class PermittedParams < Struct.new(:params)
     [:recipient_id, :message]
   end
 
-  def document_attributes
-    [:url, :title, :model_id, :model_type, :file, :filename]
-  end
 end

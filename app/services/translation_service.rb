@@ -147,9 +147,7 @@ class TranslationService
   end
 
   def self.update_and_broadcast(translatable_type, translatable_id)
-    model = Object.const_get(translatable_type).find(translatable_id)
-
-
+    return unless model = Object.const_get(translatable_type).find_by(id: translatable_id)
 
     Translation.where(translatable_type: translatable_type,
                       translatable_id: translatable_id).each do |translation|
@@ -212,11 +210,9 @@ class TranslationService
 
     return if cache_only
 
-    translation.fields.each do |pair|
-      next if ignore.include?(pair[0])
-      record.update_attribute(pair[0], pair[1])
-    end
-
-    record.update_content_locale if record.has_attribute?(:content_locale)
+    ignore = Array(ignore)
+    updates = translation.fields.reject { |k, _| ignore.include?(k) }
+    updates['content_locale'] = translation.language if record.has_attribute?(:content_locale)
+    record.update_columns(updates) if updates.any?
   end
 end

@@ -334,9 +334,17 @@ zh_CN:
       add_people: 添加成员
       zoom: Zoom
       align: 对齐
+      rearrange: 重新排列
+      save_template: 保存模板
+      fork_template: 分支模板
     formatting_help:
       label: 格式化
       title: 学习如何使用 Markdown 格式化文本
+    commercial: 商业的
+    nonprofit: 非营利组织
+    opening_in: 打开 %{time}
+    read_more: 阅读更多
+    templates_admin_hint: 因为您是群组管理员，您可以隐藏或删除任何您不需要的模板，并编辑剩余的模板以满足您的需求。
   merge_accounts:
     modal:
       title: 合并账户
@@ -700,7 +708,7 @@ zh_CN:
       user_added_to_group: "%{actor} 将您添加到了群组：%{title}"
       user_mentioned: "%{actor} 在 %{title} 中提到了您"
       group_mentioned: "%{actor} 在以下文章中提到了该群：%{title}"
-      user_reminded: "%{actor} 提醒您参与以下投票：%{title}"
+      user_reminded: 演员 %{actor} 提醒您投票：%{title}
     with_title:
       unknown_sender: 请查收来自未知发件人的电子邮件
       comment_replied_to: "%{actor} 在 %{title} 中回复了您。"
@@ -739,7 +747,7 @@ zh_CN:
       user_added_to_group: "%{actor} 将您添加到了群组：%{title}"
       user_mentioned: "%{actor} 在 %{title} 中提到了您"
       group_mentioned: "%{actor} 在以下文章中提到了该群：%{title}"
-      user_reminded: "%{actor} 提醒您参与以下投票：%{title}"
+      user_reminded: 演员 %{actor} 提醒您投票：%{title}
     without_title:
       unknown_sender: 请查收来自未知发件人的电子邮件
       discussion_announced: "%{actor} 邀请您加入讨论"
@@ -790,10 +798,8 @@ zh_CN:
     start_new_thread: 或者，发新帖子
   discussion_template:
     browse_public_templates: 浏览模板库
-    start_a_new_discussion: 发起新的讨论
     discussion_template_saved: 讨论模板已保存
     these_are_public_templates: 您可以复制或修改这些模板，以适应您的团队需求。
-    these_are_templates: 这些是您所在群组的讨论模板。点击模板即可开始讨论。您也可以根据需要编辑、删除或重新排序这些模板。
     default_title_label: 默认标题
     default_title_hint: 请在标题栏中预先填写可编辑文本。此项为可选，如不确定，请留空。
     title_placeholder_label: 示例标题
@@ -807,6 +813,38 @@ zh_CN:
     add_poll_template_help: 选择任何有助于完成此过程的投票模板
     recommended_poll_templates: 推荐的投票模板
     share_in_template_gallery: 在公共模板库中分享此模板
+    browse_example_templates: 浏览示例模板
+    example_templates: 示例模板
+    browse_public_templates_hint: 点击模板名称即可开始讨论，或者点击右侧的编辑按钮进行复制并修改，以便用于您自己的团队。
+    process_name_placeholder: 例如：每周站会
+    process_subtitle_placeholder: 例如：每周与团队进行简短的沟通
+    default_title_placeholder: 例如：站立式演讲 - 1月15日
+    more_templates: 更多模板
+    fewer_templates: 更少的模板
+    choose_a_group: 选择一个组
+    default_templates: 默认模板
+    or_start_a_direct_discussion: 或者直接发起讨论
+    choose_group_for_templates: 选择一个群组以查看其讨论模板
+    start_direct_discussion: 直接展开讨论
+    poll_templates: 投票模板
+    poll_templates_help: 您在此处选择的模板将在有人点击“开始投票”时优先显示。
+    start_direct_discussion_from_blank: 从空白模板开始直接讨论
+    default_to_direct_discussion: 先以直接讨论的形式开始（不要分组讨论）。
+    default_to_direct_discussion_helptext: 如果您希望人们通过此模板直接发起讨论，请使用此功能。
+    example_discussion_templates: 讨论模板示例
+    browse_example_use_hint: 点击模板标题即可<b>开始讨论</b>。
+    browse_example_fork_hint: "<b>点击叉形图标</b>，以示例为起点，创建新的讨论模板。"
+    new_discussion_template_title: 新讨论模板
+    new_template_from_blank: 从空白模板创建新模板
+    new_template_from_blank_subtitle: 创建一个新模板，以适应您组织中的流程。
+    these_are_templates_v3: 这些是您所在小组的讨论模板。点击模板即可开始新的讨论。
+    these_are_templates_admin_hint: 群组管理员可以编辑模板、创建新模板、重新排列模板以及隐藏/显示模板。只有管理员才能看到隐藏的模板。
+    show_hidden_templates: 显示隐藏模板
+    show_fewer: 显示更少
+    start_a_new_discussion: 发起新的讨论
+    start_discussion: 发起讨论
+    start_a_direct_discussion: 发起直接讨论
+    these_are_templates: 这些是你们小组的讨论模板。
   discussion_form:
     none_invite_only_discussion: 无（仅限受邀者参与讨论）
     new_discussion_template: 新讨论模板
@@ -845,6 +883,8 @@ zh_CN:
     notify_group: 通知组
     none_direct_discussion: 无（直接讨论）
     direct_discussion: 直接讨论
+    direct_discussion_hint: 直接讨论仅对您邀请的特定人员可见。它不会出现在任何群组的讨论列表中——您可以在“直接讨论”页面找到它。
+    recommended_poll_templates: 推荐的投票模板
   announcement:
     send_discussion: 发送帖子
     send_group: 邀请人们加入 %{name}
@@ -1234,6 +1274,7 @@ zh_CN:
       parent_members: 隐私设置：此群组对 %{parentGroupName} 的成员和 %{groupName} 的成员可见。
       public: 隐私：此群组在网络上可见
       aria_label: 群组隐私：%{privacy}
+    discussion_templates: 讨论模板
   export_data_modal:
     title: 您希望如何使用您的数据？
     as_csv: 在电子表格中打开它
@@ -1292,7 +1333,6 @@ zh_CN:
     description: 描述
     description_placeholder: 描述一下你们子群组的目的，以便子群组成员知道他们为什么在这里。
     new_description_placeholder: 你们为什么要试用 Loomio？你们需要共同做出哪些决定？
-    new_description_html: "<h3>贵组织在决策方面面临哪些挑战？</h3><p></p><h3>您希望如何在您的组织中使用 Loomio？</h3><p></p>"
     secret_by_default: 只有受邀加入的人才能访问您的群组。您可以稍后更改此设置。
     privacy_statement:
       public_on_web: 群组名称、描述和附件将对公众可见。
@@ -1364,6 +1404,12 @@ zh_CN:
     upload_background: 上传背景
     remove_background: 移除背景
     remove_logo: 移除徽标
+    members_can_create_templates: 成员可以创建模板
+    members_can_create_templates_help: 允许成员创建讨论和投票模板。成员创建的模板将默认隐藏，直到管理员将其取消隐藏。
+    members_can_start_discussions_v2: 成员可以发起新的讨论
+    members_can_start_discussions_help_v2: 允许成员在群组内发起新的讨论。
+    members_can_edit_discussions_v2: 成员可以管理讨论和评论
+    members_can_edit_discussions_help_v2: 允许成员编辑、移动、置顶、标记或关闭群组中的任何讨论或评论。
   group_export_modal:
     title: 导出组数据
     body: <p>您可以随时下载您所在子群组的数据副本。<a href="https://help.loomio.org/en/user_manual/groups/data_export/">了解更多信息。</a></p><p>根据子群组人数，完成此操作大约需要几分钟。完成后，您将收到一封包含文件下载链接的电子邮件。</p>
@@ -1480,7 +1526,6 @@ zh_CN:
     translate_content_automatically: 自动将内容翻译成我的语言
     autodetect_time_zone: 自动检测时区
     account_is_bot: 这是一个机器人账号
-    bot_account_warning: 机器人账号将不会被邀请参与投票或讨论。
     incomplete_profile: 个人资料不完整！
     set_your_profile_picture: 设置您的个人资料图片
     messages:
@@ -1514,6 +1559,7 @@ zh_CN:
     deactivate_account_subtitle: 停止接收邮件并取消会员资格。保留您的个人资料，以免影响之前的讨论和决定。
     delete_account_subtitle: 彻底删除您的账户，并将您的名字从过去的讨论和决定中删除。
     updated_on_sign_in: 由您的浏览器提供，并在您登录时更新。
+    bot_account_warning: 机器人账号将不会被邀请参与投票或讨论。
   text_editor:
     x_of_y_characters: "%{x} / %{y} 个字符"
     select_text_to_link: 选择要链接的文本，然后重试
@@ -1797,6 +1843,7 @@ zh_CN:
     meeting_title: 时间投票
     ranked_choice_title: 排名选择
     gradients_of_agreement_title: 一致性梯度
+    majority_title: 多数
   poll_option_form:
     thumb_up: 点赞
     thumb_down: 差评
@@ -1919,6 +1966,21 @@ zh_CN:
     too_long: 太长了
     edit_warning: 建议仅对细微改动或拼写错误进行编辑。如需进行重大改动，请关闭此 %{pollType} 并创建一个新的。
     no_voting: 仅供讨论，投票功能已关闭
+    these_are_templates: 这些是您所在小组的决策模板。点击模板即可开始新的决策。管理员可以自定义模板的所有细节，使其符合您组织的实践，并方便成员查找和使用。
+    example_templates: 示例模板
+    example_poll_templates: 示例投票模板
+    browse_example_templates: 浏览示例模板
+    browse_example_templates_hint: 从空白处创建一个新的投票模板，或者使用示例开始创建。
+    browse_example_use_hint: 点击模板标题即可<b>发起投票</b>。
+    browse_example_fork_hint: "<b>点击叉形图标</b>，以示例为起点，创建一个新的投票模板。"
+    browse_unsure_help: 不知道如何使用投票模板？
+    all_templates_hidden: 所有模板均已隐藏
+    new_poll_template_title: 新投票模板
+    new_template_from_blank: 从空白模板创建新模板
+    new_template_from_blank_subtitle: 创建一个新模板，以适应您组织中的流程。
+    blank: 新的
+    blank_subtitle: 为特定流程创建新的投票模板
+    start_a_poll: 发起投票
   poll_common_attachment_form:
     label: 附件
   poll_common_add_option:
@@ -2023,10 +2085,11 @@ zh_CN:
     anonymous: 投票匿名
     results_hidden_until_closed: 投票结束后将公布结果。
     results_hidden_until_vote: 投票结束后将显示结果。
-    unable_to_vote: 您未被邀请加入本次 %{poll_type} 投票。
     draft_mode: 投票功能已关闭。此投票尚未开放。
     for_this_proposal_to_pass: 该提案要想获得通过：
     for_this_poll_type_to_be_valid: 要使此 %{poll_type} 有效：
+    voting_opens_at: 此 %{poll_type} 投票将于 %{time} 开放。
+    unable_to_vote: 您未被邀请参与此项 %{poll_type} 的投票。
   poll_common_collapsed:
     by_who: 由 %{name}
   poll_common_calendar_invite:
@@ -2211,6 +2274,8 @@ zh_CN:
       ranked_choice_hint: 投票者按喜好程度从高到低排列选项。
       time_poll: 时间投票
       time_poll_hint: 投票者需表明他们何时可以加入会议。
+      rank: 秩
+      time: 时间
     process: 过程
     process_name: 模板标题
     process_name_hint: 这个模板叫什么？例如：角色建议、温度检查、会议纪要审批
@@ -2242,7 +2307,6 @@ zh_CN:
     save_poll: 保存投票
     start_poll_type: 开始 %{poll_type}
     share_poll_type: 分享 %{poll_type}
-    who_may_vote: 谁可以加入本次 %{poll_type} 投票？
     update: 更新
     add_voters: 添加投票者
     notify_invitees: 发送通知
@@ -2261,6 +2325,13 @@ zh_CN:
     hide_results_description: 如果您想让人们在不看到其他人投票结果的情况下投票，您可以隐藏投票结果。
     process_helptext: 请说出并描述用于运行此投票的过程。
     reminder_helptext: 在截止日期前24小时发送“即将截止”通知。这可以提高参与度，并让人们有机会重新考虑他们的立场。
+    voting_duration: 期间
+    voting_duration_hint: 投票何时开始，何时结束？
+    more_settings: 更多设置
+    create_poll_type: 创建 %{poll_type}
+    notify_voters_when_voting_opens: 投票开始时通知选民
+    voters_notified_when_opens: 投票开始时，选民将会收到通知。
+    who_may_vote: 谁可以参与此次 %{poll_type} 投票？
   poll_proposal_form:
     start_header: 开始提案
     edit_header: 编辑提案
@@ -2349,6 +2420,8 @@ zh_CN:
     object: 反对
     block: 阻止
     no_voting: 不投票
+    'yes': 是的
+    'no': 不
   poll_count_form:
     pct_of_target: 目标百分比
     agree_target_helptext: 您希望招募多少志愿者？
@@ -2591,6 +2664,13 @@ zh_CN:
       community: 社区群
       government: 政府/地方政府
       other: 其他
+      cohousing: 共享居住与共享住房
   auth:
     oauth_cancelled: 登录已取消
     switching_accounts: 正在切换账户。请使用新账户信息登录。
+  poll_common_opening_at_field:
+    voting_opens_immediately: 投票立即开始
+    opening_date: 开业日期
+    opening_hour: 营业时间
+    scheduled_hint: 投票将在开放时间前显示，但无法投票。
+    draft_hint: 此投票将保存为草稿。准备好投票时，请设置开始日期或勾选“立即开始投票”。

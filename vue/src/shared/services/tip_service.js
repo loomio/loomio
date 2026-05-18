@@ -85,7 +85,7 @@ export default new class TipService {
               confirm: {
                 submit() { return new Promise((resolve) => resolve()) },
                 successCallback() {
-                  vm.$router.push(`/thread_templates/?group_id=${group.id}`);
+                  vm.$router.push(`/discussion_templates/?group_id=${group.id}`);
                 },
                 forceSubmit: true,
                 text: {

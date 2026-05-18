@@ -311,10 +311,18 @@ da:
       zoom: Zoom
       align: Juster
       original: Original
+      rearrange: Omarranger
+      save_template: Gem skabelon
+      fork_template: Gaffel skabelon
     formatting_help:
       label: Formatering
       title: Lær, hvordan du bruger Markdown til at formatere din tekst
     thread: Tråd
+    commercial: Kommerciel
+    nonprofit: Nonprofitorganisation
+    opening_in: Åbning %{time}
+    read_more: Læs mere
+    templates_admin_hint: Da du er gruppeadministrator, kan du skjule eller slette alle skabeloner, du ikke ønsker, og redigere de resterende, så de passer til dine behov.
   merge_accounts:
     modal:
       title: Flet konti
@@ -697,7 +705,6 @@ da:
       stance_created_option: "%{actor} stemte %{option} i %{title}"
       user_added_to_group: "%{actor} føjede dig til gruppen: %{title}"
       user_mentioned: "%{actor} nævnte dig i: %{title}"
-      user_reminded: "%{actor} minder dig om at stemme i: %{title}"
       group_mentioned: "%{actor} nævnte gruppen i: %{title}"
       new_delegate: "%{actor} gjorde dig til delegeret med stemmeret i %{title}"
       poll_announced: "%{actor} inviterede dig til at stemme: %{title}"
@@ -705,6 +712,7 @@ da:
       discussion_edited: "%{actor} redigerede diskussionskonteksten: %{title}"
       discussion_closed: "%{actor} lukkede diskussionen: %{title}"
       new_discussion: "%{actor} startede en diskussion: %{title}"
+      user_reminded: "%{actor} minder dig om at stemme på: %{title}"
     without_title:
       unknown_sender: Gennemgå venligst e-mail fra ukendt afsender
       group_announced: "%{actor} inviterede dig til en gruppe"
@@ -781,10 +789,10 @@ da:
       user_added_to_group: "%{actor} tilføjede dig til gruppen: %{title}"
       user_mentioned: "%{actor} nævnte dig i: %{title}"
       group_mentioned: "%{actor} nævnte gruppen i: %{title}"
-      user_reminded: "%{actor} minder dig om at stemme i: %{title}"
       poll_announced: 'Stemme: %{title}'
       discussion_edited: "%{actor} redigerede diskussionskonteksten: %{title}"
       discussion_closed: "%{actor} lukkede diskussionen: %{title}"
+      user_reminded: "%{actor} minder dig om at stemme på: %{title}"
   discussion_fork_actions:
     move: Flyt
     moved: Bevægende kommentarer, det kan tage et øjeblik
@@ -838,6 +846,8 @@ da:
     discussion_started: Diskussionen er startet
     none_direct_discussion: Ingen (direkte diskussion)
     direct_discussion: Direkte diskussion
+    direct_discussion_hint: En direkte diskussion er kun synlig for de specifikke personer, du inviterer. Den vises ikke på nogen gruppers diskussionsliste – du kan finde den på din side for direkte diskussioner.
+    recommended_poll_templates: Anbefalede skabeloner til afstemninger
   announcement:
     send_discussion: Send tråd
     send_group: Inviter folk til %{name}
@@ -1211,6 +1221,7 @@ da:
     no_discussions_here: Ingen diskussioner at se her!
     private_discussions: Du skal være medlem for at se private tråde i denne gruppe
     view_closed_discussions: Se lukkede diskussioner
+    discussion_templates: Diskussionsskabeloner
   export_data_modal:
     title: Hvordan vil du bruge dine data?
     as_csv: Åbn det i et regneark
@@ -1331,7 +1342,6 @@ da:
     default_request_to_join_prompt: Tak for din interesse i vores gruppe. Præsentér dig selv og forklar, hvorfor du anmoder om at deltage.
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Opgrader venligst dit abonnement</a> for at oprette en undergruppe'
     share_this_url_with_people_who_want_to_join: Del denne URL med personer, der ønsker at deltage
-    new_description_html: "<h3>Hvilke udfordringer står din organisation over for i forbindelse med beslutningstagning?</h3><p></p><h3> Hvordan vil du gerne bruge Loomio i din organisation?</h3><p></p>"
     allow_polls_without_discussions: Tillad afstemninger uden diskussion
     allow_polls_without_discussions_help: Forhindre folk i at starte afstemninger uden først at starte en diskussion.
     aria_label: Gruppeformular
@@ -1341,6 +1351,12 @@ da:
     upload_background: upload baggrund
     remove_background: fjern baggrund
     remove_logo: fjern logoet
+    members_can_create_templates: Medlemmer kan oprette skabeloner
+    members_can_create_templates_help: Tillad medlemmer at oprette skabeloner til diskussioner og afstemninger. Skabeloner oprettet af medlemmer vil være skjult, indtil en administrator viser dem igen.
+    members_can_start_discussions_v2: Medlemmer kan starte nye diskussioner
+    members_can_start_discussions_help_v2: Tillad medlemmer at starte nye diskussioner i gruppen
+    members_can_edit_discussions_v2: Medlemmer kan administrere diskussioner og kommentarer
+    members_can_edit_discussions_help_v2: Tillad medlemmer at redigere, flytte, fastgøre, tagge eller lukke enhver diskussion eller kommentar i gruppen
   group_export_modal:
     title: Eksporter gruppedata
     body: <p>Du kan til enhver tid downloade en kopi af din gruppes data. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Find ud af mere.</a></p><p> Det tager et par minutter at gennemføre, afhængigt af størrelsen på din gruppe. Når den er klar, modtager du en e-mail med et link til at downloade filen.</p>
@@ -1457,7 +1473,6 @@ da:
   profile_page:
     autodetect_time_zone: Automatisk registrering af tidszone
     account_is_bot: Dette er en bot-konto
-    bot_account_warning: Botkonti vil ikke blive inviteret til at stemme i afstemninger eller deltage i diskussioner
     incomplete_profile: Ufuldstændig profil!
     set_your_profile_picture: Indstil dit profilbillede
     messages:
@@ -1492,6 +1507,7 @@ da:
     delete_account_subtitle: Slet din konto fuldstændigt og fjern dit navn fra tidligere diskussioner og beslutninger.
     updated_on_sign_in: Leveres af din browser og opdateres, når du logger ind
     translate_content_automatically: Oversæt indhold automatisk til mit sprog
+    bot_account_warning: Botkonti vil ikke blive inviteret til at stemme i afstemninger eller deltage i diskussioner
   text_editor:
     x_of_y_characters: "%{x} / %{y} tegn"
     select_text_to_link: Vælg tekst, der skal linkes, og prøv igen
@@ -1763,6 +1779,7 @@ da:
     meeting_title: Find et tidspunkt
     ranked_choice_title: Rangeret valg
     gradients_of_agreement_title: Gradienter af enighed
+    majority_title: Flertal
   poll_option_form:
     edit_option: Rediger mulighed
     option_name: Mulighedens navn
@@ -1885,6 +1902,21 @@ da:
     post_outcome: Offentliggør resultat
     view_all_votes: Se alle stemmer
     you_voted: Du stemte
+    these_are_templates: Dette er beslutningsskabelonerne i din gruppe. Klik på en skabelon for at starte en ny beslutning. Administratorer kan tilpasse alle detaljerne om en skabelon, så den matcher din organisations praksis og er nem for medlemmer at finde og bruge.
+    example_templates: Eksempelskabeloner
+    example_poll_templates: Eksempel på skabeloner til afstemninger
+    browse_example_templates: Gennemse eksempelskabeloner
+    browse_example_templates_hint: Opret en ny skabelon til afstemning fra et tomt punkt, eller brug et eksempel til at komme i gang.
+    browse_example_use_hint: Klik på skabelonens titel for at <b>starte en afstemning</b> .
+    browse_example_fork_hint: "<b>Klik på gaffelikonet</b> for at oprette en ny skabelon til afstemning, og brug eksemplet som udgangspunkt."
+    browse_unsure_help: Usikker på, hvordan du bruger afstemningsskabeloner?
+    all_templates_hidden: Alle skabeloner er blevet skjult
+    new_poll_template_title: Ny skabelon til afstemning
+    new_template_from_blank: Ny skabelon fra tomt
+    new_template_from_blank_subtitle: Opret en ny skabelon, der passer til en proces, du har i din organisation
+    blank: Ny
+    blank_subtitle: Opret en ny skabelon til afstemning for en specifik proces
+    start_a_poll: Start en afstemning
   poll_common_attachment_form:
     label: Vedhæftede filer
   poll_common_add_option:
@@ -1991,11 +2023,12 @@ da:
     anonymous: Stemmerne er anonyme
     results_hidden_until_closed: Resultaterne vil blive vist efter afstemningen er afsluttet
     results_hidden_until_vote: Resultaterne vil blive vist efter du har stemt
-    unable_to_vote: Du er ikke blevet inviteret til at stemme i denne %{poll_type}
     draft_mode: Afstemning deaktiveret. Dette er ikke åbent for afstemning endnu.
     voting_disabled_poll_is_template: Afstemning deaktiveret. Dette er en skabelon.
     for_this_proposal_to_pass: 'For at dette forslag kan vedtages:'
     for_this_poll_type_to_be_valid: 'For at denne %{poll_type} skal være gyldig:'
+    voting_opens_at: Denne %{poll_type} åbner for afstemning %{time}
+    unable_to_vote: Du er ikke blevet inviteret til at stemme på denne %{poll_type}
   poll_common_collapsed:
     by_who: af %{name}
   poll_common_calendar_invite:
@@ -2423,6 +2456,7 @@ da:
       community: Lokalgruppe
       government: Regering/Lokalforvaltning
       other: Andre
+      cohousing: Bofællesskab og bofællesskab
   report:
     start_on: Start på
     end_on: Slut på
@@ -2575,6 +2609,8 @@ da:
       ranked_choice_hint: Vælgerne arrangerer mulighederne i rækkefølge fra mest til mindst foretrukken
       time_poll: Tidsmåling
       time_poll_hint: Vælgerne angiver, hvornår de er til rådighed til at mødes
+      rank: Rang
+      time: Tid
     process: Behandle
     process_name: Skabelontitel
     process_name_hint: Hvad kalder du denne skabelon? F.eks. rollerådgivning, temperaturmåling, godkendelse af referat
@@ -2606,7 +2642,6 @@ da:
     save_poll: Gem afstemning
     start_poll_type: Start %{poll_type}
     share_poll_type: Del %{poll_type}
-    who_may_vote: Hvem må stemme i denne %{poll_type}?
     update: Opdatering
     add_voters: Tilføj vælgere
     notify_invitees: Send notifikationer
@@ -2630,6 +2665,13 @@ da:
     hide_results_description: Hvis du vil have folk til at stemme uden at se, hvordan andre har stemt, kan du skjule resultaterne.
     process_helptext: Navngiv og beskriv den proces, der bruges til at køre denne afstemning.
     reminder_helptext: Send en "Afslutter snart"-besked 24 timer før deadline. Dette kan øge deltagelsen og give folk mulighed for at genoverveje deres holdning.
+    voting_duration: Varighed
+    voting_duration_hint: Hvornår åbner afstemningen, og hvornår lukker den?
+    more_settings: Flere indstillinger
+    create_poll_type: Opret %{poll_type}
+    notify_voters_when_voting_opens: Giv vælgerne besked, når afstemningen åbner
+    voters_notified_when_opens: Vælgerne vil blive underrettet, når afstemningen åbner
+    who_may_vote: Hvem må stemme på denne %{poll_type}?
   poll_receipts_page:
     verify_participants: Bekræft deltagere
     see_votes_if_quorum_reached: Hvis afstemningen er afsluttet, og det quorum er nået, vil du se, hvem der afgav en stemme.
@@ -2646,10 +2688,8 @@ da:
     aria_label: Tilføj et svar
   discussion_template:
     browse_public_templates: Gennemse skabelongalleriet
-    start_a_new_discussion: Start en ny diskussion
     discussion_template_saved: Diskussionsskabelon gemt
     these_are_public_templates: Disse skabeloner kan du kopiere eller ændre, så de passer til din gruppe
-    these_are_templates: Dette er diskussionsskabelonerne i din gruppe. Klik på en skabelon for at starte en diskussion. Du kan også redigere, fjerne eller ændre rækkefølgen af disse, hvis du vil.
     default_title_label: Standardtitel
     default_title_hint: Udfyld titelfeltet med redigerbar tekst. Dette er valgfrit - lad det stå tomt, hvis du er usikker.
     title_placeholder_label: Eksempeltitel
@@ -2663,6 +2703,38 @@ da:
     add_poll_template_help: Vælg alle afstemningsskabeloner, der hjælper med at fuldføre denne proces
     recommended_poll_templates: Anbefalede skabeloner til afstemninger
     share_in_template_gallery: Del denne skabelon i det offentlige skabelongalleri
+    browse_example_templates: Gennemse eksempelskabeloner
+    example_templates: Eksempelskabeloner
+    browse_public_templates_hint: Klik på et skabelonnavn for at starte en diskussion med det, eller klik på redigeringsknappen til højre for at lave en kopi og redigere den til din egen gruppe.
+    process_name_placeholder: f.eks. ugentlig standup
+    process_subtitle_placeholder: f.eks. et kort check-in med teamet hver uge
+    default_title_placeholder: f.eks. Standup - 15. januar
+    more_templates: Flere skabeloner
+    fewer_templates: Færre skabeloner
+    choose_a_group: Vælg en gruppe
+    default_templates: Standardskabeloner
+    or_start_a_direct_discussion: Eller start en direkte diskussion
+    choose_group_for_templates: Vælg en gruppe for at se dens diskussionsskabeloner
+    start_direct_discussion: Start direkte diskussion
+    poll_templates: Skabeloner til afstemninger
+    poll_templates_help: Skabeloner, du vælger her, vises først, når nogen klikker på Start en afstemning
+    start_direct_discussion_from_blank: Start en direkte diskussion fra en tom skabelon
+    default_to_direct_discussion: Start som en direkte diskussion (ingen gruppe)
+    default_to_direct_discussion_helptext: Brug dette, hvis du vil have folk til at starte direkte diskussioner fra denne skabelon.
+    example_discussion_templates: Eksempler på diskussionsskabeloner
+    browse_example_use_hint: Klik på skabelonens titel for at <b>starte en diskussion</b> .
+    browse_example_fork_hint: "<b>Klik på gaffelikonet</b> for at oprette en ny diskussionsskabelon med eksemplet som udgangspunkt."
+    new_discussion_template_title: Ny diskussionsskabelon
+    new_template_from_blank: Ny skabelon fra tomt
+    new_template_from_blank_subtitle: Opret en ny skabelon, der passer til en proces, du har i din organisation
+    these_are_templates_v3: Dette er diskussionsskabelonerne i din gruppe. Klik på en skabelon for at starte en ny diskussion.
+    these_are_templates_admin_hint: Gruppeadministratorer kan redigere skabeloner, oprette nye skabeloner, omarrangere og skjule/vise skabeloner. Kun administratorer kan se de skjulte skabeloner.
+    show_hidden_templates: Vis skjulte skabeloner
+    show_fewer: Vis færre
+    start_a_new_discussion: Start en ny diskussion
+    start_discussion: Start en diskussion
+    start_a_direct_discussion: Start en direkte diskussion
+    these_are_templates: Dette er diskussionsskabelonerne i jeres gruppe.
   context_panel:
     thread_status:
       pinned: Denne diskussion er blevet fastgjort. Den vil forblive øverst på gruppens liste over diskussioner for alle brugere.
@@ -2689,3 +2761,9 @@ da:
   auth:
     oauth_cancelled: Log ind blev annulleret
     switching_accounts: Skifter konto. Log venligst ind med dine nye kontooplysninger.
+  poll_common_opening_at_field:
+    voting_opens_immediately: Afstemningen åbner med det samme
+    opening_date: Åbningsdato
+    opening_hour: Åbningstid
+    scheduled_hint: Afstemningen vil være synlig, men ikke mulig at stemme på, før den åbner.
+    draft_hint: Denne afstemning gemmes som et udkast. Angiv en åbningsdato, eller marker "Afstemningen åbner med det samme", når du er klar til at begynde at stemme.

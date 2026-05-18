@@ -215,7 +215,7 @@ export default new class AbilityService {
   }
 
   canEditComment(comment) {
-    return !comment.discussion().closedAt && (
+    return !comment.discussion().closedAt && !comment.discardedAt && (
       (comment.discussion().adminsInclude(Session.user()) && comment.group().adminsCanEditUserContent) ||
       (comment.authorIs(Session.user()) && comment.group().membersCanEditComments && comment.discussion().membersInclude(Session.user()))
     );
@@ -242,7 +242,7 @@ export default new class AbilityService {
   canUndiscardComment(comment) {
     return !comment.discussion().closedAt &&
     comment.discardedAt && (
-      comment.authorIs(Session.user()) ||
+      (comment.authorIs(Session.user()) && comment.discardedBy === Session.user().id) ||
       comment.discussion().adminsInclude(Session.user())
     );
   }
@@ -345,7 +345,7 @@ export default new class AbilityService {
   }
 
   canClosePoll(poll) {
-    return !!poll.closingAt && !poll.discardedAt && !poll.closedAt && this.canEditPoll(poll);
+    return poll.isVotable() && this.canEditPoll(poll);
   }
 
   canReopenPoll(poll) {

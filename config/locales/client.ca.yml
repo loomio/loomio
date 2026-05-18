@@ -311,10 +311,18 @@ ca:
       zoom: Zoom
       align: Alinear
       original: Original
+      rearrange: Reorganitzar
+      save_template: Desa la plantilla
+      fork_template: Plantilla de forquilla
     formatting_help:
       label: Formatació
       title: Aprèn a escriure el text en format Markdown
     thread: Fil
+    commercial: Comercial
+    nonprofit: Sense ànim de lucre
+    opening_in: Obertura %{time}
+    read_more: Llegir més
+    templates_admin_hint: Com que sou administrador d'un grup, podeu amagar o suprimir les plantilles que no vulgueu i editar les restants perquè s'adaptin a les vostres necessitats.
   merge_accounts:
     modal:
       title: Combina comptes
@@ -701,7 +709,6 @@ ca:
       stance_created_option: "%{actor} ha votat %{option} a %{title}"
       user_added_to_group: "%{actor} t'ha afegit al grup: %{title}"
       user_mentioned: "%{actor} t'ha mencionat a: %{title}"
-      user_reminded: "%{actor} us recorda que voteu a: %{title}"
       group_mentioned: "%{actor} ha mencionat el grup a: %{title}"
       new_delegate: "%{actor} et va convertir en delegat amb dret de vot a %{title}"
       poll_announced: "%{actor} t'ha convidat a votar: %{title}"
@@ -709,6 +716,7 @@ ca:
       discussion_edited: "%{actor} ha editat el context de la discussió: %{title}"
       discussion_closed: "%{actor} ha tancat la discussió: %{title}"
       new_discussion: "%{actor} ha iniciat una discussió: %{title}"
+      user_reminded: "%{actor} et recorda que votes per: %{title}"
     without_title:
       unknown_sender: Reviseu el correu electrònic d'un remitent no reconegut
       group_announced: "%{actor} t'ha convidat a un grup"
@@ -785,10 +793,10 @@ ca:
       user_added_to_group: "%{actor} t'ha afegit al grup: %{title}"
       user_mentioned: "%{actor} t'ha mencionat a: %{title}"
       group_mentioned: "%{actor} ha esmentat el grup a: %{title}"
-      user_reminded: "%{actor} et recorda que votes a: %{title}"
       poll_announced: 'Vot: %{title}'
       discussion_edited: "%{actor} ha editat el context de la discussió: %{title}"
       discussion_closed: "%{actor} ha tancat la discussió: %{title}"
+      user_reminded: "%{actor} et recorda que votes per: %{title}"
   discussion_fork_actions:
     move: Mou
     moved: S'estan movent els comentaris, aquesta acció podria tardar uns minuts
@@ -842,6 +850,8 @@ ca:
     discussion_started: Discussió iniciada
     none_direct_discussion: Cap (discussió directa)
     direct_discussion: Discussió directa
+    direct_discussion_hint: Una discussió directa només és visible per a les persones específiques que convideu. No apareixerà a la llista de discussió de cap grup; la podeu trobar a la pàgina de Discusions directes.
+    recommended_poll_templates: Plantilles d'enquesta recomanades
   announcement:
     send_discussion: Envia fil
     send_group: Convida gent a %{name}
@@ -1219,6 +1229,7 @@ ca:
     no_discussions_here: No hi ha debats per veure aquí!
     private_discussions: Cal que siguis membre per veure els fils privats d'aquest grup.
     view_closed_discussions: Veure debats tancats
+    discussion_templates: Plantilles de discussió
   export_data_modal:
     title: Com voleu utilitzar les vostres dades?
     as_csv: Obre en un full de càlcul
@@ -1339,7 +1350,6 @@ ca:
     default_request_to_join_prompt: Gràcies pel vostre interès en el nostre grup. Si us plau, presenteu-vos i expliqueu per què demaneu unir-vos.
     upgrade_for_subgroups: 'Si us plau, <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">actualitza la teva subscripció</a> per crear un subgrup'
     share_this_url_with_people_who_want_to_join: Comparteix aquesta URL amb les persones que vulguin unir-s'hi
-    new_description_html: "<h3>Quins reptes afronta la vostra organització a l'hora de prendre decisions?</h3><p></p><h3> Com t'agradaria utilitzar Loomio a la teva organització?</h3><p></p>"
     allow_polls_without_discussions: Permetre enquestes sense discussió
     allow_polls_without_discussions_help: Impedeix que la gent iniciï enquestes sense iniciar primer una discussió.
     aria_label: Formulari de grup
@@ -1349,6 +1359,12 @@ ca:
     upload_background: puja el fons
     remove_background: eliminar el fons
     remove_logo: eliminar el logotip
+    members_can_create_templates: Els membres poden crear plantilles
+    members_can_create_templates_help: Permet que els membres creïn plantilles de debat i enquesta. Les plantilles creades pels membres s'ocultaran fins que un administrador les mostri.
+    members_can_start_discussions_v2: Els membres poden iniciar noves discussions
+    members_can_start_discussions_help_v2: Permetre que els membres iniciïn noves discussions dins del grup
+    members_can_edit_discussions_v2: Els membres poden gestionar debats i comentaris
+    members_can_edit_discussions_help_v2: Permetre que els membres editin, moguin, fixin, etiquetin o tanquin qualsevol discussió o comentari del grup
   group_export_modal:
     title: Exporta dades del grup
     body: |
@@ -1473,7 +1489,6 @@ ca:
   profile_page:
     autodetect_time_zone: Autodetecció de zona horària
     account_is_bot: Aquest és un compte de bot
-    bot_account_warning: Els comptes de bot no seran convidats a votar a les enquestes ni a participar en debats
     incomplete_profile: Perfil incomplet!
     set_your_profile_picture: Estableix la teva foto de perfil
     messages:
@@ -1508,6 +1523,7 @@ ca:
     delete_account_subtitle: Suprimeix completament el teu compte i elimina el teu nom de discussions i decisions anteriors.
     updated_on_sign_in: Proporcionat pel vostre navegador i actualitzat quan inicieu la sessió
     translate_content_automatically: Tradueix el contingut al meu idioma automàticament
+    bot_account_warning: Els comptes de bot no seran convidats a votar en enquestes ni a participar en debats.
   text_editor:
     x_of_y_characters: "%{x} / %{y} caràcters"
     select_text_to_link: Seleccioneu el text per enllaçar i torneu-ho a provar
@@ -1788,6 +1804,7 @@ ca:
     meeting_title: enquesta de temps
     ranked_choice_title: vot preferencial
     gradients_of_agreement_title: Gradients d'acord
+    majority_title: Majoria
   poll_option_form:
     edit_option: Opció d'edició
     option_name: Nom de l'opció
@@ -1910,6 +1927,21 @@ ca:
     post_outcome: Publicar conclusió
     view_all_votes: Veure tots els vots
     you_voted: Vas votar
+    these_are_templates: Aquestes són les plantilles de decisió del vostre grup. Feu clic en una plantilla per iniciar una decisió nova. Els administradors poden personalitzar tots els detalls d'una plantilla perquè coincideixi amb les pràctiques de la vostra organització i sigui fàcil de trobar i utilitzar per als membres.
+    example_templates: Plantilles d'exemple
+    example_poll_templates: Plantilles d'enquesta d'exemple
+    browse_example_templates: Navega per plantilles d'exemple
+    browse_example_templates_hint: Crea una nova plantilla d'enquesta des de zero o fes servir un exemple per començar.
+    browse_example_use_hint: Feu clic al títol de la plantilla per <b>iniciar una enquesta</b> .
+    browse_example_fork_hint: "<b>Feu clic a la icona de la forquilla</b> per crear una nova plantilla d'enquesta, utilitzant l'exemple com a punt de partida."
+    browse_unsure_help: No esteu segur de com utilitzar les plantilles d'enquesta?
+    all_templates_hidden: Totes les plantilles s'han amagat
+    new_poll_template_title: Nova plantilla d'enquesta
+    new_template_from_blank: Nova plantilla des de zero
+    new_template_from_blank_subtitle: Crea una plantilla nova que s'adapti a un procés que tinguis a la teva organització
+    blank: Nou
+    blank_subtitle: Crea una nova plantilla d'enquesta per a un procés específic
+    start_a_poll: Inicia una enquesta
   poll_common_attachment_form:
     label: Adjunts
   poll_common_add_option:
@@ -2018,11 +2050,12 @@ ca:
     anonymous: Els vots són anònims
     results_hidden_until_closed: Els resultats es mostraran un cop finalitzada la votació
     results_hidden_until_vote: Els resultats es mostraran després de votar
-    unable_to_vote: No heu estat convidat a votar en aquesta %{poll_type}.
     draft_mode: Votació desactivada. Això encara no està obert a la votació.
     voting_disabled_poll_is_template: Votació desactivada. Aquesta és una plantilla.
     for_this_proposal_to_pass: 'Perquè aquesta proposta s''aprovi:'
     for_this_poll_type_to_be_valid: 'Perquè aquest %{poll_type} sigui vàlid:'
+    voting_opens_at: Aquest %{poll_type} s'obre per a votacions %{time}
+    unable_to_vote: No has estat convidat a votar en aquest %{poll_type}
   poll_common_collapsed:
     by_who: per %{name}
   poll_common_calendar_invite:
@@ -2452,6 +2485,7 @@ ca:
       community: Comunitat
       government: Govern/Govern local
       other: Altres
+      cohousing: Co-vivència i cohabitatge
   report:
     start_on: Comença
     end_on: Acaba
@@ -2604,6 +2638,8 @@ ca:
       ranked_choice_hint: Els votants ordenen les opcions de més a menys preferides
       time_poll: Enquesta de temps
       time_poll_hint: Els votants indiquen quan estan disponibles per reunir-se
+      rank: Rang
+      time: Temps
     process: Procés
     process_name: Títol de la plantilla
     process_name_hint: Com s'anomena aquesta plantilla? Per exemple, consells sobre rols, control de temperatura, aprovació d'actes.
@@ -2635,7 +2671,6 @@ ca:
     save_poll: Desa l'enquesta
     start_poll_type: Inicia %{poll_type}
     share_poll_type: Comparteix %{poll_type}
-    who_may_vote: Qui pot votar en aquest %{poll_type}?
     update: Actualització
     add_voters: Afegeix votants
     notify_invitees: Enviar notificacions
@@ -2659,6 +2694,13 @@ ca:
     hide_results_description: Si voleu que la gent voti sense veure com han votat els altres, podeu amagar els resultats.
     process_helptext: Anomena i descriu el procés que s'utilitza per dur a terme aquesta enquesta.
     reminder_helptext: Envia una notificació de "Properament tancament" 24 hores abans de la data límit. Això pot augmentar la participació i crear una oportunitat perquè la gent reconsideri la seva posició.
+    voting_duration: Durada
+    voting_duration_hint: Quan s'obre i quan es tanca la votació?
+    more_settings: Més configuracions
+    create_poll_type: Crea %{poll_type}
+    notify_voters_when_voting_opens: Avisar els votants quan s'obri la votació
+    voters_notified_when_opens: Els votants seran notificats quan s'obri la votació
+    who_may_vote: Qui pot votar en aquest %{poll_type}?
   poll_receipts_page:
     verify_participants: Verifica els participants
     see_votes_if_quorum_reached: Si la votació s'ha tancat i s'ha arribat al quòrum, veureu qui ha votat.
@@ -2675,10 +2717,8 @@ ca:
     aria_label: Afegeix una resposta
   discussion_template:
     browse_public_templates: Navega per la galeria de plantilles
-    start_a_new_discussion: Inicia una nova discussió
     discussion_template_saved: S'ha desat la plantilla de discussió
     these_are_public_templates: Aquestes plantilles estan disponibles perquè les copieu o les modifiqueu per adaptar-les al vostre grup.
-    these_are_templates: Aquestes són les plantilles de discussió del vostre grup. Feu clic a una plantilla per iniciar una discussió. També podeu editar-les, eliminar-les o reordenar-les si voleu.
     default_title_label: Títol per defecte
     default_title_hint: Ompliu prèviament el camp del títol amb text editable. Això és opcional; deixeu-ho en blanc si no esteu segurs.
     title_placeholder_label: Exemple de títol
@@ -2692,6 +2732,38 @@ ca:
     add_poll_template_help: Seleccioneu qualsevol plantilla d'enquesta que us ajudi a completar aquest procés
     recommended_poll_templates: Plantilles d'enquesta recomanades
     share_in_template_gallery: Comparteix aquesta plantilla a la galeria pública de plantilles
+    browse_example_templates: Navega per plantilles d'exemple
+    example_templates: Plantilles d'exemple
+    browse_public_templates_hint: Feu clic al nom d'una plantilla per iniciar-hi una discussió o feu clic al botó d'edició de la dreta per fer-ne una còpia i modificar-la per al vostre propi grup.
+    process_name_placeholder: p. ex., monòlegs setmanals
+    process_subtitle_placeholder: p. ex. una breu reunió de seguiment amb l'equip cada setmana
+    default_title_placeholder: p. ex. Monòleg - 15 de gener
+    more_templates: Més plantilles
+    fewer_templates: Menys plantilles
+    choose_a_group: Trieu un grup
+    default_templates: Plantilles predeterminades
+    or_start_a_direct_discussion: O iniciar una conversa directa
+    choose_group_for_templates: Trieu un grup per veure'n les plantilles de discussió
+    start_direct_discussion: Inicia una discussió directa
+    poll_templates: Plantilles d'enquesta
+    poll_templates_help: Les plantilles que seleccioneu aquí es mostraran primer quan algú faci clic a Inicia una votació
+    start_direct_discussion_from_blank: Inicia una discussió directa des d'una plantilla en blanc
+    default_to_direct_discussion: Comença com una discussió directa (sense grup)
+    default_to_direct_discussion_helptext: Feu servir això si voleu que la gent iniciï debats directes des d'aquesta plantilla.
+    example_discussion_templates: Plantilles de discussió d'exemple
+    browse_example_use_hint: Feu clic al títol de la plantilla per <b>iniciar una discussió</b> .
+    browse_example_fork_hint: "<b>Feu clic a la icona de la forquilla</b> per crear una nova plantilla de discussió, utilitzant l'exemple com a punt de partida."
+    new_discussion_template_title: Nova plantilla de discussió
+    new_template_from_blank: Nova plantilla des de zero
+    new_template_from_blank_subtitle: Crea una plantilla nova que s'adapti a un procés que tinguis a la teva organització
+    these_are_templates_v3: Aquestes són les plantilles de discussió del vostre grup. Feu clic a una plantilla per iniciar una nova discussió.
+    these_are_templates_admin_hint: Els administradors de grup poden editar plantilles, crear-ne de noves, reorganitzar-les i amagar/mostrar plantilles. Només els administradors poden veure les plantilles ocultes.
+    show_hidden_templates: Mostra les plantilles ocultes
+    show_fewer: Mostra menys
+    start_a_new_discussion: Inicia una nova discussió
+    start_discussion: Inicia una discussió
+    start_a_direct_discussion: Inicia una discussió directa
+    these_are_templates: Aquestes són les plantilles de discussió del vostre grup.
   context_panel:
     thread_status:
       pinned: Aquesta discussió s'ha fixat. Romandrà al capdamunt de la llista de discussions del grup per a tots els usuaris.
@@ -2718,3 +2790,9 @@ ca:
   auth:
     oauth_cancelled: S'ha cancel·lat l'inici de sessió
     switching_accounts: Canvi de compte. Si us plau, inicia la sessió amb les dades del teu nou compte.
+  poll_common_opening_at_field:
+    voting_opens_immediately: La votació s'obre immediatament
+    opening_date: Data d'obertura
+    opening_hour: Horari d'obertura
+    scheduled_hint: L'enquesta serà visible però no votable fins a l'hora d'obertura.
+    draft_hint: Aquesta enquesta es desarà com a esborrany. Estableix una data d'obertura o marca "La votació s'obre immediatament" quan estiguis a punt per començar a votar.

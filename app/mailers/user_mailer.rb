@@ -110,13 +110,11 @@ class UserMailer < ApplicationMailer
     }
   end
 
-  def group_export_ready(recipient_id, group_name, document_id)
-    user     = User.find(recipient_id)
-    document = Document.find(document_id)
+  def group_export_ready(recipient_id, group_name, blob_signed_id)
+    user = User.find(recipient_id)
+    blob = ActiveStorage::Blob.find_signed!(blob_signed_id)
 
-    component = Views::UserMailer::GroupExportReady.new(
-      document: document
-    )
+    component = Views::UserMailer::GroupExportReady.new(blob: blob)
 
     send_email(to: user.email, locale: user.locale, component: component) {
       I18n.t("user_mailer.group_export_ready.subject", group_name: group_name)
@@ -131,13 +129,18 @@ class UserMailer < ApplicationMailer
       user: user, token: token
     )
 
-    send_email(to: user.email, locale: user.locale, component: component) {
-      I18n.t("email.login.subject", site_name: AppConfig.theme[:site_name])
-    }
+    # Always deliver sign-in emails, even to bounced/complained addresses.
+    # Only check for actual spam, not rejected addresses.
+    return if spam?(user.email)
+    I18n.with_locale(first_supported_locale(user.locale)) do
+      mail(to: user.email, subject: I18n.t("email.login.subject", site_name: AppConfig.theme[:site_name])) do |format|
+        format.html { render component }
+      end
+    end
   end
 
   def contact_request(contact_request:)
-    return if spam?(contact_request.recipient.email)
+    return if spam?(contact_request.recipient.email) || rejected_address?(contact_request.recipient.email)
 
     I18n.with_locale(first_supported_locale([contact_request.recipient.locale, contact_request.sender.locale])) do
       mail(

@@ -176,15 +176,17 @@ class DiscussionService
 
   def self.mark_as_seen(discussion:, actor:)
     actor.ability.authorize! :mark_as_seen, discussion
-    reader = DiscussionReader.for_model(discussion, actor)
-    reader.viewed!
-    MessageChannelService.publish_models([reader.discussion], group_id: reader.discussion.group_id)
-    EventBus.broadcast('discussion_mark_as_seen', reader, actor)
+    RetryOnError.with_limit(2) do
+      reader = DiscussionReader.for_model(discussion, actor)
+      reader.viewed!
+      MessageChannelService.publish_models([reader.discussion], group_id: reader.discussion.group_id)
+      EventBus.broadcast('discussion_mark_as_seen', reader, actor)
+    end
   end
 
   def self.mark_as_read_simple_params(discussion_id, ranges, actor_id)
-    discussion = Discussion.find(discussion_id)
-    actor = User.find(actor_id)
+    return unless discussion = Discussion.find_by(id: discussion_id)
+    return unless actor = User.find_by(id: actor_id)
     mark_as_read(discussion: discussion, params: {ranges: ranges}, actor: actor)
   end
 
@@ -222,7 +224,7 @@ class DiscussionService
   end
 
   def self.mark_summary_email_as_read(user_id, time_start_i, time_finish_i)
-    user = User.find_by!(id: user_id)
+    return unless user = User.find_by(id: user_id)
     time_start  = Time.at(time_start_i).utc
     time_finish = Time.at(time_finish_i).utc
     time_range = time_start..time_finish

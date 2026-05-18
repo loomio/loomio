@@ -1,7 +1,6 @@
 import BaseModel        from '@/shared/record_store/base_model';
 import AppConfig        from '@/shared/services/app_config';
 import Session          from '@/shared/services/session';
-import HasDocuments     from '@/shared/mixins/has_documents';
 import { I18n }             from '@/i18n';
 import { addDays, startOfHour } from 'date-fns';
 import { snakeCase, compact, head, orderBy, sortBy, map, flatten, slice, uniq, isEqual, shuffle } from 'lodash-es';
@@ -26,10 +25,6 @@ export default class PollModel extends BaseModel {
     return [this.groupId, this.sourceTemplateId, this.pollTemplateId, this.pollTemplateKey];
   }
 
-  afterConstruction() {
-    HasDocuments.apply(this, {showTitle: true});
-  }
-
   config() {
     return AppConfig.pollTypes[this.pollType] || {};
   }
@@ -50,6 +45,8 @@ export default class PollModel extends BaseModel {
       title: '',
       titlePlaceholder: null,
       closingAt: null,
+      openingAt: null,
+      openedAt: null,
       customize: false,
       details: '',
       detailsFormat: 'html',
@@ -75,6 +72,7 @@ export default class PollModel extends BaseModel {
       attachments: [],
       linkPreviews: [],
       notifyOnClosingSoon: 'undecided_voters',
+      notifyOnOpen: true,
       results: [],
       meetingDuration: null,
       pollTemplateId: null,
@@ -91,7 +89,11 @@ export default class PollModel extends BaseModel {
       showNoneOfTheAbove: false,
       tags: [],
       hideResults: 'off',
-      stanceCounts: []
+      stanceCounts: [],
+      stvSeats: 1,
+      stvMethod: 'scottish',
+      stvQuota: 'droop',
+      stvResults: null
     };
   }
 
@@ -340,8 +342,12 @@ export default class PollModel extends BaseModel {
     }).data();
   }
 
+  isOpened() {
+    return !!this.openedAt;
+  }
+
   isVotable() {
-    return !this.discardedAt && this.closingAt && (this.closedAt == null);
+    return !this.discardedAt && this.closingAt && (this.closedAt == null) && this.isOpened();
   }
 
   isClosed() {
@@ -356,7 +362,7 @@ export default class PollModel extends BaseModel {
 
   reopen() {
     this.processing = true;
-    return Records.polls.remote.postMember(this.key, 'reopen', {poll: {closing_at: this.closingAt}})
+    return Records.polls.remote.postMember(this.key, 'reopen', {poll: {closing_at: this.closingAt, opening_at: this.openingAt}})
     .finally(() => { return this.processing = false; });
   }
 

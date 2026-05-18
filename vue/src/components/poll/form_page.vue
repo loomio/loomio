@@ -51,6 +51,17 @@ export default {
       Records.groups.findOrFetchById(groupId).then(group => {
         this.group = group;
         this.loading = false;
+
+        let templateKey;
+        if (templateKey = this.$route.query.template_key) {
+          Records.pollTemplates.fetch({params: {group_id: groupId}}).then(() => {
+            const template = Records.pollTemplates.find(templateKey);
+            if (template) {
+              this.poll = template.buildPoll();
+              this.poll.groupId = groupId;
+            }
+          });
+        }
       });
     }
 
@@ -98,31 +109,24 @@ export default {
 
 </script>
 <template lang="pug">
-.poll-form-page
-  v-main
-    v-container.max-width-800.px-0.px-sm-3
-      loading(:until="!loading")
-        div.pa-4.py-0(v-if="group")
-          .d-flex
-            v-breadcrumbs.px-0.pt-0(color="primary" :items="breadcrumbs")
-              template(v-slot:divider)
-                common-icon(name="mdi-chevron-right")
-        v-card.poll-common-modal(v-if="isLoggedIn")
-          poll-common-form.px-4(
-            v-if="poll"
-            :poll="poll"
-            @setPoll="setPoll"
-            redirect-on-save
-          )
-
-          template(v-if="!poll")
-            v-card-title
-              h1.text-h5(v-t="'poll_common.poll_templates'")
-
-            poll-common-choose-template(
-              v-if="!poll"
-              @setPoll="setPoll"
-              :discussion="discussion"
-              :group="group"
-            )
+v-main.poll-form-page
+  loading(:until="!loading")
+    v-container.max-width-800
+      v-breadcrumbs(v-if="group" color="primary" :items="breadcrumbs")
+        template(v-slot:divider)
+          common-icon(name="mdi-chevron-right")
+      v-card.poll-common-form-card(v-if="poll")
+        poll-common-form.px-4(
+          v-if="poll"
+          :poll="poll"
+          @setPoll="setPoll"
+          redirect-on-save
+        )
+      v-card.poll-common-choose-template(v-if="!poll" :title="$t('poll_common.start_a_poll')")
+        poll-common-choose-template(
+          v-if="!poll"
+          @setPoll="setPoll"
+          :discussion="discussion"
+          :group="group"
+        )
 </template>

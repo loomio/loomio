@@ -6,6 +6,7 @@ import EventBus       from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
 import WatchRecords   from '@/mixins/watch_records';
 import { marked }     from 'marked';
+import { exact }      from '@/shared/helpers/format_time';
 
 export default
 {
@@ -69,12 +70,19 @@ export default
               this.makeCloneStance();
             }
           }
+        } else if (this.isScheduled && !this.stance) {
+          // build a temporary stance so the vote form preview can render
+          this.stance = Records.stances.build({pollId: this.poll.id});
         }
       }
     });
   },
 
   computed: {
+    isScheduled() {
+      return this.poll.openingAt && !this.poll.openedAt;
+    },
+
     strippedReason() {
       if (!this.stance || this.stance.reason.length === 0) { return null };
       let html = '';
@@ -89,6 +97,7 @@ export default
   },
 
   methods: {
+    exact,
     makeCloneStance() {
       this.stance = this.poll.myStance().clone();
       if (this.$route.params.poll_option_id) {
@@ -102,20 +111,32 @@ export default
 
 <template lang="pug">
 .poll-common-action-panel(style="position: relative")
-  template(v-if="poll.isVotable()")
+  v-alert.my-4(
+    v-if="isScheduled"
+    density="compact"
+    variant="tonal"
+    type="info"
+  )
+    span(v-t="{path: 'poll_common_action_panel.voting_opens_at', args: {poll_type: poll.translatedPollType(), time: exact(poll.openingAt)}}")
+  template(v-if="poll.isVotable() || isScheduled")
     v-alert.poll-common-action-panel__anonymous-message.my-4(
-      v-if='poll.anonymous'
+      v-if='poll.anonymous && !isScheduled'
       density="compact"
       variant="tonal"
       type="info"
     )
       span(v-t="'poll_common_action_panel.anonymous'")
 
-    .poll-common-vote-form(v-if="stance && !stance.castAt")
-      h3.text-h6.py-3.text-high-emphasis(v-t="'poll_common.have_your_say'")
+    .poll-common-vote-form(
+      v-if="stance && !stance.castAt"
+      :class="{'poll-common-vote-form--preview': isScheduled}"
+      :style="isScheduled ? 'position: relative' : ''"
+    )
+      h3.text-h6.py-3.text-high-emphasis(v-if="!isScheduled" v-t="'poll_common.have_your_say'")
       poll-common-directive(:stance='stance' name='vote-form' :key="poll.id")
+      v-overlay(v-if="isScheduled" contained model-value persistent opacity="0.25")
 
-    .poll-common-unable-to-vote(v-if='!stance')
+    .poll-common-unable-to-vote(v-if='!stance && !isScheduled')
       v-alert.my-4(
         color="warning"
         variant="tonal"
@@ -139,3 +160,16 @@ export default
         action-button.float-right(v-if="poll.isVotable()" :action="editStanceAction" variant="tonal")
 
 </template>
+
+<style lang="sass">
+.poll-common-vote-form--preview
+  .v-overlay__scrim
+    cursor: not-allowed
+  .poll-common-vote-form__button.voting-disabled
+    opacity: 1 !important
+  .poll-common-form-actions,
+  .poll-common-stance-reason,
+  .none-of-the-above,
+  .v-alert
+    display: none
+</style>

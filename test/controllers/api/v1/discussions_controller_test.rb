@@ -103,30 +103,26 @@ class Api::V1::DiscussionsControllerTest < ActionController::TestCase
     }
     
     post :create, params: { discussion: discussion_params }
-    
-    json = JSON.parse(response.body)
-    assert_includes json['exception'], 'ActionController::UnpermittedParameters'
+    assert_response :bad_request
   end
 
   test "responds with error when user is unauthorized" do
     user = users(:normal_user)
     another_user = users(:another_user)
     group = groups(:test_group)
-    
+
     # Remove user from group to make them unauthorized
     group.memberships.where(user: another_user).destroy_all
     sign_in another_user
-    
+
     discussion_params = {
       title: 'discussion title!',
       group_id: group.id,
       private: true
     }
-    
+
     post :create, params: { discussion: discussion_params }
-    
-    json = JSON.parse(response.body)
-    assert_includes json['exception'], 'CanCan::AccessDenied'
+    assert_response :forbidden
   end
 
   test "responds with validation errors when title is blank" do

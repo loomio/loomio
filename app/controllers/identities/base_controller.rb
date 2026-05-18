@@ -1,6 +1,6 @@
 class Identities::BaseController < ApplicationController
   def oauth
-    session[:back_to] = params[:back_to] || request.referrer
+    session[:back_to] = safe_back_to
     redirect_to oauth_url
   end
 
@@ -84,5 +84,10 @@ class Identities::BaseController < ApplicationController
 
   def oauth_scope
     client.scope.join(',')
+  end
+
+  def safe_back_to
+    path = (params[:back_to] || request.referrer).to_s
+    path if path.start_with?('/') && !path.start_with?('//', '/\\')
   end
 end

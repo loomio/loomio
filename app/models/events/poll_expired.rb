@@ -12,12 +12,13 @@ class Events::PollExpired < Event
 
   # email the author and create an in-app notification
   def email_author!
+    return unless eventable.present?
     super
     notification_for(author).save
   end
 
   def notify_author?
-    return false unless eventable.present? && eventable.poll.present?
-    Queries::UsersByVolumeQuery.email_notifications(eventable).exists?(eventable.poll.author_id)
+    return false unless eventable.present?
+    Queries::UsersByVolumeQuery.email_notifications(eventable).exists?(eventable.author_id)
   end
 end

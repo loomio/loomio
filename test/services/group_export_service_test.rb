@@ -27,8 +27,8 @@ class GroupExportServiceTest < ActiveSupport::TestCase
     comment = Comment.create!(body: 'export_comment', discussion: discussion, author: admin)
     sub_comment = Comment.create!(body: 'export_sub_comment', discussion: sub_discussion, author: admin)
 
-    poll = Poll.create!(title: "export_poll#{SecureRandom.hex(4)}", group: group, author: admin, poll_type: 'proposal', closing_at: 1.day.from_now, poll_template_id: poll_template.id)
-    sub_poll = Poll.create!(title: "export_sub_poll#{SecureRandom.hex(4)}", group: subgroup, author: admin, poll_type: 'proposal', closing_at: 1.day.from_now)
+    poll = Poll.create!(title: "export_poll#{SecureRandom.hex(4)}", group: group, author: admin, poll_type: 'proposal', closing_at: 1.day.from_now, opened_at: Time.now, poll_template_id: poll_template.id)
+    sub_poll = Poll.create!(title: "export_sub_poll#{SecureRandom.hex(4)}", group: subgroup, author: admin, poll_type: 'proposal', closing_at: 1.day.from_now, opened_at: Time.now)
 
     PollOption.create!(poll: poll, name: 'agree')
     PollOption.create!(poll: poll, name: 'disagree')

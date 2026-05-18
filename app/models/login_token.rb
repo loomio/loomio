@@ -5,7 +5,7 @@ class LoginToken < ApplicationRecord
   initialized_with_token :token
   initialized_with_token :code, -> { generate_code }
 
-  EXPIRATION = ENV.fetch('LOGIN_TOKEN_EXPIRATION_MINUTES', 1440)
+  EXPIRATION = ENV.fetch('LOGIN_TOKEN_EXPIRATION_MINUTES', 60).to_i
 
   scope :unused, -> { where(used: false) }
 
@@ -22,10 +22,6 @@ class LoginToken < ApplicationRecord
   end
 
   def self.generate_code
-    code = 0
-    while code < 100000
-      code = Random.new.rand(999999)
-    end
-    code
+    SecureRandom.random_number(100000..999999)
   end
 end

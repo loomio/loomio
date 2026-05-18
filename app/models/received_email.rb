@@ -116,14 +116,26 @@ class ReceivedEmail < ApplicationRecord
     prefixes.any? { |prefix| subject.downcase.starts_with?(prefix.downcase) }
   end
 
+  def is_bounce?
+    sender_email == ENV.fetch('BOUNCE_ADDRESS', "bounce@email-abuse.amazonses.com")
+  end
+
   def is_complaint?
     sender_email == ENV.fetch('COMPLAINTS_ADDRESS', "complaints@email-abuse.amazonses.com")
   end
 
-  def complainer_address
+  def bounced_or_complained_address
     return nil unless attachments.first
-    @complainer_address ||= attachments.first.download.scan(AppConfig::EMAIL_REGEX).flatten.uniq.reject {|e| e.downcase == ApplicationMailer::NOTIFICATIONS_EMAIL_ADDRESS.downcase }.first
+    @bounced_or_complained_address ||= attachments.first.download.scan(AppConfig::EMAIL_REGEX).flatten.uniq.reject {|e| e.downcase == ApplicationMailer::NOTIFICATIONS_EMAIL_ADDRESS.downcase }.first
   rescue ActiveStorage::FileNotFoundError
     nil
+  end
+
+  def complainer_address
+    bounced_or_complained_address
+  end
+
+  def bounced_address
+    bounced_or_complained_address
   end
 end

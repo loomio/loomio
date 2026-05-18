@@ -311,10 +311,18 @@ tr:
       zoom: Yakınlaştır
       align: Hizala
       original: Orijinal
+      rearrange: Yeniden düzenle
+      save_template: Şablonu kaydet
+      fork_template: Çatal şablonu
     formatting_help:
       label: Biçimlendirme
       title: Metninizi biçimlendirmek için Markdown'u nasıl kullanacağınızı öğrenin
     thread: İplik
+    commercial: Reklam
+    nonprofit: Kar amacı gütmeyen kuruluşlar
+    opening_in: Açılış %{time}
+    read_more: Devamını oku
+    templates_admin_hint: Grup yöneticisi olduğunuz için, istemediğiniz şablonları gizleyebilir veya silebilir ve kalanları ihtiyaçlarınıza göre düzenleyebilirsiniz.
   merge_accounts:
     modal:
       title: Hesapları birleştir
@@ -697,7 +705,6 @@ tr:
       stance_created_option: "%{actor}, %{title} içinde %{option} oyu verdi"
       user_added_to_group: "%{actor} sizi şu gruba ekledi: %{title}"
       user_mentioned: "%{actor} sizden şu konuda bahsetti: %{title}"
-      user_reminded: "%{actor} size oy vermenizi hatırlatıyor: %{title}"
       group_mentioned: "%{actor} şu gruptan bahsetti: %{title}"
       new_delegate: "%{actor} sizi %{title}'da oy kullanma haklarına sahip bir delege yaptı"
       poll_announced: "%{actor} sizi oy vermeye davet etti: %{title}"
@@ -705,6 +712,7 @@ tr:
       discussion_edited: "%{actor} tartışma bağlamını düzenledi: %{title}"
       discussion_closed: "%{actor} tartışmayı kapattı: %{title}"
       new_discussion: "%{actor} bir tartışma başlattı: %{title}"
+      user_reminded: "%{actor} size şu konuda oy kullanmanızı hatırlatıyor: %{title}"
     without_title:
       unknown_sender: Lütfen tanınmayan gönderenden gelen e-postayı inceleyin
       group_announced: "%{actor} sizi bir gruba davet etti"
@@ -781,10 +789,10 @@ tr:
       user_added_to_group: "%{actor} sizi şu gruba ekledi: %{title}"
       user_mentioned: "%{actor} sizden şu başlıkta bahsetti: %{title}"
       group_mentioned: "%{actor} şu gruptan bahsetti: %{title}"
-      user_reminded: "%{actor} size %{title} için oy vermenizi hatırlatıyor"
       poll_announced: 'Oy Ver: %{title}'
       discussion_edited: "%{actor} tartışma bağlamını düzenledi: %{title}"
       discussion_closed: "%{actor} tartışmayı kapattı: %{title}"
+      user_reminded: "%{actor} size şu konuda oy kullanmanızı hatırlatıyor: %{title}"
   discussion_fork_actions:
     move: Taşı
     moved: Yorumlar taşınıyor, bu işlem biraz zaman alabilir
@@ -838,6 +846,8 @@ tr:
     discussion_started: Tartışma başladı
     none_direct_discussion: Yok (doğrudan görüşme)
     direct_discussion: Doğrudan görüşme
+    direct_discussion_hint: Doğrudan yapılan bir tartışma yalnızca davet ettiğiniz belirli kişiler tarafından görülebilir. Herhangi bir grubun tartışma listesinde görünmez; onu Doğrudan Tartışmalar sayfanızda bulabilirsiniz.
+    recommended_poll_templates: Önerilen anket şablonları
   announcement:
     send_discussion: Konuyu gönder
     send_group: İnsanları %{name}'ye davet edin
@@ -1211,6 +1221,7 @@ tr:
     no_discussions_here: Burada görülecek tartışma yok!
     private_discussions: Bu gruptaki özel konuları görüntülemek için üye olmanız gerekir
     view_closed_discussions: Kapalı tartışmaları görüntüle
+    discussion_templates: Tartışma şablonları
   export_data_modal:
     title: Verilerinizi nasıl kullanmak istiyorsunuz?
     as_csv: Bir e-tabloda açın
@@ -1331,7 +1342,6 @@ tr:
     default_request_to_join_prompt: Grubumuza olan ilginiz için teşekkür ederiz. Lütfen kendinizi tanıtın ve katılma isteğinizin nedenini açıklayın.
     upgrade_for_subgroups: 'Bir alt grup oluşturmak için lütfen <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">aboneliğinizi yükseltin</a>'
     share_this_url_with_people_who_want_to_join: Katılmak isteyen kişilerle bu URL'yi paylaşın
-    new_description_html: "<h3>Kuruluşunuz karar alma sürecinde hangi zorluklarla karşılaşıyor?</h3><p></p><h3> Loomio'yu kuruluşunuzda nasıl kullanmak istersiniz?</h3><p></p>"
     allow_polls_without_discussions: Tartışma olmadan anketlere izin ver
     allow_polls_without_discussions_help: İnsanların önce bir tartışma başlatmadan anket başlatmasını engelleyin.
     aria_label: Grup formu
@@ -1341,6 +1351,12 @@ tr:
     upload_background: arka planı yükle
     remove_background: arka planı kaldır
     remove_logo: logoyu kaldır
+    members_can_create_templates: Üyeler şablon oluşturabilirler.
+    members_can_create_templates_help: Üyelerin tartışma ve anket şablonları oluşturmasına izin verin. Üyeler tarafından oluşturulan şablonlar, bir yönetici tarafından görünür hale getirilene kadar gizli kalacaktır.
+    members_can_start_discussions_v2: Üyeler yeni tartışmalar başlatabilirler.
+    members_can_start_discussions_help_v2: Üyelerin grup içinde yeni tartışmalar başlatmasına izin verin.
+    members_can_edit_discussions_v2: Üyeler tartışmaları ve yorumları yönetebilirler.
+    members_can_edit_discussions_help_v2: Gruptaki üyelerin herhangi bir tartışmayı veya yorumu düzenlemesine, taşımasına, sabitlemesine, etiketlemesine veya kapatmasına izin verin.
   group_export_modal:
     title: Grup verilerini dışa aktar
     body: <p>Grubunuzun verilerinin bir kopyasını istediğiniz zaman indirebilirsiniz. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Daha fazlasını bul.</a></p><p> Grubunuzun büyüklüğüne bağlı olarak tamamlanması birkaç dakika sürer. Hazır olduğunda dosyayı indirme bağlantısını içeren bir e-posta alacaksınız.</p>
@@ -1457,7 +1473,6 @@ tr:
   profile_page:
     autodetect_time_zone: Saat dilimini otomatik olarak algıla
     account_is_bot: Bu bir bot hesabıdır
-    bot_account_warning: Bot hesapları anketlerde oy kullanmaya veya tartışmalara katılmaya davet edilmeyecektir.
     incomplete_profile: Eksik profil!
     set_your_profile_picture: Profil resmini ayarla
     messages:
@@ -1492,6 +1507,7 @@ tr:
     delete_account_subtitle: Hesabınızı tamamen silin ve adınızı geçmiş tartışmalardan ve kararlardan çıkarın.
     updated_on_sign_in: Tarayıcınız tarafından sağlanır ve oturum açtığınızda güncellenir
     translate_content_automatically: İçeriği otomatik olarak dilime çevir
+    bot_account_warning: Bot hesapları anketlere oy vermeye veya tartışmalara katılmaya davet edilmeyecektir.
   text_editor:
     x_of_y_characters: "%{x} / %{y} karakter"
     select_text_to_link: Bağlanacak metni seçin ve tekrar deneyin
@@ -1763,6 +1779,7 @@ tr:
     meeting_title: Zaman anketi
     ranked_choice_title: Dereceli seçim
     gradients_of_agreement_title: Anlaşmanın gradyanları
+    majority_title: Çoğunluk
   poll_option_form:
     edit_option: Düzenleme seçeneği
     option_name: Seçenek adı
@@ -1885,6 +1902,21 @@ tr:
     post_outcome: Kararı yayınla
     view_all_votes: Tüm oyları görüntüle
     you_voted: Oy verdiniz
+    these_are_templates: Bunlar grubunuzdaki karar şablonlarıdır. Yeni bir karar başlatmak için bir şablona tıklayın. Yöneticiler, şablonun kuruluşunuzun uygulamalarına uyması ve üyelerin bulup kullanması kolay olması için şablonla ilgili tüm ayrıntıları özelleştirebilir.
+    example_templates: Örnek şablonlar
+    example_poll_templates: Örnek anket şablonları
+    browse_example_templates: Örnek şablonlara göz atın
+    browse_example_templates_hint: Sıfırdan yeni bir anket şablonu oluşturun veya başlamak için bir örnek kullanın.
+    browse_example_use_hint: "<b>Anket başlatmak</b> için şablon başlığına tıklayın."
+    browse_example_fork_hint: Örneği başlangıç noktası olarak kullanarak yeni bir anket şablonu oluşturmak için <b>çatal simgesine tıklayın</b> .
+    browse_unsure_help: Anket şablonlarını nasıl kullanacağınızdan emin değil misiniz?
+    all_templates_hidden: Tüm şablonlar gizlendi.
+    new_poll_template_title: Yeni anket şablonu
+    new_template_from_blank: Boş şablondan yeni şablon.
+    new_template_from_blank_subtitle: Organizasyonunuzdaki bir sürece uygun yeni bir şablon oluşturun.
+    blank: Yeni
+    blank_subtitle: Belirli bir süreç için yeni bir anket şablonu oluşturun.
+    start_a_poll: Anket başlat
   poll_common_attachment_form:
     label: Ekler
   poll_common_add_option:
@@ -1991,11 +2023,12 @@ tr:
     anonymous: Oylar anonimdir
     results_hidden_until_closed: Sonuçlar oylama bittikten sonra gösterilecek
     results_hidden_until_vote: Sonuçlar oy verdikten sonra gösterilecek
-    unable_to_vote: Bu %{poll_type} anketinde oy kullanmaya davet edilmediniz
     draft_mode: Oylama devre dışı bırakıldı. Bu henüz oylamaya açık değil.
     voting_disabled_poll_is_template: Oylama devre dışı bırakıldı. Bu bir şablon.
     for_this_proposal_to_pass: 'Bu önerinin kabul edilmesi için:'
     for_this_poll_type_to_be_valid: 'Bu %{poll_type}''ın geçerli olması için:'
+    voting_opens_at: Bu %{poll_type} anketi %{time} tarihinde oylamaya açılıyor.
+    unable_to_vote: Bu ankete (%{poll_type}) oy vermeye davet edilmediniz.
   poll_common_collapsed:
     by_who: "%{name}"
   poll_common_calendar_invite:
@@ -2423,6 +2456,7 @@ tr:
       community: Topluluk grubu
       government: Hükümet/Yerel Yönetim
       other: Diğer
+      cohousing: Ortak yaşam ve ortak konut
   report:
     start_on: Başla
     end_on: Bitiş tarihi
@@ -2575,6 +2609,8 @@ tr:
       ranked_choice_hint: Seçmenler seçenekleri en çok tercih edilenden en az tercih edilene doğru sıralarlar
       time_poll: Zaman anketi
       time_poll_hint: Seçmenler toplantıya ne zaman hazır olduklarını belirtirler
+      rank: Rütbe
+      time: Zaman
     process: İşlem
     process_name: Şablon başlığı
     process_name_hint: Bu şablona ne ad veriyorsunuz? Örneğin; Rol tavsiyesi, Sıcaklık kontrolü, Tutanak onayı.
@@ -2606,7 +2642,6 @@ tr:
     save_poll: Anketi kaydet
     start_poll_type: "%{poll_type} başlat"
     share_poll_type: "%{poll_type} paylaş"
-    who_may_vote: Bu %{poll_type} anketinde kimler oy kullanabilir?
     update: Güncelleme
     add_voters: Seçmen ekle
     notify_invitees: Bildirimleri gönder
@@ -2630,6 +2665,13 @@ tr:
     hide_results_description: Eğer insanların başkalarının nasıl oy kullandığını görmeden oy kullanmasını istiyorsanız sonuçları gizleyebilirsiniz.
     process_helptext: Bu anketi çalıştırmak için kullanılan işlemi adlandırın ve açıklayın.
     reminder_helptext: Son tarihten 24 saat önce "Yakında Kapanıyor" bildirimi gönderin. Bu, katılımı artırabilir ve insanların pozisyonlarını yeniden değerlendirmeleri için bir fırsat yaratabilir.
+    voting_duration: Süre
+    voting_duration_hint: Oy verme işlemi ne zaman başlıyor ve ne zaman sona eriyor?
+    more_settings: Daha fazla ayar
+    create_poll_type: "%{poll_type} oluşturun"
+    notify_voters_when_voting_opens: Oy verme işleminin ne zaman başlayacağını seçmenlere bildirin.
+    voters_notified_when_opens: Oy verme işleminin ne zaman başlayacağı seçmenlere bildirilecektir.
+    who_may_vote: Bu ankete kimler oy verebilir?
   poll_receipts_page:
     verify_participants: Katılımcıları doğrulayın
     see_votes_if_quorum_reached: Oylama sona ermiş ve yeter sayı sağlanmışsa, kimin oy kullandığını göreceksiniz.
@@ -2646,10 +2688,8 @@ tr:
     aria_label: Bir cevap ekle
   discussion_template:
     browse_public_templates: Şablon galerisine göz atın
-    start_a_new_discussion: Yeni bir tartışma başlat
     discussion_template_saved: Tartışma şablonu kaydedildi
     these_are_public_templates: Bu şablonlar grubunuza uyacak şekilde kopyalayıp değiştirebilmeniz için mevcuttur
-    these_are_templates: Bunlar grubunuzdaki tartışma şablonlarıdır. Tartışma başlatmak için bir şablona tıklayın. İsterseniz bunları düzenleyebilir, kaldırabilir veya yeniden sıralayabilirsiniz.
     default_title_label: Varsayılan başlık
     default_title_hint: Başlık alanını düzenlenebilir metinle önceden doldurun. Bu isteğe bağlıdır - emin değilseniz boş bırakın.
     title_placeholder_label: Örnek başlık
@@ -2663,6 +2703,38 @@ tr:
     add_poll_template_help: Bu süreci tamamlamaya yardımcı olan herhangi bir anket şablonunu seçin
     recommended_poll_templates: Önerilen anket şablonları
     share_in_template_gallery: Bu şablonu herkese açık şablon galerisinde paylaşın
+    browse_example_templates: Örnek şablonlara göz atın
+    example_templates: Örnek şablonlar
+    browse_public_templates_hint: Bir şablon adına tıklayarak o şablonla ilgili bir tartışma başlatabilir veya sağdaki düzenleme düğmesine tıklayarak bir kopyasını oluşturup kendi grubunuz için değiştirebilirsiniz.
+    process_name_placeholder: Örneğin, Haftalık toplantı
+    process_subtitle_placeholder: Örneğin, her hafta ekiple kısa bir görüşme.
+    default_title_placeholder: Örneğin Standup - 15 Ocak
+    more_templates: Daha fazla şablon
+    fewer_templates: Daha az şablon
+    choose_a_group: Bir grup seçin
+    default_templates: Varsayılan şablonlar
+    or_start_a_direct_discussion: Veya doğrudan bir tartışma başlatın.
+    choose_group_for_templates: Tartışma şablonlarını görüntülemek için bir grup seçin.
+    start_direct_discussion: Doğrudan görüşmeye başlayın
+    poll_templates: Anket şablonları
+    poll_templates_help: Burada seçtiğiniz şablonlar, biri "Oylama başlat" düğmesine tıkladığında ilk olarak gösterilecektir.
+    start_direct_discussion_from_blank: Boş bir şablon kullanarak doğrudan bir tartışma başlatın.
+    default_to_direct_discussion: Doğrudan bir tartışma olarak başlayın (grup oluşturmadan).
+    default_to_direct_discussion_helptext: İnsanların bu şablonu kullanarak doğrudan tartışmalar başlatmasını istiyorsanız bunu kullanın.
+    example_discussion_templates: Örnek tartışma şablonları
+    browse_example_use_hint: "<b>Tartışma başlatmak</b> için şablon başlığına tıklayın."
+    browse_example_fork_hint: Örneği başlangıç noktası olarak kullanarak yeni bir tartışma şablonu oluşturmak için <b>çatal simgesine tıklayın</b> .
+    new_discussion_template_title: Yeni tartışma şablonu
+    new_template_from_blank: Boş şablondan yeni şablon.
+    new_template_from_blank_subtitle: Organizasyonunuzdaki bir sürece uygun yeni bir şablon oluşturun.
+    these_are_templates_v3: Bunlar grubunuzdaki tartışma şablonlarıdır. Yeni bir tartışma başlatmak için bir şablona tıklayın.
+    these_are_templates_admin_hint: Grup yöneticileri şablonları düzenleyebilir, yeni şablonlar oluşturabilir, şablonları yeniden sıralayabilir ve gizleyip/gösterebilir. Gizli şablonları yalnızca yöneticiler görebilir.
+    show_hidden_templates: Gizli şablonları göster
+    show_fewer: Daha az göster
+    start_a_new_discussion: Yeni bir tartışma başlatın
+    start_discussion: Bir tartışma başlatın
+    start_a_direct_discussion: Doğrudan bir tartışma başlatın
+    these_are_templates: Bunlar grubunuzdaki tartışma şablonlarıdır.
   context_panel:
     thread_status:
       pinned: Bu tartışma sabitlendi. Tüm kullanıcılar için grubun tartışma listesinin en üstünde kalacak.
@@ -2689,3 +2761,9 @@ tr:
   auth:
     oauth_cancelled: Giriş işlemi iptal edildi.
     switching_accounts: Hesap değiştiriliyor. Lütfen yeni hesap bilgilerinizle giriş yapın.
+  poll_common_opening_at_field:
+    voting_opens_immediately: Oylama hemen başlıyor
+    opening_date: Açılış tarihi
+    opening_hour: Açılış saati
+    scheduled_hint: Anket, açılış saatine kadar görülebilir ancak oy verilemez olacaktır.
+    draft_hint: Bu anket taslak olarak kaydedilecektir. Oylamaya başlamaya hazır olduğunuzda bir açılış tarihi belirleyin veya "Oylama hemen açılıyor" seçeneğini işaretleyin.

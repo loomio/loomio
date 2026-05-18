@@ -9,7 +9,7 @@ export default class LoginTokenRecordsInterface extends BaseRecordsInterface {
     };
     this.baseConstructor(recordStore);
   }
-  fetchToken(email) {
-    return this.remote.post('', {email});
+  fetchToken(email, turnstileToken) {
+    return this.remote.post('', {email, turnstile_token: turnstileToken});
   }
 }

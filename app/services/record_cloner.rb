@@ -200,6 +200,8 @@ class RecordCloner
   def new_clone_poll(poll)
     copy_fields = %w[
       author_id
+      opening_at
+      opened_at
       closing_at
       closed_at
       created_at
@@ -217,6 +219,7 @@ class RecordCloner
       discarded_by
       specified_voters_only
       notify_on_closing_soon
+      notify_on_open
       content_locale
       link_previews
       shuffle_options
@@ -250,6 +253,8 @@ class RecordCloner
       if poll.outcomes.empty?
         clone_poll.closed_at = nil
         clone_poll.closing_at = 3.days.from_now
+        clone_poll.opening_at = nil
+        clone_poll.opened_at = Time.now
       else
         clone_poll.closed_at = poll.outcomes.first.created_at
       end

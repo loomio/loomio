@@ -60,7 +60,6 @@ v-alert.my-4.poll-common-outcome-panel(
     p {{outcome.eventLocation}}
   formatted-text.text-on-surface(:model="outcome" field="statement")
   link-previews(:model="outcome")
-  document-list(:model="outcome")
   attachment-list(:attachments="outcome.attachments")
   action-dock(:model="outcome" :actions="dockActions" :menuActions="menuActions")
 </template>

@@ -20,13 +20,20 @@ export default {
   },
 
   computed: {
+    isScheduled() {
+      return this.poll.openingAt && !this.poll.openedAt;
+    },
+
     time() {
+      if (this.isScheduled) { return this.poll.openingAt; }
       const key = this.poll.isVotable() ? 'closingAt' : 'closedAt';
       return this.poll[key];
     },
 
     translationKey() {
-      if (this.poll.isVotable()) {
+      if (this.isScheduled) {
+        return 'common.opening_in';
+      } else if (this.poll.isVotable()) {
         return 'common.closing_in';
       } else {
         return 'common.closed_ago';
@@ -34,7 +41,9 @@ export default {
     },
 
     color() {
-      if (this.poll.isVotable()) {
+      if (this.isScheduled) {
+        return '';
+      } else if (this.poll.isVotable()) {
         if (differenceInHours(this.poll.closingAt, new Date) < 48) {
           return 'warning';
         } else {

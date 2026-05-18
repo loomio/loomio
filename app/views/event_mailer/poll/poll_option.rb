@@ -48,8 +48,8 @@ class Views::EventMailer::Poll::PollOption < Views::ApplicationMailer::Component
   end
 
   def render_icon(display_name, score, option_color)
-    if @poll.has_option_icon
-      img(src: image_path("poll_mailer/vote-button-#{@poll_option.icon}.png"), width: 48, height: 48, alt: display_name, style: 'display: inline-block')
+    if @poll.has_option_icon && @poll_option.icon
+      img(src: image_path("poll_mailer/vote-button-#{@poll_option.icon.to_s.downcase}.png"), width: 48, height: 48, alt: display_name, style: 'display: inline-block')
     end
 
     case @poll.poll_type
@@ -69,6 +69,12 @@ class Views::EventMailer::Poll::PollOption < Views::ApplicationMailer::Component
     when 'ranked_choice'
       if score
         div(class: "text-h6") { plain "##{@poll.minimum_stance_choices - score + 1}" }
+      else
+        img(src: image_path("icons/checkbox-blank-outline-#{option_color}.png"), width: 24, height: 24, alt: display_name)
+      end
+    when 'stv'
+      if score
+        div(class: "text-h6") { plain "##{score}" }
       else
         img(src: image_path("icons/checkbox-blank-outline-#{option_color}.png"), width: 24, height: 24, alt: display_name)
       end

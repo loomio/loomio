@@ -47,7 +47,7 @@ class ChatbotMarkdownPhlexTest < ActiveSupport::TestCase
     output = render_phlex(component)
 
     assert_includes output, "Active Proposal"
-    assert_includes output, "started a proposal"
+    assert_includes output, "created a proposal"
   end
 
   test "poll component renders for closed proposal with votes" do

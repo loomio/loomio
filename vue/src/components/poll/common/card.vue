@@ -79,14 +79,14 @@ v-card
     poll-common-set-outcome-panel(:poll='poll' v-if="!outcome")
     poll-common-outcome-panel(:outcome='outcome' v-if="outcome")
     poll-common-details-panel(:poll='poll')
-    poll-common-chart-panel(:poll='poll')
+    poll-common-chart-panel(v-if="poll.isOpened()" :poll='poll')
     poll-common-action-panel(:poll='poll' :editStanceAction)
     action-dock.mt-4(
       color="primary"
       variant="tonal"
       :menu-actions="menuActions"
       :actions="dockActions")
-    .poll-common-card__results-shown.mt-4
+    .poll-common-card__results-shown.mt-4(v-if="poll.isOpened()")
       poll-common-votes-panel(:key="poll.id" :poll='poll')
 </template>
 <style lang="sass">

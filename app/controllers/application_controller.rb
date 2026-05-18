@@ -18,6 +18,7 @@ class ApplicationController < ActionController::Base
   before_action :set_last_seen_at           # CurrentUserHelper
   before_action :handle_pending_actions     # PendingActionsHelper
   before_action :set_sentry_context
+  before_action :set_noindex_header, unless: -> { ENV['ALLOW_ROBOTS'] }
 
   helper_method :current_user
   helper_method :current_version
@@ -141,6 +142,10 @@ class ApplicationController < ActionController::Base
   def pagination_params
     default_limit = params[:export] ? 2000 : 10
     { limit: params.fetch(:limit, default_limit).to_i, offset: params.fetch(:offset, 0).to_i }
+  end
+
+  def set_noindex_header
+    response.headers['X-Robots-Tag'] = 'noindex'
   end
 
   def prevent_caching

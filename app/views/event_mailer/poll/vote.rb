@@ -44,6 +44,14 @@ class Views::EventMailer::Poll::Vote < Views::ApplicationMailer::Component
             text: t(:"poll_common.vote_now")
           )
         end
+      elsif @poll.scheduled?
+        @poll.poll_options.each do |option|
+          render Views::EventMailer::Poll::PollOption.new(
+            poll: @poll,
+            poll_option: option,
+            recipient: @recipient
+          )
+        end
       end
 
       if @poll.wip?

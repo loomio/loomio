@@ -77,7 +77,6 @@ module Null::Group
       member_ids
       identities
       hidden_poll_templates
-      hidden_discussion_templates
     ]
   end
 
@@ -164,13 +163,6 @@ module Null::Group
     }
   end
 
-  def discussion_template_positions
-    {
-      'blank' => 0,
-      'open_discussion' => 1,
-      'updates_thread' => 2,
-    }
-  end
 
   def subscription
     {

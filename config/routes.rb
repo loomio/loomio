@@ -15,7 +15,6 @@ Rails.application.routes.draw do
 
   authenticate :user, lambda { |u| u.is_admin? } do
     mount Sidekiq::Web => '/admin/sidekiq'
-    mount Blazer::Engine, at: "/admin/blazer"
   end
 
   if !Rails.env.production?
@@ -46,8 +45,8 @@ Rails.application.routes.draw do
     end
 
     namespace :b2 do
-      resources :discussions, only: [:create, :show]
-      resources :polls, only: [:create, :show]
+      resources :discussions, only: [:create, :show, :index]
+      resources :polls, only: [:create, :show, :index]
       resources :memberships, only: [:index, :create]
       resources :comments, only: [:create]
     end
@@ -209,8 +208,6 @@ Rails.application.routes.draw do
         collection do
           get :browse_tags
           get :browse
-          post :hide
-          post :unhide
           post :discard
           post :undiscard
           post :positions
@@ -261,6 +258,7 @@ Rails.application.routes.draw do
 
       resources :poll_templates, only: [:index, :create, :update, :show, :destroy] do
         collection do
+          get :browse
           post :hide
           post :unhide
           post :discard
@@ -295,11 +293,6 @@ Rails.application.routes.draw do
       end
       resources :reactions,   only: [:create, :update, :index, :destroy]
 
-      resources :documents, only: [:create, :update, :destroy, :index] do
-        get :for_group, on: :collection
-        get :for_discussion, on: :collection
-      end
-
       resource :translations, only: [] do
         get :inline, to: 'translations#inline'
       end
@@ -332,7 +325,7 @@ Rails.application.routes.draw do
           post :oauth, on: :collection
         end
       end
-      get "identities/:id/:command", to: "identities#command"
+      # identities command route removed (dead code)
     end
   end
 
@@ -359,7 +352,7 @@ Rails.application.routes.draw do
     end
   end
 
-  post :email_processor, to: 'received_emails#create'
+  # old email webhook removed — use Action Mailbox instead
 
   namespace :email_actions do
     get :unsubscribe
@@ -409,9 +402,14 @@ Rails.application.routes.draw do
   get 'p/new(/:type)'                      => 'application#index', as: :new_poll
   get 'dashboard/direct_discussions'       => 'application#index', as: :direct_discussions
   get 'tasks'                              => 'application#index', as: :tasks
+  get 'poll_templates/browse'              => 'application#index'
   get 'poll_templates/new'                 => 'application#index'
   get 'poll_templates/:id'                 => 'application#index'
   get 'poll_templates/:id/edit'            => 'application#index'
+  get 'discussion_templates/browse'        => 'application#index'
+  get 'discussion_templates/new'           => 'application#index'
+  get 'discussion_templates/:id'           => 'application#index'
+  get 'discussion_templates/:id/edit'      => 'application#index'
   get 'thread_templates/browse'            => 'application#index'
   get 'thread_templates/new'               => 'application#index'
   get 'thread_templates/:id'               => 'application#index'

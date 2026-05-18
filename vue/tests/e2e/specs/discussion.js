@@ -321,6 +321,7 @@ module.exports = {
     page.ensureSidebar()
     page.click('.sidebar__list-item-button--private')
     page.click('.threads-page__new-thread-button')
+    page.click('.discussion-templates--direct-discussion')
     page.fillIn('.recipients-autocomplete input', 'test@example.com')
     page.expectText('.recipients-autocomplete-suggestion', 'test@example.com')
     page.click('.recipients-autocomplete-suggestion')

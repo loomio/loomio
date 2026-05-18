@@ -5,9 +5,11 @@ import AuthModalMixin from '@/mixins/auth_modal';
 import AppConfig from '@/shared/services/app_config';
 import Flash from '@/shared/services/flash';
 import EventBus from '@/shared/services/event_bus';
+import TurnstileWidget from '@/components/auth/turnstile_widget.vue';
 
 export default {
   mixins: [AuthModalMixin],
+  components: { TurnstileWidget },
   props: {
     user: Object
   },
@@ -15,14 +17,32 @@ export default {
   data() {
     return {
       siteName: AppConfig.theme.site_name,
+      turnstileSiteKey: AppConfig.turnstileSiteKey,
+      turnstileToken: '',
       vars: {},
       loading: false
     };
   },
 
+  computed: {
+    // Token-link flow (user.hasToken) doesn't render the Turnstile widget
+    // and the server bypasses verification via pending_login_token, so the
+    // client gate must not block submission in that case.
+    submitBlockedByCaptcha() {
+      if (this.user.hasToken) { return false; }
+      return Boolean(this.turnstileSiteKey) && !this.turnstileToken;
+    }
+  },
+
   methods: {
+    applyTurnstileToken() {
+      this.user.turnstileToken = this.turnstileToken;
+    },
+
     signIn() {
       if (this.vars.name != null) { this.user.name = this.vars.name; }
+      if (this.submitBlockedByCaptcha) { return; }
+      this.applyTurnstileToken();
       this.loading = true;
       AuthService.signIn(this.user).finally(() => {
         this.loading = false;
@@ -30,6 +50,7 @@ export default {
     },
 
     signInAndSetPassword() {
+      if (this.submitBlockedByCaptcha) { return; }
       this.loading = true;
       this.signIn().then(() => {
         this.loading = false;
@@ -43,6 +64,8 @@ export default {
     },
 
     sendLoginLink() {
+      if (this.submitBlockedByCaptcha) { return; }
+      this.applyTurnstileToken();
       this.loading = true;
       AuthService.sendLoginLink(this.user).finally(() => {
         this.loading = false;
@@ -94,6 +117,8 @@ v-card.auth-signin-form(
           v-model='user.password'
           autocomplete="current-password")
         validation-errors(:subject='user' field='password')
+      turnstile-widget(v-model='turnstileToken')
+      validation-errors(:subject='user' field='turnstile')
 
   v-card-actions(v-if='!user.hasToken')
     v-btn.auth-signin-form__login-link(
@@ -101,6 +126,7 @@ v-card.auth-signin-form(
       variant="tonal"
       :color="user.hasPassword ? '' : 'primary'"
       @click='sendLoginLink()'
+      :disabled='submitBlockedByCaptcha'
       :loading="!user.password && loading"
     )
       span(v-t="user.hasPassword ? 'auth_form.forgot_password' : 'auth_form.login_link'")
@@ -110,7 +136,7 @@ v-card.auth-signin-form(
       @click='submit()'
       variant="elevated"
       :color="user.hasPassword ? 'primary' : ''"
-      :disabled='!user.password'
+      :disabled='!user.password || submitBlockedByCaptcha'
       :loading="user.password && loading")
       span(v-t="'auth_form.sign_in'")
 
@@ -119,6 +145,7 @@ v-card.auth-signin-form(
       variant="elevated"
       color="primary"
       @click='sendLoginLink()'
+      :disabled='submitBlockedByCaptcha'
       :loading="loading"
     )
       span(v-t="'auth_form.login_link'")

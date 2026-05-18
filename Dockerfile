@@ -1,4 +1,4 @@
-FROM node:22-slim AS nodebuild
+FROM node:24-slim AS nodebuild
 
 WORKDIR /build/vue
 
@@ -24,7 +24,7 @@ WORKDIR /build/hocuspocus
 COPY hocuspocus/package.json ./
 RUN npm install --prefer-offline --no-audit --no-fund
 
-FROM ruby:3.4.7-slim
+FROM ruby:4.0.2-slim
 
 ENV MALLOC_ARENA_MAX=2 \
     RAILS_LOG_TO_STDOUT=1 \
@@ -64,8 +64,8 @@ RUN bundle install && \
 # Copy entire app source
 COPY . .
 
-# Copy built Vite assets from nodebuild stage
-COPY --from=nodebuild /build/public/client3 /loomio/public/client3
+# Copy built Vite assets to staging path (copied to volume at startup)
+COPY --from=nodebuild /build/public/client3 /loomio/client3-build
 
 # Copy Node.js binary and hocuspocus dependencies from nodebuild stage
 COPY --from=nodebuild /usr/local/bin/node /usr/local/bin/node

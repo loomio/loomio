@@ -353,6 +353,8 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     @group.update(members_can_add_guests: true)
     Membership.find_by(user_id: @user.id, group_id: @group.id).update(admin: false)
 
+    member.notifications.destroy_all
+
     post :create, params: { outcome_id: outcome.id, recipient_user_ids: [member.id] }
     assert_response :success
 

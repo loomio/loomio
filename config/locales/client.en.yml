@@ -212,6 +212,7 @@ en:
     dot_vote: dot vote
     meeting: time poll
     ranked_choice: ranked choice
+    stv: STV election
     score: score poll
     question: question round
   timezones:
@@ -221,6 +222,7 @@ en:
     nonprofit: Nonprofit
     value: "%{value}"
     admin_menu: Admin menu
+    templates_admin_hint: Because you are a group admin, you can hide or delete any templates you don't want, and edit the remaining ones to suit your needs.
     api_docs: API docs
     prefix_eg: e.g. %{val}
     are_you_sure: Are you sure?
@@ -243,6 +245,7 @@ en:
     all_day: All day
     ok_got_it: Ok, got it
     learn_more: Learn more
+    read_more: Read more
     not_found: Not found
     time_zone: Time zone
     local_time: Local time
@@ -259,6 +262,7 @@ en:
       pm: pm
     closing_in: Closing %{time}
     closed_ago: Closed %{time}
+    opening_in: Opening %{time}
     volume: Volume
     notification_volume: Notification Volume
     group: Group
@@ -309,11 +313,14 @@ en:
       close: Close
       reopen: Reopen
       save: Save
+      save_template: Save template
+      fork_template: Fork template
       move: Move
       save_changes: Save changes
       update_settings: Update settings
       reply: Reply
       edit: Edit
+      rearrange: Rearrange
       remove: Remove
       undo_remove: Undo remove
       like: Like
@@ -718,7 +725,7 @@ en:
       poll_closed_by_user: "%{actor} closed the %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} closing in 24 hours: %{title}"
       poll_closing_soon_author: 'Your %{poll_type} is closing in 24 hours: %{title}'
-      poll_created: "Vote: %{title}"
+      poll_created: "%{poll_type}: %{title}"
       poll_edited: "%{actor} updated the %{poll_type}: %{title}"
       poll_expired: "%{poll_type} has closed: %{title}"
       poll_expired_author: 'Publish an outcome: %{title}'
@@ -733,7 +740,7 @@ en:
       user_added_to_group: "%{actor} added you to the group: %{title}"
       user_mentioned: "%{actor} mentioned you in: %{title}"
       group_mentioned: "%{actor} mentioned the group in: %{title}"
-      user_reminded: "%{actor} is reminding you to vote in: %{title}"
+      user_reminded: "%{actor} is reminding you to vote on: %{title}"
     with_title:
       unknown_sender: Please review email from unrecognised sender
       comment_replied_to: "%{actor} replied to you in: %{title}"
@@ -757,7 +764,7 @@ en:
       poll_closed_by_user: "%{actor} closed the %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} closing in 24 hours: %{title}"
       poll_closing_soon_author: 'Your %{poll_type} is closing in 24 hours: %{title}'
-      poll_created: "%{actor} started a %{poll_type}: %{title}"
+      poll_created: "%{actor} created a %{poll_type}: %{title}"
       poll_edited: "%{actor} updated the %{poll_type}: %{title}"
       poll_expired: "%{poll_type} has closed: %{title}"
       poll_expired_author: 'Share the outcome of your %{poll_type}: %{title}'
@@ -772,7 +779,7 @@ en:
       user_added_to_group: "%{actor} added you to the group: %{title}"
       user_mentioned: "%{actor} mentioned you in: %{title}"
       group_mentioned: "%{actor} mentioned the group in: %{title}"
-      user_reminded: "%{actor} is reminding you to vote in: %{title}"
+      user_reminded: "%{actor} is reminding you to vote on: %{title}"
     without_title:
       unknown_sender: Please review email from unrecognised sender
       discussion_announced: "%{actor} invited you to a discussion"
@@ -795,7 +802,7 @@ en:
       poll_closed_by_user: "%{actor} closed the %{poll_type}"
       poll_closing_soon: "%{poll_type} closing in 24 hours"
       poll_closing_soon_author: Your %{poll_type} is closing in 24 hours
-      poll_created: "%{actor} started a %{poll_type}"
+      poll_created: "%{actor} created a %{poll_type}"
       poll_edited: "%{actor} updated the %{poll_type}"
       poll_expired: "%{poll_type} has closed"
       poll_expired_author: Share the outcome of your %{poll_type}
@@ -823,10 +830,26 @@ en:
     start_new_thread: Or, start new discussion
   discussion_template:
     browse_public_templates: Browse template gallery
+    browse_example_templates: Browse example templates
+    example_templates: Example templates
+    example_discussion_templates: Example discussion templates
     start_a_new_discussion: Start a new discussion
+    start_discussion: Start a discussion
+    start_a_direct_discussion: Start a direct discussion
     discussion_template_saved: Discussion template saved
     these_are_public_templates: 'These templates are available for you to copy or modify to suit your group'
-    these_are_templates: 'These are the discussion templates in your group. Click a template to start a discussion. You can also edit, remove, or reorder these if you like. '
+    browse_public_templates_hint: 'Create a new discussion template from blank, or use an example as a starting point.'
+    browse_example_use_hint: "Click the template title to <b>start a discussion</b>."
+    browse_example_fork_hint: "<b>Click the fork icon</b> to create a new discussion template, using the example as a starting point."
+    new_discussion_template_title: New discussion template
+    new_template_from_blank: New template from blank
+    new_template_from_blank_subtitle: Create a new template to suit a process you have in your organization
+    these_are_templates: These are the discussion templates in your group.
+    these_are_templates_v3: 'These are the discussion templates in your group. Click a template to start a new discussion.'
+    these_are_templates_admin_hint: 'You can hide templates that you don''t use and edit the remaining ones to suit your needs.'
+    process_name_placeholder: "e.g. Weekly standup"
+    process_subtitle_placeholder: "e.g. A short check-in with the team each week"
+    default_title_placeholder: "e.g. Standup - January 15"
     default_title_label: Default title
     default_title_hint: Prefill the title field with editable text. This is optional - leave blank if unsure.
     title_placeholder_label: Example title
@@ -835,18 +858,33 @@ en:
     example_description_label: Example description
     example_description_placeholder: Provide a template that people can use to start a thread with
     hidden_templates: Hidden templates
+    more_templates: More templates
+    fewer_templates: Fewer templates
+    show_hidden_templates: Show hidden templates
+    show_fewer: Show fewer
+    choose_a_group: Choose a group
+    default_templates: Default templates
+    or_start_a_direct_discussion: Or start a direct discussion
+    choose_group_for_templates: Choose a group to view its discussion templates
+    start_direct_discussion: Start direct discussion
     confirm_delete: Are you sure you want to delete this discussion template?
     add_poll_template: Add poll template
     add_poll_template_help: Select any poll templates that help to complete this process
     recommended_poll_templates: Recommended poll templates
     share_in_template_gallery: Share this template in the public template gallery
+    poll_templates: Poll templates
+    poll_templates_help: Templates you select here will show up first when someone clicks Start a vote
+    start_direct_discussion_from_blank: Start a direct discussion from a blank template
+    default_to_direct_discussion: Default discussion group field to "None (direct discussion)"
+    default_to_direct_discussion_helptext: Use this if you want people to start direct discussions from this template.
   discussion_form:
     none_invite_only_discussion: None (invite-only discussion)
     none_direct_discussion: None (direct discussion)
+    direct_discussion_hint: A direct discussion is only visible to the specific people you invite. It will not appear in any group's discussion list — you can find it on your Direct discussions page.
     new_discussion_template: New discussion template
     edit_discussion_template: Edit discussion template
-    blank: Blank
-    blank_subtitle: Start a discussion and see where it takes you
+    blank: New
+    blank_subtitle: Create a new discussion template for a specific process
     new_template: New template
     new_template_subtitle: Create an example that others can copy
     to: To
@@ -872,6 +910,7 @@ en:
     title_placeholder: What is the topic you want to discuss?
     context_label: Context
     context_placeholder: Provide some context for this discussion, so people know how to participate
+    recommended_poll_templates: Recommended poll templates
     privacy_label: Privacy
     privacy_public: Anyone can view this thread if they have the link
     privacy_private: Only members of the group can view this thread
@@ -1211,6 +1250,7 @@ en:
     stats: Group stats
     participation_report: Participation report
     discussions: Discussions
+    discussion_templates: Discussion templates
     polls: Polls
     decisions: Decisions
     members: Members
@@ -1341,8 +1381,8 @@ en:
     organization_name_placeholder: What is the name of your organization?
     description: Description
     description_placeholder: Describe the purpose of your group so your group members know why they are here.
-    new_description_placeholder: Why are you trialing Loomio? What decisions do you need to make together?
-    new_description_html: '<h3>What challenges does your organization face with decision-making?</h3><p></p><h3>How would you like to use Loomio in your organization?</h3><p></p>'
+    new_description_html: ""
+    new_description_placeholder: What does your organization do? What decisions do you need to make together?
     secret_by_default: Your group will only be accessible by those who are invited to join. You can change this later.
     privacy_statement:
       public_on_web: Name, description, and attachments to the group context will be visible to the public
@@ -1399,6 +1439,12 @@ en:
     members_can_start_discussions_help: Allow members to start new threads within the group
     members_can_raise_motions: Members can start polls
     members_can_raise_motions_help: Allow members to start polls and proposals within discussions or the group
+    members_can_create_templates: Members can create templates
+    members_can_create_templates_help: Allow members to create discussion and poll templates. Templates created by members will be hidden until an admin unhides them.
+    members_can_start_discussions_v2: Members can start new discussions
+    members_can_start_discussions_help_v2: Allow members to start new discussions within the group
+    members_can_edit_discussions_v2: Members can manage discussions and comments
+    members_can_edit_discussions_help_v2: Allow members to edit, move, pin, tag or close any discussion or comment in the group
     admins_can_edit_user_content: Admins can edit members' comments
     admins_can_edit_user_content_help: Allow admins to edit content written by members
     submit_start_group: Start group
@@ -1533,7 +1579,7 @@ en:
     translate_content_automatically: Translate content to my language automatically
     autodetect_time_zone: Autodetect time zone
     account_is_bot: This is a bot account
-    bot_account_warning: Bot accounts will not be invited to vote in polls or participate in discussions
+    bot_account_warning: Bot accounts will not be invited to vote on polls or participate in discussions
     incomplete_profile: Incomplete profile!
     set_your_profile_picture: Set your profile picture
     messages:
@@ -1860,6 +1906,8 @@ en:
     dot_vote_title: Dot vote
     meeting_title: Time poll
     ranked_choice_title: Ranked choice
+    stv_title: STV Election
+    majority_title: Majority
     gradients_of_agreement_title: Gradients of agreement
   poll_option_form:
     thumb_up: Thumb up
@@ -1910,13 +1958,29 @@ en:
     custom_process: Custom process
     custom_poll: Custom poll
     delete_poll: Delete poll
+    export_blt: Export ballots (BLT)
     select_count_options: Select %{count} options
     select_minimum_to_maximum_options: Select %{minimum} to %{maximum} options
     custom_poll_types: Custom poll types
     hidden_poll_templates: Hidden poll templates
+    these_are_templates: These are the proposal and poll templates in your group.
+    example_templates: Example templates
+    example_poll_templates: Example poll templates
+    browse_example_templates: Browse example templates
+    browse_example_templates_hint: 'Create a new poll template from blank, or use an example to get started.'
+    browse_example_use_hint: "Click the template title to <b>start a poll</b>."
+    browse_example_fork_hint: "<b>Click the fork icon</b> to create a new poll template, using the example as a starting point."
+    browse_unsure_help: "Unsure how to use Poll Templates?"
+    all_templates_hidden: All templates have been hidden
+    new_poll_template_title: New poll template
+    new_template_from_blank: New template from blank
+    new_template_from_blank_subtitle: Create a new template to suit a process you have in your organization
+    blank: New
+    blank_subtitle: Create a new poll template for a specific process
     poll_template: Poll template
     poll_template_saved: Poll template saved
     poll_templates: Poll templates
+    start_a_poll: Start a poll
     poll_types: Poll types
     new_proposal_template: New proposal template
     edit_proposal_template: Edit proposal template
@@ -1933,6 +1997,7 @@ en:
     decision_templates: Decision templates
     remove_your_vote: Remove your vote
     remove_your_response: Remove your response
+    status: Status
     vote_now: Vote now
     review_due: Review due
     have_your_say: Have your say
@@ -2091,8 +2156,9 @@ en:
     anonymous: Votes are anonymous
     results_hidden_until_closed: Results will be shown after voting has closed
     results_hidden_until_vote: Results will be shown after you vote
-    unable_to_vote: You have not been invited to vote in this %{poll_type}
+    unable_to_vote: You have not been invited to vote on this %{poll_type}
     draft_mode: Voting disabled. This is not open for voting yet.
+    voting_opens_at: "This %{poll_type} opens for voting %{time}"
     for_this_proposal_to_pass: "For this proposal to pass:"
     for_this_poll_type_to_be_valid: "For this %{poll_type} to be valid:"
   poll_common_collapsed:
@@ -2178,6 +2244,12 @@ en:
     closing_date: Closing date
     closing_hour: Closing time
     invalid_date: Invalid date
+  poll_common_opening_at_field:
+    voting_opens_immediately: Voting opens immediately
+    opening_date: Opening date
+    opening_hour: Opening time
+    scheduled_hint: The poll will be visible but not votable until the opening time.
+    draft_hint: This poll will be saved as a draft. Set an opening date or check "Voting opens immediately" when you're ready to start voting.
   poll_card:
     poll_type_by_name: "%{poll_type} by %{name}"
     started_by: Started by %{name}
@@ -2234,6 +2306,8 @@ en:
     quorum_tip_vote_share_requirement: 'Tip: You can also specify the level of agreement required for a proposal to pass. Edit an option to define vote share requirement'
     deadline: Deadline
     how_much_time_to_vote: How much time will you give people to vote?
+    voting_duration: Duration
+    voting_duration_hint: When does voting open and when does it close?
     notify_everyone_when_poll_starts: Notify everyone when %{poll_type} starts
     option_has_votes_confirm_delete: Some people have voted for this option, are you sure you want to delete it?
     example_title: Example title
@@ -2243,6 +2317,7 @@ en:
     advanced_settings: Advanced settings
     show_advanced_settings: Show advanced settings
     hide_advanced_settings: Hide advanced settings
+    more_settings: More settings
     choose_at_least: Choose at least
     choose_at_most: Choose at most
     please_review_the_form: Please review the form
@@ -2275,8 +2350,12 @@ en:
       score_hint: Voters assign a score to each option
       allocate: Allocate
       allocate_hint: Voters allocate a budget of points between the options
+      rank: Rank
       ranked_choice: Ranked choice
       ranked_choice_hint: Voters arrange options in order from most to least preferred
+      stv: STV Election
+      stv_hint: Elect multiple winners proportionally using Single Transferable Vote
+      time: Time
       time_poll: Time poll
       time_poll_hint: Voters indicate when they are available to meet
     process: Process
@@ -2309,13 +2388,16 @@ en:
     limit_reason_length: Limit reason to maximum 500 characters
     save_poll: Save poll
     start_poll_type: Start %{poll_type}
+    create_poll_type: Create %{poll_type}
     share_poll_type: Share %{poll_type}
-    who_may_vote: Who may vote in this %{poll_type}?
+    who_may_vote: Who may vote on this %{poll_type}?
     update: Update
     add_voters: Add voters
     notify_invitees: Send notifications
     no_notifications_warning: Voters will not be notified. This is useful if you're running a lot of polls and plan to notify everyone later on.
     count_voters_added: "%{count} voters added"
+    notify_voters_when_voting_opens: Notify voters when voting opens
+    voters_notified_when_opens: Voters will be notified when voting opens
     poll_type_created: "%{poll_type} created"
     poll_type_started: "%{poll_type} started"
     poll_type_updated: "%{poll_type} updated"
@@ -2418,6 +2500,8 @@ en:
     objection: Objection
     object: Object
     block: Block
+    'yes': 'Yes'
+    'no': 'No'
     no_voting: No voting
   poll_count_form:
     pct_of_target: "% of target"
@@ -2465,6 +2549,45 @@ en:
     helptext: Drag and drop options in order of preference (1 being your most preferred option). Your top %{count} choices will be recorded.
     stance_created: Choice recorded
     stance_updated: Choice updated
+  poll_stv_vote_form:
+    helptext: Drag candidates above the line to rank them. Items below the line are unranked. Rank 1 is your most preferred.
+    divider_text: drag candidates above this line to rank them
+    stance_created: Vote recorded
+    stance_updated: Vote updated
+  poll_stv_form:
+    settings_title: STV Election Settings
+    settings_helptext: Configure the number of seats to fill, counting method, and quota type for this election.
+    seats_label: Number of seats to fill
+    method_label: Counting method
+    method_scottish: Scottish STV (recommended)
+    method_meek: Meek STV
+    quota_label: Quota type
+    quota_droop: Droop quota (recommended)
+    quota_hare: Hare quota
+  poll_stv_results:
+    title: Election Results
+    elected: Elected
+    not_elected: Not elected
+    tied: Tie
+    no_candidates_elected: No candidates elected
+    round: Round %{number}
+    quota_info: "%{method}, %{quota_type} quota (%{quota} votes needed)"
+    method_scottish: Scottish STV
+    method_meek: Meek STV
+    quota_droop: Droop
+    quota_hare: Hare
+    elected_in_round: Elected in round %{round}
+    eliminated_in_round: Eliminated in round %{round}
+    tied_in_round: Tied in round %{round}
+    votes: votes
+    candidate: Candidate
+    round_elected: Round elected
+    first_preferences: First preferences
+    final_tally: Final tally
+    quota_surplus: Surplus
+    round_details: Round-by-round details
+    view_full_results: View full results
+    results_available_when_closed: Results will be available when voting closes
   thread_item:
     new: new
     removed: Item removed
@@ -2482,7 +2605,7 @@ en:
     outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> shared an outcome"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> reopened the %{polltype}"
     poll_closed_by_user: "<a class='actor-link' href='/u/%{username}'>%{author}</a> closed the %{polltype}"
-    poll_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> started a %{polltype}"
+    poll_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> created a %{polltype}"
     poll_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a> edited the %{polltype}"
     poll_option_added: "<a class='actor-link' href='/u/%{username}'>%{author}</a> added options to the %{polltype}"
     poll_expired: "%{polltype} closed"
@@ -2516,6 +2639,7 @@ en:
     invalid_password: Sorry, that password doesn't match the one we have on file
     invalid_token: Sorry, we weren't able to use that token to log you in. Click below to send another one.
     account_locked: Your account has been locked after too many failed login attempts. Check your email for an unlock link
+    turnstile_required: Please complete the verification before continuing.
     email_not_found: Sorry, we couldn't find an account with that email address
     email_taken: Email address is already registered
     email_placeholder: you{'@'}example.com
@@ -2662,4 +2786,5 @@ en:
       self_managing: Self-managing organization
       community: Community group
       government: Government/Local Government
+      cohousing: Co-living & co-housing
       other: Other

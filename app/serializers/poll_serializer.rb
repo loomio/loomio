@@ -10,6 +10,8 @@ class PollSerializer < ApplicationSerializer
              :chart_column,
              :closed_at,
              :closing_at,
+             :opening_at,
+             :opened_at,
              :created_at,
              :content_locale,
              :cast_stances_pct,
@@ -25,6 +27,7 @@ class PollSerializer < ApplicationSerializer
              :link_previews,
              :mentioned_usernames,
              :notify_on_closing_soon,
+             :notify_on_open,
              :poll_type,
              :poll_option_names,
              :poll_option_name_format,
@@ -49,6 +52,10 @@ class PollSerializer < ApplicationSerializer
              :minimum_stance_choices,
              :maximum_stance_choices,
              :meeting_duration,
+             :stv_seats,
+             :stv_method,
+             :stv_quota,
+             :stv_results,
              :poll_template_id,
              :poll_template_key,
              :quorum_pct,
@@ -80,6 +87,7 @@ class PollSerializer < ApplicationSerializer
     :hide_results,
     :limit_reason_length,
     :notify_on_closing_soon,
+    :notify_on_open,
     :poll_type,
     :poll_option_names,
     :mentioned_usernames,
@@ -108,6 +116,14 @@ class PollSerializer < ApplicationSerializer
 
   def include_results?
     poll.show_results?(voted: true)
+  end
+
+  def stv_results
+    object.stv_results
+  end
+
+  def include_stv_results?
+    object.poll_type == 'stv' && poll.show_results?(voted: true)
   end
 
   def current_outcome

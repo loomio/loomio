@@ -1,5 +1,6 @@
 require 'test_helper'
 
+if defined?(LoomioSubs)
 class SubscriptionsControllerTest < ActionController::TestCase
   setup do
     @routes = LoomioSubs::Engine.routes
@@ -71,4 +72,5 @@ class SubscriptionsControllerTest < ActionController::TestCase
       }
     }
   end
+end
 end

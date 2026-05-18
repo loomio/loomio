@@ -8,14 +8,21 @@ class TranscriptionAnalyzer < ActiveStorage::Analyzer::AudioAnalyzer
 
   def probe_from(file)
     super.tap do
+      attachment = blob.attachments.first
+      next unless attachment
+
+      record = attachment.record
+      next unless attachment.name.in?(%w[files image_files]) && record.class.respond_to?(:rich_text_fields)
+
+      field = record.class.rich_text_fields.first
       response = TranscriptionService.transcribe(file)
       @text = response["text"]
       @language = response["language"]
-      record = blob.attachments.first.record
-      # record.body += "<p>#{I18n.t('record_modal.audio_transcript', text: @text, locale: record.author.locale)}</p>"
-      record.body += "<p>#{@text}</p>"
+      record[field] = "#{record[field]}<p>#{@text}</p>"
       record.save!
-      MessageChannelService.publish_models(Array(record), group_id: record.group_id, user_id: record.author_id)
+      if record.respond_to?(:group_id) && record.respond_to?(:author_id)
+        MessageChannelService.publish_models(Array(record), group_id: record.group_id, user_id: record.author_id)
+      end
     end
   end
 end

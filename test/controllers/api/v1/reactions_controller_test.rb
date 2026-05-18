@@ -50,7 +50,6 @@ class Api::V1::ReactionsControllerTest < ActionController::TestCase
     sign_in unauthorized_user
     post :create, params: { reaction: reaction_params }
     assert_response :forbidden
-    assert_includes JSON.parse(response.body)['exception'], 'CanCan::AccessDenied'
   end
 
   test "index fetches reactions for multiple records at once" do

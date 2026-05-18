@@ -1,5 +1,8 @@
 class ReportService
+  VALID_INTERVALS = %w[year month week day].freeze
+
   def initialize(interval: 'month', group_ids: nil, start_at: 6.months.ago, end_at: 1.minute.ago)
+    raise ArgumentError, "invalid interval value: #{interval}" unless VALID_INTERVALS.include?(interval)
     @interval = interval
     @group_ids = group_ids
     @start_at = start_at

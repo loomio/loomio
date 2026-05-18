@@ -311,10 +311,18 @@ ru:
       zoom: Увеличить
       align: Выровнять
       original: Оригинал
+      rearrange: Переставить
+      save_template: Сохранить шаблон
+      fork_template: Шаблон форка
     formatting_help:
       label: Форматирование
       title: Узнайте, как использовать Markdown для форматирования текста.
     thread: Нить
+    commercial: Коммерческий
+    nonprofit: Некоммерческая организация
+    opening_in: Время открытия %{time}
+    read_more: Читать далее
+    templates_admin_hint: Поскольку вы являетесь администратором группы, вы можете скрывать или удалять любые ненужные шаблоны, а оставшиеся редактировать в соответствии со своими потребностями.
   merge_accounts:
     modal:
       title: Объединить аккаунты
@@ -697,7 +705,6 @@ ru:
       stance_created_option: "%{actor} проголосовал за %{option} в %{title}"
       user_added_to_group: "%{actor} добавил вас в группу: %{title}"
       user_mentioned: "%{actor} упомянули вас в: %{title}"
-      user_reminded: "%{actor} напоминает, чтобы вы проголосовали за: %{title}"
       group_mentioned: "%{actor} упомянул группу в: %{title}"
       new_delegate: "%{actor} сделал вас делегатом с правом голоса в %{title}"
       poll_announced: "%{actor} пригласил вас проголосовать: %{title}"
@@ -705,6 +712,7 @@ ru:
       discussion_edited: "%{actor} отредактировал контекст обсуждения: %{title}"
       discussion_closed: "%{actor} закрыл обсуждение: %{title}"
       new_discussion: "%{actor} начал обсуждение: %{title}"
+      user_reminded: "%{actor} напоминает вам проголосовать за: %{title}"
     without_title:
       unknown_sender: Пожалуйста, просмотрите письмо от неизвестного отправителя
       group_announced: "%{actor} пригласил вас в группу"
@@ -781,10 +789,10 @@ ru:
       user_added_to_group: "%{actor} добавил вас в группу: %{title}"
       user_mentioned: "%{actor} упомянул вас в: %{title}"
       group_mentioned: "%{actor} упомянул группу в: %{title}"
-      user_reminded: "%{actor} напоминает вам проголосовать за: %{title}"
       poll_announced: 'Голосование: %{title}'
       discussion_edited: "%{actor} отредактировал контекст обсуждения: %{title}"
       discussion_closed: "%{actor} закрыл обсуждение: %{title}"
+      user_reminded: "%{actor} напоминает вам проголосовать за: %{title}"
   discussion_fork_actions:
     move: Переместить
     moved: Перемещение комментариев. Это может занять некоторое время.
@@ -838,6 +846,8 @@ ru:
     discussion_started: Обсуждение началось
     none_direct_discussion: Нет (прямое обсуждение)
     direct_discussion: Прямое обсуждение
+    direct_discussion_hint: Прямые обсуждения видны только тем, кого вы пригласили. Они не будут отображаться в списках обсуждений групп — вы можете найти их на странице «Прямые обсуждения».
+    recommended_poll_templates: Рекомендуемые шаблоны опросов
   announcement:
     send_discussion: Отправить тему
     send_group: Пригласить людей в %{name}
@@ -1211,6 +1221,7 @@ ru:
     no_discussions_here: Здесь нет обсуждений!
     private_discussions: Вам необходимо быть участником, чтобы просматривать личные сообщения в этой группе.
     view_closed_discussions: Просмотреть закрытые обсуждения
+    discussion_templates: Шаблоны для обсуждений
   export_data_modal:
     title: Как вы хотите использовать свои данные?
     as_csv: Откройте его в электронной таблице
@@ -1331,7 +1342,6 @@ ru:
     default_request_to_join_prompt: Спасибо за ваш интерес к нашей группе. Представьтесь, пожалуйста, и объясните, почему вы хотите присоединиться.
     upgrade_for_subgroups: 'Пожалуйста, <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">обновите свою подписку</a> , чтобы создать подгруппу'
     share_this_url_with_people_who_want_to_join: Поделитесь этим URL-адресом с людьми, которые хотят присоединиться
-    new_description_html: "<h3>С какими проблемами сталкивается ваша организация при принятии решений?</h3><p></p><h3> Как бы вы хотели использовать Loomio в своей организации?</h3><p></p>"
     allow_polls_without_discussions: Разрешить опросы без обсуждения
     allow_polls_without_discussions_help: Запретить людям создавать опросы, не начав сначала обсуждение.
     aria_label: Групповая форма
@@ -1341,6 +1351,12 @@ ru:
     upload_background: загрузить фон
     remove_background: удалить фон
     remove_logo: удалить логотип
+    members_can_create_templates: Участники могут создавать шаблоны.
+    members_can_create_templates_help: Разрешите участникам создавать шаблоны для обсуждений и опросов. Шаблоны, созданные участниками, будут скрыты до тех пор, пока администратор не отобразит их.
+    members_can_start_discussions_v2: Участники могут начинать новые обсуждения.
+    members_can_start_discussions_help_v2: Разрешите участникам начинать новые дискуссии внутри группы.
+    members_can_edit_discussions_v2: Участники могут управлять обсуждениями и комментариями.
+    members_can_edit_discussions_help_v2: Разрешите участникам редактировать, перемещать, закреплять, помечать тегами или закрывать любые обсуждения или комментарии в группе.
   group_export_modal:
     title: Экспортировать данные группы
     body: <p>Вы можете загрузить копию данных вашей группы в любое время. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Узнать больше.</a></p><p> Это займет несколько минут, в зависимости от размера вашей группы. Когда он будет готов, вы получите электронное письмо со ссылкой для загрузки файла.</p>
@@ -1457,7 +1473,6 @@ ru:
   profile_page:
     autodetect_time_zone: Автоопределение часового пояса
     account_is_bot: Это аккаунт бота
-    bot_account_warning: Аккаунты ботов не будут приглашены голосовать в опросах или участвовать в обсуждениях.
     incomplete_profile: Неполный профиль!
     set_your_profile_picture: Установите изображение профиля
     messages:
@@ -1492,6 +1507,7 @@ ru:
     delete_account_subtitle: Полностью удалите свою учетную запись и удалите свое имя из прошлых обсуждений и решений.
     updated_on_sign_in: Предоставляется вашим браузером и обновляется при входе в систему.
     translate_content_automatically: Переводить контент на мой язык автоматически
+    bot_account_warning: Боты не будут приглашаться к голосованию в опросах или участию в обсуждениях.
   text_editor:
     x_of_y_characters: "%{x}/%{y} символов"
     select_text_to_link: Выделите текст для ссылки и повторите попытку.
@@ -1763,6 +1779,7 @@ ru:
     meeting_title: Голосование за время встречи
     ranked_choice_title: Порядок ранжированния
     gradients_of_agreement_title: Градиенты согласия
+    majority_title: Большинство
   poll_option_form:
     edit_option: Редактировать вариант
     option_name: Название опции
@@ -1885,6 +1902,21 @@ ru:
     post_outcome: Опубликовать результат
     view_all_votes: Посмотреть все голоса
     you_voted: Вы проголосовали
+    these_are_templates: Это шаблоны решений в вашей группе. Щелкните по шаблону, чтобы начать принятие нового решения. Администраторы могут настроить все параметры шаблона, чтобы он соответствовал правилам вашей организации и был удобен для поиска и использования участниками.
+    example_templates: Примеры шаблонов
+    example_poll_templates: Примеры шаблонов опросов
+    browse_example_templates: Просмотрите примеры шаблонов
+    browse_example_templates_hint: Создайте новый шаблон опроса с нуля или воспользуйтесь примером для начала работы.
+    browse_example_use_hint: Нажмите на заголовок шаблона, чтобы <b>начать опрос</b> .
+    browse_example_fork_hint: "<b>Нажмите на значок вилки</b> , чтобы создать новый шаблон опроса, используя пример в качестве отправной точки."
+    browse_unsure_help: Не знаете, как использовать шаблоны опросов?
+    all_templates_hidden: Все шаблоны скрыты.
+    new_poll_template_title: Новый шаблон опроса
+    new_template_from_blank: Новый шаблон с нуля
+    new_template_from_blank_subtitle: Создайте новый шаблон, соответствующий процессам, используемым в вашей организации.
+    blank: Новый
+    blank_subtitle: Создайте новый шаблон опроса для конкретного процесса.
+    start_a_poll: Начать опрос
   poll_common_attachment_form:
     label: Вложения
   poll_common_add_option:
@@ -1991,11 +2023,12 @@ ru:
     anonymous: Голоса анонимны
     results_hidden_until_closed: Результаты будут показаны после закрытия голосования
     results_hidden_until_vote: Результаты будут показаны после того, как вы проголосуете.
-    unable_to_vote: Вас не пригласили голосовать в этом %{poll_type}
     draft_mode: Голосование отключено. Это еще не открыто для голосования.
     voting_disabled_poll_is_template: Голосование отключено. Это шаблон.
     for_this_proposal_to_pass: 'Для принятия этого предложения:'
     for_this_poll_type_to_be_valid: 'Чтобы %{poll_type} был действителен:'
+    voting_opens_at: Этот %{poll_type} открывается для голосования %{time}.
+    unable_to_vote: Вам не было предложено проголосовать по этому опросу %{poll_type}
   poll_common_collapsed:
     by_who: по %{name}
   poll_common_calendar_invite:
@@ -2423,6 +2456,7 @@ ru:
       community: Общественные группы
       government: Правительство/местное самоуправление
       other: Другой
+      cohousing: Совместное проживание и совместное размещение
   report:
     start_on: Начать
     end_on: Заканчивается
@@ -2575,6 +2609,8 @@ ru:
       ranked_choice_hint: Избиратели располагают варианты в порядке от наиболее к наименее предпочтительному
       time_poll: Опрос времени
       time_poll_hint: Избиратели указывают, когда они готовы встретиться
+      rank: Классифицировать
+      time: Время
     process: Процесс
     process_name: Название шаблона
     process_name_hint: Как называется этот шаблон? Например, «Рекомендация по роли», «Проверка температуры», «Утверждение протокола».
@@ -2606,7 +2642,6 @@ ru:
     save_poll: Сохранить опрос
     start_poll_type: Начать %{poll_type}
     share_poll_type: Поделиться %{poll_type}
-    who_may_vote: Кто может голосовать в этом %{poll_type}?
     update: Обновлять
     add_voters: Добавить избирателей
     notify_invitees: Отправлять уведомления
@@ -2630,6 +2665,13 @@ ru:
     hide_results_description: Если вы хотите, чтобы люди голосовали, не видя, как проголосовали другие, вы можете скрыть результаты.
     process_helptext: Назовите и опишите процесс, используемый для проведения этого опроса.
     reminder_helptext: Отправьте уведомление «Скоро закрытие» за 24 часа до крайнего срока. Это может повысить активность и дать людям возможность пересмотреть свою позицию.
+    voting_duration: Продолжительность
+    voting_duration_hint: Когда начинается и когда заканчивается голосование?
+    more_settings: Дополнительные настройки
+    create_poll_type: Создать %{poll_type}
+    notify_voters_when_voting_opens: Уведомите избирателей о начале голосования.
+    voters_notified_when_opens: Избиратели будут уведомлены о начале голосования.
+    who_may_vote: Кто может голосовать по этому %{poll_type}?
   poll_receipts_page:
     verify_participants: Проверка участников
     see_votes_if_quorum_reached: Если голосование закрыто и кворум достигнут, вы увидите, кто отдал свой голос.
@@ -2646,10 +2688,8 @@ ru:
     aria_label: Добавить ответ
   discussion_template:
     browse_public_templates: Просмотреть галерею шаблонов
-    start_a_new_discussion: Начать новое обсуждение
     discussion_template_saved: Шаблон обсуждения сохранен
     these_are_public_templates: Эти шаблоны доступны для копирования или изменения в соответствии с требованиями вашей группы.
-    these_are_templates: Это шаблоны обсуждений в вашей группе. Нажмите на шаблон, чтобы начать обсуждение. Вы также можете редактировать, удалять или менять их порядок по своему усмотрению.
     default_title_label: Заголовок по умолчанию
     default_title_hint: Заполните поле заголовка редактируемым текстом. Это необязательно — оставьте пустым, если не уверены.
     title_placeholder_label: Пример заголовка
@@ -2663,6 +2703,38 @@ ru:
     add_poll_template_help: Выберите любые шаблоны опросов, которые помогут завершить этот процесс.
     recommended_poll_templates: Рекомендуемые шаблоны опросов
     share_in_template_gallery: Поделитесь этим шаблоном в публичной галерее шаблонов
+    browse_example_templates: Просмотрите примеры шаблонов
+    example_templates: Примеры шаблонов
+    browse_public_templates_hint: Щелкните по названию шаблона, чтобы начать обсуждение, или нажмите кнопку редактирования справа, чтобы создать копию и изменить ее для своей группы.
+    process_name_placeholder: например, еженедельное совещание.
+    process_subtitle_placeholder: Например, еженедельная короткая встреча с командой для обсуждения текущих дел.
+    default_title_placeholder: например, стендап-выступление - 15 января
+    more_templates: Больше шаблонов
+    fewer_templates: Меньше шаблонов
+    choose_a_group: Выберите группу
+    default_templates: Шаблоны по умолчанию
+    or_start_a_direct_discussion: Или начните прямое обсуждение.
+    choose_group_for_templates: Выберите группу, чтобы просмотреть шаблоны обсуждений в ней.
+    start_direct_discussion: Начать прямое обсуждение
+    poll_templates: Шаблоны опросов
+    poll_templates_help: Выбранные вами здесь шаблоны будут отображаться первыми при нажатии кнопки «Начать голосование».
+    start_direct_discussion_from_blank: Начните прямое обсуждение, используя пустой шаблон.
+    default_to_direct_discussion: Начните с прямого обсуждения (без группового обсуждения).
+    default_to_direct_discussion_helptext: Используйте этот шаблон, если хотите, чтобы люди начинали прямые дискуссии, используя его в качестве основы.
+    example_discussion_templates: Примеры шаблонов для обсуждений
+    browse_example_use_hint: Нажмите на заголовок шаблона, чтобы <b>начать обсуждение</b> .
+    browse_example_fork_hint: "<b>Нажмите на значок вилки</b> , чтобы создать новый шаблон обсуждения, используя пример в качестве отправной точки."
+    new_discussion_template_title: Новый шаблон для обсуждения
+    new_template_from_blank: Новый шаблон с нуля
+    new_template_from_blank_subtitle: Создайте новый шаблон, соответствующий процессам, используемым в вашей организации.
+    these_are_templates_v3: Это шаблоны обсуждений в вашей группе. Щелкните по шаблону, чтобы начать новое обсуждение.
+    these_are_templates_admin_hint: Администраторы групп могут редактировать шаблоны, создавать новые шаблоны, изменять их порядок и скрывать/показывать. Скрытые шаблоны видны только администраторам.
+    show_hidden_templates: Показать скрытые шаблоны
+    show_fewer: Показать меньше
+    start_a_new_discussion: Начать новое обсуждение
+    start_discussion: Начать обсуждение
+    start_a_direct_discussion: Начните прямое обсуждение
+    these_are_templates: Это шаблоны для обсуждений в вашей группе.
   context_panel:
     thread_status:
       pinned: Это обсуждение закреплено. Оно останется вверху списка обсуждений группы для всех пользователей.
@@ -2689,3 +2761,9 @@ ru:
   auth:
     oauth_cancelled: Вход был отменен.
     switching_accounts: Переключение между учетными записями. Пожалуйста, войдите в систему, используя данные вашей новой учетной записи.
+  poll_common_opening_at_field:
+    voting_opens_immediately: Голосование открывается немедленно.
+    opening_date: Дата открытия
+    opening_hour: Время работы
+    scheduled_hint: Опрос будет виден, но голосовать по нему можно будет только после его открытия.
+    draft_hint: Этот опрос будет сохранен как черновик. Укажите дату начала голосования или отметьте «Голосование открывается немедленно», когда будете готовы начать голосование.

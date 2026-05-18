@@ -309,11 +309,19 @@ ja:
       zoom: ズーム
       align: 整列
       original: オリジナル
+      rearrange: 並べ替え
+      save_template: テンプレートを保存
+      fork_template: フォークテンプレート
     formatting_help:
       label: 書式設定
       title: Markdown を使用してテキストの書式を設定する方法を学びます
     thread: 糸
     closing_in: "%{time} に閉店"
+    commercial: コマーシャル
+    nonprofit: 非営利団体
+    opening_in: "%{time} にオープン"
+    read_more: 続きを読む
+    templates_admin_hint: グループ管理者であるため、不要なテンプレートを非表示にしたり削除したり、残りのテンプレートをニーズに合わせて編集することができます。
   merge_accounts:
     modal:
       title: アカウントを統合する
@@ -696,7 +704,6 @@ ja:
       stance_created_option: "%{actor} は %{title} の %{option} に投票しました"
       user_added_to_group: "%{actor} があなたをグループに追加しました: %{title}"
       user_mentioned: "%{actor} が次の記事であなたの名前を挙げました: %{title}"
-      user_reminded: "%{actor} が投票するよう促しています: %{title}"
       group_mentioned: "%{actor} が %{title} でこのグループについて言及しました"
       new_delegate: "%{actor} があなたを %{title} の投票権を持つ代表者に任命しました"
       poll_announced: "%{actor} さんが投票に招待しました: %{title}"
@@ -704,6 +711,7 @@ ja:
       discussion_edited: "%{actor} がディスカッションのコンテキストを編集しました: %{title}"
       discussion_closed: "%{actor} がディスカッションを終了しました: %{title}"
       new_discussion: "%{actor} がディスカッションを開始しました: %{title}"
+      user_reminded: "%{actor} が、%{title} への投票を呼びかけています。"
     without_title:
       unknown_sender: 認識できない送信者からのメールを確認してください
       group_announced: "%{actor} があなたをグループに招待しました"
@@ -780,10 +788,10 @@ ja:
       user_added_to_group: "%{actor} があなたをグループに追加しました: %{title}"
       user_mentioned: "%{actor} さんが %{title} であなたに言及しました"
       group_mentioned: "%{actor} が %{title} でこのグループについて言及しました"
-      user_reminded: "%{actor} が %{title} への投票を促しています"
       poll_announced: '投票: %{title}'
       discussion_edited: "%{actor} がディスカッションのコンテキストを編集しました: %{title}"
       discussion_closed: "%{actor} がディスカッションを終了しました: %{title}"
+      user_reminded: "%{actor} が、%{title} への投票を呼びかけています。"
   discussion_fork_actions:
     move: 動く
     moved: コメントを移動しています。少し時間がかかる場合があります
@@ -837,6 +845,8 @@ ja:
     discussion_started: 議論開始
     none_direct_discussion: なし（直接議論）
     direct_discussion: 直接の議論
+    direct_discussion_hint: ダイレクトディスカッションは、招待した特定の人だけが閲覧できます。グループのディスカッションリストには表示されません。ダイレクトディスカッションページで確認できます。
+    recommended_poll_templates: 推奨される投票テンプレート
   announcement:
     send_discussion: スレッドの送信
     send_group: 他の人を %{name} に招待します
@@ -1210,6 +1220,7 @@ ja:
     no_discussions_here: ここで見る議論はありません!
     private_discussions: このグループのプライベートスレッドを閲覧するにはメンバーになる必要があります
     view_closed_discussions: 終了したディスカッションを表示
+    discussion_templates: ディスカッションテンプレート
   export_data_modal:
     title: データをどのように使用したいですか?
     as_csv: スプレッドシートで開く
@@ -1330,7 +1341,6 @@ ja:
     default_request_to_join_prompt: 私たちのグループに興味を持っていただきありがとうございます。自己紹介と参加を希望する理由を説明してください。
     upgrade_for_subgroups: 'サブグループを作成するには、<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">サブスクリプションをアップグレードして</a>ください'
     share_this_url_with_people_who_want_to_join: 参加したい人にこのURLを共有してください
-    new_description_html: "<h3>あなたの組織は意思決定においてどのような課題に直面していますか?</h3><p></p><h3>あなたの組織ではLoomioをどのように活用したいですか?</h3><p></p>"
     allow_polls_without_discussions: ディスカッションなしの投票を許可
     allow_polls_without_discussions_help: 最初にディスカッションを開始せずに投票を開始することを禁止します。
     aria_label: グループフォーム
@@ -1340,6 +1350,12 @@ ja:
     upload_background: 背景をアップロード
     remove_background: 背景を削除
     remove_logo: ロゴを削除
+    members_can_create_templates: メンバーはテンプレートを作成できます
+    members_can_create_templates_help: メンバーがディスカッションと投票のテンプレートを作成できるようにします。メンバーが作成したテンプレートは、管理者が非表示を解除するまで非表示になります。
+    members_can_start_discussions_v2: メンバーは新しいディスカッションを開始できます
+    members_can_start_discussions_help_v2: メンバーがグループ内で新しいディスカッションを開始できるようにする
+    members_can_edit_discussions_v2: メンバーはディスカッションやコメントを管理できる
+    members_can_edit_discussions_help_v2: メンバーがグループ内のあらゆるディスカッションやコメントを編集、移動、ピン留め、タグ付け、または閉じることを許可します
   group_export_modal:
     title: グループデータのエクスポート
     body: <p>グループのデータのコピーはいつでもダウンロードできます。<a href="https://help.loomio.org/en/user_manual/groups/data_export/">もっと詳しく調べてください。</a></p><p>グループの規模に応じて、完了までに数分かかります。準備が完了すると、ファイルをダウンロードするためのリンクが記載された電子メールが届きます。</p>
@@ -1455,7 +1471,6 @@ ja:
     email_sent: メールは %{name} に送信されました
   profile_page:
     account_is_bot: これはボットアカウントです
-    bot_account_warning: ボット アカウントは、投票やディスカッションへの参加に招待されません。
     incomplete_profile: プロフィールが不完全です！
     set_your_profile_picture: プロフィール写真を設定する
     messages:
@@ -1491,6 +1506,7 @@ ja:
     deactivate_account_subtitle: メールを停止し、メンバーシップをキャンセルします。過去の議論や決定に影響が及ばないように、プロフィールを保持します。
     delete_account_subtitle: アカウントを完全に削除し、過去の議論や決定からあなたの名前を削除します。
     translate_content_automatically: コンテンツを自動的に自分の言語に翻訳する
+    bot_account_warning: ボットアカウントは、投票やディスカッションへの参加を招待されません。
   text_editor:
     x_of_y_characters: "%{x} / %{y} 文字"
     select_text_to_link: リンクするテキストを選択して再試行してください
@@ -1762,6 +1778,7 @@ ja:
     meeting_title: タイムポーリング
     ranked_choice_title: ランク付けされた選択肢
     gradients_of_agreement_title: 一致の勾配
+    majority_title: 過半数
   poll_option_form:
     edit_option: 編集オプション
     option_name: オプション名
@@ -1884,6 +1901,21 @@ ja:
     post_outcome: 結論を投稿
     view_all_votes: すべての投票を表示
     you_voted: 投票しました
+    these_are_templates: これらはグループ内の意思決定テンプレートです。テンプレートをクリックすると、新しい意思決定を開始できます。管理者はテンプレートの詳細をすべてカスタマイズできるため、組織の慣習に適合し、メンバーが簡単に見つけて使用できるテンプレートを作成できます。
+    example_templates: サンプルテンプレート
+    example_poll_templates: アンケートテンプレートの例
+    browse_example_templates: サンプルテンプレートを参照する
+    browse_example_templates_hint: 新しいアンケートテンプレートを空白から作成するか、例を使用して開始します。
+    browse_example_use_hint: "<b>アンケートを開始する</b>には、テンプレートのタイトルをクリックします。"
+    browse_example_fork_hint: "<b>フォーク アイコンをクリックし</b>、例を開始点として新しい投票テンプレートを作成します。"
+    browse_unsure_help: アンケートテンプレートの使い方が分からないですか?
+    all_templates_hidden: すべてのテンプレートが非表示になりました
+    new_poll_template_title: 新しい投票テンプレート
+    new_template_from_blank: 空白からの新しいテンプレート
+    new_template_from_blank_subtitle: 組織内のプロセスに合わせて新しいテンプレートを作成します
+    blank: 新しい
+    blank_subtitle: 特定のプロセス用の新しい投票テンプレートを作成する
+    start_a_poll: 投票を開始する
   poll_common_attachment_form:
     label: 添付ファイル
   poll_common_add_option:
@@ -1990,11 +2022,12 @@ ja:
     anonymous: 投票は匿名です
     results_hidden_until_closed: 結果は投票終了後に表示されます
     results_hidden_until_vote: 投票後に結果が表示されます
-    unable_to_vote: この %{poll_type} への投票には招待されていません
     draft_mode: 投票が無効になりました。これはまだ投票を受け付けていません。
     voting_disabled_poll_is_template: 投票が無効になりました。これはテンプレートです。
     for_this_proposal_to_pass: この提案が可決されるためには：
     for_this_poll_type_to_be_valid: 'この %{poll_type} が有効になるためには:'
+    voting_opens_at: この %{poll_type} は %{time} に投票開始となります
+    unable_to_vote: この%{poll_type}への投票には招待されていません。
   poll_common_collapsed:
     by_who: "%{name} による"
   poll_common_calendar_invite:
@@ -2421,6 +2454,7 @@ ja:
       community: コミュニティグループ
       government: 政府・地方自治体
       other: その他
+      cohousing: 共同生活と共同住宅
     describe_other: あなたの組織に最も当てはまるカテゴリーはどれですか
   report:
     start_on: 開始する
@@ -2574,6 +2608,8 @@ ja:
       ranked_choice_hint: 有権者は選択肢を最も好むものから最も好まないものの順に並べる
       time_poll: 時間に関する世論調査
       time_poll_hint: 有権者はいつ会えるかを示す
+      rank: ランク
+      time: 時間
     process: プロセス
     process_name: テンプレートのタイトル
     process_name_hint: このテンプレートの名前は何ですか？ 例：役割のアドバイス、体温チェック、議事録の承認
@@ -2605,7 +2641,6 @@ ja:
     save_poll: アンケートを保存
     start_poll_type: "%{poll_type} を開始"
     share_poll_type: "%{poll_type} を共有"
-    who_may_vote: この %{poll_type} に投票できるのは誰ですか?
     update: アップデート
     add_voters: 投票者を追加
     notify_invitees: 通知を送信する
@@ -2629,6 +2664,13 @@ ja:
     hide_results_description: 他の人の投票結果を見ずに投票したい場合は、結果を非表示にすることができます。
     process_helptext: このアンケートを実行するために使用されているプロセスに名前を付けて説明してください。
     reminder_helptext: 締め切りの24時間前に「まもなく締め切りです」という通知を送信してください。これにより、参加者が増え、自分の立場を再考する機会が生まれます。
+    voting_duration: 間隔
+    voting_duration_hint: 投票はいつ開始され、いつ終了しますか?
+    more_settings: その他の設定
+    create_poll_type: "%{poll_type} を作成"
+    notify_voters_when_voting_opens: 投票開始時に有権者に通知する
+    voters_notified_when_opens: 投票開始時に投票者に通知されます
+    who_may_vote: この%{poll_type}に投票できるのは誰ですか？
   poll_receipts_page:
     verify_participants: 参加者を確認する
     see_votes_if_quorum_reached: 投票が終了し、定足数に達した場合は、誰が投票したかが表示されます。
@@ -2645,10 +2687,8 @@ ja:
     aria_label: 返信を追加
   discussion_template:
     browse_public_templates: テンプレートギャラリーを閲覧する
-    start_a_new_discussion: 新しいディスカッションを開始する
     discussion_template_saved: ディスカッションテンプレートを保存しました
     these_are_public_templates: これらのテンプレートは、グループに合わせてコピーまたは変更することができます。
-    these_are_templates: これらはグループ内のディスカッションテンプレートです。テンプレートをクリックしてディスカッションを開始してください。必要に応じて編集、削除、並べ替えも可能です。
     default_title_label: デフォルトのタイトル
     default_title_hint: タイトル欄に編集可能なテキストを事前に入力します。これはオプションです。不明な場合は空白のままにしてください。
     title_placeholder_label: タイトルの例
@@ -2662,6 +2702,38 @@ ja:
     add_poll_template_help: このプロセスを完了するのに役立つアンケートテンプレートを選択します
     recommended_poll_templates: 推奨される投票テンプレート
     share_in_template_gallery: このテンプレートを公開テンプレートギャラリーで共有する
+    browse_example_templates: サンプルテンプレートを参照する
+    example_templates: サンプルテンプレート
+    browse_public_templates_hint: テンプレート名をクリックしてディスカッションを開始するか、右側の編集ボタンをクリックしてコピーを作成し、自分のグループ用に変更します。
+    process_name_placeholder: 例：毎週のスタンドアップ
+    process_subtitle_placeholder: 例：毎週チームと短いチェックイン
+    default_title_placeholder: 例：スタンドアップ - 1月15日
+    more_templates: その他のテンプレート
+    fewer_templates: テンプレートが少ない
+    choose_a_group: グループを選択
+    default_templates: デフォルトのテンプレート
+    or_start_a_direct_discussion: または直接議論を始める
+    choose_group_for_templates: グループを選択してディスカッションテンプレートを表示します
+    start_direct_discussion: 直接話し合いを始める
+    poll_templates: アンケートテンプレート
+    poll_templates_help: ここで選択したテンプレートは、誰かが投票を開始をクリックしたときに最初に表示されます。
+    start_direct_discussion_from_blank: 空白のテンプレートから直接ディスカッションを開始する
+    default_to_direct_discussion: 直接ディスカッションから始める（グループなし）
+    default_to_direct_discussion_helptext: このテンプレートから直接ディスカッションを開始したい場合は、これを使用します。
+    example_discussion_templates: ディスカッションテンプレートの例
+    browse_example_use_hint: "<b>ディスカッションを開始する</b>には、テンプレートのタイトルをクリックします。"
+    browse_example_fork_hint: "<b>フォーク アイコンをクリックし</b>、例を開始点として新しいディスカッション テンプレートを作成します。"
+    new_discussion_template_title: 新しいディスカッションテンプレート
+    new_template_from_blank: 空白からの新しいテンプレート
+    new_template_from_blank_subtitle: 組織内のプロセスに合わせて新しいテンプレートを作成します
+    these_are_templates_v3: これらはグループ内のディスカッションテンプレートです。テンプレートをクリックして新しいディスカッションを開始してください。
+    these_are_templates_admin_hint: グループ管理者はテンプレートの編集、新規作成、並べ替え、非表示/表示の切り替えができます。非表示のテンプレートは管理者のみ閲覧可能です。
+    show_hidden_templates: 非表示のテンプレートを表示
+    show_fewer: 表示を減らす
+    start_a_new_discussion: 新しいディスカッションを開始する
+    start_discussion: ディスカッションを始める
+    start_a_direct_discussion: 直接議論を始める
+    these_are_templates: これらはグループ内のディスカッション テンプレートです。
   context_panel:
     thread_status:
       pinned: このディスカッションはピン留めされました。グループのディスカッションリストの一番上に、全ユーザーに表示されます。
@@ -2688,3 +2760,9 @@ ja:
   auth:
     oauth_cancelled: サインインはキャンセルされました
     switching_accounts: アカウントを切り替えています。新しいアカウント情報でサインインしてください。
+  poll_common_opening_at_field:
+    voting_opens_immediately: 投票はすぐに開始されます
+    opening_date: 開業日
+    opening_hour: 営業時間
+    scheduled_hint: アンケートは開始時間まで表示されますが、投票することはできません。
+    draft_hint: この投票は下書きとして保存されます。投票を開始する準備ができたら、開始日を設定するか、「すぐに投票を開始する」にチェックを入れてください。

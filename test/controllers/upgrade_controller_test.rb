@@ -1,5 +1,6 @@
 require 'test_helper'
 
+if defined?(LoomioSubs)
 class UpgradeControllerTest < ActionController::TestCase
   setup do
     @routes = LoomioSubs::Engine.routes
@@ -85,4 +86,5 @@ class UpgradeControllerTest < ActionController::TestCase
     get :change_complete, params: { group_id: @group.id }
     assert_response :success  # renders PleaseSignIn
   end
+end
 end

@@ -1,6 +1,6 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
-ruby '3.4.7'
+ruby '4.0.2'
 gem 'rails', '~> 8.0.0'
 gem 'uri', '1.1.1'
 gem 'rake'
@@ -8,7 +8,7 @@ gem 'pg'
 gem 'active_record_extended'
 gem 'haml-rails', '~> 3.0.0'
 gem 'phlex-rails'
-gem 'devise', '~> 4.9.4'
+gem 'devise', '~> 5.0.4'
 gem 'devise-i18n'
 gem 'devise-pwned_password'
 gem 'active_model_serializers', '~> 0.8.1', github: 'loomio/active_model_serializers', branch: 'fix-frozen-string-literal-ruby3'
@@ -16,19 +16,19 @@ gem 'actionpack-action_caching'
 gem 'actionpack-page_caching'
 gem 'cancancan'
 gem 'gravtastic'
-gem 'activeadmin', '~> 3.4.0'
+gem 'activeadmin', '~> 3.5.1'
 gem 'ransack', '4.4.1'
 gem 'nokogiri'
 gem 'twitter-text', github: 'loomio/twitter-text'
 gem 'redcarpet', '~> 3.6.1'
 gem 'paper_trail', '~> 17.0.0'
 gem 'sidekiq', '~> 7.0'
-gem 'friendly_id', '~> 5.6.0'
+gem 'friendly_id', '~> 5.7.0'
 gem 'httparty', '~> 0.24.2'
 gem 'browser', '~> 6.2.0'
 gem "aws-sdk-s3", require: false
 gem "ruby-openai"
-gem "google-cloud-storage", "~> 1.58", require: false
+gem "google-cloud-storage", "~> 1.60", require: false
 gem 'image_processing', '~> 1.14'
 gem "ruby-vips"
 gem "stackprof"
@@ -58,7 +58,6 @@ gem 'reverse_markdown'
 gem 'discard', '~> 1.4'
 gem 'lograge'
 gem 'video_info'
-gem 'blazer'
 gem 'terminal-table'
 gem 'tzinfo-data'
 gem 'pg_search'
@@ -73,6 +72,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'rails-controller-testing'
   gem "brakeman", require: false
+  gem "bundler-audit", require: false
   gem "rubocop-rails-omakase", require: false
 end
 
@@ -81,7 +81,8 @@ group :development do
 end
 
 group :test do
-  gem 'minitest', '~> 5.0'
+  gem 'minitest', '~> 6.0'
+  gem 'minitest-mock'
   gem 'webmock'
   gem 'rack_session_access'
   gem 'drb'

@@ -34,7 +34,7 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
 
   test "me returns unauthorized for visitors" do
     get :me, format: :json
-    assert_response :forbidden
+    assert_response :unauthorized
   end
 
   test "destroy deactivates the users account" do
@@ -44,9 +44,9 @@ class Api::V1::ProfileControllerTest < ActionController::TestCase
     assert @user.reload.deactivated_at.present?
   end
 
-  test "save_experience responds with forbidden when user is logged out" do
+  test "save_experience responds with unauthorized when user is logged out" do
     post :save_experience, params: { experience: :happiness }
-    assert_response :forbidden
+    assert_response :unauthorized
   end
 
   test "save_experience responds with bad request when no experience is given" do

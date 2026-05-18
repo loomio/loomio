@@ -70,7 +70,7 @@ v-card.auth-complete(
           maxlength='6'
           v-model='user.code'
         )
-        //- validation-errors(:subject='session' field='password')
+        validation-errors(:subject='user' field='code')
       p.text-caption
         | &nbsp;
         span(v-show="user.code")

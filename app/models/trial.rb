@@ -25,7 +25,7 @@ class Trial
   def user_email_is_not_taken
     return if current_user_present?
     if User.where(email: user_email).exists?
-      errors.add(:user_email, "Email address already exists. Please sign in to continue.")
+      errors.add(:user_email, I18n.t(:'auth_form.email_taken'))
     end
   end
 

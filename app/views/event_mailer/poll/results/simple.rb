@@ -59,6 +59,8 @@ class Views::EventMailer::Poll::Results::Simple < Views::ApplicationMailer::Comp
       th(class: "text-right text-subtitle-2") { plain t('poll_ranked_choice_form.mean') }
     when 'votes'
       th(class: "text-right text-subtitle-2") { plain t('poll_common.votes') }
+    when 'stv_status'
+      th(class: "text-right text-subtitle-2") { plain t('poll_common.status') }
     when 'voter_count'
       th(class: "text-right text-subtitle-2") { plain t('membership_card.voters') }
     when 'voters'
@@ -81,6 +83,16 @@ class Views::EventMailer::Poll::Results::Simple < Views::ApplicationMailer::Comp
           plain TranslationService.plain_text(::PollOption.find(option[:id]), :name, @recipient)
         end
       end
+    when 'stv_status'
+      status = option[:stv_status]
+      style = case status
+              when 'elected' then "color: green; font-weight: bold"
+              when 'tied' then "color: #e65100; font-weight: bold"
+              when 'not_elected' then "color: #999"
+              else ""
+              end
+      label = status ? t("poll_stv_results.#{status}") : ''
+      td(class: "text-right", style: style) { plain label }
     when 'rank'
       td(class: "text-right") { plain option[:rank].to_s }
     when 'score'

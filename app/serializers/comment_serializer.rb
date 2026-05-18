@@ -13,7 +13,8 @@ class CommentSerializer < ApplicationSerializer
              :attachments,
              :link_previews,
              :author_id,
-             :discarded_at
+             :discarded_at,
+             :discarded_by
 
   has_one :author, serializer: AuthorSerializer, root: :users
   has_one :discussion, serializer: DiscussionSerializer, root: :discussions

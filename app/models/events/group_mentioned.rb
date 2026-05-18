@@ -23,6 +23,7 @@ class Events::GroupMentioned < Event
       .active
       .accepted
       .where(group_id: group_ids)
+      .where.not(user_id: user_id)
       .where.not(user_id: already_mentioned_user_ids)
       .where.not(user_id: already_notified_user_ids)
   end

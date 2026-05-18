@@ -21,7 +21,8 @@ export default class MemberhipRecordsInterface extends BaseRecordsInterface {
   }
 
   joinGroup(group) {
-    return this.remote.post('join_group', {group_id: group.id});
+    return this.remote.post('join_group', {group_id: group.id})
+      .then(result => this.recordStore.users.fetchGroups().then(() => result));
   }
 
   fetchMyMemberships() {

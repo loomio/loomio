@@ -1,3 +1,12 @@
+## 2026-05-11 (Loomio 3.0.24)
+
+- Fixed: Prevent comment authors from editing or restoring comments that an admin has discarded.
+- Fixed: Preserve group ownership when creating discussions from templates in grouped contexts.
+- Improved: Hardened deployment/runtime behavior with trusted ingress IP allowlisting and exec-based Docker startup processes.
+- Improved: Removed obsolete hocuspocus SQLite persistence and legacy document-list template calls.
+- Improved: Background jobs now avoid retrying forever for records that have already been deleted.
+- Maintenance: Updated dependencies including Devise, Vite, Bootsnap, Rollup, Sentry, Nokogiri, Puma, and tzinfo-data.
+
 ## 2020-07-13 (Loomio 2.2.3)
 - Added: Feature to move proposals between groups and subgroups
 - Added: Feature to move standalone polls between groups

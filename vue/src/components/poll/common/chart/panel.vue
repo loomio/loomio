@@ -3,11 +3,13 @@ import Session  from '@/shared/services/session';
 import Records  from '@/shared/services/records';
 import PollCommonChartMeeting from '@/components/poll/common/chart/meeting';
 import PollCommonChartTable from '@/components/poll/common/chart/table';
+import PollStvChartPanel from '@/components/poll/stv/chart_panel';
 
 export default {
   components: {
     PollCommonChartTable,
     PollCommonChartMeeting,
+    PollStvChartPanel,
   },
 
   props: {
@@ -56,7 +58,8 @@ export default {
           common-icon.mr-1(:name="option.test_result ? 'mdiCheck' : 'mdiClose'")
           span(v-t="{path: `poll_option_form.name_${option.test_operator}_${option.test_against}`, args: {percent: option.test_percent, name: option.name} }")
     template(v-if="poll.config().has_options")
-      poll-common-chart-table(v-if="poll.chartType != 'grid'" :poll="poll")
+      poll-stv-chart-panel(v-if="poll.pollType == 'stv'" :poll="poll")
+      poll-common-chart-table(v-else-if="poll.chartType != 'grid'" :poll="poll")
       poll-common-chart-meeting(v-else :poll="poll")
 
   p.text-medium-emphasis.my-2(v-if="poll.closingAt && poll.pollType != 'count'")

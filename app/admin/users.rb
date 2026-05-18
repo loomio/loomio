@@ -7,6 +7,7 @@ ActiveAdmin.register User do
   filter :email_newsletter
   filter :email_verified
   filter :complaints_count
+  filter :bounces_count
   filter :sign_in_count
   filter :deactivated_at_not_null, as: :select, collection: [true, false], label: "Deactivated"
   filter :detected_locale, as: :string
@@ -43,6 +44,7 @@ ActiveAdmin.register User do
     column :deactivated_at
     column :email_verified
     column :complaints_count
+    column :bounces_count
     column :locale
     column :time_zone
     column :bot
@@ -55,6 +57,7 @@ ActiveAdmin.register User do
       f.input :email, as: :string
       f.input :username, as: :string
       f.input :complaints_count
+      f.input :bounces_count
       f.input :is_admin
       f.input :bot, label: 'Bot account (do not add to polls)'
     end
@@ -66,6 +69,7 @@ ActiveAdmin.register User do
     user.name = params[:user][:name]
     user.email = params[:user][:email]
     user.complaints_count = params[:user][:complaints_count]
+    user.bounces_count = params[:user][:bounces_count]
     user.username = params[:user][:username]
     user.is_admin = params[:user][:is_admin]
     user.bot = params[:user][:bot]

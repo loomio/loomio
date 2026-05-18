@@ -14,3 +14,8 @@ updates:
   schedule:
     interval: daily
   open-pull-requests-limit: 50
+- package-ecosystem: npm
+  directory: "/hocuspocus"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 50
