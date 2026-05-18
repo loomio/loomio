@@ -5,8 +5,6 @@ class DiscussionServiceTest < ActiveSupport::TestCase
     @user = users(:normal_user)
     @another_user = users(:another_user)
     @group = groups(:test_group)
-    @group.add_member!(@user)
-    @group.add_member!(@another_user)
   end
 
   # -- Create --
@@ -368,7 +366,6 @@ class DiscussionServiceTest < ActiveSupport::TestCase
       handle: "anothergroup6-#{SecureRandom.hex(4)}"
     )
     another_group.add_member!(@another_user)
-    @group.add_member!(@another_user)
 
     discussion = create_discussion(group: @group, author: @user)
 

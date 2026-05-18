@@ -14,8 +14,7 @@ class PollServiceTest < ActiveSupport::TestCase
   test "creates stance by user id" do
     poll = create_specified_voters_poll
     member = create_unique_user("stancemember")
-    @group.add_admin!(@user)
-    @group.add_member!(member)
+    Membership.create!(user: member, group: @group, accepted_at: Time.current)
 
     assert_equal 0, Stance.where(participant_id: member.id, poll: poll).where(revoked_at: nil).count
     PollService.create_stances(poll: poll, actor: @user, user_ids: [member.id])
@@ -25,8 +24,7 @@ class PollServiceTest < ActiveSupport::TestCase
   test "creates stance by email" do
     poll = create_specified_voters_poll
     member = create_unique_user("stanceemail")
-    @group.add_admin!(@user)
-    @group.add_member!(member)
+    Membership.create!(user: member, group: @group, accepted_at: Time.current)
 
     PollService.create_stances(poll: poll, actor: @user, emails: [member.email])
     assert_equal 1, Stance.where(participant_id: member.id, poll: poll).where(revoked_at: nil).count
@@ -35,8 +33,7 @@ class PollServiceTest < ActiveSupport::TestCase
   test "creates stance by audience" do
     poll = create_specified_voters_poll
     member = create_unique_user("stanceaudience")
-    @group.add_admin!(@user)
-    @group.add_member!(member)
+    Membership.create!(user: member, group: @group, accepted_at: Time.current)
 
     PollService.create_stances(poll: poll, actor: @user, audience: 'group')
     assert_equal 1, Stance.where(participant_id: member.id, poll: poll).where(revoked_at: nil).count
@@ -45,8 +42,7 @@ class PollServiceTest < ActiveSupport::TestCase
   test "only creates stances once per user" do
     poll = create_specified_voters_poll
     member = create_unique_user("stanceonce")
-    @group.add_admin!(@user)
-    @group.add_member!(member)
+    Membership.create!(user: member, group: @group, accepted_at: Time.current)
 
     PollService.create_stances(poll: poll, actor: @user, user_ids: [member.id])
     count = Stance.where(participant_id: member.id, poll: poll).where(revoked_at: nil).count
@@ -60,8 +56,7 @@ class PollServiceTest < ActiveSupport::TestCase
   test "uses normal volume by default for stances" do
     poll = create_specified_voters_poll
     member = create_unique_user("voldefault")
-    @group.add_admin!(@user)
-    @group.add_member!(member)
+    Membership.create!(user: member, group: @group, accepted_at: Time.current)
 
     PollService.create_stances(poll: poll, actor: @user, user_ids: [member.id])
     assert_equal 'normal', Stance.where(participant_id: member.id, poll: poll).order(created_at: :desc).first.volume
@@ -70,8 +65,7 @@ class PollServiceTest < ActiveSupport::TestCase
   test "uses quiet discussion reader volume for stances" do
     poll = create_specified_voters_poll
     member = create_unique_user("volquiet")
-    @group.add_admin!(@user)
-    @group.add_member!(member)
+    Membership.create!(user: member, group: @group, accepted_at: Time.current)
     DiscussionReader.create!(user_id: member.id, discussion_id: @discussion.id, volume: 'quiet')
 
     PollService.create_stances(poll: poll, actor: @user, user_ids: [member.id])
@@ -81,8 +75,7 @@ class PollServiceTest < ActiveSupport::TestCase
   test "uses quiet membership volume for stances" do
     poll = create_specified_voters_poll
     member = create_unique_user("volmembership")
-    @group.add_admin!(@user)
-    @group.add_member!(member)
+    Membership.create!(user: member, group: @group, accepted_at: Time.current)
     DiscussionReader.where(user_id: member.id).delete_all
     Membership.where(user_id: member.id).update_all(volume: Membership.volumes[:quiet])
 
@@ -358,6 +351,7 @@ class PollServiceTest < ActiveSupport::TestCase
 
   test "reopen sends poll_announced when notify_on_open is true" do
     poll = create_poll
+    poll.stances.create!(participant: @another_user, latest: true)
     PollService.close(poll: poll, actor: @user)
     poll.reload
 
@@ -389,7 +383,6 @@ class PollServiceTest < ActiveSupport::TestCase
   # -- invite to scheduled poll --
 
   test "invite to scheduled poll creates stances but does not send poll_announced" do
-    @group.add_admin!(@user)
     poll = Poll.new(
       title: "Scheduled Invite",
       poll_type: "proposal",
@@ -405,7 +398,7 @@ class PollServiceTest < ActiveSupport::TestCase
     refute poll.opened?
 
     member = create_unique_user("scheduledinvite")
-    @group.add_member!(member)
+    Membership.create!(user: member, group: @group, accepted_at: Time.current)
 
     # Invite without notify_recipients (scheduled poll UI forces this off)
     PollService.invite(poll: poll, actor: @user, params: {
@@ -422,9 +415,8 @@ class PollServiceTest < ActiveSupport::TestCase
   # -- email delivery --
 
   test "open_scheduled_polls delivers emails to voters when notify_on_open is true" do
-    @group.add_admin!(@user)
     member = create_unique_user("emailvoter")
-    @group.add_member!(member)
+    Membership.create!(user: member, group: @group, accepted_at: Time.current)
 
     poll = Poll.new(
       title: "Email Test Poll",
@@ -448,9 +440,8 @@ class PollServiceTest < ActiveSupport::TestCase
   end
 
   test "open_scheduled_polls delivers no emails to voters when notify_on_open is false" do
-    @group.add_admin!(@user)
     member = create_unique_user("noemailvoter")
-    @group.add_member!(member)
+    Membership.create!(user: member, group: @group, accepted_at: Time.current)
 
     poll = Poll.new(
       title: "No Email Test Poll",
@@ -490,7 +481,7 @@ class PollServiceTest < ActiveSupport::TestCase
     count = poll.voters.count
 
     new_member = create_unique_user("newgroupmember")
-    @group.add_member!(new_member)
+    Membership.create!(user: new_member, group: @group, accepted_at: Time.current)
     PollService.group_members_added(@group.id)
     assert_equal count + 1, poll.voters.count
   end
@@ -511,7 +502,7 @@ class PollServiceTest < ActiveSupport::TestCase
 
     bot = User.create!(name: 'Bot', email: "bot#{SecureRandom.hex(4)}@example.com",
                        email_verified: true, username: "bot#{SecureRandom.hex(4)}", bot: true)
-    @group.add_member!(bot)
+    Membership.create!(user: bot, group: @group, accepted_at: Time.current)
     PollService.group_members_added(@group.id)
     assert_equal count, poll.voters.count
   end
@@ -519,30 +510,23 @@ class PollServiceTest < ActiveSupport::TestCase
   private
 
   def create_poll
-    poll = Poll.new(
-      title: "Test Poll #{SecureRandom.hex(4)}",
-      poll_type: "proposal",
-      discussion: @discussion,
-      author: @user,
-      poll_option_names: ["Agree", "Disagree"],
-      closing_at: 3.days.from_now
-    )
-    PollService.create(poll: poll, actor: @user)
-    poll.reload
+    poll = Poll.new(title: "Test Poll #{SecureRandom.hex(4)}", poll_type: "proposal",
+                    discussion: @discussion, group: @group, author: @user,
+                    poll_option_names: ["Agree", "Disagree"], opening_at: nil,
+                    opened_at: Time.now, closing_at: 3.days.from_now)
+    poll.save!
+    poll.create_missing_created_event!
+    poll
   end
 
   def create_specified_voters_poll
-    poll = Poll.new(
-      title: "SVO Poll #{SecureRandom.hex(4)}",
-      poll_type: "proposal",
-      discussion: @discussion,
-      author: @user,
-      poll_option_names: ["Agree", "Disagree"],
-      closing_at: 3.days.from_now,
-      specified_voters_only: true
-    )
-    PollService.create(poll: poll, actor: @user)
-    poll.reload
+    poll = Poll.new(title: "SVO Poll #{SecureRandom.hex(4)}", poll_type: "proposal",
+                    discussion: @discussion, group: @group, author: @user,
+                    poll_option_names: ["Agree", "Disagree"], opened_at: Time.now,
+                    closing_at: 3.days.from_now, specified_voters_only: true)
+    poll.save!
+    poll.create_missing_created_event!
+    poll
   end
 
   def create_unique_user(prefix)

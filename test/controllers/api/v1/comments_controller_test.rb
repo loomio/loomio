@@ -7,11 +7,11 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
     @group = groups(:test_group)
     @discussion = discussions(:test_discussion)
 
-    @comment = Comment.new(discussion: @discussion, author: @user, body: "Original comment")
-    CommentService.create(comment: @comment, actor: @user)
+    @comment = Comment.create!(discussion: @discussion, author: @user, body: "Original comment")
+    @comment.create_missing_created_event!
 
-    @another_comment = Comment.new(discussion: @discussion, author: @another_user, body: "Another comment")
-    CommentService.create(comment: @another_comment, actor: @another_user)
+    @another_comment = Comment.create!(discussion: @discussion, author: @another_user, body: "Another comment")
+    @another_comment.create_missing_created_event!
   end
 
   test "update success" do
@@ -24,7 +24,6 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
 
   test "update admins can edit user content true" do
     sign_in @user
-    @group.add_admin!(@user)
     @group.update(admins_can_edit_user_content: true)
     comment_params = { body: "updated content" }
     post :update, params: { id: @another_comment.id, comment: comment_params }
@@ -34,7 +33,6 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
 
   test "update admins can edit user content false" do
     sign_in @user
-    @group.add_admin!(@user)
     @group.update(admins_can_edit_user_content: false)
     comment_params = { body: "updated content" }
     post :update, params: { id: @another_comment.id, comment: comment_params }
@@ -67,7 +65,6 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
   end
 
   test "update discarded comment is forbidden" do
-    @group.add_admin!(@user)
     CommentService.discard(comment: @another_comment, actor: @user)
 
     sign_in @another_user
@@ -116,7 +113,7 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
   test "create disallows aliens to comment" do
     sign_in @user
     @discussion.group.memberships.find_by(user: @user).destroy
-    @discussion.discussion_readers.find_by(user: @user).destroy
+    @discussion.discussion_readers.find_by(user: @user)&.destroy
     comment_params = { discussion_id: @discussion.id, body: "original content" }
     post :create, params: { comment: comment_params }
     assert_response :forbidden
@@ -141,7 +138,6 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
 
   test "create mentions appropriate users" do
     sign_in @user
-    @group.add_member!(@another_user) unless @group.members.include?(@another_user)
     comment_params = { discussion_id: @discussion.id, body: "Hello, @#{@another_user.username}!" }
     assert_difference 'Event.where(kind: :user_mentioned).count', 1 do
       post :create, params: { comment: comment_params }, format: :json
@@ -190,7 +186,6 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
   end
 
   test "author cannot undiscard comment discarded by admin" do
-    @group.add_admin!(@user)
     CommentService.discard(comment: @another_comment, actor: @user)
 
     sign_in @another_user

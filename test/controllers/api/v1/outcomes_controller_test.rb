@@ -6,54 +6,29 @@ class Api::V1::OutcomesControllerTest < ActionController::TestCase
     @another_user = users(:another_user)
     @non_member_user = User.create!(name: "Non Member", username: "nonmember", email: "nonmember@example.com")
     @group = groups(:test_group)
-    @group.add_member! @user unless @group.members.include?(@user)
     @discussion = create_discussion(group: @group, author: @user)
-    
-    # Create poll
-    @poll = Poll.new(
-      title: "Test Poll",
-      poll_type: "proposal",
-      discussion: @discussion,
-      group: @group,
-      author: @user,
-      closed_at: 1.day.ago,
-      closing_at: 5.days.from_now,
-      poll_option_names: ["Yes", "No"]
-    )
-    PollService.create(poll: @poll, actor: @user)
 
-    # Create meeting poll
-    @meeting_poll = Poll.new(
-      title: "Meeting Poll",
-      poll_type: "meeting",
-      discussion: @discussion,
-      author: @user,
-      closed_at: 1.day.ago,
-      closing_at: 5.days.from_now,
-      poll_option_names: ["2026-01-15"]
-    )
-    PollService.create(poll: @meeting_poll, actor: @user)
+    @poll = Poll.new(title: "Test Poll", poll_type: "proposal", discussion: @discussion,
+                     group: @group, author: @user, opened_at: 1.day.ago, closed_at: 1.hour.ago,
+                     closing_at: 5.days.from_now, poll_option_names: ["Yes", "No"])
+    @poll.save!
+    @poll.create_missing_created_event!
 
-    # Create another poll
-    @another_poll = Poll.new(
-      title: "Another Poll",
-      poll_type: "proposal",
-      discussion: @discussion,
-      author: @user,
-      closed_at: 1.day.ago,
-      closing_at: 5.days.from_now,
-      poll_option_names: ["Agree", "Disagree"]
-    )
-    PollService.create(poll: @another_poll, actor: @user)
-    
-    # Create outcome
-    @outcome = Outcome.new(
-      poll: @poll,
-      author: @user,
-      statement: "Original outcome statement"
-    )
+    @meeting_poll = Poll.new(title: "Meeting Poll", poll_type: "meeting", discussion: @discussion,
+                             group: @group, author: @user, opened_at: 1.day.ago, closed_at: 1.hour.ago,
+                             closing_at: 5.days.from_now, poll_option_names: ["2026-01-15"])
+    @meeting_poll.save!
+    @meeting_poll.create_missing_created_event!
+
+    @another_poll = Poll.new(title: "Another Poll", poll_type: "proposal", discussion: @discussion,
+                             group: @group, author: @user, opened_at: 1.day.ago, closed_at: 1.hour.ago,
+                             closing_at: 5.days.from_now, poll_option_names: ["Agree", "Disagree"])
+    @another_poll.save!
+    @another_poll.create_missing_created_event!
+
+    @outcome = Outcome.new(poll: @poll, author: @user, statement: "Original outcome statement")
     OutcomeService.create(outcome: @outcome, actor: @user)
-    
+
     @outcome_params = { poll_id: @poll.id, statement: "We should do this" }
     @meeting_params = @outcome_params.merge(
       poll_id: @meeting_poll.id,
@@ -61,8 +36,6 @@ class Api::V1::OutcomesControllerTest < ActionController::TestCase
       event_description: "Eat those krabs",
       event_location: "The Krusty Krab"
     )
-    
-    @group.add_member! @user unless @group.members.include?(@user)
   end
   
   # Create action tests
@@ -82,9 +55,8 @@ class Api::V1::OutcomesControllerTest < ActionController::TestCase
   
   test "create notifies group" do
     sign_in @user
-    @group.add_member! @another_user unless @group.members.include?(@another_user)
-    third_user = User.create!(name: "Third Member", username: "thirdmember", email: "third@example.com")
-    @group.add_member! third_user
+    third_user = User.create!(name: "Third Member", username: "thirdmember#{SecureRandom.hex(4)}", email: "third_#{SecureRandom.hex(4)}@example.com")
+    Membership.create!(user: third_user, group: @group, accepted_at: Time.current)
 
     params = {
       poll_id: @poll.id,
@@ -128,14 +100,10 @@ class Api::V1::OutcomesControllerTest < ActionController::TestCase
     sign_in @user
 
     # Create a different poll to get an invalid poll option
-    invalid_poll = Poll.new(
-      title: "Invalid Poll",
-      poll_type: "proposal",
-      discussion: @discussion,
-      author: @user,
-      poll_option_names: ["Maybe"]
-    )
-    PollService.create(poll: invalid_poll, actor: @user)
+    invalid_poll = Poll.new(title: "Invalid Poll", poll_type: "proposal", discussion: @discussion,
+                            group: @group, author: @user, closed_at: 1.day.ago,
+                            closing_at: 5.days.from_now, poll_option_names: ["Maybe"])
+    invalid_poll.save!
 
     @outcome_params[:poll_option_id] = invalid_poll.poll_options.first.id
     

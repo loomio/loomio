@@ -53,13 +53,14 @@ class Ability::PollTest < ActiveSupport::TestCase
   # Poll in group - as group admin
   test "group admin can manage poll" do
     group = Group.create!(name: "PGrp #{SecureRandom.hex(4)}", group_privacy: 'secret')
-    group.add_admin!(@actor)
+    Membership.create!(user: @actor, group: group, admin: true, accepted_at: Time.current)
     group.update!(members_can_announce: false, members_can_add_guests: false)
     discussion = create_discussion(group: group, author: @actor)
     poll = Poll.new(poll_type: 'poll', title: "GP #{SecureRandom.hex(4)}",
                     poll_option_names: %w[Yes No], closing_at: 1.day.from_now,
-                    author: @actor, discussion: discussion, group: group)
-    PollService.create(poll: poll, actor: @actor)
+                    opened_at: Time.now, author: @actor, discussion: discussion, group: group)
+    poll.save!
+    poll.create_missing_created_event!
 
     assert can?(:add_voters, poll)
     assert can?(:announce, poll)
@@ -69,37 +70,40 @@ class Ability::PollTest < ActiveSupport::TestCase
 
   test "group admin cannot update closed poll" do
     group = Group.create!(name: "PGrp #{SecureRandom.hex(4)}", group_privacy: 'secret')
-    group.add_admin!(@actor)
+    Membership.create!(user: @actor, group: group, admin: true, accepted_at: Time.current)
     discussion = create_discussion(group: group, author: @actor)
     poll = Poll.new(poll_type: 'poll', title: "GP #{SecureRandom.hex(4)}",
                     poll_option_names: %w[Yes No], closing_at: 1.day.from_now,
-                    author: @actor, discussion: discussion, group: group)
-    PollService.create(poll: poll, actor: @actor)
+                    opened_at: Time.now, author: @actor, discussion: discussion, group: group)
+    poll.save!
+    poll.create_missing_created_event!
     poll.update!(closed_at: Time.current)
     assert cannot?(:update, poll)
   end
 
   test "group admin specified_voters_only true cannot vote" do
     group = Group.create!(name: "PGrp #{SecureRandom.hex(4)}", group_privacy: 'secret')
-    group.add_admin!(@actor)
+    Membership.create!(user: @actor, group: group, admin: true, accepted_at: Time.current)
     discussion = create_discussion(group: group, author: @actor)
     poll = Poll.new(poll_type: 'poll', title: "GP #{SecureRandom.hex(4)}",
                     poll_option_names: %w[Yes No], closing_at: 1.day.from_now,
-                    author: @actor, discussion: discussion, group: group,
+                    opened_at: Time.now, author: @actor, discussion: discussion, group: group,
                     specified_voters_only: true)
-    PollService.create(poll: poll, actor: @actor)
+    poll.save!
+    poll.create_missing_created_event!
     assert cannot?(:vote_in, poll)
   end
 
   test "group admin specified_voters_only false can vote" do
     group = Group.create!(name: "PGrp #{SecureRandom.hex(4)}", group_privacy: 'secret')
-    group.add_admin!(@actor)
+    Membership.create!(user: @actor, group: group, admin: true, accepted_at: Time.current)
     discussion = create_discussion(group: group, author: @actor)
     poll = Poll.new(poll_type: 'poll', title: "GP #{SecureRandom.hex(4)}",
                     poll_option_names: %w[Yes No], closing_at: 1.day.from_now,
-                    author: @actor, discussion: discussion, group: group,
+                    opened_at: Time.now, author: @actor, discussion: discussion, group: group,
                     specified_voters_only: false)
-    PollService.create(poll: poll, actor: @actor)
+    poll.save!
+    poll.create_missing_created_event!
     assert can?(:vote_in, poll)
   end
 
@@ -107,28 +111,28 @@ class Ability::PollTest < ActiveSupport::TestCase
   # Use specified_voters_only: true to avoid auto-stance creation, then manually set stance
   test "group member poll admin with members_can_add_guests true" do
     group, discussion, poll = create_group_discussion_poll(members_can_add_guests: true, specified_voters_only: true)
-    group.add_member!(@actor)
+    Membership.create!(user: @actor, group: group, accepted_at: Time.current)
     poll.stances.create!(participant_id: @actor.id, admin: true, latest: true)
     assert can?(:add_guests, poll)
   end
 
   test "group member poll admin with members_can_add_guests false" do
     group, discussion, poll = create_group_discussion_poll(members_can_add_guests: false, specified_voters_only: true)
-    group.add_member!(@actor)
+    Membership.create!(user: @actor, group: group, accepted_at: Time.current)
     poll.stances.create!(participant_id: @actor.id, admin: true, latest: true)
     assert cannot?(:add_guests, poll)
   end
 
   test "group member poll admin with members_can_announce true" do
     group, discussion, poll = create_group_discussion_poll(members_can_announce: true, specified_voters_only: true)
-    group.add_member!(@actor)
+    Membership.create!(user: @actor, group: group, accepted_at: Time.current)
     poll.stances.create!(participant_id: @actor.id, admin: true, latest: true)
     assert can?(:announce, poll)
   end
 
   test "group member poll admin with members_can_announce false" do
     group, discussion, poll = create_group_discussion_poll(members_can_announce: false, specified_voters_only: true)
-    group.add_member!(@actor)
+    Membership.create!(user: @actor, group: group, accepted_at: Time.current)
     poll.stances.create!(participant_id: @actor.id, admin: true, latest: true)
     assert cannot?(:announce, poll)
   end
@@ -136,34 +140,30 @@ class Ability::PollTest < ActiveSupport::TestCase
   # Poll in group - as group member, poll member
   test "group member poll member specified_voters_only true can vote" do
     group, discussion, poll = create_group_discussion_poll(specified_voters_only: true)
-    group.add_member!(@actor)
+    Membership.create!(user: @actor, group: group, accepted_at: Time.current)
     poll.stances.create!(participant_id: @actor.id, inviter_id: @actor.id, latest: true)
     assert can?(:vote_in, poll)
   end
 
   test "group member poll member specified_voters_only true cannot add guests even if allowed" do
     group, discussion, poll = create_group_discussion_poll(members_can_add_guests: true, specified_voters_only: true)
-    group.add_member!(@actor)
+    Membership.create!(user: @actor, group: group, accepted_at: Time.current)
     poll.stances.create!(participant_id: @actor.id, inviter_id: @actor.id, latest: true)
     assert cannot?(:add_guests, poll)
   end
 
   test "group member poll member specified_voters_only false can vote" do
     group, discussion, poll = create_group_discussion_poll
-    group.add_member!(@actor)
-    # add_member auto-creates a stance for non-specified_voters_only polls
-    # update it to set inviter_id to make actor a "poll member"
-    stance = poll.stances.find_by(participant_id: @actor.id)
-    stance.update!(inviter_id: @actor.id) if stance
+    Membership.create!(user: @actor, group: group, accepted_at: Time.current)
+    poll.stances.create!(participant_id: @actor.id, inviter_id: @actor.id, latest: true)
     poll.update!(specified_voters_only: false)
     assert can?(:vote_in, poll)
   end
 
   test "group member poll member specified_voters_only false cannot add guests even if allowed" do
     group, discussion, poll = create_group_discussion_poll(members_can_add_guests: true)
-    group.add_member!(@actor)
-    stance = poll.stances.find_by(participant_id: @actor.id)
-    stance.update!(inviter_id: @actor.id) if stance
+    Membership.create!(user: @actor, group: group, accepted_at: Time.current)
+    poll.stances.create!(participant_id: @actor.id, inviter_id: @actor.id, latest: true)
     poll.update!(specified_voters_only: false)
     assert cannot?(:add_guests, poll)
   end
@@ -171,27 +171,26 @@ class Ability::PollTest < ActiveSupport::TestCase
   # Poll in group - group member, not poll member
   test "group member not poll member specified_voters_only true cannot vote" do
     group, discussion, poll = create_group_discussion_poll(specified_voters_only: true)
-    group.add_member!(@actor)
-    # specified_voters_only: true means no auto-stance
+    Membership.create!(user: @actor, group: group, accepted_at: Time.current)
     assert cannot?(:vote_in, poll)
   end
 
   test "group member not poll member specified_voters_only true cannot add guests even if allowed" do
     group, discussion, poll = create_group_discussion_poll(members_can_add_guests: true, specified_voters_only: true)
-    group.add_member!(@actor)
+    Membership.create!(user: @actor, group: group, accepted_at: Time.current)
     assert cannot?(:add_guests, poll)
   end
 
   test "group member not poll member specified_voters_only false can vote" do
     group, discussion, poll = create_group_discussion_poll
-    group.add_member!(@actor)
+    Membership.create!(user: @actor, group: group, accepted_at: Time.current)
     poll.update!(specified_voters_only: false)
     assert can?(:vote_in, poll)
   end
 
   test "group member not poll member specified_voters_only false cannot add guests even if allowed" do
     group, discussion, poll = create_group_discussion_poll(members_can_add_guests: true)
-    group.add_member!(@actor)
+    Membership.create!(user: @actor, group: group, accepted_at: Time.current)
     poll.update!(specified_voters_only: false)
     assert cannot?(:add_guests, poll)
   end
@@ -234,7 +233,8 @@ class Ability::PollTest < ActiveSupport::TestCase
                           poll_option_names: %w[Yes No], closing_at: 1.day.from_now,
                           author: @actor, discussion: discussion, group: group,
                           specified_voters_only: true)
-    PollService.create(poll: guest_poll, actor: @actor)
+    guest_poll.save!
+    guest_poll.create_missing_created_event!
     assert can?(:announce, guest_poll)
   end
 
@@ -252,7 +252,8 @@ class Ability::PollTest < ActiveSupport::TestCase
                           poll_option_names: %w[Yes No], closing_at: 1.day.from_now,
                           author: @actor, discussion: discussion, group: group,
                           specified_voters_only: false)
-    PollService.create(poll: guest_poll, actor: @actor)
+    guest_poll.save!
+    guest_poll.create_missing_created_event!
     assert can?(:announce, guest_poll)
   end
 
@@ -262,7 +263,8 @@ class Ability::PollTest < ActiveSupport::TestCase
     guest_poll = Poll.new(poll_type: 'poll', title: "Guest Poll #{SecureRandom.hex(4)}",
                           poll_option_names: %w[Yes No], closing_at: 1.day.from_now,
                           author: @actor, discussion: discussion, group: group)
-    PollService.create(poll: guest_poll, actor: @actor)
+    guest_poll.save!
+    guest_poll.create_missing_created_event!
     assert cannot?(:announce, poll)
     assert cannot?(:announce, guest_poll)
   end
@@ -288,13 +290,14 @@ class Ability::PollTest < ActiveSupport::TestCase
   def create_group_discussion_poll(specified_voters_only: false, **group_options)
     author = User.create!(name: "PA #{SecureRandom.hex(4)}", email: "pa_#{SecureRandom.hex(4)}@test.com", email_verified: true)
     group = Group.create!({ name: "PG #{SecureRandom.hex(4)}", group_privacy: 'secret' }.merge(group_options))
-    group.add_admin!(author)
+    Membership.create!(user: author, group: group, admin: true, accepted_at: Time.current)
     discussion = create_discussion(group: group, author: author)
     poll = Poll.new(poll_type: 'poll', title: "P #{SecureRandom.hex(4)}",
                     poll_option_names: %w[Yes No], closing_at: 1.day.from_now,
-                    author: author, discussion: discussion, group: group,
+                    opened_at: Time.now, author: author, discussion: discussion, group: group,
                     specified_voters_only: specified_voters_only)
-    PollService.create(poll: poll, actor: author)
+    poll.save!
+    poll.create_missing_created_event!
     [group, discussion, poll]
   end
 end
