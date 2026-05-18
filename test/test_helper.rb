@@ -5,6 +5,10 @@ require "webmock/minitest"
 require "minitest/mock"
 require_relative "./reset_database_helper"
 
+# Minitest 6 parallelises by default (10 threads) which causes PG deadlocks
+# against the shared test DB. Force single-threaded execution.
+Minitest.parallel_executor = Minitest::Parallel::Executor.new(1)
+
 # Configure WebMock
 WebMock.disable_net_connect!(allow_localhost: true)
 

@@ -298,7 +298,7 @@ class PollServiceTest < ActiveSupport::TestCase
     refute poll.opened?
 
     member = create_unique_user("scheduledinvite")
-    @group.add_member!(member)
+    Membership.create!(user: member, group: @group, accepted_at: Time.current)
 
     PollService.invite(poll: poll, actor: @user, params: {
       recipient_user_ids: [member.id],
@@ -315,7 +315,7 @@ class PollServiceTest < ActiveSupport::TestCase
 
   test "open_scheduled_polls delivers emails to voters when notify_on_open is true" do
     member = create_unique_user("emailvoter")
-    @group.add_member!(member)
+    Membership.create!(user: member, group: @group, accepted_at: Time.current)
 
     poll = PollService.create(params: poll_params(
       closing_at: 7.days.from_now,
@@ -334,7 +334,7 @@ class PollServiceTest < ActiveSupport::TestCase
 
   test "open_scheduled_polls delivers no emails to voters when notify_on_open is false" do
     member = create_unique_user("noemailvoter")
-    @group.add_member!(member)
+    Membership.create!(user: member, group: @group, accepted_at: Time.current)
 
     poll = PollService.create(params: poll_params(
       closing_at: 7.days.from_now,
@@ -359,7 +359,7 @@ class PollServiceTest < ActiveSupport::TestCase
     count = poll.voters.count
 
     new_member = create_unique_user("newgroupmember")
-    @group.add_member!(new_member)
+    Membership.create!(user: new_member, group: @group, accepted_at: Time.current)
     PollService.group_members_added(@group.id)
     assert_equal count + 1, poll.voters.count
   end
@@ -371,7 +371,7 @@ class PollServiceTest < ActiveSupport::TestCase
 
     bot = User.create!(name: 'Bot', email: "bot#{SecureRandom.hex(4)}@example.com",
                        email_verified: true, username: "bot#{SecureRandom.hex(4)}", bot: true)
-    @group.add_member!(bot)
+    Membership.create!(user: bot, group: @group, accepted_at: Time.current)
     PollService.group_members_added(@group.id)
     assert_equal count, poll.voters.count
   end
