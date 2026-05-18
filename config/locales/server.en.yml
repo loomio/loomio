@@ -381,6 +381,7 @@ en:
     add_guests:
       all: You must upgrade your Loomio subscription to add guests. Alternatively, you can invite them to be members of your group.
   errors:
+    new_account_trial_group_limit: New accounts are limited to one group. Please contact support if you need more.
     clear_cache: Loading problem detected. Hold shift and press reload, or clear your browser cache.
     '400':
       title: Bad request

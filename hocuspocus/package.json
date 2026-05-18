@@ -6,7 +6,7 @@
   "dependencies": {
     "@hocuspocus/extension-logger": "^3.4.0",
     "@hocuspocus/server": "^3.4.0",
-    "@sentry/node": "^10.51.0",
+    "@sentry/node": "^10.53.1",
     "@sentry/tracing": "^7.114.0"
   }
 }

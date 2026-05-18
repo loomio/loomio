@@ -108,7 +108,7 @@ GEM
       securerandom (>= 0.3)
       tzinfo (~> 2.0, >= 2.0.5)
       uri (>= 0.13.1)
-    addressable (2.8.9)
+    addressable (2.9.0)
       public_suffix (>= 2.0.2, < 8.0)
     ansi (1.5.0)
     arbre (1.7.0)
@@ -116,8 +116,8 @@ GEM
       ruby2_keywords (>= 0.0.2)
     ast (2.4.3)
     aws-eventstream (1.4.0)
-    aws-partitions (1.1240.0)
-    aws-sdk-core (3.245.0)
+    aws-partitions (1.1247.0)
+    aws-sdk-core (3.247.0)
       aws-eventstream (~> 1, >= 1.3.0)
       aws-partitions (~> 1, >= 1.992.0)
       aws-sigv4 (~> 1.9)
@@ -125,11 +125,11 @@ GEM
       bigdecimal
       jmespath (~> 1, >= 1.6.1)
       logger
-    aws-sdk-kms (1.123.0)
-      aws-sdk-core (~> 3, >= 3.244.0)
+    aws-sdk-kms (1.125.0)
+      aws-sdk-core (~> 3, >= 3.247.0)
       aws-sigv4 (~> 1.5)
-    aws-sdk-s3 (1.220.0)
-      aws-sdk-core (~> 3, >= 3.244.0)
+    aws-sdk-s3 (1.222.0)
+      aws-sdk-core (~> 3, >= 3.247.0)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.5)
     aws-sigv4 (1.12.1)
@@ -139,7 +139,7 @@ GEM
     benchmark (0.5.0)
     bigdecimal (4.1.2)
     bindex (0.8.1)
-    bootsnap (1.24.3)
+    bootsnap (1.24.4)
       msgpack (~> 1.2)
     brakeman (8.0.4)
       racc
@@ -228,7 +228,7 @@ GEM
     formtastic (6.0.0)
       actionpack (>= 7.2.0)
     formtastic_i18n (0.7.0)
-    friendly_id (5.6.0)
+    friendly_id (5.7.0)
       activerecord (>= 4.0.0)
     gapic-common (1.3.0)
       faraday (>= 1.9, < 3.a)
@@ -250,9 +250,9 @@ GEM
       mini_mime (~> 1.1)
       representable (~> 3.0)
       retriable (~> 3.1)
-    google-apis-iamcredentials_v1 (0.26.0)
+    google-apis-iamcredentials_v1 (0.27.0)
       google-apis-core (>= 0.15.0, < 2.a)
-    google-apis-storage_v1 (0.61.0)
+    google-apis-storage_v1 (0.62.0)
       google-apis-core (>= 0.15.0, < 2.a)
     google-cloud-core (1.8.0)
       google-cloud-env (>= 1.0, < 3.a)
@@ -264,7 +264,7 @@ GEM
     google-cloud-location (1.3.0)
       gapic-common (~> 1.2)
       google-cloud-errors (~> 1.0)
-    google-cloud-storage (1.59.0)
+    google-cloud-storage (1.60.0)
       addressable (~> 2.8)
       digest-crc (~> 0.4)
       google-apis-core (>= 0.18, < 2)
@@ -381,7 +381,7 @@ GEM
       i18n-timezones-data (~> 1.1)
       railties (>= 7.0, < 9)
     i18n-timezones-data (1.1.0)
-    icalendar (2.12.2)
+    icalendar (2.12.3)
       base64
       ice_cube (~> 0.16)
       logger
@@ -407,7 +407,7 @@ GEM
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
-    json (2.19.3)
+    json (2.19.5)
     jwt (3.1.2)
       base64
     kaminari (1.2.2)
@@ -444,15 +444,18 @@ GEM
     mini_magick (5.3.0)
       logger
     mini_mime (1.1.5)
-    minitest (5.27.0)
+    minitest (6.0.6)
+      drb (~> 2.0)
+      prism (~> 1.5)
+    minitest-mock (5.27.0)
     msgpack (1.8.0)
-    multi_json (1.19.1)
+    multi_json (1.21.1)
     multi_xml (0.8.1)
       bigdecimal (>= 3.1, < 5)
     multipart-post (2.4.1)
     net-http (0.9.1)
       uri (>= 0.11.1)
-    net-imap (0.6.3)
+    net-imap (0.6.4)
       date
       net-protocol
     net-pop (0.1.2)
@@ -713,11 +716,11 @@ GEM
     terminal-table (4.0.0)
       unicode-display_width (>= 1.1.1, < 4)
     thor (1.5.0)
-    thruster (0.1.20)
-    thruster (0.1.20-aarch64-linux)
-    thruster (0.1.20-arm64-darwin)
-    thruster (0.1.20-x86_64-darwin)
-    thruster (0.1.20-x86_64-linux)
+    thruster (0.1.21)
+    thruster (0.1.21-aarch64-linux)
+    thruster (0.1.21-arm64-darwin)
+    thruster (0.1.21-x86_64-darwin)
+    thruster (0.1.21-x86_64-linux)
     tilt (2.6.1)
     timeout (0.6.1)
     trailblazer-option (0.1.2)
@@ -797,8 +800,8 @@ DEPENDENCIES
   drb
   factory_bot_rails
   faker
-  friendly_id (~> 5.6.0)
-  google-cloud-storage (~> 1.59)
+  friendly_id (~> 5.7.0)
+  google-cloud-storage (~> 1.60)
   google-cloud-translate
   gravtastic
   haml-rails (~> 3.0.0)
@@ -809,7 +812,8 @@ DEPENDENCIES
   image_processing (~> 1.14)
   lograge
   maxminddb
-  minitest (~> 5.0)
+  minitest (~> 6.0)
+  minitest-mock
   nokogiri
   paper_trail (~> 17.0.0)
   pg

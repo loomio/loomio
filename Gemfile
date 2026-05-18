@@ -23,12 +23,12 @@ gem 'twitter-text', github: 'loomio/twitter-text'
 gem 'redcarpet', '~> 3.6.1'
 gem 'paper_trail', '~> 17.0.0'
 gem 'sidekiq', '~> 7.0'
-gem 'friendly_id', '~> 5.6.0'
+gem 'friendly_id', '~> 5.7.0'
 gem 'httparty', '~> 0.24.2'
 gem 'browser', '~> 6.2.0'
 gem "aws-sdk-s3", require: false
 gem "ruby-openai"
-gem "google-cloud-storage", "~> 1.59", require: false
+gem "google-cloud-storage", "~> 1.60", require: false
 gem 'image_processing', '~> 1.14'
 gem "ruby-vips"
 gem "stackprof"
@@ -81,7 +81,8 @@ group :development do
 end
 
 group :test do
-  gem 'minitest', '~> 5.0'
+  gem 'minitest', '~> 6.0'
+  gem 'minitest-mock'
   gem 'webmock'
   gem 'rack_session_access'
   gem 'drb'

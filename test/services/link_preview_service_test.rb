@@ -1,5 +1,4 @@
 require 'test_helper'
-require 'minitest/mock'
 
 class LinkPreviewServiceTest < ActiveSupport::TestCase
   # Avoid hitting real DNS by stubbing Resolv.getaddresses for each test.

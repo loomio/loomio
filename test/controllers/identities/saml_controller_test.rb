@@ -1,5 +1,4 @@
 require 'test_helper'
-require 'minitest/mock'
 
 class Identities::SamlControllerTest < ActionController::TestCase
   setup do
