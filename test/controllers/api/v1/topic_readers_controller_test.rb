@@ -6,7 +6,7 @@ class Api::V1::TopicReadersControllerTest < ActionController::TestCase
     @user = users(:user)
     @alien = users(:alien)
     @group = groups(:group)
-    @discussion = DiscussionService.create(params: { title: "TR Test #{SecureRandom.hex(4)}", group_id: @group.id }, actor: @admin)
+    @discussion = discussions(:discussion)
     ActionMailer::Base.deliveries.clear
   end
 
