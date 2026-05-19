@@ -173,7 +173,9 @@ class Event < ApplicationRecord
     when 'discussion_edited'   then eventable.created_event
     when 'discussion_reopened' then eventable.created_event
     when 'outcome_created'     then eventable.parent_event
-    when 'new_comment'         then eventable.parent.topic_event || eventable.parent.created_event
+    when 'new_comment'
+      p = eventable.parent
+      p.is_a?(Event) ? p : (p.topic_event || p.created_event)
     when 'poll_closed_by_user' then eventable.created_event
     when 'poll_closing_soon'   then eventable.created_event
     when 'poll_created'        then eventable.topic.topicable == eventable ? nil : eventable.topic.topicable.created_event
