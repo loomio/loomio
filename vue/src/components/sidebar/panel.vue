@@ -99,7 +99,7 @@ const openIfPinned = () => {
 const fetchData = () => {
   Records.users.findOrFetchGroups().then(() => {
     if (route.path === "/dashboard") {
-      if (Session.user().groups().length === 0) {
+      if (Session.user().groups().length === 0 && AbilityService.canStartGroups()) {
         router.replace("/g/new");
       }
       if (Session.user().groups().length === 1) {
