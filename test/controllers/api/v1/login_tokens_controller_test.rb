@@ -17,6 +17,17 @@ class Api::V1::LoginTokensControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "create handles an invalid referrer" do
+    user = users(:normal_user)
+    request.env['HTTP_REFERER'] = 'http://%zz'
+
+    assert_difference -> { user.login_tokens.count }, 1 do
+      post :create, params: { email: user.email }
+    end
+
+    assert_response :success
+  end
+
   test "create updates detected locale" do
     user = users(:normal_user)
     user.update_detected_locale('en')

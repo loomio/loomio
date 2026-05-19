@@ -6,9 +6,17 @@ class Api::V1::LoginTokensController < Api::V1::RestfulController
     end
     if user = User.find_by(email: params.require(:email))
       save_detected_locale(user)
-      service.create(actor: user, uri: URI::parse(request.referrer.to_s))
+      service.create(actor: user, uri: referrer_uri)
     end
     # Always return success to prevent account enumeration
     render json: { success: :ok }
+  end
+
+  private
+
+  def referrer_uri
+    URI.parse(request.referrer.to_s)
+  rescue URI::InvalidURIError
+    nil
   end
 end
