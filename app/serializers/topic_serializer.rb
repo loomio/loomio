@@ -5,7 +5,6 @@ class TopicSerializer < ApplicationSerializer
              :replies_count,
              :ranges,
              :max_depth,
-             :newest_first,
              :allow_concurrent_polls,
              :allow_comments,
              :allow_reactions,

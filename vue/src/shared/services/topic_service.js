@@ -163,6 +163,14 @@ export default new class TopicService {
         perform: () => this.dismiss(topic)
       },
 
+      mark_as_read: {
+        name: 'dashboard_page.mark_as_read',
+        icon: 'mdi-check-all',
+        collection: 'actions',
+        canPerform() { return topic.isUnread() && topic.membersInclude(Session.user()); },
+        perform: () => this.markAllAsRead(topic)
+      },
+
       export_thread: {
       name: 'common.action.print',
         icon: 'mdi-printer-outline',
@@ -329,6 +337,12 @@ export default new class TopicService {
   reopen(topic) {
     return topic.reopen().then(() => {
       return Flash.success("discussion.closed.reopened");
+    });
+  }
+
+  markAllAsRead(topic) {
+    return topic.markAllAsRead().then(() => {
+      Flash.success("dashboard_page.discussion_marked_as_read");
     });
   }
 

@@ -1836,6 +1836,7 @@ en:
   thread_arrangement_form:
     edit: Edit layout
     title: Thread layout
+    layout: Layout
     for_everyone: This changes the layout for everyone, not just you.
     sorting: Oldest or Newest first?
     latest: Newest
@@ -1843,7 +1844,13 @@ en:
     earliest: Oldest
     earliest_description: Catch up on older comments before seeing newer ones
     replies: How to display replies?
+    items: How to display items
     linear: Flat list
+    nested: Nested
+    timeline: Timeline
+    timeline_description: Items in the order they were posted
+    threaded: Threaded
+    threaded_description: Replies grouped under what they're responding to
     linear_description: Items listed as they happened, one after the other.
     nested_once: Nest replies - first reply only
     nested_once_description: Indent replies under original comment
@@ -1851,6 +1858,7 @@ en:
     nested_twice_description: Indent replies at most two times.
     changing_nesting_is_slow: Changes to nesting can take a couple of minutes to process.
     allow_concurrent_polls: Allow concurrent polls
+    allow_multiple_polls: Allow multiple polls at the same time
     allow_concurrent_polls_description: Allow more than one poll to be open at the same time
     allow_comments: Allow comments
     allow_comments_description: Allow participants to post comments in this thread
