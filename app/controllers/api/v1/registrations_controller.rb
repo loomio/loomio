@@ -17,7 +17,7 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
         flash[:notice] = t(:'devise.sessions.signed_in')
         render json: Boot::User.new(resource, root_url: URI(root_url).origin).payload.merge({ success: :ok, signed_in: true })
       else
-        LoginTokenService.create(actor: resource, uri: URI.parse(request.referrer.to_s))
+        LoginTokenService.create(actor: resource, uri: referrer_uri)
         render json: { success: :ok, signed_in: false }
       end
       EventBus.broadcast('registration_create', resource)
@@ -40,6 +40,12 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
   def pending_user
     user = (pending_membership || pending_login_token || pending_identity)&.user
     user if user && !user.email_verified?
+  end
+
+  def referrer_uri
+    URI.parse(request.referrer.to_s)
+  rescue URI::InvalidURIError
+    nil
   end
 
   def permission_check

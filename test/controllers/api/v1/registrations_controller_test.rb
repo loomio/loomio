@@ -65,6 +65,22 @@ class Api::V1::RegistrationsControllerTest < ActionController::TestCase
     assert u.legal_accepted_at.present?
   end
 
+  test "creates a new user with an invalid referrer" do
+    request.env['HTTP_REFERER'] = 'http://%zz'
+
+    assert_difference 'User.count', 1 do
+      post :create, params: {
+        user: {
+          name: "Bad Referrer",
+          email: "bad-referrer@example.com",
+          legal_accepted: true
+        }
+      }
+    end
+
+    assert_response :success
+  end
+
   test "sign up via email for existing user (email_verified = false)" do
     u = User.create(email: "jon@snow.com", email_verified: false)
 
