@@ -13,6 +13,7 @@ class Clients::Oauth < Clients::Base
       uid: data.dig(ENV.fetch('OAUTH_ATTR_UID', 'sub')),
       name: data.dig(ENV.fetch('OAUTH_ATTR_NAME', 'name')),
       email: data.dig(ENV.fetch('OAUTH_ATTR_EMAIL', 'email')),
+      email_verified: data.dig(ENV.fetch('OAUTH_ATTR_EMAIL_VERIFIED', 'email_verified')),
       logo: data.dig(ENV.fetch('OAUTH_ATTR_PICTURE', 'picture'))
     }.compact
   end
