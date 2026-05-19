@@ -165,7 +165,7 @@ export default new class TopicService {
 
       mark_as_read: {
         name: 'dashboard_page.mark_as_read',
-        icon: 'mdi-check-all',
+        icon: 'mdi-email-open-outline',
         collection: 'actions',
         canPerform() { return topic.isUnread() && topic.membersInclude(Session.user()); },
         perform: () => this.markAllAsRead(topic)
