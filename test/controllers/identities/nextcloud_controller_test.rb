@@ -47,6 +47,8 @@ class Identities::NextcloudControllerTest < ActionController::TestCase
     assert_equal '/some/path', session[:back_to]
     assert_match(/cloud\.example\.com/, response.location)
     assert_includes response.location, 'client_id=nc_client_id'
+    assert_includes response.location, 'state='
+    assert session[:oauth_state].present?
   end
 
   test "rejects external back_to" do
@@ -55,7 +57,7 @@ class Identities::NextcloudControllerTest < ActionController::TestCase
   end
 
   test "creates user and signs in" do
-    get :create, params: { code: 'nc_auth_code' }
+    get :create, params: oauth_callback_params(code: 'nc_auth_code')
 
     user = User.find_by(email: "nc-#{@hex}@example.com")
     assert user
@@ -70,7 +72,7 @@ class Identities::NextcloudControllerTest < ActionController::TestCase
   test "auto-links to verified user" do
     existing = User.create!(name: 'Existing', email: "nc-#{@hex}@example.com", username: "ncex#{@hex}", email_verified: true)
 
-    get :create, params: { code: 'nc_auth_code' }
+    get :create, params: oauth_callback_params(code: 'nc_auth_code')
 
     identity = Identity.find_by(identity_type: 'nextcloud', uid: "nc_#{@hex}")
     assert_equal existing.id, identity.user_id
@@ -80,10 +82,17 @@ class Identities::NextcloudControllerTest < ActionController::TestCase
   test "links to unverified user and verifies email" do
     unverified = User.create!(name: 'Invited', email: "nc-#{@hex}@example.com", username: "ncinv#{@hex}", email_verified: false)
 
-    get :create, params: { code: 'nc_auth_code' }
+    get :create, params: oauth_callback_params(code: 'nc_auth_code')
 
     identity = Identity.find_by(identity_type: 'nextcloud', uid: "nc_#{@hex}")
     assert_equal unverified.id, identity.user_id
     assert unverified.reload.email_verified?
+  end
+
+  private
+
+  def oauth_callback_params(params = {})
+    session[:oauth_state] = 'test-oauth-state'
+    params.merge(state: 'test-oauth-state')
   end
 end
