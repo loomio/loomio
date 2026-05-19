@@ -209,6 +209,40 @@ class Api::V1::RegistrationsControllerTest < ActionController::TestCase
     assert u.legal_accepted_at.present?
   end
 
+  test "turnstile bypass: expired login token is not accepted" do
+    ENV['TURNSTILE_SECRET_KEY'] = 'test-secret'
+    login_user = User.create(email: "expiredsignup@example.com", email_verified: false)
+    login_token = LoginToken.create(user: login_user, created_at: 25.hours.ago)
+    session[:pending_login_token] = login_token.token
+
+    post :create, params: {
+      user: {
+        name: "Expired Signup",
+        email: "expiredsignup@example.com",
+        legal_accepted: true
+      }
+    }
+
+    assert_response :forbidden
+  end
+
+  test "turnstile bypass: used login token is not accepted" do
+    ENV['TURNSTILE_SECRET_KEY'] = 'test-secret'
+    login_user = User.create(email: "usedsignup@example.com", email_verified: false)
+    login_token = LoginToken.create(user: login_user, used: true)
+    session[:pending_login_token] = login_token.token
+
+    post :create, params: {
+      user: {
+        name: "Used Signup",
+        email: "usedsignup@example.com",
+        legal_accepted: true
+      }
+    }
+
+    assert_response :forbidden
+  end
+
   test "requires acceptance of legal" do
     post :create, params: {
       user: {
