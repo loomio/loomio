@@ -54,6 +54,24 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "turnstile is skipped only for a valid login code" do
+    ENV['TURNSTILE_SECRET_KEY'] = 'test-secret'
+    user = User.create!(email: "emailcode@example.com", email_verified: true)
+    token = LoginToken.create!(user: user)
+
+    post :create, params: { user: { email: user.email, code: token.code } }
+    assert_response :success
+  end
+
+  test "turnstile is required for an invalid login code" do
+    ENV['TURNSTILE_SECRET_KEY'] = 'test-secret'
+    user = User.create!(email: "bademailcode@example.com", email_verified: true)
+    token = LoginToken.create!(user: user)
+
+    post :create, params: { user: { email: user.email, code: token.code + 1 } }
+    assert_response :forbidden
+  end
+
   test "signs in with password" do
     user = User.create!(
       email: "sessionsuser@example.com",
@@ -93,6 +111,35 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
     
     json = JSON.parse(response.body)
     assert_equal user.id, json['current_user_id']
+  end
+
+  test "signs in a user via code and marks the token used" do
+    user = User.create!(email: "codeuser@example.com", email_verified: true)
+    token = LoginToken.create!(user: user)
+
+    post :create, params: { user: { email: user.email, code: token.code } }
+    assert token.reload.used
+    assert_response :success
+
+    json = JSON.parse(response.body)
+    assert_equal user.id, json['current_user_id']
+  end
+
+  test "does not sign in with an expired code" do
+    user = User.create!(email: "expiredcodeuser@example.com", email_verified: true)
+    token = LoginToken.create!(user: user, created_at: 25.hours.ago)
+
+    post :create, params: { user: { email: user.email, code: token.code } }
+    refute token.reload.used
+    assert_response :unauthorized
+  end
+
+  test "does not sign in with a used code" do
+    user = User.create!(email: "usedcodeuser@example.com", email_verified: true)
+    token = LoginToken.create!(user: user, used: true)
+
+    post :create, params: { user: { email: user.email, code: token.code } }
+    assert_response :unauthorized
   end
 
   test "does not sign in a user with a used token" do
