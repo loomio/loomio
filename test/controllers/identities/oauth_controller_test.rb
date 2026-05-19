@@ -7,6 +7,7 @@ class Identities::OauthControllerTest < ActionController::TestCase
     @saved_env = {}
     %w[OAUTH_AUTH_URL OAUTH_TOKEN_URL OAUTH_PROFILE_URL OAUTH_SCOPE
        OAUTH_ATTR_UID OAUTH_ATTR_NAME OAUTH_ATTR_EMAIL OAUTH_APP_KEY OAUTH_APP_SECRET
+       OAUTH_ATTR_EMAIL_VERIFIED OAUTH_SKIP_EMAIL_VERIFIED_CHECK
        LOOMIO_SSO_FORCE_USER_ATTRS].each do |key|
       @saved_env[key] = ENV[key]
     end
@@ -18,6 +19,7 @@ class Identities::OauthControllerTest < ActionController::TestCase
     ENV['OAUTH_ATTR_UID'] = 'sub'
     ENV['OAUTH_ATTR_NAME'] = 'name'
     ENV['OAUTH_ATTR_EMAIL'] = 'email'
+    ENV['OAUTH_ATTR_EMAIL_VERIFIED'] = 'email_verified'
     ENV['OAUTH_APP_KEY'] = 'mock_client_id'
     ENV['OAUTH_APP_SECRET'] = 'mock_client_secret'
 
@@ -34,7 +36,8 @@ class Identities::OauthControllerTest < ActionController::TestCase
         body: {
           sub: 'oauth_user_123',
           name: 'OAuth User',
-          email: 'oauth@example.com'
+          email: 'oauth@example.com',
+          email_verified: true
         }.to_json,
         headers: { 'Content-Type' => 'application/json' }
       )
@@ -262,6 +265,49 @@ class Identities::OauthControllerTest < ActionController::TestCase
     assert_response 401
     json = JSON.parse(response.body)
     assert_equal 'Could not fetch user profile from OAuth provider', json['error']
+  end
+
+  test "returns 401 when OAuth provider has not verified email" do
+    stub_request(:get, 'https://oauth.provider.com/userinfo')
+      .to_return(
+        status: 200,
+        body: {
+          sub: 'oauth_user_123',
+          name: 'OAuth User',
+          email: 'oauth@example.com',
+          email_verified: false
+        }.to_json,
+        headers: { 'Content-Type' => 'application/json' }
+      )
+
+    assert_no_difference ['Identity.where(identity_type: "oauth").count', 'User.count'] do
+      get :create, params: { code: 'authorization_code_123' }, format: :json
+    end
+
+    assert_response 401
+    json = JSON.parse(response.body)
+    assert_equal 'OAuth provider did not verify email', json['error']
+  end
+
+  test "allows unverified OAuth email when explicitly configured" do
+    ENV['OAUTH_SKIP_EMAIL_VERIFIED_CHECK'] = 'true'
+    stub_request(:get, 'https://oauth.provider.com/userinfo')
+      .to_return(
+        status: 200,
+        body: {
+          sub: 'oauth_user_unverified',
+          name: 'OAuth User',
+          email: 'oauth-unverified@example.com',
+          email_verified: false
+        }.to_json,
+        headers: { 'Content-Type' => 'application/json' }
+      )
+
+    assert_difference ['Identity.where(identity_type: "oauth").count', 'User.count'], 1 do
+      get :create, params: { code: 'authorization_code_123' }
+    end
+
+    assert_response :redirect
   end
 
   # Fallback redirect

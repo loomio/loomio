@@ -15,9 +15,10 @@ class Identities::BaseController < ApplicationController
 
     identity_params = fetch_identity_params(access_token)
     return respond_with_error(401, "Could not fetch user profile from OAuth provider") unless identity_params[:uid].present? && identity_params[:email].present?
+    return respond_with_error(401, "OAuth provider did not verify email") unless email_verified_by_provider?(identity_params)
 
     identity = IdentityService.link_or_create(
-      identity_params: identity_params,
+      identity_params: identity_params.except(:email_verified),
       current_user: current_user
     )
 
@@ -56,6 +57,10 @@ class Identities::BaseController < ApplicationController
   def fetch_identity_params(token)
     client = "Clients::#{controller_name.classify}".constantize.new(token: token)
     client.fetch_identity_params.merge({ access_token: token, identity_type: controller_name })
+  end
+
+  def email_verified_by_provider?(_identity_params)
+    true
   end
 
   def redirect_uri
