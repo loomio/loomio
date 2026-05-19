@@ -31,14 +31,14 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
   private
   def email_can_be_verified?
     (pending_membership&.user  ||
-     pending_login_token&.user ||
+     pending_useable_login_token&.user ||
      pending_discussion_reader&.user ||
      pending_stance&.user ||
      pending_identity)&.email == sign_up_params[:email]
   end
 
   def pending_user
-    user = (pending_membership || pending_login_token || pending_identity)&.user
+    user = (pending_membership || pending_useable_login_token || pending_identity)&.user
     user if user && !user.email_verified?
   end
 
@@ -48,6 +48,9 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
     nil
   end
 
+  def pending_useable_login_token
+    pending_login_token if pending_login_token&.useable?
+  end
   def permission_check
     if !(AppConfig.app_features[:create_user] || pending_invitation || pending_group)
       render json: { errors: {email: [I18n.t('auth_form.invitation_required')], name: [I18n.t('auth_form.invitation_required')]}}, status: 422
