@@ -51,8 +51,24 @@ class Api::V1::SessionsController < Devise::SessionsController
   end
 
   def login_token_user
-    token = LoginToken.unused.find_by(code: resource_params.require(:code))
-    token.user if token&.user&.email == resource_params.require(:email)
+    LoginToken.transaction do
+      token = LoginToken.unused.lock.find_by(code: resource_params.require(:code))
+      next unless login_token_matches?(token)
+
+      token.update!(used: true)
+      token.user
+    end
+  end
+
+  def login_token_matches?(token)
+    resource_params[:email].present? && token&.useable? && token.user.email == resource_params[:email]
+  end
+
+  def usable_login_token_for_code
+    return unless resource_params[:code].present?
+
+    token = LoginToken.unused.find_by(code: resource_params[:code])
+    token if login_token_matches?(token)
   end
 
   def configure_permitted_parameters
@@ -67,7 +83,7 @@ class Api::V1::SessionsController < Devise::SessionsController
   # entropy make code-flow safe without a fresh CAPTCHA.
   def turnstile_ok?
     return true if pending_login_token&.useable?
-    return true if resource_params[:code].present?
+    return true if usable_login_token_for_code
     TurnstileService.verify(params.dig(:user, :turnstile_token) || params[:turnstile_token],
                             remote_ip: request.remote_ip)
   end
