@@ -157,7 +157,7 @@ function fetchInitialContent() {
 
     loadContent(routeTopicParams());
     loader.value.fetchedRules = loader.value.rules.filter(rule => rule.remote).map(rule => JSON.stringify(rule.remote));
-    loader.value.firstLoad = true;
+    loader.value.isFirstLoad = false;
     loader.value.updateCollection();
 
     EventBus.$emit('currentComponent', {

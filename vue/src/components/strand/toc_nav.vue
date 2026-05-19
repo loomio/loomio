@@ -67,7 +67,7 @@ onMounted(() => {
 
   Records.events.fetch({
     params: {
-      exclude_types: 'group discussion',
+      exclude_types: 'topic',
       topic_id: props.topic.id,
       pinned: true,
       per: 200

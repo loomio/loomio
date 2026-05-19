@@ -24,7 +24,7 @@ export default class ThreadLoader {
     this.visibleKeys = {};
     this.collapsed = reactive({});
     this.loading = false;
-    this.firstLoad = false
+    this.isFirstLoad = true
     this.padding = 25;
   }
 
@@ -284,13 +284,13 @@ export default class ThreadLoader {
                      .filter(rule => !this.fetchedRules.includes(JSON.stringify(rule.remote)))
                      .map(rule => {
       newRules.push(JSON.stringify(rule.remote));
-      const params = Object.assign({}, rule.remote, {exclude_types: 'topic'});
+      const params = Object.assign({}, rule.remote, this.isFirstLoad ? {} : {exclude_types: 'topic'});
       return Records.events.fetch({params});
     });
 
     return Promise.all(promises).finally(() => {
       this.fetchedRules = uniq(this.fetchedRules.concat(newRules));
-      this.firstLoad = true
+      this.isFirstLoad = false
       this.loading = false;
     });
   }
