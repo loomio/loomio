@@ -112,7 +112,7 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="topic" v-mo
         v-icon(v-else-if="item.user")
           user-avatar(:user="item.user" :size="24" no-link)
         v-icon(v-else) mdi-pin-outline
-v-list-item(color="info" value="toc-end" :prepend-icon="mdiArrowDownThin" :title="$t('strand_nav.end')" @click="scrollToEnd" :to="baseUrl+'/'+topic.lastSequenceId()")
+    v-list-item(color="info" value="toc-end" :prepend-icon="mdiArrowDownThin" :title="$t('strand_nav.end')" @click="scrollToEnd" :to="baseUrl+'/'+topic.lastSequenceId()")
   template(v-if="isSignedIn")
 
     v-list(nav slim density="compact" :lines="false")
