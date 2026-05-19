@@ -102,22 +102,31 @@ export default new class TopicService {
       },
 
       seen_by: {
-        get name() {
-          return topic.usersNotifiedCount
-            ? 'discussion_context.notified_and_seen_by'
-            : 'discussion_context.seen_by_count';
-        },
-        nameArgs: () => topic.usersNotifiedCount
-          ? {notified: topic.usersNotifiedCount, seen: topic.seenByCount}
-          : {count: topic.seenByCount},
+        name: 'discussion_context.seen_by_count',
+        nameArgs: () => ({count: topic.seenByCount}),
         icon: 'mdi-eye-outline',
         collection: 'members',
-        canPerform() { return topic.seenByCount > 0 || !!topic.usersNotifiedCount; },
+        canPerform() { return topic.seenByCount > 0; },
         perform() {
           return openModal({
             component: 'SeenByModal',
             persistent: false,
             props: { topic }
+          });
+        }
+      },
+
+      users_notified: {
+        name: 'discussion_context.count_notified',
+        nameArgs: () => ({count: topic.usersNotifiedCount}),
+        icon: 'mdi-bullhorn-outline',
+        collection: 'members',
+        canPerform() { return !!topic.usersNotifiedCount; },
+        perform() {
+          return openModal({
+            component: 'AnnouncementHistory',
+            persistent: false,
+            props: { model: topic }
           });
         }
       },

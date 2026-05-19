@@ -1830,7 +1830,6 @@ en:
     current_poll_type_banner: Current %{pollType}
     seen_by_count: Seen by %{count}
     count_notified: Notified %{count}
-    notified_and_seen_by: "%{notified} Notified. Seen by %{seen}"
     start_a_vote: Start a vote
   pin_discussion_modal:
     helptext: Pinned discussions always appear at the the group's list of discussions.

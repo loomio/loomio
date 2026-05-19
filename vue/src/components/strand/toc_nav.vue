@@ -113,7 +113,7 @@ onMounted(() => {
 
 <template lang="pug">
 v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="topic" v-model="open" :permanent="$vuetify.display.mdAndUp"  app fixed location="right" clipped color="background" floating)
-  v-list(nav density="compact" :lines="false")
+  v-list(nav slim density="compact" :lines="false")
     v-list-subheader(v-t="'strand_nav.jump_to'")
     v-list-item(color="info" value="toc-start" :prepend-icon="mdiArrowUpThin" :title="$t('strand_nav.start')" @click="scrollToTop" :to="baseUrl+'/0'")
     v-list-item(v-for="item in pinnedItems" :key="item.key" :value="'toc-pinned-' + item.key" :title="item.title" :to="baseUrl+'/'+item.sequenceId" @click="scrollToSequenceId(item.sequenceId)")
@@ -127,11 +127,11 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="topic" v-mo
     v-list-item(color="info" value="toc-end" :prepend-icon="mdiArrowDownThin" :title="$t('strand_nav.end')" @click="scrollToEnd" :to="baseUrl+'/'+topic.lastSequenceId()")
   template(v-if="isSignedIn")
 
-    v-list(nav density="compact" :lines="false")
+    v-list(nav slim density="compact" :lines="false")
       v-list-subheader(v-t="'strand_nav.notifications'")
       v-list-item(:prepend-icon="topic.readerVolume === 'loud' ? mdiBellRingOutline : topic.readerVolume === 'quiet' ? mdiBellOffOutline : mdiBellOutline" :title="$t(topic.readerVolume === 'loud' ? 'strand_nav.email_all_activity' : topic.readerVolume === 'quiet' ? 'strand_nav.email_none' : 'strand_nav.email_notifications')" @click="openVolumeForm")
 
-    v-list(nav density="compact" :lines="false" v-if="memberActions.length")
+    v-list(nav slim density="compact" :lines="false" v-if="memberActions.length")
       v-list-subheader(v-t="'membership_card.thread_members'")
       v-list-item(
         v-for="action in memberActions"
@@ -141,7 +141,7 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="topic" v-mo
         template(v-slot:prepend)
           common-icon(:name="action.icon")
 
-    v-list(nav density="compact" :lines="false" v-if="menuActions.length")
+    v-list(nav slim density="compact" :lines="false" v-if="menuActions.length")
       v-list-subheader(v-t="'members_panel.header_actions'")
       v-list-item(
         v-for="action in menuActions"
@@ -155,6 +155,7 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="topic" v-mo
 <style lang="sass">
 .thread-sidebar .v-list-item-title
   white-space: normal !important
+
 
 .strand-nav__stance-icon-container
   display: inline-block
