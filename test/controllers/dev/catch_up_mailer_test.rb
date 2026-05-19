@@ -58,4 +58,21 @@ class Dev::CatchUpMailerTest < ActionController::TestCase
     # Verify tracking pixel (mark_summary_as_read)
     assert_element 'img[width="1"][height="1"]'
   end
+
+  test "catch_up email includes standalone polls" do
+    get :setup_thread_catch_up_with_standalone_poll
+    assert_response :success
+
+    assert parsed_body.css('.error').empty?, "Expected no error message, got: #{parsed_body.css('.error').text}"
+
+    assert_element '.everything'
+    assert_element '.toc'
+
+    # Discussion thread is present
+    assert_text_in '.everything', 'What star sign are you?'
+    assert_text_in '.activity-feed', 'first comment'
+
+    # Standalone poll is present
+    assert_text_in '.everything', 'Standalone proposal'
+  end
 end

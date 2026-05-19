@@ -49,12 +49,12 @@ class ReportService
     rows_to_hash ActiveRecord::Base.connection.execute query
   end
 
-  def discussions_per_interval
+  def topics_per_interval
     query = <<~SQL
-      SELECT date_trunc('#{@interval}', discussions.created_at)::date AS interval, count(discussions.id) count
-      FROM discussions
-      WHERE (group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR group_id IS NULL' : ''})
-      AND discussions.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
+      SELECT date_trunc('#{@interval}', topics.created_at)::date AS interval, count(topics.id) count
+      FROM topics
+      WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
+      AND topics.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
       group by interval
     SQL
     rows_to_hash ActiveRecord::Base.connection.execute query
@@ -64,8 +64,9 @@ class ReportService
     query = <<~SQL
       SELECT date_trunc('#{@interval}', comments.created_at)::date AS interval, count(comments.id) count
       FROM comments
-        LEFT JOIN discussions ON comments.discussion_id = discussions.id
-      WHERE (group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR group_id IS NULL' : ''})
+      LEFT JOIN events ON events.eventable_type = 'Comment' AND events.eventable_id = comments.id
+      JOIN topics ON topics.id = events.topic_id
+      WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
       AND comments.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
       group by interval
     SQL
@@ -76,7 +77,8 @@ class ReportService
     query = <<~SQL
       SELECT date_trunc('#{@interval}', polls.created_at)::date AS interval, count(polls.id) count
       FROM polls
-      WHERE (group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR group_id IS NULL' : ''})
+      JOIN topics ON topics.id = polls.topic_id
+      WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
       AND polls.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
       group by interval
     SQL
@@ -88,7 +90,8 @@ class ReportService
       SELECT date_trunc('#{@interval}', stances.created_at)::date AS interval, count(stances.id) count
       FROM stances
         LEFT JOIN polls ON stances.poll_id = polls.id
-      WHERE (group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR group_id IS NULL' : ''})
+        LEFT JOIN topics ON topics.id = polls.topic_id
+      WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
       AND stances.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
       AND stances.latest IS true
       AND stances.cast_at IS NOT NULL
@@ -102,19 +105,42 @@ class ReportService
       SELECT date_trunc('#{@interval}', outcomes.created_at)::date AS interval, count(outcomes.id) count
       FROM outcomes
         LEFT JOIN polls ON outcomes.poll_id = polls.id
-      WHERE (group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR group_id IS NULL' : ''})
+        LEFT JOIN topics ON topics.id = polls.topic_id
+      WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
       AND outcomes.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
       group by interval
     SQL
     rows_to_hash ActiveRecord::Base.connection.execute query
   end
 
-  def discussions_count
+  def topics_count
     query = <<~SQL
-      SELECT count(discussions.id) count
-      FROM discussions
-      WHERE (group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR group_id IS NULL' : ''})
-      AND discussions.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
+      SELECT count(topics.id) count
+      FROM topics
+      WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
+      AND topics.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
+    SQL
+    ActiveRecord::Base.connection.execute(query).to_a.first['count']
+  end
+
+  def discussion_topics_count
+    query = <<~SQL
+      SELECT count(topics.id) count
+      FROM topics
+      WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
+      AND topics.topicable_type = 'Discussion'
+      AND topics.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
+    SQL
+    ActiveRecord::Base.connection.execute(query).to_a.first['count']
+  end
+
+  def poll_topics_count
+    query = <<~SQL
+      SELECT count(topics.id) count
+      FROM topics
+      WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
+      AND topics.topicable_type = 'Poll'
+      AND topics.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
     SQL
     ActiveRecord::Base.connection.execute(query).to_a.first['count']
   end
@@ -123,18 +149,9 @@ class ReportService
     query = <<~SQL
       SELECT count(polls.id) count
       FROM polls
-      WHERE (group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR group_id IS NULL' : ''})
+      JOIN topics ON topics.id = polls.topic_id
+      WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
       AND polls.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
-    SQL
-    ActiveRecord::Base.connection.execute(query).to_a.first['count']
-  end
-
-  def discussions_with_polls_count
-    query = <<~SQL
-      SELECT count(discussions.id) count
-      FROM discussions INNER JOIN polls ON discussions.id = polls.discussion_id
-      WHERE (discussions.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR discussions.group_id IS NULL' : ''})
-      AND discussions.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
     SQL
     ActiveRecord::Base.connection.execute(query).to_a.first['count']
   end
@@ -142,65 +159,36 @@ class ReportService
   def polls_with_outcomes_count
     query = <<~SQL
       SELECT count(polls.id) count
-      FROM polls INNER JOIN outcomes ON polls.id = outcomes.poll_id
-      WHERE (group_id IN (#{@group_ids.join(',')})  #{@direct_threads ? 'OR group_id IS NULL' : ''})
+      FROM polls
+      JOIN topics ON topics.id = polls.topic_id
+      INNER JOIN outcomes ON polls.id = outcomes.poll_id
+      WHERE (topics.group_id IN (#{@group_ids.join(',')})  #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
       AND polls.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
     SQL
     ActiveRecord::Base.connection.execute(query).to_a.first['count']
   end
 
-  def discussion_ids
-    query = <<~SQL
-      SELECT discussions.id
-      FROM discussions
-      WHERE (group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR group_id IS NULL' : ''})
-      AND discussions.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
-    SQL
-    ActiveRecord::Base.connection.execute(query).map { |row| row['id'] }
-  end
-
-  def poll_ids
-    query = <<~SQL
-      SELECT polls.id
-      FROM polls
-      WHERE (group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR group_id IS NULL' : ''})
-      AND polls.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
-    SQL
-    ActiveRecord::Base.connection.execute(query).map { |row| row['id'] }
-  end
-
-  def discussion_tag_counts
-    tag_counts = {}
-    Discussion.where(id: discussion_ids).each do |discussion|
-      discussion.tags.each {|tag| tag_counts[tag] = tag_counts.fetch(tag, 0) + 1 }
-    end
-    tag_counts
-  end
-
-  def poll_tag_counts
-    tag_counts = {}
-    Poll.where(id: poll_ids).each do |poll|
-      poll.tags.each {|tag| tag_counts[tag] = tag_counts.fetch(tag, 0) + 1 }
-    end
-    tag_counts
-  end
-
   def tag_counts
-    total_counts = {}
-    discussion_tag_counts.each_pair {|tag, count| total_counts[tag] = total_counts.fetch(tag, 0) + count }
-    poll_tag_counts.each_pair {|tag, count| total_counts[tag] = total_counts.fetch(tag, 0) + count }
-    total_counts
+    counts = {}
+    Topic
+      .where("topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''}")
+      .where("topics.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'")
+      .pluck(:tags).flatten.each do |tag|
+        counts[tag] = counts.fetch(tag, 0) + 1
+      end
+    counts
   end
 
   def tag_names
-    (discussion_tag_counts.keys + poll_tag_counts.keys).uniq.sort
+    tag_counts.keys.sort
   end
 
   def discussions_per_user
     query = <<~SQL
-      SELECT count(id) count, author_id user_id
+      SELECT count(discussions.id) count, author_id user_id
       FROM discussions
-      WHERE (group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR group_id IS NULL' : ''})
+      JOIN topics ON topics.id = discussions.topic_id
+      WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
       AND discussions.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
       group by author_id
     SQL
@@ -209,21 +197,23 @@ class ReportService
 
   def comments_per_user
     query = <<~SQL
-      SELECT count(comments.id) count, user_id
+      SELECT count(comments.id) count, comments.user_id
       FROM comments
-      JOIN discussions ON comments.discussion_id = discussions.id
-      WHERE (group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR group_id IS NULL' : ''})
+      JOIN events ON events.eventable_type = 'Comment' AND events.eventable_id = comments.id
+      JOIN topics ON topics.id = events.topic_id
+      WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
       AND comments.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
-      group by user_id
+      group by comments.user_id
     SQL
     rows_to_hash ActiveRecord::Base.connection.execute(query), 'user_id', 'count'
   end
 
   def polls_per_user
     query = <<~SQL
-      SELECT count(id) count, author_id user_id
+      SELECT count(polls.id) count, author_id user_id
       FROM polls
-      WHERE (group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR group_id IS NULL' : ''})
+      JOIN topics ON topics.id = polls.topic_id
+      WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
       AND polls.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
       group by author_id
     SQL
@@ -235,7 +225,8 @@ class ReportService
       SELECT count(outcomes.id) count, outcomes.author_id user_id
       FROM outcomes
       JOIN polls ON outcomes.poll_id = polls.id
-      WHERE (group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR group_id IS NULL' : ''})
+      JOIN topics ON topics.id = polls.topic_id
+      WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
       AND outcomes.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
       group by outcomes.author_id
     SQL
@@ -247,7 +238,8 @@ class ReportService
       SELECT count(stances.id) count, participant_id
       FROM stances
       JOIN polls ON stances.poll_id = polls.id
-      WHERE (group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR group_id IS NULL' : ''})
+      JOIN topics ON topics.id = polls.topic_id
+      WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
         AND polls.anonymous = false
         AND stances.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
         AND stances.latest IS true
@@ -265,8 +257,10 @@ class ReportService
       SELECT count(reactions.id) count, reactions.user_id user_id
       FROM reactions
       JOIN comments ON reactions.reactable_id = comments.id AND reactions.reactable_type = 'Comment'
-      JOIN discussions ON comments.discussion_id = discussions.id
-      WHERE (group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR group_id IS NULL' : ''})
+      JOIN events ON events.eventable_type = 'Comment' AND events.eventable_id = comments.id
+      JOIN topics ON topics.id = events.topic_id AND topics.topicable_type = 'Discussion'
+      JOIN discussions ON discussions.id = topics.topicable_id
+      WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
       AND reactions.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
       group by reactions.user_id
     SQL
@@ -275,7 +269,8 @@ class ReportService
       SELECT count(reactions.id) count, reactions.user_id user_id
       FROM reactions
       JOIN discussions ON reactions.reactable_id = discussions.id AND reactions.reactable_type = 'Discussion'
-      WHERE (group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR group_id IS NULL' : ''})
+      JOIN topics ON topics.id = discussions.topic_id
+      WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
       AND reactions.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
       group by reactions.user_id
     SQL
@@ -284,7 +279,8 @@ class ReportService
       SELECT count(reactions.id) count, reactions.user_id user_id
       FROM reactions
       JOIN polls ON reactions.reactable_id = polls.id AND reactions.reactable_type = 'Poll'
-      WHERE (group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR group_id IS NULL' : ''})
+      JOIN topics ON topics.id = polls.topic_id
+      WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
       AND reactions.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
       group by reactions.user_id
     SQL
@@ -294,7 +290,8 @@ class ReportService
       FROM reactions
       JOIN stances ON reactions.reactable_id = stances.id AND reactions.reactable_type = 'Stance'
       JOIN polls ON stances.poll_id = polls.id
-      WHERE (group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR group_id IS NULL' : ''})
+      JOIN topics ON topics.id = polls.topic_id
+      WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
       AND reactions.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
       group by reactions.user_id
     SQL
@@ -304,7 +301,8 @@ class ReportService
       FROM reactions
       JOIN outcomes ON reactions.reactable_id = outcomes.id AND reactions.reactable_type = 'Outcome'
       JOIN polls ON outcomes.poll_id = polls.id
-      WHERE (group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR group_id IS NULL' : ''})
+      JOIN topics ON topics.id = polls.topic_id
+      WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
       AND reactions.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
       group by reactions.user_id
     SQL
@@ -342,8 +340,9 @@ class ReportService
     query = <<~SQL
       SELECT count(discussions.id) count, country
       FROM discussions
+      JOIN topics ON topics.id = discussions.topic_id
       JOIN users ON discussions.author_id = users.id
-      WHERE (group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR group_id IS NULL' : ''})
+      WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
       AND discussions.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
       group by users.country
     SQL
@@ -354,9 +353,11 @@ class ReportService
     query = <<~SQL
       SELECT count(comments.id) count, country
       FROM comments
-      JOIN discussions ON comments.discussion_id = discussions.id
+      JOIN events ON events.eventable_type = 'Comment' AND events.eventable_id = comments.id
+      JOIN topics ON topics.id = events.topic_id AND topics.topicable_type = 'Discussion'
+      JOIN discussions ON discussions.id = topics.topicable_id
       JOIN users ON comments.user_id = users.id
-      WHERE (group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR group_id IS NULL' : ''})
+      WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
       AND comments.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
       group by users.country
     SQL
@@ -367,8 +368,9 @@ class ReportService
     query = <<~SQL
       SELECT count(polls.id) count, country
       FROM polls
+      JOIN topics ON topics.id = polls.topic_id
       JOIN users ON polls.author_id = users.id
-      WHERE (group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR group_id IS NULL' : ''})
+      WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
       AND polls.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
       group by users.country
     SQL
@@ -380,8 +382,9 @@ class ReportService
       SELECT count(outcomes.id) count, country
       FROM outcomes
       JOIN polls ON polls.id = outcomes.poll_id
+      JOIN topics ON topics.id = polls.topic_id
       JOIN users ON outcomes.author_id = users.id
-      WHERE (group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR group_id IS NULL' : ''})
+      WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
       AND outcomes.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
       group by users.country
     SQL
@@ -393,8 +396,9 @@ class ReportService
       SELECT count(stances.id) count, country
       FROM stances
       JOIN polls ON stances.poll_id = polls.id
+      JOIN topics ON topics.id = polls.topic_id
       JOIN users ON stances.participant_id = users.id
-      WHERE (group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR group_id IS NULL' : ''})
+      WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
         AND polls.anonymous = false
         AND stances.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
         AND stances.latest IS true
@@ -412,9 +416,11 @@ class ReportService
       SELECT count(reactions.id) count, country
       FROM reactions
       JOIN comments ON reactions.reactable_id = comments.id AND reactions.reactable_type = 'Comment'
-      JOIN discussions ON comments.discussion_id = discussions.id
+      JOIN events ON events.eventable_type = 'Comment' AND events.eventable_id = comments.id
+      JOIN topics ON topics.id = events.topic_id AND topics.topicable_type = 'Discussion'
+      JOIN discussions ON discussions.id = topics.topicable_id
       JOIN users ON reactions.user_id = users.id
-      WHERE (group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR group_id IS NULL' : ''})
+      WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
       AND reactions.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
       group by country
     SQL
@@ -423,8 +429,9 @@ class ReportService
       SELECT count(reactions.id) count, country
       FROM reactions
       JOIN discussions ON reactions.reactable_id = discussions.id AND reactions.reactable_type = 'Discussion'
+      JOIN topics ON topics.id = discussions.topic_id
       JOIN users ON reactions.user_id = users.id
-      WHERE (group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR group_id IS NULL' : ''})
+      WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
       AND reactions.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
       group by country
     SQL
@@ -433,8 +440,9 @@ class ReportService
       SELECT count(reactions.id) count, country
       FROM reactions
       JOIN polls ON reactions.reactable_id = polls.id AND reactions.reactable_type = 'Poll'
+      JOIN topics ON topics.id = polls.topic_id
       JOIN users ON reactions.user_id = users.id
-      WHERE (group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR group_id IS NULL' : ''})
+      WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
       AND reactions.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
       group by country
     SQL
@@ -444,8 +452,9 @@ class ReportService
       FROM reactions
       JOIN stances ON reactions.reactable_id = stances.id AND reactions.reactable_type = 'Stance'
       JOIN polls ON stances.poll_id = polls.id
+      JOIN topics ON topics.id = polls.topic_id
       JOIN users ON reactions.user_id = users.id
-      WHERE (group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR group_id IS NULL' : ''})
+      WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
       AND reactions.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
       group by country
     SQL
@@ -455,8 +464,9 @@ class ReportService
       FROM reactions
       JOIN outcomes ON reactions.reactable_id = outcomes.id AND reactions.reactable_type = 'Outcome'
       JOIN polls ON outcomes.poll_id = polls.id
+      JOIN topics ON topics.id = polls.topic_id
       JOIN users ON reactions.user_id = users.id
-      WHERE (group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR group_id IS NULL' : ''})
+      WHERE (topics.group_id IN (#{@group_ids.join(',')}) #{@direct_threads ? 'OR topics.group_id IS NULL' : ''})
       AND reactions.created_at BETWEEN '#{@start_at.iso8601}' AND '#{@end_at.iso8601}'
       group by country
     SQL

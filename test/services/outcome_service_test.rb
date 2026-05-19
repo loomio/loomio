@@ -2,19 +2,17 @@ require 'test_helper'
 
 class OutcomeServiceTest < ActiveSupport::TestCase
   setup do
-    @user = users(:discussion_author)
-    @group = groups(:test_group)
-    @discussion = discussions(:test_discussion)
+    @user = users(:user)
+    @group = groups(:group)
 
-    @poll = Poll.new(
+    @poll = PollService.create(params: {
       title: "Test Poll",
       poll_type: "proposal",
-      discussion: @discussion,
-      author: @user,
       poll_option_names: ["Yes", "No"],
-      closed_at: 1.day.ago
-    )
-    PollService.create(poll: @poll, actor: @user)
+      closing_at: 3.days.from_now,
+      group_id: @group.id
+    }, actor: @user)
+    PollService.close(poll: @poll, actor: @user)
 
     @outcome = Outcome.create(
       poll: @poll,

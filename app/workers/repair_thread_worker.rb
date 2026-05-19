@@ -2,7 +2,7 @@ class RepairThreadWorker
   include Sidekiq::Worker
   sidekiq_options retry: false
 
-  def perform(discussion_id)
-    EventService.repair_discussion(discussion_id)
+  def perform(topic_id)
+    TopicService.repair_thread(topic_id)
   end
 end

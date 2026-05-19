@@ -70,7 +70,7 @@
     "turndown-plugin-gfm": "^1.0.2",
     "vue": "^3.5.34",
     "vue-chartjs": "^4.1.2",
-    "vue-i18n": "^9.14.5",
+    "vue-i18n": "^11.4.0",
     "vue-router": "^5.0.7",
     "vue-slicksort": "^2.0.5",
     "vuetify": "^3",
@@ -79,15 +79,17 @@
   },
   "devDependencies": {
     "@originjs/vite-plugin-commonjs": "latest",
-    "@originjs/vite-plugin-content": "latest",
     "@vitejs/plugin-vue": "^6.0.7",
+    "@originjs/vite-plugin-content": "latest",
+    "@vitejs/plugin-vue": "^6.0.5",
     "nightwatch": "^3.15.0",
     "pug": "latest",
     "sass": "latest",
     "unplugin-vue-components": "latest",
     "vite": "^8.0.13",
     "vite-plugin-env-compatible": "latest",
-    "vite-plugin-vuetify": "latest"
+    "vite-plugin-vuetify": "latest",
+    "yaml": "^2.8.3"
   },
   "optionalDependencies": {
     "@emnapi/core": "^1.10.0",

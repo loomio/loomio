@@ -4,8 +4,7 @@ import { subWeeks } from 'date-fns';
 import { each, compact } from 'lodash-es';
 
 export default function(options) {
-  let chain = Records.discussions.collection.chain();
-  chain = chain.find({discardedAt: null});
+  let chain = Records.topics.collection.chain();
   if (options.group) { chain = chain.find({groupId: { $in: options.group.organisationIds() }}); }
   if (options.from) { chain = chain.find({lastActivityAt: { $gt: options.from }}); }
   if (options.to) { chain = chain.find({lastActivityAt: { $lt: options.to }}); }
@@ -15,24 +14,23 @@ export default function(options) {
   } else {
     each(compact([].concat(options.filters)), filter => chain = (() => { switch (filter) {
       case 'show_recent':    return chain.find({lastActivityAt: { $gt: subWeeks(new Date, 6) }});
-      case 'show_unread':    return chain.where(thread => thread.isUnread());
-      case 'hide_unread':    return chain.where(thread => !thread.isUnread());
-      case 'show_dismissed': return chain.where(thread => thread.isDismissed());
-      case 'hide_dismissed': return chain.where(thread => !thread.isDismissed());
-      case 'show_closed':    return chain.where(thread => thread.closedAt != null);
+      case 'show_unread':    return chain.where(topic => topic.isUnread());
+      case 'hide_unread':    return chain.where(topic => !topic.isUnread());
+      case 'show_dismissed': return chain.where(topic => topic.isDismissed());
+      case 'hide_dismissed': return chain.where(topic => !topic.isDismissed());
+      case 'show_closed':    return chain.where(topic => topic.closedAt != null);
       case 'show_opened':    return chain.find({closedAt: null});
-      case 'show_pinned':    return chain.find({pinned: true});
-      case 'hide_pinned':    return chain.find({pinned: false});
-      case 'show_muted':     return chain.where(thread => thread.volume() === 'mute');
-      case 'hide_muted':     return chain.where(thread => thread.volume() !== 'mute');
-      case 'show_proposals': return chain.where(thread => thread.hasDecision());
-      case 'hide_proposals': return chain.where(thread => !thread.hasDecision());
+      case 'show_pinned':    return chain.find({pinnedAt: {$ne: null}});
+      case 'hide_pinned':    return chain.find({pinnedAt: null});
+      case 'show_muted':     return chain.where(topic => topic.volume() === 'mute');
+      case 'hide_muted':     return chain.where(topic => topic.volume() !== 'mute');
+      case 'show_proposals': return chain.where(topic => topic.activePollsCount > 0);
+      case 'hide_proposals': return chain.where(topic => topic.activePollsCount === 0);
       case 'only_threads_in_my_groups':
         var userGroupIds = Session.user().groupIds();
         return chain.find({$or: [
           {$and: [
-            {inviterId: {$ne: null}},
-            {revokedAt: null}
+            {readerInviterId: {$ne: null}}
           ]},
           {groupId: {$in: userGroupIds}}
         ]});

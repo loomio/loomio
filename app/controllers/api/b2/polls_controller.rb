@@ -5,13 +5,9 @@ class Api::B2::PollsController < Api::B2::BaseController
   end
 
   def create
-    instantiate_resource
-    if PollService.create(actor: current_user, poll: @poll, params: params)
-      PollService.invite(actor: current_user, poll: @poll, params: params)
-      respond_with_resource
-    else
-      respond_with_errors
-    end
+    self.resource = PollService.create(params: resource_params, actor: current_user)
+    PollService.invite(poll: resource, actor: current_user, params: params)
+    respond_with_resource
   end
 
   def index
@@ -20,7 +16,7 @@ class Api::B2::PollsController < Api::B2::BaseController
   end
 
   def accessible_records
-    scope = Poll.where(group_id: group.id)
+    scope = Poll.joins(:topic).where(topics: { group_id: group.id })
     case params[:status]
     when 'closed' then scope.closed
     when 'all'    then scope.kept

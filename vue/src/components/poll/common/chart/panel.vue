@@ -13,7 +13,9 @@ export default {
   },
 
   props: {
-    poll: Object
+    poll: Object,
+    hideViewAllVotes: Boolean,
+    hideVoters: Boolean
   },
 
   data() {
@@ -21,7 +23,7 @@ export default {
   },
 
   created() {
-    if (Session.isSignedIn()) {
+    if (Session.isSignedIn() && (!this.hideVoters || this.poll.chartType == 'grid')) {
       Records.fetch({path: "polls/"+this.poll.id+"/voters"})
     }
   }
@@ -59,11 +61,15 @@ export default {
           span(v-t="{path: `poll_option_form.name_${option.test_operator}_${option.test_against}`, args: {percent: option.test_percent, name: option.name} }")
     template(v-if="poll.config().has_options")
       poll-stv-chart-panel(v-if="poll.pollType == 'stv'" :poll="poll")
-      poll-common-chart-table(v-else-if="poll.chartType != 'grid'" :poll="poll")
+      poll-common-chart-table(v-else-if="poll.chartType != 'grid'" :poll="poll" :hide-voters="hideVoters")
       poll-common-chart-meeting(v-else :poll="poll")
 
   p.text-medium-emphasis.my-2(v-if="poll.closingAt && poll.pollType != 'count'")
     span( v-t="{ path: 'poll_common_percent_voted.pct_participation', args: { num: poll.decidedVotersCount, total: poll.votersCount, pct: poll.castStancesPct } }" )
+    template(v-if="poll.decidedVotersCount > 0 && !hideViewAllVotes")
+      mid-dot
+      router-link(:to="'/p/' + poll.key + '/votes'")
+        span(v-t="'poll_common.view_all_votes'")
     //template(v-if="poll.quorumPct")
     //  br
     //  span(v-if="poll.quorumVotesRequired <= 0" v-t="{ path: 'poll_common_percent_voted.quorum_reached', args: { pct: poll.quorumPct }  }" )

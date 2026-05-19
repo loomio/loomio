@@ -416,8 +416,6 @@ tr:
       disagree: Aynı fikirde olmamak
       disagree_meaning: Bu öneriyi destekleyebilmem için öncelikle içindeki bir şeyin değiştirilmesi gerekiyor.
       disagree_prompt: Bu öneriyi destekleyebilmeniz için nasıl geliştirilebilir?
-      abstain_meaning: Bu karara oy vermemeyi tercih etmek veya oy verememek.
-      abstain_prompt: Bu karara ilişkin olarak neden çekimser kalıyorsunuz veya oy kullanamayacağınızı düşünüyorsunuz?
     advice:
       process_subtitle: Almanız gereken bir karar hakkında tavsiye alın
       process_introduction: <p>Almanız gereken bir karar hakkında, karardan etkilenen veya uzman kişilerin tavsiyelerine başvurun; böylece kuruluşunuz için daha iyi bir karar verebilirsiniz.</p><ul><li><p> Tavsiye, kuruluşunuz için daha iyi kararlar almanıza yardımcı olur.</p></li><li><p> İlişkileri, öğrenme fırsatlarını ve çeşitli girdileri teşvik edin.</p></li><li><p> Girişimciliği ve yaratıcılığı teşvik edin ve daha keyifli çalışmalar yapın.</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>Danışmanlık süreci hakkında daha fazla bilgi edinin</u></a> .</p>
@@ -464,7 +462,6 @@ tr:
       block_prompt: Bu teklife itirazınızı ve neden devam etmemesi gerektiğini açıklayın
       details_v2: "<h3><strong>Vermeniz gereken karar nedir?</strong></h3><p></p><h3> <strong>Bu neden önemli?</strong></h3><p></p><h3> <strong>İnsanlardan ne yapmalarını istiyorsunuz?</strong></h3><p></p><p> Görüşünüzü ve nedenini paylaşın. Eğer katılmıyorsanız, bunu desteklemeniz için nelerin değişmesi gerektiğini açıklayın.</p>"
       process_introduction_v2: "<p><strong>Konsensus,</strong> herkesin aktif olarak hemfikir olmasının önemli olduğu kararlar için kullanılır. Katılımcılar, birbirlerinin ihtiyaçlarını anlamak ve tüm grubun destekleyebileceği bir öneri oluşturmak için birlikte çalışırlar. İnsanlar konuşma geliştikçe oylarını değiştirebildikleri için, bu süreç tek seferlik bir karar yerine gerçek bir diyaloğu teşvik eder. Diğer yöntemlere göre daha fazla sabır gerektirir, ancak en güçlü bağlılığı oluşturur.</p><p> Bu şablon varsayılan olarak bir <strong>Engelleme</strong> seçeneği içerir. Engelleme her grup için uygun değildir; tartışmalı olabilir veya kötüye kullanılabilir. Karar verme sürecinizde engelleme seçeneğini kullanmıyorsanız, şablonu düzenleyerek bu seçeneği kaldırmanızı öneririz.</p>"
-      abstain_prompt: Bu karara ilişkin oylamada neden çekimser kalıyorsunuz veya oy kullanamayacağınızı düşünüyorsunuz?
     question_round:
       process_subtitle: İnsanların bir teklifi anlamalarına yardımcı olmak için açıklayıcı sorular sorun
       process_introduction: <p>Soru turu, insanların teklif hakkında açıklayıcı sorular sorarak herkesin teklif hakkında ne düşündüğünü söylemeden önce teklifi anlamasını sağlama fırsatıdır.</p><p> Loomio Soru turu, oylama seçeneği olmayan özel bir tekliftir. Katılımcıların tur için belirlediğiniz bir süre içerisinde soru sormalarına olanak tanır.</p><p> Soru turu, genellikle Onay sürecinin bir adımı olarak kullanılır.</p><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Onay süreci hakkında daha fazla bilgi edinin</a> .</p>
@@ -500,7 +497,6 @@ tr:
       could_be_better_prompt: Neyi değiştirmek isterdiniz?
       needs_a_rethink: Yeniden düşünülmesi gerekiyor
       needs_a_rethink_prompt: Endişeniz nedir?
-      needs_a_rethink_meaning: Bence bu yanlış bir yaklaşım.
     gradients_of_agreement:
       process_subtitle: Bir öneriye 8 puanlık bir ölçekte destek verin
       process_introduction: <p>Anlaşma önerisinin eğimleri, bir grubun üyelerinin bir öneriye olan desteklerini bir ölçekte dereceler halinde ifade etmelerini sağlar ve "katılıyorum" ve "katılmıyorum" ifadelerinden daha fazla destek ifade etme yolu sunar.</p><p> Resmi bir anlaşmaya varmadan önce bir teklife verilen desteği test etmek için ön tur olarak Anlaşma Gradientlerini kullanın.</p><p> Anlaşma eğimleri, insanların bir teklifin oluştuğunu bilmelerini sağlar ve onları katılmaya teşvik eder. İnsanları dinlemek, nasıl hissettiklerini anlamak ve uygun şekilde yanıt vermek için bir fırsattır - daha iyi bir karar almak için katkılarını dahil etme potansiyelini açar.</p>

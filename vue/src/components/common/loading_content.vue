@@ -1,14 +1,13 @@
-<script lang="js">
-export default {
-  props: {
-    blockCount: Number,
-    lineCount: Number
-  },
-  computed: {
-    blocks() { return new Array(this.blockCount || 1); },
-    lines() { return new Array(this.lineCount || 3); }
-  }
-};
+<script setup lang="js">
+import { computed } from 'vue';
+
+const props = defineProps({
+  blockCount: Number,
+  lineCount: Number
+});
+
+const blocks = computed(() => new Array(props.blockCount || 1));
+const lines = computed(() => new Array(props.lineCount || 3));
 </script>
 <template lang="pug">
 .loading-content

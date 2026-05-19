@@ -47,9 +47,9 @@ class MybbService
     		else
 	    		if post['message'].present?
 	    			parent = Comment.find_by(id: post['replyto'].to_i)
+	    			discussion = Discussion.find(discussion_ids[post['tid']])
 	    			comment = Comment.create!(
 	    				parent_id: comment_ids[parent&.id],
-	    				discussion_id: discussion_ids[post['tid']],
 	    				user_id: user_ids[post['uid']],
 	    				created_at: Time.at(post['dateline'].to_i),
 	    				updated_at: Time.at(post['dateline'].to_i),
@@ -58,7 +58,7 @@ class MybbService
 	  				comment_ids[post['pid']] = comment.id
 	  				Event.create!(
 	  					user_id: user_ids[post['uid']],
-	  					discussion_id: discussion_ids[post['tid']],
+	  					topic_id: discussion.topic.id,
 	  					kind: "new_comment",
 	  					eventable: comment,
 	  					created_at: Time.at(post['dateline'].to_i),
@@ -68,8 +68,8 @@ class MybbService
 	  		end
     	end
 		end
-		ids = Discussion.where(group_id: group_id).pluck(:id)
-		ids.each {|id| EventService.repair_discussion(id)}
+		topic_ids = Topic.where(group_id: group_id, topicable_type: 'Discussion').pluck(:id)
+		topic_ids.each {|id| TopicService.repair_thread(id)}
 		# SearchIndexWorker.new.perform(ids)
 	end
 end

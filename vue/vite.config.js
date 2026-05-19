@@ -3,7 +3,7 @@ import path from 'path';
 import vue from '@vitejs/plugin-vue';
 import vuetify from 'vite-plugin-vuetify';
 import envCompatible from 'vite-plugin-env-compatible';
-import yaml from '@originjs/vite-plugin-content';
+import YAML from 'yaml';
 import Components from 'unplugin-vue-components/vite';
 import { viteCommonjs } from '@originjs/vite-plugin-commonjs';
 
@@ -17,6 +17,32 @@ function LoomioVueResolver() {
         return { default: name, from: '/src/components/' + LoomioComponents[name] + '.vue' };
       }
     }
+  };
+}
+
+function loomioYaml() {
+  const yamlPattern = /\.ya?ml$/;
+  const clientLocalePattern = /\/config\/locales\/client\.[^/]+\.ya?ml$/;
+  const railsInterpolationPattern = /%\{([A-Za-z_][A-Za-z0-9_$-]*)\}/g;
+
+  return {
+    name: 'loomio:yaml',
+    transform(code, id) {
+      const filename = id.split('?')[0].replace(/\\/g, '/');
+
+      if (!yamlPattern.test(filename)) {
+        return null;
+      }
+
+      if (clientLocalePattern.test(filename)) {
+        code = code.replace(railsInterpolationPattern, '{$1}');
+      }
+
+      return {
+        code: `export default ${JSON.stringify(YAML.parse(code))};`,
+        map: null,
+      };
+    },
   };
 }
 
@@ -65,7 +91,7 @@ export default defineConfig({
     }),
     viteCommonjs(),
     envCompatible(),
-    yaml(),
+    loomioYaml(),
   ],
 
   // --- IMPORTANT FIX ---

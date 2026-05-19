@@ -5,7 +5,7 @@ import {mdiCallSplit} from '@mdi/js';
 
 export default {
   props: {
-    discussion: Object
+    topic: Object
   },
   data() {
     return { mdiCallSplit }
@@ -15,7 +15,7 @@ export default {
       openModal({
         component: 'MoveCommentsModal',
         props: {
-          discussion: this.discussion
+          topic: this.topic
         }
       });
     }
@@ -35,12 +35,12 @@ export default {
 </script>
 
 <template lang='pug'>
-v-banner.discussion-fork-actions(lines="one" sticky :elevation="4" v-if='discussion.forkedEventIds.length' :icon="mdiCallSplit" color="primary" :style="styles")
+v-banner.discussion-fork-actions(lines="one" sticky :elevation="4" v-if='topic.forkedEventIds.length' :icon="mdiCallSplit" color="primary" :style="styles")
   v-banner-text
     span(v-t="'discussion_fork_actions.helptext'")
   template(v-slot:actions)
     .d-flex.align-center
-      v-btn(color="primary" @click="openMoveCommentsModal()" v-t="'discussion_fork_actions.move'")
-      v-btn(icon @click='discussion.forkedEventIds = []')
+      v-btn.discussion-fork-actions__move(color="primary" @click="openMoveCommentsModal()" v-t="'discussion_fork_actions.move'")
+      v-btn(icon @click='topic.forkedEventIds = []')
         common-icon(name="mdi-close")
 </template>

@@ -9,34 +9,40 @@ class AttachmentQuery
 
     ids.concat ActiveStorage::Attachment.joins(:blob).
       joins("LEFT OUTER JOIN comments ON active_storage_attachments.record_type = 'Comment' AND active_storage_attachments.record_id = comments.id").
-      joins("LEFT OUTER JOIN discussions comments_discussions ON comments_discussions.id = comments.discussion_id").
-      where('comments_discussions.group_id IN (:group_ids) AND comments_discussions.discarded_at IS NULL AND comments.discarded_at IS NULL', group_ids: group_ids).
+      joins("LEFT OUTER JOIN events ON events.eventable_type = 'Comment' AND events.eventable_id = comments.id").
+      joins("LEFT OUTER JOIN topics ON topics.id = events.topic_id").
+      joins("LEFT OUTER JOIN discussions comments_discussions ON topics.topicable_type = 'Discussion' AND comments_discussions.id = topics.topicable_id").
+      where('topics.group_id IN (:group_ids) AND comments_discussions.discarded_at IS NULL AND comments.discarded_at IS NULL', group_ids: group_ids).
       where('active_storage_attachments.name': :files).
       where("active_storage_blobs.filename ilike ?", "%#{query}%").limit(limit).offset(offset).order('id desc').pluck(:id)
 
     ids.concat ActiveStorage::Attachment.joins(:blob).
       joins("LEFT OUTER JOIN outcomes ON active_storage_attachments.record_type = 'Outcome' AND active_storage_attachments.record_id = outcomes.id").
       joins("LEFT OUTER JOIN polls outcomes_polls ON outcomes_polls.id = outcomes.poll_id").
-      where('outcomes_polls.group_id IN (:group_ids) AND outcomes_polls.discarded_at IS NULL', group_ids: group_ids).
+      joins("LEFT OUTER JOIN topics outcomes_topics ON outcomes_topics.id = outcomes_polls.topic_id").
+      where('outcomes_topics.group_id IN (:group_ids) AND outcomes_polls.discarded_at IS NULL', group_ids: group_ids).
       where('active_storage_attachments.name': :files).
       where("active_storage_blobs.filename ilike ?", "%#{query}%").limit(limit).offset(offset).order('id desc').pluck(:id)
 
     ids.concat ActiveStorage::Attachment.joins(:blob).
       joins("LEFT OUTER JOIN stances  ON active_storage_attachments.record_type = 'Stance'  AND active_storage_attachments.record_id = stances.id").
-      joins("LEFT OUTER JOIN polls stances_polls ON stances_polls.id = stances.id").
-      where('stances_polls.group_id IN (:group_ids) AND stances_polls.discarded_at IS NULL AND stances.revoked_at IS NULL', group_ids: group_ids).
+      joins("LEFT OUTER JOIN polls stances_polls ON stances_polls.id = stances.poll_id").
+      joins("LEFT OUTER JOIN topics stances_topics ON stances_topics.id = stances_polls.topic_id").
+      where('stances_topics.group_id IN (:group_ids) AND stances_polls.discarded_at IS NULL AND stances.revoked_at IS NULL', group_ids: group_ids).
       where('active_storage_attachments.name': :files).
       where("active_storage_blobs.filename ilike ?", "%#{query}%").limit(limit).offset(offset).order('id desc').pluck(:id)
 
     ids.concat ActiveStorage::Attachment.joins(:blob).
       joins("LEFT OUTER JOIN discussions ON active_storage_attachments.record_type = 'Discussion' AND discussions.id = active_storage_attachments.record_id").
-      where('discussions.group_id IN (:group_ids) AND discussions.discarded_at IS NULL', group_ids: group_ids).
+      joins("LEFT OUTER JOIN topics discussions_topics ON discussions_topics.id = discussions.topic_id").
+      where('discussions_topics.group_id IN (:group_ids) AND discussions.discarded_at IS NULL', group_ids: group_ids).
       where('active_storage_attachments.name': :files).
       where("active_storage_blobs.filename ilike ?", "%#{query}%").limit(limit).offset(offset).order('id desc').pluck(:id)
 
     ids.concat ActiveStorage::Attachment.joins(:blob).
       joins("LEFT OUTER JOIN polls ON active_storage_attachments.record_type = 'Poll' AND polls.id = active_storage_attachments.record_id").
-      where('polls.group_id IN (:group_ids) AND polls.discarded_at IS NULL', group_ids: group_ids).
+      joins("LEFT OUTER JOIN topics polls_topics ON polls_topics.id = polls.topic_id").
+      where('polls_topics.group_id IN (:group_ids) AND polls.discarded_at IS NULL', group_ids: group_ids).
       where('active_storage_attachments.name': :files).
       where("active_storage_blobs.filename ilike ?", "%#{query}%").limit(limit).offset(offset).order('id desc').pluck(:id)
 

@@ -51,7 +51,7 @@ class Api::B2::MembershipsControllerTest < ActionController::TestCase
   end
 
   test "bad group id" do
-    bad_group = groups(:another_group)
+    bad_group = groups(:alien_group)
     post :create, params: {
       group_id: bad_group.id,
       emails: ['hey@there.com'],
@@ -86,7 +86,7 @@ class Api::B2::MembershipsControllerTest < ActionController::TestCase
   end
 
   test "global admin not in group can add members" do
-    new_admin = users(:admin_user)
+    new_admin = users(:admin)
     new_admin.update_columns(api_key: "gadminkey#{SecureRandom.hex(8)}")
     post :create, params: {
       group_id: @group.id,
@@ -100,7 +100,7 @@ class Api::B2::MembershipsControllerTest < ActionController::TestCase
   end
 
   test "global admin not in group can remove members" do
-    new_admin = users(:admin_user)
+    new_admin = users(:admin)
     new_admin.update_columns(api_key: "gadminkey#{SecureRandom.hex(8)}")
     post :create, params: {
       group_id: @group.id,

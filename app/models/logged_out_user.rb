@@ -40,8 +40,8 @@ class LoggedOutUser
     @params[:stance_token]
   end
 
-  def discussion_reader_token
-    @params[:discussion_reader_token]
+  def topic_reader_token
+    @params[:topic_reader_token]
   end
 
   def create_user
@@ -60,9 +60,7 @@ class LoggedOutUser
     0
   end
 
-  def message_channel
-    nil
-  end
+
 
   def nil_methods
     super + [:id, :created_at, :avatar_url, :thumb_url, :presence, :restricted, :persisted?, :content_locale, :browseable_group_ids]

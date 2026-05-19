@@ -10,13 +10,14 @@ class GroupExportService
     memberships
     membership_requests
     discussions
+    topics
     exportable_polls
     exportable_poll_options
     exportable_outcomes
     exportable_stances
     exportable_stance_choices
     poll_stance_receipts
-    discussion_readers
+    topic_readers
     comments
   ]
 
@@ -40,11 +41,16 @@ class GroupExportService
       reactions: %w[reactable]
     },
     discussions: {
-      comments: %w[discussion_id],
-      discussion_readers: %w[discussion_id],
-      polls: %w[discussion_id],
-      events: %w[discussion_id eventable],
+      topics: %w[topicable],
+      comments: %w[parent],
+      events: %w[eventable],
       reactions: %w[reactable]
+    },
+    topics: {
+      discussions: %w[topic_id],
+      polls: %w[topic_id],
+      events: %w[topic_id],
+      topic_readers: %w[topic_id]
     },
     events: {
       events: %w[parent_id],
@@ -52,8 +58,7 @@ class GroupExportService
     },
     groups: {
       memberships: %w[group_id],
-      polls: %w[group_id],
-      discussions: %w[group_id],
+      topics: %w[group_id],
       tags: %w[group_id],
       webhooks: %w[group_id],
       events: %w[eventable],
@@ -75,6 +80,7 @@ class GroupExportService
       events: %w[eventable]
     },
     polls: {
+      topics: %w[topicable],
       stance_receipts: %w[poll_id],
       stances: %w[poll_id],
       poll_options: %w[poll_id],
@@ -90,7 +96,7 @@ class GroupExportService
       poll_templates: %w[author_id],
       attachments: %w[user_id],
       comments: %w[user_id discarded_by] ,
-      discussion_readers: %w[user_id inviter_id],
+      topic_readers: %w[user_id inviter_id],
       groups: %w[creator_id],
       membership_requests: %w[requestor_id responder_id],
       memberships: %w[user_id inviter_id],
@@ -113,7 +119,7 @@ class GroupExportService
     group = Group.find(group_id)
     group_ids = Group.find(group_id).id_and_subgroup_ids
     author_ids = Membership.where(group_id: group_ids).pluck(:user_id).uniq
-    discussion_ids = Discussion.where(group_id: nil, author_id: author_ids).pluck(:id)
+    discussion_ids = Discussion.joins(:topic).where(topics: { group_id: nil }, author_id: author_ids).pluck(:id)
     filename = "/tmp/#{DateTime.now.strftime("%Y-%m-%d_%H-%M-%S")}_invite-only-threads-for-#{group.name.parameterize}.json"
     ids = Hash.new { |hash, key| hash[key] = [] }
     File.open(filename, 'w') do |file|
@@ -129,7 +135,7 @@ class GroupExportService
            comments
            readers
            items
-           discussion_readers].each do |relation|
+           topic_readers].each do |relation|
           discussion.send(relation).find_each(batch_size: 20000) do |record|
             puts_record(record, file, ids)
           end
@@ -283,7 +289,7 @@ class GroupExportService
             next unless migrate_ids[ref_table].present?
             imported_ids = migrate_ids[ref_table].values
             columns.each do |column|
-              if ['eventable', 'reactable'].include? column
+              if ['eventable', 'reactable', 'topicable', 'parent'].include? column
                 ref_table.classify.constantize.
                 where(id: imported_ids).
                 where(column+"_type" => table.classify, column+"_id" => old_id).

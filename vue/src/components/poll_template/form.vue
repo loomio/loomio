@@ -406,7 +406,7 @@ export default {
             :label="$t('poll_common_settings.specified_voters_only_false_group')")
           v-radio.poll-common-settings__specified-voters-only(
             :value="true"
-            :label="$t('poll_common_settings.specified_voters_only_true')")
+            :label="$t('poll_common_settings.selected_people_only')")
 
         v-divider.mb-4
         .text-subtitle-1.pb-2(v-t="'poll_common_form.reminder_notification'")
@@ -504,6 +504,12 @@ export default {
           v-model="pollTemplate.outcomeReviewDueInDays"
           :rules="validate('outcomeReviewDueInDays')"
         )
+
+    v-card-text
+      v-divider.mb-4
+      .text-subtitle-1.pb-2(v-t="'thread_arrangement_form.topic_settings'")
+      v-checkbox(v-model="pollTemplate.allowComments" :label="$t('thread_arrangement_form.allow_comments')" :hint="$t('thread_arrangement_form.allow_comments_description')" persistent-hint hide-details="auto")
+      v-checkbox(v-model="pollTemplate.allowReactions" :label="$t('thread_arrangement_form.allow_reactions')" :hint="$t('thread_arrangement_form.allow_reactions_description')" persistent-hint hide-details="auto")
 
     v-card-actions.poll-common-form-actions
       help-btn(path='en/user_manual/polls/poll_templates')

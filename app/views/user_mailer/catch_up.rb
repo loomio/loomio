@@ -3,11 +3,11 @@
 class Views::UserMailer::CatchUp < Views::ApplicationMailer::BaseLayout
   include PrettyUrlHelper
 
-  def initialize(user:, recipient:, groups:, discussions_by_group_id:, subject_key:, subject_params:, time_start:, time_finish:, cache:, utm_hash:)
+  def initialize(user:, recipient:, groups:, topics_by_group_id:, subject_key:, subject_params:, time_start:, time_finish:, cache:, utm_hash:)
     @user = user
     @recipient = recipient
     @groups = groups
-    @discussions_by_group_id = discussions_by_group_id
+    @topics_by_group_id = topics_by_group_id
     @subject_key = subject_key
     @subject_params = subject_params
     @time_start = time_start
@@ -24,7 +24,7 @@ class Views::UserMailer::CatchUp < Views::ApplicationMailer::BaseLayout
       div(class: "toc") do
         render Views::UserMailer::CatchUp::Headlines.new(
           groups: @groups,
-          discussions_by_group_id: @discussions_by_group_id,
+          topics_by_group_id: @topics_by_group_id,
           recipient: @recipient,
           utm_hash: @utm_hash
         )
@@ -32,11 +32,11 @@ class Views::UserMailer::CatchUp < Views::ApplicationMailer::BaseLayout
 
       hr
 
-      if @discussions_by_group_id.has_key?(nil)
+      if @topics_by_group_id.has_key?(nil)
         h1 { link_to t(:"sidebar.direct_discussions"), direct_discussions_url }
-        @discussions_by_group_id[nil].each do |discussion|
-          render Views::UserMailer::CatchUp::Discussion.new(
-            discussion: discussion,
+        @topics_by_group_id[nil].each do |topic|
+          render Views::UserMailer::CatchUp::Topic.new(
+            topic: topic,
             recipient: @recipient,
             time_start: @time_start,
             cache: @cache,
@@ -46,12 +46,12 @@ class Views::UserMailer::CatchUp < Views::ApplicationMailer::BaseLayout
       end
 
       @groups.each do |group|
-        next unless @discussions_by_group_id.has_key?(group.id)
+        next unless @topics_by_group_id.has_key?(group.id)
 
         h1 { link_to group.full_name, group_url(group) }
-        @discussions_by_group_id[group.id].each do |discussion|
-          render Views::UserMailer::CatchUp::Discussion.new(
-            discussion: discussion,
+        @topics_by_group_id[group.id].each do |topic|
+          render Views::UserMailer::CatchUp::Topic.new(
+            topic: topic,
             recipient: @recipient,
             time_start: @time_start,
             cache: @cache,

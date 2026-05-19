@@ -7,8 +7,8 @@ import Session from '@/shared/services/session';
 import AppConfig from '@/shared/services/app_config';
 
 export default class ThreadLoader {
-  constructor(discussion) {
-    this.discussion = discussion;
+  constructor(topic) {
+    this.topic = topic;
     this.reset();
   }
 
@@ -17,10 +17,10 @@ export default class ThreadLoader {
     this.rules = [];
     this.ruleStrings = [];
     this.fetchedRules = [];
-    this.discussionLastReadAt = this.discussion.lastReadAt;
-    this.ranges = cloneDeep(this.discussion.ranges);
-    this.readRanges = cloneDeep(this.discussion.readRanges);
-    this.unreadRanges = RangeSet.subtractRanges(this.discussion.ranges, this.readRanges);
+    this.lastReadAt = this.topic.lastReadAt;
+    this.ranges = cloneDeep(this.topic.ranges);
+    this.readRanges = cloneDeep(this.topic.readRanges);
+    this.unreadRanges = RangeSet.subtractRanges(this.ranges, this.readRanges);
     this.visibleKeys = {};
     this.collapsed = reactive({});
     this.loading = false;
@@ -43,7 +43,16 @@ export default class ThreadLoader {
   }
 
   setVisible(isVisible, event) {
-    if (isVisible && Session.isSignedIn()) { event.markAsRead(); }
+    this.readTimers = this.readTimers || {};
+    if (isVisible && Session.isSignedIn()) {
+      this.readTimers[event.sequenceId] = setTimeout(() => {
+        this.topic.markAsRead(event.sequenceId);
+        delete this.readTimers[event.sequenceId];
+      }, 500);
+    } else if (this.readTimers[event.sequenceId]) {
+      clearTimeout(this.readTimers[event.sequenceId]);
+      delete this.readTimers[event.sequenceId];
+    }
     this.visibleKeys[event.positionKey] = isVisible;
     return EventBus.$emit('visibleKeys', Object.keys(this.visibleKeys).filter(key => this.visibleKeys[key]).sort());
   }
@@ -56,19 +65,11 @@ export default class ThreadLoader {
   }
 
   isUnread(event) {
-    if (event.kind === "new_discussion") {
-      return this.discussion.updatedAt > this.discussion.lastReadAt;
-    } else {
-      return !RangeSet.includesValue(this.readRanges, event.sequenceId);
-    }
+    return !RangeSet.includesValue(this.readRanges, event.sequenceId);
   }
 
   sequenceIdIsUnread(id) {
-    if (id === 0) {
-      return this.discussion.updatedAt > this.discussion.lastReadAt;
-    } else {
-      return !RangeSet.includesValue(this.readRanges, id);
-    }
+    return !RangeSet.includesValue(this.readRanges, id);
   }
 
   expand(event) {
@@ -76,9 +77,8 @@ export default class ThreadLoader {
   }
 
   addLoadArgsRule(args) {
-    const andParts = [{discussionId: this.discussion.id}]
+    const andParts = [{ topicId: this.topic.id }]
 
-    // need sequenceId depth parent_id etc
     if (args.depth) {
       andParts.push({depth: args.depth})
     }
@@ -111,7 +111,7 @@ export default class ThreadLoader {
         limit: this.padding
       },
       remote: pickBy({
-        discussion_id: this.discussion.id,
+        topic_id: this.topic.id,
         depth: args.depth,
         depth_lte: args.depth_lte,
         position_key_gt: args.position_key_gt,
@@ -131,32 +131,33 @@ export default class ThreadLoader {
       local: {
         find: {
           actorId: AppConfig.currentUserId,
-          discussionId: this.discussion.id,
+          topicId: this.topic.id,
           createdAt: { $gte: new Date() }
         }
       }
     })
   }
 
-  addLoadCommentRule(commentId) {
+  addLoadCommentRule(commentId, remoteTopicParams = { topic_id: this.topic.id }) {
     return this.addRule({
       name: "comment from url",
       local: {
         find: {
-          discussionId: this.discussion.id,
+          topicId: this.topic.id,
           eventableId: commentId,
           eventableType: 'Comment'
         }
       },
       remote: {
+        ...remoteTopicParams,
         order: 'sequence_id',
-        discussion_id: this.discussion.id,
-        comment_id: commentId
+        comment_id: commentId,
+        per: this.padding
       }
     });
   }
 
-  addLoadSequenceIdRule(sequenceId) {
+  addLoadSequenceIdRule(sequenceId, remoteTopicParams = { topic_id: this.topic.id }) {
     const id = max([parseInt(sequenceId) - parseInt(this.padding/2), 0]);
     this.loading = id;
     return this.addRule({
@@ -164,7 +165,7 @@ export default class ThreadLoader {
       local: {
         find: {
           $and: [
-            { discussionId: this.discussion.id },
+            { topicId: this.topic.id },
             { sequenceId: {'$gte': id} },
           ]
         },
@@ -172,19 +173,19 @@ export default class ThreadLoader {
         limit: this.padding
       },
       remote: {
+        ...remoteTopicParams,
         sequence_id_gte: id,
-        discussion_id: this.discussion.id,
         order: 'sequence_id',
         per: this.padding
       }
     });
   }
 
-  addLoadNewestRule() {
+  addLoadNewestRule(remoteTopicParams = { topic_id: this.topic.id }) {
     return this.addRule({
       local: {
         find: {
-          discussionId: this.discussion.id,
+          topicId: this.topic.id,
           sequenceId: { $lte: this.lastSequenceId() }
         },
         simplesort: 'sequenceId',
@@ -192,22 +193,11 @@ export default class ThreadLoader {
         limit: this.padding
       },
       remote: {
-        discussion_id: this.discussion.id,
+        ...remoteTopicParams,
         sequence_id_lte: this.lastSequenceId(),
         order_by: 'sequence_id',
         order_desc: true,
         per: this.padding
-      }
-    });
-  }
-
-  addContextRule() {
-    return this.addRule({
-      name: 'context',
-      local: {
-        find: {
-          id: this.discussion.createdEvent().id
-        }
       }
     });
   }
@@ -217,36 +207,61 @@ export default class ThreadLoader {
       name: 'oldest',
       local: {
         find: {
-          discussionId: this.discussion.id,
+          topicId: this.topic.id,
           sequenceId: { $lte: this.lastSequenceId() }
         },
         simplesort: 'sequenceId',
         limit: this.padding
       },
       remote: {
-        discussion_id: this.discussion.id,
+        topic_id: this.topic.id,
         order_by: 'sequence_id',
         per: this.padding
       }
     });
   }
 
-  addLoadUnreadRule() {
+  addLoadUnreadRule(remoteTopicParams = { topic_id: this.topic.id }) {
     return this.addRule({
       name: {path: "strand_nav.new_to_you"},
       local: {
         find: {
-          discussionId: this.discussion.id,
+          topicId: this.topic.id,
           sequenceId: {$in: RangeSet.rangesToArray(this.unreadRanges)}
         },
         limit: this.padding,
         simplesort: 'sequenceId'
       },
       remote: {
-        discussion_id: this.discussion.id,
+        ...remoteTopicParams,
         sequence_id_in: RangeSet.serialize(this.unreadRanges).replace(/,/g, '_'),
-        // sequence_id_not_in: RangeSet.serialize(this.readRanges).replace(/,/g, '_'),
         order_by: "sequence_id",
+        per: this.padding
+      }
+    });
+  }
+
+  addLoadUnreadOrNewestRule(remoteTopicParams) {
+    const unreadSequenceIds = RangeSet.rangesToArray(this.unreadRanges);
+    const hasUnread = unreadSequenceIds.length > 0;
+
+    return this.addRule({
+      name: 'unread or newest',
+      local: {
+        find: hasUnread ? {
+          topicId: this.topic.id,
+          sequenceId: {$in: unreadSequenceIds}
+        } : {
+          topicId: this.topic.id,
+          sequenceId: { $lte: this.lastSequenceId() }
+        },
+        limit: this.padding,
+        simplesort: 'sequenceId',
+        simplesortDesc: !hasUnread
+      },
+      remote: {
+        ...remoteTopicParams,
+        unread_or_newest: 1,
         per: this.padding
       }
     });
@@ -269,7 +284,7 @@ export default class ThreadLoader {
                      .filter(rule => !this.fetchedRules.includes(JSON.stringify(rule.remote)))
                      .map(rule => {
       newRules.push(JSON.stringify(rule.remote));
-      const params = Object.assign({}, rule.remote, {exclude_types: 'group discussion'});
+      const params = Object.assign({}, rule.remote, {exclude_types: 'topic'});
       return Records.events.fetch({params});
     });
 
@@ -282,7 +297,6 @@ export default class ThreadLoader {
 
   updateCollection() {
     this.records = [];
-    // console.log("Updating collection");
     this.rules.forEach(rule => {
       let chain = Records.events.collection.chain().find(rule.local.find);
 
@@ -306,7 +320,6 @@ export default class ThreadLoader {
         chain = chain.limit(rule.local.limit);
       }
 
-      // console.log(JSON.stringify(rule.local), chain.data().length, chain.data().map(event => [event.sequenceId, event.positionKey].join(',')).join("\n"));
       this.records = this.records.concat(chain.data());
     });
 
@@ -337,7 +350,7 @@ export default class ThreadLoader {
 
     this.addMetaData(this.collection);
 
-    EventBus.$emit('collectionUpdated', this.discussion.id);
+    EventBus.$emit('collectionUpdated', this.topic.id);
 
     return this.collection;
   }
@@ -355,7 +368,7 @@ export default class ThreadLoader {
       const isLastInRange = some(ranges, range => range[1] === obj.event.position);
       const isLastInLastRange = last(ranges)[1] === obj.event.position;
 
-      obj.isUnread = this.discussionLastReadAt && this.isUnread(obj.event);
+      obj.isUnread = this.lastReadAt && this.isUnread(obj.event);
       obj.missingEarlier = isFirstInRange && obj.event.position > 1;
       obj.missingAfter = isLastInLastRange && obj.event.position !== lastPosition;
       obj.missingChildCount = obj.event.childCount - obj.children.length;

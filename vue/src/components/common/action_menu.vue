@@ -1,31 +1,27 @@
-<script lang="js">
+<script setup lang="js">
+import { computed } from 'vue';
 import { some } from 'lodash-es';
-export default {
-  props: {
-    actions: Object,
-    color: String,
-    variant: {
-      type: String,
-      default: 'tonal'
-    },
-    size: {
-      type: String,
-      default: 'default'
-    },
-    icon: Boolean,
-    name: String,
-    menuIcon: {
-      type: String,
-      default: 'mdi-dots-horizontal'
-    }
-  },
 
-  computed: {
-    canPerformAny() {
-      return some(this.actions, action => action.canPerform());
-    }
+const props = defineProps({
+  actions: Object,
+  color: String,
+  variant: {
+    type: String,
+    default: 'tonal'
+  },
+  size: {
+    type: String,
+    default: 'default'
+  },
+  icon: Boolean,
+  name: String,
+  menuIcon: {
+    type: String,
+    default: 'mdi-dots-horizontal'
   }
-}
+});
+
+const canPerformAny = computed(() => some(props.actions, action => action.canPerform()));
 </script>
 
 <template lang="pug">

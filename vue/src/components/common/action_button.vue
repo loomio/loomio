@@ -1,21 +1,23 @@
-<script lang="js">
-export default {
-  props: {
-    action: Object,
-    name: String,
-    nameArgs: Object,
-    color: String,
-    variant: String,
-    size: {
-      type: String,
-      default: undefined
-    }
-  },
-  computed: {
-    text() { return this.$t((this.action.name || ('action_dock.'+this.name)), (this.nameArgs || {})); },
-    cssClass() { return `action-dock__button--${this.name}`; }
+<script setup lang="js">
+import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
+
+const props = defineProps({
+  action: Object,
+  name: String,
+  nameArgs: Object,
+  color: String,
+  variant: String,
+  size: {
+    type: String,
+    default: undefined
   }
-};
+});
+
+const { t } = useI18n();
+
+const text = computed(() => t((props.action.name || ('action_dock.' + props.name)), (props.nameArgs || {})));
+const cssClass = computed(() => `action-dock__button--${props.name}`);
 </script>
 
 <template lang="pug">

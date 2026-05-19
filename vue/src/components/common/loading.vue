@@ -1,13 +1,11 @@
-<script lang="js">
-export default {
-  props: {
-    until: null,
-    diameter: {
-      type: Number,
-      default: 30
-    }
+<script setup lang="js">
+defineProps({
+  until: null,
+  diameter: {
+    type: Number,
+    default: 30
   }
-}
+});
 </script>
 
 <template lang="pug">

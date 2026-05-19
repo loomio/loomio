@@ -2,7 +2,7 @@ require 'test_helper'
 
 class GroupServiceTest < ActiveSupport::TestCase
   setup do
-    @user = users(:normal_user)
+    @user = users(:user)
   end
 
   test "creates a new group" do
@@ -82,16 +82,16 @@ class GroupServiceTest < ActiveSupport::TestCase
     )
     subgroup.add_admin!(@user)
 
-    another_user = users(:another_user)
-    parent.add_member!(another_user, inviter: parent.creator)
+    alien = users(:alien)
+    parent.add_member!(alien, inviter: parent.creator)
 
     GroupService.invite(
       group: subgroup,
       actor: @user,
-      params: { recipient_emails: [another_user.email] }
+      params: { recipient_emails: [alien.email] }
     )
 
-    membership = Membership.find_by(user_id: another_user.id, group_id: subgroup.id)
+    membership = Membership.find_by(user_id: alien.id, group_id: subgroup.id)
     assert_not_nil membership.accepted_at
   end
 

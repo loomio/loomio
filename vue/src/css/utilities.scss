@@ -24,3 +24,23 @@ img.emoji {
   clip: rect(0,0,0,0);
   border: 0;
 }
+
+@keyframes scroll-highlight-fade {
+  0% {
+    background-color: rgba(var(--v-theme-primary), 0.12);
+    box-shadow: 0 0 20px 8px rgba(var(--v-theme-primary), 0.15);
+  }
+  100% {
+    background-color: transparent;
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+.scroll-highlight {
+  border-radius: 8px;
+  animation: scroll-highlight-fade 2s ease-out;
+
+  .v-table {
+    background: transparent !important;
+  }
+}

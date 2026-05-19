@@ -443,8 +443,6 @@ pl:
       disagree: Nie zgadzać się
       disagree_meaning: Abym mógł poprzeć tę propozycję, muszę coś w niej zmienić.
       disagree_prompt: W jaki sposób można udoskonalić tę propozycję, aby mógł Pan ją poprzeć?
-      abstain_meaning: Nie podjęcie decyzji lub niemożność głosowania nad tą decyzją.
-      abstain_prompt: Dlaczego wstrzymuje się Pan od głosu lub nie czuje się Pan na siłach, aby głosować nad tą decyzją?
     advice:
       process_subtitle: Poproś o poradę w sprawie decyzji, którą musisz podjąć
       process_introduction: <p>Poproś o radę w sprawie decyzji, którą musisz podjąć, korzystając z porad osób, których ta decyzja dotyczy, lub osób posiadających wiedzę specjalistyczną, dzięki czemu będziesz mógł podjąć lepszą decyzję dla swojej organizacji.</p><ul><li><p> Porady pomagają podejmować lepsze decyzje dla Twojej organizacji.</p></li><li><p> Wspieraj relacje, możliwości uczenia się i różnorodność opinii.</p></li><li><p> Pobudzaj inicjatywę i kreatywność, a praca stanie się przyjemniejsza.</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>Przeczytaj więcej o procesie doradztwa</u></a> .</p>
@@ -491,7 +489,6 @@ pl:
       block_prompt: Wyjaśnij swój sprzeciw wobec tej propozycji i dlaczego nie powinna ona zostać zrealizowana.
       details_v2: "<h3><strong>Jaką decyzję musisz podjąć?</strong></h3><p></p><h3> <strong>Dlaczego to jest ważne?</strong></h3><p></p><h3> <strong>O co prosisz ludzi?</strong></h3><p></p><p> Podziel się swoim stanowiskiem i uzasadnij je. Jeśli się nie zgadzasz, wyjaśnij, co musiałoby się zmienić, abyś mógł je poprzeć.</p>"
       process_introduction_v2: "<p><strong>Konsensus</strong> jest stosowany w przypadku decyzji, w których liczy się aktywna zgoda wszystkich. Uczestnicy współpracują, aby zrozumieć wzajemne potrzeby i kształtować propozycję, aż cała grupa będzie mogła ją poprzeć. Ponieważ uczestnicy mogą zmieniać swój głos w miarę rozwoju rozmowy, proces ten sprzyja autentycznemu dialogowi, a nie podejmowaniu jednorazowych decyzji. Wymaga więcej cierpliwości niż inne metody, ale buduje najsilniejsze zaangażowanie.</p><p> Ten szablon domyślnie zawiera opcję <strong>Blokuj</strong> . Blokowanie nie jest odpowiednie dla każdej grupy — może być kontrowersyjne lub nadużywane. Jeśli nie korzystasz z opcji Blokuj w procesie podejmowania decyzji, zalecamy edycję szablonu i jej usunięcie.</p>"
-      abstain_prompt: Dlaczego wstrzymuje się Pan od głosu lub nie czuje się Pan na siłach, aby głosować nad tą decyzją?
     question_round:
       process_subtitle: Zadawaj pytania wyjaśniające, aby pomóc ludziom zrozumieć propozycję
       process_introduction: <p>Runda pytań to okazja, aby ludzie zadawali pytania wyjaśniające dotyczące propozycji, tak aby wszyscy zrozumieli propozycję, zanim powiedzą, co o niej myślą.</p><p> Runda pytań Loomio to specjalna propozycja bez opcji głosowania. Umożliwia ona uczestnikom zadawanie pytań w czasie ustalonym dla rundy.</p><p> Runda pytań jest powszechnie stosowanym etapem procesu wyrażania zgody.</p><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Przeczytaj więcej o procesie wyrażania zgody</a> .</p>
@@ -527,7 +524,6 @@ pl:
       could_be_better_prompt: Co byś zmienił?
       needs_a_rethink: Wymaga ponownego przemyślenia
       needs_a_rethink_prompt: Co cię martwi?
-      needs_a_rethink_meaning: Uważam, że to złe podejście.
     gradients_of_agreement:
       process_subtitle: Wyraź poparcie dla propozycji w 8-stopniowej skali
       process_introduction: "<p>Gradienty akceptacji propozycji pozwalają członkom grupy na wyrażenie poparcia dla propozycji w stopniach na skali, oferując więcej sposobów wyrażenia poparcia niż w przypadku „zgadzam się” i „nie zgadzam się”.</p><p> Użyj Gradientów Porozumienia jako rundy wstępnej, aby przetestować poparcie dla propozycji przed przejściem do formalnego porozumienia.</p><p> Gradienty zgody pozwalają ludziom wiedzieć, że propozycja się tworzy i zachęcają ich do zaangażowania się. To okazja, aby słuchać ludzi, wyczuwać, co czują i odpowiednio reagować - otwierając potencjał na włączenie ich wkładu w podejmowanie lepszych decyzji.</p>"

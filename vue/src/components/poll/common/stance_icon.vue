@@ -24,12 +24,11 @@ export default {
       v-if="hasOptionIcon"
       :class="'poll-proposal-chart-preview__stance--'+pollOption.icon"
     )
-    template(v-if="!hasOptionIcon")
-      .poll-common-chart-preview__stance
-        common-icon(v-if="poll.pollType != 'meeting'" size="small" :color="pollOption.color" name="mdi-check")
-        common-icon(v-else size="small" name="mdi-check")
+    .poll-common-chart-preview__stance(v-else)
+      common-icon(v-if="poll.pollType != 'meeting'" size="small" :color="pollOption.color" name="mdi-check")
+      common-icon(v-else size="small" name="mdi-check")
   .poll-common-chart-preview__stance.poll-proposal-chart-preview__stance--undecided(v-else)
-    common-icon(:size="size - (size/4)" color="primary" name="mdi-help")
+    common-icon.mt-n1(:size="size - (size/5)" name="mdi-help")
 </template>
 
 <style lang="sass">

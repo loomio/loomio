@@ -16,8 +16,10 @@ const { direction, collection, parentCollection, index, loader } = defineProps({
 const loadAndScrollTo = () => {
   if (direction == 'before') {
     const selector = `.positionKey-${collection[index].event.positionKey}`
-    const offset = document.querySelector(selector).getBoundingClientRect().top
-    EventBus.$emit('setAnchor', selector, offset);
+    const el = document.querySelector(selector);
+    if (el) {
+      EventBus.$emit('setAnchor', selector, el.getBoundingClientRect().top);
+    }
   }
   load();
 }
@@ -82,7 +84,7 @@ const count = ref("~");
 watch(() => collection.length, () => {
   Records.fetch({
     path: 'events/count',
-    params: Object.assign({}, { discussion_id: loader.discussion.id }, params())
+    params: Object.assign({}, { topic_id: loader.topic.id }, params())
   }).then((val) => count.value = val );
 }, { immediate: true })
 

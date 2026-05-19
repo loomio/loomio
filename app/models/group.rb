@@ -3,7 +3,6 @@ class Group < ApplicationRecord
   include CustomCounterCache::Model
   include ReadableUnguessableUrls
   include SelfReferencing
-  include MessageChannel
   include GroupPrivacy
   include HasEvents
   include Translatable
@@ -27,9 +26,10 @@ class Group < ApplicationRecord
   scope :expired_demo, -> { joins(:subscription).where('subscriptions.plan = ?', 'demo').where('groups.created_at < ?', 7.days.ago) }
   scope :not_demo, -> { joins(:subscription).where('subscriptions.plan != ?', 'demo') }
 
-  has_many :discussions, dependent: :destroy
+  has_many :topics, dependent: :destroy
+  has_many :discussions, through: :topics, source: :topicable, source_type: 'Discussion'
   has_many :discussion_templates, dependent: :destroy
-  has_many :public_discussions, -> { visible_to_public }, foreign_key: :group_id, class_name: 'Discussion'
+  has_many :public_discussions, -> { visible_to_public }, through: :topics, source: :topicable, source_type: 'Discussion'
   has_many :comments, through: :discussions
 
   has_many :all_memberships, dependent: :destroy, class_name: 'Membership'
@@ -50,7 +50,7 @@ class Group < ApplicationRecord
   has_many :membership_requests, dependent: :destroy
   has_many :pending_membership_requests, -> { where response: nil }, class_name: 'MembershipRequest'
 
-  has_many :polls, dependent: :destroy
+  has_many :polls, through: :topics, source: :topicable, source_type: 'Poll'
   has_many :poll_templates, dependent: :destroy
 
   has_many :requested_users, through: :membership_requests, source: :user
@@ -111,9 +111,7 @@ class Group < ApplicationRecord
   define_counter_cache(:pending_memberships_count)  { |g| g.memberships.pending.count }
   define_counter_cache(:admin_memberships_count)    { |g| g.admin_memberships.count }
   define_counter_cache(:delegates_count)            { |g| g.memberships.delegates.count }
-  define_counter_cache(:public_discussions_count)   { |g| g.discussions.visible_to_public.count }
   define_counter_cache(:discussions_count)          { |g| g.discussions.kept.count }
-  define_counter_cache(:open_discussions_count)     { |g| g.discussions.is_open.count }
   define_counter_cache(:closed_discussions_count)   { |g| g.discussions.is_closed.count }
   define_counter_cache(:discussion_templates_count) { |g| g.discussion_templates.kept.count }
   define_counter_cache(:subgroups_count)            { |g| g.subgroups.published.count }
@@ -147,8 +145,6 @@ class Group < ApplicationRecord
                          :creator_id,
                          :subscription_id,
                          :members_can_announce,
-                         :new_threads_max_depth,
-                         :new_threads_newest_first,
                          :members_can_create_templates,
                          :admins_can_edit_user_content,
                          :listed_in_explore,
@@ -197,8 +193,31 @@ class Group < ApplicationRecord
     cover_url(size) || (parent && parent.cover_url(size))
   end
 
-  def existing_member_ids
-    member_ids
+  def admins_include?(user)
+    admins.exists?(user.id)
+  end
+
+  def members_include?(user)
+    members.exists?(user.id)
+  end
+
+  def members_by_volume(operator, volume)
+    User.active.distinct
+        .joins("INNER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{id}")
+        .where('m.revoked_at IS NULL')
+        .where("coalesce(m.volume, 2) #{operator} :volume", volume: volume)
+  end
+
+  def volume_gte_quiet_members
+    members_by_volume('>=', Membership.volumes[:quiet])
+  end
+
+  def volume_gte_normal_members
+    members_by_volume('>=', Membership.volumes[:normal])
+  end
+
+  def volume_loud_members
+    members_by_volume('=', Membership.volumes[:loud])
   end
 
   def author_id
@@ -233,9 +252,7 @@ class Group < ApplicationRecord
     User.none
   end
 
-  def message_channel
-    "/group-#{self.key}"
-  end
+
 
   def parent_or_self
     parent || self
@@ -298,6 +315,10 @@ class Group < ApplicationRecord
 
   def org_accepted_members_count
     Membership.active.accepted.where(group_id: id_and_subgroup_ids).count('distinct user_id')
+  end
+
+  def open_discussions_count
+    discussions_count - closed_discussions_count
   end
 
   def org_discussions_count
@@ -434,17 +455,12 @@ class Group < ApplicationRecord
     "membership_granted_upon",
     "memberships_count",
     "name",
-    "new_threads_max_depth",
-    "new_threads_newest_first",
-    "open_discussions_count",
     "parent_id",
     "parent_members_can_see_discussions",
     "pending_memberships_count",
     "poll_templates_count",
     "polls_count",
     "proposal_outcomes_count",
-    "public_discussions_count",
-    "recent_activity_count",
     "region",
     "subgroups_count",
     "subscription_id",

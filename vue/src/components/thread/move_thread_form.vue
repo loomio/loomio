@@ -10,7 +10,7 @@ import UrlFor from '@/mixins/url_for';
 export default {
   mixins: [WatchRecords, UrlFor],
   props: {
-    discussion: Object
+    topic: Object
   },
   data() {
     return {
@@ -28,13 +28,11 @@ export default {
   methods: {
     submit() {
       this.loading = true
-      Records.discussions.remote.patchMember(this.discussion.id, 'move', { group_id: this.groupId }).then(data => {
+      Records.topics.remote.patchMember(this.topic.id, 'move', { group_id: this.groupId }).then(data => {
         Flash.success('move_discussion_form.messages.success', { name: this.targetGroup().name });
-        const discussionKey = data.discussions[0].key;
-        Records.discussions.findOrFetchById(discussionKey, {}, true).then(() => {
-          EventBus.$emit('closeModal');
-          this.$router.push(`/d/${discussionKey}`);
-        });
+        EventBus.$emit('closeModal');
+        const topicable = this.topic.topicable();
+        this.$router.push(this.urlFor(topicable));
       }).catch(() => true).finally(() => this.loading = false);
     },
 
@@ -43,7 +41,7 @@ export default {
     },
 
     moveThread() {
-      if (this.discussion.private && this.targetGroup().privacyIsOpen()) {
+      if (this.topic.private && this.targetGroup().privacyIsOpen()) {
         if (confirm(I18n.global.t('move_discussion_form.confirm_change_to_private', {groupName: this.targetGroup().name}))) { this.submit(); }
       } else {
         this.submit();
@@ -66,6 +64,6 @@ v-card.move-thread-form(:title="$t('move_discussion_form.title')")
       :label="$t('move_discussion_form.body')")
   v-card-actions
     v-spacer
-    v-btn.move-thread-form__submit(:disabled="!groupId && discussion.groupId != groupId" :loading="loading" color="primary" variant="tonal" @click='moveThread()')
+    v-btn.move-thread-form__submit(:disabled="!groupId || topic.groupId == groupId" :loading="loading" color="primary" variant="tonal" @click='moveThread()')
       span( v-t="'move_discussion_form.confirm'")
 </template>

@@ -17,7 +17,7 @@ export default {
       loading: false,
       poll: null,
       group: null,
-      discussion: null
+      topic: null
     }
   },
 
@@ -40,7 +40,7 @@ export default {
     if (discussionId = parseInt(this.$route.query.discussion_id)) {
       this.loading = true;
       Records.discussions.findOrFetchById(discussionId).then(discussion => {
-        this.discussion = discussion;
+        this.topic = discussion.topic();
         this.group = discussion.group();
         this.loading = false;
       });
@@ -126,7 +126,7 @@ v-main.poll-form-page
         poll-common-choose-template(
           v-if="!poll"
           @setPoll="setPoll"
-          :discussion="discussion"
+          :topic="topic"
           :group="group"
         )
 </template>
