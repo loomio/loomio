@@ -16,13 +16,10 @@ const { watchRecords } = useWatchRecords();
 const topic            = ref(null);
 const loadedKey        = ref(null);
 const loader           = ref(null);
-const requestId        = ref(0);
-const focusMode        = ref(null);
 const focusSelector    = ref(null);
 const anchorSelector   = ref(null);
 const anchorOffset     = ref(null);
 const lastAnchorSelector = ref(null);
-const snackbar         = ref(false);
 const focusedItemVisible = ref(false);
 
 onMounted(() => {
@@ -43,8 +40,6 @@ watch(() => route.params.comment_id, respondToRoute);
 watch(() => route.query.p, respondToRoute);
 watch(() => route.query.k, respondToRoute);
 watch(() => route.query.current_action, respondToRoute);
-watch(() => route.query.unread, respondToRoute);
-watch(() => route.query.newest, respondToRoute);
 
 function openThreadNav() {
   EventBus.$emit('toggleThreadNav');
@@ -56,6 +51,9 @@ function scrollToFocused() {
   }
 }
 
+// Fired by load_more.vue before prepending items above the viewport.
+// Stores the current top-visible item's selector + screen offset so
+// scrollToAnchorIfNew can restore the visual position after insertion.
 function onSetAnchor(selector, offset) {
   anchorSelector.value = selector;
   anchorOffset.value = offset;
@@ -74,7 +72,6 @@ function onVisibleKeys(keys) {
 }
 
 function init() {
-  requestId.value += 1;
   topic.value = null;
   loadedKey.value = null;
   loader.value = null;
@@ -101,6 +98,14 @@ function routeCommentId() {
   return parseInt(route.query.comment_id || route.params.comment_id) || null;
 }
 
+// Thread loading strategy:
+// 1. If a specific focus is given (a poll key for a non-topical poll, a sequence_id, or a comment_id),
+//    load events around that item and scroll to it.
+// 2. Otherwise, load unread-or-newest events, then scroll to:
+//    a. The first unread item (if the user has read before and there is unread), or
+//    b. The last item by position_key (if everything is read), or
+//    c. The top (if nothing has been read yet — first visit).
+
 function initialFetchParams() {
   const remoteTopicParams = routeTopicParams();
   const sequenceId = routeSequenceId();
@@ -125,15 +130,6 @@ function initialFetchParams() {
     };
   }
 
-  if (Object.keys(route.query).includes('newest')) {
-    return {
-      ...remoteTopicParams,
-      order_by: 'sequence_id',
-      order_desc: 1,
-      per: padding
-    };
-  }
-
   return {
     ...remoteTopicParams,
     unread_or_newest: 1,
@@ -141,58 +137,64 @@ function initialFetchParams() {
   };
 }
 
-function topicFromResponse(data) {
-  const id = (data.topics || [])[0]?.id || (data.events || [])[0]?.topic_id;
-  return Records.topics.find(id);
-}
-
-function setupTopicFromResponse(data, id) {
-  if (id !== requestId.value) { return; }
-
-  const t = topicFromResponse(data);
-  if (!t) { return; }
-
-  if (t.group() && t.group().newHost) { window.location.host = t.group().newHost; }
-  topic.value = t;
-  loadedKey.value = route.params.key;
-  loader.value = new ThreadLoader(t);
-
-  loadContent(routeTopicParams());
-  loader.value.fetchedRules = loader.value.rules.filter(rule => rule.remote).map(rule => JSON.stringify(rule.remote));
-  loader.value.firstLoad = true;
-  loader.value.updateCollection();
-
-  EventBus.$emit('currentComponent', {
-    focusHeading: false,
-    page: 'discussionPage',
-    topic: topic.value,
-    group: topic.value.group(),
-    title: topic.value.topicable().title
-  });
-
-  watchRecords({
-    key: 'strand' + topic.value.id,
-    collections: ['events'],
-    query: () => {
-      if (!loader.value) { return; }
-      loader.value.updateCollection();
-      nextTick(() => scrollToAnchorIfNew());
-    }
-  });
-
-  snackbar.value = !!focusMode.value;
-  setAnchorFromRoute();
-  nextTick(() => scrollToAnchorIfPresent());
-}
-
 function fetchInitialContent() {
   if (!hasRouteKey()) { return; }
 
-  const id = requestId.value;
+  const key = route.params.key;
   const params = initialFetchParams();
 
   return Records.events.fetch({ params }).then(data => {
-    setupTopicFromResponse(data, id);
+    if (route.params.key !== key) { return; }
+
+    const topicId = (data.topics || [])[0]?.id || (data.events || [])[0]?.topic_id;
+    const t = Records.topics.find(topicId);
+    if (!t) { return; }
+
+    if (t.group() && t.group().newHost) { window.location.host = t.group().newHost; }
+    topic.value = t;
+    loadedKey.value = route.params.key;
+    loader.value = new ThreadLoader(t);
+
+    loadContent(routeTopicParams());
+    loader.value.fetchedRules = loader.value.rules.filter(rule => rule.remote).map(rule => JSON.stringify(rule.remote));
+    loader.value.firstLoad = true;
+    loader.value.updateCollection();
+
+    EventBus.$emit('currentComponent', {
+      focusHeading: false,
+      page: 'discussionPage',
+      topic: topic.value,
+      group: topic.value.group(),
+      title: topic.value.topicable().title
+    });
+
+    let scrolledToUnread = false;
+    watchRecords({
+      key: 'strand' + topic.value.id,
+      collections: ['events'],
+      query: () => {
+        if (!loader.value) { return; }
+        loader.value.updateCollection();
+        if (!scrolledToUnread && !anchorSelector.value && loader.value.lastReadAt) {
+          const firstUnread = loader.value.firstUnreadSequenceId();
+          if (firstUnread) {
+            anchorSelector.value = `.sequenceId-${firstUnread}`;
+          } else {
+            const lastEvent = Records.events.collection.chain()
+              .find({ topicId: topic.value.id })
+              .simplesort('positionKey', true)
+              .limit(1)
+              .data()[0];
+            if (lastEvent) anchorSelector.value = `.positionKey-${lastEvent.positionKey}`;
+          }
+          scrolledToUnread = true;
+        }
+        nextTick(() => scrollToAnchorIfNew());
+      }
+    });
+
+    setAnchorFromRoute();
+    nextTick(() => scrollToAnchorIfPresent());
   }).catch(error => {
     if (error.status) {
       EventBus.$emit('pageError', error);
@@ -208,7 +210,7 @@ function loadContent(remoteTopicParams = null) {
   if (loadedKey.value !== route.params.key) { return; }
   remoteTopicParams ||= { topic_id: topic.value.id };
 
-  focusMode.value     = null;
+
   focusSelector.value = null;
   anchorSelector.value = null;
   anchorOffset.value  = null;
@@ -246,20 +248,6 @@ function loadContent(remoteTopicParams = null) {
     return;
   }
 
-  if (Object.keys(route.query).includes('unread')) {
-    loader.value.clearRules();
-    loader.value.addLoadUnreadOrNewestRule(remoteTopicParams);
-    focusMode.value = 'unread';
-    return;
-  }
-
-  if (Object.keys(route.query).includes('newest')) {
-    loader.value.clearRules();
-    loader.value.addLoadNewestRule(remoteTopicParams);
-    focusMode.value = 'newest';
-    return;
-  }
-
   loader.value.addLoadUnreadOrNewestRule(remoteTopicParams);
 }
 
@@ -267,7 +255,6 @@ function respondToRoute() {
   const load = loadContent();
   if (load) { return load; }
 
-  snackbar.value = !!focusMode.value;
   setAnchorFromRoute();
 
   scrollToAnchorIfPresent();
@@ -303,7 +290,7 @@ function scrollToAnchorIfNew() {
     v-container.max-width-800.px-0.px-sm-3#strand-page(v-if="topic")
       discussion-fork-actions(v-if="topic" :topic='topic' :key="'fork-actions'+ topic.id")
       v-sheet.strand-card.thread-card.mb-8.pb-4.rounded(elevation=1)
-        strand-list.pr-1.pr-sm-3.px-sm-2(:loader="loader" :collection="loader.collection" :focus-selector="focusSelector" :focus-mode="focusMode")
+        strand-list.pr-1.pr-sm-3.px-sm-2(:loader="loader" :collection="loader.collection" :focus-selector="focusSelector")
         strand-actions-panel(:topic="topic")
   strand-toc-nav(v-if="loader" :topic="topic" :loader="loader" :key="topic.id")
   v-fab(v-if="!$vuetify.display.mdAndUp" icon app location="bottom right" @click="openThreadNav" color="primary" variant="tonal")

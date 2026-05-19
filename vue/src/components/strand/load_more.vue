@@ -15,6 +15,11 @@ const { direction, collection, parentCollection, index, loader } = defineProps({
 
 const loadAndScrollTo = () => {
   if (direction == 'before') {
+    // Before loading items above the current position, record the top visible item's
+    // selector and its current screen offset. page.vue listens for this and sets
+    // anchorSelector/anchorOffset so that after the new items are inserted above,
+    // ScrollService can restore the viewport to the same visual position (preventing
+    // the page from jumping).
     const selector = `.positionKey-${collection[index].event.positionKey}`
     const el = document.querySelector(selector);
     if (el) {
