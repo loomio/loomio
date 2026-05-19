@@ -9,14 +9,11 @@ import { useWatchRecords } from '@/composables/useWatchRecords';
 import { ref, computed, onMounted, nextTick } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { sortBy, last, pickBy } from 'lodash-es';
-import { mdiMessageBadgeOutline, mdiArrowUpThin, mdiArrowDownThin, mdiBellOutline, mdiBellOffOutline, mdiBellRingOutline, mdiArrowULeftTop } from '@mdi/js';
+import { mdiArrowUpThin, mdiArrowDownThin, mdiBellOutline, mdiBellOffOutline, mdiBellRingOutline } from '@mdi/js';
 
 const props = defineProps({
   topic:             Object,
   loader:            Object,
-  focusMode:         String,
-  focusSelector:     String,
-  focusedItemVisible: Boolean
 });
 
 const route = useRoute();
@@ -53,13 +50,6 @@ function openVolumeForm() {
   });
 }
 
-function scrollToFocused() {
-  ScrollService.scrollTo(props.focusSelector);
-}
-
-function scrollToUnread() {
-  ScrollService.scrollTo(`.sequenceId-${props.loader.firstUnreadSequenceId()}`);
-}
 
 function scrollToTop() {
   ScrollService.scrollTo('.sequenceId-0');
@@ -122,9 +112,7 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="topic" v-mo
         v-icon(v-else-if="item.user")
           user-avatar(:user="item.user" :size="24" no-link)
         v-icon(v-else) mdi-pin-outline
-    v-list-item(color="info" value="toc-unread" :active="focusMode == 'unread'" :prepend-icon="mdiMessageBadgeOutline" :title="$t('strand_nav.unread')" @click="scrollToUnread" :to="baseUrl+'/'+loader.firstUnreadSequenceId()" v-if="loader.firstUnreadSequenceId()" exact)
-    //v-list-item(color="accent" :prepend-icon="mdiArrowULeftTop" :title="$t('strand_nav.return')" @click="scrollToFocused" v-if="focusSelector && !focusedItemVisible")
-    v-list-item(color="info" value="toc-end" :prepend-icon="mdiArrowDownThin" :title="$t('strand_nav.end')" @click="scrollToEnd" :to="baseUrl+'/'+topic.lastSequenceId()")
+v-list-item(color="info" value="toc-end" :prepend-icon="mdiArrowDownThin" :title="$t('strand_nav.end')" @click="scrollToEnd" :to="baseUrl+'/'+topic.lastSequenceId()")
   template(v-if="isSignedIn")
 
     v-list(nav slim density="compact" :lines="false")

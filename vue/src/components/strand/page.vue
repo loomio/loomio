@@ -305,7 +305,7 @@ function scrollToAnchorIfNew() {
       v-sheet.strand-card.thread-card.mb-8.pb-4.rounded(elevation=1)
         strand-list.pr-1.pr-sm-3.px-sm-2(:loader="loader" :collection="loader.collection" :focus-selector="focusSelector" :focus-mode="focusMode")
         strand-actions-panel(:topic="topic")
-  strand-toc-nav(v-if="loader" :topic="topic" :loader="loader" :key="topic.id" :focus-mode="focusMode" :focus-selector="focusSelector" :focused-item-visible="focusedItemVisible")
+  strand-toc-nav(v-if="loader" :topic="topic" :loader="loader" :key="topic.id")
   v-fab(v-if="!$vuetify.display.mdAndUp" icon app location="bottom right" @click="openThreadNav" color="primary" variant="tonal")
     v-icon(:icon="mdiMenuOpen" )
 </template>
