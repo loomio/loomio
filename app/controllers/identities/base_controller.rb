@@ -1,10 +1,13 @@
 class Identities::BaseController < ApplicationController
   def oauth
     session[:back_to] = safe_back_to
+    session[:oauth_state] = SecureRandom.hex(32)
     redirect_to oauth_url
   end
 
   def create
+    return respond_with_error(401, "OAuth state mismatch") unless valid_oauth_state?
+
     if params[:error].present?
       flash[:error] = t(:'auth.oauth_cancelled')
       return redirect_to session.delete(:back_to) || dashboard_path
@@ -71,7 +74,12 @@ class Identities::BaseController < ApplicationController
   end
 
   def oauth_params
-    { client.client_key_name => client.key, redirect_uri: redirect_uri, scope: oauth_scope }
+    {
+      client.client_key_name => client.key,
+      redirect_uri: redirect_uri,
+      scope: oauth_scope,
+      state: session[:oauth_state]
+    }
   end
 
   def client
@@ -89,5 +97,13 @@ class Identities::BaseController < ApplicationController
   def safe_back_to
     path = (params[:back_to] || request.referrer).to_s
     path if path.start_with?('/') && !path.start_with?('//', '/\\')
+  end
+
+  def valid_oauth_state?
+    expected_state = session.delete(:oauth_state).to_s
+    returned_state = params[:state].to_s
+    return false if expected_state.blank? || returned_state.blank?
+
+    ActiveSupport::SecurityUtils.secure_compare(expected_state, returned_state)
   end
 end

@@ -51,9 +51,11 @@ class Identities::OauthControllerTest < ActionController::TestCase
   test "redirects to OAuth provider with correct parameters" do
     get :oauth, params: { back_to: '/some/path' }
     assert_equal '/some/path', session[:back_to]
+    assert session[:oauth_state].present?
     assert_match(/https:\/\/oauth\.provider\.com\/authorize/, response.location)
     assert_includes response.location, 'client_id=mock_client_id'
     assert_includes response.location, 'scope=openid+profile+email'
+    assert_includes response.location, 'state='
   end
 
   test "stores referrer as back_to when it is a relative path" do
@@ -73,7 +75,7 @@ class Identities::OauthControllerTest < ActionController::TestCase
     session[:back_to] = '/dashboard'
 
     assert_difference ['Identity.where(identity_type: "oauth").count', 'User.count'], 1 do
-      get :create, params: { code: 'authorization_code_123' }
+      get :create, params: oauth_callback_params(code: 'authorization_code_123')
     end
 
     identity = Identity.where(identity_type: 'oauth').last
@@ -97,7 +99,7 @@ class Identities::OauthControllerTest < ActionController::TestCase
 
     assert_difference 'Identity.where(identity_type: "oauth").count', 1 do
       assert_no_difference 'User.count' do
-        get :create, params: { code: 'authorization_code_123' }
+        get :create, params: oauth_callback_params(code: 'authorization_code_123')
       end
     end
 
@@ -110,7 +112,7 @@ class Identities::OauthControllerTest < ActionController::TestCase
   test "does not overwrite user name by default" do
     hex = SecureRandom.hex(4)
     existing_user = User.create!(name: 'Original Name', email: 'oauth@example.com', username: "oauthex#{hex}", email_verified: true)
-    get :create, params: { code: 'authorization_code_123' }
+    get :create, params: oauth_callback_params(code: 'authorization_code_123')
     assert_equal 'Original Name', existing_user.reload.name
   end
 
@@ -120,7 +122,7 @@ class Identities::OauthControllerTest < ActionController::TestCase
     existing_user = User.create!(name: 'Original Name', email: 'oauth@example.com', username: "oauthex#{hex}", email_verified: true)
     ENV['LOOMIO_SSO_FORCE_USER_ATTRS'] = 'true'
 
-    get :create, params: { code: 'authorization_code_123' }
+    get :create, params: oauth_callback_params(code: 'authorization_code_123')
 
     existing_user.reload
     assert_equal 'OAuth User', existing_user.name
@@ -136,7 +138,7 @@ class Identities::OauthControllerTest < ActionController::TestCase
 
     assert_difference 'Identity.where(identity_type: "oauth").count', 1 do
       assert_no_difference 'User.count' do
-        get :create, params: { code: 'authorization_code_123' }
+        get :create, params: oauth_callback_params(code: 'authorization_code_123')
       end
     end
 
@@ -162,7 +164,7 @@ class Identities::OauthControllerTest < ActionController::TestCase
     session[:back_to] = '/dashboard'
 
     assert_no_difference ['Identity.where(identity_type: "oauth").count', 'User.count'] do
-      get :create, params: { code: 'authorization_code_123' }
+      get :create, params: oauth_callback_params(code: 'authorization_code_123')
     end
 
     existing_identity.reload
@@ -190,7 +192,7 @@ class Identities::OauthControllerTest < ActionController::TestCase
     ENV['LOOMIO_SSO_FORCE_USER_ATTRS'] = 'true'
     session[:back_to] = '/dashboard'
 
-    get :create, params: { code: 'authorization_code_123' }
+    get :create, params: oauth_callback_params(code: 'authorization_code_123')
 
     existing_identity.reload
     assert_equal 'oauth@example.com', existing_identity.email
@@ -213,7 +215,7 @@ class Identities::OauthControllerTest < ActionController::TestCase
 
     assert_difference 'Identity.where(identity_type: "oauth").count', 1 do
       assert_no_difference -> { current_user.identities.count } do
-        get :create, params: { code: 'authorization_code_123' }
+        get :create, params: oauth_callback_params(code: 'authorization_code_123')
       end
     end
 
@@ -229,9 +231,16 @@ class Identities::OauthControllerTest < ActionController::TestCase
   # Auth failure - user cancels
   test "returns to dashboard with error when user cancels" do
     session[:back_to] = '/dashboard'
-    get :create, params: { error: 'access_denied' }
+    get :create, params: oauth_callback_params(error: 'access_denied')
     assert_redirected_to '/dashboard'
     assert_equal I18n.t('auth.oauth_cancelled'), flash[:error]
+  end
+
+  test "returns 401 when oauth state does not match" do
+    session[:oauth_state] = 'expected-state'
+    get :create, params: { code: 'authorization_code_123', state: 'wrong-state' }, format: :json
+    assert_response 401
+    assert_equal 'OAuth state mismatch', JSON.parse(response.body)['error']
   end
 
   # Auth failure - token not returned
@@ -243,7 +252,7 @@ class Identities::OauthControllerTest < ActionController::TestCase
         headers: { 'Content-Type' => 'application/json' }
       )
 
-    get :create, params: { code: 'invalid_code' }, format: :json
+    get :create, params: oauth_callback_params(code: 'invalid_code'), format: :json
     assert_response 401
     json = JSON.parse(response.body)
     assert_equal 'OAuth authorization failed', json['error']
@@ -258,7 +267,7 @@ class Identities::OauthControllerTest < ActionController::TestCase
         headers: { 'Content-Type' => 'application/json' }
       )
 
-    get :create, params: { code: 'valid_code' }, format: :json
+    get :create, params: oauth_callback_params(code: 'valid_code'), format: :json
     assert_response 401
     json = JSON.parse(response.body)
     assert_equal 'Could not fetch user profile from OAuth provider', json['error']
@@ -266,7 +275,7 @@ class Identities::OauthControllerTest < ActionController::TestCase
 
   # Fallback redirect
   test "redirects to dashboard when no back_to is set" do
-    get :create, params: { code: 'authorization_code_123' }
+    get :create, params: oauth_callback_params(code: 'authorization_code_123')
     assert_redirected_to dashboard_path
   end
 
@@ -303,5 +312,12 @@ class Identities::OauthControllerTest < ActionController::TestCase
     assert_response 500
     json = JSON.parse(response.body)
     assert json['error'].present?
+  end
+
+  private
+
+  def oauth_callback_params(params = {})
+    session[:oauth_state] = 'test-oauth-state'
+    params.merge(state: 'test-oauth-state')
   end
 end
