@@ -110,19 +110,20 @@ class Api::V1::AnnouncementsController < Api::V1::RestfulController
     Notification.includes(:user).where(event_id: events.pluck(:id)).order('users.name, users.email').each do |notification|
       next unless notification.user
       notifications[notification.event_id] = [] unless notifications.has_key?(notification.event_id)
-      notifications[notification.event_id] << {id: notification.id, user_id: notification.user_id, to: (notification.user.name || notification.user.email), viewed: allow_viewed && notification.viewed }
+      notifications[notification.event_id] << {id: notification.id, user_id: notification.user_id, viewed: allow_viewed && notification.viewed }
     end
 
     res = events.map do |event|
-      {event_id: event.id,
+      {id: event.id,
        created_at: event.created_at,
        author_id: event.user_id,
-       author_name: event.user.name,
        kind: event.kind,
        notifications: notifications[event.id] || [] }
     end.filter {|e| e[:notifications].size > 0}
 
-    render root: false, json: {allow_viewed: allow_viewed, data: res}
+    user_ids = res.flat_map { |e| [e[:author_id]] + e[:notifications].map { |n| n[:user_id] } }.uniq.compact
+    users = User.where(id: user_ids).map { |u| AuthorSerializer.new(u).as_json(root: false) }
+    render root: false, json: {allow_viewed: allow_viewed, data: res, users: users}
   end
 
   private
@@ -130,18 +131,22 @@ class Api::V1::AnnouncementsController < Api::V1::RestfulController
   def target_event_ids
     if target_model.is_a?(Topic)
       # topic_id on events identifies thread items only. Notification/edit
-      # events (poll_announced, discussion_edited, etc.) link via eventable,
-      # so we match by topicable + in-thread polls + their outcomes, plus
-      # comments via topic_id (since comment events are thread items).
+      # events (poll_announced, discussion_edited, user_mentioned, etc.) link
+      # via eventable, so we match by topicable + in-thread polls + their
+      # outcomes. For comments we match both thread-item events (topic_id = :t)
+      # and notification events like user_mentioned whose eventable is a comment
+      # in the thread but whose topic_id is NULL.
       discussion_ids = target_model.topicable_type == 'Discussion' ? [target_model.topicable_id] : []
       poll_ids       = Poll.where(topic_id: target_model.id).pluck(:id)
       outcome_ids    = Outcome.where(poll_id: poll_ids).pluck(:id)
+      comment_ids    = Event.where(topic_id: target_model.id, eventable_type: 'Comment').pluck(:eventable_id)
 
-      Event.where(kind: notification_kinds).where(<<~SQL, d: discussion_ids, p: poll_ids, o: outcome_ids, t: target_model.id).pluck(:id)
+      Event.where(kind: notification_kinds).where(<<~SQL, d: discussion_ids, p: poll_ids, o: outcome_ids, t: target_model.id, c: comment_ids).pluck(:id)
         (eventable_type = 'Discussion' AND eventable_id IN (:d)) OR
         (eventable_type = 'Poll'       AND eventable_id IN (:p)) OR
         (eventable_type = 'Outcome'    AND eventable_id IN (:o)) OR
-        (eventable_type = 'Comment'    AND topic_id = :t)
+        (eventable_type = 'Comment'    AND topic_id = :t) OR
+        (eventable_type = 'Comment'    AND eventable_id IN (:c))
       SQL
     else
       Event.where(kind: notification_kinds, eventable: [target_model]).pluck(:id)

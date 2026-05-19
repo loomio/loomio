@@ -3,6 +3,7 @@ import { ref } from 'vue';
 import Records from '@/shared/services/records';
 
 function userFor(notification) { return Records.users.find(notification.user_id); }
+function authorFor(event) { return Records.users.find(event.author_id); }
 
 const props = defineProps({
   close: Function,
@@ -20,12 +21,6 @@ Records.fetch({
 }).then(data => {
   historyData.value = data.data || [];
   allowViewed.value = data.allow_viewed;
-  const userIds = [];
-  historyData.value.forEach(event => {
-    if (event.author_id) userIds.push(event.author_id);
-    event.notifications.forEach(n => { if (n.user_id) userIds.push(n.user_id); });
-  });
-  Records.users.fetchAnyMissingById(userIds);
 }).catch(() => {
   historyError.value = true;
 }).finally(() => {
@@ -49,11 +44,11 @@ v-card(:title="$t('announcement.' + modelKind + '_notification_history')")
         h4.mt-4.mb-2
           time-ago(:date="event.created_at")
           mid-dot
-          span(v-t="{ path: 'announcement.'+event.kind, args: { name: event.author_name, length: event.notifications.length } }")
+          span(v-t="{ path: 'announcement.'+event.kind, args: { name: authorFor(event) && authorFor(event).nameOrUsername(), length: event.notifications.length } }")
         ul(style="list-style-type: none; padding-left: 0")
           li.d-flex.align-center.ga-2.py-1(v-for="notification in event.notifications" :key="notification.id")
             user-avatar(v-if="userFor(notification)" :user="userFor(notification)" :size="28" no-link)
-            span {{notification.to}}
+            span(v-if="userFor(notification)") {{userFor(notification).nameOrUsername()}}
             v-chip(v-if="allowViewed && notification.viewed" size="x-small" color="success" variant="tonal")
               span(v-t="'common.read'")
             v-chip(v-else-if="allowViewed" size="x-small" color="warning" variant="tonal")

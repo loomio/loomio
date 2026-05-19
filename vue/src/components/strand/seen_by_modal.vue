@@ -12,8 +12,7 @@ const seenByLoading = ref(true);
 const seenByError = ref(false);
 
 Records.fetch({path: `topics/${topic.id}/history`}).then(data => {
-  seenByData.value = orderBy(data, ['last_read_at'], ['desc']) || [];
-  Records.users.fetchAnyMissingById(seenByData.value.map(r => r.user_id));
+  seenByData.value = orderBy(data.data, ['last_read_at'], ['desc']) || [];
 }).catch(() => {
   seenByError.value = true;
 }).finally(() => {
@@ -30,9 +29,9 @@ v-card(:title="$t('discussion_last_seen_by.title')")
   v-card-text.text-body-2(v-else)
     p(v-if="seenByError" v-t="'announcement.history_error'")
     p(v-else-if="seenByData.length == 0" v-t="'discussion_last_seen_by.no_one'")
-    div.d-flex.align-center.ga-2.py-1(v-else v-for="reader in seenByData" :key="reader.reader_id")
+    div.d-flex.align-center.ga-2.py-1(v-else v-for="reader in seenByData" :key="reader.user_id")
       user-avatar(v-if="userFor(reader)" :user="userFor(reader)" :size="28" no-link)
-      span {{reader.user_name}}
+      span(v-if="userFor(reader)") {{userFor(reader).nameOrUsername()}}
       mid-dot
       time-ago.text-medium-emphasis(:date="reader.last_read_at")
 </template>

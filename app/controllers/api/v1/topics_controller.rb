@@ -120,13 +120,13 @@ class Api::V1::TopicsController < Api::V1::RestfulController
     if Poll.where(topic_id: topic.id).kept.where(anonymous: true).any?
       render root: false, json: {message: I18n.t("discussion_last_seen_by.disabled_anonymous_polls")}, status: 403
     else
-      res = TopicReader.joins(:user).where(topic_id: topic.id).where.not(last_read_at: nil).map do |reader|
-        {reader_id: reader.id,
-         last_read_at: reader.last_read_at,
-         user_id: reader.user_id,
-         user_name: reader.user.name_or_username }
+      readers = TopicReader.joins(:user).where(topic_id: topic.id).where.not(last_read_at: nil)
+      data = readers.map do |reader|
+        {last_read_at: reader.last_read_at,
+         user_id: reader.user_id }
       end
-      render root: false, json: res
+      users = readers.map { |r| AuthorSerializer.new(r.user).as_json(root: false) }
+      render root: false, json: {data: data, users: users}
     end
   end
 
