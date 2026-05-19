@@ -8,7 +8,6 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
     @group = groups(:group)
     @discussion = discussions(:discussion)
     @topic = @discussion.topic
-    SearchService.reindex_everything
   end
 
   # Test index action
@@ -291,5 +290,56 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
     patch :set_volume, params: { id: discussions(:alien_discussion).topic.id, volume: :mute }
 
     refute_equal 200, response.status
+  end
+
+  # Test history action
+  test "history returns readers and sideloaded users" do
+    sign_in @admin
+    TopicReader.find_or_initialize_by(user: @user, topic: @topic).update!(last_read_at: 1.hour.ago, volume: :normal)
+
+    get :history, params: { id: @topic.id }
+
+    assert_response :success
+    json = JSON.parse(response.body)
+    assert_includes json['data'].map { |r| r['user_id'] }, @user.id
+    assert_includes json['users'].map { |u| u['id'] }, @user.id
+  end
+
+  test "history excludes readers who have not read the topic" do
+    sign_in @admin
+    TopicReader.where(user: @user, topic: @topic).delete_all
+
+    get :history, params: { id: @topic.id }
+
+    assert_response :success
+    json = JSON.parse(response.body)
+    refute_includes json['data'].map { |r| r['user_id'] }, @user.id
+  end
+
+  test "history returns 403 when topic has an anonymous poll" do
+    sign_in @user
+    poll = Poll.new(title: "Secret vote", poll_type: "proposal", topic: @topic,
+                    anonymous: true, opened_at: Time.now, closing_at: 1.day.from_now, author: @admin)
+    poll.poll_options.build(name: 'agree')
+    poll.poll_options.build(name: 'disagree')
+    poll.save!
+
+    get :history, params: { id: @topic.id }
+
+    assert_response :forbidden
+  end
+
+  test "history denied to non-members" do
+    sign_in @alien
+
+    get :history, params: { id: @topic.id }
+
+    assert_response :forbidden
+  end
+
+  test "history requires sign in" do
+    get :history, params: { id: @topic.id }
+
+    assert_response :unauthorized
   end
 end

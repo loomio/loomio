@@ -34,6 +34,48 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "history for topic includes users in response" do
+    member = users(:user)
+    topic = @discussion.topic
+    Events::DiscussionAnnounced.publish!(discussion: @discussion, actor: @admin,
+      recipient_user_ids: [member.id], recipient_chatbot_ids: [])
+
+    get :history, params: { topic_id: topic.id }
+
+    assert_response :success
+    json = JSON.parse(response.body)
+    assert json['data'].any?
+    assert json['users'].any?
+    assert_includes json['users'].map { |u| u['id'] }, member.id
+  end
+
+  test "history for topic denied to non-members" do
+    sign_in @alien
+
+    get :history, params: { topic_id: @discussion.topic.id }
+
+    assert_response :forbidden
+  end
+
+  test "history for topic includes user_mentioned notifications" do
+    member = users(:user)
+    topic = @discussion.topic
+    parent_event = Event.find_by(kind: 'new_discussion', topic: @discussion.topic)
+    comment = Comment.create!(body: "hello", parent: parent_event, user: @admin)
+    comment.create_missing_created_event!
+    mention_event = Event.create!(kind: 'user_mentioned', eventable: comment, user: @admin,
+                                  custom_fields: { user_ids: [member.id] })
+    Notification.create!(event: mention_event, user: member)
+
+    get :history, params: { topic_id: topic.id }
+
+    assert_response :success
+    json = JSON.parse(response.body)
+    mention_event = json['data'].find { |e| e['kind'] == 'user_mentioned' }
+    assert mention_event, "expected user_mentioned event in history"
+    assert_includes mention_event['notifications'].map { |n| n['user_id'] }, member.id
+  end
+
   # -- Poll announcement tests --
 
   def create_test_poll(**extra)
