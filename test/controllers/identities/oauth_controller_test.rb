@@ -279,7 +279,7 @@ class Identities::OauthControllerTest < ActionController::TestCase
     request.env['HTTP_REFERER'] = 'http://test.host/settings'
 
     assert_difference -> { user.identities.count }, -1 do
-      get :destroy
+      delete :destroy
     end
 
     assert_nil Identity.find_by(id: identity.id, identity_type: 'oauth')
@@ -291,7 +291,7 @@ class Identities::OauthControllerTest < ActionController::TestCase
     user = User.create!(name: "oauser#{hex}", email: "oauser#{hex}@example.com", username: "oauser#{hex}", email_verified: true)
     Identity.create!(identity_type: 'oauth', uid: 'oauth_user_123', email: 'oauth@example.com', access_token: 'token', user: user)
     sign_in user
-    get :destroy
+    delete :destroy
     assert_redirected_to root_path
   end
 
@@ -299,7 +299,7 @@ class Identities::OauthControllerTest < ActionController::TestCase
     hex = SecureRandom.hex(4)
     user = User.create!(name: "oauser#{hex}", email: "oauser#{hex}@example.com", username: "oauser#{hex}", email_verified: true)
     sign_in user
-    get :destroy, format: :json
+    delete :destroy, format: :json
     assert_response 500
     json = JSON.parse(response.body)
     assert json['error'].present?
