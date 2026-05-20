@@ -5,12 +5,22 @@ class Identities::SamlController < ApplicationController
   def oauth
     session[:back_to] = safe_back_to
     auth_request = OneLogin::RubySaml::Authrequest.new
+    session[:saml_request_id] = auth_request.uuid
     redirect_to auth_request.create(saml_settings)
   end
 
   def create
-    saml_response = OneLogin::RubySaml::Response.new(params[:SAMLResponse])
-    saml_response.settings = saml_settings
+    request_id = session.delete(:saml_request_id)
+
+    unless ENV['SAML_ALLOW_IDP_INITIATED'].present?
+      return respond_with_error(401, "SAML request state missing") if request_id.blank?
+    end
+
+    saml_response = OneLogin::RubySaml::Response.new(
+      params[:SAMLResponse],
+      settings: saml_settings,
+      matches_request_id: request_id
+    )
 
     return respond_with_error(500, "SAML response is not valid") unless saml_response.is_valid?
 
@@ -79,7 +89,8 @@ class Identities::SamlController < ApplicationController
       
       settings.security[:digest_method] = XMLSecurity::Document::SHA256
       settings.security[:signature_method] = XMLSecurity::Document::RSA_SHA256
-      
+      settings.security[:want_assertions_signed] = true
+
       settings
     end
   end
