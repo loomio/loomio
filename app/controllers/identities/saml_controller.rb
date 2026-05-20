@@ -11,7 +11,10 @@ class Identities::SamlController < ApplicationController
 
   def create
     request_id = session.delete(:saml_request_id)
-    return respond_with_error(401, "SAML request state missing") if request_id.blank?
+
+    unless ENV['SAML_ALLOW_IDP_INITIATED'].present?
+      return respond_with_error(401, "SAML request state missing") if request_id.blank?
+    end
 
     saml_response = OneLogin::RubySaml::Response.new(
       params[:SAMLResponse],
