@@ -45,10 +45,6 @@ class MembershipService
       .where("topics.group_id IN (?)", invited_group_ids)
       .update_all(guest: false, revoked_at: nil, revoker_id: nil)
 
-      Stance.joins(poll: :topic)
-      .where(participant_id: actor.id, 'topics.group_id': invited_group_ids)
-      .update_all(guest: false)
-
       # unrevoke any votes on active polls
       Stance.joins(poll: :topic)
       .where(participant_id: actor.id)
