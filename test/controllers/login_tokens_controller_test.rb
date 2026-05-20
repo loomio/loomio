@@ -18,17 +18,17 @@ class LoginTokensControllerTest < ActionController::TestCase
     assert_redirected_to inbox_path
   end
 
-  test "does not store an expired token in session" do
+  test "stores an expired token in session so auth form can show invalid token error" do
     @token.update!(created_at: 25.hours.ago)
     get :show, params: { token: @token.token }
-    assert_nil session[:pending_login_token]
-    assert_response :not_found
+    assert_equal @token.token, session[:pending_login_token]
+    assert_redirected_to dashboard_path
   end
 
-  test "does not store a used token in session" do
+  test "stores a used token in session so auth form can show invalid token error" do
     @token.update!(used: true)
     get :show, params: { token: @token.token }
-    assert_nil session[:pending_login_token]
-    assert_response :not_found
+    assert_equal @token.token, session[:pending_login_token]
+    assert_redirected_to dashboard_path
   end
 end
