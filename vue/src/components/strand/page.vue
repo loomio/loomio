@@ -21,6 +21,7 @@ const anchorSelector   = ref(null);
 const anchorOffset     = ref(null);
 const lastAnchorSelector = ref(null);
 const focusedItemVisible = ref(false);
+let cancelSettledAnchorScroll = null;
 
 onMounted(() => {
   EventBus.$on('setAnchor', onSetAnchor);
@@ -32,6 +33,7 @@ onMounted(() => {
 onUnmounted(() => {
   EventBus.$off('setAnchor', onSetAnchor);
   EventBus.$off('visibleKeys', onVisibleKeys);
+  cancelSettledScroll();
 });
 
 watch(() => route.params.key, init);
@@ -51,10 +53,18 @@ function scrollToFocused() {
   }
 }
 
+function cancelSettledScroll() {
+  if (cancelSettledAnchorScroll) {
+    cancelSettledAnchorScroll();
+    cancelSettledAnchorScroll = null;
+  }
+}
+
 // Fired by load_more.vue before prepending items above the viewport.
 // Stores the current top-visible item's selector + screen offset so
 // scrollToAnchorIfNew can restore the visual position after insertion.
 function onSetAnchor(selector, offset) {
+  cancelSettledScroll();
   anchorSelector.value = selector;
   anchorOffset.value = offset;
 }
@@ -72,6 +82,7 @@ function onVisibleKeys(keys) {
 }
 
 function init() {
+  cancelSettledScroll();
   topic.value = null;
   loadedKey.value = null;
   loader.value = null;
@@ -159,6 +170,7 @@ function fetchInitialContent() {
     loader.value.fetchedRules = loader.value.rules.filter(rule => rule.remote).map(rule => JSON.stringify(rule.remote));
     loader.value.isFirstLoad = false;
     loader.value.updateCollection();
+    setAnchorFromRoute();
 
     EventBus.$emit('currentComponent', {
       focusHeading: false,
@@ -175,7 +187,7 @@ function fetchInitialContent() {
       query: () => {
         if (!loader.value) { return; }
         loader.value.updateCollection();
-        if (!scrolledToUnread && !anchorSelector.value && loader.value.lastReadAt) {
+        if (!scrolledToUnread && !anchorSelector.value && !focusSelector.value && loader.value.lastReadAt) {
           const firstUnread = loader.value.firstUnreadSequenceId();
           if (firstUnread) {
             anchorSelector.value = `.sequenceId-${firstUnread}`;
@@ -193,7 +205,6 @@ function fetchInitialContent() {
       }
     });
 
-    setAnchorFromRoute();
     nextTick(() => scrollToAnchorIfPresent());
   }).catch(error => {
     if (error.status) {
@@ -271,16 +282,33 @@ function setAnchorFromRoute() {
 }
 
 function scrollToAnchorIfPresent() {
-  if (anchorSelector.value && document.querySelector(anchorSelector.value)) {
+  if (!anchorSelector.value) { return; }
+
+  if (shouldSettleAnchorScroll()) {
+    cancelSettledScroll();
+    cancelSettledAnchorScroll = ScrollService.scrollToSettled(anchorSelector.value, anchorOffset.value);
+  } else if (document.querySelector(anchorSelector.value)) {
     ScrollService.scrollTo(anchorSelector.value, anchorOffset.value);
   }
 }
 
 function scrollToAnchorIfNew() {
   if (anchorSelector.value && lastAnchorSelector.value !== anchorSelector.value) {
-    ScrollService.scrollTo(anchorSelector.value, anchorOffset.value);
+    if (shouldSettleAnchorScroll()) {
+      cancelSettledScroll();
+      cancelSettledAnchorScroll = ScrollService.scrollToSettled(anchorSelector.value, anchorOffset.value);
+    } else {
+      ScrollService.scrollTo(anchorSelector.value, anchorOffset.value);
+    }
     lastAnchorSelector.value = anchorSelector.value;
   }
+}
+
+function shouldSettleAnchorScroll() {
+  return anchorSelector.value && (
+    anchorSelector.value === focusSelector.value ||
+    anchorSelector.value === '.actions-panel-end'
+  );
 }
 </script>
 
