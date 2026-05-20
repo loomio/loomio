@@ -53,11 +53,17 @@ export default {
       p(v-if="poll.pollType == 'proposal'" v-t="'poll_common_action_panel.for_this_proposal_to_pass'")
       p(v-else v-t="{path: 'poll_common_action_panel.for_this_poll_type_to_be_valid', args: {poll_type: poll.translatedPollType()}}")
       ul(style="list-style-type: none; padding-left: 0;")
-        li.text-medium-emphasis(v-if="poll.quorumPct")
-          common-icon.mr-1(:name="poll.quorumVotesRequired <= 0 ? 'mdiCheck' : 'mdiClose'")
+        li.text-medium-emphasis.d-flex.align-center(v-if="poll.quorumPct")
+          common-icon.mr-1(
+            :name="poll.quorumVotesRequired <= 0 ? 'mdiCheckboxMarkedOutline' : 'mdiCheckboxBlankOutline'"
+            :color="poll.quorumVotesRequired <= 0 ? 'success' : (poll.isClosed() ? 'error' : undefined)"
+          )
           span(v-t="{path: 'poll_common_percent_voted.pct_of_eligible_voters_must_participate', args: {pct: poll.quorumPct}}")
-        li.text-medium-emphasis(v-for="option in poll.results.filter(option => option.test_operator)")
-          common-icon.mr-1(:name="option.test_result ? 'mdiCheck' : 'mdiClose'")
+        li.text-medium-emphasis.d-flex.align-center(v-for="option in poll.results.filter(option => option.test_operator)")
+          common-icon.mr-1(
+            :name="option.test_result ? 'mdiCheckboxMarkedOutline' : 'mdiCheckboxBlankOutline'"
+            :color="option.test_result ? 'success' : (poll.isClosed() ? 'error' : undefined)"
+          )
           span(v-t="{path: `poll_option_form.name_${option.test_operator}_${option.test_against}`, args: {percent: option.test_percent, name: option.name} }")
     template(v-if="poll.config().has_options")
       poll-stv-chart-panel(v-if="poll.pollType == 'stv'" :poll="poll")
