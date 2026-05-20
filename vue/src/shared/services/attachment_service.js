@@ -6,13 +6,13 @@ import openModal from '@/shared/helpers/open_modal';
 import Flash from '@/shared/services/flash';
 
 export default new class AttachmentService {
-  actions(attachment) {
+  actions(attachment, group) {
     return {
       delete_attachment: {
         icon: 'mdi-delete',
         name: 'common.action.delete',
         canPerform() {
-          return attachment.isA('attachment') && AbilityService.canAdminister(attachment.group());
+          return attachment.isA('attachment') && AbilityService.canAdminister(group);
         },
         perform() {
           return EventBus.$emit('openModal', {
