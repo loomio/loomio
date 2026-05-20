@@ -9,53 +9,62 @@ class MembershipService
     # so we want to accept all the pending invitations this person has been sent within this org
     # and we dont want any surprises if they already have some memberships.
     # they may be accepting memberships send to a different email (unverified_user)
-    accepted_at = DateTime.now
+    invited_group_ids = []
+    accepted_membership = nil
 
-    invited_group_id = membership.group_id
-    existing_group_ids = Membership.where(user_id: actor.id).pluck(:group_id)
-    existing_accepted_group_ids = Membership.active.accepted.where(user_id: actor.id).pluck(:group_id)
-    invited_group_ids = Membership.pending.where(user_id: membership.user_id, group_id: membership.group.parent_or_self.id_and_subgroup_ids).pluck(:group_id)
+    Membership.transaction do
+      accepted_at = DateTime.now
 
-    # unrevoke any memberships the actor was just invited to
-    Membership.revoked
-    .where(user_id: actor.id, group_id: invited_group_ids)
-    .update(revoked_at: nil, revoker_id: nil, inviter_id: membership.inviter_id, accepted_at: accepted_at)
+      invited_group_id = membership.group_id
+      existing_group_ids = Membership.where(user_id: actor.id).pluck(:group_id)
+      existing_accepted_group_ids = Membership.active.accepted.where(user_id: actor.id).pluck(:group_id)
+      invited_group_ids = Membership.pending.where(user_id: membership.user_id, group_id: membership.group.parent_or_self.id_and_subgroup_ids).pluck(:group_id)
 
-    # ensure actor has accepted any existing pending memberships to this group
-    Membership.pending
-    .where(user_id: actor.id, group_id: invited_group_ids)
-    .update(accepted_at: accepted_at)
+      # unrevoke any memberships the actor was just invited to
+      Membership.revoked
+      .where(user_id: actor.id, group_id: invited_group_ids)
+      .update(revoked_at: nil, revoker_id: nil, inviter_id: membership.inviter_id, accepted_at: accepted_at)
 
-    Membership.pending
-    .where(user_id: membership.user_id, group_id: (invited_group_ids - existing_group_ids))
-    .update(user_id: actor.id, accepted_at: accepted_at)
+      # ensure actor has accepted any existing pending memberships to this group
+      Membership.pending
+      .where(user_id: actor.id, group_id: invited_group_ids)
+      .update(accepted_at: accepted_at)
 
-    if membership.user_id != actor.id
-      Membership.where(user_id: membership.user_id, group_id: invited_group_ids).destroy_all
+      Membership.pending
+      .where(user_id: membership.user_id, group_id: (invited_group_ids - existing_group_ids))
+      .update(user_id: actor.id, accepted_at: accepted_at)
+
+      if membership.user_id != actor.id
+        Membership.where(user_id: membership.user_id, group_id: invited_group_ids).destroy_all
+      end
+
+      # remove any existing guest access in these groups
+      TopicReader
+      .joins(:topic)
+      .where(user_id: actor.id)
+      .where("topics.group_id IN (?)", invited_group_ids)
+      .update_all(guest: false, revoked_at: nil, revoker_id: nil)
+
+      Stance.joins(poll: :topic)
+      .where(participant_id: actor.id, 'topics.group_id': invited_group_ids)
+      .update_all(guest: false)
+
+      # unrevoke any votes on active polls
+      Stance.joins(poll: :topic)
+      .where(participant_id: actor.id)
+      .where('topics.group_id': invited_group_ids)
+      .where('stances.revoked_at is not null')
+      .where('polls.closed_at is null')
+      .update_all(revoked_at: nil, revoker_id: nil)
+
+      accepted_membership = Membership.find_by!(group_id: invited_group_id, user_id: actor.id) unless existing_accepted_group_ids.include?(invited_group_id)
     end
 
     invited_group_ids.each do |group_id|
       GenericWorker.perform_async('PollService', 'group_members_added', group_id)
     end
 
-    # remove any existing guest access in these groups
-    TopicReader
-    .joins(:topic)
-    .where(user_id: actor.id)
-    .where("topics.group_id IN (?)", invited_group_ids)
-    .update_all(guest: false, revoked_at: nil, revoker_id: nil)
-
-    # unrevoke any votes on active polls
-    Stance.joins(poll: :topic)
-    .where(participant_id: actor.id)
-    .where('topics.group_id': invited_group_ids)
-    .where('stances.revoked_at is not null')
-    .where('polls.closed_at is null')
-    .update_all(revoked_at: nil, revoker_id: nil)
-
-    return if existing_accepted_group_ids.include?(invited_group_id)
-    membership = Membership.find_by!(group_id: invited_group_id, user_id: actor.id)
-    Events::InvitationAccepted.publish!(membership) if notify && membership.accepted_at
+    Events::InvitationAccepted.publish!(accepted_membership) if notify && accepted_membership&.accepted_at
   end
 
   def self.revoke(membership:, actor:, revoked_at: DateTime.now)

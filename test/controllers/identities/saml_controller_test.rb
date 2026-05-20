@@ -26,6 +26,7 @@ class Identities::SamlControllerTest < ActionController::TestCase
   # OAuth redirect tests
   test "redirects to SAML IdP with auth request" do
     mock_auth_request = Minitest::Mock.new
+    mock_auth_request.expect(:uuid, '_saml_request')
     mock_auth_request.expect(:create, 'https://saml.provider.com/login?SAMLRequest=...',
                               [OpenStruct])
 
@@ -36,11 +37,13 @@ class Identities::SamlControllerTest < ActionController::TestCase
     end
 
     assert_equal '/some/path', session[:back_to]
+    assert_equal '_saml_request', session[:saml_request_id]
     assert_redirected_to 'https://saml.provider.com/login?SAMLRequest=...'
   end
 
   test "stores referrer as back_to when it is a relative path" do
     mock_auth_request = Minitest::Mock.new
+    mock_auth_request.expect(:uuid, '_saml_request')
     mock_auth_request.expect(:create, 'https://saml.provider.com/login?SAMLRequest=...',
                               [OpenStruct])
 
@@ -56,6 +59,7 @@ class Identities::SamlControllerTest < ActionController::TestCase
 
   test "rejects external referrer as back_to" do
     mock_auth_request = Minitest::Mock.new
+    mock_auth_request.expect(:uuid, '_saml_request')
     mock_auth_request.expect(:create, 'https://saml.provider.com/login?SAMLRequest=...',
                               [OpenStruct])
 
@@ -88,6 +92,7 @@ class Identities::SamlControllerTest < ActionController::TestCase
 
   def with_saml_mocks(saml_response: nil, &block)
     saml_response ||= mock_saml_response
+    session[:saml_request_id] = '_saml_request'
     OneLogin::RubySaml::IdpMetadataParser.stub(:new, @mock_parser) do
       OneLogin::RubySaml::Response.stub(:new, saml_response) do
         yield
@@ -306,6 +311,16 @@ class Identities::SamlControllerTest < ActionController::TestCase
     assert_equal 'SAML response is not valid', json['error']
   end
 
+  test "returns error when SAML request state is missing" do
+    with_saml_mocks do
+      session.delete(:saml_request_id)
+      post :create, params: { SAMLResponse: 'base64_encoded' }, format: :json
+    end
+    assert_response 401
+    json = JSON.parse(response.body)
+    assert_equal 'SAML request state missing', json['error']
+  end
+
   # Fallback redirect
   test "redirects to dashboard when no back_to is set" do
     with_saml_mocks do
@@ -338,7 +353,7 @@ class Identities::SamlControllerTest < ActionController::TestCase
     request.env['HTTP_REFERER'] = 'http://test.host/settings'
 
     assert_difference -> { user.identities.count }, -1 do
-      get :destroy
+      delete :destroy
     end
 
     assert_nil Identity.find_by(id: identity.id, identity_type: 'saml')
@@ -350,7 +365,7 @@ class Identities::SamlControllerTest < ActionController::TestCase
     user = User.create!(name: "samluser#{hex}", email: "samluser#{hex}@example.com", username: "samluser#{hex}", email_verified: true)
     Identity.create!(identity_type: 'saml', uid: 'saml_user_123', email: 'saml@example.com', access_token: nil, user: user)
     sign_in user
-    get :destroy
+    delete :destroy
     assert_redirected_to root_path
   end
 
@@ -358,7 +373,7 @@ class Identities::SamlControllerTest < ActionController::TestCase
     hex = SecureRandom.hex(4)
     user = User.create!(name: "samluser#{hex}", email: "samluser#{hex}@example.com", username: "samluser#{hex}", email_verified: true)
     sign_in user
-    get :destroy, format: :json
+    delete :destroy, format: :json
     assert_response 500
     json = JSON.parse(response.body)
     assert json['error'].present?

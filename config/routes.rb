@@ -446,7 +446,7 @@ Rails.application.routes.draw do
     scope provider do
       get :oauth,                           to: "identities/#{provider}#oauth",       as: :"#{provider}_oauth"
       get :authorize,                       to: "identities/#{provider}#create",      as: :"#{provider}_authorize"
-      get '/',                              to: "identities/#{provider}#destroy",     as: :"#{provider}_unauthorize"
+      delete '/',                           to: "identities/#{provider}#destroy",     as: :"#{provider}_unauthorize"
     end
   end
 

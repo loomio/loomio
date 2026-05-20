@@ -45,6 +45,8 @@ class Identities::GoogleControllerTest < ActionController::TestCase
     assert_match(/accounts\.google\.com/, response.location)
     assert_includes response.location, 'client_id=google_client_id'
     assert_includes response.location, 'scope=email+profile'
+    assert_includes response.location, 'state='
+    assert session[:oauth_state].present?
   end
 
   test "rejects external back_to" do
@@ -53,7 +55,7 @@ class Identities::GoogleControllerTest < ActionController::TestCase
   end
 
   test "creates user and signs in" do
-    get :create, params: { code: 'google_auth_code' }
+    get :create, params: oauth_callback_params(code: 'google_auth_code')
 
     user = User.find_by(email: "google-#{@hex}@example.com")
     assert user
@@ -69,7 +71,7 @@ class Identities::GoogleControllerTest < ActionController::TestCase
   test "auto-links to verified user" do
     existing = User.create!(name: 'Existing', email: "google-#{@hex}@example.com", username: "gex#{@hex}", email_verified: true)
 
-    get :create, params: { code: 'google_auth_code' }
+    get :create, params: oauth_callback_params(code: 'google_auth_code')
 
     identity = Identity.find_by(identity_type: 'google', uid: "google_#{@hex}")
     assert_equal existing.id, identity.user_id
@@ -79,10 +81,17 @@ class Identities::GoogleControllerTest < ActionController::TestCase
   test "links to unverified user and verifies email" do
     unverified = User.create!(name: 'Invited', email: "google-#{@hex}@example.com", username: "ginv#{@hex}", email_verified: false)
 
-    get :create, params: { code: 'google_auth_code' }
+    get :create, params: oauth_callback_params(code: 'google_auth_code')
 
     identity = Identity.find_by(identity_type: 'google', uid: "google_#{@hex}")
     assert_equal unverified.id, identity.user_id
     assert unverified.reload.email_verified?
+  end
+
+  private
+
+  def oauth_callback_params(params = {})
+    session[:oauth_state] = 'test-oauth-state'
+    params.merge(state: 'test-oauth-state')
   end
 end
