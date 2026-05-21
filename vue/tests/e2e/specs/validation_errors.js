@@ -5,7 +5,6 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
-    page.click('.action-menu')
     page.click('.action-dock__button--edit_thread')
     page.clearField('.discussion-form__title-input input')
     page.click('.discussion-form__submit')
