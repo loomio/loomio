@@ -146,7 +146,7 @@ watch(() => props.discussion.groupId, (groupId) => {
   }));
   initialRecipients.value = [];
   initialRecipients.value = initialRecipients.value.concat(users);
-  props.discussion.private = props.discussion.topic().privateDefaultValue();
+  props.discussion.private = props.discussion.privateDefaultValue();
 }, { immediate: true });
 
 // Mounted

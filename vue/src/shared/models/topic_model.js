@@ -71,10 +71,6 @@ export default class TopicModel extends BaseModel {
     return this.topicableType === 'Discussion' ? Records.discussions.find(this.topicableId) : null
   }
 
-  privateDefaultValue() {
-    return this.group().discussionPrivacyOptions !== 'public_only';
-  }
-
   author() { return this.topicable().author(); }
 
   hasUnreadActivity() {

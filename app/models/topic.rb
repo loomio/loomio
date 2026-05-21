@@ -63,6 +63,10 @@ class Topic < ApplicationRecord
 
   delegate :members_can_raise_motions, to: :group, allow_nil: true
 
+  def replies_count
+    items_count - 1
+  end
+
   def discussion
     topicable_type == 'Discussion' && topicable
   end

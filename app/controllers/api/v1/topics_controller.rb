@@ -5,7 +5,7 @@ class Api::V1::TopicsController < Api::V1::RestfulController
     @topics = TopicQuery.visible_to(
                           user: current_user,
                           or_subgroups: false,
-                          or_public: false,
+                          or_public: params[:group_id].present?,
                           only_direct: params.has_key?(:direct),
                           only_unread: params.has_key?(:unread)
                         ).recent_activity_first

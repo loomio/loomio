@@ -51,7 +51,7 @@ class Views::Groups::Show < Views::Application::Layout
                         span(class: "thread-preview__title") { plain discussion.title }
                       end
                       div(class: "v-list-item__subtitle") do
-                        span(class: "thread-preview__items-count") { plain t("thread_preview.replies_count", count: discussion.topic.replies_count) }
+                        span(class: "thread-preview__items-count") { plain t("thread_preview.items_count", count: discussion.topic.items_count) }
                         span
                         comment { "/" }
                         span do
