@@ -42,7 +42,7 @@ class TopicQuery
 
   def self.filter(chain:, filter:)
     case filter
-    when 'show_closed', 'closed' then chain.where.not(closed_at: nil)
+    when 'locked' then chain.where.not(closed_at: nil)
     when 'unlocked' then chain.where(closed_at: nil)
     else chain
     end.order(Arel.sql("topics.pinned_at IS NOT NULL DESC, topics.last_activity_at DESC"))

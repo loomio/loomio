@@ -43,7 +43,7 @@ module.exports = {
     page.loadPath('setup_open_and_closed_discussions')
     page.expectText('.thread-preview', 'What star sign are you?')
     page.click('.discussions-panel__filters')
-    page.click('.discussions-panel__filters-closed')
+    page.click('.discussions-panel__filters-locked')
     page.expectText('.thread-preview', 'This thread is old and closed')
     page.click('.discussions-panel__filters')
     page.click('.discussions-panel__filters-all')

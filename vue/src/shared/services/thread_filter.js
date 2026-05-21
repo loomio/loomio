@@ -18,8 +18,8 @@ export default function(options) {
       case 'hide_unread':    return chain.where(topic => !topic.isUnread());
       case 'show_dismissed': return chain.where(topic => topic.isDismissed());
       case 'hide_dismissed': return chain.where(topic => !topic.isDismissed());
-      case 'show_closed':    return chain.where(topic => topic.closedAt != null);
-      case 'show_opened':    return chain.find({closedAt: null});
+      case 'show_locked':    return chain.where(topic => topic.closedAt != null);
+      case 'show_unlocked':    return chain.find({closedAt: null});
       case 'show_pinned':    return chain.find({pinnedAt: {$ne: null}});
       case 'hide_pinned':    return chain.find({pinnedAt: null});
       case 'show_muted':     return chain.where(topic => topic.volume() === 'mute');

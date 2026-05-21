@@ -96,7 +96,7 @@ export default
         case 'unread':
           chain = chain.where(topic => topic.isUnread());
           break;
-        case 'closed':
+        case 'locked':
           chain = chain.find({closedAt: {$ne: null}});
           break;
         case 'unlocked':
@@ -139,7 +139,7 @@ export default
     filterName(filter) {
       switch (filter) {
         case 'unread': return 'discussions_panel.unread';
-        case 'closed': return 'discussions_panel.locked';
+        case 'locked': return 'discussions_panel.locked';
         case 'unlocked': return 'discussions_panel.unlocked';
         case 'subscribed': return 'change_volume_form.simple.loud';
         default:
@@ -222,7 +222,7 @@ export default
     },
 
     suggestLockedThreads() {
-      return ['undefined', 'unlocked', 'unread'].includes(String(this.$route.query.t)) && this.group && this.group.closedDiscussionsCount;
+      return !['locked'].includes(String(this.$route.query.t)) && this.group && this.group.closedDiscussionsCount;
     }
   }
 };
@@ -240,7 +240,7 @@ div.discussions-panel(v-if="group")
       v-list
         v-list-item.discussions-panel__filters-all(@click="routeQuery({t: null})")
           v-list-item-title(v-t="'discussions_panel.all'")
-        v-list-item.discussions-panel__filters-closed(@click="routeQuery({t: 'closed'})")
+        v-list-item.discussions-panel__filters-locked(@click="routeQuery({t: 'locked'})")
           v-list-item-title(v-t="'discussions_panel.locked'")
         v-list-item.discussions-panel__filters-open(@click="routeQuery({t: 'unlocked'})")
           v-list-item-title(v-t="'discussions_panel.unlocked'")
@@ -297,7 +297,7 @@ div.discussions-panel(v-if="group")
 
         v-pagination(v-model="page" :length="totalPages" :disabled="totalPages == 1")
         .d-flex.justify-center
-          router-link.discussions-panel__view-closed-threads.text-center.pa-1(:to="'?t=closed'" v-if="suggestLockedThreads" v-t="'group_page.view_locked_discussions'")
+          router-link.discussions-panel__view-locked-threads.text-center.pa-1(:to="'?t=locked'" v-if="suggestLockedThreads" v-t="'group_page.view_locked_discussions'")
 
 </template>
 

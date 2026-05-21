@@ -32,11 +32,9 @@ class Api::V1::TopicsController < Api::V1::RestfulController
     end
 
     case params[:filter]
-    when 'closed'
+    when 'locked'
       @topics = @topics.closed
-    when 'all'
-      # no filter
-    else
+    when 'unlocked'
       @topics = @topics.not_closed
     end
 
