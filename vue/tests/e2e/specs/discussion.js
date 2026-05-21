@@ -48,8 +48,7 @@ module.exports = {
     page.click('.discussions-panel__filters')
     page.click('.discussions-panel__filters-open')
     page.click('.thread-preview')
-    page.click('.action-menu')
-    page.click('.action-dock__button--close_thread')
+    page.click('.thread-sidebar .action-dock__button--close_thread')
     page.expectFlash('Discussion closed')
     // page.click('.flash-root__action')
     // page.expectFlash('Thread reopened')
@@ -59,8 +58,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
-    page.click('.action-menu')
-    page.click('.action-dock__button--edit_thread')
+    page.click('.thread-sidebar .action-dock__button--edit_thread')
     page.fillIn('.discussion-form__title-input input', 'better title')
     page.fillIn('.discussion-form .lmo-textarea textarea', 'improved description')
     page.click('.discussion-form__submit')
@@ -105,8 +103,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
-    page.click('.action-menu')
-    page.click('.action-dock__button--discard_thread')
+    page.click('.thread-sidebar .action-dock__button--discard_thread')
     page.click('.confirm-modal__submit')
 
     page.expectFlash('Discussion deleted')
@@ -247,8 +244,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion_with_versions')
-    page.click('.action-menu')
-    page.click('.action-dock__button--show_history')
+    page.click('.thread-sidebar .action-dock__button--show_history')
     page.expectText('.revision-history-content del', 'star')
     page.expectText('.revision-history-content ins', 'moon')
   },

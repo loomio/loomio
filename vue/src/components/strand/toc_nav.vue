@@ -2,6 +2,7 @@
 import EventBus      from '@/shared/services/event_bus';
 import Records       from '@/shared/services/records';
 import TopicService  from '@/shared/services/topic_service';
+import DiscussionService from '@/shared/services/discussion_service';
 import LmoUrlService from '@/shared/services/lmo_url_service';
 import ScrollService from '@/shared/services/scroll_service';
 import Session       from '@/shared/services/session';
@@ -28,8 +29,15 @@ const topicActions = ref({});
 const selectedSequenceId = computed(() => parseInt(route.params.sequence_id));
 const selectedCommentId  = computed(() => parseInt(route.params.comment_id));
 const isSignedIn         = computed(() => Session.isSignedIn());
-const memberActions      = computed(() => Object.values(pickBy(topicActions.value, a => a.name && a.collection === 'members' && a.canPerform())));
-const menuActions        = computed(() => Object.values(pickBy(topicActions.value, a => a.name && a.collection === 'actions' && a.canPerform())));
+const memberActions      = computed(() => Object.entries(pickBy(topicActions.value, a => a.name && a.collection === 'members' && a.canPerform())).map(([key, action]) => ({ key, action })));
+const menuActions        = computed(() => {
+  const actions = Object.entries(pickBy(topicActions.value, a => a.name && a.collection === 'actions' && a.canPerform())).map(([key, action]) => ({ key, action }));
+  const discussion = props.topic.topicable();
+  if (discussion && discussion.isA && discussion.isA('discussion')) {
+    actions.push(...Object.entries(pickBy(DiscussionService.actions(discussion), a => a.name && a.canPerform && a.canPerform() && (a.to || a.perform))).map(([key, action]) => ({ key, action })));
+  }
+  return actions;
+});
 
 function scrollToEnd() {
   props.loader.addLoadArgsRule({ order_by: 'position_key', order_desc: true });
@@ -122,8 +130,9 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="topic" v-mo
     v-list(nav slim density="compact" :lines="false" v-if="memberActions.length")
       v-list-subheader(v-t="'membership_card.thread_members'")
       v-list-item(
-        v-for="action in memberActions"
-        :key="action.name"
+        v-for="{ key, action } in memberActions"
+        :key="key"
+        :class="`action-dock__button--${key}`"
         :title="$t(action.name, (action.nameArgs && action.nameArgs()) || {})"
         @click="action.perform()")
         template(v-slot:prepend)
@@ -132,10 +141,12 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="topic" v-mo
     v-list(nav slim density="compact" :lines="false" v-if="menuActions.length")
       v-list-subheader(v-t="'members_panel.header_actions'")
       v-list-item(
-        v-for="action in menuActions"
-        :key="action.name"
+        v-for="{ key, action } in menuActions"
+        :key="key"
+        :class="`action-dock__button--${key}`"
         :title="$t(action.name, (action.nameArgs && action.nameArgs()) || {})"
-        @click="action.perform()")
+        :to="action.to && action.to()"
+        @click="action.perform && action.perform()")
         template(v-slot:prepend)
           common-icon(:name="action.icon")
 </template>
