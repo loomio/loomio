@@ -18,7 +18,7 @@ class Api::V1::LoginTokensControllerTest < ActionController::TestCase
   end
 
   test "create handles an invalid referrer" do
-    user = users(:normal_user)
+    user = users(:user)
     request.env['HTTP_REFERER'] = 'http://%zz'
 
     assert_difference -> { user.login_tokens.count }, 1 do
