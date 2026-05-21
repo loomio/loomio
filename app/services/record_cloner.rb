@@ -211,8 +211,8 @@ class RecordCloner
       max_depth
       newest_first
       private
-      closed_at
-      closer_id
+      locked_at
+      locker_id
       pinned_at
       last_activity_at
       created_at

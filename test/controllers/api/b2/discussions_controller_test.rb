@@ -65,7 +65,7 @@ class Api::B2::DiscussionsControllerTest < ActionController::TestCase
   end
 
   test "index status=closed returns closed discussions only" do
-    discussions(:discussion).topic.update!(closed_at: Time.now)
+    discussions(:discussion).topic.update!(locked_at: Time.now)
     get :index, params: { group_id: @group.id, api_key: @user.api_key, status: 'closed' }
     assert_response 200
     titles = JSON.parse(response.body)['discussions'].map { |d| d['title'] }
@@ -73,7 +73,7 @@ class Api::B2::DiscussionsControllerTest < ActionController::TestCase
   end
 
   test "index status=all includes closed and open but not discarded" do
-    discussions(:discussion).topic.update!(closed_at: Time.now)
+    discussions(:discussion).topic.update!(locked_at: Time.now)
     private_d = DiscussionService.create(params: { title: 'Private Discussion', group_id: @group.id, private: true }, actor: @user)
     discarded_d = DiscussionService.create(params: { title: 'Discarded Discussion', group_id: @group.id, private: true }, actor: @user)
     discarded_d.update!(discarded_at: Time.now)

@@ -40,7 +40,10 @@ class DirectUploadsControllerTest < ActionController::TestCase
     sign_in @trial_user
     post :create, params: blob_params(byte_size: DirectUploadsController::TRIAL_MAX_UPLOAD_BYTES + 1), format: :json
     assert_response :unprocessable_entity
-    assert_includes JSON.parse(response.body).fetch('error'), 'too large'
+    assert_equal I18n.t(
+      'upload.file_too_large',
+      limit: ActiveSupport::NumberHelper.number_to_human_size(DirectUploadsController::TRIAL_MAX_UPLOAD_BYTES)
+    ), JSON.parse(response.body).fetch('error')
   end
 
   test "allows paid user to upload above trial limit" do

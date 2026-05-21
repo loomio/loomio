@@ -62,8 +62,8 @@ class Discussion < ApplicationRecord
   scope :visible_to_public, -> { kept.joins(:topic).where(topics: { private: false }) }
   scope :not_visible_to_public, -> { kept.joins(:topic).where(topics: { private: true }) }
 
-  scope :is_unlocked, -> { kept.joins(:topic).where('topics.closed_at IS NULL') }
-  scope :is_locked, -> { kept.joins(:topic).where('topics.closed_at IS NOT NULL') }
+  scope :is_unlocked, -> { kept.joins(:topic).where('topics.locked_at IS NULL') }
+  scope :is_locked, -> { kept.joins(:topic).where('topics.locked_at IS NOT NULL') }
 
   validates_presence_of :title, :author
   validates :title, length: { maximum: 150 }
@@ -103,7 +103,7 @@ class Discussion < ApplicationRecord
   delegate :locale, to: :author
   delegate :members, :admins, :guests, :guest_ids, :add_guest!, :add_admin!, :group_id, :group,
            :seen_by_count, :members_count, :closed_polls_count, :anonymous_polls_count,
-           :items, :newest_first, :private, :closed_at, :closer_id, :pinned_at,
+           :items, :newest_first, :private, :pinned_at,
            :last_activity_at, :items_count, :ranges, to: :topic
 
   define_counter_cache(:versions_count)             { |d| d.versions.count }

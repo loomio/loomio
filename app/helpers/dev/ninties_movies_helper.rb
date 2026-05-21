@@ -161,7 +161,7 @@ module Dev::NintiesMoviesHelper
   end
 
   def create_closed_discussion
-    @closed_discussion ||= DiscussionService.create(params: {group_id: create_group.id, title: 'This thread is old and closed', private: false, closed_at: Time.now}, actor: jennifer)
+    @closed_discussion ||= DiscussionService.create(params: {group_id: create_group.id, title: 'This thread is old and closed', private: false, locked_at: Time.now}, actor: jennifer)
   end
 
   def create_public_discussion
