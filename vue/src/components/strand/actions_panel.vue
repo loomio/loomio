@@ -82,11 +82,11 @@ onUnmounted(() => {
 
 <template lang="pug">
 section.actions-panel#add-comment(:key="topic.id" :class="{'mt-2 px-2 px-sm-4': !topic.newestFirst}")
-  template(v-if="topic.closedAt")
+  template(v-if="topic.lockedAt")
     v-alert(prepend-icon="mdi-lock" variant="tonal")
-      span(v-t="{path: 'notifications.without_title.discussion_closed', args: {actor: topic.closer().name} }")
+      span(v-t="{path: 'notifications.without_title.discussion_closed', args: {actor: topic.locker().name} }")
       mid-dot
-      time-ago(:date='topic.closedAt')
+      time-ago(:date='topic.lockedAt')
   template(v-if="showAddCommentForm")
     .add-comment-panel.pt-4(v-if="!canStartPoll")
       comment-form(
@@ -116,7 +116,7 @@ section.actions-panel#add-comment(:key="topic.id" :class="{'mt-2 px-2 px-sm-4': 
               @setPoll="setPoll"
               :topic="topic"
             )
-  template(v-if="!topic.closedAt && !canAddComment")
+  template(v-if="!topic.lockedAt && !canAddComment")
     .add-comment-panel__join-actions.mb-2
       join-group-button(
         v-if='isLoggedIn() && topic.group()'

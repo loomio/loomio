@@ -26,17 +26,17 @@ export default new class AbilityService {
   }
 
   canAddComment(topic) {
-    return !topic.closedAt && topic.allowComments && topic.membersInclude(Session.user());
+    return !topic.lockedAt && topic.allowComments && topic.membersInclude(Session.user());
   }
 
   canAddReaction(topic) {
-    return !topic.closedAt && topic.allowReactions && topic.membersInclude(Session.user());
+    return !topic.lockedAt && topic.allowReactions && topic.membersInclude(Session.user());
   }
 
   canRespondToComment(comment) {
     const topic = comment.topic();
     return topic &&
-    !topic.closedAt &&
+    !topic.lockedAt &&
     !comment.discardedAt &&
     topic.membersInclude(Session.user());
   }
@@ -55,7 +55,7 @@ export default new class AbilityService {
   canEditDiscussion(discussion) {
     const topic = discussion.topic();
     return topic.adminsInclude(Session.user()) ||
-    (!topic.closedAt && topic.group().membersCanEditDiscussions && topic.membersInclude(Session.user()));
+    (!topic.lockedAt && topic.group().membersCanEditDiscussions && topic.membersInclude(Session.user()));
   }
 
   canPinEvent(event) {
@@ -63,13 +63,13 @@ export default new class AbilityService {
     return (event.depth === 1) &&
     !event.model().discardedAt &&
     !event.pinned &&
-    topic && !topic.closedAt &&
+    topic && !topic.lockedAt &&
     topic.adminsInclude(Session.user());
   }
 
   canUnpinEvent(event) {
     const topic = event.topic();
-    return topic && !topic.closedAt &&
+    return topic && !topic.lockedAt &&
     event.pinned && topic.adminsInclude(Session.user());
   }
 
@@ -167,7 +167,7 @@ export default new class AbilityService {
   }
 
   canAnnounceTopic(topic) {
-    if (topic.closedAt) { return false; }
+    if (topic.lockedAt) { return false; }
     if (topic.groupId) {
       return topic.group().adminsInclude(Session.user()) ||
       (topic.group().membersCanAnnounce && topic.membersInclude(Session.user()));
@@ -214,7 +214,7 @@ export default new class AbilityService {
 
   canEditComment(comment) {
     const topic = comment.topic();
-    return topic && !topic.closedAt && !comment.discardedAt && (
+    return topic && !topic.lockedAt && !comment.discardedAt && (
       (topic.adminsInclude(Session.user()) && comment.group() && comment.group().adminsCanEditUserContent) ||
       (comment.authorIs(Session.user()) && comment.group() && comment.group().membersCanEditComments && topic.membersInclude(Session.user()))
     );
@@ -233,7 +233,7 @@ export default new class AbilityService {
 
   canDiscardComment(comment) {
     const topic = comment.topic();
-    return topic && !topic.closedAt &&
+    return topic && !topic.lockedAt &&
     !comment.discardedAt &&
     (
       comment.authorIs(Session.user()) ||
@@ -243,7 +243,7 @@ export default new class AbilityService {
 
   canUndiscardComment(comment) {
     const topic = comment.topic();
-    return topic && !topic.closedAt &&
+    return topic && !topic.lockedAt &&
     comment.discardedAt && (
       (comment.authorIs(Session.user()) && comment.discardedBy === Session.user().id) ||
       topic.adminsInclude(Session.user())

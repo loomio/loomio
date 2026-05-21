@@ -59,8 +59,8 @@ export default class DiscussionModel extends BaseModel {
     clone.pinnedAt = null;
     clone.forkedEventIds = [];
     clone.groupId = null;
-    clone.closedAt = null;
-    clone.closerId = null;
+    clone.lockedAt = null;
+    clone.lockerId = null;
     clone.createdAt = null;
     clone.updatedAt = null;
     return clone;

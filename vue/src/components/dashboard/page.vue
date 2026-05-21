@@ -25,7 +25,7 @@ function titleVisible(visible) {
 
 function query() {
   let chain = Records.topics.collection.chain();
-  chain = chain.find({closedAt: null});
+  chain = chain.find({lockedAt: null});
   chain = chain.simplesort('lastActivityAt', true);
   chain = chain.limit(30);
   topics.value = chain.data();

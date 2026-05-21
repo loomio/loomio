@@ -10,8 +10,8 @@ class CreateTopicsAndRefactorThreading < ActiveRecord::Migration[7.0]
       t.integer :max_depth,      default: 3, null: false
       t.boolean :newest_first,   default: false, null: false
       t.boolean :private,        default: true, null: false
-      t.datetime :closed_at, precision: nil
-      t.integer :closer_id
+      t.datetime :locked_at, precision: nil
+      t.integer :locker_id
       t.datetime :pinned_at, precision: nil
       t.datetime :last_activity_at, precision: nil
       t.integer :seen_by_count, default: 0, null: false
@@ -31,7 +31,7 @@ class CreateTopicsAndRefactorThreading < ActiveRecord::Migration[7.0]
     #    This means existing discussion_id columns already point to the right topic.
     execute <<~SQL
       INSERT INTO topics (id, topicable_type, topicable_id, group_id, items_count, ranges_string,
-                          max_depth, newest_first, private, closed_at, closer_id, pinned_at,
+                          max_depth, newest_first, private, locked_at, locker_id, pinned_at,
                           last_activity_at, seen_by_count, members_count, closed_polls_count,
                           anonymous_polls_count, created_at, updated_at)
       SELECT id, 'Discussion', id, group_id, items_count, ranges_string,
@@ -49,7 +49,7 @@ class CreateTopicsAndRefactorThreading < ActiveRecord::Migration[7.0]
     # 3. Create topics for standalone polls (no discussion_id)
     execute <<~SQL
       INSERT INTO topics (topicable_type, topicable_id, group_id, items_count, private,
-                          closed_at, last_activity_at, created_at, updated_at)
+                          locked_at, last_activity_at, created_at, updated_at)
       SELECT 'Poll', id, group_id, 0, true,
              closed_at, closed_at, created_at, updated_at
       FROM polls

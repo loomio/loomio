@@ -19,7 +19,7 @@ export default new class EventService {
           const topic = event.topic();
           return topic &&
           !event.model().discardedAt &&
-          !topic.closedAt &&
+          !topic.lockedAt &&
           AbilityService.canMoveTopic(topic);
         }
       },

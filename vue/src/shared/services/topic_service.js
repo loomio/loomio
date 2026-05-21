@@ -16,7 +16,7 @@ export default new class TopicService {
         name: 'common.action.subscribe',
         icon: 'mdi-bell',
         canPerform() {
-          return !topic.closedAt &&
+          return !topic.lockedAt &&
           (topic.volume() === 'normal') &&
           topic.membersInclude(Session.user());
         },
@@ -135,7 +135,7 @@ export default new class TopicService {
         icon: 'mdi-pin-outline',
         name: 'action_dock.pin_thread',
         canPerform() {
-          return !topic.closedAt && !topic.pinnedAt && (
+          return !topic.lockedAt && !topic.pinnedAt && (
             topic.adminsInclude(Session.user()) ||
             (topic.group().membersCanEditDiscussions && topic.membersInclude(Session.user()))
           );
@@ -223,7 +223,7 @@ export default new class TopicService {
         collection: 'actions',
         icon: 'mdi-lock-outline',
         canPerform() {
-          return !topic.closedAt && (
+          return !topic.lockedAt && (
             topic.adminsInclude(Session.user()) ||
             (topic.group().membersCanEditDiscussions && topic.membersInclude(Session.user()))
           );
@@ -237,7 +237,7 @@ export default new class TopicService {
         icon: 'mdi-lock-open-outline',
         dock: 2,
         canPerform() {
-          return topic.closedAt && (
+          return topic.lockedAt && (
             topic.adminsInclude(Session.user()) ||
             (topic.group().membersCanEditDiscussions && topic.membersInclude(Session.user()))
           );
@@ -321,7 +321,7 @@ export default new class TopicService {
             submit: topic.lock,
             text: {
               title: 'action_dock.lock_thread',
-              helptext: 'lock_thread_modal.body',
+              helptext: 'lock_thread_modal.explanation',
               flash: 'discussion.locked.locked'
             }
           }

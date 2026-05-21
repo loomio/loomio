@@ -31,7 +31,7 @@ module Ability::Poll
       topic = poll.topic
       group = topic.group
       !group.archived_at &&
-      !topic.closed_at &&
+      !topic.locked_at &&
       (topic.allow_concurrent_polls || topic.active_polls_count == 0) &&
       (poll.poll_template_id.nil? || poll.poll_template.public? || user.group_ids.include?(poll.poll_template.group_id)) &&
       (group.admins_include?(user) || (group.members_can_raise_motions && group.members_include?(user)) ||
@@ -64,12 +64,12 @@ module Ability::Poll
     end
 
     can [:update], ::Poll do |poll|
-      !poll.topic&.closed_at &&
+      !poll.topic&.locked_at &&
       poll.admins.exists?(user.id) && !poll.closed?
     end
 
     can [:destroy], ::Poll do |poll|
-      !poll.topic&.closed_at &&
+      !poll.topic&.locked_at &&
       poll.admins.exists?(user.id)
     end
 
@@ -81,7 +81,7 @@ module Ability::Poll
     can :reopen, ::Poll do |poll|
       poll.closed? &&
       !poll.anonymous &&
-      !poll.topic&.closed_at &&
+      !poll.topic&.locked_at &&
       poll.admins.exists?(user.id)
     end
   end

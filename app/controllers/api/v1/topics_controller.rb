@@ -33,9 +33,9 @@ class Api::V1::TopicsController < Api::V1::RestfulController
 
     case params[:filter]
     when 'locked'
-      @topics = @topics.closed
+      @topics = @topics.locked
     when 'unlocked'
-      @topics = @topics.not_closed
+      @topics = @topics.not_locked
     end
 
     tags = Array(params[:tags]).reject(&:blank?)

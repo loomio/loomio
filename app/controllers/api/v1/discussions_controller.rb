@@ -10,11 +10,11 @@ class Api::V1::DiscussionsController < Api::V1::RestfulController
   def show
     load_and_authorize(:discussion)
 
-    if resource.topic.closed_at && resource.topic.closer_id.nil?
+    if resource.topic.locked_at && resource.topic.locker_id.nil?
       if closed_event = Event.where(topic_id: resource.topic.id, kind: 'discussion_closed').order(:id).last
-        resource.topic.update_column(:closer_id, closed_event.user_id)
+        resource.topic.update_column(:locker_id, closed_event.user_id)
       else
-        resource.topic.update_column(:closer_id, resource.author_id)
+        resource.topic.update_column(:locker_id, resource.author_id)
       end
     end
 

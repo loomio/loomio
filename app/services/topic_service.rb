@@ -40,13 +40,13 @@ class TopicService
 
   def self.lock(topic:, actor:)
     actor.ability.authorize! :update, topic
-    topic.update(closed_at: Time.now, closer_id: actor.id)
+    topic.update(locked_at: Time.now, locker_id: actor.id)
     MessageChannelService.publish_models([topic], group_id: topic.group_id, user_id: actor.id)
   end
 
   def self.unlock(topic:, actor:)
     actor.ability.authorize! :update, topic
-    topic.update(closed_at: nil, closer_id: nil)
+    topic.update(locked_at: nil, locker_id: nil)
     MessageChannelService.publish_models([topic], group_id: topic.group_id, user_id: actor.id)
   end
 

@@ -119,7 +119,7 @@ module Dev::Scenarios::Discussion
     sign_in patrick
     60.times do
       d = saved(fake_discussion(group: @group))
-      d.topic.update!(closed_at: 5.days.ago)
+      d.topic.update!(locked_at: 5.days.ago)
     end
     redirect_to group_path(@group)
   end

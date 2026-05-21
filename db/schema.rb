@@ -936,8 +936,8 @@ ActiveRecord::Schema[8.0].define(version: 2026_05_21_000000) do
     t.integer "max_depth", default: 3, null: false
     t.boolean "newest_first", default: false, null: false
     t.boolean "private", default: true, null: false
-    t.datetime "closed_at", precision: nil
-    t.integer "closer_id"
+    t.datetime "locked_at", precision: nil
+    t.integer "locker_id"
     t.datetime "pinned_at", precision: nil
     t.datetime "last_activity_at", precision: nil
     t.integer "seen_by_count", default: 0, null: false
@@ -953,10 +953,10 @@ ActiveRecord::Schema[8.0].define(version: 2026_05_21_000000) do
     t.integer "active_polls_count", default: 0, null: false
     t.boolean "allow_comments", default: true, null: false
     t.boolean "allow_reactions", default: true, null: false
-    t.index ["closed_at"], name: "index_topics_on_closed_at"
     t.index ["discarded_at"], name: "index_topics_on_discarded_at_null", where: "(discarded_at IS NULL)"
     t.index ["group_id"], name: "index_topics_on_group_id"
     t.index ["last_activity_at"], name: "index_topics_on_last_activity_at", order: :desc
+    t.index ["locked_at"], name: "index_topics_on_locked_at"
     t.index ["tags"], name: "index_topics_on_tags", using: :gin
     t.index ["topicable_type", "topicable_id"], name: "index_topics_on_topicable_type_and_topicable_id", unique: true
   end

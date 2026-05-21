@@ -46,8 +46,8 @@ export default class TopicModel extends BaseModel {
       tags: [],
       forkedEventIds: [],
       discardedAt: null,
-      closedAt: null,
-      closerId: null,
+      lockedAt: null,
+      lockerId: null,
       pinnedAt: null,
       private: this.group().discussionPrivacyOptions !== 'public_only',
       // reader state
@@ -64,7 +64,7 @@ export default class TopicModel extends BaseModel {
   relationships() {
     this.belongsToPolymorphic('topicable');
     this.belongsTo('group');
-    this.belongsTo('closer', {from: 'users'});
+    this.belongsTo('locker', {from: 'users'});
   }
 
   discussion() {

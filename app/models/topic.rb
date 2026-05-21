@@ -1,7 +1,7 @@
 class Topic < ApplicationRecord
   belongs_to :topicable, polymorphic: true
   belongs_to :group, class_name: 'Group', optional: true
-  belongs_to :closer, foreign_key: 'closer_id', class_name: 'User', optional: true
+  belongs_to :locker, foreign_key: 'locker_id', class_name: 'User', optional: true
   has_many :items, -> { includes(:user) }, class_name: 'Event', dependent: :destroy
   has_many :topic_readers, dependent: :destroy
   has_many :comments, through: :items, source: :eventable, source_type: 'Comment'
@@ -28,8 +28,8 @@ class Topic < ApplicationRecord
     where("groups.archived_at IS NULL OR topics.group_id IS NULL")
   }
 
-  scope :closed, -> { where.not(closed_at: nil) }
-  scope :not_closed, -> { where(closed_at: nil) }
+  scope :locked, -> { where.not(locked_at: nil) }
+  scope :not_locked, -> { where(locked_at: nil) }
 
   scope :tagged, ->(tags) {
     where("topics.tags @> ARRAY[?]::varchar[]", tags)

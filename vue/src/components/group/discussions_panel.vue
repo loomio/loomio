@@ -97,10 +97,10 @@ export default
           chain = chain.where(topic => topic.isUnread());
           break;
         case 'locked':
-          chain = chain.find({closedAt: {$ne: null}});
+          chain = chain.find({lockedAt: {$ne: null}});
           break;
         case 'unlocked':
-          chain = chain.find({closedAt: null});
+          chain = chain.find({lockedAt: null});
           break;
         default:
           break;

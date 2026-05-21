@@ -122,9 +122,9 @@ class TopicServiceTest < ActiveSupport::TestCase
       group_id: @group.id
     }, actor: @user)
 
-    assert_nil discussion.topic.closed_at
+    assert_nil discussion.topic.locked_at
     TopicService.lock(topic: discussion.topic, actor: @user)
-    assert_not_nil discussion.topic.reload.closed_at
+    assert_not_nil discussion.topic.reload.locked_at
   end
 
   test "unlocks a locked topic" do
@@ -132,9 +132,9 @@ class TopicServiceTest < ActiveSupport::TestCase
       title: 'Unlockable Discussion',
       group_id: @group.id
     }, actor: @user)
-    discussion.topic.update!(closed_at: 1.day.ago)
+    discussion.topic.update!(locked_at: 1.day.ago)
 
     TopicService.unlock(topic: discussion.topic, actor: @user)
-    assert_nil discussion.topic.reload.closed_at
+    assert_nil discussion.topic.reload.locked_at
   end
 end

@@ -153,7 +153,7 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
     patch :lock, params: { id: @topic.id }
 
     assert_response :success
-    assert_not_nil @topic.reload.closed_at
+    assert_not_nil @topic.reload.locked_at
   end
 
   test "does not allow non-members to lock a thread" do
@@ -172,17 +172,17 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
 
   # Test unlock action
   test "allows admins to unlock a thread" do
-    @topic.update!(closed_at: 1.day.ago)
+    @topic.update!(locked_at: 1.day.ago)
     sign_in @admin
 
     patch :unlock, params: { id: @topic.id }
 
     assert_response :success
-    assert_nil @topic.reload.closed_at
+    assert_nil @topic.reload.locked_at
   end
 
   test "does not allow non-members to unlock a thread" do
-    @topic.update!(closed_at: 1.day.ago)
+    @topic.update!(locked_at: 1.day.ago)
     sign_in @alien
 
     patch :unlock, params: { id: @topic.id }

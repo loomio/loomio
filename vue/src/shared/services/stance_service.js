@@ -36,7 +36,7 @@ export default new class StanceService {
           !stance.revokedAt &&
           poll && poll.showResults() &&
           poll.membersInclude(Session.user()) &&
-          (!topic || (!topic.closedAt && topic.allowReactions));
+          (!topic || (!topic.lockedAt && topic.allowReactions));
         }
       },
 
@@ -61,7 +61,7 @@ export default new class StanceService {
           poll && !poll.anonymous &&
           poll.showResults() &&
           topic && topic.membersInclude(Session.user()) &&
-          !topic.closedAt;
+          !topic.lockedAt;
         },
         perform() {
           const topic = stance.poll() ? stance.poll().topic() : null;
