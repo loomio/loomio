@@ -17,9 +17,9 @@ class Api::B2::DiscussionsController < Api::B2::BaseController
   def accessible_records
     scope = Discussion.joins(:topic).where(topics: { group_id: group.id })
     case params[:status]
-    when 'closed' then scope.is_closed
-    when 'all'    then scope.kept
-    else               scope.is_open
+    when 'locked'   then scope.is_locked
+    when 'unlocked' then scope.is_unlocked
+    else                 scope.kept
     end
   end
 

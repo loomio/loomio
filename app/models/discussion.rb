@@ -62,8 +62,8 @@ class Discussion < ApplicationRecord
   scope :visible_to_public, -> { kept.joins(:topic).where(topics: { private: false }) }
   scope :not_visible_to_public, -> { kept.joins(:topic).where(topics: { private: true }) }
 
-  scope :is_open, -> { kept.joins(:topic).where('topics.closed_at IS NULL') }
-  scope :is_closed, -> { kept.joins(:topic).where('topics.closed_at IS NOT NULL') }
+  scope :is_unlocked, -> { kept.joins(:topic).where('topics.closed_at IS NULL') }
+  scope :is_locked, -> { kept.joins(:topic).where('topics.closed_at IS NOT NULL') }
 
   validates_presence_of :title, :author
   validates :title, length: { maximum: 150 }

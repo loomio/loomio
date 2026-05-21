@@ -57,8 +57,8 @@ class DiscussionQuery
 
   def self.filter(chain: , filter: )
     case filter
-    when 'show_closed', 'closed' then chain.is_closed
-    when 'unlocked' then chain.is_open
+    when 'locked' then chain.is_locked
+    when 'unlocked' then chain.is_unlocked
     else chain
     end.order_by_pinned_then_latest_activity
   end

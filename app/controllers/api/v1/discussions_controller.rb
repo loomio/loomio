@@ -39,7 +39,7 @@ class Api::V1::DiscussionsController < Api::V1::RestfulController
   def dashboard
     raise CanCan::AccessDenied.new unless current_user.is_logged_in?
     @accessible_records = DiscussionQuery.dashboard(user: current_user)
-    instantiate_collection { |collection| collection.is_open.order_by_latest_activity }
+    instantiate_collection { |collection| collection.is_unlocked.order_by_latest_activity }
     respond_with_collection
   end
 
