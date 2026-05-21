@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed, watch, onUnmounted } from 'vue';
 import { useRoute } from 'vue-router';
-import { mdiLock } from '@mdi/js';
+import { mdiLockOutline } from '@mdi/js';
 import AbilityService from '@/shared/services/ability_service';
 import PollCommonForm from '@/components/poll/common/form';
 import PollCommonChooseTemplateWrapper from '@/components/poll/common/choose_template_wrapper';
@@ -84,7 +84,7 @@ onUnmounted(() => {
 <template lang="pug">
 section.actions-panel#add-comment(:key="topic.id" :class="{'mt-2 px-2 px-sm-4': !topic.newestFirst}")
   template(v-if="topic.lockedAt")
-    v-alert(:prepend-icon="mdiLock" variant="tonal")
+    v-alert(:prepend-icon="mdiLockOutline" variant="tonal")
       span(v-t="{path: 'notifications.without_title.thread_locked', args: {actor: topic.locker().name} }")
       mid-dot
       time-ago(:date='topic.lockedAt')
