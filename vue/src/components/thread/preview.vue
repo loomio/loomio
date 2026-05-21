@@ -50,7 +50,7 @@ v-list-item.thread-preview.thread-preview__link(
       common-icon(size="x-small" name="mdi-pin-outline")
     plain-text.thread-preview__title(:model="topicable" field="title" :class="{'text-medium-emphasis': !isUnread, 'font-weight-medium': isUnread }")
     v-chip.ml-1(size="x-small" label outlined color="warning" v-if='topic.closedAt')
-      span(v-t="'poll_common_action_panel.custom_template'")
+      span(v-t="'discussions_panel.locked'")
     tags-display.ml-1(:tags="topic.tags" :group="topic.group()" size="x-small")
   v-list-item-subtitle
     span.thread-preview__group-name(v-if="showGroupName") {{ topic.group().name }}
