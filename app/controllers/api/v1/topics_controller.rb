@@ -4,7 +4,7 @@ class Api::V1::TopicsController < Api::V1::RestfulController
   def index
     @topics = TopicQuery.visible_to(
                           user: current_user,
-                          or_subgroups: false,
+                          or_subgroups: %w[all mine].include?(params[:subgroups]),
                           or_public: params[:group_id].present?,
                           only_direct: params.has_key?(:direct),
                           only_unread: params.has_key?(:unread)
@@ -16,7 +16,19 @@ class Api::V1::TopicsController < Api::V1::RestfulController
 
     if params[:group_id].present?
       group = Group.find(params[:group_id])
-      @topics = @topics.where(group_id: [group.id] + group.subgroup_ids)
+      group_ids = case params[:subgroups]
+      when 'all'
+        [group.id] + group.subgroup_ids
+      when 'mine'
+        if current_user.is_logged_in?
+          [group.id].concat(current_user.group_ids & group.id_and_subgroup_ids)
+        else
+          [group.id]
+        end
+      else
+        [group.id]
+      end
+      @topics = @topics.where(group_id: group_ids.compact.uniq)
     end
 
     case params[:filter]

@@ -60,6 +60,7 @@ export default
           params: {
             group_id: this.group.id,
             topicable_type: 'Discussion',
+            subgroups: 'mine',
             filter: this.$route.query.t,
             tags: this.$route.query.tag,
             per: this.per
