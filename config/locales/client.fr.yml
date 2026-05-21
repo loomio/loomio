@@ -734,6 +734,7 @@ fr:
       discussion_closed: "%{actor} a clos la discussion : %{title}"
       new_discussion: "%{actor} a lancé une discussion : %{title}"
       user_reminded: "%{actor} vous rappelle de voter pour : %{title}"
+      thread_locked: "%{actor} a verrouillé la discussion : %{title}"
     without_title:
       unknown_sender: Veuillez examiner les e-mails provenant d'un expéditeur non reconnu
       group_announced: "%{actor} vous a invité dans le group"
@@ -771,6 +772,7 @@ fr:
       new_discussion: "%{actor} a lancé une discussion"
       new_comment: "%{actor} a commenté dans une discussion"
       outcome_updated: "%{actor} a mis à jour le conclusion"
+      thread_locked: "%{actor} a verrouillé la discussion"
     hints:
       poll_closing_soon: C’est le bon moment pour voter, changer d’avis ou encourager les autres à participer.
       poll_closing_soon_author: Vous voudrez peut-être rappeler aux gens de voter ou de prolonger la date limite.
@@ -814,6 +816,7 @@ fr:
       discussion_edited: "%{actor} a modifié le contexte de la discussion : %{title}"
       discussion_closed: "%{actor} a clos la discussion : %{title}"
       user_reminded: "%{actor} vous rappelle de voter pour : %{title}"
+      thread_locked: "%{actor} a verrouillé la discussion : %{title}"
   discussion_fork_actions:
     move: Déplacer
     moved: Déplacer des commentaires, cette action peut prendre un moment
@@ -1054,6 +1057,8 @@ fr:
     pin_discussion: Discussion sur les épingles
     unpin_discussion: Un-pin discussion
     delete_discussion: Supprimer la discussion
+    lock_thread: Verrouiller la discussion
+    unlock_thread: Déverrouiller le fil de discussion
   formatting:
     formatting_tools: Outils de formatage du texte
     colors: Couleurs
@@ -1253,6 +1258,9 @@ fr:
     no_discussions_here: Aucune discussion à signaler ici !
     private_discussions: Vous devez être membre pour consulter les discussions privées de ce groupe.
     discussion_templates: Modèles de discussion
+    show_locked: "%{count} Verrouillé"
+    view_locked_discussions: Consulter les discussions verrouillées
+    locked_discussions: Discussions verrouillées
   export_data_modal:
     title: Comment souhaitez-vous utiliser vos données ?
     as_csv: Ouvrir dans une feuille de calcul
@@ -1708,6 +1716,9 @@ fr:
       mute_message: Discussion désactivée
       unmute_message: Discussion activée
     direct: Direct
+    locked:
+      unlocked: Sujet déverrouillé
+      locked: Discussion verrouillée
   discussion_last_seen_by:
     title: Vu par
     no_one: Personne n'a encore vu cela pour l'instant
@@ -2010,6 +2021,8 @@ fr:
     lets_start_a_thread: Commençons un fil de discussion. Cliquez sur "Nouveau fil de discussion" pour continuer.
     lets_start_a_discussion: Ouvrons la discussion. Cliquez sur « Nouvelle discussion » pour continuer.
     new_discussion: Nouvelle discussion
+    locked: Verrouillé
+    unlocked: Déverrouillé
   members_panel:
     bot: Bot
     no_results: 'Aucun membres trouvés '
@@ -2341,6 +2354,8 @@ fr:
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a actualisé son vote sur: <strong>%{title}</strong>"
     event_removed: retiré de la discussion
     new: nouveau
+    thread_locked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a verrouillé la discussion"
+    thread_unlocked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a déverrouillé la discussion"
   add_poll_to_thread_modal:
     success: "%{pollType} ajouté à la discussion avec succès !"
   auth_form:
@@ -2800,6 +2815,7 @@ fr:
   context_panel:
     thread_status:
       pinned: Cette discussion a été épinglée. Elle restera en haut de la liste des discussions du groupe pour tous les utilisateurs.
+      locked: Cette discussion est désormais verrouillée. Elle n'apparaîtra plus sur le tableau de bord et sera répertoriée sous « Verrouillé » sur la page du groupe.
   thread_group:
     aria_label: Nom du groupe
   discussion_context:
@@ -2862,15 +2878,15 @@ fr:
     not_elected: Non élu
     tied: Égalité
     no_candidates_elected: Aucun candidat élu
-    round: "Tour %{number}"
+    round: Tour %{number}
     quota_info: "%{method}, %{quota_type} quota (%{quota} votes needed)"
     method_scottish: Scottish STV
     method_meek: Meek STV
     quota_droop: Droop
     quota_hare: Hare
-    elected_in_round: "Elected in round %{round}"
-    eliminated_in_round: "Eliminated in round %{round}"
-    tied_in_round: "Tied in round %{round}"
+    elected_in_round: Elected in round %{round}
+    eliminated_in_round: Eliminated in round %{round}
+    tied_in_round: Tied in round %{round}
     votes: votes
     candidate: Candidat
     round_elected: Tour élu
@@ -2880,3 +2896,6 @@ fr:
     round_details: Détails tour par tour
     view_full_results: Afficher les résultats complets
     results_available_when_closed: Les résultats seront disponibles à la clôture du vote.
+  lock_thread_modal:
+    body: Verrouillez les sujets pour les retirer de la liste des sujets ouverts et empêcher les commentaires.
+    explanation: Verrouillez les discussions pour empêcher les commentaires et les modifications.

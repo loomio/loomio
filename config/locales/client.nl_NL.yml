@@ -726,6 +726,7 @@ nl_NL:
       discussion_closed: "%{actor} heeft de discussie gesloten: %{title}"
       new_discussion: "%{actor} startte een discussie: %{title}"
       user_reminded: "%{actor} herinnert je eraan om te stemmen op: %{title}"
+      thread_locked: "%{actor} heeft de thread vergrendeld: %{title}"
     without_title:
       unknown_sender: Controleer de e-mail van een onbekende afzender
       group_announced: "%{actor} heeft je uitgenodigd voor een groep"
@@ -763,6 +764,7 @@ nl_NL:
       new_discussion: "%{actor} is een discussie gestart"
       new_comment: "%{actor} heeft gereageerd in een discussie"
       outcome_updated: "%{actor} heeft de uitkomst bijgewerkt"
+      thread_locked: "%{actor} heeft de thread vergrendeld"
     hints:
       poll_closing_soon: Dit is een goed moment om te stemmen, van gedachten te veranderen of anderen aan te moedigen om mee te doen.
       poll_closing_soon_author: Misschien wilt u mensen eraan herinneren om te stemmen of de deadline verlengen.
@@ -806,6 +808,7 @@ nl_NL:
       discussion_edited: "%{actor} heeft de discussiecontext bewerkt: %{title}"
       discussion_closed: "%{actor} heeft de discussie gesloten: %{title}"
       user_reminded: "%{actor} herinnert je eraan om te stemmen op: %{title}"
+      thread_locked: "%{actor} heeft de thread vergrendeld: %{title}"
   discussion_fork_actions:
     move: Verplaatsen
     moved: Reacties aan het verplaatsen, dit kan even duren
@@ -1046,6 +1049,8 @@ nl_NL:
     pin_discussion: Pin discussie
     unpin_discussion: Discussie losmaken
     delete_discussion: Discussie verwijderen
+    lock_thread: Discussie vergrendelen
+    unlock_thread: Discussie ontgrendelen
   formatting:
     formatting_tools: Tekst-formatteer tools
     colors: Kleuren
@@ -1234,6 +1239,9 @@ nl_NL:
     no_discussions_here: Er zijn hier geen discussies te zien!
     private_discussions: Je moet lid zijn om de privéthreads in deze groep te kunnen bekijken
     discussion_templates: Discussiesjablonen
+    show_locked: "%{count} Vergrendeld"
+    view_locked_discussions: Bekijk vergrendelde discussies
+    locked_discussions: Vergrendelde discussies
   export_data_modal:
     title: Hoe wil je je data gebruiken?
     as_csv: Openen in een spreadsheet
@@ -1689,6 +1697,9 @@ nl_NL:
       mute_message: Discussie gedempt
       unmute_message: Discussie gedempt
     direct: Direct
+    locked:
+      unlocked: Draad ontgrendeld
+      locked: Thread vergrendeld
   discussion_last_seen_by:
     title: Gezien door
     no_one: Nog niemand heeft dit gezien
@@ -1991,6 +2002,8 @@ nl_NL:
     lets_start_a_thread: Laten we een draadje starten. Klik op "Nieuw onderwerp" om door te gaan.
     lets_start_a_discussion: Laten we een discussie starten. Klik op 'Nieuwe discussie' om verder te gaan.
     new_discussion: Nieuwe discussie
+    locked: Vergrendeld
+    unlocked: Ontgrendeld
   members_panel:
     bot: Bot
     no_results: Geen leden gevonden
@@ -2324,6 +2337,8 @@ nl_NL:
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> heeft zijn stem geüpdatet op: <strong>%{title}</strong>"
     event_removed: Van bord verwijderd
     new: nieuw
+    thread_locked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> heeft de thread vergrendeld"
+    thread_unlocked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> heeft de thread ontgrendeld"
   add_poll_to_thread_modal:
     success: Gelukt, %{pollType} aan bord toegevoegd!
   auth_form:
@@ -2783,6 +2798,7 @@ nl_NL:
   context_panel:
     thread_status:
       pinned: Deze discussie is vastgezet en blijft bovenaan de discussielijst van de groep staan voor alle gebruikers.
+      locked: Deze discussie is vergrendeld. Hij zal niet langer op het dashboard verschijnen en wordt op de groepspagina onder 'vergrendeld' vermeld.
   thread_group:
     aria_label: Groepsnaam
   discussion_context:
@@ -2845,15 +2861,15 @@ nl_NL:
     not_elected: Niet gekozen
     tied: Gelijkspel
     no_candidates_elected: Geen kandidaten gekozen
-    round: "Ronde %{number}"
+    round: Ronde %{number}
     quota_info: "%{method}, %{quota_type} quota (%{quota} votes needed)"
     method_scottish: Scottish STV
     method_meek: Meek STV
     quota_droop: Droop
     quota_hare: Hare
-    elected_in_round: "Elected in round %{round}"
-    eliminated_in_round: "Eliminated in round %{round}"
-    tied_in_round: "Tied in round %{round}"
+    elected_in_round: Elected in round %{round}
+    eliminated_in_round: Eliminated in round %{round}
+    tied_in_round: Tied in round %{round}
     votes: stemmen
     candidate: Kandidaat
     round_elected: Ronde gekozen
@@ -2863,3 +2879,6 @@ nl_NL:
     round_details: Details per ronde
     view_full_results: Bekijk de volledige resultaten
     results_available_when_closed: De uitslagen worden bekendgemaakt zodra de stemming is gesloten.
+  lock_thread_modal:
+    body: Vergrendel discussies om ze uit de lijst met open discussies te verwijderen en te voorkomen dat mensen erop kunnen reageren.
+    explanation: Vergrendel discussies om te voorkomen dat mensen reageren of verdere wijzigingen aanbrengen.

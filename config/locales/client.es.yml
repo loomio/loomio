@@ -726,6 +726,7 @@ es:
       discussion_closed: "%{actor} cerró la discusión: %{title}"
       new_discussion: "%{actor} inició una discusión: %{title}"
       user_reminded: "%{actor} te recuerda que votes por: %{title}"
+      thread_locked: "%{actor} bloqueó el hilo: %{title}"
     without_title:
       unknown_sender: Revise el correo electrónico del remitente no reconocido
       group_announced: "%{actor} te invitó al grupo"
@@ -763,6 +764,7 @@ es:
       new_discussion: "%{actor} inició una discusión"
       new_comment: "%{actor} comentó en una discusión"
       outcome_updated: "%{actor} actualizó el resultado"
+      thread_locked: "%{actor} bloqueó el hilo"
     hints:
       poll_closing_soon: Ahora es un buen momento para votar, cambiar de opinión o animar a otros a participar.
       poll_closing_soon_author: Es posible que desee recordar a las personas que voten o extiendan la fecha límite.
@@ -806,6 +808,7 @@ es:
       discussion_edited: "%{actor} editó el contexto de la discusión: %{title}"
       discussion_closed: "%{actor} cerró la discusión: %{title}"
       user_reminded: "%{actor} te recuerda que votes por: %{title}"
+      thread_locked: "%{actor} bloqueó el hilo: %{title}"
   discussion_fork_actions:
     move: Mover
     moved: Moviendo comentarios, esto podría llevar un tiempo
@@ -1044,6 +1047,8 @@ es:
     pin_discussion: Discusión sobre pines
     unpin_discussion: Desmarcar discusión
     delete_discussion: Eliminar discusión
+    lock_thread: Bloquear hilo
+    unlock_thread: Desbloquear hilo
   formatting:
     formatting_tools: Herramientas formateo de texto
     colors: Colores
@@ -1241,6 +1246,9 @@ es:
     no_discussions_here: "¡No hay discusiones para ver aquí!"
     private_discussions: Necesitarás ser miembro para ver los hilos privados de este grupo.
     discussion_templates: Plantillas de discusión
+    show_locked: "%{count} Bloqueado"
+    view_locked_discussions: Ver discusiones bloqueadas
+    locked_discussions: Discusiones bloqueadas
   export_data_modal:
     title: "¿Cómo quieres utilizar tus datos?"
     as_csv: Abrir en una hoja de cálculo
@@ -1700,6 +1708,9 @@ es:
       mute_message: Discusión silenciada
       unmute_message: Discusión activada
     direct: Directo
+    locked:
+      unlocked: Hilo desbloqueado
+      locked: Hilo bloqueado
   discussion_last_seen_by:
     title: Visto por
     no_one: Nadie ha visto esto todavía
@@ -2002,6 +2013,8 @@ es:
     lets_start_a_thread: Empecemos un hilo. Haga clic en "Nuevo hilo" para continuar.
     lets_start_a_discussion: Iniciemos una discusión. Haz clic en "Nueva discusión" para continuar.
     new_discussion: Nueva discusión
+    locked: Bloqueado
+    unlocked: Desbloqueado
   members_panel:
     bot: Bot
     no_results: No se han encontrado miembros
@@ -2333,6 +2346,8 @@ es:
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a>editó su voto en: <strong>%{title}</strong>"
     event_removed: Eliminado del hilo
     new: nuevo
+    thread_locked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> bloqueó el hilo"
+    thread_unlocked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> desbloqueó el hilo"
   add_poll_to_thread_modal:
     success: Éxito, %{pollType} añadido al hilo
   auth_form:
@@ -2792,6 +2807,7 @@ es:
   context_panel:
     thread_status:
       pinned: Esta discusión se ha fijado. Permanecerá en la parte superior de la lista de discusiones del grupo para todos los usuarios.
+      locked: Esta discusión ha sido bloqueada. Ya no aparecerá en el panel de control y figurará como "bloqueada" en la página del grupo.
   thread_group:
     aria_label: Nombre del grupo
   discussion_context:
@@ -2854,15 +2870,15 @@ es:
     not_elected: No elegido
     tied: Empate
     no_candidates_elected: No se eligieron candidatos
-    round: "Ronda %{number}"
+    round: Ronda %{number}
     quota_info: "%{method}, %{quota_type} quota (%{quota} votes needed)"
     method_scottish: Scottish STV
     method_meek: Meek STV
     quota_droop: Droop
     quota_hare: Hare
-    elected_in_round: "Elected in round %{round}"
-    eliminated_in_round: "Eliminated in round %{round}"
-    tied_in_round: "Tied in round %{round}"
+    elected_in_round: Elected in round %{round}
+    eliminated_in_round: Eliminated in round %{round}
+    tied_in_round: Tied in round %{round}
     votes: votos
     candidate: Candidato
     round_elected: Ronda elegida
@@ -2872,3 +2888,6 @@ es:
     round_details: Detalles ronda por ronda
     view_full_results: Ver resultados completos
     results_available_when_closed: Los resultados estarán disponibles cuando finalice la votación.
+  lock_thread_modal:
+    body: Bloquea los hilos para eliminarlos de la lista de hilos abiertos e impedir que la gente comente.
+    explanation: Bloquea los hilos para evitar que la gente comente o realice más cambios.

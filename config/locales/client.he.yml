@@ -724,6 +724,7 @@ he:
       discussion_closed: "%{actor} סגר את הדיון: %{title}"
       new_discussion: "%{actor} פתח דיון: %{title}"
       user_reminded: "%{actor} מזכיר לך להצביע על: %{title}"
+      thread_locked: "%{actor} נעל את השרשור: %{title}"
     without_title:
       unknown_sender: אנא עיין באימייל משולח לא מזוהה
       group_announced: "%{actor} הזמין אותך לקבוצה"
@@ -761,6 +762,7 @@ he:
       new_discussion: "%{actor} פתח דיון"
       new_comment: "%{actor} הגיב בדיון"
       outcome_updated: "%{actor} עדכן את התוצאה"
+      thread_locked: "%{actor} נעל את השרשור"
     hints:
       poll_closing_soon: עכשיו זה זמן טוב להצביע, לשנות את דעתך או לעודד אחרים להשתתף.
       poll_closing_soon_author: אולי תרצה להזכיר לאנשים להצביע או להאריך את המועד.
@@ -804,6 +806,7 @@ he:
       discussion_edited: "%{actor} ערך את הקשר הדיון: %{title}"
       discussion_closed: "%{actor} סגר את הדיון: %{title}"
       user_reminded: "%{actor} מזכיר לך להצביע על: %{title}"
+      thread_locked: "%{actor} נעל את השרשור: %{title}"
   discussion_fork_actions:
     move: העבר
     moved: הערות מרגשות, זה עשוי לקחת רגע
@@ -1044,6 +1047,8 @@ he:
     pin_discussion: דיון בהצמדה
     unpin_discussion: ביטול הצמדת דיון
     delete_discussion: מחיקת דיון
+    lock_thread: נעילת שרשור
+    unlock_thread: ביטול נעילת שרשור
   formatting:
     formatting_tools: כלי עיצוב טקסט
     colors: צבעים
@@ -1232,6 +1237,9 @@ he:
     no_discussions_here: אין כאן דיונים לראות!
     private_discussions: עליך להיות חבר כדי לצפות בשרשורים פרטיים בקבוצה זו
     discussion_templates: תבניות דיון
+    show_locked: "%{count} נעול"
+    view_locked_discussions: הצג דיונים נעולים
+    locked_discussions: דיונים נעולים
   export_data_modal:
     title: איך אתה רוצה להשתמש בנתונים שלך?
     as_csv: פתח אותו בגיליון אלקטרוני
@@ -1685,6 +1693,9 @@ he:
       mute_message: הדיון הושתק
       unmute_message: השתקת הדיון בוטלה
     direct: יָשִׁיר
+    locked:
+      unlocked: נעילת השרשור בוטלה
+      locked: השרשור נעול
   discussion_last_seen_by:
     title: נראה ע"י
     no_one: אף אחד לא ראה את זה עדיין
@@ -1987,6 +1998,8 @@ he:
     lets_start_a_thread: בואו נפתח שרשור. לחץ על "שרשור חדש" כדי להמשיך.
     lets_start_a_discussion: בואו נתחיל דיון. לחצו על "דיון חדש" כדי להמשיך.
     new_discussion: דיון חדש
+    locked: נָעוּל
+    unlocked: לא נעול
   members_panel:
     bot: בוט
     no_results: לא נמצאו חברים
@@ -2318,6 +2331,8 @@ he:
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> עדכן את ההצבעה שלו ב: <strong>%{title}</strong>"
     event_removed: הוסר מהשיחה
     new: חָדָשׁ
+    thread_locked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> נעל את השרשור"
+    thread_unlocked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> פתח את השרשור"
   add_poll_to_thread_modal:
     success: הצלחה, %{pollType} נוסף לשרשור!
   auth_form:
@@ -2775,6 +2790,7 @@ he:
   context_panel:
     thread_status:
       pinned: דיון זה הוצמד. הוא יישאר בראש רשימת הדיונים של הקבוצה עבור כל המשתמשים.
+      locked: דיון זה ננעל. הוא לא יופיע עוד בלוח המחוונים, ויופיע תחת הקטגוריה 'נעול' בדף הקבוצה.
   thread_group:
     aria_label: שם הקבוצה
   discussion_context:
@@ -2837,15 +2853,15 @@ he:
     not_elected: לא נבחר
     tied: Tie
     no_candidates_elected: לא נבחרו מועמדים
-    round: "Round %{number}"
+    round: Round %{number}
     quota_info: "%{method}, %{quota_type} quota (%{quota} votes needed)"
     method_scottish: Scottish STV
     method_meek: Meek STV
     quota_droop: Droop
     quota_hare: Hare
-    elected_in_round: "Elected in round %{round}"
-    eliminated_in_round: "Eliminated in round %{round}"
-    tied_in_round: "Tied in round %{round}"
+    elected_in_round: Elected in round %{round}
+    eliminated_in_round: Eliminated in round %{round}
+    tied_in_round: Tied in round %{round}
     votes: קולות
     candidate: מוּעֲמָד
     round_elected: נבחר בסיבוב
@@ -2855,3 +2871,6 @@ he:
     round_details: פרטים סיבוב אחר סיבוב
     view_full_results: הצג את התוצאות המלאות
     results_available_when_closed: התוצאות יהיו זמינות עם סגירת ההצבעה
+  lock_thread_modal:
+    body: נעל שרשורים כדי להסיר אותם מרשימת השרשורים הפתוחים ולמנוע מאנשים להגיב.
+    explanation: נעילת שרשורים כדי למנוע מאנשים להגיב או לבצע שינויים נוספים

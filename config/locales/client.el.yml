@@ -724,6 +724,7 @@ el:
       discussion_closed: 'Ο %{actor} έκλεισε τη συζήτηση: %{title}'
       new_discussion: 'Ο/Η %{actor} ξεκίνησε μια συζήτηση: %{title}'
       user_reminded: 'Ο χρήστης %{actor} σας υπενθυμίζει να ψηφίσετε για: %{title}'
+      thread_locked: 'Ο %{actor} κλείδωσε το νήμα: %{title}'
     without_title:
       unknown_sender: Ελέγξτε τα μηνύματα ηλεκτρονικού ταχυδρομείου από μη αναγνωρισμένο αποστολέα
       group_announced: Ο %{actor} σας προσκάλεσε σε μια ομάδα
@@ -761,6 +762,7 @@ el:
       new_discussion: Ο/Η %{actor} ξεκίνησε μια συζήτηση
       new_comment: Ο %{actor} σχολίασε σε μια συζήτηση
       outcome_updated: Ο %{actor} ενημέρωσε το αποτέλεσμα
+      thread_locked: Ο %{actor} κλείδωσε το νήμα
     hints:
       poll_closing_soon: Τώρα είναι η κατάλληλη στιγμή για να ψηφίσετε, να αλλάξετε γνώμη ή να ενθαρρύνετε άλλους να συμμετάσχουν.
       poll_closing_soon_author: Μπορεί να θέλετε να υπενθυμίσετε στους ανθρώπους να ψηφίσουν ή να παρατείνετε την προθεσμία.
@@ -804,6 +806,7 @@ el:
       discussion_edited: 'Ο %{actor} επεξεργάστηκε το περιεχόμενο της συζήτησης: %{title}'
       discussion_closed: 'Ο %{actor} έκλεισε τη συζήτηση: %{title}'
       user_reminded: 'Ο χρήστης %{actor} σας υπενθυμίζει να ψηφίσετε για: %{title}'
+      thread_locked: 'Ο %{actor} κλείδωσε το νήμα: %{title}'
   discussion_fork_actions:
     move: Κίνηση
     moved: Μετακινώντας τα σχόλια, αυτό μπορεί να διαρκέσει λίγο
@@ -1040,6 +1043,8 @@ el:
     pin_discussion: Καρφίτσωμα συζήτησης
     unpin_discussion: Ξεκαρφίτσωμα συζήτησης
     delete_discussion: Διαγραφή συζήτησης
+    lock_thread: Κλείδωμα νήματος
+    unlock_thread: Ξεκλείδωμα νήματος
   formatting:
     formatting_tools: Εργαλεία μορφοποίησης κειμένου
     colors: Χρωματιστά
@@ -1228,6 +1233,9 @@ el:
     no_discussions_here: Δεν υπάρχουν συζητήσεις για να δείτε εδώ!
     private_discussions: Θα πρέπει να είστε μέλος για να δείτε τα ιδιωτικά θέματα σε αυτήν την ομάδα
     discussion_templates: Πρότυπα συζήτησης
+    show_locked: "%{count} Κλειδωμένο"
+    view_locked_discussions: Δείτε τις κλειδωμένες συζητήσεις
+    locked_discussions: Κλειδωμένες συζητήσεις
   export_data_modal:
     title: Πώς θέλετε να χρησιμοποιήσετε τα δεδομένα σας;
     as_csv: Ανοίξτε το σε υπολογιστικό φύλλο
@@ -1671,6 +1679,9 @@ el:
       mute_message: Η συζήτηση τέθηκε σε σίγαση
       unmute_message: Η συζήτηση καταργήθηκε από τη σίγαση
     direct: Απευθείας
+    locked:
+      unlocked: Το νήμα ξεκλειδώθηκε
+      locked: Κλειδωμένο νήμα
   discussion_last_seen_by:
     title: Θεάθηκε από
     no_one: Κανείς δεν το έχει δει ακόμα αυτό
@@ -1968,6 +1979,8 @@ el:
     lets_start_a_thread: Ας ξεκινήσουμε ένα νήμα. Κάντε κλικ στο "Νέο νήμα" για να συνεχίσετε.
     lets_start_a_discussion: Ας ξεκινήσουμε μια συζήτηση. Κάντε κλικ στην επιλογή "Νέα συζήτηση" για να συνεχίσετε.
     new_discussion: Νέα συζήτηση
+    locked: Κλειδωμένο
+    unlocked: Ακλείδωτος
   members_panel:
     bot: Bot
     no_results: Δεν βρέθηκαν μέλη
@@ -2299,6 +2312,8 @@ el:
     stance_updated: "<a class='actor-link' href='/u/%{username}'>Ο χρήστης %{author}</a> ενημέρωσε την ψήφο του για: <strong>%{title}</strong>"
     event_removed: Καταργήθηκε από το νήμα
     new: νέος
+    thread_locked: "<a class='actor-link' href='/u/%{username}'>Ο %{author}</a> κλείδωσε το νήμα"
+    thread_unlocked: "<a class='actor-link' href='/u/%{username}'>Ο %{author}</a> ξεκλείδωσε το νήμα"
   add_poll_to_thread_modal:
     success: Επιτυχία, το %{pollType} προστέθηκε στο νήμα!
   auth_form:
@@ -2756,6 +2771,7 @@ el:
   context_panel:
     thread_status:
       pinned: Αυτή η συζήτηση έχει καρφιτσωθεί. Θα παραμείνει στην κορυφή της λίστας συζητήσεων της ομάδας για όλους τους χρήστες.
+      locked: Αυτή η συζήτηση έχει κλειδωθεί. Δεν θα εμφανίζεται πλέον στον πίνακα ελέγχου και θα εμφανίζεται στην ενότητα «κλειδωμένη» στη σελίδα της ομάδας.
   thread_group:
     aria_label: Όνομα ομάδας
   discussion_context:
@@ -2818,15 +2834,15 @@ el:
     not_elected: Δεν εκλέχθηκε
     tied: Tie
     no_candidates_elected: Δεν εκλέχθηκαν υποψήφιοι
-    round: "Round %{number}"
+    round: Round %{number}
     quota_info: "%{method}, %{quota_type} quota (%{quota} votes needed)"
     method_scottish: Scottish STV
     method_meek: Meek STV
     quota_droop: Droop
     quota_hare: Hare
-    elected_in_round: "Elected in round %{round}"
-    eliminated_in_round: "Eliminated in round %{round}"
-    tied_in_round: "Tied in round %{round}"
+    elected_in_round: Elected in round %{round}
+    eliminated_in_round: Eliminated in round %{round}
+    tied_in_round: Tied in round %{round}
     votes: ψήφοι
     candidate: Υποψήφιος
     round_elected: Γύρος εκλογής
@@ -2836,3 +2852,6 @@ el:
     round_details: Λεπτομέρειες γύρο προς γύρο
     view_full_results: Δείτε τα πλήρη αποτελέσματα
     results_available_when_closed: Τα αποτελέσματα θα είναι διαθέσιμα όταν ολοκληρωθεί η ψηφοφορία
+  lock_thread_modal:
+    body: Κλειδώστε τα νήματα για να τα αφαιρέσετε από τη λίστα των ανοιχτών νημάτων και να αποτρέψετε τα άτομα από το να σχολιάζουν.
+    explanation: Κλείδωμα νημάτων για να αποτρέψετε τους χρήστες από το να σχολιάζουν ή να κάνουν περαιτέρω αλλαγές

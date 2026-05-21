@@ -724,6 +724,7 @@ ro:
       discussion_closed: "%{actor} a închis discuția: %{title}"
       new_discussion: "%{actor} a început o discuție: %{title}"
       user_reminded: "%{actor} vă reamintește să votați pentru: %{title}"
+      thread_locked: "%{actor} a blocat firul de discuție: %{title}"
     without_title:
       unknown_sender: Vă rugăm să examinați e-mailul de la expeditor nerecunoscut
       group_announced: "%{actor} te-a invitat într-un grup"
@@ -761,6 +762,7 @@ ro:
       new_discussion: "%{actor} a început o discuție"
       new_comment: "%{actor} a comentat într-o discuție"
       outcome_updated: "%{actor} a actualizat rezultatul"
+      thread_locked: "%{actor} a blocat firul de discuție"
     hints:
       poll_closing_soon: Acum este un moment bun să votezi, să te răzgândești sau să încurajezi pe alții să participe.
       poll_closing_soon_author: Poate doriți să reamintiți oamenilor să voteze sau să prelungiți termenul.
@@ -804,6 +806,7 @@ ro:
       discussion_edited: "%{actor} a editat contextul discuției: %{title}"
       discussion_closed: "%{actor} a închis discuția: %{title}"
       user_reminded: "%{actor} vă reamintește să votați pentru: %{title}"
+      thread_locked: "%{actor} a blocat firul de discuție: %{title}"
   discussion_fork_actions:
     move: Mișcare
     moved: Comentarii în mișcare, acest lucru ar putea dura un moment
@@ -1040,6 +1043,8 @@ ro:
     pin_discussion: Discuție fixată pe Pinterest
     unpin_discussion: Anulează fixarea discuției
     delete_discussion: Ștergeți discuția
+    lock_thread: Blocați firul de discuție
+    unlock_thread: Deblocați firul de discuție
   formatting:
     formatting_tools: Instrumente de formatare a textului
     colors: Culori
@@ -1228,6 +1233,9 @@ ro:
     no_discussions_here: Nu există discuții de văzut aici!
     private_discussions: Trebuie să fii membru pentru a vizualiza subiectele private din acest grup.
     discussion_templates: Șabloane de discuții
+    show_locked: "%{count} Blocat"
+    view_locked_discussions: Vizualizați discuțiile blocate
+    locked_discussions: Discuții blocate
   export_data_modal:
     title: Cum doriți să vă folosiți datele?
     as_csv: Deschideți-l într-o foaie de calcul
@@ -1671,6 +1679,9 @@ ro:
       mute_message: Discuție dezactivată
       unmute_message: Discuție activată
     direct: Direct
+    locked:
+      unlocked: Fir de discuție deblocat
+      locked: Fir de discuție blocat
   discussion_last_seen_by:
     title: Văzut de
     no_one: Nimeni nu a văzut asta încă
@@ -1968,6 +1979,8 @@ ro:
     lets_start_a_thread: Să începem un thread. Faceți clic pe „Fir nou” pentru a continua.
     lets_start_a_discussion: Să începem o discuție. Faceți clic pe „Discuție nouă” pentru a continua.
     new_discussion: Discuție nouă
+    locked: Blocat
+    unlocked: Deblocat
   members_panel:
     bot: Bot
     no_results: Nu s-au găsit membri
@@ -2299,6 +2312,8 @@ ro:
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> și-a actualizat votul pe: <strong>%{title}</strong>"
     event_removed: Scos din fir
     new: nou
+    thread_locked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a blocat firul de discuție"
+    thread_unlocked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a deblocat firul de discuție"
   add_poll_to_thread_modal:
     success: Succes, %{pollType} adăugat la fir!
   auth_form:
@@ -2756,6 +2771,7 @@ ro:
   context_panel:
     thread_status:
       pinned: Această discuție a fost fixată. Va rămâne în partea de sus a listei de discuții a grupului pentru toți utilizatorii.
+      locked: Această discuție a fost blocată. Nu va mai apărea în tabloul de bord și va fi listată la secțiunea „blocată” pe pagina grupului.
   thread_group:
     aria_label: Numele grupului
   discussion_context:
@@ -2818,15 +2834,15 @@ ro:
     not_elected: Neales
     tied: Tie
     no_candidates_elected: Niciun candidat ales
-    round: "Round %{number}"
+    round: Round %{number}
     quota_info: "%{method}, %{quota_type} quota (%{quota} votes needed)"
     method_scottish: Scottish STV
     method_meek: Meek STV
     quota_droop: Droop
     quota_hare: Hare
-    elected_in_round: "Elected in round %{round}"
-    eliminated_in_round: "Eliminated in round %{round}"
-    tied_in_round: "Tied in round %{round}"
+    elected_in_round: Elected in round %{round}
+    eliminated_in_round: Eliminated in round %{round}
+    tied_in_round: Tied in round %{round}
     votes: voturi
     candidate: Candidat
     round_elected: Runda aleasă
@@ -2836,3 +2852,6 @@ ro:
     round_details: Detalii rundă cu rundă
     view_full_results: Vedeți rezultatele complete
     results_available_when_closed: Rezultatele vor fi disponibile la închiderea votului
+  lock_thread_modal:
+    body: Blochează firele de discuție pentru a le elimina din lista de fire de discuție deschise și pentru a împiedica alte persoane să comenteze.
+    explanation: Blocați firele de discuție pentru a împiedica alte persoane să comenteze sau să facă modificări suplimentare

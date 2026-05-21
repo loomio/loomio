@@ -722,6 +722,7 @@ zh_CN:
       user_mentioned: "%{actor} 在 %{title} 中提到了您"
       group_mentioned: "%{actor} 在以下文章中提到了该群：%{title}"
       user_reminded: 演员 %{actor} 提醒您投票：%{title}
+      thread_locked: "%{actor} 锁定了主题：%{title}"
     with_title:
       unknown_sender: 请查收来自未知发件人的电子邮件
       comment_replied_to: "%{actor} 在 %{title} 中回复了您。"
@@ -761,6 +762,7 @@ zh_CN:
       user_mentioned: "%{actor} 在 %{title} 中提到了您"
       group_mentioned: "%{actor} 在以下文章中提到了该群：%{title}"
       user_reminded: 演员 %{actor} 提醒您投票：%{title}
+      thread_locked: "%{actor} 锁定了主题：%{title}"
     without_title:
       unknown_sender: 请查收来自未知发件人的电子邮件
       discussion_announced: "%{actor} 邀请您加入讨论"
@@ -798,6 +800,7 @@ zh_CN:
       user_mentioned: "%{actor} 提到了您"
       group_mentioned: "%{actor}提到了该群"
       user_reminded: "%{actor}提醒您投票"
+      thread_locked: "%{actor} 锁定了该线程"
     hints:
       poll_closing_soon: 现在是投票、改变主意或鼓励他人参与的好时机。
       poll_closing_soon_author: 您可以提醒人们投票或延长截止日期。
@@ -1077,6 +1080,8 @@ zh_CN:
     add_poll_to_thread: 添加到帖子
     count_members: "%{count} 位成员"
     count_voters: "%{count} 位投票者"
+    lock_thread: 锁定主题
+    unlock_thread: 解锁主题
   formatting:
     confirm_discard: 您确定要放弃更改吗？
     discard_draft: 弃用草稿
@@ -1185,6 +1190,7 @@ zh_CN:
   context_panel:
     thread_status:
       pinned: 此帖子已置顶，将始终显示在群组帖子列表的顶部，供所有用户查看。
+      locked: 此讨论已锁定。它将不再显示在控制面板上，并在群组页面的“已锁定”列表中列出。
   delete_group_modal:
     title: 删除组
     subgroup_title: 删除子组
@@ -1286,6 +1292,9 @@ zh_CN:
       public: 隐私：此群组在网络上可见
       aria_label: 群组隐私：%{privacy}
     discussion_templates: 讨论模板
+    show_locked: "%{count} 已锁定"
+    view_locked_discussions: 查看已锁定的讨论
+    locked_discussions: 已锁定讨论
   export_data_modal:
     title: 您希望如何使用您的数据？
     as_csv: 在电子表格中打开它
@@ -1720,6 +1729,9 @@ zh_CN:
       mute_message: 讨论已静音
       unmute_message: 讨论已解除静音
     direct: 直接的
+    locked:
+      unlocked: 帖子已解锁
+      locked: 帖子已锁定
   discussion_last_seen_by:
     title: 被看到
     no_one: 目前还没有人看到这个。
@@ -2037,6 +2049,8 @@ zh_CN:
     welcome_to_your_new_group: 欢迎加入您的 Loomio 新群组！
     lets_start_a_discussion: 我们开始讨论吧。点击“新建讨论”继续。
     new_discussion: 新讨论
+    locked: 已锁定
+    unlocked: 已解锁
   members_panel:
     email_rejected: 邮件被拒
     email_rejected_meaning: 发送到此地址的邮件已被退回或被标记为垃圾邮件。我们将不再向此地址发送邮件。
@@ -2052,7 +2066,7 @@ zh_CN:
     order_by_created_desc: 最新
     order_by_admin_desc: 管理员
     delegates: 代表们
-    loaded_of_total: "已加载 %{loaded} / %{total}"
+    loaded_of_total: 已加载 %{loaded} / %{total}
     view_requests: 查看请求
     header_name: 名字
     header_username: 用户名
@@ -2220,7 +2234,7 @@ zh_CN:
     reminder_sent: 已发送提醒通知
   poll_common_set_outcome_panel:
     enter_an_outcome: 输入总结
-    poll_type: "此 %{poll_type} 已结束。请花些时间考虑结果，然后分享总结，以便大家了解下一步安排。"
+    poll_type: 此 %{poll_type} 已结束。请花些时间考虑结果，然后分享总结，以便大家了解下一步安排。
   poll_common_outcome_form:
     review_due_in_days: 多少天后重新审议该决定？
     review_due_in_days_hint: 复审决定前等待的天数（可选）。
@@ -2516,6 +2530,8 @@ zh_CN:
     stance_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> 对以下内容投票：<strong>%{title}</strong>"
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> 更新了对以下内容的投票：<strong>%{title}</strong>"
     event_removed: 已从帖子中移除
+    thread_locked: "<a class='actor-link' href='/u/%{username}'>%{author}</a>锁定了该主题"
+    thread_unlocked: "<a class='actor-link' href='/u/%{username}'>%{author}</a>解锁了该主题"
   add_poll_to_thread_modal:
     success: 成功，%{pollType} 已添加到帖子！
   auth_form:
@@ -2733,15 +2749,15 @@ zh_CN:
     not_elected: 未当选
     tied: Tie
     no_candidates_elected: 没有候选人当选
-    round: "Round %{number}"
+    round: Round %{number}
     quota_info: "%{method}, %{quota_type} quota (%{quota} votes needed)"
     method_scottish: Scottish STV
     method_meek: Meek STV
     quota_droop: Droop
     quota_hare: Hare
-    elected_in_round: "Elected in round %{round}"
-    eliminated_in_round: "Eliminated in round %{round}"
-    tied_in_round: "Tied in round %{round}"
+    elected_in_round: Elected in round %{round}
+    eliminated_in_round: Eliminated in round %{round}
+    tied_in_round: Tied in round %{round}
     votes: 投票
     candidate: 候选人
     round_elected: 轮次选举
@@ -2751,3 +2767,6 @@ zh_CN:
     round_details: 逐轮详情
     view_full_results: 查看完整结果
     results_available_when_closed: 投票结束后将公布结果。
+  lock_thread_modal:
+    body: 锁定帖子，将其从开放帖子列表中移除，并阻止他人评论。
+    explanation: 锁定帖子以防止他人评论或进行进一步修改

@@ -727,6 +727,7 @@ zh_TW:
       discussion_closed: "%{actor} 關閉了討論：%{title}"
       new_discussion: "%{actor} 發起了一場討論：%{title}"
       user_reminded: 演員 %{actor} 提醒您投票：%{title}
+      thread_locked: "%{actor} 鎖定了主題：%{title}"
     without_title:
       unknown_sender: 請檢查來自無法識別的寄件者的電子郵件
       group_announced: "%{actor} 邀請您加入群組"
@@ -764,6 +765,7 @@ zh_TW:
       new_discussion: "%{actor} 發起了一場討論"
       new_comment: "%{actor} 在討論中發表了評論"
       outcome_updated: "%{actor} 更新了結果"
+      thread_locked: "%{actor} 鎖定了該線程"
     hints:
       poll_closing_soon: 現在是投票、變更您的心意或鼓勵他人參與的好時機。
       poll_closing_soon_author: 您可能希望提醒人們投票或延長截止日期。
@@ -807,6 +809,7 @@ zh_TW:
       discussion_edited: "%{actor} 編輯了討論內容：%{title}"
       discussion_closed: "%{actor} 關閉了討論：%{title}"
       user_reminded: 演員 %{actor} 提醒您投票：%{title}
+      thread_locked: "%{actor} 鎖定了主題：%{title}"
   discussion_fork_actions:
     move: 移動
     moved: 正在移動留言，這可能需要一點時間
@@ -1047,6 +1050,8 @@ zh_TW:
     pin_discussion: 置頂討論
     unpin_discussion: 取消置頂討論
     delete_discussion: 刪除討論
+    lock_thread: 鎖定主題
+    unlock_thread: 解鎖主題
   formatting:
     formatting_tools: 文字格式化工具
     colors: 顏色
@@ -1235,6 +1240,9 @@ zh_TW:
     no_discussions_here: 這裡沒有任何討論！
     private_discussions: 您需要成為會員才能查看此群組中的私密討論串。
     discussion_templates: 討論模板
+    show_locked: "%{count} 已鎖定"
+    view_locked_discussions: 看已鎖定的討論
+    locked_discussions: 已鎖定討論
   export_data_modal:
     title: 您想要如何使用您的資料？
     as_csv: 在試算表中開啟它
@@ -1692,6 +1700,9 @@ zh_TW:
       mute_message: 討論已靜音
       unmute_message: 討論已解除靜音
     direct: 直接的
+    locked:
+      unlocked: 貼文已解鎖
+      locked: 貼文已鎖定
   discussion_last_seen_by:
     title: 被這些人看過：
     no_one: 還沒有人看過這個
@@ -1994,6 +2005,8 @@ zh_TW:
     lets_start_a_thread: 讓我們開始一個線程。點擊“新線程”繼續。
     lets_start_a_discussion: 我們開始討論吧。點選「新建討論」繼續。
     new_discussion: 新討論
+    locked: 已鎖定
+    unlocked: 已解鎖
   members_panel:
     bot: 機器人
     no_results: 找不到成員
@@ -2325,6 +2338,8 @@ zh_TW:
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> 更新了他們的投票於：<strong>%{title}</strong>"
     event_removed: 從討論串中移除
     new: 新的
+    thread_locked: "<a class='actor-link' href='/u/%{username}'>%{author}</a>鎖定了該主題"
+    thread_unlocked: "<a class='actor-link' href='/u/%{username}'>%{author}</a>解鎖了該主題"
   add_poll_to_thread_modal:
     success: 成功，%{pollType} 已新增至討論串！
   auth_form:
@@ -2784,6 +2799,7 @@ zh_TW:
   context_panel:
     thread_status:
       pinned: 此討論貼文已置頂，將始終顯示在群組討論貼文清單的頂部，供所有使用者檢視。
+      locked: 此討論已鎖定。它將不再顯示在控制面板上，並在群組頁面的「已鎖定」清單中列出。
   thread_group:
     aria_label: 組名
   discussion_context:
@@ -2846,15 +2862,15 @@ zh_TW:
     not_elected: 未當選
     tied: Tie
     no_candidates_elected: 沒有候選人當選
-    round: "Round %{number}"
+    round: Round %{number}
     quota_info: "%{method}, %{quota_type} quota (%{quota} votes needed)"
     method_scottish: Scottish STV
     method_meek: Meek STV
     quota_droop: Droop
     quota_hare: Hare
-    elected_in_round: "Elected in round %{round}"
-    eliminated_in_round: "Eliminated in round %{round}"
-    tied_in_round: "Tied in round %{round}"
+    elected_in_round: Elected in round %{round}
+    eliminated_in_round: Eliminated in round %{round}
+    tied_in_round: Tied in round %{round}
     votes: 投票
     candidate: 候選人
     round_elected: 輪次選舉
@@ -2864,3 +2880,6 @@ zh_TW:
     round_details: 逐輪詳情
     view_full_results: 看完整結果
     results_available_when_closed: 投票結束後將公佈結果。
+  lock_thread_modal:
+    body: 鎖定帖子，將其從開放帖子列表中移除，並阻止他人評論。
+    explanation: 鎖定貼文以防止他人評論或進行進一步修改

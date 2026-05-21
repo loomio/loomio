@@ -724,6 +724,7 @@ sv:
       discussion_closed: "%{actor} avslutade diskussionen: %{title}"
       new_discussion: "%{actor} startade en diskussion: %{title}"
       user_reminded: "%{actor} påminner dig om att rösta på: %{title}"
+      thread_locked: "%{actor} låste tråden: %{title}"
     without_title:
       unknown_sender: Granska e-post från okänd avsändare
       group_announced: "%{actor} bjöd in dig till en grupp"
@@ -761,6 +762,7 @@ sv:
       new_discussion: "%{actor} startade en diskussion"
       new_comment: "%{actor} kommenterade i en diskussion"
       outcome_updated: "%{actor} uppdaterade resultatet"
+      thread_locked: "%{actor} låste tråden"
     hints:
       poll_closing_soon: Nu är det ett bra tillfälle att rösta, ändra uppfattning eller uppmuntra andra att delta.
       poll_closing_soon_author: Du kanske vill påminna folk om att rösta eller förlänga tidsfristen.
@@ -804,6 +806,7 @@ sv:
       discussion_edited: "%{actor} redigerade diskussionssammanhanget: %{title}"
       discussion_closed: "%{actor} avslutade diskussionen: %{title}"
       user_reminded: "%{actor} påminner dig om att rösta på: %{title}"
+      thread_locked: "%{actor} låste tråden: %{title}"
   discussion_fork_actions:
     move: Flytta
     moved: Rörande kommentarer, det här kan ta en stund
@@ -1040,6 +1043,8 @@ sv:
     pin_discussion: Fäst diskussion
     unpin_discussion: Ta bort diskussionen
     delete_discussion: Ta bort diskussion
+    lock_thread: Lås tråden
+    unlock_thread: Lås upp tråden
   formatting:
     formatting_tools: Textformateringsverktyg
     colors: Färger
@@ -1228,6 +1233,9 @@ sv:
     no_discussions_here: Inga diskussioner att se här!
     private_discussions: Du måste vara medlem för att se privata trådar i den här gruppen.
     discussion_templates: Diskussionsmallar
+    show_locked: "%{count} Låst"
+    view_locked_discussions: Visa låsta diskussioner
+    locked_discussions: Låsta diskussioner
   export_data_modal:
     title: Hur vill du använda din data?
     as_csv: Öppna den i ett kalkylblad
@@ -1671,6 +1679,9 @@ sv:
       mute_message: Diskussionen är tystad
       unmute_message: Diskussionen har avaktiverats
     direct: Direkt
+    locked:
+      unlocked: Tråd upplåst
+      locked: Tråd låst
   discussion_last_seen_by:
     title: Ses av
     no_one: Ingen har sett detta än
@@ -1968,6 +1979,8 @@ sv:
     lets_start_a_thread: Låt oss starta en tråd. Klicka på "Ny tråd" för att fortsätta.
     lets_start_a_discussion: Nu startar vi en diskussion. Klicka på "Ny diskussion" för att fortsätta.
     new_discussion: Ny diskussion
+    locked: Låst
+    unlocked: Olåst
   members_panel:
     bot: Bot
     no_results: Inga medlemmar hittades
@@ -2299,6 +2312,8 @@ sv:
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> uppdaterade sin röst på: <strong>%{title}</strong>"
     event_removed: Borttagen från tråden
     new: ny
+    thread_locked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> låste tråden"
+    thread_unlocked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> låste upp tråden"
   add_poll_to_thread_modal:
     success: Framgång, %{pollType} har lagts till i tråden!
   auth_form:
@@ -2756,6 +2771,7 @@ sv:
   context_panel:
     thread_status:
       pinned: Den här diskussionen har fästs. Den kommer att finnas kvar högst upp i gruppens diskussionslista för alla användare.
+      locked: Den här diskussionen har låsts. Den kommer inte längre att visas på instrumentpanelen och kommer att listas under "låst" på gruppsidan.
   thread_group:
     aria_label: Gruppnamn
   discussion_context:
@@ -2818,15 +2834,15 @@ sv:
     not_elected: Inte vald
     tied: Oavgjort
     no_candidates_elected: Inga kandidater valda
-    round: "Runda %{number}"
+    round: Runda %{number}
     quota_info: "%{method}, %{quota_type} quota (%{quota} votes needed)"
     method_scottish: Scottish STV
     method_meek: Meek STV
     quota_droop: Droop
     quota_hare: Hare
-    elected_in_round: "Elected in round %{round}"
-    eliminated_in_round: "Eliminated in round %{round}"
-    tied_in_round: "Tied in round %{round}"
+    elected_in_round: Elected in round %{round}
+    eliminated_in_round: Eliminated in round %{round}
+    tied_in_round: Tied in round %{round}
     votes: röster
     candidate: Kandidat
     round_elected: valde i omgången
@@ -2836,3 +2852,6 @@ sv:
     round_details: Detaljer runda för runda
     view_full_results: Visa fullständiga resultat
     results_available_when_closed: Resultaten kommer att finnas tillgängliga när omröstningen avslutas
+  lock_thread_modal:
+    body: Lås trådar för att ta bort dem från listan över öppna trådar och förhindra att folk kommenterar.
+    explanation: Lås trådar för att förhindra att folk kommenterar eller gör ytterligare ändringar

@@ -94,3 +94,20 @@ languages in the Nov 2025 pass.
 - **after:** Lock threads to prevent people from commenting or making further changes
 - **why it was wrong:** The original text claimed locking "removes threads from the list of open threads," which is no longer true — the default discussions panel now shows all threads (both locked and unlocked). The new text accurately describes what locking does: prevents further comments and changes.
 
+## 2026-05-22 — lock/unlock thread translation pass
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.de.yml` | `action_dock.lock_thread` | `Gewinde sichern` | `Thread sperren` | Took "thread" as a screw/mechanical thread instead of a discussion thread. |
+| `config/locales/client.es.yml` | `action_dock.lock_thread` | `Hilo de bloqueo` | `Bloquear hilo` | Noun phrase, not the imperative UI action. |
+| `config/locales/client.fr.yml` | `action_dock.lock_thread` | `Filetage de verrouillage` | `Verrouiller la discussion` | Took "thread" as a screw/mechanical thread. |
+| `config/locales/client.it.yml` | `action_dock.lock_thread` | `Filettatura di bloccaggio` | `Blocca discussione` | Took "thread" as a screw/mechanical thread. |
+| `config/locales/client.nl_NL.yml` | `action_dock.lock_thread` | `Borgdraad` | `Discussie vergrendelen` | Took "thread" as safety wire/mechanical thread, not a discussion. |
+| `config/locales/client.pt_BR.yml` | `action_dock.lock_thread` | `Rosca de travamento` | `Bloquear tópico` | Took "thread" as screw thread. |
+| `config/locales/client.tr.yml` | `action_dock.lock_thread` | `Kilitleme vidası` | `Konuyu kilitle` | Took "thread" as screw. |
+| `config/locales/client.zh_CN.yml` | `action_dock.lock_thread` | `锁螺纹` | `锁定主题` | Took "thread" as screw thread. |
+| `config/locales/client.zh_TW.yml` | `action_dock.lock_thread` | `鎖螺紋` | `鎖定主題` | Took "thread" as screw thread. |
+| `config/locales/client.fr.yml`, `client.pt_BR.yml`, `client.ru.yml`, `client.tr.yml` | notification/thread item lock keys | Translated placeholders like `%{acteur}`, `%{ator}`, `%{автор}`, `%{yazar}` | Restored `%{actor}` / `%{author}` | Interpolation placeholder names must never be translated. |
+| `config/locales/client.he.yml` | `action_dock.unlock_thread`, `discussion.locked.unlocked` | Repeated the lock wording | `ביטול נעילת שרשור`, `נעילת השרשור בוטלה` | Unlock status/action was translated as lock. |
+| `config/locales/client.fr.yml`, `client.hu.yml`, `client.it.yml`, `client.pl.yml`, `client.ru.yml` | locked discussion labels | Closed/shut wording such as `Fermé`, `Bezárt`, `Chiuso`, `Zamknięty`, `Закрытые обсуждения` | Lock-state wording such as `Verrouillé`, `Zárolva`, `Bloccate`, `Zablokowane`, `Заблокированные обсуждения` | Locking a thread is distinct from closing a poll/discussion; these labels should not drift back to "closed". |
+

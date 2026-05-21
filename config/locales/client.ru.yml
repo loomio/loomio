@@ -724,6 +724,7 @@ ru:
       discussion_closed: "%{actor} закрыл обсуждение: %{title}"
       new_discussion: "%{actor} начал обсуждение: %{title}"
       user_reminded: "%{actor} напоминает вам проголосовать за: %{title}"
+      thread_locked: "%{actor} заблокировал ветку обсуждения: %{title}"
     without_title:
       unknown_sender: Пожалуйста, просмотрите письмо от неизвестного отправителя
       group_announced: "%{actor} пригласил вас в группу"
@@ -761,6 +762,7 @@ ru:
       new_discussion: "%{actor} начал обсуждение"
       new_comment: "%{actor} прокомментировал в обсуждении"
       outcome_updated: "%{actor} обновил результат"
+      thread_locked: "%{actor} заблокировал тему"
     hints:
       poll_closing_soon: Сейчас хорошее время, чтобы проголосовать, передумать или призвать других к участию.
       poll_closing_soon_author: Возможно, вы захотите напомнить людям о необходимости проголосовать или продлить срок.
@@ -804,6 +806,7 @@ ru:
       discussion_edited: "%{actor} отредактировал контекст обсуждения: %{title}"
       discussion_closed: "%{actor} закрыл обсуждение: %{title}"
       user_reminded: "%{actor} напоминает вам проголосовать за: %{title}"
+      thread_locked: "%{actor} заблокировал ветку обсуждения: %{title}"
   discussion_fork_actions:
     move: Переместить
     moved: Перемещение комментариев. Это может занять некоторое время.
@@ -1040,6 +1043,8 @@ ru:
     pin_discussion: Закрепить обсуждение
     unpin_discussion: Открепить обсуждение
     delete_discussion: Удалить обсуждение
+    lock_thread: Заблокировать тему
+    unlock_thread: Разблокировать тему
   formatting:
     formatting_tools: Инструменты форматирования текста
     colors: Цвета
@@ -1228,6 +1233,9 @@ ru:
     no_discussions_here: Здесь нет обсуждений!
     private_discussions: Вам необходимо быть участником, чтобы просматривать личные сообщения в этой группе.
     discussion_templates: Шаблоны для обсуждений
+    show_locked: "%{count} Заблокировано"
+    view_locked_discussions: Просмотреть заблокированные обсуждения
+    locked_discussions: Заблокированные обсуждения
   export_data_modal:
     title: Как вы хотите использовать свои данные?
     as_csv: Откройте его в электронной таблице
@@ -1671,6 +1679,9 @@ ru:
       mute_message: Обсуждение отключено
       unmute_message: Обсуждение отключено
     direct: Прямой
+    locked:
+      unlocked: Тема разблокирована
+      locked: Тема заблокирована
   discussion_last_seen_by:
     title: Виденный
     no_one: Этого еще никто не видел
@@ -1968,6 +1979,8 @@ ru:
     lets_start_a_thread: Давайте начнем тему. Нажмите «Новая тема», чтобы продолжить.
     lets_start_a_discussion: Давайте начнём обсуждение. Нажмите «Новое обсуждение», чтобы продолжить.
     new_discussion: Новое обсуждение
+    locked: Заблокировано
+    unlocked: Разблокировано
   members_panel:
     bot: Бот
     no_results: Участники не найдены
@@ -2299,6 +2312,8 @@ ru:
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> обновил свое голосование по вопросу: <strong>%{title}</strong>"
     event_removed: Удалено из темы
     new: новый
+    thread_locked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> заблокировал тему"
+    thread_unlocked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> разблокировал ветку обсуждения"
   add_poll_to_thread_modal:
     success: Успех, %{pollType} добавлен в тему!
   auth_form:
@@ -2691,7 +2706,7 @@ ru:
     create_poll_type: Создать %{poll_type}
     notify_voters_when_voting_opens: Уведомите избирателей о начале голосования.
     voters_notified_when_opens: Избиратели будут уведомлены о начале голосования.
-    who_may_vote: "Кто может голосовать в этом %{poll_type}?"
+    who_may_vote: Кто может голосовать в этом %{poll_type}?
   poll_receipts_page:
     verify_participants: Проверка участников
     see_votes_if_quorum_reached: Если голосование закрыто и кворум достигнут, вы увидите, кто отдал свой голос.
@@ -2756,6 +2771,7 @@ ru:
   context_panel:
     thread_status:
       pinned: Это обсуждение закреплено. Оно останется вверху списка обсуждений группы для всех пользователей.
+      locked: Эта дискуссия заблокирована. Она больше не будет отображаться на панели управления и будет отображаться как «заблокированная» на странице группы.
   thread_group:
     aria_label: Название группы
   discussion_context:
@@ -2818,15 +2834,15 @@ ru:
     not_elected: Не избран
     tied: Tie
     no_candidates_elected: Кандидаты не избраны
-    round: "Round %{number}"
+    round: Round %{number}
     quota_info: "%{method}, %{quota_type} quota (%{quota} votes needed)"
     method_scottish: Scottish STV
     method_meek: Meek STV
     quota_droop: Droop
     quota_hare: Hare
-    elected_in_round: "Elected in round %{round}"
-    eliminated_in_round: "Eliminated in round %{round}"
-    tied_in_round: "Tied in round %{round}"
+    elected_in_round: Elected in round %{round}
+    eliminated_in_round: Eliminated in round %{round}
+    tied_in_round: Tied in round %{round}
     votes: голоса
     candidate: Кандидат
     round_elected: Раунд избран
@@ -2836,3 +2852,6 @@ ru:
     round_details: Подробности по каждому раунду
     view_full_results: Посмотреть полные результаты
     results_available_when_closed: Результаты будут доступны после закрытия голосования.
+  lock_thread_modal:
+    body: Блокировка тем позволяет удалить их из списка открытых тем и предотвратить комментирование.
+    explanation: Блокировка тем позволяет предотвратить комментирование и внесение дальнейших изменений.

@@ -328,7 +328,7 @@ de:
     thread: Faden
     commercial: Kommerziell
     nonprofit: Gemeinnützig
-    opening_in: "Öffnet %{time}"
+    opening_in: Öffnet %{time}
     read_more: Mehr lesen
     templates_admin_hint: Da Sie Gruppenadministrator sind, können Sie alle Vorlagen, die Sie nicht benötigen, ausblenden oder löschen und die verbleibenden Vorlagen nach Ihren Bedürfnissen bearbeiten.
     read: Lesen
@@ -732,6 +732,7 @@ de:
       discussion_closed: "%{actor} hat die Diskussion beendet: %{title}"
       new_discussion: "%{actor} hat eine Diskussion gestartet: %{title}"
       user_reminded: "%{actor} erinnert Sie daran, über Folgendes abzustimmen: %{title}"
+      thread_locked: "%{actor} hat den Thread gesperrt: %{title}"
     without_title:
       unknown_sender: Bitte überprüfen Sie die E-Mail von einem unbekannten Absender
       group_announced: "%{actor} hat Sie zu einer Gruppe eingeladen"
@@ -769,6 +770,7 @@ de:
       new_discussion: "%{actor} hat eine Diskussion gestartet"
       new_comment: "%{actor} hat in einer Diskussion kommentiert"
       outcome_updated: "%{actor} hat das Ergebnis aktualisiert"
+      thread_locked: "%{actor} hat den Thread gesperrt"
     hints:
       poll_closing_soon: Jetzt ist ein guter Zeitpunkt, um abzustimmen, Ihre Meinung zu ändern oder andere zur Teilnahme zu ermutigen.
       poll_closing_soon_author: Möglicherweise möchten Sie die Menschen an die Abstimmung erinnern oder die Frist verlängern.
@@ -812,6 +814,7 @@ de:
       discussion_edited: "%{actor} hat den Diskussionskontext bearbeitet: %{title}"
       discussion_closed: "%{actor} hat die Diskussion beendet: %{title}"
       user_reminded: "%{actor} erinnert Sie daran, über Folgendes abzustimmen: %{title}"
+      thread_locked: "%{actor} hat den Thread gesperrt: %{title}"
   discussion_fork_actions:
     move: Verschieben
     moved: Kommentare bewegen, dies kann einen Moment dauern
@@ -1052,6 +1055,8 @@ de:
     pin_discussion: Diskussion anpinnen
     unpin_discussion: Diskussion abpinnen
     delete_discussion: Diskussion löschen
+    lock_thread: Thread sperren
+    unlock_thread: Thread entsperren
   formatting:
     formatting_tools: Werkzeuge für Textbearbeitung
     colors: Farben
@@ -1240,6 +1245,9 @@ de:
     no_discussions_here: Hier gibt es keine Diskussionen!
     private_discussions: Um private Beiträge in dieser Gruppe sehen zu können, müssen Sie Mitglied sein.
     discussion_templates: Diskussionsvorlagen
+    show_locked: "%{count} Gesperrt"
+    view_locked_discussions: Gesperrte Diskussionen ansehen
+    locked_discussions: Gesperrte Diskussionen
   export_data_modal:
     title: Wie willst du deine Daten benutzen?
     as_csv: In einer Tabellenkalkulation öffnen
@@ -1697,6 +1705,9 @@ de:
       mute_message: Diskussion stummgeschaltet
       unmute_message: Diskussion stummgeschaltet
     direct: Direkt
+    locked:
+      unlocked: Thema entsperrt
+      locked: Thema gesperrt
   discussion_last_seen_by:
     title: Angesehen von
     no_one: Bisher hat niemand dieses gesehen
@@ -1999,6 +2010,8 @@ de:
     lets_start_a_thread: Lasst uns einen Thread starten. Klicken Sie auf „Neuer Thread“, um fortzufahren.
     lets_start_a_discussion: Lasst uns eine Diskussion beginnen. Klickt auf „Neue Diskussion“, um fortzufahren.
     new_discussion: Neue Diskussion
+    locked: Gesperrt
+    unlocked: Entsperrt
   members_panel:
     bot: Bot
     no_results: Keine Mitglieder gefunden
@@ -2332,6 +2345,8 @@ de:
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> hat seine Abstimmung aktualisiert am: <strong>%{title}</strong>"
     event_removed: Von der Diskussion entfernt
     new: neu
+    thread_locked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> hat den Thread gesperrt."
+    thread_unlocked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> hat den Thread entsperrt"
   add_poll_to_thread_modal:
     success: Erfolg, %{pollType} wurde der Diskussion hinzugefügt!
   auth_form:
@@ -2791,6 +2806,7 @@ de:
   context_panel:
     thread_status:
       pinned: Diese Diskussion wurde angepinnt. Sie bleibt für alle Benutzer ganz oben in der Diskussionsliste der Gruppe.
+      locked: Diese Diskussion wurde gesperrt. Sie wird nicht mehr im Dashboard angezeigt und ist auf der Gruppenseite unter „Gesperrt“ zu finden.
   thread_group:
     aria_label: Gruppenname
   discussion_context:
@@ -2853,15 +2869,15 @@ de:
     not_elected: Nicht gewählt
     tied: Gleichstand
     no_candidates_elected: Es wurden keine Kandidaten gewählt
-    round: "Runde %{number}"
+    round: Runde %{number}
     quota_info: "%{method}, %{quota_type} quota (%{quota} votes needed)"
     method_scottish: Scottish STV
     method_meek: Meek STV
     quota_droop: Droop
     quota_hare: Hare
-    elected_in_round: "Elected in round %{round}"
-    eliminated_in_round: "Eliminated in round %{round}"
-    tied_in_round: "Tied in round %{round}"
+    elected_in_round: Elected in round %{round}
+    eliminated_in_round: Eliminated in round %{round}
+    tied_in_round: Tied in round %{round}
     votes: Stimmen
     candidate: Kandidat
     round_elected: Runde gewählt
@@ -2871,3 +2887,6 @@ de:
     round_details: Details zu jeder Runde
     view_full_results: Vollständige Ergebnisse anzeigen
     results_available_when_closed: Die Ergebnisse werden nach Schließung der Abstimmungsrunde verfügbar sein.
+  lock_thread_modal:
+    body: Durch Sperren von Threads werden diese aus der Liste der offenen Threads entfernt und verhindert, dass Nutzer Kommentare abgeben.
+    explanation: Threads sperren, um zu verhindern, dass Nutzer Kommentare abgeben oder weitere Änderungen vornehmen.

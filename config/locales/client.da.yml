@@ -724,6 +724,7 @@ da:
       discussion_closed: "%{actor} lukkede diskussionen: %{title}"
       new_discussion: "%{actor} startede en diskussion: %{title}"
       user_reminded: "%{actor} minder dig om at stemme på: %{title}"
+      thread_locked: "%{actor} låste tråden: %{title}"
     without_title:
       unknown_sender: Gennemgå venligst e-mail fra ukendt afsender
       group_announced: "%{actor} inviterede dig til en gruppe"
@@ -761,6 +762,7 @@ da:
       new_discussion: "%{actor} startede en diskussion"
       new_comment: "%{actor} kommenterede i en diskussion"
       outcome_updated: "%{actor} opdaterede resultatet"
+      thread_locked: "%{actor} låste tråden"
     hints:
       poll_closing_soon: Nu er det et godt tidspunkt at stemme, ændre mening eller opfordre andre til at deltage.
       poll_closing_soon_author: Du vil måske gerne minde folk om at stemme eller forlænge fristen.
@@ -804,6 +806,7 @@ da:
       discussion_edited: "%{actor} redigerede diskussionskonteksten: %{title}"
       discussion_closed: "%{actor} lukkede diskussionen: %{title}"
       user_reminded: "%{actor} minder dig om at stemme på: %{title}"
+      thread_locked: "%{actor} låste tråden: %{title}"
   discussion_fork_actions:
     move: Flyt
     moved: Bevægende kommentarer, det kan tage et øjeblik
@@ -1040,6 +1043,8 @@ da:
     pin_discussion: Fastgør diskussion
     unpin_discussion: Fjern fastgørelse af diskussion
     delete_discussion: Slet diskussion
+    lock_thread: Lås tråd
+    unlock_thread: Lås tråden op
   formatting:
     formatting_tools: Tekstformateringsværktøjer
     colors: Farver
@@ -1228,6 +1233,9 @@ da:
     no_discussions_here: Ingen diskussioner at se her!
     private_discussions: Du skal være medlem for at se private tråde i denne gruppe
     discussion_templates: Diskussionsskabeloner
+    show_locked: "%{count} Låst"
+    view_locked_discussions: Se låste diskussioner
+    locked_discussions: Låste diskussioner
   export_data_modal:
     title: Hvordan vil du bruge dine data?
     as_csv: Åbn det i et regneark
@@ -1671,6 +1679,9 @@ da:
       mute_message: Diskussionen er slået fra
       unmute_message: Diskussionen er slået til
     direct: Direkte
+    locked:
+      unlocked: Tråd ulåst
+      locked: Tråd låst
   discussion_last_seen_by:
     title: Set af
     no_one: Ingen har set dette endnu
@@ -1968,6 +1979,8 @@ da:
     lets_start_a_thread: Lad os starte en tråd. Klik på "Ny tråd" for at fortsætte.
     lets_start_a_discussion: Lad os starte en diskussion. Klik på "Ny diskussion" for at fortsætte.
     new_discussion: Ny diskussion
+    locked: Låst
+    unlocked: Låst op
   members_panel:
     bot: Bot
     no_results: Ingen medlemmer fundet
@@ -2299,6 +2312,8 @@ da:
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> opdaterede deres stemme om: <strong>%{title}</strong>"
     event_removed: Fjernet fra tråden
     new: ny
+    thread_locked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> låste tråden"
+    thread_unlocked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> låste tråden op"
   add_poll_to_thread_modal:
     success: Det lykkedes, %{pollType} blev tilføjet til tråden!
   auth_form:
@@ -2756,6 +2771,7 @@ da:
   context_panel:
     thread_status:
       pinned: Denne diskussion er blevet fastgjort. Den vil forblive øverst på gruppens liste over diskussioner for alle brugere.
+      locked: Denne diskussion er blevet låst. Den vil ikke længere blive vist på dashboardet og vil være angivet under 'låst' på gruppesiden.
   thread_group:
     aria_label: Gruppenavn
   discussion_context:
@@ -2818,15 +2834,15 @@ da:
     not_elected: Ikke valgt
     tied: Uafgjort
     no_candidates_elected: Ingen kandidater valgt
-    round: "Runde %{number}"
+    round: Runde %{number}
     quota_info: "%{method}, %{quota_type} quota (%{quota} votes needed)"
     method_scottish: Scottish STV
     method_meek: Meek STV
     quota_droop: Droop
     quota_hare: Hare
-    elected_in_round: "Elected in round %{round}"
-    eliminated_in_round: "Eliminated in round %{round}"
-    tied_in_round: "Tied in round %{round}"
+    elected_in_round: Elected in round %{round}
+    eliminated_in_round: Eliminated in round %{round}
+    tied_in_round: Tied in round %{round}
     votes: stemmer
     candidate: Kandidat
     round_elected: Valgt runde
@@ -2836,3 +2852,6 @@ da:
     round_details: Detaljer runde for runde
     view_full_results: Se alle resultater
     results_available_when_closed: Resultaterne vil være tilgængelige, når afstemningen slutter
+  lock_thread_modal:
+    body: Lås tråde for at fjerne dem fra listen over åbne tråde og forhindre folk i at kommentere.
+    explanation: Lås tråde for at forhindre folk i at kommentere eller foretage yderligere ændringer

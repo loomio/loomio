@@ -724,6 +724,7 @@ hr:
       discussion_closed: "%{actor} je zatvorio raspravu: %{title}"
       new_discussion: "%{actor} je započeo raspravu: %{title}"
       user_reminded: "%{actor} vas podsjeća da glasate za: %{title}"
+      thread_locked: "%{actor} je zaključao temu: %{title}"
     without_title:
       unknown_sender: Pregledajte e-poštu neprepoznatog pošiljatelja
       group_announced: "%{actor} vas je pozvao u grupu"
@@ -761,6 +762,7 @@ hr:
       new_discussion: "%{actor} je započeo raspravu"
       new_comment: "%{actor} je komentirao/la u raspravi"
       outcome_updated: "%{actor} je ažurirao/la ishod"
+      thread_locked: "%{actor} je zaključao/la nit"
     hints:
       poll_closing_soon: Sada je dobro vrijeme da glasate, promijenite mišljenje ili potaknete druge da sudjeluju.
       poll_closing_soon_author: Možete podsjetiti ljude da glasaju ili produžiti rok.
@@ -804,6 +806,7 @@ hr:
       discussion_edited: "%{actor} je uredio/la kontekst rasprave: %{title}"
       discussion_closed: "%{actor} je zatvorio raspravu: %{title}"
       user_reminded: "%{actor} vas podsjeća da glasate za: %{title}"
+      thread_locked: "%{actor} je zaključao temu: %{title}"
   discussion_fork_actions:
     move: Potez
     moved: Dirljivi komentari, ovo bi moglo potrajati
@@ -1040,6 +1043,8 @@ hr:
     pin_discussion: Prikvači raspravu
     unpin_discussion: Otkvači raspravu
     delete_discussion: Izbriši raspravu
+    lock_thread: Zaključaj nit
+    unlock_thread: Otključaj nit
   formatting:
     formatting_tools: Alati za oblikovanje teksta
     colors: Boje
@@ -1228,6 +1233,9 @@ hr:
     no_discussions_here: Ovdje nema rasprava!
     private_discussions: Morate biti član da biste vidjeli privatne teme u ovoj grupi
     discussion_templates: Predlošci za raspravu
+    show_locked: "%{count} Zaključano"
+    view_locked_discussions: Prikaži zaključane rasprave
+    locked_discussions: Zaključane rasprave
   export_data_modal:
     title: Kako želite koristiti svoje podatke?
     as_csv: Otvorite ga u proračunskoj tablici
@@ -1671,6 +1679,9 @@ hr:
       mute_message: Rasprava je utišana
       unmute_message: Utišavanje rasprave uključeno
     direct: Izravno
+    locked:
+      unlocked: Nit otključana
+      locked: Nit zaključana
   discussion_last_seen_by:
     title: vidio od
     no_one: Ovo još nitko nije vidio
@@ -1968,6 +1979,8 @@ hr:
     lets_start_a_thread: Pokrenimo nit. Kliknite "Nova nit" za nastavak.
     lets_start_a_discussion: Započnimo raspravu. Kliknite "Nova rasprava" za nastavak.
     new_discussion: Nova rasprava
+    locked: Zaključan
+    unlocked: Otključan
   members_panel:
     bot: Bot
     no_results: Nema pronađenih članova
@@ -2299,6 +2312,8 @@ hr:
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> je ažurirao svoj glas za: <strong>%{title}</strong>"
     event_removed: Uklonjeno iz niti
     new: novi
+    thread_locked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> je zaključao/la nit"
+    thread_unlocked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> je otključao/la temu"
   add_poll_to_thread_modal:
     success: Uspjeh, %{pollType} dodan u nit!
   auth_form:
@@ -2756,6 +2771,7 @@ hr:
   context_panel:
     thread_status:
       pinned: Ova je rasprava prikvačena. Ostat će na vrhu popisa rasprava grupe za sve korisnike.
+      locked: Ova je rasprava zaključana. Više se neće prikazivati na nadzornoj ploči i bit će navedena pod 'zaključano' na stranici grupe.
   thread_group:
     aria_label: Naziv grupe
   discussion_context:
@@ -2818,15 +2834,15 @@ hr:
     not_elected: Nije izabran
     tied: Tie
     no_candidates_elected: Nijedan kandidat nije izabran
-    round: "Round %{number}"
+    round: Round %{number}
     quota_info: "%{method}, %{quota_type} quota (%{quota} votes needed)"
     method_scottish: Scottish STV
     method_meek: Meek STV
     quota_droop: Droop
     quota_hare: Hare
-    elected_in_round: "Elected in round %{round}"
-    eliminated_in_round: "Eliminated in round %{round}"
-    tied_in_round: "Tied in round %{round}"
+    elected_in_round: Elected in round %{round}
+    eliminated_in_round: Eliminated in round %{round}
+    tied_in_round: Tied in round %{round}
     votes: glasova
     candidate: Kandidat
     round_elected: Izabrani krug
@@ -2836,3 +2852,6 @@ hr:
     round_details: Detalji rundu po rundu
     view_full_results: Pogledajte sve rezultate
     results_available_when_closed: Rezultati će biti dostupni nakon završetka glasanja
+  lock_thread_modal:
+    body: Zaključajte teme kako biste ih uklonili s popisa otvorenih tema i spriječili ljude da komentiraju.
+    explanation: Zaključajte teme kako biste spriječili ljude da komentiraju ili unose daljnje promjene

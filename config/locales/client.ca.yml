@@ -726,6 +726,7 @@ ca:
       discussion_closed: "%{actor} ha tancat la discussió: %{title}"
       new_discussion: "%{actor} ha iniciat una discussió: %{title}"
       user_reminded: "%{actor} et recorda que votes per: %{title}"
+      thread_locked: "%{actor} ha bloquejat el fil: %{title}"
     without_title:
       unknown_sender: Reviseu el correu electrònic d'un remitent no reconegut
       group_announced: "%{actor} t'ha convidat a un grup"
@@ -763,6 +764,7 @@ ca:
       new_discussion: "%{actor} ha iniciat una discussió"
       new_comment: "%{actor} ha comentat en una discussió"
       outcome_updated: "%{actor} ha actualitzat el resultat"
+      thread_locked: "%{actor} ha bloquejat el fil"
     hints:
       poll_closing_soon: Ara és un bon moment per votar, canviar d'opinió o animar els altres a participar.
       poll_closing_soon_author: És possible que vulgueu recordar a la gent que voten o allargar el termini.
@@ -806,6 +808,7 @@ ca:
       discussion_edited: "%{actor} ha editat el context de la discussió: %{title}"
       discussion_closed: "%{actor} ha tancat la discussió: %{title}"
       user_reminded: "%{actor} et recorda que votes per: %{title}"
+      thread_locked: "%{actor} ha bloquejat el fil: %{title}"
   discussion_fork_actions:
     move: Mou
     moved: S'estan movent els comentaris, aquesta acció podria tardar uns minuts
@@ -1046,6 +1049,8 @@ ca:
     pin_discussion: Fixar la discussió
     unpin_discussion: Desfixar la discussió
     delete_discussion: Suprimeix la discussió
+    lock_thread: Bloqueja el fil
+    unlock_thread: Desbloqueja el fil
   formatting:
     formatting_tools: Eines de formatació de text
     colors: Colors
@@ -1234,6 +1239,9 @@ ca:
     no_discussions_here: No hi ha debats per veure aquí!
     private_discussions: Cal que siguis membre per veure els fils privats d'aquest grup.
     discussion_templates: Plantilles de discussió
+    show_locked: "%{count} Bloquejat"
+    view_locked_discussions: Veure les discussions bloquejades
+    locked_discussions: Discussions bloquejades
   export_data_modal:
     title: Com voleu utilitzar les vostres dades?
     as_csv: Obre en un full de càlcul
@@ -1691,6 +1699,9 @@ ca:
       mute_message: Discussió silenciada
       unmute_message: Discussió activada
     direct: Directe
+    locked:
+      unlocked: Fil desbloquejat
+      locked: Fil bloquejat
   discussion_last_seen_by:
     title: Vist per
     no_one: Encara no ho ha vist ningú
@@ -1991,6 +2002,8 @@ ca:
     lets_start_a_thread: Comencem un fil. Feu clic a "Nou fil" per continuar.
     lets_start_a_discussion: Iniciem una discussió. Feu clic a "Nova discussió" per continuar.
     new_discussion: Nova discussió
+    locked: Bloquejat
+    unlocked: Desbloquejat
   members_panel:
     bot: Bot
     everyone: Tothom
@@ -2324,6 +2337,8 @@ ca:
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha actualitzat el seu vot a: <strong>%{title}</strong>"
     event_removed: S'ha eliminat del fil
     new: nou
+    thread_locked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha bloquejat el fil"
+    thread_unlocked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha desbloquejat el fil"
   add_poll_to_thread_modal:
     success: S'ha afegit %{pollType} al fil!
   auth_form:
@@ -2783,6 +2798,7 @@ ca:
   context_panel:
     thread_status:
       pinned: Aquesta discussió s'ha fixat. Romandrà al capdamunt de la llista de discussions del grup per a tots els usuaris.
+      locked: Aquesta discussió s'ha bloquejat. Ja no apareixerà al tauler de control i apareixerà a la llista de "bloquejats" a la pàgina del grup.
   thread_group:
     aria_label: Nom del grup
   discussion_context:
@@ -2845,15 +2861,15 @@ ca:
     not_elected: No elegit
     tied: Empat
     no_candidates_elected: Cap candidat elegit
-    round: "Ronda %{number}"
+    round: Ronda %{number}
     quota_info: "%{method}, %{quota_type} quota (%{quota} votes needed)"
     method_scottish: Scottish STV
     method_meek: Meek STV
     quota_droop: Droop
     quota_hare: Hare
-    elected_in_round: "Elected in round %{round}"
-    eliminated_in_round: "Eliminated in round %{round}"
-    tied_in_round: "Tied in round %{round}"
+    elected_in_round: Elected in round %{round}
+    eliminated_in_round: Eliminated in round %{round}
+    tied_in_round: Tied in round %{round}
     votes: vots
     candidate: Candidat/da
     round_elected: Ronda elegida
@@ -2863,3 +2879,6 @@ ca:
     round_details: Detalls ronda a ronda
     view_full_results: Veure els resultats complets
     results_available_when_closed: Els resultats estaran disponibles quan es tanqui la votació
+  lock_thread_modal:
+    body: Bloqueja els fils per eliminar-los de la llista de fils oberts i evitar que la gent comenti.
+    explanation: Bloqueja els fils de discussió per evitar que la gent comenti o faci més canvis

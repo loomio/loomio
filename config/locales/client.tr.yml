@@ -724,6 +724,7 @@ tr:
       discussion_closed: "%{actor} tartışmayı kapattı: %{title}"
       new_discussion: "%{actor} bir tartışma başlattı: %{title}"
       user_reminded: "%{actor} size şu konuda oy kullanmanızı hatırlatıyor: %{title}"
+      thread_locked: "%{actor} şu konuyu kilitledi: %{title}"
     without_title:
       unknown_sender: Lütfen tanınmayan gönderenden gelen e-postayı inceleyin
       group_announced: "%{actor} sizi bir gruba davet etti"
@@ -761,6 +762,7 @@ tr:
       new_discussion: "%{actor} bir tartışma başlattı"
       new_comment: "%{actor} bir tartışmada yorum yaptı"
       outcome_updated: "%{actor} sonucu güncelledi"
+      thread_locked: "%{actor} konuyu kilitledi"
     hints:
       poll_closing_soon: Şimdi oy vermek, fikrinizi değiştirmek veya başkalarını katılmaya teşvik etmek için iyi bir zaman.
       poll_closing_soon_author: İnsanlara oy vermelerini hatırlatmak veya son tarihi uzatmak isteyebilirsiniz.
@@ -804,6 +806,7 @@ tr:
       discussion_edited: "%{actor} tartışma bağlamını düzenledi: %{title}"
       discussion_closed: "%{actor} tartışmayı kapattı: %{title}"
       user_reminded: "%{actor} size şu konuda oy kullanmanızı hatırlatıyor: %{title}"
+      thread_locked: "%{actor} şu konuyu kilitledi: %{title}"
   discussion_fork_actions:
     move: Taşı
     moved: Yorumlar taşınıyor, bu işlem biraz zaman alabilir
@@ -1040,6 +1043,8 @@ tr:
     pin_discussion: Pin tartışması
     unpin_discussion: Tartışmayı sabitle
     delete_discussion: Tartışmayı sil
+    lock_thread: Konuyu kilitle
+    unlock_thread: Konunun kilidini aç
   formatting:
     formatting_tools: Metin biçimlendirme araçları
     colors: Renkler
@@ -1228,6 +1233,9 @@ tr:
     no_discussions_here: Burada görülecek tartışma yok!
     private_discussions: Bu gruptaki özel konuları görüntülemek için üye olmanız gerekir
     discussion_templates: Tartışma şablonları
+    show_locked: "%{count} Kilitli"
+    view_locked_discussions: Kilitli tartışmaları görüntüle
+    locked_discussions: Kilitli tartışmalar
   export_data_modal:
     title: Verilerinizi nasıl kullanmak istiyorsunuz?
     as_csv: Bir e-tabloda açın
@@ -1671,6 +1679,9 @@ tr:
       mute_message: Tartışma sessize alındı
       unmute_message: Tartışma sessize alınmadı
     direct: Doğrudan
+    locked:
+      unlocked: Konu kilidi açıldı
+      locked: Konu kilitlendi
   discussion_last_seen_by:
     title: Tarafından görüldü
     no_one: Bunu henüz kimse görmedi
@@ -1968,6 +1979,8 @@ tr:
     lets_start_a_thread: Bir konu başlatalım. Devam etmek için "Yeni konu"yu tıklayın.
     lets_start_a_discussion: Bir tartışma başlatalım. Devam etmek için "Yeni tartışma"ya tıklayın.
     new_discussion: Yeni tartışma
+    locked: Kilitli
+    unlocked: Kilidi Açıldı
   members_panel:
     bot: Bot
     no_results: Üye bulunamadı
@@ -2299,6 +2312,8 @@ tr:
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> şu konudaki oylarını güncelledi: <strong>%{title}</strong>"
     event_removed: Konudan kaldırıldı
     new: yeni
+    thread_locked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> konuyu kilitledi"
+    thread_unlocked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> konunun kilidini açtı"
   add_poll_to_thread_modal:
     success: Başarılı, %{pollType} konuya eklendi!
   auth_form:
@@ -2691,7 +2706,7 @@ tr:
     create_poll_type: "%{poll_type} oluşturun"
     notify_voters_when_voting_opens: Oy verme işleminin ne zaman başlayacağını seçmenlere bildirin.
     voters_notified_when_opens: Oy verme işleminin ne zaman başlayacağı seçmenlere bildirilecektir.
-    who_may_vote: "Bu %{poll_type} için kimler oy kullanabilir?"
+    who_may_vote: Bu %{poll_type} için kimler oy kullanabilir?
   poll_receipts_page:
     verify_participants: Katılımcıları doğrulayın
     see_votes_if_quorum_reached: Oylama sona ermiş ve yeter sayı sağlanmışsa, kimin oy kullandığını göreceksiniz.
@@ -2756,6 +2771,7 @@ tr:
   context_panel:
     thread_status:
       pinned: Bu tartışma sabitlendi. Tüm kullanıcılar için grubun tartışma listesinin en üstünde kalacak.
+      locked: Bu tartışma kilitlendi. Artık kontrol panelinde görünmeyecek ve grup sayfasında 'kilitli' başlığı altında listelenecektir.
   thread_group:
     aria_label: Grup adı
   discussion_context:
@@ -2818,15 +2834,15 @@ tr:
     not_elected: Seçilmedi
     tied: Tie
     no_candidates_elected: Hiçbir aday seçilmedi.
-    round: "Round %{number}"
+    round: Round %{number}
     quota_info: "%{method}, %{quota_type} quota (%{quota} votes needed)"
     method_scottish: Scottish STV
     method_meek: Meek STV
     quota_droop: Droop
     quota_hare: Hare
-    elected_in_round: "Elected in round %{round}"
-    eliminated_in_round: "Eliminated in round %{round}"
-    tied_in_round: "Tied in round %{round}"
+    elected_in_round: Elected in round %{round}
+    eliminated_in_round: Eliminated in round %{round}
+    tied_in_round: Tied in round %{round}
     votes: oylar
     candidate: Aday
     round_elected: Turda seçilenler
@@ -2836,3 +2852,6 @@ tr:
     round_details: Tur tur detayları
     view_full_results: Tüm sonuçları görüntüle
     results_available_when_closed: Oy verme işlemi sona erdiğinde sonuçlar açıklanacaktır.
+  lock_thread_modal:
+    body: Konuları kilitleyerek açık konular listesinden kaldırın ve insanların yorum yapmasını engelleyin.
+    explanation: Konuları kilitleyerek kişilerin yorum yapmasını veya daha fazla değişiklik yapmasını engelleyin.

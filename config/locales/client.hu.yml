@@ -726,6 +726,7 @@ hu:
       discussion_closed: "%{actor} lezárta a beszélgetést: %{title}"
       new_discussion: "%{actor} beszélgetést indított: %{title}"
       user_reminded: "%{actor} emlékeztet, hogy szavazz erre: %{title}"
+      thread_locked: "%{actor} zárolta a témát: %{title}"
     without_title:
       unknown_sender: Kérjük, tekintse át az ismeretlen feladótól kapott e-mailt
       group_announced: "%{actor} meghívott egy csoportba"
@@ -763,6 +764,7 @@ hu:
       new_discussion: "%{actor} beszélgetést indított"
       new_comment: "%{actor} hozzászólást tett egy beszélgetésben"
       outcome_updated: "%{actor} frissítette az eredményt"
+      thread_locked: "%{actor} zárolta a témát"
     hints:
       poll_closing_soon: Itt az ideje, hogy szavazzon, meggondolja magát, vagy bátorítson másokat a részvételre.
       poll_closing_soon_author: Emlékeztetheti az embereket, hogy szavazzanak, vagy hosszabbítsák meg a határidőt.
@@ -806,6 +808,7 @@ hu:
       discussion_edited: "%{actor} szerkesztette a vita kontextusát: %{title}"
       discussion_closed: "%{actor} lezárta a beszélgetést: %{title}"
       user_reminded: "%{actor} emlékeztet, hogy szavazz erre: %{title}"
+      thread_locked: "%{actor} zárolta a témát: %{title}"
   discussion_fork_actions:
     move: Mozgat
     moved: A megjegyzések áthelyezése eltarthat egy ideig
@@ -1044,6 +1047,8 @@ hu:
     pin_discussion: Beszélgetés rögzítése
     unpin_discussion: Beszélgetés rögzítésének feloldása
     delete_discussion: Beszélgetés törlése
+    lock_thread: Téma zárolása
+    unlock_thread: Téma zárolásának feloldása
   formatting:
     formatting_tools: Szövegformázó eszközök
     colors: Színek
@@ -1232,6 +1237,9 @@ hu:
     no_discussions_here: Nincsenek itt beszélgetések!
     private_discussions: Tagnak kell lenned ahhoz, hogy megtekinthesd a csoport privát beszélgetéseit.
     discussion_templates: Beszélgetési sablonok
+    show_locked: "%{count} Zárolva"
+    view_locked_discussions: Zárolt beszélgetések megtekintése
+    locked_discussions: Zárolt beszélgetések
   export_data_modal:
     title: Hogyan szeretné használni az adatait?
     as_csv: Nyissa meg egy táblázatban
@@ -1675,6 +1683,9 @@ hu:
       mute_message: Beszélgetés némítva
       unmute_message: Beszélgetés némítása feloldva
     direct: Közvetlen
+    locked:
+      unlocked: Téma feloldva
+      locked: Zárolt téma
   discussion_last_seen_by:
     title: Látta
     no_one: Még senki sem látta
@@ -1975,6 +1986,8 @@ hu:
     lets_start_a_thread: Kezdjünk egy szálat. A folytatáshoz kattintson az "Új szál" gombra.
     lets_start_a_discussion: Kezdjünk egy beszélgetést! A folytatáshoz kattints az „Új beszélgetés” gombra.
     new_discussion: Új beszélgetés
+    locked: Zárolva
+    unlocked: Feloldva
   members_panel:
     bot: Bot
     no_results: Nem találhatók tagok
@@ -2306,6 +2319,8 @@ hu:
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> frissítette szavazatát erre: <strong>%{title}</strong>"
     event_removed: Eltávolítva a témából
     new: új
+    thread_locked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> zárolta a témát"
+    thread_unlocked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> feloldotta a szál zárolását"
   add_poll_to_thread_modal:
     success: Sikeres, %{pollType} hozzáadva a szálhoz!
   auth_form:
@@ -2763,6 +2778,7 @@ hu:
   context_panel:
     thread_status:
       pinned: Ez a beszélgetés rögzítésre került. A csoport beszélgetési listájának tetején marad minden felhasználó számára.
+      locked: Ez a beszélgetés zárolva van. Többé nem jelenik meg az irányítópulton, hanem a csoport oldalán a „zárolva” alatt lesz feltüntetve.
   thread_group:
     aria_label: Csoport neve
   discussion_context:
@@ -2825,15 +2841,15 @@ hu:
     not_elected: Nem választották meg
     tied: Tie
     no_candidates_elected: Nincsenek megválasztott jelöltek
-    round: "Round %{number}"
+    round: Round %{number}
     quota_info: "%{method}, %{quota_type} quota (%{quota} votes needed)"
     method_scottish: Scottish STV
     method_meek: Meek STV
     quota_droop: Droop
     quota_hare: Hare
-    elected_in_round: "Elected in round %{round}"
-    eliminated_in_round: "Eliminated in round %{round}"
-    tied_in_round: "Tied in round %{round}"
+    elected_in_round: Elected in round %{round}
+    eliminated_in_round: Eliminated in round %{round}
+    tied_in_round: Tied in round %{round}
     votes: szavazatok
     candidate: Jelölt
     round_elected: Megválasztott forduló
@@ -2843,3 +2859,6 @@ hu:
     round_details: Körről körre részletek
     view_full_results: Teljes eredmények megtekintése
     results_available_when_closed: Az eredmények a szavazás lezárultával lesznek elérhetők
+  lock_thread_modal:
+    body: Zárold a témákat, hogy eltávolítsd őket a megnyitott témák listájából, és megakadályozd, hogy mások hozzászóljanak.
+    explanation: Zárold a témákat, hogy megakadályozd a felhasználók hozzászólását vagy további módosításokat

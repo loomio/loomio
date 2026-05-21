@@ -734,6 +734,7 @@ it:
       discussion_closed: "%{actor} ha chiuso la discussione: %{title}"
       new_discussion: "%{actor} ha avviato una discussione: %{title}"
       user_reminded: "%{actor} ti ricorda di votare su: %{title}"
+      thread_locked: "%{actor} ha bloccato la discussione: %{title}"
     without_title:
       unknown_sender: Controlla l'e-mail proveniente da un mittente non riconosciuto
       group_announced: "%{actor} ti ha invitato a un gruppo"
@@ -771,6 +772,7 @@ it:
       new_discussion: "%{actor} ha avviato una discussione"
       new_comment: "%{actor} ha commentato in una discussione"
       outcome_updated: "%{actor} ha aggiornato il risultato"
+      thread_locked: "%{actor} ha bloccato il thread"
     hints:
       poll_closing_soon: Ora è un buon momento per votare, cambiare idea o incoraggiare altri a partecipare.
       poll_closing_soon_author: Potresti voler ricordare alle persone di votare o prorogare la scadenza.
@@ -814,6 +816,7 @@ it:
       discussion_edited: "%{actor} ha modificato il contesto della discussione: %{title}"
       discussion_closed: "%{actor} ha chiuso la discussione: %{title}"
       user_reminded: "%{actor} ti ricorda di votare su: %{title}"
+      thread_locked: "%{actor} ha bloccato la discussione: %{title}"
   discussion_fork_actions:
     move: Sposta
     moved: Commenti in movimento, questo potrebbe richiedere un momento
@@ -1054,6 +1057,8 @@ it:
     pin_discussion: Aggiungi discussione ai preferiti
     unpin_discussion: Sblocca discussione
     delete_discussion: Elimina discussione
+    lock_thread: Blocca discussione
+    unlock_thread: Sblocca la discussione
   formatting:
     formatting_tools: Strumenti di formattazione del testo
     colors: Colori
@@ -1252,6 +1257,9 @@ it:
     no_discussions_here: Nessuna discussione da vedere qui!
     private_discussions: Devi essere un membro per visualizzare le discussioni private in questo gruppo
     discussion_templates: Modelli di discussione
+    show_locked: "%{count} Bloccati"
+    view_locked_discussions: Visualizza le discussioni bloccate
+    locked_discussions: Discussioni bloccate
   export_data_modal:
     title: Come vuoi usare i tuoi dati?
     as_csv: Aprirlo in un foglio di calcolo
@@ -1699,6 +1707,9 @@ it:
       mute_message: Discussione disattivata
       unmute_message: Discussione riattivata
     direct: Diretto
+    locked:
+      unlocked: Discussione sbloccata
+      locked: Discussione bloccata
   discussion_last_seen_by:
     title: Visto da
     no_one: Nessuno l'ha ancora visto
@@ -1996,6 +2007,8 @@ it:
     lets_start_a_thread: Iniziamo un thread. Fare clic su "Nuova discussione" per continuare.
     lets_start_a_discussion: Iniziamo una discussione. Clicca su "Nuova discussione" per continuare.
     new_discussion: Nuova discussione
+    locked: Bloccate
+    unlocked: Sbloccato
   members_panel:
     bot: Bot
     no_results: Nessun membri trovato
@@ -2327,6 +2340,8 @@ it:
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> hanno aggiornato il loro voto su: <strong>%{title}</strong>"
     event_removed: Rimosso dalla discussione
     new: nuovo
+    thread_locked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha bloccato la discussione"
+    thread_unlocked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha sbloccato la discussione"
   add_poll_to_thread_modal:
     success: Successo, %{pollType} aggiunto alla discussione!
   auth_form:
@@ -2784,6 +2799,7 @@ it:
   context_panel:
     thread_status:
       pinned: Questa discussione è stata bloccata. Rimarrà in cima all'elenco delle discussioni del gruppo per tutti gli utenti.
+      locked: Questa discussione è stata bloccata. Non apparirà più nella dashboard e verrà visualizzata come "bloccata" nella pagina del gruppo.
   thread_group:
     aria_label: Nome del gruppo
   discussion_context:
@@ -2846,15 +2862,15 @@ it:
     not_elected: Non eletto
     tied: Parità
     no_candidates_elected: Nessun candidato eletto
-    round: "Turno %{number}"
+    round: Turno %{number}
     quota_info: "%{method}, %{quota_type} quota (%{quota} votes needed)"
     method_scottish: Scottish STV
     method_meek: Meek STV
     quota_droop: Droop
     quota_hare: Hare
-    elected_in_round: "Elected in round %{round}"
-    eliminated_in_round: "Eliminated in round %{round}"
-    tied_in_round: "Tied in round %{round}"
+    elected_in_round: Elected in round %{round}
+    eliminated_in_round: Eliminated in round %{round}
+    tied_in_round: Tied in round %{round}
     votes: voti
     candidate: Candidato
     round_elected: Round eletto
@@ -2864,3 +2880,6 @@ it:
     round_details: Dettagli round per round
     view_full_results: Visualizza i risultati completi
     results_available_when_closed: I risultati saranno disponibili al termine delle votazioni.
+  lock_thread_modal:
+    body: Blocca le discussioni per rimuoverle dall'elenco delle discussioni aperte e impedire agli utenti di commentare.
+    explanation: Blocca le discussioni per impedire agli utenti di commentare o apportare ulteriori modifiche.

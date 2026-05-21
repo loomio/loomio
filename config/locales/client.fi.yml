@@ -724,6 +724,7 @@ fi:
       discussion_closed: "%{actor} sulki keskustelun: %{title}"
       new_discussion: "%{actor} aloitti keskustelun: %{title}"
       user_reminded: "%{actor} muistuttaa sinua äänestämään aiheesta: %{title}"
+      thread_locked: "%{actor} lukitsi ketjun: %{title}"
     without_title:
       unknown_sender: Tarkista tuntemattoman lähettäjän sähköposti
       group_announced: "%{actor} kutsui sinut ryhmään"
@@ -761,6 +762,7 @@ fi:
       new_discussion: "%{actor} aloitti keskustelun"
       new_comment: "%{actor} kommentoi keskustelussa"
       outcome_updated: "%{actor} päivitti lopputuloksen"
+      thread_locked: "%{actor} lukitsi ketjun"
     hints:
       poll_closing_soon: Nyt on hyvä aika äänestää, muuttaa mieltäsi tai kannustaa muita osallistumaan.
       poll_closing_soon_author: Haluat ehkä muistuttaa ihmisiä äänestämään tai pidentää määräaikaa.
@@ -804,6 +806,7 @@ fi:
       discussion_edited: "%{actor} muokkasi keskustelun kontekstia: %{title}"
       discussion_closed: "%{actor} sulki keskustelun: %{title}"
       user_reminded: "%{actor} muistuttaa sinua äänestämään aiheesta: %{title}"
+      thread_locked: "%{actor} lukitsi ketjun: %{title}"
   discussion_fork_actions:
     move: Liikkua
     moved: Siirretään kommentteja, tämä voi kestää hetken
@@ -1040,6 +1043,8 @@ fi:
     pin_discussion: Kiinnitä keskustelu
     unpin_discussion: Poista keskustelun kiinnitys
     delete_discussion: Poista keskustelu
+    lock_thread: Lukitse ketju
+    unlock_thread: Avaa ketju
   formatting:
     formatting_tools: Tekstin muotoilutyökalut
     colors: värit
@@ -1228,6 +1233,9 @@ fi:
     no_discussions_here: Ei keskusteluja nähtävänä täällä!
     private_discussions: Sinun on oltava jäsen nähdäksesi tämän ryhmän yksityiset keskustelut.
     discussion_templates: Keskustelupohjat
+    show_locked: "%{count} Lukittu"
+    view_locked_discussions: Näytä lukitut keskustelut
+    locked_discussions: Lukitut keskustelut
   export_data_modal:
     title: Miten haluat käyttää tietojasi?
     as_csv: Avaa se laskentataulukossa
@@ -1671,6 +1679,9 @@ fi:
       mute_message: Keskustelu mykistetty
       unmute_message: Keskustelun mykistys poistettu
     direct: Suoraan
+    locked:
+      unlocked: Ketjun lukitus poistettu
+      locked: Ketju lukittu
   discussion_last_seen_by:
     title: Nähnyt
     no_one: Kukaan ei ole vielä nähnyt tätä
@@ -1968,6 +1979,8 @@ fi:
     lets_start_a_thread: Aloitetaan lanka. Napsauta "Uusi säiettä" jatkaaksesi.
     lets_start_a_discussion: Aloitetaan keskustelu. Jatka napsauttamalla "Uusi keskustelu".
     new_discussion: Uusi keskustelu
+    locked: Lukittu
+    unlocked: Lukitsematon
   members_panel:
     bot: Bot
     no_results: Jäseniä ei löytynyt
@@ -2299,6 +2312,8 @@ fi:
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> päivitti äänensä aiheesta: <strong>%{title}</strong>"
     event_removed: Poistettu langasta
     new: uusi
+    thread_locked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> lukitsi ketjun"
+    thread_unlocked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> avasi ketjun lukituksen"
   add_poll_to_thread_modal:
     success: Onnistui, %{pollType} lisättiin viestiketjuun!
   auth_form:
@@ -2756,6 +2771,7 @@ fi:
   context_panel:
     thread_status:
       pinned: Tämä keskustelu on kiinnitetty. Se pysyy ryhmän keskusteluluettelon yläosassa kaikille käyttäjille.
+      locked: Tämä keskustelu on lukittu. Se ei enää näy hallintapaneelissa, ja se näkyy ryhmän sivulla kohdassa 'lukittu'.
   thread_group:
     aria_label: Ryhmän nimi
   discussion_context:
@@ -2818,15 +2834,15 @@ fi:
     not_elected: Ei valittu
     tied: Tie
     no_candidates_elected: Yhtään ehdokasta ei valittu
-    round: "Round %{number}"
+    round: Round %{number}
     quota_info: "%{method}, %{quota_type} quota (%{quota} votes needed)"
     method_scottish: Scottish STV
     method_meek: Meek STV
     quota_droop: Droop
     quota_hare: Hare
-    elected_in_round: "Elected in round %{round}"
-    eliminated_in_round: "Eliminated in round %{round}"
-    tied_in_round: "Tied in round %{round}"
+    elected_in_round: Elected in round %{round}
+    eliminated_in_round: Eliminated in round %{round}
+    tied_in_round: Tied in round %{round}
     votes: äänet
     candidate: Ehdokas
     round_elected: Kierros valittu
@@ -2836,3 +2852,6 @@ fi:
     round_details: Kierros kierrokselta yksityiskohdat
     view_full_results: Näytä kaikki tulokset
     results_available_when_closed: Tulokset ovat saatavilla äänestyksen päätyttyä
+  lock_thread_modal:
+    body: Lukitse ketjut poistaaksesi ne avointen ketjujen luettelosta ja estääksesi ihmisiä kommentoimasta.
+    explanation: Lukitse ketjut estääksesi muita kommentoimasta tai tekemästä lisämuutoksia
