@@ -111,7 +111,7 @@ export default
 
 <template lang="pug">
 .poll-common-action-panel(style="position: relative")
-  v-alert.my-4(
+  v-alert.poll-common-action-panel__scheduled.my-4(
     v-if="isScheduled"
     density="compact"
     variant="tonal"

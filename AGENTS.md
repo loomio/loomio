@@ -17,9 +17,7 @@
 E2E tests use Nightwatch + headless Chrome against a local Rails server.
 
 ### Prerequisites
-- Vue assets must be built: `cd vue && npm run build` (outputs to `public/client3/`)
-- Test database must exist: `RAILS_ENV=test bundle exec rails db:prepare`
-- No other process on port 3000
+- If you get schema related errors it might help to run `dropdb loomio_test; RAILS_ENV=test rake db:setup`
 
 ### Using `bin/e2e`
 

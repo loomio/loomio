@@ -1,6 +1,12 @@
 module Dev::ScenariosHelper
   include Dev::FakeDataHelper
 
+  def saved_discussion_with_created_event(group:)
+    saved(fake_discussion(group: group)).tap do |discussion|
+      discussion.create_missing_created_event! unless discussion.created_event
+    end
+  end
+
   def poll_created_scenario(params)
     group = create_group_with_members
 
@@ -189,7 +195,7 @@ module Dev::ScenariosHelper
   end
 
   def poll_closing_soon_with_vote_scenario(params)
-    discussion = saved(fake_discussion(group: create_group_with_members))
+    discussion = saved_discussion_with_created_event(group: create_group_with_members)
     actor      = discussion.group.admins.first
     poll = PollService.create(
       params: fake_poll_params(
@@ -224,7 +230,7 @@ module Dev::ScenariosHelper
   end
 
   def poll_expired_author_scenario(params)
-    discussion = saved(fake_discussion(group: create_group_with_members))
+    discussion = saved_discussion_with_created_event(group: create_group_with_members)
     actor      = discussion.group.admins.first
     params[:discussion] = discussion
     poll = PollService.create(
@@ -249,7 +255,7 @@ module Dev::ScenariosHelper
   end
 
   def poll_outcome_created_scenario(params)
-    discussion = saved(fake_discussion(group: create_group_with_members))
+    discussion = saved_discussion_with_created_event(group: create_group_with_members)
     actor      = discussion.group.admins.first
     observer   = fake_user
     discussion.group.add_member! observer
@@ -284,7 +290,7 @@ module Dev::ScenariosHelper
   end
 
   def poll_outcome_review_due_scenario(params)
-    discussion = saved(fake_discussion(group: create_group_with_members))
+    discussion = saved_discussion_with_created_event(group: create_group_with_members)
     actor      = discussion.group.admins.first
     observer   = fake_user
     discussion.group.add_member! observer
@@ -320,7 +326,7 @@ module Dev::ScenariosHelper
   end
 
   def poll_catch_up_scenario(params)
-    discussion = saved(fake_discussion(group: create_group_with_members))
+    discussion = saved_discussion_with_created_event(group: create_group_with_members)
     scenario  = poll_expired_scenario(params)
     observer = fake_user.tap(&:save!)
     observer.email_catch_up_day = 7
@@ -384,7 +390,7 @@ module Dev::ScenariosHelper
     poll_option_ids.each_with_index.map {|id, j| {poll_option_id: id, score: (i+j)%3}}
   end
 
-    def saved(obj)
+  def saved(obj)
     obj.tap(&:save!)
   end
 

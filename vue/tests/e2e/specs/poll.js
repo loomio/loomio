@@ -429,8 +429,8 @@ module.exports = {
     page.click('.poll-common-form__submit')
     page.pause(1000)
 
-    // Poll should show "Opening in..." (not "Closing in...")
-    page.expectText('.closing-in', 'Opening')
+    // Poll should show scheduled voting info (not "Closing in...")
+    page.expectText('.poll-common-action-panel__scheduled', 'opens for voting')
 
     // Vote form should show as a non-interactive preview
     page.expectElement('.poll-common-vote-form--preview')
@@ -444,8 +444,8 @@ module.exports = {
     page.loadPath('polls/test_scheduled_poll')
     page.pause(500)
 
-    // Verify the poll shows "Opening in..." text
-    page.expectText('.closing-in', 'Opening')
+    // Verify the poll shows scheduled voting info
+    page.expectText('.poll-common-action-panel__scheduled', 'opens for voting')
 
     // Vote form should show as a non-interactive preview with options visible
     page.expectElement('.poll-common-vote-form--preview')
