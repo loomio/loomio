@@ -1,5 +1,9 @@
 # Agent Instructions
 
+## Git commits
+
+- Do not run `git commit` unless the user explicitly asks for a specific commit.
+
 ## i18n / Localization
 
 - **Never change the value of an existing i18n key.** Existing keys may be translated into other languages; changing the English value breaks those translations.
