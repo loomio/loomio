@@ -109,7 +109,7 @@ ro:
     manage:
       all: Neautorizat pentru %{action} %{subject}.
     add_guests:
-      all: Trebuie să vă actualizați abonamentul Loomio pentru a adăuga invitați la %{subject}. Alternativ, îi puteți invita să fie membri ai grupului dvs.
+      all: Trebuie să vă actualizați abonamentul Loomio pentru a adăuga invitați. Alternativ, îi puteți invita să fie membri ai grupului dvs.
   errors:
     clear_cache: Problemă la încărcare detectată. Țineți apăsat Shift și apăsați pe Reîncărcare sau ștergeți memoria cache a browserului.
     404:
@@ -148,6 +148,7 @@ ro:
       body: Ne pare rău, dar ceva nu a mers bine. Am fost notificați despre această problemă și o vom analiza în curând.
     '404':
       body: Elementul solicitat nu a fost găsit. Acest lucru se poate întâmpla dacă o discuție sau un sondaj a fost șters.
+    new_account_trial_group_limit: Conturile noi sunt limitate la un singur grup. Vă rugăm să contactați serviciul de asistență dacă aveți nevoie de mai multe.
   group:
     error:
       handle_must_begin_with_parent_handle: Trebuie să înceapă cu %{parent_handle}-
@@ -234,6 +235,7 @@ ro:
       notified: Ați primit acest lucru deoarece autorul v-a notificat.
       poll_subscribed: Ai primit acest mesaj deoarece ești abonat la sondaj.
       discussion_subscribed: Ai primit acest mesaj deoarece ești abonat la discuție.
+      thread_subscribed: Ai primit asta pentru că ești abonat la acest subiect.
   user_mailer:
     group_export_ready:
       subject: Export de date de grup pentru %{group_name}
@@ -366,6 +368,9 @@ ro:
     destroy_warning:
       subject: Grupul dvs. Loomio este programat pentru ștergere.
       body: 'Grupul dvs. Loomio: „%{group}” a fost programat pentru ștergere de către %{deletor}. Dacă nu doriți ca grupul dvs. să fie șters, vă rugăm să răspundeți la acest e-mail. Dacă sunteți sigur că doriți să ștergeți grupul, nu trebuie să faceți nimic. Mulțumesc.'
+    trial_expired:
+      subject: Grupul tău Loomio va fi șters din cauza inactivității.
+      body: Grupul dumneavoastră Loomio „%{group}” a fost inactiv și va fi șters în 2 săptămâni. Dacă nu doriți ca grupul dumneavoastră să fie șters, vă rugăm să răspundeți la acest e-mail.
   poll_mailer:
     common:
       why_send_this: Primiți acest e-mail deoarece %{reason}
@@ -416,6 +421,8 @@ ro:
       disagree: Nu sunt de acord
       disagree_meaning: Ceva din această propunere trebuie schimbat înainte să o pot susține.
       disagree_prompt: Cum ar putea fi îmbunătățită această propunere astfel încât să o puteți susține?
+      abstain_meaning: Alegând să nu votez sau incapacitatea de a vota asupra acestei decizii.
+      abstain_prompt: De ce vă abțineți sau nu vă simțiți în măsură să votați asupra acestei decizii?
     advice:
       process_subtitle: Cereți sfaturi cu privire la o decizie pe care trebuie să o luați
       process_introduction: <p>Cereți sfaturi cu privire la o decizie pe care trebuie să o luați, cu sfatul persoanelor afectate sau care au expertiză, astfel încât să puteți lua o decizie mai bună pentru organizația dumneavoastră.</p><ul><li><p> Sfaturile te ajută să iei o decizie mai bună pentru organizația ta.</p></li><li><p> Să cultivăm relații, oportunități de învățare și contribuții diverse.</p></li><li><p> Stimulează inițiativa și creativitatea și oferă o muncă mai plăcută.</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>Citiți mai multe despre procesul de consiliere</u></a> .</p>
@@ -462,6 +469,7 @@ ro:
       block_prompt: Explicați obiecția dumneavoastră față de această propunere și de ce nu ar trebui să fie adoptată.
       details_v2: "<h3><strong>Care este decizia pe care trebuie să o iei?</strong></h3><p></p><h3> <strong>De ce este important acest lucru?</strong></h3><p></p><h3> <strong>Ce le ceri oamenilor să facă?</strong></h3><p></p><p> Împărtășește-ți poziția și de ce. Dacă nu ești de acord, explică ce ar trebui schimbat pentru a susține acest lucru.</p>"
       process_introduction_v2: "<p><strong>Consensul</strong> este valabil pentru deciziile în care contează ca toată lumea să fie de acord în mod activ. Participanții lucrează împreună pentru a înțelege nevoile celuilalt și pentru a modela propunerea până când întregul grup o poate susține. Deoarece oamenii își pot schimba votul pe măsură ce conversația evoluează, procesul încurajează un dialog autentic, mai degrabă decât o decizie luată într-o singură încercare. Necesită mai multă răbdare decât alte metode, dar construiește cel mai puternic angajament.</p><p> Acest șablon include în mod implicit o opțiune <strong>de blocare</strong> . Opțiunea „Blocare” nu este potrivită pentru orice grup — poate fi controversată sau utilizată greșit. Dacă nu utilizați opțiunea „Blocare” în procesul decizional, vă recomandăm să editați șablonul pentru a o elimina.</p>"
+      abstain_prompt: De ce vă abțineți sau nu vă simțiți în măsură să votați asupra acestei decizii?
     question_round:
       process_subtitle: Invitați la adresarea de întrebări clarificatoare pentru a ajuta oamenii să înțeleagă o propunere
       process_introduction: <p>O rundă de întrebări este o oportunitate pentru participanți de a pune întrebări clarificatoare despre propunere, astfel încât toată lumea să înțeleagă propunerea înainte de a-și exprima părerea despre ea.</p><p> Runda de întrebări Loomio este o propunere specială fără opțiuni de vot. Aceasta permite participanților să pună întrebări într-o durată stabilită de dumneavoastră pentru rundă.</p><p> O rundă de întrebări este utilizată în mod obișnuit ca o etapă în procesul de consimțământ.</p><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Citiți mai multe despre procesul de consimțământ</a> .</p>
@@ -497,6 +505,7 @@ ro:
       could_be_better_prompt: Ce ai schimba?
       needs_a_rethink: Necesită o regândire
       needs_a_rethink_prompt: Care este îngrijorarea ta?
+      needs_a_rethink_meaning: Cred că aceasta este abordarea greșită
     gradients_of_agreement:
       process_subtitle: Exprimați sprijinul pentru o propunere pe o scară de 8 puncte
       process_introduction: "<p>Gradienții de acord privind propunerea permit membrilor unui grup să își exprime sprijinul pentru o propunere în grade pe o scală, oferind mai multe modalități de exprimare a sprijinului decât în termeni de „acord” și „dezacord”.</p><p> Folosește Gradienții de acord ca o rundă preliminară, pentru a testa susținerea unei propuneri înainte de a trece la un acord formal.</p><p> Gradiile de acord le permit oamenilor să știe că se formează o propunere și îi încurajează să se implice. Este o oportunitate de a asculta oamenii, de a simți cum se simt și de a răspunde în mod corespunzător - deschizând potențialul de a le încorpora contribuțiile pentru a lua o decizie mai bună.</p>"
@@ -590,6 +599,11 @@ ro:
       no_meaning: Nu susțin această propunere
       no_prompt: De ce nu susțineți această propunere?
       outcome_statement: "<p>Mulțumesc pentru participarea la acest vot majoritar.</p>"
+    stv:
+      process_subtitle: Alegeți mai mulți câștigători proporțional
+      process_introduction: <p>STV (Votul Unic Transferabil) este o metodă de reprezentare proporțională pentru alegerile cu mai mulți câștigători. Alegătorii clasifică candidații în ordinea preferințelor. Candidații care ating o cotă de voturi sunt aleși, iar voturile excedentare sau eliminate se transferă la următoarele preferințe.</p><p> Configurați numărul de locuri, metoda de numărare (Scoțiană sau Meek) și tipul de cotă (Droop sau Hare). Rezultatele arată o defalcare rundă cu rundă a modului în care au fost transferate voturile.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/stv/index.html">Citește mai multe despre alegerile STV</a> .</p>
+      title: Alegeți membrii comitetului
+      details: <h3 id="what-is-this-election-about"><strong>Despre ce este vorba în aceste alegeri?</strong></h3><p></p><h3 id="how-many-seats"> <strong>Câte locuri se ocupă?</strong></h3><p></p><h3 id="who-are-the-candidates"> <strong>Cine sunt candidații?</strong></h3><p></p><p> Votați trăgând candidații în ordinea preferată. Locul 1 este candidatul preferat. Puteți clasa oricât de mulți sau de puțini candidați doriți.</p>
   forward_mailer:
     bounce:
       subject: Mesajul tău către Loomio nu a fost livrat.
@@ -650,3 +664,5 @@ ro:
     pt: Portugheză
     zh: Chineză (tradițională, taiwaneză)
     zh-HK: Chineză (tradițională, taiwaneză)
+  upload:
+    file_too_large: Fișierul este prea mare. Dimensiunea maximă de încărcare este %{limit}.

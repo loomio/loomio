@@ -188,10 +188,11 @@ zh_CN:
     ranked_choice: 排序选择
     score: 投票得分
     question: 问答环节
+    stv: 单记可转移投票制选举
   timezones:
     local: 本地时间（%{value}）
   common:
-    value: "％{价值}"
+    value: "%{value}"
     admin_menu: 管理员菜单
     api_docs: API文档
     prefix_eg: 例如 %{val}
@@ -337,6 +338,7 @@ zh_CN:
       rearrange: 重新排列
       save_template: 保存模板
       fork_template: 分支模板
+      customize: 定制
     formatting_help:
       label: 格式化
       title: 学习如何使用 Markdown 格式化文本
@@ -345,6 +347,8 @@ zh_CN:
     opening_in: 打开 %{time}
     read_more: 阅读更多
     templates_admin_hint: 因为您是群组管理员，您可以隐藏或删除任何您不需要的模板，并编辑剩余的模板以满足您的需求。
+    read: 读
+    unread: 未读
   merge_accounts:
     modal:
       title: 合并账户
@@ -500,6 +504,11 @@ zh_CN:
         loud: 您将通过电子邮件收到所有新群组的活动通知。
         normal: 您将收到有关新群组公告的电子邮件。
         quiet: 您不会收到关于新群组的电子邮件。
+    when_do_you_want_to_be_emailed_thread: 您希望何时收到关于此主题的邮件？
+    loud_option: 任何人参与的任何活动（所有活动）
+    normal_option: 当有人想引起我的注意时（收到通知时）
+    quiet_option: 关于此主题的邮件已关闭
+    quiet_explained: 即使有人试图通知您，您也不会收到电子邮件。
   close_discussion_modal:
     body: 关闭讨论，将其从开放讨论列表中移除，并阻止人们发表评论。
   inbox:
@@ -586,6 +595,12 @@ zh_CN:
     showing_unread: 显示未读
     add_comment: 添加评论
     start_decision: 开始做决定
+    return: 返回
+    end: 结束
+    notifications: 通知
+    email_all_activity: 通过电子邮件发送所有动态
+    email_notifications: 收到通知时发送电子邮件
+    email_none: 不发送电子邮件
   search_modal:
     all_content: 所有内容
     best_match: 最佳匹配
@@ -644,6 +659,7 @@ zh_CN:
     invite_to_poll: 邀请投票
     invite_to_wip_poll: 邀请您提供反馈
     invitations: 邀请函
+    thread_members: 主题成员
   membership_dropdown:
     view_profile: 查看个人资料
     set_name_and_username: 设置真实姓名和用户名
@@ -672,7 +688,7 @@ zh_CN:
     email_subject:
       unknown_sender: 请查看来自未知发件人的电子邮件
       comment_replied_to: "%{actor} 在 %{title} 中回复了您。"
-      discussion_announced: "％{标题}"
+      discussion_announced: "%{title}"
       discussion_edited: "%{actor} 编辑了讨论内容：%{title}"
       discussion_closed: "%{actor} 关闭了讨论：%{title}"
       invitation_accepted: "%{actor} 接受了您的邀请，加入了 %{title}"
@@ -683,7 +699,7 @@ zh_CN:
       new_comment: "%{actor} 评论于：%{title}"
       new_coordinator: "%{actor} 将您设为 %{title} 的管理员"
       new_delegate: "%{actor} 已将您指定为 %{title} 的代表，并赋予您投票权。"
-      new_discussion: "％{标题}"
+      new_discussion: "%{title}"
       outcome_announced: "%{poll_type} 总结：%{title}"
       outcome_created: "%{poll_type} 总结：%{title}"
       outcome_updated: "%{poll_type} 总结已更新：%{title}"
@@ -692,7 +708,7 @@ zh_CN:
       poll_closed_by_user: "%{actor} 关闭了 %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} 将于 24 小时后结束：%{title}"
       poll_closing_soon_author: 您的 %{poll_type} 投票将于 24 小时后结束：%{title}
-      poll_created: 投票：%{title}
+      poll_created: "%{poll_type}: %{title}"
       poll_edited: "%{actor} 更新了 %{poll_type}: %{title}"
       poll_expired: "%{poll_type} 已结束：%{title}"
       poll_expired_author: 发布结果：%{title}
@@ -707,6 +723,7 @@ zh_CN:
       user_added_to_group: "%{actor} 将您添加到了群组：%{title}"
       user_mentioned: "%{actor} 在 %{title} 中提到了您"
       group_mentioned: "%{actor} 在以下文章中提到了该群：%{title}"
+      user_reminded: 演员 %{actor} 提醒您投票：%{title}
     with_title:
       unknown_sender: 请查收来自未知发件人的电子邮件
       comment_replied_to: "%{actor} 在 %{title} 中回复了您。"
@@ -745,6 +762,7 @@ zh_CN:
       user_added_to_group: "%{actor} 将您添加到了群组：%{title}"
       user_mentioned: "%{actor} 在 %{title} 中提到了您"
       group_mentioned: "%{actor} 在以下文章中提到了该群：%{title}"
+      user_reminded: 演员 %{actor} 提醒您投票：%{title}
     without_title:
       unknown_sender: 请查收来自未知发件人的电子邮件
       discussion_announced: "%{actor} 邀请您加入讨论"
@@ -841,6 +859,7 @@ zh_CN:
     start_discussion: 发起讨论
     start_a_direct_discussion: 发起直接讨论
     these_are_templates: 这些是你们小组的讨论模板。
+    start_a_new_discussion: 发起新的讨论
   discussion_form:
     none_invite_only_discussion: 无（仅限受邀者参与讨论）
     new_discussion_template: 新讨论模板
@@ -923,7 +942,7 @@ zh_CN:
     poll_closing_soon: "%{name} 的投票结束提醒已通知 %{length} 人："
     poll_reminder: "%{name} 提醒了 %{length} 人去投票："
     audiences:
-      group: "％{name}"
+      group: "%{name}"
       delegates_of_group: "%{name} 的代表"
       everyone_in_the_group: 子群组中的每个人
       discussion_group: 帖子里的所有人
@@ -998,11 +1017,14 @@ zh_CN:
       has_not_read_discussion: 未查看讨论
       has_not_joined_yet: 尚未加入
       has_not_joined_yet_hint: 该用户尚未接受加入 Loomio 的邀请，因此在接受邀请之前不会收到任何后续通知。
+      thread_admin: 主题管理员
     group_form:
       search_placeholder: 寻找人员……
       modal_title: 选择组成员
     flash:
       success: 已发送 %{count} 条通知
+    topic_notification_history: 线程通知历史记录
+    notification_history: 通知历史记录
   action_dock:
     actions_menu: 操作菜单
     more_actions: 更多操作
@@ -1197,6 +1219,9 @@ zh_CN:
     month: 月
     year: 年
     country_disclaimer: 国家/地区信息是根据用户的 IP 地址推断的，因此准确性不高。请仅将其作为大致参考。
+    total_threads: 总线程数
+    threads_with_polls: 带有投票的帖子
+    download_csv: 下载 CSV 文件
   group_page:
     stats: 子群组统计数据
     participation_report: 参与报告
@@ -1553,6 +1578,7 @@ zh_CN:
     deactivate_account_subtitle: 停止接收邮件并取消会员资格。保留您的个人资料，以免影响之前的讨论和决定。
     delete_account_subtitle: 彻底删除您的账户，并将您的名字从过去的讨论和决定中删除。
     updated_on_sign_in: 由您的浏览器提供，并在您登录时更新。
+    bot_account_warning: 机器人账号将不会被邀请参与投票或讨论。
   text_editor:
     x_of_y_characters: "%{x} / %{y} 个字符"
     select_text_to_link: 选择要链接的文本，然后重试
@@ -1621,6 +1647,7 @@ zh_CN:
   thread_preview:
     replies_count: "%{count} 条回复"
     unread_count: "%{count} 未读"
+    items_count: "%{count} 个项目"
   dashboard_page:
     dashboard: 控制面板
     polls_to_vote_on: 待投票的民意调查
@@ -1672,6 +1699,7 @@ zh_CN:
       thismonth: 本月
       older: 超过一个月
     polls_to_vote_on_count: 待投票的民意调查 (%{count})
+    recent_threads: 最新帖子
   threads_page:
     no_direct_threads: 您没有直接帖子
     no_invite_only_threads: 您没有仅限受邀者参与的讨论串。
@@ -1709,6 +1737,7 @@ zh_CN:
     title: 被看到
     no_one: 目前还没有人看到这个。
     disabled_anonymous_polls: 由于该帖子包含匿名投票，因此查看历史记录已被禁用。
+    thread_engagement: Thread engagement
   activity_card:
     count_responses: "%{count} 个回复"
     event_pinned: 已添加到讨论时间线
@@ -1758,8 +1787,25 @@ zh_CN:
     nested_twice: 两层嵌套回复
     nested_twice_description: 回复最多缩进两次。
     changing_nesting_is_slow: 更改嵌套可能需要几分钟才能处理完毕。
+    layout: 布局
+    items: 如何显示项目
+    nested: 嵌套
+    timeline: 时间线
+    timeline_description: 物品按发布顺序排列
+    threaded: Threaded
+    threaded_description: 回复按其回应内容分组
+    allow_concurrent_polls: 允许同时进行轮询
+    allow_multiple_polls: 允许同时进行多个投票
+    allow_concurrent_polls_description: 允许同时开启多个投票
+    allow_comments: 允许评论
+    allow_comments_description: 允许参与者在此主题下发表评论
+    allow_reactions: 允许反应
+    allow_reactions_description: 允许参与者添加表情符号反应
+    topic_settings: 主题设置
+    thread_settings: 主题设置
   delete_discussion_form:
     discussion_deleted: 讨论已删除
+    body: 你确定要删除这个帖子吗？
   move_discussion_form:
     title: 将讨论转移到另一个群组
     body: 目的地组
@@ -1836,6 +1882,7 @@ zh_CN:
     ranked_choice_title: 排名选择
     gradients_of_agreement_title: 一致性梯度
     majority_title: 多数
+    stv_title: 单记可转移投票制选举
   poll_option_form:
     thumb_up: 点赞
     thumb_down: 差评
@@ -1973,6 +2020,8 @@ zh_CN:
     blank: 新的
     blank_subtitle: 为特定流程创建新的投票模板
     start_a_poll: 发起投票
+    export_blt: 出口选票（BLT）
+    status: 地位
   poll_common_attachment_form:
     label: 附件
   poll_common_add_option:
@@ -2018,7 +2067,7 @@ zh_CN:
     order_by_created_desc: 最新
     order_by_admin_desc: 管理员
     delegates: 代表们
-    loaded_of_total: 已加载 %{total} 共 %{total} 台
+    loaded_of_total: "已加载 %{loaded} / %{total}"
     view_requests: 查看请求
     header_name: 名字
     header_username: 用户名
@@ -2074,6 +2123,7 @@ zh_CN:
     for_this_proposal_to_pass: 该提案要想获得通过：
     for_this_poll_type_to_be_valid: 要使此 %{poll_type} 有效：
     voting_opens_at: 此 %{poll_type} 投票将于 %{time} 开放。
+    unable_to_vote: 您未被邀请参与此项 %{poll_type} 的投票。
   poll_common_collapsed:
     by_who: 由 %{name}
   poll_common_calendar_invite:
@@ -2129,6 +2179,7 @@ zh_CN:
     hide_results_until_closed:
       title: 关闭后才会显示结果
       helptext_on: 投票结束前不要公布投票结果。
+    selected_people_only: 仅限特定人员
   poll_common_close_form:
     title: 现在关闭 %{poll_type} 吗？
     helptext: 您确定要提前结束此次 %{poll_type} 投票并公布结果吗？
@@ -2171,6 +2222,8 @@ zh_CN:
     no_votes_yet: 目前还没有人投票。
     change_results_order: 更改结果顺序
     name_or_username: 真实姓名或用户名
+    cast: Cast
+    uncast: Uncast
   poll_common_undecided_panel:
     show_undecided: 显示 %{count} 个未决定
     show_invitations: 待处理的邀请
@@ -2182,7 +2235,7 @@ zh_CN:
     reminder_sent: 已发送提醒通知
   poll_common_set_outcome_panel:
     enter_an_outcome: 输入总结
-    poll_type: 本次投票已结束。请花些时间思考投票结果，然后分享总结，以便大家了解下一步的安排。
+    poll_type: "此 %{poll_type} 已结束。请花些时间考虑结果，然后分享总结，以便大家了解下一步安排。"
   poll_common_outcome_form:
     review_due_in_days: 多少天后重新审议该决定？
     review_due_in_days_hint: 复审决定前等待的天数（可选）。
@@ -2260,6 +2313,8 @@ zh_CN:
       time_poll_hint: 投票者需表明他们何时可以加入会议。
       rank: 秩
       time: 时间
+      stv: 单记可转移投票制选举
+      stv_hint: 使用单记可转移投票制按比例选出多名获胜者
     process: 过程
     process_name: 模板标题
     process_name_hint: 这个模板叫什么？例如：角色建议、温度检查、会议纪要审批
@@ -2315,6 +2370,7 @@ zh_CN:
     create_poll_type: 创建 %{poll_type}
     notify_voters_when_voting_opens: 投票开始时通知选民
     voters_notified_when_opens: 投票开始时，选民将会收到通知。
+    who_may_vote: 谁可以参与此次 %{poll_type} 投票？
   poll_proposal_form:
     start_header: 开始提案
     edit_header: 编辑提案
@@ -2461,19 +2517,19 @@ zh_CN:
     discussion_privacy_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a>更改了主题隐私设置"
     discussion_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a>编辑了主题上下文"
     discussion_moved: "<a class='actor-link' href='/u/%{username}'>%{author}</a>将主题从<strong>%{title}</strong>移动了。"
-    discussion_closed: "<a class='actor-link' href='/u/%{username}'>作者关闭了该主题。</a>"
+    discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> 关闭了该主题"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a>重新打开了该主题"
     discussion_forked: "<a class='actor-link' href='/u/%{username}'>作者 %{author}</a>创建了此主题的一个分支： <strong><a href='d/%{key}'>%{title}</a></strong>"
-    new_comment: "<a class='actor-link' href='/u/%{username}'>％{作者}</a>"
-    outcome_created: "<a class='actor-link' href='/u/%{username}'>作者</a>分享了一个总结"
-    poll_reopened: "<a class='actor-link' href='/u/%{username}'>作者</a>重新打开了投票类型。"
+    new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
+    outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> 分享了总结"
+    poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> 重新打开了 %{polltype}"
     poll_closed_by_user: "<a class='actor-link' href='/u/%{username}'>%{author}</a>关闭了 %{polltype}"
     poll_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a>发起了一项 %{polltype}"
     poll_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a>编辑了 %{polltype}"
     poll_option_added: "<a class='actor-link' href='/u/%{username}'>%{author}</a>为 %{polltype} 添加了选项"
     poll_expired: "%{polltype} 已关闭"
-    stance_created: "<a class='actor-link' href='/u/%{username}'>作者</a>对<strong>以下标题</strong>进行了投票："
-    stance_updated: "<a class='actor-link' href='/u/%{username}'>作者</a>更新了对以下内容的投票：<strong>标题</strong>"
+    stance_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> 对以下内容投票：<strong>%{title}</strong>"
+    stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> 更新了对以下内容的投票：<strong>%{title}</strong>"
     event_removed: 已从帖子中移除
   add_poll_to_thread_modal:
     success: 成功，%{pollType} 已添加到帖子！
@@ -2545,6 +2601,7 @@ zh_CN:
     email: 电子邮件
     password: 密码
     reactivate: 重新激活帐户
+    turnstile_required: 请先完成验证再继续。
   chatbot:
     configure_chatbot: 配置聊天机器人
     test_connection: 测试连接
@@ -2657,3 +2714,55 @@ zh_CN:
     opening_hour: 营业时间
     scheduled_hint: 投票将在开放时间前显示，但无法投票。
     draft_hint: 此投票将保存为草稿。准备好投票时，请设置开始日期或勾选“立即开始投票”。
+  strand_members_list:
+    notify_members_or_invite_guests_info: 可以通过群组成员姓名通知他们，或者通过电子邮件地址邀请非成员。受邀者可以参与此讨论串，但无法访问群组的其他讨论串。
+    notify_members_info: 输入群组成员姓名，即可通知他们此主题。
+    specified_voters_only_warning: 本帖中的投票仅限特定人员参与。在此处添加某人并不会增加其投票权限——请使用投票页面上的“添加投票者”功能。
+  poll_common_details_meta:
+    opened: 已打开
+    opens: 打开
+    closed: 关闭
+    closes: 关闭
+    opened_at: 已于
+    opening_at: 将于
+    closed_at: 已关闭
+    closing_at: 关闭于
+  poll_stv_vote_form:
+    helptext: 将候选人拖到线上方进行排名。线下方的候选人未排名。排名第一的候选人是您最喜欢的。
+    divider_text: 将候选人拖到这条线以上进行排名
+    stance_created: 投票记录
+    stance_updated: 投票结果已更新
+  poll_stv_form:
+    settings_title: 单记可转移投票制选举设置
+    settings_helptext: 配置本次选举的席位数量、计票方法和配额类型。
+    seats_label: 需要填满的座位数
+    method_label: 计数方法
+    method_scottish: Scottish STV (recommended)
+    method_meek: Meek STV
+    quota_label: 配额类型
+    quota_droop: Droop quota (recommended)
+    quota_hare: Hare quota
+  poll_stv_results:
+    title: 选举结果
+    elected: 当选
+    not_elected: 未当选
+    tied: Tie
+    no_candidates_elected: 没有候选人当选
+    round: "Round %{number}"
+    quota_info: "%{method}, %{quota_type} quota (%{quota} votes needed)"
+    method_scottish: Scottish STV
+    method_meek: Meek STV
+    quota_droop: Droop
+    quota_hare: Hare
+    elected_in_round: "Elected in round %{round}"
+    eliminated_in_round: "Eliminated in round %{round}"
+    tied_in_round: "Tied in round %{round}"
+    votes: 投票
+    candidate: 候选人
+    round_elected: 轮次选举
+    first_preferences: 第一偏好
+    final_tally: 最终统计
+    quota_surplus: 剩余
+    round_details: 逐轮详情
+    view_full_results: 查看完整结果
+    results_available_when_closed: 投票结束后将公布结果。

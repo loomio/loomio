@@ -140,37 +140,60 @@ namespace :loomio do
   end
 
   task translate_strings: :environment do
-    %w[server client].each do |source_name|
+    sources = %w[server client].to_h do |source_name|
       source = YAML.load_file("config/locales/#{source_name}.en.yml")['en']
-      source_paths = list_paths(source, [])
-      google = Google::Cloud::Translate.translation_v2_service
+      [source_name, { strings: source, paths: list_paths(source, []) }]
+    end
 
-      AppConfig.locales['supported'].each do |file_locale|
-        foreign = {}
-        foreign_paths = []
-        if File.exist?("config/locales/#{source_name}.#{file_locale}.yml")
-          foreign = YAML.load_file("config/locales/#{source_name}.#{file_locale}.yml")[file_locale]
-          foreign_paths = list_paths(foreign, [])
+    output_mutex = Mutex.new
+    errors = Queue.new
+
+    AppConfig.locales['supported'].map do |file_locale|
+      Thread.new do
+        google = Google::Cloud::Translate.translation_v2_service
+        google_locale = file_locale == 'nl_NL' ? 'nl' : file_locale
+
+        sources.each do |source_name, source_data|
+          source = source_data[:strings]
+          source_paths = source_data[:paths]
+          filename = "config/locales/#{source_name}.#{file_locale}.yml"
+
+          foreign = {}
+          foreign_paths = []
+          if File.exist?(filename)
+            foreign = YAML.load_file(filename)[file_locale]
+            foreign_paths = list_paths(foreign, [])
+          end
+
+          write_file = false
+          (source_paths - foreign_paths).each do |path|
+            source_string = (source.dig(*path.split('.')) || "").strip
+            next if source_string.blank?
+
+            output_mutex.synchronize do
+              puts "#{file_locale}: #{path}, #{source_string}"
+            end
+
+            write_file = true
+            translated_string = CGI.unescapeHTML(google.translate(source_string, to: google_locale))
+            foreign.bury(*path.split('.'), translated_string)
+          end
+
+          File.write(filename, {file_locale => foreign}.to_yaml(line_width: 2000)) if write_file
         end
-
-        write_file = false
-        (source_paths - foreign_paths).each do |path|
-          puts "#{file_locale}: #{path}, #{source.dig(*path.split('.'))}"
-          source_string = (source.dig(*path.split('.')) || "").strip
-          next if source_string.blank?
-          write_file = true
-
-          google_locale = file_locale
-          google_locale = 'nl' if file_locale == 'nl_NL'
-
-          translated_string = CGI.unescapeHTML(google.translate(source_string, to: google_locale))
-          foreign.bury(*path.split('.'), translated_string)
-        end
-
-        if write_file
-          File.write("config/locales/#{source_name}.#{file_locale}.yml", {file_locale => foreign}.to_yaml(line_width: 2000))
-        end
+      rescue => e
+        errors << [file_locale, e]
       end
+    end.each(&:join)
+
+    unless errors.empty?
+      messages = []
+      messages << "Translation failed for #{errors.length} locale(s):"
+      messages.concat(errors.size.times.map do
+        file_locale, error = errors.pop
+        "#{file_locale}: #{error.class}: #{error.message}"
+      end)
+      raise messages.join("\n")
     end
   end
 

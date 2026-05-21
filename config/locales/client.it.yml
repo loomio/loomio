@@ -173,6 +173,7 @@ it:
     ranked_choice: scelta di preferenze
     score: sondaggio valutazione
     question: giro di domande
+    stv: elezioni STV
   timezones:
     local: Ora locale (%{value})
   common:
@@ -322,6 +323,7 @@ it:
       rearrange: Riorganizzare
       save_template: Salva modello
       fork_template: Modello di forcella
+      customize: Personalizzare
     formatting_help:
       label: Formattazione
       title: Impara come usare il Markdown per formattare il tuo testo
@@ -331,6 +333,8 @@ it:
     opening_in: Apertura %{time}
     read_more: Per saperne di più
     templates_admin_hint: Poiché sei un amministratore del gruppo, puoi nascondere o eliminare i modelli che non desideri e modificare quelli rimanenti in base alle tue esigenze.
+    read: Leggere
+    unread: Non letto
   merge_accounts:
     modal:
       title: Unisci account
@@ -493,6 +497,11 @@ it:
     changes_all_discussions_and_polls_in_group: In questo modo vengono modificate le impostazioni per tutte le discussioni e i sondaggi nel gruppo.
     normal_explained: Quando qualcuno inserisce il tuo nome nel campo "Notifica" di una discussione o di un sondaggio, oppure {'@'}menziona il gruppo.
     aria_label: Modulo di modifica delle impostazioni e-mail
+    when_do_you_want_to_be_emailed_thread: Quando desideri ricevere una notifica via email in merito a questa discussione?
+    loud_option: Ogni volta che qualcuno partecipa (Tutte le attività)
+    normal_option: Quando qualcuno vuole la mia attenzione (quando viene avvisato)
+    quiet_option: Nessuna email relativa a questa discussione (Disattivata)
+    quiet_explained: Non riceverai alcuna email, nemmeno se qualcuno tenterà di avvisarti.
   close_explanation_modal:
     close_thread: Chiudi discussione
     body: |
@@ -593,6 +602,12 @@ it:
     showing_unread: Visualizzazione non letti
     add_comment: Aggiungi commento
     start_decision: Inizia la decisione
+    return: Indietro
+    end: Fine
+    notifications: Notifiche
+    email_all_activity: Invia tutte le attività via email
+    email_notifications: E-mail quando ricevi una notifica
+    email_none: Nessuna email
   search_modal:
     all_content: Tutti i contenuti
     best_match: Migliore abbinamento
@@ -660,6 +675,7 @@ it:
     invite_to_wip_poll: Invita a dare un commento
     invitations: Inviti
     discussion_members: Membri della discussione
+    thread_members: Membri della discussione
   membership_dropdown:
     set_name_and_username: Imposta nome e nome utente
     set_title: Imposta titolo
@@ -723,6 +739,7 @@ it:
       discussion_edited: "%{actor} ha modificato il contesto della discussione: %{title}"
       discussion_closed: "%{actor} ha chiuso la discussione: %{title}"
       new_discussion: "%{actor} ha avviato una discussione: %{title}"
+      user_reminded: "%{actor} ti ricorda di votare su: %{title}"
     without_title:
       unknown_sender: Controlla l'e-mail proveniente da un mittente non riconosciuto
       group_announced: "%{actor} ti ha invitato a un gruppo"
@@ -784,7 +801,7 @@ it:
       poll_closed_by_user: "%{actor} ha chiuso il %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} chiuderà tra 24 ore: %{title}"
       poll_closing_soon_author: 'Il tuo %{poll_type} si chiuderà tra 24 ore: %{title}'
-      poll_created: 'Vota: %{title}'
+      poll_created: "%{poll_type}: %{title}"
       poll_edited: "%{actor} ha aggiornato %{poll_type}: %{title}"
       poll_expired: "%{poll_type} ha chiuso: %{title}"
       poll_expired_author: 'Pubblica un risultato: %{title}'
@@ -802,6 +819,7 @@ it:
       poll_announced: 'Vota: %{title}'
       discussion_edited: "%{actor} ha modificato il contesto della discussione: %{title}"
       discussion_closed: "%{actor} ha chiuso la discussione: %{title}"
+      user_reminded: "%{actor} ti ricorda di votare su: %{title}"
   discussion_fork_actions:
     move: Sposta
     moved: Commenti in movimento, questo potrebbe richiedere un momento
@@ -985,6 +1003,8 @@ it:
     poll_announced: "%{name} ha invitato %{length} persone a votare:"
     discussion_notification_history: Cronologia delle notifiche di discussione
     inviting_guests_to_discussion: Gli ospiti non appartengono al tuo gruppo e hanno accesso solo a questa discussione
+    topic_notification_history: Cronologia delle notifiche dei thread
+    notification_history: Cronologia delle notifiche
   action_dock:
     actions_menu: Menu Azioni
     more_actions: Altre azioni
@@ -1530,6 +1550,7 @@ it:
     delete_account_subtitle: Elimina completamente il tuo account e rimuovi il tuo nome dalle discussioni e decisioni passate.
     updated_on_sign_in: Fornito dal tuo browser e aggiornato quando accedi
     translate_content_automatically: Traduci automaticamente il contenuto nella mia lingua
+    bot_account_warning: Gli account bot non saranno invitati a votare nei sondaggi né a partecipare alle discussioni.
   text_editor:
     x_of_y_characters: "%{x} / %{y} caratteri"
     select_text_to_link: Seleziona il testo da collegare e riprova
@@ -1599,6 +1620,7 @@ it:
   thread_preview:
     replies_count: "%{count} repliche"
     unread_count: "%{count} non letti"
+    items_count: "%{count} elementi"
   dashboard_page:
     polls_to_vote_on: Sondaggi da votare
     no_polls_to_vote_on: Non ci sono sondaggi su cui devi votare
@@ -1697,6 +1719,7 @@ it:
     title: Visto da
     no_one: Nessuno l'ha ancora visto
     disabled_anonymous_polls: La cronologia dei visualizzatori è disabilitata perché il thread contiene sondaggi anonimi
+    thread_engagement: Partecipazione al thread
   activity_card:
     count_responses: "%{count} risultati"
     beginning: Iniziale
@@ -1738,6 +1761,22 @@ it:
     nested_twice: Due livelli di risposte nidificate
     nested_twice_description: Indent risponde al massimo due volte.
     changing_nesting_is_slow: L'elaborazione delle modifiche all'annidamento può richiedere un paio di minuti.
+    layout: Disposizione
+    items: Come visualizzare gli elementi
+    nested: annidato
+    timeline: cronologia
+    timeline_description: Gli elementi nell'ordine in cui sono stati pubblicati
+    threaded: In thread
+    threaded_description: Risposte raggruppate in base all'argomento a cui si riferiscono.
+    allow_concurrent_polls: Consenti sondaggi simultanei
+    allow_multiple_polls: Consenti più sondaggi contemporaneamente
+    allow_concurrent_polls_description: Consentire l'apertura simultanea di più seggi elettorali.
+    allow_comments: Consenti i commenti
+    allow_comments_description: Consenti ai partecipanti di pubblicare commenti in questa discussione
+    allow_reactions: Consenti reazioni
+    allow_reactions_description: Consenti ai partecipanti di aggiungere reazioni emoji
+    topic_settings: Impostazioni dell'argomento
+    thread_settings: Impostazioni del thread
   delete_thread_form:
     title: Cancella discussione
     body: Sei sicuro/a di voler cancellare questa discussione?
@@ -1804,6 +1843,7 @@ it:
     ranked_choice_title: Scelta di preferenze
     gradients_of_agreement_title: Gradienti di accordo
     majority_title: Maggioranza
+    stv_title: Elezioni STV
   poll_option_form:
     edit_option: Modifica opzione
     option_name: Nome dell'opzione
@@ -1941,6 +1981,8 @@ it:
     blank: Nuovo
     blank_subtitle: Crea un nuovo modello di sondaggio per un processo specifico
     start_a_poll: Avvia un sondaggio
+    export_blt: Schede elettorali di esportazione (BLT)
+    status: Stato
   poll_common_attachment_form:
     label: Allegati
   poll_common_add_option:
@@ -2045,6 +2087,7 @@ it:
     for_this_proposal_to_pass: 'Per far passare questa proposta:'
     for_this_poll_type_to_be_valid: 'Affinché questo %{poll_type} sia valido:'
     voting_opens_at: Questo %{poll_type} si apre per votare %{time}
+    unable_to_vote: Non sei stato invitato a votare su questo %{poll_type}
   poll_common_collapsed:
     by_who: di %{name}
   poll_common_calendar_invite:
@@ -2102,6 +2145,8 @@ it:
     change_results_order: Modifica l'ordine dei risultati
     none_of_the_above: "(Nessuno dei precedenti)"
     name_or_username: Nome o nome utente
+    cast: Espressi
+    uncast: Non espressi
   poll_common_undecided_panel:
     show_undecided: Mostra %{count} Indecisi
     show_invitations: Mostra inviti pendenti
@@ -2370,6 +2415,7 @@ it:
     want_to_set_password: Vuoi effettuare l'accesso con una password la prossima volta?
     change_your_password: Vuoi impostare una nuova password?
     email_placeholder: tu{'@'}esempio.com
+    turnstile_required: Si prega di completare la verifica prima di continuare.
   chatbot:
     configure_chatbot: Configura chatbot
     test_connection: Test connection
@@ -2495,6 +2541,7 @@ it:
     country_disclaimer: Il paese si basa sull'indirizzo IP dell'utente e non è molto preciso. Considera questa solo una guida approssimativa.
     total_discussions: Discussioni totali
     discussions_with_polls: Discussioni con sondaggi
+    download_csv: Scarica il file CSV
   tips:
     youve_completed_all_the_steps: "\U0001F389 Hai completato tutti i passaggi!"
     getting_started_checklist: Lista di controllo per iniziare
@@ -2540,7 +2587,7 @@ it:
     who_can_vote: Chi può votare?
     specified_voters_only_true: Solo persone invitate
     specified_voters_only_false_group: Qualcuno nel gruppo
-    specified_voters_only_false_discussion: Qualcuno nel thread
+    specified_voters_only_false_discussion: Chiunque nel thread
     invite_people_next: Puoi scegliere chi è invitato a votare dopo aver avviato il %{poll_type}
     show_none_of_the_above: Includi un'opzione "Nessuna delle precedenti"
     show_options_in_random_order: Mostra le opzioni in ordine casuale
@@ -2577,6 +2624,7 @@ it:
       helptext_on: Non mostrare come hanno votato le persone finché il sondaggio non è chiuso
     short_reason_can_be_helpful: Le motivazioni di voto brevi sono più facili da comprendere. Una raccolta di motivazioni concise è un'ottima risorsa per prendere una decisione.
     shuffle_options: Opzioni di riproduzione casuale
+    selected_people_only: Solo persone selezionate
   poll_common_form:
     quorum: Quorum
     participation_quorum: Quorum di partecipazione
@@ -2627,6 +2675,8 @@ it:
       time_poll_hint: Gli elettori indicano quando sono disponibili per l'incontro
       rank: Rango
       time: Tempo
+      stv: Elezioni STV
+      stv_hint: Eleggere più vincitori in modo proporzionale utilizzando il voto singolo trasferibile
     process: Processo
     process_name: Titolo del modello
     process_name_hint: 'Come si chiama questo modello? Ad esempio: Consulenza sul ruolo, Controllo della temperatura, Approvazione dei verbali'
@@ -2687,6 +2737,7 @@ it:
     create_poll_type: Crea %{poll_type}
     notify_voters_when_voting_opens: Avvisare gli elettori quando si aprono le votazioni
     voters_notified_when_opens: Gli elettori saranno avvisati all'apertura delle votazioni
+    who_may_vote: Chi può votare su questo %{poll_type}?
   poll_receipts_page:
     verify_participants: Verifica i partecipanti
     see_votes_if_quorum_reached: Se la votazione è chiusa e il quorum è stato raggiunto, vedrai chi ha espresso il voto.
@@ -2749,6 +2800,7 @@ it:
     start_discussion: Avvia una discussione
     start_a_direct_discussion: Avvia una discussione diretta
     these_are_templates: Questi sono i modelli di discussione nel tuo gruppo.
+    start_a_new_discussion: Avvia una nuova discussione
   context_panel:
     thread_status:
       pinned: Questa discussione è stata bloccata. Rimarrà in cima all'elenco delle discussioni del gruppo per tutti gli utenti.
@@ -2764,6 +2816,7 @@ it:
     helptext: Le discussioni aggiunte vengono sempre visualizzate nell'elenco delle discussioni del gruppo.
   delete_discussion_form:
     discussion_deleted: Discussione eliminata
+    body: Sei sicuro di voler eliminare questa discussione?
   move_discussion_form:
     title: Sposta la discussione in un altro gruppo
     body: Gruppo di destinazione
@@ -2780,3 +2833,55 @@ it:
     opening_hour: Orario di apertura
     scheduled_hint: Il sondaggio sarà visibile ma non votabile fino all'orario di apertura.
     draft_hint: Questo sondaggio verrà salvato come bozza. Imposta una data di apertura o seleziona "Le votazioni si aprono immediatamente" quando sei pronto a votare.
+  strand_members_list:
+    notify_members_or_invite_guests_info: Avvisa i membri del gruppo per nome oppure invita i non membri tramite indirizzo email. Gli ospiti invitati possono partecipare a questa discussione, ma non avranno accesso alle altre discussioni del gruppo.
+    notify_members_info: Inserisci i nomi dei membri del gruppo per avvisarli di questa discussione.
+    specified_voters_only_warning: 'In questa discussione sono presenti sondaggi in cui possono votare solo alcune persone selezionate. Aggiungere qualcuno qui non gli conferirà il diritto di voto: utilizza invece la funzione "aggiungi votanti" direttamente nel sondaggio.'
+  poll_common_details_meta:
+    opened: Aperto
+    opens: Aperti
+    closed: Chiuso
+    closes: Chiusure
+    opened_at: Aperto alle
+    opening_at: Apertura alle
+    closed_at: Chiuso alle
+    closing_at: Chiude alle
+  poll_stv_vote_form:
+    helptext: Trascina i candidati sopra la linea per classificarli. Gli elementi sotto la linea non sono classificati. Il rango 1 è quello che preferisci in assoluto.
+    divider_text: Trascina i candidati sopra questa linea per classificarli
+    stance_created: Votazione registrata
+    stance_updated: Voto aggiornato
+  poll_stv_form:
+    settings_title: Impostazioni di selezione STV
+    settings_helptext: Configura il numero di seggi da assegnare, il metodo di conteggio e il tipo di quota per queste elezioni.
+    seats_label: Numero di posti da riempire
+    method_label: Metodo di conteggio
+    method_scottish: Scottish STV (recommended)
+    method_meek: Meek STV
+    quota_label: Tipo di quota
+    quota_droop: Droop quota (recommended)
+    quota_hare: Hare quota
+  poll_stv_results:
+    title: Risultati delle elezioni
+    elected: Eletto
+    not_elected: Non eletto
+    tied: Parità
+    no_candidates_elected: Nessun candidato eletto
+    round: "Turno %{number}"
+    quota_info: "%{method}, %{quota_type} quota (%{quota} votes needed)"
+    method_scottish: Scottish STV
+    method_meek: Meek STV
+    quota_droop: Droop
+    quota_hare: Hare
+    elected_in_round: "Elected in round %{round}"
+    eliminated_in_round: "Eliminated in round %{round}"
+    tied_in_round: "Tied in round %{round}"
+    votes: voti
+    candidate: Candidato
+    round_elected: Round eletto
+    first_preferences: Prime preferenze
+    final_tally: Conteggio finale
+    quota_surplus: Surplus
+    round_details: Dettagli round per round
+    view_full_results: Visualizza i risultati completi
+    results_available_when_closed: I risultati saranno disponibili al termine delle votazioni.

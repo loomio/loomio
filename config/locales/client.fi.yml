@@ -165,6 +165,7 @@ fi:
     ranked_choice: rankattu valinta
     score: tulos kysely
     question: kysymyskierros
+    stv: STV-vaalit
   timezones:
     local: Paikallinen aika (%{value})
   common:
@@ -314,6 +315,7 @@ fi:
       rearrange: Järjestä uudelleen
       save_template: Tallenna mallipohja
       fork_template: Haarukan mallipohja
+      customize: Mukauta
     formatting_help:
       label: Muotoilu
       title: Opi käyttämään Markdownia tekstin muotoiluun
@@ -323,6 +325,8 @@ fi:
     opening_in: Avautuminen %{time}
     read_more: Lue lisää
     templates_admin_hint: Koska olet ryhmän ylläpitäjä, voit piilottaa tai poistaa tarpeettomat mallit ja muokata jäljellä olevia tarpeidesi mukaan.
+    read: Lukea
+    unread: Lukematon
   merge_accounts:
     modal:
       title: Yhdistä tilit
@@ -483,6 +487,11 @@ fi:
     changes_all_discussions_and_polls_in_group: Tämä muuttaa kaikkien ryhmän keskustelujen ja kyselyiden asetuksia.
     normal_explained: Kun joku kirjoittaa nimesi keskustelun tai kyselyn "Ilmoita"-kenttään tai mainitsee ryhmän.
     aria_label: Muuta sähköpostiasetuksia -lomake
+    when_do_you_want_to_be_emailed_thread: Milloin haluat saada sähköpostia tästä keskusteluketjusta?
+    loud_option: Aina kun joku osallistuu (kaikki toiminta)
+    normal_option: Kun joku haluaa huomioni (kun hänelle ilmoitetaan)
+    quiet_option: Ei sähköposteja tästä keskusteluketjusta (Pois päältä)
+    quiet_explained: Sinulle ei lähetetä sähköpostia, vaikka joku yrittäisi ilmoittaa sinulle.
   close_explanation_modal:
     close_thread: Sulje lanka
     body: "<p>Sulje vanhat tai asiaankuulumattomat viestiketjut poistaaksesi ne näkyvistä ja ilmoittaaksesi, että keskustelu on päättynyt.</p><p> Kuka tahansa voi silti kommentoida tai aloittaa kyselyn suljetussa ketjussa, mutta se ei näy ryhmän viestiketjuluettelossa tai hallintapaneelissa.</p>"
@@ -581,6 +590,12 @@ fi:
     showing_unread: Näytetään lukemattomat
     add_comment: Lisää kommentti
     start_decision: Aloita päätös
+    return: Takaisin
+    end: Loppu
+    notifications: Ilmoitukset
+    email_all_activity: Lähetä kaikki toiminnot sähköpostitse
+    email_notifications: Sähköposti, kun saat ilmoituksen
+    email_none: Ei sähköposteja
   search_modal:
     all_content: Kaikki sisältö
     best_match: Paras ottelu
@@ -648,6 +663,7 @@ fi:
     invite_to_wip_poll: Kutsu antamaan palautetta
     invitations: Kutsut
     discussion_members: Keskustelun jäsenet
+    thread_members: Ketjun jäsenet
   membership_dropdown:
     set_name_and_username: Aseta nimi ja käyttäjätunnus
     set_title: Aseta otsikko
@@ -711,6 +727,7 @@ fi:
       discussion_edited: "%{actor} muokkasi keskustelun kontekstia: %{title}"
       discussion_closed: "%{actor} sulki keskustelun: %{title}"
       new_discussion: "%{actor} aloitti keskustelun: %{title}"
+      user_reminded: "%{actor} muistuttaa sinua äänestämään aiheesta: %{title}"
     without_title:
       unknown_sender: Tarkista tuntemattoman lähettäjän sähköposti
       group_announced: "%{actor} kutsui sinut ryhmään"
@@ -772,7 +789,7 @@ fi:
       poll_closed_by_user: "%{actor} sulki %{poll_type} -kyselyn: %{title}"
       poll_closing_soon: "%{poll_type} sulkeutuu 24 tunnin kuluttua: %{title}"
       poll_closing_soon_author: "%{poll_type} -kyselysi sulkeutuu 24 tunnin kuluttua: %{title}"
-      poll_created: 'Äänestys: %{title}'
+      poll_created: "%{poll_type}: %{title}"
       poll_edited: "%{actor} päivitti %{poll_type}: %{title}"
       poll_expired: "%{poll_type} on sulkeutunut: %{title}"
       poll_expired_author: 'Julkaise tulos: %{title}'
@@ -790,6 +807,7 @@ fi:
       poll_announced: 'Äänestys: %{title}'
       discussion_edited: "%{actor} muokkasi keskustelun kontekstia: %{title}"
       discussion_closed: "%{actor} sulki keskustelun: %{title}"
+      user_reminded: "%{actor} muistuttaa sinua äänestämään aiheesta: %{title}"
   discussion_fork_actions:
     move: Liikkua
     moved: Siirretään kommentteja, tämä voi kestää hetken
@@ -969,6 +987,8 @@ fi:
     poll_announced: "%{name} kutsui %{length} henkilöä äänestämään:"
     discussion_notification_history: Keskusteluilmoitusten historia
     inviting_guests_to_discussion: Vieraat eivät kuulu ryhmääsi, ja heillä on pääsy vain tähän keskusteluun.
+    topic_notification_history: Keskusteluilmoitusten historia
+    notification_history: Ilmoitushistoria
   action_dock:
     actions_menu: Toiminnot-valikko
     more_actions: Lisää toimintaa
@@ -1502,6 +1522,7 @@ fi:
     delete_account_subtitle: Poista tilisi kokonaan ja poista nimesi aiemmista keskusteluista ja päätöksistä.
     updated_on_sign_in: Selaimesi tarjoaa ja päivitetään, kun kirjaudut sisään
     translate_content_automatically: Käännä sisältö kielelleni automaattisesti
+    bot_account_warning: Bottitilejä ei kutsuta äänestämään kyselyissä tai osallistumaan keskusteluihin.
   text_editor:
     x_of_y_characters: "%{x} / %{y} merkkiä"
     select_text_to_link: Valitse linkitettävä teksti ja yritä uudelleen
@@ -1571,6 +1592,7 @@ fi:
   thread_preview:
     replies_count: "%{count} vastausta"
     unread_count: "%{count} lukematonta"
+    items_count: "%{count} kohdetta"
   dashboard_page:
     polls_to_vote_on: Äänestykset, joista äänestää
     no_polls_to_vote_on: Ei ole kyselyjä, joista sinun pitäisi äänestää
@@ -1667,6 +1689,7 @@ fi:
     title: Nähnyt
     no_one: Kukaan ei ole vielä nähnyt tätä
     disabled_anonymous_polls: Katsojahistoria on poistettu käytöstä, koska viestiketju sisältää anonyymejä kyselyjä
+    thread_engagement: Thread engagement
   activity_card:
     count_responses: "%{count} vastausta"
     beginning: Alku
@@ -1708,6 +1731,22 @@ fi:
     nested_twice: Sisäkkäisten vastausten kaksi tasoa
     nested_twice_description: Sisennä vastaus enintään kaksi kertaa.
     changing_nesting_is_slow: Sisään tehtyjen muutosten käsittely voi kestää muutaman minuutin.
+    layout: Layout
+    items: Kohteiden näyttäminen
+    nested: Sisäkkäinen
+    timeline: Aikajana
+    timeline_description: Lähetysjärjestyksessä ne lähetettiin
+    threaded: Threaded
+    threaded_description: Vastaukset ryhmiteltynä sen mukaan, mihin he vastaavat
+    allow_concurrent_polls: Salli samanaikaiset kyselyt
+    allow_multiple_polls: Salli useita kyselyitä samanaikaisesti
+    allow_concurrent_polls_description: Salli useamman kuin yhden kyselyn olla avoinna samanaikaisesti
+    allow_comments: Salli kommentit
+    allow_comments_description: Salli osallistujien kommentoida tässä ketjussa
+    allow_reactions: Salli reaktiot
+    allow_reactions_description: Salli osallistujien lisätä emoji-reaktioita
+    topic_settings: Aiheasetukset
+    thread_settings: Ketjun asetukset
   delete_thread_form:
     title: Poista lanka
     body: Haluatko varmasti poistaa tämän ketjun?
@@ -1774,6 +1813,7 @@ fi:
     ranked_choice_title: Sijoitettu valinta
     gradients_of_agreement_title: Sopimuksen gradientit
     majority_title: Enemmistö
+    stv_title: STV-vaalit
   poll_option_form:
     edit_option: Muokkaa vaihtoehtoa
     option_name: Vaihtoehdon nimi
@@ -1911,6 +1951,8 @@ fi:
     blank: Uusi
     blank_subtitle: Luo uusi kyselymalli tietylle prosessille
     start_a_poll: Aloita kysely
+    export_blt: Vientiäänestysliput (BLT)
+    status: Status
   poll_common_attachment_form:
     label: Liitteet
   poll_common_add_option:
@@ -2015,6 +2057,7 @@ fi:
     for_this_proposal_to_pass: 'Jotta tämä ehdotus menisi läpi:'
     for_this_poll_type_to_be_valid: 'Jotta tämä %{poll_type} olisi kelvollinen:'
     voting_opens_at: Tämä %{poll_type} avautuu äänestykseen %{time}
+    unable_to_vote: Sinua ei ole kutsuttu äänestämään tässä %{poll_type} -kyselyssä
   poll_common_collapsed:
     by_who: "%{name}"
   poll_common_calendar_invite:
@@ -2072,6 +2115,8 @@ fi:
     change_results_order: Muuta tulosten järjestystä
     none_of_the_above: "(Ei mikään ylläolevista)"
     name_or_username: Nimi tai käyttäjätunnus
+    cast: Cast
+    uncast: Uncast
   poll_common_undecided_panel:
     show_undecided: Näytä %{count} epävarmaa
     show_invitations: Näytä odottavat kutsut
@@ -2340,6 +2385,7 @@ fi:
     want_to_set_password: Haluatko kirjautua sisään salasanalla seuraavan kerran?
     change_your_password: Haluatko asettaa uuden salasanan?
     email_placeholder: sinä{'@'}esimerkki.com
+    turnstile_required: Suorita vahvistus loppuun ennen jatkamista.
   chatbot:
     configure_chatbot: Määritä chatbot
     test_connection: Testaa yhteys
@@ -2465,6 +2511,7 @@ fi:
     country_disclaimer: Maa perustuu käyttäjän IP-osoitteeseen, eikä se ole kovin tarkka. Pidä tätä vain karkeana ohjeena.
     total_discussions: Keskusteluja yhteensä
     discussions_with_polls: Keskustelut kyselyillä
+    download_csv: Lataa CSV-tiedosto
   tips:
     youve_completed_all_the_steps: "\U0001F389 Olet suorittanut kaikki vaiheet!"
     getting_started_checklist: Aloittamisen tarkistuslista
@@ -2547,6 +2594,7 @@ fi:
       helptext_on: Älä näytä, miten ihmiset ovat äänestäneet, ennen kuin äänestys on suljettu
     short_reason_can_be_helpful: Lyhyet äänestysperustelut ovat helpompia ymmärtää. Ytimekkäiden perustelujen kokoelma on loistava resurssi päätöksentekoon.
     shuffle_options: Satunnaistoiston asetukset
+    selected_people_only: Vain valitut henkilöt
   poll_common_form:
     quorum: Päätösvaltaisuus
     participation_quorum: Osallistumispäätösvaltaisuus
@@ -2597,6 +2645,8 @@ fi:
       time_poll_hint: Äänestäjät ilmoittavat, milloin he ovat käytettävissä tapaamiseen
       rank: Sijoitus
       time: Aika
+      stv: STV-vaalit
+      stv_hint: Valitse useita voittajaa suhteellisesti käyttämällä yhtä siirrettävää ääntä
     process: Käsitellä
     process_name: Mallipohjan otsikko
     process_name_hint: Mikä tämän mallin nimi on? Esim. Rooliohjeet, Lämpötilan tarkistus, Pöytäkirjan hyväksyntä
@@ -2657,6 +2707,7 @@ fi:
     create_poll_type: Luo %{poll_type}
     notify_voters_when_voting_opens: Ilmoita äänestäjille äänestyksen alkamisesta
     voters_notified_when_opens: Äänestäjille ilmoitetaan äänestyksen alkamisesta
+    who_may_vote: Ketkä voivat äänestää tässä %{poll_type} -kyselyssä?
   poll_receipts_page:
     verify_participants: Vahvista osallistujat
     see_votes_if_quorum_reached: Jos äänestys on päättynyt ja päätösvaltainen määrä on saavutettu, näet ketkä äänestivät.
@@ -2719,6 +2770,7 @@ fi:
     start_discussion: Aloita keskustelu
     start_a_direct_discussion: Aloita suora keskustelu
     these_are_templates: Nämä ovat ryhmäsi keskustelupohjat.
+    start_a_new_discussion: Aloita uusi keskustelu
   context_panel:
     thread_status:
       pinned: Tämä keskustelu on kiinnitetty. Se pysyy ryhmän keskusteluluettelon yläosassa kaikille käyttäjille.
@@ -2734,6 +2786,7 @@ fi:
     helptext: Kiinnitetyt keskustelut näkyvät aina ryhmän keskusteluluettelossa.
   delete_discussion_form:
     discussion_deleted: Keskustelu poistettu
+    body: Haluatko varmasti poistaa tämän ketjun?
   move_discussion_form:
     title: Siirrä keskustelu toiseen ryhmään
     body: Kohderyhmä
@@ -2750,3 +2803,55 @@ fi:
     opening_hour: Aukioloaika
     scheduled_hint: Äänestys on näkyvissä, mutta sitä ei voi äänestää ennen sen alkamista.
     draft_hint: Tämä kysely tallennetaan luonnoksena. Aseta aloituspäivämäärä tai valitse "Äänestys alkaa välittömästi", kun olet valmis aloittamaan äänestämisen.
+  strand_members_list:
+    notify_members_or_invite_guests_info: Ilmoita ryhmän jäsenille nimeltä tai kutsu muita kuin jäseniä sähköpostiosoitteella. Kutsutut vieraat voivat osallistua tähän keskusteluketjuun, mutta heillä ei ole pääsyä muihin ryhmän keskusteluketjuihin.
+    notify_members_info: Anna ryhmän jäsenten nimet, jotta heille ilmoitetaan tästä keskusteluketjusta.
+    specified_voters_only_warning: Tässä ketjussa on äänestyksiä, joissa vain valitut henkilöt voivat äänestää. Henkilön lisääminen tähän ei anna hänelle ääntä – käytä sen sijaan äänestyksessä "lisää äänestäjiä" -toimintoa.
+  poll_common_details_meta:
+    opened: Avattu
+    opens: Avautuu
+    closed: Suljettu
+    closes: Sulkeutuu
+    opened_at: Avattu klo
+    opening_at: Avautuu klo
+    closed_at: Suljettu klo
+    closing_at: Sulkeutuu klo
+  poll_stv_vote_form:
+    helptext: Vedä ehdokkaita viivan yläpuolelle asettaaksesi ne järjestykseen. Viivan alapuolella olevat kohteet ovat järjestykseen asettamattomia. Sijoitus 1 on suosikkisi.
+    divider_text: vedä ehdokkaita tämän viivan yläpuolelle asettaaksesi heidät järjestykseen
+    stance_created: Äänestys kirjattu
+    stance_updated: Äänestys päivitetty
+  poll_stv_form:
+    settings_title: STV:n vaaliasetukset
+    settings_helptext: Määritä täytettävien paikkojen määrä, laskentatapa ja kiintiötyyppi näille vaaleille.
+    seats_label: Täytettävien paikkojen määrä
+    method_label: Laskentamenetelmä
+    method_scottish: Scottish STV (recommended)
+    method_meek: Meek STV
+    quota_label: Kiintiötyyppi
+    quota_droop: Droop quota (recommended)
+    quota_hare: Hare quota
+  poll_stv_results:
+    title: Vaalitulokset
+    elected: Valittu
+    not_elected: Ei valittu
+    tied: Tie
+    no_candidates_elected: Yhtään ehdokasta ei valittu
+    round: "Round %{number}"
+    quota_info: "%{method}, %{quota_type} quota (%{quota} votes needed)"
+    method_scottish: Scottish STV
+    method_meek: Meek STV
+    quota_droop: Droop
+    quota_hare: Hare
+    elected_in_round: "Elected in round %{round}"
+    eliminated_in_round: "Eliminated in round %{round}"
+    tied_in_round: "Tied in round %{round}"
+    votes: äänet
+    candidate: Ehdokas
+    round_elected: Kierros valittu
+    first_preferences: Ensimmäiset mieltymykset
+    final_tally: Loppusumma
+    quota_surplus: Ylijäämä
+    round_details: Kierros kierrokselta yksityiskohdat
+    view_full_results: Näytä kaikki tulokset
+    results_available_when_closed: Tulokset ovat saatavilla äänestyksen päätyttyä

@@ -86,6 +86,8 @@ zh_CN:
       disagree: 不同意
       disagree_meaning: 这项提案需要修改一些内容，我才能支持它。
       disagree_prompt: 如何改进这项提案才能让您支持它？
+      abstain_meaning: 选择不参与投票，或无法参与投票。
+      abstain_prompt: 你为什么弃权，或者为什么觉得自己无法就此决定投票？
     advice:
       process_subtitle: 就你需要做的决定寻求建议。
       process_introduction: <p>在需要做出决定时，向受影响的人或有专业知识的人寻求建议，以便为你的组织做出更好的决定。</p><ul><li><p>建议可以帮助您为您的组织做出更好的决策。</p></li><li><p>促进人际关系、学习机会和多元化意见的形成。</p></li><li><p>激发主动性和创造力，让工作更有趣。</p></li></ul><p><a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>了解更多关于咨询流程的信息</u></a>。</p>
@@ -132,6 +134,7 @@ zh_CN:
       block_prompt: 请解释您反对这项提议的原因以及它为何不应实施。
       details_v2: "<h3><strong>你需要做出什么决定？</strong></h3><p></p><h3><strong>为什么这很重要？</strong></h3><p></p><h3><strong>你要求人们做什么？</strong></h3><p></p><p>请分享您的立场以及原因。如果您不同意，请解释需要做出哪些改变才能让您支持。</p>"
       process_introduction_v2: "<p><strong>共识</strong>适用于需要所有人积极同意的决策。参与者共同努力，了解彼此的需求，并不断完善提案，直至获得全体成员的支持。由于人们可以在讨论过程中改变投票，因此该过程鼓励真诚的对话，而非一蹴而就的决定。与其他方法相比，它需要更多的耐心，但也能建立最牢固的承诺。</p><p>此模板默认包含<strong>“阻止”</strong>选项。“阻止”功能并非适用于所有群体——它可能引发争议或被滥用。如果您在决策过程中不使用“阻止”功能，我们建议您编辑模板将其移除。</p>"
+      abstain_prompt: 你为什么弃权，或者为什么觉得自己无法就此决定投票？
     question_round:
       process_subtitle: 邀请提问者提出澄清问题，以帮助人们理解提案。
       process_introduction: <p>提问环节是让人们有机会就提案提出澄清性问题，以便每个人在发表意见之前都能理解提案。</p><p> Loomio 问答环节是一种特殊的活动形式，不设投票选项。参与者可以在您设定的时长内提问。</p><p>问答环节通常用作知情同意流程中的一个步骤。</p><p><a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">阅读更多关于同意流程的信息</a>。</p>
@@ -167,6 +170,7 @@ zh_CN:
       could_be_better_prompt: 你会做出哪些改变？
       needs_a_rethink: 需要重新考虑
       needs_a_rethink_prompt: 你担心的是什么？
+      needs_a_rethink_meaning: 我认为这种做法是错误的。
     gradients_of_agreement:
       process_subtitle: 请用 8 分制表达您对该提案的支持程度
       process_introduction: "<p>同意程度梯度提案允许小组成员以等级的方式表达他们对提案的支持，提供的表达支持的方式比“同意”和“不同意”更多。</p><p>使用“同意梯度”作为初步阶段，在达成正式协议之前测试对提案的支持度。</p><p>意见分歧程度的差异让人们知道提案正在形成，并鼓励他们参与讨论。这是一个倾听他人意见、了解他们感受并做出适当回应的机会，从而有可能将他们的建议纳入决策，做出更明智的决定。</p>"
@@ -260,6 +264,11 @@ zh_CN:
       no_meaning: 我不支持这项提议。
       no_prompt: 你为什么不支持这项提议？
       outcome_statement: "<p>感谢您参与此次多数投票。</p>"
+    stv:
+      process_subtitle: 按比例选出多名获胜者。
+      process_introduction: <p>单记可转移投票制（STV）是一种适用于多席位选举的比例代表制投票方式。选民按偏好顺序对候选人进行排序。达到规定得票数的候选人当选，剩余或被淘汰的选票将转入下一轮投票。</p><p>配置席位数量、计票方法（苏格兰式或米克式）和配额类型（德鲁普式或黑尔式）。结果会逐轮显示选票转移情况。</p><p><a target="_blank" href="https://help.loomio.com/en/user_manual/polls/stv/index.html">阅读更多关于单记可转移投票制（STV）选举的信息</a>。</p>
+      title: 选举委员会成员
+      details: <h3 id="what-is-this-election-about"><strong>这次选举的意义何在？</strong></h3><p></p><h3 id="how-many-seats"><strong>有多少座位被填满了？</strong></h3><p></p><h3 id="who-are-the-candidates"><strong>候选人有哪些？</strong></h3><p></p><p>请通过拖动候选人来投票，按您喜欢的顺序排列。排名第一的候选人是您最喜欢的。您可以对任意数量的候选人进行排名。</p>
   discussion_templates:
     practice_thread:
       process_name: 练习讨论
@@ -369,7 +378,7 @@ zh_CN:
     manage:
       all: 无权执行 %{action} %{subject} 操作。
     add_guests:
-      all: 您必须升级 Loomio 订阅才能将访客添加到您的 %{subject} 主题中。或者，您可以邀请他们成为您群组的成员。
+      all: 您必须升级 Loomio 订阅才能添加访客。或者，您可以邀请他们成为您群组的成员。
   errors:
     clear_cache: 检测到加载问题。请按住Shift键并重新加载页面，或清除浏览器缓存。
     '400':
@@ -406,6 +415,7 @@ zh_CN:
       email: 无效的电子邮件地址
       spoofed_media_type: 该文件的内容与其文件名不匹配。
       pwned_password: 此密码曾出现在数据泄露事件中，绝对不能使用。
+    new_account_trial_group_limit: 新账号仅限加入一个群组。如需加入更多群组，请联系客服。
   group:
     error:
       handle_must_begin_with_parent_handle: 必须以 %{parent_handle}- 开头
@@ -489,6 +499,7 @@ zh_CN:
       group_mentioned: 您收到此消息是因为该群组被 @提及。
       user_mentioned: 您收到此消息是因为您被@提及。
       notified: 您收到此邮件是因为作者通知了您。
+      thread_subscribed: 您收到此邮件是因为您订阅了该主题。
     received_email:
       explaination_html: "<p>您收到此电子邮件是因为您是 Loomio 群组 %{group} 的管理员。</p><p>该组织收到了一封来自未知电子邮件地址的电子邮件。</p><p>如果邮件来自群组成员，请查看邮件并选择该成员。</p><p>如果您不想收到此类邮件，可以屏蔽来自该地址的任何后续邮件。</p>"
   user_mailer:
@@ -621,6 +632,9 @@ zh_CN:
     destroy_warning:
       subject: 您的 Loomio 群组已被安排删除。
       body: 您的 Loomio 群组“%{group}”已被 %{deletor} 安排删除。如果您不希望删除该群组，请回复此邮件。如果您确定要删除该群组，则无需进行任何操作。谢谢。
+    trial_expired:
+      subject: 由于长时间未活动，您的 Loomio 群组将被删除。
+      body: 您的 Loomio 群组“%{group}”已处于不活跃状态，将在两周后被删除。如果您不希望您的群组被删除，请回复此邮件。
   forward_mailer:
     bounce:
       subject: 您发送给 Loomio 的消息未送达
@@ -645,3 +659,5 @@ zh_CN:
       voting_opens_and_closes: 投票于 %{opens} 开始，%{closes} 结束。（%{days} 天）
       voting_closes: 投票将于 %{when} 结束。
       voting_opened_and_closed: 投票于 %{opens} 天开始，%{closes} 天结束。（耗时 %{days} 天）
+  upload:
+    file_too_large: 文件过大。最大上传大小为 %{limit}。

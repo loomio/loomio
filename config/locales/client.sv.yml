@@ -165,6 +165,7 @@ sv:
     ranked_choice: rankat val
     score: poängundersökning
     question: frågerundan
+    stv: STV-valet
   timezones:
     local: Lokal tid (%{value})
   common:
@@ -314,6 +315,7 @@ sv:
       rearrange: Ordna om
       save_template: Spara mall
       fork_template: Gaffelmall
+      customize: Anpassa
     formatting_help:
       label: Utformning
       title: Lär dig hur du använder Märkspråk för att formatera din text
@@ -323,6 +325,8 @@ sv:
     opening_in: Öppning %{time}
     read_more: Läs mer
     templates_admin_hint: Eftersom du är gruppadministratör kan du dölja eller ta bort mallar du inte vill ha och redigera de återstående efter dina behov.
+    read: Läsa
+    unread: Oläst
   merge_accounts:
     modal:
       title: Slå samman konton
@@ -483,6 +487,11 @@ sv:
     changes_all_discussions_and_polls_in_group: Detta ändrar inställningarna för alla diskussioner och omröstningar i gruppen.
     normal_explained: När någon skriver in ditt namn i fältet "Meddela" i en diskussion eller en omröstning, eller när de {'@'}nämner gruppen.
     aria_label: Ändra e-postinställningar formulär
+    when_do_you_want_to_be_emailed_thread: När vill du få e-post om den här tråden?
+    loud_option: Varje gång någon deltar (all aktivitet)
+    normal_option: När någon vill ha min uppmärksamhet (när jag får besked)
+    quiet_option: Inga e-postmeddelanden om den här tråden (Av)
+    quiet_explained: Du kommer inte att få ett e-postmeddelande, inte ens när någon försöker meddela dig.
   close_explanation_modal:
     close_thread: Stäng tråd
     body: "<p>Stäng gamla eller irrelevanta trådar för att ta bort dem och indikera att diskussionen har stängts.</p><p> Vem som helst kan fortfarande kommentera eller starta en omröstning i en stängd tråd, men den kommer inte att visas i gruppens trådlista eller på instrumentpanelen.</p>"
@@ -581,6 +590,12 @@ sv:
     showing_unread: Visar olästa
     add_comment: Lägg till kommentar
     start_decision: Startbeslut
+    return: Tillbaka
+    end: Slut
+    notifications: Aviseringar
+    email_all_activity: E-posta all aktivitet
+    email_notifications: E-posta när du får meddelande
+    email_none: Inga e-postmeddelanden
   search_modal:
     all_content: Allt innehåll
     best_match: Bästa matchningen
@@ -648,6 +663,7 @@ sv:
     invite_to_wip_poll: Bjud in att ge feedback
     invitations: Inbjudningar
     discussion_members: Diskussionsmedlemmar
+    thread_members: Trådmedlemmar
   membership_dropdown:
     set_name_and_username: Ställ in namn och användarnamn
     set_title: Ställ in titel
@@ -711,6 +727,7 @@ sv:
       discussion_edited: "%{actor} redigerade diskussionssammanhanget: %{title}"
       discussion_closed: "%{actor} avslutade diskussionen: %{title}"
       new_discussion: "%{actor} startade en diskussion: %{title}"
+      user_reminded: "%{actor} påminner dig om att rösta på: %{title}"
     without_title:
       unknown_sender: Granska e-post från okänd avsändare
       group_announced: "%{actor} bjöd in dig till en grupp"
@@ -772,7 +789,7 @@ sv:
       poll_closed_by_user: "%{actor} stängde %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} stänger om 24 timmar: %{title}"
       poll_closing_soon_author: 'Din %{poll_type} stänger om 24 timmar: %{title}'
-      poll_created: 'Rösta: %{title}'
+      poll_created: "%{poll_type}: %{title}"
       poll_edited: "%{actor} uppdaterade %{poll_type}: %{title}"
       poll_expired: "%{poll_type} har avslutats: %{title}"
       poll_expired_author: 'Publicera ett resultat: %{title}'
@@ -790,6 +807,7 @@ sv:
       poll_announced: 'Rösta: %{title}'
       discussion_edited: "%{actor} redigerade diskussionssammanhanget: %{title}"
       discussion_closed: "%{actor} avslutade diskussionen: %{title}"
+      user_reminded: "%{actor} påminner dig om att rösta på: %{title}"
   discussion_fork_actions:
     move: Flytta
     moved: Rörande kommentarer, det här kan ta en stund
@@ -969,6 +987,8 @@ sv:
     poll_announced: "%{name} bjöd in %{length} personer att rösta:"
     discussion_notification_history: Historik för diskussionsmeddelanden
     inviting_guests_to_discussion: Gäster tillhör inte din grupp och har endast tillgång till den här diskussionen.
+    topic_notification_history: Historik för trådmeddelanden
+    notification_history: Aviseringshistorik
   action_dock:
     actions_menu: Menyn Åtgärder
     more_actions: Fler åtgärder
@@ -1502,6 +1522,7 @@ sv:
     delete_account_subtitle: Ta bort ditt konto helt och hållet och ta bort ditt namn från tidigare diskussioner och beslut.
     updated_on_sign_in: Tillhandahålls av din webbläsare och uppdateras när du loggar in
     translate_content_automatically: Översätt innehåll till mitt språk automatiskt
+    bot_account_warning: Botkonton kommer inte att bjudas in att rösta i omröstningar eller delta i diskussioner
   text_editor:
     x_of_y_characters: "%{x} / %{y} tecken"
     select_text_to_link: Välj text att länka och försök igen
@@ -1571,6 +1592,7 @@ sv:
   thread_preview:
     replies_count: "%{count} svar"
     unread_count: "%{count} olästa"
+    items_count: "%{count} artiklar"
   dashboard_page:
     polls_to_vote_on: Omröstningar att rösta på
     no_polls_to_vote_on: Det finns inga omröstningar du behöver rösta på
@@ -1667,6 +1689,7 @@ sv:
     title: Ses av
     no_one: Ingen har sett detta än
     disabled_anonymous_polls: Tittarhistoriken är inaktiverad eftersom tråden innehåller anonyma omröstningar
+    thread_engagement: Trådengagemang
   activity_card:
     count_responses: "%{count} svar"
     beginning: Början
@@ -1708,6 +1731,22 @@ sv:
     nested_twice: Två nivåer av kapslade svar
     nested_twice_description: Indrag svarar högst två gånger.
     changing_nesting_is_slow: Ändringar av kapsling kan ta ett par minuter att bearbeta.
+    layout: Layout
+    items: Hur man visar objekt
+    nested: Kapslad
+    timeline: Tidslinje
+    timeline_description: Objekt i den ordning de publicerades
+    threaded: Trådad
+    threaded_description: Svar grupperade under vad de svarar på
+    allow_concurrent_polls: Tillåt samtidiga omröstningar
+    allow_multiple_polls: Tillåt flera omröstningar samtidigt
+    allow_concurrent_polls_description: Tillåt att mer än en omröstning är öppen samtidigt
+    allow_comments: Tillåt kommentarer
+    allow_comments_description: Tillåt deltagare att skriva kommentarer i den här tråden
+    allow_reactions: Tillåt reaktioner
+    allow_reactions_description: Tillåt deltagare att lägga till emoji-reaktioner
+    topic_settings: Ämnesinställningar
+    thread_settings: Trådinställningar
   delete_thread_form:
     title: Ta bort tråd
     body: Är du säker på att du vill ta bort den här tråden?
@@ -1774,6 +1813,7 @@ sv:
     ranked_choice_title: Valfritt val
     gradients_of_agreement_title: Gradienter av överensstämmelse
     majority_title: Majoritet
+    stv_title: STV-val
   poll_option_form:
     edit_option: Redigera alternativ
     option_name: Alternativets namn
@@ -1911,6 +1951,8 @@ sv:
     blank: Ny
     blank_subtitle: Skapa en ny omröstningsmall för en specifik process
     start_a_poll: Starta en omröstning
+    export_blt: Exportvalsedlar (BLT)
+    status: Status
   poll_common_attachment_form:
     label: Bilagor
   poll_common_add_option:
@@ -2015,6 +2057,7 @@ sv:
     for_this_proposal_to_pass: 'För att detta förslag ska gå igenom:'
     for_this_poll_type_to_be_valid: 'För att denna %{poll_type} ska vara giltig:'
     voting_opens_at: Denna %{poll_type} öppnar för omröstning %{time}
+    unable_to_vote: Du har inte blivit inbjuden att rösta på denna %{poll_type}
   poll_common_collapsed:
     by_who: vid %{name}
   poll_common_calendar_invite:
@@ -2072,6 +2115,8 @@ sv:
     change_results_order: Ändra resultatordning
     none_of_the_above: "(Inget av ovanstående)"
     name_or_username: Namn eller användarnamn
+    cast: Avgivna
+    uncast: Inte avgivna
   poll_common_undecided_panel:
     show_undecided: Visa %{count} osäkra
     show_invitations: Visa väntande inbjudningar
@@ -2340,6 +2385,7 @@ sv:
     want_to_set_password: Vill du logga in med ett lösenord nästa gång?
     change_your_password: Vill du ställa in ett nytt lösenord?
     email_placeholder: du{'@'}example.com
+    turnstile_required: Slutför verifieringen innan du fortsätter.
   chatbot:
     configure_chatbot: Konfigurera chatbot
     test_connection: Testa anslutningen
@@ -2465,6 +2511,7 @@ sv:
     country_disclaimer: Land baseras på användarens IP-adress och är inte särskilt exakt. Se endast detta som en grov guide.
     total_discussions: Totalt antal diskussioner
     discussions_with_polls: Diskussioner med opinionsundersökningar
+    download_csv: Ladda ner CSV-filen
   tips:
     youve_completed_all_the_steps: "\U0001F389 Du har slutfört alla steg!"
     getting_started_checklist: Checklista för att komma igång
@@ -2547,6 +2594,7 @@ sv:
       helptext_on: Visa inte hur folk har röstat förrän omröstningen är stängd
     short_reason_can_be_helpful: Korta röstskäl är lättare att förstå. En samling koncisa skäl är en bra resurs för att fatta ett beslut.
     shuffle_options: Blandningsalternativ
+    selected_people_only: Endast utvalda personer
   poll_common_form:
     quorum: Kvorum
     participation_quorum: Deltagandekvorum
@@ -2597,6 +2645,8 @@ sv:
       time_poll_hint: Väljarna anger när de är tillgängliga för att mötas
       rank: Rang
       time: Tid
+      stv: STV-val
+      stv_hint: Välj flera vinnare proportionellt med hjälp av enkel överförbar röst
     process: Behandla
     process_name: Malltitel
     process_name_hint: Vad kallar du den här mallen? T.ex. rollrådgivning, temperaturkontroll, godkännande av protokoll
@@ -2657,6 +2707,7 @@ sv:
     create_poll_type: Skapa %{poll_type}
     notify_voters_when_voting_opens: Meddela väljarna när röstningen öppnar
     voters_notified_when_opens: Väljarna kommer att meddelas när omröstningen öppnar
+    who_may_vote: Vem får rösta på denna %{poll_type}?
   poll_receipts_page:
     verify_participants: Verifiera deltagare
     see_votes_if_quorum_reached: Om omröstningen har avslutats och beslutsmässighet uppnåtts ser du vem som avgav en röst.
@@ -2719,6 +2770,7 @@ sv:
     start_discussion: Starta en diskussion
     start_a_direct_discussion: Starta en direkt diskussion
     these_are_templates: Det här är diskussionsmallarna i er grupp.
+    start_a_new_discussion: Starta en ny diskussion
   context_panel:
     thread_status:
       pinned: Den här diskussionen har fästs. Den kommer att finnas kvar högst upp i gruppens diskussionslista för alla användare.
@@ -2734,6 +2786,7 @@ sv:
     helptext: Fästade diskussioner visas alltid i gruppens diskussionslista.
   delete_discussion_form:
     discussion_deleted: Diskussionen raderad
+    body: Är du säker på att du vill ta bort den här tråden?
   move_discussion_form:
     title: Flytta diskussionen till en annan grupp
     body: Destinationsgrupp
@@ -2750,3 +2803,55 @@ sv:
     opening_hour: Öppettid
     scheduled_hint: Omröstningen kommer att vara synlig men inte möjlig att rösta på förrän den öppnar.
     draft_hint: Den här omröstningen sparas som ett utkast. Ange ett öppningsdatum eller markera "Röstningen öppnar omedelbart" när du är redo att börja rösta.
+  strand_members_list:
+    notify_members_or_invite_guests_info: Meddela gruppmedlemmar med namn eller bjud in icke-medlemmar via e-postadress. Inbjudna gäster kan delta i den här tråden men har inte tillgång till andra grupptrådar.
+    notify_members_info: Ange namnen på gruppmedlemmarna för att meddela dem om den här tråden.
+    specified_voters_only_warning: Den här tråden har omröstningar där endast utvalda personer kan rösta. Att lägga till någon här ger dem inte en röst — använd "lägg till väljare" i omröstningen istället.
+  poll_common_details_meta:
+    opened: Öppnad
+    opens: Öppnar
+    closed: Stängd
+    closes: Stänger
+    opened_at: Öppnade kl.
+    opening_at: Öppning kl.
+    closed_at: Stängt kl.
+    closing_at: Stänger kl.
+  poll_stv_vote_form:
+    helptext: Dra kandidaterna ovanför linjen för att rangordna dem. Objekt under linjen är orankade. Rankning 1 är din mest föredragna.
+    divider_text: dra kandidaterna ovanför den här linjen för att rangordna dem
+    stance_created: Röstning registrerad
+    stance_updated: Omröstningen uppdaterad
+  poll_stv_form:
+    settings_title: STV-valinställningar
+    settings_helptext: Konfigurera antalet platser som ska fyllas, räkningsmetod och kvottyp för detta val.
+    seats_label: Antal platser att fylla
+    method_label: Räknemetod
+    method_scottish: Scottish STV (recommended)
+    method_meek: Meek STV
+    quota_label: Kvottyp
+    quota_droop: Droop quota (recommended)
+    quota_hare: Hare quota
+  poll_stv_results:
+    title: Valresultat
+    elected: Vald
+    not_elected: Inte vald
+    tied: Oavgjort
+    no_candidates_elected: Inga kandidater valda
+    round: "Runda %{number}"
+    quota_info: "%{method}, %{quota_type} quota (%{quota} votes needed)"
+    method_scottish: Scottish STV
+    method_meek: Meek STV
+    quota_droop: Droop
+    quota_hare: Hare
+    elected_in_round: "Elected in round %{round}"
+    eliminated_in_round: "Eliminated in round %{round}"
+    tied_in_round: "Tied in round %{round}"
+    votes: röster
+    candidate: Kandidat
+    round_elected: valde i omgången
+    first_preferences: Första preferenser
+    final_tally: Slutlig sammanräkning
+    quota_surplus: Överskott
+    round_details: Detaljer runda för runda
+    view_full_results: Visa fullständiga resultat
+    results_available_when_closed: Resultaten kommer att finnas tillgängliga när omröstningen avslutas

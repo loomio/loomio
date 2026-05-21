@@ -217,10 +217,12 @@ class TopicService
   end
 
   def self.reset_child_positions(parent_id, parent_position_key)
+    parent_id = parent_id.to_i
     position_key_sql = if parent_position_key.nil?
       "CONCAT(REPEAT('0',5-LENGTH(CONCAT(t.seq))), t.seq)"
     else
-      "CONCAT('#{parent_position_key}-', CONCAT(REPEAT('0',5-LENGTH(CONCAT(t.seq) ) ), t.seq) )"
+      quoted_prefix = ActiveRecord::Base.connection.quote("#{parent_position_key}-")
+      "CONCAT(#{quoted_prefix}, CONCAT(REPEAT('0',5-LENGTH(CONCAT(t.seq) ) ), t.seq) )"
     end
     ActiveRecord::Base.connection.execute(
       "UPDATE events SET position = t.seq, position_key = #{position_key_sql}

@@ -109,7 +109,7 @@ es:
     manage:
       all: No autorizado para %{action} %{subject}.
     add_guests:
-      all: Debes actualizar tu suscripción de Loomio para agregar invitados a tu %{subject}. Alternativamente, puedes invitarlos a ser miembros de tu grupo.
+      all: Debes actualizar tu suscripción de Loomio para agregar invitados. Alternativamente, puedes invitarlos a ser miembros de tu grupo.
   errors:
     clear_cache: Se ha detectado un problema al cargar. Mantener "shift" y presionar "recargar" o elimina tu navegador caché.
     400:
@@ -147,6 +147,7 @@ es:
       email: No es una dirección de email válida
       spoofed_media_type: El contenido de ese archivo no se asemeja al nombre del mismo
       pwned_password: Esta contraseña apareció anteriormente en una violación de datos y nunca debe usarse
+    new_account_trial_group_limit: Las nuevas cuentas están limitadas a un grupo. Si necesita más, póngase en contacto con el servicio de asistencia.
   group:
     error:
       handle_must_begin_with_parent_handle: Debe comenzar con %{parent_handle}-
@@ -235,6 +236,7 @@ es:
       notified: Recibiste esto porque el autor te lo notificó.
       poll_subscribed: Has recibido esto porque estás suscrito a la encuesta.
       discussion_subscribed: Recibiste esto porque estás suscrito a la discusión.
+      thread_subscribed: Recibiste este mensaje porque estás suscrito al hilo.
   user_mailer:
     group_export_ready:
       subject: Exportar datos del grupo para %{group_name}
@@ -390,6 +392,9 @@ es:
         Si no queréis que vuestro grupo sea eliminado, por favor responded a este email.
         Si estáis seguros de que queréis borrar vuestro grupo, no necesitáis hacer nada.
         Gracias.
+    trial_expired:
+      subject: Tu grupo de Loomio será eliminado por inactividad.
+      body: Tu grupo de Loomio "%{group}" está inactivo y se eliminará en dos semanas. Si no quieres que se elimine, responde a este correo electrónico.
   poll_mailer:
     common:
       why_send_this: Recibes este correo porque %{reason}
@@ -440,6 +445,8 @@ es:
       disagree: Discrepar
       disagree_meaning: Es necesario cambiar algo en esta propuesta antes de poder apoyarla.
       disagree_prompt: "¿Cómo se podría mejorar esta propuesta para que puedas apoyarla?"
+      abstain_meaning: Optar por no votar o no poder votar sobre esta decisión.
+      abstain_prompt: "¿Por qué se abstiene o no se siente capaz de votar sobre esta decisión?"
     advice:
       process_subtitle: Busque asesoramiento sobre una decisión que necesita tomar
       process_introduction: <p>Busque asesoramiento sobre una decisión que necesita tomar, con el asesoramiento de personas afectadas o que tengan experiencia, para que pueda tomar una mejor decisión para su organización.</p><ul><li><p> El asesoramiento le ayudará a tomar una mejor decisión para su organización.</p></li><li><p> Fomentar las relaciones, las oportunidades de aprendizaje y la diversidad de aportaciones.</p></li><li><p> Estimular la iniciativa y la creatividad y hacer más agradable el trabajo.</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>Lea más acerca del proceso de Asesoramiento</u></a> .</p>
@@ -486,6 +493,7 @@ es:
       block_prompt: Explique su objeción a esta propuesta y por qué no debería seguir adelante.
       details_v2: "<h3><strong>¿Cuál es la decisión que debes tomar?</strong></h3><p></p><h3> <strong>¿Por qué es esto importante?</strong></h3><p></p><h3> <strong>¿Qué le estás pidiendo a la gente que haga?</strong></h3><p></p><p> Comparte tu postura y por qué. Si no estás de acuerdo, explica qué debería cambiar para que apoyes esta postura.</p>"
       process_introduction_v2: "<p><strong>El consenso</strong> se utiliza para tomar decisiones donde es fundamental que todos estén de acuerdo. Los participantes colaboran para comprender las necesidades de los demás y dar forma a la propuesta hasta que todo el grupo pueda apoyarla. Dado que las personas pueden cambiar su voto a medida que avanza la conversación, el proceso fomenta un diálogo genuino en lugar de una decisión improvisada. Requiere más paciencia que otros métodos, pero genera un compromiso más sólido.</p><p> Esta plantilla incluye la opción <strong>Bloquear</strong> por defecto. Esta opción no es adecuada para todos los grupos; puede ser controvertida o mal utilizada. Si no utiliza la opción Bloquear en su proceso de toma de decisiones, le recomendamos editar la plantilla para eliminarla.</p>"
+      abstain_prompt: "¿Por qué se abstiene o no se siente capaz de votar sobre esta decisión?"
     question_round:
       process_subtitle: Invitar a hacer preguntas aclaratorias para ayudar a las personas a comprender una propuesta.
       process_introduction: <p>Una ronda de preguntas es una oportunidad para que las personas hagan preguntas aclaratorias sobre la propuesta, de modo que todos entiendan la propuesta antes de decir lo que piensan sobre ella.</p><p> La ronda de preguntas de Loomio es una propuesta especial sin opción de votación. Permite a los participantes hacer preguntas dentro del tiempo establecido para la ronda.</p><p> Una ronda de preguntas se utiliza comúnmente como un paso en el proceso de consentimiento.</p><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Lea más sobre el proceso de consentimiento</a> .</p>
@@ -521,6 +529,7 @@ es:
       could_be_better_prompt: "¿Qué cambiarías?"
       needs_a_rethink: Necesita un replanteamiento
       needs_a_rethink_prompt: "¿Cual es tu preocupación?"
+      needs_a_rethink_meaning: Creo que este es el enfoque equivocado.
     gradients_of_agreement:
       process_subtitle: Expresar apoyo a una propuesta en una escala de 8 puntos
       process_introduction: "<p>La propuesta de Gradientes de acuerdo permite a los miembros de un grupo expresar su apoyo a una propuesta en grados en una escala, ofreciendo más formas de expresar apoyo que en términos de “de acuerdo” y “en desacuerdo”.</p><p> Utilice los gradientes de acuerdo como una ronda preliminar para probar el apoyo a una propuesta antes de pasar a un acuerdo formal.</p><p> Los gradientes de acuerdo permiten a las personas saber que se está formando una propuesta y las animan a participar. Es una oportunidad para escuchar a las personas, percibir sus sentimientos y responder adecuadamente, lo que abre la posibilidad de incorporar sus contribuciones para tomar una mejor decisión.</p>"
@@ -614,6 +623,11 @@ es:
       no_meaning: No apoyo esta propuesta
       no_prompt: "¿Por qué no apoyas esta propuesta?"
       outcome_statement: "<p>Gracias por participar en esta votación mayoritaria.</p>"
+    stv:
+      process_subtitle: Elegir a varios ganadores proporcionalmente
+      process_introduction: <p>El sistema de voto único transferible (STV, por sus siglas en inglés) es un método de representación proporcional para elecciones con múltiples ganadores. Los votantes clasifican a los candidatos por orden de preferencia. Los candidatos que alcanzan una cuota de votos resultan elegidos, y los votos sobrantes o de candidatos eliminados se transfieren a las siguientes preferencias.</p><p> Configure el número de escaños, el método de recuento (Scottish o Meek) y el tipo de cuota (Droop o Hare). Los resultados muestran un desglose ronda por ronda de cómo se transfirieron los votos.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/stv/index.html">Lea más sobre las elecciones STV</a> .</p>
+      title: Elegir a los miembros del comité
+      details: <h3 id="what-is-this-election-about"><strong>¿De qué se trata esta elección?</strong></h3><p></p><h3 id="how-many-seats"> <strong>¿Cuántos escaños se están cubriendo?</strong></h3><p></p><h3 id="who-are-the-candidates"> <strong>¿Quiénes son los candidatos?</strong></h3><p></p><p> Vota arrastrando a los candidatos para ordenarlos según tus preferencias. El puesto número 1 corresponde a tu candidato preferido. Puedes clasificar a tantos candidatos como quieras.</p>
   forward_mailer:
     bounce:
       subject: Tu mensaje a Loomio no se entregó.
@@ -674,3 +688,5 @@ es:
     pt: portugués
     zh: Chino (Tradicional, Taiwán)
     zh-HK: Chino (Tradicional, Taiwán)
+  upload:
+    file_too_large: El archivo es demasiado grande. El tamaño máximo de carga es %{limit}.

@@ -165,6 +165,7 @@ uk:
     ranked_choice: ранговий вибір
     score: оціночне опитування
     question: раунд питань
+    stv: Вибори на СТВ
   timezones:
     local: За місцевим часом (%{value})
   common:
@@ -314,6 +315,7 @@ uk:
       rearrange: Переставити
       save_template: Зберегти шаблон
       fork_template: Шаблон виделки
+      customize: Налаштувати
     formatting_help:
       label: Форматувати
       title: Дізнайтесь як використовувати Markdown для форматування текту
@@ -323,6 +325,8 @@ uk:
     opening_in: Відкриття %{time}
     read_more: Читати далі
     templates_admin_hint: Оскільки ви є адміністратором групи, ви можете приховати або видалити будь-які шаблони, які вам не потрібні, а решту відредагувати відповідно до своїх потреб.
+    read: Читати
+    unread: Непрочитане
   merge_accounts:
     modal:
       title: Об’єднати облікові записи
@@ -486,6 +490,11 @@ uk:
     changes_all_discussions_and_polls_in_group: Це змінює налаштування для всіх обговорень та опитувань у групі.
     normal_explained: Коли хтось вводить ваше ім’я в поле «Сповістити» в обговоренні чи опитуванні, або {'@'}згадує групу.
     aria_label: Форма зміни налаштувань електронної пошти
+    when_do_you_want_to_be_emailed_thread: Коли ви хочете отримати електронного листа щодо цієї теми?
+    loud_option: Будь-коли, коли хтось бере участь (Уся активність)
+    normal_option: Коли хтось хоче моєї уваги (коли мене повідомляють)
+    quiet_option: Немає електронних листів щодо цієї теми (Вимкнено)
+    quiet_explained: Ви не отримаєте електронного листа, навіть якщо хтось спробує вас повідомити.
   close_explanation_modal:
     close_thread: Закрити тему
     body: |
@@ -586,6 +595,12 @@ uk:
     showing_unread: Показано непрочитані
     add_comment: Додати коментар
     start_decision: Початок рішення
+    return: Назад
+    end: Кінець
+    notifications: Сповіщення
+    email_all_activity: Надіслати всю активність електронною поштою
+    email_notifications: Електронна пошта при отриманні сповіщення
+    email_none: Без електронних листів
   search_modal:
     all_content: Весь контент
     best_match: Найкращий матч
@@ -653,6 +668,7 @@ uk:
     invite_to_wip_poll: Запросіть залишити відгук
     invitations: Запрошення
     discussion_members: Учасники обговорення
+    thread_members: Учасники теми
   membership_dropdown:
     set_name_and_username: Встановіть ім'я та ім'я користувача
     set_title: Вкажіть назву
@@ -716,6 +732,7 @@ uk:
       discussion_edited: "%{actor} відредагував контекст обговорення: %{title}"
       discussion_closed: "%{actor} закрив обговорення: %{title}"
       new_discussion: "%{actor} розпочав обговорення: %{title}"
+      user_reminded: "%{actor} нагадує вам проголосувати за: %{title}"
     without_title:
       unknown_sender: Будь ласка, перегляньте електронний лист від нерозпізнаного відправника
       group_announced: "%{actor} запросив вас до групи"
@@ -777,7 +794,7 @@ uk:
       poll_closed_by_user: "%{actor} закрив %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} закривається через 24 години: %{title}"
       poll_closing_soon_author: 'Ваш %{poll_type} закривається через 24 години: %{title}'
-      poll_created: 'Голосувати: %{title}'
+      poll_created: "%{poll_type}: %{title}"
       poll_edited: "%{actor} оновив %{poll_type}: %{title}"
       poll_expired: "%{poll_type} закрито: %{title}"
       poll_expired_author: 'Опублікувати результат: %{title}'
@@ -795,6 +812,7 @@ uk:
       poll_announced: 'Голосувати: %{title}'
       discussion_edited: "%{actor} відредагував контекст обговорення: %{title}"
       discussion_closed: "%{actor} закрив обговорення: %{title}"
+      user_reminded: "%{actor} нагадує вам проголосувати за: %{title}"
   discussion_fork_actions:
     move: Перемістити
     moved: Переміщення коментарів може зайняти певний час
@@ -978,6 +996,8 @@ uk:
     poll_announced: "%{name} запросив %{length} людей проголосувати:"
     discussion_notification_history: Історія сповіщень про обговорення
     inviting_guests_to_discussion: Гості не належать до вашої групи та мають доступ лише до цього обговорення
+    topic_notification_history: Історія сповіщень про теми
+    notification_history: Історія сповіщень
   action_dock:
     actions_menu: Меню дій
     more_actions: Більше дій
@@ -1521,6 +1541,7 @@ uk:
     delete_account_subtitle: Повністю видаліть свій обліковий запис і вилучіть своє ім’я з минулих обговорень і рішень.
     updated_on_sign_in: Забезпечується вашим браузером і оновлюється під час входу
     translate_content_automatically: Автоматично перекладати контент моєю мовою
+    bot_account_warning: Облікові записи ботів не будуть запрошені до голосування в опитуваннях або участі в обговореннях.
   text_editor:
     x_of_y_characters: "%{x} / %{y} символів"
     select_text_to_link: Виберіть текст для посилання та повторіть спробу
@@ -1590,6 +1611,7 @@ uk:
   thread_preview:
     replies_count: "%{count} відповідей"
     unread_count: "%{count} непрочитаних"
+    items_count: "%{count} елементів"
   dashboard_page:
     polls_to_vote_on: Опитування для голосування
     no_polls_to_vote_on: Немає опитувань, за які вам потрібно проголосувати
@@ -1690,6 +1712,7 @@ uk:
     title: Переглянуто
     no_one: Ще ніхто не переглянув
     disabled_anonymous_polls: Історія перегляду вимкнена, оскільки ланцюжок містить анонімні опитування
+    thread_engagement: Thread engagement
   activity_card:
     count_responses: "%{count} відповідей"
     beginning: Початок
@@ -1731,6 +1754,22 @@ uk:
     nested_twice: Два рівні вкладених відповідей
     nested_twice_description: Не більше двох відступів для відповідей.
     changing_nesting_is_slow: Внесення змін до вкладення може потребувати кілька хвилин.
+    layout: Макет
+    items: Як відображати елементи
+    nested: Вкладені
+    timeline: Хронологія
+    timeline_description: Елементи в порядку їх публікації
+    threaded: Threaded
+    threaded_description: Відповіді, згруповані за темою, на яку вони відповідають
+    allow_concurrent_polls: Дозволити одночасні опитування
+    allow_multiple_polls: Дозволити кілька опитувань одночасно
+    allow_concurrent_polls_description: Дозволити одночасно відкрити більше одного опитування
+    allow_comments: Дозволити коментарі
+    allow_comments_description: Дозволити учасникам публікувати коментарі в цьому потоці
+    allow_reactions: Дозволити реакції
+    allow_reactions_description: Дозволити учасникам додавати реакції у вигляді емодзі
+    topic_settings: Налаштування теми
+    thread_settings: Налаштування теми
   delete_thread_form:
     title: Видалити тему
     body: Ви впевнені що хочете видалити цю тему?
@@ -1802,6 +1841,7 @@ uk:
     ranked_choice_title: Ранговий вибір
     gradients_of_agreement_title: Градієнти згоди
     majority_title: Більшість
+    stv_title: Вибори на СТВ
   poll_option_form:
     edit_option: Опція редагування
     option_name: Назва опції
@@ -1939,6 +1979,8 @@ uk:
     blank: Новий
     blank_subtitle: Створення нового шаблону опитування для певного процесу
     start_a_poll: Розпочати опитування
+    export_blt: Експортні бюлетені (BLT)
+    status: Статус
   poll_common_attachment_form:
     label: Вкладення
   poll_common_add_option:
@@ -2045,6 +2087,7 @@ uk:
     for_this_proposal_to_pass: 'Щоб ця пропозиція була прийнята:'
     for_this_poll_type_to_be_valid: 'Щоб цей %{poll_type} був дійсним:'
     voting_opens_at: Цей %{poll_type} відкривається для голосування %{time}
+    unable_to_vote: Вас не запросили голосувати за цей %{poll_type}
   poll_common_collapsed:
     by_who: від %{name}
   poll_common_calendar_invite:
@@ -2102,6 +2145,8 @@ uk:
     change_results_order: Змінити послідовність результатів
     none_of_the_above: "(Жоден з вищевказаних)"
     name_or_username: Ім'я або ім'я користувача
+    cast: Cast
+    uncast: Uncast
   poll_common_undecided_panel:
     show_undecided: Показати %{count} не визначилися
     show_invitations: Показати запрошення в очікувані
@@ -2370,6 +2415,7 @@ uk:
     want_to_set_password: Бажаєте наступного разу ввійти за допомогою пароля?
     change_your_password: Бажаєте встановити новий пароль?
     email_placeholder: you{'@'}example.com
+    turnstile_required: Будь ласка, завершіть перевірку, перш ніж продовжити.
   chatbot:
     configure_chatbot: Налаштувати чат-бота
     test_connection: Тестове підключення
@@ -2497,6 +2543,7 @@ uk:
     country_disclaimer: Країна заснована на IP-адресі користувача і є не дуже точною. Вважайте це лише приблизним керівництвом.
     total_discussions: Загальна кількість обговорень
     discussions_with_polls: Обговорення з опитуваннями
+    download_csv: Завантажити CSV-файл
   tips:
     youve_completed_all_the_steps: "\U0001F389 Ви виконали всі кроки!"
     getting_started_checklist: Контрольний список для початку роботи
@@ -2579,6 +2626,7 @@ uk:
       helptext_on: Не показуйте, як люди голосували, доки опитування не закриється
     short_reason_can_be_helpful: Короткі аргументи щодо голосування легше зрозуміти. Збірка стислих аргументів – чудовий ресурс для прийняття рішення.
     shuffle_options: Параметри перемішування
+    selected_people_only: Тільки вибрані люди
   poll_common_form:
     quorum: Кворум
     participation_quorum: Кворум участі
@@ -2629,6 +2677,8 @@ uk:
       time_poll_hint: Виборці вказують, коли вони вільні для зустрічі
       rank: Ранг
       time: Час
+      stv: Вибори на СТВ
+      stv_hint: Оберіть кількох переможців пропорційно, використовуючи один передаваний голос
     process: Процес
     process_name: Назва шаблону
     process_name_hint: Як називається цей шаблон? Наприклад, Порада щодо ролі, Перевірка температури, Затвердження протоколу
@@ -2689,6 +2739,7 @@ uk:
     create_poll_type: Створити %{poll_type}
     notify_voters_when_voting_opens: Повідомити виборців про початок голосування
     voters_notified_when_opens: Виборців буде повідомлено про початок голосування
+    who_may_vote: Хто може голосувати в цьому %{poll_type}?
   poll_receipts_page:
     verify_participants: Перевірити учасників
     see_votes_if_quorum_reached: Якщо голосування завершено і досягнуто кворуму, ви побачите, хто проголосував.
@@ -2751,6 +2802,7 @@ uk:
     start_discussion: Розпочати обговорення
     start_a_direct_discussion: Почати пряму дискусію
     these_are_templates: Це шаблони для обговорення у вашій групі.
+    start_a_new_discussion: Розпочати нове обговорення
   context_panel:
     thread_status:
       pinned: Це обговорення закріплено. Воно залишатиметься на початку списку обговорень групи для всіх користувачів.
@@ -2766,6 +2818,7 @@ uk:
     helptext: Закріплені обговорення завжди відображаються у списку обговорень групи.
   delete_discussion_form:
     discussion_deleted: Обговорення видалено
+    body: Ви впевнені, що хочете видалити цю тему?
   move_discussion_form:
     title: Перенести обговорення до іншої групи
     body: Група призначення
@@ -2782,3 +2835,55 @@ uk:
     opening_hour: Час роботи
     scheduled_hint: Опитування буде видимим, але голосувати за нього не можна буде до моменту відкриття.
     draft_hint: Це опитування буде збережено як чернетку. Встановіть дату відкриття або поставте позначку навпроти опції «Голосування відкривається негайно», коли будете готові розпочати голосування.
+  strand_members_list:
+    notify_members_or_invite_guests_info: Повідомляти учасників групи за іменем або запрошувати тих, хто не є учасниками, за адресою електронної пошти. Запрошені гості можуть брати участь у цьому обговоренні, але не матимуть доступу до інших обговорень групи.
+    notify_members_info: Введіть імена учасників групи, щоб повідомити їх про цей обговорення.
+    specified_voters_only_warning: У цій темі є опитування, де можуть голосувати лише вибрані люди. Додавання когось сюди не дасть йому права голосу — натомість використовуйте в опитуванні опцію «додати виборців».
+  poll_common_details_meta:
+    opened: Відкрито
+    opens: Відкривається
+    closed: ЗАЧИНЕНО
+    closes: Закривається
+    opened_at: Відкрито о
+    opening_at: Відкриття о
+    closed_at: Зачинено о
+    closing_at: Закриття о
+  poll_stv_vote_form:
+    helptext: Перетягніть кандидатів вище лінії, щоб ранжувати їх. Елементи нижче лінії не ранжуються. Перший ранг – ваш найбажаніший.
+    divider_text: перетягніть кандидатів вище цієї лінії, щоб ранжувати їх
+    stance_created: Голосування записано
+    stance_updated: Голосування оновлено
+  poll_stv_form:
+    settings_title: Налаштування виборів STV
+    settings_helptext: Налаштуйте кількість місць для заповнення, метод підрахунку та тип квоти для цих виборів.
+    seats_label: Кількість місць для заповнення
+    method_label: Метод підрахунку
+    method_scottish: Scottish STV (recommended)
+    method_meek: Meek STV
+    quota_label: Тип квоти
+    quota_droop: Droop quota (recommended)
+    quota_hare: Hare quota
+  poll_stv_results:
+    title: Результати виборів
+    elected: Обраний
+    not_elected: Не обраний
+    tied: Tie
+    no_candidates_elected: Жодного кандидата не обрано
+    round: "Round %{number}"
+    quota_info: "%{method}, %{quota_type} quota (%{quota} votes needed)"
+    method_scottish: Scottish STV
+    method_meek: Meek STV
+    quota_droop: Droop
+    quota_hare: Hare
+    elected_in_round: "Elected in round %{round}"
+    eliminated_in_round: "Eliminated in round %{round}"
+    tied_in_round: "Tied in round %{round}"
+    votes: голоси
+    candidate: Кандидат
+    round_elected: Обраний у раунді
+    first_preferences: Перші уподобання
+    final_tally: Остаточний підрахунок
+    quota_surplus: Надлишок
+    round_details: Деталі по кожному раунду
+    view_full_results: Переглянути повні результати
+    results_available_when_closed: Результати будуть доступні після завершення голосування

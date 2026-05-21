@@ -109,7 +109,7 @@ sv:
     manage:
       all: Inte behörig till %{action} %{subject}.
     add_guests:
-      all: Du måste uppgradera din Loomio-prenumeration för att lägga till gäster till din %{subject}. Alternativt kan du bjuda in dem att bli medlemmar i din grupp.
+      all: Du måste uppgradera din Loomio-prenumeration för att lägga till gäster. Alternativt kan du bjuda in dem att bli medlemmar i din grupp.
   errors:
     clear_cache: Lastningsproblem upptäcktes. Håll ned shift och tryck på ladda om, eller rensa webbläsarens cacheminne.
     404:
@@ -148,6 +148,7 @@ sv:
       body: Vi beklagar, men något gick fel. Vi har blivit informerade om det här problemet och vi kommer att titta på det inom kort.
     '404':
       body: Det begärda objektet hittades inte. Detta kan hända om en diskussion eller omröstning har raderats.
+    new_account_trial_group_limit: Nya konton är begränsade till en grupp. Kontakta supporten om du behöver fler.
   group:
     error:
       handle_must_begin_with_parent_handle: Måste börja med %{parent_handle}-
@@ -234,6 +235,7 @@ sv:
       notified: Du fick detta eftersom författaren meddelade dig.
       poll_subscribed: Du fick detta eftersom du prenumererar på omröstningen.
       discussion_subscribed: Du fick detta eftersom du prenumererar på diskussionen.
+      thread_subscribed: Du fick detta eftersom du prenumererar på tråden.
   user_mailer:
     group_export_ready:
       subject: Gruppdataexport för %{group_name}
@@ -366,6 +368,9 @@ sv:
     destroy_warning:
       subject: Din Loomio-grupp är schemalagd för radering.
       body: 'Din Loomio-grupp: "%{group}" har schemalagts för radering av %{deletor}. Om du inte vill att din grupp ska tas bort, vänligen svara på det här e-postmeddelandet. Om du är säker på att du vill ta bort gruppen behöver du inte göra någonting. Tack.'
+    trial_expired:
+      subject: Din Loomio-grupp kommer att raderas på grund av inaktivitet.
+      body: Din Loomio-grupp "%{group}" har varit inaktiv och kommer att raderas om 2 veckor. Om du inte vill att din grupp ska raderas, vänligen svara på det här e-postmeddelandet.
   poll_mailer:
     common:
       why_send_this: Du får det här e-postmeddelandet eftersom %{reason}
@@ -416,6 +421,8 @@ sv:
       disagree: Håller inte med
       disagree_meaning: Något i det här förslaget måste ändras innan jag kan stödja det.
       disagree_prompt: Hur skulle det här förslaget kunna förbättras så att ni kan stödja det?
+      abstain_meaning: Att välja att inte rösta, eller inte kunna, om detta beslut.
+      abstain_prompt: Varför avstår du från att rösta, eller känner dig inte i stånd att rösta om detta beslut?
     advice:
       process_subtitle: Sök råd om ett beslut du behöver fatta
       process_introduction: <p>Sök råd om ett beslut du behöver fatta, med råd från berörda personer eller som har expertis, så att du kan fatta ett bättre beslut för din organisation.</p><ul><li><p> Råd hjälper dig att fatta bättre beslut för din organisation.</p></li><li><p> Främja relationer, lärandemöjligheter och mångsidig input.</p></li><li><p> Stimulera initiativförmåga och kreativitet, och ett roligare arbete.</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>Läs mer om rådgivningsprocessen</u></a> .</p>
@@ -462,6 +469,7 @@ sv:
       block_prompt: Förklara din invändning mot förslaget och varför det inte bör genomföras
       details_v2: "<h3><strong>Vilket beslut behöver du fatta?</strong></h3><p></p><h3> <strong>Varför är detta viktigt?</strong></h3><p></p><h3> <strong>Vad ber du folk att göra?</strong></h3><p></p><p> Dela din ståndpunkt och varför. Om du inte håller med, förklara vad som skulle behöva förändras för att du ska kunna stödja detta.</p>"
       process_introduction_v2: "<p><strong>Konsensus</strong> används för beslut där det är viktigt att alla aktivt är överens. Deltagarna arbetar tillsammans för att förstå varandras behov och forma förslaget tills hela gruppen kan stödja det. Eftersom människor kan ändra sin röst allt eftersom samtalet utvecklas uppmuntrar processen till en genuin dialog snarare än ett engångsbeslut. Det kräver mer tålamod än andra metoder, men bygger det starkaste engagemanget.</p><p> Den här mallen innehåller ett <strong>blockeringsalternativ</strong> som standard. Blockering är inte lämpligt för alla grupper – det kan vara kontroversiellt eller missbrukas. Om du inte använder blockering i din beslutsprocess rekommenderar vi att du redigerar mallen för att ta bort den.</p>"
+      abstain_prompt: Varför avstår du från att rösta, eller känner dig inte i stånd att rösta om detta beslut?
     question_round:
       process_subtitle: Ställ förtydligande frågor för att hjälpa folk att förstå ett förslag
       process_introduction: <p>En frågerunda är en möjlighet för folk att ställa förtydligande frågor om förslaget, så att alla förstår förslaget innan de säger vad de tycker om det.</p><p> Loomio-frågerundan är ett specialförslag utan röstningsmöjligheter. Den gör det möjligt för deltagarna att ställa frågor inom en tidsram som du anger för rundan.</p><p> En frågerunda används ofta som ett steg i samtyckesprocessen.</p><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Läs mer om samtyckesprocessen</a> .</p>
@@ -497,6 +505,7 @@ sv:
       could_be_better_prompt: Vad skulle du ändra?
       needs_a_rethink: Behöver omprövas
       needs_a_rethink_prompt: Vad är din oro?
+      needs_a_rethink_meaning: Jag tror att detta är fel tillvägagångssätt
     gradients_of_agreement:
       process_subtitle: Uttryckligt stöd för ett förslag på en 8-gradig skala
       process_introduction: <p>Med hjälp av överenskommelsesgradienter kan medlemmar i en grupp uttrycka sitt stöd för ett förslag i grader på en skala, vilket erbjuder fler sätt att uttrycka stöd än i termer av "håller med" och "håller inte med".</p><p> Använd gradienter av överenskommelse som en preliminär omgång för att testa stöd för ett förslag innan man går vidare till en formell överenskommelse.</p><p> Gradienter av enighet låter människor veta att ett förslag håller på att utformas och uppmuntrar dem att engagera sig. Det är en möjlighet att lyssna på människor, känna av hur de känner och reagera på lämpligt sätt – vilket öppnar upp möjligheten att integrera deras bidrag för att fatta ett bättre beslut.</p>
@@ -590,6 +599,11 @@ sv:
       no_meaning: Jag stöder inte detta förslag
       no_prompt: Varför stöder ni inte detta förslag?
       outcome_statement: "<p>Tack för att du deltog i denna majoritetsomröstning.</p>"
+    stv:
+      process_subtitle: Välj flera vinnare proportionellt
+      process_introduction: <p>STV (Single Transferable Vote) är en proportionell representationsmetod för val med flera vinnare. Väljarna rangordnar kandidaterna i preferensordning. Kandidater som når en viss röstkvot väljs, och överskottsröster eller eliminerade röster överförs till nästa preferens.</p><p> Konfigurera antalet platser, räkningsmetod (skotsk eller Meek) och kvottyp (Droop eller Hare). Resultaten visar en omgång för omgång uppdelning av hur rösterna överfördes.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/stv/index.html">Läs mer om STV-valen</a> .</p>
+      title: Välja kommittémedlemmar
+      details: <h3 id="what-is-this-election-about"><strong>Vad handlar det här valet om?</strong></h3><p></p><h3 id="how-many-seats"> <strong>Hur många platser fylls?</strong></h3><p></p><h3 id="who-are-the-candidates"> <strong>Vilka är kandidaterna?</strong></h3><p></p><p> Rösta genom att dra kandidaterna till din önskade ordning. Rankning 1 är din mest föredragna kandidat. Du kan rangordna så många eller så få kandidater som du vill.</p>
   forward_mailer:
     bounce:
       subject: Ditt meddelande till Loomio levererades inte
@@ -650,3 +664,5 @@ sv:
     pt: Portugisiska
     zh: Kinesiska (traditionell, Taiwan)
     zh-HK: Kinesiska (traditionell, Taiwan)
+  upload:
+    file_too_large: Filen är för stor. Maximal uppladdningsstorlek är %{limit}.

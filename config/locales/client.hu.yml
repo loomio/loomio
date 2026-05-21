@@ -167,6 +167,7 @@ hu:
     ranked_choice: sorrend szavazás
     score: pontszám felmérés
     question: kérdéskör
+    stv: STV-választás
   timezones:
     local: Helyi idő (%{value})
   common:
@@ -316,6 +317,7 @@ hu:
       rearrange: Átrendezés
       save_template: Sablon mentése
       fork_template: Villa sablon
+      customize: Testreszabás
     formatting_help:
       label: Formázás
       title: Így használhatod a Markdown-t a szöveg formázására
@@ -325,6 +327,8 @@ hu:
     opening_in: Megnyitás %{time}
     read_more: További információ
     templates_admin_hint: Mivel csoportadminisztrátor vagy, elrejtheted vagy törölheted a nem kívánt sablonokat, a fennmaradókat pedig igényeid szerint szerkesztheted.
+    read: Olvas
+    unread: Nem olvasott
   merge_accounts:
     modal:
       title: Fiókok egyesítése
@@ -485,6 +489,11 @@ hu:
     changes_all_discussions_and_polls_in_group: Ez megváltoztatja a csoport összes beszélgetésének és szavazásának beállítását.
     normal_explained: Amikor valaki beírja a neved egy beszélgetés vagy szavazás „Értesítés” mezőjébe, vagy {'@'}megemlíti a csoportot.
     aria_label: E-mail-beállítások módosítása űrlap
+    when_do_you_want_to_be_emailed_thread: Mikor szeretnél e-mailt kapni erről a témáról?
+    loud_option: Bármikor, amikor valaki részt vesz (Minden tevékenység)
+    normal_option: Amikor valaki a figyelmemet akarja (Amikor értesítenek)
+    quiet_option: Nincsenek e-mailek erről a témáról (Kikapcsolva)
+    quiet_explained: Nem fogsz e-mailt kapni, még akkor sem, ha valaki megpróbál értesíteni.
   close_explanation_modal:
     close_thread: Téma lezárása
     body: "<p>Zárja be a régi vagy irreleváns szálakat, hogy eltávolítsa őket a nézetből, és jelezze, hogy a vita lezárult.</p><p> Továbbra is bárki hozzászólhat vagy szavazást indíthat egy lezárt szálban, de nem jelenik meg a csoport témaszállistáján vagy az irányítópulton.</p>"
@@ -583,6 +592,12 @@ hu:
     showing_unread: Olvasatlanok megjelenítése
     add_comment: Hozzászólás hozzáadása
     start_decision: Döntés megkezdése
+    return: Visszatérés
+    end: Vége
+    notifications: Értesítések
+    email_all_activity: Minden tevékenység e-mailben küldése
+    email_notifications: E-mail értesítés esetén
+    email_none: Nincsenek e-mailek
   search_modal:
     all_content: Minden tartalom
     best_match: Legjobb találat
@@ -650,6 +665,7 @@ hu:
     invite_to_wip_poll: Meghívás visszajelzésre
     invitations: Meghívások
     discussion_members: Fórumtagok
+    thread_members: A téma tagjai
   membership_dropdown:
     set_name_and_username: Állítsa be a nevet és a felhasználónevet
     set_title: Cím megadása
@@ -713,6 +729,7 @@ hu:
       discussion_edited: "%{actor} szerkesztette a vita kontextusát: %{title}"
       discussion_closed: "%{actor} lezárta a beszélgetést: %{title}"
       new_discussion: "%{actor} beszélgetést indított: %{title}"
+      user_reminded: "%{actor} emlékeztet, hogy szavazz erre: %{title}"
     without_title:
       unknown_sender: Kérjük, tekintse át az ismeretlen feladótól kapott e-mailt
       group_announced: "%{actor} meghívott egy csoportba"
@@ -774,7 +791,7 @@ hu:
       poll_closed_by_user: "%{actor} lezárta a %{poll_type}-t: %{title}"
       poll_closing_soon: "%{poll_type} 24 órán belül zárul: %{title}"
       poll_closing_soon_author: 'A %{poll_type} 24 óra múlva zárul: %{title}'
-      poll_created: 'Szavazat: %{title}'
+      poll_created: "%{poll_type}: %{title}"
       poll_edited: "%{actor} frissítette a(z) %{poll_type} elemet: %{title}"
       poll_expired: "%{poll_type} lezárult: %{title}"
       poll_expired_author: 'Következtetés közzététele: %{title}'
@@ -792,6 +809,7 @@ hu:
       poll_announced: 'Szavazat: %{title}'
       discussion_edited: "%{actor} szerkesztette a vita kontextusát: %{title}"
       discussion_closed: "%{actor} lezárta a beszélgetést: %{title}"
+      user_reminded: "%{actor} emlékeztet, hogy szavazz erre: %{title}"
   discussion_fork_actions:
     move: Mozgat
     moved: A megjegyzések áthelyezése eltarthat egy ideig
@@ -973,6 +991,8 @@ hu:
     poll_announced: "%{name} meghívott %{length} embert szavazásra:"
     discussion_notification_history: Beszélgetésértesítések előzményei
     inviting_guests_to_discussion: A vendégek nem tartoznak a csoportodhoz, és csak ehhez a beszélgetéshez férhetnek hozzá.
+    topic_notification_history: Téma értesítési előzményei
+    notification_history: Értesítési előzmények
   action_dock:
     actions_menu: Műveletek menü
     more_actions: Több akció
@@ -1506,6 +1526,7 @@ hu:
     delete_account_subtitle: Teljesen törölje fiókját, és távolítsa el a nevét a korábbi megbeszélésekből és döntésekből.
     updated_on_sign_in: A böngésző biztosítja, és bejelentkezéskor frissül
     translate_content_automatically: Tartalom automatikus fordítása a saját nyelvemre
+    bot_account_warning: A botfiókok nem kapnak meghívást szavazásra vagy beszélgetésekben való részvételre.
   text_editor:
     x_of_y_characters: "%{x} / %{y} karakter"
     select_text_to_link: Válassza ki a linkelni kívánt szöveget, és próbálja újra
@@ -1575,6 +1596,7 @@ hu:
   thread_preview:
     replies_count: "%{count} válasz"
     unread_count: "%{count} olvasatlan"
+    items_count: "%{count} elem"
   dashboard_page:
     polls_to_vote_on: Szavazások, amelyekre szavazni kell
     no_polls_to_vote_on: Nincsenek olyan szavazások, amelyekre szavazni kell
@@ -1671,6 +1693,7 @@ hu:
     title: Látta
     no_one: Még senki sem látta
     disabled_anonymous_polls: A megtekintési előzmények le vannak tiltva, mert a szál névtelen szavazásokat tartalmaz
+    thread_engagement: Thread engagement
   activity_card:
     count_responses: "%{count} válasz"
     beginning: Kezdet
@@ -1712,6 +1735,22 @@ hu:
     nested_twice: A beágyazott válaszok két szintje
     nested_twice_description: Legfeljebb kétszer behúzza a választ.
     changing_nesting_is_slow: A beágyazás módosításainak feldolgozása néhány percet vehet igénybe.
+    layout: Elrendezés
+    items: Hogyan jelenítsünk meg elemeket
+    nested: Beágyazott
+    timeline: Idővonal
+    timeline_description: Tételek a feladásuk sorrendjében
+    threaded: Threaded
+    threaded_description: Válaszok csoportosítva aszerint, hogy mire reagálnak
+    allow_concurrent_polls: Egyidejű szavazások engedélyezése
+    allow_multiple_polls: Több szavazás egyidejű engedélyezése
+    allow_concurrent_polls_description: Több szavazás egyidejű megnyitásának engedélyezése
+    allow_comments: Hozzászólások engedélyezése
+    allow_comments_description: A résztvevők hozzászólásokat tehetnek közzé ebben a témában
+    allow_reactions: Reakciók engedélyezése
+    allow_reactions_description: A résztvevők emoji reakciókat adhatnak hozzá
+    topic_settings: Témabeállítások
+    thread_settings: Szálbeállítások
   delete_thread_form:
     title: Törölje a témát
     body: Biztosan törli ezt a témát?
@@ -1781,6 +1820,7 @@ hu:
     ranked_choice_title: Sorrend választás
     gradients_of_agreement_title: Az egyetértés gradiensei
     majority_title: Többség
+    stv_title: STV választás
   poll_option_form:
     edit_option: Szerkesztési lehetőség
     option_name: Opció neve
@@ -1918,6 +1958,8 @@ hu:
     blank: Új
     blank_subtitle: Új szavazási sablon létrehozása egy adott folyamathoz
     start_a_poll: Szavazás indítása
+    export_blt: Export szavazólapok (BLT)
+    status: Állapot
   poll_common_attachment_form:
     label: Mellékletek
   poll_common_add_option:
@@ -2022,6 +2064,7 @@ hu:
     for_this_proposal_to_pass: 'Ahhoz, hogy ez a javaslat átmenjen:'
     for_this_poll_type_to_be_valid: 'Ahhoz, hogy ez a %{poll_type} érvényes legyen:'
     voting_opens_at: Ez a %{poll_type} megnyílt szavazásra %{time}
+    unable_to_vote: Nem kaptál meghívást szavazásra erre a(z) %{poll_type} elemre
   poll_common_collapsed:
     by_who: tőle %{name}
   poll_common_calendar_invite:
@@ -2079,6 +2122,8 @@ hu:
     change_results_order: Az eredmények sorrendjének módosítása
     none_of_the_above: "(A fentiek egyike sem)"
     name_or_username: Név vagy felhasználónév
+    cast: Cast
+    uncast: Uncast
   poll_common_undecided_panel:
     show_undecided: "%{count} bizonytalan megjelenítése"
     show_invitations: A függőben lévő meghívók megjelenítése
@@ -2347,6 +2392,7 @@ hu:
     want_to_set_password: Legközelebb jelszóval szeretne bejelentkezni?
     change_your_password: Szeretne új jelszót beállítani?
     email_placeholder: te{'@'}example.com
+    turnstile_required: Kérjük, a folytatás előtt végezze el az ellenőrzést.
   chatbot:
     configure_chatbot: A chatbot konfigurálása
     test_connection: Kapcsolat tesztelése
@@ -2472,6 +2518,7 @@ hu:
     country_disclaimer: Az ország a felhasználó IP-címén alapul, és nem túl pontos. Tekintse ezt csak hozzávetőleges útmutatónak.
     total_discussions: Összes megbeszélés
     discussions_with_polls: Beszélgetések szavazásokkal
+    download_csv: CSV letöltése
   tips:
     youve_completed_all_the_steps: "\U0001F389 Minden lépést elvégeztél!"
     getting_started_checklist: Első lépések ellenőrzőlistája
@@ -2554,6 +2601,7 @@ hu:
       helptext_on: Ne mutasd meg, hogyan szavaztak az emberek, amíg a szavazás le nem zárul
     short_reason_can_be_helpful: A rövid szavazási indokok könnyebben érthetők. A tömör indokok gyűjteménye nagyszerű forrás a döntéshozatalhoz.
     shuffle_options: Véletlenszerű lejátszási beállítások
+    selected_people_only: Csak kiválasztott személyek
   poll_common_form:
     quorum: Határozatképesség
     participation_quorum: Részvételi határozatképesség
@@ -2604,6 +2652,8 @@ hu:
       time_poll_hint: A választók jelzik, mikor tudnak találkozni
       rank: Rang
       time: Idő
+      stv: STV választás
+      stv_hint: Több nyertest arányosan válasszon ki egyetlen átruházható szavazat alapján
     process: Folyamat
     process_name: Sablon címe
     process_name_hint: 'Hogy hívják ezt a sablont? Pl.: Szerepköri tanácsadás, Hőmérséklet-ellenőrzés, Jegyzőkönyv jóváhagyása'
@@ -2664,6 +2714,7 @@ hu:
     create_poll_type: "%{poll_type} létrehozása"
     notify_voters_when_voting_opens: Értesítsék a szavazókat a szavazás megkezdéséről
     voters_notified_when_opens: A szavazókat értesíteni fogják, amikor megnyílik a szavazás
+    who_may_vote: Kik szavazhatnak ezen a %{poll_type}-on?
   poll_receipts_page:
     verify_participants: Résztvevők ellenőrzése
     see_votes_if_quorum_reached: Ha a szavazás lezárult és létrejött a határozatképző létszám, akkor láthatja, hogy kik szavaztak.
@@ -2726,6 +2777,7 @@ hu:
     start_discussion: Beszélgetés indítása
     start_a_direct_discussion: Közvetlen beszélgetés indítása
     these_are_templates: Ezek a csoportodban található beszélgetési sablonok.
+    start_a_new_discussion: Új beszélgetés indítása
   context_panel:
     thread_status:
       pinned: Ez a beszélgetés rögzítésre került. A csoport beszélgetési listájának tetején marad minden felhasználó számára.
@@ -2741,6 +2793,7 @@ hu:
     helptext: A rögzített beszélgetések mindig megjelennek a csoport beszélgetéseinek listájában.
   delete_discussion_form:
     discussion_deleted: Beszélgetés törölve
+    body: Biztosan törölni akarod ezt a témát?
   move_discussion_form:
     title: Vita áthelyezése egy másik csoportba
     body: Célcsoport
@@ -2757,3 +2810,55 @@ hu:
     opening_hour: Nyitvatartás
     scheduled_hint: A szavazás látható lesz, de a nyitásig nem lehet rá szavazni.
     draft_hint: Ez a szavazás vázlatként lesz mentve. Állítson be egy nyitási dátumot, vagy jelölje be a „A szavazás azonnal megnyílik” jelölőnégyzetet, amikor készen áll a szavazás megkezdésére.
+  strand_members_list:
+    notify_members_or_invite_guests_info: Értesítsd a csoport tagjait név szerint, vagy hívd meg a nem tagokat e-mail címükkel. A meghívott vendégek részt vehetnek ebben a beszélgetésben, de nem férhetnek hozzá a többi csoportbeszélgetéshez.
+    notify_members_info: Add meg a csoport tagjainak nevét, hogy értesítsd őket erről a beszélgetésről.
+    specified_voters_only_warning: Ebben a témában vannak szavazások, ahol csak kiválasztott személyek szavazhatnak. Ha valakit ide hozzáadsz, az nem ad neki szavazatot – használd helyette a „szavazók hozzáadása” lehetőséget a szavazáson.
+  poll_common_details_meta:
+    opened: Megnyitva
+    opens: Megnyílik
+    closed: Zárt
+    closes: Bezárások
+    opened_at: 'Megnyitva:'
+    opening_at: Megnyitó időpontja
+    closed_at: 'Zárva:'
+    closing_at: 'Záró dátum:'
+  poll_stv_vote_form:
+    helptext: Húzd a jelölteket a vonal fölé a rangsoroláshoz. A vonal alatti elemek rangsorolatlanok. Az 1. rangsor a legkedvezőbb.
+    divider_text: húzd a jelölteket e vonal fölé a rangsoroláshoz
+    stance_created: Szavazat rögzítése
+    stance_updated: Szavazat frissítve
+  poll_stv_form:
+    settings_title: STV választási beállítások
+    settings_helptext: Konfigurálja a betöltendő helyek számát, a számlálási módszert és a kvóta típusát ehhez a választáshoz.
+    seats_label: Betöltendő helyek száma
+    method_label: Számolási módszer
+    method_scottish: Scottish STV (recommended)
+    method_meek: Meek STV
+    quota_label: Kvóta típusa
+    quota_droop: Droop quota (recommended)
+    quota_hare: Hare quota
+  poll_stv_results:
+    title: Választási eredmények
+    elected: Megválasztott
+    not_elected: Nem választották meg
+    tied: Tie
+    no_candidates_elected: Nincsenek megválasztott jelöltek
+    round: "Round %{number}"
+    quota_info: "%{method}, %{quota_type} quota (%{quota} votes needed)"
+    method_scottish: Scottish STV
+    method_meek: Meek STV
+    quota_droop: Droop
+    quota_hare: Hare
+    elected_in_round: "Elected in round %{round}"
+    eliminated_in_round: "Eliminated in round %{round}"
+    tied_in_round: "Tied in round %{round}"
+    votes: szavazatok
+    candidate: Jelölt
+    round_elected: Megválasztott forduló
+    first_preferences: Elsődleges beállítások
+    final_tally: Végső összesítés
+    quota_surplus: Többlet
+    round_details: Körről körre részletek
+    view_full_results: Teljes eredmények megtekintése
+    results_available_when_closed: Az eredmények a szavazás lezárultával lesznek elérhetők

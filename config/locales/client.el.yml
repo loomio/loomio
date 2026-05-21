@@ -165,6 +165,7 @@ el:
     ranked_choice: κατάταξης επιλογής
     score: δημοσκόπηση βαθμολογίας
     question: γύρος ερωτήσεων
+    stv: Εκλογές STV
   timezones:
     local: Τοπική ώρα (%{value})
   common:
@@ -314,6 +315,7 @@ el:
       rearrange: Τακτοποιώ
       save_template: Αποθήκευση προτύπου
       fork_template: Πρότυπο πιρουνιού
+      customize: Προσαρμογή
     formatting_help:
       label: Μορφοποίηση
       title: Μάθετε πώς να χρησιμοποιείτε το Markdown για να μορφοποιήσετε το κείμενό σας
@@ -323,6 +325,8 @@ el:
     opening_in: Άνοιγμα %{time}
     read_more: Διαβάστε περισσότερα
     templates_admin_hint: Επειδή είστε διαχειριστής ομάδας, μπορείτε να αποκρύψετε ή να διαγράψετε τυχόν πρότυπα που δεν θέλετε και να επεξεργαστείτε τα υπόλοιπα ανάλογα με τις ανάγκες σας.
+    read: Ανάγνωση
+    unread: Αδιάβαστος
   merge_accounts:
     modal:
       title: Συγχώνευση λογαριασμών
@@ -483,6 +487,11 @@ el:
     changes_all_discussions_and_polls_in_group: Αυτό αλλάζει τη ρύθμιση για όλες τις συζητήσεις και τις δημοσκοπήσεις στην ομάδα.
     normal_explained: Όταν κάποιος εισάγει το όνομά σας στο πεδίο "Ειδοποίηση" μιας συζήτησης ή μιας δημοσκόπησης, ή {'@'}αναφέρει την ομάδα.
     aria_label: Φόρμα αλλαγής ρυθμίσεων ηλεκτρονικού ταχυδρομείου
+    when_do_you_want_to_be_emailed_thread: Πότε θέλετε να λάβετε email σχετικά με αυτό το νήμα;
+    loud_option: Οποιαδήποτε στιγμή κάποιος συμμετέχει (Όλη η δραστηριότητα)
+    normal_option: Όταν κάποιος θέλει την προσοχή μου (Όταν ειδοποιηθεί)
+    quiet_option: Δεν υπάρχουν μηνύματα ηλεκτρονικού ταχυδρομείου σχετικά με αυτό το νήμα (Απενεργοποιημένο)
+    quiet_explained: Δεν θα λάβετε email, ακόμα και όταν κάποιος προσπαθήσει να σας ειδοποιήσει.
   close_explanation_modal:
     close_thread: Κλείστε το νήμα
     body: "<p>Κλείστε παλιά ή άσχετα νήματα για να τα αφαιρέσετε από την προβολή και να υποδείξετε ότι η συζήτηση έχει κλείσει.</p><p> Οποιοσδήποτε μπορεί ακόμα να σχολιάσει ή να ξεκινήσει μια δημοσκόπηση σε ένα κλειστό νήμα, αλλά δεν θα εμφανίζεται στη λίστα νημάτων της ομάδας ή στον πίνακα ελέγχου.</p>"
@@ -581,6 +590,12 @@ el:
     showing_unread: Εμφάνιση μη αναγνωσμένων
     add_comment: Προσθήκη σχολίου
     start_decision: Απόφαση έναρξης
+    return: Επιστροφή
+    end: Τέλος
+    notifications: Ειδοποιήσεις
+    email_all_activity: Email για όλη τη δραστηριότητα
+    email_notifications: Email όταν ειδοποιηθείτε
+    email_none: Χωρίς email
   search_modal:
     all_content: Όλο το περιεχόμενο
     best_match: Ταιριάζει καλύτερα
@@ -648,6 +663,7 @@ el:
     invite_to_wip_poll: Προσκαλέστε να δώσετε σχόλια
     invitations: Προσκλήσεις
     discussion_members: Μέλη συζήτησης
+    thread_members: Μέλη νήματος
   membership_dropdown:
     set_name_and_username: Ορίστε όνομα και όνομα χρήστη
     set_title: Ορισμός τίτλου
@@ -711,6 +727,7 @@ el:
       discussion_edited: 'Ο %{actor} επεξεργάστηκε το περιεχόμενο της συζήτησης: %{title}'
       discussion_closed: 'Ο %{actor} έκλεισε τη συζήτηση: %{title}'
       new_discussion: 'Ο/Η %{actor} ξεκίνησε μια συζήτηση: %{title}'
+      user_reminded: 'Ο χρήστης %{actor} σας υπενθυμίζει να ψηφίσετε για: %{title}'
     without_title:
       unknown_sender: Ελέγξτε τα μηνύματα ηλεκτρονικού ταχυδρομείου από μη αναγνωρισμένο αποστολέα
       group_announced: Ο %{actor} σας προσκάλεσε σε μια ομάδα
@@ -772,7 +789,7 @@ el:
       poll_closed_by_user: 'Ο χρήστης %{actor} έκλεισε το %{poll_type}: %{title}'
       poll_closing_soon: "%{poll_type} κλείνει σε 24 ώρες: %{title}"
       poll_closing_soon_author: 'Η %{poll_type} σας κλείνει σε 24 ώρες: %{title}'
-      poll_created: 'Ψηφοφορία: %{title}'
+      poll_created: "%{poll_type}: %{title}"
       poll_edited: 'Ο χρήστης %{actor} ενημέρωσε το %{poll_type}: %{title}'
       poll_expired: 'Το %{poll_type} έκλεισε: %{title}'
       poll_expired_author: 'Δημοσίευση αποτελέσματος: %{title}'
@@ -790,6 +807,7 @@ el:
       poll_announced: 'Ψηφοφορία: %{title}'
       discussion_edited: 'Ο %{actor} επεξεργάστηκε το περιεχόμενο της συζήτησης: %{title}'
       discussion_closed: 'Ο %{actor} έκλεισε τη συζήτηση: %{title}'
+      user_reminded: 'Ο χρήστης %{actor} σας υπενθυμίζει να ψηφίσετε για: %{title}'
   discussion_fork_actions:
     move: Κίνηση
     moved: Μετακινώντας τα σχόλια, αυτό μπορεί να διαρκέσει λίγο
@@ -969,6 +987,8 @@ el:
     poll_announced: 'Ο χρήστης %{name} προσκάλεσε %{length} άτομα να ψηφίσουν:'
     discussion_notification_history: Ιστορικό ειδοποιήσεων συζήτησης
     inviting_guests_to_discussion: Οι επισκέπτες δεν ανήκουν στην ομάδα σας και έχουν πρόσβαση μόνο σε αυτήν τη συζήτηση
+    topic_notification_history: Ιστορικό ειδοποιήσεων νημάτων
+    notification_history: Ιστορικό ειδοποιήσεων
   action_dock:
     actions_menu: Μενού ενεργειών
     more_actions: Περισσότερες δράσεις
@@ -1502,6 +1522,7 @@ el:
     delete_account_subtitle: Διαγράψτε πλήρως τον λογαριασμό σας και αφαιρέστε το όνομά σας από προηγούμενες συζητήσεις και αποφάσεις.
     updated_on_sign_in: Παρέχεται από το πρόγραμμα περιήγησής σας και ενημερώνεται όταν συνδέεστε
     translate_content_automatically: Αυτόματη μετάφραση περιεχομένου στη γλώσσα μου
+    bot_account_warning: Οι λογαριασμοί bot δεν θα προσκληθούν να ψηφίσουν σε δημοσκοπήσεις ή να συμμετάσχουν σε συζητήσεις.
   text_editor:
     x_of_y_characters: "%{x} / %{y} χαρακτήρες"
     select_text_to_link: Επιλέξτε κείμενο για σύνδεση και δοκιμάστε ξανά
@@ -1571,6 +1592,7 @@ el:
   thread_preview:
     replies_count: "%{count} απαντήσεις"
     unread_count: "%{count} μη αναγνωσμένα"
+    items_count: "%{count} στοιχεία"
   dashboard_page:
     polls_to_vote_on: Δημοσκοπήσεις για ψηφοφορία
     no_polls_to_vote_on: Δεν υπάρχουν δημοσκοπήσεις για τις οποίες χρειάζεται να ψηφίσετε
@@ -1667,6 +1689,7 @@ el:
     title: Θεάθηκε από
     no_one: Κανείς δεν το έχει δει ακόμα αυτό
     disabled_anonymous_polls: Το ιστορικό προβολής είναι απενεργοποιημένο επειδή το νήμα περιέχει ανώνυμες δημοσκοπήσεις
+    thread_engagement: Thread engagement
   activity_card:
     count_responses: "%{count} απαντήσεις"
     beginning: Αρχή
@@ -1708,6 +1731,22 @@ el:
     nested_twice: Δύο επίπεδα ένθετων απαντήσεων
     nested_twice_description: Η εσοχή απαντά το πολύ δύο φορές.
     changing_nesting_is_slow: Η επεξεργασία των αλλαγών στην ένθεση μπορεί να διαρκέσει μερικά λεπτά.
+    layout: Σχέδιο
+    items: Πώς να εμφανίσετε αντικείμενα
+    nested: Ένθετο
+    timeline: Χρονολόγιο
+    timeline_description: Αντικείμενα με τη σειρά που δημοσιεύτηκαν
+    threaded: Threaded
+    threaded_description: Απαντήσεις ομαδοποιημένες κάτω από το θέμα στο οποίο απαντούν
+    allow_concurrent_polls: Επιτρέψτε ταυτόχρονες δημοσκοπήσεις
+    allow_multiple_polls: Επιτρέψτε πολλαπλές δημοσκοπήσεις ταυτόχρονα
+    allow_concurrent_polls_description: Να επιτρέπεται η ταυτόχρονη λειτουργία περισσότερων από μίας δημοσκοπήσεων
+    allow_comments: Επιτρέπονται σχόλια
+    allow_comments_description: Επιτρέψτε στους συμμετέχοντες να δημοσιεύουν σχόλια σε αυτό το νήμα
+    allow_reactions: Επιτρέψτε αντιδράσεις
+    allow_reactions_description: Επιτρέψτε στους συμμετέχοντες να προσθέσουν αντιδράσεις emoji
+    topic_settings: Ρυθμίσεις θέματος
+    thread_settings: Ρυθμίσεις νήματος
   delete_thread_form:
     title: Διαγραφή νήματος
     body: Είστε βέβαιοι ότι θέλετε να διαγράψετε αυτό το νήμα;
@@ -1774,6 +1813,7 @@ el:
     ranked_choice_title: Κατάταξη επιλογή
     gradients_of_agreement_title: Διαβαθμίσεις συμφωνίας
     majority_title: Πλειοψηφία
+    stv_title: Εκλογές STV
   poll_option_form:
     edit_option: Επιλογή επεξεργασίας
     option_name: Όνομα επιλογής
@@ -1911,6 +1951,8 @@ el:
     blank: Νέος
     blank_subtitle: Δημιουργήστε ένα νέο πρότυπο δημοσκόπησης για μια συγκεκριμένη διεργασία
     start_a_poll: Έναρξη δημοσκόπησης
+    export_blt: Εξαγωγή ψηφοδελτίων (BLT)
+    status: Κατάσταση
   poll_common_attachment_form:
     label: Συνημμένα
   poll_common_add_option:
@@ -2015,6 +2057,7 @@ el:
     for_this_proposal_to_pass: 'Για να περάσει αυτή η πρόταση:'
     for_this_poll_type_to_be_valid: 'Για να είναι έγκυρο αυτό το %{poll_type}:'
     voting_opens_at: Αυτό το %{poll_type} ανοίγει για ψηφοφορία %{time}
+    unable_to_vote: Δεν έχετε προσκληθεί να ψηφίσετε σε αυτό το %{poll_type}
   poll_common_collapsed:
     by_who: από %{name}
   poll_common_calendar_invite:
@@ -2072,6 +2115,8 @@ el:
     change_results_order: Αλλαγή σειράς αποτελεσμάτων
     none_of_the_above: "(Κανένα από τα παραπάνω)"
     name_or_username: Όνομα ή όνομα χρήστη
+    cast: Cast
+    uncast: Uncast
   poll_common_undecided_panel:
     show_undecided: Εμφάνιση %{count} αναποφάσιστων
     show_invitations: Εμφάνιση προσκλήσεων σε εκκρεμότητα
@@ -2340,6 +2385,7 @@ el:
     want_to_set_password: Θέλετε να συνδεθείτε με κωδικό πρόσβασης την επόμενη φορά;
     change_your_password: Θέλετε να ορίσετε νέο κωδικό πρόσβασης;
     email_placeholder: εσείς{'@'}example.com
+    turnstile_required: Ολοκληρώστε την επαλήθευση πριν συνεχίσετε.
   chatbot:
     configure_chatbot: Διαμόρφωση chatbot
     test_connection: ΔΟΚΙΜΗ ΣΥΝΔΕΣΗΣ
@@ -2465,6 +2511,7 @@ el:
     country_disclaimer: Η χώρα βασίζεται στη διεύθυνση IP του χρήστη και δεν είναι πολύ ακριβής. Θεωρήστε αυτόν μόνο έναν πρόχειρο οδηγό.
     total_discussions: Σύνολο συζητήσεων
     discussions_with_polls: Συζητήσεις με δημοσκοπήσεις
+    download_csv: Λήψη CSV
   tips:
     youve_completed_all_the_steps: "\U0001F389 Ολοκληρώσατε όλα τα βήματα!"
     getting_started_checklist: Λίστα ελέγχου για το ξεκίνημα - Λίστα ελέγχου για το ξεκίνημα
@@ -2547,6 +2594,7 @@ el:
       helptext_on: Μην εμφανίζετε τον τρόπο με τον οποίο ψήφισαν οι άνθρωποι μέχρι να κλείσει η ψηφοφορία
     short_reason_can_be_helpful: Οι σύντομες αιτιολογήσεις ψήφου είναι πιο εύκολα κατανοητές. Μια συλλογή συνοπτικών αιτιολογήσεων αποτελεί εξαιρετική πηγή για τη λήψη μιας απόφασης.
     shuffle_options: Επιλογές τυχαίας αναπαραγωγής
+    selected_people_only: Μόνο επιλεγμένα άτομα
   poll_common_form:
     quorum: Απαρτία
     participation_quorum: Απαρτία συμμετοχής
@@ -2597,6 +2645,8 @@ el:
       time_poll_hint: Οι ψηφοφόροι υποδεικνύουν πότε είναι διαθέσιμοι για να συναντηθούν
       rank: Τάξη
       time: Φορά
+      stv: Εκλογές STV
+      stv_hint: Εκλέξτε πολλαπλούς νικητές αναλογικά χρησιμοποιώντας τη Μοναδική Μεταβιβάσιμη Ψήφο
     process: Διαδικασία
     process_name: Τίτλος προτύπου
     process_name_hint: Πώς ονομάζετε αυτό το πρότυπο; Π.χ. Συμβουλές για ρόλους, Έλεγχος θερμοκρασίας, Έγκριση πρακτικών
@@ -2657,6 +2707,7 @@ el:
     create_poll_type: Δημιουργία %{poll_type}
     notify_voters_when_voting_opens: Ειδοποιήστε τους ψηφοφόρους όταν ανοίξει η ψηφοφορία
     voters_notified_when_opens: Οι ψηφοφόροι θα ειδοποιηθούν όταν ανοίξει η ψηφοφορία
+    who_may_vote: Ποιος μπορεί να ψηφίσει σε αυτό το %{poll_type};
   poll_receipts_page:
     verify_participants: Επαλήθευση συμμετεχόντων
     see_votes_if_quorum_reached: Εάν η ψηφοφορία έχει ολοκληρωθεί και έχει επιτευχθεί απαρτία, θα δείτε ποιος ψήφισε.
@@ -2719,6 +2770,7 @@ el:
     start_discussion: Έναρξη συζήτησης
     start_a_direct_discussion: Ξεκινήστε μια άμεση συζήτηση
     these_are_templates: Αυτά είναι τα πρότυπα συζήτησης στην ομάδα σας.
+    start_a_new_discussion: Έναρξη νέας συζήτησης
   context_panel:
     thread_status:
       pinned: Αυτή η συζήτηση έχει καρφιτσωθεί. Θα παραμείνει στην κορυφή της λίστας συζητήσεων της ομάδας για όλους τους χρήστες.
@@ -2734,6 +2786,7 @@ el:
     helptext: Οι καρφιτσωμένες συζητήσεις εμφανίζονται πάντα στη λίστα συζητήσεων της ομάδας.
   delete_discussion_form:
     discussion_deleted: Η συζήτηση διαγράφηκε
+    body: Είστε σίγουροι ότι θέλετε να διαγράψετε αυτό το νήμα;
   move_discussion_form:
     title: Μετακίνηση συζήτησης σε άλλη ομάδα
     body: Ομάδα προορισμού
@@ -2750,3 +2803,55 @@ el:
     opening_hour: Ώρα ανοίγματος
     scheduled_hint: Η δημοσκόπηση θα είναι ορατή αλλά δεν θα μπορεί να ψηφιστεί μέχρι την ώρα έναρξης.
     draft_hint: Αυτή η δημοσκόπηση θα αποθηκευτεί ως προσχέδιο. Ορίστε μια ημερομηνία έναρξης ή επιλέξτε "Η ψηφοφορία ξεκινά αμέσως" όταν είστε έτοιμοι να ξεκινήσετε την ψηφοφορία.
+  strand_members_list:
+    notify_members_or_invite_guests_info: Ειδοποιήστε τα μέλη της ομάδας ονομαστικά ή προσκαλέστε μη μέλη μέσω διεύθυνσης ηλεκτρονικού ταχυδρομείου. Οι προσκεκλημένοι μπορούν να συμμετάσχουν σε αυτό το νήμα, αλλά δεν θα έχουν πρόσβαση σε άλλα νήματα της ομάδας.
+    notify_members_info: Εισαγάγετε τα ονόματα των μελών της ομάδας για να τα ειδοποιήσετε σχετικά με αυτό το νήμα.
+    specified_voters_only_warning: Αυτό το νήμα έχει δημοσκοπήσεις όπου μόνο επιλεγμένα άτομα μπορούν να ψηφίσουν. Η προσθήκη κάποιου εδώ δεν θα του δώσει ψήφο — χρησιμοποιήστε την επιλογή "προσθήκη ψηφοφόρων" στην δημοσκόπηση.
+  poll_common_details_meta:
+    opened: Άνοιξε
+    opens: Ανοίγει
+    closed: Κλειστό
+    closes: Κλείνει
+    opened_at: Άνοιξε στις
+    opening_at: Ανοίγει στις
+    closed_at: Κλειστά στις
+    closing_at: Κλείνει στις
+  poll_stv_vote_form:
+    helptext: Σύρετε τους υποψηφίους πάνω από τη γραμμή για να τους κατατάξετε. Τα στοιχεία κάτω από τη γραμμή δεν έχουν κατάταξη. Η Κατάταξη 1 είναι η προτιμότερη.
+    divider_text: σύρετε τους υποψηφίους πάνω από αυτήν τη γραμμή για να τους κατατάξετε
+    stance_created: Καταγράφηκε η ψήφος
+    stance_updated: Η ψήφος ενημερώθηκε
+  poll_stv_form:
+    settings_title: Ρυθμίσεις Εκλογών STV
+    settings_helptext: Διαμορφώστε τον αριθμό των εδρών που θα καλυφθούν, τη μέθοδο καταμέτρησης και τον τύπο ποσόστωσης για αυτές τις εκλογές.
+    seats_label: Αριθμός θέσεων προς πλήρωση
+    method_label: Μέθοδος καταμέτρησης
+    method_scottish: Scottish STV (recommended)
+    method_meek: Meek STV
+    quota_label: Τύπος ποσόστωσης
+    quota_droop: Droop quota (recommended)
+    quota_hare: Hare quota
+  poll_stv_results:
+    title: Εκλογικά αποτελέσματα
+    elected: Εκλεγμένος
+    not_elected: Δεν εκλέχθηκε
+    tied: Tie
+    no_candidates_elected: Δεν εκλέχθηκαν υποψήφιοι
+    round: "Round %{number}"
+    quota_info: "%{method}, %{quota_type} quota (%{quota} votes needed)"
+    method_scottish: Scottish STV
+    method_meek: Meek STV
+    quota_droop: Droop
+    quota_hare: Hare
+    elected_in_round: "Elected in round %{round}"
+    eliminated_in_round: "Eliminated in round %{round}"
+    tied_in_round: "Tied in round %{round}"
+    votes: ψήφοι
+    candidate: Υποψήφιος
+    round_elected: Γύρος εκλογής
+    first_preferences: Πρώτες προτιμήσεις
+    final_tally: Τελική καταμέτρηση
+    quota_surplus: Πλεόνασμα
+    round_details: Λεπτομέρειες γύρο προς γύρο
+    view_full_results: Δείτε τα πλήρη αποτελέσματα
+    results_available_when_closed: Τα αποτελέσματα θα είναι διαθέσιμα όταν ολοκληρωθεί η ψηφοφορία

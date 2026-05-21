@@ -165,6 +165,7 @@ hr:
     ranked_choice: rangirani izbor
     score: rezultat ankete
     question: krug pitanja
+    stv: Izbori za STV
   timezones:
     local: Lokalno vrijeme (%{value})
   common:
@@ -314,6 +315,7 @@ hr:
       rearrange: Preurediti
       save_template: Spremi predložak
       fork_template: Predložak vilice
+      customize: Prilagodi
     formatting_help:
       label: Oblikovanje
       title: Naučite kako koristiti Markdown za oblikovanje teksta
@@ -323,6 +325,8 @@ hr:
     opening_in: Otvaranje %{time}
     read_more: Pročitajte više
     templates_admin_hint: Budući da ste administrator grupe, možete sakriti ili izbrisati sve predloške koje ne želite, a preostale urediti prema svojim potrebama.
+    read: Čitaj
+    unread: Nepročitano
   merge_accounts:
     modal:
       title: Spajanje računa
@@ -483,6 +487,11 @@ hr:
     changes_all_discussions_and_polls_in_group: Ovo mijenja postavku za sve rasprave i ankete u grupi.
     normal_explained: Kada netko unese vaše ime u polje "Obavijesti" u raspravi ili anketi ili {'@'}spomene grupu.
     aria_label: Obrazac za promjenu postavki e-pošte
+    when_do_you_want_to_be_emailed_thread: Kada želite primiti e-poruku o ovoj temi?
+    loud_option: Kad god netko sudjeluje (sve aktivnosti)
+    normal_option: Kad netko želi moju pažnju (Kad je obaviješten)
+    quiet_option: Nema e-poruka o ovoj temi (Isključeno)
+    quiet_explained: Nećete dobiti e-poštu, čak ni kada vas netko pokuša obavijestiti.
   close_explanation_modal:
     close_thread: Zatvori nit
     body: "<p>Zatvorite stare ili nevažne teme kako biste ih uklonili iz prikaza i označili da je rasprava zatvorena.</p><p> Svatko i dalje može komentirati ili pokrenuti anketu u zatvorenoj niti, ali se neće pojaviti na popisu niti grupe ili na nadzornoj ploči.</p>"
@@ -581,6 +590,12 @@ hr:
     showing_unread: Prikazuje se nepročitano
     add_comment: Dodaj komentar
     start_decision: Započni odluku
+    return: Povratak
+    end: Kraj
+    notifications: Obavijesti
+    email_all_activity: Pošalji e-poštom sve aktivnosti
+    email_notifications: E-pošta prilikom obavijesti
+    email_none: Nema e-poruka
   search_modal:
     all_content: Sav sadržaj
     best_match: Najbolji spoj
@@ -648,6 +663,7 @@ hr:
     invite_to_wip_poll: Pozovite da date povratne informacije
     invitations: Pozivnice
     discussion_members: Članovi rasprave
+    thread_members: Članovi teme
   membership_dropdown:
     set_name_and_username: Postavite ime i korisničko ime
     set_title: Postavite naslov
@@ -711,6 +727,7 @@ hr:
       discussion_edited: "%{actor} je uredio/la kontekst rasprave: %{title}"
       discussion_closed: "%{actor} je zatvorio raspravu: %{title}"
       new_discussion: "%{actor} je započeo raspravu: %{title}"
+      user_reminded: "%{actor} vas podsjeća da glasate za: %{title}"
     without_title:
       unknown_sender: Pregledajte e-poštu neprepoznatog pošiljatelja
       group_announced: "%{actor} vas je pozvao u grupu"
@@ -772,7 +789,7 @@ hr:
       poll_closed_by_user: "%{actor} je zatvorio %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} se zatvara za 24 sata: %{title}"
       poll_closing_soon_author: 'Vaša anketa %{poll_type} zatvara se za 24 sata: %{title}'
-      poll_created: 'Glas: %{title}'
+      poll_created: "%{poll_type}: %{title}"
       poll_edited: "%{actor} je ažurirao/la %{poll_type}: %{title}"
       poll_expired: "%{poll_type} je zatvoren: %{title}"
       poll_expired_author: 'Objavite rezultat: %{title}'
@@ -790,6 +807,7 @@ hr:
       poll_announced: 'Glas: %{title}'
       discussion_edited: "%{actor} je uredio/la kontekst rasprave: %{title}"
       discussion_closed: "%{actor} je zatvorio raspravu: %{title}"
+      user_reminded: "%{actor} vas podsjeća da glasate za: %{title}"
   discussion_fork_actions:
     move: Potez
     moved: Dirljivi komentari, ovo bi moglo potrajati
@@ -969,6 +987,8 @@ hr:
     poll_announced: "%{name} je pozvao %{length} ljudi da glasaju:"
     discussion_notification_history: Povijest obavijesti o raspravi
     inviting_guests_to_discussion: Gosti ne pripadaju vašoj grupi i imaju pristup samo ovoj raspravi
+    topic_notification_history: Povijest obavijesti o temama
+    notification_history: Povijest obavijesti
   action_dock:
     actions_menu: Izbornik radnji
     more_actions: Vise akcije
@@ -1502,6 +1522,7 @@ hr:
     delete_account_subtitle: Potpuno izbrišite svoj račun i uklonite svoje ime iz prošlih rasprava i odluka.
     updated_on_sign_in: Dostavlja vaš preglednik i ažurira se kada se prijavite
     translate_content_automatically: Automatski prevedi sadržaj na moj jezik
+    bot_account_warning: Bot računi neće biti pozvani da glasaju na anketama ili sudjeluju u raspravama
   text_editor:
     x_of_y_characters: "%{x} / %{y} znakova"
     select_text_to_link: Odaberite tekst za povezivanje i pokušajte ponovno
@@ -1571,6 +1592,7 @@ hr:
   thread_preview:
     replies_count: "%{count} odgovora"
     unread_count: "%{count} nepročitano"
+    items_count: "%{count} stavki"
   dashboard_page:
     polls_to_vote_on: Ankete za glasanje
     no_polls_to_vote_on: Nema anketa za koje morate glasati
@@ -1667,6 +1689,7 @@ hr:
     title: vidio od
     no_one: Ovo još nitko nije vidio
     disabled_anonymous_polls: Povijest gledatelja je onemogućena jer nit sadrži anonimne ankete
+    thread_engagement: Thread engagement
   activity_card:
     count_responses: "%{count} odgovora"
     beginning: Početak
@@ -1708,6 +1731,22 @@ hr:
     nested_twice: Dvije razine ugniježđenih odgovora
     nested_twice_description: Uvuci odgovore najviše dva puta.
     changing_nesting_is_slow: Obrada promjena u gniježđenju može potrajati nekoliko minuta.
+    layout: Izgled
+    items: Kako prikazati stavke
+    nested: Ugniježđeno
+    timeline: Vremenska crta
+    timeline_description: Stavke redoslijedom kojim su objavljene
+    threaded: Threaded
+    threaded_description: Odgovori grupirani prema onome na što odgovaraju
+    allow_concurrent_polls: Dopusti istovremene ankete
+    allow_multiple_polls: Dopusti više anketa istovremeno
+    allow_concurrent_polls_description: Dopusti istovremeno otvaranje više od jedne ankete
+    allow_comments: Dopusti komentare
+    allow_comments_description: Dopusti sudionicima objavljivanje komentara u ovoj temi
+    allow_reactions: Dopusti reakcije
+    allow_reactions_description: Omogući sudionicima dodavanje emotikona
+    topic_settings: Postavke teme
+    thread_settings: Postavke teme
   delete_thread_form:
     title: Izbriši nit
     body: Jeste li sigurni da želite izbrisati ovu nit?
@@ -1774,6 +1813,7 @@ hr:
     ranked_choice_title: Rangirani izbor
     gradients_of_agreement_title: Gradijenti slaganja
     majority_title: Većina
+    stv_title: Izbori za STV
   poll_option_form:
     edit_option: Opcija uređivanja
     option_name: Naziv opcije
@@ -1911,6 +1951,8 @@ hr:
     blank: Novi
     blank_subtitle: Izradite novi predložak ankete za određeni proces
     start_a_poll: Započni anketu
+    export_blt: Izvoz glasačkih listića (BLT)
+    status: Status
   poll_common_attachment_form:
     label: Prilozi
   poll_common_add_option:
@@ -2015,6 +2057,7 @@ hr:
     for_this_proposal_to_pass: 'Da bi ovaj prijedlog prošao:'
     for_this_poll_type_to_be_valid: 'Da bi ovaj %{poll_type} bio valjan:'
     voting_opens_at: Ovaj %{poll_type} otvara se za glasanje %{time}
+    unable_to_vote: Niste pozvani glasati na ovom %{poll_type}
   poll_common_collapsed:
     by_who: "%{name}"
   poll_common_calendar_invite:
@@ -2072,6 +2115,8 @@ hr:
     change_results_order: Promjena redoslijeda rezultata
     none_of_the_above: "(Ništa od navedenog)"
     name_or_username: Ime ili korisničko ime
+    cast: Cast
+    uncast: Uncast
   poll_common_undecided_panel:
     show_undecided: Prikaži %{count} neodlučenih
     show_invitations: Prikaži pozivnice na čekanju
@@ -2340,6 +2385,7 @@ hr:
     want_to_set_password: Želite li se sljedeći put prijaviti lozinkom?
     change_your_password: Želite li postaviti novu lozinku?
     email_placeholder: vi{'@'}primjer.com
+    turnstile_required: Molimo Vas da dovršite provjeru prije nego što nastavite.
   chatbot:
     configure_chatbot: Konfigurirajte chatbot
     test_connection: Testirajte vezu
@@ -2465,6 +2511,7 @@ hr:
     country_disclaimer: Država se temelji na korisnikovoj IP adresi i nije baš točna. Ovo smatrajte samo grubim vodičem.
     total_discussions: Ukupno rasprava
     discussions_with_polls: Rasprave s anketama
+    download_csv: Preuzmi CSV
   tips:
     youve_completed_all_the_steps: "\U0001F389 Završili ste sve korake!"
     getting_started_checklist: Kontrolna lista za početak
@@ -2547,6 +2594,7 @@ hr:
       helptext_on: Ne prikazujte kako su ljudi glasali dok se glasanje ne zatvori
     short_reason_can_be_helpful: Kratke razloge za glasovanje lakše je razumjeti. Zbirka sažetih razloga izvrstan je resurs za donošenje odluke.
     shuffle_options: Opcije nasumičnog reproduciranja
+    selected_people_only: Samo odabrane osobe
   poll_common_form:
     quorum: Kvorum
     participation_quorum: Kvorum za sudjelovanje
@@ -2597,6 +2645,8 @@ hr:
       time_poll_hint: Birači navode kada su dostupni za sastanak
       rank: Rang
       time: Vrijeme
+      stv: Izbori za STV
+      stv_hint: Proporcionalno odaberite više pobjednika koristeći jedan prenosivi glas
     process: Proces
     process_name: Naslov predloška
     process_name_hint: Kako se zove ovaj predložak? Npr. Savjet o ulozi, Provjera temperature, Odobrenje zapisnika
@@ -2657,6 +2707,7 @@ hr:
     create_poll_type: Kreiraj %{poll_type}
     notify_voters_when_voting_opens: Obavijestite birače kada je otvoreno glasanje
     voters_notified_when_opens: Birači će biti obaviješteni kada se otvori glasanje
+    who_may_vote: Tko može glasati na ovom %{poll_type}?
   poll_receipts_page:
     verify_participants: Potvrdite sudionike
     see_votes_if_quorum_reached: Ako je glasanje zatvoreno i postignut je kvorum, vidjet ćete tko je glasao.
@@ -2719,6 +2770,7 @@ hr:
     start_discussion: Započni raspravu
     start_a_direct_discussion: Započnite izravnu raspravu
     these_are_templates: Ovo su predlošci za raspravu u vašoj grupi.
+    start_a_new_discussion: Započni novu raspravu
   context_panel:
     thread_status:
       pinned: Ova je rasprava prikvačena. Ostat će na vrhu popisa rasprava grupe za sve korisnike.
@@ -2734,6 +2786,7 @@ hr:
     helptext: Prikvačene rasprave uvijek se prikazuju na popisu rasprava grupe.
   delete_discussion_form:
     discussion_deleted: Rasprava je izbrisana
+    body: Jeste li sigurni da želite izbrisati ovu temu?
   move_discussion_form:
     title: Premjesti raspravu u drugu grupu
     body: Odredišna grupa
@@ -2750,3 +2803,55 @@ hr:
     opening_hour: Vrijeme otvaranja
     scheduled_hint: Anketa će biti vidljiva, ali neće se moći glasati do vremena otvaranja.
     draft_hint: Ova anketa bit će spremljena kao nacrt. Postavite datum otvaranja ili označite "Glasanje se otvara odmah" kada budete spremni za početak glasanja.
+  strand_members_list:
+    notify_members_or_invite_guests_info: Obavijestite članove grupe po imenu ili pozovite nečlanove putem adrese e-pošte. Pozvani gosti mogu sudjelovati u ovoj temi, ali neće imati pristup drugim temama grupe.
+    notify_members_info: Unesite imena članova grupe kako biste ih obavijestili o ovoj temi.
+    specified_voters_only_warning: Ova tema ima ankete u kojima samo odabrane osobe mogu glasati. Dodavanje nekoga ovdje neće im dati glas — umjesto toga u anketi koristite "dodaj glasače".
+  poll_common_details_meta:
+    opened: Otvoreno
+    opens: Otvara se
+    closed: Zatvoreno
+    closes: Zatvara se
+    opened_at: Otvoreno u
+    opening_at: Otvaranje u
+    closed_at: Zatvoreno u
+    closing_at: Zatvaranje u
+  poll_stv_vote_form:
+    helptext: Povucite kandidate iznad crte da biste ih rangirali. Stavke ispod crte nisu rangirane. Rang 1 je vaš najpoželjniji.
+    divider_text: povucite kandidate iznad ove linije kako biste ih rangirali
+    stance_created: Glas zabilježen
+    stance_updated: Glasanje ažurirano
+  poll_stv_form:
+    settings_title: Postavke izbora na STV-u
+    settings_helptext: Konfigurirajte broj mjesta koja treba popuniti, način brojanja i vrstu kvote za ove izbore.
+    seats_label: Broj mjesta za popunjavanje
+    method_label: Metoda brojanja
+    method_scottish: Scottish STV (recommended)
+    method_meek: Meek STV
+    quota_label: Vrsta kvote
+    quota_droop: Droop quota (recommended)
+    quota_hare: Hare quota
+  poll_stv_results:
+    title: Rezultati izbora
+    elected: Izabran
+    not_elected: Nije izabran
+    tied: Tie
+    no_candidates_elected: Nijedan kandidat nije izabran
+    round: "Round %{number}"
+    quota_info: "%{method}, %{quota_type} quota (%{quota} votes needed)"
+    method_scottish: Scottish STV
+    method_meek: Meek STV
+    quota_droop: Droop
+    quota_hare: Hare
+    elected_in_round: "Elected in round %{round}"
+    eliminated_in_round: "Eliminated in round %{round}"
+    tied_in_round: "Tied in round %{round}"
+    votes: glasova
+    candidate: Kandidat
+    round_elected: Izabrani krug
+    first_preferences: Prve preferencije
+    final_tally: Konačni rezultat
+    quota_surplus: Višak
+    round_details: Detalji rundu po rundu
+    view_full_results: Pogledajte sve rezultate
+    results_available_when_closed: Rezultati će biti dostupni nakon završetka glasanja

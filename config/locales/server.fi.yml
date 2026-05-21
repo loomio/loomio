@@ -109,7 +109,7 @@ fi:
     manage:
       all: Ei valtuutusta %{action} %{subject}.
     add_guests:
-      all: Sinun on päivitettävä Loomio-tilauksesi, jotta voit lisätä vieraita %{subject}. Vaihtoehtoisesti voit kutsua heidät ryhmäsi jäseniksi.
+      all: Sinun on päivitettävä Loomio-tilauksesi, jotta voit lisätä vieraita. Vaihtoehtoisesti voit kutsua heidät ryhmäsi jäseniksi.
   errors:
     clear_cache: Latausongelma havaittu. Pidä vaihtonäppäintä painettuna ja paina reload-näppäintä tai tyhjennä selaimen välimuisti.
     404:
@@ -148,6 +148,7 @@ fi:
       body: Olemme pahoillamme, mutta jokin meni pieleen. Olemme saaneet ilmoituksen tästä ongelmasta ja tutkimme sitä pian.
     '404':
       body: Pyytämääsi kohdetta ei löytynyt. Näin voi käydä, jos keskustelu tai kysely on poistettu.
+    new_account_trial_group_limit: Uusia tilejä voi luoda vain yhteen ryhmään. Jos tarvitset lisää tilejä, ota yhteyttä tukeen.
   group:
     error:
       handle_must_begin_with_parent_handle: Alkaa %{parent_handle}-
@@ -234,6 +235,7 @@ fi:
       notified: Sait tämän, koska kirjoittaja ilmoitti sinulle.
       poll_subscribed: Sait tämän, koska olet tilannut kyselyn.
       discussion_subscribed: Sait tämän, koska olet tilannut keskustelun.
+      thread_subscribed: Sait tämän, koska olet tilannut ketjun.
   user_mailer:
     group_export_ready:
       subject: 'Ryhmätietojen vienti: %{group_name}'
@@ -366,6 +368,9 @@ fi:
     destroy_warning:
       subject: Loomio-ryhmäsi on ajoitettu poistettavaksi.
       body: '%{deletor} on ajoittanut Loomio-ryhmäsi: "%{group}" poistettavaksi. Jos et halua, että ryhmääsi poistetaan, vastaa tähän sähköpostiin. Jos olet varma, että haluat poistaa ryhmän, sinun ei tarvitse tehdä mitään. Kiitos.'
+    trial_expired:
+      subject: Loomio-ryhmäsi poistetaan käyttämättömyyden vuoksi.
+      body: Loomio-ryhmäsi "%{group}" on ollut passiivinen ja se poistetaan kahden viikon kuluttua. Jos et halua ryhmäsi poistettavan, vastaa tähän sähköpostiin.
   poll_mailer:
     common:
       why_send_this: Saat tämän sähköpostin, koska %{reason}
@@ -416,6 +421,8 @@ fi:
       disagree: Eri mieltä
       disagree_meaning: Jotain tässä ehdotuksessa on muutettava, ennen kuin voin tukea sitä.
       disagree_prompt: Miten tätä ehdotusta voitaisiin parantaa, jotta voisitte tukea sitä?
+      abstain_meaning: Päätös olla äänestämättä tai äänestämättä jättäminen.
+      abstain_prompt: Miksi pidättäydytte äänestämästä tai ette tunne voivanne äänestää tästä päätöksestä?
     advice:
       process_subtitle: Pyydä neuvoa päätöksestä, jonka sinun on tehtävä
       process_introduction: <p>Pyydä neuvoa päätöksessäsi asianosaisten tai muiden asiantuntijoiden kanssa, jotta voit tehdä organisaatiollesi paremman päätöksen.</p><ul><li><p> Neuvonta auttaa sinua tekemään parempia päätöksiä organisaatiollesi.</p></li><li><p> Edistä ihmissuhteita, oppimismahdollisuuksia ja monipuolista panosta.</p></li><li><p> Kannusta aloitteellisuutta ja luovuutta ja tee työstä nautinnollisempaa.</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>Lue lisää neuvontaprosessista</u></a> .</p>
@@ -462,6 +469,7 @@ fi:
       block_prompt: Selitä vastustuksesi tätä ehdotusta kohtaan ja miksi sitä ei pitäisi toteuttaa
       details_v2: "<h3><strong>Mikä päätös sinun on tehtävä?</strong></h3><p></p><h3> <strong>Miksi tämä on tärkeää?</strong></h3><p></p><h3> <strong>Mitä pyydät ihmisiä tekemään?</strong></h3><p></p><p> Kerro, mikä on kantasi ja miksi. Jos olet eri mieltä, selitä, mitä pitäisi muuttaa, jotta tukisit tätä näkemystä.</p>"
       process_introduction_v2: "<p><strong>Konsensus</strong> edellyttää päätöksiä, joissa on tärkeää, että kaikki ovat aktiivisesti samaa mieltä. Osallistujat työskentelevät yhdessä ymmärtääkseen toistensa tarpeita ja muokkaavat ehdotusta, kunnes koko ryhmä voi tukea sitä. Koska ihmiset voivat muuttaa ääntään keskustelun edetessä, prosessi kannustaa aitoon vuoropuheluun kertaluonteisen päätöksen sijaan. Se vaatii enemmän kärsivällisyyttä kuin muut menetelmät, mutta rakentaa vahvimman sitoutumisen.</p><p> Tässä mallissa on oletuksena <strong>Estä-</strong> vaihtoehto. Estä-vaihtoehto ei sovi kaikille ryhmille – se voi olla kiistanalainen tai sitä voidaan käyttää väärin. Jos et käytä estoa päätöksentekoprosessissasi, suosittelemme poistamaan sen mallista muokkaamalla sitä.</p>"
+      abstain_prompt: Miksi pidättäydytte äänestämästä tai ette tunne voivanne äänestää tästä päätöksestä?
     question_round:
       process_subtitle: Pyydä selventäviä kysymyksiä, jotka auttavat ihmisiä ymmärtämään ehdotusta
       process_introduction: <p>Kysymyskierros on tilaisuus esittää ehdotuksesta selventäviä kysymyksiä, jotta kaikki ymmärtävät ehdotuksen ennen kuin sanovat, mitä mieltä he ovat siitä.</p><p> Loomio-kysymyskierros on erityinen ehdotus, jossa ei ole äänestysvaihtoehtoja. Se antaa osallistujille mahdollisuuden esittää kysymyksiä asettamasi kierroksen keston aikana.</p><p> Kysymyskierrosta käytetään yleisesti osana suostumusprosessia.</p><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Lue lisää suostumusprosessista</a> .</p>
@@ -497,6 +505,7 @@ fi:
       could_be_better_prompt: Mitä muuttaisit?
       needs_a_rethink: Tarvitsee uudelleenarviointia
       needs_a_rethink_prompt: Mikä sinua huolestuttaa?
+      needs_a_rethink_meaning: Mielestäni tämä on väärä lähestymistapa
     gradients_of_agreement:
       process_subtitle: Ilmaise ehdotuksen tukeminen 8-pisteisellä asteikolla
       process_introduction: <p>Yhteisymmärryksen asteikolla varustettu ehdotus antaa ryhmän jäsenille mahdollisuuden ilmaista tukensa ehdotukselle asteikolla, joka tarjoaa useampia tapoja ilmaista tukea kuin "samaa mieltä" ja "eri mieltä".</p><p> Käytä yhteisymmärryksen asteikkoja alustavana kierroksena testataksesi ehdotuksen tukea ennen siirtymistä viralliseen sopimukseen.</p><p> Yhteisymmärryksen asteikko kertoo ihmisille, että ehdotus on muodostumassa, ja kannustaa heitä osallistumaan. Se on tilaisuus kuunnella ihmisiä, aistia heidän tunteitaan ja reagoida asianmukaisesti – mikä avaa mahdollisuuden ottaa heidän panoksensa huomioon paremman päätöksen tekemiseksi.</p>
@@ -590,6 +599,11 @@ fi:
       no_meaning: En tue tätä ehdotusta
       no_prompt: Miksi ette tue tätä ehdotusta?
       outcome_statement: "<p>Kiitos osallistumisestasi tähän enemmistöäänestykseen.</p>"
+    stv:
+      process_subtitle: Valitse useita voittajia suhteellisesti
+      process_introduction: <p>STV (Single Transferable Vote) on suhteellinen vaalitapa monivoittajavaaleissa. Äänestäjät asettavat ehdokkaat paremmuusjärjestykseen. Äänikiintiön saavuttaneet ehdokkaat valitaan, ja ylijäämä-äänet tai pudonneiden ehdokkaiden äänet siirtyvät seuraaville valinnoille.</p><p> Määritä paikkojen lukumäärä, laskentatapa (Scottish tai Meek) ja kiintiötyyppi (Droop tai Hare). Tulokset näyttävät äänten siirtymisen kierroksittain eriteltynä.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/stv/index.html">Lue lisää STV-vaaleista</a> .</p>
+      title: Valitse komitean jäsenet
+      details: <h3 id="what-is-this-election-about"><strong>Mistä näissä vaaleissa on kyse?</strong></h3><p></p><h3 id="how-many-seats"> <strong>Kuinka monta paikkaa täytetään?</strong></h3><p></p><h3 id="who-are-the-candidates"> <strong>Keitä ehdokkaat ovat?</strong></h3><p></p><p> Äänestä vetämällä ehdokkaita haluamaasi järjestykseen. Sija 1 on suosikkiehdokkaasi. Voit asettaa ehdokkaita järjestykseen niin monta tai niin vähän kuin haluat.</p>
   forward_mailer:
     bounce:
       subject: Viestiäsi Loomiolle ei toimitettu
@@ -650,3 +664,5 @@ fi:
     pt: portugali
     zh: Kiina (perinteinen, Taiwan)
     zh-HK: Kiina (perinteinen, Taiwan)
+  upload:
+    file_too_large: Tiedosto on liian suuri. Suurin mahdollinen lähetyskoko on %{limit}.

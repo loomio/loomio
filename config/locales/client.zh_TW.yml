@@ -166,6 +166,7 @@ zh_TW:
     ranked_choice: 排序選擇
     score: 分數投票
     question: 問題輪
+    stv: 單記可轉移投票制選舉
   timezones:
     local: 本地時間 (%{value})
   common:
@@ -316,6 +317,7 @@ zh_TW:
       rearrange: 重新排列
       save_template: 儲存模板
       fork_template: 分支模板
+      customize: 客製化
     formatting_help:
       label: 格式化
       title: 學習如何使用 Markdown 來格式化您的文字
@@ -324,6 +326,8 @@ zh_TW:
     opening_in: 打開 %{time}
     read_more: 閱讀更多
     templates_admin_hint: 因為您是群組管理員，您可以隱藏或刪除任何您不需要的模板，並編輯剩餘的模板以滿足您的需求。
+    read: 讀
+    unread: 未讀
   merge_accounts:
     modal:
       title: 合併帳號
@@ -486,6 +490,11 @@ zh_TW:
     changes_all_discussions_and_polls_in_group: 這將更改群組中所有討論和投票的設定。
     normal_explained: 當有人在討論或投票的「通知」欄位中輸入你的名字，或他們使用「@」提及該群組。
     aria_label: 更改電子郵件設定表單
+    when_do_you_want_to_be_emailed_thread: 您希望何時收到關於此主題的郵件？
+    loud_option: 任何人參與的任何活動（所有活動）
+    normal_option: 當有人想引起我的注意（收到通知時）
+    quiet_option: 關於此主題的郵件已關閉
+    quiet_explained: 即使有人試圖通知您，您也不會收到電子郵件。
   close_explanation_modal:
     close_thread: 關閉討論串
     body: |
@@ -586,6 +595,12 @@ zh_TW:
     showing_unread: 顯示未讀
     add_comment: 新增評論
     start_decision: 開始決定
+    return: 返回
+    end: 結束
+    notifications: 通知
+    email_all_activity: 透過電子郵件發送所有動態
+    email_notifications: 收到通知時發送電子郵件
+    email_none: 不發送電子郵件
   search_modal:
     all_content: 所有內容
     best_match: 最佳匹配
@@ -653,6 +668,7 @@ zh_TW:
     invite_to_wip_poll: 邀請給予回饋
     invitations: 邀請函
     discussion_members: 討論成員
+    thread_members: 主題成員
   membership_dropdown:
     set_name_and_username: 設定名稱和使用者名
     set_title: 設定標題
@@ -716,6 +732,7 @@ zh_TW:
       discussion_edited: "%{actor} 編輯了討論內容：%{title}"
       discussion_closed: "%{actor} 關閉了討論：%{title}"
       new_discussion: "%{actor} 發起了一場討論：%{title}"
+      user_reminded: 演員 %{actor} 提醒您投票：%{title}
     without_title:
       unknown_sender: 請檢查來自無法識別的寄件者的電子郵件
       group_announced: "%{actor} 邀請您加入群組"
@@ -777,7 +794,7 @@ zh_TW:
       poll_closed_by_user: "%{actor} 關閉了 %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} 將於 24 小時後結束：%{title}"
       poll_closing_soon_author: 您的 %{poll_type} 投票將於 24 小時後結束：%{title}
-      poll_created: 投票：%{title}
+      poll_created: "%{poll_type}: %{title}"
       poll_edited: "%{actor} 更新了 %{poll_type}: %{title}"
       poll_expired: "%{poll_type} 已結束：%{title}"
       poll_expired_author: 發布結論：%{title}
@@ -795,6 +812,7 @@ zh_TW:
       poll_announced: 投票：%{title}
       discussion_edited: "%{actor} 編輯了討論內容：%{title}"
       discussion_closed: "%{actor} 關閉了討論：%{title}"
+      user_reminded: 演員 %{actor} 提醒您投票：%{title}
   discussion_fork_actions:
     move: 移動
     moved: 正在移動留言，這可能需要一點時間
@@ -978,6 +996,8 @@ zh_TW:
     poll_announced: "%{name} 邀請了 %{length} 人參與投票："
     discussion_notification_history: 討論通知歷史記錄
     inviting_guests_to_discussion: 訪客不屬於您的群組，他們只能訪問此討論。
+    topic_notification_history: 線程通知歷史記錄
+    notification_history: 通知歷史記錄
   action_dock:
     actions_menu: 動作選單
     more_actions: 更多動作
@@ -1521,6 +1541,7 @@ zh_TW:
     delete_account_subtitle: 徹底刪除您的帳戶，並從過去的討論和決定中刪除您的名字。
     updated_on_sign_in: 由您的瀏覽器提供並在您登入時更新
     translate_content_automatically: 自動將內容翻譯成我的語言
+    bot_account_warning: 機器人帳號將不會被邀請參與投票或討論。
   text_editor:
     x_of_y_characters: "%{x} / %{y} 個字元"
     select_text_to_link: 選取要連結的文字並再試一次
@@ -1590,6 +1611,7 @@ zh_TW:
   thread_preview:
     replies_count: "%{count} 個回覆"
     unread_count: "%{count} 個未讀"
+    items_count: "%{count} 個項目"
   dashboard_page:
     polls_to_vote_on: 投票表決
     no_polls_to_vote_on: 沒有您需要進行的投票
@@ -1690,6 +1712,7 @@ zh_TW:
     title: 被這些人看過：
     no_one: 還沒有人看過這個
     disabled_anonymous_polls: 由於線程包含匿名民意調查，查看者歷史記錄被禁用
+    thread_engagement: Thread engagement
   activity_card:
     count_responses: "%{count} 個回應"
     beginning: 開始
@@ -1731,6 +1754,22 @@ zh_TW:
     nested_twice: 兩個等級的巢狀回覆
     nested_twice_description: 最多縮排兩次。
     changing_nesting_is_slow: 更改巢狀排列方式可能需要幾分鐘的時間來處理。
+    layout: 佈局
+    items: 如何顯示項目
+    nested: 嵌套
+    timeline: 時間軸
+    timeline_description: 物品按發布順序排列
+    threaded: Threaded
+    threaded_description: 回覆按其回應內容分組
+    allow_concurrent_polls: 允許同時進行輪詢
+    allow_multiple_polls: 允許同時進行多個投票
+    allow_concurrent_polls_description: 允許同時開啟多場投票
+    allow_comments: 允許評論
+    allow_comments_description: 允許參與者在此主題中發表評論
+    allow_reactions: 允許反應
+    allow_reactions_description: 允許參與者添加表情符號反應
+    topic_settings: 主題設定
+    thread_settings: 主題設定
   delete_thread_form:
     title: 刪除討論串
     body: 您確定要刪除這個討論串嗎？
@@ -1802,6 +1841,7 @@ zh_TW:
     ranked_choice_title: 排序選擇
     gradients_of_agreement_title: 一致性梯度
     majority_title: 多數
+    stv_title: 單記可轉移投票制選舉
   poll_option_form:
     edit_option: 編輯選項
     option_name: 選項名稱
@@ -1939,6 +1979,8 @@ zh_TW:
     blank: 新的
     blank_subtitle: 為特定流程建立新的投票模板
     start_a_poll: 發起投票
+    export_blt: 出口選票（BLT）
+    status: 地位
   poll_common_attachment_form:
     label: 附件
   poll_common_add_option:
@@ -2043,6 +2085,7 @@ zh_TW:
     for_this_proposal_to_pass: 為了使該提案獲得通過：
     for_this_poll_type_to_be_valid: 為了使此 %{poll_type} 有效：
     voting_opens_at: 此 %{poll_type} 投票將於 %{time} 開放。
+    unable_to_vote: 您未被邀請參與此項 %{poll_type} 的投票。
   poll_common_collapsed:
     by_who: 由 %{name}
   poll_common_calendar_invite:
@@ -2100,6 +2143,8 @@ zh_TW:
     change_results_order: 變更您的結果順序
     none_of_the_above: "（以上皆非）"
     name_or_username: 姓名或用戶名
+    cast: Cast
+    uncast: Uncast
   poll_common_undecided_panel:
     show_undecided: 顯示 %{count} 個未決定
     show_invitations: 顯示擱置中的邀請函
@@ -2368,6 +2413,7 @@ zh_TW:
     want_to_set_password: 下次想使用密碼登入嗎？
     change_your_password: 您想設定新密碼嗎？
     email_placeholder: 您{'@'}example.com
+    turnstile_required: 請先完成驗證再繼續。
   chatbot:
     configure_chatbot: 設定聊天機器人
     test_connection: 測試連線
@@ -2495,6 +2541,7 @@ zh_TW:
     country_disclaimer: 國家是基於使用者的 IP 位址，並不十分準確。這只是一個粗略的指南。
     total_discussions: 討論總數
     discussions_with_polls: 討論與民意調查
+    download_csv: 下載 CSV 文件
   tips:
     youve_completed_all_the_steps: "\U0001F389 您已完成所有步驟！"
     getting_started_checklist: 入門清單
@@ -2577,6 +2624,7 @@ zh_TW:
       helptext_on: 在投票結束前不要顯示人們的投票情況
     short_reason_can_be_helpful: 簡短的投票理由更容易理解。簡潔的投票理由是決策的重要資源。
     shuffle_options: 隨機播放選項
+    selected_people_only: 僅限特定人員
   poll_common_form:
     quorum: 法定人數
     participation_quorum: 參與法定人數
@@ -2627,6 +2675,8 @@ zh_TW:
       time_poll_hint: 選民表明何時可以見面
       rank: 秩
       time: 時間
+      stv: 單記可轉移投票制選舉
+      stv_hint: 使用單記可轉移投票制按比例選出多名獲勝者
     process: 流程
     process_name: 模板標題
     process_name_hint: 這個模板叫什麼？例如：角色建議、體溫檢查、會議記錄審批
@@ -2687,6 +2737,7 @@ zh_TW:
     create_poll_type: 建立 %{poll_type}
     notify_voters_when_voting_opens: 投票開始時通知選民
     voters_notified_when_opens: 投票開始時，選民將會收到通知。
+    who_may_vote: 誰可以參與此次 %{poll_type} 投票？
   poll_receipts_page:
     verify_participants: 驗證參與者
     see_votes_if_quorum_reached: 如果投票已結束且達到法定人數，您將看到誰投了票。
@@ -2749,6 +2800,7 @@ zh_TW:
     start_discussion: 發起討論
     start_a_direct_discussion: 發起直接討論
     these_are_templates: 這些是你們小組的討論範本。
+    start_a_new_discussion: 發起新的討論
   context_panel:
     thread_status:
       pinned: 此討論貼文已置頂，將始終顯示在群組討論貼文清單的頂部，供所有使用者檢視。
@@ -2764,6 +2816,7 @@ zh_TW:
     helptext: 置頂討論始終顯示在群組的討論清單中。
   delete_discussion_form:
     discussion_deleted: 討論已刪除
+    body: 你確定要刪除這個貼文嗎？
   move_discussion_form:
     title: 將討論轉移到另一個群組
     body: 目的地組
@@ -2780,3 +2833,55 @@ zh_TW:
     opening_hour: 營業時間
     scheduled_hint: 投票將在開放時間前顯示，但無法投票。
     draft_hint: 此投票將儲存為草稿。準備好投票時，請設定開始日期或勾選「立即開始投票」。
+  strand_members_list:
+    notify_members_or_invite_guests_info: 可以透過群組成員姓名通知他們，或透過電子郵件地址邀請非成員。受邀者可以參與此討論串，但無法存取群組的其他討論串。
+    notify_members_info: 輸入群組成員姓名，即可通知他們此主題。
+    specified_voters_only_warning: 本帖的投票僅限特定人員參與。在此處新增某人並不會增加其投票權限—請使用投票頁面上的「新增投票者」功能。
+  poll_common_details_meta:
+    opened: 已開啟
+    opens: 打開
+    closed: 關閉
+    closes: 關閉
+    opened_at: 已於
+    opening_at: 將於
+    closed_at: 已關閉
+    closing_at: 關閉於
+  poll_stv_vote_form:
+    helptext: 將候選人拖到線上方進行排名。線下方的候選人未排名。排名第一的候選人是您最喜歡的。
+    divider_text: 將候選人拖到這條線以上進行排名
+    stance_created: 投票記錄
+    stance_updated: 投票結果已更新
+  poll_stv_form:
+    settings_title: 單記可轉移投票制選舉設置
+    settings_helptext: 配置本次選舉的席次數、計票方法和配額類型。
+    seats_label: 需要填滿的座位數
+    method_label: 計數方法
+    method_scottish: Scottish STV (recommended)
+    method_meek: Meek STV
+    quota_label: 配額類型
+    quota_droop: Droop quota (recommended)
+    quota_hare: Hare quota
+  poll_stv_results:
+    title: 選舉結果
+    elected: 當選
+    not_elected: 未當選
+    tied: Tie
+    no_candidates_elected: 沒有候選人當選
+    round: "Round %{number}"
+    quota_info: "%{method}, %{quota_type} quota (%{quota} votes needed)"
+    method_scottish: Scottish STV
+    method_meek: Meek STV
+    quota_droop: Droop
+    quota_hare: Hare
+    elected_in_round: "Elected in round %{round}"
+    eliminated_in_round: "Eliminated in round %{round}"
+    tied_in_round: "Tied in round %{round}"
+    votes: 投票
+    candidate: 候選人
+    round_elected: 輪次選舉
+    first_preferences: 第一偏好
+    final_tally: 最終統計
+    quota_surplus: 剩餘
+    round_details: 逐輪詳情
+    view_full_results: 看完整結果
+    results_available_when_closed: 投票結束後將公佈結果。

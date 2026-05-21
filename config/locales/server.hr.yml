@@ -109,7 +109,7 @@ hr:
     manage:
       all: Nije ovlašten za %{action} %{subject}.
     add_guests:
-      all: Morate nadograditi svoju pretplatu na Loomio da biste dodali goste u svoj %{subject}. Alternativno, možete ih pozvati da budu članovi vaše grupe.
+      all: Morate nadograditi svoju pretplatu na Loomio da biste dodali goste. Alternativno, možete ih pozvati da budu članovi vaše grupe.
   errors:
     clear_cache: Otkriven problem učitavanja. Držite shift i pritisnite reload ili izbrišite predmemoriju preglednika.
     404:
@@ -148,6 +148,7 @@ hr:
       body: Žao nam je, ali nešto je pošlo po zlu. Obaviješteni smo o ovom problemu i uskoro ćemo ga pogledati.
     '404':
       body: Stavka koju ste tražili nije pronađena. To se može dogoditi ako je rasprava ili anketa izbrisana.
+    new_account_trial_group_limit: Novi računi su ograničeni na jednu grupu. Obratite se podršci ako vam ih treba više.
   group:
     error:
       handle_must_begin_with_parent_handle: Mora započeti s %{parent_handle}-
@@ -234,6 +235,7 @@ hr:
       notified: Ovo ste primili jer vas je autor obavijestio.
       poll_subscribed: Ovo ste primili jer ste pretplaćeni na anketu.
       discussion_subscribed: Ovo ste primili jer ste pretplaćeni na raspravu.
+      thread_subscribed: Ovo ste primili jer ste pretplaćeni na temu.
   user_mailer:
     group_export_ready:
       subject: Grupni izvoz podataka za %{group_name}
@@ -366,6 +368,9 @@ hr:
     destroy_warning:
       subject: Vaša Loomio grupa je zakazana za brisanje.
       body: 'Vaša Loomio grupa: "%{group}" zakazana je za brisanje od strane %{deletor}. Ako ne želite da se vaša grupa izbriše, odgovorite na ovu e-poruku. Ako ste sigurni da želite izbrisati grupu, ne morate ništa učiniti. Hvala vam.'
+    trial_expired:
+      subject: Vaša Loomio grupa bit će izbrisana zbog neaktivnosti.
+      body: Vaša Loomio grupa "%{group}" je neaktivna i bit će izbrisana za 2 tjedna. Ako ne želite da vaša grupa bude izbrisana, odgovorite na ovu e-poštu.
   poll_mailer:
     common:
       why_send_this: Primili ste ovu e-poruku jer %{reason}
@@ -416,6 +421,8 @@ hr:
       disagree: Ne slažem se
       disagree_meaning: Nešto u ovom prijedlogu treba promijeniti prije nego što ga mogu podržati.
       disagree_prompt: Kako bi se ovaj prijedlog mogao poboljšati kako biste ga mogli podržati?
+      abstain_meaning: Odabir da se ne glasa ili ne može glasati o ovoj odluci.
+      abstain_prompt: Zašto ste suzdržani ili se ne osjećate sposobnim glasati o ovoj odluci?
     advice:
       process_subtitle: Potražite savjet o odluci koju trebate donijeti
       process_introduction: <p>Potražite savjet o odluci koju trebate donijeti, uz savjet ljudi na koje to utječe ili koji imaju stručnost, kako biste mogli donijeti bolju odluku za svoju organizaciju.</p><ul><li><p> Savjeti vam pomažu da donesete bolju odluku za svoju organizaciju.</p></li><li><p> Poticati odnose, prilike za učenje i raznolike doprinose.</p></li><li><p> Potaknite inicijativu i kreativnost te ugodniji rad.</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>Pročitajte više o postupku savjetovanja</u></a> .</p>
@@ -462,6 +469,7 @@ hr:
       block_prompt: Objasnite svoje protivljenje ovom prijedlogu i zašto se ne bi trebao nastaviti
       details_v2: "<h3><strong>Koju odluku trebate donijeti?</strong></h3><p></p><h3> <strong>Zašto je ovo važno?</strong></h3><p></p><h3> <strong>Što tražite od ljudi da učine?</strong></h3><p></p><p> Podijelite svoj stav i zašto. Ako se ne slažete, objasnite što bi trebalo promijeniti da biste to podržali.</p>"
       process_introduction_v2: "<p><strong>Konsenzus</strong> se postiže za odluke gdje je važno da se svi aktivno slažu. Sudionici rade zajedno kako bi razumjeli međusobne potrebe i oblikovali prijedlog sve dok ga cijela grupa ne podrži. Budući da ljudi mogu mijenjati svoj glas kako se razgovor razvija, proces potiče istinski dijalog, a ne jednokratnu odluku. Potrebno je više strpljenja od drugih metoda, ali gradi najjaču predanost.</p><p> Ovaj predložak prema zadanim postavkama uključuje opciju <strong>Blokiraj</strong> . Blokiranje nije prikladno za svaku skupinu - može biti kontroverzno ili zloupotrijebljeno. Ako ne koristite blokiranje u procesu donošenja odluka, preporučujemo da uredite predložak kako biste ga uklonili.</p>"
+      abstain_prompt: Zašto ste suzdržani ili se ne osjećate sposobnim glasati o ovoj odluci?
     question_round:
       process_subtitle: Pozovite ljude da postave pojašnjavajuća pitanja kako biste im pomogli da razumiju prijedlog.
       process_introduction: <p>Krug pitanja prilika je ljudima da postave pojašnjenja o prijedlogu, kako bi svi razumjeli prijedlog prije nego što kažu što o njemu misle.</p><p> Loomio runda pitanja je poseban prijedlog bez mogućnosti glasanja. Omogućuje sudionicima da postavljaju pitanja unutar trajanja koje odredite za rundu.</p><p> Krug pitanja se obično koristi kao korak u procesu davanja privole.</p><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Pročitajte više o postupku privole</a> .</p>
@@ -497,6 +505,7 @@ hr:
       could_be_better_prompt: Što biste promijenili?
       needs_a_rethink: Potrebno je preispitati
       needs_a_rethink_prompt: Što te brine?
+      needs_a_rethink_meaning: Mislim da je ovo pogrešan pristup
     gradients_of_agreement:
       process_subtitle: Izrazite podršku prijedlogu na ljestvici od 8 stupnjeva
       process_introduction: "<p>Prijedlog gradijenta slaganja omogućuje članovima grupe da izraze svoju podršku prijedlogu u stupnjevima na skali, nudeći više načina izražavanja podrške nego u smislu „slažem se“ i „ne slažem se“.</p><p> Koristite gradijente slaganja kao preliminarni krug za testiranje podrške prijedlogu prije nego što se prijeđe na formalni sporazum.</p><p> Gradijenti slaganja daju ljudima do znanja da se oblikuje prijedlog i potiču ih na sudjelovanje. To je prilika da se slušaju ljudi, osjeti kako se osjećaju i reagira na odgovarajući način - otvarajući potencijal za uključivanje njihovih doprinosa kako bi se donijela bolja odluka.</p>"
@@ -590,6 +599,11 @@ hr:
       no_meaning: Ne podržavam ovaj prijedlog
       no_prompt: Zašto ne podržavate ovaj prijedlog?
       outcome_statement: "<p>Hvala vam što ste sudjelovali u ovom većinskom glasovanju.</p>"
+    stv:
+      process_subtitle: Proporcionalno odaberite više pobjednika
+      process_introduction: <p>STV (Jedan prenosivi glas) je metoda proporcionalne zastupljenosti za izbore s više pobjednika. Birači rangiraju kandidate prema redoslijedu preferencija. Kandidati koji dosegnu kvotu glasova su izabrani, a višak ili eliminirani glasovi prenose se na sljedeće preferencije.</p><p> Konfigurirajte broj mjesta, metodu brojanja (Scottish ili Meek) i vrstu kvote (Droop ili Hare). Rezultati prikazuju analizu načina prijenosa glasova po krugovima.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/stv/index.html">Pročitajte više o izborima na STV-u</a> .</p>
+      title: Izaberite članove odbora
+      details: <h3 id="what-is-this-election-about"><strong>O čemu se radi na ovim izborima?</strong></h3><p></p><h3 id="how-many-seats"> <strong>Koliko se mjesta popunjava?</strong></h3><p></p><h3 id="who-are-the-candidates"> <strong>Tko su kandidati?</strong></h3><p></p><p> Glasajte povlačenjem kandidata u željeni redoslijed. Prvi rang je vaš najpoželjniji kandidat. Možete rangirati onoliko kandidata koliko želite.</p>
   forward_mailer:
     bounce:
       subject: Vaša poruka za Loomio nije dostavljena
@@ -650,3 +664,5 @@ hr:
     pt: portugalski
     zh: kineski (tradicionalni, tajvanski)
     zh-HK: kineski (tradicionalni, tajvanski)
+  upload:
+    file_too_large: Datoteka je prevelika. Maksimalna veličina za prijenos je %{limit}.

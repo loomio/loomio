@@ -171,6 +171,7 @@ de:
     ranked_choice: Prioritäten setzen
     score: Ergebnis
     question: Fragerunde
+    stv: STV-Wahl
   timezones:
     local: Ortszeit (%{value})
   common:
@@ -320,15 +321,18 @@ de:
       rearrange: Neu anordnen
       save_template: Vorlage speichern
       fork_template: Gabelvorlage
+      customize: Anpassen
     formatting_help:
       label: Markdown-Formatierung
       title: Mehr über die Textformatierung mit Markdown lernen
     thread: Faden
     commercial: Kommerziell
     nonprofit: Gemeinnützig
-    opening_in: Öffnungszeit}
+    opening_in: "Öffnet %{time}"
     read_more: Mehr lesen
     templates_admin_hint: Da Sie Gruppenadministrator sind, können Sie alle Vorlagen, die Sie nicht benötigen, ausblenden oder löschen und die verbleibenden Vorlagen nach Ihren Bedürfnissen bearbeiten.
+    read: Lesen
+    unread: Ungelesen
   merge_accounts:
     modal:
       title: Benutzerkonten zusammenführen
@@ -491,6 +495,11 @@ de:
     changes_all_discussions_and_polls_in_group: Dies ändert die Einstellungen für alle Diskussionen und Umfragen in der Gruppe.
     normal_explained: Wenn jemand Ihren Namen im Feld "Benachrichtigen" einer Diskussion oder einer Umfrage eingibt oder die Gruppe mit einem @-Zeichen erwähnt.
     aria_label: Formular zum Ändern der E-Mail-Einstellungen
+    when_do_you_want_to_be_emailed_thread: Wann möchten Sie über diesen Thread per E-Mail benachrichtigt werden?
+    loud_option: Jedes Mal, wenn jemand teilnimmt (Alle Aktivitäten)
+    normal_option: Wenn jemand meine Aufmerksamkeit möchte (Bei Benachrichtigung)
+    quiet_option: Keine E-Mails zu diesem Thread (Aus)
+    quiet_explained: Sie erhalten keine E-Mail, auch nicht, wenn jemand versucht, Sie zu benachrichtigen.
   close_explanation_modal:
     close_thread: Diskussion schließen
     body: |
@@ -591,6 +600,12 @@ de:
     showing_unread: Ungelesene anzeigen
     add_comment: Einen Kommentar hinzufügen
     start_decision: Entscheidung starten
+    return: Zurück
+    end: Ende
+    notifications: Benachrichtigungen
+    email_all_activity: Alle Aktivitäten per E-Mail versenden
+    email_notifications: E-Mail bei Benachrichtigung
+    email_none: Keine E-Mails
   search_modal:
     all_content: Alle Inhalte
     best_match: Bester Treffer
@@ -658,6 +673,7 @@ de:
     invite_to_wip_poll: Einladen, Feedback zu geben
     invitations: Einladungen
     discussion_members: Diskussionsteilnehmer
+    thread_members: Thread-Mitglieder
   membership_dropdown:
     set_name_and_username: Legen Sie Namen und Benutzernamen fest
     set_title: Titel eingeben
@@ -721,6 +737,7 @@ de:
       discussion_edited: "%{actor} hat den Diskussionskontext bearbeitet: %{title}"
       discussion_closed: "%{actor} hat die Diskussion beendet: %{title}"
       new_discussion: "%{actor} hat eine Diskussion gestartet: %{title}"
+      user_reminded: "%{actor} erinnert Sie daran, über Folgendes abzustimmen: %{title}"
     without_title:
       unknown_sender: Bitte überprüfen Sie die E-Mail von einem unbekannten Absender
       group_announced: "%{actor} hat Sie zu einer Gruppe eingeladen"
@@ -782,7 +799,7 @@ de:
       poll_closed_by_user: "%{actor} hat die %{poll_type} geschlossen: %{title}"
       poll_closing_soon: "%{poll_type} schließt in 24 Stunden: %{title}"
       poll_closing_soon_author: 'Ihre %{poll_type}-Abstimmung endet in 24 Stunden: %{title}'
-      poll_created: 'Abstimmung: %{title}'
+      poll_created: "%{poll_type}: %{title}"
       poll_edited: "%{actor} hat den %{poll_type} aktualisiert: %{title}"
       poll_expired: "%{poll_type} wurde geschlossen: %{title}"
       poll_expired_author: 'Ergebnis veröffentlichen: %{title}'
@@ -800,6 +817,7 @@ de:
       poll_announced: 'Abstimmung: %{title}'
       discussion_edited: "%{actor} hat den Diskussionskontext bearbeitet: %{title}"
       discussion_closed: "%{actor} hat die Diskussion beendet: %{title}"
+      user_reminded: "%{actor} erinnert Sie daran, über Folgendes abzustimmen: %{title}"
   discussion_fork_actions:
     move: Verschieben
     moved: Kommentare bewegen, dies kann einen Moment dauern
@@ -983,6 +1001,8 @@ de:
     poll_announced: "%{name} hat %{length} Personen zur Abstimmung eingeladen:"
     discussion_notification_history: Diskussionsbenachrichtigungsverlauf
     inviting_guests_to_discussion: Gäste gehören nicht zu Ihrer Gruppe und haben nur Zugriff auf diese Diskussion.
+    topic_notification_history: Thread-Benachrichtigungsverlauf
+    notification_history: Benachrichtigungsverlauf
   action_dock:
     actions_menu: Aktions-Menü
     more_actions: Weitere Aktionen
@@ -1526,6 +1546,7 @@ de:
     delete_account_subtitle: Löschen Sie Ihr Konto vollständig und entfernen Sie Ihren Namen aus früheren Diskussionen und Entscheidungen.
     updated_on_sign_in: Wird von Ihrem Browser bereitgestellt und aktualisiert, wenn Sie sich anmelden
     translate_content_automatically: Inhalte automatisch in meine Sprache übersetzen
+    bot_account_warning: Bot-Konten werden nicht zur Teilnahme an Umfragen oder Diskussionen eingeladen.
   text_editor:
     x_of_y_characters: "%{x} / %{y} Zeichen"
     select_text_to_link: Wählen Sie den zu verlinkenden Text aus und versuchen Sie es erneut
@@ -1595,6 +1616,7 @@ de:
   thread_preview:
     replies_count: "%{count} Antworten"
     unread_count: "%{count} ungelesen"
+    items_count: "%{count} Elemente"
   dashboard_page:
     polls_to_vote_on: Umfragen zum Abstimmen
     no_polls_to_vote_on: Es gibt keine Umfragen, über die Sie abstimmen müssen
@@ -1695,6 +1717,7 @@ de:
     title: Angesehen von
     no_one: Bisher hat niemand dieses gesehen
     disabled_anonymous_polls: Der Viewer-Verlauf ist deaktiviert, da der Thread anonyme Umfragen enthält
+    thread_engagement: Thread-Beteiligung
   activity_card:
     count_responses: "%{count} Antworten"
     beginning: Anfang
@@ -1736,6 +1759,22 @@ de:
     nested_twice: Zwei Ebenen verschachtelter Antworten
     nested_twice_description: Antworten höchstens zweimal einrücken.
     changing_nesting_is_slow: Änderungen an der Verschachtelung können bei der Verarbeitung einige Minuten dauern.
+    layout: Layout
+    items: Elemente anzeigen
+    nested: Verschachtelt
+    timeline: Zeitleiste
+    timeline_description: Die Artikel in der Reihenfolge ihrer Veröffentlichung
+    threaded: Als Thread
+    threaded_description: Antworten gruppiert nach dem, worauf sie sich beziehen
+    allow_concurrent_polls: Gleichzeitige Abstimmungen zulassen
+    allow_multiple_polls: Mehrere Umfragen gleichzeitig zulassen
+    allow_concurrent_polls_description: Es können mehrere Wahllokale gleichzeitig geöffnet sein.
+    allow_comments: Kommentare zulassen
+    allow_comments_description: Erlauben Sie den Teilnehmern, in diesem Thread Kommentare zu posten.
+    allow_reactions: Reaktionen zulassen
+    allow_reactions_description: Ermöglichen Sie den Teilnehmern, Emoji-Reaktionen hinzuzufügen.
+    topic_settings: Themeneinstellungen
+    thread_settings: Thread-Einstellungen
   delete_thread_form:
     title: Diskussion löschen
     body: Möchtest du diesen Thread wirklich löschen?
@@ -1807,6 +1846,7 @@ de:
     ranked_choice_title: Prioritätensetzung
     gradients_of_agreement_title: Übereinstimmungsgradienten
     majority_title: Mehrheitlich
+    stv_title: STV-Wahl
   poll_option_form:
     edit_option: Option bearbeiten
     option_name: Optionsname
@@ -1944,6 +1984,8 @@ de:
     blank: Neu
     blank_subtitle: Erstellen Sie eine neue Umfragevorlage für einen bestimmten Prozess
     start_a_poll: Starte eine Umfrage
+    export_blt: Wahlzettel exportieren (BLT)
+    status: Status
   poll_common_attachment_form:
     label: Arbeitsmaterialien
   poll_common_add_option:
@@ -2050,6 +2092,7 @@ de:
     for_this_proposal_to_pass: 'Damit dieser Vorschlag angenommen wird:'
     for_this_poll_type_to_be_valid: 'Damit dieser %{poll_type} gültig ist:'
     voting_opens_at: Diese %{poll_type} öffnet zur Abstimmung %{time}
+    unable_to_vote: Sie wurden nicht zur Abstimmung über diesen %{poll_type} eingeladen.
   poll_common_collapsed:
     by_who: von %{name}
   poll_common_calendar_invite:
@@ -2107,6 +2150,8 @@ de:
     change_results_order: Ergebnisreihenfolge ändern
     none_of_the_above: "(Keine der genannten)"
     name_or_username: Name oder Benutzername
+    cast: Abgegeben
+    uncast: Nicht abgegeben
   poll_common_undecided_panel:
     show_undecided: Zeige %{count} unentschlossen
     show_invitations: Ausstehende Einladungen anzeigen
@@ -2375,6 +2420,7 @@ de:
     want_to_set_password: Möchten Sie sich das nächste Mal mit einem Passwort anmelden?
     change_your_password: Möchten Sie ein neues Passwort festlegen?
     email_placeholder: Sie{'@'}example.com
+    turnstile_required: Bitte schließen Sie die Überprüfung ab, bevor Sie fortfahren.
   chatbot:
     configure_chatbot: Chatbot konfigurieren
     test_connection: Testverbindung
@@ -2502,6 +2548,7 @@ de:
     country_disclaimer: Das Land basiert auf der IP-Adresse des Benutzers und ist nicht sehr genau. Betrachten Sie dies nur als grobe Richtlinie.
     total_discussions: Gesamtzahl der Diskussionen
     discussions_with_polls: Diskussionen mit Umfragen
+    download_csv: CSV herunterladen
   tips:
     youve_completed_all_the_steps: "\U0001F389 Sie haben alle Schritte abgeschlossen!"
     getting_started_checklist: Checkliste für die ersten Schritte
@@ -2584,6 +2631,7 @@ de:
       helptext_on: Zeigen Sie nicht, wie die Leute abgestimmt haben, bis die Umfrage geschlossen ist
     short_reason_can_be_helpful: Kurze Abstimmungsgründe sind leichter verständlich. Eine Sammlung prägnanter Begründungen ist eine hervorragende Ressource für die Entscheidungsfindung.
     shuffle_options: Zufallsoptionen
+    selected_people_only: Nur für ausgewählte Personen
   poll_common_form:
     quorum: Quorum
     participation_quorum: Teilnahmequorum
@@ -2634,6 +2682,8 @@ de:
       time_poll_hint: Wähler geben an, wann sie für ein Treffen verfügbar sind
       rank: Rang
       time: Zeit
+      stv: STV-Wahl
+      stv_hint: Mehrere Gewinner proportional mittels übertragbarer Einzelstimme wählen
     process: Verfahren
     process_name: Vorlagentitel
     process_name_hint: Wie nennt man diese Vorlage? Z. B. Rollenberatung, Temperaturkontrolle, Protokollgenehmigung
@@ -2694,6 +2744,7 @@ de:
     create_poll_type: Erstelle %{poll_type}
     notify_voters_when_voting_opens: Benachrichtigen Sie die Wähler, wenn die Wahllokale geöffnet sind
     voters_notified_when_opens: Die Wähler werden benachrichtigt, sobald die Wahllokale geöffnet sind.
+    who_may_vote: Wer darf bei dieser %{poll_type} abstimmen?
   poll_receipts_page:
     verify_participants: Teilnehmer überprüfen
     see_votes_if_quorum_reached: Wenn die Abstimmung beendet ist und das Quorum erreicht ist, sehen Sie, wer seine Stimme abgegeben hat.
@@ -2756,6 +2807,7 @@ de:
     start_discussion: Starten Sie eine Diskussion
     start_a_direct_discussion: Starten Sie eine direkte Diskussion
     these_are_templates: Dies sind die Diskussionsvorlagen in Ihrer Gruppe.
+    start_a_new_discussion: Neue Diskussion starten
   context_panel:
     thread_status:
       pinned: Diese Diskussion wurde angepinnt. Sie bleibt für alle Benutzer ganz oben in der Diskussionsliste der Gruppe.
@@ -2771,6 +2823,7 @@ de:
     helptext: Angeheftete Diskussionen erscheinen immer in der Diskussionsliste der Gruppe.
   delete_discussion_form:
     discussion_deleted: Diskussion gelöscht
+    body: Möchten Sie diesen Thread wirklich löschen?
   move_discussion_form:
     title: Verlegen Sie die Diskussion in eine andere Gruppe.
     body: Zielgruppe
@@ -2787,3 +2840,55 @@ de:
     opening_hour: Öffnungszeit
     scheduled_hint: Die Umfrage wird vor dem Öffnungszeitpunkt sichtbar, aber erst abstimmungsbereit sein.
     draft_hint: Diese Umfrage wird als Entwurf gespeichert. Legen Sie ein Startdatum fest oder aktivieren Sie „Die Abstimmung beginnt sofort“, wenn Sie mit der Abstimmung beginnen möchten.
+  strand_members_list:
+    notify_members_or_invite_guests_info: Benachrichtigen Sie Gruppenmitglieder namentlich oder laden Sie Nicht-Mitglieder per E-Mail-Adresse ein. Eingeladene Gäste können an diesem Thread teilnehmen, haben aber keinen Zugriff auf andere Gruppenthreads.
+    notify_members_info: Geben Sie die Namen der Gruppenmitglieder ein, um sie über diesen Thread zu benachrichtigen.
+    specified_voters_only_warning: In diesem Thread gibt es Umfragen, an denen nur ausgewählte Personen teilnehmen können. Wenn Sie hier jemanden hinzufügen, erhält diese Person keine Stimme – verwenden Sie stattdessen die Funktion „Teilnehmer hinzufügen“ in der jeweiligen Umfrage.
+  poll_common_details_meta:
+    opened: Geöffnet
+    opens: Öffnet
+    closed: Geschlossen
+    closes: Schließt
+    opened_at: Geöffnet um
+    opening_at: Öffnet um
+    closed_at: Geschlossen um
+    closing_at: Schließt um
+  poll_stv_vote_form:
+    helptext: Ziehen Sie die Kandidaten über die Linie, um sie zu sortieren. Elemente unterhalb der Linie sind nicht sortiert. Rang 1 ist Ihr Favorit.
+    divider_text: Ziehen Sie die Kandidaten oberhalb dieser Linie, um sie zu sortieren.
+    stance_created: Abstimmung protokolliert
+    stance_updated: Abstimmung aktualisiert
+  poll_stv_form:
+    settings_title: STV-Wahleinstellungen
+    settings_helptext: Konfigurieren Sie die Anzahl der zu besetzenden Sitze, die Zählmethode und den Quotentyp für diese Wahl.
+    seats_label: Anzahl der zu besetzenden Plätze
+    method_label: Zählmethode
+    method_scottish: Scottish STV (recommended)
+    method_meek: Meek STV
+    quota_label: Quotentyp
+    quota_droop: Droop quota (recommended)
+    quota_hare: Hare quota
+  poll_stv_results:
+    title: Wahlergebnisse
+    elected: Gewählt
+    not_elected: Nicht gewählt
+    tied: Gleichstand
+    no_candidates_elected: Es wurden keine Kandidaten gewählt
+    round: "Runde %{number}"
+    quota_info: "%{method}, %{quota_type} quota (%{quota} votes needed)"
+    method_scottish: Scottish STV
+    method_meek: Meek STV
+    quota_droop: Droop
+    quota_hare: Hare
+    elected_in_round: "Elected in round %{round}"
+    eliminated_in_round: "Eliminated in round %{round}"
+    tied_in_round: "Tied in round %{round}"
+    votes: Stimmen
+    candidate: Kandidat
+    round_elected: Runde gewählt
+    first_preferences: Erste Präferenzen
+    final_tally: Endergebnis
+    quota_surplus: Überschuss
+    round_details: Details zu jeder Runde
+    view_full_results: Vollständige Ergebnisse anzeigen
+    results_available_when_closed: Die Ergebnisse werden nach Schließung der Abstimmungsrunde verfügbar sein.

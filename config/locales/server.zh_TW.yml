@@ -109,7 +109,7 @@ zh_TW:
     manage:
       all: 未獲得 %{action} %{subject} 的授權。
     add_guests:
-      all: 您必須升級您的 Loomio 訂閱才能將訪客新增至您的 %{subject}。或者，您可以邀請他們成為您小組的成員。
+      all: 您必須升級您的 Loomio 訂閱才能新增訪客。或者，您可以邀請他們成為您群組的成員。
   errors:
     clear_cache: 偵測到載入問題。按住 shift 並按下重新整理，或是清除您的瀏覽器快取。
     400:
@@ -151,6 +151,7 @@ zh_TW:
       email: 您輸入的不是有效的電子郵件地址
       spoofed_media_type: 檔案內容不符合其檔案名稱
       pwned_password: 該密碼之前曾出現在資料外洩事件中，切勿使用
+    new_account_trial_group_limit: 新帳號僅限加入一個群組。如需加入更多群組，請聯絡客服。
   group:
     error:
       handle_must_begin_with_parent_handle: 必須以 %{parent_handle} 開始。
@@ -239,6 +240,7 @@ zh_TW:
       notified: 您收到此訊息是因為作者通知了您。
       poll_subscribed: 您收到此郵件是因為您訂閱了該投票。
       discussion_subscribed: 您收到此郵件是因為您訂閱了該討論。
+      thread_subscribed: 您收到此郵件是因為您訂閱了該主題。
   user_mailer:
     group_export_ready:
       subject: 匯出「%{group_name}」的群組資料
@@ -396,6 +398,9 @@ zh_TW:
         若您不希望您的群組被刪除，請回覆此電子郵件。
         若您確定您想要刪除群組，您就不需要任何做任何事。
         感謝您。
+    trial_expired:
+      subject: 由於長時間未活動，您的 Loomio 群組將被刪除。
+      body: 您的 Loomio 群組「%{group}」已處於不活躍狀態，將在兩週後被刪除。如果您不希望您的群組被刪除，請回覆此郵件。
   poll_mailer:
     common:
       why_send_this: 因為 %{reason}，您收到了這封電子郵件
@@ -446,6 +451,8 @@ zh_TW:
       disagree: 不同意
       disagree_meaning: 在我支持該提案之前，需要對其進行一些修改。
       disagree_prompt: 如何改進這個提議才能讓您支持它？
+      abstain_meaning: 選擇不參與投票，或無法參與投票。
+      abstain_prompt: 你為什麼要棄權，或為什麼覺得自己無法就此決定投票？
     advice:
       process_subtitle: 就你需要做的決定尋求建議
       process_introduction: <p>在您需要做出決定時尋求建議，聽取受影響的人或具有專業知識的人的建議，這樣您就可以為您的組織做出更好的決定。</p><ul><li><p>建議可以幫助您為您的組織做出更好的決策。</p></li><li><p>培養關係、學習機會和多元投入。</p></li><li><p>激發主動性和創造性，工作更愉快。</p></li></ul><p><a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>閱讀有關建議流程的更多資訊</u></a>。</p>
@@ -492,6 +499,7 @@ zh_TW:
       block_prompt: 解釋你反對這個提議的原因以及為什麼不應該繼續進行
       details_v2: "<h3><strong>你需要做什麼決定？</strong></h3><p></p><h3><strong>為什麼這很重要？</strong></h3><p></p><h3><strong>你要求人們做什麼？</strong></h3><p></p><p>請分享您的立場以及原因。如果您不同意，請解釋需要做出哪些改變才能讓您支持。</p>"
       process_introduction_v2: "<p><strong>共識</strong>適用於需要所有人積極同意的決策。參與者共同努力，了解彼此的需求，並不斷改進提案，直到獲得全體成員的支持。由於人們可以在討論過程中改變投票，因此該過程鼓勵真誠的對話，而非一蹴可幾的決定。與其他方法相比，它需要更多的耐心，但也能建立最牢固的承諾。</p><p>此範本預設包含<strong>“封鎖”</strong>選項。 「阻止」功能並非適用於所有群體——它可能引發爭議或被濫用。如果您在決策過程中不使用「封鎖」功能，我們建議您編輯範本將其移除。</p>"
+      abstain_prompt: 你為什麼要棄權，或為什麼覺得自己無法就此決定投票？
     question_round:
       process_subtitle: 邀請澄清問題以幫助人們理解提案
       process_introduction: <p>提問環節是人們就提案提出澄清問題的機會，以便每個人在表達自己的想法之前了解提案。</p><p> Loomio 問答環節是一項特殊提案，沒有投票選項。它允許參與者在您設定的時間內提問。</p><p>質詢環節通常作為同意流程的步驟。</p><p><a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">閱讀有關同意流程的更多資訊</a>。</p>
@@ -527,6 +535,7 @@ zh_TW:
       could_be_better_prompt: 你會做出哪些改變？
       needs_a_rethink: 需要重新考慮
       needs_a_rethink_prompt: 你擔心的是什麼？
+      needs_a_rethink_meaning: 我認為這種做法是錯誤的。
     gradients_of_agreement:
       process_subtitle: 以 8 分製表示對提案的支持
       process_introduction: "<p>同意提案的梯度使小組成員能夠以一定程度表達對提案的支持，從而提供比「同意」和「不同意」更多的表達支持的方式。</p><p>使用協議梯度作為初步嘗試，在達成正式協議之前測試對提案的支持。</p><p>同意度梯度可以讓大家了解提案正在形成，並鼓勵他們參與。這是一個傾聽大家意見、了解他們的感受並做出適當回應的機會，從而挖掘出採納他們意見的潛力，最終做出更明智的決策。</p>"
@@ -620,6 +629,11 @@ zh_TW:
       no_meaning: 我不支持這項提議。
       no_prompt: 為什麼不支持這項提議？
       outcome_statement: "<p>感謝您參與此多數投票。</p>"
+    stv:
+      process_subtitle: 按比例選出多位得獎者。
+      process_introduction: <p>單記可轉移投票制（STV）是一種適用於多席次選舉的比例代表制投票方式。選民依偏好順序對候選人進行排序。達到規定得票數的候選人當選，剩餘或被淘汰的選票將轉入下一輪投票。</p><p>配置席位數、計票方式（蘇格蘭式或米克式）和配額類型（德魯普式或黑爾式）。結果會逐輪顯示選票轉移。</p><p><a target="_blank" href="https://help.loomio.com/en/user_manual/polls/stv/index.html">閱讀更多關於單記可轉移投票制（STV）選舉的資訊</a>。</p>
+      title: 選舉委員會成員
+      details: <h3 id="what-is-this-election-about"><strong>這次選舉的意義何在？</strong></h3><p></p><h3 id="how-many-seats"><strong>有多少座位被填滿了？</strong></h3><p></p><h3 id="who-are-the-candidates"><strong>候選人有哪些？</strong></h3><p></p><p>請透過拖曳候選人來投票，按您喜歡的順序排列。排名第一的候選人是您最喜歡的。您可以對任意數量的候選人進行排名。</p>
   forward_mailer:
     bounce:
       subject: 您發送給 Loomio 的訊息未送達
@@ -680,3 +694,5 @@ zh_TW:
     pt: 葡萄牙語
     zh: 中文（繁體，台灣）
     zh-HK: 中文（繁體，台灣）
+  upload:
+    file_too_large: 文件過大。最大上傳大小為 %{limit}。
