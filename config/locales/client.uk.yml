@@ -495,12 +495,6 @@ uk:
     normal_option: Коли хтось хоче моєї уваги (коли мене повідомляють)
     quiet_option: Немає електронних листів щодо цієї теми (Вимкнено)
     quiet_explained: Ви не отримаєте електронного листа, навіть якщо хтось спробує вас повідомити.
-  close_explanation_modal:
-    close_thread: Закрити тему
-    body: |
-      <p>Закрийте старі або невідповідні теми, щоб видалити їх із поля зору, і вкажіть, що обговорення закрито.</p>
-      <p>Будь-хто все ще може коментувати або розпочати опитування в закритій темі, але це не відображатиметься в списку ланцюжків групи чи на інформаційній панелі.</p>
-    image_alt: Закрити всі теми
   inbox:
     clear: Очистити
     latest: Останній
@@ -1044,8 +1038,6 @@ uk:
     discussion_copied: URL-адресу теми скопійовано до буферу обміну
     url_copied: Посилання скопійовано до буферу обміну
     tag_thread: Керувати мітками
-    close_thread: Закрити тему
-    reopen_thread: Повторно відкрити тему
     delete_thread: Видалити тему
     notification_history: Історія сповіщень
     move_item: Перемістити елемент
@@ -1054,8 +1046,6 @@ uk:
     count_voters: "%{count} виборців"
     pin_discussion: Закріпити обговорення
     unpin_discussion: Відкріпити обговорення
-    close_discussion: Закрити обговорення
-    reopen_discussion: Знову відкрити обговорення
     delete_discussion: Видалити обговорення
   formatting:
     formatting_tools: Інструменти форматування тексту
@@ -1179,7 +1169,6 @@ uk:
     settings: Налаштування
     subgroups: Підгрупи
     show_opened: "%{count} Відкрито"
-    show_closed: "%{count} закрито"
     no_threads_here: Тут нема тем для перегляду!
     search_threads: Пошук тем...
     private_threads: Ви повинні бути учасником для перегляду приватних тем у цій групі
@@ -1197,7 +1186,6 @@ uk:
     new_cover_photo: Завантажити нове фото обкладинки
     new_group_logo: Завантажити новий логотип для групи
     open_discussions: Відкриті теми
-    closed_discussions: Закриті теми
     discussions_placeholder: Тема це місце де всі можуть обговорити питання та прийняти рішення спільно.
     members_placeholder: 'Ви єдиний тут: запросіть когось приєднатися до вас!'
     member_options: Варіанти участі
@@ -1246,7 +1234,6 @@ uk:
     discussions: Обговорення
     no_discussions_here: Тут немає обговорень!
     private_discussions: Щоб переглядати приватні теми в цій групі, вам потрібно бути учасником
-    view_closed_discussions: Переглянути закриті обговорення
     discussion_templates: Шаблони обговорень
   export_data_modal:
     title: Як ви бажаєте використовувати ващі дані?
@@ -1701,9 +1688,6 @@ uk:
     pin:
       pinned: Тему закріплено
       unpinned: Тему відкріплено
-    closed:
-      reopened: Тему відновлено
-      closed: Тему закрито
     volume:
       mute_message: Обговорення вимкнено
       unmute_message: Обговорення скасовано
@@ -2001,10 +1985,8 @@ uk:
     deleted: Це опитування було видалено
     do_not_hide_results: Не приховувати результати
   discussions_panel:
-    open: Відкрита
     all: Всі
     unread: Непрочитані (%{count})
-    closed: Закрита
     include_subgroups_mine: "%{name} та мої підгрупи"
     include_subgroups_all: "%{name} та всі підгрупи"
     no_results_found: Не знайдено "%{search}"
@@ -2750,8 +2732,6 @@ uk:
     invited_by: Запрошено
     invited_on: Запрошено
     no_receipts: Це анонімне опитування закрилося до того, як з'явилася функція верифікації, тому верифікація неможлива.
-  close_discussion_modal:
-    body: Закрийте обговорення, щоб видалити їх зі списку відкритих обговорень і заборонити іншим коментувати.
   comment_reply_form:
     aria_label: Додати відповідь
   discussion_template:
@@ -2806,7 +2786,6 @@ uk:
   context_panel:
     thread_status:
       pinned: Це обговорення закріплено. Воно залишатиметься на початку списку обговорень групи для всіх користувачів.
-      closed: Це обговорення закрито. Воно більше не відображатиметься на інформаційній панелі та буде відображатися в розділі «закрито» на сторінці групи.
   thread_group:
     aria_label: Назва групи
   discussion_context:

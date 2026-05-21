@@ -492,10 +492,6 @@ fi:
     normal_option: Kun joku haluaa huomioni (kun hänelle ilmoitetaan)
     quiet_option: Ei sähköposteja tästä keskusteluketjusta (Pois päältä)
     quiet_explained: Sinulle ei lähetetä sähköpostia, vaikka joku yrittäisi ilmoittaa sinulle.
-  close_explanation_modal:
-    close_thread: Sulje lanka
-    body: "<p>Sulje vanhat tai asiaankuulumattomat viestiketjut poistaaksesi ne näkyvistä ja ilmoittaaksesi, että keskustelu on päättynyt.</p><p> Kuka tahansa voi silti kommentoida tai aloittaa kyselyn suljetussa ketjussa, mutta se ei näy ryhmän viestiketjuluettelossa tai hallintapaneelissa.</p>"
-    image_alt: Suljetaan kaikki ketjut
   inbox:
     clear: Asia selvä
     latest: Uusin
@@ -1035,8 +1031,6 @@ fi:
     discussion_copied: Viestiketjun URL-osoite kopioitu leikepöydälle
     url_copied: Linkki kopioitu leikepöydälle
     tag_thread: Hallitse tunnisteita
-    close_thread: Sulje lanka
-    reopen_thread: Avaa lanka uudelleen
     delete_thread: Poista lanka
     notification_history: Ilmoitushistoria
     move_item: Siirrä kohde
@@ -1045,8 +1039,6 @@ fi:
     count_voters: "%{count} äänestäjää"
     pin_discussion: Kiinnitä keskustelu
     unpin_discussion: Poista keskustelun kiinnitys
-    close_discussion: Sulje keskustelu
-    reopen_discussion: Avaa keskustelu uudelleen
     delete_discussion: Poista keskustelu
   formatting:
     formatting_tools: Tekstin muotoilutyökalut
@@ -1170,7 +1162,6 @@ fi:
     settings: asetukset
     subgroups: Alaryhmät
     show_opened: "%{count} Avoinna"
-    show_closed: "%{count} Suljettu"
     no_threads_here: Ei ketjuja täällä!
     search_threads: Etsi ketjuja...
     private_threads: Sinun on oltava jäsen nähdäksesi yksityisiä viestiketjuja tässä ryhmässä
@@ -1188,7 +1179,6 @@ fi:
     new_cover_photo: Lataa uusi kansikuva
     new_group_logo: Lataa uusi ryhmän logo
     open_discussions: Avaa ketjut
-    closed_discussions: Suljetut ketjut
     discussions_placeholder: Lanka on, jossa kaikki voivat keskustella aiheesta ja tehdä päätöksiä yhdessä.
     members_placeholder: 'Olet täällä ainoa: kutsu ihmisiä mukaan!'
     member_options: Jäsenvaihtoehdot
@@ -1237,7 +1227,6 @@ fi:
     discussions: Keskustelut
     no_discussions_here: Ei keskusteluja nähtävänä täällä!
     private_discussions: Sinun on oltava jäsen nähdäksesi tämän ryhmän yksityiset keskustelut.
-    view_closed_discussions: Näytä suljetut keskustelut
     discussion_templates: Keskustelupohjat
   export_data_modal:
     title: Miten haluat käyttää tietojasi?
@@ -1678,9 +1667,6 @@ fi:
     pin:
       pinned: Lanka kiinnitetty
       unpinned: Lanka irrotettu
-    closed:
-      reopened: Viesti avattu uudelleen
-      closed: Ketju suljettu
     volume:
       mute_message: Keskustelu mykistetty
       unmute_message: Keskustelun mykistys poistettu
@@ -1973,10 +1959,8 @@ fi:
     deleted: Tämä kysely on poistettu
     do_not_hide_results: Älä piilota tuloksia
   discussions_panel:
-    open: Avoin
     all: Kaikki
     unread: Lukemattomat (%{count})
-    closed: Suljettu
     include_subgroups_mine: "%{name} ja alaryhmäni"
     include_subgroups_all: "%{name} ja kaikki alaryhmät"
     no_results_found: Ei tuloksia haulle "%{search}"
@@ -2718,8 +2702,6 @@ fi:
     invited_by: Kutsuttu
     invited_on: Kutsuttu
     no_receipts: Tämä anonyymi kysely sulkeutui ennen vahvistusominaisuuden käyttöönottoa, joten vahvistus ei ole mahdollista.
-  close_discussion_modal:
-    body: Sulje keskustelut poistaaksesi ne avoimien keskustelujen luettelosta ja estääksesi ihmisiä kommentoimasta.
   comment_reply_form:
     aria_label: Lisää vastaus
   discussion_template:
@@ -2774,7 +2756,6 @@ fi:
   context_panel:
     thread_status:
       pinned: Tämä keskustelu on kiinnitetty. Se pysyy ryhmän keskusteluluettelon yläosassa kaikille käyttäjille.
-      closed: Tämä keskustelu on suljettu. Se ei enää näy hallintapaneelissa, ja se luetellaan ryhmän sivulla kohdassa 'suljettu'.
   thread_group:
     aria_label: Ryhmän nimi
   discussion_context:

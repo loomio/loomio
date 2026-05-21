@@ -37,7 +37,7 @@ module.exports = {
     page.expectElement('.time-ago')
   },
 
-  'can_close_and_reopen_a_thread': (test) => {
+  'can_lock_and_unlock_a_thread': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_open_and_closed_discussions')
@@ -46,12 +46,12 @@ module.exports = {
     page.click('.discussions-panel__filters-closed')
     page.expectText('.thread-preview', 'This thread is old and closed')
     page.click('.discussions-panel__filters')
-    page.click('.discussions-panel__filters-open')
+    page.click('.discussions-panel__filters-all')
     page.click('.thread-preview')
-    page.click('.thread-sidebar .action-dock__button--close_thread')
-    page.expectFlash('Discussion closed')
+    page.click('.thread-sidebar .action-dock__button--lock_thread')
+    page.expectFlash('Thread locked')
     // page.click('.flash-root__action')
-    // page.expectFlash('Thread reopened')
+    // page.expectFlash('Thread unlocked')
   },
 
   'lets_you_edit_title_and_context': (test) => {

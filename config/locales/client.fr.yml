@@ -502,12 +502,6 @@ fr:
     normal_option: Quand quelqu'un souhaite attirer mon attention (lorsqu'il est notifié)
     quiet_option: Aucun e-mail concernant cette discussion (Désactivé)
     quiet_explained: Vous ne recevrez pas d'e-mail, même si quelqu'un tente de vous contacter.
-  close_explanation_modal:
-    close_thread: Clore la discussion
-    body: |
-      <p>Fermer les discussions anciennes ou non pertinentes pour les supprimer de la vue et indiquer que la discussion a été clôturée.</p>
-      <p>N'importe qui peut toujours commenter ou démarrer un sondage sur une discussion close, mais elle n'apparaitra pas dans la liste des discussion du groupe ni sur le tableau de bord.</p>
-    image_alt: Clore toutes les discussions
   inbox:
     clear: Vider
     latest: Dernier
@@ -1051,8 +1045,6 @@ fr:
     discussion_copied: URL de la discussion copiée
     url_copied: Lien copié dans presse-papiers
     tag_thread: Gérer les mots-clés
-    close_thread: Clore la discussion
-    reopen_thread: Ré-ouvrir la discussion
     delete_thread: Supprimer la discussion
     notification_history: Historique des notifications
     move_item: Déplacer l'élément
@@ -1061,8 +1053,6 @@ fr:
     count_voters: "%{count} votants"
     pin_discussion: Discussion sur les épingles
     unpin_discussion: Un-pin discussion
-    close_discussion: Discussion étroite
-    reopen_discussion: Rouvrir la discussion
     delete_discussion: Supprimer la discussion
   formatting:
     formatting_tools: Outils de formatage du texte
@@ -1197,7 +1187,6 @@ fr:
     settings: Paramètres
     subgroups: Sous-groupes
     show_opened: "%{count} ouvertes"
-    show_closed: "%{count} fermés"
     no_threads_here: Pas de discussions à afficher ici !
     search_threads: Rechercher des discussions…
     private_threads: Vous devez être membre du groupe pour voir des discussions privées de ce groupe
@@ -1215,7 +1204,6 @@ fr:
     new_cover_photo: Charger une nouvelle photo de couverture
     new_group_logo: Charger un nouveau logo de groupe
     open_discussions: Discussions en cours
-    closed_discussions: Discussions closes
     discussions_placeholder: Une discussion est l’endroit où tout le monde peut discuter d’un sujet et prendre des décisions collectives.
     members_placeholder: 'Vous êtes le seul membre ici: invitez des personnes à vous rejoindre !'
     member_options: Options des membres
@@ -1264,7 +1252,6 @@ fr:
     discussions: Discussions
     no_discussions_here: Aucune discussion à signaler ici !
     private_discussions: Vous devez être membre pour consulter les discussions privées de ce groupe.
-    view_closed_discussions: Consulter les discussions fermées
     discussion_templates: Modèles de discussion
   export_data_modal:
     title: Comment souhaitez-vous utiliser vos données ?
@@ -1717,9 +1704,6 @@ fr:
     pin:
       pinned: Discussion épinglée
       unpinned: Discussion plus épinglée
-    closed:
-      reopened: Discussion relancée
-      closed: Discussion close
     volume:
       mute_message: Discussion désactivée
       unmute_message: Discussion activée
@@ -2017,10 +2001,8 @@ fr:
     deleted: Ce sondage a été supprimé
     do_not_hide_results: Ne cachez pas les résultats
   discussions_panel:
-    open: Ouvert
     all: Tous
     unread: Non lus (%{count})
-    closed: Clôturée
     include_subgroups_mine: "%{name} et mes sous-groupes"
     include_subgroups_all: "%{name} et tous les sous-groupes"
     no_results_found: Pas de résultats pour "%{search}"
@@ -2764,8 +2746,6 @@ fr:
     invited_by: Invité par
     invited_on: Invité sur
     no_receipts: Ce sondage anonyme a été fermé avant que la fonction de vérification n'existe, la vérification n'est donc pas possible.
-  close_discussion_modal:
-    body: Fermer les discussions pour les retirer de la liste des discussions ouvertes et empêcher les commentaires.
   comment_reply_form:
     aria_label: Ajouter une réponse
   discussion_template:
@@ -2820,7 +2800,6 @@ fr:
   context_panel:
     thread_status:
       pinned: Cette discussion a été épinglée. Elle restera en haut de la liste des discussions du groupe pour tous les utilisateurs.
-      closed: Cette discussion est close. Elle n'apparaîtra plus sur le tableau de bord et sera répertoriée sous « Clôturée » sur la page du groupe.
   thread_group:
     aria_label: Nom du groupe
   discussion_context:

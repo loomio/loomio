@@ -491,10 +491,6 @@ ja:
     normal_option: 誰かが私の注意を引こうとしているとき（通知を受けたとき）
     quiet_option: このスレッドに関するメールは受信しません（オフ）
     quiet_explained: 誰かがあなたに通知しようとしても、メールは届きません。
-  close_explanation_modal:
-    close_thread: スレッドを閉じる
-    body: "<p>古いスレッドや無関係なスレッドを閉じて表示から削除し、ディスカッションが終了したことを示します。</p><p>閉じられたスレッドでも誰でもコメントしたり投票を開始したりできますが、グループのスレッド リストやダッシュボードには表示されません。</p>"
-    image_alt: スレッドをすべて閉じます
   inbox:
     clear: クリア
     latest: 最新
@@ -1034,8 +1030,6 @@ ja:
     discussion_copied: スレッドの URL がクリップボードにコピーされました
     url_copied: リンクがクリップボードにコピーされました
     tag_thread: タグを管理する
-    close_thread: スレッドを閉じる
-    reopen_thread: スレッドを再開します
     delete_thread: スレッドの削除
     notification_history: 通知履歴
     move_item: アイテムの移動
@@ -1044,8 +1038,6 @@ ja:
     count_voters: "%{count} 人の投票者"
     pin_discussion: ピンの議論
     unpin_discussion: ピン留めを解除する議論
-    close_discussion: 議論を深める
-    reopen_discussion: 議論を再開する
     delete_discussion: ディスカッションを削除
   formatting:
     formatting_tools: テキスト書式設定ツール
@@ -1169,7 +1161,6 @@ ja:
     settings: 設定
     subgroups: サブグループ
     show_opened: "%{count} オープン"
-    show_closed: "%{count} 件が終了しました"
     no_threads_here: ここには見るスレッドがありません!
     search_threads: スレッドを検索...
     private_threads: このグループのプライベート スレッドを表示するにはメンバーになる必要があります
@@ -1187,7 +1178,6 @@ ja:
     new_cover_photo: 新しいカバー写真をアップロードする
     new_group_logo: 新しいグループのロゴをアップロードする
     open_discussions: オープンスレッド
-    closed_discussions: 閉じられたスレッド
     discussions_placeholder: スレッドは、全員がトピックについて話し合い、一緒に決定を下すことができる場所です。
     members_placeholder: ここにいるのはあなただけです。何人かの人を招待してください!
     member_options: 会員オプション
@@ -1236,7 +1226,6 @@ ja:
     discussions: 議論
     no_discussions_here: ここで見る議論はありません!
     private_discussions: このグループのプライベートスレッドを閲覧するにはメンバーになる必要があります
-    view_closed_discussions: 終了したディスカッションを表示
     discussion_templates: ディスカッションテンプレート
   export_data_modal:
     title: データをどのように使用したいですか?
@@ -1677,9 +1666,6 @@ ja:
     pin:
       pinned: ネジが固定されています
       unpinned: スレッドの固定が解除されました
-    closed:
-      reopened: スレッドが再開されました
-      closed: スレッドが閉じられました
     volume:
       mute_message: 議論はミュートされました
       unmute_message: ディスカッションのミュートを解除
@@ -1972,10 +1958,8 @@ ja:
     deleted: この投票は削除されました
     do_not_hide_results: 結果を隠さない
   discussions_panel:
-    open: 議論中
     all: 全て
     unread: 未読 (%{count})
-    closed: 議論終了
     include_subgroups_mine: "%{name} と私のサブグループ"
     include_subgroups_all: "%{name} とすべてのサブグループ"
     no_results_found: "「%{search}」の結果はありません"
@@ -2717,8 +2701,6 @@ ja:
     invited_by: 招待者
     invited_on: 招待された
     no_receipts: この匿名投票は検証機能が存在する前に終了したため、検証は不可能です。
-  close_discussion_modal:
-    body: ディスカッションを閉じると、オープンディスカッションのリストから削除され、他のユーザーがコメントできなくなります。
   comment_reply_form:
     aria_label: 返信を追加
   discussion_template:
@@ -2773,7 +2755,6 @@ ja:
   context_panel:
     thread_status:
       pinned: このディスカッションはピン留めされました。グループのディスカッションリストの一番上に、全ユーザーに表示されます。
-      closed: このディスカッションは終了しました。ダッシュボードには表示されなくなり、グループページの「終了」リストに表示されます。
   thread_group:
     aria_label: グループ名
   discussion_context:

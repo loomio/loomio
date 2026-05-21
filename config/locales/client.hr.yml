@@ -492,10 +492,6 @@ hr:
     normal_option: Kad netko želi moju pažnju (Kad je obaviješten)
     quiet_option: Nema e-poruka o ovoj temi (Isključeno)
     quiet_explained: Nećete dobiti e-poštu, čak ni kada vas netko pokuša obavijestiti.
-  close_explanation_modal:
-    close_thread: Zatvori nit
-    body: "<p>Zatvorite stare ili nevažne teme kako biste ih uklonili iz prikaza i označili da je rasprava zatvorena.</p><p> Svatko i dalje može komentirati ili pokrenuti anketu u zatvorenoj niti, ali se neće pojaviti na popisu niti grupe ili na nadzornoj ploči.</p>"
-    image_alt: Zatvaranje svih tema
   inbox:
     clear: Obriši
     latest: Najnoviji
@@ -1035,8 +1031,6 @@ hr:
     discussion_copied: URL niti kopiran u međuspremnik
     url_copied: Veza je kopirana u međuspremnik
     tag_thread: Upravljanje oznakama
-    close_thread: Zatvori nit
-    reopen_thread: Ponovo otvori nit
     delete_thread: Izbriši nit
     notification_history: Povijest obavijesti
     move_item: Premjesti stavku
@@ -1045,8 +1039,6 @@ hr:
     count_voters: "%{count} birača"
     pin_discussion: Prikvači raspravu
     unpin_discussion: Otkvači raspravu
-    close_discussion: Zatvori raspravu
-    reopen_discussion: Ponovno otvori raspravu
     delete_discussion: Izbriši raspravu
   formatting:
     formatting_tools: Alati za oblikovanje teksta
@@ -1170,7 +1162,6 @@ hr:
     settings: postavke
     subgroups: Podskupine
     show_opened: "%{count} Otvoreno"
-    show_closed: "%{count} Zatvoreno"
     no_threads_here: Ovdje nema niti za vidjeti!
     search_threads: Traži teme...
     private_threads: Morate biti član da biste vidjeli privatne teme u ovoj grupi
@@ -1188,7 +1179,6 @@ hr:
     new_cover_photo: Prenesi novu naslovnu fotografiju
     new_group_logo: Učitaj novi logo grupe
     open_discussions: Otvorene teme
-    closed_discussions: Zatvorene niti
     discussions_placeholder: Nit je mjesto gdje svi mogu raspravljati o temi i zajedno donositi odluke.
     members_placeholder: 'Vi ste jedini ovdje: pozovite neke ljude da vam se pridruže!'
     member_options: Opcije za članove
@@ -1237,7 +1227,6 @@ hr:
     discussions: Rasprave
     no_discussions_here: Ovdje nema rasprava!
     private_discussions: Morate biti član da biste vidjeli privatne teme u ovoj grupi
-    view_closed_discussions: Prikaži zatvorene rasprave
     discussion_templates: Predlošci za raspravu
   export_data_modal:
     title: Kako želite koristiti svoje podatke?
@@ -1678,9 +1667,6 @@ hr:
     pin:
       pinned: Nit pričvršćena
       unpinned: Nit je otkvačena
-    closed:
-      reopened: Tema ponovno otvorena
-      closed: Tema zatvorena
     volume:
       mute_message: Rasprava je utišana
       unmute_message: Utišavanje rasprave uključeno
@@ -1973,10 +1959,8 @@ hr:
     deleted: Ova anketa je izbrisana
     do_not_hide_results: Ne skrivaj rezultate
   discussions_panel:
-    open: Otvoren
     all: svi
     unread: Nepročitano (%{count})
-    closed: Zatvoreno
     include_subgroups_mine: "%{name} i moje podgrupe"
     include_subgroups_all: "%{name} i sve podgrupe"
     no_results_found: Nema rezultata za "%{search}"
@@ -2718,8 +2702,6 @@ hr:
     invited_by: Pozvao/la
     invited_on: Pozvani
     no_receipts: Ova anonimna anketa zatvorena je prije nego što je postojala značajka provjere, tako da provjera nije moguća.
-  close_discussion_modal:
-    body: Zatvorite rasprave kako biste ih uklonili s popisa otvorenih rasprava i spriječili ljude da komentiraju.
   comment_reply_form:
     aria_label: Dodaj odgovor
   discussion_template:
@@ -2774,7 +2756,6 @@ hr:
   context_panel:
     thread_status:
       pinned: Ova je rasprava prikvačena. Ostat će na vrhu popisa rasprava grupe za sve korisnike.
-      closed: Ova je rasprava zatvorena. Više se neće prikazivati na nadzornoj ploči i bit će navedena pod 'zatvoreno' na stranici grupe.
   thread_group:
     aria_label: Naziv grupe
   discussion_context:

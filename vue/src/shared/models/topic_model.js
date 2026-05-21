@@ -15,8 +15,8 @@ export default class TopicModel extends BaseModel {
     super(...args);
     this.savePin = this.savePin.bind(this);
     this.saveUnpin = this.saveUnpin.bind(this);
-    this.close = this.close.bind(this);
-    this.reopen = this.reopen.bind(this);
+    this.lock = this.lock.bind(this);
+    this.unlock = this.unlock.bind(this);
     this.discard = this.discard.bind(this);
     this.saveVolume = this.saveVolume.bind(this);
     this.updateReadRanges = throttle(function() {
@@ -159,14 +159,14 @@ export default class TopicModel extends BaseModel {
     return Records.topics.remote.patchMember(this.id, 'unpin').finally(() => { this.processing = false; });
   }
 
-  close() {
+  lock() {
     this.processing = true;
-    return Records.topics.remote.patchMember(this.id, 'close').finally(() => { this.processing = false; });
+    return Records.topics.remote.patchMember(this.id, 'lock').finally(() => { this.processing = false; });
   }
 
-  reopen() {
+  unlock() {
     this.processing = true;
-    return Records.topics.remote.patchMember(this.id, 'reopen').finally(() => { this.processing = false; });
+    return Records.topics.remote.patchMember(this.id, 'unlock').finally(() => { this.processing = false; });
   }
 
   dismiss() {

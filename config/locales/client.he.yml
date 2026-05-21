@@ -492,10 +492,6 @@ he:
     normal_option: כשמישהו רוצה את תשומת ליבי (כאשר מקבל הודעה)
     quiet_option: אין אימיילים בנוגע לשרשור הזה (כבוי)
     quiet_explained: לא תקבלו אימייל, גם אם מישהו ינסה להודיע לכם.
-  close_explanation_modal:
-    close_thread: סגור שיחה
-    body: <p style=";text-align:right;direction:rtl">סגור שרשורים ישנים או לא רלוונטיים כדי להסיר אותם מהתצוגה ולציין שהדיון נסגר.</p><p style=";text-align:right;direction:rtl"> כל אחד עדיין יכול להגיב או להתחיל סקר בשרשור סגור, אך הוא לא יופיע ברשימת השרשורים של הקבוצה או בלוח המחוונים.</p>
-    image_alt: סוגר את כל השיחות
   inbox:
     clear: נקה/י
     latest: אחרונים
@@ -1039,8 +1035,6 @@ he:
     discussion_copied: כתובת הURL של השיחה הועתקה לClipboard
     url_copied: הקישור הועתק ללוח
     tag_thread: ניהול תגיות
-    close_thread: סגור שיחה
-    reopen_thread: פתח את השרשור מחדש
     delete_thread: מחיקת שיחה
     notification_history: היסטוריית הודעות
     move_item: העבר פריט
@@ -1049,8 +1043,6 @@ he:
     count_voters: "%{count} מצביעים"
     pin_discussion: דיון בהצמדה
     unpin_discussion: ביטול הצמדת דיון
-    close_discussion: סגור דיון
-    reopen_discussion: פתח מחדש את הדיון
     delete_discussion: מחיקת דיון
   formatting:
     formatting_tools: כלי עיצוב טקסט
@@ -1174,7 +1166,6 @@ he:
     settings: הגדרות
     subgroups: תת קבוצה
     show_opened: "%{count} פתוח"
-    show_closed: "%{count} סגור"
     no_threads_here: אין שיחות פה!
     search_threads: חפש/י שיחות....
     private_threads: אתם צריכים להיות חבר לצפיה בשיחות פרטיות של הקבוצה
@@ -1192,7 +1183,6 @@ he:
     new_cover_photo: העלה תמונת קאבר חדשה
     new_group_logo: העלה לוגו קבוצה חדש
     open_discussions: שיחות פתוחות
-    closed_discussions: שיחות סגורות
     discussions_placeholder: שיחה היא מקום מפגש משותף לדיון על נושא וקבלת החלטות משותפת.
     members_placeholder: רק אתה פה בינתיים... הזמן כמה אנשים להצטרף אליך!
     member_options: אפשרויות חבר
@@ -1241,7 +1231,6 @@ he:
     discussions: דיונים
     no_discussions_here: אין כאן דיונים לראות!
     private_discussions: עליך להיות חבר כדי לצפות בשרשורים פרטיים בקבוצה זו
-    view_closed_discussions: הצג דיונים סגורים
     discussion_templates: תבניות דיון
   export_data_modal:
     title: איך אתה רוצה להשתמש בנתונים שלך?
@@ -1692,9 +1681,6 @@ he:
     pin:
       pinned: השיחה נעוצה
       unpinned: שיחה כבר לא נעוצה
-    closed:
-      reopened: השיחה נפתחה מחדש
-      closed: השיחה נסגרה
     volume:
       mute_message: הדיון הושתק
       unmute_message: השתקת הדיון בוטלה
@@ -1992,10 +1978,8 @@ he:
     deleted: סקר זה נמחק
     do_not_hide_results: אל תסתירו תוצאות
   discussions_panel:
-    open: פתוח
     all: הכל
     unread: לא נקרא (%{count})
-    closed: סגור
     include_subgroups_mine: "%{name} ותתי הקבוצות שלי"
     include_subgroups_all: "%{name} וכל תת הקבוצות"
     no_results_found: אין תוצאות עבור "%{search}"
@@ -2737,8 +2721,6 @@ he:
     invited_by: הוזמן על ידי
     invited_on: הוזמן בתאריך
     no_receipts: סקר אנונימי זה נסגר לפני שתכונת האימות הייתה קיימת, כך שאימות אינו אפשרי.
-  close_discussion_modal:
-    body: סגור דיונים כדי להסיר אותם מרשימת הדיונים הפתוחים ולמנוע מאנשים להגיב.
   comment_reply_form:
     aria_label: הוסף תגובה
   discussion_template:
@@ -2793,7 +2775,6 @@ he:
   context_panel:
     thread_status:
       pinned: דיון זה הוצמד. הוא יישאר בראש רשימת הדיונים של הקבוצה עבור כל המשתמשים.
-      closed: דיון זה נסגר. הוא לא יופיע עוד בלוח המחוונים, ויופיע תחת 'סגור' בדף הקבוצה.
   thread_group:
     aria_label: שם הקבוצה
   discussion_context:

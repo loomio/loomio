@@ -509,8 +509,6 @@ zh_CN:
     normal_option: 当有人想引起我的注意时（收到通知时）
     quiet_option: 关于此主题的邮件已关闭
     quiet_explained: 即使有人试图通知您，您也不会收到电子邮件。
-  close_discussion_modal:
-    body: 关闭讨论，将其从开放讨论列表中移除，并阻止人们发表评论。
   inbox:
     clear: 清除
     latest: 最新的
@@ -1072,10 +1070,6 @@ zh_CN:
     discussion_copied: 帖子 URL 已复制到剪贴板
     url_copied: 链接已复制到剪贴板
     tag_thread: 管理标签
-    close_thread: 关闭帖子
-    close_discussion: 关闭讨论
-    reopen_thread: 重新打开帖子
-    reopen_discussion: 重新开启讨论
     delete_thread: 删除帖子
     delete_discussion: 删除讨论
     notification_history: 通知历史记录
@@ -1191,7 +1185,6 @@ zh_CN:
   context_panel:
     thread_status:
       pinned: 此帖子已置顶，将始终显示在群组帖子列表的顶部，供所有用户查看。
-      closed: 此帖子已关闭。它将不再显示在控制面板上，并在群组页面的“已关闭”列表中列出。
   delete_group_modal:
     title: 删除组
     subgroup_title: 删除子组
@@ -1235,11 +1228,9 @@ zh_CN:
     my_subgroups: 我的子群组
     more_subgroups: 更多子群组
     show_opened: "%{count} 打开"
-    show_closed: "%{count} 已关闭"
     no_discussions_here: 这里没有任何讨论！
     search_threads: 搜索相关帖子……
     private_discussions: 您需要成为会员才能查看此群组中的私密讨论。
-    view_closed_discussions: 查看已关闭的讨论
     messages:
       privacy:
         members: 此群组目前仅对成员可见。
@@ -1252,7 +1243,6 @@ zh_CN:
     new_cover_photo: 上传新的封面照片
     new_group_logo: 上传新的群组徽标
     open_discussions: 公开讨论
-    closed_discussions: 已关闭的讨论
     discussions_placeholder: 在帖子中，大家可以讨论某个话题并共同做出决定。
     members_placeholder: 这里只有您一个人：邀请其他人来和您一起来吧！
     member_options: 会员选项
@@ -1729,9 +1719,6 @@ zh_CN:
     volume:
       mute_message: 讨论已静音
       unmute_message: 讨论已解除静音
-    closed:
-      reopened: 讨论重新开启。
-      closed: 讨论已结束
     direct: 直接的
   discussion_last_seen_by:
     title: 被看到
@@ -2042,10 +2029,8 @@ zh_CN:
     until_voting_is_closed: 投票结束前
     deleted: 此投票已删除
   discussions_panel:
-    open: 打开
     all: 全部
     unread: 未读 (%{count})
-    closed: 关闭
     include_subgroups_mine: "%{name} 和我的子组"
     include_subgroups_all: "%{name} 及其所有子组"
     no_results_found: 搜索“%{search}”未找到结果

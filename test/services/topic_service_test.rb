@@ -116,25 +116,25 @@ class TopicServiceTest < ActiveSupport::TestCase
 
   # -- Close / Reopen --
 
-  test "closes a topic" do
+  test "locks a topic" do
     discussion = DiscussionService.create(params: {
-      title: 'Closeable Discussion',
+      title: 'Lockable Discussion',
       group_id: @group.id
     }, actor: @user)
 
     assert_nil discussion.topic.closed_at
-    TopicService.close(topic: discussion.topic, actor: @user)
+    TopicService.lock(topic: discussion.topic, actor: @user)
     assert_not_nil discussion.topic.reload.closed_at
   end
 
-  test "reopens a closed topic" do
+  test "unlocks a locked topic" do
     discussion = DiscussionService.create(params: {
-      title: 'Reopenable Discussion',
+      title: 'Unlockable Discussion',
       group_id: @group.id
     }, actor: @user)
     discussion.topic.update!(closed_at: 1.day.ago)
 
-    TopicService.reopen(topic: discussion.topic, actor: @user)
+    TopicService.unlock(topic: discussion.topic, actor: @user)
     assert_nil discussion.topic.reload.closed_at
   end
 end

@@ -218,8 +218,8 @@ export default new class TopicService {
         }
       },
 
-      close_thread: {
-        name: 'action_dock.close_thread',
+      lock_thread: {
+        name: 'action_dock.lock_thread',
         collection: 'actions',
         icon: 'mdi-archive-outline',
         canPerform() {
@@ -228,11 +228,11 @@ export default new class TopicService {
             (topic.group().membersCanEditDiscussions && topic.membersInclude(Session.user()))
           );
         },
-        perform: () => this.close(topic)
+        perform: () => this.lock(topic)
       },
 
-      reopen_thread: {
-        name: 'action_dock.reopen_thread',
+      unlock_thread: {
+        name: 'action_dock.unlock_thread',
         collection: 'actions',
         icon: 'mdi-refresh',
         dock: 2,
@@ -242,7 +242,7 @@ export default new class TopicService {
             (topic.group().membersCanEditDiscussions && topic.membersInclude(Session.user()))
           );
         },
-        perform: () => this.reopen(topic)
+        perform: () => this.unlock(topic)
       },
 
 
@@ -311,32 +311,32 @@ export default new class TopicService {
     });
   }
 
-  close(topic) {
+  lock(topic) {
     if (!Session.user().hasExperienced("closingThread")) {
       Records.users.saveExperience("closingThread");
       return Records.users.updateProfile(Session.user()).then(() => openModal({
         component: 'ConfirmModal',
         props: {
           confirm: {
-            submit: topic.close,
+            submit: topic.lock,
             text: {
-              title: 'action_dock.close_discussion',
-              helptext: 'close_discussion_modal.body',
-              flash: 'discussion.closed.closed'
+              title: 'action_dock.lock_thread',
+              helptext: 'lock_thread_modal.body',
+              flash: 'discussion.locked.locked'
             }
           }
         }
       }));
     } else {
-      return topic.close().then(() => {
-        return Flash.success("discussion.closed.closed");
+      return topic.lock().then(() => {
+        return Flash.success("discussion.locked.locked");
       });
     }
   }
 
-  reopen(topic) {
-    return topic.reopen().then(() => {
-      return Flash.success("discussion.closed.reopened");
+  unlock(topic) {
+    return topic.unlock().then(() => {
+      return Flash.success("discussion.locked.unlocked");
     });
   }
 

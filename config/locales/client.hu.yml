@@ -494,10 +494,6 @@ hu:
     normal_option: Amikor valaki a figyelmemet akarja (Amikor értesítenek)
     quiet_option: Nincsenek e-mailek erről a témáról (Kikapcsolva)
     quiet_explained: Nem fogsz e-mailt kapni, még akkor sem, ha valaki megpróbál értesíteni.
-  close_explanation_modal:
-    close_thread: Téma lezárása
-    body: "<p>Zárja be a régi vagy irreleváns szálakat, hogy eltávolítsa őket a nézetből, és jelezze, hogy a vita lezárult.</p><p> Továbbra is bárki hozzászólhat vagy szavazást indíthat egy lezárt szálban, de nem jelenik meg a csoport témaszállistáján vagy az irányítópulton.</p>"
-    image_alt: Minden téma lezárása
   inbox:
     clear: Töröl
     latest: Legutóbbi
@@ -1039,8 +1035,6 @@ hu:
     discussion_copied: A téma URL-jét a vágólapra másolta
     url_copied: A link a vágólapra másolva
     tag_thread: Címkék kezelése
-    close_thread: Téma lezárása
-    reopen_thread: Téma újranyitása
     delete_thread: Téma törlése
     notification_history: Értesítési előtörténet
     move_item: Elem mozgatása
@@ -1049,8 +1043,6 @@ hu:
     count_voters: "%{count} szavazó"
     pin_discussion: Beszélgetés rögzítése
     unpin_discussion: Beszélgetés rögzítésének feloldása
-    close_discussion: Bezárás
-    reopen_discussion: Vita újranyitása
     delete_discussion: Beszélgetés törlése
   formatting:
     formatting_tools: Szövegformázó eszközök
@@ -1174,7 +1166,6 @@ hu:
     settings: Beállítások
     subgroups: Alcsoportok
     show_opened: "%{count} Nyitva"
-    show_closed: "%{count} Zárva"
     no_threads_here: Nincsenek témák itt!
     search_threads: Témák keresése ...
     private_threads: Tagnak kell lenned ahhoz, hogy megtekintsd a csoport zártkörű témáit
@@ -1192,7 +1183,6 @@ hu:
     new_cover_photo: Tölts fel új borítóképet
     new_group_logo: Tölts fel új csoportlogót
     open_discussions: Nyitott témák
-    closed_discussions: Zárt témák
     discussions_placeholder: Egy téma az, ahol mindenki megbeszélhet egy témát és együtt hozhat döntéseket.
     members_placeholder: 'Te vagy az egyetlen itt: hívj meg embereket, hogy csatlakozzanak hozzád!'
     member_options: Tagság beállítások
@@ -1241,7 +1231,6 @@ hu:
     discussions: Beszélgetések
     no_discussions_here: Nincsenek itt beszélgetések!
     private_discussions: Tagnak kell lenned ahhoz, hogy megtekinthesd a csoport privát beszélgetéseit.
-    view_closed_discussions: Lezárt beszélgetések megtekintése
     discussion_templates: Beszélgetési sablonok
   export_data_modal:
     title: Hogyan szeretné használni az adatait?
@@ -1682,9 +1671,6 @@ hu:
     pin:
       pinned: Téma rögzítve
       unpinned: A téma nincs rögzítve
-    closed:
-      reopened: A téma újra nyitott
-      closed: A téma lezárva
     volume:
       mute_message: Beszélgetés némítva
       unmute_message: Beszélgetés némítása feloldva
@@ -1980,10 +1966,8 @@ hu:
     deleted: Ezt a szavazást törölték
     do_not_hide_results: Ne rejtsd el az eredményeket
   discussions_panel:
-    open: Nyitva
     all: Minden
     unread: Olvasatlan (%{count})
-    closed: Zárva
     include_subgroups_mine: "%{name} és az alcsoportjaim"
     include_subgroups_all: "%{name} és minden alcsoport"
     no_results_found: Nincs eredmény a (z) "%{search}" kifejezésre
@@ -2725,8 +2709,6 @@ hu:
     invited_by: Meghívott
     invited_on: 'Meghívva ekkor:'
     no_receipts: Ez a névtelen szavazás még az ellenőrzési funkció megjelenése előtt bezárt, így az ellenőrzés nem lehetséges.
-  close_discussion_modal:
-    body: Zárd be a beszélgetéseket, hogy eltávolítsd őket a nyitott beszélgetések listájáról, és megakadályozd, hogy mások hozzászólhassanak.
   comment_reply_form:
     aria_label: Válasz hozzáadása
   discussion_template:
@@ -2781,7 +2763,6 @@ hu:
   context_panel:
     thread_status:
       pinned: Ez a beszélgetés rögzítésre került. A csoport beszélgetési listájának tetején marad minden felhasználó számára.
-      closed: Ez a beszélgetés lezárult. Többé nem jelenik meg az irányítópulton, hanem a csoport oldalán a „lezárt” alatt fog szerepelni.
   thread_group:
     aria_label: Csoport neve
   discussion_context:

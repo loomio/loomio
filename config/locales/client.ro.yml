@@ -492,10 +492,6 @@ ro:
     normal_option: Când cineva dorește atenția mea (Când sunt notificat)
     quiet_option: Niciun e-mail despre acest subiect (Dezactivat)
     quiet_explained: Nu veți primi e-mailuri, chiar dacă cineva încearcă să vă anunțe.
-  close_explanation_modal:
-    close_thread: Închideți firul
-    body: "<p>Închideți firele vechi sau irelevante pentru a le elimina din vedere și a indica că discuția s-a încheiat.</p><p> Oricine poate să comenteze sau să înceapă un sondaj într-un thread închis, dar acesta nu va apărea în lista de fire a grupului sau în tabloul de bord.</p>"
-    image_alt: Fire de inchidere toate
   inbox:
     clear: Curata
     latest: Cel mai nou
@@ -1035,8 +1031,6 @@ ro:
     discussion_copied: Adresa URL a firului a fost copiată în clipboard
     url_copied: Link copiat în clipboard
     tag_thread: Gestionați etichetele
-    close_thread: Închideți firul
-    reopen_thread: Redeschideți firul
     delete_thread: Sterge discutia
     notification_history: Istoricul notificărilor
     move_item: Mutați elementul
@@ -1045,8 +1039,6 @@ ro:
     count_voters: "%{count} alegători"
     pin_discussion: Discuție fixată pe Pinterest
     unpin_discussion: Anulează fixarea discuției
-    close_discussion: Discuție închisă
-    reopen_discussion: Redeschideți discuția
     delete_discussion: Ștergeți discuția
   formatting:
     formatting_tools: Instrumente de formatare a textului
@@ -1170,7 +1162,6 @@ ro:
     settings: Setari
     subgroups: Subgrupuri
     show_opened: "%{count} Deschis"
-    show_closed: "%{count} închis"
     no_threads_here: Nu există subiecte de văzut aici!
     search_threads: Caută fire...
     private_threads: Va trebui să fii membru pentru a vedea firele private din acest grup
@@ -1188,7 +1179,6 @@ ro:
     new_cover_photo: Uploadeaza o noua poza de fundal
     new_group_logo: Incarcare nou logo de grup
     open_discussions: Fire deschise
-    closed_discussions: Fire închise
     discussions_placeholder: O discutie este locul unde oricine poate deschide un subiect care să duca la luarea unei decizii..
     members_placeholder: 'Ești singurul aici: invită niște oameni să ți se alăture!'
     member_options: Opțiuni pentru membri
@@ -1237,7 +1227,6 @@ ro:
     discussions: Discuții
     no_discussions_here: Nu există discuții de văzut aici!
     private_discussions: Trebuie să fii membru pentru a vizualiza subiectele private din acest grup.
-    view_closed_discussions: Vizualizați discuțiile închise
     discussion_templates: Șabloane de discuții
   export_data_modal:
     title: Cum doriți să vă folosiți datele?
@@ -1678,9 +1667,6 @@ ro:
     pin:
       pinned: Fir fixat
       unpinned: Firul a fost anulat
-    closed:
-      reopened: Subiectul a fost redeschis
-      closed: Firul închis
     volume:
       mute_message: Discuție dezactivată
       unmute_message: Discuție activată
@@ -1973,10 +1959,8 @@ ro:
     deleted: Acest sondaj a fost șters
     do_not_hide_results: Nu ascundeți rezultatele
   discussions_panel:
-    open: Deschis
     all: Toate
     unread: Necitit (%{count})
-    closed: Inchis
     include_subgroups_mine: "%{name} și subgrupurile mele"
     include_subgroups_all: "%{name} și toate subgrupurile"
     no_results_found: Niciun rezultat pentru „%{search}”
@@ -2718,8 +2702,6 @@ ro:
     invited_by: Invitat de
     invited_on: Invitat pe
     no_receipts: Acest sondaj anonim s-a închis înainte ca funcția de verificare să existe, deci verificarea nu este posibilă.
-  close_discussion_modal:
-    body: Închide discuțiile pentru a le elimina din lista de discuții deschise și a împiedica alte persoane să comenteze.
   comment_reply_form:
     aria_label: Adăugați un răspuns
   discussion_template:
@@ -2774,7 +2756,6 @@ ro:
   context_panel:
     thread_status:
       pinned: Această discuție a fost fixată. Va rămâne în partea de sus a listei de discuții a grupului pentru toți utilizatorii.
-      closed: Această discuție a fost închisă. Nu va mai apărea în tabloul de bord și va fi listată la secțiunea „închis” pe pagina grupului.
   thread_group:
     aria_label: Numele grupului
   discussion_context:

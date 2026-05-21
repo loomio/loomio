@@ -492,10 +492,6 @@ sl:
     normal_option: Ko nekdo želi mojo pozornost (ko je o tem obveščen)
     quiet_option: Ni e-poštnih sporočil o tej temi (Izklopljeno)
     quiet_explained: Ne boste prejeli e-poštnega sporočila, tudi če vas bo kdo poskušal obvestiti.
-  close_explanation_modal:
-    close_thread: Zapri temo
-    body: "<p>Zaprite stare ali nepomembne niti, da jih odstranite iz pogleda in označite, da je razprava zaključena.</p><p> Kdorkoli lahko še vedno komentira ali začne anketo v zaprti niti, vendar ne bo prikazana na seznamu niti skupine ali na nadzorni plošči.</p>"
-    image_alt: Zapiranje vseh niti
   inbox:
     clear: Počisti
     latest: Zadnje
@@ -1035,8 +1031,6 @@ sl:
     discussion_copied: URL niti je kopiran v odložišče
     url_copied: Povezava je bila kopirana v odložišče
     tag_thread: Upravljanje oznak
-    close_thread: Zapri razpravo
-    reopen_thread: Ponovno odpri razpravo
     delete_thread: Izbriši razpravo
     notification_history: Zgodovina obvestil
     move_item: Premakni predmet
@@ -1045,8 +1039,6 @@ sl:
     count_voters: "%{count} volivcev"
     pin_discussion: Pripni razpravo
     unpin_discussion: Odpri razpravo
-    close_discussion: Zapri razpravo
-    reopen_discussion: Ponovno odpri razpravo
     delete_discussion: Izbriši razpravo
   formatting:
     formatting_tools: Orodja za oblikovanje besedila
@@ -1170,7 +1162,6 @@ sl:
     settings: Nastavitve
     subgroups: Podskupine
     show_opened: "%{count} Odprto"
-    show_closed: "%{count} zaprto"
     no_threads_here: Tukaj ni nobenih razprav!
     search_threads: Iskanje razprav...
     private_threads: Za ogled zasebnih niti v tej skupini morate biti član
@@ -1188,7 +1179,6 @@ sl:
     new_cover_photo: Naloži novo naslovno fotografijo
     new_group_logo: Naloži nov logotip skupine
     open_discussions: Odprte razprave
-    closed_discussions: Zaprte razprave
     discussions_placeholder: Nit je mesto, kjer lahko vsi razpravljajo o temi in skupaj sprejemajo odločitve.
     members_placeholder: 'Tukaj ste edini: povabite nekaj ljudi, da se vam pridružijo!'
     member_options: Članske možnosti
@@ -1237,7 +1227,6 @@ sl:
     discussions: Razprave
     no_discussions_here: Tukaj ni razprav za ogled!
     private_discussions: Za ogled zasebnih tem v tej skupini morate biti član.
-    view_closed_discussions: Ogled zaprtih razprav
     discussion_templates: Predloge za razprave
   export_data_modal:
     title: Kako želite uporabljati svoje podatke?
@@ -1678,9 +1667,6 @@ sl:
     pin:
       pinned: Nit pripeta
       unpinned: Nit je odpeta
-    closed:
-      reopened: Tema ponovno odprta
-      closed: Tema zaprta
     volume:
       mute_message: Razprava je utišana
       unmute_message: Razprava je bila ponovno prezrta
@@ -1973,10 +1959,8 @@ sl:
     deleted: Ta anketa je bila izbrisana
     do_not_hide_results: Ne skrivaj rezultatov
   discussions_panel:
-    open: Odprto
     all: Vse
     unread: Neprebrano (%{count})
-    closed: Zaprto
     include_subgroups_mine: "%{name} in moje podskupine"
     include_subgroups_all: "%{name} in vse podskupine"
     no_results_found: Ni rezultatov za "%{search}"
@@ -2718,8 +2702,6 @@ sl:
     invited_by: Povabljen/a s strani
     invited_on: Povabljen/a
     no_receipts: Ta anonimna anketa se je zaključila, preden je obstajala funkcija preverjanja, zato preverjanje ni mogoče.
-  close_discussion_modal:
-    body: Zaprite razprave, da jih odstranite s seznama odprtih razprav in preprečite komentiranje.
   comment_reply_form:
     aria_label: Dodaj odgovor
   discussion_template:
@@ -2774,7 +2756,6 @@ sl:
   context_panel:
     thread_status:
       pinned: Ta razprava je bila pripeta. Za vse uporabnike bo ostala na vrhu seznama razprav skupine.
-      closed: Ta razprava je bila zaključena. Ne bo več prikazana na nadzorni plošči in bo na strani skupine navedena pod oznako »zaprto«.
   thread_group:
     aria_label: Ime skupine
   discussion_context:

@@ -99,10 +99,11 @@ export default
         case 'closed':
           chain = chain.find({closedAt: {$ne: null}});
           break;
-        case 'all':
+        case 'unlocked':
+          chain = chain.find({closedAt: null});
           break;
         default:
-          chain = chain.find({closedAt: null});
+          break;
       }
 
       if (this.$route.query.tag) {
@@ -138,11 +139,11 @@ export default
     filterName(filter) {
       switch (filter) {
         case 'unread': return 'discussions_panel.unread';
-        case 'all': return 'discussions_panel.all';
-        case 'closed': return 'discussions_panel.closed';
+        case 'closed': return 'discussions_panel.locked';
+        case 'unlocked': return 'discussions_panel.unlocked';
         case 'subscribed': return 'change_volume_form.simple.loud';
         default:
-          return 'discussions_panel.open';
+          return 'discussions_panel.all';
       }
     },
 
@@ -220,8 +221,8 @@ export default
       return this.topics.filter(topic => topic.isUnread()).length;
     },
 
-    suggestClosedThreads() {
-      return ['undefined', 'open', 'unread'].includes(String(this.$route.query.t)) && this.group && this.group.closedDiscussionsCount;
+    suggestLockedThreads() {
+      return ['undefined', 'unlocked', 'unread'].includes(String(this.$route.query.t)) && this.group && this.group.closedDiscussionsCount;
     }
   }
 };
@@ -237,12 +238,12 @@ div.discussions-panel(v-if="group")
           span(v-t="{path: filterName($route.query.t), args: {count: unreadCount}}")
           common-icon(name="mdi-menu-down")
       v-list
-        v-list-item.discussions-panel__filters-open(@click="routeQuery({t: null})")
-          v-list-item-title(v-t="'discussions_panel.open'")
-        v-list-item.discussions-panel__filters-all(@click="routeQuery({t: 'all'})")
+        v-list-item.discussions-panel__filters-all(@click="routeQuery({t: null})")
           v-list-item-title(v-t="'discussions_panel.all'")
         v-list-item.discussions-panel__filters-closed(@click="routeQuery({t: 'closed'})")
-          v-list-item-title(v-t="'discussions_panel.closed'")
+          v-list-item-title(v-t="'discussions_panel.locked'")
+        v-list-item.discussions-panel__filters-open(@click="routeQuery({t: 'unlocked'})")
+          v-list-item-title(v-t="'discussions_panel.unlocked'")
         v-list-item.discussions-panel__filters-unread(@click="routeQuery({t: 'unread'})")
           v-list-item-title(v-t="{path: 'discussions_panel.unread', args: { count: unreadCount }}")
 
@@ -296,7 +297,7 @@ div.discussions-panel(v-if="group")
 
         v-pagination(v-model="page" :length="totalPages" :disabled="totalPages == 1")
         .d-flex.justify-center
-          router-link.discussions-panel__view-closed-threads.text-center.pa-1(:to="'?t=closed'" v-if="suggestClosedThreads" v-t="'group_page.view_closed_discussions'")
+          router-link.discussions-panel__view-closed-threads.text-center.pa-1(:to="'?t=closed'" v-if="suggestLockedThreads" v-t="'group_page.view_locked_discussions'")
 
 </template>
 

@@ -494,12 +494,6 @@ es:
     normal_option: Cuando alguien quiere mi atención (Cuando se me notifica)
     quiet_option: No se recibirán correos electrónicos sobre este hilo (Desactivado).
     quiet_explained: No recibirás ningún correo electrónico, incluso si alguien intenta notificarte.
-  close_explanation_modal:
-    close_thread: 'Cerrar hilo '
-    body: |
-      <p>Cierra hilos viejos e irrelevantes para que no sean visibles e indicar que la discusión se ha cerrado.</p>
-      <p>Cualquiera puede comentar o iniciar un sondeo sobre un hilo cerrado, pero no aparecerá en el listado de los hilos del grupo o en el página de inicio. </p>
-    image_alt: Todos los hilos cerrados
   inbox:
     clear: Limpiar
     latest: Últimos
@@ -1041,8 +1035,6 @@ es:
     discussion_copied: URL del hilo ha sido copiado al portapapeles
     url_copied: Enlace copiado a la tablilla
     tag_thread: Administrar etiquetas
-    close_thread: 'Cerrar hilo '
-    reopen_thread: Reabrir hilo
     delete_thread: 'Eliminar hilo '
     notification_history: Historial de notificación
     move_item: Mover elemento
@@ -1051,8 +1043,6 @@ es:
     count_voters: "%{count} votantes"
     pin_discussion: Discusión sobre pines
     unpin_discussion: Desmarcar discusión
-    close_discussion: Discusión cerrada
-    reopen_discussion: Reabrir la discusión
     delete_discussion: Eliminar discusión
   formatting:
     formatting_tools: Herramientas formateo de texto
@@ -1185,7 +1175,6 @@ es:
     settings: 'Configuración '
     subgroups: Subgrupos
     show_opened: "%{count} Abierto"
-    show_closed: "%{count} Cerrado"
     no_threads_here: Ningún hilo para ver aquí!
     search_threads: Buscar hilos ...
     private_threads: Usted debe ser un integrante para ver los hilos privados de este grupo
@@ -1203,7 +1192,6 @@ es:
     new_cover_photo: Cargar una nueva foto de portada
     new_group_logo: Cargar un nuevo logo para el grupo
     open_discussions: Hilos abiertos
-    closed_discussions: Hilos cerrados
     discussions_placeholder: Un hilo es donde todo el mundo puede discutir un tema y tomar decisiones juntos.
     members_placeholder: 'Está solo aquí: ¡Invite a otras personas! '
     member_options: Opciones de membresía
@@ -1252,7 +1240,6 @@ es:
     discussions: Discusiones
     no_discussions_here: "¡No hay discusiones para ver aquí!"
     private_discussions: Necesitarás ser miembro para ver los hilos privados de este grupo.
-    view_closed_discussions: Ver discusiones cerradas
     discussion_templates: Plantillas de discusión
   export_data_modal:
     title: "¿Cómo quieres utilizar tus datos?"
@@ -1709,9 +1696,6 @@ es:
     pin:
       pinned: Hilo fijado
       unpinned: Hilo liberado
-    closed:
-      reopened: Hilo reabierto
-      closed: 'Hilo cerrado '
     volume:
       mute_message: Discusión silenciada
       unmute_message: Discusión activada
@@ -2009,10 +1993,8 @@ es:
     deleted: Este sondeo ha sido eliminado
     do_not_hide_results: No ocultes los resultados
   discussions_panel:
-    open: Abierto
     all: Todos/as
     unread: no leídos (%{count})
-    closed: 'Cerrado '
     include_subgroups_mine: "%{name} y mis subgrupos"
     include_subgroups_all: "%{name} y todos los subgrupos"
     no_results_found: No hay resultados para "%{search}""
@@ -2756,8 +2738,6 @@ es:
     invited_by: Invitado por
     invited_on: Invitado a
     no_receipts: Esta encuesta anónima se cerró antes de que existiera la función de verificación, por lo que la verificación no es posible.
-  close_discussion_modal:
-    body: Cerrar discusiones para eliminarlas de la lista de discusiones abiertas y evitar que la gente comente.
   comment_reply_form:
     aria_label: Añadir una respuesta
   discussion_template:
@@ -2812,7 +2792,6 @@ es:
   context_panel:
     thread_status:
       pinned: Esta discusión se ha fijado. Permanecerá en la parte superior de la lista de discusiones del grupo para todos los usuarios.
-      closed: Esta discusión se ha cerrado. Ya no aparecerá en el panel y aparecerá como "cerrada" en la página del grupo.
   thread_group:
     aria_label: Nombre del grupo
   discussion_context:

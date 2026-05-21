@@ -64,7 +64,7 @@ module Dev::Scenarios::Discussion
     poll.create_missing_created_event!
     create_fake_stances(poll: poll)
     PollService.update(poll: poll, actor: patrick, params: {recipient_message: 'updated the poll here <br> newline'})
-    TopicService.close(topic: create_discussion.topic, actor: patrick)
+    TopicService.lock(topic: create_discussion.topic, actor: patrick)
     UserMailer.catch_up(jennifer.id, 1.hour.ago).deliver_now
     last_email
   end

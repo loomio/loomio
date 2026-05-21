@@ -38,13 +38,13 @@ class TopicService
     RepairThreadWorker.perform_async(topic.id) if rearrange
   end
 
-  def self.close(topic:, actor:)
+  def self.lock(topic:, actor:)
     actor.ability.authorize! :update, topic
     topic.update(closed_at: Time.now, closer_id: actor.id)
     MessageChannelService.publish_models([topic], group_id: topic.group_id, user_id: actor.id)
   end
 
-  def self.reopen(topic:, actor:)
+  def self.unlock(topic:, actor:)
     actor.ability.authorize! :update, topic
     topic.update(closed_at: nil, closer_id: nil)
     MessageChannelService.publish_models([topic], group_id: topic.group_id, user_id: actor.id)

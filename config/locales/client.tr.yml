@@ -492,10 +492,6 @@ tr:
     normal_option: Birisi dikkatimi istediğinde (bildirim aldığında)
     quiet_option: Bu konuyla ilgili e-posta yok (Kapalı)
     quiet_explained: Birisi sizi bilgilendirmeye çalışsa bile size e-posta gönderilmeyecektir.
-  close_explanation_modal:
-    close_thread: Konuyu kapat
-    body: "<p>Eski veya ilgisiz konuları görünümden kaldırmak ve tartışmanın kapandığını belirtmek için kapatın.</p><p> Herkes kapalı bir başlıkta yorum yapabilir veya anket başlatabilir ancak bu, grubun başlık listesinde veya kontrol panelinde görünmez.</p>"
-    image_alt: Konuların tümü kapatılıyor
   inbox:
     clear: Temizle
     latest: En yeniler
@@ -1035,8 +1031,6 @@ tr:
     discussion_copied: Konu URL'si panoya kopyalandı
     url_copied: link kopyalandı
     tag_thread: Etiketleri yönet
-    close_thread: Konuyu kapat
-    reopen_thread: Konuyu yeniden aç
     delete_thread: Müzakereyi sil
     notification_history: Bildirim geçmişi
     move_item: Öğeyi taşı
@@ -1045,8 +1039,6 @@ tr:
     count_voters: "%{count} seçmen"
     pin_discussion: Pin tartışması
     unpin_discussion: Tartışmayı sabitle
-    close_discussion: Tartışmayı kapatın
-    reopen_discussion: Tartışmayı yeniden açın
     delete_discussion: Tartışmayı sil
   formatting:
     formatting_tools: Metin biçimlendirme araçları
@@ -1170,7 +1162,6 @@ tr:
     settings: Ayarlar
     subgroups: Alt gruplar
     show_opened: "%{count} Açık"
-    show_closed: "%{count} Kapalı"
     no_threads_here: Burada görülecek konu yok!
     search_threads: Konu ara...
     private_threads: Bu gruptaki özel konuları görüntülemek için üye olmanız gerekir
@@ -1188,7 +1179,6 @@ tr:
     new_cover_photo: Yeni kapak fotoğrafı yükle
     new_group_logo: Yeni grup logosu yükle
     open_discussions: Konuları aç
-    closed_discussions: Kapalı konular
     discussions_placeholder: Müzakere, herkesin bir başlık hakkında tartışarak birlikte kararlar aldığı yerdir.
     members_placeholder: 'Burada tek kişi sensin: sana katılması için başkalarını davet et!'
     member_options: Üye seçenekleri
@@ -1237,7 +1227,6 @@ tr:
     discussions: Tartışmalar
     no_discussions_here: Burada görülecek tartışma yok!
     private_discussions: Bu gruptaki özel konuları görüntülemek için üye olmanız gerekir
-    view_closed_discussions: Kapalı tartışmaları görüntüle
     discussion_templates: Tartışma şablonları
   export_data_modal:
     title: Verilerinizi nasıl kullanmak istiyorsunuz?
@@ -1678,9 +1667,6 @@ tr:
     pin:
       pinned: Konu sabitlendi
       unpinned: Konunun sabitlemesi kaldırıldı
-    closed:
-      reopened: Konu yeniden açıldı
-      closed: Konu kapatıldı
     volume:
       mute_message: Tartışma sessize alındı
       unmute_message: Tartışma sessize alınmadı
@@ -1973,10 +1959,8 @@ tr:
     deleted: Bu anket silindi
     do_not_hide_results: Sonuçları gizlemeyin
   discussions_panel:
-    open: Açık
     all: Hepsi
     unread: Okunmamış (%{count})
-    closed: Kapalı
     include_subgroups_mine: "%{name} ve alt gruplarım"
     include_subgroups_all: "%{name} ve tüm alt gruplar"
     no_results_found: '"%{search}" için sonuç yok'
@@ -2718,8 +2702,6 @@ tr:
     invited_by: Davetli
     invited_on: Davet edildi
     no_receipts: Bu anonim anket doğrulama özelliği mevcut olmadan önce kapandı, bu nedenle doğrulama mümkün değil.
-  close_discussion_modal:
-    body: Açık tartışmalar listesinden çıkarmak ve insanların yorum yapmasını engellemek için tartışmaları kapatın.
   comment_reply_form:
     aria_label: Bir cevap ekle
   discussion_template:
@@ -2774,7 +2756,6 @@ tr:
   context_panel:
     thread_status:
       pinned: Bu tartışma sabitlendi. Tüm kullanıcılar için grubun tartışma listesinin en üstünde kalacak.
-      closed: Bu tartışma kapatıldı. Artık panoda görünmeyecek ve grup sayfasında 'kapalı' altında listelenecek.
   thread_group:
     aria_label: Grup adı
   discussion_context:

@@ -494,12 +494,6 @@ pl:
     normal_option: Kiedy ktoś chce mojej uwagi (gdy zostanie powiadomiony)
     quiet_option: Brak wiadomości e-mail dotyczących tego wątku (Wyłączone)
     quiet_explained: Nie będziesz otrzymywać wiadomości e-mail, nawet gdy ktoś będzie próbował Cię powiadomić.
-  close_explanation_modal:
-    close_thread: Zamknij wątek
-    body: |
-      <p>Zamknij stare lub nieistotne wątki, aby usunąć je z widoku i wskazać, że dyskusja została zamknięta.</p>
-      <p>Każdy może nadal komentować lub stworzyć ankietę w zamkniętym wątku, ale nie pojawi się ona na liście wątków grupy ani na pulpicie nawigacyjnym.</p>
-    image_alt: Zamykanie wszystkich wątków
   inbox:
     clear: Wyczyść
     latest: Najnowsze
@@ -1043,8 +1037,6 @@ pl:
     discussion_copied: Adres URL wątku skopiowano do schowka
     url_copied: Link skopiowano do schowka
     tag_thread: Zarządzaj tagami
-    close_thread: Zamknij wątek
-    reopen_thread: Ponownie otwórz wątek
     delete_thread: Usuń wątek
     notification_history: Historia powiadomień
     move_item: Przenieś element
@@ -1053,8 +1045,6 @@ pl:
     count_voters: "%{count} głosujących"
     pin_discussion: Przypnij dyskusję
     unpin_discussion: Odepnij dyskusję
-    close_discussion: Zamknij dyskusję
-    reopen_discussion: Otwórz ponownie dyskusję
     delete_discussion: Usuń dyskusję
   formatting:
     formatting_tools: Narzędzia do formatowania tekstu
@@ -1178,7 +1168,6 @@ pl:
     settings: Ustawienia
     subgroups: Podgrupy
     show_opened: "%{count} otwarte"
-    show_closed: "%{count} Zamknięte"
     no_threads_here: Brak wątków do zobaczenia!
     search_threads: Szukaj wątków...
     private_threads: 'Musisz być członkiem, aby zobaczyć prywatne wątki w tej grupie. '
@@ -1196,7 +1185,6 @@ pl:
     new_cover_photo: Prześlij nowe zdjęcie w tle
     new_group_logo: Prześlij nowe logo grupy
     open_discussions: Otwarte wątki
-    closed_discussions: Zamknięte wątki
     discussions_placeholder: Wątek to miejsce, w którym każdy może omówić temat i wspólnie podejmować decyzje.
     members_placeholder: 'Jesteś jedynym członkiem: zaproś inne osoby!'
     member_options: Opcje osoby
@@ -1245,7 +1233,6 @@ pl:
     discussions: Dyskusje
     no_discussions_here: Nie ma tu żadnych dyskusji!
     private_discussions: Aby przeglądać prywatne wątki w tej grupie, musisz być jej członkiem
-    view_closed_discussions: Wyświetl zamknięte dyskusje
     discussion_templates: Szablony dyskusji
   export_data_modal:
     title: Jak chcesz wykorzystać swoje dane?
@@ -1698,9 +1685,6 @@ pl:
     pin:
       pinned: Wątek przypięty
       unpinned: Wątek odpięty
-    closed:
-      reopened: Wątek ponownie otwarty
-      closed: Wątek zamknięty
     volume:
       mute_message: Dyskusja wyciszona
       unmute_message: Dyskusja włączona
@@ -1998,10 +1982,8 @@ pl:
     deleted: Ta ankieta została usunięta
     do_not_hide_results: Nie ukrywaj wyników
   discussions_panel:
-    open: Otwarte
     all: Wszystko
     unread: nieprzeczytane (%{count})
-    closed: Zamknięte
     include_subgroups_mine: "%{name} i moje podgrupy"
     include_subgroups_all: "%{name} i wszystkie podgrupy"
     no_results_found: Brak wyników dla "%{search}"
@@ -2747,8 +2729,6 @@ pl:
     invited_by: Zaproszony przez
     invited_on: Zaproszony na
     no_receipts: Ta anonimowa ankieta została zamknięta, zanim pojawiła się funkcja weryfikacji, dlatego weryfikacja nie jest możliwa.
-  close_discussion_modal:
-    body: Zamknij dyskusje, aby usunąć je z listy otwartych dyskusji i uniemożliwić użytkownikom komentowanie.
   comment_reply_form:
     aria_label: Dodaj odpowiedź
   discussion_template:
@@ -2803,7 +2783,6 @@ pl:
   context_panel:
     thread_status:
       pinned: Ta dyskusja została przypięta. Będzie nadal wyświetlana na górze listy dyskusji grupy dla wszystkich użytkowników.
-      closed: Ta dyskusja została zamknięta. Nie będzie już wyświetlana na pulpicie nawigacyjnym i będzie oznaczona jako „zamknięta” na stronie grupy.
   thread_group:
     aria_label: Nazwa grupy
   discussion_context:

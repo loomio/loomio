@@ -494,12 +494,6 @@ nl_NL:
     normal_option: Wanneer iemand mijn aandacht nodig heeft (wanneer ik een melding ontvang)
     quiet_option: Geen e-mails over dit onderwerp (Uitgeschakeld)
     quiet_explained: Je ontvangt geen e-mail, zelfs niet wanneer iemand probeert je op de hoogte te stellen.
-  close_explanation_modal:
-    close_thread: Sluit bord
-    body: |
-      <p>Sluit oude of onbelangrijke borden zodat deze niet meer zichtbaar zijn, en om aan te geven dat de discussie gesloten is.</p>
-      <p>Op een gesloten bord kan nog steeds iedereen reacties plaatsen of een peiling starten, maar deze zullen niet verschijnen op de groep's bordenlijst, of op het dashboard.</p>
-    image_alt: Sluit alle borden
   inbox:
     clear: Leegmaken
     latest: Laatste
@@ -1043,8 +1037,6 @@ nl_NL:
     discussion_copied: Bord-URL naar het klembord gekopieerd
     url_copied: Link gekopieerd naar klembord
     tag_thread: Labels beheren
-    close_thread: Sluit bord
-    reopen_thread: Heropen bord
     delete_thread: Bord verwijderen
     notification_history: Meldingen geschiedenis
     move_item: Verplaats item
@@ -1053,8 +1045,6 @@ nl_NL:
     count_voters: "%{count} kiezers"
     pin_discussion: Pin discussie
     unpin_discussion: Discussie losmaken
-    close_discussion: Discussie sluiten
-    reopen_discussion: Discussie heropenen
     delete_discussion: Discussie verwijderen
   formatting:
     formatting_tools: Tekst-formatteer tools
@@ -1178,7 +1168,6 @@ nl_NL:
     settings: Instellingen
     subgroups: Subgroepen
     show_opened: "%{count} geopend"
-    show_closed: "%{count} Gesloten"
     no_threads_here: Geen borden te zien hier!
     search_threads: Zoeken voor borden...
     private_threads: Je moet lid zijn om de privé borden in deze groep te zien.
@@ -1196,7 +1185,6 @@ nl_NL:
     new_cover_photo: Nieuwe groepsfoto uploaden
     new_group_logo: Upload een nieuw groepslogo
     open_discussions: Open borden
-    closed_discussions: Gesloten borden
     discussions_placeholder: Op een bord kan iedereen over een onderwerp discussiëren en gezamenlijk beslissingen nemen.
     members_placeholder: 'Je bent de enige hier: nodig mensen uit om zich bij je aan te sluiten!'
     member_options: Opties voor leden
@@ -1245,7 +1233,6 @@ nl_NL:
     discussions: Discussies
     no_discussions_here: Er zijn hier geen discussies te zien!
     private_discussions: Je moet lid zijn om de privéthreads in deze groep te kunnen bekijken
-    view_closed_discussions: Bekijk gesloten discussies
     discussion_templates: Discussiesjablonen
   export_data_modal:
     title: Hoe wil je je data gebruiken?
@@ -1698,9 +1685,6 @@ nl_NL:
     pin:
       pinned: Bord vastgeprikt
       unpinned: Bord losgeprikt
-    closed:
-      reopened: Bord heropend
-      closed: Bord gesloten
     volume:
       mute_message: Discussie gedempt
       unmute_message: Discussie gedempt
@@ -1998,10 +1982,8 @@ nl_NL:
     deleted: Deze peiling is verwijderd
     do_not_hide_results: Resultaten niet verbergen
   discussions_panel:
-    open: Openen
     all: Alle
     unread: Ongelezen (%{count})
-    closed: Gesloten
     include_subgroups_mine: "%{name} en mijn subgroepen"
     include_subgroups_all: "%{name} en alle subgroepen"
     no_results_found: Geen resultaten voor "%{search}"
@@ -2747,8 +2729,6 @@ nl_NL:
     invited_by: Uitgenodigd door
     invited_on: Uitgenodigd op
     no_receipts: Deze anonieme poll is gesloten voordat de verificatiefunctie bestond. Verificatie is daarom niet mogelijk.
-  close_discussion_modal:
-    body: Sluit discussies om ze uit de lijst met open discussies te verwijderen en te voorkomen dat mensen commentaar kunnen leveren.
   comment_reply_form:
     aria_label: Voeg een antwoord toe
   discussion_template:
@@ -2803,7 +2783,6 @@ nl_NL:
   context_panel:
     thread_status:
       pinned: Deze discussie is vastgezet en blijft bovenaan de discussielijst van de groep staan voor alle gebruikers.
-      closed: Deze discussie is gesloten. Deze verschijnt niet meer op het dashboard en wordt weergegeven onder 'gesloten' op de groepspagina.
   thread_group:
     aria_label: Groepsnaam
   discussion_context:

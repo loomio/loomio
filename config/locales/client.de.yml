@@ -500,12 +500,6 @@ de:
     normal_option: Wenn jemand meine Aufmerksamkeit möchte (Bei Benachrichtigung)
     quiet_option: Keine E-Mails zu diesem Thread (Aus)
     quiet_explained: Sie erhalten keine E-Mail, auch nicht, wenn jemand versucht, Sie zu benachrichtigen.
-  close_explanation_modal:
-    close_thread: Diskussion schließen
-    body: |
-      <p>Schliesse alte oder irrelevante Diskussionen um sie aus der Ansicht zu entfernen und um anzuzeigen das die Diskussion beendet wurde.</p>
-      <p>Alle können auch weiterhin in geschlossenen Diskussionen Kommentare verfassen oder Umfragen starten, aber die Diskussion wird nicht mehr in der Diskussionsliste der Gruppe oder dem Schreibtisch erscheinen.</p>
-    image_alt: Alle Diskussionen schließen
   inbox:
     clear: 'Löschen '
     latest: Letzte
@@ -1049,8 +1043,6 @@ de:
     discussion_copied: Diskussions-URL in die Zwischenablage kopiert
     url_copied: Link in die Zwischenablage kopiert
     tag_thread: Schlagwörter verwalten
-    close_thread: Diskussion schließen
-    reopen_thread: Diskussion wieder öffnen
     delete_thread: Diskussion löschen
     notification_history: Benachrichtigungs-Verlauf
     move_item: Eintrag bewegen
@@ -1059,8 +1051,6 @@ de:
     count_voters: "%{count} Wähler"
     pin_discussion: Diskussion anpinnen
     unpin_discussion: Diskussion abpinnen
-    close_discussion: Diskussion schließen
-    reopen_discussion: Diskussion wieder aufnehmen
     delete_discussion: Diskussion löschen
   formatting:
     formatting_tools: Werkzeuge für Textbearbeitung
@@ -1184,7 +1174,6 @@ de:
     settings: Einstellungen
     subgroups: Untergruppen
     show_opened: "%{count} Geöffnet"
-    show_closed: "%{count} Geschlossen"
     no_threads_here: Keine Diskussionen vorhanden!
     search_threads: Diskussionen durchsuchen...
     private_threads: Du musst Mitglied sein, um private Diskussionsbeiträge in dieser Gruppe sehen zu können
@@ -1202,7 +1191,6 @@ de:
     new_cover_photo: Neues Titelfoto hochladen
     new_group_logo: Neues Gruppenlogo hochladen
     open_discussions: Aktuelle Diskussionen
-    closed_discussions: Geschlossene Diskussionen
     discussions_placeholder: An einer Diskussion können sich alle Mitglieder beteiligen und gemeinsam Abstimmungen durchführen.
     members_placeholder: 'Du bist zurzeit ganz alleine hier: Lade mehr Leute ein!'
     member_options: Mitgliedseinstellungen
@@ -1251,7 +1239,6 @@ de:
     discussions: Diskussionen
     no_discussions_here: Hier gibt es keine Diskussionen!
     private_discussions: Um private Beiträge in dieser Gruppe sehen zu können, müssen Sie Mitglied sein.
-    view_closed_discussions: Geschlossene Diskussionen ansehen
     discussion_templates: Diskussionsvorlagen
   export_data_modal:
     title: Wie willst du deine Daten benutzen?
@@ -1706,9 +1693,6 @@ de:
     pin:
       pinned: Diskussion angeheftet
       unpinned: Diskussion wird nicht mehr angeheftet
-    closed:
-      reopened: Diskussion wieder geöffnet
-      closed: Diskussion geschlossen
     volume:
       mute_message: Diskussion stummgeschaltet
       unmute_message: Diskussion stummgeschaltet
@@ -2006,10 +1990,8 @@ de:
     deleted: Diese Abstimmung wurde entfernt
     do_not_hide_results: Ergebnisse nicht verbergen
   discussions_panel:
-    open: Offen
     all: Alle
     unread: Ungelesen (%{count})
-    closed: Geschlossen
     include_subgroups_mine: "%{name} und meine Untergruppen"
     include_subgroups_all: "%{name} und alle Untergruppen"
     no_results_found: 'Keine Ergebnisse für "%{search}" gefunden '
@@ -2755,8 +2737,6 @@ de:
     invited_by: Eingeladen von
     invited_on: Eingeladen am
     no_receipts: Diese anonyme Umfrage wurde geschlossen, bevor die Überprüfungsfunktion verfügbar war. Eine Überprüfung ist daher nicht möglich.
-  close_discussion_modal:
-    body: Diskussionen schließen, um sie aus der Liste der offenen Diskussionen zu entfernen und zu verhindern, dass Leute Kommentare abgeben.
   comment_reply_form:
     aria_label: Eine Antwort hinzufügen
   discussion_template:
@@ -2811,7 +2791,6 @@ de:
   context_panel:
     thread_status:
       pinned: Diese Diskussion wurde angepinnt. Sie bleibt für alle Benutzer ganz oben in der Diskussionsliste der Gruppe.
-      closed: Diese Diskussion wurde geschlossen. Sie wird nicht mehr im Dashboard angezeigt und ist auf der Gruppenseite unter „Geschlossen“ aufgeführt.
   thread_group:
     aria_label: Gruppenname
   discussion_context:

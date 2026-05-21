@@ -494,12 +494,6 @@ ca:
     normal_option: Quan algú vol la meva atenció (Quan se m'avisa)
     quiet_option: No hi ha correus electrònics sobre aquest fil (Desactivat)
     quiet_explained: No rebràs cap correu electrònic, fins i tot quan algú intenti notificar-te.
-  close_explanation_modal:
-    close_thread: Tanca el fil de discussió
-    body: |
-      <p>Tanca fils vells o irrellevants per deixar de visualitzar-los i indica que la discussió s'ha tancat. </p>
-      <p>És possible que usuaris comentin o comencin una votació en un fil tancat, però no apareixerà a la llista de fils del grup ni al quadre de controls.</p>
-    image_alt: Tanca tots els fils de discussió
   inbox:
     clear: Esborra
     latest: Últim
@@ -1043,8 +1037,6 @@ ca:
     discussion_copied: S'ha copiat l'URL del comentari al porta-retalls
     url_copied: Enllaç copiat al porta-retalls
     tag_thread: Gestiona etiquetes
-    close_thread: Tanca el fil de discussió
-    reopen_thread: Reobre el fil
     delete_thread: Elimina el fil
     notification_history: Historial de notificacions
     move_item: Mou l'element
@@ -1053,8 +1045,6 @@ ca:
     count_voters: "%{count} votants"
     pin_discussion: Fixar la discussió
     unpin_discussion: Desfixar la discussió
-    close_discussion: Discussió tancada
-    reopen_discussion: Reobrir la discussió
     delete_discussion: Suprimeix la discussió
   formatting:
     formatting_tools: Eines de formatació de text
@@ -1178,7 +1168,6 @@ ca:
     settings: Configuració
     subgroups: Subgrups
     show_opened: "%{count} obert"
-    show_closed: "%{count} Tancat"
     no_threads_here: Aquí no hi ha cap fil per visualitzar
     search_threads: Busca fils...
     private_threads: Heu de ser membre per visualitzar els fils privats d'aquest grup
@@ -1196,7 +1185,6 @@ ca:
     new_cover_photo: Penja una foto de portada nova
     new_group_logo: Penja un nou logo del grup
     open_discussions: Fils oberts
-    closed_discussions: Fils tancats
     discussions_placeholder: Un fil de discussió és el lloc on tothom pot discutir un tema i prendre decisions junts.
     members_placeholder: 'Esteu sol: convideu usuaris a unir-se.'
     member_options: Opcions de membres
@@ -1245,7 +1233,6 @@ ca:
     discussions: Debats
     no_discussions_here: No hi ha debats per veure aquí!
     private_discussions: Cal que siguis membre per veure els fils privats d'aquest grup.
-    view_closed_discussions: Veure debats tancats
     discussion_templates: Plantilles de discussió
   export_data_modal:
     title: Com voleu utilitzar les vostres dades?
@@ -1700,9 +1687,6 @@ ca:
     pin:
       pinned: Fil fixat
       unpinned: S'ha desfixat el fil
-    closed:
-      reopened: Fil reobert
-      closed: Fil tancat
     volume:
       mute_message: Discussió silenciada
       unmute_message: Discussió activada
@@ -1998,10 +1982,8 @@ ca:
     deleted: Aquesta enquesta s'ha eliminat
     do_not_hide_results: No amagueu els resultats
   discussions_panel:
-    open: Obret
     all: Tot
     unread: No llegit (%{count})
-    closed: Tancat
     include_subgroups_mine: "%{name} i els meus subgrups"
     include_subgroups_all: "%{name} i tots els subgrups"
     no_results_found: No s'ha trobat resultats per "%{search}"
@@ -2747,8 +2729,6 @@ ca:
     invited_by: Convidat per
     invited_on: Convidat el
     no_receipts: Aquesta enquesta anònima es va tancar abans que existís la funció de verificació, per la qual cosa la verificació no és possible.
-  close_discussion_modal:
-    body: Tanca les discussions per eliminar-les de la llista de discussions obertes i evitar que la gent comenti.
   comment_reply_form:
     aria_label: Afegeix una resposta
   discussion_template:
@@ -2803,7 +2783,6 @@ ca:
   context_panel:
     thread_status:
       pinned: Aquesta discussió s'ha fixat. Romandrà al capdamunt de la llista de discussions del grup per a tots els usuaris.
-      closed: Aquesta discussió s'ha tancat. Ja no apareixerà al tauler de control i apareixerà a la llista de "tancada" a la pàgina del grup.
   thread_group:
     aria_label: Nom del grup
   discussion_context:

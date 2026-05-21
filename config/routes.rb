@@ -231,8 +231,8 @@ Rails.application.routes.draw do
         patch :set_volume, on: :member
         patch :pin, on: :member
         patch :unpin, on: :member
-        patch :close, on: :member
-        patch :reopen, on: :member
+        patch :lock, on: :member
+        patch :unlock, on: :member
         patch :move, on: :member
         patch :move_comments, on: :member
         delete :discard, on: :member

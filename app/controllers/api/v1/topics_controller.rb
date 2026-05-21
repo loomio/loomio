@@ -96,15 +96,15 @@ class Api::V1::TopicsController < Api::V1::RestfulController
     respond_with_resource
   end
 
-  def close
+  def lock
     load_resource
-    TopicService.close(topic: resource, actor: current_user)
+    TopicService.lock(topic: resource, actor: current_user)
     respond_with_resource
   end
 
-  def reopen
+  def unlock
     load_resource
-    TopicService.reopen(topic: resource, actor: current_user)
+    TopicService.unlock(topic: resource, actor: current_user)
     respond_with_resource
   end
 

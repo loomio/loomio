@@ -492,10 +492,6 @@ sv:
     normal_option: När någon vill ha min uppmärksamhet (när jag får besked)
     quiet_option: Inga e-postmeddelanden om den här tråden (Av)
     quiet_explained: Du kommer inte att få ett e-postmeddelande, inte ens när någon försöker meddela dig.
-  close_explanation_modal:
-    close_thread: Stäng tråd
-    body: "<p>Stäng gamla eller irrelevanta trådar för att ta bort dem och indikera att diskussionen har stängts.</p><p> Vem som helst kan fortfarande kommentera eller starta en omröstning i en stängd tråd, men den kommer inte att visas i gruppens trådlista eller på instrumentpanelen.</p>"
-    image_alt: Stänger alla trådar
   inbox:
     clear: Klar
     latest: Senaste
@@ -1035,8 +1031,6 @@ sv:
     discussion_copied: Trådens URL kopierad till urklipp
     url_copied: Länken har kopierats till urklipp
     tag_thread: Hantera taggar
-    close_thread: Stäng tråd
-    reopen_thread: Öppna tråden igen
     delete_thread: Ta bort tråd
     notification_history: Aviseringshistorik
     move_item: Flytta objekt
@@ -1045,8 +1039,6 @@ sv:
     count_voters: "%{count} väljare"
     pin_discussion: Fäst diskussion
     unpin_discussion: Ta bort diskussionen
-    close_discussion: Stäng diskussion
-    reopen_discussion: Återuppta diskussionen
     delete_discussion: Ta bort diskussion
   formatting:
     formatting_tools: Textformateringsverktyg
@@ -1170,7 +1162,6 @@ sv:
     settings: Inställningar
     subgroups: Undergrupper
     show_opened: "%{count} Öppna"
-    show_closed: "%{count} stängt"
     no_threads_here: Inga trådar att se här!
     search_threads: Sök efter trådar...
     private_threads: Du måste vara medlem för att se privata trådar i den här gruppen
@@ -1188,7 +1179,6 @@ sv:
     new_cover_photo: Ladda upp nytt omslagsfoto
     new_group_logo: Ladda upp ny grupplogotyp
     open_discussions: Öppna trådar
-    closed_discussions: Slutna trådar
     discussions_placeholder: En tråd är där alla kan diskutera ett ämne och fatta beslut tillsammans.
     members_placeholder: 'Du är den enda här: bjud in några personer att gå med dig!'
     member_options: Medlemsalternativ
@@ -1237,7 +1227,6 @@ sv:
     discussions: Diskussioner
     no_discussions_here: Inga diskussioner att se här!
     private_discussions: Du måste vara medlem för att se privata trådar i den här gruppen.
-    view_closed_discussions: Visa stängda diskussioner
     discussion_templates: Diskussionsmallar
   export_data_modal:
     title: Hur vill du använda din data?
@@ -1678,9 +1667,6 @@ sv:
     pin:
       pinned: Tråd fastnålad
       unpinned: Tråd lossad
-    closed:
-      reopened: Tråden öppnad igen
-      closed: Tråd stängd
     volume:
       mute_message: Diskussionen är tystad
       unmute_message: Diskussionen har avaktiverats
@@ -1973,10 +1959,8 @@ sv:
     deleted: Denna omröstning har tagits bort
     do_not_hide_results: Dölj inte resultaten
   discussions_panel:
-    open: Öppen
     all: Alla
     unread: Oläst (%{count})
-    closed: Stängd
     include_subgroups_mine: "%{name} och mina undergrupper"
     include_subgroups_all: "%{name} och alla undergrupper"
     no_results_found: Inga resultat för "%{search}"
@@ -2718,8 +2702,6 @@ sv:
     invited_by: Inbjuden av
     invited_on: Inbjuden den
     no_receipts: Denna anonyma omröstning avslutades innan verifieringsfunktionen fanns, så verifiering är inte möjlig.
-  close_discussion_modal:
-    body: Stäng diskussioner för att ta bort dem från listan över öppna diskussioner och förhindra att andra kommenterar.
   comment_reply_form:
     aria_label: Lägg till ett svar
   discussion_template:
@@ -2774,7 +2756,6 @@ sv:
   context_panel:
     thread_status:
       pinned: Den här diskussionen har fästs. Den kommer att finnas kvar högst upp i gruppens diskussionslista för alla användare.
-      closed: Den här diskussionen har avslutats. Den kommer inte längre att visas på instrumentpanelen och kommer att listas under "stängd" på gruppsidan.
   thread_group:
     aria_label: Gruppnamn
   discussion_context:

@@ -26,11 +26,11 @@ const dockActions = computed(() =>
 const menuActions = computed(() => {
   const actions = props.groupPage
     ? smAndDown.value
-      ? ['dismiss_thread', 'pin_thread', 'unpin_thread', 'edit_thread', 'move_thread', 'close_thread', 'reopen_thread', 'discard_thread']
-      : ['pin_thread', 'unpin_thread', 'edit_thread', 'move_thread', 'close_thread', 'reopen_thread', 'discard_thread']
+      ? ['dismiss_thread', 'pin_thread', 'unpin_thread', 'edit_thread', 'move_thread', 'lock_thread', 'unlock_thread', 'discard_thread']
+      : ['pin_thread', 'unpin_thread', 'edit_thread', 'move_thread', 'lock_thread', 'unlock_thread', 'discard_thread']
     : smAndDown.value
-      ? ['dismiss_thread', 'close_thread', 'reopen_thread']
-      : ['close_thread', 'reopen_thread'];
+      ? ['dismiss_thread', 'lock_thread', 'unlock_thread']
+      : ['lock_thread', 'unlock_thread'];
   return pick(TopicService.actions(props.topic), actions);
 });
 

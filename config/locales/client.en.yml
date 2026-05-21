@@ -540,8 +540,8 @@ en:
         loud: You will be emailed all activity in new groups.
         normal: You will be emailed about announcements in new groups.
         quiet: You won't be emailed about new groups.
-  close_discussion_modal:
-    body: Close discussions to remove them from the list of open discussions and prevent people from commenting.
+  lock_thread_modal:
+    body: Lock threads to remove them from the list of open threads and prevent people from commenting.
   inbox:
     clear: Clear
     latest: Latest
@@ -1109,10 +1109,8 @@ en:
     discussion_copied: Thread URL copied to clipboard
     url_copied: Link copied to clipboard
     tag_thread: Manage tags
-    close_thread: Close thread
-    close_discussion: Close discussion
-    reopen_thread: Re-open thread
-    reopen_discussion: Re-open discussion
+    lock_thread: Lock thread
+    unlock_thread: Unlock thread
     delete_thread: Delete thread
     delete_discussion: Delete discussion
     notification_history: Notification history
@@ -1228,7 +1226,7 @@ en:
   context_panel:
     thread_status:
       pinned: This discussion has been pinned. It will remain at the top of the group's list of discussions for all users.
-      closed: This discussion has been closed. It will no longer appear on the dashboard, and will be listed under 'closed' on the group page
+      locked: This discussion has been locked. It will no longer appear on the dashboard, and will be listed under 'locked' on the group page
   delete_group_modal:
     title: Delete group
     subgroup_title: Delete subgroup
@@ -1284,11 +1282,11 @@ en:
     my_subgroups: My subgroups
     more_subgroups: More subgroups
     show_opened: "%{count} Open"
-    show_closed: "%{count} Closed"
+    show_locked: "%{count} Locked"
     no_discussions_here: No discussions to see here!
     search_threads: Search for threads...
     private_discussions: You'll need to be a member to view private threads in this group
-    view_closed_discussions: View closed discussions
+    view_locked_discussions: View locked discussions
     messages:
       privacy:
         members: This group is now visible only to members
@@ -1301,7 +1299,7 @@ en:
     new_cover_photo: Upload new cover photo
     new_group_logo: Upload new group logo
     open_discussions: Open discussions
-    closed_discussions: Closed discussions
+    locked_discussions: Locked discussions
     discussions_placeholder: A thread is where everyone can discuss a topic and make decisions together.
     members_placeholder: 'You''re the only one here: invite some people to join you!'
     member_options: Member options
@@ -1793,9 +1791,9 @@ en:
     volume:
       mute_message: Discussion muted
       unmute_message: Discussion unmuted
-    closed:
-      reopened: Discussion reopened
-      closed: Discussion closed
+    locked:
+      unlocked: Thread unlocked
+      locked: Thread locked
   discussion_last_seen_by:
     title: Seen by
     thread_engagement: Thread engagement
@@ -2109,10 +2107,10 @@ en:
     until_voting_is_closed: Until voting is closed
     deleted: This poll has been deleted
   discussions_panel:
-    open: Open
     all: All
     unread: Unread (%{count})
-    closed: Closed
+    locked: Locked
+    unlocked: Unlocked
     include_subgroups_mine: "%{name} and my subgroups"
     include_subgroups_all: "%{name} and all subgroups"
     no_results_found: No results for "%{search}"

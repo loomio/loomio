@@ -495,12 +495,6 @@ zh_TW:
     normal_option: 當有人想引起我的注意（收到通知時）
     quiet_option: 關於此主題的郵件已關閉
     quiet_explained: 即使有人試圖通知您，您也不會收到電子郵件。
-  close_explanation_modal:
-    close_thread: 關閉討論串
-    body: |
-      <p>關閉舊或無關的討論串以將其從檢視畫面中移除，並指出討論已結束。</p>
-      <p>每個人都還是可以在已關閉的討論串中發表評論或發起投票，但它不會再出現在群組的討論串清單與儀表板上。</p>
-    image_alt: 關閉討論串所有
   inbox:
     clear: 清除
     latest: 最新
@@ -1044,8 +1038,6 @@ zh_TW:
     discussion_copied: 討論串 URL 已複製到剪貼簿
     url_copied: 連結已複製到剪貼簿
     tag_thread: 管理標籤
-    close_thread: 關閉討論串
-    reopen_thread: 重新開啟討論串
     delete_thread: 刪除討論串
     notification_history: 通知歷史
     move_item: 移動項目
@@ -1054,8 +1046,6 @@ zh_TW:
     count_voters: "%{count} 個投票者 "
     pin_discussion: 置頂討論
     unpin_discussion: 取消置頂討論
-    close_discussion: 深入討論
-    reopen_discussion: 重新開啟討論
     delete_discussion: 刪除討論
   formatting:
     formatting_tools: 文字格式化工具
@@ -1178,7 +1168,6 @@ zh_TW:
     settings: 設定
     subgroups: 子群組
     show_opened: "%{count} 個開啟"
-    show_closed: "%{count} 個關閉"
     no_threads_here: 這裡沒有討論串可以檢視！
     search_threads: 搜尋討論串……
     private_threads: 您需要是成員才能檢視群組中的私密討論串
@@ -1196,7 +1185,6 @@ zh_TW:
     new_cover_photo: 上傳新的封面圖片
     new_group_logo: 上傳新的群組圖示
     open_discussions: 開啟討論串
-    closed_discussions: 已關閉的討論串
     discussions_placeholder: 討論串是供每個人討論主題並共同作出決策的地方。
     members_placeholder: 不能只有你 ── 邀請一些夥伴來加入吧！
     member_options: 成員選項
@@ -1246,7 +1234,6 @@ zh_TW:
     discussions: 討論
     no_discussions_here: 這裡沒有任何討論！
     private_discussions: 您需要成為會員才能查看此群組中的私密討論串。
-    view_closed_discussions: 查看已關閉的討論
     discussion_templates: 討論模板
   export_data_modal:
     title: 您想要如何使用您的資料？
@@ -1701,9 +1688,6 @@ zh_TW:
     pin:
       pinned: 討論串已釘選
       unpinned: 討論串已取消釘選
-    closed:
-      reopened: 討論串已重新開啟
-      closed: 討論串已關閉
     volume:
       mute_message: 討論已靜音
       unmute_message: 討論已解除靜音
@@ -2001,10 +1985,8 @@ zh_TW:
     deleted: 此投票已刪除
     do_not_hide_results: 不要隱藏結果
   discussions_panel:
-    open: 公開
     all: 全部
     unread: 未讀 (%{count})
-    closed: 封閉
     include_subgroups_mine: "%{name} 與我的子群組"
     include_subgroups_all: "%{name} 與所有子群組"
     no_results_found: "「%{search}」無結果"
@@ -2748,8 +2730,6 @@ zh_TW:
     invited_by: 受邀者
     invited_on: 受邀於
     no_receipts: 此匿名投票在驗證功能出現之前就已關閉，因此無法進行驗證。
-  close_discussion_modal:
-    body: 關閉討論，將其從開放討論清單中移除，並阻止人們發表評論。
   comment_reply_form:
     aria_label: 新增回覆
   discussion_template:
@@ -2804,7 +2784,6 @@ zh_TW:
   context_panel:
     thread_status:
       pinned: 此討論貼文已置頂，將始終顯示在群組討論貼文清單的頂部，供所有使用者檢視。
-      closed: 此討論已結束。它將不再顯示在控制面板上，並在群組頁面的「已關閉」清單中列出。
   thread_group:
     aria_label: 組名
   discussion_context:

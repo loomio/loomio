@@ -492,10 +492,6 @@ da:
     normal_option: Når nogen vil have min opmærksomhed (når jeg får besked)
     quiet_option: Ingen e-mails om denne tråd (Fra)
     quiet_explained: Du vil ikke modtage en e-mail, heller ikke når nogen forsøger at give dig besked.
-  close_explanation_modal:
-    close_thread: Luk tråden
-    body: "<p>Luk gamle eller irrelevante tråde for at fjerne dem fra visning og indikere, at diskussionen er lukket.</p><p> Enhver kan stadig kommentere eller starte en afstemning i en lukket tråd, men den vises ikke i gruppens trådliste eller på dashboardet.</p>"
-    image_alt: Alle lukker tråde
   inbox:
     clear: Ryd
     latest: Seneste
@@ -1035,8 +1031,6 @@ da:
     discussion_copied: Tråd-URL kopieret til udklipsholder
     url_copied: Linket er kopieret til udklipsholderen
     tag_thread: Administrer tags
-    close_thread: Luk tråden
-    reopen_thread: Åbn tråden igen
     delete_thread: Slet debat
     notification_history: Notifikationshistorik
     move_item: Flyt element
@@ -1045,8 +1039,6 @@ da:
     count_voters: "%{count} vælgere"
     pin_discussion: Fastgør diskussion
     unpin_discussion: Fjern fastgørelse af diskussion
-    close_discussion: Luk diskussion
-    reopen_discussion: Genåbn diskussionen
     delete_discussion: Slet diskussion
   formatting:
     formatting_tools: Tekstformateringsværktøjer
@@ -1170,7 +1162,6 @@ da:
     settings: Indstillinger
     subgroups: Undergrupper
     show_opened: "%{count} Åbn"
-    show_closed: "%{count} Lukket"
     no_threads_here: Ingen tråde at se her!
     search_threads: Søg efter tråde...
     private_threads: Du skal være medlem for at se private tråde i denne gruppe
@@ -1188,7 +1179,6 @@ da:
     new_cover_photo: Upload nyt forsidebillede
     new_group_logo: Upload nyt gruppelogo
     open_discussions: Åbne tråde
-    closed_discussions: Lukkede tråde
     discussions_placeholder: En debat er et sted hvor alle kan give deres mening til kende omkring et specifikt emne og tage beslutninger sammen.
     members_placeholder: Du er det eneste medlem her, inviter nogle mennesker til at være med!
     member_options: Medlemsinstaillinger
@@ -1237,7 +1227,6 @@ da:
     discussions: Diskussioner
     no_discussions_here: Ingen diskussioner at se her!
     private_discussions: Du skal være medlem for at se private tråde i denne gruppe
-    view_closed_discussions: Se lukkede diskussioner
     discussion_templates: Diskussionsskabeloner
   export_data_modal:
     title: Hvordan vil du bruge dine data?
@@ -1678,9 +1667,6 @@ da:
     pin:
       pinned: Tråd fastgjort
       unpinned: Tråden er frigjort
-    closed:
-      reopened: Tråd åbnet igen
-      closed: Tråd lukket
     volume:
       mute_message: Diskussionen er slået fra
       unmute_message: Diskussionen er slået til
@@ -1973,10 +1959,8 @@ da:
     deleted: Denne afstemning er blevet slettet
     do_not_hide_results: Skjul ikke resultater
   discussions_panel:
-    open: Offentlig
     all: Alle
     unread: Ulæst (%{count})
-    closed: Lukket
     include_subgroups_mine: "%{name} og mine undergrupper"
     include_subgroups_all: "%{name} og alle undergrupper"
     no_results_found: Ingen resultater for "%{search}"
@@ -2718,8 +2702,6 @@ da:
     invited_by: Inviteret af
     invited_on: Inviteret den
     no_receipts: Denne anonyme afstemning blev lukket, før verifikationsfunktionen eksisterede, så verifikation er ikke mulig.
-  close_discussion_modal:
-    body: Luk diskussioner for at fjerne dem fra listen over åbne diskussioner og forhindre folk i at kommentere.
   comment_reply_form:
     aria_label: Tilføj et svar
   discussion_template:
@@ -2774,7 +2756,6 @@ da:
   context_panel:
     thread_status:
       pinned: Denne diskussion er blevet fastgjort. Den vil forblive øverst på gruppens liste over diskussioner for alle brugere.
-      closed: Denne diskussion er blevet lukket. Den vil ikke længere blive vist på dashboardet og vil være angivet under 'lukket' på gruppesiden.
   thread_group:
     aria_label: Gruppenavn
   discussion_context:

@@ -502,12 +502,6 @@ pt_BR:
     normal_option: Quando alguém quer minha atenção (Quando notificado)
     quiet_option: Nenhum e-mail sobre esta conversa (Desativado)
     quiet_explained: Você não receberá e-mails, mesmo que alguém tente notificá-lo.
-  close_explanation_modal:
-    close_thread: Fechar conversa
-    body: |
-      <p>Fechar conversas antigas ou irrelevantes para escondê-las e indicar que a discussão foi fechada.</p>
-      <p>Ainda será possível comentar ou iniciar uma enquete numa conversa fechada, mas não aparecerão na lista de conversas do grupo ou no dashboard.</p>
-    image_alt: Fechando todas as conversas
   inbox:
     clear: Limpar
     latest: Último
@@ -1051,8 +1045,6 @@ pt_BR:
     discussion_copied: URL da conversa copiada para o clipboard
     url_copied: Enlace copiado para o clipboard
     tag_thread: Gerenciar tags
-    close_thread: Fechar conversa
-    reopen_thread: Re-abrir conversa
     delete_thread: Apagar conversa
     notification_history: Histórico de notificações
     move_item: Mover item
@@ -1061,8 +1053,6 @@ pt_BR:
     count_voters: "%{count} eleitores"
     pin_discussion: Discussão sobre pinos
     unpin_discussion: Desafixar discussão
-    close_discussion: Discussão final
-    reopen_discussion: Reabrir a discussão
     delete_discussion: Excluir discussão
   formatting:
     formatting_tools: Text formatting tools
@@ -1197,7 +1187,6 @@ pt_BR:
     settings: Configurações
     subgroups: Subgrupos
     show_opened: "%{count} Aberto"
-    show_closed: "%{count} Fechado"
     no_threads_here: Nenhuma conversa para ler aqui!
     search_threads: Buscar por conversas…
     private_threads: 'Você precisa ser membro para ver conversas privadas nesse grupo. '
@@ -1215,7 +1204,6 @@ pt_BR:
     new_cover_photo: Carregar nova foto da capa
     new_group_logo: Carregar nova logo do grupo
     open_discussions: Abrir conversas
-    closed_discussions: Conversas encerradas
     discussions_placeholder: A conversa é o lugar onde todos podem discutir um tema e tomar decisões juntos.
     members_placeholder: 'Você é a única pessoa aqui: convide outras para se juntar a você!'
     member_options: Opçoes de membros
@@ -1264,7 +1252,6 @@ pt_BR:
     discussions: Discussões
     no_discussions_here: Nenhuma discussão por aqui!
     private_discussions: Você precisa ser membro para visualizar as conversas privadas neste grupo.
-    view_closed_discussions: Ver discussões encerradas
     discussion_templates: Modelos de discussão
   export_data_modal:
     title: Como você quer usar seus dados?
@@ -1719,9 +1706,6 @@ pt_BR:
     pin:
       pinned: Conversa afixada
       unpinned: Conversa desafixadas
-    closed:
-      reopened: Conversa re-aberta
-      closed: Conversa encerrada
     volume:
       mute_message: Discussão silenciada
       unmute_message: Discussão sem som
@@ -2019,10 +2003,8 @@ pt_BR:
     deleted: Esta enquete foi deletada
     do_not_hide_results: Não esconda os resultados
   discussions_panel:
-    open: Aberto
     all: Tudo
     unread: Não lida (%{count})
-    closed: Encerrado
     include_subgroups_mine: "%{name} e meus subgrupos"
     include_subgroups_all: "%{name} e todos os subgrupos"
     no_results_found: Nenhum resultado para ""%{search}"
@@ -2768,8 +2750,6 @@ pt_BR:
     invited_by: Convidado por
     invited_on: Convidado em
     no_receipts: Esta enquete anônima foi encerrada antes que o recurso de verificação existisse, portanto a verificação não é possível.
-  close_discussion_modal:
-    body: Encerrar discussões significa removê-las da lista de discussões abertas e impedir que as pessoas comentem.
   comment_reply_form:
     aria_label: Adicionar uma resposta
   discussion_template:
@@ -2824,7 +2804,6 @@ pt_BR:
   context_panel:
     thread_status:
       pinned: Esta discussão foi fixada. Ela permanecerá no topo da lista de discussões do grupo para todos os usuários.
-      closed: Esta discussão foi encerrada. Ela não aparecerá mais no painel e será listada como "encerrada" na página do grupo.
   thread_group:
     aria_label: Nome do grupo
   discussion_context:
