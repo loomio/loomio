@@ -83,7 +83,7 @@ onUnmounted(() => {
 <template lang="pug">
 section.actions-panel#add-comment(:key="topic.id" :class="{'mt-2 px-2 px-sm-4': !topic.newestFirst}")
   template(v-if="topic.closedAt")
-    v-alert(type="info" variant="tonal")
+    v-alert(prepend-icon="mdi-lock" variant="tonal")
       span(v-t="{path: 'notifications.without_title.discussion_closed', args: {actor: topic.closer().name} }")
       mid-dot
       time-ago(:date='topic.closedAt')
