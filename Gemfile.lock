@@ -387,9 +387,7 @@ GEM
       logger
       ostruct
     ice_cube (0.17.0)
-    image_processing (1.14.0)
-      mini_magick (>= 4.9.5, < 6)
-      ruby-vips (>= 2.0.17, < 3)
+    image_processing (2.0.0)
     inherited_resources (1.14.0)
       actionpack (>= 6.0)
       has_scope (>= 0.6)
@@ -441,8 +439,6 @@ GEM
       net-smtp
     marcel (1.1.0)
     maxminddb (0.1.22)
-    mini_magick (5.3.0)
-      logger
     mini_mime (1.1.5)
     minitest (6.0.6)
       drb (~> 2.0)
@@ -809,7 +805,7 @@ DEPENDENCIES
   httparty (~> 0.24.2)
   i18n-timezones
   icalendar
-  image_processing (~> 1.14)
+  image_processing (~> 2.0)
   lograge
   maxminddb
   minitest (~> 6.0)
