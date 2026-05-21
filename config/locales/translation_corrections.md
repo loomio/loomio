@@ -85,3 +85,12 @@ languages in the Nov 2025 pass.
 | client.*.yml   | `notifications.email_subject.poll_created` | Dropped `%{poll_type}` and used generic "Vote" labels | Restored `%{poll_type}: %{title}` | Email subject needs the dynamic poll type, not a hard-coded generic label |
 | client.zh_CN.yml | Multiple HTML/interpolation keys | Full-width percent signs or translated placeholder words like `％{标题}` / literal `作者` | Restored placeholders such as `%{title}`, `%{author}`, `%{username}` | Placeholder names and `%{...}` syntax must never be translated or converted to full-width characters |
 | client.*.yml   | `strand_nav.return`, `thread_arrangement_form.items`, `thread_arrangement_form.thread_settings`, `poll_common_settings.*`, `poll_common_details_meta.*` | UI labels translated in wrong senses like "Return"→yield, "items"→goods/articles, "thread"→subprocess/screw-thread, "opened"→inaugurated | Corrected to navigation, discussion-thread, poll-setting, and poll-time meanings | Short UI labels need surrounding UI context; Google often picks a plausible but wrong dictionary sense |
+
+## 2026-05-21 — lock_thread_modal body changed to explanation
+
+- **file:** `config/locales/client.en.yml`
+- **key:** `lock_thread_modal.body`
+- **before:** Lock threads to remove them from the list of open threads and prevent people from commenting.
+- **after:** Lock threads to prevent people from commenting or making further changes
+- **why it was wrong:** The original text claimed locking "removes threads from the list of open threads," which is no longer true — the default discussions panel now shows all threads (both locked and unlocked). The new text accurately describes what locking does: prevents further comments and changes.
+

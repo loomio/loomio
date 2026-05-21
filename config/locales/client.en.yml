@@ -542,6 +542,7 @@ en:
         quiet: You won't be emailed about new groups.
   lock_thread_modal:
     body: Lock threads to remove them from the list of open threads and prevent people from commenting.
+    explanation: Lock threads to prevent people from commenting or making further changes
   inbox:
     clear: Clear
     latest: Latest
