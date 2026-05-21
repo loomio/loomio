@@ -90,8 +90,6 @@ class GroupTest < ActiveSupport::TestCase
     discarded.update!(discarded_at: Time.current)
 
     group.reload
-    assert_equal 1, group.open_discussions_count
-    assert_equal 0, group.closed_discussions_count
     assert_equal 1, group.discussions_count
   end
 

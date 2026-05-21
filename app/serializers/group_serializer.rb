@@ -40,8 +40,6 @@ class GroupSerializer < ApplicationSerializer
              :link_previews,
              :has_custom_cover_photo,
              :cover_url,
-             :open_discussions_count,
-             :closed_discussions_count,
              :discussion_templates_count,
              :is_visible_to_public,
              :is_visible_to_parent_members,
