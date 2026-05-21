@@ -221,7 +221,7 @@ export default new class TopicService {
       lock_thread: {
         name: 'action_dock.lock_thread',
         collection: 'actions',
-        icon: 'mdi-archive-outline',
+        icon: 'mdi-lock-outline',
         canPerform() {
           return !topic.closedAt && (
             topic.adminsInclude(Session.user()) ||
@@ -234,7 +234,7 @@ export default new class TopicService {
       unlock_thread: {
         name: 'action_dock.unlock_thread',
         collection: 'actions',
-        icon: 'mdi-refresh',
+        icon: 'mdi-lock-open-outline',
         dock: 2,
         canPerform() {
           return topic.closedAt && (
