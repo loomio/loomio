@@ -9,7 +9,8 @@ export default {
   props: {
     event: Object,
     eventable: Object,
-    collapsed: Boolean
+    collapsed: Boolean,
+    unread: Boolean
   },
 
   computed: {
@@ -44,12 +45,13 @@ section.strand-item__stance-created.stance-created
         router-link.text-medium-emphasis(:to='link')
           space
           time-ago(:date='eventable.updatedAt || eventable.castAt')
+        v-badge(v-if="unread" variant="tonal" color="info" inline location="right" :content="$t('thread_item.new')")
         template(v-if="!eventable.latest")
           mid-dot.text-medium-emphasis
           v-badge(inline location="right" :content="$t('poll_common.superseded')")
     .poll-common-stance(v-if="poll.showResults() && !collapsed")
       v-layout(v-if="!eventable.hasOptionIcon()" wrap align-center)
-        strand-item-headline.text-medium-emphasis(:event="event" :eventable="eventable" :dateTime="eventable.updatedAt || eventable.castAt")
+        strand-item-headline.text-medium-emphasis(:event="event" :eventable="eventable" :dateTime="eventable.updatedAt || eventable.castAt" :unread="unread")
       poll-common-stance-choices(:stance="eventable")
       formatted-text.poll-common-stance-created__reason(:model="eventable" field="reason")
       link-previews(:model="eventable")

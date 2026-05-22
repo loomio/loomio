@@ -106,8 +106,8 @@ module Dev::Scenarios::Discussion
   end
 
   def setup_open_and_closed_discussions
-    create_discussion
     create_closed_discussion
+    create_discussion
     sign_in patrick
     patrick.update(experiences: { closingThread: true })
     redirect_to group_path(create_group)
