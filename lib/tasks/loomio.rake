@@ -300,5 +300,11 @@ namespace :loomio do
     puts "SearchService.reindex_everything queued as background job"
   end
 
+  desc "Queue background jobs to resequence legacy topics where poll_created appears after later comments"
+  task resequence_legacy_poll_created_events: :environment do
+    count = TopicService.enqueue_legacy_poll_created_resequence
+    puts "Queued #{count} topics for legacy poll_created resequencing"
+  end
+
 
 end

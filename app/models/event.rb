@@ -167,15 +167,15 @@ class Event < ApplicationRecord
 
   def find_parent_event
     case kind
-    when 'discussion_closed'   then eventable.created_event
-    when 'discussion_forked'   then eventable.created_event
-    when 'discussion_moved'    then eventable.created_event
-    when 'discussion_edited'   then eventable.created_event
-    when 'discussion_reopened' then eventable.created_event
+    when 'discussion_closed'   then discussion_created_event
+    when 'discussion_forked'   then discussion_created_event
+    when 'discussion_moved'    then discussion_created_event
+    when 'discussion_edited'   then discussion_created_event
+    when 'discussion_reopened' then discussion_created_event
     when 'outcome_created'     then eventable.parent_event
     when 'new_comment'
       p = eventable.parent
-      p.is_a?(Event) ? p : (p.topic_event || p.created_event)
+      p.is_a?(Event) ? p : (p&.topic_event || p&.created_event || topic&.topicable&.created_event)
     when 'poll_closed_by_user' then eventable.created_event
     when 'poll_closing_soon'   then eventable.created_event
     when 'poll_created'        then eventable.topic.topicable == eventable ? nil : eventable.topic.topicable.created_event
@@ -222,6 +222,14 @@ class Event < ApplicationRecord
 
   def all_recipient_user_ids
     (recipient_user_ids || []).uniq.compact #.without(actor_id)
+  end
+
+  def discussion_created_event
+    if eventable.respond_to?(:created_event)
+      eventable.created_event
+    elsif topic&.topicable.respond_to?(:created_event)
+      topic.topicable.created_event
+    end
   end
 
   private

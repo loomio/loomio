@@ -162,6 +162,51 @@ class TopicService
     end
   end
 
+  def self.legacy_misordered_poll_created_topic_ids
+    Event
+      .joins("INNER JOIN events later_comments ON later_comments.topic_id = events.topic_id")
+      .where("events.kind = ?", 'poll_created')
+      .where("later_comments.kind = ?", 'new_comment')
+      .where("events.topic_id IS NOT NULL")
+      .where("events.sequence_id > later_comments.sequence_id")
+      .where("events.created_at < later_comments.created_at")
+      .distinct
+      .pluck(:topic_id)
+  end
+
+  def self.enqueue_legacy_poll_created_resequence
+    legacy_misordered_poll_created_topic_ids.tap do |topic_ids|
+      topic_ids.each do |topic_id|
+        ResequenceLegacyPollCreatedTopicWorker.perform_async(topic_id)
+      end
+    end.length
+  end
+
+  def self.resequence_chronologically(topic_id)
+    topic = Topic.find_by(id: topic_id)
+    return unless topic
+
+    repair(topic.id)
+    topic.reload
+
+    root_event = topic.topicable.created_event
+    return unless root_event
+
+    event_ids = Event.where(topic_id: topic.id)
+                     .where.not(id: root_event.id)
+                     .order(:created_at, :id)
+                     .pluck(:id)
+
+    Event.where(topic_id: topic.id).update_all(sequence_id: nil, position: 0, position_key: nil)
+    Event.where(id: root_event.id).update_all(sequence_id: 0, position: 0, depth: 0, parent_id: nil, position_key: '00000', topic_id: topic.id)
+
+    event_ids.each.with_index(1) do |event_id, sequence_id|
+      Event.where(id: event_id).update_all(sequence_id: sequence_id)
+    end
+
+    repair(topic.id)
+  end
+
   def self.repair(topic_id)
     topic = Topic.find_by(id: topic_id)
     return unless topic
