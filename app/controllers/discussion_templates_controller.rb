@@ -1,5 +1,4 @@
-class ThreadTemplatesController < ApplicationController
-  # TODO remove this file
+class DiscussionTemplatesController < ApplicationController
   def dump_i18n
     @group = load_and_authorize(:group, :export)
     templates = {}

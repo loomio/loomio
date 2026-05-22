@@ -9,7 +9,7 @@ class Dev::DiscussionsController < Dev::BaseController
 
   def test_some_read
     discussion = create_discussion_with_nested_comments
-    TopicService.repair_thread(discussion.topic_id)
+    TopicService.repair(discussion.topic_id)
     discussion.author.experienced!('betaFeatures')
     sign_in discussion.author
     topic = discussion.topic

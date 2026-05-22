@@ -32,7 +32,7 @@ class CommentService
     actor.ability.authorize!(:destroy, comment)
     topic_id = comment.topic.id
     comment.destroy
-    RepairThreadWorker.perform_async(topic_id)
+    RepairTopicWorker.perform_async(topic_id)
   end
 
   def self.update(comment:, params:, actor:)

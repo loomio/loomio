@@ -64,7 +64,7 @@ class RecordClonerTest < ActiveSupport::TestCase
     OutcomeService.create(outcome: @outcome, actor: @user)
 
     # Repair event chain for discussion
-    TopicService.repair_thread(@discussion.topic.id)
+    TopicService.repair(@discussion.topic.id)
   end
 
   # -- Clone Group --

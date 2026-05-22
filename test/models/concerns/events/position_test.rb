@@ -130,7 +130,7 @@ class Events::PositionTest < ActiveSupport::TestCase
     assert_equal 3, e3.position
 
     e2.update!(topic_id: nil, parent_id: nil)
-    TopicService.repair_thread(@discussion.topic.id)
+    TopicService.repair(@discussion.topic.id)
     assert_equal 2, e3.reload.position
     assert_equal "00000-00002", e3.reload.position_key
     assert_equal 3, e3.reload.sequence_id
@@ -144,7 +144,7 @@ class Events::PositionTest < ActiveSupport::TestCase
     assert_equal 1, e1.position
     assert_equal 2, e2.position
     e1.destroy
-    TopicService.repair_thread(@discussion.topic.id)
+    TopicService.repair(@discussion.topic.id)
     e2.reload
     assert_equal 1, e2.position
     assert_equal 2, e2.sequence_id

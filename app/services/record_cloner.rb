@@ -31,7 +31,7 @@ class RecordCloner
       poll.update_counts!
       poll.stances.each {|s| s.update_option_scores!}
     end
-    clone_group.discussions.each { |d| TopicService.repair_thread(d.topic_id) }
+    clone_group.discussions.each { |d| TopicService.repair(d.topic_id) }
     clone_group.reload
   end
 
@@ -58,7 +58,7 @@ class RecordCloner
       poll.update_counts!
       poll.stances.each { |s| s.update_option_scores!}
     end
-    clone_group.discussions.each {|d| TopicService.repair_thread(d.topic_id) }
+    clone_group.discussions.each {|d| TopicService.repair(d.topic_id) }
     clone_group.add_member! actor
     clone_group.reload
   end
@@ -82,7 +82,7 @@ class RecordCloner
       poll.stances.each {|s| s.update_option_scores!}
     end
 
-    group.discussions.each { |d| TopicService.repair_thread(d.topic_id) }
+    group.discussions.each { |d| TopicService.repair(d.topic_id) }
     group.reload
 
     group.save!
@@ -114,7 +114,7 @@ class RecordCloner
       poll.update_counts!
       poll.stances.each {|s| s.update_option_scores!}
     end
-    clone_group.discussions.each {|d| TopicService.repair_thread(d.topic_id) }
+    clone_group.discussions.each {|d| TopicService.repair(d.topic_id) }
     clone_group.reload
     clone_group
   end

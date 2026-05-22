@@ -113,49 +113,77 @@ class GroupExportService
     }
   }.with_indifferent_access.freeze
 
-  # export all the direct (invite-only) threads that people in a group have made
-  # TODO make this part of a normal export group process
-  def self.export_direct_threads(group_id)
+  def self.export_direct_topics(group_id)
     group = Group.find(group_id)
-    group_ids = Group.find(group_id).id_and_subgroup_ids
+    group_ids = group.id_and_subgroup_ids
     author_ids = Membership.where(group_id: group_ids).pluck(:user_id).uniq
-    discussion_ids = Discussion.joins(:topic).where(topics: { group_id: nil }, author_id: author_ids).pluck(:id)
-    filename = "/tmp/#{DateTime.now.strftime("%Y-%m-%d_%H-%M-%S")}_invite-only-threads-for-#{group.name.parameterize}.json"
+    topics = Topic.joins_topicables
+                  .where(group_id: nil)
+                  .where("discussions.author_id IN (:author_ids) OR polls.author_id IN (:author_ids)", author_ids: author_ids)
+    filename = "/tmp/#{DateTime.now.strftime("%Y-%m-%d_%H-%M-%S")}_invite-only-topics-for-#{group.name.parameterize}.json"
     ids = Hash.new { |hash, key| hash[key] = [] }
-    File.open(filename, 'w') do |file|
-      Discussion.where(id: discussion_ids).each do |discussion|
-        puts_record(discussion, file, ids)
-        %w[exportable_polls
-           exportable_poll_options
-           exportable_outcomes
-           exportable_stances
-           exportable_stance_choices
-           poll_stance_receipts
-           all_reactions
-           comments
-           readers
-           items
-           topic_readers].each do |relation|
-          discussion.send(relation).find_each(batch_size: 20000) do |record|
-            puts_record(record, file, ids)
-          end
-        end
 
-        attachments = [
-          discussion.files,
-          discussion.image_files,
-          discussion.comment_files,
-          discussion.comment_image_files,
-          discussion.poll_files,
-          discussion.poll_image_files,
-          discussion.outcome_files,
-          discussion.outcome_image_files
-        ].compact.flatten.uniq.each do |attachment|
-          puts_attachment(attachment, file)
-        end
+    File.open(filename, 'w') do |file|
+      topics.find_each(batch_size: 20000) do |topic|
+        export_direct_topic(topic, file, ids)
       end
     end
+
     filename
+  end
+
+  def self.export_direct_topic(topic, file, ids)
+    puts_record(topic, file, ids)
+    puts_record(topic.topicable, file, ids) if topic.topicable
+
+    polls = Poll.where(topic_id: topic.id).where("anonymous = false OR closed_at is not null")
+    outcomes = Outcome.where(poll_id: polls.select(:id))
+    stances = Stance.where(poll_id: polls.select(:id))
+    comments = topic.comments
+
+    [
+      polls,
+      PollOption.where(poll_id: polls.select(:id)),
+      outcomes,
+      stances,
+      StanceChoice.where(stance_id: stances.select(:id)),
+      StanceReceipt.where(poll_id: polls.select(:id)),
+      topic.items,
+      topic.topic_readers,
+      comments,
+      topic.members
+    ].each do |records|
+      export_records(records, file, ids)
+    end
+
+    export_records(reactions_for_records([topic.topicable].compact + polls.to_a + stances.to_a + outcomes.to_a + comments.to_a), file, ids)
+
+    [
+      topic.topicable&.files,
+      topic.topicable&.image_files,
+      comments.map(&:files),
+      comments.map(&:image_files),
+      polls.map(&:files),
+      polls.map(&:image_files),
+      outcomes.map(&:files),
+      outcomes.map(&:image_files)
+    ].compact.flatten.uniq.each do |attachment|
+      puts_attachment(attachment, file)
+    end
+  end
+
+  def self.export_records(records, file, ids)
+    records.find_each(batch_size: 20000) do |record|
+      puts_record(record, file, ids)
+    end
+  end
+
+  def self.reactions_for_records(records)
+    relations = records.group_by { |record| record.class.to_s }.map do |reactable_type, grouped_records|
+      Reaction.where(reactable_type: reactable_type, reactable_id: grouped_records.map(&:id))
+    end
+
+    relations.reduce { |relation, next_relation| relation.or(next_relation) } || Reaction.none
   end
 
   def self.export(groups, group_name)

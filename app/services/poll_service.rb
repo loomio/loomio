@@ -301,7 +301,7 @@ class PollService
     if poll.topic && poll.hide_results == 'until_closed'
       stance_ids = poll.stances.latest.reject(&:body_is_blank?).map(&:id)
       Event.where(kind: 'stance_created', eventable_id: stance_ids, topic_id: nil).update_all(topic_id: poll.topic.id)
-      TopicService.repair_thread(poll.topic_id)
+      TopicService.repair(poll.topic_id)
     end
 
     if poll.poll_type == 'stv'

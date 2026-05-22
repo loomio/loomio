@@ -338,7 +338,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :thread_templates, only: [] do
+  resources :discussion_templates, only: [] do
     collection do
       get :dump_i18n
     end

@@ -34,7 +34,7 @@ class TopicServiceTest < ActiveSupport::TestCase
 
   test "flattens events to max_depth 1" do
     @topic.update!(max_depth: 1)
-    TopicService.repair_thread(@topic.id)
+    TopicService.repair(@topic.id)
 
     [@comment1_event, @comment2_event, @comment3_event, @poll_created_event].each(&:reload)
 
@@ -50,7 +50,7 @@ class TopicServiceTest < ActiveSupport::TestCase
 
   test "branches events at max_depth 2" do
     @topic.update!(max_depth: 2)
-    TopicService.repair_thread(@topic.id)
+    TopicService.repair(@topic.id)
 
     [@comment1_event, @comment2_event, @comment3_event, @poll_created_event].each(&:reload)
 
@@ -66,7 +66,7 @@ class TopicServiceTest < ActiveSupport::TestCase
 
   test "branches events at max_depth 3" do
     @topic.update!(max_depth: 3)
-    TopicService.repair_thread(@topic.id)
+    TopicService.repair(@topic.id)
 
     [@comment1_event, @comment2_event, @comment3_event, @poll_created_event].each(&:reload)
 

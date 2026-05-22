@@ -35,7 +35,7 @@ class TopicService
     topic.assign_attributes(params)
     rearrange = topic.max_depth_changed?
     topic.save!
-    RepairThreadWorker.perform_async(topic.id) if rearrange
+    RepairTopicWorker.perform_async(topic.id) if rearrange
   end
 
   def self.lock(topic:, actor:)
@@ -162,7 +162,7 @@ class TopicService
     end
   end
 
-  def self.repair_thread(topic_id)
+  def self.repair(topic_id)
     topic = Topic.find_by(id: topic_id)
     return unless topic
     topicable = topic.topicable
@@ -237,9 +237,9 @@ class TopicService
     SequenceService.drop_seq!('events_position', parent_id)
   end
 
-  def self.repair_all_threads
+  def self.repair_all
     Topic.pluck(:id).each do |id|
-      RepairThreadWorker.perform_async(id)
+      RepairTopicWorker.perform_async(id)
     end
   end
 

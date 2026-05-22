@@ -26,8 +26,8 @@ class MoveCommentsWorker
 
     all_events.update_all(topic_id: target_topic_id, sequence_id: nil)
 
-    TopicService.repair_thread(target_topic_id)
-    TopicService.repair_thread(source_topic_id)
+    TopicService.repair(target_topic_id)
+    TopicService.repair(source_topic_id)
 
     SearchService.reindex_by_discussion_id(target_topicable.id) if target_topicable.is_a?(Discussion)
     SearchService.reindex_by_discussion_id(source_topic.topicable_id) if source_topic.topicable_type == 'Discussion'
