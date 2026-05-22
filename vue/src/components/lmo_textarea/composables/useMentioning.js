@@ -11,16 +11,21 @@ export function useCommonMentioning(model) {
   const suggestionListStyles = ref({});
   const fetchingMentions = ref(false);
 
+  const namedIdFor = record => {
+    if (record && record.id && typeof record.namedId === 'function') {
+      return record.namedId();
+    }
+  };
+
   const fetchMentionable = debounce(function() {
     if (!query.value && mentionsCache.value.length > 0) { return; }
     fetchingMentions.value = true;
     const topic = model.value.topicId && model.value.topic && model.value.topic() ||
       model.value.parent && model.value.parent() && model.value.parent().topic && model.value.parent().topic();
     const group = model.value.groupId && model.value.group && model.value.group() ||
+      model.value.isA && model.value.isA('group') && model.value ||
       model.value.parent && model.value.parent() && model.value.parent().group && model.value.parent().group();
-    const namedId = (topic && topic.namedId()) ||
-      (group && group.namedId()) ||
-      {};
+    const namedId = namedIdFor(topic) || namedIdFor(group) || {};
     Records.remote.get('mentions', Object.assign(namedId, { q: query.value })).then(rows => {
       mentionsCache.value = uniqBy(mentionsCache.value.concat(rows), 'handle');
       updateMentions();

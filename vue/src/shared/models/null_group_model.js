@@ -52,6 +52,8 @@ export default class NullGroupModel {
   parentsAndSelf() { return [this]; }
   selfAndSubgroups() { return [this]; }
   group() { return this; }
+  namedId() { return {}; }
+  bestNamedId() { return {}; }
   hasSubgroups() { return false; }
   tags() { return []; }
   organisationIds() { return []; }
