@@ -336,7 +336,7 @@ class Dev::PollMailerTest < ActiveSupport::TestCase
     end
 
     test "#{poll_type} compare view" do
-      skip "while refacting"
+      skip "way tooo slow for regular test runs. but keep incase you want to test the chatbot views?"
       @poll = PollService.create(params: build_poll_params(poll_type: poll_type, notify_on_open: true), actor: @actor)
 
       event = @poll.events.last

@@ -1,5 +1,4 @@
 class PollTemplatesController < ApplicationController
-  # TODO remove this file
   def dump_i18n
     group = load_and_authorize :group, :export
     templates = {}

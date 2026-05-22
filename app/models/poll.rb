@@ -235,25 +235,6 @@ class Poll < ApplicationRecord
   delegate :name, to: :author, prefix: true
   delegate :guests, :guest_ids, :add_guest!, :add_admin!, :admins, :members, :group_id, :group, to: :topic
 
-  # Id like to see what happens if I remove these
-  # def discussion
-  #   topic&.topicable_type == 'Discussion' ? topic.topicable : nil
-  # end
-
-  # def discussion=(d)
-  #   self.topic_id = d&.topic_id
-  # end
-
-  # def discussion_id
-  #   topic&.topicable_type == 'Discussion' ? topic.topicable_id : nil
-  # end
-
-  # def discussion_id=(id)
-  #   if id.present?
-  #     self.topic_id = Discussion.find(id).topic_id
-  #   end
-  # end
-
   def has_score_icons
     vote_method == "time_poll"
   end
