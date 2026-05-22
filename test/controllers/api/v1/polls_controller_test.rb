@@ -29,6 +29,28 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
     assert_equal poll.key, json['polls'][0]['key']
   end
 
+  test "show serializes without record cache fallbacks" do
+    poll = PollService.create(params: {
+      title: "cache test poll",
+      poll_type: "proposal",
+      topic_id: @discussion.topic_id,
+      group_id: @group.id,
+      poll_option_names: %w[agree disagree],
+      closing_at: 3.days.from_now
+    }, actor: @admin)
+
+    sign_in @user
+    Reaction.create!(reactable: poll, user: @alien, reaction: ':heart:')
+
+    assert_no_record_cache_fallbacks do
+      get :show, params: { id: poll.key }
+    end
+
+    assert_response :success
+    json = JSON.parse(response.body)
+    assert_includes json['reactions'].map { |r| r['id'] }, Reaction.last.id
+  end
+
   # Index tests
   test "index responds successfully" do
     PollService.create(params: {

@@ -78,7 +78,7 @@ export default
         path: 'polls',
         order: 'createdAt',
         params: {
-          exclude_types: 'group',
+          exclude_types: 'group reaction',
           group_key: this.$route.params.key,
           status: this.$route.query.status,
           poll_type: this.$route.query.poll_type,

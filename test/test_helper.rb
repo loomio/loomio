@@ -45,6 +45,19 @@ module ActiveSupport
       last_email.parts[1].body
     end
 
+    def assert_no_record_cache_fallbacks
+      fallbacks = []
+      subscriber = ActiveSupport::Notifications.subscribe('record_cache.fallback') do |_name, _started, _finished, _id, payload|
+        fallbacks << payload
+      end
+
+      yield
+
+      assert_empty fallbacks.map { |payload| "#{payload[:keys].join('.')}[#{payload[:id]}]" }
+    ensure
+      ActiveSupport::Notifications.unsubscribe(subscriber) if subscriber
+    end
+
 
     # Setup common stubs before each test
     setup do

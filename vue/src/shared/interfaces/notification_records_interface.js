@@ -22,7 +22,7 @@ export default class NotificationRecordsInterface extends BaseRecordsInterface {
   fetchNotifications(query, options) {
     if (options == null) { options = {}; }
     return this.fetch({
-      params: options});
+      params: Object.assign({exclude_types: 'reaction'}, options)});
   }
 
   viewed() {

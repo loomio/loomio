@@ -27,7 +27,7 @@ export default {
   created() {
     setTimeout(() => { this.spin = false; this.show = false }, 8000)
     if (this.group) {
-      Records.remote.fetch({ path: 'polls', params: { group_id: this.group.id } });
+      Records.remote.fetch({ path: 'polls', params: { group_id: this.group.id, exclude_types: 'reaction' } });
     }
     this.watchRecords({
       collections: ['groups', 'polls'],

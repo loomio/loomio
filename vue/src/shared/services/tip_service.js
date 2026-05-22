@@ -114,7 +114,8 @@ export default new class TipService {
                     path: 'discussions',
                     params: {
                       group_id: group.id,
-                      subgroups: 'none'
+                      subgroups: 'none',
+                      exclude_types: 'reaction'
                     }
                   }).then(() => {
                     discussion = Records.discussions.collection.chain()

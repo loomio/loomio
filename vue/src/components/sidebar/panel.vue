@@ -87,7 +87,7 @@ const fetchData = () => {
       }
     }
   });
-  Records.topics.fetch({ params: { unread: 1 } })
+  Records.topics.fetch({ params: { unread: 1, exclude_types: 'reaction' } })
   Records.stances.fetch({ path: 'my_stances' })
 };
 

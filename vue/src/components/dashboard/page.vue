@@ -46,7 +46,8 @@ function init() {
   loader.value = new RecordLoader({
     collection: 'topics',
     params: {
-      per: 30
+      per: 30,
+      exclude_types: 'reaction'
     }
   });
 

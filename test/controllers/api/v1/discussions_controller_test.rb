@@ -201,6 +201,19 @@ class Api::V1::DiscussionsControllerTest < ActionController::TestCase
     assert_includes discussion_json.keys, 'description'
   end
 
+  test "show serializes without record cache fallbacks" do
+    sign_in @user
+    Reaction.create!(reactable: @discussion, user: @alien, reaction: ':heart:')
+
+    assert_no_record_cache_fallbacks do
+      get :show, params: { id: @discussion.key }
+    end
+
+    assert_response :success
+    json = JSON.parse(response.body)
+    assert_includes json['reactions'].map { |r| r['id'] }, Reaction.last.id
+  end
+
   test "does not return a discarded discussion" do
     @discussion.update_columns(discarded_at: 1.day.ago)
     sign_in @user

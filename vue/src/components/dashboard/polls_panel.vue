@@ -19,7 +19,7 @@ export default
     this.loader = new RecordLoader({
       collection: 'polls',
       params: {
-        exclude_types: 'group',
+        exclude_types: 'group reaction',
         status: 'recent'
       }
     });

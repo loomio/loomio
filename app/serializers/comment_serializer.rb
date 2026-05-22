@@ -17,6 +17,7 @@ class CommentSerializer < ApplicationSerializer
              :discarded_by
 
   has_one :author, serializer: AuthorSerializer, root: :users
+  has_many :reactions, serializer: ReactionSerializer, root: :reactions
 
   hide_when_discarded [:body]
 

@@ -45,6 +45,10 @@ class ApplicationSerializer < ActiveModel::Serializer
     cache_fetch(:users_by_id, object.inviter_id) { object.inviter }
   end
 
+  def reactions
+    cache_fetch([:reactions_by_reactable_type_and_id, object.class.to_s], object.id) { object.reactions }
+  end
+
   def self.hide_when_discarded(names)
     Array(names).each do |name|
       define_method name do

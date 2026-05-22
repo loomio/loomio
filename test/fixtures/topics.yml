@@ -36,7 +36,7 @@ alien_discussion_topic:
   updated_at: <%= 1.day.ago %>
 
 subgroup_discussion_topic:
-  topicable: subgroup_discussion (Discussion)
+  topicable: discussion_in_subgroup (Discussion)
   group: subgroup
   items_count: 1
   ranges_string: "0-0"
