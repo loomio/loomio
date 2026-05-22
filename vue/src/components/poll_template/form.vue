@@ -507,9 +507,26 @@ export default {
 
     v-card-text
       v-divider.mb-4
-      .text-subtitle-1.pb-2(v-t="'thread_arrangement_form.topic_settings'")
-      v-checkbox(v-model="pollTemplate.allowComments" :label="$t('thread_arrangement_form.allow_comments')" :hint="$t('thread_arrangement_form.allow_comments_description')" persistent-hint hide-details="auto")
-      v-checkbox(v-model="pollTemplate.allowReactions" :label="$t('thread_arrangement_form.allow_reactions')" :hint="$t('thread_arrangement_form.allow_reactions_description')" persistent-hint hide-details="auto")
+      .text-subtitle-1.pb-2(v-t="'thread_arrangement_form.thread_settings'")
+      v-list(bg-color="transparent")
+        v-list-item(
+          lines="two"
+          class="px-0"
+          :title="$t('thread_arrangement_form.allow_comments')"
+          :subtitle="$t('thread_arrangement_form.allow_comments_description')"
+          @click="pollTemplate.allowComments = !pollTemplate.allowComments"
+        )
+          template(v-slot:prepend)
+            v-checkbox-btn(v-model="pollTemplate.allowComments" @click.stop)
+        v-list-item(
+          lines="two"
+          class="px-0"
+          :title="$t('thread_arrangement_form.allow_reactions')"
+          :subtitle="$t('thread_arrangement_form.allow_reactions_description')"
+          @click="pollTemplate.allowReactions = !pollTemplate.allowReactions"
+        )
+          template(v-slot:prepend)
+            v-checkbox-btn(v-model="pollTemplate.allowReactions" @click.stop)
 
     v-card-actions.poll-common-form-actions
       help-btn(path='en/user_manual/polls/poll_templates')

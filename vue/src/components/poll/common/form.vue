@@ -613,9 +613,26 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
 
         template(v-if="!poll.topicId")
           v-divider.mb-4
-          .text-subtitle-1.pb-2(v-t="'thread_arrangement_form.topic_settings'")
-          v-checkbox(v-model="poll.allowComments" :label="$t('thread_arrangement_form.allow_comments')" :hint="$t('thread_arrangement_form.allow_comments_description')" persistent-hint hide-details="auto")
-          v-checkbox(v-model="poll.allowReactions" :label="$t('thread_arrangement_form.allow_reactions')" :hint="$t('thread_arrangement_form.allow_reactions_description')" persistent-hint hide-details="auto")
+          .text-subtitle-1.pb-2(v-t="'thread_arrangement_form.thread_settings'")
+          v-list(bg-color="transparent")
+            v-list-item(
+              lines="two"
+              class="px-0"
+              :title="$t('thread_arrangement_form.allow_comments')"
+              :subtitle="$t('thread_arrangement_form.allow_comments_description')"
+              @click="poll.allowComments = !poll.allowComments"
+            )
+              template(v-slot:prepend)
+                v-checkbox-btn(v-model="poll.allowComments" @click.stop)
+            v-list-item(
+              lines="two"
+              class="px-0"
+              :title="$t('thread_arrangement_form.allow_reactions')"
+              :subtitle="$t('thread_arrangement_form.allow_reactions_description')"
+              @click="poll.allowReactions = !poll.allowReactions"
+            )
+              template(v-slot:prepend)
+                v-checkbox-btn(v-model="poll.allowReactions" @click.stop)
 
         common-notify-fields(v-if="poll.id" :model="poll" includeActor)
 
