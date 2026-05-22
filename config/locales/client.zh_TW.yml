@@ -2831,7 +2831,7 @@ zh_TW:
   strand_members_list:
     notify_members_or_invite_guests_info: 可以透過群組成員姓名通知他們，或透過電子郵件地址邀請非成員。受邀者可以參與此討論串，但無法存取群組的其他討論串。
     notify_members_info: 輸入群組成員姓名，即可通知他們此主題。
-    specified_voters_only_warning: 本帖的投票僅限特定人員參與。在此處新增某人並不會增加其投票權限—請使用投票頁面上的「新增投票者」功能。
+    specified_voters_only_warning: "本帖的投票僅限特定人員參與。使用此表單新增某人並不會授予其投票權，只會讓其能夠關注進展並發表評論。如果你想分配投票權，請使用投票頁面上的\"新增投票者\"。"
   poll_common_details_meta:
     opened: 已開啟
     opens: 打開

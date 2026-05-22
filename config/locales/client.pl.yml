@@ -2830,7 +2830,7 @@ pl:
   strand_members_list:
     notify_members_or_invite_guests_info: Powiadom członków grupy po imieniu lub zaproś osoby spoza grupy, podając adres e-mail. Zaproszeni goście mogą uczestniczyć w tym wątku, ale nie będą mieli dostępu do innych wątków grupy.
     notify_members_info: Wpisz nazwy członków grupy, aby powiadomić ich o tym wątku.
-    specified_voters_only_warning: W tym wątku znajdują się ankiety, w których głosować mogą tylko wybrane osoby. Dodanie kogoś tutaj nie da mu głosu — zamiast tego użyj opcji „dodaj wyborców” w ankiecie.
+    specified_voters_only_warning: "W tym wątku znajdują się ankiety, w których głosować mogą tylko wybrane osoby. Dodanie kogoś za pomocą tego formularza nie da mu głosu, a jedynie możliwość śledzenia dyskusji i komentowania. Jeśli chcesz przydzielić głosy, użyj w ankiecie opcji \"dodaj głosujących\"."
   poll_common_details_meta:
     opened: Otwierany
     opens: Otwiera się

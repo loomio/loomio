@@ -2831,7 +2831,7 @@ it:
   strand_members_list:
     notify_members_or_invite_guests_info: Avvisa i membri del gruppo per nome oppure invita i non membri tramite indirizzo email. Gli ospiti invitati possono partecipare a questa discussione, ma non avranno accesso alle altre discussioni del gruppo.
     notify_members_info: Inserisci i nomi dei membri del gruppo per avvisarli di questa discussione.
-    specified_voters_only_warning: 'In questa discussione sono presenti sondaggi in cui possono votare solo alcune persone selezionate. Aggiungere qualcuno qui non gli conferirà il diritto di voto: utilizza invece la funzione "aggiungi votanti" direttamente nel sondaggio.'
+    specified_voters_only_warning: "In questa discussione sono presenti sondaggi in cui possono votare solo alcune persone selezionate. Aggiungere qualcuno con questo modulo non gli darà un voto, ma solo la possibilità di seguire la discussione e commentare. Se vuoi assegnare voti, usa \"aggiungi votanti\" nel sondaggio."
   poll_common_details_meta:
     opened: Aperto
     opens: Aperti

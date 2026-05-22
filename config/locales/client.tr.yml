@@ -2803,7 +2803,7 @@ tr:
   strand_members_list:
     notify_members_or_invite_guests_info: Grup üyelerine isimleriyle bildirim gönderin veya üye olmayanları e-posta adresleriyle davet edin. Davet edilen misafirler bu tartışmaya katılabilir ancak diğer grup tartışmalarına erişemezler.
     notify_members_info: Bu konu hakkında bilgilendirmek istediğiniz grup üyelerinin adlarını girin.
-    specified_voters_only_warning: Bu başlıkta yalnızca seçili kişilerin oy kullanabileceği anketler bulunmaktadır. Buraya birini eklemek ona oy hakkı vermez; bunun yerine ankette "oy veren ekle" seçeneğini kullanın.
+    specified_voters_only_warning: "Bu başlıkta yalnızca seçili kişilerin oy kullanabileceği anketler bulunmaktadır. Bu formla birini eklemek ona oy hakkı vermez, yalnızca takip etme ve yorum yapma olanağı sağlar. Oy hakkı vermek istiyorsanız ankette \"oy veren ekle\" seçeneğini kullanın."
   poll_common_details_meta:
     opened: Açıldı
     opens: Açılıyor

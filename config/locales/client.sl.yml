@@ -2803,7 +2803,7 @@ sl:
   strand_members_list:
     notify_members_or_invite_guests_info: Obvesti člane skupine po imenu ali povabi nečlane po e-poštnem naslovu. Povabljeni gostje lahko sodelujejo v tej niti, vendar ne bodo imeli dostopa do drugih niti skupine.
     notify_members_info: Vnesite imena članov skupine, da jih obvestite o tej temi.
-    specified_voters_only_warning: V tej temi so ankete, kjer lahko glasujejo samo izbrane osebe. Če nekoga dodate sem, mu ne boste dali glasu – namesto tega v anketi uporabite »dodaj volivce«.
+    specified_voters_only_warning: "V tej temi so ankete, kjer lahko glasujejo samo izbrane osebe. Če nekoga dodate s tem obrazcem, mu ne boste dali glasu, ampak le možnost spremljanja in komentiranja. Če želite dodeliti glasove, v anketi uporabite \"dodaj glasovalce\"."
   poll_common_details_meta:
     opened: Odprto
     opens: Odpre se

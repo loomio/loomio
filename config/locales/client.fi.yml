@@ -2803,7 +2803,7 @@ fi:
   strand_members_list:
     notify_members_or_invite_guests_info: Ilmoita ryhmän jäsenille nimeltä tai kutsu muita kuin jäseniä sähköpostiosoitteella. Kutsutut vieraat voivat osallistua tähän keskusteluketjuun, mutta heillä ei ole pääsyä muihin ryhmän keskusteluketjuihin.
     notify_members_info: Anna ryhmän jäsenten nimet, jotta heille ilmoitetaan tästä keskusteluketjusta.
-    specified_voters_only_warning: Tässä ketjussa on äänestyksiä, joissa vain valitut henkilöt voivat äänestää. Henkilön lisääminen tähän ei anna hänelle ääntä – käytä sen sijaan äänestyksessä "lisää äänestäjiä" -toimintoa.
+    specified_voters_only_warning: "Tässä ketjussa on äänestyksiä, joissa vain valitut henkilöt voivat äänestää. Henkilön lisääminen tällä lomakkeella ei anna hänelle ääntä, vaan vain mahdollisuuden seurata keskustelua ja kommentoida. Jos haluat antaa ääniä, käytä äänestyksessä \"lisää äänestäjiä\" -toimintoa."
   poll_common_details_meta:
     opened: Avattu
     opens: Avautuu

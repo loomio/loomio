@@ -2810,7 +2810,7 @@ hu:
   strand_members_list:
     notify_members_or_invite_guests_info: Értesítsd a csoport tagjait név szerint, vagy hívd meg a nem tagokat e-mail címükkel. A meghívott vendégek részt vehetnek ebben a beszélgetésben, de nem férhetnek hozzá a többi csoportbeszélgetéshez.
     notify_members_info: Add meg a csoport tagjainak nevét, hogy értesítsd őket erről a beszélgetésről.
-    specified_voters_only_warning: Ebben a témában vannak szavazások, ahol csak kiválasztott személyek szavazhatnak. Ha valakit ide hozzáadsz, az nem ad neki szavazatot – használd helyette a „szavazók hozzáadása” lehetőséget a szavazáson.
+    specified_voters_only_warning: "Ebben a témában vannak szavazások, ahol csak kiválasztott személyek szavazhatnak. Ha valakit ezzel az űrlappal adsz hozzá, az nem ad neki szavazatot, csak lehetőséget arra, hogy kövesse a beszélgetést és hozzászóljon. Ha szavazatokat szeretnél kiosztani, használd a szavazáson a \"szavazók hozzáadása\" lehetőséget."
   poll_common_details_meta:
     opened: Megnyitva
     opens: Megnyílik

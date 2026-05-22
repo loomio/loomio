@@ -2830,7 +2830,7 @@ ca:
   strand_members_list:
     notify_members_or_invite_guests_info: Notifica els membres del grup pel seu nom o convida els que no són membres per correu electrònic. Els convidats poden participar en aquest fil però no tindran accés a altres fils del grup.
     notify_members_info: Introduïu els noms dels membres del grup per notificar-los sobre aquest fil.
-    specified_voters_only_warning: Aquest fil té enquestes on només poden votar persones seleccionades. Afegir algú aquí no li donarà un vot; feu servir "afegir votants" a l'enquesta.
+    specified_voters_only_warning: "Aquest fil té enquestes on només poden votar persones seleccionades. Afegir algú amb aquest formulari no li donarà vot, només la possibilitat de seguir la conversa i comentar. Si voleu assignar vots, feu servir \"afegir votants\" a l'enquesta."
   poll_common_details_meta:
     opened: Obert
     opens: Obreix

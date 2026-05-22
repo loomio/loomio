@@ -2803,7 +2803,7 @@ sv:
   strand_members_list:
     notify_members_or_invite_guests_info: Meddela gruppmedlemmar med namn eller bjud in icke-medlemmar via e-postadress. Inbjudna gäster kan delta i den här tråden men har inte tillgång till andra grupptrådar.
     notify_members_info: Ange namnen på gruppmedlemmarna för att meddela dem om den här tråden.
-    specified_voters_only_warning: Den här tråden har omröstningar där endast utvalda personer kan rösta. Att lägga till någon här ger dem inte en röst — använd "lägg till väljare" i omröstningen istället.
+    specified_voters_only_warning: "Den här tråden har omröstningar där endast utvalda personer kan rösta. Att lägga till någon med det här formuläret ger dem ingen röst, bara möjlighet att följa med och kommentera. Om du vill tilldela röster använder du \"lägg till väljare\" i omröstningen."
   poll_common_details_meta:
     opened: Öppnad
     opens: Öppnar

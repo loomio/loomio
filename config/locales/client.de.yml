@@ -2838,7 +2838,7 @@ de:
   strand_members_list:
     notify_members_or_invite_guests_info: Benachrichtigen Sie Gruppenmitglieder namentlich oder laden Sie Nicht-Mitglieder per E-Mail-Adresse ein. Eingeladene Gäste können an diesem Thread teilnehmen, haben aber keinen Zugriff auf andere Gruppenthreads.
     notify_members_info: Geben Sie die Namen der Gruppenmitglieder ein, um sie über diesen Thread zu benachrichtigen.
-    specified_voters_only_warning: In diesem Thread gibt es Umfragen, an denen nur ausgewählte Personen teilnehmen können. Wenn Sie hier jemanden hinzufügen, erhält diese Person keine Stimme – verwenden Sie stattdessen die Funktion „Teilnehmer hinzufügen“ in der jeweiligen Umfrage.
+    specified_voters_only_warning: "In diesem Thread gibt es Umfragen, an denen nur ausgewählte Personen abstimmen können. Wenn Sie jemanden mit diesem Formular hinzufügen, erhält diese Person keine Stimme, sondern nur die Möglichkeit, mitzulesen und zu kommentieren. Wenn Sie Stimmen vergeben möchten, verwenden Sie in der Umfrage \"Wähler hinzufügen\"."
   poll_common_details_meta:
     opened: Geöffnet
     opens: Öffnet

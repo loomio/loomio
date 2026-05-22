@@ -2839,7 +2839,7 @@ es:
   strand_members_list:
     notify_members_or_invite_guests_info: Notifique a los miembros del grupo por su nombre o invite a quienes no sean miembros por su dirección de correo electrónico. Los invitados podrán participar en este hilo, pero no tendrán acceso a otros hilos del grupo.
     notify_members_info: Introduce los nombres de los miembros del grupo para notificarles sobre este hilo.
-    specified_voters_only_warning: Este hilo contiene encuestas donde solo pueden votar personas seleccionadas. Agregar a alguien aquí no le dará su voto; en su lugar, usa la opción "Agregar votantes" en la encuesta.
+    specified_voters_only_warning: "Este hilo contiene encuestas donde solo pueden votar personas seleccionadas. Agregar a alguien con este formulario no le dará un voto, solo la posibilidad de seguir la conversación y comentar. Si quieres emitir votos, usa \"agregar votantes\" en la encuesta."
   poll_common_details_meta:
     opened: Abierto
     opens: Abre

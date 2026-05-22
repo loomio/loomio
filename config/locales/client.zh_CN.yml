@@ -2718,7 +2718,7 @@ zh_CN:
   strand_members_list:
     notify_members_or_invite_guests_info: 可以通过群组成员姓名通知他们，或者通过电子邮件地址邀请非成员。受邀者可以参与此讨论串，但无法访问群组的其他讨论串。
     notify_members_info: 输入群组成员姓名，即可通知他们此主题。
-    specified_voters_only_warning: 本帖中的投票仅限特定人员参与。在此处添加某人并不会增加其投票权限——请使用投票页面上的“添加投票者”功能。
+    specified_voters_only_warning: "本帖中的投票仅限特定人员参与。使用此表单添加某人并不会授予其投票权，只会让其能够关注进展并发表评论。如果你想分配投票权，请使用投票页面上的\"添加投票者\"。"
   poll_common_details_meta:
     opened: 已打开
     opens: 打开

@@ -2830,7 +2830,7 @@ nl_NL:
   strand_members_list:
     notify_members_or_invite_guests_info: Stel groepsleden persoonlijk op de hoogte of nodig niet-leden uit via hun e-mailadres. Uitgenodigde gasten kunnen deelnemen aan deze discussie, maar hebben geen toegang tot andere groepsdiscussies.
     notify_members_info: Voer de namen van de groepsleden in om hen over dit onderwerp te informeren.
-    specified_voters_only_warning: In dit forumonderwerp vind je peilingen waar alleen geselecteerde personen kunnen stemmen. Iemand toevoegen geeft die persoon geen stemrecht — gebruik in plaats daarvan de optie "stemmers toevoegen" in de peiling zelf.
+    specified_voters_only_warning: "In dit forumonderwerp vind je peilingen waar alleen geselecteerde personen kunnen stemmen. Iemand toevoegen met dit formulier geeft die persoon geen stem, maar alleen de mogelijkheid om mee te volgen en te reageren. Als je stemmen wilt toekennen, gebruik dan \"stemmers toevoegen\" in de peiling."
   poll_common_details_meta:
     opened: Geopend
     opens: Opent

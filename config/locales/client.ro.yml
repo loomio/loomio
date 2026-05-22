@@ -2803,7 +2803,7 @@ ro:
   strand_members_list:
     notify_members_or_invite_guests_info: Anunță membrii grupului pe nume sau invită persoane care nu sunt membre prin adresa de e-mail. Persoanele invitate pot participa la acest fir de discuție, dar nu vor avea acces la alte fire de discuție ale grupului.
     notify_members_info: Introduceți numele membrilor grupului pentru a-i notifica despre acest fir de discuție.
-    specified_voters_only_warning: Acest fir de discuție conține sondaje în care pot vota doar anumite persoane. Adăugarea cuiva aici nu îi va oferi un vot - folosește în schimb „adăugați votanți” în sondaj.
+    specified_voters_only_warning: "Acest fir de discuție conține sondaje în care pot vota doar anumite persoane. Adăugarea cuiva cu acest formular nu îi va oferi un vot, ci doar posibilitatea de a urmări discuția și de a comenta. Dacă vrei să aloci voturi, folosește \"adăugați votanți\" în sondaj."
   poll_common_details_meta:
     opened: Deschis
     opens: Se deschide

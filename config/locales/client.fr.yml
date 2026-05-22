@@ -2847,7 +2847,7 @@ fr:
   strand_members_list:
     notify_members_or_invite_guests_info: Prévenez les membres du groupe par leur nom ou invitez les personnes extérieures par leur adresse courriel. Les invités pourront participer à cette discussion, mais n'auront pas accès aux autres discussions du groupe.
     notify_members_info: Saisissez les noms des membres du groupe pour les informer de cette discussion.
-    specified_voters_only_warning: Ce fil de discussion contient des sondages où seules certaines personnes peuvent voter. Ajouter quelqu'un ici ne lui donnera pas le droit de vote ; utilisez plutôt l'option « Ajouter des votants » du sondage.
+    specified_voters_only_warning: "Ce fil de discussion contient des sondages où seules certaines personnes peuvent voter. Ajouter quelqu'un avec ce formulaire ne lui donnera pas de vote, seulement la possibilité de suivre la discussion et de commenter. Si vous souhaitez attribuer des votes, utilisez \"Ajouter des votants\" dans le sondage."
   poll_common_details_meta:
     opened: Ouvert
     opens: S'ouvre

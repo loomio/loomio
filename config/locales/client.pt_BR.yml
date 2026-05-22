@@ -2851,7 +2851,7 @@ pt_BR:
   strand_members_list:
     notify_members_or_invite_guests_info: Notifique os membros do grupo pelo nome ou convide pessoas que não são membros por endereço de e-mail. Os convidados podem participar desta discussão, mas não terão acesso às outras discussões do grupo.
     notify_members_info: Insira os nomes dos membros do grupo para notificá-los sobre esta conversa.
-    specified_voters_only_warning: Esta thread contém enquetes onde apenas pessoas selecionadas podem votar. Adicionar alguém aqui não lhe dará direito a voto — use "adicionar votantes" na enquete.
+    specified_voters_only_warning: "Esta discussão contém enquetes em que apenas pessoas selecionadas podem votar. Adicionar alguém com este formulário não dará a essa pessoa um voto, apenas a possibilidade de acompanhar e comentar. Se você quiser conceder votos, use \"adicionar votantes\" na enquete."
   poll_common_details_meta:
     opened: Aberto
     opens: Abre
