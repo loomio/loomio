@@ -89,6 +89,17 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
     assert_equal 1, json['topics'].count
   end
 
+  test "index returns total topic count in meta" do
+    sign_in @user
+    DiscussionService.create(params: { title: "Another discussion", group_id: @group.id }, actor: @admin)
+
+    get :index, params: { group_id: @group.id, topicable_type: 'Discussion', per: 1 }
+
+    json = JSON.parse(response.body)
+    assert_equal 1, json['topics'].count
+    assert_operator json['meta']['total'], :>, json['topics'].count
+  end
+
   test "index respects from param" do
     sign_in @user
 

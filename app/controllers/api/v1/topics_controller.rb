@@ -41,6 +41,7 @@ class Api::V1::TopicsController < Api::V1::RestfulController
     tags = Array(params[:tags]).reject(&:blank?)
     @topics = @topics.tagged(tags) if tags.any?
 
+    self.collection_count = @topics.count
     @topics = page_collection(@topics)
 
     respond_with_collection
