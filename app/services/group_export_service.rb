@@ -120,7 +120,7 @@ class GroupExportService
     topics = Topic.joins_topicables
                   .where(group_id: nil)
                   .where("discussions.author_id IN (:author_ids) OR polls.author_id IN (:author_ids)", author_ids: author_ids)
-    filename = "/tmp/#{DateTime.now.strftime("%Y-%m-%d_%H-%M-%S")}_invite-only-topics-for-#{group.name.parameterize}.json"
+    filename = export_filename_for("invite-only-topics-for-group-#{group_id.to_i}")
     ids = Hash.new { |hash, key| hash[key] = [] }
 
     File.open(filename, 'w') do |file|
