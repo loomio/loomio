@@ -35,15 +35,15 @@ const pollsToVoteOnCount = ref(0);
 const openGroups = ref([]);
 const openCounts = ref({});
 const showSettings = ref(false);
+const isSignedIn = ref(Session.isSignedIn());
+const canStartGroups = ref(AbilityService.canStartGroups());
 
 const { watchRecords } = useWatchRecords();
 
 // Computed properties
-const canStartGroups = computed(() => AbilityService.canStartGroups());
 const greySidebarLogo = computed(() =>
   AppConfig.features.app.gray_sidebar_logo_in_dark_mode && theme.global.name.value.startsWith("dark")
 );
-const isSignedIn = computed(() => Session.isSignedIn());
 const activeGroup = computed(() => group.value ? [group.value.id] : []);
 const logoUrl = computed(() => AppConfig.theme.app_logo_src);
 const showTemplateGallery = computed(() => AppConfig.features.app.template_gallery);
@@ -53,10 +53,16 @@ const urlFor = (model, action, params) => {
   return LmoUrlService.route({model, action, params});
 };
 
+const updateSessionState = () => {
+  user.value = Session.user();
+  isSignedIn.value = Session.isSignedIn();
+  canStartGroups.value = AbilityService.canStartGroups();
+};
+
 const openIfPinned = () => {
-  open.value = !!Session.isSignedIn() &&
+  open.value = !!isSignedIn.value &&
     display.lgAndUp.value &&
-    (Session.user().experiences['sidebar'] === undefined || Session.user().experiences['sidebar'] === true);
+    (user.value.experiences['sidebar'] === undefined || user.value.experiences['sidebar'] === true);
 };
 
 // Event listeners setup
@@ -123,6 +129,11 @@ const updatePollsToVoteOnCount = () => {
 }
 
 watchRecords({
+  collections: ['users'],
+  query: () => { updateSessionState() }
+});
+
+watchRecords({
   collections: ['memberships'],
   query: () => { updateGroups() }
 });
@@ -145,11 +156,12 @@ const fetchOnce = () => {
 };
 
 EventBus.$on('signedIn', u => {
-  user.value = Session.user();
+  updateSessionState();
   openIfPinned();
 });
 
 onMounted(() => {
+  updateSessionState();
   openIfPinned();
   if (open.value) fetchOnce();
 });
