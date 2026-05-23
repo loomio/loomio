@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::ReceivedEmailMailer < Views::EventMailer::EventLayout
+class Views::ReceivedEmailMailer < Views::EventMailer::Layout
 
   def initialize(event:, recipient:, event_key:)
     @event = event

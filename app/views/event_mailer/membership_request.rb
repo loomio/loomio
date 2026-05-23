@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::EventMailer::MembershipRequest < Views::EventMailer::EventLayout
+class Views::EventMailer::MembershipRequest < Views::EventMailer::Layout
 
   def initialize(event:, recipient:, event_key:, utm_hash: {})
     @event = event
