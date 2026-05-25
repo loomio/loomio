@@ -53,13 +53,13 @@ v-list-item.thread-preview.thread-preview__link(:to='urlFor(topic)')
   v-list-item-subtitle
     span.thread-preview__group-name(v-if="showGroupName") {{ topic.group().name }}
     mid-dot(v-if="showGroupName")
+    span.thread-preview__items-count(v-t="{path: 'thread_preview.items_count', args: {count: topic.itemsCount}}")
+    space
+    span.thread-preview__unread-count(v-if='topic.hasUnreadActivity()' v-t="{path: 'thread_preview.unread_count', args: {count: topic.unreadItemsCount()}}")
+    mid-dot
     template(v-if="isPoll")
       poll-common-closing-at(:poll="topicable" approximate)
     template(v-else)
-      span.thread-preview__items-count(v-t="{path: 'thread_preview.items_count', args: {count: topic.itemsCount}}")
-      space
-      span.thread-preview__unread-count(v-if='topic.hasUnreadActivity()' v-t="{path: 'thread_preview.unread_count', args: {count: topic.unreadItemsCount()}}")
-      mid-dot
       active-time-ago(:date="topic.lastActivityAt")
   template(v-slot:append)
     action-dock(v-if='mdAndUp' :actions="dockActions")

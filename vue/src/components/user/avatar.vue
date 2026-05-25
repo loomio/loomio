@@ -59,7 +59,7 @@ export default {
 </script>
 
 <template lang="pug">
-v-avatar(v-if="imageUrl" :title='user.name' :image="imageUrl" :size='size')
+v-avatar.user-avatar(v-if="imageUrl" :title='user.name' :image="imageUrl" :size='size' :to="!noLink && user.id && urlFor(user)")
 v-avatar(v-else :title='user.name' :size='size' :color="color")
   span.user-avatar--initials(v-if="user.avatarKind == 'initials'" :style="{'font-size': fontSize, width: size+'px', height: size+'px'}") {{user.avatarInitials}}
   common-icon(v-else :name="user.avatarKind")
