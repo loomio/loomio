@@ -184,6 +184,14 @@ module Dev::Scenarios::Discussion
     group = Group.create!(name: "Dirty Dancing Shoes", creator: patrick)
     group.add_admin! patrick
     discussion = DiscussionService.create(params: {group_id: group.id, title: "Let's go to the moon!", description: "A description for this discussion. Should this be rich?"}, actor: patrick)
+    PollService.create(params: {
+      poll_type: 'proposal',
+      title: 'Should we go to the moon?',
+      details: 'Poll details for the invitation email.',
+      poll_option_names: %w[agree abstain disagree block],
+      closing_at: 3.days.from_now,
+      topic_id: discussion.topic_id
+    }, actor: patrick)
     comment = Comment.new(parent: discussion, body: "body of the comment", author: patrick)
     CommentService.create(comment: comment, actor: patrick)
     users = TopicService.add_users(topic: discussion.topic, actor: patrick, user_ids: nil, emails: 'jen@example.com', audience: nil)
