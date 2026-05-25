@@ -565,6 +565,7 @@ ja:
     new_subgroup: 新しいサブグループ
     find_a_group: グループを探す
     direct_discussions: 直接の議論
+    unread_discussions: 未読のディスカッション
   strand_nav:
     newest: 最新
     oldest: 最古の

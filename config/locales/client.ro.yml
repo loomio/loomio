@@ -566,6 +566,7 @@ ro:
     new_subgroup: Subgrup nou
     find_a_group: Găsește un grup
     direct_discussions: Discuții directe
+    unread_discussions: Discuții necitite
   strand_nav:
     newest: Cel mai nou
     oldest: Cel mai vechi

@@ -566,6 +566,7 @@ tr:
     new_subgroup: Yeni alt grup
     find_a_group: Bir grup bulun
     direct_discussions: Doğrudan görüşmeler
+    unread_discussions: Okunmamış tartışmalar
   strand_nav:
     newest: En yeni
     oldest: En eski

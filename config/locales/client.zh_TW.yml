@@ -569,6 +569,7 @@ zh_TW:
     new_subgroup: 新小組
     find_a_group: 找個小組
     direct_discussions: 直接討論
+    unread_discussions: 未讀討論
   strand_nav:
     newest: 最新
     oldest: 最舊

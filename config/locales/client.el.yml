@@ -566,6 +566,7 @@ el:
     new_subgroup: Νέα υποομάδα
     find_a_group: Βρείτε μια ομάδα
     direct_discussions: Άμεσες συζητήσεις
+    unread_discussions: Μη αναγνωσμένες συζητήσεις
   strand_nav:
     newest: Νεότερο
     oldest: Το πιο παλιό

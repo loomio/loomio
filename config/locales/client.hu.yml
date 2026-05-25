@@ -568,6 +568,7 @@ hu:
     new_subgroup: Új alcsoport
     find_a_group: Csoport keresése
     direct_discussions: Közvetlen megbeszélések
+    unread_discussions: Olvasatlan beszélgetések
   strand_nav:
     newest: Legújabb
     oldest: Legrégebbi

@@ -566,6 +566,7 @@ he:
     new_subgroup: תת-קבוצה חדשה
     find_a_group: מצא קבוצה
     direct_discussions: דיונים ישירים
+    unread_discussions: דיונים שלא נקראו
   strand_nav:
     newest: החדש ביותר
     oldest: הוותיק ביותר

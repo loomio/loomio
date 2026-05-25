@@ -566,6 +566,7 @@ hr:
     new_subgroup: Nova podgrupa
     find_a_group: Pronađite grupu
     direct_discussions: Izravne rasprave
+    unread_discussions: Nepročitane rasprave
   strand_nav:
     newest: Najnoviji
     oldest: Najstariji

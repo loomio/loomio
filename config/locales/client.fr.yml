@@ -576,6 +576,7 @@ fr:
     new_subgroup: Nouveau sous-groupe
     find_a_group: Trouver un groupe
     direct_discussions: Discussions directes
+    unread_discussions: Discussions non lues
   strand_nav:
     newest: Les plus récents
     oldest: Les plus anciens

@@ -568,6 +568,7 @@ es:
     new_subgroup: Nuevo subgrupo
     find_a_group: Encuentra un grupo
     direct_discussions: Discusiones directas
+    unread_discussions: Discusiones no leídas
   strand_nav:
     newest: El más nuevo
     oldest: El más viejo

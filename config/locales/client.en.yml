@@ -592,6 +592,7 @@ en:
     all_groups: All groups
     invite_only_discussions: Invite-only discussions
     direct_discussions: Direct discussions
+    unread_discussions: Unread discussions
     unread_discussions_count: Unread discussions (%{count})
     new_group: New group
     new_subgroup: New subgroup

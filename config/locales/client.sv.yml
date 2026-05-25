@@ -566,6 +566,7 @@ sv:
     new_subgroup: Ny undergrupp
     find_a_group: Hitta en grupp
     direct_discussions: Direkta diskussioner
+    unread_discussions: Olästa diskussioner
   strand_nav:
     newest: Nyaste
     oldest: Äldst

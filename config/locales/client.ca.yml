@@ -568,6 +568,7 @@ ca:
     new_subgroup: Nou subgrup
     find_a_group: Troba un grup
     direct_discussions: Discussions directes
+    unread_discussions: Discussions no llegides
   strand_nav:
     newest: Més recent
     oldest: Més antic

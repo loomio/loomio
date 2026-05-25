@@ -568,6 +568,7 @@ nl_NL:
     new_subgroup: Nieuwe subgroep
     find_a_group: Zoek een groep
     direct_discussions: Directe discussies
+    unread_discussions: Ongelezen discussies
   strand_nav:
     newest: Nieuwste
     oldest: Oudste

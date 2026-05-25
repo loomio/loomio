@@ -194,7 +194,9 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
       v-list-item(to="/dashboard/polls_to_vote_on")
         v-list-item-title(:class="{'text-medium-emphasis': pollsToVoteOnCount === 0}") {{ $t('dashboard_page.polls_to_vote_on_count', {count: pollsToVoteOnCount}) }}
       v-list-item(to="/inbox")
-        v-list-item-title(:class="{'text-medium-emphasis': unreadTopicCounts['total'] === 0}") {{ $t('sidebar.unread_discussions_count', {count: unreadTopicCounts['total']}) }}
+        v-list-item-title(:class="{'text-medium-emphasis': unreadTopicCounts['total'] === 0}")
+          span(v-if="unreadTopicCounts['total']" v-t="{path: 'sidebar.unread_discussions_count', args: {count: unreadTopicCounts['total']}}")
+          span(v-else v-t="'sidebar.unread_discussions'")
       v-list-item.sidebar__list-item-button--private(to="/dashboard/direct_discussions")
         v-list-item-title(:class="{'text-medium-emphasis': !unreadTopicCounts['direct']}")
           span(v-t="'sidebar.direct_discussions'")

@@ -577,6 +577,7 @@ zh_CN:
       user_list: 用户操作
     find_a_group: 找个小组
     direct_discussions: 直接讨论
+    unread_discussions: 未读讨论
   strand_nav:
     jump_to: 跳转至
     timeline: 时间线
