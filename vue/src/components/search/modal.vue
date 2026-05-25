@@ -49,7 +49,7 @@ export default {
         {title: I18n.global.t('search_modal.all_content'), value: null},
         {title: I18n.global.t('group_page.discussions'), value: 'Discussion'},
         {title: I18n.global.t('navbar.search.comments'), value: 'Comment'},
-        {title: I18n.global.t('group_page.decisions'), value: 'Poll'},
+        {title: I18n.global.t('group_page.polls'), value: 'Poll'},
         {title: I18n.global.t('poll_common.votes'), value: 'Stance'},
         {title: I18n.global.t('poll_common.outcomes'), value: 'Outcome'},
       ],
