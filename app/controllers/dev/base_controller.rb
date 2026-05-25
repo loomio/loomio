@@ -23,7 +23,14 @@ class Dev::BaseController < ApplicationController
     render template: 'dev/main/last_email', layout: false
   end
 
+  after_action :apply_theme_param
+
   private
+
+  def apply_theme_param
+    return unless current_user && params[:theme].present?
+    current_user.update_column(:experiences, current_user.experiences.merge('theme' => params[:theme]))
+  end
 
   def redirect_to(options = {}, response_options = {})
     super
