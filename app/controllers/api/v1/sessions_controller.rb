@@ -14,6 +14,10 @@ class Api::V1::SessionsController < Devise::SessionsController
       user.update_columns(bounces_count: 0, complaints_count: 0) if user.bounces_count > 0 || user.complaints_count > 0
       render json: Boot::User.new(user, root_url: URI(root_url).origin).payload
       EventBus.broadcast('session_create', user)
+      handle_pending_actions(user)
+      # if pending_login_token
+      #   LoginToken.where(user_id: user.id, code: pending_login_token.code).update_all(used: true)
+      # end
     else
       render json: { errors: failure_message }, status: 401
     end
