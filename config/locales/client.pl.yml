@@ -630,6 +630,7 @@ pl:
     search_files_short: Szukaj plików
     search_subgroups_short: Wyszukaj podgrupy
     search_discussions_in_group: Wyszukaj dyskusje w %{name}
+    thread_nav: Menu wątku
   user_dropdown:
     pin_sidebar: Przypnij pasek boczny
     unpin_sidebar: Odepnij pasek boczny
@@ -864,6 +865,7 @@ pl:
     direct_discussion: Bezpośrednia dyskusja
     direct_discussion_hint: Dyskusja bezpośrednia jest widoczna tylko dla zaproszonych przez Ciebie osób. Nie pojawi się na liście dyskusyjnej żadnej grupy — znajdziesz ją na swojej stronie „Dyskusje bezpośrednie”.
     recommended_poll_templates: Zalecane szablony ankiet
+    edit_discussion_context: Edytuj kontekst dyskusji
   announcement:
     send_discussion: Wyślij wątek
     send_group: Zaproś ludzi do %{name}
@@ -1973,6 +1975,7 @@ pl:
     start_a_poll: Rozpocznij ankietę
     export_blt: Karty do głosowania eksportowego (BLT)
     status: Status
+    your_vote_is_requested: Proszę o Twój głos
   poll_common_attachment_form:
     label: Załączniki
   poll_common_add_option:
@@ -2830,7 +2833,7 @@ pl:
   strand_members_list:
     notify_members_or_invite_guests_info: Powiadom członków grupy po imieniu lub zaproś osoby spoza grupy, podając adres e-mail. Zaproszeni goście mogą uczestniczyć w tym wątku, ale nie będą mieli dostępu do innych wątków grupy.
     notify_members_info: Wpisz nazwy członków grupy, aby powiadomić ich o tym wątku.
-    specified_voters_only_warning: "W tym wątku znajdują się ankiety, w których głosować mogą tylko wybrane osoby. Dodanie kogoś za pomocą tego formularza nie da mu głosu, a jedynie możliwość śledzenia dyskusji i komentowania. Jeśli chcesz przydzielić głosy, użyj w ankiecie opcji \"dodaj głosujących\"."
+    specified_voters_only_warning: W tym wątku znajdują się ankiety, w których głosować mogą tylko wybrane osoby. Dodanie kogoś za pomocą tego formularza nie da mu głosu, a jedynie możliwość śledzenia dyskusji i komentowania. Jeśli chcesz przydzielić głosy, użyj w ankiecie opcji "dodaj głosujących".
   poll_common_details_meta:
     opened: Otwierany
     opens: Otwiera się

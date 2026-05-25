@@ -630,6 +630,7 @@ ca:
     search_files_short: Cerca fitxers
     search_subgroups_short: Cerca subgrups
     search_discussions_in_group: Cerca debats a %{name}
+    thread_nav: Menú de fils
   user_dropdown:
     pin_sidebar: Fixa la barra lateral
     unpin_sidebar: Deixa de fixar la barra lateral
@@ -864,6 +865,7 @@ ca:
     direct_discussion: Discussió directa
     direct_discussion_hint: Una discussió directa només és visible per a les persones específiques que convideu. No apareixerà a la llista de discussió de cap grup; la podeu trobar a la pàgina de Discusions directes.
     recommended_poll_templates: Plantilles d'enquesta recomanades
+    edit_discussion_context: Edita el context de la discussió
   announcement:
     send_discussion: Envia fil
     send_group: Convida gent a %{name}
@@ -1973,6 +1975,7 @@ ca:
     start_a_poll: Inicia una enquesta
     export_blt: Exportació de paperetes (BLT)
     status: Estat
+    your_vote_is_requested: Es demana el vostre vot
   poll_common_attachment_form:
     label: Adjunts
   poll_common_add_option:
@@ -2830,7 +2833,7 @@ ca:
   strand_members_list:
     notify_members_or_invite_guests_info: Notifica els membres del grup pel seu nom o convida els que no són membres per correu electrònic. Els convidats poden participar en aquest fil però no tindran accés a altres fils del grup.
     notify_members_info: Introduïu els noms dels membres del grup per notificar-los sobre aquest fil.
-    specified_voters_only_warning: "Aquest fil té enquestes on només poden votar persones seleccionades. Afegir algú amb aquest formulari no li donarà vot, només la possibilitat de seguir la conversa i comentar. Si voleu assignar vots, feu servir \"afegir votants\" a l'enquesta."
+    specified_voters_only_warning: Aquest fil té enquestes on només poden votar persones seleccionades. Afegir algú amb aquest formulari no li donarà vot, només la possibilitat de seguir la conversa i comentar. Si voleu assignar vots, feu servir "afegir votants" a l'enquesta.
   poll_common_details_meta:
     opened: Obert
     opens: Obreix

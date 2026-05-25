@@ -628,6 +628,7 @@ tr:
     search_files_short: Dosyaları ara
     search_subgroups_short: Alt grupları ara
     search_discussions_in_group: "%{name} içindeki tartışmaları ara"
+    thread_nav: Konu menüsü
   user_dropdown:
     pin_sidebar: Kenar çubuğunu sabitle
     unpin_sidebar: Kenar çubuğunun sabitlemesini kaldır
@@ -862,6 +863,7 @@ tr:
     direct_discussion: Doğrudan görüşme
     direct_discussion_hint: Doğrudan yapılan bir tartışma yalnızca davet ettiğiniz belirli kişiler tarafından görülebilir. Herhangi bir grubun tartışma listesinde görünmez; onu Doğrudan Tartışmalar sayfanızda bulabilirsiniz.
     recommended_poll_templates: Önerilen anket şablonları
+    edit_discussion_context: Tartışma bağlamını düzenle
   announcement:
     send_discussion: Konuyu gönder
     send_group: İnsanları %{name}'ye davet edin
@@ -1950,6 +1952,7 @@ tr:
     start_a_poll: Anket başlat
     export_blt: İhracat oyları (BLT)
     status: Durum
+    your_vote_is_requested: Oylarınız rica olunur.
   poll_common_attachment_form:
     label: Ekler
   poll_common_add_option:
@@ -2803,7 +2806,7 @@ tr:
   strand_members_list:
     notify_members_or_invite_guests_info: Grup üyelerine isimleriyle bildirim gönderin veya üye olmayanları e-posta adresleriyle davet edin. Davet edilen misafirler bu tartışmaya katılabilir ancak diğer grup tartışmalarına erişemezler.
     notify_members_info: Bu konu hakkında bilgilendirmek istediğiniz grup üyelerinin adlarını girin.
-    specified_voters_only_warning: "Bu başlıkta yalnızca seçili kişilerin oy kullanabileceği anketler bulunmaktadır. Bu formla birini eklemek ona oy hakkı vermez, yalnızca takip etme ve yorum yapma olanağı sağlar. Oy hakkı vermek istiyorsanız ankette \"oy veren ekle\" seçeneğini kullanın."
+    specified_voters_only_warning: Bu başlıkta yalnızca seçili kişilerin oy kullanabileceği anketler bulunmaktadır. Bu formla birini eklemek ona oy hakkı vermez, yalnızca takip etme ve yorum yapma olanağı sağlar. Oy hakkı vermek istiyorsanız ankette "oy veren ekle" seçeneğini kullanın.
   poll_common_details_meta:
     opened: Açıldı
     opens: Açılıyor

@@ -638,6 +638,7 @@ fr:
     search_files_short: Rechercher des fichiers
     search_subgroups_short: Rechercher des sous-groupes
     search_discussions_in_group: Rechercher des discussions dans %{name}
+    thread_nav: Menu du fil de discussion
   user_dropdown:
     pin_sidebar: Épingler la barre latérale
     unpin_sidebar: Dés-épingler la barre latérale
@@ -872,6 +873,7 @@ fr:
     direct_discussion: Discussion directe
     direct_discussion_hint: Une conversation privée n'est visible que par les personnes que vous invitez. Elle n'apparaît pas dans la liste des discussions d'un groupe ; vous la trouverez sur la page « Conversations privées ».
     recommended_poll_templates: Modèles de sondages recommandés
+    edit_discussion_context: Modifier le contexte de la discussion
   announcement:
     send_discussion: Envoyer la discussion
     send_group: Inviter des personnes à %{name}
@@ -1992,6 +1994,7 @@ fr:
     start_a_poll: Lancer un sondage
     export_blt: Bulletins d'exportation (BLT)
     status: Statut
+    your_vote_is_requested: Votre vote est demandé
   poll_common_attachment_form:
     label: Pièces jointes
   poll_common_add_option:
@@ -2847,7 +2850,7 @@ fr:
   strand_members_list:
     notify_members_or_invite_guests_info: Prévenez les membres du groupe par leur nom ou invitez les personnes extérieures par leur adresse courriel. Les invités pourront participer à cette discussion, mais n'auront pas accès aux autres discussions du groupe.
     notify_members_info: Saisissez les noms des membres du groupe pour les informer de cette discussion.
-    specified_voters_only_warning: "Ce fil de discussion contient des sondages où seules certaines personnes peuvent voter. Ajouter quelqu'un avec ce formulaire ne lui donnera pas de vote, seulement la possibilité de suivre la discussion et de commenter. Si vous souhaitez attribuer des votes, utilisez \"Ajouter des votants\" dans le sondage."
+    specified_voters_only_warning: Ce fil de discussion contient des sondages où seules certaines personnes peuvent voter. Ajouter quelqu'un avec ce formulaire ne lui donnera pas de vote, seulement la possibilité de suivre la discussion et de commenter. Si vous souhaitez attribuer des votes, utilisez "Ajouter des votants" dans le sondage.
   poll_common_details_meta:
     opened: Ouvert
     opens: S'ouvre

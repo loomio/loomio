@@ -630,6 +630,7 @@ es:
     search_files_short: Buscar archivos
     search_subgroups_short: Buscar subgrupos
     search_discussions_in_group: Buscar discusiones en %{name}
+    thread_nav: Menú de hilos
   user_dropdown:
     pin_sidebar: Anclar barra lateral
     unpin_sidebar: Desanclar barra lateral
@@ -864,6 +865,7 @@ es:
     direct_discussion: Discusión directa
     direct_discussion_hint: Una discusión directa solo es visible para las personas que invites. No aparecerá en la lista de discusiones de ningún grupo; puedes encontrarla en tu página de Discusiones directas.
     recommended_poll_templates: Plantillas de encuesta recomendadas
+    edit_discussion_context: Editar el contexto de la discusión
   announcement:
     send_discussion: Manda hilo
     send_group: Invita a gente a %{name}
@@ -1984,6 +1986,7 @@ es:
     start_a_poll: Iniciar una encuesta
     export_blt: Papeletas de exportación (BLT)
     status: Estado
+    your_vote_is_requested: Se solicita su voto.
   poll_common_attachment_form:
     label: Adjuntos
   poll_common_add_option:
@@ -2839,7 +2842,7 @@ es:
   strand_members_list:
     notify_members_or_invite_guests_info: Notifique a los miembros del grupo por su nombre o invite a quienes no sean miembros por su dirección de correo electrónico. Los invitados podrán participar en este hilo, pero no tendrán acceso a otros hilos del grupo.
     notify_members_info: Introduce los nombres de los miembros del grupo para notificarles sobre este hilo.
-    specified_voters_only_warning: "Este hilo contiene encuestas donde solo pueden votar personas seleccionadas. Agregar a alguien con este formulario no le dará un voto, solo la posibilidad de seguir la conversación y comentar. Si quieres emitir votos, usa \"agregar votantes\" en la encuesta."
+    specified_voters_only_warning: Este hilo contiene encuestas donde solo pueden votar personas seleccionadas. Agregar a alguien con este formulario no le dará un voto, solo la posibilidad de seguir la conversación y comentar. Si quieres emitir votos, usa "agregar votantes" en la encuesta.
   poll_common_details_meta:
     opened: Abierto
     opens: Abre

@@ -58,7 +58,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
-    page.click('.thread-sidebar .action-dock__button--edit_thread')
+    page.click('.context-panel .action-dock__button--edit_thread')
     page.fillIn('.discussion-form__title-input input', 'better title')
     page.fillIn('.discussion-form .lmo-textarea textarea', 'improved description')
     page.click('.discussion-form__submit')

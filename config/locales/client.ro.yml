@@ -628,6 +628,7 @@ ro:
     search_files_short: Căutați fișiere
     search_subgroups_short: Căutați subgrupuri
     search_discussions_in_group: Caută discuții în %{name}
+    thread_nav: Meniu de fire de discuție
   user_dropdown:
     pin_sidebar: Fixați bara laterală
     unpin_sidebar: Anulați fixarea barei laterale
@@ -862,6 +863,7 @@ ro:
     direct_discussion: Discuție directă
     direct_discussion_hint: O discuție directă este vizibilă doar persoanelor specifice pe care le invitați. Nu va apărea în lista de discuții a niciunui grup — o puteți găsi pe pagina Discuții directe.
     recommended_poll_templates: Șabloane de sondaj recomandate
+    edit_discussion_context: Editați contextul discuției
   announcement:
     send_discussion: Trimiteți firul
     send_group: Invită persoane la %{name}
@@ -1950,6 +1952,7 @@ ro:
     start_a_poll: Începeți un sondaj
     export_blt: Buletine de vot pentru export (BLT)
     status: Stare
+    your_vote_is_requested: Votul dumneavoastră este solicitat
   poll_common_attachment_form:
     label: Atașamente
   poll_common_add_option:
@@ -2803,7 +2806,7 @@ ro:
   strand_members_list:
     notify_members_or_invite_guests_info: Anunță membrii grupului pe nume sau invită persoane care nu sunt membre prin adresa de e-mail. Persoanele invitate pot participa la acest fir de discuție, dar nu vor avea acces la alte fire de discuție ale grupului.
     notify_members_info: Introduceți numele membrilor grupului pentru a-i notifica despre acest fir de discuție.
-    specified_voters_only_warning: "Acest fir de discuție conține sondaje în care pot vota doar anumite persoane. Adăugarea cuiva cu acest formular nu îi va oferi un vot, ci doar posibilitatea de a urmări discuția și de a comenta. Dacă vrei să aloci voturi, folosește \"adăugați votanți\" în sondaj."
+    specified_voters_only_warning: Acest fir de discuție conține sondaje în care pot vota doar anumite persoane. Adăugarea cuiva cu acest formular nu îi va oferi un vot, ci doar posibilitatea de a urmări discuția și de a comenta. Dacă vrei să aloci voturi, folosește "adăugați votanți" în sondaj.
   poll_common_details_meta:
     opened: Deschis
     opens: Se deschide

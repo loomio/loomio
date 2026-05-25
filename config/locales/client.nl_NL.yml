@@ -630,6 +630,7 @@ nl_NL:
     search_files_short: Zoek bestanden
     search_subgroups_short: Zoek subgroepen
     search_discussions_in_group: Zoek discussies in %{name}
+    thread_nav: Draadmenu
   user_dropdown:
     pin_sidebar: Zijbalk vastzetten
     unpin_sidebar: Zijbalk losmaken
@@ -864,6 +865,7 @@ nl_NL:
     direct_discussion: Directe discussie
     direct_discussion_hint: Een privégesprek is alleen zichtbaar voor de specifieke personen die je uitnodigt. Het verschijnt niet in de gesprekslijst van een groep, maar je vindt het op je pagina met privégesprekken.
     recommended_poll_templates: Aanbevolen enquêtesjablonen
+    edit_discussion_context: Discussiecontext bewerken
   announcement:
     send_discussion: Bord verzenden
     send_group: Nodig mensen uit voor %{name}
@@ -1973,6 +1975,7 @@ nl_NL:
     start_a_poll: Start een enquête
     export_blt: Export stembiljetten (BLT)
     status: Status
+    your_vote_is_requested: Uw stem wordt gevraagd.
   poll_common_attachment_form:
     label: Bijlagen
   poll_common_add_option:
@@ -2830,7 +2833,7 @@ nl_NL:
   strand_members_list:
     notify_members_or_invite_guests_info: Stel groepsleden persoonlijk op de hoogte of nodig niet-leden uit via hun e-mailadres. Uitgenodigde gasten kunnen deelnemen aan deze discussie, maar hebben geen toegang tot andere groepsdiscussies.
     notify_members_info: Voer de namen van de groepsleden in om hen over dit onderwerp te informeren.
-    specified_voters_only_warning: "In dit forumonderwerp vind je peilingen waar alleen geselecteerde personen kunnen stemmen. Iemand toevoegen met dit formulier geeft die persoon geen stem, maar alleen de mogelijkheid om mee te volgen en te reageren. Als je stemmen wilt toekennen, gebruik dan \"stemmers toevoegen\" in de peiling."
+    specified_voters_only_warning: In dit forumonderwerp vind je peilingen waar alleen geselecteerde personen kunnen stemmen. Iemand toevoegen met dit formulier geeft die persoon geen stem, maar alleen de mogelijkheid om mee te volgen en te reageren. Als je stemmen wilt toekennen, gebruik dan "stemmers toevoegen" in de peiling.
   poll_common_details_meta:
     opened: Geopend
     opens: Opent

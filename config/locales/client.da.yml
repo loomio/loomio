@@ -628,6 +628,7 @@ da:
     search_files_short: Søg filer
     search_subgroups_short: Søg undergrupper
     search_discussions_in_group: Søg i diskussioner i %{name}
+    thread_nav: Trådmenu
   user_dropdown:
     pin_sidebar: Fastgør sidebjælken
     unpin_sidebar: Frigør sidebjælken
@@ -862,6 +863,7 @@ da:
     direct_discussion: Direkte diskussion
     direct_discussion_hint: En direkte diskussion er kun synlig for de specifikke personer, du inviterer. Den vises ikke på nogen gruppers diskussionsliste – du kan finde den på din side for direkte diskussioner.
     recommended_poll_templates: Anbefalede skabeloner til afstemninger
+    edit_discussion_context: Rediger diskussionskontekst
   announcement:
     send_discussion: Send tråd
     send_group: Inviter folk til %{name}
@@ -1950,6 +1952,7 @@ da:
     start_a_poll: Start en afstemning
     export_blt: Eksport af stemmesedler (BLT)
     status: Status
+    your_vote_is_requested: Din stemme er anmodet
   poll_common_attachment_form:
     label: Vedhæftede filer
   poll_common_add_option:
@@ -2803,7 +2806,7 @@ da:
   strand_members_list:
     notify_members_or_invite_guests_info: Giv gruppemedlemmer besked ved navn, eller inviter ikke-medlemmer via e-mailadresse. Inviterede gæster kan deltage i denne tråd, men har ikke adgang til andre gruppetråde.
     notify_members_info: Indtast navnene på gruppemedlemmer for at give dem besked om denne tråd.
-    specified_voters_only_warning: "Denne tråd har afstemninger, hvor kun udvalgte personer kan stemme. Hvis du tilføjer nogen med denne formular, får de ikke en stemme, men kun mulighed for at følge med og kommentere. Hvis du vil udstede stemmer, skal du bruge \"tilføj vælgere\" i afstemningen."
+    specified_voters_only_warning: Denne tråd har afstemninger, hvor kun udvalgte personer kan stemme. Hvis du tilføjer nogen med denne formular, får de ikke en stemme, men kun mulighed for at følge med og kommentere. Hvis du vil udstede stemmer, skal du bruge "tilføj vælgere" i afstemningen.
   poll_common_details_meta:
     opened: Åbnet
     opens: Åbner

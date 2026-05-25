@@ -627,6 +627,7 @@ ja:
     search_files_short: ファイルを検索
     search_subgroups_short: サブグループを検索
     search_discussions_in_group: "%{name} 内のディスカッションを検索"
+    thread_nav: スレッドメニュー
   user_dropdown:
     pin_sidebar: サイドバーをピン留めする
     unpin_sidebar: サイドバーの固定を解除する
@@ -861,6 +862,7 @@ ja:
     direct_discussion: 直接の議論
     direct_discussion_hint: ダイレクトディスカッションは、招待した特定の人だけが閲覧できます。グループのディスカッションリストには表示されません。ダイレクトディスカッションページで確認できます。
     recommended_poll_templates: 推奨される投票テンプレート
+    edit_discussion_context: ディスカッションのコンテキストを編集する
   announcement:
     send_discussion: スレッドの送信
     send_group: 他の人を %{name} に招待します
@@ -1949,6 +1951,7 @@ ja:
     start_a_poll: 投票を開始する
     export_blt: 投票用紙の輸出（BLT）
     status: 状態
+    your_vote_is_requested: あなたの投票をお願いします
   poll_common_attachment_form:
     label: 添付ファイル
   poll_common_add_option:
@@ -2802,7 +2805,7 @@ ja:
   strand_members_list:
     notify_members_or_invite_guests_info: グループメンバーには名前で通知するか、非メンバーにはメールアドレスで招待してください。招待されたゲストはこのスレッドに参加できますが、他のグループスレッドにはアクセスできません。
     notify_members_info: このスレッドについて通知するグループメンバーの名前を入力してください。
-    specified_voters_only_warning: "このスレッドには、投票できる人が限定されているアンケートがあります。このフォームで誰かを追加しても投票権は付与されず、経過を見守ってコメントできるようになるだけです。投票権を付与したい場合は、アンケートの\"投票者を追加\"を使用してください。"
+    specified_voters_only_warning: このスレッドには、投票できる人が限定されているアンケートがあります。このフォームで誰かを追加しても投票権は付与されず、経過を見守ってコメントできるようになるだけです。投票権を付与したい場合は、アンケートの"投票者を追加"を使用してください。
   poll_common_details_meta:
     opened: オープンしました
     opens: 開く

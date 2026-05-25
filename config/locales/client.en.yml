@@ -927,6 +927,7 @@ en:
     new_discussion_title: Start a discussion
     moving_items_title: Move items to another discussion
     edit_discussion_title: Edit discussion
+    edit_discussion_context: Edit discussion context
     group_label: Group
     group_placeholder: Select a group
     title_label: Title

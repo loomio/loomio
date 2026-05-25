@@ -628,6 +628,7 @@ sv:
     search_files_short: Sök efter filer
     search_subgroups_short: Sök undergrupper
     search_discussions_in_group: Sök diskussioner i %{name}
+    thread_nav: Trådmeny
   user_dropdown:
     pin_sidebar: Fäst sidofältet
     unpin_sidebar: Lossa sidofältet
@@ -862,6 +863,7 @@ sv:
     direct_discussion: Direkt diskussion
     direct_discussion_hint: En direkt diskussion är bara synlig för de specifika personer du bjuder in. Den kommer inte att visas i någon grupps diskussionslista – du hittar den på din sida för direkta diskussioner.
     recommended_poll_templates: Rekommenderade omröstningsmallar
+    edit_discussion_context: Redigera diskussionskontext
   announcement:
     send_discussion: Skicka tråd
     send_group: Bjud in personer till %{name}
@@ -1950,6 +1952,7 @@ sv:
     start_a_poll: Starta en omröstning
     export_blt: Exportvalsedlar (BLT)
     status: Status
+    your_vote_is_requested: Din röst begärs
   poll_common_attachment_form:
     label: Bilagor
   poll_common_add_option:
@@ -2803,7 +2806,7 @@ sv:
   strand_members_list:
     notify_members_or_invite_guests_info: Meddela gruppmedlemmar med namn eller bjud in icke-medlemmar via e-postadress. Inbjudna gäster kan delta i den här tråden men har inte tillgång till andra grupptrådar.
     notify_members_info: Ange namnen på gruppmedlemmarna för att meddela dem om den här tråden.
-    specified_voters_only_warning: "Den här tråden har omröstningar där endast utvalda personer kan rösta. Att lägga till någon med det här formuläret ger dem ingen röst, bara möjlighet att följa med och kommentera. Om du vill tilldela röster använder du \"lägg till väljare\" i omröstningen."
+    specified_voters_only_warning: Den här tråden har omröstningar där endast utvalda personer kan rösta. Att lägga till någon med det här formuläret ger dem ingen röst, bara möjlighet att följa med och kommentera. Om du vill tilldela röster använder du "lägg till väljare" i omröstningen.
   poll_common_details_meta:
     opened: Öppnad
     opens: Öppnar

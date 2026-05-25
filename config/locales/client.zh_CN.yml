@@ -628,6 +628,7 @@ zh_CN:
     close_sidebar: 关闭侧边栏
     logo_title: 首页
     group_and_subgroups: "%{group} 和子组"
+    thread_nav: 主题菜单
   user_dropdown:
     pin_sidebar: 别针侧边栏
     unpin_sidebar: 取消固定侧边栏
@@ -901,6 +902,7 @@ zh_CN:
     direct_discussion: 直接讨论
     direct_discussion_hint: 直接讨论仅对您邀请的特定人员可见。它不会出现在任何群组的讨论列表中——您可以在“直接讨论”页面找到它。
     recommended_poll_templates: 推荐的投票模板
+    edit_discussion_context: 编辑讨论上下文
   announcement:
     send_discussion: 发送帖子
     send_group: 邀请人们加入 %{name}
@@ -2021,6 +2023,7 @@ zh_CN:
     start_a_poll: 发起投票
     export_blt: 出口选票（BLT）
     status: 地位
+    your_vote_is_requested: 请您投票
   poll_common_attachment_form:
     label: 附件
   poll_common_add_option:
@@ -2718,7 +2721,7 @@ zh_CN:
   strand_members_list:
     notify_members_or_invite_guests_info: 可以通过群组成员姓名通知他们，或者通过电子邮件地址邀请非成员。受邀者可以参与此讨论串，但无法访问群组的其他讨论串。
     notify_members_info: 输入群组成员姓名，即可通知他们此主题。
-    specified_voters_only_warning: "本帖中的投票仅限特定人员参与。使用此表单添加某人并不会授予其投票权，只会让其能够关注进展并发表评论。如果你想分配投票权，请使用投票页面上的\"添加投票者\"。"
+    specified_voters_only_warning: 本帖中的投票仅限特定人员参与。使用此表单添加某人并不会授予其投票权，只会让其能够关注进展并发表评论。如果你想分配投票权，请使用投票页面上的"添加投票者"。
   poll_common_details_meta:
     opened: 已打开
     opens: 打开

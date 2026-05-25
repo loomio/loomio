@@ -628,6 +628,7 @@ hr:
     search_files_short: Traži datoteke
     search_subgroups_short: Traži podgrupe
     search_discussions_in_group: Pretraži rasprave u %{name}
+    thread_nav: Izbornik niti
   user_dropdown:
     pin_sidebar: Prikvači bočnu traku
     unpin_sidebar: Otkvači bočnu traku
@@ -862,6 +863,7 @@ hr:
     direct_discussion: Izravna rasprava
     direct_discussion_hint: Izravna rasprava vidljiva je samo određenim osobama koje pozovete. Neće se pojaviti na popisu rasprava nijedne grupe — možete je pronaći na svojoj stranici Izravne rasprave.
     recommended_poll_templates: Preporučeni predlošci anketa
+    edit_discussion_context: Uredi kontekst rasprave
   announcement:
     send_discussion: Pošalji nit
     send_group: Pozovi ljude u %{name}
@@ -1950,6 +1952,7 @@ hr:
     start_a_poll: Započni anketu
     export_blt: Izvoz glasačkih listića (BLT)
     status: Status
+    your_vote_is_requested: Traži se vaš glas
   poll_common_attachment_form:
     label: Prilozi
   poll_common_add_option:
@@ -2803,7 +2806,7 @@ hr:
   strand_members_list:
     notify_members_or_invite_guests_info: Obavijestite članove grupe po imenu ili pozovite nečlanove putem adrese e-pošte. Pozvani gosti mogu sudjelovati u ovoj temi, ali neće imati pristup drugim temama grupe.
     notify_members_info: Unesite imena članova grupe kako biste ih obavijestili o ovoj temi.
-    specified_voters_only_warning: "Ova tema ima ankete u kojima samo odabrane osobe mogu glasati. Dodavanje nekoga ovim obrascem neće mu dati glas, nego samo mogućnost praćenja i komentiranja. Ako želite dodijeliti glasove, u anketi koristite \"dodaj glasače\"."
+    specified_voters_only_warning: Ova tema ima ankete u kojima samo odabrane osobe mogu glasati. Dodavanje nekoga ovim obrascem neće mu dati glas, nego samo mogućnost praćenja i komentiranja. Ako želite dodijeliti glasove, u anketi koristite "dodaj glasače".
   poll_common_details_meta:
     opened: Otvoreno
     opens: Otvara se

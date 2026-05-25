@@ -636,6 +636,7 @@ de:
     search_files_short: Suche nach Dateien
     search_subgroups_short: Untergruppen durchsuchen
     search_discussions_in_group: Suche Diskussionen in %{name}
+    thread_nav: Themenmenü
   user_dropdown:
     pin_sidebar: Seitenleiste verankern
     unpin_sidebar: Seitenleiste lösen
@@ -870,6 +871,7 @@ de:
     direct_discussion: Direkte Diskussion
     direct_discussion_hint: Eine Direktkonversation ist nur für die von Ihnen eingeladenen Personen sichtbar. Sie erscheint nicht in der Diskussionsliste einer Gruppe, sondern auf Ihrer Seite „Direktdiskussionen“.
     recommended_poll_templates: Empfohlene Umfragevorlagen
+    edit_discussion_context: Diskussionskontext bearbeiten
   announcement:
     send_discussion: Diskussion teilen
     send_group: Personen zu %{name} einladen
@@ -1981,6 +1983,7 @@ de:
     start_a_poll: Starte eine Umfrage
     export_blt: Wahlzettel exportieren (BLT)
     status: Status
+    your_vote_is_requested: Ihre Stimme wird erbeten.
   poll_common_attachment_form:
     label: Arbeitsmaterialien
   poll_common_add_option:
@@ -2838,7 +2841,7 @@ de:
   strand_members_list:
     notify_members_or_invite_guests_info: Benachrichtigen Sie Gruppenmitglieder namentlich oder laden Sie Nicht-Mitglieder per E-Mail-Adresse ein. Eingeladene Gäste können an diesem Thread teilnehmen, haben aber keinen Zugriff auf andere Gruppenthreads.
     notify_members_info: Geben Sie die Namen der Gruppenmitglieder ein, um sie über diesen Thread zu benachrichtigen.
-    specified_voters_only_warning: "In diesem Thread gibt es Umfragen, an denen nur ausgewählte Personen abstimmen können. Wenn Sie jemanden mit diesem Formular hinzufügen, erhält diese Person keine Stimme, sondern nur die Möglichkeit, mitzulesen und zu kommentieren. Wenn Sie Stimmen vergeben möchten, verwenden Sie in der Umfrage \"Wähler hinzufügen\"."
+    specified_voters_only_warning: In diesem Thread gibt es Umfragen, an denen nur ausgewählte Personen abstimmen können. Wenn Sie jemanden mit diesem Formular hinzufügen, erhält diese Person keine Stimme, sondern nur die Möglichkeit, mitzulesen und zu kommentieren. Wenn Sie Stimmen vergeben möchten, verwenden Sie in der Umfrage "Wähler hinzufügen".
   poll_common_details_meta:
     opened: Geöffnet
     opens: Öffnet

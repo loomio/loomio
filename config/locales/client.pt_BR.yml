@@ -638,6 +638,7 @@ pt_BR:
     search_files_short: Pesquisar arquivos
     search_subgroups_short: Pesquisar subgrupos
     search_discussions_in_group: Pesquisar discussões em %{name}
+    thread_nav: Menu de tópicos
   user_dropdown:
     pin_sidebar: Fixar a barra lateral
     unpin_sidebar: Desafixar a barra lateral
@@ -872,6 +873,7 @@ pt_BR:
     direct_discussion: Discussão direta
     direct_discussion_hint: Uma conversa direta só é visível para as pessoas específicas que você convida. Ela não aparecerá na lista de discussões de nenhum grupo — você pode encontrá-la na sua página de conversas diretas.
     recommended_poll_templates: Modelos de pesquisa recomendados
+    edit_discussion_context: Editar contexto de discussão
   announcement:
     send_discussion: Mandar tópico
     send_group: Convidar pessoas para %{name}
@@ -1994,6 +1996,7 @@ pt_BR:
     start_a_poll: Iniciar uma enquete
     export_blt: Cédulas de exportação (BLT)
     status: Status
+    your_vote_is_requested: Seu voto é solicitado.
   poll_common_attachment_form:
     label: Anexos
   poll_common_add_option:
@@ -2851,7 +2854,7 @@ pt_BR:
   strand_members_list:
     notify_members_or_invite_guests_info: Notifique os membros do grupo pelo nome ou convide pessoas que não são membros por endereço de e-mail. Os convidados podem participar desta discussão, mas não terão acesso às outras discussões do grupo.
     notify_members_info: Insira os nomes dos membros do grupo para notificá-los sobre esta conversa.
-    specified_voters_only_warning: "Esta discussão contém enquetes em que apenas pessoas selecionadas podem votar. Adicionar alguém com este formulário não dará a essa pessoa um voto, apenas a possibilidade de acompanhar e comentar. Se você quiser conceder votos, use \"adicionar votantes\" na enquete."
+    specified_voters_only_warning: Esta discussão contém enquetes em que apenas pessoas selecionadas podem votar. Adicionar alguém com este formulário não dará a essa pessoa um voto, apenas a possibilidade de acompanhar e comentar. Se você quiser conceder votos, use "adicionar votantes" na enquete.
   poll_common_details_meta:
     opened: Aberto
     opens: Abre

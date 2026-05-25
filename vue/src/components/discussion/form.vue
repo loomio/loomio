@@ -92,7 +92,7 @@ const cardTitle = computed(() => {
     return I18n.global.t('discussion_form.moving_items_title');
   } else {
     if (props.discussion.id) {
-      return I18n.global.t('discussion_form.edit_discussion_title');
+      return I18n.global.t('discussion_form.edit_discussion_context');
     } else {
       return I18n.global.t('discussion_form.new_discussion_title');
     }

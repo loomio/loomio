@@ -628,6 +628,7 @@ he:
     search_files_short: חפש קבצים
     search_subgroups_short: חפש תת קבוצות
     search_discussions_in_group: חפש דיונים ב-%{name}
+    thread_nav: תפריט שרשור
   user_dropdown:
     pin_sidebar: הצמד סרגל צד
     unpin_sidebar: בטל את ההצמדה של סרגל הצד
@@ -862,6 +863,7 @@ he:
     direct_discussion: דיון ישיר
     direct_discussion_hint: דיון ישיר גלוי רק לאנשים הספציפיים שאתה מזמין. הוא לא יופיע ברשימת הדיונים של אף קבוצה - תוכל למצוא אותו בדף הדיונים הישירים שלך.
     recommended_poll_templates: תבניות מומלצות לסקר
+    edit_discussion_context: עריכת הקשר של הדיון
   announcement:
     send_discussion: שלח שרשור
     send_group: הזמן אנשים ל-%{name}
@@ -1969,6 +1971,7 @@ he:
     start_a_poll: התחל סקר
     export_blt: ייצוא פתקי הצבעה (BLT)
     status: סטָטוּס
+    your_vote_is_requested: הצבעתך מתבקשת
   poll_common_attachment_form:
     label: קבצים מצורפים
   poll_common_add_option:
@@ -2822,7 +2825,7 @@ he:
   strand_members_list:
     notify_members_or_invite_guests_info: הודע לחברי הקבוצה לפי שמם, או הזמן אנשים שאינם חברים לפי כתובת דוא"ל. אורחים מוזמנים יכולים להשתתף בשרשור זה אך לא תהיה להם גישה לשרשורי קבוצה אחרים.
     notify_members_info: הזן שמות של חברי הקבוצה כדי להודיע להם על שרשור זה.
-    specified_voters_only_warning: "בשרשור הזה יש סקרים שבהם רק אנשים נבחרים יכולים להצביע. הוספת מישהו באמצעות הטופס הזה לא תעניק לו הצבעה, אלא רק את האפשרות לעקוב ולהגיב. אם ברצונכם להקצות הצבעות, השתמשו ב\"הוספת מצביעים\" בסקר."
+    specified_voters_only_warning: בשרשור הזה יש סקרים שבהם רק אנשים נבחרים יכולים להצביע. הוספת מישהו באמצעות הטופס הזה לא תעניק לו הצבעה, אלא רק את האפשרות לעקוב ולהגיב. אם ברצונכם להקצות הצבעות, השתמשו ב"הוספת מצביעים" בסקר.
   poll_common_details_meta:
     opened: נפתח
     opens: נפתח

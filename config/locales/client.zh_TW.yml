@@ -631,6 +631,7 @@ zh_TW:
     search_files_short: 搜尋文件
     search_subgroups_short: 搜尋子組
     search_discussions_in_group: 在 %{name} 中搜尋討論
+    thread_nav: 主題選單
   user_dropdown:
     pin_sidebar: 釘選側邊欄
     unpin_sidebar: 取消釘選側邊欄
@@ -865,6 +866,7 @@ zh_TW:
     direct_discussion: 直接討論
     direct_discussion_hint: 直接討論僅對您邀請的特定人員可見。它不會出現在任何群組的討論清單中——您可以在「直接討論」頁面找到它。
     recommended_poll_templates: 推薦的投票模板
+    edit_discussion_context: 編輯討論上下文
   announcement:
     send_discussion: 傳送討論串
     send_group: 邀請夥伴到 %{name}
@@ -1976,6 +1978,7 @@ zh_TW:
     start_a_poll: 發起投票
     export_blt: 出口選票（BLT）
     status: 地位
+    your_vote_is_requested: 請您投票
   poll_common_attachment_form:
     label: 附件
   poll_common_add_option:
@@ -2831,7 +2834,7 @@ zh_TW:
   strand_members_list:
     notify_members_or_invite_guests_info: 可以透過群組成員姓名通知他們，或透過電子郵件地址邀請非成員。受邀者可以參與此討論串，但無法存取群組的其他討論串。
     notify_members_info: 輸入群組成員姓名，即可通知他們此主題。
-    specified_voters_only_warning: "本帖的投票僅限特定人員參與。使用此表單新增某人並不會授予其投票權，只會讓其能夠關注進展並發表評論。如果你想分配投票權，請使用投票頁面上的\"新增投票者\"。"
+    specified_voters_only_warning: 本帖的投票僅限特定人員參與。使用此表單新增某人並不會授予其投票權，只會讓其能夠關注進展並發表評論。如果你想分配投票權，請使用投票頁面上的"新增投票者"。
   poll_common_details_meta:
     opened: 已開啟
     opens: 打開

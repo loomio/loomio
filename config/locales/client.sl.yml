@@ -628,6 +628,7 @@ sl:
     search_files_short: Iskanje datotek
     search_subgroups_short: Išči podskupine
     search_discussions_in_group: Iskanje razprav v %{name}
+    thread_nav: Meni niti
   user_dropdown:
     pin_sidebar: Pripni stransko vrstico
     unpin_sidebar: Odpnite stransko vrstico
@@ -862,6 +863,7 @@ sl:
     direct_discussion: Neposredna razprava
     direct_discussion_hint: Neposredna razprava je vidna samo določenim osebam, ki jih povabite. Ne bo prikazana na seznamu razprav nobene skupine – najdete jo na strani Neposredne razprave.
     recommended_poll_templates: Priporočene predloge anket
+    edit_discussion_context: Uredi kontekst razprave
   announcement:
     send_discussion: Pošlji nit
     send_group: Povabi ljudi v %{name}
@@ -1950,6 +1952,7 @@ sl:
     start_a_poll: Začni anketo
     export_blt: Izvoz glasovnic (BLT)
     status: Stanje
+    your_vote_is_requested: Zahteva se vaš glas
   poll_common_attachment_form:
     label: Priloge
   poll_common_add_option:
@@ -2803,7 +2806,7 @@ sl:
   strand_members_list:
     notify_members_or_invite_guests_info: Obvesti člane skupine po imenu ali povabi nečlane po e-poštnem naslovu. Povabljeni gostje lahko sodelujejo v tej niti, vendar ne bodo imeli dostopa do drugih niti skupine.
     notify_members_info: Vnesite imena članov skupine, da jih obvestite o tej temi.
-    specified_voters_only_warning: "V tej temi so ankete, kjer lahko glasujejo samo izbrane osebe. Če nekoga dodate s tem obrazcem, mu ne boste dali glasu, ampak le možnost spremljanja in komentiranja. Če želite dodeliti glasove, v anketi uporabite \"dodaj glasovalce\"."
+    specified_voters_only_warning: V tej temi so ankete, kjer lahko glasujejo samo izbrane osebe. Če nekoga dodate s tem obrazcem, mu ne boste dali glasu, ampak le možnost spremljanja in komentiranja. Če želite dodeliti glasove, v anketi uporabite "dodaj glasovalce".
   poll_common_details_meta:
     opened: Odprto
     opens: Odpre se

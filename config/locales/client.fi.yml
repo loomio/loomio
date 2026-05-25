@@ -628,6 +628,7 @@ fi:
     search_files_short: Etsi tiedostoja
     search_subgroups_short: Hae alaryhmiä
     search_discussions_in_group: Hae keskusteluja %{name}-sivustolta
+    thread_nav: Keskusteluvalikko
   user_dropdown:
     pin_sidebar: Kiinnitä sivupalkki
     unpin_sidebar: Irrota sivupalkki
@@ -862,6 +863,7 @@ fi:
     direct_discussion: Suora keskustelu
     direct_discussion_hint: Suora keskustelu näkyy vain kutsumillesi henkilöille. Se ei näy minkään ryhmän keskusteluluettelossa – löydät sen Suorat keskustelut -sivultasi.
     recommended_poll_templates: Suositellut kyselypohjat
+    edit_discussion_context: Muokkaa keskustelun kontekstia
   announcement:
     send_discussion: Lähetä lanka
     send_group: Kutsu ihmisiä %{name}
@@ -1950,6 +1952,7 @@ fi:
     start_a_poll: Aloita kysely
     export_blt: Vientiäänestysliput (BLT)
     status: Status
+    your_vote_is_requested: Ääntäsi pyydetään
   poll_common_attachment_form:
     label: Liitteet
   poll_common_add_option:
@@ -2803,7 +2806,7 @@ fi:
   strand_members_list:
     notify_members_or_invite_guests_info: Ilmoita ryhmän jäsenille nimeltä tai kutsu muita kuin jäseniä sähköpostiosoitteella. Kutsutut vieraat voivat osallistua tähän keskusteluketjuun, mutta heillä ei ole pääsyä muihin ryhmän keskusteluketjuihin.
     notify_members_info: Anna ryhmän jäsenten nimet, jotta heille ilmoitetaan tästä keskusteluketjusta.
-    specified_voters_only_warning: "Tässä ketjussa on äänestyksiä, joissa vain valitut henkilöt voivat äänestää. Henkilön lisääminen tällä lomakkeella ei anna hänelle ääntä, vaan vain mahdollisuuden seurata keskustelua ja kommentoida. Jos haluat antaa ääniä, käytä äänestyksessä \"lisää äänestäjiä\" -toimintoa."
+    specified_voters_only_warning: Tässä ketjussa on äänestyksiä, joissa vain valitut henkilöt voivat äänestää. Henkilön lisääminen tällä lomakkeella ei anna hänelle ääntä, vaan vain mahdollisuuden seurata keskustelua ja kommentoida. Jos haluat antaa ääniä, käytä äänestyksessä "lisää äänestäjiä" -toimintoa.
   poll_common_details_meta:
     opened: Avattu
     opens: Avautuu

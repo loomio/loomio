@@ -38,7 +38,7 @@ export default new class DiscussionService {
       edit_thread: {
         name: 'common.action.edit',
         icon: 'mdi-pencil',
-        dock: 1,
+        dock: 3,
         canPerform() { return AbilityService.canEditDiscussion(discussion); },
         to() { return `/d/${discussion.key}/edit`; }
       },
