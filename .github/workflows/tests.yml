@@ -55,7 +55,7 @@ jobs:
     - name: install node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '22'
+        node-version: '24'
     - name: create db
       run: |
         createdb
