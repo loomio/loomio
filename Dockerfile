@@ -21,10 +21,10 @@ RUN NODE_OPTIONS=--max-old-space-size=2048 npm run build
 
 # Install hocuspocus dependencies
 WORKDIR /build/hocuspocus
-COPY hocuspocus/package.json ./
-RUN npm install --prefer-offline --no-audit --no-fund
+COPY hocuspocus/package.json hocuspocus/package-lock.json ./
+RUN npm ci --prefer-offline --no-audit --no-fund
 
-FROM ruby:4.0.2-slim
+FROM ruby:4.0.5-slim
 
 ENV MALLOC_ARENA_MAX=2 \
     RAILS_LOG_TO_STDOUT=1 \
