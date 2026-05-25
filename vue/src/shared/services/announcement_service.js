@@ -5,26 +5,32 @@ export default new class AnnouncementService {
   audiencesFor(model) {
     const audiences = [];
 
-    if (model.topic && model.topic().membersCount) {
-      audiences.push('discussion_group');
+    if (model.topic) {
+      const topic = model.topic();
+      if (topic && topic.membersCount) {
+        audiences.push('discussion_group');
+      }
     }
 
-    if (model.poll && model.poll().id && model.poll().votersCount) {
-      model.adminsInclude(user()) ||
-       (model.group().membersCanAnnounce && model.membersInclude(user()));
-      audiences.push('voters');
-    }
+    if (model.poll) {
+      const poll = model.poll();
+      if (poll && poll.id && poll.votersCount) {
+        model.adminsInclude(user()) ||
+         (model.group() && model.group().membersCanAnnounce && model.membersInclude(user()));
+        audiences.push('voters');
+      }
 
-    if (model.poll && model.poll().id && model.poll().decidedVotersCount && model.poll().undecidedVotersCount) {
-      model.adminsInclude(user()) ||
-       (model.group().membersCanAnnounce && model.membersInclude(user()));
-      audiences.push('decided_voters');
-    }
+      if (poll && poll.id && poll.decidedVotersCount && poll.undecidedVotersCount) {
+        model.adminsInclude(user()) ||
+         (model.group() && model.group().membersCanAnnounce && model.membersInclude(user()));
+        audiences.push('decided_voters');
+      }
 
-    if (model.poll && model.poll().id && model.poll().decidedVotersCount && model.poll().undecidedVotersCount) {
-      model.adminsInclude(user()) ||
-       (model.group().membersCanAnnounce && model.membersInclude(user()));
-      audiences.push('undecided_voters');
+      if (poll && poll.id && poll.decidedVotersCount && poll.undecidedVotersCount) {
+        model.adminsInclude(user()) ||
+         (model.group() && model.group().membersCanAnnounce && model.membersInclude(user()));
+        audiences.push('undecided_voters');
+      }
     }
 
     return audiences;
