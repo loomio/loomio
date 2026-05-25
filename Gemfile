@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '4.0.2'
+ruby '4.0.5'
 gem 'rails', '~> 8.0.0'
 gem 'uri', '1.1.1'
 gem 'rake'

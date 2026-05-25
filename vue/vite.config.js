@@ -9,17 +9,6 @@ import { viteCommonjs } from '@originjs/vite-plugin-commonjs';
 
 import LoomioComponents from './src/components.js';
 
-function LoomioVueResolver() {
-  return {
-    type: "component",
-    resolve: (name) => {
-      if (LoomioComponents[name]) {
-        return { default: name, from: '/src/components/' + LoomioComponents[name] + '.vue' };
-      }
-    }
-  };
-}
-
 function loomioYaml() {
   const yamlPattern = /\.ya?ml$/;
   const clientLocalePattern = /\/config\/locales\/client\.[^/]+\.ya?ml$/;
@@ -43,6 +32,17 @@ function loomioYaml() {
         map: null,
       };
     },
+  };
+}
+
+function LoomioVueResolver() {
+  return {
+    type: "component",
+    resolve: (name) => {
+      if (LoomioComponents[name]) {
+        return { default: name, from: '/src/components/' + LoomioComponents[name] + '.vue' };
+      }
+    }
   };
 }
 
