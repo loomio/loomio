@@ -13,19 +13,28 @@ class TopicService
                         emails: params[:recipient_emails],
                         audience: params[:recipient_audience])
 
-      topic.polls.active.where(specified_voters_only: false).each do |poll|
-        PollService.create_anyone_can_vote_stances(poll)
+      recipient_user_ids = users.pluck(:id)
+      stances_by_poll_id = topic.polls.active.where(specified_voters_only: false).each_with_object({}) do |poll, memo|
+        memo[poll.id] = PollService.create_anyone_can_vote_stances(poll)
       end
 
       if topic.topicable_type == "Discussion"
         Events::DiscussionAnnounced.publish!(discussion: topic.topicable,
                                              actor: actor,
-                                             recipient_user_ids: users.pluck(:id),
+                                             recipient_user_ids: recipient_user_ids,
                                              recipient_chatbot_ids: params[:recipient_chatbot_ids],
                                              recipient_audience: params[:recipient_audience],
                                              recipient_message: params[:recipient_message])
+      elsif topic.topicable_type == "Poll"
+        Events::PollAnnounced.publish!(poll: topic.topicable,
+                                       actor: actor,
+                                       stances: stances_by_poll_id[topic.topicable_id] || [],
+                                       recipient_user_ids: recipient_user_ids,
+                                       recipient_chatbot_ids: params[:recipient_chatbot_ids],
+                                       recipient_audience: params[:recipient_audience],
+                                       recipient_message: params[:recipient_message])
       else
-        raise "gotta finish this bit"
+        raise "Cannot announce topicable type #{topic.topicable_type}"
       end
     end
   end
