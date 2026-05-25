@@ -223,7 +223,7 @@ export default new class TopicService {
         collection: 'actions',
         icon: 'mdi-lock-outline',
         canPerform() {
-          return !topic.lockedAt && (
+          return !topic.lockedAt && topic.activePollsCount === 0 && (
             topic.adminsInclude(Session.user()) ||
             (topic.group().membersCanEditDiscussions && topic.membersInclude(Session.user()))
           );
