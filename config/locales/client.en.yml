@@ -1984,6 +1984,7 @@ en:
     name_lte_score_percent: "%{name} must not exceed %{percent}% of votes cast"
     name_lte_voter_percent: "%{name} must not exceed %{percent}% of eligible voters"
   poll_common:
+    your_vote_is_requested: Your vote is requested
     superseded: Superseded
     outdated: Outdated
     need_help_with_templates: Need help creating your own decision templates?

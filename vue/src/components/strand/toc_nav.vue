@@ -31,12 +31,7 @@ const selectedCommentId  = computed(() => parseInt(route.params.comment_id));
 const isSignedIn         = computed(() => Session.isSignedIn());
 const memberActions      = computed(() => Object.entries(pickBy(topicActions.value, a => a.name && a.collection === 'members' && a.canPerform())).map(([key, action]) => ({ key, action })));
 const menuActions        = computed(() => {
-  const actions = Object.entries(pickBy(topicActions.value, a => a.name && a.collection === 'actions' && a.canPerform())).map(([key, action]) => ({ key, action }));
-  const discussion = props.topic.topicable();
-  if (discussion && discussion.isA && discussion.isA('discussion')) {
-    actions.push(...Object.entries(pickBy(DiscussionService.actions(discussion), a => a.name && a.canPerform && a.canPerform() && (a.to || a.perform))).map(([key, action]) => ({ key, action })));
-  }
-  return actions;
+  return Object.entries(pickBy(topicActions.value, a => a.name && a.collection === 'actions' && a.canPerform())).map(([key, action]) => ({ key, action }));
 });
 
 function scrollToEnd() {
