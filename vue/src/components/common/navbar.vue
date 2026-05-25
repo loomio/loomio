@@ -116,6 +116,8 @@ v-app-bar.lmo-no-print(app clipped-right elevate-on-scroll color="background")
     v-btn(@click="openSearchModal" icon :title="$t('common.action.search')")
       common-icon(name="mdi-magnify")
     notifications
+    v-btn(v-if="page === 'discussionPage' && !$vuetify.display.mdAndUp" icon @click="toggleThreadNav()" :title="$t('navbar.thread_nav')")
+      common-icon(name="mdi-menu-open")
   template(v-else)
     v-btn.navbar__sign-in(variant="text" @click='signIn()')
       span(v-t="'auth_form.sign_in'")

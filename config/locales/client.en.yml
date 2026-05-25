@@ -640,6 +640,7 @@ en:
     all_subgroups: All subgroups
     parent_only: Parent only
   navbar:
+    thread_nav: Thread menu
     search_discussions_in_group: Search discussions in %{name}
     search_polls: Search polls in %{name}
     search_members: Search members in %{name}

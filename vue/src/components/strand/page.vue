@@ -8,7 +8,6 @@ import ScrollService     from '@/shared/services/scroll_service';
 import { useWatchRecords } from '@/composables/useWatchRecords';
 import { ref, onMounted, onUnmounted, watch, nextTick } from 'vue';
 import { useRoute } from 'vue-router';
-import { mdiMenuOpen } from '@mdi/js';
 
 const route = useRoute();
 const { watchRecords } = useWatchRecords();
@@ -42,10 +41,6 @@ watch(() => route.params.comment_id, respondToRoute);
 watch(() => route.query.p, respondToRoute);
 watch(() => route.query.k, respondToRoute);
 watch(() => route.query.current_action, respondToRoute);
-
-function openThreadNav() {
-  EventBus.$emit('toggleThreadNav');
-}
 
 function scrollToFocused() {
   if (focusSelector.value) {
@@ -321,6 +316,4 @@ function shouldSettleAnchorScroll() {
         strand-list.pr-1.pr-sm-3.px-sm-2(:loader="loader" :collection="loader.collection" :focus-selector="focusSelector")
         strand-actions-panel(:topic="topic")
   strand-toc-nav(v-if="loader" :topic="topic" :loader="loader" :key="topic.id")
-  v-fab(v-if="!$vuetify.display.mdAndUp" icon app location="bottom right" @click="openThreadNav" color="primary" variant="tonal")
-    v-icon(:icon="mdiMenuOpen" )
 </template>

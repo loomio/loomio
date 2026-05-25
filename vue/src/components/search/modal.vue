@@ -63,7 +63,7 @@ export default {
       orgId: null,
       groupItems: [],
       groupId: null,
-      order: null,
+      order: "authored_at_desc",
       orderItems: [
         {title: I18n.global.t('search_modal.best_match'), value: null},
         {title: I18n.global.t('strand_nav.newest'), value: "authored_at_desc"},
