@@ -38,13 +38,11 @@ const canPerformAny = computed(() => some(menuActions.value, action => action.ca
 </script>
 
 <template lang="pug">
-v-list-item.thread-preview.thread-preview__link(
-  :class="{'thread-preview--unread-border': isUnread}"
-  :to='urlFor(topic)'
-)
+v-list-item.thread-preview.thread-preview__link(:to='urlFor(topic)')
   template(v-slot:prepend)
-    poll-common-icon-panel.mr-3(v-if="isPoll" :poll="topicable" show-my-stance :size="36")
-    user-avatar.mr-3(v-else :user='topic.author()' :size='36' no-link)
+    v-avatar(v-if="isPoll" :size="36" style="overflow: visible")
+      poll-common-icon-panel(:poll="topicable" show-my-stance :size="36")
+    user-avatar(v-else :user='topic.author()' :size='36' no-link)
   v-list-item-title(style="align-items: center")
     span(v-if='topic.pinnedAt', :title="$t('context_panel.thread_status.pinned')")
       common-icon(size="x-small" name="mdi-pin-outline")
