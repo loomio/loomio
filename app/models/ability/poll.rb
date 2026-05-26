@@ -30,7 +30,7 @@ module Ability::Poll
     can [ :create ], ::Poll do |poll|
       topic = poll.topic
       group = topic.group
-      topic.topicable_type != 'Poll' &&
+      (topic.topicable_type != 'Poll' || topic.topicable_id.nil?) &&
       !group.archived_at &&
       !topic.locked_at &&
       (topic.allow_concurrent_polls || topic.active_polls_count == 0) &&
