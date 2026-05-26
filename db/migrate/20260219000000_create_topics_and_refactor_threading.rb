@@ -49,9 +49,9 @@ class CreateTopicsAndRefactorThreading < ActiveRecord::Migration[7.0]
     # 3. Create topics for standalone polls (no discussion_id)
     execute <<~SQL
       INSERT INTO topics (topicable_type, topicable_id, group_id, items_count, private,
-                          locked_at, last_activity_at, created_at, updated_at)
+                          last_activity_at, created_at, updated_at)
       SELECT 'Poll', id, group_id, 0, true,
-             closed_at, closed_at, created_at, updated_at
+             closed_at, created_at, updated_at
       FROM polls
       WHERE discussion_id IS NULL
     SQL
