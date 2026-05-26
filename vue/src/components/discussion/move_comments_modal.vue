@@ -37,7 +37,7 @@ export default {
     getSuggestions() {
       this.searchResults = Records.discussions.collection.chain()
         .find({groupId: this.groupId})
-        .where(d => d.topic() && AbilityService.canStartPoll(d.topic()))
+        .where(d => d.topic() && d.topic().id !== this.topic.id && AbilityService.canStartPoll(d.topic()))
         .simplesort('id', true)
         .data();
     },
@@ -78,7 +78,7 @@ export default {
         this.searchResults = Records.discussions.collection.chain()
           .find({groupId: this.groupId})
           .find({title: { $regex: [escapeRegExp(this.searchFragment), 'i'] }})
-          .where(d => d.topic() && AbilityService.canAddComment(d.topic()))
+          .where(d => d.topic() && d.topic().id !== this.topic.id && AbilityService.canAddComment(d.topic()))
           .simplesort('title')
           .data();
       });

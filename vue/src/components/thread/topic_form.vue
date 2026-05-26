@@ -38,7 +38,7 @@ v-card.thread-arrangement-form(:title="$t('thread_arrangement_form.thread_settin
           span(v-t="'thread_arrangement_form.threaded_description'")
     v-alert.mb-2(density="compact" variant="tonal" type="info" v-if="clone.maxDepth != topic.maxDepth")
       span(v-t="'thread_arrangement_form.for_everyone'")
-    v-checkbox(v-model="clone.allowConcurrentPolls" :label="$t('thread_arrangement_form.allow_multiple_polls')" hide-details)
+    v-checkbox(v-if="topic.topicableType !== 'Poll'" v-model="clone.allowConcurrentPolls" :label="$t('thread_arrangement_form.allow_multiple_polls')" hide-details)
     template(v-if="topic.topicableType === 'Poll'")
       v-checkbox(v-model="clone.allowComments" :label="$t('thread_arrangement_form.allow_comments')" hide-details)
       v-checkbox(v-model="clone.allowReactions" :label="$t('thread_arrangement_form.allow_reactions')" hide-details)

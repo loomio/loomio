@@ -47,7 +47,7 @@ const showAddCommentForm = computed(() => {
   if (forceShowCommentForm.value) return true;
   if (topic.topicableType === 'Poll') {
     const p = topic.topicable();
-    return !p || p.closedAt || p.iHaveVoted();
+    return !p || !p.isVotable() || p.iHaveVoted();
   }
   return true;
 });
