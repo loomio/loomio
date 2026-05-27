@@ -5,6 +5,7 @@ class MarkClosedPollTopicsRead < ActiveRecord::Migration[8.0]
       return
     end
 
+    say "Starting closed poll topic read backfill..."
     stats = PollService.mark_closed_poll_topics_read
     say "Marked #{stats[:topics]} closed poll topics as read"
     say "Created #{stats[:readers_created]} topic readers"
