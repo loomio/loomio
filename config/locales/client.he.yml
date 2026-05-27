@@ -541,7 +541,7 @@ he:
     recent_threads: שיחות אחרונות
     invite_only_threads: שרשורים להזמנה בלבד
     direct_threads: חוטים ישירים
-    unread_threads: שרשורים שלא נקראו (%{count})
+    unread_threads: שרשורים שלא נקראו
     muted_threads: שיחות שהושתקו
     start_subgroup: תת קבוצה חדשה
     explore: קבוצות ציבוריות
@@ -567,6 +567,7 @@ he:
     find_a_group: מצא קבוצה
     direct_discussions: דיונים ישירים
     unread_discussions: דיונים שלא נקראו
+    unread_threads_count: שרשורים שלא נקראו (%{count})
   strand_nav:
     newest: החדש ביותר
     oldest: הוותיק ביותר
@@ -1677,6 +1678,7 @@ he:
       explanation: אין לך דיונים שלא נקראו מכיוון שאינך חבר באף קבוצה.
     no_discussions: וואו! קראת את כל הדיונים בתיבת הדואר הנכנס שלך.
     unread_discussions: דיונים שלא נקראו
+    recent_activity_notice: מציג רק שרשורים עם פעילות ב-6 השבועות האחרונים.
   discussion:
     direct_thread: חוט ישיר
     invite_only: מוזמנים בלבד

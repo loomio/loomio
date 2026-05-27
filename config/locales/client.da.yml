@@ -541,7 +541,7 @@ da:
     recent_threads: Seneste debatter
     invite_only_threads: Tråde kun for invitationer
     direct_threads: Direkte tråde
-    unread_threads: Ulæste tråde (%{count})
+    unread_threads: Ulæste tråde
     muted_threads: Uden notifikationer
     start_subgroup: Ny undergruppe
     explore: Offentlige grupper
@@ -567,6 +567,7 @@ da:
     find_a_group: Find en gruppe
     direct_discussions: Direkte diskussioner
     unread_discussions: Ulæste diskussioner
+    unread_threads_count: Ulæste tråde (%{count})
   strand_nav:
     newest: Nyeste
     oldest: Ældste
@@ -1665,6 +1666,7 @@ da:
       explanation: Du har ingen ulæste diskussioner, fordi du ikke er medlem af nogen grupper.
     no_discussions: Woohoo! Du har læst alle diskussionerne i din indbakke.
     unread_discussions: Ulæste diskussioner
+    recent_activity_notice: Viser kun tråde med aktivitet i de sidste 6 uger.
   discussion:
     direct_thread: Direkte tråd
     invite_only: Kun invitation

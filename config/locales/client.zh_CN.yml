@@ -578,6 +578,9 @@ zh_CN:
     find_a_group: 找个小组
     direct_discussions: 直接讨论
     unread_discussions: 未读讨论
+    direct_threads: 直接螺纹
+    unread_threads: 未读帖子
+    unread_threads_count: 未读线程数 (%{count})
   strand_nav:
     jump_to: 跳转至
     timeline: 时间线
@@ -1717,6 +1720,8 @@ zh_CN:
       start: 开始
       or: 或者
       join_group: <a href="/explore">加入</a>群组即可查看讨论串。
+    unread_threads: 未读帖子
+    recent_activity_notice: 仅显示最近 6 周内有活动的帖子。
   discussion:
     invite_only: 仅限受邀者
     max_threads_reached: <p>您已用完该群组可用的所有 %{maxThreads} 个帖子。</p><p>下一步，<a href="%{upgradeUrl}" target="_blank">选择一个方案</a>继续在 Loomio 上进行协作。</p>

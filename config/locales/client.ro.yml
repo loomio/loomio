@@ -541,7 +541,7 @@ ro:
     recent_threads: Conversatii recente
     invite_only_threads: Fire numai pe invitație
     direct_threads: Fire directe
-    unread_threads: Fire necitite (%{count})
+    unread_threads: Fire necitite
     muted_threads: Fire dezactivate
     start_subgroup: Grup nou subordonat
     explore: Grupuri publice
@@ -567,6 +567,7 @@ ro:
     find_a_group: Găsește un grup
     direct_discussions: Discuții directe
     unread_discussions: Discuții necitite
+    unread_threads_count: Fire de discuție necitite (%{count})
   strand_nav:
     newest: Cel mai nou
     oldest: Cel mai vechi
@@ -1665,6 +1666,7 @@ ro:
       explanation: Nu aveți discuții necitite deoarece nu sunteți membru al niciunui grup.
     no_discussions: Ura! Ai citit toate discuțiile din căsuța ta poștală.
     unread_discussions: Discuții necitite
+    recent_activity_notice: Se afișează doar subiectele cu activitate în ultimele 6 săptămâni.
   discussion:
     direct_thread: Fir direct
     invite_only: Numai pe baza invitatiei

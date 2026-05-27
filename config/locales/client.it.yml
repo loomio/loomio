@@ -551,7 +551,7 @@ it:
     recent_threads: Discussioni recenti
     invite_only_threads: Thread di sola invito
     direct_threads: Thread diretti
-    unread_threads: Discussioni non lette (%{count})
+    unread_threads: Discussioni non lette
     muted_threads: Discussioni silenziate
     start_subgroup: Nuovo sottogruppo
     explore: Gruppi pubblici
@@ -577,6 +577,7 @@ it:
     find_a_group: Trova un gruppo
     direct_discussions: Discussioni dirette
     unread_discussions: Discussioni non lette
+    unread_threads_count: Thread non letti (%{count})
   strand_nav:
     newest: Più recente
     oldest: Maggiore
@@ -1691,6 +1692,7 @@ it:
       explanation: Non hai discussioni non lette perché non sei membro di alcun gruppo.
     no_discussions: Evviva! Hai letto tutte le discussioni nella tua casella di posta.
     unread_discussions: Discussioni non lette
+    recent_activity_notice: Vengono mostrate solo le discussioni attive nelle ultime 6 settimane.
   discussion:
     direct_thread: Filo diretto
     invite_only: Solo invito

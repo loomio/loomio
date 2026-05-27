@@ -540,7 +540,7 @@ ja:
     recent_threads: 最近のスレッド
     invite_only_threads: 招待専用スレッド
     direct_threads: ダイレクトスレッド
-    unread_threads: 未読スレッド (%{count})
+    unread_threads: 未読スレッド
     muted_threads: ミュートされたスレッド
     start_subgroup: 新しいサブグループ
     explore: 公開グループ
@@ -566,6 +566,7 @@ ja:
     find_a_group: グループを探す
     direct_discussions: 直接の議論
     unread_discussions: 未読のディスカッション
+    unread_threads_count: 未読スレッド（%{count}）
   strand_nav:
     newest: 最新
     oldest: 最古の
@@ -1664,6 +1665,7 @@ ja:
       explanation: あなたはどのグループのメンバーでもないため、未読のディスカッションはありません。
     no_discussions: やったー！受信トレイのディスカッションをすべて読みました。
     unread_discussions: 未読のディスカッション
+    recent_activity_notice: 過去6週間以内に活動があったスレッドのみを表示します。
   discussion:
     direct_thread: ダイレクトスレッド
     invite_only: 招待のみ

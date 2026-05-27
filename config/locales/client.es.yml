@@ -543,7 +543,7 @@ es:
     recent_threads: Hilos recientes
     invite_only_threads: Hilos sólo con invitación
     direct_threads: Hilos directos
-    unread_threads: Hilos no leídos (%{count})
+    unread_threads: Hilos no leídos
     muted_threads: 'Hilos silenciados '
     start_subgroup: Nuevo subgrupo
     explore: Grupos públicos
@@ -569,6 +569,7 @@ es:
     find_a_group: Encuentra un grupo
     direct_discussions: Discusiones directas
     unread_discussions: Discusiones no leídas
+    unread_threads_count: Hilos no leídos (%{count})
   strand_nav:
     newest: El más nuevo
     oldest: El más viejo
@@ -1690,6 +1691,7 @@ es:
       explanation: No tienes discusiones sin leer porque no eres miembro de ningún grupo.
     no_discussions: "¡Genial! Has leído todas las discusiones en tu bandeja de entrada."
     unread_discussions: Discusiones no leídas
+    recent_activity_notice: Solo se muestran los hilos con actividad en las últimas 6 semanas.
   discussion:
     direct_thread: Hilo directo
     invite_only: Sólo con invitación

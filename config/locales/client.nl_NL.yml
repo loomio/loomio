@@ -543,7 +543,7 @@ nl_NL:
     recent_threads: Recente borden
     invite_only_threads: Alleen op uitnodiging borden
     direct_threads: Directe borden
-    unread_threads: Ongelezen gesprekken (%{count})
+    unread_threads: Ongelezen gesprekken
     muted_threads: Gedempte borden
     start_subgroup: Nieuwe subgroep
     explore: Openbare groepen
@@ -569,6 +569,7 @@ nl_NL:
     find_a_group: Zoek een groep
     direct_discussions: Directe discussies
     unread_discussions: Ongelezen discussies
+    unread_threads_count: Ongelezen threads (%{count})
   strand_nav:
     newest: Nieuwste
     oldest: Oudste
@@ -1679,6 +1680,7 @@ nl_NL:
       explanation: U heeft geen ongelezen discussies omdat u geen lid bent van een groep.
     no_discussions: Joepie! Je hebt alle discussies in je inbox gelezen.
     unread_discussions: Ongelezen discussies
+    recent_activity_notice: Alleen discussies met activiteit in de afgelopen 6 weken worden weergegeven.
   discussion:
     direct_thread: Directe draad
     invite_only: Alleen op uitnodiging

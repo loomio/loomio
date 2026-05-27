@@ -543,7 +543,7 @@ pl:
     recent_threads: Najnowsze wątki
     invite_only_threads: Wątki na zaproszenie
     direct_threads: Wątki bezpośrednie
-    unread_threads: Nieprzeczytane wątki (%{count})
+    unread_threads: Nieprzeczytane wątki
     muted_threads: Wyciszone wątki
     start_subgroup: Nowa podgrupa
     explore: Grupy publiczne
@@ -569,6 +569,7 @@ pl:
     find_a_group: Znajdź grupę
     direct_discussions: Dyskusje bezpośrednie
     unread_discussions: Nieprzeczytane dyskusje
+    unread_threads_count: Nieprzeczytane wątki (%{count})
   strand_nav:
     newest: Najnowsze
     oldest: 'Od najstarszych '
@@ -1679,6 +1680,7 @@ pl:
       explanation: Nie masz nieprzeczytanych dyskusji, ponieważ nie jesteś członkiem żadnej grupy.
     no_discussions: Hura! Przeczytałeś wszystkie dyskusje w swojej skrzynce odbiorczej.
     unread_discussions: Nieprzeczytane dyskusje
+    recent_activity_notice: Wyświetlane są tylko wątki, w których aktywność miała miejsce w ciągu ostatnich 6 tygodni.
   discussion:
     direct_thread: Bezpośredni wątek
     invite_only: Na zaproszenie

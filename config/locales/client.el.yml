@@ -541,7 +541,7 @@ el:
     recent_threads: Πρόσφατα θέματα
     invite_only_threads: Νήματα μόνο για πρόσκληση
     direct_threads: Άμεσες κλωστές
-    unread_threads: Μη αναγνωσμένα νήματα (%{count})
+    unread_threads: Μη αναγνωσμένα νήματα
     muted_threads: Θέματα σε σίγαση
     start_subgroup: Νέα υποομάδα
     explore: Δημόσιες ομάδες
@@ -567,6 +567,7 @@ el:
     find_a_group: Βρείτε μια ομάδα
     direct_discussions: Άμεσες συζητήσεις
     unread_discussions: Μη αναγνωσμένες συζητήσεις
+    unread_threads_count: Μη αναγνωσμένα νήματα (%{count})
   strand_nav:
     newest: Νεότερο
     oldest: Το πιο παλιό
@@ -1665,6 +1666,7 @@ el:
       explanation: Δεν έχετε μη αναγνωσμένες συζητήσεις επειδή δεν είστε μέλος καμίας ομάδας.
     no_discussions: Μπράβο! Διάβασες όλες τις συζητήσεις στα εισερχόμενά σου.
     unread_discussions: Μη αναγνωσμένες συζητήσεις
+    recent_activity_notice: Εμφανίζονται μόνο τα νήματα με δραστηριότητα τις τελευταίες 6 εβδομάδες.
   discussion:
     direct_thread: Απευθείας κλωστή
     invite_only: Μόνο με πρόσκληση

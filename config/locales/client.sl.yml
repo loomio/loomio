@@ -541,7 +541,7 @@ sl:
     recent_threads: Nedavne teme
     invite_only_threads: Niti samo za povabila
     direct_threads: Neposredne niti
-    unread_threads: Neprebrane niti (%{count})
+    unread_threads: Neprebrane niti
     muted_threads: Utišane teme
     start_subgroup: Nova podskupina
     explore: Javne skupine
@@ -567,6 +567,7 @@ sl:
     find_a_group: Poiščite skupino
     direct_discussions: Neposredne razprave
     unread_discussions: Neprebrane razprave
+    unread_threads_count: Neprebrane niti (%{count})
   strand_nav:
     newest: Najnovejša
     oldest: Najstarejši
@@ -1665,6 +1666,7 @@ sl:
       explanation: Nimate neprebranih razprav, ker niste član nobene skupine.
     no_discussions: Juhu! Prebrali ste vse razprave v vašem nabiralniku.
     unread_discussions: Neprebrane razprave
+    recent_activity_notice: Prikazane so samo teme z aktivnostjo v zadnjih 6 tednih.
   discussion:
     direct_thread: Neposredna nit
     invite_only: Samo za povabljence

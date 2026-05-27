@@ -592,8 +592,11 @@ en:
     all_groups: All groups
     invite_only_discussions: Invite-only discussions
     direct_discussions: Direct discussions
+    direct_threads: Direct threads
     unread_discussions: Unread discussions
     unread_discussions_count: Unread discussions (%{count})
+    unread_threads: Unread threads
+    unread_threads_count: Unread threads (%{count})
     new_group: New group
     new_subgroup: New subgroup
     start_subgroup: New subgroup
@@ -1771,7 +1774,7 @@ en:
   inbox_page:
     # no_threads: Woohoo! You've read all the threads in your inbox.
     no_discussions: Woohoo! You've read all the discussions in your inbox.
-    # unread_threads: Unread Threads
+    unread_threads: Unread threads
     unread_discussions: Unread discussions
     view_more: View More
     recent_activity_notice: Only showing threads with activity in the last 6 weeks.

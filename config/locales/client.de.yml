@@ -549,7 +549,7 @@ de:
     recent_threads: Aktuelle Diskussionen
     invite_only_threads: Diskussionen nur mit Einladung
     direct_threads: Direkte Diskussionen
-    unread_threads: 'Ungelesene Threads: (%{count})'
+    unread_threads: Ungelesene Threads
     muted_threads: Stummgeschaltete Diskussionen
     start_subgroup: Neue Untergruppe
     explore: Öffentliche Gruppen
@@ -575,6 +575,7 @@ de:
     find_a_group: Finde eine Gruppe
     direct_discussions: Direkte Diskussionen
     unread_discussions: Ungelesene Diskussionen
+    unread_threads_count: Ungelesene Threads (%{count})
   strand_nav:
     newest: Neueste
     oldest: 'Älteste '
@@ -1687,6 +1688,7 @@ de:
       explanation: Sie haben keine ungelesenen Diskussionen, da Sie keinem Team angehören.
     no_discussions: Juhu! Du hast alle Diskussionen in deinem Posteingang gelesen.
     unread_discussions: Ungelesene Diskussionen
+    recent_activity_notice: Es werden nur Threads angezeigt, in denen in den letzten 6 Wochen Aktivität stattgefunden hat.
   discussion:
     direct_thread: Direkter Thread
     invite_only: Invite-only

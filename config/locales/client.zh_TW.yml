@@ -544,7 +544,7 @@ zh_TW:
     recent_threads: 最近的討論串
     invite_only_threads: 僅邀請的討論串
     direct_threads: 直接討論串
-    unread_threads: 未讀的討論串 (%{count})
+    unread_threads: 未讀的討論串
     muted_threads: 已靜音的討論串
     start_subgroup: 新的子群組
     explore: 公開群組
@@ -570,6 +570,7 @@ zh_TW:
     find_a_group: 找個小組
     direct_discussions: 直接討論
     unread_discussions: 未讀討論
+    unread_threads_count: 未讀線程數 (%{count})
   strand_nav:
     newest: 最新
     oldest: 最舊
@@ -1682,6 +1683,7 @@ zh_TW:
       explanation: 您沒有未讀討論，因為您不是任何群組的成員。
     no_discussions: 哇哦！您已閱讀完收件匣中的所有討論。
     unread_discussions: 未讀討論
+    recent_activity_notice: 僅顯示最近 6 週內有活動的貼文。
   discussion:
     direct_thread: 直接螺紋
     invite_only: 僅邀請

@@ -543,7 +543,7 @@ ca:
     recent_threads: Fils recents
     invite_only_threads: Fils amb accés per invitació
     direct_threads: Fils directes
-    unread_threads: Fils no llegits (%{count})
+    unread_threads: Fils no llegits
     muted_threads: Fils silenciats
     start_subgroup: Nou subgrup
     explore: Grups públics
@@ -569,6 +569,7 @@ ca:
     find_a_group: Troba un grup
     direct_discussions: Discussions directes
     unread_discussions: Discussions no llegides
+    unread_threads_count: Fils no llegits (%{count})
   strand_nav:
     newest: Més recent
     oldest: Més antic
@@ -1672,7 +1673,7 @@ ca:
     no_direct_discussions_helptext: Les discussions directes serveixen per contactar directament amb un altre usuari, sense que la discussió pertanyi a un grup.
   inbox_page:
     no_threads: Heu llegit tots els fils de la vostra safata.
-    unread_threads: FIls no llegits
+    unread_threads: Fils no llegits
     view_more: Mostra'n més
     no_groups:
       start: Crea
@@ -1681,6 +1682,7 @@ ca:
       explanation: No tens cap debat sense llegir perquè no ets membre de cap grup.
     no_discussions: Ostres! Has llegit totes les discussions a la teva safata d'entrada.
     unread_discussions: Debats no llegits
+    recent_activity_notice: Només es mostren els fils amb activitat de les darreres 6 setmanes.
   discussion:
     direct_thread: Fil directe
     invite_only: Accés amb invitació

@@ -543,7 +543,7 @@ hu:
     recent_threads: Új témák
     invite_only_threads: Meghívásos szálak
     direct_threads: Közvetlen szálak
-    unread_threads: Olvasatlan szálak (%{count})
+    unread_threads: Olvasatlan szálak
     muted_threads: Némított témák
     start_subgroup: Új alcsoport
     explore: Nyilvános csoportok
@@ -569,6 +569,7 @@ hu:
     find_a_group: Csoport keresése
     direct_discussions: Közvetlen megbeszélések
     unread_discussions: Olvasatlan beszélgetések
+    unread_threads_count: Olvasatlan beszélgetések (%{count})
   strand_nav:
     newest: Legújabb
     oldest: Legrégebbi
@@ -1669,6 +1670,7 @@ hu:
       explanation: Nincsenek olvasatlan beszélgetéseid, mert nem vagy tagja egyetlen csoportnak sem.
     no_discussions: Hurrá! Elolvastad az összes beszélgetést a postaládádban.
     unread_discussions: Olvasatlan beszélgetések
+    recent_activity_notice: Csak az elmúlt 6 hétben aktivitást mutató témák láthatók.
   discussion:
     direct_thread: Közvetlen szál
     invite_only: Csak meghívottaknak

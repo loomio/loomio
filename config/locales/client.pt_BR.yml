@@ -551,7 +551,7 @@ pt_BR:
     recent_threads: Conversas recentes
     invite_only_threads: Tópicos somente para convidados
     direct_threads: Tópicos diretos
-    unread_threads: Tópicos não lidos (%{count})
+    unread_threads: Tópicos não lidos
     muted_threads: Conversas silenciadas
     start_subgroup: Novo subgrupo
     explore: Grupos públicos
@@ -577,6 +577,7 @@ pt_BR:
     find_a_group: Encontre um grupo
     direct_discussions: Discussões diretas
     unread_discussions: Discussões não lidas
+    unread_threads_count: Tópicos não lidos (%{count})
   strand_nav:
     newest: Mais recente
     oldest: Mais antigo
@@ -1700,6 +1701,7 @@ pt_BR:
       explanation: Você não tem discussões não lidas porque não é membro de nenhum grupo.
     no_discussions: Eba! Você leu todas as discussões na sua caixa de entrada.
     unread_discussions: Discussões não lidas
+    recent_activity_notice: Exibindo apenas tópicos com atividade nas últimas 6 semanas.
   discussion:
     direct_thread: Tópico direto
     invite_only: Somente para convidados

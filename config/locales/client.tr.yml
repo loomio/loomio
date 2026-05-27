@@ -541,7 +541,7 @@ tr:
     recent_threads: Son konular
     invite_only_threads: Yalnızca davetli ileti dizileri
     direct_threads: Doğrudan konular
-    unread_threads: Okunmamış ileti dizileri (%{count})
+    unread_threads: Okunmamış ileti dizileri
     muted_threads: Yoksayılan ileti dizileri
     start_subgroup: Yeni alt grup
     explore: Genel gruplar
@@ -567,6 +567,7 @@ tr:
     find_a_group: Bir grup bulun
     direct_discussions: Doğrudan görüşmeler
     unread_discussions: Okunmamış tartışmalar
+    unread_threads_count: Okunmamış iletiler (%{count})
   strand_nav:
     newest: En yeni
     oldest: En eski
@@ -1665,6 +1666,7 @@ tr:
       explanation: Hiçbir gruba üye olmadığınız için okunmamış tartışmanız bulunmamaktadır.
     no_discussions: Yaşasın! Gelen kutunuzdaki tüm tartışmaları okudunuz.
     unread_discussions: Okunmamış tartışmalar
+    recent_activity_notice: Yalnızca son 6 hafta içinde etkileşim olan konular gösteriliyor.
   discussion:
     direct_thread: Doğrudan iplik
     invite_only: Yalnızca davetle

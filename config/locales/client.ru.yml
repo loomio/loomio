@@ -541,7 +541,7 @@ ru:
     recent_threads: Последние темы
     invite_only_threads: Темы только по приглашению
     direct_threads: Прямые темы
-    unread_threads: Непрочитанные темы (%{count})
+    unread_threads: Непрочитанные темы
     muted_threads: Выключить уведомления темы
     start_subgroup: Новая подгруппа
     explore: Публичная группа
@@ -567,6 +567,7 @@ ru:
     find_a_group: Найти группу
     direct_discussions: Прямые обсуждения
     unread_discussions: Непрочитанные обсуждения
+    unread_threads_count: Непрочитанные сообщения (%{count})
   strand_nav:
     newest: Новейший
     oldest: Самый старый
@@ -1665,6 +1666,7 @@ ru:
       explanation: У вас нет непрочитанных обсуждений, поскольку вы не являетесь участником ни одной группы.
     no_discussions: Ура! Вы прочитали все обсуждения в своём почтовом ящике.
     unread_discussions: Непрочитанные обсуждения
+    recent_activity_notice: Показаны только темы с активностью за последние 6 недель.
   discussion:
     direct_thread: Прямая резьба
     invite_only: Только по приглашению

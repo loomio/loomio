@@ -541,7 +541,7 @@ sv:
     recent_threads: Senaste trådarna
     invite_only_threads: Trådar endast för inbjudningar
     direct_threads: Direkta trådar
-    unread_threads: Olästa trådar (%{count})
+    unread_threads: Olästa trådar
     muted_threads: Stumma trådar
     start_subgroup: Ny undergrupp
     explore: Publika grupper
@@ -567,6 +567,7 @@ sv:
     find_a_group: Hitta en grupp
     direct_discussions: Direkta diskussioner
     unread_discussions: Olästa diskussioner
+    unread_threads_count: Olästa trådar (%{count})
   strand_nav:
     newest: Nyaste
     oldest: Äldst
@@ -1665,6 +1666,7 @@ sv:
       explanation: Du har inga olästa diskussioner eftersom du inte är medlem i några grupper.
     no_discussions: Woohoo! Du har läst alla diskussioner i din inkorg.
     unread_discussions: Olästa diskussioner
+    recent_activity_notice: Visar endast trådar med aktivitet under de senaste 6 veckorna.
   discussion:
     direct_thread: Direkt tråd
     invite_only: Endast inbjudna

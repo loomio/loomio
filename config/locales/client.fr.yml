@@ -551,7 +551,7 @@ fr:
     recent_threads: Discussions récentes
     invite_only_threads: Discussions accessibles uniquement sur invitation
     direct_threads: Discussions directes
-    unread_threads: Discussions non lues (%{count})
+    unread_threads: Discussions non lues
     muted_threads: Discussions ignorées
     start_subgroup: Ajouter un sous-groupe
     explore: Groupes publics
@@ -577,6 +577,7 @@ fr:
     find_a_group: Trouver un groupe
     direct_discussions: Discussions directes
     unread_discussions: Discussions non lues
+    unread_threads_count: Sujets non lus (%{count})
   strand_nav:
     newest: Les plus récents
     oldest: Les plus anciens
@@ -1700,6 +1701,7 @@ fr:
       explanation: Vous n'avez aucune discussion non lue car vous n'êtes membre d'aucun groupe.
     no_discussions: Hourra ! Vous avez lu toutes les discussions dans votre boîte de réception.
     unread_discussions: Discussions non lues
+    recent_activity_notice: Afficher uniquement les discussions ayant fait l'objet d'une activité au cours des 6 dernières semaines.
   discussion:
     direct_thread: Fil direct
     invite_only: Sur invitation uniquement

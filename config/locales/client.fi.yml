@@ -541,7 +541,7 @@ fi:
     recent_threads: Viimeaikaiset ketjut
     invite_only_threads: Vain kutsu -ketjut
     direct_threads: Suorat säikeet
-    unread_threads: Lukemattomat viestiketjut (%{count})
+    unread_threads: Lukemattomat viestiketjut
     muted_threads: Mykistetty säikeet
     start_subgroup: Uusi alaryhmä
     explore: Julkiset ryhmät
@@ -567,6 +567,7 @@ fi:
     find_a_group: Etsi ryhmä
     direct_discussions: Suorat keskustelut
     unread_discussions: Lukemattomat keskustelut
+    unread_threads_count: Lukemattomat ketjut (%{count})
   strand_nav:
     newest: Uusin
     oldest: Vanhin
@@ -1665,6 +1666,7 @@ fi:
       explanation: Sinulla ei ole lukemattomia keskusteluja, koska et ole minkään ryhmän jäsen.
     no_discussions: Jes! Olet lukenut kaikki keskustelut sähköpostissasi.
     unread_discussions: Lukemattomat keskustelut
+    recent_activity_notice: Näytetään vain ketjut, joissa on ollut toimintaa viimeisen 6 viikon aikana.
   discussion:
     direct_thread: Suora lanka
     invite_only: Vain kutsusta

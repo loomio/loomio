@@ -544,7 +544,7 @@ uk:
     recent_threads: Нещодавні теми
     invite_only_threads: Теми лише для запрошених
     direct_threads: Прямі теми
-    unread_threads: Непрочитані ланцюжки (%{count})
+    unread_threads: Непрочитані ланцюжки
     muted_threads: Вимкнуті теми
     start_subgroup: Нова підгрупа
     explore: Загальнодоступні групи
@@ -570,6 +570,7 @@ uk:
     find_a_group: Знайти групу
     direct_discussions: Прямі обговорення
     unread_discussions: Непрочитані обговорення
+    unread_threads_count: Непрочитані теми (%{count})
   strand_nav:
     newest: Найновіші
     oldest: Найстарші
@@ -1682,6 +1683,7 @@ uk:
       explanation: У вас немає непрочитаних обговорень, оскільки ви не є учасником жодної групи.
     no_discussions: Ура! Ви прочитали всі обговорення у своїй поштовій скриньці.
     unread_discussions: Непрочитані обговорення
+    recent_activity_notice: Показуються лише теми з активністю за останні 6 тижнів.
   discussion:
     direct_thread: Пряма нитка
     invite_only: Лише для запрошених

@@ -62,7 +62,7 @@ watchRecords({
 });
 
 EventBus.$emit('currentComponent', {
-  titleKey: 'inbox_page.unread_discussions',
+  titleKey: 'inbox_page.unread_threads',
   page: 'inboxPage'
 });
 
@@ -75,7 +75,7 @@ fetchInbox();
 <template lang="pug">
 v-main
   v-container.inbox-page.thread-preview-collection__container.max-width-1024.px-0.px-sm-3(grid-list-lg)
-    h1.text-h4.my-4(tabindex="-1" v-intersect="{handler: titleVisible}" v-t="'inbox_page.unread_discussions'")
+    h1.text-h4.my-4(tabindex="-1" v-intersect="{handler: titleVisible}" v-t="'inbox_page.unread_threads'")
     section.dashboard-page__loading(v-if='unreadCount == 0 && loading' aria-hidden='true')
       .thread-previews-container
         loading-content.thread-preview(:lineCount='2' v-for='(item, index) in [1,2,3,4,5,6,7,8,9,10]' :key='index')
@@ -92,7 +92,6 @@ v-main
         span(v-t="'inbox_page.no_groups.or'")
         | &nbsp;
         span(v-html="$t('inbox_page.no_groups.join_group')")
-      p.text-caption.text-medium-emphasis.text-center.mt-2(v-t="'inbox_page.recent_activity_notice'")
       .inbox-page__group(v-for='group in groups', :key='group.id')
         v-card.mb-3(v-if='viewsByGroup[group.key].length > 0')
           v-list
@@ -100,6 +99,7 @@ v-main
               router-link.inbox-page__group-link(:to="'/g/' + group.key") {{group.name}}
             thread-preview-collection(:threads="viewsByGroup[group.key]", :limit="threadLimit")
         //- strand-wall(:threads="viewsByGroup[group.key]")
+      p.text-caption.text-medium-emphasis.text-center.mt-4(v-t="'inbox_page.recent_activity_notice'")
 </template>
 
 <style lang="sass">
