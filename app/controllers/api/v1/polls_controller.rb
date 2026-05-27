@@ -88,6 +88,12 @@ class Api::V1::PollsController < Api::V1::RestfulController
   private
 
   def accessible_records
-    PollQuery.visible_to(user: current_user, or_public: false)
+    PollQuery.relevant_to(user: current_user, group_ids: poll_group_ids)
+  end
+
+  def poll_group_ids
+    return [] unless group = Group.find_by(key: params[:group_key])
+
+    (params[:subgroups] == "none") ? [group.id] : group.id_and_subgroup_ids
   end
 end

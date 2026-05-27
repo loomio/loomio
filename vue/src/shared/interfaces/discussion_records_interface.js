@@ -1,7 +1,5 @@
 import BaseRecordsInterface from '@/shared/record_store/base_records_interface';
 import DiscussionModel      from '@/shared/models/discussion_model';
-import Session              from '@/shared/services/session';
-import EventBus             from '@/shared/services/event_bus';
 import NullDiscussionModel  from '@/shared/models/null_discussion_model';
 
 export default class DiscussionRecordsInterface extends BaseRecordsInterface {
@@ -12,14 +10,4 @@ export default class DiscussionRecordsInterface extends BaseRecordsInterface {
   }
 
   nullModel() { return new NullDiscussionModel(); }
-
-  search(groupKey, fragment, options) {
-    if (options == null) { options = {}; }
-    options.group_id = groupKey;
-    options.q = fragment;
-    return this.fetch({
-      path: 'search',
-      params: options
-    });
-  }
 };

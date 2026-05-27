@@ -176,12 +176,7 @@ Rails.application.routes.draw do
         get :timeline, on: :collection
       end
 
-      resources :discussions, only: [:show, :index, :create, :update] do
-        get :search, on: :collection
-        get :dashboard, on: :collection
-        get :inbox, on: :collection
-        get :direct, on: :collection
-      end
+      resources :discussions, only: [:show, :create, :update]
 
       resources :discussion_templates, only: [:create, :index, :show, :update, :destroy] do
         collection do

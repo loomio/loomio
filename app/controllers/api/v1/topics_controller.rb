@@ -2,33 +2,17 @@ class Api::V1::TopicsController < Api::V1::RestfulController
   before_action :require_current_user, except: :index
 
   def index
-    @topics = TopicQuery.visible_to(
+    group_ids = topic_group_ids
+    @topics = TopicQuery.relevant_to(
                           user: current_user,
                           or_subgroups: %w[all mine].include?(params[:subgroups]),
-                          or_public: params[:group_id].present?,
+                          group_ids: group_ids,
                           only_direct: params.has_key?(:direct),
                           only_unread: params.has_key?(:unread)
                         ).recent_activity_first
 
     if params[:topicable_type].present?
       @topics = @topics.where(topicable_type: params[:topicable_type])
-    end
-
-    if params[:group_id].present?
-      group = Group.find(params[:group_id])
-      group_ids = case params[:subgroups]
-      when 'all'
-        [group.id] + group.subgroup_ids
-      when 'mine'
-        if current_user.is_logged_in?
-          [group.id].concat(current_user.group_ids & group.id_and_subgroup_ids)
-        else
-          [group.id]
-        end
-      else
-        [group.id]
-      end
-      @topics = @topics.where(group_id: group_ids.compact.uniq)
     end
 
     case params[:filter]
@@ -40,6 +24,11 @@ class Api::V1::TopicsController < Api::V1::RestfulController
 
     tags = Array(params[:tags]).reject(&:blank?)
     @topics = @topics.tagged(tags) if tags.any?
+
+    if params[:q].present? && params[:topicable_type] == 'Discussion'
+      @topics = @topics.joins("INNER JOIN discussions ON discussions.id = topics.topicable_id")
+                       .where("discussions.title ILIKE ?", "%#{params[:q]}%")
+    end
 
     self.collection_count = @topics.count
     @topics = page_collection(@topics)
@@ -142,6 +131,24 @@ class Api::V1::TopicsController < Api::V1::RestfulController
   end
 
   private
+
+  def topic_group_ids
+    return [] unless params[:group_id].present?
+
+    group = Group.find(params[:group_id])
+    case params[:subgroups]
+    when 'all'
+      [group.id] + group.subgroup_ids
+    when 'mine'
+      if current_user.is_logged_in?
+        [group.id].concat(current_user.group_ids & group.id_and_subgroup_ids)
+      else
+        [group.id]
+      end
+    else
+      [group.id]
+    end.compact.uniq
+  end
 
   def accessible_records
 

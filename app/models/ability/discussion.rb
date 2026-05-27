@@ -3,7 +3,7 @@ module Ability::Discussion
     super(user)
 
     can [ :show, :print ], ::Discussion do |discussion|
-      DiscussionQuery.visible_to(user: user).exists?(discussion.id)
+      TopicQuery.visible_to(user: user).where(topicable_type: 'Discussion', topicable_id: discussion.id).exists?
     end
 
     can :update_version, ::Discussion do |discussion|

@@ -22,7 +22,7 @@ const MembershipRequestsPanel = wrapAsyncLoader(() => import('./components/group
 const StartGroupPage = wrapAsyncLoader(() => import('./components/start_group/page'));
 const ContactPage = wrapAsyncLoader(() => import('./components/contact/page'));
 const EmailSettingsPage = wrapAsyncLoader(() => import('./components/email_settings/page'));
-const ThreadFormPage = wrapAsyncLoader(() => import('./components/thread/form_page'));
+const ThreadFormPage = wrapAsyncLoader(() => import('./components/discussion/form_page'));
 const DiscussionTemplateFormPage = wrapAsyncLoader(() => import('./components/discussion_template/form_page'));
 const DiscussionTemplateIndexPage = wrapAsyncLoader(() => import('./components/discussion_template/index_page'));
 const DiscussionTemplateBrowsePage = wrapAsyncLoader(() => import('./components/discussion_template/browse_page'));

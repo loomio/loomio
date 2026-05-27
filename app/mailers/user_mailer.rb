@@ -44,10 +44,9 @@ class UserMailer < ApplicationMailer
 
     time_finish = Time.zone.now
 
-    topics = TopicQuery.visible_to(
+    topics = TopicQuery.relevant_to(
       user: user,
       only_unread: true,
-      or_public: false,
       or_subgroups: false
     ).where("topics.last_activity_at > ?", time_start)
 

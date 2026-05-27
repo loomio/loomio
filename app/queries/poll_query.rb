@@ -5,8 +5,22 @@ class PollQuery
 
   def self.visible_to(user: LoggedOutUser.new,
                       chain: start,
-                      group_ids: [],
-                      or_public: true)
+                      group_ids: [])
+    visible_scope(user: user, chain: chain, group_ids: group_ids, public_group_ids: nil)
+  end
+
+  def self.relevant_to(user: LoggedOutUser.new,
+                       chain: start,
+                       group_ids: [])
+    visible_scope(user: user, chain: chain, group_ids: group_ids, public_group_ids: group_ids)
+  end
+
+  def self.visible_scope(user:,
+                         chain:,
+                         group_ids:,
+                         public_group_ids:)
+    group_ids = Array(group_ids).compact.map(&:to_i)
+    public_group_ids = Array(public_group_ids).compact.map(&:to_i) if public_group_ids
 
     if user.topic_reader_token
       or_topic_reader_token = "OR tr.token = #{ActiveRecord::Base.connection.quote(user.topic_reader_token)}"
@@ -18,10 +32,16 @@ class PollQuery
                  .joins("LEFT OUTER JOIN topic_readers tr ON tr.topic_id = t.id AND (tr.user_id = #{user.id || 0} #{or_topic_reader_token})")
 
     chain = chain.where("polls.author_id = :user_id OR
-                         #{'t.private = FALSE OR' if or_public}
+                         #{public_group_ids ? public_visibility_sql(public_group_ids) : 't.private = FALSE OR'}
                          (m.id IS NOT NULL AND m.revoked_at IS NULL) OR
-                         (tr.id IS NOT NULL AND tr.revoked_at IS NULL AND tr.guest = TRUE)", user_id: user.id)
+                         (tr.id IS NOT NULL AND tr.revoked_at IS NULL AND tr.guest = TRUE)", user_id: user.id, public_group_ids: public_group_ids)
     chain
+  end
+
+  def self.public_visibility_sql(public_group_ids)
+    return "" unless public_group_ids.any?
+
+    "t.private = FALSE AND t.group_id IN (:public_group_ids) OR"
   end
 
 

@@ -71,6 +71,10 @@ export default class TopicModel extends BaseModel {
     return this.topicableType === 'Discussion' ? Records.discussions.find(this.topicableId) : null
   }
 
+  get title() {
+    return this.topicable().title;
+  }
+
   author() { return this.topicable().author(); }
 
   hasUnreadActivity() {

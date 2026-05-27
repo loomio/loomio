@@ -11,7 +11,7 @@ class TopicQueryTest < ActiveSupport::TestCase
 
   # -- Logged out --
 
-  test "logged out shows public topics" do
+  test "logged out can see public topics" do
     pub_group = Group.new(name: "PubGroup #{SecureRandom.hex(4)}", is_visible_to_public: true, discussion_privacy_options: 'public_or_private')
     pub_group.save(validate: false)
     priv_group = Group.new(name: "PrivGroup #{SecureRandom.hex(4)}", is_visible_to_public: false)
@@ -35,7 +35,7 @@ class TopicQueryTest < ActiveSupport::TestCase
     refute_includes query, priv_disc.topic
   end
 
-  test "logged out shows topics in specified public groups" do
+  test "findable public topics require a requested group" do
     pub_group = Group.new(name: "PubGroup #{SecureRandom.hex(4)}", is_visible_to_public: true, discussion_privacy_options: 'public_or_private')
     pub_group.save(validate: false)
     hex = SecureRandom.hex(4)
@@ -45,8 +45,8 @@ class TopicQueryTest < ActiveSupport::TestCase
     pub_disc.save(validate: false)
     pub_disc.create_missing_created_event!
 
-    query = TopicQuery.visible_to(group_ids: [pub_group.id])
-    assert_includes query, pub_disc.topic
+    refute_includes TopicQuery.relevant_to, pub_disc.topic
+    assert_includes TopicQuery.relevant_to(group_ids: [pub_group.id]), pub_disc.topic
   end
 
   # -- Unread --
@@ -91,7 +91,7 @@ class TopicQueryTest < ActiveSupport::TestCase
 
     assert TopicQuery.visible_to(user: disc_user).exists?(disc.topic.id)
     refute TopicQuery.visible_to(user: group_user).exists?(disc.topic.id)
-    refute TopicQuery.visible_to(user: public_user, or_public: true).exists?(disc.topic.id)
+    refute TopicQuery.visible_to(user: public_user).exists?(disc.topic.id)
 
     ActionMailer::Base.deliveries.clear
   end
@@ -114,7 +114,7 @@ class TopicQueryTest < ActiveSupport::TestCase
 
     assert TopicQuery.visible_to(user: disc_user).exists?(disc.topic.id)
     assert TopicQuery.visible_to(user: group_user).exists?(disc.topic.id)
-    refute TopicQuery.visible_to(user: public_user, or_public: true).exists?(disc.topic.id)
+    refute TopicQuery.visible_to(user: public_user).exists?(disc.topic.id)
 
     ActionMailer::Base.deliveries.clear
   end
@@ -138,7 +138,9 @@ class TopicQueryTest < ActiveSupport::TestCase
 
     assert TopicQuery.visible_to(user: disc_user).exists?(disc.topic.id)
     assert TopicQuery.visible_to(user: group_user).exists?(disc.topic.id)
-    assert TopicQuery.visible_to(user: public_user, or_public: true).exists?(disc.topic.id)
+    assert TopicQuery.visible_to(user: public_user).exists?(disc.topic.id)
+    refute TopicQuery.relevant_to(user: public_user).exists?(disc.topic.id)
+    assert TopicQuery.relevant_to(user: public_user, group_ids: [child_group.id]).exists?(disc.topic.id)
 
     ActionMailer::Base.deliveries.clear
   end

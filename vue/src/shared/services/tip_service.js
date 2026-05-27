@@ -109,20 +109,20 @@ export default new class TipService {
             props: {
               confirm: {
                 submit: () => {
-                  let discussion = null;
                   return Records.remote.fetch({
-                    path: 'discussions',
+                    path: 'topics',
                     params: {
                       group_id: group.id,
+                      topicable_type: 'Discussion',
                       subgroups: 'none',
                       exclude_types: 'reaction'
                     }
                   }).then(() => {
-                    discussion = Records.discussions.collection.chain()
-                      .find({groupId: group.id})
+                    const topic = Records.topics.collection.chain()
+                      .find({groupId: group.id, topicableType: 'Discussion'})
                       .simplesort('id')
                       .data()[0];
-                    vm.$router.push(vm.urlFor(discussion, null, { current_action: 'add-poll' }));
+                    vm.$router.push(vm.urlFor(topic, null, { current_action: 'add-poll' }));
                   });
                 },
                 forceSubmit: true,

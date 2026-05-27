@@ -215,7 +215,7 @@ class Api::V1::DiscussionsControllerTest < ActionController::TestCase
   end
 
   test "does not return a discarded discussion" do
-    @discussion.update_columns(discarded_at: 1.day.ago)
+    @discussion.topic.update_columns(discarded_at: 1.day.ago)
     sign_in @user
 
     get :show, params: { id: @discussion.key }
@@ -239,87 +239,6 @@ class Api::V1::DiscussionsControllerTest < ActionController::TestCase
     get :show, params: { id: @discussion.id }, format: :json
 
     assert_response :forbidden
-  end
-
-  # Test inbox action
-  test "inbox responds with forbidden for logged out users" do
-    get :inbox
-
-    assert_response :forbidden
-  end
-
-  test "inbox returns unread threads" do
-    sign_in @user
-
-    # Mark discussion as read
-    reader = TopicReader.for(user: @user, topic: @discussion.topic)
-    reader.viewed!
-
-    # Add a new comment to make it unread
-    new_comment = Comment.new(body: "New comment", parent: @discussion, author: @admin)
-    CommentService.create(comment: new_comment, actor: @admin)
-
-    get :inbox
-
-    json = JSON.parse(response.body)
-    discussion_ids = json['discussions'].map { |d| d['id'] }
-    assert_includes discussion_ids, @discussion.id
-  end
-
-  test "inbox does not return read threads" do
-    sign_in @user
-
-    # Mark all discussions as read
-    Discussion.joins(:topic).where(topics: { group_id: @user.group_ids }).find_each do |d|
-      TopicReader.for(user: @user, topic: d.topic).viewed!
-    end
-
-    get :inbox
-
-    json = JSON.parse(response.body)
-    assert_empty json['discussions']
-  end
-
-  # Test dashboard action
-  test "dashboard responds with forbidden for logged out users" do
-    get :dashboard
-
-    assert_response :forbidden
-  end
-
-  test "dashboard can filter since a certain date" do
-    sign_in @user
-    old_discussion = DiscussionService.create(params: { title: "Old thread", group_id: @group.id }, actor: @admin)
-    old_discussion.update_columns(created_at: 6.months.ago)
-
-    get :dashboard, params: { since: 3.months.ago }
-
-    json = JSON.parse(response.body)
-    ids = json['discussions'].map { |v| v['id'] }
-    assert_includes ids, @discussion.id
-    refute_includes ids, old_discussion.id
-  end
-
-  test "dashboard can filter until a certain date" do
-    sign_in @user
-    old_discussion = DiscussionService.create(params: { title: "Old thread", group_id: @group.id }, actor: @admin)
-    old_discussion.update_columns(created_at: 6.months.ago)
-
-    get :dashboard, params: { until: 3.months.ago }
-
-    json = JSON.parse(response.body)
-    ids = json['discussions'].map { |v| v['id'] }
-    refute_includes ids, @discussion.id
-    assert_includes ids, old_discussion.id
-  end
-
-  test "dashboard can limit collection size" do
-    sign_in @user
-
-    get :dashboard, params: { per: 2 }
-
-    json = JSON.parse(response.body)
-    assert json['discussions'].count <= 2
   end
 
   # Test update action

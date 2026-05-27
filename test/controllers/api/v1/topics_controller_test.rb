@@ -52,6 +52,32 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
     refute_includes topic_ids, @topic.id
   end
 
+  test "index only includes public topics when a group is requested" do
+    public_group = groups(:public_group)
+    hex = SecureRandom.hex(4)
+    public_author = User.create!(name: "publictopic#{hex}", email: "publictopic#{hex}@example.com", username: "publictopic#{hex}")
+    public_group.add_admin!(public_author)
+    discussion = DiscussionService.build(params: {
+      title: "Public topic #{hex}",
+      group_id: public_group.id,
+      private: false,
+      description_format: "html"
+    }, actor: public_author)
+    discussion.save(validate: false)
+    discussion.create_missing_created_event!
+
+    sign_in @alien
+    get :index
+    assert_response :success
+    topic_ids = JSON.parse(response.body)['topics'].map { |t| t['id'] }
+    refute_includes topic_ids, discussion.topic.id
+
+    get :index, params: { group_id: public_group.id }
+    assert_response :success
+    topic_ids = JSON.parse(response.body)['topics'].map { |t| t['id'] }
+    assert_includes topic_ids, discussion.topic.id
+  end
+
   test "index returns guest topics" do
     sign_in @alien
     @topic.add_guest!(@alien, @admin)

@@ -4,14 +4,14 @@ import Session from '@/shared/services/session';
 import AbilityService from '@/shared/services/ability_service';
 import Flash   from '@/shared/services/flash';
 import EventBus          from '@/shared/services/event_bus';
-import { sortBy, debounce, escapeRegExp } from 'lodash-es';
+import { sortBy, debounce } from 'lodash-es';
 import UrlFor from '@/mixins/url_for';
 
 export default {
   mixins: [UrlFor],
   data() {
     return {
-      selectedDiscussion: null,
+      selectedTopic: null,
       searchFragment: '',
       searchResults: [],
       groupId: this.topic.groupId,
@@ -25,21 +25,27 @@ export default {
   },
 
   mounted() {
-    Records.discussions.fetch({
-      path: 'dashboard',
-      params: {
-        exclude_types: 'user group poll',
-        per: 50
-      }}).then(() => this.getSuggestions());
+    this.getSuggestions();
   },
 
   methods: {
     getSuggestions() {
-      this.searchResults = Records.discussions.collection.chain()
-        .find({groupId: this.groupId})
-        .where(d => d.topic() && d.topic().id !== this.topic.id && AbilityService.canStartPoll(d.topic()))
-        .simplesort('id', true)
-        .data();
+      this.loading = true;
+      Records.topics.fetch({
+        params: {
+          group_id: this.groupId,
+          topicable_type: 'Discussion',
+          exclude_types: 'reaction',
+          per: 50
+        }
+      }).then(() => {
+        this.loading = false;
+        this.searchResults = Records.topics.collection.chain()
+          .find({groupId: this.groupId, topicableType: 'Discussion'})
+          .where(t => t.id !== this.topic.id && AbilityService.canAddComment(t))
+          .simplesort('lastActivityAt', true)
+          .data();
+      });
     },
 
     resetForkedEvents() {
@@ -47,42 +53,56 @@ export default {
     },
 
     startNewThread() {
-      this.selectedDiscussion = Records.discussions.build({groupId: this.groupId});
-      this.selectedDiscussion.forkedEventIds = this.topic.forkedEventIds;
+      const newDiscussion = Records.discussions.build({groupId: this.groupId});
+      newDiscussion.forkedEventIds = this.topic.forkedEventIds;
       this.resetForkedEvents();
       EventBus.$emit('openModal', {
         component: 'DiscussionForm',
         props: {
-          discussion: this.selectedDiscussion
+          discussion: newDiscussion
         }
       });
     },
 
     submit() {
       this.loading = true;
-      const targetTopic = this.selectedDiscussion.topic();
-      targetTopic.moveComments(this.topic.forkedEventIds).then(() => {
+      this.selectedTopic.moveComments(this.topic.forkedEventIds).then(() => {
         this.loading = false;
         this.resetForkedEvents();
         EventBus.$emit('closeModal');
         Flash.success("discussion_fork_actions.moved");
-        this.$router.push(this.urlFor(this.selectedDiscussion));
+        this.$router.push(this.urlFor(this.selectedTopic));
       });
     },
 
     fetch: debounce(function() {
-      if (!this.searchFragment) { return; }
+      if (!this.searchFragment) {
+        this.getSuggestions();
+        return;
+      }
       this.loading = true;
-      Records.discussions.search(this.groupId, this.searchFragment).then(data => {
+      Records.topics.fetch({
+        params: {
+          group_id: this.groupId,
+          topicable_type: 'Discussion',
+          q: this.searchFragment,
+          per: 20
+        }
+      }).then(() => {
         this.loading = false;
-        this.searchResults = Records.discussions.collection.chain()
-          .find({groupId: this.groupId})
-          .find({title: { $regex: [escapeRegExp(this.searchFragment), 'i'] }})
-          .where(d => d.topic() && d.topic().id !== this.topic.id && AbilityService.canAddComment(d.topic()))
-          .simplesort('title')
+        const frag = this.searchFragment.toLowerCase();
+        this.searchResults = Records.topics.collection.chain()
+          .find({groupId: this.groupId, topicableType: 'Discussion'})
+          .where(t => {
+            const disc = t.discussion();
+            return disc && t.id !== this.topic.id &&
+                   disc.title.toLowerCase().includes(frag) &&
+                   AbilityService.canAddComment(t);
+          })
+          .simplesort('lastActivityAt', true)
           .data();
       });
-    } , 500)
+    }, 500)
   },
 
   watch: {
@@ -98,11 +118,11 @@ v-card(:title="$t('action_dock.move_items')")
     dismiss-modal-button(aria-hidden='true')
   v-card-text
     v-select(v-model="groupId" :items="groups" item-title="fullName" item-value="id")
-    v-autocomplete(hide-no-data return-object v-model="selectedDiscussion" :search-input.sync="searchFragment" :items="searchResults" item-title="title" :placeholder="$t('discussion_fork_actions.search_placeholder')" :label="$t('discussion_fork_actions.move_to_existing_thread')" :loading="loading")
+    v-autocomplete(hide-no-data return-object v-model="selectedTopic" :search-input.sync="searchFragment" :items="searchResults" item-title="title" :placeholder="$t('discussion_fork_actions.search_placeholder')" :label="$t('discussion_fork_actions.move_to_existing_thread')" :loading="loading")
   v-card-actions
     v-spacer
-    v-btn(color="primary" outlined @click="startNewThread()" :loading="topic.processing")
+    v-btn(color="primary" outlined @click="startNewThread()" :loading="loading")
       span(v-t="'discussion_fork_actions.start_new_thread'")
-    v-btn(color="primary" @click="submit()" :disabled="!selectedDiscussion" :loading="topic.processing")
+    v-btn(color="primary" @click="submit()" :disabled="!selectedTopic" :loading="loading")
       span(v-t="'common.action.save'")
 </template>

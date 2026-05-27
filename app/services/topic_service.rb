@@ -162,7 +162,7 @@ class TopicService
     time_finish = Time.at(time_finish_i).utc
     time_range = time_start..time_finish
 
-    TopicQuery.visible_to(user: user, only_unread: true, or_public: false, or_subgroups: false)
+    TopicQuery.relevant_to(user: user, only_unread: true, or_subgroups: false)
       .where("topics.last_activity_at > ?", time_start).each do |topic|
       RetryOnError.with_limit(2) do
         sequence_ids = topic.items.where("events.created_at": time_range).pluck(:sequence_id)

@@ -106,6 +106,32 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
     refute_includes poll_ids, private_poll.id
   end
 
+  test "index only includes public polls when a group is requested" do
+    public_group = groups(:public_group)
+    hex = SecureRandom.hex(4)
+    poll_author = User.create!(name: "publicpoll#{hex}", email: "publicpoll#{hex}@example.com", username: "publicpoll#{hex}")
+    public_group.add_admin!(poll_author)
+    public_poll = PollService.create(params: {
+      title: "Public poll #{hex}",
+      poll_type: "poll",
+      private: false,
+      group_id: public_group.id,
+      closing_at: 5.days.from_now,
+      poll_option_names: ["engage"]
+    }, actor: poll_author)
+
+    sign_in @alien
+    get :index, params: { status: "recent" }
+    assert_response :success
+    poll_ids = JSON.parse(response.body)["polls"].map { |poll| poll["id"] }
+    refute_includes poll_ids, public_poll.id
+
+    get :index, params: { group_key: public_group.key, status: "recent" }
+    assert_response :success
+    poll_ids = JSON.parse(response.body)["polls"].map { |poll| poll["id"] }
+    assert_includes poll_ids, public_poll.id
+  end
+
   # Create tests
   test "create creates a poll in discussion" do
     sign_in @admin

@@ -79,7 +79,7 @@ class PollQueryTest < ActiveSupport::TestCase
       poll_option_names: ["ignore"]
     }, actor: poll_author)
 
-    results = PollQuery.visible_to(user: @user, or_public: false).recent
+    results = PollQuery.visible_to(user: @user).recent
     assert_includes results, guest_poll
     refute_includes results, private_poll
   end
@@ -103,7 +103,8 @@ class PollQueryTest < ActiveSupport::TestCase
       poll_option_names: ["engage"]
     }, actor: public_author)
 
-    results = PollQuery.visible_to
-    assert_includes results, public_poll
+    assert_includes PollQuery.visible_to(user: @user), public_poll
+    refute_includes PollQuery.relevant_to(user: @user), public_poll
+    assert_includes PollQuery.relevant_to(user: @user, group_ids: [public_group.id]), public_poll
   end
 end
