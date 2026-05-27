@@ -6,3 +6,11 @@
 #   parent: discussion (Discussion)
 #   created_at: <%= 5.days.ago %>
 #   updated_at: <%= 5.days.ago %>
+
+public_discussion_comment:
+  body: A comment on the public discussion
+  body_format: html
+  user: admin
+  parent: public_discussion (Discussion)
+  created_at: <%= 2.days.ago %>
+  updated_at: <%= 2.days.ago %>
