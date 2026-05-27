@@ -286,8 +286,12 @@ class PollService
 
   def self.mark_closed_poll_topics_read(dry_run: false)
     stats = { topics: 0, readers_created: 0, readers_updated: 0 }
+    processed = 0
 
     Poll.closed.kept.joins(:topic).where(topics: { topicable_type: 'Poll' }).find_each do |poll|
+      processed += 1
+      puts "Processing poll #{processed} (id=#{poll.id})..." if (processed % 100).zero?
+
       topic = poll.topic
       ranges = RangeSet.ranges_from_list(topic.items.where.not(sequence_id: nil).order(:sequence_id).pluck(:sequence_id))
       next if ranges.empty?
@@ -297,7 +301,7 @@ class PollService
       now = Time.zone.now
       reader_attrs = closed_poll_topic_reader_attrs(poll, topic, now)
       audience_user_ids = reader_attrs.map { |attrs| attrs[:user_id] }
-      existing_user_ids = TopicReader.where(topic_id: topic.id, user_id: audience_user_ids).pluck(:user_id)
+      existing_user_ids = TopicReader.where(topic_id: topic.id, user_id: audience_user_ids).pluck(:user_id).to_set
       missing_reader_attrs = reader_attrs.reject { |attrs| existing_user_ids.include?(attrs[:user_id]) }
       active_reader_scope = TopicReader.active.where(topic_id: topic.id)
 
@@ -314,8 +318,17 @@ class PollService
         last_read_at: now,
         updated_at: now
       )
-      topic.update_seen_by_count
-      topic.update_members_count
+    end
+
+    # Update counter caches in bulk after all readers are written
+    unless dry_run
+      topic_ids = Poll.closed.kept.joins(:topic).where(topics: { topicable_type: 'Poll' }).pluck('topics.id')
+      topic_ids.each_slice(500) do |ids|
+        Topic.where(id: ids).find_each do |topic|
+          topic.update_seen_by_count
+          topic.update_members_count
+        end
+      end
     end
 
     stats
