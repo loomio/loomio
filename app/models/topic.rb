@@ -97,6 +97,7 @@ class Topic < ApplicationRecord
   end
 
   def members
+    return User.none unless persisted?
     User.active
         .joins("LEFT OUTER JOIN topic_readers tr ON tr.topic_id = #{id} AND tr.user_id = users.id")
         .joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{group_id || 0}")
@@ -105,6 +106,7 @@ class Topic < ApplicationRecord
   end
 
   def admins
+    return User.none unless persisted?
     User.active
         .joins("LEFT OUTER JOIN topic_readers tr ON tr.topic_id = #{id} AND tr.user_id = users.id")
         .joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{group_id || 0}")
@@ -113,6 +115,7 @@ class Topic < ApplicationRecord
   end
 
   def guests
+    return User.none unless persisted?
     User.active
         .joins("LEFT OUTER JOIN topic_readers tr ON tr.topic_id = #{id} AND tr.user_id = users.id")
         .joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{group_id || 0}")
@@ -163,6 +166,7 @@ class Topic < ApplicationRecord
   end
 
   def members_by_volume(operator, volume)
+    return User.none unless persisted?
     User.active.distinct
         .joins("LEFT OUTER JOIN topic_readers tr ON tr.topic_id = #{id} AND tr.user_id = users.id")
         .joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{group_id || 0}")

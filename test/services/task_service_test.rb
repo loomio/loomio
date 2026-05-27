@@ -93,6 +93,29 @@ class TaskServiceTest < ActiveSupport::TestCase
     assert_equal 0, @discussion.tasks.count
   end
 
+  test "creating a discussion with task items in the description does not raise a SQL error" do
+    # Regression: LOOMIO-COM-2AQ
+    # When creating a new discussion, Discussion belongs_to a new Topic, and Topic belongs_to
+    # topicable (the Discussion). Rails autosaves both, creating a circular save chain where
+    # Discussion's after_save fires before Topic is persisted, making topic.id nil.
+    # topic.members then builds invalid SQL: "topic_id = AND" → PG::SyntaxError.
+    task_body = "<li data-uid='999' data-type='taskItem' data-checked='false' data-author-id='#{@member.id}'>do the thing</li>"
+
+    discussion = nil
+    assert_nothing_raised do
+      discussion = DiscussionService.create(params: {
+        title:              'Discussion with tasks',
+        description:        task_body,
+        description_format: 'html',
+        group_id:           @group.id,
+        private:            true
+      }, actor: @member)
+    end
+
+    assert discussion.persisted?
+    assert discussion.topic.persisted?
+  end
+
   test "correctly sets remind_at" do
     @member.update(time_zone: "Pacific/Auckland")
     rich_text = "<li data-uid='123' data-type='taskItem' data-due-on='2022-05-02' data-remind='1'>this is a task</li>"
