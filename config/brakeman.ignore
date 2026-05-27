@@ -163,6 +163,18 @@
     {
       "fingerprint": "a81bf8ba1f714b8e15ee523c6ae08ea86658b37e566a646380fd3bfee28e0ddd",
       "note": "False positive 2026-05-27 — user.id is an AR integer PK (safe); topic_reader_token is escaped via connection.quote (SQL Injection @ app/queries/poll_query.rb:35)"
+    },
+    {
+      "fingerprint": "b3caeb81df1b2c71dc9e1f31b3e3de958a77c55ded270edd1c116dad55342260",
+      "note": "False positive 2026-05-28 — ids sanitized via map(&:to_i).uniq before interpolation (SQL Injection @ app/services/poll_service.rb:359)"
+    },
+    {
+      "fingerprint": "17128591f3dd3ff325fb1c962209b52792ab8567b425b7fe648c1a7bf504e99a",
+      "note": "False positive 2026-05-28 — standalone_poll_stance_thread_item_candidates_sql is a hardcoded SQL string with no user input (SQL Injection @ app/services/poll_service.rb:370)"
+    },
+    {
+      "fingerprint": "84f8776861c11b22f82bb4b287c74ba805c4c6360ad50246325e2bc21cd9d499",
+      "note": "False positive 2026-05-28 — standalone_poll_stance_thread_item_candidates_sql is a hardcoded SQL string with no user input (SQL Injection @ app/services/poll_service.rb:374)"
     }
   ],
   "updated": "2026-05-27",
