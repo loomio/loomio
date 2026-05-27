@@ -33,4 +33,13 @@ class DiscussionsControllerTest < ActionController::TestCase
     assert_response 200
     assert_equal discussion, assigns(:discussion)
   end
+
+  test "xml feed renders comment links using /c/:id route" do
+    # Regression: comment_url was called with wrong params (key:, comment_id:)
+    # causing ActionController::UrlGenerationError (missing required key :id)
+    discussion = discussions(:public_discussion)
+    get :show, params: { key: discussion.key }, format: :xml
+    assert_response 200
+    assert_match %r{/c/\d+}, @response.body
+  end
 end

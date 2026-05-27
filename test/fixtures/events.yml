@@ -37,3 +37,13 @@ alien_discussion_created_event:
   position: 0
   position_key: "00000"
   depth: 0
+
+public_discussion_comment_event:
+  kind: new_comment
+  eventable: public_discussion_comment (Comment)
+  topic: public_discussion_topic
+  user: admin
+  sequence_id: 1
+  position: 1
+  position_key: "00001"
+  depth: 1
