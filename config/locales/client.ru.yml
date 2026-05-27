@@ -165,6 +165,7 @@ ru:
     ranked_choice: ранжированный выбор
     score: опрос по очкам
     question: раунд вопросов
+    stv: выборы STV
   timezones:
     local: местное время (%{value})
   common:
@@ -314,6 +315,7 @@ ru:
       rearrange: Переставить
       save_template: Сохранить шаблон
       fork_template: Шаблон форка
+      customize: Настроить
     formatting_help:
       label: Форматирование
       title: Узнайте, как использовать Markdown для форматирования текста.
@@ -323,6 +325,8 @@ ru:
     opening_in: Время открытия %{time}
     read_more: Читать далее
     templates_admin_hint: Поскольку вы являетесь администратором группы, вы можете скрывать или удалять любые ненужные шаблоны, а оставшиеся редактировать в соответствии со своими потребностями.
+    read: Читать
+    unread: Непрочитано
   merge_accounts:
     modal:
       title: Объединить аккаунты
@@ -479,15 +483,15 @@ ru:
     changes_all_threads_and_polls_in_group: Это изменяет настройки всех тем и опросов в группе.
     when_do_you_want_to_be_emailed: Когда вы хотите получать электронные письма?
     what_the_options_mean: Что означают эти опции
-    quiet_explained: Вы не будете получать электронные письма, даже если кто-то попытается вас уведомить. Вы можете пропустить важные объявления или решения, если не привыкли регулярно проверять Loomio.
     when_would_you_like_to_be_emailed_discussion: Когда бы вы хотели получить уведомление по электронной почте об этом обсуждении?
     changes_all_discussions_and_polls_in_group: Это изменяет настройки всех обсуждений и опросов в группе.
     normal_explained: Когда кто-то вводит ваше имя в поле «Уведомить» обсуждения или опроса или {'@'}упоминает группу.
     aria_label: Форма изменения настроек электронной почты
-  close_explanation_modal:
-    close_thread: Закрыть тему
-    body: "<p>Закройте старые или нерелевантные темы, чтобы удалить их из поля зрения и указать, что обсуждение закрыто.</p><p> Любой желающий по-прежнему может комментировать или начинать опрос в закрытой теме, но он не будет отображаться в списке тем группы или на информационной панели.</p>"
-    image_alt: Закрытие всех тем
+    when_do_you_want_to_be_emailed_thread: Когда вы хотите получать уведомления по электронной почте по этой теме?
+    loud_option: Всякий раз, когда кто-либо принимает участие (вся деятельность).
+    normal_option: Когда кто-то хочет привлечь мое внимание (после получения уведомления)
+    quiet_option: Электронные письма по этой теме не принимаются (выключено)
+    quiet_explained: Вам не будут присылать электронные письма, даже если кто-то попытается вас уведомить.
   inbox:
     clear: Очистить
     latest: Последний
@@ -527,6 +531,7 @@ ru:
     sign_in: Войдите чтобы присоеденится к разговору
     add_a_comment: Добавить комментарий
     share_your_thoughts: Поделитесь своими мыслями…
+    share_on_poll: Задайте вопрос или поделитесь новой информацией.
   thread_nav:
     participants: Участники
   sidebar:
@@ -561,6 +566,7 @@ ru:
     new_subgroup: Новая подгруппа
     find_a_group: Найти группу
     direct_discussions: Прямые обсуждения
+    unread_discussions: Непрочитанные обсуждения
   strand_nav:
     newest: Новейший
     oldest: Самый старый
@@ -581,7 +587,12 @@ ru:
     showing_unread: Показано непрочитанное
     add_comment: Добавить комментарий
     start_decision: Начать решение
-    recenter: Совсем недавно
+    return: Назад
+    end: Конец
+    notifications: Уведомления
+    email_all_activity: Отправлять всю активность по электронной почте
+    email_notifications: Письмо при уведомлении
+    email_none: Нет электронных писем
   search_modal:
     all_content: Весь контент
     best_match: Лучший матч
@@ -618,6 +629,7 @@ ru:
     search_files_short: Поиск файлов
     search_subgroups_short: Поиск подгрупп
     search_discussions_in_group: Поиск обсуждений в %{name}
+    thread_nav: Меню темы
   user_dropdown:
     pin_sidebar: Закрепить боковую панель
     unpin_sidebar: Открепить боковую панель
@@ -649,6 +661,7 @@ ru:
     invite_to_wip_poll: Пригласить оставить отзыв
     invitations: Приглашения
     discussion_members: Участники обсуждения
+    thread_members: Участники темы
   membership_dropdown:
     set_name_and_username: Установить имя и имя пользователя
     set_title: Установить заголовок
@@ -713,6 +726,7 @@ ru:
       discussion_closed: "%{actor} закрыл обсуждение: %{title}"
       new_discussion: "%{actor} начал обсуждение: %{title}"
       user_reminded: "%{actor} напоминает вам проголосовать за: %{title}"
+      thread_locked: "%{actor} заблокировал ветку обсуждения: %{title}"
     without_title:
       unknown_sender: Пожалуйста, просмотрите письмо от неизвестного отправителя
       group_announced: "%{actor} пригласил вас в группу"
@@ -750,6 +764,7 @@ ru:
       new_discussion: "%{actor} начал обсуждение"
       new_comment: "%{actor} прокомментировал в обсуждении"
       outcome_updated: "%{actor} обновил результат"
+      thread_locked: "%{actor} заблокировал тему"
     hints:
       poll_closing_soon: Сейчас хорошее время, чтобы проголосовать, передумать или призвать других к участию.
       poll_closing_soon_author: Возможно, вы захотите напомнить людям о необходимости проголосовать или продлить срок.
@@ -774,7 +789,7 @@ ru:
       poll_closed_by_user: "%{actor} закрыл %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} закрывается через 24 часа: %{title}"
       poll_closing_soon_author: 'Ваш %{poll_type} закрывается через 24 часа: %{title}'
-      poll_created: 'Голосование: %{title}'
+      poll_created: "%{poll_type}: %{title}"
       poll_edited: "%{actor} обновил %{poll_type}: %{title}"
       poll_expired: "%{poll_type} закрыт: %{title}"
       poll_expired_author: 'Опубликовать результат: %{title}'
@@ -793,6 +808,7 @@ ru:
       discussion_edited: "%{actor} отредактировал контекст обсуждения: %{title}"
       discussion_closed: "%{actor} закрыл обсуждение: %{title}"
       user_reminded: "%{actor} напоминает вам проголосовать за: %{title}"
+      thread_locked: "%{actor} заблокировал ветку обсуждения: %{title}"
   discussion_fork_actions:
     move: Переместить
     moved: Перемещение комментариев. Это может занять некоторое время.
@@ -848,6 +864,7 @@ ru:
     direct_discussion: Прямое обсуждение
     direct_discussion_hint: Прямые обсуждения видны только тем, кого вы пригласили. Они не будут отображаться в списках обсуждений групп — вы можете найти их на странице «Прямые обсуждения».
     recommended_poll_templates: Рекомендуемые шаблоны опросов
+    edit_discussion_context: Редактировать контекст обсуждения
   announcement:
     send_discussion: Отправить тему
     send_group: Пригласить людей в %{name}
@@ -972,6 +989,8 @@ ru:
     poll_announced: "%{name} пригласил %{length} человек проголосовать:"
     discussion_notification_history: История уведомлений об обсуждении
     inviting_guests_to_discussion: Гости не принадлежат к вашей группе и имеют доступ только к этому обсуждению.
+    topic_notification_history: История уведомлений в ветке
+    notification_history: История уведомлений
   action_dock:
     actions_menu: Меню действий
     more_actions: Больше действий
@@ -1018,8 +1037,6 @@ ru:
     discussion_copied: URL-адрес темы скопирован в буфер обмена.
     url_copied: Ссылка скопирована в буфер обмена
     tag_thread: Управлять метками
-    close_thread: Закрыть тему
-    reopen_thread: Открыть заново тему
     delete_thread: Удалить тему
     notification_history: История уведомлений
     move_item: Переместить элемент
@@ -1028,9 +1045,9 @@ ru:
     count_voters: "%{count} избирателей"
     pin_discussion: Закрепить обсуждение
     unpin_discussion: Открепить обсуждение
-    close_discussion: Закрыть обсуждение
-    reopen_discussion: Возобновить обсуждение
     delete_discussion: Удалить обсуждение
+    lock_thread: Заблокировать тему
+    unlock_thread: Разблокировать тему
   formatting:
     formatting_tools: Инструменты форматирования текста
     colors: Цвета
@@ -1153,7 +1170,6 @@ ru:
     settings: Настройки
     subgroups: Подгруппы
     show_opened: "%{count} открыто"
-    show_closed: "%{count} закрыто"
     no_threads_here: Здесь нет тем, которые можно было бы увидеть!
     search_threads: Ищите темы...
     private_threads: Вам необходимо быть участником, чтобы просматривать частные темы в этой группе.
@@ -1171,7 +1187,6 @@ ru:
     new_cover_photo: Загрузить новое фото обложки
     new_group_logo: Загрузить новый логотип группы
     open_discussions: Открыть тему
-    closed_discussions: Закрытые темы
     discussions_placeholder: Ветка — это место, где каждый может обсудить какую-либо тему и вместе принять решение.
     members_placeholder: 'Вы здесь единственный: пригласите несколько человек присоединиться к вам!'
     member_options: Опции участника
@@ -1220,8 +1235,10 @@ ru:
     discussions: Обсуждения
     no_discussions_here: Здесь нет обсуждений!
     private_discussions: Вам необходимо быть участником, чтобы просматривать личные сообщения в этой группе.
-    view_closed_discussions: Просмотреть закрытые обсуждения
     discussion_templates: Шаблоны для обсуждений
+    show_locked: "%{count} Заблокировано"
+    view_locked_discussions: Просмотреть заблокированные обсуждения
+    locked_discussions: Заблокированные обсуждения
   export_data_modal:
     title: Как вы хотите использовать свои данные?
     as_csv: Откройте его в электронной таблице
@@ -1342,8 +1359,6 @@ ru:
     default_request_to_join_prompt: Спасибо за ваш интерес к нашей группе. Представьтесь, пожалуйста, и объясните, почему вы хотите присоединиться.
     upgrade_for_subgroups: 'Пожалуйста, <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">обновите свою подписку</a> , чтобы создать подгруппу'
     share_this_url_with_people_who_want_to_join: Поделитесь этим URL-адресом с людьми, которые хотят присоединиться
-    allow_polls_without_discussions: Разрешить опросы без обсуждения
-    allow_polls_without_discussions_help: Запретить людям создавать опросы, не начав сначала обсуждение.
     aria_label: Групповая форма
     list_in_the_groups_directory: Добавить в список групп?
     list_in_directory_yes: Да · отобразить эту группу на странице "Найти группу"
@@ -1577,6 +1592,7 @@ ru:
   thread_preview:
     replies_count: "%{count} ответов"
     unread_count: "%{count} непрочитано"
+    items_count: "%{count} товаров"
   dashboard_page:
     polls_to_vote_on: Опросы для голосования
     no_polls_to_vote_on: Нет опросов, в которых нужно голосовать
@@ -1662,17 +1678,18 @@ ru:
     pin:
       pinned: Тема закреплена
       unpinned: Тема откреплена
-    closed:
-      reopened: Тема возобновлена
-      closed: Тема закрыта
     volume:
       mute_message: Обсуждение отключено
       unmute_message: Обсуждение отключено
     direct: Прямой
+    locked:
+      unlocked: Тема разблокирована
+      locked: Тема заблокирована
   discussion_last_seen_by:
     title: Виденный
     no_one: Этого еще никто не видел
     disabled_anonymous_polls: История просмотров отключена, поскольку ветка содержит анонимные опросы.
+    thread_engagement: Thread engagement
   activity_card:
     count_responses: "%{count} ответов"
     beginning: Начало
@@ -1714,6 +1731,22 @@ ru:
     nested_twice: Два уровня вложенных ответов
     nested_twice_description: Отступ отвечает не более двух раз.
     changing_nesting_is_slow: Обработка изменений вложенности может занять несколько минут.
+    layout: Макет
+    items: Как отображать элементы
+    nested: Вложенный
+    timeline: Хронология
+    timeline_description: Элементы в порядке их публикации.
+    threaded: Threaded
+    threaded_description: Ответы сгруппированы по тому, на что они отвечают.
+    allow_concurrent_polls: Разрешить одновременное проведение опросов.
+    allow_multiple_polls: Разрешите проведение нескольких опросов одновременно.
+    allow_concurrent_polls_description: Разрешите одновременное открытие более одного опроса.
+    allow_comments: Разрешить комментарии
+    allow_comments_description: Разрешите участникам оставлять комментарии в этой ветке обсуждения.
+    allow_reactions: Допустите реакции
+    allow_reactions_description: Разрешите участникам добавлять реакции в виде эмодзи.
+    topic_settings: Настройки темы
+    thread_settings: Настройки темы
   delete_thread_form:
     title: Удалить тему
     body: Вы уверены, что хотите удалить эту тему?
@@ -1780,6 +1813,7 @@ ru:
     ranked_choice_title: Порядок ранжированния
     gradients_of_agreement_title: Градиенты согласия
     majority_title: Большинство
+    stv_title: Выборы STV
   poll_option_form:
     edit_option: Редактировать вариант
     option_name: Название опции
@@ -1917,6 +1951,9 @@ ru:
     blank: Новый
     blank_subtitle: Создайте новый шаблон опроса для конкретного процесса.
     start_a_poll: Начать опрос
+    export_blt: Экспорт бюллетеней (BLT)
+    status: Статус
+    your_vote_is_requested: Просим вас проголосовать.
   poll_common_attachment_form:
     label: Вложения
   poll_common_add_option:
@@ -1937,10 +1974,8 @@ ru:
     deleted: Этот опрос был удален
     do_not_hide_results: Не скрывайте результаты
   discussions_panel:
-    open: Открыто
     all: Все
     unread: Непрочитано (%{count})
-    closed: Закрыто
     include_subgroups_mine: "%{name} и мои подгруппы"
     include_subgroups_all: "%{name} и все подгруппы"
     no_results_found: Нет результатов по запросу "%{search}"
@@ -1948,6 +1983,8 @@ ru:
     lets_start_a_thread: Давайте начнем тему. Нажмите «Новая тема», чтобы продолжить.
     lets_start_a_discussion: Давайте начнём обсуждение. Нажмите «Новое обсуждение», чтобы продолжить.
     new_discussion: Новое обсуждение
+    locked: Заблокировано
+    unlocked: Разблокировано
   members_panel:
     bot: Бот
     no_results: Участники не найдены
@@ -1991,13 +2028,6 @@ ru:
     closed: Закрыто
     need_vote: Нужно проголосовать
     no_polls: Опросов не найдено
-    standalone_disabled_title: Отдельные опросы отключены
-    standalone_disabled_helptext: "<p>Эта группа требует, чтобы опросы начинались в ходе обсуждения.</p><p> Обсуждения помогают людям понять контекст, задать вопросы и обменяться мнениями перед голосованием. Это способствует принятию более взвешенных решений.</p><p> Сначала начните обсуждение, а затем добавьте опрос, когда будете готовы собрать голоса.</p>"
-    start_discussion: Начать обсуждение
-    standalone_warning_title: Подумайте о том, чтобы сначала начать обсуждение
-    start_poll_anyway: Все равно начать опрос
-    start_discussion_instead: Вместо этого начните обсуждение.
-    standalone_warning_helptext: "<p>Опросы наиболее эффективны, когда люди могут сначала обсудить тему.</p><p> Без обсуждения избиратели не могут задавать вопросы, высказывать опасения или предлагать улучшения.</p><p> Для достижения наилучшего результата начните с обсуждения, выработайте общее понимание, а затем, когда будете готовы, добавьте опрос, чтобы узнать мнение участников.</p>"
   group_files_panel:
     no_files: Файлов не найдено
     filename: Имя файла
@@ -2086,6 +2116,8 @@ ru:
     change_results_order: Изменить порядок результатов
     none_of_the_above: "(Ни один из вышеперечисленных)"
     name_or_username: Имя или имя пользователя
+    cast: Cast
+    uncast: Uncast
   poll_common_undecided_panel:
     show_undecided: Показать %{count} не определился
     show_invitations: Показать ожидающие приглашения
@@ -2284,6 +2316,8 @@ ru:
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> обновил свое голосование по вопросу: <strong>%{title}</strong>"
     event_removed: Удалено из темы
     new: новый
+    thread_locked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> заблокировал тему"
+    thread_unlocked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> разблокировал ветку обсуждения"
   add_poll_to_thread_modal:
     success: Успех, %{pollType} добавлен в тему!
   auth_form:
@@ -2354,6 +2388,7 @@ ru:
     want_to_set_password: Хотите в следующий раз войти с паролем?
     change_your_password: Хотите установить новый пароль?
     email_placeholder: вы{'@'}example.com
+    turnstile_required: Пожалуйста, завершите проверку, прежде чем продолжить.
   chatbot:
     configure_chatbot: Настройка чат-бота
     test_connection: Тестовое соединение
@@ -2479,6 +2514,7 @@ ru:
     country_disclaimer: Страна основана на IP-адресе пользователя и не очень точна. Считайте это лишь приблизительным руководством.
     total_discussions: Всего обсуждений
     discussions_with_polls: Обсуждения с опросами
+    download_csv: Скачать CSV
   tips:
     youve_completed_all_the_steps: "\U0001F389 Вы выполнили все шаги!"
     getting_started_checklist: Контрольный список для начала работы
@@ -2524,7 +2560,7 @@ ru:
     who_can_vote: Кто может голосовать?
     specified_voters_only_true: Только приглашенные люди
     specified_voters_only_false_group: Любой в группе
-    specified_voters_only_false_discussion: Кто-нибудь в теме
+    specified_voters_only_false_discussion: Любой участник темы
     invite_people_next: Вы можете выбрать, кто будет приглашен для голосования, после начала %{poll_type}
     show_none_of_the_above: Включить вариант «Ни один из вышеперечисленных»
     show_options_in_random_order: Показывать варианты в случайном порядке
@@ -2561,6 +2597,7 @@ ru:
       helptext_on: Не показывать, как проголосовали люди, пока опрос не будет закрыт.
     short_reason_can_be_helpful: Краткие аргументы в пользу голосования легче понять. Сборник кратких аргументов — отличный ресурс для принятия решения.
     shuffle_options: Параметры перемешивания
+    selected_people_only: Только для избранных
   poll_common_form:
     quorum: Кворум
     participation_quorum: Кворум участия
@@ -2611,6 +2648,8 @@ ru:
       time_poll_hint: Избиратели указывают, когда они готовы встретиться
       rank: Классифицировать
       time: Время
+      stv: Выборы STV
+      stv_hint: Пропорциональное избрание нескольких победителей с использованием единого передаваемого голоса.
     process: Процесс
     process_name: Название шаблона
     process_name_hint: Как называется этот шаблон? Например, «Рекомендация по роли», «Проверка температуры», «Утверждение протокола».
@@ -2671,7 +2710,7 @@ ru:
     create_poll_type: Создать %{poll_type}
     notify_voters_when_voting_opens: Уведомите избирателей о начале голосования.
     voters_notified_when_opens: Избиратели будут уведомлены о начале голосования.
-    who_may_vote: Кто может голосовать по этому %{poll_type}?
+    who_may_vote: Кто может голосовать в этом %{poll_type}?
   poll_receipts_page:
     verify_participants: Проверка участников
     see_votes_if_quorum_reached: Если голосование закрыто и кворум достигнут, вы увидите, кто отдал свой голос.
@@ -2682,8 +2721,6 @@ ru:
     invited_by: Приглашен
     invited_on: Приглашен на
     no_receipts: Этот анонимный опрос был закрыт до появления функции проверки, поэтому проверка невозможна.
-  close_discussion_modal:
-    body: Закройте обсуждения, чтобы удалить их из списка открытых обсуждений и запретить людям оставлять комментарии.
   comment_reply_form:
     aria_label: Добавить ответ
   discussion_template:
@@ -2731,14 +2768,14 @@ ru:
     these_are_templates_admin_hint: Администраторы групп могут редактировать шаблоны, создавать новые шаблоны, изменять их порядок и скрывать/показывать. Скрытые шаблоны видны только администраторам.
     show_hidden_templates: Показать скрытые шаблоны
     show_fewer: Показать меньше
-    start_a_new_discussion: Начать новое обсуждение
     start_discussion: Начать обсуждение
     start_a_direct_discussion: Начните прямое обсуждение
     these_are_templates: Это шаблоны для обсуждений в вашей группе.
+    start_a_new_discussion: Начать новое обсуждение
   context_panel:
     thread_status:
       pinned: Это обсуждение закреплено. Оно останется вверху списка обсуждений группы для всех пользователей.
-      closed: Это обсуждение закрыто. Оно больше не будет отображаться на панели управления и будет отображаться в разделе «Закрыто» на странице группы.
+      locked: Эта дискуссия заблокирована. Она больше не будет отображаться на панели управления и будет отображаться как «заблокированная» на странице группы.
   thread_group:
     aria_label: Название группы
   discussion_context:
@@ -2749,8 +2786,8 @@ ru:
   pin_discussion_modal:
     helptext: Закрепленные обсуждения всегда отображаются в списке обсуждений группы.
   delete_discussion_form:
-    body: Вы уверены, что хотите удалить это обсуждение?
     discussion_deleted: Обсуждение удалено
+    body: Вы уверены, что хотите удалить эту ветку обсуждения?
   move_discussion_form:
     title: Перенести обсуждение в другую группу
     body: Группа назначения
@@ -2767,3 +2804,58 @@ ru:
     opening_hour: Время работы
     scheduled_hint: Опрос будет виден, но голосовать по нему можно будет только после его открытия.
     draft_hint: Этот опрос будет сохранен как черновик. Укажите дату начала голосования или отметьте «Голосование открывается немедленно», когда будете готовы начать голосование.
+  strand_members_list:
+    notify_members_or_invite_guests_info: Уведомите участников группы по имени или пригласите не участников по адресу электронной почты. Приглашенные гости могут участвовать в этой ветке обсуждения, но не будут иметь доступа к другим веткам группы.
+    notify_members_info: Введите имена участников группы, чтобы уведомить их об этой теме.
+    specified_voters_only_warning: В этой теме есть опросы, в которых могут голосовать только выбранные участники. Добавление пользователя с помощью этой формы не даст ему голоса, а только позволит следить за обсуждением и комментировать. Если вы хотите выдать голоса, используйте в опросе "добавить голосующих".
+  poll_common_details_meta:
+    opened: Открыто
+    opens: Открывается
+    closed: Закрыто
+    closes: Закрывает
+    opened_at: Открыто в
+    opening_at: Открытие в
+    closed_at: Закрыто в
+    closing_at: Закрытие в
+  poll_stv_vote_form:
+    helptext: Перетащите кандидатов выше линии, чтобы присвоить им рейтинг. Элементы ниже линии не ранжированы. 1-й ранг — это ваш наиболее предпочтительный вариант.
+    divider_text: Перетащите кандидатов выше этой линии, чтобы ранжировать их.
+    stance_created: Голосование зафиксировано
+    stance_updated: Обновление результатов голосования
+  poll_stv_form:
+    settings_title: Настройки выборов STV
+    settings_helptext: Укажите количество мест для заполнения, метод подсчета голосов и тип квоты для этих выборов.
+    seats_label: Количество мест, которые необходимо заполнить
+    method_label: Метод подсчета
+    method_scottish: Scottish STV (recommended)
+    method_meek: Meek STV
+    quota_label: Тип квоты
+    quota_droop: Droop quota (recommended)
+    quota_hare: Hare quota
+  poll_stv_results:
+    title: Результаты выборов
+    elected: Избранный
+    not_elected: Не избран
+    tied: Tie
+    no_candidates_elected: Кандидаты не избраны
+    round: Round %{number}
+    quota_info: "%{method}, %{quota_type} quota (%{quota} votes needed)"
+    method_scottish: Scottish STV
+    method_meek: Meek STV
+    quota_droop: Droop
+    quota_hare: Hare
+    elected_in_round: Elected in round %{round}
+    eliminated_in_round: Eliminated in round %{round}
+    tied_in_round: Tied in round %{round}
+    votes: голоса
+    candidate: Кандидат
+    round_elected: Раунд избран
+    first_preferences: Первые предпочтения
+    final_tally: Итоговый результат
+    quota_surplus: Излишек
+    round_details: Подробности по каждому раунду
+    view_full_results: Посмотреть полные результаты
+    results_available_when_closed: Результаты будут доступны после закрытия голосования.
+  lock_thread_modal:
+    body: Блокировка тем позволяет удалить их из списка открытых тем и предотвратить комментирование.
+    explanation: Блокировка тем позволяет предотвратить комментирование и внесение дальнейших изменений.

@@ -109,7 +109,7 @@ nl_NL:
     manage:
       all: Niet geautoriseerd voor %{action} %{subject}.
     add_guests:
-      all: U moet uw Loomio-abonnement upgraden om gasten toe te voegen aan uw %{subject}. Als alternatief kunt u ze uitnodigen om lid te worden van uw groep.
+      all: U moet uw Loomio-abonnement upgraden om gasten toe te voegen. U kunt ze ook uitnodigen om lid te worden van uw groep.
   errors:
     clear_cache: Laad probleem gedetecteerd. Houdt Shift ingedrukt en druk op Vernieuwen, of wis de browser cache.
     400:
@@ -152,6 +152,7 @@ nl_NL:
       pwned_password: Dit wachtwoord is eerder verschenen bij een datalek en mag nooit worden gebruikt
     '401':
       title: Ongeautoriseerd
+    new_account_trial_group_limit: Nieuwe accounts zijn beperkt tot één groep. Neem contact op met de supportafdeling als u meer groepen nodig heeft.
   group:
     error:
       handle_must_begin_with_parent_handle: Moet beginnen met %{parent_handle}-
@@ -240,6 +241,7 @@ nl_NL:
       notified: U heeft dit ontvangen omdat de auteur u hiervan op de hoogte heeft gesteld.
       poll_subscribed: U heeft dit ontvangen omdat u zich heeft geabonneerd op de poll.
       discussion_subscribed: U ontvangt dit omdat u bent geabonneerd op de discussie.
+      thread_subscribed: Je hebt dit bericht ontvangen omdat je geabonneerd bent op dit forumonderwerp.
   user_mailer:
     group_export_ready:
       subject: Groep data export voor %{group_name}
@@ -393,6 +395,9 @@ nl_NL:
     destroy_warning:
       subject: Je Loomio-groep staat gepland voor verwijdering.
       body: 'Uw Loomio-groep: "%{group}" is gepland voor verwijdering door %{deletor}. Als u niet wilt dat uw groep wordt verwijderd, beantwoordt u deze e-mail. Als u zeker weet dat u de groep wilt verwijderen, hoeft u niets te doen. Bedankt.'
+    trial_expired:
+      subject: Je Loomio-groep wordt verwijderd vanwege inactiviteit.
+      body: Je Loomio-groep "%{group}" is inactief en wordt over 2 weken verwijderd. Als je niet wilt dat je groep wordt verwijderd, beantwoord dan deze e-mail.
   poll_mailer:
     common:
       why_send_this: Je ontvangt deze e-mail omdat %{reason}
@@ -621,6 +626,11 @@ nl_NL:
       no_meaning: Ik steun dit voorstel niet.
       no_prompt: Waarom steunt u dit voorstel niet?
       outcome_statement: "<p>Bedankt voor uw deelname aan deze meerderheidsstemming.</p>"
+    stv:
+      process_subtitle: Kies meerdere winnaars naar rato.
+      process_introduction: <p>STV (Single Transferable Vote) is een systeem van evenredige vertegenwoordiging voor verkiezingen met meerdere kandidaten. Kiezers rangschikken de kandidaten op volgorde van voorkeur. Kandidaten die een bepaald aantal stemmen behalen, worden gekozen, en overtollige of weggevallen stemmen worden overgedragen naar de volgende voorkeurskandidaten.</p><p> Configureer het aantal zetels, de telmethode (Schots of Meek) en het quotatype (Droop of Hare). De resultaten tonen een ronde-voor-ronde overzicht van hoe stemmen zijn overgedragen.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/stv/index.html">Lees meer over de STV-verkiezingen</a> .</p>
+      title: Kies commissieleden
+      details: <h3 id="what-is-this-election-about"><strong>Waar gaat deze verkiezing over?</strong></h3><p></p><h3 id="how-many-seats"> <strong>Hoeveel stoelen worden er bezet?</strong></h3><p></p><h3 id="who-are-the-candidates"> <strong>Wie zijn de kandidaten?</strong></h3><p></p><p> Stem door de kandidaten in de gewenste volgorde te slepen. Rang 1 is uw meest geprefereerde kandidaat. U kunt zoveel of zo weinig kandidaten rangschikken als u wilt.</p>
   forward_mailer:
     bounce:
       subject: Uw bericht aan Loomio is niet afgeleverd
@@ -681,3 +691,5 @@ nl_NL:
     pt: Portugees
     zh: Chinees (Traditioneel, Taiwan)
     zh-HK: Chinees (Traditioneel, Taiwan)
+  upload:
+    file_too_large: Het bestand is te groot. De maximale uploadgrootte is %{limit}.

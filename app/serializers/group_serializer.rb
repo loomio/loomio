@@ -26,7 +26,6 @@ class GroupSerializer < ApplicationSerializer
              :poll_templates_count,
              :closed_polls_count,
              :discussions_count,
-             :public_discussions_count,
              :group_privacy,
              :listed_in_explore,
              :memberships_count,
@@ -39,14 +38,9 @@ class GroupSerializer < ApplicationSerializer
              :archived_at,
              :attachments,
              :link_previews,
-             :new_threads_max_depth,
-             :new_threads_newest_first,
              :has_custom_cover_photo,
              :cover_url,
-             :open_discussions_count,
-             :closed_discussions_count,
              :discussion_templates_count,
-             :recent_activity_count,
              :is_visible_to_public,
              :is_visible_to_parent_members,
              :parent_members_can_see_discussions,
@@ -57,8 +51,7 @@ class GroupSerializer < ApplicationSerializer
              :new_host,
              :categorize_poll_templates,
              :category,
-             :request_to_join_prompt,
-             :can_start_polls_without_discussion
+             :request_to_join_prompt
 
   has_one :parent, serializer: GroupSerializer, root: :parent_groups
   has_one :current_user_membership, serializer: MembershipSerializer, root: :memberships
@@ -66,7 +59,7 @@ class GroupSerializer < ApplicationSerializer
   has_many :tags, serializer: TagSerializer, root: :tags
 
   def current_user_membership
-    cache_fetch(:memberships_by_group_id, object.id)
+    cache_fetch(:memberships_by_group_id, object.id) { nil }
   end
 
   def parent

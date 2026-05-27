@@ -109,7 +109,7 @@ sv:
     manage:
       all: Inte behörig till %{action} %{subject}.
     add_guests:
-      all: Du måste uppgradera din Loomio-prenumeration för att lägga till gäster till din %{subject}. Alternativt kan du bjuda in dem att bli medlemmar i din grupp.
+      all: Du måste uppgradera din Loomio-prenumeration för att lägga till gäster. Alternativt kan du bjuda in dem att bli medlemmar i din grupp.
   errors:
     clear_cache: Lastningsproblem upptäcktes. Håll ned shift och tryck på ladda om, eller rensa webbläsarens cacheminne.
     404:
@@ -148,6 +148,7 @@ sv:
       body: Vi beklagar, men något gick fel. Vi har blivit informerade om det här problemet och vi kommer att titta på det inom kort.
     '404':
       body: Det begärda objektet hittades inte. Detta kan hända om en diskussion eller omröstning har raderats.
+    new_account_trial_group_limit: Nya konton är begränsade till en grupp. Kontakta supporten om du behöver fler.
   group:
     error:
       handle_must_begin_with_parent_handle: Måste börja med %{parent_handle}-
@@ -234,6 +235,7 @@ sv:
       notified: Du fick detta eftersom författaren meddelade dig.
       poll_subscribed: Du fick detta eftersom du prenumererar på omröstningen.
       discussion_subscribed: Du fick detta eftersom du prenumererar på diskussionen.
+      thread_subscribed: Du fick detta eftersom du prenumererar på tråden.
   user_mailer:
     group_export_ready:
       subject: Gruppdataexport för %{group_name}
@@ -366,6 +368,9 @@ sv:
     destroy_warning:
       subject: Din Loomio-grupp är schemalagd för radering.
       body: 'Din Loomio-grupp: "%{group}" har schemalagts för radering av %{deletor}. Om du inte vill att din grupp ska tas bort, vänligen svara på det här e-postmeddelandet. Om du är säker på att du vill ta bort gruppen behöver du inte göra någonting. Tack.'
+    trial_expired:
+      subject: Din Loomio-grupp kommer att raderas på grund av inaktivitet.
+      body: Din Loomio-grupp "%{group}" har varit inaktiv och kommer att raderas om 2 veckor. Om du inte vill att din grupp ska raderas, vänligen svara på det här e-postmeddelandet.
   poll_mailer:
     common:
       why_send_this: Du får det här e-postmeddelandet eftersom %{reason}
@@ -594,6 +599,11 @@ sv:
       no_meaning: Jag stöder inte detta förslag
       no_prompt: Varför stöder ni inte detta förslag?
       outcome_statement: "<p>Tack för att du deltog i denna majoritetsomröstning.</p>"
+    stv:
+      process_subtitle: Välj flera vinnare proportionellt
+      process_introduction: <p>STV (Single Transferable Vote) är en proportionell representationsmetod för val med flera vinnare. Väljarna rangordnar kandidaterna i preferensordning. Kandidater som når en viss röstkvot väljs, och överskottsröster eller eliminerade röster överförs till nästa preferens.</p><p> Konfigurera antalet platser, räkningsmetod (skotsk eller Meek) och kvottyp (Droop eller Hare). Resultaten visar en omgång för omgång uppdelning av hur rösterna överfördes.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/stv/index.html">Läs mer om STV-valen</a> .</p>
+      title: Välja kommittémedlemmar
+      details: <h3 id="what-is-this-election-about"><strong>Vad handlar det här valet om?</strong></h3><p></p><h3 id="how-many-seats"> <strong>Hur många platser fylls?</strong></h3><p></p><h3 id="who-are-the-candidates"> <strong>Vilka är kandidaterna?</strong></h3><p></p><p> Rösta genom att dra kandidaterna till din önskade ordning. Rankning 1 är din mest föredragna kandidat. Du kan rangordna så många eller så få kandidater som du vill.</p>
   forward_mailer:
     bounce:
       subject: Ditt meddelande till Loomio levererades inte
@@ -654,3 +664,5 @@ sv:
     pt: Portugisiska
     zh: Kinesiska (traditionell, Taiwan)
     zh-HK: Kinesiska (traditionell, Taiwan)
+  upload:
+    file_too_large: Filen är för stor. Maximal uppladdningsstorlek är %{limit}.

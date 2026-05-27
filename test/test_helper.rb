@@ -32,28 +32,6 @@ module ActiveSupport
     fixtures :all
 
 
-    # Helper to create a discussion with proper setup
-    def create_discussion(**args)
-      discussion = Discussion.new({
-        title: "Test Discussion",
-        description: "<p>A test discussion</p>",
-        description_format: "html",
-        private: true
-      }.merge(args))
-
-      # Set defaults if not provided
-      discussion.author ||= users(:discussion_author)
-      discussion.group ||= groups(:test_group)
-
-      # Ensure author is a member of the group
-      unless discussion.group.members.include?(discussion.author)
-        discussion.group.add_member!(discussion.author)
-      end
-
-      DiscussionService.create(discussion: discussion, actor: discussion.author)
-      discussion
-    end
-
     # Email helper methods
     def emails_sent_to(address)
       ActionMailer::Base.deliveries.filter { |email| Array(email.to).include?(address) }
@@ -67,10 +45,25 @@ module ActiveSupport
       last_email.parts[1].body
     end
 
+    def assert_no_record_cache_fallbacks
+      fallbacks = []
+      subscriber = ActiveSupport::Notifications.subscribe('record_cache.fallback') do |_name, _started, _finished, _id, payload|
+        fallbacks << payload
+      end
+
+      yield
+
+      assert_empty fallbacks.map { |payload| "#{payload[:keys].join('.')}[#{payload[:id]}]" }
+    ensure
+      ActiveSupport::Notifications.unsubscribe(subscriber) if subscriber
+    end
+
 
     # Setup common stubs before each test
     setup do
       ActionMailer::Base.deliveries.clear
+      ThrottleService.reset!('hour')
+      ThrottleService.reset!('day')
 
       # Stub external API calls
       WebMock.stub_request(:get, /\.chargifypay.com/).

@@ -165,6 +165,7 @@ ca:
     ranked_choice: vot preferencial
     score: vot amb puntuació
     question: ronda de preguntes
+    stv: Eleccions STV
   timezones:
     local: Hora local (%{value})
   common:
@@ -314,6 +315,7 @@ ca:
       rearrange: Reorganitzar
       save_template: Desa la plantilla
       fork_template: Plantilla de forquilla
+      customize: Personalitza
     formatting_help:
       label: Formatació
       title: Aprèn a escriure el text en format Markdown
@@ -323,6 +325,8 @@ ca:
     opening_in: Obertura %{time}
     read_more: Llegir més
     templates_admin_hint: Com que sou administrador d'un grup, podeu amagar o suprimir les plantilles que no vulgueu i editar les restants perquè s'adaptin a les vostres necessitats.
+    read: Llegir
+    unread: No llegit
   merge_accounts:
     modal:
       title: Combina comptes
@@ -481,17 +485,15 @@ ca:
     changes_all_threads_and_polls_in_group: Això canvia la configuració de tots els fils i enquestes del grup.
     when_do_you_want_to_be_emailed: Quan vols que t'enviem el correu electrònic?
     what_the_options_mean: Què signifiquen les opcions
-    quiet_explained: No rebràs correus electrònics, ni tan sols quan algú intenti notificar-te. És possible que et perdis anuncis o decisions importants, tret que tinguis el costum de consultar Loomio regularment.
     when_would_you_like_to_be_emailed_discussion: Quan vols rebre correus electrònics sobre aquesta discussió?
     changes_all_discussions_and_polls_in_group: Això canvia la configuració de totes les discussions i enquestes del grup.
     normal_explained: Quan algú introdueix el vostre nom al camp "Notificar" d'una discussió o una enquesta, o bé {'@'}esmenta el grup.
     aria_label: Formulari de canvi de configuració del correu electrònic
-  close_explanation_modal:
-    close_thread: Tanca el fil de discussió
-    body: |
-      <p>Tanca fils vells o irrellevants per deixar de visualitzar-los i indica que la discussió s'ha tancat. </p>
-      <p>És possible que usuaris comentin o comencin una votació en un fil tancat, però no apareixerà a la llista de fils del grup ni al quadre de controls.</p>
-    image_alt: Tanca tots els fils de discussió
+    when_do_you_want_to_be_emailed_thread: Quan vols rebre correus electrònics sobre aquest fil?
+    loud_option: En qualsevol moment que algú hi participi (Tota l'activitat)
+    normal_option: Quan algú vol la meva atenció (Quan se m'avisa)
+    quiet_option: No hi ha correus electrònics sobre aquest fil (Desactivat)
+    quiet_explained: No rebràs cap correu electrònic, fins i tot quan algú intenti notificar-te.
   inbox:
     clear: Esborra
     latest: Últim
@@ -531,6 +533,7 @@ ca:
     sign_in: Inicieu la sessió per unir-vos a la conversa
     add_a_comment: Afegeix un comentari
     share_your_thoughts: Comparteix els teus pensaments…
+    share_on_poll: Fes una pregunta o comparteix informació nova
   thread_nav:
     participants: Participants
   sidebar:
@@ -565,6 +568,7 @@ ca:
     new_subgroup: Nou subgrup
     find_a_group: Troba un grup
     direct_discussions: Discussions directes
+    unread_discussions: Discussions no llegides
   strand_nav:
     newest: Més recent
     oldest: Més antic
@@ -585,7 +589,12 @@ ca:
     showing_unread: Mostrant no llegits
     add_comment: Afegeix un comentari
     start_decision: Decisió inicial
-    recenter: Més recentment
+    return: Retorn
+    end: Final
+    notifications: Notificacions
+    email_all_activity: Enviar per correu electrònic tota l'activitat
+    email_notifications: Correu electrònic quan es notifiqui
+    email_none: Sense correus electrònics
   search_modal:
     all_content: Tot el contingut
     best_match: Millor coincidència
@@ -622,6 +631,7 @@ ca:
     search_files_short: Cerca fitxers
     search_subgroups_short: Cerca subgrups
     search_discussions_in_group: Cerca debats a %{name}
+    thread_nav: Menú de fils
   user_dropdown:
     pin_sidebar: Fixa la barra lateral
     unpin_sidebar: Deixa de fixar la barra lateral
@@ -653,6 +663,7 @@ ca:
     invite_to_wip_poll: Convida a donar comentaris
     invitations: Invitacions
     discussion_members: Membres de la discussió
+    thread_members: Membres del fil
   membership_dropdown:
     set_name_and_username: Estableix nom i nom d'usuari
     set_title: Estableix un títol
@@ -717,6 +728,7 @@ ca:
       discussion_closed: "%{actor} ha tancat la discussió: %{title}"
       new_discussion: "%{actor} ha iniciat una discussió: %{title}"
       user_reminded: "%{actor} et recorda que votes per: %{title}"
+      thread_locked: "%{actor} ha bloquejat el fil: %{title}"
     without_title:
       unknown_sender: Reviseu el correu electrònic d'un remitent no reconegut
       group_announced: "%{actor} t'ha convidat a un grup"
@@ -754,6 +766,7 @@ ca:
       new_discussion: "%{actor} ha iniciat una discussió"
       new_comment: "%{actor} ha comentat en una discussió"
       outcome_updated: "%{actor} ha actualitzat el resultat"
+      thread_locked: "%{actor} ha bloquejat el fil"
     hints:
       poll_closing_soon: Ara és un bon moment per votar, canviar d'opinió o animar els altres a participar.
       poll_closing_soon_author: És possible que vulgueu recordar a la gent que voten o allargar el termini.
@@ -778,7 +791,7 @@ ca:
       poll_closed_by_user: "%{actor} ha tancat la %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} tanca en 24 hores: %{title}"
       poll_closing_soon_author: 'El vostre %{poll_type} es tanca en 24 hores: %{title}'
-      poll_created: 'Vot: %{title}'
+      poll_created: "%{poll_type}: %{title}"
       poll_edited: "%{actor} ha actualitzat el %{poll_type}: %{title}"
       poll_expired: "%{poll_type} ha tancat: %{title}"
       poll_expired_author: 'Publica una conclusió: %{title}'
@@ -797,6 +810,7 @@ ca:
       discussion_edited: "%{actor} ha editat el context de la discussió: %{title}"
       discussion_closed: "%{actor} ha tancat la discussió: %{title}"
       user_reminded: "%{actor} et recorda que votes per: %{title}"
+      thread_locked: "%{actor} ha bloquejat el fil: %{title}"
   discussion_fork_actions:
     move: Mou
     moved: S'estan movent els comentaris, aquesta acció podria tardar uns minuts
@@ -852,6 +866,7 @@ ca:
     direct_discussion: Discussió directa
     direct_discussion_hint: Una discussió directa només és visible per a les persones específiques que convideu. No apareixerà a la llista de discussió de cap grup; la podeu trobar a la pàgina de Discusions directes.
     recommended_poll_templates: Plantilles d'enquesta recomanades
+    edit_discussion_context: Edita el context de la discussió
   announcement:
     send_discussion: Envia fil
     send_group: Convida gent a %{name}
@@ -980,6 +995,8 @@ ca:
     poll_announced: "%{name} ha convidat %{length} persones a votar:"
     discussion_notification_history: Historial de notificacions de debats
     inviting_guests_to_discussion: Els convidats no pertanyen al vostre grup i només tenen accés a aquesta discussió.
+    topic_notification_history: Historial de notificacions de fils
+    notification_history: Historial de notificacions
   action_dock:
     actions_menu: Menú d'accions
     more_actions: Més accions
@@ -1026,8 +1043,6 @@ ca:
     discussion_copied: S'ha copiat l'URL del comentari al porta-retalls
     url_copied: Enllaç copiat al porta-retalls
     tag_thread: Gestiona etiquetes
-    close_thread: Tanca el fil de discussió
-    reopen_thread: Reobre el fil
     delete_thread: Elimina el fil
     notification_history: Historial de notificacions
     move_item: Mou l'element
@@ -1036,9 +1051,9 @@ ca:
     count_voters: "%{count} votants"
     pin_discussion: Fixar la discussió
     unpin_discussion: Desfixar la discussió
-    close_discussion: Discussió tancada
-    reopen_discussion: Reobrir la discussió
     delete_discussion: Suprimeix la discussió
+    lock_thread: Bloqueja el fil
+    unlock_thread: Desbloqueja el fil
   formatting:
     formatting_tools: Eines de formatació de text
     colors: Colors
@@ -1161,7 +1176,6 @@ ca:
     settings: Configuració
     subgroups: Subgrups
     show_opened: "%{count} obert"
-    show_closed: "%{count} Tancat"
     no_threads_here: Aquí no hi ha cap fil per visualitzar
     search_threads: Busca fils...
     private_threads: Heu de ser membre per visualitzar els fils privats d'aquest grup
@@ -1179,7 +1193,6 @@ ca:
     new_cover_photo: Penja una foto de portada nova
     new_group_logo: Penja un nou logo del grup
     open_discussions: Fils oberts
-    closed_discussions: Fils tancats
     discussions_placeholder: Un fil de discussió és el lloc on tothom pot discutir un tema i prendre decisions junts.
     members_placeholder: 'Esteu sol: convideu usuaris a unir-se.'
     member_options: Opcions de membres
@@ -1228,8 +1241,10 @@ ca:
     discussions: Debats
     no_discussions_here: No hi ha debats per veure aquí!
     private_discussions: Cal que siguis membre per veure els fils privats d'aquest grup.
-    view_closed_discussions: Veure debats tancats
     discussion_templates: Plantilles de discussió
+    show_locked: "%{count} Bloquejat"
+    view_locked_discussions: Veure les discussions bloquejades
+    locked_discussions: Discussions bloquejades
   export_data_modal:
     title: Com voleu utilitzar les vostres dades?
     as_csv: Obre en un full de càlcul
@@ -1350,8 +1365,6 @@ ca:
     default_request_to_join_prompt: Gràcies pel vostre interès en el nostre grup. Si us plau, presenteu-vos i expliqueu per què demaneu unir-vos.
     upgrade_for_subgroups: 'Si us plau, <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">actualitza la teva subscripció</a> per crear un subgrup'
     share_this_url_with_people_who_want_to_join: Comparteix aquesta URL amb les persones que vulguin unir-s'hi
-    allow_polls_without_discussions: Permetre enquestes sense discussió
-    allow_polls_without_discussions_help: Impedeix que la gent iniciï enquestes sense iniciar primer una discussió.
     aria_label: Formulari de grup
     list_in_the_groups_directory: Llista al directori de grups?
     list_in_directory_yes: Sí · mostra aquest grup a la pàgina "cerca un grup"
@@ -1593,6 +1606,7 @@ ca:
   thread_preview:
     replies_count: "%{count} respostes"
     unread_count: "%{count} sense llegir"
+    items_count: "%{count} elements"
   dashboard_page:
     polls_to_vote_on: Enquestes per votar
     no_polls_to_vote_on: No hi ha enquestes que calgui votar
@@ -1684,17 +1698,18 @@ ca:
     pin:
       pinned: Fil fixat
       unpinned: S'ha desfixat el fil
-    closed:
-      reopened: Fil reobert
-      closed: Fil tancat
     volume:
       mute_message: Discussió silenciada
       unmute_message: Discussió activada
     direct: Directe
+    locked:
+      unlocked: Fil desbloquejat
+      locked: Fil bloquejat
   discussion_last_seen_by:
     title: Vist per
     no_one: Encara no ho ha vist ningú
     disabled_anonymous_polls: L'historial del visor està desactivat perquè el fil conté enquestes anònimes
+    thread_engagement: Participació al fil
   activity_card:
     count_responses: "%{count} respostes"
     beginning: Inici
@@ -1736,6 +1751,22 @@ ca:
     nested_twice: Dos nivells de respostes imbricades
     nested_twice_description: Sagna les respostes com a màxim dues vegades.
     changing_nesting_is_slow: Els canvis en l'imbricat podrien tardar alguns minuts en ser processats.
+    layout: Disseny
+    items: Com mostrar els elements
+    nested: Imbricat
+    timeline: Cronologia
+    timeline_description: Elements en l'ordre en què es van publicar
+    threaded: Amb fils
+    threaded_description: Respostes agrupades segons allò a què responen
+    allow_concurrent_polls: Permetre enquestes simultànies
+    allow_multiple_polls: Permetre diverses enquestes alhora
+    allow_concurrent_polls_description: Permetre que més d'una enquesta estigui oberta alhora
+    allow_comments: Permet comentaris
+    allow_comments_description: Permet que els participants publiquin comentaris en aquest fil
+    allow_reactions: Permetre reaccions
+    allow_reactions_description: Permet als participants afegir reaccions amb emojis
+    topic_settings: Configuració del tema
+    thread_settings: Configuració del fil
   delete_thread_form:
     title: Elimina el fil
     body: Esteu segur que voleu eliminar aquest fil?
@@ -1805,6 +1836,7 @@ ca:
     ranked_choice_title: vot preferencial
     gradients_of_agreement_title: Gradients d'acord
     majority_title: Majoria
+    stv_title: Eleccions STV
   poll_option_form:
     edit_option: Opció d'edició
     option_name: Nom de l'opció
@@ -1942,6 +1974,9 @@ ca:
     blank: Nou
     blank_subtitle: Crea una nova plantilla d'enquesta per a un procés específic
     start_a_poll: Inicia una enquesta
+    export_blt: Exportació de paperetes (BLT)
+    status: Estat
+    your_vote_is_requested: Es demana el vostre vot
   poll_common_attachment_form:
     label: Adjunts
   poll_common_add_option:
@@ -1962,10 +1997,8 @@ ca:
     deleted: Aquesta enquesta s'ha eliminat
     do_not_hide_results: No amagueu els resultats
   discussions_panel:
-    open: Obret
     all: Tot
     unread: No llegit (%{count})
-    closed: Tancat
     include_subgroups_mine: "%{name} i els meus subgrups"
     include_subgroups_all: "%{name} i tots els subgrups"
     no_results_found: No s'ha trobat resultats per "%{search}"
@@ -1973,6 +2006,8 @@ ca:
     lets_start_a_thread: Comencem un fil. Feu clic a "Nou fil" per continuar.
     lets_start_a_discussion: Iniciem una discussió. Feu clic a "Nova discussió" per continuar.
     new_discussion: Nova discussió
+    locked: Bloquejat
+    unlocked: Desbloquejat
   members_panel:
     bot: Bot
     everyone: Tothom
@@ -2016,13 +2051,6 @@ ca:
     closed: Tancat
     need_vote: Cal Votar
     no_polls: No s'ha trobat cap enquesta
-    standalone_disabled_title: Les enquestes independents estan desactivades
-    standalone_disabled_helptext: "<p>Aquest grup requereix que les enquestes s'iniciïn dins d'una discussió.</p><p> Els debats ajuden a la gent a entendre el context, fer preguntes i compartir punts de vista abans de votar. Això porta a millors decisions.</p><p> Primer comença una discussió i després afegeix una enquesta quan estiguis a punt per recollir vots.</p>"
-    start_discussion: Inicia una discussió
-    standalone_warning_title: Considera iniciar primer una discussió
-    start_poll_anyway: Inicia l'enquesta de totes maneres
-    start_discussion_instead: Inicia una discussió en comptes d'això
-    standalone_warning_helptext: "<p>Les enquestes funcionen millor quan la gent pot parlar primer del tema.</p><p> Sense un debat, els votants no poden fer preguntes, plantejar preocupacions ni suggerir millores.</p><p> Per a una experiència òptima, comença amb una discussió, crea una comprensió compartida i, a continuació, afegeix una enquesta quan estiguis a punt per captar les opinions de la gent.</p>"
   group_files_panel:
     no_files: No s'ha trobat cap fitxer
     filename: Nom del fitxer
@@ -2113,6 +2141,8 @@ ca:
     change_results_order: Canvia l'ordre dels resultats
     none_of_the_above: "(Cap dels anteriors)"
     name_or_username: Nom o nom d'usuari
+    cast: Emès
+    uncast: No emès
   poll_common_undecided_panel:
     show_undecided: Mostra %{count} indecisos
     show_invitations: Mostra les invitacions pendents
@@ -2311,6 +2341,8 @@ ca:
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha actualitzat el seu vot a: <strong>%{title}</strong>"
     event_removed: S'ha eliminat del fil
     new: nou
+    thread_locked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha bloquejat el fil"
+    thread_unlocked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha desbloquejat el fil"
   add_poll_to_thread_modal:
     success: S'ha afegit %{pollType} al fil!
   auth_form:
@@ -2381,6 +2413,7 @@ ca:
     want_to_set_password: Voleu iniciar la sessió amb una contrasenya la propera vegada?
     change_your_password: Voleu establir una contrasenya nova?
     email_placeholder: tu{'@'}example.com
+    turnstile_required: Si us plau, completeu la verificació abans de continuar.
   chatbot:
     configure_chatbot: Configura el chatbot
     test_connection: Prova de connexió
@@ -2508,6 +2541,7 @@ ca:
     country_disclaimer: El país es basa en l'adreça IP de l'usuari i no és molt precís. Considereu-ho només com una guia aproximada.
     total_discussions: Total de debats
     discussions_with_polls: Debats amb enquestes
+    download_csv: Descarrega el fitxer CSV
   tips:
     youve_completed_all_the_steps: "\U0001F389 Has completat tots els passos!"
     getting_started_checklist: Llista de comprovació per començar
@@ -2590,6 +2624,7 @@ ca:
       helptext_on: No mostreu com ha votat la gent fins que no es tanqui l'enquesta
     short_reason_can_be_helpful: Les raons de vot breus són més fàcils d'entendre. Un conjunt de raons concises és un gran recurs per prendre una decisió.
     shuffle_options: Opcions de reproducció aleatòria
+    selected_people_only: Només persones seleccionades
   poll_common_form:
     quorum: Quòrum
     participation_quorum: Quòrum de participació
@@ -2640,6 +2675,8 @@ ca:
       time_poll_hint: Els votants indiquen quan estan disponibles per reunir-se
       rank: Rang
       time: Temps
+      stv: Eleccions STV
+      stv_hint: Elegir diversos guanyadors proporcionalment mitjançant el vot únic transferible
     process: Procés
     process_name: Títol de la plantilla
     process_name_hint: Com s'anomena aquesta plantilla? Per exemple, consells sobre rols, control de temperatura, aprovació d'actes.
@@ -2711,8 +2748,6 @@ ca:
     invited_by: Convidat per
     invited_on: Convidat el
     no_receipts: Aquesta enquesta anònima es va tancar abans que existís la funció de verificació, per la qual cosa la verificació no és possible.
-  close_discussion_modal:
-    body: Tanca les discussions per eliminar-les de la llista de discussions obertes i evitar que la gent comenti.
   comment_reply_form:
     aria_label: Afegeix una resposta
   discussion_template:
@@ -2760,14 +2795,14 @@ ca:
     these_are_templates_admin_hint: Els administradors de grup poden editar plantilles, crear-ne de noves, reorganitzar-les i amagar/mostrar plantilles. Només els administradors poden veure les plantilles ocultes.
     show_hidden_templates: Mostra les plantilles ocultes
     show_fewer: Mostra menys
-    start_a_new_discussion: Inicia una nova discussió
     start_discussion: Inicia una discussió
     start_a_direct_discussion: Inicia una discussió directa
     these_are_templates: Aquestes són les plantilles de discussió del vostre grup.
+    start_a_new_discussion: Inicia una nova discussió
   context_panel:
     thread_status:
       pinned: Aquesta discussió s'ha fixat. Romandrà al capdamunt de la llista de discussions del grup per a tots els usuaris.
-      closed: Aquesta discussió s'ha tancat. Ja no apareixerà al tauler de control i apareixerà a la llista de "tancada" a la pàgina del grup.
+      locked: Aquesta discussió s'ha bloquejat. Ja no apareixerà al tauler de control i apareixerà a la llista de "bloquejats" a la pàgina del grup.
   thread_group:
     aria_label: Nom del grup
   discussion_context:
@@ -2778,8 +2813,8 @@ ca:
   pin_discussion_modal:
     helptext: Les discussions fixades sempre apareixen a la llista de discussions del grup.
   delete_discussion_form:
-    body: Esteu segur que voleu suprimir aquesta discussió?
     discussion_deleted: Discussió suprimida
+    body: Esteu segur que voleu eliminar aquest fil?
   move_discussion_form:
     title: Mou la discussió a un altre grup
     body: Grup de destinació
@@ -2796,3 +2831,58 @@ ca:
     opening_hour: Horari d'obertura
     scheduled_hint: L'enquesta serà visible però no votable fins a l'hora d'obertura.
     draft_hint: Aquesta enquesta es desarà com a esborrany. Estableix una data d'obertura o marca "La votació s'obre immediatament" quan estiguis a punt per començar a votar.
+  strand_members_list:
+    notify_members_or_invite_guests_info: Notifica els membres del grup pel seu nom o convida els que no són membres per correu electrònic. Els convidats poden participar en aquest fil però no tindran accés a altres fils del grup.
+    notify_members_info: Introduïu els noms dels membres del grup per notificar-los sobre aquest fil.
+    specified_voters_only_warning: Aquest fil té enquestes on només poden votar persones seleccionades. Afegir algú amb aquest formulari no li donarà vot, només la possibilitat de seguir la conversa i comentar. Si voleu assignar vots, feu servir "afegir votants" a l'enquesta.
+  poll_common_details_meta:
+    opened: Obert
+    opens: Obreix
+    closed: Tancat
+    closes: Tanca
+    opened_at: Obert a les
+    opening_at: Obertura a les
+    closed_at: Tancat a les
+    closing_at: Tancament a les
+  poll_stv_vote_form:
+    helptext: Arrossega els candidats per sobre de la línia per classificar-los. Els elements que hi ha a sota de la línia no estan classificats. El rang 1 és el que prefereixes.
+    divider_text: arrossega els candidats per sobre d'aquesta línia per classificar-los
+    stance_created: Vot enregistrat
+    stance_updated: Vot actualitzat
+  poll_stv_form:
+    settings_title: Configuració de les eleccions de STV
+    settings_helptext: Configureu el nombre d'escons a ocupar, el mètode de recompte i el tipus de quota per a aquesta elecció.
+    seats_label: Nombre de places per ocupar
+    method_label: Mètode de recompte
+    method_scottish: Scottish STV (recommended)
+    method_meek: Meek STV
+    quota_label: Tipus de quota
+    quota_droop: Droop quota (recommended)
+    quota_hare: Hare quota
+  poll_stv_results:
+    title: Resultats de les eleccions
+    elected: Elegit
+    not_elected: No elegit
+    tied: Empat
+    no_candidates_elected: Cap candidat elegit
+    round: Ronda %{number}
+    quota_info: "%{method}, %{quota_type} quota (%{quota} votes needed)"
+    method_scottish: Scottish STV
+    method_meek: Meek STV
+    quota_droop: Droop
+    quota_hare: Hare
+    elected_in_round: Elected in round %{round}
+    eliminated_in_round: Eliminated in round %{round}
+    tied_in_round: Tied in round %{round}
+    votes: vots
+    candidate: Candidat/da
+    round_elected: Ronda elegida
+    first_preferences: Primeres preferències
+    final_tally: Recompte final
+    quota_surplus: Excedent
+    round_details: Detalls ronda a ronda
+    view_full_results: Veure els resultats complets
+    results_available_when_closed: Els resultats estaran disponibles quan es tanqui la votació
+  lock_thread_modal:
+    body: Bloqueja els fils per eliminar-los de la llista de fils oberts i evitar que la gent comenti.
+    explanation: Bloqueja els fils de discussió per evitar que la gent comenti o faci més canvis

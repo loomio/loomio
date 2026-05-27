@@ -109,7 +109,7 @@ hu:
     manage:
       all: 'Nincs jogosultság erre: %{action} %{subject}.'
     add_guests:
-      all: Frissítenie kell Loomio-előfizetését, hogy vendégeket adhasson a %{subject}-hoz. Alternatív megoldásként meghívhatja őket, hogy legyenek a csoport tagjai.
+      all: Frissítenie kell Loomio-előfizetését, hogy vendégeket adhasson hozzá. Alternatív megoldásként meghívhatja őket, hogy legyenek a csoport tagjai.
   errors:
     clear_cache: Betöltési probléma észlelve. Tartsa lenyomva a Shift gombot, és nyomja meg a Reload gombot, vagy törölje a böngésző gyorsítótárát.
     404:
@@ -148,6 +148,7 @@ hu:
       body: Sajnáljuk, de valami hiba történt. Értesítettek minket a problémáról, és hamarosan kivizsgáljuk.
     '404':
       body: A kért elem nem található. Ez akkor fordulhat elő, ha egy beszélgetést vagy szavazást töröltek.
+    new_account_trial_group_limit: Az új fiókok egy csoportra korlátozódnak. Kérjük, vegye fel a kapcsolatot az ügyfélszolgálattal, ha többre van szüksége.
   group:
     error:
       handle_must_begin_with_parent_handle: 'A következővel kell kezdődnie: %{parent_handle}-'
@@ -236,6 +237,7 @@ hu:
       notified: Ezt azért kaptad, mert a szerző értesítette.
       poll_subscribed: Ezt azért kaptad, mert feliratkoztál a szavazásra.
       discussion_subscribed: Ezt azért kaptad, mert feliratkoztál a beszélgetésre.
+      thread_subscribed: Ezt azért kaptad, mert feliratkoztál a témára.
   user_mailer:
     group_export_ready:
       subject: A(z)%{group_name}csoport adatainak letöltése
@@ -378,6 +380,9 @@ hu:
     destroy_warning:
       subject: A Loomio-csoport törlésre van ütemezve.
       body: A(z) "%{group}" Loomio-csoportod törlését ütemezte %{deletor}. Ha nem szeretné, hogy csoportja törölve legyen, kérjük, válaszoljon erre az e-mailre. Ha biztos benne, hogy törölni akarja a csoportot, nem kell semmit tennie. Köszönöm.
+    trial_expired:
+      subject: A Loomio csoportod inaktivitás miatt törlésre kerül.
+      body: A(z) „%{group}” nevű Loomio csoportod inaktív volt, és 2 hét múlva törlésre kerül. Ha nem szeretnéd, hogy a csoportodat töröljék, kérlek válaszolj erre az e-mailre.
   poll_mailer:
     common:
       why_send_this: Azért kapja ezt az e-mailt, mert %{reason}
@@ -606,6 +611,11 @@ hu:
       no_meaning: Nem támogatom ezt a javaslatot
       no_prompt: Miért nem támogatja ezt a javaslatot?
       outcome_statement: "<p>Köszönöm, hogy részt vettél ebben a többségi szavazásban.</p>"
+    stv:
+      process_subtitle: Több győztes arányos megválasztása
+      process_introduction: <p>Az STV (Single Transferable Vote, azaz egyetlen átruházható szavazat) egy arányos képviseleti módszer a több győztest eredményező választásokon. A választók a jelölteket preferencia sorrendben rangsorolják. Azok a jelöltek kerülnek megválasztásra, akik elérték a szavazati kvótát, a többletszavazatok vagy a kiesett jelöltek szavazatai pedig a következő preferenciákhoz kerülnek át.</p><p> Konfigurálja a helyek számát, a számlálási módszert (Scottish vagy Meek) és a kvóta típusát (Droop vagy Hare). Az eredmények körönkénti lebontásban mutatják a szavazatok átruházásának módját.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/stv/index.html">Tudj meg többet az STV választásokról</a> .</p>
+      title: Bizottsági tagok megválasztása
+      details: <h3 id="what-is-this-election-about"><strong>Miről is szól ez a választás?</strong></h3><p></p><h3 id="how-many-seats"> <strong>Hány helyet töltenek be?</strong></h3><p></p><h3 id="who-are-the-candidates"> <strong>Kik a jelöltek?</strong></h3><p></p><p> Szavazz úgy, hogy a jelölteket a kívánt sorrendbe húzod. Az 1. helyezett a legkedveltebb jelölt. Annyi jelöltet rangsorolhatsz, amennyit csak szeretnél.</p>
   forward_mailer:
     bounce:
       subject: Az üzeneted Loomiónak nem érkezett meg kézbesítésre.
@@ -666,3 +676,5 @@ hu:
     pt: portugál
     zh: Kínai (hagyományos, tajvani)
     zh-HK: Kínai (hagyományos, tajvani)
+  upload:
+    file_too_large: A fájl túl nagy. A maximális feltöltési méret %{limit}.

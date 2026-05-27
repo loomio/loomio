@@ -109,7 +109,7 @@ he:
     manage:
       all: לא מורשה ל-%{action} %{subject}.
     add_guests:
-      all: עליך לשדרג את מנוי Loomio שלך כדי להוסיף אורחים ל-%{subject} שלך. לחלופין, אתה יכול להזמין אותם להיות חברים בקבוצה שלך.
+      all: עליך לשדרג את מנוי Loomio שלך כדי להוסיף אורחים. לחלופין, ניתן להזמין אותם להיות חברים בקבוצה שלך.
   errors:
     clear_cache: זוהתה בעיית טעינה. החזק את Shift ולחץ על טען מחדש, או נקה את מטמון הדפדפן שלך.
     404:
@@ -148,6 +148,7 @@ he:
       body: מצטערים, משהו השתבש. קיבלנו הודעה על בעיה זו ונבחן אותה בקרוב.
     '404':
       body: הפריט שביקשת לא נמצא. זה יכול לקרות אם דיון או סקר נמחקו.
+    new_account_trial_group_limit: חשבונות חדשים מוגבלים לקבוצה אחת. אנא צרו קשר עם התמיכה אם אתם זקוקים ליותר.
   group:
     error:
       handle_must_begin_with_parent_handle: חייב להתחיל ב-%{parent_handle}-
@@ -234,6 +235,7 @@ he:
       notified: קיבלת את זה כי המחבר הודיע לך.
       poll_subscribed: קיבלת את זה כי אתה רשום לסקר.
       discussion_subscribed: קיבלת את זה מכיוון שאתה רשום לדיון.
+      thread_subscribed: קיבלת את זה כי אתה רשום לשרשור.
   user_mailer:
     group_export_ready:
       subject: איחוד ייצוא המידע עבור %{group_name}
@@ -378,6 +380,9 @@ he:
     destroy_warning:
       subject: קבוצת Loomio שלך מתוכננת למחיקה.
       body: 'קבוצת Loomio שלך: "%{group}" תוזמנה למחיקה על ידי %{deletor}. אם אינך רוצה שהקבוצה שלך תימחק, אנא השב לדוא"ל זה. אם אתה בטוח שברצונך למחוק את הקבוצה, אינך צריך לעשות דבר. תודה.'
+    trial_expired:
+      subject: קבוצת Loomio שלך תימחק עקב חוסר פעילות.
+      body: קבוצת Loomio שלך "%{group}" אינה פעילה ותימחק בעוד שבועיים. אם אינך מעוניין שהקבוצה שלך תימחק, אנא השב למייל זה.
   poll_mailer:
     common:
       why_send_this: אתה מקבל את המייל הזה בגלל %{reason}
@@ -606,6 +611,11 @@ he:
       no_meaning: אני לא תומך בהצעה הזו
       no_prompt: למה אתם לא תומכים בהצעה הזו?
       outcome_statement: <p style=";text-align:right;direction:rtl">תודה על השתתפותך בהצבעת הרוב הזו.</p>
+    stv:
+      process_subtitle: בחרו מספר זוכים באופן יחסי
+      process_introduction: <p style=";text-align:right;direction:rtl">STV (קול יחיד הניתן להעברה) היא שיטת ייצוג יחסי בבחירות מרובות זוכים. הבוחרים מדרגים את המועמדים לפי סדר עדיפות. מועמדים שמגיעים למכסת קולות נבחרים, וקולות עודפים או קולות של מועמדים שהודחו עוברים להעדפות הבאות.</p><p style=";text-align:right;direction:rtl"> הגדר את מספר המושבים, שיטת הספירה (Scottish או Meek) וסוג המכסה (Droop או Hare). התוצאות מציגות פירוט סיבוב אחר סיבוב של אופן העברת הקולות.</p><p style=";text-align:right;direction:rtl"> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/stv/index.html">קראו עוד על בחירות STV</a> .</p>
+      title: בחירת חברי ועדה
+      details: <h3 id="what-is-this-election-about" style=";text-align:right;direction:rtl"><strong>על מה הבחירות האלה?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="how-many-seats" style=";text-align:right;direction:rtl"> <strong>כמה מושבים מתמלאים?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="who-are-the-candidates" style=";text-align:right;direction:rtl"> <strong>מי הם המועמדים?</strong></h3><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> הצביעו על ידי גרירת מועמדים לסדר המועדף עליכם. דירוג 1 הוא המועמד המועדף עליכם ביותר. אתם יכולים לדרג כמה מועמדים שתרצו.</p>
   forward_mailer:
     bounce:
       subject: ההודעה שלך ללומיו לא נמסרה
@@ -666,3 +676,5 @@ he:
     pt: פורטוגזית
     zh: סינית (מסורתית, טייוואן)
     zh-HK: סינית (מסורתית, טייוואן)
+  upload:
+    file_too_large: הקובץ גדול מדי. גודל ההעלאה המרבי הוא %{limit}.

@@ -165,6 +165,7 @@ he:
     ranked_choice: בחירה מדורגת
     score: סקר ציון
     question: סבב שאלות
+    stv: בחירות STV
   timezones:
     local: זמן מקומי (%{value})
   common:
@@ -314,6 +315,7 @@ he:
       rearrange: לְסַדֵר מְחָדָשׁ
       save_template: שמור תבנית
       fork_template: תבנית מזלג
+      customize: התאמה אישית
     formatting_help:
       label: פורמט
       title: למד איך להשתמש בMarkdown כדי לסגנן את הטקסט שלך
@@ -323,6 +325,8 @@ he:
     opening_in: פתיחה %{time}
     read_more: קרא עוד
     templates_admin_hint: מכיוון שאתה מנהל קבוצה, תוכל להסתיר או למחוק כל תבנית שאינך מעוניין בה, ולערוך את הנותרות בהתאם לצרכים שלך.
+    read: לִקְרוֹא
+    unread: לא נקרא
   merge_accounts:
     modal:
       title: מיזוג חשבונות
@@ -479,15 +483,15 @@ he:
     changes_all_threads_and_polls_in_group: זה משנה את ההגדרה עבור כל השרשורים והסקרים בקבוצה.
     when_do_you_want_to_be_emailed: מתי אתה רוצה לקבל אימייל?
     what_the_options_mean: מה המשמעות של האפשרויות
-    quiet_explained: לא תקבלו אימייל, גם אם מישהו ינסה להודיע לכם. ייתכן שתפספסו הודעות או החלטות חשובות אלא אם כן אתם נוהגים לבדוק את Loomio באופן קבוע.
     when_would_you_like_to_be_emailed_discussion: מתי תרצה לקבל אימייל בנוגע לדיון הזה?
     changes_all_discussions_and_polls_in_group: זה משנה את ההגדרה עבור כל הדיונים והסקרים בקבוצה.
     normal_explained: כאשר מישהו מזין את שמך בשדה "הודעה" של דיון או סקר, או כאשר הוא {'@'}מזכיר את הקבוצה.
     aria_label: טופס שינוי הגדרות דוא"ל
-  close_explanation_modal:
-    close_thread: סגור שיחה
-    body: <p style=";text-align:right;direction:rtl">סגור שרשורים ישנים או לא רלוונטיים כדי להסיר אותם מהתצוגה ולציין שהדיון נסגר.</p><p style=";text-align:right;direction:rtl"> כל אחד עדיין יכול להגיב או להתחיל סקר בשרשור סגור, אך הוא לא יופיע ברשימת השרשורים של הקבוצה או בלוח המחוונים.</p>
-    image_alt: סוגר את כל השיחות
+    when_do_you_want_to_be_emailed_thread: מתי אתה רוצה לקבל אימייל לגבי השרשור הזה?
+    loud_option: בכל פעם שמישהו משתתף (כל הפעילות)
+    normal_option: כשמישהו רוצה את תשומת ליבי (כאשר מקבל הודעה)
+    quiet_option: אין אימיילים בנוגע לשרשור הזה (כבוי)
+    quiet_explained: לא תקבלו אימייל, גם אם מישהו ינסה להודיע לכם.
   inbox:
     clear: נקה/י
     latest: אחרונים
@@ -527,6 +531,7 @@ he:
     sign_in: הרשם להצטרפות לדיון
     add_a_comment: הוסף תגובה
     share_your_thoughts: שתפו את מחשבותיכם…
+    share_on_poll: שאל שאלה או שתף מידע חדש
   thread_nav:
     participants: משתתפים
   sidebar:
@@ -561,6 +566,7 @@ he:
     new_subgroup: תת-קבוצה חדשה
     find_a_group: מצא קבוצה
     direct_discussions: דיונים ישירים
+    unread_discussions: דיונים שלא נקראו
   strand_nav:
     newest: החדש ביותר
     oldest: הוותיק ביותר
@@ -581,7 +587,12 @@ he:
     showing_unread: מציג דברים שלא נקראו
     add_comment: הוסף תגובה
     start_decision: החלטה להתחיל
-    recenter: לאחרונה
+    return: לַחֲזוֹר
+    end: סוֹף
+    notifications: התראות
+    email_all_activity: שלח אימייל לכל הפעילות
+    email_notifications: דוא"ל לאחר הודעה
+    email_none: אין אימיילים
   search_modal:
     all_content: כל התוכן
     best_match: ההתאמה הטובה ביותר
@@ -618,6 +629,7 @@ he:
     search_files_short: חפש קבצים
     search_subgroups_short: חפש תת קבוצות
     search_discussions_in_group: חפש דיונים ב-%{name}
+    thread_nav: תפריט שרשור
   user_dropdown:
     pin_sidebar: הצמד סרגל צד
     unpin_sidebar: בטל את ההצמדה של סרגל הצד
@@ -649,6 +661,7 @@ he:
     invite_to_wip_poll: הזמינו לתת משוב
     invitations: הזמנה
     discussion_members: חברי הדיון
+    thread_members: חברי השרשור
   membership_dropdown:
     set_name_and_username: הגדר שם ושם משתמש
     set_title: הגדר כותרת
@@ -713,6 +726,7 @@ he:
       discussion_closed: "%{actor} סגר את הדיון: %{title}"
       new_discussion: "%{actor} פתח דיון: %{title}"
       user_reminded: "%{actor} מזכיר לך להצביע על: %{title}"
+      thread_locked: "%{actor} נעל את השרשור: %{title}"
     without_title:
       unknown_sender: אנא עיין באימייל משולח לא מזוהה
       group_announced: "%{actor} הזמין אותך לקבוצה"
@@ -750,6 +764,7 @@ he:
       new_discussion: "%{actor} פתח דיון"
       new_comment: "%{actor} הגיב בדיון"
       outcome_updated: "%{actor} עדכן את התוצאה"
+      thread_locked: "%{actor} נעל את השרשור"
     hints:
       poll_closing_soon: עכשיו זה זמן טוב להצביע, לשנות את דעתך או לעודד אחרים להשתתף.
       poll_closing_soon_author: אולי תרצה להזכיר לאנשים להצביע או להאריך את המועד.
@@ -774,7 +789,7 @@ he:
       poll_closed_by_user: "%{actor} סגר את %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} נסגר בעוד 24 שעות: %{title}"
       poll_closing_soon_author: "%{poll_type} שלך נסגר בעוד 24 שעות: %{title}"
-      poll_created: 'הצבעה: %{title}'
+      poll_created: "%{poll_type}: %{title}"
       poll_edited: "%{actor} עדכן את %{poll_type}: %{title}"
       poll_expired: "%{poll_type} נסגר: %{title}"
       poll_expired_author: 'פרסם תוצאה: %{title}'
@@ -793,6 +808,7 @@ he:
       discussion_edited: "%{actor} ערך את הקשר הדיון: %{title}"
       discussion_closed: "%{actor} סגר את הדיון: %{title}"
       user_reminded: "%{actor} מזכיר לך להצביע על: %{title}"
+      thread_locked: "%{actor} נעל את השרשור: %{title}"
   discussion_fork_actions:
     move: העבר
     moved: הערות מרגשות, זה עשוי לקחת רגע
@@ -848,6 +864,7 @@ he:
     direct_discussion: דיון ישיר
     direct_discussion_hint: דיון ישיר גלוי רק לאנשים הספציפיים שאתה מזמין. הוא לא יופיע ברשימת הדיונים של אף קבוצה - תוכל למצוא אותו בדף הדיונים הישירים שלך.
     recommended_poll_templates: תבניות מומלצות לסקר
+    edit_discussion_context: עריכת הקשר של הדיון
   announcement:
     send_discussion: שלח שרשור
     send_group: הזמן אנשים ל-%{name}
@@ -976,6 +993,8 @@ he:
     poll_announced: "%{name} הזמין %{length} אנשים להצביע:"
     discussion_notification_history: היסטוריית התראות דיון
     inviting_guests_to_discussion: אורחים אינם שייכים לקבוצה שלך, ויש להם גישה לדיון זה בלבד
+    topic_notification_history: היסטוריית התראות של השרשור
+    notification_history: היסטוריית התראות
   action_dock:
     actions_menu: תפריט פעולות
     more_actions: יותר פעולות
@@ -1022,8 +1041,6 @@ he:
     discussion_copied: כתובת הURL של השיחה הועתקה לClipboard
     url_copied: הקישור הועתק ללוח
     tag_thread: ניהול תגיות
-    close_thread: סגור שיחה
-    reopen_thread: פתח את השרשור מחדש
     delete_thread: מחיקת שיחה
     notification_history: היסטוריית הודעות
     move_item: העבר פריט
@@ -1032,9 +1049,9 @@ he:
     count_voters: "%{count} מצביעים"
     pin_discussion: דיון בהצמדה
     unpin_discussion: ביטול הצמדת דיון
-    close_discussion: סגור דיון
-    reopen_discussion: פתח מחדש את הדיון
     delete_discussion: מחיקת דיון
+    lock_thread: נעילת שרשור
+    unlock_thread: ביטול נעילת שרשור
   formatting:
     formatting_tools: כלי עיצוב טקסט
     colors: צבעים
@@ -1157,7 +1174,6 @@ he:
     settings: הגדרות
     subgroups: תת קבוצה
     show_opened: "%{count} פתוח"
-    show_closed: "%{count} סגור"
     no_threads_here: אין שיחות פה!
     search_threads: חפש/י שיחות....
     private_threads: אתם צריכים להיות חבר לצפיה בשיחות פרטיות של הקבוצה
@@ -1175,7 +1191,6 @@ he:
     new_cover_photo: העלה תמונת קאבר חדשה
     new_group_logo: העלה לוגו קבוצה חדש
     open_discussions: שיחות פתוחות
-    closed_discussions: שיחות סגורות
     discussions_placeholder: שיחה היא מקום מפגש משותף לדיון על נושא וקבלת החלטות משותפת.
     members_placeholder: רק אתה פה בינתיים... הזמן כמה אנשים להצטרף אליך!
     member_options: אפשרויות חבר
@@ -1224,8 +1239,10 @@ he:
     discussions: דיונים
     no_discussions_here: אין כאן דיונים לראות!
     private_discussions: עליך להיות חבר כדי לצפות בשרשורים פרטיים בקבוצה זו
-    view_closed_discussions: הצג דיונים סגורים
     discussion_templates: תבניות דיון
+    show_locked: "%{count} נעול"
+    view_locked_discussions: הצג דיונים נעולים
+    locked_discussions: דיונים נעולים
   export_data_modal:
     title: איך אתה רוצה להשתמש בנתונים שלך?
     as_csv: פתח אותו בגיליון אלקטרוני
@@ -1346,8 +1363,6 @@ he:
     default_request_to_join_prompt: תודה על ההתעניינות בקבוצה שלנו. אנא הצג את עצמך והסבר מדוע אתה מבקש להצטרף.
     upgrade_for_subgroups: 'אנא <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">שדרג את המנוי שלך</a> כדי ליצור תת-קבוצה'
     share_this_url_with_people_who_want_to_join: שתף כתובת URL זו עם אנשים שרוצים להצטרף
-    allow_polls_without_discussions: אפשר סקרים ללא דיון
-    allow_polls_without_discussions_help: מנע מאנשים להתחיל סקרים מבלי להתחיל דיון קודם.
     aria_label: טופס קבוצה
     list_in_the_groups_directory: רשימה בספריית הקבוצות?
     list_in_directory_yes: כן · הצג קבוצה זו בדף "מצא קבוצה"
@@ -1589,6 +1604,7 @@ he:
   thread_preview:
     replies_count: "%{count} תשובות"
     unread_count: "%{count} לא נקראו"
+    items_count: "%{count} פריטים"
   dashboard_page:
     polls_to_vote_on: סקרים להצביע עליהם
     no_polls_to_vote_on: אין סקרים שאתה צריך להצביע עליהם
@@ -1676,17 +1692,18 @@ he:
     pin:
       pinned: השיחה נעוצה
       unpinned: שיחה כבר לא נעוצה
-    closed:
-      reopened: השיחה נפתחה מחדש
-      closed: השיחה נסגרה
     volume:
       mute_message: הדיון הושתק
       unmute_message: השתקת הדיון בוטלה
     direct: יָשִׁיר
+    locked:
+      unlocked: נעילת השרשור בוטלה
+      locked: השרשור נעול
   discussion_last_seen_by:
     title: נראה ע"י
     no_one: אף אחד לא ראה את זה עדיין
     disabled_anonymous_polls: היסטוריית הצופים מושבתת מכיוון שהשרשור מכיל סקרים אנונימיים
+    thread_engagement: Thread engagement
   activity_card:
     count_responses: "%{count} תגובות"
     beginning: התחלה
@@ -1728,6 +1745,22 @@ he:
     nested_twice: שתי רמות של תשובות מקוננות
     nested_twice_description: תשובות לכניסה לכל היותר פעמיים.
     changing_nesting_is_slow: העיבוד של שינויים בקינון עשוי להימשך מספר דקות.
+    layout: מַעֲרָך
+    items: כיצד להציג פריטים
+    nested: מקונן
+    timeline: ציר זמן
+    timeline_description: פריטים לפי סדר פרסומם
+    threaded: Threaded
+    threaded_description: תשובות מקובצות תחת מה שהן מגיבות אליו
+    allow_concurrent_polls: אפשר סקרים בו-זמניים
+    allow_multiple_polls: אפשר מספר סקרים בו זמנית
+    allow_concurrent_polls_description: לאפשר פתיחה של יותר מסקר אחד בו זמנית
+    allow_comments: אפשר תגובות
+    allow_comments_description: אפשר למשתתפים לפרסם תגובות בשרשור זה
+    allow_reactions: אפשר תגובות
+    allow_reactions_description: אפשר למשתתפים להוסיף תגובות אמוג'י
+    topic_settings: הגדרות נושא
+    thread_settings: הגדרות שרשור
   delete_thread_form:
     title: מחיקת שיחה
     body: האם אתה בטוח שהנך מעוניין למחוק את השיחה הזו?
@@ -1799,6 +1832,7 @@ he:
     ranked_choice_title: דירוג בחירה
     gradients_of_agreement_title: שיפועים של הסכמה
     majority_title: רוֹב
+    stv_title: בחירות STV
   poll_option_form:
     edit_option: אפשרות עריכה
     option_name: שם האופציה
@@ -1936,6 +1970,9 @@ he:
     blank: חָדָשׁ
     blank_subtitle: צור תבנית סקר חדשה עבור תהליך ספציפי
     start_a_poll: התחל סקר
+    export_blt: ייצוא פתקי הצבעה (BLT)
+    status: סטָטוּס
+    your_vote_is_requested: הצבעתך מתבקשת
   poll_common_attachment_form:
     label: קבצים מצורפים
   poll_common_add_option:
@@ -1956,10 +1993,8 @@ he:
     deleted: סקר זה נמחק
     do_not_hide_results: אל תסתירו תוצאות
   discussions_panel:
-    open: פתוח
     all: הכל
     unread: לא נקרא (%{count})
-    closed: סגור
     include_subgroups_mine: "%{name} ותתי הקבוצות שלי"
     include_subgroups_all: "%{name} וכל תת הקבוצות"
     no_results_found: אין תוצאות עבור "%{search}"
@@ -1967,6 +2002,8 @@ he:
     lets_start_a_thread: בואו נפתח שרשור. לחץ על "שרשור חדש" כדי להמשיך.
     lets_start_a_discussion: בואו נתחיל דיון. לחצו על "דיון חדש" כדי להמשיך.
     new_discussion: דיון חדש
+    locked: נָעוּל
+    unlocked: לא נעול
   members_panel:
     bot: בוט
     no_results: לא נמצאו חברים
@@ -2010,13 +2047,6 @@ he:
     closed: סגור
     need_vote: צריך הצבעה
     no_polls: לא נמצאו סקרים
-    standalone_disabled_title: סקרים עצמאיים מושבתים
-    standalone_disabled_helptext: <p style=";text-align:right;direction:rtl">קבוצה זו דורשת פתיחת סקרים בתוך דיון.</p><p style=";text-align:right;direction:rtl"> דיונים עוזרים לאנשים להבין את ההקשר, לשאול שאלות ולשתף נקודות מבט לפני ההצבעה. זה מוביל להחלטות טובות יותר.</p><p style=";text-align:right;direction:rtl"> התחל דיון קודם, ולאחר מכן הוסף סקר כשתהיה מוכן לאסוף קולות.</p>
-    start_discussion: התחל דיון
-    standalone_warning_title: שקול להתחיל דיון קודם כל
-    start_poll_anyway: התחל את הסקר בכל זאת
-    start_discussion_instead: תתחיל דיון במקום
-    standalone_warning_helptext: <p style=";text-align:right;direction:rtl">סקרים עובדים בצורה הטובה ביותר כאשר אנשים יכולים לדון בנושא קודם.</p><p style=";text-align:right;direction:rtl"> ללא דיון, מצביעים אינם יכולים לשאול שאלות, להעלות חששות או להציע שיפורים.</p><p style=";text-align:right;direction:rtl"> לקבלת החוויה הטובה ביותר, התחילו בדיון, בנו הבנה משותפת, ולאחר מכן הוסיפו סקר כשתהיו מוכנים ללכוד את עמדותיהם של אנשים.</p>
   group_files_panel:
     no_files: לא נמצאו קבצים
     filename: שם קובץ
@@ -2105,6 +2135,8 @@ he:
     change_results_order: שנה סדר התוצאות
     none_of_the_above: (אף אחד מהנ"ל)
     name_or_username: שם או שם משתמש
+    cast: Cast
+    uncast: Uncast
   poll_common_undecided_panel:
     show_undecided: הצג %{count} מתלבטים
     show_invitations: הראה הצעות ממתינות
@@ -2303,6 +2335,8 @@ he:
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> עדכן את ההצבעה שלו ב: <strong>%{title}</strong>"
     event_removed: הוסר מהשיחה
     new: חָדָשׁ
+    thread_locked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> נעל את השרשור"
+    thread_unlocked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> פתח את השרשור"
   add_poll_to_thread_modal:
     success: הצלחה, %{pollType} נוסף לשרשור!
   auth_form:
@@ -2373,6 +2407,7 @@ he:
     want_to_set_password: רוצה להיכנס עם סיסמה בפעם הבאה?
     change_your_password: האם תרצה להגדיר סיסמה חדשה?
     email_placeholder: אתה{'@'}example.com
+    turnstile_required: אנא השלם את האימות לפני שתמשיך.
   chatbot:
     configure_chatbot: הגדר צ'אטבוט
     test_connection: בדיקת חיבור
@@ -2498,6 +2533,7 @@ he:
     country_disclaimer: המדינה מבוססת על כתובת ה-IP של המשתמש ואינה מדויקת במיוחד. ראה זאת כמדריך גס בלבד.
     total_discussions: סך כל הדיונים
     discussions_with_polls: דיונים עם סקרים
+    download_csv: הורד קובץ CSV
   tips:
     youve_completed_all_the_steps: "\U0001F389 השלמת את כל השלבים!"
     getting_started_checklist: רשימת בדיקה לתחילת העבודה
@@ -2580,6 +2616,7 @@ he:
       helptext_on: אל תציגו כיצד אנשים הצביעו עד לסגירת הסקר
     short_reason_can_be_helpful: נימוקים קצרים להצבעה קלים יותר להבנה. אוסף של נימוקים תמציתיים הוא משאב מצוין לקבלת החלטה.
     shuffle_options: אפשרויות ערבוב
+    selected_people_only: אנשים נבחרים בלבד
   poll_common_form:
     quorum: מִניָן
     participation_quorum: מניין ההשתתפות
@@ -2630,6 +2667,8 @@ he:
       time_poll_hint: הבוחרים מציינים מתי הם זמינים להיפגש
       rank: דַרגָה
       time: זְמַן
+      stv: בחירות STV
+      stv_hint: בחרו מספר זוכים באופן יחסי באמצעות הצבעה יחידה להעברה
     process: תַהֲלִיך
     process_name: כותרת התבנית
     process_name_hint: 'איך קוראים לתבנית הזו? לדוגמה: ייעוץ לתפקיד, בדיקת חום, אישור פרוטוקול'
@@ -2701,8 +2740,6 @@ he:
     invited_by: הוזמן על ידי
     invited_on: הוזמן בתאריך
     no_receipts: סקר אנונימי זה נסגר לפני שתכונת האימות הייתה קיימת, כך שאימות אינו אפשרי.
-  close_discussion_modal:
-    body: סגור דיונים כדי להסיר אותם מרשימת הדיונים הפתוחים ולמנוע מאנשים להגיב.
   comment_reply_form:
     aria_label: הוסף תגובה
   discussion_template:
@@ -2750,14 +2787,14 @@ he:
     these_are_templates_admin_hint: מנהלי קבוצות יכולים לערוך תבניות, ליצור תבניות חדשות, לסדר מחדש ולהסתיר/לבטל הסתרה של תבניות. רק מנהלים יכולים לראות את התבניות המוסתרות.
     show_hidden_templates: הצג תבניות מוסתרות
     show_fewer: הצג פחות
-    start_a_new_discussion: התחל דיון חדש
     start_discussion: התחל דיון
     start_a_direct_discussion: התחל דיון ישיר
     these_are_templates: אלו הן תבניות הדיון בקבוצה שלכם.
+    start_a_new_discussion: התחל דיון חדש
   context_panel:
     thread_status:
       pinned: דיון זה הוצמד. הוא יישאר בראש רשימת הדיונים של הקבוצה עבור כל המשתמשים.
-      closed: דיון זה נסגר. הוא לא יופיע עוד בלוח המחוונים, ויופיע תחת 'סגור' בדף הקבוצה.
+      locked: דיון זה ננעל. הוא לא יופיע עוד בלוח המחוונים, ויופיע תחת הקטגוריה 'נעול' בדף הקבוצה.
   thread_group:
     aria_label: שם הקבוצה
   discussion_context:
@@ -2768,8 +2805,8 @@ he:
   pin_discussion_modal:
     helptext: דיונים מוצמדים תמיד מופיעים ברשימת הדיונים של הקבוצה.
   delete_discussion_form:
-    body: האם אתה בטוח שאתה רוצה למחוק את הדיון הזה?
     discussion_deleted: הדיון נמחק
+    body: האם אתה בטוח שאתה רוצה למחוק את השרשור הזה?
   move_discussion_form:
     title: העברת דיון לקבוצה אחרת
     body: קבוצת יעדים
@@ -2786,3 +2823,58 @@ he:
     opening_hour: זמן פתיחה
     scheduled_hint: הסקר יהיה גלוי אך לא ניתן להצביע עליו עד לשעת הפתיחה.
     draft_hint: סקר זה יישמר כטיוטה. הגדר תאריך פתיחה או סמן את "ההצבעה נפתחת באופן מיידי" כשתהיה מוכן להתחיל להצביע.
+  strand_members_list:
+    notify_members_or_invite_guests_info: הודע לחברי הקבוצה לפי שמם, או הזמן אנשים שאינם חברים לפי כתובת דוא"ל. אורחים מוזמנים יכולים להשתתף בשרשור זה אך לא תהיה להם גישה לשרשורי קבוצה אחרים.
+    notify_members_info: הזן שמות של חברי הקבוצה כדי להודיע להם על שרשור זה.
+    specified_voters_only_warning: בשרשור הזה יש סקרים שבהם רק אנשים נבחרים יכולים להצביע. הוספת מישהו באמצעות הטופס הזה לא תעניק לו הצבעה, אלא רק את האפשרות לעקוב ולהגיב. אם ברצונכם להקצות הצבעות, השתמשו ב"הוספת מצביעים" בסקר.
+  poll_common_details_meta:
+    opened: נפתח
+    opens: נפתח
+    closed: סָגוּר
+    closes: סגירה
+    opened_at: נפתח בשעה
+    opening_at: פתיחה בשעה
+    closed_at: סגור בשעה
+    closing_at: סוגר בשעה
+  poll_stv_vote_form:
+    helptext: גררו מועמדים מעל הקו כדי לדרג אותם. פריטים מתחת לקו אינם מדורגים. דירוג 1 הוא המועדף עליכם ביותר.
+    divider_text: גררו מועמדים מעל לקו הזה כדי לדרג אותם
+    stance_created: ההצבעה נרשמה
+    stance_updated: ההצבעה עודכנה
+  poll_stv_form:
+    settings_title: הגדרות בחירות STV
+    settings_helptext: הגדר את מספר המושבים למילוי, שיטת הספירה וסוג המכסה לבחירות אלו.
+    seats_label: מספר המושבים למלא
+    method_label: שיטת ספירה
+    method_scottish: Scottish STV (recommended)
+    method_meek: Meek STV
+    quota_label: סוג מכסה
+    quota_droop: Droop quota (recommended)
+    quota_hare: Hare quota
+  poll_stv_results:
+    title: תוצאות הבחירות
+    elected: נִבחָר
+    not_elected: לא נבחר
+    tied: Tie
+    no_candidates_elected: לא נבחרו מועמדים
+    round: Round %{number}
+    quota_info: "%{method}, %{quota_type} quota (%{quota} votes needed)"
+    method_scottish: Scottish STV
+    method_meek: Meek STV
+    quota_droop: Droop
+    quota_hare: Hare
+    elected_in_round: Elected in round %{round}
+    eliminated_in_round: Eliminated in round %{round}
+    tied_in_round: Tied in round %{round}
+    votes: קולות
+    candidate: מוּעֲמָד
+    round_elected: נבחר בסיבוב
+    first_preferences: העדפות ראשונות
+    final_tally: ספירה סופית
+    quota_surplus: עוֹדֵף
+    round_details: פרטים סיבוב אחר סיבוב
+    view_full_results: הצג את התוצאות המלאות
+    results_available_when_closed: התוצאות יהיו זמינות עם סגירת ההצבעה
+  lock_thread_modal:
+    body: נעל שרשורים כדי להסיר אותם מרשימת השרשורים הפתוחים ולמנוע מאנשים להגיב.
+    explanation: נעילת שרשורים כדי למנוע מאנשים להגיב או לבצע שינויים נוספים

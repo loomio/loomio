@@ -109,7 +109,7 @@ pl:
     manage:
       all: Brak uprawnień do %{action} %{subject}.
     add_guests:
-      all: Musisz uaktualnić swoją subskrypcję Loomio, aby dodać gości do swojego %{subject}. Alternatywnie możesz zaprosić ich do członkostwa w swojej grupie.
+      all: Musisz uaktualnić swoją subskrypcję Loomio, aby dodać gości. Alternatywnie możesz zaprosić ich do członkostwa w swojej grupie.
   errors:
     clear_cache: Wykryto problem z wczytywaniem. Przytrzymaj Shift i naciśnij Odśwież lub wyczyść pamięć podręczną przeglądarki.
     400:
@@ -152,6 +152,7 @@ pl:
       pwned_password: To hasło pojawiło się już w przypadku naruszenia bezpieczeństwa danych i nigdy nie powinno być używane
     '401':
       title: Nieautoryzowane
+    new_account_trial_group_limit: Nowe konta są ograniczone do jednej grupy. Skontaktuj się z pomocą techniczną, jeśli potrzebujesz więcej.
   group:
     error:
       handle_must_begin_with_parent_handle: Musi zaczynać się od %{parent_handle}-
@@ -240,6 +241,7 @@ pl:
       notified: Otrzymałeś to, ponieważ autor Cię o tym powiadomił.
       poll_subscribed: Otrzymałeś/aś tę wiadomość, ponieważ zapisałeś/aś się na ankietę.
       discussion_subscribed: Otrzymałeś to, ponieważ zapisałeś się na dyskusję.
+      thread_subscribed: Otrzymałeś to, ponieważ subskrybujesz wątek.
   user_mailer:
     group_export_ready:
       subject: Eksport danych grupy dla %{group_name}
@@ -393,6 +395,9 @@ pl:
     destroy_warning:
       subject: Twoja grupa Loomio ma zostać usunięta.
       body: 'Twoja grupa Loomio: „%{group}” została zaplanowana do usunięcia przez %{deletor}. Jeśli nie chcesz, aby Twoja grupa została usunięta, odpowiedz na tę wiadomość e-mail. Jeśli na pewno chcesz usunąć grupę, nie musisz nic robić. Dziękuję.'
+    trial_expired:
+      subject: Twoja grupa Loomio zostanie usunięta z powodu braku aktywności.
+      body: Twoja grupa Loomio „%{group}” jest nieaktywna i zostanie usunięta za 2 tygodnie. Jeśli nie chcesz, aby Twoja grupa została usunięta, odpowiedz na tego e-maila.
   poll_mailer:
     common:
       why_send_this: Otrzymujesz tę wiadomość e-mail, ponieważ %{reason}
@@ -621,6 +626,11 @@ pl:
       no_meaning: Nie popieram tej propozycji
       no_prompt: Dlaczego nie popierasz tej propozycji?
       outcome_statement: "<p>Dziękujemy za udział w głosowaniu większościowym.</p>"
+    stv:
+      process_subtitle: Wybieraj wielu zwycięzców proporcjonalnie
+      process_introduction: <p>STV (Single Transferable Vote) to proporcjonalna metoda reprezentacji w wyborach z wieloma zwycięzcami. Wyborcy szeregują kandydatów według preferencji. Kandydaci, którzy osiągną próg głosów, zostają wybrani, a nadwyżka lub brakujące głosy przechodzą na kolejne preferencje.</p><p> Skonfiguruj liczbę miejsc, metodę liczenia (Scottish lub Meek) oraz typ kwoty (Droop lub Hare). Wyniki pokazują podział głosów na poszczególne rundy.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/stv/index.html">Przeczytaj więcej o wyborach STV</a> .</p>
+      title: Wybierz członków komisji
+      details: <h3 id="what-is-this-election-about"><strong>Czego dotyczą te wybory?</strong></h3><p></p><h3 id="how-many-seats"> <strong>Ile miejsc jest obsadzonych?</strong></h3><p></p><h3 id="who-are-the-candidates"> <strong>Kim są kandydaci?</strong></h3><p></p><p> Głosuj, przeciągając kandydatów w preferowanej kolejności. Miejsce 1 to Twój najbardziej preferowany kandydat. Możesz ocenić dowolną liczbę kandydatów.</p>
   forward_mailer:
     bounce:
       subject: Twoja wiadomość do Loomio nie została dostarczona
@@ -681,3 +691,5 @@ pl:
     pt: portugalski
     zh: chiński (tradycyjny, tajwański)
     zh-HK: chiński (tradycyjny, tajwański)
+  upload:
+    file_too_large: Plik jest za duży. Maksymalny rozmiar przesyłanego pliku to %{limit}.

@@ -29,8 +29,8 @@ class TaskService
       MessageChannelService.publish_models([record], group_id: record.group.id)
     end
 
-    if record.respond_to?(:guests)
-      record.guests.find_each do |user|
+    if record.respond_to?(:topic) && record.topic
+      record.topic.guests.find_each do |user|
         MessageChannelService.publish_models([record], user_id: user.id)
       end
     end
@@ -95,7 +95,7 @@ class TaskService
     model.tasks.where(uid: existing_uids).each do |task|
       data = tasks_data.find { |t| t[:uid] == task.uid }
 
-      mentioned_users = model.members.where('users.id in (:ids) or users.username in (:names)',
+      mentioned_users = model.topic.members.where('users.id in (:ids) or users.username in (:names)',
                                             ids: data[:user_ids],
                                             names: data[:usernames])
       new_users = mentioned_users.where('users.id not in (?)',  task.users.pluck(:id))
@@ -108,12 +108,12 @@ class TaskService
                    remind: data[:remind],
                    remind_at: data[:remind_at],
                    done_at: (!task.done && data[:done]) ? Time.now : task.done_at,
-                   author: model.members.find_by('users.id': data[:author_id]) || model.author)
+                   author: model.topic.members.find_by('users.id': data[:author_id]) || model.author)
     end
 
     # create tasks which dont yet exist
     tasks_data.filter{|t| new_uids.include?(t[:uid]) }.each do |data|
-      users = model.members.where('users.id in (:ids) or users.username in (:names)',
+      users = model.topic.members.where('users.id in (:ids) or users.username in (:names)',
                                   ids: data[:user_ids],
                                   names: data[:usernames])
       model.tasks.create(
@@ -125,7 +125,7 @@ class TaskService
         users: users,
         done: data[:done],
         done_at: (data[:done] ? Time.now : nil),
-        author: model.members.find_by('users.id': data[:author_id]) || model.author
+        author: model.topic.members.find_by('users.id': data[:author_id]) || model.author
       )
     end
   end

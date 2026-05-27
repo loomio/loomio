@@ -165,6 +165,7 @@ da:
     ranked_choice: rangeret valg
     score: score afstemning
     question: spørgsmålsrunde
+    stv: STV-valg
   timezones:
     local: Lokal tid (%{value})
   common:
@@ -314,6 +315,7 @@ da:
       rearrange: Omarranger
       save_template: Gem skabelon
       fork_template: Gaffel skabelon
+      customize: Tilpas
     formatting_help:
       label: Formatering
       title: Lær, hvordan du bruger Markdown til at formatere din tekst
@@ -323,6 +325,8 @@ da:
     opening_in: Åbning %{time}
     read_more: Læs mere
     templates_admin_hint: Da du er gruppeadministrator, kan du skjule eller slette alle skabeloner, du ikke ønsker, og redigere de resterende, så de passer til dine behov.
+    read: Læse
+    unread: Ulæst
   merge_accounts:
     modal:
       title: Flet konti
@@ -479,15 +483,15 @@ da:
     changes_all_threads_and_polls_in_group: Dette ændrer indstillingerne for alle tråde og afstemninger i gruppen.
     when_do_you_want_to_be_emailed: Hvornår vil du have tilsendt en e-mail?
     what_the_options_mean: Hvad betyder valgmulighederne
-    quiet_explained: Du vil ikke modtage en e-mail, selv når nogen forsøger at give dig besked. Du kan gå glip af vigtige meddelelser eller beslutninger, medmindre du har for vane at tjekke Loomio regelmæssigt.
     when_would_you_like_to_be_emailed_discussion: Hvornår vil du gerne have en e-mail om denne diskussion?
     changes_all_discussions_and_polls_in_group: Dette ændrer indstillingerne for alle diskussioner og afstemninger i gruppen.
     normal_explained: Når nogen indtaster dit navn i feltet "Giv besked" i en diskussion eller afstemning, eller de {'@'}nævner gruppen.
     aria_label: Formular til ændring af e-mailindstillinger
-  close_explanation_modal:
-    close_thread: Luk tråden
-    body: "<p>Luk gamle eller irrelevante tråde for at fjerne dem fra visning og indikere, at diskussionen er lukket.</p><p> Enhver kan stadig kommentere eller starte en afstemning i en lukket tråd, men den vises ikke i gruppens trådliste eller på dashboardet.</p>"
-    image_alt: Alle lukker tråde
+    when_do_you_want_to_be_emailed_thread: Hvornår ønsker du at modtage en e-mail om denne tråd?
+    loud_option: Hver gang nogen deltager (al aktivitet)
+    normal_option: Når nogen vil have min opmærksomhed (når jeg får besked)
+    quiet_option: Ingen e-mails om denne tråd (Fra)
+    quiet_explained: Du vil ikke modtage en e-mail, heller ikke når nogen forsøger at give dig besked.
   inbox:
     clear: Ryd
     latest: Seneste
@@ -527,6 +531,7 @@ da:
     sign_in: Log ind for at deltage i debatten
     add_a_comment: Tilføj en kommentar
     share_your_thoughts: Del dine tanker…
+    share_on_poll: Stil et spørgsmål eller del nye oplysninger
   thread_nav:
     participants: Deltagere
   sidebar:
@@ -561,6 +566,7 @@ da:
     new_subgroup: Ny undergruppe
     find_a_group: Find en gruppe
     direct_discussions: Direkte diskussioner
+    unread_discussions: Ulæste diskussioner
   strand_nav:
     newest: Nyeste
     oldest: Ældste
@@ -581,7 +587,12 @@ da:
     showing_unread: Viser ulæste
     add_comment: Tilføj kommentar
     start_decision: Startbeslutning
-    recenter: For nylig
+    return: Retur
+    end: Ende
+    notifications: Notifikationer
+    email_all_activity: Send al aktivitet via e-mail
+    email_notifications: E-mail når du får besked
+    email_none: Ingen e-mails
   search_modal:
     all_content: Alt indhold
     best_match: Bedste match
@@ -618,6 +629,7 @@ da:
     search_files_short: Søg filer
     search_subgroups_short: Søg undergrupper
     search_discussions_in_group: Søg i diskussioner i %{name}
+    thread_nav: Trådmenu
   user_dropdown:
     pin_sidebar: Fastgør sidebjælken
     unpin_sidebar: Frigør sidebjælken
@@ -649,6 +661,7 @@ da:
     invite_to_wip_poll: Inviter til at give feedback
     invitations: Invitationer
     discussion_members: Diskussionsmedlemmer
+    thread_members: Trådmedlemmer
   membership_dropdown:
     set_name_and_username: Indstil navn og brugernavn
     set_title: Indstil titel
@@ -713,6 +726,7 @@ da:
       discussion_closed: "%{actor} lukkede diskussionen: %{title}"
       new_discussion: "%{actor} startede en diskussion: %{title}"
       user_reminded: "%{actor} minder dig om at stemme på: %{title}"
+      thread_locked: "%{actor} låste tråden: %{title}"
     without_title:
       unknown_sender: Gennemgå venligst e-mail fra ukendt afsender
       group_announced: "%{actor} inviterede dig til en gruppe"
@@ -750,6 +764,7 @@ da:
       new_discussion: "%{actor} startede en diskussion"
       new_comment: "%{actor} kommenterede i en diskussion"
       outcome_updated: "%{actor} opdaterede resultatet"
+      thread_locked: "%{actor} låste tråden"
     hints:
       poll_closing_soon: Nu er det et godt tidspunkt at stemme, ændre mening eller opfordre andre til at deltage.
       poll_closing_soon_author: Du vil måske gerne minde folk om at stemme eller forlænge fristen.
@@ -774,7 +789,7 @@ da:
       poll_closed_by_user: "%{actor} lukkede %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} lukker om 24 timer: %{title}"
       poll_closing_soon_author: 'Din %{poll_type} lukker om 24 timer: %{title}'
-      poll_created: 'Stemme: %{title}'
+      poll_created: "%{poll_type}: %{title}"
       poll_edited: "%{actor} opdaterede %{poll_type}: %{title}"
       poll_expired: "%{poll_type} er lukket: %{title}"
       poll_expired_author: 'Udgiv en konklusion: %{title}'
@@ -793,6 +808,7 @@ da:
       discussion_edited: "%{actor} redigerede diskussionskonteksten: %{title}"
       discussion_closed: "%{actor} lukkede diskussionen: %{title}"
       user_reminded: "%{actor} minder dig om at stemme på: %{title}"
+      thread_locked: "%{actor} låste tråden: %{title}"
   discussion_fork_actions:
     move: Flyt
     moved: Bevægende kommentarer, det kan tage et øjeblik
@@ -848,6 +864,7 @@ da:
     direct_discussion: Direkte diskussion
     direct_discussion_hint: En direkte diskussion er kun synlig for de specifikke personer, du inviterer. Den vises ikke på nogen gruppers diskussionsliste – du kan finde den på din side for direkte diskussioner.
     recommended_poll_templates: Anbefalede skabeloner til afstemninger
+    edit_discussion_context: Rediger diskussionskontekst
   announcement:
     send_discussion: Send tråd
     send_group: Inviter folk til %{name}
@@ -972,6 +989,8 @@ da:
     poll_announced: "%{name} inviterede %{length} personer til at stemme:"
     discussion_notification_history: Historik over diskussionsnotifikationer
     inviting_guests_to_discussion: Gæster tilhører ikke din gruppe og har kun adgang til denne diskussion
+    topic_notification_history: Historik over trådnotifikationer
+    notification_history: Notifikationshistorik
   action_dock:
     actions_menu: Handlingsmenu
     more_actions: flere handlinger
@@ -1018,8 +1037,6 @@ da:
     discussion_copied: Tråd-URL kopieret til udklipsholder
     url_copied: Linket er kopieret til udklipsholderen
     tag_thread: Administrer tags
-    close_thread: Luk tråden
-    reopen_thread: Åbn tråden igen
     delete_thread: Slet debat
     notification_history: Notifikationshistorik
     move_item: Flyt element
@@ -1028,9 +1045,9 @@ da:
     count_voters: "%{count} vælgere"
     pin_discussion: Fastgør diskussion
     unpin_discussion: Fjern fastgørelse af diskussion
-    close_discussion: Luk diskussion
-    reopen_discussion: Genåbn diskussionen
     delete_discussion: Slet diskussion
+    lock_thread: Lås tråd
+    unlock_thread: Lås tråden op
   formatting:
     formatting_tools: Tekstformateringsværktøjer
     colors: Farver
@@ -1153,7 +1170,6 @@ da:
     settings: Indstillinger
     subgroups: Undergrupper
     show_opened: "%{count} Åbn"
-    show_closed: "%{count} Lukket"
     no_threads_here: Ingen tråde at se her!
     search_threads: Søg efter tråde...
     private_threads: Du skal være medlem for at se private tråde i denne gruppe
@@ -1171,7 +1187,6 @@ da:
     new_cover_photo: Upload nyt forsidebillede
     new_group_logo: Upload nyt gruppelogo
     open_discussions: Åbne tråde
-    closed_discussions: Lukkede tråde
     discussions_placeholder: En debat er et sted hvor alle kan give deres mening til kende omkring et specifikt emne og tage beslutninger sammen.
     members_placeholder: Du er det eneste medlem her, inviter nogle mennesker til at være med!
     member_options: Medlemsinstaillinger
@@ -1220,8 +1235,10 @@ da:
     discussions: Diskussioner
     no_discussions_here: Ingen diskussioner at se her!
     private_discussions: Du skal være medlem for at se private tråde i denne gruppe
-    view_closed_discussions: Se lukkede diskussioner
     discussion_templates: Diskussionsskabeloner
+    show_locked: "%{count} Låst"
+    view_locked_discussions: Se låste diskussioner
+    locked_discussions: Låste diskussioner
   export_data_modal:
     title: Hvordan vil du bruge dine data?
     as_csv: Åbn det i et regneark
@@ -1342,8 +1359,6 @@ da:
     default_request_to_join_prompt: Tak for din interesse i vores gruppe. Præsentér dig selv og forklar, hvorfor du anmoder om at deltage.
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Opgrader venligst dit abonnement</a> for at oprette en undergruppe'
     share_this_url_with_people_who_want_to_join: Del denne URL med personer, der ønsker at deltage
-    allow_polls_without_discussions: Tillad afstemninger uden diskussion
-    allow_polls_without_discussions_help: Forhindre folk i at starte afstemninger uden først at starte en diskussion.
     aria_label: Gruppeformular
     list_in_the_groups_directory: Liste i gruppekataloget?
     list_in_directory_yes: Ja · vis denne gruppe på siden "find en gruppe"
@@ -1577,6 +1592,7 @@ da:
   thread_preview:
     replies_count: "%{count} svar"
     unread_count: "%{count} ulæst"
+    items_count: "%{count} varer"
   dashboard_page:
     polls_to_vote_on: Afstemninger at stemme på
     no_polls_to_vote_on: Der er ingen meningsmålinger, du behøver at stemme på
@@ -1662,17 +1678,18 @@ da:
     pin:
       pinned: Tråd fastgjort
       unpinned: Tråden er frigjort
-    closed:
-      reopened: Tråd åbnet igen
-      closed: Tråd lukket
     volume:
       mute_message: Diskussionen er slået fra
       unmute_message: Diskussionen er slået til
     direct: Direkte
+    locked:
+      unlocked: Tråd ulåst
+      locked: Tråd låst
   discussion_last_seen_by:
     title: Set af
     no_one: Ingen har set dette endnu
     disabled_anonymous_polls: Seerhistorik er deaktiveret, fordi tråden indeholder anonyme afstemninger
+    thread_engagement: Trådengagement
   activity_card:
     count_responses: "%{count} svar"
     beginning: Starten
@@ -1714,6 +1731,22 @@ da:
     nested_twice: To niveauer af indlejrede svar
     nested_twice_description: Indrykningssvar højst to gange.
     changing_nesting_is_slow: Ændringer til indlejring kan tage et par minutter at behandle.
+    layout: Layout
+    items: Sådan viser du elementer
+    nested: Indlejret
+    timeline: Tidslinje
+    timeline_description: Elementer i den rækkefølge, de blev lagt ud
+    threaded: Trådet
+    threaded_description: Svar grupperet under det, de svarer på
+    allow_concurrent_polls: Tillad samtidige afstemninger
+    allow_multiple_polls: Tillad flere afstemninger på samme tid
+    allow_concurrent_polls_description: Tillad at mere end én afstemning er åben på samme tid
+    allow_comments: Tillad kommentarer
+    allow_comments_description: Tillad deltagere at skrive kommentarer i denne tråd
+    allow_reactions: Tillad reaktioner
+    allow_reactions_description: Tillad deltagerne at tilføje emoji-reaktioner
+    topic_settings: Emneindstillinger
+    thread_settings: Trådindstillinger
   delete_thread_form:
     title: Slet debat
     body: Er du sikker på at du vil slette denne debat?
@@ -1780,6 +1813,7 @@ da:
     ranked_choice_title: Rangeret valg
     gradients_of_agreement_title: Gradienter af enighed
     majority_title: Flertal
+    stv_title: STV-valg
   poll_option_form:
     edit_option: Rediger mulighed
     option_name: Mulighedens navn
@@ -1917,6 +1951,9 @@ da:
     blank: Ny
     blank_subtitle: Opret en ny skabelon til afstemning for en specifik proces
     start_a_poll: Start en afstemning
+    export_blt: Eksport af stemmesedler (BLT)
+    status: Status
+    your_vote_is_requested: Din stemme er anmodet
   poll_common_attachment_form:
     label: Vedhæftede filer
   poll_common_add_option:
@@ -1937,10 +1974,8 @@ da:
     deleted: Denne afstemning er blevet slettet
     do_not_hide_results: Skjul ikke resultater
   discussions_panel:
-    open: Offentlig
     all: Alle
     unread: Ulæst (%{count})
-    closed: Lukket
     include_subgroups_mine: "%{name} og mine undergrupper"
     include_subgroups_all: "%{name} og alle undergrupper"
     no_results_found: Ingen resultater for "%{search}"
@@ -1948,6 +1983,8 @@ da:
     lets_start_a_thread: Lad os starte en tråd. Klik på "Ny tråd" for at fortsætte.
     lets_start_a_discussion: Lad os starte en diskussion. Klik på "Ny diskussion" for at fortsætte.
     new_discussion: Ny diskussion
+    locked: Låst
+    unlocked: Låst op
   members_panel:
     bot: Bot
     no_results: Ingen medlemmer fundet
@@ -1991,13 +2028,6 @@ da:
     closed: Lukket
     need_vote: Skal stemme
     no_polls: Ingen meningsmålinger fundet
-    standalone_disabled_title: Selvstændige afstemninger er deaktiveret
-    standalone_disabled_helptext: "<p>Denne gruppe kræver, at afstemninger startes i en diskussion.</p><p> Diskussioner hjælper folk med at forstå konteksten, stille spørgsmål og dele perspektiver, inden de stemmer. Dette fører til bedre beslutninger.</p><p> Start først en diskussion, og tilføj derefter en afstemning, når du er klar til at indsamle stemmer.</p>"
-    start_discussion: Start en diskussion
-    standalone_warning_title: Overvej at starte en diskussion først
-    start_poll_anyway: Start afstemning alligevel
-    start_discussion_instead: Start en diskussion i stedet
-    standalone_warning_helptext: "<p>Afstemninger fungerer bedst, når folk kan diskutere emnet først.</p><p> Uden en diskussion kan vælgerne ikke stille spørgsmål, rejse bekymringer eller foreslå forbedringer.</p><p> For at opnå den bedste oplevelse, start med en diskussion, opbyg fælles forståelse, og tilføj derefter en afstemning, når du er klar til at indsamle folks holdninger.</p>"
   group_files_panel:
     no_files: Ingen filer fundet
     filename: Filnavn
@@ -2086,6 +2116,8 @@ da:
     change_results_order: Skift sorteringsrækkefølge for resultat
     none_of_the_above: "(Ingen af de tidligere)"
     name_or_username: Navn eller brugernavn
+    cast: Afgivet
+    uncast: Ikke afgivet
   poll_common_undecided_panel:
     show_undecided: Vis %{count} ubesluttede
     show_invitations: Vis afventende invitationer
@@ -2284,6 +2316,8 @@ da:
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> opdaterede deres stemme om: <strong>%{title}</strong>"
     event_removed: Fjernet fra tråden
     new: ny
+    thread_locked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> låste tråden"
+    thread_unlocked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> låste tråden op"
   add_poll_to_thread_modal:
     success: Det lykkedes, %{pollType} blev tilføjet til tråden!
   auth_form:
@@ -2354,6 +2388,7 @@ da:
     want_to_set_password: Vil du logge ind med en adgangskode næste gang?
     change_your_password: Vil du indstille en ny adgangskode?
     email_placeholder: du{'@'}eksempel.com
+    turnstile_required: Færdiggør venligst bekræftelsen, før du fortsætter.
   chatbot:
     configure_chatbot: Konfigurer chatbot
     test_connection: Test forbindelse
@@ -2479,6 +2514,7 @@ da:
     country_disclaimer: Land er baseret på brugerens IP-adresse og er ikke særlig nøjagtigt. Betragt kun dette som en grov guide.
     total_discussions: Samlede diskussioner
     discussions_with_polls: Diskussioner med afstemninger
+    download_csv: Download CSV-fil
   tips:
     youve_completed_all_the_steps: "\U0001F389 Du har gennemført alle trinene!"
     getting_started_checklist: Tjekliste til introduktion
@@ -2561,6 +2597,7 @@ da:
       helptext_on: Vis ikke, hvordan folk har stemt, før afstemningen er lukket
     short_reason_can_be_helpful: Korte begrundelser for stemmeafgivning er lettere at forstå. En samling af præcise begrundelser er en god ressource til at træffe en beslutning.
     shuffle_options: Blandingsmuligheder
+    selected_people_only: Kun udvalgte personer
   poll_common_form:
     quorum: Kvorum
     participation_quorum: Deltagelsesquorum
@@ -2611,6 +2648,8 @@ da:
       time_poll_hint: Vælgerne angiver, hvornår de er til rådighed til at mødes
       rank: Rang
       time: Tid
+      stv: STV-valg
+      stv_hint: Vælg flere vindere proportionalt ved hjælp af Single Transferable Vote
     process: Behandle
     process_name: Skabelontitel
     process_name_hint: Hvad kalder du denne skabelon? F.eks. rollerådgivning, temperaturmåling, godkendelse af referat
@@ -2682,8 +2721,6 @@ da:
     invited_by: Inviteret af
     invited_on: Inviteret den
     no_receipts: Denne anonyme afstemning blev lukket, før verifikationsfunktionen eksisterede, så verifikation er ikke mulig.
-  close_discussion_modal:
-    body: Luk diskussioner for at fjerne dem fra listen over åbne diskussioner og forhindre folk i at kommentere.
   comment_reply_form:
     aria_label: Tilføj et svar
   discussion_template:
@@ -2731,14 +2768,14 @@ da:
     these_are_templates_admin_hint: Gruppeadministratorer kan redigere skabeloner, oprette nye skabeloner, omarrangere og skjule/vise skabeloner. Kun administratorer kan se de skjulte skabeloner.
     show_hidden_templates: Vis skjulte skabeloner
     show_fewer: Vis færre
-    start_a_new_discussion: Start en ny diskussion
     start_discussion: Start en diskussion
     start_a_direct_discussion: Start en direkte diskussion
     these_are_templates: Dette er diskussionsskabelonerne i jeres gruppe.
+    start_a_new_discussion: Start en ny diskussion
   context_panel:
     thread_status:
       pinned: Denne diskussion er blevet fastgjort. Den vil forblive øverst på gruppens liste over diskussioner for alle brugere.
-      closed: Denne diskussion er blevet lukket. Den vil ikke længere blive vist på dashboardet og vil være angivet under 'lukket' på gruppesiden.
+      locked: Denne diskussion er blevet låst. Den vil ikke længere blive vist på dashboardet og vil være angivet under 'låst' på gruppesiden.
   thread_group:
     aria_label: Gruppenavn
   discussion_context:
@@ -2749,8 +2786,8 @@ da:
   pin_discussion_modal:
     helptext: Fastgjorte diskussioner vises altid på gruppens liste over diskussioner.
   delete_discussion_form:
-    body: Er du sikker på, at du vil slette denne diskussion?
     discussion_deleted: Diskussion slettet
+    body: Er du sikker på, at du vil slette denne tråd?
   move_discussion_form:
     title: Flyt diskussionen til en anden gruppe
     body: Destinationsgruppe
@@ -2767,3 +2804,58 @@ da:
     opening_hour: Åbningstid
     scheduled_hint: Afstemningen vil være synlig, men ikke mulig at stemme på, før den åbner.
     draft_hint: Denne afstemning gemmes som et udkast. Angiv en åbningsdato, eller marker "Afstemningen åbner med det samme", når du er klar til at begynde at stemme.
+  strand_members_list:
+    notify_members_or_invite_guests_info: Giv gruppemedlemmer besked ved navn, eller inviter ikke-medlemmer via e-mailadresse. Inviterede gæster kan deltage i denne tråd, men har ikke adgang til andre gruppetråde.
+    notify_members_info: Indtast navnene på gruppemedlemmer for at give dem besked om denne tråd.
+    specified_voters_only_warning: Denne tråd har afstemninger, hvor kun udvalgte personer kan stemme. Hvis du tilføjer nogen med denne formular, får de ikke en stemme, men kun mulighed for at følge med og kommentere. Hvis du vil udstede stemmer, skal du bruge "tilføj vælgere" i afstemningen.
+  poll_common_details_meta:
+    opened: Åbnet
+    opens: Åbner
+    closed: Lukket
+    closes: Lukker
+    opened_at: Åbnede kl.
+    opening_at: Åbner kl.
+    closed_at: Lukket kl.
+    closing_at: Lukker kl.
+  poll_stv_vote_form:
+    helptext: Træk kandidaterne over linjen for at rangere dem. Elementer under linjen rangeres ikke. Rang 1 er din mest foretrukne.
+    divider_text: Træk kandidaterne over denne linje for at rangere dem
+    stance_created: Afstemning registreret
+    stance_updated: Afstemningen er opdateret
+  poll_stv_form:
+    settings_title: STV-valgindstillinger
+    settings_helptext: Konfigurer antallet af pladser, der skal besættes, optællingsmetode og kvotetype for dette valg.
+    seats_label: Antal pladser at udfylde
+    method_label: Tællemetode
+    method_scottish: Scottish STV (recommended)
+    method_meek: Meek STV
+    quota_label: Kvotetype
+    quota_droop: Droop quota (recommended)
+    quota_hare: Hare quota
+  poll_stv_results:
+    title: Valgresultater
+    elected: Valgt
+    not_elected: Ikke valgt
+    tied: Uafgjort
+    no_candidates_elected: Ingen kandidater valgt
+    round: Runde %{number}
+    quota_info: "%{method}, %{quota_type} quota (%{quota} votes needed)"
+    method_scottish: Scottish STV
+    method_meek: Meek STV
+    quota_droop: Droop
+    quota_hare: Hare
+    elected_in_round: Elected in round %{round}
+    eliminated_in_round: Eliminated in round %{round}
+    tied_in_round: Tied in round %{round}
+    votes: stemmer
+    candidate: Kandidat
+    round_elected: Valgt runde
+    first_preferences: Første præferencer
+    final_tally: Endelig optælling
+    quota_surplus: Overskud
+    round_details: Detaljer runde for runde
+    view_full_results: Se alle resultater
+    results_available_when_closed: Resultaterne vil være tilgængelige, når afstemningen slutter
+  lock_thread_modal:
+    body: Lås tråde for at fjerne dem fra listen over åbne tråde og forhindre folk i at kommentere.
+    explanation: Lås tråde for at forhindre folk i at kommentere eller foretage yderligere ændringer

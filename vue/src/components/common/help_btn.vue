@@ -1,9 +1,7 @@
-<script lang="js">
-export default {
-  props: {
-    path: String
-  }
-}
+<script setup lang="js">
+defineProps({
+  path: String
+});
 </script>
 
 <template lang="pug">

@@ -2,10 +2,7 @@
 import Records            from '@/shared/services/records';
 import AbilityService     from '@/shared/services/ability_service';
 import EventBus           from '@/shared/services/event_bus';
-import RecordLoader       from '@/shared/services/record_loader';
 import PageLoader         from '@/shared/services/page_loader';
-import DiscussionService      from '@/shared/services/discussion_service';
-import { debounce, orderBy, intersection, concat, uniq } from 'lodash-es';
 import Session from '@/shared/services/session';
 import { mdiMagnify } from '@mdi/js';
 import WatchRecords from '@/mixins/watch_records';
@@ -17,7 +14,7 @@ export default
   created() {
     this.watchRecords({
       key: this.$route.params.key,
-      collections: ['discussions', 'groups', 'memberships'],
+      collections: ['topics', 'groups', 'memberships'],
       query: this.query
     });
 
@@ -34,9 +31,8 @@ export default
   data() {
     return {
       group: null,
-      discussions: [],
+      topics: [],
       loader: null,
-      groupIds: [],
       isMember: false,
       per: 25,
       dummyQuery: null,
@@ -59,13 +55,14 @@ export default
         this.isMember = !!Session.user().membershipFor(this.group);
 
         this.loader = new PageLoader({
-          path: 'discussions',
+          path: 'topics',
           order: 'lastActivityAt',
           params: {
             group_id: this.group.id,
-            exclude_types: 'group outcome poll',
+            exclude_types: 'reaction',
+            topicable_type: 'Discussion',
+            subgroups: 'mine',
             filter: this.$route.query.t,
-            subgroups: this.$route.query.subgroups || 'mine',
             tags: this.$route.query.tag,
             per: this.per
           }
@@ -78,19 +75,58 @@ export default
 
     query() {
       if (!this.group) { return }
-      this.groupIds = (() => { switch (this.$route.query.subgroups || 'mine') {
-        case 'mine': return uniq(concat(intersection(this.group.organisationIds(), Session.user().groupIds()), this.group.id));
-        case 'all': return this.group.organisationIds();
-        default: return [this.group.id];
-      } })();
 
-      this.discussions = DiscussionService.groupDiscussionsQuery(this.group, this.groupIds, this.$route.query.t, this.$route.query.tag, this.page, this.loader);
+      const groupIds = this.group.organisationIds();
+
+      let pinnedTopics = [];
+      if (this.page == 1 && !this.$route.query.t && !this.$route.query.tag) {
+        pinnedTopics = Records.topics.collection.chain().find({
+          groupId: {$in: groupIds},
+          topicableType: 'Discussion',
+          pinnedAt: {$ne: null}
+        }).simplesort('pinnedAt', true).data();
+      }
+
+      let chain = Records.topics.collection.chain().find({
+        groupId: {$in: groupIds},
+        topicableType: 'Discussion',
+        id: {$nin: pinnedTopics.map(t => t.id)}
+      }).simplesort('lastActivityAt', true);
+
+      switch (this.$route.query.t) {
+        case 'unread':
+          chain = chain.where(topic => topic.isUnread());
+          break;
+        case 'locked':
+          chain = chain.find({lockedAt: {$ne: null}});
+          break;
+        case 'unlocked':
+          chain = chain.find({lockedAt: null});
+          break;
+        default:
+          break;
+      }
+
+      if (this.$route.query.tag) {
+        const tagName = this.$route.query.tag;
+        chain = chain.where(topic => topic.tags.includes(tagName));
+      }
+
+      let topics = [];
+      if (this.loader.pageWindow[this.page]) {
+        if (this.page === 1) {
+          chain = chain.find({lastActivityAt: {$gte: this.loader.pageWindow[this.page][0]}});
+        } else {
+          chain = chain.find({lastActivityAt: {$jbetween: this.loader.pageWindow[this.page]}});
+        }
+        topics = chain.data();
+      }
+      this.topics = pinnedTopics.concat(topics);
+
       EventBus.$emit('currentComponent', {
         page: 'groupPage',
         title: this.group.name,
         group: this.group,
-        discussions: this.discussions,
-        discussionsGroup: this.group,
         search: {
           placeholder: this.$t('navbar.search_discussions_in_group', {name: this.group.parentOrSelf().name})
         }
@@ -104,11 +140,11 @@ export default
     filterName(filter) {
       switch (filter) {
         case 'unread': return 'discussions_panel.unread';
-        case 'all': return 'discussions_panel.all';
-        case 'closed': return 'discussions_panel.closed';
+        case 'locked': return 'discussions_panel.locked';
+        case 'unlocked': return 'discussions_panel.unlocked';
         case 'subscribed': return 'change_volume_form.simple.loud';
         default:
-          return 'discussions_panel.open';
+          return 'discussions_panel.all';
       }
     },
 
@@ -155,7 +191,7 @@ export default
     },
 
     totalPages() {
-      return Math.ceil(parseFloat(this.loader.total) / parseFloat(this.per));
+      return Math.max(1, Math.ceil((this.loader.total || 0) / this.per));
     },
 
     groupTags() {
@@ -167,7 +203,7 @@ export default
     },
 
     noThreads() {
-      return !this.loading && this.discussions.length === 0
+      return !this.loading && this.topics.length === 0
     },
 
     canViewPrivateContent() {
@@ -183,11 +219,11 @@ export default
     },
 
     unreadCount() {
-      return this.discussions.filter(discussion => discussion.isUnread()).length;
+      return this.topics.filter(topic => topic.isUnread()).length;
     },
 
-    suggestClosedThreads() {
-      return ['undefined', 'open', 'unread'].includes(String(this.$route.query.t)) && this.group && this.group.closedDiscussionsCount;
+    suggestLockedThreads() {
+      return !['locked'].includes(String(this.$route.query.t)) && this.group && this.group.closedDiscussionsCount;
     }
   }
 };
@@ -203,12 +239,12 @@ div.discussions-panel(v-if="group")
           span(v-t="{path: filterName($route.query.t), args: {count: unreadCount}}")
           common-icon(name="mdi-menu-down")
       v-list
-        v-list-item.discussions-panel__filters-open(@click="routeQuery({t: null})")
-          v-list-item-title(v-t="'discussions_panel.open'")
-        v-list-item.discussions-panel__filters-all(@click="routeQuery({t: 'all'})")
+        v-list-item.discussions-panel__filters-all(@click="routeQuery({t: null})")
           v-list-item-title(v-t="'discussions_panel.all'")
-        v-list-item.discussions-panel__filters-closed(@click="routeQuery({t: 'closed'})")
-          v-list-item-title(v-t="'discussions_panel.closed'")
+        v-list-item.discussions-panel__filters-locked(@click="routeQuery({t: 'locked'})")
+          v-list-item-title(v-t="'discussions_panel.locked'")
+        v-list-item.discussions-panel__filters-open(@click="routeQuery({t: 'unlocked'})")
+          v-list-item-title(v-t="'discussions_panel.unlocked'")
         v-list-item.discussions-panel__filters-unread(@click="routeQuery({t: 'unread'})")
           v-list-item-title(v-t="{path: 'discussions_panel.unread', args: { count: unreadCount }}")
 
@@ -248,21 +284,21 @@ div.discussions-panel(v-if="group")
         .discussions-panel__list--empty.pa-4(v-if='noThreads')
           p.text-center(v-if='canViewPrivateContent' v-t="'group_page.no_discussions_here'")
           p.text-center(v-if='!canViewPrivateContent' v-t="'group_page.private_discussions'")
-        .discussions-panel__list.thread-preview-collection__container(v-if="discussions.length")
+        .discussions-panel__list.thread-preview-collection__container(v-if="topics.length")
           v-list.thread-previews(lines="two")
             thread-preview(
-              v-for="thread in discussions"
-              :show-group-name="thread.groupId != group.id"
-              :key="thread.id"
-              :thread="thread"
+              v-for="topic in topics"
+              :show-group-name="topic.groupId != group.id"
+              :key="topic.id"
+              :topic="topic"
               group-page
             )
 
-        loading(v-if="loading && discussions.length == 0")
+        loading(v-if="loading && topics.length == 0")
 
         v-pagination(v-model="page" :length="totalPages" :disabled="totalPages == 1")
         .d-flex.justify-center
-          router-link.discussions-panel__view-closed-threads.text-center.pa-1(:to="'?t=closed'" v-if="suggestClosedThreads" v-t="'group_page.view_closed_discussions'")
+          router-link.discussions-panel__view-locked-threads.text-center.pa-1(:to="'?t=locked'" v-if="suggestLockedThreads" v-t="'group_page.view_locked_discussions'")
 
 </template>
 

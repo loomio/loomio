@@ -3,7 +3,7 @@ class CommentSerializer < ApplicationSerializer
              :body,
              :body_format,
              :mentioned_usernames,
-             :discussion_id,
+             :topic_id,
              :created_at,
              :updated_at,
              :parent_id,
@@ -17,8 +17,7 @@ class CommentSerializer < ApplicationSerializer
              :discarded_by
 
   has_one :author, serializer: AuthorSerializer, root: :users
-  has_one :discussion, serializer: DiscussionSerializer, root: :discussions
-  
+  has_many :reactions, serializer: ReactionSerializer, root: :reactions
 
   hide_when_discarded [:body]
 

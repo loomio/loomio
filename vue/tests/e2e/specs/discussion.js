@@ -37,30 +37,28 @@ module.exports = {
     page.expectElement('.time-ago')
   },
 
-  'can_close_and_reopen_a_thread': (test) => {
+  'can_lock_and_unlock_a_thread': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_open_and_closed_discussions')
     page.expectText('.thread-preview', 'What star sign are you?')
     page.click('.discussions-panel__filters')
-    page.click('.discussions-panel__filters-closed')
+    page.click('.discussions-panel__filters-locked')
     page.expectText('.thread-preview', 'This thread is old and closed')
     page.click('.discussions-panel__filters')
-    page.click('.discussions-panel__filters-open')
+    page.click('.discussions-panel__filters-all')
     page.click('.thread-preview')
-    page.click('.action-menu')
-    page.click('.action-dock__button--close_thread')
-    page.expectFlash('Discussion closed')
+    page.click('.thread-sidebar .action-dock__button--lock_thread')
+    page.expectFlash('Thread locked')
     // page.click('.flash-root__action')
-    // page.expectFlash('Thread reopened')
+    // page.expectFlash('Thread unlocked')
   },
 
   'lets_you_edit_title_and_context': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
-    page.click('.action-menu')
-    page.click('.action-dock__button--edit_thread')
+    page.click('.context-panel .action-dock__button--edit_thread')
     page.fillIn('.discussion-form__title-input input', 'better title')
     page.fillIn('.discussion-form .lmo-textarea textarea', 'improved description')
     page.click('.discussion-form__submit')
@@ -105,8 +103,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion')
-    page.click('.action-menu')
-    page.click('.action-dock__button--discard_thread')
+    page.click('.thread-sidebar .action-dock__button--discard_thread')
     page.click('.confirm-modal__submit')
 
     page.expectFlash('Discussion deleted')
@@ -247,8 +244,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion_with_versions')
-    page.click('.action-menu')
-    page.click('.action-dock__button--show_history')
+    page.click('.thread-sidebar .action-dock__button--show_history')
     page.expectText('.revision-history-content del', 'star')
     page.expectText('.revision-history-content ins', 'moon')
   },
@@ -306,6 +302,10 @@ module.exports = {
     page.loadPathNoApp('setup_discussion_mailer_invitation_created_email')
     page.expectText('.base-mailer__event-headline', "invited you to a discussion")
     page.expectText('.thread-mailer__body', "A description for this discussion. Should this be rich?")
+    page.expectText('body', 'Should we go to the moon?')
+    page.expectText('.poll-mailer-common-summary', 'Poll details for the invitation email.')
+    page.expectText('.poll-mailer__vote', 'Please vote')
+    page.expectText('.poll-mailer__vote', 'Agree')
     page.click('.event-mailer__title a', 2000)
     page.expectValue('.auth-email-form__email input', 'jen@example.com')
     page.signUpViaInvitation("Jennifer")
@@ -313,6 +313,31 @@ module.exports = {
     page.expectText('.context-panel__heading', 'go to the moon', 10000)
     page.expectText('.context-panel__description', 'A description for this discussion')
     page.expectText('.new-comment__body', 'body of the comment')
+  },
+
+  'can_move_comments_to_another_thread': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_forkable_discussion')
+    page.expectText('.strand-list', 'totally on topic')
+    page.expectText('.strand-list', 'totally off topic')
+    page.click('.new-comment .action-menu')
+    page.click('.action-dock__button--move_event')
+    page.expectElement('.discussion-fork-actions')
+    page.click('.discussion-fork-actions__move')
+    page.pause(2000)
+    page.fillIn('.v-card .v-autocomplete input', 'Waking')
+    page.pause(2000)
+    page.click('.v-autocomplete__content .v-list-item__content')
+    page.pause(500)
+    page.click('.v-card-actions .v-btn:last-child')
+    page.pause(2000)
+    // Should have navigated to the target thread
+    page.expectText('.context-panel__heading', 'Waking Up in Reno')
+    page.refresh()
+    page.pause(3000)
+    // The moved comment should be in the target thread
+    page.expectText('.strand-list', 'totally on topic')
   },
 
   'private_thread': (test) => {

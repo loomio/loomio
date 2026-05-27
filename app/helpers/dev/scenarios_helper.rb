@@ -1,11 +1,16 @@
 module Dev::ScenariosHelper
   include Dev::FakeDataHelper
 
+  def saved_discussion_with_created_event(group:)
+    saved(fake_discussion(group: group)).tap do |discussion|
+      discussion.create_missing_created_event! unless discussion.created_event
+    end
+  end
+
   def poll_created_scenario(params)
     group = create_group_with_members
 
-    discussion = fake_discussion(group: group, title: "Some discussion")
-    DiscussionService.create(discussion: discussion, actor: group.members.first)
+    discussion = DiscussionService.create(params: {group_id: group.id, title: "Some discussion", private: true}, actor: group.members.first)
 
     actor = group.admins.first
     user  = saved(fake_user(time_zone: "America/New_York", auto_translate: true))
@@ -13,14 +18,15 @@ module Dev::ScenariosHelper
     group.add_member! user if !params[:guest]
     group.add_admin! user if params[:admin]
 
-    poll = fake_poll(group: group,
-                     discussion: params[:standalone] ? nil : discussion,
-                     poll_type: params[:poll_type],
-                     hide_results: (params[:hide_results] || :off),
-                     wip: params[:wip],
-                     anonymous: !!params[:anonymous])
-
-    event = PollService.create(poll: poll, actor: actor, params: {notify_recipients: true})
+    poll = PollService.create(
+      params: fake_poll_params(
+        topic_id: (discussion.topic_id unless params[:standalone]),
+        group_id: group.id,
+        poll_type: params[:poll_type],
+        hide_results: (params[:hide_results] || :off),
+        wip: params[:wip],
+        anonymous: !!params[:anonymous]),
+      actor: actor)
 
     if params[:guest]
       recipients = {recipient_emails: [user.email], notify_recipients: true}
@@ -31,8 +37,8 @@ module Dev::ScenariosHelper
       discussion: discussion,
       group: group,
       observer: user,
-      poll: event.eventable,
-      title: event.eventable.title,
+      poll: poll,
+      title: poll.title,
       actor: actor
     }
   end
@@ -41,14 +47,14 @@ module Dev::ScenariosHelper
     observer = fake_user.tap(&:save!)
     group = create_group_with_members
     group.add_admin!(observer)
-    poll = fake_poll(poll_type: params[:poll_type],
-                     anonymous: !!params[:anonymous],
-                     hide_results: (params[:hide_results] || :off),
-                     group: group,
-                     discussion: nil,
-                     wip: params[:wip])
-
-    event = PollService.create(poll: poll, actor: observer)
+    poll = PollService.create(
+      params: fake_poll_params(
+        poll_type: params[:poll_type],
+        anonymous: !!params[:anonymous],
+        hide_results: (params[:hide_results] || :off),
+        group_id: group.id,
+        wip: params[:wip]),
+      actor: observer)
     Stance.where(poll_id: poll.id, participant_id: observer.id).delete_all
 
     stance = fake_stance(poll: poll)
@@ -60,8 +66,8 @@ module Dev::ScenariosHelper
       observer: observer,
       group: group,
       actor: observer,
-      title: event.eventable.title,
-      poll: event.eventable
+      title: poll.title,
+      poll: poll
     }
   end
 
@@ -90,8 +96,9 @@ module Dev::ScenariosHelper
     voter    = saved(fake_user)
     scenario[:poll].group.add_member!(voter)
 
-    Stance.where(poll_id: scenario[:poll].id,
-                 participant_id: scenario[:poll].author_id).update(volume: 'loud')
+    # Ensure author gets email notifications by setting topic reader volume to loud
+    topic = scenario[:poll].topic
+    TopicReader.find_or_create_by!(topic: topic, user: scenario[:poll].author).set_volume!('loud') if topic
 
     stance = Stance.find_by(poll: scenario[:poll], participant: voter, latest: true)
     event = StanceService.update(stance: stance, actor: voter, params: cast_stance_params(scenario[:poll]))
@@ -114,24 +121,23 @@ module Dev::ScenariosHelper
   end
 
   def poll_closing_soon_scenario(params)
-    discussion = fake_discussion(group: create_group_with_members)
+    group = create_group_with_members
     non_voter  = saved(fake_user)
-    discussion.group.add_member! non_voter
-    actor      = discussion.group.admins.first
-    DiscussionService.create(discussion: discussion, actor: actor)
-    poll       = fake_poll(
-      author: actor,
-      poll_type: params[:poll_type],
-      anonymous: !!params[:anonymous],
-      hide_results: (params[:hide_results] || :off),
-      discussion: discussion,
-      wip: params[:wip],
-      notify_on_closing_soon: params[:notify_on_closing_soon] || 'voters',
-      quorum_pct: 80,
-      created_at: 6.days.ago.beginning_of_hour,
-      closing_at: if params[:wip] then nil else 1.day.from_now.beginning_of_hour end
-    )
-    PollService.create(poll: poll, actor: actor)
+    group.add_member! non_voter
+    actor      = group.admins.first
+    discussion = DiscussionService.create(params: {group_id: group.id, title: Faker::Quote.yoda.truncate(150), private: true}, actor: actor)
+    poll = PollService.create(
+      params: fake_poll_params(
+        topic_id: discussion.topic_id,
+        poll_type: params[:poll_type],
+        anonymous: !!params[:anonymous],
+        hide_results: (params[:hide_results] || :off),
+        wip: params[:wip],
+        notify_on_closing_soon: params[:notify_on_closing_soon] || 'voters',
+        quorum_pct: 80,
+        created_at: 6.days.ago.beginning_of_hour,
+        closing_at: if params[:wip] then nil else 1.day.from_now.beginning_of_hour end),
+      actor: actor)
 
     create_fake_stances(poll: poll)
 
@@ -140,7 +146,7 @@ module Dev::ScenariosHelper
 
     {
       discussion: discussion,
-      group: discussion.group,
+      group: group,
       observer: non_voter,
       actor: actor,
       poll: poll,
@@ -149,25 +155,23 @@ module Dev::ScenariosHelper
   end
 
   def poll_reminder_scenario(params)
-    discussion = fake_discussion(group: create_group_with_members)
+    group = create_group_with_members
     non_voter  = saved(fake_user)
-    discussion.group.add_member! non_voter
-    actor      = discussion.group.admins.first
-    DiscussionService.create(discussion: discussion, actor: actor)
-    poll       = fake_poll(
-      author: actor,
-      poll_type: params[:poll_type],
-      anonymous: !!params[:anonymous],
-      hide_results: (params[:hide_results] || :off),
-      discussion: discussion,
-      wip: params[:wip],
-      notify_on_closing_soon: params[:notify_on_closing_soon] || 'voters',
-      created_at: 6.days.ago.beginning_of_hour,
-      closing_at: if params[:wip] then nil else 1.day.from_now.beginning_of_hour end
-    )
-
-    PollService.create(poll: poll, actor: actor)
-    create_fake_stances(poll:poll)
+    group.add_member! non_voter
+    actor      = group.admins.first
+    discussion = DiscussionService.create(params: {group_id: group.id, title: Faker::Quote.yoda.truncate(150), private: true}, actor: actor)
+    poll = PollService.create(
+      params: fake_poll_params(
+        topic_id: discussion.topic_id,
+        poll_type: params[:poll_type],
+        anonymous: !!params[:anonymous],
+        hide_results: (params[:hide_results] || :off),
+        wip: params[:wip],
+        notify_on_closing_soon: params[:notify_on_closing_soon] || 'voters',
+        created_at: 6.days.ago.beginning_of_hour,
+        closing_at: if params[:wip] then nil else 1.day.from_now.beginning_of_hour end),
+      actor: actor)
+    create_fake_stances(poll: poll)
 
     # Stance.create(poll: poll, participant: non_voter)
     PollService.invite(poll: poll, params: {recipient_user_ids: [non_voter.id]}, actor: actor)
@@ -176,7 +180,7 @@ module Dev::ScenariosHelper
 
     {
       discussion: discussion,
-      group: discussion.group,
+      group: group,
       observer: non_voter,
       actor: actor,
       poll: poll,
@@ -191,19 +195,18 @@ module Dev::ScenariosHelper
   end
 
   def poll_closing_soon_with_vote_scenario(params)
-    discussion = fake_discussion(group: create_group_with_members)
+    discussion = saved_discussion_with_created_event(group: create_group_with_members)
     actor      = discussion.group.admins.first
-    poll       = fake_poll(
-      author: actor,
-      poll_type: params[:poll_type],
-      anonymous: !!params[:anonymous],
-      hide_results: (params[:hide_results] || :off),
-      notify_on_closing_soon: :voters,
-      discussion: discussion,
-      quorum_pct: 28,
-      closing_at: if params[:wip] then nil else 1.day.from_now.beginning_of_hour end
-    )
-    PollService.create(poll: poll, actor: actor)
+    poll = PollService.create(
+      params: fake_poll_params(
+        topic_id: discussion.topic_id,
+        poll_type: params[:poll_type],
+        anonymous: !!params[:anonymous],
+        hide_results: (params[:hide_results] || :off),
+        notify_on_closing_soon: :voters,
+        quorum_pct: 28,
+        closing_at: if params[:wip] then nil else 1.day.from_now.beginning_of_hour end),
+      actor: actor)
     create_fake_stances(poll: poll)
 
     voter      = poll.stances.last.real_participant
@@ -227,19 +230,19 @@ module Dev::ScenariosHelper
   end
 
   def poll_expired_author_scenario(params)
-    discussion = fake_discussion(group: create_group_with_members)
+    discussion = saved_discussion_with_created_event(group: create_group_with_members)
     actor      = discussion.group.admins.first
     params[:discussion] = discussion
-    poll       = fake_poll(
-      discussion: discussion,
-      poll_type: params[:poll_type],
-      anonymous: !!params[:anonymous],
-      hide_results: (params[:hide_results] || :off)
-    )
-    PollService.create(poll: poll, actor: actor)
+    poll = PollService.create(
+      params: fake_poll_params(
+        topic_id: discussion.topic_id,
+        poll_type: params[:poll_type],
+        anonymous: !!params[:anonymous],
+        hide_results: (params[:hide_results] || :off)),
+      actor: actor)
     create_fake_stances(poll: poll)
     poll.update_attribute(:closing_at, 1.day.ago)
-    poll.discussion.group.add_member! poll.author
+    poll.group.add_member! poll.author
     PollService.expire_lapsed_polls
     {
       discussion: discussion,
@@ -252,20 +255,21 @@ module Dev::ScenariosHelper
   end
 
   def poll_outcome_created_scenario(params)
-    discussion = saved(fake_discussion(group: create_group_with_members))
+    discussion = saved_discussion_with_created_event(group: create_group_with_members)
     actor      = discussion.group.admins.first
     observer   = fake_user
     discussion.group.add_member! observer
-    poll       = fake_poll(
-      poll_type: params[:poll_type],
-      anonymous: !!params[:anonymous],
-      hide_results: (params[:hide_results] || :off),
-      discussion: discussion,
-      opened_at: 8.days.ago.beginning_of_hour,
-      closed_at: 1.day.ago.beginning_of_hour,
-      closing_at: 1.day.ago    )
-    PollService.create(poll: poll, actor: actor)
-    create_fake_stances(poll:poll)
+    poll = PollService.create(
+      params: fake_poll_params(
+        topic_id: discussion.topic_id,
+        poll_type: params[:poll_type],
+        anonymous: !!params[:anonymous],
+        hide_results: (params[:hide_results] || :off),
+        opened_at: 8.days.ago.beginning_of_hour,
+        closed_at: 1.day.ago.beginning_of_hour,
+        closing_at: 1.day.ago),
+      actor: actor)
+    create_fake_stances(poll: poll)
 
     if poll.poll_type == 'stv'
       poll.stv_results = StvCountService.count(poll)
@@ -286,19 +290,20 @@ module Dev::ScenariosHelper
   end
 
   def poll_outcome_review_due_scenario(params)
-    discussion = saved(fake_discussion(group: create_group_with_members))
+    discussion = saved_discussion_with_created_event(group: create_group_with_members)
     actor      = discussion.group.admins.first
     observer   = fake_user
     discussion.group.add_member! observer
-    poll       = fake_poll(
-      poll_type: params[:poll_type],
-      anonymous: !!params[:anonymous],
-      hide_results: (params[:hide_results] || :off),
-      discussion: discussion,
-      opened_at: 8.days.ago.beginning_of_hour,
-      closed_at: 1.day.ago.beginning_of_hour,
-      closing_at: 1.day.ago    )
-    PollService.create(poll: poll, actor: actor)
+    poll = PollService.create(
+      params: fake_poll_params(
+        topic_id: discussion.topic_id,
+        poll_type: params[:poll_type],
+        anonymous: !!params[:anonymous],
+        hide_results: (params[:hide_results] || :off),
+        opened_at: 8.days.ago.beginning_of_hour,
+        closed_at: 1.day.ago.beginning_of_hour,
+        closing_at: 1.day.ago),
+      actor: actor)
     create_fake_stances(poll: poll)
 
     if poll.poll_type == 'stv'
@@ -321,7 +326,7 @@ module Dev::ScenariosHelper
   end
 
   def poll_catch_up_scenario(params)
-    discussion = saved(fake_discussion(group: create_group_with_members))
+    discussion = saved_discussion_with_created_event(group: create_group_with_members)
     scenario  = poll_expired_scenario(params)
     observer = fake_user.tap(&:save!)
     observer.email_catch_up_day = 7
@@ -342,21 +347,19 @@ module Dev::ScenariosHelper
     user  = saved(fake_user(time_zone: "America/New_York"))
     group.add_member! user
 
-    discussion = fake_discussion(group: group, title: "Some discussion")
-    DiscussionService.create(discussion: discussion, actor: actor)
+    discussion = DiscussionService.create(params: {group_id: group.id, title: "Some discussion", private: true}, actor: actor)
 
-    poll = fake_poll(
-      group: group,
-      discussion: discussion,
-      poll_type: params[:poll_type] || 'proposal',
-      anonymous: !!params[:anonymous],
-      hide_results: (params[:hide_results] || :off),
-      opening_at: 3.days.from_now.beginning_of_hour,
-      closing_at: 10.days.from_now.beginning_of_hour,
-      specified_voters_only: true,
-      notify_on_open: true
-    )
-    PollService.create(poll: poll, actor: actor)
+    poll = PollService.create(
+      params: fake_poll_params(
+        topic_id: discussion.topic_id,
+        poll_type: params[:poll_type] || 'proposal',
+        anonymous: !!params[:anonymous],
+        hide_results: (params[:hide_results] || :off),
+        opening_at: 3.days.from_now.beginning_of_hour,
+        closing_at: 10.days.from_now.beginning_of_hour,
+        specified_voters_only: true,
+        notify_on_open: true),
+      actor: actor)
 
     {
       discussion: discussion,
@@ -387,7 +390,7 @@ module Dev::ScenariosHelper
     poll_option_ids.each_with_index.map {|id, j| {poll_option_id: id, score: (i+j)%3}}
   end
 
-    def saved(obj)
+  def saved(obj)
     obj.tap(&:save!)
   end
 

@@ -264,6 +264,11 @@ zh_CN:
       no_meaning: 我不支持这项提议。
       no_prompt: 你为什么不支持这项提议？
       outcome_statement: "<p>感谢您参与此次多数投票。</p>"
+    stv:
+      process_subtitle: 按比例选出多名获胜者。
+      process_introduction: <p>单记可转移投票制（STV）是一种适用于多席位选举的比例代表制投票方式。选民按偏好顺序对候选人进行排序。达到规定得票数的候选人当选，剩余或被淘汰的选票将转入下一轮投票。</p><p>配置席位数量、计票方法（苏格兰式或米克式）和配额类型（德鲁普式或黑尔式）。结果会逐轮显示选票转移情况。</p><p><a target="_blank" href="https://help.loomio.com/en/user_manual/polls/stv/index.html">阅读更多关于单记可转移投票制（STV）选举的信息</a>。</p>
+      title: 选举委员会成员
+      details: <h3 id="what-is-this-election-about"><strong>这次选举的意义何在？</strong></h3><p></p><h3 id="how-many-seats"><strong>有多少座位被填满了？</strong></h3><p></p><h3 id="who-are-the-candidates"><strong>候选人有哪些？</strong></h3><p></p><p>请通过拖动候选人来投票，按您喜欢的顺序排列。排名第一的候选人是您最喜欢的。您可以对任意数量的候选人进行排名。</p>
   discussion_templates:
     practice_thread:
       process_name: 练习讨论
@@ -373,7 +378,7 @@ zh_CN:
     manage:
       all: 无权执行 %{action} %{subject} 操作。
     add_guests:
-      all: 您必须升级 Loomio 订阅才能将访客添加到您的 %{subject} 主题中。或者，您可以邀请他们成为您群组的成员。
+      all: 您必须升级 Loomio 订阅才能添加访客。或者，您可以邀请他们成为您群组的成员。
   errors:
     clear_cache: 检测到加载问题。请按住Shift键并重新加载页面，或清除浏览器缓存。
     '400':
@@ -410,6 +415,7 @@ zh_CN:
       email: 无效的电子邮件地址
       spoofed_media_type: 该文件的内容与其文件名不匹配。
       pwned_password: 此密码曾出现在数据泄露事件中，绝对不能使用。
+    new_account_trial_group_limit: 新账号仅限加入一个群组。如需加入更多群组，请联系客服。
   group:
     error:
       handle_must_begin_with_parent_handle: 必须以 %{parent_handle}- 开头
@@ -493,6 +499,7 @@ zh_CN:
       group_mentioned: 您收到此消息是因为该群组被 @提及。
       user_mentioned: 您收到此消息是因为您被@提及。
       notified: 您收到此邮件是因为作者通知了您。
+      thread_subscribed: 您收到此邮件是因为您订阅了该主题。
     received_email:
       explaination_html: "<p>您收到此电子邮件是因为您是 Loomio 群组 %{group} 的管理员。</p><p>该组织收到了一封来自未知电子邮件地址的电子邮件。</p><p>如果邮件来自群组成员，请查看邮件并选择该成员。</p><p>如果您不想收到此类邮件，可以屏蔽来自该地址的任何后续邮件。</p>"
   user_mailer:
@@ -625,6 +632,9 @@ zh_CN:
     destroy_warning:
       subject: 您的 Loomio 群组已被安排删除。
       body: 您的 Loomio 群组“%{group}”已被 %{deletor} 安排删除。如果您不希望删除该群组，请回复此邮件。如果您确定要删除该群组，则无需进行任何操作。谢谢。
+    trial_expired:
+      subject: 由于长时间未活动，您的 Loomio 群组将被删除。
+      body: 您的 Loomio 群组“%{group}”已处于不活跃状态，将在两周后被删除。如果您不希望您的群组被删除，请回复此邮件。
   forward_mailer:
     bounce:
       subject: 您发送给 Loomio 的消息未送达
@@ -649,3 +659,5 @@ zh_CN:
       voting_opens_and_closes: 投票于 %{opens} 开始，%{closes} 结束。（%{days} 天）
       voting_closes: 投票将于 %{when} 结束。
       voting_opened_and_closed: 投票于 %{opens} 天开始，%{closes} 天结束。（耗时 %{days} 天）
+  upload:
+    file_too_large: 文件过大。最大上传大小为 %{limit}。

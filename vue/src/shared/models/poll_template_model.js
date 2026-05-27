@@ -58,7 +58,9 @@ export default class PollTemplateModel extends BaseModel {
       outcomeStatement: null,
       outcomeStatementFormat: 'html',
       outcomeReviewDueInDays: null,
-      example: false
+      example: false,
+      allowComments: true,
+      allowReactions: true
     };
   }
 

@@ -2,22 +2,20 @@ require 'test_helper'
 
 class PollExporterTest < ActiveSupport::TestCase
   setup do
-    @group = groups(:test_group)
-    @user = users(:normal_user)
-    @group.add_admin!(@user)
+    @group = groups(:group)
+    @admin = users(:admin)
 
-    @poll = Poll.new(
-      title: "Board Election",
-      poll_type: 'stv',
-      author: @user,
-      group: @group,
-      closing_at: 1.day.from_now,
-      stv_seats: 2,
-      specified_voters_only: true
-    )
-    @poll.poll_option_names = %w[Alice Bob Carol]
-    @poll.save!
-    @poll.create_missing_created_event!
+    @poll = PollService.create(
+      params: {
+        title: "Board Election",
+        poll_type: 'stv',
+        group_id: @group.id,
+        closing_at: 1.day.from_now,
+        stv_seats: 2,
+        specified_voters_only: true,
+        poll_option_names: %w[Alice Bob Carol]
+      },
+      actor: @admin)
 
     @alice = @poll.poll_options.find_by(name: 'Alice')
     @bob   = @poll.poll_options.find_by(name: 'Bob')

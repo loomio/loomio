@@ -2,20 +2,19 @@ require 'test_helper'
 
 class Api::V1::EventsControllerTest < ActionController::TestCase
   setup do
-    @user = users(:discussion_author)
-    @another_user = users(:another_user)
-    @group = groups(:test_group)
+    @user = users(:user)
+    @admin = users(:admin)
+    @alien = users(:alien)
+    @group = groups(:group)
     @public_group = groups(:public_group)
 
-    @public_group.add_admin!(@user)
-
-    @discussion = discussions(:test_discussion)
-    @public_discussion = create_discussion(group: @public_group, author: @user, private: false)
+    @discussion = discussions(:discussion)
+    @public_discussion = discussions(:public_discussion)
   end
 
   test "pin event pins an event" do
-    sign_in @user
-    comment = Comment.new(discussion: @discussion, body: "Test comment")
+    sign_in @admin
+    comment = Comment.new(parent: @discussion, body: "Test comment")
     event = CommentService.create(comment: comment, actor: @user)
 
     patch :pin, params: { id: event.id }
@@ -31,9 +30,23 @@ class Api::V1::EventsControllerTest < ActionController::TestCase
     assert_includes json.keys, 'events'
   end
 
+  test "index serializes without record cache fallbacks" do
+    sign_in @user
+    event = CommentService.create(comment: Comment.new(parent: @discussion, body: "Cache test comment"), actor: @user)
+    reaction = Reaction.create!(reactable: event.eventable, user: @alien, reaction: ':heart:')
+
+    assert_no_record_cache_fallbacks do
+      get :index, params: { discussion_id: @discussion.id }, format: :json
+    end
+
+    assert_response :success
+    json = JSON.parse(response.body)
+    assert_includes json['reactions'].map { |r| r['id'] }, reaction.id
+  end
+
   test "index filters by discussion" do
     sign_in @user
-    comment = Comment.new(discussion: @discussion, body: "Test comment")
+    comment = Comment.new(parent: @discussion, body: "Test comment")
     event = CommentService.create(comment: comment, actor: @user)
 
     get :index, params: { discussion_id: @discussion.id }, format: :json
@@ -46,7 +59,7 @@ class Api::V1::EventsControllerTest < ActionController::TestCase
 
   test "comment returns events from a comment" do
     sign_in @user
-    comment = Comment.new(discussion: @discussion, body: "Test comment")
+    comment = Comment.new(parent: @discussion, body: "Test comment")
     event = CommentService.create(comment: comment, actor: @user)
 
     get :comment, params: { discussion_id: @discussion.id, comment_id: event.eventable.id }
@@ -64,7 +77,7 @@ class Api::V1::EventsControllerTest < ActionController::TestCase
 
   test "index responds to per parameter" do
     sign_in @user
-    3.times { CommentService.create(comment: Comment.new(discussion: @discussion, body: "Test comment"), actor: @user) }
+    3.times { CommentService.create(comment: Comment.new(parent: @discussion, body: "Test comment"), actor: @user) }
 
     get :index, params: { discussion_id: @discussion.id, per: 2 }
     json = JSON.parse(response.body)
@@ -74,7 +87,7 @@ class Api::V1::EventsControllerTest < ActionController::TestCase
 
   test "index responds to from parameter" do
     sign_in @user
-    3.times { CommentService.create(comment: Comment.new(discussion: @discussion, body: "Test comment"), actor: @user) }
+    3.times { CommentService.create(comment: Comment.new(parent: @discussion, body: "Test comment"), actor: @user) }
 
     get :index, params: { discussion_id: @discussion.id, from: 1 }
     json = JSON.parse(response.body)
@@ -82,15 +95,76 @@ class Api::V1::EventsControllerTest < ActionController::TestCase
     assert_includes json.keys, 'events'
   end
 
+  test "index unread_or_newest returns unread events by discussion key" do
+    sign_in @user
+    read_event = CommentService.create(comment: Comment.new(parent: @discussion, body: "Read comment"), actor: @admin)
+    unread_event = CommentService.create(comment: Comment.new(parent: @discussion, body: "Unread comment"), actor: @admin)
+    TopicReader.for(user: @user, topic: @discussion.topic).viewed!([0, read_event.sequence_id])
+
+    get :index, params: { discussion_key: @discussion.key, unread_or_newest: 1, per: 10 }, format: :json
+    json = JSON.parse(response.body)
+    sequence_ids = json['events'].map { |e| e['sequence_id'] }
+
+    assert_equal [unread_event.sequence_id], sequence_ids
+    assert_includes json['topics'].map { |t| t['id'] }, @discussion.topic.id
+  end
+
+  test "index unread_or_newest includes root event when unread" do
+    sign_in @user
+    event = CommentService.create(comment: Comment.new(parent: @discussion, body: "Unread comment"), actor: @admin)
+
+    get :index, params: { discussion_key: @discussion.key, unread_or_newest: 1, per: 10 }, format: :json
+    json = JSON.parse(response.body)
+    sequence_ids = json['events'].map { |e| e['sequence_id'] }
+
+    assert_equal [0, event.sequence_id], sequence_ids
+  end
+
+  test "index unread_or_newest returns newest events when fully read" do
+    sign_in @user
+    first_event = CommentService.create(comment: Comment.new(parent: @discussion, body: "First comment"), actor: @admin)
+    second_event = CommentService.create(comment: Comment.new(parent: @discussion, body: "Second comment"), actor: @admin)
+    third_event = CommentService.create(comment: Comment.new(parent: @discussion, body: "Third comment"), actor: @admin)
+    TopicReader.for(user: @user, topic: @discussion.topic).viewed!(@discussion.topic.reload.items.pluck(:sequence_id))
+
+    get :index, params: { discussion_key: @discussion.key, unread_or_newest: 1, per: 2 }, format: :json
+    json = JSON.parse(response.body)
+    sequence_ids = json['events'].map { |e| e['sequence_id'] }
+
+    assert_equal [third_event.sequence_id, second_event.sequence_id], sequence_ids
+    refute_includes sequence_ids, first_event.sequence_id
+  end
+
+  test "index unread_or_newest returns poll_created event for in-thread poll key" do
+    sign_in @user
+    poll = PollService.create(params: {
+      title: "POLL!",
+      poll_type: "proposal",
+      topic_id: @discussion.topic_id,
+      group_id: @group.id,
+      poll_option_names: %w[agree disagree],
+      closing_at: 3.days.from_now
+    }, actor: @admin)
+    later_event = CommentService.create(comment: Comment.new(parent: @discussion, body: "After poll"), actor: @admin)
+
+    get :index, params: { poll_key: poll.key, unread_or_newest: 1, per: 10 }, format: :json
+    json = JSON.parse(response.body)
+    sequence_ids = json['events'].map { |e| e['sequence_id'] }
+
+    assert_equal [poll.created_event.sequence_id, later_event.sequence_id], sequence_ids
+    assert_includes json['topics'].map { |t| t['id'] }, @discussion.topic.id
+    assert_includes json['polls'].map { |p| p['id'] }, poll.id
+  end
+
   test "index handles parent_id parameter with correct filtering" do
     sign_in @user
-    parent_comment = Comment.new(discussion: @discussion, body: "Parent comment")
+    parent_comment = Comment.new(parent: @discussion, body: "Parent comment")
     parent_event = CommentService.create(comment: parent_comment, actor: @user)
 
-    child_comment = Comment.new(discussion: @discussion, body: "Child comment", parent: parent_comment)
+    child_comment = Comment.new(body: "Child comment", parent: parent_comment)
     child_event = CommentService.create(comment: child_comment, actor: @user)
 
-    unrelated_comment = Comment.new(discussion: @discussion, body: "Unrelated comment")
+    unrelated_comment = Comment.new(parent: @discussion, body: "Unrelated comment")
     unrelated_event = CommentService.create(comment: unrelated_comment, actor: @user)
 
     get :index, params: { discussion_id: @discussion.id, parent_id: parent_event.id }
@@ -105,8 +179,9 @@ class Api::V1::EventsControllerTest < ActionController::TestCase
   # -- Logged out access control --
 
   test "logged out user can see events for public discussion" do
+    @public_group.add_member!(@user)
     event = CommentService.create(
-      comment: Comment.new(body: "Public comment", discussion: @public_discussion),
+      comment: Comment.new(body: "Public comment", parent: @public_discussion),
       actor: @user
     )
 
@@ -127,15 +202,15 @@ class Api::V1::EventsControllerTest < ActionController::TestCase
 
   test "index does not leak events from other discussions" do
     # Create a second private discussion for cross-isolation test
-    other_discussion = create_discussion(group: @group, author: @user, private: true)
+    other_discussion = discussions(:discussion_in_subgroup)
 
     sign_in @user
     event1 = CommentService.create(
-      comment: Comment.new(body: "In first discussion", discussion: @discussion),
+      comment: Comment.new(body: "In first discussion", parent: @discussion),
       actor: @user
     )
     event2 = CommentService.create(
-      comment: Comment.new(body: "In other discussion", discussion: other_discussion),
+      comment: Comment.new(body: "In other discussion", parent: other_discussion),
       actor: @user
     )
 
@@ -148,16 +223,16 @@ class Api::V1::EventsControllerTest < ActionController::TestCase
 
   # -- Discussion reader in response --
 
-  test "responds with discussion reader" do
+  test "responds with discussion and topic with reader" do
     sign_in @user
     # Create an event so the response includes discussion data
     CommentService.create(
-      comment: Comment.new(body: "Reader test", discussion: @discussion),
+      comment: Comment.new(body: "Reader test", parent: @discussion),
       actor: @user
     )
     get :index, params: { discussion_id: @discussion.id }, format: :json
     json = JSON.parse(response.body)
     assert json['discussions'].present?, "Expected discussions in response"
-    assert json['discussions'][0]['discussion_reader_id'].present?
+    assert json['topics'][0]['topic_reader_id'].present?
   end
 end

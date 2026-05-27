@@ -5,7 +5,6 @@ class StanceSerializer < ApplicationSerializer
              :reason_format,
              :content_locale,
              :latest,
-             :admin,
              :cast_at,
              :mentioned_usernames,
              :created_at,
@@ -14,7 +13,6 @@ class StanceSerializer < ApplicationSerializer
              :versions_count,
              :attachments,
              :link_previews,
-             :volume,
              :inviter_id,
              :poll_id,
              :participant_id,
@@ -24,6 +22,7 @@ class StanceSerializer < ApplicationSerializer
 
   has_one :poll, serializer: PollSerializer, root: :polls
   has_one :participant, serializer: AuthorSerializer, root: :users
+  has_many :reactions, serializer: ReactionSerializer, root: :reactions
 
   def order_at
     object.cast_at || object.created_at
@@ -52,10 +51,6 @@ class StanceSerializer < ApplicationSerializer
   def participant_id
     return nil if poll.anonymous?
     object.participant_id
-  end
-
-  def volume
-    object[:volume]
   end
 
   def include_reason?

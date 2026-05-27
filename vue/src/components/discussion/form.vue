@@ -86,17 +86,13 @@ const submit = () => {
   });
 };
 
-const openEditLayout = () => {
-  return DiscussionService.actions(props.discussion, null)['edit_arrangement'].perform();
-};
-
 // Computed
 const cardTitle = computed(() => {
   if (isMovingItems.value) {
     return I18n.global.t('discussion_form.moving_items_title');
   } else {
     if (props.discussion.id) {
-      return I18n.global.t('discussion_form.edit_discussion_title');
+      return I18n.global.t('discussion_form.edit_discussion_context');
     } else {
       return I18n.global.t('discussion_form.new_discussion_title');
     }
@@ -255,8 +251,6 @@ v-form(ref="form" @submit.prevent="submit")
         common-notify-fields(v-if="loaded" :model="discussion" :initial-recipients="initialRecipients")
     v-card-actions(v-if="!showUpgradeMessage")
       help-btn(path='en/user_manual/threads/starting_threads')
-      v-btn.discussion-form__edit-layout(v-if="discussion.id" @click="openEditLayout")
-        span(v-t="'thread_arrangement_form.edit'")
       v-spacer
       v-btn.mr-2(@click="discardDraft" variant="text")
         span(v-t="'common.reset'")

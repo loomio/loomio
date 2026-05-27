@@ -108,7 +108,7 @@ module.exports = {
     page.loadPath('setup_dashboard_as_visitor')
     page.signInViaEmail('jennifer@example.com')
     page.pause(1000)
-    page.expectElement('.group-page')
+    page.expectElement('.dashboard-page')
   },
 
   'can_login_from_a_discussion_page': (test) => {

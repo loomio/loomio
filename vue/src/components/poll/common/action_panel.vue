@@ -111,7 +111,7 @@ export default
 
 <template lang="pug">
 .poll-common-action-panel(style="position: relative")
-  v-alert.my-4(
+  v-alert.poll-common-action-panel__scheduled.my-4(
     v-if="isScheduled"
     density="compact"
     variant="tonal"
@@ -144,7 +144,7 @@ export default
         span(v-t="{path: 'poll_common_action_panel.unable_to_vote', args: {poll_type: poll.translatedPollType()}}")
 
   template(v-if="stance && stance.castAt && poll.pollType != 'meeting'")
-    v-alert.poll-common-current-vote(variant="tonal" color="primary" border :title="$t('poll_common.you_voted')")
+    v-alert.poll-common-current-vote.mb-4(variant="tonal" color="primary" border :title="$t('poll_common.you_voted')")
       .mt-2
         poll-common-stance-choice(
           v-if="poll.singleChoice()"

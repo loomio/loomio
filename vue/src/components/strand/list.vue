@@ -5,8 +5,6 @@ import ReplyForm from '@/components/strand/reply_form.vue';
 import IntersectionWrapper from '@/components/strand/item/intersection_wrapper';
 import StemWrapper from '@/components/strand/item/stem_wrapper';
 import Collapsed from '@/components/strand/item/collapsed';
-import LmoUrlService from '@/shared/services/lmo_url_service';
-
 const props = defineProps({
   loader: Object,
   collection: {
@@ -17,10 +15,6 @@ const props = defineProps({
 });
 
 const parentChecked = ref(true);
-
-const endUrl = computed(() => 
-  LmoUrlService.route({ model: props.loader.discussion })
-);
 
 const isFocused = (event) => {
   return props.focusSelector == `.sequenceId-${event.sequenceId || 0}` ||
@@ -37,29 +31,31 @@ const rowClasses = (obj) => {
 <template lang="pug">
 .strand-list
   .strand-item(v-for="obj, index in collection" :key="obj.event.id" :class="{'strand-item--deep': obj.event.depth > 1}")
-    //.strand-item__row(v-if="obj.missingEarlier && obj.event.depth == 1" )
-    //  v-btn(:to="endUrl + '?end'") Jump to start
     .strand-item__row(v-if="obj.missingEarlier")
       strand-load-more(direction="before" :collection="collection" :index="index" :loader="loader")
-    .strand-item__row(v-if="loader.collapsed[obj.event.id]")
-      collapsed(:obj="obj" :loader="loader")
-    .strand-item__row(v-if="!loader.collapsed[obj.event.id]")
-      .strand-item__gutter(v-if="obj.event.depth > 0")
-        .d-flex.justify-center
-          template(v-if="loader.discussion.forkedEventIds.length")
-            v-checkbox-btn.thread-item__is-forking( v-if="obj.event.forkingDisabled()" disabled v-model="parentChecked" )
-            v-checkbox-btn.thread-item__is-forking( v-else v-model="loader.discussion.forkedEventIds" :value="obj.event.id" )
-          template(v-else)
-            user-avatar( :user="obj.event.actor()" :size="(obj.event.depth > 1) ? 28 : 32" no-link )
-        stem-wrapper(:loader="loader" :obj="obj" :focused="isFocused(obj.event)")
-      .strand-item__main
-        .strand-item__main--content
-          //.strand-item__row--focused-underlay(v-if="isFocused(obj.event)")
-          intersection-wrapper(:loader="loader" :obj="obj" :focused="isFocused(obj.event)")
-        .strand-list__children(v-if="obj.event.childCount && (!obj.eventable.isA('stance') || obj.eventable.poll().showResults())")
-          strand-load-more(v-if="obj.children.length == 0" direction="children" :collection="collection" :index="index" :loader="loader")
-          strand-list.flex-grow-1( :loader="loader" :collection="obj.children" :focusSelector="focusSelector" )
-        reply-form(:eventId="obj.event.id")
+    v-expand-transition
+      .strand-item__row(v-if="loader.collapsed[obj.event.id]")
+        collapsed(:obj="obj" :loader="loader")
+    v-expand-transition
+      .strand-item__row(v-if="!loader.collapsed[obj.event.id]")
+        .strand-item__gutter(v-if="obj.event.depth > 0")
+          .d-flex.justify-center
+            template(v-if="loader.topic.forkedEventIds && loader.topic.forkedEventIds.length")
+              v-checkbox-btn.thread-item__is-forking( v-if="obj.event.forkingDisabled()" disabled v-model="parentChecked" )
+              v-checkbox-btn.thread-item__is-forking( v-else v-model="loader.topic.forkedEventIds" :value="obj.event.id" )
+            template(v-else)
+              .strand-item__gutter-toggle(@click="loader.collapse(obj.event)")
+                user-avatar.strand-item__gutter-avatar( :user="obj.event.actor()" :size="(obj.event.depth > 1) ? 28 : 32" no-link )
+                .strand-item__gutter-collapse
+                  common-icon(name="mdi-unfold-less-horizontal")
+          stem-wrapper(:loader="loader" :obj="obj" :focused="isFocused(obj.event)")
+        .strand-item__main
+          .strand-item__main--content
+            intersection-wrapper(:loader="loader" :obj="obj" :focused="isFocused(obj.event)")
+          .strand-list__children(v-if="obj.event.childCount && (!obj.eventable.isA('stance') || obj.eventable.poll().showResults())")
+            strand-load-more(v-if="obj.children.length == 0" direction="children" :collection="collection" :index="index" :loader="loader")
+            strand-list.flex-grow-1( :loader="loader" :collection="obj.children" :focusSelector="focusSelector" )
+          reply-form(:eventId="obj.event.id")
 
     .strand-item__row(v-if="obj.missingAfter" )
       strand-load-more(direction="after" :obj="obj" :collection="collection" :index="index" :loader="loader")
@@ -159,5 +155,28 @@ const rowClasses = (obj) => {
   border-radius: 100%
   margin: 4px 0
   cursor: pointer
+
+.strand-item__gutter-toggle
+  cursor: pointer
+  display: flex
+  align-items: center
+  justify-content: center
+
+.strand-item__gutter-collapse
+  display: none
+  align-items: center
+  justify-content: center
+  width: 32px
+  height: 32px
+
+.strand-item--deep .strand-item__gutter-collapse
+  width: 28px
+  height: 28px
+
+.strand-item__gutter:hover
+  .strand-item__gutter-avatar
+    display: none
+  .strand-item__gutter-collapse
+    display: flex
 
 </style>

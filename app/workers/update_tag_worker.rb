@@ -10,14 +10,9 @@ class UpdateTagWorker
       Tag.where(group_id: group_ids, name: old_name).update_all(name: new_name)
     end
 
-    Discussion.where(group_id: group_ids).where.contains(tags: [old_name]).find_each do |d|
-      d.tags[d.tags.index(old_name)] = new_name
-      d.update_column(:tags, d.tags.uniq)
-    end
-
-    Poll.where(group_id: group_ids).where.contains(tags: [old_name]).find_each do |p|
-      p.tags[p.tags.index(old_name)] = new_name
-      p.update_column(:tags, p.tags.uniq)
+    Topic.where(group_id: group_ids).where.contains(tags: [old_name]).find_each do |t|
+      t.tags[t.tags.index(old_name)] = new_name
+      t.update_column(:tags, t.tags.uniq)
     end
 
     group_ids.each do |group_id|

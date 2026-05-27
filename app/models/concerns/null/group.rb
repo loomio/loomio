@@ -7,11 +7,11 @@ module Null::Group
 
   alias :read_attribute_for_serialization :send
 
-  def new_threads_max_depth
-    2
+  def admins_include?(user)
+    false
   end
 
-  def new_threads_newest_first
+  def members_include?(user)
     false
   end
 
@@ -36,9 +36,6 @@ module Null::Group
       update_polls_count
       update_closed_polls_count
       update_discussions_count
-      update_public_discussions_count
-      update_open_discussions_count
-      update_closed_discussions_count
       update_discussion_templates_count
       presence
       present?
@@ -48,7 +45,6 @@ module Null::Group
       description_format
       group_id
       add_member!
-      message_channel
       logo_or_parent_logo
       created_at
       creator_id
@@ -56,7 +52,13 @@ module Null::Group
       cover_url
       logo_url
       category
+      archived_at
+      request_to_join_prompt
     )
+  end
+
+  def hash_methods
+    %w[info]
   end
 
   def true_methods
@@ -77,6 +79,8 @@ module Null::Group
       member_ids
       identities
       hidden_poll_templates
+      attachments
+      link_previews
     ]
   end
 
@@ -84,14 +88,24 @@ module Null::Group
     'private_only'
   end
 
+  def membership_granted_upon
+    'invitation'
+  end
+
   def false_methods
     %w(
+      parent_members_can_see_discussions
       public_discussions_only?
+      is_visible_to_public
       is_visible_to_parent_members
       members_can_add_members
       members_can_create_subgroups
       members_can_start_discussions
       admins_can_edit_user_content
+      members_can_create_templates
+      listed_in_explore
+      custom_cover_photo?
+      is_parent?
     )
   end
 
@@ -101,9 +115,15 @@ module Null::Group
       polls_count
       closed_polls_count
       discussions_count
-      public_discussions_count
       pending_memberships_count
       discussion_templates_count
+      poll_templates_count
+      delegates_count
+      accepted_memberships_count
+      memberships_count
+      pending_memberships_count
+      admin_memberships_count
+      subgroups_count
     ]
   end
 
@@ -126,6 +146,10 @@ module Null::Group
     nil
   end
 
+  def categorize_poll_templates
+    true
+  end
+
   def group_privacy
     'private_only'
   end
@@ -134,11 +158,11 @@ module Null::Group
     self
   end
 
-  def self_or_parent_logo_url(size)
+  def self_or_parent_logo_url(size = 512)
     nil
   end
 
-  def self_or_parent_cover_url(size)
+  def self_or_parent_cover_url(size = 512)
     nil
   end
 

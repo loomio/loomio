@@ -5,7 +5,7 @@ import Records from '@/shared/services/records';
 export default class VersionModel extends BaseModel {
   static singular = 'version';
   static plural = 'versions';
-  static indices = ['discussionId'];
+  static indices = [];
 
   relationships() {
     this.belongsTo('discussion');

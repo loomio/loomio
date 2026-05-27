@@ -109,7 +109,7 @@ sl:
     manage:
       all: Ni pooblaščen za %{action} %{subject}.
     add_guests:
-      all: Morate nadgraditi svojo naročnino na Loomio, da dodate goste v svoj %{subject}. Lahko pa jih povabite, da postanejo člani vaše skupine.
+      all: Morate nadgraditi svojo naročnino na Loomio, da dodate goste. Lahko pa jih povabite, da postanejo člani vaše skupine.
   errors:
     clear_cache: Zaznana težava pri nalaganju. Držite shift in pritisnite Reload ali počistite predpomnilnik brskalnika.
     404:
@@ -148,6 +148,7 @@ sl:
       body: Žal nam je, ampak nekaj je šlo narobe. O tej težavi smo bili obveščeni in jo bomo kmalu pregledali.
     '404':
       body: Zahtevanega elementa ni bilo mogoče najti. To se lahko zgodi, če je bila razprava ali anketa izbrisana.
+    new_account_trial_group_limit: Novi računi so omejeni na eno skupino. Če jih potrebujete več, se obrnite na podporo.
   group:
     error:
       handle_must_begin_with_parent_handle: Začeti se mora z %{parent_handle}-
@@ -234,6 +235,7 @@ sl:
       notified: To ste prejeli, ker vas je avtor obvestil.
       poll_subscribed: To ste prejeli, ker ste naročeni na anketo.
       discussion_subscribed: To ste prejeli, ker ste naročeni na razpravo.
+      thread_subscribed: To ste prejeli, ker ste naročeni na to temo.
   user_mailer:
     group_export_ready:
       subject: Izvoz podatkov skupine za %{group_name}
@@ -366,6 +368,9 @@ sl:
     destroy_warning:
       subject: Vaša skupina Loomio je načrtovana za izbris.
       body: '%{deletor} je načrtoval brisanje vaše skupine Loomio: "%{group}". Če ne želite, da se vaša skupina izbriše, odgovorite na to e-pošto. Če ste prepričani, da želite izbrisati skupino, vam ni treba storiti ničesar. Hvala vam.'
+    trial_expired:
+      subject: Vaša skupina Loomio bo izbrisana zaradi neaktivnosti.
+      body: Vaša skupina Loomio »%{group}« je bila neaktivna in bo izbrisana čez 2 tedna. Če ne želite, da se vaša skupina izbriše, odgovorite na to e-poštno sporočilo.
   poll_mailer:
     common:
       why_send_this: To e-pošto ste prejeli, ker %{reason}
@@ -594,6 +599,11 @@ sl:
       no_meaning: Tega predloga ne podpiram
       no_prompt: Zakaj ne podpirate tega predloga?
       outcome_statement: "<p>Hvala za sodelovanje pri tem večinskem glasovanju.</p>"
+    stv:
+      process_subtitle: Sorazmerno izvolite več zmagovalcev
+      process_introduction: <p>STV (en prenosljiv glas) je proporcionalna zastopanostna metoda za volitve z več zmagovalci. Volivci razvrstijo kandidate po vrstnem redu preferenc. Izvoljeni so kandidati, ki dosežejo volilno kvoto, presežni ali izločeni glasovi pa se prenesejo na naslednje preference.</p><p> Konfigurirajte število sedežev, način štetja (Scottish ali Meek) in vrsto kvote (Droop ali Hare). Rezultati prikazujejo razčlenitev prenosa glasov po posameznih krogih.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/stv/index.html">Preberite več o volitvah na STV</a> .</p>
+      title: Izvolite člane odbora
+      details: <h3 id="what-is-this-election-about"><strong>O čem govorijo te volitve?</strong></h3><p></p><h3 id="how-many-seats"> <strong>Koliko sedežev je zasedenih?</strong></h3><p></p><h3 id="who-are-the-candidates"> <strong>Kdo so kandidati?</strong></h3><p></p><p> Glasujte tako, da kandidate povlečete v želeni vrstni red. 1. mesto je vaš najbolj priljubljen kandidat. Razvrstite lahko poljubno število kandidatov.</p>
   forward_mailer:
     bounce:
       subject: Vaše sporočilo Loomiu ni bilo dostavljeno
@@ -654,3 +664,5 @@ sl:
     pt: Portugalščina
     zh: kitajščina (tradicionalna, tajvanska)
     zh-HK: kitajščina (tradicionalna, tajvanska)
+  upload:
+    file_too_large: Datoteka je prevelika. Največja velikost za nalaganje je %{limit}.

@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-class Views::EventMailer::Discussion < Views::EventMailer::EventLayout
+class Views::EventMailer::Discussion < Views::EventMailer::Layout
 
   def initialize(event:, recipient:, event_key:, notification: nil, discussion: nil, poll: nil, membership: nil)
     @event = event
     @recipient = recipient
     @event_key = event_key
     @notification = notification
-    @discussion = discussion || @event.eventable.discussion
+    @discussion = discussion || @event.eventable.topic.discussion
     @poll = poll
     @membership = membership
   end
@@ -32,8 +32,6 @@ class Views::EventMailer::Discussion < Views::EventMailer::EventLayout
       event: @event,
       recipient: @recipient,
       notification: @notification,
-      discussion: @discussion,
-      poll: @poll,
       membership: @membership,
       event_key: @event_key
     )

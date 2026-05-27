@@ -1,10 +1,8 @@
-<script lang="js">
-export default {
-  props: {
-    subject: Object,
-    field: String
-  }
-};
+<script setup lang="js">
+defineProps({
+  subject: Object,
+  field: String
+});
 </script>
 
 <template lang="pug">

@@ -13,9 +13,7 @@ class EventMailer < ApplicationMailer
       event.eventable.poll
     end
 
-    discussion = if event.eventable.respond_to? :discussion
-      event.eventable.discussion
-    end
+    discussion = event.eventable.respond_to?(:topic) ? event.eventable.topic.discussion : nil
 
     membership = if event.eventable.respond_to?(:group_id) && event.eventable.group_id
       m = Membership.active.find_by(
@@ -32,13 +30,6 @@ class EventMailer < ApplicationMailer
     end
 
     utm_hash = { utm_medium: 'email', utm_campaign: event.kind }
-
-    discussion_kinds = %w[
-      new_comment
-      new_discussion
-      discussion_edited
-      discussion_announced
-    ]
 
     headers = {
       "Precedence": :bulk,
@@ -57,13 +48,6 @@ class EventMailer < ApplicationMailer
     # this should be notification.i18n_key
     event_key = self.class.event_key_for(event, recipient)
 
-    subject_params = {
-      title: TranslationService.plain_text(event.eventable.title_model, :title, recipient),
-      poll_type: poll && I18n.t("decision_tools_card.#{poll.poll_type}_title", locale: recipient.locale),
-      actor: event.user.name,
-      site_name: AppConfig.theme[:site_name]
-    }
-
     component = self.class.build_component(
       event: event,
       recipient: recipient,
@@ -78,17 +62,11 @@ class EventMailer < ApplicationMailer
     return if spam?(recipient.email) || rejected_address?(recipient.email)
 
     I18n.with_locale(first_supported_locale(recipient.locale)) do
-      subject = if discussion_kinds.include?(event.kind)
-        group_name_prefix(event) + subject_params[:title]
-      else
-        group_name_prefix(event) + I18n.t("notifications.email_subject.#{event_key}", **subject_params)
-      end
-
       mail(
         to: recipient.email,
         from: from_user_via_loomio(event.user),
         reply_to: reply_to_address_with_group_name(model: event.eventable, user: recipient),
-        subject: subject
+        subject: subject_for(event: event, recipient: recipient, event_key: event_key, poll: poll)
       ) do |format|
         format.html { render component }
       end
@@ -109,18 +87,30 @@ class EventMailer < ApplicationMailer
   def self.build_component(event:, recipient:, event_key: nil, poll: nil, discussion: nil, notification: nil, membership: nil, utm_hash: {})
     event_key ||= event_key_for(event, recipient)
     poll ||= event.eventable.poll if %w[Poll Stance Outcome].include?(event.eventable_type)
-    discussion ||= event.eventable.discussion if event.eventable.respond_to?(:discussion)
+    discussion ||= event.topic&.topicable_type == 'Discussion' ? event.topic.topicable : nil
+
+    if event.kind == 'discussion_announced'
+      return Views::EventMailer::Topic.new(
+        event: event, recipient: recipient, event_key: event_key,
+        notification: notification, topic: event.eventable.topic, membership: membership
+      )
+    end
 
     case event.eventable_type
+    when 'Topic'
+      Views::EventMailer::Topic.new(
+        event: event, recipient: recipient, event_key: event_key,
+        notification: notification, topic: event.eventable, membership: membership
+      )
     when 'Poll', 'Outcome'
       Views::EventMailer::Poll.new(
         event: event, recipient: recipient, event_key: event_key,
         poll: poll, notification: notification, discussion: discussion, membership: membership
       )
     when 'Discussion'
-      Views::EventMailer::Discussion.new(
+      Views::EventMailer::Topic.new(
         event: event, recipient: recipient, event_key: event_key,
-        notification: notification, discussion: discussion, poll: poll, membership: membership
+        notification: notification, topic: event.eventable.topic, membership: membership
       )
     when 'Comment'
       Views::EventMailer::Comment.new(
@@ -153,6 +143,31 @@ class EventMailer < ApplicationMailer
 
   private
 
+  def subject_for(event:, recipient:, event_key:, poll: nil)
+    title_model = event.eventable.is_a?(Topic) ? event.eventable.topicable : event.eventable.title_model
+    subject_params = {
+      title: TranslationService.plain_text(title_model, :title, recipient),
+      poll_type: poll && I18n.t("decision_tools_card.#{poll.poll_type}_title", locale: recipient.locale),
+      actor: event.user.name,
+      site_name: AppConfig.theme[:site_name]
+    }
+
+    if topic_subject_event?(event)
+      group_name_prefix(event) + subject_params[:title]
+    else
+      group_name_prefix(event) + I18n.t("notifications.email_subject.#{event_key}", **subject_params)
+    end
+  end
+
+  def topic_subject_event?(event)
+    %w[
+      new_comment
+      new_discussion
+      discussion_edited
+      discussion_announced
+    ].include?(event.kind)
+  end
+
   def group_name_prefix(event)
     model = event.eventable
     if %w[membership_requested membership_created].include? event.kind
@@ -164,10 +179,10 @@ class EventMailer < ApplicationMailer
 
   def reply_to_address_with_group_name(model:, user:)
     return nil unless user.is_logged_in?
-    return nil unless model.respond_to?(:discussion) && model.discussion.present?
+    return nil unless model.respond_to?(:topic) && model.topic.present?
 
-    if model.discussion.group.present?
-      "\"#{I18n.transliterate(model.discussion.group.full_name).truncate(50).delete('"')}\" <#{reply_to_address(model: model, user: user)}>"
+    if model.topic.group.present?
+      "\"#{I18n.transliterate(model.topic.group.full_name).truncate(50).delete('"')}\" <#{reply_to_address(model: model, user: user)}>"
     else
       "\"#{user.name}\" <#{reply_to_address(model: model, user: user)}>"
     end

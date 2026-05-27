@@ -165,6 +165,7 @@ tr:
     ranked_choice: tercihli oy
     score: skor anketi
     question: soru turu
+    stv: STV seçimi
   timezones:
     local: Yerel saat (%{value})
   common:
@@ -314,6 +315,7 @@ tr:
       rearrange: Yeniden düzenle
       save_template: Şablonu kaydet
       fork_template: Çatal şablonu
+      customize: Özelleştirmek
     formatting_help:
       label: Biçimlendirme
       title: Metninizi biçimlendirmek için Markdown'u nasıl kullanacağınızı öğrenin
@@ -323,6 +325,8 @@ tr:
     opening_in: Açılış %{time}
     read_more: Devamını oku
     templates_admin_hint: Grup yöneticisi olduğunuz için, istemediğiniz şablonları gizleyebilir veya silebilir ve kalanları ihtiyaçlarınıza göre düzenleyebilirsiniz.
+    read: Okumak
+    unread: Okunmamış
   merge_accounts:
     modal:
       title: Hesapları birleştir
@@ -479,15 +483,15 @@ tr:
     changes_all_threads_and_polls_in_group: Bu, gruptaki tüm konu başlıkları ve anketler için ayarları değiştirir.
     when_do_you_want_to_be_emailed: E-postanın ne zaman gönderilmesini istersiniz?
     what_the_options_mean: Seçeneklerin anlamı nedir?
-    quiet_explained: Birisi sizi bilgilendirmeye çalışsa bile, size e-posta gönderilmeyecektir. Loomio'yu düzenli olarak kontrol etme alışkanlığınız yoksa, önemli duyuruları veya kararları kaçırabilirsiniz.
     when_would_you_like_to_be_emailed_discussion: Bu tartışma hakkında ne zaman e-posta almak istersiniz?
     changes_all_discussions_and_polls_in_group: Bu, gruptaki tüm tartışmaların ve anketlerin ayarını değiştirir.
     normal_explained: Birisi bir tartışma veya anketin "Bildir" alanına adınızı girdiğinde veya gruptan {'@'}bahsettiğinde.
     aria_label: E-posta ayarlarını değiştirme formu
-  close_explanation_modal:
-    close_thread: Konuyu kapat
-    body: "<p>Eski veya ilgisiz konuları görünümden kaldırmak ve tartışmanın kapandığını belirtmek için kapatın.</p><p> Herkes kapalı bir başlıkta yorum yapabilir veya anket başlatabilir ancak bu, grubun başlık listesinde veya kontrol panelinde görünmez.</p>"
-    image_alt: Konuların tümü kapatılıyor
+    when_do_you_want_to_be_emailed_thread: Bu konuyla ilgili e-postayı ne zaman almak istersiniz?
+    loud_option: Birisi herhangi bir zamanda (Tüm etkinliklere) katılırsa
+    normal_option: Birisi dikkatimi istediğinde (bildirim aldığında)
+    quiet_option: Bu konuyla ilgili e-posta yok (Kapalı)
+    quiet_explained: Birisi sizi bilgilendirmeye çalışsa bile size e-posta gönderilmeyecektir.
   inbox:
     clear: Temizle
     latest: En yeniler
@@ -527,6 +531,7 @@ tr:
     sign_in: Konuşmaya katılmak için giriş yapın
     add_a_comment: Yorum ekle
     share_your_thoughts: Düşüncelerinizi paylaşın…
+    share_on_poll: Bir soru sorun veya yeni bilgiler paylaşın
   thread_nav:
     participants: Katılımcılar
   sidebar:
@@ -561,6 +566,7 @@ tr:
     new_subgroup: Yeni alt grup
     find_a_group: Bir grup bulun
     direct_discussions: Doğrudan görüşmeler
+    unread_discussions: Okunmamış tartışmalar
   strand_nav:
     newest: En yeni
     oldest: En eski
@@ -581,7 +587,12 @@ tr:
     showing_unread: Okunmamış gösteriliyor
     add_comment: Yorum ekle
     start_decision: Başlangıç kararı
-    recenter: Daha yakın zamanda
+    return: Geri
+    end: Son
+    notifications: Bildirimler
+    email_all_activity: Tüm etkinlikleri e-posta ile gönder
+    email_notifications: Bildirim aldığımda e-posta gönder
+    email_none: E-posta yok
   search_modal:
     all_content: Tüm içerik
     best_match: En iyi eşleşme
@@ -618,6 +629,7 @@ tr:
     search_files_short: Dosyaları ara
     search_subgroups_short: Alt grupları ara
     search_discussions_in_group: "%{name} içindeki tartışmaları ara"
+    thread_nav: Konu menüsü
   user_dropdown:
     pin_sidebar: Kenar çubuğunu sabitle
     unpin_sidebar: Kenar çubuğunun sabitlemesini kaldır
@@ -649,6 +661,7 @@ tr:
     invite_to_wip_poll: Geri bildirimde bulunmaya davet edin
     invitations: Davetiyeler
     discussion_members: Tartışma üyeleri
+    thread_members: Konu üyeleri
   membership_dropdown:
     set_name_and_username: Adı ve kullanıcı adını ayarlayın
     set_title: Başlığı ayarla
@@ -713,6 +726,7 @@ tr:
       discussion_closed: "%{actor} tartışmayı kapattı: %{title}"
       new_discussion: "%{actor} bir tartışma başlattı: %{title}"
       user_reminded: "%{actor} size şu konuda oy kullanmanızı hatırlatıyor: %{title}"
+      thread_locked: "%{actor} şu konuyu kilitledi: %{title}"
     without_title:
       unknown_sender: Lütfen tanınmayan gönderenden gelen e-postayı inceleyin
       group_announced: "%{actor} sizi bir gruba davet etti"
@@ -750,6 +764,7 @@ tr:
       new_discussion: "%{actor} bir tartışma başlattı"
       new_comment: "%{actor} bir tartışmada yorum yaptı"
       outcome_updated: "%{actor} sonucu güncelledi"
+      thread_locked: "%{actor} konuyu kilitledi"
     hints:
       poll_closing_soon: Şimdi oy vermek, fikrinizi değiştirmek veya başkalarını katılmaya teşvik etmek için iyi bir zaman.
       poll_closing_soon_author: İnsanlara oy vermelerini hatırlatmak veya son tarihi uzatmak isteyebilirsiniz.
@@ -774,7 +789,7 @@ tr:
       poll_closed_by_user: "%{actor} %{poll_type} anketini kapattı: %{title}"
       poll_closing_soon: "%{poll_type} 24 saat içinde kapanıyor: %{title}"
       poll_closing_soon_author: "%{poll_type} anketiniz 24 saat içinde kapanıyor: %{title}"
-      poll_created: 'Oy Ver: %{title}'
+      poll_created: "%{poll_type}: %{title}"
       poll_edited: "%{actor} %{poll_type}'ı güncelledi: %{title}"
       poll_expired: "%{poll_type} kapandı: %{title}"
       poll_expired_author: 'Bir sonuç yayınla: %{title}'
@@ -793,6 +808,7 @@ tr:
       discussion_edited: "%{actor} tartışma bağlamını düzenledi: %{title}"
       discussion_closed: "%{actor} tartışmayı kapattı: %{title}"
       user_reminded: "%{actor} size şu konuda oy kullanmanızı hatırlatıyor: %{title}"
+      thread_locked: "%{actor} şu konuyu kilitledi: %{title}"
   discussion_fork_actions:
     move: Taşı
     moved: Yorumlar taşınıyor, bu işlem biraz zaman alabilir
@@ -848,6 +864,7 @@ tr:
     direct_discussion: Doğrudan görüşme
     direct_discussion_hint: Doğrudan yapılan bir tartışma yalnızca davet ettiğiniz belirli kişiler tarafından görülebilir. Herhangi bir grubun tartışma listesinde görünmez; onu Doğrudan Tartışmalar sayfanızda bulabilirsiniz.
     recommended_poll_templates: Önerilen anket şablonları
+    edit_discussion_context: Tartışma bağlamını düzenle
   announcement:
     send_discussion: Konuyu gönder
     send_group: İnsanları %{name}'ye davet edin
@@ -972,6 +989,8 @@ tr:
     poll_announced: "%{name}, %{length} kişiyi oy vermeye davet etti:"
     discussion_notification_history: Tartışma bildirim geçmişi
     inviting_guests_to_discussion: Misafirler grubunuza ait değil ve yalnızca bu tartışmaya erişebilirler
+    topic_notification_history: Konu bildirim geçmişi
+    notification_history: Bildirim geçmişi
   action_dock:
     actions_menu: Eylemler menüsü
     more_actions: Daha fazla hareket
@@ -1018,8 +1037,6 @@ tr:
     discussion_copied: Konu URL'si panoya kopyalandı
     url_copied: link kopyalandı
     tag_thread: Etiketleri yönet
-    close_thread: Konuyu kapat
-    reopen_thread: Konuyu yeniden aç
     delete_thread: Müzakereyi sil
     notification_history: Bildirim geçmişi
     move_item: Öğeyi taşı
@@ -1028,9 +1045,9 @@ tr:
     count_voters: "%{count} seçmen"
     pin_discussion: Pin tartışması
     unpin_discussion: Tartışmayı sabitle
-    close_discussion: Tartışmayı kapatın
-    reopen_discussion: Tartışmayı yeniden açın
     delete_discussion: Tartışmayı sil
+    lock_thread: Konuyu kilitle
+    unlock_thread: Konunun kilidini aç
   formatting:
     formatting_tools: Metin biçimlendirme araçları
     colors: Renkler
@@ -1153,7 +1170,6 @@ tr:
     settings: Ayarlar
     subgroups: Alt gruplar
     show_opened: "%{count} Açık"
-    show_closed: "%{count} Kapalı"
     no_threads_here: Burada görülecek konu yok!
     search_threads: Konu ara...
     private_threads: Bu gruptaki özel konuları görüntülemek için üye olmanız gerekir
@@ -1171,7 +1187,6 @@ tr:
     new_cover_photo: Yeni kapak fotoğrafı yükle
     new_group_logo: Yeni grup logosu yükle
     open_discussions: Konuları aç
-    closed_discussions: Kapalı konular
     discussions_placeholder: Müzakere, herkesin bir başlık hakkında tartışarak birlikte kararlar aldığı yerdir.
     members_placeholder: 'Burada tek kişi sensin: sana katılması için başkalarını davet et!'
     member_options: Üye seçenekleri
@@ -1220,8 +1235,10 @@ tr:
     discussions: Tartışmalar
     no_discussions_here: Burada görülecek tartışma yok!
     private_discussions: Bu gruptaki özel konuları görüntülemek için üye olmanız gerekir
-    view_closed_discussions: Kapalı tartışmaları görüntüle
     discussion_templates: Tartışma şablonları
+    show_locked: "%{count} Kilitli"
+    view_locked_discussions: Kilitli tartışmaları görüntüle
+    locked_discussions: Kilitli tartışmalar
   export_data_modal:
     title: Verilerinizi nasıl kullanmak istiyorsunuz?
     as_csv: Bir e-tabloda açın
@@ -1342,8 +1359,6 @@ tr:
     default_request_to_join_prompt: Grubumuza olan ilginiz için teşekkür ederiz. Lütfen kendinizi tanıtın ve katılma isteğinizin nedenini açıklayın.
     upgrade_for_subgroups: 'Bir alt grup oluşturmak için lütfen <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">aboneliğinizi yükseltin</a>'
     share_this_url_with_people_who_want_to_join: Katılmak isteyen kişilerle bu URL'yi paylaşın
-    allow_polls_without_discussions: Tartışma olmadan anketlere izin ver
-    allow_polls_without_discussions_help: İnsanların önce bir tartışma başlatmadan anket başlatmasını engelleyin.
     aria_label: Grup formu
     list_in_the_groups_directory: Grup dizininde listelensin mi?
     list_in_directory_yes: Evet · Bu grubu "grup bul" sayfasında göster
@@ -1577,6 +1592,7 @@ tr:
   thread_preview:
     replies_count: "%{count} yanıt"
     unread_count: "%{count} okunmamış"
+    items_count: "%{count} öğe"
   dashboard_page:
     polls_to_vote_on: Oy verilecek anketler
     no_polls_to_vote_on: Oy vermeniz gereken anket yok
@@ -1662,17 +1678,18 @@ tr:
     pin:
       pinned: Konu sabitlendi
       unpinned: Konunun sabitlemesi kaldırıldı
-    closed:
-      reopened: Konu yeniden açıldı
-      closed: Konu kapatıldı
     volume:
       mute_message: Tartışma sessize alındı
       unmute_message: Tartışma sessize alınmadı
     direct: Doğrudan
+    locked:
+      unlocked: Konu kilidi açıldı
+      locked: Konu kilitlendi
   discussion_last_seen_by:
     title: Tarafından görüldü
     no_one: Bunu henüz kimse görmedi
     disabled_anonymous_polls: Konu başlığı anonim anketler içerdiğinden görüntüleme geçmişi devre dışı bırakıldı
+    thread_engagement: Thread engagement
   activity_card:
     count_responses: "%{count} yanıt"
     beginning: Başlangıç
@@ -1714,6 +1731,22 @@ tr:
     nested_twice: İki düzeyde iç içe yanıt
     nested_twice_description: Girinti en fazla iki kez yanıt verir.
     changing_nesting_is_slow: İç içe yerleştirmede yapılan değişikliklerin işlenmesi birkaç dakika sürebilir.
+    layout: Düzen
+    items: Ögeler nasıl gösterilsin?
+    nested: İç içe geçmiş
+    timeline: Zaman çizelgesi
+    timeline_description: Öğeler yayınlanma sırasına göre
+    threaded: Threaded
+    threaded_description: Yanıtlar, yanıt verdikleri konuya göre gruplandırılmıştır.
+    allow_concurrent_polls: Eş zamanlı yoklamalara izin ver
+    allow_multiple_polls: Aynı anda birden fazla anket yapılmasına izin verin.
+    allow_concurrent_polls_description: Aynı anda birden fazla anketin açık olmasına izin verin.
+    allow_comments: Yorumlara izin ver
+    allow_comments_description: Katılımcıların bu başlık altında yorum yapmasına izin verin.
+    allow_reactions: Tepkilere izin ver
+    allow_reactions_description: Katılımcıların emoji tepkileri eklemesine izin verin.
+    topic_settings: Konu ayarları
+    thread_settings: Konu ayarları
   delete_thread_form:
     title: Müzakereyi sil
     body: Bu müzakereyi silmek istediğinden emin misin?
@@ -1780,6 +1813,7 @@ tr:
     ranked_choice_title: Dereceli seçim
     gradients_of_agreement_title: Anlaşmanın gradyanları
     majority_title: Çoğunluk
+    stv_title: STV Seçimi
   poll_option_form:
     edit_option: Düzenleme seçeneği
     option_name: Seçenek adı
@@ -1917,6 +1951,9 @@ tr:
     blank: Yeni
     blank_subtitle: Belirli bir süreç için yeni bir anket şablonu oluşturun.
     start_a_poll: Anket başlat
+    export_blt: İhracat oyları (BLT)
+    status: Durum
+    your_vote_is_requested: Oylarınız rica olunur.
   poll_common_attachment_form:
     label: Ekler
   poll_common_add_option:
@@ -1937,10 +1974,8 @@ tr:
     deleted: Bu anket silindi
     do_not_hide_results: Sonuçları gizlemeyin
   discussions_panel:
-    open: Açık
     all: Hepsi
     unread: Okunmamış (%{count})
-    closed: Kapalı
     include_subgroups_mine: "%{name} ve alt gruplarım"
     include_subgroups_all: "%{name} ve tüm alt gruplar"
     no_results_found: '"%{search}" için sonuç yok'
@@ -1948,6 +1983,8 @@ tr:
     lets_start_a_thread: Bir konu başlatalım. Devam etmek için "Yeni konu"yu tıklayın.
     lets_start_a_discussion: Bir tartışma başlatalım. Devam etmek için "Yeni tartışma"ya tıklayın.
     new_discussion: Yeni tartışma
+    locked: Kilitli
+    unlocked: Kilidi Açıldı
   members_panel:
     bot: Bot
     no_results: Üye bulunamadı
@@ -1991,13 +2028,6 @@ tr:
     closed: Kapalı
     need_vote: Oy Gerekiyor
     no_polls: Anket bulunamadı
-    standalone_disabled_title: Bağımsız anketler devre dışı bırakıldı
-    standalone_disabled_helptext: "<p>Bu grup, bir tartışma içerisinde anketlerin başlatılmasını gerektirir.</p><p> Tartışmalar, insanların oy vermeden önce bağlamı anlamalarına, soru sormalarına ve bakış açılarını paylaşmalarına yardımcı olur. Bu da daha iyi kararlara yol açar.</p><p> Önce bir tartışma başlatın, ardından oy toplamaya hazır olduğunuzda bir anket ekleyin.</p>"
-    start_discussion: Bir tartışma başlatın
-    standalone_warning_title: Önce bir tartışma başlatmayı düşünün
-    start_poll_anyway: Anketi yine de başlat
-    start_discussion_instead: Bunun yerine bir tartışma başlatın
-    standalone_warning_helptext: "<p>Anketler, insanların önce konu hakkında tartışabilmesi durumunda en iyi sonucu verir.</p><p> Tartışma olmadan seçmenler soru soramaz, endişelerini dile getiremez veya iyileştirme önerilerinde bulunamaz.</p><p> En iyi deneyim için, bir tartışmayla başlayın, ortak bir anlayış oluşturun ve ardından insanların görüşlerini almak için hazır olduğunuzda bir anket ekleyin.</p>"
   group_files_panel:
     no_files: Hiçbir dosya bulunamadı
     filename: Dosya adı
@@ -2086,6 +2116,8 @@ tr:
     change_results_order: Sonuçların sırasını değiştir
     none_of_the_above: "(Yukarıdakilerin hiçbiri)"
     name_or_username: Ad veya kullanıcı adı
+    cast: Cast
+    uncast: Uncast
   poll_common_undecided_panel:
     show_undecided: "%{count} kararsızı göster"
     show_invitations: Bekleyen Davetiyeleri Göster
@@ -2284,6 +2316,8 @@ tr:
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> şu konudaki oylarını güncelledi: <strong>%{title}</strong>"
     event_removed: Konudan kaldırıldı
     new: yeni
+    thread_locked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> konuyu kilitledi"
+    thread_unlocked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> konunun kilidini açtı"
   add_poll_to_thread_modal:
     success: Başarılı, %{pollType} konuya eklendi!
   auth_form:
@@ -2354,6 +2388,7 @@ tr:
     want_to_set_password: Bir dahaki sefere şifreyle mi giriş yapmak istiyorsunuz?
     change_your_password: Yeni bir şifre belirlemek ister misiniz?
     email_placeholder: sen{'@'}example.com
+    turnstile_required: Lütfen devam etmeden önce doğrulama işlemini tamamlayın.
   chatbot:
     configure_chatbot: Chatbot'u yapılandır
     test_connection: Test bağlantısı
@@ -2479,6 +2514,7 @@ tr:
     country_disclaimer: Ülke kullanıcının IP adresine dayanmaktadır ve çok doğru değildir. Bunu yalnızca kaba bir kılavuz olarak düşünün.
     total_discussions: Toplam tartışmalar
     discussions_with_polls: Anketlerle tartışmalar
+    download_csv: CSV dosyasını indir
   tips:
     youve_completed_all_the_steps: "\U0001F389 Tüm adımları tamamladınız!"
     getting_started_checklist: Başlarken kontrol listesi
@@ -2561,6 +2597,7 @@ tr:
       helptext_on: Anket kapanana kadar insanların nasıl oy kullandığını göstermeyin
     short_reason_can_be_helpful: Kısa oy gerekçelerini anlamak daha kolaydır. Özlü gerekçelerden oluşan bir koleksiyon, karar vermek için harika bir kaynaktır.
     shuffle_options: Karıştırma seçenekleri
+    selected_people_only: Sadece seçilmiş kişiler
   poll_common_form:
     quorum: Çoğunluk
     participation_quorum: Katılım yeter sayısı
@@ -2611,6 +2648,8 @@ tr:
       time_poll_hint: Seçmenler toplantıya ne zaman hazır olduklarını belirtirler
       rank: Rütbe
       time: Zaman
+      stv: STV Seçimi
+      stv_hint: Tek Devredilebilir Oy Sistemi kullanarak orantılı olarak birden fazla kazanan seçin.
     process: İşlem
     process_name: Şablon başlığı
     process_name_hint: Bu şablona ne ad veriyorsunuz? Örneğin; Rol tavsiyesi, Sıcaklık kontrolü, Tutanak onayı.
@@ -2671,7 +2710,7 @@ tr:
     create_poll_type: "%{poll_type} oluşturun"
     notify_voters_when_voting_opens: Oy verme işleminin ne zaman başlayacağını seçmenlere bildirin.
     voters_notified_when_opens: Oy verme işleminin ne zaman başlayacağı seçmenlere bildirilecektir.
-    who_may_vote: Bu ankete kimler oy verebilir?
+    who_may_vote: Bu %{poll_type} için kimler oy kullanabilir?
   poll_receipts_page:
     verify_participants: Katılımcıları doğrulayın
     see_votes_if_quorum_reached: Oylama sona ermiş ve yeter sayı sağlanmışsa, kimin oy kullandığını göreceksiniz.
@@ -2682,8 +2721,6 @@ tr:
     invited_by: Davetli
     invited_on: Davet edildi
     no_receipts: Bu anonim anket doğrulama özelliği mevcut olmadan önce kapandı, bu nedenle doğrulama mümkün değil.
-  close_discussion_modal:
-    body: Açık tartışmalar listesinden çıkarmak ve insanların yorum yapmasını engellemek için tartışmaları kapatın.
   comment_reply_form:
     aria_label: Bir cevap ekle
   discussion_template:
@@ -2731,14 +2768,14 @@ tr:
     these_are_templates_admin_hint: Grup yöneticileri şablonları düzenleyebilir, yeni şablonlar oluşturabilir, şablonları yeniden sıralayabilir ve gizleyip/gösterebilir. Gizli şablonları yalnızca yöneticiler görebilir.
     show_hidden_templates: Gizli şablonları göster
     show_fewer: Daha az göster
-    start_a_new_discussion: Yeni bir tartışma başlatın
     start_discussion: Bir tartışma başlatın
     start_a_direct_discussion: Doğrudan bir tartışma başlatın
     these_are_templates: Bunlar grubunuzdaki tartışma şablonlarıdır.
+    start_a_new_discussion: Yeni bir tartışma başlatın
   context_panel:
     thread_status:
       pinned: Bu tartışma sabitlendi. Tüm kullanıcılar için grubun tartışma listesinin en üstünde kalacak.
-      closed: Bu tartışma kapatıldı. Artık panoda görünmeyecek ve grup sayfasında 'kapalı' altında listelenecek.
+      locked: Bu tartışma kilitlendi. Artık kontrol panelinde görünmeyecek ve grup sayfasında 'kilitli' başlığı altında listelenecektir.
   thread_group:
     aria_label: Grup adı
   discussion_context:
@@ -2749,8 +2786,8 @@ tr:
   pin_discussion_modal:
     helptext: Sabitlenen tartışmalar her zaman grubun tartışmalar listesinde görünür.
   delete_discussion_form:
-    body: Bu tartışmayı silmek istediğinizden emin misiniz?
     discussion_deleted: Tartışma silindi
+    body: Bu ileti dizisini silmek istediğinizden emin misiniz?
   move_discussion_form:
     title: Tartışmayı başka bir gruba taşıyın
     body: Hedef grup
@@ -2767,3 +2804,58 @@ tr:
     opening_hour: Açılış saati
     scheduled_hint: Anket, açılış saatine kadar görülebilir ancak oy verilemez olacaktır.
     draft_hint: Bu anket taslak olarak kaydedilecektir. Oylamaya başlamaya hazır olduğunuzda bir açılış tarihi belirleyin veya "Oylama hemen açılıyor" seçeneğini işaretleyin.
+  strand_members_list:
+    notify_members_or_invite_guests_info: Grup üyelerine isimleriyle bildirim gönderin veya üye olmayanları e-posta adresleriyle davet edin. Davet edilen misafirler bu tartışmaya katılabilir ancak diğer grup tartışmalarına erişemezler.
+    notify_members_info: Bu konu hakkında bilgilendirmek istediğiniz grup üyelerinin adlarını girin.
+    specified_voters_only_warning: Bu başlıkta yalnızca seçili kişilerin oy kullanabileceği anketler bulunmaktadır. Bu formla birini eklemek ona oy hakkı vermez, yalnızca takip etme ve yorum yapma olanağı sağlar. Oy hakkı vermek istiyorsanız ankette "oy veren ekle" seçeneğini kullanın.
+  poll_common_details_meta:
+    opened: Açıldı
+    opens: Açılıyor
+    closed: Kapalı
+    closes: Kapanıyor
+    opened_at: 'Açılış tarihi:'
+    opening_at: Açılışta
+    closed_at: Kapalı
+    closing_at: Kapanış saati
+  poll_stv_vote_form:
+    helptext: Sıralamak için adayları çizginin üzerine sürükleyin. Çizginin altındaki öğeler sıralanmamıştır. 1. sıra en çok tercih ettiğiniz adaydır.
+    divider_text: Adayları sıralamak için bu çizginin üzerine sürükleyin.
+    stance_created: Oy kaydı yapıldı
+    stance_updated: Oylama güncellendi
+  poll_stv_form:
+    settings_title: STV Seçim Ayarları
+    settings_helptext: Bu seçim için doldurulacak koltuk sayısını, sayım yöntemini ve kota türünü yapılandırın.
+    seats_label: Doldurulacak koltuk sayısı
+    method_label: Sayma yöntemi
+    method_scottish: Scottish STV (recommended)
+    method_meek: Meek STV
+    quota_label: Kota türü
+    quota_droop: Droop quota (recommended)
+    quota_hare: Hare quota
+  poll_stv_results:
+    title: Seçim Sonuçları
+    elected: Seçildi
+    not_elected: Seçilmedi
+    tied: Tie
+    no_candidates_elected: Hiçbir aday seçilmedi.
+    round: Round %{number}
+    quota_info: "%{method}, %{quota_type} quota (%{quota} votes needed)"
+    method_scottish: Scottish STV
+    method_meek: Meek STV
+    quota_droop: Droop
+    quota_hare: Hare
+    elected_in_round: Elected in round %{round}
+    eliminated_in_round: Eliminated in round %{round}
+    tied_in_round: Tied in round %{round}
+    votes: oylar
+    candidate: Aday
+    round_elected: Turda seçilenler
+    first_preferences: İlk tercihler
+    final_tally: Nihai sayım
+    quota_surplus: Fazlalık
+    round_details: Tur tur detayları
+    view_full_results: Tüm sonuçları görüntüle
+    results_available_when_closed: Oy verme işlemi sona erdiğinde sonuçlar açıklanacaktır.
+  lock_thread_modal:
+    body: Konuları kilitleyerek açık konular listesinden kaldırın ve insanların yorum yapmasını engelleyin.
+    explanation: Konuları kilitleyerek kişilerin yorum yapmasını veya daha fazla değişiklik yapmasını engelleyin.

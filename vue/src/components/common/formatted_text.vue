@@ -217,9 +217,8 @@ img.emoji
 
   img
     max-width: 100%
-    max-height: 600px
     height: auto
-    width: auto
+    max-height: 600px
 
   ol, ul
     padding-left: 24px

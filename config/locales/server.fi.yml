@@ -109,7 +109,7 @@ fi:
     manage:
       all: Ei valtuutusta %{action} %{subject}.
     add_guests:
-      all: Sinun on päivitettävä Loomio-tilauksesi, jotta voit lisätä vieraita %{subject}. Vaihtoehtoisesti voit kutsua heidät ryhmäsi jäseniksi.
+      all: Sinun on päivitettävä Loomio-tilauksesi, jotta voit lisätä vieraita. Vaihtoehtoisesti voit kutsua heidät ryhmäsi jäseniksi.
   errors:
     clear_cache: Latausongelma havaittu. Pidä vaihtonäppäintä painettuna ja paina reload-näppäintä tai tyhjennä selaimen välimuisti.
     404:
@@ -148,6 +148,7 @@ fi:
       body: Olemme pahoillamme, mutta jokin meni pieleen. Olemme saaneet ilmoituksen tästä ongelmasta ja tutkimme sitä pian.
     '404':
       body: Pyytämääsi kohdetta ei löytynyt. Näin voi käydä, jos keskustelu tai kysely on poistettu.
+    new_account_trial_group_limit: Uusia tilejä voi luoda vain yhteen ryhmään. Jos tarvitset lisää tilejä, ota yhteyttä tukeen.
   group:
     error:
       handle_must_begin_with_parent_handle: Alkaa %{parent_handle}-
@@ -234,6 +235,7 @@ fi:
       notified: Sait tämän, koska kirjoittaja ilmoitti sinulle.
       poll_subscribed: Sait tämän, koska olet tilannut kyselyn.
       discussion_subscribed: Sait tämän, koska olet tilannut keskustelun.
+      thread_subscribed: Sait tämän, koska olet tilannut ketjun.
   user_mailer:
     group_export_ready:
       subject: 'Ryhmätietojen vienti: %{group_name}'
@@ -366,6 +368,9 @@ fi:
     destroy_warning:
       subject: Loomio-ryhmäsi on ajoitettu poistettavaksi.
       body: '%{deletor} on ajoittanut Loomio-ryhmäsi: "%{group}" poistettavaksi. Jos et halua, että ryhmääsi poistetaan, vastaa tähän sähköpostiin. Jos olet varma, että haluat poistaa ryhmän, sinun ei tarvitse tehdä mitään. Kiitos.'
+    trial_expired:
+      subject: Loomio-ryhmäsi poistetaan käyttämättömyyden vuoksi.
+      body: Loomio-ryhmäsi "%{group}" on ollut passiivinen ja se poistetaan kahden viikon kuluttua. Jos et halua ryhmäsi poistettavan, vastaa tähän sähköpostiin.
   poll_mailer:
     common:
       why_send_this: Saat tämän sähköpostin, koska %{reason}
@@ -594,6 +599,11 @@ fi:
       no_meaning: En tue tätä ehdotusta
       no_prompt: Miksi ette tue tätä ehdotusta?
       outcome_statement: "<p>Kiitos osallistumisestasi tähän enemmistöäänestykseen.</p>"
+    stv:
+      process_subtitle: Valitse useita voittajia suhteellisesti
+      process_introduction: <p>STV (Single Transferable Vote) on suhteellinen vaalitapa monivoittajavaaleissa. Äänestäjät asettavat ehdokkaat paremmuusjärjestykseen. Äänikiintiön saavuttaneet ehdokkaat valitaan, ja ylijäämä-äänet tai pudonneiden ehdokkaiden äänet siirtyvät seuraaville valinnoille.</p><p> Määritä paikkojen lukumäärä, laskentatapa (Scottish tai Meek) ja kiintiötyyppi (Droop tai Hare). Tulokset näyttävät äänten siirtymisen kierroksittain eriteltynä.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/stv/index.html">Lue lisää STV-vaaleista</a> .</p>
+      title: Valitse komitean jäsenet
+      details: <h3 id="what-is-this-election-about"><strong>Mistä näissä vaaleissa on kyse?</strong></h3><p></p><h3 id="how-many-seats"> <strong>Kuinka monta paikkaa täytetään?</strong></h3><p></p><h3 id="who-are-the-candidates"> <strong>Keitä ehdokkaat ovat?</strong></h3><p></p><p> Äänestä vetämällä ehdokkaita haluamaasi järjestykseen. Sija 1 on suosikkiehdokkaasi. Voit asettaa ehdokkaita järjestykseen niin monta tai niin vähän kuin haluat.</p>
   forward_mailer:
     bounce:
       subject: Viestiäsi Loomiolle ei toimitettu
@@ -654,3 +664,5 @@ fi:
     pt: portugali
     zh: Kiina (perinteinen, Taiwan)
     zh-HK: Kiina (perinteinen, Taiwan)
+  upload:
+    file_too_large: Tiedosto on liian suuri. Suurin mahdollinen lähetyskoko on %{limit}.

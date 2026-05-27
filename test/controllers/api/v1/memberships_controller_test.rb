@@ -2,14 +2,12 @@ require 'test_helper'
 
 class Api::V1::MembershipsControllerTest < ActionController::TestCase
   setup do
-    @normal_user = users(:normal_user)
-    @another_user = users(:another_user)
-    @test_group = groups(:test_group)
+    @user = users(:user)
+    @admin = users(:admin)
+    @alien = users(:alien)
+    @test_group = groups(:group)
     @subgroup = groups(:subgroup)
-
-    @test_group.add_admin!(@normal_user)
-    @subgroup.add_admin!(@normal_user)
-    sign_in @normal_user
+    sign_in @user
   end
 
   # ===== Membership Creation Tests =====
@@ -20,9 +18,9 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
       handle: 'newgroup',
       is_visible_to_public: false
     )
-    @normal_user.update(default_membership_volume: 'quiet')
+    @user.update(default_membership_volume: 'quiet')
 
-    membership = Membership.create!(user: @normal_user, group: new_group)
+    membership = Membership.create!(user: @user, group: new_group)
 
     assert_equal 'quiet', membership.volume
   end
@@ -30,6 +28,7 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
   # ===== Update Tests =====
 
   test 'updates membership title' do
+    sign_in @admin
     member_user = User.create!(
       name: 'Member User',
       email: 'memberuser@example.com',
@@ -48,13 +47,10 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
   # ===== Set Volume Tests =====
 
   test 'updates volume for single membership' do
-    @test_group.add_member!(@normal_user)
-    @subgroup.add_member!(@normal_user)
-
-    membership = @test_group.membership_for(@normal_user)
+    membership = @test_group.membership_for(@user)
     membership.set_volume!('quiet')
 
-    second_membership = @subgroup.membership_for(@normal_user)
+    second_membership = @subgroup.membership_for(@user)
     second_membership.set_volume!('quiet')
 
     put :set_volume, params: { id: membership.id, volume: 'loud' }
@@ -67,13 +63,10 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
   end
 
   test 'updates volume for all memberships when apply_to_all is true' do
-    @test_group.add_member!(@normal_user)
-    @subgroup.add_member!(@normal_user)
-
-    membership = @test_group.membership_for(@normal_user)
+    membership = @test_group.membership_for(@user)
     membership.set_volume!('quiet')
 
-    second_membership = @subgroup.membership_for(@normal_user)
+    second_membership = @subgroup.membership_for(@user)
     second_membership.set_volume!('quiet')
 
     put :set_volume, params: { id: membership.id, volume: 'loud', apply_to_all: true }
@@ -126,7 +119,7 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
       is_visible_to_public: false
     )
 
-    sign_out @normal_user
+    sign_out @user
 
     get :index, params: { group_id: private_group.id }, format: :json
 
@@ -148,14 +141,15 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
   # ===== For User Tests =====
 
   test 'returns visible groups for the given user' do
-    @test_group.add_member!(@another_user)
+    alien_group = groups(:alien_group)
+    alien_group.update!(listed_in_explore: true)
 
-    get :for_user, params: { user_id: @another_user.id }
+    get :for_user, params: { user_id: @alien.id }
 
     json = JSON.parse(response.body)
     group_ids = json['groups'].map { |g| g['id'] }
 
-    assert_includes group_ids, @test_group.id
+    assert_includes group_ids, alien_group.id
   end
 
   # ===== Save Experience Tests =====
@@ -186,7 +180,7 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     )
     membership = Membership.create!(user: experience_user, group: @test_group, accepted_at: 1.day.ago)
 
-    sign_out @normal_user
+    sign_out @user
 
     post :save_experience, params: { id: membership.id, experience: :happiness }
 
@@ -196,6 +190,7 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
   # ===== Delegate Tests =====
 
   test 'make_delegate updates the membership record' do
+    sign_in @admin
     delegate_user = User.create!(
       name: 'Delegate User',
       email: 'delegateuser@example.com',
@@ -225,8 +220,7 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     )
     @test_group.add_member!(delegate_user)
 
-    sign_in @another_user
-    @test_group.add_member!(@another_user)
+    sign_in @alien
     membership = @test_group.add_member!(delegate_user)
 
     post :make_delegate, params: { id: membership.id }
@@ -236,6 +230,7 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
   end
 
   test 'remove_delegate updates the membership record' do
+    sign_in @admin
     delegate_user = User.create!(
       name: 'Delegate User',
       email: 'delegateuser3@example.com',
@@ -267,8 +262,7 @@ class Api::V1::MembershipsControllerTest < ActionController::TestCase
     membership = @test_group.add_member!(delegate_user)
     membership.update(delegate: true)
 
-    sign_in @another_user
-    @test_group.add_member!(@another_user)
+    sign_in @alien
 
     post :remove_delegate, params: { id: membership.id }
 

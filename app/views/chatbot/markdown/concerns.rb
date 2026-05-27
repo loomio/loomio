@@ -117,11 +117,13 @@ module Views::Chatbot::Markdown::Concerns
     md "**#{t('poll_common_action_panel.for_this_poll_type_to_be_valid', poll_type: t("poll_types.#{poll.poll_type}"))}**\n"
 
     if poll.quorum_pct
-      md "- #{t('poll_common_percent_voted.pct_of_eligible_voters_must_participate', pct: poll.quorum_pct)}\n"
+      met = poll.quorum_votes_required <= 0
+      md "- #{met ? '✓' : '✗'} #{t('poll_common_percent_voted.pct_of_eligible_voters_must_participate', pct: poll.quorum_pct)}\n"
     end
 
     poll.results.select { |r| r['test_operator'] }.each do |option|
-      md "- #{t("poll_option_form.name_#{option['test_operator']}_#{option['test_against']}", percent: option['test_percent'], name: option['name'])}\n"
+      met = option['test_result']
+      md "- #{met ? '✓' : '✗'} #{t("poll_option_form.name_#{option['test_operator']}_#{option['test_against']}", percent: option['test_percent'], name: option['name'])}\n"
     end
   end
 

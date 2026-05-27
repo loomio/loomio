@@ -28,6 +28,21 @@ export default {
     } else {
       this.group = Records.groups.build({description: I18n.global.t('group_form.new_description_html')})
     }
+  },
+
+  watch: {
+    '$route.query.parent_id'(parentId) {
+      if (parentId) {
+        Records.groups.findOrFetch(parseInt(parentId)).then(parent => {
+          this.group.parentId = parent.id;
+        }).catch(error => {
+          Flash.error('common.something_went_wrong');
+          console.error(error);
+        });
+      } else {
+        this.group.parentId = null;
+      }
+    }
   }
 };
 </script>

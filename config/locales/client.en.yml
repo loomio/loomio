@@ -246,6 +246,8 @@ en:
     ok_got_it: Ok, got it
     learn_more: Learn more
     read_more: Read more
+    read: Read
+    unread: Unread
     not_found: Not found
     time_zone: Time zone
     local_time: Local time
@@ -369,6 +371,7 @@ en:
       add_people: Add People
       zoom: Zoom
       align: Align
+      customize: Customize
     formatting_help:
       label: Formatting
       title: Learn how to use Markdown to format your text
@@ -459,6 +462,7 @@ en:
     hint: 'Hint for next time: Try highlighting some text before you click "Pin".'
   change_volume_form:
     when_do_you_want_to_be_emailed: When do you want to be emailed?
+    when_do_you_want_to_be_emailed_thread: When do you want to be emailed about this thread?
     change_your_email_settings: Change your email settings
     when_would_you_like_to_be_emailed_discussion: When would you like to be emailed about this discussion?
     when_would_you_like_to_be_emailed_poll_type: When would you like to be emailed about this %{poll_type}?
@@ -469,7 +473,10 @@ en:
     loud_desc: Every time someone participates
     normal_desc: When someone notifies me
     quiet_desc: Never
-    quiet_explained: You will not be emailed, even when someone tries to notify you. You may miss important announcements or decisions unless you have a habit of checking Loomio regularly.
+    loud_option: "Any time someone participates (All activity)"
+    normal_option: "When someone wants my attention (When notified)"
+    quiet_option: "No emails about this thread (Off)"
+    quiet_explained: You will not be emailed, even when someone tries to notify you.
     normal_explained: When someone enters your name in the "Notify" field of a discussion or a poll, or they {'@'}mention the group.
     normal_excludes_mentioning_html: There is a separate setting for when someone {'@'}mentions you (e.g. when a replying to you in a comment). <a href="%{url}">Click here to edit settings for @mentions</a>
     loud_explained: You will be emailed every time there is a new comment, someone votes, or starts a poll or thread.
@@ -492,7 +499,7 @@ en:
     mute_label: Mute
     saved: Notification settings updated
     discussion:
-      title: Discussion notifications
+      title: Thread emails
       loud_description: You will be emailed all activity in this thread.
       normal_description: You will only be emailed important activity in this thread.
       quiet_description: You won't be emailed any activity in this thread.
@@ -533,8 +540,9 @@ en:
         loud: You will be emailed all activity in new groups.
         normal: You will be emailed about announcements in new groups.
         quiet: You won't be emailed about new groups.
-  close_discussion_modal:
-    body: Close discussions to remove them from the list of open discussions and prevent people from commenting.
+  lock_thread_modal:
+    body: Lock threads to remove them from the list of open threads and prevent people from commenting.
+    explanation: Lock threads to prevent people from commenting or making further changes
   inbox:
     clear: Clear
     latest: Latest
@@ -569,6 +577,7 @@ en:
     confirm_delete_message: Are you sure you want to delete this comment?
     confirm_delete: Delete comment
     in_reply_to: Reply to %{name}
+    share_on_poll: Ask a question or share new information
     write_a_comment: Write a comment...
     post_comment: Post comment
     submit_button:
@@ -583,6 +592,7 @@ en:
     all_groups: All groups
     invite_only_discussions: Invite-only discussions
     direct_discussions: Direct discussions
+    unread_discussions: Unread discussions
     unread_discussions_count: Unread discussions (%{count})
     new_group: New group
     new_subgroup: New subgroup
@@ -612,7 +622,12 @@ en:
     newest: Newest
     unread: Unread
     oldest: Oldest
-    recenter: Recenter
+    return: Return
+    end: End
+    notifications: Notifications
+    email_all_activity: Email all activity
+    email_notifications: Email when notified
+    email_none: No emails
     newest_first: Newest first
     oldest_first: Oldest first
     showing_latest: Showing latest
@@ -626,6 +641,7 @@ en:
     all_subgroups: All subgroups
     parent_only: Parent only
   navbar:
+    thread_nav: Thread menu
     search_discussions_in_group: Search discussions in %{name}
     search_polls: Search polls in %{name}
     search_members: Search members in %{name}
@@ -667,7 +683,12 @@ en:
     sign_out: Sign out
     beta_collab: "\U0001F9EA Beta features enabled!"
     outcomes: Outcomes
+  strand_members_list:
+    notify_members_or_invite_guests_info: Notify group members by name, or invite non-members by email address. Invited guests can participate in this thread but won't have access to other group threads.
+    notify_members_info: Enter names of group members to notify them about this thread.
+    specified_voters_only_warning: This thread has polls where only selected people can vote. Adding someone here won't give them a vote — use "add voters" on the poll instead.
   membership_card:
+    thread_members: Thread members
     group_members: Group members
     discussion_members: Discussion members
     poll_members: "%{pollType} members"
@@ -708,6 +729,7 @@ en:
       discussion_announced: "%{title}"
       discussion_edited: "%{actor} edited the discussion context: %{title}"
       discussion_closed: "%{actor} closed the discussion: %{title}"
+      thread_locked: "%{actor} locked the thread: %{title}"
       invitation_accepted: "%{actor} accepted your invitation to join %{title}"
       membership_created: "%{actor} invited you to join %{title} on %{site_name}"
       membership_resent: "%{actor} invited you to join %{title} on %{site_name}"
@@ -747,6 +769,7 @@ en:
       discussion_announced: "%{actor} invited you to the discussion: %{title}"
       discussion_edited: "%{actor} edited the discussion context: %{title}"
       discussion_closed: "%{actor} closed the discussion: %{title}"
+      thread_locked: "%{actor} locked the thread: %{title}"
       invitation_accepted: "%{actor} accepted your invitation to join %{title}"
       membership_created: "%{actor} invited you to join %{title} on %{site_name}"
       membership_resent: "%{actor} invited you to join %{title} on %{site_name}"
@@ -785,6 +808,7 @@ en:
       discussion_announced: "%{actor} invited you to a discussion"
       discussion_edited: "%{actor} edited the discussion context"
       discussion_closed: "%{actor} closed the discussion"
+      thread_locked: "%{actor} locked the thread"
       group_announced: "%{actor} invited you to a group"
       comment_replied_to: "%{actor} replied to you"
       new_discussion: "%{actor} started a discussion"
@@ -904,6 +928,7 @@ en:
     new_discussion_title: Start a discussion
     moving_items_title: Move items to another discussion
     edit_discussion_title: Edit discussion
+    edit_discussion_context: Edit discussion context
     group_label: Group
     group_placeholder: Select a group
     title_label: Title
@@ -923,6 +948,8 @@ en:
     send_poll: Send %{type}
     send_outcome: Send outcome
     cannot_reveal_when_anonymous: Sorry, we cannot reveal who has or has not voted on an anonymous poll.
+    topic_notification_history: Thread notification history
+    notification_history: Notification history
     discussion_notification_history: Discussion notification history
     group_notification_history: Group invitation history
     poll_notification_history: Poll notification history
@@ -1032,6 +1059,7 @@ en:
       no_members: This hasn't been shared with anyone yet!
       group_admin: Group admin
       discussion_admin: Discussion admin
+      thread_admin: Thread admin
       last_read_at: Last viewed %{time}
       has_not_read_discussion: Has not viewed discussion
       has_not_joined_yet: Has not joined yet
@@ -1088,10 +1116,8 @@ en:
     discussion_copied: Thread URL copied to clipboard
     url_copied: Link copied to clipboard
     tag_thread: Manage tags
-    close_thread: Close thread
-    close_discussion: Close discussion
-    reopen_thread: Re-open thread
-    reopen_discussion: Re-open discussion
+    lock_thread: Lock thread
+    unlock_thread: Unlock thread
     delete_thread: Delete thread
     delete_discussion: Delete discussion
     notification_history: Notification history
@@ -1207,7 +1233,7 @@ en:
   context_panel:
     thread_status:
       pinned: This discussion has been pinned. It will remain at the top of the group's list of discussions for all users.
-      closed: This discussion has been closed. It will no longer appear on the dashboard, and will be listed under 'closed' on the group page
+      locked: This discussion has been locked. It will no longer appear on the dashboard, and will be listed under 'locked' on the group page
   delete_group_modal:
     title: Delete group
     subgroup_title: Delete subgroup
@@ -1232,9 +1258,12 @@ en:
     interval: Interval
     total_users: Total users
     total_discussions: Total discussions
+    total_threads: Total threads
     total_polls: Total polls
     discussions_with_polls: Discussions with polls
+    threads_with_polls: Threads with polls
     polls_with_outcomes: Polls with outcomes
+    download_csv: Download CSV
     actions_per_interval: Actions per %{interval}
     actions_per_user: Actions per user
     users_per_country: Users per country
@@ -1260,11 +1289,11 @@ en:
     my_subgroups: My subgroups
     more_subgroups: More subgroups
     show_opened: "%{count} Open"
-    show_closed: "%{count} Closed"
+    show_locked: "%{count} Locked"
     no_discussions_here: No discussions to see here!
     search_threads: Search for threads...
     private_discussions: You'll need to be a member to view private threads in this group
-    view_closed_discussions: View closed discussions
+    view_locked_discussions: View locked discussions
     messages:
       privacy:
         members: This group is now visible only to members
@@ -1277,7 +1306,7 @@ en:
     new_cover_photo: Upload new cover photo
     new_group_logo: Upload new group logo
     open_discussions: Open discussions
-    closed_discussions: Closed discussions
+    locked_discussions: Locked discussions
     discussions_placeholder: A thread is where everyone can discuss a topic and make decisions together.
     members_placeholder: 'You''re the only one here: invite some people to join you!'
     member_options: Member options
@@ -1341,8 +1370,6 @@ en:
     question: Are you sure you want to deactivate this group?
     submit: Yes, Deactivate this group
   group_form:
-    allow_polls_without_discussions: Allow polls without discussion
-    allow_polls_without_discussions_help: Do not prevent people from starting polls without starting a discussion first.
     share_this_url_with_people_who_want_to_join: Share this URL with people who want to join
     request_to_join_prompt: Request to join prompt
     default_request_to_join_prompt: 'Thanks for your interest in our group. Please introduce yourself and explain why you are requesting to join.'
@@ -1680,6 +1707,7 @@ en:
     learn_more: Learn more about email settings...
   thread_preview:
     replies_count: "%{count} replies"
+    items_count: "%{count} items"
     unread_count: "%{count} unread"
   dashboard_page:
     dashboard: Dashboard
@@ -1689,6 +1717,7 @@ en:
     recent_polls: Recent polls
     current_polls: Current polls
     recent_discussions: Recent discussions
+    recent_threads: Recent threads
     no_groups:
       show_all: Welcome! You are not a member of any groups yet.
       show_muted: You don't have any muted threads because you are not a member of any groups.
@@ -1769,11 +1798,12 @@ en:
     volume:
       mute_message: Discussion muted
       unmute_message: Discussion unmuted
-    closed:
-      reopened: Discussion reopened
-      closed: Discussion closed
+    locked:
+      unlocked: Thread unlocked
+      locked: Thread locked
   discussion_last_seen_by:
     title: Seen by
+    thread_engagement: Thread engagement
     no_one: No one has seen this yet
     disabled_anonymous_polls: Viewer history is disabled because thread contains anonymous polls
   activity_card:
@@ -1811,6 +1841,7 @@ en:
   thread_arrangement_form:
     edit: Edit layout
     title: Thread layout
+    layout: Layout
     for_everyone: This changes the layout for everyone, not just you.
     sorting: Oldest or Newest first?
     latest: Newest
@@ -1818,15 +1849,30 @@ en:
     earliest: Oldest
     earliest_description: Catch up on older comments before seeing newer ones
     replies: How to display replies?
+    items: How to display items
     linear: Flat list
+    nested: Nested
+    timeline: Timeline
+    timeline_description: Items in the order they were posted
+    threaded: Threaded
+    threaded_description: Replies grouped under what they're responding to
     linear_description: Items listed as they happened, one after the other.
     nested_once: Nest replies - first reply only
     nested_once_description: Indent replies under original comment
     nested_twice: Two levels of nested replies
     nested_twice_description: Indent replies at most two times.
     changing_nesting_is_slow: Changes to nesting can take a couple of minutes to process.
+    allow_concurrent_polls: Allow concurrent polls
+    allow_multiple_polls: Allow multiple polls at the same time
+    allow_concurrent_polls_description: Allow more than one poll to be open at the same time
+    allow_comments: Allow comments
+    allow_comments_description: Allow participants to post comments in this thread
+    allow_reactions: Allow reactions
+    allow_reactions_description: Allow participants to add emoji reactions
+    topic_settings: Topic settings
+    thread_settings: Thread settings
   delete_discussion_form:
-    body: Are you sure you want to delete this discussion?
+    body: Are you sure you want to delete this thread?
     discussion_deleted: Discussion deleted
   move_discussion_form:
     title: Move discussion to another group
@@ -1941,6 +1987,7 @@ en:
     name_lte_score_percent: "%{name} must not exceed %{percent}% of votes cast"
     name_lte_voter_percent: "%{name} must not exceed %{percent}% of eligible voters"
   poll_common:
+    your_vote_is_requested: Your vote is requested
     superseded: Superseded
     outdated: Outdated
     need_help_with_templates: Need help creating your own decision templates?
@@ -2068,10 +2115,10 @@ en:
     until_voting_is_closed: Until voting is closed
     deleted: This poll has been deleted
   discussions_panel:
-    open: Open
     all: All
     unread: Unread (%{count})
-    closed: Closed
+    locked: Locked
+    unlocked: Unlocked
     include_subgroups_mine: "%{name} and my subgroups"
     include_subgroups_all: "%{name} and all subgroups"
     no_results_found: No results for "%{search}"
@@ -2121,13 +2168,6 @@ en:
     closed: Closed
     need_vote: Need Vote
     no_polls: No polls found
-    standalone_disabled_title: Standalone polls are disabled
-    standalone_disabled_helptext: "<p>This group requires polls to be started within a discussion.</p><p>Discussions help people understand the context, ask questions, and share perspectives before voting. This leads to better decisions.</p><p>Start a discussion first, then add a poll when you're ready to gather votes.</p>"
-    start_discussion: Start a discussion
-    standalone_warning_title: Consider starting a discussion first
-    standalone_warning_helptext: "<p>Polls work best when people can discuss the topic first.</p><p>Without a discussion, voters can't ask questions, raise concerns, or suggest improvements.</p><p>For the best experience, start with a discussion, build shared understanding, and then add a poll when you’re ready to capture people’s positions.</p>"
-    start_poll_anyway: Start poll anyway
-    start_discussion_instead: Start a discussion instead
   group_files_panel:
     no_files: No files found
     filename: Filename
@@ -2179,6 +2219,7 @@ en:
     who_can_vote: Who can vote?
     short_reason_can_be_helpful: Short vote reasons are easier to understand. A collection of concise reasons is a great resource for making a decision.
     specified_voters_only_true: Invited people only
+    selected_people_only: Selected people only
     specified_voters_only_false_group: Anyone in the group
     specified_voters_only_false_discussion: Anyone in the thread
     invite_people_next: You can choose who is invited to vote after you start the %{poll_type}
@@ -2254,6 +2295,8 @@ en:
     poll_type_by_name: "%{poll_type} by %{name}"
     started_by: Started by %{name}
   poll_common_votes_panel:
+    cast: Cast
+    uncast: Uncast
     vote_removed: Vote removed
     undecided: Undecided
     newest_first: Newest first
@@ -2264,6 +2307,15 @@ en:
     no_votes_yet: No votes have been placed yet.
     change_results_order: Change results order
     name_or_username: Name or username
+  poll_common_details_meta:
+    opened: Opened
+    opens: Opens
+    closed: Closed
+    closes: Closes
+    opened_at: Opened at
+    opening_at: Opening at
+    closed_at: Closed at
+    closing_at: Closing at
   poll_common_undecided_panel:
     show_undecided: Show %{count} undecided
     show_invitations: Show Pending Invitations
@@ -2599,7 +2651,9 @@ en:
     discussion_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a> edited the thread context"
     discussion_moved: "<a class='actor-link' href='/u/%{username}'>%{author}</a> moved the thread from <strong>%{title}</strong>"
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> closed the thread"
+    thread_locked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> locked the thread"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> reopened the thread"
+    thread_unlocked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> unlocked the thread"
     discussion_forked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> created a fork of this thread: <strong><a href='d/%{key}'>%{title}</a></strong>"
     new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
     outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> shared an outcome"

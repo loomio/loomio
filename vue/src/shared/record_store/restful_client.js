@@ -18,7 +18,7 @@ export default class RestfulClient {
     this.defaultParams.unsubscribe_token = new URLSearchParams(location.search).get('unsubscribe_token');
     this.defaultParams.membership_token = new URLSearchParams(location.search).get('membership_token');
     this.defaultParams.stance_token = new URLSearchParams(location.search).get('stance_token');
-    this.defaultParams.discussion_reader_token = new URLSearchParams(location.search).get('discussion_reader_token');
+    this.defaultParams.topic_reader_token = new URLSearchParams(location.search).get('topic_reader_token');
     this.defaultParams = omitBy(this.defaultParams, isNil);
     this.processing = [];
     if (resourcePlural) { this.resourcePlural = snakeCase(resourcePlural); }

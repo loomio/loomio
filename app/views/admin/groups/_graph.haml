@@ -12,7 +12,7 @@
   }
 
   const intervals = #{report.intervals.to_json.html_safe}
-  const discussions_per_interval = #{report.discussions_per_interval.to_json.html_safe}
+  const topics_per_interval = #{report.topics_per_interval.to_json.html_safe}
   const comments_per_interval = #{report.comments_per_interval.to_json.html_safe}
   const stances_per_interval = #{report.stances_per_interval.to_json.html_safe}
   const polls_per_interval = #{report.polls_per_interval.to_json.html_safe}
@@ -32,7 +32,7 @@
         {
           label: 'threads',
           backgroundColor: '#F58518',
-          data: intervals.map(interval => (discussions_per_interval[interval] || 0) )
+          data: intervals.map(interval => (topics_per_interval[interval] || 0) )
         },
         {
           label: 'comments',

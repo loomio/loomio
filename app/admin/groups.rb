@@ -127,7 +127,6 @@ ActiveAdmin.register Group, as: 'Group' do
       row :memberships_count
       row :admin_memberships_count
       row :unverified_memberships_count
-      row :public_discussions_count
       row :payment_plan
 
       row "Group Privacy" do

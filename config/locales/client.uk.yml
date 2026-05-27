@@ -165,6 +165,7 @@ uk:
     ranked_choice: ранговий вибір
     score: оціночне опитування
     question: раунд питань
+    stv: Вибори на СТВ
   timezones:
     local: За місцевим часом (%{value})
   common:
@@ -314,6 +315,7 @@ uk:
       rearrange: Переставити
       save_template: Зберегти шаблон
       fork_template: Шаблон виделки
+      customize: Налаштувати
     formatting_help:
       label: Форматувати
       title: Дізнайтесь як використовувати Markdown для форматування текту
@@ -323,6 +325,8 @@ uk:
     opening_in: Відкриття %{time}
     read_more: Читати далі
     templates_admin_hint: Оскільки ви є адміністратором групи, ви можете приховати або видалити будь-які шаблони, які вам не потрібні, а решту відредагувати відповідно до своїх потреб.
+    read: Читати
+    unread: Непрочитане
   merge_accounts:
     modal:
       title: Об’єднати облікові записи
@@ -482,17 +486,15 @@ uk:
     changes_all_threads_and_polls_in_group: Це змінює налаштування для всіх тем та опитувань у групі.
     when_do_you_want_to_be_emailed: Коли ви хочете отримати електронний лист?
     what_the_options_mean: Що означають опції
-    quiet_explained: Ви не отримуватимете електронних листів, навіть якщо хтось спробує вас повідомити. Ви можете пропустити важливі оголошення чи рішення, якщо у вас немає звички регулярно перевіряти Loomio.
     when_would_you_like_to_be_emailed_discussion: Коли ви бажаєте отримати електронного листа щодо цього обговорення?
     changes_all_discussions_and_polls_in_group: Це змінює налаштування для всіх обговорень та опитувань у групі.
     normal_explained: Коли хтось вводить ваше ім’я в поле «Сповістити» в обговоренні чи опитуванні, або {'@'}згадує групу.
     aria_label: Форма зміни налаштувань електронної пошти
-  close_explanation_modal:
-    close_thread: Закрити тему
-    body: |
-      <p>Закрийте старі або невідповідні теми, щоб видалити їх із поля зору, і вкажіть, що обговорення закрито.</p>
-      <p>Будь-хто все ще може коментувати або розпочати опитування в закритій темі, але це не відображатиметься в списку ланцюжків групи чи на інформаційній панелі.</p>
-    image_alt: Закрити всі теми
+    when_do_you_want_to_be_emailed_thread: Коли ви хочете отримати електронного листа щодо цієї теми?
+    loud_option: Будь-коли, коли хтось бере участь (Уся активність)
+    normal_option: Коли хтось хоче моєї уваги (коли мене повідомляють)
+    quiet_option: Немає електронних листів щодо цієї теми (Вимкнено)
+    quiet_explained: Ви не отримаєте електронного листа, навіть якщо хтось спробує вас повідомити.
   inbox:
     clear: Очистити
     latest: Останній
@@ -532,6 +534,7 @@ uk:
     sign_in: Авторизуйтесь, щоб приєднатися до розмови
     add_a_comment: Додати коментар
     share_your_thoughts: Поділіться своїми думками…
+    share_on_poll: Задайте питання або поділіться новою інформацією
   thread_nav:
     participants: Учасники
   sidebar:
@@ -566,6 +569,7 @@ uk:
     new_subgroup: Нова підгрупа
     find_a_group: Знайти групу
     direct_discussions: Прямі обговорення
+    unread_discussions: Непрочитані обговорення
   strand_nav:
     newest: Найновіші
     oldest: Найстарші
@@ -586,7 +590,12 @@ uk:
     showing_unread: Показано непрочитані
     add_comment: Додати коментар
     start_decision: Початок рішення
-    recenter: Зовсім недавно
+    return: Назад
+    end: Кінець
+    notifications: Сповіщення
+    email_all_activity: Надіслати всю активність електронною поштою
+    email_notifications: Електронна пошта при отриманні сповіщення
+    email_none: Без електронних листів
   search_modal:
     all_content: Весь контент
     best_match: Найкращий матч
@@ -623,6 +632,7 @@ uk:
     search_files_short: Пошук файлів
     search_subgroups_short: Пошук підгруп
     search_discussions_in_group: Пошук обговорень у %{name}
+    thread_nav: Меню тем
   user_dropdown:
     pin_sidebar: Закріпити на бічній панелі
     unpin_sidebar: Відкріпити з бічної панелі
@@ -654,6 +664,7 @@ uk:
     invite_to_wip_poll: Запросіть залишити відгук
     invitations: Запрошення
     discussion_members: Учасники обговорення
+    thread_members: Учасники теми
   membership_dropdown:
     set_name_and_username: Встановіть ім'я та ім'я користувача
     set_title: Вкажіть назву
@@ -718,6 +729,7 @@ uk:
       discussion_closed: "%{actor} закрив обговорення: %{title}"
       new_discussion: "%{actor} розпочав обговорення: %{title}"
       user_reminded: "%{actor} нагадує вам проголосувати за: %{title}"
+      thread_locked: "%{actor} заблокував тему: %{title}"
     without_title:
       unknown_sender: Будь ласка, перегляньте електронний лист від нерозпізнаного відправника
       group_announced: "%{actor} запросив вас до групи"
@@ -755,6 +767,7 @@ uk:
       new_discussion: "%{actor} розпочав обговорення"
       new_comment: "%{actor} прокоментував в обговоренні"
       outcome_updated: "%{actor} оновив результат"
+      thread_locked: "%{actor} заблокував тему"
     hints:
       poll_closing_soon: Зараз гарний час, щоб проголосувати, змінити свою думку або заохотити інших до участі.
       poll_closing_soon_author: Ви можете нагадати людям проголосувати або продовжити кінцевий термін.
@@ -779,7 +792,7 @@ uk:
       poll_closed_by_user: "%{actor} закрив %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} закривається через 24 години: %{title}"
       poll_closing_soon_author: 'Ваш %{poll_type} закривається через 24 години: %{title}'
-      poll_created: 'Голосувати: %{title}'
+      poll_created: "%{poll_type}: %{title}"
       poll_edited: "%{actor} оновив %{poll_type}: %{title}"
       poll_expired: "%{poll_type} закрито: %{title}"
       poll_expired_author: 'Опублікувати результат: %{title}'
@@ -798,6 +811,7 @@ uk:
       discussion_edited: "%{actor} відредагував контекст обговорення: %{title}"
       discussion_closed: "%{actor} закрив обговорення: %{title}"
       user_reminded: "%{actor} нагадує вам проголосувати за: %{title}"
+      thread_locked: "%{actor} заблокував тему: %{title}"
   discussion_fork_actions:
     move: Перемістити
     moved: Переміщення коментарів може зайняти певний час
@@ -853,6 +867,7 @@ uk:
     direct_discussion: Пряме обговорення
     direct_discussion_hint: Пряме обговорення видно лише певним людям, яких ви запросили. Воно не відображатиметься у списку обговорень жодної групи — ви можете знайти його на сторінці прямих обговорень.
     recommended_poll_templates: Рекомендовані шаблони опитувань
+    edit_discussion_context: Редагувати контекст обговорення
   announcement:
     send_discussion: Надіслати тему
     send_group: Запросити людей до %{name}
@@ -981,6 +996,8 @@ uk:
     poll_announced: "%{name} запросив %{length} людей проголосувати:"
     discussion_notification_history: Історія сповіщень про обговорення
     inviting_guests_to_discussion: Гості не належать до вашої групи та мають доступ лише до цього обговорення
+    topic_notification_history: Історія сповіщень про теми
+    notification_history: Історія сповіщень
   action_dock:
     actions_menu: Меню дій
     more_actions: Більше дій
@@ -1027,8 +1044,6 @@ uk:
     discussion_copied: URL-адресу теми скопійовано до буферу обміну
     url_copied: Посилання скопійовано до буферу обміну
     tag_thread: Керувати мітками
-    close_thread: Закрити тему
-    reopen_thread: Повторно відкрити тему
     delete_thread: Видалити тему
     notification_history: Історія сповіщень
     move_item: Перемістити елемент
@@ -1037,9 +1052,9 @@ uk:
     count_voters: "%{count} виборців"
     pin_discussion: Закріпити обговорення
     unpin_discussion: Відкріпити обговорення
-    close_discussion: Закрити обговорення
-    reopen_discussion: Знову відкрити обговорення
     delete_discussion: Видалити обговорення
+    lock_thread: Заблокувати тему
+    unlock_thread: Розблокувати тему
   formatting:
     formatting_tools: Інструменти форматування тексту
     colors: Кольори
@@ -1162,7 +1177,6 @@ uk:
     settings: Налаштування
     subgroups: Підгрупи
     show_opened: "%{count} Відкрито"
-    show_closed: "%{count} закрито"
     no_threads_here: Тут нема тем для перегляду!
     search_threads: Пошук тем...
     private_threads: Ви повинні бути учасником для перегляду приватних тем у цій групі
@@ -1180,7 +1194,6 @@ uk:
     new_cover_photo: Завантажити нове фото обкладинки
     new_group_logo: Завантажити новий логотип для групи
     open_discussions: Відкриті теми
-    closed_discussions: Закриті теми
     discussions_placeholder: Тема це місце де всі можуть обговорити питання та прийняти рішення спільно.
     members_placeholder: 'Ви єдиний тут: запросіть когось приєднатися до вас!'
     member_options: Варіанти участі
@@ -1229,8 +1242,10 @@ uk:
     discussions: Обговорення
     no_discussions_here: Тут немає обговорень!
     private_discussions: Щоб переглядати приватні теми в цій групі, вам потрібно бути учасником
-    view_closed_discussions: Переглянути закриті обговорення
     discussion_templates: Шаблони обговорень
+    show_locked: "%{count} Заблоковано"
+    view_locked_discussions: Переглянути заблоковані обговорення
+    locked_discussions: Заблоковані обговорення
   export_data_modal:
     title: Як ви бажаєте використовувати ващі дані?
     as_csv: Відкрити в електронній таблиці
@@ -1353,8 +1368,6 @@ uk:
     default_request_to_join_prompt: Дякуємо за інтерес до нашої групи. Будь ласка, представтеся та поясніть, чому ви хочете приєднатися.
     upgrade_for_subgroups: 'Будь ласка, <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">оновіть свою підписку</a> , щоб створити підгрупу'
     share_this_url_with_people_who_want_to_join: Поділіться цією URL-адресою з людьми, які хочуть приєднатися
-    allow_polls_without_discussions: Дозволити опитування без обговорення
-    allow_polls_without_discussions_help: Дозволити окремі опитування (не рекомендується). Без обговорення люди не можуть ефективно ставити запитання або досягати консенсусу.
     aria_label: Групова форма
     list_in_the_groups_directory: Список у каталозі груп?
     list_in_directory_yes: Так · показати цю групу на сторінці «знайти групу»
@@ -1596,6 +1609,7 @@ uk:
   thread_preview:
     replies_count: "%{count} відповідей"
     unread_count: "%{count} непрочитаних"
+    items_count: "%{count} елементів"
   dashboard_page:
     polls_to_vote_on: Опитування для голосування
     no_polls_to_vote_on: Немає опитувань, за які вам потрібно проголосувати
@@ -1685,17 +1699,18 @@ uk:
     pin:
       pinned: Тему закріплено
       unpinned: Тему відкріплено
-    closed:
-      reopened: Тему відновлено
-      closed: Тему закрито
     volume:
       mute_message: Обговорення вимкнено
       unmute_message: Обговорення скасовано
     direct: Прямий
+    locked:
+      unlocked: Тема розблокована
+      locked: Тема заблокована
   discussion_last_seen_by:
     title: Переглянуто
     no_one: Ще ніхто не переглянув
     disabled_anonymous_polls: Історія перегляду вимкнена, оскільки ланцюжок містить анонімні опитування
+    thread_engagement: Thread engagement
   activity_card:
     count_responses: "%{count} відповідей"
     beginning: Початок
@@ -1737,6 +1752,22 @@ uk:
     nested_twice: Два рівні вкладених відповідей
     nested_twice_description: Не більше двох відступів для відповідей.
     changing_nesting_is_slow: Внесення змін до вкладення може потребувати кілька хвилин.
+    layout: Макет
+    items: Як відображати елементи
+    nested: Вкладені
+    timeline: Хронологія
+    timeline_description: Елементи в порядку їх публікації
+    threaded: Threaded
+    threaded_description: Відповіді, згруповані за темою, на яку вони відповідають
+    allow_concurrent_polls: Дозволити одночасні опитування
+    allow_multiple_polls: Дозволити кілька опитувань одночасно
+    allow_concurrent_polls_description: Дозволити одночасно відкрити більше одного опитування
+    allow_comments: Дозволити коментарі
+    allow_comments_description: Дозволити учасникам публікувати коментарі в цьому потоці
+    allow_reactions: Дозволити реакції
+    allow_reactions_description: Дозволити учасникам додавати реакції у вигляді емодзі
+    topic_settings: Налаштування теми
+    thread_settings: Налаштування теми
   delete_thread_form:
     title: Видалити тему
     body: Ви впевнені що хочете видалити цю тему?
@@ -1808,6 +1839,7 @@ uk:
     ranked_choice_title: Ранговий вибір
     gradients_of_agreement_title: Градієнти згоди
     majority_title: Більшість
+    stv_title: Вибори на СТВ
   poll_option_form:
     edit_option: Опція редагування
     option_name: Назва опції
@@ -1945,6 +1977,9 @@ uk:
     blank: Новий
     blank_subtitle: Створення нового шаблону опитування для певного процесу
     start_a_poll: Розпочати опитування
+    export_blt: Експортні бюлетені (BLT)
+    status: Статус
+    your_vote_is_requested: Запитується ваш голос
   poll_common_attachment_form:
     label: Вкладення
   poll_common_add_option:
@@ -1965,10 +2000,8 @@ uk:
     deleted: Це опитування було видалено
     do_not_hide_results: Не приховувати результати
   discussions_panel:
-    open: Відкрита
     all: Всі
     unread: Непрочитані (%{count})
-    closed: Закрита
     include_subgroups_mine: "%{name} та мої підгрупи"
     include_subgroups_all: "%{name} та всі підгрупи"
     no_results_found: Не знайдено "%{search}"
@@ -1976,6 +2009,8 @@ uk:
     lets_start_a_thread: Давайте почнемо тему. Натисніть «Новий ланцюжок», щоб продовжити.
     lets_start_a_discussion: Давайте почнемо обговорення. Натисніть «Нове обговорення», щоб продовжити.
     new_discussion: Нове обговорення
+    locked: Заблоковано
+    unlocked: Розблоковано
   members_panel:
     bot: Бот
     no_results: Не знайдено учасників
@@ -2019,13 +2054,6 @@ uk:
     closed: Закрита
     need_vote: Потрібно проголосувати
     no_polls: Опитувань не знайдено
-    standalone_disabled_title: Окремі опитування вимкнено
-    standalone_disabled_helptext: "<p>Ця група вимагає, щоб опитування були запущені в рамках обговорення.</p><p> Обговорення допомагають людям зрозуміти контекст, поставити запитання та поділитися думками перед голосуванням. Це призводить до прийняття кращих рішень.</p><p> Спочатку розпочніть обговорення, а потім додайте опитування, коли будете готові зібрати голоси.</p>"
-    start_discussion: Розпочати обговорення
-    standalone_warning_title: Спочатку подумайте про те, щоб розпочати обговорення
-    start_poll_anyway: Все одно розпочати опитування
-    start_discussion_instead: Почніть обговорення замість цього
-    standalone_warning_helptext: "<p>Опитування працюють найкраще, коли люди можуть спочатку обговорити тему.</p><p> Без обговорення виборці не можуть ставити запитання, висловлювати занепокоєння чи пропонувати покращення.</p><p> Для найкращого досвіду почніть з обговорення, досягніть спільного розуміння, а потім додайте опитування, коли будете готові з'ясувати позиції людей.</p>"
   group_files_panel:
     no_files: Файлів не знайдено
     filename: Файл
@@ -2116,6 +2144,8 @@ uk:
     change_results_order: Змінити послідовність результатів
     none_of_the_above: "(Жоден з вищевказаних)"
     name_or_username: Ім'я або ім'я користувача
+    cast: Cast
+    uncast: Uncast
   poll_common_undecided_panel:
     show_undecided: Показати %{count} не визначилися
     show_invitations: Показати запрошення в очікувані
@@ -2314,6 +2344,8 @@ uk:
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> оновив(ла) свій голос у: <strong>%{title}</strong>"
     event_removed: Видалені з теми
     new: новий
+    thread_locked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> заблокував тему"
+    thread_unlocked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> розблокував тему"
   add_poll_to_thread_modal:
     success: Чудово, %{pollType} додано до теми!
   auth_form:
@@ -2384,6 +2416,7 @@ uk:
     want_to_set_password: Бажаєте наступного разу ввійти за допомогою пароля?
     change_your_password: Бажаєте встановити новий пароль?
     email_placeholder: you{'@'}example.com
+    turnstile_required: Будь ласка, завершіть перевірку, перш ніж продовжити.
   chatbot:
     configure_chatbot: Налаштувати чат-бота
     test_connection: Тестове підключення
@@ -2511,6 +2544,7 @@ uk:
     country_disclaimer: Країна заснована на IP-адресі користувача і є не дуже точною. Вважайте це лише приблизним керівництвом.
     total_discussions: Загальна кількість обговорень
     discussions_with_polls: Обговорення з опитуваннями
+    download_csv: Завантажити CSV-файл
   tips:
     youve_completed_all_the_steps: "\U0001F389 Ви виконали всі кроки!"
     getting_started_checklist: Контрольний список для початку роботи
@@ -2593,6 +2627,7 @@ uk:
       helptext_on: Не показуйте, як люди голосували, доки опитування не закриється
     short_reason_can_be_helpful: Короткі аргументи щодо голосування легше зрозуміти. Збірка стислих аргументів – чудовий ресурс для прийняття рішення.
     shuffle_options: Параметри перемішування
+    selected_people_only: Тільки вибрані люди
   poll_common_form:
     quorum: Кворум
     participation_quorum: Кворум участі
@@ -2643,6 +2678,8 @@ uk:
       time_poll_hint: Виборці вказують, коли вони вільні для зустрічі
       rank: Ранг
       time: Час
+      stv: Вибори на СТВ
+      stv_hint: Оберіть кількох переможців пропорційно, використовуючи один передаваний голос
     process: Процес
     process_name: Назва шаблону
     process_name_hint: Як називається цей шаблон? Наприклад, Порада щодо ролі, Перевірка температури, Затвердження протоколу
@@ -2714,8 +2751,6 @@ uk:
     invited_by: Запрошено
     invited_on: Запрошено
     no_receipts: Це анонімне опитування закрилося до того, як з'явилася функція верифікації, тому верифікація неможлива.
-  close_discussion_modal:
-    body: Закрийте обговорення, щоб видалити їх зі списку відкритих обговорень і заборонити іншим коментувати.
   comment_reply_form:
     aria_label: Додати відповідь
   discussion_template:
@@ -2763,14 +2798,14 @@ uk:
     these_are_templates_admin_hint: Адміністратори групи можуть редагувати шаблони, створювати нові шаблони, змінювати порядок та приховувати/відображати шаблони. Приховані шаблони можуть бачити лише адміністратори.
     show_hidden_templates: Показати приховані шаблони
     show_fewer: Показати менше
-    start_a_new_discussion: Розпочати нове обговорення
     start_discussion: Розпочати обговорення
     start_a_direct_discussion: Почати пряму дискусію
     these_are_templates: Це шаблони для обговорення у вашій групі.
+    start_a_new_discussion: Розпочати нове обговорення
   context_panel:
     thread_status:
       pinned: Це обговорення закріплено. Воно залишатиметься на початку списку обговорень групи для всіх користувачів.
-      closed: Це обговорення закрито. Воно більше не відображатиметься на інформаційній панелі та буде відображатися в розділі «закрито» на сторінці групи.
+      locked: Це обговорення заблоковано. Воно більше не відображатиметься на панелі керування та буде відображатися в розділі «заблоковано» на сторінці групи.
   thread_group:
     aria_label: Назва групи
   discussion_context:
@@ -2781,8 +2816,8 @@ uk:
   pin_discussion_modal:
     helptext: Закріплені обговорення завжди відображаються у списку обговорень групи.
   delete_discussion_form:
-    body: Ви впевнені, що хочете видалити це обговорення?
     discussion_deleted: Обговорення видалено
+    body: Ви впевнені, що хочете видалити цю тему?
   move_discussion_form:
     title: Перенести обговорення до іншої групи
     body: Група призначення
@@ -2799,3 +2834,58 @@ uk:
     opening_hour: Час роботи
     scheduled_hint: Опитування буде видимим, але голосувати за нього не можна буде до моменту відкриття.
     draft_hint: Це опитування буде збережено як чернетку. Встановіть дату відкриття або поставте позначку навпроти опції «Голосування відкривається негайно», коли будете готові розпочати голосування.
+  strand_members_list:
+    notify_members_or_invite_guests_info: Повідомляти учасників групи за іменем або запрошувати тих, хто не є учасниками, за адресою електронної пошти. Запрошені гості можуть брати участь у цьому обговоренні, але не матимуть доступу до інших обговорень групи.
+    notify_members_info: Введіть імена учасників групи, щоб повідомити їх про цей обговорення.
+    specified_voters_only_warning: У цій темі є опитування, де можуть голосувати лише вибрані люди. Додавання когось за допомогою цієї форми не дасть йому голосу, а лише можливість стежити за обговоренням і коментувати. Якщо ви хочете надати голоси, використовуйте в опитуванні "додати голосувальників".
+  poll_common_details_meta:
+    opened: Відкрито
+    opens: Відкривається
+    closed: ЗАЧИНЕНО
+    closes: Закривається
+    opened_at: Відкрито о
+    opening_at: Відкриття о
+    closed_at: Зачинено о
+    closing_at: Закриття о
+  poll_stv_vote_form:
+    helptext: Перетягніть кандидатів вище лінії, щоб ранжувати їх. Елементи нижче лінії не ранжуються. Перший ранг – ваш найбажаніший.
+    divider_text: перетягніть кандидатів вище цієї лінії, щоб ранжувати їх
+    stance_created: Голосування записано
+    stance_updated: Голосування оновлено
+  poll_stv_form:
+    settings_title: Налаштування виборів STV
+    settings_helptext: Налаштуйте кількість місць для заповнення, метод підрахунку та тип квоти для цих виборів.
+    seats_label: Кількість місць для заповнення
+    method_label: Метод підрахунку
+    method_scottish: Scottish STV (recommended)
+    method_meek: Meek STV
+    quota_label: Тип квоти
+    quota_droop: Droop quota (recommended)
+    quota_hare: Hare quota
+  poll_stv_results:
+    title: Результати виборів
+    elected: Обраний
+    not_elected: Не обраний
+    tied: Tie
+    no_candidates_elected: Жодного кандидата не обрано
+    round: Round %{number}
+    quota_info: "%{method}, %{quota_type} quota (%{quota} votes needed)"
+    method_scottish: Scottish STV
+    method_meek: Meek STV
+    quota_droop: Droop
+    quota_hare: Hare
+    elected_in_round: Elected in round %{round}
+    eliminated_in_round: Eliminated in round %{round}
+    tied_in_round: Tied in round %{round}
+    votes: голоси
+    candidate: Кандидат
+    round_elected: Обраний у раунді
+    first_preferences: Перші уподобання
+    final_tally: Остаточний підрахунок
+    quota_surplus: Надлишок
+    round_details: Деталі по кожному раунду
+    view_full_results: Переглянути повні результати
+    results_available_when_closed: Результати будуть доступні після завершення голосування
+  lock_thread_modal:
+    body: Блокуйте теми, щоб видалити їх зі списку відкритих тем і заборонити іншим коментувати.
+    explanation: Блокуйте теми, щоб запобігти коментуванню або внесенню подальших змін

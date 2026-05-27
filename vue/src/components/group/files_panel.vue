@@ -3,11 +3,9 @@ import Records           from '@/shared/services/records';
 import RecordLoader      from '@/shared/services/record_loader';
 import EventBus          from '@/shared/services/event_bus';
 import AbilityService    from '@/shared/services/ability_service';
-import Session           from '@/shared/services/session';
-import AttachmentService from '@/shared/services/attachment_service';
 
 import { mdiMagnify } from '@mdi/js';
-import { intersection, debounce, orderBy, uniq, escapeRegExp } from 'lodash-es';
+import { debounce, orderBy, uniq, escapeRegExp } from 'lodash-es';
 import WatchRecords from '@/mixins/watch_records';
 import UrlFor from '@/mixins/url_for';
 import FormatDate from '@/mixins/format_date';
@@ -21,7 +19,6 @@ export default
       attachmentLoader: null,
       searchQuery: '',
       items: [],
-      subgroups: 'mine',
       attachmentIds: [],
       per: 25,
       from: 0,
@@ -50,7 +47,6 @@ export default
       params: {
         group_id: this.group.id,
         per: this.per,
-        subgroups: this.subgroups,
         from: this.from
       }
     });
@@ -88,8 +84,21 @@ export default
       }).then(() => this.query());
     },
 
-    actionsFor(item) {
-      return AttachmentService.actions(item);
+    deleteAttachment(item) {
+      EventBus.$emit('openModal', {
+        component: 'ConfirmModal',
+        props: {
+          confirm: {
+            submit: item.destroy,
+            text: {
+              title: 'comment_form.attachments.remove_attachment',
+              helptext: 'group_files_panel.delete_confirmation',
+              submit: 'common.action.delete',
+              flash: 'poll_common_delete_modal.success'
+            }
+          }
+        }
+      });
     }
   },
 
@@ -134,7 +143,7 @@ div
             td
               time-ago(:date="item.createdAt")
             td(v-if="canAdminister")
-              action-menu(v-if="Object.keys(actionsFor(item)).length" :actions="actionsFor(item)" icon)
+              action-button(variant="flat" :action="{name: 'common.action.delete', icon: 'mdi-delete', dock: 1, perform: () => deleteAttachment(item)}")
 
       .d.flex.justify-center
         .d-flex.flex-column.justify-center.align-center

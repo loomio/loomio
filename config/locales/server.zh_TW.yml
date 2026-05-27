@@ -109,7 +109,7 @@ zh_TW:
     manage:
       all: 未獲得 %{action} %{subject} 的授權。
     add_guests:
-      all: 您必須升級您的 Loomio 訂閱才能將訪客新增至您的 %{subject}。或者，您可以邀請他們成為您小組的成員。
+      all: 您必須升級您的 Loomio 訂閱才能新增訪客。或者，您可以邀請他們成為您群組的成員。
   errors:
     clear_cache: 偵測到載入問題。按住 shift 並按下重新整理，或是清除您的瀏覽器快取。
     400:
@@ -151,6 +151,7 @@ zh_TW:
       email: 您輸入的不是有效的電子郵件地址
       spoofed_media_type: 檔案內容不符合其檔案名稱
       pwned_password: 該密碼之前曾出現在資料外洩事件中，切勿使用
+    new_account_trial_group_limit: 新帳號僅限加入一個群組。如需加入更多群組，請聯絡客服。
   group:
     error:
       handle_must_begin_with_parent_handle: 必須以 %{parent_handle} 開始。
@@ -239,6 +240,7 @@ zh_TW:
       notified: 您收到此訊息是因為作者通知了您。
       poll_subscribed: 您收到此郵件是因為您訂閱了該投票。
       discussion_subscribed: 您收到此郵件是因為您訂閱了該討論。
+      thread_subscribed: 您收到此郵件是因為您訂閱了該主題。
   user_mailer:
     group_export_ready:
       subject: 匯出「%{group_name}」的群組資料
@@ -396,6 +398,9 @@ zh_TW:
         若您不希望您的群組被刪除，請回覆此電子郵件。
         若您確定您想要刪除群組，您就不需要任何做任何事。
         感謝您。
+    trial_expired:
+      subject: 由於長時間未活動，您的 Loomio 群組將被刪除。
+      body: 您的 Loomio 群組「%{group}」已處於不活躍狀態，將在兩週後被刪除。如果您不希望您的群組被刪除，請回覆此郵件。
   poll_mailer:
     common:
       why_send_this: 因為 %{reason}，您收到了這封電子郵件
@@ -624,6 +629,11 @@ zh_TW:
       no_meaning: 我不支持這項提議。
       no_prompt: 為什麼不支持這項提議？
       outcome_statement: "<p>感謝您參與此多數投票。</p>"
+    stv:
+      process_subtitle: 按比例選出多位得獎者。
+      process_introduction: <p>單記可轉移投票制（STV）是一種適用於多席次選舉的比例代表制投票方式。選民依偏好順序對候選人進行排序。達到規定得票數的候選人當選，剩餘或被淘汰的選票將轉入下一輪投票。</p><p>配置席位數、計票方式（蘇格蘭式或米克式）和配額類型（德魯普式或黑爾式）。結果會逐輪顯示選票轉移。</p><p><a target="_blank" href="https://help.loomio.com/en/user_manual/polls/stv/index.html">閱讀更多關於單記可轉移投票制（STV）選舉的資訊</a>。</p>
+      title: 選舉委員會成員
+      details: <h3 id="what-is-this-election-about"><strong>這次選舉的意義何在？</strong></h3><p></p><h3 id="how-many-seats"><strong>有多少座位被填滿了？</strong></h3><p></p><h3 id="who-are-the-candidates"><strong>候選人有哪些？</strong></h3><p></p><p>請透過拖曳候選人來投票，按您喜歡的順序排列。排名第一的候選人是您最喜歡的。您可以對任意數量的候選人進行排名。</p>
   forward_mailer:
     bounce:
       subject: 您發送給 Loomio 的訊息未送達
@@ -684,3 +694,5 @@ zh_TW:
     pt: 葡萄牙語
     zh: 中文（繁體，台灣）
     zh-HK: 中文（繁體，台灣）
+  upload:
+    file_too_large: 文件過大。最大上傳大小為 %{limit}。

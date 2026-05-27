@@ -1,245 +1,319 @@
-<script lang="js">
+<script setup lang="js">
 import Records           from '@/shared/services/records';
 import Session           from '@/shared/services/session';
 import EventBus          from '@/shared/services/event_bus';
 import ThreadLoader      from '@/shared/loaders/thread_loader';
-import FormatDate from '@/mixins/format_date';
-import WatchRecords from '@/mixins/watch_records';
-import UrlFor from '@/mixins/url_for';
 import StrandActionsPanel from './actions_panel';
-import ScrollService from '@/shared/services/scroll_service';
-import { mdiMenuOpen, mdiArrowULeftTop } from '@mdi/js';
+import ScrollService     from '@/shared/services/scroll_service';
+import { useWatchRecords } from '@/composables/useWatchRecords';
+import { ref, onMounted, onUnmounted, watch, nextTick } from 'vue';
+import { useRoute } from 'vue-router';
 
-export default {
-  mixins: [WatchRecords, UrlFor],
+const route = useRoute();
+const { watchRecords } = useWatchRecords();
 
-  components: {
-    StrandActionsPanel
-  },
+const topic            = ref(null);
+const loadedKey        = ref(null);
+const loader           = ref(null);
+const focusSelector    = ref(null);
+const anchorSelector   = ref(null);
+const anchorOffset     = ref(null);
+const lastAnchorSelector = ref(null);
+const focusedItemVisible = ref(false);
+let cancelSettledAnchorScroll = null;
 
-  data() {
+onMounted(() => {
+  EventBus.$on('setAnchor', onSetAnchor);
+  EventBus.$on('visibleKeys', onVisibleKeys);
+
+  init();
+});
+
+onUnmounted(() => {
+  EventBus.$off('setAnchor', onSetAnchor);
+  EventBus.$off('visibleKeys', onVisibleKeys);
+  cancelSettledScroll();
+});
+
+watch(() => route.params.key, init);
+watch(() => route.params.sequence_id, respondToRoute);
+watch(() => route.params.comment_id, respondToRoute);
+watch(() => route.query.p, respondToRoute);
+watch(() => route.query.k, respondToRoute);
+watch(() => route.query.current_action, respondToRoute);
+
+function scrollToFocused() {
+  if (focusSelector.value) {
+    ScrollService.scrollTo(focusSelector.value, anchorOffset.value);
+  }
+}
+
+function cancelSettledScroll() {
+  if (cancelSettledAnchorScroll) {
+    cancelSettledAnchorScroll();
+    cancelSettledAnchorScroll = null;
+  }
+}
+
+// Fired by load_more.vue before prepending items above the viewport.
+// Stores the current top-visible item's selector + screen offset so
+// scrollToAnchorIfNew can restore the visual position after insertion.
+function onSetAnchor(selector, offset) {
+  cancelSettledScroll();
+  anchorSelector.value = selector;
+  anchorOffset.value = offset;
+}
+
+function onVisibleKeys(keys) {
+  if (!focusSelector.value || !loader.value) { return true; }
+
+  const match = focusSelector.value.match(/\.sequenceId-(\d+)/);
+  if (!match) { return true; }
+
+  const sequenceId = parseInt(match[1]);
+  const event = Records.events.find({ topicId: topic.value.id, sequenceId })[0];
+  if (!event) { return false; }
+  focusedItemVisible.value = keys.includes(event.positionKey);
+}
+
+function init() {
+  cancelSettledScroll();
+  topic.value = null;
+  loadedKey.value = null;
+  loader.value = null;
+  respondToRoute();
+}
+
+function routeTopicParams() {
+  return route.path.startsWith('/p/') ? { poll_key: route.params.key } : { discussion_key: route.params.key };
+}
+
+function hasRouteKey() {
+  return !!route.params.key;
+}
+
+function routeSequenceId() {
+  return Object.keys(route.params).includes('sequence_id') ? parseInt(route.params.sequence_id) : null;
+}
+
+function hasSequenceId(sequenceId) {
+  return Number.isInteger(sequenceId);
+}
+
+function routeCommentId() {
+  return parseInt(route.query.comment_id || route.params.comment_id) || null;
+}
+
+// Thread loading strategy:
+// 1. If a specific focus is given (a poll key for a non-topical poll, a sequence_id, or a comment_id),
+//    load events around that item and scroll to it.
+// 2. Otherwise, load unread-or-newest events, then scroll to:
+//    a. The first unread item (if the user has read before and there is unread), or
+//    b. The last item by position_key (if everything is read), or
+//    c. The top (if nothing has been read yet — first visit).
+
+function initialFetchParams() {
+  const remoteTopicParams = routeTopicParams();
+  const sequenceId = routeSequenceId();
+  const commentId = routeCommentId();
+  const padding = 25;
+
+  if (hasSequenceId(sequenceId)) {
     return {
-      mdiMenuOpen,
-      mdiArrowULeftTop,
-      discussion: null,
-      loader: null,
-      position: 0,
-      group: null,
-      discussionFetchError: null,
-      focusMode: null,
-      focusSelector: null,
-      anchorSelector: null,
-      anchorOffset: null,
-      lastAnchorSelector: null,
-      snackbar: false,
-      focusedItemVisible: false
+      ...remoteTopicParams,
+      sequence_id_gte: Math.max(sequenceId - parseInt(padding / 2), 0),
+      order: 'sequence_id',
+      per: padding
     };
-  },
+  }
 
-  mounted() {
-    EventBus.$on('setAnchor', (selector, offset) => {
-      this.anchorSelector = selector;
-      this.anchorOffset = offset
+  if (commentId) {
+    return {
+      ...remoteTopicParams,
+      comment_id: commentId,
+      order: 'sequence_id',
+      per: padding
+    };
+  }
+
+  return {
+    ...remoteTopicParams,
+    unread_or_newest: 1,
+    per: padding
+  };
+}
+
+function fetchInitialContent() {
+  if (!hasRouteKey()) { return; }
+
+  const key = route.params.key;
+  const params = initialFetchParams();
+
+  return Records.events.fetch({ params }).then(data => {
+    if (route.params.key !== key) { return; }
+
+    const topicId = (data.topics || [])[0]?.id || (data.events || [])[0]?.topic_id;
+    const t = Records.topics.find(topicId);
+    if (!t) { return; }
+
+    if (t.group() && t.group().newHost) { window.location.host = t.group().newHost; }
+    topic.value = t;
+    loadedKey.value = route.params.key;
+    loader.value = new ThreadLoader(t);
+
+    loadContent(routeTopicParams());
+    loader.value.fetchedRules = loader.value.rules.filter(rule => rule.remote).map(rule => JSON.stringify(rule.remote));
+    loader.value.isFirstLoad = false;
+    loader.value.updateCollection();
+    setAnchorFromRoute();
+
+    EventBus.$emit('currentComponent', {
+      focusHeading: false,
+      page: 'discussionPage',
+      topic: topic.value,
+      group: topic.value.group(),
+      title: topic.value.topicable().title
     });
 
-    EventBus.$on('visibleKeys', (keys) => {
-      if (!this.focusSelector || !this.loader) { return true; }
-
-      // Extract sequence ID from selector like `.sequenceId-123`
-      const match = this.focusSelector.match(/\.sequenceId-(\d+)/);
-      if (!match) { return true; }
-
-      const sequenceId = parseInt(match[1]);
-
-      if (sequenceId == 0) {
-        this.focusedItemVisible =  keys.includes("00000")
-      } else {
-        const event =  Records.events.find({ discussionId: this.discussion.id, sequenceId: sequenceId })[0];
-        if (!event) { return false; }
-        this.focusedItemVisible =  keys.includes(event.positionKey)
-      }
-    })
-
-    this.init();
-  },
-
-  destroyed() {
-    EventBus.$off('setFocus');
-  },
-
-  watch: {
-    '$route.params.key': 'init',
-    '$route.params.sequence_id': 'respondToRoute',
-    '$route.params.comment_id': 'respondToRoute',
-    '$route.query.p': 'respondToRoute',
-    '$route.query.k': 'respondToRoute',
-    '$route.query.current_action': 'respondToRoute',
-    '$route.query.unread': 'respondToRoute',
-    '$route.query.newest': 'respondToRoute',
-  },
-
-  methods: {
-    openThreadNav() {
-      EventBus.$emit('toggleThreadNav')
-    },
-
-    scrollToFocused() {
-      if (this.focusSelector) {
-        ScrollService.scrollTo(this.focusSelector, this.anchorOffset);
-      }
-    },
-
-    init() {
-      Records.discussions.findOrFetchById(this.$route.params.key, {exclude_types: 'poll outcome'}).then(discussion => {
-        if (discussion.group().newHost) { window.location.host = discussion.group().newHost; }
-        this.discussion = discussion;
-        this.loader = new ThreadLoader(this.discussion);
-
-        this.respondToRoute();
-
-        EventBus.$emit('currentComponent', {
-          focusHeading: false,
-          page: 'discussionPage',
-          discussion: this.discussion,
-          group: this.discussion.group(),
-          title: this.discussion.title
-        });
-
-        this.watchRecords({
-          key: 'strand'+this.discussion.id,
-          collections: ['events'],
-          query: () => {
-            this.loader.updateCollection();
-            this.$nextTick(() => this.scrollToAnchorIfNew());
+    let scrolledToUnread = false;
+    watchRecords({
+      key: 'strand' + topic.value.id,
+      collections: ['events'],
+      query: () => {
+        if (!loader.value) { return; }
+        loader.value.updateCollection();
+        if (!scrolledToUnread && !anchorSelector.value && !focusSelector.value && loader.value.lastReadAt) {
+          const firstUnread = loader.value.firstUnreadSequenceId();
+          if (firstUnread) {
+            anchorSelector.value = `.sequenceId-${firstUnread}`;
+          } else {
+            const lastEvent = Records.events.collection.chain()
+              .find({ topicId: topic.value.id })
+              .simplesort('positionKey', true)
+              .limit(1)
+              .data()[0];
+            if (lastEvent) anchorSelector.value = `.positionKey-${lastEvent.positionKey}`;
           }
-        });
-      }).catch(function(error) {
-        EventBus.$emit('pageError', error);
-        if ((error.status === 403) && !Session.isSignedIn()) { EventBus.$emit('openAuthModal'); }
-      });
-    },
-
-    loadContent() {
-      if (!this.discussion) { return; }
-      if (this.discussion.key !== this.$route.params.key) { return; }
-
-      this.focusMode = null;
-      this.focusSelector = null;
-      this.anchorSelector = null;
-      this.anchorOffset = null;
-
-      this.loader.addContextRule();
-      this.loader.addLoadMyStuffRule();
-
-      if (this.discussion.itemsCount === 0) {
-        this.loader.addLoadNewestRule();
-        // this.anchorSelector = '#strand-page';
-        return;
-      }
-
-      if (Object.keys(this.$route.params).includes('sequence_id')) {
-        const sequenceId = parseInt(this.$route.params.sequence_id);
-        this.loader.addLoadSequenceIdRule(sequenceId);
-        this.focusSelector = `.sequenceId-${sequenceId}`;
-        return;
-      }
-
-      if (this.$route.params.comment_id) {
-        this.loader.addLoadCommentRule(parseInt(this.$route.params.comment_id));
-        this.loader.addLoadNewestRule();
-        this.focusSelector = `#comment-${parseInt(this.$route.params.comment_id)}`;
-        return;
-      }
-
-      if (Object.keys(this.$route.query).includes('unread')) {
-        this.loader.clearRules();
-        this.loader.addLoadUnreadRule();
-        this.loader.addLoadNewestRule();
-        this.focusMode = 'unread';
-        this.anchorSelector = `.sequenceId-${parseInt(this.loader.firstUnreadSequenceId())}`;
-        return;
-      }
-
-      if (Object.keys(this.$route.query).includes('newest')) {
-        this.loader.clearRules();
-        this.loader.addLoadNewestRule();
-        this.focusMode = 'newest';
-        this.focusSelector = `.sequenceId-${parseInt(this.discussion.lastSequenceId())}`;
-        return;
-      }
-
-      // never been read before
-      if (!this.discussion.lastReadAt) {
-        if (this.discussion.newestFirst) {
-          this.loader.addLoadNewestRule();
-        } else {
-          this.loader.addLoadOldestRule();
+          scrolledToUnread = true;
         }
-        this.anchorSelector = "#strand-page";
-        return;
+        nextTick(() => scrollToAnchorIfNew());
       }
+    });
 
-      if (this.loader.firstUnreadSequenceId()) {
-        this.loader.addLoadUnreadRule();
-        this.loader.addLoadNewestRule();
-        this.focusMode = 'unread';
-        this.anchorSelector = `.sequenceId-${parseInt(this.loader.firstUnreadSequenceId())}`;
-        return;
-      } else {
-        this.loader.addLoadNewestRule();
-        this.focusMode = 'newest';
-        this.anchorSelector = `.sequenceId-${parseInt(this.discussion.lastSequenceId())}`;
-        return;
-      }
-    },
+    nextTick(() => scrollToAnchorIfPresent());
+  }).catch(error => {
+    if (error.status) {
+      EventBus.$emit('pageError', error);
+      if ((error.status === 403) && !Session.isSignedIn()) { EventBus.$emit('openAuthModal'); }
+    } else {
+      console.error(error);
+    }
+  });
+}
 
-    respondToRoute() {
-      this.loadContent();
-      this.snackbar = !!this.focusMode;
+function loadContent(remoteTopicParams = null) {
+  if (!topic.value) { return fetchInitialContent(); }
+  if (loadedKey.value !== route.params.key) { return; }
+  remoteTopicParams ||= { topic_id: topic.value.id };
 
-      if (this.$route.query.current_action) {
-        this.anchorSelector = '.actions-panel-end';
-      } else {
-        if (!this.anchorSelector) {
-          this.anchorSelector = this.focusSelector;
-          this.anchorOffset = null;
-        }
-      }
 
-      this.scrollToAnchorIfPresent();
+  focusSelector.value = null;
+  anchorSelector.value = null;
+  anchorOffset.value  = null;
 
-      this.loader.fetch();
-    },
+  loader.value.addLoadMyStuffRule();
 
-    scrollToAnchorIfPresent() {
-      if (document.querySelector(this.anchorSelector)) {
-        ScrollService.scrollTo(this.anchorSelector, this.anchorOffset);
-      }
-    },
-
-    scrollToAnchorIfNew() {
-      if (this.lastAnchorSelector !== this.anchorSelector) {
-        ScrollService.scrollTo(this.anchorSelector, this.anchorOffset);
-        this.lastAnchorSelector = this.anchorSelector;
-      }
-    },
+  if (topic.value.itemsCount <= 1) {
+    loader.value.addLoadNewestRule(remoteTopicParams);
+    return;
   }
-};
 
+  if (route.path.startsWith('/p/')) {
+    const poll = Records.polls.findByKey(route.params.key);
+    if (poll && !(topic.value.topicableType === 'Poll' && topic.value.topicableId === poll.id)) {
+      const event = Records.events.find({ topicId: topic.value.id, eventableType: 'Poll', eventableId: poll.id, kind: 'poll_created' })[0];
+      if (event) {
+        loader.value.addLoadSequenceIdRule(event.sequenceId, remoteTopicParams);
+        focusSelector.value = `.sequenceId-${event.sequenceId}`;
+        return;
+      }
+    }
+  }
+
+  const sequenceId = routeSequenceId();
+  if (hasSequenceId(sequenceId)) {
+    loader.value.addLoadSequenceIdRule(sequenceId, remoteTopicParams);
+    focusSelector.value = `.sequenceId-${sequenceId}`;
+    return;
+  }
+
+  const commentId = routeCommentId();
+  if (commentId) {
+    loader.value.addLoadCommentRule(commentId, remoteTopicParams);
+    focusSelector.value = `#comment-${commentId}`;
+    return;
+  }
+
+  loader.value.addLoadUnreadOrNewestRule(remoteTopicParams);
+}
+
+function respondToRoute() {
+  const load = loadContent();
+  if (load) { return load; }
+
+  setAnchorFromRoute();
+
+  scrollToAnchorIfPresent();
+  loader.value.fetch();
+}
+
+function setAnchorFromRoute() {
+  if (route.query.current_action) {
+    anchorSelector.value = '.actions-panel-end';
+  } else if (!anchorSelector.value) {
+    anchorSelector.value = focusSelector.value;
+    anchorOffset.value = null;
+  }
+}
+
+function scrollToAnchorIfPresent() {
+  if (!anchorSelector.value) { return; }
+
+  if (shouldSettleAnchorScroll()) {
+    cancelSettledScroll();
+    cancelSettledAnchorScroll = ScrollService.scrollToSettled(anchorSelector.value, anchorOffset.value);
+  } else if (document.querySelector(anchorSelector.value)) {
+    ScrollService.scrollTo(anchorSelector.value, anchorOffset.value);
+  }
+}
+
+function scrollToAnchorIfNew() {
+  if (anchorSelector.value && lastAnchorSelector.value !== anchorSelector.value) {
+    if (shouldSettleAnchorScroll()) {
+      cancelSettledScroll();
+      cancelSettledAnchorScroll = ScrollService.scrollToSettled(anchorSelector.value, anchorOffset.value);
+    } else {
+      ScrollService.scrollTo(anchorSelector.value, anchorOffset.value);
+    }
+    lastAnchorSelector.value = anchorSelector.value;
+  }
+}
+
+function shouldSettleAnchorScroll() {
+  return anchorSelector.value && (
+    anchorSelector.value === focusSelector.value ||
+    anchorSelector.value === '.actions-panel-end'
+  );
+}
 </script>
 
 <template lang="pug">
 .strand-page
   v-main
-    v-container.max-width-800.px-0.px-sm-3#strand-page(v-if="discussion")
-      thread-current-poll-banner(:discussion="discussion")
-      discussion-fork-actions(:discussion='discussion' :key="'fork-actions'+ discussion.id")
+    v-container.max-width-800.px-0.px-sm-3#strand-page(v-if="topic")
+      discussion-fork-actions(v-if="topic" :topic='topic' :key="'fork-actions'+ topic.id")
       v-sheet.strand-card.thread-card.mb-8.pb-4.rounded(elevation=1)
-        strand-list.pt-3.pr-1.pr-sm-3.px-sm-2(:loader="loader" :collection="loader.collection" :focus-selector="focusSelector" :focus-mode="focusMode")
-        strand-actions-panel(:discussion="discussion")
-  strand-toc-nav(v-if="loader" :discussion="discussion" :loader="loader" :key="discussion.id" :focus-mode="focusMode" :focus-selector="focusSelector")
-  v-fab(v-if="focusSelector && !focusedItemVisible" icon app extended :text="$t('strand_nav.recenter')" location="bottom center" @click="scrollToFocused" color="accent" variant="elevated")
-    v-icon(:icon="mdiArrowULeftTop")
-  v-fab(v-if="!$vuetify.display.mdAndUp" icon app location="bottom right" @click="openThreadNav" color="primary" variant="tonal")
-    v-icon(:icon="mdiMenuOpen" )
+        strand-list.pr-1.pr-sm-3.px-sm-2(:loader="loader" :collection="loader.collection" :focus-selector="focusSelector")
+        strand-actions-panel(:topic="topic")
+  strand-toc-nav(v-if="loader" :topic="topic" :loader="loader" :key="topic.id")
 </template>

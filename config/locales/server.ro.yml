@@ -109,7 +109,7 @@ ro:
     manage:
       all: Neautorizat pentru %{action} %{subject}.
     add_guests:
-      all: Trebuie să vă actualizați abonamentul Loomio pentru a adăuga invitați la %{subject}. Alternativ, îi puteți invita să fie membri ai grupului dvs.
+      all: Trebuie să vă actualizați abonamentul Loomio pentru a adăuga invitați. Alternativ, îi puteți invita să fie membri ai grupului dvs.
   errors:
     clear_cache: Problemă la încărcare detectată. Țineți apăsat Shift și apăsați pe Reîncărcare sau ștergeți memoria cache a browserului.
     404:
@@ -148,6 +148,7 @@ ro:
       body: Ne pare rău, dar ceva nu a mers bine. Am fost notificați despre această problemă și o vom analiza în curând.
     '404':
       body: Elementul solicitat nu a fost găsit. Acest lucru se poate întâmpla dacă o discuție sau un sondaj a fost șters.
+    new_account_trial_group_limit: Conturile noi sunt limitate la un singur grup. Vă rugăm să contactați serviciul de asistență dacă aveți nevoie de mai multe.
   group:
     error:
       handle_must_begin_with_parent_handle: Trebuie să înceapă cu %{parent_handle}-
@@ -234,6 +235,7 @@ ro:
       notified: Ați primit acest lucru deoarece autorul v-a notificat.
       poll_subscribed: Ai primit acest mesaj deoarece ești abonat la sondaj.
       discussion_subscribed: Ai primit acest mesaj deoarece ești abonat la discuție.
+      thread_subscribed: Ai primit asta pentru că ești abonat la acest subiect.
   user_mailer:
     group_export_ready:
       subject: Export de date de grup pentru %{group_name}
@@ -366,6 +368,9 @@ ro:
     destroy_warning:
       subject: Grupul dvs. Loomio este programat pentru ștergere.
       body: 'Grupul dvs. Loomio: „%{group}” a fost programat pentru ștergere de către %{deletor}. Dacă nu doriți ca grupul dvs. să fie șters, vă rugăm să răspundeți la acest e-mail. Dacă sunteți sigur că doriți să ștergeți grupul, nu trebuie să faceți nimic. Mulțumesc.'
+    trial_expired:
+      subject: Grupul tău Loomio va fi șters din cauza inactivității.
+      body: Grupul dumneavoastră Loomio „%{group}” a fost inactiv și va fi șters în 2 săptămâni. Dacă nu doriți ca grupul dumneavoastră să fie șters, vă rugăm să răspundeți la acest e-mail.
   poll_mailer:
     common:
       why_send_this: Primiți acest e-mail deoarece %{reason}
@@ -594,6 +599,11 @@ ro:
       no_meaning: Nu susțin această propunere
       no_prompt: De ce nu susțineți această propunere?
       outcome_statement: "<p>Mulțumesc pentru participarea la acest vot majoritar.</p>"
+    stv:
+      process_subtitle: Alegeți mai mulți câștigători proporțional
+      process_introduction: <p>STV (Votul Unic Transferabil) este o metodă de reprezentare proporțională pentru alegerile cu mai mulți câștigători. Alegătorii clasifică candidații în ordinea preferințelor. Candidații care ating o cotă de voturi sunt aleși, iar voturile excedentare sau eliminate se transferă la următoarele preferințe.</p><p> Configurați numărul de locuri, metoda de numărare (Scoțiană sau Meek) și tipul de cotă (Droop sau Hare). Rezultatele arată o defalcare rundă cu rundă a modului în care au fost transferate voturile.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/stv/index.html">Citește mai multe despre alegerile STV</a> .</p>
+      title: Alegeți membrii comitetului
+      details: <h3 id="what-is-this-election-about"><strong>Despre ce este vorba în aceste alegeri?</strong></h3><p></p><h3 id="how-many-seats"> <strong>Câte locuri se ocupă?</strong></h3><p></p><h3 id="who-are-the-candidates"> <strong>Cine sunt candidații?</strong></h3><p></p><p> Votați trăgând candidații în ordinea preferată. Locul 1 este candidatul preferat. Puteți clasa oricât de mulți sau de puțini candidați doriți.</p>
   forward_mailer:
     bounce:
       subject: Mesajul tău către Loomio nu a fost livrat.
@@ -654,3 +664,5 @@ ro:
     pt: Portugheză
     zh: Chineză (tradițională, taiwaneză)
     zh-HK: Chineză (tradițională, taiwaneză)
+  upload:
+    file_too_large: Fișierul este prea mare. Dimensiunea maximă de încărcare este %{limit}.

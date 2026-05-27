@@ -109,7 +109,7 @@ ca:
     manage:
       all: No està autoritzat a %{action} %{subject}.
     add_guests:
-      all: Heu d'actualitzar la vostra subscripció a Loomio per afegir convidats al vostre %{subject}. Alternativament, podeu convidar-los a ser membres del vostre grup.
+      all: Heu d'actualitzar la vostra subscripció a Loomio per afegir convidats. Alternativament, podeu convidar-los a ser membres del vostre grup.
   errors:
     clear_cache: S'ha detectat un problema de càrrega. Manteniu premuda la majúscula i premeu Recarrega o esborra la memòria cau del navegador.
     404:
@@ -148,6 +148,7 @@ ca:
       body: Ho sentim, però alguna cosa ha anat malament. Ens han notificat aquest problema i el revisarem en breu.
     '404':
       body: No s'ha trobat l'element que has sol·licitat. Això pot passar si s'ha suprimit una discussió o una enquesta.
+    new_account_trial_group_limit: Els comptes nous estan limitats a un grup. Si us plau, contacteu amb l'assistència si en necessiteu més.
   group:
     error:
       handle_must_begin_with_parent_handle: Ha de començar per %{parent_handle}-
@@ -234,6 +235,7 @@ ca:
       notified: L'heu rebut perquè l'autor us ho va notificar.
       poll_subscribed: Has rebut això perquè estàs subscrit a l'enquesta.
       discussion_subscribed: Has rebut això perquè estàs subscrit a la discussió.
+      thread_subscribed: Has rebut això perquè estàs subscrit al fil.
   user_mailer:
     group_export_ready:
       subject: Exportació de dades de grup per a %{group_name}
@@ -368,6 +370,9 @@ ca:
     destroy_warning:
       subject: El vostre grup Loomio està programat per suprimir-se.
       body: '%{deletor} ha programat la supressió del vostre grup Loomio: "%{group}". Si no voleu que el vostre grup s''elimini, responeu a aquest correu electrònic. Si esteu segur que voleu suprimir el grup, no cal que feu res. Gràcies.'
+    trial_expired:
+      subject: El vostre grup de Loomio s'eliminarà per inactivitat.
+      body: El vostre grup de Loomio "%{group}" ha estat inactiu i s'eliminarà en 2 setmanes. Si no voleu que s'elimini el vostre grup, responeu a aquest correu electrònic.
   poll_mailer:
     common:
       why_send_this: Esteu rebent aquest correu electrònic perquè %{reason}
@@ -596,6 +601,11 @@ ca:
       no_meaning: No dono suport a aquesta proposta
       no_prompt: Per què no doneu suport a aquesta proposta?
       outcome_statement: "<p>Gràcies per participar en aquesta votació majoritària.</p>"
+    stv:
+      process_subtitle: Elegir diversos guanyadors proporcionalment
+      process_introduction: <p>El STV (vot únic transferible) és un mètode de representació proporcional per a eleccions amb diversos guanyadors. Els votants classifiquen els candidats per ordre de preferència. Els candidats que arriben a una quota de vot són elegits, i els vots sobrants o eliminats es transfereixen a les següents preferències.</p><p> Configureu el nombre d'escons, el mètode de recompte (escocès o Meek) i el tipus de quota (Droop o Hare). Els resultats mostren un desglossament ronda per ronda de com s'han transferit els vots.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/stv/index.html">Més informació sobre les eleccions de STV</a> .</p>
+      title: Elegir els membres del comitè
+      details: <h3 id="what-is-this-election-about"><strong>De què tracta aquesta elecció?</strong></h3><p></p><h3 id="how-many-seats"> <strong>Quantes places s'estan omplint?</strong></h3><p></p><h3 id="who-are-the-candidates"> <strong>Qui són els candidats?</strong></h3><p></p><p> Vota arrossegant els candidats al teu ordre preferit. El rang 1 és el teu candidat preferit. Pots classificar tants o tan pocs candidats com vulguis.</p>
   forward_mailer:
     bounce:
       subject: El teu missatge a Loomio no s'ha lliurat.
@@ -656,3 +666,5 @@ ca:
     pt: Portuguès
     zh: Xinès (tradicional, taiwanès)
     zh-HK: Xinès (tradicional, taiwanès)
+  upload:
+    file_too_large: El fitxer és massa gran. La mida màxima de càrrega és %{limit}.

@@ -5,9 +5,10 @@ module Ability::Reaction
     can :show, ::Reaction do |reaction|
       can?(:show, reaction.reactable)
     end
-    
+
     can :update, ::Reaction do |reaction|
-      user.is_logged_in? && can?(:show, reaction.reactable)
+      user.is_logged_in? &&
+      can?(:show, reaction.reactable) && reaction.reactable.topic.allow_reactions
     end
 
     can :destroy, ::Reaction do |reaction|

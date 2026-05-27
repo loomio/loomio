@@ -8,6 +8,8 @@ export var eventHeadline = function(event) {
     case 'stance_created':    return 'new_comment';
     case 'stance_updated':    return 'new_comment';
     case 'discussion_edited': return discussionEditedKey(event);
+    case 'discussion_closed': return 'thread_locked';
+    case 'discussion_reopened': return 'thread_unlocked';
     case 'poll_created': return 'poll_created';
     default: return event.kind;
   } })();

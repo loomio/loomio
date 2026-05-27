@@ -209,6 +209,7 @@ stv:
   hide_results: until_closed
 
 advice:
+  example: true
   poll_type: proposal
   process_name_i18n: decision_tools_card.advice_title
   process_subtitle_i18n: poll_templates.advice.process_subtitle

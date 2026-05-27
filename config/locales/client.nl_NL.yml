@@ -165,6 +165,7 @@ nl_NL:
     ranked_choice: gerangschikte keuze
     score: resultaat peiling
     question: vragen ronde
+    stv: STV-verkiezing
   timezones:
     local: Plaatselijke tijd (%{value})
   common:
@@ -314,6 +315,7 @@ nl_NL:
       rearrange: Herschikken
       save_template: Sjabloon opslaan
       fork_template: Vorksjabloon
+      customize: Aanpassen
     formatting_help:
       label: Aan het formatteren
       title: Leer hoe je Markdown kan gebruiken om tekst op te maken
@@ -323,6 +325,8 @@ nl_NL:
     opening_in: Openingstijden %{time}
     read_more: Lees meer
     templates_admin_hint: Omdat u groepsbeheerder bent, kunt u sjablonen die u niet wilt verbergen of verwijderen en de overgebleven sjablonen aanpassen aan uw behoeften.
+    read: Lezen
+    unread: Ongelezen
   merge_accounts:
     modal:
       title: Accounts samenvoegen
@@ -481,17 +485,15 @@ nl_NL:
     changes_all_threads_and_polls_in_group: Hiermee worden de instellingen voor alle threads en polls in de groep gewijzigd.
     when_do_you_want_to_be_emailed: Wanneer wilt u een e-mail ontvangen?
     what_the_options_mean: Wat de opties betekenen
-    quiet_explained: Je ontvangt geen e-mails, zelfs niet wanneer iemand je probeert te informeren. Je mist mogelijk belangrijke aankondigingen of beslissingen, tenzij je de gewoonte hebt om Loomio regelmatig te checken.
     when_would_you_like_to_be_emailed_discussion: Wanneer wilt u een e-mail ontvangen over deze discussie?
     changes_all_discussions_and_polls_in_group: Hiermee wijzigt u de instellingen voor alle discussies en peilingen in de groep.
     normal_explained: Wanneer iemand jouw naam invoert in het veld 'Melden' van een discussie of poll, of de groep vermeldt.
     aria_label: Formulier voor het wijzigen van e-mailinstellingen
-  close_explanation_modal:
-    close_thread: Sluit bord
-    body: |
-      <p>Sluit oude of onbelangrijke borden zodat deze niet meer zichtbaar zijn, en om aan te geven dat de discussie gesloten is.</p>
-      <p>Op een gesloten bord kan nog steeds iedereen reacties plaatsen of een peiling starten, maar deze zullen niet verschijnen op de groep's bordenlijst, of op het dashboard.</p>
-    image_alt: Sluit alle borden
+    when_do_you_want_to_be_emailed_thread: Wanneer wilt u een e-mail over dit onderwerp ontvangen?
+    loud_option: Telkens wanneer iemand deelneemt (Alle activiteiten)
+    normal_option: Wanneer iemand mijn aandacht nodig heeft (wanneer ik een melding ontvang)
+    quiet_option: Geen e-mails over dit onderwerp (Uitgeschakeld)
+    quiet_explained: Je ontvangt geen e-mail, zelfs niet wanneer iemand probeert je op de hoogte te stellen.
   inbox:
     clear: Leegmaken
     latest: Laatste
@@ -531,6 +533,7 @@ nl_NL:
     sign_in: Log in om mee te praten
     add_a_comment: Voeg een opmerking toe
     share_your_thoughts: Deel uw gedachten…
+    share_on_poll: Stel een vraag of deel nieuwe informatie.
   thread_nav:
     participants: Deelnemers
   sidebar:
@@ -565,6 +568,7 @@ nl_NL:
     new_subgroup: Nieuwe subgroep
     find_a_group: Zoek een groep
     direct_discussions: Directe discussies
+    unread_discussions: Ongelezen discussies
   strand_nav:
     newest: Nieuwste
     oldest: Oudste
@@ -585,7 +589,12 @@ nl_NL:
     showing_unread: Ongelezen weergeven
     add_comment: Reactie toevoegen
     start_decision: Startbeslissing
-    recenter: Recenter
+    return: Terug
+    end: Einde
+    notifications: Meldingen
+    email_all_activity: Alle activiteiten per e-mail verzenden
+    email_notifications: E-mail wanneer ik een melding ontvang
+    email_none: Geen e-mails
   search_modal:
     all_content: Alle inhoud
     best_match: Beste overeenkomst
@@ -622,6 +631,7 @@ nl_NL:
     search_files_short: Zoek bestanden
     search_subgroups_short: Zoek subgroepen
     search_discussions_in_group: Zoek discussies in %{name}
+    thread_nav: Draadmenu
   user_dropdown:
     pin_sidebar: Zijbalk vastzetten
     unpin_sidebar: Zijbalk losmaken
@@ -653,6 +663,7 @@ nl_NL:
     invite_to_wip_poll: Nodig uit om feedback te geven
     invitations: Uitnodigingen
     discussion_members: Discussieleden
+    thread_members: Discussieleden
   membership_dropdown:
     set_name_and_username: Stel naam en gebruikersnaam in
     set_title: Titel aanmaken
@@ -717,6 +728,7 @@ nl_NL:
       discussion_closed: "%{actor} heeft de discussie gesloten: %{title}"
       new_discussion: "%{actor} startte een discussie: %{title}"
       user_reminded: "%{actor} herinnert je eraan om te stemmen op: %{title}"
+      thread_locked: "%{actor} heeft de thread vergrendeld: %{title}"
     without_title:
       unknown_sender: Controleer de e-mail van een onbekende afzender
       group_announced: "%{actor} heeft je uitgenodigd voor een groep"
@@ -754,6 +766,7 @@ nl_NL:
       new_discussion: "%{actor} is een discussie gestart"
       new_comment: "%{actor} heeft gereageerd in een discussie"
       outcome_updated: "%{actor} heeft de uitkomst bijgewerkt"
+      thread_locked: "%{actor} heeft de thread vergrendeld"
     hints:
       poll_closing_soon: Dit is een goed moment om te stemmen, van gedachten te veranderen of anderen aan te moedigen om mee te doen.
       poll_closing_soon_author: Misschien wilt u mensen eraan herinneren om te stemmen of de deadline verlengen.
@@ -778,7 +791,7 @@ nl_NL:
       poll_closed_by_user: "%{actor} heeft de %{poll_type} gesloten: %{title}"
       poll_closing_soon: "%{poll_type} sluit over 24 uur: %{title}"
       poll_closing_soon_author: 'Uw %{poll_type} sluit over 24 uur: %{title}'
-      poll_created: 'Stem: %{title}'
+      poll_created: "%{poll_type}: %{title}"
       poll_edited: "%{actor} heeft de %{poll_type} bijgewerkt: %{title}"
       poll_expired: "%{poll_type} is gesloten: %{title}"
       poll_expired_author: 'Publiceer een uitkomst: %{title}'
@@ -797,6 +810,7 @@ nl_NL:
       discussion_edited: "%{actor} heeft de discussiecontext bewerkt: %{title}"
       discussion_closed: "%{actor} heeft de discussie gesloten: %{title}"
       user_reminded: "%{actor} herinnert je eraan om te stemmen op: %{title}"
+      thread_locked: "%{actor} heeft de thread vergrendeld: %{title}"
   discussion_fork_actions:
     move: Verplaatsen
     moved: Reacties aan het verplaatsen, dit kan even duren
@@ -852,6 +866,7 @@ nl_NL:
     direct_discussion: Directe discussie
     direct_discussion_hint: Een privégesprek is alleen zichtbaar voor de specifieke personen die je uitnodigt. Het verschijnt niet in de gesprekslijst van een groep, maar je vindt het op je pagina met privégesprekken.
     recommended_poll_templates: Aanbevolen enquêtesjablonen
+    edit_discussion_context: Discussiecontext bewerken
   announcement:
     send_discussion: Bord verzenden
     send_group: Nodig mensen uit voor %{name}
@@ -980,6 +995,8 @@ nl_NL:
     poll_announced: "%{name} heeft %{length} mensen uitgenodigd om te stemmen:"
     discussion_notification_history: Discussiemeldingsgeschiedenis
     inviting_guests_to_discussion: Gasten behoren niet tot uw groep en hebben alleen toegang tot deze discussie
+    topic_notification_history: Geschiedenis van threadmeldingen
+    notification_history: Meldingsgeschiedenis
   action_dock:
     actions_menu: Actie menu
     more_actions: Meer acties
@@ -1026,8 +1043,6 @@ nl_NL:
     discussion_copied: Bord-URL naar het klembord gekopieerd
     url_copied: Link gekopieerd naar klembord
     tag_thread: Labels beheren
-    close_thread: Sluit bord
-    reopen_thread: Heropen bord
     delete_thread: Bord verwijderen
     notification_history: Meldingen geschiedenis
     move_item: Verplaats item
@@ -1036,9 +1051,9 @@ nl_NL:
     count_voters: "%{count} kiezers"
     pin_discussion: Pin discussie
     unpin_discussion: Discussie losmaken
-    close_discussion: Discussie sluiten
-    reopen_discussion: Discussie heropenen
     delete_discussion: Discussie verwijderen
+    lock_thread: Discussie vergrendelen
+    unlock_thread: Discussie ontgrendelen
   formatting:
     formatting_tools: Tekst-formatteer tools
     colors: Kleuren
@@ -1161,7 +1176,6 @@ nl_NL:
     settings: Instellingen
     subgroups: Subgroepen
     show_opened: "%{count} geopend"
-    show_closed: "%{count} Gesloten"
     no_threads_here: Geen borden te zien hier!
     search_threads: Zoeken voor borden...
     private_threads: Je moet lid zijn om de privé borden in deze groep te zien.
@@ -1179,7 +1193,6 @@ nl_NL:
     new_cover_photo: Nieuwe groepsfoto uploaden
     new_group_logo: Upload een nieuw groepslogo
     open_discussions: Open borden
-    closed_discussions: Gesloten borden
     discussions_placeholder: Op een bord kan iedereen over een onderwerp discussiëren en gezamenlijk beslissingen nemen.
     members_placeholder: 'Je bent de enige hier: nodig mensen uit om zich bij je aan te sluiten!'
     member_options: Opties voor leden
@@ -1228,8 +1241,10 @@ nl_NL:
     discussions: Discussies
     no_discussions_here: Er zijn hier geen discussies te zien!
     private_discussions: Je moet lid zijn om de privéthreads in deze groep te kunnen bekijken
-    view_closed_discussions: Bekijk gesloten discussies
     discussion_templates: Discussiesjablonen
+    show_locked: "%{count} Vergrendeld"
+    view_locked_discussions: Bekijk vergrendelde discussies
+    locked_discussions: Vergrendelde discussies
   export_data_modal:
     title: Hoe wil je je data gebruiken?
     as_csv: Openen in een spreadsheet
@@ -1350,8 +1365,6 @@ nl_NL:
     default_request_to_join_prompt: Bedankt voor uw interesse in onze groep. Stel uzelf voor en leg uit waarom u lid wilt worden.
     upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Upgrade uw abonnement</a> om een subgroep te creëren'
     share_this_url_with_people_who_want_to_join: Deel deze URL met mensen die mee willen doen
-    allow_polls_without_discussions: Peilingen zonder discussie toestaan
-    allow_polls_without_discussions_help: Voorkom dat mensen peilingen starten zonder eerst een discussie te beginnen.
     aria_label: Groepsvorm
     list_in_the_groups_directory: Lijst in de groepsdirectory?
     list_in_directory_yes: Ja · toon deze groep op de pagina "zoek een groep"
@@ -1593,6 +1606,7 @@ nl_NL:
   thread_preview:
     replies_count: "%{count} antwoorden"
     unread_count: "%{count} ongelezen"
+    items_count: "%{count} items"
   dashboard_page:
     polls_to_vote_on: Polls om op te stemmen
     no_polls_to_vote_on: Er zijn geen polls waar je op moet stemmen
@@ -1682,17 +1696,18 @@ nl_NL:
     pin:
       pinned: Bord vastgeprikt
       unpinned: Bord losgeprikt
-    closed:
-      reopened: Bord heropend
-      closed: Bord gesloten
     volume:
       mute_message: Discussie gedempt
       unmute_message: Discussie gedempt
     direct: Direct
+    locked:
+      unlocked: Draad ontgrendeld
+      locked: Thread vergrendeld
   discussion_last_seen_by:
     title: Gezien door
     no_one: Nog niemand heeft dit gezien
     disabled_anonymous_polls: Kijkgeschiedenis is uitgeschakeld omdat thread anonieme opiniepeilingen bevat
+    thread_engagement: Threadbetrokkenheid
   activity_card:
     count_responses: "%{count} reacties"
     beginning: Eerste
@@ -1734,6 +1749,22 @@ nl_NL:
     nested_twice: Twee niveaus van geneste antwoorden
     nested_twice_description: Antwoorden maximaal twee keer laten inspringen.
     changing_nesting_is_slow: Wijzigingen in de 'nesting' kunnen enkele minuten duren om te verwerken.
+    layout: Indeling
+    items: Hoe items weer te geven
+    nested: Genesteld
+    timeline: Tijdlijn
+    timeline_description: Artikelen in de volgorde waarin ze zijn geplaatst.
+    threaded: Met threads
+    threaded_description: Reacties gegroepeerd op basis van waar ze op reageren
+    allow_concurrent_polls: Gelijktijdige peilingen toestaan
+    allow_multiple_polls: Meerdere peilingen tegelijk toestaan
+    allow_concurrent_polls_description: Sta toe dat er meer dan één peiling tegelijk openstaat.
+    allow_comments: Reacties toestaan
+    allow_comments_description: Sta deelnemers toe om reacties te plaatsen in deze discussie.
+    allow_reactions: Sta reacties toe
+    allow_reactions_description: Sta deelnemers toe om emoji-reacties toe te voegen.
+    topic_settings: Onderwerpinstellingen
+    thread_settings: Draadinstellingen
   delete_thread_form:
     title: Bord verwijderen
     body: Weet je zeker dat je dit bord wil verwijderen?
@@ -1805,6 +1836,7 @@ nl_NL:
     ranked_choice_title: Keuzes rangschikken
     gradients_of_agreement_title: Gradiënten van overeenkomst
     majority_title: Meerderheid
+    stv_title: STV-verkiezing
   poll_option_form:
     edit_option: Optie bewerken
     option_name: Optie naam
@@ -1942,6 +1974,9 @@ nl_NL:
     blank: Nieuw
     blank_subtitle: Maak een nieuwe enquêtesjabloon voor een specifiek proces.
     start_a_poll: Start een enquête
+    export_blt: Export stembiljetten (BLT)
+    status: Status
+    your_vote_is_requested: Uw stem wordt gevraagd.
   poll_common_attachment_form:
     label: Bijlagen
   poll_common_add_option:
@@ -1962,10 +1997,8 @@ nl_NL:
     deleted: Deze peiling is verwijderd
     do_not_hide_results: Resultaten niet verbergen
   discussions_panel:
-    open: Openen
     all: Alle
     unread: Ongelezen (%{count})
-    closed: Gesloten
     include_subgroups_mine: "%{name} en mijn subgroepen"
     include_subgroups_all: "%{name} en alle subgroepen"
     no_results_found: Geen resultaten voor "%{search}"
@@ -1973,6 +2006,8 @@ nl_NL:
     lets_start_a_thread: Laten we een draadje starten. Klik op "Nieuw onderwerp" om door te gaan.
     lets_start_a_discussion: Laten we een discussie starten. Klik op 'Nieuwe discussie' om verder te gaan.
     new_discussion: Nieuwe discussie
+    locked: Vergrendeld
+    unlocked: Ontgrendeld
   members_panel:
     bot: Bot
     no_results: Geen leden gevonden
@@ -2016,13 +2051,6 @@ nl_NL:
     closed: Gesloten
     need_vote: Stem nodig
     no_polls: Geen peilingen gevonden
-    standalone_disabled_title: Zelfstandige peilingen zijn uitgeschakeld
-    standalone_disabled_helptext: "<p>Voor deze groep is het nodig dat er peilingen binnen een discussie worden gestart.</p><p> Discussies helpen mensen de context te begrijpen, vragen te stellen en perspectieven te delen voordat ze stemmen. Dit leidt tot betere beslissingen.</p><p> Begin eerst een discussie en voeg vervolgens een poll toe als u klaar bent om stemmen te verzamelen.</p>"
-    start_discussion: Start een discussie
-    standalone_warning_title: Overweeg om eerst een discussie te starten
-    start_poll_anyway: Toch een poll starten
-    start_discussion_instead: Begin in plaats daarvan een discussie
-    standalone_warning_helptext: "<p>Peilingen werken het beste als mensen eerst over het onderwerp kunnen discussiëren.</p><p> Zonder discussie kunnen kiezers geen vragen stellen, hun zorgen uiten of verbeteringen voorstellen.</p><p> Voor de beste ervaring begin je met een discussie, creëer je wederzijds begrip en voeg je vervolgens een enquête toe wanneer je klaar bent om de standpunten van mensen te peilen.</p>"
   group_files_panel:
     no_files: Geen bestanden gevonden
     filename: Bestandsnaam
@@ -2113,6 +2141,8 @@ nl_NL:
     change_results_order: Verander volgorde resultaten
     none_of_the_above: "(Geen van bovenstaande)"
     name_or_username: Naam of gebruikersnaam
+    cast: Uitgebracht
+    uncast: Niet uitgebracht
   poll_common_undecided_panel:
     show_undecided: Toon %{count} onbeslist
     show_invitations: Toon uitnodigingen in afwachting
@@ -2311,6 +2341,8 @@ nl_NL:
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> heeft zijn stem geüpdatet op: <strong>%{title}</strong>"
     event_removed: Van bord verwijderd
     new: nieuw
+    thread_locked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> heeft de thread vergrendeld"
+    thread_unlocked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> heeft de thread ontgrendeld"
   add_poll_to_thread_modal:
     success: Gelukt, %{pollType} aan bord toegevoegd!
   auth_form:
@@ -2381,6 +2413,7 @@ nl_NL:
     want_to_set_password: Wilt u de volgende keer inloggen met een wachtwoord?
     change_your_password: Wilt u een nieuw wachtwoord instellen?
     email_placeholder: jij{'@'}voorbeeld.com
+    turnstile_required: Voltooi de verificatie voordat u verdergaat.
   chatbot:
     configure_chatbot: Chatbot configureren
     test_connection: Test verbinding
@@ -2508,6 +2541,7 @@ nl_NL:
     country_disclaimer: Land is gebaseerd op het IP-adres van de gebruiker en is niet erg nauwkeurig. Beschouw dit slechts als een ruwe handleiding.
     total_discussions: Totale discussies
     discussions_with_polls: Discussies met peilingen
+    download_csv: CSV downloaden
   tips:
     youve_completed_all_the_steps: "\U0001F389 Je hebt alle stappen voltooid!"
     getting_started_checklist: Checklist voor aan de slag
@@ -2590,6 +2624,7 @@ nl_NL:
       helptext_on: Laat niet zien hoe mensen hebben gestemd totdat de stembus is gesloten
     short_reason_can_be_helpful: Korte stemredenen zijn gemakkelijker te begrijpen. Een verzameling beknopte redenen is een goede bron voor het nemen van een beslissing.
     shuffle_options: Shuffle-opties
+    selected_people_only: Alleen voor geselecteerde personen.
   poll_common_form:
     quorum: Quorum
     participation_quorum: Deelnamequorum
@@ -2640,6 +2675,8 @@ nl_NL:
       time_poll_hint: Kiezers geven aan wanneer zij beschikbaar zijn om te vergaderen
       rank: Rang
       time: Tijd
+      stv: STV-verkiezing
+      stv_hint: Kies meerdere winnaars proportioneel met behulp van de Single Transferable Vote.
     process: Proces
     process_name: Sjabloontitel
     process_name_hint: 'Hoe noem je deze template? Bijvoorbeeld: Roladvies, Temperatuurcontrole, Goedkeuring van notulen.'
@@ -2711,8 +2748,6 @@ nl_NL:
     invited_by: Uitgenodigd door
     invited_on: Uitgenodigd op
     no_receipts: Deze anonieme poll is gesloten voordat de verificatiefunctie bestond. Verificatie is daarom niet mogelijk.
-  close_discussion_modal:
-    body: Sluit discussies om ze uit de lijst met open discussies te verwijderen en te voorkomen dat mensen commentaar kunnen leveren.
   comment_reply_form:
     aria_label: Voeg een antwoord toe
   discussion_template:
@@ -2760,14 +2795,14 @@ nl_NL:
     these_are_templates_admin_hint: Groepsbeheerders kunnen sjablonen bewerken, nieuwe sjablonen maken, herschikken en verbergen/weergeven. Alleen beheerders kunnen de verborgen sjablonen zien.
     show_hidden_templates: Verborgen sjablonen weergeven
     show_fewer: Minder weergeven
-    start_a_new_discussion: Start een nieuwe discussie
     start_discussion: Start een discussie
     start_a_direct_discussion: Start een direct gesprek
     these_are_templates: Dit zijn de discussiesjablonen in jullie groep.
+    start_a_new_discussion: Start een nieuwe discussie
   context_panel:
     thread_status:
       pinned: Deze discussie is vastgezet en blijft bovenaan de discussielijst van de groep staan voor alle gebruikers.
-      closed: Deze discussie is gesloten. Deze verschijnt niet meer op het dashboard en wordt weergegeven onder 'gesloten' op de groepspagina.
+      locked: Deze discussie is vergrendeld. Hij zal niet langer op het dashboard verschijnen en wordt op de groepspagina onder 'vergrendeld' vermeld.
   thread_group:
     aria_label: Groepsnaam
   discussion_context:
@@ -2778,8 +2813,8 @@ nl_NL:
   pin_discussion_modal:
     helptext: Vastgezette discussies verschijnen altijd in de discussielijst van de groep.
   delete_discussion_form:
-    body: Weet u zeker dat u deze discussie wilt verwijderen?
     discussion_deleted: Discussie verwijderd
+    body: Weet je zeker dat je dit bericht wilt verwijderen?
   move_discussion_form:
     title: Discussie verplaatsen naar een andere groep
     body: Bestemmingsgroep
@@ -2796,3 +2831,58 @@ nl_NL:
     opening_hour: Openingstijd
     scheduled_hint: De poll zal zichtbaar zijn, maar er kan pas gestemd worden vanaf het openingstijdstip.
     draft_hint: Deze peiling wordt als concept opgeslagen. Stel een openingsdatum in of vink 'Stemmen opent direct' aan wanneer u klaar bent om te beginnen met stemmen.
+  strand_members_list:
+    notify_members_or_invite_guests_info: Stel groepsleden persoonlijk op de hoogte of nodig niet-leden uit via hun e-mailadres. Uitgenodigde gasten kunnen deelnemen aan deze discussie, maar hebben geen toegang tot andere groepsdiscussies.
+    notify_members_info: Voer de namen van de groepsleden in om hen over dit onderwerp te informeren.
+    specified_voters_only_warning: In dit forumonderwerp vind je peilingen waar alleen geselecteerde personen kunnen stemmen. Iemand toevoegen met dit formulier geeft die persoon geen stem, maar alleen de mogelijkheid om mee te volgen en te reageren. Als je stemmen wilt toekennen, gebruik dan "stemmers toevoegen" in de peiling.
+  poll_common_details_meta:
+    opened: Geopend
+    opens: Opent
+    closed: Gesloten
+    closes: Sluiten
+    opened_at: Geopend op
+    opening_at: Opent om
+    closed_at: Gesloten om
+    closing_at: Sluit om
+  poll_stv_vote_form:
+    helptext: Sleep de kandidaten boven de lijn om ze te rangschikken. Items onder de lijn zijn niet gerangschikt. Rang 1 is je voorkeur.
+    divider_text: Sleep de kandidaten boven deze lijn om ze te rangschikken.
+    stance_created: Stem geregistreerd
+    stance_updated: Stem bijgewerkt
+  poll_stv_form:
+    settings_title: Instellingen voor STV-verkiezingen
+    settings_helptext: Configureer het aantal te vullen zetels, de telmethode en het quotatype voor deze verkiezing.
+    seats_label: Aantal te vullen zetels
+    method_label: Telmethode
+    method_scottish: Scottish STV (recommended)
+    method_meek: Meek STV
+    quota_label: Quotatype
+    quota_droop: Droop quota (recommended)
+    quota_hare: Hare quota
+  poll_stv_results:
+    title: Verkiezingsuitslagen
+    elected: Gekozen
+    not_elected: Niet gekozen
+    tied: Gelijkspel
+    no_candidates_elected: Geen kandidaten gekozen
+    round: Ronde %{number}
+    quota_info: "%{method}, %{quota_type} quota (%{quota} votes needed)"
+    method_scottish: Scottish STV
+    method_meek: Meek STV
+    quota_droop: Droop
+    quota_hare: Hare
+    elected_in_round: Elected in round %{round}
+    eliminated_in_round: Eliminated in round %{round}
+    tied_in_round: Tied in round %{round}
+    votes: stemmen
+    candidate: Kandidaat
+    round_elected: Ronde gekozen
+    first_preferences: Eerste voorkeuren
+    final_tally: Eindstand
+    quota_surplus: Overschot
+    round_details: Details per ronde
+    view_full_results: Bekijk de volledige resultaten
+    results_available_when_closed: De uitslagen worden bekendgemaakt zodra de stemming is gesloten.
+  lock_thread_modal:
+    body: Vergrendel discussies om ze uit de lijst met open discussies te verwijderen en te voorkomen dat mensen erop kunnen reageren.
+    explanation: Vergrendel discussies om te voorkomen dat mensen reageren of verdere wijzigingen aanbrengen.

@@ -109,7 +109,7 @@ de:
     manage:
       all: Nicht autorisiert zum %{action} %{subject}.
     add_guests:
-      all: Sie müssen Ihr Loomio-Abonnement aktualisieren, um Gäste zu Ihrem %{subject} hinzuzufügen. Alternativ können Sie sie einladen, Mitglieder Ihrer Gruppe zu werden.
+      all: Sie müssen Ihr Loomio-Abonnement aktualisieren, um Gäste hinzuzufügen. Alternativ können Sie sie einladen, Mitglieder Ihrer Gruppe zu werden.
   errors:
     clear_cache: Ladeproblem erkannt. Halte die Umschalttaste gedrückt und drücke "Neu laden", oder leere den Browser-Cache.
     400:
@@ -151,6 +151,7 @@ de:
       email: das ist keine gültige E-Mail-Adresse
       spoofed_media_type: Der Inhalt der Datei stimmt nicht mit dem Dateinamen überein
       pwned_password: Dieses Passwort ist bereits bei einem Datenverstoß aufgetaucht und sollte niemals verwendet werden
+    new_account_trial_group_limit: Neue Konten sind auf eine Gruppe beschränkt. Bitte kontaktieren Sie den Support, falls Sie weitere Konten benötigen.
   group:
     error:
       handle_must_begin_with_parent_handle: Muss beginnen mit %{parent_handle}-
@@ -239,6 +240,7 @@ de:
       notified: Sie haben dies erhalten, weil der Autor Sie benachrichtigt hat.
       poll_subscribed: Sie erhalten diese Nachricht, weil Sie die Umfrage abonniert haben.
       discussion_subscribed: Sie erhalten diese Nachricht, weil Sie die Diskussion abonniert haben.
+      thread_subscribed: Sie erhalten diese Nachricht, weil Sie den Thread abonniert haben.
   user_mailer:
     group_export_ready:
       subject: Daten für Gruppe %{group_name} exportieren
@@ -398,6 +400,9 @@ de:
         Wenn du nicht möchtest, dass deine Gruppe gelöscht wird, antworte bitte auf diese E-Mail.
         Wenn du die Gruppe wirklich löschen möchtest, musst du nichts unternehmen.
         Vielen Dank.
+    trial_expired:
+      subject: Ihre Loomio-Gruppe wird aufgrund von Inaktivität gelöscht.
+      body: Ihre Loomio-Gruppe „%{group}“ ist inaktiv und wird in zwei Wochen gelöscht. Falls Sie die Löschung Ihrer Gruppe verhindern möchten, antworten Sie bitte auf diese E-Mail.
   poll_mailer:
     common:
       why_send_this: Du erhältst diese E-Mail weil %{reason}
@@ -626,6 +631,11 @@ de:
       no_meaning: Ich unterstütze diesen Vorschlag nicht.
       no_prompt: Warum unterstützen Sie diesen Vorschlag nicht?
       outcome_statement: "<p>Vielen Dank für Ihre Teilnahme an dieser Mehrheitsabstimmung.</p>"
+    stv:
+      process_subtitle: Mehrere Gewinner proportional wählen
+      process_introduction: <p>STV (Single Transferable Vote) ist ein Verhältniswahlverfahren für Mehrpersonenwahlen. Die Wähler ordnen die Kandidaten nach ihren Präferenzen. Kandidaten, die eine bestimmte Stimmenzahl erreichen, sind gewählt; überschüssige Stimmen oder Stimmen ausgeschiedener Kandidaten werden auf die nächsten Präferenzen übertragen.</p><p> Konfigurieren Sie die Anzahl der Sitze, die Zählmethode (Scottish oder Meek) und die Quotenart (Droop oder Hare). Die Ergebnisse zeigen eine detaillierte Aufschlüsselung der Stimmenübertragung in jeder einzelnen Wahlrunde.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/stv/index.html">Lesen Sie mehr über STV-Wahlen</a> .</p>
+      title: Ausschussmitglieder wählen
+      details: <h3 id="what-is-this-election-about"><strong>Worum geht es bei dieser Wahl?</strong></h3><p></p><h3 id="how-many-seats"> <strong>Wie viele Sitze werden besetzt?</strong></h3><p></p><h3 id="who-are-the-candidates"> <strong>Wer sind die Kandidaten?</strong></h3><p></p><p> Stimmen Sie ab, indem Sie die Kandidaten in die gewünschte Reihenfolge ziehen. Platz 1 ist Ihr bevorzugter Kandidat. Sie können beliebig viele oder wenige Kandidaten in eine Rangfolge bringen.</p>
   forward_mailer:
     bounce:
       subject: Ihre Nachricht an Loomio wurde nicht zugestellt.
@@ -686,3 +696,5 @@ de:
     pt: Portugiesisch
     zh: Chinesisch (Traditionell, Taiwan)
     zh-HK: Chinesisch (Traditionell, Taiwan)
+  upload:
+    file_too_large: Die Datei ist zu groß. Die maximale Uploadgröße beträgt %{limit}.

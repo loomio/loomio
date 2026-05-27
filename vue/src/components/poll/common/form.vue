@@ -279,7 +279,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
   poll-template-info-panel.mb-4(v-if="pollTemplate" :poll-template="pollTemplate")
 
   v-select(
-    v-if="!poll.id && !poll.discussionId"
+    v-if="!poll.topicId"
     v-model="poll.groupId"
     :items="groupItems"
     :label="$t('common.group')"
@@ -503,7 +503,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
     :disabled="!poll.closingAt"
   )
     v-radio(
-      v-if="poll.discussionId && !poll.groupId"
+      v-if="!poll.groupId"
       :value="false"
       :label="$t('poll_common_settings.specified_voters_only_false_discussion')")
     v-radio(
@@ -512,7 +512,7 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
       :label="$t('poll_common_settings.specified_voters_only_false_group')")
     v-radio.poll-common-settings__specified-voters-only(
       :value="true"
-      :label="$t('poll_common_settings.specified_voters_only_true')")
+      :label="$t('poll_common_settings.selected_people_only')")
 
   div(style="height: 64px" v-if="poll.specifiedVotersOnly")
     .text-body-2.font-italic.text-medium-emphasis.mt-n4.py-4(
@@ -610,6 +610,29 @@ v-form.poll-common-form(ref="form" @submit.prevent="submit")
             v-if="poll.quorumPct && poll.pollType == 'proposal' && poll.config().allow_vote_share_requirement"
             v-t="'poll_common_form.quorum_tip_vote_share_requirement'"
           )
+
+        template(v-if="!poll.topicId")
+          v-divider.mb-4
+          .text-subtitle-1.pb-2(v-t="'thread_arrangement_form.thread_settings'")
+          v-list(bg-color="transparent")
+            v-list-item(
+              lines="two"
+              class="px-0"
+              :title="$t('thread_arrangement_form.allow_comments')"
+              :subtitle="$t('thread_arrangement_form.allow_comments_description')"
+              @click="poll.allowComments = !poll.allowComments"
+            )
+              template(v-slot:prepend)
+                v-checkbox-btn(v-model="poll.allowComments" @click.stop)
+            v-list-item(
+              lines="two"
+              class="px-0"
+              :title="$t('thread_arrangement_form.allow_reactions')"
+              :subtitle="$t('thread_arrangement_form.allow_reactions_description')"
+              @click="poll.allowReactions = !poll.allowReactions"
+            )
+              template(v-slot:prepend)
+                v-checkbox-btn(v-model="poll.allowReactions" @click.stop)
 
         common-notify-fields(v-if="poll.id" :model="poll" includeActor)
 

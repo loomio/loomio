@@ -109,7 +109,7 @@ pt_BR:
     manage:
       all: Não autorizado a %{action} %{subject}.
     add_guests:
-      all: Você deve atualizar sua assinatura do Loomio para adicionar convidados ao seu %{subject}. Alternativamente, você pode convidá-los para serem membros do seu grupo.
+      all: Você deve atualizar sua assinatura do Loomio para adicionar convidados. Como alternativa, você pode convidá-los para serem membros do seu grupo.
   errors:
     clear_cache: Problema de carregamento detectado. Segure shift e pressione recarregar, ou limpe o cache do navegador.
     400:
@@ -151,6 +151,7 @@ pt_BR:
       email: Não é um endereço de e-mail válido
       spoofed_media_type: 'O conteúdo daquele arquivo não corresponde ao nome do arquivo '
       pwned_password: Esta senha já apareceu em uma violação de dados e nunca deve ser usada
+    new_account_trial_group_limit: As novas contas estão limitadas a um grupo. Entre em contato com o suporte se precisar de mais.
   group:
     error:
       handle_must_begin_with_parent_handle: Deve começar com %{parent_handle}-
@@ -239,6 +240,7 @@ pt_BR:
       notified: Você recebeu isso porque o autor o notificou.
       poll_subscribed: Você recebeu esta mensagem porque está inscrito na enquete.
       discussion_subscribed: Você recebeu esta mensagem porque está inscrito(a) na discussão.
+      thread_subscribed: Você recebeu esta mensagem porque está inscrito(a) no tópico.
   user_mailer:
     group_export_ready:
       subject: Dados do Grupo para exportar %{group_name}
@@ -396,6 +398,9 @@ pt_BR:
         Se você não deseja que seu grupo seja excluído, responda a este e-mail.
         Se tiver certeza de que deseja excluir o grupo, não é necessário fazer nada.
         Obrigado.
+    trial_expired:
+      subject: Seu grupo no Loomio será excluído devido à inatividade.
+      body: Seu grupo no Loomio "%{group}" está inativo e será excluído em 2 semanas. Se você não deseja que seu grupo seja excluído, responda a este e-mail.
   poll_mailer:
     common:
       why_send_this: 'Você está recebendo este e-mail pelo seguinte motivo: %{reason}'
@@ -624,6 +629,11 @@ pt_BR:
       no_meaning: Não apoio esta proposta.
       no_prompt: Por que você não apoia esta proposta?
       outcome_statement: "<p>Obrigado por participar desta votação majoritária.</p>"
+    stv:
+      process_subtitle: Eleger vários vencedores proporcionalmente
+      process_introduction: <p>O Voto Único Transferível (STV, na sigla em inglês) é um método de representação proporcional para eleições com múltiplos vencedores. Os eleitores classificam os candidatos por ordem de preferência. Os candidatos que atingem um quórum de votos são eleitos, e os votos excedentes ou eliminados são transferidos para as próximas preferências.</p><p> Configure o número de assentos, o método de contagem (Escocês ou Meek) e o tipo de cota (Droop ou Hare). Os resultados mostram uma análise detalhada, rodada por rodada, de como os votos foram transferidos.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/stv/index.html">Leia mais sobre as eleições com voto único transferível</a> .</p>
+      title: Eleger membros do comitê
+      details: <h3 id="what-is-this-election-about"><strong>Sobre o que trata esta eleição?</strong></h3><p></p><h3 id="how-many-seats"> <strong>Quantas vagas estão sendo preenchidas?</strong></h3><p></p><h3 id="who-are-the-candidates"> <strong>Quem são os candidatos?</strong></h3><p></p><p> Vote arrastando os candidatos na ordem de sua preferência. A primeira posição indica o seu candidato preferido. Você pode classificar quantos candidatos quiser.</p>
   forward_mailer:
     bounce:
       subject: Sua mensagem para a Loomio não foi entregue.
@@ -684,3 +694,5 @@ pt_BR:
     pt: Português
     zh: Chinês (Tradicional, Taiwan)
     zh-HK: Chinês (Tradicional, Taiwan)
+  upload:
+    file_too_large: O arquivo é muito grande. O tamanho máximo de upload é %{limit}.

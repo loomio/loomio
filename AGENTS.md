@@ -1,5 +1,9 @@
 # Agent Instructions
 
+## Git commits
+
+- Do not run `git commit` unless the user explicitly asks for a specific commit.
+
 ## i18n / Localization
 
 - **Never change the value of an existing i18n key.** Existing keys may be translated into other languages; changing the English value breaks those translations.
@@ -13,9 +17,7 @@
 E2E tests use Nightwatch + headless Chrome against a local Rails server.
 
 ### Prerequisites
-- Vue assets must be built: `cd vue && npm run build` (outputs to `public/client3/`)
-- Test database must exist: `RAILS_ENV=test bundle exec rails db:prepare`
-- No other process on port 3000
+- If you get schema related errors it might help to run `dropdb loomio_test; RAILS_ENV=test rake db:setup`
 
 ### Using `bin/e2e`
 
@@ -24,13 +26,12 @@ bin/e2e                                    # run all specs
 bin/e2e notifications.js                   # run one spec file (shorthand)
 bin/e2e vue/tests/e2e/specs/poll.js        # run one spec file (full path)
 bin/e2e notifications.js --testcase has_all_the_notifications  # run one test
-bin/e2e --skip-build notifications.js      # skip Vue build (faster iteration)
-bin/e2e --skip-build --retries 3           # skip build, retry failures
+bin/e2e notifications.js --retries 3       # retry failures
 ```
 
 The script handles: Vue build, db:prepare, starting/stopping the Rails server, and running Nightwatch headlessly.
 
-Use `--skip-build` when iterating on Ruby-only changes (dev scenarios, controllers) to save time.
+Always let `bin/e2e` build Vue assets. The build is fast, and running against freshly built assets avoids stale-client failures.
 
 Use `--testcase <name>` to run a single test within a file. This is much faster for confirming fixes.
 

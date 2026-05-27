@@ -22,11 +22,12 @@ module PrettyUrlHelper
   end
 
   def discussion_poll_url(model, options = {})
-    if model.discussion.present?
+    if model.topic.discussion
+      discussion = model.topic.discussion
       if model.is_a?(Outcome)
-        discussion_url(model.discussion, options.merge(sequence_id: model.poll.created_event.sequence_id))
+        discussion_url(discussion, options.merge(sequence_id: model.poll.created_event.sequence_id))
       else
-        discussion_url(model.discussion, options.merge(sequence_id: model.created_event.sequence_id))
+        discussion_url(discussion, options.merge(sequence_id: model.created_event.sequence_id))
       end
     else
       poll_url(model.poll, options)
@@ -42,7 +43,7 @@ module PrettyUrlHelper
     when Poll                          then discussion_poll_url(model, opts)
     when Outcome                       then discussion_poll_url(model, opts)
     when Stance                        then discussion_poll_url(model, opts)
-    when Comment                       then comment_url(model.discussion, model, opts)
+    when Comment                       then comment_url( model, opts)
     when Membership                    then membership_url(model, opts)
     when Reaction                      then polymorphic_url(model.reactable, opts)
     when ReceivedEmail                 then group_emails_url(model.group.key)

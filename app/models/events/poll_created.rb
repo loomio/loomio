@@ -7,7 +7,7 @@ class Events::PollCreated < Event
   def self.publish!(poll, actor)
     super poll,
           user: actor,
-          discussion: poll.discussion,
+          topic: poll.topic,
           pinned: true
   end
 end

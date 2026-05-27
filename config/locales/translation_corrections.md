@@ -73,3 +73,41 @@ languages in the Nov 2025 pass.
 | client.de.yml  | `context_panel.pin_discussion`     | `Diskussion über die Pinnwand` ("about the pinboard") | `Diskussion anpinnen`       | Took "pin" as pinboard noun instead of verb            |
 | client.de.yml  | `context_panel.unpin_discussion`   | `Diskussion aufheben` ("cancel the discussion") | `Diskussion abpinnen`             | "aufheben" = cancel, wrong sense of "un-pin"           |
 | client.de.yml  | `context_panel.close_discussion`   | `Schließende Diskussion` ("closing discussion", adjective) | `Diskussion schließen` | Adjectival present participle instead of imperative verb |
+| client.*.yml   | `poll_stv_form.method_meek`, `poll_stv_results.method_meek` | Local adjectives/names like `Nöyrä STV`, `Szelíd STV`, `Πράος STV`, `Мик СВТ` | `Meek STV` | Meek is a named STV counting method, not the adjective "mild/meek" and not to be localized |
+| client.*.yml   | `poll_stv_form.quota_droop`, `poll_stv_results.quota_droop` | Local words for droop/drop/sag like `Pudotuskiintiö`, `Leesési kvóta`, `下垂` | `Droop quota`, `Droop` | Droop is a named election quota, not a verb/adjective |
+| client.*.yml   | `poll_stv_form.quota_hare`, `poll_stv_results.quota_hare` | Local words for the animal hare/rabbit like `cuota de liebre`, `Hasenquote`, `野兔` | `Hare quota`, `Hare` | Hare is a named election quota, not the animal in ordinary prose |
+| client.*.yml   | `poll_stv_results.round` | Local verbs for "round/rounding" and translated placeholders like `Στρογγυλοποίηση %{αριθμός}` | `Round %{number}` or locale equivalent preserving `%{number}` | Round is an election counting round; interpolation names must not be translated |
+| client.*.yml   | `poll_stv_results.tied` | Local words for necktie/bind like `Cravate`, `Gravata`, `领带`, `Binden` | `Tie` or locale equivalent for equal result | Tie means equal votes/result, not clothing or fastening |
+| client.*.yml   | `poll_common_votes_panel.cast`, `poll_common_votes_panel.uncast` | Movie/casting/throwing/foundry senses like `Elenco`, `Gießen`, `Casting`, `投掷` | Vote-status wording such as `Cast` / `Uncast` or locale equivalent | In poll results, cast means a vote has been submitted, not thrown, moulded, or assigned to a cast |
+| client.*.yml   | `thread_arrangement_form.threaded`, `discussion_last_seen_by.thread_engagement` | Physical screw/thread senses like `Gewinde`, `Enroscado`, `螺纹`, `Angrenarea filetului` | UI conversation-thread wording such as `Threaded` / `Thread engagement` or locale equivalent | Thread refers to discussion threading, not screw threads or fibres |
+| server.*.yml   | `poll_templates.stv.process_introduction`, `poll_templates.stv.details` | Translated STV proper names and election terms like `manso`, `douce`, `scozzese o moderato`, `hareng/liebre`, and "occupied seats" | Preserved `Scottish`, `Meek`, `Droop`, `Hare`; corrected eliminated-vote and seats-to-fill wording | STV method/quota names are proper nouns; election seats are filled/available, not already occupied |
+| server.*.yml   | `unauthorized.add_guests.all` | Added `%{subject}` to translations even though English source has no placeholder | Removed `%{subject}` and translated as adding guests generally | Interpolation placeholders must exactly match the source; Google sometimes invents context variables from nearby strings |
+| client.*.yml   | `notifications.email_subject.poll_created` | Dropped `%{poll_type}` and used generic "Vote" labels | Restored `%{poll_type}: %{title}` | Email subject needs the dynamic poll type, not a hard-coded generic label |
+| client.zh_CN.yml | Multiple HTML/interpolation keys | Full-width percent signs or translated placeholder words like `％{标题}` / literal `作者` | Restored placeholders such as `%{title}`, `%{author}`, `%{username}` | Placeholder names and `%{...}` syntax must never be translated or converted to full-width characters |
+| client.*.yml   | `strand_nav.return`, `thread_arrangement_form.items`, `thread_arrangement_form.thread_settings`, `poll_common_settings.*`, `poll_common_details_meta.*` | UI labels translated in wrong senses like "Return"→yield, "items"→goods/articles, "thread"→subprocess/screw-thread, "opened"→inaugurated | Corrected to navigation, discussion-thread, poll-setting, and poll-time meanings | Short UI labels need surrounding UI context; Google often picks a plausible but wrong dictionary sense |
+
+## 2026-05-21 — lock_thread_modal body changed to explanation
+
+- **file:** `config/locales/client.en.yml`
+- **key:** `lock_thread_modal.body`
+- **before:** Lock threads to remove them from the list of open threads and prevent people from commenting.
+- **after:** Lock threads to prevent people from commenting or making further changes
+- **why it was wrong:** The original text claimed locking "removes threads from the list of open threads," which is no longer true — the default discussions panel now shows all threads (both locked and unlocked). The new text accurately describes what locking does: prevents further comments and changes.
+
+## 2026-05-22 — lock/unlock thread translation pass
+
+| File | Key | Before | After | Why it was wrong |
+|------|-----|--------|-------|------------------|
+| `config/locales/client.de.yml` | `action_dock.lock_thread` | `Gewinde sichern` | `Thread sperren` | Took "thread" as a screw/mechanical thread instead of a discussion thread. |
+| `config/locales/client.es.yml` | `action_dock.lock_thread` | `Hilo de bloqueo` | `Bloquear hilo` | Noun phrase, not the imperative UI action. |
+| `config/locales/client.fr.yml` | `action_dock.lock_thread` | `Filetage de verrouillage` | `Verrouiller la discussion` | Took "thread" as a screw/mechanical thread. |
+| `config/locales/client.it.yml` | `action_dock.lock_thread` | `Filettatura di bloccaggio` | `Blocca discussione` | Took "thread" as a screw/mechanical thread. |
+| `config/locales/client.nl_NL.yml` | `action_dock.lock_thread` | `Borgdraad` | `Discussie vergrendelen` | Took "thread" as safety wire/mechanical thread, not a discussion. |
+| `config/locales/client.pt_BR.yml` | `action_dock.lock_thread` | `Rosca de travamento` | `Bloquear tópico` | Took "thread" as screw thread. |
+| `config/locales/client.tr.yml` | `action_dock.lock_thread` | `Kilitleme vidası` | `Konuyu kilitle` | Took "thread" as screw. |
+| `config/locales/client.zh_CN.yml` | `action_dock.lock_thread` | `锁螺纹` | `锁定主题` | Took "thread" as screw thread. |
+| `config/locales/client.zh_TW.yml` | `action_dock.lock_thread` | `鎖螺紋` | `鎖定主題` | Took "thread" as screw thread. |
+| `config/locales/client.fr.yml`, `client.pt_BR.yml`, `client.ru.yml`, `client.tr.yml` | notification/thread item lock keys | Translated placeholders like `%{acteur}`, `%{ator}`, `%{автор}`, `%{yazar}` | Restored `%{actor}` / `%{author}` | Interpolation placeholder names must never be translated. |
+| `config/locales/client.he.yml` | `action_dock.unlock_thread`, `discussion.locked.unlocked` | Repeated the lock wording | `ביטול נעילת שרשור`, `נעילת השרשור בוטלה` | Unlock status/action was translated as lock. |
+| `config/locales/client.fr.yml`, `client.hu.yml`, `client.it.yml`, `client.pl.yml`, `client.ru.yml` | locked discussion labels | Closed/shut wording such as `Fermé`, `Bezárt`, `Chiuso`, `Zamknięty`, `Закрытые обсуждения` | Lock-state wording such as `Verrouillé`, `Zárolva`, `Bloccate`, `Zablokowane`, `Заблокированные обсуждения` | Locking a thread is distinct from closing a poll/discussion; these labels should not drift back to "closed". |
+

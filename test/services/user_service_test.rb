@@ -2,8 +2,8 @@ require 'test_helper'
 
 class UserServiceTest < ActiveSupport::TestCase
   setup do
-    @user = users(:normal_user)
-    @group = groups(:test_group)
+    @user = users(:user)
+    @group = groups(:group)
   end
 
   test "deactivates the user" do
@@ -34,8 +34,7 @@ class UserServiceTest < ActiveSupport::TestCase
   end
 
   test "redacts user and removes personally identifying information" do
-    @group.add_member!(@user) unless @group.members.include?(@user)
-    discussion = create_discussion(author: @user, group: @group)
+    discussion = discussions(:discussion)
 
     email = @user.email
     user_id = @user.id

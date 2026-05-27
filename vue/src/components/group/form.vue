@@ -389,12 +389,6 @@ v-form(ref="form" @submit.prevent="submit")
                 span(v-t="'group_form.members_can_create_templates'")
                 br
                 span.text-caption(v-t="'group_form.members_can_create_templates_help'")
-          v-checkbox.group-form__allow-polls-without-discussions(hide-details v-model='group.canStartPollsWithoutDiscussion')
-            template(v-slot:label)
-              div
-                span(v-t="'group_form.allow_polls_without_discussions'")
-                br
-                span.text-caption(v-t="'group_form.allow_polls_without_discussions_help'")
           v-checkbox.group-form__admins-can-edit-user-content(hide-details v-model='group.adminsCanEditUserContent')
             template(v-slot:label)
               div

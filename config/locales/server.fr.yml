@@ -109,7 +109,7 @@ fr:
     manage:
       all: Non autorisé à %{action} %{subject}.
     add_guests:
-      all: Vous devez mettre à niveau votre abonnement Loomio pour ajouter des invités à votre %{subject}. Alternativement, vous pouvez les inviter à devenir membres de votre groupe.
+      all: Vous devez mettre à niveau votre abonnement Loomio pour ajouter des invités. Vous pouvez aussi les inviter à devenir membres de votre groupe.
   errors:
     clear_cache: Problème de chargement détecté. Maintenez la touche majuscule enfoncée en pressant le bouton de rechargement de la page ou videz la mémoire cache de votre navigateur.
     400:
@@ -151,6 +151,7 @@ fr:
       email: Adresse e-mail non valide
       spoofed_media_type: Les contenus de ce fichier ne correspondent pas à son nom
       pwned_password: Ce mot de passe est déjà apparu lors d'une violation de données et ne doit jamais être utilisé
+    new_account_trial_group_limit: Les nouveaux comptes sont limités à un seul groupe. Veuillez contacter l'assistance si vous avez besoin de plusieurs comptes.
   group:
     error:
       handle_must_begin_with_parent_handle: Doit commencer par %{parent_handle}
@@ -239,6 +240,7 @@ fr:
       notified: Vous avez reçu ceci parce que l'auteur vous a averti.
       poll_subscribed: Vous avez reçu ce message car vous êtes abonné(e) au sondage.
       discussion_subscribed: Vous avez reçu ce message car vous êtes abonné à la discussion.
+      thread_subscribed: Vous avez reçu ce message car vous êtes abonné à cette discussion.
   user_mailer:
     group_export_ready:
       subject: Export des données du groupe %{group_name}
@@ -396,6 +398,9 @@ fr:
         Reppndez à cet e-mail si vous souhaitez annuler la suppression de vôtre groupe.
         Si vous êtes certains de vouloir supprimer vôtre groupe, aucune action supplémentaire n'est requise.
         Merci.
+    trial_expired:
+      subject: Votre groupe Loomio sera supprimé en raison de son inactivité.
+      body: Votre groupe Loomio « %{group} » est inactif et sera supprimé dans deux semaines. Si vous ne souhaitez pas qu'il soit supprimé, veuillez répondre à ce courriel.
   poll_mailer:
     common:
       why_send_this: Vous recevez ce courriel parce que %{reason}
@@ -624,6 +629,11 @@ fr:
       no_meaning: Je ne soutiens pas cette proposition
       no_prompt: Pourquoi ne soutenez-vous pas cette proposition ?
       outcome_statement: "<p>Merci d'avoir participé à ce vote majoritaire.</p>"
+    stv:
+      process_subtitle: Élire plusieurs gagnants proportionnellement
+      process_introduction: <p>Le vote unique transférable (VUT) est une méthode de représentation proportionnelle utilisée dans les élections plurinominales. Les électeurs classent les candidats par ordre de préférence. Les candidats qui atteignent le quota de voix requis sont élus, et les voix excédentaires ou celles des candidats éliminés sont reportées aux préférences suivantes.</p><p> Configurez le nombre de sièges, la méthode de comptage (Scottish ou Meek) et le type de quota (Droop ou Hare). Les résultats affichent le détail, tour par tour, de la répartition des votes.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/stv/index.html">En savoir plus sur les élections STV</a> .</p>
+      title: Élire les membres du comité
+      details: <h3 id="what-is-this-election-about"><strong>De quoi s'agit-il lors de cette élection ?</strong></h3><p></p><h3 id="how-many-seats"> <strong>Combien de sièges sont à pourvoir ?</strong></h3><p></p><h3 id="who-are-the-candidates"> <strong>Qui sont les candidats ?</strong></h3><p></p><p> Votez en classant les candidats par ordre de préférence. Le candidat classé n° 1 est votre candidat préféré. Vous pouvez classer autant de candidats que vous le souhaitez.</p>
   forward_mailer:
     bounce:
       subject: Votre message à Loomio n'a pas été transmis.
@@ -684,3 +694,5 @@ fr:
     pt: portugais
     zh: Chinois (traditionnel, Taïwan)
     zh-HK: Chinois (traditionnel, Taïwan)
+  upload:
+    file_too_large: Le fichier est trop volumineux. La taille maximale autorisée pour le téléchargement est %{limit}.

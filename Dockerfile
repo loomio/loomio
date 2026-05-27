@@ -6,7 +6,7 @@ WORKDIR /build/vue
 COPY vue/package.json vue/package-lock.json ./
 
 # Deterministic install
-RUN npm ci --prefer-offline --no-audit --no-fund
+RUN npm ci --no-audit --no-fund
 
 # Copy Vue source
 COPY vue ./
@@ -22,7 +22,7 @@ RUN NODE_OPTIONS=--max-old-space-size=2048 npm run build
 # Install hocuspocus dependencies
 WORKDIR /build/hocuspocus
 COPY hocuspocus/package.json hocuspocus/package-lock.json ./
-RUN npm ci --prefer-offline --no-audit --no-fund
+RUN npm ci --no-audit --no-fund
 
 FROM ruby:4.0.5-slim
 

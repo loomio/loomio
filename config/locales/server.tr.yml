@@ -109,7 +109,7 @@ tr:
     manage:
       all: "%{action} %{subject} yapma yetkisi yok."
     add_guests:
-      all: "%{subject}'inize misafir eklemek için Loomio aboneliğinizi yükseltmelisiniz. Alternatif olarak onları grubunuzun üyesi olmaya davet edebilirsiniz."
+      all: Misafir eklemek için Loomio aboneliğinizi yükseltmelisiniz. Alternatif olarak onları grubunuzun üyesi olmaya davet edebilirsiniz.
   errors:
     clear_cache: Yükleme sorunu algılandı. Shift tuşunu basılı tutun ve yeniden yükle tuşuna basın veya tarayıcınızın önbelleğini temizleyin.
     404:
@@ -148,6 +148,7 @@ tr:
       body: Üzgünüz, bir sorun oluştu. Bu sorunla ilgili bildirim aldık ve kısa süre içinde inceleyeceğiz.
     '404':
       body: İstediğiniz öğe bulunamadı. Bu durum, bir tartışma veya anket silindiğinde ortaya çıkabilir.
+    new_account_trial_group_limit: Yeni hesaplar yalnızca bir grupla sınırlıdır. Daha fazla gruba ihtiyacınız varsa lütfen destek ekibiyle iletişime geçin.
   group:
     error:
       handle_must_begin_with_parent_handle: "%{parent_handle}- ile başlamalıdır"
@@ -234,6 +235,7 @@ tr:
       notified: Yazarın size bildirmesi nedeniyle bunu aldınız.
       poll_subscribed: Ankete abone olduğunuz için bunu aldınız.
       discussion_subscribed: Bu mesajı aldınız çünkü tartışmaya abone oldunuz.
+      thread_subscribed: Bu mesajı, konuya abone olduğunuz için aldınız.
   user_mailer:
     group_export_ready:
       subject: "%{group_name} için grup verilerini dışa aktarma"
@@ -366,6 +368,9 @@ tr:
     destroy_warning:
       subject: Loomio grubunuzun silinmesi planlandı.
       body: 'Loomio grubunuz: "%{group}", %{deletor} tarafından silinmek üzere planlandı. Grubunuzun silinmesini istemiyorsanız lütfen bu e-postayı yanıtlayın. Grubu silmek istediğinizden eminseniz herhangi bir işlem yapmanıza gerek yoktur. Teşekkür ederim.'
+    trial_expired:
+      subject: Loomio grubunuz, uzun süredir aktif olmamanız nedeniyle silinecektir.
+      body: Loomio grubunuz "%{group}" pasif durumda ve 2 hafta içinde silinecektir. Grubunuzun silinmesini istemiyorsanız, lütfen bu e-postaya yanıt verin.
   poll_mailer:
     common:
       why_send_this: Bu e-postayı %{reason} nedeniyle alıyorsunuz
@@ -417,7 +422,7 @@ tr:
       disagree_meaning: Bu öneriyi destekleyebilmem için öncelikle içindeki bir şeyin değiştirilmesi gerekiyor.
       disagree_prompt: Bu öneriyi destekleyebilmeniz için nasıl geliştirilebilir?
       abstain_meaning: Bu karara oy vermemeyi tercih etmek veya oy verememek.
-      abstain_prompt: Bu karara ilişkin olarak neden çekimser kalıyorsunuz veya oy kullanamayacağınızı düşünüyorsunuz?
+      abstain_prompt: Bu karara ilişkin oylamada neden çekimser kalıyorsunuz veya oy kullanamayacağınızı düşünüyorsunuz?
     advice:
       process_subtitle: Almanız gereken bir karar hakkında tavsiye alın
       process_introduction: <p>Almanız gereken bir karar hakkında, karardan etkilenen veya uzman kişilerin tavsiyelerine başvurun; böylece kuruluşunuz için daha iyi bir karar verebilirsiniz.</p><ul><li><p> Tavsiye, kuruluşunuz için daha iyi kararlar almanıza yardımcı olur.</p></li><li><p> İlişkileri, öğrenme fırsatlarını ve çeşitli girdileri teşvik edin.</p></li><li><p> Girişimciliği ve yaratıcılığı teşvik edin ve daha keyifli çalışmalar yapın.</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>Danışmanlık süreci hakkında daha fazla bilgi edinin</u></a> .</p>
@@ -594,6 +599,11 @@ tr:
       no_meaning: Bu öneriyi desteklemiyorum.
       no_prompt: Bu teklifi neden desteklemiyorsunuz?
       outcome_statement: "<p>Bu çoğunluk oylamasına katıldığınız için teşekkürler.</p>"
+    stv:
+      process_subtitle: Orantılı olarak birden fazla kazanan seçin.
+      process_introduction: <p>STV (Tek Transfer Edilebilir Oy Sistemi), birden fazla kazananın olduğu seçimler için kullanılan orantılı temsil yöntemidir. Seçmenler adayları tercih sırasına göre sıralar. Oy kotasına ulaşan adaylar seçilir ve fazla veya elenen oylar bir sonraki tercihlere aktarılır.</p><p> Koltuk sayısını, sayım yöntemini (İskoç veya Meek) ve kota türünü (Droop veya Hare) yapılandırın. Sonuçlar, oyların nasıl aktarıldığının tur tur ayrıntılı bir dökümünü gösterir.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/stv/index.html">STV Seçimleri hakkında daha fazla bilgi edinin</a> .</p>
+      title: Komite üyelerini seçin
+      details: <h3 id="what-is-this-election-about"><strong>Bu seçim ne hakkında?</strong></h3><p></p><h3 id="how-many-seats"> <strong>Kaç koltuk dolduruluyor?</strong></h3><p></p><h3 id="who-are-the-candidates"> <strong>Adaylar kimler?</strong></h3><p></p><p> Adayları tercih ettiğiniz sıraya sürükleyerek oy verin. 1. sırada en çok tercih ettiğiniz aday yer alır. İstediğiniz kadar adayı sıralayabilirsiniz.</p>
   forward_mailer:
     bounce:
       subject: Loomio'ya mesajınız iletilmedi
@@ -654,3 +664,5 @@ tr:
     pt: Portekizce
     zh: Çince (Geleneksel, Tayvan)
     zh-HK: Çince (Geleneksel, Tayvan)
+  upload:
+    file_too_large: Dosya çok büyük. Maksimum yükleme boyutu %{limit}.

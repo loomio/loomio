@@ -58,7 +58,6 @@ export default class UserModel extends BaseModel {
       simplesort('fullName').data();
   }
 
-  participantIds() { return []; }
   parentGroups() {
     return filter(this.groups(), group => !group.parentId);
   }

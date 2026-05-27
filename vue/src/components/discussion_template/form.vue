@@ -220,6 +220,8 @@ v-form(ref="form" @submit.prevent="submit")
           common-icon(name="mdi-plus")
       v-divider.my-4
 
+      v-checkbox(v-model="discussionTemplate.allowConcurrentPolls" :label="$t('thread_arrangement_form.allow_concurrent_polls')" :hint="$t('thread_arrangement_form.allow_concurrent_polls_description')" persistent-hint)
+
       //.text-subtitle-1.py-2.text-medium-emphasis(v-t="'thread_arrangement_form.sorting'")
       //v-radio-group(v-model="discussionTemplate.newestFirst")
       //  v-radio(:value="false")

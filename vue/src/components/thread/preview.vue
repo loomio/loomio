@@ -1,79 +1,68 @@
-<script lang="js">
-import DiscussionService from '@/shared/services/discussion_service';
-import AbilityService from '@/shared/services/ability_service';
+<script setup lang="js">
+import TopicService from '@/shared/services/topic_service';
+import LmoUrlService from '@/shared/services/lmo_url_service';
 import { pick, some } from 'lodash-es';
-import UrlFor from '@/mixins/url_for'
+import { computed } from 'vue';
+import { useDisplay } from 'vuetify';
 
-export default {
-  mixins: [UrlFor],
-  props: {
-    thread: Object,
+const props = defineProps({
+  topic: Object,
+  groupPage: { type: Boolean, default: false },
+  showGroupName: { type: Boolean, default: true }
+});
 
-    groupPage: {
-      type: Boolean,
-      default: false
-    },
+const { smAndDown, mdAndUp } = useDisplay();
 
-    showGroupName: {
-      type: Boolean,
-      default: true
-    }
-  },
+const urlFor = (model) => LmoUrlService.route({ model });
 
-  computed: {
-    isUnread() {
-      return this.thread.isUnread();
-    },
-    dockActions() {
-      return pick(DiscussionService.actions(this.thread, this), ['dismiss_thread']);
-    },
+const topicable = props.topic.topicable();
+const isPoll = props.topic.topicableType === 'Poll';
+const isUnread = computed(() => props.topic.isUnread());
 
-    menuActions() {
-      const actions = this.groupPage ?
-        this.$vuetify.display.smAndDown ?
-          ['dismiss_thread','pin_thread', 'unpin_thread', 'edit_thread', 'move_thread', 'close_thread', 'reopen_thread', 'discard_thread']
-        :
-          ['pin_thread', 'unpin_thread', 'edit_thread', 'move_thread', 'close_thread', 'reopen_thread', 'discard_thread']
-      :
-        this.$vuetify.display.smAndDown ?
-          ['dismiss_thread', 'close_thread', 'reopen_thread']
-        :
-          ['close_thread', 'reopen_thread'];
-      return pick(DiscussionService.actions(this.thread, this), actions);
-    },
+const dockActions = computed(() =>
+  pick(TopicService.actions(props.topic), ['dismiss_thread'])
+);
 
-    canPerformAny() {
-      return some(this.menuActions, action => action.canPerform());
-    }
-  }
-};
+const menuActions = computed(() => {
+  const actions = props.groupPage
+    ? smAndDown.value
+      ? ['dismiss_thread', 'pin_thread', 'unpin_thread', 'edit_thread', 'move_thread', 'lock_thread', 'unlock_thread', 'discard_thread']
+      : ['pin_thread', 'unpin_thread', 'edit_thread', 'move_thread', 'lock_thread', 'unlock_thread', 'discard_thread']
+    : smAndDown.value
+      ? ['dismiss_thread', 'lock_thread', 'unlock_thread']
+      : ['lock_thread', 'unlock_thread'];
+  return pick(TopicService.actions(props.topic), actions);
+});
 
+const canPerformAny = computed(() => some(menuActions.value, action => action.canPerform()));
 </script>
 
 <template lang="pug">
-v-list-item.thread-preview.thread-preview__link(
-  :class="{'thread-preview--unread-border': isUnread}"
-  :to='urlFor(thread)'
-)
+v-list-item.thread-preview.thread-preview__link(:to='urlFor(topic)')
   template(v-slot:prepend)
-    user-avatar.mr-3(:user='thread.author()' :size='36' no-link)
+    v-avatar(v-if="isPoll" :size="36" style="overflow: visible")
+      poll-common-icon-panel(:poll="topicable" show-my-stance :size="36")
+    user-avatar(v-else :user='topic.author()' :size='36' no-link)
   v-list-item-title(style="align-items: center")
-    span(v-if='thread.pinnedAt', :title="$t('context_panel.thread_status.pinned')")
+    span(v-if='topic.pinnedAt', :title="$t('context_panel.thread_status.pinned')")
       common-icon(size="x-small" name="mdi-pin-outline")
-    plain-text.thread-preview__title(:model="thread" field="title" :class="{'text-medium-emphasis': !isUnread, 'font-weight-medium': isUnread }")
-    v-chip.ml-1(size="x-small" label outlined color="warning" v-if='thread.closedAt')
-      span(v-t="'poll_common_action_panel.custom_template'")
-    tags-display.ml-1(:tags="thread.tags" :group="thread.group()" size="x-small")
+    plain-text.thread-preview__title(:model="topicable" field="title" :class="{'text-medium-emphasis': !isUnread, 'font-weight-medium': isUnread }")
+    v-chip.ml-1(size="x-small" label outlined color="warning" v-if='topic.lockedAt')
+      span(v-t="'discussions_panel.locked'")
+    tags-display.ml-1(:tags="topic.tags" :group="topic.group()" size="x-small")
   v-list-item-subtitle
-    span.thread-preview__group-name(v-if="showGroupName") {{ thread.group().name }}
+    span.thread-preview__group-name(v-if="showGroupName") {{ topic.group().name }}
     mid-dot(v-if="showGroupName")
-    span.thread-preview__items-count(v-t="{path: 'thread_preview.replies_count', args: {count: thread.itemsCount}}")
+    span.thread-preview__items-count(v-t="{path: 'thread_preview.items_count', args: {count: topic.itemsCount}}")
     space
-    span.thread-preview__unread-count(v-if='thread.hasUnreadActivity()' v-t="{path: 'thread_preview.unread_count', args: {count: thread.unreadItemsCount()}}")
+    span.thread-preview__unread-count(v-if='topic.hasUnreadActivity()' v-t="{path: 'thread_preview.unread_count', args: {count: topic.unreadItemsCount()}}")
     mid-dot
-    active-time-ago(:date="thread.lastActivityAt")
+    template(v-if="isPoll")
+      poll-common-closing-at(:poll="topicable" approximate)
+    template(v-else)
+      active-time-ago(:date="topic.lastActivityAt")
   template(v-slot:append)
-    action-dock(v-if='$vuetify.display.mdAndUp' :actions="dockActions")
+    action-dock(v-if='mdAndUp' :actions="dockActions")
     action-menu(v-if='canPerformAny' :actions="menuActions" icon)
 </template>
 

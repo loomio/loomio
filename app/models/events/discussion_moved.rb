@@ -3,7 +3,7 @@ class Events::DiscussionMoved < Event
 
   def self.publish!(discussion, actor, source_group)
     super discussion,
-          discussion: discussion,
+          topic: discussion.topic,
           custom_fields: { source_group_id: source_group.id },
           user: actor,
           created_at: Time.now

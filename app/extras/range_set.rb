@@ -122,7 +122,7 @@ class RangeSet
   end
 
   def self.serialize(ranges)
-    ranges.map{|r| [r.first,r.last].join('-')}.join(',')
+    ranges.map { |r| [ r.first, r.last ].join('-') }.join(',')
   end
 
   def self.reduce(ranges)

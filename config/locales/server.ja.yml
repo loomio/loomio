@@ -143,6 +143,7 @@ ja:
       body: 申し訳ございませんが、問題が発生しました。この問題については既に報告を受けており、すぐに調査いたします。
     '404':
       body: 要求されたアイテムは見つかりませんでした。ディスカッションまたはアンケートが削除されている場合に発生する可能性があります。
+    new_account_trial_group_limit: 新規アカウントはグループ登録が1つに制限されています。それ以上のグループ登録が必要な場合は、サポートまでお問い合わせください。
   group:
     error:
       handle_must_begin_with_parent_handle: "%{parent_handle} で始める必要があります -"
@@ -229,6 +230,7 @@ ja:
       notified: 著者からの通知により、これを受け取りました。
       poll_subscribed: あなたはアンケートに登録しているので、このメールを受け取りました。
       discussion_subscribed: あなたはこのディスカッションを購読しているので、このメッセージを受け取りました。
+      thread_subscribed: このメッセージは、あなたがこのスレッドを購読しているため送信されました。
   user_mailer:
     group_export_ready:
       subject: "%{group_name} のグループ データのエクスポート"
@@ -361,6 +363,9 @@ ja:
     destroy_warning:
       subject: Loomio グループは削除される予定です。
       body: 'あなたの Loomio グループ: "%{group}" は %{deletor} によって削除されるようにスケジュールされています。グループの削除を希望されない場合は、このメールにご返信ください。グループを削除してもよい場合は、何もする必要はありません。ありがとう。'
+    trial_expired:
+      subject: あなたのLoomioグループは、活動がないため削除されます。
+      body: あなたのLoomioグループ「%{group}」は非アクティブ状態のため、2週間後に削除されます。グループの削除を希望されない場合は、このメールにご返信ください。
   poll_mailer:
     common:
       why_send_this: このメールを受け取った理由は %{reason}
@@ -384,7 +389,7 @@ ja:
     manage:
       all: "%{action} %{subject} を実行する権限がありません。"
     add_guests:
-      all: "%{subject} にゲストを追加するには、Loomio サブスクリプションをアップグレードする必要があります。または、ゲストをグループのメンバーとして招待することもできます。"
+      all: ゲストを追加するには、Loomio サブスクリプションをアップグレードする必要があります。または、ゲストをグループのメンバーとして招待することもできます。
   poll_templates:
     practice_proposal:
       title: だんだん慣れてきた
@@ -594,6 +599,11 @@ ja:
       no_meaning: 私はこの提案を支持しない
       no_prompt: なぜこの提案を支持しないのですか?
       outcome_statement: "<p>この多数決投票にご参加いただきありがとうございます。</p>"
+    stv:
+      process_subtitle: 複数の当選者を比例配分で選出する
+      process_introduction: <p>単記移譲式投票（STV）は、複数当選者制の選挙における比例代表制の一種です。有権者は候補者を好みの順にランク付けします。一定数の票を獲得した候補者が当選し、余剰票または除外された候補者の票は次の優先順位の候補者に移譲されます。</p><p>議席数、集計方法（スコットランド式またはミーク式）、および割当方式（Droop式またはHare式）を設定します。結果は、投票がどのように移譲されたかのラウンドごとの内訳を示します。</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/stv/index.html">STV選挙についてもっと詳しく知りたい方はこちらをご覧ください</a>。</p>
+      title: 委員会のメンバーを選出する
+      details: <h3 id="what-is-this-election-about"><strong>今回の選挙の争点は何ですか？</strong></h3><p></p><h3 id="how-many-seats"><strong>何席が埋まる予定ですか？</strong></h3><p></p><h3 id="who-are-the-candidates"><strong>候補者は誰ですか？</strong></h3><p></p><p>候補者をドラッグして、お好みの順位に並べ替えて投票してください。1位が最も好ましい候補者です。順位付けできる候補者の数は自由です。</p>
   forward_mailer:
     bounce:
       subject: Loomioへのメッセージは配信されませんでした
@@ -654,3 +664,5 @@ ja:
     pt: ポルトガル語
     zh: 中国語（繁体字、台湾語）
     zh-HK: 中国語（繁体字、台湾語）
+  upload:
+    file_too_large: ファイルサイズが大きすぎます。アップロードできる最大サイズは%{limit}です。

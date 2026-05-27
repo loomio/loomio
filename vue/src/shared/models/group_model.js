@@ -56,6 +56,7 @@ export default class GroupModel extends BaseModel {
   }
 
   relationships() {
+    this.hasMany('topics', {find: {discardedAt: null}});
     this.hasMany('discussions', {find: {discardedAt: null}});
     this.hasMany('polls', {find: {discardedAt: null}});
     this.hasMany('membershipRequests');
@@ -199,10 +200,6 @@ export default class GroupModel extends BaseModel {
 
   memberIds() {
     return map(this.memberships(), 'userId');
-  }
-
-  participantIds() {
-    return this.memberIds();
   }
 
   adminIds() {

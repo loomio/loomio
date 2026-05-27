@@ -173,6 +173,7 @@ fr:
     ranked_choice: 'Classement par préférence '
     score: Sondage pondéré
     question: ronde de questions
+    stv: Élection STV
   timezones:
     local: Heure locale (%{value})
   common:
@@ -322,6 +323,7 @@ fr:
       rearrange: Réarranger
       save_template: Enregistrer le modèle
       fork_template: Modèle de fourche
+      customize: Personnaliser
     formatting_help:
       label: Mise en forme
       title: Apprenez à utiliser Markdown pour mettre en forme votre texte
@@ -331,6 +333,8 @@ fr:
     opening_in: Ouverture %{time}
     read_more: En savoir plus
     templates_admin_hint: En tant qu'administrateur du groupe, vous pouvez masquer ou supprimer les modèles que vous ne souhaitez pas utiliser, et modifier les autres en fonction de vos besoins.
+    read: Lire
+    unread: Non lu
   merge_accounts:
     modal:
       title: Fusionner les comptes
@@ -489,17 +493,15 @@ fr:
     changes_all_threads_and_polls_in_group: Cela modifie les paramètres de tous les fils de discussion et sondages du groupe.
     when_do_you_want_to_be_emailed: Quand souhaitez-vous recevoir des e-mails ?
     what_the_options_mean: Que signifient les options ?
-    quiet_explained: Vous ne recevrez pas d'e-mail, même si quelqu'un tente de vous contacter. Vous risquez de manquer des annonces ou des décisions importantes si vous ne consultez pas Loomio régulièrement.
     when_would_you_like_to_be_emailed_discussion: Quand souhaitez-vous recevoir un courriel concernant cette discussion ?
     changes_all_discussions_and_polls_in_group: Cela modifie les paramètres de toutes les discussions et de tous les sondages du groupe.
     normal_explained: Lorsqu'une personne saisit votre nom dans le champ « Notifier » d'une discussion ou d'un sondage, ou lorsqu'elle mentionne le groupe avec {'@'}.
     aria_label: Formulaire de modification des paramètres de messagerie
-  close_explanation_modal:
-    close_thread: Clore la discussion
-    body: |
-      <p>Fermer les discussions anciennes ou non pertinentes pour les supprimer de la vue et indiquer que la discussion a été clôturée.</p>
-      <p>N'importe qui peut toujours commenter ou démarrer un sondage sur une discussion close, mais elle n'apparaitra pas dans la liste des discussion du groupe ni sur le tableau de bord.</p>
-    image_alt: Clore toutes les discussions
+    when_do_you_want_to_be_emailed_thread: Quand souhaitez-vous recevoir un e-mail concernant cette discussion ?
+    loud_option: Chaque fois qu'une personne participe (Toute activité)
+    normal_option: Quand quelqu'un souhaite attirer mon attention (lorsqu'il est notifié)
+    quiet_option: Aucun e-mail concernant cette discussion (Désactivé)
+    quiet_explained: Vous ne recevrez pas d'e-mail, même si quelqu'un tente de vous contacter.
   inbox:
     clear: Vider
     latest: Dernier
@@ -539,6 +541,7 @@ fr:
     sign_in: Connectez-vous pour rejoindre la discussion
     add_a_comment: Ajouter un commentaire
     share_your_thoughts: Partagez vos réflexions…
+    share_on_poll: Posez une question ou partagez de nouvelles informations
   thread_nav:
     participants: Participants
   sidebar:
@@ -573,6 +576,7 @@ fr:
     new_subgroup: Nouveau sous-groupe
     find_a_group: Trouver un groupe
     direct_discussions: Discussions directes
+    unread_discussions: Discussions non lues
   strand_nav:
     newest: Les plus récents
     oldest: Les plus anciens
@@ -593,7 +597,12 @@ fr:
     showing_unread: Affichage des éléments non lus
     add_comment: Ajouter un commentaire
     start_decision: Décision de départ
-    recenter: Plus récemment
+    return: Retour
+    end: Fin
+    notifications: Notifications
+    email_all_activity: Envoyer par e-mail toute l'activité
+    email_notifications: E-mail lorsqu’une notification est envoyée
+    email_none: Pas d'e-mails
   search_modal:
     all_content: Tout le contenu
     best_match: Meilleure correspondance
@@ -630,6 +639,7 @@ fr:
     search_files_short: Rechercher des fichiers
     search_subgroups_short: Rechercher des sous-groupes
     search_discussions_in_group: Rechercher des discussions dans %{name}
+    thread_nav: Menu du fil de discussion
   user_dropdown:
     pin_sidebar: Épingler la barre latérale
     unpin_sidebar: Dés-épingler la barre latérale
@@ -661,6 +671,7 @@ fr:
     invite_to_wip_poll: Inviter à donner des commentaires
     invitations: Invitations
     discussion_members: membres de la discussion
+    thread_members: Membres du fil de discussion
   membership_dropdown:
     set_name_and_username: Définir le nom et le nom d'utilisateur
     set_title: Définir un rôle
@@ -725,6 +736,7 @@ fr:
       discussion_closed: "%{actor} a clos la discussion : %{title}"
       new_discussion: "%{actor} a lancé une discussion : %{title}"
       user_reminded: "%{actor} vous rappelle de voter pour : %{title}"
+      thread_locked: "%{actor} a verrouillé la discussion : %{title}"
     without_title:
       unknown_sender: Veuillez examiner les e-mails provenant d'un expéditeur non reconnu
       group_announced: "%{actor} vous a invité dans le group"
@@ -762,6 +774,7 @@ fr:
       new_discussion: "%{actor} a lancé une discussion"
       new_comment: "%{actor} a commenté dans une discussion"
       outcome_updated: "%{actor} a mis à jour le conclusion"
+      thread_locked: "%{actor} a verrouillé la discussion"
     hints:
       poll_closing_soon: C’est le bon moment pour voter, changer d’avis ou encourager les autres à participer.
       poll_closing_soon_author: Vous voudrez peut-être rappeler aux gens de voter ou de prolonger la date limite.
@@ -786,7 +799,7 @@ fr:
       poll_closed_by_user: "%{actor} a clôturé le %{poll_type} : %{title}"
       poll_closing_soon: "%{poll_type} se termine dans 24 heures : %{title}"
       poll_closing_soon_author: 'Votre sondage %{poll_type} se termine dans 24 heures : %{title}'
-      poll_created: 'Vote : %{title}'
+      poll_created: "%{poll_type} : %{title}"
       poll_edited: "%{actor} a mis à jour le %{poll_type} : %{title}"
       poll_expired: "%{poll_type} est clos : %{title}"
       poll_expired_author: 'Publier une conclusion : %{title}'
@@ -805,6 +818,7 @@ fr:
       discussion_edited: "%{actor} a modifié le contexte de la discussion : %{title}"
       discussion_closed: "%{actor} a clos la discussion : %{title}"
       user_reminded: "%{actor} vous rappelle de voter pour : %{title}"
+      thread_locked: "%{actor} a verrouillé la discussion : %{title}"
   discussion_fork_actions:
     move: Déplacer
     moved: Déplacer des commentaires, cette action peut prendre un moment
@@ -860,6 +874,7 @@ fr:
     direct_discussion: Discussion directe
     direct_discussion_hint: Une conversation privée n'est visible que par les personnes que vous invitez. Elle n'apparaît pas dans la liste des discussions d'un groupe ; vous la trouverez sur la page « Conversations privées ».
     recommended_poll_templates: Modèles de sondages recommandés
+    edit_discussion_context: Modifier le contexte de la discussion
   announcement:
     send_discussion: Envoyer la discussion
     send_group: Inviter des personnes à %{name}
@@ -988,6 +1003,8 @@ fr:
     poll_announced: "%{name} a invité %{length} personnes à voter :"
     discussion_notification_history: Historique des notifications de discussion
     inviting_guests_to_discussion: Les invités ne font pas partie de votre groupe et n'ont accès qu'à cette discussion.
+    topic_notification_history: Historique des notifications du fil de discussion
+    notification_history: Historique des notifications
   action_dock:
     actions_menu: Menu d'actions
     more_actions: Plus d'actions
@@ -1034,8 +1051,6 @@ fr:
     discussion_copied: URL de la discussion copiée
     url_copied: Lien copié dans presse-papiers
     tag_thread: Gérer les mots-clés
-    close_thread: Clore la discussion
-    reopen_thread: Ré-ouvrir la discussion
     delete_thread: Supprimer la discussion
     notification_history: Historique des notifications
     move_item: Déplacer l'élément
@@ -1044,9 +1059,9 @@ fr:
     count_voters: "%{count} votants"
     pin_discussion: Discussion sur les épingles
     unpin_discussion: Un-pin discussion
-    close_discussion: Discussion étroite
-    reopen_discussion: Rouvrir la discussion
     delete_discussion: Supprimer la discussion
+    lock_thread: Verrouiller la discussion
+    unlock_thread: Déverrouiller le fil de discussion
   formatting:
     formatting_tools: Outils de formatage du texte
     colors: Couleurs
@@ -1180,7 +1195,6 @@ fr:
     settings: Paramètres
     subgroups: Sous-groupes
     show_opened: "%{count} ouvertes"
-    show_closed: "%{count} fermés"
     no_threads_here: Pas de discussions à afficher ici !
     search_threads: Rechercher des discussions…
     private_threads: Vous devez être membre du groupe pour voir des discussions privées de ce groupe
@@ -1198,7 +1212,6 @@ fr:
     new_cover_photo: Charger une nouvelle photo de couverture
     new_group_logo: Charger un nouveau logo de groupe
     open_discussions: Discussions en cours
-    closed_discussions: Discussions closes
     discussions_placeholder: Une discussion est l’endroit où tout le monde peut discuter d’un sujet et prendre des décisions collectives.
     members_placeholder: 'Vous êtes le seul membre ici: invitez des personnes à vous rejoindre !'
     member_options: Options des membres
@@ -1247,8 +1260,10 @@ fr:
     discussions: Discussions
     no_discussions_here: Aucune discussion à signaler ici !
     private_discussions: Vous devez être membre pour consulter les discussions privées de ce groupe.
-    view_closed_discussions: Consulter les discussions fermées
     discussion_templates: Modèles de discussion
+    show_locked: "%{count} Verrouillé"
+    view_locked_discussions: Consulter les discussions verrouillées
+    locked_discussions: Discussions verrouillées
   export_data_modal:
     title: Comment souhaitez-vous utiliser vos données ?
     as_csv: Ouvrir dans une feuille de calcul
@@ -1371,8 +1386,6 @@ fr:
     default_request_to_join_prompt: Merci de votre intérêt pour notre groupe. Veuillez vous présenter et expliquer pourquoi vous souhaitez nous rejoindre.
     upgrade_for_subgroups: 'Veuillez <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">mettre à niveau votre abonnement</a> pour créer un sous-groupe'
     share_this_url_with_people_who_want_to_join: Partagez cette URL avec les personnes qui souhaitent nous rejoindre
-    allow_polls_without_discussions: Autoriser les sondages sans discussion
-    allow_polls_without_discussions_help: Empêcher les gens de lancer des sondages sans d'abord démarrer une discussion.
     aria_label: Forme de groupe
     list_in_the_groups_directory: Liste dans l'annuaire des groupes ?
     list_in_directory_yes: Oui · afficher ce groupe sur la page « Trouver un groupe »
@@ -1614,6 +1627,7 @@ fr:
   thread_preview:
     replies_count: "%{count} réponses"
     unread_count: "%{count}non lus"
+    items_count: "%{count} articles"
   dashboard_page:
     polls_to_vote_on: Sondages sur les votes
     no_polls_to_vote_on: Il n’y a pas de sondages sur lesquels vous devez voter
@@ -1701,17 +1715,18 @@ fr:
     pin:
       pinned: Discussion épinglée
       unpinned: Discussion plus épinglée
-    closed:
-      reopened: Discussion relancée
-      closed: Discussion close
     volume:
       mute_message: Discussion désactivée
       unmute_message: Discussion activée
     direct: Direct
+    locked:
+      unlocked: Sujet déverrouillé
+      locked: Discussion verrouillée
   discussion_last_seen_by:
     title: Vu par
     no_one: Personne n'a encore vu cela pour l'instant
     disabled_anonymous_polls: L'historique des spectateurs est désactivé, car le fil de discussion contient des sondages anonymes.
+    thread_engagement: Participation au fil
   activity_card:
     count_responses:
     beginning: Début
@@ -1753,6 +1768,22 @@ fr:
     nested_twice: Deux niveaux de réponses imbriquées
     nested_twice_description: Indent répond au plus deux fois.
     changing_nesting_is_slow: Les changements à l'imbrication peuvent prendre quelques minutes à traiter.
+    layout: Mise en page
+    items: Comment afficher les éléments
+    nested: imbriqué
+    timeline: Chronologie
+    timeline_description: Articles dans l'ordre de leur publication
+    threaded: En fils
+    threaded_description: Réponses regroupées selon le sujet auquel elles répondent.
+    allow_concurrent_polls: Autoriser les sondages simultanés
+    allow_multiple_polls: Autoriser plusieurs sondages simultanément
+    allow_concurrent_polls_description: Autoriser l'ouverture simultanée de plusieurs sondages
+    allow_comments: Autoriser les commentaires
+    allow_comments_description: Autoriser les participants à publier des commentaires dans cette discussion
+    allow_reactions: Autoriser les réactions
+    allow_reactions_description: Autoriser les participants à ajouter des réactions émoji
+    topic_settings: Paramètres du sujet
+    thread_settings: Paramètres du fil de discussion
   delete_thread_form:
     title: Supprimer la discussion
     body: Êtes-vous sûr de vouloir supprimer cette discussion ?
@@ -1824,6 +1855,7 @@ fr:
     ranked_choice_title: Classement par préférence
     gradients_of_agreement_title: Gradients d’accord
     majority_title: Majorité
+    stv_title: Élection STV
   poll_option_form:
     edit_option: Option Modifier
     option_name: Nom de l’option
@@ -1961,6 +1993,9 @@ fr:
     blank: Nouveau
     blank_subtitle: Créer un nouveau modèle de sondage pour un processus spécifique
     start_a_poll: Lancer un sondage
+    export_blt: Bulletins d'exportation (BLT)
+    status: Statut
+    your_vote_is_requested: Votre vote est demandé
   poll_common_attachment_form:
     label: Pièces jointes
   poll_common_add_option:
@@ -1981,10 +2016,8 @@ fr:
     deleted: Ce sondage a été supprimé
     do_not_hide_results: Ne cachez pas les résultats
   discussions_panel:
-    open: Ouvert
     all: Tous
     unread: Non lus (%{count})
-    closed: Clôturée
     include_subgroups_mine: "%{name} et mes sous-groupes"
     include_subgroups_all: "%{name} et tous les sous-groupes"
     no_results_found: Pas de résultats pour "%{search}"
@@ -1992,6 +2025,8 @@ fr:
     lets_start_a_thread: Commençons un fil de discussion. Cliquez sur "Nouveau fil de discussion" pour continuer.
     lets_start_a_discussion: Ouvrons la discussion. Cliquez sur « Nouvelle discussion » pour continuer.
     new_discussion: Nouvelle discussion
+    locked: Verrouillé
+    unlocked: Déverrouillé
   members_panel:
     bot: Bot
     no_results: 'Aucun membres trouvés '
@@ -2035,13 +2070,6 @@ fr:
     closed: Clôturée
     need_vote: Besoin d’un vote
     no_polls: Pas de sondage trouvé
-    standalone_disabled_title: Les sondages autonomes sont désactivés.
-    standalone_disabled_helptext: "<p>Ce groupe exige que les sondages soient lancés au sein d'une discussion.</p><p> Les discussions permettent aux citoyens de comprendre le contexte, de poser des questions et de partager leurs points de vue avant de voter. Cela conduit à de meilleures décisions.</p><p> Commencez par lancer une discussion, puis ajoutez un sondage lorsque vous serez prêt à recueillir des votes.</p>"
-    start_discussion: Lancer une discussion
-    standalone_warning_title: Envisagez d'abord d'entamer une discussion.
-    start_poll_anyway: Lancez quand même le sondage
-    start_discussion_instead: Lancez plutôt une discussion
-    standalone_warning_helptext: "<p>Les sondages fonctionnent mieux lorsque les gens peuvent d'abord discuter du sujet.</p><p> Sans discussion, les électeurs ne peuvent ni poser de questions, ni exprimer leurs préoccupations, ni suggérer d'améliorations.</p><p> Pour une expérience optimale, commencez par une discussion, établissez une compréhension partagée, puis ajoutez un sondage lorsque vous serez prêt à recueillir les avis des participants.</p>"
   group_files_panel:
     no_files: Pas de fichiers trouvés
     filename: Nom de fichier
@@ -2130,6 +2158,8 @@ fr:
     change_results_order: Changer l’ordre des résultats
     none_of_the_above: "(Aucun des choix ci-dessus)"
     name_or_username: Nom ou nom d'utilisateur
+    cast: Exprimés
+    uncast: Non exprimés
   poll_common_undecided_panel:
     show_undecided: Afficher les %{count} indécis
     show_invitations: Montrer les invitations en attente
@@ -2328,6 +2358,8 @@ fr:
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a actualisé son vote sur: <strong>%{title}</strong>"
     event_removed: retiré de la discussion
     new: nouveau
+    thread_locked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a verrouillé la discussion"
+    thread_unlocked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> a déverrouillé la discussion"
   add_poll_to_thread_modal:
     success: "%{pollType} ajouté à la discussion avec succès !"
   auth_form:
@@ -2398,6 +2430,7 @@ fr:
     want_to_set_password: Vous souhaitez vous connecter avec un mot de passe la prochaine fois ?
     change_your_password: Souhaitez-vous définir un nouveau mot de passe ?
     email_placeholder: vous{'@'}exemple.com
+    turnstile_required: Veuillez effectuer la vérification avant de continuer.
   chatbot:
     configure_chatbot: Configurer le chatbot
     test_connection: Tester la connexion
@@ -2525,6 +2558,7 @@ fr:
     country_disclaimer: Le pays est basé sur l'adresse IP de l'utilisateur et n'est pas très précis. Considérez ceci comme un guide approximatif uniquement.
     total_discussions: Discussions complètes
     discussions_with_polls: Discussions avec sondages
+    download_csv: Télécharger le fichier CSV
   tips:
     youve_completed_all_the_steps: "\U0001F389 Vous avez terminé toutes les étapes !"
     getting_started_checklist: Liste de contrôle de démarrage
@@ -2570,7 +2604,7 @@ fr:
     who_can_vote: Qui peut voter ?
     specified_voters_only_true: Personnes invitées uniquement
     specified_voters_only_false_group: Quelqu'un dans le groupe
-    specified_voters_only_false_discussion: Quelqu'un dans le fil
+    specified_voters_only_false_discussion: Toute personne dans le fil
     invite_people_next: Vous pouvez choisir qui est invité à voter après avoir démarré le %{poll_type}
     show_none_of_the_above: Inclure une option « Aucune des réponses ci-dessus »
     show_options_in_random_order: Afficher les options dans un ordre aléatoire
@@ -2607,6 +2641,7 @@ fr:
       helptext_on: Ne montrez pas comment les gens ont voté jusqu'à la clôture du sondage
     short_reason_can_be_helpful: Les motifs de vote concis sont plus faciles à comprendre. Un recueil concis de motifs constitue une excellente ressource pour prendre une décision.
     shuffle_options: Options de lecture aléatoire
+    selected_people_only: Personnes sélectionnées uniquement
   poll_common_form:
     quorum: Quorum
     participation_quorum: Quorum de participation
@@ -2657,6 +2692,8 @@ fr:
       time_poll_hint: Les électeurs indiquent quand ils sont disponibles pour se réunir
       rank: Rang
       time: Temps
+      stv: Élection STV
+      stv_hint: Élire plusieurs vainqueurs proportionnellement au moyen du vote unique transférable
     process: Processus
     process_name: Titre du modèle
     process_name_hint: 'Comment appelle-t-on ce modèle ? Par exemple : « Conseils sur les rôles », « Vérification de la température », « Approbation du compte rendu ».'
@@ -2728,8 +2765,6 @@ fr:
     invited_by: Invité par
     invited_on: Invité sur
     no_receipts: Ce sondage anonyme a été fermé avant que la fonction de vérification n'existe, la vérification n'est donc pas possible.
-  close_discussion_modal:
-    body: Fermer les discussions pour les retirer de la liste des discussions ouvertes et empêcher les commentaires.
   comment_reply_form:
     aria_label: Ajouter une réponse
   discussion_template:
@@ -2777,14 +2812,14 @@ fr:
     these_are_templates_admin_hint: Les administrateurs du groupe peuvent modifier les modèles, en créer de nouveaux, les réorganiser et les afficher/masquer. Seuls les administrateurs peuvent voir les modèles masqués.
     show_hidden_templates: Afficher les modèles cachés
     show_fewer: Afficher moins
-    start_a_new_discussion: Lancer une nouvelle discussion
     start_discussion: Lancer une discussion
     start_a_direct_discussion: Entamez une discussion directe
     these_are_templates: Voici les modèles de discussion de votre groupe.
+    start_a_new_discussion: Lancer une nouvelle discussion
   context_panel:
     thread_status:
       pinned: Cette discussion a été épinglée. Elle restera en haut de la liste des discussions du groupe pour tous les utilisateurs.
-      closed: Cette discussion est close. Elle n'apparaîtra plus sur le tableau de bord et sera répertoriée sous « Clôturée » sur la page du groupe.
+      locked: Cette discussion est désormais verrouillée. Elle n'apparaîtra plus sur le tableau de bord et sera répertoriée sous « Verrouillé » sur la page du groupe.
   thread_group:
     aria_label: Nom du groupe
   discussion_context:
@@ -2795,8 +2830,8 @@ fr:
   pin_discussion_modal:
     helptext: Les discussions épinglées apparaissent toujours dans la liste des discussions du groupe.
   delete_discussion_form:
-    body: Êtes-vous sûr de vouloir supprimer cette discussion ?
     discussion_deleted: Discussion supprimée
+    body: Êtes-vous sûr de vouloir supprimer cette discussion ?
   move_discussion_form:
     title: Déplacer la discussion vers un autre groupe
     body: Groupe de destination
@@ -2813,3 +2848,58 @@ fr:
     opening_hour: Heures d'ouverture
     scheduled_hint: Le sondage sera visible mais il ne sera pas possible de voter avant l'heure d'ouverture.
     draft_hint: Ce sondage sera enregistré comme brouillon. Définissez une date d'ouverture ou cochez « Ouverture immédiate du vote » lorsque vous serez prêt(e) à voter.
+  strand_members_list:
+    notify_members_or_invite_guests_info: Prévenez les membres du groupe par leur nom ou invitez les personnes extérieures par leur adresse courriel. Les invités pourront participer à cette discussion, mais n'auront pas accès aux autres discussions du groupe.
+    notify_members_info: Saisissez les noms des membres du groupe pour les informer de cette discussion.
+    specified_voters_only_warning: Ce fil de discussion contient des sondages où seules certaines personnes peuvent voter. Ajouter quelqu'un avec ce formulaire ne lui donnera pas de vote, seulement la possibilité de suivre la discussion et de commenter. Si vous souhaitez attribuer des votes, utilisez "Ajouter des votants" dans le sondage.
+  poll_common_details_meta:
+    opened: Ouvert
+    opens: S'ouvre
+    closed: Fermé
+    closes: Ferme
+    opened_at: Ouvert à
+    opening_at: Ouverture à
+    closed_at: Fermé à
+    closing_at: Fermeture à
+  poll_stv_vote_form:
+    helptext: Faites glisser les candidats au-dessus de la ligne pour les classer. Les éléments en dessous de la ligne ne sont pas classés. Le candidat de rang 1 est votre préféré.
+    divider_text: Faites glisser les candidats au-dessus de cette ligne pour les classer.
+    stance_created: Vote enregistré
+    stance_updated: Vote mis à jour
+  poll_stv_form:
+    settings_title: Paramètres électoraux STV
+    settings_helptext: Configurez le nombre de sièges à pourvoir, la méthode de comptage et le type de quota pour cette élection.
+    seats_label: Nombre de sièges à remplir
+    method_label: Méthode de comptage
+    method_scottish: Scottish STV (recommended)
+    method_meek: Meek STV
+    quota_label: Type de quota
+    quota_droop: Droop quota (recommended)
+    quota_hare: Hare quota
+  poll_stv_results:
+    title: Résultats des élections
+    elected: Élu
+    not_elected: Non élu
+    tied: Égalité
+    no_candidates_elected: Aucun candidat élu
+    round: Tour %{number}
+    quota_info: "%{method}, %{quota_type} quota (%{quota} votes needed)"
+    method_scottish: Scottish STV
+    method_meek: Meek STV
+    quota_droop: Droop
+    quota_hare: Hare
+    elected_in_round: Elected in round %{round}
+    eliminated_in_round: Eliminated in round %{round}
+    tied_in_round: Tied in round %{round}
+    votes: votes
+    candidate: Candidat
+    round_elected: Tour élu
+    first_preferences: Premières préférences
+    final_tally: Bilan final
+    quota_surplus: Surplus
+    round_details: Détails tour par tour
+    view_full_results: Afficher les résultats complets
+    results_available_when_closed: Les résultats seront disponibles à la clôture du vote.
+  lock_thread_modal:
+    body: Verrouillez les sujets pour les retirer de la liste des sujets ouverts et empêcher les commentaires.
+    explanation: Verrouillez les discussions pour empêcher les commentaires et les modifications.
