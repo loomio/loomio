@@ -62,7 +62,7 @@ class Outcome < ApplicationRecord
   belongs_to :author, class_name: 'User', required: true
   has_many :stances, through: :poll
 
-  delegate :poll_type, :dates_as_options, :group, :group_id, :locale, :mailer, :members, :admins, :discarded?, :tags, :topic, to: :poll
+  delegate :poll_type, :dates_as_options, :group, :group_id, :locale, :mailer, :members, :admins, :discarded?, :tags, :topic, :topic_id, to: :poll
 
   is_mentionable on: :statement
   is_translatable on: :statement

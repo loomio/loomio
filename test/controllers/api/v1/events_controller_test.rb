@@ -221,6 +221,40 @@ class Api::V1::EventsControllerTest < ActionController::TestCase
     refute_includes event_ids, event2.id
   end
 
+  # -- Outcome comment serialization --
+
+  test "index serializes comment with outcome parent without raising NoMethodError on topic_id" do
+    # Regression: Outcome lacked topic_id delegation, so comment.topic_id
+    # (which delegates to parent.topic_id) raised NoMethodError for Outcome parents.
+    sign_in @user
+    @discussion.topic.update!(allow_concurrent_polls: true)
+
+    poll = PollService.create(params: {
+      title: "Test proposal",
+      poll_type: "proposal",
+      topic_id: @discussion.topic_id,
+      specified_voters_only: true,
+      closing_at: 3.days.from_now,
+      poll_option_names: %w[agree disagree]
+    }, actor: @user)
+    poll.update!(closed_at: 1.day.ago)
+
+    outcome = Outcome.new(poll: poll, author: @user, statement: "We decided")
+    OutcomeService.create(outcome: outcome, actor: @user)
+
+    comment = Comment.new(parent: outcome, body: "Comment on outcome", user: @user)
+    comment.save!
+    comment.create_missing_created_event!
+
+    get :index, params: { discussion_id: @discussion.id }, format: :json
+    assert_response :success
+
+    json = JSON.parse(response.body)
+    comment_json = json['comments']&.find { |c| c['id'] == comment.id }
+    assert comment_json, "Expected comment in response"
+    assert_equal poll.topic_id, comment_json['topic_id']
+  end
+
   # -- Discussion reader in response --
 
   test "responds with discussion and topic with reader" do
