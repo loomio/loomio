@@ -7,6 +7,15 @@ class PollService
     poll.assign_attributes_and_files(params)
     poll.author = actor
     poll.prioritise_poll_options!
+
+    # When private isn't explicitly sent (polls don't surface a privacy toggle),
+    # derive it from the group's discussion_privacy_options so we don't create
+    # a private topic in a group that only allows public threads.
+    unless topic_params.key?(:private)
+      group = Group.find_by(id: topic_params[:group_id] || poll.group_id)
+      topic_params[:private] = group ? !group.public_discussions_only? : true
+    end
+
     poll.topic ||= Topic.new topic_params.merge(topicable: poll)
 
     if !poll.opened_at &&
@@ -355,6 +364,7 @@ class PollService
   end
 
   def self.backfill_standalone_poll_stance_thread_items(dry_run: false, repair: true, mark_closed_read: true, progress: nil, progress_every: 100)
+    progress&.call("Finding standalone poll stance events to attach...")
     rows = if dry_run
       ActiveRecord::Base.connection.select_all(<<~SQL.squish)
         SELECT topic_id FROM (#{standalone_poll_stance_thread_item_candidates_sql}) candidate_events
@@ -377,9 +387,12 @@ class PollService
     end
 
     attached_topic_ids = rows.map { |row| row["topic_id"] }.uniq
+    progress&.call("Found #{rows.length} stance events to attach across #{attached_topic_ids.length} standalone poll topics.")
+    progress&.call("Finding standalone poll topics with unsequenced stance events...")
     repair_topic_ids = standalone_poll_topic_ids_newest_first(
       attached_topic_ids + standalone_poll_stance_thread_item_repair_topic_ids
     )
+    progress&.call("Found #{repair_topic_ids.length} standalone poll topics to repair.")
 
     if repair && !dry_run
       progress&.call("Repairing #{repair_topic_ids.length} standalone poll topics...") if repair_topic_ids.any?

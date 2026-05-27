@@ -492,6 +492,23 @@ class PollServiceTest < ActiveSupport::TestCase
       PollService.standalone_poll_topic_ids_newest_first([older_poll.topic_id, newer_poll.topic_id])
   end
 
+  test "creates public topic when group requires public discussions" do
+    open_group = Group.new(
+      name: "Open Group #{SecureRandom.hex(4)}",
+      group_privacy: 'open'
+    )
+    open_group.save!
+    Membership.create!(user: @user, group: open_group, accepted_at: Time.current, admin: true)
+
+    poll = PollService.create(
+      params: poll_params(group_id: open_group.id),
+      actor: @user
+    )
+
+    assert open_group.public_discussions_only?, "group should require public discussions"
+    assert_equal false, poll.topic.private, "topic should be public for an open group"
+  end
+
   private
 
   def poll_params(overrides = {})

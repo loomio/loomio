@@ -93,6 +93,7 @@ namespace :loomio do
   task backfill_standalone_poll_stance_thread_items: :environment do
     $stdout.sync = true
     dry_run = ENV["DRY_RUN"].present?
+    puts "#{dry_run ? 'Starting dry run for' : 'Starting'} standalone poll stance backfill..."
     stats = PollService.backfill_standalone_poll_stance_thread_items(
       dry_run: dry_run,
       mark_closed_read: true,
