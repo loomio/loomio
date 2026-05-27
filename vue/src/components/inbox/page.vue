@@ -13,7 +13,7 @@ const threadLimit = 50;
 const filters = [
   'only_threads_in_my_groups',
   'show_unread',
-  'hide_muted',
+  'show_recent',
   'hide_dismissed'
 ];
 
@@ -92,6 +92,7 @@ v-main
         span(v-t="'inbox_page.no_groups.or'")
         | &nbsp;
         span(v-html="$t('inbox_page.no_groups.join_group')")
+      p.text-caption.text-medium-emphasis.text-center.mt-2(v-t="'inbox_page.recent_activity_notice'")
       .inbox-page__group(v-for='group in groups', :key='group.id')
         v-card.mb-3(v-if='viewsByGroup[group.key].length > 0')
           v-list

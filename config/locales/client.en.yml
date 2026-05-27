@@ -1774,6 +1774,7 @@ en:
     # unread_threads: Unread Threads
     unread_discussions: Unread discussions
     view_more: View More
+    recent_activity_notice: Only showing threads with activity in the last 6 weeks.
     no_groups:
       explanation: You have no unread discussions because you are not a member of any groups.
       start: Start
