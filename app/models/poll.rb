@@ -101,6 +101,10 @@ class Poll < ApplicationRecord
     define_method field, -> { AppConfig.poll_types.dig(self.poll_type, field) }
   end
 
+  def author
+    super || LoggedOutUser.new(name: I18n.t('profile_page.deleted_account'))
+  end
+
   def title_model
     self
   end

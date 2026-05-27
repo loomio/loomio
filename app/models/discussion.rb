@@ -117,6 +117,10 @@ class Discussion < ApplicationRecord
     g.update_closed_polls_count
   end
 
+  def author
+    super || LoggedOutUser.new(name: I18n.t('profile_page.deleted_account'))
+  end
+
   def title_model
     self
   end
