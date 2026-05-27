@@ -80,7 +80,7 @@
   "devDependencies": {
     "@originjs/vite-plugin-commonjs": "latest",
     "@vitejs/plugin-vue": "^6.0.7",
-    "nightwatch": "^3.15.0",
+    "nightwatch": "^3.16.0",
     "pug": "latest",
     "sass": "latest",
     "unplugin-vue-components": "latest",
