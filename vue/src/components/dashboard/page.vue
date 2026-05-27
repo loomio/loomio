@@ -1,22 +1,18 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue';
-import { useRoute } from 'vue-router';
 import Records        from '@/shared/services/records';
 import Session        from '@/shared/services/session';
 import EventBus       from '@/shared/services/event_bus';
 import RecordLoader   from '@/shared/services/record_loader';
 import { useWatchRecords } from '@/composables/useWatchRecords';
 
-const route = useRoute();
 const { watchRecords } = useWatchRecords();
 
 const dashboardLoaded = ref(Records.topics.collection.data.length > 0);
-const filter = ref(route.params.filter || 'hide_muted');
 const topics = ref([]);
 const loader = ref(null);
 
 const noGroups = computed(() => Session.user().groups().length === 0);
-const userHasMuted = computed(() => Session.user().hasExperienced("mutingThread"));
 
 function titleVisible(visible) {
   EventBus.$emit('content-title-visible', visible);
@@ -26,10 +22,12 @@ function query() {
   const groupIds = Session.user().groupIds();
   let chain = Records.topics.collection.chain();
   chain = chain.find({lockedAt: null});
+  chain = chain.find({discardedAt: null});
   chain = chain.find({$or: [
     {groupId: {$in: groupIds}},
     {readerGuest: true}
   ]});
+  chain = chain.where(topic => !topic.isDismissed());
   chain = chain.simplesort('lastActivityAt', true);
   chain = chain.limit(30);
   topics.value = chain.data();
@@ -101,10 +99,7 @@ v-main
         .dashboard-page__empty(v-if='topics.length == 0')
           p(v-html="$t('dashboard_page.no_groups.show_all')" v-if='noGroups')
           .dashboard-page__no-threads(v-if='!noGroups')
-            span(v-show="filter == 'show_all'" v-t="'dashboard_page.no_threads.show_all'")
-            span(v-show="filter == 'show_muted' && userHasMuted", v-t="'dashboard_page.no_threads.show_muted'")
-            router-link(to='/dashboard', v-show="filter != 'show_all' && userHasMuted")
-              span(v-t="'dashboard_page.view_recent'")
+            span(v-t="'dashboard_page.no_threads.show_all'")
         .dashboard-page__collections(v-if='topics.length')
           v-card.mb-3.thread-preview-collection__container.thread-previews-container
             v-list.thread-previews(lines="two")
@@ -113,6 +108,6 @@ v-main
                 v-for="topic in topics"
                 :key="topic.id"
                 :topic="topic")
-          .dashboard-page__footer(v-if='!loader.exhausted')  
+          .dashboard-page__footer(v-if='!loader.exhausted')
           loading(v-show='loader.loading')
 </template>

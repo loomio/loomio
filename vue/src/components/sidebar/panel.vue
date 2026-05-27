@@ -4,6 +4,7 @@ import { useRouter, useRoute } from 'vue-router';
 import { useDisplay } from 'vuetify';
 import { useTheme } from 'vuetify';
 import { compact } from 'lodash-es';
+import { subWeeks } from 'date-fns';
 
 import AppConfig from '@/shared/services/app_config';
 import Session from '@/shared/services/session';
@@ -114,7 +115,8 @@ const updateGroups = () => {
 
 const updateUnreadCounts = () => {
   unreadTopicCounts.value = {};
-  Records.topics.collection.chain().where(t => t.isUnread()).data().forEach((t) => {
+  const recentCutoff = subWeeks(new Date, 6);
+  Records.topics.collection.chain().find({lastActivityAt: {$gt: recentCutoff}}).where(t => t.isUnread()).data().forEach((t) => {
     unreadTopicCounts.value['total'] = (unreadTopicCounts.value['total'] || 0) + 1;
     const groupId = t.groupId || 'direct'
     unreadTopicCounts.value[groupId] = (unreadTopicCounts.value[groupId] || 0) + 1;
