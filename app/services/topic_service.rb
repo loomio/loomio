@@ -232,7 +232,8 @@ class TopicService
     end
 
     created_event = topicable.created_event
-    created_event.update_columns(sequence_id: 0, position: 0, depth: 0, position_key: '00000', topic_id: topic.id)
+    Event.where(topic_id: topic.id, sequence_id: 0).where.not(id: created_event.id).update_all(sequence_id: nil, position: 0, position_key: nil)
+    created_event.update_columns(sequence_id: 0, position: 0, depth: 0, parent_id: nil, position_key: '00000', topic_id: topic.id)
 
     Event.where(topic_id: topic.id, sequence_id: nil).where.not(id: created_event.id).order(:id).each(&:set_sequence_id!)
 
@@ -257,7 +258,7 @@ class TopicService
       )
       WHERE topic_id = #{topic.id.to_i}")
 
-    created_event.reload.update_child_count
+    created_event.reload.update_columns(child_count: created_event.children.count)
     topic.update_sequence_info!
 
     # ensure all the topic_readers have valid read_ranges values

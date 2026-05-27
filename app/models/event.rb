@@ -124,7 +124,10 @@ class Event < ApplicationRecord
 
   def root_event?
     return true if kind == 'new_discussion'
-    return true if kind == 'poll_created' && eventable&.topic&.topicable == eventable
+    if kind == 'poll_created' && eventable&.topic&.topicable == eventable
+      created_event = eventable.created_event
+      return true if created_event.nil? || created_event == self
+    end
     false
   end
 
@@ -178,7 +181,12 @@ class Event < ApplicationRecord
       p.is_a?(Event) ? p : (p&.topic_event || p&.created_event || topic&.topicable&.created_event)
     when 'poll_closed_by_user' then eventable.created_event
     when 'poll_closing_soon'   then eventable.created_event
-    when 'poll_created'        then eventable.topic.topicable == eventable ? nil : eventable.topic.topicable.created_event
+    when 'poll_created'
+      if eventable.topic.topicable == eventable
+        eventable.created_event == self ? nil : eventable.created_event
+      else
+        eventable.topic.topicable.created_event
+      end
     when 'poll_edited'         then eventable.created_event
     when 'poll_expired'        then eventable.created_event
     when 'poll_option_added'   then eventable.created_event

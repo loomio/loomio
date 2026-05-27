@@ -402,6 +402,96 @@ class PollServiceTest < ActiveSupport::TestCase
     assert_nil TopicReader.find_by(topic: poll.topic, user: member)
   end
 
+  test "backfill_standalone_poll_stance_thread_items attaches visible stance events to standalone poll topics" do
+    poll = create_poll(specified_voters_only: true)
+    PollService.create_stances(poll: poll, actor: @user, user_ids: [@user.id])
+    stance = poll.stances.latest.find_by!(participant_id: @user.id)
+    stance.reason = "I agree"
+    stance.choice = "Agree"
+    stance.save!
+    event = Events::StanceCreated.publish!(stance)
+
+    event.update_columns(topic_id: nil, sequence_id: nil, parent_id: nil, position: 0, position_key: nil, depth: 0)
+    TopicService.repair(poll.topic_id)
+    poll.topic.reload
+
+    assert_equal [poll.created_event.id], poll.topic.items.order(:sequence_id).pluck(:id)
+
+    stats = PollService.backfill_standalone_poll_stance_thread_items(mark_closed_read: false)
+
+    event.reload
+    assert_equal poll.topic_id, event.topic_id
+    assert_equal poll.created_event.id, event.parent_id
+    assert_operator event.sequence_id, :>, 0
+    assert_equal({ events: 1, topics: 1, repair_topics: 1 }, stats)
+  end
+
+  test "backfill_standalone_poll_stance_thread_items ignores blank stance events" do
+    poll = create_poll(specified_voters_only: true)
+    PollService.create_stances(poll: poll, actor: @user, user_ids: [@user.id])
+    stance = poll.stances.latest.find_by!(participant_id: @user.id)
+    stance.choice = "Agree"
+    stance.save!
+    event = Events::StanceCreated.publish!(stance)
+
+    stats = PollService.backfill_standalone_poll_stance_thread_items(mark_closed_read: false)
+
+    assert_nil event.reload.topic_id
+    assert_equal({ events: 0, topics: 0, repair_topics: 0 }, stats)
+  end
+
+  test "backfill_standalone_poll_stance_thread_items repairs partially attached stance events" do
+    poll = create_poll(specified_voters_only: true)
+    PollService.create_stances(poll: poll, actor: @user, user_ids: [@user.id])
+    stance = poll.stances.latest.find_by!(participant_id: @user.id)
+    stance.reason = "I agree"
+    stance.choice = "Agree"
+    stance.save!
+    event = Events::StanceCreated.publish!(stance)
+    event.update_columns(topic_id: poll.topic_id, sequence_id: nil, parent_id: nil, position: 0, position_key: nil, depth: 0)
+
+    stats = PollService.backfill_standalone_poll_stance_thread_items(mark_closed_read: false)
+
+    event.reload
+    assert_equal 0, stats[:events]
+    assert_equal 0, stats[:topics]
+    assert_equal 1, stats[:repair_topics]
+    assert_equal poll.created_event.id, event.parent_id
+    assert_operator event.sequence_id, :>, 0
+  end
+
+  test "backfill_standalone_poll_stance_thread_items marks closed poll topics totally read" do
+    poll = create_poll(specified_voters_only: true)
+    PollService.create_stances(poll: poll, actor: @user, user_ids: [@user.id])
+    stance = poll.stances.latest.find_by!(participant_id: @user.id)
+    stance.reason = "I agree"
+    stance.choice = "Agree"
+    stance.save!
+    event = Events::StanceCreated.publish!(stance)
+    event.update_columns(topic_id: nil, sequence_id: nil, parent_id: nil, position: 0, position_key: nil, depth: 0)
+    TopicService.repair(poll.topic_id)
+    PollService.close(poll: poll, actor: @user)
+
+    reader = TopicReader.for(topic: poll.topic, user: @user)
+    reader.viewed!([[0, 0]])
+
+    stats = PollService.backfill_standalone_poll_stance_thread_items(mark_closed_read: true)
+
+    assert_equal 0, reader.reload.unread_items_count
+    assert_equal poll.topic.reload.ranges, reader.read_ranges
+    assert_equal 1, stats[:repair_topics]
+    assert_equal 1, stats[:closed_read][:topics]
+    assert_operator stats[:closed_read][:readers_updated], :>=, 1
+  end
+
+  test "standalone_poll_topic_ids_newest_first orders newest polls first" do
+    older_poll = create_poll(created_at: 2.days.ago)
+    newer_poll = create_poll(created_at: 1.day.ago)
+
+    assert_equal [newer_poll.topic_id, older_poll.topic_id],
+      PollService.standalone_poll_topic_ids_newest_first([older_poll.topic_id, newer_poll.topic_id])
+  end
+
   private
 
   def poll_params(overrides = {})

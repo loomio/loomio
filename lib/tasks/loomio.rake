@@ -79,13 +79,32 @@ namespace :loomio do
 
   desc "Mark closed standalone poll topics as read for their current readers"
   task mark_closed_poll_topics_read: :environment do
+    $stdout.sync = true
     dry_run = ENV["DRY_RUN"].present?
-    stats = PollService.mark_closed_poll_topics_read(dry_run: dry_run)
+    stats = PollService.mark_closed_poll_topics_read(dry_run: dry_run, progress: ->(message) { puts message })
 
     prefix = dry_run ? "DRY RUN: would mark" : "Marked"
     puts "#{prefix} #{stats[:topics]} closed poll topics as read"
     puts "#{dry_run ? 'Would create' : 'Created'} #{stats[:readers_created]} topic readers"
     puts "#{dry_run ? 'Would update' : 'Updated'} #{stats[:readers_updated]} topic readers"
+  end
+
+  desc "Attach legacy standalone poll stance events to poll topics"
+  task backfill_standalone_poll_stance_thread_items: :environment do
+    $stdout.sync = true
+    dry_run = ENV["DRY_RUN"].present?
+    stats = PollService.backfill_standalone_poll_stance_thread_items(
+      dry_run: dry_run,
+      mark_closed_read: true,
+      progress: ->(message) { puts message }
+    )
+
+    prefix = dry_run ? "DRY RUN: would attach" : "Attached"
+    puts "#{prefix} #{stats[:events]} stance events to #{stats[:topics]} standalone poll topics"
+    puts "#{dry_run ? 'Would repair' : 'Repaired'} #{stats[:repair_topics]} standalone poll topics"
+    puts "#{dry_run ? 'Would mark' : 'Marked'} #{stats[:closed_read][:topics]} closed poll topics as read"
+    puts "#{dry_run ? 'Would create' : 'Created'} #{stats[:closed_read][:readers_created]} topic readers"
+    puts "#{dry_run ? 'Would update' : 'Updated'} #{stats[:closed_read][:readers_updated]} topic readers"
   end
 
   task check_translations: :environment do

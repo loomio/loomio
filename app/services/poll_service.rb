@@ -284,13 +284,13 @@ class PollService
     end
   end
 
-  def self.mark_closed_poll_topics_read(dry_run: false)
+  def self.mark_closed_poll_topics_read(dry_run: false, progress: nil)
     stats = { topics: 0, readers_created: 0, readers_updated: 0 }
     processed = 0
 
     Poll.closed.kept.joins(:topic).where(topics: { topicable_type: 'Poll' }).find_each do |poll|
       processed += 1
-      puts "Processing poll #{processed} (id=#{poll.id})..." if (processed % 100).zero?
+      progress&.call("Processing poll #{processed} (id=#{poll.id})...") if (processed % 100).zero?
 
       topic = poll.topic
       ranges = RangeSet.ranges_from_list(topic.items.where.not(sequence_id: nil).order(:sequence_id).pluck(:sequence_id))
@@ -323,15 +323,139 @@ class PollService
     # Update counter caches in bulk after all readers are written
     unless dry_run
       topic_ids = Poll.closed.kept.joins(:topic).where(topics: { topicable_type: 'Poll' }).pluck('topics.id')
-      topic_ids.each_slice(500) do |ids|
-        Topic.where(id: ids).find_each do |topic|
-          topic.update_seen_by_count
-          topic.update_members_count
-        end
+      progress&.call("Updating counters for #{topic_ids.length} closed poll topics...")
+
+      topic_ids.each_slice(1_000).with_index(1) do |ids, batch|
+        progress&.call("Updating closed poll topic counter batch #{batch}/#{(topic_ids.length / 1_000.0).ceil}...")
+        update_topic_reader_counters_for_topic_ids(ids)
       end
     end
 
     stats
+  end
+
+  def self.update_topic_reader_counters_for_topic_ids(topic_ids)
+    ids = Array(topic_ids).map(&:to_i).uniq
+    return if ids.empty?
+
+    ActiveRecord::Base.connection.execute(<<~SQL.squish)
+      UPDATE topics
+      SET seen_by_count = counts.seen_by_count,
+          members_count = counts.members_count
+      FROM (
+        SELECT topic_id,
+               COUNT(*) FILTER (WHERE last_read_at IS NOT NULL) AS seen_by_count,
+               COUNT(*) FILTER (WHERE revoked_at IS NULL) AS members_count
+        FROM topic_readers
+        WHERE topic_id IN (#{ids.join(',')})
+        GROUP BY topic_id
+      ) counts
+      WHERE topics.id = counts.topic_id
+    SQL
+  end
+
+  def self.backfill_standalone_poll_stance_thread_items(dry_run: false, repair: true, mark_closed_read: true, progress: nil, progress_every: 100)
+    rows = if dry_run
+      ActiveRecord::Base.connection.select_all(<<~SQL.squish)
+        SELECT topic_id FROM (#{standalone_poll_stance_thread_item_candidates_sql}) candidate_events
+      SQL
+    else
+      ActiveRecord::Base.connection.exec_query(<<~SQL.squish)
+        WITH candidate_events AS (#{standalone_poll_stance_thread_item_candidates_sql})
+        UPDATE events
+        SET topic_id = candidate_events.topic_id,
+            sequence_id = NULL,
+            parent_id = NULL,
+            position = 0,
+            position_key = NULL,
+            depth = 0,
+            updated_at = CURRENT_TIMESTAMP
+        FROM candidate_events
+        WHERE events.id = candidate_events.event_id
+        RETURNING events.topic_id
+      SQL
+    end
+
+    attached_topic_ids = rows.map { |row| row["topic_id"] }.uniq
+    repair_topic_ids = standalone_poll_topic_ids_newest_first(
+      attached_topic_ids + standalone_poll_stance_thread_item_repair_topic_ids
+    )
+
+    if repair && !dry_run
+      progress&.call("Repairing #{repair_topic_ids.length} standalone poll topics...") if repair_topic_ids.any?
+      repair_topic_ids.each.with_index(1) do |topic_id, index|
+        progress&.call("Repairing standalone poll topic #{index}/#{repair_topic_ids.length} (topic_id=#{topic_id})...") if (index % progress_every).zero?
+        TopicService.repair(topic_id)
+      end
+    end
+
+    stats = { events: rows.length, topics: attached_topic_ids.length, repair_topics: repair_topic_ids.length }
+    stats[:closed_read] = mark_closed_poll_topics_read(dry_run: dry_run, progress: progress) if mark_closed_read
+    stats
+  end
+
+  def self.standalone_poll_stance_thread_item_repair_topic_ids
+    ActiveRecord::Base.connection.select_values(<<~SQL.squish)
+      SELECT DISTINCT events.topic_id
+      FROM events
+      INNER JOIN stances
+        ON stances.id = events.eventable_id
+       AND events.eventable_type = 'Stance'
+      INNER JOIN polls
+        ON polls.id = stances.poll_id
+      INNER JOIN topics
+        ON topics.id = polls.topic_id
+       AND topics.topicable_type = 'Poll'
+       AND topics.topicable_id = polls.id
+      WHERE events.kind IN ('stance_created', 'stance_updated')
+        AND events.topic_id = polls.topic_id
+        AND events.sequence_id IS NULL
+    SQL
+  end
+
+  def self.standalone_poll_topic_ids_newest_first(topic_ids)
+    topic_ids = Array(topic_ids).uniq
+    return [] if topic_ids.empty?
+
+    Topic
+      .joins("INNER JOIN polls ON polls.id = topics.topicable_id AND topics.topicable_type = 'Poll'")
+      .where(id: topic_ids)
+      .order("polls.created_at DESC, topics.id DESC")
+      .pluck(:id)
+  end
+
+  def self.standalone_poll_stance_thread_item_candidates_sql
+    <<~SQL.squish
+      SELECT DISTINCT ON (events.eventable_id)
+             events.id AS event_id,
+             polls.topic_id AS topic_id
+      FROM events
+      INNER JOIN stances
+        ON stances.id = events.eventable_id
+       AND events.eventable_type = 'Stance'
+      INNER JOIN polls
+        ON polls.id = stances.poll_id
+      INNER JOIN topics
+        ON topics.id = polls.topic_id
+       AND topics.topicable_type = 'Poll'
+       AND topics.topicable_id = polls.id
+      WHERE events.kind IN ('stance_created', 'stance_updated')
+        AND events.topic_id IS NULL
+        AND stances.latest = TRUE
+        AND stances.revoked_at IS NULL
+        AND stances.cast_at IS NOT NULL
+        AND stances.reason IS NOT NULL
+        AND stances.reason NOT IN ('', '<p></p>')
+        AND (polls.closed_at IS NOT NULL OR polls.hide_results != 2)
+        AND NOT EXISTS (
+          SELECT 1 FROM events existing_events
+          WHERE existing_events.eventable_type = 'Stance'
+            AND existing_events.eventable_id = events.eventable_id
+            AND existing_events.kind IN ('stance_created', 'stance_updated')
+            AND existing_events.topic_id = polls.topic_id
+        )
+      ORDER BY events.eventable_id, events.created_at, events.id
+    SQL
   end
 
   def self.closed_poll_topic_reader_attrs(poll, topic, timestamp)
