@@ -77,6 +77,17 @@ namespace :loomio do
     UpdateBlockedDomainsWorker.perform_async
   end
 
+  desc "Mark closed standalone poll topics as read for their current readers"
+  task mark_closed_poll_topics_read: :environment do
+    dry_run = ENV["DRY_RUN"].present?
+    stats = PollService.mark_closed_poll_topics_read(dry_run: dry_run)
+
+    prefix = dry_run ? "DRY RUN: would mark" : "Marked"
+    puts "#{prefix} #{stats[:topics]} closed poll topics as read"
+    puts "#{dry_run ? 'Would create' : 'Created'} #{stats[:readers_created]} topic readers"
+    puts "#{dry_run ? 'Would update' : 'Updated'} #{stats[:readers_updated]} topic readers"
+  end
+
   task check_translations: :environment do
     %w[server client].each do |source_name|
       source = YAML.load_file("config/locales/#{source_name}.en.yml")['en']

@@ -284,6 +284,68 @@ class PollService
     end
   end
 
+  def self.mark_closed_poll_topics_read(dry_run: false)
+    stats = { topics: 0, readers_created: 0, readers_updated: 0 }
+
+    Poll.closed.kept.joins(:topic).where(topics: { topicable_type: 'Poll' }).find_each do |poll|
+      topic = poll.topic
+      ranges = RangeSet.ranges_from_list(topic.items.where.not(sequence_id: nil).order(:sequence_id).pluck(:sequence_id))
+      next if ranges.empty?
+
+      stats[:topics] += 1
+      read_ranges_string = RangeSet.serialize(ranges)
+      now = Time.zone.now
+      reader_attrs = closed_poll_topic_reader_attrs(poll, topic, now)
+      audience_user_ids = reader_attrs.map { |attrs| attrs[:user_id] }
+      existing_user_ids = TopicReader.where(topic_id: topic.id, user_id: audience_user_ids).pluck(:user_id)
+      missing_reader_attrs = reader_attrs.reject { |attrs| existing_user_ids.include?(attrs[:user_id]) }
+      active_reader_scope = TopicReader.active.where(topic_id: topic.id)
+
+      if dry_run
+        stats[:readers_created] += missing_reader_attrs.length
+        stats[:readers_updated] += active_reader_scope.count + missing_reader_attrs.length
+        next
+      end
+
+      TopicReader.insert_all(missing_reader_attrs, unique_by: :index_topic_readers_on_topic_id_and_user_id) if missing_reader_attrs.any?
+      stats[:readers_created] += missing_reader_attrs.length
+      stats[:readers_updated] += TopicReader.active.where(topic_id: topic.id).update_all(
+        read_ranges_string: read_ranges_string,
+        last_read_at: now,
+        updated_at: now
+      )
+      topic.update_seen_by_count
+      topic.update_members_count
+    end
+
+    stats
+  end
+
+  def self.closed_poll_topic_reader_attrs(poll, topic, timestamp)
+    if topic.group_id.present?
+      Membership.active.accepted.where(group_id: topic.group_id).pluck(:user_id, :volume).map do |user_id, volume|
+        closed_poll_topic_reader_attr(topic, user_id, volume || TopicReader.volumes[:normal], false, false, timestamp)
+      end
+    else
+      user_ids = ([poll.author_id] + poll.stances.where.not(participant_id: nil).pluck(:participant_id)).compact.uniq
+      user_ids.map do |user_id|
+        closed_poll_topic_reader_attr(topic, user_id, TopicReader.volumes[:normal], true, user_id == poll.author_id, timestamp)
+      end
+    end
+  end
+
+  def self.closed_poll_topic_reader_attr(topic, user_id, volume, guest, admin, timestamp)
+    {
+      topic_id: topic.id,
+      user_id: user_id,
+      volume: volume,
+      guest: guest,
+      admin: admin,
+      created_at: timestamp,
+      updated_at: timestamp
+    }
+  end
+
   def self.expire_lapsed_polls
     Poll.lapsed_but_not_closed.each do |poll|
       CloseExpiredPollWorker.perform_async(poll.id)
