@@ -376,6 +376,32 @@ class PollServiceTest < ActiveSupport::TestCase
     assert_equal count, poll.voters.count
   end
 
+  test "mark_closed_poll_topics_read creates missing group member readers and marks them read" do
+    member = create_unique_user("closedpollreader")
+    Membership.create!(user: member, group: @group, accepted_at: Time.current)
+    poll = create_poll(specified_voters_only: false)
+    PollService.close(poll: poll, actor: @user)
+    poll.topic.topic_readers.where(user: member).delete_all
+
+    stats = PollService.mark_closed_poll_topics_read
+
+    reader = TopicReader.find_by!(topic: poll.topic, user: member)
+    assert_equal poll.topic.reload.ranges, reader.read_ranges
+    assert_not_nil reader.last_read_at
+    assert_equal 0, reader.unread_items_count
+    assert_operator stats[:readers_created], :>=, 1
+  end
+
+  test "mark_closed_poll_topics_read ignores active polls" do
+    member = create_unique_user("activepollreader")
+    Membership.create!(user: member, group: @group, accepted_at: Time.current)
+    poll = create_poll(specified_voters_only: false)
+
+    PollService.mark_closed_poll_topics_read
+
+    assert_nil TopicReader.find_by(topic: poll.topic, user: member)
+  end
+
   private
 
   def poll_params(overrides = {})
