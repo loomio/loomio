@@ -2,8 +2,14 @@ import { nextTick } from 'vue';
 import { createI18n } from 'vue-i18n';
 import enData from '@/../../config/locales/client.en.yml';
 
-const clientLocales = import.meta.glob('/../config/locales/client.*.yml')
-const dateLocales = import.meta.glob('/node_modules/date-fns/locale/*/index.js')
+const clientLocales = import.meta.glob([
+  '/../config/locales/client.*.yml',
+  '!/../config/locales/client.en.yml'
+])
+const dateLocales = import.meta.glob([
+  '/node_modules/date-fns/locale/*/index.js',
+  '!/node_modules/date-fns/locale/en-US/index.js'
+])
 import defaultLocale from 'date-fns/locale/en-US';
 
 const en = enData.en

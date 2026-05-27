@@ -9,24 +9,18 @@ class PollQuery
                       or_public: true)
 
     if user.topic_reader_token
-      or_topic_reader_token = "OR dr.token = #{ActiveRecord::Base.connection.quote(user.topic_reader_token)}"
-    end
-
-    if user.stance_token
-      or_stance_token = "OR s.token = #{ActiveRecord::Base.connection.quote(user.stance_token)}"
+      or_topic_reader_token = "OR tr.token = #{ActiveRecord::Base.connection.quote(user.topic_reader_token)}"
     end
 
     chain = chain.joins("LEFT OUTER JOIN topics t ON t.id = polls.topic_id")
     chain = chain.where('t.group_id IN (:group_ids)', group_ids: group_ids) if group_ids.any?
-    chain = chain.joins("LEFT OUTER JOIN groups g on g.id = t.group_id")
     chain = chain.joins("LEFT OUTER JOIN memberships m ON m.group_id = t.group_id AND m.user_id = #{user.id || 0}")
-                 .joins("LEFT OUTER JOIN topic_readers dr ON dr.topic_id = t.id AND (dr.user_id = #{user.id || 0} #{or_topic_reader_token})")
-                 .joins("LEFT OUTER JOIN stances s ON s.poll_id = polls.id AND (s.participant_id = #{user.id || 0} #{or_stance_token})")
-                 .where("polls.author_id = :user_id OR
-                         #{'g.discussion_privacy_options = :public_only OR' if or_public}
+                 .joins("LEFT OUTER JOIN topic_readers tr ON tr.topic_id = t.id AND (tr.user_id = #{user.id || 0} #{or_topic_reader_token})")
+
+    chain = chain.where("polls.author_id = :user_id OR
+                         #{'t.private = FALSE OR' if or_public}
                          (m.id IS NOT NULL AND m.revoked_at IS NULL) OR
-                         (dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.guest = TRUE) OR
-                         (s.id IS NOT NULL AND s.revoked_at IS NULL)", public_only: :public_only, user_id: user.id)
+                         (tr.id IS NOT NULL AND tr.revoked_at IS NULL AND tr.guest = TRUE)", user_id: user.id)
     chain
   end
 

@@ -86,13 +86,13 @@ export default new class PollService {
         to() { return `/p/${poll.key}/edit`; }
       },
 
-      // make_a_copy: {
-      //   icon: 'mdi-content-copy',
-      //   name: 'templates.make_a_copy',
-      //   menu: true,
-      //   canPerform() { return Session.user(); },
-      //   to() { return `/p/new?template_id=${poll.id}`; }
-      // },
+      make_a_copy: {
+        icon: 'mdi-content-copy',
+        name: 'templates.make_a_copy',
+        menu: true,
+        canPerform() { return Session.user(); },
+        to() { return `/p/new?template_id=${poll.id}`; }
+      },
 
       announce_poll: {
         icon: 'mdi-account-multiple-plus',

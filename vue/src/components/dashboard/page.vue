@@ -4,7 +4,6 @@ import { useRoute } from 'vue-router';
 import Records        from '@/shared/services/records';
 import Session        from '@/shared/services/session';
 import EventBus       from '@/shared/services/event_bus';
-import AbilityService from '@/shared/services/ability_service';
 import RecordLoader   from '@/shared/services/record_loader';
 import { useWatchRecords } from '@/composables/useWatchRecords';
 
@@ -24,8 +23,13 @@ function titleVisible(visible) {
 }
 
 function query() {
+  const groupIds = Session.user().groupIds();
   let chain = Records.topics.collection.chain();
   chain = chain.find({lockedAt: null});
+  chain = chain.find({$or: [
+    {groupId: {$in: groupIds}},
+    {readerGuest: true}
+  ]});
   chain = chain.simplesort('lastActivityAt', true);
   chain = chain.limit(30);
   topics.value = chain.data();

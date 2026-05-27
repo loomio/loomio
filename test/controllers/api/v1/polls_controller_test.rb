@@ -67,6 +67,45 @@ class Api::V1::PollsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "index recent includes polls for topic reader guests" do
+    hex = SecureRandom.hex(4)
+    private_group = Group.create!(name: "Guest poll group #{hex}", handle: "guestpollgroup#{hex}")
+    poll_author = User.create!(name: "guestpoll#{hex}", email: "guestpoll#{hex}@example.com", username: "guestpoll#{hex}")
+    private_group.add_admin!(poll_author)
+    guest_poll = PollService.create(params: {
+      title: "Guest poll #{hex}",
+      poll_type: "poll",
+      private: true,
+      group_id: private_group.id,
+      closing_at: 5.days.from_now,
+      poll_option_names: ["engage"]
+    }, actor: poll_author)
+    guest_poll.add_guest!(@user, poll_author)
+    private_poll = PollService.create(params: {
+      title: "Private poll #{hex}",
+      poll_type: "poll",
+      private: true,
+      group_id: private_group.id,
+      closing_at: 5.days.from_now,
+      poll_option_names: ["ignore"]
+    }, actor: poll_author)
+
+    sign_in @user
+    get :index, params: {
+      from: 0,
+      per: 25,
+      order: "id",
+      exclude_types: "group reaction",
+      status: "recent"
+    }
+
+    assert_response :success
+    json = JSON.parse(response.body)
+    poll_ids = json["polls"].map { |poll| poll["id"] }
+    assert_includes poll_ids, guest_poll.id
+    refute_includes poll_ids, private_poll.id
+  end
+
   # Create tests
   test "create creates a poll in discussion" do
     sign_in @admin

@@ -54,4 +54,56 @@ class PollQueryTest < ActiveSupport::TestCase
     refute_includes results, @rando_in_group
     refute_includes results, @rando
   end
+
+  test "dashboard visibility includes polls for topic reader guests" do
+    hex = SecureRandom.hex(4)
+    private_group = Group.create!(name: "Guest poll group #{hex}", handle: "guestpollgroup#{hex}")
+    poll_author = User.create!(name: "guestpoll#{hex}", email: "guestpoll#{hex}@example.com", username: "guestpoll#{hex}")
+    private_group.add_admin!(poll_author)
+    guest_poll = PollService.create(params: {
+      title: "Guest poll #{hex}",
+      poll_type: "poll",
+      private: true,
+      group_id: private_group.id,
+      closing_at: 5.days.from_now,
+      poll_option_names: ["engage"]
+    }, actor: poll_author)
+    guest_poll.add_guest!(@user, poll_author)
+
+    private_poll = PollService.create(params: {
+      title: "Private poll #{hex}",
+      poll_type: "poll",
+      private: true,
+      group_id: private_group.id,
+      closing_at: 5.days.from_now,
+      poll_option_names: ["ignore"]
+    }, actor: poll_author)
+
+    results = PollQuery.visible_to(user: @user, or_public: false).recent
+    assert_includes results, guest_poll
+    refute_includes results, private_poll
+  end
+
+  test "public visibility uses topic privacy not group discussion privacy options" do
+    hex = SecureRandom.hex(4)
+    public_group = Group.new(
+      name: "Public mixed privacy #{hex}",
+      is_visible_to_public: true,
+      discussion_privacy_options: "public_or_private"
+    )
+    public_group.save(validate: false)
+    public_author = User.create!(name: "publicpoll#{hex}", email: "publicpoll#{hex}@example.com", username: "publicpoll#{hex}")
+    public_group.add_admin!(public_author)
+    public_poll = PollService.create(params: {
+      title: "Public mixed privacy poll #{hex}",
+      poll_type: "poll",
+      private: false,
+      group_id: public_group.id,
+      closing_at: 5.days.from_now,
+      poll_option_names: ["engage"]
+    }, actor: public_author)
+
+    results = PollQuery.visible_to
+    assert_includes results, public_poll
+  end
 end
