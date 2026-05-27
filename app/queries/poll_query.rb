@@ -5,7 +5,8 @@ class PollQuery
 
   def self.visible_to(user: LoggedOutUser.new,
                       chain: start,
-                      group_ids: [])
+                      group_ids: [],
+                      or_public: true)
 
     if user.topic_reader_token
       or_topic_reader_token = "OR dr.token = #{ActiveRecord::Base.connection.quote(user.topic_reader_token)}"
@@ -22,7 +23,7 @@ class PollQuery
                  .joins("LEFT OUTER JOIN topic_readers dr ON dr.topic_id = t.id AND (dr.user_id = #{user.id || 0} #{or_topic_reader_token})")
                  .joins("LEFT OUTER JOIN stances s ON s.poll_id = polls.id AND (s.participant_id = #{user.id || 0} #{or_stance_token})")
                  .where("polls.author_id = :user_id OR
-                         g.discussion_privacy_options = :public_only OR
+                         #{'g.discussion_privacy_options = :public_only OR' if or_public}
                          (m.id IS NOT NULL AND m.revoked_at IS NULL) OR
                          (dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.guest = TRUE) OR
                          (s.id IS NOT NULL AND s.revoked_at IS NULL)", public_only: :public_only, user_id: user.id)
