@@ -244,7 +244,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_discussion_with_versions')
-    page.click('.thread-sidebar .action-dock__button--show_history')
+    page.click('.strand-new-discussion .action-dock__button--show_history')
     page.expectText('.revision-history-content del', 'star')
     page.expectText('.revision-history-content ins', 'moon')
   },

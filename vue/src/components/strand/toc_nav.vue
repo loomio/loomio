@@ -2,7 +2,6 @@
 import EventBus      from '@/shared/services/event_bus';
 import Records       from '@/shared/services/records';
 import TopicService  from '@/shared/services/topic_service';
-import DiscussionService from '@/shared/services/discussion_service';
 import LmoUrlService from '@/shared/services/lmo_url_service';
 import ScrollService from '@/shared/services/scroll_service';
 import Session       from '@/shared/services/session';
