@@ -12,7 +12,9 @@ class PollService
     # derive it from the group's discussion_privacy_options so we don't create
     # a private topic in a group that only allows public threads.
     unless topic_params.key?(:private)
-      group = Group.find_by(id: topic_params[:group_id] || poll.group_id)
+      gid = topic_params[:group_id]
+      gid ||= poll.topic.group_id if poll.topic
+      group = Group.find_by(id: gid)
       topic_params[:private] = group ? !group.public_discussions_only? : true
     end
 
