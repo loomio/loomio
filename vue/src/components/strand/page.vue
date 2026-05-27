@@ -38,6 +38,8 @@ onUnmounted(() => {
 watch(() => route.params.key, init);
 watch(() => route.params.sequence_id, respondToRoute);
 watch(() => route.params.comment_id, respondToRoute);
+watch(() => route.query.sequence_id, respondToRoute);
+watch(() => route.query.comment_id, respondToRoute);
 watch(() => route.query.p, respondToRoute);
 watch(() => route.query.k, respondToRoute);
 watch(() => route.query.current_action, respondToRoute);
@@ -93,7 +95,11 @@ function hasRouteKey() {
 }
 
 function routeSequenceId() {
-  return Object.keys(route.params).includes('sequence_id') ? parseInt(route.params.sequence_id) : null;
+  const p = parseInt(route.params.sequence_id);
+  const q = parseInt(route.query.sequence_id);
+  if (Number.isInteger(p)) { return p; }
+  if (Number.isInteger(q)) { return q; }
+  return null;
 }
 
 function hasSequenceId(sequenceId) {

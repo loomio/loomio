@@ -47,7 +47,38 @@ class EmailHelperTest < ActiveSupport::TestCase
   test "polymorphic_url returns a comment url" do
     comment = Comment.new(parent: @discussion, body: "Test comment")
     CommentService.create(comment: comment, actor: @author)
-    assert_match "/c/#{comment.id}", send(:polymorphic_url, comment)
+    assert_match "/d/#{@discussion.key}?comment_id=#{comment.id}", send(:polymorphic_url, comment)
+  end
+
+  test "discussion_url no_slug puts sequence_id in query params" do
+    assert_match "/d/#{@discussion.key}?sequence_id=12", send(:discussion_url, @discussion, no_slug: true, sequence_id: 12)
+  end
+
+  test "polymorphic_url returns a poll comment url" do
+    poll = PollService.create(params: {
+      poll_type: "poll",
+      title: "Test poll",
+      poll_option_names: ["agree"],
+      closing_at: 5.days.from_now,
+      group_id: @group.id,
+      notify_on_open: false
+    }, actor: @author)
+    comment = Comment.new(parent: poll, body: "Test comment")
+    CommentService.create(comment: comment, actor: @author)
+    assert_match "/p/#{poll.key}?comment_id=#{comment.id}", send(:polymorphic_url, comment)
+  end
+
+  test "poll_url no_slug puts sequence_id in query params" do
+    poll = PollService.create(params: {
+      poll_type: "poll",
+      title: "Test poll",
+      poll_option_names: ["agree"],
+      closing_at: 5.days.from_now,
+      group_id: @group.id,
+      notify_on_open: false
+    }, actor: @author)
+
+    assert_match "/p/#{poll.key}?sequence_id=12", send(:poll_url, poll, no_slug: true, sequence_id: 12)
   end
 
   test "polymorphic_url can accept a utm hash" do

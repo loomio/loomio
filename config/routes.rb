@@ -400,15 +400,12 @@ Rails.application.routes.draw do
   get 'thread_templates/new'               => 'application#index'
   get 'thread_templates/:id'               => 'application#index'
   get 'thread_templates/:id/edit'          => 'application#index'
-  get 'c/:id'                              => 'discussions#comment',         as: :comment
   get 'g/:key/export'                      => 'groups#export',               as: :group_export
   get 'p/:key/export'                      => 'polls#export',                as: :poll_export
   get 'd/:key/export'                      => 'discussions#export',          as: :discussion_export
   get 'g/:key(/:slug)'                     => 'groups#show',                 as: :group
-  get 'd/:key/:slug(/:sequence_id)'        => 'discussions#show',            as: :discussion
-  get 'd/:key(/:slug)(/:sequence_id)'      => 'discussions#show',            as: :discussion_no_slug
-  get 'p/:key(/:slug)'                     => 'polls#show',                  as: :poll
-  get 'vote/:key(/:slug)'                  => 'polls#show'
+  get 'd/:key(/:slug)(/:sequence_id)'      => 'discussions#show',            as: :discussion
+  get 'p/:key(/:slug)(/:sequence_id)'      => 'polls#show',                  as: :poll
   get 'u/undefined'                        => redirect('404.html')
   get 'u/anonymous'                        => redirect('404.html')
   get 'u/:username/'                       => 'users#show',                  as: :user

@@ -6,11 +6,35 @@ module PrettyUrlHelper
   end
 
   def discussion_path(discussion, options = {})
-    super(discussion, options.merge(slug: discussion.title.parameterize))
+    if options.delete(:no_slug)
+      url_for(no_slug_topic_url_options('discussions', discussion.key, options).merge(only_path: true))
+    else
+      super(discussion, options.merge(slug: discussion.title.parameterize))
+    end
   end
 
   def discussion_url(discussion, options = {})
-    super(discussion, options.merge(slug: discussion.title.parameterize))
+    if options.delete(:no_slug)
+      url_for(no_slug_topic_url_options('discussions', discussion.key, options))
+    else
+      super(discussion, options.merge(slug: discussion.title.parameterize))
+    end
+  end
+
+  def poll_path(poll, options = {})
+    if options.delete(:no_slug)
+      url_for(no_slug_topic_url_options('polls', poll.key, options).merge(only_path: true))
+    else
+      super(poll, options.merge(slug: poll.title.parameterize))
+    end
+  end
+
+  def poll_url(poll, options = {})
+    if options.delete(:no_slug)
+      url_for(no_slug_topic_url_options('polls', poll.key, options))
+    else
+      super(poll, options.merge(slug: poll.title.parameterize))
+    end
   end
 
   def group_url(group, options = {})
@@ -34,6 +58,21 @@ module PrettyUrlHelper
     end
   end
 
+  def comment_url(comment, options = {})
+    topic = comment.topic
+    opts = options.dup
+    opts.merge!(opts.delete(:params) || {})
+
+    case topic.topicable
+    when Discussion
+      discussion_url(topic.topicable, opts.merge(no_slug: true, comment_id: comment.id))
+    when Poll
+      poll_url(topic.topicable, opts.merge(no_slug: true, comment_id: comment.id))
+    else
+      super
+    end
+  end
+
   def polymorphic_url(model, opts = {})
     case model
     when NilClass, LoggedOutUser       then nil
@@ -54,5 +93,22 @@ module PrettyUrlHelper
   def polymorphic_path(model, opts = {})
     # angular router throws error if you give it a whole url
     polymorphic_url(model, opts).sub(root_url, '/')
+  end
+
+  private
+
+  def no_slug_topic_url_options(controller, key, options)
+    params = options.delete(:params) || {}
+    sequence_id = options.delete(:sequence_id)
+    params[:sequence_id] = sequence_id if sequence_id
+
+    opts = {
+      controller: controller,
+      action: 'show',
+      key: key,
+      slug: nil
+    }.merge(options)
+    opts[:params] = params if params.any?
+    opts
   end
 end

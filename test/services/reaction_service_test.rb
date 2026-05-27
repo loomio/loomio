@@ -34,6 +34,13 @@ class ReactionServiceTest < ActiveSupport::TestCase
     assert_equal 0, @user.notifications.count
   end
 
+  test "comment reaction notification url uses contextual topic route" do
+    reactor_reaction = Reaction.new(reaction: ":heart:", reactable: @comment, user: @admin)
+    ReactionService.update(reaction: reactor_reaction, params: { reaction: 'smiley' }, actor: @admin)
+
+    assert_equal "/d/#{@discussion.key}?comment_id=#{@comment.id}", @user.notifications.last.url
+  end
+
   test "removes a reaction for the current user on a comment" do
     @reaction.save
 
