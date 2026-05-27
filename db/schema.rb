@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_05_28_000000) do
+ActiveRecord::Schema[8.0].define(version: 2026_05_28_000001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -495,7 +495,6 @@ ActiveRecord::Schema[8.0].define(version: 2026_05_28_000000) do
     t.integer "event_id"
     t.boolean "viewed", default: false, null: false
     t.jsonb "translation_values", default: {}, null: false
-    t.string "url"
     t.integer "actor_id"
     t.index ["event_id"], name: "index_notifications_on_event_id"
     t.index ["id"], name: "index_notifications_on_id", order: :desc

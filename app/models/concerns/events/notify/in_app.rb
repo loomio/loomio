@@ -1,6 +1,4 @@
 module Events::Notify::InApp
-  include PrettyUrlHelper
-
   def trigger!
     super
     notify_users!
@@ -23,7 +21,6 @@ module Events::Notify::InApp
       notifications.build(
         user: recipient,
         actor: notification_actor,
-        url: notification_url,
         translation_values: notification_translation_values
       )
     end
@@ -32,11 +29,6 @@ module Events::Notify::InApp
   # defines the avatar which appears next to the notification
   def notification_actor
     user.presence
-  end
-
-  # defines the link that clicking on the notification takes you to
-  def notification_url
-    polymorphic_path(eventable)
   end
 
   # defines the values that are passed to the translation for notification text

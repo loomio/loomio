@@ -1,6 +1,7 @@
 class Event < ApplicationRecord
   include ActionView::Helpers::SanitizeHelper
   include CustomCounterCache::Model
+  include PrettyUrlHelper
   extend HasCustomFields
 
   has_many :notifications, dependent: :destroy
@@ -83,6 +84,15 @@ class Event < ApplicationRecord
 
   def actor_id
     user_id
+  end
+
+  def notification_url
+    model = case kind
+            when 'stance_created'      then eventable.poll
+            when 'invitation_accepted' then eventable.group
+            else eventable
+            end
+    polymorphic_path(model)
   end
 
 

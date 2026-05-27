@@ -15,8 +15,4 @@ class Events::InvitationAccepted < Event
   def notification_actor
     eventable&.user
   end
-
-  def notification_url
-    polymorphic_url(eventable.group)
-  end
 end

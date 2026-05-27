@@ -12,6 +12,10 @@ class NotificationSerializer < ApplicationSerializer
              :reaction,
              :model
 
+  def url
+    event.notification_url
+  end
+
   has_one :actor, serializer: AuthorSerializer, root: :users
 
   def name

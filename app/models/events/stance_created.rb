@@ -33,8 +33,4 @@ class Events::StanceCreated < Event
       title: eventable.poll.title
     }
   end
-
-  def notification_url
-    @notification_url ||= polymorphic_url(eventable.poll)
-  end
 end
