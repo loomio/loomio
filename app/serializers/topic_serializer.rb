@@ -57,7 +57,7 @@ class TopicSerializer < ApplicationSerializer
   end
 
   def include_group?
-    object.group_id.present?
+    include_type?('group') && object.group_id.present?
   end
 
   def replies_count
