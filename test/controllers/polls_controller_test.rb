@@ -36,7 +36,8 @@ class PollsControllerTest < ActionController::TestCase
     assert_includes response.body, @poll.title
   end
 
-  test "does not show export to non-coordinators" do
+  test "does not show export to users who cannot see the poll" do
+    @discussion.topic.update!(private: true)
     sign_in @alien
     get :export, params: { key: @poll.key }
     assert_response 302
