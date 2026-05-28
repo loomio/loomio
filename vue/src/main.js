@@ -40,6 +40,7 @@ boot(function(data) {
         "evaluating 't.addEventListener'",
         "ResizeObserver loop limit exceeded",
         "MetaMask detected another web3",
+        "Failed to connect to MetaMask",
         "AbortError: The operation was aborted",
         "ResizeObserver loop completed with undelivered notifications",
         "TypeError: cancelled",
