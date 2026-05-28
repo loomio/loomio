@@ -92,7 +92,7 @@ module PrettyUrlHelper
 
   def polymorphic_path(model, opts = {})
     # angular router throws error if you give it a whole url
-    polymorphic_url(model, opts).sub(root_url, '/')
+    polymorphic_url(model, opts)&.sub(root_url, '/')
   end
 
   private

@@ -22,4 +22,8 @@ class PrettyUrlHelperTest < ActionView::TestCase
     subgroup = groups(:subgroup)
     assert_includes group_url(subgroup), subgroup.handle
   end
+
+  test "returns nil path when model has no url" do
+    assert_nil polymorphic_path(nil)
+  end
 end
