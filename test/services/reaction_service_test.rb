@@ -38,7 +38,7 @@ class ReactionServiceTest < ActiveSupport::TestCase
     reactor_reaction = Reaction.new(reaction: ":heart:", reactable: @comment, user: @admin)
     ReactionService.update(reaction: reactor_reaction, params: { reaction: 'smiley' }, actor: @admin)
 
-    assert_equal "/d/#{@discussion.key}?comment_id=#{@comment.id}", @user.notifications.last.url
+    assert_equal "/d/#{@discussion.key}?comment_id=#{@comment.id}", @user.notifications.last.event.notification_url
   end
 
   test "removes a reaction for the current user on a comment" do
