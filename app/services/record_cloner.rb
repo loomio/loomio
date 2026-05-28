@@ -4,37 +4,6 @@ class RecordCloner
     @cache = {}
   end
 
-  def create_clone_group_for_public_demo(group, handle)
-    clone_group = new_clone_group(group)
-    clone_group.subscription = Subscription.new(plan: 'demo')
-    clone_group.handle = handle
-    clone_group.is_visible_to_public = true
-    clone_group.members_can_create_subgroups = false
-    clone_group.members_can_add_members = false
-    clone_group.members_can_add_guests = false
-    clone_group.members_can_announce = true
-    clone_group.discussion_privacy_options = 'public_only'
-    clone_group.membership_granted_upon = 'request'
-
-    # Apply overrides to cloned discussions and polls before saving
-    cloned_discussions = clone_group.instance_variable_get(:@_cloned_discussions) || []
-    cloned_polls = clone_group.instance_variable_get(:@_cloned_polls) || []
-    cloned_discussions.each { |d| d.private = false }
-    cloned_polls.each { |p| p.specified_voters_only = false }
-
-    clone_group.save!
-    save_cloned_content!(clone_group)
-
-    update_tag_colors(clone_group, group)
-
-    clone_group.polls.each do |poll|
-      poll.update_counts!
-      poll.stances.each {|s| s.update_option_scores!}
-    end
-    clone_group.discussions.each { |d| TopicService.repair(d.topic_id) }
-    clone_group.reload
-  end
-
   def update_tag_colors(clone_group, group)
     group.tags.pluck(:name, :color).each do |pair|
       Tag.where(group_id: clone_group.id, name: pair[0]).update_all(color: pair[1])

@@ -1,21 +1,20 @@
 class DemoService
   def self.refill_queue
-    return unless ENV['FEATURES_DEMO_GROUPS']
+    return unless ENV['DEMO_GROUP_ID']
 
-    demo = Demo.where('demo_handle is not null').last
-    return unless demo
+    group = Group.find(ENV['DEMO_GROUP_ID'])
 
     # precache translations
     AppConfig.locales['supported'].each do |locale|
-      TranslationService.translate_group_content!(demo.group, locale, true)
+      TranslationService.translate_group_content!(group, locale, true)
     end
 
     expected = ENV.fetch('FEATURES_DEMO_GROUPS_SIZE', 3)
     remaining = Redis::List.new('demo_group_ids').value.size
 
     (expected - remaining).times do
-      group = RecordCloner.new(recorded_at: demo.recorded_at).create_clone_group(demo.group)
-      Redis::List.new('demo_group_ids').push(group.id)
+      clone = RecordCloner.new(recorded_at: group.created_at).create_clone_group(group)
+      Redis::List.new('demo_group_ids').push(clone.id)
     end
   end
 
@@ -34,20 +33,11 @@ class DemoService
   end
 
   def self.ensure_queue
-    return unless ENV['FEATURES_DEMO_GROUPS']
+    return unless ENV['DEMO_GROUP_ID']
 
     existing_ids = Redis::List.new('demo_group_ids').value.select { |id| Group.where(id: id).exists? }
     Redis::List.new('demo_group_ids').clear
     Redis::List.new('demo_group_ids').unshift(*existing_ids) if existing_ids.any?
     refill_queue
-  end
-
-  def self.generate_demo_groups
-    return unless ActiveRecord::Base.connection.table_exists? 'demos'
-    Demo.where('demo_handle IS NOT NULL').each do |template|
-      Group.where(handle: template.demo_handle).update_all(handle: nil)
-      RecordCloner.new(recorded_at: template.recorded_at)
-                  .create_clone_group_for_public_demo(template.group, template.demo_handle)
-    end
   end
 end

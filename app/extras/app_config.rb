@@ -120,7 +120,7 @@ class AppConfig
     {
       env: Rails.env,
       subscriptions: !!ENV.fetch('CHARGIFY_API_KEY', false),
-      demos: ENV.fetch('FEATURES_DEMO_GROUPS', false),
+      demos: !!ENV['DEMO_GROUP_ID'],
       trials: ENV.fetch('FEATURES_TRIALS', false),
       trial_days: ENV.fetch('TRIAL_DAYS', nil),
       gray_sidebar_logo_in_dark_mode: ENV.fetch('FEATURES_GRAY_SIDEBAR_LOGO_IN_DARK_MODE', false),
