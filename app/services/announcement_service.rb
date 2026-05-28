@@ -14,7 +14,7 @@ class AnnouncementService
       raise CanCan::AccessDenied unless actor.can?(:notify, group)
       group.delegates
     when 'group'            then model.group.members
-    when 'discussion_group' then (model.discussion || NullDiscussion.new).readers
+    when 'discussion_group' then discussion_group_users(model)
     when 'voters'           then (model.poll || NullPoll.new).unmasked_voters
     when 'decided_voters'   then (model.poll || NullPoll.new).unmasked_decided_voters
     when 'undecided_voters' then (model.poll || NullPoll.new).unmasked_undecided_voters
@@ -31,5 +31,16 @@ class AnnouncementService
 
   def self.resend_pending_invitations(since: 25.hours.ago, till: 24.hours.ago)
     Event.invitations_in_period(since, till).each { |event| Events::AnnouncementResend.publish!(event) }
+  end
+
+  def self.discussion_group_users(model)
+    topic = model if model.is_a?(Topic)
+    topic ||= model.topic if model.respond_to?(:topic)
+
+    return NullDiscussion.new.readers unless topic&.persisted?
+
+    User.joins(:topic_readers)
+        .merge(TopicReader.active.where(topic_id: topic.id))
+        .distinct
   end
 end

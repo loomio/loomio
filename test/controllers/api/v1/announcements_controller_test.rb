@@ -105,6 +105,32 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     assert_equal member.id, json['stances'][0]['participant_id']
   end
 
+  test "count supports discussion audience for polls" do
+    poll = create_test_poll
+
+    get :count, params: {
+      poll_id: poll.id,
+      recipient_audience: 'discussion_group',
+      include_actor: '1'
+    }
+
+    assert_response :success
+    assert_equal 1, JSON.parse(response.body)['count']
+  end
+
+  test "poll create supports discussion audience" do
+    poll = create_test_poll
+
+    post :create, params: {
+      poll_id: poll.id,
+      recipient_audience: 'discussion_group',
+      include_actor: '1'
+    }
+
+    assert_response :success
+    assert_includes JSON.parse(response.body)['stances'].map { |stance| stance['participant_id'] }, @admin.id
+  end
+
   test "poll create cannot invite guests when members_can_add_guests=false" do
     poll = create_test_poll
 
