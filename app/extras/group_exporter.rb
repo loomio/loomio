@@ -4,9 +4,9 @@ class GroupExporter
   EXPORT_MODELS = {
     groups:        %w[id key name description created_at],
     memberships:   %w[group_id user_id user_name user_email admin created_at accepted_at],
-    discussions:   %w[id group_id author_id author_name title description created_at],
-    comments:      %w[id group_id discussion_id author_id author_name title author_name body created_at],
-    polls:         %w[id key group_id author_id author_name title details closing_at closed_at created_at poll_type custom_fields],
+    discussions:   %w[id topic_id author_id author_name title description created_at],
+    comments:      %w[id group_id topic_id author_id author_name title author_name body created_at],
+    polls:         %w[id key topic_id author_id author_name title details closing_at closed_at created_at poll_type custom_fields],
     stances:       %w[id poll_id participant_id author_name reason latest created_at updated_at],
     outcomes:      %w[id poll_id author_id statement created_at updated_at]
   }.freeze

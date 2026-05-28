@@ -344,6 +344,37 @@ class PagesPhlexTest < ActiveSupport::TestCase
     assert_includes output, "Stances"
   end
 
+  test "group csv export uses topic ids for topicable records" do
+    comment = Comment.new(parent: @discussion, body: "Exported comment")
+    CommentService.create(comment: comment, actor: @user)
+    poll = Poll.create!(
+      title: "Exported poll",
+      poll_type: "proposal",
+      closing_at: 3.days.from_now,
+      topic: @discussion.topic,
+      author: @user,
+      poll_option_names: %w[agree disagree]
+    )
+
+    rows = CSV.parse(GroupExporter.new(@group).to_csv)
+    discussions_header = rows[rows.index { |row| row.first&.start_with?("Discussions") } + 1]
+    comments_header = rows[rows.index { |row| row.first&.start_with?("Comments") } + 1]
+    polls_header = rows[rows.index { |row| row.first&.start_with?("Polls") } + 1]
+    discussion_row = rows.find { |row| row.include?("Pages Test Discussion") }
+    comment_row = rows.find { |row| row.include?("Exported comment") }
+    poll_row = rows.find { |row| row.include?("Exported poll") }
+
+    assert_includes discussions_header, "Topic"
+    refute_includes discussions_header, "Group"
+    assert_equal @discussion.topic_id.to_s, discussion_row[discussions_header.index("Topic")]
+    assert_includes comments_header, "Topic"
+    refute_includes comments_header, "Discussion"
+    assert_equal @discussion.topic_id.to_s, comment_row[comments_header.index("Topic")]
+    assert_includes polls_header, "Topic"
+    refute_includes polls_header, "Group"
+    assert_equal @discussion.topic_id.to_s, poll_row[polls_header.index("Topic")]
+  end
+
   # ── PollExport ──────────────────────────────────────────────────
 
   test "poll export renders poll and responses" do
