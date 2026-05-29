@@ -40,14 +40,6 @@ export default new class StanceService {
         }
       },
 
-      edit_stance: {
-        name: (stance.poll().config().has_options && 'poll_common.change_vote') || 'poll_common.change_response',
-        icon: 'mdi-pencil',
-        dock: 1,
-        canPerform: () => !!this.canUpdateStance(stance),
-        perform: () => this.updateStance(stance)
-      },
-
       add_comment: {
         name: 'common.action.reply',
         icon: 'mdi-reply',
@@ -72,6 +64,14 @@ export default new class StanceService {
             return EventBus.$emit('toggle-reply', stance, event.id);
           }
         }
+      },
+
+      edit_stance: {
+        name: (stance.poll().config().has_options && 'poll_common.change_vote') || 'poll_common.change_response',
+        icon: 'mdi-pencil',
+        dock: 3,
+        canPerform: () => !!this.canUpdateStance(stance),
+        perform: () => this.updateStance(stance)
       },
 
       uncast_stance: {
