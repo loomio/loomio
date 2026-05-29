@@ -62,7 +62,7 @@ export default
             exclude_types: 'reaction',
             topicable_type: 'Discussion',
             subgroups: 'mine',
-            filter: this.$route.query.t,
+            filter: this.$route.query.t === 'all' ? undefined : (this.$route.query.t || 'unlocked'),
             tags: this.$route.query.tag,
             per: this.per
           }
@@ -79,7 +79,7 @@ export default
       const groupIds = this.group.organisationIds();
 
       let pinnedTopics = [];
-      if (this.page == 1 && !this.$route.query.t && !this.$route.query.tag) {
+      if (this.page == 1 && !this.$route.query.tag && !['locked', 'unread'].includes(this.$route.query.t)) {
         pinnedTopics = Records.topics.collection.chain().find({
           groupId: {$in: groupIds},
           topicableType: 'Discussion',
@@ -100,10 +100,10 @@ export default
         case 'locked':
           chain = chain.find({lockedAt: {$ne: null}});
           break;
-        case 'unlocked':
-          chain = chain.find({lockedAt: null});
+        case 'all':
           break;
-        default:
+        default: // null or 'unlocked' — show only unlocked threads
+          chain = chain.find({lockedAt: null});
           break;
       }
 
@@ -141,10 +141,9 @@ export default
       switch (filter) {
         case 'unread': return 'discussions_panel.unread';
         case 'locked': return 'discussions_panel.locked';
-        case 'unlocked': return 'discussions_panel.unlocked';
-        case 'subscribed': return 'change_volume_form.simple.loud';
+        case 'all': return 'discussions_panel.all';
         default:
-          return 'discussions_panel.all';
+          return 'discussions_panel.unlocked';
       }
     },
 
@@ -223,7 +222,9 @@ export default
     },
 
     suggestLockedThreads() {
-      return !['locked'].includes(String(this.$route.query.t)) && this.group && this.group.closedDiscussionsCount;
+      return !['locked', 'unread', 'all'].includes(String(this.$route.query.t)) &&
+        this.group && this.loader &&
+        this.group.discussionsCount > this.loader.total;
     }
   }
 };
@@ -239,12 +240,12 @@ div.discussions-panel(v-if="group")
           span(v-t="{path: filterName($route.query.t), args: {count: unreadCount}}")
           common-icon(name="mdi-menu-down")
       v-list
-        v-list-item.discussions-panel__filters-all(@click="routeQuery({t: null})")
+        v-list-item.discussions-panel__filters-unlocked(@click="routeQuery({t: null})")
+          v-list-item-title(v-t="'discussions_panel.unlocked'")
+        v-list-item.discussions-panel__filters-all(@click="routeQuery({t: 'all'})")
           v-list-item-title(v-t="'discussions_panel.all'")
         v-list-item.discussions-panel__filters-locked(@click="routeQuery({t: 'locked'})")
           v-list-item-title(v-t="'discussions_panel.locked'")
-        v-list-item.discussions-panel__filters-open(@click="routeQuery({t: 'unlocked'})")
-          v-list-item-title(v-t="'discussions_panel.unlocked'")
         v-list-item.discussions-panel__filters-unread(@click="routeQuery({t: 'unread'})")
           v-list-item-title(v-t="{path: 'discussions_panel.unread', args: { count: unreadCount }}")
 
