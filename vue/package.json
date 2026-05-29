@@ -75,7 +75,7 @@
     "vue-slicksort": "^2.0.5",
     "vuetify": "^3",
     "y-indexeddb": "^9.0.12",
-    "yjs": "^13.6.30"
+    "yjs": "^13.6.31"
   },
   "devDependencies": {
     "@originjs/vite-plugin-commonjs": "latest",
