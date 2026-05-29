@@ -82,8 +82,7 @@ export default class TopicModel extends BaseModel {
   }
 
   isDismissed() {
-    return (this.topicReaderId != null) && (this.dismissedAt != null) &&
-      (this.dismissedAt >= this.lastActivityAt);
+    return this.dismissedAt != null && this.dismissedAt >= this.lastActivityAt;
   }
 
   createdEvent() {
@@ -130,7 +129,7 @@ export default class TopicModel extends BaseModel {
   }
 
   isUnread() {
-    return (this.lastReadAt == null) || (this.unreadItemsCount() > 0);
+    return !this.isDismissed() && ((this.lastReadAt == null) || (this.unreadItemsCount() > 0));
   }
 
   volume() {
