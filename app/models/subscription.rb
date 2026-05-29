@@ -27,12 +27,6 @@ class Subscription < ApplicationRecord
     end
   end
 
-  def can_invite()
-    parent_group = parent_or_self
-    subscription = Subscription.for(parent_group)
-    subscription.max_members && parent_group.org_members_count >= subscription.max_members
-  end
-
   def level
     SubscriptionService::PLANS[self.plan][:level]
   end
@@ -52,7 +46,7 @@ class Subscription < ApplicationRecord
   def self.ransackable_associations(auth_object = nil)
     ["groups", "owner", "versions"]
   end
-  
+
   def self.ransackable_attributes(auth_object = nil)
     ["activated_at",
      "canceled_at",

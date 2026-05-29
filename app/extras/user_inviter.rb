@@ -29,9 +29,18 @@ class UserInviter
     return if subscription.max_members.nil?
 
     new_count = new_members_count(parent_group: parent_group, user_ids: user_ids, emails: emails)
+    existing_count = existing_members_count(parent_group)
 
-    if (parent_group.org_members_count + new_count) > parent_group.subscription.max_members.to_i
+    if (existing_count + new_count) > parent_group.subscription.max_members.to_i
       raise Subscription::MaxMembersExceeded
+    end
+  end
+
+  def self.existing_members_count(parent_group)
+    if parent_group.subscription.plan == 'trial'
+      parent_group.all_memberships.count
+    else
+      parent_group.org_members_count
     end
   end
 
