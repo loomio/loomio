@@ -27,7 +27,6 @@ function query() {
     {groupId: {$in: groupIds}},
     {readerGuest: true}
   ]});
-  chain = chain.where(topic => !topic.isDismissed());
   chain = chain.simplesort('lastActivityAt', true);
   chain = chain.limit(30);
   topics.value = chain.data();
