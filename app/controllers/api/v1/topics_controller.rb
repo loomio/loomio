@@ -57,7 +57,7 @@ class Api::V1::TopicsController < Api::V1::RestfulController
   def dismiss
     load_resource
     TopicService.dismiss(topic: resource, actor: current_user)
-    respond_with_resource
+    respond_ok
   end
 
   def recall
