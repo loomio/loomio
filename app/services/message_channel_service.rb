@@ -1,7 +1,7 @@
 class MessageChannelService
   def self.publish_models(models, serializer: nil, scope: {}, root: nil, group_id: nil, user_id: nil, topic_id: nil)
     return if models.blank?
-    cache = RecordCache.for_collection(models, user_id)
+    cache = RecordCache.for_collection(models, user_id, scope[:exclude_types] || [])
     data = serialize_models(models, serializer: serializer, scope: scope.merge(cache: cache, current_user_id: user_id), root: root)
     publish_serialized_records(data, group_id: group_id, user_id: user_id, topic_id: topic_id)
   end

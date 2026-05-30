@@ -105,6 +105,23 @@ class PollServiceTest < ActiveSupport::TestCase
     refute Event.where(kind: 'poll_announced', eventable: poll).exists?
   end
 
+  test "publish_topic_if_active excludes group records from topic broadcasts" do
+    poll = create_poll
+    calls = []
+
+    MessageChannelService.stub(:publish_models, ->(models, **options) { calls << [models, options] }) do
+      PollService.publish_topic_if_active(poll)
+    end
+
+    cache = RecordCache.for_collection([poll.topic], nil, ['group'])
+
+    assert_not_empty calls
+    assert calls.all? { |models, _options| models == [poll.topic] }
+    assert calls.all? { |_models, options| options[:scope] == {exclude_types: ['group']} }
+    assert_nil cache.scope[:groups_by_id]
+    assert_nil cache.scope[:subscriptions_by_group_id]
+  end
+
   # Note: poll mention notification test omitted due to asset pipeline dependency
   # (poll_mailer/vote-button-.png). Mention notifications are covered in discussion_service_test.
 

@@ -715,9 +715,10 @@ class PollService
   def self.publish_topic_if_active(poll)
     topic = poll.topic
     topic.update_active_polls_count
-    MessageChannelService.publish_models([topic], group_id: topic.group_id) if topic.group_id
+    scope = {exclude_types: ['group']}
+    MessageChannelService.publish_models([topic], group_id: topic.group_id, scope: scope) if topic.group_id
     topic.guests.find_each do |user|
-      MessageChannelService.publish_models([topic], user_id: user.id)
+      MessageChannelService.publish_models([topic], user_id: user.id, scope: scope)
     end
   end
 
