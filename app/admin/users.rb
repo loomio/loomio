@@ -149,9 +149,14 @@ ActiveAdmin.register User do
     panel("Memberships") do
       table_for user.all_memberships.includes(:group, :user).order(:id).each do |m|
         column :id
-        column :group_name do |g|
-          group = g.group
-          link_to group.full_name, admin_group_path(group)
+        column :group_name do |membership|
+          if group = membership.group
+            link_to group.full_name, admin_group_path(group)
+          elsif membership.group_id
+            "Missing group ##{membership.group_id}"
+          else
+            "Missing group"
+          end
         end
         column :volume
         column :admin
