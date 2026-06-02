@@ -9,11 +9,6 @@ class TopicReader < ApplicationRecord
   belongs_to :topic
   belongs_to :inviter, class_name: 'User'
 
-  scope :dangling, lambda {
-    joins('left join topics on topics.id = topic_id left join users on users.id = user_id')
-      .where('topics.id is null or users.id is null')
-  }
-
   scope :active, -> { where('topic_readers.revoked_at IS NULL') }
 
   scope :guests, -> { active.where('topic_readers.guest': true) }

@@ -55,7 +55,6 @@ class Outcome < ApplicationRecord
   set_custom_fields :event_summary, :event_description, :event_location
 
   scope :latest, -> { where(latest: true) }
-  scope :dangling, -> { joins('left join polls on polls.id = poll_id').where('polls.id is null') }
   scope :in_organisation, -> (group) { joins(:poll).joins("LEFT JOIN topics t ON t.id = polls.topic_id").where("t.group_id": group.id_and_subgroup_ids) }
   belongs_to :poll, required: true
   belongs_to :poll_option, required: false

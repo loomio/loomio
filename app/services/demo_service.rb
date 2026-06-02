@@ -50,4 +50,10 @@ class DemoService
                   .create_clone_group_for_public_demo(template.group, template.demo_handle)
     end
   end
+
+  def self.destroy_expired_demo_groups
+    Group.expired_demo.find_each do |group|
+      group.destroy!
+    end
+  end
 end

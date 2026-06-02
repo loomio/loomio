@@ -48,7 +48,7 @@ class RedactUserWorker
 
       PaperTrail::Version.where(item_type: 'User', item_id: user_id).delete_all
       Identity.where(user_id: user_id).delete_all
-      MembershipRequest.where(requestor_id: user_id, responded_at: nil).delete_all
+      MembershipRequest.where(requestor_id: user_id, responded_at: nil).destroy_all
     end
 
     NewsletterService.unsubscribe(email)

@@ -6,7 +6,7 @@ class DestroyTagWorker
     group_ids = group.id_and_subgroup_ids
 
     Tag.transaction do
-      Tag.where(group_id: group_ids, name: name).delete_all
+      Tag.where(group_id: group_ids, name: name).destroy_all
 
       Topic.where(group_id: group_ids).where.contains(tags: [name]).find_each do |t|
         t.update_column(:tags, t.tags - Array(name))

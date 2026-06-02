@@ -34,7 +34,6 @@ class Event < ApplicationRecord
 
   before_save :sync_eventable_foreign_key
 
-  scope :dangling, -> { joins('LEFT JOIN topics ON events.topic_id = topics.id').where('events.topic_id IS NOT NULL AND topics.id IS NULL') }
   scope :unreadable, -> { where.not(kind: 'discussion_closed') }
 
   scope :invitations_in_period, ->(since, till) {

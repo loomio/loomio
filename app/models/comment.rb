@@ -67,11 +67,6 @@ class Comment < ApplicationRecord
   alias_method :author, :user
   alias_method :author=, :user=
 
-  scope :dangling, -> {
-    joins("LEFT JOIN events ON events.eventable_type = 'Comment' AND events.eventable_id = comments.id")
-    .joins("LEFT JOIN topics ON topics.id = events.topic_id")
-    .where("events.id IS NULL OR topics.id IS NULL")
-  }
   scope :in_organisation, ->(group) {
     includes(:user)
     .joins("INNER JOIN events ON events.eventable_type = 'Comment' AND events.eventable_id = comments.id")

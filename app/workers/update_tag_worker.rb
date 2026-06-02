@@ -6,7 +6,7 @@ class UpdateTagWorker
     group_ids = group.id_and_subgroup_ids
 
     if old_name != new_name
-      Tag.where(group_id: group_ids, name: new_name).delete_all
+      Tag.where(group_id: group_ids, name: new_name).destroy_all
       Tag.where(group_id: group_ids, name: old_name).update_all(name: new_name)
     end
 

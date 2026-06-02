@@ -6,7 +6,6 @@ class Subscription < ApplicationRecord
   PAYMENT_METHODS = ["chargify", "manual", "barter", "paypal"]
   ACTIVE_STATES = %w[active on_hold pending]
 
-  scope :dangling, -> { joins('LEFT JOIN groups ON subscriptions.id = groups.subscription_id').where('groups.id IS NULL') }
   scope :active, -> { where(state: ACTIVE_STATES).where("expires_at is null OR expires_at > ?", Time.current) }
   scope :expired, -> { where(state: ACTIVE_STATES).where("expires_at < ?", Time.current) }
   scope :canceled, -> { where(state: :canceled) }

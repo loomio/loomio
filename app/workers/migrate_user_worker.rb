@@ -34,15 +34,19 @@ class MigrateUserWorker
   }.freeze
 
   def delete_duplicates
-    Membership.delete(destination.all_memberships.
-                      joins("INNER JOIN memberships source
-                             ON source.group_id = memberships.group_id
-                             AND source.user_id = #{source.id}").pluck(:"source.id"))
+    membership_ids = destination.all_memberships.
+                     joins("INNER JOIN memberships source
+                            ON source.group_id = memberships.group_id
+                            AND source.user_id = #{source.id}").pluck(:"source.id")
 
-    TopicReader.delete(destination.topic_readers.
-                      joins("INNER JOIN topic_readers source
-                             ON source.topic_id = topic_readers.topic_id
-                             AND source.user_id = #{source.id}").pluck(:"source.id"))
+    Membership.where(id: membership_ids).find_each(&:destroy!)
+
+    topic_reader_ids = destination.topic_readers.
+                       joins("INNER JOIN topic_readers source
+                              ON source.topic_id = topic_readers.topic_id
+                              AND source.user_id = #{source.id}").pluck(:"source.id")
+
+    TopicReader.where(id: topic_reader_ids).find_each(&:destroy!)
   end
 
   def operations
