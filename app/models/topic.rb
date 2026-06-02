@@ -23,6 +23,10 @@ class Topic < ApplicationRecord
     joins("LEFT OUTER JOIN topic_readers dr ON dr.topic_id = topics.id AND dr.user_id = #{user_id.to_i}")
   }
 
+  scope :dangling, -> {
+    joins_groups.where("topics.group_id IS NOT NULL AND groups.id IS NULL")
+  }
+
   scope :not_discarded, -> {
     where(discarded_at: nil)
   }

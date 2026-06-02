@@ -272,8 +272,11 @@ namespace :loomio do
   end
 
   task hourly_tasks: :environment do
+    hour = Time.now.hour
+
     puts "#{DateTime.now.iso8601} Loomio hourly tasks"
     ThrottleService.reset!('hour')
+    EventBus.broadcast('loomio_hourly_tick', hour)
     GenericWorker.perform_async('PollService', 'expire_lapsed_polls')
     GenericWorker.perform_async('PollService', 'publish_closing_soon')
     GenericWorker.perform_async('PollService', 'open_scheduled_polls')
@@ -285,10 +288,12 @@ namespace :loomio do
 
     SendDailyCatchUpEmailWorker.perform_async
 
-    if (Time.now.hour == 0)
+    if (hour == 0)
       ThrottleService.reset!('day')
       Group.expired_demo.delete_all
       GenericWorker.perform_async('DemoService', 'generate_demo_groups')
+      GenericWorker.perform_async('CleanupService', 'delete_orphan_records')
+      GenericWorker.perform_async('CleanupService', 'destroy_orphan_users')
       EventBus.broadcast('loomio_daily_tick')
       GenericWorker.perform_async('OutcomeService', 'publish_review_due')
       GenericWorker.perform_async('ReceivedEmailService', 'delete_old_emails')
@@ -296,7 +301,7 @@ namespace :loomio do
 
     GenericWorker.perform_async('DemoService', 'ensure_queue')
 
-    if (Time.now.hour == 0 && Time.now.mday == 1)
+    if (hour == 0 && Time.now.mday == 1)
       UpdateBlockedDomainsWorker.perform_async
     end
   end
