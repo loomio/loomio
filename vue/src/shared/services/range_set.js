@@ -62,8 +62,8 @@ export default new class RangeSet {
     if ((part.length === 0) || (part[0] > whole[1]) || (part[1] < whole[0])) { return [whole]; }
     if ((part[0] <= whole[0]) && (part[1] >= whole[1])) { return []; }
     if ((part[0] >  whole[0]) && (part[1] <  whole[1])) { return [[whole[0], part[0] - 1], [part[1] + 1, whole[1]]]; }
-    if ((part[0] === whole[0]) && (part[1] <  whole[1])) { return [[part[1] + 1, whole[1]]]; }
-    if ((part[0] >  whole[0]) && (part[1] === whole[1])) { return [[whole[0], part[0] - 1]]; }
+    if ((part[0] <= whole[0]) && (part[1] <  whole[1])) { return [[part[1] + 1, whole[1]]]; }
+    if ((part[0] >  whole[0]) && (part[1] >= whole[1])) { return [[whole[0], part[0] - 1]]; }
   }
 
   subtractRanges(wholes, parts) {
@@ -94,13 +94,17 @@ export default new class RangeSet {
       subtractLeft:    isEqual(this.subtractRange([1,2], [1,1]),      [[2,2]]),
       subtractRight:   isEqual(this.subtractRange([1,2], [2,2]),      [[1,1]]),
       subtractMiddle:  isEqual(this.subtractRange([1,3], [2,2]),      [[1,1], [3,3]]),
+      subtractLeftOverlap:  isEqual(this.subtractRange([2,3], [1,2]), [[3,3]]),
+      subtractRightOverlap: isEqual(this.subtractRange([1,2], [2,3]), [[1,1]]),
       overlapsNone:            this.overlaps([1,2], [3,4]) === false,
       overlapsPart:            this.overlaps([1,2], [2,3]) === true,
       overlapsWhole:           this.overlaps([1,2], [1,2]) === true,
       subtractRanges1: isEqual(this.subtractRanges([[1,1]], [[1,1]]), []),
       subtractRanges2: isEqual(this.subtractRanges([[1,2]], [[1,1]]), [[2,2]]),
       subtractRanges3: isEqual(this.subtractRanges([[1,2], [4,6]], [[1,1], [5,5]]), [[2,2], [4,4], [6,6]]),
-      subtractRanges4: isEqual(this.subtractRanges([[1,2], [4,8]], [[5,6], [7,8]]), [[1,2], [4,4]])
+      subtractRanges4: isEqual(this.subtractRanges([[1,2], [4,8]], [[5,6], [7,8]]), [[1,2], [4,4]]),
+      subtractRanges5: isEqual(this.subtractRanges([[2,5]], [[1,2]]), [[3,5]]),
+      subtractRanges6: isEqual(this.subtractRanges([[1,4]], [[4,5]]), [[1,3]])
     };
   }
 

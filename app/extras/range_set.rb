@@ -68,14 +68,14 @@ class RangeSet
     # range      [1,3]
     # read_range [1,2]
     # unread_ranges [[3,3]]
-    return [[part.last + 1, whole.last]]   if (part.first == whole.first) && (part.last < whole.last)
+    return [[part.last + 1, whole.last]]   if (part.first <= whole.first) && (part.last < whole.last)
 
     # read the last part
     # range      [1,3]
     # read_range [2,3]
     # unread_ranges [[1,1]]
     # start of unread_range is either same as range.first or read_range.last
-    return [[whole.first, part.first - 1]] if (part.first > whole.first) && (part.last == whole.last)
+    return [[whole.first, part.first - 1]] if (part.first > whole.first) && (part.last >= whole.last)
   end
 
   # all ranges: [[1,2]] , some ranges: [[1,1]]

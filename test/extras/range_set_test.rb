@@ -20,6 +20,8 @@ class RangeSetTest < ActiveSupport::TestCase
     assert_equal [[2,2]],          RangeSet.subtract_range([1,2], [1,1])
     assert_equal [[1,1]],          RangeSet.subtract_range([1,2], [2,2])
     assert_equal [[1,1],[3,3]],    RangeSet.subtract_range([1,3], [2,2])
+    assert_equal [[3,3]],          RangeSet.subtract_range([2,3], [1,2])
+    assert_equal [[1,1]],          RangeSet.subtract_range([1,2], [2,3])
   end
 
   test "subtracts ranges from ranges" do
@@ -27,6 +29,8 @@ class RangeSetTest < ActiveSupport::TestCase
     assert_equal [[2,2], [5,8]], RangeSet.subtract_ranges([[1,2],[4,8]], [[1,1], [4,4]])
     assert_equal [[1,2], [4,4], [7,8]], RangeSet.subtract_ranges([[1,2],[4,8]], [[5,6]])
     assert_equal [[1,2], [4,4]], RangeSet.subtract_ranges([[1,2],[4,8]], [[5,6], [7,8]])
+    assert_equal [[3,5]], RangeSet.subtract_ranges([[2,5]], [[1,2]])
+    assert_equal [[1,3]], RangeSet.subtract_ranges([[1,4]], [[4,5]])
 
     ranges = [[1, 231]]
     read_ranges = [[1, 54], [62, 63], [65, 65], [67, 68], [76, 77], [79, 80], [85, 86], [89, 91], [97, 97], [100, 100], [112, 112], [115, 115], [120, 120], [126, 126], [134, 134], [137, 138], [141, 155], [167, 180], [184, 185], [187, 187], [192, 210], [219, 231]]
