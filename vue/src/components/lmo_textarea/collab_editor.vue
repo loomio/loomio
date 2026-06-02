@@ -89,6 +89,9 @@ const fetchedUrls = ref([]);
 const filesField = ref(null);
 const imagesField = ref(null);
 let ydoc = null;
+let hocusProvider = null;
+let localProvider = null;
+let syncFallbackTimeout = null;
 
 const btnProps = ref({
   size: 'small',
@@ -292,6 +295,9 @@ onMounted(() => {
   ydoc = new Y.Doc();
 
   const onSync = function() {
+    // The provider and fallback timer outlive the editor; a late sync after
+    // the editor is destroyed would hit a null commandManager.
+    if (!editor.value || editor.value.isDestroyed) { return; }
     if (!ydoc.getMap('config').get('initialContentLoaded')) {
       ydoc.getMap('config').set('initialContentLoaded', true);
       editor.value.commands.setContent(props.model[props.field]);
@@ -303,7 +309,7 @@ onMounted(() => {
     }
   };
 
-  const hocusProvider = new HocuspocusProvider({
+  hocusProvider = new HocuspocusProvider({
     url: AppConfig.theme.hocuspocus_url,
     name: docname,
     document: ydoc,
@@ -311,10 +317,10 @@ onMounted(() => {
     onSynced: () => { onSync() },
   });
 
-  const localProvider = new IndexeddbPersistence(docname, ydoc);
+  localProvider = new IndexeddbPersistence(docname, ydoc);
 
   // Fallback: If server doesn't connect within timeout, load content from local model
-  setTimeout(() => {
+  syncFallbackTimeout = setTimeout(() => {
     if (!ydoc.getMap('config').get('initialContentLoaded')) {
       console.log('Hocuspocus server unavailable, loading from local model');
       onSync();
@@ -451,7 +457,10 @@ onBeforeUnmount(() => {
   EventBus.$off('focusEditor');
   EventBus.$off('resetDraft');
   EventBus.$off('deleteDraft');
-  editor.value.destroy();
+  if (syncFallbackTimeout) { clearTimeout(syncFallbackTimeout); }
+  if (hocusProvider) { hocusProvider.destroy(); }
+  if (localProvider) { localProvider.destroy(); }
+  if (editor.value) { editor.value.destroy(); }
 });
 
 defineExpose({
