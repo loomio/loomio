@@ -48,7 +48,7 @@ class Api::V1::AnnouncementsController < Api::V1::RestfulController
   def search
     # if target model has no groups, no discussions, then draw from users groups and guest threads
     self.collection = if params[:existing_only]
-      target_model.members.search_for(params[:q]).limit(50)
+      target_model.members.invitable_search(params[:q]).limit(50)
     else
       UserQuery.invitable_search(
         model: target_model,

@@ -76,6 +76,20 @@ class Api::V1::AnnouncementsControllerTest < ActionController::TestCase
     assert_includes mention_event['notifications'].map { |n| n['user_id'] }, member.id
   end
 
+  test "search existing only filters target members" do
+    hex = SecureRandom.hex(4)
+    member = User.create!(name: "Existing #{hex}", email: "existing#{hex}@example.com", username: "existing#{hex}")
+    non_member = User.create!(name: "Existing Outsider #{hex}", email: "outsider#{hex}@example.com", username: "outsider#{hex}")
+    @group.add_member!(member)
+
+    get :search, params: { group_id: @group.id, q: "Existing", existing_only: 1 }
+
+    assert_response :success
+    user_ids = JSON.parse(response.body)['users'].map { |user| user['id'] }
+    assert_includes user_ids, member.id
+    refute_includes user_ids, non_member.id
+  end
+
   # -- Poll announcement tests --
 
   def create_test_poll(**extra)
