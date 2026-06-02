@@ -90,6 +90,16 @@ class EventTest < ActiveSupport::TestCase
     assert_not_includes subscribed, @user_thread_mute
   end
 
+  test "live updates are skipped when eventable has been deleted" do
+    event = Events::NewDiscussion.new(kind: "new_discussion")
+
+    assert_nothing_raised do
+      MessageChannelService.stub(:publish_models, ->(*) { raise "should not publish" }) do
+        event.notify_clients!
+      end
+    end
+  end
+
   test "user_mentioned notifies mentioned user" do
     comment = Comment.new(body: "hello @#{@mentioned_user.username}", parent: @discussion)
     CommentService.create(comment: comment, actor: @admin)
