@@ -8,8 +8,6 @@ class PollOption < ApplicationRecord
   has_many :stance_choices, dependent: :destroy
   has_many :stances, -> { where("stances.revoked_at IS NULL") }, through: :stance_choices
 
-  scope :dangling, -> { joins('left join polls on polls.id = poll_id').where('polls.id is null') }
-
   validates :test_operator, inclusion: { in: [ 'gte', 'lte' ] }, allow_nil: true
   normalizes :test_percent, with: ->(v) { v.nil? ? nil : [ [ v, 0 ].max, 100 ].min }
   validates :test_against, inclusion: { in: [ 'score_percent', 'voter_percent' ] }, allow_nil: true

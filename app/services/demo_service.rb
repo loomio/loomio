@@ -42,12 +42,9 @@ class DemoService
     refill_queue
   end
 
-  def self.generate_demo_groups
-    return unless ActiveRecord::Base.connection.table_exists? 'demos'
-    Demo.where('demo_handle IS NOT NULL').each do |template|
-      Group.where(handle: template.demo_handle).update_all(handle: nil)
-      RecordCloner.new(recorded_at: template.recorded_at)
-                  .create_clone_group_for_public_demo(template.group, template.demo_handle)
+  def self.destroy_expired_demo_groups
+    Group.expired_demo.find_each do |group|
+      group.destroy!
     end
   end
 end

@@ -50,9 +50,6 @@ class Discussion < ApplicationRecord
     SQL
   end
 
-  scope :dangling, lambda {
-    joins(:topic).joins('left join groups g on topics.group_id = g.id').where('topics.group_id is not null and g.id is null')
-  }
   scope :in_organisation, ->(group) { includes(:author).joins(:topic).where(topics: { group_id: group.id_and_subgroup_ids }) }
   scope :last_activity_after, ->(time) { joins(:topic).where('topics.last_activity_at > ?', time) }
   scope :order_by_latest_activity, -> { joins(:topic).order('topics.last_activity_at DESC') }

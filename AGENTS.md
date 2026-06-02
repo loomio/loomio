@@ -12,6 +12,10 @@
 - **When you hand-correct a translation, append it to `translation_corrections.md`** with the file, key, before/after, and a one-line "why it was wrong". The point is to accumulate the context Google doesn't have, so reviewers of the next retranslation can watch for the same traps.
 
 
+## Running Tests
+
+**Never run Rails tests and E2E tests in parallel.** Both use the `loomio_test` database (via `RAILS_ENV=test`) and will corrupt each other's data if run concurrently. Run one suite at a time.
+
 ## Running E2E Tests
 
 E2E tests use Nightwatch + headless Chrome against a local Rails server.

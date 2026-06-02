@@ -167,11 +167,6 @@ class Poll < ApplicationRecord
 
   has_many :stance_receipts, dependent: :destroy
 
-  scope :dangling, -> {
-    joins("LEFT JOIN topics t ON t.id = polls.topic_id")
-    .joins("LEFT JOIN groups g ON g.id = t.group_id")
-    .where("t.group_id IS NOT NULL AND g.id IS NULL")
-  }
   scope :active, -> { kept.where('polls.closed_at': nil).where('polls.opened_at IS NOT NULL') }
   scope :template, -> { kept.where('polls.template': true) }
   scope :closed, -> { kept.where("polls.closed_at IS NOT NULL") }
