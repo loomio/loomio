@@ -291,7 +291,6 @@ namespace :loomio do
     if (hour == 0)
       ThrottleService.reset!('day')
       GenericWorker.perform_async('DemoService', 'destroy_expired_demo_groups')
-      GenericWorker.perform_async('DemoService', 'generate_demo_groups')
       GenericWorker.perform_async('CleanupService', 'delete_orphan_records')
       GenericWorker.perform_async('CleanupService', 'destroy_orphan_users')
       EventBus.broadcast('loomio_daily_tick')

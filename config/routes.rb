@@ -75,7 +75,7 @@ Rails.application.routes.draw do
         get :version, on: :collection
       end
 
-      resources :demos, only: [:index] do
+      resources :demos, only: [] do
         post :clone, on: :collection
       end
 
