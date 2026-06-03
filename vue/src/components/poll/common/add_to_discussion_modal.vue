@@ -1,109 +1,99 @@
-<script lang="js">
+<script setup lang="js">
+import { ref, watch, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
 import Flash from '@/shared/services/flash';
 import EventBus from '@/shared/services/event_bus';
 import { sortBy, debounce } from 'lodash-es';
-import UrlFor from '@/mixins/url_for';
+import LmoUrlService from '@/shared/services/lmo_url_service';
 
-export default {
-  mixins: [UrlFor],
+const props = defineProps({
+  poll: Object
+});
 
-  props: {
-    poll: Object
-  },
+const router = useRouter();
+const urlFor = (model, action, params) => LmoUrlService.route({model, action, params});
 
-  data() {
-    return {
-      selectedTopic: null,
-      searchFragment: '',
-      searchResults: [],
-      groupId: this.poll.topic().groupId,
-      groups: sortBy(Session.user().groups(), 'fullName'),
-      loading: false
-    };
-  },
+const selectedTopic = ref(null);
+const searchFragment = ref('');
+const searchResults = ref([]);
+const groupId = ref(props.poll.topic().groupId);
+const groups = sortBy(Session.user().groups(), 'fullName');
+const loading = ref(false);
 
-  mounted() {
-    this.getSuggestions();
-  },
-
-  methods: {
-    canMoveTo(topic) {
-      return topic.id !== this.poll.topicId &&
-             topic.topicableType === 'Discussion' &&
-             topic.adminsInclude(Session.user());
-    },
-
-    getSuggestions() {
-      this.loading = true;
-      Records.topics.fetch({
-        params: {
-          group_id: this.groupId,
-          topicable_type: 'Discussion',
-          exclude_types: 'reaction',
-          per: 50
-        }
-      }).then(() => {
-        this.loading = false;
-        this.searchResults = Records.topics.collection.chain()
-          .find({groupId: this.groupId, topicableType: 'Discussion'})
-          .where(t => this.canMoveTo(t))
-          .simplesort('lastActivityAt', true)
-          .data();
-      });
-    },
-
-    submit() {
-      const event = this.poll.createdEvent();
-      if (!event) { return; }
-
-      this.loading = true;
-      this.selectedTopic.moveComments([event.id]).then(() => {
-        this.loading = false;
-        Flash.success("add_poll_to_discussion_modal.success", {pollType: this.poll.translatedPollType()});
-        this.$router.push(this.urlFor(this.selectedTopic)).then(() => {
-          EventBus.$emit('closeModal');
-        });
-      });
-    },
-
-    fetch: debounce(function() {
-      if (!this.searchFragment) {
-        this.getSuggestions();
-        return;
-      }
-
-      this.loading = true;
-      Records.topics.fetch({
-        params: {
-          group_id: this.groupId,
-          topicable_type: 'Discussion',
-          q: this.searchFragment,
-          per: 20
-        }
-      }).then(() => {
-        this.loading = false;
-        const frag = this.searchFragment.toLowerCase();
-        this.searchResults = Records.topics.collection.chain()
-          .find({groupId: this.groupId, topicableType: 'Discussion'})
-          .where(t => {
-            const discussion = t.discussion();
-            return discussion &&
-                   this.canMoveTo(t) &&
-                   discussion.title.toLowerCase().includes(frag);
-          })
-          .simplesort('lastActivityAt', true)
-          .data();
-      });
-    }, 500)
-  },
-
-  watch: {
-    searchFragment: 'fetch',
-    groupId: 'getSuggestions'
-  }
+const canMoveTo = (topic) => {
+  return topic.id !== props.poll.topicId &&
+         topic.topicableType === 'Discussion' &&
+         topic.adminsInclude(Session.user());
 };
+
+const getSuggestions = () => {
+  loading.value = true;
+  Records.topics.fetch({
+    params: {
+      group_id: groupId.value,
+      topicable_type: 'Discussion',
+      exclude_types: 'reaction',
+      per: 50
+    }
+  }).then(() => {
+    loading.value = false;
+    searchResults.value = Records.topics.collection.chain()
+      .find({groupId: groupId.value, topicableType: 'Discussion'})
+      .where(t => canMoveTo(t))
+      .simplesort('lastActivityAt', true)
+      .data();
+  });
+};
+
+const submit = () => {
+  const event = props.poll.createdEvent();
+  if (!event) { return; }
+
+  loading.value = true;
+  selectedTopic.value.moveComments([event.id]).then(() => {
+    loading.value = false;
+    Flash.success("add_poll_to_discussion_modal.success", {pollType: props.poll.translatedPollType()});
+    router.push(urlFor(selectedTopic.value)).then(() => {
+      EventBus.$emit('closeModal');
+    });
+  });
+};
+
+const fetch = debounce(() => {
+  if (!searchFragment.value) {
+    getSuggestions();
+    return;
+  }
+
+  loading.value = true;
+  Records.topics.fetch({
+    params: {
+      group_id: groupId.value,
+      topicable_type: 'Discussion',
+      q: searchFragment.value,
+      per: 20
+    }
+  }).then(() => {
+    loading.value = false;
+    const frag = searchFragment.value.toLowerCase();
+    searchResults.value = Records.topics.collection.chain()
+      .find({groupId: groupId.value, topicableType: 'Discussion'})
+      .where(t => {
+        const discussion = t.discussion();
+        return discussion &&
+               canMoveTo(t) &&
+               discussion.title.toLowerCase().includes(frag);
+      })
+      .simplesort('lastActivityAt', true)
+      .data();
+  });
+}, 500);
+
+watch(searchFragment, fetch);
+watch(groupId, getSuggestions);
+onMounted(getSuggestions);
 </script>
 
 <template lang="pug">
