@@ -189,11 +189,16 @@ module Null::Group
 
 
   def subscription
-    {
+    OpenStruct.new(
       max_members:     nil,
       max_threads:     nil,
-      active:          true,
+      allow_subgroups: true,
+      plan:            nil,
+      state:           nil,
+      is_active?:      true,
+      renews_at:       nil,
+      expires_at:      nil,
       members_count:   0
-    }
+    )
   end
 end
