@@ -1087,6 +1087,7 @@ en:
     edit_poll: Edit poll
     edit_poll_type: Edit %{pollType}
     new_poll_type: New %{pollType}
+    add_to_discussion: Add to Discussion
     move_items: Move items
     announce_poll: Invite people to vote
     announce_poll_active: "(No one has been invited yet)"
@@ -2672,6 +2673,10 @@ en:
     event_removed: Removed from thread
   add_poll_to_thread_modal:
     success: Success, %{pollType} added to thread!
+  add_poll_to_discussion_modal:
+    title: Add to Discussion
+    discussion: Discussion
+    success: Success, %{pollType} added to discussion!
   auth_form:
     code: '000000'
     youre_invited: You have been invited to join %{group_name}.

@@ -106,6 +106,32 @@ class MoveCommentsWorkerTest < ActiveSupport::TestCase
     assert_equal @target.topic_id, poll_event.topic_id
   end
 
+  test "moves topical poll and children to target thread then discards source topic" do
+    poll = PollService.create(params: {
+      title: "Topical poll #{SecureRandom.hex(4)}",
+      poll_type: 'proposal',
+      closing_at: 3.days.from_now,
+      poll_option_names: ['agree', 'disagree'],
+      group_id: @group.id
+    }, actor: @admin)
+    source_topic_id = poll.topic_id
+    poll_event = poll.created_event
+    comment = Comment.new(parent: poll, body: "poll comment", author: @user)
+    comment_event = CommentService.create(comment: comment, actor: @user)
+
+    MoveCommentsWorker.new.perform([poll_event.id], source_topic_id, @target.topic_id, @admin.id)
+
+    poll.reload; poll_event.reload; comment_event.reload
+    source_topic = Topic.find(source_topic_id)
+    assert_not_nil source_topic.discarded_at
+    assert_equal @admin.id, source_topic.discarded_by
+    assert_equal @target.topic_id, poll.topic_id
+    assert_equal @target.topic_id, poll_event.topic_id
+    assert_equal @target.topic_id, comment_event.topic_id
+    assert_equal poll.id, comment.reload.parent_id
+    assert_equal 'Poll', comment.parent_type
+  end
+
   test "does not move events from another topic" do
     other = DiscussionService.create(params: { title: "Other #{SecureRandom.hex(4)}", group_id: @group.id }, actor: @admin)
     comment = Comment.new(parent: other, body: "wrong thread", author: @user)
