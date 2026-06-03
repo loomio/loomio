@@ -324,6 +324,7 @@ pt_BR:
       save_template: Salvar modelo
       fork_template: Modelo de garfo
       customize: Personalizar
+      add: Adicionar
     formatting_help:
       label: Formatação
       title: Aprenda como usar Markdown para formatar seu texto
@@ -335,6 +336,7 @@ pt_BR:
     templates_admin_hint: Como administrador do grupo, você pode ocultar ou excluir quaisquer modelos que não desejar e editar os restantes para atender às suas necessidades.
     read: Ler
     unread: Não lido
+    discussion: Discussão
   merge_accounts:
     modal:
       title: Mesclar contas
@@ -1063,6 +1065,7 @@ pt_BR:
     delete_discussion: Excluir discussão
     lock_thread: Bloquear tópico
     unlock_thread: Desbloquear tópico
+    add_to_discussion: Adicionar à discussão
   formatting:
     formatting_tools: Text formatting tools
     colors: Cores
@@ -2909,3 +2912,8 @@ pt_BR:
   lock_thread_modal:
     body: Bloqueie os tópicos para removê-los da lista de tópicos abertos e impedir que as pessoas comentem.
     explanation: Bloquear tópicos para impedir que as pessoas comentem ou façam mais alterações.
+  add_poll_to_discussion_modal:
+    title: Adicionar à discussão
+    discussion: Discussão
+    success: Sucesso! %{pollType} adicionado à discussão!
+    explanation: O %{pollType} e quaisquer votos, comentários e resultados serão adicionados ao tópico de discussão selecionado.

@@ -324,6 +324,7 @@ it:
       save_template: Salva modello
       fork_template: Modello di forcella
       customize: Personalizzare
+      add: Aggiungere
     formatting_help:
       label: Formattazione
       title: Impara come usare il Markdown per formattare il tuo testo
@@ -335,6 +336,7 @@ it:
     templates_admin_hint: Poiché sei un amministratore del gruppo, puoi nascondere o eliminare i modelli che non desideri e modificare quelli rimanenti in base alle tue esigenze.
     read: Leggere
     unread: Non letto
+    discussion: Discussione
   merge_accounts:
     modal:
       title: Unisci account
@@ -1063,6 +1065,7 @@ it:
     delete_discussion: Elimina discussione
     lock_thread: Blocca discussione
     unlock_thread: Sblocca la discussione
+    add_to_discussion: Aggiungi alla discussione
   formatting:
     formatting_tools: Strumenti di formattazione del testo
     colors: Colori
@@ -2889,3 +2892,8 @@ it:
   lock_thread_modal:
     body: Blocca le discussioni per rimuoverle dall'elenco delle discussioni aperte e impedire agli utenti di commentare.
     explanation: Blocca le discussioni per impedire agli utenti di commentare o apportare ulteriori modifiche.
+  add_poll_to_discussion_modal:
+    title: Aggiungi alla discussione
+    discussion: Discussione
+    success: Operazione riuscita, %{pollType} aggiunto alla discussione!
+    explanation: Il tipo di sondaggio %{pollType} e tutti i voti, i commenti e l'esito verranno aggiunti al thread di discussione selezionato.

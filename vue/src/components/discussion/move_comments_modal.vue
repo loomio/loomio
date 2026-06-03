@@ -25,27 +25,44 @@ export default {
   },
 
   mounted() {
-    this.getSuggestions();
+    this.fetchTopics();
   },
 
   methods: {
-    getSuggestions() {
+    updateResults() {
+      const frag = this.searchFragment.toLowerCase();
+      this.searchResults = Records.topics.collection.chain()
+        .find({groupId: this.groupId, topicableType: 'Discussion'})
+        .where(t => {
+          if (t.id === this.topic.id || !AbilityService.canAddComment(t)) { return false; }
+          if (!frag) { return true; }
+          const disc = t.discussion();
+          return disc && disc.title.toLowerCase().includes(frag);
+        })
+        .simplesort('lastActivityAt', true)
+        .data();
+    },
+
+    fetchTopics: debounce(function() {
       this.loading = true;
-      Records.topics.fetch({
-        params: {
-          group_id: this.groupId,
-          topicable_type: 'Discussion',
-          exclude_types: 'reaction',
-          per: 50
-        }
-      }).then(() => {
+      const params = {
+        group_id: this.groupId,
+        topicable_type: 'Discussion',
+        exclude_types: 'reaction group',
+        per: 50
+      };
+      if (this.searchFragment) {
+        params.q = this.searchFragment;
+      }
+      Records.topics.fetch({params}).finally(() => {
         this.loading = false;
-        this.searchResults = Records.topics.collection.chain()
-          .find({groupId: this.groupId, topicableType: 'Discussion'})
-          .where(t => t.id !== this.topic.id && AbilityService.canAddComment(t))
-          .simplesort('lastActivityAt', true)
-          .data();
+        this.updateResults();
       });
+    }, 500),
+
+    newQuery(q) {
+      this.searchFragment = q || '';
+      this.fetchTopics();
     },
 
     resetForkedEvents() {
@@ -75,39 +92,10 @@ export default {
       });
     },
 
-    fetch: debounce(function() {
-      if (!this.searchFragment) {
-        this.getSuggestions();
-        return;
-      }
-      this.loading = true;
-      Records.topics.fetch({
-        params: {
-          group_id: this.groupId,
-          topicable_type: 'Discussion',
-          q: this.searchFragment,
-          per: 20
-        }
-      }).then(() => {
-        this.loading = false;
-        const frag = this.searchFragment.toLowerCase();
-        this.searchResults = Records.topics.collection.chain()
-          .find({groupId: this.groupId, topicableType: 'Discussion'})
-          .where(t => {
-            const disc = t.discussion();
-            return disc && t.id !== this.topic.id &&
-                   disc.title.toLowerCase().includes(frag) &&
-                   AbilityService.canAddComment(t);
-          })
-          .simplesort('lastActivityAt', true)
-          .data();
-      });
-    }, 500)
   },
 
   watch: {
-    searchFragment: 'fetch',
-    groupId: 'getSuggestions'
+    groupId: 'fetchTopics'
   }
 };
 
@@ -118,7 +106,7 @@ v-card(:title="$t('action_dock.move_items')")
     dismiss-modal-button(aria-hidden='true')
   v-card-text
     v-select(v-model="groupId" :items="groups" item-title="fullName" item-value="id")
-    v-autocomplete(hide-no-data return-object v-model="selectedTopic" :search-input.sync="searchFragment" :items="searchResults" item-title="title" :placeholder="$t('discussion_fork_actions.search_placeholder')" :label="$t('discussion_fork_actions.move_to_existing_thread')" :loading="loading")
+    v-autocomplete(hide-no-data return-object v-model="selectedTopic" @update:search="newQuery" :items="searchResults" item-title="title" :placeholder="$t('discussion_fork_actions.search_placeholder')" :label="$t('discussion_fork_actions.move_to_existing_thread')" :loading="loading")
   v-card-actions
     v-spacer
     v-btn(color="primary" outlined @click="startNewThread()" :loading="loading")

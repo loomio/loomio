@@ -316,6 +316,7 @@ sv:
       save_template: Spara mall
       fork_template: Gaffelmall
       customize: Anpassa
+      add: Tillägga
     formatting_help:
       label: Utformning
       title: Lär dig hur du använder Märkspråk för att formatera din text
@@ -327,6 +328,7 @@ sv:
     templates_admin_hint: Eftersom du är gruppadministratör kan du dölja eller ta bort mallar du inte vill ha och redigera de återstående efter dina behov.
     read: Läsa
     unread: Oläst
+    discussion: Diskussion
   merge_accounts:
     modal:
       title: Slå samman konton
@@ -1049,6 +1051,7 @@ sv:
     delete_discussion: Ta bort diskussion
     lock_thread: Lås tråden
     unlock_thread: Lås upp tråden
+    add_to_discussion: Lägg till i diskussionen
   formatting:
     formatting_tools: Textformateringsverktyg
     colors: Färger
@@ -2861,3 +2864,8 @@ sv:
   lock_thread_modal:
     body: Lås trådar för att ta bort dem från listan över öppna trådar och förhindra att folk kommenterar.
     explanation: Lås trådar för att förhindra att folk kommenterar eller gör ytterligare ändringar
+  add_poll_to_discussion_modal:
+    title: Lägg till i diskussionen
+    discussion: Diskussion
+    success: Lyckades, %{pollType} tillagd i diskussionen!
+    explanation: "%{pollType} och eventuella röster, kommentarer och resultat kommer att läggas till i den valda diskussionstråden."

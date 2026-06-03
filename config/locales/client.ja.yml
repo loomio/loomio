@@ -314,6 +314,7 @@ ja:
       save_template: テンプレートを保存
       fork_template: フォークテンプレート
       customize: カスタマイズ
+      add: 追加
     formatting_help:
       label: 書式設定
       title: Markdown を使用してテキストの書式を設定する方法を学びます
@@ -326,6 +327,7 @@ ja:
     templates_admin_hint: グループ管理者であるため、不要なテンプレートを非表示にしたり削除したり、残りのテンプレートをニーズに合わせて編集することができます。
     read: 読む
     unread: 未読
+    discussion: 議論
   merge_accounts:
     modal:
       title: アカウントを統合する
@@ -1048,6 +1050,7 @@ ja:
     delete_discussion: ディスカッションを削除
     lock_thread: スレッドをロック
     unlock_thread: スレッドのロックを解除
+    add_to_discussion: 議論に追加
   formatting:
     formatting_tools: テキスト書式設定ツール
     colors: 色
@@ -2860,3 +2863,8 @@ ja:
   lock_thread_modal:
     body: スレッドをロックすると、未解決のスレッド一覧から削除され、他のユーザーによるコメントができなくなります。
     explanation: スレッドをロックして、コメントや変更を禁止します。
+  add_poll_to_discussion_modal:
+    title: 議論に追加
+    discussion: 議論
+    success: 成功しました！%{pollType}がディスカッションに追加されました！
+    explanation: "%{pollType} と、投票、コメント、結果は、選択されたディスカッション スレッドに追加されます。"

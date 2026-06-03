@@ -318,6 +318,7 @@ hu:
       save_template: Sablon mentése
       fork_template: Villa sablon
       customize: Testreszabás
+      add: Hozzáadás
     formatting_help:
       label: Formázás
       title: Így használhatod a Markdown-t a szöveg formázására
@@ -329,6 +330,7 @@ hu:
     templates_admin_hint: Mivel csoportadminisztrátor vagy, elrejtheted vagy törölheted a nem kívánt sablonokat, a fennmaradókat pedig igényeid szerint szerkesztheted.
     read: Olvas
     unread: Nem olvasott
+    discussion: Vita
   merge_accounts:
     modal:
       title: Fiókok egyesítése
@@ -1053,6 +1055,7 @@ hu:
     delete_discussion: Beszélgetés törlése
     lock_thread: Téma zárolása
     unlock_thread: Téma zárolásának feloldása
+    add_to_discussion: Hozzáadás a beszélgetéshez
   formatting:
     formatting_tools: Szövegformázó eszközök
     colors: Színek
@@ -2868,3 +2871,8 @@ hu:
   lock_thread_modal:
     body: Zárold a témákat, hogy eltávolítsd őket a megnyitott témák listájából, és megakadályozd, hogy mások hozzászóljanak.
     explanation: Zárold a témákat, hogy megakadályozd a felhasználók hozzászólását vagy további módosításokat
+  add_poll_to_discussion_modal:
+    title: Hozzáadás a beszélgetéshez
+    discussion: Vita
+    success: Sikeresen hozzáadtuk a(z) %{pollType} elemet a beszélgetéshez!
+    explanation: A %{pollType} és minden szavazat, hozzászólás és eredmény hozzáfűzésre kerül a kiválasztott beszélgetési témához.

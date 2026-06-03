@@ -8,6 +8,7 @@ import { pick, filter } from 'lodash-es';
 import UserService from '@/shared/services/user_service';
 import Flash from '@/shared/services/flash';
 import WatchRecords from '@/mixins/watch_records';
+import { useCurrentUserGroups } from '@/composables/useCurrentUserGroups';
 
 export default {
   mixins: [WatchRecords],
@@ -50,7 +51,7 @@ export default {
 
     init() {
       if (!Session.isSignedIn() && (Session.user().restricted == null)) { return; }
-      Records.users.findOrFetchGroups();
+      useCurrentUserGroups().loadGroups();
       Session.user().attributeNames.push('unsubscribeToken');
       this.originalUser = Session.user();
       this.user = Session.user().clone();

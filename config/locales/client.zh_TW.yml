@@ -318,6 +318,7 @@ zh_TW:
       save_template: 儲存模板
       fork_template: 分支模板
       customize: 客製化
+      add: 添加
     formatting_help:
       label: 格式化
       title: 學習如何使用 Markdown 來格式化您的文字
@@ -328,6 +329,7 @@ zh_TW:
     templates_admin_hint: 因為您是群組管理員，您可以隱藏或刪除任何您不需要的模板，並編輯剩餘的模板以滿足您的需求。
     read: 讀
     unread: 未讀
+    discussion: 討論
   merge_accounts:
     modal:
       title: 合併帳號
@@ -1056,6 +1058,7 @@ zh_TW:
     delete_discussion: 刪除討論
     lock_thread: 鎖定主題
     unlock_thread: 解鎖主題
+    add_to_discussion: 加入討論
   formatting:
     formatting_tools: 文字格式化工具
     colors: 顏色
@@ -2889,3 +2892,8 @@ zh_TW:
   lock_thread_modal:
     body: 鎖定帖子，將其從開放帖子列表中移除，並阻止他人評論。
     explanation: 鎖定貼文以防止他人評論或進行進一步修改
+  add_poll_to_discussion_modal:
+    title: 加入討論
+    discussion: 討論
+    success: 成功，%{pollType} 已加入討論！
+    explanation: "%{pollType} 以及任何投票、評論和結果都將附加到選定的討論主題中。"

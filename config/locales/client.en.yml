@@ -269,6 +269,7 @@ en:
     notification_volume: Notification Volume
     group: Group
     thread: Thread
+    discussion: Discussion
     groups: Groups
     organization: Organization
     organizations: Organizations
@@ -314,6 +315,7 @@ en:
       next: Next
       close: Close
       reopen: Reopen
+      add: Add
       save: Save
       save_template: Save template
       fork_template: Fork template
@@ -1087,7 +1089,7 @@ en:
     edit_poll: Edit poll
     edit_poll_type: Edit %{pollType}
     new_poll_type: New %{pollType}
-    add_to_discussion: Add to Discussion
+    add_to_discussion: Add to discussion
     move_items: Move items
     announce_poll: Invite people to vote
     announce_poll_active: "(No one has been invited yet)"
@@ -2671,11 +2673,9 @@ en:
     stance_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> voted on: <strong>%{title}</strong>"
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> updated their vote on: <strong>%{title}</strong>"
     event_removed: Removed from thread
-  add_poll_to_thread_modal:
-    success: Success, %{pollType} added to thread!
   add_poll_to_discussion_modal:
     title: Add to Discussion
-    discussion: Discussion
+    explanation: The %{pollType} and any votes, comments and outcome will be appended to the selected discussion thread.
     success: Success, %{pollType} added to discussion!
   auth_form:
     code: '000000'

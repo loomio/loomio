@@ -324,6 +324,7 @@ fr:
       save_template: Enregistrer le modèle
       fork_template: Modèle de fourche
       customize: Personnaliser
+      add: Ajouter
     formatting_help:
       label: Mise en forme
       title: Apprenez à utiliser Markdown pour mettre en forme votre texte
@@ -335,6 +336,7 @@ fr:
     templates_admin_hint: En tant qu'administrateur du groupe, vous pouvez masquer ou supprimer les modèles que vous ne souhaitez pas utiliser, et modifier les autres en fonction de vos besoins.
     read: Lire
     unread: Non lu
+    discussion: Discussion
   merge_accounts:
     modal:
       title: Fusionner les comptes
@@ -1063,6 +1065,7 @@ fr:
     delete_discussion: Supprimer la discussion
     lock_thread: Verrouiller la discussion
     unlock_thread: Déverrouiller le fil de discussion
+    add_to_discussion: Ajouter à la discussion
   formatting:
     formatting_tools: Outils de formatage du texte
     colors: Couleurs
@@ -2905,3 +2908,8 @@ fr:
   lock_thread_modal:
     body: Verrouillez les sujets pour les retirer de la liste des sujets ouverts et empêcher les commentaires.
     explanation: Verrouillez les discussions pour empêcher les commentaires et les modifications.
+  add_poll_to_discussion_modal:
+    title: Ajouter à la discussion
+    discussion: Discussion
+    success: Succès, %{pollType} a été ajouté à la discussion !
+    explanation: Le %{pollType} ainsi que tous les votes, commentaires et résultats seront ajoutés au fil de discussion sélectionné.

@@ -9,9 +9,11 @@ import LmoUrlService from '@/shared/services/lmo_url_service';
 import EventBus      from '@/shared/services/event_bus';
 import DiscussionTemplateService from '@/shared/services/discussion_template_service';
 import { useWatchRecords } from '@/composables/useWatchRecords';
+import { useCurrentUserGroups } from '@/composables/useCurrentUserGroups';
 
 const route = useRoute();
 const { watchRecords } = useWatchRecords();
+const { loadGroups } = useCurrentUserGroups();
 
 // Data
 const templates = ref([]);
@@ -107,7 +109,7 @@ onUnmounted(() => {
 
 // Mounted
 onMounted(() => {
-  Records.users.findOrFetchGroups();
+  loadGroups();
 
   if (route.query.group_id) {
     Records.discussionTemplates.fetch({

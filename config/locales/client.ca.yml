@@ -316,6 +316,7 @@ ca:
       save_template: Desa la plantilla
       fork_template: Plantilla de forquilla
       customize: Personalitza
+      add: Afegeix
     formatting_help:
       label: Formatació
       title: Aprèn a escriure el text en format Markdown
@@ -327,6 +328,7 @@ ca:
     templates_admin_hint: Com que sou administrador d'un grup, podeu amagar o suprimir les plantilles que no vulgueu i editar les restants perquè s'adaptin a les vostres necessitats.
     read: Llegir
     unread: No llegit
+    discussion: Discussió
   merge_accounts:
     modal:
       title: Combina comptes
@@ -1055,6 +1057,7 @@ ca:
     delete_discussion: Suprimeix la discussió
     lock_thread: Bloqueja el fil
     unlock_thread: Desbloqueja el fil
+    add_to_discussion: Afegeix a la discussió
   formatting:
     formatting_tools: Eines de formatació de text
     colors: Colors
@@ -2888,3 +2891,8 @@ ca:
   lock_thread_modal:
     body: Bloqueja els fils per eliminar-los de la llista de fils oberts i evitar que la gent comenti.
     explanation: Bloqueja els fils de discussió per evitar que la gent comenti o faci més canvis
+  add_poll_to_discussion_modal:
+    title: Afegeix a la discussió
+    discussion: Discussió
+    success: Èxit, %{pollType} afegit a la discussió!
+    explanation: El %{pollType} i qualsevol vot, comentari i resultat s'afegiran al fil de discussió seleccionat.

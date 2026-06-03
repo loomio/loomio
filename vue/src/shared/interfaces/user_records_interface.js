@@ -3,8 +3,6 @@ import UserModel            from '@/shared/models/user_model';
 import AnonymousUserModel   from '@/shared/models/anonymous_user_model';
 import {merge, pickBy, identity} from 'lodash-es';
 
-let groupsFetchedOnce = false;
-
 export default class UserRecordsInterface extends BaseRecordsInterface {
   constructor(recordStore) {
     super(recordStore);
@@ -22,15 +20,6 @@ export default class UserRecordsInterface extends BaseRecordsInterface {
 
   fetchTimeZones() {
     return this.remote.fetch({path: "time_zones"});
-  }
-
-  findOrFetchGroups() {
-    if (groupsFetchedOnce) {
-      this.fetchGroups();
-      return Promise.resolve(true);
-    } else {
-      return this.fetchGroups().then(() => groupsFetchedOnce = true);
-    }
   }
 
   fetchGroups() {

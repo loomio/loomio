@@ -316,6 +316,7 @@ pl:
       save_template: Zapisz szablon
       fork_template: Szablon widelca
       customize: Dostosuj
+      add: Dodać
     formatting_help:
       label: Formatowanie
       title: Naucz się używać Markdown, by sformatować swój tekst
@@ -327,6 +328,7 @@ pl:
     templates_admin_hint: Jako administrator grupy możesz ukrywać lub usuwać szablony, których nie chcesz, a także edytować pozostałe, dostosowując je do swoich potrzeb.
     read: Czytać
     unread: Niewykształcony
+    discussion: Dyskusja
   merge_accounts:
     modal:
       title: Połącz konta
@@ -1055,6 +1057,7 @@ pl:
     delete_discussion: Usuń dyskusję
     lock_thread: Zablokuj wątek
     unlock_thread: Odblokuj wątek
+    add_to_discussion: Dodaj do dyskusji
   formatting:
     formatting_tools: Narzędzia do formatowania tekstu
     colors: Zabarwienie
@@ -2888,3 +2891,8 @@ pl:
   lock_thread_modal:
     body: Zablokuj wątki, aby usunąć je z listy otwartych wątków i uniemożliwić użytkownikom komentowanie.
     explanation: Zablokuj wątki, aby uniemożliwić użytkownikom komentowanie lub wprowadzanie dalszych zmian
+  add_poll_to_discussion_modal:
+    title: Dodaj do dyskusji
+    discussion: Dyskusja
+    success: Sukces, %{pollType} dodano do dyskusji!
+    explanation: "%{pollType} oraz wszelkie głosy, komentarze i wyniki zostaną dołączone do wybranego wątku dyskusji."

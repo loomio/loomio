@@ -1,5 +1,5 @@
 <script setup lang="js">
-import { ref, watch, onMounted } from 'vue';
+import { ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
@@ -7,6 +7,8 @@ import Flash from '@/shared/services/flash';
 import EventBus from '@/shared/services/event_bus';
 import { sortBy, debounce } from 'lodash-es';
 import LmoUrlService from '@/shared/services/lmo_url_service';
+import { useWatchRecords } from '@/composables/useWatchRecords';
+import { useCurrentUserGroups } from '@/composables/useCurrentUserGroups';
 
 const props = defineProps({
   poll: Object
@@ -19,8 +21,13 @@ const selectedTopic = ref(null);
 const searchFragment = ref('');
 const searchResults = ref([]);
 const groupId = ref(props.poll.topic().groupId);
-const groups = sortBy(Session.user().groups(), 'fullName');
+const groups = ref([]);
 const loading = ref(false);
+
+const { loadGroups } = useCurrentUserGroups();
+loadGroups().then(() => {
+  groups.value = sortBy(Session.user().groups(), 'fullName');
+});
 
 const canMoveTo = (topic) => {
   return topic.id !== props.poll.topicId &&
@@ -28,24 +35,36 @@ const canMoveTo = (topic) => {
          topic.adminsInclude(Session.user());
 };
 
-const getSuggestions = () => {
-  loading.value = true;
-  Records.topics.fetch({
-    params: {
-      group_id: groupId.value,
-      topicable_type: 'Discussion',
-      exclude_types: 'reaction',
-      per: 50
-    }
-  }).then(() => {
-    loading.value = false;
-    searchResults.value = Records.topics.collection.chain()
-      .find({groupId: groupId.value, topicableType: 'Discussion'})
-      .where(t => canMoveTo(t))
-      .simplesort('lastActivityAt', true)
-      .data();
-  });
+const updateResults = () => {
+  const frag = searchFragment.value.toLowerCase();
+  searchResults.value = Records.topics.collection.chain()
+    .find({groupId: groupId.value, topicableType: 'Discussion'})
+    .where(t => {
+      if (!canMoveTo(t)) { return false; }
+      if (!frag) { return true; }
+      const discussion = t.discussion();
+      return discussion && discussion.title.toLowerCase().includes(frag);
+    })
+    .simplesort('lastActivityAt', true)
+    .data();
 };
+
+const fetchTopics = debounce(() => {
+  loading.value = true;
+  const params = {
+    group_id: groupId.value,
+    topicable_type: 'Discussion',
+    exclude_types: 'reaction group',
+    per: 50
+  };
+  if (searchFragment.value) {
+    params.q = searchFragment.value;
+  }
+  Records.topics.fetch({params}).finally(() => {
+    loading.value = false;
+    updateResults();
+  });
+}, 500);
 
 const submit = () => {
   const event = props.poll.createdEvent();
@@ -61,39 +80,21 @@ const submit = () => {
   });
 };
 
-const fetch = debounce(() => {
-  if (!searchFragment.value) {
-    getSuggestions();
-    return;
-  }
+const newQuery = (q) => {
+  searchFragment.value = q || '';
+  fetchTopics();
+};
 
-  loading.value = true;
-  Records.topics.fetch({
-    params: {
-      group_id: groupId.value,
-      topicable_type: 'Discussion',
-      q: searchFragment.value,
-      per: 20
-    }
-  }).then(() => {
-    loading.value = false;
-    const frag = searchFragment.value.toLowerCase();
-    searchResults.value = Records.topics.collection.chain()
-      .find({groupId: groupId.value, topicableType: 'Discussion'})
-      .where(t => {
-        const discussion = t.discussion();
-        return discussion &&
-               canMoveTo(t) &&
-               discussion.title.toLowerCase().includes(frag);
-      })
-      .simplesort('lastActivityAt', true)
-      .data();
-  });
-}, 500);
+watch(groupId, fetchTopics);
 
-watch(searchFragment, fetch);
-watch(groupId, getSuggestions);
-onMounted(getSuggestions);
+// init
+fetchTopics();
+
+const { watchRecords } = useWatchRecords();
+watchRecords({
+  collections: ['topics'],
+  query: () => updateResults()
+});
 </script>
 
 <template lang="pug">
@@ -101,10 +102,12 @@ v-card(:title="$t('add_poll_to_discussion_modal.title')")
   template(v-slot:append)
     dismiss-modal-button(aria-hidden='true')
   v-card-text
+    v-alert(type="info" variant="tonal" class="mb-4")
+      | {{ $t('add_poll_to_discussion_modal.explanation', {pollType: poll.translatedPollType()}) }}
     v-select(v-model="groupId" :items="groups" item-title="fullName" item-value="id")
-    v-autocomplete(hide-no-data return-object v-model="selectedTopic" :search-input.sync="searchFragment" :items="searchResults" item-title="title" :placeholder="$t('discussion_fork_actions.search_placeholder')" :label="$t('add_poll_to_discussion_modal.discussion')" :loading="loading")
+    v-autocomplete(hide-no-data return-object v-model="selectedTopic" @update:search="newQuery" :items="searchResults" item-title="title" :placeholder="$t('discussion_fork_actions.search_placeholder')" :label="$t('common.discussion')" :loading="loading")
   v-card-actions
     v-spacer
     v-btn(color="primary" @click="submit()" :disabled="!selectedTopic" :loading="loading")
-      span(v-t="'common.action.save'")
+      span(v-t="'common.action.add'")
 </template>
