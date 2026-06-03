@@ -96,7 +96,7 @@ export default defineConfig({
 
   // --- IMPORTANT FIX ---
   optimizeDeps: {
-    exclude: ['@emotion/is-prop-valid']
+    exclude: ['@emotion/is-prop-valid', 'vue-i18n']
   },
 
   build: {

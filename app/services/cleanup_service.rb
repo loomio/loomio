@@ -44,7 +44,10 @@ module CleanupService
   }.freeze
 
   def self.audit_orphan_records
+
     audit = orphan_record_audit
+
+    return audit if Rails.env.test?
 
     puts "Dangling records:"
     print_audit_counts(audit[:dangling_records])
@@ -57,7 +60,7 @@ module CleanupService
   def self.delete_orphan_records
     dangling_record_scopes.each do |label, scope|
       count = destroy_records(scope)
-      puts "destroyed #{count} dangling #{label} records"
+      puts "destroyed #{count} dangling #{label} records" unless Rails.env.test?
     end
 
     delete_orphan_versions
@@ -184,7 +187,8 @@ module CleanupService
   def self.delete_orphan_versions
     orphan_version_scopes.sum do |item_type, scope|
       count = scope.delete_all
-      puts "deleted #{count} orphan #{item_type} version records"
+
+      puts "deleted #{count} orphan #{item_type} version records" unless Rails.env.test?
       count
     end
   end
@@ -245,7 +249,7 @@ module CleanupService
       end
     end
 
-    puts "Deleted #{user_ids.size} orphan users"
+    puts "Deleted #{user_ids.size} orphan users" unless Rails.env.test?
   end
 
   def self.orphan_user_ids
