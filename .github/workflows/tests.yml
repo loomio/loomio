@@ -70,6 +70,22 @@ jobs:
         rm -f bin/*
         bundle install --binstubs
         bundle exec rails server -b 0.0.0.0 -p $E2E_PORT &
+    - name: start hocuspocus server
+      run: |
+        cd hocuspocus
+        npm install
+        node server.mjs &
+        echo $! > /tmp/hocuspocus.pid
+        for i in $(seq 1 30); do
+          if nc -z localhost 4444; then
+            echo "hocuspocus is up"
+            exit 0
+          fi
+          echo "waiting for hocuspocus... ($i)"
+          sleep 1
+        done
+        echo "hocuspocus failed to start" >&2
+        exit 1
     - name: build client
       run: |
         cd vue
