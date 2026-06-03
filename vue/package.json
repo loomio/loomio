@@ -68,7 +68,7 @@
     "tiny-emitter": "latest",
     "turndown": "^7.2.4",
     "turndown-plugin-gfm": "^1.0.2",
-    "vue": "^3.5.34",
+    "vue": "3.5.34",
     "vue-chartjs": "^4.1.2",
     "vue-i18n": "^11.4.0",
     "vue-router": "^5.0.7",
@@ -84,7 +84,7 @@
     "pug": "latest",
     "sass": "latest",
     "unplugin-vue-components": "latest",
-    "vite": "^8.0.14",
+    "vite": "8.0.14",
     "vite-plugin-env-compatible": "latest",
     "vite-plugin-vuetify": "latest",
     "yaml": "^2.9.0"
