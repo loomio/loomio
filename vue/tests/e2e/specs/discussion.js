@@ -340,6 +340,31 @@ module.exports = {
     page.expectText('.strand-list', 'totally on topic')
   },
 
+  'can_add_topical_poll_to_discussion': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_topical_poll_to_add_to_discussion')
+    page.expectText('.context-panel__heading', 'Topical proposal to move')
+    page.expectText('.strand-list', 'A comment on the topical poll')
+    page.execute("Array.from(document.querySelectorAll('.poll-created .action-menu--btn')).find(el => el.offsetParent).click()")
+    page.execute("Array.from(document.querySelectorAll('.action-dock__button--add_to_discussion')).find(el => el.offsetParent).click()")
+    page.expectText('.modal-launcher .v-card', 'Add to Discussion')
+    page.fillIn('.modal-launcher .v-autocomplete input', 'Waking')
+    page.pause(2000)
+    page.click('.v-autocomplete__content .v-list-item__content')
+    page.pause(500)
+    page.click('.modal-launcher .v-card-actions .v-btn:last-child')
+    page.pause(3000)
+
+    page.expectText('.context-panel__heading', 'Waking Up in Reno')
+    page.expectText('.strand-list', 'Topical proposal to move')
+    page.expectText('.strand-list', 'A comment on the topical poll')
+    page.refresh()
+    page.expectText('.context-panel__heading', 'Waking Up in Reno')
+    page.expectText('.strand-list', 'Topical proposal to move')
+    page.expectText('.strand-list', 'A comment on the topical poll')
+  },
+
   'private_thread': (test) => {
     page = pageHelper(test)
     page.loadPath('setup_discussion')

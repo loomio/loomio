@@ -316,6 +316,7 @@ tr:
       save_template: Şablonu kaydet
       fork_template: Çatal şablonu
       customize: Özelleştirmek
+      add: Eklemek
     formatting_help:
       label: Biçimlendirme
       title: Metninizi biçimlendirmek için Markdown'u nasıl kullanacağınızı öğrenin
@@ -327,6 +328,7 @@ tr:
     templates_admin_hint: Grup yöneticisi olduğunuz için, istemediğiniz şablonları gizleyebilir veya silebilir ve kalanları ihtiyaçlarınıza göre düzenleyebilirsiniz.
     read: Okumak
     unread: Okunmamış
+    discussion: Tartışma
   merge_accounts:
     modal:
       title: Hesapları birleştir
@@ -1049,6 +1051,7 @@ tr:
     delete_discussion: Tartışmayı sil
     lock_thread: Konuyu kilitle
     unlock_thread: Konunun kilidini aç
+    add_to_discussion: Tartışmaya ekle
   formatting:
     formatting_tools: Metin biçimlendirme araçları
     colors: Renkler
@@ -2861,3 +2864,8 @@ tr:
   lock_thread_modal:
     body: Konuları kilitleyerek açık konular listesinden kaldırın ve insanların yorum yapmasını engelleyin.
     explanation: Konuları kilitleyerek kişilerin yorum yapmasını veya daha fazla değişiklik yapmasını engelleyin.
+  add_poll_to_discussion_modal:
+    title: Tartışmaya Ekle
+    discussion: Tartışma
+    success: Başarılı, %{pollType} tartışmaya eklendi!
+    explanation: "%{pollType} ve oylar, yorumlar ve sonuçlar seçilen tartışma başlığına eklenecektir."

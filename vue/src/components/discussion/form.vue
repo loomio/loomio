@@ -14,6 +14,7 @@ import LmoUrlService from '@/shared/services/lmo_url_service';
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete';
 import DiscussionTemplateHelpPanel from '@/components/discussion_template/help_panel';
 import { useWatchRecords } from '@/composables/useWatchRecords';
+import { useCurrentUserGroups } from '@/composables/useCurrentUserGroups';
 
 const props = defineProps({
   discussion: Object,
@@ -29,6 +30,7 @@ const urlFor = (model, action, params) => LmoUrlService.route({model, action, pa
 
 // watch_records composable
 const { watchRecords } = useWatchRecords();
+const { loadGroups } = useCurrentUserGroups();
 
 // Template refs
 const form = ref(null);
@@ -151,7 +153,7 @@ watch(() => props.discussion.groupId, (groupId) => {
 
 // Mounted
 onMounted(() => {
-  Records.users.findOrFetchGroups().then(() => {
+  loadGroups().then(() => {
     const templatePromise = props.discussion.discussionTemplateId
       ? Records.discussionTemplates.findOrFetchById(props.discussion.discussionTemplateId)
       : props.discussion.discussionTemplateKey

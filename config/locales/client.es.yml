@@ -316,6 +316,7 @@ es:
       save_template: Guardar plantilla
       fork_template: Plantilla de horquilla
       customize: Personalizar
+      add: Agregar
     formatting_help:
       label: 'Formato '
       title: Aprenda a usar Markdown para dar formato a su texto
@@ -327,6 +328,7 @@ es:
     templates_admin_hint: Como eres administrador de un grupo, puedes ocultar o eliminar cualquier plantilla que no quieras y editar las restantes para adaptarlas a tus necesidades.
     read: Leer
     unread: No leído
+    discussion: Discusión
   merge_accounts:
     modal:
       title: Fusionar cuentas
@@ -1053,6 +1055,7 @@ es:
     delete_discussion: Eliminar discusión
     lock_thread: Bloquear hilo
     unlock_thread: Desbloquear hilo
+    add_to_discussion: Añadir a la discusión
   formatting:
     formatting_tools: Herramientas formateo de texto
     colors: Colores
@@ -2897,3 +2900,8 @@ es:
   lock_thread_modal:
     body: Bloquea los hilos para eliminarlos de la lista de hilos abiertos e impedir que la gente comente.
     explanation: Bloquea los hilos para evitar que la gente comente o realice más cambios.
+  add_poll_to_discussion_modal:
+    title: Añadir a la discusión
+    discussion: Discusión
+    success: "¡Éxito! %{pollType} se ha añadido a la discusión."
+    explanation: El %{pollType} y cualquier voto, comentario y resultado se agregarán al hilo de discusión seleccionado.

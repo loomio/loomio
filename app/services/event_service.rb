@@ -5,6 +5,6 @@ class EventService
 
     actor.ability.authorize! :move_comments, source_topic
     actor.ability.authorize! :move_comments, topic
-    MoveCommentsWorker.perform_async(ids, source_topic.id, topic.id)
+    MoveCommentsWorker.perform_async(ids, source_topic.id, topic.id, actor.id)
   end
 end

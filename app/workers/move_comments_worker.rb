@@ -1,6 +1,6 @@
 class MoveCommentsWorker
   include Sidekiq::Worker
-  def perform(event_ids, source_topic_id, target_topic_id)
+  def perform(event_ids, source_topic_id, target_topic_id, actor_id = nil)
     source_topic = Topic.find(source_topic_id)
     target_topic = Topic.find(target_topic_id)
 
@@ -27,6 +27,9 @@ class MoveCommentsWorker
     all_events.update_all(topic_id: target_topic_id, sequence_id: nil)
 
     TopicService.repair(target_topic_id)
+    source_topic.update(discarded_at: Time.now, discarded_by: actor_id) if source_topic.topicable_type == 'Poll' &&
+                                                                           all_polls.exists?(source_topic.topicable_id) &&
+                                                                           !Event.exists?(topic_id: source_topic_id)
     TopicService.repair(source_topic_id)
 
     SearchService.reindex_by_discussion_id(target_topicable.id) if target_topicable.is_a?(Discussion)
@@ -34,6 +37,8 @@ class MoveCommentsWorker
 
     ActiveStorage::Attachment.where(record: all_events.map(&:eventable).compact).update_all(group_id: target_topic.group_id)
 
+    MessageChannelService.publish_models([source_topic], group_id: source_topic.group_id)
+    MessageChannelService.publish_models([target_topic], group_id: target_topic.group_id)
     MessageChannelService.publish_models(target_topic.items, group_id: target_topic.group_id)
   end
 
