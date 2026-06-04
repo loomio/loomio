@@ -74,6 +74,10 @@ div.lmo-markdown-wrapper(@click="onClick")
 </template>
 
 <style lang="sass">
+.lmo-markdown-wrapper
+  a
+    color: rgb(var(--v-theme-anchor))
+
 .v-theme--dark, .v-theme--darkBlue
   .lmo-markdown-wrapper
     color: rgba(255,255,255,1)
@@ -145,7 +149,7 @@ img.emoji
     text-align: justify !important
 
   mark
-    background-color: var(--v-primary-lighten1)
+    background-color: rgba(var(--v-theme-primary), 0.2)
     color: #000
     padding: 0.2em 0.3em
 
@@ -269,7 +273,7 @@ img.emoji
       border-width: 0.1rem
       line-height: 100%
       margin-right: 8px
-      border-color: var(--v-grey-lighten1)
+      border-color: rgba(var(--v-theme-on-surface), 0.2)
       min-width: 15px
 
     li[data-checked="true"]::before
@@ -285,11 +289,11 @@ img.emoji
 
     li:hover:before
       cursor: pointer
-      border-color: var(--v-primary-lighten1)
+      border-color: rgba(var(--v-theme-primary), 0.4)
 
     li.task-item-busy::before
-      background-color: var(--v-primary-lighten1)
-      border-color: var(--v-primary-lighten1)
+      background-color: rgba(var(--v-theme-primary), 0.4)
+      border-color: rgba(var(--v-theme-primary), 0.4)
       // background-color: none !important
 
   ol

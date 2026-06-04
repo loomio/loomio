@@ -133,15 +133,27 @@ v-app.app-is-booted
 .text-on-surface
   color: rgba(var(--v-theme-on-surface), var(--v-high-emphasis-opacity))
 
-.text-transform-none
-  text-transform: none
+
+// .bg-primary
+//   color: rgb(var(--v-theme-on-primary))
+
+// .bg-secondary
+//   color: rgb(var(--v-theme-on-secondary))
+
+// .bg-error
+//   color: rgb(var(--v-theme-on-error))
+
+// .bg-warning
+//   color: rgb(var(--v-theme-on-warning))
+
+// .bg-success
+//   color: rgb(var(--v-theme-on-success))
+
+// .bg-info
+//   color: rgb(var(--v-theme-on-info))
 
 h1:focus, h2:focus, h3:focus, h4:focus, h5:focus, h6:focus
   outline: 0
-
-a
-  text-decoration: none
-  color: rgb(var(--v-theme-anchor))
 
 .lmo-relative
   position: relative

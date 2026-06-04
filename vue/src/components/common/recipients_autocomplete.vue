@@ -371,46 +371,46 @@ div.recipients-autocomplete
                v-t="'announcement.only_admins_can_invite'")
           span(v-if="canAddGuests && !canNotifyGroup"
                v-t="'announcement.only_admins_can_announce'")
-    template(v-slot:chip='{ props, item }')
+    template(v-slot:chip='{ props, internalItem }')
       v-chip.chip--select-multi(
-        v-if="item.raw.type =='audience'"
+        v-if="internalItem.raw.type =='audience'"
         v-bind="props"
-        :value='item.selected'
+        :value='internalItem.selected'
         closable
-        @click:close='remove(item.raw)'
-        @click='expand(item.raw)')
+        @click:close='remove(internalItem.raw)'
+        @click='expand(internalItem.raw)')
         span
-          common-icon.mr-1(color="info" :name="item.raw.icon")
-        span {{ item.title }}
+          common-icon.mr-1(color="info" :name="internalItem.raw.icon")
+        span {{ internalItem.title }}
       v-chip.chip--select-multi(
         v-else
         v-bind="props"
-        :value='item.selected'
+        :value='internalItem.selected'
         closable
-        @click:close='remove(item.raw)')
+        @click:close='remove(internalItem.raw)')
         span
           user-avatar.mr-2(
-            v-if="item.raw.type == 'user'"
-            :user="item.raw.user"
+            v-if="internalItem.raw.type == 'user'"
+            :user="internalItem.raw.user"
             :size="24" no-link)
-          common-icon.mr-2(v-else size="small" :name="item.raw.icon")
-        span {{ item.title }}
-        span(v-if="item.raw.type == 'user' && currentUserId == item.value")
+          common-icon.mr-2(v-else size="small" :name="internalItem.raw.icon")
+        span {{ internalItem.title }}
+        span(v-if="internalItem.raw.type == 'user' && currentUserId == internalItem.value")
           space
           span ({{ $t('common.you') }})
-    template(v-slot:item='{props, item}')
+    template(v-slot:item='{props, internalItem}')
       v-list-item.recipients-autocomplete-suggestion(v-bind="props" lines="two")
         template(v-slot:prepend)
-          user-avatar.mr-2(v-if="item.raw.type == 'user'" :user="item.raw.user" no-link)
-          common-icon.mr-2(v-else size="small" :name="item.raw.icon")
+          user-avatar.mr-2(v-if="internalItem.raw.type == 'user'" :user="internalItem.raw.user" no-link)
+          common-icon.mr-2(v-else size="small" :name="internalItem.raw.icon")
         //- v-list-item-title
         //-   span {{props}}
-        //-   span {{item.raw.name}}
-        //-   span(v-if="item.raw.type == 'user' && currentUserId == item.raw.id")
+        //-   span {{internalItem.raw.name}}
+        //-   span(v-if="internalItem.raw.type == 'user' && currentUserId == internalItem.raw.id")
         //-     space
         //-     span ({{ $t('common.you') }})
-        v-list-item-subtitle(v-if="item.raw.user && item.raw.user.email && (item.raw.user.email != item.raw.user.name)")
-          span {{item.raw.user.email}}
+        v-list-item-subtitle(v-if="internalItem.raw.user && internalItem.raw.user.email && (internalItem.raw.user.email != internalItem.raw.user.name)")
+          span {{internalItem.raw.user.email}}
   notifications-count(
     v-show="!hideCount && recipients.length"
     :model='model'

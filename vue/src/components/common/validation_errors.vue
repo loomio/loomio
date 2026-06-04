@@ -7,7 +7,7 @@ defineProps({
 
 <template lang="pug">
 .lmo-validation-error.mt-n4.mb-4
-  .lmo-validation-error__message.error--text.text-caption(v-if="subject.errors[field]" for="field + '-error'")
+  .lmo-validation-error__message.error--text.text-body-small(v-if="subject.errors[field]" for="field + '-error'")
     span(role="status" aria-live="polite") {{subject.errors[field].join(', ')}}
 </template>
 

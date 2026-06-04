@@ -5,9 +5,6 @@ process.env
 // Composables
 import { createVuetify } from 'vuetify'
 import { aliases, mdi } from 'vuetify/iconsets/mdi-svg'
-import { VDateInput } from 'vuetify/labs/VDateInput'
-
-
 const colors = {
   gold: "#DCA034",
   goldDark1: "#C6902F",
@@ -23,22 +20,20 @@ const colors = {
 }
 
 export default createVuetify({
-  components: {
-    VDateInput,
-  },
   icons: {
     defaultSet: 'mdi',
     aliases,
     sets: { mdi },
   },
   theme: {
-    defaultTheme: 'light',
+    defaultTheme: 'system',
     themes: {
       light: {
         dark: false,
         colors: {
           background: "#fcf6eb",
           primary:  colors.goldDark1,
+          'on-primary': '#ffffff',
           info:  colors.skyDark1,
           anchor:  colors.goldDark1,
         },
@@ -48,6 +43,7 @@ export default createVuetify({
         dark: true,
         colors: {
           primary: colors.gold,
+          'on-primary': '#ffffff',
           info: colors.skyDark1,
           anchor: colors.gold
         },
@@ -58,6 +54,7 @@ export default createVuetify({
         colors: {
           background: "#f0f0f0",
           primary:  colors.skyDark1,
+          'on-primary': '#ffffff',
           info:   colors.skyDark1,
           anchor:  colors.skyDark2,
         },
@@ -67,6 +64,7 @@ export default createVuetify({
         dark: true,
         colors: {
           primary: colors.sky,
+          'on-primary': '#ffffff',
           info: colors.skyDark1,
           anchor: colors.sky
         },

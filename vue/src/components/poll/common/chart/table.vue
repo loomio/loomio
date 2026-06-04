@@ -104,7 +104,7 @@ export default {
               user-avatar.float-left(v-for="id in option.voter_ids", :key="id", :user="users[id]", :size="24" no-link)
 </template>
 <style lang="sass">
-.v-data-table > .v-data-table__wrapper > table > tbody > tr:hover:not(.v-data-table__expanded__content):not(.v-data-table__empty-wrapper)
+.v-data-table tbody tr:hover
   background: none !important
 
 .poll-common-chart-table

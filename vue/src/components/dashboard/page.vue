@@ -81,7 +81,7 @@ onUnmounted(() => {
 <template lang="pug">
 v-main
   v-container.dashboard-page.max-width-1024.px-0.px-sm-3
-    h1.text-h4.my-4(tabindex="-1" v-intersect="{handler: titleVisible}" v-t="'dashboard_page.dashboard'")
+    h1.text-headline-large.my-4(tabindex="-1" v-intersect="{handler: titleVisible}" v-t="'dashboard_page.dashboard'")
 
     dashboard-polls-panel
 

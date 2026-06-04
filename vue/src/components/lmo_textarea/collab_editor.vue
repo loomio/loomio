@@ -796,7 +796,7 @@ li[data-done="true"]
   > .todo-checkbox::before
     position: relative
     top: -6px
-    color: var(--v-accent-base)
+    color: rgb(var(--v-theme-secondary))
     font-size: 1.5rem
     content: "✓"
 

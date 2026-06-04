@@ -17,7 +17,7 @@ const closedOrClosingAtLabel = computed(() => {
 </script>
 
 <template lang="pug">
-.poll-common-details-panel__started-by.text-medium-emphasis.text-body-2.mb-4
+.poll-common-details-panel__started-by.text-medium-emphasis.text-body-medium.mb-4
   span(v-t="{ path: 'poll_card.poll_type_by_name', args: { name: poll.authorName(), poll_type: poll.translatedPollTypeCaps() } }")
   template(v-if="openedOrOpeningAt")
     mid-dot

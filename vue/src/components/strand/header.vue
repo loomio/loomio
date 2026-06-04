@@ -41,12 +41,12 @@ function titleVisible(visible) {
 
 <template lang="pug">
 .strand-header
-  .d-flex.flex-wrap.align-center.text-body-2
+  .d-flex.flex-wrap.align-center.text-body-medium
     v-breadcrumbs.ml-n3.context-panel__breadcrumbs.flex-grow-1(color="anchor" :items="breadcrumbs")
       template(v-slot:divider)
         common-icon(name="mdi-chevron-right")
     tags-display(:tags="tags" :group="group")
-  h1.text-h4.context-panel__heading#sequence-0.pt-2.mb-4(tabindex="-1" v-intersect="{handler: titleVisible}")
+  h1.text-headline-large.context-panel__heading#sequence-0.pt-2.mb-4(tabindex="-1" v-intersect="{handler: titleVisible}")
     plain-text(:model='topicable' field='title')
     i.mdi.mdi-pin-outline.context-panel__heading-pin(v-if="isPinned")
 </template>
