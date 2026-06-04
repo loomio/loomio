@@ -2868,4 +2868,4 @@ ro:
     title: Adaugă la discuție
     discussion: Discuţie
     success: Succes, %{pollType} adăugat la discuție!
-    explanation: Valoarea %{pollType} și orice voturi, comentarii și rezultate vor fi adăugate firului de discuție selectat.
+    explanation: "%{pollType} și orice voturi, comentarii și rezultate vor fi adăugate firului de discuție selectat."

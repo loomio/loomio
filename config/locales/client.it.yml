@@ -2896,4 +2896,4 @@ it:
     title: Aggiungi alla discussione
     discussion: Discussione
     success: Operazione riuscita, %{pollType} aggiunto alla discussione!
-    explanation: Il tipo di sondaggio %{pollType} e tutti i voti, i commenti e l'esito verranno aggiunti al thread di discussione selezionato.
+    explanation: Il %{pollType} e tutti i voti, i commenti e l'esito verranno aggiunti al thread di discussione selezionato.
