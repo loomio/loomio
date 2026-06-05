@@ -14,7 +14,7 @@ export default {
 </script>
 
 <template lang="pug">
-pre.poll-meeting-time {{time}}
+pre.poll-meeting-time.my-0 {{time}}
 </template>
 
 <style lang="sass">
