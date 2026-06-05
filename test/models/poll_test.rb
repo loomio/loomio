@@ -42,6 +42,35 @@ class PollTest < ActiveSupport::TestCase
     ), actor: @admin)
   end
 
+  test "destroying a poll's topic destroys the poll (no orphaned topic_id)" do
+    poll = create_poll
+    topic = poll.topic
+    assert_equal poll, topic.topicable
+
+    topic.destroy
+
+    refute Poll.exists?(poll.id), "poll should be destroyed with its topic, not orphaned"
+  end
+
+  test "destroying a group destroys its standalone polls" do
+    poll = create_poll(group_id: @group.id)
+    poll_id = poll.id
+
+    @group.destroy
+
+    refute Poll.exists?(poll_id), "group destroy should cascade to topic then poll"
+  end
+
+  test "database rejects a poll referencing a non-existent topic" do
+    poll = create_poll
+    poll.update_column(:topic_id, 0)
+    # FK is deferrable/initially-deferred, so it fires at commit; force the
+    # check now to assert it is enforced.
+    assert_raises(ActiveRecord::InvalidForeignKey) do
+      ActiveRecord::Base.connection.execute("SET CONSTRAINTS ALL IMMEDIATE")
+    end
+  end
+
   test "validates correctly if no poll option changes have been made" do
     poll = create_poll(poll_option_names: ["agree"])
     assert poll.valid?

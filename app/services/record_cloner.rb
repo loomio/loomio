@@ -32,33 +32,6 @@ class RecordCloner
     clone_group.reload
   end
 
-  def clone_trial_content_into_group(group, actor)
-    source_group = Group.find_by(handle: 'trial-group-template')
-
-    group.discussions = source_group.discussions.kept.map { |d| new_clone_discussion_and_events(d) }
-    group.polls = source_group.polls.kept.map { |p| new_clone_poll(p) }
-
-    group.save!
-    save_cloned_content!(group)
-
-    update_tag_colors(group, source_group)
-    store_source_record_ids(group)
-    TranslationService.translate_group_content!(group, actor.locale)
-
-
-    group.polls.each do |poll|
-      poll.update_counts!
-      poll.stances.each {|s| s.update_option_scores!}
-    end
-
-    group.discussions.each { |d| TopicService.repair(d.topic_id) }
-    group.reload
-
-    group.save!
-
-    group
-  end
-
   def store_source_record_ids(clone_group)
     source_ids = {}
     @cache.each_pair do |key, value|

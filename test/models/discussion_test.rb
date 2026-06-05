@@ -8,6 +8,50 @@ class DiscussionTest < ActiveSupport::TestCase
     @group = groups(:group)
   end
 
+  # Topic foreign key / cascade
+  test "destroying a discussion's topic destroys the discussion (no orphaned topic_id)" do
+    discussion = DiscussionService.create(params: { group_id: @group.id, title: "Test #{SecureRandom.hex(4)}" }, actor: @admin)
+    topic = discussion.topic
+
+    topic.destroy
+
+    refute Discussion.exists?(discussion.id), "discussion should be destroyed with its topic, not orphaned"
+  end
+
+  test "destroying a group destroys its discussions" do
+    discussion = DiscussionService.create(params: { group_id: @group.id, title: "Test #{SecureRandom.hex(4)}" }, actor: @admin)
+    discussion_id = discussion.id
+
+    @group.destroy
+
+    refute Discussion.exists?(discussion_id), "group destroy should cascade to topic then discussion"
+  end
+
+  test "destroying a discussion topic also destroys its in-thread polls" do
+    discussion = DiscussionService.create(params: { group_id: @group.id, title: "Test #{SecureRandom.hex(4)}" }, actor: @admin)
+    poll = PollService.create(
+      params: { poll_type: "poll", title: "In-thread", poll_option_names: ["agree"],
+                closing_at: 5.days.from_now, topic_id: discussion.topic_id },
+      actor: @admin
+    )
+    assert_equal discussion.topic_id, poll.topic_id
+
+    discussion.topic.destroy
+
+    refute Discussion.exists?(discussion.id)
+    refute Poll.exists?(poll.id), "in-thread poll shares the discussion's topic and should be destroyed too"
+  end
+
+  test "database rejects a discussion referencing a non-existent topic" do
+    discussion = DiscussionService.create(params: { group_id: @group.id, title: "Test #{SecureRandom.hex(4)}" }, actor: @admin)
+    discussion.update_column(:topic_id, 0)
+    # FK is deferrable/initially-deferred, so it fires at commit; force the
+    # check now to assert it is enforced.
+    assert_raises(ActiveRecord::InvalidForeignKey) do
+      ActiveRecord::Base.connection.execute("SET CONSTRAINTS ALL IMMEDIATE")
+    end
+  end
+
   # Guests
   test "returns a guest who has never been a member" do
     discussion = discussions(:discussion)

@@ -108,6 +108,36 @@ class RecordClonerTest < ActiveSupport::TestCase
     end
   end
 
+  test "create_clone_group never produces a topicless poll or discussion" do
+    # Add a standalone poll (its own topic) alongside the setup's in-thread poll,
+    # then clone via the production entry point. Guards against the cloner
+    # orphaning records now that polls/discussions have a NOT-dangling FK to topics.
+    PollService.create(params: {
+      title: 'Standalone Poll',
+      poll_type: 'proposal',
+      closing_at: 3.days.from_now,
+      poll_option_names: ['agree', 'disagree'],
+      group_id: @group.id
+    }, actor: @user)
+
+    poll_ids = Poll.pluck(:id)
+    discussion_ids = Discussion.pluck(:id)
+    null_polls_before = Poll.where(topic_id: nil).count
+    null_discussions_before = Discussion.where(topic_id: nil).count
+
+    clone = RecordCloner.new(recorded_at: 2.days.ago).create_clone_group(@group)
+
+    new_polls = Poll.where.not(id: poll_ids)
+    new_discussions = Discussion.where.not(id: discussion_ids)
+
+    assert_equal 2, new_polls.count, "both the in-thread and standalone source polls should be cloned"
+    assert_equal @group.discussions.kept.count, new_discussions.count
+    assert_equal null_polls_before, Poll.where(topic_id: nil).count, "clone must not create topicless polls"
+    assert_equal null_discussions_before, Discussion.where(topic_id: nil).count, "clone must not create topicless discussions"
+    new_polls.each { |p| assert_equal clone.id, p.topic&.group_id, "#{p.title} should have a topic in the clone group" }
+    new_discussions.each { |d| assert_equal clone.id, d.topic&.group_id, "#{d.title} should have a topic in the clone group" }
+  end
+
   # -- Clone Discussion --
 
   test "clones a discussion with events and comments" do

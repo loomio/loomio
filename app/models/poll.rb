@@ -226,6 +226,7 @@ class Poll < ApplicationRecord
   after_commit :update_group_counter_caches
   def update_group_counter_caches
     return unless (g = topic.group) && g.id
+    return if g.destroyed? # group teardown cascaded to this poll — nothing to recount
     g.update_polls_count
     g.update_closed_polls_count
   end
