@@ -3,16 +3,15 @@
 class Views::UserMailer::CatchUp < Views::ApplicationMailer::BaseLayout
   include PrettyUrlHelper
 
-  def initialize(user:, recipient:, groups:, topics_by_group_id:, subject_key:, subject_params:, time_start:, time_finish:, cache:, utm_hash:)
+  def initialize(user:, recipient:, topics_by_group_id:, subject_key:, subject_params:, time_start:, time_finish:, utm_hash:)
     @user = user
     @recipient = recipient
-    @groups = groups
     @topics_by_group_id = topics_by_group_id
+    @groups = [NullGroup.new, *Group.where(id: topics_by_group_id.keys).order(full_name: :asc)]
     @subject_key = subject_key
     @subject_params = subject_params
     @time_start = time_start
     @time_finish = time_finish
-    @cache = cache
     @utm_hash = utm_hash
   end
 
@@ -32,29 +31,16 @@ class Views::UserMailer::CatchUp < Views::ApplicationMailer::BaseLayout
 
       hr
 
-      if @topics_by_group_id.has_key?(nil)
-        h1 { link_to t(:"sidebar.direct_discussions"), direct_discussions_url }
-        @topics_by_group_id[nil].each do |topic|
-          render Views::UserMailer::CatchUp::Topic.new(
-            topic: topic,
-            recipient: @recipient,
-            time_start: @time_start,
-            cache: @cache,
-            utm_hash: @utm_hash
-          )
-        end
-      end
-
       @groups.each do |group|
         next unless @topics_by_group_id.has_key?(group.id)
 
-        h1 { link_to group.full_name, group_url(group) }
+        h1 { link_to group.full_name, group.id ? group_url(group) : direct_discussions_url }
+
         @topics_by_group_id[group.id].each do |topic|
           render Views::UserMailer::CatchUp::Topic.new(
             topic: topic,
             recipient: @recipient,
             time_start: @time_start,
-            cache: @cache,
             utm_hash: @utm_hash
           )
         end

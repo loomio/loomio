@@ -72,6 +72,22 @@ class UserMailerTest < ActionMailer::TestCase
     end
   end
 
+  test "catch up email includes discussions the user is a guest of" do
+    @user.update!(email_catch_up_day: 7)
+    # @user is NOT a member of @group — only a guest on the discussion
+    title = "Guest catchup #{SecureRandom.hex(4)}"
+    discussion = DiscussionService.create(params: { title: title, group_id: @group.id }, actor: @inviter)
+    discussion.topic.add_guest!(@user, @inviter)
+    CommentService.create(comment: Comment.new(parent: discussion, body: "a comment"), actor: @inviter)
+    ActionMailer::Base.deliveries.clear
+
+    assert_difference 'ActionMailer::Base.deliveries.count', 1 do
+      UserMailer.catch_up(@user.id).deliver_now
+    end
+
+    assert_includes ActionMailer::Base.deliveries.last.body.encoded, title
+  end
+
   test "does not send catch up when there is no unread content" do
     @user.update!(email_catch_up_day: 7)
     @group.add_member!(@user)
